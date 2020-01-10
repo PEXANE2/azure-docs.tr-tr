@@ -1,25 +1,14 @@
 ---
-title: Service Fabric istemci kimlik doğrulaması için Azure Active Directory ayarlama | Microsoft Docs
+title: İstemci kimlik doğrulaması için Azure Active Directory ayarlama
 description: Service Fabric kümeler için istemcilerin kimliğini doğrulamak üzere Azure Active Directory (Azure AD) ayarlamayı öğrenin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/28/2019
-ms.author: atsenthi
-ms.openlocfilehash: 77814d04daca0ebb649ffa2e8ff46becddec4f0f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901516"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614698"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>İstemci kimlik doğrulaması için Azure Active Directory ayarlama
 
@@ -32,7 +21,12 @@ Service Fabric kümesi, Web tabanlı [Service Fabric Explorer][service-fabric-vi
 > [!NOTE]
 > Linux 'ta, kümeyi oluşturmadan önce aşağıdaki adımları gerçekleştirmeniz gerekir. Windows 'da, [var olan bir küme Için Azure AD kimlik doğrulamasını yapılandırma](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md)seçeneğiniz de vardır.
 
-## <a name="prerequisites"></a>Önkoşullar
+> [!NOTE]
+> Linux AAD özellikli kümelerdeki uygulamaların ve düğümlerin Azure portalında görüntülenemediği [bilinen bir sorundur](https://github.com/microsoft/service-fabric/issues/399) .
+
+
+
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede, zaten bir kiracı oluşturmuş olduğunuz varsayılmaktadır. Bunu yapmadıysanız, [Azure Active Directory kiracının nasıl alınacağını][active-directory-howto-tenant]okuyarak başlayın.
 
 Azure AD 'yi Service Fabric bir kümeyle yapılandırma ile ilgili bazı adımları basitleştirmek için bir Windows PowerShell komut dosyası kümesi oluşturduk.
@@ -44,7 +38,7 @@ Azure AD 'yi Service Fabric bir kümeyle yapılandırma ile ilgili bazı adımla
 
 Kümeye erişimi denetlemek için iki Azure AD uygulaması oluşturmak üzere betikleri kullanacağız: bir Web uygulaması ve bir yerel uygulama. Kümenizi temsil etmek üzere uygulamalar oluşturduktan sonra, [Service Fabric tarafından desteklenen roller](service-fabric-cluster-security-roles.md)için Kullanıcı oluşturacaksınız: salt okunurdur ve yönetici.
 
-`SetupApplications.ps1`çalıştırın ve kiracı KIMLIĞI, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın.  Ayrıca, kullanıcılar için Kullanıcı adları ve parolalar da belirtin. Örnek:
+`SetupApplications.ps1`çalıştırın ve kiracı KIMLIĞI, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın.  Ayrıca, kullanıcılar için Kullanıcı adları ve parolalar da belirtin. Örneğin:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess

@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fbd658d610fba27bdaed2af4bc27ed40a138fac
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 05002c1b11ef31b61fb4036f09dc8edcdafca767
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008024"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608389"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Active Directory günlüklerini Arcizle tümleştirin
 
@@ -30,13 +30,13 @@ ms.locfileid: "74008024"
 
 Bu makalede, Azure Izleyici kullanarak Azure AD günlüklerini Arcize yönlendirmeyi öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 * Azure AD etkinlik günlüklerini içeren bir Azure Olay Hub 'ı. [Etkinlik günlüklerinizi bir olay hub 'ına akışa](quickstart-azure-monitor-stream-logs-to-event-hub.md)alma hakkında bilgi edinin. 
 * Arcgözetimi syslog, Daemon SmartConnector (SmartConnector) veya Arcgörüş Load Balancer yapılandırılmış bir örneği. Olaylar Arcgörüş Load Balancer gönderilirse, bu, sonuçta Load Balancer tarafından SmartConnector 'a gönderilir.
 
-[Azure Izleyici Olay Hub 'ı Için Arcgörüş SmartConnector yapılandırma kılavuzunu](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)indirip açın. Bu kılavuz, Azure Izleyici için Arcgörüş SmartConnector 'ı yüklemek ve yapılandırmak için gereken adımları içerir. 
+[Azure Izleyici Olay Hub 'ı Için Arcgörüş SmartConnector yapılandırma kılavuzunu](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)indirip açın. Bu kılavuz, Azure Izleyici için Arcgörüş SmartConnector 'ı yüklemek ve yapılandırmak için gereken adımları içerir. 
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>Azure AD günlüklerini Arcgörüş ile tümleştirme
 
@@ -59,4 +59,4 @@ Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Izleyici Olay Hub 'ı için Arcgörüş SmartConnector yapılandırma kılavuzu](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[Azure Izleyici Olay Hub 'ı için Arcgörüş SmartConnector yapılandırma kılavuzu](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)

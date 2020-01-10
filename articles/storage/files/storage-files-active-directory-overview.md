@@ -1,17 +1,17 @@
 ---
-title: Azure dosyaları için SMB üzerinden Azure Active Directory kimlik doğrulamasına genel bakış-Azure depolama
+title: Genel Bakış-Azure AD Domain Services yetkilendirmesi-Azure dosyaları
 description: Azure dosyaları, Azure Active Directory (Azure AD) etki alanı Hizmetleri aracılığıyla SMB (sunucu Ileti bloğu) üzerinden kimlik tabanlı kimlik doğrulamasını destekler. Etki alanına katılmış Windows sanal makineleriniz (VM), Azure AD kimlik bilgilerini kullanarak Azure dosya paylaşımlarına erişebilir.
 author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 93db726a2cac14109e542972ce851943b290962f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611783"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460293"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>SMB erişimi için Azure dosyalarına Azure Active Directory etki alanı hizmeti (Azure AD DS) kimlik doğrulama desteği 'ne genel bakış
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -49,7 +49,7 @@ Azure dosyaları için Azure AD etki alanı hizmeti kimlik doğrulaması, payla�
 -   **ACL 'Leri verilerle birlikte yedekleyin**  
     Azure dosyalarını, mevcut şirket içi dosya paylaşımlarınızı yedeklemek için kullanabilirsiniz. Azure dosyaları, Azure dosyalarına SMB üzerinden bir dosya paylaşımının yedeklendiği zaman, ACL 'larınızı verilerle birlikte korur.
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 Azure dosyaları, etki alanına katılmış VM 'lerden Azure AD kimlik bilgileriyle Kerberos kimlik doğrulamasını desteklemek için Azure AD Domain Services kullanır. Azure AD 'yi Azure dosyaları ile kullanabilmeniz için öncelikle Azure AD Domain Services etkinleştirmeniz ve dosya verilerine erişmeyi planladığınız VM 'lerden etki alanına katılmanız gerekir. Etki alanına katılmış VM 'niz Azure AD Domain Services aynı sanal ağda (VNET) bulunmalıdır. 
 
 Bir VM üzerinde çalışan bir uygulamayla ilişkili bir kimlik, Azure dosyalarındaki verilere erişmeye çalıştığında, kimlik doğrulaması için Azure AD Domain Services gönderilen istek gönderilir. Kimlik doğrulaması başarılı olursa Azure AD Domain Services, Kerberos belirteci döndürür. Uygulama, Kerberos belirtecini içeren bir istek gönderir ve Azure dosyaları, isteği yetkilendirmek için bu belirteci kullanır. Azure dosyaları yalnızca belirteci alır ve Azure AD kimlik bilgilerini kalıcı hale almaz.
@@ -78,7 +78,7 @@ Depolama hesabı anahtarını taşıyan bir Kullanıcı, Azure dosyalarına Süp
 > En iyi güvenlik yöntemlerinin bir parçası olarak, depolama hesabı anahtarlarınızı paylaşmayı önleyin ve mümkün olduğunda Azure AD izinlerinden yararlanın.
 
 ### <a name="preserve-directory-and-file-acls-for-data-import-to-azure-file-shares"></a>Azure dosya paylaşımlarına veri aktarma için dizin ve dosya ACL 'Lerini koruma
-Azure dosyaları artık Azure dosya paylaşımlarına veri kopyaladığınızda dizin veya dosya ACL 'Lerinin kullanılmasını destekler. Bir dizin veya dosyadaki ACL 'Leri Azure dosyalarına kopyalayabilirsiniz. Örneğin, hem verileri hem de [](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) ACL 'leri bir `/copy:s` Azure dosya paylaşımında kopyalamak için Robocopy 'yi bayrağıyla birlikte kullanabilirsiniz. ACL koruması varsayılan olarak açık ve depolama hesabınızda Azure AD etki alanı hizmeti kimlik doğrulama özelliğini açıkça etkinleştirmeniz gerekmez. 
+Azure dosyaları artık Azure dosya paylaşımlarına veri kopyaladığınızda dizin veya dosya ACL 'Lerinin kullanılmasını destekler. Bir dizin veya dosyadaki ACL 'Leri Azure dosyalarına kopyalayabilirsiniz. Örneğin, hem verileri hem de ACL 'Leri bir Azure dosya paylaşımında kopyalamak için, [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) 'yi bayrağıyla birlikte kullanabilirsiniz `/copy:s`. ACL koruması varsayılan olarak açık ve depolama hesabınızda Azure AD etki alanı hizmeti kimlik doğrulama özelliğini açıkça etkinleştirmeniz gerekmez. 
 
 ## <a name="pricing"></a>Fiyatlandırma
 Depolama hesabınızda SMB üzerinden Azure AD kimlik doğrulamasını etkinleştirmek için başka bir hizmet ücreti yoktur. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure dosyaları fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/files/) ve [Azure AD Domain Services fiyatlandırma](https://azure.microsoft.com/pricing/details/active-directory-ds/) sayfaları.

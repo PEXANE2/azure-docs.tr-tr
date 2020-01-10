@@ -1,19 +1,14 @@
 ---
-title: Azure Advisor ile uygulamanızın kullanılabilirliğini geliştirme | Microsoft Docs
+title: Azure Danışmanı ile uygulamanızın kullanılabilirliğini geliştirme
 description: Azure dağıtımlarınızın yüksek oranda kullanılabilirliğini geliştirmek için Azure Advisor 'ı kullanın.
-services: advisor
-documentationcenter: NA
-author: saket-ms
-ms.author: sagupt
-ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: dd1b898adf4c4cdff45e05427757d90d5f80bf25
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 997681ed62fa9985e3122ece22565dbae0e65b53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145337"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443104"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Azure Danışmanı ile uygulamanızın kullanılabilirliğini geliştirme
 

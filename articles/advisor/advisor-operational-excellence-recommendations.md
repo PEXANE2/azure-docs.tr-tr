@@ -1,19 +1,14 @@
 ---
-title: Azure Advisor ile Azure abonelikleriniz için işlemsel Excellency 'ı geliştirme | Microsoft Docs
-description: Azure aboneliklerinizde işlemsel üstün mükemmellik sağlamak ve bunları iyileştirmek için Advisor 'ı kullanın.
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
+title: Azure Danışmanı ile Azure abonelikleriniz için operasyonel bir işlem için geliştirme yapın
+description: Azure abonelikleriniz için en üstün işlemsel mükemmellik sağlamak için Advisor 'ı kullanın
 ms.topic: article
 ms.date: 10/24/2019
-ms.author: sagupt
-ms.openlocfilehash: 7cf3d3b34d0921cd111f8111bc2008ef0eced962
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: f34284ba62bd5dea98345ebe73365b332d38ee78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033296"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443065"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>Azure Danışmanı ile işlemsel üstün üstün ulaşın
 
@@ -37,7 +32,7 @@ Azure Danışmanı, durumu bölümünde geçersiz sorguları belirtilmiş olan u
 
 ## <a name="follow-best-practices-using-azure-policy"></a>Azure Ilkesini kullanarak en iyi uygulamaları izleyin
 
-Azure İlkesi, ilkelerinizi oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir. Bu ilkeler, kaynaklarınız üzerinde farklı kurallar ve etkiler uygular. Aşağıda, işletimsel yardım için Azure ilke önerileri yer almanıza yardımcı olur: 
+Azure İlkesi, ilkelerinizi oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir. Bu ilkeler farklı kuralları zorunlu kılar ve kaynaklarınızı etkiler. Aşağıda, işletimsel yardım için Azure ilke önerileri yer almanıza yardımcı olur: 
 1. Azure Ilkesini kullanarak etiketleri yönetme: Bu ilke, herhangi bir kaynak oluşturulduğunda veya güncelleştirilirken belirtilen etiketi ve değeri ekler veya değiştirir. Mevcut kaynaklar bir düzeltme görevi tetiklenerek düzeltilebilir. Ayrıca, bu, kaynak gruplarındaki etiketleri değiştirmez.
 2. Azure Ilkesi 'ni kullanarak coğrafi uyumluluk gereksinimlerini zorla: ilke, kuruluşunuzun kaynakları dağıttığınızda belirlediği konumları kısıtlamanıza olanak sağlar. 
 3. Dağıtımlar için izin verilen sanal makine SKU 'Larını belirtin: Bu ilke, kuruluşunuzun dağıtabileceğiniz bir sanal makine SKU 'Ları kümesi belirtmenizi sağlar.

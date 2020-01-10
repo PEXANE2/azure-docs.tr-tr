@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 85c04b6ea3e40f1f1dcd12eb5d6f4a8f53836867
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4dcda65384190050e11f1bf9b15c706b0e38c6b3
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67876798"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561652"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec ile bir yedekleme hedefi olarak StorSimple
 
@@ -37,7 +37,7 @@ Bu makaledeki bilgiler, yedekleme yöneticileri, depolama yöneticileri ve depol
 
 ## <a name="supported-versions"></a>Desteklenen sürümler
 
--   [Backup Exec 16 ve sonraki sürümleri](http://backupexec.com/compatibility)
+-   [Backup Exec 16 ve sonraki sürümleri](https://www.veritas.com/content/support/en_US/article.100040087)
 -   [StorSimple güncelleştirme 3 ve sonraki sürümleri](storsimple-overview.md#storsimple-workload-summary)
 
 
@@ -49,13 +49,13 @@ StorSimple, yedekleme hedefi için iyi bir seçimdir çünkü:
 -   Bulut katmanlaması, uygun maliyetli Azure depolama alanı kullanmak için bir Azure bulut depolama hesabıyla sorunsuzca tümleşiktir.
 -   Olağanüstü durum kurtarma için otomatik olarak şirket dışı depolama sağlar.
 
-## <a name="key-concepts"></a>Önemli kavramlar
+## <a name="key-concepts"></a>Temel kavramlar
 
 Herhangi bir depolama çözümünde olduğu gibi, çözümün depolama performansına, SLA 'Lara, değişiklik hızına ve kapasite büyüme ihtiyaçlarına yönelik dikkatli bir değerlendirme, başarılı olması için kritik öneme sahiptir. Ana fikir, bir bulut katmanı ile tanışın, erişim zamanlarınız ve işlerinizin buluta, işini yapmak için StorSimple özelliği sayesinde temel bir rol oynar.
 
 StorSimple, iyi tanımlanmış bir çalışma verileri kümesi (sık kullanılan veriler) üzerinde çalışan uygulamalara depolama sağlamak için tasarlanmıştır. Bu modelde, çalışma verileri yerel katmanlara depolanır ve kalan çalışma dışı/soğuk/arşivlenmiş veri kümesi buluta katmanlı. Bu model aşağıdaki şekilde temsil edilir. Neredeyse düz yeşil çizgi, StorSimple cihazının yerel katmanlarında depolanan verileri temsil eder. Kırmızı çizgi, tüm katmanlar genelinde StorSimple çözümünde depolanan toplam veri miktarını temsil eder. Düz yeşil çizgi ile üstel kırmızı eğri arasındaki boşluk, bulutta depolanan toplam veri miktarını temsil eder.
 
-**StorSimple katmanlama**
+**StorSimple** katmanlama
 ![StorSimple katmanlama diyagramı](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
 
 Bu mimari göz önünde bulundurularak, StorSimple 'ın yedekleme hedefi olarak çalışacak şekilde uygun olduğunu fark edersiniz. StorSimple kullanarak şunları yapabilirsiniz:
@@ -79,7 +79,7 @@ StorSimple şu avantajları sunar:
 
 StorSimple, temelde iki ana dağıtım senaryosu (birincil yedekleme hedefi ve ikincil yedekleme hedefi) sunmakla birlikte, düz, blok depolama cihazından oluşan bir Işlemdir. StorSimple, tüm sıkıştırma ve yinelenenleri kaldırma işlemi yapar. Bulut ile uygulama ve dosya sistemi arasında sorunsuz bir şekilde veri gönderir ve alır.
 
-StorSimple hakkında daha fazla bilgi için bkz [. StorSimple 8000 serisi: Karma bulut depolama çözümü](storsimple-overview.md). Ayrıca, [Teknik StorSimple 8000 serisi belirtimlerini](storsimple-technical-specifications-and-compliance.md)inceleyebilirsiniz.
+StorSimple hakkında daha fazla bilgi için bkz. [storsimple 8000 serisi: hibrit bulut depolama çözümü](storsimple-overview.md). Ayrıca, [Teknik StorSimple 8000 serisi belirtimlerini](storsimple-technical-specifications-and-compliance.md)inceleyebilirsiniz.
 
 > [!IMPORTANT]
 > Bir StorSimple cihazının yedekleme hedefi olarak kullanılması yalnızca StorSimple 8000 güncelleştirme 3 ve sonraki sürümlerinde desteklenir.
@@ -92,10 +92,10 @@ Aşağıdaki tablolarda cihaz modelden mimari ilk kılavuz gösterilmektedir.
 
 | Depolama kapasitesi       | 8100          | 8600            |
 |------------------------|---------------|-----------------|
-| Yerel depolama kapasitesi | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Bulut depolama kapasitesi | &gt;200 TiB\* | &gt;500 TiB\* |
+| Yerel depolama kapasitesi | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Bulut depolama kapasitesi | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Depolama boyutu, yinelenenleri kaldırma veya sıkıştırma olmadığını varsayar.
+\* depolama boyutu, yinelenenleri kaldırma veya sıkıştırma olmadığını varsayar.
 
 **Birincil ve ikincil yedeklemeler için StorSimple kapasiteleri**
 
@@ -184,8 +184,8 @@ Bu bölümde bazı yapılandırma örnekleri gösterilmektedir. Aşağıdaki ör
 
 | StorSimple dağıtım görevleri  | Ek açıklamalar |
 |---|---|
-| Şirket içi StorSimple cihazınızı dağıtın. | Desteklenen sürümler: Güncelleştirme 3 ve sonraki sürümleri. |
-| Yedekleme hedefini açın. | Yedekleme hedefi modunu açmak veya kapatmak ve durum almak için bu komutları kullanın. Daha fazla bilgi için bkz. [StorSimple cihazına uzaktan bağlanma](storsimple-remote-connect.md).</br> Yedekleme modunu açmak için: `Set-HCSBackupApplianceMode -enable`. </br> Yedekleme modunu devre dışı bırakmak için `Set-HCSBackupApplianceMode -disable`:. </br> Yedekleme modu ayarlarının geçerli durumunu almak için: `Get-HCSBackupApplianceMode`. |
+| Şirket içi StorSimple cihazınızı dağıtın. | Desteklenen sürümler: güncelleştirme 3 ve sonraki sürümleri. |
+| Yedekleme hedefini açın. | Yedekleme hedefi modunu açmak veya kapatmak ve durum almak için bu komutları kullanın. Daha fazla bilgi için bkz. [StorSimple cihazına uzaktan bağlanma](storsimple-remote-connect.md).</br> Yedekleme modunu açmak için: `Set-HCSBackupApplianceMode -enable`. </br> Yedekleme modunu devre dışı bırakmak için: `Set-HCSBackupApplianceMode -disable`. </br> Yedekleme modu ayarlarının geçerli durumunu almak için: `Get-HCSBackupApplianceMode`. |
 | Yedekleme verilerini depolayan biriminiz için ortak bir birim kapsayıcısı oluşturun. Bir birim kapsayıcısındaki tüm veriler yinelenenleri kaldırılmış. | StorSimple birim kapsayıcıları yinelenenleri kaldırma etki alanlarını tanımlar.  |
 | StorSimple birimleri oluşturun. | Birim boyutu bulut anlık görüntü süresi süresini etkilediğinden, boyutları beklenen kullanım için yakın olan birimler oluşturun. Bir birimin nasıl boyutlandıralınacağını öğrenmek için [bekletme ilkeleri](#retention-policies)hakkında bilgi edinin.</br> </br> StorSimple katmanlı birimleri kullanın ve **Bu birimi daha az sıklıkta erişilen arşiv verileri Için kullan** onay kutusunu seçin. </br> Yalnızca yerel olarak sabitlenmiş birimlerin kullanılması desteklenmez. |
 | Tüm yedekleme hedefi birimleri için benzersiz bir StorSimple yedekleme ilkesi oluşturun. | Bir StorSimple yedekleme ilkesi, birim tutarlılığı grubunu tanımlar. |
@@ -233,7 +233,7 @@ Konak yedekleme sunucusu depolamayı şu yönergelere göre ayarlayın:
 -   StorSimple, Backup Exec tam ve artımlı yedeklemeleri destekler. Yapay ve değişiklik yedeklemeleri kullanmanızı öneririz.
 -   Yedekleme veri dosyaları yalnızca belirli bir iş için veri içermelidir. Örneğin, farklı işlere hiçbir medya ekleme yapılmasına izin verilmez.
 -   İş doğrulamayı devre dışı bırakın. Gerekirse, doğrulama en son yedekleme işinden sonra zamanlanmalıdır. Bu işin yedekleme pencerenizi etkilediğini anlamak önemlidir.
--   **Disk** > ayrıntıları > özelliklerinizi depolama 'yıseçin. >  **Önceden ayrılan disk alanını**devre dışı bırakın.
+-   Disk ** > **  >  **Ayrıntılar** > **Özellikler**' i seçin. **Önceden ayrılan disk alanını**devre dışı bırakın.
 
 Bu gereksinimleri uygulamak için en son yedekleme yürütme ayarları ve en iyi uygulamalar için bkz. [VERITAS Web sitesi](https://www.veritas.com).
 
@@ -256,18 +256,18 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 |---|---|---|---|
 | Haftalık tam | 1 | 4  | 4 |
 | Günlük artımlı | 0,5 | 20 (ayda eşit sayıda hafta döngüsü) | 12 (ek kota için 2) |
-| Aylık tam | 1\. | 12 | 12 |
-| Yıllık tam | 1\.  | 10 | 10 |
+| Aylık tam | 1 | 12 | 12 |
+| Yıllık tam | 1  | 10 | 10 |
 | GFS gereksinimi |   | 38 |   |
 | Ek kota  | 4  |   | Toplam 42 GFS gereksinimi  |
 
-\*GFS çarpanı, yedekleme ilkesi gereksinimlerinizi karşılamak için korumanız ve korumanız gereken kopya sayısıdır.
+GFS çarpanı \*, yedekleme ilkesi gereksinimlerinizi karşılayacak şekilde korumanız ve korumanız gereken kopya sayısıdır.
 
 ## <a name="set-up-backup-exec-storage"></a>Backup Exec depolamayı ayarlama
 
 ### <a name="to-set-up-backup-exec-storage"></a>Backup Exec depolamayı ayarlamak için
 
-1.  Backup Exec yönetim konsolunda **depolama** > birimi**disk tabanlı** > depolama alanını**Yapılandır** > ' ı**seçin.**
+1.  Backup Exec yönetim konsolunda, **depolama > ** **depolama** > **disk tabanlı depolama** > **İleri**' yi seçin.
 
     ![Backup Exec Yönetim Konsolu, depolama sayfasını yapılandırma](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
@@ -323,7 +323,7 @@ Aşağıdaki sıra, Backup Exec ve hedef konağın yedekleme yürütme Aracısı
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Bir yedek exec yedekleme işine StorSimple birimleri atamak için
 
-1.  Backup Exec yönetim konsolunda, diske **konak** > **yedekleme** > **yedeklemesi**' ni seçin.
+1.  Backup Exec yönetim konsolunda **konak** > **yedekleme** > **diske yedekle**' yi seçin.
 
     ![Backup Exec Yönetim Konsolu, konak, yedekleme ve diske yedekleme seçeneğini belirleyin](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
@@ -368,18 +368,18 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 
 ### <a name="backup-configuration-and-capacity-requirements"></a>Yedekleme yapılandırması ve kapasite gereksinimleri
 
-| Yedekleme türü ve bekletme | Yapılandırılan depolama alanı | Boyut (TiB) | GFS çarpanı | Toplam kapasite\* (Tib) |
+| Yedekleme türü ve bekletme | Yapılandırılan depolama alanı | Boyut (TiB) | GFS çarpanı | Toplam kapasite\* (TiB) |
 |---|---|---|---|---|
-| Hafta 1 (tam ve artımlı) |Yerel disk (kısa vadeli)| 1\. | 1\. | 1\. |
-| StorSimple hafta 2-4 |StorSimple diski (uzun vadeli) | 1\. | 4 | 4 |
-| Aylık tam |StorSimple diski (uzun vadeli) | 1\. | 12 | 12 |
-| Yıllık tam |StorSimple diski (uzun vadeli) | 1\. | 1\. | 1 |
+| Hafta 1 (tam ve artımlı) |Yerel disk (kısa vadeli)| 1 | 1 | 1 |
+| StorSimple hafta 2-4 |StorSimple diski (uzun vadeli) | 1 | 4 | 4 |
+| Aylık tam |StorSimple diski (uzun vadeli) | 1 | 12 | 12 |
+| Yıllık tam |StorSimple diski (uzun vadeli) | 1 | 1 | 1 |
 |GFS birimleri boyut gereksinimi |  |  |  | 18*|
 
-\*Toplam kapasite, StorSimple disklerinin 17 TiB ve yerel RAID birimi 'nin 1 TiB 'leri içerir.
+Toplam kapasite \*, StorSimple disklerinin 17 TiB ve yerel RAID biriminin 1 TiB 'leri içerir.
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS örnek zamanlaması: GFS haftalık, aylık ve yıllık zamanlama
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS örnek zamanlaması: GFS döndürme haftalık, aylık ve yıllık zamanlama
 
 | Hafta | Tam | Artımlı gün 1 | Artımlı gün 2 | Artımlı gün 3 | Artımlı gün 4 | Artımlı gün 5 |
 |---|---|---|---|---|---|---|
@@ -395,11 +395,11 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-archive-and-duplication-job"></a>Bir yedek yürütme Arşivi ve yineleme işine StorSimple birimleri atamak için
 
-1.  Backup Exec yönetim konsolunda, StorSimple birimine arşivlemek istediğiniz işe sağ tıklayın ve ardından **yedekleme tanımı özellikleri** > **Düzenle**' yi seçin.
+1.  Backup Exec yönetim konsolunda, StorSimple birimine arşivlemek istediğiniz işe sağ tıklayın ve **sonra > ** **yedekleme tanımı özellikleri** ' ni seçin.
 
     ![Backup Exec Yönetim Konsolu, yedekleme tanımı Özellikler sekmesi](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.   > **Disk**düzenlemeiçinaşamayinelemesiEkle > ' yi seçin.
+2.   > **Aşama Ekle** ' yi seçin > **diske çoğaltın** ve **düzenleyin**.
 
     ![Backup Exec Yönetim Konsolu, Aşama Ekle](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
@@ -450,7 +450,7 @@ Aşağıdaki bölümde, yedekleme sonrası işlem sırasında StorSimple bulut a
 
 1. [Azure PowerShell'i yükleme](/powershell/azure/overview).
 2. [Manage-CloudSnapshots. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell betiğini indirip kurun.
-3. Betiği çalıştıran sunucuda PowerShell 'i yönetici olarak çalıştırın. Betiğin hangi değişiklikleri yaptığını görmek için betiği `-WhatIf $true` ile çalıştırtığınızdan emin olun. Doğrulama tamamlandıktan sonra Pass `-WhatIf $false`. Aşağıdaki komutu çalıştırın:
+3. Betiği çalıştıran sunucuda PowerShell 'i yönetici olarak çalıştırın. Betiğin hangi değişiklikleri yaptığını görmek için betiği `-WhatIf $true` birlikte çalıştırmanız gerekir. Doğrulama tamamlandıktan sonra, `-WhatIf $false`geçirin. Aşağıdaki komutu çalıştırın:
    ```powershell
    .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
    ```
@@ -472,18 +472,18 @@ Bir StorSimple cihazından geri yükleme, herhangi bir blok depolama cihazından
 
 Olağanüstü bir durum, çeşitli faktörlerden kaynaklanıyor olabilir. Aşağıdaki tabloda, yaygın olağanüstü durum kurtarma senaryoları listelenmektedir.
 
-| Senaryo | Etkisi | Kurtarma | Notlar |
+| Senaryo | Etki | Kurtarma | Notlar |
 |---|---|---|---|
 | StorSimple cihaz hatası | Yedekleme ve geri yükleme işlemleri kesintiye uğrar. | Başarısız olan cihazı değiştirin ve [StorSimple yük devretme ve olağanüstü durum kurtarma](storsimple-device-failover-disaster-recovery.md)gerçekleştirin. | Cihaz kurtarmasından sonra geri yükleme gerçekleştirmeniz gerekirse, tam veri çalışma kümeleri buluttan yeni cihaza alınır. Tüm işlemler bulut hızlardır. Dizin oluşturma ve kataloglama yeniden tarama işlemi, tüm yedekleme kümelerinin bulut katmanından yerel cihaz katmanına taranmasını ve çekilmesine neden olabilir ve bu da zaman alan bir işlem olabilir. |
 | Yedekleme yürütme sunucusu hatası | Yedekleme ve geri yükleme işlemleri kesintiye uğrar. | Yedekleme sunucusunu yeniden oluşturun ve [yedekleme exec (BEDB) veritabanını el Ile yedekleme ve geri yükleme hakkında](http://www.veritas.com/docs/000041083)ayrıntılı olarak veritabanı geri yükleme işlemini gerçekleştirin. | Yedek exec sunucusunu olağanüstü durum kurtarma sitesinde yeniden oluşturmanız veya geri yüklemeniz gerekir. Veritabanını en son noktaya geri yükleyin. Geri yüklenen yedek exec veritabanı en son yedekleme işleriniz ile eşitlenmediğinde, dizin oluşturma ve kataloglama gereklidir. Bu dizin ve Katalog yeniden tarama işlemi, tüm yedekleme kümelerinin bulut katmanından yerel cihaz katmanına taranmasını ve çekilmesine neden olabilir. Bu, daha fazla zaman yoğunluğu sağlar. |
 | Hem yedekleme sunucusu hem de StorSimple kaybına neden olan site hatası | Yedekleme ve geri yükleme işlemleri kesintiye uğrar. | Önce StorSimple 'ı geri yükleyin ve ardından Backup Exec 'i geri yükleyin. | Önce StorSimple 'ı geri yükleyin ve ardından Backup Exec 'i geri yükleyin. Cihazın kurtarmasından sonra geri yükleme gerçekleştirmeniz gerekirse, tam veri çalışma kümeleri buluttan yeni cihaza alınır. Tüm işlemler bulut hızlardır. |
 
-## <a name="references"></a>Referanslar
+## <a name="references"></a>Başvurular
 
 Bu makale için aşağıdaki belgelere başvuruldu:
 
 - [StorSimple çok yollu g/ç kurulumu](storsimple-configure-mpio-windows-server.md)
-- [Depolama senaryoları: Ölçülü kaynak sağlama](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Depolama senaryoları: ölçülü kaynak sağlama](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [GPT sürücüleri kullanma](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Paylaşılan klasörler için gölge kopyaları ayarlama](https://technet.microsoft.com/library/cc771893.aspx)
 

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cd40c5d11414c91ff2f2febc0621e1e06f79e9cf
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646976"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613797"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk sınırları
 
@@ -59,7 +59,7 @@ Azure depolama hizmeti sınırları ve adlandırma paylaşımları, kapsayıcıl
 
 ## <a name="azure-storage-account-size-limits"></a>Azure depolama hesabı boyut sınırları
 
-Depolama hesabına kopyalanmış verilerin boyutuna ilişkin sınırlar aşağıda verilmiştir. Karşıya yüklediğiniz verilerin bu sınırlara uyduğundan emin olun. Bu limitlerin en güncel bilgileri için [Azure Blob depolama ölçek hedefleri](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) ve [Azure dosyaları ölçek hedefleri](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets)' ne gidin.
+Depolama hesabına kopyalanmış verilerin boyutuna ilişkin sınırlar aşağıda verilmiştir. Karşıya yüklediğiniz verilerin bu sınırlara uyduğundan emin olun. Bu limitlerin en güncel bilgileri için [Azure Blob depolama ölçek hedefleri](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage) ve [Azure dosyaları ölçek hedefleri](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)' ne gidin.
 
 | Azure depolama hesabına kopyalanmış verilerin boyutu                      | Varsayılan limit          |
 |---------------------------------------------------------------------|------------------------|
@@ -75,12 +75,12 @@ Yazıılabilecek Azure nesnelerinin boyutları aşağıda verilmiştir. Karşıy
 | Blok Blobu        | ~ 4,75 TiB                                                 |
 | Sayfa Blobu         | 8 TiB <br> (Sayfa Blobu biçiminde karşıya yüklenen her dosya 512 bayt hizalı olmalıdır, aksi takdirde karşıya yükleme başarısız olur. <br> Hem VHD hem de VHDX 512 bayt hizalı.) |
 |Azure Dosyaları        | 1 TiB <br> En çok, paylaşımın boyutu 5 TiB     |
-| Yönetilen diskler     |4 TiB <br> Boyut ve sınırlar hakkında daha fazla bilgi için bkz. <li>[Yönetilen diskler için ölçeklenebilirlik hedefleri](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+| Yönetilen Diskler     |4 TiB <br> Boyut ve sınırlar hakkında daha fazla bilgi için bkz. <li>[Yönetilen diskler için ölçeklenebilirlik hedefleri](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure Blok Blobu, Sayfa Blobu ve dosya adlandırma kuralları
 
-| Varlık                                       | Kurallar                                                                                                                                                                                                                                                                                                               |
+| Kurum                                       | Kurallar                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Blok Blobu ve Sayfa Blobu için kapsayıcı adları <br> Azure dosyaları için FileShare adları | 3 ile 63 karakter uzunluğunda geçerli bir DNS adı olmalıdır. <br>  Bir harf veya sayı ile başlamalıdır. <br> Yalnızca küçük harf, sayı ve kısa çizgi (-) içerebilir. <br> Kısa çizgiden (-) hemen önce ve sonra bir harf veya rakam gelmelidir. <br> Adlarda kısa çizgiler art arda kullanılamaz. |
 | Azure dosyaları için dizin ve dosya adları     |<li> Büyük küçük harf koruma, büyük/küçük harfe duyarsız ve 255 karakter uzunluğunda olmalıdır. </li><li> Eğik çizgi (/) ile bitemez. </li><li>Sağlanmışsa, otomatik olarak kaldırılır. </li><li> Şu karakterlere izin verilmez: <code>" \\ / : \| < > * ?</code></li><li> Ayrılmış URL karakterleri doğru şekilde atlanmalıdır. </li><li> Geçersiz URL yolu karakterlerine izin verilmiyor. \\uE000 gibi kod noktaları geçerli Unicode karakterler değildir. Denetim karakterleri (0x00-0x1F, \\u0081 vb.) gibi bazı ASCII veya Unicode karakterlere de izin verilmez. HTTP/1.1 'de Unicode dizelerini yöneten kurallar için bkz. RFC 2616, Bölüm 2,2: temel kurallar ve RFC 3987. </li><li> Şu dosya adlarına izin verilmiyor: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, Dot karakteri (.) ve iki nokta karakteri (..).</li>|
@@ -88,7 +88,7 @@ Yazıılabilecek Azure nesnelerinin boyutları aşağıda verilmiştir. Karşıy
 
 ## <a name="managed-disk-naming-conventions"></a>Yönetilen disk adlandırma kuralları
 
-| Varlık | Kurallar                                             |
+| Kurum | Kurallar                                             |
 |-------------------|-----------------------------------------------------------|
 | Yönetilen disk adları       | <li> Ad 1 ile 80 karakter uzunluğunda olmalıdır. </li><li> Ad bir harf veya sayı ile başlamalı, bir harf, sayı veya alt çizgi ile bitmelidir. </li><li> Ad yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. </li><li>   Ad boşluk veya `/`içermemelidir.                                              |
 

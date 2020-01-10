@@ -2,18 +2,18 @@
 title: Azure dosyaları birimini kapsayıcı grubuna bağlama
 description: Azure Container Instances ile devam etmek için bir Azure dosyaları birimini nasıl bağlayacağınızı öğrenin
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 12/30/2019
 ms.custom: mvc
-ms.openlocfilehash: a258a96f5fbc0d54b6a85a780288fb9317cb1a1b
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: f66890c503de8de9160f11fb28795012ae57daeb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533254"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561346"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances Azure dosya paylaşımından bağlama
 
-Varsayılan olarak, Azure Container Instances durumsuz. Kapsayıcı kilitlenirse veya durdurulduğunda, tüm durumu kaybedilir. Kapsayıcının kullanım ömrünün ötesinde durumu kalıcı hale getirmek için bir dış depodan bir birim bağlamanız gerekir. Bu makalede gösterildiği gibi Azure Container Instances [Azure dosyaları](../storage/files/storage-files-introduction.md)ile oluşturulmuş bir Azure dosya paylaşımından bağlanabilir. Azure Dosyaları bulutta tamamen yönetilen dosya paylaşımları sunar. Bu dosyalara sektör standardı olan Sunucu İleti Bloğu (SMB) protokolü aracılığıyla erişilebilir. Azure Container Instances ile bir Azure dosya paylaşımının kullanılması, Azure sanal makinelerle Azure dosya paylaşımı kullanmaya benzer dosya paylaşımı özellikleri sağlar.
+Azure Container Instances varsayılan olarak durum bilgilerini saklamaz. Kapsayıcı kilitlenir veya durdurulursa tüm durum bilgileri kaybolur. Durum bilgilerinin kapsayıcının ömründen bağımsız olarak kalıcı olmasını sağlamak için dış bir depodan birim bağlamanız gerekir. Bu makalede gösterildiği gibi Azure Container Instances [Azure dosyaları](../storage/files/storage-files-introduction.md)ile oluşturulmuş bir Azure dosya paylaşımından bağlanabilir. Azure dosyaları, Azure depolama 'da barındırılan, sektör standart sunucu Ileti bloğu (SMB) protokolü aracılığıyla erişilebilen, tam olarak yönetilen dosya paylaşımları sunar. Azure Container Instances ile bir Azure dosya paylaşımının kullanılması, Azure sanal makinelerle Azure dosya paylaşımı kullanmaya benzer dosya paylaşımı özellikleri sağlar.
 
 > [!NOTE]
 > Azure dosya paylaşımının bağlanması şu anda Linux kapsayıcılarıyla kısıtlıdır. [Genel bakışta](container-instances-overview.md#linux-and-windows-containers)geçerli platform farklarını bulun.
@@ -23,7 +23,7 @@ Varsayılan olarak, Azure Container Instances durumsuz. Kapsayıcı kilitlenirse
 
 ## <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
 
-Azure Container Instances bir Azure dosya paylaşımının kullanılmadan önce, oluşturmanız gerekir. Dosya paylaşımının ve paylaşımın kendisini barındırmak üzere bir depolama hesabı oluşturmak için aşağıdaki betiği çalıştırın. Depolama hesabı adının genel olarak benzersiz olması gerekir, bu nedenle betik temel dizeye rastgele bir değer ekler.
+Azure Container Instances ile bir Azure dosya paylaşımı kullanmak için önce bunu oluşturmanız gerekir. Dosya paylaşımının ve paylaşımın kendisini barındırmak üzere bir depolama hesabı oluşturmak için aşağıdaki betiği çalıştırın. Depolama hesabı adının genel olarak benzersiz olması gerektiğinden, betik temel dizeye rastgele bir değer ekler.
 
 ```azurecli-interactive
 # Change these four parameters as needed
@@ -40,25 +40,29 @@ az storage account create \
     --sku Standard_LRS
 
 # Create the file share
-az storage share create --name $ACI_PERS_SHARE_NAME --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME
+az storage share create \
+  --name $ACI_PERS_SHARE_NAME \
+  --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
-## <a name="get-storage-credentials"></a>Depolama kimlik bilgilerini al
+## <a name="get-storage-credentials"></a>Depolama kimlik bilgilerini alma
 
-Azure Container Instances bir Azure dosya paylaşımının bir birim olarak bağlanması için, üç değere sahip olmanız gerekir: depolama hesabı adı, paylaşma adı ve depolama erişim anahtarı.
+Bir Azure dosya paylaşımını Azure Container Instances'a birim olarak bağlamak için üç değere sahip olmanız gerekir: depolama hesabı adı, paylaşım adı ve depolama erişim anahtarı.
 
-Yukarıdaki betiği kullandıysanız, depolama hesabı adı $ACI _PERS_STORAGE_ACCOUNT_NAME değişkeninde depolanmıştı. Hesap adını görmek için şunu yazın:
+* **Depolama hesabı adı** -önceki betiği kullandıysanız, depolama hesabı adı `$ACI_PERS_STORAGE_ACCOUNT_NAME` değişkeninde depolanmıştı. Hesap adını görmek için şunu yazın:
 
-```console
-echo $ACI_PERS_STORAGE_ACCOUNT_NAME
-```
+  ```console
+  echo $ACI_PERS_STORAGE_ACCOUNT_NAME
+  ```
 
-Paylaşma adı zaten biliniyor (yukarıdaki betikte *Şu* şekilde tanımlanır), bu nedenle her şey, aşağıdaki komut kullanılarak bulunan depolama hesabı anahtarıdır:
+* **Paylaşma adı** -bu değer zaten biliniyor (önceki betikte `acishare` olarak tanımlanır)
 
-```azurecli-interactive
-STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
-echo $STORAGE_KEY
-```
+* **Depolama hesabı anahtarı** -bu değer aşağıdaki komut kullanılarak bulunabilir:
+
+  ```azurecli-interactive
+  STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
+  echo $STORAGE_KEY
+  ```
 
 ## <a name="deploy-container-and-mount-volume---cli"></a>Kapsayıcı dağıtma ve bağlama birimi-CLı
 
@@ -84,14 +88,15 @@ az container create \
 Kapsayıcı başlatıldıktan sonra, belirttiğiniz bağlama yolundaki Azure dosya paylaşımında küçük metin dosyaları oluşturmak için Microsoft [aci-hellofshare][aci-hellofiles] Image aracılığıyla dağıtılan basit Web uygulamasını kullanabilirsiniz. Web uygulamasının tam etki alanı adını (FQDN) [az Container Show][az-container-show] komutuyla edinin:
 
 ```azurecli-interactive
-az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn --output tsv
+az container show --resource-group $ACI_PERS_RESOURCE_GROUP \
+  --name hellofiles --query ipAddress.fqdn --output tsv
 ```
 
-Uygulamayı kullanarak metin kaydettikten sonra, dosya paylaşımında yazılmış dosyayı almak ve denetlemek için [Microsoft Azure Depolama Gezgini][storage-explorer] gibi bir aracı [Azure Portal][portal] veya bir araç kullanabilirsiniz.
+Uygulamayı kullanarak metin kaydettikten sonra, dosyayı veya dosya paylaşımında yazılmış dosyaları almak ve denetlemek için [Microsoft Azure Depolama Gezgini][storage-explorer] gibi bir aracı [Azure Portal][portal] kullanabilirsiniz.
 
 ## <a name="deploy-container-and-mount-volume---yaml"></a>Kapsayıcı dağıtma ve bağlama birimi-YAML
 
-Ayrıca, bir kapsayıcı grubu dağıtabilir ve bir birimi Azure CLı ve [YAML şablonuyla](container-instances-multi-container-yaml.md)bir kapsayıcıya bağlayabilirsiniz. YAML şablonuna göre dağıtmak, birden çok kapsayıcıdan oluşan kapsayıcı grupları dağıtıldığında tercih edilen yöntemdir.
+Ayrıca, bir kapsayıcı grubu dağıtabilir ve bir birimi Azure CLı ve [YAML şablonuyla](container-instances-multi-container-yaml.md)bir kapsayıcıya bağlayabilirsiniz. YAML şablonuna göre dağıtmak, birden çok kapsayıcıdan oluşan kapsayıcı gruplarını dağıtmada tercih edilen bir yöntemdir.
 
 Aşağıdaki YAML şablonu, `aci-hellofiles` görüntüyle oluşturulmuş bir kapsayıcı grubunu tanımlar. Azure *dosya paylaşımının bulunduğu* kapsayıcı, daha önce bir birim olarak oluşturulur. Burada, dosya paylaşımının barındırmasını barındıran depolama hesabı için ad ve depolama anahtarı ' nı girin. 
 
@@ -228,7 +233,7 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 ## <a name="mount-multiple-volumes"></a>Birden çok birim bağlama
 
-Bir kapsayıcı örneğinde birden fazla birimi bağlamak için bir [Azure Resource Manager şablonu](/azure/templates/microsoft.containerinstance/containergroups) veya YAML dosyası kullanarak dağıtmanız gerekir. Bir şablon veya YAML dosyası kullanmak için, `volumes` diziyi şablonun `properties` bölümünde doldurarak paylaşma ayrıntılarını sağlayın ve birimleri tanımlayın. 
+Bir kapsayıcı örneğinde birden fazla birimi bağlamak için, bir [Azure Resource Manager şablonu](/azure/templates/microsoft.containerinstance/containergroups), YAML dosyası veya başka bir programlama yöntemi kullanarak dağıtmanız gerekir. Bir şablon veya YAML dosyası kullanmak için, dosyanın `properties` bölümündeki `volumes` dizisini doldurarak paylaşma ayrıntılarını sağlayın ve birimleri tanımlayın. 
 
 Örneğin, *Mystorageaccount*depolama hesabında *Share1* ve *Share2* adlı iki Azure dosya paylaşımı oluşturduysanız, bir kaynak yöneticisi şablonundaki `volumes` dizisi aşağıdakine benzer şekilde görünür:
 
@@ -268,7 +273,7 @@ Ardından, birimleri bağlamak istediğiniz kapsayıcı grubundaki her bir kapsa
 
 Azure Container Instances diğer birim türlerini nasıl bağlayacağınızı öğrenin:
 
-* [Azure Container Instances bir emptyDir birimi bağlama](container-instances-volume-emptydir.md)
+* [Azure kapsayıcı durumlarda emptyDir birim](container-instances-volume-emptydir.md)
 * [Azure Container Instances bir gitRepo birimi bağlama](container-instances-volume-gitrepo.md)
 * [Azure Container Instances bir gizli birimi bağlama](container-instances-volume-secret.md)
 

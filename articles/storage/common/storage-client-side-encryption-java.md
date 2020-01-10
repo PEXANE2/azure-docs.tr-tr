@@ -10,12 +10,12 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4fa5657a7ee2043e09c80593651d88a527770d7a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8fe95a471df6ea86aad90f387088824c3c92bd3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998978"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460438"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için Java ile istemci tarafı şifreleme ve Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -56,13 +56,13 @@ Depolama istemci kitaplığı, Kullanıcı verilerini şifrelemek için [AES](ht
 > 
 > 
 
-Şifrelenmiş bir blob 'u **indirmek,** /**openınputstream** kullanımı kolay yöntemlerini kullanarak tüm Blobun içeriğini almayı içerir. Sarmalanmış CEK, şifresi çözülmüş verileri kullanıcılara döndürmek için sarmalanmış ve IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
+Şifrelenmiş bir blob **'u indirmek,/** **openınputstream** kolay yöntemlerini kullanarak tüm Blobun içeriğini almayı içerir. Sarmalanmış CEK, şifresi çözülmüş verileri kullanıcılara döndürmek için sarmalanmış ve IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
 
 Şifrelenmiş Blobun rastgele bir aralığın (**downloadrange** yöntemleri) indirilmesi, istenen aralığın şifresini başarıyla çözmek için kullanılabilecek az miktarda ek veri alabilmek için kullanıcılar tarafından sunulan aralığı ayarlamayı içerir.  
 
 Tüm blob türleri (blok Blobları, sayfa Blobları ve ekleme Blobları) Bu şema kullanılarak şifrelenebilir/şifresi çözülür.
 
-### <a name="queues"></a>Sıralar
+### <a name="queues"></a>Kuyruklar
 Sıra iletileri herhangi bir biçimde olduğundan, istemci kitaplığı, ileti metninde başlatma vektörü (IV) ve şifreli içerik şifreleme anahtarını (CEK) içeren özel bir biçimi tanımlar.  
 
 Şifreleme sırasında, istemci kitaplığı rastgele bir IV/32 bayt üretir ve bu bilgileri kullanarak kuyruk ileti metninin zarf şifrelemesini gerçekleştirir. Sarmalanan CEK ve bazı ek şifreleme meta verileri daha sonra şifreli kuyruk iletisine eklenir. Bu değiştirilmiş ileti (aşağıda gösterilmiştir) hizmette depolanır.
@@ -90,7 +90,7 @@ Tablo veri şifrelemesi aşağıdaki gibi kullanılabilir:
    
    Yalnızca dize özelliklerinin şifrelendiğini unutmayın. Diğer özellik türleri şifrelenirse, bunların dizelere dönüştürülmesi gerekir. Şifrelenmiş dizeleri hizmette ikili özellikleri olarak depolanır ve şifre çözme sonra geri dizelere dönüştürülür.
    
-   Şifreleme İlkesi yanı sıra, tablolar için kullanıcıların şifrelenmiş özelliklerini belirtmeniz gerekir. Bu işlem, bir [Encrypt] özniteliği (TableEntity 'tan türetilmiş POCO varlıkları için) veya istek seçeneklerinde bir şifreleme Çözümleyicisi belirtilerek yapılabilir. Şifreleme çözümleyici, Bölüm anahtarını, satır anahtarını ve özellik adını alan ve bu özelliğin şifrelenmesi gerekip gerekmediğini belirten bir Boolean döndüren bir temsilcisidir. Şifreleme sırasında istemci kitaplığı, bir özellik için kablo yazılırken şifrelenmesi gerekip gerekmediğine karar vermek için bu bilgileri kullanır. Temsilci özellikleri nasıl şifrelenir etrafında mantıksal olasılığı için de sağlar. (X, örneğin, daha sonra özellik A şifrelemek; Aksi takdirde özellik A ve b şifreleme) Varlıkları okurken veya sorgularken bu bilgilerin sağlanması gerekmediğini unutmayın.
+   Şifreleme İlkesi yanı sıra, tablolar için kullanıcıların şifrelenmiş özelliklerini belirtmeniz gerekir. Bu işlem, bir [Encrypt] özniteliği (TableEntity 'tan türetilmiş POCO varlıkları için) veya istek seçeneklerinde bir şifreleme Çözümleyicisi belirtilerek yapılabilir. Şifreleme çözümleyici, Bölüm anahtarını, satır anahtarını ve özellik adını alan ve bu özelliğin şifrelenmesi gerekip gerekmediğini belirten bir Boolean döndüren bir temsilcisidir. Şifreleme sırasında istemci kitaplığı, bir özellik için kablo yazılırken şifrelenmesi gerekip gerekmediğine karar vermek için bu bilgileri kullanır. Temsilci özellikleri nasıl şifrelenir etrafında mantıksal olasılığı için de sağlar. (Örneğin, X ise, özelliğini şifreleyin; Aksi halde A ve B özelliklerini şifreleyin.) Varlıkları okurken veya sorgularken bu bilgilerin sağlanması gerekmediğini unutmayın.
 
 ### <a name="batch-operations"></a>Toplu Işlemler
 Batch işlemlerinde, bu toplu işlemdeki tüm satırlarda aynı KEK kullanılacaktır çünkü istemci kitaplığı, toplu işlem başına yalnızca bir seçenek nesnesine (ve bu nedenle bir ilke/KEK) izin verir. Ancak, istemci Kitaplığı toplu işte her satır için yeni bir rastgele IV ve rastgele CEK oluşturacaktır. Kullanıcılar ayrıca bu davranışı şifreleme Çözümleyicisi 'nde tanımlayarak toplu işteki her işlem için farklı özellikleri şifrelemeyi seçebilir.
@@ -100,10 +100,10 @@ Batch işlemlerinde, bu toplu işlemdeki tüm satırlarda aynı KEK kullanılaca
 > Varlıklar şifrelendiğinden, şifrelenen bir özelliği filtreleyen sorguları çalıştıramazsınız.  Deneme yaparsanız, hizmet şifrelenmiş verileri şifrelenmemiş verilerle karşılaştırmaya çalıştığı için sonuçlar yanlış olacaktır.
 > 
 > 
-> Sorgu işlemleri gerçekleştirmek için, sonuç kümesindeki tüm anahtarları çözebilecek bir anahtar çözümleyici belirtmeniz gerekir. Sorgu sonucunda içerilen bir varlık bir sağlayıcıya çözümlenemiyorsa, istemci kitaplığı bir hata oluşturur. Sunucu tarafı projeksiyonları gerçekleştiren sorgular için, istemci kitaplığı, varsayılan olarak seçilen sütunlara özel şifreleme meta verileri özelliklerini (_ClientEncryptionMetadata1 ve _ClientEncryptionMetadata2) ekler.
+> Sorgu işlemleri gerçekleştirmek için, sonuç kümesindeki tüm anahtarları çözebilecek bir anahtar çözümleyici belirtmeniz gerekir. Sorgu sonucunda içerilen bir varlık bir sağlayıcıya çözümlenemiyorsa, istemci kitaplığı bir hata oluşturur. Sunucu tarafı projeksiyonları gerçekleştiren sorgular için, istemci kitaplığı, varsayılan olarak seçilen sütunlara özel şifreleme meta veri özelliklerini (_ClientEncryptionMetadata1 ve _ClientEncryptionMetadata2) ekler.
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
-Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Kullanıcılar, Azure Key Vault kullanarak anahtarları ve gizli dizileri (kimlik doğrulama anahtarları, depolama hesabı anahtarları, veri şifreleme anahtarları,) şifreleyebilir. PFX dosyaları ve parolalar), donanım güvenlik modülleri (HSM 'ler) tarafından korunan anahtarları kullanarak. Daha fazla bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/key-vault-overview.md).
+Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Kullanıcılar, Azure Key Vault kullanarak anahtarları ve gizli dizileri (kimlik doğrulama anahtarları, depolama hesabı anahtarları, veri şifreleme anahtarları,) şifreleyebilir. PFX dosyaları ve parolalar), donanım güvenlik modülleri (HSM 'ler) tarafından korunan anahtarları kullanarak. Daha fazla bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/key-vault-overview.md)
 
 Depolama istemci kitaplığı, anahtarları yönetmek için Azure genelinde ortak bir çerçeve sağlamak üzere Key Vault çekirdek kitaplığını kullanır. Kullanıcılar ayrıca Key Vault uzantıları kitaplığını kullanmanın ek avantajını de alır. Uzantılar kitaplığı basit ve sorunsuz simetrik/RSA yerel ve bulut anahtar sağlayıcılarının yanı sıra toplama ve önbelleğe alma ile ilgili yararlı işlevler sağlar.
 
@@ -246,11 +246,13 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 ```
 
 ## <a name="encryption-and-performance"></a>Şifreleme ve performans
+
 Depolama verilerinizi şifrelerken ek performans yükü ile sonuçlandığına göz önünde unutmayın. İçerik anahtarı ve IV oluşturulmalıdır, içeriğin kendisi şifrelenmelidir ve ek meta veriler biçimlendirilmelidir ve karşıya yüklenmelidir. Bu ek yük, Şifrelenmekte olan veri miktarına bağlı olarak farklılık gösterecektir. Müşterilerin geliştirme sırasında uygulamalarının performansını her zaman test etmenizi öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Java Maven paketi Için Azure Storage Istemci kitaplığı](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) 'nı indirin  
-* [GitHub 'Dan Java kaynak kodu Için Azure Storage Istemci kitaplığı](https://github.com/Azure/azure-storage-java) 'nı indirin   
+* [GitHub 'Dan Java kaynak kodu Için Azure Storage Istemci kitaplığı](https://github.com/Azure/azure-storage-java) 'nı indirin
 * Java Maven paketleri için Azure Key Vault Maven kitaplığını indirin:
   * [Çekirdek](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) paket
   * [İstemci](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) paketi

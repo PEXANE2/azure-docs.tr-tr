@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs güvenli gönderim
+title: Windows için Azure Notification Hubs güvenli gönderimi
 description: Azure 'da güvenli anında iletme bildirimleri göndermeyi öğrenin. .NET API kullanarak C# dilinde yazılan kod örnekleri.
 documentationcenter: windows
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5d1cf2a74d4fe85bb85eb244da3e3757f36fba0a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212040"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530740"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Azure Notification Hubs bildirimleri güvenli bir şekilde gönderin
 
@@ -62,7 +62,7 @@ Bu güvenli gönderim öğreticisinde güvenli bir anında iletme bildirimi gön
     ```csharp
     RegisterBackgroundTask();
     ```
-2. Hala App.xaml.cs içinde, aşağıdaki kodu `OnLaunched()` yönteminden hemen sonra ekleyin:
+2. Hala App.xaml.cs içinde, `OnLaunched()` yönteminden hemen sonra aşağıdaki kodu ekleyin:
 
     ```csharp
     private async void RegisterBackgroundTask()
@@ -79,7 +79,7 @@ Bu güvenli gönderim öğreticisinde güvenli bir anında iletme bildirimi gön
         }
     }
     ```
-3. App.xaml.cs dosyasının en `using` üstüne aşağıdaki deyimleri ekleyin:
+3. Aşağıdaki `using` deyimlerini App.xaml.cs dosyasının üst kısmına ekleyin:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -96,7 +96,7 @@ Sonraki adım, anında iletme arka plan bileşeni oluşturmaktır.
 
     ![][12]
 3. Çözüm Gezgini, **Pushbackgroundcomponent (Windows Phone 8,1)** projesine sağ tıklayın ve ardından **Ekle**' ye ve ardından **sınıf**' a tıklayın. Yeni sınıfı `PushBackgroundTask.cs`adlandırın. Sınıfı oluşturmak için **Ekle** ' ye tıklayın.
-4. `PushBackgroundComponent` Ad alanı tanımının tüm içeriğini aşağıdaki kodla değiştirin ve yer tutucusunu, arka ucunuzda `{back-end endpoint}` dağıtım sırasında elde edilen arka uç bitiş noktasıyla değiştirin:
+4. `PushBackgroundComponent` ad alanı tanımının tüm içeriğini aşağıdaki kodla değiştirin ve yer tutucu `{back-end endpoint}` arka ucun dağıtımı sırasında elde edilen arka uç uç noktasıyla birlikte yerine koyun:
 
     ```csharp
     public sealed class Notification
@@ -147,7 +147,7 @@ Sonraki adım, anında iletme arka plan bileşeni oluşturmaktır.
 7. **Arama** kutusuna **Http İstemcisi** yazın.
 8. Sonuçlar listesinde, **MICROSOFT http Istemci kitaplıkları**' nı ve ardından, ardından **Install**' ı tıklatın. Yüklemeyi tamamlayın.
 9. NuGet **Arama** kutusuna **Json.net** yazın. **JSON.net** paketini yükledikten sonra NuGet Paket Yöneticisi penceresini kapatın.
-10. Aşağıdaki `using` deyimlerini `PushBackgroundTask.cs` dosyanın üst kısmına ekleyin:
+10. Aşağıdaki `using` deyimlerini `PushBackgroundTask.cs` dosyasının üst kısmına ekleyin:
 
     ```csharp
     using Windows.ApplicationModel.Background;

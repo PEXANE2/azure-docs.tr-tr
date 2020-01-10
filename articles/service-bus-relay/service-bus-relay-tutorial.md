@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Azure WCF Geçişi kullanarak şirket içi WCF REST hizmetini dış istemciye kullanıma sunma'
+title: Azure Relay kullanarak istemciler için bir şirket içi WCF REST hizmetini kullanıma sunma
 description: 'Öğretici: WCF Geçişi kullanarak bir istemci ve hizmet uygulaması oluşturun.'
 services: service-bus-relay
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: e2dd0448dfed55450a6319936f49831e5d6d77f3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ee090ca0d7bbdad70147b85644952143c086d336
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718851"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452287"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Öğretici: Azure WCF Geçişi kullanarak şirket içi WCF REST hizmetini dış istemciye kullanıma sunma
 
@@ -104,7 +104,7 @@ Hizmet sözleşmesi, hizmetin desteklediği işlemleri belirtir. İşlemler Web 
    > Genellikle, hizmet sözleşmesi ad alanı sürüm bilgilerini barındıran bir adlandırma şeması içerir. Sürüm bilgilerini hizmet sözleşmesi ad alanına dahil etmek, hizmetlerin yeni bir ad alanı içeren yeni bir hizmet sözleşmesi tanımlayarak ve bu sözleşmeyi yeni bir uç noktada kullanıma sunarak büyük değişiklikleri yalıtmalarına olanak sağlar. Bu şekilde istemciler, eski hizmet sözleşmesini, güncelleştirilmeleri gerekmeden kullanmaya devam edebilir. Sürüm bilgileri, bir tarihten veya bir derleme numarasından oluşabilir. Daha fazla bilgi için bkz. [Hizmet Sürümü Oluşturma](/dotnet/framework/wcf/service-versioning). Bu öğretici için, hizmet sözleşmesi ad alanının adlandırma şeması sürüm bilgisi içermez.
    >
 
-1. `IEchoContract` arabirimi içinde, `IEchoContract` sözleşmesinin arabirimde sunduğu tek bir işlem için bir yöntem bildirin ve `OperationContractAttribute` özniteliğini ortak WCF Geçişi sözleşmesinin bir parçası olarak göstermek istediğiniz yönteme aşağıdaki gibi uygulayın :
+1. `IEchoContract` arabirimi içinde, `IEchoContract` sözleşmesinin arabirimde sunduğu tek bir işlem için bir yöntem bildirin ve `OperationContractAttribute` özniteliğini ortak WCF Geçişi sözleşmesinin bir parçası olarak göstermek istediğiniz yönteme aşağıdaki gibi uygulayın:
 
     ```csharp
     [OperationContract]
@@ -155,7 +155,7 @@ Oluşturulması tamamlandığına göre arabirimi uygulayabilirsiniz.
 
 Azure geçişi oluşturmak için öncelikle bir arabirim kullanarak sözleşmeyi oluşturmanız gerekir. Arabirimi oluşturma hakkında daha fazla bilgi için önceki bölüme bakın. Sonraki yordam, arabirimini uygular. Bu görev, Kullanıcı tanımlı `IEchoContract` arabirimini uygulayan `EchoService` adlı bir sınıf oluşturmayı içerir. Arabirimi uyguladıktan sonra, bir *app. config* yapılandırma dosyası kullanarak arabirimi yapılandırırsınız. Yapılandırma dosyası, uygulama için gereken bilgileri içerir. Bu bilgilere hizmetin adı, sözleşmenin adı ve geçiş hizmeti ile iletişim kurmak için kullanılan protokol türü dahildir. Bu görevler için kullanılan kod, yordamı izleyen örnekte verilmiştir. Hizmet sözleşmesinin nasıl uygulanacağı hakkında daha genel bir tartışma için bkz. [hizmet sözleşmelerini uygulama](/dotnet/framework/wcf/implementing-service-contracts).
 
-1. `EchoService` arabiriminin tanımından hemen sonra `IEchoContract` adlı yeni bir sınıf oluşturun. `EchoService` sınıfı, `IEchoContract` arabirimini uygular.
+1. `IEchoContract` arabiriminin tanımından hemen sonra `EchoService` adlı yeni bir sınıf oluşturun. `EchoService` sınıfı, `IEchoContract` arabirimini uygular.
 
     ```csharp
     class EchoService : IEchoContract
@@ -165,7 +165,7 @@ Azure geçişi oluşturmak için öncelikle bir arabirim kullanarak sözleşmeyi
 
     Diğer arabirim uygulamalarına benzer şekilde, tanımı farklı bir dosyada uygulayabilirsiniz. Ancak bu öğreticide uygulama, arabirim tanımı ve `Main()` yöntemiyle aynı dosyadadır.
 
-1. [ arabirimine ](/dotnet/api/system.servicemodel.servicebehaviorattribute)ServiceBehaviorAttribute`IEchoContract` özniteliğini uygulayın. Öznitelik, hizmet adını ve ad alanını belirtir. Bunu yaptıktan sonra `EchoService` sınıfı şu şekilde görünür:
+1. `IEchoContract` arabirimine [ServiceBehaviorAttribute](/dotnet/api/system.servicemodel.servicebehaviorattribute) özniteliğini uygulayın. Öznitelik, hizmet adını ve ad alanını belirtir. Bunu yaptıktan sonra `EchoService` sınıfı şu şekilde görünür:
 
     ```csharp
     [ServiceBehavior(Name = "EchoService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
@@ -174,7 +174,7 @@ Azure geçişi oluşturmak için öncelikle bir arabirim kullanarak sözleşmeyi
     }
     ```
 
-1. `Echo` sınıfındaki `IEchoContract` arabiriminde tanımlanan `EchoService` yöntemini uygulayın.
+1. `EchoService` sınıfındaki `IEchoContract` arabiriminde tanımlanan `Echo` yöntemini uygulayın.
 
     ```csharp
     public string Echo(string text)
@@ -585,7 +585,7 @@ Ancak, temel farklardan biri, istemci uygulamanın geçiş hizmetine bağlanmak 
 
 ### <a name="implement-a-client-application"></a>Bir istemci uygulaması uygulama
 
-1. Bağlantı modunu `AutoDetect` olarak ayarlayın. Aşağıdaki kodu `Main()`EchoClient**uygulamasının** yöntemine ekleyin.
+1. Bağlantı modunu `AutoDetect` olarak ayarlayın. Aşağıdaki kodu **EchoClient** uygulamasının `Main()` yöntemine ekleyin.
 
     ```csharp
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;

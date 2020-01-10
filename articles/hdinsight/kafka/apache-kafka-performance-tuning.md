@@ -1,87 +1,86 @@
 ---
-title: Apache Kafka HDInsight kümeleri için performansı iyileştirme
-description: Azure HDInsight üzerinde Apache Kafka iş yüklerini en iyi duruma getirme için teknik genel bakış sağlar.
+title: Apache Kafka HDInsight kümeleri için performans iyileştirmesi
+description: Azure HDInsight 'ta Apache Kafka iş yüklerini iyileştirmeye yönelik tekniklerin genel bir bakış sunar.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: 8226d1f49b8ba73870dba009e97ff2718a0eee27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/19/2019
+ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689349"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494918"
 ---
-# <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight kümeleri için performansı iyileştirme
+# <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight kümeleri için performans iyileştirmesi
 
-Bu makalede, HDInsight, Apache Kafka iş yüklerinin performansını iyileştirmek için bazı öneriler sağlar. Üretici ve aracı yapılandırma belirlenmesiyle ilgili biridir. Performansı ölçme farklı yolu vardır ve uyguladığınız en iyi duruma getirme, iş gereksinimlerinize bağlıdır.
+Bu makale, HDInsight 'ta Apache Kafka iş yüklerinizin performansını iyileştirmeye yönelik bazı öneriler sunar. Odak, Producer ve Broker yapılandırmasını ayarlamasıdır. Performansı ölçmenin farklı yolları vardır ve uyguladığınız iyileştirmeler iş gereksinimlerinize göre değişir.
 
 ## <a name="architecture-overview"></a>Mimariye genel bakış
 
-Kafka konularını kayıtları düzenlemek için kullanılır. Kayıtları üreticileri tarafından üretilen ve tüketiciler tarafından tüketilen. Üreticiler kayıtlar ardından verileri depolamak Kafka aracıları için gönderin. HDInsight kümenizdeki her çalışan düğümü bir Kafka aracısıdır.
+Kafka konuları kayıtları düzenlemek için kullanılır. Kayıtlar, üreticileri tarafından üretilir ve tüketiciler tarafından kullanılır. Üreticileri kayıtları, daha sonra verileri depolayan Kafka aracılarına gönderir. HDInsight kümenizdeki her çalışan düğümü bir Kafka aracısıdır.
 
 Aracılar arasında konuların bölüm kayıtları. Kayıtları tüketirken, verilerin paralel işlemesini elde etmek için bölüm başına en fazla bir tüketici kullanabilirsiniz.
 
-Çoğaltma, yinelenen düğümler arasında bölümler için kullanılır. Bu düğüm (aracı) kesintilerine karşı korur. Çoğaltma grubu arasında tek bir bölüm bölüm lider olarak atanır. Üretici trafiği ZooKeeper tarafından yönetilen durum kullanılarak her düğümün liderine yönlendirilir.
+Çoğaltma, düğümler arasında bölümleri çoğaltmak için kullanılır. Bu, düğüm (aracı) kesintilerine karşı koruma sağlar. Çoğaltma grubu arasındaki tek bir bölüm, bölüm lideri olarak atanır. Üretici trafiği ZooKeeper tarafından yönetilen durum kullanılarak her düğümün liderine yönlendirilir.
 
 ## <a name="identify-your-scenario"></a>Senaryonuzu tanımlama
 
-Apache Kafka performans iki ana boyutu – aktarım hızı ve gecikme süresi vardır. Veri işlenebilecek en yüksek hızı aktarım hızıdır. Daha yüksek iş hacmi genellikle daha iyidir. Gecikme süresi alınamıyor veya depolanan verilerin için gereken süre anlamına gelmektedir. Daha düşük gecikme süresi genellikle daha iyidir. Aktarım hızı, gecikme süresi ve uygulamanın altyapı maliyetini arasındaki doğru dengeyi bulmak zor olabilir. Performans gereksinimlerinizi büyük olasılıkla yüksek aktarım hızı, düşük gecikme süresi veya her ikisi de gereksiniminiz olup üzerinde göre aşağıdaki üç yaygın durumlar, biri eşleşir:
+Apache Kafka performansın iki ana yönü vardır: aktarım hızı ve gecikme süresi. Verimlilik, verilerin işlenebileceği en yüksek hızdır. Daha yüksek aktarım hızı genellikle daha iyidir. Gecikme süresi, verilerin depolanması veya alınması için gereken süredir. Daha düşük gecikme süresi genellikle daha iyidir. Verimlilik, gecikme süresi ve uygulamanın altyapısının maliyeti arasındaki doğru dengeyi bulma zor olabilir. Performans gereksinimleriniz büyük olasılıkla yüksek aktarım hızı, düşük gecikme süresi veya her ikisinin de gerekli olup olmadığına bağlı olarak aşağıdaki üç yaygın durumlardan biriyle eşleşir:
 
-* Yüksek aktarım hızı, düşük gecikme süresi. Bu senaryo, hem yüksek aktarım hızına ve düşük gecikme süresi (~ 100 milisaniye cinsinden) gerektirir. Bu tür bir uygulama örneği olan hizmet kullanılabilirliği izleme.
-* Yüksek aktarım hızı, gecikme süresi yüksek. Bu senaryo, yüksek aktarım hızı (~1.5 GB/sn) gerektirir, ancak daha yüksek gecikme süresi (< 250 ms) kabul edebilir. Telemetri veri alımı için neredeyse gerçek zamanlı işlemleri güvenlik ve yetkisiz erişim algılama uygulamalar gibi bu tür bir uygulama örneğidir.
-* Düşük aktarım hızı, düşük gecikme süresi. Bu senaryo, düşük gecikme süresi (< 10 ms) için gerçek zamanlı işleme gerektirir, ancak daha düşük aktarım hızı dayanabilir. Çevrimiçi yazım ve dilbilgisi denetimleri bu tür bir uygulama örneğidir.
+* Yüksek performans, düşük gecikme süresi. Bu senaryo hem yüksek aktarım hızı hem de düşük gecikme süresi (~ 100 milisaniye) gerektirir. Bu tür bir uygulama örneği hizmet kullanılabilirliği izlemedir.
+* Yüksek verimlilik, yüksek gecikme süresi. Bu senaryo yüksek aktarım hızı (~ 1,5 GBps) gerektirir, ancak daha yüksek gecikme süresine (< 250 MS) göre tolerans sağlayabilir. Bu tür bir uygulamaya örnek olarak, güvenlik ve yetkisiz giriş algılama uygulamaları gibi gerçek zamanlı işlemlere yönelik telemetri verileri alma işlemi yer aldığı bir örnektir.
+* Düşük performans, düşük gecikme süresi. Bu senaryo gerçek zamanlı işleme için düşük gecikme süresi (< 10 MS) gerektirir, ancak düşük aktarım hızına yanıt verebilir. Bu tür bir uygulama, çevrimiçi yazım ve dilbilgisi denetimleri örneğidir.
 
-## <a name="producer-configurations"></a>Üretici yapılandırmaları
+## <a name="producer-configurations"></a>Üretici yapılandırması
 
-Aşağıdaki bölümlerde bazı, Kafka üreticileri performansını iyileştirmek için en önemli yapılandırma özellikleri vurgular. Tüm yapılandırma özellikleri hakkında ayrıntılı açıklaması için bkz [üretici yapılandırmaları üzerinde Apache Kafka belgeleri](https://kafka.apache.org/documentation/#producerconfigs).
+Aşağıdaki bölümler, Kafka üreticileri 'in performansını iyileştirmek için en önemli yapılandırma özelliklerinden bazılarını vurgulayacaktır. Tüm yapılandırma özelliklerinin ayrıntılı bir açıklaması için bkz. [üretici yapılandırmalarında Apache Kafka belgeleri](https://kafka.apache.org/documentation/#producerconfigs).
 
 ### <a name="batch-size"></a>Toplu işlem boyutu
 
-Apache Kafka üreticileri (toplu olarak adlandırılır) tek bir depolama bölümünde depolanması için bir birim olarak gönderilen iletilerin grupları toplayın. Toplu iş boyutu o grubun iletilmeden önce bulunması gereken bayt sayısını gösterir. Artan `batch.size` işleme ağ ve g/ç istekleri Gelen ek yükü azaltır çünkü parametresi üretilen işi artırabilir. Açık yük altında üretici bir batch hazır olmasını bekler olarak artan toplu iş boyutu Kafka gönderme gecikmesi artırabilir. Ağır yük koşullarında, aktarım hızı ve gecikme süresini iyileştirmek için toplu iş boyutunu artırmak için önerilir.
+Apache Kafka üreticileri, tek bir depolama bölümünde depolanacak bir birim olarak gönderilen ileti gruplarını (toplu işler olarak adlandırılır) birleştirir. Toplu iş boyutu, Grup iletilmeden önce bulunması gereken bayt sayısını gösterir. `batch.size` parametresinin artırılması, ağ ve GÇ isteklerindeki işleme yükünü azalttığından üretilen işi artırabilir. Bir toplu işin hazırlanmasını beklediği için, hafif yük altında artan toplu iş boyutu Kafka gönderme gecikmesini artırabilir. Ağır yük altında, toplu iş boyutunu artırmanız ve gecikme süresini artırmak için önerilir.
 
-### <a name="producer-required-acknowledgements"></a>Gerekli üretici onayları
+### <a name="producer-required-acknowledgments"></a>Üretici gerekli bildirimleri
 
-Gerekli üretici `acks` yapılandırması yazma isteği kabul edilmeden önce bölüm öncü tarafından gerekli kaynaklar sayısını belirler tamamlandı. Bu ayar olasılığına karşı veri güvenirliliğini etkiler ve değerlerini alır `0`, `1`, veya `-1`. Değerini `-1` yazma tamamlanmadan önce bir bildirim tüm çoğaltmalardan alınan gerekir anlamına gelir. Ayar `acks = -1` daha güçlü garanti eder ancak veri kaybına karşı da daha yüksek gecikme ve düşük aktarım hızı sonuçlarını sağlar. Uygulama gereksinimlerinize daha yüksek iş hacmi isteğe bağlı ayar deneyin `acks = 0` veya `acks = 1`. Tüm çoğaltmalar sıkan değil olasılığına karşı veri güvenirliliğini azaltabilir, unutmayın.
+Üretici için gereken `acks` yapılandırması, bir yazma isteğinin tamamlandığı kabul edilmeden önce bölüm lideri tarafından gerekli olan bildirimler sayısını belirler. Bu ayar, veri güvenilirliğini etkiler ve `0`, `1`veya `-1`değerlerini alır. `-1` değeri, yazma işlemi tamamlanmadan önce tüm çoğaltmalardan bir bildirim alınması gerektiği anlamına gelir. `acks = -1` ayarlama, veri kaybına karşı daha güçlü garantiler sağlar, ancak Ayrıca gecikme süresi ve daha düşük aktarım hızı ile sonuçlanır. Uygulama gereksinimleriniz daha yüksek verimlilik talebinde bulunursa `acks = 0` veya `acks = 1`ayarlamayı deneyin. Tüm çoğaltmaları bildirmeden veri güvenilirliğini azaltamayacağınızı göz önünde bulundurun.
 
 ### <a name="compression"></a>Sıkıştırma
 
-Kafka üretici aracılarına göndermeden önce iletileri sıkıştırmak için yapılandırılabilir. `compression.type` Ayar kullanılacak sıkıştırma codec bileşeni belirtir. Desteklenen bir sıkıştırma codec "gzip," "snappy," ve "lz4." olan Sıkıştırma yararlıdır ve disk kapasitesi sınırlaması yoksa düşünülmelidir.
+Bir Kafka üreticisi, aracıları aracılarına göndermeden önce iletileri sıkıştırmak üzere yapılandırılabilir. `compression.type` ayarı kullanılacak sıkıştırma codec 'ini belirtir. Desteklenen sıkıştırma codec bileşenleri şunlardır "gzip," "Snappy," ve "lz4." Sıkıştırma yararlı olur ve disk kapasitesinde bir kısıtlama varsa göz önünde bulundurulmalıdır.
 
-İki yaygın olarak kullanılan sıkıştırma codec bileşenleri arasında `gzip` ve `snappy`, `gzip` daha yüksek CPU yükü, düşük disk kullanımı sonuçları daha yüksek bir sıkıştırma oranına sahiptir. `snappy` Codec bileşeni, daha az CPU yükü daha azdır sıkıştırmasıyla sağlar. Kullanılacak codec bileşeni Aracısı disk veya üretici CPU sınırlamalarına bağlı karar verebilirsiniz. `gzip` Veri beş kat daha yüksek bir hızda sıkıştırabilirsiniz `snappy`.
+Yaygın olarak kullanılan iki sıkıştırma codec bileşeni arasında `gzip` ve `snappy`, `gzip` daha yüksek bir sıkıştırma oranına sahiptir ve bu da daha yüksek CPU yükü maliyetinde daha düşük disk kullanımı elde olur. `snappy` codec bileşeni daha az CPU ek yükü ile daha az sıkıştırma sağlar. Aracı diskine veya üretici CPU kısıtlamalarına göre hangi codec bileşeninin kullanılacağına karar verebilirsiniz. `gzip` verileri `snappy`beş kat daha yüksek bir hızda sıkıştırabilirler.
 
-Veri sıkıştırma kullanarak bir diske depolanmış kayıt sayısını artırır. Bu da CPU ek yükü durumlarda artırabilir üretici ve aracı tarafından kullanılan sıkıştırma biçimleri arasında bir uyuşmazlık olduğunda. Verileri göndermeden önce sıkıştırılmış ve ardından işleme önce eklenmişti.
+Veri sıkıştırmayı kullanmak, bir diskte depolanabilecek kayıt sayısını artırır. Ayrıca, üretici ve aracı tarafından kullanılan sıkıştırma biçimleri arasında uyuşmazlık olduğu durumlarda CPU yükünü artırabilir. verilerin gönderilmeden önce sıkıştırılması ve sonra, işlenmeden önce sıkıştırması açılması gerekir.
 
 ## <a name="broker-settings"></a>Aracı Ayarları
 
-Aşağıdaki bölümlerde bazı Kafka aracılarınız performansını iyileştirmek için en önemli ayarlar vurgular. Tüm ayrıntılı bir açıklaması için aracı ayarları, bkz: [üretici yapılandırmaları üzerinde Apache Kafka belgeleri](https://kafka.apache.org/documentation/#producerconfigs).
-
+Aşağıdaki bölümler Kafka aracılarınızın performansını iyileştirmek için en önemli ayarların bazılarını vurgulayacaktır. Tüm aracı ayarlarının ayrıntılı bir açıklaması için bkz. [üretici yapılandırmalarında Apache Kafka belgeleri](https://kafka.apache.org/documentation/#producerconfigs).
 
 ### <a name="number-of-disks"></a>Disk sayısı
 
-Depolama diskleri sınırlı IOPS (giriş/çıkış işlem / saniye) ve okuma/yazma bayt / saniye. Yeni bölüm oluştururken, Kafka en az mevcut bölümler arasında kullanılabilir diskleri bunları dengelemek için disk üzerinde her yeni bölüme depolar. Her disk üzerindeki bölüm çoğaltmalarını yüzlerce işlerken depolama strateji rağmen Kafka kullanılabilir disk aktarım hızı bir kolayca karşılayabilir. Aktarım hızı ile maliyet artırabilen burada arasındadır. Daha fazla yönetilen uygulamanızın daha fazla performans gerekiyorsa, küme oluşturma aracı başına disk sayısı. HDInsight, yönetilen diskler çalıştıran bir kümeye ekleme şu anda desteklemiyor. Yönetilen disk sayısını yapılandırma hakkında daha fazla bilgi için bkz. [yapılandırma depolama ve ölçeklenebilirlik için HDInsight üzerinde Apache Kafka](apache-kafka-scalability.md). Depolama alanını artırmak için kümenizdeki düğümleri maliyet etkilerini anlayın.
+Depolama disklerinin, saniyede sınırlı ıOPS (saniye başına giriş/çıkış Işlemi) ve okuma/yazma baytları vardır. Yeni bölümler oluştururken, Kafka her yeni bölümü, kullanılabilir diskler arasında dengelemek için en az mevcut bölümlerle diskte depolar. Depolama stratejisine karşın, her diskte yüzlerce bölüm çoğaltmasını işlerken Kafka, kullanılabilir disk verimini kolayca doygunluğu sağlayabilir. Zorunluluğunu getirir, üretilen iş ve maliyet arasındadır. Uygulamanız daha fazla verimlilik gerektiriyorsa, aracı başına daha fazla yönetilen disk içeren bir küme oluşturun. HDInsight Şu anda çalışan bir kümeye yönetilen disklerin eklenmesini desteklememektedir. Yönetilen disklerin sayısını yapılandırma hakkında daha fazla bilgi için bkz. [HDInsight üzerinde Apache Kafka depolama ve ölçeklenebilirlik yapılandırma](apache-kafka-scalability.md). Kümenizdeki düğümlerin depolama alanını artırma maliyeti etkilerini anlayın.
 
-### <a name="number-of-topics-and-partitions"></a>Konuları ve bölümleri sayısı
+### <a name="number-of-topics-and-partitions"></a>Konu başlıkları ve bölüm sayısı
 
-Kafka üreticileri konulara yazın. Kafka tüketicileri konuları okuyun. Bir konu disk üzerindeki veri yapısıdır bir oturum ile ilişkilidir. Kafka, kayıtları bir producer(s) konu günlük sonuna ekler. Birden çok dosya yayılan birçok bölümlerin konu günlük oluşur. Sırayla bu dosyaları birden fazla Kafka küme düğümleri arasında yayılır. Tüketiciler, kendi temposu, Kafka konularını okuma ve konu günlük konumlarını (kaydırma) seçebilirsiniz.
+Kafka üreticileri yazma konuları. Kafka tüketicileri, konulardan okundu. Bir konu, disk üzerindeki veri yapısı olan bir günlük ile ilişkilendirilir. Kafka bir üretici tarafından kayıtları bir konu günlüğünün sonuna ekler. Konu günlüğü, birden fazla dosyanın üzerine yayılan birçok bölümden oluşur. Bu dosyalar, sırayla birden çok Kafka küme düğümüne yayılır. Tüketiciler, Kafka konularındaki konuları okur ve konu günlüğünde konumunu (uzaklığında) seçebilir.
 
-Bir günlük dosyası sistem üzerindeki her Kafka bölümdür ve üretici iş parçacığı aynı anda birden çok günlüklerine yazabilirsiniz. Benzer şekilde, her bir tüketicinin iş parçacığı bir bölümden iletileri okuyan olduğundan, birden çok bölümdeki verileri kullanan de paralel olarak ele alınır.
+Her Kafka bölümü sistemdeki bir günlük dosyasıdır ve üretici iş parçacıkları aynı anda birden çok günlüğe yazabilir. Benzer şekilde, her tüketici iş parçacığı bir bölümden iletileri okuduğundan, birden çok bölümden alınan iletiler de paralel olarak işlenir.
 
-Bölüm yoğunluk (bölüm başına aracısı sayısı) artırılması, meta veri işlemleri ve her bölüm istek/yanıt bölümü lideri, takipçi arasındaki ile ilgili bir yükü ekler. Olmadığında üzerinden akan veri içinde bölüm çoğaltmalarını yine de verileri göndermek için ek işlem sonuçlanır ve ağ üzerinden isteklerini alacak öncüleri dan getirin.
+Bölüm yoğunluğunu artırma (aracı başına bölüm sayısı), bölüm lideri ve onun izleyicileri arasında bölüm isteği/yanıtı ile ilgili bir ek yük ekler. Veri akışı sırasında, Bölüm çoğaltmaları da, ağ üzerinden gönderme ve alma istekleri için ek işleme ile sonuçlanan liderlerden veri getirmeye devam eder.
 
-İçin Apache Kafka 1.1 kümeleri ve yukarıda HDInsight içinde en fazla 1000 bölüm çoğaltmaları dahil olmak üzere, aracı başına sahip olmanızı öneririz. Aracı başına bölüm sayısının artırılması, aktarım hızı azaltır ve konu kullanılamazlık da neden olabilir. Kafka bölüm desteği hakkında daha fazla bilgi için bkz. [resmi Apache Kafka Web günlüğü gönderisini 1.1.0 sürümünde desteklenen bölüm sayısı artış](https://blogs.apache.org/kafka/entry/apache-kafka-supports-more-partitions). Değiştirme konuları hakkında daha fazla bilgi için bkz [Apache Kafka: değiştirme konuları](https://kafka.apache.org/documentation/#basic_ops_modify_topic).
+HDInsight 'ta Apache Kafka kümeleri 1,1 ve üzeri için, çoğaltmalar dahil olmak üzere her aracı için en fazla 1000 bölüm kullanmanızı öneririz. Aracı başına bölüm sayısının artırılması performansı düşürür ve ayrıca konunun kullanılamamasına neden olabilir. Kafka bölüm desteği hakkında daha fazla bilgi için, [1.1.0 sürümündeki desteklenen bölüm sayısı artışına göre resmi Apache Kafka blog gönderisine](https://blogs.apache.org/kafka/entry/apache-kafka-supports-more-partitions)bakın. Konuları değiştirme hakkında daha fazla bilgi için bkz. [Apache Kafka: konuları değiştirme](https://kafka.apache.org/documentation/#basic_ops_modify_topic).
 
 ### <a name="number-of-replicas"></a>Çoğaltma sayısı
 
-Daha yüksek bir çoğaltma faktörü ek istekler arasında takipçileri ve bölümü lideri sonuçlanır. Sonuç olarak, daha fazla disk ve CPU ek isteklerini işlemek için daha yüksek bir çoğaltma faktörü tüketir artırma yazma gecikme süresi ve aktarım hızı azaltma.
+Daha yüksek çoğaltma faktörü, bölüm lideri ve izleyicileri arasında ek isteklere neden olur. Sonuç olarak, daha yüksek bir çoğaltma faktörü ek istekleri işlemek için daha fazla disk ve CPU kullanır, yazma gecikmesini artırır ve performansı azaltır.
 
-Azure HDInsight Kafka'da için en az 3 x çoğaltma kullanmanızı öneririz. Çoğu Azure bölgeleri üç hata etki alanlarına sahip ancak bölgelerde yalnızca iki hata etki alanları ile kullanıcıların 4 x çoğaltma kullanmanız gerekir.
+Azure HDInsight 'ta Kafka için en az 3x çoğaltmasını kullanmanızı öneririz. Çoğu Azure bölgesinin üç hata etki alanı vardır, ancak yalnızca iki hata etki alanına sahip bölgelerde, kullanıcıların 4X çoğaltma kullanması gerekir.
 
-Çoğaltma hakkında daha fazla bilgi için bkz. [Apache Kafka: çoğaltma](https://kafka.apache.org/documentation/#replication) ve [Apache Kafka: çoğaltma faktörü artırma](https://kafka.apache.org/documentation/#basic_ops_increase_replication_factor).
+Çoğaltma hakkında daha fazla bilgi için bkz. [Apache Kafka: çoğaltma](https://kafka.apache.org/documentation/#replication) ve [Apache Kafka: çoğaltma faktörünü artırma](https://kafka.apache.org/documentation/#basic_ops_increase_replication_factor).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure üzerinde Apache Kafka ile günde milyarlarca olayı işleme](https://azure.microsoft.com/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/)
-* [HDInsight üzerinde Apache Kafka nedir?](apache-kafka-introduction.md)
+* [HDInsight 'ta Apache Kafka nedir?](apache-kafka-introduction.md)

@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832700"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608729"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde dış kullanıcılara erişimi yönetir
 
@@ -105,7 +105,7 @@ Kuruluşunuzun dışındaki kişilerin erişim paketleri isteyebildiğini ve bu 
 
 ### <a name="review-your-office-365-group-sharing-settings"></a>Office 365 grup Paylaşım ayarlarınızı gözden geçirin
 
-- Dış kullanıcılara yönelik erişim paketlerinize Office 365 grupları eklemek istiyorsanız, Konuk erişimine izin vermek için **kullanıcıların kuruluşa yeni konuklar eklemesine izin** ver ' in **Açık** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Office 365 gruplarına konuk erişimini yönetme](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-guest-access-to-office-365-groups).
+- Dış kullanıcılara yönelik erişim paketlerinize Office 365 grupları eklemek istiyorsanız, Konuk erişimine izin vermek için **kullanıcıların kuruluşa yeni konuklar eklemesine izin** ver ' in **Açık** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Office 365 gruplarına konuk erişimini yönetme](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
 
 - Dış kullanıcıların Office 365 grubuyla ilişkili SharePoint Online sitesine ve kaynaklarına erişmesini istiyorsanız SharePoint Online dış paylaşımını etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
@@ -143,7 +143,7 @@ Bir dış Kullanıcı, bir erişim paketi isteği ile dizininizden ne olacağın
 
 1. Bu dizindeki Konuk Kullanıcı hesabını kaldırmak istiyorsanız, kaldırılmadan önce geçecek gün sayısını ayarlayabilirsiniz. Konuk Kullanıcı hesabını, herhangi bir erişim paketine en son atamasını yitirdikleri anda kaldırmak istiyorsanız, **bu dizinden dış Kullanıcı kaldırılmadan önce geçecek gün sayısını** **0**olarak ayarlayın.
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842416"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561159"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -36,6 +36,9 @@ Azure AD kimlik doğrulamasını kullanarak Azure 'da Windows VM 'lerde oturum a
    - Çok faktörlü kimlik doğrulama
    - Oturum açma risk denetimi
 - VDı dağıtımlarınız için bir parçası olan Azure Windows VM 'lerinin Azure AD JOIN 'i otomatikleştirin ve ölçeklendirin.
+
+> [!NOTE]
+> Bu özelliği etkinleştirdikten sonra Azure 'daki Windows VM 'niz Azure AD 'ye katılmış olur. Şirket içi AD veya Azure AD DS gibi başka bir etki alanına birleştiremezsiniz. Bunu yapmanız gerekirse, uzantıyı kaldırarak VM 'nin Azure AD kiracınızdan bağlantısını kesmeniz gerekir.
 
 ## <a name="requirements"></a>Gereksinimler
 
@@ -200,7 +203,7 @@ Azure AD oturum açma özelliği ile etkinleştirilen Azure 'da Windows VM 'leri
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Azure AD kimlik bilgilerini kullanarak bir Windows VM 'de oturum açma
 
 > [!IMPORTANT]
-> Azure AD 'ye katılmış olan sanal makinelere uzak bağlantıya yalnızca Azure AD 'ye katılmış veya karma Azure AD olan Windows 10 bilgisayarlardan VM ile **aynı** dizine katılmış izin verilir. Ayrıca, Azure AD kimlik bilgilerini kullanarak RDP 'ye Kullanıcı, sanal makine Yöneticisi oturum açma veya sanal makine Kullanıcı oturum açma bilgilerinden birine ait olmalıdır.
+> Azure AD 'ye katılmış olan sanal makinelere uzak bağlantıya yalnızca Azure AD 'ye katılmış veya karma Azure AD olan Windows 10 bilgisayarlardan VM ile **aynı** dizine katılmış izin verilir. Ayrıca, Azure AD kimlik bilgilerini kullanarak RDP 'ye Kullanıcı, sanal makine Yöneticisi oturum açma veya sanal makine Kullanıcı oturum açma bilgilerinden birine ait olmalıdır. Şu anda, Azure savunma, AADLoginForWindows uzantısıyla Azure Active Directory kimlik doğrulaması kullanarak oturum açmak için kullanılamaz. Yalnızca Direct RDP desteklenir.
 
 Azure AD 'yi kullanarak Windows Server 2019 sanal makinenizde oturum açmak için: 
 

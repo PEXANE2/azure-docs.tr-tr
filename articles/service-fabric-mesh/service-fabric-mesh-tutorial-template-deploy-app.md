@@ -1,30 +1,21 @@
 ---
-title: Öğretici - Azure Service Fabric Mesh’e uygulama dağıtma | Microsoft Docs
+title: Öğretici-Azure Service Fabric ağı 'na uygulama dağıtma
 description: Bu öğreticide, şablon kullanarak Service Fabric Mesh'e uygulama dağıtmayı öğreneceksiniz.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce063d8a256cbf2507e19d459aafe13150eccce7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306941"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494931"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Öğretici: Şablon kullanarak Service Fabric Mesh’e uygulama dağıtma
 
-Bu öğretici, bir dizinin birinci bölümüdür. Şablon kullanarak bir Azure Service Fabric Mesh uygulaması dağıtmayı öğreneceksiniz.  Bu uygulama ASP.NET web ön uç hizmeti ve bir ASP.NET Core Web API'si arka uç hizmetinden oluştur ve bu bileşenler Docker Hub'da bulunur.  Docker Hub'dan iki kapsayıcı görüntüsü çekip bunları kendi özel kayıt defterinize göndereceksiniz. Ardından uygulama için bir Azure RM şablonu oluşturacak ve uygulamayı kapsayıcı kayıt defterinizden Service Fabric Mesh'e dağıtacaksınız. İşlem tamamlandığında Service Fabric Mesh'te çalışan basit bir Yapılacaklar Listesi uygulamasına sahip olacaksınız.
+Bu öğretici, bir serinin birinci bölümüdür. Şablon kullanarak bir Azure Service Fabric Mesh uygulaması dağıtmayı öğreneceksiniz.  Bu uygulama ASP.NET web ön uç hizmeti ve bir ASP.NET Core Web API'si arka uç hizmetinden oluştur ve bu bileşenler Docker Hub'da bulunur.  Docker Hub'dan iki kapsayıcı görüntüsü çekip bunları kendi özel kayıt defterinize göndereceksiniz. Ardından uygulama için bir Azure RM şablonu oluşturacak ve uygulamayı kapsayıcı kayıt defterinizden Service Fabric Mesh'e dağıtacaksınız. İşlem tamamlandığında Service Fabric Mesh'te çalışan basit bir Yapılacaklar Listesi uygulamasına sahip olacaksınız.
 
 Serinin birinci bölümünde şunları öğrenirsiniz:
 
@@ -43,7 +34,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -51,7 +42,7 @@ Bu öğreticiye başlamadan önce:
 
 * [Docker'ı yükleyin](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
-* [Azure CLI ve Service Fabric Mesh CLI’sini yerel olarak yükleyin](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
+* [Azure CLI ve Service Fabric Mesh CLI’sini yerel olarak yükleme](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
@@ -59,7 +50,7 @@ Service Fabric Mesh uygulamanızdaki hizmetlerle ilişkilendirilmiş olan kapsay
 
 ACR örneği oluşturmak için aşağıdaki adımları kullanın.  Kurulu bir ACR örneğiniz varsa bu adımı atlayabilirsiniz.
 
-### <a name="sign-in-to-azure"></a>Oturum açın: Azure
+### <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 Azure'da oturum açın ve etkin aboneliğinizi ayarlayın.
 
@@ -68,7 +59,7 @@ az login
 az account set --subscription "<subscriptionName>"
 ```
 
-### <a name="create-a-resource-group"></a>Kaynak grubu oluşturun
+### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki komutu kullanarak *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturun.
 
@@ -109,7 +100,7 @@ Kayıt defteri oluşturulduğunda aşağıdakilere benzer bir çıkış görürs
 
 ## <a name="push-the-images-to-azure-container-registry"></a>Azure Container Registry’ye görüntüleri gönderme
 
-Bu öğreticide örnek olarak Yapılacaklar Listesi örnek uygulaması kullanılmıştır.  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) ve [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) hizmetlerine ait kapsayıcı görüntüleri Docker Hub'da mevcuttur. Bkz: [bir Service Fabric Mesh uygulaması oluşturma](service-fabric-mesh-tutorial-create-dotnetcore.md) uygulamayı Visual Studio'da derleme hakkında bilgi için. Service Fabric Mesh, Windows veya Linux Docker kapsayıcılarıyla çalışabilir.  Linux kapsayıcılarıyla çalışıyorsanız Docker'da **Switch to Linux containers** (Linux kapsayıcılarına geç) öğesini seçin.  Windows kapsayıcılarıyla çalışıyorsanız Docker'da **Switch to Windows containers** (Windows kapsayıcılarına geç) öğesini seçin.
+Bu öğreticide örnek olarak Yapılacaklar Listesi örnek uygulaması kullanılmıştır.  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) ve [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) hizmetlerine ait kapsayıcı görüntüleri Docker Hub'da mevcuttur. Visual Studio 'da uygulama oluşturma hakkında bilgi için bkz. [Service Fabric kafes Web uygulaması oluşturma](service-fabric-mesh-tutorial-create-dotnetcore.md) . Service Fabric Mesh, Windows veya Linux Docker kapsayıcılarıyla çalışabilir.  Linux kapsayıcılarıyla çalışıyorsanız Docker'da **Switch to Linux containers** (Linux kapsayıcılarına geç) öğesini seçin.  Windows kapsayıcılarıyla çalışıyorsanız Docker'da **Switch to Windows containers** (Windows kapsayıcılarına geç) öğesini seçin.
 
 ACR örneğine görüntü gönderebilmeniz için önce bir kapsayıcı görüntünüz olmalıdır. Yerel kapsayıcı görüntünüz yoksa [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) komutunu kullanarak [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) ve [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) görüntülerini Docker Hub'dan çekin.
 
@@ -139,7 +130,7 @@ docker tag seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709 mycontainer
 docker tag seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709 mycontainerregistry.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709
 ```
 
-Azure Container Registry'ye oturum açın.
+Azure Container Registry oturum açın.
 
 ```azurecli
 az acr login -n myContainerRegistry
@@ -264,7 +255,7 @@ Hizmetler, şablonda uygulama kaynağının özellikleri olarak belirtilir.  Uyg
                   "endpoints": [
                     {
                       "name": "ServiceAListener",
-                      "port": 20001
+                      "port": 80
                     }
                   ],
                   "resources": {
@@ -347,7 +338,7 @@ Parametreler dosyasında şu parametre değerlerini güncelleştirin:
 
 |Parametre|Değer|
 |---|---|
-|konum|Uygulamanın dağıtılacağı bölge.  Örneğin: "eastus".|
+|location|Uygulamanın dağıtılacağı bölge.  Örneğin: "eastus".|
 |registryPassword|[Kayıt defteri kimlik bilgilerini alma](#retrieve-credentials-for-the-registry) bölümünde aldığınız parola. Bu şablon parametresi güvenli bir dizedir ve dağıtım durumunda veya `az mesh service show` komutlarında görüntülenmez.|
 |registryUserName|[Kayıt defteri kimlik bilgilerini alma](#retrieve-credentials-for-the-registry) bölümünde aldığınız kullanıcı adı.|
 |registryServer|[Kayıt defteri kimlik bilgilerini alma](#retrieve-credentials-for-the-registry) bölümünde aldığınız kayıt defteri sunucusu adı.|

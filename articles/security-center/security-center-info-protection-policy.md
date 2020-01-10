@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664385"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611075"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Güvenlik Merkezi 'nde SQL Information Protection ilkesini özelleştirme (Önizleme)
  
 Azure Güvenlik Merkezi 'nde tüm Azure kiracınız için bir SQL Information Protection ilkesi tanımlayabilir ve özelleştirebilirsiniz.
 
-Information Protection, Azure veri kaynaklarınızda hassas verileri keşfetme, sınıflandırma, etiketleme ve korumanın gelişmiş bir güvenlik özelliğidir. En hassas verilerinizi bulma ve sınıflandırma (iş, finans, Sağlık Hizmetleri, kişisel veriler vb.), kurumsal bilgi koruma ortamınızda bir özetleme rolü yürütebilir. Bu, için altyapı işlevi görebilir:
+Information Protection, Azure veri kaynaklarınızda hassas verileri bulmak, sınıflandırmak, etiketlemek ve raporlamak için gelişmiş bir güvenlik özelliğidir. En hassas verilerinizi bulma ve sınıflandırma (iş, finans, Sağlık Hizmetleri, kişisel veriler vb.), kurumsal bilgi koruma ortamınızda bir özetleme rolü yürütebilir. Şunlara altyapı sağlayabilir:
 - Veri gizliliği standartları ve yasal uyumluluk gereksinimlerini karşılamanıza yardımcı olma
 - Hassas verilere anormal erişimle izleme (denetim) ve uyarı verme gibi güvenlik senaryoları
 - Son derece hassas veriler içeren veri depolarının güvenliğine erişimi denetleme ve güvenliği artırma
@@ -50,7 +50,7 @@ Azure kiracınız için Information Protection ilkesini özelleştirmek üzere [
  
 1. Varolan herhangi bir etiketi düzenleyebilir veya silebilir veya yeni bir etiket ekleyebilirsiniz. Varolan bir etiketi düzenlemek için, bu etiketi seçin ve sonra üstteki ya da sağdaki bağlam menüsünde **Yapılandır**' a tıklayın. Yeni bir etiket eklemek için üstteki menü çubuğunda veya Etiketler tablosunun en altında **etiket oluştur** ' a tıklayın.
 2. **Duyarlılık etiketini Yapılandır** ekranında, etiket adı ve açıklamasını oluşturabilir veya değiştirebilirsiniz. Ayrıca, **etkin** anahtarı değiştirerek veya devre dışı bırakmak için etiketin etkin veya devre dışı olduğunu da ayarlayabilirsiniz. Son olarak, etiketle ilişkili bilgi türlerini ekleyebilir veya kaldırabilirsiniz. Bu bilgi türüyle eşleşen tüm veriler, sınıflandırma önerilerine ilişkili duyarlılık etiketini otomatik olarak dahil eder.
-3. **Tamam** düğmesine tıklayın.
+3. **Tamam**’a tıklayın.
  
    ![Duyarlılık etiketini Yapılandır](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  

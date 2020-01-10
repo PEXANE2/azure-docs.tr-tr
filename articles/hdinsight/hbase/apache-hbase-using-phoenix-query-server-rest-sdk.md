@@ -1,19 +1,19 @@
 ---
 title: Phoenix Query Server REST SDK-Azure HDInsight
 description: Azure HDInsight 'ta Phoenix Query Server için REST SDK 'Yı yükleyip kullanın.
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.openlocfilehash: c9e9258fb7ace93d0866463563d328456cbd1daa
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311685"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612266"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix sorgu sunucusu REST SDK 'Sı
 
@@ -31,7 +31,7 @@ Apache Phoenix sorgu sunucusu için Microsoft .NET sürücüsü, Visual Studio *
 
 ## <a name="instantiate-new-phoenixclient-object"></a>Yeni PhoenixClient nesnesi örneği oluştur
 
-Kitaplığı kullanmaya başlamak için yeni bir `PhoenixClient` nesnesi örneği oluşturun, `ClusterCredentials` ' in `Uri` ' yi kümenize ve kümenin Apache Hadoop Kullanıcı adı ve parolasına koyun.
+Kitaplığı kullanmaya başlamak için, kümenize `Uri` ve kümenin Apache Hadoop Kullanıcı adına ve parolaya sahip `ClusterCredentials` geçirerek yeni bir `PhoenixClient` nesnesi örneği oluşturun.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -48,11 +48,11 @@ PQS 'ye bir veya daha fazla istek göndermek için, istek (ler) i bağlantıyla 
 string connId = Guid.NewGuid().ToString();
 ```
 
-Her örnek öncelikle `OpenConnectionRequestAsync` yöntemine bir çağrı yapar ve benzersiz bağlantı tanımlayıcısını geçer. Sonra, `ConnectionProperties` ve `RequestOptions` tanımlayın, bu nesneleri ve oluşturulan bağlantı tanımlayıcısını `ConnectionSyncRequestAsync` yöntemine geçirerek. PQS 'nin `ConnectionSyncRequest` nesnesi, hem istemci hem de sunucunun veritabanı özelliklerinin tutarlı bir görünümüne sahip olmasını sağlamaya yardımcı olur.
+Her örnek öncelikle `OpenConnectionRequestAsync` yöntemine bir çağrı yapar ve benzersiz bağlantı tanımlayıcısını geçer. Sonra, bu nesneleri ve oluşturulan bağlantı tanımlayıcısını `ConnectionSyncRequestAsync` yöntemine geçirerek `ConnectionProperties` ve `RequestOptions`tanımlayın. PQS 'nin `ConnectionSyncRequest` nesnesi, hem istemci hem de sunucunun veritabanı özelliklerinin tutarlı bir görünümüne sahip olmasını sağlamaya yardımcı olur.
 
 ## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest ve ConnectionProperties
 
-@No__t-0 ' ı çağırmak için bir `ConnectionProperties` nesnesi geçirin.
+`ConnectionSyncRequestAsync`çağırmak için bir `ConnectionProperties` nesnesini geçirin.
 
 ```csharp
 ConnectionProperties connProperties = new ConnectionProperties
@@ -73,14 +73,14 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 | Özellik | Açıklama |
 | -- | -- |
-| Otomatik yürütme | Phoenix işlemleri için `autoCommit` ' ın etkinleştirilip etkinleştirilmeyeceğini belirten bir Boole değeri. |
+| Otomatik yürütme | Phoenix işlemleri için `autoCommit` etkinleştirilip etkinleştirilmeyeceğini belirten bir Boole değeri. |
 | ReadOnly | Bağlantının salt okunurdur olduğunu belirten bir Boole değeri. |
 | Işlem yalıtımı | JDBC belirtimine göre işlem yalıtımı düzeyini belirten bir tamsayı-aşağıdaki tabloya bakın.|
 | Katalog | Bağlantı özellikleri getirilirken kullanılacak kataloğun adı. |
 | Şema | Bağlantı özellikleri getirilirken kullanılacak şemanın adı. |
 | IsDirty ayarlanamıyor | Özelliklerin değiştirilip değiştirilmediğini belirten bir Boole değeri. |
 
-@No__t-0 değerleri aşağıda verilmiştir:
+`TransactionIsolation` değerleri şunlardır:
 
 | Yalıtım değeri | Açıklama |
 | -- | -- |
@@ -160,17 +160,17 @@ finally
 }
 ```
 
-Yukarıdaki örnek, `IF NOT EXISTS` seçeneğini kullanarak `Customers` adlı yeni bir tablo oluşturur. @No__t-0 çağrısı, Avitika (PQS) sunucusunda yeni bir ifade oluşturur. @No__t-0 bloğu döndürülen `CreateStatementResponse` ve `OpenConnectionResponse` nesnelerini kapatır.
+Yukarıdaki örnek, `IF NOT EXISTS` seçeneğini kullanarak `Customers` adlı yeni bir tablo oluşturur. `CreateStatementRequestAsync` çağrısı, Avitika (PQS) sunucusunda yeni bir ifade oluşturur. `finally` bloğu döndürülen `CreateStatementResponse` ve `OpenConnectionResponse` nesnelerini kapatır.
 
 ## <a name="insert-data-individually"></a>Verileri ayrı olarak ekle
 
-Bu örnekte, Amerikan devleti ve bölge kısaltmalarının `List<string>` koleksiyonuna başvuran tek bir veri ekleme gösterilmektedir:
+Bu örnekte, bir tek veri ekleme, bir `List<string>` Amerikan devleti ve bölge kısaltmalarının koleksiyonuna başvuruyor:
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-Tablonun `StateProvince` sütun değeri, sonraki bir SELECT işleminde kullanılacaktır.
+Tablonun `StateProvince` sütunu değeri, sonraki bir SELECT işleminde kullanılacaktır.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,11 +277,11 @@ finally
 }
 ```
 
-INSERT ifadesinin yürütülmesi için yapı, yeni bir tablo oluşturmaya benzer. @No__t-0 bloğunun sonunda, işlemin açıkça yürütüldüğü unutulmamalıdır. Bu örnek, bir INSERT TRANSACTION 300 kez yinelenir. Aşağıdaki örnekte, daha verimli bir toplu iş ekleme işlemi gösterilmektedir.
+INSERT ifadesinin yürütülmesi için yapı, yeni bir tablo oluşturmaya benzer. `try` bloğunun sonunda, işlem açıkça yürütülür. Bu örnek, bir INSERT TRANSACTION 300 kez yinelenir. Aşağıdaki örnekte, daha verimli bir toplu iş ekleme işlemi gösterilmektedir.
 
 ## <a name="batch-insert-data"></a>Toplu veri ekleme
 
-Aşağıdaki kod, verileri ayrı olarak eklemeye yönelik kodla neredeyse aynıdır. Bu örnek, Prepared ifadesiyle `ExecuteRequestAsync` ' yi tekrar tekrar çağırmak yerine `ExecuteBatchRequestAsync` ' e yapılan çağrıda `UpdateBatch` nesnesini kullanır.
+Aşağıdaki kod, verileri ayrı olarak eklemeye yönelik kodla neredeyse aynıdır. Bu örnek, bir Prepared ifadesiyle `ExecuteRequestAsync` tekrar tekrar çağırmak yerine `ExecuteBatchRequestAsync`çağrısındaki `UpdateBatch` nesnesini kullanır.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -492,7 +492,7 @@ finally
 }
 ```
 
-@No__t-0 deyimlerinin çıktısı aşağıdaki sonuç olmalıdır:
+`select` deyimlerinin çıktısı aşağıdaki sonuç olmalıdır:
 
 ```
 id0 first0
@@ -537,7 +537,7 @@ MH: 6
 FM: 5
 ```
 
-## <a name="next-steps"></a>Sonraki adımlar 
+## <a name="next-steps"></a>Sonraki adımlar
 
 * [HDInsight 'ta Apache Phoenix](../hdinsight-phoenix-in-hdinsight.md)
 * [Apache HBase REST SDK 'sını kullanma](apache-hbase-rest-sdk.md)

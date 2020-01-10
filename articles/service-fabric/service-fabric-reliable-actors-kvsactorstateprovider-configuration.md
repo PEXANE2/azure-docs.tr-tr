@@ -1,67 +1,58 @@
 ---
-title: Azure Service Fabric actors kvsactorstateprovider'ı ayarlarını değiştirin | Microsoft Docs
-description: Azure Service Fabric durum bilgisi olan aktör türü kvsactorstateprovider'ı yapılandırma hakkında bilgi edinin.
-services: Service-Fabric
-documentationcenter: .net
+title: KVSActorStateProvider ayarlarını değiştir
+description: KVSActorStateProvider türünün Azure Service Fabric durum bilgisi olan aktörlerini yapılandırma hakkında bilgi edinin.
 author: sumukhs
-manager: chackdan
-editor: ''
-ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 8b10ef18fd389179a4f5422783606c45fa2e0d32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60728058"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609783"
 ---
-# <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors--kvsactorstateprovider'ı yapılandırma
-Kvsactorstateprovider'ı varsayılan yapılandırması için belirtilen aktör Config klasörü altında Microsoft Visual Studio Paket kökünde oluşturulan settings.xml dosyasının değiştirerek değiştirebilirsiniz.
+# <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors--KVSActorStateProvider 'ı yapılandırma
+Belirtilen aktör için yapılandırma klasörü altındaki Microsoft Visual Studio paketi kökünde oluşturulan Settings. xml dosyasını değiştirerek, KVSActorStateProvider 'ın varsayılan yapılandırmasını değiştirebilirsiniz.
 
-Azure Service Fabric çalışma zamanı settings.xml dosyasında önceden tanımlı bölüm adlarını arar ve temel alınan çalışma zamanı bileşenleri oluşturma sırasında yapılandırma değerlerini kullanır.
+Azure Service Fabric Runtime, Settings. xml dosyasında önceden tanımlanmış bölüm adlarını arar ve temel alınan çalışma zamanı bileşenlerini oluştururken yapılandırma değerlerini kullanır.
 
 > [!NOTE]
-> Yapmak **değil** silebilir veya Visual Studio çözümü içinde oluşturulan settings.xml dosyasında aşağıdaki yapılandırmaları bölüm adlarını değiştirebilirsiniz.
+> Visual Studio çözümünde oluşturulan Settings. xml dosyasında aşağıdaki yapılandırmaların bölüm **adlarını silmeyin veya** değiştirmeyin.
 > 
 > 
 
-## <a name="replicator-security-configuration"></a>Çoğaltıcı güvenliği yapılandırma
-Çoğaltıcı güvenlik yapılandırmalarını, çoğaltma sırasında kullanılan iletişim kanalını güvenli hale getirmek için kullanılır. Bu hizmetler yüksek oranda kullanılabilir hale getirileceğini verileri de güvenli olduğundan emin olmanın birbirlerini çoğaltma trafiğini göremez anlamına gelir.
-Varsayılan olarak, bir boş güvenlik yapılandırma bölümü çoğaltma güvenlik engeller.
+## <a name="replicator-security-configuration"></a>Çoğaltıcı güvenlik yapılandırması
+Çoğaltıcı güvenlik yapılandırması, çoğaltma sırasında kullanılan iletişim kanalının güvenliğini sağlamak için kullanılır. Bu, hizmetlerin, yüksek oranda kullanılabilir hale getirilen verilerin da güvenli olmasını sağlamak için her birinin çoğaltma trafiğini göremeyeceği anlamına gelir.
+Varsayılan olarak, boş bir güvenlik yapılandırması bölümü, çoğaltma güvenliğini engeller.
 
 > [!IMPORTANT]
-> Linux düğümlerinde sertifikaların PEM biçimli olması gerekir. Daha fazla bulma ve sertifikalar için Linux yapılandırması hakkında bilgi edinmek için [Linux'ta sertifikaları yapılandırma](./service-fabric-configure-certificates-linux.md). 
+> Linux düğümlerinde, sertifikaların ped biçimli olması gerekir. Linux için sertifikaları bulma ve yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Linux 'ta sertifikaları yapılandırma](./service-fabric-configure-certificates-linux.md). 
 > 
 
 ### <a name="section-name"></a>Bölüm adı
-&lt;ActorName&gt;ServiceReplicatorSecurityConfig
+&lt;ActorName&gt;Servicerepereptorsecurityconfig
 
-## <a name="replicator-configuration"></a>Çoğaltıcı yapılandırma
-Çoğaltma, yüksek oranda güvenilir aktör durumu sağlayıcısı durumu yapmaktan sorumlu çoğaltıcı yapılandırmaları.
-Varsayılan yapılandırma, Visual Studio şablon tarafından oluşturulur ve yeterli olacaktır. Bu bölümde, yineleyici ayarlamak kullanılabilir olan ek yapılandırmalar hakkında konuşuyor.
+## <a name="replicator-configuration"></a>Çoğaltıcı yapılandırması
+Çoğaltıcı yapılandırması, aktör durum sağlayıcısı durumunu yüksek düzeyde güvenilir hale getirmekten sorumlu olan çoğaltıcısını yapılandırır.
+Varsayılan yapılandırma, Visual Studio şablonu tarafından oluşturulur ve yeterli olacaktır. Bu bölüm, çoğaltıcının ayarlanmasından kullanılabilecek ek yapılandırmaların ele geçirilmesini sağlar.
 
 ### <a name="section-name"></a>Bölüm adı
-&lt;ActorName&gt;ServiceReplicatorConfig
+&lt;ActorName&gt;Servicerepereptorconfig
 
 ### <a name="configuration-names"></a>Yapılandırma adları
 | Ad | Birim | Varsayılan değer | Açıklamalar |
 | --- | --- | --- | --- |
-| BatchAcknowledgementInterval |Saniye |0.015 |Kendisi için göndermeden önce bir işlem aldıktan sonra ikincil bekler, yineleyici geri bir bildirim birincil siteye süre. Bu aralıkta işlenen işlemleri için gönderilecek diğer bir onayları bir yanıt olarak gönderilir. |
-| ReplicatorEndpoint |Yok |Varsayılan--gerekli parametre |IP adresi ve birincil/ikincil çoğaltma çoğaltmasındaki diğer çoğaltıcılar ile iletişim kurmak için kullanacağı bağlantı noktası ayarlayın. Bu hizmet bildirimindeki bir TCP kaynak uç noktası başvurmalıdır. Başvurmak [hizmet bildirimi kaynakları](service-fabric-service-manifest-resources.md) daha fazla bilgi için hizmet bildiriminde uç nokta kaynakları tanımlama hakkında. |
-| Retryınterval |Saniye |5 |Zaman aralığı bir işlem için bir bildirim almazsa sonra çoğaltıcı bir ileti yeniden iletir. |
-| (Maxreplicationmessagesize) |Bayt |50 MB |Tek bir iletiye iletilen çoğaltma verilerinin en büyük boyutu. |
-| MaxPrimaryReplicationQueueSize |İşlem sayısı |1024 |Birincil sırasındaki işlemlerinin maksimum sayısı. Birincil çoğaltıcı tüm ikincil çoğaltıcılar alındısı sonra bir işlem yukarı serbest bırakılır. Bu değer, 64 ve 2'in kuvveti büyük olmalıdır. |
-| MaxSecondaryReplicationQueueSize |İşlem sayısı |2048 |İkincil sırasındaki işlemlerinin maksimum sayısı. Bir işlem yukarı durumuna Kalıcılık aracılığıyla yüksek oranda kullanılabilir yaptıktan sonra serbest bırakılır. Bu değer, 64 ve 2'in kuvveti büyük olmalıdır. |
+| Batchval Gementınterval |Saniye |0.015 |Birincili çoğaltıcının, birincil öğesine bir onay göndermeden önce bir işlem aldıktan sonra beklediği zaman aralığı. Bu Aralık dahilinde işlenen işlemler için gönderilecek diğer tüm onaylar bir yanıt olarak gönderilir. |
+| ReplicatorEndpoint |Yok |Varsayılan değer yok--gerekli parametre |Birincil/ikincil çoğaltıcıların, çoğaltma kümesindeki diğer çoğaltıcılar ile iletişim kurmak için kullanacağı IP adresi ve bağlantı noktası. Bu, hizmet bildiriminde bir TCP kaynak uç noktasına başvurmalıdır. Hizmet bildiriminde uç nokta kaynakları tanımlama hakkında daha fazla bilgi edinmek için [hizmet bildirimi kaynaklarına](service-fabric-service-manifest-resources.md) bakın. |
+| RetryInterval |Saniye |5 |Bir işlem için onay almazsa, Replicator 'ın bir iletiyi yeniden ilettiği zaman aralığı. |
+| MaxReplicationMessageSize |Bayt |50 MB |Tek bir iletide iletilebilecek en büyük çoğaltma verileri boyutu. |
+| MaxPrimaryReplicationQueueSize |İşlem sayısı |1024 |Birincil kuyruktaki en fazla işlem sayısı. Birincil çoğaltıcı tüm ikincil replica'lerden onay aldıktan sonra bir işlem serbest bırakılır. Bu değer 64 ' den büyük ve 2 ' nin üssü olmalıdır. |
+| MaxSecondaryReplicationQueueSize |İşlem sayısı |2048 |İkincil kuyruktaki en fazla işlem sayısı. Bir işlem, durumu Kalıcılık aracılığıyla yüksek oranda kullanılabilir olduktan sonra serbest bırakılır. Bu değer 64 ' den büyük ve 2 ' nin üssü olmalıdır. |
 
-## <a name="store-configuration"></a>Store yapılandırma
-Store yapılandırmaları çoğaltılmakta olan durumu kalıcı hale getirmek için kullanılan yerel deposunu yapılandırmak için kullanılır.
-Varsayılan yapılandırma, Visual Studio şablon tarafından oluşturulur ve yeterli olacaktır. Bu bölümde, yerel depo ayarlamak kullanılabilir olan ek yapılandırmalar hakkında konuşuyor.
+## <a name="store-configuration"></a>Mağaza yapılandırması
+Depo yapılandırması, çoğaltılan durumu kalıcı hale getirmek için kullanılan yerel depoyu yapılandırmak için kullanılır.
+Varsayılan yapılandırma, Visual Studio şablonu tarafından oluşturulur ve yeterli olacaktır. Bu bölümde, yerel depoyu ayarlamak için kullanılabilen ek konfigürasyonlar ele alınır.
 
 ### <a name="section-name"></a>Bölüm adı
 &lt;ActorName&gt;ServiceLocalStoreConfig
@@ -69,8 +60,8 @@ Varsayılan yapılandırma, Visual Studio şablon tarafından oluşturulur ve ye
 ### <a name="configuration-names"></a>Yapılandırma adları
 | Ad | Birim | Varsayılan değer | Açıklamalar |
 | --- | --- | --- | --- |
-| MaxAsyncCommitDelayInMilliseconds |Milisaniye |200 |Toplu işleme aralığı dayanıklı yerel depo işlemeler için en fazla ayarlar. |
-| MaxVerPages |Sayfa sayısı |16384 |Yerel sürüm sayfa sayısının veritabanı depolayın. Bekleyen işlemlerin sayısını belirler. |
+| Maxasynccommitdelayınmilliseconds |Milisaniye |200 |Dayanıklı yerel depo Yürütmelerinde en fazla toplu işlem aralığını ayarlar. |
+| MaxVerPages |Sayfa sayısı |16384 |Yerel depo veritabanında en fazla sürüm sayfası sayısı. Bekleyen işlem sayısı üst sınırını belirler. |
 
 ## <a name="sample-configuration-file"></a>Örnek yapılandırma dosyası
 ```xml
@@ -95,6 +86,6 @@ Varsayılan yapılandırma, Visual Studio şablon tarafından oluşturulur ve ye
 </Settings>
 ```
 ## <a name="remarks"></a>Açıklamalar
-Çoğaltma gecikmesi BatchAcknowledgementInterval parametre denetler. (Daha fazla bildirim iletileri gönderilen ve gereken işlenen her daha az bir onayları içeren gibi) '0' değeri en düşük gecikmeyi, aktarım hızı artırılabilir sonuçlanır.
-BatchAcknowledgementInterval için büyük değer, yüksek genel çoğaltma aktarım hızı, daha yüksek işlem gecikme süresi artırılabilir. Bu işlem yürütme gecikme süresi için doğrudan dönüşür.
+Batchbildirimlerin Gementınterval parametresi, çoğaltma gecikmesini denetler. ' 0 ' değeri, aktarım hızına (daha az sayıda bildirim içeren daha fazla onay iletisi gönderilmesi ve işlenmek üzere) karşı olası en düşük gecikme süresine neden olur.
+Batchval Gementınterval değeri arttıkça, daha yüksek işlem gecikmesi maliyetinde genel çoğaltma üretilen işi artar. Bu, doğrudan işlem yürütmelerinin gecikmesini dönüştürür.
 

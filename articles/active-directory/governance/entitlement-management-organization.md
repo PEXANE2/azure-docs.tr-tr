@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dec950f5475a8a64cfecfac1fb25246d6a7aa29
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: bd57523dd41eadcf64ceb1e4a1c8d8ba083c17f0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561915"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608746"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bağlı bir kuruluş ekleme
 
@@ -74,7 +74,7 @@ Bağlı bir kuruluş olarak dış bir Azure AD dizini veya etki alanı eklemek i
 1. Azure AD dizinini veya etki alanını eklemek için **Ekle** ' ye tıklayın. Şu anda, bağlı kuruluşa göre yalnızca bir Azure AD dizini veya etki alanı ekleyebilirsiniz.
 
     > [!NOTE]
-    > Azure AD dizini veya etki alanındaki tüm kullanıcılar bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya engellenenler listesi tarafından engellenmediği durumlar dışında, dizinle ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](../b2b/allow-deny-list.md).
+    > Azure AD dizini veya etki alanındaki tüm kullanıcılar bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya engellenenler listesi tarafından engellenmediği durumlar dışında, dizinle ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için [B2B kullanıcıları için izin verilenler veya Engellenenler davetleri belirli kuruluşlardan](../b2b/allow-deny-list.md).
 
 1. Azure AD dizinini veya etki alanını ekledikten sonra **Seç**' e tıklayın.
 
@@ -112,5 +112,5 @@ Artık dış Azure AD dizini veya etki alanı ile bir ilişkiniz yoksa bağlı k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dış kullanıcılar için erişimi yönetir](entitlement-management-organization.md)
+- [Dış kullanıcılar için erişimi yönetir](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
 - [Dizininizde bulunmayan kullanıcılar için](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

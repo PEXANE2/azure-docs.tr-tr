@@ -1,29 +1,19 @@
 ---
-title: Azure'da Service Fabric üzerindeki bir kapsayıcı uygulamasında yük devretme ve ölçeklendirme| Microsoft Docs
+title: Kapsayıcılar uygulaması için yük devretme ve ölçeklendirme
 description: Bu öğreticide, Azure Service Fabric kapsayıcıları uygulamasında yük devretmenin nasıl ele alındığını öğrenirsiniz.  Ayrıca, bir kümede çalışan kapsayıcıları ve hizmetleri ölçeklendirme işleminden de bahsedilir.
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, Kapsayıcılar, Mikro Hizmetler, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a13ce98eeebf60a6b61ee9aff01107c61fa94641
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bef1c42712c881296c5ab7b8096deb50fe94ee55
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385112"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614103"
 ---
-# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Öğretici: Service Fabric ile kapsayıcı Hizmetleri yük devretme ve ölçeklendirmeyi gösterme
+# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Öğretici: Service Fabric ile kapsayıcı hizmetlerinin yük devretme ve ölçeklendirme işlemlerini gösterir
 
 Bu öğretici, bir serinin üçüncü bölümüdür. Bu öğreticide, Service Fabric kapsayıcı uygulamalarında yük devretmenin nasıl ele alındığını öğrenirsiniz. Ayrıca, kapsayıcı ölçeklendirme işleminden de bahsedilir. Bu öğreticide şunları yaptınız:
 
@@ -31,7 +21,7 @@ Bu öğretici, bir serinin üçüncü bölümüdür. Bu öğreticide, Service Fa
 > * Service Fabric kümesindeki bir kapsayıcıda yük devretme ile ilgili daha fazla bilgi edinin
 > * Uygulamadaki web ön uç kapsayıcılarını ölçeklendirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Kısım 2](service-fabric-tutorial-package-containers.md)’deki uygulama, etkin bir Service Fabric kümesinde çalışıyor.
 

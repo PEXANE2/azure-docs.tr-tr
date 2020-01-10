@@ -1,25 +1,14 @@
 ---
-title: Azure Resource Manager ile uygulama ve hizmetleri dağıtma ve yükseltme | Microsoft Docs
+title: Azure Resource Manager dağıtma ve yükseltme
 description: Azure Resource Manager şablonu kullanarak bir Service Fabric kümesine uygulamalar ve hizmetler dağıtmayı öğrenin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 0bec430cbb98452f8c852c96053f3f699ce5098e
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71153581"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610259"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Uygulamaları ve Hizmetleri Azure Resource Manager kaynak olarak yönetme
 
@@ -29,7 +18,7 @@ Bu, kümenizde gerekli olan kurulum, idare veya küme yönetimi uygulamalarını
 
 Uygun olduğunda, uygulamalarınızı geliştirmek için Kaynak Yöneticisi kaynak olarak yönetin:
 * Denetim izi: Kaynak Yöneticisi her işlemi denetler ve bu uygulamalarda ve kümeniz üzerinde yapılan değişiklikleri izlemenize yardımcı olabilecek ayrıntılı bir *etkinlik günlüğü* tutar.
-* Rol tabanlı erişim denetimi (RBAC): Kümeye erişimin yanı sıra küme üzerinde dağıtılan uygulamaların de aynı Kaynak Yöneticisi şablonu aracılığıyla yapılması yapılabilir.
+* Rol tabanlı erişim denetimi (RBAC): kümelere erişimin yanı sıra kümede dağıtılan uygulamaların de aynı Kaynak Yöneticisi şablonu aracılığıyla yapılması yapılabilir.
 * Azure Resource Manager (Azure portal aracılığıyla), kümenizin ve kritik uygulama dağıtımlarınızın yönetilmesi için tek bir durdurulmalı bir mağaza haline gelir.
 
 Aşağıdaki kod parçacığında, bir şablon aracılığıyla yönetilebilen farklı kaynak türleri gösterilmektedir:
@@ -255,7 +244,7 @@ Aşağıdaki kod parçacığında, bir şablon aracılığıyla yönetilebilen f
    ```
 
    > [!NOTE] 
-   > *Apiversion* , olarak `"2019-03-01"`ayarlanmalıdır. Bu şablon, küme zaten dağıtıldığı sürece kümeden bağımsız olarak da dağıtılabilir.
+   > *Apiversion* `"2019-03-01"`olarak ayarlanmalıdır. Bu şablon, küme zaten dağıtıldığı sürece kümeden bağımsız olarak da dağıtılabilir.
 
 5. Dağıtımı! 
 
@@ -275,7 +264,7 @@ ARM şablonunuzun Microsoft. ServiceFabric/kümeleri/uygulamasını kaldırmak, 
 Kümeniz zaten çalışır durumda ve Kaynak Yöneticisi Kaynakları olarak yönetmek istediğiniz bazı uygulamalar üzerinde zaten dağıtıldıysa, uygulamaları kaldırmak ve yeniden dağıtmak yerine, uygulamaların alması için aynı API 'Leri kullanarak bir PUT çağrısı kullanabilirsiniz Kaynak Yöneticisi kaynaklar olarak kabul edildi. Daha fazla bilgi için [Service Fabric uygulama kaynak modeli nedir?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model) bölümüne bakın.
 
 > [!NOTE]
-> Bir küme yükseltmesinin sağlıksız uygulamaları yoksaymasına izin vermek için, müşteri "Maxyüztunhealthyapplications" belirtebilir: 100 "," upgradeDescription/healthPolicy "bölümünde; tüm ayarların ayrıntılı açıklamaları, [Service yapılar REST API küme yükseltme ilkesi belgelerinde](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)bulunur.
+> Bir küme yükseltmesinin sağlıksız uygulamaları yok saymasına izin vermek için, "upgradeDescription/healthPolicy" bölümünde "Maxyüztunhealthyapplications: 100" belirtebilir; tüm ayarların ayrıntılı açıklamaları, [Service yapılar REST API küme yükseltme ilkesi belgelerinde](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 2768c2d4cef68dcf25e25c047aaa69653af5e0b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 85ef34f8644d95f6cfd2c7262bfe4bbc0683547f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170853"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561747"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Istio 'yu yükleyip kullanma
 
@@ -136,7 +136,7 @@ spec:
 `istioctl apply` komutunu ve yukarıdaki `istio.aks.yaml` Istio denetim düzlemi özellikleri dosyasını kullanarak istio 'yu aşağıdaki şekilde yüklersiniz:
 
 ```console
-istioctl manifest apply -f istio.aks.yaml
+istioctl manifest apply -f istio.aks.yaml --logtostderr --set installPackagePath=./install/kubernetes/operator/charts
 ```
 
 Yükleyici bir dizi [crds][kubernetes-crd] dağıtır ve ardından bu istio yapılandırması için tanımlanan tüm ilgili nesneleri yüklemek üzere bağımlılıkları yönetir. Aşağıdaki çıktı kod parçacığına benzer bir şey görmeniz gerekir.
@@ -361,7 +361,9 @@ istioctl dashboard envoy <pod-name>.<namespace>
 AKS kümenizdeki ICU 'yi kaldırmak için, `istio.aks.yaml` Istio denetim düzlemi belirtimi dosyası ile `istioctl manifest generate` komutunu kullanın. Bu, yüklü tüm bileşenleri ve `istio-system` ad alanını kaldırmak için `kubectl delete` yönelttireceğiz dağıtılan bildirimi oluşturur.
 
 ```console
-istioctl manifest generate -f istio.aks.yaml | kubectl delete -f -
+istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostderr --set installPackagePath=./install/kubernetes/operator/charts 
+
+kubectl delete -f istio-components-aks -R
 ```
 
 ### <a name="remove-istio-crds-and-secrets"></a>Istio CRDs ve gizli dizileri kaldır

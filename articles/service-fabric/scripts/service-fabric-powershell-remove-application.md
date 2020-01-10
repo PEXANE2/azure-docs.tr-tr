@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell betik örneği-uygulamayı kümeden kaldırma | Microsoft Docs
+title: PowerShell 'deki bir kümeden uygulamayı kaldırma
 description: Azure PowerShell betiği örneği-bir uygulamayı Service Fabric kümeden kaldırın.
 services: service-fabric
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: f572996b4e460480335dbe32c4599bde206251d4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 9ac4c23468c74b5a2c6874de2cb6b8d0e6b9e7dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035507"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610293"
 ---
-# <a name="remove-an-application-from-a-service-fabric-cluster"></a>Bir uygulamayı Service Fabric kümesinden kaldırma
+# <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>PowerShell kullanarak bir uygulamayı Service Fabric kümeden kaldırma
 
 Bu örnek betik, çalışan bir Service Fabric uygulama örneğini siler ve kümeden bir uygulama türü ve sürümü siler.  Uygulama örneğinin silinmesi, bu uygulamayla ilişkili çalışan tüm hizmet örneklerini de siler. Parametreleri gereken şekilde özelleştirin. 
 

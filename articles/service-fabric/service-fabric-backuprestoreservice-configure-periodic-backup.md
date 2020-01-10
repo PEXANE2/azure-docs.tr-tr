@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama | Microsoft Docs
+title: Düzenli aralıklarla yedekleme yapılandırmasını anlama
 description: Uygulama verilerinizin düzenli veri yedeklemesini etkinleştirmek için Service Fabric düzenli yedekleme ve geri yükleme özelliğini kullanın.
-services: service-fabric
-documentationcenter: .net
 author: hrushib
-manager: chackdan
-editor: hrushib
-ms.assetid: FAA45B4A-0258-4CB3-A825-7E8F70F28401
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: e0c40c005c27130d422e0dacaae29461b65b7df7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232506"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610157"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama
 
@@ -142,7 +133,7 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
 Veri yedekleme gereksinimlerini karşılamak için yedekleme ilkesi tanımladıktan sonra, yedekleme ilkesi bir _uygulama_veya _hizmet_ya da bir _bölümle_uygun şekilde ilişkilendirilmelidir.
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>Yedekleme ilkesinin hiyerarşik yayılımı
-Service Fabric, uygulama, hizmet ve bölümler arasındaki ilişki, [uygulama modelinde](./service-fabric-application-model.md)açıklanacak şekilde hiyerarşiktir. Yedekleme ilkesi, hiyerarşideki bir _uygulama_, _hizmet_ya da bir _bölümle_ ilişkilendirilebilir. Yedekleme ilkesi hiyerarşik olarak bir sonraki düzeye yayar. Oluşturulan ve bir _uygulamayla_ilişkili yalnızca bir yedekleme ilkesi olduğu varsayılarak, güvenilir olmayan tüm _hizmetlere_ ve _uygulamanın_ _Reliable Actors_ ait tüm durum bilgisi olmayan bölümlerin, Yedekleme ilkesi. Ya da yedekleme ilkesi _güvenilir bir durum bilgisi olmayan hizmetle_ilişkiliyse, tüm bölümleri yedekleme ilkesi kullanılarak yedeklenir.
+Service Fabric, uygulama, hizmet ve bölümler arasındaki ilişki, [uygulama modelinde](./service-fabric-application-model.md)açıklanacak şekilde hiyerarşiktir. Yedekleme ilkesi, hiyerarşideki bir _uygulama_, _hizmet_ya da bir _bölümle_ ilişkilendirilebilir. Yedekleme ilkesi hiyerarşik olarak bir sonraki düzeye yayar. Yalnızca bir uygulamayla oluşturulmuş ve bir _uygulama_ile ilişkili olan tek bir yedekleme ilkesi olduğu varsayıldığında, tüm _güvenilir durum bilgisi olan hizmetlere_ ve _uygulamanın_ _Reliable Actors_ ait olan tüm durum bilgisi olmayan bölümlerin yedekleme ilkesi kullanılarak yedeklenirsiniz. Ya da yedekleme ilkesi _güvenilir bir durum bilgisi olmayan hizmetle_ilişkiliyse, tüm bölümleri yedekleme ilkesi kullanılarak yedeklenir.
 
 ### <a name="overriding-backup-policy"></a>Yedekleme ilkesini geçersiz kılma
 Aynı yedekleme zamanlaması ile veri yedeklemenin, uygulamanın daha yüksek sıklık zamanlaması kullanarak veya farklı bir depolama hesabına yedekleme yapması ya da farklı bir depolama hesabına yedekleme yapması gereken belirli hizmetler dışında, uygulamanın tüm hizmetleri için gerekli olduğu bir senaryo olabilir veya FileShare. Yedekleme geri yükleme hizmeti bu senaryolara yönelik olarak hizmet ve bölüm kapsamındaki yayılan ilkeyi geçersiz kılmak için tesis sağlar. Yedekleme ilkesi _hizmet_ veya _bölüm_ile ilişkilendirildiğinde, varsa yayılan yedekleme ilkesini geçersiz kılar.
@@ -183,7 +174,7 @@ Aşağıdaki diyagramda açık olarak etkinleştirilen yedekleme ilkeleri ve yay
 ![Service Fabric uygulama hiyerarşisi][0]
 
 ## <a name="disable-backup"></a>Yedeklemeyi devre dışı bırak
-Yedekleme ilkeleri, verileri yedeklemeye gerek kalmadığında devre dışı bırakılabilir. Bir _uygulamada_ etkinleştirilen yedekleme Ilkesi yalnızca [uygulama yedekleme API 'Sini devre dışı bırak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) kullanılarak aynı _uygulamada_ devre dışı bırakılabilir, bir _hizmette_ etkinleştirilen yedekleme ilkesi devre dışı kullanılarak aynı _hizmette_ devre dışı bırakılabilir [ Hizmet yedekleme](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) API 'si ve bir _bölümde_ etkinleştirilen yedekleme Ilkesi, [bölüm yedeklemesi API 'sini devre dışı bırakma](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) kullanılarak aynı _bölümde_ devre dışı bırakılabilir.
+Yedekleme ilkeleri, verileri yedeklemeye gerek kalmadığında devre dışı bırakılabilir. Bir _uygulamada_ etkinleştirilen yedekleme Ilkesi yalnızca [uygulama yedekleme API 'Sini devre dışı bırak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) kullanılarak aynı _uygulamada_ devre dışı bırakılabilir, bir _hizmette_ etkinleştirilen yedekleme ilkesi, [Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) API 'sini devre dışı bırakma kullanılarak aynı _hizmette_ devre dışı bırakılabilir ve bir _bölümde_ etkinleştirilen yedekleme ilkesi, [bölüm yedeklemesini devre dışı bırakma](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API 'si kullanılarak aynı _bölümde_ devre dışı bırakılabilir.
 
 * Bir _uygulama_ için yedekleme ilkesini devre dışı bırakmak, yedekleme Ilkesinin güvenilir durum bilgisi olan hizmet bölümlerine veya güvenilir aktör bölümlerine yayılmasının sonucu olarak oluşan tüm düzenli veri yedeklemelerini durduruyor.
 

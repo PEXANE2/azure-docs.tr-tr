@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 0479918ad2afa99dcd9f18d3ba81f94a3e262e9e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479382"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530961"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki tümleşik güvenlik çözümleri
 Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini yönetmenize ve yenilerini eklemenize yardımcı olur.
@@ -47,7 +47,7 @@ Güvenlik Merkezinden dağıtılan Azure güvenlik çözümleri otomatik olarak 
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Tümleşik Azure güvenlik çözümlerini ve diğer veri kaynaklarını yönetme
 
-1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/) oturum açın.
+1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/)’ında oturum açın.
 
 2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**’ni seçin. **Güvenlik Merkezi - Genel Bakış** açılır.
 
@@ -123,7 +123,7 @@ Bu sürümde, [güvenlik uyarılarını](../security-center/security-center-mana
 
 ### <a name="how-to-set-up-the-pipeline"></a>İşlem hattını ayarlama
 
-#### <a name="create-an-event-hub"></a>Olay Hub'ı oluşturma
+#### <a name="create-an-event-hub"></a>Event Hub'ı oluşturma
 
 Başlamadan önce, tüm izleme verilerinizin hedefi [olan bir Event Hubs ad alanı oluşturun](../event-hubs/event-hubs-create.md) .
 
@@ -135,7 +135,7 @@ Event Hubs için aşağıdaki makaleye [Akış etkinlik günlüğüne](../azure-
 
 İzleme verilerinizi Azure Izleyici ile bir olay hub 'ına yönlendirme, iş ortağı SıEM ve izleme araçlarıyla kolayca tümleştirmenize olanak sağlar.
 
-[Desteklenen Sıems](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-resource-logs-sent-to-an-event-hub) listesi için aşağıdaki makaleye bakın
+[Desteklenen Sıems](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub) listesi için aşağıdaki makaleye bakın
 
 ### <a name="example-for-querying-data"></a>Veri sorgulama örneği 
 
@@ -143,7 +143,7 @@ Uyarı verilerini çekmek için kullanabileceğiniz bazı splunk sorguları aşa
 
 | **Sorgunun açıklaması** | **Sorgu** |
 |----|----|
-| Tüm uyarılar| index = ana Microsoft. güvenlik/konumlar/uyarılar|
+| Tüm Uyarılar| index = ana Microsoft. güvenlik/konumlar/uyarılar|
 | İşlem sayısını adlarıyla özetleme| index = Main SourceType = "Amal: güvenlik" \| tablo operationName \| istatistik sayısı, operationName|
 | Uyarı bilgilerini al: saat, ad, durum, KIMLIK ve abonelik | index = ana Microsoft. Security/Locations/Alerts \| tablo \_zaman, Özellikler. eventName, eyalet, Özellikler. operationId, am_subscriptionId |
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 019c44cedba166dc1ac06a0244fa2b2e7930e673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230364"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561876"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Işlevleri güvenilir olay işleme
 
@@ -59,7 +59,7 @@ Genel bir kural olarak, her işlev en yüksek kod düzeyinde bir [try/catch blo�
 
 ### <a name="retry-mechanisms-and-policies"></a>Yeniden deneme mekanizmaları ve ilkeleri
 
-Bazı özel durumlar geçici olarak geçicidir ve bir işlem daha sonra tekrar denendiğinde yeniden görünmez. İlk adımın işlemi her zaman yeniden denemesi budur. Yeniden deneme oluşturma kurallarını kendiniz yazabilirsiniz, ancak bu çok sayıda araç kullanılabilir. Bu kitaplıkların kullanılması, işlem sırasının korunmasına yardımcı olabilecek güçlü yeniden deneme ilkeleri tanımlamanızı sağlar.
+Bazı özel durumlar geçici olarak geçicidir ve bir işlem daha sonra tekrar denendiğinde yeniden görünmez. İlk adımın işlemi her zaman yeniden denemesi budur. Yeniden deneme oluşturma kurallarını kendiniz yazabilirsiniz, ancak bu çok sayıda araç mevcuttur. Bu kitaplıkların kullanılması, işleme sırasını korumaya yardımcı olabilecek güçlü yeniden deneme ilkeleri tanımlamanızı sağlar.
 
 İşlevleriniz için hata işleme kitaplıklarını tanıtma hem temel hem de gelişmiş yeniden deneme ilkelerini tanımlamanızı sağlar. Örneğin, aşağıdaki kurallara göre gösterilen bir iş akışını izleyen bir ilke uygulayabilirsiniz:
 
@@ -82,7 +82,7 @@ Her iletinin en az bir kez işlendiği güvencesi, bazı iletilerin birden çok 
 
 ## <a name="stop-and-restart-execution"></a>Yürütmeyi Durdur ve yeniden Başlat
 
-Birkaç hata kabul edilebilir olsa da, uygulamanız önemli hatalardan karşılaşırsa ne olur? Sistem sağlıklı bir duruma ulaşıncaya kadar olaylar üzerinde tetiklenmenizi durdurmak isteyebilirsiniz. Fırsatın duraklamasını duraklatma, genellikle devre kesici düzeniyle elde edilir. Devre kesici stili, uygulamanızın olay işleminin "devresini kesmesine" ve daha sonra sürdürülmesine izin verir.
+Birkaç hata kabul edilebilir olsa da, uygulamanız önemli hatalardan karşılaşırsa ne olur? Sistem sağlıklı bir duruma ulaşıncaya kadar olaylar üzerinde tetiklenmenizi durdurmak isteyebilirsiniz. İşlemi duraklatma fırsatına sahip olma, genellikle devre kesici düzeniyle elde edilir. Devre kesici stili, uygulamanızın olay işleminin "devresini kesmesine" ve daha sonra sürdürülmesine izin verir.
 
 Bir olay işleminde devre kesici uygulamak için iki parça gereklidir:
 
@@ -129,6 +129,6 @@ Bu yaklaşımı kullanarak hiçbir ileti kaybedilmez, tüm iletiler sırayla iş
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-- [Azure Işlevleri hata işleme](./functions-bindings-error-pages.md)
+- [Azure işlevleri hata işleme](./functions-bindings-error-pages.md)
 - [Karşıya yüklenen görüntüleri yeniden boyutlandırmayı Event Grid kullanarak otomatikleştirme](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)
 - [Azure Logic Apps ile tümleşen bir işlev oluşturma](./functions-twitter-email.md)

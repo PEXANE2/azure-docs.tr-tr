@@ -1,130 +1,151 @@
 ---
-title: Azure Site Recovery ile olağanüstü durum kurtarma sırasında yük devretme
-description: Azure Site Recovery hizmeti ile olağanüstü durum kurtarma sırasında VM 'Ler ve fiziksel sunuculardan yük devretmek hakkında bilgi edinin.
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
+title: Azure Site Recovery ile olağanüstü durum kurtarma sırasında yük devretme çalıştırma
+description: Azure Site Recovery ile VM 'Leri/fiziksel sunucuları Azure 'a devretmek.
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2019
-ms.author: raynew
-ms.openlocfilehash: 1585c5dbdecf11bbc6ef3dad63bf4f982c70f73e
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 12/10/2019
+ms.openlocfilehash: 514f1d6631a70301589943ddb7920ca3c9c46062
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053763"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609230"
 ---
-# <a name="fail-over-vms-and-physical-servers"></a>Yük devretme VM 'Leri ve fiziksel sunucular 
+# <a name="run-a-failover-from-on-premises-to-azure"></a>Şirket içinden Azure 'a yük devretme çalıştırma
 
-Bu makalede, Site Recovery tarafından korunan sanal makinelerin ve fiziksel sunucuların nasıl yük devretmesinin nasıl yapılacağı açıklanır.
+Bu makalede [Azure Site Recovery](site-recovery-overview.md) ' de şirket Içi makinelerin Azure 'a yük devretme işlemi açıklanır
 
-## <a name="prerequisites"></a>Önkoşullar
-1. Yük devretme yapmadan önce, her şeyin beklendiği gibi çalıştığından emin olmak için bir [Yük devretme testi](site-recovery-test-failover-to-azure.md) yapın.
-1. Yük devretme yapmadan önce ağı hedef konumda [hazırlayın](site-recovery-network-design.md) .  
+## <a name="before-you-start"></a>Başlamadan önce
 
-Azure Site Recovery tarafından sunulan yük devretme seçenekleri hakkında bilgi edinmek için aşağıdaki tabloyu kullanın. Bu seçenekler, farklı yük devretme senaryoları için de listelenir.
+- Olağanüstü durum kurtarma 'daki yük devretme süreci hakkında [bilgi edinin](failover-failback-overview.md) .
+- Birden fazla makinenin yükünü devretmek istiyorsanız, bir kurtarma planında makineleri nasıl [toplayacağınızı öğrenin](recovery-plan-overview.md) .
+- Tam yük devretme yapmadan önce, her şeyin beklendiği gibi çalıştığından emin olmak için bir [olağanüstü durum kurtarma detayına](site-recovery-test-failover-to-azure.md) sahip olun.
 
-| Senaryo | Uygulama kurtarma gereksinimi | Hyper-V için iş akışı | VMware için iş akışı
-|---|--|--|--|
-|Yaklaşan bir veri merkezi kapalı kalma süresi nedeniyle planlı yük devretme| Planlı bir etkinlik gerçekleştirildiğinde uygulama için sıfır veri kaybı| Hyper-V için ASR, verileri Kullanıcı tarafından belirtilen bir kopyalama sıklığında çoğaltır. Planlı Yük devretme, sıklığı geçersiz kılmak ve bir yük devretme başlatılmadan önce son değişiklikleri çoğaltmak için kullanılır. <br/> <br/> 1. işletmenizin değişiklik yönetimi süreci uyarınca bir bakım penceresi planlayın. <br/><br/> 2. yaklaşan kapalı kalma süresini kullanıcılara bildirin. <br/><br/> 3. kullanıcıya yönelik uygulamayı çevrimdışına alın.<br/><br/>4. ASR portalını kullanarak planlı yük devretmeyi başlatın. Şirket içi sanal makine otomatik olarak kapatılır.<br/><br/>Etkin uygulama veri kaybı = 0 <br/><br/>Kurtarma noktalarının günlüğü, daha eski bir kurtarma noktası kullanmak isteyen bir kullanıcının bekletme penceresinde de sağlanır. (Hyper-V için 24 saat bekletme). Çoğaltma, bekletme penceresinin zaman çerçevesinin ötesinde durdurulmuşsa, müşteriler hala kullanılabilir olan en son kurtarma noktalarını kullanarak yük devredebiliyor olabilir. | VMware için ASR, CDP kullanarak verileri sürekli çoğaltır. Yük devretme, kullanıcıya en son verilere yük devretme seçeneği verir (uygulama sonrası kapatma dahil)<br/><br/> 1. değişiklik yönetimi işlemine göre bir bakım penceresi planlayın <br/><br/>2. yaklaşan kapalı kalma süresini kullanıcılara bildirin <br/><br/>3. kullanıcıya yönelik uygulamayı çevrimdışına alın.<br/><br/>4. uygulama çevrimdışı olduktan sonra ASR portalını kullanarak planlanmış bir yük devretmeyi en son noktaya başlatın. Portalda "planlı yük devretme" seçeneğini kullanın ve yük devretme için en son noktayı seçin. Şirket içi sanal makine otomatik olarak kapatılır.<br/><br/>Etkin uygulama veri kaybı = 0 <br/><br/>Bir bekletme penceresindeki kurtarma noktalarının günlüğü, daha eski bir kurtarma noktası kullanmak isteyen bir müşteri için sağlanır. (VMware için 72 saat bekletme). Çoğaltma, bekletme penceresinin zaman çerçevesinin ötesinde durdurulmuşsa, müşteriler hala kullanılabilir olan en son kurtarma noktalarını kullanarak yük devredebiliyor olabilir.
-|Planlanmamış bir veri merkezi kapalı kalma süresi nedeniyle yük devretme (doğal veya BT olağanüstü durum) | Uygulama için en az veri kaybı | 1. kuruluşun BCP planını başlatın <br/><br/>2. ASR portalını kullanarak planlanmamış yük devretme işlemini en son veya bir noktaya bekletme penceresinde (günlük) başlatın.| 1. kuruluşun BCP planını başlatın. <br/><br/>2. ASR portalını kullanarak planlanmamış yük devretme işlemini en son veya bir noktaya bekletme penceresinde (günlük) başlatın.
+## <a name="prepare-to-connect-after-failover"></a>Yük devretmeden sonra bağlanmaya hazırlanma
+
+Yük devretmeden sonra oluşturulan Azure VM 'lerine bağlanabildiğinizden emin olmak için, yük devretmeden önce şirket içi yapmanız gereken birkaç şey vardır.
+
+
+### <a name="prepare-on-premises-to-connect-after-failover"></a>Yük devretmeden sonra bağlanmak için şirket içi hazırlama
+
+Yük devretmenin ardından RDP/SSH kullanarak Azure VM 'lerine bağlanmak isterseniz, yük devretmeden önce şirket içi yapmanız gereken birkaç şey vardır.
+
+**Yük devretmeden sonra** | **Konum** | **Eylemler**
+--- | --- | ---
+**Windows çalıştıran Azure VM** | Yük devretmeden önce şirket içi makine | Azure VM 'ye internet üzerinden erişmek için RDP 'yi etkinleştirin ve TCP ve UDP kurallarının **genel**'e eklendiğinden emin olun ve **Windows Güvenlik Duvarı** 'nda **izin verilen uygulamalar** > tüm profiller için RDP 'ye izin verildiğinden emin olun.<br/><br/> Azure VM 'ye siteden siteye bağlantı üzerinden erişmek için makinede RDP 'yi etkinleştirin ve **Windows Güvenlik Duvarı** 'Nda **etki alanı ve özel** ağlar için **izin VERILEN uygulamalar ve Özellikler** -> RDP 'ye izin verildiğinden emin olun.<br/><br/> <br/><br/> Tüm statik kalıcı rotaları ve WinHTTP proxy 'yi kaldırın. İşletim sistemi SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135).<br/><br/> Yük devretme tetiklemeniz sırasında VM 'de bekleyen bir Windows güncelleştirmesi olmadığından emin olun. Yük devretmek için Windows Update başlayabilir ve güncelleştirme tamamlanana kadar VM 'de oturum açamazsınız.
+**Linux çalıştıran Azure VM** | Yük devretmeden önce şirket içi makine | VM 'deki Secure Shell hizmetinin sistem önyüklemesi üzerinde otomatik olarak başlayacak şekilde ayarlandığından emin olun.<br/><br/> Güvenlik duvarı kurallarının gerçekleştirilecek SSH bağlantısına izin verdiğinden emin olun.
 
 
 ## <a name="run-a-failover"></a>Yük devretme çalıştırma
-Bu yordam, bir [kurtarma planı](site-recovery-create-recovery-plans.md)için yük devretmeyi nasıl çalıştıracağınızı açıklar. Alternatif olarak, [burada](vmware-azure-tutorial-failover-failback.md#run-a-failover-to-azure)açıklandığı gibi **çoğaltılan öğeler** sayfasından tek bir sanal makine veya fiziksel sunucu için yük devretmeyi çalıştırabilirsiniz.
+
+Bu yordam, bir [kurtarma planı](site-recovery-create-recovery-plans.md)için yük devretmeyi nasıl çalıştıracağınızı açıklar. Tek bir VM için yük devretme çalıştırmak istiyorsanız, bir [VMware VM](vmware-azure-tutorial-failover-failback.md), [fiziksel sunucu](physical-to-azure-failover-failback.md)veya bir [Hyper-V sanal makinesi](hyper-v-azure-failover-failback-tutorial.md)için yönergeleri izleyin.
 
 
-![Yük Devretme](./media/site-recovery-failover/Failover.png)
+Kurtarma planı yük devretmesini aşağıdaki gibi çalıştırın:
 
-1. *Recoveryplan_name* > **Kurtarma planlarını** seçin. **Yük devretme** ' ye tıklayın
-2. **Yük devretme** ekranında, yük devretme Için bir **Kurtarma noktası** seçin. Aşağıdaki seçeneklerden birini kullanabilirsiniz:
-   1. **En son**: Bu seçenek, ilk olarak Site Recovery hizmetine gönderilen tüm verileri işleyerek işi başlatır. Verilerin işlenmesi, her sanal makine için bir kurtarma noktası oluşturur. Bu kurtarma noktası, yük devretme sırasında sanal makine tarafından kullanılır. Yük devretmeden sonra oluşturulan sanal makine, yük devretme tetiklendiğinde Site Recovery hizmetine çoğaltılan tüm verilere sahip olduğundan, bu seçenek en düşük RPO (kurtarma noktası hedefi) sağlar.
-   1. **En son işlenen**: Bu seçenek, kurtarma planının tüm sanal makinelerini Site Recovery hizmeti tarafından zaten işlenmiş olan en son kurtarma noktasına devreder. Bir sanal makinenin yük devretme testini yaparken, son işlenen kurtarma noktasının zaman damgası da gösterilir. Bir kurtarma planında yük devretme yapıyorsanız, bu bilgileri almak için tek tek sanal makineye gidebilir ve **en son kurtarma noktaları** kutucuğuna bakabilirsiniz. İşlenmemiş verileri işlemek için zaman harcanmadan Bu seçenek, düşük bir RTO (kurtarma süresi hedefi) yük devretme seçeneği sağlar.
-   1. **En son uygulamayla tutarlı**: Bu seçenek, kurtarma planının tüm sanal makinelerini, Site Recovery hizmeti tarafından zaten işlenmiş olan en son uygulamayla tutarlı kurtarma noktasına devreder. Bir sanal makinenin yük devretme testini yaparken, uygulamayla tutarlı en son kurtarma noktasının zaman damgası da gösterilir. Bir kurtarma planında yük devretme yapıyorsanız, bu bilgileri almak için tek tek sanal makineye gidebilir ve **en son kurtarma noktaları** kutucuğuna bakabilirsiniz.
-   1. **Işlenen en son çoklu VM**: Bu seçenek yalnızca çoklu VM tutarlılığı olan en az bir sanal makineye sahip kurtarma planlarında kullanılabilir. Çoğaltma grubunun bir parçası olan sanal makineler en son ortak çoklu VM tutarlı kurtarma noktasına yük devretmeye. Diğer sanal makineler, son işlenen kurtarma noktasına yük devreder.  
-   1. **En son çoklu VM ile uygulamayla tutarlı**: Bu seçenek yalnızca çoklu VM tutarlılığı olan en az bir sanal makineye sahip kurtarma planları için kullanılabilir. Çoğaltma grubunun bir parçası olan sanal makineler, en son ortak çoklu VM uygulama ile tutarlı kurtarma noktasına yük devretmeye olanak sağlar. Diğer sanal makineler, uygulamayla tutarlı en son kurtarma noktasına yük devreder.
-   1. **Özel**: bir sanal makinenin yük devretme testini yapıyorsanız, belirli bir kurtarma noktasına yük devretmek için bu seçeneği kullanabilirsiniz.
+1. Site Recovery kasasında **Kurtarma planlarını** > *recoveryplan_name*' nı seçin.
+2. **Yük devretme**' ye tıklayın.
 
-      > [!NOTE]
-      > Kurtarma noktası seçme seçeneği yalnızca Azure 'a yük devrettikten sonra kullanılabilir.
-      >
-      >
+    ![Yük Devretme](./media/site-recovery-failover/Failover.png)
 
+3. Yük **devretme > yük** **devretme yönü**' nde, Azure 'a çoğaltma yapıyorsanız varsayılan olarak bırakın.
+4. **Yük devretme**bölümünde yük devretmek Için bir **Kurtarma noktası** seçin.
 
-1. Kurtarma planındaki bazı sanal makineler önceki bir çalıştırmada yük devretmişse ve artık sanal makineler hem kaynak hem de hedef konumda etkinse, yük devretmenin gerçekleşmesi için yön **değiştirme** seçeneğini kullanabilirsiniz.
-1. Azure 'a yük devretmek ve bulut için veri şifreleme etkinleştirilmişse (yalnızca VMM sunucusundan Hyper-v sanal makinelerini koruduysanız geçerlidir), **şifreleme anahtarı** ' nda, veri şifrelemeyi etkinleştirdiğinizde verilen sertifikayı seçin VMM sunucusunda kurulum.
-1. Yük devretmeyi tetiklemeden önce Site Recovery kaynak sanal makineleri kapatmayı denemek istiyorsanız, **yük devretmeye başlamadan önce kapatma makinesi** ' ni seçin. Yük devretme, kapatma başarısız olsa bile devam eder.  
+    - **En son**: en son noktayı kullanın. Bu, Site Recovery hizmetine gönderilen tüm verileri işler ve her makine için bir kurtarma noktası oluşturur. Yük devretmeden sonra oluşturulan VM, yük devretme tetiklendiğinde Site Recovery çoğaltılan tüm verilere sahip olduğundan, bu seçenek en düşük RPO (kurtarma noktası hedefi) sağlar.
+   - **En son işlenen**: Site Recovery tarafından zaten işlenen en son kurtarma noktasına VM 'lerin yükünü devretmek için bu seçeneği kullanın. En son işlenen kurtarma noktasını VM **en son kurtarma noktalarında**görebilirsiniz. Bu seçenek, işlenmemiş verileri işlemek için bir süre harcanması için düşük bir RTO sağlar
+   - **En son uygulamayla tutarlı**: Site Recovery tarafından işlenen en son uygulamayla tutarlı kurtarma noktasına VM 'leri devretmek için bu seçeneği kullanın.
+   - **En son çoklu VM işlendi**: Bu seçenek, çoğaltma grubunun bir parçası olan VM 'lerin en son ortak çoklu VM tutarlı kurtarma noktasına devredilmesine sahiptir. Diğer sanal makineler, son işlenen kurtarma noktasına yük devreder. Bu seçenek yalnızca çoklu VM tutarlılığı etkinleştirilmiş en az bir VM içeren kurtarma planları içindir.
+   - **En son çoklu VM uygulaması-tutarlı**: Bu seçenek, bir çoğaltma grubunun parçası olan VM 'ler, en son ortak çoklu VM ile uygulamayla tutarlı kurtarma noktasına yük devreder. Diğer sanal makineler, uygulamayla tutarlı en son kurtarma noktasına yük devreder. Yalnızca çoklu VM tutarlılığı etkinleştirilmiş en az bir VM 'ye sahip kurtarma planları için.
+   - **Özel**: kurtarma planları için kullanılamaz. Bu seçenek yalnızca tek VM 'lerin yük devretmesi içindir.
+
+5. Yük devretmeye başlamadan önce kaynak VM 'Leri kapatmak Site Recovery isterseniz, **yük devretmeye başlamadan önce kapatma makinesini** seçin. Kapatma işlemi başarısız olsa bile yük devretme devam eder.  
 
     > [!NOTE]
-    > Hyper-v sanal makineleri korunuyorsa, kapatma seçeneği, yük devretmeyi tetiklemeden önce henüz hizmete gönderilmemiş olan şirket içi verileri eşitlemeye çalışır.
-    >
-    >
+    > Hyper-V VM 'lerinin yükünü devretmek, kapatıldı, yük devretmeyi tetiklemeden önce henüz hizmete gönderilmemiş olan şirket içi verileri eşitlemeye ve çoğaltmaya çalışır. 
 
-1. Yük devretme işlemini **İşler** sayfasında takip edebilirsiniz. Planlanmamış bir yük devretme sırasında hatalar gerçekleşse bile, kurtarma planı tamamlanana kadar çalışır.
-1. Yük devretmeden sonra, sanal makineyi oturum açarak doğrulayın. Sanal makinenin başka bir kurtarma noktasına geçmek istiyorsanız, **kurtarma noktasını Değiştir** seçeneğini kullanabilirsiniz.
-1. Yük devredilmiş sanal makineden memnun kaldığınızda, yük devretmeyi **Yürütebilirsiniz**. **Yürüt hizmeti ile kullanılabilen tüm kurtarma noktalarını siler** ve **kurtarma noktasını Değiştir** seçeneği artık kullanılamaz.
+6. **İşler** sayfasında yük devretme ilerlemesini izleyin. Hatalar gerçekleşse bile kurtarma planı tamamlanana kadar çalışır.
+7. Yük devretmeden sonra, doğrulamak için VM 'de oturum açın. 
+8. Yük devretme için kullanılacak farklı bir kurtarma noktasına geçiş yapmak istiyorsanız, **değişiklik kurtarma noktasını**kullanın.
+9. Hazırsanız, yük devretmeyi gerçekleştirebilirsiniz. **Kaydetme** eylemi, hizmetle kullanılabilen tüm kurtarma noktalarını siler. **Kurtarma noktasını Değiştir** seçeneği artık kullanılabilir olmayacaktır.
 
-## <a name="planned-failover"></a>Planlı Yük devretme
-Site Recovery kullanılarak korunan sanal makineler/fiziksel sunucular, **Planlı Yük devretmeyi**da destekler. Planlı Yük devretme, sıfır veri kaybı yük devretme seçeneğidir. Planlı bir yük devretme tetiklendiğinde, ilk olarak kaynak sanal makineler kapatılır, en son veriler eşitlenir ve ardından bir yük devretme tetiklenir.
+## <a name="run-a-planned-failover-hyper-v"></a>Planlı Yük devretmeyi çalıştırma (Hyper-V)
 
-> [!NOTE]
-> Hyper-v sanal makinelerinin şirket içi bir siteden başka bir şirket içi siteye yük devretmesi sırasında, birincil şirket içi siteye geri dönmek **için öncelikle sanal** makineyi birincil siteye geri ve sonra bir yük devretme tetiklemeniz gerekir. Birincil sanal makine kullanılabilir durumda değilse, **ters çoğaltmaya** başlamadan önce, sanal makineyi bir yedekten geri yüklemeniz gerekir.   
+Hyper-V VM 'Leri için planlı bir yük devretme çalıştırabilirsiniz.
+
+- Planlanmış bir yük devretme, sıfır veri kaybı yük devretme seçeneğidir.
+- Planlı bir yük devretme tetiklendiğinde, ilk olarak kaynak sanal makineler kapatılır, en son veriler eşitlenir ve ardından bir yük devretme tetiklenir.
+- Planlanmış **Yük** devretme seçeneğini kullanarak planlı yük devretme çalıştırırsınız. Düzenli yük devretmede benzer bir şekilde çalışır.
  
- 
-## <a name="failover-job"></a>Yük devretme işi
+## <a name="track-failovers"></a>Yük devretme izleme
+
+Yük devretmeyle ilişkili bir dizi iş vardır.
 
 ![Yük Devretme](./media/site-recovery-failover/FailoverJob.png)
 
-Yük devretme tetiklendiğinde, aşağıdaki adımları içerir:
-
-1. Önkoşul denetimi: Bu adım, yük devretme için gereken tüm koşulların karşılanmasını sağlar
-1. Yük devretme: Bu adım, verileri işler ve bir Azure sanal makinesinin oluşturulabilmesi için hazır hale getirir. **En son** kurtarma noktasını seçtiyseniz, bu adım hizmete gönderilen verilerden bir kurtarma noktası oluşturur.
-1. Başlangıç: Bu adım, önceki adımda işlenen verileri kullanarak bir Azure sanal makinesi oluşturur.
+- **Önkoşul denetimi**: yük devretme için gereken tüm koşulların karşılanmasını sağlar.
+- **Yük devretme**: verileri BIR Azure VM 'den oluşturulabilmesi için işler. **En son** kurtarma noktasını seçtiyseniz, hizmete gönderilen verilerden bir kurtarma noktası oluşturulur.
+- **Başlat**: önceki adımda işlenen verileri kullanarak BIR Azure VM oluşturur.
 
 > [!WARNING]
-> **Devam eden yük devretme Işlemini Iptal etmeyin**: yük devretme başlatılmadan önce, sanal makine için çoğaltma durdurulur. Devam eden bir işi **iptal** ederseniz, yük devretme işlemi duraklar ancak sanal makine çoğaltılmak üzere başlamaz. Çoğaltma yeniden başlatılamaz.
->
->
+> **Devam eden bir yük devretme işlemini Iptal etmeyin**: yük devretme BAŞLATıLMADAN önce VM için çoğaltma durduruldu. Devam eden bir işi iptal ederseniz, yük devretme işlemi duraklar, ancak VM çoğaltılmak üzere başlamaz. Çoğaltma yeniden başlatılamaz.
 
-## <a name="time-taken-for-failover-to-azure"></a>Azure 'a yük devretme için geçen süre
 
-Belirli durumlarda, sanal makinelerin yük devretmesi, genellikle yaklaşık 8 ila 10 dakikalık bir adım sürer. Aşağıdaki durumlarda, yük devretme için geçen süre normalden daha yüksek olacaktır:
+### <a name="extra-failover-time"></a>Ek yük devretme süresi
 
-* 9,8 'den eski sürüm Mobility hizmetini kullanan VMware sanal makineleri
-* Fiziksel sunucular
-* VMware Linux sanal makineleri
-* Fiziksel sunucu olarak korunan Hyper-V sanal makineleri
-* Aşağıdaki sürücülerin önyükleme sürücüleri olarak bulunmadığı VMware sanal makineleri
+Bazı durumlarda VM yük devretmesi, genellikle yaklaşık sekiz ila 10 dakika boyunca geçen ara adım gerektirir. Bunlar, bu ek adım/zamandan etkilenen makinelerdir:
+
+* 9,8 'den eski bir Mobility hizmeti sürümü çalıştıran VMware sanal makineleri.
+* Fiziksel sunucular ve fiziksel sunucu olarak korunan Hyper-V VM 'Leri.
+* VMware Linux VM 'Leri.
+* Bu sürücülerin önyükleme sürücüleri olarak bulunmadığı VMware VM 'Leri:
     * storvsc
     * VMBus
     * storflt
     * intelide
     * ATAPI
-* DHCP hizmeti etkinleştirilmemiş olan VMware sanal makineleri, DHCP veya statik IP adresleri mi kullandıklarından bağımsız olarak etkindir
+* DHCP veya statik IP adresleri kullanıp kullanmadığını bağımsız olarak, DHCP 'nin etkin olmadığı VMware VM 'Leri.
 
-Diğer tüm durumlarda, bu ara adım gerekli değildir ve yük devretme için geçen süre düşüktür.
 
-## <a name="using-scripts-in-failover"></a>Yük devretmede betikleri kullanma
-Yük devretme yaparken belirli eylemleri otomatikleştirmek isteyebilirsiniz. Bunu yapmak için, [Kurtarma planlarında](site-recovery-create-recovery-plans.md) betikleri veya [Azure Otomasyonu runbook 'larını](site-recovery-runbook-automation.md) kullanabilirsiniz.
+## <a name="automate-actions-during-failover"></a>Yük devretme sırasında eylemleri otomatikleştirme
 
-## <a name="post-failover-considerations"></a>Yük devretme sonrası konuları
-Yük devretme sonrası aşağıdaki önerileri göz önünde bulundurmanız gerekebilir:
-### <a name="retaining-drive-letter-after-failover"></a>Yük devretmeden sonra sürücü harfini koruma
-Azure Site Recovery sürücü harflerinin bekletilmesini yönetir. Bazı diskleri dışlamayı seçtiğinizde, nasıl yapıldığı hakkında [daha fazla bilgi edinin](vmware-azure-exclude-disk.md#example-1-exclude-the-sql-server-tempdb-disk) .
+Yük devretme sırasında eylemleri otomatikleştirmek isteyebilirsiniz. Bunu yapmak için kurtarma planlarında betikleri veya Azure Otomasyonu runbook 'larını kullanabilirsiniz.
 
-## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Yük devretmeden sonra Azure VM'lerine bağlanmak için hazırlık yapma
+- Betik ekleme dahil olmak üzere Kurtarma planlarını oluşturma ve özelleştirme hakkında [bilgi edinin](site-recovery-create-recovery-plans.md) .
+- Kurtarma planlarına Azure Otomasyonu runbook 'ları eklemeyi [öğrenin](site-recovery-runbook-automation.md) .
 
-Yük devretme sonrasında RDP/SSH kullanarak Azure VM'lerine bağlanmak istiyorsanız [buradaki](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) tabloda özetlenen gereksinimleri izleyin.
+
+## <a name="configure-settings-after-failover"></a>Yük devretmeden sonra ayarları Yapılandır
+
+### <a name="retain-drive-letters-after-failover"></a>Yük devretme sonrasında sürücü harflerini sakla
+
+Site Recovery sürücü harflerinin bekletilmesini yönetir. VM çoğaltma sırasında diskleri dışaktarıyorsanız, bunun nasıl çalıştığına ilişkin [bir örnek inceleyin](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk) .
+
+### <a name="prepare-in-azure-to-connect-after-failover"></a>Yük devretmeden sonra bağlanmak için Azure 'da hazırlama
+
+RDP veya SSH kullanarak yük devretmeden sonra oluşturulan Azure VM 'lerine bağlanmak istiyorsanız, tabloda özetlenen gereksinimleri izleyin.
+
+**Yük devretme** | **Konum** | **Eylemler**
+--- | --- | ---
+**Windows çalıştıran Azure VM** | Yük devretmeden sonra Azure VM |  VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının, RDP bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM 'nin ekran görüntüsünü doğrulamak için **önyükleme tanılamalarını** denetleyin.<br/><br/> Bağlanamıyorsanız, sanal makinenin çalıştığından emin olun ve bu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)gözden geçirin.
+**Linux çalıştıran Azure VM** | Yük devretmeden sonra Azure VM | Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının SSH bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> VM 'nin ekran görüntüsü için **önyükleme tanılamayı** denetleyin.<br/><br/>
 
 Yük devretme sonrasında karşılaştığınız bağlantı sorunlarını gidermek için [burada](site-recovery-failover-to-azure-troubleshoot.md) anlatılan adımları izleyin.
+
+## <a name="set-up-ip-addressing"></a>IP adresini ayarlama
+
+- **Iç IP adresleri**: yük devretmeden sonra BIR Azure VM 'SININ iç IP adresini ayarlamak için birkaç seçeneğiniz vardır:
+    - Aynı IP adresini sakla: Azure VM 'de şirket içi makineye ayrılan IP adresini de kullanabilirsiniz.
+    - Farklı IP adresi kullan: Azure VM için farklı bir IP adresi kullanabilirsiniz.
+    - İç IP adreslerini ayarlama hakkında [daha fazla bilgi edinin](concepts-on-premises-to-azure-networking.md#assign-an-internal-address) .
+- **Dış IP adresleri**: yük devretmede genel IP adreslerini koruyabilirsiniz. Yük devretme işleminin bir parçası olarak oluşturulan Azure VM 'lerine Azure bölgesinde kullanılabilir bir Azure genel IP adresi atanmalıdır. Genel bir IP adresini el ile veya işlemi bir kurtarma planıyla otomatikleştirerek atayabilirsiniz. [Daha fazla bilgi edinin](concepts-public-ip-address-with-site-recovery.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!WARNING]
-> Sanal makinelerin yük devretmesini ve şirket içi veri merkezini kullanıma aldıktan sonra, VMware sanal makinelerini şirket içi veri merkezine yeniden [**korumalısınız**](vmware-azure-reprotect.md) .
+Yük devretmesini tamamladıktan sonra, Azure sanal makinelerini şirket içi siteye tekrar Çoğaltmaya başlamak için yeniden korumanız gerekir. Çoğaltma çalışıyor ve çalıştıktan sonra, hazırsanız şirket içi oturum açma işlemi geri alabilirsiniz.
 
-Hyper-v sanal makinelerini Azure 'dan şirket içine yeniden **çalışma** için [**Planlı Yük devretme**](hyper-v-azure-failback.md) seçeneğini kullanın.
+- Yeniden koruma ve yeniden çalışma hakkında [daha fazla bilgi edinin](failover-failback-overview.md#reprotectionfailback) .
+- VMware yeniden koruma ve yeniden çalışma için [hazırlanma](vmware-azure-reprotect.md) .
+- [Yeniden başarısız oldu](hyper-v-azure-failback.md) Hyper-V VM 'Leri.
+- Fiziksel sunucular için yük devretme ve yeniden çalışma işlemi [hakkında bilgi edinin](physical-to-azure-failover-failback.md) .
 
-Hyper-v sanal makinesini bir VMM sunucusu tarafından yönetilen başka bir şirket içi veri merkezine devretmenize ve birincil veri merkezi kullanılabilir durumda değilse çoğaltmayı birincil veri merkezine yeniden başlatmak için **ters Çoğalt** seçeneğini kullanın.

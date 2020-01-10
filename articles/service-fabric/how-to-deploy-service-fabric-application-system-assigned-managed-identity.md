@@ -1,25 +1,21 @@
 ---
-title: Azure Service Fabric-bir Azure Service Fabric uygulamasını sistem tarafından atanan yönetilen kimlikle dağıtma | Microsoft Docs
+title: System-atanan mı ile Service Fabric uygulaması dağıtma
 description: Bu makalede, bir Azure Service Fabric uygulamasına sistem tarafından atanan yönetilen bir kimlik atama gösterilmektedir
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: cf971d71c2566d91bc5a2490d47521725c62b17d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973419"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614834"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Service Fabric uygulamasını sistem tarafından atanan yönetilen kimlikle dağıtma (Önizleme)
 
 Azure Service Fabric uygulamaları için yönetilen kimlik özelliğine erişebilmek için öncelikle kümede yönetilen kimlik belirteci hizmetini etkinleştirmeniz gerekir. Bu hizmet, yönetilen kimliklerini kullanan Service Fabric uygulamalarının kimlik doğrulamasından ve kendi adına erişim belirteçleri elde etmeye sorumludur. Hizmet etkinleştirildikten sonra, sol bölmedeki **sistem** bölümü altında, diğer sistem hizmetleri ' nin yanında bulunan **Fabric:/System/Managedıdentitytokenservice** altında çalışan Service Fabric Explorer görebilirsiniz.
 
 > [!NOTE] 
-> Yönetilen kimliklere sahip Service Fabric uygulamalarının dağıtımı, API sürümü `"2019-06-01-preview"` ' dan başlayarak desteklenir. Uygulama türü, uygulama türü sürümü ve hizmet kaynakları için aynı API sürümünü de kullanabilirsiniz. Desteklenen en düşük Service Fabric çalışma zamanı 6,5 CU2 UYGULAMAZSANıZ. Ek olarak, derleme/paket ortamında CU2 UYGULAMAZSANıZ veya üzeri sürümlerde SF .NET SDK 'Sı de bulunmalıdır
+> Yönetilen kimliklere sahip Service Fabric uygulamalarının dağıtımı, API sürümü `"2019-06-01-preview"`itibaren desteklenmektedir. Uygulama türü, uygulama türü sürümü ve hizmet kaynakları için aynı API sürümünü de kullanabilirsiniz. Desteklenen en düşük Service Fabric çalışma zamanı 6,5 CU2 UYGULAMAZSANıZ. Ek olarak, derleme/paket ortamında CU2 UYGULAMAZSANıZ veya üzeri sürümlerde SF .NET SDK 'Sı de bulunmalıdır
 
 ## <a name="system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik
 
@@ -47,7 +43,7 @@ Uygulamayı sistem tarafından atanan bir yönetilen kimlikle etkinleştirmek i�
       }
     }
 ```
-Bu özellik, bu kaynağın örtük (`system assigned`) yönetilen bir kimliğe sahip olması için sırasıyla Azure Resource Manager ve yönetilen kimliği ve Service Fabric kaynak sağlayıcılarını bildirir.
+Bu özellik, bu kaynağın örtük (`system assigned`) yönetilen bir kimliğe sahip olması için sırasıyla, yönetilen kimliği ve Service Fabric kaynak sağlayıcılarını bildirir (Azure Resource Manager.
 
 ### <a name="application-and-service-package"></a>Uygulama ve hizmet paketi
 
@@ -76,9 +72,9 @@ Bu özellik, bu kaynağın örtük (`system assigned`) yönetilen bir kimliğe s
         </ServiceManifestImport>
       ```
 
-    Bu öğe, uygulamanın kimliğini hizmete atar; Bu atama olmadan, hizmet uygulamanın kimliğine erişemez. Yukarıdaki kod parçacığında, `SystemAssigned` kimliği (ayrılmış bir anahtar sözcük), `WebAdmin` kolay adı altında hizmetin tanımına eşlenir.
+    Bu öğe, uygulamanın kimliğini hizmete atar; Bu atama olmadan, hizmet uygulamanın kimliğine erişemez. Yukarıdaki kod parçacığında, `SystemAssigned` kimliği (ayrılmış bir anahtar sözcük) `WebAdmin`kolay ad altında hizmetin tanımına eşlenir.
 
-3. Uygulama bildiriminde `IdentityBindingPolicy` tanımından `ServiceIdentityRef` ayarının değeriyle eşleşen ada sahip **kaynaklar** bölümünün Içine bir **managedıdentity** öğesi eklemek için hizmet bildirimini güncelleştirin:
+3. **Kaynak** bölümündeki bir **managedıdentity** öğesi eklemek için hizmet bildirimini güncelleştirin ve uygulama bildiriminde `IdentityBindingPolicy` tanımından `ServiceIdentityRef` ayarının değeriyle eşleşen adı vardır:
 
     **ServiceManifest. xml**
 

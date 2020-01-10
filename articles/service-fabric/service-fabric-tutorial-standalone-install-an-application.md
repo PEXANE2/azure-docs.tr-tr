@@ -1,28 +1,19 @@
 ---
-title: 'Öğretici: Tek başına Service Fabric kümenize uygulama yükleme - Azure Service Fabric | Microsoft Docs'
+title: Tek başına kümede uygulama yükleme
 description: Bu öğreticide, tek başına Service Fabric kümenize bir uygulamanın nasıl yükleneceğini öğreneceksiniz.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 5e5260a2001d9cb0a38f4182e923a5416f76712b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 124fc6035c1d0ad504a34b7db227f0f4675f24f7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384983"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613967"
 ---
-# <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Öğretici: Service Fabric tek başına kümenizde uygulama dağıtma
+# <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Öğretici: Service Fabric tek başına kümenize uygulama dağıtma
 
 Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fabric’in benimsediği "her işletim sistemi, her bulut" yaklaşımının bir parçası olarak bir küme oluşturma seçeneği sunar. Bu öğretici serisinde, AWS üzerinde barındırılan bir tek başına küme oluşturur ve bir uygulamayı buna dağıtırsınız.
 
@@ -34,7 +25,7 @@ Serinin üçüncü bölümünde şunları öğrenirsiniz:
 > * Örnek uygulamayı indirme
 > * Kümeye dağıtma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -61,7 +52,7 @@ Uygulama indirildikten sonra, doğrudan Visual Studio'dan bir kümeye dağıtabi
 
 4. Çözüm Gezgini'nde `Voting` uygulama projesine sağ tıklayın ve **Yayımla**’yı seçin
 
-5. **Bağlantı Uç Noktası** açılır listesini seçin ve kümenizdeki düğümlerden birinin genel DNS Adını girin.  Örneğin: `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Azure 'da tam etki alanı adı (FQDN) otomatik olarak verilmediğini, ancak [VM 'ye Genel Bakış sayfasında](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn) kolayca ayarlanabildiğini unutmayın.
+5. **Bağlantı Uç Noktası** açılır listesini seçin ve kümenizdeki düğümlerden birinin genel DNS Adını girin.  Örneğin, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Azure 'da tam etki alanı adı (FQDN) otomatik olarak verilmediğini, ancak [VM 'ye Genel Bakış sayfasında kolayca ayarlanabildiğini unutmayın.](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)
 
 6. Tercih ettiğiniz tarayıcıyı açın ve küme adresini girin (bu uygulamanın 8080 numaralı bağlantı noktasında dağıttığı bağlantı uç noktası - örneğin, ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 

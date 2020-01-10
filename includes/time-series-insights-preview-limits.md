@@ -4,17 +4,17 @@ description: include dosyası
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/06/2019
+ms.date: 12/31/2019
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: be46a0dda24dc990e895a3e983c730337f9cf31d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 90e6e5c8d6d4f10e2d63f80b9c0840854424f5a7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980757"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75616179"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Genel kullanılabilirlik ve önizleme karşılaştırması
 
@@ -49,6 +49,8 @@ Time Series Insights Özellik sınırları, GA 'de en fazla 800 ' den 1.000 ' e 
 
 * [Bir olay hub 'ı kaynağı eklemeyi](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)öğrenin.
 * [IoT Hub 'ı kaynağı](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)yapılandırın.
+
+Varsayılan olarak, [Önizleme ortamları](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress) **ortam başına en fazla 1 megabayt (MB/sn)** hızda giriş hızını destekler. Müşteriler, gerekirse, önizleme ortamlarını **16 MB/sn** aktarım hızına kadar ölçeklendirebilir. Bölüm başına **0,5 MB/sn**sınırı da vardır. 
 
 ### <a name="api-limits"></a>API sınırları
 

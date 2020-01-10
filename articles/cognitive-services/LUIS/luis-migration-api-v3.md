@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: bb2255a9a68a499ff3e77c1fbd35081a2474cf1d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8756d8e60e7612c1610e07b0567465e3a0ea8884
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961945"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531505"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 için tahmin uç noktası değişiklikleri
 
@@ -83,12 +83,12 @@ V3 uç nokta HTTP çağrısının biçimi değişti.
 
 Sürümüne göre sorgulamak istiyorsanız, önce `"directVersionPublish":true`ile [API aracılığıyla yayımlamanız](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) gerekir. Yuva adı yerine sürüm KIMLIĞINE başvuran uç noktayı sorgulayın.
 
-|TAHMIN APı SÜRÜMÜ|YÖNTEMIDIR|URL'si|
+|TAHMIN APı SÜRÜMÜ|YÖNTEMIDIR|URL|
 |--|--|--|
 |V3|GET|https://<b>{REGION}</b>. api.cognitive.microsoft.com/luis/<b>tahmin</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-adı}</b>/tahmin? sorgu =<b>{Query}</b>|
 |V3|POST|https://<b>{REGION}</b>. api.cognitive.microsoft.com/luis/<b>tahmin</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{yuva-adı}</b>/tahmin|
 |V2|GET|https://<b>{REGION}</b><b>. api.Cognitive.Microsoft.com/Luis/tahmine</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{sürüm-kimliği}</b>/tahmin? sorgu =<b>{Query}</b>|
-|V2|POST|https://<b>{REGION}</b>. api.Cognitive.Microsoft.com/Luis/<b>Tahmini</b><b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{sürüm-kimliği}</b>/tahmin|
+|V2|POST|https://<b>{REGION}</b>. api.cognitive.microsoft.com/luis/<b>tahmin</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{sürüm-kimliği}</b>/tahmin|
 
 |`SLOT-NAME` için geçerli değerler|
 |--|
@@ -408,7 +408,7 @@ Kullanıcı dış varlığı gönderirse:
 
 
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 _İsteğe bağlı_ `resolution` özelliği, bir tahmine yanıt vererek, dış varlıkla ilişkili meta verileri geçirmenize ve ardından yanıtta geri almaya izin verir. 
 

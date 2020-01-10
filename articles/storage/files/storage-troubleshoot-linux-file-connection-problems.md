@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 005e93837d1d420526f6fb33e79d25a94da6fab7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fa60cbeb3dc2dea928168529a7e7a58cf01657c4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838545"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615013"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux 'ta Azure dosyaları sorunlarını giderme
 
@@ -142,7 +142,7 @@ Erişim izniniz yok
 
 ### <a name="solution-for-cause-1"></a>Neden 1 için çözüm
 
-Azure dosya paylaşımının bulunduğu depolama hesabına gidin, **erişim denetimi (IAM)** öğesine tıklayın ve Kullanıcı hesabınızın depolama hesabına erişimi olduğunu doğrulayın. Daha fazla bilgi edinmek için bkz. [rol tabanlı Access Control (RBAC) ile depolama hesabınızın güvenliğini sağlama](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
+Azure dosya paylaşımının bulunduğu depolama hesabına gidin, **erişim denetimi (IAM)** öğesine tıklayın ve Kullanıcı hesabınızın depolama hesabına erişimi olduğunu doğrulayın. Daha fazla bilgi edinmek için bkz. [rol tabanlı Access Control (RBAC) ile depolama hesabınızın güvenliğini sağlama](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Neden 2: depolama hesabında sanal ağ veya güvenlik duvarı kuralları etkin
 
@@ -229,7 +229,7 @@ Bir Azure dosya paylaşımındaki dosyaları ls komutunu kullanarak listelemeyi 
 Linux çekirdeğini bu sorun için bir düzeltmesine sahip olan aşağıdaki sürümlere yükseltin:
 
 - 4.4.87+
-- 4.9.48 +
+- 4.9.48+
 - 4.12.11+
 - 4,13 ' den büyük veya buna eşit olan tüm sürümler
 
@@ -269,7 +269,7 @@ Linux istemcisi uzun süre boşta kaldığında istemcide "112" bağlama hatası
 
 Bağlantı aşağıdaki nedenlerle boşta kalabilir:
 
--   Varsayılan "yazılım yoluyla" bağlama seçeneği kullanıldığında sunucuyla yeniden TCP bağlantısı kurulmasını engelleyen ağ iletişim hataları
+-   Varsayılan "geçici" bağlama seçeneği kullanıldığında sunucuyla yeniden TCP bağlantısı kurulmasını engelleyen ağ iletişim hataları
 -   Eski çekirdeklerde bulunmayan son yeniden bağlantı düzeltmeleri
 
 ### <a name="solution"></a>Çözüm

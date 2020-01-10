@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.openlocfilehash: 4b0dca1215cfecea5c9943bd27ee8a5c1de45311
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d88df0c7e17d297162a1921021b89f02077c2ac7
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893374"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560394"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -361,7 +361,7 @@ Uygulamanız genellikle aylık kotasına geçtiğinde bu örnekleme türünü ku
 
 Örnekleme hızını kullanım ve tahmini maliyetler sayfasında ayarlayın:
 
-![Uygulamaya genel bakış dikey penceresinde ayarlar, kota, örnekler ' e tıklayın, ardından bir örnekleme hızı seçin ve Güncelleştir ' e tıklayın.](./media/sampling/04.png)
+![Uygulamaya genel bakış dikey penceresinde ayarlar, kota, örnekler ' e tıklayın, ardından bir örnekleme hızı seçin ve Güncelleştir ' e tıklayın.](./media/sampling/data-sampling.png)
 
 Diğer örnekleme türleri gibi, algoritma ilgili telemetri öğelerini korur. Örneğin, aramada Telemetriyi incelerken belirli bir özel durumla ilgili isteği bulabilirsiniz. İstek hızı ve özel durum oranı gibi ölçüm sayımları doğru tutulur.
 
@@ -543,7 +543,7 @@ Azure Işlevlerinde çalışan uygulamaların örneklemesini yapılandırmak iç
         {
             if(somecondition)
             {
-                ((ISupportSampling)item).SamplingPercentage = 100;
+                ((ISupportSampling)telemetry).SamplingPercentage = 100;
             }
         }
       }

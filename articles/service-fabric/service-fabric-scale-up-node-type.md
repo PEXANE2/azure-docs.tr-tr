@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric düğüm türünü ölçeklendirme | Microsoft Docs
+title: Azure Service Fabric düğüm türünü büyütme
 description: Bir sanal makine ölçek kümesi ekleyerek bir Service Fabric kümesini ölçeklendirmeyi öğrenin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/13/2019
-ms.author: atsenthi
-ms.openlocfilehash: 272bc571a0ea71fd6e7bd45a426460d2e0faf1d7
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 33d535cb093eeb95e0ce95bdd5722bfd21150a40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599290"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464233"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric kümesi birincil düğüm türünü büyütme
 Bu makalede, sanal makine kaynaklarını artırarak Service Fabric kümesi birincil düğüm türünün nasıl ölçeklenebileceğinizi açıklamaktadır. Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir. Service Fabric kümesi oluşturduktan sonra, küme düğümü türünü dikey olarak ölçeklendirebilir (düğümlerin kaynaklarını değiştirebilir) veya düğüm türü VM 'lerinin işletim sistemini yükseltebilirsiniz.  Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
@@ -34,12 +23,12 @@ Bu makalede, sanal makine kaynaklarını artırarak Service Fabric kümesi birin
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>Birincil düğüm türü VM 'lerinin boyutunu ve işletim sistemini yükseltme
-Birincil düğüm türü VM 'lerinin sanal makine boyutunu ve işletim sistemini güncelleştirme süreci aşağıda verilmiştir.  Yükseltmeden sonra birincil düğüm türü VM 'Ler boyut standart D4_V2 ve Windows Server 2016 Datacenter 'u kapsayıcılar ile çalıştırır.
+Birincil düğüm türü VM 'lerinin sanal makine boyutunu ve işletim sistemini güncelleştirme süreci aşağıda verilmiştir.  Yükseltmeden sonra birincil düğüm türü VM 'Ler boyut standardı D4_V2 ve kapsayıcılarla Windows Server 2016 Datacenter çalıştırıyor.
 
 > [!WARNING]
 > Bir üretim kümesinde bu yordamı denemeden önce, örnek şablonları araştırmayı ve işlemi bir test kümesine karşı doğrulamanızı öneririz. Küme bir süre için de kullanılamaz. Paralel olarak aynı NodeType olarak belirtilen birden fazla VMSS üzerinde değişiklik yapamazsınız; Her NodeType VMSS 'de yapılan değişiklikleri ayrı ayrı uygulamak için ayrılmış dağıtım işlemleri gerçekleştirmeniz gerekir.
 
-1. Bu örnek [şablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) ve [parametre](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) dosyalarını kullanarak, ilk kümeyi iki düğüm türü ve iki ölçek kümesi (düğüm başına bir ölçek kümesi) dağıtın.  Her iki ölçek kümesi de standart D2_V2 boyutlardır ve Windows Server 2012 R2 Datacenter çalıştırıyor.  Kümenin temel yükseltme işleminin tamamlanmasını bekleyin.   
+1. Bu örnek [şablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) ve [parametre](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) dosyalarını kullanarak, ilk kümeyi iki düğüm türü ve iki ölçek kümesi (düğüm başına bir ölçek kümesi) dağıtın.  Her iki ölçek kümesi de boyut standardı D2_V2 ve Windows Server 2012 R2 Datacenter çalıştırıyor.  Kümenin temel yükseltme işleminin tamamlanmasını bekleyin.   
 2. İsteğe bağlı-kümeye durum bilgisi olan bir örnek dağıtın.
 3. Birincil düğüm türü VM 'Leri yükseltmeye karar verdikten sonra, bu örnek [şablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.json) ve [parametre](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.parameters.json) dosyalarını kullanarak birincil düğüm türüne yeni bir ölçek kümesi ekleyin, böylece birincil düğüm türünün artık iki ölçek kümesi vardır.  Sistem Hizmetleri ve kullanıcı uygulamaları iki farklı ölçek kümesindeki VM 'Ler arasında geçiş yapabilir.  Yeni ölçek kümesi VM 'Leri boyut standardı D4_V2 ve kapsayıcılarla Windows Server 2016 Datacenter çalıştırır.  Yeni ölçek kümesiyle yeni bir yük dengeleyici ve genel IP adresi de eklenir.  
     Şablonda yeni ölçek kümesini bulmak için, *vmNodeType2Name* parametresi tarafından adlandırılan "Microsoft. COMPUTE/virtualMachineScaleSets" kaynağını arayın.  Yeni ölçek kümesi, > virtualMachineProfile-> extensionProfile-> Uzantıları-> Özellikleri-> Ayarlar-> nodeTypeRef ayarı kullanılarak birincil düğüm türüne eklenir.

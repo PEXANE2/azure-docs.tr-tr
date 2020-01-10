@@ -1,5 +1,5 @@
 ---
-title: Hiper ölçeğe genel bakış
+title: Azure SQL veritabanı hiper ölçeğe genel bakış | Microsoft Docs
 description: Bu makalede, Azure SQL veritabanı 'ndaki sanal çekirdek tabanlı satın alma modelinde hiper ölçek hizmeti katmanı açıklanmakta ve bu hizmetin Genel Amaçlı ve İş Açısından Kritik hizmet katmanlarından farklı olduğu açıklanır.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: dimitri-furman
-ms.author: dfurman
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8c694cbd8d9386401b8ad26cf5ce6ce31e6b9bd9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978637"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614924"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -38,7 +38,7 @@ Azure SQL veritabanı 'ndaki hiper ölçek hizmeti katmanı aşağıdaki ek öze
 
 - 100 TB 'a kadar veritabanı boyutu desteği
 - İşlem kaynaklarında GÇ etkisi olmayan, neredeyse anlık veritabanı yedeklemeleri (Azure Blob depolamada depolanan dosya anlık görüntülerine göre)  
-- Kısa bir süre içinde (dosya anlık görüntülerine göre), saat veya gün yerine dakikalar içinde hızlı veritabanı geri yüklemeleri (veri işleme boyutu değil)
+- Kısa veritabanı geri yüklemeleri (dosya anlık görüntülerini temel alarak) saatler veya günler yerine dakikalar içinde (veri işlemi boyutu değil)
 - Veri birimlerinden bağımsız olarak daha yüksek günlük verimlilik ve daha hızlı işlem işleme sürelerinden dolayı daha yüksek genel performans
 - Hızlı genişleme-okuma iş yükünüzü boşaltma ve sık erişimli olarak kullanım için bir veya daha fazla salt okuma düğümü sağlayabilirsiniz
 - Hızlı ölçek artırma-sabit zamanlı olarak, yoğun iş yüklerinizi uygun olduğunda ve gerektiğinde işlem kaynaklarını geriye doğru ölçeklendirerek, işlem kaynaklarını ölçeklendirebilmeniz gerekir.
@@ -82,11 +82,11 @@ Tek bir konum/işlem içindeki tüm veri yönetimi işlevlerinin merkezi olan ge
 
 Aşağıdaki diyagramda, bir hiper ölçek veritabanındaki farklı düğüm türleri gösterilmektedir:
 
-![architecture](./media/sql-database-hyperscale/hyperscale-architecture2.png)
+![architecture](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
 Hiper ölçekli bir veritabanı aşağıdaki farklı bileşen türlerini içerir:
 
-### <a name="compute"></a>İşlem
+### <a name="compute"></a>Bilgi İşlem
 
 İşlem düğümü, ilişkisel altyapının bulunduğu yerdir, bu nedenle tüm dil öğeleri, sorgu işleme vb. oluşur. Hiper ölçekli veritabanı olan tüm kullanıcı etkileşimleri, bu işlem düğümleri aracılığıyla gerçekleşir. İşlem düğümlerinde, veri sayfasını getirmek için gereken ağ gidiş dönüşlerin sayısını en aza indirmek için SSD tabanlı önbellekler (önceki diyagramda RBPEX-dayanıklı arabellek havuzu uzantısı olarak etiketlenir) vardır. Tüm okuma/yazma iş yüklerinin ve işlemlerinin işlendiği bir birincil işlem düğümü vardır. Yük devretme amaçlarıyla etkin bekleme düğümleri görevi gören bir veya daha fazla ikincil işlem düğümü vardır ve okuma iş yüklerini boşaltma için salt okunurdur işlem düğümleri görevi görür (Bu işlev isteniyorsa).
 
@@ -104,7 +104,7 @@ Azure depolama, bir veritabanındaki tüm veri dosyalarını içerir. Sayfa sunu
 
 ## <a name="backup-and-restore"></a>Yedekleme ve geri yükleme
 
-Yedeklemeler dosya anlık görüntüsü tabanlıdır ve bu nedenle neredeyse anında yapılır. Depolama ve işlem ayrımı, birincil işlem çoğaltmasındaki işleme yükünü azaltmak için yedekleme/geri yükleme işleminin depolama katmanına itimmesini sağlar. Sonuç olarak, veritabanı yedeklemesi birincil işlem düğümünün performansını etkilemez; benzer şekilde, geri yüklemeler dosya anlık görüntülerine geri dönerek yapılır, bu nedenle de veri işlemi boyutu değildir. Geri yükleme, sabit zamanlı bir işlemdir ve hatta birden çok terabaytlık veritabanları saat veya gün değil dakikalar içinde geri yüklenebilir. Mevcut bir yedeklemeyi geri yükleyerek yeni veritabanlarının oluşturulması, bu özellikten de yararlanır: aynı mantıksal sunucu içindeki geliştirme veya test amaçları için veritabanı kopyaları oluşturma, terabayttan boyutlu veritabanları bile, dakikalar içinde dolanabilir.
+Yedeklemeler dosya anlık görüntüsü tabanlıdır ve bu nedenle neredeyse anında yapılır. Depolama ve işlem ayrımı, birincil işlem çoğaltmasındaki işleme yükünü azaltmak için yedekleme/geri yükleme işleminin depolama katmanına itimmesini sağlar. Sonuç olarak, veritabanı yedeklemesi birincil işlem düğümünün performansını etkilemez; benzer şekilde, geri yüklemeler dosya anlık görüntülerine geri dönerek yapılır, bu nedenle de veri işlemi boyutu değildir. Geri yükleme, sabit zamanlı bir işlemdir ve hatta birden çok terabaytlık veritabanları saat veya gün değil dakikalar içinde geri yüklenebilir. Var olan bir yedeklemeyi geri yükleyerek yeni veritabanlarının oluşturulması bu özellikten de yararlanır: terabayt boyutlu veritabanları bile, geliştirme veya test amaçları için veritabanı kopyaları oluşturma, dakikalar içinde dolanabilir.
 
 ## <a name="scale-and-performance-advantages"></a>Ölçek ve performans avantajları
 
@@ -114,7 +114,7 @@ Ek salt okuma işlem düğümlerini hızlı bir şekilde artırma/azaltma özell
 
 [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) veya [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)kullanılarak bir hiper ölçek veritabanı oluşturulabilir. Hiper ölçekli veritabanları yalnızca [sanal çekirdek tabanlı satın alma modeli](sql-database-service-tiers-vcore.md)kullanılarak kullanılabilir.
 
-Aşağıdaki T-SQL komutu, hiper ölçekli bir veritabanı oluşturur. `CREATE DATABASE` bildiriminde hem sürüm hem de hizmet hedefini belirtmeniz gerekir. Geçerli hizmet amaçları listesinin [kaynak sınırlarına](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen5) bakın.
+Aşağıdaki T-SQL komutu, hiper ölçekli bir veritabanı oluşturur. `CREATE DATABASE` bildiriminde hem sürüm hem de hizmet hedefini belirtmeniz gerekir. Geçerli hizmet amaçları listesinin [kaynak sınırlarına](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4) bakın.
 
 ```sql
 -- Create a HyperScale Database
@@ -196,25 +196,25 @@ Desteklenen olarak listelenmeyen bir bölgede hiper ölçekli veritabanı oluşt
 
 Listelenmeyen bölgelerde hiper ölçekli veritabanları oluşturma özelliğini istemek için:
 
-1. Azure portal menüsünde **Yardım + Destek**' i seçin veya herhangi bir sayfadan **Yardım + Destek** ' i arayıp seçin.
+1. [Azure yardım ve destek dikey penceresine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) gidin
 
-2. [Azure yardım ve destek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)bölümünde [**Yeni destek isteği**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)' ni seçin.
+2. [ **Yeni destek isteğine** tıklayın](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-3. **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
+    ![Azure yardım ve destek dikey penceresi](media/sql-database-service-tier-hyperscale/request-screen-1.png)
 
-4. Veritabanlarını oluşturmak için kullanacağınız aboneliği seçin.
+3. **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** seçeneğini belirleyin
 
-5. **Kota türü**için **SQL veritabanı**' nı seçin.
+4. Veritabanlarını oluşturmak için kullanacağınız aboneliği seçin
 
-    ![Azure yardım ve destek dikey penceresi](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
+5. **Kota türü**için **SQL veritabanı** ' nı seçin.
 
-6. **İleri: çözümler**' e tıklayın.
+6. Ileri ' ye tıklayın **: çözümler**
 
-7. **Ayrıntılar sağla**' ya tıklayın.
+1. **Ayrıntıları sağla** ' ya tıklayın
 
     ![Sorun ayrıntıları](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. **SQL veritabanı kota türünü**seçin: **diğer kota isteği**.
+8. **SQL veritabanı kota türünü**seçin: **diğer kota isteği**
 
 9. Aşağıdaki şablonu doldur:
 
@@ -227,11 +227,11 @@ Listelenmeyen bölgelerde hiper ölçekli veritabanları oluşturma özelliğini
     > Tahmini TB sayısı 
     >
 
-10. **Önem derecesi C**'yi seçin.
+10. **Önem Derecesi C**’yi seçin
 
 11. Uygun iletişim yöntemini seçin ve ayrıntıları girin.
 
-12. **Kaydet** ve **devam et**' e tıklayın.
+12. **Kaydet** ve **devam et** 'e tıklayın
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
 Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırlamalardır.  Mümkün olduğunca bu sınırlamaların çoğunu kaldırmak için etkin bir şekilde çalışıyoruz.
@@ -245,7 +245,7 @@ Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırla
 | Yönetilen Örnek | Azure SQL veritabanı yönetilen örneği şu anda hiper ölçekli veritabanları ile desteklenmiyor. |
 | Esnek Havuzlar |  Esnek havuzlar Şu anda SQL veritabanı Hyperscale ile desteklenmemektedir.|
 | Hyperscale 'e geçiş Şu anda tek yönlü bir işlemdir | Bir veritabanı hiper ölçeğe geçirildiğinde doğrudan Hyperscale olmayan bir hizmet katmanına geçirilemez. Mevcut olduğunda, bir veritabanını Hiperscale 'den hiper olmayan ölçeğe geçirmenin tek yolu BACPAC dosyasını veya diğer veri taşıma teknolojilerini (toplu kopyalama, Azure Data Factory, Azure Databricks, SSIS, vb.) kullanarak dışarı ve içeri aktarmaya yönelik bir yoldur.|
-| Bellek içi OLTP nesneleriyle veritabanlarının geçirilmesi | Hiper ölçek, bellek için iyileştirilmiş tablo türleri, yerel koda derlenmiş saklı yordamlar ve işlevler dahil olmak üzere bellek Içi OLTP nesne türlerinin bir alt kümesini destekler. Ancak, veritabanında bellek Içi OLTP nesneleri varsa, Premium ve İş Açısından Kritik hizmet katmanlarından hiper ölçeğe doğrudan geçiş desteklenmez. Böyle bir veritabanının hiper ölçeğe geçirilmesi üç adım gerektirir: (1) tüm bellek Içi OLTP nesnelerini ve bunların bağımlılıklarını bırakın. Dayanıklı bellek için iyileştirilmiş tablolardaki verileri korumak için bunları disk tablolarına dönüştürün. (2) veritabanının hizmet katmanını Hyperscale olarak değiştirin. (3) daha önce bırakılan nesneleri yeniden oluşturun. Dayanıklı ve dayanıklı olmayan bellek için iyileştirilmiş tablolar, şu anda hiper ölçekte desteklenmez ve disk tabloları kalmalıdır. Bellek için iyileştirilmiş tablo değişkenleri desteklenir. |
+| Kalıcı bellek içi nesneleri olan veritabanlarının geçirilmesi | Hiper ölçek yalnızca kalıcı olmayan bellek nesnelerini destekler (tablo türleri, yerel SPs 'ler ve işlevler).  Kalıcı bellek Içi tablolar ve diğer nesneler, bir veritabanını hiper ölçek hizmet katmanına geçirmeden önce, bellek içi nesneler olarak bırakılmalıdır ve yeniden oluşturulmalıdır.|
 | Değişiklik İzleme | Değişiklik İzleme Şu anda genel önizleme aşamasındadır ve yeni veya mevcut hiper ölçekli veritabanlarında etkinleştirilebilir. |
 | Coğrafi Çoğaltma  | Azure SQL veritabanı hiper ölçek için Coğrafi çoğaltmayı henüz yapılandıramazsınız. |
 | Veritabanı kopyalama | Azure SQL Hyperscale 'de yeni bir veritabanı oluşturmak için henüz veritabanı kopyasını kullanamazsınız. |

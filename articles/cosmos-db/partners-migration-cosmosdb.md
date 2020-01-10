@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB NoSQL geçiş ve uygulama geliştirme iş ortakları
+title: Azure Cosmos DB için geçiş ve uygulama geliştirme ortakları
 description: Microsoft iş ortakları, Azure Cosmos DB destekleyen geçiş çözümleri listeler.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 2ba6b04efbce5b7911037fbc5f14373cc962035d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30083b4f2f5f9b69368a47ecaf5505c04ccd6df9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257355"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530706"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL geçiş ve uygulama geliştirme iş ortakları
 
@@ -21,8 +21,8 @@ Uygulama geliştirme için NoSQL geçiş, Azure Cosmos DB çözümlerinizi deste
 
 |**İş ortağı**  |**Yeteneklerini ve deneyimini**  |**Desteklenen ülkeler/bölgeler**  |**lgili kişi**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | [Veri geçişi](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) Azure Cosmos DB için MongoDB öğesinden. <br/> Imanis verilerin hızlı ve kolay bir şirket içi geçirmek veya Azure Cosmos DB için MongoDB veritabanları bulut açıdan sağlar. Imanis veri geçişini basitleştirir ve kapalı kalma süresini önemli ölçüde azaltır MongoDB veri depoları için bir bulut aracısız, devamlı artımlı geçiş yaklaşımı sunar.|  ABD  |   [Web sitesi](http://www.imanisdata.com/)      |
-|![Striim][2]    |  [Azure Cosmos DB için gerçek zamanlı veri taşıma](https://www.striim.com/striim-for-azure-cosmos-db/) çeşitli veri kaynakları. <br/> Şirket içi kaynakları, Kurumsal belge ve ilişkisel veritabanları, algılayıcılar ve günlük dosyaları, Azure Cosmos DB'ye dahil olmak üzere çok sayıda farklı veri taşımayı ve gerçek zamanlı koleksiyonu Striim basitleştirir. |   ABD   |  [Web sitesi](https://www.striim.com/)       |
+|![ImanisData][1]   | MongoDB 'den Azure Cosmos DB veri geçişi. <br/> Imanis verilerin hızlı ve kolay bir şirket içi geçirmek veya Azure Cosmos DB için MongoDB veritabanları bulut açıdan sağlar. Imanis veri geçişini basitleştirir ve kapalı kalma süresini önemli ölçüde azaltır MongoDB veri depoları için bir bulut aracısız, devamlı artımlı geçiş yaklaşımı sunar.|  ABD  |   [Web sitesi](https://www.cohesity.com/products/imanis-data/)      |
+|![Striim][2]    |  [Azure Cosmos DB için gerçek zamanlı veri taşıma](https://www.striim.com/striim-for-azure-cosmos-db/) çeşitli veri kaynakları. <br/> Anlık ım, kurumsal belge ve ilişkisel veritabanları, sensör ve günlük Azure Cosmos DB dosyaları da dahil olmak üzere çok çeşitli şirket içi kaynaklardan gerçek zamanlı toplama ve veri taşımayı basitleştirir. |   ABD   |  [Web sitesi](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Sistemleri Tümleştirici iş ortakları
 
@@ -37,13 +37,13 @@ Uygulama geliştirme için NoSQL geçiş, Azure Cosmos DB çözümlerinizi deste
 | ![Capgemini][14] | NoSQL geçiş; Uygulama yeniliği (var olan uygulamaları); Yeni uygulama geliştirme | ABD, Fransa, Birleşik Krallık, Hollanda, Finlandiya  | [Web sitesi](https://www.capgemini.com/) | 
 |![Coeo][7]     |   Uygulama yeniliği (var olan uygulamaları) <br/> Yeni uygulama geliştirme |    UK     |  [Web sitesi](https://www.coeo.com/)       |
 | ![Cognizant][15] | NoSQL geçiş |ABD, Kanada, Birleşik Krallık, Danimarka, Hollanda, İsviçre, Avustralya, Japonya | [Web sitesi](https://www.cognizant.com/)|
-|![Infosys][8]     |  NoSQL geçiş       |    Genel     |  [Web sitesi](https://www.infosys.com/)       |
+|![Infosys][8]     |  NoSQL geçiş       |    Küresel     |  [Web sitesi](https://www.infosys.com/)       |
 | ![Lagash][16] | NoSQL geçiş <br/> Yeni uygulama geliştirme | Arjantin, Şili, Kolombiya, Meksika| [Web sitesi](https://www.lagash.com/)|
 | ![Lambda3 Informatics][17] | NoSQL geçiş <br/> Yeni uygulama geliştirme | Brezilya| [Web sitesi](https://www.lambda3.com.br/)|
 |![Neal Analytics][9]     |     Uygulama geliştirme (yeni uygulamaları)    |    ABD     |  [Web sitesi](https://www.nealanalytics.com/)       |
 |![Pragmatik Works yazılım dahil edilen][10]    |   NoSQL geçiş      |   ABD      |  [Web sitesi](https://www.pragmaticworks.com/)       |
 | ![Genel Ricoh][18] | NoSQL geçiş <br/> Uygulama yeniliği (var olan uygulamaları)| UK  | [Web sitesi](https://www.ricoh.com/)|
-| ![SNP teknolojileri][19] | NoSQL geçiş| ABD | [Web sitesi](https://www.snp.com/)|
+| ![SNP teknolojileri][19] | NoSQL geçiş| US | [Web sitesi](https://www.snp.com/)|
 | ![Solidsoft Yanıtla][20] | NoSQL geçiş | Hırvatistan, İsveç, Danimarka, İrlanda, Bulgaristan, Slovenya, Kıbrıs, Malta, Litvanya, Çek Cumhuriyeti, İzlanda ve İsviçre ve Liechtenstein| [Web sitesi](https://www.reply.com/solidsoft-reply/)|
 | ![İspanyolca noktası teknolojileri][21] | NoSQL geçiş| İrlanda| [Web sitesi](https://www.spanishpoint.ie/)|
 | ![Syone][22] | NoSQL geçiş| Portekiz| [Web sitesi](https://www.syone.com/)|

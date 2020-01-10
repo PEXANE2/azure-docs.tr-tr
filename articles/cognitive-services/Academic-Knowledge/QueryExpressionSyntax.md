@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b87e04c2d6380a0ee4157e73db0cd4057fadee1
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 4056ecba7ac80436952228da9e1b74dc7382448c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704918"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448961"
 ---
 # <a name="query-expression-syntax"></a>Sorgu Ifadesi söz dizimi
 
@@ -28,20 +28,21 @@ Bir sorgu ifadesine eklenebilecek her varlık özniteliği belirli bir veri tür
 
 Bazı varlık verileri, öznitelik adında bir nokta '. ' ile gösterildiği gibi bileşik öznitelikler olarak depolanır. Örneğin, yazar/Ilişki bilgileri bileşik bir öznitelik olarak temsil edilir. 4 bileşen içerir: AuN, Auıd, AfN, AID. Bu bileşenler tek bir varlık özniteliği değeri oluşturan ayrı veri parçalarından oluşur.
 
+Note: tüm sorgu ifadeleri, küçük harf ve özel karakter içermeyen olmalıdır.
 
-**Dize özniteliği: Tek değer** (eş anlamlıya yönelik eşleşmeleri içerir)  
+**Dize özniteliği: tek değer** (eş anlamlıya yönelik eşleşmeleri içerir)  
 TI = ' görünmeyen anlam Analizi tarafından dizin oluşturma '  
 Bileşik (AA. AuN = ' oya dumasıs ')
 
-**Dize özniteliği: Tam tek değer** (yalnızca kurallı değerlerle eşleşir)  
+**Dize özniteliği: tam tek değer** (yalnızca kurallı değerlerle eşleşir)  
 TI = = ' görünmeyen anlam Analizi tarafından dizin oluşturma '  
 Bileşik (AA. AuN = = ' çiğdem t dumasıs ')
      
-**Dize özniteliği: Ön ek değeri**   
+**Dize özniteliği: önek değeri**   
 TI = ' görünmeyen Seman tarafından dizin oluşturma '...  
 Bileşik (AA. AuN = ' oya du '...)
 
-**Sayısal öznitelik: Tek değer**  
+**Sayısal öznitelik: tek değer**  
 Y = 2010
  
 **Sayısal öznitelik: Aralık değeri**  
@@ -52,10 +53,10 @@ Y < = 2010
 Y =\[2010, 2012\) (yalnızca sol sınır değerini içerir: 2010, 2011)  
 Y =\[2010, 2012\] (her iki sınır değerini de içerir: 2010, 2011, 2012)
  
-**Sayısal öznitelik: Ön ek değeri**  
+**Sayısal öznitelik: ön ek değeri**  
 Y = ' 19 '... (19 ile başlayan herhangi bir sayısal değer) 
  
-**Tarih özniteliği: Tek değer**  
+**Tarih özniteliği: tek değer**  
 D = ' 2010-02-04 '
 
 **Tarih özniteliği: Aralık değeri**  

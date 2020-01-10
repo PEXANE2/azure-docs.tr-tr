@@ -1,5 +1,5 @@
 ---
-title: Azure yönetilen diskler depolamasını standart 'ten Premium veya Premium 'a standart olarak dönüştürme
+title: Standart ve Premium SSD arasında yönetilen diskleri depolamayı dönüştürme
 description: Azure PowerShell kullanarak, Azure yönetilen disklerini standartdan Premium veya Premium 'a dönüştürme.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b63d4d0247fd640e961d03d336d6b211473c48fb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cbc2d09429c0a36992167b8c8251d0a570ffbae3
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033918"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563318"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Yönetilen bir diskin depolama türünü güncelleştirme
 
@@ -22,7 +22,7 @@ Bu işlev, yönetilmeyen diskler için desteklenmez. Ancak, disk türleri arası
 
  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Dönüştürme, sanal makinenin (VM) yeniden başlatılmasını gerektirdiğinden, önceden var olan bir bakım penceresi sırasında disk depolama alanınızı geçirmeyi zamanlamanız gerekir.
 * Diskiniz yönetilmiyorsa, depolama seçenekleri arasında geçiş yapabilmeniz [için önce onu bir yönetilen diske dönüştürün](convert-unmanaged-to-managed-disks.md) .
@@ -113,7 +113,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 Şu adımları uygulayın:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Portaldaki **sanal makineler** listesinden VM 'yi seçin.
 3. VM durdurulmamışsa, VM **'ye genel bakış** bölmesinin üst kısmında **Durdur** ' u seçin ve VM 'nin durdurulmasını bekleyin.
 3. VM 'nin bölmesinde, menüden **diskler** ' i seçin.
@@ -122,7 +122,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 6. **Standart HDD** **hesap türünü** **Premium SSD**olarak değiştirin.
 7. **Kaydet**' e tıklayın ve disk bölmesini kapatın.
 
-Disk türü dönüştürmesi anında gerçekleşir. Dönüştürmeden sonra sanal makinenizin yeniden başlatılmasını sağlayabilirsiniz.
+Disk türü dönüştürmesi anında gerçekleşir. Dönüştürmeden sonra sanal makinenizin başlamasını sağlayabilirsiniz.
 
 ## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>Standart HDD ile Standart SSD arasında yönetilen diskleri değiştirme 
 

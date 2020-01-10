@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 40697925d399962399da499e0469198a0e997f66
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038637"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461165"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Teklifi
 Yazılım güvencesi olan müşteriler için, Windows Server Azure Hibrit Avantajı, şirket içi Windows Server lisanslarınızı kullanmanıza ve Azure 'da Windows sanal makinelerini daha düşük bir maliyetle çalıştırmanıza olanak sağlar. Windows işletim sistemi ile yeni sanal makineler dağıtmak için Windows Server Azure Hibrit Avantajı kullanabilirsiniz. Bu makalede, Windows Server için Azure Hibrit Avantajı ile yeni VM 'Leri dağıtma ve var olan çalışan VM 'Leri güncelleştirme adımları ele alınarak devam edebilir. Windows Server Lisanslama ve maliyet tasarrufları için Azure Hibrit Avantajı hakkında daha fazla bilgi için, bkz. [Windows Server Lisanslama için Azure hibrit avantajı sayfası](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -201,4 +201,4 @@ Ayrıca, ölçek kümesini güncelleştirme hakkında daha fazla yol için [bir 
 - [Windows Server Lisanslama ayrıntılı Kılavuzu için Azure hibrit avantajı](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit) hakkında daha fazla bilgi edinin
 - Windows Server Azure Hibrit Avantajı hakkında daha fazla bilgi edinin [ve Azure Site Recovery Azure 'a uygulama geçirmeyi daha da verimli hale getirin](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
 - [Azure 'Da çok kiracılı barındırma Ile Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) hakkında daha fazla bilgi edinin
-- [Kaynak Yöneticisi şablonlarını kullanma](../../azure-resource-manager/resource-group-overview.md) hakkında daha fazla bilgi edinin
+- [Kaynak Yöneticisi şablonlarını kullanma](../../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin

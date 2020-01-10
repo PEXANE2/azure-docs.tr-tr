@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ba903d75707be91bb8af1271b52eb260ffcde306
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d27f792b39a1809cde0f27186f343af7d7aef60a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951243"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454150"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Azure IoT Central uygulamanıza bir Raspberry PI bağlama (C#)
 
@@ -27,17 +27,17 @@ Bu makalede, bir cihaz geliştiricisi olarak, C# programlama dilini kullanarak b
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki bileşenlere ihtiyacınız vardır:
 
-* **Örnek Devkits** uygulama şablonundan oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
+* **Eski uygulama** uygulaması şablonundan oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
 * Raspbian işletim sistemini çalıştıran bir Raspberry PI cihazı. Raspberry PI, internet 'e bağlanabilmelidir. Daha fazla bilgi için bkz. [Raspberry PI 'Nizi ayarlama](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
-## <a name="sample-devkits-application"></a>**Örnek Devkits** uygulaması
+## <a name="add-a-device-template"></a>Cihaz şablonu ekleme
 
-**Örnek Devkits** uygulama şablonundan oluşturulan bir uygulama, aşağıdaki özelliklere sahip bir **Raspberry PI** cihaz şablonu içerir:
+Azure IoT Central uygulamanızda, aşağıdaki özelliklere sahip yeni bir **Raspberry PI** cihaz şablonu ekleyin:
 
 * Telemetri, cihazın toplayacağı aşağıdaki ölçüleri içerir:
   * Nem oranı
   * Sıcaklık
-  * Gereksiniminin
+  * Basınç
   * Manyetik tometre (X, Y, Z)
   * İvme ölçer (X, Y, Z)
   * Jroscope (X, Y, Z)
@@ -49,6 +49,11 @@ Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki bileşenlere ihtiy
 * Özellikler
   * Zar numarası cihaz özelliği
   * Konum bulutu özelliği
+
+1. Cihaz şablonu ![cihaz şablonlarından **+ Yeni** ' yi seçin](media/howto-connect-raspberry-pi-csharp/adddevicetemplate.png)
+   
+
+2. **Raspberry PI** 'yi seçin ve cihaz şablonu eklemek ![Raspberry PI cihaz şablonunu oluşturun](media/howto-connect-raspberry-pi-csharp/newdevicetemplate.png)
 
 Cihaz şablonunun yapılandırmasının tam ayrıntıları için, [Raspberry PI cihaz şablonu ayrıntılarına](#raspberry-pi-device-template-details)bakın.
 
@@ -349,7 +354,7 @@ Aşağıdaki adımları tamamlayabilmeniz için Visual Studio Code kullanabilirs
 
 Sayısal ayarlar
 
-| Görünen ad | Alan adı | Birimler | Ondalık basamak sayısı | Minimum | Maksimum | Başlatma |
+| Görünen ad | Alan adı | Birimler | Ondalık basamak sayısı | Minimum | Maksimum | Başlangıç |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Geril      | Setvoltaj | Çalışmıyorken | 0              | 0       | 240     | 0       |
 | Geçerli      | setCurrent | AMPS  | 0              | 0       | 100     | 0       |
@@ -357,7 +362,7 @@ Sayısal ayarlar
 
 Ayarları aç
 
-| Görünen ad | Alan adı | Metinde | Kapalı metin | Başlatma |
+| Görünen ad | Alan adı | Metinde | Kapalı metin | Başlangıç |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | Activateır | AÇIK      | KAPALI      | Kapalı     |
 

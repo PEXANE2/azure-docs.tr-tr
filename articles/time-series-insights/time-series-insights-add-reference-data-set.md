@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: d1bbfb43c6e2319706f5eeac15fa1d60791b62b9
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a810076c8836acccf83733df02fbd0a29a8eba9b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807255"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460312"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Time Series Insights ortamınız için Azure portal kullanarak bir başvuru veri kümesi oluşturun
 
@@ -68,9 +68,9 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
    Veri değerlerini ayrıştırırken bir hata varsa, sayfanın alt kısmında `CSV parsing error, no rows extracted`gibi, hata kırmızı renkte görünür.
 
-1. Veriler başarıyla ayrıştırıldıktan sonra, verileri temsil eden sütunları ve satırları gösteren bir veri kılavuzu gösterilir.  Doğruluk sağlamak için veri kılavuzunu gözden geçirin.
+1. Veriler başarıyla ayrıştırıldıktan sonra, verileri temsil eden sütunları ve satırları gösteren bir veri kılavuzu gösterilir. Doğruluk sağlamak için veri kılavuzunu gözden geçirin.
 
-   [![başvuru verileri ekleme](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
+   [![başvuru verilerini gözden geçirin](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
 1. Her bir sütunu inceleyerek veri türünün kabul edilen olduğunu görüntüleyin ve gerekirse veri türünü değiştirin.  Sütun başlığındaki veri türü sembolünü seçin: Double (sayısal veriler) için **#** , **t |** Boolean için F veya dize Için **ABC** .
 

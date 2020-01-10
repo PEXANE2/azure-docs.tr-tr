@@ -1,21 +1,14 @@
 ---
-title: Azure Advisor 'a giriş | Microsoft Docs
+title: Azure Advisor 'a giriş
 description: Azure dağıtımlarınızı iyileştirmek için Azure Advisor 'ı kullanın.
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
-ms.author: sagupt
-ms.openlocfilehash: 1a1ed13697d838041d1ac98b966695e24c06edbe
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443090"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor 'a giriş
 
@@ -25,9 +18,9 @@ Azure Advisor 'ın temel özellikleri hakkında bilgi edinin ve sık sorulan sor
 Danışman, Azure dağıtımlarınızı iyileştirmek için en iyi yöntemleri izlemenize yardımcı olan kişiselleştirilmiş bir bulut danışmanıdır. Danışman, kaynak yapılandırmanızı ve kullanım telemetrinizi analiz ederek Azure kaynaklarınızın maliyet verimliliğini, performansını, yüksek kullanılabilirliğini ve güvenliğini geliştirmenize yardımcı olabilecek çözümler önerir.
 
 Advisor ile şunları yapabilirsiniz:
-* Proaktif, eyleme dönüştürülebilir ve kişiselleştirilmiş en iyi yöntem önerileri alın. 
+* Proaktif, eyleme dönüştürülebilir ve kişiselleştirilmiş en iyi yöntem önerileri alabilirsiniz. 
 * Genel Azure harcamalarınızı azaltmaya yönelik fırsatları belirlerken kaynaklarınızın performansını, güvenliğini ve yüksek oranda kullanılabilirliğini geliştirme.
-* Önerilen eylemlerin satır içi önerilerini alın.
+* İşlem sırasında önerilen eylemler halinde öneriler alabilirsiniz.
 
 [Azure Portal](https://aka.ms/azureadvisordashboard)aracılığıyla Advisor 'a erişebilirsiniz. [Portalda](https://portal.azure.com)oturum açın, gezinti menüsünde **Advisor** 'ı bulun veya **tüm hizmetler** menüsünde aramak için arama yapın.
 

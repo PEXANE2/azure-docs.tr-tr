@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d824606b1b602d006e53be619d6d955ac2cfb71f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 745ddcc95bb91e61478307265aec1ac8a7ebba54
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213023"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609205"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Eşitleme sırasında sorun giderme hataları
 Kimlik verileri, Windows Server Active Directory (AD DS) Azure Active Directory (Azure AD) ile eşitlendiğinde hatalar oluşabilir. Bu makalede, farklı eşitleme hatası türlerine genel bir bakış sağlanır. bu hatalara neden olan olası senaryoların bazıları ve hataları gidermeye yönelik olası yollar sunulmaktadır. Bu makale, ortak hata türlerini içerir ve olası tüm hataları kapsamayabilir.
@@ -73,7 +73,7 @@ Azure Active Directory şeması iki veya daha fazla nesnenin aşağıdaki öznit
 #### <a name="example-case"></a>Örnek durum:
 1. **Bob Smith** , *contoso.com* 'in şirket içi Active Directory Azure Active Directory eşitlenen bir Kullanıcı
 2. Bob Smith 'in **userPrincipalName** 'i **ebrunun\@contoso.com**olarak ayarlanmıştır.
-3. **"abcdefghgpqrstuv = ="** , Azure Active Directory Içindeki Bob Smith 'In **ImmutableID** 'ı olan, Bob smith 'In şirket içi Active Directory **Objectguıd** 'Si kullanılarak Azure AD Connect tarafından hesaplanan **sourcebağlantıdır** .
+3. **"abcdefghijklmnopqrstuv =="** olan **SourceAnchor** Bob Smith'in kullanarak Azure AD Connect tarafından hesaplanan **objectGUID** gelen Active Directory, şirket içinde olduğu **İmmutableıd** Azure Active Directory'de Bob Smith için.
 4. Bob, **proxyAddresses** özniteliği için de aşağıdaki değerlere sahiptir:
    * SMTP: bobs@contoso.com
    * SMTP: bob.smith@contoso.com
@@ -194,7 +194,7 @@ Eşitlenmiş bir kullanıcı için, UserPrincipalName soneki bir Federasyon etki
 3. Hem contoso.com hem de fabrikam.com etki alanları Azure Active Directory olan Federasyon etki alanlardır.
 4. Bob 'un userPrincipalName 'i güncelleştirilmemiş ve "FederatedDomainChangeError" eşitleme hatası ile sonuçlanıyor.
 
-#### <a name="how-to-fix"></a>Nasıl düzeltileceğini
+#### <a name="how-to-fix"></a>Nasıl düzeltilir
 Bir kullanıcının UserPrincipalName soneki bob@**contoso.com** 'den bob\@**fabrikam.com**' den güncelleştirilirse, her ikisi de **contoso.com** ve **fabrikam.com** **federe etki alanlarındaysa**, eşitleme hatasını onarmak için bu adımları izleyin
 
 1. Azure AD 'de kullanıcının UserPrincipalName değerini bob@contoso.onmicrosoft.combob@contoso.com güncelleştirin. Azure AD PowerShell modülü ile aşağıdaki PowerShell komutunu kullanabilirsiniz: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
@@ -218,7 +218,7 @@ Bir öznitelik izin verilen boyut sınırını, uzunluk sınırını veya Azure 
 3. Bob 'un Active Directory thumbnailPhoto kümesi, Azure AD 'de eşitlenecek kadar büyük.
 4. Active Directory ProxyAddresses özniteliğinin otomatik popülasyonu sırasında, bir nesnenin çok fazla ProxyAddresses atanmış olması gerekir.
 
-### <a name="how-to-fix"></a>Nasıl düzeltileceğini
+### <a name="how-to-fix"></a>Nasıl düzeltilir
 1. Hataya neden olan özniteliğin izin verilen sınırlamanın içinde olduğundan emin olun.
 
 ## <a name="existing-admin-role-conflict"></a>Var olan yönetici rolü çakışması
@@ -234,13 +234,13 @@ Azure AD Connect, şirket içi AD 'den bir kullanıcı nesnesiyle atanmış bir 
 ![Var olan yönetici](media/tshoot-connect-sync-errors/existingadmin.png)
 
 
-### <a name="how-to-fix"></a>Nasıl düzeltileceğini
-Bu sorunu çözmek için aşağıdakilerden birini yapın:
+### <a name="how-to-fix"></a>Nasıl düzeltilir
+Bu sorunu gidermek için aşağıdakileri yapın:
 
- - Azure AD hesabını (Owner) tüm yönetici rollerinden kaldırın. 
- - Bulutta karantinaya alınan nesneyi **kalıcı olarak silin** . 
- - Sonraki eşitleme döngüsünün, şirket içi kullanıcıyla bulut hesabıyla (bulut kullanıcısı artık küresel bir GA olmadığından) geçici olarak eşleşen bir işlem ele alınacaktır. 
- - Sahip için rol üyeliklerini geri yükleyin. 
+1. Azure AD hesabını (Owner) tüm yönetici rollerinden kaldırın. 
+2. Bulutta karantinaya alınan nesneyi **kalıcı olarak silin** . 
+3. Sonraki eşitleme döngüsünün, şirket içi kullanıcıyla bulut hesabıyla (bulut kullanıcısı artık küresel bir GA olmadığından) geçici olarak eşleşen bir işlem ele alınacaktır. 
+4. Sahip için rol üyeliklerini geri yükleyin. 
 
 >[!NOTE]
 >Şirket içi kullanıcı nesnesi ile Azure AD Kullanıcı nesnesi arasındaki yumuşak eşleşmesinden sonra, mevcut kullanıcı nesnesine yönetici rolünü atayabilirsiniz.

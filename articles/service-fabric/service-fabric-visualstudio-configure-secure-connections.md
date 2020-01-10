@@ -1,58 +1,49 @@
 ---
-title: Güvenli Azure Service Fabric küme bağlantıları yapılandırma | Microsoft Docs
-description: Visual Studio Azure Service Fabric kümesi tarafından desteklenen güvenli bağlantıları yapılandırmak için kullanmayı öğrenin.
-services: service-fabric
-documentationcenter: na
+title: Güvenli Azure Service Fabric küme bağlantılarını yapılandırma
+description: Azure Service Fabric kümesi tarafından desteklenen güvenli bağlantıları yapılandırmak için Visual Studio 'Yu nasıl kullanacağınızı öğrenin.
 author: cawaMS
-manager: paulyuk
-editor: tglee
-ms.assetid: 80501867-dd7a-4648-8bd6-d4f26b68402d
-ms.service: multiple
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: 8d76a2144234591792359ed8dd4a0779e6a2fc5c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11f76153726d3fc92118fb46cc61b4627ab6a1b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628311"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464099"
 ---
-# <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Visual Studio'dan bir Service Fabric kümesine güvenli bağlantı yapılandırma
-Güvenli bir şekilde yapılandırılmış erişim denetimi ilkeleri ile bir Azure Service Fabric kümesine erişmek için Visual Studio kullanmayı öğrenirsiniz.
+# <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Visual Studio 'dan Service Fabric kümesine güvenli bağlantıları yapılandırma
+Visual Studio 'Yu kullanarak, erişim denetim ilkeleriyle yapılandırılmış bir Azure Service Fabric kümesine güvenli bir şekilde erişme hakkında bilgi edinin.
 
 ## <a name="cluster-connection-types"></a>Küme bağlantı türleri
-İki tür bağlantı, Azure Service Fabric kümesi tarafından desteklenir: **güvenli olmayan** bağlantıları ve **x509 sertifika tabanlı** güvenli bağlantılar. (Service Fabric kümeleri şirket içinde barındırılan için **Windows** ve **dSTS** kimlik doğrulamaları de desteklenir.) Küme bağlantı türü küme oluşturulduğunda yapılandırmanız gerekmez. Bağlantı türü, oluşturulduktan sonra değiştirilemez.
+Azure Service Fabric kümesi tarafından iki tür bağlantı desteklenir: **güvenli olmayan** bağlantılar ve **x509 sertifika tabanlı** güvenli bağlantılar. (Şirket içinde barındırılan Service Fabric kümeleri için **Windows** ve **DSTs** kimlik doğrulamaları da desteklenir.) Küme oluşturulurken küme bağlantı türünü yapılandırmanız gerekir. Oluşturulduktan sonra bağlantı türü değiştirilemez.
 
-Visual Studio Service Fabric araçları, yayımlama için bir kümeye bağlanmak için tüm kimlik doğrulama türlerini destekler. Bkz: [Azure portalından bir Service Fabric kümesi ayarlama](service-fabric-cluster-creation-via-portal.md) güvenli bir Service Fabric kümesi ayarlama hakkında yönergeler için.
+Visual Studio Service Fabric araçları, yayımlamak üzere bir kümeye bağlanmak için tüm kimlik doğrulama türlerini destekler. Güvenli bir Service Fabric kümesinin nasıl ayarlanacağı hakkında yönergeler için bkz. [Azure portal Service Fabric kümesi ayarlama](service-fabric-cluster-creation-via-portal.md) .
 
-## <a name="configure-cluster-connections-in-publish-profiles"></a>Küme bağlantıları yapılandırma yayımlama profilleri
-Bir Service Fabric projesi Visual Studio'dan yayımlama kullanırsanız **Service Fabric uygulamasını Yayımla** iletişim kutusu, bir Azure Service Fabric kümesi seçin. Altında **bağlantı uç noktası**, aboneliğiniz kapsamındaki mevcut bir kümeyi seçin.
+## <a name="configure-cluster-connections-in-publish-profiles"></a>Yayımlama profillerinde küme bağlantılarını yapılandırma
+Visual Studio 'dan bir Service Fabric projesi yayımlarsanız, bir Azure Service Fabric kümesi seçmek için **Service Fabric uygulamayı Yayımla** iletişim kutusunu kullanın. **Bağlantı uç noktası**' nın altında, aboneliğiniz altında var olan bir kümeyi seçin.
 
-![** Yayımlama Service Fabric uygulama ** iletişim kutusunda, bir Service Fabric bağlantısı yapılandırmak için kullanılır.][publishdialog]
+![Service Fabric bağlantısını yapılandırmak için * * Publish Service Fabric Application * * iletişim kutusu kullanılır.][publishdialog]
 
-**Service Fabric uygulamasını Yayımla** iletişim kutusu, küme bağlantısını otomatik olarak doğrular. İstenirse Azure hesabınızda oturum açın. Doğrulama testlerini geçerse, sisteminizde güvenli bir kümeye bağlanmak için yüklü doğru sertifikalara sahip veya güvenli olmayan kümenizi anlamına gelir. Ağ sorunları veya sisteminizde güvenli bir kümeye bağlanmak için doğru yapılandırılmış olmaması doğrulama hataları neden olabilir.
+**Service Fabric uygulaması Yayımla** iletişim kutusu, küme bağlantısını otomatik olarak doğrular. İstenirse, Azure hesabınızda oturum açın. Doğrulama başarılı olursa, sisteminizde kümeye güvenli bir şekilde bağlanmak için doğru sertifikalar yüklenmiş veya kümeniz güvenli olmayan bir durumda. Doğrulama hataları, ağ sorunlarından veya sisteminizin güvenli bir kümeye bağlanmak için doğru şekilde yapılandırılmış olmasına neden olabilir.
 
-![** Yayımlama Service Fabric uygulaması iletişim kutusu doğrular mevcut bir ** doğru yapılandırılmış Service Fabric küme bağlantısı.][selectsfcluster]
+![\* * Service Fabric uygulaması Yayımla * * iletişim kutusu, var olan, doğru şekilde yapılandırılmış bir Service Fabric kümesi bağlantısını doğrular.][selectsfcluster]
 
 ### <a name="to-connect-to-a-secure-cluster"></a>Güvenli bir kümeye bağlanmak için
-1. Hedef küme güvendiği istemci sertifikalarını birini erişebildiğinden emin olun. Sertifika genellikle bir kişisel bilgi değişimi (.pfx) dosyası olarak paylaşılır. Bkz: [Azure portalından bir Service Fabric kümesi ayarlama](service-fabric-cluster-creation-via-portal.md) için bir istemci erişim sunucusu nasıl yapılandırılır.
-2. Güvenilir sertifika yükleyin. Bunu yapmak için .pfx dosyasını çift tıklatın veya sertifikaları almak için Import-PfxCertificate PowerShell betiğini kullanın. Sertifikayı yükleme **Cert: \LocalMachine\My**. Sertifika içeri aktarılırken, tüm varsayılan ayarları kabul etmek için Tamam var.
-3. Seçin **Yayımla...**  açmak için projenin kısayol menüsünde komutunu **Azure uygulamasını Yayımla** iletişim kutusu ve hedef kümeyi seçin. Araç otomatik olarak bağlantı giderir ve güvenli bağlantı parametreleri yayımlama profilinde kaydeder.
-4. İsteğe bağlı: Güvenli kümeye bağlantı belirtmek için yayımlama profili düzenleyebilirsiniz.
+1. Hedef kümenin güvendiği istemci sertifikalarından birine erişebildiğinizden emin olun. Sertifika genellikle kişisel bilgi değişimi (. pfx) dosyası olarak paylaşılır. Bir istemciye erişim vermek üzere sunucunun nasıl yapılandırılacağı hakkında [Azure portal Service Fabric kümesi ayarlama](service-fabric-cluster-creation-via-portal.md) bölümüne bakın.
+2. Güvenilen sertifikayı yükler. Bunu yapmak için. pfx dosyasına çift tıklayın veya sertifikaları içeri aktarmak için Import-Pfxsertifikası PowerShell betiğini kullanın. Sertifikayı **CERT: \ Localmachine\'** a yükler. Sertifikayı içeri aktarırken tüm varsayılan ayarları kabul etmek tamam.
+3. Projenin kısayol menüsündeki **Yayımla...** komutunu seçerek **Azure uygulaması Yayımla** iletişim kutusunu açın ve hedef kümeyi seçin. Araç otomatik olarak bağlantıyı çözümler ve güvenli bağlantı parametrelerini yayımlama profiline kaydeder.
+4. İsteğe bağlı: yayımlama profilini, güvenli bir küme bağlantısı belirtmek üzere düzenleyebilirsiniz.
    
-   Sertifika bilgileri belirtmek için sertifika deposunun adını not etmeyi unutmayın yayımlama profili XML dosyasını el ile düzenlediğiniz olduğundan, konum ve sertifika parmak izini saklar. Bu değerleri sertifika deposu için adı ve depolama konumu sağlamanız gerekir. Bkz: [nasıl yapılır: Bir sertifikanın parmak izini alma](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) daha fazla bilgi için.
+   Yayımlama profili XML dosyasını sertifika bilgilerini belirtecek şekilde el ile düzenlediğinizden, sertifika deposu adı, depo konumu ve sertifika parmak izini unutmayın. Sertifikanın mağaza adı ve depolama konumu için bu değerleri sağlamanız gerekir. Daha fazla bilgi için bkz. [nasıl yapılır: bir sertifikanın parmak Izini alma](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) .
    
-   Kullanabileceğiniz *ClusterConnectionParameters* Service Fabric kümeye bağlanırken kullanmak için PowerShell parametreleri belirtmek için parametreleri. Herhangi biri Connect-ServiceFabricCluster cmdlet tarafından kabul edilen geçerli parametrelerdir. Bkz: [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) kullanılabilir parametrelerin listesi.
+   Service Fabric kümesine bağlanırken kullanılacak PowerShell parametrelerini belirtmek için *Clusterconnectionparameters* parametrelerini kullanabilirsiniz. Connect-ServiceFabricCluster cmdlet 'i tarafından kabul edilen geçerli parametreler geçerlidir. Kullanılabilir parametrelerin listesi için bkz. [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) .
    
-   Uzak bir kümeye yayınlıyorsanız, o belirli bir küme için gerekli parametreleri belirtin gerekir. Güvenli olmayan bir kümeye bağlanma örneği verilmiştir:
+   Uzak bir kümeye yayımlıyorsanız, ilgili küme için uygun parametreleri belirtmeniz gerekir. Güvenli olmayan bir kümeye bağlanma örneği aşağıda verilmiştir:
    
    `<ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000" />`
    
-   İşte bir örnek için x x509 bağlamak için sertifika tabanlı güvenli küme:
+   X509 sertifika tabanlı bir güvenli kümeye bağlanmak için bir örnek aşağıda verilmiştir:
    
    ```xml
    <ClusterConnectionParameters
@@ -64,10 +55,10 @@ Bir Service Fabric projesi Visual Studio'dan yayımlama kullanırsanız **Servic
    StoreLocation="CurrentUser"
    StoreName="My" />
    ```
-5. Diğer gerekli tüm ayarları, yükseltme parametreleri ve uygulama parametre dosyası konumu gibi düzenleyin ve ardından uygulamanızı yayımlayın **Service Fabric uygulamasını Yayımla** Visual Studio'da iletişim kutusu.
+5. Yükseltme parametreleri ve uygulama parametresi dosya konumu gibi diğer tüm gerekli ayarları düzenleyin ve ardından Visual Studio 'da **Service Fabric uygulaması Yayımla** iletişim kutusundan uygulamanızı yayımlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Service Fabric kümeleri erişme hakkında daha fazla bilgi için bkz. [Service Fabric Explorer kullanarak kümenizi görselleştirme](service-fabric-visualizing-your-cluster.md).
+Service Fabric kümelerine erişme hakkında daha fazla bilgi için bkz. [Service Fabric Explorer kullanarak kümenizi görselleştirme](service-fabric-visualizing-your-cluster.md).
 
 <!--Image references-->
 [publishdialog]:./media/service-fabric-visualstudio-configure-secure-connections/publishdialog.png

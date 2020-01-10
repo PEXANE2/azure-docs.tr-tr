@@ -1,25 +1,14 @@
 ---
-title: Sertifika ortak adını kullanarak bir Azure Service Fabric kümesi oluşturma | Microsoft Docs
+title: Sertifika ortak adını kullanarak bir küme oluşturma
 description: Bir şablondan sertifika ortak adını kullanarak Service Fabric kümesi oluşturmayı öğrenin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2019
-ms.author: atsenthi
-ms.openlocfilehash: 73e02b4482f69ec0c9d5a602f30cefea77279778
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764735"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614562"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Parmak izi yerine sertifika ortak adı kullanan bir Service Fabric kümesi dağıtma
 İki sertifika aynı parmak izine sahip olamaz, bu da küme sertifikası geçişi veya yönetimini zorlaştırır. Ancak, birden çok sertifika aynı ortak ada veya konuya sahip olabilir.  Sertifika ortak adlarını kullanan bir küme, sertifika yönetimini çok daha kolay hale getirir. Bu makalede, sertifika parmak izi yerine sertifika ortak adını kullanmak üzere bir Service Fabric kümesinin nasıl dağıtılacağı açıklanır.
@@ -28,7 +17,7 @@ ms.locfileid: "70764735"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>Sertifika Al
-İlk olarak, bir [sertifika yetkilisinden (CA)](https://wikipedia.org/wiki/Certificate_authority)bir sertifika alın.  Sertifikanın ortak adı, sahip olduğunuz özel etki alanı için olmalıdır ve bir etki alanı kaydedicisinde satın alınmalıdır. Örneğin, "azureservicefabricbestpractices.com"; Microsoft çalışanları, MS etki alanları için sertifikaları sağlamayamadığından, LB veya Traffic Manager DNS adlarını sertifikanız için ortak adlar olarak kullanamazsınız ve özel etki alanınız için bir [Azure DNS bölgesi](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) sağlamanız gerekir. Azure 'da e. Ayrıca, portalınızın kümeniz için özel etki alanı diğer adını yansıtmasını istiyorsanız, kendi özel etki alanınızı kümenizin "managementEndpoint" olarak bildirmeniz gerekir.
+İlk olarak, bir [sertifika yetkilisinden (CA)](https://wikipedia.org/wiki/Certificate_authority)bir sertifika alın.  Sertifikanın ortak adı, sahip olduğunuz özel etki alanı için olmalıdır ve bir etki alanı kaydedicisinde satın alınmalıdır. Örneğin, "azureservicefabricbestpractices.com"; Microsoft çalışanları, MS etki alanları için sertifika sağlayamaz, bu nedenle LB veya Traffic Manager DNS adlarını sertifikanızın ortak adları olarak kullanamazsınız ve özel etki alanınız Azure 'da çözümlenecaksa bir [Azure DNS bölgesi](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) sağlamanız gerekir. Ayrıca, portalınızın kümeniz için özel etki alanı diğer adını yansıtmasını istiyorsanız, kendi özel etki alanınızı kümenizin "managementEndpoint" olarak bildirmeniz gerekir.
 
 Sınama amacıyla, ücretsiz veya açık bir sertifika yetkilisinden CA imzalı bir sertifika edinebilirsiniz.
 
@@ -131,14 +120,14 @@ Sonra, *azuredeploy. JSON* dosyasını bir metin düzenleyicisinde açın ve ser
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. **Microsoft. COMPUTE/virtualMachineScaleSets** kaynağında, sanal makine uzantısını parmak izi yerine sertifika ayarları 'nda ortak adı kullanacak şekilde güncelleştirin.  **Virtualmachineprofile**->**extensionprofile**->**Extensions**Özellikler ayarları sertifikası, Ekle->->-> 
+3. **Microsoft. COMPUTE/virtualMachineScaleSets** kaynağında, sanal makine uzantısını parmak izi yerine sertifika ayarları 'nda ortak adı kullanacak şekilde güncelleştirin.  **Virtualmachineprofile**->**extensionprofile**->**extensions**->**Özellikler**->**Ayarlar**->**sertifika**, Ekle 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"
        ],
     ```
 
-    ve kaldırın `"thumbprint": "[parameters('certificateThumbprint')]",`.
+    `"thumbprint": "[parameters('certificateThumbprint')]",`kaldırın.
 
     ```json
     "virtualMachineProfile": {

@@ -1,20 +1,16 @@
 ---
-title: Service Fabric gizli dizileri | Microsoft Docs
+title: Service Fabric Gizli Dizi Deposu
 description: Bu makalede Service Fabric gizli dizi deposunun nasıl kullanılacağı açıklanır.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 5315a8806f45e40204e8500e97c3440bfa9ab8b2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 16608d9eaf12fc9abc535ef316d7b5e8b74a8b37
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077355"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457513"
 ---
-#  <a name="service-fabric-secrets-store"></a>Service Fabric gizli dizi deposu
+#  <a name="service-fabric-secrets-store"></a>Service Fabric Gizli Dizi Deposu
 Bu makalede Service Fabric gizli dizileri deposu (CSS) kullanılarak Service Fabric uygulamalarda parolaların nasıl oluşturulduğu ve kullanılacağı açıklanmaktadır. CSS, bir parola, belirteç ve anahtarlar gibi hassas verileri bellekte tutmak için kullanılan bir yerel gizli dizi depolama önbelleğidir.
 
 ## <a name="enabling-secrets-store"></a>Gizli dizi depolaması etkinleştiriliyor
@@ -24,8 +20,8 @@ Bu makalede Service Fabric gizli dizileri deposu (CSS) kullanılarak Service Fab
     [
         ...
     {
+        "name":  "CentralSecretService",
         "parameters":  [
-            "name":  "CentralSecretService"
                 {
                     "name":  "IsEnabled",
                     "value":  "true"
@@ -46,6 +42,9 @@ Bu makalede Service Fabric gizli dizileri deposu (CSS) kullanılarak Service Fab
                 ],
             },
             ]
+     }
+        ...
+     ]
 ```
 ## <a name="declare-secret-resource"></a>Gizli kaynağı bildirme
 Kaynak Yöneticisi şablonunu kullanarak ya da REST API kullanarak gizli bir kaynak oluşturabilirsiniz.

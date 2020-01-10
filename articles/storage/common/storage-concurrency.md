@@ -1,24 +1,25 @@
 ---
-title: Microsoft Azure Depolama'da Eşzamanlılığı Yönetme
-description: Blob, kuyruk, tablo ve dosya hizmetleri için eşzamanlılık yönetimi
+title: Eşzamanlılığı yönetme
+titleSuffix: Azure Storage
+description: Blob, kuyruk, tablo ve dosya hizmetleri için eşzamanlılık yönetimi hakkında bilgi edinin.
 services: storage
-author: jasontang501
+author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 427cc34cc5a2801a2da98259f932678cdcf71ef7
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67870822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460474"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Depolama'da Eşzamanlılığı Yönetme
-## <a name="overview"></a>Genel Bakış
-Modern Internet tabanlı uygulamalar genellikle birden çok kullanıcının aynı anda verileri görüntülemesini ve güncelleştirmesini de ister. Bu, özellikle birden çok kullanıcının aynı verileri güncelleştirebileceği senaryolar için, uygulama geliştiricilerinin son kullanıcılara öngörülebilir bir deneyim sağlama konusunda dikkatli bir şekilde karar sağlamasını gerektirir. Geliştiricilerin genellikle göz önünde bulundurulması gereken üç ana veri eşzamanlılık stratejisi vardır:  
+
+Modern Internet tabanlı uygulamalarda, verileri eşzamanlı olarak görüntüleyen ve güncelleştiren birden fazla kullanıcı vardır. Bu, özellikle birden çok kullanıcının aynı verileri güncelleştirebileceği senaryolar için, uygulama geliştiricilerinin son kullanıcılara öngörülebilir bir deneyim sağlama konusunda dikkatli bir şekilde karar sağlamasını gerektirir. Geliştiricilerin genellikle göz önünde bulundurulması gereken üç ana veri eşzamanlılık stratejisi vardır:  
 
 1. İyimser eşzamanlılık: güncelleştirme gerçekleştiren bir uygulama, güncelleştirme kapsamında, uygulamanın en son verileri okuduğundan bu yana verilerin değişip değişmediğini doğrular. Örneğin, bir wiki sayfasını görüntüleyen iki kullanıcı aynı sayfada bir güncelleştirme yapsa, wiki platformu ikinci güncelleştirmenin ilk güncelleştirmenin üzerine yazmadığından ve her iki kullanıcının da güncelleştirmesinin başarılı olup olmadığını anlamalarına emin olmalıdır. Bu strateji çoğu zaman Web uygulamalarında kullanılır.
 2. Kötümser eşzamanlılık: bir güncelleştirme gerçekleştirmeye yönelik bir uygulama, bir nesne üzerinde bir kilit alır ve bu da kilit serbest bırakılana kadar diğer kullanıcıların verileri güncelleştirmesini önler. Örneğin, yalnızca ana öğenin güncelleştirmeleri gerçekleştirdiği bir ana/alt veri çoğaltma senaryosunda, ana öğe genellikle, başka kimsenin güncelleştirememesini sağlamak için veriler üzerinde uzun bir süre boyunca özel bir kilit tutar.
@@ -26,15 +27,18 @@ Modern Internet tabanlı uygulamalar genellikle birden çok kullanıcının ayn�
 
 Bu makalede, Azure depolama platformunun bu eşzamanlılık stratejilerinin üçü için birinci sınıf desteği sunarak geliştirmeyi nasıl basitleştirdiği hakkında bir genel bakış sunulmaktadır.  
 
-## <a name="azure-storage--simplifies-cloud-development"></a>Azure depolama – bulut geliştirmeyi basitleştirir
+## <a name="azure-storage-simplifies-cloud-development"></a>Azure depolama, bulut geliştirmeyi basitleştirir
+
 Azure Storage hizmeti, her üç stratejiyi de destekler, ancak bu, bir güçlü tutarlılık modelini çok büyük bir şekilde desteklemek üzere tasarlandığından, Depolama hizmeti bir veri ekleme veya güncelleştirme işlemini kaydeder bu verilere daha fazla erişim, en son güncelleştirmeyi görür. Son tutarlılık modeli kullanan depolama platformları, bir kullanıcı tarafından bir yazma işlemi gerçekleştirildiğinde ve güncelleştirilmiş veriler diğer kullanıcılar tarafından görülebileceği zaman arasında bir gecikme olur ve bu sayede tutarsızlıkların oluşmasını engellemek için istemci uygulamalarının geliştirilmesini karmaşıtük edebilir son kullanıcıları etkileme.  
 
 Uygun bir eşzamanlılık stratejisi geliştiricilerin seçimine ek olarak, bir depolama platformunun değişiklikleri nasıl yalıtdığının farkında olması gerekir. işlemler arasında özellikle de aynı nesneye yapılan değişiklikler. Azure depolama hizmeti, okuma işlemlerinin tek bir bölüm içindeki yazma işlemleriyle aynı anda gerçekleşmesini sağlamak için anlık görüntü yalıtımını kullanır. Diğer yalıtım düzeylerinden farklı olarak, anlık görüntü yalıtımı tüm okumaların, güncelleştirmeler gerçekleşirken bile verilerin tutarlı bir anlık görüntüsünü (aslında bir güncelleştirme işlemi işlenirken, son kaydedilen değerleri döndürerek) görmesini güvence altına alır.  
 
 ## <a name="managing-concurrency-in-blob-storage"></a>Blob depolamada eşzamanlılık yönetimi
+
 Blob hizmetindeki bloblara ve kapsayıcılara erişimi yönetmek için iyimser veya Kötümser eşzamanlılık modellerini kullanmayı tercih edebilirsiniz. Açık olarak bir strateji belirtmezseniz, WINS varsayılan olarak yazar.  
 
 ### <a name="optimistic-concurrency-for-blobs-and-containers"></a>Bloblar ve kapsayıcılar için iyimser eşzamanlılık
+
 Depolama hizmeti, depolanan her nesneye bir tanımlayıcı atar. Bu tanımlayıcı, bir nesne üzerinde her güncelleştirme işlemi gerçekleştirildiğinde güncellenir. Tanımlayıcı, HTTP protokolünde tanımlanmış ETag (varlık etiketi) üst bilgisini kullanan HTTP GET yanıtının bir parçası olarak istemciye döndürülür. Bu tür bir nesne üzerinde bir güncelleştirme gerçekleştiren bir Kullanıcı, bir güncelleştirmenin yalnızca belirli bir koşul karşılanırsa meydana geldiğinden emin olmak için bir koşullu üstbilgiyle birlikte özgün ETag içinde gönderebilir. Bu durumda koşul, depolama hizmeti t gerektiren bir "IF-Match" üst bilgisi olur. o güncelleştirme isteğinde belirtilen ETag değerinin, depolama hizmetinde depolandıkları ile aynı olduğundan emin olun.  
 
 Bu işlemin ana hattı aşağıdaki gibidir:  
@@ -45,12 +49,12 @@ Bu işlemin ana hattı aşağıdaki gibidir:
 4. Blob 'un geçerli ETag değeri istekteki **IF-Match** koşullu üstbilgisindeki ETag 'ten farklı bir sürümse, hizmet istemciye 412 hatası döndürür. Bu, istemcinin aldığı bu yana başka bir işlemin blobu güncelleştirdiğini istemciye bildirir.
 5. Blob 'un geçerli ETag değeri, istekteki **IF-Match** koşullu üstbilgisindeki ETag ile aynı sürümse, hizmet istenen işlemi gerçekleştirir ve yeni bir sürüm oluşturduğunu göstermek için Blobun geçerli ETag değerini güncelleştirir.  
 
-Aşağıdaki C# kod parçacığı (Istemci depolama kitaplığı 4.2.0 kullanarak), daha önce alınan veya bir Blobun özelliklerinden erişilen ETag değerine bağlı olarak **IF-Match erişimkoşulunun** nasıl oluşturulacağı hakkında basit bir örnek gösterir. takılmamış. Ardından, blobu güncelleştirdiğinde **accesscondition** nesnesini kullanır: **accesscondition** nesnesi isteğe **IF-Match** üst bilgisini ekler. Başka bir işlem blobu güncelleştirdiyse, blob hizmeti bir HTTP 412 (Önkoşul başarısız) durum iletisi döndürür. Tam örneği buradan indirebilirsiniz: [Azure Storage kullanarak eşzamanlılık yönetimi](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
+Aşağıdaki C# kod parçacığı (Istemci depolama kitaplığı 4.2.0 kullanarak), daha önce alınmış veya eklenen bir Blobun özelliklerinden erişilen bir **IF-Match accesscondition** öğesinin nasıl oluşturulacağı hakkında basit bir örnek gösterir. Ardından, blobu güncelleştirdiğinde **accesscondition** nesnesini kullanır: **accesscondition** nesnesi isteğe **IF-Match** üst bilgisini ekler. Başka bir işlem blobu güncelleştirdiyse, blob hizmeti bir HTTP 412 (Önkoşul başarısız) durum iletisi döndürür. Tam örneği buradan indirebilirsiniz: [Azure Storage kullanarak eşzamanlılık yönetimi](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
 // Etag is already populated as UploadText should cause a PUT Blob call
-// to storage blob service which returns the ETag in response.
+// to storage Blob service which returns the ETag in response.
 string originalETag = blockBlob.Properties.ETag;
 
 // This code simulates an update by a third party.
@@ -80,11 +84,11 @@ catch (StorageException ex)
 }  
 ```
 
-Depolama hizmeti Ayrıca, **If-Modified-Since**, **If-Modified-Since** ve **If-None-Match** gibi ek koşullu üstbilgiler için de destek içerir. Daha fazla bilgi için bkz. MSDN 'de [BLOB hizmeti işlemleri Için koşullu üstbilgileri belirtme](https://msdn.microsoft.com/library/azure/dd179371.aspx) .  
+Azure depolama Ayrıca, **If-Modified-Since**, **If-Modified-Since** ve **If-None-Match** gibi ek koşullu üstbilgiler için de destek içerir. Daha fazla bilgi için bkz. [BLOB hizmeti işlemleri Için koşullu üstbilgiler belirtme](https://msdn.microsoft.com/library/azure/dd179371.aspx).  
 
 Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden ve yanıtta bir ETag değeri döndüren kapsayıcı işlemlerini özetler.  
 
-| Çalışma | Kapsayıcı ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
+| İşlem | Kapsayıcı ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
 |:--- |:--- |:--- |
 | Kapsayıcı oluşturma |Evet |Hayır |
 | Kapsayıcı özelliklerini al |Evet |Hayır |
@@ -100,7 +104,7 @@ Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden 
 
 Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden ve yanıtta bir ETag değeri döndüren blob işlemlerini özetler.
 
-| Çalışma | ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
+| İşlem | ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
 |:--- |:--- |:--- |
 | Blobu koy |Evet |Evet |
 | Blob al |Evet |Evet |
@@ -122,6 +126,7 @@ Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden 
 (*) Kira blobu blob üzerinde ETag öğesini değiştirmez.  
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>Blob 'lar için Kötümser eşzamanlılık
+
 Bir blobu özel kullanım için kilitlemek üzere, üzerinde bir [kira](https://msdn.microsoft.com/library/azure/ee691972.aspx) elde edebilirsiniz. Kira aldığınızda, kira ne kadar süreyle ihtiyacınız olduğunu belirtirsiniz: Bu, bir özel kilit için, 15 ila 60 saniye veya sonsuz arasında olabilir. Sınırlı bir kirayı genişletmek için yenileyebilirsiniz ve bununla işiniz bittiğinde herhangi bir kiralamayı serbest bırakabilirsiniz. Blob hizmeti, süresi dolduğunda sınırlı kiraları otomatik olarak serbest bırakır.  
 
 Kiralamalar, özel yazma/paylaşılan okuma, dışlamalı yazma/özel okuma ve paylaşılan yazma/özel okuma gibi farklı eşitleme stratejilerinin desteklenme imkanı sağlar. Kira mevcut olduğunda, depolama hizmeti özel yazma işlemleri uygular (put, set ve DELETE Operations) ancak denetim for Read işlemleri için, geliştiricinin tüm istemci uygulamalarının bir kira KIMLIĞI kullandığından ve aynı anda yalnızca bir istemcinin bir hizmet aldığından emin olmasını sağlar. Geçerli kira KIMLIĞI. Paylaşılan okumaların kira KIMLIĞI sonucunu içermeyen okuma işlemleri.  
@@ -174,10 +179,11 @@ Aşağıdaki blob işlemleri, Kötümser eşzamanlılık 'yi yönetmek için kir
 * Anlık görüntü blobu-Kiralama KIMLIĞI bir kira varsa isteğe bağlıdır
 * Kopyalama blobu-hedef blobu üzerinde kira varsa, kira KIMLIĞI gereklidir
 * Kopyalama blobu durdur-hedef blobu üzerinde sonsuz bir kira varsa, kira KIMLIĞI gereklidir
-* Kira blobu  
+* Blob Kiralama  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Kapsayıcılar için Kötümser eşzamanlılık
-Kapsayıcılardaki kiralamalar, bloblarda (özel yazma/paylaşılan okuma, dışlamalı yazma/özel okuma ve paylaşılan yazma/özel okuma) olarak aynı eşitleme stratejilerini destekler, ancak Blobların aksine depolama hizmeti yalnızca denetim üzerinde zorlanır silme işlemleri. Etkin bir kiralamaya sahip bir kapsayıcıyı silmek için, istemci, silme isteğiyle birlikte etkin Kiralama KIMLIĞINI içermelidir. Diğer tüm kapsayıcı işlemleri, kira KIMLIĞINI dahil etmeden bir kiralanan kapsayıcıda başarılı olur ve bu durumda paylaşılan işlemler olur. Denetim of Update (put veya set) veya Read işlemleri gerekliyse, geliştiriciler tüm istemcilerin bir kira KIMLIĞI kullandığından ve aynı anda yalnızca bir istemcinin geçerli bir kira KIMLIĞI olduğundan emin olmalıdır.  
+
+Kapsayıcılardaki kiralamalar aynı eşitleme stratejilerinin bloblarda (özel yazma/paylaşılan okuma, dışlamalı yazma/özel okuma ve paylaşılan yazma/özel okuma) aynı şekilde desteklendiğinden, ancak Blobların aksine depolama hizmeti yalnızca silme işlemlerinde denetim uygulanmasını sağlar. Etkin bir kiralamaya sahip bir kapsayıcıyı silmek için, istemci, silme isteğiyle birlikte etkin Kiralama KIMLIĞINI içermelidir. Diğer tüm kapsayıcı işlemleri, kira KIMLIĞINI dahil etmeden bir kiralanan kapsayıcıda başarılı olur ve bu durumda paylaşılan işlemler olur. Denetim of Update (put veya set) veya Read işlemleri gerekliyse, geliştiriciler tüm istemcilerin bir kira KIMLIĞI kullandığından ve aynı anda yalnızca bir istemcinin geçerli bir kira KIMLIĞI olduğundan emin olmalıdır.  
 
 Aşağıdaki kapsayıcı işlemleri, Kötümser eşzamanlılık 'yi yönetmek için kiraları kullanabilir:  
 
@@ -191,11 +197,12 @@ Aşağıdaki kapsayıcı işlemleri, Kötümser eşzamanlılık 'yi yönetmek i�
 
 Daha fazla bilgi için bkz.  
 
-* [Blob hizmeti Işlemleri için koşullu üstbilgileri belirtme](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Blob Hizmeti İşlemlerinde Koşullu Üst Bilgiler Belirtme](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Kira kapsayıcısı](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Kira blobu](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Blob Kiralama](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
-## <a name="managing-concurrency-in-the-table-service"></a>Tablo hizmetinde eşzamanlılık yönetimi
+## <a name="managing-concurrency-in-table-storage"></a>Tablo depolamada eşzamanlılık yönetimi
+
 Tablo hizmeti, doğrudan iyimser eşzamanlılık denetimleri gerçekleştirmeyi tercih etmeniz gereken blob hizmetinden farklı olarak, varlıklarla çalışırken varsayılan davranış olarak iyimser eşzamanlılık denetimleri kullanır. Tablo ve BLOB Hizmetleri arasındaki diğer fark, blob hizmeti ile yalnızca varlıkların eşzamanlılık davranışını yönetebilmeniz, her iki kapsayıcının ve Blobların Eşzamanlılığını yönetebilirsiniz.  
 
 İyimser eşzamanlılığı kullanmak ve tablo depolama hizmetinden aldıktan sonra başka bir işlemin bir varlığı değiştirse denetlemek için, tablo hizmeti bir varlık döndürdüğünde aldığınız ETag değerini kullanabilirsiniz. Bu işlemin ana hattı aşağıdaki gibidir:  
@@ -204,7 +211,7 @@ Tablo hizmeti, doğrudan iyimser eşzamanlılık denetimleri gerçekleştirmeyi 
 2. Varlığı güncelleştirdiğinizde, hizmete göndereceğiniz isteğin zorunlu **IF-Match** üst bilgisinde 1. adım ' da aldığınız ETag değerini ekleyin.
 3. Hizmet, istekteki ETag değerini varlığın geçerli ETag değeri ile karşılaştırır.
 4. Varlığın geçerli ETag değeri, istekteki zorunlu **IF-Match** üst bilgisinde ETag değerinden farklıysa, hizmet istemciye 412 hatası döndürür. Bu, istemcinin aldığı bu yana başka bir işlemin varlığı güncelleştirdiğini gösterir.
-5. Varlığın geçerli ETag değeri, istekteki zorunlu **IF-Match** üst bilgisindeki ETag ile aynı veya **IF-Match** üst bilgisi joker karakteri (*) içeriyorsa, hizmet istenen Işlemi gerçekleştirir ve geçerli ETag 'i güncelleştirir güncelleştirilmiş olduğunu göstermek için varlığın değeri.  
+5. Varlığın geçerli ETag değeri, istekteki zorunlu **IF-Match** üst bilgisindeki ETag ile aynı veya **IF-Match** üst bilgisi joker karakteri (*) içeriyorsa, hizmet istenen işlemi gerçekleştirir ve varlığın güncel ETag değerini güncelleştirir.  
 
 Blob hizmeti 'nin aksine, tablo hizmeti istemcinin güncelleştirme isteklerinde bir **IF-Match** üst bilgisi içermesini gerektirdiğini unutmayın. Ancak, istemci istekte **IF-Match** üst bilgisini (*) joker karakteri (*) olarak ayarladıysanız, koşulsuz bir güncelleştirme (son yazıcı WINS stratejisi) zorlamak ve eşzamanlılık denetimlerini atlamak mümkündür.  
 
@@ -235,7 +242,7 @@ customer.ETag = "*";
 
 Aşağıdaki tablo, tablo varlığı işlemlerinin ETag değerlerini nasıl kullandığını özetler:
 
-| Çalışma | ETag değerini döndürür | IF-Match istek üst bilgisi gerektirir |
+| İşlem | ETag değerini döndürür | IF-Match istek üst bilgisi gerektirir |
 |:--- |:--- |:--- |
 | Sorgu varlıkları |Evet |Hayır |
 | Varlık Ekle |Evet |Hayır |
@@ -245,7 +252,7 @@ Aşağıdaki tablo, tablo varlığı işlemlerinin ETag değerlerini nasıl kull
 | Varlık Ekle veya Değiştir |Evet |Hayır |
 | Varlık ekleme veya birleştirme |Evet |Hayır |
 
-**Varlık Ekle veya Değiştir** ve **Ekle ya da Birleştir** Işlemlerinin tablo hizmetine bir ETag değeri göndermediğinden hiçbir eşzamanlılık *denetimi gerçekleştirmediğini* unutmayın.  
+**Varlık Ekle veya Değiştir** ve **Ekle ya da Birleştir** Işlemlerinin tablo hizmetine bir ETag değeri *göndermediğinden hiçbir eşzamanlılık denetimi gerçekleştirmediğini* unutmayın.  
 
 Tabloları kullanan genel geliştiriciler, ölçeklenebilir uygulamalar geliştirirken iyimser eşzamanlılık kullanır. Kötümser kilitleme gerekiyorsa, tablolara erişirken bir yaklaşım, her tablo için belirlenmiş bir blob atamak ve tablo üzerinde çalışmadan önce blob üzerinde kira almaya çalışır. Bu yaklaşım, tüm veri erişim yollarının tablo üzerinde çalıştırılmadan önce kirayı almasını sağlamak için uygulamanın kullanılmasını gerektirir. Ayrıca minimum kira süresinin 15 saniye olduğunu ve bu da ölçeklenebilirlik için dikkatli bir dikkat gerektirdiğini unutmayın.  
 
@@ -254,16 +261,18 @@ Daha fazla bilgi için bkz.
 * [Varlıklar üzerinde işlemler](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
 ## <a name="managing-concurrency-in-the-queue-service"></a>Kuyruk hizmetinde eşzamanlılık yönetimi
+
 Sıraya alma hizmetinde eşzamanlılık olan bir senaryo, birden çok istemcinin bir kuyruktan ileti aldığı yerdir. Kuyruktan bir ileti alındığında, yanıt iletiyi silmek için gereken iletiyi ve bir pop alındı değerini içerir. İleti kuyruktan otomatik olarak silinmez, ancak alındıktan sonra, diğer istemcilere visibilitytimeout parametresi tarafından belirtilen zaman aralığı için görünür değildir. İletiyi alan istemcinin, işleme alındıktan sonra iletiyi silmesi beklenir ve bu süre önce, bu, visibilitytimeout parametresinin değeri temel alınarak hesaplanan yanıtın TimeNextVisible öğesi tarafından belirtilen süreden önce. Visibilitytimeout değeri, görünen TimeNextVisible değerini belirlemekte iletinin alındığı zamana eklenir.  
 
 Kuyruk hizmeti iyimser veya Kötümser eşzamanlılık desteğine sahip değil ve bu nedenle, bir kuyruktan alınan iletilerin işlenmesi, iletilerin bir ıdempotent şekilde işlenmesini sağlamalıdır. Son yazıcı WINS stratejisi, SetQueueServiceProperties, SetQueueMetaData, SetQueueACL ve UpdateMessage gibi güncelleştirme işlemleri için kullanılır.  
 
 Daha fazla bilgi için bkz.  
 
-* [Kuyruk hizmeti REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [Kuyruk Hizmeti REST API'si](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Iletileri al](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
-## <a name="managing-concurrency-in-the-file-service"></a>Dosya hizmetinde eşzamanlılık yönetimi
+## <a name="managing-concurrency-in-azure-files"></a>Azure dosyalarında eşzamanlılık yönetimi
+
 Dosya hizmetine iki farklı protokol uç noktası, SMB ve REST kullanılarak erişilebilir. REST hizmeti, iyimser kilitleme veya Kötümser kilitleme desteğine sahip değildir ve tüm güncelleştirmeler son yazıcı WINS stratejisini takip eder. Dosya paylaşımlarını bağlayan SMB istemcileri, Kötümser kilitleme gerçekleştirme özelliği de dahil olmak üzere paylaşılan dosyalara erişimi yönetmek için dosya sistemi kilitleme mekanizmalarından yararlanabilir. Bir SMB istemcisi bir dosyayı açtığında, hem dosya erişimi hem de paylaşma modunu belirtir. "Write" veya "Read/Write" adlı bir dosya erişimi seçeneğinin ve "none" dosya paylaşma moduyla birlikte ayarlanması, dosya kapatılıncaya kadar dosyanın bir SMB istemcisi tarafından kilitlenme oluşmasına neden olur. Bir SMB istemcisinin dosya kilitli olduğu bir dosya üzerinde REST işlemi deneniyorsa REST hizmeti, 409 (çakışma) durum kodunu bir hata kodu Sharingihlayle döndürür.  
 
 Bir SMB istemcisi silme için bir dosyayı açtığında, bu dosyadaki diğer tüm SMB istemci açık tanıtıcıları kapanana kadar dosyayı bekleyen silme olarak işaretler. Bir dosya bekleyen silme olarak işaretlendiğinden, bu dosyadaki tüm REST işlemleri SMBDeletePending hata kodu ile 409 (çakışma) durum kodunu döndürür. SMB istemcisinin dosyayı kapatmadan önce bekleyen silme bayrağını kaldırması mümkün olduğundan, durum kodu 404 (bulunamadı) döndürülmedi. Diğer bir deyişle, 404 (bulunamadı) durum kodu yalnızca dosya kaldırıldığında beklenir. Bir dosya SMB bekleyen silme durumundaysa, liste dosyaları sonuçlarına dahil edilmez. Ayrıca, REST silme dosyası ve REST Delete dizin işlemlerinin, kararlılık ve bekleyen silme durumuyla sonuçlanmadığını unutmayın.  
@@ -272,8 +281,7 @@ Daha fazla bilgi için bkz.
 
 * [Dosya kilitlerini yönetme](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
-## <a name="summary-and-next-steps"></a>Özet ve sonraki adımlar
-Microsoft Azure Depolama Hizmeti, geliştiricilerin eşzamanlılık ve veri tutarlılığı gibi önemli tasarım varsayımlarını tehlikeye atabilmeleri gerekmeden en karmaşık çevrimiçi uygulamaların ihtiyaçlarını karşılayacak şekilde tasarlandı iznine.  
+## <a name="next-steps"></a>Sonraki adımlar
 
 Bu blogda başvurulan tüm örnek uygulamalar için:  
 
@@ -284,5 +292,5 @@ Azure depolama hakkında daha fazla bilgi için bkz.
 * [Microsoft Azure Depolama giriş sayfası](https://azure.microsoft.com/services/storage/)
 * [Azure Depolama’ya giriş](storage-introduction.md)
 * [BLOB](../blobs/storage-dotnet-how-to-use-blobs.md), [tablo](../../cosmos-db/table-storage-how-to-use-dotnet.md), [kuyruk](../storage-dotnet-how-to-use-queues.md)ve [dosyalar](../storage-dotnet-how-to-use-files.md) için depolama kullanmaya başlama
-* Depolama mimarisi – [Azure depolama: Güçlü tutarlılığı olan yüksek oranda kullanılabilir bir bulut depolama hizmeti](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* Depolama mimarisi – [Azure depolama: güçlü tutarlılığı olan yüksek oranda kullanılabilir bir bulut depolama hizmetidir](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

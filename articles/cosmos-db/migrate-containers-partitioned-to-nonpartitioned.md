@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b7eed4089a65f62056027c70f08902f531567c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706081"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445259"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Bölümlendirilmemiş kapsayıcıları bölümlenmiş kapsayıcılara geçirme
 
@@ -118,10 +118,18 @@ V2. x. x ve v1. x. x gibi Azure Cosmos DB SDK 'ların daha eski sürümleri sist
 
 Geçirilen bir kapsayıcı SDK 'nın en son/v3 sürümü tarafından tüketilediyse ve sistem tanımlı bölüm anahtarını yeni belgeler içinde doldurmaya başlatırsanız, artık daha eski SDK 'lardan bu belgelere erişemezsiniz (okuma, güncelleştirme, silme, sorgulama).
 
+## <a name="known-issues"></a>Bilinen sorunlar
+
+**V3 SDK kullanılarak bölüm anahtarı olmadan eklenen öğelerin sayısını sorgulamak daha yüksek aktarım hızı tüketimine sahip olabilir**
+
+V2 SDK kullanılarak eklenen öğeler için v3 SDK 'dan veya `PartitionKey.None` parametresiyle v3 SDK kullanılarak eklenen öğelerde sorgulama yaparsanız, `PartitionKey.None` parametresi Feedos 'ler içinde sağlanırsa, sayı sorgusu daha fazla RU/sn tüketebilir. Bölüm anahtarı ile başka öğe eklenmezseniz `PartitionKey.None` parametresini sağlamamız önerilir.
+
+Bölüm anahtarı için farklı değerlerle yeni öğeler eklenirse, `FeedOptions` ilgili anahtarı geçirerek bu tür öğe sayılarını sorgulamak herhangi bir sorun olmayacaktır. Bölüm anahtarı ile yeni belgeler eklendikten sonra, bölüm anahtarı değeri olmadan yalnızca belge sayısını sorgulamanızı istiyorsanız, bu sorgu, normal bölümlenmiş koleksiyonlara benzer şekilde daha yüksek RU/s öğesine neden olabilir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Cosmos DB'de bölümleme](partitioning-overview.md)
-* [Azure Cosmos DB'de İstek Birimleri](request-units.md)
+* [Azure Cosmos DB'de İstek birimleri](request-units.md)
 * [Kapsayıcı ve veritabanlarına aktarım hızı sağlama](set-throughput.md)
 * [Azure Cosmos hesabıyla çalışma](account-overview.md)
 

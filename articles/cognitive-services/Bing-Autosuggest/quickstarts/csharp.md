@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Bing Otomatik Öneri REST API ile arama sorguları önerin veC#'
+title: 'Hızlı başlangıç: Bing Otomatik Öneri REST API ile arama sorguları önerin veC#'
 titleSuffix: Azure Cognitive Services
 description: Bing Otomatik Öneri API'si ile gerçek zamanlı olarak arama terimleri önerme hakkında hızlı bir başlangıç yapmayı öğrenin.
 services: cognitive-services
@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: bf5322b64b46854d2652c6edf264e25ce0be3d0f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 281286eb497e52d4553ac539d647625e49f3df9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564715"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448814"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Hızlı Başlangıç: Bing Otomatik Öneri REST API ile arama sorguları önerin veC#
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Hızlı başlangıç: Bing Otomatik Öneri REST API ile arama sorguları önerin veC#
 
 Bing Otomatik Öneri API'si çağrı yapmaya başlamak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu basit C# uygulama, API 'ye kısmi bir arama sorgusu gönderir ve aramalar için öneriler döndürür. Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs)’da mevcuttur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
 * Linux/MacOS kullanıyorsanız bu uygulama, [Mono](https://www.mono-project.com/) kullanılarak çalıştırılabilir.
@@ -40,7 +40,7 @@ Bing Otomatik Öneri API'si çağrı yapmaya başlamak ve JSON yanıtını almak
     using System.Text;
     ```
 
-2. Yeni bir sınıfta API ana bilgisayar ve yol, [Pazar kodu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)ve kısmi arama sorgusu için değişkenler oluşturun.
+2. Yeni bir sınıfta API ana bilgisayar ve yol, [Pazar kodu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)ve kısmi arama sorgusu için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```csharp
     static string host = "https://api.cognitive.microsoft.com";
@@ -54,7 +54,7 @@ Bing Otomatik Öneri API'si çağrı yapmaya başlamak ve JSON yanıtını almak
 
 ## <a name="create-and-send-an-api-request"></a>API isteği oluşturma ve gönderme
 
-1. API 'ye istek göndermek `Autosuggest()` için adlı bir işlev oluşturun. Yeni `HttpClient()`bir oluşturun ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
+1. API 'ye bir istek göndermek için `Autosuggest()` adlı bir işlev oluşturun. Yeni bir `HttpClient()`oluşturun ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin.
 
     ```csharp
     async static void Autosuggest()
@@ -65,7 +65,7 @@ Bing Otomatik Öneri API'si çağrı yapmaya başlamak ve JSON yanıtını almak
     }
     ```
 
-2. Yukarıdaki işlevde, API konağını ve yolunu birleştirerek bir istek URI 'SI oluşturun. Pazarınıza `?mkt=` ve sorgunuzu `&query=` parametreye ekleyin. Sorgunuzun URL 'yi kodlayıp girdiğinizden emin olun. 
+2. Yukarıdaki işlevde, API konağını ve yolunu birleştirerek bir istek URI 'SI oluşturun. Market `?mkt=` parametresine ve sorgunuzu `&query=` parametresine ekleyin. Sorgunuzun URL 'yi kodlayıp girdiğinizden emin olun. 
 
     ```csharp
     string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
@@ -80,7 +80,7 @@ Bing Otomatik Öneri API'si çağrı yapmaya başlamak ve JSON yanıtını almak
     Console.WriteLine(contentString);
     ```
 
-4. Programınızın Main yönteminde çağrısı `Autosuggest()`yapın.
+4. Programınızın Main yönteminde `Autosuggest()`çağırın.
 
     ```csharp
     static void Main(string[] args)

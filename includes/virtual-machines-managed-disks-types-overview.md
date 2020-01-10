@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 45168c23964c735a4bd51ba11c2340d4ff95fed4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 31a9da0678f602afcc117e5b2f7927af379da668
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012409"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466583"
 ---
 Azure yönetilen diskler Şu anda dört disk türü sunmaktadır, her tür belirli müşteri senaryolarına yönelik olarak tasarlanmıştır.
 
@@ -24,14 +24,14 @@ Aşağıdaki tabloda, ne kullanacağınıza karar vermenize yardımcı olmak üz
 |   | Ultra disk   | Premium SSD   | Standart SSD   | Standart HDD   |
 |---------|---------|---------|---------|---------|
 |Disk türü   |SSD   |SSD   |SSD   |HDD   |
-|Senaryo   |[SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), üst katman veritabanları (ÖRNEĞIN, SQL, Oracle) ve diğer işlem açısından ağır iş YÜKLERI gibi GÇ yoğunluklu iş yükleri.   |Üretim ve performansa duyarlı iş yükleri   |Web sunucuları, hafif kullanılan kurumsal uygulamalar ve geliştirme/test   |Yedekleme, kritik olmayan, seyrek erişimli erişim   |
-|En fazla disk boyutu   |65.536 gibibayt (gib)    |32.767 GiB    |32.767 GiB   |32.767 GiB   |
-|En fazla aktarım hızı   |2\.000 MIB/sn    |900 MIB/sn   |750 MIB/sn   |500 MIB/sn   |
-|Maksimum ıOPS   |160.000    |20,000   |6,000   |2,000   |
+|Senaryo   |[SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), üst katman veritabanları (ÖRNEĞIN, SQL, Oracle) ve diğer işlem açısından ağır iş YÜKLERI gibi GÇ yoğunluklu iş yükleri.   |Üretim ve performansa duyarlı iş yükleri   |Web sunucuları, az kullanılan kurumsal uygulamalar ve geliştirme/test   |Yedekleme, kritik olmayan, seyrek erişim   |
+|En büyük disk boyutu   |65.536 gibibayt (GiB)    |32.767 GiB    |32.767 GiB   |32.767 GiB   |
+|En yüksek işleme hızı   |2\.000 MiB/sn    |900 MiB/sn   |750 MiB/sn   |500 MiB/sn   |
+|Maks. IOPS   |160.000    |20.000   |6,000   |2,000   |
 
 ## <a name="ultra-disk"></a>Ultra disk
 
-Azure Ultra diskler, Azure IaaS VM 'Leri için yüksek aktarım hızı, yüksek ıOPS ve tutarlı düşük gecikmeli disk depolama alanı sunar. Ultra disklerin bazı ek avantajları, sanal makinelerinizi (VM) yeniden başlatmanıza gerek kalmadan, iş yükleriniz ile birlikte, diskin performansını dinamik olarak değiştirme imkanını içerir. Ultra diskler SAP HANA, üst katman veritabanları ve işlem açısından ağır iş yükleri gibi veri kullanımı yoğun iş yükleri için uygundur. Ultra diskler yalnızca veri diski olarak kullanılabilir. Premium SSDs 'yi işletim sistemi diskleri olarak kullanmanızı öneririz.
+Azure ultra diskler Azure IaaS VM'leri içi yüksek işleme hızı, yüksek IOPS ve tutarlı olarak düşük gecikme süresi getirir. Ultra disklerin bazı ek avantajları, sanal makinelerinizi (VM) yeniden başlatmanıza gerek kalmadan, iş yükleriniz ile birlikte, diskin performansını dinamik olarak değiştirme imkanını içerir. Ultra diskler SAP HANA, en üst katman veritabanları ve ağır işlem içeren iş yükleri gibi yoğun veri kullanan iş yüklerine uygundur. Ultra diskler yalnızca veri diski olarak kullanılabilir. İşletim sistemi diskleri olarak Premium SSD'leri kullanmanızı öneririz.
 
 ### <a name="performance"></a>Performans
 

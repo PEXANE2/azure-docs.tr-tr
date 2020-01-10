@@ -7,30 +7,30 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: bd1269052a47c324d3d64b1d7f31dcb1c6556c3c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e72118ea0f90cfbb08d81ebded6ca7edf08a06c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795724"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454514"
 ---
-# <a name="content-delivery-network-on-azure-with-azure-cdn-service"></a>Azure 'da Azure CDN hizmeti ile içerik teslim ağı
-[Azure CDN](https://azure.microsoft.com/services/cdn/) geliştiricilere videoları, resimleri veya statik dosyaları gibi yüksek bant genişliğine sahip içeriği dünyanın her yerindeki Iletişim (pop) halinde önbelleğe alarak kullanıcılara hızlı bir şekilde sunma konusunda genel bir çözüm sunar. Azure CDN Ayrıca, önbelleğe alınılamayan dinamik içeriği hızlandırıp, yükleme sürelerini azaltmanıza, bant genişliğinden tasarruf etmenize ve yanıt verme ve dağıtma gibi durumlar elde etmenizi sağlar Medya, oyun yazılımı, üretici yazılımı güncelleştirmeleri veya IoT uç noktaları.
+# <a name="content-delivery-network-on-azure-with-azure-content-delivery-network"></a>Azure 'da Azure 'da içerik teslim ağı Content Delivery Network
+[Azure Content Delivery Network](https://azure.microsoft.com/services/cdn/) geliştiricilere videoları, resimleri veya statik dosyaları gibi yüksek bant genişliğine sahip içeriği dünyanın her yerindeki bir dünya çapındaki varlığına önbelleğe alarak hızla sunmaya yönelik genel bir çözüm sunar. Content Delivery Network Ayrıca, önbelleğe alınmamış dinamik içeriği hızlandırarak yükleme sürelerini azaltabilir, bant genişliğini kaydedebilir ve yanıt hızını artırabilir. Bu avantajları, Web siteleri veya mobil uygulamalar geliştirip yönettiğinizde ya da akış medyası, oyun yazılımı, üretici yazılımı güncelleştirmeleri veya IoT uç noktaları ile kodlayıp dağıtmanıza göre elde edersiniz.
 
-## <a name="azure-cdn-features"></a>Azure CDN özellikleri
-  - Web uygulamaları, Media Services, depolama ve Cloud Services dahil olmak üzere Azure hizmetleriyle **sorunsuz** bir şekilde çalışır.
-  - **Trafik ani artışları ve ağır yükleri kolayca işleyin**.
-  - İçerik teslim stratejisini derlemek ve uyarlamak için **Akamai ve Verizon Ile tümleştirme** .
-  - Dinamik site hızlandırma.
-  - **Önbelleğe alma kurallarıyla**önbelleğe alma davranışını kontrol Azure CDN.
-  - HTTPS **özel etki alanı desteği**.
-  - Çekirdek analizlerini görüntülemek ve bunları BLOB depolama, Event Hubs veya Azure Izleyici 'ye aktarmak için **Azure tanılama günlükleri** .
-  - **Dosyaları sıkıştırarak**performansı geliştirme.
-  - Azure CDN içeriğini ülkeye/bölgeye göre kısıtlamak için **coğrafi filtreleme** .
+## <a name="azure-content-delivery-network-features"></a>Azure Content Delivery Network özellikleri
+  - Web uygulamaları, Media Services, depolama ve bulut hizmetleri gibi Azure hizmetleriyle sorunsuz bir şekilde çalışın.
+  - Trafik ani artışları ve ağır yükleri kolayca işleyin.
+  - İçerik teslim stratejisini derlemek ve uyarlamak için Akamai ve Verizon ile tümleştirin.
+  - Dinamik site hızlandırmasını kullanın.
+  - Önbelleğe alma kurallarıyla önbelleğe alma davranışını kontrol Content Delivery Network.
+  - HTTPS özel etki alanı desteği kazanın.
+  - Çekirdek analizlerini görmek ve Azure Blob depolama, Azure Event Hubs veya Azure Izleyici 'ye aktarmak için Azure tanılama günlüklerini görüntüleyin.
+  - Dosyaları sıkıştırarak performansı geliştirme.
+  - Content Delivery Network içeriğini ülkeye veya bölgeye göre kısıtlamak için bölge sınırlandırılmasını kullanın.
 
 ## <a name="references"></a>Başvurular
-  - [Azure portalda](https://portal.azure.com)
-  - [Belgelerle](/azure/cdn/)
-  - [CDN 'yi kullanmaya başlama](/azure/cdn/cdn-create-new-endpoint)
+  - [Azure Portal](https://portal.azure.com)
+  - [Azure Content Delivery Network belgeleri](/azure/cdn/)
+  - [Azure Content Delivery Network kullanmaya başlama](/azure/cdn/cdn-create-new-endpoint)
   - [Hızlı başlangıçlar](/azure/cdn/cdn-create-new-endpoint)
 

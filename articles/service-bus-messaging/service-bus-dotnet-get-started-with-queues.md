@@ -14,18 +14,18 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: c1f9c8a03a503444c7c45d5374b67e5b453a8931
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 49abd1b0542b1a658517561cf1ffead402fa93a5
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561611"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563403"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus kuyruklarını kullanmaya başlama
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için .NET Core konsol uygulamaları oluşturacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), sürüm 2.0 veya sonraki sürümler.
@@ -74,7 +74,7 @@ Visual Studio 'Yu başlatın ve için C#yeni bir **konsol uygulaması (.NET Core
 
     Ad alanı için Bağlantı dizenizi `ServiceBusConnectionString` değişkeni olarak girin. Sıra adınızı girin.
 
-1. `Main()` yöntemini aşağıdaki **async** `Main` yöntemiyle değiştirin. Kuyruğa ileti göndermek için bir sonraki adımda ekleyeceğiniz SendMessagesAsync yöntemini çağırır. 
+1. `Main()` yöntemini aşağıdaki **async** `Main` yöntemiyle değiştirin. Kuyruğa ileti göndermek için bir sonraki adımda ekleyeceğiniz `SendMessagesAsync()` yöntemini çağırır. 
 
     ```csharp
     public static async Task Main(string[] args)

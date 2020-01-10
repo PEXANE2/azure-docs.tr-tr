@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Python için anomali algılayıcı istemci kitaplığını kullanarak veri anormalilerini algılama'
 titleSuffix: Azure Cognitive Services
-description: Veri serinizdeki tüm verileri toplu olarak veya akış verilerinde saptamak için anomali algılayıcı API 'sini kullanın.
+description: Bu hızlı başlangıçta, veri serinizdeki her zaman bir toplu iş veya akış verileri olarak, anormallikleri algılamak için anomali algılayıcı API 'sinin nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: f58f4f9c89e2c0bfb7d9eca6d39dab3f25b21990
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0493f9e4b45d8d4804d1933bb923d3483b87005e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483350"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448986"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>Hızlı başlangıç: Python için anomali algılayıcı istemci kitaplığı
 
@@ -28,7 +28,7 @@ Python için anomali algılayıcı istemci kitaplığını kullanarak şunları 
 
 Kitaplık [başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [paketi (Pypı)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [GitHub üzerinde örnek kodu bulma](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Anomali algılayıcı anahtarı ve uç noktası

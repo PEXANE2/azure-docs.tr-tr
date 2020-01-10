@@ -1,282 +1,338 @@
 ---
-title: "Hızlı Başlangıç: Azure depolama 'da bir kuyruk oluşturmak için .NET kullanın"
-description: Bu hızlı başlangıçta, bir kuyruk oluşturmak ve bu iletiye ileti eklemek için .NET için Azure depolama istemci kitaplığı 'nı nasıl kullanacağınızı öğreneceksiniz. Ardından, sıradaki iletileri okumayı ve işlemeyi öğreneceksiniz.
+title: 'Hızlı başlangıç: Azure kuyruk depolama kitaplığı v12-.NET'
+description: Bir kuyruk oluşturmak ve kuyruğa ileti eklemek için Azure kuyruğu .NET V12 kitaplığı 'nı nasıl kullanacağınızı öğrenin. Ardından, sıradaki iletileri okumayı ve silmeyi öğreneceksiniz. Ayrıca, bir kuyruğu silmeyi de öğreneceksiniz.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/06/2018
+ms.date: 11/22/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.reviewer: cbrooks
-ms.openlocfilehash: d3706f8585c2644a31bf1f418f5425e0fa58d2a0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 71a714124cecfc4f985d448371042c8aff092a11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721252"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463842"
 ---
-# <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Hızlı Başlangıç: Azure depolama 'da bir kuyruk oluşturmak için .NET kullanın
+# <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Hızlı başlangıç: .NET için Azure kuyruk depolama istemci kitaplığı V12
 
-Bu hızlı başlangıçta, bir kuyruk oluşturmak ve bu iletiye ileti eklemek için .NET için Azure depolama istemci kitaplığı 'nı nasıl kullanacağınızı öğreneceksiniz. Ardından, sıradaki iletileri okumayı ve işlemeyi öğreneceksiniz. 
+.NET için Azure kuyruk depolama istemci kitaplığı sürüm 12 ' i kullanmaya başlayın. Azure kuyruk depolaması, daha sonra almak ve işlemek üzere çok sayıda ileti depolamaya yönelik bir hizmettir. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere bu adımları izleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+> [!NOTE]
+> Önceki SDK sürümünü kullanmaya başlamak için bkz. [hızlı başlangıç: bir kuyruğu yönetmek için .net Için Azure Storage SDK v11 kullanın](storage-quickstart-queues-dotnet-legacy.md).
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+.NET için Azure kuyruk depolama istemci kitaplığı V12 ' nı kullanarak şunları yapın:
 
-Ardından, işletim sisteminiz için .NET Core 2.0’ı indirip yükleyin. Windows kullanıyorsanız, isterseniz Visual Studio yükleyip .NET Framework kullanabilirsiniz. Ayrıca, işletim sisteminizle birlikte kullanmak için bir düzenleyici yüklemeyi seçebilirsiniz.
+* Kuyruk oluşturma
+* Bir kuyruğa ileti ekleme
+* Kuyruktaki iletilere göz atın
+* Kuyruktaki bir iletiyi güncelleştirme
+* Kuyruktan ileti alma
+* Kuyruktaki iletileri silme
+* Bir kuyruk silme
 
-### <a name="windows"></a>Windows
+[API başvuru belgeleri](/dotnet/api/azure.storage.queues) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues) | [paketi (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0) | [örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
 
-- [Windows için .NET Core](https://www.microsoft.com/net/download/windows) veya [.NET Framework](https://www.microsoft.com/net/download/windows) (Windows için Visual Studio ile birlikte gelir) yükleyin
-- [Windows için Visual Studio](https://www.visualstudio.com/) yükleyin. .NET Core kullanıyorsanız, Visual Studio yüklenmesi isteğe bağlıdır.  
+## <a name="prerequisites"></a>Ön koşullar
 
-.NET Core ve .NET Framework arasında seçim yapma hakkında bilgi için bkz: [Sunucu uygulamaları için .NET Framework ve .NET Core arasında seçim yapma](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+* Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* İşletim sisteminiz için geçerli [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) . Çalışma zamanını değil, SDK 'Yı aldığınızdan emin olun.
 
-### <a name="linux"></a>Linux
+## <a name="setting-up"></a>Ayarlanıyor
 
-- [Linux için .NET Core](https://www.microsoft.com/net/download/linux) yükleyin
-- İsteğe bağlı olarak [Visual Studio Code](https://www.visualstudio.com/) ve [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp&dotnetid=963890049.1518206068) yükleyin
+Bu bölümde, bir projeyi .NET için Azure kuyruk depolama istemci kitaplığı V12 ile çalışacak şekilde hazırlama adımları gösterilmektedir.
 
-### <a name="macos"></a>Mac OS
+### <a name="create-the-project"></a>Proje oluşturma
 
-- [macOS için .NET Core](https://www.microsoft.com/net/download/macos) yükleyin.
-- İsteğe bağlı olarak [Mac için Visual Studio](https://www.visualstudio.com/vs/visual-studio-mac/) yükleyin
+*QueuesQuickstartV12*adlı bir .NET Core uygulaması oluşturun.
 
-## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), *QueuesQuickstartV12*adlı yeni bir konsol uygulaması oluşturmak için `dotnet new` komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur: *program.cs*.
 
-Bu hızlı başlangıçta kullanılan örnek uygulama, temel bir konsol uygulamasıdır. [GitHub](https://github.com/Azure-Samples/storage-queues-dotnet-quickstart) üzerindeki örnek uygulamayı inceleyebilirsiniz.
+   ```console
+   dotnet new console -n QueuesQuickstartV12
+   ```
 
-Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https://git-scm.com/)'i kullanın. 
+1. Yeni oluşturulan *QueuesQuickstartV12* dizinine geçiş yapın.
 
-```bash
-git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
+   ```console
+   cd QueuesQuickstartV12
+   ```
+
+### <a name="install-the-package"></a>Paketi yükler
+
+Hala uygulama dizininde, `dotnet add package` komutunu kullanarak .NET için Azure kuyruk depolama istemci kitaplığı 'nı yükleyebilirsiniz.
+
+```console
+dotnet add package Azure.Storage.Queues
 ```
 
-Bu komut, depoyu yerel Git klasörünüze kopyalar. Visual Studio çözümünü açmak için, *Storage-Queues-DotNet-QuickStart* klasörünü arayın, açın ve *Storage-Queues-DotNet-QuickStart. sln*' ye çift tıklayın. 
+### <a name="set-up-the-app-framework"></a>Uygulama çerçevesini ayarlama
 
-[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
+Proje dizininden:
 
-## <a name="configure-your-storage-connection-string"></a>Depolama bağlantı dizelerinizi yapılandırma
+1. *Program.cs* dosyasını Düzenleyicinizde açın
+1. `Console.WriteLine("Hello World!");` ifadesini kaldır
+1. `using` yönergeleri ekleme
+1. [Zaman uyumsuz kodu desteklemek](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7-1#async-main) için `Main` yöntemi bildirimini güncelleştirin
 
-Uygulamayı çalıştırmak istiyorsanız, depolama hesabınız için bağlantı dizesi sağlamanız gerekir. Örnek uygulama, bağlantı dizesini ortam değişkeninden okur ve Azure Depolama’ya yönelik istekleri yetkilendirmek için bu dizeyi kullanır.
 
-Bağlantı dizenizi kopyaladıktan sonra uygulamayı çalıştıran yerel makine üzerindeki yeni bir ortam değişkenine yazın. Ortam değişkenini ayarlamak için bir konsol penceresi açın ve işletim sisteminizin yönergelerini izleyin. `<yourconnectionstring>` değerini gerçek bağlantı dizenizle değiştirin:
 
-### <a name="windows"></a>Windows
-
-```cmd
-setx storageconnectionstring "<yourconnectionstring>"
-```
-
-Ortam değişkenini ekledikten sonra, konsol penceresi de dahil olmak üzere ortam değişkenini okumak için gereken tüm çalışan programları yeniden başlatmanız gerekebilir. Örneğin, düzenleyici olarak Visual Studio kullanıyorsanız, örneği çalıştırmadan önce Visual Studio’yu yeniden başlatın. 
-
-### <a name="linux"></a>Linux
-
-```bash
-export storageconnectionstring=<yourconnectionstring>
-```
-
-Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source ~/.bashrc` çalıştırın.
-
-### <a name="macos"></a>Mac OS
-
-.bash_profile dosyanızı düzenleyin ve ortam değişkenini ekleyin:
-
-```bash
-export STORAGE_CONNECTION_STRING=<yourconnectionstring>
-```
-
-Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source .bash_profile` çalıştırın.
-
-## <a name="run-the-sample"></a>Örneği çalıştırma
-
-Örnek uygulama bir kuyruk oluşturur ve ona bir ileti ekler. Uygulama öncelikle iletiyi kuyruktan kaldırmadan iletiye bakar, sonra iletiyi alır ve kuyruktan siler.
-
-### <a name="windows"></a>Windows
-
-Düzenleyici olarak Visual Studio kullanıyorsanız **F5** tuşuna basarak çalıştırın. 
-
-Aksi takdirde uygulama dizininize gidip `dotnet run` komutuyla uygulamayı çalıştırın.
-
-```
-dotnet run
-```
-
-### <a name="linux"></a>Linux
-
-Uygulama dizininize gidip `dotnet run` komutuyla uygulamayı çalıştırın.
-
-```
-dotnet run
-```
-
-### <a name="macos"></a>Mac OS
-
-Uygulama dizininize gidip `dotnet run` komutuyla uygulamayı çalıştırın.
-
-```
-dotnet run
-```
-
-Örnek uygulama çıktısı aşağıdaki örneğe benzer:
-
-```
-Azure Queues - .NET Quickstart sample
-
-Created queue 'quickstartqueues-3136fe9a-fa52-4b19-a447-8999a847da52'
-
-Added message 'aa8fa95f-07ea-4df7-bf86-82b3f7debfb7' to queue 'quickstartqueues-3136fe9a-fa52-4b19-a447-8999a847da52'
-Message insertion time: 2/7/2019 4:30:46 AM +00:00
-Message expiration time: 2/14/2019 4:30:46 AM +00:00
-
-Contents of peeked message 'aa8fa95f-07ea-4df7-bf86-82b3f7debfb7': Hello, World
-
-Message 'aa8fa95f-07ea-4df7-bf86-82b3f7debfb7' becomes visible again at 2/7/2019 4:31:16 AM +00:00
-
-Processed and deleted message 'aa8fa95f-07ea-4df7-bf86-82b3f7debfb7'
-
-Press any key to delete the sample queue.
-```
-
-## <a name="understand-the-sample-code"></a>Örnek kodu anlama
-
-Ardından, nasıl çalıştığını anlayabilmeniz için örnek kodu inceleyin.
-
-### <a name="try-parsing-the-connection-string"></a>Bağlantı dizesini ayrıştırmayı deneyin
-
-Örnek öncelikle ortam değişkeninin depolama hesabına işaret eden bir [Cloudstorageaccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) nesnesi oluşturmak için ayrıştırılabilen bir bağlantı dizesi içerdiğini denetler. Bağlantı dizesinin geçerli olup olmadığını denetlemek için örnek [Trypari](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) yöntemini kullanır. **TryParse** başarılı olursa *storageAccount* değişkenini başlatır ve **true** değerini döndürür.
+Kod aşağıdaki gibidir:
 
 ```csharp
-// Retrieve the connection string for use with the application. The storage connection string is stored
-// in an environment variable called storageconnectionstring, on the machine where the application is running.
-// If the environment variable is created after the application is launched in a console or with Visual
-// Studio, the shell needs to be closed and reloaded to take the environment variable into account.
-string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
+using Azure;
+using Azure.Storage.Queues;
+using Azure.Storage.Queues.Models;
+using System;
+using System.Threading.Tasks;
 
-// Check whether the connection string can be parsed.
-if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))
+namespace QueuesQuickstartV12
 {
-    // If the connection string is valid, proceed with calls to Azure Queues here.
-    ...    
-}
-else
-{
-    Console.WriteLine(
-        "A connection string has not been defined in the system environment variables. " +
-        "Add an environment variable named 'storageconnectionstring' with your storage " +
-        "connection string as a value.");
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+        }
+    }
 }
 ```
 
-### <a name="create-the-queue"></a>Kuyruk oluşturma
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
-Birincisi, örnek bir kuyruk oluşturur ve ona bir ileti ekler. 
+## <a name="object-model"></a>Nesne modeli
+
+Azure Kuyruk depolama, çok sayıda iletiyi depolamaya yönelik bir hizmettir. Kuyruk iletisi boyutu 64 KB 'ye kadar olabilir. Bir kuyruk, depolama hesabının toplam kapasite sınırına kadar milyonlarca ileti içerebilir. Kuyruklar genellikle zaman uyumsuz olarak işlenecek iş biriktirme listesi oluşturmak için kullanılır. Kuyruk depolama, üç tür kaynak sunar:
+
+* Depolama hesabı
+* Depolama hesabındaki bir kuyruk
+* Kuyruktaki iletiler
+
+Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
+
+![Kuyruk depolama mimarisi diyagramı](./media/storage-queues-introduction/queue1.png)
+
+Şu kaynaklarla etkileşim kurmak için aşağıdaki .NET sınıflarını kullanın:
+
+* [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient): `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
+* [Queueclient](/dotnet/api/azure.storage.queues.queueclient): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
+* [Queuemessage](/dotnet/api/azure.storage.queues.models.queuemessage): `QueueMessage` sınıfı, bir kuyrukta [receivemessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) çağrılırken döndürülen ayrı nesneleri temsil eder.
+
+## <a name="code-examples"></a>Kod örnekleri
+
+Bu örnek kod parçacıkları, .NET için Azure kuyruk depolama istemci kitaplığı ile aşağıdaki işlemlerin nasıl yapılacağını göstermektedir:
+
+* [Bağlantı dizesini al](#get-the-connection-string)
+* [Sıra oluşturma](#create-a-queue)
+* [Bir kuyruğa ileti ekleme](#add-messages-to-a-queue)
+* [Kuyruktaki iletilere göz atın](#peek-at-messages-in-a-queue)
+* [Kuyruktaki bir iletiyi güncelleştirme](#update-a-message-in-a-queue)
+* [Kuyruktan ileti alma](#receive-messages-from-a-queue)
+* [Kuyruktaki iletileri silme](#delete-messages-from-a-queue)
+* [Kuyruğu silme](#delete-a-queue)
+
+### <a name="get-the-connection-string"></a>Bağlantı dizesini alma
+
+Aşağıdaki kod, depolama hesabı için bağlantı dizesini alır. Bağlantı dizesi, [depolama Bağlantı dizenizi yapılandırma](#configure-your-storage-connection-string) bölümünde oluşturulan ortam değişkeninde depolanır.
+
+Bu kodu `Main` yönteminin içine ekleyin:
 
 ```csharp
-// Create a queue called 'quickstartqueues' and append a GUID value so that the queue name 
-// is unique in your storage account. 
-queue = cloudQueueClient.GetQueueReference("quickstartqueues-" + Guid.NewGuid().ToString());
-await queue.CreateAsync();
+Console.WriteLine("Azure Queue storage v12 - .NET quickstart sample\n");
 
-Console.WriteLine("Created queue '{0}'", queue.Name);
-Console.WriteLine();
+// Retrieve the connection string for use with the application. The storage
+// connection string is stored in an environment variable called
+// AZURE_STORAGE_CONNECTION_STRING on the machine running the application.
+// If the environment variable is created after the application is launched
+// in a console or with Visual Studio, the shell or application needs to be
+// closed and reloaded to take the environment variable into account.
+string connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONNECTION_STRING");
 ```
 
-### <a name="add-a-message"></a>İleti ekleme
+### <a name="create-a-queue"></a>Kuyruk oluşturma
 
-Ardından örnek, sıranın arkasına bir ileti ekler. 
+Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kuyruk adına bir GUID değeri ekler.
 
-Bir ileti UTF-8 kodlaması ile bir XML isteğine dahil edilebilir bir biçimde olmalıdır ve boyutu 64 KB 'ye kadar olabilir. Bir ileti ikili veriler içeriyorsa iletiyi Base64 kodlamanızı öneririz.
+> [!IMPORTANT]
+> Kuyruk adları yalnızca küçük harf, sayı ve kısa çizgi içerebilir ve bir harf veya sayı ile başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır. Ad ayrıca 3 ila 63 karakter uzunluğunda olmalıdır. Adlandırma sıraları hakkında daha fazla bilgi için bkz. [adlandırma sıraları ve meta verileri](/rest/api/storageservices/naming-queues-and-metadata).
 
-Varsayılan olarak, bir ileti için en uzun yaşam süresi 7 güne ayarlanır. İletinin yaşam süresi için herhangi bir pozitif sayı belirtebilirsiniz.
+
+[Queueclient](/dotnet/api/azure.storage.queues.queueclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kuyruğu oluşturmak için [Createasync](/dotnet/api/azure.storage.queues.queueclient.createasync) yöntemini çağırın.
+
+`Main` yönteminin sonuna bu kodu ekleyin:
 
 ```csharp
-// Create a message and add it to the queue. Set expiration time to 14 days.
-CloudQueueMessage message = new CloudQueueMessage("Hello, World");
-await queue.AddMessageAsync(message, new TimeSpan(14,0,0,0), null, null, null);
-Console.WriteLine("Added message '{0}' to queue '{1}'", message.Id, queue.Name);
-Console.WriteLine("Message insertion time: {0}", message.InsertionTime.ToString());
-Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToString());
-Console.WriteLine();
+// Create a unique name for the queue
+string queueName = "quickstartqueues-" + Guid.NewGuid().ToString();
+
+Console.WriteLine($"Creating queue: {queueName}");
+
+// Instantiate a QueueClient which will be
+// used to create and manipulate the queue
+QueueClient queueClient = new QueueClient(connectionString, queueName);
+
+// Create the queue
+await queueClient.CreateAsync();
 ```
 
-Kullanım süreleri dolan bir ileti eklemek için `Timespan.FromSeconds(-1)` [addmessageasync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync)çağrısında kullanın.
+### <a name="add-messages-to-a-queue"></a>Bir kuyruğa ileti ekleme
+
+Aşağıdaki kod parçacığı, [SendMessageAsync](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) yöntemini çağırarak zaman uyumsuz iletileri kuyruğa ekler. Ayrıca, bir `SendMessageAsync` çağrısından döndürülen [Sendalındısı](/dotnet/api/azure.storage.queues.models.sendreceipt) de kaydeder. Okundu bilgisi, programın ilerleyen kısımlarında iletiyi güncelleştirmek için kullanılır.
+
+`Main` yönteminin sonuna bu kodu ekleyin:
 
 ```csharp
-await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
+Console.WriteLine("\nAdding messages to the queue...");
+
+// Send several messages to the queue
+await queueClient.SendMessageAsync("First message");
+await queueClient.SendMessageAsync("Second message");
+
+// Save the receipt so we can update this message later
+SendReceipt receipt = await queueClient.SendMessageAsync("Third message");
 ```
 
-### <a name="peek-a-message-from-the-queue"></a>Kuyruktaki bir iletiye göz atın
+### <a name="peek-at-messages-in-a-queue"></a>Kuyruktaki iletilere göz atın
 
-Örnek, bir kuyruktan bir ileti özeti gösterir. Bir iletiye göz aldığınızda iletinin içeriğini okuyabilirsiniz. Ancak, ileti diğer istemcilere görünür kalır, böylece daha sonra iletiyi alabilir ve işleyebilir.
+[PeekMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync) yöntemini çağırarak kuyruktaki iletilere göz atın. `PeekMessagesAsync` yöntemi, sıranın önüne bir veya daha fazla ileti alır ancak iletinin görünürlüğünü değiştirmez.
+
+`Main` yönteminin sonuna bu kodu ekleyin:
 
 ```csharp
-// Peek at the message at the front of the queue. Peeking does not alter the message's 
-// visibility, so that another client can still retrieve and process it. 
-CloudQueueMessage peekedMessage = await queue.PeekMessageAsync();
+Console.WriteLine("\nPeek at the messages in the queue...");
 
-// Display the ID and contents of the peeked message.
-Console.WriteLine("Contents of peeked message '{0}': {1}", peekedMessage.Id, peekedMessage.AsString);
-Console.WriteLine();
+// Peek at messages in the queue
+PeekedMessage[] peekedMessages = await queueClient.PeekMessagesAsync(maxMessages: 10);
+
+foreach (PeekedMessage peekedMessage in peekedMessages)
+{
+    // Display the message
+    Console.WriteLine($"Message: {peekedMessage.MessageText}");
+}
 ```
 
-### <a name="dequeue-a-message"></a>Bir iletiyi sıradan çıkarma
+### <a name="update-a-message-in-a-queue"></a>Kuyruktaki bir iletiyi güncelleştirme
 
-Örnek ayrıca bir iletinin nasıl sıradan alınacağını gösterir. Bir iletiyi sıradan kaldırdığınızda, iletiyi kuyruğun önünden alır ve diğer istemcilere geçici olarak görünmez olarak işleyebilirsiniz. Varsayılan olarak, bir ileti 30 saniye boyunca görünmez kalır. Bu süre boyunca, kodunuz iletiyi işleyebilir. İletiyi sıradan çıkarmayı son olarak, başka bir istemcinin aynı iletiyi sıradan çıkarmaması için iletiyi işlemeden hemen sonra silersiniz.
-
-Bir donanım veya yazılım arızası nedeniyle kodunuz bir iletiyi işleyemezse ileti, Invisibility döneminden sonra yeniden görünür hale gelir. Başka bir istemci aynı iletiyi alıp yeniden deneyebilir.
+[Updatemessageasync](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync) yöntemini çağırarak bir iletinin içeriğini güncelleştirin. `UpdateMessageAsync` yöntemi bir iletinin görünürlük zaman aşımını ve içeriğini değiştirebilir. İleti içeriği, boyutu 64 KB 'a kadar olan bir UTF-8 kodlu dize olmalıdır. İletinin yeni içeriğiyle birlikte, kodda daha önce kaydedilen `SendReceipt` değerleri geçirin. `SendReceipt` değerler güncelleştirilecek iletiyi belirler.
 
 ```csharp
-// Retrieve the message at the front of the queue. The message becomes invisible for 
-// a specified interval, during which the client attempts to process it.
-CloudQueueMessage retrievedMessage = await queue.GetMessageAsync();
+Console.WriteLine("\nUpdating the third message in the queue...");
 
-// Display the time at which the message will become visible again if it is not deleted.
-Console.WriteLine("Message '{0}' becomes visible again at {1}", retrievedMessage.Id, retrievedMessage.NextVisibleTime);
-Console.WriteLine();
-
-//Process and delete the message within the period of invisibility.
-await queue.DeleteMessageAsync(retrievedMessage);
-Console.WriteLine("Processed and deleted message '{0}'", retrievedMessage.Id);
-Console.WriteLine();
+// Update a message using the saved receipt from sending the message
+await queueClient.UpdateMessageAsync(receipt.MessageId, receipt.PopReceipt, "Third message has been updated");
 ```
 
-### <a name="clean-up-resources"></a>Kaynakları temizleme
+### <a name="receive-messages-from-a-queue"></a>Kuyruktan ileti alma
 
-Örnek, sırayı silerek oluşturduğu kaynakları temizler. Sıra silindiğinde, içerdiği tüm iletiler de silinir.
+[Receivemessagesasync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) yöntemini çağırarak önceden eklenmiş iletileri indirin.
+
+`Main` yönteminin sonuna bu kodu ekleyin:
 
 ```csharp
-Console.WriteLine("Press any key to delete the sample queue.");
+Console.WriteLine("\nReceiving messages from the queue...");
+
+// Get messages from the queue
+QueueMessage[] messages = await queueClient.ReceiveMessagesAsync(maxMessages: 10);
+```
+
+### <a name="delete-messages-from-a-queue"></a>Kuyruktaki iletileri silme
+
+İşlenmeden sonra sıradaki iletileri silin. Bu durumda, işleme yalnızca konsolda iletiyi görüntülüyor.
+
+Uygulama, iletileri işleyerek ve silmeden önce `Console.ReadLine` çağırarak kullanıcı girişi için duraklatılır. [Azure Portal](https://portal.azure.com) , kaynakların silinmeden önce doğru şekilde oluşturulduğunu doğrulayın. Açıkça silinmeyen tüm iletiler, daha sonra bu işlemleri işlemek için bir süre sonra sırada görünür hale gelir.
+
+`Main` yönteminin sonuna bu kodu ekleyin:
+
+```csharp
+Console.WriteLine("\nPress Enter key to 'process' messages and delete them from the queue...");
 Console.ReadLine();
-Console.WriteLine("Deleting the queue and any messages it contains...");
-Console.WriteLine();
-if (queue != null)
+
+// Process and delete messages from the queue
+foreach (QueueMessage message in messages)
 {
-    await queue.DeleteIfExistsAsync();
+    // "Process" the message
+    Console.WriteLine($"Message: {message.MessageText}");
+
+    // Let the service know we're finished with
+    // the message and it can be safely deleted.
+    await queueClient.DeleteMessageAsync(message.MessageId, message.PopReceipt);
 }
 ```
 
-## <a name="resources-for-developing-net-applications-with-queues"></a>Kuyruklarla .NET uygulamaları geliştirmeye yönelik kaynaklar
+### <a name="delete-a-queue"></a>Bir kuyruk silme
 
-Azure kuyrukları ile .NET geliştirme için şu ek kaynaklara bakın:
+Aşağıdaki kod, [DeleteAsync](/dotnet/api/azure.storage.queues.queueclient.deleteasync) yöntemi kullanılarak sırayı silerek uygulamanın oluşturduğu kaynakları temizler.
 
-### <a name="binaries-and-source-code"></a>İkili dosyalar ve kaynak kodu
+`Main` yönteminin sonuna bu kodu ekleyin:
 
-- [.Net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage/client) 'nın en son sürümüne yönelik NuGet paketlerini indirin
-    - [Birçok](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-    - [Kuyruklar](https://www.nuget.org/packages/Azure.Storage.Queues/)
-- GitHub üzerinde [.NET istemci kitaplığı kaynak kodunu](https://github.com/Azure/azure-storage-net) görüntüleyin.
+```csharp
+Console.WriteLine("\nPress Enter key to delete the queue...");
+Console.ReadLine();
 
-### <a name="client-library-reference-and-samples"></a>İstemci kitaplığı başvurusu ve örnekleri
+// Clean up
+Console.WriteLine($"Deleting queue: {queueClient.Name}");
+await queueClient.DeleteAsync();
 
-- .NET istemci kitaplığı hakkında daha fazla bilgi için bkz. [.NET API başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
-- .NET istemci kitaplığı kullanılarak yazılmış [kuyruk depolama örneklerini](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) keşfet.
+Console.WriteLine("Done");
+```
+
+## <a name="run-the-code"></a>Kodu çalıştırma
+
+Bu uygulama, bir Azure kuyruğuna üç ileti oluşturur ve ekler. Kod kuyruktaki iletileri listeler, ardından kuyruğu silmeden önce bunları alır ve siler.
+
+Konsol pencerenizde uygulama dizininize gidip uygulamayı derleyin ve çalıştırın.
+
+```console
+dotnet build
+```
+
+```console
+dotnet run
+```
+
+Uygulamanın çıktısı aşağıdaki örneğe benzer:
+
+```output
+Azure Queue storage v12 - .NET quickstart sample
+
+Creating queue: quickstartqueues-5c72da2c-30cc-4f09-b05c-a95d9da52af2
+
+Adding messages to the queue...
+
+Peek at the messages in the queue...
+Message: First message
+Message: Second message
+Message: Third message
+
+Updating the third message in the queue...
+
+Receiving messages from the queue...
+
+Press Enter key to 'process' messages and delete them from the queue...
+
+Message: First message
+Message: Second message
+Message: Third message has been updated
+
+Press Enter key to delete the queue...
+
+Deleting queue: quickstartqueues-5c72da2c-30cc-4f09-b05c-a95d9da52af2
+Done
+```
+
+Uygulama iletileri almadan önce durakladığında, [Azure Portal](https://portal.azure.com)depolama hesabınızı kontrol edin. İletilerin kuyrukta olduğunu doğrulayın.
+
+İletileri almak ve silmek için **ENTER** tuşuna basın. İstendiğinde, kuyruğu silmek ve tanıtımı sona ermesini sağlamak için **ENTER** tuşuna basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir kuyruğa ileti eklemeyi, sıradaki iletilere göz atmayı ve .NET kullanarak iletileri sıradan çıkarmayı ve işlemeyi öğrendiniz. 
+Bu hızlı başlangıçta, bir kuyruk oluşturmayı ve zaman uyumsuz .NET kodu kullanarak buna ileti eklemeyi öğrendiniz. Ardından iletileri göz atmayı, almayı ve silmeyi öğrendiniz. Son olarak, bir ileti sırasının nasıl silineceğini öğrendiniz.
+
+Öğreticiler, örnekler, hızlı ve diğer belgeler için şu adresi ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Azure kuyruk depolama ile uygulamalar arasında iletişim kurma](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [.NET ve .NET Core geliştiricileri için Azure](https://docs.microsoft.com/dotnet/azure/)
 
-- .NET Core hakkında daha fazla bilgi için bkz. [10 dakika içinde .NET kullanmaya başlama](https://www.microsoft.com/net/learn/get-started/).
+* Daha fazla bilgi edinmek için bkz. [.net Için Azure depolama kitaplıkları](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage).
+* Daha fazla Azure kuyruk depolama örnek uygulaması görmek için [Azure kuyruk depolama v12 .NET istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)geçin.
+* .NET Core hakkında daha fazla bilgi için bkz. [10 dakika içinde .NET kullanmaya başlama](https://www.microsoft.com/net/learn/get-started/).

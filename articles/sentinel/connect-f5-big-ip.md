@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/23/2019
+ms.date: 12/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: ff5a8f940348c36ca2a19fb31a173b2dfc4f4d6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 273bea7fa8629dd907c228416d06dac087b0ec85
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514140"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610599"
 ---
 # <a name="connect-your-f5-big-ip-appliance"></a>F5 BIG-IP gerecinizi bağlama 
 
@@ -42,7 +42,7 @@ F5 BIG-IP, günlükleri doğrudan Azure Sentinel 'e tümleştirebilir ve dışar
 1. F5 BIG-IP 'nizi bağlamak için sistemin API uç noktasına bir JSON bildirimi nakletmeniz gerekir. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [F5 BIG-IP 'Yi Azure Sentinel Ile tümleştirme](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel).
 8. F5 BIG-IP bağlayıcı sayfasında, çalışma alanı KIMLIĞI ve birincil anahtarı kopyalayın ve [akış verileri ' ni Azure Log Analytics 'e](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel#streaming-data-to-azure-log-analytics)göre gösterildiği gibi yapıştırın.
 1. F5 BIG-IP yönergelerini tamamladıktan sonra, Azure Sentinel bağlayıcı sayfasında, bağlı veri türlerini görürsünüz.
-1. F5 BIG-IP olayları için Log Analytics ilgili şemayı kullanmak için, **F5Telemetry_LTM_CL**, **F5Telemetry_system_CL**ve **F5Telemetry_ASM_CL**aratın.
+1. F5 BIG-IP olayları için Log Analytics ilgili şemayı kullanmak için **F5Telemetry_LTM_CL**, **F5Telemetry_system_CL**ve **F5Telemetry_ASM_CL**aratın.
 
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
@@ -55,4 +55,6 @@ Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman
 Bu belgede, F5 BIG-IP 'yi Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
+
 

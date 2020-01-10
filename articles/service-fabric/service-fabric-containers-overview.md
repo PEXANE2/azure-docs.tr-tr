@@ -1,29 +1,18 @@
 ---
-title: Service Fabric ve kapsayıcılara genel bakış | Microsoft Docs
+title: Service Fabric ve kapsayıcılara genel bakış
 description: Mikro hizmet uygulamalarını dağıtmak için Service Fabric ve kapsayıcıların kullanımına genel bakış. Bu makalede, kapsayıcıların nasıl kullanılabileceği ve Service Fabric içindeki kullanılabilir yetenekler hakkında genel bir bakış sunulmaktadır.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/8/2018
-ms.author: atsenthi
-ms.openlocfilehash: 2ed3a9d4b1ec219d22a9e01e7acec5d7e950289b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599769"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458213"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric ve kapsayıcılar
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri ve kapsayıcıları paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştırmayı sağlayan bir dağıtılmış sistemler platformudur.
 
@@ -35,8 +24,8 @@ Varsayılan olarak, Service Fabric bu Hizmetleri işlem olarak dağıtır ve etk
 
 Sağ tarafta geçiş yapmak ve Service Fabric kapsayıcıları denemek için hızlı başlangıç, öğretici veya örnek kullanmayı deneyin:  
 
-[Hızlı Başlangıç: Service Fabric için bir Linux kapsayıcı uygulaması dağıtma](service-fabric-quickstart-containers-linux.md)  
-[Hızlı Başlangıç: Service Fabric için bir Windows kapsayıcı uygulaması dağıtma](service-fabric-quickstart-containers.md)  
+[Hızlı başlangıç: Service Fabric için bir Linux kapsayıcı uygulaması dağıtma](service-fabric-quickstart-containers-linux.md)  
+[Hızlı başlangıç: Service Fabric için Windows kapsayıcı uygulaması dağıtma](service-fabric-quickstart-containers.md)  
 [Mevcut bir .NET uygulamasını Kapsayıcılı hale getirme](service-fabric-host-app-in-a-container.md)  
 [Service Fabric Kapsayıcı Örnekleri](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
@@ -48,10 +37,10 @@ Kapsayıcılar doğrudan çekirdeğin üzerine çalışır ve dosya sisteminin v
 
 Sanal makinelerle karşılaştırıldığında kapsayıcılar aşağıdaki avantajları sağlar:
 
-* **Küçük**: Kapsayıcılar, verimliliği artırmak için tek bir depolama alanı ve katman sürümü ve güncelleştirme kullanır.
-* **Hızlı**: Kapsayıcılar, genellikle Saniyeler içinde daha hızlı başlayabilmeleri için bir işletim sisteminin tamamını önyüklemek zorunda kalmaz.
-* **Taşınabilirlik**: Kapsayıcılı bir uygulama görüntüsü bulutta, şirket içinde, sanal makinelerde veya doğrudan fiziksel makinelerde çalışmak üzere olabilir.
-* **Kaynak**İdaresi: Bir kapsayıcı, ana bilgisayarında tüketebileceği fiziksel kaynakları sınırlayabilir.
+* **Küçük**: kapsayıcılar, verimliliği artırmak için tek bir depolama alanı ve katman sürümü ve güncelleştirme kullanır.
+* **Hızlı**: kapsayıcıların bir işletim sisteminin tamamını önyüklemesine gerek yoktur, bu sayede genellikle Saniyeler içinde çok daha hızlı başlayabilirler.
+* **Taşınabilirlik**: kapsayıcılı bir uygulama görüntüsü bulutta, şirket içinde, sanal makinelerde veya doğrudan fiziksel makinelerde çalışmak üzere olabilir.
+* **Kaynak**İdaresi: bir kapsayıcı, ana bilgisayarında tüketebileceği fiziksel kaynakları sınırlayabilir.
 
 ### <a name="container-types-and-supported-environments"></a>Kapsayıcı türleri ve desteklenen ortamlar
 
@@ -76,11 +65,11 @@ Aşağıdaki şekilde, kullanılabilecek farklı sanallaştırma ve yalıtım d�
 
 Bir kapsayıcının iyi bir seçenek olduğu tipik örnekler aşağıda verilmiştir:
 
-* **IIS kaldırma ve kaydırma**: Mevcut bir [ASP.NET MVC](https://www.asp.net/mvc) uygulamasını ASP.NET Core geçirmek yerine bir kapsayıcıya yerleştirebilirsiniz. Bu ASP.NET MVC uygulamaları Internet Information Services (IIS) bağımlıdır. Bu uygulamaları, önceden düzenlenen IIS görüntüsünden kapsayıcı görüntülerine paketleyebilir ve Service Fabric ile dağıtabilirsiniz. Windows kapsayıcıları hakkında bilgi için bkz. [Windows Server 'Da kapsayıcı görüntüleri](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
+* **IIS kaldırma ve kaydırma**: var olan BIR [ASP.NET MVC](https://www.asp.net/mvc) uygulamasını ASP.NET Core geçirmek yerine bir kapsayıcıya yerleştirebilirsiniz. Bu ASP.NET MVC uygulamaları Internet Information Services (IIS) bağımlıdır. Bu uygulamaları, önceden düzenlenen IIS görüntüsünden kapsayıcı görüntülerine paketleyebilir ve Service Fabric ile dağıtabilirsiniz. Windows kapsayıcıları hakkında bilgi için bkz. [Windows Server 'Da kapsayıcı görüntüleri](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
 
-* **Kapsayıcıları ve Service Fabric mikro hizmetleri karıştırma**: Uygulamanızın bir parçası için mevcut bir kapsayıcı görüntüsünü kullanın. Örneğin, uygulamanızın Web ön ucu için [NGINX kapsayıcısını](https://hub.docker.com/_/nginx/) ve daha yoğun arka uç hesaplaması için durum bilgisi olan hizmetleri kullanabilirsiniz.
+* **Kapsayıcıları ve Service Fabric mikro hizmetleri karıştırma**: uygulamanızın bir parçası için mevcut bir kapsayıcı görüntüsünü kullanın. Örneğin, uygulamanızın Web ön ucu için [NGINX kapsayıcısını](https://hub.docker.com/_/nginx/) ve daha yoğun arka uç hesaplaması için durum bilgisi olan hizmetleri kullanabilirsiniz.
 
-* **"Gürültülü komşular" hizmetlerinin etkisini azaltın**: Bir hizmetin bir konakta kullandığı kaynakları kısıtlamak için kapsayıcıların kaynak idare yeteneğini kullanabilirsiniz. Hizmetler çok sayıda kaynak tüketebilir ve diğerlerinin performansını etkileiyorsa (uzun süreli, sorgu benzeri bir işlem), bu Hizmetleri kaynak İdaresi olan kapsayıcılara yerleştirmeyi göz önünde bulundurun.
+* **"Gürültülü komşular" hizmetlerinin etkisini azaltın**: bir hizmetin bir konakta kullandığı kaynakları kısıtlamak için kapsayıcıların kaynak idare yeteneğini kullanabilirsiniz. Hizmetler çok sayıda kaynak tüketebilir ve diğerlerinin performansını etkileiyorsa (uzun süreli, sorgu benzeri bir işlem), bu Hizmetleri kaynak İdaresi olan kapsayıcılara yerleştirmeyi göz önünde bulundurun.
 
 ## <a name="service-fabric-support-for-containers"></a>Kapsayıcılar için Service Fabric desteği
 

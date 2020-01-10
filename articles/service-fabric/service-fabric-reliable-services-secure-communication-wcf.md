@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric ile güvenli WCF tabanlı hizmet iletişimi | Microsoft Docs
+title: WCF tabanlı güvenli hizmet iletişimi
 description: Azure Service Fabric kümesinde çalışan güvenilir hizmetler için WCF tabanlı iletişimleri güvenli hale getirme hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: 31a7a3a42436f3a818fcf48f2af5ca395fa02386
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170411"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614171"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Bir hizmet için güvenli WCF tabanlı iletişimler
 Güvenlik, iletişimin en önemli yönlerinden biridir. Reliable Services uygulama çerçevesi, güvenliği artırmak için kullanabileceğiniz, önceden oluşturulmuş birkaç iletişim yığını ve aracı sağlar. Bu makalede, hizmet uzaktan iletişimini kullanırken güvenliğin nasıl iyileştireceğiniz ele ılırsınız.
@@ -63,7 +54,7 @@ Güvenilir hizmetler için WCF tabanlı bir iletişim yığınının nasıl ayar
         return b;
     }
     ```
-2. İstemcide, önceki [örnekte](service-fabric-reliable-services-communication-wcf.md) oluşturulan `WcfCommunicationClient` sınıfı değişmeden kalır. Ancak `WcfCommunicationClientFactory` ' in `CreateClientAsync` yöntemini geçersiz kılmanız gerekir:
+2. İstemcide, önceki [örnekte](service-fabric-reliable-services-communication-wcf.md) oluşturulan `WcfCommunicationClient` sınıfı değişmeden kalır. Ancak `WcfCommunicationClientFactory``CreateClientAsync` yöntemini geçersiz kılmanız gerekir:
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class
@@ -113,7 +104,7 @@ Güvenilir hizmetler için WCF tabanlı bir iletişim yığınının nasıl ayar
     }
     ```
 
-    WCF iletişim istemcisi oluşturmak için `SecureWcfCommunicationClientFactory` kullanın (`WcfCommunicationClient`). Hizmeti yöntemlerini çağırmak için istemcisini kullanın.
+    WCF iletişim istemcisi (`WcfCommunicationClient`) oluşturmak için `SecureWcfCommunicationClientFactory` kullanın. Hizmeti yöntemlerini çağırmak için istemcisini kullanın.
 
     ```csharp
     IServicePartitionResolver partitionResolver = ServicePartitionResolver.GetDefault();

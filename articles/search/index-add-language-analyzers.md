@@ -7,7 +7,7 @@ author: Yahnoosh
 ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/10/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ebdbcdda4efd7fdf9eb0e3e04cfa4d1987e03716
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ea7a62210f48b216d3f98f6359447eacf15cf821
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111816"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460807"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinindeki dize alanlarına dil Çözümleyicileri ekleme
 
@@ -48,7 +48,10 @@ Varsayılan çözümleyici, Ingilizce 'nin yanı sıra Lucene 'in Ingilizce Çö
 
 ## <a name="configuring-analyzers"></a>Çözümleyicileri yapılandırma
 
-Dil Çözümleyicileri olduğu gibi kullanılır. Dizin tanımındaki her bir alan için, **çözümleyici** özelliğini dili ve Linguistics yığınını (Microsoft veya Lucene) belirten bir çözümleyici adı olarak ayarlayabilirsiniz. Aynı çözümleyici, bu alan için dizin oluştururken ve aranırken de uygulanır. Örneğin, aynı dizinde yan yana bulunan Ingilizce, Fransızca ve Ispanyolca otel açıklamaları için ayrı alanlara sahip olabilirsiniz. Alternatif olarak, **çözümleyici**yerine **ındexanalyzer** ve **searchAnalyzer** kullanarak dizin oluşturma sırasında ve sorgu sırasında farklı analiz kurallarına sahip olabilirsiniz. 
+Dil Çözümleyicileri olduğu gibi kullanılır. Dizin tanımındaki her bir alan için, **çözümleyici** özelliğini dili ve Linguistics yığınını (Microsoft veya Lucene) belirten bir çözümleyici adı olarak ayarlayabilirsiniz. Aynı çözümleyici, bu alan için dizin oluştururken ve aranırken de uygulanır. Örneğin, aynı dizinde yan yana bulunan Ingilizce, Fransızca ve Ispanyolca otel açıklamaları için ayrı alanlara sahip olabilirsiniz.
+
+> [!NOTE]
+> Dizin oluşturma sırasında bir alanın sorgu süresinden farklı bir dil Çözümleyicisi kullanmak mümkün değildir. Bu özellik [özel çözümleyiciler](index-add-custom-analyzers.md)için ayrılmıştır. Bu nedenle, **searchAnalyzer** veya **ındexanalyzer** özelliklerini bir dil çözümleyici adına ayarlamaya çalışırsanız REST API bir hata yanıtı döndürür. Bunun yerine **çözümleyici** özelliğini kullanmanız gerekir.
 
 Sorgularınızda aranacak dile özgü alanı belirtmek için **Searchfields** sorgu parametresini kullanın. [Arama belgelerinde](https://docs.microsoft.com/rest/api/searchservice/search-documents)çözümleyici özelliğini içeren sorgu örneklerini inceleyebilirsiniz. 
 
@@ -95,7 +98,7 @@ Dizin özellikleri hakkında daha fazla bilgi için bkz. [Create &#40;ındex Azu
 |Litvanca|lt. Microsoft||  
 |Malayalam dili|ml. Microsoft||  
 |Malay dili (Latin)|MS. Microsoft||  
-|Marathi|Mr. Microsoft||  
+|Marathi dili|Mr. Microsoft||  
 |Norveççe|NB. Microsoft|Hayır. Lucene|  
 |Farsça||FA. Lucene|  
 |Lehçe|pl. Microsoft|pl. Lucene|  

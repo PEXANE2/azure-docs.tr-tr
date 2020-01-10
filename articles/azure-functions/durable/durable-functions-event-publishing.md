@@ -3,12 +3,12 @@ title: Azure Event Grid yayımlama Dayanıklı İşlevler (Önizleme)
 description: Dayanıklı İşlevler için otomatik Azure Event Grid yayımlamayı yapılandırmayı öğrenin.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: f0fbb46320b896008b6a1343357f016a9f57b0fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d1960f0e8d249ac77f3c64e18b332a3d55d5180
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231442"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613134"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid yayımlama Dayanıklı İşlevler (Önizleme)
 
@@ -86,7 +86,7 @@ Dayanıklı İşlevler projenizde `host.json` dosyasını bulun.
 
 Olası Azure Event Grid yapılandırma özellikleri [Host. JSON belgelerinde](../functions-host-json.md#durabletask)bulunabilir. `host.json` dosyasını yapılandırdıktan sonra, işlev uygulamanız yaşam döngüsü olaylarını olay kılavuzu konusuna gönderir. Bu, işlev uygulamanızı yerel olarak ve Azure 'da çalıştırdığınızda çalışır. ' ' '
 
-İşlev Uygulaması ve `local.setting.json`konu anahtarı için uygulama ayarını ayarlayın. Aşağıdaki JSON, yerel hata ayıklama `local.settings.json` bir örneğidir. `<topic_key>` konu anahtarıyla değiştirin.  
+İşlev Uygulaması ve `local.settings.json`konu anahtarı için uygulama ayarını ayarlayın. Aşağıdaki JSON, yerel hata ayıklama `local.settings.json` bir örneğidir. `<topic_key>` konu anahtarıyla değiştirin.  
 
 ```json
 {

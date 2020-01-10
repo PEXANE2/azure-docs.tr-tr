@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5fa8d3984c758d0bf95372864f3bffeb6f302c83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d099d0b8f8e31bf77f5ddfad320ac792c5c01e5
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497805"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529618"
 ---
 # <a name="import-data-module"></a>Veri modülünü içeri aktarma
 
@@ -23,14 +23,14 @@ Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıkla
 Mevcut bulut veri hizmetlerinden bir makine öğrenimi ardışık düzenine veri yüklemek için bu modülü kullanın. 
 
 > [!Note]
-> Bu modül tarafından sunulan tüm işlevler, çalışma alanı giriş sayfasında **veri deposu** ve **veri kümeleri** tarafından yapılabilir. Veri izleme gibi ek özellikler içeren veri **deposu** ve veri **kümesi** kullanmanızı öneririz. Daha fazla bilgi edinmek için bkz. [verilere erişme ve veri](../service/how-to-access-data.md) [kümelerini kaydetme](../service/how-to-create-register-datasets.md) makalesi.
+> Bu modül tarafından sunulan tüm işlevler, çalışma alanı giriş sayfasında **veri deposu** ve **veri kümeleri** tarafından yapılabilir. Veri izleme gibi ek özellikler içeren veri **deposu** ve veri **kümesi** kullanmanızı öneririz. Daha fazla bilgi edinmek için bkz. [verilere erişme ve veri](../how-to-access-data.md) [kümelerini kaydetme](../how-to-create-register-datasets.md) makalesi.
 > Bir veri kümesini kaydettikten sonra, tasarımcı arabirimindeki veri **kümeleri kategorim** -> **veri** kümelerinde bulabilirsiniz. Bu modül, tanıdık bir deneyim için Studio (klasik) kullanıcıları için ayrılmıştır. 
 >
 
 İlk olarak, okuduğunuz kaynağı seçin ve ek ayarları sona erdirin. **Veri Içeri aktarma** modülü aşağıdaki kaynaklardan gelen verileri oku destekler:
 
 - HTTP aracılığıyla URL
-- Azure bulut, [**veri depoları**](../service/how-to-access-data.md)üzerinden depolar)
+- Azure bulut, [**veri depoları**](../how-to-access-data.md)üzerinden depolar)
     - Azure Blob kapsayıcısı
     - Azure Dosya Paylaşımı
     - Azure Data Lake
@@ -38,7 +38,7 @@ Mevcut bulut veri hizmetlerinden bir makine öğrenimi ardışık düzenine veri
     - Azure SQL Veritabanı
     - Azure PostgreSQL    
 
-Bulut depolama 'yı kullanmadan önce, Azure Machine Learning çalışma alanınıza önce bir veri deposu kaydetmeniz gerekir. Daha fazla bilgi için bkz. [verilere erişme](../service/how-to-access-data.md). 
+Bulut depolama 'yı kullanmadan önce, Azure Machine Learning çalışma alanınıza önce bir veri deposu kaydetmeniz gerekir. Daha fazla bilgi için bkz. [verilere erişme](../how-to-access-data.md). 
 
 İstediğiniz verileri tanımladıktan ve kaynağa bağlandıktan sonra, **[verileri Içeri aktarın](./import-data.md)** her bir sütunun veri türünü içerdiği değerlere göre alır ve verileri Tasarımcı işlem hattınızla yükler. **Içeri aktarma verilerinin** çıktısı, herhangi bir tasarımcı işlem hattı ile kullanılabilen bir veri kümesidir.
 

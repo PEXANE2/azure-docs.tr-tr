@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 057c77d4ddb4a760e196c0dc8d508efe15e6699d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69520133"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530944"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka hakkında sık sorulan sorular
 
@@ -38,7 +38,7 @@ Bu kaynakların tümü, ağ geçidi düğümleri hariç, [HDInsight fiyatlandır
 
 ## <a name="do-apache-kafka-apis-work-with-hdinsight"></a>Apache Kafka API 'Leri HDInsight ile çalışıyor mu?
 
-Evet, HDInsight yerel Kafka API 'Lerini kullanır. İstemci uygulama kodunuzun değiştirilmesi gerekmiyor. Öğreticiye bakın [: Kümenizle Java tabanlı üretici/tüketici](./apache-kafka-producer-consumer-api.md) API 'lerini nasıl kullanabileceğinizi görmek için Apache Kafka üretici ve tüketici API 'lerini kullanın.
+Evet, HDInsight yerel Kafka API 'Lerini kullanır. İstemci uygulama kodunuzun değiştirilmesi gerekmiyor. Bkz. Öğretici: küme ile Java tabanlı üretici/tüketici API 'Lerini nasıl kullanabileceğinizi görmek için [Apache Kafka Producer ve tüketici API 'Lerini kullanın](./apache-kafka-producer-consumer-api.md) .
 
 ## <a name="can-i-change-cluster-configurations"></a>Küme yapılandırmasını değiştirebilir miyim?
 
@@ -46,7 +46,7 @@ Evet, ambarı portalı üzerinden. Portaldaki her bileşen, bileşen yapılandı
 
 ## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>HDInsight ne tür bir kimlik doğrulaması Apache Kafka destekler?
 
-[Kurumsal güvenlik paketi (ESP)](../domain-joined/apache-domain-joined-architecture.md)kullanarak, Kafka kümeleri için konu düzeyi güvenlik sağlayabilirsiniz. Öğreticiye bakın [: Daha fazla bilgi için HDInsight 'ta kurumsal güvenlik paketi (Önizleme)](../domain-joined/apache-domain-joined-run-kafka.md)Apache Kafka ilkeleri yapılandırın.
+[Kurumsal güvenlik paketi (ESP)](../domain-joined/apache-domain-joined-architecture.md)kullanarak, Kafka kümeleri için konu düzeyi güvenlik sağlayabilirsiniz. Daha fazla bilgi için bkz. [öğreticide HDInsight 'ta Apache Kafka Ilkeleri yapılandırma: kurumsal güvenlik paketi (Önizleme)](../domain-joined/apache-domain-joined-run-kafka.md).
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Verilerim şifrelenmez mi? Kendi anahtarlarımı kullanabilir miyim?
 
@@ -65,6 +65,10 @@ Kafka istemcilerinin Kafka aracıları ile iletişim kurması için, ağ üzerin
 ## <a name="can-i-add-more-disk-space-on-an-existing-cluster"></a>Var olan bir kümeye daha fazla disk alanı ekleyebilir miyim?
 
 Kafka iletileri için kullanılabilir alan miktarını artırmak için düğümlerin sayısını artırabilirsiniz. Şu anda var olan bir kümeye daha fazla disk eklenmesi desteklenmez.
+
+## <a name="can-a-kafka-cluster-work-with-databricks"></a>Kafka kümesi, Databricks ile çalışabilir mi? 
+
+Evet, Kafka kümeler Databricks ile birlikte çalışarak aynı VNet 'te oldukları sürece bu şekilde çalışabilir. Databricks ile bir Kafka kümesi kullanmak için, bir HDInsight Kafka kümesiyle VNet oluşturun ve sonra Databricks çalışma alanınızı oluşturup VNet ekleme 'yi kullandığınızda bu sanal ağı belirtin. Daha fazla bilgi için bkz. [Azure sanal ağınızda Azure Databricks dağıtma (VNet ekleme)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Databricks çalışma alanını oluştururken Kafka kümesinin önyükleme Aracısı adlarını sağlamanız gerekir. Kafka Broker adlarını alma hakkında daha fazla bilgi için bkz. [Apache Zookeeper ve aracı ana bilgisayar bilgilerini alma](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started#getkafkainfo).
 
 ## <a name="how-can-i-have-maximum-data-durability"></a>Maksimum veri dayanıklılığını nasıl kullanabilirim?
 

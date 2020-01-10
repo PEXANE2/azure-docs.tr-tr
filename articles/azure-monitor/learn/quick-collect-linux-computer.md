@@ -3,7 +3,7 @@ title: 'Hızlı başlangıç: Azure Izleyici ile karma bir Linux bilgisayardan v
 description: Bu hızlı başlangıçta, Azure dışında çalışan Linux bilgisayarları için Log Analytics aracısını dağıtmayı ve Azure Izleyici günlükleri ile veri toplamayı etkinleştirmenizi öğreneceksiniz.
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 08/22/2019
-ms.author: magoedte
+ms.date: 12/24/2019
+ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 959f36107ab9f79d4e66cc23b0744f1dbb8b2690
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f494702166fc3c018aba9b1356a6806384ae4673
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677958"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530026"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Karma ortamda bir Linux bilgisayarından veri toplama
 
@@ -55,7 +55,7 @@ Bilgilerin doğrulanıp çalışma alanının oluşturulması sırasında işlem
 
 ## <a name="obtain-workspace-id-and-key"></a>Çalışma alanı kimliği ve anahtarını alma
 
-Linux için Log Analytics aracısını yüklemeden önce, Log Analytics çalışma alanınızın kimliği ve anahtarına ihtiyacınız olacak.  Aracıyı düzgün bir şekilde yapılandırmak ve Azure Izleyici ile başarılı bir şekilde iletişim kurabildiğinden emin olmak için aracı sarmalayıcı betiği tarafından bu bilgiler gereklidir.
+Linux için Log Analytics aracısını yüklemeden önce, Log Analytics çalışma alanınızın kimliği ve anahtarına ihtiyacınız olacak. Aracıyı düzgün bir şekilde yapılandırmak ve Azure Izleyici ile başarılı bir şekilde iletişim kurabildiğinden emin olmak için aracı sarmalayıcı betiği tarafından bu bilgiler gereklidir.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -88,7 +88,7 @@ Linux bilgisayarınızın bir ara sunucu üzerinden Log Analytics’le iletişim
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-    Aşağıdaki komut, `-p` ara sunucu parametresini ve örnek söz dizimini içerir.
+    Aşağıdaki komut, proxy sunucunuz için kimlik doğrulaması gerekli olduğunda `-p` proxy parametresini ve örnek sözdizimini içerir:
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
@@ -100,12 +100,13 @@ Linux bilgisayarınızın bir ara sunucu üzerinden Log Analytics’le iletişim
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-    Aşağıdaki komut, `-p` ara sunucu parametresini ve örnek söz dizimini içerir.
+    Aşağıdaki komut, proxy sunucunuz için kimlik doğrulaması gerekli olduğunda `-p` proxy parametresini ve örnek sözdizimini içerir:
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ```
-2. Aşağıdaki komutu çalıştırarak aracıyı yeniden başlatın: 
+
+3. Aşağıdaki komutu çalıştırarak aracıyı yeniden başlatın: 
 
     ```
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]

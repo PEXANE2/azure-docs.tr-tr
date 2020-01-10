@@ -1,5 +1,5 @@
 ---
-title: SSS-Hyperscale (Citus)-PostgreSQL için Azure veritabanı
+title: Azure SQL veritabanı hiper ölçek SSS
 description: Yaygın soruların cevapları müşteriler, hiper ölçekli hizmet katmanında bir Azure SQL veritabanı (genellikle hiper ölçek veritabanı denir) hakkında bilgi ister.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 377de93733d94d8cff5518eebb8ebba38154d10d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974028"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614998"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
 
@@ -157,7 +157,7 @@ Hiperscale ile işlem günlüğü, pratik olarak sonsuzdur. Yüksek günlük ür
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>Veritabanım büyüdükçe `tempdb` ölçeklendirmi
 
-`tempdb` veritabanınız yerel SSD depolamada bulunur ve sağladığınız işlem boyutuna göre yapılandırılır. `tempdb` en yüksek performans avantajları sağlamak için en iyi duruma getirilmiştir. `tempdb` boyutu yapılandırılamaz ve sizin için yönetilir.
+`tempdb` veritabanınız yerel SSD depolamada bulunur ve sağladığınız işlem boyutuna orantılı olarak boyutlandırılır. `tempdb` en yüksek performans avantajları sağlamak için en iyi duruma getirilmiştir. `tempdb` boyutu yapılandırılamaz ve sizin için yönetilir.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Veritabanı boyutumun otomatik olarak büyümesi veya veri dosyalarının boyutunu yönetmesi gerekir
 
@@ -165,7 +165,7 @@ Veritabanı boyutunuz, daha fazla veri eklerken/alarak otomatik olarak büyür.
 
 ### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>Hiperscale tarafından desteklenen veya başlayan en küçük veritabanı boyutu nedir?
 
-10 GB.
+40 GB. Hiper ölçek veritabanı, 10 GB başlangıç boyutuyla oluşturulur. Daha sonra, 40 GB boyutuna ulaşana kadar 10 dakikada bir, 10 GB büyümeye başlar. Bu 10 GB chucks 'in her biri, daha fazla ıOPS ve daha yüksek g/ç paralelliğini sağlamak için farklı bir sayfa sunucusuna ayrılır. Bu iyileştirme nedeniyle, ilk veritabanı boyutunu 40 GB 'tan daha küçük bir tercih etseniz bile, veritabanı otomatik olarak en az 40 GB 'a genişlecektir.
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>Veritabanı boyutumun büyümesi ne kadar artar
 
@@ -268,13 +268,13 @@ Evet.
 
 RPO 0 dk. RTO hedefi, veritabanı boyutundan bağımsız olarak 10 dakikadan azdır. 
 
-### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>Büyük veritabanlarının yedeklemeleri, birincil My işlem performansını etkiler
+### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>Veritabanı yedeklemesi, birincil veya ikincil çoğaltmalarda işlem performansını etkiler
 
-Hayır. Yedeklemeler, depolama alt sistemi tarafından yönetilir ve depolama anlık görüntülerinden yararlanır. Birincil üzerinde Kullanıcı iş yükünü etkilemez.
+Hayır. Yedeklemeler, depolama alt sistemi tarafından yönetilir ve depolama anlık görüntülerinden yararlanır. Kullanıcı iş yüklerini etkilemez.
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Hiper ölçek veritabanı ile coğrafi geri yükleme yapabilir miyim
 
-Evet.  Coğrafi geri yükleme tam olarak desteklenmektedir.
+Evet.  Coğrafi geri yükleme tam olarak desteklenmektedir. Bir noktadan noktaya geri yükleme işleminin aksine, coğrafi geri yükleme uzun süre çalışan bir veri boyutu işlemi gerektirebilir.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Hiper ölçekli veritabanı ile Coğrafi çoğaltmayı ayarlayabilir miyim
 
@@ -296,7 +296,7 @@ Hayır. PolyBase, Azure SQL veritabanı 'nda desteklenmiyor.
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>Hiper ölçekte R ve Python desteği vardır
 
-Hayır. Azure SQL veritabanı 'nda R ve Python desteklenmez.
+Şimdilik hayır.
 
 ### <a name="are-compute-nodes-containerized"></a>İşlem düğümleri Kapsayıcılı
 
@@ -310,7 +310,7 @@ Hayır. Hiper ölçekli süreçler, kapsayıcılar içinde değil [Service Fabri
 
 ### <a name="how-many-iops-do-i-get-on-the-largest-compute"></a>En büyük işlem üzerinde kaç ıOPS alabilirim?
 
-IOPS ve GÇ gecikmesi, iş yükü desenlerine bağlı olarak değişir. Erişilmekte olan veriler işlem çoğaltmasında önbelleğe alınmışsa, yerel SSD ile aynı GÇ performansını görürsünüz.
+IOPS ve GÇ gecikmesi, iş yükü desenlerine bağlı olarak değişir. Erişilmekte olan veriler işlem çoğaltmasında önbelleğe alınmışsa, yerel SSD ile olduğu gibi benzer GÇ performansı görürsünüz.
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>İş aktarım alanım yedeklerden etkilendi
 
@@ -318,7 +318,11 @@ Hayır. İşlem, depolama katmanından ayrılır. Bu, yedeklemenin performans et
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-replicas"></a>Ek işlem çoğaltmaları sağlamam sırasında aktarım hızı etkilendi
 
-Depolama paylaşıldığından ve birincil ve ikincil işlem çoğaltmaları arasında doğrudan fiziksel çoğaltma olmadığından, birincil çoğaltmadaki üretilen iş, ikincil çoğaltmalar eklenerek etkilenmeyecektir. Bununla birlikte, ikincil çoğaltmalarda ve sayfa sunucularında günlüğe kaydedilecek ve ikincil çoğaltmalarda zayıf okuma performansından kaçınmak için sürekli kararlılığı sürekli yazma iş yükünü azaltamazuz.
+Depolama paylaşıldığından ve birincil ve ikincil işlem çoğaltmaları arasında doğrudan fiziksel çoğaltma olmadığından, birincil çoğaltmadaki aktarım hızı ikincil çoğaltmalar eklenerek doğrudan etkilenmez. Bununla birlikte, ikincil çoğaltmalarda önemli okuma performansını önlemek için ikincil çoğaltmalarda ve sayfa sunucularında günlük uygulanmasına izin vermek üzere birincil üzerinde sürekli kararlılık yazma iş yükünü azaltamazuz.
+
+### <a name="how-do-i-diagnose-and-troubleshoot-performance-problems-in-a-hyperscale-database"></a>Nasıl yaparım? hiper ölçek veritabanında performans sorunlarını tanılayın ve sorun giderin
+
+Çoğu performans sorunu için, özellikle depolama performansında belirtilmemiş olanlar, ortak SQL Server tanılama ve sorun giderme adımları geçerlidir. Hiper ölçeğe özgü depolama tanılaması için bkz. [SQL hiper ölçek performansı sorun giderme tanılaması](sql-database-hyperscale-performance-diagnostics.md).
 
 ## <a name="scalability-questions"></a>Ölçeklenebilirlik soruları
 
@@ -367,7 +371,7 @@ Hayır. Yalnızca `ApplicationIntent=ReadOnly`belirterek, okuma ölçeği çoğa
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Sistem, okuma iş yükünün akıllı yük dengelemesini yapar
 
-Hayır. Salt okuma amacına sahip bir bağlantı, rastgele bir okuma ölçeği genişletme çoğaltmasına yeniden yönlendirilir.
+Hayır. Salt okuma amacına sahip yeni bir bağlantı, rastgele bir okuma ölçeği genişletme çoğaltmasına yeniden yönlendirilir.
 
 ### <a name="can-i-scale-updown-the-secondary-compute-replicas-independently-of-the-primary-replica"></a>İkincil işlem çoğaltmalarının birincil çoğaltmadan bağımsız olarak ölçeğini artırma/azaltma yapabilir miyim?
 
@@ -383,7 +387,7 @@ Hayır. Hiper ölçekli veritabanlarında paylaşılan depolama vardır ve tüm 
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>Birincil ve ikincil işlem çoğaltmaları arasında ne kadar gecikme olur?
 
-Geçerli günlük oluşturma hızına bağlı olarak, bir işlemin birincil üzerinde yürütüldüğü zamandan itibaren anında veya düşük milisaniyelik olabilir.
+Bir işlemin birincili üzerinde yürütüldüğü zamandan itibaren, bir ikincil üzerinde görünür durumda olan veri gecikmesi, geçerli günlük oluşturma hızına bağlıdır. Tipik veri gecikmesi düşük milisaniyedir.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 235efd746562ea4bd52b9cb57da0d8165d60de02
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035514"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561329"
 ---
 # <a name="configure-prerequisites"></a>Önkoşulları yapılandırma
 
@@ -28,7 +28,7 @@ Azure 'da otomatik olarak yönetilen bir OpenShift kapsayıcı platformu 3,11 k�
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Market teklifini kullanarak dağıtma
 
-Azure 'a otomatik olarak yönetilen bir OpenShift kapsayıcı platformu 3,11 kümesi dağıtmanın en kolay yolu [Azure Market Teklifini](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)kullanmaktır.
+Azure 'a otomatik olarak yönetilen bir OpenShift kapsayıcı platformu 3,11 kümesi dağıtmanın en kolay yolu [Azure Market Teklifini](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)kullanmaktır.
 
 Bu seçenek en basit seçenektir, ancak aynı zamanda sınırlı özelleştirme yeteneklerine sahiptir. Market teklifi, OpenShift kapsayıcı platformu 3.11.82 dağıtır ve aşağıdaki yapılandırma seçeneklerini içerir:
 

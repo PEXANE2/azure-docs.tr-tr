@@ -1,25 +1,16 @@
 ---
-title: Service Fabric kümesi Kaynak Yöneticisi-Yönetim Tümleştirmesi | Microsoft Docs
+title: Küme Kaynak Yöneticisi yönetimi tümleştirmesi
 description: Küme Kaynak Yöneticisi ve Service Fabric Yönetimi arasındaki tümleştirme noktalarına genel bakış.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2b3ccf16aca04ebd398e2f97007b817cc0a6ef8d
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196491"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614630"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Küme Kaynak Yöneticisi Service Fabric küme yönetimi ile tümleştirme
 Service Fabric Küme Kaynak Yöneticisi Service Fabric yükseltmeleri değil, ancak buna dahil değildir. Küme Kaynak Yöneticisi, yönetim ile ilgili olarak, kümenin istenen durumunu ve içindeki hizmetleri izlemeye yardımcı olur. Küme Kaynak Yöneticisi, kümeyi istenen yapılandırmaya koyane zaman sistem durumu raporları gönderir. Örneğin, yeterli kapasite yoksa, Küme Kaynak Yöneticisi durum uyarıları ve sorunu belirten hatalar gönderilir. Diğer bir tümleştirme parçasının, yükseltmelerin nasıl çalıştığı ile ilgili olması vardır. Küme Kaynak Yöneticisi, yükseltmeler sırasında davranışını biraz daha değiştirir.  

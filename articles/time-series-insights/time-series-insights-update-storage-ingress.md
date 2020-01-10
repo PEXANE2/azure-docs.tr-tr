@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 62ee248c06d2b26b935f72b3bb73cf708f949c72
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dada1a8ed8b1725905ee2ad159e385d1bee62fc6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014703"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615105"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri depolama ve giriş
 
@@ -23,7 +23,9 @@ Bu makalede Azure Time Series Insights önizlemesi için veri depolama ve giriş
 
 ## <a name="data-ingress"></a>Veri girişi
 
-Azure Time Series Insights ortamınız, zaman serisi verilerini toplamak, işlemek ve depolamak için bir giriş altyapısı içerir. Ortamınızı planlarken, tüm gelen verilerin işlenmesini sağlamak ve yüksek giriş ölçeğine ulaşmak ve giriş gecikmesini en aza indirmek için göz önünde bulundurmanız gereken bazı noktalar vardır. (TSI tarafından olaydan gelen verileri okumak ve işlemek için geçen süre Kaynak). Time Series Insights önizlemede, veri giriş ilkeleri verilerin nereden kaynakta yapılabileceğini ve verilerin ne biçimde olması gerektiğini tespit edebilir.
+Azure Time Series Insights ortamınız, zaman serisi verilerini toplamak, işlemek ve depolamak için bir giriş altyapısı içerir. Ortamınızı planlarken, tüm gelen verilerin işlenmesini sağlamak ve yüksek giriş ölçeğine ulaşmak ve giriş gecikmesini en aza indirmek için göz önünde bulundurmanız gereken bazı noktalar vardır. (TSI tarafından olaydan gelen verileri okumak ve işlemek için geçen süre Kaynak). 
+
+Time Series Insights önizlemede, veri giriş ilkeleri verilerin nereden kaynakta yapılabileceğini ve verilerin ne biçimde olması gerektiğini tespit edebilir.
 
 ### <a name="ingress-policies"></a>Giriş ilkeleri
 
@@ -32,12 +34,12 @@ Time Series Insights önizlemesi aşağıdaki olay kaynaklarını destekler:
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Time Series Insights önizlemesi, örnek başına en fazla iki olay kaynağını destekler.
-  
-Azure Time Series Insights Azure IoT Hub veya Azure Event Hubs aracılığıyla gönderilen JSON 'yi destekler.
+Time Series Insights önizlemesi, örnek başına en fazla iki olay kaynağını destekler. Azure Time Series Insights Azure IoT Hub veya Azure Event Hubs aracılığıyla gönderilen JSON 'yi destekler.
 
 > [!WARNING] 
-> Time Series Insights önizleme ortamınıza yeni bir olay kaynağı eklerken, şu anda IoT Hub veya Olay Hub 'ında bulunan olay sayısına bağlı olarak, ilk alma gecikmesi gecikme süresine karşılaşabilirsiniz. Verilerin içeri alınmasının ardından, bu yüksek gecikme süresini alt tarafa beklemeniz gerekir, ancak deneyiminiz yoksa, lütfen Azure portal bir destek bileti göndererek bizimle iletişim kurun.
+> * Önizleme ortamınıza bir olay kaynağı eklerken yüksek gecikme süresi yaşayabilirsiniz. 
+> Olay kaynağı gecikmesi, IoT Hub veya Olay Hub 'ınızdaki olay sayısına bağlıdır.
+> * Olay kaynak verilerinin ilk kez alındıktan sonra yüksek gecikme süresi alt tarafı olur. Devam eden yüksek gecikme süresi yaşıyorsanız, lütfen Azure portal aracılığıyla bir destek bileti göndererek bizimle iletişim kurun.
 
 ## <a name="ingress-best-practices"></a>Giriş en iyi uygulamaları
 
@@ -49,12 +51,19 @@ Aşağıdaki en iyi yöntemleri kullanmanızı öneririz:
 
 ### <a name="ingress-scale-and-limitations-in-preview"></a>Önizlemede giriş ölçeği ve sınırlamalar
 
-Time Series Insights önizleme, varsayılan olarak, ortam başına en fazla 1 megabayt (MB/sn) kadar bir başlangıç giriş ölçeğini destekler. Gerekirse, en fazla 16 MB/sn aktarım hızı mevcuttur, lütfen bu gerekliyse Azure portal bir destek bileti göndererek bizimle iletişim kurun. Ayrıca, 0,5 MB/sn 'lik bölüm başına sınır vardır. Bu, IoT Hub bir cihaz bölümü arasındaki benzeşim verildiğinde, özellikle IoT Hub kullanan müşterilere yönelik etkileri vardır. Bir ağ geçidi cihazının kendi cihaz KIMLIĞI ve bağlantı dizesi kullanılarak hub 'a ileti ileten senaryolarda, olay yükü farklı TS 'yi belirtse bile, iletilerin tek bir bölüme ulaştığını sağlayan 0,5 MB/s sınırına ulaşmada tehlike vardır. Ayrılacak. Genel olarak, giriş oranı, kuruluşunuzda bulunan cihaz sayısının, olay egörev sıklığının ve bir olay boyutunun faktörü olarak görüntülenir. Alma oranını hesaplarken, IoT Hub kullanıcıların kuruluştaki toplam cihaz yerine kullanımdaki Hub bağlantısı sayısını kullanması gerekir. Gelişmiş ölçeklendirme desteği devam etmektedir. Bu belgeler, bu geliştirmeleri yansıtacak şekilde güncelleştirilecektir. 
+Varsayılan olarak, önizleme ortamları **ortam başına en fazla 1 megabayt (MB/sn)** hızda giriş hızını destekler. Müşteriler, gerekirse, önizleme ortamlarını **16 MB/sn** aktarım hızına kadar ölçeklendirebilir.
+Bölüm başına **0,5 MB/sn**sınırı da vardır. 
 
-> [!WARNING]
-> Bir olay kaynağı olarak IoT Hub kullanan ortamlarda, kullanımdaki hub cihazlarının sayısını kullanarak alım oranını hesaplayın.
+Bölüm başına sınırın IoT Hub kullanan müşterilere etkileri vardır. Özellikle, IoT Hub bir cihaz ve bölüm arasındaki benzeşim verildiğinde. Bir ağ geçidi cihazının, kendi cihaz KIMLIĞINI ve bağlantı dizesini kullanarak iletileri hub 'a iletmesi durumunda, olay yükü farklı zaman serisi kimliklerini belirtse bile, iletilerin tek bir bölüme ulaştığını belirten 0,5 MB/s sınırına ulaşmaya yönelik tehlikeniz vardır. 
 
-İşleme birimleri ve bölümleri hakkında daha fazla bilgi için lütfen aşağıdaki bağlantılara bakın:
+Genel olarak giriş fiyatları, kuruluşunuzda bulunan cihazların sayısı, olay egörev sıklığı ve her olayın boyutu olarak görüntülenir:
+
+*  **Cihazların sayısı** × **olay emisi sıklığı** **her olayın boyutu**.
+
+> [!TIP]
+> Bir olay kaynağı olarak IoT Hub kullanan ortamlarda, kullanımdaki veya kuruluştaki toplam cihaz yerine, kullanımdaki Hub bağlantısı sayısını kullanarak giriş oranını hesaplayın.
+
+Üretilen iş birimleri, sınırlar ve bölümler hakkında daha fazla bilgi için:
 
 * [IoT Hub ölçeği](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
 * [Olay Hub 'ı ölçeği](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
@@ -81,7 +90,7 @@ En iyi sorgu performansı için bölümleri ve dizinleri Time Series Insights g�
 > [!IMPORTANT]
 > Time Series Insights gelecek genel kullanılabilirlik (GA) sürümü, verilerin olay kaynağından okunduktan sonra 60 saniye içinde kullanılabilir hale gelir. Önizleme sırasında, veriler kullanılabilir hale gelmeden önce daha uzun bir süre yaşayabilirsiniz. 60 saniyenin ötesinde önemli gecikme yaşınızı yaşıyorsanız lütfen Azure portal bir destek bileti gönderebilirsiniz.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 Bu bölümde Azure Time Series Insights önizlemesiyle ilgili Azure depolama ayrıntıları açıklanmaktadır.
 
@@ -113,7 +122,7 @@ Verilerinize üç genel yolla erişebilirsiniz:
 
 ### <a name="data-deletion"></a>Veri silme
 
-Time Series Insights önizleme dosyalarınızı silmeyin. İlgili verileri yalnızca Time Series Insights Preview içinden yönetmeniz gerekir.
+Time Series Insights önizleme dosyalarınızı silmeyin. Yalnızca Time Series Insights Preview içinden ilgili verileri yönetin.
 
 ## <a name="parquet-file-format-and-folder-structure"></a>Parquet dosya biçimi ve klasör yapısı
 
@@ -136,7 +145,7 @@ Her iki durumda da, zaman değerleri blob oluşturulma zamanına karşılık gel
 > [!NOTE]
 > * `<YYYY>` dört basamaklı bir yıl gösterimine eşlenir.
 > * `<MM>` iki basamaklı bir ay gösterimiyle eşlenir.
-> * `<YYYYMMDDHHMMSSfff>`, dört basamaklı yıl (`YYYY`), iki basamaklı ay (`MM`), iki basamaklı gün (`DD`), iki basamaklı bir saat (`HH`), iki basamaklı dakika (`MM`), iki basamaklı saniye (`SS`) ve üç basamaklı milisaniyeye sahip zaman damgası gösterimine eşlenir (`fff`).
+> * `<YYYYMMDDHHMMSSfff>`, dört basamaklı yıl (`YYYY`), iki basamaklı ay (`MM`), iki basamaklı gün (`DD`), iki basamaklı saat (`HH`), iki basamaklı dakika (`MM`), iki basamaklı saniye (`SS`) ve üç basamaklı milisaniyelik (`fff`) ile zaman damgası gösterimine eşlenir.
 
 Time Series Insights Preview olayları, aşağıdaki gibi, Parquet dosya içeriklerine eşlenir:
 

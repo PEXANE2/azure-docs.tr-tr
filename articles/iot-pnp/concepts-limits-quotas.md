@@ -3,16 +3,16 @@ title: Sınırlar ve Kotalar IoT Tak ve Kullan önizlemesi | Microsoft Docs
 description: IoT Tak ve Kullan Önizleme kullandığınızda uygulanan sınırları, kotaları ve azaltmayı anlayın.
 author: miagdp
 ms.author: miag
-ms.date: 08/01/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2df8a8820422a22b0512e24c4b052377cb0e61e0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 48ecaaba6d956efd9da75d0582fa06d231cb3f80
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879571"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531386"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT Tak ve Kullan önizleme sınırları, kotaları ve kısıtları
 
@@ -22,14 +22,14 @@ Bu makalede, genel önizlemede uygulanan IoT Tak ve Kullan özgü sınırlar, Ko
 
 Genel önizleme için aşağıdaki sınırlar ve Kotalar bir IoT Hub 'ı için geçerlidir:
 
-| Sınırlar, kısıtlamalar ve kısıtlar | Value | Notlar |
+| Sınırlar, kısıtlamalar ve kısıtlar | Değer | Notlar |
 |-----|-----|-----|
 | Hub başına kaydedilenebilir cihaz yeteneği modellerinin (DCMs) veya arabirimlerin sayısı | 1500 ||
 | Cihaz başına kaydedilenebilir en fazla arabirim sayısı | 40 ||
-| Cihaz başına kaydedilenebilir en fazla DCMs sayısı | 1\. ||
+| Cihaz başına kaydedilenebilir en fazla DCMs sayısı | 1 ||
 | En büyük arabirim/DCM dosyası boyutu | 512 karakter ||
 | Bir arabirim adının en büyük boyutu | 256 karakter ||
-| Bir özellik adının en büyük boyutu  | 64 bayt, 7 düzey Derinlik (ve ilk düzey için `$iotin`ayrılmıştır) | İzin verilen karakterler: a-z, A-Z, 0-9 (ilk karakter olarak değil) ve alt çizgi. |
+| Bir özellik adının en büyük boyutu  | 64 bayt, 7 düzey Derinlik (ve ilk düzey `$iotin`için ayrılmıştır) | İzin verilen karakterler: a-z, A-Z, 0-9 (ilk karakter olarak değil) ve alt çizgi. |
 | Bir özellik değerinin en büyük boyutu | 512 bayt ||
 | Bir komut adının en büyük boyutu | 100 bayt ||
 | Cihaz ikizi boyutu | [IoT Hub limitleriyle](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) aynı ||
@@ -39,9 +39,9 @@ Genel önizleme için aşağıdaki sınırlar ve Kotalar bir IoT Hub 'ı için g
 
 Genel önizleme için aşağıdaki sınırlar ve Kotalar bir model deposu için geçerlidir:
 
-| Sınırlar, kısıtlamalar ve kısıtlar| Value |
+| Sınırlar, kısıtlamalar ve kısıtlar| Değer |
 |-----|-----|
-| Azure Active Directory kiracı başına şirket modeli depoları sayısı | 1\. |
+| Azure Active Directory kiracı başına şirket modeli depoları sayısı | 1 |
 | Model deposu başına yetkilendirme anahtarı sayısı | 10  |
 | Şirket modeli deposu başına model sayısı (DCMs veya arabirimler)| 1500  |
 | Azure Active Directory kiracı başına ortak model deposundaki model sayısı (DCMs veya arabirimler)| 1500  |

@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: 3d467026022a7bc90babd94827d64828f59ea714
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f7d5531c8aba3e2e7abb56d82342bfda79dbc71b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518131"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610735"
 ---
-# <a name="connect-barracuda-cloudgen-firewall"></a>Barbcuda CloudGen güvenlik duvarını bağlama
+# <a name="connect-barracuda-cloudgen-firewall"></a>Barracuda CloudGen Firewall'u bağlama
 
 Barbcuda CloudGen güvenlik duvarı (CGFW) Bağlayıcısı, Barmcuda CGFW günlüklerinizi Azure Sentinel ile kolayca bağlamanıza, panoları görüntülemenize, özel uyarılar oluşturmanıza ve araştırmaya imkan tanır. Bu, kuruluşunuzun ağı hakkında daha ayrıntılı bilgi verir ve güvenlik işlemi yeteneklerini geliştirir.
 
 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure Sentinel çalışma alanına yönelik okuma ve yazma izinleri.
 
@@ -47,4 +47,6 @@ Barbcuda CloudGen güvenlik duvarı (CGFW) Bağlayıcısı, Barmcuda CGFW günl�
 Bu belgede Barbcuda CloudGen güvenlik duvarını Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
+
 

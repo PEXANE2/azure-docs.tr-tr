@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: acdf52022d8498a186ed4cff90284cd6e299d6c0
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240853"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448998"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell Genel Bakış
 Azure Cloud Shell, Azure kaynaklarını yönetmeye yönelik etkileşimli, kimliği doğrulanmış, tarayıcıda erişilebilen bir kabuktur.
-Bu, bash veya PowerShell gibi çalıştığınız yönteme en uygun kabuk deneyimini seçme esnekliğini sağlar.
+Bu hizmet, Bash veya PowerShell ile çalışma şeklinize en uygun kabuk deneyimini seçme esnekliği getirir.
 
 Aşağıya tıklayarak shell.azure.com 'tan deneyin.
 
-[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell Başlat")](https://shell.azure.com)
+[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
 
 Cloud Shell simgesini kullanarak Azure portal deneyin.
 
@@ -52,7 +52,7 @@ Cloud Shell, Microsoft tarafından yönetiliyor ve bu nedenle popüler komut sat
 [Cloud Shell yüklü araçların tam listesini görüntüleyin.](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>Tümleşik Cloud Shell Düzenleyicisi
-Cloud Shell, açık kaynak Monako düzenleyicisine bağlı olarak tümleşik bir grafik metin düzenleyicisi sunar. Azure CLI veya Azure PowerShell ile sorunsuz dağıtım için `code .` çalıştırarak yapılandırma dosyalarını oluşturmanız ve düzenlemeniz yeterlidir.
+Cloud Shell, açık kaynak Monako düzenleyicisine bağlı olarak tümleşik bir grafik metin düzenleyicisi sunar. Azure CLı veya Azure PowerShell aracılığıyla sorunsuz dağıtım için `code .` çalıştırarak yapılandırma dosyalarını oluşturmanız ve düzenlemeniz yeterlidir.
 
 [Cloud Shell Düzenleyicisi hakkında daha fazla bilgi edinin](using-cloud-shell-editor.md).
 
@@ -70,9 +70,12 @@ Cloud Shell, tarafından kullanılabilen esnek bir araçtır:
 * [Visual Studio Code Azure Hesap uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Microsoft Azure dosyaları depolama alanınızı bağlama
-Cloud Shell makineler geçicidir, ancak dosyalarınız iki şekilde kalıcı hale getirilir: bir disk görüntüsü ile ve adlı `clouddrive`bağlı dosya paylaşımından.  İlk başlatma sırasında, sizin adınıza bir kaynak grubu, depolama hesabı ve Azure dosya paylaşımının oluşturulmasını ister Cloud Shell. Bu bir kerelik bir adımdır ve tüm oturumlar için otomatik olarak eklenir. Tek bir dosya paylaşma eşleştirilebilir ve Cloud Shell hem Bash hem de PowerShell tarafından kullanılır.
+Cloud Shell makineler geçicidir, ancak dosyalarınız iki şekilde kalıcı hale getirilir: bir disk görüntüsü aracılığıyla ve `clouddrive`adlı bağlı dosya paylaşımından.  Cloud Shell ilk kez çalıştırıldığında sizin adınıza bir kaynak grubu, depolama hesabı ve Azure Dosyaları paylaşımı oluşturur. Bu bir kerelik bir adımdır ve tüm oturumlar için otomatik olarak eklenir. Tek bir dosya paylaşma eşleştirilebilir ve Cloud Shell hem Bash hem de PowerShell tarafından kullanılır.
 
 [Yeni veya mevcut bir depolama hesabını](persisting-shell-storage.md) nasıl bağlayacağınızı veya [Cloud Shell ' de kullanılan Kalıcılık mekanizmaları](persisting-shell-storage.md#how-cloud-shell-storage-works)hakkında bilgi edinmek için daha fazla bilgi edinin.
+
+> [!NOTE]
+> Azure Storage güvenlik duvarı, Cloud Shell depolama hesapları için desteklenmez.
 
 ## <a name="concepts"></a>Kavramlar
 * Cloud Shell, oturum başına ve kullanıcı bazında belirtilen geçici bir konakta çalıştırılır

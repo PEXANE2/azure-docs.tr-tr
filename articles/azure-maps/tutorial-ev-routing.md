@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7039cd73263388f206075a53d7898e0d15da6b03
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109610"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613695"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 
@@ -35,13 +35,15 @@ Bu öğreticide şunları yapacaksınız:
 > * Sürücü zamanına göre en yakın elektrik araç doldurma istasyonuna bir yol bulun ve görselleştirin.
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Bu öğreticiyi tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. 
 
-S1 fiyatlandırma katmanında bir Azure Maps hesabı aboneliği oluşturmak için [Azure haritalar hesabınızı yönetme](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)bölümündeki yönergeleri izleyin. 
+S1 fiyatlandırma katmanında bir Azure Maps hesabı aboneliği oluşturmak için, [bir hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ' daki yönergeleri izleyerek S1 fiyatlandırma katmanıyla bir Azure Maps hesap aboneliği oluşturun. 
 
-Hesabınız için birincil abonelik anahtarını almak için [Hesap oluşturma ve anahtarınızı edinme](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key)bölümündeki yönergeleri izleyin.
+Hesabınız için birincil abonelik anahtarını almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account)' daki yönergeleri izleyin.
+
+Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
 ## <a name="create-an-azure-notebook"></a>Azure Not defteri oluşturma
 
@@ -60,7 +62,7 @@ Bu öğreticiyle birlikte izlemek için bir Azure Not defteri projesi oluşturma
  
     ![Yeni proje oluştur bölmesi](./media/tutorial-ev-routing/create-project-window.png)
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. Projeniz oluşturulduktan sonra, [Azure Maps Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) [Jupyter Not defteri belge dosyasını](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) indirin. 
 
@@ -111,7 +113,7 @@ Senaryolarımızda, bir paket teslimi şirketinin, Fleet ortamında bazı elektr
 Elektrik Aracı 'nın erişilebilir aralığının sınırlarını öğrenmek için betiği aşağıdaki hücrede çalıştırın:
 
 ```python
-subscriptionKey = "Your Azure Maps primary subscription key"
+subscriptionKey = "Your Azure Maps key"
 currentLocation = [34.028115,-118.5184279]
 session = aiohttp.ClientSession()
 
@@ -398,6 +400,6 @@ Bu öğreticide kullanılan Azure Maps API 'Lerini araştırmak için, bkz.:
 * [Rota sonrası matrisi](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Rota yönlerini al](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
-Azure haritalar REST API 'lerinin tüm listesi için bkz. [Azure Maps REST API 'leri](https://docs.microsoft.com/azure/azure-maps/#reference).
+Azure haritalar REST API 'lerinin tüm listesi için bkz. [Azure Maps REST API 'leri](https://docs.microsoft.com/azure/azure-maps/consumption-model).
 
 Azure Notebooks hakkında daha fazla bilgi için bkz. [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).

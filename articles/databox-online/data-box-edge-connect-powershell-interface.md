@@ -1,6 +1,6 @@
 ---
-title: Bağlanmak ve Microsoft Azure veri kutusu Edge cihazı Windows PowerShell arabirimi üzerinden yönetmek | Microsoft Docs
-description: Bağlanmak ve ardından veri kutusu Edge Windows PowerShell arabirimi üzerinden yönetmek açıklar.
+title: Windows PowerShell arabirimi aracılığıyla Microsoft Azure Data Box Edge cihaza bağlanın ve yönetin | Microsoft Docs
+description: Windows PowerShell arabirimi aracılığıyla Data Box Edge nasıl bağlanabileceğinizi ve daha sonra yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,28 +8,28 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 6af95b7f8bde6e77ba356fec9dde123e26a9a4a8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f49396331a31f7ca9eaf453dc8bf6880da2e0da8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448641"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613865"
 ---
-# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla bir Azure veri kutusu Edge cihazı yönetme
+# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Data Box Edge cihazını yönetme
 
-Azure veri kutusu Edge çözüm, verileri işlemek ve ağ üzerinden Azure'a göndermek olanak tanır. Bu makalede, bazı veri kutusu Edge cihazınız için yapılandırma ve yönetim görevleri açıklanır. Azure portalı, yerel web kullanıcı Arabirimi veya Windows PowerShell arabiriminden Cihazınızı yönetmek için kullanabilirsiniz.
+Azure Data Box Edge çözümü, verileri işlemenize ve ağ üzerinden Azure 'a göndermenize olanak tanır. Bu makalede, Data Box Edge cihazınız için yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Cihazınızı yönetmek için Azure portal, yerel Web Kullanıcı arabirimini veya Windows PowerShell arabirimini kullanabilirsiniz.
 
-Bu makalede PowerShell arabirimini kullanarak bunu görevlere odaklanır.
+Bu makale, PowerShell arabirimini kullanarak yaptığınız görevlere odaklanır.
 
-Bu makalede, aşağıdaki yordamları içerir:
+Bu makale aşağıdaki yordamları içerir:
 
 - PowerShell arabirimine bağlanma
 - Destek paketi oluşturma
 - Sertifikayı karşıya yükleme
-- Cihaz sıfırlama
+- Cihazı sıfırlama
 - Cihaz bilgilerini görüntüle
-- İşlem günlükleri alın
-- İzleme ve sorun giderme işlem modülleri
+- İşlem günlüklerini al
+- İşlem modüllerini izleme ve sorun giderme
 
 ## <a name="connect-to-the-powershell-interface"></a>PowerShell arabirimine bağlanma
 
@@ -43,20 +43,20 @@ Bu makalede, aşağıdaki yordamları içerir:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-IOT Edge Cihazınızı ve buna bağlanmak aşağı akış cihazları arasında güvenli bir bağlantı etkinleştirmek için IOT Edge sertifikalarını da karşıya yükleyebilirsiniz. IOT Edge üç sertifika bulunur ( *.pem* biçimi) yüklemek gereken:
+Ayrıca, IoT Edge cihazınız ile bağlanabilir olan aşağı akış cihazları arasında güvenli bir bağlantı sağlamak için IoT Edge sertifikaları karşıya yükleyebilirsiniz. Yüklemeniz gereken üç IoT Edge sertifikası ( *. pek* biçimi) vardır:
 
-- Kök CA sertifikasını veya CA sahibi
+- Kök CA sertifikası veya sahip CA
 - Cihaz CA sertifikası
-- Cihaz anahtar sertifikası
+- Cihaz anahtarı sertifikası
 
-Aşağıdaki örnek, IOT Edge sertifikaları yüklemek için bu cmdlet'in kullanımı gösterilmektedir:
+Aşağıdaki örnek, IoT Edge sertifikaları yüklemek için bu cmdlet 'in kullanımını gösterir:
 
 ```
 Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
-Bu cmdlet'i çalıştırdığınızda, ağ paylaşımı için parolayı girmeniz istenir.
+Bu cmdlet 'i çalıştırdığınızda, ağ paylaşımının parolasını girmeniz istenir.
 
-Sertifikalar hakkında daha fazla bilgi için Git [Azure IOT Edge sertifikaları](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) veya [sertifikaları üzerinde bir ağ geçidi yükleme](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
+Sertifikalar hakkında daha fazla bilgi için [Azure IoT Edge sertifikalara](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) gidin veya [bir ağ geçidine sertifika yüklemeyi](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway)yapın.
 
 ## <a name="view-device-information"></a>Cihaz bilgilerini görüntüle
  
@@ -66,31 +66,31 @@ Sertifikalar hakkında daha fazla bilgi için Git [Azure IOT Edge sertifikaları
 
 [!INCLUDE [Reset your device](../../includes/data-box-edge-gateway-deactivate-device.md)]
 
-## <a name="get-compute-logs"></a>İşlem günlükleri alın
+## <a name="get-compute-logs"></a>İşlem günlüklerini al
 
-Bilgi işlem rolü Cihazınızda yapılandırılmışsa, ayrıca PowerShell arabirimi üzerinden işlem günlükleri alabilirsiniz.
+İşlem rolü cihazınızda yapılandırılmışsa, işlem günlüklerini PowerShell arabirimi aracılığıyla da alabilirsiniz.
 
-1. [PowerShell arabirimine bağlanma](#connect-to-the-powershell-interface).
-2. Kullanım `Get-AzureDataBoxEdgeComputeRoleLogs` cihazınız için işlem günlüklerini almak için.
+1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
+2. Cihazınızın işlem günlüklerini almak için `Get-AzureDataBoxEdgeComputeRoleLogs` kullanın.
 
-    Aşağıdaki örnek, bu cmdlet kullanımını gösterir:
+    Aşağıdaki örnek, bu cmdlet 'in kullanımını gösterir:
 
     ```powershell
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection
     ```
 
-    Cmdlet'i için kullanılan parametreler açıklaması aşağıda verilmiştir:
-    - `Path`: Bir işlem günlüğü paketi oluşturmak için istediğiniz paylaşımı ağ yolunu belirtin.
-    - `Credential`: Ağ paylaşımı için kullanıcı adını belirtin. Bu cmdlet'i çalıştırdığınızda, paylaşımı parolayı girmeniz gerekir.
-    - `FullLogCollection`: Bu parametre, günlük paketi tüm işlem günlüklerini içerecek sağlar. Varsayılan olarak, yalnızca bir alt günlüklerin günlük paketi içerir.
+    Cmdlet 'i için kullanılan parametrelerin açıklaması aşağıdadır:
+    - `Path`: işlem günlüğü paketini oluşturmak istediğiniz paylaşıma yönelik bir ağ yolu sağlayın.
+    - `Credential`: ağ paylaşımının Kullanıcı adını sağlayın. Bu cmdlet 'i çalıştırdığınızda, paylaşma parolasını sağlamanız gerekir.
+    - `FullLogCollection`: Bu parametre, günlük paketinin tüm işlem günlüklerini içermesini sağlar. Varsayılan olarak, günlük paketi yalnızca bir Günlükler alt kümesi içerir.
 
-## <a name="monitor-and-troubleshoot-compute-modules"></a>İzleme ve sorun giderme işlem modülleri
+## <a name="monitor-and-troubleshoot-compute-modules"></a>İşlem modüllerini izleme ve sorun giderme
 
 [!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
-## <a name="exit-the-remote-session"></a>Uzak oturumu Çık
+## <a name="exit-the-remote-session"></a>Uzak oturumdan çık
 
-Uzak PowerShell oturumu çıkmak için PowerShell penceresini kapatın.
+Uzak PowerShell oturumundan çıkmak için PowerShell penceresini kapatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

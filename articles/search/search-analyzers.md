@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 32ac91df042eb29c39cc54b738dbb96aff3104f3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/10/2019
+ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460725"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Bilişsel Arama metin işleme için çözümleyiciler
 
@@ -55,11 +55,14 @@ Aşağıdaki listede Azure Bilişsel Arama 'de hangi çözümleyiciler kullanıl
 
 3. İsteğe bağlı olarak, bir **çözümleyici** özelliği yerine, dizin oluşturma ve sorgulama Için **ındexanalyzer** ve **searchAnalyzer** alan parametrelerini kullanarak farklı çözümleyiciler ayarlayabilirsiniz. Veri hazırlama ve alma işlemleri için farklı çözümleyiciler kullanacaksınız ve bu etkinliklerden biri başka bir dönüşüm için gerekli değildir.
 
+> [!NOTE]
+> Dizin oluşturma sırasında bir alanın sorgu süresinden farklı bir [dil Çözümleyicisi](index-add-language-analyzers.md) kullanmak mümkün değildir. Bu özellik [özel çözümleyiciler](index-add-custom-analyzers.md)için ayrılmıştır. Bu nedenle, **searchAnalyzer** veya **ındexanalyzer** özelliklerini bir dil çözümleyici adına ayarlamaya çalışırsanız REST API bir hata yanıtı döndürür. Bunun yerine **çözümleyici** özelliğini kullanmanız gerekir.
+
 Zaten fiziksel olarak oluşturulmuş bir alana **çözümleyici** veya **ındexanalyzer** atamaya izin verilmez. Bunlardan herhangi biri belirsiz ise, hangi eylemlerin yeniden derleme gerektirdiğini ve nedenini belirten bir döküm için aşağıdaki tabloyu gözden geçirin.
  
  | Senaryo | Etki | Adımlar |
  |----------|--------|-------|
- | Yeni alan ekle | En az | Alan henüz şemada yoksa, bu alan, dizinde henüz bir fiziksel varlığı olmadığından, yapılacak bir alan düzeltmesi yoktur. Var olan bir dizine yeni bir alan eklemek için [güncelleştirme dizinini](https://docs.microsoft.com/rest/api/searchservice/update-index) kullanabilir ve onu doldurmak Için [mergeorupload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) kullanabilirsiniz.|
+ | Yeni alan ekleme | en az | Alan henüz şemada yoksa, bu alan, dizinde henüz bir fiziksel varlığı olmadığından, yapılacak bir alan düzeltmesi yoktur. Var olan bir dizine yeni bir alan eklemek için [güncelleştirme dizinini](https://docs.microsoft.com/rest/api/searchservice/update-index) kullanabilir ve onu doldurmak Için [mergeorupload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) kullanabilirsiniz.|
  | Var olan bir dizinli alana **çözümleyici** veya **ındexanalyzer** ekleyin. | [derlemesine](search-howto-reindex.md) | Bu alan için ters çevrilen Dizin baştan sona yeniden oluşturulmalıdır ve bu alanların içeriğinin yeniden oluşturulması gerekir. <br/> <br/>Etkin geliştirme altındaki dizinler için, yeni alan tanımını seçmek üzere dizini [silin](https://docs.microsoft.com/rest/api/searchservice/delete-index) ve [oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-index) . <br/> <br/>Üretimde dizinler için, düzeltilen tanımı sağlamak üzere yeni bir alan oluşturarak yeniden derlemeyi erteleyebilirsiniz ve eskisini yerine kullanmaya başlayabilirsiniz. Yeni alanı birleştirmek için [güncelleştirme dizinini](https://docs.microsoft.com/rest/api/searchservice/update-index) kullanın ve doldurmak Için [mergeorupload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) kullanın. Daha sonra, planlı dizin hizmeti 'nin bir parçası olarak, eski alanları kaldırmak için dizini temizleyebilirsiniz. |
 
 ## <a name="when-to-add-analyzers"></a>Çözümleyiciler ne zaman eklenir
@@ -113,7 +116,7 @@ Bu örnekte izlenecek:
 
 * Çözümleyiciler, aranabilir bir alan için alan sınıfının bir özelliğidir.
 * Özel çözümleyici, Dizin tanımının bir parçasıdır. Bu, hafif bir şekilde özelleştirilmiş olabilir (örneğin, tek bir filtrenin tek bir seçeneğini özelleştirme) veya birden çok yerde özelleştirilebilir.
-* Bu durumda, özel çözümleyici "my_analyzer" olur ve bu, sırasıyla özelleştirilmiş bir standart belirteç ayırıcı "my_standard_tokenizer" ve iki belirteç filtresi kullanır: küçük ve özelleştirilmiş asciifolding filtresi "my_asciifolding".
+* Bu durumda, özel çözümleyici "my_analyzer" olur ve bu da "my_standard_tokenizer" özelleştirilmiş standart belirteç ayırıcı ve iki belirteç filtresi kullanır: küçük ve özelleştirilmiş asciifolding filtresi "my_asciifolding".
 * Ayrıca, "map_dash" ve "remove_whitespace" 2 özel char filtrelerini de tanımlar. İlki tüm tireleri alt çizgi ile değiştirir, ikinci bir tane tüm boşlukları kaldırır. Eşleme kurallarında boşluklar UTF-8 olarak kodlanmalıdır. Char filtreleri simgeleştirme öncesinde uygulanır ve sonuçta elde edilen belirteçleri etkiler (çizgi ve boşluklar üzerinde standart belirteç ayırıcı işaretleri ve alt çizgi üzerinde değil).
 
 ~~~~
@@ -346,7 +349,7 @@ Bir [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.searc
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
- [Belgelerde ara REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+ [Belgelerde Arama REST API'si](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
  [Basit sorgu söz dizimi](query-simple-syntax.md) 
 

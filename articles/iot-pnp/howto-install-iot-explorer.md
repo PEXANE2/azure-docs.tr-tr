@@ -3,33 +3,33 @@ title: Azure IoT Gezginini yüklemeyi ve kullanmayı | Microsoft Docs
 description: Azure IoT gezgin aracını yükleyip IoT Hub 'ma bağlı IoT Tak ve Kullan önizleme cihazlarıyla etkileşim kurmak için bu aracı kullanın.
 author: miagdp
 ms.author: miag
-ms.date: 07/02/2019
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: fd180404ca18b5ea84c745a543ae7e87bf16c27d
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679865"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529635"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Gezginini yükleyip kullanma
 
 Azure IoT Explorer, IoT Tak ve Kullan önizleme cihazlarınızı etkileşimli ve test etmeye yönelik bir grafik aracıdır. Aracı yerel makinenize yükledikten sonra bir cihaza bağlanmak için kullanabilirsiniz. Aracı, cihazın gönderdiği Telemetriyi görüntülemek, cihaz özellikleriyle çalışmak ve komutları çağırmak için kullanabilirsiniz.
 
-Bu makalede nasıl yapılacağı gösterilmektedir:
+Bu makale, şunları nasıl yapacağınızı gösterir:
 
 - Azure IoT gezgin aracını yükleyip yapılandırın.
 - Cihazlarınızla etkileşim kurmak ve bunları test etmek için aracını kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure IoT gezgin aracını kullanmak için şunlar gerekir:
 
 - Azure IoT Hub 'ı. Azure aboneliğinize Azure [CLI kullanarak](../iot-hub/iot-hub-create-using-cli.md)IoT Hub 'ı oluşturma gibi bir IoT Hub 'ı eklemenin birçok yolu vardır. Azure IoT gezgin aracını çalıştırmak için IoT Hub bağlantı dizesine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-- IoT Hub 'ınıza kayıtlı bir cihaz. Bir cihazı kaydetmek için aşağıdaki Azure CLı komutunu kullanabilirsiniz. @No__t_0 ve `{YourDeviceID}` yer tutucuları değerlerinizle değiştirdiğinizden emin olun:
+- IoT Hub 'ınıza kayıtlı bir cihaz. Bir cihazı kaydetmek için aşağıdaki Azure CLı komutunu kullanabilirsiniz. `{YourIoTHubName}` ve `{YourDeviceID}` yer tutucuları değerlerinizle değiştirdiğinizden emin olun:
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -51,13 +51,13 @@ IoT Tak ve Kullan cihazının model tanımı, genel depoda, bir şirket deposund
 
 Kaynak eklemek için:
 
-1. **Ayarlar**' a gidin.
+1. Git **ayarları**.
 1. **Yeni** ' yi seçin ve kaynağınızı seçin.
 1. Şirket modeli deponuzu ekliyorsanız bağlantı dizesini belirtin.
 
 Bir kaynağı kaldırmak için:
 
-1. **Ayarlar**' a gidin.
+1. Git **ayarları**.
 1. Kaldırmak istediğiniz kaynağı bulun.
 1. **X** seçimini kaldırmak için seçin. Ortak arabirim tanımları bu depodan geldiği için ortak model deposunu kaldıramazsınız.
 
@@ -73,7 +73,7 @@ Araç IoT Hub 'ınıza bağlandıktan sonra, IoT Hub 'ınıza kayıtlı cihaz ki
 
 - Hub 'ınıza yeni bir cihaz kaydetmek için **Ekle** ' yi seçin. Ardından bir cihaz KIMLIĞI girin. Otomatik olarak kimlik doğrulama anahtarları oluşturmak ve hub 'ınız ile bağlantıyı etkinleştirmek için varsayılan ayarları kullanın.
 - Bir cihaz seçin ve ardından bir cihaz kimliğini silmek için **Sil** ' i seçin. Doğru cihaz kimliğini sildiğinizden emin olmak için bu eylemi tamamlamadan önce cihaz ayrıntılarını gözden geçirin.
-- @No__t_0 ve `interfaceID` göre sorgulama. Cihazlarınızı sorgulamak için `capabilityID` ya da `interfaceID` bir parametre olarak ekleyin.
+- `capabilityID` ve `interfaceID`göre sorgulama. Cihazlarınızı sorgulamak için `capabilityID` ya da `interfaceID` bir parametre olarak ekleyin.
 
 ## <a name="interact-with-a-device"></a>Cihazla etkileşim kurma
 
@@ -93,7 +93,7 @@ Bu bölüm **cihaz kimliği**, **cihaz ikizi**, **telemetri**, **doğrudan yönt
 
 Aracı bir görüntüleme dijital ikizi örneğine yönelik olarak kullanabilirsiniz. IoT Tak ve Kullan cihazında cihaz yetenek modeliyle ilişkili tüm arabirimler aracın bu bölümünde görüntülenir. Karşılık gelen [ıot Tak ve Kullan temel](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)öğelerini genişletmek için bir arabirim seçin.
 
-### <a name="interface"></a>Arayüz
+### <a name="interface"></a>Arabirim
 
 **Arabirim** sayfasında, arabirimin JSON tanımını görüntüleyebilirsiniz.
 

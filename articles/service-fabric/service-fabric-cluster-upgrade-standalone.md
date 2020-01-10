@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric tek başına kümesini yükseltme | Microsoft Docs
+title: Azure Service Fabric tek başına kümesini yükseltme
 description: Azure Service Fabric tek başına kümesinin sürümünü veya yapılandırmasını yükseltme hakkında bilgi edinin.  T
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
-ms.author: atsenthi
-ms.openlocfilehash: bf99d5d59354745508d8ca88abfc4b42fe608025
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599793"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451833"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Service Fabric tek başına Kümeyi yükseltme ve güncelleştirme
 
@@ -49,7 +38,7 @@ Düzeltme Eki düzenleme uygulaması (POA), kapalı kalma süresi olmadan bir Se
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Service Fabric kümesi doku ayarlarından](service-fabric-cluster-fabric-settings.md) bazılarını özelleştirmeyi öğrenin
-* [Kümenizi ve dışarı ölçeklendirmeyi](service-fabric-cluster-scale-up-down.md) nasıl ölçeklentireceğinizi öğrenin
+* [Kümenizi ve dışarı ölçeklendirmeyi nasıl ölçeklentireceğinizi](service-fabric-cluster-scale-up-down.md) öğrenin
 * [Uygulama yükseltmeleri](service-fabric-application-upgrade.md) hakkında bilgi edinin
 
 <!--Image references-->

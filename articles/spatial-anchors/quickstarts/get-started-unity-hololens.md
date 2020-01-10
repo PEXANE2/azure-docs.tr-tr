@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 561b5391f125cf845eff940a0d3548fc6ade541e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5ea82d88099b0f5fdd00624db4417bbb02777581
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457773"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcıları kullanan bir Unity HoloLens uygulaması oluşturma
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıçta, [Azure uzamsal bağlayıcıları](../overview.md)kull
 
 Bu hızlı başlangıcı tamamlamak için:
 
-- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1</a> veya üzeri ve <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> ya da sonraki sürümlerin yüklendiği bir Windows bilgisayar olması gerekir. Visual Studio yüklemenizin **Evrensel Windows platformu geliştirme** iş yükü ve **Windows 10 SDK (10.0.18362.0 veya daha yeni)** bileşenini içermesi gerekir. Ayrıca <a href="https://git-scm.com/download/win" target="_blank">Windows Için git</a>'i de yüklemelisiniz.
+- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1</a> veya üzeri ve <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> ya da sonraki sürümlerin yüklendiği bir Windows bilgisayar olması gerekir. Visual Studio yüklemenizin **Evrensel Windows platformu geliştirme** iş yükü ve **Windows 10 SDK (10.0.18362.0 veya daha yeni)** bileşenini içermesi gerekir. Ayrıca, Windows ve <a href="https://git-lfs.github.com/">GIT LFS</a> <a href="https://git-scm.com/download/win" target="_blank">için git</a> 'i de yüklemelisiniz.
 - [Geliştirici modunun](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) etkinleştirildiği bir HoloLens cihazına ihtiyacınız vardır. [Windows 10 ekim 2018 güncelleştirmesi](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (Ayrıca RS5 olarak da bilinir) cihazda yüklü olmalıdır. HoloLens 'te en son sürüme güncelleştirmek için **Ayarlar** uygulamasını açın, **güncelleştirme & Güvenliği**' ne gidin ve ardından **Güncelleştirmeleri denetle**' yi seçin.
 - Uygulamanızda, **Spatialperception** özelliğini etkinleştirmeniz gerekir. Bu ayar, > **oynatıcı** ayarları > **yayınlama** ayarları > **özellikleri**' nde **yapı ayarları** ' nda bulunur.
 - Uygulamanızda, **Windows Mixed REALITY SDK**Ile **desteklenen sanal gerçeklik** 'i etkinleştirmeniz gerekir. Bu ayar, > **XR ayarları** > **oynatıcı ayarları** ' nın **yapı ayarları** ' nda bulunur.

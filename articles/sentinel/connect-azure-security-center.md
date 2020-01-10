@@ -1,26 +1,20 @@
 ---
-title: Azure Güvenlik Merkezi verilerini Azure Sentinel 'e bağlama | Microsoft Docs
+title: Azure Güvenlik Merkezi verilerini Azure Sentinel 'e bağlama
 description: Azure Güvenlik Merkezi verilerini Azure Sentinel 'e bağlamayı öğrenin.
-services: sentinel
-documentationcenter: na
 author: rkarlin
 manager: rkarlin
-editor: ''
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: a9c210531f2c4cab1c3c023eab795023c3ad9f0c
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8d8f960d8cf1310ec0a380e75bdaa714408e2cac
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240214"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563675"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden verileri bağlama
 
@@ -30,7 +24,7 @@ ms.locfileid: "71240214"
 
 Azure Sentinel, uyarıları [Azure Güvenlik Merkezi](../security-center/security-center-intro.md) ' nden bağlamanıza ve Azure Sentinel 'e akışla göndermenizi sağlar. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Uyarıları Azure Güvenlik Merkezi 'nden dışarı aktarmak istiyorsanız, abone olduğunuz abonelik üzerinde bir katkıda bulunan olması gerekir.
 

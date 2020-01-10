@@ -1,24 +1,24 @@
 ---
-author: erikre
+author: georgewallace
 ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
-ms.author: erikre
-ms.openlocfilehash: 96c4da8465a87fee4c00bfc6177515c94910704a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: gwallace
+ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188048"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463509"
 ---
-Azure müşterileri her ay 25.000 ücretsiz e-postanın kilidini açabilir. Bu aylık 25.000 ücretsiz e-posta sayesinde gelişmiş raporlama ve analitiklerin yanı sıra [tüm API'lere][all APIs] (Web, SMTP, Olay, Ayrıştırma ve diğerleri) erişebilirsiniz. SendGrid tarafından sağlanan ek hizmetler hakkında bilgi için [SendGrid Solutions][SendGrid Solutions] sayfasını ziyaret edin.
+Azure müşterileri her ay 25.000 ücretsiz e-postanın kilidini açabilir. Bu 25.000 ücretsiz aylık e-postalar, gelişmiş raporlama ve analiz ve [tüm API 'ler][all APIs] (Web, SMTP, olay, ayrıştırma ve daha fazlası) için size erişmenizi sağlayacaktır. SendGrid tarafından sunulan ek hizmetler hakkında daha fazla bilgi için [SendGrid Solutions][SendGrid Solutions] sayfasını ziyaret edin.
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid hesabı açmak için
-1. [Azure portalında][Azure portal] oturum açın.
-2. Soldaki menüde **kaynak Oluştur**.
+1. [Azure Portal][Azure portal]’ında oturum açın.
+2. Azure portal menüsünde veya giriş sayfasında, **kaynak oluştur**' u seçin.
 
     ![komut-çubuğu-yeni][command-bar-new]
-3. **Eklentiler**'e ve ardından **SendGrid E-posta Teslimi**'ne tıklayın.
+3. **SendGrid**'i arayın ve seçin.
 
     ![sendgrid-mağazası][sendgrid-store]
 4. Kayıt formunu doldurun ve **Oluştur**'u seçin.
@@ -34,11 +34,11 @@ Azure müşterileri her ay 25.000 ücretsiz e-postanın kilidini açabilir. Bu a
 10. Varsa **Promosyon Kodu** girin.
 11. **İletişim Bilgilerinizi** girin.
 12. **Yasal koşulları** gözden geçirin ve kabul edin.
-13. Satın alma işlemini onayladıktan sonra **Dağıtım Başarılı** açılır penceresini ve **Tüm kaynaklar** bölümündeki listede hesabınızı göreceksiniz.
+13. Satın alımınızın onaylandıktan sonra **dağıtım başarılı** bir açılır pencere görürsünüz ve hesabınızı listede görürsünüz.
 
     ![tüm-kaynaklar][all-resources]
 
-    Satın alma işlemini tamamladıktan ve e-posta doğrulama işlemini başlatmak için **Yönet** düğmesine tıkladıktan sonra SendGrid'den hesabınızı doğrulamanızı isteyen bir e-posta alacaksınız. Bu e-postayı almadıysanız veya hesabınızı doğrulamayla ilgili sorunlar yaşıyorsanız lütfen bu SSS sayfasını inceleyin.
+    Satın alma işlemini tamamladıktan ve e-posta doğrulama işlemini başlatmak için **Yönet** düğmesine tıkladıktan sonra SendGrid'den hesabınızı doğrulamanızı isteyen bir e-posta alacaksınız. Bu e-postayı almazsanız veya hesabınızı doğrulamakta sorun yaşıyorsanız lütfen SSS sitemizi inceleyin.
 
     ![yönet][manage]
 
@@ -58,7 +58,7 @@ Azure müşterileri her ay 25.000 ücretsiz e-postanın kilidini açabilir. Bu a
 
     ![api-anahtarları][api-keys]
 
-3. Tıklayın **API anahtarı oluşturma**.
+3. **API anahtarı oluştur**' a tıklayın.
 
     ![genel-api-anahtarı][general-api-key]
 4. En azından **Bu anahtarın adı** alanını doldurun, **Posta Gönderimi** için tam erişim verin ve **Kaydet**'i seçin.
@@ -72,11 +72,11 @@ Azure müşterileri her ay 25.000 ücretsiz e-postanın kilidini açabilir. Bu a
     ![anahtar][key]
 2. Parola, kurulum sırasında seçtiğiniz paroladır. **Parolayı değiştir** veya **Parolayı sıfırla**'yı seçerek değişiklik yapabilirsiniz.
 
-E-posta teslim ayarlarınızı yönetmek için **Yönet** düğmesine tıklayın. Bu, SendGrid Panonuzda yönlendirir.
+E-posta teslim ayarlarınızı yönetmek için **Yönet** düğmesine tıklayın. Bu, SendGrid panonuza yönlendirecektir.
 
 ![yönet][manage]
 
-SendGrid aracılığıyla e-posta gönderme hakkında daha fazla bilgi için ziyaret [e-posta API'sine genel bakış][Email API Overview].
+SendGrid aracılığıyla e-posta gönderme hakkında daha fazla bilgi için [e-posta API 'Sine genel bakış ' a][Email API Overview]
 
 <!--images-->
 

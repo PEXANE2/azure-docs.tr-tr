@@ -3,16 +3,16 @@ title: Geliştirici Kılavuzu-IoT Tak ve Kullan önizlemesi | Microsoft Docs
 description: IoT Tak ve Kullan geliştiricileri için cihaz modellemesinin açıklaması
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/05/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6d8e0e9e675b88c69b74cdad261280f5dcaf7161
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 21001a22be6297595658ff347e9f8a7b04bb6faf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581617"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531403"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT Tak ve Kullan Preview modelleme Geliştirici Kılavuzu
 
@@ -63,7 +63,7 @@ Implements bölümündeki arabirimler listesindeki her giriş için şunu vardı
 
 Görüntü adı ve açıklama gibi yetenek modeline daha fazla ayrıntı eklemek için kullanabileceğiniz ek isteğe bağlı alanlar vardır. Yetenek modeli içinde belirtilen arabirimler, cihazın bileşenleri olarak düşünülebilir. Genel önizleme için, arabirim listesinin her şema için yalnızca bir girişi olabilir.
 
-## <a name="interface"></a>Arayüz
+## <a name="interface"></a>Arabirim
 
 DTDL ile, arabirimlerini kullanarak cihazınızın yeteneklerini anlayacağız. Arabirimler, cihazınızın bir parçası olan _özellikleri_, _telemetri_ve _komutları_ anlatmaktadır:
 
@@ -231,5 +231,5 @@ Genel olarak, bu REST API şablonu aracılığıyla komutlar çağrılabilir:
 Artık cihaz modelleme hakkında bilgi edindiğinize göre, bazı ek kaynaklar aşağıda verilmiştir:
 
 - [Digital Ikizi tanım dili (DTDL)](https://aka.ms/DTDL)
-- [C cihaz API’si](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+- [C cihaz SDK’sı](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)

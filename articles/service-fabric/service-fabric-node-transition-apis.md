@@ -1,68 +1,59 @@
 ---
-title: Başlatma ve durdurma Azure Service Fabric uygulamalarını test etmek için küme düğümlerinin | Microsoft Docs
-description: Hata ekleme, başlatma ve durdurma küme düğümleri bir Service Fabric uygulamasını test etmek için kullanmayı öğrenin.
-services: service-fabric
-documentationcenter: .net
+title: Küme düğümlerini başlatma ve durdurma
+description: Küme düğümlerini başlatıp durdurarak bir Service Fabric uygulamasını test etmek için hata ekleme işlemini nasıl kullanacağınızı öğrenin.
 author: LMWF
-manager: rsinha
-editor: ''
-ms.assetid: f4e70f6f-cad9-4a3e-9655-009b4db09c6d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: df0e53736c08fd2c26c467def7328e85f2989f26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f2eefec94ad4763a054ee089b17232c41e642dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718147"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609800"
 ---
-# <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Düğüm geçişi API ile Başlat ve Durdur düğümlerini API'leri değiştirme
+# <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Düğüm geçişi API 'SI ile başlangıç düğümünü değiştirme ve düğüm API 'Lerini durdurma
 
-## <a name="what-do-the-stop-node-and-start-node-apis-do"></a>Düğüm durdurmak ve başlatmak düğüm API'leri ne yapacaksınız?
+## <a name="what-do-the-stop-node-and-start-node-apis-do"></a>Düğüm Durdur ve düğüm başlatma API 'Leri ne işe başlar?
 
-Durdurma düğüm API (yönetilen: [StopNodeAsync()][stopnode], PowerShell: [Stop-ServiceFabricNode][stopnodeps]) bir Service Fabric düğüm durdurur.  Bir Service Fabric düğüm işlemi, bir VM veya değil makine – VM veya makine hala çalıştırırsınız.  Belgenin geri kalanında için Service Fabric düğümü "düğüm" anlamına gelir.  Bir düğümü durdurma, koyar içine bir *durduruldu* burada kümesinin bir üyesi değil ve Hizmetleri, bu nedenle benzetimi barındıramaz durumu bir *aşağı* düğümü.  Bu, hataları uygulamanızı test etmek için sisteme ekleme için kullanışlıdır.  Başlangıç düğümü API (yönetilen: [StartNodeAsync()][startnode], PowerShell: [Start-ServiceFabricNode][startnodeps]]) düğüm normal bir duruma getirir Durdur düğüm API tersine çevirir.
+Düğüm durdurma API 'SI (yönetilen: [Stopnodeasync ()][stopnode], PowerShell: [stop-servicefabricnode][stopnodeps]) bir Service Fabric düğümünü durdurur.  Bir Service Fabric düğümü, VM veya makine değil işlem, VM veya makine çalışmaya devam eder.  "Node" belgesinin geri kalanı için Service Fabric düğüm anlamına gelir.  Düğüm durdurulduğunda, kümenin üyesi olmadığı ve Hizmetleri barındıramayan ve bu sayede bir *alt* düğümü taklit eden *durdurulmuş* bir duruma geçer.  Bu, uygulamanızı test etmek için sisteme ekleme hataları için yararlıdır.  Başlangıç düğümü API 'SI (yönetilen: [Startnodeasync ()][startnode], PowerShell: [Start-servicefabricnode][startnodeps]]), düğümü normal bir duruma GERI getiren durdurma düğümü API 'sini tersine çevirir.
 
-## <a name="why-are-we-replacing-these"></a>Neden Biz bu değiştirdiğiniz?
+## <a name="why-are-we-replacing-these"></a>Neden bunları değiştiriyor?
 
-Daha önce açıklandığı bir *durduruldu* Service Fabric düğümü olan bir düğümü durdurma düğüm API'sini kullanarak kasıtlı olarak hedeflenen.  A *aşağı* (örneğin, VM veya makine kapalıdır) herhangi bir nedenle kapalı bir düğümü düğümüdür.  Durdurma düğüm API'SİYLE birbirinden ayırmak için bilgi sistemini açığa çıkarmamak *durduruldu* düğümleri ve *aşağı* düğümleri.
+Daha önce açıklandığı gibi, *durdurulmuş* bir Service Fabric düğümü, KASıTLı düğüm API 'sini kullanarak bilerek hedeflenmiş bir düğümdür.  *Aşağı* düğüm, başka bir nedenle kapalı bir düğümdür (ÖRNEĞIN, VM veya makine kapalı olur).  Düğüm durdur API 'siyle, sistem *durdurulan* düğümleri ve *alt* düğümleri birbirinden ayırt etmek için bilgi sunmaz.
 
-Ayrıca, bu API'ları tarafından döndürülen bazı hatalar olması olabilir olarak tanımlayıcı değildir.  Örneğin, üzerinde Durdur düğüm API çağırma zaten bir *durduruldu* düğüm hata döndürecektir *InvalidAddress*.  Bu deneyimi geliştirildi.
+Ayrıca, bu API 'Ler tarafından döndürülen bazı hatalar, olabilecekleri için açıklayıcı değildir.  Örneğin, önceden *durdurulmuş* bir düğümdeki düğüm durdurma API 'sini çağırmak, *ınvalidaddress*hatasını döndürür.  Bu deneyim artırılabilir.
 
-Ayrıca, bir düğüm için durduruldu süresi başlangıç düğümü API çağrılana kadar "sonsuz" olur.  Biz bu sorunlara neden olabilir ve hata yapmaya açık buldunuz.  Örneğin, burada bir kullanıcı bir düğümde Durdur düğüm API çağrılır ve ardından unuttum sorunları gördük.  Daha sonra düğüm varsa belirsiz *aşağı* veya *durduruldu*.
+Ayrıca, başlangıç düğümü API 'SI çağrılana kadar bir düğümün durdurulma süresi "sonsuz" dır.  Bunun sorunlara neden olabileceğini ve hataya açık olabileceğini tespit ettik.  Örneğin, bir kullanıcının bir düğümdeki düğüm durdur API 'sini çağırdığından ve daha sonra bunu unutduğumuz sorunları gördük.  Daha sonra, düğüm *kapalıysa* veya *durdurulmuşsa*bu anlaşılır değildir.
 
 
-## <a name="introducing-the-node-transition-apis"></a>Düğüm geçişi API'lerini ile tanışın
+## <a name="introducing-the-node-transition-apis"></a>Düğüm geçişi API 'Lerine giriş
 
-Biz, yeni bir API kümesi üzerinde bu sorunları ele aldık.  Yeni düğüm geçiş API (yönetilen: [StartNodeTransitionAsync()][snt]) bir Service Fabric düğümünü geçiş için kullanılabilir bir *durduruldu* durumu veya ondan geçiş için bir *durduruldu* durumunu bir normal çalışır durumda.  API adı "Başlangıç" ile başlayarak bir düğüm başvurmuyor unutmayın.  Sistem ya da düğümü geçmeye yürütecek bir zaman uyumsuz işlem başlamadan için başvurduğu *durduruldu* veya durumu başlatıldı.
+Bu sorunları yeni bir API kümesinde ele aldık.  Yeni düğüm geçiş API 'SI (yönetilen: [Startnodegeçişli Tionasync ()][snt]) Service Fabric bir düğümü *durdurulmuş* duruma geçirebilir veya *durdurulmuş* bir durumdan normal bir duruma geçiş yapmak için kullanılabilir.  Lütfen API 'nin adı içindeki "Başlat" ın bir düğümü başlatmak için başvurmadığını unutmayın.  Sistemin *durdurulan* veya başlatılan durumuna geçiş için yürütebileceği zaman uyumsuz bir işlem başlangıcını gösterir.
 
 **Kullanım**
 
-Düğüm geçişi API çağrıldığında bir özel durum oluşturmaz, sonra sistem zaman uyumsuz işlemi kabul etti ve bunu çalıştırır.  Başarılı bir çağrı işlemi henüz tamamlandı göstermez.  İşlemi geçerli durumu hakkında bilgi almak için düğüm geçiş ilerleme API çağrısı (yönetilen: [GetNodeTransitionProgressAsync()][gntp]) düğüm geçiş API bu işlemi için DTA çağrılırken kullanılan GUID'e sahip.  Düğüm geçişi ilerleme API NodeTransitionProgress nesneyi döndürür.  Bu nesnenin durumu özelliği, geçerli işlemin durumunu belirtir.  Durumu "çalışıyor"durumunda, sonra işlemi yürütülüyor.  Tamamlandıysa, hatasız işlemi tamamlandı.  Hatalı, işlem yürütülürken bir hata oluştu.  Sonuç özelliğin özel durum özelliği, sorunun ne olduğunu gösterir.  Bkz: https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate State özelliği ve kod örnekleri için aşağıdaki "Örnek kullanım" bölümüne hakkında daha fazla bilgi.
+Düğüm geçişi API 'SI çağrıldığında bir özel durum oluşturmaz, sistem zaman uyumsuz işlemi kabul etmiş ve yürütülür.  Başarılı bir çağrı, işlemin henüz tamamlandığını göstermez.  İşlemin geçerli durumu hakkında bilgi almak için, bu işlem için düğüm geçişi API 'SI çağrılırken kullanılan GUID ile düğüm geçişi Ilerleme durumu API 'sini (Managed: [GetNodeTransitionProgressAsync ()][gntp]) çağırın.  Düğüm geçişi Ilerleme durumu API 'SI bir Nodegeçişli Ilerleme nesnesi döndürür.  Bu nesnenin State özelliği işlemin geçerli durumunu belirtir.  Durum "çalışıyor" ise, işlem Yürütülüyor demektir.  İşlem tamamlanırsa, işlem hatasız olarak tamamlanmıştır.  Hata oluşursa, işlem çalıştırılırken bir sorun oluştu.  Result özelliğinin Exception özelliği, sorunun ne olduğunu belirtecektir.  Durum özelliği ve kod örnekleri için aşağıdaki "Örnek kullanım" bölümü hakkında daha fazla bilgi için bkz. https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate.
 
 
-**Durdurulmuş bir düğüm ile aşağı düğümü arasında ayrım** bir düğümü ise *durduruldu* düğümü sorgusu çıkışını düğüm geçiş API'sini kullanarak (yönetilen: [GetNodeListAsync()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) bu düğüm olduğunu gösterecek bir *IsStopped* özellik değeri true.  Bu değerinden farklı olduğunu unutmayın *NodeStatus* kilit ekranında özelliği *aşağı*.  Varsa *NodeStatus* özellik değerine sahip *aşağı*, ancak *IsStopped* sonra düğüm düğüm geçiş API'sini kullanarak durdurulmadı false ise ve *aşağı*  herhangi bir nedenden dolayı.  Varsa *IsStopped* özelliği true ise ve *NodeStatus* özelliği *aşağı*, ardından düğümü geçiş API'sini kullanarak durduruldu.
+**Durdurulmuş bir düğüm ve aşağı düğüm arasında ayrım** Düğüm geçiş API 'SI kullanılarak bir düğüm *durdurulmuşsa* , düğüm sorgusunun çıkışı (yönetilen: [Getnodelistasync ()][nodequery], PowerShell: [Get-servicefabricnode][nodequeryps]), bu düğümün bir *ısdurdurulan* özelliği true değerine sahip olduğunu gösterir.  Bu, *düğüm durumu* özelliğinin değerinden farklı olduğunu fark *eder.*  *Nodestatus* özelliğinde bir değer *kapalıysa*, ancak *ısdurdurulan* değeri false ise düğüm, düğüm geçiş API 'si kullanılarak durdurulmadı ve başka bir nedenden dolayı *çalışmıyor* .  *Isdurdurulan* özelliği true Ise ve *Nodestatus* özelliği *kapalıysa*, düğüm geçişi API 'si kullanılarak durdurulmuştur.
 
-Başlangıç bir *durduruldu* düğüm geçiş API'sini kullanarak düğüm kümesinin normal bir üyesi tekrar çalışabilmesi için döndürecektir.  Düğüm sorgu API'si çıktısını gösterir *IsStopped* false olarak ve *NodeStatus* aşağı (örneğin, Up) olmayan bir şey olarak.
+Düğüm geçişi API 'sini kullanarak *durdurulmuş* bir düğümü başlatmak, bunu kümenin normal bir üyesi olarak çalışacak şekilde döndürür.  Düğüm sorgu API 'sinin çıktısı, *ısdurdurulan olarak ısdurdurulduğunu* ve *düğüm durumu* ' nu aşağı doğru değil (örneğin, bir) gösterir.
 
 
-**Sınırlı bir süre** bir düğüm, gerekli parametrelerden birini durdurmak için düğüm geçiş API'si kullanılırken *stopNodeDurationInSeconds*, düğüm tutmak için saniye cinsinden süreyi temsil eden *durduruldu*.  Bu değer, en az 600 ve 14400 en fazla izin verilen aralıkta olmalıdır.  Bu süre dolduktan sonra düğümü kendi içine durumunu otomatik olarak yeniden başlatılır.  Kullanım örneği için örnek 1'e bakın.
-
-> [!WARNING]
-> Düğüm geçişi API'lerini ve düğüm durdurmak ve başlangıç düğümü API'leri karıştırmayın.  Yalnızca düğüm geçiş API'yi kullanmak için önerilir.  >, Bir düğüm olup, zaten durduruldu. durdurmak düğüm API'sini kullanarak, bu başlangıç düğümü ilk önce kullanarak API'yi kullanarak başlatılmalıdır > düğüm geçişi API'lerini.
+**Sınırlı süre** Düğümü durdurmak için düğüm geçişi API 'sini kullanırken, gerekli parametrelerden biri olan *stopNodeDurationInSeconds*, düğümün *durdurulma*süresini saniye cinsinden gösterir.  Bu değer, en az 600 ve en fazla 14400 olan izin verilen aralıkta olmalıdır.  Bu sürenin süresi dolduktan sonra, düğüm otomatik olarak durumunu otomatik olarak yeniden başlatır.  Kullanım örneği için aşağıdaki örnek 1 ' e bakın.
 
 > [!WARNING]
-> Düğüm geçişi API'lerini aramasına aynı düğümde paralel yapılamaz.  Böyle bir durumda, düğüm geçiş API olacak > NodeTransitionInProgress ErrorCode özellik değeri olan bir FabricException atar.  Belirli bir düğümde bir düğüm geçişi olduğunda > bırakıldı işlemi başlamadan önce (tamamlandı, hatalı veya ForceCancelled) terminal durumuna ulaştığında başlatıldı, beklemeniz bir > aynı düğümde yeni geçişi.  Düğüm paralel geçiş çağrıları farklı düğümlere izin verilir.
+> Düğüm geçişi API 'Lerini ve düğüm durdurma ve düğüm API 'Lerini karıştırmaktan kaçının.  Öneri yalnızca düğüm geçişi API 'sini kullanmaktır.  > Düğüm durdur API 'SI kullanılarak zaten durdurulmuşsa, > düğüm geçişi API 'Leri kullanılmadan önce ilk düğüm API 'SI kullanılarak başlatılması gerekir.
+
+> [!WARNING]
+> Birden çok düğüm geçişi API çağrısı, paralel olarak aynı düğümde yapılamaz.  Böyle bir durumda, düğüm geçiş API 'SI, Nodegeçişli Tionınprogress Özellik değeri ile bir FabricException oluşturur >.  Belirli bir düğümdeki düğüm geçişi > başlatıldıktan sonra, aynı düğümdeki > yeni bir geçişe başlamadan önce işlem bir Terminal durumuna (tamamlandı, hatalı veya ForceCancelled) ulaşıncaya kadar beklemeniz gerekir.  Farklı düğümlerdeki paralel düğüm geçiş çağrılarına izin verilir.
 
 
-#### <a name="sample-usage"></a>Örnek kullanımı
+#### <a name="sample-usage"></a>Örnek Kullanımı
 
 
-**Örnek 1** -aşağıdaki örnek, bir düğüm durdurmak için düğüm geçiş API'sini kullanır.
+**Örnek 1** -aşağıdaki örnek, düğümü durdurmak Için düğüm geçişi API 'sini kullanır.
 
 ```csharp
         // Helper function to get information about a node
@@ -164,7 +155,7 @@ Başlangıç bir *durduruldu* düğüm geçiş API'sini kullanarak düğüm küm
         }
 ```
 
-**Örnek 2** -aşağıdaki örnekleme başlatılır bir *durduruldu* düğümü.  İlk örnekteki bazı yardımcı yöntemler kullanır.
+**Örnek 2** -aşağıdaki örnek *durdurulmuş* bir düğümü başlatır.  İlk örnekten bazı yardımcı yöntemler kullanır.
 
 ```csharp
         static async Task StartNodeAsync(FabricClient fc, string nodeName)
@@ -207,7 +198,7 @@ Başlangıç bir *durduruldu* düğüm geçiş API'sini kullanarak düğüm küm
         }
 ```
 
-**Örnek 3** -yanlış kullanımı aşağıdaki örnekte gösterilmektedir.  Bu kullanım yanlış olduğundan *stopDurationInSeconds* sağlar, izin verilen aralık büyüktür.  Bu yana StartNodeTransitionAsync() önemli bir hata ile başarısız olur işlemi kabul ve ilerleme API çağrılmamalıdır.  Bu örnek, ilk örnekteki bazı yardımcı yöntemler kullanır.
+**Örnek 3** -aşağıdaki örnekte yanlış kullanım gösterilmektedir.  Sağladığı *stopDurationInSeconds* izin verilen aralıktan büyük olduğu için bu kullanım yanlış.  Startnodegeçişli Tionasync () önemli bir hata ile başarısız olacak, işlem kabul edilmedi ve ilerleme API 'SI çağrılmamalıdır.  Bu örnek, ilk örnekten bazı yardımcı yöntemler kullanır.
 
 ```csharp
         static async Task StopNodeWithOutOfRangeDurationAsync(FabricClient fc, string nodeName)
@@ -238,7 +229,7 @@ Başlangıç bir *durduruldu* düğüm geçiş API'sini kullanarak düğüm küm
         }
 ```
 
-**Örnek 4** -düğüm geçiş API'sı tarafından başlatılan bir işlemin kabul edilir, ancak daha sonra yürütülürken başarısız olduğunda düğüm geçiş ilerleme API'den döndürülen hata bilgileri aşağıdaki örnekte gösterilmektedir.  Düğüm geçişi API var olmayan düğüm çalıştığı durumunda başarısız olur.  Bu örnek, ilk örnekteki bazı yardımcı yöntemler kullanır.
+**Örnek 4** -aşağıdaki örnek, düğüm geçişi API 'si tarafından başlatılan işlem kabul edildiğinde, ancak daha sonra yürütülürken başarısız olan düğüm GEÇIŞI ilerleme API 'sinden döndürülecek hata bilgilerini gösterir.  Bu durumda, düğüm geçişi API 'SI varolmayan bir düğümü başlatmaya çalıştığı için başarısız olur.  Bu örnek, ilk örnekten bazı yardımcı yöntemler kullanır.
 
 ```csharp
         static async Task StartNodeWithNonexistentNodeAsync(FabricClient fc)

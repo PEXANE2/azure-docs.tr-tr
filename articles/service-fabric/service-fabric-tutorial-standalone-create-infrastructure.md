@@ -1,32 +1,23 @@
 ---
-title: AWS’de bir Service Fabric kümesi için altyapı oluşturma öğreticisi - Azure Service Fabric | Microsoft Docs
+title: AWS üzerinde bir küme için altyapı oluşturma
 description: Bu öğreticide bir Service Fabric kümesi çalıştırmak için AWS altyapısını nasıl ayarlayacağınızı öğreneceksiniz.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "73177832"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613984"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Öğretici: Bir Service Fabric kümesini barındıracak AWS altyapısı oluşturma
 
 Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fabric’in benimsediği "her işletim sistemi, her bulut" yaklaşımının bir parçası olarak bir küme oluşturma seçeneği sunar. Bu öğretici serisinde, AWS üzerinde barındırılan bir tek başına küme oluşturacak ve içine bir uygulama yükleyeceksiniz.
 
-Bu öğretici, bir dizinin birinci bölümüdür. Bu makalede, tek başına Service Fabric kümenizi barındırmak için gerekli AWS kaynaklarını oluşturacaksınız. Gelecek makalelerde, Service Fabric tek başına paketini yüklemeniz, kümenize bir örnek uygulama yüklemeniz ve son olarak kümenizi temizlemeniz gerekir.
+Bu öğretici, bir serinin birinci bölümüdür. Bu makalede, tek başına Service Fabric kümenizi barındırmak için gerekli AWS kaynaklarını oluşturacaksınız. Gelecek makalelerde, Service Fabric tek başına paketini yüklemeniz, kümenize bir örnek uygulama yüklemeniz ve son olarak kümenizi temizlemeniz gerekir.
 
 Serinin birinci bölümünde şunları öğrenirsiniz:
 
@@ -36,7 +27,7 @@ Serinin birinci bölümünde şunları öğrenirsiniz:
 > * Örneklerden birinde oturum açın
 > * Service Fabric örneğini hazırlama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için bir AWS hesabınızın olması gerekir.  Henüz bir hesabınız yoksa, bir tane oluşturmak için [AWS konsoluna](https://aws.amazon.com/) gidin.
 

@@ -11,16 +11,15 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c3173841de25a30b84870332c7334a81773e84d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 604dca2861b7a7126d2e37b5a01bcb85c530546e
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "68561585"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561599"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Atlasduyma bulutu yapılandırma
 
@@ -29,8 +28,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Atlasm
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
 
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -57,7 +55,7 @@ Azure AD ile otomatik Kullanıcı sağlama için Atlasme bulutunu yapılandırma
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+    ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
 4. Arama kutusuna **Atlasduyi bulutu**girin, sonuçlar panelinde **Atlasduyi bulutu** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
@@ -102,61 +100,63 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/credentials.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, Atlasme bulutunuzun hesabınızın **kiracı URL 'Sini** ve **gizli belirtecini** girin. Bu değerlere örnek olarak şunlar verilebilir:
+5. [Atlasme kuruluş yöneticisi](https://admin.atlassian.com) ' ne gidin **> kuruluş > dizinini seçin**.
+
+    ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
+
+6. **Kullanıcı hazırlama** ' ya tıklayın ve **Dizin Oluştur ' a**tıklayın. **Dizin temel URL** 'Sini ve **taşıyıcı belirtecini** sırasıyla **kiracı URL 'si** ve **gizli belirteç** alanlarına kopyalayın.
+
+    atlasme bulut sağlama](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![atlasbir bulut sağlama](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png) ![Atlasme bulut sağlama ![](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
+
+7. **Yönetici kimlik bilgileri** bölümünde, Atlasme bulutunuzun hesabınızın **kiracı URL 'Sini** ve **gizli belirtecini** girin. Bu değerlere örnek olarak şunlar verilebilir:
 
    * **Kiracı URL 'si** alanında, atlasma 'dan aldığınız belirli kiracı uç noktasını adım 6 ' da anlatıldığı gibi doldurabilirsiniz. Örneğin: `https://api.atlassian.com/scim/directory/{directoryId}`.
 
    * **Gizli belirteç** alanında 6. adımda açıklanan gizli anahtarı doldurun.
 
-6. [Atlasme kuruluş yöneticisi](https://admin.atlassian.com) **> Kullanıcı hazırlama** ' ya gidin ve **belirteç oluştur ' a**tıklayın. **Dizin temel URL** 'Sini ve **taşıyıcı belirtecini** sırasıyla **kiracı URL 'si** ve **gizli belirteç** alanlarına kopyalayın.
-
-    ![Atlassian bulut sağlama ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian bulut sağlama ](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
-
-    ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
-
-7. 5\. adımda gösterilen alanları doldurulmaya göre, Azure AD 'nin Atlasme bulutuna bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Atlasder bulut hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+8. Adım 7 ' de gösterilen alanlar doldurulmaya göre, Azure AD 'nin Atlasme bulutuna bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Atlasder bulut hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/test-connection.png)
 
-8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+9. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/notification.png)
 
-9. **Kaydet** düğmesine tıklayın.
+10. **Save (Kaydet)** düğmesine tıklayın.
 
-10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları atlasi bulutu ' nı ile eşitler**' ı seçin.
+11. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları atlasi bulutu ' nı ile eşitler**' ı seçin.
 
     ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/provision-users.png)
 
-11. **Öznitelik eşleme** bölümünde Azure AD 'Den Atlasme bulutuna eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için atlasduyma bulutundaki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+12. **Öznitelik eşleme** bölümünde Azure AD 'Den Atlasme bulutuna eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için atlasduyma bulutundaki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
     ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/user-mapping.png)
 
-12. **Eşlemeler** bölümünde, **Atlasme bulutu Için Azure Active Directory gruplarını eşitler**' ı seçin.
+13. **Eşlemeler** bölümünde, **Atlasme bulutu Için Azure Active Directory gruplarını eşitler**' ı seçin.
 
     ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/provision-groups.png)
 
-13. **Öznitelik eşleme** bölümünde Azure AD 'Den Atlasme bulutuna eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için atlasduyma bulutu 'ndaki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+14. **Öznitelik eşleme** bölümünde Azure AD 'Den Atlasme bulutuna eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için atlasduyma bulutu 'ndaki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
     ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/group-mapping.png)
 
-14. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+15. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-15. Atlasi bulutu için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+16. Atlasi bulutu için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
     ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/provisioning-on.png)
 
-16. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek Atlasme bulutuna sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+17. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek Atlasme bulutuna sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
     ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/provisioning-options.png)
 
-17. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+18. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
     ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/save.png)
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. **Eşitleme ayrıntıları** bölümünü Izleyip, Atlaslik bulutu ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama etkinliği raporunu kullanabilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 

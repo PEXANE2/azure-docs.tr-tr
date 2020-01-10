@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6a24f2dd52c3ac3c51df54bf5c01c7b31ca16147
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f026957b5f9fceab8a0df1f339e7cb459ec1078d
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985764"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562145"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell ile Key Vault geçici silme kullanma
 
@@ -22,14 +22,14 @@ Azure Key Vault geçici silme özelliği, silinen kasaların ve kasa nesnelerini
 - Bir anahtar kasasının kurtarılabilir silme desteği
 - Anahtar Kasası nesnelerinin kurtarılabilir silme desteği; Anahtarlar, gizlilikler ve, sertifikalar
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - Azure PowerShell 1.0.0 veya üzeri: Bu ayarı zaten yüklemediyseniz, Azure PowerShell yükleyip Azure aboneliğinizle ilişkilendiremezseniz bkz. [Azure PowerShell yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/overview). 
 
 >[!NOTE]
-> Doğru sürüm yerine ortamınıza yüklenebilecek Key Vault PowerShell çıkış biçimlendirme dosyasının güncel olmayan bir sürümü var. PowerShell 'in güncelleştirilmiş bir sürümünü, çıkış biçimlendirmesi için gerekli düzeltmeyi içerecek şekilde benimsemeyi bekleme ve bu konuyu bu sırada güncellenecektir. Şu anki geçici çözüm, bu biçimlendirme sorunuyla karşılaşmanız gerekir:
+> Doğru sürüm yerine ortamınıza yüklenebilecek Key Vault PowerShell çıkış biçimlendirme dosyasının **güncel olmayan bir** sürümü var. PowerShell 'in güncelleştirilmiş bir sürümünü, çıkış biçimlendirmesi için gerekli düzeltmeyi içerecek şekilde benimsemeyi bekleme ve bu konuyu bu sırada güncellenecektir. Şu anki geçici çözüm, bu biçimlendirme sorunuyla karşılaşmanız gerekir:
 > - Bu konuda açıklanan geçici silme etkin özelliğini gördüğünüzü fark ederseniz aşağıdaki sorguyu kullanın: `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`.
 
 
@@ -39,9 +39,9 @@ PowerShell için Key Vault belirli başvuru bilgileri için bkz. [Azure Key Vaul
 
 Key Vault işlemler, rol tabanlı erişim denetimi (RBAC) izinleri aracılığıyla aşağıdaki şekilde ayrı yönetilir:
 
-| Çalışma | Açıklama | Kullanıcı izni |
+| İşlem | Açıklama | Kullanıcı izni |
 |:--|:--|:--|
-|List|Silinen anahtar kasalarını listeler.|Microsoft. Keykasası/Silinleults/okuma|
+|Listeleme|Silinen anahtar kasalarını listeler.|Microsoft. Keykasası/Silinleults/okuma|
 |Kurtar|Silinen bir anahtar kasasını geri yükler.|Microsoft. Keykasası/Vaults/yazma|
 |Temizle|Silinen bir anahtar kasasını ve tüm içeriğini kalıcı olarak kaldırır.|Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem|
 
@@ -164,7 +164,7 @@ Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedSta
 
 #### <a name="set-a-key-vault-access-policy"></a>Anahtar Kasası erişim ilkesi ayarlama
 
-Aşağıdaki komut, user@contoso.com *contosokasasındaki* anahtarlar üzerinde **Temizleme**dahil birkaç işlemi kullanma izni verir:
+Aşağıdaki komut, **temizlik dahil olmak**üzere *contosokasasındaki* anahtarlar üzerinde birkaç işlem kullanmak için user@contoso.com izni verir:
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@contoso.com -PermissionsToKeys get,create,delete,list,update,import,backup,restore,recover,purge
@@ -173,7 +173,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@conto
 >[!NOTE] 
 > Yalnızca geçici silme özelliği etkinleştirilmiş olan bir anahtar kasanıza sahipseniz, **Kurtarma** ve **Temizleme** izinleriniz olmayabilir.
 
-#### <a name="secrets"></a>Gizli diziler
+#### <a name="secrets"></a>Gizli Diziler
 
 Anahtarlar gibi gizli dizileri kendi komutlarıyla yönetilir:
 
@@ -216,7 +216,7 @@ Aynı değer, Anahtar Kasası için de geçerlidir. Geçici olarak silinen bir a
 
 ### <a name="purging-a-key-vault"></a>Anahtar kasasını Temizleme
 
-Bir Anahtar Kasası temizlendiğinde, anahtarlar, gizlilikler ve Sertifikalar dahil olmak üzere tüm içerikleri kalıcı olarak silinir. Geçici olarak silinen bir anahtar kasasını temizlemek için, seçeneğini `Remove-AzKeyVault` seçeneğiyle `-InRemovedState` ve `-Location location` Silinen anahtar kasasının konumunu bağımsız değişkenle belirterek komutunu kullanın. Silinen bir kasanın konumunu komutunu `Get-AzKeyVault -InRemovedState`kullanarak bulabilirsiniz.
+Bir Anahtar Kasası temizlendiğinde, anahtarlar, gizlilikler ve Sertifikalar dahil olmak üzere tüm içerikleri kalıcı olarak silinir. Geçici olarak silinen bir anahtar kasasını temizlemek için, `-InRemovedState` seçeneğiyle `Remove-AzKeyVault` komutunu kullanın ve Silinen anahtar kasasının konumunu `-Location location` bağımsız değişkeniyle belirterek. Silinen bir kasanın konumunu komutunu kullanarak bulabilirsiniz `Get-AzKeyVault -InRemovedState`.
 
 ```powershell
 Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
@@ -257,4 +257,4 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ## <a name="other-resources"></a>Diğer kaynaklar
 
 - Key Vault geçici silme özelliğine genel bakış için bkz. [Azure Key Vault geçici silme genel bakış](key-vault-ovw-soft-delete.md).
-- Azure Key Vault kullanımı için genel bir bakış için bkz. [Azure Key Vault nedir?](key-vault-overview.md). ate = başarılı}
+- Azure Key Vault kullanımı için genel bir bakış için bkz. [Azure Key Vault nedir?](key-vault-overview.md).

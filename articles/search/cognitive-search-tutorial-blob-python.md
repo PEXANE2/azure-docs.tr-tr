@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d7b4755bb2e69c4a852901b71d917c6baa5d63ae
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: c7c4da97101ae1277474e62466d78ffbc66b1ce0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406425"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563284"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Öğretici: REST ve Python kullanarak bir AI zenginleştirme işlem hattı oluşturma
 
@@ -40,7 +40,7 @@ Bu öğretici ücretsiz hizmette çalışır, ancak ücretsiz işlem sayısı g�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki hizmetler, Araçlar ve veriler bu öğreticide kullanılır. 
 
@@ -87,7 +87,7 @@ Paylaşılan erişim imzası sağlama gibi, bağlantı dizesini belirtmenin baş
 ## <a name="create-a-jupyter-notebook"></a>Jupyter not defteri oluşturma
 
 > [!Note]
-> Bu makalede, bir dizi Python komut dosyası kullanarak bir veri kaynağı, dizin, Dizin Oluşturucu ve beceri oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir. Tam not defteri örneğini indirmek için [Azure-Search-Python-Samples depoya](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment-Jupyter-Notebook)gidin.
+> Bu makalede, bir dizi Python komut dosyası kullanarak bir veri kaynağı, dizin, Dizin Oluşturucu ve beceri oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir. Tam not defteri örneğini indirmek için [Azure-Search-Python-Samples depoya](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment)gidin.
 
 Jupyter Notebook başlatmak ve yeni bir Python 3 Not defteri oluşturmak için Anaconda gezginini kullanın.
 
@@ -126,7 +126,7 @@ params = {
 }
 ```
 
-## <a name="create-a-data-source"></a>Bir veri kaynağı oluşturun
+## <a name="create-a-data-source"></a>Veri kaynağı oluşturma
 
 Hizmetleriniz ve kaynak dosyalarınız hazırlandığına göre şimdi dizin oluşturma işlem hattınızın bileşenlerini derlemeye başlayabilirsiniz. Azure Bilişsel Arama dış kaynak verilerinin nasıl alınacağını bildiren bir veri kaynağı nesnesi ile başlayın.
 
@@ -456,7 +456,7 @@ Sonuçlar aşağıdaki örneğe benzer görünmelidir. Ekran görüntüsü yaln�
 
 Çıktı, her bir alanın adını, türünü ve özniteliklerini içeren dizin şemasıdır.
 
-`"*"` gibi tek bir alanın tüm içeriklerini döndürmek için ikinci bir `organizations` sorgusu gönderin.
+`organizations` gibi tek bir alanın tüm içeriklerini döndürmek için ikinci bir `"*"` sorgusu gönderin.
 
 ```python
 # Query the index to return the contents of organizations

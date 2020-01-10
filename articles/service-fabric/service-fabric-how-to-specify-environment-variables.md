@@ -1,23 +1,16 @@
 ---
-title: Azure Service Fabric Services için ortam değişkenlerini belirtme | Microsoft Docs
+title: Hizmetler için ortam değişkenlerini belirtme
 description: Service Fabric 'de uygulamalar için ortam değişkenlerinin nasıl kullanılacağını gösterir
-documentationcenter: .net
 author: mikkelhegn
-manager: markfuss
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: df9b199c24301016b9f9da8a8dec52129bbf94bd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703537"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614324"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Service Fabric içindeki hizmetler için ortam değişkenlerini belirtme
 
@@ -28,7 +21,7 @@ Bu makalede, Service Fabric bir hizmet veya kapsayıcı için ortam değişkenle
 Bu örnekte, bir kapsayıcı için bir ortam değişkeni ayarlarsınız. Makalede, zaten bir uygulama ve hizmet bildiriminiz olduğunu varsaymaktadır.
 
 1. ServiceManifest. xml dosyasını açın.
-2. @No__t-0 öğesinde, her ortam değişkeni için yeni bir `EnvironmentVariables` öğesi ve bir `EnvironmentVariable` öğesi ekleyin.
+2. `CodePackage` öğesinde, her ortam değişkeni için yeni bir `EnvironmentVariables` öğesi ve bir `EnvironmentVariable` öğesi ekleyin.
 
     ```xml
     <CodePackage Name="MyCode" Version="CodeVersion1">

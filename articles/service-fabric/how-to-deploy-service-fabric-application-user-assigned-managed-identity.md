@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric-Kullanıcı tarafından atanan yönetilen kimlik ile uygulama dağıtma | Microsoft Docs
+title: Kullanıcı tarafından atanan yönetilen kimlik ile uygulama dağıtma
 description: Bu makalede, Kullanıcı tarafından atanan yönetilen kimlik ile Service Fabric uygulamasının nasıl dağıtılacağı gösterilmektedir
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 08/09/2019
-ms.author: atsenthi
-ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 12/09/2019
+ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037497"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610344"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Kullanıcı tarafından atanan yönetilen kimlikle Service Fabric uygulaması dağıtma (Önizleme)
 
@@ -31,7 +27,7 @@ Uygulamayı kullanıcı tarafından atanan kimlikle etkinleştirmek için önce 
 
 ### <a name="application-template"></a>Uygulama şablonu
 
-Kullanıcı tarafından atanan kimlikle uygulamayı etkinleştirmek için, önce **kimlik** özelliğini **userassigned** ve başvurulan kullanıcı tarafından atanan kimliklerle birlikte uygulama kaynağına ekleyin ve ardındanKullanıcı tarafından atanan kimliklerin her biri Için PrincipalId eşlemesine kolay ad listesi içeren Özellikler bölümü.
+Kullanıcı tarafından atanan kimlikle uygulamayı etkinleştirmek için, önce **kimlik** özelliğini **userassigned** türü ve başvurulan kullanıcı tarafından atanan kimliklerle birlikte uygulama kaynağına ekleyin ve ardından, Kullanıcı tarafından atanan kimliklerin her biri için bir kolay ad ile PrincipalId eşleme bir listesini içeren **Properties** bölümünün içine bir **managedıdentities** nesnesi ekleyin.
 
     {
       "apiVersion": "2019-06-01-preview",
@@ -66,7 +62,7 @@ Yukarıdaki örnekte, Kullanıcı tarafından atanan kimliğin kaynak adı, uygu
 
 ### <a name="application-package"></a>Uygulama paketi
 
-1. Azure Resource Manager şablonundaki `managedIdentities` bölümünde tanımlanan her bir kimlik için, **sorumlular** bölümünde uygulama bildiriminde `<ManagedIdentity>` bir etiket ekleyin. Özniteliğin, bölümünde`managedIdentities` tanımlanan `name`özellik `Name` ile eşleşmesi gerekir.
+1. Azure Resource Manager şablonunun `managedIdentities` bölümünde tanımlanan her bir kimlik için, **sorumlular** bölümünde uygulama bildiriminde bir `<ManagedIdentity>` etiketi ekleyin. `Name` özniteliğin `managedIdentities` bölümünde tanımlanan `name` özelliğiyle eşleşmesi gerekir.
 
     **ApplicationManifest. xml**
 
@@ -78,7 +74,7 @@ Yukarıdaki örnekte, Kullanıcı tarafından atanan kimliğin kaynak adı, uygu
       </Principals>
     ```
 
-2. **Servicemanifestımport** bölümünde, yönetilen kimliği kullanan hizmet Için bir **ıdentitybindingpolicy** ekleyin. Bu ilke, `AdminUser` kimliği daha sonra hizmet bildirimine eklenmesi gereken hizmete özel bir kimlik adıyla eşler.
+2. **Servicemanifestımport** bölümünde, yönetilen kimliği kullanan hizmet Için bir **ıdentitybindingpolicy** ekleyin. Bu ilke `AdminUser` kimliğini, daha sonra hizmet bildirimine eklenmesi gereken hizmete özgü bir kimlik adıyla eşler.
 
     **ApplicationManifest. xml**
 
@@ -90,7 +86,7 @@ Yukarıdaki örnekte, Kullanıcı tarafından atanan kimliğin kaynak adı, uygu
       </ServiceManifestImport>
     ```
 
-3. **Kaynak** bölümünün içine `ServiceIdentityRef` ,uygulamabildirimininiçindekiileeşleşenadıtaşıyanbirmanagedıdentityeklemekiçinhizmetbildiriminigüncelleştirin:`IdentityBindingPolicy`
+3. **Kaynak** bölümünün içinde, uygulama bildiriminin `IdentityBindingPolicy` `ServiceIdentityRef` eşleşen ada sahip bir **managedıdentity** eklemek için hizmet bildirimini güncelleştirin:
 
     **ServiceManifest. xml**
 

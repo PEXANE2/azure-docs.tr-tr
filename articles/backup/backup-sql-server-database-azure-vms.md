@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerinde Azure Backup SQL Server veri
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 3d6875d8c466400da79e1b749d11914b3bf77d86
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 52a7e98702299e790ee097cca871332ebb6a52c5
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172112"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611398"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
 
@@ -25,7 +25,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > * Veritabanları bulun ve yedeklemeleri ayarlayın.
 > * Veritabanları için otomatik korumayı ayarlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir SQL Server veritabanını yedeklemek için aşağıdaki ölçütleri kontrol edin:
 
@@ -43,36 +43,51 @@ Tüm işlemler için bir SQL Server VM Azure genel IP adresleri için bağlantı
 
 Aşağıdaki seçeneklerden birini kullanarak bağlantı kurun:
 
-* **Azure veri MERKEZI IP aralıklarına Izin verin**. Bu seçenek, indirme sırasında [IP aralıklarının](https://www.microsoft.com/download/details.aspx?id=41653) yapılmasına izin verir. Bir ağ güvenlik grubuna (NSG) erişmek için set-AzureNetworkSecurityRule cmdlet 'ini kullanın. Güvenli alıcıların yalnızca bölgeye özgü IP 'Leri listelerseniz, kimlik doğrulamasını etkinleştirmek için Azure Active Directory (Azure AD) hizmet etiketini güvenli alıcılar listesini de güncelleştirmeniz gerekir.
+#### <a name="allow-the-azure-datacenter-ip-ranges"></a>Azure veri merkezi IP aralıklarına izin ver
 
-* **NSG etiketlerini kullanarak erişime Izin verin**.  Bağlantıyı kısıtlamak için NSG kullanıyorsanız, Azure Backup giden erişime izin vermek için AzureBackup Service Tag ' i kullanmanız gerekir. Ayrıca, Azure AD ve Azure Storage [kurallarını](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) kullanarak kimlik doğrulama ve veri aktarımı için bağlantıya de izin vermeniz gerekir. Bu, portaldan veya PowerShell 'den yapılabilir.
+Bu seçenek, indirilen dosyadaki [IP aralıklarının](https://www.microsoft.com/download/details.aspx?id=41653) kullanılmasına izin verir. Bir ağ güvenlik grubuna (NSG) erişmek için set-AzureNetworkSecurityRule cmdlet 'ini kullanın. Güvenli Alıcılar listeniz yalnızca bölgeye özgü IP 'Leri içeriyorsa, kimlik doğrulamasını etkinleştirmek için Azure Active Directory (Azure AD) hizmet etiketini güvenli alıcılar listesini de güncelleştirmeniz gerekir.
 
-    Portalı kullanarak bir kural oluşturmak için:
+#### <a name="allow-access-using-nsg-tags"></a>NSG etiketlerini kullanarak erişime izin ver
 
-  * **Tüm hizmetler**' de **ağ güvenlik grupları** ' na gidin ve ağ güvenlik grubunu seçin.
-  * **Ayarlar**altında **giden güvenlik kuralları** ' nı seçin.
-  * **Add (Ekle)** seçeneğini belirleyin. [Güvenlik kuralı ayarları](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** **hizmet etiketi** olarak ayarlandığından ve **hedef hizmet etiketinin** **AzureBackup**olarak ayarlandığından emin olun.
-  * Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle**' ye tıklayın.
+Bağlantıyı kısıtlamak için NSG kullanıyorsanız, Azure Backup giden erişime izin vermek için AzureBackup Service Tag ' i kullanmanız gerekir. Ayrıca, Azure AD ve Azure Storage [kurallarını](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) kullanarak kimlik doğrulama ve veri aktarımı için bağlantıya de izin vermeniz gerekir. Bu, Azure portal veya PowerShell aracılığıyla yapılabilir.
 
-   PowerShell kullanarak bir kural oluşturmak için:
+Portalı kullanarak bir kural oluşturmak için:
 
-  * Azure hesabı kimlik bilgilerini ekleme ve ulusal bulutları güncelleştirme<br/>
-    ``Add-AzureRmAccount``
-  * NSG aboneliğini seçin<br/>
-    ``Select-AzureRmSubscription "<Subscription Id>"``
-  * NSG 'yi seçin<br/>
-    ```$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"```
-  * Azure Backup hizmet etiketi için giden izin verme kuralı ekle<br/>
-   ```Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"```
-  * NSG 'yi kaydetme<br/>
-    ```Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg```
+  1. **Tüm hizmetler**' de **ağ güvenlik grupları** ' na gidin ve ağ güvenlik grubunu seçin.
+  2. **Ayarlar**altında **giden güvenlik kuralları** ' nı seçin.
+  3. **Add (Ekle)** seçeneğini belirleyin. [Güvenlik kuralı ayarları](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** **hizmet etiketi** olarak ayarlandığından ve **hedef hizmet etiketinin** **AzureBackup**olarak ayarlandığından emin olun.
+  4. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle**' ye tıklayın.
 
-* **Azure Güvenlik Duvarı etiketlerini kullanarak erişime Izin verin**. Azure Güvenlik duvarı kullanıyorsanız, AzureBackup [FQDN etiketini](https://docs.microsoft.com/azure/firewall/fqdn-tags)kullanarak bir uygulama kuralı oluşturun. Bu, Azure Backup giden erişimine izin verir.
-* **Trafiği yönlendirmek için BIR http proxy sunucusu dağıtın**. Azure VM 'de bir SQL Server veritabanını yedeklerken, VM 'deki yedekleme uzantısı, Azure depolama 'ya Azure Backup ve verilere yönetim komutları göndermek için HTTPS API 'Lerini kullanır. Yedekleme uzantısı, kimlik doğrulaması için Azure AD 'yi de kullanır. Bu üç hizmetin yedekleme uzantısı trafiğini HTTP proxy üzerinden yönlendirin. Uzantılar, genel internet erişimi için yapılandırılan tek bileşendir.
+PowerShell kullanarak bir kural oluşturmak için:
+
+ 1. Azure hesabı kimlik bilgilerini ekleme ve ulusal bulutları güncelleştirme<br/>
+      `Add-AzureRmAccount`<br/>
+
+ 2. NSG aboneliğini seçin<br/>
+      `Select-AzureRmSubscription "<Subscription Id>"`
+
+ 3. NSG 'yi seçin<br/>
+    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+
+ 4. Azure Backup hizmet etiketi için giden izin verme kuralı ekle<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 5. Depolama hizmeti için giden kuralı izin ver etiketi ekle<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 6. AzureActiveDirectory Service etiketi için giden izin verme kuralı ekle<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+
+ 7. NSG 'yi kaydetme<br/>
+    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+
+**Azure Güvenlik Duvarı etiketlerini kullanarak erişime Izin verin**. Azure Güvenlik duvarı kullanıyorsanız, AzureBackup [FQDN etiketini](https://docs.microsoft.com/azure/firewall/fqdn-tags)kullanarak bir uygulama kuralı oluşturun. Bu, Azure Backup giden erişimine izin verir.
+
+**Trafiği yönlendirmek için BIR http proxy sunucusu dağıtın**. Azure VM 'de bir SQL Server veritabanını yedeklerken, VM 'deki yedekleme uzantısı, Azure depolama 'ya Azure Backup ve verilere yönetim komutları göndermek için HTTPS API 'Lerini kullanır. Yedekleme uzantısı, kimlik doğrulaması için Azure AD 'yi de kullanır. Bu üç hizmetin yedekleme uzantısı trafiğini HTTP proxy üzerinden yönlendirin. Uzantılar, genel internet erişimi için yapılandırılan tek bileşendir.
 
 Bağlantı seçenekleri aşağıdaki avantajları ve dezavantajları içerir:
 
-**Seçenek** | **Üstünlü** | **Olumsuz**
+**Seçenek** | **Avantajlar** | **Dezavantajlar**
 --- | --- | ---
 IP aralıklarına izin ver | Ek maliyet yok | IP adresi aralıkları zaman içinde değiştiğinden yönetilmesi karmaşıktır <br/><br/> Yalnızca Azure Storage değil Azure 'un tamamına erişim sağlar
 NSG hizmet etiketlerini kullanma | Aralık değişikliklerinin otomatik olarak birleştirilmesi için daha kolay yönetilmesi <br/><br/> Ek maliyet yok <br/><br/> | Yalnızca NSG 'ler ile kullanılabilir <br/><br/> Hizmetin tamamına erişim sağlar
@@ -176,7 +191,7 @@ VM üzerinde çalışan veritabanlarını bulma:
 
     ![Bildirim alanı](./media/backup-azure-sql-database/notifications-area.png)
 
-### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluşturma
+### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluştur
 
 Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle korunduğunu tanımlar.
 
@@ -232,11 +247,12 @@ Bir yedekleme ilkesi oluşturmak için:
 
     ![Günlük yedekleme ilkesini düzenleme](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-13. **Yedekleme ilkesi** menüsünde, **SQL Backup sıkıştırmasını**etkinleştirilip etkinleştirilmeyeceğini seçin.
-    * Sıkıştırma varsayılan olarak devre dışıdır.
-    * Arka uçta Azure Backup SQL yerel yedekleme sıkıştırmasını kullanır.
+13. **Yedekleme ilkesi** menüsünde, **SQL Backup sıkıştırmasını** etkinleştirilip etkinleştirilmeyeceğini seçin. Bu seçenek varsayılan olarak devre dışıdır. Etkinleştirilirse, SQL Server VDı 'a sıkıştırılmış bir yedekleme akışı gönderir.  Azure Backup bu denetimin değerine bağlı olarak, örnek düzeyi varsayılan değerleri COMPRESSION/NO_COMPRESSION yan tümcesiyle geçersiz kıldığını unutmayın.
 
 14. Yedekleme ilkesinde yapılan düzenlemeleri tamamladıktan sonra **Tamam**' ı seçin.
+
+> [!NOTE]
+> Her günlük yedeklemesi, bir kurtarma zinciri oluşturmak için önceki tam yedeklemeye zincirlenir. Bu tam yedekleme, son günlük yedeklemenin saklama süresi sona erene kadar bekletilecektir. Bu, tüm günlüklerin kurtarılabilmesini sağlamak için ek bir süre boyunca tam yedeklemenin korunduğu anlamına gelebilir. Kullanıcının haftalık tam yedekleme, günlük fark ve 2 saatlik günlük olduğunu varsayalım. Bunların hepsi 30 gün boyunca tutulur. Ancak, haftalık tam yedekleme yalnızca bir sonraki tam yedekleme kullanılabilir olduktan sonra temizlenir/silinebilir (30 + 7 gün sonra). , Haftalık tam yedekleme 16 Kasım 'da gerçekleşir. Bekletme ilkesine göre, 16 Aralık 'a kadar saklanması gerekir. Bu tam için en son günlük yedeklemesi, 22nd tarihinde bir sonraki zamanlanmış tam önce gerçekleşir. Bu günlük, 22nd 'e kadar kullanılabilir olana kadar, 16. ve tam 6. Bu nedenle, 16. dolu, 22nd 'e kadar korunur.
 
 ## <a name="enable-auto-protection"></a>Otomatik korumayı etkinleştir  
 
@@ -261,7 +277,7 @@ Otomatik korumayı devre dışı bırakmanız gerekirse, **yedeklemeyi Yapıland
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şunları nasıl yapacağınızı öğrenin:
+Aşağıdakileri nasıl yapacağınızı öğrenin:
 
 * [Yedeklenen SQL Server veritabanlarını geri yükleme](restore-sql-database-azure-vm.md)
 * [Yedeklenen SQL Server veritabanlarını yönetme](manage-monitor-sql-database-backup.md)

@@ -1,44 +1,35 @@
 ---
-title: Azure Service Fabric programlama ölçeklendirme | Microsoft Docs
-description: Bir Azure Service Fabric kümesini içe veya dışa ölçeklendirme programlı olarak göre özel Tetikleyiciler
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric programlı ölçeklendirme
+description: Azure Service Fabric kümesini özel tetikleyicilere göre programlı bir şekilde veya dışarı ölçeklendirin
 author: mjrousos
-manager: jonjung
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 128f28d2a8b97feb3d20c34b7468b60c446a78a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306927"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458294"
 ---
-# <a name="scale-a-service-fabric-cluster-programmatically"></a>Service Fabric kümesi programlama yoluyla ölçeklendirme 
+# <a name="scale-a-service-fabric-cluster-programmatically"></a>Service Fabric kümesini programlı olarak ölçeklendirme 
 
-Azure'da çalışan Service Fabric kümeleri, sanal makine ölçek kümeleri üzerinde oluşturulur.  [Küme ölçeklendirme](./service-fabric-cluster-scale-up-down.md) el ile veya otomatik ölçeklendirme kurallarını ile Service Fabric kümeleri nasıl ölçeklendirilebilir açıklar. Bu makalede, kimlik bilgilerini yöneten ve bir kümedeki ölçeklendirme açıklar veya fluent Azure kullanarak işlem SDK'sı, ama daha gelişmiş bir senaryodur. Genel bir bakış için okuma [ölçeklendirme işlemlerinin Azure koordine programlı yöntemleri](service-fabric-cluster-scaling.md#programmatic-scaling). 
+Azure 'da çalışan Service Fabric kümeleri, sanal makine ölçek kümelerinin üzerine kurulmuştur.  [Küme ölçeklendirme](./service-fabric-cluster-scale-up-down.md) , Service Fabric kümelerinin el ile veya otomatik ölçeklendirme kurallarıyla nasıl ölçeklendirileceğini açıklar. Bu makalede, daha gelişmiş bir senaryo olan akıcı Azure işlem SDK 'Sı kullanılarak kimlik bilgilerinin nasıl yönetileceği ve bir kümenin nasıl ölçekleneceği açıklanır. Genel bakış için [Azure ölçeklendirme işlemlerini koordine etmek için programlama yöntemlerini](service-fabric-cluster-scaling.md#programmatic-scaling)okuyun. 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Kimlik bilgilerini yönetme
-Ölçeklendirme işlemek için bir hizmet yazmanın bir hizmet sanal makine ölçek kümesi kaynaklarının etkileşimli oturum açma olmadan erişebilir zorluktur. Ölçeklendirme hizmet kendi Service Fabric uygulaması olarak değiştirip ancak ölçek kümesine erişmek için gerekli kimlik bilgilerini Service Fabric kümesine erişmek kolaydır. Oturum açmak için kullanabileceğiniz bir [hizmet sorumlusu](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) ile oluşturulan [Azure CLI](https://github.com/azure/azure-cli).
+Ölçeklendirmeyi işlemek için bir hizmet yazmanın bir zorluğu, hizmetin etkileşimli bir oturum açma olmadan sanal makine ölçek kümesi kaynaklarına erişebilmelidir. Ölçeklendirme hizmeti kendi Service Fabric uygulamasını değiştiriyor, ancak ölçek kümesine erişmek için kimlik bilgileri gerekiyorsa Service Fabric kümesine erişim kolaydır. Oturum açmak için [Azure CLI](https://github.com/azure/azure-cli)ile oluşturulmuş bir [hizmet sorumlusu](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) kullanabilirsiniz.
 
-Bir hizmet sorumlusu, aşağıdaki adımlarla oluşturulabilir:
+Bir hizmet sorumlusu aşağıdaki adımlarla oluşturulabilir:
 
-1. Azure CLI'yı açın (`az login`) sanal makine ölçek erişimi olan bir kullanıcı olarak ayarla
-2. Hizmet sorumlusu oluşturma `az ad sp create-for-rbac`
-    1. Uygulama Kimliği ('istemci kimliği' başka bir yerde olarak adlandırılır), adı, şifresi ve Kiracı daha sonra kullanmak için not edin.
-    2. Ayrıca ile görüntülenebilir abonelik Kimliğinizi gerekir `az account list`
+1. Azure CLı 'da (`az login`) sanal makine ölçek kümesine erişimi olan bir kullanıcı olarak oturum açın
+2. Hizmet sorumlusunu `az ad sp create-for-rbac` ile oluşturma
+    1. Daha sonra kullanmak üzere AppID (' istemci KIMLIĞI ' başka bir yerde), ad, parola ve kiracı ' yı unutmayın.
+    2. Ayrıca, `az account list` ile görüntülenebilen abonelik KIMLIĞINIZ gerekir
 
-Fluent işlem kitaplığı gibi bu kimlik bilgilerini kullanarak oturum açabilirsiniz (çekirdek fluent Azure türleri gibi sağladığı Not `IAzure` bulunan [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) paket):
+Akıcı işlem kitaplığı bu kimlik bilgilerini aşağıdaki gibi kullanarak oturum açabilir (`IAzure` gibi çekirdek akıcı Azure türlerinin [Microsoft. Azure. Management. floent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) paketinde olduğunu unutmayın):
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
@@ -57,10 +48,10 @@ else
 }
 ```
 
-Aracılığıyla oturum açtıktan sonra ölçek kümesi örnek sayısı sorgulanabilir `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity`.
+Oturum açıldıktan sonra, ölçek kümesi örnek sayısı `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity`aracılığıyla sorgulanabilir.
 
 ## <a name="scaling-out"></a>Ölçeği genişletme
-Fluent Azure kullanarak işlem SDK'sı, yalnızca birkaç çağrıları ile sanal makine ölçek örneklerinin eklenebilen-
+Akıcı Azure işlem SDK 'sını kullanarak, örnekleri yalnızca birkaç çağrı ile sanal makine ölçek kümesine eklenebilir
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -68,15 +59,15 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Alternatif olarak, sanal makine ölçek kümesi boyutu PowerShell cmdlet'leri ile yönetilebilir. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) sanal makine ölçek kümesi nesnesi alabilirsiniz. Geçerli kapasite aracılığıyla kullanılabilir `.sku.capacity` özelliği. İstenen değere kapasite değiştirdikten sonra Azure'da sanal makine ölçek ile güncelleştirilebilir [ `Update-AzVmss` ](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) komutu.
+Alternatif olarak, sanal makine ölçek kümesi boyutu da PowerShell cmdlet 'leri ile yönetilebilir. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) , sanal makine ölçek kümesi nesnesini alabilir. Geçerli kapasite `.sku.capacity` özelliği aracılığıyla kullanılabilir. Kapasiteyi istenen değere değiştirdikten sonra, Azure 'daki sanal makine ölçek kümesi [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) komutuyla birlikte güncelleştirilebilecek.
 
-Bir düğüm el ile eklerken, bir ölçek kümesi örneği ekleme olması gerektiği gibi ölçek kümesi şablonu bu yana yeni bir Service Fabric düğüm başlatmak için gerekli olan tüm yeni örnekleri otomatik olarak Service Fabric kümesine katılmak uzantılar içerir. 
+Bir düğüm el ile eklenirken, ölçek kümesi şablonu yeni örnekleri Service Fabric kümesine otomatik olarak katmak için Uzantılar içerdiğinden, bir ölçek kümesi örneğinin eklenmesi, yeni bir Service Fabric düğümü başlatmak için gerekli olmalıdır. 
 
-## <a name="scaling-in"></a>Ölçek artırma
+## <a name="scaling-in"></a>Ölçeklendirme
 
-Ölçek artırma, Ölçek genişletme için benzerdir. Gerçek sanal makine ölçek neredeyse aynı olduğundan değişiklikler ayarlayın. Ancak, daha önce açıklandığı gibi Service Fabric kaldırılan düğümlerini altın veya Gümüş bir dayanıklılık yalnızca otomatik olarak temizlenir. Bu nedenle, Bronz dayanıklılık ölçeğini durumda kaldırılacak düğüm kapalı kapatmak için Service Fabric kümesi ile etkileşim kurmak gereklidir ve sonra durumunu kaldırmak için.
+Ölçeklendirme, ölçeklendirmeye benzerdir. Gerçek sanal makine ölçek kümesi değişiklikleri neredeyse aynı. Ancak, daha önce açıklandığı gibi Service Fabric kaldırılan düğümlerini altın veya Gümüş bir dayanıklılık yalnızca otomatik olarak temizlenir. Bu nedenle, bronz dayanıklılık ölçeğinde, kaldırılacak düğümü kapatmak ve sonra durumunu kaldırmak için Service Fabric kümeyle etkileşimde bulunmak gerekir.
 
-Kaldırıldı (en son eklenen sanal makine ölçek kümesi örneği) düğümü bulma kapatma içerir düğümü hazırlama ve bunu devre dışı bırakma. Yeni düğümler (hangi eşleşme örneği adları temel alınan sanal makine ölçek kümesi) düğümlerinin adlarını sayı soneki karşılaştırarak bulunabilir. Bu nedenle, sanal makine ölçek kümesi örneklerine eklenir, sırayla numaralandırılır. 
+Düğümün kapanmaya hazırlanması, kaldırılacak düğümü bulmayı (en son eklenen sanal makine ölçek kümesi örneği) ve devre dışı bırakılmasını içerir. Sanal makine ölçek kümesi örnekleri eklendikleri sırada numaralandırılır, bu nedenle düğümlerin adlarındaki (temel sanal makine ölçek kümesi örnek adlarıyla eşleşen) sayı soneki karşılaştırılırken daha yeni düğümler bulunabilir. 
 
 ```csharp
 using (var client = new FabricClient())
@@ -93,7 +84,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-Kaldırılacak düğüm bulunduğunda, devre dışı bırakılabilir ve aynı kaldırılan `FabricClient` örneği ve `IAzure` önceki örneği.
+Kaldırılacak düğüm bulunduktan sonra, daha önce de aynı `FabricClient` örneği ve `IAzure` örneği kullanılarak devre dışı bırakılabilir ve kaldırılır.
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -118,7 +109,7 @@ var newCapacity = (int)Math.Max(MinimumNodeCount, scaleSet.Capacity - 1); // Che
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ```
 
-Bir komut dosyası yaklaşımı tercih ise olarak, sanal makine ölçek değiştirmek için PowerShell cmdlet'lerini genişletme ile kümesi kapasitesini de burada kullanılabilir. Service Fabric düğüm durumu, sanal makine örneği kaldırıldıktan sonra kaldırılabilir.
+Genişletme sırasında olduğu gibi, sanal makine ölçek kümesi kapasitesini değiştirmek için PowerShell cmdlet 'leri de bir betik yaklaşımı tercih ediliyorsa, burada kullanılabilir. Sanal makine örneği kaldırıldıktan sonra Service Fabric düğüm durumu kaldırılabilir.
 
 ```csharp
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
@@ -126,8 +117,8 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Otomatik ölçeklendirme kendi mantıksal uygulamaya başlamak için aşağıdaki kavramları ve kullanışlı API'leri ile bilgilenmeli:
+Kendi otomatik ölçeklendirme mantığınızı uygulamaya başlamak için aşağıdaki kavramlar ve yararlı API 'Ler hakkında bilgi edinin:
 
-- [El ile veya otomatik ölçeklendirme kurallarını ile ölçeklendirme](./service-fabric-cluster-scale-up-down.md)
-- [.NET için Fluent Azure yönetim kitaplıkları](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (bir Service Fabric küme temel alınan sanal makine ölçek kümeleri ile etkileşim kurmak için yararlıdır)
-- [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (bir Service Fabric kümesini ve düğümlerini ile etkileşim kurmak için yararlıdır)
+- [El ile veya otomatik ölçeklendirme kurallarıyla ölçekleme](./service-fabric-cluster-scale-up-down.md)
+- [.Net Için akıcı Azure Yönetim kitaplıkları](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (bir Service Fabric kümesinin temel alınan sanal makine ölçek kümeleriyle etkileşim için yararlı)
+- [System. Fabric. FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (bir Service Fabric kümesi ve düğümleri ile etkileşim için yararlı)

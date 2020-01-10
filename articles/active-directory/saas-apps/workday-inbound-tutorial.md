@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849352"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613780"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
 
@@ -93,7 +93,7 @@ Bu bölüm, planlamanın aşağıdaki yönlerini anlatmaktadır:
 * [Birden çok Active Directory etki alanı ile tümleştirme](#integrating-with-multiple-active-directory-domains)
 * [Kullanıcı özniteliği eşleme ve dönüştürmelerini Active Directory için Workday planlama](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 
@@ -120,7 +120,7 @@ Workday ve Active Directory arasında sağlama iş akışlarının sağlanması 
 > Normal "Workday" uygulaması, Workday ve Azure Active Directory arasında çoklu oturum açma ayarlamak için kullanılır.
 
 Senaryolarınızla ilgili olan Workday sağlama uygulamalarını belirlemek için aşağıdaki karar akışı grafiğini kullanın.
-    ![Karar akış çizelgesi](./media/workday-inbound-tutorial/wday_app_flowchart.png "Decisİyon akış çizelgesi ")
+    ![Karar akış çizelgesi](./media/workday-inbound-tutorial/wday_app_flowchart.png "Karar akış çizelgesi")
 
 Bu öğreticinin ilgili bölümüne gitmek için İçindekiler tablosunu kullanın.
 
@@ -366,9 +366,9 @@ Bu bölümde, tümleştirmenizi kapsamındaki her bir Active Directory etki alan
 
 **İş Workday 'yi sağlamayı Active Directory üzere yapılandırmak için:**
 
-1. Şuraya gidin: <https://portal.azure.com>
+1. <https://portal.azure.com> kısmına gidin.
 
-2. Sol gezinti çubuğunda **Azure Active Directory** ' yi seçin.
+2. Azure portal, araması yapın ve **Azure Active Directory**seçin.
 
 3. **Kuruluş uygulamaları**' nı ve ardından **tüm uygulamalar**' ı seçin.
 
@@ -376,9 +376,9 @@ Bu bölümde, tümleştirmenizi kapsamındaki her bir Active Directory etki alan
 
 5. **Active Directory Için Workday sağlamasını**arayın ve bu uygulamayı Galeriden ekleyin.
 
-6. Uygulama eklendikten ve Uygulama Ayrıntıları Ekranı gösterildikten sonra **sağlama** ' yı seçin.
+6. Uygulama eklendikten ve Uygulama Ayrıntıları Ekranı gösterildikten sonra **sağlama**' yı seçin.
 
-7. **Sağlama** **modunu** **Otomatik** olarak değiştirme
+7. **Sağlama** **modunu** **Otomatik**olarak değiştirin.
 
 8. Sağlama aracısını indirmek için görüntülenecek bilgi başlığına tıklayın. 
 
@@ -468,11 +468,11 @@ Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz.
    * **Bildirim e-postası –** E-posta adresinizi girin ve "hata oluşursa e-posta gönder" onay kutusunu işaretleyin.
 
      > [!NOTE]
-     > Azure AD sağlama hizmeti, sağlama işi [karantina](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) durumuna geçtiğinde e-posta bildirimi gönderir.
+     > Azure AD sağlama hizmeti, sağlama işi [karantina](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) durumuna geçtiğinde e-posta bildirimi gönderir.
 
    * **Bağlantıyı Sına** düğmesine tıklayın. Bağlantı testi başarılı olursa üstteki **Kaydet** düğmesine tıklayın. Başarısız olursa, aracı kurulumunda yapılandırılan Workday kimlik bilgilerinin ve AD kimlik bilgilerinin geçerli olduğundan emin olun.
 
-     ![Azure portalı](./media/workday-inbound-tutorial/wd_1.png)
+     ![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
 
    * Kimlik bilgileri başarıyla kaydedildikten sonra, **eşlemeler** bölümü Iş **günü çalışanlarını şirket içi olarak eşitlemesini** varsayılan eşlemeyi gösterir Active Directory
 
@@ -537,7 +537,7 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den Active Directory 'e nasıl ak
 
 1. Eşlemelerinizi kaydetmek için öznitelik eşleme bölümünün en üstündeki **Kaydet** ' e tıklayın.
 
-   ![Azure portalı](./media/workday-inbound-tutorial/wd_2.png)
+   ![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Aşağıda, bazı ortak ifadelerle Workday ve Active Directory arasındaki bazı örnek öznitelik eşlemeleri verilmiştir
 
@@ -570,7 +570,7 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den Active Directory 'e nasıl ak
 | **PostalCode**  |   posta kodu  |     | Oluştur + güncelleştir |
 | **PrimaryWorkTelephone**  |  telephoneNumber 'dır   |     | Oluştur + güncelleştir |
 | **Faks**      | facsimileTelephoneNumber     |     |    Oluştur + güncelleştir |
-| **Mobil Kullanım**  |    Mobil       |     |       Oluştur + güncelleştir |
+| **Mobil**  |    Mobil       |     |       Oluştur + güncelleştir |
 | **LocalReference** |  preferredLanguage  |     |  Oluştur + güncelleştir |                                               
 | **Anahtar (\[Municipitesi\], "OU = standart kullanıcılar, OU = kullanıcılar, OU = varsayılan, OU = konumlar, DC = contoso, DC = com", "Dallas", "OU = standart kullanıcılar, OU = kullanıcılar, OU = Dallas, OU = konumlar, DC = contoso, DC = com", "Austin", "OU = standart kullanıcılar, OU = kullanıcılar, OU = Austin, OU = konumlar, DC = contoso, DC = com", "Seattle", "OU = standart kullanıcılar, OU = kullanıcılar, OU = Seattle, OU = konumlar, DC = contoso, DC = com", "Londra", "OU = standart kullanıcılar, OU = kullanıcılar, OU = Londra, OU = konumlar, DC = contoso, DC = com")**  | parentDistinguishedName     |     |  Oluştur + güncelleştir |
 
@@ -593,7 +593,7 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
 
 1. <https://portal.azure.com> kısmına gidin.
 
-2. Sol gezinti çubuğunda **Azure Active Directory** ' yi seçin.
+2. Azure portal, araması yapın ve **Azure Active Directory**seçin.
 
 3. **Kuruluş uygulamaları**' nı ve ardından **tüm uygulamalar**' ı seçin.
 
@@ -601,9 +601,9 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
 
 5. **Azure AD sağlaması Için Workday**'i arayın ve bu uygulamayı Galeriden ekleyin.
 
-6. Uygulama eklendikten ve Uygulama Ayrıntıları Ekranı gösterildikten sonra **sağlama** ' yı seçin.
+6. Uygulama eklendikten ve Uygulama Ayrıntıları Ekranı gösterildikten sonra **sağlama**' yı seçin.
 
-7. **Sağlama** **modunu** **Otomatik** olarak değiştirme
+7. **Sağlama** **modunu** **Otomatik**olarak değiştirin.
 
 8. **Yönetici kimlik bilgileri** bölümünü aşağıdaki şekilde doldurun:
 
@@ -688,9 +688,9 @@ Kullanıcı e-posta adreslerinin ve Kullanıcı adının Azure Active Directory 
 
 **Workday geri yazma bağlayıcısını yapılandırmak için:**
 
-1. Şuraya gidin: <https://portal.azure.com>
+1. <https://portal.azure.com> kısmına gidin.
 
-2. Sol gezinti çubuğunda **Azure Active Directory** ' yi seçin.
+2. Azure portal, araması yapın ve **Azure Active Directory**seçin.
 
 3. **Kuruluş uygulamaları**' nı ve ardından **tüm uygulamalar**' ı seçin.
 
@@ -698,9 +698,9 @@ Kullanıcı e-posta adreslerinin ve Kullanıcı adının Azure Active Directory 
 
 5. **Workday geri yazma**araması yapın ve bu uygulamayı Galeriden ekleyin.
 
-6. Uygulama eklendikten ve Uygulama Ayrıntıları Ekranı gösterildikten sonra **sağlama** ' yı seçin.
+6. Uygulama eklendikten ve Uygulama Ayrıntıları Ekranı gösterildikten sonra **sağlama**' yı seçin.
 
-7. **Sağlama** **modunu** **Otomatik** olarak değiştirme
+7. **Sağlama** **modunu** **Otomatik**olarak değiştirin.
 
 8. **Yönetici kimlik bilgileri** bölümünü aşağıdaki şekilde doldurun:
 
@@ -737,7 +737,7 @@ Workday sağlama uygulama yapılandırması tamamlandıktan sonra, Azure portal 
 
 1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık**olarak ayarlayın.
 
-2. **Kaydet** düğmesine tıklayın.
+2. **Save (Kaydet)** düğmesine tıklayın.
 
 3. Bu işlem, iş günü kiracısında kaç Kullanıcı olduğuna bağlı olarak değişken sayıda saat sürebilen ilk eşitlemeyi başlatacak. 
 
@@ -745,7 +745,7 @@ Workday sağlama uygulama yapılandırması tamamlandıktan sonra, Azure portal 
 
 5. İlk eşitleme tamamlandıktan sonra, aşağıda gösterildiği gibi **sağlama** sekmesinde bir denetim Özeti raporu yazar.
 
-   ![Azure portalı](./media/workday-inbound-tutorial/wd_3.png)
+   ![Azure Portal](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Sık Sorulan Sorular (SSS)
 
@@ -848,7 +848,7 @@ Yeni bir fikir önerirken, başka birinin zaten benzer bir özelliği önerdiği
 * **Bir program menüsünü kaldırmak -> veya değiştirmek** Için **Denetim Masası** 'na gidin
 * Girişe karşılık gelen sürümü ara **Microsoft Azure AD sağlama aracısına Bağlan**
 
-  ![Azure portalı](./media/workday-inbound-tutorial/pa_version.png)
+  ![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Microsoft, sağlama Aracısı güncelleştirmelerini otomatik olarak gönderir mi?
 
@@ -905,7 +905,7 @@ Evet, bir sağlama Aracısı, aracı ilgili etki alanı denetleyicilerine bir g�
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
 
-* Görüntülenen aracılar listesinden, "ID" alanının değerini, *resourceName* değeri ad etki alanı adına eşit olan kaynaktan kopyalayın.
+* Görüntülenen aracılar listesinden, `id` alanının değerini, bu kaynaktaki *resourceName* değeri ad etki alanı adına eşit olan kaynaktan kopyalayın.
 * KIMLIK değerini bu komuta yapıştırın ve PowerShell 'de komutunu yürütün.
 
   ```powershell
@@ -1191,7 +1191,7 @@ Bu bölüm, Workday Kullanıcı sağlama ve bu sorunu çözme ile ilgili sık g�
 |#|Hata senaryosu |Olası nedenler|Önerilen çözüm|
 |--|---|---|---|
 |1.| Sağlama Aracısı şu hata iletisiyle yüklenirken hata iletisi: *' Microsoft Azure AD Connect sağlama Aracısı ' (AADConnectProvisioningAgent) hizmeti başlatılamadı. Sistemi başlatmak için yeterli ayrıcalıklara sahip olduğunuzu doğrulayın.* | Bu hata genellikle, sağlama aracısını bir etki alanı denetleyicisine yüklemeye çalışıyorsanız ve Grup İlkesi hizmetin başlamasını engelliyorsa, genellikle görüntülenir.  Ayrıca, aracının çalıştığı önceki bir sürümüne sahipseniz ve yeni bir yükleme başlatmadan önce bu sürümü kaldırmadıysanız da görülür.| Sağlama aracısını DC olmayan bir sunucuya yükler. Yeni aracıyı yüklemeden önce aracının önceki sürümlerinin kaldırıldığından emin olun.|
-|2.| ' Microsoft Azure AD Connect sağlama Aracısı ' Windows hizmeti *Başlangıç* durumunda ve *çalışan* durumuna geçmiyor. | Yüklemenin bir parçası olarak, aracı Sihirbazı sunucuda bir yerel hesap (**NT Service\\AADConnectProvisioningAgent**) oluşturur ve bu, hizmeti başlatmak Için kullanılan **oturum** açma hesabıdır. Windows sunucunuzdaki bir güvenlik ilkesi yerel hesapların Hizmetleri çalıştırmasını engelliyorsa, bu hatayla karşılaşırsınız. | *Hizmetler konsolunu*açın. ' Microsoft Azure AD sağlama aracısına Bağlan ' Windows hizmetine sağ tıklayın ve oturum aç sekmesinde, hizmeti çalıştırmak için bir etki alanı yöneticisinin hesabını belirtin. Hizmeti yeniden başlatın. |
+|2.| ' Microsoft Azure AD Connect sağlama Aracısı ' Windows hizmeti *Başlangıç* durumunda ve *çalışan* durumuna geçmiyor. | Yüklemenin bir parçası olarak, aracı Sihirbazı sunucuda bir yerel hesap (**NT Service\\AADConnectProvisioningAgent**) oluşturur ve bu, hizmeti başlatmak için kullanılan oturum açma hesabıdır. Windows sunucunuzdaki bir güvenlik ilkesi yerel hesapların Hizmetleri çalıştırmasını engelliyorsa, bu hatayla karşılaşırsınız. | *Hizmetler konsolunu*açın. ' Microsoft Azure AD sağlama aracısına Bağlan ' Windows hizmetine sağ tıklayın ve oturum aç sekmesinde, hizmeti çalıştırmak için bir etki alanı yöneticisinin hesabını belirtin. Hizmeti yeniden başlatın. |
 |3.| Adım *bağlama Active Directory*, sağlama aracısını ad etki alanınız ile yapılandırırken, sihirbazın ad şemasını yüklemeye ve sonunda zaman aşımına uğramadan uzun bir süre sürer. | Bu hata genellikle, güvenlik duvarı sorunlarından dolayı sihirbaz AD etki alanı denetleyicisi sunucusuna bağlanamadığında gösterilir. | *Active Directory bağlanma* Sihirbazı EKRANıNDA, ad etki alanınız için kimlik bilgilerini sağlarken, *etki alanı denetleyicisi önceliği Seç*adlı bir seçenek vardır. Aracı sunucusuyla aynı sitede olan bir etki alanı denetleyicisi seçmek ve iletişimi engelleyen bir güvenlik duvarı kuralı olmadığından emin olmak için bu seçeneği kullanın. |
 
 #### <a name="connectivity-errors"></a>Bağlantı hataları

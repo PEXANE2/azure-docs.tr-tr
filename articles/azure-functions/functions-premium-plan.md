@@ -5,16 +5,16 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532894"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561963"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure İşlevleri Premium planı
 
-Azure Işlevleri Premium planı, işlev uygulamaları için bir barındırma seçeneğidir. Premium planı, VNet bağlantısı, soğuk başlatma ve Premium donanım gibi özellikler sağlar.  Birden çok işlev uygulaması aynı Premium plana dağıtılabilir ve plan, işlem örneği boyutunu, temel plan boyutunu ve maksimum plan boyutunu yapılandırmanıza olanak tanır.  Premium planı ve diğer plan ve barındırma türlerinin karşılaştırması için bkz. [işlev ölçekleme ve barındırma seçenekleri](functions-scale.md).
+Azure Işlevleri Premium planı (bazen elastik Premium plan olarak adlandırılır), işlev uygulamaları için bir barındırma seçeneğidir. Premium planı, VNet bağlantısı, soğuk başlatma ve Premium donanım gibi özellikler sağlar.  Birden çok işlev uygulaması aynı Premium plana dağıtılabilir ve plan, işlem örneği boyutunu, temel plan boyutunu ve maksimum plan boyutunu yapılandırmanıza olanak tanır.  Premium planı ve diğer plan ve barındırma türlerinin karşılaştırması için bkz. [işlev ölçekleme ve barındırma seçenekleri](functions-scale.md).
 
 ## <a name="create-a-premium-plan"></a>Premium planı oluşturma
 
@@ -45,7 +45,7 @@ Premium planda, uygulamanızın en düşük plan boyutuna kadar belirtilen sayı
 
 ![Elastik ölçek ayarları](./media/functions-premium-plan/scale-out.png)
 
-Azure CLı ile bir uygulama için önceden çarpımış örnekleri de yapılandırabilirsiniz
+Azure CLı ile bir uygulama için önceden çarpımış örnekler de yapılandırabilirsiniz.
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
@@ -103,27 +103,28 @@ Her işletim sistemi için şu anda desteklenen bölgeler aşağıda verilmişti
 |Avustralya Orta| ✔<sup>1</sup> | |
 |Avustralya Orta 2| ✔<sup>1</sup> | |
 |Doğu Avustralya| ✔ | |
-|Güneydoğu Avustralya | ✔ | ✔ |
+|Güneydoğu Avustralya | ✔ | ✔<sup>1</sup> |
 |Brezilya Güney| ✔<sup>2</sup> |  |
 |Kanada Orta| ✔ |  |
 |Orta ABD| ✔ |  |
 |Doğu Asya| ✔ |  |
-|Doğu ABD | ✔ | ✔ |
+|Doğu ABD | ✔ | ✔<sup>1</sup> |
 |Doğu ABD 2| ✔ |  |
 |Fransa Orta| ✔ |  |
-|Doğu Japonya| ✔ | ✔ |
+|Almanya Batı Orta| ✔ | |
+|Doğu Japonya| ✔ | ✔<sup>1</sup> |
 |Batı Japonya| ✔ | |
 |Kore Orta| ✔ |  |
 |Orta Kuzey ABD| ✔ |  |
-|Kuzey Avrupa| ✔ | ✔ |
-|Güney Orta ABD| ✔ |  |
+|Kuzey Avrupa| ✔ | ✔<sup>1</sup> |
+|Güney Orta ABD| ✔ | ✔<sup>1</sup> |
 |Güney Hindistan | ✔ | |
-|Güneydoğu Asya| ✔ | ✔ |
+|Güneydoğu Asya| ✔ | ✔<sup>1</sup> |
 |Birleşik Krallık, Güney| ✔ | |
 |Birleşik Krallık, Batı| ✔ |  |
-|Batı Avrupa| ✔ | ✔ |
+|Batı Avrupa| ✔ | ✔<sup>1</sup> |
 |Batı Hindistan| ✔ |  |
-|Batı ABD| ✔ | ✔ |
+|Batı ABD| ✔ | ✔<sup>1</sup> |
 |Batı ABD 2| ✔ |  |
 
 <sup>1</sup> Maksimum ölçeği 20 örneğe sınırlı.  

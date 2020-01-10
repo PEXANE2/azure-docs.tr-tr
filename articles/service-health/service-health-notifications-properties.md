@@ -1,19 +1,14 @@
 ---
 title: Azure hizmet durumu bildirimleri nelerdir?
 description: Hizmet durumu bildirimleri Microsoft Azure tarafından yayınlanan hizmet durumu iletilerini görüntülemenize izin verir.
-author: stephbaron
-services: monitoring
-ms.service: azure-monitor
-ms.topic: conceptual
+ms.topic: article
 ms.date: 4/12/2018
-ms.author: stbaron
-ms.subservice: logs
-ms.openlocfilehash: b41c2cdc54ab5eecdc4503cbd98e69932c901a3d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f2d79dc920129241c801c75cc9009b3ba8f34b78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007096"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451561"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Azure portalını kullanarak hizmet durumu bildirimlerini görüntüleme
 
@@ -39,7 +34,7 @@ level | Bir olayın düzeyi
 resourceProviderName | Etkilenen kaynak için kaynak sağlayıcının adı.
 resourceType| Etkilenen kaynağın kaynak türü.
 Dosya | Genellikle karşılık gelen REST çağrısının HTTP durum kodu, ancak alt durumu tanımlayan diğer dizeleri de içerebilir. Örneğin: Tamam (HTTP durum kodu: 200), oluşturulan (http durum kodu: 201), kabul edildi (http durum kodu: 202), Içerik yok (http durum kodu: 204), bozuk Istek (http durum kodu: 400), bir durum bulunamadı (http durum kodu: 404), çakışma Hata (HTTP durum kodu: 500), hizmet kullanılamıyor (HTTP durum kodu: 503) ve ağ geçidi zaman aşımı (HTTP durum kodu: 504).
-EventTimestamp | Olay, olaya karşılık gelen isteği işleyen Azure hizmeti tarafından oluşturulduğunda zaman damgası.
+eventTimestamp | Olay, olaya karşılık gelen isteği işleyen Azure hizmeti tarafından oluşturulduğunda zaman damgası.
 submissionTimestamp | Olay sorgulama için kullanılabilir hale geldiğinde zaman damgası.
 subscriptionId | Bu olayın günlüğe kaydedildiği Azure aboneliği.
 status | İşlemin durumunu açıklayan dize. Bazı ortak değerler şunlardır: **başlatıldı**, **devam ediyor**, **başarılı**, **başarısız**, **etkin**ve **çözümlendi**.

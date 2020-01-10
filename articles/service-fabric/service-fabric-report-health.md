@@ -1,75 +1,66 @@
 ---
-title: Özel Service Fabric durum raporları ekleme | Microsoft Docs
-description: Azure Service Fabric sistem durumu varlıkları için özel durum raporları göndermeyi açıklar. Tasarlama ve uygulama kalitesini sistem durumu raporu için öneriler sunar.
-services: service-fabric
-documentationcenter: .net
+title: Özel Service Fabric durum raporları ekleme
+description: Azure Service Fabric sistem durumu varlıklarına özel durum raporlarının nasıl gönderileceğini açıklar. Kalite sistem durumu raporlarının tasarlanması ve uygulanması için öneriler sağlar.
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 0a00a7d2-510e-47d0-8aa8-24c851ea847f
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d00f740085b15bdb5fe698a069d97f168507f31f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723464"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451598"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Özel Service Fabric durum raporları ekleme
-Azure Service Fabric tanıtır bir [sistem durumu modeli](service-fabric-health-introduction.md) sağlıksız küme ve belirli varlıkların uygulama koşullara bayrağı için tasarlanmıştır. Sistem durumu modeli kullanan **sistem durumu raporlayıcıları** (sistem bileşenleri ve watchdogs). , Kolay ve hızlı tanılama ve onarma hedeftir. Sistem durumu hakkında ön düşünmek beklemeleri gerekir. Özellikle bayrağı sorunların kök yakın yardımcı olabilir, sistem durumu etkileyebilecek herhangi bir koşul, bildirilmelidir. Sistem durumu bilgileri, hata ayıklama ve araştırma zaman ve çaba kaydedebilirsiniz. Hizmet bulutta ölçekte çalışır duruma geldikten sonra yararlılığı özellikle Temizle (özel veya Azure).
+Azure Service Fabric, belirli varlıklara uygun olmayan kümeyi ve uygulama koşullarını işaretlemek için tasarlanan bir [sistem durumu modeli](service-fabric-health-introduction.md) sunar. Sistem durumu modeli, sistem **durumu reporlarını** (sistem bileşenleri ve Watchdogs) kullanır. Amaç kolay ve hızlı tanılama ve onarma. Hizmet yazıcılarının sistem durumu hakkında düşünmesine ihtiyacı vardır. Özellikle, sorunların köke yakın olduğunu bayrakladığında, sistem durumunu etkileyebilecek herhangi bir koşul tarihinde bildirilmelidir. Sistem durumu bilgileri, hata ayıklama ve araştırma konusunda zaman ve çaba tasarrufu sağlayabilir. Hizmet, bulutta (özel veya Azure) bir ölçekte çalışmaya başladıktan sonra özellikle net bir şekilde belirlenir.
 
-Service Fabric raporlayıcıları İzleyici ilgi koşullar belirledik. Bunlar, yerel bir görünümü temel alarak bu koşullara rapor. [Sistem durumu deposu](service-fabric-health-introduction.md#health-store) varlıkları genel olarak sağlıklı olup olmadığını belirlemek için tüm raporlayıcıları tarafından gönderilen sistem durumu verilerini toplar. Model, zengin, esnek ve kullanımı kolay olacak şekilde tasarlanmıştır. Sistem Durumu raporu Kalite küme sistem durumu görünümünü doğruluğunu belirler. Yanlış sağlıksız sorunları Göster hatalı pozitif sonuçları, yükseltme ya da sistem durumu verileri kullanan diğer hizmetlerde olumsuz yönde etkileyebilir. Onarım hizmetleri ve uyarı mekanizmaları gibi hizmetlere örnektir. Bu nedenle, bazı döndürülebileceği bakımından, olabilecek en iyi şekilde gösterdiğiniz ilgi koşullarını yakalama raporları sağlamak için gereklidir.
+Service Fabric Raporlayıcıları, belirtilen ilgi koşullarını izler. Bunlar yerel görünümüne göre bu koşullara göre raporlarlar. [Sistem durumu deposu](service-fabric-health-introduction.md#health-store) , varlıkların küresel olarak sağlıklı olup olmadığını öğrenmek için tüm raporlayıcılar tarafından gönderilen sistem durumu verilerini toplar. Modelin zengin, esnek ve kullanımı kolay olması amaçlanmıştır. Sistem durumu raporlarının kalitesi, kümenin sistem durumu görünümünün doğruluğunu belirler. Hatalı olmayan sorunları yanlışlıkla gösteren yanlış pozitif sonuçlar, yükseltmeleri veya sistem durumu verilerini kullanan diğer hizmetleri olumsuz yönde etkileyebilir. Bu hizmetlere örnek olarak onarım hizmetleri ve uyarı mekanizmaları verilebilir. Bu nedenle, olası en iyi şekilde ilgilendiğiniz koşulları yakalayan raporlar sağlamak için bazı düşünce gerekir.
 
-Tasarım ve durumu raporlama uygulamak için watchdogs ve sistem bileşenleri gerekir:
+Sistem durumu raporlamasını tasarlamak ve uygulamak için, Watchdogs ve sistem bileşenleri şunları gerçekleştirmelidir:
 
-* Bunlar ilgilendiğiniz koşul izlenip biçimini ve etkisi kümede veya uygulamanın işlevselliğini tanımlayın. Bu bilgilere dayanarak, sistem durumu ve sistem durumu raporu özellik üzerinde karar verin.
-* Belirlemek [varlık](service-fabric-health-introduction.md#health-entities-and-hierarchy) , rapor için geçerlidir.
-* Raporlama olduğu belirlemek Bitti, gelen hizmetinde veya bir iç veya dış izleme.
-* Muhabir tanımlamak için kullanılan bir kaynağı tanımlayın.
-* Raporlama bir strateji, düzenli aralıklarla veya geçişi seçin. Daha basit bir kod gerekir ve hatalara daha az yatkındır önerilen yöntem düzenli olarak aynıdır.
-* Ne kadar iyi durumda olmayan koşulları için rapor health store içinde da kalmalı ve nasıl temizlenmelidir belirler. Bu bilgileri kullanarak rapor yaşam süresi ve kaldırma üzerinde sona erme davranışını karar verin.
+* İlgilendikleri koşulu, izlenen şekli ve küme ya da uygulama işlevindeki etkiyi tanımlayın. Bu bilgilere bağlı olarak, sistem durumu raporu özelliği ve sistem durumu ' na karar verin.
+* Raporun geçerli olduğu [varlığı](service-fabric-health-introduction.md#health-entities-and-hierarchy) belirleme.
+* Raporlama 'nın, hizmet içinden veya bir iç veya harici bir izleme tarafından yapıldığını belirleme.
+* Raporlayıcı tanımlamak için kullanılan bir kaynak tanımlayın.
+* Düzenli aralıklarla veya geçişlerde bir raporlama stratejisi seçin. Önerilen yol, daha basit bir kod gerektirdiğinden ve hatalara karşı daha az maliyetli olduğundan düzenli olarak yapılır.
+* Sağlıksız koşulların raporun sistem durumu deposunda ne kadar süreyle kalması gerektiğini ve nasıl temizlenmelidir. Bu bilgileri kullanarak raporun yaşam süresi ve sona erme tarihi kaldırma davranışına karar verin.
 
-Belirtildiği gibi raporlama alanından yapılabilir:
+Belirtildiği gibi, raporlama şunları yapabilir:
 
-* İzlenen Service Fabric hizmeti çoğaltma.
-* İç watchdogs (koşullar izler ve raporlar sorunları gibi bir Service Fabric durum bilgisi olmayan hizmet) Service Fabric hizmet olarak dağıtılabilir. Watchdogs olabilir bir tüm düğümlerine dağıtılan veya izlenen hizmete affinitized.
-* Service Fabric düğümleri üzerinde çalışmak, ancak olan iç watchdogs *değil* Service Fabric Hizmetleri uygulanır.
-* Kaynak araştırma dış watchdogs *dışında* Service Fabric kümesine (örneğin, izleme hizmeti Gomez gibi).
-
-> [!NOTE]
-> Kullanıma hazır, küme sistem bileşenleri tarafından gönderilen sistem durumu raporlarının doldurulur. Adresinde daha fazla [sistem durumu kullanarak raporları sorun giderme için](service-fabric-understand-and-troubleshoot-with-system-health-reports.md). Kullanıcı raporları gönderilmelidir [sistem durumu varlıklarını](service-fabric-health-introduction.md#health-entities-and-hierarchy) , zaten oluşturulmuşsa sistem tarafından.
-> 
-> 
-
-Bir kez tasarım işaretlenmemiştir raporlama sistem, sistem durumu raporlarının kolayca gönderilebilir. Kullanabileceğiniz [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) küme değilse, rapor sağlığı [güvenli](service-fabric-cluster-security.md) veya doku istemci yönetim ayrıcalıkları varsa. Raporlama yapılabilir API tarafından aracılığıyla kullanarak [FabricClient.HealthManager.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), PowerShell veya REST. Geliştirilmiş performans raporları yapılandırma düğmelerini toplu.
+* İzlenen Service Fabric hizmeti çoğaltması.
+* Service Fabric bir hizmet olarak dağıtılan iç Watchdogs (örneğin, koşulları ve sorun raporlarını izleyen bir durum bilgisi olmayan Service Fabric hizmeti). Watchdogs tüm düğümler dağıtılabilir veya izlenen hizmete eklenebilir.
+* Service Fabric düğümlerinde çalışan ancak Service Fabric Hizmetleri *olarak uygulanmayan iç* Watchdogs.
+* Kaynağı Service Fabric kümenin *dışından* yoklamış dış Watchdogs (örneğin, Gomez gibi izleme hizmeti).
 
 > [!NOTE]
-> Rapor sistem zaman uyumludur ve yalnızca istemci tarafında doğrulama işi gösterir. Rapor sistem istemci tarafından kabul edildiğini olgu veya `Partition` veya `CodePackageActivationContext` nesneleri değil ortalama deposunda uygulanır. Zaman uyumsuz olarak gönderilen ve büyük olasılıkla diğer raporlarla toplu. Sunucuda işlenmesi başarısız olabilir: sıra numarası eski olabilir, raporu uygulanmalıdır varlık silindi, vb.
+> Bu, küme dışında, sistem bileşenleri tarafından gönderilen durum raporları ile doldurulur. [Sorun giderme için sistem durumu raporlarını kullanma](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)hakkında daha fazla bilgi edinin. Kullanıcı raporlarının, sistem tarafından zaten oluşturulmuş olan [sistem durumu varlıklarına](service-fabric-health-introduction.md#health-entities-and-hierarchy) gönderilmesi gerekir.
 > 
 > 
 
-## <a name="health-client"></a>İstemci sistem durumu
-Sistem durumu raporlarının sistem durumu Yöneticisi doku istemci içinde bulunduğu bir sistem durumu istemcisi üzerinden gönderilir. Sağlık Yöneticisi raporları health store içinde kaydeder. Sistem durumu istemci aşağıdaki ayarlarla yapılandırılabilir:
-
-* **HealthReportSendInterval**: Rapor istemciye eklenen zaman ve saat arasındaki gecikme, sistem durumu Yöneticisi için gönderilir. Batch raporları için bir ileti gönderilmesi yerine tek bir ileti her rapor için kullanılır. Toplu işleme performansını geliştirir. Varsayılan: 30 saniye.
-* **HealthReportRetrySendInterval**: Başlangıçtan birikmiş sağlık durumu istemci beşe aralığı için sistem durumu Yöneticisi bildirir. Varsayılan: 30 saniye, en düşük: 1 saniye.
-* **HealthOperationTimeout**: Sağlık Yöneticisi için gönderilen bir raporu ileti için zaman aşımı süresi. Bir ileti zaman aşımına uğrarsa, rapor işlenen sistem durumu Yöneticisi onaylayana kadar durum istemci, yeniden dener. Varsayılan: iki dakika.
+Sistem durumu raporlama tasarımı açık olduktan sonra, sistem durumu raporları kolayca gönderilebilir. Küme [güvenli](service-fabric-cluster-security.md) değilse veya doku istemcisinin yönetici ayrıcalıklarına sahip olması durumunda, sistem durumunu raporlamak Için [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 'ı kullanabilirsiniz. Raporlama, [FabricClient. HealthManager. Reporthegizlilik](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), POWERSHELL veya REST aracılığıyla API aracılığıyla yapılabilir. Yapılandırma, daha iyi performans için toplu iş raporlarını dönüştürür.
 
 > [!NOTE]
-> Raporları toplu işlendiğinde fabric istemci en az için Canlı tutulmalıdır HealthReportSendInterval bunlar gönderildiğinden emin olmak için. İleti kaybolur veya sistem durumu Yöneticisi geçici hatalar nedeniyle uygulanamıyor, doku istemci artık canlı tutulmalıdır yeniden denemek için bir fırsat vermek için.
+> Rapor durumu zaman uyumludur ve yalnızca istemci tarafında doğrulama işini temsil eder. Raporun sistem durumu istemcisi tarafından kabul edildiği veya `Partition` ya da `CodePackageActivationContext` nesnelerinin mağazaya uygulandığı anlamına gelir. Zaman uyumsuz olarak gönderilir ve büyük olasılıkla diğer raporlarla toplanmış olur. Sunucuda işlenmesi başarısız olabilir: sıra numarası eski olabilir, raporu uygulanmalıdır varlık silindi, vb.
 > 
 > 
 
-İstemcide arabelleğe alma raporları benzersizliğini dikkate alır. Örneğin, belirli bir hatalı muhabir saniye başına 100 raporları aynı varlığın aynı özellikte yapıyorsa, raporlar en son sürümle değiştirilir. En fazla bir tür rapor istemci kuyrukta var. Toplu işleme yapılandırılmışsa, sistem durumu Yöneticisi için gönderilen raporların gönderme aralığı başına yalnızca bir tane sayısıdır. Bu rapor, varlığın en güncel durumu yansıtır son eklenen rapor eder.
-Yapılandırma parametrelerini belirtin, `FabricClient` geçirerek oluşturulan [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) sistem durumu ile ilgili girdiler için istenen değerleri.
+## <a name="health-client"></a>Sistem durumu istemcisi
+Sistem durumu raporları, yapı istemcisinin içinde yer aldığı bir sistem durumu istemcisi aracılığıyla sistem durumu yöneticisine gönderilir. Health Manager, raporları sistem durumu deposuna kaydeder. Sistem durumu istemcisi aşağıdaki ayarlarla yapılandırılabilir:
 
-Aşağıdaki örnek, bir doku istemci oluşturur ve eklenen raporları gönderilmesi gerektiğini belirtir. Zaman aşımları ve yeniden denenebilir bir hata, yeniden denemeler 40 saniyede gerçekleşir.
+* **Healthreportsendınterval**: raporun istemciye eklendiği zaman ve sistem durumu yöneticisine gönderildiği zaman arasındaki gecikme. Her rapor için bir ileti göndermek yerine tek bir ileti halinde raporları toplu olarak kullanır. Toplu işlem performansı geliştirir. Varsayılan: 30 saniye.
+* **Healthreportretrysendınterval**: sistem durumu istemcisinin, birikmiş sistem durumu raporlarını sistem durumu yöneticisine yeniden sonlandıran Aralık. Varsayılan: 30 saniye, en az: 1 saniye.
+* **HealthOperationTimeout**: sistem durumu yöneticisine gönderilen rapor iletisi için zaman aşımı süresi. Bir ileti zaman aşımına uğrarsa, sistem durumu Yöneticisi raporun işlendiğini onaylaana kadar sistem durumu istemcisi yeniden dener. Varsayılan: iki dakika.
+
+> [!NOTE]
+> Raporlar toplu olduğunda, gönderildiğinden emin olmak için yapı istemcisinin en az Healthreportsendınterval için etkin tutulması gerekir. İleti kaybolursa veya sistem durumu Yöneticisi geçici hatalar nedeniyle bunları uygulayamazsa, doku istemcisinin yeniden denenme şansı vermesi için daha uzun süre canlı tutulması gerekir.
+> 
+> 
+
+İstemcideki arabelleğe alma, raporların benzersizlik düzeyini dikkate alır. Örneğin, belirli bir hatalı Raporlayıcı, aynı varlığın aynı özelliğinde saniyede 100 rapor bildiriyorsa, raporların son sürümü ile değiştirilmiştir. İstemci kuyruğunda bu tür bir rapor var. Toplu işlem yapılandırılırsa, durum yöneticisine gönderilen raporların sayısı, gönderme aralığı başına yalnızca bir tane olur. Bu rapor, varlığın en güncel durumunu yansıtan son eklenen rapordur.
+[Fabricclientsettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) , sistem durumu ile ilgili girişler için istenen değerlerle birlikte `FabricClient` oluşturulduğunda yapılandırma parametrelerini belirtin.
+
+Aşağıdaki örnek bir yapı istemcisi oluşturur ve raporların eklendiklerinde gönderilmesi gerektiğini belirtir. Yeniden denenebilecek zaman aşımları ve hatalarda, yeniden denemeler her 40 saniyede gerçekleşir.
 
 ```csharp
 var clientSettings = new FabricClientSettings()
@@ -81,9 +72,9 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-Varsayılan yapı istemci ayarlanan ayarları tutma öneririz `HealthReportSendInterval` 30 saniyedir. Bu ayar, toplu işleme nedeniyle en iyi performans sağlar. Olabildiğince çabuk gönderilmelidir kritik raporlar için `HealthReportSendOptions` hemen ile `true` içinde [FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API. Hemen raporları toplu aralığı atlama. Bu bayrak dikkatli kullanın; mümkün olduğunda toplu işleme durumu istemci yararlanmak istiyoruz. Hemen gönderme yararlıdır ayrıca fabric istemci kapatırken (örneğin, işlemi geçersiz bir durum belirledi ve yan etkileri önlemek için kapatmak gerekir). En yüksek çaba gönderme birikmiş raporlar sağlar. Bir rapor ile hemen bayrağı eklendiğinde, sistem durumu istemci birikmiş tüm raporları beri son gönderme toplu olarak işler.
+`HealthReportSendInterval` 30 saniyeye ayarlanmış varsayılan yapı istemci ayarlarını tutmanız önerilir. Bu ayar, toplu işlem nedeniyle en iyi performansı sağlar. En kısa sürede gönderilmesi gereken kritik raporlar için [FabricClient. HealthClient. Reporthegizli](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API içinde hemen `true` `HealthReportSendOptions` kullanın. Anında raporlar toplu işlem aralığını atlar. Bu bayrağı dikkatli kullanın; mümkün olan her durumda sistem durumu istemci toplu işlem avantajlarından faydalanmak istiyoruz. Anında gönderme, yapı istemcisi kapatılırken da yararlıdır (örneğin, işlem geçersiz durumu tespit etti ve yan etkileri engellemek için kapanması gerekir). Birikmiş raporların en iyi şekilde gönderilmesini sağlar. Anında işaretle bir rapor eklendiğinde, sistem durumu istemcisi son gönderimden bu yana tüm birikmiş raporları işler.
 
-PowerShell ile bir küme için bir bağlantı oluşturulduğunda, aynı parametreleri belirtilebilir. Aşağıdaki örnek, yerel bir küme için bir bağlantı başlatır:
+PowerShell aracılığıyla bir kümeyle bağlantı oluşturulduğunda aynı parametreler belirtilebilir. Aşağıdaki örnek, yerel bir kümeye bir bağlantı başlatır:
 
 ```powershell
 PS C:\> Connect-ServiceFabricCluster -HealthOperationTimeoutInSec 120 -HealthReportSendIntervalInSec 0 -HealthReportRetrySendIntervalInSec 40
@@ -111,80 +102,80 @@ GatewayInformation   : {
                        }
 ```
 
-Benzer şekilde, API'ye raporları kullanarak gönderilebilir `-Immediate` hemen gönderilen, bakılmaksızın olmasını anahtar `HealthReportSendInterval` değeri.
+API 'ye benzer şekilde, raporlar, `HealthReportSendInterval` değerinden bağımsız olarak hemen gönderilmek üzere `-Immediate` anahtarı kullanılarak gönderilebilir.
 
-KALAN için bir iç yapı istemcisi olan Service Fabric gateway raporlar gönderilir. Varsayılan olarak, bu istemci raporları göndermek için yapılandırılmış her 30 saniyede bir toplu. Toplu iş aralığı ile küme yapılandırma ayarı değiştirebilirsiniz `HttpGatewayHealthReportSendInterval` üzerinde `HttpGateway`. Belirtildiği gibi raporlarıyla göndermek için daha iyi bir seçenek olan `Immediate` true. 
-
-> [!NOTE]
-> Yetkisiz Hizmetleri sistem durumu varlıkları kümedeki karşı raporlayamaz emin olmak için sunucu yalnızca güvenli istemcilerden gelen istekleri kabul edecek şekilde yapılandırın. `FabricClient` Gereken güvenlik seçeneğinin etkin olmasını kümeyle (örneğin, Kerberos veya sertifika kimlik doğrulaması) ile iletişim kurabilmesi için raporlama için kullanılır. Daha fazla bilgi edinin [küme güvenlik](service-fabric-cluster-security.md).
-> 
-> 
-
-## <a name="report-from-within-low-privilege-services"></a>Düşük ayrıcalıklı Hizmetleri içinde gelen rapor
-Service Fabric Hizmetleri kümesi için yönetici erişimi yoksa, sistem durumu geçerli bağlam ile varlıkları üzerinde raporlamadan `Partition` veya `CodePackageActivationContext`.
-
-* Durum bilgisi olmayan hizmetler için kullanın [IStatelessServicePartition.ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) geçerli hizmet örneği üzerinde bildirmek için.
-* Durum bilgisi olan hizmetler için kullanın [IStatefulServicePartition.ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) geçerli yineleme üzerinde bildirmek için.
-* Kullanım [IServicePartition.ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) geçerli bölüm varlıkta bildirmek için.
-* Kullanım [CodePackageActivationContext.ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) geçerli uygulama bildirmek için.
-* Kullanım [CodePackageActivationContext.ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) geçerli düğümde dağıtılan geçerli uygulamayı bildirmek üzere.
-* Kullanım [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) geçerli düğümde dağıtılmış uygulama için bir hizmet paketi hakkında rapor oluşturmak için.
+REST için raporlar, dahili bir doku istemcisine sahip olan Service Fabric ağ geçidine gönderilir. Varsayılan olarak, bu istemci, her 30 saniyede bir toplu rapor gönderecek şekilde yapılandırılmıştır. Toplu iş aralığını, `HttpGateway``HttpGatewayHealthReportSendInterval` küme yapılandırma ayarı ile değiştirebilirsiniz. Belirtildiği gibi, raporların `Immediate` doğru bir şekilde gönderilmesi daha iyi bir seçenektir. 
 
 > [!NOTE]
-> Dahili olarak `Partition` ve `CodePackageActivationContext` varsayılan ayarlarla yapılandırılan bir sistem durumu istemcisi tutun. İçin açıklandığı gibi [istemci sistem durumu](service-fabric-report-health.md#health-client), raporları toplu ve bir zamanlayıcıyı temel gönderilir. Nesneleri raporu gönderme olanağı sağlamak canlı olarak tutulmalıdır.
+> Yetkisiz hizmetlerin kümedeki varlıklara karşı sistem durumunu bildirememesini sağlamak için, sunucuyu yalnızca güvenli istemcilerden gelen istekleri kabul edecek şekilde yapılandırın. Raporlama için kullanılan `FabricClient`, kümeyle iletişim kurabilmesi için güvenliğin etkin olması gerekir (örneğin, Kerberos veya sertifika kimlik doğrulaması ile). [Küme güvenliği](service-fabric-cluster-security.md)hakkında daha fazla bilgi edinin.
 > 
 > 
 
-Belirtebileceğiniz `HealthReportSendOptions` raporlarda gönderirken `Partition` ve `CodePackageActivationContext` durumu API'leri. Olabildiğince çabuk gönderilmelidir kritik raporlar varsa `HealthReportSendOptions` hemen ile `true`. Toplu işlem aralığı iç sistem durumu istemcinin anında raporları atlama. Daha önce belirtildiği gibi bu bayrak dikkatli kullanın; mümkün olduğunda toplu işleme durumu istemci yararlanmak istiyoruz.
+## <a name="report-from-within-low-privilege-services"></a>Düşük ayrıcalıklı hizmetler içinden rapor
+Service Fabric hizmetlerin kümeye yönetici erişimi yoksa, geçerli bağlamdaki varlıklara sistem durumunu `Partition` veya `CodePackageActivationContext`aracılığıyla rapor edebilirsiniz.
 
-## <a name="design-health-reporting"></a>Sistem durumu raporlama tasarlama
-Yüksek kaliteli raporları üretme ilk adımı hizmet durumunu etkileyebilecek koşullar tanımlamak için kullanılır. Başlar--ya da daha da iyi bir sorun ortaya önce--potansiyel olarak denetleyebilir, bayrağı sorunları hizmetinde veya küme yardımcı olabilecek herhangi bir koşul milyarlarca dolarlık kaydedin. Araştırma ve sorunları ve daha yüksek müşteri memnuniyeti onarma daha az gece saat harcanan avantajları az kesinti içerir.
-
-Koşullar tanımlandıktan sonra izleme yazıcılar ek yükü ve yararlılığını arasındaki dengeyi izlemek için en iyi yolu ekleyeceğimi gerekir. Örneğin, bazı geçici dosyaları paylaşımındaki kullanan karmaşık hesaplamalar yapan bir hizmeti kullanmayı düşünün. Bir izleme yeterli alanın kullanılabilir olmasını sağlamak için paylaşımı izleyebilir. Bu dosya veya dizin değişikliklerin bildirimleri için dinleme. Ön bir Eşiğe ulaşıldığında ve paylaşımı dolu ise, bir hata rapor, bir uyarı rapor edilemedi. Bir uyarı üzerinde onarım sistem eski dosyaların temizleme başlatabilir. Bir hatada, onarım sistem hizmeti çoğaltma başka bir düğüme taşıyabilirsiniz. Koşul durumlarını durumu bakımından ne açıklanan dikkat edin: (Tamam) sağlıklı kabul edilebilir bir koşulu veya sağlıksız (uyarı veya hata) durumu.
-
-İzleme ayrıntılarını ayarladıktan sonra bir izleme yazıcısı izleme uygulamak nasıl gerekir. Koşulları hizmetinde belirlenebilir, izleme, izlenen hizmetin parçası olabilir. Örneğin, hizmet kod Paylaşımı'nın kullanımını denetleyin ve ardından bunu bir dosyaya yazmak her denediğinde rapor. Bu yaklaşımın avantajı raporlama basit olmasıdır. İzleme hataları hizmet işlevselliğinin etkilemesini önlemek için dikkatli olunması gerekir.
-
-İçinde raporlama izlenen hizmeti her zaman bir seçenek değil. Bir izleme hizmeti dahilinde algılayan mümkün olmayabilir. Mantıksal veya belirlenmesi için veri olmayabilir. Koşullar izleme yükünü yüksek olabilir. Koşullar da belirli bir hizmete olmayabilir ancak bunun yerine Hizmetleri arasındaki etkileşimler etkiler. Ayrı işlemlerde kümedeki watchdogs sahip başka bir seçenektir. Watchdogs ana Hizmetleri herhangi bir şekilde etkilemeden rapor ve koşulları izleyin. Örneğin, bu watchdogs tüm düğümlere ya da hizmet olarak aynı düğümlerinde dağıttığınız aynı uygulamada durum bilgisi olmayan hizmetler olarak uygulanabilir.
-
-Bazı durumlarda, kümede çalışan bir bekçi bir seçenek ya da değildir. Kullanıcılara sunulmadan gibi izlenen koşul kullanılabilirliğini veya işlevlerini ise, kullanıcı istemcileri olarak aynı yerde watchdogs sahip en iyisidir. Burada, bunlar operations çağırmaya kullanıcılar aynı şekilde test edebilirsiniz. Örneğin, kümenin dışında yer alan, istekleri hizmete sorunları ve gecikme süresi ve sonuç doğruluğunu denetler bir bekçi olabilir. (Hesaplayıcı hizmeti için örneğin, 2 + 2 4 makul bir sürede döndürür?)
-
-İzleme Ayrıntıları sonlandırıldıktan sonra benzersiz olarak tanımlayan bir kaynak kimliği karar vermeniz gerekir. Farklı varlıklarda bildirilmesi gerekir kümedeki yaşayan aynı türde birden fazla watchdogs veya, bunlar aynı varlık üzerinde rapor gerekiyorsa, farklı bir kaynak kimliği veya özelliğini kullanın. Bu şekilde raporlarının bulunabilir. Sistem Durumu raporu, özellik, izlenen koşul yakalamalısınız. (Yukarıdaki örnekte özelliği olabilir **ShareSize**.) Birden çok rapor aynı durumuna uygularsanız, özelliği bulunabilmesi raporlar sağlayan dinamik bazı bilgileri içermelidir. Örneğin, birden çok paylaşımı izlenmesi gerekiyorsa, özellik adı olabilir **ShareSize sharename**.
+* Durum bilgisi olmayan hizmetler için, geçerli hizmet örneği hakkında raporlamak üzere [Istatelessservicepartition. Reportınstancehealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) komutunu kullanın.
+* Durum bilgisi olan hizmetler için, geçerli çoğaltma hakkında raporlamak üzere [Istatefulservicepartition. ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) komutunu kullanın.
+* Geçerli bölüm varlığını raporlamak için [IServiceProvider. ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) kullanın.
+* Geçerli uygulamayı raporlamak için [Codepackageactivationcontext. ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) kullanın.
+* Geçerli düğümde dağıtılan geçerli uygulamayı raporlamak için [Codepackageactivationcontext. Reportdeployedadpplicationhealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) komutunu kullanın.
+* Geçerli düğümde dağıtılan uygulamanın hizmet paketini raporlamak için [Codepackageactivationcontext. ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) komutunu kullanın.
 
 > [!NOTE]
-> Yapmak *değil* durum bilgilerini korumak için sistem durumu deposu kullanın. Bu bilgiler, bir varlığın sistem durumu değerlendirmesi etkiler gibi yalnızca sistem durumu ile ilgili bilgileri sistem durumu bildirilmelidir. Sistem durumu deposu, genel amaçlı bir deposu olarak tasarlanmamıştır. Tüm verileri sistem durumuna toplamak için sistem durumu değerlendirme mantığı kullanır. (Sistem durumu Tamam durumuyla raporlama gibi) sistem durumu için ilgisi olmayan bilgi gönderme toplanan sistem durumunu etkilemez, ancak sistem durumu deposu performansını olumsuz yönde etkileyebilir.
+> Dahili olarak, `Partition` ve `CodePackageActivationContext` varsayılan ayarlarla yapılandırılmış bir sistem durumu istemcisini tutar. [Sistem sağlığı istemcisi](service-fabric-report-health.md#health-client)için açıklandığı gibi, raporlar toplu olarak oluşturulur ve bir zamanlayıcıya gönderilir. Rapor gönderme şansı sağlamak için nesnelerin etkin tutulması gerekir.
 > 
 > 
 
-Sonraki karar noktası rapor varlığa açıktır. Çoğu zaman, koşul varlığa açıkça tanımlar. Varlık ile en iyi olası ayrıntı düzeyi seçin. Bir koşul, bir bölümdeki tüm çoğaltmaları etkiler, hizmet üzerinde bölüm rapor. Daha fazla döndürülebileceği bakımından, ancak gerekmesi halinde köşe durumlar vardır. Koşul, bir çoğaltma gibi varlık etkiler, ancak arzusu sağlamaktır birden çok çoğaltma yaşam süresi için koşul işaretlenmiş, sonra bölüme bildirilmesi. Aksi takdirde, çoğaltma silindiğinde, sistem durumu deposu tüm raporlarının temizler. İzleme yazarları, varlık ve rapor yaşam süresi hakkında düşünmeniz gerekir. (Örneğin, bir varlık üzerinde bildirilen hata artık uygulanmadığında) deposundan bir rapor temizlenmelidir olduğunda açık olmalıdır.
+`Partition` ve `CodePackageActivationContext` sistem durumu API 'Leri aracılığıyla rapor gönderirken `HealthReportSendOptions` belirtebilirsiniz. Mümkün olan en kısa sürede gönderilmesi gereken kritik raporlarınız varsa, hemen `true``HealthReportSendOptions` kullanın. Anında raporlar iç sistem durumu istemcisinin toplu işlem aralığını atlar. Daha önce bahsedildiği gibi, bu bayrağı dikkatli kullanın; mümkün olan her durumda sistem durumu istemci toplu işlem avantajlarından faydalanmak istiyoruz.
 
-Birbirine ben açıklanan noktaları yerleştiren bir örneğe bakalım. Service Fabric uygulaması bir ana durum bilgisi olan kalıcı hizmeti ve tüm düğümleri (görevinin her türü için bir ikincil hizmet türü) dağıtılan ikincil durum bilgisi olmayan hizmetler oluşan göz önünde bulundurun. Asıl İkincil veritabanı tarafından yürütülecek komutları içeren bir işleme sırası vardır. İkincil gelen istekleri ve geri bildirim sinyal gönderin. İzlenen bir ana işleme sırası uzunluğunu durumdur. Ana kuyruk uzunluğu'ı bir eşiğe ulaşması halinde uyarı bildirilir. Uyarı, ikincil veritabanı yük işleyemiyor gösterir. Kuyruk uzunluğu en fazla ulaşır ve komutları bırakılır, hizmet kurtaramadığından bir hata bildirdi. Raporları özelliği olabilir **Kuyrukdurumu**. İzleme hizmeti içinde yer alan ve ana birincil Çoğaltmada düzenli aralıklarla gönderilir. Yaşam süresi iki dakika ve 30 saniyede bir düzenli aralıklarla gönderilir. Birincil kalırsa, raporun Mağazası'ndan otomatik olarak temizlenir. Hizmet çoğaltma çalışıyor, ancak bunu kilitlendiğini veya diğer sorun raporu health store içinde süresi dolar. Bu durumda, varlık hatası olarak değerlendirilir.
+## <a name="design-health-reporting"></a>Tasarım sistem durumu raporlaması
+Yüksek kaliteli raporlar oluşturmanın ilk adımı, hizmetin sistem durumunu etkileyebilecek koşulları belirlemektir. Bir sorun yapılmadan önce, hizmet veya kümedeki sorunları bayrağa ya da daha iyi bir şekilde, bir sorun gerçekleşmenizden önce (büyük olasılıkla milyarlarca dolar tasarruf edebilir) yardım eden herhangi bir koşul. Avantajlar, daha az gece süresi, sorunları araştırmaya ve onarmaya harcanan daha az gece saati ve müşteri memnuniyetini daha yüksektir.
 
-İzlenebilir başka bir koşul görev yürütme süresi kısadır. Ana görev türüne göre ikinciller görevleri dağıtır. Tasarım bağlı olarak, ana ikinciller görev durumu için yoklama. Ayrıca, aldıkları geri bildirim sinyaller göndermek ikinciller için de bekleyebilir. İkinci durumda, ikincil veritabanı zar veya iletileri kayıp olduğu durumlarda algılamak için dikkatli olunması gerekir. Durumu geri gönderen bir ping isteği aynı ikincil göndermek ana bir seçenektir. Durum yok alınmazsa, ana hata olarak kabul eder ve görev tarih değiştirdiğinde. Bu davranış, görevleri etkili olduğunu varsayar.
+Koşullar tanımlandıktan sonra, izleme yazarları, bunları ek yük ve kullanışlılığı arasında dengelemek üzere izlemenin en iyi yolunu belirlemelidirler. Örneğin, bir paylaşımda bazı geçici dosyaları kullanan karmaşık hesaplamalar yapan bir hizmeti göz önünde bulundurun. Bir izleme, yeterli alanın kullanılabilir olduğundan emin olmak için paylaşımdan izleme sağlayabilir. Dosya veya dizin değişikliklerinin bildirimlerini dinleyebilir. Ön eşiğe ulaşıldığında bir uyarı bildirebilir ve paylaşma doluysa bir hata bildirir. Bir uyarı durumunda, bir onarım sistemi paylaşımdaki eski dosyaları temizlemeye başlayabilir. Bir hata durumunda, bir onarım sistemi, hizmet çoğaltmasını başka bir düğüme taşıyabilir. Durum durumu açısından koşul durumlarının nasıl açıklandığına dikkat edin: sağlıklı (Tamam) veya sağlıksız (uyarı veya hata) olarak kabul edilebilir durum durumu.
 
-Görevi, belirli bir süre içinde yapılmazsa, bir uyarı olarak izlenen koşul çevrilebilir (**t1**, örneğin 10 dakika). Görev zaman tamamlanmadıysa (**t2**, örneğin 20 dakika), hata olarak izlenen koşul çevrilebilir. Bu raporlama birden çok yolla yapılabilir:
+İzleme ayrıntıları ayarlandıktan sonra, bir izleme yazıcısının izizlemenin nasıl uygulanacağını öğrenilmesi gerekir. Koşullar hizmetin içinden belirlenebileceği takdirde, izleme izlenen hizmetin bir parçası olabilir. Örneğin, hizmet kodu, paylaşma kullanımını denetleyebilir ve sonra bir dosya yazmayı her denediğinde rapor verebilir. Bu yaklaşımın avantajı, raporlama 'nın basittir. İzleme hatalarının hizmet işlevselliğini etkileyerek engel olmak için dikkatli olunmalıdır.
 
-* Ana birincil çoğaltma kendisine düzenli aralıklarla bildirir. Kuyrukta bekleyen tüm görevler için bir özelliği olabilir. En az bir tane daha uzun sürer özelliği rapor durumu görev **PendingTasks** bir uyarı veya hata, uygun şekilde. Bekleyen görev yok veya tüm görevleri yürütme başlatıldı, rapor durumu uygun. Kalıcı görevlerdir. Birincil kalırsa, yeni yükseltilen birincil doğru rapor devam edebilirsiniz.
-* Görevleri başka bir izleme işleminde (Bulut veya dış) denetler (gelen dışında istediğiniz görevin sonucuna bağlı olarak), tamamladığını görmek için. Yöneticiler eşikler uymuyorsa ana hizmette bir rapor gönderilir. Bir rapor gibi görev tanımlayıcısı içeren her görev için de gönderilir **PendingTask + Taskıd**. Raporlar yalnızca sağlıklı duruma göre gönderilmelidir. Birkaç dakika canlı ve temizleme emin olmak için bu süre dolduğunda kaldırılacak raporlar işaretlemek için zaman ayarlayın.
-* Çalıştırmak için beklenenden daha uzun sürerse bir görevin yürütüldüğü ikincil bildirir. Hizmet örneği özellikte raporları **PendingTasks**. Rapor saptıyor sorunları olan hizmet örneği, ancak burada örnek sonlandıktan durumu yakalamaz. Raporları sonra temizlenir. İkincil hizmette raporu. İkincil görev tamamlanırsa ikincil örnek deposundan rapor temizler. Rapor nerede bildirim iletisi kaybolur ve Görev Yöneticisi'nin açısından bakıldığında bitmedi durumu yakalamaz.
+İzlenen hizmet içinden raporlama her zaman bir seçenek değildir. Hizmet içindeki bir izleme, koşulları algılayamayabilir. Belirleme yapmak için mantık veya veri olmayabilir. Koşulları izlemenin ek yükü yüksek olabilir. Koşullar da bir hizmete özgü olmayabilir, bunun yerine hizmetler arasındaki etkileşimleri etkiler. Başka bir seçenek de kümede ayrı süreçler olarak Watchdogs. Watchdogs, koşulları ve raporu, ana Hizmetleri herhangi bir şekilde etkilemeden izler. Örneğin, bu Watchdogs, tüm düğümlere veya hizmetle aynı düğümlerde dağıtılan aynı uygulamada durum bilgisi olmayan hizmetler olarak uygulanabilir.
 
-Yukarıda açıklanan durumlarda raporlama gerçekleştirilir ancak sistem durumu değerlendirme raporları uygulama durumunu yakalanır.
+Bazen, kümede çalışan bir izleme, herhangi bir seçenek değildir. İzlenen koşul, kullanıcılar tarafından görülediğinde hizmetin kullanılabilirliğine veya işlevselliğine sahip ise, Watchdogs Kullanıcı istemcileriyle aynı yerde olması en iyisidir. Burada, kullanıcılar onları çağıran şekilde işlemleri test edebilirler. Örneğin, kümenin dışında bulunan bir izleme, hizmete yönelik istekler ve sonucun gecikme süresini ve doğruluğunu kontrol edebilirsiniz. (Örneğin, bir Hesaplayıcı hizmeti için 2 + 2, makul bir süre içinde 4 döndürür mi?)
 
-## <a name="report-periodically-vs-on-transition"></a>Raporda düzenli aralıklarla ve geçiş
-Sistem durumu raporlama modeli kullanarak watchdogs raporları düzenli aralıklarla veya geçişleri gönderebilirsiniz. Kod çok daha basit ve daha az olduğundan izleme raporlama için önerilen yöntem düzenli aralıklarla, hatalara açıktır. Watchdogs yanlış raporları tetikleme hataları önlemek mümkün olduğu kadar basit olmaya çabalar gerekir. Yanlış *sağlıksız* raporları, sistem durumu değerlendirme sürümleri ve yükseltme de dahil olmak üzere Durumu'na göre senaryoları etkiler. Yanlış *sağlıklı* raporları istenmiyorsa kümedeki sorunları gizle.
+İzleme ayrıntıları sonlandırıldıktan sonra, onu benzersiz bir şekilde tanımlayan bir kaynak KIMLIĞIYLE karar vermeniz gerekir. Aynı türde birden çok Watchdogs kümede yaşayan, farklı varlıklara rapor olmaları gerekir, aksi takdirde aynı varlığa raporlarsa farklı kaynak KIMLIĞI veya özellik kullanın. Bu şekilde, raporları bir arada bulunabilir. Sistem durumu raporunun özelliği izlenen koşulu yakalemelidir. (Yukarıdaki örnek için, özelliği bir **parça esize**olabilir.) Aynı koşula birden çok rapor uygulanacaksa, özelliği raporların birlikte kullanılmasına izin veren bazı dinamik bilgileri içermelidir. Örneğin, birden çok paylaşım izleniyorsa, özellik adı, **Sharesize-ShareName**olabilir.
 
-Dönemsel raporlama için izleme Zamanlayıcı ile uygulanabilir. Bir zamanlayıcı geri çağırma izleme durumunu denetleyin ve geçerli durumunu temel alan bir rapor gönderin. Rapor daha önce gönderilen bakın veya Mesajlaşma açısından iyileştirmelerin yapmak için gerek yoktur. Sistem durumu istemcinin, performansa yardımcı olmak için logic toplu işleme sahip. Sistem durumu istemci canlı olarak tutulur, ancak bunu dahili olarak rapor sistem durumu deposu tarafından onaylanır veya izleme varlık, özellik ve kaynak içeren yeni bir rapor oluşturur kadar yeniden dener.
+> [!NOTE]
+> Durum bilgilerini tutmak için sistem durumu *deposunu kullanmayın.* Bu bilgiler bir varlığın sistem durumu değerlendirmesini etkilediği için yalnızca sağlık ile ilgili bilgilerin sistem durumu olarak bildirilmesi gerekir. Sistem durumu deposu, genel amaçlı bir depo olarak tasarlanmamıştır. Tüm verileri sistem durumuna toplamak için sistem durumu değerlendirme mantığını kullanır. Sağlık durumu ile ilgisi olmayan bilgilerin gönderilmesi (sistem durumu Tamam olan raporlama durumu gibi), toplanmış sistem durumunu etkilemez, ancak sistem durumu deposunun performansını olumsuz yönde etkileyebilir.
+> 
+> 
 
-Geçişleri üzerinde raporlama durum dikkatli işlenmesini gerektirir. İzleme, bazı koşullar izler ve yalnızca koşullar değiştiğinde bildirir. Bu yaklaşımın baş daha az raporları gereklidir ' dir. Olumsuz tarafı, izleme mantığını karmaşık olmasıdır. Böylece durumu değişiklikleri belirlemek için bunlarda izleme koşulu veya raporları sürdürmeniz gerekir. Yük devretmede, eklendi ancak henüz durum deposuna gönderilen raporlarla dikkatli olunması gerekir. Sürekli artan sıra numarası olmalıdır. Aksi durumda, raporlar, eski reddedilir. Ender durumlarda, veri kaybı burada tahakkuk ettirilen eşitleme muhabir durumunu ve sistem durumu deposu durumunu arasında gerekli olabilir.
+Sonraki karar noktası, rapor edilecek tüzel kişilidir. Çoğu zaman koşulun varlığı açıkça tanımlar. En iyi ayrıntı düzeyi olan varlığı seçin. Bir koşul bir bölümdeki tüm çoğaltmaları etkirse, hizmette değil, bölüm üzerinde rapor edin. Ancak, daha fazla düşünce olması gereken köşe durumları vardır. Koşul, bir çoğaltma gibi bir varlığı etkilediğinde, ancak bu koşul, çoğaltma ömrü süresinden daha uzun bir süre için işaretlenmek isterse, bölüm üzerinde bildirilmesi gerekir. Aksi takdirde, çoğaltma silindiğinde, sistem durumu deposu tüm raporlarını temizler. İzleme yazarları, varlığın ve raporun yaşam sürelerini düşünmelidir. Bir rapor bir mağazadan temizlenmelidir (örneğin, bir varlıkta bildirilen bir hata, artık geçerli olmadığında), bu açık olmalıdır.
 
-Geçişleri üzerinde raporlama anlamlı aracılığıyla kendilerini üzerinde Raporlama Hizmetleri `Partition` veya `CodePackageActivationContext`. Yerel nesne (çoğaltma veya dağıtılmış hizmet paketi / uygulama dağıtılan) olan kaldırıldıysa, tüm raporlar da kaldırılır. Bu otomatik temizleme muhabir ve sistem durumu deposu arasındaki eşitleme gereği rahatlatır;. Raporun üst bölüm veya ana uygulama için ise, dikkatli health store içinde eski raporlar önlemek için yük devretme sırasında atılmalıdır. Doğru durumunu korumak ve raporun deposundan artık gerekmeyen temizlemek için mantıksal yeniden eklenmesi gerekir.
+Açıklandığım noktaları birlikte yerleştiren bir örneğe bakalım. Ana durum bilgisiz kalıcı hizmetinden oluşan bir Service Fabric uygulamayı ve tüm düğümlerde dağıtılan ikincil durum bilgisi olmayan hizmetleri (her görev türü için bir ikincil hizmet türü) ele alalım. Ana öğe, ikincgöre yürütülecek komutları içeren bir işleme kuyruğuna sahiptir. İkincil öğeler gelen istekleri yürütür ve geri bildirim sinyalleri gönderir. İzlenecek bir durum, ana işleme sırasının uzunluğudur. Ana sıra uzunluğu bir eşiğe ulaşırsa, bir uyarı bildirilir. Uyarı, ikinc'nin yükü işleyemediğini belirtir. Sıra, en fazla uzunluğa ulaşırsa ve komutlar atılıyorsa, hizmet kurtarılamadığında bir hata bildirilir. Raporlar **QueueStatus**özelliği üzerinde olabilir. İzleme hizmeti içinde yaşar ve ana birincil çoğaltmada düzenli olarak gönderilir. Yaşam süresi iki dakikadır ve her 30 saniyede bir düzenli olarak gönderilir. Birincil değer kapalıysa, rapor mağazadan otomatik olarak temizlenir. Hizmet çoğaltması çalışır durumda, ancak kilitlenmişse veya başka sorunlar varsa, raporun sistem durumu deposunda süresi dolar. Bu durumda, varlık hata durumunda değerlendirilir.
 
-## <a name="implement-health-reporting"></a>Sistem durumu bildirimi uygulama
-Varlık ve rapor ayrıntıları açık olduğunda, sistem durumu raporlarının gönderen API, PowerShell veya REST yapılabilir.
+İzlenebilecek başka bir koşul görev yürütme zamanı ' dır. Ana, görevleri görev türüne göre ikincil öğeler 'e dağıtır. Tasarıma bağlı olarak, ana öğe, görev durumunun ikincil öğesini yoklayayacak. Ayrıca, ikincillerin tamamlandığında bildirim sinyalleri geri göndermesini de bekleyebilir. İkinci durumda, ikincil zar veya mesajların kaybedildiği durumları tespit etmek için dikkatli olunması gerekir. Bir seçenek, ana öğenin durumunu geri gönderen aynı ikincil sunucuya bir ping isteği göndermesi için kullanılır. Durum alınmadığında, ana öğe bir hata olduğunu varsayar ve görevi müşteri sizinle randevusunu. Bu davranış, görevlerin ıdempotent olduğunu varsayar.
 
-### <a name="api"></a>API
-API aracılığıyla bildirmek için raporlamak istediğiniz varlık türü için belirli bir sistem durumu raporu oluşturmak gerekir. Sistem durumu istemciye raporu verin. Alternatif olarak, bir sistem durumu bilgisi oluşturmak ve raporlama yöntemleri üzerinde düzeltmek geçirin `Partition` veya `CodePackageActivationContext` geçerli varlıklarda bildirmek için.
+Görev belirli bir**zamanda (örneğin**, 10 dakika) yapılmadığından izlenen koşul bir uyarı olarak çevrilebilir. Görev zamanında tamamlanmazsa (örneğin, 20 dakika) **, izlenen**koşul hata olarak çevrilebilir. Bu raporlama, birden çok şekilde yapılabilir:
 
-Aşağıdaki örnek, küme içindeki bir bekçi kullanarak raporlama düzenli gösterir. İzleme, dış bir kaynak içinde bir düğüm erişilebilir olup olmadığını denetler. Kaynak uygulama içinde bir hizmet bildirimi tarafından gereklidir. Kaynak kullanılamıyorsa, uygulama içindeki diğer hizmetler yine de düzgün bir şekilde çalışabilir. Bu nedenle, raporu, her 30 saniyede dağıtılan hizmet paketi varlık üzerinde gönderilir.
+* Ana birincil çoğaltma, düzenli aralıklarla düzenli olarak raporlar. Kuyruktaki tüm bekleyen görevler için bir özelliğe sahip olabilirsiniz. En az bir görev daha uzun sürerse, **Pendingtasks** özelliğindeki rapor durumu, uygun şekilde bir uyarı veya hatadır. Bekleyen görev yoksa veya tüm görevler yürütmeyi başlatmışsa, raporun durumu Tamam ' dır. Görevler kalıcıdır. Birincil ise, yeni yükseltilen birincil, doğru rapor almaya devam edebilir.
+* Başka bir izleme işlemi (bulutta veya dış), görevlerin tamamlanıp tamamlanmadığını görmek için görevleri (istenen görev sonucuna göre dışında) denetler. Eşiklere uymadığı durumlarda ana hizmette bir rapor gönderilir. Ayrıca, **pendingtask + TaskID**gibi görev tanımlayıcısını içeren her bir görevde bir rapor gönderilir. Raporların yalnızca sağlıksız durumlar üzerinde gönderilmesi gerekir. Birkaç dakika içinde yaşam süresi belirleyin ve Temizleme işleminin süresi dolduğunda kaldırılacak raporları işaretleyin.
+* Bir görevi çalıştırmak beklenenden uzun sürerse, bir görev raporu yürüten ikincil değer. Bu, **Pendingtasks**özelliğindeki hizmet örneği hakkında rapor bildiriyor. Rapor, sorun olan hizmet örneğini işaret eder, ancak örneğin bu durum, örneğin olduğu durumu yakalamaz. Raporlar daha sonra temizlenir. İkincil hizmette rapor verebilir. İkincil, görevi tamamlarsa, ikincil örnek raporu mağazadan temizler. Rapor, onay iletisinin kaybolduğu ve görevin ana görünümün bir noktasından bitmediği durumu yakalamaz.
+
+Ancak raporlama yukarıda açıklanan durumlarda yapılır, sistem durumu değerlendirildiğinde raporlar uygulama durumu 'nda yakalanır.
+
+## <a name="report-periodically-vs-on-transition"></a>Düzenli aralıklarla rapor geçişe karşı
+Watchdogs, sistem durumu raporlama modelini kullanarak raporları düzenli aralıklarla veya geçişlerde gönderebilir. Kod çok daha basit ve hatalara karşı daha basit olduğundan, izleme raporlaması için önerilen yol düzenli aralıklarla yapılır. Yanlış raporları tetikleyen hataların oluşmaması için Watchdogs ve mümkün olduğunca basit olması gerekir. Kötü *sağlıksız* raporlar, yükseltmeler dahil olmak üzere sistem durumuna göre sistem durumu değerlendirmesini ve senaryolarını etkiler. Hatalı *sağlıklı* raporlar, kümedeki sorunları gizler, bu istenen değildir.
+
+Düzenli raporlama için, izleme bir zamanlayıcı ile uygulanabilir. Bir zamanlayıcı geri aramasında, izleme durumu denetleyebilir ve geçerli duruma göre rapor gönderebilir. Daha önce hangi raporun gönderildiğini görmeniz veya mesajlaşma açısından herhangi bir iyileştirme yapmanız gerekmez. Sistem durumu istemcisinde performans sağlamaya yardımcı olmak için toplu işlem mantığı vardır. Sistem durumu istemcisi etkin tutulurken, rapor sistem durumu deposu tarafından onaylanana veya izleme aynı varlık, özellik ve kaynak ile daha yeni bir rapor üretene kadar dahili olarak yeniden dener.
+
+Geçişler üzerinde raporlama, durumun dikkatli işlenmesini gerektirir. İzleme, bazı koşulları ve raporları yalnızca koşullar değiştiğinde izler. Bu yaklaşımın üstü, daha az raporun gerekli olduğu bir yaklaşımdır. Bulunacağından, izleme mantığının karmaşık olması. İzleme, durum değişikliklerini tespit etmek üzere düzenlenebilmeleri için koşulları veya raporları korumalıdır. Yük devretme sırasında, uygunluk, ancak henüz sistem durumu deposuna gönderilmemiş raporlarla alınmalıdır. Sıra numarası, her zaman arttırılmalıdır. Aksi takdirde, raporlar eski olarak reddedilir. Veri kaybının gerçekleştiği nadir durumlarda, Raporlayıcı durumu ve sistem durumu deposunun durumu arasında eşitleme gerekebilir.
+
+Geçişleri raporlamak, `Partition` veya `CodePackageActivationContext`aracılığıyla kendileri üzerinde hizmet raporlama için anlamlı hale gelir. Yerel nesne (çoğaltma veya dağıtılan hizmet paketi/dağıtılan uygulama) kaldırıldığında, tüm raporları da kaldırılır. Bu otomatik temizleme, Raporlayıcı ve sistem durumu deposu arasında eşitleme gereksinimini ortadan temizler. Rapor üst bölüm veya üst uygulama için ise, sistem durumu deposundaki eski raporların oluşmasını önlemek için yük devretmede dikkatli olunmalıdır. Doğru durumu korumak için Logic eklenmelidir ve artık gerekli olmadığında raporun depolamadan işaretini kaldırın.
+
+## <a name="implement-health-reporting"></a>Sistem durumu raporlamasını Uygula
+Varlık ve rapor ayrıntıları net olduktan sonra, sistem durumu raporlarının gönderilmesi API, PowerShell veya REST aracılığıyla yapılabilir.
+
+### <a name="api"></a>eklentisi
+API aracılığıyla raporlamak için, raporlamak istedikleri varlık türüne özgü bir sistem durumu raporu oluşturmanız gerekir. Bir sistem durumu istemcisine rapor verin. Alternatif olarak, geçerli varlıkları raporlamak için `Partition` veya `CodePackageActivationContext` bir sistem durumu bilgisi oluşturup bunu doğru raporlama yöntemlerine geçirin.
+
+Aşağıdaki örnek, küme içindeki bir izleme 'den düzenli olarak raporlamayı gösterir. İzleme, bir dış kaynağa bir düğüm içinden erişilebilir olup olmadığını denetler. Kaynak, uygulama içindeki bir hizmet bildirimi için gereklidir. Kaynak kullanılamıyorsa, uygulama içindeki diğer hizmetler yine de düzgün şekilde çalışabilir. Bu nedenle rapor, dağıtılan hizmet paketi varlığında her 30 saniyede bir gönderilir.
 
 ```csharp
 private static Uri ApplicationName = new Uri("fabric:/WordCount");
@@ -215,9 +206,9 @@ public static void SendReport(object obj)
 ```
 
 ### <a name="powershell"></a>PowerShell
-Durum raporlarıyla göndermek **gönderme ServiceFabric*EntityType*HealthReport**.
+**Send-ServiceFabric*EntityType*HealthReport**ile sistem durumu raporları gönderin.
 
-Aşağıdaki örnek, bir düğüm üzerindeki CPU değerleri raporlama düzenli gösterir. Raporların her 30 saniyede gönderilmesi gerektiğini ve iki dakikalık bir süresi vardır. Bunlar zaman aşımına uğrarsa, düğüm hatası değerlendirilmemesi muhabir sorunları vardır. CPU bir eşiği aştığında uyarı sistem durumu raporu vardır. CPU, yapılandırılan süre değerinden daha fazla bilgi için bir eşiğin üstünde kaldığında, bir hata raporlanır. Aksi takdirde, sistem durumu Tamam muhabir gönderir.
+Aşağıdaki örnek, bir düğümdeki CPU değerleri üzerinde düzenli raporlamayı gösterir. Raporların her 30 saniyede gönderilmesi ve iki dakikalık yaşam süresi vardır. Süreleri dolarsa, Raporlayıcı sorunlara sahiptir, bu nedenle düğüm hata durumunda değerlendirilir. CPU bir eşiğin üstünde olduğunda, raporun sistem durumu uyarısı olur. CPU, yapılandırılan süreden daha fazla süre boyunca bir eşiğin üzerinde kaldığında hata olarak bildirilir. Aksi takdirde, Raporlayıcı Tamam bir sistem durumu gönderir.
 
 ```powershell
 PS C:\> Send-ServiceFabricNodeHealthReport -NodeName Node.1 -HealthState Warning -SourceId PowershellWatcher -HealthProperty CPU -Description "CPU is above 80% threshold" -TimeToLiveSec 120
@@ -254,7 +245,7 @@ HealthEvents          :
                         Transitions           : ->Warning = 4/21/2015 9:01:21 PM
 ```
 
-Aşağıdaki örnek, bir çoğaltma üzerinde geçici bir uyarı bildirir. İlk bölüm kimliği ve çoğaltma kimliği, ilgileniyor hizmeti alır. Ardından bir rapordan gönderir **PowershellWatcher** özelliğindeki **ResourceDependency**. Raporu yalnızca iki dakika boyunca ilgi çekecektir ve Mağaza'dan otomatik olarak kaldırılır.
+Aşağıdaki örnek bir çoğaltmada geçici bir uyarı bildirir. Önce bölüm KIMLIĞINI ve ardından ilgilendiğiniz hizmetin çoğaltma KIMLIĞINI alır. Ardından, bir **Powershellizleyici** ' den, **resourcedependency**' den bir rapor gönderir. Rapor yalnızca iki dakika boyunca ilgilenir ve mağazadan otomatik olarak kaldırılır.
 
 ```powershell
 PS C:\> $partitionId = (Get-ServiceFabricPartition -ServiceName fabric:/WordCount/WordCount.Service).PartitionId
@@ -299,20 +290,20 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-Sistem Durumu raporu, istenen varlığa gitmek ve sistem durumu raporu açıklaması gövdeye sahip POST istekleri ile REST kullanarak gönderin. Örneğin, REST gönderme konusunu [küme sistem durumu raporlarının](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) veya [hizmet sistem durumu raporlarının](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Tüm varlıkları desteklenir.
+İstenen varlığa gitmeyen POST istekleri ile REST kullanarak sistem durumu raporları gönderin ve sistem durumu raporu açıklamasını gövdesinde olması gerekir. Örneğin, bkz. REST [kümesi durum raporları](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) veya [hizmet durumu raporları](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)gönderme. Tüm varlıklar desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Sistem Durumu verilerini temel alarak hizmet Yazıcılar ve küme/uygulama yöneticileri bilgi edinme yollarını düşünebilirsiniz. Örneğin, bunlar sistem durumuna dayalı uyarılar bunlar kesintilerine yol açabilirsiniz önce ciddi sorunları yakalamak için ayarlayabilirsiniz. Yöneticiler, sorunları otomatik olarak düzeltmek için onarım sistemi de ayarlayabilirsiniz.
+Sistem durumu verilerine bağlı olarak, hizmet yazarları ve küme/uygulama yöneticileri bu bilgileri kullanmanın yollarını düşünebilir. Örneğin, sistem kesintilerini gerçekleştirmeden önce ciddi sorunları yakalamak için sistem durumuna göre uyarıları ayarlayabilir. Yöneticiler, sorunları otomatik olarak çözmek için onarım sistemlerini de ayarlayabilir.
 
-[Giriş Service Fabric sistem durumunu izleme](service-fabric-health-introduction.md)
+[Service Fabric sistem durumu Izlemeye giriş](service-fabric-health-introduction.md)
 
 [Service Fabric sistem durumu raporlarını görüntüleme](service-fabric-view-entities-aggregated-health.md)
 
 [Hizmet durumunu raporlama ve denetleme](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
-[Sorunlarını gidermek için sistem durumu raporlarını kullanma](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+[Sorun giderme için sistem durumu raporlarını kullanma](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
 [Hizmetleri yerel olarak izleme ve tanılama](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-[Service Fabric uygulaması yükseltme](service-fabric-application-upgrade.md)
+[Uygulama yükseltmesini Service Fabric](service-fabric-application-upgrade.md)
 

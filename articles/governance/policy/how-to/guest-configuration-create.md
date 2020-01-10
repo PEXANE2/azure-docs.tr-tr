@@ -1,14 +1,14 @@
 ---
 title: Konuk yapılandırma ilkeleri oluşturma
 description: Azure PowerShell ile Windows veya Linux VM 'Leri için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: d31c03f05f3a27207eb4c184b78cb531f8bb43d6
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873089"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608533"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Konuk yapılandırma ilkeleri oluşturma
 
@@ -24,6 +24,9 @@ Bir Azure makinesinin durumunu doğrulamak üzere kendi yapılandırmanızı olu
 ## <a name="add-the-guestconfiguration-resource-module"></a>GuestConfiguration kaynak modülünü ekleme
 
 Konuk yapılandırma ilkesi oluşturmak için kaynak modülünün eklenmesi gerekir. Bu kaynak modülü, [Azure Cloud Shell](https://shell.azure.com)ile veya [Azure PowerShell Core Docker görüntüsüyle](https://hub.docker.com/r/azuresdk/azure-powershell-core)yerel olarak yüklü PowerShell ile kullanılabilir.
+
+> [!NOTE]
+> **Guestconfiguration** modülü yukarıdaki ortamlarda çalışırken, Windows PowerShell 5,1 ' de bir DSC yapılandırması derlemek için gereken adımlar tamamlanmalıdır.
 
 ### <a name="base-requirements"></a>Temel gereksinimler
 
@@ -59,6 +62,12 @@ Yapılandırmanızda yalnızca Konuk yapılandırma Aracısı yüklemesine sahip
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>Konuk yapılandırması özel kaynakları için gereksinimler
 
 Konuk yapılandırması bir makineyi denetleyemiyorsa, önce doğru durumda olup olmadığını anlamak için `Test-TargetResource` çalışır. İşlevin döndürdüğü Boole değeri, Konuk atamasının Azure Resource Manager durumunun uyumlu olup olmadığını belirler. Boolean, yapılandırmadaki herhangi bir kaynak için `$false`, sağlayıcı `Get-TargetResource`çalışacaktır. Boolean `$true`, `Get-TargetResource` çağrılmaz.
+
+#### <a name="configuration-requirements"></a>Yapılandırma gereksinimleri
+
+Konuk yapılandırmasının özel bir yapılandırmayı kullanması için tek gereksinim, yapılandırmanın adının kullanıldığı her yerde tutarlı olması içindir.  Buna içerik paketi için. zip dosyasının adı, içerik paketi içinde depolanan MOF dosyasındaki yapılandırma adı ve ARM 'de Konuk atama adı olarak kullanılan yapılandırma adı dahildir.
+
+#### <a name="get-targetresource-requirements"></a>Get-TargetResource gereksinimleri
 
 İşlev `Get-TargetResource`, Windows Istenen durum yapılandırması için gerekli olmayan konuk yapılandırması için özel gereksinimlere sahiptir.
 
@@ -96,7 +105,7 @@ Linux üzerinde Konuk yapılandırması için DSC yapılandırması, altyapıyı
 
 Aşağıdaki örnek **temel**olarak adlandırılan bir yapılandırma oluşturur, **guestconfiguration** kaynak modülünü içeri aktarır ve InSpec tanımının adını **Linux-patch-Baseline**olarak ayarla `ChefInSpecResource` kaynağını kullanır:
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration baseline
 {
@@ -120,7 +129,7 @@ Azure Ilke Konuk yapılandırması için DSC yapılandırması yalnızca Konuk y
 
 Aşağıdaki örnek, **Denetimbitlocker**adlı bir yapılandırma oluşturur, **guestconfiguration** kaynak modülünü içeri aktarır ve çalışan bir hizmeti denetlemek için `Service` kaynağını kullanır:
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {
@@ -298,7 +307,7 @@ New-GuestConfigurationPolicy
 
 Linux ilkeleri için, yapılandırmanızda **Attributesymlcontent** özelliğini ekleyin ve değerlerin üzerine yazın. Konuk yapılandırma Aracısı, öznitelikleri depolamak için InSpec tarafından kullanılan YaML dosyasını otomatik olarak oluşturur. Aşağıdaki örneğe bakın.
 
-```azurepowershell-interactive
+```powershell
 Configuration FirewalldEnabled {
 
     Import-DscResource -ModuleName 'GuestConfiguration'
@@ -403,7 +412,7 @@ Linux makinelerle kullanılmak üzere GPG anahtarları oluşturmaya yönelik iyi
 
 İçeriğiniz yayımlandıktan sonra, kod imzasının gerekli olması gereken tüm sanal makinelere ad `GuestConfigPolicyCertificateValidation` ve değer `enabled` içeren bir etiket ekleyin. Bu etiket, Azure Ilkesi kullanılarak ölçeklendirerek teslim edilebilir. [Uygula etiketine ve varsayılan değer](../samples/apply-tag-default-value.md) örneğine bakın. Bu etiket oluşturulduktan sonra, `New-GuestConfigurationPolicy` cmdlet 'i kullanılarak oluşturulan ilke tanımı, Konuk yapılandırma uzantısı aracılığıyla gereksinimi mümkün bir şekilde sunar.
 
-## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>ÖNIZLE Konuk yapılandırma ilkesi atamaları sorunlarını giderme
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Konuk yapılandırma ilkesi atamaları sorunlarını giderme (Önizleme)
 
 Azure Ilke Konuk yapılandırması atamaları sorunlarını gidermeye yardımcı olmak için Önizleme sürümünde bir araç sunulmaktadır. Araç önizlemededir ve modül adı [Konuk yapılandırması sorun giderici](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/)olarak PowerShell Galerisi yayımlandı.
 

@@ -1,25 +1,16 @@
 ---
-title: Service Fabric uygulamasının yükseltmesini yapılandırma | Microsoft Docs
+title: Service Fabric uygulamasının yükseltmesini yapılandırma
 description: Microsoft Visual Studio kullanarak Service Fabric uygulamasını yükseltme ayarlarını yapılandırmayı öğrenin.
-services: service-fabric
-documentationcenter: na
 author: mikkelhegn
-manager: mfussell
-editor: tglee
-ms.assetid: 1757ba85-0b7b-4f16-8a23-2ddaa61c86c6
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikhegn
-ms.openlocfilehash: 5979541146b7cd7b854f35c5bf204e71208f066b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: ef88a528dbb6d326e5cc742d14c27218eb7502f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876750"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464068"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Visual Studio 'da Service Fabric uygulamasının yükseltmesini yapılandırma
 Azure Service Fabric için Visual Studio Araçları, yerel veya uzak kümelerdeki yayımlamaya yönelik yükseltme desteği sağlar. Test ve hata ayıklama sırasında uygulamanızı değiştirmek yerine uygulamanızı daha yeni bir sürüme yükseltmek istediğiniz üç senaryo vardır:
@@ -31,7 +22,7 @@ Azure Service Fabric için Visual Studio Araçları, yerel veya uzak kümelerdek
 ## <a name="parameters-needed-to-upgrade"></a>Yükseltmek için gereken parametreler
 İki tür dağıtım arasından seçim yapabilirsiniz: normal veya yükseltme. Düzenli dağıtım, kümedeki önceki dağıtım bilgilerini ve verileri siler, bu da bir yükseltme dağıtımı tarafından korunur. Visual Studio 'da bir Service Fabric uygulamasını yükselttiğinizde, uygulama yükseltme parametreleri ve sistem durumu denetim ilkeleri sağlamanız gerekir. Uygulama yükseltme parametreleri yükseltmeyi denetlemeye yardımcı olur, ancak sistem durumu denetim ilkeleri yükseltmenin başarılı olup olmadığını belirtir. Daha fazla ayrıntı için bkz. [Service Fabric uygulama yükseltme: yükseltme parametreleri](service-fabric-application-upgrade-parameters.md) .
 
-Üç yükseltme modu vardır: *İzleniyor*, izlenemez *toredauto*ve Iziztoredmanual.
+Üç yükseltme modu vardır: Izlenen, Izlenemez *toredauto*ve *Iziztoredmanual*.
 
 * Izlenen bir yükseltme, yükseltme ve uygulama sistem durumu denetimini otomatikleştirir.
 * Tasmesiz yükseltme, yükseltmeyi otomatikleştirir, ancak uygulama sistem durumu denetimini atlar.

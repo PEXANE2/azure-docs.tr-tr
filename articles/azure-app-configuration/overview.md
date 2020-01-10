@@ -1,24 +1,17 @@
 ---
-title: Azure Uygulama Yapılandırması nedir? | Microsoft Belgeleri
+title: Azure Uygulama Yapılandırması nedir?
 description: Azure uygulama yapılandırma hizmeti 'ne genel bakış.
-services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
+ms.author: yegu
 ms.service: azure-app-configuration
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 01644054868ffc08738e67654ba181c76e7aed39
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 40630bbbbcea344fb74d8ad971eb4c808bf0c142
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185077"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495241"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure Uygulama Yapılandırması nedir?
 
@@ -60,12 +53,12 @@ Uygulama yapılandırması, uygulama gizli dizileri depolamak için kullanılan 
 
 Uygulamanıza uygulama yapılandırma deposu eklemenin en kolay yolu, Microsoft 'un sağladığı bir istemci kitaplığı kullanmaktır. Programlama diline ve çerçevesine bağlı olarak, aşağıdaki en iyi yöntemler kullanılabilir.
 
-| Programlama dili ve Framework | Bağlanma |
+| Programlama dili ve Framework | Nasıl bağlanılır? |
 |---|---|
 | .NET Core ve ASP.NET Core | .NET Core için uygulama yapılandırma sağlayıcısı |
 | .NET Framework ve ASP.NET | .NET için uygulama yapılandırma Oluşturucusu |
 | Java Spring | Yay bulutu için uygulama yapılandırma istemcisi |
-| Diğer | Uygulama yapılandırma REST API |
+| Diğerleri | Uygulama yapılandırma REST API |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

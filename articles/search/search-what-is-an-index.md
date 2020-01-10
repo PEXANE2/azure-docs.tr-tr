@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460756"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama temel dizin oluşturma
 
@@ -175,10 +175,9 @@ Bir dizin oluşturmak için kullandığınız API 'Ler, farklı varsayılan davr
 | `facetable` |Kullanıcının bağımsız filtrelemesi için [modellenmiş bir gezinmede](search-faceted-navigation.md) bir alanın kullanılmasını sağlar. Genellikle birden çok belgeyi bir araya gruplamak için kullanabileceğiniz yinelemeli değerler içeren alanlar (örneğin, tek bir marka veya hizmet kategorisine denk gelen birden çok belge) model olarak en iyi şekilde işler. |
 | `searchable` |Alanı tam metin aranabilir şeklinde işaretler. |
 
+## <a name="index-size"></a>Dizin boyutu
 
-## <a name="storage-implications"></a>Depolama etkileri
-
-Seçtiğiniz özniteliklerin depolama üzerinde bir etkisi vardır. Aşağıdaki ekran görüntüsünde, çeşitli öznitelik birleşimlerinden kaynaklanan dizin depolama desenleri gösterilmektedir.
+Bir dizinin boyutu, karşıya yüklediğiniz belgelerin boyutuna göre belirlenir ve öneri araçları dahil edilip edilmeyeceğini ve ayrı alanlarda öznitelikleri nasıl ayarlayacağınıza ilişkin Dizin yapılandırması vardır. Aşağıdaki ekran görüntüsünde, çeşitli öznitelik birleşimlerinden kaynaklanan dizin depolama desenleri gösterilmektedir.
 
 Dizin, portalda dizin oluşturup sorgulayabilmeniz için [yerleşik gerçek emlak örnek](search-get-started-portal.md) veri kaynağını temel alır. Dizin şemaları gösterilmese de, dizin adına göre öznitelikleri çıkarsyükleyebilirsiniz. Örneğin, *reatastate ile aranabilir* Dizin, **aranabilir** bir özniteliğe sahiptir ve başka hiçbir şey yoktur, *reatastate-alınabilir* Dizin, **alınabilir** özniteliğe ve başka hiçbir şey ve bu şekilde devam eder.
 
@@ -186,13 +185,13 @@ Dizin, portalda dizin oluşturup sorgulayabilmeniz için [yerleşik gerçek emla
 
 Bu dizin çeşitleri yapay olsa da, özniteliklerin depolamayı nasıl etkilediği hakkında geniş karşılaştırmalar için bunlara başvurabiliyoruz. , **Alınabilir** artış dizini boyutu ayarı yapılsın mı? Hayır. **Öneri aracı** bir dizin boyutunu artırmak için alan ekleme Evet.
 
-Filtre ve sıralamayı destekleyen dizinler, tam metin aramasını destekleyen dizinlerden nispeten daha büyüktür. Bunun nedeni, filtre ve sıralama sorgusunun tam eşleştirmelerle, belgelerin bozulmadan depolanmasıdır. Buna karşılık, tam metin ve belirsiz aramayı destekleyen aranabilir alanlar, tüm belgelerden daha az alan tüketen simgeleştirilmiş koşullarla doldurulmuş ters dizinler kullanır.
+Filtre ve sıralamayı destekleyen dizinler, tam metin aramasını destekleenlerden daha büyük oranlardır. Filtre ve sıralama işlemleri, tam eşleşmeler için, bozulmadan belgeler olmasını gerektiren filtreleme ve sıralama işlemlerini tarar. Buna karşılık, tam metin ve belirsiz aramayı destekleyen aranabilir alanlar, tüm belgelerden daha az alan tüketen simgeleştirilmiş koşullarla doldurulmuş ters dizinler kullanır. 
 
 > [!Note]
 > Depolama mimarisi Azure Bilişsel Arama uygulama ayrıntısı olarak değerlendirilir ve bildirimde bulunulmadan değiştirilebilir. Geçerli davranışın gelecekte devam edeceğini garanti vermez.
 
 ## <a name="suggesters"></a>Öneri Araçları
-Bir öneri aracı, aramalardaki otomatik tamamlamayı veya tür ön sorguları desteklemek için bir dizindeki hangi alanların kullanıldığını tanımlayan şemanın bir bölümüdür. Genellikle kısmi arama dizeleri, Kullanıcı bir arama sorgusu yazarken [(REST API) önerilere](https://docs.microsoft.com/rest/api/searchservice/suggestions) GÖNDERILIR ve API önerilen bir tümcecik kümesi döndürür. 
+Bir öneri aracı, aramalardaki otomatik tamamlamayı veya tür ön sorguları desteklemek için bir dizindeki hangi alanların kullanıldığını tanımlayan şemanın bir bölümüdür. Genellikle kısmi arama dizeleri, Kullanıcı bir arama sorgusu yazarken [(REST API) önerilere](https://docs.microsoft.com/rest/api/searchservice/suggestions) GÖNDERILIR ve API, önerilen bir belge veya tümcecik kümesi döndürür. 
 
 Bir öneri aracı eklenen alanlar, tür öncelikli arama terimleri oluşturmak için kullanılır. Tüm arama terimleri dizin oluşturma sırasında oluşturulur ve ayrı olarak depolanır. Öneri aracı yapısı oluşturma hakkında daha fazla bilgi için bkz. [Add öneri araçları](index-add-suggesters.md).
 
@@ -218,7 +217,7 @@ CORS için aşağıdaki seçenekler ayarlanabilir:
 
 + **Maxageınseconds** (isteğe bağlı): TARAYıCıLAR, CORS ön denetim yanıtlarını önbelleğe almak için süreyi (saniye cinsinden) belirlemede bu değeri kullanır. Bu negatif olmayan bir tamsayı olmalıdır. Bu değer arttıkça, daha iyi performans olacaktır, ancak CORS ilke değişikliklerinin etkili olması için daha uzun sürer. Ayarlanmamışsa, varsayılan 5 dakikalık bir süre kullanılacaktır.
 
-## <a name="encryption-key"></a>Şifreleme anahtarı
+## <a name="encryption-key"></a>Şifreleme Anahtarı
 
 Tüm Azure Bilişsel Arama dizinleri Microsoft tarafından yönetilen anahtarlar kullanılarak varsayılan olarak şifrelense de, dizinler Key Vault **müşteri tarafından yönetilen anahtarlarla** şifrelenecek şekilde yapılandırılabilir. Daha fazla bilgi için bkz. [Azure 'da şifreleme anahtarlarını yönetme bilişsel arama](search-security-manage-encryption-keys.md).
 

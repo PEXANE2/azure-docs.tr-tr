@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 0c1ca054f9d28bb81c6f8acf6c0f43b134a596ed
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 564e69e3cd852c6a0f8c20278d4742b77f064298
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293776"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75499984"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin grafik desteği
 Azure Cosmos DB, [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps)olarak bilinen [Apache tinkerpop 'un](https://tinkerpop.apache.org) grafik çapraz geçiş dilini destekler. Grafik varlıkları (köşeler ve kenarlar) oluşturmak, bu varlıkların içindeki özellikleri değiştirmek, sorgu ve geçiş işlemleri gerçekleştirmek ve varlıkları silmek için Gremlin dilini kullanabilirsiniz. 
@@ -48,7 +48,7 @@ Aşağıdaki tabloda Azure Cosmos DB tarafından uygulanan TinkerPop özellikler
 
 ## <a name="gremlin-wire-format-graphson"></a>Gremlin gönderme biçimi: GraphSON
 
-Azure Cosmos DB, Gremlin işlemlerinden sonuçları döndürürken [GraphSON biçimini](http://tinkerpop.apache.org/docs/current/reference/#graphson) kullanır. Azure Cosmos DB Şu anda "GraphSONv2" sürümünü destekliyor. GraphSON köşeleri, kenarları ve özellikleri (tek ve birden çok değerli özellikleri) JSON kullanarak temsil etmeye yönelik standart Gremlin biçimidir.
+Azure Cosmos DB, Gremlin işlemlerinden sonuçları döndürürken [GraphSON biçimini](https://tinkerpop.apache.org/docs/current/reference/#graphson) kullanır. Azure Cosmos DB Şu anda "GraphSONv2" sürümünü destekliyor. GraphSON köşeleri, kenarları ve özellikleri (tek ve birden çok değerli özellikleri) JSON kullanarak temsil etmeye yönelik standart Gremlin biçimidir.
 
 Örneğin aşağıdaki kod parçacığında Azure Cosmos DB’den *istemciye döndürülen* bir köşenin temsili gösterilir. 
 
@@ -104,7 +104,7 @@ Kenar, grafiğin diğer bölümlerine gezintiyi kolaylaştırmak için aşağıd
 
 | Özellik | Açıklama |
 | --- | --- |
-| `id` | Kenarın kimliği. Benzersiz olmalıdır (varsa `_partition` değeri ile birlikte) |
+| `id` | Kenarın kimliği. Benzersiz olmalıdır (varsa `_partition` değeriyle birlikte) |
 | `label` | Kenarın etiketi. Bu özellik isteğe bağlıdır ve ilişki türünü tanımlamak için kullanılır. |
 | `inV` | Bu özellik, bir kenar için köşelerin bir listesini içerir. Komşuluk bilgilerini kenarla birlikte depolamak, geçişlerin hızla yürütülmesini sağlar. Köşeler etiketlerine göre gruplandırılır. |
 | `properties` | Kenar ile ilişkili, kullanıcı tanımlı özellikler paketi. Her bir özellik birden çok değere sahip olabilir. |
@@ -151,11 +151,11 @@ Her bir özellik, bir dizi içinde birden çok değer depolayabilir.
 | `select` | Sonuçları geçişten projelendirmek için kullanılır |  [select step](https://tinkerpop.apache.org/docs/3.3.2/reference/#select-step) |
 | `store` | Geçişteki engelleyici olmayan toplamalar için kullanılır | [store step](https://tinkerpop.apache.org/docs/3.3.2/reference/#store-step) |
 | `TextP.startingWith(string)` | Dize filtreleme işlevi. Bu işlev, belirli bir dizenin başlangıcıyla bir özelliği eşleştirmek için `has()` adımının bir koşulu olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.endingWith(string)` |  Dize filtreleme işlevi. Bu işlev, belirli bir dizenin sonu ile bir özelliği eşleştirmek için `has()` adımının bir koşulu olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.containing(string)` | Dize filtreleme işlevi. Bu işlev, belirli bir dizenin içeriğiyle bir özelliği eşleştirmek için `has()` adımının bir koşulu olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notStartingWith(string)` | Dize filtreleme işlevi. Bu işlev, `has()` adımının belirli bir dizeyle başlamayana bir özelliği eşleştirmek için bir koşul olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notEndingWith(string)` | Dize filtreleme işlevi. Bu işlev, belirli bir dizeyle bitmeyen bir özelliği eşleştirmek için `has()` adımının bir koşulu olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notContaining(string)` | Dize filtreleme işlevi. Bu işlev, `has()` adımının belirli bir dizeyi içermeyen bir özelliği eşleştirmek için bir koşul olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.endingWith(string)` |  Dize filtreleme işlevi. Bu işlev, belirli bir dizenin sonu ile bir özelliği eşleştirmek için `has()` adımı için bir koşul olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.containing(string)` | Dize filtreleme işlevi. Bu işlev, bir özelliği belirli bir dizenin içeriğiyle eşleştirmek için `has()` adımı için bir koşul olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notStartingWith(string)` | Dize filtreleme işlevi. Bu işlev, belirli bir dize ile başlamameyen bir özelliği eşleştirmek için `has()` adımı için bir koşul olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notEndingWith(string)` | Dize filtreleme işlevi. Bu işlev, belirli bir dizeyle bitmeyen bir özelliği eşleştirmek için `has()` adımı için bir koşul olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notContaining(string)` | Dize filtreleme işlevi. Bu işlev, belirli bir dize içermeyen bir özelliği eşleştirmek için `has()` adımı için bir koşul olarak kullanılır | [TextP koşulları](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `tree` | Bir köşeden ağaca yolları toplar | [tree step](https://tinkerpop.apache.org/docs/3.3.2/reference/#tree-step) |
 | `unfold` | Adım olarak bir yineleyici açar| [unfold step](https://tinkerpop.apache.org/docs/3.3.2/reference/#unfold-step) |
 | `union` | Birden çok geçişin sonuçlarını birleştirir| [union step](https://tinkerpop.apache.org/docs/3.3.2/reference/#union-step) |

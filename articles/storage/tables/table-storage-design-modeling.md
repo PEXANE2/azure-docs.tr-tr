@@ -1,6 +1,6 @@
 ---
-title: Azure depolama Tablo Tasarımı ilişkileri modelleme | Microsoft Docs
-description: Tablo depolama çözümünüzü tasarlarken modelleme işlemi anlayın.
+title: Azure Tablo depolama tasarımında ilişki modelleme | Microsoft Docs
+description: Tablo depolama çözümünüzü tasarlarken modelleme sürecini anlayın.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502545"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457569"
 ---
 # <a name="modeling-relationships"></a>İlişkileri modelleme
-Bu makalede, Azure tablo depolama çözümleri tasarlamanıza yardımcı olacak modelleme işlemi açıklanmaktadır.
+Bu makalede, Azure Tablo depolama çözümlerinizi tasarlamanıza yardımcı olacak modelleme süreci ele alınmaktadır.
 
 Etki alanı modellerini oluşturma karmaşık sistemlerin tasarımında önemli bir adımdır. Genellikle, varlıklar ve iş etki alanını anlamak ve sisteminizin tasarımına bildirmek için bir yol olarak arasındaki ilişkileri tanımlamak için modelleme işlemi kullanın. Bu bölüm, nasıl, bazı yaygın ilişki türleri tasarımı için tablo hizmeti için etki alanı modelleri bulunan çevirebilir üzerinde odaklanır. İlişkisel bir veritabanı tasarlarken kullanılan farklı bir fiziksel NoSQL tabanlı veri modeli için bir mantıksal veri modelinden eşleme işlemidir. İlişkisel veritabanları tasarım yedeklilik – ve nasıl uygulanması veritabanı işleyişi soyutlayan bir bildirim temelli sorgulanırken özelliği en aza indirmek için en iyi duruma getirilmiş veri normalleştirme işlemi genellikle varsayar.  
 
@@ -26,7 +26,7 @@ Etki alanı modellerini oluşturma karmaşık sistemlerin tasarımında önemli 
 On binlerce Departmanlar ve çalışan varlıkların her departman çok sayıda çalışan ve her çalışana belirli bir bölümle ilişkili olarak sahip olduğu büyük bir Uluslararası Şirket örneği göz önünde bulundurun. Ayrı bir departman ve bunlar gibi çalışan varlıkları depolamak için bir yaklaşım şöyledir:  
 
 
-![Ayrı bir departman ve çalışan varlıkları Store](media/storage-table-design-guide/storage-table-design-IMAGE01.png)
+![Ayrı departmanı ve çalışan varlıklarını depolayın](media/storage-table-design-guide/storage-table-design-IMAGE01.png)
 
 Bu örnek, temel türleri arasında örtük bir-çok ilişkisi gösterir **PartitionKey** değeri. Her departmandaki çalışanların çoğu olabilir.  
 
@@ -101,12 +101,12 @@ Etki alanı modelleri varlıklar arasında bire bir ilişkiler içerebilir. Tabl
 Tablo hizmetinde bire bir ilişkiler uygulamak için yol açabilecek bir uygulama konuları vardır:  
 
 * Büyük varlıklar işleme (daha fazla bilgi için [büyük varlıklar deseni](table-storage-design-patterns.md#large-entities-pattern)).  
-* Erişim denetimleri uygulama (daha fazla bilgi için paylaşılan erişim imzaları ile erişimi denetleme bakın).  
+* Erişim denetimleri uygulama (daha fazla bilgi için bkz. paylaşılan erişim Imzaları ile erişimi denetleme).  
 
 ## <a name="join-in-the-client"></a>İstemci katılın
 Tablo hizmetinde ilişkileri modellemek için yol olsa da, tablo hizmeti kullanarak iki ana nedeni ölçeklenebilirlik ve performans olduğunu unutmayın. Performans ve ölçeklenebilirlik çözümünüzün tehlikeye çok ilişkileri modelleme fark ederseniz, tablo tasarımınızla tüm veri ilişkileri oluşturmak gerekli olup olmadığını kendiniz istemeniz gerekir. Tasarımınızı basitleştirmek ve istemci uygulamanızı gerekli tüm birleştirmeler gerçekleştirme izin verirseniz, çözümünüzün performansını ve ölçeklenebilirliğini artırmak mümkün olabilir.  
 
-Örneğin, genellikle değiştirmez veriler içeren küçük tablolar varsa, daha sonra bu verileri bir kez alabilir ve istemcide önbellek. Bu, aynı verileri almak için yinelenen gidiş-dönüş önleyebilirsiniz. Bu kılavuzda inceledik örneklerde, küçük ve seyrek veri ara olarak istemci uygulama bir kez indirebilirsiniz verileri ve önbellek için iyi bir adaydır yapmadan değiştirmek küçük bir kuruluş departmanlara kümesini olasıdır.  
+Örneğin, genellikle değiştirmez veriler içeren küçük tablolar varsa, daha sonra bu verileri bir kez alabilir ve istemcide önbellek. Bu, aynı verileri almak için yinelenen gidiş-dönüş önleyebilirsiniz. Bu kılavuzda baktığımız örneklerde, küçük bir kuruluştaki bölüm kümesinin küçük olması büyük olasılıkla, istemci uygulamasının bir kez indirebileceğiniz veriler ve veri arama olarak önbelleğe almak için iyi bir aday hale getirilmesi olasıdır.  
 
 ## <a name="inheritance-relationships"></a>Kalıtım ilişkileri
 İstemci uygulamanız bir dizi iş varlığı temsil eden bir devralma ilişkisi parçasını sınıfı kullanıyorsa, bu varlıkların tablo hizmetindeki kolayca kalıcı hale getirebilirsiniz. Örneğin, aşağıdaki istemci uygulamanızda tanımlanan sınıflar kümesini olabilir. burada **kişi** bir Özet sınıf.
@@ -117,12 +117,12 @@ Bu görünüm bu gibi varlıkları kullanarak tek bir kişi tablosunu kullanarak
 
 ![Kişi tablosu](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
 
-İstemci kodu aynı tabloda birden fazla varlık türleri ile çalışma hakkında daha fazla bilgi için bkz bu kılavuzun devamında heterojen varlık türleri ile çalışma. Bu varlık türünde istemci kodu anlamayı örnekleri sağlar.  
+İstemci kodunda aynı tabloda birden fazla varlık türüyle çalışma hakkında daha fazla bilgi için bu kılavuzun ilerleyen kısımlarında bulunan heterojen varlık türleriyle çalışma bölümüne bakın. Bu varlık türünde istemci kodu anlamayı örnekleri sağlar.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Tablo Tasarım desenleri](table-storage-design-patterns.md)
-- [Sorgulama için Tasarım](table-storage-design-for-query.md)
+- [Tablo tasarım desenleri](table-storage-design-patterns.md)
+- [Sorgulama tasarımı](table-storage-design-for-query.md)
 - [Tablo verilerini şifreleme](table-storage-design-encrypt-data.md)
-- [Veri değişikliği için Tasarım](table-storage-design-for-modification.md)
+- [Veri değişikliği için tasarım](table-storage-design-for-modification.md)

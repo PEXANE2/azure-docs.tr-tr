@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: d67270896792ea506d2df04dcc3745a43d3d8251
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dcbc20f768ae80404979d47f23e7e08098757b41
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012875"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613338"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Application gateway, Azure portalını kullanarak HTTPS yeniden yönlendirmesi için HTTP ile oluşturma
 
@@ -63,7 +63,7 @@ Export-PfxCertificate `
   -Password $pwd
 ```
 
-## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
+## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturun
 
 Bir sanal ağ, oluşturduğunuz kaynakları arasındaki iletişim için gereklidir. Bu örnekte iki alt ağ oluşturulmuştur: biri uygulama ağ geçidi ve diğeri de arka uç sunucuları içindir. Uygulama ağ geçidini oluştururken aynı zamanda bir sanal makine oluşturabilirsiniz.
 
@@ -118,15 +118,15 @@ Bir sanal ağ, oluşturduğunuz kaynakları arasındaki iletişim için gereklid
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>Bir yeniden yönlendirme yapılandırması ile yönlendirme kuralı Ekle
 
-1. Üzerinde **myAppGateway**seçin **kuralları** seçip **+ temel**.
-2. İçin **adı**, türü *bağlanma2*.
+1. **Myappgateway**'de, **kurallar** ' ı seçin ve ardından **+ istek yönlendirme kuralı**' nı seçin.
+2. **Kural adı**için *bağlanma2*yazın.
 3. Olun **MyListener** dinleyici için seçilir.
-4. Seçin **yeniden yönlendirmeyi yapılandırma** onay kutusu.
+4. **Arka uç hedefleri** sekmesine tıklayın ve **hedef tür** ' i *yeniden yönlendirme*olarak seçin.
 5. İçin **yönlendirme türü**seçin **kalıcı**.
 6. İçin **yeniden yönlendirme hedefi**seçin **dinleyici**.
 7. Olun **hedef dinleyici** ayarlanır **appGatewayHttpListener**.
-8. Seçin **sorgu dizesi dahil et** ve **yoluna** onay kutuları.
-9. **Tamam**’ı seçin.
+8. **İçerme sorgu dizesi** ve **Içerme yolu** için *Evet*' i seçin.
+9. **Add (Ekle)** seçeneğini belirleyin.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Sanal makine ölçek kümesi oluşturma
 
@@ -146,7 +146,7 @@ Bu örnekte uygulama ağ geçidinde arka uç havuzu için sunucu sağlayan bir s
 12. Altında **ağ**, olun **Yük Dengeleme seçeneklerini seçin** ayarlanır **Application Gateway**.
 13. Olun **uygulama ağ geçidi** ayarlanır **myAppGateway**.
 14. Olun **alt** ayarlanır **myBackendSubnet**.
-15. **Oluştur**'u seçin.
+15. **Oluştur**’u seçin.
 
 ### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>Ölçek kümesini uygun arka uç havuzu ile ilişkilendirme
 
@@ -172,7 +172,7 @@ Son olarak, bu değişikliklerle ölçek yükseltmeniz gerekir.
 1. Seçin **myvmss** ölçek kümesi.
 2. Altında **ayarları**seçin **örnekleri**.
 3. Her iki örnek seçin ve ardından **yükseltme**.
-4. Onaylamak için **Evet**’i seçin.
+4. Onaylamak için **Evet**'i seçin.
 5. Bu tamamlandıktan sonra dönün **myAppGateway** seçip **arka uç havuzları**. Şimdi, görürsünüz **appGatewayBackendPool** iki hedefi vardır ve **myAppGatewaymyvmss** sıfır hedeflere sahip.
 6. Seçin **myAppGatewaymyvmss**ve ardından **Sil**.
 7. Seçin **Tamam** onaylamak için.
@@ -206,7 +206,7 @@ IIS örnekleriyle değiştirdikten sonra yine bu değişiklikle birlikte ölçek
 1. Seçin **myvmss** ölçek kümesi.
 2. Altında **ayarları**seçin **örnekleri**.
 3. Her iki örnek seçin ve ardından **yükseltme**.
-4. Onaylamak için **Evet**’i seçin.
+4. Onaylamak için **Evet**'i seçin.
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 

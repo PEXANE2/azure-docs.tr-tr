@@ -1,6 +1,6 @@
 ---
-title: Azure CLı betik örneği-iç ve dış NSG ile iki VM oluşturma
-description: Azure CLI Betik Örneği - İç ve dış NSG ile iki VM oluşturma
+title: 'CLı örneği: iç ve dış NSG ile iki VM oluşturma'
+description: Azure CLı kullanarak ağ trafiğini güvenli hale getirmek için iç ve dış NSG ile iki VM oluşturun.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 857a2862a7ddf515567f96b2e688e54a957cd3d9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3e3d1fe3bf464892934198d06b602a5b8bcafb67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039593"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458381"
 ---
-# <a name="secure-network-traffic-between-virtual-machines"></a>Sanal makineler arasındaki ağ trafiğinin güvenliğini sağlama
+# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>NSG kullanarak sanal makineler arasında güvenli ağ trafiği
 
 Bu betik iki sanal makine oluşturur ve her ikisine de gelen trafiğin güvenliğini sağlar. Bir sanal makineye İnternet üzerinden erişilebilir ve sanal makinenin 22 ve 80 numaralı bağlantı noktaları üzerinden trafiğe izin verecek şekilde yapılandırılmış bir ağ güvenlik gurubu (NSG) vardır. İkinci sanal makine Internet üzerinden erişilebilir değildir ve yalnızca birinci sanal makineden gelen trafiğe izin verecek şekilde yapılandırılmış bir NSG’ye sahiptir.
 

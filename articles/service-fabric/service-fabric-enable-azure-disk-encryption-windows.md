@@ -1,24 +1,14 @@
 ---
-title: Azure Service Fabric Windows kümeleri için disk şifrelemeyi etkinleştirme | Microsoft Docs
+title: Windows kümeleri için disk şifrelemeyi etkinleştir
 description: Bu makalede, Azure Resource Manager Azure Key Vault kullanılarak Azure Service Fabric küme düğümleri için disk şifrelemenin nasıl etkinleştirileceği açıklanır.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: navya
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/22/2019
-ms.author: atsenthi
-ms.openlocfilehash: 64abc48d57196fe20466032652c4b9bfb2e6c71f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 24405c3c34bfd7b88932101c42a8d0fc96c90fa1
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599535"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614460"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>Windows 'da Azure Service Fabric küme düğümleri için disk şifrelemeyi etkinleştirme 
 > [!div class="op_single_selector"]
@@ -37,7 +27,7 @@ Kılavuzda aşağıdaki konular ele alınmaktadır:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 **Kendi kendine kayıt** 
 
@@ -59,9 +49,9 @@ Sanal makine ölçek kümesi için disk şifreleme önizlemesi, kendi kendine ka
     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
     ```
 2. Yeni şifreleme komutlarına sahip olan [Azure CLI](/cli/azure/install-azure-cli)'nin en son sürümünü yükler.
-3. [Azure PowerShell sürümden Azure SDK 'sının](https://github.com/Azure/azure-powershell/releases) en son sürümünü yükler. Aşağıda, sanal makine ölçek kümesi Azure disk şifrelemesi cmdlet 'leri tarafından etkinleştirilir ([ayarlanır](/powershell/module/az.compute/set-azvmssdiskencryptionextension)), şifreleme durumunu alabilir[](/powershell/module/az.compute/get-azvmssvmdiskencryption)ve ölçek kümesi örneğindeki şifrelemeyi kaldırır ([devre dışı](/powershell/module/az.compute/disable-azvmssdiskencryption)).
+3. [Azure PowerShell sürümden Azure SDK 'sının](https://github.com/Azure/azure-powershell/releases) en son sürümünü yükler. Aşağıda, sanal makine ölçek kümesi Azure disk şifrelemesi cmdlet 'leri tarafından etkinleştirilir ([ayarlanır](/powershell/module/az.compute/set-azvmssdiskencryptionextension)), şifreleme durumunu alabilir ve ölçek kümesi örneğindeki şifrelemeyi[kaldırır (](/powershell/module/az.compute/get-azvmssvmdiskencryption)[devre dışı](/powershell/module/az.compute/disable-azvmssdiskencryption)).
 
-| Komut | Version |  Source  |
+| Komut | Sürüm |  Kaynak  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 veya üzeri | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 veya üzeri | Az.Compute |
@@ -81,7 +71,7 @@ Sanal makine ölçek kümesi için disk şifreleme önizlemesi, kendi kendine ka
 
 Bir küme oluşturmak ve bir Azure Resource Manager şablonu ve kendinden imzalı bir sertifika kullanarak disk şifrelemeyi etkinleştirmek için aşağıdaki komutları kullanın.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma 
+### <a name="sign-in-to-azure"></a>Azure'da oturum açın 
 Aşağıdaki komutlarla oturum açın:
 ```powershell
 Login-AzAccount

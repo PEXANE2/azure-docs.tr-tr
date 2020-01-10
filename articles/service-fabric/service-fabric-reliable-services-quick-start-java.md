@@ -1,55 +1,46 @@
 ---
-title: Java kullanarak ilk Azure Service Fabric güvenilir hizmeti oluşturma | Microsoft Docs
-description: Microsoft Azure Service Fabric uygulaması ile durum bilgisiz ve durum bilgisi olan hizmetler oluşturmaya giriş.
-services: service-fabric
-documentationcenter: java
+title: Java 'da ilk güvenilir hizmetinizi oluşturma
+description: Durum bilgisiz ve durum bilgisi olan hizmetlerle Microsoft Azure Service Fabric uygulama oluşturmaya giriş.
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 6bf8c632a7513d018745bc74aa0a1db95a39af8b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3b301a7a9039f1fe8095950f0a5a4e23eb52a9b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130135"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614222"
 ---
-# <a name="get-started-with-reliable-services"></a>Reliable Services özelliğini kullanmaya başlayın
+# <a name="get-started-with-reliable-services-in-java"></a>Java 'da Reliable Services kullanmaya başlama
 > [!div class="op_single_selector"]
 > * [Windows üzerinde C#](service-fabric-reliable-services-quick-start.md)
 > * [Linux üzerinde Java](service-fabric-reliable-services-quick-start-java.md)
 >
 >
 
-Bu makalede, Azure Service Fabric güvenilir hizmetler temelleri açıklanır ve oluşturma ve Java dilinde yazılan basit bir güvenilir hizmet uygulaması dağıtma gösterilmektedir. 
+Bu makalede, Azure Service Fabric Reliable Services temel bilgileri açıklanmakta ve Java 'da yazılmış basit bir güvenilir hizmet uygulaması oluşturma ve dağıtma işlemi adım adım açıklanmaktadır. 
 
-## <a name="installation-and-setup"></a>Yükleme ve Kurulum
-Başlamadan önce makinenizde ayarlanan Service Fabric geliştirme ortamına sahip olduğunuzdan emin olun.
-Bu örneği ayarlamanız gerekirse, Git [Mac üzerinde çalışmaya başlama](service-fabric-get-started-mac.md) veya [Linux'ta kullanmaya başlama](service-fabric-get-started-linux.md).
+## <a name="installation-and-setup"></a>Yükleme ve kurulum
+Başlamadan önce, makinenizde Service Fabric geliştirme ortamının ayarlanmış olduğundan emin olun.
+Ayarlamanız gerekirse [Mac](service-fabric-get-started-mac.md) 'e Başlarken veya [Linux üzerinde çalışmaya](service-fabric-get-started-linux.md)başlama bölümüne gidin.
 
 ## <a name="basic-concepts"></a>Temel kavramlar
-Reliable Services ile çalışmaya başlamak için yalnızca birkaç temel kavramları anlamanız gerekir:
+Reliable Services kullanmaya başlamak için yalnızca birkaç temel kavramları anlamanız gerekir:
 
-* **Hizmet türünü**: Hizmet uygulamanız budur. Genişleten yazdığınız sınıfı tarafından tanımlanır `StatelessService` ve diğer kodu veya bağımlılıkları, bir ad ve bir sürüm numarası ile birlikte kullanılır.
-* **Hizmet örneği adlı**: Sınıf türü nesne örneklerini oluşturmak gibi hizmetinizi çalıştırmak için adlandırılmış örneklerde, hizmet türünün çok oluşturun. Hizmet örnekleri, aslında yazdığınız, hizmet sınıfı nesne öğesinin örneklemeleri olan.
-* **Hizmet ana bilgisayarı**: Konak içinde çalıştırmak oluşturduğunuz adlandırılmış hizmet örnekleri gerekir. Hizmet ana bilgisayarı, hizmetin örneklerine çalıştırdığı yalnızca bir işlemdir.
-* **Hizmet kayıt**: Kayıt olan her şeyi birlikte sunar. Çalıştırmak için Service Fabric çalışma zamanıyla bir hizmet ana örneği oluşturmak Service Fabric izin vermek için hizmet türü kayıtlı olması gerekir.  
+* **Hizmet türü**: Bu hizmet uygulamanız. Bu, bir ad ve sürüm numarasıyla birlikte `StatelessService` genişleten, yazdığınız ve diğer kod ya da bağımlılıkların kullanıldığı sınıf tarafından tanımlanır.
+* **Adlandırılmış hizmet örneği**: hizmetinizi çalıştırmak için, bir sınıf türünün nesne örneklerini oluştururken olduğu gibi, hizmet türünden adlandırılmış örnekler oluşturursunuz. Hizmet örnekleri, yazdığınız hizmet sınıfınızın olgu nesne örneklemelerinden oluşur.
+* **Hizmet ana bilgisayarı**: oluşturduğunuz adlandırılmış hizmet örneklerinin bir konak içinde çalıştırılması gerekir. Hizmet ana bilgisayarı yalnızca hizmetinizin örneklerinin çalıştırılabileceği bir işlemdir.
+* **Hizmet kaydı**: kayıt her şeyi bir araya getirir. Service Fabric çalıştırmak için hizmet türü, bir hizmet ana bilgisayarındaki Service Fabric çalışma zamanına kaydedilmelidir.  
 
 ## <a name="create-a-stateless-service"></a>Durum bilgisi olmayan hizmet oluşturma
-Service Fabric uygulaması oluşturarak başlayın. Linux için Service Fabric SDK'sı bir Yeoman içeren bir durum bilgisi olmayan hizmet ile bir Service Fabric uygulaması için iskele sağlamak için oluşturucu. Aşağıdaki Yeoman çalıştırarak komutu:
+Service Fabric bir uygulama oluşturarak başlayın. Linux için Service Fabric SDK 'Sı, durum bilgisi olmayan bir hizmetle Service Fabric bir uygulama için yapı iskelesi sağlamak üzere Yeumman Oluşturucu içerir. Aşağıdaki Yeumman komutunu çalıştırarak başlayın:
 
 ```bash
 $ yo azuresfjava
 ```
 
-Oluşturmak için yönergeleri izleyin bir **güvenilir durum bilgisi olmayan hizmet**. Bu öğreticide, "HelloWorldApplication" uygulama adı ve "HelloWorld" hizmeti. Sonuç için dizinler içeren `HelloWorldApplication` ve `HelloWorld`.
+**Güvenilir bir durum bilgisiz hizmeti**oluşturmak için yönergeleri izleyin. Bu öğreticide, "Merhaba Worldapplication" adlı uygulamayı ve "HelloWorld" hizmetini adlandırın. Sonuç, `HelloWorldApplication` ve `HelloWorld`için dizinleri içerir.
 
 ```bash
 HelloWorldApplication/
@@ -76,7 +67,7 @@ HelloWorldApplication/
 └── uninstall.sh
 ```
 ### <a name="service-registration"></a>Hizmet kaydı
-Hizmet türlerini Service Fabric çalışma zamanıyla kaydedilmesi gerekir. Hizmet türünün tanımlanan `ServiceManifest.xml` ve uygular, hizmet sınıfı `StatelessService`. Hizmet kayıt işlemin ana girdi noktası içinde gerçekleştirilir. Bu örnekte, işlem ana giriş noktasıdır `HelloWorldServiceHost.java`:
+Hizmet türlerinin Service Fabric çalışma zamanına kayıtlı olması gerekir. Hizmet türü, `StatelessService`uygulayan `ServiceManifest.xml` ve hizmet sınıfınıza tanımlanmıştır. Hizmet kaydı, işlem ana giriş noktasında gerçekleştirilir. Bu örnekte, işlem ana giriş noktası `HelloWorldServiceHost.java`:
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -92,11 +83,11 @@ public static void main(String[] args) throws Exception {
 }
 ```
 
-## <a name="implement-the-service"></a>Hizmet ekleme
+## <a name="implement-the-service"></a>Hizmeti uygulama
 
-Açık **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Bu sınıf, hizmet türünü tanımlar ve herhangi bir kodu çalıştırabilir. Hizmet API'si, kodunuz için iki giriş noktası sağlar:
+**Merhaba Worldapplication/HelloWorld/src/statelessservice/HelloWorldService. Java**' yı açın. Bu sınıf, hizmet türünü tanımlar ve herhangi bir kodu çalıştırabilir. Service API 'SI, kodunuz için iki giriş noktası sağlar:
 
-* Adlı bir açık uçlu bir giriş noktası yönteminin `runAsync()`, burada, uzun süre çalışan işlem iş yükleri de dahil olmak üzere tüm iş yükleri çalıştırma başlayabilirsiniz.
+* Uzun süre çalışan işlem iş yükleri dahil olmak üzere herhangi bir iş yükünü yürütmeye başlayabileceğiniz `runAsync()`adlı açık uçlu bir giriş noktası yöntemi.
 
 ```java
 @Override
@@ -105,7 +96,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 }
 ```
 
-* Burada, tercih ettiğiniz iletişim yığınında takabilirsiniz iletişim giriş noktası. Kullanıcıların ve diğer hizmetlerden istekleri alma başlayabileceğiniz budur.
+* Seçtiğiniz iletişim yığınınızı ekleyebileceğiniz bir iletişim giriş noktası. Bu, kullanıcılardan ve diğer hizmetlerden istek almaya başlayabileceğiniz yerdir.
 
 ```java
 @Override
@@ -114,22 +105,22 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-Bu öğreticide odaklanır `runAsync()` giriş noktası yöntemi. Hemen kodunuzu çalıştıran başlayabileceğiniz budur.
+Bu öğretici `runAsync()` giriş noktası yöntemine odaklanır. Bu, kodunuzun hemen çalıştırılmasına başlayabileceğiniz yerdir.
 
 ### <a name="runasync"></a>RunAsync
-Bir hizmet örneği yerleştirilmiş ve çalıştırılmaya hazır olduğunda platform bu yöntemi çağırır. Hizmet örneği açıldığında bir durum bilgisi olmayan hizmet için anlamına gelir. Bir iptal belirteci, hizmet Örneğinizdeki kapatılması gerektiğinde koordine etmek için sağlanır. Service Fabric'te bu açma/kapatma döngüsü bir hizmet örneği üzerinde hizmet ömrünü birden çok kez bir bütün olarak ortaya çıkabilir. Bu durum çeşitli nedenlerle oluşabilir:
+Bir hizmetin bir örneği yerleştirildiğinde ve yürütülmeye hazırlanıyorsa, platform bu yöntemi çağırır. Durum bilgisi olmayan bir hizmet için, hizmet örneğinin açıldığı anlamına gelir. Hizmet örneğinizin kapatılması gerektiğinde koordine etmek için bir iptal belirteci sağlanır. Service Fabric, bir hizmet örneğinin bu açık/kapalı döngüsü, hizmetin kullanım ömrü boyunca bir bütün olarak çok fazla zaman alabilir. Bu, aşağıdakiler dahil çeşitli nedenlerden kaynaklanabilir:
 
-* Sistem hizmeti örnekleriniz için kaynak Dengeleme taşır.
-* Kodunuzdaki hataları oluşur.
+* Sistem, hizmet örneklerinizi kaynak Dengeleme için taşıdıkça.
+* Hatalar kodunuzda oluşur.
 * Uygulama veya sistem yükseltilir.
-* Temel alınan donanım kesinti karşılaşır.
+* Temel alınan donanım bir kesinti yaşıyorsa.
 
-Bu düzenleme yönetilen yüksek oranda kullanılabilir ve düzgün şekilde dengeli hizmetinizi korumak için Service Fabric tarafından.
+Bu düzenleme, hizmetinizi yüksek oranda kullanılabilir ve düzgün şekilde dengeli tutmak için Service Fabric tarafından yönetilir.
 
-`runAsync()` zaman uyumlu olarak Engellemesi gereken değil. Uygulamanıza runAsync devam etmek çalışma zamanı izin vermek için bir CompletableFuture döndürmelidir. İş yükünüz CompletableFuture içinde yapılması gerektiğini uzun süre çalışan bir görev uygulamak gerekiyorsa.
+`runAsync()` eşzamanlı olarak engellenmemelidir. RunAsync uygulamanız, çalışma zamanının devam etmesine izin vermek için bir tamamlayıcı Tablefuture döndürmelidir. İş yükünüzün, bir uzun süre çalışan bir görevi, tamamlanmalı ve bu görevin tamamlanması gerekir.
 
-#### <a name="cancellation"></a>İptal etme
-İş yükünüzün iptal tarafından sağlanan iptali belirtecinin düzenlenen işbirliği yapan bir işlemdir. Sistem (başarıyla tamamlandığında, iptal veya hata), taşınmadan önce sona erdirmek, görev bekler. İptal belirteci uymanız, işlerinizi tamamlamak ve çıkmak önemlidir `runAsync()` sistem iptal isteğinde bulunduğunda mümkün olan en kısa sürede. Aşağıdaki örnek, bir iptal olayı işlemek gösterilmektedir:
+#### <a name="cancellation"></a>İptal
+İş yükünüzün iptali, belirtilen iptal belirteci tarafından düzenlenen bir işbirliği çabadır. Sistem, başlamadan önce görevin bitmesini bekler (başarılı tamamlama, iptal veya hata ile). İptal belirtecini dikkate almak, tüm işleri tamamlamak ve `runAsync()`, sistem iptali istediğinde mümkün olduğunca hızlı bir şekilde çıkmak önemlidir. Aşağıdaki örnek, bir iptal olayının nasıl işleneceğini göstermektedir:
 
 ```java
 @Override
@@ -153,20 +144,20 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 }
 ```
 
-Bu durum bilgisi olmayan hizmet örneğinde, sayı yerel bir değişkende depolanır. Ancak bu durum bilgisi olmayan bir hizmet olduğundan, yalnızca geçerli yaşam döngüsünü, hizmet örneği için depolanan değeri yok. Hizmet taşır veya yeniden başlatır, değeri kaybolur.
+Bu durum bilgisi olmayan hizmet örneğinde, sayı yerel bir değişkende depolanır. Ancak bu durum bilgisiz olmayan bir hizmet olduğundan, depolanan değer yalnızca hizmet örneğinin geçerli yaşam döngüsü için mevcut olur. Hizmet taşınsa veya yeniden başlatıldığında, değer kaybedilir.
 
 ## <a name="create-a-stateful-service"></a>Durum bilgisi olan hizmet oluşturma
-Service Fabric durum bilgisi olan hizmeti yeni bir tür tanıtır. Durum bilgisi olan hizmet durumu içinde kullandıkları koduyla birlikte bulunan güvenilir bir şekilde hizmetin kendisini koruyabilir. Durumunu Service Fabric tarafından bir dış depolama durumu kalıcı hale getirmek zorunda kalmadan yüksek oranda kullanılabilir hale getirilir.
+Service Fabric, durum bilgisi olan yeni bir hizmet türü sunar. Durum bilgisi olan bir hizmet, hizmetin kendisi içinde güvenilir bir şekilde durumunu koruyabilir ve onu kullanan kodla birlikte bulunur. Durum, bir dış depoya durumunun kalıcı hale getirilmesi gerekmeden Service Fabric tarafından yüksek oranda kullanılabilir hale getirilir.
 
-Hizmet taşır veya yeniden olsa bile sayaç değerini durum bilgisi olmayan yüksek oranda kullanılabilir kalıcı dönüştürmek için bir durum bilgisi olan hizmet gerekir.
+Bir sayaç değerini durum bilgisiz durumundan yüksek oranda kullanılabilir ve kalıcı olarak dönüştürmek için, hizmet taşınsa veya yeniden başlatıldığında bile, durum bilgisi olan bir hizmete ihtiyacınız vardır.
 
-HelloWorld uygulamasını olarak aynı dizinde yeni bir hizmet çalıştırarak ekleyebilirsiniz `yo azuresfjava:AddService` komutu. "Güvenilir durum bilgisi olan hizmet" çerçevenizin seçin ve "HelloWorldStateful" hizmet olarak adlandırın. 
+HelloWorld uygulamasıyla aynı dizinde, `yo azuresfjava:AddService` komutunu çalıştırarak yeni bir hizmet ekleyebilirsiniz. Çerçeveinizde "güvenilir durum bilgisi olan hizmet" seçeneğini belirleyin ve hizmeti "Merhaba Dünya durum bilgisi" olarak adlandırın. 
 
-Uygulamanız artık iki hizmet vardır: HelloWorld durum bilgisi olmayan hizmet ve durum bilgisi olan hizmet HelloWorldStateful.
+Uygulamanızın Şu anda iki hizmeti olmalıdır: durum bilgisi olmayan hizmet HelloWorld ve durum bilgisi olan hizmet Merhaba Dünya durum bilgisi.
 
-Bir durum bilgisi olan hizmeti durum bilgisi olmayan hizmet olarak aynı giriş noktaları içerir. Ana kullanılabilirlik durumu güvenilir bir şekilde depolamak bir durum sağlayıcısının farktır. Service Fabric, güvenilir durum Yöneticisi yoluyla çoğaltılan veri yapılarını oluşturmanıza olanak sağlayan güvenilir koleksiyon adı verilen bir durumu sağlayıcısı uygulaması ile birlikte gelir. Durum bilgisi olan güvenilir bir hizmet, varsayılan olarak bu durum sağlayıcısı kullanır.
+Durum bilgisi olan bir hizmet, durum bilgisi olmayan bir hizmetle aynı giriş noktalarına sahiptir. Temel fark, durumu güvenilir bir şekilde depolayabilen bir durum sağlayıcısının kullanılabilirliğinden oluşur. Service Fabric, güvenilir koleksiyonlar adlı bir durum sağlayıcısı uygulamasıyla birlikte gelir, bu da güvenilir durum Yöneticisi aracılığıyla çoğaltılan veri yapıları oluşturmanızı sağlar. Durum bilgisi olan güvenilir bir hizmet, varsayılan olarak bu durum sağlayıcısını kullanır.
 
-İçinde HelloWorldStateful.java açın **HelloWorldStateful src ->** , aşağıdaki RunAsync yöntemi içerir:
+Aşağıdaki RunAsync metodunu içeren **Merhaba Dünya durum bilgisi olan > src**Içinde helloworldstateful. Java açın:
 
 ```java
 @Override
@@ -192,23 +183,23 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()` durum bilgisi olan ve olmayan hizmetleri benzer şekilde çalışır. Yürütülmeden önce ancak durum bilgisi olan bir hizmet platform ek iş sizin adınıza gerçekleştirdiği `RunAsync()`. Bu iş, güvenilir durum Yöneticisi ve güvenilir koleksiyonlar, kullanıma hazır olan sağlama dahil olabilir.
+`RunAsync()` durum bilgisiz ve durum bilgisi olmayan hizmetlerde benzer şekilde çalışır. Ancak, durum bilgisi olan bir hizmette, platform `RunAsync()`yürütmeden önce sizin adınıza ek iş gerçekleştirir. Bu iş, güvenilir durum Yöneticisi ve güvenilir koleksiyonların kullanıma hazırlandığından emin olabilir.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Güvenilir koleksiyonlar ve güvenilir durum Yöneticisi
 ```java
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) güvenilir hizmeti durumunu depolamak için kullanabileceğiniz bir sözlük uygulamasıdır. Service Fabric ve güvenilir HashMaps, hizmetiniz bir dış kalıcı depoya gerek kalmadan doğrudan veri depolayabilirsiniz. Güvenilir HashMaps verilerinizi yüksek oranda kullanılabilir yap. Service Fabric gerçekleştirir, bu, oluşturma ve birden çok yönetme *çoğaltmaları* hizmetinizin sizin için. Ayrıca, yinelemeler ve bunların durumu geçişleri yönetme karmaşasından dengelediği bir API sağlar.
+[Reliablehashmap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) , durumu hizmette güvenilir bir şekilde depolamak için kullanabileceğiniz bir sözlük uygulamasıdır. Service Fabric ve güvenilir diyez eşlemeleriyle, verileri bir dış kalıcı depoya gerek duymadan doğrudan hizmetinize kaydedebilirsiniz. Güvenilir HashMaps, verilerinizi yüksek oranda kullanılabilir hale getirir. Service Fabric, hizmetinizin birden fazla *çoğaltmasını* oluşturup yöneterek bunu gerçekleştirir. Ayrıca, bu çoğaltmaları ve bunların durum geçişlerini yönetmenin karmaşıklıklarını soyutlayan bir API sağlar.
 
-Güvenilir koleksiyonlar birkaç uyarılar, özel türler dahil olmak üzere, herhangi bir Java türü depolayabilir:
+Güvenilir koleksiyonlar, özel türleriniz dahil olmak üzere herhangi bir Java türünü, birkaç uyarılarla saklayabilir:
 
-* Service Fabric durumunuzu tarafından yüksek oranda kullanılabilir kılar *çoğaltma* düğüme ve güvenilir HashMap durumu her çoğaltma üzerinde verilerinizi yerel diskte depolar. Bu güvenilir HashMaps içinde depolanan her şey olması gerektiği anlamına gelir *seri hale getirilebilir*. 
-* Güvenilir HashMaps hareketlerde işlerseniz nesneleri yüksek kullanılabilirlik için çoğaltılır. Güvenilir HashMaps içinde depolanan nesneleri hizmetinizi yerel bellekte tutulur. Bu, yerel başvuru nesnesine sahip olduğunuz anlamına gelir.
+* Service Fabric, durumları düğümler arasında *çoğaltarak* ve güvenilir HashMap verilerinizi her çoğaltmada yerel diske depolar. Bu, güvenilir diyez eşlemelerinde depolanan her şeyin *seri hale getirilebilir*olması gerektiği anlamına gelir. 
+* İşlemleri güvenilir diyez eşlemelerde gerçekleştirdiğinizde, nesneler yüksek kullanılabilirlik için çoğaltılır. Güvenilir Karmaeşlemlerde depolanan nesneler, hizmetinizdeki yerel bellekte tutulur. Bu, nesnesine yerel bir başvurunuz olduğu anlamına gelir.
   
-   Bu nesne yerel örnekleri bir işlemde güvenilir koleksiyon bir güncelleştirme işlemini gerçekleştirmeden bulunmamalıdır değil, önemlidir. Yerel nesnelerin örneklerini değişiklikleri otomatik olarak çoğaltılmayacak olmasıdır. Nesne sözlük içine takın veya şunlardan birini kullanın *güncelleştirme* sözlük yöntemleri.
+   Bir işlemdeki güvenilir koleksiyonda bir güncelleştirme işlemi gerçekleştirmeden, bu nesnelerin yerel örneklerini muanmamak önemlidir. Bunun nedeni, yerel nesne örneklerine yapılan değişikliklerin otomatik olarak çoğaltılmaması olabilir. Nesneyi sözlüğe yeniden eklemeniz veya sözlükteki *güncelleştirme* yöntemlerinden birini kullanmanız gerekir.
 
-Güvenilir durum Yöneticisi güvenilir HashMaps sizin yerinize yönetir. Güvenilir durum Yöneticisi için güvenilir bir koleksiyon adıyla dilediğiniz zaman ve herhangi bir yerdeki hizmetinizde sorabilirsiniz. Güvenilir durum Yöneticisi, bir başvuru geri almasını sağlar. Sınıf üyesi değişkenleri veya özellikleri güvenilir koleksiyon örnekleri başvuruları kaydetmeniz önerilmemektedir. Başvuru örneğine hizmet yaşam döngüsü içinde her zaman ayarlandığından emin olmak için özel dikkatli olunması gerekir. Güvenilir durum Yöneticisi bu işi sizin için yapar ve tekrar ziyaret için optimize edilmiştir.
+Güvenilir durum Yöneticisi, güvenilir diyez haritalarını sizin için yönetir. Güvenilir durum Yöneticisi 'Ne dilediğiniz zaman ve hizmetinize dilediğiniz zaman güvenilir bir koleksiyon adı verebilirsiniz. Güvenilir durum Yöneticisi bir başvuru geri almanızı sağlar. Sınıf üyesi değişkenlerinde veya özelliklerde güvenilir koleksiyon örneklerine başvuruları kaydetmenizi önermiyoruz. Başvurunun hizmet yaşam döngüsünün her zaman bir örneğe ayarlandığından emin olmak için özel dikkatli olunmalıdır. Güvenilir durum Yöneticisi bu çalışmayı sizin için işler ve yineleme ziyaretleri için en iyi duruma getirilmiştir.
 
 
 ### <a name="transactional-and-asynchronous-operations"></a>İşlem ve zaman uyumsuz işlemler
@@ -229,20 +220,20 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 });
 ```
 
-Güvenilir HashMaps işlemleri zaman uyumsuzdur. Güvenilir koleksiyonlar ile yazma işlemleri çoğaltın ve verileri diske kalıcı hale getirmek için g/ç işlemleri olmasıdır.
+Güvenilir HashMaps üzerinde işlemler zaman uyumsuzdur. Bunun nedeni, güvenilir Koleksiyonlar içeren yazma işlemlerinin verileri diske çoğaltmak ve diskte kalıcı hale getirmek için g/ç işlemleri gerçekleştirmesini sağlar.
 
-Güvenilir HashMap işlemleri *işlem*, böylece, durumu tutarlı birden çok güvenilir HashMaps ve işlemleri tutabilirsiniz. Örneğin, bir iş öğesi bir güvenilir sözlüğü almak, bir işlem gerçekleştirmek ve sonucu tek bir işlem içinde başka bir güvenilir HashMap kaydetmek. Bu bir atomik işlem olarak kabul edilir ve işlemin tamamı başarılı veya tüm işlemi geri alma garanti eder. Öğe sıradan çıkarma sonra bir hata oluşursa, ancak sonuç kaydetmeden önce işlemin tümü geri alınır ve öğe işleme kuyruğunda kalır.
+Güvenilir HashMap işlemleri *işlem*halinde olduğundan, durumu birden çok güvenilir hashmaps ve işlem arasında tutarlı tutabilmenizi sağlayabilirsiniz. Örneğin, bir güvenilir sözlükten bir iş öğesi alabilir, üzerinde bir işlem gerçekleştirebilir ve sonucu tek bir işlem içinde başka bir güvenilir diyez eşlemesiyle kaydedebilirsiniz. Bu bir atomik işlem olarak değerlendirilir ve tüm işlemin başarılı olacağını veya işlemin tamamının geri alınmayacağını garanti eder. Öğeyi sıradan çıktıktan sonra bir hata oluşursa, ancak sonucu kaydetmeden önce, tüm işlem geri alınır ve öğe işlenmek üzere kuyrukta kalır.
 
 
 ## <a name="build-the-application"></a>Uygulama oluşturma
 
-Yeoman yapı iskelesi uygulamayı derleyin ve bash betiklerine dağıtmak ve bu uygulamayı kaldırmak için bir gradle betiğini içerir. Uygulamayı çalıştırmak için ilk uygulama gradle ile derleme:
+Yeumman scafkatlaması, uygulamayı dağıtmak ve kaldırmak üzere uygulamayı ve Bash betiklerini derlemek için bir Gradle betiği içerir. Uygulamayı çalıştırmak için önce Gradle ile uygulamayı derleyin:
 
 ```bash
 $ gradle
 ```
 
-Bu, Service Fabric CLI kullanılarak dağıtılabilir bir Service Fabric uygulama paketi oluşturur.
+Bu, Service Fabric CLı kullanılarak dağıtılabilecek bir Service Fabric uygulama paketi oluşturur.
 
 ## <a name="deploy-the-application"></a>Uygulamayı dağıtma
 
@@ -267,7 +258,7 @@ Bu komutların parametreleri, uygulama paketi içinde oluşturulmuş bildirimler
 Uygulama dağıtıldığında bir tarayıcı açın ve [http://localhost:19080/Explorer](http://localhost:19080/Explorer) konumundaki [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)'a gidin. Ardından, **Uygulamalar** düğümünü genişletin ve geçerli olarak uygulamanızın türü için bir giriş ve bu türün ilk örneği için başka bir giriş olduğuna dikkat edin.
 
 > [!IMPORTANT]
-> Uygulamayı azure'da güvenli bir Linux kümesi dağıtmak için Service Fabric çalışma zamanı uygulamanızla doğrulamak için bir sertifika yapılandırmanız gerekir. Bunun yapılması, temel alınan Service Fabric çalışma API'leri ile iletişim kurmak Reliable Services hizmetlerinizi sağlar. Daha fazla bilgi için bkz. [Linux kümelerinde çalıştırmak için bir Reliable Services uygulaması yapılandırırsınız](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Uygulamayı Azure 'da güvenli bir Linux kümesine dağıtmak için, Service Fabric çalışma zamanı ile uygulamanızı doğrulamak üzere bir sertifika yapılandırmanız gerekir. Bunun yapılması, Reliable Services hizmetlerinizin temel alınan Service Fabric çalışma zamanı API 'Leriyle iletişim kurmasını sağlar. Daha fazla bilgi edinmek için bkz. [Reliable Services uygulamasını Linux kümelerinde çalışacak şekilde yapılandırma](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar

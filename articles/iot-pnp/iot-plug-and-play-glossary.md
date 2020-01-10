@@ -3,18 +3,18 @@ title: Terimler sözlüğü-IoT Tak ve Kullan önizlemesi | Microsoft Docs
 description: Kavramlar-IoT Tak ve Kullan önizlemesiyle ilgili yaygın koşulların bir sözlüğü.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 10/10/2019
+ms.date: 12/23/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 22b2cb8caa815b2ce8343a060a5f12133b763b83
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b6516b07f24c40fcb95d47e05b22dd7672c10f2a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890350"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531210"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT Tak ve Kullan önizlemesi için terimler sözlüğü
 
@@ -64,14 +64,14 @@ Azure IoT Explorer, [ıot Tak ve kullan cihazlarınızla](#iot-plug-and-play-dev
 - Cihaz [özellikleriyle](#properties)çalışın.
 - Çağrı cihazı [komutları](#commands).
 
-## <a name="azure-iot-hub"></a>Azure IoT Hub'ı
+## <a name="azure-iot-hub"></a>Azure IoT Hub
 
 IoT Hub, bulutta barındırılan ve IoT uygulamanız ve yönettiği cihazlar arasındaki iki yönlü iletişim için merkezi ileti hub’ı görevi gören, yönetilen bir hizmettir. [Iot Tak ve kullan cihazları](#iot-plug-and-play-device) , IoT Hub 'ına bağlanabilir. IoT çözümü, şunları sağlamak için bir IoT Hub 'ı kullanır:
 
 - Bulut tabanlı bir çözüme telemetri göndermek için cihazlar.
 - Bağlı cihazları yönetmek için bulut tabanlı bir çözüm.
 
-## <a name="azure-iot-device-sdk"></a>Azure IoT cihaz SDK 'Sı
+## <a name="azure-iot-device-sdk"></a>Azure IoT cihaz SDK’sı
 
 IoT Tak ve Kullan cihaz istemci uygulamaları oluşturmak için kullanabileceğiniz birden çok dil için cihaz SDK 'Ları vardır. Cihaz [sertifikası](#device-certification) gereksinimlerinden biri, cihaz Istemci kodunun Azure IoT cihaz SDK 'larından birini kullanmasıdır.
 
@@ -105,7 +105,7 @@ Cihaz yetenek modeli, [ıot Tak ve kullan cihazını](#iot-plug-and-play-device)
 
 ## <a name="device-certification"></a>Cihaz Sertifikası
 
-Cihaz sertifikası, IoT [cihaz kataloğuna](#certified-for-iot-device-catalog) ve [cihaz yetenek modeline](#device-capability-model) ve genel modele eklenen [arabirimlere](#interface) eklenebilmeleri için bir [IoT Tak ve kullan cihazının](#iot-plug-and-play-device) sertifikalandırılması işlemidir [ Depo](#public-model-repository).
+Cihaz sertifikası, IoT [cihaz kataloğuna](#certified-for-iot-device-catalog) ve [cihaz yeteneği modeline](#device-capability-model) ve [Genel model deposuna](#public-model-repository)eklenen [arabirimlere](#interface) eklenebilmeleri için bir [IoT Tak ve kullan cihazının](#iot-plug-and-play-device) sertifikalandırılması işlemidir.
 
 ## <a name="device-developer"></a>Cihaz geliştirici
 
@@ -115,7 +115,7 @@ Bir cihaz geliştiricisi, [ıot Tak ve kullan cihazında](#iot-plug-and-play-dev
 
 Bir [cihaz geliştiricisi](#device-developer) , [IoT Tak ve kullan cihazının](#iot-plug-and-play-device)yeteneklerini modellemek Için [Digital ikizi tanım dilini](#digital-twin-definition-language) kullanır. Model bir model deposu kullanılarak paylaşılabilir. Bir cihaz geliştiricisi modelden iskelet cihaz kodu oluşturabilir. Bir [çözüm geliştiricisi](#solution-developer) , bir IoT çözümünü modelden yapılandırabilir.
 
-## <a name="device-provisioning-service"></a>Cihaz sağlama hizmeti
+## <a name="device-provisioning-service"></a>Cihaz Sağlama Hizmeti
 
 [Azure IoT Central](#azure-iot-central) , tüm cihaz kaydı ve bağlantılarını yönetmek Için cihaz sağlama hizmetini kullanır. Daha fazla bilgi için bkz. [Azure IoT Central cihaz bağlantısı](../iot-central/preview/overview-iot-central-get-connected.md). Cihaz kaydı ve IoT Hub tabanlı IoT çözümünüze bağlantı yönetmek için cihaz sağlama hizmetini de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure IoT Hub cihaz sağlama hizmeti ile cihazları sağlama](../iot-dps/about-iot-dps.md).
 
@@ -143,7 +143,7 @@ Dijital ikizi, [ıot Tak ve kullan cihazının](#iot-plug-and-play-device)bir mo
 
 Bir [IoT Hub 'ında](#azure-iot-hub) , [dijital ikizi değişiklik olayları](#digital-twin-change-events) ve Service Bus kuyruğu gibi uç nokta sunmak için bir yol ayarlandı.
 
-## <a name="interface"></a>Arayüz
+## <a name="interface"></a>Arabirim
 
 Bir arabirim, [ıot Tak ve kullan cihazından](#iot-plug-and-play-device) veya [dijital ikizi](#digital-twin)tarafından uygulanan ilgili özellikleri açıklar. Arabirimleri farklı [cihaz yeteneği modelleri](#device-capability-model)genelinde yeniden kullanabilirsiniz.
 
@@ -155,7 +155,7 @@ IoT Hub sorgu dili birden çok amaçla kullanılır. Örneğin, IoT Hub 'ınıza
 
 IoT Tak ve Kullan cihazı genellikle veri toplayan veya diğer cihazları denetleyen ve [cihaz yetenek modeli](#device-capability-model)uygulayan yazılım veya bellenim çalıştıran bir küçük ölçekli, tek başına bilgi işlem aygıtıdır.  Örneğin, bir IoT Tak ve Kullan cihazı, bir çevre izleme cihazı veya bir akıllı tarım sulama sistemi denetleyicisi olabilir. Komut, denetim ve IoT Tak ve Kullan cihazlarındaki verileri almak için bulutta barındırılan bir IoT çözümü yazabilirsiniz. [IoT Için Azure Sertifikalı cihaz kataloğu](#certified-for-iot-device-catalog) , kullanılabilir IoT Tak ve kullan cihazları listeler. Katalogdaki her bir IoT Tak ve Kullan aygıtı doğrulandıktan sonra bir [cihaz yetenek modeli](#device-capability-model)vardır.
 
-## <a name="microsoft-partner-center"></a>Microsoft Iş Ortağı Merkezi
+## <a name="microsoft-partner-center"></a>Microsoft İş Ortağı Merkezi
 
 [Microsoft Iş Ortağı Merkezi](https://docs.microsoft.com/partner-center/) , kuruluşunuzun uçtan uca ilişkilerini Microsoft ile yönetmektedir. IoT [Tak ve kullan cihazınızı](#iot-plug-and-play-device) [IoT portalındaki Azure sertifikası](#azure-certified-for-iot-portal)'nda doğrulayabilmeniz Için bir Microsoft iş ortağı Merkezi hesabına ihtiyacınız vardır.
 
@@ -179,11 +179,11 @@ Model depoları yönetmek ve bunlarla etkileşim kurmak için bir API. Örneğin
 
 [Sertifikalı cihazlar](#device-certification)için [cihaz yetenek modellerini](#device-capability-model) ve [arabirimlerini](#interface) depolayan tek bir ortak model deposu vardır. Ortak model deposu Ayrıca [ortak arabirim](#common-interface) tanımlarını depolar.
 
-## <a name="registration-id"></a>Kayıt KIMLIĞI
+## <a name="registration-id"></a>Kayıt Kimliği
 
 Kayıt KIMLIĞI cihaz [sağlama hizmetindeki](#device-provisioning-service)bir cihazı benzersiz şekilde tanımlar. Bu KIMLIK, [IoT Hub 'ındaki](#azure-iot-hub)bir cihaz için benzersiz bir tanımlayıcı olan cihaz kimliğiyle aynı değildir.
 
-## <a name="scope-id"></a>Kapsam KIMLIĞI
+## <a name="scope-id"></a>Kapsam Kimliği
 
 Kapsam KIMLIĞI kapsamı, bir [cihaz sağlama hizmeti](#device-provisioning-service) örneğini benzersiz bir şekilde tanımlar.
 

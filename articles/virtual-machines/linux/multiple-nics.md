@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: b4ab46a59bd83bf2d1c08e3a238df3c59797f3e7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3fed0d14908dff346fa6134a91096c757c6d9fab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035602"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463835"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Azure 'da birden çok ağ arabirim kartı ile Linux sanal makinesi oluşturma
 
@@ -164,7 +164,7 @@ az vm start --resource-group myResourceGroup --name myVM
 
 
 ## <a name="create-multiple-nics-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak birden çok NIC oluşturma
-Azure Resource Manager şablonlar, ortamınızı tanımlamak için bildirim temelli JSON dosyalarını kullanır. [Azure Resource Manager bir genel bakışı](../../azure-resource-manager/resource-group-overview.md)okuyabilirsiniz. Kaynak Yöneticisi şablonlar, dağıtım sırasında birden çok NIC oluşturma gibi bir kaynağın birden çok örneğini oluşturmak için bir yol sağlar. Oluşturulacak örnek sayısını belirtmek için *Kopyala* ' yı kullanın:
+Azure Resource Manager şablonlar, ortamınızı tanımlamak için bildirim temelli JSON dosyalarını kullanır. [Azure Resource Manager bir genel bakışı](../../azure-resource-manager/management/overview.md)okuyabilirsiniz. Kaynak Yöneticisi şablonlar, dağıtım sırasında birden çok NIC oluşturma gibi bir kaynağın birden çok örneğini oluşturmak için bir yol sağlar. Oluşturulacak örnek sayısını belirtmek için *Kopyala* ' yı kullanın:
 
 ```json
 "copy": {

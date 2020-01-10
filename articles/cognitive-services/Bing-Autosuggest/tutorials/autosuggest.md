@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 1408faf09ef8950fb0d86f8a036269da2963e3d4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b6a8b0664cb205a7c3cbdb72f41433b145b02d00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072834"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448764"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Öğretici: bir Web sayfasında arama önerileri alın
 
@@ -27,7 +27,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 > - Bing Otomatik Öneri API'sine basit bir sorgu gönderme
 > - Sorgu sonuçlarını görüntüleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticiyi takip edebilmek için Bing Otomatik Öneri API'si için bir abonelik anahtarına ihtiyacınız olacaktır. Bir aboneliğiniz yoksa [ücretsiz deneme sürümüne kaydolun](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api).
 
@@ -184,7 +184,7 @@ bingAutosuggest işlevi kullanıcı HTML formu alanına metin girdiğinde çağr
 function bingAutosuggest(query, key) {
 ```
 
-Bing Otomatik Öneri API'si uç noktasını belirtin ve uç noktaya istek göndermek için kullanacağımız bir XMLHttpRequest nesnesi bildirin.
+Bing Otomatik Öneri API'si uç noktasını belirtin ve istekleri göndermek için kullanabilmemiz için bir XMLHttpRequest nesnesi bildirin. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
 ```html
     var endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/Suggestions";

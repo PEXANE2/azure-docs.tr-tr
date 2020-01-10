@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric uygulama güvenliği hakkında bilgi edinin | Microsoft Docs
+title: Azure Service Fabric uygulama güvenliği hakkında bilgi edinin
 description: Service Fabric 'da mikro hizmet uygulamalarının güvenli bir şekilde çalıştırılmasına genel bakış. Farklı güvenlik hesapları altında hizmetler ve başlatma betiği çalıştırmayı, kullanıcıların kimliklerini doğrulamayı ve yetkilendirmeyi, uygulama gizli dizilerini yönetmeyi, güvenli hizmet iletişimlerini yönetmeyi, API ağ geçidini kullanmayı ve bekleyen uygulama verilerini güvenli hale getirme hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 75a82a0915414d24ab9c58ea15d3fdc9c1922c63
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600063"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452247"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Uygulama ve hizmet güvenliği Service Fabric
 Mikro hizmet mimarisi [birçok avantaj](service-fabric-overview-microservices.md)getirebilir. Ancak mikro hizmetlerin güvenliğini yönetmek, bir zorluk ve geleneksel tek parçalı uygulamalar güvenliğini yönetmekten farklıdır. 
@@ -31,14 +20,14 @@ Bu makale, mikro hizmetler güvenliğine yönelik bir kılavuz değildir, çevri
 ## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
 Genellikle, bir hizmet tarafından sunulan kaynakların ve API 'Lerin belirli Güvenilen Kullanıcı veya istemcilerle sınırlı olması gerekir. Kimlik doğrulaması, bir kullanıcının kimliğini güvenilir bir şekilde belirlememe işlemidir.  Yetkilendirme, API 'Leri veya hizmetleri bazı kimliği doğrulanmış kullanıcılar için kullanılabilir hale getiren işlemdir, ancak diğerleri için kullanılamaz.
 
-### <a name="authentication"></a>Authentication
-API düzeyi güven kararlarını yapmanın ilk adımı kimlik doğrulamadır. Kimlik doğrulaması, bir kullanıcının kimliğini güvenilir bir şekilde belirlememe işlemidir.  Mikro hizmet senaryolarında, kimlik doğrulaması genellikle merkezi olarak işlenir. Bir API ağ geçidi kullanıyorsanız, [kimlik doğrulamasını](/azure/architecture/patterns/gateway-offloading) ağ geçidine devreedebilirsiniz. Bu yaklaşımı kullanırsanız, ağ geçidinden gelen veya olmayan iletilerin kimliğini doğrulamak için ek güvenlik yoksa, tek tek hizmetlere doğrudan ulaşılamadığından emin olun (API ağ geçidi olmadan).
+### <a name="authentication"></a>Kimlik Doğrulaması
+API düzeyi güven kararlarını yapmanın ilk adımı kimlik doğrulamadır. Kimlik doğrulaması, bir kullanıcının kimliğini güvenilir bir şekilde belirlememe işlemidir.  Mikro hizmet senaryolarında, kimlik doğrulaması genellikle merkezi olarak işlenir. Bir API ağ geçidi kullanıyorsanız, kimlik doğrulamasını ağ geçidine [devreedebilirsiniz](/azure/architecture/patterns/gateway-offloading) . Bu yaklaşımı kullanırsanız, ağ geçidinden gelen veya olmayan iletilerin kimliğini doğrulamak için ek güvenlik yoksa, tek tek hizmetlere doğrudan ulaşılamadığından emin olun (API ağ geçidi olmadan).
 
 Hizmetlere doğrudan erişilemiyorsa, kullanıcıların kimliğini doğrulamak için Azure Active Directory gibi bir kimlik doğrulama hizmeti veya güvenlik belirteci hizmeti (STS) görevi gören ayrılmış bir kimlik doğrulama mikro hizmeti kullanılabilir. Güven kararları, güvenlik belirteçleri veya tanımlama bilgileriyle hizmetler arasında paylaşılır. 
 
 ASP.NET Core için, [kullanıcıların](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) kimliğini doğrulamaya yönelik birincil mekanizma ASP.NET Core kimlik Üyelik sistemidir. ASP.NET Core kimlik, geliştirici tarafından yapılandırılan bir veri deposundaki kullanıcı bilgilerini (oturum açma bilgileri, roller ve talepler dahil) depolar. ASP.NET Core kimlik iki öğeli kimlik doğrulamasını destekler.  Dış kimlik doğrulama sağlayıcıları da desteklenir, böylece kullanıcılar Microsoft, Google, Facebook veya Twitter gibi sağlayıcılardan mevcut kimlik doğrulama süreçlerini kullanarak oturum açabilirler.
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>Yetkilendirme
 Kimlik doğrulamasından sonra, hizmetlerin Kullanıcı erişimini yetkilendirmeniz veya kullanıcının ne yapabileceklerini belirlememeniz gerekir. Bu işlem, bir hizmetin API 'Leri bazı kimliği doğrulanmış kullanıcılar için kullanılabilir olmasına izin verir. Yetkilendirme, bir kullanıcının kim olduğunu belirlememe işlemi olan kimlik doğrulamasından ve birbirinden bağımsızdır. Kimlik doğrulaması geçerli kullanıcı için bir veya daha fazla kimlik oluşturabilir.
 
 [ASP.NET Core yetkilendirme](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) , kullanıcıların rollerine bağlı olarak veya özel ilkeye göre yapılabilir ve bu da talepleri veya diğer buluşsal yöntemleri inceleyerek olabilir.

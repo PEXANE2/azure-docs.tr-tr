@@ -1,28 +1,17 @@
 ---
-title: Azure Service Fabric hizmet uç noktaları için erişim ilkeleri atama | Microsoft Docs
-description: Güvenlik atama hakkında bilgi edinin, Service Fabric hizmeti, HTTP veya HTTPS uç noktaları için erişim ilkeleri.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Hizmet uç noktalarına erişim ilkeleri atama
+description: Service Fabric hizmetinizde HTTP veya HTTPS uç noktalarına güvenlik erişimi ilkeleri atamayı öğrenin.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/21/2018
-ms.author: atsenthi
-ms.openlocfilehash: 3e892e443f5e3309add48f939f26ba14eaf5a51b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614198"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614664"
 ---
-# <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>HTTP ve HTTPS Uç noktalara yönelik güvenlik erişim ilkesi atama
-Bir farklı Çalıştırma İlkesi uygulama ve hizmet bildirimi HTTP uç noktası kaynakları bildirir, belirtmelisiniz bir **SecurityAccessPolicy**.  **SecurityAccessPolicy** Bu uç noktaları için ayrılan bağlantı noktaları olarak hizmetini çalıştıran kullanıcı hesabının doğru şekilde kısıtlanmıştır sağlar. Aksi takdirde, **http.sys** Erişim hizmetine sahip değil ve istemciden çağrıları hataları alırsınız. Aşağıdaki örnekte adlı bir uç nokta Customer1 hesabı uygulanır **Uçnoktaadı**, sağlayan, tam erişim hakları.
+# <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>HTTP ve HTTPS uç noktaları için bir güvenlik erişim ilkesi atama
+Bir farklı çalıştır ilkesi uygularsanız ve hizmet bildirimi HTTP uç noktası kaynaklarını bildiriyorsa, bir **Securityaccesspolicy**belirtmeniz gerekir.  **Securityaccesspolicy** , bu uç noktalara ayrılan bağlantı noktalarının hizmetin çalıştığı kullanıcı hesabıyla doğru bir şekilde kısıtlanmasını sağlar. Aksi halde, **http. sys** ' nin hizmete erişimi yoktur ve istemciden gelen çağrılarla ilgili hatalarla ilgilenirsiniz. Aşağıdaki örnek, tam erişim hakları sağlayan **EndpointName**adlı bir uç noktaya Customer1 hesabını uygular.
 
 ```xml
 <Policies>
@@ -32,7 +21,7 @@ Bir farklı Çalıştırma İlkesi uygulama ve hizmet bildirimi HTTP uç noktas�
 </Policies>
 ```
 
-Bir HTTPS uç noktası için aynı zamanda istemciye döndürmek için sertifika adını belirtir. Sertifikayı kullanarak başvuru **EndpointBindingPolicy**.  Sertifika tanımlanan **sertifikaları** uygulama bildiriminin.
+Bir HTTPS uç noktası için, istemciye döndürülecek sertifikanın adını da belirtin. Bu sertifikaya **Endpointbindingpolicy**kullanarak başvurulamıyor.  Sertifika, uygulama bildiriminin **Sertifikalar** bölümünde tanımlanmıştır.
 
 ```xml
 <Policies>
@@ -45,13 +34,13 @@ Bir HTTPS uç noktası için aynı zamanda istemciye döndürmek için sertifika
 ```
 
 > [!WARNING] 
-> HTTPS kullanırken, aynı bağlantı noktası ve aynı düğüme dağıtılan sertifika farklı hizmet örnekleri (uygulamayı bağımsız olarak) için kullanmayın. Farklı uygulama örneklerinin aynı bağlantı noktası kullanarak iki farklı hizmet yükseltme bir yükseltme hatasına neden olur. Daha fazla bilgi için [HTTPS uç noktaları ile birden çok uygulama yükseltme ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+> HTTPS kullanırken, aynı düğüme dağıtılan farklı hizmet örnekleri (uygulamadan bağımsız) için aynı bağlantı noktasını ve sertifikayı kullanmayın. Farklı uygulama örneklerinde aynı bağlantı noktasını kullanarak iki farklı hizmetin yükseltilmesi, yükseltme hatasına neden olur. Daha fazla bilgi için bkz. [https uç noktaları ile birden çok uygulamayı yükseltme ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
 > 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-Sonraki adımlar için bu makaleleri okuyun:
+Sonraki adımlar için aşağıdaki makaleleri okuyun:
 * [Uygulama modelini anlama](service-fabric-application-model.md)
-* [Bir hizmet bildiriminde kaynakları belirtme](service-fabric-service-manifest-resources.md)
+* [Hizmet bildiriminde kaynakları belirtme](service-fabric-service-manifest-resources.md)
 * [Uygulama dağıtma](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

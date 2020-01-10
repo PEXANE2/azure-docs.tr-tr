@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 508fa7e33cd8572d70b7ebf261edba67fd40dd93
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 16892ec729f56f8c8e1713379285e07fbc0dd4d1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084157"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495434"
 ---
-# <a name="common-questions-about-vmware-to-azure-replication"></a>VMware 'den Azure 'a çoğaltma hakkında sık sorulan sorular
+# <a name="common-questions-about-vmware-to-azure-replication"></a>VMware’den Azure’a çoğaltmayla ilgili sık sorulan sorular
 
 Bu makalede, şirket içi VMware sanal makineleri (VM 'Ler) ile Azure 'a olağanüstü durum kurtarma dağıtımı yaptığınızda karşılaşabileceğiniz yaygın sorular yanıtlanmaktadır.
 
@@ -103,7 +103,7 @@ Yükleyiciler yapılandırma sunucusundaki%ProgramData%\asr\home\svsystems\push�
 - Kullanıcı arabiriminden veya PowerShell 'ten [el ile yükleme](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui)
 - [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) gibi bir dağıtım aracı kullanarak dağıtım
 
-## <a name="managed-disks"></a>Yönetilen diskler
+## <a name="managed-disks"></a>Yönetilen Diskler
 
 ### <a name="where-does-site-recovery-replicate-data-to"></a>Site Recovery verileri nerede çoğaltır?
 
@@ -176,7 +176,7 @@ Evet, çoğaltma için çoğaltmayı etkinleştirdiğinizde var olan bir çoğal
 
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Diskler ekleyerek veya yeniden boyutlandırarak çoğaltılan VM 'Leri değiştirebilir miyim?
 
-Azure 'a VMware çoğaltması için disk boyutunu değiştirebilirsiniz. Yeni diskler eklemek istiyorsanız, diski eklemeniz ve sanal makine için korumayı yeniden etkinleştirmeniz gerekir.
+Azure 'a VMware çoğaltması için kaynak VM 'lerin disk boyutunu değiştirebilirsiniz. Yeni diskler eklemek istiyorsanız, diski eklemeniz ve sanal makine için korumayı yeniden etkinleştirmeniz gerekir.
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>Şirket içi makineleri, devam eden Çoğaltmayı etkilemeden yeni bir vCenter Server geçirebilir miyim?
 
@@ -344,9 +344,6 @@ Evet. Azure 'a yük devretmek için, özgün bir konum yoksa, farklı bir konuma
 
 Azure 'dan geri döndüğünüzde, Azure 'daki veriler şirket içi sanal makinenize geri kopyalanır ve özel erişim gerekir.
 
-### <a name="can-i-resize-the-azure-vm-after-failover"></a>Yük devretmeden sonra Azure VM 'yi yeniden boyutlandırabilir miyim?
-
-Hayır, yük devretmeden sonra hedef VM 'nin boyutunu veya türünü değiştiremezsiniz.
 
 ## <a name="automation-and-scripting"></a>Otomasyon ve betik oluşturma
 

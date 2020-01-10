@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/01/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 236ba117fd324a75ecc20ea7f94e110d75e3ee63
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 968ebe89de65de5fa49e56a90a1bc92109a16861
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188187"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613779"
 ---
 >[!Note]
->Görüntüleme veya kişisel verileri silmek istiyorsanız lütfen Microsoft'un kılavuzunda gözden [GDPR veri sahibi isteklerini Windows](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-windows) site. GDPR hakkında genel bilgiler arıyorsanız bkz [hizmet güveni portalı GDPR bölümünü](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+>Kişisel verileri görüntülemeyi veya silmeyi düşünüyorsanız lütfen Microsoft'un [GDPR için Windows Veri Sahibi İstekleri](https://docs.microsoft.com/microsoft-365/compliance/gdpr-data-subject-requests) sitesindeki kılavuzunu inceleyin. GDPR hakkında genel bilgiler arıyorsanız [Hizmet Güveni portalının GDPR bölümüne](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted) bakın.

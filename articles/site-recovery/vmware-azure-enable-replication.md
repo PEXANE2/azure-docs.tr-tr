@@ -6,23 +6,34 @@ ms.service: site-recovery
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 1cc1ee82b45ecab17e4bcfb3a909fc90b33a1545
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 10b3e572ec61d1eff342f24a6a5a7bcba6276983
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954447"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495381"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>VMware VM 'Leri için Azure 'a çoğaltmayı etkinleştirme
 
 Bu makalede, şirket içi VMware VM 'lerinin Azure 'a nasıl çoğaltılmasının nasıl etkinleştirileceği açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="resolve-common-issues"></a>Yaygın sorunları çözme
+
+* Her disk 4 TB 'tan küçük olmalıdır.
+* İşletim sistemi diski, dinamik disk değil, temel bir disk olmalıdır.
+* 2\. nesil/UEFı özellikli sanal makineler için işletim sistemi ailesi Windows olmalıdır ve önyükleme diski 300 GB 'tan küçük olmalıdır.
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, olduğunu varsayar:
 
 - Şirket [içi kaynak ortamınızı ayarlayın](vmware-azure-set-up-source.md).
 - [Azure 'da hedef ortamınızı ayarlayın](vmware-azure-set-up-target.md).
+- Başlamadan önce [gereksinimleri ve önkoşulları doğrulayın](vmware-physical-azure-support-matrix.md) . Dikkat etmeniz gereken önemli noktalar:
+    - Çoğaltılan makineler için [desteklenen işletim sistemleri](vmware-physical-azure-support-matrix.md#replicated-machines) .
+    - [Depolama/disk](vmware-physical-azure-support-matrix.md#storage) desteği.
+    - Şirket içi makinelerin uyması gereken [Azure gereksinimleri](vmware-physical-azure-support-matrix.md#azure-vm-requirements) .
+
 
 ## <a name="before-you-start"></a>Başlamadan önce
 VMware sanal makinelerini çoğaltdığınızda, bu bilgileri göz önünde bulundurun:
@@ -123,11 +134,7 @@ Microsoft yazılım güvencesi müşterileri, Azure 'a geçirilen Windows Server
 
 [Azure hibrit avantajı](https://aka.ms/azure-hybrid-benefit-pricing)hakkında daha fazla bilgi edinin.
 
-## <a name="resolve-common-issues"></a>Yaygın sorunları çözme
 
-* Her disk 4 TB 'tan küçük olmalıdır.
-* İşletim sistemi diski, dinamik disk değil, temel bir disk olmalıdır.
-* 2\. nesil/UEFı özellikli sanal makineler için işletim sistemi ailesi Windows olmalıdır ve önyükleme diski 300 GB 'tan küçük olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

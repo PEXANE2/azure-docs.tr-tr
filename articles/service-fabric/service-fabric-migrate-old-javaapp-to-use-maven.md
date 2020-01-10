@@ -1,30 +1,21 @@
 ---
-title: Java SDK’dan Maven’a geçme - Eski Azure Service Fabric Java Uygulamalarını Maven kullanmak için güncelleştirme | Microsoft Docs
+title: Java SDK 'dan Maven 'e geçiş
 description: Service Fabric Java SDK’sını kullanan eski JAVA uygulamalarını, Service Fabric Java bağımlılıklarını Maven’dan alacak şekilde güncelleştirin. Bu ayarları tamamlandıktan sonra eski Java uygulamalarınız oluşturmaya hazırdır.
-services: service-fabric
-documentationcenter: java
 author: rapatchi
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: dbd85b3647a60ce873c1a55b851bd47ece103282
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718403"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609817"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Eski Java Service Fabric uygulamanızı Maven’dan Java kitaplıklarını alacak şekilde güncelleştirme
 Service Fabric Java ikili dosyalarını yakın zamanda Service Fabric Java SDK’dan Maven’a taşıdık. En son Service Fabric Java bağımlılıklarını almak için artık **mavencentral**’ı kullanabilirsiniz. Bu hızlı başlangıç, daha önce Service Fabric Java SDK ile kullanılacak şekilde Yeoman veya Eclipse kullanarak oluşturduğunuz mevcut Java uygulamalarını Maven tabanlı derlemeyle uyumlu olacak şekilde güncelleştirmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 1. Önce mevcut Java SDK'sını kaldırmanız gerekir.
 
    ```bash
@@ -88,8 +79,8 @@ Uygulamanız için Service Fabric Durum Bilgisi Olmayan Hizmet desteği.
   }
   ```
 
-### <a name="others"></a>Diğer
-#### <a name="transport"></a>Aktarım
+### <a name="others"></a>Diğerleri
+#### <a name="transport"></a>Ulaşım
 
 Service Fabric Java uygulaması için Aktarım katmanı desteği. Aktarım katmanında özellikle programlamadığınız sürece bu bağımlılığı Güvenilir Aktör veya Hizmet uygulamalarınız için özellikle eklemeniz gerekmez.
 
@@ -167,7 +158,7 @@ task copyDeps <<{
     }
 }
 ```
-Artık Maven’dan bağımlılıkları almak için **güncelleştirilmiş** ``build.gradle`` içinde ilgili bölümler aşağıdaki gibi olmalıdır:
+Şimdi, Maven 'ten bağımlılıkları getirmek için, **güncelleştirilmiş** ``build.gradle``, karşılık gelen bölümlere aşağıdaki gibi sahip olacaktır
 ```
 repositories {
         mavenCentral()
@@ -241,7 +232,7 @@ dependencies {
 .
 .
 ```
-Artık Maven’dan bağımlılıkları almak için **güncelleştirilmiş** ``build.gradle`` içinde ilgili bölümler aşağıdaki gibi olmalıdır:
+Şimdi, Maven 'ten bağımlılıkları getirmek için, **güncelleştirilmiş** ``build.gradle``, karşılık gelen bölümlere aşağıdaki gibi sahip olacaktır
 ```
 repositories {
     mavenCentral()
@@ -313,7 +304,7 @@ task copyDeps<< {
     }
 }
 ```
-Artık Maven’dan bağımlılıkları almak için **güncelleştirilmiş** ``build.gradle`` içinde ilgili bölümler aşağıdaki gibi olmalıdır:
+Şimdi, Maven 'ten bağımlılıkları getirmek için, **güncelleştirilmiş** ``build.gradle``, karşılık gelen bölümlere aşağıdaki gibi sahip olacaktır
 ```
 repositories {
     mavenCentral()
@@ -413,7 +404,7 @@ task copyDeps<< {
         }
 }
 ```
-Artık Maven’dan bağımlılıkları almak için **güncelleştirilmiş** ``build.gradle`` içinde ilgili bölümler aşağıdaki gibi olmalıdır:
+Şimdi, Maven 'ten bağımlılıkları getirmek için, **güncelleştirilmiş** ``build.gradle``, karşılık gelen bölümlere aşağıdaki gibi sahip olacaktır
 ```
 repositories {
     mavenCentral()

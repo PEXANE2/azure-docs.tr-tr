@@ -1,54 +1,45 @@
 ---
-title: Kullanılabilirlik alanları genelinde bir Azure Service Fabric kümesine dağıtma | Microsoft Docs
-description: Kullanılabilirlik alanları genelinde bir Azure Service Fabric kümesi oluşturmayı öğrenin.
-services: service-fabric
-documentationcenter: .net
+title: Kullanılabilirlik Alanları arasında küme dağıtma
+description: Kullanılabilirlik Alanları arasında Azure Service Fabric kümesi oluşturmayı öğrenin.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: b664c3d655ab45c89a65a0aea31622f57ddc8d9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6da9517f822c9c157d26a1bda8dab2c694b08b12
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077463"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609987"
 ---
-# <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik alanları genelinde bir Azure Service Fabric kümesine dağıtma
-Azure kullanılabilirlik alanları, veri merkezi arızasına karşı uygulamalarınızı ve verilerinizi koruyan sunan bir yüksek kullanılabilirlik olur. Bir kullanılabilirlik bölgesine benzersiz bir fiziksel konum bağımsız güç ile donatılmış soğutma ve ağ bir Azure bölgesi içinde var.
+# <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik Alanları arasında bir Azure Service Fabric kümesi dağıtma
+Azure 'daki Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde bağımsız güç, soğutma ve ağ ile donatılmış benzersiz bir fiziksel konumdur.
 
-Service Fabric düğüm türleri, Sabitlenen belirli bölgelere dağıtarak kullanılabilirlik alanları genelinde span kümeleri destekler. Bu, uygulamalarınızın yüksek kullanılabilirlik garanti eder. Azure kullanılabilirlik alanları, yalnızca seçilmiş bölgelerde kullanılabilir. Daha fazla bilgi için [Azure kullanılabilirlik alanlarına genel bakış](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Service Fabric, belirli bölgelere sabitlenmiş düğüm türlerini dağıtarak Kullanılabilirlik Alanları yayılmış kümeleri destekler. Bu, uygulamalarınızın yüksek kullanılabilirliğe sahip olmasını sağlayacaktır. Azure Kullanılabilirlik Alanları yalnızca belirli bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [Azure kullanılabilirlik alanları genel bakış](https://docs.microsoft.com/azure/availability-zones/az-overview).
 
-Örnek şablonları mevcuttur: [Service Fabric arası kullanılabilirlik bölgesi şablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates)
+Örnek şablonlar mevcuttur: [Service Fabric çapraz kullanılabilirlik bölgesi şablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
-## <a name="recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones"></a>Azure Service Fabric küme kullanılabilirlik alanları genelinde kapsayan birincil düğüm türü için topolojiyi önerilir
-Kullanılabilirlik alanları genelinde dağıtılmış bir Service Fabric kümesine, küme durumunu yüksek kullanılabilirliğini sağlar. Service Fabric kümesi bölgeler arasında yaymasına izin, bölge tarafından desteklenen her kullanılabilirlik alanı birincil düğüm türü oluşturmanız gerekir. Bu çekirdek düğümleri eşit olarak her birincil düğüm türleri arasında dağıtır.
+## <a name="recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones"></a>Kullanılabilirlik Alanları arasında yayılan Azure Service Fabric kümelerinin birincil düğüm türü için önerilen topoloji
+Kullanılabilirlik Alanları üzerinde dağıtılan bir Service Fabric kümesi, küme durumunun yüksek düzeyde kullanılabilir olmasını sağlar. Bölgeler arasında bir Service Fabric kümesini yaymak için bölgenin desteklediği her bir kullanılabilirlik alanında bir birincil düğüm türü oluşturmanız gerekir. Bu işlem, çekirdek düğümlerini birincil düğüm türlerinin her biri arasında eşit olarak dağıtır.
 
-Birincil düğüm türü için önerilen topoloji aşağıda ana hatlarıyla belirtilen kaynaklar gereklidir:
+Birincil düğüm türü için önerilen topoloji, aşağıda özetlenen kaynakları gerektirir:
 
-* Kümenin güvenilirlik düzeyi için Platinum ayarlayın.
-* Üç düğüm türleri, birincil olarak işaretlendi.
-    * Her düğüm türü kendi sanal makine ölçek kümesi farklı bölgelerde bulunan eşlenmesi gerekir.
-    * Her sanal makine ölçek kümesi en az beş düğüm (Gümüş dayanıklılık) sahip olmalıdır.
-* Tek bir genel IP standart SKU kullanarak kaynak.
-* Tek bir yük dengeleyici standart SKU'su kullanarak kaynak.
-* Alt ağ, sanal makine ölçek kümeleri dağıttığınız tarafından başvurulan bir NSG.
+* Küme güvenilirlik düzeyi Platinum olarak ayarlanır.
+* Birincil olarak işaretlenmiş üç düğüm türü.
+    * Her düğüm türü, farklı bölgelerde bulunan kendi sanal makine ölçek kümesine eşlenmelidir.
+    * Her sanal makine ölçek kümesi en az beş düğüm (gümüş dayanıklılık) içermelidir.
+* Standart SKU kullanan tek bir genel IP kaynağı.
+* Standart SKU kullanan tek bir Load Balancer kaynağı.
+* Sanal makine ölçek kümelerinizi dağıttığınız alt ağ tarafından başvurulan bir NSG.
 
 >[!NOTE]
-> Sanal makine ölçek kümesi tek bir yerleştirme grubu özelliği, Service Fabric bölgelere yayılan bir tek sanal makine ölçek kümesi desteklemediğinden, true olarak ayarlamanız gerekir.
+> Service Fabric alanları kapsayan tek bir sanal makine ölçek kümesini desteklemediğinden, sanal makine ölçek kümesi tek yerleşim grubu özelliği true olarak ayarlanmalıdır.
 
  ![Azure Service Fabric kullanılabilirlik alanı mimarisi][sf-architecture]
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
-### <a name="public-ip-and-load-balancer-resource"></a>Genel IP ve yük dengeleyici kaynağı
-Özelliği bir sanal makine ölçek kümesi kaynak, yük dengeleyici ve bu sanal makine ölçek kümesi tarafından başvurulan IP kaynağı bölgeleri etkinleştirmek için her ikisini de kullanarak gerekir bir *standart* SKU. Bir yük dengeleyici veya SKU özelliği olmadan IP kaynağı oluşturma, bir temel, kullanılabilirlik bölgelerini desteklemiyor SKU, oluşturacaksınız. Standart SKU yük dengeleyici, varsayılan olarak dış giden tüm trafiği engeller; dışında trafiğine izin veren bir NSG alt ağa dağıtılması gerekir.
+### <a name="public-ip-and-load-balancer-resource"></a>Genel IP ve Load Balancer kaynağı
+Bir sanal makine ölçek kümesi kaynağında bölgeler özelliğini etkinleştirmek için, bu sanal makine ölçek kümesi tarafından başvurulan yük dengeleyici ve IP kaynağının her ikisi de *Standart* SKU kullanmalıdır. SKU özelliği olmadan bir yük dengeleyici veya IP kaynağı oluşturmak, Kullanılabilirlik Alanları desteklemeyen temel bir SKU oluşturur. Standart SKU yük dengeleyici, dışarıdaki tüm trafiği varsayılan olarak engeller; Dış trafiğe izin vermek için bir NSG 'nin alt ağa dağıtılması gerekir.
 
 ```json
 {
@@ -96,10 +87,10 @@ Birincil düğüm türü için önerilen topoloji aşağıda ana hatlarıyla bel
 ```
 
 >[!NOTE]
-> SKU genel IP ve yük dengeleyici kaynaklar üzerinde bir yerinde değişiklik yapmak mümkün değildir. Temel bir SKU'ya sahip mevcut kaynaklardan geçiriyorsanız, bu makalenin geçiş bölümüne bakın.
+> Ortak IP ve yük dengeleyici kaynaklarında bir yerinde SKU değişikliği yapmak mümkün değildir. Temel SKU 'SU olan mevcut kaynaklardan geçiş yapıyorsanız, bu makalenin geçiş bölümüne bakın.
 
 ### <a name="virtual-machine-scale-set-nat-rules"></a>Sanal makine ölçek kümesi NAT kuralları
-Yük Dengeleyici gelen NAT kuralları, sanal makine ölçek kümesi gelen NAT havuzları eşleşmelidir. Her sanal makine ölçek kümesi, benzersiz bir gelen NAT havuzu olması gerekir.
+Yük dengeleyici gelen NAT kuralları, sanal makine ölçek kümesindeki NAT havuzlarıyla eşleşmelidir. Her sanal makine ölçek kümesinin benzersiz bir gelen NAT havuzu olmalıdır.
 
 ```json
 {
@@ -144,18 +135,18 @@ Yük Dengeleyici gelen NAT kuralları, sanal makine ölçek kümesi gelen NAT ha
 }
 ```
 
-### <a name="standard-sku-load-balancer-outbound-rules"></a>Standart SKU yük dengeleyici giden kuralları
-Standart Load Balancer ve standart genel IP temel SKU'ları kullanarak karşılaştırıldığında giden bağlantıyı yeni yetenekler ve farklı davranışları dağıtır. Standart SKU'lar ile çalışırken giden bağlantı istiyorsanız, bunu standart genel IP adresleri veya genel bir Standard Load Balancer ile açıkça tanımlamalısınız. Daha fazla bilgi için [giden bağlantılar](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) ve [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+### <a name="standard-sku-load-balancer-outbound-rules"></a>Standart SKU Load Balancer giden kuralları
+Standart Load Balancer ve standart genel IP, temel SKU 'Ları kullanmaya kıyasla giden bağlantılara yeni yetenekler ve farklı davranışlar getirir. Standart SKU 'Lar ile çalışırken giden bağlantı isterseniz, standart genel IP adresleriyle veya standart ortak Load Balancer açıkça tanımlamanız gerekir. Daha fazla bilgi için bkz. [giden bağlantılar](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) ve [Azure Standart Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
 
 >[!NOTE]
-> Standart şablon varsayılan olarak tüm giden trafiğe izin veren bir NSG başvuruyor. Service Fabric yönetim işlemleri için gereken bağlantı noktalarına gelen trafiği sınırlıdır. NSG kuralları, gereksinimlerinizi karşılayacak şekilde değiştirilebilir.
+> Standart Şablon, tüm giden trafiğe varsayılan olarak izin veren bir NSG 'ye başvurur. Gelen trafik Service Fabric yönetim işlemleri için gerekli olan bağlantı noktalarıyla sınırlıdır. NSG kuralları gereksinimlerinizi karşılayacak şekilde değiştirilebilir.
 
-### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Etkinleştirme bölgelerinde sanal makine ölçek kümesi
-Aşağıdaki üç değerden bir bölge etkinleştirmek için üzerinde sanal makine ölçek kümesi sanal makine ölçek kümesi kaynak içermesi gerekir.
+### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesi üzerinde bölgeleri etkinleştirme
+Bir bölgeyi etkinleştirmek için, bir sanal makine ölçek kümesinde, sanal makine ölçek kümesi kaynağına aşağıdaki üç değeri eklemeniz gerekir.
 
-* İlk değer **bölgeleri** özelliği hangi kullanılabilirlik sanal makine ölçek kümesi dağıtılacağı bölgeyi belirtir.
-* İkinci değerdir ayarlanması gerekir "singlePlacementGroup" özelliği true.
-* Service Fabric sanal makine ölçek kümesi uzantısını "faultDomainOverride" özelliğinde üçüncü değerdir. Bu özellik için değer, bu sanal makine ölçek kümesi yerleştirileceği bölge ve bölge içermelidir. Örnek: "faultDomainOverride": "eastus/az1 tüm sanal makine ölçek kümesi kaynakları" Azure Service Fabric kümeleri bölge desteği olmadığı için aynı bölgede yerleştirilmelidir.
+* İlk değer, sanal makine ölçek kümesinin hangi kullanılabilirlik bölgesine dağıtılacağını belirten **bölgeler** özelliğidir.
+* İkinci değer, true olarak ayarlanması gereken "singlePlacementGroup" özelliğidir.
+* Üçüncü değer, Service Fabric sanal makine ölçek kümesi uzantısında "faultDomainOverride" özelliğidir. Bu özelliğin değeri, bu sanal makine ölçek kümesinin yerleştirileceği bölgeyi ve bölgeyi içermelidir. Örnek: "faultDomainOverride": "eastus/AZ1" Azure Service Fabric kümelerinde çapraz bölge desteği olmadığından, tüm sanal makine ölçek kümesi kaynakları aynı bölgeye yerleştirilmelidir.
 
 ```json
 {
@@ -195,8 +186,8 @@ Aşağıdaki üç değerden bir bölge etkinleştirmek için üzerinde sanal mak
 }
 ```
 
-### <a name="enabling-multiple-primary-node-types-in-the-service-fabric-cluster-resource"></a>Service Fabric kümesi kaynağında birden çok birincil düğüm türleri etkinleştirme
-Bir veya daha fazla düğüm türleri, bir küme kaynağı içindeki birincil olarak ayarlamak için "true" "Isprimary" özelliğini ayarlayın. Service Fabric kümesi kullanılabilirlik alanları genelinde dağıtım yaparken, üç düğüm türleri farklı bölgelerde olmalıdır.
+### <a name="enabling-multiple-primary-node-types-in-the-service-fabric-cluster-resource"></a>Service Fabric küme kaynağında birden çok birincil düğüm türü etkinleştiriliyor
+Bir küme kaynağında birincil olarak bir veya daha fazla düğüm türü ayarlamak için "Isprımary" özelliğini "true" olarak ayarlayın. Kullanılabilirlik Alanları arasında Service Fabric kümesi dağıtımında, farklı bölgelerde üç düğüm türüne sahip olmanız gerekir.
 
 ```json
 {
@@ -254,20 +245,20 @@ Bir veya daha fazla düğüm türleri, bir küme kaynağı içindeki birincil ol
 }
 ```
 
-## <a name="migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Kullanılabilirlik alanları temel SKU yük dengeleyici ve bir temel SKU IP kullanarak bir kümeden kullanarak geçirme
-Bir yük dengeleyici ve IP ile temel bir SKU'ya kullanıyordu, bir kümeye geçirmek için standart SKU'nun kullanarak tamamen yeni bir yük dengeleyici ve IP kaynağı oluşturun. Bu kaynakları yerinde güncelleştirmek mümkün değildir.
+## <a name="migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Temel SKU Load Balancer ve temel SKU IP 'si kullanarak bir kümeden Kullanılabilirlik Alanları kullanmak için geçirme
+Temel SKU ile Load Balancer ve IP kullanan bir kümeyi geçirmek için, önce standart SKU 'yu kullanarak tamamen yeni bir Load Balancer ve IP kaynağı oluşturmanız gerekir. Bu kaynakları yerinde güncelleştirmek mümkün değildir.
 
-Yeni LB ve IP kullanmak istediğiniz yeni çapraz kullanılabilirlik alanı düğüm türü başvurulan. Yukarıdaki örnekte, üç yeni sanal makine ölçek kümesi kaynaklarının 1,2 ve 3 bölgelerinde eklenmiştir. Bu sanal makine ölçek kümeleri yeni oluşturulan LB ve IP başvurusu ve Service Fabric küme kaynağı birincil düğüm türleri olarak işaretlenir.
+Yeni LB ve IP 'yi kullanmak istediğiniz yeni çapraz kullanılabilirlik bölgesi düğüm türlerinde başvurulmalıdır. Yukarıdaki örnekte, bölge 1, 2 ve 3 ' te üç yeni sanal makine ölçek kümesi kaynağı eklenmiştir. Bu sanal makine ölçek kümeleri, yeni oluşturulan LB ve IP 'ye başvurur ve Service Fabric küme kaynağında birincil düğüm türleri olarak işaretlenir.
 
-Başlamak için mevcut Resource Manager şablonunuzu yeni kaynakları eklemeniz gerekir. Bu kaynaklar içerir:
-* Standart SKU kullanan bir genel IP kaynağı.
-* Standart SKU kullanarak yük dengeleyici kaynak.
-* Alt ağ, sanal makine ölçek kümeleri dağıttığınız tarafından başvurulan bir NSG.
-* Üç düğüm türleri, birincil olarak işaretlendi.
-    * Her düğüm türü kendi sanal makine ölçek kümesi farklı bölgelerde bulunan eşlenmesi gerekir.
-    * Her sanal makine ölçek kümesi en az beş düğüm (Gümüş dayanıklılık) sahip olmalıdır.
+Başlamak için, mevcut Kaynak Yöneticisi şablonunuza yeni kaynakları eklemeniz gerekir. Bu kaynaklar şunları içerir:
+* Standart SKU kullanan genel bir IP kaynağı.
+* Standart SKU kullanan bir Load Balancer kaynağı.
+* Sanal makine ölçek kümelerinizi dağıttığınız alt ağ tarafından başvurulan bir NSG.
+* Birincil olarak işaretlenmiş üç düğüm türü.
+    * Her düğüm türü, farklı bölgelerde bulunan kendi sanal makine ölçek kümesine eşlenmelidir.
+    * Her sanal makine ölçek kümesi en az beş düğüm (gümüş dayanıklılık) içermelidir.
 
-Bu kaynaklar örneği bulunabilir [örnek şablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure).
+[Örnek şablonda](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure)bu kaynaklara bir örnek bulabilirsiniz.
 
 ```powershell
 New-AzureRmResourceGroupDeployment `
@@ -276,7 +267,7 @@ New-AzureRmResourceGroupDeployment `
     -TemplateParameterFile $Parameters
 ```
 
-Kaynakları, dağıtımı tamamladıktan sonra birincil düğüm türü özgün kümeden düğüm devre dışı bırakmak başlayabilirsiniz. Düğümleri devre dışı bırakılmış şekilde, Hizmetler'i Yukarıdaki adımda dağıtılan yeni birincil düğüm türü için geçirilecektir.
+Kaynakların dağıtımı tamamlandıktan sonra, birincil düğüm türündeki düğümleri orijinal kümeden devre dışı bırakmayı deneyebilirsiniz. Düğümler devre dışı bırakıldığı için, sistem hizmetleri Yukarıdaki adımda dağıtılan yeni birincil düğüm türüne geçirilir.
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName `
@@ -298,7 +289,7 @@ foreach($name in $nodeNames) {
 }
 ```
 
-Düğümlerin tümü devre dışı bırakılmıştır sonra Sistem Hizmetleri dilimlerinde dağıldığında birincil düğüm türünde çalıştırırsınız. Bu gibi durumlarda, devre dışı düğümler ardından kümesinden kaldırabilirsiniz. Düğümleri kaldırdıktan sonra özgün IP, Load Balancer'ı kaldırmanız ve kaynaklar sanal makine ölçek kümesi.
+Düğümlerin tümü devre dışı bırakıldıktan sonra sistem hizmetleri, bölgeler arasında yayılan birincil düğüm türünde çalışır. Bundan sonra devre dışı bırakılmış düğümleri kümeden kaldırabilirsiniz. Düğümler kaldırıldıktan sonra, özgün IP, Load Balancer ve sanal makine ölçek kümesi kaynaklarını kaldırabilirsiniz.
 
 ```powershell
 foreach($name in $nodeNames){
@@ -318,9 +309,9 @@ Remove-AzureRmLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
 Remove-AzureRmPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
 ```
 
-Ardından, bu kaynaklara başvurular dağıtılmış Resource Manager şablonundan kaldırmanız gerekir.
+Daha sonra, bu kaynaklara ait başvuruları dağıttığınız Kaynak Yöneticisi şablondan kaldırmanız gerekir.
 
-Son adım, genel IP ve DNS adını güncelleştirme içerecektir.
+Son adım, DNS adının ve genel IP 'nin güncelleştirilmesini içerir.
 
 ```powershell
 $oldprimaryPublicIP = Get-AzureRmPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $groupname

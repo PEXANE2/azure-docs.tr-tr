@@ -1,29 +1,20 @@
 ---
-title: Azure Service Fabric olayları | Microsoft Docs
-description: Azure Service Fabric kümenizi izlemenize yardımcı olması için kullanıma hazır sağlanan Service Fabric olayları hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric olayları
+description: Azure Service Fabric kümenizi izlemenize yardımcı olmak için kutudan çıkan Service Fabric olayları hakkında bilgi edinin.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: b4270b9438a397ec09537c9d6343515ebc21af98
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393053"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451723"
 ---
 # <a name="service-fabric-events"></a>Service Fabric olayları 
 
-Service Fabric platform, küme içinde'olmuyor anahtar işletimsel etkinlikler için yapılandırılmış birkaç olayları yazar. Küme yükseltme bu aralıktan çoğaltma yerleştirme kararları için. Her olay, Service Fabric kümesinde aşağıdaki varlıkları birine eşlemeleri gösterir:
+Service Fabric platformu, kümenizde oluşan önemli işletimsel etkinlikler için birkaç yapılandırılmış olay yazar. Bu Aralık, küme yükseltmelerinden çoğaltma yerleştirme kararlarından yapılır. Service Fabric her olay, kümedeki aşağıdaki varlıklardan birine eşlenir.
 * Küme
 * Uygulama
 * Hizmet
@@ -31,23 +22,23 @@ Service Fabric platform, küme içinde'olmuyor anahtar işletimsel etkinlikler i
 * Çoğaltma 
 * Kapsayıcı
 
--Platform tarafından sunulan olayların tam listesi görmek için [Service Fabric listesi olayları](service-fabric-diagnostics-event-generation-operational.md).
+[Service Fabric olaylarının Platform listesi](service-fabric-diagnostics-event-generation-operational.md)tarafından kullanıma sunulan olayların tam listesini görmek için.
 
-Kümenizde olayları görmelisiniz senaryoları bazı örnekleri aşağıda verilmiştir. 
-* Düğüm yaşam döngüsü olaylarını: düğümleri gündeme, aşağı git, Ölçek daraltma veya genişletme, yeniden başlatın ve etkin/devre dışı olarak bu olayları ne olduğunu gösteren sunulur ve varsa bir makine ile sorun veya var olan bir API olsa belirlemenize yardımcı bir düğümün durumunu değiştirmek için BT çağrılır.
-* Küme Yükseltmesi: kümenizi yükseltilmiş olarak (SF sürümü veya yapılandırma değişikliği), yükseltmeyi tamamlamak başlatmak ve her biri, yükseltme etki alanları ile geri görürsünüz (veya geri alma). 
-* Uygulama yükseltme: Küme yükseltme olduğu gibi olayları kapsamlı bir dizi aracılığıyla yükseltme yapar gibi bulunur. Bu olayların ne zaman yükseltme zamanlandı, geçerli yükseltme durumunu ve genel olaylar dizisini anlamak yararlı olabilir. Bu, ne yükseltmelerini başarıyla piyasaya sunuluyor veya bir geri alma olup tetiklendi görmek için geri arama kullanışlıdır.
-* Uygulama/hizmet dağıtımı / silme: her uygulama, hizmet ve kapsayıcı, veya örneğin çoğaltmaları sayısının artırılması dışa ölçeklendirme oluşturulan veya silinen ve kullanışlı olan bir olay
-* Bölüm taşır (yeniden): durum bilgisi olan bir bölümü yeniden yapılandırma (çoğaltma kümesi bir değişiklik) geçer her bir olay kaydedilir. Bu, ne sıklıkta bölüm çoğaltma kümenizi değiştirme veya yük devretmeyi anlama çalıştığınız ya da hangi düğümün zaman içinde herhangi bir noktada birincil çoğaltma çalıştığı izlemek yararlı olur.
-* Kaos olayları: Service Fabric'in kullanırken [Chaos](service-fabric-controlled-chaos.md) hizmet, hizmet başlatılmış veya durdurulmuşsa her zaman veya sistemdeki bir hata ekler olayları görürsünüz.
-* Sistem durumu olayları: Service Fabric, her zaman bir uyarı veya hata sistem durumu raporu oluşturulur, bir varlığın bir Tamam sistem durumuna döner veya bir sistem durumu raporu süresi sistem durumu olayları gösterir. Bu olayları bir varlık için geçmiş sağlık istatistikleri izlemek çok yararlı olur. 
+İşte, kümenize yönelik olayları görmeniz gereken bazı senaryolar örnekleri aşağıda verilmiştir. 
+* Düğüm yaşam döngüsü olayları: düğümler, aşağı doğru, ölçeklendirilir/dışarı ve devre dışı bırakıldığında, bu olaylar ne olduğunu gösterir ve makinenin kendisinde bir sorun olup olmadığını veya bir düğümün durumunu değiştirmek için SF aracılığıyla çağrılan bir API olup olmadığını belirlemenize yardımcı olur.
+* Küme yükseltme: kümeniz yükseltildiğinde (SF sürümü veya yapılandırma değişikliği), yükseltme başlatma, yükseltme etki alanlarınızın her birini geri alma ve tamamlanma (veya geri alma) işlemini görürsünüz. 
+* Uygulama yükseltmeleri: küme yükseltmeleri gibi, yükseltmenin yaptığı gibi kapsamlı bir olay kümesi vardır. Bu olaylar, bir yükseltmenin ne zaman zamanlandığını, yükseltmenin geçerli durumunu ve genel olay sırasını anlamak için yararlı olabilir. Bu, hangi yükseltmelerin başarıyla oluşturulduğunu veya geri alma işleminin tetiklenip tetiklenmediğini görmek için yararlıdır.
+* Uygulama/hizmet dağıtımı/silme: oluşturulan veya silinmekte olan her uygulama, hizmet ve kapsayıcının olayları vardır, örneğin, yineleme sayısını artırma
+* Bölüm taşımaları (yeniden yapılandırma): durum bilgisi olan bir bölüm bir yeniden yapılandırma (çoğaltma kümesindeki bir değişiklik) üzerinden geçtiğinde bir olay günlüğe kaydedilir. Bu, Bölüm çoğaltma kümesi 'nin hangi sıklıkta değiştiğini veya yük devretmekte olduğunu anlamaya çalışıyorsanız veya herhangi bir zamanda birincil çoğaltmanız hangi düğümde çalıştırmakta olduğunu anlamak için kullanışlıdır.
+* Chaos olayları: Service Fabric [Chaos](service-fabric-controlled-chaos.md) hizmeti kullanılırken, hizmet her başlatıldığında veya durdurulduğunda veya sistemde bir hata söz konusu olduğunda olaylar görüntülenir.
+* Sistem durumu olayları: Service Fabric bir uyarı veya bir hata durumu raporu oluşturulduğunda veya bir varlık bir Tamam sistem durumuna geçtiğinde veya bir sistem durumu raporunun süresi dolarsa sistem durumu olaylarını kullanıma sunar. Bu olaylar, bir varlığın geçmiş sistem durumu istatistiklerini izlemek için çok yararlıdır. 
 
-## <a name="how-to-access-events"></a>Olayları erişme
+## <a name="how-to-access-events"></a>Olaylara erişme
 
-Service Fabric olayları erişilebilen birkaç farklı yolu vardır:
-* Olayları ETW/Windows olay günlükleri gibi standart kanallar aracılığıyla günlüğe kaydedilir ve bunları Azure İzleyici günlükleri gibi destekleyen herhangi bir izleme aracı tarafından görselleştirilebilir. Varsayılan olarak, kümeler portalda oluşturulan tanılama açıkken varsa ve Azure tablo depolama birimine olayları gönderen Windows Azure tanılama aracısını, ancak yine de bu log analytics kaynağınızı ile tümleştirme gerekiyorsa. Yapılandırma hakkında daha fazla okuma [Azure tanılama aracısını](service-fabric-diagnostics-event-aggregation-wad.md) kümenizi daha fazla günlük veya performans sayaçlarını alacak şekilde Tanılama yapılandırmasını değiştirmek için ve [Azure İzleyici günlükleri tümleştirme](service-fabric-diagnostics-event-analysis-oms.md)
-* Doğrudan veya Service Fabric istemci kitaplığı aracılığıyla küme sorgu olanak tanıyan Eventstore'a hizmetin Rest API'ler. Bkz: [küme olayları için sorgu EventStore API'leri](service-fabric-diagnostics-eventstore-query.md).
+Service Fabric olaylarına erişmek için birkaç farklı yol vardır:
+* Olaylar, ETW/Windows olay günlükleri gibi standart kanallarla günlüğe kaydedilir ve Azure Izleyici günlükleri gibi bunları destekleyen herhangi bir izleme aracı tarafından görselleştirilebilir. Varsayılan olarak, portalda oluşturulan kümeler tanılamayı açıktır ve Windows Azure tanılama Aracısı 'nın olayları Azure Tablo depolamaya göndermesini sağlar, ancak yine de bunu Log Analytics kaynağı ile tümleştirmeniz gerekir. Daha fazla günlük veya performans sayacı ve [Azure izleyici günlükleri tümleştirmesi](service-fabric-diagnostics-event-analysis-oms.md) için, kümenizin tanılama yapılandırmasını değiştirmek üzere [Azure tanılama aracısını](service-fabric-diagnostics-event-aggregation-wad.md) yapılandırma hakkında daha fazla bilgi edinin
+* EventStore hizmeti 'nin doğrudan veya Service Fabric Istemci kitaplığı aracılığıyla küme sorgulamanızı sağlayan REST API 'Leri. Bkz. [küme olayları Için sorgu EventStore API 'leri](service-fabric-diagnostics-eventstore-query.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Daha fazla bilgi - kümenizi izlemeye [platform ve küme izleme](service-fabric-diagnostics-event-generation-infra.md).
-* Eventstore'a hizmeti hakkında-daha fazla bilgi [Eventstore'a hizmetine genel bakış](service-fabric-diagnostics-eventstore.md)
+* Kümenizi izleme hakkında daha fazla bilgi [ve kümeyi ve platformu izleme](service-fabric-diagnostics-event-generation-infra.md).
+* EventStore hizmeti hakkında daha fazla bilgi edinin- [Eventstore hizmetine genel bakış](service-fabric-diagnostics-eventstore.md)

@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 528684031404dbd907205e69f3565155fa1856b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531821"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454304"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN ağ geçitleri aracılığıyla şirket içi bağlantıyı tanılama
 
-Azure VPN Gateway, şirket içi ağınız ile Azure sanal ağınız arasında güvenli bir bağlantı gereksinimini karşılayan karma çözüm oluşturmanıza olanak sağlar. Gereksinimleriniz benzersiz olduğundan, şirket içi VPN cihazı tercih edilir. Azure Şu anda cihaz satıcılarıyla iş ortaklığı içinde sürekli olarak doğrulanan [ÇEŞITLI VPN cihazlarını](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) desteklemektedir. Şirket içi VPN cihazınızı yapılandırmadan önce cihaza özgü yapılandırma ayarlarını gözden geçirin. Benzer şekilde, Azure VPN Gateway, bağlantı kurmak için kullanılan [desteklenen bir IPSec parametreleri](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) kümesiyle yapılandırılır. Şu anda Azure VPN Gateway IPsec parametrelerinin belirli bir birleşimini belirtmenin veya seçmenin bir yolu yoktur. Şirket içi ve Azure arasında başarılı bir bağlantı kurmak için şirket içi VPN cihaz ayarlarının Azure VPN Gateway tarafından belirtilen IPSec parametrelerine uygun olması gerekir. Ayarlar doğruysa, bağlantı kaybı olur ve bu sorunların giderilmesi önemsiz değildi ve genellikle sorunu tanımlamak ve düzeltmek için saat sürdü.
+Azure VPN Gateway, şirket içi ağınız ile Azure sanal ağınız arasında güvenli bir bağlantı gereksinimini karşılayan karma çözüm oluşturmanıza olanak sağlar. Gereksinimleriniz benzersiz olduğundan, şirket içi VPN cihazı tercih edilir. Azure Şu anda cihaz satıcılarıyla iş ortaklığı içinde sürekli olarak doğrulanan [ÇEŞITLI VPN cihazlarını](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) desteklemektedir. Şirket içi VPN cihazınızı yapılandırmadan önce cihaza özgü yapılandırma ayarlarını gözden geçirin. Benzer şekilde, Azure VPN Gateway, bağlantı kurmak için kullanılan [desteklenen bir IPSec parametreleri](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) kümesiyle yapılandırılır. Şu anda Azure VPN Gateway IPsec parametrelerinin belirli bir birleşimini belirtmenin veya seçmenin bir yolu yoktur. Şirket içi ve Azure arasında başarılı bir bağlantı kurmak için şirket içi VPN cihaz ayarlarının Azure VPN Gateway tarafından belirtilen IPSec parametrelerine uygun olması gerekir. Ayarlar yanlışsa, bağlantı kaybı olur ve bu sorunların giderilmesi önemsiz değildi ve genellikle sorunu tanımlamak ve çözmek için saat sürdü.
 
 Azure ağ Izleyicisi sorun giderme özelliği sayesinde, ağ geçidiniz ve bağlantılarınız ile ilgili sorunları tanılayabilir ve dakikalar içinde sorunu düzeltmeye yönelik bilinçli bir karar vermek için yeterli bilgiye sahip olabilirsiniz.
 
@@ -82,36 +82,36 @@ Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı b
 
 ### <a name="gateway"></a>Ağ Geçidi
 
-| Hata türü | Neden | Günlük|
+| Hata Türü | Neden | Günlük|
 |---|---|---|
-| Nofatoult | Hata saptanmadı. |Yes|
+| NoFault | Hata saptanmadı. |Evet|
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
-| PlannedMaintenance |  Ağ Geçidi örneği bakım aşamasındadır.  |Hayır|
+| PlannedMaintenance |  Ağ geçidi örneği bakım aşamasında.  |Hayır|
 | UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir. | Hayır |
-| Canlı yanıt verme | Ağ geçidinin birincil örneğine ulaşılamıyor. Bu durum araştırma başarısız olduğunda gerçekleşir. | Hayır |
-| PlatformInActive | Platformda bir sorun var. | Hayır|
+| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Bu durum araştırma başarısız olduğunda gerçekleşir. | Hayır |
+| PlatformInActive | Platform ile ilgili bir sorun var. | Hayır|
 | ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
-| Noconnectionsdökümforgateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| Hayır|
-| ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Yes|
-| Gatewaycpuusageaşıldı | Geçerli ağ geçidi kullanım CPU kullanımı %95 >. | Yes |
+| NoConnectionsFoundForGateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| Hayır|
+| ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Evet|
+| Gatewaycpuusageaşıldı | Geçerli ağ geçidi kullanım CPU kullanımı %95 >. | Evet |
 
 ### <a name="connection"></a>Bağlantı
 
-| Hata türü | Neden | Günlük|
+| Hata Türü | Neden | Günlük|
 |---|---|---|
-| Nofatoult | Hata saptanmadı. |Yes|
+| NoFault | Hata saptanmadı. |Evet|
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
-| PlannedMaintenance | Ağ Geçidi örneği bakım aşamasındadır.  |Hayır|
+| PlannedMaintenance | Ağ geçidi örneği bakım aşamasında.  |Hayır|
 | UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
-| Canlı yanıt verme | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | Hayır |
+| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | Hayır |
 | ConnectionEntityNotFound | Bağlantı yapılandırması eksik. | Hayır |
 | Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |Hayır|
-| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
-| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
-| Kimlik Doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Yes|
-| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
-| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
-| WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Yes|
+| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Evet |
+| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Evet|
+| Kimlik Doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Evet|
+| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Evet|
+| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Evet|
+| WfpParse Error | WFP günlüğü ayrıştırılırken bir hata oluştu. |Evet|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

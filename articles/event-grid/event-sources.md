@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 8c9258f099587ba4dbdfe3a7e46f72cd7a825024
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 63cd7cea65515488649507cb7d3c52877211ca04
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603830"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531454"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid içindeki olay kaynakları
 
@@ -32,7 +32,7 @@ Azure aboneliği genelinde kaynaklardaki değişikliklere yanıt vermek için Az
 | [PowerShell: bir Azure aboneliği için olaylara abone olma](./scripts/event-grid-powershell-azure-subscription.md)| Bir Azure aboneliğine Event Grid aboneliği oluşturan ve bir Web kancasına olay gönderen örnek komut dosyası. |
 | [Olay şeması](event-schema-subscriptions.md) | Azure abonelik olaylarında alanları gösterir. |
 
-## <a name="container-registry"></a>Container Kayıt Defteri
+## <a name="container-registry"></a>Container Registry
 
 Görüntülerdeki değişikliklere yanıt vermek için Container Registry olaylarına abone olun.
 
@@ -41,7 +41,7 @@ Görüntülerdeki değişikliklere yanıt vermek için Container Registry olayla
 | [Hızlı başlangıç: kapsayıcı kayıt defteri olayları gönderme](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Container Registry olaylarını göndermek için Azure CLı 'nın nasıl kullanılacağını gösterir. |
 | [Olay şeması](event-schema-container-registry.md) | Container Registry olaylardaki alanları gösterir. |
 
-## <a name="custom-topics"></a>Özel Konular
+## <a name="custom-topics"></a>Özel konular
 
 Uygulama olaylarına yanıt vermek için özel konulara abone olun.
 
@@ -72,7 +72,7 @@ Yakalama dosyası olaylarına yanıt vermek için Event Hubs olaylarına abone o
 
 İşleyici olarak Event Hubs örnekleri için bkz. [Event Hubs Handler](event-handlers.md#event-hubs).
 
-## <a name="iot-hub"></a>IoT Hub’ı
+## <a name="iot-hub"></a>IoT Hub
 
 Oluşturulan, silinen, bağlı, bağlantısı kesilen ve telemetri olaylarına yanıt vermek için IoT Hub olaylarına abone olun.
 
@@ -177,10 +177,10 @@ Model kaydına yanıt vermek için Azure Machine Learning çalışma alanı olay
 
 | Başlık | Açıklama |
 | ----- | ----- |
-| [Azure Machine Learning olaylarını tüketme](../machine-learning/service/concept-event-grid-integration.md) | Azure Machine Learning Event Grid tümleştirilmesine genel bakış. |
+| [Azure Machine Learning olaylarını tüketme](../machine-learning/concept-event-grid-integration.md) | Azure Machine Learning Event Grid tümleştirilmesine genel bakış. |
 | [Azure Machine Learning için Azure Event Grid olay şeması](event-schema-machine-learning.md) | Azure Machine Learning olaylardaki alanları gösterir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).
+* Event Grid ile hızla çalışmaya başlamak için bkz: [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md).

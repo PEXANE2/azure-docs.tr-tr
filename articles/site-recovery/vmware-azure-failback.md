@@ -7,99 +7,60 @@ ms.service: site-recovery
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 2ec2a4a91f4de0761f631bec393bb90c3feb82b9
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: cd4cc90fb102d517a47ba458619e22b8921dd498
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084053"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495334"
 ---
-# <a name="fail-back-vmware-vms-and-physical-servers-from-azure-to-an-on-premises-site"></a>VMware VM 'lerini ve fiziksel sunucuları Azure 'dan şirket içi siteye geri dönme
+# <a name="fail-back-vmware-vms-to-on-premises-site"></a>VMware VM 'lerini şirket içi siteye geri dönme
 
-Bu makalede, sanal makinelerin Azure sanal makinelerinden şirket içi VMware ortamına nasıl geri dönmesi anlatılmaktadır. Azure Site Recovery öğreticide [Yük devretmeyi](site-recovery-failover.md) kullanarak VMware sanal makinelerinizi veya Windows/Linux fiziksel sunucularınızı şirket Içi siteden Azure 'a yük devretmeden sonra geri yüklemek için bu makaledeki yönergeleri izleyin.
+Bu makalede, Azure sanal makinelerinin [Azure Site Recovery](site-recovery-overview.md)ile Azure 'a [yük devretmesinin](site-recovery-failover.md) ardından Şirket içi bir siteye nasıl geri dönmesi yapılacağı açıklanır. Şirket içi çalışmaya başladıktan sonra, şirket içi VM 'Lerin Azure 'a çoğaltmaya başlaması için çoğaltmayı etkinleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
-- [Farklı yeniden çalışma türleri](concepts-types-of-failback.md) ve ilgili uyarılarla ilgili ayrıntıları okuduğunuzdan emin olun.
+## <a name="before-you-start"></a>Başlamadan önce
 
-> [!WARNING]
-> [Geçiş işlemi](migrate-overview.md#what-do-we-mean-by-migration)tamamlandıktan sonra, bir sanal makineyi başka bir kaynak grubuna taşıdıktan veya Azure sanal makinesini sildikten sonra bu işlemi geri alamazsınız. Sanal makinenin korumasını devre dışı bırakırsanız, yeniden başarısız olursunuz.
+1. VMware yeniden [çalışma](failover-failback-overview.md#vmwarephysical-reprotectionfailback)hakkında bilgi edinin. 
+2. Yeniden [çalışma için hazırlanma](vmware-azure-prepare-failback.md)adımlarını ve gerekli tüm bileşenlerin dağıtıldığını gözden geçirdiğinizden ve tamamladığınızdan emin olun. Bileşenler Azure 'da bir işlem sunucusu, bir şirket içi ana hedef sunucusu ve yeniden çalışma için bir VPN siteden siteye bağlantı (veya ExpressRoute özel eşlemesi) içerir.
+3. Yeniden koruma ve yeniden çalışma [gereksinimlerini](vmware-azure-reprotect.md#before-you-begin) tamamladığınızdan ve Azure 'dan şirket içi siteye Çoğaltıldıklarından Azure VM 'lerinin [yeniden korunmasını etkinleştirmiş](vmware-azure-reprotect.md#enable-reprotection) olduğunuzdan emin olun. VM 'Lerin tekrar yük devri için bir çoğaltılan durumda olması gerekir.
 
-> [!WARNING]
-> Windows Server 2008 R2 SP1 fiziksel sunucusu, korumalı ve Azure 'a yük devretmelidir, yeniden başarısız olur.
+
+
+
+## <a name="run-a-failover-to-fail-back"></a>Yük devretme işlemini yeniden çalıştırmak için çalıştırma
+
+1. Azure VM 'lerinin yeniden korunduğundan ve şirket içi siteye çoğaltıldığından emin olun. 
+    - Bir VM 'nin yeniden başlatılması için en az bir kurtarma noktası olması gerekir.
+    - Bir kurtarma planını yeniden devretmek, plandaki tüm makinelerin en az bir kurtarma noktası olması gerekir.
+2. Kasada **çoğaltılan öğeleri**> VM 'yi seçin. **Planlanmamış yük devretme**> VM 'ye sağ tıklayın.
+3. **Yük devretmeyi onaylayın**bölümünde yük devretme yönünü (Azure 'dan) doğrulayın.
+4. Yük devretme için kullanmak istediğiniz kurtarma noktasını seçin.
+    - **En son** kurtarma noktasını kullanmanızı öneririz. Uygulamayla tutarlı nokta en son zaman noktası arkasında ve veri kaybına neden olur.
+    - **En son** , kilitlenme ile tutarlı bir kurtarma noktasıdır.
+    - **En son**Ile bir VM, en son kullanılabilir zaman noktasına yük devreder. Bir kurtarma planında çoklu VM tutarlılığı için bir çoğaltma grubunuz varsa, gruptaki her VM, zaman içindeki bağımsız en son noktaya yük devreder.
+    - Uygulamayla tutarlı bir kurtarma noktası kullanıyorsanız, her sanal makine kullanılabilir en son noktasına geri dönebilir. Bir kurtarma planında bir çoğaltma grubu varsa, her grup ortak kullanılabilir kurtarma noktasını kurtarır.
+5. Yük devretme başlar. Site Recovery Azure VM 'lerini kapatır.
+6. Yük devretme tamamlandıktan sonra her şeyin beklendiği gibi çalıştığını denetleyin. Azure VM 'lerinin kapatıldığından emin olun. 
+7. Her şey doğrulandıktan sonra, yük devretme işlemini tamamlamak için, **işleme**> VM 'ye sağ tıklayın. COMMIT, yük devredilen Azure VM 'yi kaldırır. 
 
 > [!NOTE]
-> VMware sanal makinelerinin yükünü devretmek için bir Hyper-V konağına geri dönemezsiniz.
+> Windows VM 'Leri için, Site Recovery yük devretme sırasında VMware araçlarını devre dışı bırakır. Windows VM 'nin yeniden çalışma sırasında, VMware araçları tekrar etkinleştirilir. 
 
 
-- Devam etmeden önce, sanal makinelerin çoğaltılan bir durumda olması için yeniden koru adımlarını tamamlayıp şirket içi siteye geri yük devretme işlemi başlatabilirsiniz. Daha fazla bilgi için bkz. [Azure 'dan şirket içine yeniden koruma](vmware-azure-reprotect.md).
-
-- Yeniden çalışma yapmadan önce vCenter 'ın bağlı durumda olduğundan emin olun. Aksi takdirde, disklerin bağlantısının kesilmesi ve sanal makineye geri eklenmesi başarısız olur.
-
-- Azure 'a yük devretme sırasında şirket içi site erişilebilir olmayabilir ve yapılandırma sunucusu kullanılamıyor ya da kapatılabilir olabilir. Yeniden koruma ve yeniden çalışma sırasında, şirket içi yapılandırma sunucusunun çalışıyor olması ve bağlı bir Tamam durumunda olması gerekir. 
-
-- Yeniden çalışma sırasında, sanal makinenin yapılandırma sunucusu veritabanında mevcut olması gerekir veya yeniden çalışma başarılı olmayacaktır. Sunucunuzun düzenli olarak zamanlanmış yedeklemelerini aldığınızdan emin olun. Bir olağanüstü durum oluşursa, yeniden çalışma işleminin çalışması için sunucuyu özgün IP adresine geri yüklemeniz gerekir.
-
-- Yeniden korumayı/yeniden çalışmayı tetiklemeden önce ana hedef sunucunun anlık görüntü sahibi olmaması gerekir.
-
-## <a name="overview-of-failback"></a>Yeniden çalışma için genel bakış
-Azure 'a yük devretmenin ardından, aşağıdaki adımları yürüterek şirket içi sitenize geri dönebilirsiniz:
-
-1. Azure üzerindeki sanal makineleri, şirket içi sitenizdeki VMware sanal makinelerine çoğaltmaya başlayacak şekilde [yeniden koruyun](vmware-azure-reprotect.md) . Bu işlemin bir parçası olarak şunları da yapmanız gerekir:
-
-    * Bir şirket içi ana hedef ayarlayın. Windows sanal makineleri için bir Windows ana hedefi ve Linux sanal makineleri için bir [Linux ana hedefi](vmware-azure-install-linux-master-target.md) kullanın.
-    * [İşlem sunucusu](vmware-azure-set-up-process-server-azure.md)ayarlayın.
-    * Şirket içi sanal makineyi kapatmak ve Azure sanal makinesinin verilerini şirket içi disklerle eşleştirmek için [yeniden koruma](vmware-azure-reprotect.md) başlatın.
-
-2. Azure 'daki sanal makineleriniz şirket içi sitenize çoğaltıldıktan sonra, Azure 'dan şirket içi siteye bir yük devretme işlemi başlatabilirsiniz.
-
-3. Verileriniz yeniden başarısız olduktan sonra, şirket içi sanal makineleri Azure 'a çoğaltmaya başlayacak şekilde yeniden korumalısınız.
-
-Hızlı bir genel bakış için, şirket içi bir siteye geri dönme hakkında aşağıdaki videoyu izleyin:
-> [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
-
-
-## <a name="steps-to-fail-back"></a>Yeniden çalıştırma adımları
-
-> [!IMPORTANT]
-> Yeniden çalışmaya başlamadan önce, sanal makinelerin yeniden korunmasını tamamladığınızdan emin olun. Sanal makineler korumalı durumda olmalıdır ve sistem durumu **Tamam**olmalıdır. Sanal makineleri yeniden korumak için, [nasıl yeniden koruyacağınızı](vmware-azure-reprotect.md)okuyun.
-
-1. Çoğaltılan öğeler sayfasında, sanal makineyi seçin. **Planlanmamış yük devretmeyi**seçmek için sağ tıklayın.
-2. **Yük devretmeyi onaylayın**bölümünde yük devretme yönünü (Azure 'dan) doğrulayın. Yük devretme için kullanmak istediğiniz kurtarma noktasını (en son veya en son uygulamayla tutarlı) seçin. Uygulamayla tutarlı nokta en son zaman noktası arkasında ve veri kaybına neden olur.
-3. Yük devretme sırasında Site Recovery Azure 'daki sanal makineleri kapatır. Yeniden çalışma 'nin beklenen şekilde tamamlandığını kontrol ettikten sonra, Azure 'da sanal makinelerin kapatılmasını kontrol edebilirsiniz.
-4. Yük devredilen sanal makineyi Azure 'dan kaldırmak için **kayıt** gereklidir. Korunan öğeye sağ tıklayın ve ardından **Yürüt**' ü seçin. Bir iş, Azure 'daki yük devredilen sanal makineleri kaldırır.
-
-
-## <a name="to-what-recovery-point-can-i-fail-back-the-virtual-machines"></a>Sanal makineleri hangi kurtarma noktasına geri gönderebilirim?
-
-Yeniden çalışma sırasında, sanal makineyi/kurtarma planını geri yüklemek için iki seçeneğe sahip olursunuz.
-
-- En son işlenen zaman noktasını seçerseniz, tüm sanal makineler zaman içinde en son kullanılabilir noktaya devreder. Kurtarma planı içinde bir çoğaltma grubu varsa, çoğaltma grubunun her sanal makinesi, zaman içinde en son bağımsız noktaya devreder.
-
-  Bir sanal makineyi en az bir kurtarma noktasına ulaşana kadar geri alamazsınız. Tüm sanal makineleri en az bir kurtarma noktasına sahip olana kadar kurtarma planını geri alamazsınız.
-
-  > [!NOTE]
-  > En son kurtarma noktası, kilitlenme ile tutarlı bir kurtarma noktasıdır.
-
-- Uygulamayla tutarlı kurtarma noktasını seçerseniz, tek bir sanal makine yeniden çalışması, kullanılabilir en son uygulamayla tutarlı kurtarma noktasına kurtarır. Çoğaltma grubu olan bir kurtarma planı durumunda, her bir çoğaltma grubu ortak kullanılabilir kurtarma noktasına kurtarır.
-Uygulamayla tutarlı kurtarma noktaları zaman içinde kalabilir ve verilerde kayıp olabilir.
-
-## <a name="what-happens-to-vmware-tools-post-failback"></a>VMware araçlarının yeniden çalışma sonrası ne olur?
-
-Windows sanal makinesi söz konusu olduğunda, Site Recovery yük devretme sırasında VMware araçlarını devre dışı bırakır. Windows sanal makinesi yeniden çalışma sırasında, VMware araçları yeniden etkinleştirilir. 
 
 
 ## <a name="reprotect-from-on-premises-to-azure"></a>Şirket içinden Azure 'a yeniden koruma
-Yeniden çalışma tamamlandıktan ve yürütmeyi başlattıktan sonra, Azure 'daki kurtarılan sanal makineler silinir. Artık, sanal makine Şirket içi siteye geri yüklendi, ancak korunmaz. Tekrar Azure 'a Çoğaltmaya başlamak için aşağıdakileri yapın:
 
-1.  > **kasa** seçin > **çoğaltılan öğeleri** **Ayarla** , geri dönecek sanal makineleri seçin ve ardından **yeniden koru**seçeneğini belirleyin.
-2. Verileri Azure 'a geri göndermek için kullanılması gereken işlem sunucusunun değerini girin.
+Yeniden çalışma gerçekleştirildikten sonra, Azure VM 'Leri silinir. VM, şirket içi siteye geri dönün, ancak korunmaz. VM 'Leri tekrar Azure 'a Çoğaltmaya başlamak için aşağıdaki gibi:
+
+1. Kasa > **çoğaltılan öğeler**' i seçin ve ardından **yeniden koru**' yı seçin.
+2. Verileri Azure 'a geri göndermek için kullanılan işlem sunucusunu belirtin.
 3. Yeniden koru işini başlatmak için **Tamam ' ı** seçin.
 
 > [!NOTE]
-> Bir şirket içi sanal makine önyüklendiğinde, aracının yapılandırma sunucusuna (15 dakikaya kadar) kaydolması biraz zaman alır. Bu süre boyunca yeniden koruma başarısız olur ve aracının yüklenmediğini belirten bir hata iletisi döndürür. Birkaç dakika bekleyip yeniden korumayı deneyin.
+> Bir şirket içi VM başladıktan sonra, aracının yapılandırma sunucusuna geri kaydedilmesi 15 dakikaya kadar sürer. Bu süre boyunca yeniden koruma başarısız olur ve aracının yüklenmediğini belirten bir hata iletisi döndürür. Bu durumda, birkaç dakika bekleyin ve yeniden koruyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yeniden koruma işi tamamlandıktan sonra, sanal makine Azure 'a geri çoğaltılır ve sanal makinelerinizi tekrar Azure 'a taşımak için bir [Yük devretme](site-recovery-failover.md) işlemi gerçekleştirebilirsiniz.
-
+Yeniden koruma işi tamamlandıktan sonra şirket içi VM, Azure 'a çoğaltılır. Gerektiğinde, Azure 'a [başka bir yük devretme](site-recovery-failover.md) işlemi de çalıştırabilirsiniz.
 

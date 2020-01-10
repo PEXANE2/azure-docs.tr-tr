@@ -3,23 +3,23 @@ title: IoT Tak ve Kullan önizleme aygıtları oluşturmak için Visual Studio v
 description: IoT Tak ve Kullan cihaz modellerini yazmayı ve cihaz kodunu uygulamayı hızlandırmak için Visual Studio ve Visual Studio Code kullanın.
 author: liydu
 ms.author: liydu
-ms.date: 10/29/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 6ce5a93cdd44af7f199d59d459daa46b4adb0719
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b4325aa6f379dc0b281d06cb593c28448698c71b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748042"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531335"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>IoT Tak ve Kullan cihazları oluşturmak için Visual Studio ve Visual Studio Code kullanma
 
 Visual Studio Code için Azure IoT araçları, cihaz yeteneği modellerini (DCM) ve arabirimlerini yazmak, model depolarında yayımlamak ve cihaz uygulamasını uygulamak için iskelet C kodu oluşturmak üzere tümleşik bir ortam sağlar.
 
-Bu makalede nasıl yapılacağı gösterilmektedir:
+Bu makale, şunları nasıl yapacağınızı gösterir:
 
 - Cihaz kodu ve uygulama projesi oluşturun.
 - Cihaz projenizde oluşturulan kodu kullanın.
@@ -29,7 +29,7 @@ IoT cihazları geliştirmek için VS Code kullanma hakkında daha fazla bilgi i�
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[Visual Studio Code](https://code.visualstudio.com/)'i yükler.
+[Visual Studio Code](https://code.visualstudio.com/)’u yükleyin.
 
 VS Code ' ye uzantı paketini yüklemek için aşağıdaki adımları kullanın.
 
@@ -150,13 +150,13 @@ Ubuntu veya de, gibi bir Linux ortamında CMake 'i kullanarak, cihaz kodunu C SD
 
 ### <a name="windows"></a>Windows
 
-Komut satırında CMake ve Visual Studio C/C++ derleyicileri kullanarak Windows 'Daki DEVICE c SDK ile birlikte cihaz kodunu derlemek için bkz. [IoT Tak ve kullan hızlı başlangıç](./quickstart-create-pnp-device.md). Aşağıdaki adımlarda, Visual Studio 'da C SDK Vcpkg as CMake projesi olarak cihaz kodunun nasıl oluşturulacağı gösterilmektedir.
+Komut satırında CMake ve Visual Studio C/C++ derleyicileri kullanarak Windows 'Daki DEVICE c SDK ile birlikte cihaz kodunu derlemek için bkz. [IoT Tak ve kullan hızlı başlangıç](./quickstart-create-pnp-device-windows.md). Aşağıdaki adımlarda, Visual Studio 'da C SDK Vcpkg as CMake projesi olarak cihaz kodunun nasıl oluşturulacağı gösterilmektedir.
 
-1. Vcpkg aracılığıyla C için Azure IoT cihaz SDK 'sını yüklemek için [hızlı](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device#prepare-the-development-environment) başlangıçta bulunan adımları izleyin.
+1. Vcpkg aracılığıyla C için Azure IoT cihaz SDK 'sını yüklemek için [hızlı](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device-windows#prepare-the-development-environment) başlangıçta bulunan adımları izleyin.
 
 1. [Visual Studio 2019 'yi (Community, Professional veya Enterprise)](https://visualstudio.microsoft.com/downloads/) yükledikten sonra, iş yüküyle **NuGet Paket Yöneticisi** bileşenini ve **Masaüstü geliştirmeyi C++**  eklediğinizden emin olun.
 
-1. Visual Studio 'yu açın, **dosya > > CMake aç** ' ı seçin. klasörde `CMakeLists.txt` açmak için oluşturulan kodu içerir.
+1. Visual Studio 'yu açın, **dosya > aç > CMake...** ' i seçerek klasördeki `CMakeLists.txt` açmak için oluşturulan kodu içerir.
 
 1. **Genel** araç çubuğunda, **Konfigürasyonlar** açılan listesini bulun. Projenizin CMake ayarını eklemek için **yapılandırmayı Yönet** ' i seçin.
 

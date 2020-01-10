@@ -1,5 +1,5 @@
 ---
-title: Azure hızlı başlangıç-Windows VM 'lerinde Azure dosya paylaşma oluşturma ve kullanma | Microsoft Docs
+title: Windows VM 'lerinde Azure dosyaları paylaşma oluşturma ve kullanma
 description: Bu hızlı başlangıçta Azure portal bir Azure dosya paylaşımından kurulum ve bunu bir Windows sanal makinesine bağlama. Dosya paylaşımıyla bağlantı kurmak için dosyalar dosyasına bir dosya yükleyin. Ardından dosyalar paylaşımının anlık görüntüsünü alır, dosya paylaşımındaki dosyayı değiştirebilir ve dosya paylaşımının önceki bir anlık görüntüsünü geri yükleyebilirsiniz.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 22c2f3b91b650bcdbf8eb7368023e068a397323f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 6bbab0ee2eefe6e86c150d5bddab4f8e91a7c92d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305816"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463898"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Hızlı başlangıç: Windows sanal makineler ile Azure dosyaları paylaşma oluşturma ve yönetme
 
@@ -20,9 +20,9 @@ Makalesinde, bir Azure dosya paylaşımının oluşturulmasına ve kullanılmas�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-[Azure Portal](https://portal.azure.com)’da oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
@@ -73,7 +73,7 @@ Sonra, bir dosya paylaşımı oluşturacaksınız.
 1. **Yönetici hesabı**altında *Vmadmin* **Kullanıcı adı** olarak ekleyin ve VM için bir **parola** girin.
 1. **Gelen bağlantı noktası kuralları** altında **Seçilen bağlantı noktalarına izin ver**'i, sonra aşağı açılan listeden **RDP (3389)** ve **HTTP** değerlerini seçin.
 1. **İncele ve oluştur**’u seçin.
-1. **Oluştur**'u seçin. Yeni bir sanal makinenin oluşturulması birkaç dakika sürebilir.
+1. **Oluştur**’u seçin. Yeni bir sanal makinenin oluşturulması birkaç dakika sürebilir.
 
 1. VM dağıtımınız tamamlandıktan sonra **Kaynağa Git**' i seçin.
 

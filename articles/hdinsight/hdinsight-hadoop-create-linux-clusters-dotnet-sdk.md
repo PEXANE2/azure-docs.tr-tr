@@ -2,23 +2,22 @@
 title: .NET-Azure HDInsight kullanarak Apache Hadoop kümeleri oluşturma
 description: HDInsight .NET SDK kullanarak HDInsight için Linux üzerinde Apache Hadoop, Apache HBase, Apache Storm veya Apache Spark kümeleri oluşturmayı öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 08/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: fccb29167dc04bf75a85935eeb57b0420b151f64
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 928955adbc5ced7c693407d6c8d3643f9f094d82
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916497"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612283"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>.NET SDK kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturma
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
-
 
 .NET SDK kullanarak Azure HDInsight kümesinde bir [Apache Hadoop](https://hadoop.apache.org/) kümesi oluşturmayı öğrenin.
 
@@ -27,20 +26,22 @@ ms.locfileid: "70916497"
 >
 > Düğüm boyutları ve ilişkili maliyetler hakkında daha fazla bilgi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="prerequisites"></a>Önkoşullar
-
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Bir Azure depolama hesabı**. Bkz: [depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md).
-* **Visual Studio**.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+* Bir Azure depolama hesabı. Bkz: [depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md).
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/community/).
 
 ## <a name="create-clusters"></a>Küme oluşturma
 
 1. Visual Studio'yu açın.
-2. Yeni bir görsel C# konsol uygulaması oluşturun.
-3. **Araçlar** menüsünde **NuGet Paket Yöneticisi**' ne ve ardından **Paket Yöneticisi konsolu**' na tıklayın.
-4. Paketleri yüklemek için konsolunda aşağıdaki komutu çalıştırın:
+1. Yeni C# bir konsol uygulaması oluşturun.
+1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi Konsolu**'nu seçin.
+1. Paketleri yüklemek için konsolunda aşağıdaki komutu çalıştırın:
 
     ```powershell
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
@@ -49,7 +50,7 @@ ms.locfileid: "70916497"
     ```
 
     Bu komutlar, .NET kitaplıklarını ve bunlara yönelik başvuruları geçerli Visual Studio projesine ekler.
-5. Çözüm Gezgini, açmak için **program.cs** öğesine çift tıklayın, aşağıdaki kodu yapıştırın ve değişkenler için değerler sağlayın:
+1. Çözüm Gezgini, açmak için **program.cs** öğesine çift tıklayın, aşağıdaki kodu yapıştırın ve değişkenler için değerler sağlayın:
 
     ```csharp
     using System;
@@ -184,8 +185,9 @@ ms.locfileid: "70916497"
     }
     ```
 
-6. Sınıf üyesi değerlerini değiştirin.
-7. Uygulamayı çalıştırmak için **F5**'e basın. Bir konsol penceresi açılır ve uygulamanın durumunu görüntülemelidir. Azure hesabı kimlik bilgilerinizi girmeniz istenir. Genellikle 15 etrafında bir HDInsight kümesi oluşturulması birkaç dakika sürebilir.
+1. Sınıf üyesi değerlerini değiştirin.
+
+1. Uygulamayı çalıştırmak için **F5**'e basın. Bir konsol penceresi açılır ve uygulamanın durumunu görüntülemelidir. Azure hesabı kimlik bilgilerinizi girmeniz istenir. Genellikle 15 etrafında bir HDInsight kümesi oluşturulması birkaç dakika sürebilir.
 
 ## <a name="use-bootstrap"></a>Önyükleme kullan
 
@@ -366,14 +368,13 @@ static void Main(string[] args)
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-HDInsight kümeleri oluştururken sorun yaşarsanız bkz. [erişim denetimi gereksinimleri](hdinsight-hadoop-create-linux-clusters-portal.md).
+HDInsight kümeleri oluştururken sorun yaşarsanız bkz. [erişim denetimi gereksinimleri](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık bir HDInsight kümesini başarıyla oluşturduğunuza göre, kümenizle nasıl çalışacağınızı öğrenmek için aşağıdakileri kullanın. 
+Artık bir HDInsight kümesini başarıyla oluşturduğunuza göre, kümenizle nasıl çalışacağınızı öğrenmek için aşağıdakileri kullanın.
 
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop kümeleri
 * [HDInsight ile Apache Hive kullanma](hadoop/hdinsight-use-hive.md)
-* [HDInsight ile Apache Pig kullanma](hadoop/hdinsight-use-pig.md)
 * [HDInsight ile MapReduce kullanma](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase kümeleri
@@ -388,11 +389,10 @@ Artık bir HDInsight kümesini başarıyla oluşturduğunuza göre, kümenizle n
 ### <a name="apache-spark-clusters"></a>Apache Spark kümeleri
 * [Scala kullanarak tek başına uygulama oluşturma](spark/apache-spark-create-standalone-application.md)
 * [Apache Livy kullanarak Apache Spark kümesinde işleri uzaktan çalıştırma](spark/apache-spark-livy-rest-interface.md)
-* [BI ile Apache Spark: Bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](spark/apache-spark-use-bi-tools.md)
-* [Machine Learning Apache Spark: Yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](spark/apache-spark-use-bi-tools.md)
+* [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](spark/apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="run-jobs"></a>İşleri çalıştırma
 * [.NET SDK kullanarak HDInsight 'ta Apache Hive işleri çalıştırma](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
 * [.NET SDK kullanarak HDInsight 'ta Apache Sqoop işleri çalıştırma](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
 * [HDInsight 'ta Apache Oozie işleri çalıştırma](hdinsight-use-oozie-linux-mac.md)
-

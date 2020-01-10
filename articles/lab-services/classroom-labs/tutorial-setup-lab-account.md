@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/24/2019
 ms.author: spelluru
-ms.openlocfilehash: 0977c4537e409b59be7f9031c488b3317f9f2f0f
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 8c252870a82a60a561f12fab9d728c028458212a
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415787"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562111"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Öğretici: Azure Lab Services ile bir laboratuvar hesabı ayarlama
 Azure Lab Services’te, bir laboratuvar hesabı, kuruluşunuzdaki laboratuvarların yönetildiği merkezi hesap olarak görev yapar. Laboratuvar hesabınızda, laboratuvar oluşturmak üzere başkalarına izin verin ve laboratuvar hesabı altındaki tüm laboratuvarlara uygulanan ilkeler ayarlayın. Bu öğreticide, laboratuvar yöneticisi olarak bir laboratuvar hesabı oluşturmayı öğrenin. 
@@ -27,37 +27,37 @@ Azure Lab Services’te, bir laboratuvar hesabı, kuruluşunuzdaki laboratuvarla
 Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 
 > [!div class="checklist"]
-> * Laboratuvar hesabı oluşturma
+> * Laboratuvar hesabı oluşturun
 > * Laboratuvar Oluşturan rolüne kullanıcı ekleme
 > * Laboratuvar sahiplerine sunulan Market görüntülerini belirtme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="create-a-lab-account"></a>Laboratuvar hesabı oluşturma
+## <a name="create-a-lab-account"></a>Laboratuvar hesabı oluşturun
 Aşağıdaki adımlar, Azure portalını kullanarak Azure Lab Services ile nasıl bir laboratuvar hesabı oluşturulacağını göstermektedir. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Seçin **tüm hizmetleri** sol menüsünde. Seçin **Lab Services** içinde **DEVOPS** bölümü. Yıldız seçerseniz (`*`) yanındaki **Lab Services**, eklenir **Sık Kullanılanlar** sol menüde bölümü. Bir sonraki zamandan ve sonraki sürümlerde, seçtiğiniz **Lab Services** altında **Sık Kullanılanlar**.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **DevOps** bölümünde **Laboratuvar Hizmetleri** ' ni seçin. **Laboratuvar Hizmetleri**' nin yanında yıldız (`*`) seçeneğini belirlerseniz Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar**altında **Laboratuvar Hizmetleri** ' ni seçersiniz.
 
-    ![Lab Services'i tüm hizmetleri ->](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
-3. Üzerinde **Lab Services** sayfasında **Ekle** araç. 
+    ![Tüm Hizmetler-> Laboratuvar Hizmetleri](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. **Laboratuvar Hizmetleri** sayfasında, araç çubuğunda **Ekle** ' yi seçin. 
 
-    ![Laboratuvar hesaplarını sayfada Ekle'yi seçin](../media/tutorial-setup-lab-account/add-lab-account-button.png)
-4. Üzerinde **Laboratuvar hesabı** sayfasında, aşağıdaki eylemleri gerçekleştirin: 
+    ![Laboratuvar hesapları sayfasında Ekle ' yi seçin](../media/tutorial-setup-lab-account/add-lab-account-button.png)
+4. **Laboratuvar hesabı** sayfasında, aşağıdaki işlemleri yapın: 
     1. **Laboratuvar hesabı adı** için bir ad girin. 
     2. Laboratuvar hesabı oluşturmak istediğiniz **Azure aboneliğini** seçin.
     3. **Kaynak grubu** için, **Yeni oluştur**’u seçip kaynak grubu için bir ad girin.
     4. **Konum** için, laboratuvar hesabının oluşturulmasını istediğiniz bir konumu/bölgeyi seçin. 
-    5. Mevcut bir seçin **paylaşılan görüntü Galerisi** veya bir tane oluşturabilirsiniz. VM şablonu, başkaları tarafından kullanılabilmeleri de paylaşılan görüntü galerisinde kaydedebilirsiniz. Paylaşılan resim galerileri hakkında ayrıntılı bilgi için bkz. [Azure Lab Services paylaşılan görüntü galerisinde kullanabilecek](how-to-use-shared-image-gallery.md). 
-    6. İçin **eş sanal ağ**, Laboratuvar ağı için bir eş sanal ağ (VNet) seçin. Bu hesap içinde oluşturduğunuz laboratuvarlar, seçilen sanal ağa bağlı ve seçili sanal ağ kaynaklara erişime sahip. 
-    7. Belirtin bir **adres aralığı** Vm'leri Laboratuvardaki için. Adres aralığı içinde classless Inter-Domain yönlendirme (CIDR) gösterimi olmalıdır (örnek: 10.20.0.0/23). Bu adres aralığındaki laboratuvarındaki sanal makinelerde oluşturulur. Daha fazla bilgi için [bir adres aralığı, laboratuvarda VM'ler için belirtin](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab).
-    8. İçin **Laboratuvar konumunu seçmek için izin Laboratuvar oluşturan** alanında, Laboratuvar için bir konum seçmek için laboratuvar creators isteyip istemediğinizi belirtin. Varsayılan olarak, seçenek devre dışıdır. Bunu devre dışı bırakıldığında, Laboratuvar creators oluşturmakta olduğunuz Laboratuvar için bir konum belirtilemez. Labs Laboratuvar hesabına en yakın coğrafi konumda oluşturulur. Etkinleştirildiğinde, Laboratuvar oluşturan bir laboratuvar oluşturma sırasında bir konum seçebilirsiniz. 
+    5. Var olan bir **paylaşılan görüntü Galerisi** seçin veya bir tane oluşturun. Şablon VM 'yi, başkaları tarafından yeniden kullanılabilmesi için paylaşılan görüntü galerisine kaydedebilirsiniz. Paylaşılan görüntü galerileriyle ilgili ayrıntılı bilgi için, bkz. [Azure Lab Services paylaşılan görüntü Galerisi kullanma](how-to-use-shared-image-gallery.md). 
+    6. **Eş sanal ağ**için, laboratuvar ağı için bir eş sanal ağ (VNet) seçin. Bu hesapta oluşturulan Labs seçili VNet 'e bağlı ve seçilen VNet 'teki kaynaklara erişime sahip. 
+    7. Laboratuvardaki VM 'Ler için bir **adres aralığı** belirtin. Adres aralığı, sınıfsız etki alanları arası yönlendirme (CıDR) gösteriminde olmalıdır (örnek: 10.20.0.0/23). Laboratuvardaki sanal makineler, bu adres aralığında oluşturulacaktır. Daha fazla bilgi için bkz. [laboratuvardaki VM 'ler için bir adres aralığı belirtme](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab).
+    8. Laboratuvar **oluşturucunun laboratuvar konumunu seçmesine Izin ver** alanı için, laboratuvar oluşturucularının laboratuvar için bir konum seçebilmesini isteyip istemediğinizi belirtin. Varsayılan olarak, seçeneği devre dışıdır. Laboratuvar oluşturucuları, devre dışı bırakıldığında, oluşturdukları laboratuvar için bir konum belirtemez. Labs, en yakın coğrafi konumda laboratuvar hesabına oluşturulur. Laboratuvar Oluşturucusu etkinleştirildiğinde Laboratuvar oluşturma sırasında bir konum seçebilir. 
     9. **Oluştur**’u seçin. 
 
         ![Laboratuvar hesabı oluştur penceresi](../media/tutorial-setup-lab-account/lab-account-settings.png)
-5. Seçin **zil simgesine** araç çubuğunda (**bildirimleri**), dağıtım başarılı oldu ve ardından onaylamak **kaynağa Git**. 
+5. Araç çubuğundaki **zil simgesini** (**Bildirimler**) seçin, dağıtımın başarılı olduğunu doğrulayın ve ardından **Kaynağa Git**' i seçin. 
 
-    Alternatif olarak, seçin **Yenile** üzerinde **Laboratuvar hesaplarını** sayfasında ve oluşturduğunuz Laboratuvar hesabını seçin. 
+    Alternatif olarak, **Laboratuvar hesapları** sayfasında **Yenile** ' yi seçin ve oluşturduğunuz laboratuvar hesabını seçin. 
 
     ![Laboratuvar hesabı oluştur penceresi](../media/tutorial-setup-lab-account/go-to-lab-account.png)    
 6. Aşağıdaki **laboratuvar hesabı** sayfasını görürsünüz:
@@ -69,14 +69,14 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için kullanıcının
 
 Eğitimcilere, sınıfları için laboratuvar oluşturma ve **Laboratuvar Oluşturan** rolüne bunları ekleme izni sağlamak için:
 
-1. Üzerinde **Laboratuvar hesabı** sayfasında **erişim denetimi (IAM)** seçin **+ Ekle** seçin ve araç **+ rol ataması Ekle** üzerinde araç çubuğu. 
+1. **Laboratuvar hesabı** sayfasında **ERIŞIM denetimi (IAM)** seçeneğini belirleyin, araç çubuğunda **+ Ekle** ' yi seçin ve ardından araç çubuğunda **+ rol ataması Ekle** ' yi seçin. 
 
-    ![Erişim Denetimi'ne rol ataması Ekle düğmesi](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. Üzerinde **rol ataması Ekle** sayfasında **Laboratuvar oluşturan** için **rol**, Laboratuvar Creators role ekleyin ve istediğiniz kullanıcıyı seçin **Kaydet**. 
+    ![Access Control > rol ataması Ekle düğmesi](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
+1. **Rol ataması Ekle** sayfasında, **rol**için **Laboratuvar Oluşturucu** ' yı seçin, laboratuvar oluşturucuları rolüne eklemek istediğiniz kullanıcıyı seçin ve **Kaydet**' i seçin. 
 
-    ![Laboratuvar oluşturan Ekle](../media/tutorial-setup-lab-account/add-lab-creator.png)
+    ![Laboratuvar Oluşturucu Ekle](../media/tutorial-setup-lab-account/add-lab-creator.png)
 
-## <a name="specify-marketplace-images-available-to-lab-creators"></a>Market görüntüleri için laboratuvar creators kullanılabilir belirtin
+## <a name="specify-marketplace-images-available-to-lab-creators"></a>Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme
 Laboratuvar sahibi olarak laboratuvar oluşturucuların laboratuvar hesabında laboratuvar oluşturmak için kullanacağı Market görüntülerini belirtebilirsiniz. 
 
 1. Sol taraftaki menüden **Market görüntüleri**'ni seçin. Listede varsayılan olarak tüm görüntüler (hem etkin hem devre dışı) yer alır. Yalnızca etkin/devre dışı görüntüleri görmek için en üstteki açılan listeden **Yalnızca etkin**/**Yalnızca devre dışı** seçeneğini belirleyerek listeyi filtreleyebilirsiniz. 
@@ -100,7 +100,7 @@ Laboratuvar sahibi olarak laboratuvar oluşturucuların laboratuvar hesabında l
     2. Listede görüntü adlarının yanında yer alan onay kutularını seçerek bir daha fazla görüntüyü seçin ve **Seçilen görüntüleri etkinleştir**'e tıklayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğreticide, bir laboratuvar hesabı oluşturdunuz. Meslek olarak sınıf laboratuvarı oluşturma hakkında bilgi edinmek için sonraki öğreticiye ilerleyin:
+Bu öğreticide, bir laboratuvar hesabı oluşturdunuz. Bir Mesleme olarak bir ders Laboratuvarı oluşturma hakkında bilgi edinmek için sonraki öğreticiye ilerleyin:
 
 > [!div class="nextstepaction"]
 > [Bir sınıf laboratuvarı ayarlama](tutorial-setup-classroom-lab.md)

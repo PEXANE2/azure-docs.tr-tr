@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5fdb189fcab3da4dad52642571ac42e669828fe3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ff55257891ff379bea9ff44aa5136195ced44354
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971664"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613117"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de iş sürekliliği ve olağanüstü durum kurtarma için en iyi uygulamalar
 
@@ -114,7 +114,7 @@ Uygulamalarınız, verileri için Azure Storage kullanıyor olabilirler. Uygulam
 
 Bir pod silindikten sonra bile uygulamalarınız kalıcı depolama gerekebilir. Kubernetes 'de, veri depolamayı kalıcı hale getirmek için kalıcı birimleri kullanabilirsiniz. Kalıcı birimler bir düğüm sanal makinesine bağlanır ve sonra da pods 'leri kullanıma sunulur. Kalıcı birimler, düğüm aynı kümedeki farklı bir düğüme taşınsa bile, Pod 'ler izler.
 
-Kullandığınız çoğaltma stratejisi, depolama çözümünüze bağlıdır. [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/), [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), [Rook](https://rook.io/docs/rook/master/disaster-recovery.html)ve [portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) gibi yaygın depolama çözümleri olağanüstü durum kurtarma ve çoğaltma hakkında kendi kılavuzunu sağlar.
+Kullandığınız çoğaltma stratejisi, depolama çözümünüze bağlıdır. [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/), [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), [Rook](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)ve [portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) gibi yaygın depolama çözümleri olağanüstü durum kurtarma ve çoğaltma hakkında kendi kılavuzunu sağlar.
 
 Tipik strateji, uygulamaların verilerini yazabilmesi için ortak bir depolama noktası sağlamaktır. Bu veriler daha sonra bölgeler arasında çoğaltılır ve sonra yerel olarak erişilir.
 

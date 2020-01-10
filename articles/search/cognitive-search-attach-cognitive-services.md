@@ -7,24 +7,33 @@ author: LuisCabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d65b9b60ce93656c9acdc76c77291114468d345a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 12/17/2019
+ms.openlocfilehash: 7ec18cab74d683e4547843f965d22026e7ba22aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461148"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir beceri bilişsel hizmetler kaynağı iliştirme 
 
-AI algoritmaları, Azure Bilişsel Arama 'da içerik dönüştürmesi için kullanılan [zenginleştirme işlem hatlarını](cognitive-search-concept-intro.md) kullanır. Bu algoritmalar, görüntü analizi için [görüntü işleme](https://azure.microsoft.com/services/cognitive-services/computer-vision/) , optik karakter tanıma (OCR) ve varlık tanıma, anahtar tümceciği ayıklama ve diğer zenginler için [metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) dahil olmak üzere Azure bilişsel hizmetler kaynaklarını temel alır. Belge zenginleştirme amaçları için Azure Bilişsel Arama tarafından kullanıldığı gibi algoritmalar *, bir*yeteneğin içine yerleştirilmiş ve dizin oluşturma sırasında bir *Dizin Oluşturucu* tarafından başvurulan bir *yetenek*içine sarılır.
+Azure Bilişsel Arama bir zenginleştirme işlem hattı yapılandırırken, sınırlı sayıda belgeyi ücretsiz olarak zenginleştirebilirsiniz. Daha büyük ve daha sık iş yükleri için faturalandırılabilir bilişsel hizmetler kaynağı eklemeniz gerekir.
 
-Sınırlı sayıda belgeyi ücretsiz olarak zenginleştirebilirsiniz. Ya da, daha büyük ve daha sık sık iş yükleri için *beceri* 'e faturalanabilir bir bilişsel hizmetler kaynağı iliştirebilirsiniz. Bu makalede, Azure Bilişsel Arama [Dizin oluşturma](search-what-is-an-index.md)sırasında belgeleri zenginleştirmek üzere bir faturalanabilir bilişsel hizmetler kaynağını nasıl ekleyeceğinizi öğreneceksiniz.
+Bu makalede, bir, enzenginleştirme işlem hattını tanımlayan bir beceri anahtar atayarak bir kaynağı nasıl ekleyeceğinizi öğreneceksiniz.
 
-> [!NOTE]
-> Faturalanabilir olaylar, Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak Bilişsel Hizmetler API'si ve görüntü ayıklama için çağrılar içerir. Belgelerden veya bilişsel hizmetler 'i çağırmayan yetenekler için metin ayıklama ücreti alınmaz.
->
-> Faturalanabilir yeteneklerin yürütülmesi, bilişsel [Hizmetler Kullandıkça Öde fiyatındaki](https://azure.microsoft.com/pricing/details/cognitive-services/)ücretlendirilir. Görüntü ayıklama fiyatlandırması için bkz. [Azure bilişsel arama fiyatlandırma sayfası](https://go.microsoft.com/fwlink/?linkid=2042400).
+## <a name="resources-used-during-enrichment"></a>Zenginleştirme sırasında kullanılan kaynaklar
+
+Azure Bilişsel Arama, görüntü analizi ve optik karakter tanıma (OCR), doğal dil işleme için [metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) ve [metin çevirisi](https://azure.microsoft.com/services/cognitive-services/translator-text-api/)gibi diğer zenginler için [görüntü işleme](https://azure.microsoft.com/services/cognitive-services/computer-vision/) dahil olmak üzere bilişsel hizmetler 'e bağımlılığı vardır. Azure Bilişsel Arama ' deki zenginleştirme bağlamında, bu AI algoritmaları bir *beceri*içinde kaydırılır, bir *beceri*yerleştirildi ve dizin oluşturma sırasında bir *Dizin Oluşturucu* tarafından başvuruluyor.
+
+## <a name="how-billing-works"></a>Faturalandırma nasıl çalışır?
+
++ Azure Bilişsel Arama, görüntü ve metin zenginleştirme için bir beceri to faturanızda sağladığınız bilişsel hizmetler kaynak anahtarını kullanır. Faturalanabilir yeteneklerin yürütülmesi, bilişsel [Hizmetler Kullandıkça Öde fiyatındaki](https://azure.microsoft.com/pricing/details/cognitive-services/)ücretlendirilir.
+
++ Görüntü ayıklama, belgeler enzenginleştirme öncesinde kırıldığınızda oluşan bir Azure Bilişsel Arama işlemidir. Görüntü ayıklama işlemi faturalandırılabilir. Görüntü ayıklama fiyatlandırması için bkz. [Azure bilişsel arama fiyatlandırma sayfası](https://go.microsoft.com/fwlink/?linkid=2042400).
+
++ Belge çözme tümceciği sırasında metin ayıklama de gerçekleşir. Faturalandırılabilir değildir.
+
++ Bilişsel hizmetler çağrısı olmayan, koşullu, Shaper, metin birleştirme ve metin bölme becerileri gibi yetenekler, faturalandırılabilir değildir.
 
 ## <a name="same-region-requirement"></a>Aynı bölge gereksinimi
 
@@ -33,7 +42,7 @@ Azure Bilişsel Arama ve Azure bilişsel hizmetler 'in aynı bölgede mevcut olm
 Bir hizmeti bölgeler arasında taşımanın bir yolu yoktur. Bu hatayı alırsanız, Azure Bilişsel Arama ile aynı bölgede yeni bir bilişsel hizmetler kaynağı oluşturmanız gerekir.
 
 > [!NOTE]
-> Bazı yerleşik yetenekler, bölgesel olmayan bilişsel hizmetler 'e (örneğin, [metin çevirisi becerisi](cognitive-search-skill-text-translation.md)) dayanır. Bu becerilerden herhangi birini beceri ' e eklerseniz, verilerinizin Azure Bilişsel Arama veya bilişsel hizmetler kaynağı ile aynı bölgede kalmasını sağlamak için garanti olmadığını unutmayın. Daha fazla bilgi için bkz. [hizmet durumu sayfası](https://aka.ms/allinoneregioninfo) .
+> Bazı yerleşik yetenekler, bölgesel olmayan bilişsel hizmetler 'e (örneğin, [metin çevirisi becerisi](cognitive-search-skill-text-translation.md)) dayanır. Bölgesel olmayan bir yetenek kullanmak, isteğinizin Azure Bilişsel Arama bölgesinden farklı bir bölgede hizmet verilebileceği anlamına gelir. Bölgesel olmayan hizmetler hakkında daha fazla bilgi için bölgeye göre bilişsel [Hizmetler ürünü](https://aka.ms/allinoneregioninfo) sayfasına bakın.
 
 ## <a name="use-free-resources"></a>Ücretsiz kaynakları kullanma
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4b2dcf8f156f231041d7636d103eea59816ec65f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 09179ff0cf8275e96cb87e0c183eb4a384dcb37b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008433"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564711"
 ---
 Sanal makinelerinizin (VM’ler) Azure’da nasıl ve hangi konumda çalıştığının yanı sıra performans, kullanılabilirlik ve yedekliliği artırmak için kullanabileceğiniz seçeneklerin de anlaşılması önemlidir. Bu makalede, Azure’un kullanılabilirlik ve yedeklilik özelliklerine genel bakış sunulmaktadır.
 
@@ -29,7 +29,7 @@ Azure 'da, uyumluluk veya yasal amaçlar için uygulamalarınızı oluştururken
 * **US Gov Virginia** ve **US Gov Iowa**
   * ABD kamu kuruluşları ve iş ortaklarına yönelik olarak ABD’de bulunan ve denetlenen kişilerce çalıştırılan fiziksel ve mantıksal ağdan yalıtılmış Azure örneği. [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) ve [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA) gibi ek uyumluluk sertifikaları içerir. [Azure Kamu](https://azure.microsoft.com/features/gov/) hakkında daha fazla bilgi alın.
 * **Çin Doğu** ve **Çin Kuzey**
-  * Bu bölgeler, Microsoft ile 21Vianet arasında, Microsoft’un veri merkezlerini doğrudan yönetmediği benzersiz ortaklık ile kullanıma sunulmaktadır. [Azure Çin 21Vianet](http://www.windowsazure.cn/)hakkında daha fazla bilgi için bkz.
+  * Bu bölgeler, Microsoft ile 21Vianet arasında, Microsoft’un veri merkezlerini doğrudan yönetmediği benzersiz ortaklık ile kullanıma sunulmaktadır. [Azure Çin 21Vianet](https://www.windowsazure.cn/)hakkında daha fazla bilgi için bkz.
 * **Almanya Orta** ve **Almanya Kuzeydoğu**
   * Bu bölgeler, müşteri verilerinin, Almanya veri emaneti olarak davranan bir Deutsche Telekok şirketi olan T-Systems denetimi kapsamında kaldığı bir veri güvenliği modeli aracılığıyla kullanılabilir.
 
@@ -50,7 +50,7 @@ Bölge çiftlerinin örnekleri şunlardır:
 
 [Bölgesel çiftlerin tam listesini burada](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions) görebilirsiniz.
 
-## <a name="feature-availability"></a>Özellik kullanılabilirliği
+## <a name="feature-availability"></a>Özellik erişilebilirliği
 Belirli VM boyutları ya da depolama türleri gibi bazı hizmetler veya VM özellikleri yalnızca belirli bölgelerde kullanılabilir. Ayrıca, belirli bir bölge seçmenizi gerektirmeyen [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) veya [Azure DNS](../articles/dns/dns-overview.md) gibi bazı genel Azure hizmetleri de vardır. Uygulama ortamınızı tasarlamanıza yardımcı olmak üzere [her bölgedeki Azure hizmetleri kullanılabilirliğini](https://azure.microsoft.com/regions/#services) denetleyebilirsiniz. Ayrıca [, her bölgedeki desteklenen VM boyutlarını ve kısıtlamalarını programlı](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md)bir şekilde sorgulayabilirsiniz.
 
 ## <a name="storage-availability"></a>Depolama kullanılabilirliği
@@ -74,8 +74,8 @@ Aşağıdaki tabloda, depolama çoğaltma türleri arasındaki farkları hızlı
 
 | Çoğaltma stratejisi | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Veriler birden çok tesis arasında çoğaltılır. |Hayır |Yes |Yes |Yes |
-| Veriler ikincil konumdan ve birincil konumdan okunabilir. |Hayır |Hayır |Hayır |Yes |
+| Veriler birden çok tesis arasında çoğaltılır. |Hayır |Evet |Evet |Evet |
+| Veriler ikincil konumdan ve birincil konumdan okunabilir. |Hayır |Hayır |Hayır |Evet |
 | Ayrı düğümlerde tutulan veri kopyası sayısı. |3 |3 |6 |6 |
 
 [Azure Depolama çoğaltma seçenekleri hakkında buradan](../articles/storage/common/storage-redundancy.md) daha fazla bilgi alabilirsiniz. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure Yönetilen Disklere genel bakış](../articles/virtual-machines/windows/managed-disks-overview.md).

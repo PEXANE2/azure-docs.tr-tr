@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 48bac68b518706cf3a23d2283da7cda49846e0a7
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795825"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531488"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Bilişsel Hizmetler ve makine öğrenmesi
 
@@ -24,11 +24,11 @@ Bilişsel [Hizmetler](welcome.md) , her biri farklı, genelleştirilmiş tahmin 
 
 |Hizmet kategorisi|Amaç|
 |--|--|
-|[Seçim](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bilgiye dayalı ve verimli kararlar almak için öneriler sunan uygulamalar derleyin.|
+|[Seçim](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bilgiye dayalı ve verimli kararlar almak için öneri sunan uygulamalar derleyin.|
 |[Dil](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Önceden oluşturulmuş betiklerle uygulamalarınızın doğal dil işlemesine, duyguları değerlendirmesine ve kullanıcıların ne istediğini tanımayı öğrenmesine imkan sağlayın.|
 |[Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Uygulamalarınıza Bing Arama API'leri ekleyin ve tek bir API çağrısıyla milyarlarca web sayfası, resim, video ve haberi tarama imkanından yararlanın.|
 |[Konuşmayı](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Konuşmaları metne, metinleri kulağa doğal gelen konuşmalara dönüştürün. Bir dilden başka bir dile çeviri yapın, konuşmacı doğrulama ve tanıma özelliğini etkinleştirin.|
-|[Minin](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Resimlerinizi, videolarınızı ve dijital mürekkep içeriğinizi tanıyın, tanımlayın, altyazı ekleyin, dizine alın ve yönetin.|
+|[Vision](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Resimlerinizi, videolarınızı ve dijital mürekkep içeriğinizi tanıyın, tanımlayın, altyazı ekleyin, dizine alın ve yönetin.|
 ||||
 
 Bilişsel hizmetler 'i şu durumlarda kullanın:
@@ -40,7 +40,7 @@ Bilişsel hizmetler 'i şu durumlarda kullanın:
 
 * Algoritmayı seçmeniz ve çok özel verilerde eğitmeniz gerekir.
 
-## <a name="what-is-machine-learning"></a>Makine öğrenimi nedir?
+## <a name="what-is-machine-learning"></a>Makine öğrenmesi nedir?
 
 Makine öğrenimi, belirli bir ihtiyacı çözümlemek için verileri ve algoritmayı birlikte getiren bir kavramdır. Veriler ve algoritma eğitilirken, çıktı farklı verilerle tekrar kullanabileceğiniz bir modeldir. Eğitilen model yeni verileri temel alan öngörüler sağlar. 
 
@@ -96,12 +96,12 @@ Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne
 |[Görüntü İşleme](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Özel Görüntü İşleme](./Custom-Vision-Service/home.md)||x||
-|[Ünüzü](./Face/Overview.md)|x|x||
+|[Yüz tanıma](./Face/Overview.md)|x|x||
 |[Form tanıyıcı](./form-recognizer/overview.md)||x||
 |[Modern okuyucu](./immersive-reader/overview.md)|x|||
 |[Mürekkep tanıyıcı](./Ink-recognizer/overview.md)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
-|[Kişiselleştirici](./personalizer/what-is-personalizer.md)|sayı|sayı|x|
+|[Kişiselleştirici](./personalizer/what-is-personalizer.md)|x*|x*|x|
 |[Soru-Cevap Oluşturma](./QnAMaker/Overview/overview.md)||x||
 |[Konuşmacı tanıyıcı](./speaker-recognition/home.md)||x||
 |[Konuşma metni okuma (TTS)](speech-service/text-to-speech.md)|x|x||
@@ -131,10 +131,10 @@ Diğer makine öğrenimi araçları için aktarılmış modeller sağlayan bili�
 |--|--|
 |[Özel Görüntü İşleme](./custom-vision-service/home.md)|Android için TensorFlow için [dışarı aktarma](./Custom-Vision-Service/export-model-python.md) , IOS11 Için Coreml, Windows ml IÇIN onnx|
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazla bilgi
 
 * [Mimari Kılavuzu-Microsoft 'ta makine öğrenimi ürünleri nelerdir?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
-* [Machine Learning-derin öğrenme ve makine öğrenimine giriş](../machine-learning/service/concept-deep-learning-vs-machine-learning.md)
+* [Machine Learning-derin öğrenme ve makine öğrenimine giriş](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,31 +1,21 @@
 ---
-title: Azure'da kapsayıcıları Service Fabric uygulaması olarak paketleme ve dağıtma | Microsoft Docs
+title: Kapsayıcıları paketleme ve dağıtma
 description: Bu öğreticide, Yeoman kullanarak Azure Service Fabric uygulaması tanımı oluşturmayı ve uygulamayı paketlemeyi öğrenirsiniz.
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, Kapsayıcılar, Mikro Hizmetler, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b4931b62aaf04db2ee4ff6f4a5e2b96274b8af88
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 554590a065214c17de0acdea3207876f113b3caf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385048"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614035"
 ---
-# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Öğretici: Yeumman kullanarak kapsayıcıları Service Fabric uygulama olarak paketleme ve dağıtma
+# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Öğretici: Yeoman'ı kullanarak kapsayıcıları Service Fabric uygulaması olarak paketleme ve dağıtma
 
-Bu öğretici, bir dizinin ikinci bölümüdür. Bu öğreticide, bir şablon oluşturma aracı (Yeoman) kullanılarak bir Service Fabric uygulaması tanımı oluşturulmaktadır. Daha sonra bu uygulama Service Fabric’e kapsayıcı dağıtmak için kullanılabilir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğretici, bir dizinin ikinci bölümüdür. Bu öğreticide, bir şablon oluşturma aracı (Yeoman) kullanılarak bir Service Fabric uygulaması tanımı oluşturulmaktadır. Daha sonra bu uygulama Service Fabric’e kapsayıcı dağıtmak için kullanılabilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Yeoman’ı yükleme
@@ -35,7 +25,7 @@ Bu öğretici, bir dizinin ikinci bölümüdür. Bu öğreticide, bir şablon ol
 > * Uygulamayı dağıtma ve çalıştırma
 > * Uygulamayı temizleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu öğretici serisinin [1. Bölümünde](service-fabric-tutorial-create-container-images.md) oluşturulup Azure Container Registry’ye gönderilen kapsayıcı görüntüleri kullanılır.
 * Linux geliştirme ortamı [ayarlanmıştır](service-fabric-tutorial-create-container-images.md).
@@ -93,7 +83,7 @@ Aşağıda yo komutunu çalıştırmanın girişi ve çıktısı gösterilmekted
 Yeoman kullanılarak oluşturulmuş olan bir uygulamaya başka bir kapsayıcı hizmeti eklemek için aşağıdaki adımları uygulayın:
 
 1. Dizini bir düzey değiştirerek **TestContainer** dizinine gidin. Örnek: *./TestContainer*
-2.           `yo azuresfcontainer:AddService`'i çalıştırın.
+2. `yo azuresfcontainer:AddService` öğesini çalıştırın
 3. Hizmete “azurevoteback” adını verin
 4. Redis için kapsayıcı görüntüsü yolunu sağlayın: “alpine:redis”
 5. Komutlar bölümünü boş bırakmak için Enter tuşuna basın
@@ -282,11 +272,11 @@ sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azu
 ./install.sh
 ```
 
-Bir tarayıcı açın ve http:\//containertestcluster.eastus.cloudapp.Azure.com:19080/Explorer adresinde Service Fabric Explorer gidin. Uygulamalar düğümünü genişletin ve uygulamanızın türü için bir giriş ve örnek için başka bir giriş olduğuna dikkat edin.
+Bir tarayıcı açın ve http:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer adresinde Service Fabric Explorer gidin. Uygulamalar düğümünü genişletin ve uygulamanızın türü için bir giriş ve örnek için başka bir giriş olduğuna dikkat edin.
 
 ![Service Fabric Explorer][sfx]
 
-Çalışan uygulamaya bağlanmak için bir Web tarayıcısı açın ve küme URL 'sine gidin-örneğin, http:\//containertestcluster.eastus.cloudapp.Azure.com:80. Web kullanıcı arabiriminde Voting (Oylama) uygulamasını görmeniz gerekir.
+Çalışan uygulamaya bağlanmak için bir Web tarayıcısı açın ve küme URL 'sine gidin-örneğin, http:\//containertestcluster.eastus.cloudapp.azure.com:80. Web kullanıcı arabiriminde Voting (Oylama) uygulamasını görmeniz gerekir.
 
 ![votingapp][votingapp]
 

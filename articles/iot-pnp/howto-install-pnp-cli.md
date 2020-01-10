@@ -3,17 +3,17 @@ title: IoT Tak ve Kullan önizleme cihazlarıyla etkileşimde bulunmak için Azu
 description: Azure CLı için Azure IoT uzantısını yükleyip IoT Hub 'ma bağlı IoT Tak ve Kullan cihazlarıyla etkileşim kurmak için kullanın.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 09/08/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f4e255309d32026b7f2bb4de67fce7ec37c753f6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571010"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529584"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını yükleyip kullanma
 
@@ -26,7 +26,7 @@ Azure CLı için Azure IoT uzantısı IoT Tak ve Kullan önizleme cihazlarını 
 - Cihaz özellikleriyle çalışın.
 - Çağrı cihazı komutları.
 
-Bu makalede nasıl yapılacağı gösterilmektedir:
+Bu makale, şunları nasıl yapacağınızı gösterir:
 
 - Azure CLı için Azure IoT uzantısını yükleyip yapılandırın.
 - Cihazlarınızı kullanarak cihazlarınızla etkileşim kurun ve test edin.

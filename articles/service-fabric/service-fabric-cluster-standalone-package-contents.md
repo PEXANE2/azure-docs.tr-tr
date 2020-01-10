@@ -1,24 +1,16 @@
 ---
-title: Windows Server için Azure Service Fabric tek başına paketin | Microsoft Docs
+title: Windows Server için Azure Service Fabric tek başına paketi
 description: Açıklama ve Windows Server için Azure Service Fabric tek başına paketin içeriği.
-services: service-fabric
-documentationcenter: .net
 author: maburlik
-manager: chackdan
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: facdcd162826e6f77ace098391459cba00061c4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711093"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451840"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server için Service Fabric tek başına paketin içeriği
 İçinde [indirilen](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric tek başına paketinin aşağıdaki dosyaları göreceksiniz:
@@ -52,7 +44,7 @@ ms.locfileid: "60711093"
 | ClusterConfig.gMSA.Windows.MultiMachine.json |Güvenli kümedeki her düğüm için bilgileri dahil olmak üzere güvenli, çok makineli (veya sanal makine) küme için tüm ayarları içeren bir küme yapılandırması örnek dosyası. Küme kullanarak güvenli hale [Grup yönetilen hizmet hesapları](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx). |
 
 ## <a name="cluster-configuration-samples"></a>Küme yapılandırma örnekleri
-Küme yapılandırması şablonlarının en son sürümlerine GitHub sayfasında bulunabilir: [Tek başına küme yapılandırması örnekleri](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
+Küme yapılandırması şablonlarının en son sürümlerine GitHub sayfasında bulunabilir: [tek başına küme yapılandırma örnekleri](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
 ## <a name="independent-runtime-package"></a>Bağımsız çalışma zamanı paketi
 En son çalışma zamanı paketi Küme dağıtımı sırasında otomatik olarak indirilir [indirme bağlantısı - Service Fabric çalışma zamanı - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354).

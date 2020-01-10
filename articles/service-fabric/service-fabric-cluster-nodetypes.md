@@ -1,25 +1,15 @@
 ---
-title: Azure Service Fabric düğüm türleri ve sanal makine ölçek kümeleri | Microsoft Docs
+title: Düğüm türleri ve sanal makine ölçek kümeleri
 description: Azure Service Fabric düğüm türlerinin sanal makine ölçek kümeleriyle ilişkilerini ve bir ölçek kümesi örneğine veya küme düğümüne uzaktan nasıl bağlanacağınızı öğrenin.
-services: service-fabric
-documentationcenter: .net
-author: ChackDan
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.openlocfilehash: cec134f9e71f86cd0ed17912f1a3c76adc9a4164
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d67a99be7b55cfa75980688ee30edc4fce7c0946
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167316"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610174"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric düğüm türleri ve sanal makine ölçek kümeleri
 [Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets) bir Azure işlem kaynağıdır. Ölçek kümelerini, bir küme olarak bir sanal makine koleksiyonunu dağıtmak ve yönetmek için kullanabilirsiniz. Azure Service Fabric kümesinde tanımladığınız her düğüm türü ayrı bir ölçek ayarlar.  Microsoft. Azure. ServiceFabric sanal makine uzantısı tarafından belirlenen ölçek kümesindeki her bir sanal makineye yüklü Service Fabric çalışma zamanı. Her bir düğüm türünü bağımsız olarak yukarı veya aşağı ölçeklendirebilirsiniz, her küme düğümünde çalışan işletim sistemi SKU 'sunu değiştirebilir, farklı bağlantı noktası kümelerine açık olabilir ve farklı kapasite ölçümleri kullanabilirsiniz.
@@ -82,7 +72,7 @@ Aşağıda Service Fabric sanal makine uzantısının bir parçacığı verilmi�
 | autoUpgradeMinorVersion | true veya false | --- | SF çalışma zamanı alt sürümlerinin otomatik yükseltmesini etkinleştir |
 | publisher | Microsoft. Azure. ServiceFabric | --- | Service Fabric uzantısı yayımcısının adı |
 | clusterEndpont | string | --- | URI: yönetim uç noktası bağlantı noktası |
-| nodeTypeRef | string | --- | nodeType adı |
+| NodeTypeRef | string | --- | nodeType adı |
 | durabilityLevel | Bronz, gümüş, altın, Platinum | --- | Sabit Azure altyapısını duraklatmaya izin verilen süre |
 | enableParallelJobs | true veya false | --- | Aynı ölçek kümesindeki sanal makineyi kaldır ve sanal makineyi yeniden Başlat gibi hesaplama ParallelJobs 'ı etkinleştir |
 | nicPrefixOverride | string | --- | "10.0.0.0/24" gibi alt ağ öneki |

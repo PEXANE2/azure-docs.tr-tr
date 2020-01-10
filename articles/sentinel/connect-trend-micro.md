@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: af4095b41da4d7f5fca5d1f7ed72a0c0dbc5b1d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ba5b560f068d453f07e2dbbfdf5140ca1f4ac2b8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521034"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610446"
 ---
 # <a name="connect-trend-micro-deep-security"></a>Bağlama eğilimi mikro derin güvenliği
 
 Trend mikro derin güvenlik Bağlayıcısı, Azure Sentinel ile derin güvenlik günlüklerinizi kolayca bağlamanıza olanak tanır, panoları görüntüleyebilir, özel uyarılar oluşturabilir ve araştırmayı geliştirir. Bu, kuruluşunuzun ağları ve sistemleri hakkında daha fazla bilgi verir ve güvenlik işlemi yeteneklerini geliştirir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure Sentinel çalışma alanına yönelik okuma ve yazma izinleri.
 
@@ -42,4 +42,6 @@ Trend mikro derin güvenlik Bağlayıcısı, Azure Sentinel ile derin güvenlik 
 Bu belgede, Trend mikro derin güvenliğini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
+
 

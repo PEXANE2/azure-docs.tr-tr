@@ -6,21 +6,21 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2259343d2c7bca1f60a5256efcd572e6cc21b565
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a744ac2574f54b0c2934d440ddf5c48e54304595
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445106"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Autopilot modunda Azure Cosmos kapsayıcıları ve veritabanları oluşturma (Önizleme)
 
-Azure Cosmos DB, kapsayıcılarınızdaki iş üretimini el ile veya Autopilot modunda sağlamanıza olanak tanır. Bu makalede, Autopilot modunun avantajları ve kullanım durumları açıklanmaktadır.
+Azure Cosmos DB kapsayıcılarınızda el ile veya otomatik pilot modunda aktarım hızı sağlamanıza olanak tanır. Bu makalede otomatik pilot modunun avantajları ve kullanım örnekleri açıklanır.
 
 > [!NOTE]
-> Autopilot modu şu anda genel önizlemede kullanılabilir. Azure Cosmos hesabınız için Autopilot özelliğini etkinleştirmek üzere, bu makalenin [Autopilot 'i etkinleştir](#enable-autopilot) bölümüne bakın. Yalnızca yeni veritabanları ve kapsayıcılar için Autopilot etkinleştirebilirsiniz; bu, mevcut kapsayıcılar ve veritabanları için kullanılamaz.
+> Autopilot modu şu anda genel önizlemede kullanılabilir. Yalnızca [yeni veritabanları ve kapsayıcılar için Autopilot etkinleştirebilirsiniz](#create-a-database-or-a-container-with-autopilot-mode) . Mevcut kapsayıcılar ve veritabanları için kullanılamaz.
 
-Aktarım hızını el ile sağlamaya ek olarak, artık Autopilot modundaki Azure Cosmos kapsayıcıları ' nı yapılandırabilirsiniz. Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları ve veritabanları, **SLA 'lara ödün vermeden uygulama gereksinimlerinize göre sağlanan üretilen işi otomatik olarak ve anında ölçeklendirecektir.**
+Aktarım hızının el ile sağlanmasına ek olarak, şimdi Azure Cosmos kapsayıcılarını otomatik pilot modunda da yapılandırabilirsiniz. Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları ve veritabanları, **SLA 'lara ödün vermeden uygulama gereksinimlerinize göre sağlanan üretilen işi otomatik olarak ve anında ölçeklendirecektir.**
 
 Artık sağlanan üretilen işi el ile yönetmeniz veya hız sınırlandırma sorunlarını ele almanız gerekmez. Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları, iş yükünün kullanılabilirliğini, gecikmesini, verimini veya küresel olarak performansını etkilemeden iş yüküne anında ölçeklendirilebilir. Yüksek kullanım altında, Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları, devam eden işlemleri etkilemeden ölçeği artırılabilecek veya azaltılabilir.
 
@@ -68,31 +68,21 @@ Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları için kullanı
 | **Fiyatlandırma** | Saat başına el ile sağlanan RU/s. | Tek bir yazma bölgesi hesabında, saat başına Autopilot RU/s 'yi kullanarak saatlik olarak kullanılan aktarım hızı için ödeme yaparsınız. <br/><br/>Birden fazla yazma bölgesi olan hesaplar için Autopilot için ek ücret alınmaz. Saat başına aynı çok yöneticili RU/sn 'yi kullanarak saatlik olarak kullanılan aktarım hızı için ödeme yaparsınız. |
 | **İş yükü türleri için en uygun** |  Öngörülebilir ve kararlı iş yükleri|   Tahmin edilemeyen ve değişken iş yükleri  |
 
-## <a id="enable-autopilot"></a>Azure portal Autopilot etkinleştir
-
-Azure portal ' den ' i etkinleştirerek Azure Cosmos hesaplarınızda Autopilot deneyebilirsiniz. Autopilot seçeneğini etkinleştirmek için aşağıdaki adımları kullanın:
-
-1. Azure portal oturum açın [.](https://portal.azure.com)
-
-2. Azure Cosmos hesabınıza gidin ve **yeni özellikler** sekmesini açın. aşağıdaki ekran görüntüsünde gösterildiği gibi **Auto Pilot** ve **register** ' ı seçin:
-
-![Autopilot modunda kapsayıcı oluşturma](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
-
 ## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Autopilot modu ile bir veritabanı veya kapsayıcı oluşturma
 
-Veritabanları veya kapsayıcılar oluşturma sırasında Autopilot yapılandırabilirsiniz. Aşağıdaki adımları yeni bir veritabanı veya kapsayıcıya kullanın, Autopilot etkinleştirin ve en yüksek aktarım hızını belirtin.
+Azure portal aracılığıyla oluştururken yeni veritabanları veya kapsayıcılar için Autopilot yapılandırabilirsiniz. Yeni bir veritabanı veya kapsayıcı oluşturmak, Autopilot etkinleştirmek ve en yüksek aktarım hızını (RU/s) belirtmek için aşağıdaki adımları kullanın.
 
 1. [Azure Portal](https://portal.azure.com) veya [Azure Cosmos Gezgini](https://cosmos.azure.com/) ' nde oturum açın.
 
 1. Azure Cosmos hesabınıza gidin ve **Veri Gezgini** sekmesini açın.
 
-1. **Yeni kapsayıcı**' yı seçin, bir bölüm anahtarı olan Kapsayıcınız için bir ad girin. **Autopilot** seçeneğini belirleyin ve Autopilot seçeneğini kullanırken kapsayıcının aşmadığı maksimum aktarım hızını seçin.
+1. **Yeni kapsayıcı** ' yı seçin. Veritabanınız, Kapsayıcınız ve bölüm anahtarınız için bir ad girin. **Autopilot** seçeneğini belirleyin ve Autopilot seçeneği kullanılırken veritabanının veya kapsayıcının aşmadığı en yüksek aktarım HıZıNı (ru/sn) seçin.
 
    ![Autopilot modunda kapsayıcı oluşturma](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
-1. **Tamam**’ı seçin
+1. **Tamam**’ı seçin.
 
-Benzer adımlarla, Autopilot modunda sağlanan aktarım hızına sahip bir veritabanı da oluşturabilirsiniz.
+**Veritabanı Işleme sağlama** seçeneğini belirleyerek Autopilot modu ile paylaşılan bir üretilen iş veritabanı oluşturabilirsiniz.
 
 ## <a id="autopilot-limits"></a>Autopilot için üretilen iş ve depolama sınırları
 
@@ -107,6 +97,7 @@ Aşağıdaki tabloda, Autopilot modundaki farklı seçenekler için en fazla ve 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [AUTOPILOT SSS](autopilot-faq.md)makalesini inceleyin.
 * [Mantıksal bölümler](partition-data.md)hakkında daha fazla bilgi edinin.
 * [Azure Cosmos kapsayıcısında üretilen iş sağlama](how-to-provision-container-throughput.md)hakkında bilgi edinin.
 * [Azure Cosmos veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md)hakkında bilgi edinin.

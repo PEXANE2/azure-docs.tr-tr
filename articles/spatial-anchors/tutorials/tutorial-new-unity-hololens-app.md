@@ -8,18 +8,18 @@ ms.author: pmorgan
 ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0d63f2df17804d5cc171f94a34ebc5831be384fb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e1abb759c80e770f1e650c232b6b2e21232b7e6f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276913"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457729"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Öğretici: Azure uzamsal bağlayıcıları kullanarak yeni bir HoloLens Unity uygulaması oluşturmaya yönelik adım adım yönergeler
 
 Bu öğreticide, Azure uzamsal bağlayıcılarla yeni bir HoloLens Unity uygulamasının nasıl oluşturulacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
@@ -27,14 +27,14 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 2. Visual Studio için [ C++/wınrt Visual Studio uzantısı (VSIX)](https://aka.ms/cppwinrt/vsix) [Visual Studio Market](https://marketplace.visualstudio.com/)yüklenmelidir.
 3. [Geliştirici modu](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) etkin bir HoloLens cihazı. Bu makalede, [Windows 10 ekim 2018 güncelleştirmesi](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (RS5 olarak da bilinir) Ile bir HoloLens cihazı gerekir. HoloLens 'te en son sürüme güncelleştirmek için **Ayarlar** uygulamasını açın, **güncelleştirme & güvenlik**' e gidin ve **Güncelleştirmeleri denetle** düğmesini seçin.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
 İlk olarak proje ve Unity sahümüzü ayarlayacağız:
 1. Unity 'yi başlatın.
 2. **Yeni**'yi seçin.
 4. **3B** 'in seçili olduğundan emin olun.
 5. Projenizi adlandırın ve bir kaydetme **konumu**girin.
-6. **Proje oluştur**' a tıklayın.
+6. Tıklayın **proje oluştur**.
 7. Boş varsayılan sahneyi kullanarak yeni bir dosyaya kaydedin: **dosya** > **farklı kaydet**.
 8. Yeni sahneyi **Main** olarak adlandırın ve **Kaydet** düğmesine basın.
 
@@ -117,7 +117,7 @@ Artık betiğinizdeki ön **küm** kümesine sahip olmanız gerekir. **Unity** '
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-277,299-300,304-312)]
 
-Şimdi Sphere öğesini oluşturuyoruz. Sphere başlangıçta beyaz olur, ancak bu değer daha sonra üzerinde ayarlanır. Aşağıdaki `CreateAndSaveSphere()` yöntemi ekleyin:
+Şimdi Sphere öğesini oluşturuyoruz. Sphere başlangıçta beyaz olur, ancak bu değer daha sonra üzerinde ayarlanır. Aşağıdaki `CreateAndSaveSphere()` yöntemi:
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-325,390)]
 
@@ -141,17 +141,27 @@ Ardından, kuyruğa eylem eklemenin bir yolunu ekleyelim. `Update()` sonra `Queu
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Azure uzamsal çıpası SDK 'sını alın
 
-Şimdi Azure uzamsal bağlayıcı SDK 'sını indireceğiz. [Azure uzamsal bağlantıları GitHub yayınları sayfasına](https://github.com/Azure/azure-spatial-anchors-samples/releases)gidin. Varlıklar altında **AzureSpatialAnchors. unitypackage** dosyasını indirin.
+## <a name="via-unity-packagetabunitypackage"></a>[Unity paketi aracılığıyla](#tab/UnityPackage)
 
-Unity 'de **varlıklar**' a gidin, **paketi** > **özel paket**' e tıklayın... Pakete gidin ve **Aç**' ı seçin.
+Şimdi Azure uzamsal bağlayıcı SDK 'sını indireceğiz. [Azure uzamsal bağlantıları GitHub yayınları sayfasına](https://github.com/Azure/azure-spatial-anchors-samples/releases)gidin. Varlıklar altında **AzureSpatialAnchors. unitypackage**' ı indirin. Unity 'de **varlıklar**' a gidin, **paketi** > **özel paket**' e tıklayın... Pakete gidin ve **Aç**' ı seçin.
 
-Açılan yeni **Unity paketi Içeri aktarma** penceresinde sol alt kısımdaki **yok** ' u seçin. Ardından **AzureSpatialAnchorsPlugin** > **eklentileri**altında **Common**, **Editor**ve **HoloLens**' i seçin. Sağ alt köşedeki **Içeri aktar** ' a tıklayın.
+Açılan yeni **Unity paketi Içeri aktar** penceresinde, **eklentilerin** seçimini kaldırın ve sağ alt köşedeki **içeri aktar** ' a tıklayın.
 
 Azure uzamsal bağlayıcı SDK 'sını almak için artık NuGet paketlerini geri yüklemeniz gerekiyor. **Unity** 'den derleyin ve ardından ortaya çıkan **Visual Studio** çözümünü [tekrar deneyin ve yeniden oluşturun.](#trying-it-out)
 
+## <a name="via-nugetforunitytabnugetforunity"></a>[NuGetForUnity aracılığıyla](#tab/NuGetForUnity)
+
+İlk olarak NuGetForUnity ' i yüklememiz gerekir. [Nugetforunity GitHub yayınları sayfasına](https://github.com/GlitchEnzo/NuGetForUnity/releases)gidin. Varlıklar ' ın altında, son **nugetforunity. unitypackage**' ı indirin. Unity 'de **varlıklar**' a gidin, **paketi** > **özel paket**' e tıklayın... Pakete gidin ve **Aç**' ı seçin. Unity şimdi NugetForUnity 'ı yükleyecek. Unity 'de yeni bir **NuGet** açılan kutusu görmüyorsanız **Projeler** > **varlıklar**' ın altında sağ tıklameniz gerekebilir. Ardından **tümünü yeniden al**' ı seçin.
+
+NuGetForUnity yükledikten sonra NuGet **paketlerini yönetmek** > **NuGet** ' i seçin. Ardından Microsoft. Azure. SpatialAnchors. Unity için arama yapın ve **yüklemeyi**seçin.
+
+Şimdi indirdiğimiz NuGet paketi yalnızca yardımcı betikleri içerdiğinden, gerçek Azure uzamsal bağlantıları SDK 'sını almak için derleme yapmanız gerekir. **Unity** 'den derleyin ve ardından ortaya çıkan **Visual Studio** çözümünü [tekrar deneyin ve yeniden oluşturun.](#trying-it-out)
+
+---
+
 **Visual Studio** çözümünüzde aşağıdaki içeri aktarmayı `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs`ekleyin:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=23-26&highlight=1)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]
 
 Ardından, aşağıdaki üye değişkenlerini `AzureSpatialAnchorsScript` sınıfa ekleyin:
 

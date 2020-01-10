@@ -1,25 +1,21 @@
 ---
-title: Azure Information Protection verilerini Azure Sentinel 'e bağlama | Microsoft Docs
+title: Azure Information Protection Azure Sentinel 'e bağlama
 description: Azure Sentinel 'de Azure Information Protection verileri nasıl bağlayacağınızı öğrenin.
 services: sentinel
-documentationcenter: na
 author: cabailey
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/24/2019
 ms.author: cabailey
-ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ef97ad601436faf44b0f49bd48d78c4c9420c7c8
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261829"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563692"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Azure Information Protection verileri bağlama
 
@@ -29,7 +25,7 @@ ms.locfileid: "71261829"
 
 Azure Information Protection veri bağlayıcısını yapılandırarak [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) günlük bilgilerini Azure Sentinel 'e akışla aktarabilirsiniz. Azure Information Protection, önemli verilerinizi bulutta veya şirket içinde depolanmış olsun denetlemenize ve güvenli hale getirmeye yardımcı olur.
 
-[Azure Information Protection için merkezi raporlama](https://docs.microsoft.com/azure/information-protection/reports-aip) zaten yapılandırılmışsa, bu hizmetten günlüğe kaydetme bilgileri Azure Sentinel için seçtiğiniz aynı Log Analytics çalışma alanında depolanırsa, şu yapılandırmayı atlayabilirsiniz Bu veri Bağlayıcısı. Azure Information Protection günlük bilgileri Azure Sentinel 'de zaten kullanılabilir.
+[Azure Information Protection için merkezi raporlama](https://docs.microsoft.com/azure/information-protection/reports-aip) zaten yapılandırılmışsa, bu hizmetten günlüğe kaydetme bilgileri Azure Sentinel için seçtiğiniz aynı Log Analytics çalışma alanında depolanıyorsa, bu veri bağlayıcısının yapılandırmasını atlayabilirsiniz. Azure Information Protection günlük bilgileri Azure Sentinel 'de zaten kullanılabilir.
 
 Ancak, Azure Information Protection günlük bilgileri Azure Sentinel için seçtiğiniz farklı bir Log Analytics çalışma alanına gitecekse, aşağıdakilerden birini yapın:
 
@@ -39,13 +35,13 @@ Ancak, Azure Information Protection günlük bilgileri Azure Sentinel için seç
     
     Çalışma alanını değiştirirseniz, Azure Information Protection için yeni raporlama verileri artık Azure Sentinel için kullandığınız çalışma alanında depolanır ve geçmiş veriler Azure Sentinel 'de kullanılamaz. Ayrıca, önceki çalışma alanı özel sorgular, uyarılar veya REST API 'Ler için yapılandırılmışsa, Azure Information Protection için kullanmaya devam etmek istiyorsanız bunların Azure Sentinel çalışma alanı için yeniden yapılandırılması gerekir. Azure Information Protection kullanan istemciler ve hizmetler için yeniden yapılandırma gerekmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Kiracınız için aşağıdaki Azure AD yönetici rollerinden biri: 
-    - Azure Information Protection yöneticisi
+    - Azure Information Protection Yöneticisi
     - Güvenlik yöneticisi
-    - Uyumluluk yöneticisi
-    - Uyumluluk veri yöneticisi
+    - Uyumluluk Yöneticisi
+    - Uyumluluk verileri Yöneticisi
     - Genel yönetici
     
     > [!NOTE]

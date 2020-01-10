@@ -3,16 +3,16 @@ title: Ortak arabirimler-IoT Tak ve Kullan önizlemesi | Microsoft Docs
 description: IoT Tak ve Kullan geliştiricileri için ortak arabirimlerin açıklaması
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 09/08/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2eae778230fa5fce1be095106a02b2b643ff436e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f697a0d6aba4f137b75faa2a200424c72aa78c3b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935336"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531420"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT Tak ve Kullan önizleme ortak arabirimleri
 
@@ -20,16 +20,16 @@ Tüm IoT Tak ve Kullan cihazlarının bazı ortak arabirimleri uygulaması bekle
 
 ## <a name="summary-of-common-interfaces"></a>Ortak arabirimlerin Özeti
 
-| Name | ID | Açıklama | Azure IoT SDK tarafından uygulandı | Yetenek modelinde bildirilmelidir |
+| Ad | Kimlik | Açıklama | Azure IoT SDK tarafından uygulandı | Yetenek modelinde bildirilmelidir |
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | Model bilgileri | urn: azureiot: ModelDiscovery: ModelInformation: 1 | Cihazların yetenek modeli KIMLIĞINI ve arabirimlerini bildirmesi için. Tüm IoT Tak ve Kullan cihazları için gereklidir. | Evet | Hayır |
 | Digital Ikizi Istemci SDK bilgileri | urn: azureiot: Client: Sdkınformation: 1 | Cihazı Azure 'a bağlamak için istemci SDK. [Sertifika](tutorial-build-device-certification.md) için gerekli | Evet | Hayır |
-| Cihaz bilgisi | urn: azureiot: DeviceManagement: Deviceınformation: 1 | Cihazla ilgili donanım ve işletim sistemi bilgileri. [Sertifika](tutorial-build-device-certification.md) için gerekli | Hayır | Evet |
+| Cihaz bilgileri | urn: azureiot: DeviceManagement: Deviceınformation: 1 | Cihazla ilgili donanım ve işletim sistemi bilgileri. [Sertifika](tutorial-build-device-certification.md) için gerekli | Hayır | Evet |
 | Model tanımı | urn: azureiot: ModelDiscovery: ModelDefinition: 1 | Cihazların yetenek modeli ve arabirimleri için tam tanımı bildirme. Model tanımları bir model deposunda barındırılamadıklarında uygulanmamalıdır. | Hayır | Evet |
 | Dijital Ikizi | urn: azureiot: ModelDiscovery: DigitalTwin: 1 | Çözüm geliştiricilerinin dijital bir ikizi için yetenek modeli KIMLIĞI ve arabirim kimliklerini alması için. Bu arabirim bir IoT Tak ve Kullan cihazı tarafından bildirilmemiş veya uygulanmadı. | Hayır | Hayır |
 
 - Azure IoT SDK tarafından uygulanan-Azure IoT SDK 'sının arabirimlerde belirtilen özellikleri uygulayıp uygulamadığını belirtir. Azure IoT SDK 'sını kullanan IoT Tak ve Kullan cihazlarının bu arabirimi uygulaması gerekmez.
-- Yetenek modelinde bildirilmelidir-Eğer ' Yes ' ise bu arabirim, bu IoT Tak ve kullan cihazının cihaz yeteneği modelinin `"implements":` bölümü içinde bildirilmelidir.
+- Yetenek modelinde bildirilmelidir-Eğer ' Yes ' Ise, bu arabirimin bu IoT Tak ve Kullan cihazının cihaz yetenek modelinin `"implements":` bölümünde bildirilmelidir.
 
 ## <a name="retrieve-interface-definitions-from-the-public-repository"></a>Genel depodan arabirim tanımlarını al
 
@@ -49,7 +49,7 @@ az iot pnp capability-model show --model {ModelID}
 
 1. Komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın.
 
-1. **Tak ve kullan** girin ve ardından **IoT Tak ve Kullan seçin: Model deposu** komutunu açın. **Ortak depoyu**seçin. Ortak model deposu VS Code açılır.
+1. **Tak ve kullan** girin ve ardından **IoT Tak ve kullan: model depoyu aç** komutunu seçin. **Ortak depoyu**seçin. Ortak model deposu VS Code açılır.
 
 1. Ortak model deposunda, ara alanına arabirim adını girin.
 
@@ -60,5 +60,5 @@ az iot pnp capability-model show --model {ModelID}
 Artık ortak arabirimler hakkında bilgi edindiğinize göre, bazı ek kaynaklar aşağıda verilmiştir:
 
 - [Digital Ikizi tanım dili (DTDL)](https://aka.ms/DTDL)
-- [C cihaz API’si](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+- [C cihaz SDK’sı](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)

@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric-yönetilen kimlik desteğiyle yeni bir Azure Service Fabric kümesi dağıtın | Microsoft Docs
+title: Yönetilen kimlikle yeni bir Service Fabric kümesi dağıtma
 description: Bu makalede, yönetilen kimlik etkin olan yeni bir Service Fabric kümesinin nasıl oluşturulacağı gösterilmektedir
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: cb32251c2507f3def7f5e830af15828ff2f04c29
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 12/09/2019
+ms.openlocfilehash: 4893fe47de78445a7dccb4f5800498b30cd6c1f2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640714"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614868"
 ---
 # <a name="create-a-new-azure-service-fabric-cluster-with-managed-identity-support-preview"></a>Yönetilen kimlik desteği (Önizleme) ile yeni bir Azure Service Fabric kümesi oluşturma
 

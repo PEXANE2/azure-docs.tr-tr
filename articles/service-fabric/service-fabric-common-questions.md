@@ -1,27 +1,17 @@
 ---
-title: Microsoft Azure Service Fabric hakkında sık sorulan sorular | Microsoft Docs
-description: Service Fabric ve yanıtları hakkında sık sorulan sorular
-services: service-fabric
-documentationcenter: .net
-author: chackdan
-manager: chackdan
-editor: ''
-ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Microsoft Azure Service Fabric hakkında sık sorulan sorular
+description: Yetenekler, kullanım örnekleri ve yaygın senaryolar da dahil olmak üzere Service Fabric hakkında sık sorulan sorular.
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: dd514bb7c600c99518983855dae1d3b7fb8a1efb
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481651"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614647"
 ---
-# <a name="commonly-asked-service-fabric-questions"></a>Sık sorulan Service Fabric sorular
+# <a name="commonly-asked-service-fabric-questions"></a>Sık sorulan Service Fabric soruları
 
 Service Fabric ne yapabilecekleri ve nasıl kullanılması gerektiği hakkında sık sorulan birçok soru vardır. Bu belge, yaygın soruların ve bunların yanıtlarının çoğunu içerir.
 
@@ -94,7 +84,7 @@ Tek **düğüm**: Bu seçenek, herhangi bir nedenden dolayı tek bir düğümün
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Maliyetleri kaydetmek için kümi gece/hafta sonları üzerinden kapatabilir miyim?
 
-Genel, hayır. Service Fabric durumu yerel, kısa ömürlü disklerde depolar, yani sanal makine farklı bir konağa taşınırsa, verilerin onunla birlikte hareket etmez. Normal işlemde, yeni düğüm diğer düğümlere göre güncel hale getirilmediğinden bu bir sorun değildir. Ancak, tüm düğümleri durdurup daha sonra yeniden başlatırsanız, düğümlerin çoğunun yeni konaklarda başlaması ve sistemin kurtulamadığında önemli bir olasılık vardır.
+Genellikle yapamazsınız. Service Fabric durumu yerel, kısa ömürlü disklerde depolar, yani sanal makine farklı bir konağa taşınırsa, verilerin onunla birlikte hareket etmez. Normal işlemde, yeni düğüm diğer düğümlere göre güncel hale getirilmediğinden bu bir sorun değildir. Ancak, tüm düğümleri durdurup daha sonra yeniden başlatırsanız, düğümlerin çoğunun yeni konaklarda başlaması ve sistemin kurtulamadığında önemli bir olasılık vardır.
 
 Uygulamanızı dağıtılmadan önce test etmek üzere kümeler oluşturmak isterseniz, bu kümeleri [sürekli tümleştirme/sürekli dağıtım işlem hattının](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)bir parçası olarak dinamik olarak oluşturmanızı öneririz.
 
@@ -111,13 +101,13 @@ Hayır. Düşük öncelikli VM 'Ler desteklenmez.
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Kümemdeki virüsten koruma programını çalıştırırken dışlandığım dizin ve süreçler nelerdir?
 
-| **Virüsten koruma için dışlanan dizinler** |
+| **Virüsten koruma hariç tutulan dizinler** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot (küme yapılandırmasından) |
 | FabricLogRoot (küme yapılandırmasından) |
 
-| **Virüsten koruma hariç tutulan süreçler** |
+| **Virüsten koruma dışlanan işlemler** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |
@@ -135,7 +125,7 @@ Hayır. Düşük öncelikli VM 'Ler desteklenmez.
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Uygulamamın gizli dizileri almak için Keykasada kimlik doğrulaması nasıl yapılır?
 Aşağıdakiler, uygulamanızın Keykasada kimlik doğrulaması için kimlik bilgilerini alması anlamına gelir:
 
-BİR. Uygulamalarınızın derleme/paketleme işi sırasında, SF uygulamanızın veri paketine bir sertifika çekebilir ve bunu anahtar kasasında kimlik doğrulaması yapmak için kullanabilirsiniz.
+A. Uygulamalarınızın derleme/paketleme işi sırasında, SF uygulamanızın veri paketine bir sertifika çekebilir ve bunu anahtar kasasında kimlik doğrulaması yapmak için kullanabilirsiniz.
 B. Sanal makine ölçek kümesi MSI etkin konaklar için, [MSI uç noktasından bir erişim belirteci](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)almak üzere SF uygulamanız için basit bir PowerShell setupentrypoint geliştirebilir ve sonra [gizli dizileri keykasasından alabilirsiniz](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>Uygulama tasarımı

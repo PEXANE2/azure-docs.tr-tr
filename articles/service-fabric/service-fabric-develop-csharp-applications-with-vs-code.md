@@ -1,128 +1,119 @@
 ---
-title: Visual Studio Code ile .NET Core Azure Service Fabric uygulamalar geliştirin | Microsoft Docs
-description: Bu makale oluşturmanızı, dağıtmanızı ve .NET Core Service Fabric uygulamaları Visual Studio Code kullanarak hata ayıklama işlemini gösterir.
-services: service-fabric
-documentationcenter: .net
+title: Visual Studio Code ile .NET Core Uygulamaları geliştirin
+description: Bu makalede, Visual Studio Code kullanılarak .NET Core Service Fabric uygulamalarının nasıl oluşturulacağı, dağıtılacağı ve hata ayıklamanın nasıl yapılacağı gösterilir.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 60b634b0b927804249148737ee7a99c0e86dd7d6
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537764"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614532"
 ---
-# <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Geliştirme C# Visual Studio Code ile Service Fabric uygulamaları
+# <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code C# Service Fabric uygulamalar geliştirin
 
-[VS Code için Service Fabric güvenilir hizmetler uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) işletim sistemlerinde Windows, Linux ve Macos'ta .NET Core Service Fabric uygulamaları oluşturmayı kolaylaştırır.
+[Vs Code için Service Fabric Reliable Services uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) , Windows, Linux ve MacOS işletim sistemlerinde .net Core Service Fabric uygulamaları oluşturmayı kolaylaştırır.
 
-Bu makalede, oluşturmanızı, dağıtmanızı ve .NET Core Service Fabric uygulamasını Visual Studio Code kullanarak hata ayıklama işlemini göstermektedir.
+Bu makalede Visual Studio Code kullanarak bir .NET Core Service Fabric uygulamasının nasıl oluşturulacağı, dağıtılacağı ve hata ayıklamanın nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede, zaten VS Code, VS Code için Service Fabric güvenilir hizmetler uzantısı ve geliştirme ortamınız için gereken herhangi bir bağımlılığın yüklediğinizi varsayar. Daha fazla bilgi için bkz. [Başlarken](./service-fabric-get-started-vs-code.md#prerequisites).
+Bu makalede, VS Code için Service Fabric Reliable Services uzantısı ve geliştirme ortamınız için gereken tüm bağımlılıklar VS Code, zaten yüklemiş olduğunuz varsayılır. Daha fazla bilgi için bkz [. Başlarken](./service-fabric-get-started-vs-code.md#prerequisites).
 
 ## <a name="download-the-sample"></a>Örneği indirme
-Bu makalede CounterService uygulamada kullandığı [Service Fabric .NET Core kullanmaya başlama örnekleri GitHub deposunda](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started). 
+Bu makale, [Service Fabric .NET Core ile çalışmaya başlama örnekleri GitHub deposunda](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)CounterService uygulamasını kullanır. 
 
-Depoyu geliştirme makinenize kopyalamak için (Windows komut penceresinde) bir terminal penceresinden aşağıdaki komutu çalıştırın:
+Depoyu geliştirme makinenize kopyalamak için, bir Terminal penceresinde aşağıdaki komutu çalıştırın (Windows 'da komut penceresi):
 
 ```
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started.git
 ```
 
-## <a name="open-the-application-in-vs-code"></a>Uygulama VS Code'da açın
+## <a name="open-the-application-in-vs-code"></a>Uygulamayı VS Code açın
 
 ### <a name="windows"></a>Windows
-Başlat menüsündeki VS Code simgesini sağ tıklatın ve seçin **yönetici olarak çalıştır**. Hizmetlerinize hata ayıklayıcıyı iliştirmek için VS Code'u yönetici olarak çalıştırmanız gerekir.
+Başlat menüsünde VS Code simgesine sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin. Hata ayıklayıcıyı hizmetlerinize eklemek için VS Code yönetici olarak çalıştırmanız gerekir.
 
 ### <a name="linux"></a>Linux
-Terminal kullanarak, uygulama içinde yerel olarak kopyalanan dizinden /service-fabric-dotnet-core-getting-started/Services/CounterService yoluna gidin.
+Terminal kullanarak, uygulamanın yerel olarak kopyalandığı dizinden/service-fabric-dotnet-core-getting-started/Services/CounterService yoluna gidin.
 
-Hizmetlerinize hata ayıklayıcıyı iliştirmek bir kök kullanıcı olarak VS Code açmak için aşağıdaki komutu çalıştırın.
+Hata ayıklayıcının hizmetlerinizi iliştirebilmesi için VS Code kök kullanıcı olarak açmak üzere aşağıdaki komutu çalıştırın.
 ```
 sudo code . --user-data-dir='.'
 ```
 
 Uygulama artık VS Code çalışma alanınızda görünmelidir.
 
-![Sayaç hizmet uygulaması çalışma](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-application-in-workspace.png)
+![Çalışma alanındaki sayaç hizmeti uygulaması](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-application-in-workspace.png)
 
 ## <a name="build-the-application"></a>Uygulama oluşturma
-1. (Ctrl + Shift + p) açmak için ENTER tuşuna **komut paleti** VS code'da.
-2. Arayın ve seçin **Service Fabric: Uygulama derleme** komutu. Derleme çıktısında tümleşik terminale gönderilir.
+1. VS Code içinde **komut paletini** açmak Için (Ctrl + Shift + p) tuşuna basın.
+2. **Service Fabric: Build Application** komutunu arayın ve seçin. Derleme çıkışı tümleşik terminale gönderilir.
 
-   ![VS code'da uygulama komutu oluşturun](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
+   ![VS Code uygulama komutu oluştur](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
 
 ## <a name="deploy-the-application-to-the-local-cluster"></a>Uygulamayı yerel kümeye dağıtma
 Uygulamayı oluşturduktan sonra yerel kümeye dağıtabilirsiniz. 
 
-1. Gelen **komut paleti**seçin **Service Fabric: Uygulama (Localhost) komutu dağıtma**. Yükleme işlemini çıktısı için tümleşik Terminalini gönderilir.
+1. **Komut paletinden** **Service Fabric: Deploy Application (localhost) komutunu**seçin. Install işleminin çıktısı tümleşik terminale gönderilir.
 
-   ![VS code'da uygulama komutu dağıtma](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
+   ![Uygulama komutunu VS Code içinde dağıt](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. Dağıtım tamamlandığında, tarayıcıyı başlatın ve Service Fabric Explorer'ı açın: http:\//localhost:19080 / Gezgini. Uygulamanın çalıştığını görmelisiniz. Bu biraz zaman alabilir. Bu nedenle sabırlı olun. 
+4. Dağıtım tamamlandığında bir tarayıcı başlatın ve Service Fabric Explorer açın: http:\//localhost: 19080/Explorer. Uygulamanın çalıştığını görmeniz gerekir. Bu işlem biraz zaman alabilir, bu nedenle sabırlı olun. 
 
-   ![Service Fabric Explorer hizmet uygulamasında sayaç](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
+   ![Service Fabric Explorer 'de sayaç hizmeti uygulaması](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. Uygulamanın çalıştığı doğruladıktan sonra tarayıcıyı başlatın ve şu sayfayı açın: http:\//localhost:31002. Bu, uygulamanın ön uç web API'sidir. Geçerli sayaç değerini artırır olarak görmek için sayfayı yenileyin.
+4. Uygulamanın çalıştığını doğruladıktan sonra bir tarayıcı başlatın ve şu sayfayı açın: http:\//localhost: 31002. Bu, uygulamanın Web ön ucu olur. Sayacın geçerli değerini artan şekilde görmek için sayfayı yenileyin.
 
-   ![Tarayıcıda sayacı hizmet uygulaması](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
+   ![Tarayıcıda sayaç hizmeti uygulaması](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
-## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Azure Service Fabric kümesine uygulama yayımlama
-Uygulamayı yerel kümeye dağıtma ile birlikte, uzak bir Azure Service Fabric kümesine uygulama yayımlayabilirsiniz. 
+## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Uygulamayı Azure Service Fabric kümesinde yayımlama
+Uygulamayı yerel kümeye dağıtmaya birlikte, uygulamayı uzak bir Azure Service Fabric kümesine de yayımlayabilirsiniz. 
 
-1. Yukarıdaki yönergeleri kullanarak uygulamanızı oluşturduğunuzdan emin olun. Oluşturulan yapılandırma dosyasını güncelleştirmeniz `Cloud.json` uzak kümede yayımlamak istediğiniz ayrıntılarını ile.
+1. Uygulamanızı yukarıdaki yönergeleri kullanarak oluşturduğunuzdan emin olun. Oluşturulan yapılandırma dosyasını, yayımlamak istediğiniz uzak kümenin ayrıntılarıyla `Cloud.json` güncelleştirin.
 
-2. Gelen **komut paleti**seçin **Service Fabric: Uygulama komutu yayımlama**. Yükleme işlemini çıktısı için tümleşik Terminalini gönderilir.
+2. **Komut paletinden** **Service Fabric: uygulamayı Yayımla komutunu**seçin. Install işleminin çıktısı tümleşik terminale gönderilir.
 
-   ![VS Code'da uygulama komutu yayımlama](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+   ![Uygulama komutunu VS Code içinde Yayımla](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
-3. Dağıtım tamamlandığında, tarayıcıyı başlatın ve Service Fabric Explorer'ı açın: `https:<clusterurl>:19080/Explorer`. Uygulamanın çalıştığını görmelisiniz. Bu biraz zaman alabilir. Bu nedenle sabırlı olun. 
+3. Dağıtım tamamlandığında bir tarayıcı başlatın ve Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`açın. Uygulamanın çalıştığını görmeniz gerekir. Bu işlem biraz zaman alabilir, bu nedenle sabırlı olun. 
 
 ## <a name="debug-the-application"></a>Uygulamada hata ayıklama
-VS code'da uygulamalarında hata ayıklaması yaparken yerel bir kümede uygulamayı çalıştırması gerekir. Kesme noktaları ardından kodu eklenebilir.
+VS Code içindeki uygulamalarda hata ayıklarken, uygulamanın yerel bir kümede çalışıyor olması gerekir. Kesme noktaları daha sonra koda eklenebilir.
 
-Bir kesme noktası ve hata ayıklama ayarlamak için aşağıdaki adımları tamamlayın:
-1. Gezgini açmak */src/CounterServiceApplication/CounterService/CounterService.cs* içinde 62 satırında bir kesme noktası ayarlayın ve dosya `RunAsync` yöntemi.
-3. Hata ayıklama simgesini **etkinlik çubuğu** hata ayıklayıcı görünümü VS Code'da açın. Hata ayıklayıcı görünümü üst kısmındaki dişli simgesine tıklayıp **.NET Core** ortam açılan menüden. Launch.json dosyası açılır. Bu dosya kapatabilirsiniz. Artık hata ayıklama yapılandırma menüde Çalıştır düğmesinin yanındaki (yeşil ok) bulunan yapılandırma seçeneklerinin görmeniz gerekir.
+Bir kesme noktası ve hata ayıklama ayarlamak için aşağıdaki adımları izleyin:
+1. Gezgin 'de, */src/CounterServiceApplication/CounterService/CounterService.cs* dosyasını açın ve `RunAsync` yönteminin içindeki 62. satırda bir kesme noktası ayarlayın.
+3. VS Code hata ayıklayıcı görünümünü açmak için **etkinlik çubuğundaki** hata ayıkla simgesine tıklayın. Hata ayıklayıcı görünümünün en üstündeki dişli simgesine tıklayın ve açılan ortam menüsünden **.NET Core** ' u seçin. Launch. JSON dosyası açılır. Bu dosyayı kapatabilirsiniz. Şimdi Çalıştır düğmesinin (yeşil ok) yanında bulunan hata ayıklama yapılandırma menüsünde yapılandırma seçimlerini görmeniz gerekir.
 
-   ![VS Code çalışma simgesi hata ayıklama](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
+   ![VS Code çalışma alanında hata ayıklama simgesi](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
 
-2. Seçin **.NET Core ekleme** hata ayıklama yapılandırması menüsünden.
+2. Hata ayıklama yapılandırması menüsünden **.NET Core Ekle** ' yi seçin.
 
-   ![VS Code çalışma simgesi hata ayıklama](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
+   ![VS Code çalışma alanında hata ayıklama simgesi](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. Service Fabric Explorer bir tarayıcıda açın: http:\//localhost:19080 / Gezgini. Tıklayın **uygulamaları** ve detaya gitmesine CounterService çalıştıran birincil düğüm belirleyin. Birincil düğüm CounterService için aşağıdaki görüntüde 0 düğümüdür.
+3. Service Fabric Explorer bir tarayıcıda açın: http:\//localhost: 19080/Explorer. Onay hizmetinin üzerinde çalıştığı birincil düğümü öğrenmek için **uygulamalar** ' a tıklayın ve ayrıntıya gidin. Aşağıdaki görüntüde, CounterService 'in birincil düğümünün düğüm 0 ' dır.
 
-   ![Birincil düğüm CounterService için](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
+   ![CounterService için birincil düğüm](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 
-4. VS Code'da çalıştırma (yeşil ok) yanındaki simgeye **.NET Core ekleme** hata ayıklama yapılandırması. İşlem seçimi iletişim kutusunda, adım 4'te tanımlanan birincil düğüm üzerinde çalışan CounterService işlemi seçin.
+4. VS Code ' de, **.NET Core Ekle** hata ayıklama yapılandırması ' nın yanındaki Çalıştır simgesine (yeşil ok) tıklayın. İşlem seçimi iletişim kutusunda, adım 4 ' te belirlediğiniz birincil düğümde çalışan onay hizmeti işlemini seçin.
 
-   ![Birincil işlemi](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
+   ![Birincil Işlem](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
 
-5. Kesme noktasına *CounterService.cs* dosya isabet çok hızlı bir şekilde. Ardından, yerel değişkenlerin değerleri de keşfedebilirsiniz. Hata ayıklama araç çubuğu VS Code üst kısmında yürütme, satırları, yöntemleri, içine Adımlama üzerinden adımla devam etmek için geçerli yöntemi dışında adımı kullanın. 
+5. *CounterService.cs* dosyasındaki kesme noktası çok çabuk olacaktır. Daha sonra yerel değişkenlerin değerlerini keşfedebilirsiniz. Yürütmeye devam etmek, satırlarda adımla, yöntemlere adımla veya geçerli yöntemin dışına adımlamak için VS Code en üstündeki hata ayıklama araç çubuğunu kullanın. 
 
-   ![Değerleri hata ayıklama](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
+   ![Hata ayıklama değerleri](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
 
-6. Hata ayıklama oturumunu sona erdirmek için VS Code üst kısmındaki hata ayıklama araç çubuğundaki Tak simgeye tıklayın...
+6. Hata ayıklama oturumunu sonlandırmak için VS Code üstündeki hata ayıklama araç çubuğundaki tak simgesine tıklayın.
    
-   ![Hata Ayıklayıcı'dan bağlantısını kes](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
+   ![Hata ayıklayıcıyla bağlantıyı kes](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
        
-7. Hata ayıklama işlemini tamamladığınızda, kullanabileceğiniz **Service Fabric: Uygulamayı kaldırma** CounterService uygulamayı yerel kümenize kaldırmak için komutu. 
+7. Hata ayıklamayı bitirdiğinizde, CounterService uygulamasını yerel kümeinizden kaldırmak için **Service Fabric: uygulamayı kaldır** komutunu kullanabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bilgi edinmek için nasıl [geliştirme ve hata ayıklama, VS Code ile Java Service Fabric uygulamaları](./service-fabric-develop-java-applications-with-vs-code.md).
+* [Vs Code Ile Java Service Fabric uygulamaları geliştirmeyi ve hata ayıklamayı](./service-fabric-develop-java-applications-with-vs-code.md)öğrenin.
 
 
 

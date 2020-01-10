@@ -1,28 +1,19 @@
 ---
-title: 'Öğretici: Service Fabric tek başına istemcisini yükleme - Azure Service Fabric | Microsoft Docs'
+title: Tek başına Service Fabric istemcisini yükleme
 description: Bu öğreticide, Service Fabric tek başına istemcisini önceki öğretici makalesinde oluşturduğunuz kümeye yüklemeyi öğreneceksiniz.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385007"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613950"
 ---
-# <a name="tutorial-install-and-create-service-fabric-cluster"></a>Öğretici: Service Fabric kümesi yükleyip oluşturma
+# <a name="tutorial-install-and-create-service-fabric-cluster"></a>Öğretici: Service Fabric kümesi yükleme ve oluşturma
 
 Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fabric’in benimsediği "her işletim sistemi, her bulut" yaklaşımının bir parçası olarak bir küme oluşturma seçeneği sunar. Bu öğretici serisinde, AWS veya Azure üzerinde barındırılan bir tek başına küme oluşturur ve bu kümeye bir uygulama yüklersiniz.
 
@@ -129,7 +120,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>Service Fabric Explorer’ı getirme
 
-Artık\/, http:/localhost:19080/Explorer/index.html veya uzaktan http:\//<ipaddressofamach> ine ile bir makineden yalnızca Service Fabric Explorer ile kümeye bağlanabilirsiniz. : 19080/Explorer/index.html.
+Artık, http:\//localhost:19080/Explorer/index.html veya http:\//<*ıpaddressofamachine*>: 19080/Explorer/index. html ile uzak makinelerden birinden Service Fabric Explorer kümeye doğrudan bağlanabilirsiniz.
 
 ## <a name="add-and-remove-nodes"></a>Düğüm ekleme ve kaldırma
 

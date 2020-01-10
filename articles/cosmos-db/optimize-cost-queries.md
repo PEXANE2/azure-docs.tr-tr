@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB sorguları çalıştırmak için istek birimlerini ve maliyeti iyileştirin
+title: Azure Cosmos DB sorguları çalıştırmak için maliyeti ve RU/s 'yi iyileştirin
 description: Bir sorgu için istek birimi ücretlerini değerlendirmeyi ve sorguyu performans ve maliyet açısından en uygun hale getirmeyi öğrenin.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 376c1a32a70951448b35a4c02022719229a3aad2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445124"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Azure Cosmos DB 'de sorgu maliyetini iyileştirin
 
-Azure Cosmos DB, bir kapsayıcı içindeki öğelerde çalışan ilişkisel ve hiyerarşik sorgular da dahil olmak üzere zengin bir veritabanı işlemleri kümesi sunar. Bu işlemlerden her biriyle ilişkilendirilmiş maliyet, işlemi gerçekleştirmek için gereken CPU, GÇ ve belleğe göre değişir. Donanım kaynaklarını düşünmek ve yönetmek yerine bir istek birimi (RU), bir isteğe yönelik çeşitli veritabanı işlemlerini gerçekleştirmek için gereken kaynaklar için tek bir ölçü olarak düşünebilirsiniz. Bu makalede, bir sorgu için istek birimi ücretlerinin nasıl değerlendirileceği ve sorgunun performans ve maliyet açısından en iyi hale getirileceği açıklanır. 
+Azure Cosmos DB, kapsayıcının içindeki öğeler üzerinde çalışan ilişkisel ve hiyerarşik sorgular da dahil olmak üzere zengin bir veritabanı işlemleri kümesi sunar. Bu işlemlerden her biriyle ilişkilendirilmiş maliyet, işlemi tamamlamak için gereken CPU, GÇ ve belleğe göre değişiklik gösterir. Donanım kaynakları hakkında düşünmek ve bunları yönetmek yerine, bir isteğe hizmet sağlamak üzere çeşitli veritabanı işlemlerini gerçekleştirmek için gereken kaynaklar için istek birini (RU) tek ölçü olarak düşünebilirsiniz. Bu makalede sorgu için istek birimi ücretlerinin değerlendirilmesi, ayrıca performans ve maliyet açısından sorgunun iyileştirilmesi açıklanır. 
 
 Azure Cosmos DB sorguları genellikle aktarım açısından en hızlı/en etkili ve daha az verimlidir  
 
@@ -27,7 +27,7 @@ Azure Cosmos DB sorguları genellikle aktarım açısından en hızlı/en etkili
 
 * Filtre olmadan sorgulayın.
 
-Bir veya daha fazla bölümden verileri okuyan sorgular, daha yüksek gecikme süresine ve daha yüksek sayıda istek birimi tüketir. Her bölümde tüm özellikler için otomatik dizin oluşturma olduğundan, sorgu dizinden verimli bir şekilde sunulabilir. Paralellik seçeneklerini kullanarak birden çok bölüm kullanan sorguları daha hızlı yapabilirsiniz. Bölümlendirme ve bölüm anahtarları hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos DB bölümlendirme](partitioning-overview.md).
+Bir veya daha fazla bölümden verileri okuyan sorgular, daha yüksek gecikme süresine ve daha yüksek sayıda istek birimi tüketir. Her bölümde tüm özellikler için otomatik dizin oluşturma olduğundan, sorgu dizinden verimli bir şekilde sunulabilir. Paralellik seçeneklerini kullanarak birden çok bölüm kullanan sorguları daha hızlı yapabilirsiniz. Bölümlendirme ve bölüm anahtarları hakkında daha fazla bilgi için bkz: [Azure Cosmos DB'de bölümleme](partitioning-overview.md).
 
 ## <a name="evaluate-request-unit-charge-for-a-query"></a>Bir sorgu için istek birimi ücreti değerlendir
 

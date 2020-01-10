@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn;amverma
 ms.custom: include file
-ms.openlocfilehash: 489ac7fa37c10a27de971151f0be35c647d2186f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 006a44e42ed209b6f0e614b92f97e43ec30b99ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116725"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466678"
 ---
 Azure HPC iyileştirilmiş sanal makineler (VM 'Ler), çeşitli gerçek dünyada uygulamalar için liderlik sınıfı performans, MPı ölçeklenebilirliği ve maliyet verimliliği sağlamak üzere tasarlanmıştır.
  
@@ -32,7 +32,7 @@ HBv2 serisi VM 'Ler, akıcı Dynamics, sınırlı öğe analizi ve rezervoır be
 
 Premium Depolama: desteklenir
 
-| Boyut | Sanal işlemci | İşlemci | Bellek (GB) | Bellek bant genişliği GB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GB/sn) | MPı desteği | Geçici depolama (GB) | Maksimum veri diskleri | En fazla Ethernet NIC |
+| Boyut | vCPU | İşlemci | Bellek (GB) | Bellek bant genişliği GB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GB/sn) | MPı desteği | Geçici depolama (GB) | En fazla veri diski | En fazla Ethernet NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB120rs | 120 | AMD EPYıC 7742 | 480 | 350 | 2.45 | 2.45 | 3.4 | 200 | Tümü | 480 + 960 | 8 | 1 |
 
@@ -47,7 +47,7 @@ Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
 
-| Boyut | Sanal işlemci | İşlemci | Bellek (GB) | Bellek bant genişliği GB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GB/sn) | MPı desteği | Geçici depolama (GB) | Maksimum veri diskleri | En fazla Ethernet NIC |
+| Boyut | vCPU | İşlemci | Bellek (GiB) | Bellek bant genişliği GiB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GiB/sn) | MPı desteği | Geçici depolama (GiB) | En fazla veri diski | En fazla Ethernet NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB60rs | 60 | AMD EPYıC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | Tümü | 700 | 4 | 1 |
 
@@ -63,14 +63,14 @@ Premium Depolama: desteklenir
 Premium depolama önbelleği: desteklenir
 
 
-| Boyut | Sanal işlemci | İşlemci | Bellek (GB) | Bellek bant genişliği GB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GB/sn) | MPı desteği | Geçici depolama (GB) | Maksimum veri diskleri | En fazla Ethernet NIC |
+| Boyut | vCPU | İşlemci | Bellek (GiB) | Bellek bant genişliği GiB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GiB/sn) | MPı desteği | Geçici depolama (GiB) | En fazla veri diski | En fazla Ethernet NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Tümü | 700 | 4 | 1 |
 
 
 <br>
 
-## <a name="h-series"></a>H Serisi
+## <a name="h-series"></a>H serisi
 H serisi VM 'Ler, yüksek CPU sıklıklarca veya çekirdek gereksinimlerine göre büyük bellek kullanan uygulamalar için iyileştirilmiştir. H serisi VM 'Ler özelliği 8 veya 16 Intel Xeon E5 2667 v3 işlemci çekirdekleri, CPU çekirdeği başına en fazla 14 GB RAM ve hiper iş parçacığı yok. Bir H serisi VM, en fazla 80 GB/sn bellek bant genişliği sağlar.
 
 ACU: 290-300
@@ -79,7 +79,7 @@ Premium Depolama: desteklenmiyor
 
 Premium depolama önbelleği: desteklenmiyor
 
-| Boyut | Sanal işlemci | İşlemci | Bellek (GB) | Bellek bant genişliği GB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GB/sn) | MPı desteği | Geçici depolama (GB) | Maksimum veri diskleri | En fazla Ethernet NIC |
+| Boyut | vCPU | İşlemci | Bellek (GiB) | Bellek bant genişliği GiB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GiB/sn) | MPı desteği | Geçici depolama (GiB) | En fazla veri diski | En fazla Ethernet NIC |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8 | 8 | Intel Xeon E5 2667 v3 | 56 | 40 | 3,2 | 3.3 | 3.6 | - | Intel 5. x, MS-MPı | 1000 | 32 | 2 |
 | Standard_H16 | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3.3 | 3.6 |  - | Intel 5. x, MS-MPı | 2000 | 64 | 4 |

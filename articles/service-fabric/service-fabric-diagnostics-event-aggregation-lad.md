@@ -1,56 +1,47 @@
 ---
-title: Linux Azure Tanılama ile Azure Service Fabric olay toplama | Microsoft Docs
-description: Toplama ve izleme ve tanılama Azure Service Fabric kümelerinin LAD kullanarak olaylarını toplama hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
+title: Linux Azure Tanılama ile olay toplama
+description: Azure Service Fabric kümelerini izleme ve Tanılama için LAD 'yi kullanarak olayları toplama ve toplama hakkında bilgi edinin.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 212158d9a76fa2e49c60be0b5c52f281497c155b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fdb78498d33416ef21b2e2b0f498e7afa6a58d99
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393138"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609970"
 ---
-# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Olay toplama ve Linux Azure Tanılama'yı kullanarak koleksiyon
+# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Linux Azure Tanılama kullanarak olay toplama ve toplama
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
 > * [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
 >
 >
 
-Bir Azure Service Fabric kümesi çalıştırırken, merkezi bir konumda tüm düğümlerden günlükleri toplamak için iyi bir fikirdir. Günlükleri sahip merkezi bir konumda, kümenizdeki sorunları veya uygulamalar ve hizmetler, kümede çalışan sorunları gidermek ve çözümlemenize yardımcı olur.
+Azure Service Fabric kümesi çalıştırırken, günlükleri merkezi konumdaki tüm düğümlerden toplamak iyi bir fikirdir. Günlüklerin merkezi bir konumda olması, kümenizdeki sorunları veya bu kümede çalışan uygulama ve hizmetlerde sorunları analiz etmenize ve gidermenize yardımcı olur.
 
-Karşıya yükleme ve günlükleri toplamak için bir yolu, günlükleri, Azure Depolama'ya yükler ve ayrıca Azure Application Insights veya olay hub'larına günlükleri gönderme seçeneği olan Linux Azure tanılama (LAD) uzantısı kullanmaktır. Olayları depolamadan okuyun ve bunları bir analiz platformu ürün gibi yerleştirmek için bir dış işlem kullanabilirsiniz [Azure İzleyici günlükleri](../log-analytics/log-analytics-service-fabric.md) veya başka bir günlük ayrıştırma çözümü.
+Günlükleri karşıya yükleme ve toplamanın bir yolu, Azure depolama 'ya günlükleri yükleyen ve ayrıca Azure Application Insights veya Event Hubs günlükleri gönderme seçeneğine sahip Linux Azure Tanılama (LAD) uzantısını kullanmaktır. Ayrıca, olayları depolama alanından okumak ve [Azure izleyici günlükleri](../log-analytics/log-analytics-service-fabric.md) ya da başka bir günlük ayrıştırma çözümü gibi bir çözümleme platformu ürününe yerleştirmek için bir dış işlem de kullanabilirsiniz.
 
 ## <a name="log-and-event-sources"></a>Günlük ve olay kaynakları
 
-### <a name="service-fabric-platform-events"></a>Service Fabric platform olaylarına
-Service Fabric aracılığıyla birkaç Giden kutusu günlükleri yayan [LTTng](https://lttng.org)işletimsel olaylar veya çalışma zamanı olayları dahil olmak üzere. Bu günlükler, kümenin Resource Manager şablonu belirten konumda depolanır. Alma veya depolama hesabı ayrıntıları belirlemek için etiketini ara **AzureTableWinFabETWQueryable** ve Ara **StoreConnectionString**.
+### <a name="service-fabric-platform-events"></a>Service Fabric platform olayları
+Service Fabric, işletimsel olaylar veya çalışma zamanı olayları dahil olmak üzere [Lttng](https://lttng.org)aracılığıyla kullanıma hazır birkaç günlüğü yayar. Bu Günlükler, kümenin Kaynak Yöneticisi şablonunun belirttiği konumda depolanır. Depolama hesabı ayrıntılarını almak veya ayarlamak için **AzureTableWinFabETWQueryable** etiketini arayın ve **storeconnectionstring**öğesine bakın.
 
 ### <a name="application-events"></a>Uygulama olayları
- Olaylar, belirtildiği gibi uygulamaların ve hizmetlerin koddan yazılımınızı işaretlerken yayılan. Metin tabanlı günlük dosyalarını--örneğin LTTng Yazar herhangi bir günlük çözümü kullanabilirsiniz. Daha fazla bilgi için uygulamanızı izlemeyi LTTng belgelerine bakın.
+ Yazılımlarınızdan yararlanarak sizin tarafınızdan belirtilen şekilde, uygulamalarınızın ve hizmetlerinizin kodundan yayılan olaylar. Metin tabanlı günlük dosyaları yazan herhangi bir günlük çözümünü kullanabilirsiniz; Örneğin, LTTng. Daha fazla bilgi için, uygulamanızı izlemeye yönelik LTTng belgelerine bakın.
 
-[İçinde bir yerel makine dağıtım kurulumunda Hizmetleri izleme ve tanılama](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
+[Yerel makine geliştirme kurulumunda Hizmetleri izleyin ve tanılayın](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
 
 ## <a name="deploy-the-diagnostics-extension"></a>Tanılama uzantısını dağıtma
-İlk adımı günlüklerinin toplanması tanılama uzantısını her bir Service Fabric kümesindeki Vm'leri dağıtmaktır. Tanılama uzantısını her VM'de günlükleri toplar ve bunları belirttiğiniz depolama hesabına yükler. 
+Günlükleri toplamanın ilk adımı, Service Fabric kümesindeki her bir sanal makineye tanılama uzantısını dağıtmaktır. Tanılama uzantısı her bir VM 'de günlükleri toplar ve bunları belirttiğiniz depolama hesabına yükler. 
 
-Kümeyi oluşturmanın bir parçası tanılama uzantısını kümesindeki vm'lere dağıtmak için ayarlanmış **tanılama** için **üzerinde**. Kümeyi oluşturduktan sonra Resource Manager şablonunda gerekli değişiklikleri yapmak zorunda portalı kullanarak bu ayarı değiştiremezsiniz.
+Tanılama uzantısını küme oluşturmanın bir parçası olarak kümedeki VM 'lere dağıtmak için, **tanılamayı** **Açık**olarak ayarlayın. Kümeyi oluşturduktan sonra, portalı kullanarak bu ayarı değiştiremezsiniz, bu nedenle Kaynak Yöneticisi şablonunda uygun değişiklikleri yapmanız gerekir.
 
-Bu, belirtilen günlük dosyalarını izlemek için LAD aracıyı yapılandırır. Yeni bir satır, dosyanın sonuna olduğunda, belirttiğiniz depolama alanına (tablo) gönderilen bir syslog girişi oluşturur.
+Bu, LAD aracısını belirtilen günlük dosyalarını izleyecek şekilde yapılandırır. Dosyaya yeni bir satır eklendiğinde, belirttiğiniz depolama alanına (tablo) gönderilen bir Syslog girişi oluşturur.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-1. Sorun giderme sırasında incelemeniz hangi olayların daha ayrıntılı olarak anlamak için bkz [LTTng belgeleri](https://lttng.org/docs) ve [kullanarak LAD](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
-2. [Log Analytics aracısını ayarlama](service-fabric-diagnostics-event-analysis-oms.md) ölçümleri toplamak amacıyla, kümenizde dağıttığınız kapsayıcılarını izleme ve günlüklerinizi görselleştirin 
+1. Sorunları giderirken hangi olayları incelemeniz gerektiğini daha ayrıntılı olarak anlamak için bkz. [Lttng belgeleri](https://lttng.org/docs) ve [lad kullanma](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+2. Ölçümleri toplamaya, kümenizde dağıtılan kapsayıcıları izlemeye ve günlüklerinizi görselleştirmenize yardımcı olmak için [Log Analytics aracısını ayarlayın](service-fabric-diagnostics-event-analysis-oms.md) 

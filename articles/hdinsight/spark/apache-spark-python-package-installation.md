@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: a8654f6c9c6c6d020872d2c89e0dd141db4e0451
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215627"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529652"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
 
@@ -22,7 +22,7 @@ ms.locfileid: "74215627"
 
 HDInsight, Spark kümesinde, Anaconda Python 2,7 ve Python 3,5 ' de iki yerleşik Python yüklemelerine sahiptir. Bazı durumlarda, müşterilerin, dış Python paketleri veya başka bir Python sürümü yükleme gibi Python ortamını özelleştirmesi gerekir. Bu makalede, HDInsight 'ta bir [Apache Spark](https://spark.apache.org/) kümesi için Python ortamlarını güvenli bir şekilde yönetmeye yönelik en iyi uygulama gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
@@ -81,7 +81,7 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
     sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
     ```
 
-    sanal ortam adını bilmiyorsanız, kümenin üstbilgi düğümüne SSH oluşturabilir ve tüm sanal ortamları göstermek için `/usr/bin/anaconda/bin/conda info -e` çalıştırabilirsiniz.
+    sanal ortam adını bilmiyorsanız, kümenin baş düğümüne SSH gönderebilir ve tüm sanal ortamları göstermek için `/usr/bin/anaconda/bin/conda info -e` çalıştırabilirsiniz.
 
 3. Spark ve Livy yapılandırmalarını değiştirip oluşturulan sanal ortama işaret edin.
 

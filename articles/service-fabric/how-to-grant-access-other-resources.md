@@ -1,19 +1,14 @@
 ---
-title: Azure Service Fabric-diğer Azure kaynaklarına Service Fabric uygulama erişimi verme | Microsoft Docs
+title: Uygulama için diğer Azure kaynaklarına erişim verme
 description: Bu makalede, yönetilen kimlik özellikli Service Fabric uygulamasına Azure Active Directory tabanlı kimlik doğrulamasını destekleyen diğer Azure kaynaklarına erişim izni verme açıklanmaktadır.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2019
-ms.author: atsenthi
-ms.openlocfilehash: 467b202cf6b981969316a2646aac99f788f7a2f4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 12/09/2019
+ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091192"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614802"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Service Fabric uygulamasının Azure kaynaklarına yönetilen kimlik erişimi verme (Önizleme)
 
@@ -29,11 +24,11 @@ Azure Storage blobundan verileri almak için Service Fabric uygulamasının yön
 3. seçim Mevcut erişimi denetle: ' bul ' denetiminde sistem veya Kullanıcı tarafından atanan yönetilen kimlik ' i seçin; Sonuç listesinden uygun kimliği seçin
 4. Uygulamanın kimliği için yeni bir rol ataması eklemek için sayfanın üstünde + rol ataması Ekle ' ye tıklayın.
 Rol altında, açılan listeden Depolama Blobu veri okuyucu ' yı seçin.
-5. İleri açılan menüsünde, erişim ata ' nın altında, öğesini `User assigned managed identity`seçin.
+5. İleri açılan menüsünde, erişim ata altında `User assigned managed identity`' yi seçin.
 6. Daha sonra, abonelik açılan menüsünde doğru aboneliğin listelendiğinden emin olun ve kaynak grubunu tüm kaynak grupları olarak ayarlayın.
 7. Seç ' in altında Service Fabric uygulamasına karşılık gelen UAı öğesini seçin ve Kaydet ' e tıklayın.
 
-Sistem tarafından atanan Service Fabric Yönetilen kimlikler için destek, Azure portal tümleştirme içermez; uygulamanız sistem tarafından atanan bir kimlik kullanıyorsa, ilk olarak uygulamanın kimliğinin istemci kimliğini bulmanız ve ardından yukarıdaki adımları tekrarlayarak bulma denetimindeki `Azure AD user, group, or service principal` seçeneği seçmeniz gerekir.
+Sistem tarafından atanan Service Fabric Yönetilen kimlikler için destek, Azure portal tümleştirme içermez; uygulamanız sistem tarafından atanan bir kimlik kullanıyorsa, ilk olarak uygulamanın kimliğinin istemci KIMLIĞINI bulmanız ve sonra yukarıdaki adımları tekrarlayarak bulma denetimindeki `Azure AD user, group, or service principal` seçeneğini seçmeniz gerekir.
 
 ## <a name="granting-access-to-azure-key-vault"></a>Azure Key Vault erişim verme
 Benzer şekilde, depolama erişimi ile bir Azure anahtar kasasına erişmek için bir Service Fabric uygulamasının yönetilen kimliğinden yararlanabilirsiniz. Azure portal erişim verme adımları yukarıda listelenenlere benzerdir ve burada yinelenmez. Farklar için aşağıdaki görüntüye bakın.

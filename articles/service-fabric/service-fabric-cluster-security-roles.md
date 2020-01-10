@@ -1,25 +1,14 @@
 ---
-title: 'Küme güvenliği Service Fabric: istemci rolleri | Microsoft Docs'
+title: 'Küme güvenliği Service Fabric: istemci rolleri'
 description: Bu makalede, iki istemci rolü ve rollere sunulan izinler açıklanmaktadır.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: coreysa
-editor: ''
-ms.assetid: 7bc808d9-3609-46a1-ac12-b4f53bff98dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 38656d286cae631cb5def0e0c8b171268e4cf428
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167258"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451892"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Service Fabric istemcileri için rol tabanlı erişim denetimi
 Azure Service Fabric, bir Service Fabric kümesine bağlı istemciler için iki farklı erişim denetimi türünü destekler: yönetici ve Kullanıcı. Erişim denetimi, küme yöneticisinin farklı Kullanıcı grupları için belirli küme işlemlerine erişimi sınırlandırıp kümenin daha güvenli olmasını sağlar.  
@@ -51,7 +40,7 @@ Yönetici erişimi denetim türü tüm FabricClient API 'Lerine tam erişime sah
 * **Recoverservicepartitions**: hizmet bölümlerini kurtarma                             
 * **Recoversystempartitions**: sistem hizmeti bölümlerini kurtarma                             
 
-### <a name="cluster-operations"></a>Küme işlemleri
+### <a name="cluster-operations"></a>Küm işlemleri
 * **Provisionfabric**: MSI ve/veya küme bildirimi sağlama                             
 * **Yükselmen Bric**: küme yükseltmeleri başlatılıyor                             
 * **Unprovisionfabric**: MSI ve/veya küme bildirimi sağlama geri alınıyor                         

@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs kullanarak belirli Android uygulamalarına anında iletme bildirimleri gönderin | Microsoft Docs
+title: Azure Notification Hubs kullanarak belirli Android uygulamalarına anında iletme bildirimleri gönderme
 description: Azure Notification Hubs kullanarak belirli kullanıcılara anında iletme bildirimleri göndermeyi öğrenin.
 documentationcenter: android
 services: notification-hubs
@@ -17,12 +17,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 5bd709236667dd43e623047ad995b0a7b981e9cb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c2d3789082130cbbc42021a0706249dd3966b9ef
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387415"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531131"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli Android uygulamalarına anında iletme bildirimleri gönderme
 
@@ -37,7 +37,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Android uygulamasını güncelleştirme.
 > * Uygulamayı test edin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticiyi doldurun: Bu öğreticiyi gerçekleştirmeden önce [Azure Notification Hubs ve Firebase Cloud Messaging kullanarak Android cihazlarına anında iletme bildirimleri gönderin](notification-hubs-android-push-notification-google-fcm-get-started.md) .
 
@@ -47,7 +47,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 Sonraki adım öğreticide oluşturulan Android uygulamasını güncelleştirmedir [: Azure Notification Hubs ve Firebase Cloud Messaging kullanarak Android cihazlarına anında iletme bildirimleri gönderin](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
-1. @No__t-0 dosyanızı açın, aşağıdaki içerik tanımlarını değiştirin:
+1. `res/layout/activity_main.xml` dosyanızı açın, aşağıdaki içerik tanımlarını değiştirin:
 
     Kullanıcı olarak oturum açmak için yeni EditText denetimleri ekler. Ayrıca gönderdiğiniz bildirimlerin parçası olacak kullanıcı adı etiketi için bir alan da eklenir:
 
@@ -138,7 +138,7 @@ Sonraki adım öğreticide oluşturulan Android uygulamasını güncelleştirmed
         />
     </RelativeLayout>
     ```
-2. @No__t-0 dosyanızı açın ve `send_button` tanımını `send_button` dizesini yeniden tanımlayarak aşağıdaki satırlarla değiştirin ve diğer denetimler için dizeler ekleyin:
+2. `res/values/strings.xml` dosyanızı açın ve `send_button` tanımını `send_button` dizeyi yeniden tanımlayarak aşağıdaki satırlarla değiştirin ve diğer denetimler için dizeler ekleyin:
 
     ```xml
     <string name="usernameHint">Username</string>
@@ -149,10 +149,10 @@ Sonraki adım öğreticide oluşturulan Android uygulamasını güncelleştirmed
     <string name="notification_message_tag_hint">Recipient username</string>
     ```
 
-    @No__t 0 grafik düzeniniz artık aşağıdaki görüntüye benzer şekilde görünmelidir:
+    `main_activity.xml` grafik düzeniniz artık aşağıdaki görüntüye benzer şekilde görünmelidir:
 
     ![][A1]
-3. @No__t-1 sınıfınız ile aynı pakette `RegisterClient` adlı yeni bir sınıf oluşturun. Yeni sınıf dosyası için aşağıdaki kodu kullanın.
+3. `MainActivity` sınıfınız ile aynı pakette `RegisterClient` adlı yeni bir sınıf oluşturun. Yeni sınıf dosyası için aşağıdaki kodu kullanın.
 
     ```java
   
@@ -261,7 +261,7 @@ Sonraki adım öğreticide oluşturulan Android uygulamasını güncelleştirmed
     ```
 
     Bu bileşen, anında iletme bildirimlerine kaydolmak için uygulama arka ucuna başvurmak üzere gereken REST çağrılarını uygular. [Uygulama arka ucunuzdan kaydetme](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) bölümünde açıklandığı gibi Bildirim Hub’ı tarafından oluşturulan *registrationId*’leri de yerel olarak depolar. **Oturum aç** düğmesine tıkladığınızda yerel depolamada depolanan bir yetkilendirme belirteci kullanır.
-4. @No__t-0 sınıfında, `RegisterClient` sınıfı için bir alan ve ASP.NET arka ucunun uç noktası için bir dize ekleyin. `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin, `http://mybackend.azurewebsites.net`.
+4. `MainActivity` sınıfında, `RegisterClient` sınıfı için bir alan ve ASP.NET arka ucunun uç noktası için bir dize ekleyin. `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin, `http://mybackend.azurewebsites.net`.
 
     ```java
     private RegisterClient registerClient;
@@ -412,7 +412,7 @@ Sonraki adım öğreticide oluşturulan Android uygulamasını güncelleştirmed
     }
     ```
 
-    **Oturum aç** düğmesi için `login` işleyicisi, giriş Kullanıcı adı ve parolası (kimlik doğrulama şemanızın kullandığı belirteci temsil eder) kullanarak temel bir kimlik doğrulama belirteci oluşturur, ardından arka ucunu kayıt için çağırmak üzere `RegisterClient` kullanır.
+    **Oturum açma** düğmesi için `login` işleyicisi, giriş Kullanıcı adı ve parolası (kimlik doğrulama şemanızın kullandığı belirteci temsil eder) kullanarak temel bir kimlik doğrulama belirteci oluşturur, ardından arka ucunu kayıt için çağırmak üzere `RegisterClient` kullanır.
 
     `sendPush` yöntemi, kullanıcı etiketine dayalı olarak kullanıcıya güvenli bir bildirim tetiklemek için arka ucu çağırır. `sendPush` tarafından hedeflenen platform bildirim hizmeti, geçirilen `pns` dizesine bağlıdır.
 
@@ -467,12 +467,12 @@ Sonraki adım öğreticide oluşturulan Android uygulamasını güncelleştirmed
         }
     }
     ```
-12. @No__t-0 dosyasında, `buildTypes` bölümünden sonraki `android` bölümüne aşağıdaki satırı ekleyin.
+12. `build.gradle` dosyasında, `buildTypes` bölümünden sonra `android` bölümüne aşağıdaki satırı ekleyin.
 
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Uygulamanız API düzeyi 28 (Android 9,0) veya üzeri hedefleniyorsa, `AndroidManifest.xml` ' in `<application>` öğesi içine aşağıdaki bildirimi ekleyin.
+13. Uygulamanız API düzeyi 28 (Android 9,0) veya üzerini hedefliyorsanız, `AndroidManifest.xml``<application>` öğesi içine aşağıdaki bildirimi ekleyin.
 
     ```xml
     <uses-library

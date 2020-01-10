@@ -1,26 +1,14 @@
 ---
 title: Azure CLI (az) ve Azure Service Fabric CLI (sfctl) Örnekleri
-description: Azure CLI (az) ve Azure Service Fabric CLI (sfctl) Örnekleri
-services: service-fabric
-documentationcenter: service-fabric
-author: athinanthny
-manager: chackdan
-editor: ''
-tags: ''
-ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
-ms.service: service-fabric
+description: Kümeleri, uygulamaları ve hizmetleri yönetmek için Azure CLı (az) ve Azure Service Fabric CLı (sfctl) örnekleri.
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: service-fabric
 ms.date: 04/09/2018
-ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: 7057b4c06dfb69cdcc52e0dda7a2f746be263d56
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 96339f929c25db213fabe5224dd478022ff43427
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035394"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526660"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Azure CLI (az) ve Azure Service Fabric CLI (sfctl) Örnekleri
 
@@ -35,5 +23,5 @@ Aşağıdaki tablo, Service Fabric kümelerini, uygulamalarını ve hizmetlerini
 | **Uygulamaları yönetme** (Service Fabric CLI ile)||
 | [Uygulamaları listeleme](./scripts/sfctl-list-applications.md)| Kümeye sağlanan uygulamaları listeleyin.|
 | [Uygulama dağıtma](./scripts/cli-deploy-application.md)| Kümeye bir uygulama dağıtın.|
-| [Uygulamayı kaldırma](./scripts/cli-remove-application.md)| Kümeden bir uygulama kaldırın.|
-| [Uygulama yükseltme](./scripts/sfctl-upgrade-application.md)| Önceden dağıtılan bir uygulamayı yükseltin.|
+| [Uygulamayı kaldırma](./scripts/cli-remove-application.md)| Bir kümeden uygulamayı kaldırın.|
+| [Uygulamayı yükseltme](./scripts/sfctl-upgrade-application.md)| Önceden dağıtılan bir uygulamayı yükseltin.|

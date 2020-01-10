@@ -1,82 +1,73 @@
 ---
-title: Bağlanmak ve Azure Service fabric'te hizmetlerle iletişim kuran | Microsoft Docs
-description: Service fabric'te hizmetlerle iletişim kuran çözmek ve bağlanma hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric ile bağlanma ve hizmetlerle iletişim kurma
+description: Service Fabric 'de Hizmetleri çözmeyi, bağlamayı ve iletişim kurmayı öğrenin.
 author: vturecek
-manager: chackdan
-editor: msfussell
-ms.assetid: 7d1052ec-2c9f-443d-8b99-b75c97266e6c
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 55a0a1a8097ea46c7a3407b5f42824973edcf1a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882359"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458235"
 ---
-# <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service fabric'te hizmetlerle iletişim kuran ve bağlanın
-Service Fabric'te hizmet genellikle birden çok VM arasında dağıtılmış bir Service Fabric kümesindeki herhangi bir yerde çalışır. Bunu tek bir yerden diğerine hizmet sahibi tarafından ya da otomatik olarak Service Fabric taşınabilir. Hizmetleri statik olarak belirli bir makine ya da adres bağlı olmak zorunda değildir.
+# <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric ile bağlanma ve hizmetlerle iletişim kurma
+Service Fabric, bir hizmet, genellikle birden çok VM arasında dağıtılan bir Service Fabric kümesinde bir yerde çalışır. Hizmet sahibine veya Service Fabric göre otomatik olarak bir yerden diğerine taşınabilir. Hizmetler, belirli bir makineye veya adrese statik olarak bağlı değildir.
 
-Service Fabric uygulaması, burada her hizmeti özel bir görev gerçekleştirir birçok farklı Hizmetleri, genellikle oluşur. Bu hizmetler, diğer bir web uygulamanın farklı kısımlarını işleme gibi tam bir işlev oluşturmak için iletişim kurabilir. Bağlanmak ve hizmetlerle iletişim kurma istemci uygulamaları vardır. Bu belge ile ve hizmetlerinizi Service fabric'te arasında iletişim kurmak nasıl ele alınmaktadır.
+Service Fabric uygulama genellikle her hizmetin özelleşmiş bir görev gerçekleştirdiği birçok farklı hizmetten oluşur. Bu hizmetler, bir Web uygulamasının farklı parçalarını işlemek gibi bir bütün işlev oluşturmak için birbirleriyle iletişim kurabilir. Ayrıca, hizmetlere bağlanan ve hizmetleriyle iletişim kuran istemci uygulamaları da vardır. Bu belgede, Service Fabric Hizmetleri ile ve arasında iletişimin nasıl ayarlanacağı açıklanır.
 
-## <a name="bring-your-own-protocol"></a>Kendi Protokolü Getir
-Service Fabric, hizmetlerinizi yaşam döngüsünü yönetmenize yardımcı olur, ancak hizmetlerinizin neler hakkında kararlar yapmaz. Bu iletişim içerir. Service Fabric tarafından hizmetinizi açıldığında, hizmetinizin istediğiniz ne olursa olsun protokolü veya iletişim yığını kullanılarak, gelen istekler için bir uç nokta ayarlama fırsatı olmasıdır. Hizmetinizi normal üzerinde dinleyecek **IP: BağlantıNoktası** adresini kullanarak bir URI gibi tüm adres düzeni. Birden fazla hizmet örneği veya çoğaltmalar bir ana bilgisayar işlemi, bu durumda bunlar ya da farklı bağlantı noktalarını kullanacak ya da Windows http.sys çekirdek sürücü gibi bir bağlantı noktası paylaşımı mekanizmasının kullanılması gerekir paylaşabiliriz. Her iki durumda da, her bir hizmet örneği veya yineleme içinde bir ana bilgisayar işlemi benzersiz olarak adreslenebilir olmalıdır.
+## <a name="bring-your-own-protocol"></a>Kendi protokolünü getir
+Service Fabric, hizmetlerinizin yaşam döngüsünün yönetilmesine yardımcı olur, ancak hizmetleriniz ne işe yarar konusunda kararlar vermez. Buna iletişim dahildir. Hizmetiniz Service Fabric tarafından açıldığında, sizin istediğiniz protokol veya iletişim yığınını kullanarak gelen istekler için bir uç nokta ayarlama fırsatıdır. Hizmetiniz, bir URI gibi herhangi bir adresleme şeması kullanarak normal **IP: bağlantı noktası** adresini dinler. Birden çok hizmet örneği veya çoğaltması bir konak işlemini paylaşabilir, bu durumda farklı bağlantı noktaları kullanmaları veya Windows 'da http. sys çekirdek sürücüsü gibi bir bağlantı noktası paylaşım mekanizması kullanılması gerekir. Her iki durumda da, bir konak işlemindeki her bir hizmet örneği veya çoğaltma benzersiz şekilde adreslenebilir olmalıdır.
 
-![Hizmet uç noktaları][1]
+![hizmet uç noktaları][1]
 
 ## <a name="service-discovery-and-resolution"></a>Hizmet bulma ve çözümleme
-Dağıtılmış bir sistemde Hizmetleri bir makineden diğerine zamanla taşıyabilir. Bu Dengeleme, yükseltmeler, yük devretme veya genişleme kaynak dahil olmak üzere çeşitli nedenlerden ötürü oluşabilir. Bu hizmet, farklı IP adreslerine sahip düğümleri taşır ve hizmet dinamik olarak seçilen bir bağlantı noktası kullanıyorsa, farklı bağlantı noktalarını açmanız hizmet uç noktası adreslerini değiştirme anlamına gelir.
+Dağıtılmış bir sistemde, hizmetler bir makineden diğerine zaman içinde geçebilir. Bu, kaynak Dengeleme, yükseltmeler, yük devretme veya genişleme gibi çeşitli nedenlerden kaynaklanabilir. Bu, hizmet uç noktası adreslerinin farklı IP adreslerine sahip düğümlere taşındığı ve hizmet dinamik olarak seçilen bir bağlantı noktasını kullanıyorsa farklı bağlantı noktalarında açık olabileceği anlamına gelir.
 
-![Dağıtım Hizmetleri][7]
+![Hizmetlerin dağıtılması][7]
 
-Service Fabric adlandırma hizmetine adlı bir bulma ve çözümleme hizmeti sağlar. Adlandırma Hizmeti hizmet örnekleri bunlar üzerinde dinleme bitiş noktası adreslerini eşleştiren bir tablo adlı tutar. Tüm Service Fabric adlandırılmış hizmet örnekleri olarak URI'ler, örneğin, gösterilen benzersiz adlara sahip `"fabric:/MyApplication/MyService"`. Adı hizmetin hizmet ömrü boyunca değiştirmez, hizmetleri taşıdığınızda, değiştirebileceğiniz uç nokta adresleri. Bu sabit URL'leri sahip olan ancak burada IP adresi değişebilir Web sitelerine benzer. Ve benzer DNS Web sitesinin URL'leri, IP adresleri için çözümler, Web Service Fabric hizmet adları kendi uç nokta adresine eşleyen bir kayıt şirketi sahiptir.
+Service Fabric, Adlandırma Hizmeti adlı bir bulma ve çözümleme hizmeti sağlar. Adlandırma Hizmeti, adlandırılmış hizmet örneklerini dinlediği uç nokta adresleriyle eşleştiren bir tabloyu tutar. Service Fabric tüm adlandırılmış hizmet örnekleri, URI olarak temsil edilen benzersiz adlara sahiptir, örneğin, `"fabric:/MyApplication/MyService"`. Hizmetin adı, hizmetin kullanım ömrü boyunca değişmez ve yalnızca hizmetler taşındığında değiştirebileceğinizi belirten uç nokta adresleridir. Bu, sabit URL 'Leri olan, ancak IP adresinin değiştirebildiği Web sitelerine benzerdir. Web sitesi URL 'Lerini IP adreslerine çözümleyen ve Web 'de DNS 'ye benzer şekilde, Service Fabric hizmet adlarını uç nokta adresleriyle eşleyen bir kaydedici vardır.
 
-![Hizmet uç noktaları][2]
+![hizmet uç noktaları][2]
 
-Çözümleme ve hizmetlerine bağlanan bir döngüde çalışmasına aşağıdaki adımları içerir:
+Hizmetlere çözümleme ve bağlanma, aşağıdaki adımları bir döngüde çalıştırmayı içerir:
 
-* **Çözmek**: Hizmet yayınladığı uç noktayı adlandırma hizmetinden alın.
-* **Connect**: Bu uç noktada kullanan ne olursa olsun protokolü üzerinden hizmete bağlanır.
-* **Yeniden deneme**: Hizmet uç noktası adresi son sorgulandığından beri taşınmışsa örnek çözümlendiği için bir bağlantı girişimi nedeniyle, herhangi bir sayıda için başarısız olabilir. Bu durumda, önceki çözümleyin ve adımları denenmesi gerek bağlanmak ve bağlantı başarılı olana kadar bu döngü tekrarlanır.
+* **Çözümle**: bir hizmetin adlandırma hizmeti yayımladığı uç noktayı alın.
+* **Bağlan**: hizmete, bu uç noktada kullandığı herhangi bir protokol üzerinden bağlanın.
+* **Yeniden deneme**: bir bağlantı girişimi herhangi bir sayıda nedenden dolayı başarısız olabilir, örneğin, uç nokta adresinin çözümlenmesinden bu yana hizmet taşındığında. Bu durumda, önceki Resolve ve Connect adımlarının yeniden denenmesi gerekir ve bu döngüyle bağlantı başarılı olana kadar yinelenir.
 
 ## <a name="connecting-to-other-services"></a>Diğer hizmetlere bağlanma
-Kümedeki düğümler aynı yerel ağda olduğundan Hizmetleri birbirine kümesi içinde genel olarak bağlanan diğer hizmetleri uç noktalarına doğrudan erişebilirsiniz. Hizmetler arasında bağlantı daha kolay yapmak için Service Fabric adlandırma hizmetine kullanan ek hizmetleri sağlar. Bir DNS hizmeti ve bir ters proxy hizmeti.
+Bir kümedeki düğümler aynı yerel ağda olduğundan, bir küme içindeki birbirlerine bağlanan hizmetler genellikle diğer hizmetlerin uç noktalarına erişebilir. Hizmetler arasında bağlantı kurmak daha kolay hale getirmek için Service Fabric Adlandırma Hizmeti kullanan ek hizmetler sağlar. Bir DNS hizmeti ve ters proxy hizmeti.
 
 
 ### <a name="dns-service"></a>DNS hizmeti
-Birçok hizmet, bu yana özellikle kapsayıcı Hizmetleri, var olan bir URL adı olabilir, bunları çözmek mümkün olan standart DNS kullanarak Protokolü (adlandırma hizmeti Protokolü yerine) özellikle uygulama "kaldırma ve kaydırma" senaryolarında çok kullanışlı. DNS hizmeti yaptığı tam olarak budur. DNS adlarını bir hizmet adına eşlemenize ve bu nedenle bitiş IP adreslerini sağlar. 
+Birçok hizmet, özellikle Kapsayıcılı hizmetler, var olan bir URL adına sahip olduğundan, bu işlemi standart DNS Protokolü (Adlandırma Hizmeti protokolü yerine) kullanarak çözebiliyor, özellikle uygulamanın "yükseltme ve kaydırma" senaryolarında çok kullanışlı hale getirilir. Bu, tam olarak DNS hizmetinin yaptığı şeydir. DNS adlarını bir hizmet adıyla eşlemenizi sağlar ve bu nedenle uç nokta IP adreslerini çözümleyebilir. 
 
-Aşağıdaki diyagramda gösterildiği gibi Service Fabric kümesinde çalışan DNS hizmeti, DNS adları daha sonra bağlanmak için uç nokta adresleri döndürülecek adlandırma hizmeti tarafından çözülen hizmet adlarını eşler. Hizmetin DNS adı, oluşturma sırasında sağlanır. 
+Aşağıdaki diyagramda gösterildiği gibi, Service Fabric kümesinde çalışan DNS hizmeti, DNS adlarını, daha sonra bağlantı kurmak üzere uç nokta adreslerini döndürmek için Adlandırma Hizmeti tarafından çözümlenen hizmet adlarıyla eşler. Hizmetin DNS adı, oluşturma sırasında sağlanır. 
 
-![Hizmet uç noktaları][9]
+![hizmet uç noktaları][9]
 
-DNS kullanma hakkında daha fazla ayrıntı bkz: hizmet için [Azure Service Fabric DNS hizmetinde](service-fabric-dnsservice.md) makalesi.
+DNS hizmetini kullanma hakkında daha fazla ayrıntı için bkz. [Azure Service Fabric 'de DNS hizmeti](service-fabric-dnsservice.md) .
 
 ### <a name="reverse-proxy-service"></a>Ters proxy hizmeti
-Ters proxy, HTTPS dahil olmak üzere HTTP uç noktalarını kullanıma sunar kümedeki hizmetleri çözüyor. Ters proxy büyük ölçüde basitleştirir belirli bir URI biçimi sağlayarak diğer hizmetler ve kendi yöntemlerini çağırmak ve çözümleme işleme, bağlan, adlandırma hizmeti kullanarak birbiriyle iletişim kurmak için bir hizmet için gerekli adımları yeniden deneyin. Diğer bir deyişle, diğer hizmetlerin bu URL çağrılması kadar basit hale getirerek çağrılırken, adlandırma hizmeti gizler.
+Ters proxy, HTTPS de dahil olmak üzere HTTP uç noktalarını kullanıma sunan kümedeki hizmetleri ele alınmaktadır. Ters proxy, belirli bir URI biçimine sahip olan ve Adlandırma Hizmeti kullanarak bir hizmetin birbirleriyle iletişim kurması için gerekli olan çözümle, Bağlan, yeniden deneme adımlarını ele alarak diğer hizmetleri ve bunların yöntemlerini çağırmayı büyük ölçüde basitleştirir. Diğer bir deyişle, URL 'YI çağırmak kadar basit hale getirerek diğer hizmetleri çağırırken Adlandırma Hizmeti gizler.
 
-![Hizmet uç noktaları][10]
+![hizmet uç noktaları][10]
 
-Ters proxy hizmetini kullanma hakkında daha fazla ayrıntı için bkz: [ters proxy Azure Service fabric'te](service-fabric-reverseproxy.md) makalesi.
+Ters proxy hizmetini kullanma hakkında daha fazla bilgi için bkz. [Azure 'Da ters proxy Service Fabric](service-fabric-reverseproxy.md) makalesi.
 
-## <a name="connections-from-external-clients"></a>Dış istemcilerden gelen bağlantıları
-Kümedeki düğümler aynı yerel ağda olduğundan Hizmetleri birbirine kümesi içinde genel olarak bağlanan diğer hizmetleri uç noktalarına doğrudan erişebilirsiniz. Bazı ortamlarda ancak sınırlı bir bağlantı noktası üzerinden dış giriş trafiği yönlendiren bir yük dengeleyicinin arkasına bir kümesi olabilir. Bu gibi durumlarda, hizmetleri, yine de birbirleri ile iletişim kurmak ve adresleri adlandırma hizmeti kullanarak çözümlemek, ancak dış istemcilere hizmetlere bağlanmasına izin vermek için ek adımlar atılmalıdır.
+## <a name="connections-from-external-clients"></a>Dış istemcilerden gelen bağlantılar
+Bir kümedeki düğümler aynı yerel ağda olduğundan, bir küme içindeki birbirlerine bağlanan hizmetler genellikle diğer hizmetlerin uç noktalarına erişebilir. Ancak bazı ortamlarda, küme, dış giriş trafiğini sınırlı bir bağlantı noktası kümesiyle yönlendiren bir yük dengeleyicinin arkasında olabilir. Bu durumlarda, hizmetler hala birbirleriyle iletişim kurabilir ve Adlandırma Hizmeti kullanarak adresleri çözümleyebilir, ancak dış istemcilerin hizmetlere bağlanmasına izin vermek için ek adımların alınması gerekir.
 
-## <a name="service-fabric-in-azure"></a>Azure Service Fabric'te
-Azure Service Fabric kümesinde Azure Load Balancer yerleştirilir. Tüm dış trafiği kümeye, yük dengeleyici üzerinden geçmesi gerekir. Yük Dengeleyici, trafiği otomatik olarak iletir rastgele bir sıra için belirli bir bağlantı noktasında gelen *düğüm* sahip aynı bağlantı noktasını açın. Azure Load Balancer üzerinde açık bağlantı noktaları yalnızca bildiği *düğümleri*, kişi tarafından açık bağlantı noktaları hakkında bilmez *Hizmetleri*.
+## <a name="service-fabric-in-azure"></a>Azure 'da Service Fabric
+Azure 'daki bir Service Fabric kümesi bir Azure Load Balancer arkasına yerleştirilir. Kümenin tüm dış trafiği yük dengeleyiciden geçmelidir. Yük dengeleyici, belirli bir bağlantı noktası üzerinden gelen trafiği, aynı bağlantı noktası açık olan rastgele bir *düğüme* otomatik olarak iletecektir. Azure Load Balancer yalnızca *düğümlerde*açık olan bağlantı noktalarını bilir, bireysel *Hizmetler*tarafından açık olan bağlantı noktalarını bilmez.
 
 ![Azure Load Balancer ve Service Fabric topolojisi][3]
 
-Örneğin, bağlantı noktasındaki dış trafiği kabul etmek için **80**, şunları yapılandırılması gerekir:
+Örneğin, **80**numaralı bağlantı noktasında dış trafiği kabul etmek için aşağıdaki noktalar yapılandırılmalıdır:
 
-1. 80 numaralı bağlantı noktasında dinleyen bir hizmet yazın. Hizmetin ServiceManifest.xml 80 numaralı bağlantı noktasını yapılandırın ve hizmeti, örneğin, şirket içinde barındırılan web sunucusu bir dinleyici açın.
+1. 80 numaralı bağlantı noktasını dinleyen bir hizmet yazın. Hizmetin ServiceManifest. xml dosyasında 80 numaralı bağlantı noktasını yapılandırın ve hizmette bir dinleyici açın, örneğin, şirket içinde barındırılan bir Web sunucusu.
 
     ```xml
     <Resources>
@@ -156,30 +147,30 @@ Azure Service Fabric kümesinde Azure Load Balancer yerleştirilir. Tüm dış t
             ...
         }
     ```
-2. Azure'da bir Service Fabric kümesi oluşturma ve bağlantı noktasını belirtin **80** hizmeti barındıracak düğüm türü için bir özel uç nokta bağlantı noktası olarak. Birden fazla düğüm türü varsa, ayarlayabileceğiniz bir *yerleştirme kısıtlaması* açılmış özel uç nokta bağlantı noktası olan düğüm türü yalnızca çalışır sağlamak için hizmeti üzerinde.
+2. Azure 'da bir Service Fabric kümesi oluşturun ve hizmeti barındıracak düğüm türü için özel bir uç nokta bağlantı noktası olarak **80** numaralı bağlantı noktasını belirtin. Birden fazla düğüm türüne sahipseniz, yalnızca özel uç nokta bağlantı noktası açık olan düğüm türünde çalıştığından emin olmak için hizmette bir *yerleştirme kısıtlaması* ayarlayabilirsiniz.
 
-    ![Düğüm türü bir bağlantı noktasını açın][4]
-3. Küme oluşturulduktan sonra Azure Load Balancer 80 numaralı bağlantı noktasında trafiği iletmek için küme kaynak grubu yapılandırın. Azure Portal'dan bir küme oluştururken, bu otomatik olarak yapılandırılan her özel uç nokta bağlantı noktası için ayarlanır.
+    ![Düğüm türünde bir bağlantı noktası açma][4]
+3. Küme oluşturulduktan sonra, bağlantı noktası 80 ' deki trafiği iletmek için kümenin kaynak grubundaki Azure Load Balancer yapılandırın. Azure portal aracılığıyla bir küme oluştururken, bu, yapılandırılmış olan her özel uç nokta bağlantı noktası için otomatik olarak ayarlanır.
 
-    ![Azure Load Balancer, trafiği][5]
-4. Azure Load Balancer, trafiği göndermek için belirli bir düğüm gerekip gerekmediğini belirlemek için araştırmaları kullanır. Araştırma, düğüm yanıt olup olmadığını belirlemek için her düğüme bir uç nokta düzenli olarak denetler. Yapılandırılmış birkaç kez sonra bir yanıt almak yoklama başarısız olursa, yük dengeleyici trafik bu düğüme göndermeyi durdurur. Azure Portal'dan bir küme oluştururken, bir yoklama yapılandırılan her özel uç nokta bağlantı noktası için otomatik olarak ayarlanır.
+    ![Azure Load Balancer trafiği iletme][5]
+4. Azure Load Balancer belirli bir düğüme trafik gönderilmesi gerekip gerekmediğini anlamak için bir araştırma kullanır. Araştırma, düğümün yanıt verip vermediğini anlamak için her düğümdeki bir uç noktayı düzenli olarak denetler. Araştırma, yapılandırılan sayıda kez Yanıt alamadığında, yük dengeleyici bu düğüme trafik göndermeyi durduruyor. Azure portal aracılığıyla bir küme oluştururken, yapılandırılan her özel uç nokta bağlantı noktası için otomatik olarak bir araştırma ayarlanır.
 
-    ![Azure Load Balancer, trafiği][8]
+    ![Azure Load Balancer trafiği iletme][8]
 
-Azure Load Balancer ve araştırma yalnızca bilmeniz olduğunu unutmamak önemlidir *düğümleri*değil *Hizmetleri* düğümlerinde çalışıyor. Azure Load Balancer, her zaman Hizmetleri araştırmasına yanıt verebilir düğümlerinde kullanılabilir olduğundan emin olmak için dikkatli olunması gerekir, böylece araştırmasına yanıt düğümlerine trafiği gönderir.
+Azure Load Balancer ve araştırmanın düğümler üzerinde çalışan *Hizmetleri* değil, yalnızca *düğümleri*hakkında bilgi sahibi olduğunu unutmamak önemlidir. Azure Load Balancer her zaman, araştırmasına yanıt veren düğümlere trafik gönderir, bu nedenle araştırmayı yanıtlayabilecek düğümlerde hizmetlerin kullanılabilir olmasını sağlamak için dikkatli olunması gerekir.
 
-## <a name="reliable-services-built-in-communication-api-options"></a>Güvenilir hizmetler: Yerleşik iletişim API seçenekleri
-Reliable Services framework birkaç önceden oluşturulmuş iletişim seçenekleri ile birlikte gelir. Programlama modeli, communication framework ve hizmetlerinizi yazıldığı programlama dili seçimi hakkında bir en iyi sizin için işe karar bağlıdır.
+## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: yerleşik iletişim API 'SI seçenekleri
+Reliable Services Framework önceden oluşturulmuş çeşitli iletişim seçenekleriyle birlikte gelir. Kendisi için en iyi çalışma kararı, programlama modelinin, iletişim çerçevesinin ve hizmetlerinizin yazıldığı programlama dilinin seçimine bağlıdır.
 
-* **Hiçbir özel protokolü:**  Communication framework'ün belirli bir seçim yoksa ancak öğe ayarladığınızda hızla çalışmaya başlamanızı istediğiniz durumunda sizin için ideal bir seçenektir [uzaktan hizmet iletişimini](service-fabric-reliable-services-communication-remoting.md), için sağlayan kesin türü belirtilmiş uzak yordam çağrıları Reliable Services ve Reliable Actors. Bu hizmet iletişimi ile kullanmaya başlamak için kolay ve en hızlı yoludur. Uzaktan hizmet iletişimini hizmeti adresleri, bağlantı, yeniden deneme ve hata işleme, çözümleme gerçekleştirir. Bu hem kullanılabilir C# ve Java uygulamaları.
-* **HTTP**: Dilden iletişim için HTTP araçları ve HTTP sunucularına birçok farklı dillerde, Service Fabric tarafından desteklenen tüm kullanılabilir bir endüstri standardı seçim sağlar. Hizmetler dahil olmak üzere, kullanılabilir herhangi bir HTTP yığını kullanabilir [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) için C# uygulamalar. Yazılan istemciler C# yararlanabilir `ICommunicationClient` ve `ServicePartitionClient` sınıfları, oysa Java için kullanma `CommunicationClient` ve `FabricServicePartitionClient` sınıfları [hizmet çözümleme, HTTP bağlantılarını ve yeniden deneme döngüleri](service-fabric-reliable-services-communication.md).
-* **WCF**: WCF iletişim Çerçevenizi kullanan mevcut kodunuz sonra kullanabileceğiniz `WcfCommunicationListener` için sunucu tarafı ve `WcfCommunicationClient` ve `ServicePartitionClient` istemci sınıfları. Bu ancak yalnızca kullanılabilir C# tabanlı uygulamaları Windows üzerindeki kümeler. Bu makalede daha fazla ayrıntı için bkz: [WCF tabanlı bir uygulama, iletişim yığını](service-fabric-reliable-services-communication-wcf.md).
+* **Özel protokol yok:**  Belirli bir iletişim çerçevesi seçeneğiniz yoksa, ancak hızlı bir şekilde çalışmaya başlayın, sonra, Reliable Services ve Reliable Actors için kesin olarak yazılmış uzak yordam çağrılarına izin veren [hizmet uzaktan iletişim](service-fabric-reliable-services-communication-remoting.md)kurun. Bu, hizmet iletişimini kullanmaya başlamanın en kolay ve en hızlı yoludur. Hizmet uzaktan iletişim hizmeti adresleri, bağlantı, yeniden deneme ve hata işleme çözümlemesini yönetir. Bu hem hem de C# Java uygulamalarında kullanılabilir.
+* **Http**: dilden bağımsız ILETIŞIM için http, her türlü Service Fabric tarafından desteklenen birçok farklı dilde araçlar ve http sunucularıyla sunulan endüstri standardı bir seçenek sunar. Hizmetler, uygulamalar için C# [ASP.NET Web API 'si](service-fabric-reliable-services-communication-webapi.md) de dahil olmak üzere kullanılabilir herhangi bir HTTP yığınını kullanabilir. İçinde C# yazılan istemciler `ICommunicationClient` ve `ServicePartitionClient` sınıflarından yararlanabilir, Java için, [HIZMET çözümleme, http bağlantıları ve yeniden deneme döngüleri için](service-fabric-reliable-services-communication.md)`CommunicationClient` ve `FabricServicePartitionClient` sınıflarını kullanın.
+* **WCF**: iletişim çerçeve'niz olarak WCF kullanan mevcut kodunuz varsa, sunucu tarafı için `WcfCommunicationListener` ve istemci için `WcfCommunicationClient` ve `ServicePartitionClient` sınıfları kullanabilirsiniz. Bu ancak yalnızca Windows tabanlı kümelerde C# uygulamalar için kullanılabilir. Daha fazla ayrıntı için, [iletişim yığınının WCF tabanlı uygulamasıyla](service-fabric-reliable-services-communication-wcf.md)ilgili bu makaleye bakın.
 
-## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Özel protokoller ve diğer iletişim çerçeveleri kullanarak
-Hizmetleri kullanabilir herhangi bir protokolü veya framework iletişimi için özel bir ikili protokolü üzerinden TCP yuvaları veya akış olayları aracılığıyla olup olmadığını [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) veya [Azure IOT hub'ı](https://azure.microsoft.com/services/iot-hub/). Service Fabric, iletişim, bulmak ve bağlanmak için tüm iş karmaşıklığının sırada, iletişim yığını, takılabilir API'ler sağlar. Bu makalede görecekleri [güvenilir hizmet iletişim modelini](service-fabric-reliable-services-communication.md) daha fazla ayrıntı için.
+## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Özel protokoller ve diğer iletişim çerçeveleri kullanma
+Hizmetler, iletişim için herhangi bir protokol veya çerçeveyi, TCP yuvaları üzerinde özel bir ikili protokol mi yoksa [azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) veya [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)aracılığıyla akış olayları mı kullanabilir. Service Fabric, iletişim yığınınızı bağlayabileceğiniz iletişim API 'Leri sağlar, ancak keşfedilecek ve bağlanan tüm işler sizin için soyutlandır. Daha fazla ayrıntı için [güvenilir hizmet iletişim modeliyle](service-fabric-reliable-services-communication.md) ilgili bu makaleye bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ndaki mevcut API'lere ve kavramları hakkında daha fazla bilgi [Reliable Services iletişim modelini](service-fabric-reliable-services-communication.md), sonra hızlı şekilde kullanmaya başlamanızı [uzaktan hizmet iletişimini](service-fabric-reliable-services-communication-remoting.md) veya bir iletişim yazmayı öğrenin derinlere Dinleyici kullanarak [OWIN barındırma ile Web API](service-fabric-reliable-services-communication-webapi.md).
+[Reliable Services iletişim modelinde](service-fabric-reliable-services-communication.md)bulunan kavramlar ve API 'ler hakkında daha fazla bilgi edinin, ardından [hizmet uzaktan](service-fabric-reliable-services-communication-remoting.md) iletişim kurarak hızlı bir şekilde çalışmaya başlayın veya [Web API 'si ile owın Self-Host](service-fabric-reliable-services-communication-webapi.md)kullanarak bir iletişim dinleyicisi yazmayı öğrenmek için derinlemesine ilerleyin.
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

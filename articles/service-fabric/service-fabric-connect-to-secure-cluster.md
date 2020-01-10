@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric kümesine güvenli bir şekilde bağlanma | Microsoft Docs
+title: Azure Service Fabric kümesine güvenli bir şekilde bağlanma
 description: Service Fabric kümesine istemci erişiminin kimliğini doğrulamak ve istemcilerle küme arasındaki iletişimin güvenliğini sağlamak açıklanmaktadır.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/29/2019
-ms.author: atsenthi
-ms.openlocfilehash: c350b53b2d0b235c5e34431386205f090f37b482
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599721"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458264"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Güvenli bir kümeye bağlanma
 
@@ -31,7 +20,7 @@ ms.locfileid: "68599721"
 
 Service Fabric CLı (sfctl) kullanarak güvenli bir kümeye bağlanmanın birkaç farklı yolu vardır. Kimlik doğrulaması için bir istemci sertifikası kullanıyorsanız sertifika bilgilerinin küme düğümlerine dağıtılmış olan bir sertifikayla eşleşmesi gerekir. Sertifikanızın sertifika yetkilileri (CA) varsa, güvenilen CA 'Ları da belirtmeniz gerekir.
 
-`sfctl cluster select` Komutunu kullanarak bir kümeye bağlanabilirsiniz.
+`sfctl cluster select` komutunu kullanarak bir kümeye bağlanabilirsiniz.
 
 İstemci sertifikaları, sertifika ve anahtar çifti olarak ya da tek bir PFX dosyası olarak iki farklı Fashions içinde belirtilebilir. Parola korumalı ped dosyaları için otomatik olarak parolayı girmeniz istenir. İstemci sertifikasını bir PFX dosyası olarak aldıysanız, önce aşağıdaki komutu kullanarak PFX dosyasını bir PEı dosyasına dönüştürün. 
 
@@ -41,7 +30,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 . Pfx dosyanız parola korumalı değilse, son parametre için-passin pass: kullanın.
 
-İstemci sertifikasını bir pek dosyası olarak belirtmek için, `--pem` bağımsız değişkeninde dosya yolunu belirtin. Örneğin:
+İstemci sertifikasını bir pek dosyası olarak belirtmek için `--pem` bağımsız değişkeninde dosya yolunu belirtin. Örneğin:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -49,13 +38,13 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 Parola korumalı ped dosyaları, herhangi bir komut çalıştırılmadan önce parola ister.
 
-Bir sertifika belirtmek için, anahtar çifti her ilgili `--cert` dosyanın `--key` dosya yollarını belirtmek için ve bağımsız değişkenlerini kullanın.
+Bir sertifika belirtmek için, anahtar çifti ilgili her dosyanın dosya yollarını belirtmek üzere `--cert` ve `--key` bağımsız değişkenlerini kullanın.
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Bazen test veya geliştirme kümelerinin güvenliğini sağlamak için kullanılan sertifikaların sertifika doğrulaması başarısız olur. Sertifika doğrulamayı atlamak için, `--no-verify` seçeneğini belirtin. Örneğin:
+Bazen test veya geliştirme kümelerinin güvenliğini sağlamak için kullanılan sertifikaların sertifika doğrulaması başarısız olur. Sertifika doğrulamayı atlamak için `--no-verify` seçeneğini belirtin. Örneğin:
 
 > [!WARNING]
 > Üretim Service Fabric kümelerine bağlanırken `no-verify` seçeneğini kullanmayın.
@@ -166,7 +155,7 @@ Uzaktan güvenli olmayan bir kümeye bağlanmak için bir FabricClient örneği 
 FabricClient fabricClient = new FabricClient("clustername.westus.cloudapp.azure.com:19000");
 ```
 
-Bir küme içinden çalışan kod için, örneğin, güvenilir bir hizmette, küme adresini belirtmeden bir *FabricClient oluşturun* . FabricClient, kod şu anda üzerinde çalıştığı düğümde yerel yönetim ağ geçidine bağlanır, ek bir ağ atlamasını önler.
+Bir küme içinden çalışan kod için, örneğin, güvenilir bir hizmette, küme *adresini belirtmeden bir FabricClient oluşturun* . FabricClient, kod şu anda üzerinde çalıştığı düğümde yerel yönetim ağ geçidine bağlanır, ek bir ağ atlamasını önler.
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -240,7 +229,7 @@ catch (Exception e)
 
 ### <a name="connect-to-a-secure-cluster-non-interactively-using-azure-active-directory"></a>Güvenli bir kümeye etkileşimli olmayan Azure Active Directory kullanarak bağlanma
 
-Aşağıdaki örnek Microsoft. IdentityModel. clients. ActiveDirectory, sürüm: öğesine dayanır. 2.19.208020213.
+Aşağıdaki örnek Microsoft. IdentityModel. clients. ActiveDirectory, sürüm: 2.19.208020213 kullanır.
 
 AAD belirteci alma hakkında daha fazla bilgi için bkz. [Microsoft. IdentityModel. clients. ActiveDirectory](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx).
 
@@ -371,7 +360,7 @@ Otomatik olarak bir istemci sertifikası seçmeniz istenir.
 
 Küme ve sunucu sertifikası ve istemci erişimi için bir tane olmak üzere, kümenin güvenliğini sağlamak için en az iki sertifika kullanılmalıdır.  Ek ikincil sertifikaları ve istemci erişim sertifikalarını da kullanmanızı öneririz.  Sertifika güvenliği kullanarak bir istemci ve küme düğümü arasındaki iletişimin güvenliğini sağlamak için öncelikle istemci sertifikası edinmeniz ve yüklemeniz gerekir. Sertifika, yerel bilgisayarın veya geçerli kullanıcının kişisel (My) deposuna yüklenebilir.  Ayrıca, istemcinin kümenin kimliğini doğrulayabilmesi için sunucu sertifikasının parmak izine ihtiyacınız vardır.
 
-* Windows'da: PFX dosyasına çift tıklayın ve sertifikayı kişisel deponuza `Certificates - Current User\Personal\Certificates`yüklemek için istemleri izleyin. Alternatif olarak, PowerShell komutunu kullanabilirsiniz:
+* Windows üzerinde: PFX dosyasına çift tıklayın ve `Certificates - Current User\Personal\Certificates` dizinindeki kişisel deponuza sertifikayı yüklemek için istemleri izleyin. Alternatif olarak, PowerShell komutunu kullanabilirsiniz:
 
     ```powershell
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
@@ -387,7 +376,7 @@ Küme ve sunucu sertifikası ve istemci erişimi için bir tane olmak üzere, k�
     -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
     ```
 
-* Mac'te: PFX dosyasını çift tıklayın ve anahtarlığınıza sertifikayı yüklemek için istemleri izleyin.
+* Mac üzerinde: PFX dosyasına çift tıklayın ve Anahtarlığınıza sertifikayı yüklemek için istemleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f641640ff6cf4174e2e1374404d47fc0760f79f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 809c188dc37aba64de27e89e38acd8692c7de032
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979906"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613576"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme
 
@@ -31,12 +31,15 @@ Bu öğreticide şunları yapacaksınız:
 > * Tahmin verilerini grafiklerde çiz.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için öncelikle şunları yapmanız gerekir:
 
-1. [Azure haritalar hesabınızı yönetme](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)konusundaki yönergeleri izleyerek S0 fiyatlandırma katmanında bir Azure Maps hesabı aboneliği oluşturun.
-2. Hesabınız için birincil abonelik anahtarını alın, [hesabınız için birincil anahtarı al](./tutorial-search-location.md#getkey)bölümündeki yönergeleri izleyin.
+1. [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps)konusundaki yönergeleri izleyerek S0 fiyatlandırma katmanında bir Azure Maps hesabı aboneliği oluşturun.
+2. Hesabınız için birincil abonelik anahtarını alın, [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account)bölümündeki yönergeleri izleyin.
+
+
+Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
 Azure Not defterleri hakkında bilgi edinmek ve nasıl başlaleyeceğinizi öğrenmek için, [Azure Not defteri oluşturma](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)yönergelerini izleyin.
 
@@ -68,7 +71,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 
 ```python
-subscription_key = "Your Azure Maps primary subscription key"
+subscription_key = "Your Azure Maps key"
 
 # Get a lists of unique station IDs and their coordinates 
 station_ids = pd.unique(df[['StationID']].values.ravel())
@@ -172,7 +175,7 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-Aşağıdaki grafikler, geçerli günden sonraki 15 gün içinde rüzgar hızı (sol grafik) ve Yön (sağ grafik) değişikliği için tahmin verilerini görselleştirir.
+Aşağıdaki grafikler, verilerin istendiği günden sonraki 15 gün içinde rüzgar hızı (sol grafik) ve Yön (sağ grafik) değişikliği için tahmin verilerini görselleştirir.
 
 <center>
 
@@ -190,6 +193,6 @@ Bu öğreticide kullanılan Azure Maps API 'Lerini araştırmak için, bkz.:
 * [Günlük tahmin](https://aka.ms/AzureMapsWeatherDailyForecast)
 * [Render-harita görüntüsünü al](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 
-Azure haritalar REST API 'lerinin tüm listesi için bkz. [Azure Maps REST API 'leri](https://docs.microsoft.com/azure/azure-maps/#reference).
+Azure haritalar REST API 'lerinin tüm listesi için bkz. [Azure Maps REST API 'leri](https://docs.microsoft.com/azure/azure-maps/consumption-model).
 
 Azure Notebooks hakkında daha fazla bilgi için bkz. [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).

@@ -1,44 +1,35 @@
 ---
-title: Azure Service Fabric Hizmetleri durumda yönetme | Microsoft Docs
-description: Tanımlamak ve Service Fabric Hizmetleri hizmet durumunda yönetme hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric hizmetlerinde durumu yönetme
+description: Service Fabric hizmetlerinde hizmet durumunu tanımlama ve yönetme dahil olmak üzere Azure Service Fabric durum hakkında bilgi edinin.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f5e618a5-3ea3-4404-94af-122278f91652
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e3ab36def2d210bd763f3ce2dc5df155e37e2dba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9acd3031d1071d1822791b333976aaf76161600f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60870902"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614579"
 ---
 # <a name="service-state"></a>Hizmet durumu
-**Hizmet durumu** belleğe veya işlevi için bir hizmet gerektiren disk verileri ifade eder. Bu, örneğin, hizmet okur ve yazar çalışmak üye değişkenleri ve veri yapıları içerir. Hizmet nasıl geliştirilmiştir bağlı olarak dosyalara veya diske depolanmış diğer kaynaklara de içerebilir. Örneğin, dosyalar, bir veritabanı veri ve işlem günlüklerini depolamak için kullanırsınız.
+**Hizmet durumu** , bir hizmetin çalışması için gerekli olan bellek içi veya disk verileri anlamına gelir. Bu, örneğin, hizmetin iş yaptığı ve yazdığı veri yapılarını ve üye değişkenlerini içerir. Hizmetin nasıl tanımlandığına bağlı olarak, ayrıca diskte depolanan dosyaları veya diğer kaynakları da içerebilir. Örneğin, bir veritabanının veri ve işlem günlüklerini depolamak için kullanacağı dosyalar.
 
-Bir örnek hizmeti olarak bir hesap makinesi düşünelim. Temel hesaplayıcı hizmet, iki sayıyı alır ve kendi toplamını döndürür. Bu hesaplama gerçekleştirmek hiç üye değişkeni veya diğer bilgileri içerir.
+Örnek bir hizmet olarak, bir Hesaplayıcı ele alalım. Temel bir Hesaplayıcı hizmeti iki sayı alır ve toplamlarını döndürür. Bu hesaplamanın gerçekleştirilmesi, hiçbir üye değişkeni veya başka bilgiler içermez.
 
-Artık aynı hesaplayıcı göz önünde bulundurun, ancak son toplamını döndüren ve depolamak için ek bir yöntem ile bunu hesapladı. Bu hizmet, artık durum bilgisi olan sunulur. Durum bilgisi olan yeni toplam değeri hesaplar ve son hesaplanan toplam söylediğinizde okur, yazar bazı durumu içerdiği anlamına gelir.
+Şimdi aynı hesaplayıcıyı göz önünde bulundurun, ancak hesaplanan son toplamı depolamak ve döndürmek için ek bir yöntem ile. Bu hizmet artık durum bilgisi. Durum bilgisi, yeni bir toplam hesaplandıktan sonra yazdığı ve son hesaplanan toplamı döndürmesini istediğinizde okuduğu bir durum içerdiği anlamına gelir.
 
-Azure Service Fabric'te durum bilgisi olmayan hizmet hizmetlerinden birinin ilk kez çağrılır. İkinci hizmeti, durum bilgisi olan bir hizmet olarak adlandırılır.
+Azure Service Fabric 'de ilk hizmet durum bilgisi olmayan bir hizmet olarak adlandırılır. İkinci hizmet durum bilgisi olmayan bir hizmet olarak adlandırılır.
 
-## <a name="storing-service-state"></a>Depolama hizmeti durumu
-Durum te dış veya durumu düzenleme koduyla birlikte bulunan. Externalization durumu genellikle bir dış veritabanından veya ağ üzerinden veya aynı makinede işlemi dışında farklı makinelerde çalışan başka bir veri deposunda kullanılarak gerçekleştirilir. Hesaplayıcı Örneğimizde, veri deposu, SQL veritabanı veya Azure tablo Store örneği olabilir. Toplam hesaplaması için her istek bu veriler üzerinde bir güncelleştirme gerçekleştirir ve hizmete Mağaza'dan getirilen geçerli değeri değeri sonuç ister. 
+## <a name="storing-service-state"></a>Hizmet durumunu depolama
+Durum externalized veya durumu işleyen kodla birlikte bulunabilir. Dışsallaştırılması of State, genellikle ağ üzerinden veya aynı makinede bulunan farklı makinelerde çalışan bir dış veritabanı veya başka bir veri deposu kullanılarak yapılır. Hesaplayıcı örneğimizde, veri deposu bir SQL veritabanı veya Azure Tablo deposu örneği olabilir. Toplam hesaplama isteği bu verilerde bir güncelleştirme gerçekleştirir ve depolama alanından getirilen geçerli değerde değer sonucunu döndürmek için hizmete istekler. 
 
-Durum durumu işleyen kod ile birlikte bulunan olabilir. Service fabric'te durum bilgisi olan hizmetler, genellikle bu modeli kullanılarak oluşturulur. Service Fabric, bu durum yüksek oranda kullanılabilir, tutarlı ve dayanıklı olduğundan ve Hizmetleri bu şekilde oluşturulan kolayca ölçeklendirebilirsiniz emin olmak için altyapı sağlar.
+Durum, durumu işleyen kodla birlikte da bulunabilir. Service Fabric ' de durum bilgisi olan hizmetler genellikle bu model kullanılarak oluşturulmuştur. Service Fabric, bu durumun yüksek oranda kullanılabilir, tutarlı ve dayanıklı olduğundan ve bu şekilde oluşturulan hizmetlerin kolayca ölçeklenebilmesini sağlamak için altyapıyı sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Service Fabric kavramları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Service Fabric hizmetlerinin kullanılabilirliği](service-fabric-availability-services.md)
-* [Service Fabric hizmetlerinin ölçeklenebilirliği](service-fabric-concepts-scalability.md)
-* [Service Fabric hizmetlerini bölümleme](service-fabric-concepts-partitioning.md)
-* [Service Fabric güvenilir hizmetler](service-fabric-reliable-services-introduction.md)
+* [Service Fabric Hizmetleri ölçeklenebilirliği](service-fabric-concepts-scalability.md)
+* [Service Fabric Hizmetleri bölümlendirme](service-fabric-concepts-partitioning.md)
+* [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md)

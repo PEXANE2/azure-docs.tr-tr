@@ -1,19 +1,14 @@
 ---
-title: Azure Service Fabric-yönetilen kimliği Service Fabric uygulamalarla kullanma | Microsoft Docs
-description: Service Fabric uygulama kodundan Yönetilen kimlikler kullanma
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Yönetilen kimliği bir uygulamayla kullanma
+description: Azure hizmetlerine erişmek için Azure Service Fabric uygulama kodunda yönetilen kimlikler kullanma. Bu özellik genel önizleme aşamasındadır.
 ms.topic: article
-ms.date: 7/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 6a3d33954bda0605e752555922914a9fd432d8c1
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.date: 10/09/2019
+ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968232"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610327"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Azure hizmetlerine erişmek için Service Fabric uygulamasının yönetilen kimliğinden yararlanma (Önizleme)
 
@@ -33,15 +28,15 @@ Yönetilen kimlik için etkinleştirilmiş kümeler ' de Service Fabric çalış
 - ' MSI_SECRET ': bir donuk dize olan ve geçerli düğümdeki hizmeti benzersiz olarak temsil eden bir kimlik doğrulama kodu
 
 > [!NOTE]
-> ' MSI_ENDPOINT ' ve ' MSI_SECRET ' adları, yönetilen kimliklerin ("Yönetilen Hizmet Kimliği") önceki bir atamasını ifade eder ve artık kullanım dışıdır. Adlar Ayrıca, yönetilen kimlikleri destekleyen diğer Azure hizmetleri tarafından kullanılan eşdeğer ortam değişkeni adlarıyla de tutarlıdır.
+> ' MSI_ENDPOINT ' ve ' MSI_SECRET ' adları, yönetilen kimliklerin ("Yönetilen Hizmet Kimliği") önceki atamasını ifade eder ve artık kullanım dışıdır. Adlar Ayrıca, yönetilen kimlikleri destekleyen diğer Azure hizmetleri tarafından kullanılan eşdeğer ortam değişkeni adlarıyla de tutarlıdır.
 
 > [!IMPORTANT]
 > Uygulama kodu, ' MSI_SECRET ' ortam değişkeninin değerini hassas veriler olarak kabul etmelidir; bunların günlüğe kaydedilmeyeceğini veya başka bir şekilde dağıtımını kaldırmamalıdır. Kimlik doğrulama kodu, yerel düğümün dışında bir değere sahip değildir veya hizmeti barındıran işlem sonlandıktan sonra, Service Fabric hizmetin kimliğini temsil eder ve bu nedenle erişim belirtecinin kendisi ile aynı önlemler ile değerlendirilmelidir.
 
 İstemci, bir belirteç almak için aşağıdaki adımları gerçekleştirir:
-- API sürümü ve belirteç için gereken kaynak (hedef kitle) ile yönetilen kimlik uç noktasını (MSI_ENDPOINT değeri) birleştirerek bir URI oluşturur
+- API sürümü ve belirteç için gereken kaynak (hedef kitle) ile yönetilen kimlik uç noktası (MSI_ENDPOINT değeri) birleştirerek bir URI oluşturur
 - Belirtilen URI için bir GET http isteği oluşturur
-- istek için bir üst bilgi olarak kimlik doğrulama kodu (MSI_SECRET değeri) ekler
+- kimlik doğrulama kodunu (MSI_SECRET değeri) isteğe bir başlık olarak ekler
 - isteği gönderir
 
 Başarılı bir yanıt, elde edilen erişim belirtecini temsil eden bir JSON yükünün yanı sıra bunu tanımlayan meta verileri içerir. Başarısız bir yanıt hatanın açıklamasını da içerecektir. Hata işleme hakkında daha fazla bilgi için aşağıya bakın.
@@ -58,10 +53,10 @@ burada:
 | Öğe | Açıklama |
 | ------- | ----------- |
 | `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
-| `http://localhost:2377/metadata/identity/oauth2/token` | MSI_ENDPOINT ortam değişkeni aracılığıyla sağlanmış Service Fabric uygulamalar için yönetilen kimlik uç noktası. |
-| `api-version` | Yönetilen kimlik belirteci hizmetinin API sürümünü belirten bir sorgu dizesi parametresi; Şu anda kabul edilen tek değer `2019-07-01-preview`, ve değiştirilebilir. |
-| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Bu, verilen belirtecin `aud` (hedef kitle) talebi olarak yansıtılacaktır. Bu örnek, bir uygulama kimliği URI 'si https:\//keyvault.Azure.com/olan Azure Key Vault erişmek için bir belirteç ister. |
-| `Secret` | Çağıranın kimliğini doğrulamak için Service Fabric Hizmetleri için Service Fabric yönetilen kimlik belirteci hizmeti için gerekli olan bir HTTP istek üst bilgisi alanı. Bu değer, MSI_SECRET ortam değişkeni aracılığıyla SF Runtime tarafından sağlanır. |
+| `http://localhost:2377/metadata/identity/oauth2/token` | MSI_ENDPOINT ortam değişkeni aracılığıyla sunulan Service Fabric uygulamalar için yönetilen kimlik uç noktası. |
+| `api-version` | Yönetilen kimlik belirteci hizmetinin API sürümünü belirten bir sorgu dizesi parametresi; Şu anda kabul edilen tek değer `2019-07-01-preview`ve değişikliğe tabidir. |
+| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Bu, verilen belirtecin `aud` (hedef kitle) talebi olarak yansıtılacaktır. Bu örnek, bir uygulama KIMLIĞI URI 'SI https olan Azure Key Vault erişmek için bir belirteç ister:\//keyvault.azure.com/. |
+| `Secret` | Çağıranın kimliğini doğrulamak için Service Fabric Hizmetleri için Service Fabric yönetilen kimlik belirteci hizmeti için gerekli olan bir HTTP istek üst bilgisi alanı. Bu değer, MSI_SECRET ortam değişkeni aracılığıyla SF çalışma zamanı tarafından sağlanır. |
 
 
 Örnek yanıt:
@@ -80,8 +75,8 @@ burada:
 | Öğe | Açıklama |
 | ------- | ----------- |
 | `token_type` | Belirtecin türü; Bu durumda, bu belirtecin sunucu (' taşıyıcı ') belirtecin amaçlanan konusu olduğu anlamına gelen bir "taşıyıcı" erişim belirteci. |
-| `access_token` | İstenen erişim belirteci. Güvenli bir REST API çağrılırken, belirteç `Authorization` istek üst bilgisi alanına bir "taşıyıcı" belirteci olarak katıştırılır ve bu da API 'nin çağıranın kimliğini doğrulamasına izin verir. | 
-| `expires_on` | Erişim belirtecinin süre sonu zaman damgası; "1970-01-01t0:0: 0z UTC" değerinden saniye sayısı olarak gösterilir ve belirtecin `exp` talebine karşılık gelir. Bu durumda, belirtecin süresi 2019 ' de dolar-08-08T06:10:11 + 00:00 (RFC 3339 ' de)|
+| `access_token` | İstenen erişim belirteci. Güvenli bir REST API çağrılırken, belirteç, `Authorization` istek üst bilgisi alanına bir "taşıyıcı" belirteci olarak katıştırılır ve bu da API 'nin çağıranın kimliğini doğrulamasına izin verir. | 
+| `expires_on` | Erişim belirtecinin süre sonu zaman damgası; "1970-01-01T0:0: 0Z UTC" değerinden saniye sayısı olarak gösterilir ve belirtecin `exp` talebine karşılık gelir. Bu durumda, belirtecin süresi 2019 ' de dolar-08-08T06:10:11 + 00:00 (RFC 3339 ' de)|
 | `resource` | İsteğin `resource` sorgu dizesi parametresi aracılığıyla belirtilen erişim belirtecinin verildiği kaynak; belirtecin ' AUD ' talebine karşılık gelir. |
 
 
@@ -328,7 +323,7 @@ Bir hata oluşursa, karşılık gelen HTTP yanıt gövdesi hata ayrıntılarına
 
 | Öğe | Açıklama |
 | ------- | ----------- |
-| code | Hata kodu. |
+| kod | Hata kodu. |
 | correlationId | Hata ayıklama için kullanılabilen bir bağıntı KIMLIĞI. |
 | message | Hatanın ayrıntılı açıklaması. **Hata açıklamaları herhangi bir zamanda değişebilir. Hata iletisinin kendisine bağlı değildir.**|
 
@@ -339,25 +334,25 @@ Bir hata oluşursa, karşılık gelen HTTP yanıt gövdesi hata ayrıntılarına
 
 Yönetilen kimliklere özgü tipik Service Fabric hatalarının listesi aşağıda verilmiştir:
 
-| Kod | `Message` | Açıklama | 
+| Kodlayın | İleti | Açıklama | 
 | ----------- | ----- | ----------------- |
 | SecretHeaderNotFound | Gizli dizi, istek üst bilgilerinde bulunamadı. | İstek ile kimlik doğrulama kodu sağlanmadı. | 
 | Managedıdentitynotfound | Belirtilen uygulama konağı için yönetilen kimlik bulunamadı. | Uygulamanın kimliği yok veya kimlik doğrulama kodu bilinmiyor. |
 | ArgumentNullOrEmpty | ' Resource ' parametresi null veya boş dize olmamalıdır. | İstekte kaynak (hedef kitle) sağlanmadı. |
 | InvalidApiVersion | ' ' Api sürümü desteklenmiyor. Desteklenen sürüm ' 2019-07-01-Preview '. | İstek URI 'sinde belirtilen eksik veya desteklenmeyen API sürümü. |
-| Dahili sunucu hatası | Bir hata oluştu. | Yönetilen kimlik alt sisteminde, muhtemelen Service Fabric yığının dışında bir hatayla karşılaşıldı. Büyük olasılıkla kaynak için geçersiz bir değer belirtilmiş olabilir (sonda '/' denetimi için denetim) | 
+| Dahili sunucu hatası | Bir hata oluşmuştur. | Yönetilen kimlik alt sisteminde, muhtemelen Service Fabric yığının dışında bir hatayla karşılaşıldı. Büyük olasılıkla kaynak için geçersiz bir değer belirtilmiş olabilir (sonda '/' denetimi için denetim) | 
 
 ## <a name="retry-guidance"></a>Yeniden deneme Kılavuzu 
 
 Genellikle yeniden denenebilir hata kodu 429 ' dir (çok fazla Istek); iç sunucu hataları/5xx hata kodları yeniden denenebilir, ancak nedeni kalıcı olabilir. 
 
-Azaltma sınırları, yönetilen kimlik alt sistemine yapılan çağrı sayısı için geçerlidir-özellikle ' yukarı akış ' bağımlılıkları (yönetilen kimlik Azure hizmeti veya güvenli belirteç hizmeti). Service Fabric, işlem hattındaki çeşitli düzeylerde önbelleğe alır, ancak ilgili bileşenlerin dağıtılmış yapısı verildiğinde, arayan tutarsız azaltma yanıtları ile karşılaşabilir (örneğin, bir uygulamanın bir düğümünde/örneğinde değil, aynı kimlik için bir belirteç istenirken farklı düğüm.) Daraltma koşulu ayarlandığında, aynı uygulamadan gelen sonraki istekler, koşul temizlenene kadar HTTP durum kodu 429 (çok fazla Istek) ile başarısız olabilir.  
+Azaltma sınırları, yönetilen kimlik alt sistemine yapılan çağrı sayısı için geçerlidir-özellikle ' yukarı akış ' bağımlılıkları (yönetilen kimlik Azure hizmeti veya güvenli belirteç hizmeti). Service Fabric, işlem hattındaki çeşitli düzeylerde bulunan belirteçleri önbelleğe alır, ancak ilgili bileşenlerin dağıtılmış doğası verildiğinde, çağıran tutarsız azaltma yanıtları (örn. aynı kimlik için bir belirteç istenirken, farklı bir düğümde değil, bir uygulamanın bir düğümünde veya örneğinde olmamak üzere). Daraltma koşulu ayarlandığında, aynı uygulamadan gelen sonraki istekler, koşul temizlenene kadar HTTP durum kodu 429 (çok fazla Istek) ile başarısız olabilir.  
 
 Azaltma nedeniyle başarısız olan isteklerin üstel geri alma ile yeniden denenmesi önerilir, örneğin: 
 
 | Çağrı dizini | 429 alma eylemi | 
 | --- | --- | 
-| 1\. | 1 saniye bekleyin ve yeniden deneyin |
+| 1 | 1 saniye bekleyin ve yeniden deneyin |
 | 2 | 2 saniye bekleyip yeniden deneyin |
 | 3 | 4 saniye bekleyin ve yeniden deneyin |
 | 4 | 8 saniye bekleyin ve yeniden deneyin |

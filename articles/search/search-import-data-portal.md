@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534547"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460707"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure Bilişsel Arama için veri içeri aktarma Sihirbazı
 
@@ -109,7 +109,7 @@ Sihirbaz, giriş veri kaynağından elde edilen belgelerle doldurulacak tamamlan
 
 1. Bu alanın bir dizinde nasıl kullanıldığını belirleme özniteliklerini belirleyin. 
 
-   Öznitelikteki alanların fiziksel ifadesini belirlerken, bu adımla zamandan yararlanın. Öznitelikleri daha sonra, programlama yoluyla da değiştirmek istiyorsanız, neredeyse her zaman dizini bırakıp yeniden oluşturmanız gerekir. **Aranabilir** ve **alınabilir** gibi temel özniteliklerin [depolama alanı üzerinde daha okunaklı bir etkisi](search-what-is-an-index.md#storage-implications)vardır. Filtreleri etkinleştirme ve öneri araçları kullanma depolama gereksinimlerini artırma. 
+   Öznitelikteki alanların fiziksel ifadesini belirlerken, bu adımla zamandan yararlanın. Öznitelikleri daha sonra, programlama yoluyla da değiştirmek istiyorsanız, neredeyse her zaman dizini bırakıp yeniden oluşturmanız gerekir. **Aranabilir** ve **alınabilir** gibi temel özniteliklerin [depolama alanı üzerinde daha okunaklı bir etkisi](search-what-is-an-index.md#index-size)vardır. Filtreleri etkinleştirme ve öneri araçları kullanma depolama gereksinimlerini artırma. 
    
    + **Aranabilir** tam metin aramasını sunar. Serbest form sorgularında veya sorgu ifadelerinde kullanılan her alan bu özniteliğe sahip olmalıdır. Ters çevrilen dizinler, **aranabilir**olarak işaretlediğiniz her alan için oluşturulur.
 

@@ -3,24 +3,24 @@ title: Azure IoT çözümünden IoT Tak ve Kullan önizleme cihazından etkileş
 description: Çözüm geliştiricisi olarak, IoT Tak ve Kullan cihazlarıyla etkileşim kurmak için hizmet SDK 'sını kullanma hakkında bilgi edinin.
 author: Philmea
 ms.author: philmea
-ms.date: 07/24/2019
+ms.date: 12/26/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 543f332087aef4147c9274ca980cb56543a68112
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 485b17ff236de32eab5388629c1bb6044ba19197
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977599"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531352"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>IoT Tak ve Kullan önizleme cihazına bağlanma ve bunlarla etkileşim kurma
 
 Bu nasıl yapılır Kılavuzu, IoT çözümünüzün IoT Tak ve Kullan önizleme cihazlarıyla nasıl etkileşime gireceğini gösteren düğüm hizmeti SDK 'sında örnekleri nasıl kullanacağınızı gösterir.
 
-[Iot Tak ve kullan cihazını çözüm](quickstart-connect-pnp-device-solution.md) hızlı başlangıç için tamamlamadıysanız, bunu şimdi yapmanız gerekir. Hızlı başlangıç, SDK 'nın nasıl indirileceği ve yükleneceğine ilişkin bazı örnekleri nasıl çalıştıracağınızı gösterir.
+[Iot Tak ve kullan cihazını çözüm](quickstart-connect-pnp-device-solution-node.md) hızlı başlangıç için tamamlamadıysanız, bunu şimdi yapmanız gerekir. Hızlı başlangıç, SDK 'nın nasıl indirileceği ve yükleneceğine ilişkin bazı örnekleri nasıl çalıştıracağınızı gösterir.
 
 Hizmet örneklerini çalıştırmadan önce yeni bir Terminal açın, klonlanmış deponuzdaki kök klasöre gidin, **digitaltwins/quickbaşlangıçlar/hizmet** klasörüne gidin ve ardından bağımlılıkları yüklemek için aşağıdaki komutu çalıştırın:
 

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fd72aea9087b03dcd5c6072676e8f98e7cfc1ee
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8be047caf8631cda4e48b7bf10987db616a9b86f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816458"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608617"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B işbirliği SSS
 
@@ -48,7 +48,7 @@ Bu özellik şu anda desteklenmiyor. Kuruluşunuzun kaynaklarına erişim çok f
 Kuruluş, B2B işbirliği kullanıcıları eklemek, bunları gerektiği gibi uygulamalara sağlamak ve ardından davetiye göndermek isteyebilir. Ekleme iş akışını özelleştirmek için B2B işbirliği davetiyesi API 'sini kullanabilirsiniz.
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Konuk kullanıcıları Exchange genel adres listesinde görünür yapabilir miyim?
-Evet. Konuk nesneler, kuruluşunuzun genel adres listesinde (GAL) varsayılan olarak görünmez, ancak Azure Active Directory PowerShell kullanarak bunları görünür hale getirebilirsiniz. Bkz [. genel adres listesinde Konuk nesneleri görünür yapabilir miyim?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)
+Evet. Konuk nesneler, kuruluşunuzun genel adres listesinde (GAL) varsayılan olarak görünmez, ancak Azure Active Directory PowerShell kullanarak bunları görünür hale getirebilirsiniz. Bkz [. genel adres listesinde Konuk nesneleri görünür yapabilir miyim?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Konuk kullanıcıyı sınırlı bir yönetici yapabilir miyim?
 Kesinlikle. Daha fazla bilgi için bkz. [bir role Konuk kullanıcılar ekleme](add-guest-to-role.md).
@@ -65,7 +65,7 @@ Evet! Tüm konuk ve dış kullanıcıların Azure portal erişimini engelleyen b
 3. **Yönet**altında **güvenlik**' i seçin.
 4. **Koru**altında **koşullu erişim**' i seçin. **Yeni ilke**' yi seçin.
 5. **Yeni** sayfada, **ad** metin kutusuna ilke için bir ad girin (örneğin, "konukların portala erişimini engelle").
-6. **Atamalar**' ın altında **Kullanıcılar ve gruplar**' ı seçin.
+6. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
 7. **Dahil et** sekmesinde **kullanıcıları ve grupları seç**' i seçin ve ardından **tüm konuk ve dış kullanıcılar ' ı (Önizleme)** seçin.
 9. **Done** (Bitti) öğesini seçin.
 10. **Yeni** sayfada, **atamalar** bölümünde, **bulut uygulamaları veya eylemler**' i seçin.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 289100afe825c14ce9964f39e3f583078f51da1d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 32c1ca95c01edec74f22fc051e453f2ac0dbd03f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73182301"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564756"
 ---
 ## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
 
@@ -25,7 +25,7 @@ Bu bölümde, genel performans göstergelerini Premium Depolama bağlamında tar
 
 IOPS veya saniye başına giriş/çıkış Işlemi, uygulamanızın bir saniye içinde depolama disklerine gönderdiği isteklerin sayısıdır. Bir giriş/çıkış işlemi okunabilir veya yazılabilir, sıralı veya rastgele olabilir. Çevrimiçi bir perakende Web sitesi gibi çevrimiçi Işlem Işleme (OLTP) uygulamalarının pek çok eşzamanlı kullanıcı isteğini hemen işlemesi gerekir. Kullanıcı istekleri, uygulamanın hızla işlemesi gereken yoğun veritabanı işlemlerini ekleme ve güncelleştirme işlemidir. Bu nedenle, OLTP uygulamaları çok yüksek ıOPS gerektirir. Bu tür uygulamalar milyonlarca küçük ve rastgele GÇ isteğini işler. Böyle bir uygulamanız varsa, ıOPS 'yi iyileştirmek için uygulama altyapısını tasarlamanız gerekir. Sonraki bölümde, *uygulama performansını En Iyi duruma getirmek*için, yüksek IOPS 'yi almak için göz önünde bulundurmanız gereken tüm faktörlerin ayrıntısıyla tartışıyoruz.
 
-Yüksek ölçekli sanal makinenize bir Premium Depolama diski iliştirmeniz halinde Azure, disk belirtimine göre garantili sayıda ıOPS sağlar. Örneğin, bir P50 diski 7500 ıOPS sağlar. Her bir yüksek ölçekli VM boyutunun aynı zamanda, karşılayabilmesi için belirli bir ıOPS sınırı vardır. Örneğin, standart bir GS5 VM 80.000 ıOPS sınırına sahiptir.
+Yüksek ölçekli VM'nize bir premium depolama diski eklediğinizde, Azure disk belirtimlerine göre size bir IOPS sayısı garantisi sağlar. Örneğin, bir P50 diski 7500 ıOPS sağlar. Yüksek ölçekli her VM boyutunun sürdürebileceği belirli bir IOPS sınırı da vardır. Örneğin, standart bir GS5 VM 80.000 ıOPS sınırına sahiptir.
 
 ## <a name="throughput"></a>İşleme
 
@@ -53,7 +53,7 @@ Yönetilen disklerde aşağıdaki denetim düzlemi işlemleri, diskin bir depola
 - Bir anlık görüntüden yönetilen disk oluşturun.
 - Yönetilmeyen diskleri yönetilen disklere dönüştürün.
 
-# <a name="performance-application-checklist-for-disks"></a>Diskler için performans uygulaması denetim listesi
+## <a name="performance-application-checklist-for-disks"></a>Diskler için performans uygulaması denetim listesi
 
 Azure Premium depolamada çalışan yüksek performanslı uygulamalar tasarlamanın ilk adımı, uygulamanızın performans gereksinimlerini öğrenmiş olur. Performans gereksinimlerini topladıktan sonra en iyi performansı elde etmek için uygulamanızı en iyi hale getirebilirsiniz.
 
@@ -94,13 +94,13 @@ PerfMon sayaçları işlemci, bellek ve sunucunuzdaki her mantıksal disk ve fiz
 
 | Sayaç | Açıklama | Sin | Iostat |
 | --- | --- | --- | --- |
-| **IOPS veya saniye başına Işlem** |Depolama diskine saniye başına verilen g/ç isteği sayısı. |Disk Okuma/sn <br> Disk yazma/sn |TPS <br> r/s <br> w/s |
+| **IOPS veya saniye başına Işlem** |Depolama diskine saniye başına verilen g/ç isteği sayısı. |Disk Okuma/sn <br> Disk Yazma/sn |TPS <br> r/s <br> w/s |
 | **Disk okuma ve yazma Işlemleri** |disk üzerinde gerçekleştirilen okuma ve yazma işlemlerinin yüzdesi. |% Disk okuma zamanı <br> % Disk yazma zamanı |r/s <br> w/s |
-| **Aktarım hızı** |Saniye başına diskten okunan veya diske yazılan veri miktarı. |Disk okuma bayt/sn <br> Disk yazma bayt/sn |kB_read/s <br> kB_wrtn/s |
-| **Gecikme süresi** |Bir disk GÇ isteğini tamamlayacak toplam süre. |Ortalama Disk sn/okuma <br> Ortalama Disk sn/yazma |Await <br> svctd |
+| **Aktarım hızı** |Saniye başına diskten okunan veya diske yazılan veri miktarı. |Disk Okuma Bayt/sn <br> Disk Yazma Bayt/sn |kB_read/s <br> kB_wrtn/s |
+| **Gecikme süresi** |Bir disk GÇ isteğini tamamlayacak toplam süre. |Ortalama Disk sn/okuma <br> Ortalama Disk sn/yazma |bekleme <br> svctd |
 | **GÇ boyutu** |G/ç isteklerinin boyutu depolama disklerinde sorun verir. |Ortalama disk bayt/okuma <br> Ortalama disk bayt/yazma |avgrq-SZ |
 | **Sıra derinliği** |Depolama diskine okunmayı bekleyen bekleyen g/ç isteklerinin sayısı. |Geçerli disk sırası uzunluğu |avgqu-SZ |
-| **Biçimlendir. Bellek** |Uygulamayı sorunsuz bir şekilde çalıştırmak için gereken bellek miktarı |Kullanılan kaydedilmiş bayt yüzdesi |Vmstat kullanma |
+| **Biçimlendir. Bellek** |Uygulamayı sorunsuz bir şekilde çalıştırmak için gereken bellek miktarı |% Kullanımdaki Kaydedilmiş Bayt |Vmstat kullanma |
 | **Biçimlendir. 'SUNA** |Uygulamayı sorunsuz şekilde çalıştırmak için CPU miktarı gereklidir |% İşlemci zamanı |% Util |
 
 [Iostat](https://linux.die.net/man/1/iostat) ve [Perfmon](https://msdn.microsoft.com/library/aa645516.aspx)hakkında daha fazla bilgi edinin.
@@ -156,9 +156,9 @@ Uygulamanızın ıOPS ve aktarım hızını ve bant genişliğini nasıl hesapla
 
 | Uygulama gereksinimi | G/ç boyutu | IOPS | Aktarım hızı/bant genişliği |
 | --- | --- | --- | --- |
-| Maksimum ıOPS |8 KB |5\.000 |saniyede 40 MB |
+| Maks. IOPS |8 KB |5\.000 |saniyede 40 MB |
 | En fazla aktarım hızı |1024 KB |200 |saniyede 200 MB |
-| Maksimum üretilen Iş + yüksek ıOPS |64 KB |3\.200 |saniyede 200 MB |
+| Maksimum üretilen Iş + yüksek ıOPS |64 KB |3,200 |saniyede 200 MB |
 | Maksimum ıOPS + yüksek aktarım hızı |32 KB |5\.000 |saniyede 160 MB |
 
 IOPS 'yi ve bant genişliğini tek bir Premium Depolama diskinin en büyük değerinden daha yüksek bir değere almak için birlikte şeritli birden fazla Premium disk kullanın. Örneğin, 10.000 ıOPS 'nin Birleşik bir ıOPS 'sini veya saniyede 400 MB Birleşik aktarım hızını almak için iki P30 diski Stripe. Sonraki bölümde açıklandığı gibi, Birleşik disk ıOPS ve aktarım hızını destekleyen bir VM boyutu kullanmanız gerekir.
@@ -170,11 +170,11 @@ Uygulama performansı üzerinde GÇ boyutunun etkilerini sağlamak için, VM 'ni
 
 ## <a name="high-scale-vm-sizes"></a>Yüksek ölçekli VM boyutları
 
-Bir uygulamayı tasarlamaya başladığınızda, ilk yapmanız gereken tek şey, uygulamanızı barındırmak için bir VM seçin. Premium Depolama, daha yüksek bilgi işlem gücü ve yüksek bir yerel disk g/ç performansı gerektiren uygulamalar çalıştırabilen yüksek ölçekli VM boyutlarına sahiptir. Bu VM 'Ler, daha hızlı işlemciler, daha yüksek bellek-çekirdek oranı ve yerel disk için katı hal sürücüsü (SSD) sağlar. Premium depolamayı destekleyen yüksek ölçekli VM 'Lere örnek olarak DS, DSv2 ve GS serisi VM 'Ler verilebilir.
+Bir uygulamayı tasarlamaya başladığınızda, ilk yapmanız gereken tek şey, uygulamanızı barındırmak için bir VM seçin. Premium Depolama, daha yüksek bilgi işlem gücü ve yüksek bir yerel disk g/ç performansı gerektiren uygulamalar çalıştırabilen yüksek ölçekli VM boyutlarına sahiptir. Bu VM 'Ler, daha hızlı işlemciler, daha yüksek bellek-çekirdek oranı ve yerel disk için katı hal sürücüsü (SSD) sağlar. Premium depolamayı destekleyen yüksek ölçekli sanal makinelerin örnekleri DS ve GS serisi VM 'lardır.
 
-Yüksek ölçekli VM 'Ler, farklı boyutlarda CPU çekirdekleri, bellek, işletim sistemi ve geçici disk boyutuyla farklı boyutlarda kullanılabilir. Her VM boyutunun Ayrıca sanal makineye iliştirebilmeniz için maksimum veri diski sayısı vardır. Bu nedenle, seçilen VM boyutu, uygulamanız için ne kadar işlem, bellek ve depolama kapasitesi olduğunu etkiler. Ayrıca Işlem ve depolama maliyetini de etkiler. Örneğin, bir DS serisi, DSv2 serisi ve GS serisi içindeki en büyük VM boyutunun belirtimleri aşağıda verilmiştir:
+Yüksek ölçekli VM 'Ler, farklı boyutlarda CPU çekirdekleri, bellek, işletim sistemi ve geçici disk boyutuyla farklı boyutlarda kullanılabilir. Her VM boyutunun Ayrıca sanal makineye iliştirebilmeniz için maksimum veri diski sayısı vardır. Bu nedenle, seçilen VM boyutu, uygulamanız için ne kadar işlem, bellek ve depolama kapasitesi olduğunu etkiler. Ayrıca Işlem ve depolama maliyetini de etkiler. Örneğin, bir DS serisi ve GS serisi içindeki en büyük VM boyutunun belirtimleri aşağıda verilmiştir:
 
-| VM boyutu | CPU çekirdekleri | Hafıza | VM diski boyutları | En çok, Veri diskleri | Önbellek boyutu | IOPS | Bant genişliği önbellek GÇ sınırları |
+| VM boyutu | CPU çekirdekleri | Hafıza | VM diski boyutları | En çok, veri diskleri | Önbellek boyutu | IOPS | Bant genişliği önbellek GÇ sınırları |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Yerel SSD = 224 GB |32 |576 GB |50.000 ıOPS <br> saniyede 512 MB |4\.000 ıOPS ve 33 MB/saniye |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Yerel SSD = 896 GB |64 |4224 GB |80.000 ıOPS <br> saniyede 2.000 MB |5\.000 ıOPS ve 50 MB/saniye |
@@ -199,7 +199,7 @@ Aşağıdaki tablo, standart ve Premium Depolama için bu senaryonun maliyet dö
 | --- | --- | --- |
 | **Aylık VM maliyeti** |$1.570,58 (Standart\_D14) |$1.003,66 (Standart\_DS13) |
 | **Aylık disk maliyeti** |$1.638,40 (32 x 1-TB disk) |$544,34 (4 x P30 disk) |
-| **Aylık genel maliyet** |$3.208,98 |$1.544,34 |
+| **Aylık genel maliyet** |$3,208.98 |$1,544.34 |
 
 *Linux distros*  
 
@@ -230,14 +230,14 @@ Uygulama gereksinimlerini değerlendirerek gereken disk sayısını belirleme. H
 
 Premium Depolama disklerinin standart depolama disklerine kıyasla daha yüksek performans özelliklerine sahip olduğunu unutmayın. Bu nedenle, uygulamanızı standart depolama kullanarak Azure IaaS VM 'den Premium depolamaya geçiriyorsanız, uygulamanız için aynı veya daha yüksek performans elde etmek için büyük olasılıkla daha az Premium disk gerekecektir.
 
-## <a name="disk-caching"></a>Disk önbelleğe alma
+## <a name="disk-caching"></a>Disk önbelleği
 
 Azure Premium Depolamalarından yararlanan yüksek ölçekli VM 'Ler BlobCache adlı çok katmanlı bir önbelleğe alma teknolojisine sahiptir. BlobCache, önbelleğe alma için sanal makine RAM ve yerel SSD 'nin bir birleşimini kullanır. Bu önbellek, Premium Depolama kalıcı disklerinde ve VM yerel disklerinde kullanılabilir. Varsayılan olarak, bu önbellek ayarı, Premium depolamada barındırılan veri diskleri için işletim sistemi diskleri ve salt okunur için okuma/yazma olarak ayarlanır. Premium Depolama disklerinde etkinleştirilmiş disk önbelleği sayesinde, yüksek ölçekli VM 'Ler temel disk performansını aşan son derece yüksek performans düzeyine sahip olabilir.
 
 > [!WARNING]
 > Disk önbelleği 4 TiB ve daha büyük diskler için desteklenmez. Sanal makinenize birden çok disk iliştirilmişse, 4 TiB 'den küçük olan her bir disk önbelleğe almayı destekleyecektir.
 >
-> Bir Azure diskinin önbellek ayarını değiştirmek hedef diski ayırır ve yeniden iliştirir. İşletim sistemi diski ise, VM yeniden başlatılır. Disk önbelleği ayarını değiştirmeden önce bu kesintiye uğramadan etkilenebilecek tüm uygulamaları/hizmetleri durdurun.
+> Bir Azure diskinin önbellek ayarını değiştirmek diski ayırıp yeniden ekler. İşletim sistemi diski ise, VM yeniden başlatılır. Disk önbellek ayarını değiştirmeden önce bu kesintiden etkilenebilecek tüm uygulamaları/hizmetleri durdurun.
 
 BlobCache 'in nasıl çalıştığı hakkında daha fazla bilgi edinmek için [Azure Premium Depolama](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) blog gönderisine bakın.
 
@@ -256,7 +256,7 @@ Veri diskleri için önerilen disk önbelleği ayarları aşağıda verilmiştir
 | ReadOnly |Salt okunur ve okuma/yazma diskleri için konak önbelleğini ReadOnly olarak yapılandırın. |
 | ReadWrite |Konak ön belleğini yalnızca, uygulamanız gerektiğinde kalıcı disklere önbelleğe alınmış verileri yazmayı doğru şekilde işlediğinde, salt yazılır olarak yapılandırın. |
 
-*Özelliğinin*  
+*ReadOnly*  
 Premium depolama veri disklerinde ReadOnly önbelleğe alma yapılandırarak, düşük okuma gecikmesi elde edebilir ve uygulamanız için çok fazla okuma ıOPS ve aktarım hızı elde edebilirsiniz. Bunun nedeni iki nedenden dolayı
 
 1. VM belleği ve yerel SSD üzerinde olan önbellekten gerçekleştirilen okumalar, Azure Blob depolamada bulunan veri diskinden okumalarından çok daha hızlıdır.  
@@ -265,7 +265,7 @@ Premium depolama veri disklerinde ReadOnly önbelleğe alma yapılandırarak, d�
 *ReadWrite*  
 Varsayılan olarak, işletim sistemi disklerinin ReadWrite önbelleği etkindir. Kısa süre önce veri disklerinde de ReadWrite önbelleği desteği ekledik. Okuma önbelleği kullanıyorsanız, verileri önbellekten kalıcı disklere yazmak için uygun bir yola sahip olmanız gerekir. Örneğin, SQL Server önbelleğe alınan verileri kendi kendine kalıcı depolama disklerine yazmayı işler. Gerekli verileri kalıcı olarak işlemeyen bir uygulamayla ReadWrite önbelleği kullanmak, VM kilitlenirse veri kaybına yol açabilir.
 
-*Seçim*  
+*Yok*  
 Şu anda **hiçbiri** yalnızca veri disklerinde desteklenir. İşletim sistemi disklerinde desteklenmez. Bir işletim sistemi diskinde **hiçbiri** ayarlarsanız, bunu dahili olarak geçersiz kılar ve **salt okunur**olarak ayarlar.
 
 Örnek olarak, aşağıdaki işlemleri yaparak Premium depolamada çalışan SQL Server için bu yönergeleri uygulayabilirsiniz.
@@ -280,9 +280,9 @@ Varsayılan olarak, işletim sistemi disklerinin ReadWrite önbelleği etkindir.
 
 Önbelleği **ReadOnly** veya **none**olarak ayarlanmış tüm Premium SSD 'ler veya ultra diskler için, dosya sistemini bağladığınızda "engelleri" devre dışı bırakmanız gerekir. Premium Depolama disklerine yazma işlemleri bu önbellek ayarları için dayanıklı olduğundan, bu senaryoda engellere ihtiyacınız yoktur. Yazma isteği başarıyla tamamlandığında, veriler kalıcı depoya yazıldı. "Engelleri" devre dışı bırakmak için aşağıdaki yöntemlerden birini kullanın. Dosya sisteminiz için bir tane seçin:
   
-* **Reıfs**için, engelleri devre dışı bırakmak için `barrier=none` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için `barrier=flush` kullanın.)
-* **Ext3/ext4**için, engelleri devre dışı bırakmak için `barrier=0` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için `barrier=1` kullanın.)
-* **XFS**için, engelleri devre dışı bırakmak için `nobarrier` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için `barrier` kullanın.)
+* **Reıfs**için, engelleri devre dışı bırakmak için `barrier=none` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için `barrier=flush`kullanın.)
+* **Ext3/ext4**için, engelleri devre dışı bırakmak için `barrier=0` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için `barrier=1`kullanın.)
+* **XFS**için, engelleri devre dışı bırakmak için `nobarrier` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için `barrier`kullanın.)
 * Önbellek **okuma**olarak ayarlanan Premium Depolama disklerinde, yazma dayanıklılığı için engelleri etkinleştirin.
 * VM 'yi yeniden başlattıktan sonra birim etiketlerinin devam etmesi için,/etc/fstab ' ı disklere evrensel benzersiz tanımlayıcı (UUID) başvuruları ile güncelleştirmeniz gerekir. Daha fazla bilgi için bkz. [LINUX VM 'ye yönetilen disk ekleme](../articles/virtual-machines/linux/add-disk.md).
 
@@ -292,29 +292,31 @@ Sürümlerden bazıları Azure için en son Linux Integration Services (LIS), v 
 
 | Dağıtım | Sürüm | Desteklenen çekirdek | Ayrıntılar |
 | --- | --- | --- | --- |
-| Ubuntu | 12,04 veya üzeri| 3.2.0-75.110 + | Ubuntu-12_04_5-LTS-amd64-Server-20150119-en-US-30 |
-| Ubuntu | 14,04 veya üzeri| 3.13.0-44.73 +  | Ubuntu-14_04_1-LTS-amd64-Server-20150123-en-US-30 |
+| Ubuntu | 12,04 veya üzeri| 3.2.0-75.110+ | &nbsp; |
+| Ubuntu | 14,04 veya üzeri| 3.13.0-44.73+  | &nbsp; |
 | Debian | 7. x, 8. x veya daha yeni| 3.16.7-ckt4-1 + | &nbsp; |
-| SUSE | SLES 12 veya üzeri| 3.12.36-38.1 + | SUSE-SLES-12-Priority-v20150213 <br> SUSE-SLES-12-v20150213 |
-| SUSE | SLES 11 SP4 veya daha yeni| 3.0.101-0.63.1 + | &nbsp; |
-| CoreOS | 584.0.0 + veya üzeri| 3.18.4 + | CoreOS 584.0.0 |
-| CentOS | 6,5, 6,6, 6,7, 7,0 veya daha yeni| &nbsp; | [LIS4 gerekli](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Sonraki bölümde nota bakın* |
-| CentOS | 7.1 + veya üzeri| 3.10.0-229.1.2. EL7 + | [LIS4 önerilir](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Sonraki bölümde nota bakın* |
+| SUSE | SLES 12 veya üzeri| 3.12.36-38.1+ | &nbsp; |
+| SUSE | SLES 11 SP4 veya daha yeni| 3.0.101-0.63.1+ | &nbsp; |
+| CoreOS | 584.0.0 + veya üzeri| 3.18.4+ | &nbsp; |
+| CentOS | 6,5, 6,6, 6,7, 7,0 veya daha yeni| &nbsp; | [LIS4 gerekli](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Sonraki bölümde nota bakın* |
+| CentOS | 7.1 + veya üzeri| 3.10.0-229.1.2.el7+ | [LIS4 önerilir](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Sonraki bölümde nota bakın* |
 | Red Hat Enterprise Linux (RHEL) | 6.8 +, 7.2 + ya da daha yeni | &nbsp; | &nbsp; |
 | Oracle | 6.0 +, 7.2 + veya daha yeni | &nbsp; | UEK4 veya RHCK |
-| Oracle | 7.0-7.1 veya üzeri | &nbsp; | UEK4 veya RHCK w/[LIS 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
-| Oracle | 6.4-6.7 veya üzeri | &nbsp; | UEK4 veya RHCK w/[LIS 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
+| Oracle | 7.0-7.1 veya üzeri | &nbsp; | UEK4 veya RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
+| Oracle | 6.4-6.7 veya üzeri | &nbsp; | UEK4 veya RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS için LIS sürücüleri
 
 OpenLogic CentOS sanal makinelerini çalıştırıyorsanız, en son sürücüleri yüklemek için aşağıdaki komutu çalıştırın:
 
 ```
-sudo rpm -e hypervkvpd  ## (Might return an error if not installed. That's OK.)
+sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
 sudo yum install microsoft-hyper-v
+sudo reboot
 ```
 
-Yeni sürücüleri etkinleştirmek için VM 'yi yeniden başlatın.
+Bazı durumlarda yukarıdaki komutu çekirdeği de yükseltecektir. Bir çekirdek güncelleştirmesi gerekliyse, Microsoft-Hyper-v paketini tam olarak yüklemek için yeniden başlattıktan sonra yukarıdaki komutları yeniden çalıştırmanız gerekebilir.
+
 
 ## <a name="disk-striping"></a>Disk şeridi
 
@@ -382,4 +384,3 @@ Sıra derinliğini herhangi bir yüksek değere, ancak en uygun değere göre ya
 Azure Premium Depolama, seçtiğiniz VM boyutlarına ve disk boyutlarına göre belirtilen ıOPS ve aktarım hızı sayısını sağlar. Uygulamanız her zaman VM 'nin veya diskin işleyebileceği Bu limitlerin üzerinde ıOPS veya aktarım hızını sorgulamaya çalıştığında, Premium depolama alanı kısıtlayıp azalmasını sağlar. Bu bildirimler uygulamanızdaki performans düşüklüğü biçiminde. Bu, daha yüksek gecikme süresi, düşük aktarım hızı veya düşük ıOPS anlamına gelebilir. Premium Depolama kısıtlama uygulamamılamaz, uygulamanız kaynakları elde edebilen bir süreyi aşarak tamamen başarısız olabilir. Bu nedenle, azaltma nedeniyle performans sorunlarından kaçınmak için her zaman uygulamanız için yeterli kaynak sağlayın. Yukarıdaki VM boyutları ve disk boyutları bölümünde açıklandığımız şeyleri dikkate alın. Sınama, uygulamanızı barındırmak için hangi kaynakların gerekli olacağını belirlemenin en iyi yoludur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-

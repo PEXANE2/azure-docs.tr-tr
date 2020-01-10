@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 71339565eed9f41f8f32da852a727c82df482662
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 2865ce640389c0250f14a53088a94aff15ddf1c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483944"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460681"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin
 
@@ -26,9 +26,10 @@ Doğru kimlik doğrulama yöntemini seçmek, kuruluşların uygulamalarını bul
 
 3. Bu, Azure AD 'deki diğer tüm gelişmiş güvenlik ve Kullanıcı deneyimi özelliklerinin temelidir.
 
-4. Kimlik doğrulama yöntemi uygulandıktan sonra değiştirilebilir.
+Kimlik, BT güvenliğinin yeni denetim düzledir, bu nedenle kimlik doğrulaması, yeni bulut dünyasına kuruluşun erişim koruyucusu olur. Kuruluşların, güvenliğini güçlendirir ve bulut uygulamalarını yetkisiz kişilerden güvende tutan bir kimlik denetim düzlemi gerekir.
 
-Kimlik, BT güvenliğinin yeni denetim düzledir. Bu nedenle, kimlik doğrulaması, kuruluşun yeni bulut dünyasına erişim koruyucusu olur. Kuruluşların, güvenliğini güçlendirir ve bulut uygulamalarını yetkisiz kişilerden güvende tutan bir kimlik denetim düzlemi gerekir.
+> [!NOTE]
+> Kimlik doğrulama yönteminizi değiştirmek için planlama, test ve olası kapalı kalma süresi gerekir. [Hazırlanmış dağıtım](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) , Federasyondan bulut kimlik doğrulamasına kadar test ve kademeli olarak geçiş yapmanın harika bir yoludur.
 
 ### <a name="out-of-scope"></a>Kapsam dışı
 Mevcut bir şirket içi dizin ayak izine sahip olmayan kuruluşlar, bu makalenin konusu değildir. Genellikle, bu işletmeler yalnızca Bulutta kimlik oluşturur ve bu da karma kimlik çözümü gerektirmez. Yalnızca bulutta bulunan kimlikler yalnızca bulutta bulunur ve ilgili şirket içi kimliklerle ilişkili değildir.
@@ -69,7 +70,7 @@ Karar sorularına ilişkin ayrıntılar:
 
 1. Azure AD, parolaları doğrulamak için şirket içi bileşenlere bağlı olmayan kullanıcılar için oturum açma işleyebilir.
 2. Azure AD, Microsoft 'un AD FS gibi güvenilir bir kimlik doğrulama sağlayıcısında Kullanıcı oturumunu kapatabilir.
-3. Uygulamanız gerekiyorsa, hesap süresi doldu, devre dışı hesap, parola süresi doldu, hesap kilitli ve her kullanıcı oturum açma için oturum açma saatleri gibi Kullanıcı düzeyinde Active Directory güvenlik ilkeleri, Azure AD 'nin bazı şirket içi bileşenleri olması gerekir.
+3. Hesap süresi dolduğunda, devre dışı bırakılmış hesap, parola süresi doldu, hesap kilitli ve her kullanıcı oturum açma için oturum açma saatleri gibi Kullanıcı düzeyinde Active Directory güvenlik ilkeleri uygulamanız gerekirse, Azure AD bazı şirket içi bileşenler gerektirir.
 4. Azure AD tarafından yerel olarak desteklenmeyen oturum açma özellikleri:
    * Akıllı kartlar veya sertifikalar kullanarak oturum açın.
    * Şirket içi MFA sunucusu kullanarak oturum açın.
@@ -100,7 +101,7 @@ Karar sorularına ilişkin ayrıntılar:
 * **Dikkat edilecek noktalar**. Şu anda, Parola karması eşitlemesi şirket içi hesap durumlarındaki değişiklikleri hemen zorlamaz. Bu durumda, Kullanıcı hesabı durumu Azure AD 'ye eşitlenene kadar bir kullanıcının bulut uygulamalarına erişimi vardır. Kuruluşlar, şirket içi kullanıcı hesabı durumlarında toplu güncelleştirmeler yaptıktan sonra yeni bir eşitleme döngüsünü çalıştırarak bu kısıtlamayı aşmak isteyebilir. Hesapların devre dışı bırakılması örnek bir örnektir.
 
 > [!NOTE]
-> Parola zaman aşımına uğradı ve hesap kilitli olmayan durumlar şu anda Azure AD Connect ile Azure AD ile eşitlenmemiş. Bir kullanıcının parolasını değiştirdiğinizde ve *Kullanıcı bir sonraki oturum açma bayrağıyla parolayı değiştirmeli* seçeneğini belirlediğinizde, Parola karması, Kullanıcı parolasını değiştirene kadar Azure AD Connect Azure AD ile eşitlenmez.
+> Parola zaman aşımına uğradı ve hesap kilitli olmayan durumlar şu anda Azure AD Connect ile Azure AD ile eşitlenmemiş. Bir kullanıcının parolasını değiştirdiğinizde ve *Kullanıcı bir sonraki oturum açma bayrağıyla parolayı değiştirmeli* seçeneğini belirlediğinizde, Parola karması Kullanıcı parolasını değiştirene kadar Azure AD Connect Azure AD ile eşitlenmez.
 
 Dağıtım adımları için [Parola karması eşitlemesini uygulama](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) bölümüne bakın.
 
@@ -112,7 +113,7 @@ Dağıtım adımları için [Parola karması eşitlemesini uygulama](../../activ
 
 * **Kullanıcı deneyimi**. Kullanıcıların oturum açma deneyimini geliştirmek için doğrudan kimlik doğrulamasıyla sorunsuz SSO dağıtın. Kullanıcı oturum açtıktan sonra sorunsuz SSO gereksiz istemleri ortadan kaldırır.
 
-* **Gelişmiş senaryolar**. Doğrudan kimlik doğrulaması, oturum açma sırasında şirket içi hesap ilkesini uygular. Örneğin, şirket içi bir kullanıcının hesap durumu devre dışı bırakıldığında, kilitlendiğinde veya [parolanın süresi dolduğunda](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) veya kullanıcının oturum açmasına izin verilen saatlerin dışında kaldığında erişim reddedilir.
+* **Gelişmiş senaryolar**. Doğrudan kimlik doğrulaması, oturum açma sırasında şirket içi hesap ilkesini uygular. Örneğin, şirket içi bir kullanıcının hesap durumu devre dışı bırakıldığında, kilitlendiğinde veya [parolanın süresi dolarsa](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) veya Kullanıcı oturum açmaya izin verildiğinde oturum açma denemesi saatlerin dışında kalır.
 
     Doğrudan kimlik doğrulaması ile çok faktörlü kimlik doğrulaması gerektiren kuruluşların Azure Multi-Factor Authentication (MFA) veya [koşullu erişim özel denetimlerini](../../active-directory/conditional-access/controls.md#custom-controls-preview)kullanması gerekir. Bu kuruluşlar, Federasyona dayanan bir üçüncü taraf veya şirket içi çok faktörlü kimlik doğrulama yöntemi kullanamaz. Gelişmiş özellikler, Parola karması eşitlemesinin doğrudan geçiş kimlik doğrulaması seçmenize bakılmaksızın dağıtılmasını gerektirir. Kimlik koruması kimlik bilgilerinin sızdırılan kimlik bilgileri rapor örneğidir.
 
@@ -137,7 +138,7 @@ Dağıtım adımları için [doğrudan kimlik doğrulamasını uygulama](../../a
   * Akıllı kartlar veya sertifikalar gerektiren kimlik doğrulaması.
   * Şirket içi MFA sunucuları veya federal kimlik sağlayıcısı gerektiren üçüncü taraf çok faktörlü sağlayıcıları.
   * Üçüncü taraf kimlik doğrulama çözümlerini kullanarak kimlik doğrulaması. Bkz. [Azure AD Federasyon uyumluluğu listesi](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
-  * Örneğin, bir Kullanıcı asıl adı (UPN) yerine bir sAMAccountName (örneğin, etkialanı \ KullanıcıAdı) gerektiren oturum açma, örneğin, user@domain.com.
+  * Örneğin, bir Kullanıcı asıl adı (UPN) yerine bir sAMAccountName (örneğin user@domain.com, etkialanı \ KullanıcıAdı) gerektiren oturum açın.
 
 * **İş sürekliliği**. Federasyon sistemleri genellikle grup olarak bilinen, yük dengeli bir sunucu dizisi gerektirir. Bu grup, kimlik doğrulama istekleri için yüksek kullanılabilirlik sağlamak amacıyla bir iç ağ ve çevre ağ topolojisinde yapılandırılır.
 
@@ -145,7 +146,7 @@ Dağıtım adımları için [doğrudan kimlik doğrulamasını uygulama](../../a
 
 * **Dikkat edilecek noktalar**. Federasyon sistemleri, genellikle şirket içi altyapıda daha önemli bir yatırım gerektirir. Çoğu kuruluş, zaten şirket içi bir Federasyon yatırımı varsa bu seçeneği seçer. Ve bu, tek kimlik sağlayıcısını kullanmak için güçlü bir iş gereksinimidir. Federasyon, bulut kimlik doğrulaması çözümleriyle karşılaştırıldığında çalıştırmak ve sorunlarını gidermek için daha karmaşıktır.
 
-Azure AD 'de doğrulanamayan yönlendirilebilir olmayan bir etki alanı için Kullanıcı KIMLIĞI oturum açma 'yı uygulamak üzere ek yapılandırma gerekir. Bu gereksinim alternatif oturum açma KIMLIĞI desteği olarak bilinir. Sınırlamalar ve gereksinimler için [Alternatif oturum açma kimliğini yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) konusuna bakın. Federasyon ile bir üçüncü taraf Multi-Factor Authentication sağlayıcısı kullanmayı seçerseniz, sağlayıcının cihazların Azure AD 'ye katılmasına izin vermek için WS-Trust ' ı desteklediğinden emin olun.
+Azure AD 'de doğrulanamayan yönlendirilebilir olmayan bir etki alanı için Kullanıcı KIMLIĞI oturum açma 'yı uygulamak üzere ek yapılandırmaya ihtiyacınız vardır. Bu gereksinim alternatif oturum açma KIMLIĞI desteği olarak bilinir. Sınırlamalar ve gereksinimler için [Alternatif oturum açma kimliğini yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) konusuna bakın. Federasyon ile bir üçüncü taraf Multi-Factor Authentication sağlayıcısı kullanmayı seçerseniz, sağlayıcının cihazların Azure AD 'ye katılmasına izin vermek için WS-Trust ' ı desteklediğinden emin olun.
 
 Dağıtım adımları için [Federasyon Sunucularını Dağıtma](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) konusuna bakın.
 
@@ -170,11 +171,11 @@ Aşağıdaki diyagramlarda, Azure AD hibrit kimlik çözümünüz ile kullanabil
 
 ## <a name="comparing-methods"></a>Yöntemleri karşılaştırma
 
-|US|Parola karması eşitleme + sorunsuz SSO|Geçişli kimlik doğrulaması + sorunsuz SSO|AD FS ile Federasyon|
+|Değerlendirme|Parola karması eşitleme + sorunsuz SSO|Geçişli kimlik doğrulaması + sorunsuz SSO|AD FS ile Federasyon|
 |:-----|:-----|:-----|:-----|
 |Kimlik doğrulaması nerede gerçekleşir?|Bulutta|Şirket içi kimlik doğrulama Aracısı ile güvenli bir parola doğrulaması alışverişi sonrasında bulutta|Şirket içi|
-|Sağlama sisteminin ötesinde şirket içi sunucu gereksinimleri nelerdir: Azure AD Connect?|Yok.|Her ek kimlik doğrulama Aracısı için bir sunucu|İki veya daha fazla AD FS sunucusu<br><br>Çevre/DMZ ağında iki veya daha fazla WAP sunucusu|
-|Sağlama sisteminin ötesinde şirket içi Internet ve ağ gereksinimleri nelerdir?|Yok.|Kimlik doğrulama aracılarını çalıştıran sunuculardan [giden Internet erişimi](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)|Çevre 'te WAP sunucularına [gelen Internet erişimi](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>Çevre 'teki WAP sunucularından sunucuya AD FS sunuculara gelen ağ erişimi<br><br>Ağ yük dengeleme|
+|Sağlama sisteminin ötesinde şirket içi sunucu gereksinimleri nelerdir: Azure AD Connect?|Hiçbiri|Her ek kimlik doğrulama Aracısı için bir sunucu|İki veya daha fazla AD FS sunucusu<br><br>Çevre/DMZ ağında iki veya daha fazla WAP sunucusu|
+|Sağlama sisteminin ötesinde şirket içi Internet ve ağ gereksinimleri nelerdir?|Hiçbiri|Kimlik doğrulama aracılarını çalıştıran sunuculardan [giden Internet erişimi](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)|Çevre 'te WAP sunucularına [gelen Internet erişimi](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>Çevre 'teki WAP sunucularından sunucuya AD FS sunuculara gelen ağ erişimi<br><br>Ağ yük dengeleme|
 |Bir SSL sertifikası gereksinimi var mı?|Hayır|Hayır|Evet|
 |Bir sistem durumu izleme çözümü var mı?|Gerekli değil|[Azure Active Directory Yönetim Merkezi](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) tarafından sunulan Aracı durumu|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |Kullanıcılar şirket ağı içindeki etki alanına katılmış cihazlardan bulut kaynaklarına çoklu oturum açma izni veriyor mu?|[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) ile Evet|[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) ile Evet|Evet|
@@ -197,21 +198,21 @@ Aşağıdaki nedenlerden dolayı seçtiğiniz kimlik doğrulama yöntemi için P
 
 1. **Yüksek kullanılabilirlik ve olağanüstü durum kurtarma**. Doğrudan kimlik doğrulama ve Federasyon, şirket içi altyapıyı kullanır. Geçişli kimlik doğrulaması için şirket içi parmak izi, doğrudan kimlik doğrulama aracılarının gerektirdiği sunucu donanımını ve ağını içerir. Federasyon için şirket içi parmak izi de daha büyük olur. Çevre ağınızdaki sunucuların proxy kimlik doğrulama isteklerine ve iç federasyon sunucularına sahip olmasını gerektirir.
 
-    Tek başarısızlık noktalarından kaçınmak için, yedekli sunucular dağıtın. Ardından, herhangi bir bileşen başarısız olursa kimlik doğrulama istekleri her zaman hizmet olarak gönderilir. Hem geçişli kimlik doğrulaması hem de Federasyon, kimlik doğrulama isteklerine yanıt vermek için etki alanı denetleyicilerine de dayanır, bu da başarısız olabilir. Bu bileşenlerin çoğunun sağlıklı kalması için bakım gerekir. Bakım planlanmadığı ve doğru şekilde uygulanmadıklarında kesintiler daha yüksektir. Microsoft Azure AD bulut kimlik doğrulama hizmeti küresel olarak ölçeklendirilirken ve her zaman kullanılabilir olduğundan, Parola karması eşitlemesini kullanarak kesintilerden kaçının.
+    Tek hata noktalarından kaçınmak için, yedekli sunucular dağıtın. Ardından, herhangi bir bileşen başarısız olursa kimlik doğrulama istekleri her zaman hizmet olarak gönderilir. Hem geçişli kimlik doğrulaması hem de Federasyon, kimlik doğrulama isteklerine yanıt vermek için etki alanı denetleyicilerine de dayanır, bu da başarısız olabilir. Bu bileşenlerin çoğunun sağlıklı kalması için bakım gerekir. Bakım planlanmadığı ve doğru şekilde uygulanmadıklarında kesintiler daha yüksektir. Microsoft Azure AD bulut kimlik doğrulama hizmeti küresel olarak ölçeklendirilirken ve her zaman kullanılabilir olduğundan, Parola karması eşitlemesini kullanarak kesintilerden kaçının.
 
-2. **Şirket içi kesinti acil değer**.  Bir siber saldırı veya olağanüstü durum nedeniyle Şirket içi kesintiden kaynaklanan sonuçlar önemli olabilir. reputational marka zararlarından Paralyzed bir kuruluşa kadar olan saldırılara karşı kesintiye uğrammakla uğraşmayı başaramadı. Yakın zamanda, çoğu kuruluş, hedeflenen fidye yazılımı dahil olmak üzere şirket içi sunucuların açık kalmasına neden olan kötü amaçlı yazılım saldırılarına sahiptir. Microsoft, müşterilerin bu tür saldırılara uğramasına yardımcı olduğunda iki kuruluş kategorisi görür:
+2. **Şirket içi kesinti acil değer**.  Bir siber saldırı veya olağanüstü durum nedeniyle Şirket içi kesintiden kaynaklanan sonuçlar önemli olabilir. reputational marka zararlarından Paralyzed bir kuruluşa kadar olan saldırılara karşı kesintiye uğrammakla uğraşmayı başaramadı. Yakın zamanda, çok sayıda kuruluş, hedeflenen fidye yazılımı da dahil olmak üzere şirket içi sunucuların açık kalmasına neden olan kötü amaçlı yazılım saldırılarına sahiptir. Microsoft, müşterilerin bu tür saldırılara uğramasına yardımcı olduğunda iki kuruluş kategorisi görür:
 
    * Daha önce parola karması eşitlemesine açık olan kuruluşlar, kimlik doğrulama yöntemini Parola karması eşitlemesini kullanacak şekilde değiştirdi. Bunlar birkaç saat içinde çevrimiçi olarak geri getirilir. Office 365 aracılığıyla e-postaya erişim kullanarak, sorunları çözmeye ve diğer bulut tabanlı iş yüklerine erişmeye çalışmış olurlar.
 
    * Daha önce parola karması eşitlemesini etkinleştirmediğiniz kuruluşların, iletişim için sorunları çözmek üzere güvenilmeyen dış tüketici e-posta sistemlerine çare olması gerekiyordu. Bu gibi durumlarda, kullanıcılar bulut tabanlı uygulamalarda yeniden oturum açabilmeniz için, bu kullanıcıların kendi şirket içi kimlik altyapısını geri yüklemesi için haftalar sürmesidir.
 
-3. **Kimlik koruması**. Buluttaki kullanıcıları korumanın en iyi yöntemlerinden biri Azure AD Premium P2 Azure AD Kimlik Koruması. Microsoft, kötü aktörlerin sat ve koyu Web üzerinde kullanılabilir olmasını sağlayan Kullanıcı ve parola listelerine sürekli olarak Interneti tarar. Azure AD, kuruluşunuzdaki herhangi bir Kullanıcı adı ve parolanın güvenliğinin aşıldığını doğrulamak için bu bilgileri kullanabilir. Bu nedenle, hangi kimlik doğrulama yöntemini kullanırsanız kullanın, bu, Federasyon veya geçişli kimlik doğrulaması olsun, Parola karması eşitlemesini etkinleştirmek önemlidir. Sızdırılan kimlik bilgileri rapor olarak sunulur. Kullanıcıların, sızdırılan parolalarla oturum açmaya çalıştıklarında parolalarını değiştirmesine izin vermek veya bunları engellemek için bu bilgileri kullanın.
+3. **Kimlik koruması**. Buluttaki kullanıcıları korumanın en iyi yöntemlerinden biri Azure AD Premium P2 Azure AD Kimlik Koruması. Microsoft, kötü aktörlerin sat ve koyu Web üzerinde kullanılabilir olmasını sağlayan Kullanıcı ve parola listelerine sürekli olarak Interneti tarar. Azure AD, kuruluşunuzdaki herhangi bir Kullanıcı adı ve parolanın güvenliğinin aşıldığını doğrulamak için bu bilgileri kullanabilir. Bu nedenle, hangi kimlik doğrulama yöntemini kullanırsanız kullanın, bu, Federasyon veya geçişli kimlik doğrulaması olsun, parola karma eşitlemesini etkinleştirmek önemlidir. Sızdırılan kimlik bilgileri rapor olarak sunulur. Kullanıcıların, sızdırılan parolalarla oturum açmaya çalıştıklarında parolalarını değiştirmesine izin vermek veya bunları engellemek için bu bilgileri kullanın.
 
 ## <a name="conclusion"></a>Sonuç
 
 Bu makalede, kuruluşların bulut uygulamalarına erişimi desteklemek için yapılandırabileceği ve dağıtabileceği çeşitli kimlik doğrulama seçenekleri özetlenmektedir. Kuruluşlar, çeşitli iş, güvenlik ve teknik gereksinimleri karşılamak için Parola karması eşitlemesi, geçişli kimlik doğrulaması ve Federasyon arasında seçim yapabilir.
 
-Her kimlik doğrulama yöntemini göz önünde bulundurun. Çözümü dağıtmaya yönelik efor ve kullanıcının oturum açma işlemi deneyimi, iş gereksinimlerinizi karşılasın mı? Kuruluşunuzun her bir kimlik doğrulama yönteminin gelişmiş senaryolarına ve iş sürekliliği özelliklerine ihtiyacı olup olmadığını değerlendirin. Son olarak, her kimlik doğrulama yönteminin dikkate alınmasını değerlendirin. Bunlardan herhangi birini, seçiminizi uygulamanızı engelliyor mu?
+Her kimlik doğrulama yöntemini göz önünde bulundurun. Çözümü dağıtmaya yönelik efor ve kullanıcının oturum açma işlemi deneyimi iş gereksinimlerinizi karşılasın mı? Kuruluşunuzun her bir kimlik doğrulama yönteminin gelişmiş senaryolarına ve iş sürekliliği özelliklerine ihtiyacı olup olmadığını değerlendirin. Son olarak, her kimlik doğrulama yönteminin dikkate alınmasını değerlendirin. Bunlardan herhangi birini, seçiminizi uygulamanızı engelliyor mu?
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,31 +1,20 @@
 ---
-title: Mevcut uygulamayı Azure Service Fabric kümesine hızla dağıtma
+title: Mevcut bir uygulamayı bir kümeye hızlı bir şekilde dağıtın
 description: Mevcut Node.js uygulamasını Visual Studio ile barındırmak için Azure Service Fabric kümesi kullanın.
-services: service-fabric
-documentationcenter: nodejs
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 6cf9594e6e1db3e163d25843b1fec0c0ff98c250
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592456"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614851"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js uygulamasını Azure Service Fabric'te barındırma
 
 Bu hızlı başlangıç, mevcut uygulamayı (bu örnekte Node.js) Azure üzerinde çalışan bir Service Fabric kümesine dağıtmanıza yardımcı olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce [geliştirme ortamınızı ayarladığınızdan](service-fabric-get-started.md) emin olun. Service Fabric SDK ve Visual Studio 2019 veya 2015 ' nin yüklenmesini içerir.
 
@@ -52,7 +41,7 @@ Sonraki iletişim kutusunda her türde Service Fabric hizmeti oluşturabilirsini
 
 Hizmeti **MyGuestService** olarak adlandırın ve sağdaki seçenekleri aşağıdaki değerlere ayarlayın:
 
-| Ayar                   | Value |
+| Ayar                   | Değer |
 | ------------------------- | ------ |
 | Kod Paketi Klasörü       | _&lt;Node.js uygulamanızla gelen klasör&gt;_ |
 | Kod Paketi Davranışı     | Klasör içeriğini projeye kopyala |
@@ -83,7 +72,7 @@ Hizmet projesinin içeriklerine genel bakış için bkz. [Reliable Services ile 
 
 Dağıttığımız örnek Node.js uygulamasında **80** bağlantı noktası kullanılır ve Service Fabric'e bu bağlantı noktasının ortaya çıkarılmasını bildirmemiz gerekir.
 
-Projedeki **ServiceManifest.xml** dosyasını açın. Bildirimin en altında, zaten tanımlanmış bir `<Resources> \ <Endpoints>` girişi vardır. Bu girdiyi değiştirerek `Port`, `Protocol` ve `Type` ekleyin. 
+Projedeki **ServiceManifest.xml** dosyasını açın. Bildirimin en altında, önceden tanımlanmış bir girdiyle `<Resources> \ <Endpoints>` vardır. Bu girdiyi değiştirerek `Port`, `Protocol` ve `Type` ekleyin. 
 
 ```xml
   <Resources>
@@ -96,7 +85,7 @@ Projedeki **ServiceManifest.xml** dosyasını açın. Bildirimin en altında, za
   </Resources>
 ```
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a>Azure'a Dağıt
 
 **F5** tuşuna basın ve projeyi çalıştırırsanız, bu, yerel kümeye dağıtılır. Ama biz bunun yerine Azure'a dağıtalım.
 
@@ -108,7 +97,7 @@ Projeye sağ tıklayın ve Azure yayımlama iletişim kutusunu açan **Yayımla.
 
 Daha önce yapmadıysanız, dağıtımın yapılacağı Azure hesabını seçin. Henüz bir hesabınız yoksa, [bir tane için kaydolun][create-account].
 
-**Bağlantı Uç Noktası**'nın altında, dağıtımın yapılacağı Service Fabric kümesini seçin. Yoksa, **&lt;yeni küme oluştur... seçeneğini belirleyin. Web&gt;** tarayıcısı penceresini Azure Portal açan. Daha fazla bilgi için bkz. [Portalda küme oluşturma](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+**Bağlantı Uç Noktası**'nın altında, dağıtımın yapılacağı Service Fabric kümesini seçin. Bir tane yoksa, Azure portal web tarayıcısı penceresini açan **Yeni küme oluştur...&gt;&lt;** seçin. Daha fazla bilgi için bkz. [Portalda küme oluşturma](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 Service Fabric kümesini oluştururken, **Özel uç noktalar** ayarını **80** olarak belirleyin.
 
@@ -126,11 +115,11 @@ Hizmetiniz yayımlandıktan sonra, hizmeti web tarayıcısında test edin.
 
 İlk olarak, Azure portalını açın ve Service Fabric hizmetinizi bulun.
 
-Hizmet adresinin genel bakış dikey penceresini denetleyin. _İstemci bağlantısı uç noktası_ özelliğindeki etki alanı adını kullanın. Örneğin: `http://mysvcfab1.westus2.cloudapp.azure.com`.
+Hizmet adresinin genel bakış dikey penceresini denetleyin. _İstemci bağlantısı uç noktası_ özelliğindeki etki alanı adını kullanın. Örneğin, `http://mysvcfab1.westus2.cloudapp.azure.com`.
 
 ![Azure portalında Service Fabric genel bakış dikey penceresi][overview]
 
-`HELLO WORLD` Yanıtı göreceğiniz bu adrese gidin.
+`HELLO WORLD` yanıtını göreceğiniz bu adrese gidin.
 
 ## <a name="delete-the-cluster"></a>Küme silme
 

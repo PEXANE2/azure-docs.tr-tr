@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 8eb8075454dc3a49e9525d566c34c64bab8be5a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe6e581963753cac33092285fee0c8d16959bde8
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083439"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530111"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale dağıtma
 
@@ -27,7 +27,7 @@ Bu makalede, bir kurumsal müşterinin son zamanlarda z/OS üzerinde çalışan 
 
 Geçiş için kullanılan adımları izlemek için GitHub 'daki [DB2onAzure](https://aka.ms/db2onazure) deposundaki yükleme betiklerine bakın. Bu betikler tipik, orta ölçekli çevrimiçi işlem işleme (OLTP) iş yükünün mimarisini temel alır.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya Başlayın
 
 Bu mimariyi dağıtmak için GitHub 'daki [DB2onAzure](https://aka.ms/db2onazure) deposunda bulunan Deploy.sh betiğini indirip çalıştırın.
 
@@ -40,33 +40,35 @@ Depoda Ayrıca bir Grafana panosu ayarlamak için betikler de bulunur. Eklentiyi
 
 Deploy.sh betiği, Bu mimaride Azure kaynaklarını oluşturur ve yapılandırır. Betik, hedef ortamda kullanılan Azure aboneliğini ve sanal makineleri ister ve sonra aşağıdaki işlemleri gerçekleştirir:
 
--   Yükleme için Azure 'da kaynak grubu, sanal ağ ve alt ağları ayarlar
+-   Yükleme için Azure 'da kaynak grubu, sanal ağ ve alt ağları ayarlar.
 
--   Ortam için ağ güvenlik gruplarını ve SSH 'yi ayarlar
+-   Ortam için ağ güvenlik gruplarını ve SSH 'yi ayarlar.
 
--   Hem GlusterFS hem de DB2 pureScale sanal makinelerinde NIC 'Leri ayarlar
+-   Hem paylaşılan depolama hem de DB2 pureScale sanal makinelerinde birden çok NIC 'i ayarlar.
 
--   GlusterFS depolama sanal makinelerini oluşturur
+-   Paylaşılan depolama sanal makinelerini oluşturur. Depolama Alanları Doğrudan veya başka bir depolama çözümü kullanıyorsanız, bkz. [depolama alanları doğrudan genel bakış](/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
 
--   Sıçrama kutusu sanal makinesini oluşturur
+-   Sıçrama kutusu sanal makinesini oluşturur.
 
--   DB2 pureScale sanal makineleri oluşturur
+-   DB2 pureScale sanal makineleri oluşturur.
 
--   DB2 pureScale ping işlemleri yapan tanık sanal makinesini oluşturur
+-   DB2 pureScale ping işlemleri yapan tanık sanal makinesini oluşturur. DB2 pureScale sürümünüz bir tanık gerektirmiyorsa dağıtımın bu bölümünü atlayın.
 
--   Test için kullanılacak bir Windows sanal makinesi oluşturur, ancak buna hiçbir şey yüklemez
+-   Test için kullanılacak bir Windows sanal makinesi oluşturur, ancak üzerine hiçbir şey yüklemez.
 
-Ardından, dağıtım betikleri Azure 'da paylaşılan depolama için bir Iscsı sanal depolama alanı ağı (vSAN) ayarlar. Bu örnekte, Iscsı GlusterFS 'e bağlanır. Bu çözüm, Iscsı hedeflerini tek bir Windows düğümü olarak yüklemek için de seçenek sağlar. Iscsı, DB2 pureScale Kurulum yordamının paylaşılan depolamaya bağlanmak için bir cihaz arabirimi kullanmasına izin veren TCP/IP üzerinden paylaşılan bir blok depolama arabirimi sağlar. GlusterFS temelleri için bkz [. mimari: Gluster docs](https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/) içindeki birim türleri konusu.
+Ardından, dağıtım betikleri Azure 'da paylaşılan depolama için bir Iscsı sanal depolama alanı ağı (vSAN) ayarlar. Bu örnekte, Iscsı paylaşılan depolama kümesine bağlanır. Özgün müşteri çözümünde GlusterFS kullanıldı. Ancak, IBM artık bu yaklaşımı desteklememektedir. IBM 'nizin desteğini sürdürmek için desteklenen bir Iscsı uyumlu dosya sistemi kullanmanız gerekir. Microsoft, bir seçenek olarak Depolama Alanları Doğrudan (S2D) sağlar.
+
+Bu çözüm, Iscsı hedeflerini tek bir Windows düğümü olarak yüklemek için de seçenek sağlar. Iscsı, DB2 pureScale Kurulum yordamının paylaşılan depolamaya bağlanmak için bir cihaz arabirimi kullanmasına izin veren TCP/IP üzerinden paylaşılan bir blok depolama arabirimi sağlar.
 
 Dağıtım betikleri şu genel adımları çalıştırır:
 
-1.  Azure 'da paylaşılan bir depolama kümesi ayarlamak için GlusterFS kullanın. Bu adım en az iki Linux düğümü içerir. Kurulum ayrıntıları için, Red Hat Gluster belgelerindeki [Microsoft Azure ' de Red Hat Gluster depolamayı ayarlama](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/deployment_guide_for_public_cloud/chap-documentation-deployment_guide_for_public_cloud-azure-setting_up_rhgs_azure) bölümüne bakın.
+1.  Azure 'da paylaşılan bir depolama kümesi ayarlayın. Bu adım en az iki Linux düğümü içerir.
 
-2.  GlusterFS için hedef Linux sunucularında bir Iscsı doğrudan arabirimi ayarlayın. Kurulum ayrıntıları için GlusterFS yönetim kılavuzunda [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/) ' ye bakın.
+2.  Paylaşılan depolama kümesi için hedef Linux sunucuları üzerinde bir Iscsı doğrudan arabirimi ayarlayın.
 
-3.  Linux sanal makinelerinde Iscsı Başlatıcısı 'nı ayarlayın. Başlatıcı, bir Iscsı hedefi kullanarak GlusterFS kümesine erişir. Kurulum ayrıntıları için bkz. RootUsers belgelerindeki [Linux 'Ta bir Iscsı hedefi ve başlatıcısı yapılandırma](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) .
+3.  Linux sanal makinelerinde Iscsı Başlatıcısı 'nı ayarlayın. Başlatıcı, bir Iscsı hedefi kullanarak paylaşılan depolama kümesine erişir. Kurulum ayrıntıları için bkz. RootUsers belgelerindeki [Linux 'Ta bir Iscsı hedefi ve başlatıcısı yapılandırma](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) .
 
-4.  GlusterFS 'yi Iscsı arabiriminin depolama katmanı olarak yükler.
+4.  Iscsı arabirimi için paylaşılan depolama katmanını yükler.
 
 Betikler Iscsı cihazını oluşturduktan sonra son adım DB2 pureScale 'yi yüklemektir. DB2 pureScale kurulumunun bir parçası olarak, [IBM SPI ölçeği](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (eskıden GPFS olarak bilinirdi), GlusterFS kümesine derlenir ve yüklenir. Bu kümelenmiş dosya sistemi DB2 purescale altyapısını çalıştıran sanal makineler arasında veri paylaşmasını sağlar. Daha fazla bilgi için bkz. IBM Web sitesindeki [IBM SPI ölçek](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) belgeleri.
 
@@ -77,17 +79,17 @@ GitHub deposu, DB2 pureScale yüklemesi için otomatikleştirilmiş bir komut do
 > [!NOTE]
 > Örnek bir yanıt dosyası olan DB2server. rsp, GitHub 'daki [DB2onAzure](https://aka.ms/db2onazure) deposuna dahil edilmiştir. Bu dosyayı kullanırsanız, ortamınızda çalışmadan önce düzenlemeniz gerekir.
 
-| Ekran adı               | Alan                                        | Value                                                                                                 |
+| Ekran adı               | Alan                                        | Değer                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Hoş Geldiniz                   |                                              | Yeni yüklemesi                                                                                           |
 | Ürün seçin          |                                              | DB2 sürüm 11.1.3.3. DB2 pureScale ile sunucu sürümleri                                              |
 | Yapılandırma             | Dizin                                    | /Data1/seçenek/ibm/DB2/v11.1                                                                              |
 |                           | Yükleme türünü seçin                 | Genelde                                                                                               |
-|                           | IBM şartlarını kabul ediyorum                     | İşaretli                                                                                               |
+|                           | IBM şartlarını kabul ediyorum                     | Onay işaretli                                                                                               |
 | Örnek sahibi            | Örnek Için mevcut Kullanıcı, Kullanıcı adı        | DB2sdin1                                                                                              |
 | Fbaşvurusu olan Kullanıcı               | Mevcut Kullanıcı, Kullanıcı adı                     | DB2sdfe1                                                                                              |
 | Küme dosya sistemi       | Paylaşılan disk bölümü cihaz yolu            | /dev/DM-2                                                                                             |
-|                           | Bağlama noktası                                  | /Db2sd\_1804a                                                                                         |
+|                           | Bağlama noktası                                  | /DB2sd\_1804a                                                                                         |
 |                           | Veriler için paylaşılan disk                         | /dev/DM-1                                                                                             |
 |                           | Bağlama noktası (veri)                           | /DB2fs/datafs1                                                                                        |
 |                           | Günlük için paylaşılan disk                          | /dev/DM-0                                                                                             |
@@ -117,7 +119,7 @@ GitHub deposu, DB2 pureScale yüklemesi için otomatikleştirilmiş bir komut do
 
 - Kurulum betikleri, gerçek adların kolayca bulunabilmesi için Iscsı disklerinin diğer adlarını kullanır.
 
-- D0 üzerinde kurulum betiği çalıştırıldığında, **\* /dev/DM-** Values, D1, cf0 ve CF1 üzerinde farklı olabilir. Değerlerin farkı, DB2 pureScale kurulumunu etkilemez.
+- D0 üzerinde kurulum betiği çalıştırıldığında, **/dev/DM-\*** değerleri D1, cf0 ve CF1 üzerinde farklı olabilir. Değerlerin farkı, DB2 pureScale kurulumunu etkilemez.
 
 ## <a name="troubleshooting-and-known-issues"></a>Sorun çözümü ve bilinen sorunlar
 
@@ -140,8 +142,6 @@ GitHub deposu, yazarların koruabileceği bir Bilgi Bankası içerir. Karşıla�
 Bu ve diğer bilinen sorunlar hakkında daha fazla bilgi için [DB2onAzure](https://aka.ms/DB2onAzure) depodaki KB.MD dosyasına bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
--   [GlusterFS Iscsı](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
 
 -   [DB2 pureScale özelliği yüklemesi için gerekli kullanıcıları oluşturma](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 

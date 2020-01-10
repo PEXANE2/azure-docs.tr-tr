@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2019
+ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 140361b7ba3a6a618d4c416447525f8a73690b81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748435"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552942"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Endpoint Protection değerlendirmesi ve önerileri
 
-Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](https://docs.microsoft.com/azure/security-center/security-center-os-coverage) sürümlerinin sistem durumu değerlendirmeleri sağlar. Bu makalede, güvenlik merkezi 'nin aşağıdaki iki öneriyi üretmesine neden olan senaryolar açıklanmaktadır:
+Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](security-center-services.md#supported-endpoint-protection-solutions-) sürümlerinin sistem durumu değerlendirmeleri sağlar. Bu makalede, güvenlik merkezi 'nin aşağıdaki iki öneriyi üretmesine neden olan senaryolar açıklanmaktadır:
 
 * **Uç nokta koruma çözümlerini sanal makinenize yükler**
 * **Makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözün**
@@ -55,7 +55,7 @@ Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](https
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* Güvenlik Merkezi, **Scepmpmodule ("$env:P rogramFiles\Microsoft Security Client\mpprovider\mpprovider.exe")** içeri aktarırken ve çalışırken **"Endpoint Protection çözümlerini sanal makineye yüklemenizi" önerir.** **Amserviceenabled = false** Ile Get-MProtComputerStatus sonuçları
+* Güvenlik Merkezi, **Scepmpmodule ("$env:P rogramFiles\Microsoft Security Client\mpprovider\mpprovider.exe")** içeri aktarırken ve **amserviceenabled = false** Ile **Get-mprotcomputerstatus** sonuçları çalıştıran **"sanal makineye Endpoint Protection çözümlerini yükle** " önerilir
 
 * Güvenlik Merkezi, **Get-MprotComputerStatus** çalıştırıldığında ve aşağıdakilerden biri gerçekleştiğinde **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** işlemi yapmanızı önerir:
 
@@ -173,7 +173,7 @@ Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"m
 
 - **"/opt/Sophos-av/bin/savconfig LiveProtection al"** işlevi etkin
 
-## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
+## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
@@ -181,4 +181,4 @@ Microsoft kötü amaçlı yazılımdan koruma uzantısı günlükleri şurada bu
 
 ### <a name="support"></a>Destek
 
-Daha fazla yardım için [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Ya da bir Azure destek olayı dosyası. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
+Daha fazla yardım için [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Ya da bir Azure destek olayı dosyası. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).

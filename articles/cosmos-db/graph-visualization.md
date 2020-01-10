@@ -1,53 +1,53 @@
 ---
-title: Azure Cosmos DB Gremlin API grafik verilerinizi görselleştirin
-description: Azure Cosmos DB grafik verilerini görselleştirme çözümleri (Linkurious Enterprise, Cambridge zeka) ile tümleştirmeyi öğrenin.
+title: Azure Cosmos DB Gremlin API 'sindeki grafik verilerinizi görselleştirin
+description: Azure Cosmos DB Graf verilerini görselleştirme çözümleriyle tümleştirme hakkında bilgi edinin (Linkurdeğerli kurumsal, Cambridge Intelligence).
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 07/02/2019
-ms.openlocfilehash: efe47cc5453a7259da37dcb3c33edcdfbea6d8c8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1cabe57a0e7f2869a30973c8bbc8b4b38f664d81
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672622"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500031"
 ---
-# <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Azure Cosmos DB Gremlin API'si ile veri görselleştirme çözümleri depolanan graf verilerini görselleştirin
+# <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Veri görselleştirme çözümleriyle Azure Cosmos DB Gremlin API 'de depolanan grafik verilerini görselleştirin
 
-Çeşitli veri görselleştirme çözümleri kullanarak Azure Cosmos DB Gremlin API içinde depolanan verileri görselleştirebilirsiniz. Aşağıdaki çözümlerden tarafından önerilen [Apache Tinkerpop topluluk](http://tinkerpop.apache.org/#poweredby) grafik veri görselleştirme için.
+Çeşitli veri görselleştirme çözümlerini kullanarak Azure Cosmos DB Gremlin API 'de depolanan verileri görselleştirebilirsiniz. Grafik veri görselleştirmesi için [Apache Tinkerpop topluluğu](https://tinkerpop.apache.org/#poweredby) tarafından aşağıdaki çözümler önerilir.
 
-## <a name="linkurious-enterprise"></a>Linkurious Enterprise
+## <a name="linkurious-enterprise"></a>Linkurdeğerli kurumsal
 
-![Linkurious logosu](./media/graph-visualization/linkurious-logo.jpg)
+![Linkurdeğerli logosu](./media/graph-visualization/linkurious-logo.jpg)
 
-[Linkurious Kurumsal](https://linkurio.us/product/) kullanan karmaşık veri kümelerinde etkileşimli görsel ağlara etkinleştirmek için teknoloji ve veri görselleştirme grafik. Platform, veri kaynaklarına bağlanır ve sorunsuz bir şekilde varlıklar ve ilişkiler milyarlarca arasında gezinmek araştırmacıya sağlar. Yeni bir sorgu veya tablolar ile masrafların olmadan şüpheli ilişkileri algılama özelliğini sonucudur.
+[Linkümerak kurumsal](https://linkurio.us/product/) , karmaşık veri kümelerini etkileşimli görsel ağlara dönüştürmek için Graf teknolojisini ve veri görselleştirmesini kullanır. Platform, veri kaynaklarınıza bağlanır ve araştırmacıya 'in milyarlarca varlık ve ilişkide sorunsuz bir şekilde gezinebilmesine olanak sağlar. Sonuç olarak sorguları veya tabloları kullanarak kuşkulu ilişkileri tespit etmek için yeni bir özellik bulunur.
 
-Etkileşimli arabirimi Linkurious Enterprise'nın, karmaşık verileri araştırmak için kolay bir yol sunar. Belirli varlıklar için arama yapın, ilişkileri ortaya çıkarmak için bağlantılar genişletin ve karmaşık ağlar ayrıştırmaya, tercih ettiğiniz düzenleri uygulayın. Linkurious Enterprise artık Azure Cosmos DB Gremlin API'si ile uyumludur. Uçtan uca grafik görselleştirmesi senaryoları için uygundur ve okuma ve özellikleri kullanıcı arabiriminden yazma destekler. Talep edebilir bir [Azure Cosmos DB ile Linkurious Tanıtımı](https://linkurio.us/contact/)
+Şirket içindeki etkileşimli arabirim, karmaşık verileri araştırmak için kolay bir yol sunar. Belirli varlıkları arayabilir, gizli ilişkileri ortaya çıkarmak için bağlantıları genişletebilir ve istediğiniz düzenleri karmaşık ağlara atayabilirsiniz. Linkurdeğerli kurumsal artık Azure Cosmos DB Gremlin API 'siyle uyumludur. Uçtan uca grafik görselleştirme senaryoları için uygundur ve kullanıcı arabiriminden okuma ve yazma özelliklerini destekler. [Azure Cosmos DB Ile Linkümi tanıtımına sahip](https://linkurio.us/contact/) olabilirsiniz
 
-![Linkurious Tanıtımı](./media/graph-visualization/linkurious-demo.gif)
+![Linkurdeğerli demo](./media/graph-visualization/linkurious-demo.gif)
 
 ## <a name="cambridge-intelligence"></a>Cambridge Intelligence
 
-![Cambridge zeka logosu](./media/graph-visualization/ci-logo.png)
+![Cambridge Intelligence logosu](./media/graph-visualization/ci-logo.png)
 
-[Cambridge Intelligence'nın](https://cambridge-intelligence.com/products/) grafik görselleştirmesi araç Setleri, Azure Cosmos DB artık desteklenmektedir. Aşağıdaki iki görselleştirme araç Setleri, Azure Cosmos DB tarafından desteklenir:
+[Cambridge Intelligence 'ın](https://cambridge-intelligence.com/products/) Graf görselleştirme araç takımları artık Azure Cosmos DB destekliyor. Aşağıdaki iki görselleştirme araç seti Azure Cosmos DB tarafından desteklenir:
 
-- [JavaScript geliştiricileri için anahtar satırlar](https://cambridge-intelligence.com/keylines/)
+- [JavaScript geliştiricileri için KeyLines](https://cambridge-intelligence.com/keylines/)
 
-- [React geliştiriciler için yeniden grafiği](https://cambridge-intelligence.com/regraph/)
+- [Tepki verme geliştiricileri için yeniden grafik](https://cambridge-intelligence.com/regraph/)
 
-![Cambridge zeka Tanıtımı](./media/graph-visualization/ci-demo-2.gif)
+![Cambridge Intelligence tanıtımı](./media/graph-visualization/ci-demo-2.gif)
 
-Bu araç Setleri, yüksek performanslı grafik Görselleştirme ve çözümleme uygulamaları kullanım Örneğinize ilişkin tasarım sağlar. Bunlar güçlü Web grafik Library(WebGL) işleme ve kullanıcıların hızlı ve bilgilendirici görselleştirme deneyimi sağlamak için özenle hazırlanmış kod yararlanın. Bu araçlar, herhangi bir tarayıcıyı, cihaz, sunucu veya veritabanı ile uyumludur ve adım adım öğreticiler, tam olarak belgelenmiş API'leri ve etkileşimli tanıtım ile gelir.
+Bu araç takımları, kullanım durumu için yüksek performanslı grafik görselleştirme ve analiz uygulamaları tasarlamanıza olanak sağlar. Kullanıcılara hızlı ve öngörülü bir görselleştirme deneyimi sunmak için güçlü web grafikleri kitaplığı (WebGL) işleme ve dikkatle hazırlanmış kod sunar. Bu araçlar, herhangi bir tarayıcı, cihaz, sunucu veya veritabanıyla uyumludur ve adım adım öğreticiler, tamamen belgelenmiş API 'Ler ve etkileşimli tanıtımlar ile gelir.
 
-![Cambridge zeka Tanıtımı](./media/graph-visualization/ci-demo-1.gif)
+![Cambridge Intelligence tanıtımı](./media/graph-visualization/ci-demo-1.gif)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
  
-- [Araç Setleri deneyin](https://cambridge-intelligence.com/try/)
-- [Anahtar satırlar teknoloji genel bakış](https://cambridge-intelligence.com/keylines/technology/)
-- [Grafiği yeniden teknoloji genel bakış](https://cambridge-intelligence.com/regraph/technology/)
-- [Grafik görselleştirmesi kullanım örnekleri](https://cambridge-intelligence.com/use-cases/)
+- [Araç setlerini deneyin](https://cambridge-intelligence.com/try/)
+- [KeyLines teknolojisine genel bakış](https://cambridge-intelligence.com/keylines/technology/)
+- [Yeniden grafik teknolojisine genel bakış](https://cambridge-intelligence.com/regraph/technology/)
+- [Grafik görselleştirme kullanım örnekleri](https://cambridge-intelligence.com/use-cases/)

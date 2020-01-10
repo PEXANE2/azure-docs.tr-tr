@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Rensel | Microsoft Docs'
-description: Azure Active Directory ve Rensel arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Versal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
+description: Azure Active Directory ve Versal arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,193 +13,151 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/28/2019
+ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 837ba4043fe27c15f75c4d401878dfdb3328b82f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e5e5a3f8070829916b228e9bc68e37156ddf5f6a
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087591"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561794"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-versal"></a>Öğretici: Rensel ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-versal"></a>Öğretici: Versal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Rensel tümleştirme konusunda bilgi edinin.
-Azure AD ile Rensel tümleştirme ile aşağıdaki avantajları sağlar:
+Bu öğreticide, Versal 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Versal 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Rensel erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) Rensel için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Azure AD 'de Versal 'a erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açmalarına olanak sağlar.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD Tümleştirmesi ile Rensel yapılandırmak için aşağıdaki öğeler gerekir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free/)
-* Abonelik Versal çoklu oturum açma etkin
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Versal çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Versal destekler **IDP** tarafından başlatılan
 
-## <a name="adding-versal-from-the-gallery"></a>Galeriden Rensel ekleme
+* Versal, **IDP** tarafından başlatılan SSO 'yu destekliyor
 
-Azure AD'de Rensel tümleştirmesini yapılandırmak için Rensel Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
-**Galeriden Rensel eklemek için aşağıdaki adımları gerçekleştirin:**
+## <a name="adding-versal-from-the-gallery"></a>Galeriden Versal ekleme
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+Versal 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Versal eklemeniz gerekir.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Versal** yazın.
+1. Sonuçlar panelinden **Versal** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-versal"></a>Versal için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Versal ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Versal içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+Azure AD SSO 'yu Versal ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-4. Arama kutusuna **Rensel**seçin **Rensel** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Versal SSO 'Yu yapılandırın](#configure-versal-sso)** .
+    1. Kullanıcının Azure AD gösterimine bağlı olan Versal 'da B. Simon 'ya karşılık gelen, **[Versal test kullanıcısı oluşturun](#create-versal-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-     ![Sonuç listesinde rensel](common/search-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma Rensel adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının Rensel ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+1. [Azure Portal](https://portal.azure.com/), **Versal** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-Yapılandırma ve Azure AD çoklu oturum açma Rensel ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Fasından yapılan çoklu oturum açmayı yapılandırma](#configure-versal-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Versal test kullanıcısı oluşturma](#create-versal-test-user)**  - kullanıcı Azure AD gösterimini bağlı Rensel Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki alanlar için değerleri girin:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+    a. **Tanımlayıcı** metin kutusuna bir URL yazın: `VERSAL`
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
-
-Azure AD çoklu oturum açma ile Rensel yapılandırmak için aşağıdaki adımları gerçekleştirin:
-
-1. İçinde [Azure portalında](https://portal.azure.com/), **Rensel** uygulama tümleştirme sayfasında **çoklu oturum açma**.
-
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
-
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
-
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
-
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında, aşağıdaki adımları gerçekleştirin:
-
-    ![Çoklu oturum açma bilgileri Versal etki alanı ve URL'ler](common/idp-intiated.png)
-
-    a. İçinde **tanımlayıcı** metin kutusuna bir URL yazın: `VERSAL`
-
-    b. İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://versal.com/sso/saml/orgs/<organization_id>`
+    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://versal.com/sso/saml/orgs/<organization_id>`
 
     > [!NOTE]
-    > Yanıt URL'si değeri gerçek değil. Bu değer, gerçek yanıt URL'si ile güncelleştirin. İlgili kişi [Rensel istemci Destek ekibine](https://support.versal.com/hc/) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Yanıt URL 'SI değeri gerçek değil. Bu değeri gerçek yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Versal istemci desteği ekibine](https://support.versal.com/hc/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. Versal uygulama, özel öznitelik eşlemelerini SAML belirteci öznitelikleri yapılandırmanıza ekleyin gerektiren belirli bir biçimde SAML onaylamalarını bekler. Varsayılan öznitelikler listesinde aşağıdaki ekran görüntüsünde gösterilmektedir oysa **NameIdentifier** ile eşlenmiş **user.userprincipalname**. Versal uygulama bekliyor **NameIdentifier** ile eşlenecek **user.mail**tıklayarak özellik eşlemesi düzenlemeniz gerekir böylece **Düzenle** simgesi ve değişiklik öznitelik eşleme.
+1. Versal uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Versal uygulaması **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![image](common/edit-attribute.png)
 
-6. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **Federasyon meta veri XML**  bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-7. Üzerinde **Rensel kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+1. Kurulumu **Ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-    b. Azure AD Tanımlayıcısı
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-    c. Oturum Kapatma URL'si
-
-### <a name="configure-versal-single-sign-on"></a>Versal çoklu oturum açmayı yapılandırın
-
-Çoklu oturum açmayı yapılandırma **Rensel** tarafı, indirilen göndermek için ihtiyacınız **Federasyon meta verileri XML** ve uygun Azure portalına kopyalanan URL'lerden [Versal Destek ekibine](https://support.versal.com/hc/). Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
-
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
-
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
-
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
-
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Seçin **yeni kullanıcı** ekranın üstünde.
-
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. İçinde **adı** alana **BrittaSimon**.
-  
-    b. İçinde **kullanıcı adı** alan türü brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
-
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Azure çoklu oturum açma için Rensel erişim vererek kullanmak Britta Simon etkinleştirin.
+Bu bölümde, Versal 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **Rensel**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Versal**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-2. Uygulamalar listesinde **Rensel**.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Uygulamalar listesinde fasından yapılan bağlantı](common/all-applications.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+## <a name="configure-versal-sso"></a>Versal SSO 'yu yapılandırma
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
-
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
-
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+**Versal** tarafında çoklu oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [Versal destek ekibine](https://support.versal.com/hc/)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 
 ### <a name="create-versal-test-user"></a>Versal test kullanıcısı oluşturma
 
-Bu bölümde, Britta Simon Rensel içinde adlı bir kullanıcı oluşturun. İzleyin [SAML oluşturma, kullanıcı test](https://support.versal.com/hc/articles/115011672887-Creating-a-SAML-test-user) Britta Simon kuruluşunuzdaki kullanıcı oluşturmak için destek Kılavuzu. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce Rensel etkinleştirildi. 
+Bu bölümde, Versal içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Kuruluşunuz içinde B. Simon kullanıcısını oluşturmak için [SAML test Kullanıcı](https://support.versal.com/hc/articles/115011672887-Creating-a-SAML-test-user) desteği kılavuzu oluşturma kılavuzunu izleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların Versal 'da oluşturulup etkinleştirilmesi gerekir. 
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Web sitenizde katıştırılmış Versal kurs kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
-Lütfen [katıştırma kuruluş kursları](https://support.versal.com/hc/en-us/articles/203271866-Embedding-organizational-courses) **SAML çoklu oturum açma** Kılavuzu çoklu oturum açmayı Versal kurs ile Azure AD için destek ekleme hakkında yönergeler için destek. 
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı Web siteniz dahilinde gömülü bir Versal kursu kullanarak test edersiniz.
+Azure AD çoklu oturum açma desteğiyle bir Versal kursu katıştırma hakkında yönergeler için lütfen bkz. [Kurumsal kurslar](https://support.versal.com/hc/articles/203271866-Embedding-organizational-courses) **SAML çoklu oturum açma** desteği Kılavuzu. 
 
-Bir kurs oluşturmak, kuruluşunuzla paylaşma ve kursu katıştırma test etmek için yayımlama gerekecektir. Lütfen [kurs oluşturma](https://support.versal.com/hc/en-us/articles/203722528-Create-a-course), [kurs yayımlama](https://support.versal.com/hc/en-us/articles/203753398-Publishing-a-course), ve [kurs ve learner Yönetimi](https://support.versal.com/hc/en-us/articles/206029467-Course-and-learner-management) daha fazla bilgi için.
+Kurs katıştırmayı test etmek için bir kurs oluşturmanız, kuruluşunuzla paylaşmanız ve bu uygulamayı yayımlamanız gerekir. Daha fazla bilgi için lütfen [Kurs oluşturma](https://support.versal.com/hc/articles/203722528-Create-a-course), [Kurs yayımlama](https://support.versal.com/hc/articles/203753398-Publishing-a-course)ve [Kurs ve öğrenme yönetimi](https://support.versal.com/hc/articles/206029467-Course-and-learner-management) bölümüne bakın.
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile Versal 'i deneyin](https://aad.portal.azure.com/)
 

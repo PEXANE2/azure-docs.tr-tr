@@ -8,21 +8,24 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
-ms.date: 02/22/2019
-ms.openlocfilehash: 8359a8407e93a2b31466342b82539cef04b0fe01
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 12/31/2019
+ms.openlocfilehash: a63087620d50336c67472348da3b7f37fb380635
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802189"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611977"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux ve Windows için Azure Veri Bilimi Sanal Makinesi nedir?
 
 Veri Bilimi Sanal Makinesi (DSVM), veri bilimi yapmak için özel olarak oluşturulan Azure bulut platformunda özelleştirilmiş bir VM görüntüsüdür. Önceden yüklenmiş ve gelişmiş analiz için akıllı uygulamalar oluşturmaya başlamak üzere önceden yapılandırılmış birçok popüler veri bilimi aracı vardır. 
 
 DSVM şu şirket üzerinde kullanılabilir:
++ **Windows Server 2019 (Önizleme)**
++ **Ubuntu 18,04 LTS (Önizleme)**
 + Windows Server 2016
 + Ubuntu 16,04 LTS ve CentOS 7,4
+
 
 > [!NOTE]
 > Derin öğrenme için tüm VM araçları Veri Bilimi Sanal Makinesi katlanmıştır. 
@@ -63,7 +66,7 @@ DSVM 'nin Windows Server 2016 sürümü, derin öğrenme çerçevelerinin GPU s�
 
 Ayrıca, DSVM 'nin Ubuntu, CentOS veya Windows 2016 sürümünü GPU 'lara dayalı olmayan bir Azure sanal makinesine dağıtabilirsiniz. Bu durumda, tüm derin öğrenme çerçeveleri CPU moduna geri dönecektir.
  
-[Kullanılabilir derin öğrenme ve AI çerçeveleri hakkında daha fazla bilgi edinin](dsvm-deep-learning-ai-frameworks.md).
+[Kullanılabilir derin öğrenme ve AI çerçeveleri hakkında daha fazla bilgi edinin](dsvm-tools-deep-learning-frameworks.md).
 
 <a name="included"></a>
 

@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 85fb67248a69a2726fef99ebe4749d61807631e4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/30/2019
+ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010099"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562604"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Dijital TWINS nesne modellerini ve uzamsal zeka grafiğini anlama
 
@@ -58,7 +58,7 @@ Diğer nesne kategorileri şunlardır:
 
 Uzamsal grafik, dijital TWINS nesne modelinde tanımlanan boşlukların, cihazların ve kişilerin hiyerarşik grafiktir. Uzamsal grafik devralma, filtreleme, geçiş, ölçeklenebilirlik ve genişletilebilirliği destekler. Bir REST API koleksiyonu ile uzamsal grafınızı yönetebilir ve bunlarla etkileşim kurabilirsiniz.
 
-Aboneliğinizde bir dijital TWINS hizmeti dağıtırsanız, kök düğümün genel yöneticisi olursunuz. Böylece, tüm yapıya otomatik olarak tam erişim hakkı vermiş olursunuz. Boşluk API 'sini kullanarak grafikte boşluk sağlayın. Algılayıcı API 'sini kullanarak cihaz API 'sini ve algılayıcıları kullanarak hizmetleri sağlayın. [Açık kaynak araçları](https://github.com/Azure-Samples/digital-twins-samples-csharp) , grafiği toplu olarak sağlamak için de kullanılabilir.
+Aboneliğinizde bir dijital TWINS hizmeti dağıtırsanız, kök düğümün genel yöneticisi olursunuz. Böylece, tüm yapıya otomatik olarak tam erişim hakkı vermiş olursunuz. Boşluk API 'sini kullanarak grafikte boşluk sağlayın. Algılayıcı API 'sini kullanarak cihaz API 'sini ve algılayıcıları kullanarak hizmetleri sağlayın. Grafiği toplu olarak sağlamak için [açık kaynak araçları](https://github.com/Azure-Samples/digital-twins-samples-csharp) da kullanılabilir.
 
 **Grafik devralma**. Devralma, bir üst düğümden altındaki tüm düğümlere yönelik olan izinler ve özellikler için geçerlidir. Örneğin, bir rol belirli bir düğümdeki bir kullanıcıya atandığında, Kullanıcı o rolün verilen düğüm ve altındaki her düğüm için bu izinlere sahip olur. Belirli bir düğüm için tanımlanan her özellik anahtarı ve genişletilmiş tür, bu düğümün altındaki tüm düğümler tarafından devralınır.
 

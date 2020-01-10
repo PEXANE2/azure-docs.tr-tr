@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs kullanarak belirli Android uygulamalarına bildirim gönderme | Microsoft Docs
+title: Azure Notification Hubs kullanarak belirli Android uygulamalarına bildirimler gönderme
 description: Azure Notification Hubs kullanarak belirli kullanıcılara anında iletme bildirimleri göndermeyi öğrenin.
 documentationcenter: android
 services: notification-hubs
@@ -17,12 +17,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: c5c9ec26c9387cd9ae129002697210c2b342ab9b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b68d77bfdcf3fee0285b3c03ae0c598a3f6875c0
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385897"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531148"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Notification Hubs ve Google Cloud Messaging (kullanım dışı) kullanarak belirli Android uygulama kullanıcılarına anında Iletme bildirimi
 
@@ -40,7 +40,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Android uygulamasını güncelleştirme.
 > * Uygulamayı test edin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi uygulamadan önce [Öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlara anında iletme bildirimleri gönderme](notification-hubs-android-push-notification-google-gcm-get-started.md) öğreticisini tamamlayın.
 
@@ -50,7 +50,7 @@ Bu öğreticiyi uygulamadan önce [Öğretici: Azure Notification Hubs ve Google
 
 Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlara anında iletme bildirimleri gönderme](notification-hubs-android-push-notification-google-gcm-get-started.md) öğreticisinde oluşturulan Android uygulamasının güncelleştirilmesidir.
 
-1. @No__t-0 dosyanızı açın, aşağıdaki içerik tanımlarını değiştirin:
+1. `res/layout/activity_main.xml` dosyanızı açın, aşağıdaki içerik tanımlarını değiştirin:
 
     Kullanıcı olarak oturum açmak için yeni EditText denetimleri ekler. Ayrıca gönderdiğiniz bildirimlerin parçası olacak kullanıcı adı etiketi için bir alan da eklenir:
 
@@ -141,7 +141,7 @@ Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
     />  
     </RelativeLayout>
     ```
-2. @No__t-0 dosyanızı açın ve `send_button` tanımını `send_button` dizesini yeniden tanımlayarak aşağıdaki satırlarla değiştirin ve diğer denetimler için dizeler ekleyin:
+2. `res/values/strings.xml` dosyanızı açın ve `send_button` tanımını `send_button` dizeyi yeniden tanımlayarak aşağıdaki satırlarla değiştirin ve diğer denetimler için dizeler ekleyin:
 
     ```xml
     <string name="usernameHint">Username</string>
@@ -152,10 +152,10 @@ Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
     <string name="notification_message_tag_hint">Recipient username</string>
     ```
 
-    @No__t 0 grafik düzeniniz artık aşağıdaki görüntüye benzer şekilde görünmelidir:
+    `main_activity.xml` grafik düzeniniz artık aşağıdaki görüntüye benzer şekilde görünmelidir:
 
     ![][A1]
-3. @No__t-1 sınıfınız ile aynı pakette `RegisterClient` adlı yeni bir sınıf oluşturun. Yeni sınıf dosyası için aşağıdaki kodu kullanın.
+3. `MainActivity` sınıfınız ile aynı pakette `RegisterClient` adlı yeni bir sınıf oluşturun. Yeni sınıf dosyası için aşağıdaki kodu kullanın.
 
     ```java
     import java.io.IOException;
@@ -406,7 +406,7 @@ Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
     }
     ```
 
-    **Oturum aç** düğmesi için `login` işleyicisi, giriş Kullanıcı adı ve parolası (kimlik doğrulama şemanızın kullandığı belirteci temsil eder) kullanarak temel bir kimlik doğrulama belirteci oluşturur, ardından arka ucunu kayıt için çağırmak üzere `RegisterClient` kullanır.
+    **Oturum açma** düğmesi için `login` işleyicisi, giriş Kullanıcı adı ve parolası (kimlik doğrulama şemanızın kullandığı belirteci temsil eder) kullanarak temel bir kimlik doğrulama belirteci oluşturur, ardından arka ucunu kayıt için çağırmak üzere `RegisterClient` kullanır.
 
     `sendPush` yöntemi, kullanıcı etiketine dayalı olarak kullanıcıya güvenli bir bildirim tetiklemek için arka ucu çağırır. `sendPush` tarafından hedeflenen platform bildirim hizmeti, geçirilen `pns` dizesine bağlıdır.
 
@@ -461,7 +461,7 @@ Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging ku
         }
     }
     ```
-12. @No__t-0 dosyasında, `buildTypes` bölümünden sonraki `android` bölümüne aşağıdaki satırı ekleyin.
+12. `build.gradle` dosyasında, `buildTypes` bölümünden sonra `android` bölümüne aşağıdaki satırı ekleyin.
 
     ```java
     useLibrary 'org.apache.http.legacy'

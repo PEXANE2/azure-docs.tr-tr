@@ -1,26 +1,15 @@
 ---
-title: Azure Service Fabric kümesine CI/CD ile kapsayıcı uygulaması dağıtma
+title: CI/CD ile kapsayıcı uygulaması dağıtma
 description: Bu öğreticide, Visual Studio Azure DevOps kullanarak bir Azure Service Fabric kapsayıcı uygulaması için sürekli tümleştirme ve dağıtım ayarlamayı öğreneceksiniz.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/29/2018
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: a2dc6aeb7dc2a62c543a58c322c23c9661c6940a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832736"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614144"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesine CI/CD ile kapsayıcı uygulaması dağıtma
 
@@ -34,7 +23,7 @@ Serinin ikinci bölümünde şunları öğrenirsiniz:
 > * Visual Studio 'da bir yayın tanımı oluşturun Takım Gezgini
 > * Uygulamayı otomatik olarak dağıtma ve yükseltme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -65,7 +54,7 @@ E-postanızı doğrulayın ve **Hesap** açılır penceresinde kuruluşunuzu se�
 
 Depoyu yayımlamak, hesabınızda yerel depoyla aynı adda yeni bir takım projesi oluşturur. Mevcut takım projesinde depoyu oluşturmak için, **Depo adının** yanındaki **Gelişmiş**’e tıklayın ve bir takım projesi seçin. **Web üzerinde görüntüleyin**’i seçerek kodunuzu web’de görüntüleyebilirsiniz.
 
-## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Azure Pipelines ile sürekli teslimi yapılandırma
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Azure işlem hatlarında sürekli teslimi Yapılandır
 
 Azure DevOps derleme tanımı, sıralı olarak yürütülen bir yapı adımları kümesinden oluşan bir iş akışını açıklar. Service Fabric kümenize dağıtmak üzere Service Fabric uygulama paketini ve diğer yapıtları üreten bir derleme tanımı oluşturun. Azure DevOps [derleme tanımları](https://www.visualstudio.com/docs/build/define/create)hakkında daha fazla bilgi edinin. 
 
@@ -147,7 +136,7 @@ Derleme tamamlandığında otomatik olarak bir yayın oluşturulması için sür
 
 Yayını el ile oluşturmak için **+ Yayın** -> **Yayın Oluştur** -> **Oluştur**'u seçin. Yayının ilerleme durumunu **Yayınlar** sekmesinden takip edebilirsiniz.
 
-Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir Web tarayıcısı açın ve `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`gidin.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170616.3").
+Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir web tarayıcısı açın ve gidin `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170616.3").
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Değişiklikleri işleme ve gönderme, yayını tetikleme
 
@@ -167,7 +156,7 @@ Değişikliklerin Azure DevOps'a gönderilmesi otomatik olarak derlemeyi tetikle
 
 Derlemenizin ilerleme durumunu denetlemek için, Visual Studio'nun **Takım Gezgini**'nde **Derlemeler** sekmesine geçin.  Derlemenin başarıyla yürütüldüğünü doğruladıktan sonra, uygulamanızı kümeye dağıtan bir yayın tanımı belirleyin.
 
-Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir Web tarayıcısı açın ve `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`gidin.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170815.3").
+Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir web tarayıcısı açın ve gidin `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170815.3").
 
 ![Service Fabric Explorer][sfx1]
 

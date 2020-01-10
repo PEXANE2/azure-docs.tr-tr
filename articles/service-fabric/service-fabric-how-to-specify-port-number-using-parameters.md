@@ -1,39 +1,32 @@
 ---
-title: Azure Service Fabric'te parametrelerini kullanarak bir hizmet bağlantı noktası numarasını belirtme | Microsoft Docs
-description: Service Fabric'te uygulama bağlantı noktasını belirtmek için parametreleri kullanmayı gösterir
-documentationcenter: .net
+title: Parametreleri kullanarak bir hizmetin bağlantı noktası numarasını belirtme
+description: Service Fabric içindeki bir uygulama için bağlantı noktasını belirtmek üzere parametrelerin nasıl kullanılacağını gösterir
 author: mikkelhegn
-manager: markfuss
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: d69e02126564388bf045693b9960e6e574307641
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720255"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609868"
 ---
-# <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Service Fabric'te parametrelerini kullanarak bir hizmet bağlantı noktası numarasını belirtme
+# <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Service Fabric parametreleri kullanarak bir hizmetin bağlantı noktası numarasını belirtme
 
-Bu makalede, Visual Studio kullanarak Service Fabric'te parametrelerini kullanarak bir hizmet bağlantı noktası numarasını belirtin işlemini göstermektedir.
+Bu makalede, Visual Studio kullanarak Service Fabric parametreler kullanarak bir hizmetin bağlantı noktası numarasını nasıl belirtebileceğiniz gösterilmektedir.
 
-## <a name="procedure-for-specifying-the-port-number-of-a-service-using-parameters"></a>Yordam parametreleri kullanarak bir hizmet bağlantı noktası sayısını belirtmek için
+## <a name="procedure-for-specifying-the-port-number-of-a-service-using-parameters"></a>Parametreleri kullanarak bir hizmetin bağlantı noktası numarasını belirtme yordamı
 
-Bu örnekte, asp.net core web API'niz bir parametre kullanarak bağlantı noktası numarasını ayarlayın.
+Bu örnekte, asp.net Core Web API 'niz için bağlantı noktası numarasını bir parametre kullanarak ayarlarsınız.
 
-1. Visual Studio'yu açın ve yeni bir Service Fabric uygulaması oluşturma.
-1. Durum bilgisi olmayan ASP.NET Core şablonu seçin.
-1. Web API'nizi seçin.
-1. ServiceManifest.xml dosyasını açın.
-1. Hizmetiniz için belirtilen bitiş noktası adını not edin. `ServiceEndpoint` varsayılan değerdir.
-1. ApplicationManifest.xml dosyasını açın
-1. İçinde `ServiceManifestImport` öğesi, yeni bir `RessourceOverrides` öğeyle uç ServiceManifest.xml dosyanıza bir başvuru.
+1. Visual Studio 'Yu açın ve yeni bir Service Fabric uygulaması oluşturun.
+1. Durum bilgisi olmayan ASP.NET Core şablonunu seçin.
+1. Web API 'sini seçin.
+1. ServiceManifest. xml dosyasını açın.
+1. Hizmetiniz için belirtilen uç noktanın adını aklınızda edin. `ServiceEndpoint` varsayılan değerdir.
+1. ApplicationManifest. xml dosyasını açın
+1. `ServiceManifestImport` öğesinde, ServiceManifest. xml dosyanızdaki uç noktaya başvuruya sahip yeni bir `RessourceOverrides` öğesi ekleyin.
 
     ```xml
       <ServiceManifestImport>
@@ -47,7 +40,7 @@ Bu örnekte, asp.net core web API'niz bir parametre kullanarak bağlantı noktas
       </ServiceManifestImport>
     ```
 
-1. İçinde `Endpoint` öğesi, bir parametre kullanarak herhangi bir öznitelik şimdi geçersiz. Bu örnekte, belirttiğiniz `Port` kullanarak köşeli ayraç - Örneğin, bir parametre adı ayarlayın `[MyWebAPI_PortNumber]`
+1. `Endpoint` öğesinde, artık bir parametreyi kullanarak herhangi bir özniteliği geçersiz kılabilirsiniz. Bu örnekte `Port` belirtin ve köşeli ayraçlar kullanarak bir parametre adına ayarlarsınız. Örneğin, `[MyWebAPI_PortNumber]`
 
     ```xml
       <ServiceManifestImport>
@@ -61,7 +54,7 @@ Bu örnekte, asp.net core web API'niz bir parametre kullanarak bağlantı noktas
       </ServiceManifestImport>
     ```
 
-1. ApplicationManifest.xml dosyasının hala, ardından parametresinde belirttiğiniz `Parameters` öğesi
+1. Hala ApplicationManifest. xml dosyasında, `Parameters` öğesinde parametresini belirtirsiniz
 
     ```xml
       <Parameters>
@@ -69,7 +62,7 @@ Bu örnekte, asp.net core web API'niz bir parametre kullanarak bağlantı noktas
       </Parameters>
     ```
 
-1. Ve tanımlayan bir `DefaultValue`
+1. Ve bir `DefaultValue` tanımlayın
 
     ```xml
       <Parameters>
@@ -77,8 +70,8 @@ Bu örnekte, asp.net core web API'niz bir parametre kullanarak bağlantı noktas
       </Parameters>
     ```
 
-1. ApplicationParameters klasörü açın ve `Cloud.xml` dosyası
-1. Uzak bir kümeye yayımlama sırasında kullanılacak farklı bir bağlantı noktası belirtmek için bu dosyaya bağlantı noktası numarası ile parametre ekleyin.
+1. ApplicationParameters klasörünü ve `Cloud.xml` dosyasını açın
+1. Uzak bir kümeye yayımlarken kullanılacak farklı bir bağlantı noktası belirtmek için, bu dosyaya bağlantı noktası numarası ile parametresini ekleyin.
 
     ```xml
       <Parameters>
@@ -86,9 +79,9 @@ Bu örnekte, asp.net core web API'niz bir parametre kullanarak bağlantı noktas
       </Parameters>
     ```
 
-Profili Visual Studio'dan myfirstcontainer kullanarak uygulamanızı yayımlama yayımlanması sırasında hizmetiniz 80 numaralı bağlantı noktasını kullanmak üzere yapılandırılır. MyWebAPI_PortNumber parametresini belirtmeden bir uygulamayı dağıtırsanız, hizmet bağlantı noktası 8080 kullanır.
+Cloud. xml yayımlama profilini kullanarak uygulamanızı Visual Studio 'dan yayımlarken, hizmetiniz 80 numaralı bağlantı noktasını kullanacak şekilde yapılandırılır. Uygulamayı MyWebAPI_PortNumber parametresi belirtmeden dağıtırsanız, hizmet 8080 numaralı bağlantı noktasını kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede açıklanan kavramları bazıları hakkında daha fazla bilgi için bkz: [birden çok ortamları makaleler için uygulamaları yönetme](service-fabric-manage-multiple-environment-app-configuration.md).
+Bu makalede ele alınan temel kavramlardan bazıları hakkında daha fazla bilgi edinmek için bkz. [birden çok ortam için uygulamaları yönetme makaleleri](service-fabric-manage-multiple-environment-app-configuration.md).
 
-Visual Studio içinde kullanılabilir olan diğer uygulama yönetim özellikleri hakkında daha fazla bilgi için bkz: [Visual Studio'da Service Fabric uygulamalarınızı yönetmek](service-fabric-manage-application-in-visual-studio.md).
+Visual Studio 'da kullanılabilen diğer uygulama yönetimi özellikleri hakkında daha fazla bilgi için bkz. [Visual Studio 'da Service Fabric uygulamalarınızı yönetme](service-fabric-manage-application-in-visual-studio.md).

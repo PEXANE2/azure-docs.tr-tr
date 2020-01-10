@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 1686e86600fb28165ae44e7ca6c0c406dfa26d72
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a85a9c28acd2d50d95159883a01b27c8ed1d2f1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74065591"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461084"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -125,7 +125,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="create-the-vm-and-supporting-resources"></a>VM ve destekleyici kaynakları oluşturma
 
-Tüm kaynaklar bir [kaynak grubunda](../../azure-resource-manager/resource-group-overview.md)bulunmalıdır.
+Tüm kaynaklar bir [kaynak grubunda](../../azure-resource-manager/management/overview.md)bulunmalıdır.
 
 1. Bir kaynak grubu oluşturmak için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
 
@@ -496,7 +496,7 @@ Dağıtımın birçok yönü, sanal makineniz için bir boyuta karar verirken g�
     input('Press enter to continue...')
     ```
 
-### <a name="add-a-data-disk-to-the-vm"></a>VM 'ye veri diski ekleme
+### <a name="add-a-data-disk-to-the-vm"></a>VM’ye veri diski ekleme
 
 Sanal makinelerde VHD olarak depolanan bir veya daha fazla [veri diski](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) olabilir.
 

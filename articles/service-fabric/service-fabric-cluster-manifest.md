@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric tek başına kümenizi yapılandırma | Microsoft Docs
+title: Azure Service Fabric tek başına kümenizi yapılandırma
 description: Tek başına veya şirket içi Azure Service Fabric kümenizi nasıl yapılandıracağınızı öğrenin.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: ca04539049766e1f053d74b3a8536f154c3fd830
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458366"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Tek başına Windows kümesi için yapılandırma ayarları
 Bu makalede, *Kümeconfig. JSON* dosyasında ayarlanyüklenebilen tek başına Azure Service Fabric kümesinin yapılandırma ayarları açıklanmaktadır. Bu dosyayı, küme düğümleri, güvenlik yapılandırmalarının yanı sıra hata ve yükseltme etki alanları açısından ağ topolojisi ile ilgili bilgileri belirtmek için kullanacaksınız.  Yapılandırma ayarlarını değiştirdikten veya ekledikten sonra [tek başına küme oluşturabilir](service-fabric-cluster-creation-for-windows-server.md) veya [tek başına bir kümenin yapılandırmasını yükseltebilirsiniz](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -73,11 +64,11 @@ Service Fabric kümenin en az üç düğüm içermesi gerekir. Bu bölüme, kuru
 
 | **Düğüm yapılandırması** | **Açıklama** |
 | --- | --- |
-| nodeName |Düğüme kolay bir ad verebilirsiniz. |
-| Belirlenemiyor |Bir komut penceresi açıp `ipconfig` yazarak düğümünüz IP adresini bulun. IPV4 adresine göz atar ve bunu IPAddress değişkenine atayın. |
-| nodeTypeRef |Her düğüme farklı bir düğüm türü atanabilir. [Düğüm türleri](#node-types) aşağıdaki bölümde tanımlanmıştır. |
-| faultDomain |Hata etki alanları, paylaşılan fiziksel bağımlılıklar nedeniyle, küme yöneticilerinin aynı anda başarısız olabilecek fiziksel düğümleri tanımlamasını sağlar. |
-| upgradeDomain |Yükseltme etki alanları, Service Fabric yükseltmeleri için aynı anda kapatılmış düğüm kümelerini tanımlar. Herhangi bir fiziksel gereksinimlerle sınırlı olmadıkları için, hangi düğümlerin yükseltme etki alanlarına atanacağını seçebilirsiniz. |
+| NodeName |Düğüme kolay bir ad verebilirsiniz. |
+| Belirlenemiyor |Bir komut penceresi açıp `ipconfig`yazarak düğümünüz IP adresini bulun. IPV4 adresine göz atar ve bunu IPAddress değişkenine atayın. |
+| NodeTypeRef |Her düğüme farklı bir düğüm türü atanabilir. [Düğüm türleri](#node-types) aşağıdaki bölümde tanımlanmıştır. |
+| FaultDomain |Hata etki alanları, paylaşılan fiziksel bağımlılıklar nedeniyle, küme yöneticilerinin aynı anda başarısız olabilecek fiziksel düğümleri tanımlamasını sağlar. |
+| UpgradeDomain |Yükseltme etki alanları, Service Fabric yükseltmeleri için aynı anda kapatılmış düğüm kümelerini tanımlar. Herhangi bir fiziksel gereksinimlerle sınırlı olmadıkları için, hangi düğümlerin yükseltme etki alanlarına atanacağını seçebilirsiniz. |
 
 ## <a name="cluster-properties"></a>Küme özellikleri
 Kümeconfig. json ' daki Özellikler bölümü, kümeyi gösterildiği gibi yapılandırmak için kullanılır:
@@ -156,7 +147,7 @@ Ad, bu belirli düğüm türü için kolay addır. Bu düğüm türünde bir dü
 * leaseDriverEndpointPort, düğümlerin hala etkin olup olmadığını bulmak için küme Kiralama sürücüsü tarafından kullanılan bağlantı noktasıdır. 
 * serviceConnectionEndpointPort, belirli bir düğümdeki Service Fabric istemcisiyle iletişim kurmak üzere bir düğüme dağıtılan uygulamalar ve hizmetler tarafından kullanılan bağlantı noktasıdır.
 * httpGatewayEndpointPort, kümeye bağlanmak için Service Fabric Explorer tarafından kullanılan bağlantı noktasıdır.
-* ephemeralPorts [, işletim sistemi tarafından kullanılan dinamik bağlantı noktalarını](https://support.microsoft.com/kb/929851)geçersiz kılar. Service Fabric, bu bağlantı noktalarının bir parçasını uygulama bağlantı noktaları olarak kullanır ve kalan işletim sistemi için kullanılabilir. Ayrıca, bu aralığı işletim sisteminde mevcut olan aralığa eşler, bu nedenle tüm amaçlarla, örnek JSON dosyalarında verilen aralıkları kullanabilirsiniz. Başlangıç ve bitiş bağlantı noktaları arasındaki farkın en az 255 olduğundan emin olun. Bu fark çok düşükse çakışmalar ile karşılaşabilirsiniz. bu Aralık işletim sistemi ile paylaşılmıştır. Yapılandırılmış dinamik bağlantı noktası aralığını görmek için `netsh int ipv4 show dynamicport tcp` ' ı çalıştırın.
+* ephemeralPorts [, işletim sistemi tarafından kullanılan dinamik bağlantı noktalarını](https://support.microsoft.com/kb/929851)geçersiz kılar. Service Fabric, bu bağlantı noktalarının bir parçasını uygulama bağlantı noktaları olarak kullanır ve kalan işletim sistemi için kullanılabilir. Ayrıca, bu aralığı işletim sisteminde mevcut olan aralığa eşler, bu nedenle tüm amaçlarla, örnek JSON dosyalarında verilen aralıkları kullanabilirsiniz. Başlangıç ve bitiş bağlantı noktaları arasındaki farkın en az 255 olduğundan emin olun. Bu fark çok düşükse çakışmalar ile karşılaşabilirsiniz. bu Aralık işletim sistemi ile paylaşılmıştır. Yapılandırılmış dinamik bağlantı noktası aralığını görmek için `netsh int ipv4 show dynamicport tcp`çalıştırın.
 * applicationPorts, Service Fabric uygulamalar tarafından kullanılan portlardır. Uygulama bağlantı noktası aralığı uygulamalarınızın uç nokta gereksinimini kapsayacak kadar büyük olmalıdır. Bu Aralık, makinedeki dinamik bağlantı noktası aralığından, yani ephemeralPorts, yapılandırmada ayarlandığı şekilde özel olmalıdır. Service Fabric, her yeni bağlantı noktası gerektiğinde bu bağlantı noktalarını kullanır ve bu bağlantı noktaları için güvenlik duvarını açma işlemini gerçekleştirir. 
 * Smarproxyendpointport isteğe bağlı bir ters proxy uç noktasıdır. Daha fazla bilgi için bkz. [ters proxy Service Fabric](service-fabric-reverseproxy.md). 
 

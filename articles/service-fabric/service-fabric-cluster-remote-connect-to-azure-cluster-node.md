@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric küme düğümüne uzaktan bağlanma | Microsoft Docs
+title: Azure Service Fabric küme düğümüne uzaktan bağlanma
 description: Bir ölçek kümesi örneğine (Service Fabric küme düğümü) uzaktan nasıl bağlanacağınızı öğrenin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 12508fd5297691f06bce46e056527672083c3a91
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599936"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458324"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Sanal makine ölçek kümesi örneğine veya bir küme düğümüne uzaktan Bağlan
 Azure 'da çalışan bir Service Fabric kümesinde, tanımladığınız her küme düğüm türü [bir sanal makine ayrı ölçeğini ayarlar](service-fabric-cluster-nodetypes.md).  Belirli ölçek kümesi örneklerine (küme düğümleri) uzaktan bağlanabilirsiniz.  Tek örnekli VM 'lerden farklı olarak, ölçek kümesi örneklerinin kendi sanal IP adresleri yoktur. Bu, belirli bir örneğe uzaktan bağlanmak için kullanabileceğiniz bir IP adresi ve bağlantı noktası ararken zor olabilir.
@@ -28,9 +17,9 @@ Belirli bir örneğe uzaktan bağlanmak için kullanabileceğiniz bir IP adresi 
 
 1. Uzak Masaüstü Protokolü (RDP) için gelen NAT kurallarını alın.
 
-    Genellikle, kümenizde tanımlanan her düğüm türünün kendi sanal IP adresi ve ayrılmış yük dengeleyici vardır. Varsayılan olarak, bir düğüm türü için yük dengeleyici aşağıdaki biçimde adlandırılır: *Lb-{Cluster-Name}-{Node-Type}* ; Örneğin, *lb-MyCluster-ön uç*. 
+    Genellikle, kümenizde tanımlanan her düğüm türünün kendi sanal IP adresi ve ayrılmış yük dengeleyici vardır. Varsayılan olarak, bir düğüm türü için yük dengeleyici şu biçimde adlandırılır: *lb-{Cluster-Name}-{Node-Type}* ; Örneğin, *lb-MyCluster-ön uç*. 
     
-    Yük dengeleyicinizin Azure Portal sayfasında, **Ayarlar** > **gelen NAT kuralları**' nı seçin: 
+    Yük dengeleyicinizin sayfasında Azure portal ' de, **gelen NAT kuralları** > **Ayarlar** ' ı seçin: 
 
     ![Yük dengeleyici gelen NAT kuralları](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
@@ -40,7 +29,7 @@ Belirli bir örneğe uzaktan bağlanmak için kullanabileceğiniz bir IP adresi 
 
     Her düğüm için, IP adresi **hedef** sütununda görünür, **hedef** sütunu ölçek kümesi örneğine verir ve **hizmet** sütunu bağlantı noktası numarasını sağlar. Uzak bağlantı için bağlantı noktaları, bağlantı noktası 3389 ' den başlayarak her bir düğüme artan düzende ayrılır.
 
-    Ayrıca, gelen NAT kurallarını `Microsoft.Network/loadBalancers` kümeniz için Kaynak Yöneticisi şablonunun bölümünde bulabilirsiniz.
+    Ayrıca, gelen NAT kurallarını kümenizin Kaynak Yöneticisi şablonunun `Microsoft.Network/loadBalancers` bölümünde bulabilirsiniz.
     
 2. Bir düğüm için bağlantı noktası eşlemeyi hedeflemek üzere gelen bağlantı noktasını onaylamak için, kuralına tıklayıp **hedef bağlantı noktası** değerine bakabilirsiniz. Aşağıdaki ekran görüntüsünde, önceki adımda **ön uç (örnek 1)** düğümü IÇIN gelen NAT kuralı gösterilmektedir. (Gelen) bağlantı noktası numarası 3390 olmasına karşın hedef bağlantı noktasının hedefteki RDP hizmetinin bağlantı noktası 3389 ' e eşlendiğine dikkat edin.  
 

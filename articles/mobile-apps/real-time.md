@@ -1,29 +1,29 @@
 ---
-title: Azure SignalR ile kolayca gerçek zamanlı mobil uygulamalar oluşturun
-description: Azure SignalR kullanarak gerçek zamanlı uygulamalar oluşturmanıza olanak sağlayan hizmet hakkında bilgi edinin.
+title: Azure SignalR hizmeti ile kolayca gerçek zamanlı mobil uygulamalar oluşturun
+description: Azure SignalR hizmetini kullanarak gerçek zamanlı uygulamalar oluşturmanıza olanak sağlayan hizmet hakkında bilgi edinin.
 author: elamalani
 ms.assetid: 34a8a070-0123-4678-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 566f1f8b192a108b1ce7e3153eac9a4daf192c28
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 988d5f9a66baeae46661ae363029aed0f521c8e4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795880"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454400"
 ---
-# <a name="build-real-time-applications-with-azure-signalr"></a>Azure SignalR ile gerçek zamanlı uygulamalar oluşturun
+# <a name="build-real-time-applications-with-azure-signalr-service"></a>Azure SignalR hizmeti ile gerçek zamanlı uygulamalar oluşturun
 
-[Azure SignalR](https://azure.microsoft.com/services/signalr-service/) , uygulamalara kolayca gerçek zamanlı işlevselliği eklemenize olanak tanır. Bu gerçek zamanlı işlevsellik, hizmetin içerik güncelleştirmelerini bağlı mobil uygulamalara göndereme olanağı sağlar. Sonuç olarak, uygulamalar sunucu yoklamaya gerek kalmadan güncelleştirilir veya güncelleştirmeler için yeni HTTP istekleri gönderir.
+[Azure SignalR hizmeti](https://azure.microsoft.com/services/signalr-service/)sayesinde uygulamalara kolayca gerçek zamanlı işlevler ekleyebilirsiniz. Bu gerçek zamanlı işlevsellik, hizmetin içerik güncelleştirmelerini bağlı mobil uygulamalara göndereme olanağı sağlar. Sonuç olarak, uygulamalar, sunucu yoklamaya veya güncelleştirmeler için yeni HTTP istekleri göndermeye gerek kalmadan güncelleştirilir.
 
-## <a name="azure-signalr-features"></a>Azure SignalR özellikleri
-- **Geniş istemci desteği** -Web ve mobil tarayıcılar, masaüstü uygulamaları, sunucu Işlemi, IoT cihazları ve oyun konsolları gibi çok çeşitli istemcilerle birlikte çalışmaktadır.
-- SignalR hizmeti, **birden fazla örneğinin birlikte çalışarak** milyonlarca mobil uygulama bağlantısına ölçeklenebilmesini sağlar. Ayrıca, parçalama, yüksek kullanılabilirlik veya olağanüstü durum kurtarma amacıyla birden çok genel bölgeyi destekler.
-- Belirli bir bağlantıya, tüm bağlantılara veya belirli bir kullanıcıya ait olan veya rastgele bir gruba yerleştirilmiş bir bağlantı alt kümesine ileti göndermek üzere **farklı mesajlaşma desenleri için zengin API 'Ler sunun** .
+## <a name="azure-signalr-service-features"></a>Azure SignalR hizmeti özellikleri
+- Web ve mobil tarayıcılar, masaüstü uygulamaları, sunucu işlemi, IoT cihazları ve oyun konsolları gibi çok çeşitli istemciler için geniş bir istemci desteğine sahiptir.
+- Birden çok örnek birlikte çalışarak milyonlarca mobil uygulama bağlantısına ölçeklenebilmesini sağlar. Ayrıca, parçalama, yüksek kullanılabilirlik veya olağanüstü durum kurtarma amacıyla birden çok genel bölgeyi destekler.
+- Belirli bir bağlantıya, tüm bağlantılara veya belirli bir kullanıcıya ait olan veya rastgele bir gruba yerleştirilmiş bir bağlantı alt kümesine ileti göndermek üzere farklı mesajlaşma desenleri için zengin API 'Ler sunar.
 
 ## <a name="references"></a>Başvurular
-   - [Azure portalda](https://portal.azure.com)
-   - [Belgelerle](/azure/azure-signalr/signalr-overview)
+   - [Azure Portal](https://portal.azure.com)
+   - [Azure SignalR Hizmeti belgeleri](/azure/azure-signalr/signalr-overview)
    - [Öğreticiler](/azure/azure-signalr/signalr-tutorial-authenticate-azure-functions)

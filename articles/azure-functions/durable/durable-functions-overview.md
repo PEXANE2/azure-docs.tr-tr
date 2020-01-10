@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 684c067f393b1f6037e67d3b49a861341f3353c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 24738e4d6a9f18bccdbc775fa20cccec222a85fb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706134"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561635"
 ---
 # <a name="what-are-durable-functions"></a>Dayanıklı İşlevler nedir?
 
@@ -48,7 +48,7 @@ Dayanıklı İşlevler için birincil kullanım örneği sunucusuz uygulamalarda
 
 Aşağıdaki örnekte gösterildiği gibi, öz işlev zincirleme modelini uygulamak için Dayanıklı İşlevler kullanabilirsiniz.
 
-Bu örnekte, `F1`, `F2`, `F3`ve `F4` değerleri, işlev uygulamasındaki diğer işlevlerin adlarıdır. Normal kesinlik temelli kodlama yapılarını kullanarak denetim akışı uygulayabilirsiniz. Kod yukarıdan aşağı doğru çalışır. Kod, koşul ve döngüler gibi var olan dil denetim akışı semantiğini içerebilir. `try`/`catch`/`finally` bloklarına hata işleme mantığını dahil edebilirsiniz.
+Bu örnekte, `F1`, `F2`, `F3`ve `F4` değerleri aynı işlev uygulamasındaki diğer işlevlerin adlarıdır. Normal kesinlik temelli kodlama yapılarını kullanarak denetim akışı uygulayabilirsiniz. Kod yukarıdan aşağı doğru çalışır. Kod, koşul ve döngüler gibi var olan dil denetim akışı semantiğini içerebilir. `try`/`catch`/`finally` bloklarına hata işleme mantığını dahil edebilirsiniz.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -353,7 +353,7 @@ Dış istemci, [YERLEŞIK HTTP API 'lerini](durable-functions-http-api.md#raise-
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-Bir olay, başka bir işlevden dayanıklı düzenleme istemcisi kullanılarak da oluşturulabilir:
+Aynı zamanda aynı işlev uygulamasındaki başka bir işlevden dayanıklı düzenleme istemcisi kullanılarak bir olay da oluşturulabilir:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -507,7 +507,7 @@ Güvenilir ve uzun süreli yürütme garantisi sağlamak için, Orchestrator iş
 
 ## <a name="billing"></a>Faturalandırma
 
-Dayanıklı İşlevler Azure Işlevleri ile aynı faturalandırılır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/). Azure Işlevleri [Tüketim planında](../functions-scale.md#consumption-plan)Orchestrator işlevleri çalıştırıldığında, bazı fatura davranışları göz önünde bulundurulmalıdır. Bu davranışlar hakkında daha fazla bilgi için [dayanıklı işlevler faturalandırma](durable-functions-billing.md) makalesine bakın.
+Dayanıklı İşlevler Azure Işlevleri ile aynı faturalandırılır. Daha fazla bilgi için [Azure işlevleri fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/). Azure Işlevleri [Tüketim planında](../functions-scale.md#consumption-plan)Orchestrator işlevleri çalıştırıldığında, bazı fatura davranışları göz önünde bulundurulmalıdır. Bu davranışlar hakkında daha fazla bilgi için [dayanıklı işlevler faturalandırma](durable-functions-billing.md) makalesine bakın.
 
 ## <a name="jump-right-in"></a>Hemen geç
 

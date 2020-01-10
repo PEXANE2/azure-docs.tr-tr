@@ -3,12 +3,12 @@ title: Azure Işlevlerinde tüketim planı maliyetlerini tahmin etme
 description: İşlev uygulamanızı Azure 'da bir tüketim planında çalıştırırken tabi olabilecek maliyetleri daha iyi tahmin etme hakkında bilgi edinin.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9d81c99f3602e3d7ed5508884b0b313ef2f2fcaf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230869"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613067"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Tüketim planı maliyetlerini tahmin etme
 
@@ -89,7 +89,7 @@ Tüketim planı işlev uygulamalarınızın maliyet ile ilgili verilerini grafik
 
     ![Grafiğe eklemek için bir işlevler uygulama ölçümü tanımlayın](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 
-1. Grafiğe **işlev yürütme birimleri** eklemek Için **ölçüm Ekle** ve 2-4 adımlarını tekrarlayın ' i seçin. 
+1. Grafiğe **Işlev yürütme birimleri** eklemek Için **ölçüm Ekle** ve 2-4 adımlarını tekrarlayın ' i seçin. 
 
 Elde edilen grafik, seçilen zaman aralığındaki her iki yürütme ölçümlerinin toplamını içerir. Bu durumda iki saattir.
 
@@ -188,7 +188,7 @@ Bu komut, aşağıdaki örnekte olduğu gibi görünen bir JSON yükü döndür�
   ]
 }
 ```
-Bu belirli yanıt, uygulamanın 1110000000 MB-milisaniye (1083,98 GB-saniye) tükettiği `2019-09-11T23:18``2019-09-11T21:46` gösterir.
+Bu belirli yanıt, uygulamanın 1110000000 MB-milisaniyelik (1083,98 GB-saniye) `2019-09-11T23:18``2019-09-11T21:46` olduğunu gösterir.
 
 ## <a name="determine-memory-usage"></a>Bellek kullanımını belirleme
 
@@ -208,12 +208,12 @@ Sonuçlar aşağıdaki örneğe benzer şekilde görünür:
 
 | zaman damgası \[UTC\]          | ad          | değer       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 | Özel baytlar | 209.932.288 |
-| 9/12/2019, 1:06:14\.994 | Özel baytlar | 212.189.184 |
-| 9/12/2019, 1:06:30\.010 | Özel baytlar | 231.714.816 |
-| 9/12/2019, 1:07:15\.040 | Özel baytlar | 210.591.744 |
-| 9/12/2019, 1:12:16\.285 | Özel baytlar | 216.285.184 |
-| 9/12/2019, 1:12:31\.376 | Özel baytlar | 235.806.720 |
+| 9/12/2019, 1:05:14\.947 | Özel Baytlar | 209.932.288 |
+| 9/12/2019, 1:06:14\.994 | Özel Baytlar | 212.189.184 |
+| 9/12/2019, 1:06:30\.010 | Özel Baytlar | 231.714.816 |
+| 9/12/2019, 1:07:15\.040 | Özel Baytlar | 210.591.744 |
+| 9/12/2019, 1:12:16\.285 | Özel Baytlar | 216.285.184 |
+| 9/12/2019, 1:12:31\.376 | Özel Baytlar | 235.806.720 |
 
 ## <a name="function-level-metrics"></a>İşlev düzeyi ölçümleri
 

@@ -1,25 +1,14 @@
 ---
-title: Linux üzerinde Azure Service Fabric kapsayıcı uygulaması oluşturma | Microsoft Docs
+title: Linux 'ta Azure Service Fabric kapsayıcı uygulaması oluşturma
 description: Azure Service Fabric üzerinde ilk Linux kapsayıcı uygulamanızı oluşturun. Uygulamanızla bir Docker görüntüsü oluşturun, görüntüyü bir kapsayıcı kayıt defterine iletin, bir Service Fabric kapsayıcı uygulaması oluşturup dağıtın.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/4/2019
-ms.author: atsenthi
-ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650664"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457965"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 > [!div class="op_single_selector"]
@@ -31,7 +20,7 @@ Bir Service Fabric kümesindeki Linux kapsayıcısında mevcut olan bir uygulama
 > [!NOTE]
 > Bu makale, bir Linux geliştirme ortamı için geçerlidir.  Service Fabric kümesi çalışma zamanının ve Docker çalışma zamanının aynı işletim sisteminde çalışıyor olması gerekir.  Linux kapsayıcılarını bir Windows kümesinde çalıştıramazsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Şunları çalıştıran bir geliştirme bilgisayarı:
   * [Service Fabric SDK’sı ve araçları](service-fabric-get-started-linux.md).
   * [Linux için Docker CE](https://docs.docker.com/engine/installation/#prior-releases). 
@@ -42,7 +31,7 @@ Bir Service Fabric kümesindeki Linux kapsayıcısında mevcut olan bir uygulama
 ## <a name="define-the-docker-container"></a>Docker kapsayıcısını tanımlama
 Docker Hub’ında bulunan [Python görüntüsünü](https://hub.docker.com/_/python/) temel alan bir görüntü oluşturun. 
 
-Bir Dockerfile içinde Docker kapsayıcınızı belirtin. Dockerfile, kapsayıcınızın içindeki ortamı ayarlama, çalıştırmak istediğiniz uygulamayı yükleme ve bağlantı noktalarını eşleme yönergelerinden oluşur. Dockerfile, görüntüyü oluşturan `docker build` komutunun girdisidir. 
+Docker kapsayıcınızı bir Dockerfile içinde belirtin. Dockerfile, kapsayıcınızın içindeki ortamı ayarlama, çalıştırmak istediğiniz uygulamayı yükleme ve bağlantı noktalarını eşleme yönergelerinden oluşur. Dockerfile, görüntüyü oluşturan `docker build` komutunun girdisidir. 
 
 Boş bir dizin oluşturun ve *Dockerfile* dosyasını oluşturun (dosya uzantısı kullanmayın). Aşağıdakini *Dockerfile* dosyasına ekleyin ve değişikliklerinizi kaydedin:
 
@@ -71,13 +60,13 @@ CMD ["python", "app.py"]
 
 Daha fazla bilgi için [Dockerfile başvurusunu](https://docs.docker.com/engine/reference/builder/) okuyun.
 
-## <a name="create-a-basic-web-application"></a>Temel bir web uygulaması oluşturma
+## <a name="create-a-basic-web-application"></a>Temel bir web uygulaması
 Bağlantı noktası 80 üzerinden dinleyen ve "Merhaba Dünya!" başlığını döndüren bir Flask web uygulaması oluşturun. Aynı dizinde, *requirements.txt* dosyasını oluşturun. Aşağıdakini dosyaya ekleyin ve değişikliklerinizi kaydedin:
 ```
 Flask
 ```
 
-Ayrıca *app.py* dosyasını da oluşturun ve aşağıdaki kod parçacığını ekleyin:
+Ayrıca, *app.py* dosyasını da oluşturun ve aşağıdaki kod parçacığını ekleyin:
 
 ```python
 from flask import Flask
@@ -124,7 +113,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 *name*, çalışan kapsayıcıya bir ad verir (kapsayıcı kimliği yerine).
 
-Çalışan kapsayıcıya bağlanın. 4000 numaralı bağlantı noktasında döndürülen IP adresini işaret eden bir Web tarayıcısı açın, örneğin "http:\//localhost: 4000". "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
+Çalışan kapsayıcıya bağlanın. 4000 numaralı bağlantı noktasında döndürülen IP adresini işaret eden bir Web tarayıcısı açın (örneğin, "http:\//localhost: 4000"). "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
 
 ![Merhaba Dünya!][hello-world]
 
@@ -143,7 +132,7 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>Görüntüyü kapsayıcı kayıt defterine gönderme
 Uygulamanın Docker'da çalıştığını doğruladıktan sonra, görüntüyü Azure Container Registry'de kayıt defterine gönderin.
 
-Kayıt `docker login` defteri [kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için ' i çalıştırın.
+[Kayıt defteri kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için `docker login` çalıştırın.
 
 Aşağıdaki örnekte, bir Azure Active Directory [hizmet sorumlusunun](../active-directory/develop/app-objects-and-service-principals.md) kimliği ve parolası geçirilmiştir. Örneğin, bir otomasyon senaryosu için kayıt defterinize bir hizmet sorumlusu atamış olabilirsiniz. Ya da kayıt defteri Kullanıcı adınızı ve parolanızı kullanarak oturum açmanız gerekir.
 
@@ -176,7 +165,7 @@ Bu görüntüde iş yükü giriş noktası tanımlanmış olduğundan, giriş ko
 
 "1" örnek sayısı belirtin.
 
-Bağlantı noktası eşlemesini uygun biçimde belirtin. Bu makalede, bağlantı noktası eşlemesi olarak sağlamanız ```80:4000``` gerekir. Bunu yaparak, ana makinedeki 4000 numaralı bağlantı noktasına gelen tüm gelen isteklerin kapsayıcıda 80 numaralı bağlantı noktasına yönlendirildiğini yapılandırdınız.
+Bağlantı noktası eşlemesini uygun biçimde belirtin. Bu makalede, bağlantı noktası eşlemesi olarak ```80:4000``` sağlamanız gerekir. Bunu yaparak, ana makinedeki 4000 numaralı bağlantı noktasına gelen tüm gelen isteklerin kapsayıcıda 80 numaralı bağlantı noktasına yönlendirildiğini yapılandırdınız.
 
 ![Kapsayıcılar için Service Fabric Yeoman oluşturucusu][sf-yeoman]
 
@@ -185,7 +174,7 @@ Bağlantı noktası eşlemesini uygun biçimde belirtin. Bu makalede, bağlantı
 Kapsayıcı görüntüsü indirme için farklı kimlik doğrulama türlerini nasıl yapılandıracağınızı öğrenmek için bkz. [kapsayıcı deposu kimlik doğrulaması](configure-container-repository-credentials.md).
 
 ## <a name="configure-isolation-mode"></a>Yalıtım modunu yapılandırma
-6,3 çalışma zamanı sürümüyle, sanal makine yalıtımı Linux kapsayıcıları için desteklenir ve bu nedenle kapsayıcılar için iki yalıtım modunu destekler: işlem ve Hyper-V. Hyper-V yalıtım modu ile, çekirdekler her kapsayıcı ve kapsayıcı ana bilgisayar arasında yalıtılır. Hyper-V yalıtımı, [clear kapsayıcıları](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)kullanılarak uygulanır. Yalıtım modu, uygulama bildirimi dosyasındaki `ServicePackageContainerPolicy` öğesindeki Linux kümeleri için belirtilir. Belirtilebilen yalıtım modları `process`, `hyperv` ve `default` modlarıdır. Varsayılan işlem yalıtım modudur. Aşağıdaki kod parçacığı uygulama bildirimi dosyasında yalıtım modunun nasıl belirtildiğini gösterir.
+6,3 çalışma zamanı sürümüyle, sanal makine yalıtımı Linux kapsayıcıları için desteklenir ve bu nedenle kapsayıcılar için iki yalıtım modunu destekler: işlem ve Hyper-V. Hyper-V yalıtım modu ile, çekirdekler her kapsayıcı ve kapsayıcı ana bilgisayar arasında yalıtılır. Hyper-V yalıtımı, [clear kapsayıcıları](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)kullanılarak uygulanır. Yalıtım modu, uygulama bildirimi dosyasındaki `ServicePackageContainerPolicy` öğesinde Linux kümeleri için belirtilir. Belirtilebilen yalıtım modları `process`, `hyperv` ve `default` modlarıdır. Varsayılan işlem yalıtım modudur. Aşağıdaki kod parçacığı uygulama bildirimi dosyasında yalıtım modunun nasıl belirtildiğini gösterir.
 
 ```xml
 <ServiceManifestImport>
@@ -200,7 +189,7 @@ Kapsayıcı görüntüsü indirme için farklı kimlik doğrulama türlerini nas
 
 
 ## <a name="configure-resource-governance"></a>Kaynak idaresini yapılandırma
-[Kaynak idaresi](service-fabric-resource-governance.md) kapsayıcının konakta kullanabildiği kaynakları kısıtlar. Uygulama bildiriminde belirtilen `ResourceGovernancePolicy` öğesi, hizmet kod paketinin kaynak sınırlarını tanımlamak için kullanılır. Kaynak sınırları aşağıdaki kaynaklar için ayarlanabilir: Bellek, MemorySwap, CpuShares (CPU göreli ağırlığı), Memoryrezervationınmb, BlkioWeight (BlockIO göreli ağırlığı). Bu örnekte, Guest1Pkg hizmet paketi bulunduğu küme düğümlerinde bir çekirdek alır. Bellek sınırları mutlaktır; dolayısıyla, kod paketi 1024 MB bellekle (aynı genel garantili ayırmayla) sınırlıdır. Kod paketleri (kapsayıcılar veya işlemler) bu sınırı aşan miktarda bellek ayıramazlar ve bunu denediklerinde yetersiz bellek özel durumu ortaya çıkar. Kaynak sınırı zorlamasının çalışması için, hizmet paketi içindeki tüm kod paketlerinin bellek sınırlarının belirtilmiş olması gerekir.
+[Kaynak idaresi](service-fabric-resource-governance.md) kapsayıcının konakta kullanabildiği kaynakları kısıtlar. Uygulama bildiriminde belirtilen `ResourceGovernancePolicy` öğesi, hizmet kod paketinin kaynak sınırlarını tanımlamak için kullanılır. Şu kaynaklar için kaynak sınırları ayarlanabilir: Memory, MemorySwap, CpuShares (CPU göreli ağırlığı), MemoryReservationInMB, BlkioWeight (BlockIO göreli ağırlığı). Bu örnekte, Guest1Pkg hizmet paketi bulunduğu küme düğümlerinde bir çekirdek alır. Bellek sınırları mutlaktır; dolayısıyla, kod paketi 1024 MB bellekle (aynı genel garantili ayırmayla) sınırlıdır. Kod paketleri (kapsayıcılar veya işlemler) bu sınırı aşan miktarda bellek ayıramazlar ve bunu denediklerinde yetersiz bellek özel durumu ortaya çıkar. Kaynak sınırı zorlamasının çalışması için, hizmet paketi içindeki tüm kod paketlerinin bellek sınırlarının belirtilmiş olması gerekir.
 
 ```xml
 <ServiceManifestImport>
@@ -243,7 +232,7 @@ ApplicationManifest dosyasındaki **ContainerHostPolicies** kapsamında **Health
     </Policies>
 </ServiceManifestImport>
 ```
-Varsayılan olarak, *ıncludedockerhealthstatusınsystemhealthreport* **true**olarak ayarlanır, *RestartContainerOnUnhealthyDockerHealthStatus* **false**olarak ayarlanır ve *treatcontainerunhealthyıstatusaserror* false olarak ayarlanır. 
+Varsayılan olarak, *ıncludedockerhealthstatusınsystemhealthreport* **true**olarak ayarlanır, *RestartContainerOnUnhealthyDockerHealthStatus* **false**olarak ayarlanır ve *treatcontainerunhealthyıstatusaserror* **false**olarak ayarlanır. 
 
 *RestartContainerOnUnhealthyDockerHealthStatus* özelliği **true** olarak ayarlanırsa, tekrarlanan şekilde durumunun iyi olmadığı bildirilen kapsayıcılar yeniden başlatılır (muhtemelen diğer düğümlerde).
 
@@ -260,7 +249,7 @@ Yerel Service Fabric kümesine bağlanın.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Uygulama paketini kümenin görüntü deposuna kopyalamak, uygulama türünü https://github.com/Azure-Samples/service-fabric-containers/ kaydetmek ve uygulamanın bir örneğini oluşturmak için konumundaki şablonlarda belirtilen Install betiğini kullanın.
+Uygulama paketini kümenin görüntü deposuna kopyalamak, uygulama türünü kaydetmek ve uygulamanın bir örneğini oluşturmak için https://github.com/Azure-Samples/service-fabric-containers/ konumundaki şablonlarda sunulan Install betiğini kullanın.
 
 
 ```bash
@@ -269,7 +258,7 @@ Uygulama paketini kümenin görüntü deposuna kopyalamak, uygulama türünü ht
 
 Bir tarayıcı açın ve http:\//localhost: 19080/Explorer konumundaki Service Fabric Explorer gidin (Mac OS X vagrant kullanılıyorsa, localhost 'u VM 'nin özel IP 'si ile değiştirin). Uygulamalar düğümünü genişletin ve şu anda uygulamanızın türü için bir giriş ve bu türün ilk örneği için başka bir giriş olduğuna dikkat edin.
 
-Çalışan kapsayıcıya bağlanın. 4000 numaralı bağlantı noktasında döndürülen IP adresini işaret eden bir Web tarayıcısı açın, örneğin "http:\//localhost: 4000". "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
+Çalışan kapsayıcıya bağlanın. 4000 numaralı bağlantı noktasında döndürülen IP adresini işaret eden bir Web tarayıcısı açın (örneğin, "http:\//localhost: 4000"). "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
 
 ![Merhaba Dünya!][hello-world]
 
@@ -381,7 +370,7 @@ Bu makalede kullanılan tam hizmet ve uygulama bildirimleri aşağıda verilmiş
 Yeoman kullanılarak zaten oluşturulmuş bir uygulamaya başka bir kapsayıcı hizmeti eklemek için aşağıdaki adımları uygulayın:
 
 1. Dizini mevcut uygulamanın kök dizinine değiştirin. Örneğin Yeoman tarafından oluşturulan uygulama `MyApplication` ise `cd ~/YeomanSamples/MyApplication` olacaktır.
-2. `yo azuresfcontainer:AddService`'i çalıştırın.
+2. `yo azuresfcontainer:AddService` öğesini çalıştırın
 
 <a id="manually"></a>
 

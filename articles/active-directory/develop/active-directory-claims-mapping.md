@@ -1,5 +1,5 @@
 ---
-title: Azure AD kiracı uygulamaları için talepleri özelleştirme
+title: Azure AD kiracı uygulaması taleplerini (PowerShell) özelleştirme
 titleSuffix: Microsoft identity platform
 description: Bu sayfada Azure Active Directory talep eşleştirmesi açıklanmaktadır.
 services: active-directory
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d15631c30566d7588b562f1bb0d6ba5280e699
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6ad2d6ec7a98a82917916bba2930149705ebfd87
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918432"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531080"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -143,7 +143,7 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | onprem_sam_account_name |
 | onprem_sid |
 | openid2_id |
-| password |
+| parola |
 | platf |
 | siyalar |
 | pop_jwk |
@@ -361,8 +361,8 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 |Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Açıklama|
 |-----|-----|-----|-----|
-|Birleştir|dize1, dize2, ayırıcı|outputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: "foo@bar.com", dize2: "Sandbox", ayırıcı: "." outputClaim 'de sonuçlar: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|posta|outputClaim|Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: "foo@bar.com", outputClaim: "foo" sonucunu elde ediyor. \@ işareti yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
+|Birleştir|dize1, dize2, ayırıcı|OutputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: "foo@bar.com", dize2: "Sandbox", ayırıcı: "." outputClaim 'de sonuçlar: "foo@bar.com.sandbox"|
+|ExtractMailPrefix|posta|OutputClaim|Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: "foo@bar.com", outputClaim: "foo" sonucunu elde ediyor. \@ işareti yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
 
 **Inputclaim:** Bir talep şeması girdisinden bir dönüşüme veri geçirmek için ınputclaim öğesi kullanın. İki özniteliğe sahiptir: **ClaimTypeReferenceId** ve **dönüştürülebilir tionclaimtype**.
 
@@ -416,7 +416,13 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 ### <a name="custom-signing-key"></a>Özel imzalama anahtarı
 
-Bir talep eşleme ilkesinin etkili olması için hizmet sorumlusu nesnesine özel bir imzalama anahtarı atanmalıdır. Bu, belirteçlerin talep eşleme ilkesinin Oluşturucusu tarafından değiştirildiğini ve uygulamaların kötü amaçlı aktörler tarafından oluşturulan talep eşleme ilkelerine karşı korunmasını sağlar.  Talep eşleme özelliği etkin olan uygulamalar, `appid={client_id}` [OpenID Connect meta veri isteklerine](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)ekleyerek, belirteç imzalama anahtarları için özel bir URI 'yi denetmelidir.  
+Bir talep eşleme ilkesinin etkili olması için hizmet sorumlusu nesnesine özel bir imzalama anahtarı atanmalıdır. Bu, belirteçlerin talep eşleme ilkesinin Oluşturucusu tarafından değiştirildiğini ve uygulamaların kötü amaçlı aktörler tarafından oluşturulan talep eşleme ilkelerine karşı korunmasını sağlar. Özel bir imzalama anahtarı eklemek için `new-azureadapplicationkeycredential` Azure PowerShell cmdlet 'ini kullanarak uygulama nesneniz için bir simetrik anahtar kimlik bilgisi oluşturabilirsiniz. Bu Azure PowerShell cmdlet 'i hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)tıklayın.
+
+Talep eşlemesi etkin olan uygulamalar, `appid={client_id}` [OpenID Connect meta veri isteklerine](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)ekleyerek belirteç imzalama anahtarlarını doğrulamalıdır. Aşağıda, kullanmanız gereken OpenID Connect meta veri belgesinin biçimi verilmiştir: 
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
 
 ### <a name="cross-tenant-scenarios"></a>Çapraz kiracı senaryoları
 
@@ -430,7 +436,7 @@ Talep eşleme ilkeleri, yalnızca hizmet sorumlusu nesnelerine atanabilir.
 
 Azure AD 'de, belirli hizmet sorumluları için belirteçlerde yayılan talepleri özelleştirebilmeniz için birçok senaryo mümkündür. Bu bölümde, talep eşleme ilkesi türünü nasıl kullanacağınızı belirlemenize yardımcı olabilecek birkaç yaygın senaryoya kılavuzluk ederiz.
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki örneklerde, hizmet sorumluları için ilkeleri oluşturur, güncelleştirir, bağlar ve silebilirsiniz. Azure AD 'de yeni başladıysanız, bu örneklere geçmeden önce [bir Azure AD kiracısı alma hakkında bilgi](quickstart-create-new-tenant.md) almanızı öneririz.
 

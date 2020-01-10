@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric güvenilir hizmetler uygulama bildirimi örnekleri
+title: Güvenilir hizmetler uygulama bildirimi örnekleri
 description: Güvenilir hizmetler Service Fabric uygulaması için uygulama ve hizmet bildirimi ayarlarını yapılandırmayı öğrenin.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 9cc79610b6dc9f9d2869a41e0b483168087368cc
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: d5a03629a134a0b2c7d6ee95dba9ea3ad06e99ba
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013235"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609834"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Güvenilir hizmetler uygulaması ve hizmet bildirimi örnekleri
 Aşağıda, bir ASP.NET Core Web ön ucuna ve durum bilgisi olan arka uca sahip bir Service Fabric uygulaması için uygulama ve hizmet bildirimlerinin örnekleri verilmiştir. Bu örneklerin amacı, hangi ayarların kullanılabildiğini ve bunların nasıl kullanılacağını gösterir. Bu uygulama ve hizmet bildirimleri [Service Fabric .net hızlı başlangıç](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) bildirimlerini temel alır.
@@ -286,7 +278,7 @@ Uygulama türünü ve sürümünü bildirimli olarak açıklar. Bileşen hizmetl
 ### <a name="parameters-element"></a>Parameters öğesi
 Bu uygulama bildiriminde kullanılan parametreleri bildirir. Uygulama örneği oluşturulduğunda ve uygulama ya da hizmet yapılandırma ayarlarını geçersiz kılmak için kullanılabilir olduğunda, bu parametrelerin değeri sağlanabilir. Daha fazla bilgi için bkz. [Parameters öğesi](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="parameter-element"></a>Parameter öğesi
+### <a name="parameter-element"></a>Parameter Öğesi
 Bu bildirimde kullanılacak bir uygulama parametresi. Parametre değeri uygulama örneği oluşturma sırasında değiştirilebilir veya hiçbir değer sağlanmazsa varsayılan değer kullanılır. Daha fazla bilgi için bkz. [Parameter öğesi](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement)
 
 ### <a name="servicemanifestimport-element"></a>Servicemanifestımport öğesi
@@ -337,10 +329,10 @@ Durum bilgisi olmayan bir hizmet tanımlar. Daha fazla bilgi için bkz. [Statele
 ### <a name="principals-element"></a>Sorumlular öğesi
 Bu uygulamanın hizmetleri ve güvenli kaynakları çalıştırması için gereken güvenlik sorumlularını (kullanıcılar, gruplar) açıklar. Sorumlular ilkeler bölümlerinde başvurulur. Daha fazla bilgi için bkz. [sorumlular öğesi](service-fabric-service-model-schema-elements.md#PrincipalsElementSecurityPrincipalsTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInEnvironmentTypecomplexType)
 
-### <a name="groups-element"></a>Groups öğesi
+### <a name="groups-element"></a>Groups Öğesi
 İlkeler bölümünde başvurulabilen güvenlik sorumluları olarak bir grup kümesi bildirir. Farklı hizmet giriş noktaları için birden fazla kullanıcı varsa ve grup düzeyinde kullanılabilen belirli ortak ayrıcalıklara sahip olmaları gerekiyorsa, gruplar yararlıdır. Daha fazla bilgi için bkz. [gruplar öğesi](service-fabric-service-model-schema-elements.md#GroupsElementanonymouscomplexTypeComplexTypeDefinedInSecurityPrincipalsTypecomplexType)
 
-### <a name="group-element"></a>Group öğesi
+### <a name="group-element"></a>Group Öğesi
 İlke içinde başvurulabilen bir güvenlik sorumlusu olarak bir grup bildirir. Daha fazla bilgi için bkz. [Grup öğesi](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInGroupselement)
 
 ### <a name="membership-element"></a>Üyelik öğesi
@@ -361,7 +353,7 @@ Kullanıcılar, var olan herhangi bir üyelik grubuna eklenebilir, bu nedenle bu
 ### <a name="systemgroup-element"></a>SystemGroup öğesi
 Kullanıcının ekleneceği sistem grubu.  Sistem grubu, Gruplar bölümünde tanımlanmalıdır. Daha fazla bilgi için bkz. [Systemgroup öğesi](service-fabric-service-model-schema-elements.md#SystemGroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement)
 
-### <a name="group-element"></a>Group öğesi
+### <a name="group-element"></a>Group Öğesi
 Kullanıcının ekleneceği grup.  Grup, Gruplar bölümünde tanımlanmalıdır. Daha fazla bilgi için bkz. [Grup öğesi](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement)
 
 ### <a name="policies-element"></a>Policies öğesi

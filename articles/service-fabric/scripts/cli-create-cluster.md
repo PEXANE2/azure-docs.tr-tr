@@ -1,6 +1,6 @@
 ---
 title: Azure CLI Betiği Dağıtma Örneği
-description: Azure CLI kullanarak Azure’da güvenli bir Service Fabric Linux kümesi oluşturun.
+description: Azure komut satırı arabirimi 'ni (CLı) kullanarak Azure 'da güvenli bir Service Fabric Linux kümesi oluşturma.
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 1386be8093cac4f5271886ff736b24acd483d64e
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 2b9b98b3ade46abd670283d0e68dc62fda9d8d0a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032820"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526626"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>Azure’da güvenli bir Service Fabric Linux kümesi oluşturma
 

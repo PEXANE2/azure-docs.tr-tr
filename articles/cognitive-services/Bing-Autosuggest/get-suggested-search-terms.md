@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5b1e4cc8dfc89d6dcc5d29a368e089402b284352
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a90fa0a66fb32b2a885599f09458964188353880
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072865"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448843"
 ---
 # <a name="what-is-bing-autosuggest"></a>Bing Otomatik Öneri nedir?
 
@@ -27,7 +27,7 @@ Uygulamanız Bing Arama API'leri herhangi birine sorgu gönderiyorsa, kullanıc�
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Gerçek zamanlı arama terimleri önerme](concepts/get-suggestions.md) | Otomatik öneri API 'sini kullanarak, girilen arama koşullarını göstermek için uygulama deneyiminizi geliştirebilirsiniz. |
 
-## <a name="workflow"></a>İş akışı
+## <a name="workflow"></a>İş Akışı
 
 Bing Otomatik Öneri API'si, HTTP istekleri yapan ve JSON 'u ayrıştırabilen herhangi bir programlama dilinden kolayca çağrılacak bir Web hizmetidir. 
 
@@ -49,6 +49,9 @@ Kullanıcı aşağı açılan listeden bir öneri seçtiğinde, Bing Arama API'l
 
 [Bing Otomatik Öneri API’si v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) başvurusunu inceleyin. Başvuruda, önerilen sorgu terimlerini istemek için kullanacağınız uç noktaların, üst bilgilerin ve sorgu parametrelerinin listesinin yanı sıra yanıt nesnelerinin tanımları yer alır.
 
-[Bing Web Araması API](../bing-web-search/search-the-web.md)’sini kullanarak web’de arama yapmayı öğrenin.
+Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/search-the-web.md) ziyaret edin.
+
+
+[Bing Web araması API'si](../bing-web-search/search-the-web.md)kullanarak Web 'de arama yapmayı öğrenin ve diğer[Bing Arama API'leri](../bing-web-search/index.yml)keşfedebilirsiniz.
 
 Arama sonuçlarını kullanma kurallarına uygun hareket ettiğinizden emin olmak için [Bing Kullanım ve Görüntüleme Gereksinimleri](./useanddisplayrequirements.md)'ni okumayı unutmayın.

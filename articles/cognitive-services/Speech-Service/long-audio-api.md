@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: ed00a9df46660cc6bfb4ec5fd9a93c80f5d6653e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ff8cdf78d923394caf36610534eb5dcc7de571a4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815322"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562553"
 ---
 # <a name="long-audio-api-preview"></a>Uzun ses API 'SI (Önizleme)
 
@@ -42,15 +42,24 @@ Bu diyagram, iş akışına üst düzey bir genel bakış sağlar.
 Metin dosyanızı hazırlarken şunları yaptığınızdan emin olun:
 
 * Düz metin (. txt) ya da SSML metni (. txt)
-  * Düz metin için, her paragraf **Enter/Return** -View [düz metin girişi örneğine](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) vurarak ayrılır
-  * SSML metninde her SSML parçası bir paragraf olarak değerlendirilir. SSML parçaları farklı paragraflar ile ayrılmalıdır- [SSML metin girişi örneğini](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)görüntüleyin. Dil kodu için bkz. [konuşma Sensumu biçimlendirme dili (SSML)](speech-synthesis-markup.md)
 * , [Bayt sıra Işaretiyle UTF-8 olarak kodlanır (BOM)](https://www.w3.org/International/questions/qa-utf8-bom.en#bom)
-* 10.000 ' den fazla karakter veya en fazla 50 paragraf içerir
 * ZIP değil tek bir dosyadır
+* SSML metni için düz metin veya 400 [faturalanabilir karakter](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) için 400 karakterden daha uzun ve 10.000 ' den az paragraf içeriyor
+  * Düz metin için, her paragraf **Enter/Return** -View [düz metin girişi örneğine](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) vurarak ayrılır
+  * SSML metninde her SSML parçası bir paragraf olarak değerlendirilir. SSML parçaları farklı paragraflar ile ayrılmalıdır- [SSML metin girişi örneğini](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) görüntüleyin
+> [!NOTE]
+> Çince (Mainland), Çince (Hong Kong), Çince (Tayvan), Japonca ve Korece için bir sözcük iki karakter olarak sayılır. 
+
+## <a name="submit-synthesis-requests"></a>Sensıs isteklerini gönder
+
+Giriş içeriği hazırlandıktan sonra, isteği göndermek için [uzun biçimli ses senup hızlı](https://aka.ms/long-audio-python) başlangıcı ' nı izleyin. Birden fazla giriş dosyanız varsa, birden çok istek göndermeniz gerekir. Bilmeniz için bazı sınırlamalar vardır: 
+* İstemcinin her bir Azure abonelik hesabı için saniyede en fazla 5 istek göndermesine izin verilir. Sınırlama aştıysa, istemci 429 hata kodu (çok fazla istek) alır. Lütfen saniye başına istek miktarını azaltın
+* Sunucunun her bir Azure abonelik hesabı için en fazla 120 istek çalıştırmasına ve sıraya alma yapmasına izin verilir. Sınırlama aşıldıysa, sunucu 429 hata kodu (çok fazla istek) döndürür. Lütfen bekleyin ve bazı istekler tamamlanana kadar yeni istek gönderilmesini önleyin
+* Sunucu, her bir Azure aboneliği hesabı için en fazla 20.000 istek tutar. Bu sınırlama aşıldıysa, yeni bir istek göndermeden önce lütfen bazı istekleri silin
 
 ## <a name="audio-output-formats"></a>Ses çıkış biçimleri
 
-Aşağıdaki ses çıkış biçimleri, uzun ses API 'SI tarafından desteklenir:
+Esnek ses çıkışı biçimlerini destekliyoruz. ' ConcatenateResult ' parametresini ayarlayarak, paragraf başına ses çıkışları oluşturabilir veya sesos 'yi bir çıkışa birleştirebilirsiniz. Aşağıdaki ses çıkış biçimleri, uzun ses API 'SI tarafından desteklenir:
 
 > [!NOTE]
 > Varsayılan ses biçimi Riff-16khz-16bit-mono-PCM ' dir.

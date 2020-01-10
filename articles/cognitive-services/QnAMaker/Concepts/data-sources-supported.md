@@ -10,16 +10,16 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: dc948629784254c9153f7f48ead7ff253e5f4453
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 7f51021df2234438eb81a29887a714b0f09d0998
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806397"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563199"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Veri kaynakları için soru-cevap Oluşturucu içeriği
 
-Soru-cevap Oluşturucu SSS, ürün kılavuzlarını, kılavuzlar, destek belgeleri ve web sayfaları, PDF dosyaları ya da Word MS doc dosyalarını depolanan ilkeleri gibi yarı yapılandırılmış içeriği otomatik olarak soru-cevap çiftlerini ayıklar. İçeriği, yapılandırılmış soru-cevap içerik dosyalarından Bilgi Bankası'na da eklenebilir. 
+Soru-cevap Oluşturucu SSS, ürün kılavuzlarını, kılavuzlar, destek belgeleri ve web sayfaları, PDF dosyaları ya da Word MS doc dosyalarını depolanan ilkeleri gibi yarı yapılandırılmış içeriği otomatik olarak soru-cevap çiftlerini ayıklar. İçeriği, yapılandırılmış soru-cevap içerik dosyalarından Bilgi Bankası'na da eklenebilir.
 
 <a name="data-types"></a>
 
@@ -36,22 +36,22 @@ Aşağıdaki tabloda, soru-cevap Oluşturucu tarafından desteklenen içeriği v
 
 ### <a name="import-and-export-knowledge-base"></a>Bilgi bankasını içeri ve dışarı aktarma
 
-Aktarılan bilgi tabanlarından **TSV ve xls dosyaları**yalnızca soru-cevap oluşturma portalındaki **Ayarlar** sayfasından dosyaları içeri aktarılarak kullanılabilir. Bunlar Bilgi Bankası oluşturma sırasında veya **Ayarlar** sayfasındaki **+ Dosya Ekle** veya **+ URL Ekle** özelliğinden veri kaynağı olarak kullanılamaz. 
+Aktarılan bilgi tabanlarından **TSV ve xls dosyaları**yalnızca soru-cevap oluşturma portalındaki **Ayarlar** sayfasından dosyaları içeri aktarılarak kullanılabilir. Bunlar Bilgi Bankası oluşturma sırasında veya **Ayarlar** sayfasındaki **+ Dosya Ekle** veya **+ URL Ekle** özelliğinden veri kaynağı olarak kullanılamaz.
 
 ## <a name="data-source-locations"></a>Veri kaynağı konumları
 
-Veri kaynağı konumları, kimlik doğrulaması gerektirmeyen **Genel URL 'ler veya dosyalardır**. 
+Veri kaynağı konumları, kimlik doğrulaması gerektirmeyen **Genel URL 'ler veya dosyalardır**.
 
 Veri kaynağınız için kimlik doğrulaması gerekiyorsa, bu verileri Soru-Cevap Oluşturma almak için aşağıdaki yöntemleri göz önünde bulundurun:
 
 * [Dosyayı el Ile indirin](#download-file-from-authenticated-data-source-location) ve soru-cevap oluşturma alın
-* Kimliği doğrulanmış [SharePoint konumu](#import-file-from-authenticated-sharepoint) için içeri aktarma dosyası 
+* Kimliği doğrulanmış [SharePoint konumu](#import-file-from-authenticated-sharepoint) için içeri aktarma dosyası
 
 ### <a name="download-file-from-authenticated-data-source-location"></a>Kimliği doğrulanmış veri kaynağı konumundan dosya indir
 
 Kimliği doğrulanmış bir dosyaya (kimliği doğrulanmış bir SharePoint konumunda değil) veya URL 'niz varsa, dosyayı kimliği doğrulanmış siteden yerel bilgisayarınıza indirmek için alternatif bir seçenek, dosyayı yerel bilgisayarınızdan Bilgi Bankası 'na eklemektir.
 
-### <a name="import-file-from-authenticated-sharepoint"></a>Kimliği doğrulanmış SharePoint 'ten dosya al 
+### <a name="import-file-from-authenticated-sharepoint"></a>Kimliği doğrulanmış SharePoint 'ten dosya al
 
 [SharePoint veri kaynağı konumlarına](../How-to/add-sharepoint-datasources.md) kimliği doğrulanmış **dosyalar**sağlama izni verilir. SharePoint kaynakları, Web sayfaları değil, dosyalar olmalıdır. URL, gibi bir Web uzantısıyla sonlanıyorsa **. ASPX**, SharePoint 'ten soru-cevap oluşturma içine aktarılmaz.
 
@@ -62,29 +62,29 @@ Soru-cevap Oluşturucu SSS web sayfaları 3 farklı formlarda destekleyebilir: d
 
 ### <a name="plain-faq-pages"></a>Düz SSS sayfaları
 
-Bu SSS sayfası, yanıtları aynı sayfada sorular hemen izleyin, en yaygın türüdür. 
+Bu SSS sayfası, yanıtları aynı sayfada sorular hemen izleyin, en yaygın türüdür.
 
 Düz bir SSS sayfasının bir örneği aşağıda verilmiştir:
 
-![Bilgi Bankası için düz SSS sayfası örneği](../media/qnamaker-concepts-datasources/plain-faq.png) 
+![Bilgi Bankası için düz SSS sayfası örneği](../media/qnamaker-concepts-datasources/plain-faq.png)
 
- 
-### <a name="faq-pages-with-links"></a>Bağlantılar hakkında SSS sayfaları 
+
+### <a name="faq-pages-with-links"></a>Bağlantılar hakkında SSS sayfaları
 
 Bu tür bir SSS sayfasını, sorular birlikte toplanır ve aynı sayfa farklı bölümlerde veya farklı sayfalardaki olan yanıtları bağlanır.
 
 SSS sayfası aynı sayfada bölümlerde bağlantılarla birlikte bir örnek aşağıda verilmiştir:
 
- ![Bilgi Bankası için bölüm bağlantı SSS sayfası örneği](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
+ ![Bilgi Bankası için bölüm bağlantı SSS sayfası örneği](../media/qnamaker-concepts-datasources/sectionlink-faq.png)
 
 
 ### <a name="faq-pages-with-a-topics-homepage"></a>SSS sayfaları konuları giriş sayfası
 
 Bu tür bir SSS, her konunun farklı sayfasında, ilgili Bankalarıyla bağlantı olduğu konuları ile bir giriş sayfası vardır. Burada, soru-cevap Oluşturucu ilgili sorular ve yanıtlar ayıklamak için tüm bağlı sayfalarda gezinir.
 
-Aşağıdaki konular giriş sayfası bağlantıları için farklı sayfalara SSS bölümlerinde sahip olduğu bir SSS sayfasında örneğidir. 
+Aşağıdaki konular giriş sayfası bağlantıları için farklı sayfalara SSS bölümlerinde sahip olduğu bir SSS sayfasında örneğidir.
 
- ![Bilgi Bankası için ayrıntılı bağlantı SSS sayfası örneği](../media/qnamaker-concepts-datasources/topics-faq.png) 
+ ![Bilgi Bankası için ayrıntılı bağlantı SSS sayfası örneği](../media/qnamaker-concepts-datasources/topics-faq.png)
 
 
 ### <a name="support-urls"></a>Destek URL 'Leri
@@ -109,7 +109,7 @@ El ile genellikle bir ürünle birlikte verilen yönergeleri malzeme oluşur. Bu
 
 El ile bir dizin sayfası ve hiyerarşik içerik ilişkin bir örnek aşağıda verilmiştir
 
- ![Ürün el ile Bilgi Bankası Örneğin](../media/qnamaker-concepts-datasources/product-manual.png) 
+ ![Ürün el ile Bilgi Bankası Örneğin](../media/qnamaker-concepts-datasources/product-manual.png)
 
 > [!NOTE]
 > Ayıklama içeriğini ve/veya dizin sayfası ve açık bir yapı hiyerarşik başlıklara sahip bir tablosu kılavuzları en iyi şekilde çalışır.
@@ -120,11 +120,11 @@ Açık bir yapı ve düzeni olması kaydıyla, QA çiftleri oluşturmak için ay
 
 Dizin olmadan, yarı yapılandırılmış bir belge örneği aşağıdadır:
 
- ![Azure Blob Depolama yarı yapılandırılmış belge](../media/qnamaker-concepts-datasources/semi-structured-doc.png) 
+ ![Azure Blob Depolama yarı yapılandırılmış belge](../media/qnamaker-concepts-datasources/semi-structured-doc.png)
 
 ### <a name="structured-qna-document"></a>Yapılandırılmış soru-cevap belge
 
-Belge dosyaları içinde yapılandırılmış soru-yanıt biçimi değişen sorular biçiminde ve her satırda, her satırda bir soruya yanıt, yanıt aşağıdaki satırda, aşağıda gösterildiği gibi ardından: 
+Belge dosyaları içinde yapılandırılmış soru-yanıt biçimi değişen sorular biçiminde ve her satırda, her satırda bir soruya yanıt, yanıt aşağıdaki satırda, aşağıda gösterildiği gibi ardından:
 
 ```text
 Question1
@@ -138,11 +138,11 @@ Answer2
 
 Yapılandırılmış bir soru-cevap word belgesinin bir örnek aşağıda verilmiştir:
 
- ![Bilgi Bankası için yapılandırılmış soru-cevap belge örneği](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
+ ![Bilgi Bankası için yapılandırılmış soru-cevap belge örneği](../media/qnamaker-concepts-datasources/structured-qna-doc.png)
 
 ## <a name="structured-txt-tsv-and-xls-files"></a>Yapılandırılmış *TXT*, *TSV* ve *XLS* dosyaları
 
-Biçiminde Bankalarıyla yapılandırılmış *.txt*, *.tsv* veya *.xls* dosyalar da karşıya yüklenebilir oluşturmak veya bir Bilgi Bankası büyütmek için soru-cevap Oluşturucu.  Bu düz metin olabilir veya RTF veya HTML içeriği sahip olabilir. 
+Biçiminde Bankalarıyla yapılandırılmış *.txt*, *.tsv* veya *.xls* dosyalar da karşıya yüklenebilir oluşturmak veya bir Bilgi Bankası büyütmek için soru-cevap Oluşturucu.  Bu düz metin olabilir veya RTF veya HTML içeriği sahip olabilir.
 
 | Soru  | Yanıt  | Meta veriler (1 anahtar: 1 değer) |
 |-----------|---------|-------------------------|
@@ -171,7 +171,7 @@ Dosya alındıktan sonra, soru-cevap çifti aşağıda gösterildiği gibi Bilgi
 
 Bilgi Bankası içeri aktarma, var olan bir Bilgi Bankası içeriğini değiştirir. İçeri aktarma, veri kaynağı bilgilerini içeren bir yapılandırılmış .tsv dosyası gerektirir. Bu bilgiler, soru-cevap çiftlerini ve onları belirli bir veri kaynağına göre gruplamak Soru-Cevap Oluşturma yardımcı olur.
 
-| Soru  | Yanıt  | Kaynak| Meta veriler (1 anahtar: 1 değer) |          
+| Soru  | Yanıt  | Kaynak| Meta veriler (1 anahtar: 1 değer) |
 |-----------|---------|----|---------------------|
 | Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Question2 | Answer2 | Düzenleme|    `Key:Value`       |
@@ -184,11 +184,11 @@ Bilgi Bankası doldurmak için önceden var olan içerik yoksa, soru-cevap Oluş
 
 ## <a name="formatting-considerations"></a>Biçimlendirme konuları
 
-Bir dosya veya URL 'YI içeri aktardıktan sonra Soru-Cevap Oluşturma, içeriğinizi [markı biçiminde](https://en.wikipedia.org/wiki/Markdown)dönüştürür ve depolar. Dönüştürme işlemi, metne `\n\n`gibi yeni satırlar ekler. Markaşağı biçimi hakkında bilgi, dönüştürülen içeriği anlamanıza ve Bilgi Bankası içeriğinizi yönetmenize yardımcı olur. 
+Bir dosya veya URL 'YI içeri aktardıktan sonra Soru-Cevap Oluşturma, içeriğinizi [markı biçiminde](https://en.wikipedia.org/wiki/Markdown)dönüştürür ve depolar. Dönüştürme işlemi, metne `\n\n`gibi yeni satırlar ekler. Markaşağı biçimi hakkında bilgi, dönüştürülen içeriği anlamanıza ve Bilgi Bankası içeriğinizi yönetmenize yardımcı olur.
 
-İçeriğinizi doğrudan bilgi tabanınız içinde ekler veya düzenlersiniz, zengin metin içeriği oluşturmak veya zaten yanıtdaki markaşağı biçim içeriğini değiştirmek için **markı biçimlendirme** kullanın. Soru-Cevap Oluşturma, içeriğinize zengin metin özellikleri getirmek için markaşağı biçiminin çoğunu destekler. Ancak, bir sohbet bot gibi istemci uygulaması aynı markı biçimleri kümesini desteklemiyor olabilir. İstemci uygulamanın yanıt görüntüsünü test etmek önemlidir. 
+İçeriğinizi doğrudan bilgi tabanınız içinde ekler veya düzenlersiniz, zengin metin içeriği oluşturmak veya zaten yanıtdaki markaşağı biçim içeriğini değiştirmek için **markı biçimlendirme** kullanın. Soru-Cevap Oluşturma, içeriğinize zengin metin özellikleri getirmek için markaşağı biçiminin çoğunu destekler. Ancak, bir sohbet bot gibi istemci uygulaması aynı markı biçimleri kümesini desteklemiyor olabilir. İstemci uygulamanın yanıt görüntüsünü test etmek önemlidir.
 
-Aşağıda Soru-Cevap Oluşturma kullanabileceğiniz markın biçimlerinin listesi verilmiştir: 
+Aşağıda Soru-Cevap Oluşturma kullanabileceğiniz markın biçimlerinin listesi verilmiştir:
 
 |Amaç|Biçimlendir|Örnek markdown|İşleme<br>Sohbet bot 'ta gösterildiği gibi|
 |--|--|--|--|
@@ -197,48 +197,48 @@ Aşağıda Soru-Cevap Oluşturma kullanabileceğiniz markın biçimlerinin liste
 |İtalik |`*text*`|`How do I create a bot with *QnA Maker*?`|![italik ile biçimlendirme](../media/qnamaker-concepts-datasources/format-italics.png)|
 |Dize (koyu)|`**text**`|`How do I create a bot with **QnA Maker**?`|![kalın için güçlü işaret ile biçimlendirme](../media/qnamaker-concepts-datasources/format-strong.png)|
 |Bağlantı URL 'SI|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL için biçim (köprü)](../media/qnamaker-concepts-datasources/format-url.png)|
-|\* Ortak görüntü URL 'SI|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![ortak görüntü URL 'SI için biçim ](../media/qnamaker-concepts-datasources/format-image-url.png)|
+|\* Ortak görüntü URL 'SI|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![ortak görüntü URL 'SI için biçim ](../media/qnamaker-concepts-datasources/format-image-url.png)|
 |Üstü çizili|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![üstü çizili biçim](../media/qnamaker-concepts-datasources/format-strikethrough.png)|
 |Kalın ve italik|`***text***`|`How can I create a ***QnA Maker*** bot?`|![kalın ve italik biçim](../media/qnamaker-concepts-datasources/format-bold-italics.png)|
 |Bağlantı için kalın URL|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![kalın URL için biçim](../media/qnamaker-concepts-datasources/format-bold-url.png)|
 |Bağlantı için italik URL|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![italik URL için biçim](../media/qnamaker-concepts-datasources/format-url-italics.png)|
 |Kaçış markın sembolleri|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![italik URL için biçim](../media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Sıralı liste|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Yukarıdaki örnek, markaşağı içinde yerleşik olarak bulunan otomatik numaralandırmayı kullanır.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Yukarıdaki örnek, açık numaralandırma kullanır.|![sıralı liste için biçim](../media/qnamaker-concepts-datasources/format-ordered-list.png)|
-|Sırasız liste|`\n * item1 \n * item2`<br>or<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![Sırasız liste için biçim](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
+|Sırasız liste|`\n * item1 \n * item2`<br>veya<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![Sırasız liste için biçim](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
 |İç içe listeler|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Sıralı ve sıralanmamış listeleri birlikte iç içe yerleştirebilirsiniz. `\t`sekme, alt öğenin girintileme düzeyini gösterir.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![iç içe sıralanmamış liste için biçim](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![iç içe geçmiş liste için biçim](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
-\* Soru-Cevap Oluşturma görüntüyü hiçbir şekilde işlemez. Bu, görüntüyü işlemek için istemci uygulamanın rolüdür. 
+\* Soru-Cevap Oluşturma görüntüyü hiçbir şekilde işlemez. Bu, görüntüyü işlemek için istemci uygulamanın rolüdür.
 
 Güncelleştirme/değiştirme Bilgi Bankası API 'Lerini kullanarak içerik eklemek istiyorsanız ve içerik/dosya HTML etiketleri içeriyorsa, etiketlerin açılış ve kapanışının kodlanmış biçimde dönüştürülmesini sağlamak için dosyanızdaki HTML 'yi koruyabilirsiniz.
 
 | HTML 'yi koru  | API isteğindeki temsili  | KB cinsinden temsil |
 |-----------|---------|-------------------------|
-| Yes | \&lt; br\&gt; | &lt;br&gt; |
-| Yes | \&lt; H3\&gt; üst bilgi\&lt;/H3\&gt; | &lt;H3&gt;üst bilgisi&lt;/H3&gt; |
+| Evet | \&lt; br\&gt; | &lt;br&gt; |
+| Evet | \&lt; H3\&gt; üst bilgi\&lt;/H3\&gt; | &lt;H3&gt;üst bilgisi&lt;/H3&gt; |
 
 Ayrıca, CR LF (\r\n), BB 'ye dönüştürülür. LF (\n) olduğu gibi tutulur. Bir kaçış sırasını \t veya \n gibi atlamak istiyorsanız ters eğik çizgi kullanabilirsiniz, örneğin: '\\\\r\\\\n ' ve '\\\\t '
 
 ## <a name="editing-your-knowledge-base-locally"></a>Bilgi bankaınızı yerel olarak Düzenle
 
-Bilgi Bankası oluşturulduktan sonra, yerel dosyalar aracılığıyla dışarı aktarmak ve yeniden içeri aktarmak yerine [soru-cevap oluşturma portalındaki](https://qnamaker.ai)Bilgi Bankası metninde düzenleme yapmanız önerilir. Ancak, bir bilgi bankasını yerel olarak düzenlemeniz gerektiği zamanlar olabilir. 
+Bilgi Bankası oluşturulduktan sonra, yerel dosyalar aracılığıyla dışarı aktarmak ve yeniden içeri aktarmak yerine [soru-cevap oluşturma portalındaki](https://qnamaker.ai)Bilgi Bankası metninde düzenleme yapmanız önerilir. Ancak, bir bilgi bankasını yerel olarak düzenlemeniz gerektiği zamanlar olabilir.
 
-Bilgi Bankası 'nı **Ayarlar** sayfasından dışarı aktarın ve Bilgi Bankası 'Nı Microsoft Excel ile düzenleyin. İçe aktarılmış TSV Dosyanızı düzenlemek için başka bir uygulama kullanmayı seçerseniz, uygulama tam olarak uyumlu olmadığından sözdizimi hataları verebilir. Microsoft Excel 'in TSV dosyaları genellikle biçimlendirme hataları sunmaz. 
+Bilgi Bankası 'nı **Ayarlar** sayfasından dışarı aktarın ve Bilgi Bankası 'Nı Microsoft Excel ile düzenleyin. İçe aktarılmış TSV Dosyanızı düzenlemek için başka bir uygulama kullanmayı seçerseniz, uygulama tam olarak uyumlu olmadığından sözdizimi hataları verebilir. Microsoft Excel 'in TSV dosyaları genellikle biçimlendirme hataları sunmaz.
 
-Düzenlemelerinizi tamamladıktan sonra, **Ayarlar** sayfasından TSV dosyasını yeniden içeri aktarın. Bu işlem, geçerli bilgi bankasını içeri aktarılan Bilgi Bankası ile tamamen değiştirir. 
+Düzenlemelerinizi tamamladıktan sonra, **Ayarlar** sayfasından TSV dosyasını yeniden içeri aktarın. Bu işlem, geçerli bilgi bankasını içeri aktarılan Bilgi Bankası ile tamamen değiştirir.
 
 ## <a name="testing-your-markdown"></a>Marka testinizi test etme
 
-Markın 'ı doğrulamak için **[Commonmark](https://commonmark.org/help/tutorial/index.html)** öğreticisini kullanın. Öğreticide hızlı kopyalama/yapıştırma doğrulaması için bir **deneyin** özelliği bulunur. 
+Markın 'ı doğrulamak için **[Commonmark](https://commonmark.org/help/tutorial/index.html)** öğreticisini kullanın. Öğreticide hızlı kopyalama/yapıştırma doğrulaması için bir **deneyin** özelliği bulunur.
 
 ## <a name="version-control-for-data-in-your-knowledge-base"></a>Bilgi bankasındaki veriler için sürüm denetimi
 
-Veriler için sürüm denetimi, **Ayarlar** sayfasındaki [içeri/dışarı aktarma özelliği](development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) aracılığıyla sağlanır. 
+Veriler için sürüm denetimi, **Ayarlar** sayfasındaki [içeri/dışarı aktarma özelliği](development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) aracılığıyla sağlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
 > [Bir soru-cevap Oluşturucu hizmetini ayarlama](../How-To/set-up-qnamaker-service-azure.md)
 
-## <a name="see-also"></a>Ayrıca bkz. 
+## <a name="see-also"></a>Ayrıca bkz.
 
 [Soru-Cevap Oluşturma’ya genel bakış](../Overview/overview.md)

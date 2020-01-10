@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a0dbd28dc798342a24180af430187ac69f61b8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848145"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608763"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu’nu kullanmaya başlama
 
@@ -30,9 +30,6 @@ Bu sayfa yeni bir sunucu yüklemeyi ve şirket içi Active Directory’de kurulu
 > 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
 
 ## <a name="plan-your-deployment"></a>Dağıtımınızı planlayın
-
-> [!WARNING]
-> Mart 2019 ' den başlayarak MFA sunucu İndirmeleri yalnızca ücretli kiracılar tarafından kullanılabilir. Ücretsiz/deneme kiracılar artık etkinleştirme kimlik bilgilerini indiremez veya kullanamaz.
 
 Azure Multi-Factor Authentication Sunucusu'nu indirmeden önce yük ve yüksek kullanılabilirlik gereksinimlerinizi göz önünde bulundurun. Bu bilgileri kullanarak nasıl ve nereye dağıtım gerçekleştireceğinize karar verin.
 
@@ -96,9 +93,6 @@ Olay Onayı özelliğini kullanmıyorsanız ve kullanıcılarınız şirket ağ�
 
 ## <a name="download-the-mfa-server"></a>MFA Sunucusu'nu indirme
 
-> [!WARNING]
-> Mart 2019 ' den başlayarak MFA sunucu İndirmeleri yalnızca ücretli kiracılar tarafından kullanılabilir. Ücretsiz/deneme kiracılar artık etkinleştirme kimlik bilgilerini indiremez veya kullanamaz.
-
 Azure portalından Azure Multi-Factor Authentication Sunucusu'nu indirmek için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
@@ -122,6 +116,9 @@ Artık sunucuyu indirdiğinize göre, yükleyebilir ve yapılandırabilirsiniz. 
    ![Kimlik doğrulama Yapılandırma Sihirbazı 'Nı kullanarak atlayın](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Sunucuyu indirdiğiniz sayfaya dönerek, **Etkinleştirme Kimlik Bilgileri Oluştur** düğmesine tıklayın. Bu bilgileri verilen kutularda Azure MFA Sunucusu’na kopyalayın ve **Etkinleştir**’e tıklayın.
+
+> [!NOTE]
+> Azure portal etkinleştirme kimlik bilgilerini yalnızca genel Yöneticiler oluşturabiliyor.
 
 ## <a name="send-users-an-email"></a>Kullanıcılara e-posta gönderme
 

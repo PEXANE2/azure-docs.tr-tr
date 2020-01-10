@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric-Windows Azure Tanılama uzantısıyla performans izleme | Microsoft Docs
+title: Windows Azure Tanılama ile performans izleme
 description: Azure Service Fabric kümeleriniz için performans sayaçlarını toplamak üzere Windows Azure Tanılama kullanın.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: e29c32c27e7f6c62eb2c6a9cbe2e4d3f1294f038
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 0819ca02d088aeb9ada5de1269467f70242bbcca
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155159"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609919"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure Tanılama uzantısıyla performans izleme
 
@@ -35,9 +26,9 @@ Bu belge, Windows kümeleri için Windows Azure Tanılama (WAD) uzantısı arac�
 
 WAD aracılığıyla performans sayaçlarını toplamak için, kümenizin Kaynak Yöneticisi şablonunda yapılandırmayı uygun şekilde değiştirmeniz gerekir. Şablonunuza toplamak istediğiniz bir performans sayacı eklemek ve bir Kaynak Yöneticisi kaynak yükseltmesi çalıştırmak için bu adımları izleyin.
 
-1. Kümenizin şablonundaki WAD yapılandırmasını bulun-bul `WadCfg`. Kapsamında toplanacak performans sayaçlarını eklersiniz `DiagnosticMonitorConfiguration`.
+1. Kümenizin şablonunda WAD yapılandırmasını bulun-`WadCfg`bulun. `DiagnosticMonitorConfiguration`kapsamında toplanacak performans sayaçlarını ekleyirsiniz.
 
-2. Yapılandırmanızı Aşağıdaki bölümü `DiagnosticMonitorConfiguration`ekleyerek performans sayaçlarını toplayacak şekilde ayarlayın. 
+2. Aşağıdaki bölümü `DiagnosticMonitorConfiguration`ekleyerek, yapılandırmayı performans sayaçlarını toplayacak şekilde ayarlayın. 
 
     ```json
     "PerformanceCounters": {
@@ -46,11 +37,11 @@ WAD aracılığıyla performans sayaçlarını toplamak için, kümenizin Kaynak
     }
     ```
 
-    , `scheduledTransferPeriod` Toplanan sayaçların değerlerinin ne sıklıkta Azure Storage tablonuza ve yapılandırılmış herhangi bir havuza aktarılacağını tanımlar. 
+    `scheduledTransferPeriod`, toplanan sayaçların değerlerinin Azure Storage tablonuza ve yapılandırılmış herhangi bir havuza ne sıklıkta aktarılacağını tanımlar. 
 
-3. Toplamak istediğiniz performans sayaçlarını, `PerformanceCounterConfiguration` önceki adımda bildirildiği öğesine ekleyin. Toplamak istediğiniz her `counterSpecifier`sayaç `annotation` `sampleRate` `sinks`,,, ve ile ilgili bir, ,,veiletanımlanır.`unit`
+3. Toplamak istediğiniz performans sayaçlarını, önceki adımda bildirildiği `PerformanceCounterConfiguration` ekleyin. Toplamak istediğiniz her sayaç bir `counterSpecifier`, `sampleRate`, `unit`, `annotation`ve ilgili `sinks`ile tanımlanır.
 
-*Toplam Işlemci süresi* (CPU 'nun işlemleri için kullanılmakta olan süre) ve *saniyedeki aktör yöntemi etkinleştirmeleri Service Fabric*bir yapılandırma örneği, Service Fabric özel performans sayaçları. Service Fabric özel performans sayaçlarının tam listesi için [güvenilir aktör performans sayaçlarına](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) ve [güvenilir hizmet performans sayaçlarına](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) bakın.
+Aşağıda, Service Fabric özel performans sayaçlarından biri olan *Toplam Işlemci zamanı* (CPU 'nun işlem işlemleri için kullanılmakta olduğu süre) ve *saniyedeki aktör yöntemi etkinleştirmeleri Service Fabric*olan bir yapılandırmaya bir örnek verilmiştir. Service Fabric özel performans sayaçlarının tam listesi için [güvenilir aktör performans sayaçlarına](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) ve [güvenilir hizmet performans sayaçlarına](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) bakın.
 
  ```json
  "WadCfg": {
@@ -107,7 +98,7 @@ WAD aracılığıyla performans sayaçlarını toplamak için, kümenizin Kaynak
        },
   ```
 
- Sayaç için örnek hız, gereksinimlerinize göre değiştirilebilir. Bunun biçimi olduğu `PT<time><unit>`için, sayacın her saniye toplanmasını istiyorsanız, öğesini `"sampleRate": "PT15S"`ayarlamanız gerekir.
+ Sayaç için örnek hız, gereksinimlerinize göre değiştirilebilir. Bunun biçimi `PT<time><unit>`olduğundan, her saniye toplanan sayacı istiyorsanız `"sampleRate": "PT15S"`ayarlamanız gerekir.
 
  Ayrıca, işlem başına performans sayaçlarını topladığınızda yararlı olabilecek bir dizi performans sayacı toplamak için ARM şabloninizdeki değişkenleri de kullanabilirsiniz. Aşağıdaki örnekte, işlem başına işlemci zamanı ve çöp toplayıcı süresi ve ardından düğümlerde 2 performans sayacı, değişkenler kullanılarak toplanmaktadır. 
 
@@ -192,7 +183,7 @@ WAD aracılığıyla performans sayaçlarını toplamak için, kümenizin Kaynak
 ....
 ```
 
-1. Toplanması gereken uygun performans sayaçlarını ekledikten sonra, bu değişikliklerin çalışan kümenize yansıtılması için küme kaynağınızı yükseltmeniz gerekir. Değiştirdiğiniz `template.json` ve açık PowerShell 'i kaydedin. Kullanarak `New-AzResourceGroupDeployment`kümenizi yükseltebilirsiniz. Çağrı, kaynak grubunun adı, güncelleştirilmiş şablon dosyası ve parametreler dosyası gerektirir ve güncelleştirdiğiniz kaynaklarda uygun değişiklikler yapmak için Kaynak Yöneticisi sorar. Hesabınızda oturum açtıktan ve doğru abonelikte yer aldıktan sonra, yükseltmeyi çalıştırmak için aşağıdaki komutu kullanın:
+1. Toplanması gereken uygun performans sayaçlarını ekledikten sonra, bu değişikliklerin çalışan kümenize yansıtılması için küme kaynağınızı yükseltmeniz gerekir. Değiştirdiğiniz `template.json` kaydedin ve PowerShell 'i açın. `New-AzResourceGroupDeployment`kullanarak kümenizi yükseltebilirsiniz. Çağrı, kaynak grubunun adı, güncelleştirilmiş şablon dosyası ve parametreler dosyası gerektirir ve güncelleştirdiğiniz kaynaklarda uygun değişiklikler yapmak için Kaynak Yöneticisi sorar. Hesabınızda oturum açtıktan ve doğru abonelikte yer aldıktan sonra, yükseltmeyi çalıştırmak için aşağıdaki komutu kullanın:
 
     ```sh
     New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
@@ -202,5 +193,5 @@ WAD aracılığıyla performans sayaçlarını toplamak için, kümenizin Kaynak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Kümeniz için daha fazla performans sayacı toplayın. Toplamanız gereken sayaçların bir listesi için bkz. [performans ölçümleri](service-fabric-diagnostics-event-generation-perf.md) .
-* Tanılama verilerini göndermek üzere ek depolama hesapları yapılandırma dahil olmak üzere `WadCfg`, üzerinde daha fazla değişiklik yapmak için [Windows VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanın](../virtual-machines/windows/extensions-diagnostics-template.md) .
-* Sıfırdan bir şablon oluşturmak ve sözdiziminin doğru olduğundan emin olmak için [Wadcfg oluşturucusunu](https://azure.github.io/azure-diagnostics-tools/config-builder/) ziyaret edin. (https://azure.github.io/azure-diagnostics-tools/config-builder/) sıfırdan bir şablon oluşturmak ve sözdiziminin doğru olduğundan emin olmak için.
+* Tanılama verilerini göndermek için ek depolama hesapları yapılandırma dahil olmak üzere `WadCfg`üzerinde daha fazla değişiklik yapmak için [WINDOWS VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanın](../virtual-machines/windows/extensions-diagnostics-template.md) .
+* Sıfırdan bir şablon oluşturmak ve sözdiziminin doğru olduğundan emin olmak için [Wadcfg oluşturucusunu](https://azure.github.io/azure-diagnostics-tools/config-builder/) ziyaret edin. (sıfırdan bir şablon derlemek ve sözdiziminin doğru olduğundan emin olmak için https://azure.github.io/azure-diagnostics-tools/config-builder/).

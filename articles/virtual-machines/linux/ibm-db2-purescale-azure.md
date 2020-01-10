@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: c597bb47ba6d075523b2eb2ca4d146fa22a97a2e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4012048100bbed2229c45434ee4a27dfe9b952e7
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083089"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530093"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale
 
@@ -27,9 +27,11 @@ IBM DB2 pureScale ortamı, Linux işletim sistemlerinde yüksek kullanılabilirl
 
 ## <a name="overview"></a>Genel Bakış
 
-Kuruluşlar, çevrimiçi işlem işleme (OLTP) ihtiyaçları için, uzun süre kullanılan ilişkisel veritabanı yönetim sistemi (RDBMS) platformlarına sahiptir. Bu günler, çoğu, ana bilgisayar tabanlı veritabanı ortamlarını kapasiteyi genişletmek, maliyetleri azaltmak ve sabit bir operasyonel maliyet yapısını sürdürmek için bir yol olarak Azure 'a geçirmektedir.
+Kuruluşlar, çevrimiçi işlem işleme (OLTP) ihtiyaçlarına göre daha fazla kullanan geleneksel ilişkisel veritabanı yönetim sistemi (RDBMS) platformlarını kullanır. Bu günler, çoğu, ana bilgisayar tabanlı veritabanı ortamlarını kapasiteyi genişletmek, maliyetleri azaltmak ve sabit bir operasyonel maliyet yapısını sürdürmek için bir yol olarak Azure 'a geçirmektedir. Geçiş, genellikle eski bir platformu modernleştirmede ilk adımdır. 
 
-Geçiş, genellikle eski bir platformu modernleştirmede ilk adımdır. Örneğin, bir kurumsal müşteri yakın zamanda IBM DB2 ortamını z/OS üzerinde çalışan Azure 'da IBM DB2 pureScale 'ye yeniden barınmalıdır. Başlangıçtaki ortamla aynı olmasa da, Linux 'ta IBM DB2 pureScale, ana bilgisayar üzerindeki bir Paralel Sysplex yapılandırmasında çalışan z/OS için IBM DB2 olarak benzer yüksek kullanılabilirlik ve ölçeklenebilirlik özellikleri sunar.
+Son olarak, bir kurumsal müşteri, Azure 'da z/ç 'de IBM DB2 Puresreskisini çalıştıran IBM DB2 ortamını yeniden barındırılmaktadır. DB2 pureScale veritabanı kümesi çözümü, Linux işletim sistemleri üzerinde yüksek kullanılabilirlik ve ölçeklenebilirlik sağlar. Müşteri, DB2 Porescale 'yi yüklemeden önce Azure 'daki büyük ölçekli bir sistemde tek bir sanal makinede (VM) tek bir sanal makinede (VM) tek başına, ölçek örneği olarak başarıyla çalıştı. 
+
+Başlangıçtaki ortamla aynı olmasa da, Linux 'ta IBM DB2 pureScale, ana bilgisayar üzerindeki bir Paralel Sysplex yapılandırmasında çalışan z/OS için IBM DB2 olarak benzer yüksek kullanılabilirlik ve ölçeklenebilirlik özellikleri sunar. Bu senaryoda, küme Iscsı aracılığıyla paylaşılan bir depolama kümesine bağlanır. Bulut depolama için özel olarak iyileştirilmiş, ücretsiz, ölçeklenebilir, açık kaynaklı bir dosya sistemi olan GlusterFS dosya sistemini kullandık. Ancak, IBM artık bu çözümü desteklememektedir. IBM 'nizin desteğini sürdürmek için desteklenen bir Iscsı uyumlu dosya sistemi kullanmanız gerekir. Microsoft, bir seçenek olarak Depolama Alanları Doğrudan (S2D) sunar
 
 Bu makalede, bu Azure geçişi için kullanılan mimari açıklanmaktadır. Müşteri, yapılandırmayı sınamak için Red Hat Linux 7,4 kullandı. Bu sürüm, Azure Marketi 'nden edinilebilir. Linux dağıtımını seçmeden önce, desteklenen sürümleri doğrulayın. Ayrıntılar için bkz. [IBM DB2 pureScale](https://www.ibm.com/support/knowledgecenter/SSEPGG) ve [GlusterFS](https://docs.gluster.org/en/latest/)belgeleri.
 
@@ -53,13 +55,13 @@ Diyagramda, bir DB2 pureScale kümesi için gereken mantıksal katmanlar göster
 
 Veritabanı altyapısı düğümlerine ek olarak, diyagram, küme önbelleğe alma olanakları (CFs) için kullanılan iki düğüm içerir. Veritabanı altyapısının kendisi için en az iki düğüm kullanılır. PureScale kümesine ait bir DB2 sunucusuna üye denir. 
 
-Küme, genişleme depolama ve yüksek kullanılabilirlik sağlamak için Iscsı ile üç düğümlü bir GlusterFS paylaşılan depolama kümesine bağlanır. DB2 pureScale, Linux çalıştıran Azure sanal makinelerinde yüklüdür.
+Küme, genişleme depolama ve yüksek kullanılabilirlik sağlamak için Iscsı aracılığıyla üç düğümlü bir paylaşılan depolama kümesine bağlanır. DB2 pureScale, Linux çalıştıran Azure sanal makinelerinde yüklüdür.
 
 Bu yaklaşım, kuruluşunuzun boyutu ve ölçeği için değiştirebileceğiniz bir şablondur. Bu, aşağıdakilere dayalıdır:
 
 -   İki veya daha fazla veritabanı üyesi en az iki CF düğümüyle birleştirilir. Düğümler, paylaşılan bellek ve genel kilit Yöneticisi (GLM) Hizmetleri için bir genel arabellek havuzunu (GBP) yönetir ve bu da paylaşılan erişimi denetlemek ve etkin üyelerden kilit çakışması. Bir CF düğümü, ikincil, yük devretme CF düğümü olarak birincil ve diğeri olarak davranır. Ortamdaki tek bir başarısızlık noktasını önlemek için, bir DB2 pureScale kümesi en az dört düğüm gerektirir.
 
--   Yüksek performanslı paylaşılan depolama alanı (diyagramda P30 boyutunda gösterilir). Gluster FS düğümlerinin her biri bu depolamayı kullanır.
+-   Yüksek performanslı paylaşılan depolama alanı (diyagramda P30 boyutunda gösterilir). Her düğüm bu depolamayı kullanır.
 
 -   Veri üyeleri ve paylaşılan depolama için yüksek performanslı ağ.
 
@@ -75,13 +77,13 @@ Bu mimaride, Azure sanal makinelerinde uygulama, depolama ve veri katmanları ç
 
 -   DB2 CF, E serisi veya L serisi gibi bellek için iyileştirilmiş sanal makineler kullanır.
 
--   GlusterFS depolaması, Linux\_çalıştıran\_standart DS4 v2 sanal makinelerini kullanır.
+-   Linux çalıştıran standart\_DS4\_v2 sanal makinelerini kullanan paylaşılan bir depolama kümesi.
 
--   Bir GlusterFS sıçrama kutusu, Linux çalıştıran\_standart\_DS2 v2 sanal makinedir.
+-   Yönetim atlama kutusu, Linux çalıştıran standart bir\_DS2\_v2 sanal makinedir.  Sanal ağınızdaki tüm VM 'Ler için güvenli bir RDP/SSH deneyimi sağlayan bir hizmet olan Azure savunma bir alternatiftir.
 
--   İstemci, Windows çalıştıran standart\_bir\_DS3 v2 sanal makinedir (test için kullanılır).
+-   İstemci, Windows çalıştıran bir standart\_DS3\_v2 sanal makinedir (test için kullanılır).
 
--   Tanık sunucu, Linux çalıştıran standart\_bir\_DS3 v2 sanal makinedir (DB2 purescale için kullanılır).
+-   *İsteğe bağlı*. Tanık sunucu. Bu yalnızca daha eski DB2 pureScale sürümleriyle gereklidir. Bu örnek, Linux çalıştıran standart bir\_DS3\_v2 sanal makinesini kullanır (DB2 pureScale için kullanılır).
 
 > [!NOTE]
 > DB2 pureScale kümesi, en az iki DB2 örneği gerektirir. Ayrıca bir önbellek örneği ve bir kilit Yöneticisi örneği gerektirir.
@@ -90,11 +92,9 @@ Bu mimaride, Azure sanal makinelerinde uygulama, depolama ve veri katmanları ç
 
 Oracle RAC gibi DB2 pureScale, yüksek performanslı bir blok g/ç, genişleme veritabanıdır. Gereksinimlerinize uygun en büyük [Azure PREMIUM SSD](disks-types.md) seçeneğini kullanmanızı öneririz. Üretim ortamları genellikle daha fazla depolama kapasitesine ihtiyaç duyurken, daha küçük depolama seçenekleri geliştirme ve test ortamları için uygun olabilir. Örnek mimari, ıOPS 'nin boyut ve fiyata oranı nedeniyle [P30](https://azure.microsoft.com/pricing/details/managed-disks/) kullanır. Boyut ne olursa olsun, en iyi performans için Premium depolama kullanın.
 
-DB2 pureScale, tüm verilere tüm küme düğümlerinden erişilebilen bir paylaşılan her şey mimarisi kullanır. Premium Depolama, isteğe bağlı veya adanmış örneklerde, örnekler arasında paylaşılmalıdır.
+DB2 pureScale, tüm verilere tüm küme düğümlerinden erişilebilen bir paylaşılan her şey mimarisi kullanır. Premium Depolama, isteğe bağlı veya adanmış örneklerde, birden çok örnek arasında paylaşılmalıdır.
 
-Büyük bir DB2 pureScale kümesi, 200 terabayt (TB) veya daha fazla Premium paylaşılan depolama alanı gerektirebilir, bu da 100.000 ıOPS ile kullanılabilir. DB2 pureScale, Azure 'da kullanabileceğiniz bir Iscsı blok arabirimini destekler. Iscsı arabirimi, GlusterFS, S2D veya başka bir araçla uygulayabileceğiniz bir paylaşılan depolama kümesi gerektirir. Bu tür bir çözüm, Azure 'da bir sanal depolama alanı ağı (vSAN) cihazı oluşturur. DB2 pureScale, sanal makineler arasında veri paylaşımında kullanılan kümelenmiş dosya sistemini yüklemek için vSAN 'ı kullanır.
-
-Örnek mimari, bulut depolaması için en iyi duruma getirilmiş, ücretsiz, ölçeklenebilir, açık kaynaklı bir dağıtılmış dosya sistemi olan GlusterFS 'yi kullanır.
+Büyük bir DB2 pureScale kümesi, 200 terabayt (TB) veya daha fazla Premium paylaşılan depolama alanı gerektirebilir, bu da 100.000 ıOPS ile kullanılabilir. DB2 pureScale, Azure 'da kullanabileceğiniz bir Iscsı blok arabirimini destekler. Iscsı arabirimi S2D veya başka bir araçla uygulayabileceğiniz bir paylaşılan depolama kümesi gerektirir. Bu tür bir çözüm, Azure 'da bir sanal depolama alanı ağı (vSAN) cihazı oluşturur. DB2 pureScale, sanal makineler arasında veri paylaşımında kullanılan kümelenmiş dosya sistemini yüklemek için vSAN 'ı kullanır.
 
 ### <a name="networking-considerations"></a>Ağ konusunda dikkat edilmesi gerekenler
 

@@ -1,26 +1,15 @@
 ---
-title: Azure VM 'lerinde bir Service Fabric kümesi için altyapı oluşturma öğreticisi-Azure Service Fabric | Microsoft Docs
+title: Azure VM 'lerinde küme için altyapı oluşturma
 description: Bu öğreticide, Azure VM altyapısını bir Service Fabric kümesi çalıştıracak şekilde ayarlamayı öğreneceksiniz.
-services: service-fabric
-documentationcenter: .net
-author: jpconnock
-manager: jpconnock
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: jeconnoc
 ms.custom: mvc
-ms.openlocfilehash: b24b4d95827dbd398c0eba43dcbad9fbfeb51469
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166269"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614018"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesi barındırmak için Azure VM altyapısı oluşturma
 
@@ -36,7 +25,7 @@ Serinin birinci bölümünde şunları öğrenirsiniz:
 > * Örneklerden birinde oturum açma
 > * Service Fabric örneğini hazırlama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Henüz bir hesabınız yoksa, bir hesap oluşturmak için [Azure Portal](https://portal.azure.com) gidin.
 

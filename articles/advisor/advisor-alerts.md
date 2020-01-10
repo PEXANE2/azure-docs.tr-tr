@@ -1,20 +1,14 @@
 ---
-title: Yeni öneriler için Azure Advisor uyarıları oluşturun | Microsoft Docs
+title: Yeni öneriler için Azure Advisor uyarıları oluşturun
 description: Yeni öneri için Azure Advisor uyarıları oluşturma
-services: advisor
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/09/2019
-ms.author: sagupt
-ms.openlocfilehash: d641008a7caf4a006344d886aec945a6e8da2568
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 07cbc57ef718b6cac104d2b5238ff4e3196f197a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443165"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Yeni önerilerle Azure Advisor uyarıları oluşturma 
 
@@ -24,7 +18,7 @@ Azure Advisor kaynaklarınızdan biri için yeni bir öneri algıladığında, [
 
 Aşağıdaki özellikleri kullanarak öneri türlerini de belirleyebilirsiniz:
 
-* Category
+* Kategori
 * Etki düzeyi
 * Öneri türü
 
@@ -38,7 +32,7 @@ Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları o
 > [!NOTE] 
 > Danışman uyarıları Şu anda yalnızca yüksek kullanılabilirlik, performans ve maliyet önerileri için kullanılabilir. Güvenlik önerileri desteklenmez. 
 
-## <a name="in-the-azure-portal"></a>Azure portal
+## <a name="in-the-azure-portal"></a>Azure portalında
 1. **Portalda** **Azure Danışmanı**' nı seçin.
 
     ![Portalda Azure Danışmanı](./media/advisor-alerts/create1.png)
@@ -274,7 +268,7 @@ Ortak şemayı kullanmıyorsanız, yükünüze aşağıdakiler gibi görünür:
 }
 ```
 
-Herhangi bir şemada, **EventSource** `Recommendation` ve **OperationName** `Microsoft.Advisor/recommendations/available/action`' ı arayarak Advisor öneri olaylarını belirleyebilirsiniz.
+Her iki şemada da **eventSource** `Recommendation` ve **OperationName** `Microsoft.Advisor/recommendations/available/action`' i arayarak Advisor öneri olaylarını belirleyebilirsiniz.
 
 Kullanmak isteyebileceğiniz diğer önemli alanlardan bazıları şunlardır: 
 

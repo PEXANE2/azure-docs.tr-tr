@@ -1,28 +1,19 @@
 ---
-title: 'Service Fabric kümesi Kaynak Yöneticisi: taşıma maliyeti | Microsoft Docs'
-description: Service Fabric Hizmetleri için taşıma maliyetine genel bakış
-services: service-fabric
-documentationcenter: .net
+title: 'Service Fabric kümesi Kaynak Yöneticisi: taşıma maliyeti'
+description: Service Fabric Hizmetleri için taşıma maliyeti ve dinamik yapılandırma dahil olmak üzere mimari gereksinimlerine uyacak şekilde nasıl belirtileyeceğinizi öğrenin.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 80845fca8d163a4ebe9257f19825624acef3a815
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243003"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563352"
 ---
 # <a name="service-movement-cost"></a>Hizmet taşıma maliyeti
-Service Fabric kümenin Kaynak Yöneticisi, bir kümede yapılacak değişikliklerin ne kadar değişiklik yaptığını belirlemeye çalışırken dikkate aldığı bir faktör bu değişikliklerin maliyetidir. "Maliyet" kavramı, kümenin ne kadar iyileşebileceğini bir şekilde satın alabilir. Hizmetler, Dengeleme, birleştirme ve diğer gereksinimler için Hizmetleri taşırken buna göre belirlenir. Amaç, gereksinimleri en az karışıklığa veya pahalı bir şekilde karşılamaktır. 
+Service Fabric kümenin Kaynak Yöneticisi, bir kümede yapılacak değişikliklerin ne kadar değişiklik yaptığını belirlemeye çalışırken dikkate aldığı bir faktör bu değişikliklerin maliyetidir. "Maliyet" kavramı, kümenin ne kadar iyileşebileceğini bir şekilde satın alabilir. Hizmetler, Dengeleme, birleştirme ve diğer gereksinimler için Hizmetleri taşırken buna göre belirlenir. Amaç, gereksinimleri en az karışıklığa veya pahalı bir şekilde karşılamaktır.
 
 Hizmet maliyetleri CPU süresi ve ağ bant genişliği en az bir olarak taşınıyor. Durum bilgisi olan hizmetler için, ek bellek ve disk kullanan bu hizmetlerin durumunun kopyalanmasını gerektirir. Azure Service Fabric kümesinin Kaynak Yöneticisi birlikte geldiği çözümlerin maliyetini en aza indirmek, kümenin kaynaklarının gereksiz şekilde harcanmadığından emin olmanıza yardımcı olur. Ancak, kümedeki kaynakların ayrılmasını önemli ölçüde iyileştirebilecek çözümleri de yoksaymak istemezsiniz.
 
@@ -39,7 +30,7 @@ PowerShell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -DefaultMoveCost Medium
 ```
 
-C#: 
+C# İÇİN: 
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -57,7 +48,7 @@ PowerShell:
 Update-ServiceFabricService -Stateful -ServiceName "fabric:/AppName/ServiceName" -DefaultMoveCost High
 ```
 
-C#:
+C# İÇİN:
 
 ```csharp
 StatefulServiceUpdateDescription updateDescription = new StatefulServiceUpdateDescription();
@@ -69,7 +60,7 @@ await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/Se
 
 Yukarıdaki kod parçacıklarının hepsi hizmetin dışından bir hizmetin tamamına yönelik MoveCost belirtmektir. Ancak, taşıma maliyeti en çok yararlı olur ve belirli bir hizmet nesnesinin taşıma maliyeti, kullanım ömrü boyunca değişir. Hizmetler muhtemelen belirli bir süreyi taşımanın ne kadar maliyetlerine ait olduğu konusunda en iyi fikir sahibi olduğundan, hizmetler için çalışma zamanı sırasında kendi bireysel taşıma maliyetlerini raporlamak üzere bir API 'SI vardır. 
 
-C#:
+C# İÇİN:
 
 ```csharp
 this.Partition.ReportMoveCost(MoveCost.Medium);

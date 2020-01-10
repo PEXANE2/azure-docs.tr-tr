@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98373fe8eab07519e665ab1eddfd7a9ce6b7e22
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 481e1762e805f162aa515dd4d12cc7b6b2e95d71
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847875"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560265"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD parola korumasını dağıtma
 
@@ -129,11 +129,13 @@ Azure AD parola koruması için gereken iki yükleyici vardır. Bunlar [Microsof
      Sonuç, "çalışıyor" **durumunun** gösterilmesi gerekir.
 
 1. Proxy 'yi kaydedin.
-   * 3\. adım tamamlandıktan sonra, proxy hizmeti makinede çalışır. Ancak hizmet henüz Azure AD ile iletişim kurmak için gerekli kimlik bilgilerine sahip değil. Azure AD 'ye kaydolma gereklidir:
+   * 3\. adım tamamlandıktan sonra, proxy hizmeti makinede çalışır, ancak henüz Azure AD ile iletişim kurmak için gerekli kimlik bilgilerine sahip değildir. Azure AD 'ye kaydolma gereklidir:
 
      `Register-AzureADPasswordProtectionProxy`
 
-     Bu cmdlet Azure kiracınız için genel yönetici kimlik bilgilerini gerektirir. Ayrıca, orman kök etki alanında Şirket içi Active Directory etki alanı yöneticisi ayrıcalıklarına sahip olmanız gerekir. Bu komut bir proxy hizmeti için bir kez başarılı olduktan sonra, bu, ek olarak çağırmaları başarılı olur ancak gereksizdir.
+     Bu cmdlet Azure kiracınız için genel yönetici kimlik bilgilerini gerektirir. Ayrıca, orman kök etki alanında Şirket içi Active Directory etki alanı yöneticisi ayrıcalıklarına sahip olmanız gerekir. Ayrıca, yerel yönetici ayrıcalıklarına sahip bir hesap kullanarak bu cmdlet 'i çalıştırmalısınız.
+
+     Bu komut bir proxy hizmeti için bir kez başarılı olduktan sonra, bu, ek olarak çağırmaları başarılı olur ancak gereksizdir.
 
       `Register-AzureADPasswordProtectionProxy` cmdlet 'i aşağıdaki üç kimlik doğrulama modunu destekler. İlk iki mod Azure Multi-Factor Authentication destekler, ancak üçüncü mod desteklemez. Daha fazla ayrıntı için lütfen aşağıdaki açıklamalara bakın.
 
@@ -177,7 +179,9 @@ Azure AD parola koruması için gereken iki yükleyici vardır. Bunlar [Microsof
    > Bu cmdlet belirli bir Azure kiracısı için ilk kez çalıştırıldığında tamamlanmadan önce dikkat çekici bir gecikme olabilir. Bir hata raporlanmadığı takdirde bu gecikmeden endişelenmeyin.
 
 1. Ormanı kaydedin.
-   * `Register-AzureADPasswordProtectionForest` PowerShell cmdlet 'ini kullanarak Azure ile iletişim kurmak için şirket içi Active Directory ormanını gerekli kimlik bilgileriyle başlatmalısınız. Cmdlet 'i Azure kiracınız için genel yönetici kimlik bilgileri gerektirir. Ayrıca şirket içi Active Directory Kurumsal Yönetici ayrıcalıkları gerektirir. Bu adım, her orman için bir kez çalıştırılır.
+   * `Register-AzureADPasswordProtectionForest` PowerShell cmdlet 'ini kullanarak Azure ile iletişim kurmak için şirket içi Active Directory ormanını gerekli kimlik bilgileriyle başlatmalısınız.
+
+      Cmdlet 'i Azure kiracınız için genel yönetici kimlik bilgileri gerektirir.  Ayrıca, yerel yönetici ayrıcalıklarına sahip bir hesap kullanarak bu cmdlet 'i çalıştırmalısınız. Ayrıca şirket içi Active Directory Kurumsal Yönetici ayrıcalıkları gerektirir. Bu adım, her orman için bir kez çalıştırılır.
 
       `Register-AzureADPasswordProtectionForest` cmdlet 'i aşağıdaki üç kimlik doğrulama modunu destekler. İlk iki mod Azure Multi-Factor Authentication destekler, ancak üçüncü mod desteklemez. Daha fazla ayrıntı için lütfen aşağıdaki açıklamalara bakın.
 
@@ -302,7 +306,7 @@ Azure AD parola koruması için gereken iki yükleyici vardır. Bunlar [Microsof
 
    DC Aracısı hizmetini henüz bir etki alanı denetleyicisi olmayan bir makineye yükleyebilirsiniz. Bu durumda, hizmet başlatılır ve çalışır, ancak makine bir etki alanı denetleyicisi olacak şekilde yükseltilene kadar devre dışı bırakılır.
 
-   Yazılım yüklemesini standart MSI yordamlarını kullanarak otomatikleştirebilirsiniz. Örnek:
+   Yazılım yüklemesini standart MSI yordamlarını kullanarak otomatikleştirebilirsiniz. Örneğin:
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 

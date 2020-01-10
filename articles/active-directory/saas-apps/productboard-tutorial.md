@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 529c2a453bade8745a596b5cd2e374907a66f613
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1c308243e3dfebb3622ebbe346771fe781b97cc5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893731"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443318"
 ---
 # <a name="tutorial-integrate-productboard-with-azure-active-directory"></a>Öğretici: productboard 'ı Azure Active Directory tümleştirme
 
@@ -33,7 +33,7 @@ Bu öğreticide, productboard 'ı Azure Active Directory (Azure AD) ile tümleş
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -68,7 +68,7 @@ Azure AD SSO 'yu productboard ile yapılandırmak ve test etmek için aşağıda
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 1. **[Productboard SSO 'Yu yapılandırma](#configure-productboard-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    * Kullanıcı Azure AD gösterimi ile bağlantılı olan Ezofficeenvanterinde B. Simon 'un bir karşılığı olacak şekilde **[productboard test kullanıcısı oluşturun](#create-productboard-test-user)** .
+    * Productboard **[test kullanıcısı oluşturun](#create-productboard-test-user)** -bu, kullanıcının Azure AD gösterimine bağlı olan productboard 'de B. Simon 'a karşılık gelen bir.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
@@ -106,7 +106,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 

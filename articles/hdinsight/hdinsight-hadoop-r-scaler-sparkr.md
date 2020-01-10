@@ -5,33 +5,33 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/19/2017
-ms.openlocfilehash: 9fa18550a3c27ce38599b9a0d47abdc38524d9c2
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/26/2019
+ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077103"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500084"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight 'ta ScaleR ve parlak r 'yi birleştirme
 
 Bu belgede, bir **Scaler** lojistik regresyon modeli kullanarak uçuş gelme gecikmelerinin nasıl tahmin edilmesi gösterilmektedir. Örnek, **parlak r**kullanılarak birleştirilmiş Uçuş gecikmesi ve hava durumu verilerini kullanır.
 
-Her iki paket de Apache Hadoop Spark yürütme altyapısında çalıştırılsa da, her biri kendi ilgili Spark oturumlarını gerektirdiğinden bellek içi veri paylaşımı engellenir. Bu sorun ML Server gelecek bir sürümünde giderilene kadar geçici çözüm, çakışmayan Spark oturumlarını sürdürmek ve ara dosyalar aracılığıyla veri alışverişi yapmak için kullanılır. Buradaki yönergeler, bu gereksinimlerin elde etmek için kullanımı kolay olduğunu gösterir.
+Her iki paket de Apache Hadoop Spark yürütme altyapısında çalıştırılsa da, her biri kendi ilgili Spark oturumlarını gerektirdiğinden bellek içi veri paylaşımıyla engellenirler. Bu sorun ML Server gelecek bir sürümünde giderilene kadar geçici çözüm, çakışmayan Spark oturumlarını sürdürmek ve ara dosyalar aracılığıyla veri alışverişi yapmak için kullanılır. Buradaki yönergeler, bu gereksinimlerin elde etmek için kullanımı kolay olduğunu gösterir.
 
-Bu örnek başlangıçta Mario Inchiosa ve roni burd tarafından Strata 2016 ' de bir konuşmasıyla paylaşılmıştı. Bu konuşmayı, [R Ile ölçeklenebilir bir veri bilimi platformu oluşturma konusunda](https://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio)bulabilirsiniz.
+Bu örnek başlangıçta Mario Inchiosa ve roni burd tarafından Strata 2016 ' de bir konuşmasıyla paylaşılmıştı. Bu konuşmayı, [R Ile ölçeklenebilir bir veri bilimi platformu oluşturma konusunda](https://channel9.msdn.com/blogs/Cloud-and-Enterprise-Premium/Building-A-Scalable-Data-Science-Platform-with-R-and-Hadoop)bulabilirsiniz.
 
 Kod başlangıçta Azure 'daki bir HDInsight kümesinde Spark üzerinde çalışan ML Server için yazılmıştır. Ancak, tek bir betikte parlak r ve ScaleR kullanımını karıştırma kavramı, şirket içi ortamlar bağlamında da geçerlidir.
 
-Bu belgede yer alan adımlarda, R için bir ara düzey bilginiz olduğunu ve ML Server [Scaler](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) kitaplığı olduğunu varsayalım. Bu senaryoda yürüyerek [mini-mini r](https://spark.apache.org/docs/2.1.0/sparkr.html) 'ye sunulmuştur.
+Bu belgede yer alan adımlarda, R için bir ara düzey bilginiz olduğunu ve ML Server [Scaler](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) kitaplığı olduğunu varsayalım. Bu senaryoda yürüyen bir [mini-mini r](https://spark.apache.org/docs/2.1.0/sparkr.html) 'ye tanıtıyorsunuz.
 
 ## <a name="the-airline-and-weather-datasets"></a>Hava yolu ve hava durumu veri kümeleri
 
-Uçuş verileri [ABD kamu arşivlerine](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)göre sunulmaktadır. Ayrıca [Airontimecsv. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)dosyasından bir ZIP olarak da kullanılabilir.
+Uçuş verileri [ABD kamu arşivlerine](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)göre sunulmaktadır. [Airontimecsv. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)dosyasından bir ZIP olarak da kullanılabilir.
 
-Hava durumu verileri, ham formda, [Ulusal Okyanus ve atmosfer yönetim deposundan](https://www.ncdc.noaa.gov/orders/qclcd/), aya göre ZIP dosyaları olarak indirilebilir. Bu örnekte, Mayıs 2007 – Aralık 2012 için verileri indirin. Her ZIP 'nin içindeki saatlik `YYYYMMMstation.txt` veri dosyalarını ve dosyayı kullanın. 
+Hava durumu verileri, ham formda, [Ulusal Okyanus ve atmosfer yönetim deposundan](https://www.ncdc.noaa.gov/orders/qclcd/), aya göre ZIP dosyaları olarak indirilebilir. Bu örnekte, Mayıs 2007 – Aralık 2012 için verileri indirin. Her ZIP 'nin içindeki saatlik veri dosyalarını ve `YYYYMMMstation.txt` dosyasını kullanın.
 
 ## <a name="setting-up-the-spark-environment"></a>Spark ortamını ayarlama
 
@@ -80,7 +80,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Ardından, R `Spark_Home` paketleri için arama yoluna ekleyin. Arama yoluna eklemek, Mini ve mini bir r oturumu başlatmak için şunu sağlar:
+Sonra, R paketleri için arama yoluna `Spark_Home` ekleyin. Arama yoluna eklemek, Mini ve mini bir r oturumu başlatmak için şunu sağlar:
 
 ```
 #..setup for use of SparkR  
@@ -194,7 +194,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Hava yolu ve hava durumu verilerini Spark veri çerçevelerine aktarma
 
-Şimdi, hava durumu ve hava yolu verilerini Spark dataframe 'e aktarmak için, Mini uçr [Read. df ()](https://spark.apache.org/docs/latest/api/R/read.df.html) işlevini kullanırız. Diğer birçok Spark yöntemi gibi bu işlev, yürütme için sıraya alındığı ancak gerekli olana kadar yürütülmeyeceği anlamına gelen geç yürütülür.
+Şimdi, hava durumu ve hava yolu verilerini Spark dataframe 'e aktarmak için, Mini uçr [Read. df ()](https://spark.apache.org/docs/latest/api/R/read.df.html) işlevini kullanırız. Diğer birçok Spark yöntemi gibi bu işlev, geç yürütülür, yani yürütme için kuyruklanmış ancak gerekli olana kadar yürütülemeyecek.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -267,7 +267,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>Hava durumu ve hava yolu verilerine katılma
 
-Şimdi, uçak ve tarih/saat ile hava yolu ve hava durumu verilerinin bir sol dış birleştirmesini yapmak için, Mini uçr [JOIN ()](https://spark.apache.org/docs/latest/api/R/join.html) işlevini kullanırız. Dış birleşim, eşleşen Hava durumu verisi olmasa bile tüm hava yolu veri kayıtlarını korumamızı sağlar. Birleştirmeyi takip eden bazı gereksiz sütunları kaldırdık ve JOIN tarafından tanıtılan gelen veri çerçevesi önekini kaldırmak için tutulan sütunları yeniden adlandırmanız gerekir.
+Şimdi, uçak ve tarih/saat ile hava yolu ve hava durumu verilerinin bir sol dış birleştirmesini yapmak için, Mini uçr [JOIN ()](https://spark.apache.org/docs/latest/api/R/join.html) işlevini kullanırız. Dış birleşim, eşleşen Hava durumu verisi olmasa bile tüm hava yolu veri kayıtlarını korumamıza izin verir. Birleştirmeyi takip eden bazı gereksiz sütunları kaldırdık ve JOIN tarafından tanıtılan gelen veri çerçevesi önekini kaldırmak için tutulan sütunları yeniden adlandırmanız gerekir.
 
 ```
 logmsg('Join airline data with weather at Origin Airport')
@@ -459,7 +459,7 @@ rxGetInfo(testDS)
 
 ## <a name="train-and-test-a-logistic-regression-model"></a>Lojistik regresyon modelini eğitme ve test etme
 
-Şimdi bir model oluşturmaya hazırsınız. Hava süresi gecikmede Hava durumu verilerinin etkisini görmek için, ScaleR 'nun lojistik regresyon yordamını kullanıyoruz. Bu işlemi, 15 dakikadan büyük bir varış gecikmesi tarafından, ayrılma ve varış havaalanlarında Hava durumu üzerinden etkilenip etkilenmediğini modelleyerek kullanırız:
+Şimdi bir model oluşturmaya hazırız. Hava süresi gecikmede Hava durumu verilerinin etkisini görmek için, ScaleR 'nun lojistik regresyon yordamını kullanıyoruz. Bu işlemi, 15 dakikadan büyük bir varış gecikmesi tarafından, ayrılma ve varış havaalanlarında Hava durumu üzerinden etkilenip etkilenmediğini modelleyerek kullanırız:
 
 ```
 logmsg('train a logistic regression model for Arrival Delay > 15 minutes') 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Başka bir yerde Puanlama
 
-Ayrıca, başka bir platformda Puanlama verileri için model de kullanabiliriz. Bir RDS dosyasına kaydederek ve bu RDS 'yi MIcrosoft SQL Server R Services gibi bir hedef Puanlama ortamına aktarıp içeri aktararak. Puanlanması gereken verilerin faktör düzeylerinin, modelin derlenme ile eşleştiğinden emin olmak önemlidir. Bu eşleştirme, Scaler 'ın `rxCreateColInfo()` işlevi aracılığıyla modelleme verileriyle ilişkili sütun bilgilerini ayıklayarak kaydederek ve ardından bu sütun bilgilerinin tahmine yönelik giriş veri kaynağına uygulanmasıyla elde edilebilir. Aşağıda, test veri kümesinin birkaç satırını kaydeder ve bu örnekteki sütun bilgilerini tahmin komut dosyasında ayıklar ve kullanın:
+Ayrıca, başka bir platformda Puanlama verileri için model de kullanabiliriz. Bir RDS dosyasına kaydederek ve bu RDS 'yi MIcrosoft SQL Server R Services gibi bir hedef Puanlama ortamına aktarıp içeri aktararak. Puanlanması gereken verilerin faktör düzeylerinin, modelin derlenme ile eşleştiğinden emin olmak önemlidir. Bu eşleştirme, ScaleR 'ın `rxCreateColInfo()` işlevi aracılığıyla modelleme verileriyle ilişkili sütun bilgilerini ayıklayarak kaydederek ve ardından bu sütun bilgilerinin tahmine yönelik giriş veri kaynağına uygulanmasıyla elde edilebilir. Aşağıda, test veri kümesinin birkaç satırını kaydeder ve bu örnekteki sütun bilgilerini tahmin komut dosyasında ayıklar ve kullanın:
 
 ```
 # save the model and a sample of the test dataset 

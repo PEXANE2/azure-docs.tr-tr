@@ -3,18 +3,18 @@ title: IoT Tak ve Kullan önizlemesine giriş | Microsoft Docs
 description: IoT Tak ve Kullan önizlemesi hakkında bilgi edinin. IoT Tak ve Kullan, IoT cihazlarının yeteneklerini bildirmesine olanak sağlayan bir açık modelleme dilini temel alır. IoT cihazları, cihaz yetenek modeli olarak adlandırılan ve Azure IoT Central veya iş ortağı uygulamaları gibi bulut çözümlerine bağlandıklarında bu bildirimi sunar. Bulut çözümü daha sonra herhangi bir kod yazmadan cihazı otomatik olarak anlayabilir ve bununla etkileşime başlayabilir.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 06/21/2019
+ms.date: 12/23/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 54a18bb20ab9af3ad794ed678ea3234a712bf5cb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935388"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531171"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>IoT Tak ve Kullan önizlemesi nedir?
 
@@ -86,6 +86,6 @@ Genel Önizleme sırasında, IoT Tak ve Kullan cihazları Arabirim başına ayr�
 
 IoT Tak ve Kullan 'ye genel bir bakış edinolduğunuza göre, önerilen sonraki adım hızlı başlangıçlardan birini denemektedir:
 
-- [IoT Tak ve Kullan cihazı oluşturmak için cihaz yetenek modeli kullanma](./quickstart-create-pnp-device.md)
-- [Cihazı IoT Hub bağlama](./quickstart-connect-pnp-device.md)
-- [Çözümünüzde bir cihaza bağlanma](./quickstart-connect-pnp-device-solution.md)
+- [IoT Tak ve Kullan cihazı oluşturmak için cihaz yetenek modeli kullanma](./quickstart-create-pnp-device-windows.md)
+- [Cihazı IoT Hub bağlama](./quickstart-connect-pnp-device-c-windows.md)
+- [Çözümünüzde bir cihaza bağlanma](./quickstart-connect-pnp-device-solution-node.md)

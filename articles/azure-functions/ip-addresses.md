@@ -3,12 +3,12 @@ title: Azure Işlevlerinde IP adresleri
 description: İşlev uygulamaları için gelen ve giden IP adreslerini bulmayı ve bunların değişmesine neden olduğunu öğrenin.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 327d616c36bcbbb1562349afffd529efb2b5d27f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230337"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612896"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Işlevlerinde IP adresleri
 
@@ -25,9 +25,9 @@ IP adresleri, bağımsız işlevlerle değil işlev uygulamalarıyla ilişkilend
 
 Her işlev uygulamasının tek bir gelen IP adresi vardır. Bu IP adresini bulmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. İşlev uygulamasına gidin.
-3. **Platform özellikleri**' ni seçin.
+3. **Platform özellikleri**'ni seçin.
 4. **Özellikler**' i seçin ve **sanal IP adresı**altında gelen IP adresi görüntülenir.
 
 ## <a name="find-outbound-ip-addresses"></a>İşlev uygulaması giden IP adresleri
@@ -88,7 +88,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 - Bir kaynak grubu ve bölge birleşiminde son işlev uygulamasını silin ve yeniden oluşturun.
 - [Sertifika yenileme](../app-service/configure-ssl-certificate.md#renew-certificate)sırasında olduğu gıbı bir SSL bağlamasını silin.
 
-İşlev uygulamanız bir [Tüketim planında](functions-scale.md#consumption-plan)çalıştığında, listede listelenenler gibi herhangi bir eylem gerçekleştirmemeniz durumunda gelen IP adresi de değişebilir.
+İşlev uygulamanız bir [Tüketim planında](functions-scale.md#consumption-plan)çalıştığında, [Yukarıda listelenenler](#inbound-ip-address-changes)gibi herhangi bir eylem gerçekleştirmemiş olsanız bile gelen IP adresi de değişebilir.
 
 ## <a name="outbound-ip-address-changes"></a>Giden IP adresi değişiklikleri
 
@@ -97,7 +97,7 @@ Bir işlev uygulaması için kullanılabilir giden IP adresleri kümesi şunlar�
 * Gelen IP adresini değiştirecek herhangi bir işlem yapın.
 * App Service planı fiyatlandırma katmanınızı değiştirin. Uygulamanızın kullanabileceği tüm olası giden IP adreslerinin listesi, tüm fiyatlandırma katmanları için `possibleOutboundIPAddresses` özellikte. Bkz. [giden IP 'Leri bulma](#find-outbound-ip-addresses).
 
-İşlev uygulamanız bir [Tüketim planında](functions-scale.md#consumption-plan)çalıştığında, listede listelenenler gibi herhangi bir eylem gerçekleştirmediyse giden IP adresi de değişebilir.
+İşlev uygulamanız bir [Tüketim planında](functions-scale.md#consumption-plan)çalıştığında, [Yukarıda listelenenler](#inbound-ip-address-changes)gibi herhangi bir eylem gerçekleştirmemiş olsanız bile giden IP adresi de değişebilir.
 
 Giden IP adresi değişikliğini kasıtlı olarak zorlamak için:
 
@@ -115,9 +115,9 @@ Statik, ayrılmış IP adreslerine ihtiyacınız varsa [App Service ortamlar](..
 
 İşlev uygulamanızın bir App Service Ortamı çalışıp çalışmamasından daha fazla bilgi edinmek için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. İşlev uygulamasına gidin.
-3. **Genel bakış** sekmesini seçin.
+3. **Genel Bakış** sekmesini seçin.
 4. App Service planı katmanı **App Service plan/fiyatlandırma katmanı**altında görünür. App Service Ortamı fiyatlandırma katmanı **yalıtılmıştır**.
  
 Alternatif olarak, [Cloud Shell](../cloud-shell/quickstart.md)kullanabilirsiniz:

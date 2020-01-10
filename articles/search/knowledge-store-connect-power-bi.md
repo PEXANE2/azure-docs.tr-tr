@@ -7,34 +7,35 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: d1e836e0f463d1d2ce2b71d689ed590239cfb607
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 11/26/2019
+ms.openlocfilehash: dec792dfd3a2640fa08ebccd9077c081ba9737bb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406600"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563301"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Bilgi deposunu Power BI bağlama
 
 > [!IMPORTANT] 
-> bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
+> Bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
 Bu makalede Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi deposuna nasıl bağlanacağınızı ve keşfedeceğinizi öğrenin. Şablonlarla daha hızlı çalışmaya başlayabilir veya sıfırdan özel bir pano oluşturabilirsiniz.
 
 + Bu kılavuzda kullanılan örnek bilgi deposunu oluşturmak için, [Azure Portal bilgi deposu oluşturma](knowledge-store-create-portal.md) ' daki adımları IZLEYIN veya [rest kullanarak bir Azure bilişsel arama bilgi deposu oluşturun](knowledge-store-create-rest.md) . Ayrıca, bilgi deposunu oluşturmak için kullandığınız Azure depolama hesabının adına, Azure portal erişim anahtarıyla birlikte ihtiyacınız olacaktır.
 
-+ [Power BI Desktop yüklensin](https://powerbi.microsoft.com/downloads/)
++ [Power BI Desktop uygulamasını yükleme](https://powerbi.microsoft.com/downloads/)
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>Örnek Power BI şablonu-yalnızca Azure portal
 
-[Bilgi deponuzu Azure Portal kullanarak oluşturduysanız](knowledge-store-create-portal.md), Power BI görselleştirmeleri görüntülemek ve denemek için [Azure bilişsel arama Power BI şablon örneğini](https://github.com/Azure-Samples/cognitive-search-templates) kullanabilirsiniz. Bu şablon, **verileri Içeri aktarma** Sihirbazı ' nı adım adım yaptığınızda da indirilebilir.
+[Azure Portal kullanarak bir bilgi deposu](knowledge-store-create-portal.md)oluştururken, **verileri içeri aktarma** Sihirbazı ' nın ikinci sayfasında bir [Power BI şablonu](https://github.com/Azure-Samples/cognitive-search-templates) indirme seçeneğiniz vardır. Bu şablon, metin tabanlı içerik için WordCloud ve Network Navigator gibi çeşitli görselleştirmeler sağlar. 
 
-Örnek şablon, bu makalenin geri kalanında belirtilen kurulum adımlarını otomatik olarak gerçekleştirir. Bununla birlikte, bilgi deponuzu oluşturmak için REST API kullandıysanız, şablonu atlayın ve bilgi deponuzu Power BI bağlamak için bu makaledeki geri kalan bölümleri kullanın. [Power BI Connect](#connect-with-power-bi)ile başlayın.
-
-Örnek şablon, WordCloud ve Network Navigator gibi çeşitli görselleştirmeler içerir. Şablondaki bazı görselleştirmeler, örneğin konumlar Haritası ve varlık-grafik Görüntüleyici, [Azure Portal bilgi deposu oluşturma](knowledge-store-create-portal.md)bölümünde oluşturulan örnek bilgi deposu için verileri göstermez. Bunun nedeni, **verileri Içeri aktarma** Sihirbazı 'nda yalnızca bir AI zenginleştirme 'nin kullanılabilir olduğu bir alt kümesidir.
+Şablonu genel GitHub konumundan alıp indirmek için bilişsel **yetenekler Ekle** sayfasında **Power BI şablonu Al** ' ı tıklatın. Sihirbaz, sihirbazda belirtilen bilgi deposu projeksiyonde yakalandığından, şablonu verilerinizin şekline uyacak şekilde değiştirir. Bu nedenle, karşıdan yüklediğiniz şablon, farklı veri girişleri ve yetenek seçimlerini varsayarak, Sihirbazı her çalıştırdığınızda değişiklik gösterecektir.
 
 ![Örnek Azure Bilişsel Arama Power BI şablonu](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Örnek Power BI şablonu")
+
+> [!NOTE]
+> Sihirbaz orta uçuşdayken şablon indirilse de, bilgi deposu kullanabilmeniz için önce Azure Tablo depolamada oluşturuluncaya kadar beklemeniz gerekir.
 
 ## <a name="connect-with-power-bi"></a>Power BI ile bağlanma
 
@@ -48,16 +49,19 @@ Bu makalede Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi d
 
 1. İstenirse, depolama hesabı anahtarını girin.
 
-1. *Hotelbelge\sdocument*, *HotelReviewsSsKeyPhrases*ve *Hotelbelge\spages* tablolarını seçin. Bu tablolar, otel 'in Azure Tablo projeksiyonları, örnek verileri inceler ve bilgi deposu oluşturulduğunda seçilen AI zenginlerini içerir.
+1. Önceki gözden geçirmeler tarafından oluşturulan otel verilerini içeren tabloları seçin. 
 
-1. **Yükle**' ye tıklayın.
+   + Portal Kılavuzu için, tablo adları *hotelgözden geçiricsdocument*, *hotelmpl sssentities*, *HotelReviewsSsKeyPhrases*ve *hotelcode ssspages*' dır. 
+   
+   + REST Kılavuzu için, tablo adları *hotelgözden geçiricsdocument*, *hotelgözden geçiricspages*, *HotelReviewsKeyPhrases*ve *hotelincelemesi ssentiment*.
+
+1. **Yükle**’ye tıklayın.
 
 1. **Power Query düzenleyicisini**açmak için üst şeritte **sorguları Düzenle** ' ye tıklayın.
 
    ![Power Query açın](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query açın")
 
 1. *Hotelcode Ssındocument*' ı seçin ve ardından *partitionkey*, *rowkey*ve *timestamp* sütunlarını kaldırın. 
-
    ![Tabloları Düzenle](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Tabloları Düzenle")
 
 1. *İçeriği*genişletmek için tablonun sağ üst tarafındaki karşıt oklu simgeye tıklayın. Sütun listesi göründüğünde, tüm sütunlar ' ı seçin ve ardından ' Metadata ' ile başlayan sütunların seçimini kaldırın. Seçilen sütunları göstermek için **Tamam** ' ı tıklatın.
@@ -83,6 +87,8 @@ Bu makalede Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi d
 
 1. Her bir ilişkiye çift tıklayın ve **çapraz filtre yönünün** **her ikisine de**ayarlandığından emin olun.  Bu, bir filtre uygulandığında görsellerinizin yenilenmesini sağlar.
 
+1. Görsel öğeler aracılığıyla verileri araştırmak için sol gezinti bölmesindeki rapor kutucuğuna tıklayın. Metin alanları, tablolar ve kartlar yararlı görselleştirmelerdir. Tablo veya kartı doldurmanız için üç tablodaki her bir alandan alanları seçebilirsiniz. 
+
 <!-- ## Try with larger data sets
 
 We purposely kept the data set small to avoid charges for a demo walkthrough. For a more realistic experience, you can create and then attach a billable Cognitive Services resource to enable a larger number of transactions against the sentiment analyzer, keyphrase extraction, and language detector skills.
@@ -102,7 +108,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 ## <a name="clean-up"></a>Temizleme
 
-Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 
@@ -114,8 +120,3 @@ Bu bilgi deposunu Depolama Gezgini kullanarak nasıl keşfedeceğinizi öğrenme
 
 > [!div class="nextstepaction"]
 > [Depolama Gezgini ile görüntüle](knowledge-store-view-storage-explorer.md)
-
-REST API 'Leri ve Postman kullanarak bilgi deposu oluşturmayı öğrenmek için aşağıdaki makaleye bakın.  
-
-> [!div class="nextstepaction"]
-> [REST 'te bilgi deposu oluşturma](knowledge-store-howto.md)

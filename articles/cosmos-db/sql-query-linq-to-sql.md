@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: d8dd6392cf22852a10c1dc2600edcbc647f3c510
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871168"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441248"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL çeviri
 
@@ -23,7 +23,7 @@ Sorgu sağlayıcısı aşağıdaki skaler ifadeleri destekler:
 
 - Sorgu değerlendirme sırasında temel veri türlerinin sabit değerleri de dahil olmak üzere sabit değerler.
   
-- Bir nesnenin veya dizi öğesinin özelliğine başvuran Özellik/dizi dizini ifadeleri. Örnek:
+- Bir nesnenin veya dizi öğesinin özelliğine başvuran Özellik/dizi dizini ifadeleri. Örneğin:
   
   ```
     family.Id;
@@ -64,7 +64,7 @@ SQL .NET SDK 'sına dahil edilen LINQ sağlayıcısı aşağıdaki işleçleri d
 - **OrderBy** ve **OrderByDescending**: ASC veya DESC ile order by 'a çevirin.
 - **Sayısı**, **toplam**, **Min**, **Max**, ve **ortalama** işleçleri toplama ve zaman uyumsuz eşdeğerlerine **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**, ve **AverageAsync**.
 - **CompareTo**: aralık karşılaştırmalar çevirir. Genellikle dizeler için kullanılır, çünkü .NET ' de karşılaştırılabilir değildir.
-- **Al**: sorgunun sonuçlarını KıSıTLAMAK için SQL 'e çevirir.
+- **Atla** ve **Al**: bir sorgudaki sonuçları SıNıRLAYAN ve sayfalandırma yapan SQL 'e çevirir ve sınırla.
 - **Matematik işlevleri**: .net `Abs`, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan`ve `Truncate` Ile eşdeğer SQL yerleşik işlevlerine kadar çeviriyi destekler.
 - **Dize işlevleri**: .net `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd`ve `TrimStart` 'nın eşdeğer SQL yerleşik işlevlerine çevirisini destekler.
 - **Dizi işlevleri**: .net `Concat`, `Contains`ve `Count` aynı SQL yerleşik işlevlerine çeviriyi destekler.

@@ -1,26 +1,15 @@
 ---
-title: Kestrel kullanarak Azure'da bir Service Fabric uygulamasına HTTPS uç noktası ekleme | Microsoft Docs
+title: Kestrel kullanarak HTTPS uç noktası ekleme
 description: Bu öğreticide Kestrel kullanarak bir ASP.NET Core ön uç web hizmetine HTTPS uç noktası ekleme ve uygulamayı bir kümeye dağıtma işlemi hakkında bilgi alacaksınız.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: e38822e1d774cc32590a13239edb34d7a15e2d02
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545758"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614086"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Öğretici: Kestrel kullanarak bir ASP.NET Core Web API’si ön uç hizmetine HTTPS uç noktası ekleme
 
@@ -47,7 +36,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 

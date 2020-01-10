@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: b5b5da6282b1df6c70fd58dcf8c417250de81b73
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196344"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454627"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Fiziksel sunucu değerlendirmesi ve geçişi için destek matrisi
 
@@ -40,10 +40,10 @@ Tablo, fiziksel sunucular için desteklenen senaryoları özetler.
 
   **Coğrafya** | **Meta veri depolama konumu**
   --- | ---
-  Azure Devlet Kurumları | ABD Devleti Virginia
+  Azure Devlet Kurumları | ABD Hükümeti Virginia
   Asya Pasifik | Doğu Asya veya Güneydoğu Asya
   Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
-  Brezilya | Güney Brezilya
+  Brezilya | Brezilya Güney
   Kanada | Kanada Orta veya Kanada Doğu
   Avrupa | Kuzey Avrupa veya Batı Avrupa
   Fransa | Fransa Orta
@@ -51,7 +51,7 @@ Tablo, fiziksel sunucular için desteklenen senaryoları özetler.
   Japonya |  Japonya Doğu veya Japonya Batı
   Güney Kore | Kore Orta veya Kore Güney
   Birleşik Krallık | UK Güney veya UK Batı
-  Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
+  Birleşik Devletler | Orta ABD veya Batı ABD 2
 
 
  > [!NOTE]
@@ -73,9 +73,9 @@ Değerlendirme için Azure geçişi, fiziksel sunucuları bulmaya ve Azure geçi
 
 | **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
-| **Gereç dağıtımı**   |  Gereci fiziksel bir sunucuda ya da bir sanal makinede dağıtırsınız.<br/>  Ana makine, Windows Server 2012 R2 veya üstünü çalıştırmalıdır.<br/> Ana bilgisayar, 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir dış anahtar ayırmak üzere yeterli alana sahip olmalıdır.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
+| **Gereç dağıtımı**   |  Gereç yükleyicisi betiği portaldan (daraltılmış bir klasörde) indirilebilir. <br/> Gereci ayarlamak için klasörü açabilir ve adanmış bir fiziksel sunucuda veya bir sanal makinede PowerShell betiğini (AzureMigrateInstaller. ps1) çalıştırabilirsiniz.<br/>  Gereci yüklemek için seçilen makinenin Windows Server 2016 çalıştırması gerekir.<br/> Makinenin 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir dış anahtar ayırmak için yeterli alan olması gerekir.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
 | **Azure geçişi projesi**  |  Bir gereç, tek bir projeyle ilişkilendirilebilir.<br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> Bir projede en fazla 35.000 makine değerlendirebilirsiniz.
-| **Keşfini**              | Tek bir gereç, en fazla 250 sunucuyu bulabilir.
+| **Bulma**              | Tek bir gereç, en fazla 250 sunucuyu bulabilir.
 | **Değerlendirme grubu**       | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.
 | **Değerlendirme**             | Tek bir değerlendirmede en fazla 35.000 makine değerlendirebilirsiniz.
 
@@ -92,9 +92,9 @@ VM 'Leri değerlendirmek için, Azure geçişi gereci internet bağlantısı ger
 **URL** | **Ayrıntılar**  
 --- | ---
 *.portal.azure.com | Azure portal gezinti
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Azure aboneliğinizde oturum açın
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Azure aboneliğinizde oturum açın
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
-Management.Azure.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
+management.azure.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
 dc.services.visualstudio.com | Günlüğe kaydetme ve izleme
 *.vault.azure.net | Gereç ve hizmet arasında iletişim kurarken Azure Key Vault gizli dizileri yönetin.
 aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver.
@@ -106,10 +106,10 @@ https://download.microsoft.com/download/* | Microsoft Download sitesinden indirm
 
 Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri özetlenmektedir.
 
-**Aygıtların** | **Bağlanma**
+**cihaz** | **bağlantı**
 --- | ---
 **Elektrikli** | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/> 44368 numaralı bağlantı noktası ile gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ``` https://<appliance-ip-or-name>:44368 ```<br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 bağlantı noktalarında giden bağlantılar.
-**Fiziksel sunucular** | **Windows:** Windows sunucularından yapılandırma ve performans meta verilerini çekmek için 443, 5989 bağlantı noktalarında gelen bağlantılar. <br/> **Linux:**  22 (UDP) bağlantı noktasındaki, Linux sunucularından yapılandırma ve performans meta verileri çekmek için gelen bağlantılar. |
+**Fiziksel sunucular** | **Windows:** Windows sunucularından yapılandırma ve performans meta verilerini çekmek için 443 numaralı bağlantı noktası, WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerinde gelen bağlantılar. <br/> **Linux:**  22 (UDP) bağlantı noktasındaki, Linux sunucularından yapılandırma ve performans meta verileri çekmek için gelen bağlantılar. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 10c27c18b8003bf286789e478f504bca98ebe7ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 39535a895dd0ec4a851f0576acf8696ae99e3259
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766491"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454206"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ağ MSP iş ortakları hakkında
 
@@ -24,38 +24,30 @@ Azure ağ MSPs, bulut ve hibrit ağın tüm yönleri genelinde Kurumsal bulut a�
 
 Müşteriler, Azure Market 'te veya doğrudan MSP 'den MSP ile yönetilen hizmet teklifleri satın alabilir. MSPs 'ler, Azure [Athouse](https://azure.microsoft.com/services/azure-lighthouse/)kullanarak müşterilerin abonelikleri ve kaynak gruplarında Azure ağ kaynaklarını dağıtabilir ve yönetebilir.
 
-## <a name="msp"></a>Azure ağ MSP iş ortakları
+## <a name="msp"></a>Azure ağ hizmeti MSP iş ortakları tarafından sunulan Azure Marketi
 
 Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetleri hakkında daha fazla bilgi için bu bölümdeki bağlantıları kullanın. Bulut ağ hizmetleri ortağınız aşağıdaki bölümde listelenmiyorsa, sağlayıcının bizimle iletişim kurun. ManagedVirtualWAN@microsoft.comadresine bir e-posta göndererek bizimle iletişim kurabilirler. 
 
-| **MSP** | **Bulut ağı dönüştürme Hizmetleri** | **Yönetilen ExpressRoute** | **Yönetilen sanal WAN** | **Yönetilen ağ güvenlik hizmetleri** |**Yönetilen çok erişimli Edge Işlem** |
-| ---| ---| ---| ---| ---| ---|
-|[Amdocs](https://www.amdocs.com/)|||||Yes|
-|[ANS grubu UK](https://www.ans.co.uk/)|Yes|Yes||||
-|[Aryaka ağları](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)|Yes |Yes |Yes | | |
-|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|Yes|Yes|Yes|||
-|[Cogelişme](https://www.coevolve.com/services/azure-networking-services/)|Yes||Yes|Yes||
-|[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|Yes|||||
-|[Boyut verileri](https://www.dimensiondata.com/)|Yes|||||
-|[Equinix](https://www.equinix.com/)|Yes|Yes||||
-|[IıJ](https://www.iij.ad.jp/biz/cloudex/)|Yes|Yes||||
-|[Bilgi sys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|Yes||||Yes|
-|[Intercloud](https://intercloud.com/partners/microsoft-azure/)|Yes|Yes||||
-|[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|Yes|Yes||||
-|[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)|Yes|Yes||||
-|[KINX](https://www.kinx.net/service/cloud/?lang=en)|Yes|||||
-|[Sıvı telekomünikasyon](https://liquidcloud.africa/azure-networking)|Yes|Yes||||
-|[Macquarie telekomünikasyon](https://macquariecloudservices.com/azure-managed-services/)|Yes|Yes|Yes|||
-|[Megaport](https://www.megaport.com/services/microsoft-expressroute/)|Yes|Yes||||
-|[OmniClouds](https://omniclouds.com/services/)|Yes|Yes||||
-|[Oncore Cloud Services]( https://www.oncore.cloud/services/ue-for-expressroute/)|Yes|Yes||||
-|[Cumxcom]( https://www.orixcom.com/cloud-solutions/)|Yes|Yes||||
-|[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)|Yes|Yes||||
-|[Tata Iletişimleri](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)|Yes|Yes|Yes|Yes||
-|[TCTS](https://www.tatacommunications-ts.com/index.php)|Yes|Yes|Yes|||
-|[Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)|Yes||||Yes|
-|[Vandis](https://www.vandis.com/microsoft-azure-practice/)|Yes|Yes|Yes|||
-|[Dikkatli IT](https://vigilant.it/manage-cloud-service/)|Yes|Yes||||
+| **MSP** | **Bulut ağı dönüştürme Hizmetleri** | **Yönetilen ExpressRoute** | **Yönetilen sanal WAN** |
+| ---| ---| ---| ---|
+|[ANS grubu UK](https://www.ans.co.uk/)|[Azure yönetilen svc + ANS cam 10wk uygulama](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
+|[Aryaka ağları](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Azure sanal WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.aryaka_azure_virtual_wan?tab=Overview) | | |
+|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Ağ dönüştürme danışmanlık: 1-hr değerlendirmesi](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting)|||||
+|[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Azure 'da ağ optimizasyonu: 2-hr değerlendirmesi](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
+|[NTT verileri](https://us.nttdata.com/en/digital/cloud-transformation)|[Yönetilen hizmetler: 10 haftalık uygulama](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||
+|[Equinix](https://www.equinix.com/)|[Buluta Iyileştirilmiş WAN katılımı: 4 günlük değerlendirme](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.cloud_optimized_wan_workshop)|[ExpressRoute bağlantı stratejisi: 3 günlük atölye](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.eps_expressroute)||||
+|[IıJ](https://www.iij.ad.jp/biz/cloudex/)|[ExpressRoute uygulama: 1-hr Briing](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxm_consulting)|[ExpressRoute: 2-WK uygulama](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxmer_consulting)||||
+|[Bilgi sys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|[Azure için Infosys Tümleştir +](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/infosysltd.infosys-integrate-for-azure?tab=Overview)|||||
+|[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Azure ağ değerlendirmesi-5 gün](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
+|[Sıvı telekomünikasyon](https://liquidcloud.africa/azure-networking)|[Bulut hazırlık-2 saat değerlendirmesi](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)|||||
+|[Macquarie telekomünikasyon](https://macquariecloudservices.com/azure-managed-services/)|[Macquarie Cloud Services danışın: 2-hr Workshop](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/macquariecloudservices.clear_for_takeoff_consulting_service)||[SD-WAN sanal Edge, Macquarie bulutu tarafından yüklenir](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.nanaged_network_services?tab=Overview)|||
+|[Oncore Cloud Services]( https://www.oncore.cloud/services/ue-for-expressroute/)||[Azure ExpressRoute için Evrensaledge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oncore_cloud_services-4944214.universaledge_for_expressroute?tab=Overview)||||
+|[Cumxcom]( https://www.orixcom.com/cloud-solutions/)|||[Cumxcom SD-WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_sd_wan?tab=Overview)|||
+|[TCTS](https://www.tatacommunications-ts.com/index.php)|[Azure geçişi: 3 haftalık değerlendirme](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
+|[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandıs yönetilen ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet tarafından desteklenen Vandıs, sanal WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Palo Alto Networks Ile desteklenen vandis yönetilen VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|||
+|[Dikkatli IT](https://vigilant.it/manage-cloud-service/)|[Azure sistem durumu denetimi: 5 günlük değerlendirme](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 günlük uygulama](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
+
+Azure Market, yeni yönetilen güvenlik hizmetleri ve yönetilen MEC hizmetleri dahil olmak üzere aşağıdaki Azure ağ MSP Iş ortaklarımızın yol haritası: [Amdocs](https://www.amdocs.com/);  [Cogelişme](https://www.coevolve.com/services/azure-networking-services/);  [X 'ye ulaşma](https://www.ixreach.com/services/sdn-cloud-connect/);  [Tümleşik bulut](https://intercloud.com/partners/microsoft-azure/);  [Kinx](https://www.kinx.net/service/cloud/?lang=en); [Megaport](https://www.megaport.com/services/microsoft-expressroute/);  [Omnicloud](https://omniclouds.com/services/);  [Sejong telekomünikasyon](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Softbank](https://www.softbank.jp/biz/cloud/microsoft/azure/);  [Tata iletişimleri](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/);  [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)
 
 ## <a name="expressroute"></a>ExpressRoute iş ortakları
 

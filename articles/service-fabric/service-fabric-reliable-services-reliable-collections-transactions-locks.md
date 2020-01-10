@@ -1,47 +1,36 @@
 ---
-title: Azure Service Fabric güvenilir koleksiyonlardaki işlemler ve kilit modları | Microsoft Docs
+title: Güvenilir koleksiyonlardaki işlemler ve kilit modları
 description: Azure Service Fabric güvenilir durum Yöneticisi ve güvenilir koleksiyonlar Işlemleri ve kilitleme.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/1/2017
-ms.author: atsenthi
-ms.openlocfilehash: 8e77e488a3c0a40a714a0e8efffba0a2947454bf
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: f27381aa0979b37c759f66d0e873126edc006d6d
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599320"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614188"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric güvenilir koleksiyonlardaki işlemler ve kilit modları
 
 ## <a name="transaction"></a>İşlem
 İşlem, tek bir mantıksal iş birimi olarak gerçekleştirilen işlemlerin sırasıdır.
-Bir işlem aşağıdaki ACID özelliklerini göstermelidir. bakýn https://technet.microsoft.com/library/ms190612)
-* **Atomicity**: İşlem atomik bir iş birimi olmalıdır. Diğer bir deyişle, tüm veri değişiklikleri gerçekleştirilir veya hiçbir şey yapılmaz.
-* **Tutarlılık**: İşlem tamamlandığında, bir işlemin tüm verileri tutarlı bir durumda bırakması gerekir. Tüm iç veri yapıları işlemin sonunda doğru olmalıdır.
-* **Yalıtım**: Eş zamanlı işlemler tarafından yapılan değişiklikler, başka bir eşzamanlı işlem tarafından yapılan değişikliklerden yalıtılmalıdır. Bir ITransaction içindeki bir işlem için kullanılan yalıtım düzeyi, işlemi gerçekleştiren ıreliablestate tarafından belirlenir.
-* **Dayanıklılık**: İşlem tamamlandıktan sonra, etkileri sistemde kalıcı olarak yerinde yapılır. Değişiklikler, sistem hatası durumunda bile devam ediyor.
+Bir işlem aşağıdaki ACID özelliklerini göstermelidir. (bkz. https://technet.microsoft.com/library/ms190612)
+* **Atomicity**: bir işlem atomik iş birimi olmalıdır. Diğer bir deyişle, tüm veri değişiklikleri gerçekleştirilir veya hiçbir şey yapılmaz.
+* **Tutarlılık**: tamamlandığında, bir işlem tüm verileri tutarlı bir durumda bırakmalıdır. Tüm iç veri yapıları işlemin sonunda doğru olmalıdır.
+* **Yalıtım**: eşzamanlı işlemler tarafından yapılan değişiklikler, diğer eş zamanlı işlemler tarafından yapılan değişikliklerden yalıtılmalıdır. Bir ITransaction içindeki bir işlem için kullanılan yalıtım düzeyi, işlemi gerçekleştiren ıreliablestate tarafından belirlenir.
+* **Dayanıklılık**: bir işlem tamamlandıktan sonra, etkileri sistemde kalıcı olarak gerçekleştirilir. Değişiklikler, sistem hatası durumunda bile devam ediyor.
 
 ### <a name="isolation-levels"></a>Yalıtım düzeyleri
 Yalıtım düzeyi, işlemin diğer işlemler tarafından yapılan değişikliklerden yalıtılması gereken dereceyi tanımlar.
 Güvenilir koleksiyonlarda desteklenen iki yalıtım düzeyi vardır:
 
-* **Yinelenebilir okuma**: Bu deyimlerin değiştirilmiş ancak başka işlemler tarafından henüz onaylanmamış verileri okuyamadığından ve geçerli işlem tamamlanana kadar geçerli işlem tarafından okunan verileri değiştiremediğini belirtir. Daha ayrıntılı bilgi için bkz [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
-* **Anlık görüntü**: Bir işlemdeki herhangi bir ifadeye göre okunan verilerin, işlemin başlangıcında varolan verilerin işlemsel olarak tutarlı bir sürümü olduğunu belirtir.
+* **Yinelenebilir okuma**: Bu deyimlerin, başka işlemler tarafından değiştirilmiş ancak henüz onaylanmamış verileri okuyamadığından ve geçerli işlem bitene kadar geçerli işlem tarafından okunan verileri değiştiremediğini belirtir. Daha ayrıntılı bilgi için bkz. [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
+* **Anlık görüntü**: bir işlemdeki tüm deyimden okunan verilerin, işlemin başlangıcında varolan verilerin işlemsel olarak tutarlı bir sürümüdür olduğunu belirtir.
   İşlem yalnızca işlemin başlangıcından önce kaydedilmiş olan veri değişikliklerini tanıyabilir.
   Geçerli işlemin başlangıcından sonra gerçekleştirilen diğer işlemler tarafından yapılan veri değişiklikleri, geçerli işlemde yürütülen deyimlere görünür değildir.
   Efekt, bir işlemdeki deyimler işlemin başlangıcında olduğu gibi yürütülen verilerin anlık görüntüsünü alır.
   Anlık görüntüler, güvenilir koleksiyonlar arasında tutarlıdır.
-  Daha ayrıntılı bilgi için bkz [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
+  Daha ayrıntılı bilgi için bkz. [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
 
 Güvenilir koleksiyonlar, işleme ve işlemin oluşturulduğu sırada çoğaltmanın rolüne bağlı olarak belirli bir okuma işlemi için kullanılacak yalıtım düzeyini otomatik olarak seçer.
 Aşağıda, güvenilir sözlük ve kuyruk işlemleri için yalıtım düzeyi varsayılan değerleri gösteren tablo verilmiştir.
@@ -52,7 +41,7 @@ Aşağıda, güvenilir sözlük ve kuyruk işlemleri için yalıtım düzeyi var
 | Sabit listesi, sayı |Anlık Görüntü |Anlık Görüntü |
 
 > [!NOTE]
-> Tek bir varlık Işlemleri için ortak örnekler `IReliableDictionary.TryGetValueAsync`şunlardır `IReliableQueue.TryPeekAsync`.
+> Tek varlık Işlemlerine yönelik yaygın örnekler `IReliableDictionary.TryGetValueAsync`, `IReliableQueue.TryPeekAsync`.
 > 
 
 Hem güvenilir sözlük hem de güvenilir sıra, yazma bilgilerinizi okumayı destekler.
@@ -63,8 +52,8 @@ Güvenilir koleksiyonlar bölümünde tüm işlemler, her türlü katı iki aşa
 
 Güvenilir sözlük tüm tek varlık işlemleri için satır düzeyinde kilitleme kullanır.
 Güvenilir sıra, katı işlem FıFO özelliği için eşzamanlılık kapatır.
-Güvenilir sıra, `TryPeekAsync` `EnqueueAsync` aynı anda ve/veya `TryDequeueAsync` ile bir işleme izin veren işlem düzeyinde kilitleri kullanır.
-FIFO 'un, güvenilir sıranın boş olduğunu bir `TryPeekAsync` veya `TryDequeueAsync` daha fazla hizmet veriyorsa, bunların de kilitlendiğine `EnqueueAsync`göz önünde durun.
+Güvenilir sıra, bir işleme `TryPeekAsync` ve/veya `TryDequeueAsync` ve bir işlem `EnqueueAsync` aynı anda bir işlem sağlayan işlem düzeyi kilitleri kullanır.
+`TryPeekAsync` veya `TryDequeueAsync`, güvenilir sıranın boş olduğunu gördüğüne sonra da `EnqueueAsync`kilitleytiğine ilişkin FıFO 'yu korumak için unutmayın.
 
 Yazma işlemleri her zaman özel kilitler alır.
 Okuma işlemleri için kilitleme, birkaç faktöre bağlıdır.
@@ -75,7 +64,7 @@ Güncelleştirme kilidi, birden çok işlem, olası güncelleştirmeler için ka
 
 Kilit uyumluluğu matrisi aşağıdaki tabloda bulunabilir:
 
-| İstek \ verildi | None | Paylaşılan | Güncelleştirme | Özel |
+| İstek \ verildi | Hiçbiri | Paylaşılan | Güncelleştirme | Özel |
 | --- |:--- |:--- |:--- |:--- |
 | Paylaşılan |Çakışma yok |Çakışma yok |Çakışma |Çakışma |
 | Güncelleştirme |Çakışma yok |Çakışma yok |Çakışma |Çakışma |

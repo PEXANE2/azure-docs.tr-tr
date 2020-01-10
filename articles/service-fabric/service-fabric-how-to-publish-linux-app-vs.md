@@ -1,60 +1,51 @@
 ---
-title: Oluşturma ve.Net Core yayımlama hakkında bilgi edinin. uzak bir Azure Service Fabric Linux kümesi uygulamaları | Microsoft Docs
-description: Oluşturma ve yayımlama.Net Core Visual Studio'dan uzak bir Linux kümesi hedefleyen uygulamalar
-services: service-fabric
-documentationcenter: .net
+title: A.Net Core uygulamasını bir uzak Linux kümesine oluşturma ve yayımlama
+description: Visual Studio 'dan uzak bir Linux kümesini hedefleyen .Net Core uygulamalar oluşturma ve yayımlama
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 5/20/2019
 ms.author: pepogors
-ms.openlocfilehash: 46d76edbe8cede12e8c7811f43c28a65c1ebaed0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078670"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614358"
 ---
-# <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>Oluşturma ve yayımlama.Net Core için Visual Studio'yu kullanın uzak Linux Service Fabric kümesi hedefleyen uygulamalar
-Visual Studio Araçları, geliştirebilir ve Service Fabric.Net Core yayımlama Linux Service Fabric kümesi hedefleyen uygulamalar. SDK sürümü 3.4 olmalıdır veya bir.Net Core dağıtmak için yukarıdaki uygulama Linux Service Fabric hedefleme kümelerinde Visual Studio'dan.
+# <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>Uzak bir Linux Service Fabric kümesini hedefleyen .Net Core uygulamalar oluşturmak ve yayımlamak için Visual Studio 'Yu kullanma
+Visual Studio Araçları ile bir Linux Service Fabric kümesini hedefleyen Service Fabric .Net Core uygulamalar geliştirebilir ve yayımlayabilirsiniz. Visual Studio 'dan Linux Service Fabric kümelerini hedefleyen bir .Net Core uygulamasını dağıtmak için SDK sürümü 3,4 veya üzeri olmalıdır.
 
 > [!Note]
-> Visual Studio hata ayıklama hedef Linux Service Fabric uygulamaları desteklemez.
+> Visual Studio, Linux 'u hedefleyen Service Fabric uygulamalarda hata ayıklamayı desteklemez.
 >
 
-## <a name="create-a-service-fabric-application-targeting-net-core"></a>.Net Core hedefleyen bir Service Fabric uygulaması oluşturma
+## <a name="create-a-service-fabric-application-targeting-net-core"></a>Service Fabric uygulama hedefleme .Net Core oluşturma
 1. Visual Studio'yu **yönetici** olarak başlatın.
-2. Bir proje oluşturma **Dosya -> Yeni Proje ->** .
-3. İçinde **yeni proje** iletişim kutusunda seçin **bulut -> Service Fabric uygulaması**.
-![uygulama oluşturma]
-4. Uygulamaya bir ad ve tıklayın **Tamam**.
-5. Üzerinde **yeni Service Fabric hizmeti** sayfasında, hizmetin altında oluşturmak istediğiniz türü seçin **.Net Core bölüm**.
-![hizmet oluşturma]
+2. **File-> New-> Project**ile bir proje oluşturun.
+3. **Yeni proje** Iletişim kutusunda **Cloud-> Service Fabric uygulaması**' nı seçin.
+![oluşturma-uygulama]
+4. Uygulamayı adlandırın ve **Tamam**' a tıklayın.
+5. **Yeni Service Fabric hizmeti** sayfasında, **.NET Core bölümünde**oluşturmak istediğiniz hizmet türünü seçin.
+![oluşturma-hizmet]
 
-## <a name="deploy-to-a-remote-linux-cluster"></a>İçin uzak bir Linux kümesi dağıtma
-1. Çözüm Gezgini'nde sağ tıklatın ve uygulama tıklayın **yapı**.
-![Uygulama derleme]
-2. Uygulama için derleme işlemi tamamlandıktan sonra hizmete sağ tıklayın ve Düzenle'yi **csproj dosyasını**.
-![edit-csproj]
-3. True UpdateServiceFabricManifestEnabled özelliğinden Düzenle **False** hizmeti ise bir **aktör projesi türü**. Aktör hizmeti uygulamanız yoksa, 4. adıma geçin.
+## <a name="deploy-to-a-remote-linux-cluster"></a>Uzak bir Linux kümesine dağıtma
+1. Çözüm Gezgini 'nde uygulamaya sağ tıklayın ve **Oluştur**' u seçin.
+![yapı-uygulama]
+2. Uygulama için derleme işlemi tamamlandıktan sonra, hizmete sağ tıklayın ve **csproj dosyasını**Düzenle ' yi seçin.
+![Düzenle-csproj]
+3. Hizmet bir **aktör proje türü**Ise, UpdateServiceFabricManifestEnabled özelliğini true değerinden **false** olarak düzenleyin. Uygulamanızda bir aktör hizmeti yoksa 4. adıma atlayın.
 ```xml
     <UpdateServiceFabricManifestEnabled>False</UpdateServiceFabricManifestEnabled>
 ```
 > [!Note]
-> UpdateServiceFabricManifestEnabled false olarak ayarlamak, ServiceManifest.xml güncelleştirmeleri bir yapı sırasında devre dışı bırakır. Herhangi bir değişiklik gibi eklemek, kaldırmak veya yeniden adlandırmak için hizmet olarak ServiceManifest.xml yansıtılmaz. Herhangi bir değişiklik yapılırsa ServiceManifest UpdateServiceFabricManifestEnabled true ve ServiceManifest.xml güncelleştirin ve sonra geri hizmet oluşturmak için el ile veya geçici olarak ayarlayın ya da güncelleştirme false olarak yedeklemeniz gerekir.
+> UpdateServiceFabricManifestEnabled ayarının false olarak ayarlanması, derleme sırasında ServiceManifest. xml güncelleştirmelerini devre dışı bırakacak. Hizmet ekleme, kaldırma veya yeniden adlandırma gibi tüm değişiklikler ServiceManifest. xml ' de yansıtılmayacaktır. Herhangi bir değişiklik yapılırsa, ServiceManifest 'i el ile güncelleştirmeniz veya UpdateServiceFabricManifestEnabled ayarını true olarak ayarlamanız gerekir ve ServiceManifest. xml ' i güncelleştirecek hizmeti oluşturun ve sonra false değerine geri döndürün.
 >
 
-4. Win7 x64 gelen RuntimeIndetifier hizmet projesi hedef platform için güncelleştirin.
+4. RuntimeIndetifier-x64 konumundan hizmet projesindeki hedef platforma güncelleştirin.
 ```xml
     <RuntimeIdentifier>ubuntu.16.04-x64</RuntimeIdentifier>
 ```
-5. ServiceManifest içinde .exe kaldırmak için giriş noktası programın güncelleştirin. 
+5. ServiceManifest 'de,. exe ' yi kaldırmak için EntryPoint programını güncelleştirin. 
 ```xml
     <EntryPoint> 
     <ExeHost> 
@@ -62,16 +53,16 @@ Visual Studio Araçları, geliştirebilir ve Service Fabric.Net Core yayımlama 
     </ExeHost> 
     </EntryPoint>
 ```
-6. Çözüm Gezgini'nde sağ tıklatın ve uygulama **Yayımla**. **Yayımla** iletişim kutusu görüntülenir.
-7. İçinde **bağlantı uç noktası**, hedef olarak istersiniz uzak bir Service Fabric Linux kümesi için uç nokta seçin.
-![uygulamayı Yayımla]
+6. Çözüm Gezgini, uygulamaya sağ tıklayıp **Yayımla**' yı seçin. **Yayımla** iletişim kutusu görüntülenir.
+7. **Bağlantı uç noktası**' nda, hedeflemek istediğiniz uzak Service Fabric Linux kümesi için uç noktayı seçin.
+![yayımlama-uygulama]
 
 <!--Image references-->
-[uygulama oluşturma]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-application-remote-linux.png
-[hizmet oluşturma]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-service-remote-linux.png
-[Uygulama derleme]:./media/service-fabric-how-to-vs-remote-linux-cluster/build-application-remote-linux.png
-[edit-csproj]:./media/service-fabric-how-to-vs-remote-linux-cluster/edit-csproj-remote-linux.png
-[uygulamayı Yayımla]:./media/service-fabric-how-to-vs-remote-linux-cluster/publish-remote-linux.png
+[oluşturma-uygulama]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-application-remote-linux.png
+[hizmet oluştur]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-service-remote-linux.png
+[yapı-uygulama]:./media/service-fabric-how-to-vs-remote-linux-cluster/build-application-remote-linux.png
+[Düzenle-csproj]:./media/service-fabric-how-to-vs-remote-linux-cluster/edit-csproj-remote-linux.png
+[Yayımla-uygulama]:./media/service-fabric-how-to-vs-remote-linux-cluster/publish-remote-linux.png
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Hakkında bilgi edinin [.Net Core ile Service Fabric ile çalışmaya başlama](https://azure.microsoft.com/resources/samples/service-fabric-dotnet-core-getting-started/)
+* [.NET Core ile Service Fabric kullanmaya](https://azure.microsoft.com/resources/samples/service-fabric-dotnet-core-getting-started/) başlama hakkında bilgi edinin

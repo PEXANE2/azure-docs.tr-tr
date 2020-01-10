@@ -1,25 +1,14 @@
 ---
-title: Linux üzerinde Azure Service Fabric reliable actors Java uygulaması oluşturma | Microsoft Docs
+title: Linux 'ta Azure Service Fabric güvenilir aktör Java uygulaması oluşturma
 description: Beş dakika içinde Java Service Fabric reliable actors uygulaması oluşturmayı ve dağıtmayı öğrenin.
-services: service-fabric
-documentationcenter: java
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2018
-ms.author: atsenthi
-ms.openlocfilehash: 4b008c001e1c4749b6ab6f9f21eff479f007c05c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599671"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458172"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Linux üzerinde ilk Java Service Fabric Reliable Actors uygulamanızı oluşturma
 > [!div class="op_single_selector"]
@@ -30,7 +19,7 @@ ms.locfileid: "68599671"
 
 Bu hızlı başlangıç, bir Linux geliştirme ortamında ilk Azure Service Fabric Java uygulamanızı yalnızca birkaç dakikada oluşturmanıza yardımcı olur.  İşlemi tamamladığınızda, yerel geliştirme kümesinde çalışan basit bir Java tek hizmet uygulamanız olacak.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce, Service Fabric SDK, Service Fabric CLI ve Yeoman’ı yükleyin, Java geliştirme ortamını kurun ve [Linux geliştirme ortamınızda](service-fabric-get-started-linux.md) bir geliştirme kümesi kurun. Mac OS X kullanıyorsanız, [Docker kullanarak Mac üzerinde bir geliştirme ortamı ayarlayabilirsiniz](service-fabric-get-started-mac.md).
 
 [Service Fabric CLI](service-fabric-cli.md)'sını da yükleyin.
@@ -50,8 +39,8 @@ Reliable Actors hizmetini kullanmaya başlamak için anlamanız gereken birkaç 
 * **Aktör arabirimi**. Aktör arabirimi, bir aktörün baskın türdeki genel arabirimini tanımlamak için kullanılır. Reliable Actor model terminolojisinde aktör arabirimi, aktörün anlayıp işleyebileceği ileti türlerini tanımlamak için kullanılır. Aktör arabirimi diğer aktörler ve istemci uygulamaları tarafından aktöre ileti "göndermek" (zaman uyumsuz) amacıyla kullanılır. Reliable Actors birden fazla arabirim uygulayabilir.
 * **ActorProxy sınıfı**. ActorProxy sınıfı, istemci uygulamaları tarafından aktör arabirimi aracılığıyla kullanıma sunulan yöntemleri çağırmak için kullanılır. ActorProxy sınıfı iki önemli işlev sunar:
   
-  * Ad çözümlemesi: Kümedeki aktörni bulabilir (barındırılan kümenin düğümünü bulun).
-  * Hata işleme: Yöntem çağrılarını yeniden deneyebilir ve sonra aktör konumunu yeniden çözümleyebilir. Örneğin, aktörin kümedeki başka bir düğüme yeniden konumlandırılmasını gerektiren bir hata olabilir.
+  * Ad çözümlemesi: Aktörü kümenin konumunu belirleyebilir (kümenin barındırıldığı düğümü bulabilir).
+  * Hata işleme: Yöntem çağrılarını yeniden deneyebilir ve ardından aktör konumunu yeniden çözümleyebilir. Örnek olarak aktörün küme içindeki başka bir düğüme alınmasını gerektiren hata verilebilir.
 
 Aktör arabirimlerinde geçerli olan önemli kurallar aşağıda verilmiştir:
 
@@ -304,7 +293,7 @@ Uygulamanız için Service Fabric Reliable Services desteği.
   ```
 
 ### <a name="others"></a>Diğerleri
-#### <a name="transport"></a>Aktarım
+#### <a name="transport"></a>Ulaşım
 
 Service Fabric Java uygulaması için Aktarım katmanı desteği. Aktarım katmanında özellikle programlamadığınız sürece bu bağımlılığı Güvenilir Aktör veya Hizmet uygulamalarınız için özellikle eklemeniz gerekmez.
 
