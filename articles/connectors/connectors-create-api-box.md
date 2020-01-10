@@ -1,20 +1,20 @@
 ---
 title: Kutuya Bağlan
-description: Box REST API 'Leri ve Azure Logic Apps dosya oluşturun ve yönetin
+description: Azure Logic Apps kullanarak Box 'ta dosya oluşturup yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 38e061e918d445de07961af1789891f44c59090a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c7f97ff33742eb545cbfbd7521ba135584851e5e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789874"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666780"
 ---
-# <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>Azure Logic Apps ile kutu içinde dosya oluşturma ve yönetme
+# <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Box 'ta dosya oluşturma ve yönetme
 
 Bu makalede, Box Bağlayıcısı ile bir mantıksal uygulamanın içinden dosyaları nasıl oluşturabileceğiniz ve yönetebileceğiniz gösterilmektedir. Bu şekilde, dosyalarınızı ve diğer eylemlerinizi yönetmek için görevleri ve iş akışlarını otomatikleştirebilen mantıksal uygulamalar oluşturabilirsiniz, örneğin:
 
@@ -27,7 +27,7 @@ Bu makalede, Box Bağlayıcısı ile bir mantıksal uygulamanın içinden dosyal
   Bu eylemler bir yanıt edindiklerinde, çıktıyı diğer eylemler için kullanılabilir hale getirir. 
   Örneğin, Box 'ta bir dosya değiştirildiğinde, Office 365 kullanarak bu dosyayı e-posta ile gönderebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Kutu hesabı](https://www.box.com/home)
 

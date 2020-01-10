@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl sa-Cluster | Microsoft Docs
-description: CLı sfctl bağımsız kümesi komutlarını Service Fabric açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl sa-küme
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Tek başına kümelerin yönetilmesi için komutların bir listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: ecdd288d7cb320b91ab4c69697d334f8d9459e62
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 765d7d76cb13758417bb3927ff9620026ca763b1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901010"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646033"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Tek başına Service Fabric kümelerini yönetin.
@@ -28,9 +19,9 @@ Tek başına Service Fabric kümelerini yönetin.
 
 |Komut|Açıklama|
 | --- | --- |
-| kurulumunun | Tek başına Service Fabric küme yapılandırmasını alın. |
+| config | Tek başına Service Fabric küme yapılandırmasını alın. |
 | yapılandırma-yükseltme | Tek başına Service Fabric küme yapılandırmasını yükseltmeye başlayın. |
-| yükseltme-durum | Service Fabric tek başına kümesinin küme yapılandırması yükseltme durumunu alın. |
+| upgrade-status | Service Fabric tek başına kümesinin küme yapılandırması yükseltme durumunu alın. |
 
 ## <a name="sfctl-sa-cluster-config"></a>sfctl sa-küme yapılandırması
 Tek başına Service Fabric küme yapılandırmasını alın.

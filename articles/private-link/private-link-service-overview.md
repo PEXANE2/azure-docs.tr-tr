@@ -2,17 +2,17 @@
 title: Azure özel bağlantı hizmeti nedir?
 description: Azure özel bağlantı hizmeti hakkında bilgi edinin.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f9bdc180bf0dfd6f35fb18f5c76176a68d8f1644
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912991"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647382"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure özel bağlantı hizmeti nedir?
 
@@ -68,7 +68,7 @@ Bir tüketici bir bağlantıyı başlattıktan sonra, hizmet sağlayıcı bağla
  
 - Tek bir özel bağlantı hizmetine, farklı VNET 'ler, abonelikler ve/veya Active Directory kiracılarına ait birden çok özel uç noktasından erişilebilir. Bağlantı, bağlantı iş akışıyla oluşturulur. 
  
-- Birden çok özel bağlantı hizmeti, farklı ön uç IP yapılandırması kullanılarak aynı Standart Load Balancer oluşturulabilir. Standart Load Balancer ve abonelik başına oluşturabileceğiniz özel bağlantı Hizmetleri sayısı için sınırlar vardır. Ayrıntılar için bkz. [Azure Limitleri](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Birden çok özel bağlantı hizmeti, farklı ön uç IP yapılandırması kullanılarak aynı Standart Load Balancer oluşturulabilir. Standart Load Balancer ve abonelik başına oluşturabileceğiniz özel bağlantı Hizmetleri sayısı için sınırlar vardır. Ayrıntılar için bkz. [Azure Limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
  
 - Özel bağlantı hizmeti ile bağlantılı birden fazla NAT IP yapılandırması olabilir. Birden fazla NAT IP yapılandırması seçilmesi hizmet sağlayıcılarının ölçeklendirilmesine yardımcı olabilir. Günümüzde, hizmet sağlayıcıları özel bağlantı hizmeti başına en fazla sekiz NAT IP adresi atayabilir. Her NAT IP adresi ile TCP bağlantılarınız için daha fazla bağlantı noktası atayabilir ve böylece ölçeği değiştirebilirsiniz. Bir özel bağlantı hizmetine birden çok NAT IP adresi ekledikten sonra NAT IP adreslerini silemezsiniz. Bu, NAT IP adreslerini silerken etkin bağlantıların etkilenmemesini sağlamak için yapılır.
 

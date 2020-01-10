@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: aa6f18d4f667862687083c5db3679ce9d8e188cd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e5ba08da5c58ff486bc26f2c771dfef55452629a
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188853"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681080"
 ---
-_Yerel terminal penceresine_ dönüp yerel Git deponuza bir Azure uzak deposu ekleyin. _&lt;deploymentLocalGitUrl-from-create-step>_ değerini [Web uygulaması oluşturma](#create-a-web-app) bölümünde kaydettiğiniz Git uzak URL’si ile değiştirin.
+Yerel Terminal penceresine geri döndüğünüzde yerel git deponuza bir Azure uzak ekleyin. *\<deploymentLocalGitUrl-from-create-step>* değerini [Web uygulaması oluşturma](#create-a-web-app) bölümünde kaydettiğiniz Git uzak URL’si ile değiştirin.
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-Aşağıdaki komutla uygulamanızı dağıtmak için Azure uzak deposuna gönderin. Git kimlik bilgisi Yöneticisi kimlik bilgileri istendiğinde, Azure portalında oturum açmak için kullandığınız kimlik bilgilerini değil bir dağıtım kullanıcısı Yapılandır oluşturduğunuz kimlik bilgilerini girdiğinizden emin olun.
+Aşağıdaki komutla uygulamanızı dağıtmak için Azure uzak deposuna gönderin. Git kimlik bilgileri Yöneticisi kimlik bilgilerini sizden isterse, Azure portal oturum açmak için kullandığınız kimlik bilgilerini değil [dağıtım kullanıcısı yapılandırma](/azure/app-service/containers/tutorial-python-postgresql-app#configure-a-deployment-user)bölümünde oluşturduğunuz kimlik bilgilerini girdiğinizden emin olun.
 
 ```bash
 git push azure master

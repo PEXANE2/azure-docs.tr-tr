@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671716"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680945"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Uygulamanızı FTP/S kullanarak Azure App Service dağıtma
 
@@ -21,15 +21,21 @@ Uygulamanızın FTP/S uç noktası zaten etkin. FTP/S dağıtımını etkinleşt
 
 ## <a name="open-ftp-dashboard"></a>FTP panosunu aç
 
-[Azure Portal](https://portal.azure.com), uygulamanızın [kaynak sayfasını](../azure-resource-manager/manage-resources-portal.md#manage-resources)açın.
+1. [Azure Portal](https://portal.azure.com), **uygulama hizmetleri**' ni arayıp seçin.
 
-FTP panosunu açmak için, **dağıtım merkezi** > **FTP** > **panosu**' na tıklayın.
+    ![Uygulama Hizmetleri için arama yapın.](media/app-service-continuous-deployment/search-for-app-services.png)
 
-![FTP panosunu aç](./media/app-service-deploy-ftp/open-dashboard.png)
+2. Dağıtmak istediğiniz Web uygulamasını seçin.
+
+    ![Uygulamanızı seçin.](media/app-service-continuous-deployment/select-your-app.png)
+
+3. **Dağıtım merkezi** > **FTP** > **panosunu**seçin.
+
+    ![FTP panosunu aç](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>FTP bağlantı bilgilerini al
 
-FTP panosunda, FTPS uç noktası ve uygulama kimlik bilgilerini kopyalamak için **Kopyala** ' ya tıklayın.
+FTP panosunda, FTPS uç noktası ve uygulama kimlik bilgilerini kopyalamak için **Kopyala** ' yı seçin.
 
 ![FTP bilgilerini Kopyala](./media/app-service-deploy-ftp/ftp-dashboard.png)
 

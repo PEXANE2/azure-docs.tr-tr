@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 932540c830940ec18c439352d54f671db7387b94
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7e0339f5118d4745b6abe0268f021f8284a5f11f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379158"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689127"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Karma Azure Active Directory katılmış cihazlarda sorun giderme 
 
@@ -102,7 +102,8 @@ Bu alan, cihazın Azure AD 'ye kişisel bir cihaz olarak kaydedilip kaydedilmedi
 
 #### <a name="azureadjoined--yes"></a>Azureadkatıldı: Evet  
 
-Bu alan, cihazın Azure AD 'ye katılıp katılmadığını gösterir. Değer **Hayır**Ise Azure AD 'ye ekleme henüz tamamlanmamıştır. 
+Bu alan, cihazın katılıp katılmadığını gösterir. Cihaz bir Azure AD 'ye katılmış cihaz ya da karma Azure AD 'ye katılmış bir cihaz ise değer **Evet** olur.
+Değer **Hayır**Ise Azure AD 'ye ekleme henüz tamamlanmamıştır. 
 
 Daha fazla sorun giderme için sonraki adımlara geçin.
 
@@ -371,13 +372,13 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
 
 ##### <a name="federated-join-server-errors"></a>Federasyon birleşimi sunucu hataları
 
-| Sunucu hata kodu | Sunucu hata iletisi | Olası nedenler | Çözüm |
+| Sunucu hata kodu | Sunucu hata iletisi | Olası nedenler | Çözünürlük |
 | --- | --- | --- | --- |
 | DirectoryError | İsteğiniz geçici olarak kısıtlandı. Lütfen 300 saniye sonra yeniden deneyin. | Beklenen hata. Büyük olasılıkla birden çok kayıt isteğinin hemen art arda getirilmesi nedeniyle. | Coolafter döneminden sonra katılmayı yeniden dene |
 
 ##### <a name="sync-join-server-errors"></a>Eşitleme sunucusu hatalarını Eşitle
 
-| Sunucu hata kodu | Sunucu hata iletisi | Olası nedenler | Çözüm |
+| Sunucu hata kodu | Sunucu hata iletisi | Olası nedenler | Çözünürlük |
 | --- | --- | --- | --- |
 | DirectoryError | AADSTS90002: kiracı <UUID> bulunamadı. Kiracı için etkin abonelik yoksa bu hata oluşabilir. Abonelik yöneticinizle görüşün. | SCP nesnesindeki kiracı KIMLIĞI yanlış | SCP nesnesinin doğru Azure AD kiracı KIMLIĞI ve etkin abonelikler ile yapılandırıldığından ve kiracıda mevcut olduğundan emin olun. |
 | DirectoryError | Belirtilen KIMLIĞE göre cihaz nesnesi bulunamadı. | Eşitleme katılımı için beklenen hata. Cihaz nesnesi AD 'den Azure AD 'ye eşitlenmedi | Azure AD Connect eşitlemenin tamamlanmasını bekleyin ve eşitleme tamamlandıktan sonra bir sonraki JOIN denemesi sorunu çözecektir |

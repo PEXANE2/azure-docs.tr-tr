@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: ab28203a240cf360fb990ac42fdbc2d83864f68b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: c9c47506e61c665da459558735a3afc93e8b9806
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604779"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659789"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Azure CNı ağını yapılandırma
 
@@ -25,7 +25,6 @@ Bu makalede, bir AKS kümesi için bir sanal ağ alt ağı oluşturmak ve kullan
 ## <a name="prerequisites"></a>Ön koşullar
 
 * AKS kümesinin sanal ağı giden internet bağlantısına izin vermelidir.
-* Aynı alt ağda birden fazla AKS kümesi oluşturmayın.
 * AKS kümeleri, Kubernetes hizmeti adres aralığı için `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16`veya `192.0.2.0/24` kullanamaz.
 * AKS kümesi tarafından kullanılan hizmet sorumlusu, sanal ağınızdaki alt ağda en az bir [ağ katılımcısı](../role-based-access-control/built-in-roles.md#network-contributor) iznine sahip olmalıdır. Yerleşik ağ katılımcısı rolünü kullanmak yerine [özel bir rol](../role-based-access-control/custom-roles.md) tanımlamak istiyorsanız aşağıdaki izinler gereklidir:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
@@ -73,7 +72,7 @@ Düğüm başına en fazla düğüm sayısını *yalnızca küme dağıtım saat
 
 Düğüm başına en fazla düğüm sayısı için en düşük değer, sistem Pod 'nin küme durumu için kritik alan garantisi sağlamak üzere zorlanır. Düğüm başına maksimum pod için ayarlanalabilen en düşük değer 10 ' dur ve yalnızca her düğüm havuzunun yapılandırmasında en az 30 pod için alan varsa. Örneğin, düğüm başına en fazla 10 düğüm için maksimum Pod 'nin ayarlanması, her bir düğüm havuzunun en az 3 düğüme sahip olmasını gerektirir. Bu gereksinim, oluşturulan her yeni düğüm havuzu için geçerlidir; bu nedenle, 10 düğüm başına en fazla sayıda düğüm, eklenen her düğüm havuzu için en az 3 düğüm olmalıdır.
 
-| Ağ | Minimum | Maksimum |
+| Networking (Ağ İletişimi) | Minimum | Maksimum |
 | -- | :--: | :--: |
 | Azure CNı | 10 | 250 |
 | Kubernetes kullanan | 10 | 110 |
@@ -93,7 +92,7 @@ Mevcut bir AKS kümesindeki düğüm başına en fazla düğüm sayısını değ
 
 Bir AKS kümesi oluşturduğunuzda, aşağıdaki parametreler Azure CNı ağı için yapılandırılabilir:
 
-**Sanal ağ**: Kubernetes kümesini dağıtmak istediğiniz sanal ağ. Kümeniz için yeni bir sanal ağ oluşturmak isterseniz, *Yeni oluştur* ' u seçin ve *sanal ağ oluşturma* bölümündeki adımları izleyin. Bir Azure sanal ağı için sınırlamalar ve Kotalar hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
+**Sanal ağ**: Kubernetes kümesini dağıtmak istediğiniz sanal ağ. Kümeniz için yeni bir sanal ağ oluşturmak isterseniz, *Yeni oluştur* ' u seçin ve *sanal ağ oluşturma* bölümündeki adımları izleyin. Bir Azure sanal ağı için sınırlamalar ve Kotalar hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 
 **Alt ağ**: kümeyi dağıtmak istediğiniz sanal ağ içindeki alt ağ. Kümeniz için sanal ağda yeni bir alt ağ oluşturmak isterseniz, *Yeni oluştur* ' u seçin ve *alt ağ oluşturma* bölümündeki adımları izleyin. Karma bağlantı için, adres aralığı ortamınızdaki diğer tüm sanal ağlarla çakışmamalıdır.
 

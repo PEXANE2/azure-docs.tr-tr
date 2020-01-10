@@ -1,25 +1,25 @@
 ---
 title: Özel Konuşma Tanıma konuşma hizmeti için test verilerini hazırlama
 titleSuffix: Azure Cognitive Services
-description: Microsoft konuşma tanımanın doğru olup olmadığını görmek için test etmeksizin veya kendi modellerinizi nasıl eğtireceğiz, verilerin (ses ve/veya metin biçiminde) olması gerekir. Bu sayfada, veri türlerini, nasıl kullanıldığını ve bunların nasıl yönetileceğini ele aldık.
+description: Microsoft konuşma tanımanın doğruluğunu test ederken veya özel modellerinizi eğitmek için ses ve metin verileri gerekir. Bu sayfada, veri türlerini ve bunların nasıl kullanılacağını ve bunların nasıl yönetileceğini ele aldık.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: ba95723e62cec9708684665a9d141b1e39ccb831
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 6100ac6a6b01a7d0eac74b0e83539bf4e671cb89
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951845"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660418"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma Tanıma için veri hazırlama
 
-Microsoft konuşma tanımanın doğru olup olmadığını görmek için test yapıp görmeksizin, ses ve metin biçiminde verilerin olması gerekir. Bu sayfada, veri türlerini, nasıl kullanıldığını ve bunların nasıl yönetileceğini ele aldık.
+Microsoft konuşma tanımanın doğruluğunu test ederken veya özel modellerinizi eğitmek için ses ve metin verileri gerekir. Bu sayfada, veri türlerini ve bunların nasıl kullanılacağını ve bunların nasıl yönetileceğini ele aldık.
 
 ## <a name="data-types"></a>Veri türleri
 
@@ -27,19 +27,22 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 
 | Veri türü | Test için kullanılan | Önerilen miktar | Eğitim için kullanılır | Önerilen miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
-| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Yes | 1-1.000 saat ses |
-| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Yes | 1-200 MB ilgili metin |
+| [Ses](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
+| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Evet<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Evet | 1-1000 saat ses |
+| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
 
-Dosyalar bir veri kümesine türlerine göre gruplanmalı ve zip dosyası olarak karşıya yüklenir. Her veri kümesi yalnızca tek bir veri türü içerebilir.
+Dosyalar bir veri kümesine türlerine göre gruplanmalı ve bir. zip dosyası olarak karşıya yüklenir. Her veri kümesi yalnızca tek bir veri türü içerebilir.
+
+> [!TIP]
+> Hızlı bir şekilde başlamak için örnek verileri kullanmayı göz önünde bulundurun. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">Örnek özel konuşma tanıma verileri <span class="docon docon-navigate-external x-hidden-focus"></span> </a> için bu GitHub deposuna bakın
 
 ## <a name="upload-data"></a>Verileri karşıya yükleme
 
-Verilerinizi karşıya yüklemeye hazırsanız [özel konuşma tanıma portalına](https://speech.microsoft.com/customspeech)gidin, ardından Sihirbazı başlatmak ve ilk veri kümenizi oluşturmak Için **verileri karşıya yükle** ' ye tıklayın. Verilerinizi karşıya yüklemeye izin vermeden önce veri kümeniz için bir konuşma veri türü seçmeniz istenir.
+Verilerinizi karşıya yüklemek için <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>gidin. Portalda **verileri karşıya yükle** ' ye tıklayarak Sihirbazı başlatın ve ilk veri kümenizi oluşturun. Verilerinizi karşıya yüklemeye izin vermeden önce veri kümeniz için bir konuşma veri türü seçmeniz istenir.
 
 ![Konuşma portalından ses seçme](./media/custom-speech/custom-speech-select-audio.png)
 
-Karşıya yüklediğiniz her veri kümesinin seçtiğiniz veri türü için gereksinimleri karşılaması gerekir. Karşıya yüklenmeden önce verilerinizi doğru şekilde biçimlendirmek önemlidir. Bu, verilerin Özel Konuşma Tanıma hizmeti tarafından doğru şekilde işlenmesini sağlar. Gereksinimler aşağıdaki bölümlerde listelenmiştir.
+Karşıya yüklediğiniz her veri kümesinin seçtiğiniz veri türü için gereksinimleri karşılaması gerekir. Verilerinizin karşıya yüklenebilmesi için doğru şekilde biçimlendirilmesi gerekir. Doğru biçimli veriler, Özel Konuşma Tanıma hizmeti tarafından doğru şekilde işlenmek üzere olur. Gereksinimler aşağıdaki bölümlerde listelenmiştir.
 
 Veri kümeniz karşıya yüklendikten sonra, birkaç seçeneğiniz vardır:
 
@@ -63,14 +66,14 @@ Ses dosyalarınızın Özel Konuşma Tanıma ile kullanım için doğru biçimle
 | Maksimum Arşiv boyutu | 2 GB |
 
 > [!TIP]
-> Eğitim ve test verileri yüklenirken. zip dosyası boyutu 2 GB 'ı aşamaz. Eğitim ve test için daha fazla veri gerekiyorsa, bunu birkaç. zip dosyasına bölün ve ayrı olarak karşıya yükleyin. Daha sonra, *birden fazla* veri kümesinden eğiteyi ve test yapmayı tercih edebilirsiniz.
+> Eğitim ve test verileri yüklenirken. zip dosyası boyutu 2 GB 'ı aşamaz. Eğitim için daha fazla veri gerekiyorsa, bunu birkaç. zip dosyasına bölün ve ayrı olarak karşıya yükleyin. Daha sonra, *birden çok* veri kümesinden eğiteyi seçebilirsiniz. Ancak yalnızca *tek* bir veri kümesinden test edebilirsiniz.
 
-Sesimiz bu özellikleri karşılamaz veya bunun olup olmadığını denetlemek istiyorsanız, sesi denetlemek veya dönüştürmek için [Sox](http://sox.sourceforge.net) 'i indirmeyi öneririz. Aşağıda, bu etkinliklerin her birinin komut satırı aracılığıyla nasıl yapılabileceği hakkında bazı örnekler verilmiştir:
+Ses özelliklerini doğrulamak veya var olan sesleri uygun biçimlere dönüştürmek için <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> kullanın. Aşağıda, bu etkinliklerin her birinin SoX komut satırı aracılığıyla nasıl yapılabileceği hakkında bazı örnekler verilmiştir:
 
-| Etkinlik | Açıklama | Sox komutu |
+| Etkinlik | Açıklama | SoX komutu |
 |----------|-------------|-------------|
-| Ses biçimini denetle | Ses dosyası biçimini denetlemek için bu komutu kullanın. | `sox --i <filename>` |
-| Ses biçimini Dönüştür | Ses dosyasını tek kanala, 16 bit, 16 KHz 'a dönüştürmek için bu komutu kullanın. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
+| Ses biçimini denetle | Denetlemek için bu komutu kullanın<br>ses dosyası biçimi. | `sox --i <filename>` |
+| Ses biçimini Dönüştür | Dönüştürmek için bu komutu kullanın<br>ses dosyasını tek kanala, 16 bit, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>Ses + insanlar etiketli, test/eğitim için yazılı Döküm verileri
 
@@ -81,45 +84,49 @@ Ses dosyalarınızı işlerken Microsoft 'un konuşmadan metne doğruluğu için
 | Dosya biçimi | RIFF (WAV) |
 | Örnekleme hızı | 8\.000 Hz veya 16.000 Hz |
 | Kanallar | 1 (mono) |
-| Ses başına maksimum uzunluk | 60 s |
+| Ses başına maksimum uzunluk | 2 saat (test)/60 s (eğitim) |
 | Örnek biçim | PCM, 16 bit |
 | Arşiv biçimi | .zip |
 | En büyük ZIP boyutu | 2 GB |
 
-> [!TIP]
-> Eğitim ve test verileri yüklenirken. zip dosyası boyutu 2 GB 'ı aşamaz. Eğitim ve test için daha fazla veri gerekiyorsa, bunu birkaç. zip dosyasına bölün ve ayrı olarak karşıya yükleyin. Daha sonra, *birden fazla* veri kümesinden eğiteyi ve test yapmayı tercih edebilirsiniz.
+> [!NOTE]
+> Eğitim ve test verileri yüklenirken. zip dosyası boyutu 2 GB 'ı aşamaz. Uıou yalnızca *tek* bir veri kümesinden test edebilir, bu dosyayı uygun dosya boyutunda tutmaya özen açabilir.
 
 Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geliştirmek için önemli miktarda veri gerekir. Genellikle, kabaca 10 ila 1.000 saatlik ses için Word sözcük dökümü sağlamanız önerilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
 
-  Örnek:
+  Örneğin:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
   speech03.wav  the lazy dog was not amused
 ```
-> [!NOTE]
+
+> [!IMPORTANT]
 > Transkripsiyon UTF-8 bayt sırası işareti (BOM) ile kodlanmış olmalıdır.
 
-Transkripsiyon metinleri sistem tarafından işlenebilmesi için normalleştirilir. Ancak, veriler konuşma Studio 'ya yüklenmeden _önce_ Kullanıcı tarafından gerçekleştirilmesi gereken bazı önemli normalleştirmeler vardır. Dökümü hazırlarken kullanılacak uygun dil için, bkz. [nasıl yapılır: insan etiketli döküm oluşturma](how-to-custom-speech-human-labeled-transcriptions.md)
+Transkripsiyon metinleri sistem tarafından işlenebilmesi için normalleştirilir. Ancak, veriler konuşma Studio 'ya yüklenmeden önce gerçekleştirilmesi gereken bazı önemli normalleştirmeler vardır. Dökümü hazırlarken kullanılacak uygun dil için, bkz. [nasıl yapılır: insan etiketli döküm oluşturma](how-to-custom-speech-human-labeled-transcriptions.md)
 
-Ses dosyalarınızı ve bunlara karşılık gelen onayları topladıktan sonra, [özel konuşma tanıma portalına](https://speech.microsoft.com/customspeech)yüklemeden önce tek bir. zip dosyası olarak paketlenmesi gerekir. Bu, üç ses dosyası ve bir insan etiketli döküm dosyası içeren örnek bir veri kümesidir:
+Ses dosyalarınızı ve bunlara karşılık gelen kayıtları topladıktan sonra, <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>yüklemeden önce bunları tek bir. zip dosyası olarak paketleyin. Aşağıda üç ses dosyası ve bir insan etiketli döküm dosyası içeren örnek bir veri kümesi verilmiştir:
 
-![Konuşma portalından ses seçme](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
+> [!div class="mx-imgBorder"]
+> Konuşma portalından ses ![seçin](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
 ## <a name="related-text-data-for-training"></a>Eğitim için ilgili metin verileri
 
-Benzersiz olan ürün adları veya özelliklerinizin varsa ve doğru tanındıklarından emin olmak istiyorsanız, eğitim için ilgili metin verilerini eklemek önemlidir. Tanımayı geliştirmek için iki tür ilgili metin verisi sağlanabilmesi:
+Ürün adları veya benzersiz özellikler, eğitim için ilgili metin verilerini içermelidir. İlgili metin, doğru tanımanın sağlanmasına yardımcı olur. Tanımayı geliştirmek için iki tür ilgili metin verisi sağlanabilmesi:
 
 | Veri türü | Bu verilerin tanınması nasıl geliştirilir |
 |-----------|------------------------------------|
-| Utterslar ve/veya cümleler | Bunlar, ürün adlarını veya bir cümle bağlamı içindeki sektöre özel bir sözlüğü tanımayı artıran doğruluğu iyileştirebilir. |
-| Söylenişler | Bunlar, tanımsız söylenişleri olan seyrek terim, kısaltmalar veya diğer sözcüklerin telaffuz hale getirebilirsiniz. |
+| Cümleler (utterlere) | Ürün adlarını veya bir cümle bağlamı içindeki sektöre özel sözlüğü yapılandırırken doğruluğu geliştirir. |
+| Söylenişler | Tanımsız söylenlerdeki yaygın olmayan terimlerin, kısaltmalardan veya diğer sözcüklerin okunuşunu geliştirir. |
 
-Söyleyme, tek veya birden çok metin dosyası olarak sağlanıyor. Metin verileri ne kadar yaklaşacaktır, bu doğruluk artar. Söylenişler tek bir metin dosyası olarak sağlanmalıdır. Her şey tek bir zip dosyası olarak paketlenebilir ve [özel konuşma tanıma portalına](https://speech.microsoft.com/customspeech)yüklenebilir.
+Cümleler, tek bir metin dosyası veya birden çok metin dosyası olarak bulunabilir. Doğruluğu artırmak için, beklenen söyleye daha yakın olan metin verilerini kullanın. Söylenişler tek bir metin dosyası olarak sağlanmalıdır. Her şey tek bir zip dosyası olarak paketlenebilir ve <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>yüklenebilir.
 
-### <a name="guidelines-to-create-an-utterances-file"></a>Utterer dosyası oluşturma yönergeleri
+### <a name="guidelines-to-create-a-sentences-file"></a>Cümleler dosyası oluşturma yönergeleri
 
-İlgili metni kullanarak özel bir model oluşturmak için, örnek metinlerin bir listesini sağlamanız gerekir. Bu söyleyler, tam tümceler veya dilbilgisi doğru olması gerekmez, ancak üretimde beklediğinizi konuşulan girişi doğru bir şekilde yansıtmalıdır. Belirli koşulların daha fazla ağırlığa sahip olmasını istiyorsanız, ilgili veri dosyanıza bu belirli koşulları içeren birkaç cümle ekleyebilirsiniz.
+Cümleler kullanarak özel bir model oluşturmak için, örnek dıklarla bir liste sağlamanız gerekir. Söyleyler 'in tam veya dilbilgisi doğru _olması gerekmez,_ ancak üretimde bekleeceğiniz konuşulan girişi doğru şekilde yansıtmaları gerekir. Belirli koşulların daha fazla ağırlığa sahip olmasını istiyorsanız, bu belirli koşulları içeren çeşitli cümleler ekleyin.
+
+Genel rehberlik olarak, eğitim metni üretimde beklenen gerçek metin için mümkün olduğunca yakın olduğunda model uyarlama en etkili olur. Geliştirmeye hedeflediğiniz, etki alanına özgü öğretmek ve tümceleri eğitim metnine dahil edilmelidir. Mümkün olduğunda, bir cümleden veya anahtar kelimesinin ayrı bir satıra denetlenmesini deneyin. Sizin için önemli anahtar sözcükler ve tümcecikler (örneğin, ürün adları) için, bunları birkaç kez kopyalayabilirsiniz. Ancak, çok fazla kopyalamayın, bu da genel tanıma oranını etkileyebilir.
 
 Dikkat edilecek ilgili veri dosyanızın doğru biçimlendirildiğinden emin olmak için bu tabloyu kullanın:
 
@@ -132,7 +139,7 @@ Dikkat edilecek ilgili veri dosyanızın doğru biçimlendirildiğinden emin olm
 Ayrıca, aşağıdaki kısıtlamaları hesaba eklemek isteyeceksiniz:
 
 * Dört defadan fazla karakter tekrarlamadan kaçının. Örneğin: "aaaa" veya "uuuu".
-* U + 00A1 üzerinde özel karakterler veya UTF-8 karakterleri kullanmayın.
+* `U+00A1`üzerinde özel karakterler veya UTF-8 karakterleri kullanmayın.
 * URI 'Ler reddedilir.
 
 ### <a name="guidelines-to-create-a-pronunciation-file"></a>Telaffuz dosyası oluşturma yönergeleri
@@ -140,26 +147,26 @@ Ayrıca, aşağıdaki kısıtlamaları hesaba eklemek isteyeceksiniz:
 Kullanıcılarınızın karşılaşabilmesi veya kullanması gereken standart telaffuz olmayan, sık olmayan koşullar varsa, tanımayı geliştirmek için özel bir telaffuz dosyası sağlayabilirsiniz.
 
 > [!IMPORTANT]
-> Ortak sözcüklerin söylenişini değiştirmek için bu özelliğin kullanılması önerilmez.
+> Ortak sözcüklerin okunuşunu değiştirmek için özel telaffuz dosyaları kullanılması önerilmez.
 
 Bu, konuşulan bir utterance örnekleri ve her biri için özel bir telaffuz içerir:
 
 | Tanınan/görüntülenmiş form | Konuşulan formu |
 |--------------|--------------------------|
-| 3CPO | Üç c p o |  
+| 3CPO | Üç c p o |
 | CNTK | c n t k |
 | IEEE | Ben Üçlü e |
 
 Konuşulan biçim fonetik bir dizidir. Bu, harf, sözcük, hecelere veya üçünün birleşiminden oluşabilir.
 
-Özelleştirilmiş telaffuz Ingilizce (en-US) ve Almanca (de-DE) olarak kullanılabilir. Bu tabloda dile göre desteklenen karakterler gösterilmektedir:
+Özelleştirilmiş telaffuz Ingilizce (`en-US`) ve Almanca (`de-DE`) ile kullanılabilir. Bu tabloda dile göre desteklenen karakterler gösterilmektedir:
 
 | Dil | Yerel ayar | Karakterler |
 |----------|--------|------------|
-| Türkçe | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
-| Almanca | de-DE | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Türkçe | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
+| Almanca | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 
-Söylenişleri için ilgili veri dosyanızın doğru biçimlendirildiğinden emin olmak için bu tabloyu kullanın. Telaffuz dosyaları küçüktür ve birkaç KBs 'yi aşmamalıdır.
+Söylenişleri için ilgili veri dosyanızın doğru biçimlendirildiğinden emin olmak için aşağıdaki tabloyu kullanın. Söyleniş dosyaları küçüktür ve yalnızca birkaç kilobayt boyutunda olmalıdır.
 
 | Özellik | Değer |
 |----------|-------|
@@ -171,5 +178,5 @@ Söylenişleri için ilgili veri dosyanızın doğru biçimlendirildiğinden emi
 
 * [Verilerinizi inceleyin](how-to-custom-speech-inspect-data.md)
 * [Verilerinizi değerlendirin](how-to-custom-speech-evaluate-data.md)
-* [Modelinize eğitme](how-to-custom-speech-train-model.md)
+* [Modelinizi eğitme](how-to-custom-speech-train-model.md)
 * [Modelinizi dağıtın](how-to-custom-speech-deploy-model.md)

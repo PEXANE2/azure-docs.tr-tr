@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 09/19/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671751"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666473"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service 'de hazırlama ortamlarını ayarlama
 <a name="Overview"></a>
@@ -23,20 +23,24 @@ Uygulamanızı üretim dışı bir yuvaya dağıtmak aşağıdaki avantajlara sa
 * İlk olarak bir yuvaya bir yuva dağıtmak ve bunu üretime dönüştürmek, yuvanın tüm örneklerinin üretime değiştirilmeden önce bir bütün olarak daha fazla olduğundan emin olur. Bu, uygulamanızı dağıtırken kapalı kalma süresini ortadan kaldırır. Trafik yeniden yönlendirmesi sorunsuz ve değiştirme işlemleri nedeniyle hiçbir istek atılamaz. Ön değiştirme doğrulaması gerekli olmadığında [otomatik değiştirme](#Auto-Swap) 'yi yapılandırarak bu bütün iş akışını otomatikleştirebilirsiniz.
 * Bir değiştirme işleminden sonra, önceden hazırlanmış uygulamaya sahip yuva artık önceki üretim uygulamasına sahiptir. Üretim yuvasında takas edilen değişiklikler beklenmediği sürece, "bilinen son iyi siteyi" geri almak için aynı değiştirmeyi hemen gerçekleştirebilirsiniz.
 
-Her bir App Service plan katmanı farklı sayıda dağıtım yuvası destekler. Dağıtım yuvalarını kullanmak için ek ücret alınmaz. Uygulamanızın katmanının desteklediği yuva sayısını öğrenmek için bkz. [App Service sınırları](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
+Her bir App Service plan katmanı farklı sayıda dağıtım yuvası destekler. Dağıtım yuvalarını kullanmak için ek ücret alınmaz. Uygulamanızın katmanının desteklediği yuva sayısını öğrenmek için bkz. [App Service sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits). 
 
 Uygulamanızı farklı bir katmana ölçeklendirmek için, hedef katmanın uygulamanızın zaten kullandığı yuva sayısını desteklediğinden emin olun. Örneğin, uygulamanızda beşten fazla yuva varsa **Standart** katman yalnızca beş dağıtım yuvası desteklediğinden **Standart** katmana ölçeklendiremez. 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Yuva Ekle
+## <a name="add-a-slot"></a>Yuva ekleme
 Birden çok dağıtım yuvası etkinleştirebilmeniz için uygulamanın **Standart**, **Premium**veya **yalıtılmış** katmanda çalışıyor olması gerekir.
 
-1. [Azure Portal](https://portal.azure.com/), uygulamanızın [kaynak sayfasını](../azure-resource-manager/manage-resources-portal.md#manage-resources)açın.
+
+1. [Azure Portal](https://portal.azure.com/), **uygulama hizmetleri** ' ni arayıp seçin ve uygulamanızı seçin. 
+   
+    ![Uygulama Hizmetleri arama](./media/web-sites-staged-publishing/search-for-app-services.png)
+   
 
 2. Sol bölmede, **yuva ekle** > **dağıtım yuvaları** ' nı seçin.
    
-    ![Yeni bir dağıtım yuvası Ekle](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Yeni dağıtım yuvası ekleme](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
    > Uygulama zaten **Standart**, **Premium**veya **yalıtılmış** katmanda değilse, hazırlanan yayımlamayı etkinleştirmek için desteklenen katmanları gösteren bir ileti alırsınız. Bu noktada, devam etmeden önce **Yükselt** ' i seçme ve uygulamanızın **Ölçek** sekmesine gitme seçeneğiniz vardır.
@@ -166,7 +170,7 @@ Bir yuva takası sonrasında hedef yuvada (örneğin, üretim yuvası) herhangi 
 
 <a name="Auto-Swap"></a>
 
-## <a name="configure-auto-swap"></a>Otomatik değiştirmeyi yapılandırma
+## <a name="configure-auto-swap"></a>Otomatik değiştirme yapılandırması
 
 > [!NOTE]
 > Linux üzerinde Web Apps 'te otomatik takas desteklenmez.
@@ -206,7 +210,7 @@ Bazı uygulamalar, değiştirme işleminden önce özel ısınma eylemleri gerek
 
 Ayrıca, aşağıdaki [uygulama ayarlarından](configure-common.md)biri veya her ikisiyle de ısınma davranışını özelleştirebilirsiniz:
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: sitenizi ısınma için ping yapılacak yol. Değer olarak eğik çizgiyle başlayan özel bir yol belirterek bu uygulama ayarını ekleyin. `/statuscheck` bunun bir örneğidir. Varsayılan değer `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: sitenizi ısınma için ping yapılacak yol. Değer olarak eğik çizgiyle başlayan özel bir yol belirterek bu uygulama ayarını ekleyin. `/statuscheck` bunun bir örneğidir. Varsayılan değer: `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: ısınma işlemi için geçerli HTTP yanıt kodları. Bu uygulama ayarını, virgülle ayrılmış bir HTTP kodları listesi ile ekleyin. Örnek `200,202`. Döndürülen durum kodu listede yoksa, ısınma ve takas işlemleri durdurulur. Varsayılan olarak, tüm yanıt kodları geçerlidir.
 
 > [!NOTE]
@@ -241,7 +245,7 @@ Ayar kaydedildikten sonra, belirtilen istemci yüzdesi, bir üretim dışı yuva
 İstemci belirli bir yuvaya otomatik olarak yönlendirildikten sonra, o istemci oturumunun ömrü için bu yuvaya "sabitlenmiş" olur. İstemci tarayıcısında, HTTP başlıklarınızın `x-ms-routing-name` tanımlama bilgisine bakarak oturumunuzun hangi yuvaya sabitlendiği hakkında bilgi alabilirsiniz. "Hazırlama" yuvasına yönlendirilen bir istek tanımlama bilgisine sahiptir `x-ms-routing-name=staging`. Üretim yuvasına yönlendirilen bir istek tanımlama bilgisine sahiptir `x-ms-routing-name=self`.
 
    > [!NOTE]
-   > Azure portalının yanında, DevOps işlem hatları veya diğer otomasyon sistemleri gibi CI/CD araçlarından yönlendirme yüzdelerini ayarlamak için Azure CLı 'daki [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) komutunu da kullanabilirsiniz.
+   > Azure portal yanında, DevOps işlem hatları veya diğer otomasyon sistemleri gibi CI/CD araçlarından yönlendirme yüzdelerini ayarlamak için Azure CLı 'daki [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) komutunu da kullanabilirsiniz.
    > 
 
 ### <a name="route-production-traffic-manually"></a>Üretim trafiğini el ile yönlendirin
@@ -268,7 +272,7 @@ Varsayılan olarak, yeni yuvalara gri olarak gösterilen `0%`bir yönlendirme ku
 
 ## <a name="delete-a-slot"></a>Yuva silme
 
-Uygulamanızın kaynak sayfasına gidin.  > **Genel Bakış ' ı** *silmek için\<yuvasını* > **dağıtım yuvaları** seçin. Komut çubuğunda **Sil** ' i seçin.  
+Uygulamanızı arayın ve seçin.  > **Genel Bakış ' ı** *silmek için\<yuvasını* > **dağıtım yuvaları** seçin. Komut çubuğunda **Sil** ' i seçin.  
 
 ![Dağıtım yuvasını silme](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -310,7 +314,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ```
 
 ---
-### <a name="swap-deployment-slots"></a>Takas dağıtım Yuvaları
+### <a name="swap-deployment-slots"></a>Dağıtım yuvalarını değiştirme
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
@@ -327,16 +331,16 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>ARM şablonlarıyla otomatikleştirin
+## <a name="automate-with-resource-manager-templates"></a>Kaynak Yöneticisi şablonlarıyla otomatikleştirin
 
-[ARM şablonları](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) , Azure kaynaklarının dağıtımını ve yapılandırmasını otomatik hale getirmek için kullanılan BILDIRIM temelli JSON dosyalarıdır. ARM şablonları kullanarak yuvaları takas etmek için, *Microsoft. Web/Sites/yuvaları* ve *Microsoft. Web/Sites* kaynaklarında iki özellik ayarlayacaksınız:
+[Azure Resource Manager şablonlar](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) , Azure kaynaklarının dağıtımını ve yapılandırmasını otomatik hale getirmek için kullanılan BILDIRIM temelli JSON dosyalarıdır. Kaynak Yöneticisi şablonları kullanarak yuvaları takas etmek için, *Microsoft. Web/Sites/yuvaları* ve *Microsoft. Web/Sites* kaynaklarında iki özellik ayarlayacaksınız:
 
 - `buildVersion`: Bu, yuvada dağıtılan uygulamanın geçerli sürümünü temsil eden bir dize özelliğidir. Örneğin: "v1", "1.0.0.1" veya "2019-09-20T11:53:25.2887393-07:00".
 - `targetBuildVersion`: Bu, yuvanın ne `buildVersion` gerektiğini belirten bir dize özelliğidir. TargetBuildVersion geçerli `buildVersion`eşit değilse, bu işlem, belirtilen `buildVersion`sahip olan yuvayı bularak değiştirme işlemini tetikler.
 
-### <a name="example-arm-template"></a>Örnek ARM şablonu
+### <a name="example-resource-manager-template"></a>Örnek Kaynak Yöneticisi şablonu
 
-Aşağıdaki ARM şablonu, hazırlama yuvasının `buildVersion` güncelleştirecek ve üretim yuvasında `targetBuildVersion` ayarlayacaktır. Bu, iki yuvaları takas eder. Şablon zaten "hazırlama" adlı bir tepsisle oluşturulmuş bir WebApp olduğunu varsayar.
+Aşağıdaki Kaynak Yöneticisi şablonu, hazırlama yuvasının `buildVersion` güncelleştirecek ve üretim yuvasında `targetBuildVersion` ayarlayacaktır. Bu, iki yuvaları takas eder. Şablon zaten "hazırlama" adlı bir tepsisle oluşturulmuş bir WebApp olduğunu varsayar.
 
 ```json
 {
@@ -380,7 +384,7 @@ Aşağıdaki ARM şablonu, hazırlama yuvasının `buildVersion` güncelleştire
 }
 ```
 
-Bu ARM şablonu, tekrar tekrar yürütülebileceğini ve yuvaların aynı durumunun ortaya çıkarıdempotent anlamına gelir. İlk yürütmeden sonra, `targetBuildVersion` geçerli `buildVersion`eşleşecek, bu nedenle bir takas tetiklenmeyecektir.
+Bu Kaynak Yöneticisi şablonu, tekrar tekrar yürütülebileceğini ve yuvaların aynı durumunun ortaya çıkarıdempotent anlamına gelir. İlk yürütmeden sonra, `targetBuildVersion` geçerli `buildVersion`eşleşecek, bu nedenle bir takas tetiklenmeyecektir.
 
 <!-- ======== Azure CLI =========== -->
 

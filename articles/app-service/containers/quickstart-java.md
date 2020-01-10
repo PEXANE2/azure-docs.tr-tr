@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 64d70390b3563e17bbe0c70ed426dcda81b50198
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0f9378b80b4985ad542d6f602ba361f59737fc9d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872749"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707923"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service Java uygulaması oluşturma
 
@@ -21,7 +21,7 @@ ms.locfileid: "74872749"
 
 > [!NOTE]
 >
-> Aynı şey, IntelliJ ve tutulma gibi popüler Ides 'ler kullanılarak da yapılabilir. [Azure Toolkit for IntelliJ hızlı](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) başlangıç veya [Azure Toolkit for Eclipse hızlı başlangıç](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)aşamasında benzer belgelerimize göz atın.
+> Ayrıca, IntelliJ, tutulma ve VS Code gibi popüler Ides 'ler kullanılarak da aynı şey yapılabilir. [Azure Toolkit for IntelliJ hızlı](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)başlangıç [Azure Toolkit for Eclipse hızlı](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app) başlangıç veya [vs Code hızlı](https://code.visualstudio.com/docs/java/java-webapp)başlangıç aşamasında benzer belgelerimize göz atın.
 >
 ![Azure App Service 'de çalışan örnek uygulama](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -35,6 +35,11 @@ ms.locfileid: "74872749"
 
 ```bash
 mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+```
+Sonra çalışma dizininizi proje klasörü olarak değiştirin:
+
+```bash
+cd helloworld
 ```
 
 ## <a name="configure-the-maven-plugin"></a>Maven eklentisini yapılandırma

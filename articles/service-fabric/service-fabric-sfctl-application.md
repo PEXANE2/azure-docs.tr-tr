@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl uygulaması | Microsoft Docs
-description: Service Fabric CLı sfctl uygulama komutlarını açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl uygulaması
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Uygulamaları yönetmeye yönelik komutların bir listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 163faaab8fa2503458503d9f2b72d27a3e5856f0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4d416408fd83d7bc316c7045c2a0031fe50d36f5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901279"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645421"
 ---
 # <a name="sfctl-application"></a>sfctl application
 Uygulamalar ve uygulama türleri oluşturun, silin ve yönetin.
@@ -30,23 +21,23 @@ Uygulamalar ve uygulama türleri oluşturun, silin ve yönetin.
 | --- | --- |
 | oluşturmaya | Belirtilen açıklamayı kullanarak bir Service Fabric uygulaması oluşturur. |
 | delete | Mevcut bir Service Fabric uygulamasını siler. |
-| dağıtılan | Service Fabric düğümünde dağıtılan bir uygulamayla ilgili bilgileri alır. |
-| dağıtılan-sistem durumu | Service Fabric düğümünde dağıtılan bir uygulamanın sistem durumu hakkındaki bilgileri alır. |
-| dağıtılan-liste | Bir Service Fabric düğümünde dağıtılan uygulamaların listesini alır. |
+| deployed | Service Fabric düğümünde dağıtılan bir uygulamayla ilgili bilgileri alır. |
+| deployed-health | Service Fabric düğümünde dağıtılan bir uygulamanın sistem durumu hakkındaki bilgileri alır. |
+| deployed-list | Bir Service Fabric düğümünde dağıtılan uygulamaların listesini alır. |
 | sağlık | Service Fabric uygulamasının sistem durumunu alır. |
-| Bilgisine | Bir Service Fabric uygulaması hakkında bilgi alır. |
+| info | Bir Service Fabric uygulaması hakkında bilgi alır. |
 | list | Service Fabric kümesinde oluşturulan, belirtilen filtrelerle eşleşen uygulamaların listesini alır. |
 | yükleme | Service Fabric bir uygulamayla ilgili yükleme bilgilerini alır. |
-| Bildirim | Uygulama türünü tanımlayan bildirimi alır. |
-| sağlamaya | Dış depodaki '. sfpkg ' paketini veya görüntü deposundaki uygulama paketini kullanarak kümeyle Service Fabric bir uygulama türü sağlar veya kaydeder. |
-| rapor-sistem durumu | Service Fabric uygulamasına bir sistem durumu raporu gönderir. |
+| manifest | Uygulama türünü tanımlayan bildirimi alır. |
+| provision | Dış depodaki '. sfpkg ' paketini veya görüntü deposundaki uygulama paketini kullanarak kümeyle Service Fabric bir uygulama türü sağlar veya kaydeder. |
+| report-health | Service Fabric uygulamasına bir sistem durumu raporu gönderir. |
 | type | Service Fabric kümesinde belirtilen adı tam olarak eşleşen uygulama türlerinin listesini alır. |
-| tür listesi | Service Fabric kümesindeki uygulama türlerinin listesini alır. |
-| kaldırmak | Service Fabric bir uygulama türünü kümeden kaldırır veya kaydını siler. |
-| yükseltmenizi | Service Fabric kümesinde bir uygulamanın yükseltilmesine başlar. |
-| yükseltme-özgeçmişi | Service Fabric kümesindeki bir uygulamayı yükseltmeyi sürdürür. |
-| yükseltme-geri alma | Service Fabric kümesindeki bir uygulamanın Şu anda yükseltmesini geri almaya başlar. |
-| yükseltme-durum | Bu uygulama üzerinde gerçekleştirilen en son yükseltmenin ayrıntılarını alır. |
+| type-list | Service Fabric kümesindeki uygulama türlerinin listesini alır. |
+| unprovision | Service Fabric bir uygulama türünü kümeden kaldırır veya kaydını siler. |
+| upgrade | Service Fabric kümesinde bir uygulamanın yükseltilmesine başlar. |
+| upgrade-resume | Service Fabric kümesindeki bir uygulamayı yükseltmeyi sürdürür. |
+| upgrade-rollback | Service Fabric kümesindeki bir uygulamanın Şu anda yükseltmesini geri almaya başlar. |
+| upgrade-status | Bu uygulama üzerinde gerçekleştirilen en son yükseltmenin ayrıntılarını alır. |
 | karşıya yükle | Service Fabric uygulama paketini görüntü deposuna kopyalayın. |
 
 ## <a name="sfctl-application-create"></a>sfctl uygulama oluştur
@@ -307,7 +298,7 @@ Kümeyle birlikte Service Fabric bir uygulama türü sağlar. Yeni uygulamaları
 | --Uygulama-türü-adı | Sağlama türü yalnızca dış depo için. Uygulama türü adı, uygulama bildiriminde bulunan uygulama türünün adını temsil eder. |
 | --Uygulama-türü-sürümü | Sağlama türü yalnızca dış depo için. Uygulama türü sürümü uygulama bildiriminde bulunan uygulama türünün sürümünü temsil eder. |
 | --Dış sağlama | Uygulama paketinin kaydedilebileceği veya sağlanacağı konum. Sağlamanın, daha önce bir dış depoya yüklenmiş bir uygulama paketi için olduğunu gösterir. Uygulama paketi *. sfpkg uzantısıyla biter. |
-| --No-wait | Sağlama işleminin zaman uyumsuz olarak yapılıp yapılmayacağını belirtir. <br><br> True olarak ayarlandığında, istek sistem tarafından kabul edildiğinde sağlama işlemi döndürülür ve sağlama işlemi herhangi bir zaman aşımı sınırı olmadan devam eder. Varsayılan değer false 'dur. Büyük uygulama paketleri için değeri true olarak ayarlamayı öneririz. |
+| --No-wait | Sağlama işleminin zaman uyumsuz olarak yapılıp yapılmayacağını belirtir. <br><br> True olarak ayarlandığında, istek sistem tarafından kabul edildiğinde sağlama işlemi döndürülür ve sağlama işlemi herhangi bir zaman aşımı sınırı olmadan devam eder. Varsayılan değer false'tur. Büyük uygulama paketleri için değeri true olarak ayarlamayı öneririz. |
 | --timeout-t | Varsayılan\: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
@@ -329,7 +320,7 @@ Belirtilen Service Fabric uygulamasının sistem durumunu raporlar. Rapor, siste
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Uygulama kimliği [gerekli] | Uygulamanın kimliği. <br><br> Bu genellikle uygulamanın ' Fabric\:' URI düzeni olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar ' \~ ' karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı ' Fabric\:/MyApp/APP1 ' ise, uygulama kimliği önceki sürümlerde 6.0 + ve ' MyApp/APP1 ' içinde ' MyApp\~APP1 ' olur. |
+| --Uygulama kimliği [gerekli] | Uygulamanın kimliği. <br><br> Bu genellikle uygulamanın ' Fabric\:' URI düzeni olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar '\~' karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı ' Fabric\:/MyApp/APP1 ' ise, uygulama kimliği önceki sürümlerde 6.0 + ve ' MyApp/APP1 ' içinde ' MyApp\~APP1 ' olur. |
 | --Health-Property [gerekli] | Sistem durumu bilgilerinin özelliği. <br><br> Bir varlık, farklı özellikler için sistem durumu raporlarına sahip olabilir. Özelliği, rapor tetikleyen durum koşulunu kategorilere ayırmak için Raporlayıcı esnekliğine izin veren sabit bir sabit listesi olmayan bir dizedir. Örneğin, SourceId "Localizçi" olan bir Raporlayıcı, bir düğümdeki kullanılabilir diskin durumunu izleyebilir, bu nedenle söz konusu düğümdeki "AvailableDisk" özelliğini bildirebilirler. Aynı Reporter, düğüm bağlantısını izleyip aynı düğümde bir özelliği "bağlantı" bildirebilirler. Sistem durumu deposunda, bu raporlar belirtilen düğüm için ayrı sistem durumu olayları olarak kabul edilir. SourceID ile birlikte, özelliği sistem durumu bilgilerini benzersiz şekilde tanımlar. |
 | --sistem durumu-durumu [gerekli] | Olası değerler arasında\: ' geçersiz ', ' Tamam ', ' uyarı ', ' Error ', ' Unknown ' verilebilir. |
 | --kaynak-kimliği [gerekli] | Sistem durumu bilgilerini oluşturan istemci/izleme/sistem bileşenini tanımlayan kaynak adı. |
@@ -385,7 +376,7 @@ Service Fabric kümesinde sağlanmakta olan uygulama türleriyle ilgili bilgiler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --uygulama-tür tanımı-tür-filtre | Service Fabric uygulama türünü tanımlamak için kullanılan mekanizma olan ApplicationTypeDefinitionKind filtrelemek için kullanılır.  <br> -Varsayılan değeri, "tümü" seçeneğini belirleyerek aynı işlevi gerçekleştirir. Değer 0 ' dır.  <br> -All-FILTER, herhangi bir ApplicationTypeDefinitionKind değeriyle eşleşir. Değer 65535 ' dir.  <br> -ServiceFabricApplicationPackage-ApplicationTypeDefinitionKind değeri ServiceFabricApplicationPackage ile girişle eşleşen filtre. Değer 1 ' dir.  <br> -Compose-Input, ApplicationTypeDefinitionKind değer Compose ile eşleşen bir filtre. Değer 2 ' dir. |
+| --application-type-definition-kind-filter | Service Fabric uygulama türünü tanımlamak için kullanılan mekanizma olan ApplicationTypeDefinitionKind filtrelemek için kullanılır.  <br> -Varsayılan değeri, "tümü" seçeneğini belirleyerek aynı işlevi gerçekleştirir. Değer 0 ' dır.  <br> -All-FILTER, herhangi bir ApplicationTypeDefinitionKind değeriyle eşleşir. Değer 65535 ' dir.  <br> -ServiceFabricApplicationPackage-ApplicationTypeDefinitionKind değeri ServiceFabricApplicationPackage ile girişle eşleşen filtre. Değer 1 ' dir.  <br> -Compose-Input, ApplicationTypeDefinitionKind değer Compose ile eşleşen bir filtre. Değer 2 ' dir. |
 | --Devamlılık-belirteç | Devam belirteci parametresi, sonraki sonuç kümesini almak için kullanılır. Boş olmayan bir değere sahip devamlılık belirteci, sistemin sonuçları tek bir yanıta sığmıyor olduğunda API 'nin yanıtına dahil edilir. Bu değer sonraki API çağrısına geçirildiğinde, API sonraki sonuç kümesini döndürür. Başka sonuç yoksa devamlılık belirteci bir değer içermez. Bu parametrenin değeri, URL kodlamalı olmamalıdır. |
 | --exclude-uygulama-parametreler | Uygulama parametrelerinin sonuçtan dışlanıp dışlanmayacağını belirten bayrak. |
 | --en fazla sonuç | Disk belleği sorgularının bir parçası olarak döndürülecek en fazla sonuç sayısı. Bu parametre döndürülen sonuç sayısı üzerinde üst sınırı tanımlar. Döndürülen sonuçlar, yapılandırmada tanımlanan en fazla ileti boyutu kısıtlamalarına göre iletiye sığmıyor durumunda belirtilen en fazla sonuçtan daha az olabilir. Bu parametre sıfırsa veya belirtilmemişse, disk belleğine alınan sorgu, dönüş iletisine sığan mümkün olduğunca fazla sonuç içerir. |
@@ -412,7 +403,7 @@ Bu işlem, yalnızca uygulama türünün tüm uygulama örnekleri silinmişse ge
 | --- | --- |
 | --Uygulama-türü-adı [gerekli] | Uygulama türünün adı. |
 | --Uygulama-türü-sürüm [gerekli] | Uygulama bildiriminde tanımlanan şekilde uygulama türü sürümü. |
-| --Async-Parameter | Sağlamayı kaldırma işleminin zaman uyumsuz olarak yapılıp yapılmayacağını belirten bayrak. True olarak ayarlandığında, sağlamayı kaldırma işlemi, istek sistem tarafından kabul edildiğinde döner ve sağlamayı kaldırma işlemi herhangi bir zaman aşımı sınırı olmadan devam eder. Varsayılan değer false 'dur. Ancak, sağlanan büyük uygulama paketleri için bunu true olarak ayarlamayı öneririz. |
+| --Async-Parameter | Sağlamayı kaldırma işleminin zaman uyumsuz olarak yapılıp yapılmayacağını belirten bayrak. True olarak ayarlandığında, sağlamayı kaldırma işlemi, istek sistem tarafından kabul edildiğinde döner ve sağlamayı kaldırma işlemi herhangi bir zaman aşımı sınırı olmadan devam eder. Varsayılan değer false'tur. Ancak, sağlanan büyük uygulama paketleri için bunu true olarak ayarlamayı öneririz. |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler

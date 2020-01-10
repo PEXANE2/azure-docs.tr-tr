@@ -1,22 +1,24 @@
 ---
-title: Azure not defterleri genel bakış
-description: Jupyter not defterleri hiçbir Kurulum veya yapılandırma gerekli olduğu ücretsiz Azure not defterleri hizmetini kullanarak bulutta çalıştırın.
+title: Azure Notebooks önizlemeye genel bakış
+description: Kurulum veya yapılandırma gerektirmeyen ücretsiz Azure Notebooks önizleme hizmetini kullanarak bulutta Jupyıter not defterlerini çalıştırın.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: b3dfa6cec962809fad1a03f5100c55315ff6a9ad
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277677"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646339"
 ---
-# <a name="overview-of-azure-notebooks"></a>Azure not defterleri genel bakış
+# <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks önizlemeye genel bakış
 
-Azure Notebooks, yükleme yapmadan Jupyter not defterlerini geliştirmeye ve çalıştırmaya yönelik, ücretsiz ve barındırılan bir hizmettir. [Jupyter](https://jupyter.org/) (eski adıyla IPython), markı metnini, çalıştırılabilir kodu, kalıcı verileri, grafikleri ve görselleştirmeleri tek bir paylaşılabilir tuval, *not defteri* (Jupyter.org Image hitap) üzerinde kolayca birleştirebilmenizi sağlayan açık kaynaklı bir projem ' dir:
+Azure Notebooks, yükleme yapmadan Jupyter not defterlerini geliştirmeye ve çalıştırmaya yönelik, ücretsiz ve barındırılan bir hizmettir. [Jupyter](https://jupyter.org/) (eski adıyla Ipython) kolayca olanak tanıyan bir açık kaynak projesi birleştirmek Markdown metin, yürütülebilir kod, kalıcı verileri, grafik ve görselleştirmeler paylaşılabilir, tek bir tuvaline olan *not defteri* (görüntü jupyter.org sayesinde):
 
 [Jupi Not defterlerinin ![örnekleri](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Jupyter kodu, grafik ve açıklayıcı metin içeren bu güçlü birleşim nedeniyle, veri bilimi yönergesi, veri temizleme ve dönüştürme, sayısal bir simülasyon, modelleme ve geliştirmeye yönelik dahil olmak üzere pek çok kullanımı için popüler hale gelmiştir Makine öğrenimi modelleri.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="hassle-free-experience"></a>Sorunsuz bir deneyim
 
@@ -31,17 +33,17 @@ Kişiler üzerinde Azure Not Defterleri (önizlemede) gibi tarayıcı erişilebi
 
 Azure not defterleri yazma genel bir kod olduğundan, yürütme ve platform, paylaşım, çok sayıda çeşitli senaryolar için kullanabilirsiniz:
 
-- Yeni bir programlama dili öğrenin – [FrontPage öğreticilerden](https://notebooks.azure.com/Microsoft/projects/samples/html/Introduction%20to%20Python.ipynb) birini deneyin
-- Veri bilimi öğrenme – TRY [Jake VanderPlas ' Book](https://notebooks.azure.com/jakevdp/projects/PythonDataScienceHandbook)
-- Yüzlerce öğrenci için [Kurs öğretin](https://notebooks.azure.com/garth-wells/projects/CUED-IA-Computing-Michaelmas)
+- Yeni bir programlama dili öğrenmek – birini deneyin [frontpage öğreticiler](https://notebooks.azure.com/Microsoft/projects/samples/html/Introduction%20to%20Python.ipynb)
+- Veri bilimi öğrenin: deneyin [Jake VanderPlas rehberi](https://notebooks.azure.com/jakevdp/projects/PythonDataScienceHandbook)
+- [Bir kurs öğretin](https://notebooks.azure.com/garth-wells/projects/CUED-IA-Computing-Michaelmas) yüzlerce, Öğrenciler için
 - Yükleme zaman olmadan bir konferansta bir çevrimiçi olması veya bir Web seminerine verin 
-- GitHub kullanıcılarının [bir GitHub başlatma rozet oluşturarak](https://notebooks.azure.com/help/projects/sharing/create-a-github-badge) not defterlerini doğrudan yüklemesini ve çalıştırmasını sağlama
-- Slaytlara, slaytların çalıştırılabilir olduğu [Slayt gösterileri gibi PowerPoint](https://notebooks.azure.com/help/jupyter-notebooks/slides) sunun!
+- Doğrudan yüklemek ve Not Defterleri ile çalıştırmak GitHub kullanıcıların [GitHub başlatma rozeti oluşturma](https://notebooks.azure.com/help/projects/sharing/create-a-github-badge)
+- Vermek [PowerPoint gibi gösterilerini](https://notebooks.azure.com/help/jupyter-notebooks/slides) slaytları kodda olduğu yürütülebilir!
 
 Kısacası, Azure not defterleri işlerinizi daha verimli bir şekilde gerçekleştirmek ve bu nedenle daha fazla bilgi elde etmenize yardımcı olur.
 
 > [!Note]
-> Jupi 'in kendisi hakkında daha fazla bilgi [Jupyter.org](https://jupyter.org/) ve [jupyıter belgelerinde](https://jupyter-notebook.readthedocs.io/en/latest/)bulunabilir.
+> Jupyter kendisi hakkında daha fazla bilgi bulunabilir [jupyter.org](https://jupyter.org/) ve [Jupyter belgeleri](https://jupyter-notebook.readthedocs.io/en/latest/).
 
 ## <a name="pricing-and-quotas"></a>Fiyatlandırma ve kotalar
 
@@ -63,7 +65,7 @@ Her not defteri için herhangi bir kod hücreleri çalıştırmak için kullanı
 
 Azure not defterleri, ayrıca temel dağıtımları ötesinde ek paketleri içerir. Python çekirdekler, örneğin numpy, pandas scikit-learn ve matplotlib ve bokeh kitaplıkları.
 
-Ayrıca, o proje içinde tüm dizüstü bilgisayarlar için bir ortam oluşturmaya yönelik bir proje özelleştirebilirsiniz. Daha fazla bilgi için bkz. [hızlı başlangıç: özel bir ortamla proje oluşturma](quickstart-create-jupyter-notebook-project-environment.md).
+Ayrıca, o proje içinde tüm dizüstü bilgisayarlar için bir ortam oluşturmaya yönelik bir proje özelleştirebilirsiniz. Daha fazla bilgi için [hızlı başlangıç: özel bir ortamla bir proje oluşturma](quickstart-create-jupyter-notebook-project-environment.md).
 
 Temel dağıtımların yanı sıra Azure not defterleri veri uzmanları için faydalı olan birçok ek paketlerin önceden yüklü olarak gelen. Ayrıca, her dil için tipik bir işlem kullanarak kendi paketlerini yükleyebilirsiniz.
 
@@ -71,11 +73,11 @@ Temel dağıtımların yanı sıra Azure not defterleri veri uzmanları için fa
 
 Azure not defterleri ile aşağıdaki Jupyter uzantıları önceden yapılandırılmış:
 
-- [RISE](https://github.com/damianavila/RISE): Jupyter slayt gösterisi uzantısı (live_reveal olarak da bilinir). Daha fazla bilgi için bkz. [Not defteri slayt gösterisi çalıştırma](present-jupyter-notebooks-slideshow.md).
-- [Jupyterlab](https://github.com/jupyterlab/jupyterlab): Jupyter Not defterleri ile çalışmaya yönelik tam bir hesaplama ortamıdır.
-- [Altair](https://github.com/ellisonbg/altair): Python için bildirime dayalı istatistiksel görselleştirme kitaplığı.
-- [Bqçiz](https://github.com/bloomberg/bqplot): Jupyter Not defterleri için etkileşimli bir çizim çerçevesi.
-- [Ipypencere öğeleri](https://github.com/jupyter-widgets/ipywidgets): Jupyter Not defterleri IÇIN etkileşimli HTML pencere öğeleri.
+- [ARTIŞ](https://github.com/damianavila/RISE): A Jupyter slayt gösterisi uzantısı (live_reveal olarak da bilinir). Daha fazla bilgi için [bir not defteri slayt gösterisi çalıştırma](present-jupyter-notebooks-slideshow.md).
+- [JupyterLab](https://github.com/jupyterlab/jupyterlab): Jupyter not defterleri ile çalışmak için bir tam hesaplama ortamı.
+- [Altair](https://github.com/ellisonbg/altair): Python için bir bildirim temelli istatistiksel görselleştirme kitaplığı.
+- [BQPlot](https://github.com/bloomberg/bqplot): Jupyter not defterleri için etkileşimli bir çizim çerçevesi.
+- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): Jupyter not defterleri için etkileşimli HTML pencere öğeleri.
 
 ## <a name="issues-and-getting-help"></a>Sorunlar ve Yardım alma
 
@@ -83,30 +85,30 @@ Azure not defterleri hala Önizleme aşamasında olduğundan, hizmet daha sık v
 
 Şu anda, iş açısından kritik uygulamalar veya hassas not defterlerini ve verileri için Azure not defterleri Önizleme kullanılmasından öneririz.
 
-Azure Notebooks hakkındaki sorularınızı tartışmak için [GitHub deposunda](https://github.com/Microsoft/AzureNotebooks/issues)bir sorun verin.
+Sorularınızı Azure not defterleri hakkında tartışmak için üzerinde bir sorun dosya [GitHub deposu](https://github.com/Microsoft/AzureNotebooks/issues).
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Örnek not defterlerini keşfet](azure-notebooks-samples.md)
+- [Örnek Not Defterleri keşfedin](azure-notebooks-samples.md)
 
 - Hızlı Başlangıçlar:
 
-  - [Not defteri oluşturma ve paylaşma](quickstart-create-share-jupyter-notebook.md)
-  - [Not Defterini Kopyala](quickstart-clone-jupyter-notebook.md)
-  - [Yerel bir Jupyter Not defterini geçirme](quickstart-migrate-local-jupyter-notebook.md)
-  - [Özel ortam kullanma](quickstart-create-jupyter-notebook-project-environment.md)
-  - [Oturum açın ve bir kullanıcı KIMLIĞI ayarlayın](quickstart-sign-in-azure-notebooks.md)
+  - [Oluşturma ve bir not defteri paylaşma](quickstart-create-share-jupyter-notebook.md)
+  - [Bir not defteri kopyalama](quickstart-clone-jupyter-notebook.md)
+  - [Yerel Jupyter not defterini geçirme](quickstart-migrate-local-jupyter-notebook.md)
+  - [Özel bir ortam kullanma](quickstart-create-jupyter-notebook-project-environment.md)
+  - [Oturum açın ve bir kullanıcı kimliği ayarlayın](quickstart-sign-in-azure-notebooks.md)
 
 - Öğreticiler:
 
-  - [Not defteri oluşturma ve çalıştırma](tutorial-create-run-jupyter-notebook.md  )
+  - [Oluşturma ve bir not defteri çalıştırma](tutorial-create-run-jupyter-notebook.md  )
 
 - Nasıl yapılır makaleleri:
   
-  - [Projeleri oluşturma ve kopyalama](create-clone-jupyter-notebooks.md)
-  - [Projeleri yapılandırma ve yönetme](configure-manage-azure-notebooks-projects.md)
-  - [Bir not defteri içinden paket yükler](install-packages-jupyter-notebook.md)
-  - [Bir slayt gösterisi sunun](present-jupyter-notebooks-slideshow.md)
-  - [Veri dosyalarıyla çalışma](work-with-project-data-files.md)
-  - [Veri kaynaklarına erişin](access-data-resources-jupyter-notebooks.md)
+  - [Oluşturma ve projeleri kopyalama](create-clone-jupyter-notebooks.md)
+  - [Yapılandırma ve projeleri yönetme](configure-manage-azure-notebooks-projects.md)
+  - [İçinde bir not defteri paketleri yükleme](install-packages-jupyter-notebook.md)
+  - [Mevcut bir slayt gösterisi](present-jupyter-notebooks-slideshow.md)
+  - [Veri dosyaları ile çalışma](work-with-project-data-files.md)
+  - [Veri kaynaklarına erişim](access-data-resources-jupyter-notebooks.md)
   - [Azure Machine Learning kullan](use-machine-learning-services-jupyter-notebooks.md)

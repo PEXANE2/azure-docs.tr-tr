@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b2430b5135a5d3f7ad1f9ef0bd17d9149bf48ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b59470a187fe060bd5e9a2c1bd84e63f598770df
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793461"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690795"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 'da SQL Server sanal makinesini SQL VM kaynak sağlayıcısıyla kaydetme
 
@@ -57,12 +57,12 @@ SQL VM kaynak sağlayıcısını kullanmanın avantajları hakkında daha fazla 
 <iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="Azure 'da SQL Server kendi kendine yüklerken SQL VM kaynak sağlayıcısından avantaj-Microsoft Channel 9 videosu"></iframe>
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir: 
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
-- Ortak buluta dağıtılan [SQL Server VM](virtual-machines-windows-portal-sql-server-provision.md) bir Azure kaynak modeli. 
+- Azure kaynak modeli, genel veya Azure Kamu bulutuna dağıtılan [SQL Server VM](virtual-machines-windows-portal-sql-server-provision.md) . 
 - [Azure CLI](/cli/azure/install-azure-cli) veya [PowerShell](/powershell/azure/new-azureps-module-az)'in en son sürümü. 
 
 ## <a name="management-modes"></a>Yönetim modları
@@ -91,7 +91,7 @@ PowerShell kullanarak SQL Server IaaS aracınızın geçerli modunu görüntüle
 
 SQL Server VM SQL VM kaynak sağlayıcısına kaydetmek için öncelikle aboneliğinizi kaynak sağlayıcısına kaydetmeniz gerekir. Bu, SQL VM kaynak sağlayıcısına aboneliğinizdeki kaynakları oluşturma olanağı sağlar.  Azure portal, Azure CLı veya PowerShell kullanarak bunu yapabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure Portal
 
 1. Azure portal açın ve **tüm hizmetlere**gidin. 
 1. **Abonelikler** ' e gidin ve ilgilendiğiniz aboneliği seçin.  
@@ -221,7 +221,7 @@ PowerShell kullanarak SQL Server IaaS aracınızın geçerli modunu görüntüle
 Aracı modunu tam olarak yükseltmek için: 
 
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure Portal
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. [SQL sanal makineler](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) kaynağına gidin. 
@@ -263,7 +263,7 @@ Aşağıdaki PowerShell kod parçacığını çalıştırın:
 ## <a name="verify-registration-status"></a>Kayıt durumunu doğrula
 SQL Server VM Azure portal, Azure CLı veya PowerShell kullanarak SQL VM kaynak sağlayıcısı ile zaten kaydedilmiş olup olmadığını doğrulayabilirsiniz. 
 
-### <a name="azure-portal"></a>Azure portalı 
+### <a name="azure-portal"></a>Azure Portal 
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 1. [SQL Server sanal makinelerinize](virtual-machines-windows-sql-manage-portal.md)gidin.
@@ -286,8 +286,7 @@ Az CLı veya PowerShell kullanarak geçerli SQL Server VM kayıt durumunu doğru
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
   ```powershell-interactive
-  Get-AzResource -ResourceName <vm_name> -ResourceGroupName <resource_group> `
-  -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines
+  Get-AzSqlVM -Name <vm_name> -ResourceGroupName <resource_group>
   ```
 
 ---
@@ -301,7 +300,7 @@ SQL Server VM SQL VM kaynak sağlayıcısı ile kaydını silmek için, Azure po
 
 Yönetim modunun tam olarak indirgenmesini sağlamak için SQL VM kaynak sağlayıcısı ile SQL VM kaydının kaydı gereklidir. 
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure Portal
 
 Azure portal kullanarak SQL Server VM kaynak sağlayıcıyla kaydını silmek için şu adımları izleyin:
 
@@ -349,7 +348,7 @@ Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
 
 SQL VM kaynak sağlayıcısı yalnızca şunları destekler:
 - Azure Resource Manager aracılığıyla dağıtılan SQL Server VM 'Ler. Klasik model aracılığıyla dağıtılan SQL Server VM 'Ler desteklenmez. 
-- Ortak buluta dağıtılan SQL Server VM 'Ler. Özel veya kamu bulutuna dağıtımlar desteklenmez. 
+- Genel veya Azure Kamu bulutuna dağıtılan VM 'Ler SQL Server. Diğer özel veya kamu bulutlarına dağıtımlar desteklenmez. 
 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular 

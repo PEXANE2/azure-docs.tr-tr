@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/23/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 692b07c82c329a93d79ad3a87beec5dbe1c595d3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: d58eb333c930d2ffac4eb57340ea776338325181
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669993"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680995"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service için sürekli dağıtım
 
@@ -27,7 +27,13 @@ Azure Repos kullanmak için Azure DevOps kuruluşunuzun Azure aboneliğinize ba�
 
 Bitbucket veya GitHub için Azure App Service, deponuza bağlanmak üzere yetkilendirin. Yalnızca bir kaynak denetim hizmetiyle bir kez yetkilendirme yapmanız gerekir. 
 
-1. [Azure Portal](https://portal.azure.com) sol gezinti bölmesinde **uygulama hizmetleri** ' ni seçin ve ardından dağıtmak istediğiniz Web uygulamasını seçin. 
+1. [Azure Portal](https://portal.azure.com), **uygulama hizmetleri**' ni arayıp seçin. 
+
+   ![Uygulama Hizmetleri için arama yapın.](media/app-service-continuous-deployment/search-for-app-services.png)
+
+1. Dağıtmak istediğiniz Web uygulamasını seçin.
+
+   ![Uygulamanızı seçin.](media/app-service-continuous-deployment/select-your-app.png)
    
 1. Uygulama sayfasında, sol taraftaki menüden **Dağıtım Merkezi** ' ni seçin.
    
@@ -45,7 +51,7 @@ Bir kaynak denetim hizmetine yetki verdikten sonra, uygulamanızı yerleşik [ku
 
 Yerleşik kudu App Service derleme sunucusunu, GitHub, Bitbucket veya Azure Repos sürekli olarak dağıtmak için kullanabilirsiniz. 
 
-1. [Azure Portal](https://portal.azure.com) sol gezinti bölmesinde **uygulama hizmetleri** ' ni seçin ve ardından dağıtmak istediğiniz Web uygulamasını seçin. 
+1. [Azure Portal](https://portal.azure.com), **uygulama hizmetleri**' ni arayıp seçin ve ardından dağıtmak istediğiniz Web uygulamasını seçin. 
    
 1. Uygulama sayfasında, sol taraftaki menüden **Dağıtım Merkezi** ' ni seçin.
    
@@ -63,7 +69,7 @@ Yerleşik kudu App Service derleme sunucusunu, GitHub, Bitbucket veya Azure Repo
    - GitHub için, aşağı açılan ve sürekli dağıtmak istediğiniz **kuruluş**, **Depo**ve **dalı** seçin.
      
      > [!NOTE]
-     > Herhangi bir depo görmüyorsanız, GitHub 'da Azure App Service yetkilendirmeniz gerekebilir. GitHub deponuza gidin ve **yetkili OAuth Apps** > **Ayarlar** > **uygulamalar** ' a gidin. **Azure App Service**' yi seçin ve ardından **ver**' i seçin.
+     > Herhangi bir depo görmüyorsanız, GitHub 'da Azure App Service yetkilendirmeniz gerekebilir. GitHub deponuza gidin ve **yetkili OAuth Apps** > **Ayarlar** > **uygulamalar** ' a gidin. **Azure App Service**' yi seçin ve ardından **ver**' i seçin. Kuruluş depolarında, izinleri vermek için kuruluşun sahibi olmanız gerekir.
      
    - Bitbucket için, sürekli olarak dağıtmak istediğiniz Bitbucket **ekibini**, **deposunu**ve **dalını** seçin.
      
@@ -96,7 +102,7 @@ Azure App Service Azure DevOps kuruluşunuzda sürekli teslim Azure Pipelines ol
 
 Azure Pipelines yapılandırmak için (Önizleme):
 
-1. [Azure Portal](https://portal.azure.com) sol gezinti bölmesinde **uygulama hizmetleri** ' ni seçin ve ardından dağıtmak istediğiniz Web uygulamasını seçin. 
+1. [Azure Portal](https://portal.azure.com), **uygulama hizmetleri**' ni arayıp seçin ve ardından dağıtmak istediğiniz Web uygulamasını seçin. 
    
 1. Uygulama sayfasında, sol taraftaki menüden **Dağıtım Merkezi** ' ni seçin.
    
@@ -107,7 +113,7 @@ Azure Pipelines yapılandırmak için (Önizleme):
    - GitHub için, aşağı açılan ve sürekli dağıtmak istediğiniz **kuruluş**, **Depo**ve **dalı** seçin.
      
      > [!NOTE]
-     > Herhangi bir depo görmüyorsanız, GitHub 'da Azure App Service yetkilendirmeniz gerekebilir. GitHub deponuza gidin ve **yetkili OAuth Apps** > **Ayarlar** > **uygulamalar** ' a gidin. **Azure App Service**' yi seçin ve ardından **ver**' i seçin.
+     > Herhangi bir depo görmüyorsanız, GitHub 'da Azure App Service yetkilendirmeniz gerekebilir. GitHub deponuza gidin ve **yetkili OAuth Apps** > **Ayarlar** > **uygulamalar** ' a gidin. **Azure App Service**' yi seçin ve ardından **ver**' i seçin. Kuruluş depolarında, izinleri vermek için kuruluşun sahibi olmanız gerekir.
      
    - Azure Repos için, sürekli olarak dağıtmak istediğiniz **Azure DevOps organizasyonu**, **Proje**, **Depo**ve **dalı** seçin ya da yeni bir Azure DevOps organizasyonu yapılandırın.
      
@@ -141,7 +147,7 @@ Sürekli dağıtımı devre dışı bırakmak için uygulamanızın **Dağıtım
 
 ## <a name="use-unsupported-repos"></a>Desteklenmeyen depoları kullan
 
-Windows uygulamaları için, [GitLab](https://gitlab.com/)gibi portalın doğrudan desteklemediği bir bulut git veya Mecurial deposundan sürekli dağıtımı el ile yapılandırabilirsiniz. Bunu, **Dağıtım Merkezi** sayfasındaki dış kutusunu seçerek yapabilirsiniz. Daha fazla bilgi için bkz. [el ile adımları kullanarak sürekli dağıtımı ayarlama](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
+Windows uygulamaları için, [Mercurial gibi,](https://gitlab.com/)portalın doğrudan desteklemediği bir bulut git veya deposundan sürekli dağıtımı el ile yapılandırabilirsiniz. Bunu, **Dağıtım Merkezi** sayfasındaki dış kutusunu seçerek yapabilirsiniz. Daha fazla bilgi için bkz. [el ile adımları kullanarak sürekli dağıtımı ayarlama](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

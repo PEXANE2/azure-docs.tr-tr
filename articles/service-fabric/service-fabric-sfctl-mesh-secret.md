@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl kafesi gizli dizisi | Microsoft Docs
-description: Service Fabric CLı sfctl kafesi gizli komutlarını açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl kafesi gizli anahtarı
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Service Fabric kafesi gizli kaynakları alma ve silme komutlarının bir listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 706f3250236bf7cab591530c1cefba8e503225fe
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f43f4fba0d7550ccb09e54f178a78d01f01cfc9d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901197"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645353"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
 Ağ gizli anahtarı kaynaklarını alın ve silin.

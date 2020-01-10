@@ -1,6 +1,6 @@
 ---
 title: "Hızlı başlangıç: Azure IoT 'ye telemetri gönderme (node. js)"
-description: Bu hızlı başlangıçta, bir IoT Hub 'ına sanal telemetri göndermek ve bulutta işlenmek üzere IoT Hub 'ından Telemetriyi okumak için iki örnek Node. js uygulaması çalıştırırsınız.
+description: Bu hızlı başlangıçta bir IoT hub’a sanal telemetri göndermek ve bulutta işlemek üzere IoT hub’dan gelen telemetriyi okumak için iki örnek Node.js uygulaması çalıştırırsınız.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -10,32 +10,32 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 92d6af41e55429f1b788de68940bc9b033c51ad6
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: e37ce216bf1928785ef9052115599bbd4ab2a603
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167025"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690858"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve arka uç uygulamasıyla okuma (node. js)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub, IoT cihazlarınızdan depolama ya da işleme için buluta kadar yüksek miktarda telemetri almanıza olanak sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, IoT Hub aracılığıyla sanal bir cihaz uygulamasından, işleme için bir arka uç uygulamasına telemetri gönderirsiniz.
+IoT Hub, IoT cihazlarınızdan buluta depolama veya işleme amacıyla yüksek hacimlerde telemetri almanızı sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, bir simülasyon cihazı uygulamasından bir arka uç uygulamasına işlenmek üzere IoT Hub aracılığıyla telemetri gönderirsiniz.
 
-Hızlı başlangıç, bir tane önceden yazılmış iki Node. js uygulaması, bir Telemetriyi ve bir hub 'dan Telemetriyi okuyacak bir tane kullanır. Bu iki uygulamayı çalıştırmadan önce bir IoT Hub oluşturun ve bir cihazı hub 'a kaydedersiniz.
+Hızlı başlangıçta, biri telemetriyi göndermek için, diğeri de hub’dan telemetriyi okumak için olmak üzere önceden yazılmış iki Node.js uygulaması kullanılır. Bu iki uygulamayı çalıştırmadan önce bir IoT hub oluşturur ve hub’a bir cihaz kaydedersiniz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama Node. js ' de yazılmıştır. Geliştirme makinenizde Node. js ile v10 arasındaki. x. x veya üzeri gerekir.
+Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama Node. js ' de yazılmıştır. Geliştirme makinenizde Node. js ile v10 arasındaki. x. x veya üzeri gerekir. Azure Cloud Shell kullanıyorsanız, Node. js ' nin yüklü sürümünü güncelleştirmeyin. Azure Cloud Shell zaten en son Node. js sürümüne sahip.
 
-[NodeJS.org](https://nodejs.org)adresinden birden çok platform için Node. js ' ye indirebilirsiniz.
+[nodejs.org](https://nodejs.org) adresinden birden fazla platform için Node.js’yi indirebilirsiniz.
 
-Aşağıdaki komutu kullanarak geçerli Node. js sürümünü geliştirme makinenizde doğrulayabilirsiniz:
+Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Node.js sürümünü doğrulayabilirsiniz:
 
 ```cmd/sh
 node --version
@@ -47,15 +47,15 @@ Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize ekle
 az extension add --name azure-cli-iot-ext
 ```
 
-@No__t-0 ' dan örnek Node. js projesini indirin ve ZIP arşivini ayıklayın.
+https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip adresinden örnek Node.js projesini indirin ve ZIP arşivini ayıklayın.
 
-## <a name="create-an-iot-hub"></a>IoT Hub 'ı oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-device"></a>Bir cihazı kaydetme
+## <a name="register-a-device"></a>Cihaz kaydetme
 
-Bir cihazın bağlanabilmesi için IoT Hub 'ınız ile kayıtlı olması gerekir. Bu hızlı başlangıçta, sanal cihazı kaydetmek için Azure Cloud Shell kullanırsınız.
+Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu hızlı başlangıçta Azure Cloud Shell kullanarak bir simülasyon cihazı kaydedeceksiniz.
 
 1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
@@ -75,13 +75,13 @@ Bir cihazın bağlanabilmesi için IoT Hub 'ınız ile kayıtlı olması gerekir
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
     ```
 
-    Cihaz bağlantı dizesini bir yere göz önünde bir şekilde görünür:
+    Şu ifadeye benzer şekilde görünen cihaz bağlantı dizesini not edin:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 
     Bu değeri daha sonra hızlı başlangıçta kullanacaksınız.
 
-1. Ayrıca, arka uç uygulamasının IoT Hub 'ınıza bağlanmasını ve iletileri almanızı sağlamak için bir _hizmet bağlantı dizesi_ gerekir. Aşağıdaki komut, IoT Hub 'ınız için hizmet bağlantı dizesini alır:
+1. Arka uç uygulamasının IoT hub’ınıza bağlanmasına ve iletileri almasına olanak sağlamak için bir _hizmet bağlantı dizesi_ de gerekir. Aşağıdaki komut, IoT hub'ınız için hizmeti bağlantı dizesini alır:
 
    **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
@@ -89,51 +89,51 @@ Bir cihazın bağlanabilmesi için IoT Hub 'ınız ile kayıtlı olması gerekir
     az iot hub show-connection-string --name {YourIoTHubName} --policy-name service --output table
     ```
 
-    Aşağıdaki gibi görünen hizmet bağlantı dizesini bir yere göz önünde yapın:
+    Şu ifadeye benzer şekilde görünen hizmet bağlantı dizesini not edin:
 
    `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
     Bu değeri daha sonra hızlı başlangıçta kullanacaksınız. Bu hizmet bağlantı dizesi, önceki adımda not ettiğiniz cihaz bağlantı dizesinden farklıdır.
 
-## <a name="send-simulated-telemetry"></a>Sanal telemetri gönder
+## <a name="send-simulated-telemetry"></a>Sanal telemetri gönderme
 
-Sanal cihaz uygulaması, IoT Hub 'ınızdaki cihaza özgü bir uç noktaya bağlanır ve sanal sıcaklık ve nem telemetrisini gönderir.
+Simülasyon cihazı uygulaması, IoT hub’ınız üzerindeki cihaza özgü bir uç noktaya bağlanır ve sanal sıcaklık ve nem telemetrisi gönderir.
 
-1. Yerel Terminal pencerenizi açın, örnek Node. js projesinin kök klasörüne gidin. Ardından **iot-hub\Quickstarts\simulated-Device** klasörüne gidin.
+1. Yerel terminal pencerenizi açın ve örnek Node.js projesinin kök klasörüne gidin. Daha sonra **iot-hub\Quickstarts\simulated-device** klasörüne gidin.
 
-1. **SimulatedDevice. js** dosyasını istediğiniz bir metin düzenleyicisinde açın.
+1. **SimulatedDevice.js** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    @No__t-0 değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Ardından **SimulatedDevice. js**' ye yaptığınız değişiklikleri kaydedin.
+    `connectionString` değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Ardından **SimulatedDevice. js**' ye yaptığınız değişiklikleri kaydedin.
 
-1. Yerel Terminal penceresinde, gerekli kitaplıkları yüklemek ve sanal cihaz uygulamasını çalıştırmak için aşağıdaki komutları çalıştırın:
+1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve simülasyon cihazı uygulamasını çalıştırın:
 
     ```cmd/sh
     npm install
     node SimulatedDevice.js
     ```
 
-    Aşağıdaki ekran görüntüsünde, sanal cihaz uygulamasının IoT Hub 'ınıza telemetri gönderdiği çıkış gösterilmektedir:
+    Aşağıdaki ekran görüntüsünde, simülasyon cihazı uygulaması, IoT hub’ınıza telemetri gönderdiğinde oluşan çıktı gösterilmektedir:
 
-    ![Sanal cihazı Çalıştır](media/quickstart-send-telemetry-node/SimulatedDevice.png)
+    ![Simülasyon cihazını çalıştırma](media/quickstart-send-telemetry-node/SimulatedDevice.png)
 
-## <a name="read-the-telemetry-from-your-hub"></a>Hub 'ınızdaki Telemetriyi okuyun
+## <a name="read-the-telemetry-from-your-hub"></a>Hub’ınızdan telemetri okuma
 
-Arka uç uygulaması, IoT Hub hizmet tarafı **olayları** uç noktasına bağlanır. Uygulama, sanal cihazınızdan gönderilen cihazdan buluta iletileri alır. Bir IoT Hub arka uç uygulaması, cihazdan buluta iletileri almak ve işlemek için genellikle bulutta çalışır.
+Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı **Olaylar** uç noktasına bağlanır. Uygulama, simülasyon cihazınızdan gönderilen cihazdan buluta iletileri alır. IoT Hub arka uç uygulaması genellikle cihazdan buluta iletileri alıp işlemek için bulutta çalışır.
 
-1. Başka bir yerel Terminal penceresi açın, örnek Node. js projesinin kök klasörüne gidin. Ardından **iot-hub\Quickstarts\read-D2C-messages** klasörüne gidin.
+1. Başka bir yerel terminal penceresi açın ve örnek Node.js projesinin kök klasörüne gidin. Daha sonra **iot-hub\Quickstarts\read-d2c-messages** klasörüne gidin.
 
-1. **Readdevicetocloudmessages. js** dosyasını istediğiniz bir metin düzenleyicisinde açın.
+1. **ReadDeviceToCloudMessages.js** dosyasını istediğiniz bir metin düzenleyicide açın.
 
-    @No__t-0 değişkeninin değerini, daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Sonra değişikliklerinizi **Readdevicetocloudmessages. js**' ye kaydedin.
+    `connectionString` değişkeninin değerini, daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Sonra değişikliklerinizi **Readdevicetocloudmessages. js**' ye kaydedin.
 
-1. Yerel Terminal penceresinde, gerekli kitaplıkları yüklemek ve arka uç uygulamasını çalıştırmak için aşağıdaki komutları çalıştırın:
+1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve arka uç uygulamasını çalıştırın:
 
     ```cmd/sh
     npm install
     node ReadDeviceToCloudMessages.js
     ```
 
-    Aşağıdaki ekran görüntüsünde, arka uç uygulamasının hub 'a sanal cihaz tarafından gönderilen Telemetriyi aldığından, çıkış gösterilmektedir:
+    Aşağıdaki ekran görüntüsünde, arka uç uygulaması, simülasyon cihazı tarafından hub’a gönderilen telemetriyi aldığında oluşan çıktı gösterilmektedir:
 
     ![Arka uç uygulamasını çalıştırma](media/quickstart-send-telemetry-node/ReadDeviceToCloud.png)
 
@@ -145,7 +145,7 @@ Arka uç uygulaması, IoT Hub hizmet tarafı **olayları** uç noktasına bağla
 
 Bu hızlı başlangıçta, bir IoT Hub 'ı ayarlarsınız, bir cihaz kaydettiniz, bir Node. js uygulaması kullanarak hub 'a sanal telemetri gönderdiniz ve basit bir arka uç uygulaması kullanarak hub 'ın Telemetriyi okuyaöğreneceksiniz.
 
-Bir arka uç uygulamasından sanal cihazınızı nasıl denetleyeceğinizi öğrenmek için sonraki hızlı başlangıca geçin.
+Bir arka uç uygulamasından simülasyon cihazınızı denetlemeyi öğrenmek için sonraki hızlı başlangıçla devam edin.
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: IoT Hub 'ına bağlı bir cihazı denetleme](quickstart-control-device-node.md)
+> [Hızlı Başlangıç: IoT hub’a bağlı bir cihazı denetleme](quickstart-control-device-node.md)

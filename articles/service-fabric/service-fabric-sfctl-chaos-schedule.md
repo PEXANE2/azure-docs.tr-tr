@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl Chaos zamanlaması | Microsoft Docs
-description: CLı sfctl Chaos zamanlama komutlarını Service Fabric açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl Chaos zamanlaması
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Chaos zamanlaması için komutların bir listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 443a8186ac6e57360105e59e30f84db997cd2251
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897549"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639182"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Chaos zamanlamasını alın ve ayarlayın.

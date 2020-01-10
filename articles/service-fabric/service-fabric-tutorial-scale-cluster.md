@@ -1,26 +1,15 @@
 ---
-title: Azure'daki bir Service Fabric kümesini ölçeklendirme | Microsoft Docs
-description: Bu öğreticide, Azure 'da bir Service Fabric kümesini ölçeklendirmeyi öğreneceksiniz.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Azure 'da bir Service Fabric kümesini ölçeklendirme
+description: Bu öğreticide, Azure 'da ve ' de bir Service Fabric kümesinin ölçeğini ve kalan kaynakları temizleme hakkında bilgi edineceksiniz.
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 6270237e2319c42ed30fc347b7ab9c1c2a008314
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9f3049f5a46918d9e70e27fe862372de2cf577ae
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177737"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639063"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure'daki bir Service Fabric kümesini ölçeklendirme
 
@@ -44,7 +33,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -66,8 +55,8 @@ Bir Azure kümesini ölçeklendirirken aşağıdaki yönergeleri göz önünde b
 
 * Tek bir Service Fabric düğüm türü/ölçek kümesi 100 taneden fazla düğüm/VM içeremez.  Bir kümeyi 100 düğümden daha fazla ölçeklendirmek için ek düğüm türleri ekleyin.
 * Üretim iş yüklerini çalıştıran birincil düğüm türleri için bir [dayanıklılık düzeyi][durability] altın veya gümüş olmalıdır ve her zaman beş veya daha fazla düğüm olmalıdır.
-* Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır.
-* Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
+* durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır.
+* durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
 * Altın veya gümüş herhangi bir düğüm [türü, her][durability] zaman beş veya daha fazla düğüme sahip olmalıdır.
 * Ölçeklendirme (düğümleri öğesinden kaldırma) bir birincil düğüm türü ise, [güvenilirlik düzeyinin][reliability] gerektirdiği örnek sayısını asla azaltmalısınız.
 
@@ -91,9 +80,9 @@ Güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-c
 
 ### <a name="update-the-template"></a>Şablonu güncelleştirme
 
-En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  *Parameters. JSON* dosyasını açın.  Bu öğreticide [örnek şablonu][template] kullanarak kümeyi dağıttıysanız, kümede üç düğüm türü vardır ve her düğüm türü için düğüm sayısını ayarlanmış üç parametre vardır: *nt0InstanceCount*, *nt1InstanceCount*ve  *nt2InstanceCount*.  Örneğin, *nt1InstanceCount* parametresi, ikinci düğüm türü için örnek sayısını ayarlar ve ilişkili sanal makine ölçek kümesindeki VM sayısını ayarlar.
+En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  *Parameters. JSON* dosyasını açın.  Bu öğreticide [örnek şablon][template] kullanarak kümeyi dağıttıysanız, kümede üç düğüm türü vardır ve her düğüm türü için düğüm sayısını ayarlanmış üç parametre vardır: *nt0InstanceCount*, *nt1InstanceCount*ve *nt2InstanceCount*.  Örneğin, *nt1InstanceCount* parametresi, ikinci düğüm türü için örnek sayısını ayarlar ve ilişkili sanal makine ölçek kümesindeki VM sayısını ayarlar.
 
-Bu nedenle, *nt1InstanceCount* değerini güncelleştirerek ikinci düğüm türündeki düğümlerin sayısını değiştirirsiniz.  Bir düğüm türünü 100 ' dan fazla düğüme ölçeklendiremezsiniz.  Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır. Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
+Bu nedenle, *nt1InstanceCount* değerini güncelleştirerek ikinci düğüm türündeki düğümlerin sayısını değiştirirsiniz.  Bir düğüm türünü 100 ' dan fazla düğüme ölçeklendiremezsiniz.  durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır. durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
 
 İçinde ölçeklendirme yapıyorsanız, düğüm kaldırma [dayanıklılığı düzeyi][durability] olan düğüm türü, [Bu düğümlerin durumunu el ile kaldırmanız](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)gerekir.  Gümüş ve altın dayanıklılık katmanı için, bu adımlar platform tarafından otomatik olarak yapılır.
 
@@ -387,6 +376,20 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
     },
     "properties": {
         "securityRules": [
+            {
+                "name": "allowSvcFabSMB",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "445",
+                    "direction": "Inbound",
+                    "priority": 3950,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "sourcePortRange": "*",
+                    "description": "allow SMB traffic within the net, used by fabric to move packages around"
+                }
+            },
             {
                 "name": "allowSvcFabCluser",
                 "properties": {
@@ -842,7 +845,7 @@ Service Fabric kümesi oluşturduktan sonra, küme düğümü türünü dikey ol
 
 En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  *Parameters. JSON* dosyasını açın.  Kümeyi Bu öğreticide [örnek şablonu][template] kullanarak dağıttıysanız, kümede üç düğüm türü vardır.  
 
-İkinci düğüm türündeki VM 'lerin boyutu *vmNodeType1Size* parametresinde ayarlanır.  *VmNodeType1Size* parametre değerini, her bir sanal makine örneğinin kaynaklarını iki katına çıkarır. [Standard_D2_V2 olarak değiştirin](/azure/virtual-machines/windows/sizes-general#dv2-series).
+İkinci düğüm türündeki VM 'lerin boyutu *vmNodeType1Size* parametresinde ayarlanır.  Standard_D2_V2 *vmNodeType1Size* parametre değerini, her bir sanal makine örneğinin kaynaklarını çift eden [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series)olarak değiştirin.
 
 Her üç düğüm türünün VM SKU 'SU *Vmımagesku* parametresinde ayarlanır.  Yine, bir düğüm türünün VM SKU 'sunu değiştirmek approached olmalıdır ve birincil düğüm türü için önerilmez.
 

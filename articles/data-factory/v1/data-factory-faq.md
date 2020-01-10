@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 7c0b5cbfe77a39cbc8ac660178a1c573d1fe8f7d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 1b042c0279e458cf83bd5c81147f4b1f25d7687d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139828"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645149"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory-sık sorulan sorular
 > [!NOTE]
@@ -44,7 +44,7 @@ Azure Data Factory ilişkin fiyatlandırma ayrıntıları için bkz. [Data Facto
 Data Factory **ABD Batı** ve **Kuzey Avrupa**kullanılabilir. Veri fabrikaları tarafından kullanılan işlem ve depolama hizmetleri diğer bölgelerde olabilir. Bkz. [Desteklenen bölgeler](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Veri fabrikaları/işlem hatları/etkinlik/veri kümeleri için sınırlamalar nelerdir?
-[Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamalar](../../azure-subscription-service-limits.md#data-factory-limits) makalesinin **Azure Data Factory sınırları** bölümüne bakın.
+[Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) makalesinin **Azure Data Factory sınırları** bölümüne bakın.
 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Azure Data Factory hizmeti ile yazma/geliştirici deneyimi nedir?
 Aşağıdaki araçlardan/SDK 'Lardan birini kullanarak veri fabrikaları yazabilir/oluşturabilirsiniz:

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: ca78a9d7eeeeccb71fea75f6ab429e76f2344bbe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 37af0ee99e48bfeddf4be81241b75318d1afda40
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895463"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707893"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Hızlı başlangıç: kaynak kodundan Spring Cloud uygulamanızı başlatın
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğrenecek
 > * Her mikro hizmeti dağıtma
 > * Uygulamanız için genel uç nokta atama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 >[!Note]
 > Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizleme sırasında destek hakkında daha fazla bilgi için lütfen [SSS](https://azure.microsoft.com/support/faq/) veya dosya dosyası [destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) inceleyerek daha fazla bilgi edinebilirsiniz.
@@ -76,6 +76,9 @@ Aşağıdaki komutları kullanarak varsayılan kaynak grubu adınızı ve küme 
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=provision)
 
 ## <a name="create-the-spring-cloud-application"></a>Yay bulutu uygulamasını oluşturma
 
@@ -137,12 +140,18 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > [!NOTE]
 > Kpack günlükleri yalnızca, söz konusu dağıtım kpack kullanılarak kaynaktan oluşturulduysa en son dağıtımı gösterir.
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=deploy)
+
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Ağ geçidine genel uç nokta atama
 
 1. **Uygulama panosu** sayfasını açın.
 2. **Uygulama ayrıntıları** sayfasını göstermek için `gateway` uygulamayı seçin.
 3. Ağ geçidine bir genel uç nokta atamak için **etki alanı ata** ' yı seçin. Bu birkaç dakika sürebilir. 
 4. Çalışan uygulamanızı görüntülemek için tarayıcınıza atanan ortak IP 'yi girin.
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

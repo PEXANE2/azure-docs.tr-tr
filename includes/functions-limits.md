@@ -4,32 +4,32 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: eb61bf5734d0aea1534735b23a2b95b52000f5ad
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8946da455b4a395814d4cb5a833932c2e3d56f0a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322896"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75658534"
 ---
 | Kaynak | [Tüketim planı](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium plan](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service planı](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | Ölçeği genişletme | Olay odaklı | Olay odaklı | [El ile/otomatik ölçeklendirme](../articles/app-service/manage-scale-up.md) | 
 | En fazla örnek sayısı | 200 | 100 | 10-20 |
 |Varsayılan [zaman aşımı süresi](../articles/azure-functions/functions-scale.md#timeout) (dk) |5 | 30 |30<sup>2</sup> |
-|Maksimum [zaman aşımı süresi](../articles/azure-functions/functions-scale.md#timeout) (dk) |10 | 60 | sınırsız<sup>3</sup> |
+|En fazla [zaman aşımı süresi](../articles/azure-functions/functions-scale.md#timeout) (dk) |10 | 60 | sınırsız<sup>3</sup> |
 | En fazla giden bağlantı (örnek başına) | 600 etkin (1200 toplam) | unbounded | unbounded |
 | En fazla istek boyutu (MB)<sup>4</sup> | 100 | 100 | 100 |
 | En fazla sorgu dizesi uzunluğu<sup>4</sup> | 4096 | 4096 | 4096 |
 | En fazla istek URL uzunluğu<sup>4</sup> | 8192 | 8192 | 8192 |
 | Örnek başına [acu](../articles/virtual-machines/windows/acu.md) | 100 | 210-840 | 100-840 |
-| Maksimum bellek (örnek başına GB) | 1.5 | 3,5-14 | 1,75-14 |
+| Maksimum bellek (örnek başına GB) | 1,5 | 3,5-14 | 1,75-14 |
 | Plan başına işlev uygulamaları |100 |100 |sınırsız<sup>5</sup> |
 | [App Service planları](../articles/app-service/overview-hosting-plans.md) | [bölge](https://azure.microsoft.com/global-infrastructure/regions/) başına 100 |kaynak grubu başına 100 |kaynak grubu başına 100 |
 | Depolama<sup>6</sup> |1 GB |250 GB |50-1000 GB |
 | Uygulama başına özel etki alanları</a> |500<sup>7</sup> |500 |500 |
 | Özel etki alanı [SSL desteği](../articles/app-service/configure-ssl-bindings.md) |sınırsız SNI SSL bağlantısı dahildir | sınırsız SNI SSL ve 1 IP SSL bağlantı dahildir |sınırsız SNI SSL ve 1 IP SSL bağlantı dahildir | 
 
-<sup>1</sup> çeşitli App Service planı seçeneklerine yönelik belirli sınırlar için, [App Service plan sınırlarına](../articles/azure-subscription-service-limits.md#app-service-limits)bakın.  
+<sup>1</sup> çeşitli App Service planı seçeneklerine yönelik belirli sınırlar için, [App Service plan sınırlarına](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)bakın.  
 <sup>2</sup> varsayılan olarak, bir App Service planındaki işlev 1. x çalışma zamanının zaman aşımı değeri sınırsız olur.  
 <sup>3</sup> App Service planının [her zaman açık](../articles/azure-functions/functions-scale.md#always-on)olarak ayarlanmasını gerektirir. Standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/)ödeyin.  
 <sup>4</sup> bu sınırlar [konakta ayarlanır](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  

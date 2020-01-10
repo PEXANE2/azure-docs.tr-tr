@@ -8,47 +8,49 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b84b0a8e09bf739ce62dee167ff751b491765c66
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188907"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75692581"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Olay İşleyicisi Ana Bilgisayarı için bir depolama hesabı oluşturma
 Olay İşleyicisi Ana Bilgisayarı, olay hub’larına ait kalıcı denetim noktalarını ve paralel alımları yöneterek bu olay hub’larından olay almayı basitleştiren akıllı bir aracıdır. Olay İşleyicisi Ana Bilgisayarı, denetim noktası için bir depolama hesabına ihtiyaç duyar. Aşağıdaki örnekte depolama hesabı oluşturma ve erişim için anahtarını alma adımları gösterilmiştir:
 
-1. Azure portalda ekranın sol üst köşesindeki **Kaynak oluştur**'u seçin.
+1. Azure portal menüsünde **kaynak oluştur**' u seçin.
 
-2. **Depolama**’yı ve sonra **Depolama hesabı - blob, dosya, tablo, kuyruk** öğesini seçin.
+    ![Kaynak menü öğesi oluşturma, Microsoft Azure portal](./media/event-hubs-create-storage/create-resource.png)
+
+2. **Depolama** > **Depolama hesabı**'nı seçin.
    
-    ![Depolama Hesabı seçme](./media/event-hubs-create-storage/create-storage1.png)
+    ![Depolama hesabı seçin Microsoft Azure portal](./media/event-hubs-create-storage/select-storage-account.png)
 
 3. **Depolama hesabı oluştur** sayfasında aşağıdaki adımları gerçekleştirin: 
 
-   1. Depolama hesabı için bir ad girin. 
-   2. Olay hub'ını içeren Azure aboneliğini seçin.
-   3. Olay hub'ının bulunduğu kaynak grubunu seçin.
-   4. Kaynağın oluşturulacağı konumu seçin. 
-   5. Ardından **Gözden geçir + oluştur**’a tıklayın.
+   1. **Depolama hesabı adını**girin.
+   2. Olay Hub 'ını içeren bir Azure **aboneliği** seçin.
+   3. Olay Hub 'ına sahip **kaynak grubunu** seçin veya oluşturun.
+   4. Kaynağın oluşturulacağı bir **konum** seçin. 
+   5. **İncele ve oluştur**’u seçin.
    
-      ![Depolama hesabı oluştur - sayfa](./media/event-hubs-create-storage/create-storage2.png)
+        ![Gözden geçir + oluştur, depolama hesabı oluştur, Microsoft Azure portal](./media/event-hubs-create-storage/review-create.png)
 
 4. **Gözden geçir + oluştur** sayfasında değerleri gözden geçirin ve **Oluştur**'u seçin. 
 
-    ![Depolama hesabı ayarlarını gözden geçirme ve oluşturma](./media/event-hubs-create-storage/review-create-storage-account.png)
-5. Gördükten sonra **dağıtımlar başarılı** ileti, select **kaynağa Git** sayfanın üstünde. Depolama hesabı sayfasında kaynak listesinden depolama hesabınızı seçerek de başlatabilirsiniz.  
+    ![Depolama hesabı ayarlarını gözden geçirin ve Microsoft Azure portal oluşturun](./media/event-hubs-create-storage/create-storage-account.png)
+5. Bildirimlerinde **dağıtımlar başarılı** iletisini gördüğünüzde, depolama hesabı sayfasını açmak Için **Kaynağa Git** ' i seçin. Alternatif olarak, **dağıtım ayrıntılarını** genişletebilir ve ardından kaynak listesinden yeni kaynağı seçebilirsiniz.  
 
-    ![Dağıtımda depolama hesabını seçme](./media/event-hubs-create-storage/select-storage-deployment.png) 
-7. **Temel Bileşenler** penceresinde **Bloblar**'u seçin. 
+    ![Kaynak, depolama hesabı dağıtımı ' na gidin Microsoft Azure portal](./media/event-hubs-create-storage/go-to-resource.png) 
+6. **Kapsayıcıları**seçin.
 
-    ![BLOB hizmeti seçin](./media/event-hubs-create-storage/select-blobs-service.png)
-1. Seçin **+ kapsayıcı** girin en üstünde bir **adı** kapsayıcı ve seçin için **Tamam**. 
+    ![Bloblar kapsayıcı hizmetini, depolama hesaplarını Microsoft Azure portal seçin](./media/event-hubs-create-storage/select-blob-container-service.png)
+7. Üstteki **+ kapsayıcı** ' yı seçin, kapsayıcı Için bir **ad** girin ve **Tamam**' ı seçin. 
 
-    ![Blob kapsayıcısı oluşturma](./media/event-hubs-create-storage/create-blob-container.png)
-1. Seçin **erişim anahtarları** sol taraftaki menüde ve değerini kopyalayın **key1**. 
+    ![Yeni bir blob kapsayıcısı, depolama hesapları, Microsoft Azure portal oluşturun](./media/event-hubs-create-storage/create-new-blob-container.png)
+8. **Depolama hesabı** sayfası menüsünden **erişim tuşları** ' nı seçin ve **KEY1**değerini kopyalayın.
 
-    Aşağıdaki değerleri Not Defteri veya başka bir geçici konuma kaydedin.
+    Aşağıdaki değerleri not defteri 'ne veya başka bir geçici konuma kaydedin.
     - Depolama hesabının adı
-    - Depolama hesabının erişim anahtarı
+    - Depolama hesabı için erişim anahtarı
     - Kapsayıcının adı

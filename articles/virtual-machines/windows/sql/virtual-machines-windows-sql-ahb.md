@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0aa2cbad75319de93c34128a09f94971e5c70216
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 00262b48b8fa2fd1292554155e8ec8e933d886e6
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790621"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690903"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure 'da SQL Server bir sanal makine için lisans modelini değiştirme
 Bu makalede, Azure 'daki bir SQL Server sanal makinesi (VM) için lisans modelinin, **Microsoft. SqlVirtualMachine**ADLı yenı SQL VM kaynak sağlayıcısı kullanılarak nasıl değiştirileceği açıklanır.
@@ -41,7 +41,7 @@ Bir Azure sanal makinesinde SQL Server için Azure Hibrit Avantajı kullanımın
 
 SQL Server lisans türü, VM sağlandığında ayarlanır. Daha sonra istediğiniz zaman değiştirebilirsiniz. Lisans modelleri arasında geçiş kesinti olmaz, VM 'yi veya SQL Server hizmetini yeniden başlatmaz, hiçbir ek maliyet eklemez ve hemen geçerli olur. Aslında Azure Hibrit Avantajı etkinleştirilmesi maliyeti *azaltır* .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SQL Server VM lisanslama modelinin değiştirilmesi aşağıdaki gereksinimlere sahiptir: 
 
@@ -129,7 +129,7 @@ Lisans modelinin değiştirilmesi:
    - Yalnızca [yazılım güvencesi](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview)olan müşteriler tarafından kullanılabilir.
    - Yalnızca SQL Server Standard ve Enterprise sürümleri için desteklenir. Express, Web ve Developer için lisans değişiklikleri desteklenmez. 
    - Yalnızca Azure Resource Manager modeli aracılığıyla dağıtılan sanal makineler için desteklenir. Klasik model aracılığıyla dağıtılan sanal makineler desteklenmez. 
-   - Yalnızca genel bulut yüklemeleri için kullanılabilir. 
+   - Yalnızca genel veya Azure Kamu bulutları için kullanılabilir. 
    - Yalnızca tek bir ağ arabirimine (NIC) sahip sanal makinelerde desteklenir. 
 
 
@@ -144,7 +144,7 @@ Bu hata, SQL VM kaynak sağlayıcısına kayıtlı olmayan bir SQL Server VM lis
 Aboneliğinizi kaynak sağlayıcısına kaydetmeniz ve ardından [SQL Server VM kaynak sağlayıcısına kaydetmeniz](virtual-machines-windows-sql-register-with-resource-provider.md)gerekir. 
 
 
-## <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>'\<VMName\>' adlı sanal makinede birden fazla NIC ilişkilendirilmiş
+### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>'\<VMName\>' adlı sanal makinede birden fazla NIC ilişkilendirilmiş
 
 Bu hata, birden fazla NIC içeren sanal makinelerde oluşur. Lisanslama modelini değiştirmeden önce NIC 'lerden birini kaldırın. Lisans modelini değiştirdikten sonra NIC 'i sanal makineye geri ekleyebilseniz de, otomatik yedekleme ve düzeltme eki uygulama gibi Azure portal işlemler artık desteklenmeyecektir. 
 

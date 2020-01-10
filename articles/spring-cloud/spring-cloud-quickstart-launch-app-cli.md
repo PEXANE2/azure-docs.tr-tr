@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: c00749191b83423e771535525afcbdd7892da88e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0d3bc43d5e639c0de9059da300d91494948f1770
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895432"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707229"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir Java Spring uygulaması başlatma
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğrenecek
 > * Her mikro hizmeti dağıtma
 > * Uygulamanız için genel uç nokta atama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 >[!Note]
 > Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizleme sırasında destek hakkında daha fazla bilgi için lütfen [SSS](https://azure.microsoft.com/support/faq/) veya dosya dosyası [destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) inceleyerek daha fazla bilgi edinebilirsiniz.
@@ -69,7 +69,7 @@ az extension add --name spring-cloud
     ```azurecli
         az group create --location eastus --name <resource group name>
     ```
-    [Azure Kaynak Grupları](../azure-resource-manager/resource-group-overview.md) hakkında daha fazla bilgi edinin.
+    [Azure Kaynak Grupları](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin.
 
 4. Bir Azure CLı penceresi açın ve Azure Spring Cloud 'ın bir örneğini sağlamak için aşağıdaki komutları çalıştırın.
 
@@ -86,6 +86,9 @@ az extension add --name spring-cloud
         az configure --defaults spring-cloud=<service instance name>
     ```
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=provision)
+
 ## <a name="setup-your-configuration-server"></a>Yapılandırma sunucunuzu kurun
 
 Yapılandırma-sunucunuzu, projemizin git deposunun konumuyla güncelleştirin:
@@ -93,6 +96,9 @@ Yapılandırma-sunucunuzu, projemizin git deposunun konumuyla güncelleştirin:
 ```git
 az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/Azure-Samples/piggymetrics --label config
 ```
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=config-server)
 
 ## <a name="build-the-microservices-applications-locally"></a>Mikro hizmet uygulamalarını yerel olarak oluşturma
 
@@ -132,6 +138,9 @@ az spring-cloud app deploy -n account-service --jar-path ./account-service/targe
 az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
 ```
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=deploy)
+
 ## <a name="assign-public-endpoint-to-gateway"></a>Ağ geçidine genel uç nokta ata
 
 Bir Web tarayıcısı aracılığıyla uygulamaya erişmek için bir yönteme ihtiyacımız var. Ağ Geçidi uygulamamız, aşağıdaki komut kullanılarak atanabilecek, herkese açık bir uç nokta gerektirir:
@@ -156,6 +165,9 @@ URL 'YI bulmak için Azure portal de gidebilirsiniz.
 
     ![Çalıştırılan POF ölçümleri ekran görüntüsü](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
 1. **Ağ geçidine genel bakış** sayfasında URL 'yi ![, çalışan pıof ölçümlerinin ekran görüntüsünü bulun](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 041efc62b32e8d8c0c477d9d5715882fd7899cd9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8ed622ff928fa612e6d33ba0647ce258bf4c1c21
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701937"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665216"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Öğretici: Windows cihazları C# için IoT Edge modülü geliştirme
 
@@ -43,7 +43,7 @@ Windows cihazlarına modül geliştirme ve dağıtma C# seçeneklerinizi anlamak
 | **Windows AMD64 geliştirme** | ![VS Code C# 'de WinAMD64 için modüller geliştirin](./media/tutorial-c-module/green-check.png) | ![Visual C# Studio 'da WinAMD64 için modüller geliştirme](./media/tutorial-c-module/green-check.png) |
 | **Windows AMD64 hata ayıklama** |   | ![Visual C# Studio 'da WinAMD64 için hata ayıklama modülleri](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce, [bir Windows cihazı için IoT Edge modülü geliştirmede](tutorial-develop-for-windows.md)geliştirme ortamınızı ayarlamak için önceki öğreticiden çıkmalısınız. Bu Öğreticiyi tamamladıktan sonra, zaten aşağıdaki önkoşullara sahip olmanız gerekir: 
 
@@ -78,7 +78,7 @@ Azure IoT Edge araçları, Visual Studio 'da desteklenen tüm IoT Edge modül di
 
    | Alan | Değer |
    | ----- | ----- |
-   | Şablon seçin | **C# Modül**seçin. | 
+   | Bir şablon seçin | **C# Modül**seçin. | 
    | Modül proje adı | Modülünüze **CSharpModule** adını verin. | 
    | Docker görüntü deposu | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz modül proje adı değerinden önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br> Son görüntü deposu, \<kayıt defteri adı\>. azurecr.io/csharpmodule gibi görünüyor. |
 
@@ -92,29 +92,30 @@ Dağıtım bildirimi, IoT Edge çalışma zamanına sahip kapsayıcı kayıt def
 
 1. Visual Studio Çözüm Gezgini ' nde **Deployment. Template. JSON** dosyasını açın. 
 
-2. $EdgeAgent istenen özelliklerde **Registrycredentials** özelliğini bulun. 
-
-3. Bu biçimi izleyerek özelliği kimlik bilgilerinizle güncelleştirin: 
+2. $EdgeAgent istenen özelliklerde **Registrycredentials** özelliğini bulun. Kayıt defteri adresiniz, projeyi oluştururken verdiğiniz bilgilerden bir daha olmalıdır ve sonra Kullanıcı adı ve parola alanları değişken adlarını içermelidir. Örneğin: 
 
    ```json
    "registryCredentials": {
      "<registry name>": {
-       "username": "<username>",
-       "password": "<password>",
+       "username": "$CONTAINER_REGISTRY_USERNAME_<registry name>",
+       "password": "$CONTAINER_REGISTRY_PASSWORD_<registry name>",
        "address": "<registry name>.azurecr.io"
      }
    }
-   ```
 
-4. Deployment. Template. json dosyasını kaydedin. 
+3. Open the **.env** file in your module solution. (It's hidden by default in the Solution Explorer, so you might need to select the **Show All Files** button to display it.) The .env file should contain the same username and password variables that you saw in the deployment.template.json file. 
 
-### <a name="update-the-module-with-custom-code"></a>Modülü özel kodla güncelleştirme
+4. Add the **Username** and **Password** values from your Azure container registry. 
 
-Varsayılan modül kodu bir giriş sırasındaki iletileri alır ve bunları bir çıkış kuyruğu aracılığıyla geçirir. Modülün iletileri IoT Hub iletmek için önce, daha fazla kod ekleyelim. Her iletideki sıcaklık verilerini analiz etmek için modülünü güncelleştirin ve yalnızca sıcaklığın belirli bir eşiği aşması durumunda iletiyi IoT Hub gönderir. 
+5. Save your changes to the .env file.
 
-1. Visual Studio 'da, **Program.cs** > **csharpmodule** 'ü açın.
+### Update the module with custom code
 
-2. **CSharpModule** ad alanının en üst kısmına daha sonra kullanılan türler için üç **using** deyimi yazın:
+The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+
+1. In Visual Studio, open **CSharpModule** > **Program.cs**.
+
+2. At the top of the **CSharpModule** namespace, add three **using** statements for types that are used later:
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>
@@ -282,7 +283,7 @@ Varsayılan modül kodu bir giriş sırasındaki iletileri alır ve bunları bir
        }
     ```
 
-    ![Dağıtım şablonuna modül ikizi Ekle](./media/tutorial-csharp-module-windows/module-twin.png)
+    ![Modül ikizi için dağıtım şablonu Ekle](./media/tutorial-csharp-module-windows/module-twin.png)
 
 11. Deployment. Template. json dosyasını kaydedin.
 
@@ -365,7 +366,7 @@ Bu öğreticide IoT Edge cihazınız tarafından üretilen ham verileri filtrele
 Azure IoT Edge bir sonraki öğreticilere devam ederek, verileri kenarda işlemek ve analiz etmek için Azure Cloud Services 'ı dağıtmanıza nasıl yardımcı olabileceğini öğrenebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [İşlevler](tutorial-deploy-function.md)
+> [Functions](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
 > [Machine Learning](tutorial-deploy-machine-learning.md)
-> [özel görüntü işleme hizmeti](tutorial-deploy-custom-vision.md)
+> [Custom Vision Service](tutorial-deploy-custom-vision.md)

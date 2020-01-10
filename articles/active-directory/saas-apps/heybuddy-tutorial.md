@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Heyarkadaş ile tümleştirme Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: Heyarkadaş ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Hei arkadaşları arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -13,99 +13,79 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 10/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7edfc0a90a8477bdee50b871e00cd988e511b401
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 47fde1a72d651dd79de9d5d32fb4874c62ae1e39
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159068"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638655"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>Öğretici: Heyarkadaş ile tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-heybuddy"></a>Öğretici: Heyarkadaş ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Hei arkadaş Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz.
-Heyarkadaş 'u Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, Hei arkadaş Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz. Heyarkadaş 'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, Heyıarkadaş 'a erişimi olan denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açmasını (çoklu oturum açma) sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* Azure AD 'de Hei arkadaş erişimine sahip olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açmalarına olanak sağlar.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Heyarkadaş ile yapılandırmak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Hei arkadaşları çoklu oturum açma etkin aboneliği
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Heyıarkadaş çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Heyıarkadaş **SP** tarafından başlatılan SSO 'yu destekler
+
+
 * Hei arkadaş **, tam zamanında** Kullanıcı sağlamayı destekliyor
+
 
 ## <a name="adding-heybuddy-from-the-gallery"></a>Galeriden Heyıarkadaş ekleme
 
 Hei arkadaş tümleştirmesini Azure AD 'ye göre yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize Heyıarkadaş eklemeniz gerekir.
 
-**Galeriden Heyarkadaş eklemek için aşağıdaki adımları uygulayın:**
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **heyıarkadaş** yazın.
+1. Sonuçlar panelinden **Heyıarkadaş** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-heybuddy"></a>Hei arkadaşları için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+**B. Simon**adlı bir test kullanıcısını kullanarak Azure AD SSO 'Yu Heyıarkadaş ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Hei arkadaşları arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+Azure AD SSO 'yu, Heyarkadaş ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[Heyıarkadaş SSO 'Yu yapılandırma](#configure-heybuddy-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. Kullanıcı Azure AD gösterimine bağlı olan Heyıarkadaş 'da B. Simon 'a karşılık gelen, **[Hei arkadaşları test kullanıcısı oluşturun](#create-heybuddy-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-4. Arama kutusuna **heyıarkadaş**yazın, sonuç panelinden **heyıarkadaş** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-     ![Sonuç listesinde Heyıarkadaş](common/search-new-app.png)
+1. [Azure Portal](https://portal.azure.com/), **Hei arkadaş** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Heyıarkadaş ile yapılandırıp test edersiniz.
-Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
-
-Azure AD çoklu oturum açmayı, Heyarkadaş ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
-
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Hei arkadaş çoklu oturum açma](#configure-heybuddy-single-sign-on)** özelliğini, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için yapılandırın.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcı Azure AD gösterimine bağlı olan Hei arkadaşları 'nda Britta Simon 'a sahip olmak için **[Hei arkadaş test kullanıcısı oluşturun](#create-heybuddy-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı Heyarkadaş ile yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **Hei arkadaş** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
-
-    ![Heyıarkadaş etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://api.heybuddy.com/auth/<ENTITY ID>`
 
@@ -114,96 +94,57 @@ Azure AD çoklu oturum açmayı Heyarkadaş ile yapılandırmak için aşağıda
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcı (varlık KIMLIĞI) ile güncelleştirin. Oturum açma URL 'sindeki `Entity ID` her kuruluş için otomatik olarak oluşturulur. Bu değerleri almak için [Heyıarkadaş istemci destek ekibine](mailto:support@heybuddy.com) başvurun.
 
-5. Hekiarkadaş uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+1. Heyıarkadaş uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/edit-attribute.png)
 
-    > [!NOTE]
-    > Lütfen uygulamanın rollerini yapılandırma ve ayarlama hakkında bu [bağlantıya](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) başvurun.
+1. Ezofficeınventory uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-6. Yukarıdaki ' a ek olarak, Hei arkadaş uygulaması SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
-
-    | Adı |  Kaynak özniteliği|
+    | Ad |  Kaynak özniteliği|
     | -------- | --------- |
     | Roller  | Kullanıcı. atandroles |
     | | |
+    
+    > [!NOTE]
+    > Lütfen uygulamanın rollerini yapılandırma ve ayarlama hakkında bu [bağlantıya](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) başvurun.
 
-    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
-
-    c. **Ad alanını** boş bırakın.
-
-    d. **Öznitelik**olarak kaynak seçin.
-
-    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
-
-    f. **Tamam 'a** tıklayın
-
-    g. **Kaydet** düğmesine tıklayın.
-
-7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-heybuddy-single-sign-on"></a>Heyıarkadaş çoklu oturum açmayı yapılandırma
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-**Hei arkadaşları** tarafında çoklu oturum açma 'yı yapılandırmak Için, **uygulama Federasyon meta veri URL 'Sini** [heyıarkadaş destek ekibine](mailto:support@heybuddy.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**'a tıklayın.
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+Bu bölümde, Hei arkadaş erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Heyıarkadaş**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
-    Örneğin, BrittaSimon@contoso.com
+## <a name="configure-heybuddy-sso"></a>Heyıarkadaş SSO 'yu yapılandırma
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
-
-Bu bölümde, hem arkadaş erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
-
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Hei arkadaşları**' nı seçin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde, **Heyıarkadaş**' ı seçin.
-
-    ![Uygulamalar listesindeki Heyıarkadaş bağlantısı](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+**Hei arkadaşları** tarafında çoklu oturum açma 'yı yapılandırmak Için, **uygulama Federasyon meta veri URL 'Sini** [heyıarkadaş destek ekibine](mailto:support@heybuddy.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 
 ### <a name="create-heybuddy-test-user"></a>Heyıarkadaş test kullanıcısı oluşturma
 
@@ -212,16 +153,19 @@ Bu bölümde, Britta Simon adlı bir Kullanıcı Heyıarkadaş 'da oluşturulmu�
 > [!Note]
 > El ile bir kullanıcı oluşturmanız gerekiyorsa, [Heyıarkadaş destek ekibine](mailto:support@heybuddy.com)başvurun.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
 Erişim panelinde Heyıarkadaş kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Hei arkadaşları için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="additional-resources"></a>Ek kaynaklar
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile bir Hei arkadaşları deneyin](https://aad.portal.azure.com/)
+

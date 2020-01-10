@@ -2,18 +2,18 @@
 title: HDInsight 'ta WebHCat hatalarını anlama ve çözme-Azure
 description: HDInsight 'ta WebHCat tarafından döndürülen yaygın hataları ve bunların nasıl çözümleneceğini öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 5c103482771b829730d009d65283a54ec1d8eb8a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 011ef4f192bbae12be7d2464d5b0526f584821a6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555007"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638859"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight üzerinde WebHCat 'den alınan hataları anlama ve çözme
 
@@ -21,17 +21,11 @@ HDInsight ile WebHCat kullanırken alınan hatalar ve bunları çözme hakkında
 
 ## <a name="what-is-webhcat"></a>WebHCat nedir?
 
-[Webhcat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) , Apache Hadoop Için bir [hcatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tablo ve depolama yönetimi katmanı REST API. WebHCat, HDInsight kümelerinde varsayılan olarak etkindir ve kümede oturum açmadan işleri göndermek, iş durumunu almak vb. için çeşitli araçlar tarafından kullanılır.
+[Webhcat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) , Apache Hadoop Için bir [hcatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tablo ve depolama yönetimi katmanı REST API. WebHCat, HDInsight kümelerinde varsayılan olarak etkindir ve kümede oturum açmadan işleri göndermek, iş durumunu almak vb. gibi çeşitli araçlar tarafından kullanılır.
 
 ## <a name="modifying-configuration"></a>Yapılandırmayı değiştirme
 
-> [!IMPORTANT]  
-> Yapılandırılan en büyük değer aşıldığından bu belgede listelenen hataların birkaçı meydana gelir. Çözüm adımı bir değeri değiştirebilmeniz durumunda, değişikliği gerçekleştirmek için aşağıdakilerden birini kullanmanız gerekir:
-
-* **Windows** kümeleri için: küme oluşturma sırasında değeri yapılandırmak için bir betik eylemi kullanın. Daha fazla bilgi için bkz. [betik eylemleri geliştirme](hdinsight-hadoop-script-actions-linux.md).
-
-* **Linux** kümeleri için: değeri değiştirmek Için Apache ambarı (web veya REST API) kullanın. Daha fazla bilgi için bkz. [Apache ambarı kullanarak HDInsight 'ı yönetme](hdinsight-hadoop-manage-ambari.md)
-
+Yapılandırılan en büyük değer aşıldığından bu belgede listelenen hataların birkaçı meydana gelir. Çözüm adımı bir değeri değiştiremeyeceğiniz konusunda bahsetme yaparken, değeri değiştirmek için Apache ambarı 'nı (Web veya REST API) kullanın. Daha fazla bilgi için bkz. [Apache ambarı kullanarak HDInsight 'ı yönetme](hdinsight-hadoop-manage-ambari.md)
 
 ### <a name="default-configuration"></a>Varsayılan yapılandırma
 
@@ -49,7 +43,7 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 
 | Nedeni | Çözünürlük |
 | --- | --- |
-| Web Hcat tarafından dakikada sunulan en fazla eşzamanlı istek sayısını aştınız (varsayılan 20) |En fazla eşzamanlı istek sayısından daha fazla bilgi göndermemesini sağlamak için iş yükünüzü azaltın veya `templeton.exec.max-procs`değiştirerek eşzamanlı istek sınırını artırın. Daha fazla bilgi için bkz. [yapılandırmayı değiştirme](#modifying-configuration) |
+| Web Hcat tarafından dakikada sunulan en fazla eşzamanlı istek sayısını aştık (varsayılan 20) |En fazla eşzamanlı istek sayısından daha fazla bilgi göndermemenizi veya `templeton.exec.max-procs`değiştirerek eşzamanlı istek sınırını arttırtığınızdan emin olmak için iş yükünüzü azaltın. Daha fazla bilgi için bkz. [yapılandırmayı değiştirme](#modifying-configuration) |
 
 ## <a name="server-unavailable"></a>Sunucu kullanılamıyor
 

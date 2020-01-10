@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 12498be63a688a67b2e8d09151ffe0a78d166072
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2726e9e5de53607d6bb766bf1506d6a09d714701
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101082"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647603"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver çoklu SID yapılandırması oluşturma
 
@@ -77,8 +77,8 @@ ms.locfileid: "70101082"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 [dbms-guide-2.1]:../../virtual-machines-windows-sap-dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f
@@ -365,9 +365,9 @@ ms.locfileid: "70101082"
 
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azureps-cmdlets-docs
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -380,15 +380,15 @@ ms.locfileid: "70101082"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-windows-attach-disk-portal]:../../virtual-machines-windows-attach-disk-portal.md
-[virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/resource-group-overview.md
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/management/overview.md
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 [virtual-machines-Az-versus-azuresm]:virtual-machines-windows-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md 
@@ -455,7 +455,7 @@ Bu makalede, var olan bir Windows Server Yük Devretme Kümelemesi (WSFC) kümes
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Windows VM 'lerde ve bu diyagramda gösterildiği gibi [yüksek kullanılabilirliğe sahıp SAP NetWeaver için kılavuzda][sap-ha-guide] açıklandığı gibi, BIR SAP ascs/SCS örneği için kullanılan bir wsfc kümesini zaten yapılandırdınız.
 
 ![Yüksek kullanılabilirliğe sahip SAP yoks/SCS örneği][sap-ha-guide-figure-6001]
@@ -472,7 +472,7 @@ Amaç, burada gösterildiği gibi birden çok SAP ABAP yoks veya SAP Java SCS k�
 >Bir WSFC kümesindeki en fazla SAP ASCS/SCS örneği sayısı, her bir Azure iç yük dengeleyici için en fazla özel ön uç IP sayısına eşittir.
 >
 
-Yük dengeleyici sınırları hakkında daha fazla bilgi için bkz. ağ sınırları içinde ["yük dengeleyici başına özel ön uç IP". Azure Resource Manager][networking-limits-azure-resource-manager].
+Yük dengeleyici sınırları hakkında daha fazla bilgi için, [ağ sınırları: Azure Resource Manager][networking-limits-azure-resource-manager]"yük dengeleyici başına özel ön uç IP" başlığına bakın.
 
 İki yüksek kullanılabilirliğe sahip SAP sistemiyle tam yatay şöyle görünür:
 
@@ -488,9 +488,9 @@ Yük dengeleyici sınırları hakkında daha fazla bilgi için bkz. ağ sınırl
 ## <a name="prepare-the-infrastructure"></a>Altyapıyı hazırlama
 Altyapınızı hazırlamak için aşağıdaki parametrelerle ek bir SAP ASCS/SCS örneği yükleyebilirsiniz:
 
-| Parametre adı | Value |
+| Parametre adı | Değer |
 | --- | --- |
-| SAP YOKS/SCS SID 'SI |PR1-lb-yoks |
+| SAP YOKS/SCS SıD 'SI |PR1-lb-yoks |
 | SAP DBMS iç yük dengeleyici | PR5 |
 | SAP sanal ana bilgisayar adı | PR5-SAP-CL |
 | SAP ASCS/SCS sanal ana bilgisayar IP adresi (ek Azure yük dengeleyici IP adresi) | 10.0.0.50 |

@@ -1,6 +1,6 @@
 ---
-title: Ölçeklendirme kotalar ve sınırlar laboratuvarınızda Azure DevTest Labs | Microsoft Docs
-description: Azure DevTest Labs'de bir laboratuvar ölçeklendirmeyi öğrenin
+title: Azure DevTest Labs 'de laboratuvarınızda kotaları ve sınırları ölçeklendirin | Microsoft Docs
+description: Azure DevTest Labs bir laboratuvarı ölçeklendirmeyi öğrenin
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,58 +13,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ec79f6a9b255d44e66b901a0aae263c8dbbf2863
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 231a227cbccaa4cbf74f3b13839c0ba42895cf24
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60623516"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644860"
 ---
-# <a name="scale-quotas-and-limits-in-devtest-labs"></a>Kotalar ve sınırlar DevTest Labs'de ölçeklendirin
-DevTest Labs'de çalışırken, DevTest Labs hizmet etkileyebilecek bazı Azure kaynakları için bazı varsayılan limitler olduğunu fark edebilirsiniz. Bu sınırlar denir **kotalar**.
+# <a name="scale-quotas-and-limits-in-devtest-labs"></a>DevTest Labs 'de kotaları ve sınırları ölçeklendirin
+DevTest Labs 'de çalışırken, bazı Azure kaynakları için DevTest Labs hizmetini etkileyebilecek bazı varsayılan limitlerin olduğunu fark edebilirsiniz. Bu sınırlar, **Kotalar**olarak adlandırılır.
 
 > [!NOTE]
-> DevTest Labs hizmeti herhangi bir kota koymaz. Karşılaşabileceğiniz herhangi bir kota genel Azure aboneliğinin varsayılan kısıtlamalar var.
+> DevTest Labs hizmeti hiçbir kota vermez. Karşılaşabileceğiniz kotalar Genel Azure aboneliğinin varsayılan kısıtlamalardır.
 
-Her Azure kaynağı kotasına ulaşana kadar kullanabilirsiniz. Her abonelik ayrı bir kotası bulunur ve abonelik başına kullanım izlenir.
+Kotasına ulaşana kadar her bir Azure kaynağını kullanabilirsiniz. Her abonelikte ayrı kotalar vardır ve kullanım abonelik başına izlenir.
 
-Örneğin, her aboneliğin, varsayılan olarak 20 çekirdek kotası vardır. Laboratuvarınızda dört çekirdek içeren VM'ler oluşturuyorsanız, bu nedenle, daha sonra yalnızca beş VM'ler oluşturabilirsiniz.
+Örneğin, her aboneliğin varsayılan bir 20 çekirdek kotası vardır. Bu nedenle, laboratuvarınızda sanal makineleri dört çekirdekli bir şekilde oluşturuyorsanız yalnızca beş VM oluşturabilirsiniz.
 
-[Azure abonelik ve hizmet sınırlamaları](https://docs.microsoft.com/azure/azure-subscription-service-limits) Azure kaynakları için en yaygın kotalar bazıları listelenmektedir. Kaynakları bir laboratuar ortamında en yaygın olarak kullanılan ve hangi karşılaşabileceğiniz için kotaları dahil sanal makine çekirdeklerine, genel IP adresleri, ağ arabirimi, yönetilen diskler, RBAC rolü ataması ve ExpressRoute bağlantı hatları.
+[Azure aboneliği ve hizmet limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) , Azure kaynakları için en yaygın kotaların bazılarını listeler. Bir laboratuvarda en yaygın olarak kullanılan ve kotaları ile ilgili olan kaynaklar VM çekirdekleri, genel IP adresleri, ağ arabirimi, yönetilen diskler, RBAC rol ataması ve ExpressRoute devreleri dahil.
 
-## <a name="view-your-usage-and-quotas"></a>Kullanım ve kotalar görüntüleyin
-Bu adımlar, aboneliğinizdeki belirli Azure kaynakları için geçerli kotalar görüntülemek için ve kullandığınız her kota yüzdesini görmek için nasıl gösterir.
+## <a name="view-your-usage-and-quotas"></a>Kullanımınızı ve kotaları görüntüleme
+Bu adımlarda, belirli Azure kaynakları için aboneliğinizdeki geçerli kotaları görüntüleme ve hangi kotanın kullanıldığı her kotayı görme işlemleri gösterilmektedir.
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
-1. Seçin **diğer hizmetler**ve ardından **faturalama** listeden.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+1. **Diğer hizmetler**' i seçin ve ardından listeden **faturalandırma** ' i seçin.
 1. Faturalama dikey penceresinde bir abonelik seçin.
-4. Seçin **kullanım ve kotalar**.
+4. **Kullanım + kotalar**' ı seçin.
 
-   ![Kullanım ve kotalar düğmesi](./media/devtest-lab-scale-lab/devtestlab-usage-and-quotas.png)
+   ![Kullanım ve Kotalar düğmesi](./media/devtest-lab-scale-lab/devtestlab-usage-and-quotas.png)
 
-   Kullanım ve kotalar, listeyi farklı kaynaklar bu abonelikte ve kaynak başına kullanılan kota yüzdesi kullanılabilir dikey penceresi görünür.
+   Kullanım + kotalar dikey penceresi görünür ve bu abonelikte bulunan farklı kaynakları listelemek ve kaynak başına kullanılan kotanın yüzdesi.
 
    ![Kotalar ve kullanım](./media/devtest-lab-scale-lab/devtestlab-view-quotas.png)
 
-## <a name="requesting-more-resources-in-your-subscription"></a>Daha fazla kaynak, aboneliğinizdeki isteme
-Bir kota üst sınırına ulaşırsanız, kaynağın bir abonelikte varsayılan sınır sınırına kadar açıklanan şekilde artırılabilir [Azure aboneliği ve hizmet sınırları](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+## <a name="requesting-more-resources-in-your-subscription"></a>Aboneliğinizde daha fazla kaynak isteme
+Bir kota Cap 'e ulaşırsanız, bir abonelikteki kaynağın varsayılan sınırı, [Azure aboneliği ve hizmet sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)bölümünde açıklandığı gibi maksimum sınıra kadar artırılabilir.
 
-Bu adımlarda aracılığıyla bir kota artırım talebinde bulunmak gösterilmektedir [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+Bu adımlarda, [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)aracılığıyla kota artışı isteme isteği gösterilmektedir.
 
-1. Seçin **diğer hizmetler**seçin **faturalama**ve ardından **kullanım ve kotalar**.
-1. Kullanım ve kotalar, dikey penceresinde **istek artırmak** düğmesi.
+1. **Daha fazla hizmet**seçin, **faturalandırma**' i seçin ve ardından **kullanım + kotalar**' ı seçin.
+1. Kullanım + kotalar dikey penceresinde **artış iste** düğmesini seçin.
 
-   ![İstek artışı düğmesi](./media/devtest-lab-scale-lab/devtestlab-request-increase.png)
+   ![Artış düğmesine iste](./media/devtest-lab-scale-lab/devtestlab-request-increase.png)
 
-1. Üç sekmenin tamamında gerekli bilgileri doldurun tamamlamak ve isteği göndermek için **yeni destek isteği** formu.
+1. İsteği tamamlayıp göndermek için, **Yeni destek isteği** formunun üç sekmesindeki tüm gerekli bilgileri doldurun.
 
-   ![İstek artışı formu](./media/devtest-lab-scale-lab/devtestlab-support-form.png)
+   ![İstek artış formu](./media/devtest-lab-scale-lab/devtestlab-support-form.png)
 
-[Understanding Azure sınırları ve arttıkça](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/) bir kota artırım talebinde bulunmak Azure destek ile iletişim kurarak hakkında daha fazla bilgi sağlar.
+[Azure sınırlarını ve artışlarının anlaşılması](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/) , kota artışı Istemek için Azure desteği 'ne başvurma hakkında daha fazla bilgi sağlar.
 
 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>Sonraki adımlar
-* Keşfedin [DevTest Labs Azure Resource Manager hızlı başlangıç Şablon Galerisi](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+* [DevTest Labs Azure Resource Manager hızlı başlangıç şablonu galerisini](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)gezin.

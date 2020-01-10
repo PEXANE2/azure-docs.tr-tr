@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 8f078bdfa1c6c106bb12116f30dc69abce42baa0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 33ecef4dde3787546afd28e5f5b31e8dd535fc7c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790471"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646373"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL veritabanı özellikleri
 
@@ -43,25 +43,25 @@ Aşağıdaki tabloda SQL Server 'ın başlıca özellikleri listelenmekte ve öz
 | [Yerleşik işlevler](https://docs.microsoft.com/sql/t-sql/functions/functions) | Çoğu-bkz. ayrı işlevler | Evet-bkz. [saklı yordamlar, işlevler, Tetikleyiciler farklılıkları](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) | 
 | [BULK INSERT ekstresi](https://docs.microsoft.com/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server) | Evet, ancak Azure Blob depolamadan yalnızca kaynak olarak. | Evet, ancak kaynak olarak Azure Blob depolama 'dan yalnızca bkz. [farklar](sql-database-managed-instance-transact-sql-information.md#bulk-insert--openrowset). |
 | [Sertifikalar ve asimetrik anahtarlar](https://docs.microsoft.com/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Evet, `BACKUP` ve `CREATE` işlemleri için dosya sistemine erişim olmadan. | Evet, `BACKUP` ve `CREATE` işlemleri için dosya sistemine erişim olmadan-bkz. [sertifika farklılıkları](sql-database-managed-instance-transact-sql-information.md#certificates). | 
-| [Değişiklik verilerini yakalama-CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Hayır | Yes |
+| [Değişiklik verilerini yakalama-CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Hayır | Evet |
 | [Harmanlama-sunucu/örnek](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Hayır, varsayılan mantıksal sunucu harmanlama `SQL_Latin1_General_CP1_CI_AS` her zaman kullanılır. | Evet, [örnek oluşturulduğunda](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) ayarlanabilir ve daha sonra güncelleştirilemez. |
-| [Columnstore dizinleri](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Evet- [Premium katman, Standart katman-S3 ve üzeri, genel amaçlı katmanı, iş açısından kritik ve hiper ölçek katmanları](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Yes |
+| [Columnstore dizinleri](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Evet- [Premium katman, Standart katman-S3 ve üzeri, genel amaçlı katmanı, iş açısından kritik ve hiper ölçek katmanları](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Evet |
 | [Ortak dil çalışma zamanı-CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Hayır | Evet, ancak `CREATE ASSEMBLY` deyimindeki dosya sistemine erişim olmadan-bkz. [clr farkları](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [Kimlik Bilgileri](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | Evet, ancak yalnızca [veritabanı kapsamlı kimlik bilgileri](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Evet, ancak yalnızca **Azure Key Vault** ve `SHARED ACCESS SIGNATURE` desteklenir, [ayrıntıları](sql-database-managed-instance-transact-sql-information.md#credential) görüntüle |
 | [Veritabanları arası/üç parçalı ad sorguları](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Hayır- [elastik sorguları](sql-database-elastic-query-overview.md) görüntüle | Evet, ve [elastik sorgular](sql-database-elastic-query-overview.md) |
 | [Veritabanları arası işlemler](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Hayır | Evet, örnek içinde. Bkz. çapraz örnek sorgular için [bağlı sunucu farklılıkları](sql-database-managed-instance-transact-sql-information.md#linked-servers) . |
-| [Veritabanı posta-DbMail](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | Hayır | Yes |
+| [Veritabanı posta-DbMail](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | Hayır | Evet |
 | [Veritabanı yansıtma](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server) | Hayır | [Hayır](sql-database-managed-instance-transact-sql-information.md#database-mirroring) |
 | [Veritabanı anlık görüntüleri](https://docs.microsoft.com/sql/relational-databases/databases/database-snapshots-sql-server) | Hayır | Hayır |
 | [DBCC deyimleri](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-transact-sql) | Çoğu-bkz. ayrı deyimler | Evet-bkz. [DBCC farkları](sql-database-managed-instance-transact-sql-information.md#dbcc) |
 | [DDL deyimleri](https://docs.microsoft.com/sql/t-sql/statements/statements) | Çoğu-bkz. ayrı deyimler | Evet-bkz. [T-SQL farklılıkları](sql-database-managed-instance-transact-sql-information.md) |
-| [DDL Tetikleyicileri](https://docs.microsoft.com/sql/relational-databases/triggers/ddl-triggers) | Yalnızca veritabanı |  Yes |
-| [Dağıtılmış bölüm görünümleri](https://docs.microsoft.com/sql/t-sql/statements/create-view-transact-sql#partitioned-views) | Hayır | Yes |
+| [DDL Tetikleyicileri](https://docs.microsoft.com/sql/relational-databases/triggers/ddl-triggers) | Yalnızca veritabanı |  Evet |
+| [Dağıtılmış bölüm görünümleri](https://docs.microsoft.com/sql/t-sql/statements/create-view-transact-sql#partitioned-views) | Hayır | Evet |
 | [Dağıtılmış işlemler-MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Hayır- [elastik işlemleri](sql-database-elastic-transactions-overview.md) görüntüle |  Hayır- [bağlı sunucu farklılıklarını](sql-database-managed-instance-transact-sql-information.md#linked-servers)görüntüleyin. Çeşitli dağıtılmış SQL Server örneklerinden veritabanlarını geçiş sırasında tek bir yönetilen örnekle birleştirmeye çalışın. |
-| [DML Tetikleyicileri](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | Çoğu-bkz. ayrı deyimler |  Yes |
+| [DML Tetikleyicileri](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | Çoğu-bkz. ayrı deyimler |  Evet |
 | [DMV’ler](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | Çoğu-bkz. ayrı DMVs 'ler |  Evet-bkz. [T-SQL farklılıkları](sql-database-managed-instance-transact-sql-information.md) |
 | [Olay bildirimleri](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Hayır- [uyarıları](sql-database-insights-alerts-portal.md) görüntüle | Hayır |
-| [İfadeler](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Yes | Yes |
+| [İfadeler](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Evet | Evet |
 | [Genişletilmiş olaylar (XEvent)](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Bazıları- [SQL veritabanı 'Nda genişletilmiş olaylara](sql-database-xevent-db-diff-from-svr.md) bakın | Evet- [genişletilmiş olayların farklarını](sql-database-managed-instance-transact-sql-information.md#extended-events) gör |
 | [Genişletilmiş saklı yordamlar](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Hayır | Hayır |
 | [Dosyalar ve dosya grupları](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Yalnızca birincil dosya grubu | Evet. Dosya yolları otomatik olarak atanır ve `ALTER DATABASE ADD FILE` [bildiriminde](sql-database-managed-instance-transact-sql-information.md#alter-database-statement)dosya konumu belirtilemez.  |
@@ -75,17 +75,17 @@ Aşağıdaki tabloda SQL Server 'ın başlıca özellikleri listelenmekte ve öz
 | [Günlük aktarma](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Yüksek kullanılabilirlik](sql-database-high-availability.md) , her veritabanına dahildir. Olağanüstü durum kurtarma, [Azure SQL veritabanı ile iş sürekliliği 'Ne genel bakış konusunda](sql-database-business-continuity.md) ele alınmıştır | DMS geçiş sürecinin bir parçası olarak yerel olarak yerleşik olarak. Yüksek kullanılabilirlik çözümü olarak kullanılamaz, çünkü diğer [yüksek kullanılabilirlik](sql-database-high-availability.md) yöntemleri her veritabanına dahil edilmiştir ve günlük dağıtımını ha alternatifi olarak kullanmanız önerilmez. Olağanüstü durum kurtarma, [Azure SQL veritabanı ile iş sürekliliği konusunda genel bakış konusunda](sql-database-business-continuity.md)ele alınmıştır. Veritabanları arasında çoğaltma mekanizması olarak kullanılamaz; alternatifler olarak [iş açısından kritik katmanında](sql-database-service-tier-business-critical.md)ikincil çoğaltmalar, [otomatik yük devretme grupları](sql-database-auto-failover-group.md)veya [işlem çoğaltması](sql-database-managed-instance-transactional-replication.md) kullanın. |
 | [Oturum açma bilgileri ve kullanıcılar](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) | Evet, ancak `CREATE` ve `ALTER` Login deyimleri tüm seçenekleri sunmaz (Windows ve sunucu düzeyindeki Azure Active Directory oturum açma işlemleri yok). `EXECUTE AS LOGIN` desteklenmez-bunun yerine `EXECUTE AS USER` kullanın.  | Evet, bazı [farklılıklar](sql-database-managed-instance-transact-sql-information.md#logins-and-users)vardır. Windows oturum açma işlemleri desteklenmez ve Azure Active Directory oturum açmaları ile değiştirilmelidir. |
 | [Toplu içeri aktarma işleminde en az günlük](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Hayır, yalnızca tam kurtarma modeli desteklenir. | Hayır, yalnızca tam kurtarma modeli desteklenir. |
-| [Sistem verilerini değiştirme](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | Hayır | Yes |
+| [Sistem verilerini değiştirme](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | Hayır | Evet |
 | [OLE Otomasyonu](https://docs.microsoft.com/sql/database-engine/configure-windows/ole-automation-procedures-server-configuration-option) | Hayır | Hayır |
 | [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql)|Hayır|Evet, yalnızca diğer Azure SQL veritabanları ve SQL Server 'Lar içindir. Bkz. [T-SQL farklılıkları](sql-database-managed-instance-transact-sql-information.md)|
 | [OPENQUERY](https://docs.microsoft.com/sql/t-sql/functions/openquery-transact-sql)|Hayır|Evet, yalnızca diğer Azure SQL veritabanları ve SQL Server 'Lar içindir. Bkz. [T-SQL farklılıkları](sql-database-managed-instance-transact-sql-information.md)|
 | [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)|Evet, yalnızca Azure Blob depolamadan içeri aktarmak için. |Evet, yalnızca diğer Azure SQL veritabanları ve SQL Server 'Lar ve Azure Blob depolamadan içeri aktarma. Bkz. [T-SQL farklılıkları](sql-database-managed-instance-transact-sql-information.md)|
-| [İşletmenlerinin](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Çoğu-bkz. ayrı operatörler |Evet-bkz. [T-SQL farklılıkları](sql-database-managed-instance-transact-sql-information.md) |
+| [İşleçler](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Çoğu-bkz. ayrı operatörler |Evet-bkz. [T-SQL farklılıkları](sql-database-managed-instance-transact-sql-information.md) |
 | [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Hayır. `OPENROWSET` işlevini kullanarak Azure Blob depolama alanına yerleştirilmiş dosyalardaki verileri sorgulayabilirsiniz. | Hayır. `OPENROWSET` işlevini kullanarak Azure Blob depolama alanına yerleştirilmiş dosyalardaki verileri sorgulayabilirsiniz. |
-| [Sorgu bildirimleri](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Hayır | Yes |
-| [R Hizmetleri](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Evet, [genel önizlemede](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Hayır |
+| [Sorgu bildirimleri](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Hayır | Evet |
+| [Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)(_Eski adıyla R Services_)| Evet, [genel önizlemede](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Hayır |
 | [Kurtarma modelleri](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) | Yalnızca yüksek kullanılabilirliği garanti eden tam kurtarma desteklenir. Basit ve toplu günlüğe kaydedilmiş kurtarma modelleri kullanılamaz. | Yalnızca yüksek kullanılabilirliği garanti eden tam kurtarma desteklenir. Basit ve toplu günlüğe kaydedilmiş kurtarma modelleri kullanılamaz. | 
-| [Kaynak İdarecisi](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Hayır | Yes |
+| [Kaynak İdarecisi](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Hayır | Evet |
 | [RESTORE deyimleri](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Hayır | Evet, Azure Blob depolama alanına yerleştirilmiş yedeklemeler dosyaları için zorunlu `FROM URL` seçenekleri ile. [Geri yükleme farklılıklarını](sql-database-managed-instance-transact-sql-information.md#restore-statement) gör |
 | [Veritabanını yedekten geri yükle](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Yalnızca otomatik yedeklemelerden-bkz. [SQL veritabanı kurtarma](sql-database-recovery-using-backups.md) | Otomatik yedeklemelerden, bkz. [SQL veritabanı kurtarma](sql-database-recovery-using-backups.md) ve Azure Blob depolama alanına yerleştirilmiş tam yedeklemeler-Bkz. [yedekleme farklılıkları](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Veritabanını SQL Server geri yükleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Hayır. Yerel geri yükleme yerine BACPAC veya BCP kullanın. | Hayır, yönetilen örnekte kullanılan SQL Server veritabanı altyapısının sürümü şirket içinde kullanılan SQL Server herhangi bir RTM sürümünden daha yüksek bir sürüme sahip. Bunun yerine BACPAC, BCP veya Işlemsel çoğaltmayı kullanın. |
@@ -119,13 +119,13 @@ Azure platformu, standart veritabanı özelliklerine ek bir değer olarak eklene
 | Otomatik Ölçeklendirme | Evet, ancak yalnızca [sunucusuz modelde](sql-database-serverless.md). Sunucusuz olmayan modelde, hizmet katmanı (sanal çekirdek, depolama veya DTU değişikliği) değişikliği hızlı ve çevrimiçi olur. Hizmet katmanı değişikliği için en az veya kapalı kalma süresi gerekir. | Hayır, ayrılmış işlem ve depolama seçeneğini belirlemeniz gerekir. Hizmet katmanını değiştirme (sanal çekirdek veya en fazla depolama) çevrimiçi ve en az bir kesinti süresi gerektirir. |
 | [Otomatik yedeklemeler](sql-database-automated-backups.md) | Evet. Tam yedeklemeler 7 günde bir, fark 12 saat ve günlük yedeklemesi her 5-10 dakikada bir alınır. | Evet. Tam yedeklemeler 7 günde bir, fark 12 saat ve günlük yedeklemesi her 5-10 dakikada bir alınır. |
 | [Otomatik ayarlama (dizinler)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Evet](sql-database-automatic-tuning.md)| Hayır |
-| [Kullanılabilirlik Alanları](/azure/availability-zones/az-overview) | Yes | Hayır |
-| [Azure Kaynak Durumu](/azure/service-health/resource-health-overview) | Yes | Hayır |
+| [Kullanılabilirlik Alanları](/azure/availability-zones/az-overview) | Evet | Hayır |
+| [Azure Kaynak Durumu](/azure/service-health/resource-health-overview) | Evet | Hayır |
 | Yedekleri bekletme | Evet. 7 gün varsayılan, en fazla 35 gün. | Evet. 7 gün varsayılan, en fazla 35 gün. |
-| [Veri geçiş hizmeti (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Yes | Yes |
+| [Veri geçiş hizmeti (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Evet | Evet |
 | Dosya sistemi erişimi | Hayır. Azure Blob depolama alanındaki verileri bir alternatif olarak erişmek ve bu verilere yüklemek için [bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) veya [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) kullanın. | Hayır. Azure Blob depolama alanındaki verileri bir alternatif olarak erişmek ve bu verilere yüklemek için [bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) veya [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) kullanın. |
 | [Coğrafi geri yükleme](sql-database-recovery-using-backups.md#geo-restore) | Evet-hiperscale dışında tüm hizmet katmanları | Evet-hiperscale dışında tüm hizmet katmanları |
-| [Hiper ölçek mimarisi](sql-database-service-tier-hyperscale.md) | Yes | Hayır |
+| [Hiper ölçek mimarisi](sql-database-service-tier-hyperscale.md) | Evet | Hayır |
 | [Uzun vadeli yedekleme bekletme-LTR](sql-database-long-term-retention.md) | Evet, otomatik olarak 10 yıla kadar yedekleme gerçekleştirin. | Henüz değil. Geçici geçici çözüm olarak `COPY_ONLY` [el ile yedeklemeler](sql-database-managed-instance-transact-sql-information.md#backup) kullanın. |
 | Duraklat/devam | Evet, [sunucusuz modelde](sql-database-serverless.md) | Hayır | 
 | [İlke tabanlı yönetim](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Hayır | Hayır |
@@ -134,12 +134,12 @@ Azure platformu, standart veritabanı özelliklerine ek bir değer olarak eklene
 | Kaynak havuzları | Evet, [elastik havuzlar](sql-database-elastic-pool.md) olarak | Evet. Tek bir yönetilen örnek, aynı kaynak havuzunu paylaşan birden çok veritabanına sahip olabilir. Ayrıca, kaynakları paylaşabilen [örnek havuzlarda (Önizleme)](sql-database-instance-pools.md) birden çok yönetilen örnek dağıtabilirsiniz. |
 | Ölçeği artırma veya azaltma (çevrimiçi) | Evet, DTU veya ayrılmış sanal çekirdekleri ya da en fazla depolama alanını en az kapalı kalma süresiyle değiştirebilirsiniz. | Evet, ayrılmış sanal çekirdekleri veya en fazla depolama alanını en az kapalı kalma süresiyle değiştirebilirsiniz. |
 | [SQL diğer adı](https://docs.microsoft.com/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | Hayır, [DNS diğer adını](dns-alias-overview.md) kullan | Hayır, istemci makinelerde diğer adı ayarlamak için [Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) kullanın. |
-| [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Yes | Yes |
-| [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Yes | Hayır |
+| [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Evet | Evet |
+| [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Evet | Hayır |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Hayır, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) ayrı bir Azure bulut hizmetidir. | Hayır, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) ayrı bir Azure bulut hizmetidir. |
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Evet, paketlerin Azure SQL veritabanı tarafından barındırılan ve Azure SSIS Integration Runtime (IR) üzerinde yürütüldüğü SSSıSDB 'de depolandığı, yönetilen bir SSIS Azure Data Factory (ADF) ortamıyla birlikte, bkz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>SQL veritabanı sunucusu ve yönetilen örnekteki SSIS özelliklerini karşılaştırmak için bkz. [Azure SQL veritabanı tek veritabanı, elastik havuz ve yönetilen örnek karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). | Evet, yönetilen bir SSIS Azure Data Factory (ADF) ortamında, paketlerin yönetilen örnek tarafından barındırılan ve Azure SSIS Integration Runtime (IR) üzerinde yürütülen SSSıSDB 'de depolandığı, bkz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>SQL veritabanı ve yönetilen örnekteki SSIS özelliklerini karşılaştırmak için bkz. [Azure SQL veritabanı tek veritabanı, elastik havuz ve yönetilen örnek karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Hayır- [Power BI](https://docs.microsoft.com/power-bi/) | Hayır- [Power BI](https://docs.microsoft.com/power-bi/) |
-| [Sorgu performansı öngörüleri (QPı)](sql-database-query-performance.md) | Yes | Hayır. SQL Server Management Studio ve Azure Data Studio yerleşik raporlarını kullanın. |
+| [Sorgu performansı öngörüleri (QPı)](sql-database-query-performance.md) | Evet | Hayır. SQL Server Management Studio ve Azure Data Studio yerleşik raporlarını kullanın. |
 | [Sanal ağ](../virtual-network/virtual-networks-overview.md) | Kısmi, [VNET uç noktaları](sql-database-vnet-service-endpoint-rule-overview.md) kullanarak kısıtlı erişime izin verebilir | Evet, yönetilen örnek müşterinin VNet 'ine eklenmiş. Bkz. [alt ağ](sql-database-managed-instance-transact-sql-information.md#subnet) ve [VNET](sql-database-managed-instance-transact-sql-information.md#vnet) |
 | VNet hizmeti uç noktası | [Evet](sql-database-vnet-service-endpoint-rule-overview.md) | Hayır |
 | VNet genel eşleme | Evet, [özel IP ve hizmet uç noktalarını](sql-database-vnet-service-endpoint-rule-overview.md) kullanma | Hayır, [VNET genel eşlemesindeki yük dengeleyici kısıtlaması](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)nedeniyle [yönetilen örnek desteklenmez](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) .
@@ -149,19 +149,19 @@ Azure SQL veritabanı, verilerinizi yönetmenize yardımcı olabilecek çeşitli
 
 | **Araç** | **Tek veritabanları ve elastik havuzlar** | **Yönetilen örnekler ve örnek havuzları** |
 | --- | --- | --- |
-| Azure portalı | Yes | Yes |
-| Azure CLI | Yes | Yes|
-| [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Yes | Yes |
-| Azure PowerShell | Yes | Yes |
+| Azure Portal | Evet | Evet |
+| Azure CLI | Evet | Evet|
+| [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Evet | Evet |
+| Azure PowerShell | Evet | Evet |
 | [BACPAC dosyası (dışarı aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Evet-bkz. [SQL veritabanı dışarı aktarma](sql-database-export.md) | Evet-bkz. [SQL veritabanı dışarı aktarma](sql-database-export.md) |
 | [BACPAC dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Evet-bkz. [SQL veritabanı içeri aktarma](sql-database-import.md) | Evet-bkz. [SQL veritabanı içeri aktarma](sql-database-import.md) |
 | [Data Quality Services (DQS)](https://docs.microsoft.com/sql/data-quality-services/data-quality-services) | Hayır | Hayır |
 | [Ana Veri Hizmetleri (MDS)](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | Hayır | Hayır |
 | [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [Evet](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) | Evet [sürüm 150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) |
-| [SQL Server Veri Araçları (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Yes | Yes |
-| [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Yes | Evet [sürüm 18,0 ve üzeri](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-| [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Yes | Yes |
-| [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Hayır- [genişletilmiş olaylara](sql-database-xevent-db-diff-from-svr.md) bakın | Yes |
+| [SQL Server Veri Araçları (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Evet | Evet |
+| [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Evet | Evet [sürüm 18,0 ve üzeri](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
+| [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Evet | Evet |
+| [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Hayır- [genişletilmiş olaylara](sql-database-xevent-db-diff-from-svr.md) bakın | Evet |
 | [System Center Operations Manager (SCOM)](https://docs.microsoft.com/system-center/scom/welcome) | [Evet](https://www.microsoft.com/download/details.aspx?id=38829) | Evet, [önizlemede](https://www.microsoft.com/download/details.aspx?id=100306) |
 
 ## <a name="migration-methods"></a>Geçiş yöntemleri
@@ -182,6 +182,6 @@ Microsoft, Azure SQL veritabanı 'na özellik eklemeye devam etmektedir. Bu filt
 - SQL Veritabanı özellikleri için Genel Kullanılabilirlik [(GA) duyuruları](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability).
 
 Azure SQL veritabanı türleri hakkında daha fazla bilgi için bkz.
-- [SQL Veritabanı nedir?](sql-database-technical-overview.md)
+- [SQL Database nedir?](sql-database-technical-overview.md)
 - [Yönetilen örnek nedir?](sql-database-managed-instance.md)
 - [Yönetilen örnek havuzları nelerdir?](sql-database-instance-pools.md)

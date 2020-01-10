@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB öğreticisi: Apache Tinkerpop 'Larda Gremlin konsolunda oluşturma, sorgulama ve çapraz geçiş yapma"
+title: "Inkerpop Gremlin konsolunu kullanarak Azure Cosmos DB Gremlin API 'SI ile sorgulama: öğretici"
 description: Azure Cosmos DB Gremlin API’sini kullanarak köşe, kenar ve sorgu oluşturmaya yönelik Azure Cosmos DB hızlı başlangıcı.
 author: luisbosquez
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 3f25bbbbc8b3f34bdb89ba8797b042826a88ca8d
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: b873cdc65ed483836dc4c3cf9904a8fab1d2f09f
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815960"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665173"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Hızlı başlangıç: Gremlin konsolunu kullanarak Azure Cosmos DB Graph veritabanı oluşturma, sorgulama ve çapraz geçiş yapma
 
@@ -33,13 +33,13 @@ Bu hızlı başlangıçta, Azure portal kullanarak bir Azure Cosmos DB [Gremlin 
 
 Gremlin konsolu, Groovy/Java tabanlıdır ve Linux, Mac ve Windows üzerinde çalışır. Konsolu [Apache TinkerPop sitesinden](https://tinkerpop.apache.org/downloads.html) indirebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıca yönelik bir Azure Cosmos DB hesabı oluşturmak için Azure aboneliğinizin olması gerekir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Ayrıca [Gremlin konsolunu](https://tinkerpop.apache.org/) yüklemeniz gerekir. 3\.2.5 veya daha yüksek bir sürüm kullanın. (Windows üzerinde Gremlin konsolunu kullanmak için [Java çalışma zamanı](https://www.oracle.com/technetwork/java/javase/overview/index.html)'nı yüklemeniz gerekir.)
+Ayrıca [Gremlin konsolunu](https://tinkerpop.apache.org/downloads.html) yüklemeniz gerekir. **Önerilen sürüm v 3.4.3** veya daha önceki bir sürüm. (Windows üzerinde Gremlin konsolunu kullanmak için [Java çalışma zamanı](https://www.oracle.com/technetwork/java/javase/overview/index.html)'nı yüklemeniz gerekir).
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 
@@ -58,7 +58,7 @@ Ayrıca [Gremlin konsolunu](https://tinkerpop.apache.org/) yüklemeniz gerekir. 
     hosts|[*Hesap-adı*. **Gremlin**. Cosmos.Azure.com]|Aşağıdaki ekran görüntüsüne bakın. Bu, köşeli ayraçlar içinde Azure portal Genel Bakış sayfasındaki **Gremlin URI** değeridir ve sonunda: 443/removed. Not: Gremlin değerlerini, daha sonra Gremlin sorgularını yürütmeye çalışırken, büyük olasılıkla "ana bilgisayar zamanında yanıt vermedi" özel durumuyla sonuçlanan URI 'yi **değil** , [*Account-Name*. Documents.Azure.com] ile biten URI 'yi kullanmayın. 
     port|443|443 olarak ayarlayın.
     kullanıcı adı|*Kullanıcı adınız*|`/dbs/<db>/colls/<coll>` formunun kaynağı; burada `<db>` veritabanı adınız ve `<coll>` koleksiyon adınızdır.
-    password|*Birincil anahtarınız*| Aşağıdaki ikinci ekran görüntüsüne bakın. Bu sizin birincil anahtarınızdır, bu anahtarı Azure portalının Anahtarlar sayfasındaki Birincil Anahtar kutusunda bulabilirsiniz. Değeri kopyalamak için kutunun solundaki kopyala düğmesini kullanın.
+    parola|*Birincil anahtarınız*| Aşağıdaki ikinci ekran görüntüsüne bakın. Bu sizin birincil anahtarınızdır, bu anahtarı Azure portalının Anahtarlar sayfasındaki Birincil Anahtar kutusunda bulabilirsiniz. Değeri kopyalamak için kutunun solundaki kopyala düğmesini kullanın.
     connectionPool|{enableSsl: true}|SSL için bağlantı havuzu ayarınız.
     serializer|{ className: org.apache.tinkerpop.gremlin.<br>Driver. ser. GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Bu değere ayarlayın ve değeri yapıştırırken tüm `\n` satır sonlarını silin.
 
@@ -314,7 +314,7 @@ Tebrikler! Bu Azure Cosmos DB: Gremlin API’si öğreticisini tamamladınız!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini’ni kullanarak grafik oluşturmayı, köşe ve kenar oluşturmayı ve Gremlin konsolunu kullanarak grafiğinizi çapraz geçirmeyi öğrendiniz. Artık daha karmaşık sorgular derleyebilir ve Gremlin kullanarak güçlü grafik geçişi mantığını kullanabilirsiniz. 
+Bu hızlı başlangıçta bir Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini’ni kullanarak grafik oluşturmayı, köşe ve kenar oluşturmayı ve Gremlin konsolunu kullanarak grafiğinizi çapraz geçirmeyi öğrendiniz. Artık daha karmaşık sorgular oluşturabilir ve Gremlin kullanarak güçlü grafik geçişi mantığını kullanabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Gremlin kullanarak sorgulama](tutorial-query-graph.md)

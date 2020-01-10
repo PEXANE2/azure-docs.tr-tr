@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 64b90afd598b96604fc9c3ddc4bc10586e714363
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883580"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75657990"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Application Gateway ile SSL sonlandırmasına ve uçtan uca SSL 'ye Genel Bakış
 
@@ -45,12 +45,12 @@ Application Gateway aşağıdaki sertifika türlerini destekler:
 - CA (sertifika yetkilisi) sertifikası: CA sertifikası, bir sertifika yetkilisi (CA) tarafından verilen dijital bir sertifikadır
 - EV (Genişletilmiş Doğrulama) sertifikası: EV sertifikası, sektör standardı sertifika yönergelerinden oluşan bir sertifikadır. Bu, tarayıcı Konumlandırıcı çubuğunun yeşil olduğunu ve şirket adını da yayımlayacaktır.
 - Joker karakter sertifikası: Bu sertifika, alt etki alanınızın * yerini alacak *. site.com bağlı olarak herhangi bir sayıda alt etki alanını destekler. Ancak, site.com desteği yoktur, bu nedenle kullanıcıların Web sitenize önde gelen "www" yazısı olmadan erişmesi durumunda joker karakter sertifikası bunu kapsamaz.
-- Otomatik olarak Imzalanan Sertifikalar: İstemci tarayıcıları bu sertifikalara güvenmez ve kullanıcıyı sanal hizmetin sertifikasının bir güven zincirinin parçası olmadığı konusunda uyarır. Otomatik olarak imzalanan sertifikalar, yöneticilerin istemcileri denetladığı ve tarayıcının güvenlik uyarılarını güvenle atlayabileceği test veya ortamlar için uygundur. Üretim iş yükleri hiçbir şekilde otomatik olarak imzalanan sertifikalar kullanmamalıdır.
+- Otomatik olarak Imzalanan Sertifikalar: Istemci tarayıcıları bu sertifikalara güvenmez ve sanal hizmetin sertifikasının bir güven zincirinin parçası olmadığı konusunda kullanıcıyı uyarır. Otomatik olarak imzalanan sertifikalar, yöneticilerin istemcileri denetladığı ve tarayıcının güvenlik uyarılarını güvenle atlayabileceği test veya ortamlar için uygundur. Üretim iş yükleri hiçbir şekilde otomatik olarak imzalanan sertifikalar kullanmamalıdır.
 
 Daha fazla bilgi için bkz. [Application Gateway Ile SSL sonlandırmayı yapılandırma](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
 ### <a name="size-of-the-certificate"></a>Sertifikanın boyutu
-Desteklenen en yüksek SSL sertifikası boyutunu bildirmek için [Application Gateway sınırları](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits) bölümünü denetleyin.
+Desteklenen en yüksek SSL sertifikası boyutunu bildirmek için [Application Gateway sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) bölümünü denetleyin.
 
 ## <a name="end-to-end-ssl-encryption"></a>Uçtan uca SSL şifrelemesi
 

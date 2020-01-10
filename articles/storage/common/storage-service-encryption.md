@@ -4,17 +4,17 @@ description: Azure depolama, verilerinizi buluta kalıcı yapmadan önce otomati
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 12/05/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a09d2c0c2a393acd4882842dc023b0f5f682e813
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 35a5bfd582c9717b062d42d86e7581029861fd0c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895140"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665428"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Bekleyen veriler için Azure depolama şifrelemesi
 
@@ -62,7 +62,7 @@ Varsayılan olarak, depolama hesabınız Microsoft tarafından yönetilen şifre
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Azure Key Vault ile müşteri tarafından yönetilen anahtarlar
 
-Azure depolama şifrelemesini, kendi anahtarlarınızın bulunduğu depolama hesabı düzeyinde yönetebilirsiniz. Depolama hesabı düzeyinde müşteri tarafından yönetilen bir anahtar belirttiğinizde, bu anahtar depolama hesabındaki tüm blob ve dosya verilerini şifrelemek ve şifresini çözmek için kullanılır. Müşteri tarafından yönetilen anahtarlar, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
+Azure depolama şifrelemesini, kendi anahtarlarınızın bulunduğu depolama hesabı düzeyinde yönetebilirsiniz. Depolama hesabı düzeyinde müşteri tarafından yönetilen bir anahtar belirttiğinizde, bu anahtar, tüm blob ve dosya verilerini şifrelemek ve şifrelerini çözmek için kullanılan depolama hesabı için kök şifreleme anahtarına erişimi korumak ve denetlemek için kullanılır. Müşteri tarafından yönetilen anahtarlar, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
 
 Müşteri tarafından yönetilen anahtarlarınızın depolanması için Azure Key Vault kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Depolama hesabı ve Anahtar Kasası aynı bölgede olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/key-vault-overview.md).
 
@@ -80,9 +80,11 @@ Aşağıdaki listede, diyagramdaki numaralandırılmış adımlar açıklanmakta
 
 ### <a name="enable-customer-managed-keys-for-a-storage-account"></a>Bir depolama hesabı için müşteri tarafından yönetilen anahtarları etkinleştirin
 
-Bir depolama hesabı için müşteri tarafından yönetilen anahtarlarla şifrelemeyi etkinleştirdiğinizde, Azure depolama, hesap şifreleme anahtarını ilişkili anahtar kasasındaki müşteri anahtarıyla sarar. Müşteri tarafından yönetilen anahtarların etkinleştirilmesi performansı etkilemez ve hesap, her zaman gecikmesi olmadan yeni anahtarla şifrelenir.
+Bir depolama hesabı için müşteri tarafından yönetilen anahtarlarla şifrelemeyi etkinleştirdiğinizde, Azure depolama, hesap şifreleme anahtarını ilişkili anahtar kasasındaki müşteri tarafından yönetilen anahtarla sarar. Müşteri tarafından yönetilen anahtarların etkinleştirilmesi performansı etkilemez ve hesap, her zaman gecikmesi olmadan yeni anahtarla şifrelenir.
 
 Yeni bir depolama hesabı her zaman Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Hesap oluşturulduğu sırada müşteri tarafından yönetilen anahtarları etkinleştirmek mümkün değildir. Müşteri tarafından yönetilen anahtarlar Azure Key Vault depolanır ve Anahtar Kasası, depolama hesabıyla ilişkili yönetilen kimliğe anahtar izinleri veren erişim ilkeleriyle sağlanmalıdır. Yönetilen kimlik yalnızca depolama hesabı oluşturulduktan sonra kullanılabilir.
+
+Müşteri tarafından yönetilen anahtarları etkinleştirerek veya devre dışı bırakarak, anahtar sürümünü güncelleştirerek veya farklı bir anahtar belirterek, Azure depolama şifrelemesi için kullanılan anahtarı değiştirdiğinizde, kök anahtarın şifrelenmesi değişir ancak Azure Storage hesabınızdaki veriler yeniden şifrelenmesi gerekir.
 
 Azure depolama şifrelemesi için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanmayı öğrenmek için şu makalelerden birine bakın:
 
@@ -96,6 +98,8 @@ Azure depolama şifrelemesi için Azure Key Vault ile müşteri tarafından yön
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Müşteri tarafından yönetilen anahtarları Azure Key Vault içinde depola
 
 Bir depolama hesabında müşteri tarafından yönetilen anahtarları etkinleştirmek için, anahtarlarınızı depolamak üzere bir Azure Key Vault kullanmanız gerekir. Anahtar kasasında hem **geçici silme** hem de **Temizleme** özelliklerini etkinleştirmeniz gerekir.
+
+Azure depolama şifrelemesi ile yalnızca 2048 boyutundaki RSA anahtarları desteklenir. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault anahtarlar** .
 
 Anahtar Kasası, depolama hesabı ile aynı abonelikte bulunmalıdır. Azure depolama, şifreleme ve şifre çözme işlemleri için anahtar kasasında kimlik doğrulaması yapmak üzere Azure kaynakları için Yönetilen kimlikler kullanır. Yönetilen kimlikler Şu anda çapraz dizin senaryolarını desteklemez.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 50cb61394043bb8d0e67cae2aea8be4285f3432c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4f6a0a2631c3f7458548a2ff435c3e565e744f41
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926276"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660230"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
@@ -71,7 +71,7 @@ Load Balancer hem temel hem de standart SKU 'Ları destekler. Bu SKU 'Lar senary
 Tüm senaryo yapılandırması, SKU 'ya bağlı olarak biraz farklı görünebilir. Load Balancer belgelerinde yalnızca belirli bir SKU için geçerli olan makaleler belirtilmiştir. Farkları karşılaştırmak ve anlamak için aşağıdaki tabloya bakın. Daha fazla bilgi için bkz. [Azure Standart Load Balancer genel bakış](load-balancer-standard-overview.md).
 
 >[!NOTE]
-> Microsoft reccomends Standart Load Balancer.
+> Microsoft Standart Load Balancer önerir.
 Tek başına VM'ler, kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri yalnızca tek bir SKU'ya bağlanabilir, ikisine birden bağlanamaz. Load Balancer ve genel IP adresi SKU 'SU ortak IP adresleriyle kullandığınızda aynı olmalıdır. Load Balancer ve genel IP SKU 'Ları değişebilir değildir.
 
 [!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]

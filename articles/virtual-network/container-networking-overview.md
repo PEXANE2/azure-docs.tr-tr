@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 2ebc678bffbbbe5d512d620b8f77ac0a245c0aff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdd364c097552d3a1b52073af97d33db70d78556
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713852"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647450"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>Kapsayıcıların Azure Sanal Ağ özelliklerini kullanmasını sağlama
 
@@ -51,18 +51,18 @@ Podlar sanal ağın parçası olan bir sanal makinede oluşturulur. Sanal makine
 
 Podların internete erişmesini sağlamak için eklenti *iptables* kurallarını yapılandırarak podlardan internete giden trafikte ağ adresi çevirisi (NAT) gerçekleştirir. Paketin kaynak IP adresi sanal makine ağ arabiriminin birincil IP adresine çevrilir. Windows sanal makineleri otomatik olarak sanal makinenin bulunduğu alt ağın dışında bir IP adresine gönderilen NAT (SNAT) trafiği için kaynak oluşturur. Genellikle sanal ağın IP aralığının dışındaki bir IP adresine gönderilen tüm trafik çevrilir.
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>Sınırlar
 
-Eklenti sanal makine başına 250 pod ve bir sanal ağda 16.000 pod için destek sunar. Bu sınırlar [Azure Kubernetes Service](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) için farklıdır.
+Eklenti sanal makine başına 250 pod ve bir sanal ağda 16.000 pod için destek sunar. Bu sınırlar [Azure Kubernetes Service](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) için farklıdır.
 
 ## <a name="using-the-plug-in"></a>Eklentiyi kullanma
 
 Eklenti, podlar veya Docker kapsayıcılarına temel sanal ağ bağlantısı sağlamak üzere şu şekillerde kullanılabilir:
 
-- **Azure Kubernetes hizmeti**: Eklentinin Azure Kubernetes Service (AKS) ile tümleşiktir ve seçerek kullanılabilir *Gelişmiş Ağ* seçeneği. Gelişmiş Ağ, Kubernetes kümesini var olan veya yeni bir sanal ağa dağıtmanızı sağlar. Gelişmiş Ağ ve ayarlama adımları hakkında daha fazla bilgi için bkz. [AKS'de ağ yapılandırması](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- **AKS altyapısı**: AKS altyapısı Azure'da bir Kubernetes kümesinin dağıtımı için bir Azure Resource Manager şablonu oluşturan bir araçtır. Ayrıntılı yönergeler için bkz. [AKS altyapısı Kubernetes kümeleri için eklenti dağıtma](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in).
-- **Azure'da kendi Kubernetes kümenizi oluşturma**: Eklenti AKS veya AKS altyapısı gibi araçlar üzerinde bağlı olmadan kendiniz dağıtma Kubernetes kümelerini pod'ları için temel ağ sağlamak için kullanılabilir. Bu durumda eklentinin kümedeki tüm sanal makinelere yüklenmesi ve etkinleştirilmesi gerekir. Ayrıntılı yönergeler için bkz. [Eklentiyi kendi dağıttığınız Kubernetes kümesi için dağıtma](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
-- **Sanal ağ eklemek için Azure Docker kapsayıcılarında**: Eklenti, bir Kubernetes kümesi oluşturmak istemiyorsanız ve Docker kapsayıcılarını sanal ağ ile attach, sanal makineler oluşturmak ister misiniz durumlarda kullanılabilir. Ayrıntılı yönergeler için bkz. [Eklentiyi Docker için dağıtma](deploy-container-networking.md#deploy-plug-in-for-docker-containers).
+- **Azure Kubernetes Service**: Eklenti Azure Kubernetes Service (AKS) ile tümleşiktir ve *Gelişmiş Ağ* seçeneği ile kullanılabilir. Gelişmiş Ağ, Kubernetes kümesini var olan veya yeni bir sanal ağa dağıtmanızı sağlar. Gelişmiş Ağ ve ayarlama adımları hakkında daha fazla bilgi için bkz. [AKS'de ağ yapılandırması](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **Aks-Engine**: aks-Engine, Azure 'Da bir Kubernetes kümesinin dağıtımı için Azure Resource Manager şablonu oluşturan bir araçtır. Ayrıntılı yönergeler için bkz. [AKS-Engine Kubernetes kümeleri için eklentiyi dağıtma](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in).
+- **Azure 'da kendi Kubernetes kümenizi oluşturma**: eklenti, aks 'leri veya aks-Engine gibi araçları kullanarak kendi dağıttığınız Kubernetes kümelerinde pods için temel ağ sağlamak üzere kullanılabilir. Bu durumda eklentinin kümedeki tüm sanal makinelere yüklenmesi ve etkinleştirilmesi gerekir. Ayrıntılı yönergeler için bkz. [Eklentiyi kendi dağıttığınız Kubernetes kümesi için dağıtma](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
+- **Azure'daki Docker kapsayıcılarına sanal ağ ekleme**: Eklenti bir Kubernetes kümesi kullanmak istemediğiniz ve sanal makinelerde sanal ağa eklenmiş Docker kapsayıcısı oluşturmak istediğiniz durumlarda kullanılabilir. Ayrıntılı yönergeler için bkz. [Eklentiyi Docker için dağıtma](deploy-container-networking.md#deploy-plug-in-for-docker-containers).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: a4258b51acfa603c156bc35cdb2cbc3b16f37ab0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 85b1d6b532ba11819947558226291e62af6b5119
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278416"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690919"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Görsel olarak izleme Azure Data Factory
 
@@ -35,10 +35,10 @@ Varsayılan izleme görünümü, seçilen dönemdeki işlem hattı çalıştırm
 | Süre | Çalıştırma süresi (SS: DD: SS) |
 | Tetikleyen | İşlem hattını Başlatan tetikleyicinin adı |
 | Durum | **Başarısız**, **başarılı**, **devam ediyor**, **iptal edildi**veya **sıraya alındı** |
-| Açıklamaları | İşlem hattı ile ilişkili filtrelenebilir Etiketler  |
+| Ek Açıklamalar | İşlem hattı ile ilişkili filtrelenebilir Etiketler  |
 | Parametreler | İşlem hattı çalıştırması için parametreler (ad/değer çiftleri) |
 | Hata | İşlem hattı başarısız olursa, çalıştırma hatası |
-| Çalıştırma KIMLIĞI | İşlem hattı çalıştırmasının KIMLIĞI |
+| Çalışma Kimliği | İşlem hattı çalıştırmasının KIMLIĞI |
 
 ![İzleme işlem hattı çalıştırmaları için liste görünümü](media/monitor-visually/pipeline-runs.png)
 
@@ -52,8 +52,8 @@ Her Işlem hattı çalıştırması için etkinlik çalıştırmalarını görü
 
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
-| Etkinlik adı | İşlem hattının içindeki etkinliğin adı |
-| Etkinlik türü | Etkinliğin türü; örneğin **Copy**, **executedataflow**veya **AzureMLExecutePipeline** |
+| Etkinlik Adı | İşlem hattının içindeki etkinliğin adı |
+| Etkinlik Türü | Etkinliğin türü; örneğin **Copy**, **executedataflow**veya **AzureMLExecutePipeline** |
 | Eylemler | JSON giriş bilgilerini, JSON çıktı bilgilerini veya ayrıntılı etkinliğe özgü izleme deneyimlerini görmenizi sağlayan simgeler | 
 | Çalıştırma başlangıç | Etkinlik çalıştırmasının başlangıç tarihi ve saati (AA/GG/YYYY, ss: DD: SS) |
 | Süre | Çalıştırma süresi (SS: DD: SS) |
@@ -61,7 +61,7 @@ Her Işlem hattı çalıştırması için etkinlik çalıştırmalarını görü
 | Integration Runtime | Etkinliğin çalıştırıldığı Integration Runtime |
 | Kullanıcı Özellikleri | Etkinliğin Kullanıcı tanımlı özellikleri |
 | Hata | Etkinlik başarısız olursa, çalıştırma hatası |
-| Çalıştırma KIMLIĞI | Etkinlik çalıştırmasının KIMLIĞI |
+| Çalışma Kimliği | Etkinlik çalıştırmasının KIMLIĞI |
 
 ![İzleme etkinliği çalıştırmaları için liste görünümü](media/monitor-visually/activity-runs.png)
 
@@ -93,7 +93,7 @@ Kullanıcı özelliklerini oluşturduktan sonra bunları izleme listesi görün�
 | İşlem hattı adı | İşlem hattının adına göre filtreleyin. |
 | Çalıştırma başlangıç |  Gösterilecek işlem hattı çalıştırmalarının zaman aralığını belirleme. Seçenekler, **son 24 saat**, **son hafta**ve **son 30 gün** için hızlı filtreler içerir veya özel bir tarih ve saat seçer. |
 | Çalışma durumu | **Şu**durum ile filtre çalıştırmaları: **başarılı**, başarısız, **sıraya alınmış**, **iptal edildi**veya **devam ediyor**. |
-| Açıklamaları | Her bir ardışık düzene uygulanan etiketlere göre filtrele |
+| Ek Açıklamalar | Her bir ardışık düzene uygulanan etiketlere göre filtrele |
 | Çalıştırmalar | İşlem hatlarını yeniden yönlendirme görmek isteyip istemediğinizi filtreleyin |
 
 ![Filtreleme seçenekleri](media/monitor-visually/filter.png)
@@ -113,6 +113,12 @@ Etkinlikleri bir işlem hattı içinde yeniden çalıştırabilirsiniz. **Etkinl
 ![Etkinlik çalıştırmalarını görüntüleme](media/monitor-visually/rerun-activities-image1.png)
 
 ![Etkinlik çalıştırması seçin](media/monitor-visually/rerun-activities-image2.png)
+
+### <a name="rerun-from-failed-activity"></a>Başarısız etkinlikten yeniden çalıştır
+
+Bir etkinlik başarısız olursa, zaman aşımına uğrar veya iptal edilirse, **başarısız etkinlikten yeniden çalıştır**' ı seçerek bu başarısız etkinlikten ardışık düzeni yeniden çalıştırabilirsiniz.
+
+![Başarısız etkinliği yeniden çalıştır](media/monitor-visually/rerun-failed-activity.png)
 
 ### <a name="view-rerun-history"></a>Yeniden çalıştırma geçmişini görüntüle
 

@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: bce0620ed6be4937c95a2ce01f3d4c175c8bc18d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687070"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680894"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service yerel önbelleğe genel bakış
 
@@ -36,7 +36,7 @@ Azure App Service yerel önbellek özelliği, içeriğinizin bir Web rolü gör�
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Yerel önbelleğin App Service davranışını nasıl değiştirdiği
 * _D:\home_ , uygulama başlatıldığında VM örneğinde oluşturulan yerel önbelleğe işaret eder. _D:\Local_ , VM 'ye özgü geçici depolamaya işaret etmeye devam ediyor.
-* Yerel önbellek, sırasıyla _D:\home\site_ ve _D:\home\siteextensions_konumundaki paylaşılan içerik deposunun _/site_ ve _/siteextensions_ klasörlerinin tek seferlik bir kopyasını içerir. Dosyalar, uygulama başlatıldığında yerel önbelleğe kopyalanır. Her bir uygulama için iki klasörün boyutu varsayılan olarak 300 MB ile sınırlıdır, ancak bunu 2 GB 'a kadar artırabilirsiniz.
+* Yerel önbellek, sırasıyla _D:\home\site_ ve _D:\home\siteextensions_konumundaki paylaşılan içerik deposunun _/site_ ve _/siteextensions_ klasörlerinin tek seferlik bir kopyasını içerir. Dosyalar, uygulama başlatıldığında yerel önbelleğe kopyalanır. Her bir uygulama için iki klasörün boyutu varsayılan olarak 300 MB ile sınırlıdır, ancak bunu 2 GB 'a kadar artırabilirsiniz. Kopyalanan dosyalar yerel önbelleğin boyutunu aşarsa App Service sessizce yerel önbelleği yoksayar ve uzak dosya paylaşımından okur.
 * Yerel önbellek okuma-yazma ' dır. Ancak, uygulama sanal makineleri taşıdığında veya yeniden başlatıldığında herhangi bir değişiklik atılır. Görev açısından kritik verileri içerik deposunda depolayan uygulamalar için yerel önbellek kullanmayın.
 * _D:\home\logfiles_ ve _d:\home\data_ günlük dosyalarını ve uygulama verilerini içerir. İki alt klasör, sanal makine örneğinde yerel olarak depolanır ve paylaşılan içerik deposuna düzenli olarak kopyalanır. Uygulamalar, günlük dosyalarını ve verileri bu klasörlere yazarak kalıcı hale getirebilirler. Ancak, paylaşılan içerik deposuna yapılan kopya en iyi çaba olduğundan, bir VM örneğinin ani kilitlenmesi nedeniyle günlük dosyaları ve verilerin kaybedilmesi mümkündür.
 * [Günlük akışı](troubleshoot-diagnostic-logs.md#stream-logs) , en iyi çaba kopyasından etkilenir. Akışlı günlüklerde bir dakikalık gecikmeye kadar gözlemleyebilirsiniz.
@@ -48,7 +48,7 @@ Azure App Service yerel önbellek özelliği, içeriğinizin bir Web rolü gör�
 ## <a name="enable-local-cache-in-app-service"></a>App Service 'de yerel önbelleği etkinleştir
 Yerel önbelleği, ayrılmış uygulama ayarları birleşimini kullanarak yapılandırırsınız. Aşağıdaki yöntemleri kullanarak bu uygulama ayarlarını yapılandırabilirsiniz:
 
-* [Azure portalda](#Configure-Local-Cache-Portal)
+* [Azure Portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Azure portal kullanarak yerel önbelleği yapılandırma
@@ -83,7 +83,7 @@ Bu uygulama ayarını kullanarak Web uygulaması başına temelinde yerel önbel
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>Yerel önbellekteki boyut ayarını değiştir
-Varsayılan olarak, yerel önbellek boyutu **1 GB**'tır. Bu, içerik deposundan kopyalanmış olan/site ve/siteextensions klasörlerinin yanı sıra yerel olarak oluşturulan tüm Günlükler ve veri klasörlerini içerir. Bu sınırı artırmak için `WEBSITE_LOCAL_CACHE_SIZEINMB`uygulama ayarını kullanın. Uygulama başına en fazla **2 GB** (2000 MB) boyutunu artırabilirsiniz.
+Varsayılan olarak, yerel önbellek boyutu **300 MB**'tır. Bu, içerik deposundan kopyalanmış olan/site ve/siteextensions klasörlerinin yanı sıra yerel olarak oluşturulan tüm Günlükler ve veri klasörlerini içerir. Bu sınırı artırmak için `WEBSITE_LOCAL_CACHE_SIZEINMB`uygulama ayarını kullanın. Uygulama başına en fazla **2 GB** (2000 MB) boyutunu artırabilirsiniz.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>App Service yerel önbellek kullanmaya yönelik en iyi uygulamalar
 Yerel önbelleği, [hazırlama ortamları](../app-service/deploy-staging-slots.md) özelliğiyle birlikte kullanmanızı öneririz.
@@ -108,7 +108,7 @@ Uygulamanız yerel önbellek kullanıyorsa, en son değişiklikleri almak için 
 ### <a name="where-are-my-logs"></a>Günlüklerim nerede?
 Yerel önbellek ile günlüklerinizi ve veri klasörlerinizi biraz farklı bir şekilde görünür. Ancak, alt klasörlerin yapısı aynı kalır, ancak alt klasörler "benzersiz VM tanımlayıcısı" ve zaman damgası biçiminde bir alt klasör altına alınır.
 
-### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Yerel Önbelleğim etkin, ancak Uygulamam hala yeniden başlatıldı. Neden? Sık kullanılan uygulama yeniden başlatmalarının bulunduğu yerel önbellek hakkında yardım ediyorum.
+### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Yerel Önbelleğim etkin, ancak Uygulamam hala yeniden başlatıldı. Bunun nedeni nedir? Sık kullanılan uygulama yeniden başlatmalarının bulunduğu yerel önbellek hakkında yardım ediyorum.
 Yerel önbellek, depolamayla ilgili uygulama yeniden başlatmalarının engellenmesine yardımcı olur. Bununla birlikte, uygulamanız hala sanal makinenin planlanan altyapı yükseltmeleri sırasında yeniden başlatmaları devam edebilir. Yerel önbellek etkinken karşılaşabileceğiniz genel uygulama yeniden başlatmaları daha az olmalıdır.
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Yerel önbellek, tüm dizinlerin daha hızlı yerel sürücüye kopyalanmasını mi dışlıyor?

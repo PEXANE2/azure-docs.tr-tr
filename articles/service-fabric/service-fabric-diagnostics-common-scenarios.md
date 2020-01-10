@@ -1,29 +1,20 @@
 ---
-title: Azure Service Fabric genel senaryoları tanılama | Microsoft Docs
-description: Azure Service Fabric genel senaryolarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric genel senaryoları tanılayın
+description: Azure Service Fabric uygulamalarında yaygın izleme ve tanılama senaryolarıyla ilgili sorun giderme hakkında bilgi edinin.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60394257"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645795"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric ile yaygın senaryoları tanılayın
 
-Bu makalede, kullanıcıların Service Fabric ile izleme ve tanılama alanında karşılaştığı yaygın senaryolar gösterilmektedir. Sunulan senaryolar, Service Fabric 'in tüm 3 katmanlarını kapsar: Uygulama, küme ve altyapı. Her çözüm, her bir senaryoyu tamamlamaya yönelik Application Insights ve Azure Izleyici günlüklerini, Azure izleme araçlarını kullanır. Her çözümdeki adımlarda, kullanıcılara Application Insights ve Azure Izleyici günlüklerinin Service Fabric bağlamında nasıl kullanılacağına ilişkin bir giriş sunulmaktadır.
+Bu makalede, kullanıcıların Service Fabric ile izleme ve tanılama alanında karşılaştığı yaygın senaryolar gösterilmektedir. Sunulan senaryolar, Service Fabric 'in tüm 3 katmanlarını kapsar: uygulama, küme ve altyapı. Her çözüm, her bir senaryoyu tamamlamaya yönelik Application Insights ve Azure Izleyici günlüklerini, Azure izleme araçlarını kullanır. Her çözümdeki adımlarda, kullanıcılara Application Insights ve Azure Izleyici günlüklerinin Service Fabric bağlamında nasıl kullanılacağına ilişkin bir giriş sunulmaktadır.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -56,7 +47,7 @@ Bu makaledeki çözümler aşağıdaki araçları kullanacaktır. Bu ayarı ayar
 1. Aynı Application Insights kaynağında, özel durumlar yerine "istekler" ile filtre uygulayabilir ve yapılan tüm istekleri görüntüleyebilirsiniz
 2. Service Fabric Application Insights SDK 'sını kullanıyorsanız, hizmetlerinizin birine bağlı bir görsel temsilini ve başarılı ve başarısız isteklerin sayısını görebilirsiniz. Sol tarafta "uygulama haritası" na tıklayın
 
-    ![AI uygulama Haritası dikey](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![penceresi AI uygulama Haritası](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![AI uygulama Haritası dikey penceresi](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI uygulama Haritası](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     Uygulama haritası hakkında daha fazla bilgi için [uygulama Haritası belgelerini](../azure-monitor/app/app-map.md) ziyaret edin
 
@@ -121,7 +112,7 @@ Tüm grafiklerle aynı görünümde, kapsayıcılarınızın performansı için 
 
      ![Performans sayaçlarını Log Analytics](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
 
-4. Bu, altyapınızın iş yüklerinizi nasıl ele almakta olduğunu görmenizi ve kaynak kullanımına göre ilgili uyarıları ayarlamanızı sağlar. Örneğin, toplam Işlemci kullanımı% 90 veya% 5 ' in üzerinde olursa bir uyarı ayarlamak isteyebilirsiniz. Bu için kullanacağınız sayaç adı "% Işlemci zamanı". Bunu, aşağıdaki sorgu için bir uyarı kuralı oluşturarak yapabilirsiniz:
+4. Bu, altyapınızın iş yüklerinizi nasıl ele almakta olduğunu görmenizi ve kaynak kullanımına göre ilgili uyarıları ayarlamanızı sağlar. Örneğin, toplam Işlemci kullanımı %90 veya %5 ' in üzerinde olursa bir uyarı ayarlamak isteyebilirsiniz. Bu için kullanacağınız sayaç adı "% Işlemci zamanı". Bunu, aşağıdaki sorgu için bir uyarı kuralı oluşturarak yapabilirsiniz:
 
     ```kusto
     Perf | where CounterName == "% Processor Time" and InstanceName == "_Total" | where CounterValue >= 90 or CounterValue <= 5.

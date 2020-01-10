@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Apex portalı ile Azure Active Directory Tümleştirme | Microsoft Docs'
-description: Apex portalı ile Azure Active Directory arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: tepesinde portalı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve tepesinde portalı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,225 +11,159 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/15/2019
+ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5021425341ed1fcc6d184a4ce072fadfdd39e24
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5225262304785cf3dd5a9c2346f338535c797332
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107053"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659687"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Öğretici: Apex portalı ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apex-portal"></a>Öğretici: tepesinde portalı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Tepe portalı Azure Active Directory (Azure AD) ile tümleştirme konusunda bilgi edinin.
-Apex portalı, Azure AD ile tümleştirme ile aşağıdaki avantajları sağlar:
+Bu öğreticide, tepesinde portalını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Tepesinde portalını Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Apex Portal erişimi, Azure AD'de kontrol edebilirsiniz.
-* Azure AD hesaplarına otomatik olarak (çoklu oturum açma) tepesinde portalında oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Azure AD 'de tepesinde portalına erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla tepesinde Portal 'da otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Apex portalı ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gerekir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* Apex portalı çoklu oturum açmayı abonelik etkin.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Tepesinde Portal çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Apex Portal destekler **IDP** tarafından başlatılan
-* Apex Portal destekler **zamanında** kullanıcı sağlama
+* Tepesinde portalı **IDP** tarafından başlatılan SSO 'yu destekler
+* Tepesinde portalı **, tam zamanında** Kullanıcı sağlamayı destekler
 
-## <a name="adding-apex-portal-from-the-gallery"></a>Galeriden Apex portalı ekleme
+## <a name="adding-apex-portal-from-the-gallery"></a>Galeriden tepesinde portalını ekleme
 
-Azure AD'de Apex portalı tümleştirmesini yapılandırmak için tepe portalı Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Tepesinde Portal tümleştirmesini Azure AD ile yapılandırmak için, Galeriden tepesinde portalını yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden Apex portalı eklemek için aşağıdaki adımları gerçekleştirin:**
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **tepesinde Portal** yazın.
+1. Sonuçlar panelinden **tepesinde Portal** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-apex-portal"></a>Tepesinde portalında Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu tepesinde portalı ile yapılandırın ve test edin. SSO 'nun çalışması için, tepesinde portalında bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+Azure AD SSO 'yu tepesinde portalı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[tepesinde Portal SSO 'Yu yapılandırın](#configure-apex-portal-sso)** .
+    * User 'ın Azure AD gösterimine bağlı olan tepesinde portalında B. Simon 'a karşılık gelen bir **[tepesinde Portal test kullanıcısı oluşturun](#create-apex-portal-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-4. Arama kutusuna **Apex portalı**seçin **Apex portalı** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+1. [Azure Portal](https://portal.azure.com/), **tepesinde portalı** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-    ![Sonuç listesinde Apex portalı](common/search-new-app.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki alanlar için değerleri girin:
 
-Bu bölümde, yapılandırma ve Apex adlı bir test kullanıcı tabanlı Portal ile Azure AD çoklu oturum açmayı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısı ve ilgili kullanıcı Apex portalında arasında bir bağlantı ilişki kurulması gerekir.
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
 
-Yapılandırma ve Azure AD çoklu oturum açma Apex portalı ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
-
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Apex portalı çoklu oturum açmayı yapılandırma](#configure-apex-portal-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Apex portalı test kullanıcısı oluşturma](#create-apex-portal-test-user)**  - Apex portalındaki kullanıcı Azure AD gösterimini bağlı Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
-
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
-
-Apex portalı ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki adımları gerçekleştirin:
-
-1. İçinde [Azure portalında](https://portal.azure.com/), **Apex portalı** uygulama tümleştirme sayfasında **çoklu oturum açma**.
-
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
-
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
-
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
-
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında, aşağıdaki adımları gerçekleştirin:
-
-    ![Apex portalı etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
-
-    a. İçinde **tanımlayıcı** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<customer name>.apexportal.net/saml/sso.aspx`
-
-    b. İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<customer name>.apexportal.net/saml/sso.aspx`
+    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek tanımlayıcısı ve yanıt URL'si ile güncelleştirin. İlgili kişi [Apex portalı istemcisi Destek ekibine](mailto:support@apexanalytix.com) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [tepesinde Portal istemci destek ekibine](mailto:support@apexanalytix.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. Apex Portalı Uygulama belirli bir biçimde SAML onaylamalarını bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu öznitelikleri değerlerini yönetebilirsiniz **kullanıcı öznitelikleri** uygulama tümleştirme sayfasında bölümü. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için düğmeyi **kullanıcı öznitelikleri** iletişim.
+1. Tepesinde portal uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-6. İçinde **kullanıcı taleplerini** bölümünde **kullanıcı öznitelikleri** iletişim kutusunda kullanarak talep Düzenle **düzenleme simgesi** veya talep kullanarak **Ekle yeni talep**SAML belirteci özniteliği yukarıdaki görüntüde gösterildiği gibi yapılandırın ve aşağıdaki adımları gerçekleştirin:
+1. Yukarıdaki tepesinde portal uygulaması, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
     | Ad | Kaynak özniteliği|
     | -------- | --------- |
-    | FIRSTNAME | User.givenName |
-    | LASTNAME | User.surname |
-    | POSTA | User.Mail |
+    | FIRSTNAME | Kullanıcı. |
+    | LASTNAME | User. soyadı |
+    | - | Kullanıcı. Mail |
     | | |
 
-    a. Tıklayın **Ekle yeni talep** açmak için **yönetmek, kullanıcı talepleri** iletişim.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. İçinde **adı** metin kutusuna, bu satır için gösterilen öznitelik adı yazın.
-
-    c. Bırakın **Namespace** boş.
-
-    d. Kaynağı olarak **özniteliği**.
-
-    e. Gelen **kaynak özniteliği** listesinde, ilgili satır için gösterilen öznitelik değeri yazın.
-
-    f. Tıklayın **Tamam**
-
-    g. **Kaydet**’e tıklayın.
-
-7. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **Federasyon meta veri XML**  bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-8. Üzerinde **Apex Portal'ı ayarlama** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+1. **Tepesinde portalını ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
-
-    a. Oturum Açma URL'si:
-
-    b. Azure AD Tanımlayıcısı
-
-    c. Oturum Kapatma URL'si
-
-### <a name="configure-apex-portal-single-sign-on"></a>Apex Portal çoklu oturum açmayı yapılandırın
-
-Çoklu oturum açmayı yapılandırma **Apex portalı** tarafı, indirilen göndermek için ihtiyacınız **Federasyon meta verileri XML** ve uygun Azure portalına kopyalanan URL'lerden [Apex Portal Destek ekibine](mailto:support@apexanalytix.com). Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
-
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Seçin **yeni kullanıcı** ekranın üstünde.
-
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. İçinde **adı** alana **BrittaSimon**.
-  
-    b. İçinde **kullanıcı adı** alan türü `brittasimon\@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com.
-
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Tepe Portalı'na erişim izni verdiğinizde, Azure çoklu oturum açma kullanılacak Britta Simon etkinleştirin.
+Bu bölümde, tepesinde portalına erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **Apex portalı**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **tepesinde Portal**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-2. Uygulamalar listesinde **Apex portalı**.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Uygulamalar listesinde Apex Portal bağlantısı](common/all-applications.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+## <a name="configure-apex-portal-sso"></a>Tepesinde Portal SSO 'yu yapılandırma
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+**Tepesinde Portal** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal [Portal destek ekibine](mailto:support@apexanalytix.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+### <a name="create-apex-portal-test-user"></a>Tepesinde Portal test kullanıcısı oluşturma
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
-
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
-
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
-
-### <a name="create-apex-portal-test-user"></a>Apex portalı test kullanıcısı oluşturma
-
-Bu bölümde, Britta Simon adlı bir kullanıcı Apex portalında oluşturulur. Apex portalı just-ın-time kullanıcı hazırlama, varsayılan olarak etkin olduğu destekler. Bu bölümde, hiçbir eylem öğesini yoktur. Apex Portalı'nda bir kullanıcı zaten mevcut değilse yeni bir kimlik doğrulamasından sonra oluşturulur.
+Bu bölümde, tepesinde portalında Britta Simon adlı bir Kullanıcı oluşturulur. Tepesinde portalı, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı tepesinde portalında zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 > [!NOTE]
-> Bir kullanıcı el ile oluşturmanız gerekiyorsa, iletişime geçmeniz [Apex Portal Destek ekibine](mailto:support@apexanalytix.com).
+> Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [tepesinde Portal destek ekibine](mailto:support@apexanalytix.com)başvurmanız gerekir.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-Erişim panelinde Apex portalı kutucuğa tıkladığınızda, otomatik olarak SSO'yu ayarlama Apex portalında oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde tepesinde Portal kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız tepesinde portalında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile tepesinde portalını deneyin](https://aad.portal.azure.com/)
+

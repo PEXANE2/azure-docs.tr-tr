@@ -1,56 +1,56 @@
 ---
-title: Azure portalında yüksek karşıtlığı açma | Microsoft Docs
-description: Yüksek karşıtlığı açma veya Azure portalı temayı değiştirme konusunda bilgi edinin.
+title: Azure portal yüksek karşıtlığı aç | Microsoft Docs
+description: Azure portal temasını değiştirerek gösterilen arka plan ve yazı tipi renklerini seçin. Azure portal daha hızlı ve daha kolay okunabilir hale getirmek için yüksek karşıtlığı etkinleştirin.
 services: azure-portal
 keywords: ''
-author: kfollis
-ms.author: kfollis
-ms.date: 04/08/2019
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
-ms.openlocfilehash: 59824c4a10c50265ea0a15be69755748b87d4a3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db0b010d1adcf4f5178390913bedf773580dbb80
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60690411"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640389"
 ---
-# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Yüksek karşıtlığı açma veya Azure portalında tema değiştirme
+# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Azure portal yüksek karşıtlığı açın veya temayı değiştirin
 
-Yüksek Karşıtlık ayarlarını Azure portalında okunmasını kolaylaştırmak. Portal arka plan renklerini değiştiren bir tema de seçebilirsiniz.
+Yüksek karşıtlık ayarları Azure portal okumayı daha kolay hale getirir. Ayrıca portalın arka plan renklerini değiştiren bir tema seçebilirsiniz.
 
-Daha fazla Karşıtlık gerekir ya da Azure portalında renk düzenini değiştirmek istiyorsanız, değişiklik yapmak için portal ayarları'na gidin.
+Daha fazla karşıtlığa ihtiyacınız varsa veya Azure portal renk düzenini değiştirmek istiyorsanız, değişikliği yapmak için portal ayarları ' na gidin.
 
 ## <a name="turn-on-high-contrast"></a>Yüksek karşıtlığı açma
 
-1. Başlığını [Azure portalında](https://portal.azure.com)seçin **ayarları**.
+1. [Azure Portal](https://portal.azure.com)üst bilgisinde **Ayarlar**' ı seçin.
 
-    ![Portal ayarlarını dişli simgesini Azure portalında gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
-1. Seçin **beyaz** veya **siyah**.
+    ![Azure portal portal ayarları dişli simgesini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+1. **Beyaz** veya **Siyah**seçeneğini belirleyin.
 
-    ![Azure portal ayarlarında yüksek karşıtlık seçeneklerini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
+    ![Azure portal ayarlarındaki yüksek karşıtlık seçeneklerini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
 1. **Uygula**’yı seçin.
 
 > [!NOTE]
-> Yüksek karşıtlık teması seçin diğer tüm tema seçimlerini geçersiz kılar.
+> Yüksek karşıtlık teması seçerseniz, diğer tüm tema seçimlerini geçersiz kılar.
 >
 >
 
-## <a name="change-theme"></a>Temayı değiştir
+## <a name="change-theme"></a>Temayı Değiştir
 
-1. Başlığını [Azure portalında](https://portal.azure.com)seçin **ayarları**.
+1. [Azure Portal](https://portal.azure.com)üst bilgisinde **Ayarlar**' ı seçin.
 
-    ![Portal ayarlarını dişli simgesini Azure portalında gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+    ![Azure portal portal ayarları dişli simgesini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 
-1. Bir tema seçin.
+1. Tema seçin.
 
-    ![Azure portal ayarlarında tema seçeneklerini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
+    ![Azure portal ayarlarındaki tema seçeneklerini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
 
 1. **Uygula**’yı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portalında klavye kısayolları](azure-portal-keyboard-shortcuts.md)
+- [Azure portal klavye kısayolları](azure-portal-keyboard-shortcuts.md)
 - [Desteklenen tarayıcılar ve cihazlar](../azure-preview-portal-supported-browsers-devices.md)

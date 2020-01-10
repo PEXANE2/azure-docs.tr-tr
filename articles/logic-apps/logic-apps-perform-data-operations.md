@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793123"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666746"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps veri işlemlerini gerçekleştirme
 
@@ -50,7 +50,7 @@ Bu eylemler JavaScript Nesne Gösterimi (JSON) biçimindeki verilerle çalışma
 
 Daha karmaşık JSON dönüştürmeleri oluşturmak için bkz. [sıvı şablonları ile GELIŞMIŞ JSON dönüştürmeleri gerçekleştirme](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -200,7 +200,7 @@ Eylemde **başlık** sütununu boş tutun. **Değer** sütunundaki her satırda,
 
    `item()?['<array-property-name>']`
 
-   Örnek:
+   Örneğin:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -232,7 +232,7 @@ Eylemin JSON tanımında, `columns` dizisinin içinde, `header` özelliğini bo�
    }
    ```
 
-   Örnek:
+   Örneğin:
 
    ```json
    "Create_CSV_table": {
@@ -351,7 +351,7 @@ Eylemde **başlık** sütununu boş tutun. **Değer** sütunundaki her satırda,
 
    `item()?['<array-property-name>']`
 
-   Örnek:
+   Örneğin:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -383,7 +383,7 @@ Eylemin JSON tanımında, `columns` dizisinin içinde, `header` özelliğini bo�
    }
    ```
 
-   Örnek:
+   Örneğin:
 
    ```json
    "Create_HTML_table": {
@@ -443,6 +443,9 @@ Belirli ölçütlere uyan öğeleri olan daha küçük bir dizi oluşturmak içi
 > Koşulunuz içinde kullandığınız herhangi bir filtre metni büyük/küçük harfe duyarlıdır. Ayrıca, bu eylem dizideki öğelerin biçimini veya bileşenlerini değiştiremez. 
 > 
 > Dizi çıktısını **filtre dizisi** eyleminde kullanmak için, bu eylemler dizileri girdi olarak kabul etmelidir ya da çıktı dizisini başka bir uyumlu biçime dönüştürmeniz gerekebilir.
+> 
+> Bir HTTP uç noktası çağırır ve bir JSON yanıtı alırsanız JSON yanıtını işlemek için **JSON 'U Ayrıştır** eylemini kullanın. 
+> Aksi halde, **diziyi filtrele** EYLEMI, JSON yükünün yapısını değil yalnızca yanıt gövdesini okuyabilir.
 
 Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **filtre dizisini** kopyalayabilir ve bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına değişken eylem tanımlarını **başlatabilirsiniz** : [veri işlemi kodu örnekleri-filtre dizisi](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 

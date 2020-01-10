@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric güvenilir koleksiyon nesnesi serileştirme | Microsoft Docs
-description: Azure Service Fabric güvenilir koleksiyonlar nesne serileştirme
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak
-ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Güvenilir koleksiyon nesnesi serileştirme
+description: Varsayılan strateji ve özel serileştirme tanımlama dahil olmak üzere Azure Service Fabric güvenilir koleksiyonlar nesne serileştirme hakkında bilgi edinin. '
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/8/2017
-ms.author: atsenthi
-ms.openlocfilehash: d5e7dfb84f6e8a8fbd029ccc0b15c17f68216c33
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599297"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639556"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric güvenilir koleksiyon nesnesi serileştirmesi
 Güvenilir koleksiyonlar, makine hatalarından ve güç kesintilerine dayanıklı olduklarından emin olmak için öğelerini çoğaltın ve kalıcı hale getirir.
@@ -37,25 +26,25 @@ Güvenilir durum Yöneticisi aşağıdaki türler için yerleşik serileştirici
 - Guid
 - bool
 - byte
-- SByte
+- sbyte
 - byte[]
 - char
-- dize
+- string
 - decimal
 - double
 - float
 - int
 - uint
-- long
-- 'tur
-- kısadır
+- uzun
+- ulong
+- short
 - ushort
 
-## <a name="custom-serialization"></a>Özel serileştirme
+## <a name="custom-serialization"></a>Özel Serileştirme
 
 Özel serileştiriciler, performansı artırmak veya verileri tel ve diskte şifrelemek için yaygın olarak kullanılır. Diğer nedenlerden dolayı, özel serileştiriciler, tür hakkındaki bilgileri serileştirmek zorunda olmadığından genel serileştiriciye göre daha etkilidir. 
 
-[Ireliablestatemanager. tryaddstateserializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) , verilen tür T için özel bir serileştirici kaydetmek üzere kullanılır. Kurtarma başlamadan önce, tüm güvenilir koleksiyonların kalıcı verileri okumak için ilgili seri hale getirici 'e erişimi olduğundan, bu kayıt, StatefulServiceBase 'in yapımını gerçekleşmelidir.
+[Ireliablestatemanager. TryAddStateSerializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) , verilen tür t için özel bir serileştirici kaydetmek üzere kullanılır. Kurtarma başlamadan önce, tüm güvenilir koleksiyonların kalıcı verileri okumak için ilgili seri hale getirici 'e erişimi olduğundan, bu kayıt, StatefulServiceBase 'in yapımını gerçekleşmelidir.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,10 +62,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Özel seri hale getirici uygulama
 
-Özel serileştirici, [istateserializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) arabirimini uygulamalıdır.
+Özel serileştirici, [Istateserializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) arabirimini uygulamalıdır.
 
 > [!NOTE]
-> İstateserializer\<T >, temel değer olarak adlandırılan ek bir T 'yi alan yazma ve okuma için bir aşırı yükleme içerir. Bu API, değişiklik serileştirme içindir. Şu anda değişiklik serileştirme özelliği kullanıma sunulmamaktadır. Bu nedenle, bu iki aşırı yükleme, fark serileştirme gösterilene ve etkinleştirilene kadar çağrılmaz.
+> IStateSerializer\<T >, temel değer adlı ek bir T 'de alan yazma ve okuma için bir aşırı yükleme içerir. Bu API, değişiklik serileştirme içindir. Şu anda değişiklik serileştirme özelliği kullanıma sunulmamaktadır. Bu nedenle, bu iki aşırı yükleme, fark serileştirme gösterilene ve etkinleştirilene kadar çağrılmaz.
 
 Aşağıda dört özellik içeren OrderKey adlı örnek bir özel tür verilmiştir
 
@@ -96,7 +85,7 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-Aşağıda, istateserializer\<orderkey > örnek bir uygulamasıdır.
+Aşağıda, bir IStateSerializer\<OrderKey > uygulamasının örneği verilmiştir.
 BaseValue içinde olan okuma ve yazma aşırı yüklemelerinin, ileten uyumluluk için ilgili aşırı yüklerini çağırdığına göz atın.
 
 ```csharp

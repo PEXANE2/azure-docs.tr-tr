@@ -1,34 +1,36 @@
 ---
-title: Hadoop yığını izleme hata iletilerini - Azure HDInsight
-description: Azure HDInsight, Hadoop için dizin yığın izleme hata iletileri. Hata, sorun giderme bilgilerini görmek için listede bulun.
-keywords: yığın izlemesi, hata iletileri
-ms.service: hdinsight
+title: Hadoop Stack izleme hata iletileri-Azure HDInsight
+description: Azure HDInsight 'ta Hadoop Stack izleme hata iletilerinin dizini. Sorun giderme bilgilerini görmek için listede hatayı bulun.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: troubleshooting
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/14/2018
-ms.openlocfilehash: 0fb884c46525c0d5d14deb1521f086451a969656
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/03/2020
+ms.openlocfilehash: 3987a2d208bb96120d443300068ea739acbb4131
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64691702"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680256"
 ---
-# <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>Sorun giderme makaleleri HDInsight, Apache Hadoop dizini
-Makalelerde hataları türleri tarafından düzenlenir.
+# <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight sorun giderme makalelerinde Apache Hadoop dizini
+
+Makaleler, hata türlerine göre düzenlenir.
 
 ## <a name="out-of-memory-error"></a>Yetersiz bellek hatası
-* [Yetersiz bellek hatasını HDInsight içinde bir Apache Hive düzeltme](hdinsight-hadoop-hive-out-of-memory-error-oom.md): Yetersiz bellek hatası (OOM) Hive sorgusunun düzeltin. Müşteri senaryoları, birçok büyük tablolar arasında bir sorgu içerir.
 
-## <a name="apache-hive-query-performance"></a>Apache Hive sorgu performansı
-* [HDInsight, Apache Hadoop için Apache Hive sorguları iyileştirmek](hdinsight-hadoop-optimize-hive-query.md): Bu makale, Hive sorguları için uygulayabileceğiniz en sık karşılaşılan bazı Hive performans iyileştirme yöntemleri kapsar.
-* [Apache Hive Azure HDInsight'ı kullanarak sorun giderme](hdinsight-troubleshoot-hive.md).
+* [HDInsight 'ta bellek yetersiz Apache Hive hatası giderme](hdinsight-hadoop-hive-out-of-memory-error-oom.md): bir Hive sorgusundan bellek yetersiz hatası (OOM) düzeltmesini düzeltir. Müşteri senaryosu birçok büyük tablo üzerinde bir sorgu içerir.
 
-## <a name="more-troubleshooting-articles"></a>Daha fazla sorun giderme makaleleri
+## <a name="apache-hive-query-performance"></a>Sorgu performansını Apache Hive
+
+* [HDInsight 'ta Apache Hadoop için Apache Hive sorgularını En Iyi duruma getirme](hdinsight-hadoop-optimize-hive-query.md): Bu makalede, Hive sorgularına uygulayabileceğiniz en yaygın Hive performansı en iyi duruma getirme yöntemleri ele alınmaktadır.
+* [Azure HDInsight 'ı kullanarak Apache Hive sorunlarını giderin](hdinsight-troubleshoot-hive.md).
+
+## <a name="more-troubleshooting-articles"></a>Daha fazla sorun giderme makalesi
+
 * [Linux üzerinde HDInsight’ı kullanma hakkında bilgiler](hdinsight-hadoop-linux-information.md)
-* [HDInsight üzerinde Linux tabanlı Hadoop üzerinde erişim Apache Hadoop YARN uygulama günlüklerine](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Linux tabanlı HDInsight üzerinde Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirme](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Azure HDInsight üzerinde Apache Hadoop bileşenleri için sürüm notları](hdinsight-release-notes.md)
-
+* [HDInsight 'ta Linux tabanlı Hadoop 'ta YARN uygulama günlüklerine erişim Apache Hadoop](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Linux tabanlı HDInsight 'ta Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirme](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Azure HDInsight 'ta Apache Hadoop bileşenleri için sürüm notları](hdinsight-release-notes.md)

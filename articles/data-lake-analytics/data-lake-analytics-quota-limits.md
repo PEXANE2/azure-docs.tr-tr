@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: d0ccfb00c4b45a2a29ccab74362a4296cdcd7cae
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c1d7c8cc4b50682a74ac88b2113f0d44ebc55199
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595701"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644724"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics kotaları ve sınırları ayarla
 
@@ -34,7 +34,7 @@ Bu sınırın ötesine geçmek istiyorsanız, bu seçenekleri deneyebilirsiniz:
 
 **Hesap başına en fazla analiz birimi (Avustralya) sayısı:** 250, varsayılan 32
 
-Bu, hesabınızda eşzamanlı olarak çalışabilecek maksimum au sayısıdır. Toplam çalışan AU sayısı bu sınırı aşarsa, daha yeni işler otomatik olarak sıraya alınır. Örnek:
+Bu, hesabınızda eşzamanlı olarak çalışabilecek maksimum au sayısıdır. Toplam çalışan AU sayısı bu sınırı aşarsa, daha yeni işler otomatik olarak sıraya alınır. Örneğin:
 
 * Yalnızca 32 au ile çalışan tek bir işiniz varsa, ikinci bir işi gönderdiğinizde, ilk iş tamamlanana kadar iş kuyruğuna göre bekleyecektir.
 * Çalışan dört işiniz zaten varsa ve her biri 8 au kullanıyorsa, 8 au 'yı gerektiren beşinci bir iş gönderdiğinizde, 8 au kullanılabilir olana kadar iş sırasında bekler.
@@ -58,7 +58,7 @@ Bu, hesabınızda eşzamanlı olarak çalışabilecek en fazla iş sayısıdır.
 
 ## <a name="increase-maximum-quota-limits"></a>Maksimum kota sınırlarını artır
 
-Azure limitleriyle ilgili daha fazla bilgiyi [Azure hizmeti 'ne özgü sınırlar belgelerinde](../azure-subscription-service-limits.md#data-lake-analytics-limits)bulabilirsiniz.
+Azure limitleriyle ilgili daha fazla bilgiyi [Azure hizmeti 'ne özgü sınırlar belgelerinde](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-analytics-limits)bulabilirsiniz.
 
 1. Azure portal bir destek isteği açın.
 

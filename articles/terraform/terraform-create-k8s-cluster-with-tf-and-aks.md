@@ -3,12 +3,12 @@ title: Öğretici-Terkform kullanarak Azure Kubernetes Service (AKS) ile bir Kub
 description: Azure Kubernetes Service ve Terraform ile Kubernetes Kümesi oluşturmayı gösteren öğretici
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 792c075cfb40eb4904a30b63e9902a59ceda9bc1
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: e04abdab2893e76a65615635ae9937797be89855
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159306"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708283"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Öğretici: Terrayform kullanarak Azure Kubernetes hizmeti ile bir Kubernetes kümesi oluşturma
 
@@ -21,13 +21,13 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 > * Terraform ve AKS ile Kubernetes kümesi oluşturma
 > * kubectl aracıyla bir Kubernetes kümesinin kullanılabilirlik durumunu test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
 - **Terraform'u yapılandırma**: [Terraform'u yükleme ve Azure erişimini yapılandırma](/azure/virtual-machines/linux/terraform-install-configure) makalesindeki yönergeleri izleyin
 
-- **Azure hizmet sorumlusu**: **Azure CLI ile Azure hizmet sorumlusu oluşturma** makalesinin [Hizmet sorumlusunu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) bölümündeki yönergeleri izleyin. appId, displayName, password ve tenant değerlerini not edin.
+- **Azure hizmet sorumlusu**: [Azure CLI ile Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) makalesinin **Hizmet sorumlusunu oluşturma** bölümündeki yönergeleri izleyin. appId, displayName, password ve tenant değerlerini not edin.
 
 ## <a name="create-the-directory-structure"></a>Dizin yapısını oluşturma
 
@@ -138,12 +138,10 @@ Kubernetes kümesinin kaynaklarını tanımlayan Terraform yapılandırma dosyas
             }
         }
 
-        agent_pool_profile {
+        default_node_pool {
             name            = "agentpool"
-            count           = var.agent_count
+            node_count      = var.agent_count
             vm_size         = "Standard_DS1_v2"
-            os_type         = "Linux"
-            os_disk_size_gb = 30
         }
 
         service_principal {
@@ -168,7 +166,7 @@ Kubernetes kümesinin kaynaklarını tanımlayan Terraform yapılandırma dosyas
 
     `linux_profile` kaydı, SSH kullanarak çalışan düğümlerinde oturum açmayı etkinleştiren ayarları yapılandırmanıza olanak tanır.
 
-    AKS ile yalnızca çalışan düğümleri için ödeme yaparsınız. `agent_pool_profile` kaydı bu çalışan düğümlerinin ayrıntılarını yapılandırır. `agent_pool_profile record` oluşturulacak çalışan düğümlerinin sayısını ve çalışan düğümlerinin türünü içerir. Daha sonra kümede ölçeği büyütme veya küçültme yapmanız gerekiyorsa, bu kayıttaki `count` değerini değiştirirsiniz.
+    AKS ile yalnızca çalışan düğümleri için ödeme yaparsınız. `default_node_pool` kaydı bu çalışan düğümlerinin ayrıntılarını yapılandırır. `default_node_pool record` oluşturulacak çalışan düğümlerinin sayısını ve çalışan düğümlerinin türünü içerir. Daha sonra kümede ölçeği büyütme veya küçültme yapmanız gerekiyorsa, bu kayıttaki `count` değerini değiştirirsiniz.
 
 1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;CTRL > Q**).
 
@@ -289,7 +287,7 @@ Bu bölümde, aşağıdaki görevlerin nasıl yapılacağını göreceksiniz:
 
     ![Depolama hesabı adı](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account.png)
 
-1. **key1** **anahtar** değerini not edin. (Anahtarın sağ tarafındaki simgeyi seçtiğinizde değer panoya kopyalanır.)
+1. **KEY1** **anahtar** değerini unutmayın. (Anahtarın sağ tarafındaki simgeyi seçtiğinizde değer panoya kopyalanır.)
 
     ![Depolama hesabı erişim anahtarları](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
 

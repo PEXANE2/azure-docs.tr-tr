@@ -2,18 +2,18 @@
 title: Özel MapReduce programlarını çalıştırma-Azure HDInsight
 description: Azure HDInsight kümelerinde özel Apache MapReduce programlarını ne zaman ve nasıl çalıştıracağınızı öğrenin.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.author: ashishth
-ms.openlocfilehash: 305eefbaa674e414ab8134986e6cd526abe8208e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 78623f738285e781cb561a3844db8fbf37226929
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810749"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645030"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Özel MapReduce programlarını çalıştırma
 
@@ -22,9 +22,9 @@ HDInsight gibi Apache Hadoop tabanlı büyük veri sistemleri, çok çeşitli ar
 | Sorgu mekanizması | Yararları | Dikkat edilmesi gerekenler |
 | --- | --- | --- |
 | **HiveQL kullanarak Apache Hive** | <ul><li>Veri özetlemesi ve isteğe bağlı sorgulama için, büyük miktarlarda sabit verilerin toplu işleme ve analizine yönelik mükemmel bir çözümdür. Tanıdık bir SQL benzeri sözdizimi kullanır.</li><li>Bu, kolayca bölümlenebilir ve dizine alınmış kalıcı veri tabloları oluşturmak için kullanılabilir.</li><li>Aynı verilerden birden çok dış tablo ve görünüm oluşturulabilir.</li><li>Veri depolama ve işleme için büyük ölçüde genişleme ve hataya dayanıklı yetenekler sağlayan basit bir veri ambarı uygulamasını destekler.</li></ul> | <ul><li>Kaynak verilerinde en az bir tanımlanabilir yapıya sahip olmasını gerektirir.</li><li>Gerçek zamanlı sorgular ve satır düzeyi güncelleştirmeler için uygun değildir. En iyi yöntem, büyük veri kümeleri üzerinde toplu iş işleri için kullanılır.</li><li>Karmaşık işlem görevlerinin bazı türlerini gerçekleştiremeyebilir.</li></ul> |
-| **Pig Latin kullanarak Apache Pig** | <ul><li>Verileri kümeler halinde işlemek, veri kümelerini birleştirmek ve filtrelemek, kayıtlar veya kayıt gruplarına işlevler uygulamak ve sütunları tanımlayarak, değerleri gruplayarak veya sütunları satırlara dönüştürerek yeniden yapılandırma için harika bir çözümdür.</li><li>Veri üzerinde işlem dizisi olarak iş akışı tabanlı bir yaklaşım kullanabilir.</li></ul> | <ul><li>SQL kullanıcıları Pig, HiveQL 'tan daha az tanıdık ve kullanımı daha zor olabilir.</li><li>Varsayılan çıktı genellikle bir metin dosyasıdır ve bu nedenle Excel gibi görselleştirme araçlarıyla kullanılması daha zor olabilir. Genellikle çıkış üzerine bir Hive tablosu katmanlanıyor olursunuz.</li></ul> |
+| **Pig Latin kullanarak Apache Pig** | <ul><li>Verileri kümeler halinde işlemek, veri kümelerini birleştirmek ve filtrelemek, kayıtlar veya kayıt gruplarına işlevler uygulamak ve sütunları tanımlayarak, değerleri gruplayarak veya sütunları satırlara dönüştürerek yeniden yapılandırma için harika bir çözümdür.</li><li>Veri üzerinde işlem dizisi olarak iş akışı tabanlı bir yaklaşım kullanabilir.</li></ul> | <ul><li>SQL kullanıcıları Pig, HiveQL 'tan daha az tanıdık ve kullanımı daha zor olabilir.</li><li>Varsayılan çıktı genellikle bir metin dosyasıdır ve bu nedenle Excel gibi görselleştirme araçlarıyla kullanılması daha zor olabilir. Genellikle çıkış üzerine bir Hive tablosu katmanlarız.</li></ul> |
 | **Özel harita/azaltma** | <ul><li>Eşleme üzerinde tam denetim sağlar ve aşamaları ve yürütmeyi azaltır.</li><li>Sorguların, kümeden en yüksek performansı elde etmek veya sunucular ve ağ üzerindeki yükü en aza indirmek için iyileştirilme olanağı sağlar.</li><li>Bileşenler bir dizi iyi bilinen dilde yazılabilir.</li></ul> | <ul><li>Kendi eşlemenizi oluşturmanız ve bileşenleri azaltmanız gerektiğinden Pig veya Hive kullanmaktan daha zordur.</li><li>Veri kümelerinin katılması gereken işlemlerin uygulanması daha zordur.</li><li>Kullanılabilir test çerçeveleri olsa da, kod hata ayıklama kodu normal bir uygulamadan daha karmaşıktır çünkü kod, Hadoop iş Zamanlayıcı denetimi altında bir toplu iş olarak çalışır.</li></ul> |
-| **Apache HCatalog** | <ul><li>Depolama alanının yol ayrıntılarını soyutlar, yönetimi kolaylaştırır ve kullanıcıların verilerin depolandığı yeri bilmesini sağlama ihtiyacını ortadan kaldırır.</li><li>Veri kullanılabilirliği gibi olayların bildirilmesini sağlar. Bu, örneğin, Oozie gibi diğer araçların işlemlerin ne zaman oluştuğunu algılamasına izin verir.</li><li>Anahtara göre bölümlendirme dahil olmak üzere verilerin ilişkisel bir görünümünü sunar ve verilerin erişimi kolaylaştırır.</li></ul> | <ul><li>Varsayılan olarak RCFile, CSV metni, JSON metni, SequenceFile ve ORC dosya biçimlerini destekler, ancak diğer biçimler için özel bir SerDe yazmanız gerekebilir.</li><li>HCatalog iş parçacığı açısından güvenli değil.</li><li>Pig betiklerde HCatalog yükleyicisi kullanılırken sütunlar için veri türlerinde bazı kısıtlamalar vardır. Daha fazla bilgi için bkz. Apache HCatalog belgelerindeki [Hcatloader veri türleri](https://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes) .</li></ul> |
+| **Apache HCatalog** | <ul><li>Depolama alanının yol ayrıntılarını soyutlar, yönetimi kolaylaştırır ve kullanıcıların verilerin depolandığı yeri bilmesini sağlama ihtiyacını ortadan kaldırır.</li><li>Veri kullanılabilirliği gibi olayların bildirilmesini sağlar. Bu, örneğin, Oozie gibi diğer araçların işlemlerin ne zaman oluştuğunu algılamasına izin verir.</li><li>Anahtara göre bölümlendirme dahil olmak üzere verilerin ilişkisel bir görünümünü sunar ve verilerin erişimi kolaylaştırır.</li></ul> | <ul><li>Varsayılan olarak RCFile, CSV metni, JSON metni, SequenceFile ve ORC dosya biçimlerini destekler, ancak diğer biçimler için özel bir SerDe yazmanız gerekebilir.</li><li>HCatalog iş parçacığı açısından güvenli değildir.</li><li>Pig betiklerde HCatalog yükleyicisi kullanılırken sütunlar için veri türlerinde bazı kısıtlamalar vardır. Daha fazla bilgi için bkz. Apache HCatalog belgelerindeki [Hcatloader veri türleri](https://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes) .</li></ul> |
 
 Genellikle, ihtiyacınız olan sonuçlara neden olan bu yaklaşımlardan en kolay şekilde yararlanabilirsiniz. Örneğin, yalnızca Hive kullanarak bu sonuçlara ulaşabiliyor olabilirsiniz ancak daha karmaşık senaryolar için Pig kullanmanız veya hatta kendi eşlemenizi yazmanız ve bileşenleri azaltmanız gerekebilir. Ayrıca, Hive veya Pig ile denemeler yaptıktan sonra, özel harita ve bileşenleri azaltma işlemlerinin, işleme için ince ayar yaparak daha iyi performans sağlayabileceğine karar verebilirsiniz.
 
@@ -48,27 +48,27 @@ Kendi eşlemenizi oluşturmayı düşünün ve aşağıdaki koşullara göre bil
 
 En yaygın MapReduce programları Java dilinde yazılır ve bir jar dosyasına derlenir.
 
-1. MapReduce programınızı geliştirip, derledikten ve test ettikten sonra jar dosyanızı headnode 'a `scp` yüklemek için komutunu kullanın.
+1. MapReduce programınızı geliştirip test ettikten sonra, jar dosyanızı headnode 'a yüklemek için `scp` komutunu kullanın.
 
-    ```bash
-    scp mycustomprogram.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    scp mycustomprogram.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    **Kullanıcı adını** KÜMENIZ için SSH kullanıcı hesabı ile değiştirin. **Clustername** değerini küme adıyla değiştirin. SSH hesabının güvenliğini sağlamak için bir parola kullandıysanız parolayı girmeniz istenir. Bir sertifika kullandıysanız, özel anahtar dosyasını belirtmek için `-i` parametresini kullanmanız gerekebilir.
+    CLUSTERNAME değerini küme adıyla değiştirin. SSH hesabının güvenliğini sağlamak için bir parola kullandıysanız parolayı girmeniz istenir. Bir sertifika kullandıysanız, özel anahtar dosyasını belirtmek için `-i` parametresini kullanmanız gerekebilir.
 
-2. [SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)kullanarak kümeye bağlanın.
+1. Kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
-    ```bash
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. SSH oturumunda MapReduce programınızı YARN ile yürütün.
+1. SSH oturumunda MapReduce programınızı YARN ile yürütün.
 
     ```bash
     yarn jar mycustomprogram.jar mynamespace.myclass /example/data/sample.log /example/data/logoutput
     ```
 
-    Bu komut MapReduce işini YARN 'ye gönderir. Giriş dosyası `/example/data/sample.log`ve çıkış `/example/data/logoutput`dizini. Giriş dosyası ve herhangi bir çıkış dosyası, küme için varsayılan depolama alanında depolanır.
+    Bu komut MapReduce işini YARN 'ye gönderir. Giriş dosyası `/example/data/sample.log`ve çıkış dizini `/example/data/logoutput`. Giriş dosyası ve herhangi bir çıkış dosyası, küme için varsayılan depolama alanında depolanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

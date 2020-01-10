@@ -3,7 +3,7 @@ title: Azure Izleme günlükleri için kullanımı ve maliyetleri yönetme | Mic
 description: Azure Izleyici 'de Log Analytics çalışma alanınızın fiyatlandırma planını değiştirme ve veri hacmini ve bekletme ilkesini yönetme hakkında bilgi edinin.
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.author: magoedte
+ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f60b0b9294fa3f11889613a7d63f21e87fbea201
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e4146155915979e51a6e3a989ab57316ca643018
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894122"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658028"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme
 
@@ -90,7 +90,7 @@ Fiyatlandırma katmanını, `sku` parametresini (`pricingTier` Azure Resource Ma
 
 2016 Nisan 'dan önce oluşturulan çalışma alanları, 30 ve 365 günün sabit veri bekletmesini içeren orijinal **Standart** ve **Premium** fiyatlandırma katmanlarına de erişebilir. Yeni çalışma alanları **Standart** veya **Premium** fiyatlandırma katmanlarında oluşturulamaz ve bir çalışma alanı bu katmanlardan taşınmışsa, geri taşınamaz. 
 
-Fiyatlandırma Katmanı sınırlamalarıyla ilgili daha fazla ayrıntıya [buradan](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)ulaşabilirsiniz.
+Fiyatlandırma Katmanı sınırlamalarıyla ilgili daha fazla ayrıntıya [buradan](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)ulaşabilirsiniz.
 
 > [!NOTE]
 > System Center için OMS E1 Suite, OMS E2 Suite veya OMS eklentisi satın alma işleminden gelen yetkilendirmeleri kullanmak için *düğüm başına* fiyatlandırma katmanını Log Analytics seçin.
@@ -439,7 +439,7 @@ Toplanan veri beklenen miktarı aştığında size bildirilmesini sağlamak içi
    - **Sinyal Adı** bölümünde **Özel günlük araması**'nı seçin
    - **Arama sorgusu**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
    - **Uyarı mantığı**, **Temeli** *bir dizi sonuçtur* ve **Koşul**, *Büyüktür* bir **Eşik değeri**, *0*
-   - Kullanım verileri saatte bir güncelleştirildiğinden **Süre** *1440* dakika, **Uyarı sıklığı** ise *60* dakikada bir olarak belirlenmiştir.
+   - Kullanım verileri saatte bir güncelleştirildiğinden **Süre***1440* dakika, **Uyarı sıklığı** ise *60* dakikada bir olarak belirlenmiştir.
 - **Uyarı ayrıntılarını tanımlama** adımında aşağıdakileri belirtin:
    - **Ad**: *24 saat içinde 100 GB'den büyük veri hacmi*
    - **Önem derecesi**: *Uyarı*
@@ -453,7 +453,7 @@ Günlük uyarısı ölçütlerle eşleştiğinde bilgilendirme yapılması için
    - **Sinyal Adı** bölümünde **Özel günlük araması**'nı seçin
    - **Arama sorgusu**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
    - **Uyarı mantığı**, **Temeli** *bir dizi sonuçtur* ve **Koşul**, *Büyüktür* bir **Eşik değeri**, *0*
-   - Kullanım verileri saatte bir güncelleştirildiğinden **Süre** *180* dakika, **Uyarı sıklığı** ise *60* dakikada bir olarak belirlenmiştir.
+   - Kullanım verileri saatte bir güncelleştirildiğinden **Süre***180* dakika, **Uyarı sıklığı** ise *60* dakikada bir olarak belirlenmiştir.
 - **Uyarı ayrıntılarını tanımlama** adımında aşağıdakileri belirtin:
    - **Ad**: *24 saat içinde veri hacminin 100 GB'den büyük olacağı tahmin ediliyor*
    - **Önem derecesi**: *Uyarı*
@@ -487,7 +487,7 @@ Veri toplama durdurulduğunda uyarılmak için, veri toplama durdurulduğunda bi
 
 ## <a name="limits-summary"></a>Limit Özeti
 
-Bazıları Log Analytics fiyatlandırma katmanına bağlı olan bazı ek Log Analytics limitleri vardır. Bunlar [burada](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)belgelenmiştir.
+Bazıları Log Analytics fiyatlandırma katmanına bağlı olan bazı ek Log Analytics limitleri vardır. Bunlar [burada](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)belgelenmiştir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

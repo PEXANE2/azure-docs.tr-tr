@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 85429e67c5e02ef6eb9fe4ef76a5c7e1abaa3d69
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5d652eb3bad72bded8e85a6ac841aae7a9c82a40
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485553"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75663092"
 ---
 Genel amaçlı VM boyutları dengeli CPU-bellek oranını sağlar. Test ve geliştirme, küçük - orta boyutlu veritabanları, düşük - orta yoğunluklu trafiğe sahip web sunucuları için idealdir. Bu makalede, bu gruplandırmadaki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı hakkında bilgi sağlanır.
 
@@ -21,7 +21,7 @@ Genel amaçlı VM boyutları dengeli CPU-bellek oranını sağlar. Test ve geli�
 
 - AV2 serisi VM 'Ler, çeşitli donanım türlerinde ve işlemcilerde dağıtılabilir. A serisi VM'ler, geliştirme ve test gibi giriş düzeyinde iş yüküne en uygun CPU performansına ve bellek yapılandırmasına sahiptir. Dağıtıldığı donanımdan bağımsız olarak, çalışan örneğe tutarlı işlemci performansı sunmak için boyut donanıma göre genişletilir. Bu boyutun dağıtıldığı fiziksel donanımı belirlemek için Sanal Makinenin içinden sanal donanımı sorgulayın.
 
-  Örnek kullanım örnekleri arasında geliştirme ve test sunucuları, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları, kavram kanıtı ve kod depoları bulunur.
+  Örnek kullanım örnekleri arasında geliştirme ve test sunucuları, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları, kavram provaları ve kod depoları bulunur.
 
 - Özgün D serisi için bir takip olan Dv2 serisi, daha güçlü bir CPU ve en iyi CPU-bellek yapılandırmasına sahiptir ve bu da üretim iş yüklerinin çoğu için uygun hale getirir. Dv2 serisi, D serisinden daha hızlı %35 daha hızlıdır. Dv2 serisi, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
@@ -29,7 +29,7 @@ Genel amaçlı VM boyutları dengeli CPU-bellek oranını sağlar. Test ve geli�
 
   Örnek D Serisi Kullanım örnekleri arasında kurumsal düzeyde uygulamalar, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz vardır.
 
-- Dav4-Series ve Dasv4-Series, 128 GB L3 önbellek kullanan çok iş parçacıklı bir yapılandırmada, en 256 fazla 128 GB L3 önbellek kullanan<sup>yeni 7452</sup> boyutlardır. bu L3 önbelleğinin her 8 çekirdeğe kadar, genel olarak çalıştırılmasına yönelik müşteri seçeneklerini artıran Amaç iş yükleri. Dav4-Series ve Dasv4 serisi, D & Dsv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+- Dav4-Series ve Dasv4-Series, 128 GB L3 önbellek kullanan çok iş parçacıklı bir yapılandırmada, en 256 fazla 128 GB L3 önbellek kullanan<sup>yeni 7452</sup> boyutlardır. bu L3 önbelleğin her 8 çekirdeğe, genel amaçlı iş yüklerini çalıştırmaya yönelik müşteri seçeneklerinin artması. Dav4-Series ve Dasv4 serisi, D & Dsv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
   
 ## <a name="b-series"></a>B serisi
 
@@ -194,8 +194,6 @@ ACU: 100
 Premium Depolama: desteklenmiyor
 
 Premium depolama önbelleği: desteklenmiyor
-
-AV2 serisi Boyutlar, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (2,3®® ufuk Gölü) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır ve Premium depolama kullanır.
 
 | Boyut            | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d628031515a9b0fdf3aa7b7ec88ee1b6b7f41f51
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672202"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681200"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure 'da App Service planını yönetme
 
@@ -24,11 +24,15 @@ Bir [Azure App Service planı](overview-hosting-plans.md) , bir App Service uygu
 
 Boş bir App Service planı oluşturabilir veya uygulama oluşturmanın bir parçası olarak bir plan oluşturabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) **Yeni** > **Web uygulaması** veya başka bir App Service App türü seçin.
+1. [Azure portalda](https://portal.azure.com)**Kaynak oluştur**’u seçin.
 
-   ![Azure portal bir uygulama oluşturun.][createWebApp]
+   ![Azure portal bir kaynak oluşturun.][createResource] 
 
-2. App Service planını yapılandırmadan önce **örnek ayrıntıları** bölümünü yapılandırın. **Yayımlama** ve **işletim sistemleri** gibi ayarlar, App Service planınız için kullanılabilir fiyatlandırma katmanlarını değiştirebilir. **Bölge** App Service planınızın nerede oluşturulduğunu belirler.
+1. **Yeni** > **Web uygulaması** veya başka türde bir App Service uygulaması seçin.
+
+   ![Azure portal bir uygulama oluşturun.][createWebApp] 
+
+2. App Service planını yapılandırmadan önce **örnek ayrıntıları** bölümünü yapılandırın. **Yayımlama** ve **işletim sistemleri** gibi ayarlar, App Service planınız için kullanılabilir fiyatlandırma katmanlarını değiştirebilir. **Bölge** App Service planınızın nerede oluşturulduğunu belirler. 
    
 3. **App Service planı** bölümünde, mevcut bir planı seçin veya **Yeni oluştur**' u seçerek bir plan oluşturun.
 
@@ -48,7 +52,7 @@ Kaynak planı ve hedef plan _aynı kaynak grubunda ve coğrafi bölgede_olduğu 
 > Bir plan oluştururken istediğiniz Web alanı belirtemezsiniz, ancak bir planın mevcut bir planla aynı Web alanında oluşturulmasını sağlamak mümkündür. Kısaca, aynı kaynak grubu ve bölge birleşimiyle oluşturulan tüm planlar aynı Web alanına dağıtılır. Örneğin, A ve B bölgesi kaynak grubunda bir plan oluşturduysanız, kaynak grubunda daha sonra oluşturduğunuz herhangi bir plan ve B bölgesi aynı Web alanına dağıtılır. Planların oluşturulduktan sonra izlemiyor ' ı taşıyamadığını unutmayın. bu nedenle, başka bir kaynak grubuna taşıyarak planı başka bir planla "aynı Web alanına" taşıyamazsınız.
 > 
 
-1. [Azure Portal](https://portal.azure.com), taşımak istediğiniz uygulamaya gidin.
+1. [Azure Portal](https://portal.azure.com), **uygulama hizmetleri** ' ni arayıp seçin ve taşımak istediğiniz uygulamayı seçin.
 
 2. Sol menüden **App Service planı değiştir**' i seçin.
 
@@ -92,8 +96,9 @@ Beklenmeyen ücretlerden kaçınmak için, bir App Service planındaki son uygul
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure 'da bir uygulamayı ölçeklendirme](manage-scale-up.md)
+> [Azure’da uygulamanın ölçeğini artırma](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
+[createResource]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-a-resource.png

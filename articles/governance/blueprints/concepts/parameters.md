@@ -3,12 +3,12 @@ title: Dinamik şemaları oluşturmak için parametreleri kullanma
 description: Statik ve dinamik parametreler hakkında bilgi edinin ve bunların güvenli ve dinamik planlar oluşturmak için nasıl kullanılacağını öğrenin.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 31fff8fddd8e1969ef0d33047ae070f6302c9c83
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128925"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644979"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Parametreler aracılığıyla dinamik planlar oluşturma
 
@@ -40,7 +40,7 @@ Bu güvenlik önlemi, gizli dizileri depolar ve güvenli desenlerin çalışmas�
 Şema ataması **Kullanıcı tarafından atanan yönetilen kimlik**kullanıyorsa, _başvurulan Key Vault merkezi bir abonelikte bulunabilir._ Yönetilen kimliğe, şema atamasından önce Key Vault uygun haklara sahip olmalıdır.
 
 > [!IMPORTANT]
-> Her iki durumda da, Key Vault **erişim ilkeleri** sayfasında yapılandırılmış **şablon dağıtımı Için Azure Resource Manager erişimi etkinleştir** olmalıdır. Bu özelliğin nasıl etkinleştirileceği hakkında yönergeler için bkz. [Key Vault-şablon dağıtımını etkinleştirme](../../../managed-applications/key-vault-access.md#enable-template-deployment).
+> Her iki durumda da, Key Vault **erişim ilkeleri** sayfasında yapılandırılmış **şablon dağıtımı Için Azure Resource Manager erişimi etkinleştir** olmalıdır. Bu özelliğin nasıl etkinleştirileceği hakkında yönergeler için bkz. [Key Vault-şablon dağıtımını etkinleştirme](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment).
 
 Azure Key Vault hakkında daha fazla bilgi için bkz. [Key Vault genel bakış](../../../key-vault/key-vault-overview.md).
 
@@ -52,7 +52,7 @@ Azure Key Vault hakkında daha fazla bilgi için bkz. [Key Vault genel bakış](
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Portalda statik parametreleri ayarlama
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
 
 1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
 
@@ -169,7 +169,7 @@ Statik parametrenin tersi, **dinamik bir parametredir**. Bu parametre Blueprint 
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Portalda dinamik parametreleri ayarlama
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
 
 1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
 

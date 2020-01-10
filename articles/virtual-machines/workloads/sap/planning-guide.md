@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/16/2019
+ms.date: 12/13/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 863070eb025d8ac58f6a0946d49732dc6b2842b8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d9c5556934b31144e66f0985ab32d4e2cf759774
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951760"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643279"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -76,8 +76,8 @@ ms.locfileid: "74951760"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f
@@ -235,7 +235,7 @@ ms.locfileid: "74951760"
 
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-az-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -249,7 +249,7 @@ ms.locfileid: "74951760"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -311,7 +311,7 @@ ms.locfileid: "74951760"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 [capture-image-linux-step-2-create-vm-image]:../../linux/capture-image.md#step-2-create-vm-image
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
+
 
 Microsoft Azure, şirketlerin işlem ve depolama kaynaklarını uzun tedarik döngüleri olmadan en az sürede almasına olanak sağlar. Azure sanal makine hizmeti, şirketlerin SAP NetWeaver tabanlı uygulamalar gibi klasik uygulamaları Azure 'a dağıtmasını ve şirket içinde kullanılabilir kaynak olmadan güvenilirliğini ve kullanılabilirliğini genişletmelerini sağlar. Azure sanal makine Hizmetleri, şirketlerin Azure sanal makinelerini şirket içi etki alanları, özel bulutları ve SAP sistem Yatağuna etkin bir şekilde tümleştirmelerini sağlayan şirketler arası bağlantıyı da destekler.
 Bu teknik incelemeye Microsoft Azure sanal makinenin temelleri açıklanmakta ve Azure 'daki SAP NetWeaver yüklemelerine yönelik planlama ve uygulama konuları ve gerçek başlatmadan önce okunan belge olması gerekir. Azure 'da SAP NetWeaver dağıtımları.
@@ -329,7 +329,7 @@ Microsoft, Microsoft Azure Sanal Makine Hizmetleri ile kapsamlı bir Hizmet Olar
 Kağıdın kendisi iki ana yönüyle odaklanır:
 
 * İlk bölümde, Azure 'da SAP NetWeaver tabanlı uygulamalar için desteklenen iki dağıtım modeli açıklanmaktadır. Ayrıca, Azure 'un SAP dağıtımlarını göz önünde bulundurarak genel işleme de açıklanmaktadır.
-* İkinci bölüm, ilk bölümünde açıklanan iki farklı senaryoyu uygulayan ayrıntılar.
+* İkinci bölüm, ilk bölümünde açıklanan farklı senaryoları uygulayan ayrıntılar.
 
 Ek kaynaklar için, bu belgedeki bölüm [kaynakları][planning-guide-1.2] bölümüne bakın.
 
@@ -386,13 +386,12 @@ Aşağıdaki SAP notları, Azure 'daki SAP konusuyla ilgilidir:
 
 Ayrıca, Linux için tüm SAP notlarını içeren [SCN wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 'yi de okuyun.
 
-[Bu makalede][azure-subscription-service-limits-subscription], genel varsayılan sınırlamalar ve Azure aboneliklerinin en yüksek sınırlamaları bulunabilir.
+[Bu makalede][azure-resource-manager/management/azure-subscription-service-limits-subscription], genel varsayılan sınırlamalar ve Azure aboneliklerinin en yüksek sınırlamaları bulunabilir.
 
 ## <a name="possible-scenarios"></a>Olası senaryolar
 SAP, genellikle kuruluşlar içindeki en önemli iş uygulamalarından biri olarak görülür. Bu uygulamaların mimarisi ve işlemleri çok karmaşıktır ve kullanılabilirlik ve performans açısından gereksinimleri karşıladığınızdan emin olmanızı sağlar.
 
-Böylece kuruluşlar, üzerinde iş açısından kritik iş süreçlerini çalıştırmak için hangi bulut sağlayıcısının seçeceğini dikkatle düşünmeleri gerekir. Azure, iş açısından kritik SAP uygulamaları ve iş süreçlerine yönelik ideal genel bulut platformudur. Çok çeşitli Azure altyapısı söz konusu olduğunda, neredeyse tüm mevcut SAP NetWeaver ve S/4HANA sistemleri, bugün Azure 'da barındırılabilir. Azure, çok sayıda terabayt belleği ve 200 ' den fazla CPU içeren VM 'Ler sağlar. Azure 'un ötesinde, 24 TB 'a varan ve en fazla 120 TB 'LıK genişleme ANA dağıtımları için genişleme HANA dağıtımlarına izin veren [Hana büyük örnekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)sunmaktadır. 
-
+Böylece kuruluşlar, üzerinde iş açısından kritik iş süreçlerini çalıştırmak için hangi bulut sağlayıcısının seçeceğini dikkatle düşünmeleri gerekir. Azure, iş açısından kritik SAP uygulamaları ve iş süreçlerine yönelik ideal genel bulut platformudur. Çok çeşitli Azure altyapısı söz konusu olduğunda, neredeyse tüm mevcut SAP NetWeaver ve S/4HANA sistemleri, bugün Azure 'da barındırılabilir. Azure, çok sayıda terabayt belleği ve 200 ' den fazla CPU içeren VM 'Ler sağlar. Azure 'un ötesinde, 24 TB 'a varan ve en fazla 120 TB 'LıK genişleme ANA dağıtımları için genişleme HANA dağıtımlarına izin veren [Hana büyük örnekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)sunmaktadır. Günümüzde, neredeyse tüm şirket içi SAP senaryolarının Azure 'da da çalıştırılabileceği bir durum olabilir. 
 
 SAP sistemlerini genel olarak Azure IaaS veya IaaS 'e başarıyla dağıtmak için geleneksel outsourcers veya barındırıcıların ve IaaS tekliflerinin teklifleri arasındaki önemli farklılıkları anlamak önemlidir. Geleneksel barındırıcı veya dış kaynaklar bir müşterinin barındırmak istediği iş yüküne (ağ, depolama ve sunucu türü) göre, müşterinin veya iş ortağının iş yükünü niteleyen ve doğru Azure 'u seçmesi sorumluluğunu karşılarken IaaS dağıtımları için VM 'Ler, depolama ve ağ bileşenleri.
 
@@ -457,6 +456,18 @@ Bu senaryo, olası birçok dağıtım deseni içeren bir şirket içi senaryosud
 * Desteklenen işletim sistemi sürümleri, SAP Software ile birlikte Azure sanal makine hizmetlerinde desteklenen veritabanı sistemi sürümleri, SAP Note [1928533]' de belgelenmiştir.
 * Azure sanal makine hizmetlerinde desteklenen SAP uygulamaları ve sürümleri SAP Note [1928533]' de belgelenmiştir.
 * SAP senaryolarında Azure 'da Konuk VM olarak çalıştırmak için yalnızca 64Bit bit görüntüleri desteklenir. Sonuç olarak, yalnızca 64 bitlik SAP uygulamaları ve veritabanları desteklenir.
+
+
+## <a name="first-steps-planning-a-deployment"></a>İlk adımlar bir dağıtımı planlama
+Dağıtım planlamadaki ilk adım SAP çalıştırmak için kullanılabilen VM 'Leri denetetmez. İlk adım, zaman alan bir işlemdir, ancak en önemlileri, şirketinizin iş yükünü veya iş sürecini genel buluta dağıtmak için gereken sınır koşullarına göre, şirketinizdeki uyumluluk ve güvenlik ekipleriyle birlikte çalışır. Şirketiniz Azure 'da daha önce başka yazılımlar dağıttıysanız, işlem kolay olabilir. Şirketiniz, yolculuğun başlangıcında daha fazlaysa, belirli SAP verilerinin ve SAP iş işlemlerinin genel bulutta barındırılmasına izin veren sınır koşullarını ve güvenlik koşullarını anlamak için daha büyük tartışmalar yapmanız gerekebilir.
+
+Yararlı yardım olarak Microsoft 'un sağlayabilmesini sağlayacak uyumluluk tekliflerinin bir listesi için [Microsoft Uyumluluk tekliflerini](https://docs.microsoft.com/microsoft-365/compliance/offering-home) işaret edebilirsiniz. 
+
+Bekleyen veriler için veri şifreleme veya Azure hizmetindeki diğer şifreleme gibi diğer sorunlar, [Azure şifrelemesi 'ne genel bakış](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview)bölümünde belgelenmiştir.
+
+Planlamada projenin bu aşamasını daha düşük bir şekilde tahmin etmeyin. Yalnızca bu konunun etrafında anlaşmanız ve kurallarınız varsa, Azure 'da dağıttığınız ağ mimarisinin planlanmasıyla ilgili bir sonraki adıma gitmeniz gerekir.
+
+
 
 ## <a name="microsoft-azure-virtual-machine-services"></a>Microsoft Azure sanal makine Hizmetleri
 Microsoft Azure platformu, Microsoft veri merkezlerinde barındırılan ve çalıştırılan bir İnternet ölçekli bulut hizmetleri platformudur. Platform Microsoft Azure sanal makine Hizmetleri (hizmet olarak altyapı veya IaaS) ve bir dizi zengin hizmet olarak platform (PaaS) özelliği içerir.
@@ -586,7 +597,7 @@ Premium depolama hakkında daha fazla bilgi için şurada bulunabilir: <https://
 
 Azure 'da hizmet veya VM 'Leri dağıttığınızda, VHD 'lerin ve VM görüntülerinin dağıtımı, Azure depolama hesapları adlı birimlerde düzenlenebilir. Bir Azure dağıtımı planlarken, Azure 'un kısıtlamalarını dikkatle göz önünde bulundurmanız gerekir. Bir tarafta, Azure aboneliği başına sınırlı sayıda depolama hesabı vardır. Her Azure depolama hesabı çok sayıda VHD dosyası tutabilecek olsa da, depolama hesabı başına toplam ıOPS üzerinde sabit bir sınır vardır. DBMS sistemleri ile yüzlerce SAP VM dağıtırken, önemli GÇ çağrıları oluşturan çok sayıda Azure depolama hesabı arasında yüksek ıOPS DBMS VM 'Leri dağıtmanız önerilir. Her abonelik için Azure depolama hesaplarının geçerli limitini aşmamak için dikkatli olunması gerekir. Depolama alanı, bir SAP sistemi için veritabanı dağıtımının önemli bir parçası olduğundan, bu kavram zaten başvurulan [DBMS dağıtım kılavuzunda][dbms-guide]daha ayrıntılı bir şekilde ele alınmıştır.
 
-[Bu makalede][storage-scalability-targets]Azure depolama hesapları hakkında daha fazla bilgi bulabilirsiniz. Bu makaleyi okuyarak, Azure Standart depolama hesapları ve Premium Depolama hesapları arasındaki sınırlamalarla ilgili farklılıklar olduğunu fark etmiş olursunuz. Önemli farklılıklar, böyle bir depolama hesabı içinde depolanabilecek veri birimidir. Standart depolamada, birim, Premium depolamayla daha büyük bir büyüklük. Diğer taraftan, standart depolama hesabı ıOPS 'de ciddi ölçüde sınırlıdır (bkz. sütun **Toplam Istek oranı**), ancak Azure Premium depolama hesabının böyle bir sınırlaması yoktur. SAP sistemlerinin, özellikle de DBMS sunucularının dağıtımlarını ele alırken bu farklılıkların ayrıntılarını ve sonuçlarını tartışacağız.
+Azure depolama hesapları hakkında daha fazla bilgi [için standart depolama hesapları](../../../storage/common/scalability-targets-standard-account.md) ve [Premium sayfa BLOB depolama hesapları için ölçeklenebilirlik hedefleri](../../../storage/blobs/scalability-targets-premium-page-blobs.md)için ölçeklenebilirlik hedefleri bulunabilir. Bu makaleleri okuyarak, Azure Standart depolama hesapları ve Premium Depolama hesapları arasındaki sınırlamalarla ilgili farklılıklar olduğunu fark etmiş olursunuz. Önemli farklılıklar, böyle bir depolama hesabı içinde depolanabilecek veri birimidir. Standart depolamada, birim, Premium depolamayla daha büyük bir büyüklük. Diğer taraftan, standart depolama hesabı ıOPS 'de ciddi ölçüde sınırlıdır (bkz. sütun **Toplam Istek oranı**), ancak Azure Premium depolama hesabının böyle bir sınırlaması yoktur. SAP sistemlerinin, özellikle de DBMS sunucularının dağıtımlarını ele alırken bu farklılıkların ayrıntılarını ve sonuçlarını tartışacağız.
 
 Bir depolama hesabı içinde, farklı VHD 'leri düzenlemek ve kategorilere ayırmak amacıyla farklı kapsayıcılar oluşturma olanağına sahip olursunuz. Bu kapsayıcılar, örneğin farklı VM 'lerin ayrı VHD 'Leri için kullanılır. Tek bir kapsayıcı veya birden çok kapsayıcıyı tek bir Azure depolama hesabı altında kullanmanın hiçbir performans etkileri yoktur.
 
@@ -770,7 +781,7 @@ Ayrıca bkz. Azure 'da SAP boyutlandırma için bu blog ve ekli belge: <https://
 
 ## <a name="managing-azure-assets"></a>Azure varlıklarını yönetme
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure Portal
 
 Azure portal, Azure VM dağıtımlarını yönetmek için üç arabirimden biridir. Görüntülerden VM dağıtımı gibi temel yönetim görevleri, Azure portal aracılığıyla yapılabilir. Ayrıca, depolama hesapları, sanal ağlar ve diğer Azure bileşenlerinin oluşturulması de Azure portal görevlerdir. Ancak, VHD 'leri Şirket içinden Azure 'a yükleme veya Azure 'da bir VHD kopyalama gibi işlevler, üçüncü taraf araçlar ya da PowerShell veya CLı aracılığıyla yönetim gerektiren görevlerdir.
 
@@ -1621,8 +1632,6 @@ SAP Yatayı çalıştırır ve yüksek kaliteli DBMS sunucuları, uygulama katma
 
 ![Şirket içi ve Azure varlıkları arasında siteden siteye bağlantı][planning-guide-figure-2100]
 
-Yukarıda gösterilen senaryo, şirket içinde yer alan bir senaryoyu açıklamaktadır
-
 Minimum gereksinim, tarayıcı erişimi veya Azure hizmetlerine sistem erişimi için VPN tabanlı bağlantılar için SSL/TLS gibi güvenli iletişim protokollerinin kullanılması. Varsayımı, şirketlerin kurumsal ağı ile Azure arasındaki VPN bağlantısını farklı şekilde işlemesinden farklıdır. Bazı şirketler tüm bağlantı noktalarını tekrar açabilir. Bazı diğer şirketler, açılması gereken bağlantı noktalarında kesin olmasını isteyebilir.
 
 Aşağıdaki tabloda, Genel SAP iletişim bağlantı noktaları listelenir. Temel olarak SAP Gateway bağlantı noktasını açmak yeterlidir.
@@ -2002,7 +2011,7 @@ SAP örnekleri için otomatik başlatma ile ilgili ek bilgilere buradan bakın:
 
 * [UNIX sunucu başlatma/durdurma ile birlikte SAP 'yi başlatma/durdurma](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
 * [SAP NetWeaver yönetim aracılarını başlatma ve durdurma](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
-* [HANA veritabanının otomatik başlamasını etkinleştirme](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
+* [HANA veritabanının otomatik başlamasını etkinleştirme](http://sapbasisinfo.com/blog/2016/08/15/enabling-autostart-of-sap-hana-database-on-server-boot-situation/)
 
 ### <a name="larger-3-tier-sap-systems"></a>Daha büyük 3 katmanlı SAP sistemleri
 3 katmanlı SAP yapılandırmalarının yüksek kullanılabilirlik yönleri daha önceki bölümlerde ele alınmıştır. Ancak, DBMS sunucu gereksinimlerinin Azure 'da bulunması için çok büyük olduğu, ancak SAP uygulama katmanı Azure 'a dağıtılabilecek sistemler hakkında ne olur?

@@ -1,17 +1,17 @@
 ---
 title: Azure veri bilimi sanal makinelerini kullanma
-description: Kullanılabilir işlem gücünü Azure Notebooks genişletmek için bir Azure Veri Bilimi Sanal Makinesi 'ye (DSVM) bağlanın.
+description: Azure Notebooks önizlemesi için kullanılabilir işlem gücünü genişletmek üzere bir Azure Veri Bilimi Sanal Makinesi (DSVM) ile nasıl bağlanacağınızı öğrenin.
 author: getroyer
 manager: andneil
 ms.author: getroyer
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 0559442cb3f6c3937e6930082940e9354c43bc30
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277396"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647003"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerini kullanma
 
@@ -19,6 +19,8 @@ Varsayılan olarak, projeler **ücretsiz işlem** katmanında çalışır, bu da
 
 > [!Note]
 > Azure Notebooks yalnızca Linux Ubuntu görüntüsünde oluşturulan DSVMs üzerinde desteklenir. Windows 2012, Windows 2016 veya Linux CentOS görüntülerinde Not defterleri desteklenmez.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>DSVM örneği oluşturma
 
@@ -56,7 +58,7 @@ Bir proje bir VM üzerinde çalıştırıldığında, dosyalar jupi sunucusunun 
 
 Birden çok kullanıcı bir DSVM 'yi paylaşıyorsa, her bir not defteri kullanıcısı için bir DSVM kullanıcısı oluşturup kullanarak birbirini engellemeyi önleyebilirsiniz:
 
-1. [Azure portalında](https://portal.azure.com)sanal makinenize gidin.
+1. [Azure Portal](https://portal.azure.com)sanal makinenize gidin.
 1. Sol kenar boşluğunda **destek + sorun giderme** ' nin altında, **Parolayı Sıfırla**' yı seçin.
 1. Yeni bir Kullanıcı adı ve parola girip **Güncelleştir**' i seçin. (Mevcut kullanıcı adları etkilenmez.)
 1. Ek kullanıcılar için önceki adımı yineleyin.

@@ -1,6 +1,6 @@
 ---
-title: BizTalk Services uygulamalarını Azure Logic Apps taşıyın
-description: Azure BizTalk Services 'den (MABS) Azure Logic Apps 'ye geçiş
+title: BizTalk Services uygulamaları Azure Logic Apps 'ye geçirme
+description: Uygulamalarınızı ve çözümlerinizi Microsoft Azure BizTalk Services (MABS) konumundan Azure Logic Apps 'a taşıma
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,14 +8,14 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97b498091451b0bf39741ed4340b8e02517c5447
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 10c9a1d3723ed30bee5437c3ab7a41308e253bd8
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791880"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666661"
 ---
-# <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services 'den Azure Logic Apps geçir
+# <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services uygulamalarınızı ve çözümlerinizi Azure Logic Apps geçirin
 
 Microsoft Azure BizTalk Services (MABS) devre dışı bırakılıyor. MABS tümleştirme çözümlerinizi [Azure Logic Apps](../logic-apps/logic-apps-overview.md)taşımak için bu makaledeki yönergeleri izleyin. 
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fbc18d8141c44c2b0863547c33b5c5193e928b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7e557ca1bfc7587b6a65957177440041bf4e902f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231919"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681336"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>İki öğeli doğrulama yönteminizi ve ayarlarını değiştirin
 
@@ -32,16 +32,16 @@ ms.locfileid: "74231919"
 
 ## <a name="using-the-additional-security-verification-page"></a>Ek güvenlik doğrulama sayfasını kullanma
 
-Kuruluşunuz, iki öğeli doğrulamanızı açma ve yönetme hakkında belirli adımlar sağladıysa, bu yönergeleri izlemelisiniz. Aksi takdirde, güvenlik doğrulama yöntemi ayarlarınıza [ek güvenlik doğrulama](https://aka.ms/mfasetup) sayfasından ulaşabilirsiniz.
+Kuruluşunuz, iki öğeli doğrulamanızı açma ve yönetme hakkında belirli adımlar sağladıysa, bu yönergeleri izlemelisiniz. Aksi takdirde, güvenlik doğrulama yöntemi ayarlarınıza [ek güvenlik doğrulama](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) sayfasından ulaşabilirsiniz.
 
 >[!Note]
 >Ekranınızda gördüğünüz özellikler, bu makalede ele alınanlara eşleşmezse, yöneticinizin güvenlik bilgileri (Önizleme) deneyimini açmış olması veya kuruluşunuzun kendi özel portalının olduğu anlamına gelir. Güvenlik bilgileri deneyimi hakkında daha fazla bilgi için bkz. [güvenlik bilgisi (Önizleme) genel bakış](user-help-security-info-overview.md). Kuruluşunuzun özel portalı hakkında daha fazla bilgi için yardım masasına başvurmanız gerekir.
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>Ek güvenlik doğrulama sayfasına ulaşmak için
 
-- https://aka.ms/mfasetup kısmına gidin.
+- [Ek güvenlik doğrulama](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) sayfasına gidin.
 
-    ![Ek güvenlik doğrulama ekranı, kullanılabilir güvenlik doğrulama yöntemi ayrıntıları](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
+    ![Ek güvenlik doğrulama sayfası, kullanılabilir güvenlik doğrulama yöntemi ayrıntıları](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
     Bu bağlantıya tıklanmazsa, aşağıdaki adımları izleyerek **ek güvenlik doğrulama** sayfasına da ulaşabilirsiniz:
 

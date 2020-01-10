@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric Reliable Services yapılandırma | Microsoft Docs
-description: Azure Service Fabric 'da durum bilgisi olan Reliable Services yapılandırma hakkında bilgi edinin.
-services: Service-Fabric
-documentationcenter: .net
+title: Azure Service Fabric Reliable Services yapılandırma
+description: Azure Service Fabric uygulamasındaki durum bilgisi olan Reliable Services genel olarak ve tek bir hizmet için yapılandırma hakkında bilgi edinin.
 author: sumukhs
-manager: chackdan
-editor: vturecek
-ms.assetid: 9f72373d-31dd-41e3-8504-6e0320a11f0e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 60a4669e20aa8aaf80ae174c88631f3dc572656d
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242896"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645523"
 ---
 # <a name="configure-stateful-reliable-services"></a>Durum bilgisi olan güvenilir Hizmetleri yapılandırma
 Güvenilir hizmetler için iki yapılandırma ayarı kümesi vardır. Bir küme, diğer küme belirli bir güvenilir hizmete özel olduğu sürece kümedeki tüm güvenilir hizmetler için geneldir.
@@ -28,13 +19,13 @@ Güvenilir hizmetler için iki yapılandırma ayarı kümesi vardır. Bir küme,
 Küresel olarak güvenilir hizmet yapılandırması, Ktlgünlükçü bölümünün altındaki kümenin küme bildiriminde belirtilir. Paylaşılan günlük konumunun ve boyutunun ve günlük kaydı tarafından kullanılan genel bellek sınırlarının yapılandırılmasına izin verir. Küme bildirimi, kümedeki tüm düğümlere ve hizmetlere uygulanan ayarları ve konfigürasyonları tutan tek bir XML dosyasıdır. Dosya genellikle ClusterManifest. xml olarak adlandırılır. Get-ServiceFabricClusterManifest PowerShell komutunu kullanarak kümenizin küme bildirimini görebilirsiniz.
 
 ### <a name="configuration-names"></a>Yapılandırma adları
-| Adı | Birim | Varsayılan değer | Açıklamalar |
+| Ad | Birim | Varsayılan değer | Açıklamalar |
 | --- | --- | --- | --- |
-| Writebuffermemorypoolminimumınkb |KB |8388608 |Günlükçü yazma arabelleği bellek havuzu için çekirdek modunda ayrılacak en az KB sayısı. Bu bellek havuzu, diske yazmadan önce durum bilgilerini önbelleğe almak için kullanılır. |
-| WriteBufferMemoryPoolMaximumInKB |KB |Sınırsız |Günlükçü yazma arabelleği bellek havuzunun büyüyebileceği maksimum boyut. |
-| Sharedlogıd |'INI |"" |Kümedeki tüm güvenilir hizmetler tarafından, hizmet özel yapılandırmasında Sharedlogıd belirtmeyen tüm tüm düğümlerde kullanılan varsayılan paylaşılan günlük dosyasını tanımlamak için kullanılacak benzersiz bir GUID belirtir. Sharedlogıd belirtilmişse, SharedLogPath de belirtilmelidir. |
+| WriteBufferMemoryPoolMinimumInKB |Kilobayt |8388608 |Günlükçü yazma arabelleği bellek havuzu için çekirdek modunda ayrılacak en az KB sayısı. Bu bellek havuzu, diske yazmadan önce durum bilgilerini önbelleğe almak için kullanılır. |
+| WriteBufferMemoryPoolMaximumInKB |Kilobayt |Sınırsız |Günlükçü yazma arabelleği bellek havuzunun büyüyebileceği maksimum boyut. |
+| Sharedlogıd |GUID |"" |Kümedeki tüm güvenilir hizmetler tarafından, hizmet özel yapılandırmasında Sharedlogıd belirtmeyen tüm tüm düğümlerde kullanılan varsayılan paylaşılan günlük dosyasını tanımlamak için kullanılacak benzersiz bir GUID belirtir. Sharedlogıd belirtilmişse, SharedLogPath de belirtilmelidir. |
 | SharedLogPath |Tam nitelikli yol adı |"" |Tüm güvenilir hizmetler tarafından, hizmet özel yapılandırmasında SharedLogPath belirtmeyen tüm düğümlerde, paylaşılan günlük dosyasının kullandığı tam yolu belirtir. Ancak SharedLogPath belirtilmişse Sharedlogıd de belirtilmelidir. |
-| Sharedlogsizeınmb |TI |8192 |Paylaşılan günlük için statik olarak ayrılacak MB disk alanı sayısını belirtir. Değer 2048 veya daha büyük olmalıdır. |
+| SharedLogSizeInMB |Megabayt |8192 |Paylaşılan günlük için statik olarak ayrılacak MB disk alanı sayısını belirtir. Değer 2048 veya daha büyük olmalıdır. |
 
 Azure ARM veya şirket içi JSON şablonunda aşağıdaki örnekte, durum bilgisi olan hizmetler için güvenilir koleksiyonları geri yüklemek üzere oluşturulan paylaşılan işlem günlüğünün nasıl değiştirileceği gösterilmektedir.
 
@@ -109,19 +100,19 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>Yapılandırma adları
-| Adı | Birim | Varsayılan değer | Açıklamalar |
+| Ad | Birim | Varsayılan değer | Açıklamalar |
 | --- | --- | --- | --- |
-| Batchval Gementınterval |Saniye |0,015 |Birincili çoğaltıcının, birincil öğesine bir onay göndermeden önce bir işlem aldıktan sonra beklediği zaman aralığı. Bu Aralık dahilinde işlenen işlemler için gönderilecek diğer tüm onaylar bir yanıt olarak gönderilir. |
+| Batchval Gementınterval |Saniye |0.015 |Birincili çoğaltıcının, birincil öğesine bir onay göndermeden önce bir işlem aldıktan sonra beklediği zaman aralığı. Bu Aralık dahilinde işlenen işlemler için gönderilecek diğer tüm onaylar bir yanıt olarak gönderilir. |
 | ReplicatorEndpoint |Yok |Varsayılan değer yok--gerekli parametre |Birincil/ikincil çoğaltıcıların, çoğaltma kümesindeki diğer çoğaltıcılar ile iletişim kurmak için kullanacağı IP adresi ve bağlantı noktası. Bu, hizmet bildiriminde bir TCP kaynak uç noktasına başvurmalıdır. Hizmet bildiriminde uç nokta kaynakları tanımlama hakkında daha fazla bilgi edinmek için [hizmet bildirimi kaynaklarına](service-fabric-service-manifest-resources.md) bakın. |
 | MaxPrimaryReplicationQueueSize |İşlem sayısı |8192 |Birincil kuyruktaki en fazla işlem sayısı. Birincil çoğaltıcı tüm ikincil replica'lerden onay aldıktan sonra bir işlem serbest bırakılır. Bu değer 64 ' den büyük ve 2 ' nin üssü olmalıdır. |
 | MaxSecondaryReplicationQueueSize |İşlem sayısı |16384 |İkincil kuyruktaki en fazla işlem sayısı. Bir işlem, durumu Kalıcılık aracılığıyla yüksek oranda kullanılabilir olduktan sonra serbest bırakılır. Bu değer 64 ' den büyük ve 2 ' nin üssü olmalıdır. |
 | CheckpointThresholdInMB |MB |50 |Durum denetim noktası olan günlük dosyası alanı miktarı. |
 | Maxrecordsizeınkb |KB |1024 |Çoğaltıcının günlüğe yazabileceği en büyük kayıt boyutu. Bu değer 4 ' ün katı ve 16 ' dan büyük olmalıdır. |
-| Minlogsizeınmb |MB |0 (sistem tarafından belirlenen) |İşlem günlüğünün en küçük boyutu. Bu ayarın altındaki bir boyuta kadar günlüğe Bu günlüğün kesilmesini izin verilmez. 0, çoğaltıcının en düşük günlük boyutunu belirleyeceğini belirtir. Bu değerin artırılması, kısmen kopya ve artımlı yedeklemeler yapma olasılığını artırarak, ilgili günlük kayıtlarının kesilme olasılığı düşürüldü. |
-| TruncationThresholdFactor |Çarpan |2 |Günlüğün ne boyutta olduğunu belirler, kesilme tetiklenecek. Kesme eşiği, TruncationThresholdFactor tarafından çarpılan Minlogsizeınmb tarafından belirlenir. TruncationThresholdFactor 1 ' den büyük olmalıdır. Minlogsizeınmb * TruncationThresholdFactor, Maxstreamsizeınmb 'den küçük olmalıdır. |
-| Kısıtlar Lingthresholdfactor |Çarpan |4 |Günlüğün ne boyutta olduğunu belirler, çoğaltmanın ne kadar kısıtlanacağını belirler. Azaltma eşiği (MB cinsinden), en fazla ((Minlogsizeınmb * kısıtlar Lingthresholdfactor), (Checkpointthresholdınmb * kısıtlar Lingthresholdfactor)) tarafından belirlenir. Azaltma eşiği (MB), kesme eşiğinden büyük olmalıdır (MB cinsinden). Kesme eşiği (MB), Maxstreamsizeınmb 'den küçük olmalıdır. |
+| MinLogSizeInMB |MB |0 (sistem tarafından belirlenen) |İşlem günlüğünün en küçük boyutu. Bu ayarın altındaki bir boyuta kadar günlüğe Bu günlüğün kesilmesini izin verilmez. 0, çoğaltıcının en düşük günlük boyutunu belirleyeceğini belirtir. Bu değerin artırılması, kısmen kopya ve artımlı yedeklemeler yapma olasılığını artırarak, ilgili günlük kayıtlarının kesilme olasılığı düşürüldü. |
+| TruncationThresholdFactor |faktörü |2 |Günlüğün ne boyutta olduğunu belirler, kesilme tetiklenecek. Kesme eşiği, TruncationThresholdFactor tarafından çarpılan Minlogsizeınmb tarafından belirlenir. TruncationThresholdFactor 1 ' den büyük olmalıdır. Minlogsizeınmb * TruncationThresholdFactor, Maxstreamsizeınmb 'den küçük olmalıdır. |
+| Kısıtlar Lingthresholdfactor |faktörü |4 |Günlüğün ne boyutta olduğunu belirler, çoğaltmanın ne kadar kısıtlanacağını belirler. Azaltma eşiği (MB cinsinden), en fazla ((Minlogsizeınmb * kısıtlar Lingthresholdfactor), (Checkpointthresholdınmb * kısıtlar Lingthresholdfactor)) tarafından belirlenir. Azaltma eşiği (MB), kesme eşiğinden büyük olmalıdır (MB cinsinden). Kesme eşiği (MB), Maxstreamsizeınmb 'den küçük olmalıdır. |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |Belirli bir yedekleme günlüğü zincirindeki yedekleme günlüklerinin en büyük birikmiş boyutu (MB cinsinden). Artımlı yedekleme, ilgili tam yedeklemenin bu boyuttan daha büyük olması nedeniyle birikmiş yedekleme günlüklerinin oluşmasına neden olacak bir yedekleme günlüğü üretilebileceğinden, artımlı yedekleme istekleri başarısız olur. Bu gibi durumlarda, kullanıcının tam yedekleme yapması gerekir. |
-| Sharedlogıd |'INI |"" |Bu çoğaltmayla kullanılan paylaşılan günlük dosyasını tanımlamak için kullanılacak benzersiz bir GUID belirtir. Genellikle, hizmetler bu ayarı kullanmamalıdır. Ancak, Sharedlogıd belirtilmişse, SharedLogPath de belirtilmelidir. |
+| Sharedlogıd |GUID |"" |Bu çoğaltmayla kullanılan paylaşılan günlük dosyasını tanımlamak için kullanılacak benzersiz bir GUID belirtir. Genellikle, hizmetler bu ayarı kullanmamalıdır. Ancak, Sharedlogıd belirtilmişse, SharedLogPath de belirtilmelidir. |
 | SharedLogPath |Tam nitelikli yol adı |"" |Bu çoğaltmanın paylaşılan günlük dosyasının oluşturulacağı tam yolu belirtir. Genellikle, hizmetler bu ayarı kullanmamalıdır. Ancak SharedLogPath belirtilmişse Sharedlogıd de belirtilmelidir. |
 | Yavaş Apimonitoringduration |Saniye |300 |Yönetilen API çağrıları için izleme aralığını ayarlar. Örnek: Kullanıcı, yedekleme geri çağırma işlevi sağladı. Aralık geçtikten sonra, sistem durumu yöneticisine bir uyarı sistem durumu raporu gönderilir. |
 | LogTruncationIntervalSeconds |Saniye |0 |Her yinelemede günlük kesilmesi başlatılacak yapılandırılabilir Aralık. Günlük boyutunun yalnızca günlük boyutu yerine zamana göre kesildiğinden emin olmak için kullanılır. Bu ayar ayrıca, güvenilir sözlükte silinen girdilerin temizlenmeye zorlar. Bu nedenle, silinen öğelerin zamanında temizlendiğinden emin olmak için kullanılabilir. |

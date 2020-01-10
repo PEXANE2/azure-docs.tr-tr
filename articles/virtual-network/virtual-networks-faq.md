@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 5fae340ae933b8165a2ea9bb9f6337189fd576d6
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ef7e29351717daf91981f844f1d911a404cf9402
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457046"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646889"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure sanal ağ hakkında sık sorulan sorular (SSS)
 
@@ -49,7 +49,7 @@ Evet. Azure Marketi aracılığıyla çeşitli satıcıların [WAN optimizasyon 
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>VNet oluşturmak için hangi araçları kullanabilirim?
 VNet oluşturmak veya yapılandırmak için aşağıdaki araçları kullanabilirsiniz:
 
-* Azure portalı
+* Azure Portal
 * PowerShell
 * Azure CLI
 * Ağ yapılandırma dosyası (yalnızca klasik sanal ağlar için netcfg). [Ağ yapılandırma dosyası kullanarak VNET yapılandırma](virtual-networks-using-network-configuration-file.md) makalesini inceleyin.
@@ -66,7 +66,7 @@ VNet oluşturmak veya yapılandırmak için aşağıdaki araçları kullanabilir
 Evet. Genel IP adresi aralıkları hakkında daha fazla bilgi için bkz. [sanal ağ oluşturma](manage-virtual-network.md#create-a-virtual-network). Genel IP adresleri doğrudan internet'ten erişilemez.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>VNet 'imde alt ağ sayısı sınırı var mı?
-Evet. Ayrıntılar için bkz. [Azure Limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Alt ağ adres alanları bir diğerinden çakışamaz.
+Evet. Ayrıntılar için bkz. [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Alt ağ adres alanları bir diğerinden çakışamaz.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Bu alt ağlar içindeki IP adreslerini kullanma konusunda herhangi bir kısıtlama var mı?
 Evet. Azure, her alt ağ içindeki 5 IP adresini ayırır. Bunlar x. x. x. 0-x. x. x. 3 ve alt ağın son adresidir. x. x. x. 1-x. x. x. 3, Azure hizmetleri için her alt ağda ayrılmıştır.   
@@ -100,7 +100,7 @@ Hayır.
 Evet. Alt ağ adres aralığı başka bir alt ağın parçası olmadığı ve sanal ağın adres aralığında kalan kullanılabilir alan olduğu sürece, alt ağlar VNET 'lere eklenebilir.
 
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Oluşturduktan sonra alt ağımın boyutunu değiştirebilir miyim?
-Evet. İçinde dağıtılan bir VM veya hizmet yoksa alt ağ ekleyebilir, kaldırabilir, genişletebilir veya küçültebilirsiniz.
+Evet. Alt ağın içinde dağıtılmış VM'ler veya hizmetler yoksa alt ağı ekleyebilir, kaldırabilir, genişletebilir veya daraltabilirsiniz.
 
 ### <a name="can-i-modify-subnets-after-i-created-them"></a>Alt ağları oluşturduktan sonra değiştirebilir miyim?
 Evet. VNet tarafından kullanılan CıDR bloklarını ekleyebilir, kaldırabilir ve değiştirebilirsiniz.
@@ -128,7 +128,7 @@ Kullanılabilir tüm DNS seçeneklerinde size rehberlik etmek için [VM 'ler ve 
 Evet. Sanal ağ ayarlarında DNS sunucusu IP adresleri belirtebilirsiniz. Ayar, VNet 'teki tüm VM 'Ler için varsayılan DNS sunucuları olarak uygulanır.
 
 ### <a name="how-many-dns-servers-can-i-specify"></a>Kaç DNS sunucusu belirtmem gerekiyor?
-Başvuru [Azure Limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
+Başvuru [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Ağı oluşturduktan sonra DNS sunucularımı değiştirebilir miyim?
 Evet. Sanal ağınız için DNS sunucusu listesini dilediğiniz zaman değiştirebilirsiniz. DNS sunucusu listenizi değiştirirseniz, yeni DNS ayarlarının etkili olabilmesi için, VNet 'teki tüm etkilenen VM 'lerde bir DHCP kira yenilemesi gerçekleştirmeniz gerekir. Windows işletim sistemi çalıştıran VM 'Ler için `ipconfig /renew` doğrudan VM 'ye yazarak bunu yapabilirsiniz. Diğer işletim sistemi türleri için, belirli işletim sistemi türü için DHCP kira yenileme belgelerine bakın. 
@@ -167,7 +167,7 @@ Duruma göre değişir. VM Kaynak Yöneticisi üzerinden dağıtılmışsa, IP a
 Evet, ancak bir sanal makineye birden çok IP adresi atarken olduğu gibi gerekmedikçe bu önerilmez. Ayrıntılar için bkz. [sanal makineye birden çok IP adresi ekleme](virtual-network-multiple-ip-addresses-portal.md#os-config). Bir sanal makineye bağlı bir Azure NIC 'sine atanan IP adresi değişirse ve VM işletim sistemi içindeki IP adresi farklıysa, VM bağlantısı kaybedilir.
 
 ### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>Bir bulut hizmeti dağıtım yuvasını durdurur veya bir VM 'yi işletim sistemi içinden kapatırsanız, IP Adreslerime ne olur?
-Yapma. IP adresleri (genel VIP, genel ve özel), bulut hizmeti dağıtım yuvasına veya VM 'ye atanmaya devam eder.
+Hiçbir şey. IP adresleri (genel VIP, genel ve özel), bulut hizmeti dağıtım yuvasına veya VM 'ye atanmaya devam eder.
 
 ### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>VM 'Leri yeniden dağıtmaya gerek kalmadan bir alt ağdan başka bir alt ağa taşıyabilir miyim?
 Evet. [BIR VM veya rol örneğini farklı bir alt ağa taşıma hakkında](virtual-networks-move-vm-role-to-subnet.md) daha fazla bilgi edinebilirsiniz.
@@ -245,7 +245,7 @@ Evet. Küresel VNet eşlemesi, farklı bölgelerdeki VNET 'leri eşlemenize olan
 Aşağıdaki kaynaklar temel yük dengeleyiciler kullanabilir, bu da, genel VNet eşlemesi üzerinden Load Balancer ön uç IP 'si üzerinden ulaşamamanıza yol açabilir. Bununla birlikte, izin verildiğinde genel VNet eşlemesini kullanarak kaynaklarına doğrudan özel VNet IP 'Leri üzerinden ulaşabilirsiniz. 
 - Temel yük dengeleyiciler arkasındaki VM 'Ler
 - Temel yük dengeleyicileri olan sanal makine ölçek kümeleri 
-- Redis Cache 
+- Redis Önbelleği 
 - Application Gateway (v1) SKU 'SU
 - Service Fabric
 - SQL MI
@@ -405,7 +405,7 @@ Bir sanal ağdaki toplam VNet hizmeti uç noktası sayısı için bir sınır yo
 |Azure Depolama| 100|
 |Azure SQL| 128|
 |Azure SQL Veri Ambarı|  128|
-|Azure Keykasası|    127|
+|Azure KeyVault|    127|
 |Azure Cosmos DB|   64|
 |Azure Olay Hub’ı|   128|
 |Azure Service Bus| 128|

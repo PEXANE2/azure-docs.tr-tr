@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 61436b4317e85b67387a75e87c31a1c6cd13d84f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 26b53e897d70e596bcd770e99d2d29ac16c52755
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895407"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707087"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Hızlı başlangıç: Maven eklentisini kullanarak bir Azure Spring Cloud uygulaması başlatın
 
@@ -57,6 +57,9 @@ Bu hızlı başlangıcı tamamlamak için:
 
 Hizmetin dağıtılması yaklaşık 5 dakika sürer. Hizmet dağıtıldıktan sonra **Kaynağa Git** ' i seçin ve hizmet örneği Için **genel bakış** sayfası görüntülenir.
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=provision)
+
 ## <a name="set-up-your-configuration-server"></a>Yapılandırma sunucunuzu ayarlama
 
 1. Hizmete **genel bakış** sayfasında, **yapılandırma sunucusu**' nu seçin.
@@ -64,6 +67,9 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer. Hizmet dağıtıldıktan so
 
     > [!div class="mx-imgBorder"]
     > ![yapılandırma ayarlarını tanımlama ve uygulama](media/maven-qs-apply-config.jpg)
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=config-server)
 
 ## <a name="clone-and-build-the-sample-application-repository"></a>Örnek uygulama deposunu kopyalama ve derleme
 
@@ -105,6 +111,9 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer. Hizmet dağıtıldıktan so
    ```
 
 1. Dağıtım tamamlandıktan sonra, önceki komutun çıktısında belirtilen URL 'YI kullanarak Pudmetriye erişebilirsiniz.
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=deploy)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

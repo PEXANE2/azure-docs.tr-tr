@@ -1,21 +1,21 @@
 ---
-title: Mantıksal uygulama tanımları oluşturun, düzenleyin veya genişletin
-description: Azure Logic Apps mantıksal uygulama JSON tanımlarını yazma, düzenleme ve genişletme
+title: Mantıksal uygulama JSON iş akışı tanımlarını oluşturun, düzenleyin veya genişletin
+description: Azure Logic Apps ' de mantıksal uygulamanızın JSON iş akışı tanımlarını yazma, düzenleme ve genişletme
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: bffbc29322a57d6bb9b8497299add5dbb0478d2c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 95e9f7211c8cd6cb4edd59d099ae9c189bae3780
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792596"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666933"
 ---
-# <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Azure Logic Apps mantıksal uygulama tanımları için JSON oluşturun, düzenleyin veya genişletin
+# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Azure Logic Apps mantıksal uygulama iş akışı tanımları için JSON oluşturun, düzenleyin veya genişletin
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md)' de otomatik iş akışlarıyla kurumsal tümleştirme çözümleri oluşturduğunuzda, temel alınan mantıksal uygulama tanımları, tanımlama ve doğrulama Için [Iş akışı Tanım Dili (WDL) şeması](../logic-apps/logic-apps-workflow-definition-language.md) ile birlikte basit ve BILDIRIM temelli JavaScript nesne gösterimi (JSON) kullanır. Bu biçimler, mantıksal uygulama tanımlarının kod hakkında çok daha fazla bilgi vermeden daha kolay okunmasını ve anlaşılmasını kolaylaştırır. Mantıksal uygulama oluşturma ve dağıtma işlemlerini otomatik hale getirmek istediğinizde, [Azure Resource Manager şablonları](../azure-resource-manager/template-deployment-overview.md)içinde [Azure kaynakları](../azure-resource-manager/resource-group-overview.md) olarak Logic App tanımlarını dahil edebilirsiniz. Mantıksal uygulamalar oluşturmak, yönetmek ve dağıtmak için [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLı](../azure-resource-manager/resource-group-template-deploy-cli.md)veya [Azure Logic Apps REST API 'lerini](https://docs.microsoft.com/rest/api/logic/)kullanabilirsiniz.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md)' de otomatik iş akışlarıyla kurumsal tümleştirme çözümleri oluşturduğunuzda, temel alınan mantıksal uygulama tanımları, tanımlama ve doğrulama Için [Iş akışı Tanım Dili (WDL) şeması](../logic-apps/logic-apps-workflow-definition-language.md) ile birlikte basit ve BILDIRIM temelli JavaScript nesne gösterimi (JSON) kullanır. Bu biçimler, mantıksal uygulama tanımlarının kod hakkında çok daha fazla bilgi vermeden daha kolay okunmasını ve anlaşılmasını kolaylaştırır. Mantıksal uygulama oluşturma ve dağıtma işlemlerini otomatik hale getirmek istediğinizde, [Azure Resource Manager şablonları](../azure-resource-manager/template-deployment-overview.md)içinde [Azure kaynakları](../azure-resource-manager/management/overview.md) olarak Logic App tanımlarını dahil edebilirsiniz. Mantıksal uygulamalar oluşturmak, yönetmek ve dağıtmak için [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLı](../azure-resource-manager/resource-group-template-deploy-cli.md)veya [Azure Logic Apps REST API 'lerini](https://docs.microsoft.com/rest/api/logic/)kullanabilirsiniz.
 
 JSON 'daki Logic App tanımlarıyla çalışmak için Azure portal veya Visual Studio 'da çalışırken kod görünümü düzenleyicisini açın veya tanımı istediğiniz düzenleyiciye kopyalayın. Logic Apps 'e yeni başladıysanız, [ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)konusunu inceleyin.
 
@@ -39,7 +39,7 @@ Visual Studio 'da mantıksal uygulama tanımınızda çalışabilmeniz [için ö
 
 Visual Studio 'da doğrudan Azure portal veya Visual Studio 'dan Azure Resource Manager projeler olarak oluşturulan ve dağıtılan Logic Apps 'i açabilirsiniz.
 
-1. Mantıksal uygulamanızı içeren Visual Studio çözümünü veya [Azure Kaynak grubu](../azure-resource-manager/resource-group-overview.md) projesini açın.
+1. Mantıksal uygulamanızı içeren Visual Studio çözümünü veya [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) projesini açın.
 
 2. Mantıksal uygulamanızın tanımını bulun ve açın. Bu, varsayılan olarak **logicapp. JSON**adlı bir [Kaynak Yöneticisi şablonunda](../azure-resource-manager/template-deployment-overview.md)görüntülenir. Bu şablonu, farklı ortamlara dağıtım için kullanabilir ve özelleştirebilirsiniz.
 
@@ -58,7 +58,7 @@ Visual Studio 'da doğrudan Azure portal veya Visual Studio 'dan Azure Resource 
 
 ## <a name="parameters"></a>Parametreler
 
-Dağıtım yaşam döngüsü genellikle geliştirme, test, hazırlama ve üretim için farklı ortamlara sahiptir. Mantıksal uygulama genelinde yeniden kullanmak istediğiniz değerlere sahip olduğunuzda veya dağıtım gereksinimlerinize göre değişiklik yaparken, mantıksal uygulama dağıtımını otomatikleştirebilmeniz için iş akışı tanımınız için bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md) oluşturabilirsiniz. 
+Dağıtım yaşam döngüsü genellikle geliştirme, test, hazırlama ve üretim için farklı ortamlara sahiptir. Mantıksal uygulama genelinde yeniden kullanmak istediğiniz değerlere sahip olduğunuzda veya dağıtım gereksinimlerinize göre değişiklik yaparken, mantıksal uygulama dağıtımını otomatikleştirebilmeniz için iş akışı tanımınız için bir [Azure Resource Manager şablonu](../azure-resource-manager/management/overview.md) oluşturabilirsiniz. 
 
 Bunun yerine bu değerleri *parametreleştirmek*veya parametreleri tanımlamak ve kullanmak için bu genel adımları izleyin. Daha sonra bu değerleri şablonunuza geçiren ayrı bir parametre dosyasında değerleri sağlayabilirsiniz. Bu şekilde, mantıksal uygulamanızı güncelleştirip yeniden dağıtmanıza gerek kalmadan bu değerleri daha kolay bir şekilde değiştirebilirsiniz. Tam Ayrıntılar için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
@@ -72,7 +72,7 @@ Bunun yerine bu değerleri *parametreleştirmek*veya parametreleri tanımlamak v
 
    İş akışı Tanım parametrelerinizin değerlerini belirttiğinizde, iş akışı tanımınızın dışında, ancak mantıksal uygulamanızın kaynak tanımında hala olan Parameters bölümünü kullanarak şablon parametrelerine başvurabilirsiniz. Bu şekilde, şablon parametre değerlerini iş akışı Tanım parametrelerinizle geçirebilirsiniz.
 
-1. Parametrelerinizin değerlerini ayrı bir [parametre dosyasında](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) depolayın ve bu dosyayı dağıtımınıza ekleyin.
+1. Parametrelerinizin değerlerini ayrı bir [parametre dosyasında](../azure-resource-manager/templates/parameter-files.md) depolayın ve bu dosyayı dağıtımınıza ekleyin.
 
 ## <a name="process-strings-with-functions"></a>İşlevlerle dizeleri işleme
 

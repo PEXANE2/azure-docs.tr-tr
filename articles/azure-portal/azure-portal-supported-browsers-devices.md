@@ -1,6 +1,6 @@
 ---
-title: Desteklenen tarayıcılar ve cihazlar için Azure portalı | Microsoft Docs
-description: Azure portalı üzerinde çalışır tarayıcılar ve cihazlar açıklar.
+title: Azure portal için desteklenen tarayıcılar ve cihazlar | Microsoft Docs
+description: Tüm modern cihazlarda ve en son tarayıcı sürümleriyle Azure portal kullanabilirsiniz. Tarayıcınızın desteklendiğinden emin olmak için bu makaleye başvurun.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -12,23 +12,23 @@ ms.workload: multiple
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2019
-ms.author: kfollis
+ms.date: 12/20/2019
+ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 1595d744fbfda47a9db9ff27de09cd53c6f73ece
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 792864022cb7c1b2b4b43a4980d86e32b213525c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551167"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640113"
 ---
 # <a name="supported-devices"></a>Desteklenen cihazlar
 
-[Azure portalında](https://portal.azure.com) , tüm modern masaüstlerini ve tablet cihazları tarayıcıda çalışan ve bir web tabanlı bir konsoldur. Bir mobil CİHAZDAN Azure kaynaklarını yönetmek ihtiyacınız varsa deneyin [Azure mobil uygulaması](https://azure.microsoft.com/features/azure-portal/mobile-app/). İOS ve Android için kullanılabilir.
+[Azure Portal](https://portal.azure.com) Web tabanlı bir konsoldur ve tüm modern masaüstleri ve tablet cihazlarının tarayıcılarında çalışır. Azure kaynaklarını bir mobil cihazdan yönetmeniz gerekiyorsa [Azure mobil uygulaması](https://azure.microsoft.com/features/azure-portal/mobile-app/)deneyin. İOS ve Android için kullanılabilir.
 
 ## <a name="recommended-browsers"></a>Önerilen tarayıcılar
 
-İşletim sisteminiz ile uyumlu olan en güncel tarayıcı kullanmanızı öneririz. Aşağıdaki tarayıcılar desteklenir:
+İşletim sisteminizle uyumlu en güncel tarayıcıyı kullanmanızı öneririz. Aşağıdaki tarayıcılar desteklenir:
 
 * Microsoft Edge (en son sürüm)
 * Internet Explorer 11

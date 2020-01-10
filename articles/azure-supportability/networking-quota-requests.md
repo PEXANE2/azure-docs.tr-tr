@@ -7,12 +7,12 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c4351afe7781f4340dfd943828d65e94efbdc0a7
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120974"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659313"
 ---
 # <a name="networking-limit-increase"></a>Ağ sınırını artırma
 
@@ -29,7 +29,7 @@ Azure portal Azure 'un ' yardım + destek ' dikey penceresi aracılığıyla bir
 
 1. https://portal.azure.com, **Yardım + Destek**' i seçin.
 
-    ![Yardım ve destek](./media/resource-manager-core-quotas-request/helpsupport.png)
+    ![Yardım + Destek](./media/resource-manager-core-quotas-request/helpsupport.png)
  
 2.  **Yeni destek isteği**’ni seçin. 
 
@@ -84,4 +84,4 @@ Azure 'un ' kullanım + kota ' dikey penceresi aracılığıyla Azure portal kul
 
 ## <a name="about-networking-limits"></a>Ağ sınırları hakkında
 
-Ağ sınırları hakkında daha fazla bilgi edinmek için sınırlar sayfasının [ağ bölümüne](../azure-subscription-service-limits.md#networking-limits) veya ağ SıNıRLARıMıZıN SSS bölümüne bakın
+Ağ sınırları hakkında daha fazla bilgi edinmek için sınırlar sayfasının [ağ bölümüne](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) veya ağ SıNıRLARıMıZıN SSS bölümüne bakın

@@ -1,25 +1,25 @@
 ---
 title: Olayları & kapsayıcı örneği günlüklerini al
-description: Azure Container Instances ile kapsayıcı günlükleri ve olayları ile hata ayıklamayı öğrenin
+description: Kapsayıcı sorunlarını gidermeye yardımcı olmak için Azure Container Instances kapsayıcı günlüklerini ve olaylarını almayı öğrenin
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 12/30/2019
 ms.custom: mvc
-ms.openlocfilehash: 57d35b9423fd8c64e5a58ee4d8055aa3b238ba8c
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: fe30ab875aa6cd7f465ffe69672a771e18134e1c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481755"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664730"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Azure Container Instances kapsayıcı günlüklerini ve olayları alma
 
-Hatalı bir Kapsayıcınız olduğunda, [az Container logs][az-container-logs]ile günlüklerini görüntüleyerek başlayın ve standart çıkış ve standart hatayı [az Container Attach][az-container-attach]ile akışa koyun.
+Azure Container Instances hatalı bir kapsayıcınız varsa, günlüklerini [az Container logs][az-container-logs]ile görüntüleyerek başlatın ve [az Container Attach][az-container-attach]ile standart çıkış ve standart hata akışını yapın. Ayrıca, Azure portal kapsayıcı örnekleri için günlükleri ve olayları görüntüleyebilir veya [Azure izleyici günlüklerine](container-instances-log-analytics.md)kapsayıcı grupları için günlük ve olay verileri gönderebilirsiniz.
 
 ## <a name="view-logs"></a>Günlükleri görüntüleme
 
 Uygulama kodunuzdaki günlükleri bir kapsayıcı içinde görüntülemek için [az Container logs][az-container-logs] komutunu kullanabilirsiniz.
 
-Aşağıda, işlem için geçersiz bir URL besledikten sonra [ACI 'de kapsayıcılı bir görevi çalıştırma](container-instances-restart-policy.md)bölümündeki örnek görev tabanlı kapsayıcının günlük çıktısı verilmiştir:
+Aşağıda, komut satırı geçersiz kılma kullanarak geçersiz bir URL sağlamadıktan sonra [bir kapsayıcı örneğindeki komut satırını ayarlama](container-instances-start-command.md#azure-cli-example)içindeki örnek görev tabanlı kapsayıcının günlük çıktısı verilmiştir:
 
 ```console
 $ az container logs --resource-group myResourceGroup --name mycontainer
@@ -47,7 +47,7 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 [Az Container Attach][az-container-attach] komutu, kapsayıcı başlatma sırasında tanılama bilgileri sağlar. Kapsayıcı başlatıldıktan sonra STDOUT ve STDERR 'i yerel konsolunuza akışlar.
 
-Örneğin, daha sonra işlemek üzere büyük bir metin dosyasının geçerli bir URL 'SI sağlamadıktan sonra [ACI 'de kapsayıcılı bir görevi çalıştırma](container-instances-restart-policy.md)bölümünde görev tabanlı kapsayıcının çıktısı aşağıda verilmiştir:
+Örneğin, [bir kapsayıcı örneğindeki komut satırını ayarla](container-instances-start-command.md#azure-cli-example)' da görev tabanlı kapsayıcının çıktısı, işlemek için büyük bir metin dosyasının geçerli bir URL 'si sağlamadıktan sonra:
 
 ```console
 $ az container attach --resource-group myResourceGroup --name mycontainer
@@ -76,7 +76,7 @@ Start streaming logs:
 
 ## <a name="get-diagnostic-events"></a>Tanılama olaylarını al
 
-Kapsayıcınız başarıyla dağıtılamazsa Azure Container Instances kaynak sağlayıcısı tarafından sunulan tanılama bilgilerini gözden geçirmeniz gerekir. Kapsayıcının olaylarını görüntülemek için [az Container Show] [az-Container-Show] komutunu çalıştırın:
+Kapsayıcınız başarıyla dağıtılamazsa Azure Container Instances kaynak sağlayıcısı tarafından sunulan tanılama bilgilerini gözden geçirin. Kapsayıcının olaylarını görüntülemek için [az Container Show][az-container-show] komutunu çalıştırın:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
@@ -145,6 +145,9 @@ az container show --resource-group myResourceGroup --name mycontainer
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Container Instances için [yaygın kapsayıcı ve dağıtım sorunlarını giderme](container-instances-troubleshooting.md) hakkında bilgi edinin.
 
+[Azure izleyici günlüklerine](container-instances-log-analytics.md)kapsayıcı grupları için günlük ve olay verilerini gönderme hakkında bilgi edinin.
+
 <!-- LINKS - Internal -->
 [az-container-attach]: /cli/azure/container#az-container-attach
 [az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show

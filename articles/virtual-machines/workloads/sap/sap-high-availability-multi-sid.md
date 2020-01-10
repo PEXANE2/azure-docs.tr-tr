@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75d4c4e38069cb192917f275245d87bb4c63d502
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff01bd0d6586cf75dcfdb7277c34120c6ec22894
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078162"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647501"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver çoklu SID yapılandırması oluşturma
 
@@ -33,7 +33,7 @@ ms.locfileid: "70078162"
 [sap-ha-guide-figure-6004]:./media/virtual-machines-shared-sap-high-availability-guide/6004-sap-multi-sid-dns.png
 [sap-ha-guide-figure-6005]:./media/virtual-machines-shared-sap-high-availability-guide/6005-sap-multi-sid-azure-portal.png
 [sap-ha-guide-figure-6006]:./media/virtual-machines-shared-sap-high-availability-guide/6006-sap-multi-sid-sios-replication.png
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [sap-ha-guide-9.1.1]:sap-high-availability-guide.md#a97ad604-9094-44fe-a364-f89cb39bf097 
 [sap-ha-guide-8.8]:sap-high-availability-guide.md#f19bd997-154d-4583-a46e-7f5a69d0153c
 [sap-ha-guide-8.12.3.3]:sap-high-availability-guide.md#d9c1fc8e-8710-4dff-bec2-1f535db7b006 
@@ -55,7 +55,7 @@ Bu makalede, var olan bir Windows Server Yük Devretme Kümelemesi (WSFC) kümes
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Windows VM 'lerde ve bu diyagramda gösterildiği gibi [yüksek kullanılabilirliğe sahıp SAP NetWeaver için kılavuzda][sap-ha-guide] açıklandığı gibi, BIR SAP ascs/SCS örneği için kullanılan bir wsfc kümesini zaten yapılandırdınız.
 
 ![Yüksek kullanılabilirliğe sahip SAP yoks/SCS örneği][sap-ha-guide-figure-6001]
@@ -72,7 +72,7 @@ Amaç, burada gösterildiği gibi birden çok SAP ABAP yoks veya SAP Java SCS k�
 >Bir WSFC kümesindeki en fazla SAP ASCS/SCS örneği sayısı, her bir Azure iç yük dengeleyici için en fazla özel ön uç IP sayısına eşittir.
 >
 
-Yük dengeleyici sınırları hakkında daha fazla bilgi için bkz. ağ sınırları içinde ["yük dengeleyici başına özel ön uç IP". Azure Resource Manager][networking-limits-azure-resource-manager].
+Yük dengeleyici sınırları hakkında daha fazla bilgi için, [ağ sınırları: Azure Resource Manager][networking-limits-azure-resource-manager]"yük dengeleyici başına özel ön uç IP" başlığına bakın.
 
 İki yüksek kullanılabilirliğe sahip SAP sistemiyle tam yatay şöyle görünür:
 
@@ -88,9 +88,9 @@ Yük dengeleyici sınırları hakkında daha fazla bilgi için bkz. ağ sınırl
 ## <a name="prepare-the-infrastructure"></a>Altyapıyı hazırlama
 Altyapınızı hazırlamak için aşağıdaki parametrelerle ek bir SAP ASCS/SCS örneği yükleyebilirsiniz:
 
-| Parametre adı | Value |
+| Parametre adı | Değer |
 | --- | --- |
-| SAP YOKS/SCS SID 'SI |PR1-lb-yoks |
+| SAP YOKS/SCS SıD 'SI |PR1-lb-yoks |
 | SAP DBMS iç yük dengeleyici | PR5 |
 | SAP sanal ana bilgisayar adı | PR5-SAP-CL |
 | SAP ASCS/SCS sanal ana bilgisayar IP adresi (ek Azure yük dengeleyici IP adresi) | 10.0.0.50 |

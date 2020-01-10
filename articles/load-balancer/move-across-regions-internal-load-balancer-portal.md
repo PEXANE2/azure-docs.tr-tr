@@ -6,21 +6,21 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: allensu
-ms.openlocfilehash: 88aedb97f659725887026d0c83be88cbde27ae4f
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: f23923b9d847ef393ebd609eb5fbba530b1a07d6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219669"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638818"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Azure iç Load Balancer Azure portal kullanarak başka bir bölgeye taşıma
 
 Mevcut iç yük dengeleyicinizi bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, test için aynı yapılandırmaya sahip bir iç yük dengeleyici oluşturmak isteyebilirsiniz. Ayrıca olağanüstü durum kurtarma planlamasının bir parçası olarak bir iç yük dengeleyiciyi başka bir bölgeye taşımak isteyebilirsiniz.
 
-Azure iç yük dengeleyiciler bir bölgeden diğerine taşınamaz. Ancak, bir iç yük dengeleyicinin mevcut yapılandırmasını ve sanal ağını dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz.  Daha sonra, yük dengeleyiciyi ve sanal ağı bir şablona dışarı aktararak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonları yeni bölgeye dağıtabilmeniz için kaynağı başka bir bölgede da oluşturabilirsiniz.  Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz [. hızlı başlangıç: Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın.
+Azure iç yük dengeleyiciler bir bölgeden diğerine taşınamaz. Ancak, bir iç yük dengeleyicinin mevcut yapılandırmasını ve sanal ağını dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz.  Daha sonra, yük dengeleyiciyi ve sanal ağı bir şablona dışarı aktararak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonları yeni bölgeye dağıtabilmeniz için kaynağı başka bir bölgede da oluşturabilirsiniz.  Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure iç yük dengeleyicinin, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 
@@ -32,7 +32,7 @@ Azure iç yük dengeleyiciler bir bölgeden diğerine taşınamaz. Ancak, bir i�
 
 - Azure aboneliğinizin, kullanılan hedef bölgede iç yük dengeleyiciler oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
 
-- Aboneliğinizin bu işleme yönelik yük dengeleyiciler eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)
+- Aboneliğinizin bu işleme yönelik yük dengeleyiciler eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
 
 
 ## <a name="prepare-and-move"></a>Hazırlama ve taşıma
@@ -43,11 +43,11 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-the-azure-portal"></a>Sanal ağ şablonunu dışarı aktarın ve Azure portal dağıtın
 
-1. [Azure Portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
+1. [Azure portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
 2. Kaynak sanal ağı içeren kaynak grubunu bulun ve üzerine tıklayın.
-3. > **Ayarları** > **dışarı aktarma şablonu**' nu seçin.
+3. > **Ayarları** > **şablonu dışarı aktar**' ı seçin.
 4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
-5. **Şablon** > **düzenleme parametreleri** ' ne tıklayarak **Parameters. JSON** dosyasını çevrimiçi düzenleyicide açın.
+5. Çevrimiçi düzenleyicide **Parameters. JSON** dosyasını açmak için **şablon** > **parametreleri Düzenle** ' ye tıklayın.
 6. Sanal ağ adının parametresini düzenlemek için, **Parametreler**altındaki **değer** özelliğini değiştirin:
 
     ```json
@@ -65,7 +65,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 8. Düzenleyicide **Kaydet** ' e tıklayın.
 
-9. Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon** > **düzenleme** şablonu ' na tıklayın.
+9. Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon > şablonu** **Düzenle** ' ye tıklayın.
 
 10. VNET 'in taşınacağı hedef bölgeyi düzenlemek için kaynaklar altındaki **Location** özelliğini değiştirin:
 
@@ -87,11 +87,11 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
     ```
 
-11. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD** = **merkezileştirme**.
+11. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bölge için kod, boşluk içermeyen bölge adıdır, **Orta ABD** = **merkezileştirme**.
 
 12. Ayrıca, isterseniz **Template. JSON** dosyasındaki diğer parametreleri değiştirebilirsiniz ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
-    * **Adres alanı** -sanal ağın adres alanı, **Resources** > **AddressSpace** bölümü değiştirilerek ve **Template. JSON** dosyasındaki **addresspredüzeltmelerinin** özelliği değiştirilerek kaydedilmeden önce değiştirilebilir:
+    * **Adres alanı** -sanal ağın adres alanı, **kaynaklar** > **adresalanı** bölümü değiştirilerek ve **Template. JSON** dosyasındaki **addresspredüzeltmelerinin** özelliği değiştirilerek kaydedilmeden önce değiştirilebilir:
 
         ```json
                 "resources": [
@@ -180,11 +180,11 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 13. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
 
-14. Hedef VNET 'in dağıtılacağı aboneliği seçmek için **temel bilgiler** > **aboneliği** ' ne tıklayın.
+14. Hedef VNET 'in dağıtılacağı aboneliği seçmek için > **temel bilgiler** **aboneliğine** tıklayın.
 
 15. Hedef VNET 'in dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef sanal ağ için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut VNET 'in kaynak kaynak grubuyla aynı olmadığından emin olun.
 
-16. **Temel bilgilerin** >  **, sanal** ağın dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
+16.  > **konumun** , VNET 'in dağıtılmasını istediğiniz hedef **konuma ayarlandığını doğrulayın** .
 
 17. **Ayarların** , yukarıdaki parametreler düzenleyicisinde girdiğiniz adla eşleştiğini doğrulayın.
 
@@ -194,11 +194,11 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>İç yük dengeleyici şablonunu dışarı aktarma ve Azure PowerShell dağıtma
 
-1. [Azure Portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
+1. [Azure portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
 2. Kaynak iç yük dengeleyiciyi içeren kaynak grubunu bulun ve üzerine tıklayın.
-3. > **Ayarları** > **dışarı aktarma şablonu**' nu seçin.
+3. > **Ayarları** > **şablonu dışarı aktar**' ı seçin.
 4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
-5. **Şablon** > **düzenleme parametreleri** ' ne tıklayarak **Parameters. JSON** dosyasını çevrimiçi düzenleyicide açın.
+5. Çevrimiçi düzenleyicide **Parameters. JSON** dosyasını açmak için **şablon** > **parametreleri Düzenle** ' ye tıklayın.
 
 6. İç yük dengeleyici adının parametresini düzenlemek için, kaynak iç yük dengeleyici adının **DefaultValue** özelliğini hedef iç yük dengeleyicinizin adına değiştirin, adın tırnak içinde olduğundan emin olun:
 
@@ -218,9 +218,9 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 6. Yukarıda taşınan hedef sanal ağın değerini düzenlemek için, önce kaynak KIMLIĞINI edinmeniz ve sonra **Parameters. JSON** dosyasına kopyalamanız ve yapıştırmanız gerekir. KIMLIĞI almak için:
 
-    1. Başka bir tarayıcı sekmesi veya penceresinde [Azure Portal](https://portal.azure.com) > **kaynak gruplarında** oturum açın.
+    1. Başka bir tarayıcı sekmesi veya penceresinde [Azure portal](https://portal.azure.com) > **kaynak gruplarında** oturum açın.
     2. Yukarıdaki adımlardan taşınan sanal ağı içeren hedef kaynak grubunu bulun ve üzerine tıklayın.
-    3. > **Ayarları** > **özelliklerini**seçin.
+    3. > **Ayarları** > **özellikleri**' ni seçin.
     4. Sağ taraftaki dikey pencerede, **kaynak kimliğini** vurgulayın ve panoya kopyalayın.  Alternatif olarak, **kaynak kimliği** yolunun sağ tarafındaki **Panoya Kopyala** düğmesine tıklayabilirsiniz.
     5. Kaynak KIMLIĞI ' ni, diğer tarayıcı penceresinde veya sekmesinde bulunan **parametreleri Düzenle** Düzenleyicisi ' ne **DefaultValue** özelliğine yapıştırın:
 
@@ -239,7 +239,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         ```
     6. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
 
-7. Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon** > **düzenleme** şablonu ' na tıklayın.
+7. Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon > şablonu** **Düzenle** ' ye tıklayın.
 8. İç yük dengeleyici yapılandırmasının taşınacağı hedef bölgeyi düzenlemek için, **Template. JSON** dosyasındaki **kaynaklar** altındaki **Location** özelliğini değiştirin:
 
     ```json
@@ -255,11 +255,11 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
                 },
     ```
 
-9.  Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD** = **merkezileştirme**.
+9.  Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bölge için kod, boşluk içermeyen bölge adıdır, **Orta ABD** = **merkezileştirme**.
 
 10. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
-    * **SKU** - **Template. JSON** dosyasındaki **SKU** > **adı** özelliğini değiştirerek, yapılandırmadaki iç yük dengeleyicinin SKU 'sunu standart iken temel veya temel olarak değiştirebilirsiniz:
+    * **SKU** - **şablon. json** dosyasındaki **SKU** > **adı** özelliğini değiştirerek, yapılandırmadaki iç yük dengeleyiciyi standart iken Basic veya Basic 'e dönüştürebilirsiniz:
 
         ```json
         "resources": [
@@ -377,11 +377,11 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 12. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
 
-13. Hedef iç yük dengeleyicinin dağıtılacağı aboneliği seçmek için **temel bilgiler** > **aboneliği** ' ne tıklayın.
+13. Hedef iç yük dengeleyicinin dağıtılacağı aboneliği seçmek için > **temel bilgiler** **aboneliğine** tıklayın.
 
 15. Hedef yük dengeleyicinin dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  **Yeni oluştur** ' a tıklayarak hedef iç yük dengeleyici için yeni bir kaynak grubu oluşturabilir veya sanal ağ için yukarıda oluşturulan mevcut kaynak grubunu seçebilirsiniz.  Adın mevcut kaynak iç yük dengeleyicinin kaynak kaynak grubuyla aynı olmadığından emin olun.
 
-16. **Temel** > aldığı**konumun** , iç yük dengeleyicinin dağıtılması için istediğiniz hedef konuma ayarlandığını doğrulayın.
+16.  > , **konumun** iç yük dengeleyicinin dağıtılmasını istediğiniz hedef **konuma ayarlandığını doğrulayın** .
 
 17. **Ayarların** , yukarıdaki parametreler düzenleyicisinde girdiğiniz adla eşleştiğini doğrulayın.  Yapılandırma içindeki tüm sanal ağlar için kaynak kimliklerinin doldurulduğunu doğrulayın.
 

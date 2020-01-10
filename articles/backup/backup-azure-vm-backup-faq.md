@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 30036d6cf241e1ac840b2be67ca78fbda6c60061
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b8e259c6212e9a1e81b6b0c8825287f3025f9068
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172571"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680537"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -111,16 +111,9 @@ Bir Azure VM için hızlı oluşturma seçeneği olarak bir VM geri yüklemeyi d
 
 Evet, diskler yönetilmeyen 'dan yönetilene geçirilmeden önce alınan yedeklemeleri kullanabilirsiniz.
 
-- Varsayılan olarak, bir geri yükleme VM işi yönetilmeyen bir VM oluşturur.
-- Ancak, diskleri geri yükleyebilir ve yönetilen bir VM oluşturmak için kullanabilirsiniz.
-
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>VM’yi nasıl yönetilen disklere geçirilmeden önceki bir geri yükleme noktasına geri yüklerim?
 
-Varsayılan olarak, bir geri yükleme VM işi, yönetilmeyen disklere sahip bir VM oluşturur. Yönetilen disklerle bir VM oluşturmak için:
-
-1. [Yönetilmeyen disklere geri yükleyin](tutorial-restore-disk.md#restore-a-vm-disk).
-2. [Geri yüklenen diskleri yönetilen disklere dönüştürün](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).
-3. [Yönetilen disklerle BIR VM oluşturun](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
+Geri yükleme işlemi aynı kalır. Kurtarma noktası, sanal makinenin yönetilmeyen diskleri olduğu zaman bir noktada ise, [diskleri yönetilmeyen olarak geri yükleyebilirsiniz](tutorial-restore-disk.md#unmanaged-disks-restore). VM 'nin yönetilen diskleri varsa, [diskleri yönetilen diskler olarak geri yükleyebilirsiniz](tutorial-restore-disk.md#managed-disk-restore). Ardından, [Bu disklerden BIR VM oluşturabilirsiniz](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
 
 PowerShell 'de bunu yapma hakkında [daha fazla bilgi edinin](backup-azure-vms-automation.md#restore-an-azure-vm) .
 

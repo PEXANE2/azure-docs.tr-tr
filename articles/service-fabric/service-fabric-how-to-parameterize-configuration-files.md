@@ -1,23 +1,16 @@
 ---
-title: Azure Service Fabric yapılandırma dosyalarını parametreleştirin | Microsoft Docs
-description: Service Fabric yapılandırma dosyalarını nasıl parametreleyeceğinizi öğrenin.
-documentationcenter: .net
+title: Azure Service Fabric yapılandırma dosyalarını Parametreleştirme
+description: Birden çok ortamı yönetirken yararlı bir tekniktir Service Fabric yapılandırma dosyalarını nasıl parametreleyeceğinizi öğrenin.
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: dad497978de7187177998524db3b2f2ee448c717
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464777"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644639"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric 'de yapılandırma dosyalarını Parametreleştirme
 
@@ -27,7 +20,7 @@ Bu makalede, Service Fabric bir yapılandırma dosyasının nasıl parametreleş
 
 Bu örnekte, uygulama dağıtımınızdaki parametreleri kullanarak bir yapılandırma değerini geçersiz kılarsınız.
 
-1. Hizmet projenizde hizmetim > \packageroot\config\settings.xml dosyasını açın.  *\<*
+1. Hizmet projenizde *\<hizmetim > \PackageRoot\Config\Settings.xml* dosyasını açın.
 1. Aşağıdaki XML 'i ekleyerek bir yapılandırma parametresi adı ve değeri (örneğin, önbellek boyutu 25 ' e eşit) ayarlayın:
 
    ```xml
@@ -37,7 +30,7 @@ Bu örnekte, uygulama dağıtımınızdaki parametreleri kullanarak bir yapılan
    ```
 
 1. Dosyayı kaydedin ve kapatın.
-1. MyApplication > \applicationpackageroot\applicationmanifest.xml dosyasını açın.  *\<*
+1. *\<MyApplication > \ApplicationPackageRoot\ApplicationManifest.xml* dosyasını açın.
 1. ApplicationManifest. xml dosyasında, `Parameters` öğesinde bir parametre ve varsayılan değer bildirin.  Parametre adının hizmetin adını içermesi önerilir (örneğin, "hizmetim").
 
    ```xml
@@ -45,7 +38,7 @@ Bu örnekte, uygulama dağıtımınızdaki parametreleri kullanarak bir yapılan
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. ApplicationManifest. xml dosyasının `ConfigOverrides` `ConfigOverride` bölümünde,yapılandırmapaketine,bölümüneveparametresinebaşvurarakbir`ServiceManifestImport` ve öğesi ekleyin.
+1. ApplicationManifest. xml dosyasının `ServiceManifestImport` bölümünde yapılandırma paketine, bölümüne ve parametresine başvurarak bir `ConfigOverrides` ve `ConfigOverride` öğesi ekleyin.
 
    ```xml
     <ConfigOverrides>

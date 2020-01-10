@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: c3134988452efe16044ab7b7740cafd02e8cf27a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 46ed2af51f34a25c1cdc1abb6152169feedd989e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201929"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666304"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama
 
@@ -76,7 +76,7 @@ Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları 
     Aşağıdaki konularda, Azure üzerinde dağıtılan kaynaklar için ek koruma katmanları uygulamak amacıyla, güvenlik merkezi 'nin Azure altyapısıyla tümleştirerek topladığı farklı Telemetriyi nasıl kullandığı açıklanmaktadır:
     
     * [Hizmet katmanı uyarıları](security-center-alerts-service-layer.md)
-    * [Azure Güvenlik ürünleriyle tümleştirme](security-center-alerts-integration.md)
+    * [Azure WAF ve Azure DDoS koruması için tehdit algılama](security-center-alerts-integration.md)
     
 ## <a name="see-also"></a>Ayrıca bkz.
 

@@ -1,6 +1,6 @@
 ---
-title: Genel Bakış-Azure sunucusuz
-description: Altyapı hakkında endişelenmeden bulutta güçlü çözümler oluşturun
+title: Genel bakış-bulut tabanlı uygulamalar ve çözümler için Azure sunucusuz
+description: Azure Logic Apps ve Azure Işlevleri 'ni kullanarak altyapı hakkında endişelenmeden bulut tabanlı uygulamalar ve çözümler oluşturmayı öğrenin
 services: logic-apps
 ms.suite: integration
 author: jeffhollan
@@ -8,14 +8,14 @@ ms.author: jehollan
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: d658efd278425358a2a931fe976827c3bae4247d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792834"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666559"
 ---
-# <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>Genel Bakış: Azure Logic Apps ve Azure Işlevleri ile Azure sunucusuz
+# <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure sunucusuz: Azure Logic Apps ve Azure Işlevleri ile bulut tabanlı uygulamalar ve çözümler oluşturmaya genel bakış
 
 [Sunucusuz](https://azure.microsoft.com/solutions/serverless/) uygulamalar, daha fazla geliştirme hızı, azaltılmış kod, basitlik ve ölçek gibi avantajlar sunar. Bu makalede sunucusuz çözümlerin ve Azure sunucusuz tekliflerin farklı öznitelikleri ele alınmaktadır.
 

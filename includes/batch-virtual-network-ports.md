@@ -15,12 +15,12 @@ ms.workload: ''
 ms.date: 07/16/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: c8b25858556538835d6a84bf0d6699f9906f1438
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98f5269c27643e7ce6c0aaf9b359503a124d9232
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68322651"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663113"
 ---
 ### <a name="general-requirements"></a>Genel gereksinimler
 
@@ -46,7 +46,7 @@ Batch havuzunun Sanal Makine yapılandırmasında veya Cloud Services yapıland�
 
 **İzinler** - Sanal ağ aboneliği veya kaynak grubu güvenlik ilkelerinin veya kilitlerinin belirli bir kullanıcının sanal ağ yönetim izinlerini kısıtlayıp kısıtlamadığını kontrol edin.
 
-**Ek ağ kaynakları** - Batch, sanal ağı içeren kaynak grubuna otomatik olarak ek ağ kaynakları atar. Her 50 ayrılmış düğüm için (veya her 20 düşük öncelikli düğüm), toplu Işlem şunu ayırır: 1 ağ güvenlik grubu (NSG), 1 genel IP adresi ve 1 yük dengeleyici. Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../articles/azure-subscription-service-limits.md) sınırlıdır. Büyük havuzlar için bu kaynaklardan birinde veya daha fazlasında kota artışı istemeniz gerekebilir.
+**Ek ağ kaynakları** - Batch, sanal ağı içeren kaynak grubuna otomatik olarak ek ağ kaynakları atar. Her 50 adanmış düğüm (veya her 20 düşük öncelikli düğüm) için Batch şunları atar: 1 ağ güvenlik grubu (NSG), 1 genel IP adresi ve 1 yük dengeleyici. Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır. Büyük havuzlar için bu kaynaklardan birinde veya daha fazlasında kota artışı istemeniz gerekebilir.
 
 #### <a name="network-security-groups"></a>Ağ güvenlik grupları
 
@@ -64,16 +64,16 @@ Batch kendi NSG'lerini yapılandırdığından alt ağ düzeyinde NSG belirtmeni
 
 **Gelen güvenlik kuralları**
 
-| Kaynak IP adresleri | Kaynak hizmeti etiketi | Kaynak bağlantı noktaları | Hedef | Hedef bağlantı noktaları | Protocol | Action |
+| Kaynak IP adresleri | Kaynak hizmet etiketi | Kaynak bağlantı noktaları | Hedef | Hedef bağlantı noktaları | Protokol | Eylem |
 | --- | --- | --- | --- | --- | --- | --- |
-| Yok | `BatchNodeManagement`[Hizmet etiketi](../articles/virtual-network/security-overview.md#service-tags) | * | Any | 29876-29877 | TCP | Allow |
-| Gerekirse, Linux çok örnekli görevler için işlem düğümlerine ve/veya işlem düğümü alt ağına uzaktan erişim için Kullanıcı kaynak IP 'Leri. | Yok | * | Any | 3389 (Windows), 22 (Linux) | TCP | Allow |
+| Yok | `BatchNodeManagement` [hizmet etiketi](../articles/virtual-network/security-overview.md#service-tags) | * | Herhangi biri | 29876-29877 | TCP | Allow |
+| Gerekirse, Linux çok örnekli görevler için işlem düğümlerine ve/veya işlem düğümü alt ağına uzaktan erişim için Kullanıcı kaynak IP 'Leri. | Yok | * | Herhangi biri | 3389 (Windows), 22 (Linux) | TCP | Allow |
 
 **Giden güvenlik kuralları**
 
-| Source | Kaynak bağlantı noktaları | Hedef | Hedef hizmeti etiketi | Hedef bağlantı noktaları | Protocol | Action |
+| Kaynak | Kaynak bağlantı noktaları | Hedef | Hedef hizmet etiketi | Hedef bağlantı noktaları | Protokol | Eylem |
 | --- | --- | --- | --- | --- | --- | --- |
-| Any | * | [Hizmet etiketi](../articles/virtual-network/security-overview.md#service-tags) | `Storage`(Batch hesabınızla ve VNet ile aynı bölgede) | 443 | TCP | Allow |
+| Herhangi biri | * | [Hizmet etiketi](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (Batch hesabınızla ve VNet ile aynı bölgede) | 443 | TCP | Allow |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Bulut Hizmetleri yapılandırmasındaki havuzlar
 
@@ -97,13 +97,13 @@ Havuz düğümlerine RDP erişimine izin vermeniz gerekiyorsa, Windows için ba�
 
 **Gelen güvenlik kuralları**
 
-| Kaynak IP adresleri | Kaynak bağlantı noktaları | Hedef | Hedef bağlantı noktaları | Protocol | Action |
+| Kaynak IP adresleri | Kaynak bağlantı noktaları | Hedef | Hedef bağlantı noktaları | Protokol | Eylem |
 | --- | --- | --- | --- | --- | --- |
-Any <br /><br />Bunun için "tümüne izin ver" izni gerekli olsa da Batch hizmeti her düğümün düzeyinde Batch harici IP adreslerini filtreleyen bir ACL kuralı uygular. | * | Any | 10100, 20100, 30100 | TCP | Allow |
-| İşlem düğümlerine RDP erişimine izin vermek için isteğe bağlı. | * | Any | 3389 | TCP | Allow |
+Herhangi biri <br /><br />Bunun için "tümüne izin ver" izni gerekli olsa da Batch hizmeti her düğümün düzeyinde Batch harici IP adreslerini filtreleyen bir ACL kuralı uygular. | * | Herhangi biri | 10100, 20100, 30100 | TCP | Allow |
+| İşlem düğümlerine RDP erişimine izin vermek için isteğe bağlı. | * | Herhangi biri | 3389 | TCP | Allow |
 
 **Giden güvenlik kuralları**
 
-| Source | Kaynak bağlantı noktaları | Hedef | Hedef bağlantı noktaları | Protocol | Action |
+| Kaynak | Kaynak bağlantı noktaları | Hedef | Hedef bağlantı noktaları | Protokol | Eylem |
 | --- | --- | --- | --- | --- | --- |
-| Any | * | Any | 443  | Any | Allow |
+| Herhangi biri | * | Herhangi biri | 443  | Herhangi biri | Allow |

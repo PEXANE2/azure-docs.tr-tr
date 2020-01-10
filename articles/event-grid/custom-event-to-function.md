@@ -8,12 +8,12 @@ ms.author: babanisa
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 5c4ba510360475e1365d4901136c94181e8c3da3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a9281ba1e2bf68da2318c32ab7037515697f92a5
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174373"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708855"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Hızlı başlangıç: Event Grid ile özel olayları Azure Işlevine yönlendirme
 
@@ -21,7 +21,7 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Azure Işlevleri d
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-azure-function"></a>Azure Işlevi oluşturma
+## <a name="create-azure-function"></a>Azure İşlevi oluşturma
 
 Özel konuya abone olmadan önce, olayları işlemek için bir işlev oluşturalım. Azure portal ' kaynak oluştur ' öğesine tıklayın ve ' işlev ' yazıp ' İşlev Uygulaması ' öğesini seçin ve Oluştur ' a tıklayın. Kaynak grubu altında ' Yeni Oluştur ' seçeneğini belirleyin ve bir ad verin. Bunu öğreticinin geri kalanı için kullanacaksınız. İşlev Uygulaması bir ad verin, ' Yayımla ' düğmesini ' Code ' üzerinde bırakın, herhangi bir çalışma zamanı ve bölge seçin ve ardından Oluştur ' a basın.
 
@@ -54,7 +54,7 @@ Event grid konusu, olaylarınızı göndereceğiniz kullanıcı tanımlı bir u�
     5. **Olay şeması** alanı için varsayılan değer **Event Grid şemayı** tut. 
 
        ![Konu sayfası oluştur](./media/custom-event-to-function/create-custom-topic.png)
-    6. **Oluştur**'u seçin. 
+    6. **Oluştur**’u seçin. 
 
 5. Özel konu oluşturulduktan sonra başarılı bildirim görürsünüz. **Kaynak grubuna git**' i seçin. 
 
@@ -124,7 +124,7 @@ Birinci örnekte, Azure CLI kullanılmaktadır. Özel konunun URL’si ve anahta
 ### <a name="azure-powershell"></a>Azure PowerShell
 İkinci örnek, benzer adımları gerçekleştirmek için PowerShell’i kullanır.
 
-1. Azure portal **Cloud Shell** ' i seçin (alternatif olarak https://shell.azure.com/)gidin. Cloud Shell penceresinin sol üst köşesindeki **PowerShell** ' i seçin. Azure CLı bölümünde örnek **Cloud Shell** pencere görüntüsüne bakın.
+1. Azure portal **Cloud Shell** ' i seçin (alternatif olarak https://shell.azure.com/) gidin. Cloud Shell penceresinin sol üst köşesindeki **PowerShell** ' i seçin. Azure CLı bölümünde örnek **Cloud Shell** pencere görüntüsüne bakın.
 2. Aşağıdaki değişkenleri ayarlayın. Her komutu kopyalayıp yapıştırdıktan sonra, komutu çalıştırmadan önce **konu adını** ve **kaynak grubu adını** güncelleştirin:
 
     ```powershell
@@ -184,13 +184,12 @@ Bu olayla çalışmaya devam etmeyi planlıyorsanız bu makalede oluşturulan ka
     ![Kaynak grupları](./media/custom-event-to-function/delete-resource-groups.png)
 
     Görüntüde gördüğünüz diğer kaynak grubu Cloud Shell pencere tarafından oluşturulmuştur ve kullanılır. Daha sonra Cloud Shell penceresini kullanmayı planlamıyorsanız, silin. 
-```
 
-## Next steps
+## <a name="next-steps"></a>Sonraki adımlar
 
-Now that you know how to create topics and event subscriptions, learn more about what Event Grid can help you do:
+Artık konu oluşturma ve olay aboneliklerini öğrendiğinize göre, Event Grid’in size nasıl yardımcı olabileceği konusunda daha fazla bilgi edinebilirsiniz:
 
-- [About Event Grid](overview.md)
-- [Route Blob storage events to a custom web endpoint](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
-- [Monitor virtual machine changes with Azure Event Grid and Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md)
-- [Stream big data into a data warehouse](event-grid-event-hubs-integration.md)
+- [Event Grid Hakkında](overview.md)
+- [Blob depolama olaylarını bir özel web uç noktasına yönlendirme](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
+- [Azure Event Grid ve Logic Apps ile sanal makine değişikliklerini izleme](monitor-virtual-machine-changes-event-grid-logic-app.md)
+- [Veri ambarına büyük veri akışı yapma](event-grid-event-hubs-integration.md)

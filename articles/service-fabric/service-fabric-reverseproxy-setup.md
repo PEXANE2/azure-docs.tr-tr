@@ -1,24 +1,15 @@
 ---
-title: Azure Service Fabric ters proxy ayarlama | Microsoft Docs
-description: Service Fabric ters proxy 'sini ayarlamayı ve yapılandırmayı anlayın.
-services: service-fabric
-documentationcenter: na
-author: jimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: Azure Service Fabric ters proxy ayarlama
+description: Azure Service Fabric uygulaması için ters proxy hizmeti ayarlamayı ve yapılandırmayı anlayın.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933907"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645455"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric ters proxy ayarlama ve yapılandırma
 Ters proxy, bir Service Fabric kümesinde çalışan mikro hizmetlerin HTTP uç noktalarına sahip diğer hizmetleri bulmasına ve iletişim kurmasına yardımcı olan isteğe bağlı bir Azure Service Fabric hizmetidir. Daha fazla bilgi edinmek için bkz. [Azure Service Fabric 'de ters proxy](service-fabric-reverseproxy.md). Bu makalede, kümenizde ters proxy 'nin nasıl ayarlanacağı ve yapılandırılacağı gösterilir. 
@@ -50,7 +41,7 @@ Mevcut bir küme için, [Azure Portal](https://docs.microsoft.com/azure/azure-re
 
 Kaynak Yöneticisi şablonunuz olduktan sonra, ters proxy 'yi aşağıdaki adımlarla etkinleştirebilirsiniz:
 
-1. Şablonun [Parametreler bölümündeki](../azure-resource-manager/resource-group-authoring-templates.md) ters proxy için bir bağlantı noktası tanımlayın.
+1. Şablonun [Parametreler bölümündeki](../azure-resource-manager/templates/template-syntax.md) ters proxy için bir bağlantı noktası tanımlayın.
 
     ```json
     "SFReverseProxyPort": {
@@ -61,7 +52,7 @@ Kaynak Yöneticisi şablonunuz olduktan sonra, ters proxy 'yi aşağıdaki adım
         }
     },
     ```
-2. [**Microsoft. ServiceFabric/kümeler**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [kaynak türü bölümündeki](../azure-resource-manager/resource-group-authoring-templates.md)NodeType nesnelerinin her biri için bağlantı noktasını belirtin.
+2. [**Microsoft. ServiceFabric/kümeler**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [kaynak türü bölümündeki](../azure-resource-manager/templates/template-syntax.md)NodeType nesnelerinin her biri için bağlantı noktasını belirtin.
 
     Bağlantı noktası, Smarproxyendpointport parametre adı tarafından tanımlanır.
 

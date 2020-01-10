@@ -4,15 +4,15 @@ description: Bu makalede, Windows için Log Analytics aracısıyla diğer bulutl
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 42183ca7b02ba75b241ee1a83b5a0dc936a8c1c8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420424"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689988"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows bilgisayarlarını Azure Izleyici 'ye bağlama
 
@@ -20,7 +20,7 @@ Yerel veri merkezinizdeki veya Azure Izleyici ile diğer bulut ortamlarınızdak
 
 İzlenen bir Windows bilgisayarında, aracı Microsoft Monitoring Agent hizmeti olarak listelenir. Microsoft Monitoring Agent hizmeti, günlük dosyalarından ve Windows olay günlüğü, performans verileri ve diğer telemetriden olayları toplar. Aracı BT raporlarının Azure Izleyici ile iletişim kuramasa bile, aracı çalışmaya devam eder ve toplanan verileri izlenen bilgisayarın diskinde sıralar. Bağlantı geri yüklendiğinde Microsoft Monitoring Agent hizmeti toplanan verileri hizmete gönderir.
 
-Aracı aşağıdaki yöntemlerden biri kullanılarak yüklenebilir. Çoğu yükleme, uygun şekilde farklı bilgisayar kümelerini yüklemek için bu yöntemlerin bir birleşimini kullanır.  Her yöntemin kullanımıyla ilgili ayrıntılar, makalenin ilerleyen kısımlarında verilmiştir.
+Aracı aşağıdaki yöntemlerden biri kullanılarak yüklenebilir. Çoğu yüklemede, farklı bilgisayar gruplarını uygun şekilde yüklemek için bu yöntemlerin bir bileşimi kullanılır.  Her yöntemin kullanımıyla ilgili ayrıntılar, makalenin ilerleyen kısımlarında verilmiştir.
 
 * El ile yükleme. Kurulum, Kurulum Sihirbazı 'nı kullanarak, komut satırından veya mevcut bir yazılım dağıtım Aracı kullanılarak dağıtıldıktan sonra, bilgisayar üzerinde el ile çalıştırılır.
 * Azure Otomasyonu Istenen durum yapılandırması (DSC). Ortamınızda zaten dağıtılan Windows bilgisayarları için bir komut dosyası ile Azure Otomasyonu 'nda DSC 'yi kullanma.  
@@ -38,7 +38,7 @@ Desteklenen yapılandırmayı anlamak için [desteklenen Windows işletim sistem
 ## <a name="obtain-workspace-id-and-key"></a>Çalışma alanı kimliği ve anahtarını alma
 Windows için Log Analytics aracısını yüklemeden önce, Log Analytics çalışma alanınız için çalışma alanı KIMLIĞI ve anahtarı gereklidir.  Bu bilgiler, her bir yükleme yönteminden kurulum sırasında aracıyı doğru şekilde yapılandırmak ve Azure ticari ve ABD kamu bulutunda Azure Izleyici ile başarıyla iletişim kurabildiğinden emin olmak için gereklidir. 
 
-1. Azure portalında **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics**’i seçin.
+1. Azure portal, **Log Analytics çalışma alanlarını**arayıp seçin.
 2. Log Analytics çalışma alanları listenizde, aracıyı raporlamak üzere yapılandırmayı planladığınız çalışma alanını seçin.
 3. **Gelişmiş ayarlar**’ı seçin.<br><br> ![Log Analytics Gelişmiş Ayarlar](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. **Bağlı Kaynaklar**’ı seçin ve ardından **Windows Sunucuları**’nı seçin.   
@@ -95,7 +95,7 @@ Aşağıdaki tabloda, Automation DSC kullanılarak dağıtıldığında de dahil
 
 |MMA özgü seçenekler                   |Notlar         |
 |---------------------------------------|--------------|
-| NOAPM = 1                               | İsteğe bağlı parametre. Aracıyı .NET uygulama performansı Izleme olmadan yüklenir.|   
+| NOAPM=1                               | İsteğe bağlı parametre. Aracıyı .NET uygulama performansı Izleme olmadan yüklenir.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = aracıyı bir çalışma alanına rapor verecek şekilde yapılandırma                |
 |OPINSIGHTS_WORKSPACE_ID                | Eklenecek çalışma alanı KIMLIĞI (GUID)                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Çalışma alanı ile ilk kimlik doğrulaması için kullanılan çalışma alanı anahtarı |
@@ -188,9 +188,9 @@ Bilgisayarın **Denetim Masası** sayfasında **Microsoft Monitoring Agent**'ı 
 
 Azure portal basit bir günlük sorgusu da gerçekleştirebilirsiniz.  
 
-1. Azure portalında **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Azure izleyici**yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Azure izleyici**'yi seçin.  
-2. Menüde **Günlükler** ' i seçin. 
-2. Günlükler bölmesinde, sorgu alanına şunu yazın:  
+1. Azure portal, **izleme**' yi arayıp seçin.
+1. Menüde **Günlükler** ' i seçin.
+1. **Günlükler** bölmesinde, sorgu alanına şunu yazın:  
 
     ```
     Heartbeat 

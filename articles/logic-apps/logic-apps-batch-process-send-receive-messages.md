@@ -1,6 +1,6 @@
 ---
 title: Grup olarak toplu işlem iletileri
-description: Azure Logic Apps iletileri toplu olarak gönderin ve alın
+description: Azure Logic Apps ' de toplu işlem kullanarak iş akışlarınız arasındaki gruplara ileti gönderin ve alın
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 813c625fc72fa7c1440b5d1b9147af9a44c2260f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e48d2bb2ffce0dd4f9293417534165165d426784
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791565"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666763"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Azure Logic Apps iletileri gönderme, alma ve toplu işleme
 
@@ -29,7 +29,7 @@ ms.locfileid: "74791565"
 
 Batch alıcılarınızın ve toplu iş göndericisinin aynı Azure aboneliğini *ve* Azure bölgesini paylaştığından emin olun. Böyle bir işlem yoksa, Batch sender 'ı bir diğeri tarafından görülemeyen için oluşturduğunuzda Batch alıcısını seçemezsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneği takip etmek için şu öğelere ihtiyacınız vardır:
 
@@ -89,7 +89,7 @@ Bir toplu işe ileti gönderebilmeniz için önce bu toplu işin önce bu iletil
 
    3. Şu eylemi seçin: **e-posta < e-posta*sağlayıcısı* gönder>**
 
-      Örnek:
+      Örneğin:
 
       ![E-posta sağlayıcınız için "e-posta gönder" eylemini seçin](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-send-email-action.png)
 

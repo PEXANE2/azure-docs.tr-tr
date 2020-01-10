@@ -1,28 +1,19 @@
 ---
-title: Azure Service fabric'te aktörleri listeleme | Microsoft Docs
-description: Reliable Actors ve meta verilerinin listeleme hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric aktörleri listeleme
+description: Örnekleri kullanarak bir Azure Service Fabric uygulamasındaki Reliable Actors ve bunların meta verilerinin numaralandırılması hakkında bilgi edinin.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 04e2c32b18e6897d6443fea68587aba9ae294be5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1516c9005a7c4dd0adcb279e9954e5f882c575c1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729146"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645608"
 ---
-# <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors hizmetine listeleme
-Reliable Actors hizmeti meta veri hizmetini barındıran actors hakkında numaralandırmak bir istemci sağlar. Actor hizmetinin bölümlenmiş bir durum bilgisi olan hizmet olduğundan, numaralandırma, bölüm başına gerçekleştirilir. Her bölümde birçok aktörler içeriyor olabileceğinden, sabit disk belleğine alınmış sonuçlar bir dizi döndürülür. Tüm sayfaları oku kadar üzerinden sayfaları döngüye. Aşağıdaki örnek, bir aktör hizmeti bir bölümde tüm etkin aktörler listesi oluşturma işlemi gösterilmektedir:
+# <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors listeleme
+Reliable Actors hizmeti, bir istemcinin, hizmetin barındırdığı aktörlerin meta verilerini listeletmesi için izin verir. Aktör hizmeti bölümlenmiş bir durum bilgisi olmayan hizmet olduğundan, bölüm başına listeleme gerçekleştirilir. Her bölümde birçok aktör olabileceği için, numaralandırma bir disk belleğine alınmış sonuçlar kümesi olarak döndürülür. Sayfalar, tüm sayfalar okunana kadar üzerine işlenir. Aşağıdaki örnek, bir aktör hizmetinin bir bölümündeki tüm etkin aktörlerin listesinin nasıl oluşturulacağını gösterir:
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -69,8 +60,8 @@ while (continuationToken != null);
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Aktör durumu yönetimi](service-fabric-reliable-actors-state-management.md)
-* [Aktör yaşam döngüsü ve atık toplama](service-fabric-reliable-actors-lifecycle.md)
-* [Aktörler API başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Aktör yaşam döngüsü ve çöp toplama](service-fabric-reliable-actors-lifecycle.md)
+* [Aktör API 'SI başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [.NET örnek kodu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java örnek kodu](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

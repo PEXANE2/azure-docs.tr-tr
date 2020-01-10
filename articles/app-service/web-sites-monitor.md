@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 4c0d3822b5000611d1b5229924cb44d055795468
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2bca4521184fa42002e6649a90bb9101fded595c
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688270"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658449"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service uygulamaları izleme
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Azure Portal](https://portal.azure.com)Web Apps, MOBIL arka uçlar ve API uygulamaları için yerleşik izleme işlevleri sağlar.
+[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Azure Portal](https://portal.azure.com)Web Apps, mobil ve API uygulamaları için yerleşik izleme işlevleri sağlar.
 
 Azure portal, bir uygulama ve App Service planı için *kotaları* ve *ölçümleri* gözden geçirebilir ve temel ölçümler olan *uyarıları* ve *Otomatik ölçeklendirmeyi* ayarlayabilirsiniz.
 
@@ -41,7 +41,7 @@ Uygulama *temel*, *Standart*veya *Premium* bir planda barındırılıyorsa, kull
 
 *Temel*, *Standart*ve *Premium* 'da barındırılan uygulamalar Için geçerli olan tek Kota dosya sistemi 'dir.
 
-Çeşitli App Service SKU 'Larının kullanabildiği belirli kotalar, sınırlar ve özellikler hakkında daha fazla bilgi için bkz. [Azure abonelik hizmeti sınırları](../azure-subscription-service-limits.md#app-service-limits).
+Çeşitli App Service SKU 'Larının kullanabildiği belirli kotalar, sınırlar ve özellikler hakkında daha fazla bilgi için bkz. [Azure abonelik hizmeti sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
 ### <a name="quota-enforcement"></a>Kota zorlaması
 
@@ -114,7 +114,7 @@ App Service planı için kullanılabilir ölçümler şunlardır:
 | **Bellek yüzdesi** | Planın tüm örnekleri genelinde kullanılan ortalama bellek. |
 | **Içindeki veriler** | Planın tüm örnekleri genelinde kullanılan ortalama gelen bant genişliği. |
 | **Giden veriler** | Planın tüm örneklerinde kullanılan ortalama giden bant genişliği. |
-| **Disk kuyruğu uzunluğu** | Depolama üzerinde sıraya alınan okuma ve yazma isteklerinin ortalama sayısı. Yüksek disk kuyruğu uzunluğu aşırı disk g/ç nedeniyle yavaşlabilen bir uygulamanın göstergesidir. |
+| **Disk kuyruğu uzunluğu** | Depolama üzerinde sıraya alınan okuma ve yazma isteklerinin ortalama sayısı. Yüksek disk kuyruğu uzunluğu, aşırı disk g/ç nedeniyle yavaşlabilen bir uygulamanın göstergesidir. |
 | **Http kuyruğu uzunluğu** | Yerine getirilmeden önce kuyruğa oturmak zorunda olan HTTP isteklerinin ortalama sayısı. Yüksek veya artan bir HTTP kuyruğu uzunluğu, ağır yük altında bir planın belirtisidir. |
 
 ### <a name="cpu-time-vs-cpu-percentage"></a>CPU süresi vs CPU yüzdesi
@@ -129,7 +129,7 @@ CPU kullanımını yansıtan iki ölçüm vardır:
 ## <a name="metrics-granularity-and-retention-policy"></a>Ölçüm ayrıntı düzeyi ve bekletme ilkesi
 Bir uygulama ve App Service planı için ölçümler, aşağıdaki granuya ve bekletme ilkeleriyle birlikte günlüğe kaydedilir ve hizmet tarafından toplanır:
 
-* **Dakika** ayrıntı düzeyi ölçümleri 30 saat boyunca korunur.
+* **Dakika** ayrıntı düzeyi ölçümleri 30 saat boyunca tutulur.
 * **Saat** ayrıntı düzeyi ölçümleri 30 gün boyunca tutulur.
 * **Gün** ayrıntı düzeyi ölçümleri 30 gün boyunca tutulur.
 
@@ -144,19 +144,16 @@ Kotaları bulmak için **ayarlar** > **Kotalar**' ı seçin. Grafik üzerinde ş
 1. Geçerli sınırı.
 1. Geçerli değeri.
 
-Azure portal][metrics] ölçüm grafiği ![doğrudan **kaynak** sayfasından ölçümlere erişebilirsiniz. Grafiği özelleştirmek için: 
-1. Grafiği seçin.
-1. **Grafiği Düzenle ' yi**seçin.
-1. **Zaman aralığını**düzenleyin.
-1. **Grafik türünü**düzenleyin.
-1. Göstermek istediğiniz ölçümleri düzenleyin.  
+Azure portal][metrics] ölçüm grafiği ![doğrudan kaynak **genel bakış** sayfasından ölçümlere erişebilirsiniz. Burada bazı uygulama ölçümlerini temsil eden grafikler görürsünüz.
+
+Bu grafiklerin herhangi birine tıkladığınızda, özel grafikler oluşturabileceğiniz, farklı ölçümleri Sorgulayabileceğiniz ve çok daha birçok Ölçüm görünümü uygulanır. 
 
 Ölçümler hakkında daha fazla bilgi edinmek için bkz. [hizmet ölçümlerini izleme](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
 ## <a name="alerts-and-autoscale"></a>Uyarılar ve otomatik ölçeklendirme
 Bir uygulama veya App Service planı için ölçümler, uyarılara bağlanabilir. Daha fazla bilgi için bkz. [Uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
-Temel, standart veya Premium App Service planlarında barındırılan App Service uygulamalar otomatik ölçeklendirmeyi destekler. Otomatik ölçeklendirme ile App Service planı ölçümlerini izleyen kuralları yapılandırabilirsiniz. Kurallar, gerektiğinde ek kaynaklar sağlayabilen örnek sayısını artırabilir veya azaltabilir. Kurallar, uygulamanın aşırı sağlandığı durumlarda tasarruf etmenize de yardımcı olabilir.
+Temel veya daha yüksek App Service planlarında barındırılan App Service uygulamalar otomatik ölçeklendirmeyi destekler. Otomatik ölçeklendirme ile App Service planı ölçümlerini izleyen kuralları yapılandırabilirsiniz. Kurallar, gerektiğinde ek kaynaklar sağlayabilen örnek sayısını artırabilir veya azaltabilir. Kurallar, uygulamanın aşırı sağlandığı durumlarda tasarruf etmenize de yardımcı olabilir.
 
 Otomatik ölçeklendirme hakkında daha fazla bilgi için [](../monitoring-and-diagnostics/insights-how-to-scale.md) bkz. [Azure izleyici otomatik ölçeklendirme Için ölçeklendirme ve en iyi uygulamalar](../azure-monitor/platform/autoscale-best-practices.md).
 

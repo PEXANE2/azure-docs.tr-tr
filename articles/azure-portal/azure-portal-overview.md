@@ -1,22 +1,22 @@
 ---
 title: Azure portalına genel bakış | Microsoft Docs
-description: Azure portal nasıl gezineceğinizi ve hizmetleri yönetmek için nasıl kullanacağınızı öğrenin
+description: Azure portal, Azure hizmetlerinizi yönetmek için kullanabileceğiniz bir grafik kullanıcı arabirimidir. Azure portal nasıl gezineceğinizi ve kaynakların nasıl bulunacağını öğrenin.
 services: azure-portal
 keywords: portal
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 90bbea1068bb237501daf5e0dfac865ca6b9a12a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 478b090cfe0bfd63bde37dc944cd9fad6e88f179
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579427"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637618"
 ---
-# <a name="azure-portal-overview"></a>Azure portalına genel bakış
+# <a name="azure-portal-overview"></a>Azure Portalı Genel Bilgileri
 
 Bu makale Azure portal tanıtır, Portal sayfası öğelerini tanımlar ve Azure portal yönetim deneyimini öğrenmenize yardımcı olur.
 

@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 1be4882af781f884313fbc7b8e2f04f843b60068
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71038959"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641522"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Azure ağ güvenlik grubu (NSG) Azure PowerShell kullanarak başka bir bölgeye taşıma
 
@@ -20,7 +20,7 @@ Mevcut NSG 'lerinizi bir bölgeden diğerine taşımak istediğiniz çeşitli se
 Azure Güvenlik grupları bir bölgeden diğerine taşınamaz. Bununla birlikte, bir NSG 'nin mevcut yapılandırma ve güvenlik kurallarını dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz.  Daha sonra, NSG 'yi bir şablona dışarı aktararak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtabilmeniz için kaynağı başka bir bölgede aşamalandırın.  Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz. [kaynak gruplarını şablonlara dışarı aktarma](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates).
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure ağ güvenlik grubunun, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 
@@ -32,7 +32,7 @@ Azure Güvenlik grupları bir bölgeden diğerine taşınamaz. Bununla birlikte,
 
 - Azure aboneliğinizin, kullanılan hedef bölgede NSG 'ler oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
 
-- Aboneliğinizin bu işlem için NSG 'lerin eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Aboneliğinizin bu işlem için NSG 'lerin eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Hazırlama ve taşıma
@@ -106,9 +106,9 @@ Aşağıdaki adımlarda, ağ güvenlik grubunun yapılandırma ve güvenlik kura
     Get-AzLocation | format-table
     
     ```
-8. Ayrıca, isterseniz  **\<kaynak-grup-adı >. JSON** ' daki diğer parametreleri değiştirebilirsiniz ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
+8. Ayrıca, ' yi seçerseniz **\<kaynak-grup-adı >. JSON** ' daki diğer parametreleri değiştirebilirsiniz ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
-    * **Güvenlik kuralları** -  **\<Resource-Group-name >. JSON** dosyasındaki **SecurityRules** bölümüne kural ekleyerek veya kaldırarak hedef NSG 'ye dağıtılan kuralları düzenleyebilirsiniz:
+    * **Güvenlik kuralları** - **\<kaynak-grup-adı >. JSON** dosyasındaki **SecurityRules** bölümüne kural ekleyerek veya kaldırarak hedef NSG 'ye dağıtılan kuralları düzenleyebilirsiniz:
 
         ```json
            "resources": [
@@ -144,7 +144,7 @@ Aşağıdaki adımlarda, ağ güvenlik grubunun yapılandırma ve güvenlik kura
             
         ```
 
-        Hedef NSG 'deki kuralların eklenmesini veya kaldırılmasını tamamlamaya yönelik olarak,  **\<kaynak-grup-adı >. JSON** dosyasının sonundaki özel kural türlerini aşağıdaki örnekte de düzenlemeniz gerekir:
+        Hedef NSG 'de kuralların eklenmesini veya kaldırılmasını bitirmek için, **\<Resource-Group-name >. JSON** dosyasının sonundaki özel kural türlerini aşağıdaki örnekte de düzenlemeniz gerekir:
 
         ```json
            {
@@ -171,7 +171,7 @@ Aşağıdaki adımlarda, ağ güvenlik grubunun yapılandırma ve güvenlik kura
             }
         ```
 
-9. **Resource-Group-name >. json dosyasını kaydedin. \<**
+9. **Resource-Group-name >. json dosyasını\<** kaydedin.
 
 10. Target NSG 'nin [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)kullanılarak dağıtılması için hedef bölgede bir kaynak grubu oluşturun:
     
@@ -179,7 +179,7 @@ Aşağıdaki adımlarda, ağ güvenlik grubunun yapılandırma ve güvenlik kura
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. **Düzenlenmiş\<kaynak-grup adı >. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
+11. Düzenlenmiş **\<Resource-Group-name >. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
 
     ```azurepowershell-interactive
 

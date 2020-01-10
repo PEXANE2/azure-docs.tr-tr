@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: HT
+ms.openlocfilehash: 323f01e08007260d4fb6d651b20937c5d5d5e357
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585405"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645098"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure Application Gateway Web uygulaması güvenlik duvarı v2 için özel kurallar
 
@@ -29,7 +29,7 @@ Aynı kural içindeki farklı eşleşen koşullar, **ve**kullanarak her zaman bi
 **Ya** da iki farklı koşul istiyorsanız, iki koşulun farklı kurallarda olması gerekir. Örneğin, belirli bir IP adresinden gelen trafiği engelleyin veya belirli bir tarayıcı kullanılıyorsa trafiği engelleyin.
 
 > [!NOTE]
-> WAF özel kural sayısı üst sınırı 100 ' dir. Application Gateway limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-subscription-service-limits.md#application-gateway-limits).
+> WAF özel kural sayısı üst sınırı 100 ' dir. Application Gateway limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
 
 Normal ifadeler Ayrıca, benzer RuleSets gibi özel kurallarda de desteklenir. Bunlara örnekler için bkz. örnek 3 ve 5 [özel Web uygulaması güvenlik duvarı kuralları oluşturma ve kullanma](create-custom-waf-rules.md).
 
@@ -133,7 +133,7 @@ Aşağıdaki işleçlerden biri olmalıdır:
 - GreaterThanOrEqual
 - Ile başlıyor
 - EndsWith
-- Regex
+- Düzenli ifadesi
 - Coğrafi eşleşme (Önizleme)
 
 ### <a name="negate-condition-optional"></a>Negate koşulu [isteğe bağlı]
@@ -145,7 +145,7 @@ Geçerli koşulu geçersiz kılar.
 Eşleşmesinden önce yapılacak dönüşümlerdeki adlara sahip dizelerin listesi. Bunlar aşağıdaki dönüşümler olabilir:
 
 - Küçük harf
-- Kırpma
+- Trim
 - URL kod çözme
 - UrlEncode 
 - RemoveNulls
@@ -184,7 +184,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | AT | Avusturya|
 | AU | Avustralya|
 | AZ | Azerbaycan|
-| BA | Bosna Hersek|
+| BA | Bosna - Hersek|
 | BB | Barbados|
 | BD | Bangladeş|
 | BE | Belçika|
@@ -201,12 +201,12 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | BT | Butan|
 | BW | Botsvana|
 | BY | Belarus|
-| BZ | Beliz|
+| BZ | Belize|
 | CA | Kanada|
 | CD | Kongo Demokratik Cumhuriyeti|
 | CF | Orta Afrika Cumhuriyeti|
 | CH | İsviçre|
-| CI | Fildişi Sahili (Côte d’Ivoire)|
+| CI | Fildişi Kıyısı|
 | CL | Şili|
 | CM | Kamerun|
 | CN | Çin|
@@ -238,9 +238,9 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | GR | Yunanistan|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hong Kong ÖiB|
+| HK | Hong Kong SAR|
 | HN | Honduras|
-| HR | Hırvatistan|
+| İK | Hırvatistan|
 | HT | Haiti|
 | HU | Macaristan|
 | Kimlik | Endonezya|
@@ -262,11 +262,11 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | KP | Kore Demokratik Halk Cumhuriyeti|
 | KR | Kore Cumhuriyeti|
 | KW | Kuveyt|
-| KY | Kayman Adaları|
+| KY | Cayman Adaları|
 | KZ | Kazakistan|
 | LA | Laos Demokratik Halk Cumhuriyeti|
 | LB | Lübnan|
-| LI | Lihtenştayn|
+| LI | Liechtenstein|
 | LK | Sri Lanka|
 | LR | Liberya|
 | LS | Lesoto|
@@ -290,7 +290,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | MX | Meksika|
 | MY | Malezya|
 | MZ | Mozambik|
-| NA | Namibya|
+| Yok | Namibya|
 | NE | Nijer|
 | NG | Nijerya|
 | NI | Nikaragua|
@@ -314,7 +314,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | RO | Romanya|
 | RS | Sırbistan|
 | RU | Rusya Federasyonu|
-| RW | Rwanda|
+| RW | Ruanda|
 | SA | Suudi Arabistan|
 | SD | Sudan|
 | SE | İsveç|
@@ -338,7 +338,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | TZ | Tanzanya Birleşik Cumhuriyeti|
 | UA | Ukrayna|
 | UG | Uganda|
-| ABD | Amerika Birleşik Devletleri|
+| US | Birleşik Devletler|
 | UY | Uruguay|
 | UZ | Özbekistan|
 | VC | Saint Vincent ve Grenadinler|

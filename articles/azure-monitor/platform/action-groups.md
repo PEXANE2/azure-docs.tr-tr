@@ -2,18 +2,16 @@
 title: Azure portal eylem grupları oluşturma ve yönetme
 description: Azure portal eylem grupları oluşturmayı ve yönetmeyi öğrenin.
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6b3d1ff76d4f7611da8e08dd4ce42293c805978e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423856"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659840"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portal eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
@@ -72,17 +70,17 @@ Bir eylem grubu oluşturduktan sonra, **izleyici** bölmesinin **eylem grupları
 ## <a name="action-specific-information"></a>Eyleme özgü bilgiler
 
 > [!NOTE]
-> Aşağıdaki öğelerin her birinde sayısal limitleri [izlemek Için abonelik hizmeti sınırlarına](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) bakın.  
+> Aşağıdaki öğelerin her birinde sayısal limitleri [izlemek Için abonelik hizmeti sınırlarına](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) bakın.  
 
-### <a name="automation-runbook"></a>Otomasyon Runbook 'U
-Runbook yüklerinin sınırları için [Azure abonelik hizmeti sınırlarına](../../azure-subscription-service-limits.md) bakın.
+### <a name="automation-runbook"></a>Otomasyon Runbook'u
+Runbook yüklerinin sınırları için [Azure abonelik hizmeti sınırlarına](../../azure-resource-manager/management/azure-subscription-service-limits.md) bakın.
 
 Bir eylem grubunda sınırlı sayıda runbook eylemi olabilir. 
 
-### <a name="azure-app-push-notifications"></a>Azure Uygulama anında Iletme bildirimleri
+### <a name="azure-app-push-notifications"></a>Azure Uygulama Anında İletme Bildirimleri
 Bir eylem grubunda sınırlı sayıda Azure uygulama eylemi olabilir.
 
-### <a name="email"></a>Email
+### <a name="email"></a>E-posta
 E-postalar aşağıdaki e-posta adreslerinden gönderilir. E-posta filtrelemesinin uygun şekilde yapılandırıldığından emin olun
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -105,7 +103,7 @@ ITSM eylemi bir ıTSM bağlantısı gerektiriyor. [ITSM bağlantısı](../../azu
 
 Bir eylem grubunda sınırlı sayıda ıSM eylemi olabilir. 
 
-### <a name="logic-app"></a>Logic App
+### <a name="logic-app"></a>Mantıksal Uygulama
 Bir eylem grubunda sınırlı sayıda mantıksal uygulama eylemi olabilir.
 
 ### <a name="secure-webhook"></a>Güvenli Web kancası

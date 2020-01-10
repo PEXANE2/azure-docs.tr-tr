@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl bölümü | Microsoft Docs
-description: Service Fabric CLı sfctl bölüm komutlarını açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl bölümü
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Bir hizmet için bölümleri yönetmeye yönelik komutların listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 2c2ebb7cb08cb6b6b2130290c81fa9e07766b5e2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c50fcb348dad7960be81f80ecb7c455dbffaadb3
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901076"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646067"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 Tüm hizmet için bölümleri sorgulayın ve yönetin.
@@ -31,15 +22,15 @@ Tüm hizmet için bölümleri sorgulayın ve yönetin.
 | veri kaybı | Bu API, belirtilen bölüm için veri kaybına yol açar. |
 | veri kaybı-durum | StartDataLoss API kullanılarak başlatılan bir bölüm veri kaybı işleminin ilerlemesini alır. |
 | sağlık | Belirtilen Service Fabric bölümünün sistem durumunu alır. |
-| Bilgisine | Service Fabric bölüm hakkındaki bilgileri alır. |
+| info | Service Fabric bölüm hakkındaki bilgileri alır. |
 | list | Service Fabric bir hizmetin bölümlerinin listesini alır. |
 | yükleme | Belirtilen Service Fabric bölümünün yükleme bilgilerini alır. |
 | Yükleme-sıfırlama | Service Fabric bölümün geçerli yükünü sıfırlar. |
 | çekirdek kaybı | Belirli bir durum bilgisi olan hizmet bölümü için çekirdek kaybına yol açar. |
 | çekirdek kaybı-durum | Startquorumkaybetme API 'SI kullanılarak başlatılan bir bölümdeki çekirdek kaybı işleminin ilerlemesini alır. |
-| Kurtarılamıyor | Service Fabric kümesine, şu anda çekirdek kaybına takılmış olan belirli bir bölümü kurtarmaya çalışılması gerektiğini gösterir. |
+| kurtarma | Service Fabric kümesine, şu anda çekirdek kaybına takılmış olan belirli bir bölümü kurtarmaya çalışılması gerektiğini gösterir. |
 | tümünü kurtar | Service Fabric kümesine, şu anda çekirdek kaybına takılmış olan Hizmetleri (sistem hizmetleri dahil) kurtarmaya çalışılması gerektiğini gösterir. |
-| rapor-sistem durumu | Service Fabric bölümünde bir sistem durumu raporu gönderir. |
+| report-health | Service Fabric bölümünde bir sistem durumu raporu gönderir. |
 | restart | Bu API, belirtilen bölümün bazı veya tüm çoğaltmalarını veya örneklerini yeniden başlatacak. |
 | yeniden başlatma durumu | StartPartitionRestart kullanılarak başlatılan bir PartitionRestart işleminin ilerlemesini alır. |
 | svc-adı | Bir bölüm için Service Fabric hizmetinin adını alır. |

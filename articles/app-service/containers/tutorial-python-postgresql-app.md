@@ -3,65 +3,56 @@ title: 'Öğretici: postgre ile Linux Python uygulaması'
 description: Azure 'da bir PostgreSQL veritabanına bağlantı ile Azure App Service çalışan bir Linux Python uygulamasını nasıl alabileceğinizi öğrenin. Bu öğreticide docgo kullanılır.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 12/14/2019
 ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: d23097c9674d2b7e60e779304a2d08c734bd614d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: e0880cd1c16a8a0080551bbeaefe04f2f8dd705b
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688873"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681077"
 ---
-# <a name="tutorial-build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Python (Docgo) Web uygulaması derleme
+# <a name="tutorial-run-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Python (Docgo) Web uygulaması çalıştırma
 
-[Linux’ta App Service](app-service-linux-intro.md) yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu öğreticide, veritabanı arka ucu olarak PostgreSQL kullanılarak veri odaklı bir Python (Docgo) Web uygulamasının nasıl oluşturulacağı gösterilmektedir. İşiniz bittiğinde, Linux üzerinde Azure App Service çalıştıran bir Docgo Web uygulamanız vardır.
+[Azure App Service](app-service-linux-intro.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu öğreticide, veri odaklı bir Python Docgo Web uygulamasını PostgreSQL için Azure veritabanı veritabanına bağlama ve uygulamayı Azure App Service dağıtma ve çalıştırma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
-![Linux üzerinde Azure App Service Python Docgo Web uygulaması](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
+![Azure App Service 'de Python Docgo Web uygulaması](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure’da PostgreSQL veritabanı oluşturma
-> * Python web uygulamasını PostgreSQL 'e bağlama
-> * Python web uygulamasını Azure 'a dağıtma
+> * PostgreSQL için Azure veritabanı veritabanı oluşturma ve bir Web uygulamasını buna bağlama
+> * Web uygulamasını Azure App Service dağıtma
 > * Tanılama günlüklerini görüntüleme
-> * Azure portal Python web uygulamasını yönetme
+> * Azure portal web uygulamasını yönetme
 
-> [!NOTE]
-> PostgreSQL için Azure veritabanı oluşturmadan önce, [bölgenizde hangi işlem oluşturmanın kullanılabilir olduğunu](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores)kontrol edin.
+Bu makaledeki adımları macOS, Linux veya Windows ' da izleyebilirsiniz. Adımlar çoğu durumda benzerdir, ancak farklar bu öğreticide ayrıntılı değildir. Aşağıdaki örneklerin çoğu Linux üzerinde `bash` Terminal penceresi kullanır. 
 
-MacOS 'ta bu makaledeki adımları izleyebilirsiniz, Linux ve Windows yönergeleri çoğu durumda aynıdır, ancak farklılıklar Bu öğreticide ayrıntılı değildir.
+## <a name="prerequisites"></a>Ön koşullar
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+Bu öğreticiye başlamadan önce:
 
-## <a name="prerequisites"></a>Önkoşullar
+- [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+- [Git](https://git-scm.com/)'i yükleyin.
+- [Python 3](https://www.python.org/downloads/)' ü yükler.
+- [PostgreSQL](https://www.postgresql.org/download/)'i yükleyip çalıştırın.
 
-Bu öğreticiyi tamamlamak için:
+## <a name="test-postgresql-installation-and-create-a-database"></a>PostgreSQL yüklemesini test etme ve veritabanı oluşturma
 
-1. [Git'i yükleyin](https://git-scm.com/)
-2. [Python'ı yükleyin](https://www.python.org/downloads/)
-3. [PostgreSQL’i yükleyin ve çalıştırın](https://www.postgresql.org/download/)
+İlk olarak, yerel PostgreSQL sunucunuza bağlanın ve bir veritabanı oluşturun: 
 
-## <a name="test-local-postgresql-installation-and-create-a-database"></a>Yerel PostgreSQL yüklemesini test etme ve bir veritabanı oluşturma
-
-Yerel bir terminal penceresinde `psql` komutunu çalıştırarak yerel PostgreSQL sunucunuza bağlanın.
+Yerel bir Terminal penceresinde, yerleşik `postgres` Kullanıcı olarak yerel PostgreSQL sunucunuza bağlanmak için `psql` çalıştırın.
 
 ```bash
-sudo -u postgres psql postgres
-```
-
-`unknown user: postgres` gibi bir hata iletisi alırsanız, PostgreSQL yüklemeniz oturum açmış kullanıcı adınız ile yapılandırılabilir. Bunun yerine aşağıdaki komutu deneyin.
-
-```bash
-psql postgres
+psql -U postgres
 ```
 
 Bağlantınız başarılı olursa, PostgreSQL veritabanınız çalışır. Aksi takdirde, yerel PostgresQL veritabanınızın [İndirmeler - PostgreSQL Çekirdek Dağıtım](https://www.postgresql.org/download/) konusunda işletim sisteminiz için yönergeler izlenilerek başlatıldığından emin olun.
 
-*Pollsdb* adlı bir veritabanı oluşturun ve Password *supersecretpass*ile *Manager* adlı ayrı bir veritabanı kullanıcısı ayarlayın.
+*Pollsdb*adlı yeni bir veritabanı oluşturun ve Password *supersecretpass*ile *yönetici* adlı bir veritabanı kullanıcısı ayarlayın:
 
 ```sql
 CREATE DATABASE pollsdb;
@@ -72,45 +63,46 @@ GRANT ALL PRIVILEGES ON DATABASE pollsdb TO manager;
 PostgreSQL istemcisinden çıkmak için `\q` yazın.
 
 <a name="step2"></a>
+## <a name="create-and-run-the-local-python-app"></a>Yerel Python uygulaması oluşturma ve çalıştırma
 
-## <a name="create-local-python-app"></a>Yerel Python uygulaması oluşturma
+Sonra, örnek Python Docgo Web uygulamasını ayarlayıp çalıştırın.
 
-Bu adımda, yerel Python Docgo projesini ayarlarsınız.
+[Docgoapp](https://github.com/Azure-Samples/djangoapp) örnek deposu, docgo belgelerine [Ilk Docgo uygulamanızı yazarak](https://docs.djangoproject.com/en/2.1/intro/tutorial01/) aldığınız veri tabanlı [docgo](https://www.djangoproject.com/) yoklamaları uygulamasını içerir.
 
 ### <a name="clone-the-sample-app"></a>Örnek uygulamayı kopyalama
 
-Terminal penceresini açın ve bir çalışma dizinine `CD` yazın.
-
-Örnek depoyu kopyalamak için aşağıdaki komutları çalıştırın.
+Bir Terminal penceresinde, örnek uygulama deposunu kopyalamak için aşağıdaki komutları çalıştırın ve yeni çalışma dizinine geçin:
 
 ```bash
 git clone https://github.com/Azure-Samples/djangoapp.git
 cd djangoapp
 ```
 
-Bu örnek depo, bir [Docgo](https://www.djangoproject.com/) uygulaması içerir. Bu, [Docgo belgelerindeki başlangıç öğreticisini](https://docs.djangoproject.com/en/2.1/intro/tutorial01/)izleyerek elde ettiğiniz veri tabanlı uygulama. Bu öğretici, size bir docgo Web uygulaması (veya başka bir veri odaklı Python uygulaması) Azure App Service için nasıl dağıtım yapılacağını ve çalıştırılacağını gösterir.
+### <a name="configure-the-python-virtual-environment"></a>Python sanal ortamını yapılandırma
 
-### <a name="configure-environment"></a>Ortamı yapılandırma
-
-Bir Python sanal ortamı oluşturun ve veritabanı bağlantı ayarlarını ayarlamak için bir komut dosyası kullanın.
+Uygulamanızı çalıştırmak için bir Python sanal ortamı oluşturun ve etkinleştirin.
 
 ```bash
-# Bash
 python3 -m venv venv
 source venv/bin/activate
-source ./env.sh
-
-# PowerShell
+```
+veya
+```PowerShell
 py -3 -m venv venv
 venv\scripts\activate
+```
+
+`venv` ortamında, *azuresite/Settings. Kopyala* ' nın veritabanı bağlantısı ayarları için kullanacağı ortam değişkenlerini ayarlamak için *env.sh* veya *env. ps1* ' yi çalıştırın.
+
+```bash
+source ./env.sh
+```
+veya
+```PowerShell
 .\env.ps1
 ```
 
-*Env.sh* ve *env. ps1* içinde tanımlanan ortam değişkenleri, veritabanı ayarlarını tanımlamak için _azuresite/Settings. Kopyala_ içinde kullanılır.
-
-### <a name="run-app-locally"></a>Uygulamayı yerel olarak çalıştırma
-
-Gerekli paketleri yükler, [Docgo geçişleri çalıştırın](https://docs.djangoproject.com/en/2.1/topics/migrations/) ve [bir yönetici kullanıcı oluşturun](https://docs.djangoproject.com/en/2.1/intro/tutorial02/#creating-an-admin-user).
+*Requirements. txt*dosyasından gerekli paketleri yükler, [docgo geçişlerini](https://docs.djangoproject.com/en/2.1/topics/migrations/)çalıştırın ve [bir yönetici kullanıcı oluşturun](https://docs.djangoproject.com/en/2.1/intro/tutorial02/#creating-an-admin-user):
 
 ```bash
 pip install -r requirements.txt
@@ -118,66 +110,75 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-Yönetici Kullanıcı oluşturulduktan sonra Docgo sunucusunu çalıştırın.
+### <a name="run-the-web-app"></a>Web uygulamasını çalıştırma
+
+Yönetici kullanıcıyı oluşturduktan sonra Docgo sunucusunu çalıştırın.
 
 ```bash
 python manage.py runserver
 ```
 
-Docgo Web uygulaması tam olarak yüklendiğinde aşağıdaki iletiye benzer bir şey görürsünüz:
+Docgo Web uygulaması tam olarak yüklendiğinde aşağıdaki iletiye benzer bir şey döndürür:
 
 ```bash
 Performing system checks...
 
 System check identified no issues (0 silenced).
-October 26, 2018 - 10:54:59
+December 13, 2019 - 10:54:59
 Django version 2.1.2, using settings 'azuresite.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-Bir tarayıcıda `http://localhost:8000` gidin. İleti `No polls are available.`görmeniz gerekir. 
+{1 & gt; *http\/: 1* & lt; 1} sayfasına gidin. **Hiçbir yoklama**yok iletisini görmeniz gerekir. 
 
-`http://localhost:8000/admin` gidin ve son adımda oluşturduğunuz yönetici kullanıcısını kullanarak oturum açın. **Sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
+*Http:\//localhost: 8000/admin* adresine gidin ve son adımda oluşturduğunuz yönetici kullanıcısını kullanarak oturum açın. **Soruların**yanına **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
 
 ![Uygulama hizmetlerinde yerel olarak Python Docgo uygulaması çalıştırma](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
-`http://localhost:8000` tekrar gidin ve görünen yoklama sorusunu görüntüleyin.
+*Http:\//localhost:* soru-cevap sorusuna bakmak ve soruyu yanıtlamak için bu adrese gidin. Yerel Docgo örnek uygulaması, Kullanıcı verilerini yerel PostgreSQL veritabanına yazar ve depolar.
 
-Docgo örnek uygulaması, Kullanıcı verilerini veritabanında depolar. Bir anket sorusu eklerken başarılı olursanız, uygulamanız yerel PostgreSQL veritabanına veri yazıyor.
-
-Docgo sunucusunu dilediğiniz zaman durdurmak için, terminalde CTRL + C yazın.
-
-## <a name="create-a-production-postgresql-database"></a>Üretim PostgreSQL veritabanı oluşturma
-
-Bu adımda, Azure’da bir SQL Veritabanı oluşturursunuz. Uygulamanız Azure’da dağıtıldığında bu bulut veritabanını kullanır.
+Docgo sunucusunu durdurmak için terminalde CTRL + C yazın.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
+Bu makaledeki diğer adımların çoğu Azure Cloud Shell Azure CLı komutlarını kullanır. 
+
+## <a name="create-and-connect-to-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı oluşturun ve bu veritabanına bağlanın
+
+Bu bölümde, PostgreSQL için Azure veritabanı sunucusu ve veritabanı oluşturup Web uygulamanızı bu sunucuya bağlayabilirsiniz. Web uygulamanızı Azure App Service dağıtırken, uygulama bu bulut veritabanını kullanır. 
+
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
+
+PostgreSQL için Azure veritabanı sunucunuz için yeni bir kaynak grubu oluşturabilir veya var olan bir kaynak grubunu kullanabilirsiniz. 
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>PostgreSQL için Azure Veritabanı sunucusu oluşturma
 
-Cloud Shell'de [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) komutuyla bir PostgreSQL sunucusu oluşturun.
+Cloud Shell [az Postgres Server Create](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) komutuyla bir PostgreSQL sunucusu oluşturursunuz.
 
-Aşağıdaki örnek komutta, *\<PostgreSQL-name >* öğesini benzersiz bir sunucu adıyla değiştirin ve *\<admin-username >* ve *\<Admin-Password >* öğesini istenen kullanıcı kimlik bilgileriyle değiştirin. Kullanıcı kimlik bilgileri, veritabanı yöneticisi hesabı için geçerli olacaktır. Sunucu adı, PostgreSQL uç noktasının bir parçası olan `https://<postgresql-name>.postgres.database.azure.com` olarak kullanıldığından, adın Azure’daki tüm sunucularda benzersiz olması gerekir.
+> [!NOTE]
+> PostgreSQL için Azure veritabanı sunucusu oluşturmadan önce, bölgenizde hangi [işlem oluşturmanın](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) kullanılabilir olduğunu denetleyin. Bölgeniz 4. nesil donanımını desteklemiyorsa, aşağıdaki komut satırında *--SKU-adı* ' nı, bölgenizde desteklenen bir değere 5. nesil gibi değiştirin. 
+
+Aşağıdaki komutta, *\<PostgreSQL-name >* öğesini benzersiz bir sunucu adıyla değiştirin. Sunucu adı PostgreSQL uç nokta *https://\<PostgreSQL-name >. Postgres. Database. Azure. com*' un bir parçası olduğundan, adın Azure 'daki tüm sunucular arasında benzersiz olması gerekir. 
+
+*\<resourcegroup-name >* ve *\<Region >* , kullanmak istediğiniz kaynak grubunun adı ve bölgesiyle değiştirin. *\<admin-username >* ve *\<admin-Password >* için, veritabanı yönetici hesabı için Kullanıcı kimlik bilgileri oluşturun. Daha sonra PostgreSQL sunucusunda ve veritabanlarında oturum açmak için kullanmak üzere *Yönetici-Kullanıcı adı >* ve *\<yönetici parolası >* \<unutmayın.
 
 ```azurecli-interactive
-az postgres server create --resource-group myResourceGroup --name <postgresql-name> --location "West Europe" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
+az postgres server create --resource-group <resourcegroup-name> --name <postgresql-name> --location "<region>" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
 ```
 
-PostgreSQL sunucusu için Azure Veritabanı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgiler gösterir:
+PostgreSQL için Azure veritabanı sunucusu oluşturulduğunda Azure CLı, aşağıdaki örneğe benzer bir JSON kodu döndürür:
 
 ```json
 {
-  "administratorLogin": "<admin-username>",
-  "fullyQualifiedDomainName": "<postgresql-name>.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql-name>",
+  "administratorLogin": "myusername",
+  "fullyQualifiedDomainName": "myservername.postgres.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforPostgreSQL/servers/myservername",
   "location": "westus",
-  "name": "<postgresql-name>",
-  "resourceGroup": "myResourceGroup",
+  "name": "myservername",
+  "resourceGroup": "myresourcegroup",
   "sku": {
     "capacity": 1,
     "family": "Gen4",
@@ -189,39 +190,32 @@ PostgreSQL sunucusu için Azure Veritabanı oluşturulduğunda Azure CLI, aşağ
 }
 ```
 
-> [!NOTE]
-> Daha sonra için admin-username > ve \<Admin-Password > \<unutmayın. Postgre sunucusu ve veritabanlarında oturum açmak için bunlara ihtiyacınız vardır.
+### <a name="create-firewall-rules-for-the-azure-database-for-postgresql-server"></a>PostgreSQL için Azure veritabanı sunucusu için güvenlik duvarı kuralları oluşturma
 
-### <a name="create-firewall-rules-for-the-postgresql-server"></a>PostgreSQL sunucusu için güvenlik duvarı kuralları oluşturma
-
-Azure kaynaklarından veritabanına erişim izni vermek için Cloud Shell'de aşağıdaki Azure CLI komutunu çalıştırın.
+Azure kaynaklarından veritabanına erişime izin vermek için [az Postgres Server Firewall-Rule Create](/cli/azure/postgres/server/firewall-rule#az-postgres-server-firewall-rule-create) komutunu çalıştırın. *\<PostgreSQL-name >* ve *\<resourcegroup-name >* yer tutucuları değerlerinizle değiştirin.
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAllAzureIPs
+az postgres server firewall-rule create --resource-group <resourcegroup-name> --server-name <postgresql-name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAllAzureIPs
 ```
 
 > [!NOTE]
-> Bu ayar, Azure ağ içindeki tüm IP’lerden ağ bağlantılarına izin verir. Üretim kullanımı için, [yalnızca uygulamanızın kullandığı giden IP adreslerini kullanarak](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips) en kısıtlayıcı güvenlik duvarı kurallarını yapılandırmayı deneyin.
+> Yukarıdaki ayar, Azure ağı içindeki tüm IP adreslerinden ağ bağlantılarına izin verir. Üretim kullanımı için, [yalnızca uygulamanızın kullandığı gıden IP adreslerine izin vererek](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)mümkün olan en kısıtlayıcı güvenlik duvarı kurallarını yapılandırmayı deneyin.
 
-Cloud Shell, *IP adresi >\<* [yerel IPv4 IP adresinizle](https://www.whatsmyip.org/)değiştirerek yerel bilgisayarınızdan erişime izin vermek için komutu yeniden çalıştırın.
+Yerel bilgisayarınızdan erişime izin vermek için `firewall-rule create` komutunu yeniden çalıştırın. *\<-IP adresi >* [yerel IPv4 IP adresiniz](https://www.whatsmyip.org/)ile değiştirin. *\<PostgreSQL-name >* ve *\<resourcegroup-name >* yer tutucuları kendi değerlerinizle değiştirin.
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
+az postgres server firewall-rule create --resource-group <resourcegroup-name> --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
 ```
 
-## <a name="connect-python-app-to-production-database"></a>Python uygulamasını üretim veritabanına bağlama
+### <a name="create-and-connect-to-the-azure-database-for-postgresql-database"></a>PostgreSQL için Azure veritabanı veritabanını oluşturun ve buna bağlanın
 
-Bu adımda, Docgo Web uygulamanızı oluşturduğunuz PostgreSQL için Azure veritabanı sunucusuna bağlayaöğreneceksiniz.
-
-### <a name="create-empty-database-and-user-access"></a>Boş veritabanı oluşturma ve kullanıcı erişimi sağlama
-
-Cloud Shell, aşağıdaki komutu çalıştırarak veritabanına bağlanın. Yönetici parolanızı girmeniz istendiğinde [PostgreSQL için Azure Veritabanı sunucusu oluşturma](#create-an-azure-database-for-postgresql-server) bölümünde belirttiğiniz parolayı kullanın.
+Aşağıdaki komutu çalıştırarak PostgreSQL için Azure veritabanı sunucunuza bağlanın. Kendi *\<PostgreSQL-name >* ve *\<admin-username >* kullanın ve oluşturduğunuz parolayla oturum açın.
 
 ```bash
 psql -h <postgresql-name>.postgres.database.azure.com -U <admin-username>@<postgresql-name> postgres
 ```
 
-Yerel Postgres sunucunuzda olduğu gibi, Azure Postgres sunucusunda veritabanı ve kullanıcıyı oluşturun.
+Yerel PostgreSQL sunucunuzda yaptığınız gibi, PostgreSQL için Azure veritabanı sunucusunda bir veritabanı ve kullanıcı oluşturun:
 
 ```sql
 CREATE DATABASE pollsdb;
@@ -229,30 +223,39 @@ CREATE USER manager WITH PASSWORD 'supersecretpass';
 GRANT ALL PRIVILEGES ON DATABASE pollsdb TO manager;
 ```
 
+> [!NOTE]
+> Yönetici Kullanıcı yerine belirli uygulamalar için kısıtlı izinlerle veritabanı kullanıcıları oluşturmak en iyi uygulamadır. `manager` kullanıcının *yalnızca* `pollsdb` veritabanı için tam ayrıcalıkları vardır.
+
 PostgreSQL istemcisinden çıkmak için `\q` yazın.
 
-> [!NOTE]
-> Yönetici kullanıcıyı kullanmak yenine belirli uygulamalar için kısıtlı izinlere sahip olan veritabanı kullanıcıları oluşturmak en iyi uygulamadır. Bu örnekte, `manager` kullanıcısı _yalnızca_ `pollsdb` veritabanı için tam ayrıcalıklara sahiptir.
+### <a name="test-app-connectivity-to-the-azure-postgresql-database"></a>Azure PostgreSQL veritabanı ile uygulama bağlantısını test etme
 
-### <a name="test-app-connectivity-to-production-database"></a>Uygulamanın üretim veritabanına bağlanıp bağlanmadığını test etme
-
-Yerel Terminal penceresinde, veritabanı ortam değişkenlerini ( *env.sh* veya *env. ps1*çalıştırarak daha önce yapılandırdığınız) değiştirin:
+*\<PostgreSQL-name >* 'ı PostgreSQL Için Azure veritabanı sunucu adı ile değiştirerek, yerel *env.sh* veya *env. ps1* Dosyanızı bulut PostgreSQL veritabanınıza işaret etmek üzere düzenleyin.
 
 ```bash
-# Bash
 export DBHOST="<postgresql-name>.postgres.database.azure.com"
 export DBUSER="manager@<postgresql-name>"
 export DBNAME="pollsdb"
 export DBPASS="supersecretpass"
-
-# PowerShell
+```
+veya
+```powershell
 $Env:DBHOST = "<postgresql-name>.postgres.database.azure.com"
 $Env:DBUSER = "manager@<postgresql-name>"
 $Env:DBNAME = "pollsdb"
 $Env:DBPASS = "supersecretpass"
 ```
 
-Azure veritabanına Docgo geçişini çalıştırın ve bir yönetici kullanıcı oluşturun.
+Yerel Terminal pencerenizde `venv` ortamda, düzenlenen *env.sh* veya *env. ps1*' yi çalıştırın. 
+```bash
+source ./env.sh
+```
+veya
+```PowerShell
+.\env.ps1
+```
+
+Azure veritabanına Docgo geçişi çalıştırın ve bir yönetici kullanıcı oluşturun.
 
 ```bash
 python manage.py migrate
@@ -265,58 +268,61 @@ Yönetici Kullanıcı oluşturulduktan sonra Docgo sunucusunu çalıştırın.
 python manage.py runserver
 ```
 
-Yeniden `http://localhost:8000` gidin. İletiyi yeniden `No polls are available.` görmeniz gerekir. 
+Bir tarayıcıda *http:\//localhost: 8000*' e gidin ve bir **yokladığı** iletiyi tekrar kullanılabilir olmadığını görmeniz gerekir. 
 
-`http://localhost:8000/admin` gidin ve oluşturduğunuz yönetici kullanıcısını kullanarak oturum açın ve daha önce olduğu gibi bir yoklama sorusu oluşturun.
+*Http:\//localhost: 8000/admin*' e gidin, oluşturduğunuz yönetici kullanıcısını kullanarak oturum açın ve daha önce olduğu gibi bir yoklama sorusu oluşturun.
 
 ![Uygulama hizmetlerinde yerel olarak Python Docgo uygulaması çalıştırma](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
-`http://localhost:8000` tekrar gidin ve görünen yoklama sorusunu görüntüleyin. Uygulamanız artık Azure 'da veritabanına veri yazıyor.
+*Http:\//localhost: 8000* ' e gidin ve görünen yoklama sorusunu inceleyin. Uygulamanız artık PostgreSQL için Azure veritabanı veritabanına veri yazıyor.
 
-## <a name="deploy-to-azure"></a>Azure'a Dağıt
+## <a name="deploy-the-web-app-to-azure-app-service"></a>Web uygulamasını Azure App Service dağıtma
 
-Bu adımda, Postgres’e bağlı Python uygulamasını Azure App Service'e dağıtırsınız.
+Bu adımda, PostgreSQL için Azure veritabanı veritabanına bağlı Python uygulamasını Azure App Service olarak dağıtırsınız.
 
 ### <a name="configure-repository"></a>Depoyu yapılandırma
 
-Docgo, gelen isteklerindeki `HTTP_HOST` üst bilgisini doğrular. Docgo Web uygulamanızın App Service çalışması için, uygulamanın tam etki alanı adını izin verilen konaklara eklemeniz gerekir. _Azuresite/Settings. Kopyala_ ' yı açın ve `ALLOWED_HOSTS` ayarını bulun. Satırı şu şekilde değiştirin:
+Bu öğretici bir Docgo örneği kullandığından, Azure App Service çalışmak için *docgoapp/azuresite/Settings. Kopyala* dosyanızdaki bazı ayarları değiştirmeniz ve eklemeniz gerekir. 
 
-```python
-ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
-```
-
-Daha sonra, Docgo [üretimde statik dosyalara hizmet vermeye](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), bu yüzden el ile etkinleştirmeniz gerekir. Bu öğreticide, [Whitenoıse](https://whitenoise.evans.io/en/stable/)kullanıyorsunuz. Whitenoıse paketi, _requirements. txt_' ye zaten dahil edilmiştir. Yalnızca Docgo 'Yu kullanmak için yapılandırmanız gerekir. 
-
-_Azuresite/Settings. Kopyala_içinde `MIDDLEWARE` ayarını bulun ve `whitenoise.middleware.WhiteNoiseMiddleware` ara yazılımını `django.middleware.security.SecurityMiddleware` ara yazılımı altında bulunan listeye ekleyin. `MIDDLEWARE` ayarınız şöyle görünmelidir:
-
-```python
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    ...
-]
-```
-
-_Azuresite/Settings. Kopyala_sonunda aşağıdaki satırları ekleyin.
-
-```python
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-```
-
-Whitenoıse 'yi yapılandırma hakkında daha fazla bilgi için bkz. [whitenoıse belgeleri](https://whitenoise.evans.io/en/stable/).
+1. Docgo, gelen isteklerindeki `HTTP_HOST` üst bilgisini doğrular. Docgo Web uygulamanızın App Service çalışması için, uygulamanın tam etki alanı adını izin verilen konaklara eklemeniz gerekir. 
+   
+   `ALLOWED_HOSTS` satırını şu şekilde değiştirmek için *azuresite/Settings. Kopyala* öğesini düzenleyin:
+   
+   ```python
+   ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
+   ```
+   
+1. Docgo [, üretimde statik dosyalara hizmet vermeye](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/)destek vermez. Bu öğreticide, dosyaları sunmaya olanak tanımak için [Whitenoıse](https://whitenoise.evans.io/en/stable/) kullanırsınız. Whitenoıse paketi, *requirements. txt*ile zaten yüklenmiş. 
+   
+   Docgo 'yu kullanmak için *azuresite/Settings. Kopyala*içinde, `MIDDLEWARE` ayarını bulun ve `django.middleware.security.SecurityMiddleware` satırından hemen sonra listeye `whitenoise.middleware.WhiteNoiseMiddleware` ekleyin. `MIDDLEWARE` ayarınız şöyle görünmelidir:
+   
+   ```python
+   MIDDLEWARE = [
+       'django.middleware.security.SecurityMiddleware',
+       'whitenoise.middleware.WhiteNoiseMiddleware',
+       ...
+   ]
+   ```
+   
+1. *Azuresite/Settings. Kopyala*sonunda aşağıdaki satırları ekleyin:
+   
+   ```python
+   STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+   STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+   ```
+   
+   Whitenoıse 'yi yapılandırma hakkında daha fazla bilgi için bkz. [whitenoıse belgeleri](https://whitenoise.evans.io/en/stable/).
 
 > [!IMPORTANT]
-> Veritabanı ayarları bölümü, ortam değişkenlerini kullanmanın en iyi güvenlik uygulamasını zaten izler. Dağıtım önerilerini tamamlayın, bkz. [Docgo belgeleri: dağıtım denetim listesi](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/).
+> Veritabanı ayarları bölümü, ortam değişkenlerini kullanmanın en iyi güvenlik uygulamasını zaten izler. Tüm dağıtım önerileri için bkz. [Docgo belgeleri: dağıtım denetim listesi](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/).
 
-Değişikliklerinizi depoya kaydedin.
+*Docgoapp* deposunun Çatalınıza yaptığınız değişiklikleri işleyin:
 
 ```bash
 git commit -am "configure for App Service"
 ```
 
-### <a name="configure-deployment-user"></a>Dağıtım kullanıcısını yapılandırma
+### <a name="configure-a-deployment-user"></a>Dağıtım kullanıcısı yapılandırma
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user-no-h.md)]
 
@@ -332,15 +338,15 @@ git commit -am "configure for App Service"
 
 Öğreticinin önceki bölümlerinde, PostgreSQL veritabanınıza bağlanmak üzere ortam değişkenleri tanımladınız.
 
-App Service’te, Cloud Shell'de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanarak ortam değişkenlerini _uygulama ayarları_ olarak ayarlayabilirsiniz.
+Azure App Service, [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanarak ortam değişkenlerini *uygulama ayarları*olarak ayarlarsınız.
 
-Şu örnek, veritabanı bağlantı ayrıntılarını uygulama ayarları olarak belirtir. 
+Azure Cloud Shell, veritabanı bağlantısı ayrıntılarını uygulama ayarları olarak belirtmek için aşağıdaki komutu çalıştırın. *\<app-name >* , *\<resourcegroup-name >* ve *\<PostgreSQL-name >* değerlerini kendi değerlerinizle değiştirin.
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DBHOST="<postgresql-name>.postgres.database.azure.com" DBUSER="manager@<postgresql-name>" DBPASS="supersecretpass" DBNAME="pollsdb"
+az webapp config appsettings set --name <app-name> --resource-group <resourcegroup-name> --settings DBHOST="<postgresql-name>.postgres.database.azure.com" DBUSER="manager@<postgresql-name>" DBPASS="supersecretpass" DBNAME="pollsdb"
 ```
 
-Bu uygulama ayarlarına kodunuzda nasıl erişildiği hakkında daha fazla bilgi için bkz. [erişim ortamı değişkenleri](how-to-configure-python.md#access-environment-variables).
+Kodunuzun bu uygulama ayarlarına nasıl eriştiği hakkında daha fazla bilgi için bkz. [ortam değişkenlerine erişim](how-to-configure-python.md#access-environment-variables).
 
 ### <a name="push-to-azure-from-git"></a>Git üzerinden Azure'a gönderme
 
@@ -368,21 +374,17 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
    06b6df4..6520eea  master -> master
 ```  
 
-App Service dağıtım sunucusu, depo kökünde _requirements. txt dosyasını_ görür ve `git push`sonra Python paket yönetimini otomatik olarak çalıştırır.
+App Service dağıtım sunucusu, depo kökünde *requirements. txt dosyasını* görür ve `git push`sonra Python paket yönetimini otomatik olarak çalıştırır.
 
 ### <a name="browse-to-the-azure-app"></a>Azure uygulamasına gidin
 
-Dağıtılan uygulamaya gidin. Uygulama ilk kez çağrıldığında kapsayıcının indirilmesi ve çalışması gerektiğinden başlatılması biraz uzun sürebilir. Sayfa zaman aşımına uğrar veya hata iletisi görüntülerse, birkaç dakika bekleyip sayfayı yenileyin.
+URL *http:\//\<app-name >. azurewebsites. net*ile dağıtılan uygulamaya gidin. Uygulama ilk kez istendiğinde, kapsayıcının indirilmesi ve çalıştırılması gerektiğinden, başlaması biraz zaman alır. Sayfa zaman aşımına uğrar veya hata iletisi görüntülerse, birkaç dakika bekleyip sayfayı yenileyin.
 
-```bash
-http://<app-name>.azurewebsites.net
-```
+Daha önce oluşturduğunuz yoklama sorularını görmeniz gerekir. 
 
-Daha önce oluşturduğunuz yoklama sorusunu görmeniz gerekir. 
+App Service, `manage.py startproject` varsayılan olarak oluşturduğu her alt dizinde bir *wsgi.py* dosyası arayarak deponuzdaki bir Docgo projesi algılar. App Service dosyayı bulduğunda Docgo Web uygulamasını yükler. App Service Python uygulamalarını nasıl yüklediği hakkında daha fazla bilgi için bkz. [yerleşik Python görüntüsünü yapılandırma](how-to-configure-python.md).
 
-App Service, varsayılan olarak `manage.py startproject` tarafından oluşturulan her alt dizindeki bir _wsgi.py_ arayarak deponuzdaki bir Docgo projesi algılar. Dosyayı bulduğunda, Docgo Web uygulamasını yükler. App Service Python uygulamalarını nasıl yüklediği hakkında daha fazla bilgi için bkz. [yerleşik Python görüntüsünü yapılandırma](how-to-configure-python.md).
-
-`<app-name>.azurewebsites.net` gidin ve oluşturduğunuz yönetici kullanıcı ile oturum açın. İsterseniz, bazı daha fazla yoklama soruları oluşturmayı deneyin.
+*Http:\//\<app-name >. azurewebsites. net/admin* ' e gidin ve oluşturduğunuz yönetici kullanıcısını kullanarak oturum açın. İsterseniz, bazı daha fazla yoklama soruları oluşturun.
 
 ![Azure 'da uygulama hizmetlerinde Python Docgo uygulamasını çalıştırma](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
@@ -394,13 +396,11 @@ App Service, varsayılan olarak `manage.py startproject` tarafından oluşturula
 
 ## <a name="manage-your-app-in-the-azure-portal"></a>Uygulamanızı Azure portal yönetme
 
-Oluşturduğunuz uygulamayı görmek için [Azure Portal](https://portal.azure.com) gidin.
-
-Sol menüden **uygulama hizmetleri**' ni ve ardından Azure uygulamanızın adını seçin.
+[Azure Portal](https://portal.azure.com)oluşturduğunuz uygulamayı arayıp seçin.
 
 ![Azure portal Python Docgo uygulamanıza gidin](./media/tutorial-python-postgresql-app/navigate-to-django-app-in-app-services-in-the-azure-portal.png)
 
-Varsayılan olarak, Portal uygulamanızın **genel bakış** sayfasını gösterir. Bu sayfa, uygulamanızın nasıl çalıştığını gösterir. Buradan ayrıca göz atma, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz. Sayfanın sol tarafındaki sekmeler, açabileceğiniz farklı yapılandırma sayfalarını gösterir.
+Varsayılan olarak, Portal uygulamanızın **genel bakış** sayfasını gösterir. Bu sayfa, uygulamanızın nasıl çalıştığını gösterir. Burada, gezinme, durdurma, yeniden başlatma ve silme gibi temel yönetim görevlerini de gerçekleştirebilirsiniz. Sayfanın sol tarafındaki sekmeler, açabileceğiniz farklı yapılandırma sayfalarını gösterir.
 
 ![Python Docgo uygulamanızı Azure portal genel bakış sayfasında yönetin](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
@@ -408,16 +408,7 @@ Varsayılan olarak, Portal uygulamanızın **genel bakış** sayfasını göster
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
-
-> [!div class="checklist"]
-> * Azure’da PostgreSQL veritabanı oluşturma
-> * Python web uygulamasını PostgreSQL 'e bağlama
-> * Python web uygulamasını Azure 'a dağıtma
-> * Tanılama günlüklerini görüntüleme
-> * Azure portal Python web uygulamasını yönetme
-
-Özel bir DNS adını uygulamanıza nasıl eşleyeceğinizi öğrenmek için bir sonraki öğreticiye ilerleyin.
+Özel bir DNS adını uygulamanıza nasıl eşleyeceğinizi öğrenmek için bir sonraki Öğreticiye gidin:
 
 > [!div class="nextstepaction"]
 > [Öğretici: özel DNS adını uygulamanıza eşleyin](../app-service-web-tutorial-custom-domain.md)

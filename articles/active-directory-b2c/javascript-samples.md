@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92ac1e6a85023d49ceb8242b93651a60da3d2166
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 996893f95b11d716feb4253688d3ab1d62d140ee
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064175"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659534"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'yi kullanmak için JavaScript örnekleri
 
@@ -26,9 +26,13 @@ Kendi JavaScript istemci tarafı kodunuzu Azure Active Directory B2C (Azure AD B
 > [!NOTE]
 > Kullanıcı akışları için JavaScript 'ı etkinleştirmek istiyorsanız, bkz. [Azure Active Directory B2C JavaScript ve sayfa düzeni sürümleri](user-flow-javascript-overview.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Uygulamanızın Kullanıcı arabirimi öğeleri için bir sayfa düzeni seçin. JavaScript kullanmayı düşünüyorsanız, özel ilkenizde tüm içerik tanımlarınız için bir sayfa düzeni sürümü tanımlamanız gerekir.
+### <a name="select-a-page-layout"></a>Sayfa düzeni seçin
+
+* Uygulamanızın Kullanıcı arabirimi öğeleri için [bir sayfa düzeni seçin](page-layout.md) .
+
+    JavaScript kullanmayı düşünüyorsanız, özel ilkenizde *Tüm* içerik tanımları için [bir sayfa düzeni sürümü tanımlamanız](page-layout.md#replace-datauri-values) gerekir.
 
 ## <a name="add-the-scriptexecution-element"></a>ScriptExecution öğe ekleyin
 

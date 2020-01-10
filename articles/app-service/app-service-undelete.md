@@ -5,19 +5,23 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: a30ac638422f99134ebe9cc26e4b418f5de079b9
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: c7d778a0afca4b3552976526d58a2cb2efe12161
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672139"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689616"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell kullanarak silinen App Service uygulamasını geri yükleme
 
 Uygulamanızı Azure App Service yanlışlıkla sildikten sonra, [az PowerShell modülündeki](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)komutları kullanarak geri yükleyebilirsiniz.
 
+> [!NOTE]
+> Silinen uygulamalar, ilk silinmeden 30 gün sonra sistemden temizlenir. Bir uygulama temizlenmeden sonra kurtarılamaz.
+>
+
 ## <a name="re-register-app-service-resource-provider"></a>App Service kaynak sağlayıcısını yeniden Kaydet
-Bazı müşteriler, silinen uygulamalar listesinin alınması başarısız olan bir sorunla karşılaşabilir. Sorunu çözmek için aşağıdaki komutu çalıştırın:
+Bazı müşteriler, silinen uygulamaların listesini almanın başarısız olduğu bir sorun boyunca gelebilir. Sorunu çözmek için aşağıdaki komutu çalıştırın:
 
 ```powershell
  Register-AzResourceProvider -ProviderNamespace "Microsoft.Web"

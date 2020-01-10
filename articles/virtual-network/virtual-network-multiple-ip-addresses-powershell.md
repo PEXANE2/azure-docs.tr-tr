@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: kumud
 ms.reviewer: annahar
-ms.openlocfilehash: e9bad6ad614855c543ee6d75d4e6f4dc8e2255aa
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a8bd4e4779d94cfc22ac7726c9746fe755764033
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876217"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647331"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>PowerShell kullanarak sanal makinelere birden çok IP adresi atama
 
@@ -38,7 +38,7 @@ Bu makalede, PowerShell kullanarak Azure Resource Manager dağıtım modeli arac
 Aşağıdaki adımlarda, senaryoda açıklandığı gibi birden çok IP adresi ile örnek VM oluşturma açıklanmaktadır. Değer değerlerini uygulamanız için gereken şekilde değiştirin.
 
 1. Bir PowerShell komut istemi açın ve bu bölümün içindeki kalan adımları tek bir PowerShell oturumunda doldurun. Zaten PowerShell 'i yükleyip yapılandırdıysanız, [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/overview) makalesindeki adımları uygulayın.
-2. `Connect-AzAccount` Komutuyla hesabınızda oturum açın.
+2. `Connect-AzAccount` komutuyla hesabınızda oturum açın.
 3. *Myresourcegroup* ve *westus* değerini, seçtiğiniz bir ad ve konum ile değiştirin. Bir kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
    ```powershell
@@ -95,9 +95,9 @@ Aşağıdaki adımlarda, senaryoda açıklandığı gibi birden çok IP adresi i
     -SecurityRules $NSGRule
     ```
 
-6. NIC için birincil IP yapılandırmasını tanımlayın. Daha önce tanımlanan değeri kullanmıyorsanız, 10.0.0.4 öğesini oluşturduğunuz alt ağda geçerli bir adrese değiştirin. Statik bir IP adresi atamadan önce, ilk olarak zaten kullanımda olmadığından emin olmanız önerilir. Komutunu `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`girin. Adres kullanılabiliyorsa, çıkış *true*değerini döndürür. Kullanılabilir değilse, çıkış *yanlış* değerini ve kullanılabilir adreslerin bir listesini döndürür. 
+6. NIC için birincil IP yapılandırmasını tanımlayın. Daha önce tanımlanan değeri kullanmıyorsanız, 10.0.0.4 öğesini oluşturduğunuz alt ağda geçerli bir adrese değiştirin. Statik bir IP adresi atamadan önce, ilk olarak zaten kullanımda olmadığından emin olmanız önerilir. `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`komutunu girin. Adres kullanılabiliyorsa, çıkış *true*değerini döndürür. Kullanılabilir değilse, çıkış *yanlış* değerini ve kullanılabilir adreslerin bir listesini döndürür. 
 
-    Aşağıdaki komutlarda, replace- **WITH \<-Unique-name > değerini kullanılacak benzersiz DNS adıyla değiştirin.** Ad, bir Azure bölgesi içindeki tüm genel IP adresleri arasında benzersiz olmalıdır. Bu, isteğe bağlı bir parametredir. Yalnızca genel IP adresini kullanarak VM 'ye bağlanmak istiyorsanız, bu, kaldırılabilir.
+    Aşağıdaki komutlarda **\<Replace-WITH-Unique-name > değerini kullanılacak BENZERSIZ DNS adıyla değiştirin.** Ad, bir Azure bölgesi içindeki tüm genel IP adresleri arasında benzersiz olmalıdır. Bu, isteğe bağlı bir parametredir. Yalnızca genel IP adresini kullanarak VM 'ye bağlanmak istiyorsanız, bu, kaldırılabilir.
 
     ```powershell
     
@@ -122,7 +122,7 @@ Aşağıdaki adımlarda, senaryoda açıklandığı gibi birden çok IP adresi i
     Bir NIC 'ye birden çok IP yapılandırması atadığınızda, tek bir yapılandırmanın *-birincil*olarak atanması gerekir.
 
     > [!NOTE]
-    > Genel IP adreslerinin nominal bir ücreti vardır. IP adresi fiyatlandırması hakkında daha fazla bilgi edinmek için [IP adresi fiyatlandırma](https://azure.microsoft.com/pricing/details/ip-addresses) sayfasını okuyun. Bir abonelikte kullanılabilecek genel IP adresi sayısı için bir sınır vardır. Sınırlar hakkında daha fazla bilgi için [Azure limitleri](../azure-subscription-service-limits.md#networking-limits) makalesini okuyun.
+    > Genel IP adreslerinin nominal bir ücreti vardır. IP adresi fiyatlandırması hakkında daha fazla bilgi edinmek için [IP adresi fiyatlandırma](https://azure.microsoft.com/pricing/details/ip-addresses) sayfasını okuyun. Bir abonelikte kullanılabilecek genel IP adresi sayısı için bir sınır vardır. Sınırlar hakkında daha fazla bilgi için [Azure limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) makalesini okuyun.
 
 7. NIC için ikincil IP yapılandırmasını tanımlayın. Gerektiğinde, yapılandırma ekleyebilir veya kaldırabilirsiniz. Her IP yapılandırmasına atanmış bir özel IP adresi olmalıdır. Her yapılandırmaya, isteğe bağlı olarak bir genel IP adresi atanabilir.
 
@@ -245,7 +245,7 @@ Aşağıdaki adımları tamamlayarak Azure ağ arabirimine özel ve genel IP adr
 
    **Özel IP adresi ekle**
 
-   Bir NIC 'ye özel bir IP adresi eklemek için bir IP yapılandırması oluşturmanız gerekir. Aşağıdaki komut, kısmına 10.0.0.7 statik IP adresine sahip bir yapılandırma oluşturur. Statik bir IP adresi belirtirken, alt ağ için kullanılmayan bir adres olmalıdır. `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` Komutu girerek kullanılabilir olduğundan emin olmak için ilk olarak adresi test etmeniz önerilir. IP adresi kullanılabiliyorsa, çıkış *true*değerini döndürür. Kullanılabilir değilse, çıkış *false*değerini ve kullanılabilir adreslerin bir listesini döndürür.
+   Bir NIC 'ye özel bir IP adresi eklemek için bir IP yapılandırması oluşturmanız gerekir. Aşağıdaki komut, kısmına 10.0.0.7 statik IP adresine sahip bir yapılandırma oluşturur. Statik bir IP adresi belirtirken, alt ağ için kullanılmayan bir adres olmalıdır. `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` komutunu girerek adresin kullanılabilir olduğundan emin olmak için ilk olarak adresi test etmeniz önerilir. IP adresi kullanılabiliyorsa, çıkış *true*değerini döndürür. Kullanılabilir değilse, çıkış *false*değerini ve kullanılabilir adreslerin bir listesini döndürür.
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
@@ -261,7 +261,7 @@ Aşağıdaki adımları tamamlayarak Azure ağ arabirimine özel ve genel IP adr
    Genel IP adresi kaynağı yeni bir IP yapılandırmasına veya var olan bir IP yapılandırmasına ilişkilendirerek genel bir IP adresi eklenir. İhtiyaç duyduğunuz gibi, izleyen bölümlerden birindeki adımları tamamlayın.
 
    > [!NOTE]
-   > Genel IP adreslerinin nominal bir ücreti vardır. IP adresi fiyatlandırması hakkında daha fazla bilgi edinmek için [IP adresi fiyatlandırma](https://azure.microsoft.com/pricing/details/ip-addresses) sayfasını okuyun. Bir abonelikte kullanılabilecek genel IP adresi sayısı için bir sınır vardır. Sınırlar hakkında daha fazla bilgi için [Azure limitleri](../azure-subscription-service-limits.md#networking-limits) makalesini okuyun.
+   > Genel IP adreslerinin nominal bir ücreti vardır. IP adresi fiyatlandırması hakkında daha fazla bilgi edinmek için [IP adresi fiyatlandırma](https://azure.microsoft.com/pricing/details/ip-addresses) sayfasını okuyun. Bir abonelikte kullanılabilecek genel IP adresi sayısı için bir sınır vardır. Sınırlar hakkında daha fazla bilgi için [Azure limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) makalesini okuyun.
    >
 
    **Genel IP adresi kaynağını yeni bir IP yapılandırmasıyla ilişkilendir**

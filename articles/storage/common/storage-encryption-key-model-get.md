@@ -1,20 +1,21 @@
 ---
-title: Depolama hesabı için hangi şifreleme anahtarı modelinin kullanımda olduğunu belirleme-Azure depolama
+title: Depolama hesabı için hangi şifreleme anahtarı modelinin kullanımda olduğunu belirleme
+titleSuffix: Azure Storage
 description: Depolama hesabı için şifreleme anahtarlarının nasıl yönetildiğini denetlemek için Azure portal, PowerShell veya Azure CLı kullanın. Anahtarlar Microsoft tarafından (varsayılan) veya müşteri tarafından yönetilebilir. Müşteri tarafından yönetilen anahtarların Azure Key Vault içinde depolanması gerekir.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/26/2019
+ms.date: 01/03/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 967e6f278008a59721d8d0c74e34c0252eeb1138
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3806fead9226978c277e87f3d97b14ee38d9552d
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666604"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665422"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Depolama hesabı için hangi Azure depolama şifreleme anahtarı modelinin kullanımda olduğunu belirleme
 
@@ -31,7 +32,7 @@ Ayrıca, bazı BLOB depolama işlemleri için tek bir istek düzeyinde bir şifr
 
 Bir depolama hesabının şifreleme için Microsoft tarafından yönetilen anahtarları veya müşteri tarafından yönetilen anahtarları kullanıp kullanmadığını öğrenmek için aşağıdaki yaklaşımlardan birini kullanın.
 
-# <a name="azure-portaltabportal"></a>[Azure portalda](#tab/portal)
+# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
 
 Azure portal kullanarak depolama hesabının şifreleme modelini denetlemek için şu adımları izleyin:
 

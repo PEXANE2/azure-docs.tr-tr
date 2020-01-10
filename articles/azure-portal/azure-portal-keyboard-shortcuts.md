@@ -1,6 +1,6 @@
 ---
-title: Azure portal klavye kısayolları | Microsoft Docs
-description: Azure portalında çalışma klavye kısayolları hakkında bilgi edinin.
+title: Klavye kısayollarını Azure portal | Microsoft Docs
+description: Azure portal, eylemleri gerçekleştirmenize, gezinmenize ve Azure portal konumlara gitmenize yardımcı olmak için genel klavye kısayollarını destekler.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -12,46 +12,46 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/08/2019
-ms.author: kfollis
+ms.date: 12/20/2019
+ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: fb0b347228fe82725d5246ae9eacdab8dff01257
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551439"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641342"
 ---
-# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure portalında klavye kısayolları
+# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure portal klavye kısayolları
 
-Bu makalede, Azure portalında her yerde çalışan klavye kısayolları listelenmektedir. Bireysel hizmetlerin kendi klavye kısayolları olabilir.
+Bu makalede Azure portal her yerde çalışan klavye kısayolları listelenmektedir. Ayrı hizmetlerde kendi klavye kısayolları olabilir.
 
 ## <a name="actions"></a>Eylemler
 
-|Bu işlemi yapma |Tuşuna basın |
+|Bu eylemi gerçekleştirmek için |Klavyenizdeki |
 | --- | --- |
-|Kaynak oluşturma|G+N|
-|Açık **tüm hizmetleri**|G+B|
-|Kaynakları, hizmetleri ve belgeleri arayın|G+/|
-|Kaynak menü öğelerini ara|CTRL+/ |
-|Seçili sol kenar öğeyi Taşı |ALT + Shift + Yukarı Ok|
-|Seçili sol kenar öğeyi aşağı taşı |ALT + Shift + aşağı ok|
+|Kaynak oluşturma|G + N|
+|**Tüm hizmetleri** aç|G + B|
+|Kaynak, hizmet ve belge arama|G+/|
+|Kaynak menüsü öğelerini ara|CTRL +/ |
+|Seçili sol kenar çubuğu öğesini yukarı taşı |ALT + SHIFT + yukarı ok|
+|Seçili sol kenar çubuğu öğesini aşağı taşı |ALT + SHIFT + aşağı ok|
 
-## <a name="navigation"></a>Gezinti
+## <a name="navigation"></a>Gezinme
 
-|Bu gezinti yapmak için |Tuşuna basın |
+|Bu gezintiyi yapmak için |Klavyenizdeki |
 | --- | --- |
-|Odağı Komut çubuğuna Taşı |G+, |
-|Odağı üst ve sol kenar çubuğu arasında Değiştir | G+. |
+|Odağı komut çubuğuna taşı |G+, |
+|Üst bilgi ve sol kenar çubuğu arasındaki odağı değiştirme | G+. |
 
-## <a name="go-to"></a>Git
+## <a name="go-to"></a>Önce
 
-|Bu konuma Git |Tuşuna basın |
+|Bu konuma gitmek için |Klavyenizdeki |
 | --- | --- |
-|Git **Panosu** |G+D |
-|Git **tüm kaynaklar**|G+A |
-|Git **kaynak grupları**|G+R |
-|Sol kenar öğesi bu konumda açın |G + sayı|
+|**Panoya** git |G + D |
+|**Tüm kaynaklara** git|G+A |
+|**Kaynak gruplarına** gidin|G+R |
+|Sol kenar çubuğu öğesini bu konumda aç |G + sayı|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

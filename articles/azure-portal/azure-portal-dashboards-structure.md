@@ -1,29 +1,29 @@
 ---
 title: Azure panoları yapısı | Microsoft Docs
-description: Bu makalede bir Azure panosunun JSON yapısı açıklanmaktadır
+description: Örnek bir pano kullanarak bir Azure panosunun JSON yapısını adım adım inceleyin. Kaynak özelliklerine başvuru içerir.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
-manager: dougeby
+manager: mtillman
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/01/2017
-ms.author: kfollis
-ms.openlocfilehash: 5933521993b598ae3758df6e2e7dbf61bf424779
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 12/20/2019
+ms.author: mblythe
+ms.openlocfilehash: 18125e119e7ffdd2f8fa8ca3c5c1b12c8c9a94e0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832788"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640372"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure panoları yapısı
 Bu belge, örnek olarak aşağıdaki Panoyu kullanarak bir Azure panosunun yapısını gösterir:
 
-![örnek Pano](./media/azure-portal-dashboards-structure/sample-dashboard.png)
+![örnek pano](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
 Paylaşılan [Azure panoları kaynak olduğundan](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), bu pano JSON olarak temsil edilebilir.  Aşağıdaki JSON, yukarıda görselleştirilen panoyu temsil eder.
 
@@ -295,10 +295,10 @@ JSON 'ın ilgili bölümlerinin sonuna bakalım.  En üst düzey özellikler, __
 
 ### <a name="the-id-property"></a>ID özelliği
 
-Azure kaynak kimliği, [Azure kaynakları adlandırma kurallarına](/azure/architecture/best-practices/resource-naming)tabidir. Portal bir pano oluşturduğunda genellikle GUID biçiminde bir kimlik seçer, ancak bunları programlı olarak oluşturduğunuzda geçerli bir ad kullanabilirsiniz. 
+Azure Kaynak KIMLIĞI, [Azure kaynakları adlandırma kurallarına](/azure/architecture/best-practices/resource-naming)tabidir. Portal bir pano oluşturduğunda genellikle GUID biçiminde bir KIMLIK seçer, ancak bunları programlı olarak oluşturduğunuzda geçerli bir ad kullanabilirsiniz. 
 
 ### <a name="the-name-property"></a>Name özelliği
-Ad, abonelik, kaynak türü veya kaynak grubu bilgilerini içermeyen kaynak kimliğinin kesimdir. Esas olarak, kaynak kimliğinin son segmentinden oluşur.
+Ad, abonelik, kaynak türü veya kaynak grubu bilgilerini içermeyen kaynak KIMLIĞININ kesimdir. Esas olarak, kaynak KIMLIĞININ son segmentinden oluşur.
 
 ### <a name="the-type-property"></a>Type özelliği
 Tüm panolar __Microsoft. Portal/panolar__türündedir.
@@ -312,13 +312,13 @@ Etiketler, Azure kaynaklarının, kaynağınızı rastgele ad değer çiftleriyl
 `"tags": { "hidden-title": "Created via API" }`
 
 ### <a name="the-properties-object"></a>Properties nesnesi
-Properties nesnesi iki özellik içerir, __mercekler__ ve __meta veriler__. __Merceklerden__ özelliği, kutucuklar hakkında bilgiler içerir (deyişle bölümleri) panoda.  __Meta veri__ özelliği, gelecekteki olası özellikler için mevcuttur.
+Properties nesnesi iki özellik içerir, __mercekler__ ve __meta veriler__. __Mercekler__ özelliği, panodaki kutucuklar hakkında bilgiler içerir.  __Meta veri__ özelliği, gelecekteki olası özellikler için mevcuttur.
 
 ### <a name="the-lenses-property"></a>Merceklerden özelliği
 __Merceklerden__ özelliği panoyu içerir. Bu örnekteki mercekler nesnesinin "0" adlı tek bir özellik içerdiğini unutmayın. Mercekler, şu anda panolarda uygulanmayan bir gruplandırma kavramıdır. Şimdilik, Panolarınızın hepsi lens nesnesinde bu tek özelliğe sahiptir ve "0" olarak adlandırılır.
 
 ### <a name="the-lens-object"></a>Lens nesnesi
-"0" altındaki nesne iki özellik, __Düzen__ ve __parça__içerir.  Panoların geçerli sürümünde, __Order__ her zaman 0 ' dır. __Parts__ özelliği bağımsız parçaları tanımlayan bir nesne içerir (deyişle Kutucuklar) Pano üzerinde.
+"0" altındaki nesne iki özellik, __Düzen__ ve __parça__içerir.  Panoların geçerli sürümünde, __Order__ her zaman 0 ' dır. __Parts__ özelliği, panoda tek tek parçaları (döşemeler olarak da anılır) tanımlayan bir nesne içerir.
 
 __Bölümler__ nesnesi her bölüm için bir özellik içerir, burada özelliğin adı bir sayıdır. Bu sayı önemli değildir. 
 
@@ -344,7 +344,7 @@ Her bölümde bir meta veri özelliği bulunur, bir nesne, __Type__adlı yalnız
 Her parça türünün kendi yapılandırması vardır. Olası yapılandırma özelliklerine __giriş__, __Ayarlar__ve __varlık__adı verilir. 
 
 ### <a name="the-inputs-object"></a>Girişler nesnesi
-Girişler nesnesi genellikle bir kutucuğu kaynak örneğine bağlayan bilgiler içerir.  Örnek panomizdeki sanal makine bölümü, bağlamayı ifade etmek için Azure kaynak kimliği 'ni kullanan tek bir giriş içerir.  Bu kaynak kimliği biçimi tüm Azure kaynakları genelinde tutarlıdır.
+Girişler nesnesi genellikle bir kutucuğu kaynak örneğine bağlayan bilgiler içerir.  Örnek panomizdeki sanal makine bölümü, bağlamayı ifade etmek için Azure Kaynak KIMLIĞI 'ni kullanan tek bir giriş içerir.  Bu kaynak KIMLIĞI biçimi tüm Azure kaynakları genelinde tutarlıdır.
 
 ```json
 "inputs":

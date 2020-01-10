@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8db3baf9fa4c0d054e743d0b52964847b37ec281
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f42713eb579da34ad4b150eec2c89b9645315d0b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078288"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638077"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -37,8 +37,8 @@ ms.locfileid: "70078288"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -197,7 +197,7 @@ ms.locfileid: "70078288"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -212,7 +212,7 @@ Windows Server Yük Devretme Kümelemesi, Windows 'da yüksek kullanılabilirli�
 
 Yük devretme kümesi, uygulamaların ve hizmetlerin kullanılabilirliğini artırmak için birlikte çalışan 1 + n bağımsız sunucu (düğüm) grubudur. Bir düğüm hatası oluşursa, Windows Server Yük Devretme Kümelemesi oluşabilecek hata sayısını hesaplar ve uygulamalar ve hizmetler sağlamak için sağlıklı bir kümeyi sürdürür. Yük Devretme Kümelemesi elde etmek için farklı çekirdek modlarında seçim yapabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede açıklanan görevlere başlamadan önce şu makaleyi gözden geçirin:
 
 * [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar][sap-high-availability-architecture-scenarios]
@@ -250,10 +250,10 @@ Bu mimari aşağıdaki yollarla özeldir:
 
 * SAP Merkezi Hizmetler (kendi dosya yapısı ve ileti ve sıraya alma işlemleriyle birlikte) SAP Küresel Ana bilgisayar dosyalarından ayrıdır.
 * SAP yönetim hizmetleri SAP ASCS/SCS örneği altında çalışır.
-* SAP ascs/SCS örneği kümelenir ve \<yoks/SCS sanal ana bilgisayar adı\> sanal ana bilgisayar adı kullanılarak erişilebilir.
-* SAP genel dosyaları, SMB dosya paylaşımında yerleştirilir ve \<SAP Küresel Ana\> bilgisayar ana bilgisayar adı kullanılarak erişilir: \\\\&lt;SAP Küresel Ana&gt;bilgisayar \ sapmnt&gt;\\&lt;SID \sys\...
+* SAP ASCS/SCS örneği kümelenir ve sanal ana bilgisayar adı\> \<ASCS/SCS sanal konak adı kullanılarak erişilebilir.
+* SAP genel dosyaları SMB dosya paylaşımında bulunur ve \<SAP Küresel Ana bilgisayar\> ana bilgisayar adı: \\\\&lt;SAP Küresel Ana bilgisayar&gt;\sapmnt\\&lt;SID&gt;\SYS\..
 * SAP ASCS/SCS örneği her iki küme düğümünde yerel bir diske yüklenir.
-* Ascs/SCS sanal konak adı\> &lt;ağ adı SAP Küresel Ana&gt;bilgisayardan farklı. \<
+* \<ASCS/SCS sanal ana bilgisayar adı\> ağ adı &lt;SAP Küresel Ana bilgisayar&gt;farklıdır.
 
 ![Şekil 2: SMB dosya paylaşımıyla SAP ASCS/SCS HA mimarisi][sap-ha-guide-figure-8004]
 
@@ -262,17 +262,17 @@ _**Şekil 2:** Bir SMB dosya paylaşımıyla yeni SAP ASCS/SCS HA mimarisi_
 SMB dosya paylaşımının önkoşulları:
 
 * SMB 3,0 (veya üzeri) protokolü.
-* Active Directory Kullanıcı grupları ve `computer$` bilgisayar nesnesi için Active Directory erişim denetim listeleri (ACL 'ler) ayarlama yeteneği.
+* Active Directory Kullanıcı grupları ve `computer$` bilgisayar nesnesi için Active Directory erişim denetim listeleri (ACL) ayarlama yeteneği.
 * Dosya paylaşımının HA etkin olması gerekir:
     * Dosyaları depolamak için kullanılan disklerin tek bir hata noktası olmaması gerekir.
     * Sunucu veya VM kapalı kalma süresi dosya paylaşımında kesinti oluşmasına neden olmaz.
 
-SAP \<SID\> kümesi rolü Küme Paylaşılan diskleri veya bir genel dosya paylaşım kümesi kaynağı içermez.
+SAP \<SID\> küme rolü Küme Paylaşılan diskleri veya bir genel dosya paylaşım kümesi kaynağı içermez.
 
 
-![Şekil 3: Dosya \<paylaşımının\> kullanımı için SAP SID kümesi rol kaynakları][sap-ha-guide-figure-8005]
+![Şekil 3: dosya paylaşımının kullanımı için SAP \<SID\> küme rolü kaynakları][sap-ha-guide-figure-8005]
 
-_**Şekil 3:** Dosya &lt;paylaşımının&gt; kullanımı için SAP SID kümesi rol kaynakları_
+_**Şekil 3:** Bir dosya paylaşımının kullanımı için SAP &lt;SID&gt; küme rolü kaynakları_
 
 
 ## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>Azure 'da bir SAPMNT dosya paylaşımı olarak Depolama Alanları Doğrudan genişleme dosya paylaşımları
@@ -317,20 +317,20 @@ Genişleme dosya paylaşımının kullanılması için sisteminizin aşağıdaki
 * Depolama Alanları Doğrudan disk eşitleme için gerekli olan VM 'Ler arasında iyi ağ performansı için, en az "yüksek" ağ bant genişliğine sahip bir VM türü kullanın.
     Daha fazla bilgi için bkz. [DSv2-Series][dv2-series] ve [DS serisi][ds-series] belirtimleri.
 * Depolama havuzunda ayrılmamış kapasiteyi ayırmanızı öneririz. Depolama havuzundaki ayrılmamış kapasiteden ayrıldığınızda, bir sürücü başarısız olursa "yerinde" onarım için birim alanı verilir. Bu, veri güvenliğini ve performansını geliştirir.  Daha fazla bilgi için bkz. [birim boyutunu seçme][choosing-the-size-of-volumes-s2d].
-* Azure iç yük dengeleyiciyi, \<SAP Küresel Ana bilgisayar\>gibi genişleme dosya paylaşımının ağ adı için yapılandırmanız gerekmez. Bu, SAP ascs \</SCS örneğinin veya DBMS 'nin yoks/SCS sanal ana bilgisayar adı\> için yapılır. Genişleme dosya paylaşma, tüm küme düğümlerinde yükü ölçeklendirir. \<SAP Küresel Ana\> bilgisayar tüm küme düğümleri için yerel IP adresini kullanır.
+* Azure iç yük dengeleyiciyi, \<SAP Küresel Ana bilgisayar\>gibi genişleme dosya paylaşımının ağ adı için yapılandırmanız gerekmez. Bu, SAP ASCS/SCS örneği veya DBMS için \<ASCS/SCS sanal ana bilgisayar adı\> için yapılır. Genişleme dosya paylaşma, tüm küme düğümlerinde yükü ölçeklendirir. \<SAP Küresel Ana bilgisayar\> tüm küme düğümleri için yerel IP adresini kullanır.
 
 
 > [!IMPORTANT]
-> \<SAP Küresel ana bilgisayarına\>işaret eden sapmnt dosya paylaşımının adını değiştiremezsiniz. SAP yalnızca "sapmnt" adlı paylaşımın adını destekler.
+> \<SAP Küresel Ana bilgisayar\>işaret eden SAPMNT dosya paylaşımının adını değiştiremezsiniz. SAP yalnızca "sapmnt" adlı paylaşımın adını destekler.
 >
 > Daha fazla bilgi için bkz. [SAP Note 2492395-sapmnt paylaşma adı değişebilir mi?][2492395]
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>SAP ASCS/SCS örnekleri ve iki kümede genişleme dosya paylaşma yapılandırma
 
-SAP ascs/SCS örneklerini tek bir kümede, kendi sap \<SID\> kümesi rolüyle dağıtabilirsiniz. Bu durumda, farklı bir küme rolüyle genişleme dosya paylaşımından başka bir kümede yapılandırırsınız.
+SAP ASCS/SCS örneklerini tek bir kümede, kendi SAP \<SID\> küme rolüyle dağıtabilirsiniz. Bu durumda, farklı bir küme rolüyle genişleme dosya paylaşımından başka bir kümede yapılandırırsınız.
 
 > [!IMPORTANT]
->Bu senaryoda SAP ascs/SCS örneği, SAP Küresel ana bilgisayarına UNC yolu \\ \\ &lt;ile erişim için yapılandırılmış SAP Küresel Ana&gt;bilgisayar\\\sapmnt&lt;SID&gt;\sys\.
+>Bu senaryoda SAP ASCS/SCS örneği, SAP Küresel ana bilgisayarına erişmek için yapılandırılmış \\\\&lt;SAP Küresel Ana bilgisayar&gt;\sapmnt\\&lt;SID&gt;\SYS\.
 >
 
 ![Şekil 5: SAP ASCS/SCS örneği ve iki kümede dağıtılan bir genişleme dosya paylaşma][sap-ha-guide-figure-8007]

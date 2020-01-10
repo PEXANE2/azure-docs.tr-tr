@@ -1,14 +1,14 @@
 ---
 title: SAP HANA veritabanlarının yedekleme hatalarını giderme
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 9958b241c44d619efea2f9ad516a2bd6d4f33d6e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892609"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664607"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -84,27 +84,27 @@ HANA için tek bir kapsayıcı veritabanını (SDC) başka bir SDC makinesine ge
 
 "H21" SDC HANA örneğinin yedeklenmekte olduğunu varsayalım. Yedekleme öğeleri sayfasında, yedekleme öğesi adı **"H21 (SDC)"** olarak gösterilir. Bu veritabanını başka bir hedef SDC 'ye geri yüklemeye çalışırsanız, H11 deyin ve aşağıdaki girişlerin sağlanması gerekir.
 
-![SDC geri yükleme girişleri](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
+![Geri yüklenen SDC veritabanı adı](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
 Aşağıdaki noktalara dikkat edin:
 
-- Varsayılan olarak, geri yüklenen veritabanı adı, yedek öğe adı (örneğin, H21 (SDC) ile doldurulur
+- Varsayılan olarak, geri yüklenen veritabanı adı yedekleme öğesi adı ile doldurulur. Bu durumda, H21 (SDC).
 - H11 olarak Target seçildiğinde geri yüklenen veritabanı adı otomatik olarak değişmez. **H11 (SDC) olarak düzenlenmelidir**. SDC ile ilgili olarak, geri yüklenen veritabanı adı, küçük harflerle birlikte hedef örnek KIMLIĞI ve köşeli ayraçlar içine eklenen ' SDC ' olur.
 - SDC 'nin yalnızca tek bir veritabanı olduğundan, var olan veritabanı verilerinin kurtarma noktası verileriyle geçersiz kılınmasına izin vermek için onay kutusuna tıklamanız gerekir.
 - Linux, büyük/küçük harfe duyarlıdır. Bu nedenle, durumu korumak için dikkatli olun.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Birden çok kapsayıcı veritabanı (MDC) geri yükleme
 
-HANA için birden çok kapsayıcı veritabanında standart yapılandırma SISTEM DB + 1 veya daha fazla kiracı DBs 'dir. SAP HANA örneğinin tamamının geri yüklenmesi hem SYSTEMDB hem de kiracı veritabanlarını geri yüklemek anlamına gelir. İlk olarak SYSTEMDB 'yi geri yükler ve ardından kiracı DB 'ye devam eder. Sistem DB temelde, seçili hedefteki sistem bilgilerini geçersiz kılmak anlamına gelir. Bu geri yükleme, hedef örnekteki BackInt ile ilgili bilgileri de geçersiz kılar. Bu nedenle, sistem DB bir hedef örneğe geri yüklendikten sonra, birinin ön kayıt betiğini yeniden çalıştırması gerekir. Yalnızca sonraki kiracı DB geri yüklemeleri başarılı olur.
+HANA için birden çok kapsayıcı veritabanında standart yapılandırma SISTEM DB + 1 veya daha fazla kiracı DBs 'dir. SAP HANA örneğinin tamamının geri yüklenmesi hem SYSTEMDB hem de kiracı veritabanlarını geri yüklemek anlamına gelir. İlk olarak SYSTEMDB 'yi geri yükler ve ardından kiracı DB 'ye devam eder. Sistem DB temelde, seçili hedefteki sistem bilgilerini geçersiz kılmak anlamına gelir. Bu geri yükleme, hedef örnekteki BackInt ile ilgili bilgileri de geçersiz kılar. Bu nedenle, sistem DB bir hedef örneğe geri yüklendikten sonra, önceden kayıt betiğini yeniden çalıştırın. Yalnızca sonraki kiracı DB geri yüklemeleri başarılı olur.
 
 ## <a name="upgrading-from-sap-hana-10-to-20"></a>SAP HANA 1,0 ' den 2,0 ' ye yükseltme
 
-SAP HANA 1,0 veritabanlarını koruyorsanız ve 2,0 ' ye yükseltmek istiyorsanız, aşağıda özetlenen adımları gerçekleştirin:
+SAP HANA 1,0 veritabanlarını koruyorsanız ve 2,0 ' ye yükseltmek istiyorsanız aşağıdaki adımları gerçekleştirin:
 
 - Eski SDC veritabanı için verileri koruyun ile [korumayı durdurun](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) .
 - Yükseltmeyi gerçekleştirin. Tamamlandıktan sonra, HANA artık sistem DB ve kiracı DB 'leri ile MDC 'dir
 - [Ön kayıt betiğini](https://aka.ms/scriptforpermsonhana) (SID ve MDC) doğru ayrıntılarla yeniden çalıştırın.
-- Uzantıyı Azure portalında aynı makine için yeniden Kaydet (yedekleme-> Görünümü ayrıntıları-> ilgili Azure VM 'yi > yeniden Kaydet ' i seçin).
+- Azure portal aynı makine için uzantıyı yeniden Kaydet (yedekleme > Görünüm ayrıntıları-> ilgili Azure VM 'yi > yeniden Kaydet ' i seçin).
 - Aynı VM için veritabanlarını yeniden keşfet ' e tıklayın. Bu eylem, 2. adımdaki yeni DBs 'Leri doğru ayrıntılarla (SDC değil, SYSTEMDB ve kiracı DB) göstermelidir.
 - Bu yeni veritabanları için yedeklemeyi yapılandırın.
 

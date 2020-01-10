@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: a206b63b03bcb3bb17e201487f0e00bcb3926151
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a5625341e3dd279d93a59c57cd3325245351723e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582234"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646736"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Verileri Azure Blob depolamaya taşıma
 
@@ -21,7 +21,7 @@ Bu makalede, Azure HPC Cache ile kullanmak üzere verileri blob depolamaya taş�
 
 Bu gerçekleri göz önünde bulundurun:
 
-* Azure HPC Cache, blob depolamada verileri düzenlemek için özel bir depolama biçimi kullanır. Bu nedenle, blob Storage hedefinin yeni, boş bir kapsayıcı veya daha önce Azure HPC önbellek verileri için kullanılan bir blob kapsayıcısı olması gerekir. ([Azure Için avere vFXT](https://azure.microsoft.com/services/storage/avere-vfxt/) , bu bulut dosya sistemini de kullanır.)
+* Azure HPC Cache, blob depolamada verileri düzenlemek için özel bir depolama biçimi kullanır. Bu nedenle, blob Storage hedefinin yeni, boş bir kapsayıcı veya daha önce Azure HPC önbellek verileri için kullanılan bir blob kapsayıcısı olması gerekir. <!--([Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) also uses this cloud file system.)-->
 
 * Birden çok istemci ve paralel işlem kullandığınızda, verileri Azure HPC önbelleği aracılığıyla arka uç depolama hedefine kopyalamak daha etkilidir. Bir istemciden basit bir kopyalama komutu verileri yavaşça taşıyacaktır.
 
@@ -31,7 +31,7 @@ Yükleme yardımcı programını kullanmak istemiyorsanız veya var olan bir dep
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>CLFSLoad ile blob depolamada verileri önceden yükleme
 
-Şunu kullanabilirsiniz <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Verileri bir depolama hedefi olarak eklemeden önce yeni bir BLOB depolama kapsayıcısına kopyalamak için avere CLFSLoad yardımcı programı. Bu yardımcı program tek bir Linux sisteminde çalışır ve verileri Azure HPC önbelleği için gereken özel biçimde yazar. CLFSLoad, bir BLOB depolama kapsayıcısını önbellek ile kullanmak üzere doldurmanın en etkili yoludur.
+Hedeflenen depolama doğrulamasını etkinleştirmek için <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Verileri bir depolama hedefi olarak eklemeden önce yeni bir BLOB depolama kapsayıcısına kopyalamak için avere CLFSLoad yardımcı programı. Bu yardımcı program tek bir Linux sisteminde çalışır ve verileri Azure HPC önbelleği için gereken özel biçimde yazar. CLFSLoad, bir BLOB depolama kapsayıcısını önbellek ile kullanmak üzere doldurmanın en etkili yoludur.
 
 Avere CLFSLoad yardımcı programı, Azure HPC önbellek takımınızdan gelen istek ile kullanılabilir. Ekibinize başvurun veya yardım istemek için bir [destek bileti](hpc-cache-support-ticket.md) açın.
 

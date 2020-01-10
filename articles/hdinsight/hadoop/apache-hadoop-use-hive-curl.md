@@ -2,18 +2,18 @@
 title: HDInsight 'ta kıvrımlı Apache Hadoop Hive kullanma-Azure
 description: Apache Pig işlerini kıvrımlı kullanarak Azure HDInsight 'a uzaktan göndermeyi öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/28/2019
-ms.author: hrasheed
-ms.openlocfilehash: e1fbeb48acdfd9d09cad2616aed9793e2ff513ad
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.custom: hdinsightactive
+ms.date: 01/06/2020
+ms.openlocfilehash: 3bb09f1958685a3474b49d2d194e89fe81a80076
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736096"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690487"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>REST kullanarak HDInsight 'ta Apache Hadoop Apache Hive sorguları çalıştırma
 
@@ -21,42 +21,44 @@ ms.locfileid: "70736096"
 
 Azure HDInsight kümesinde Apache Hadoop ile Apache Hive sorguları çalıştırmak için WebHCat REST API nasıl kullanacağınızı öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
 * REST istemcisi. Bu belge Windows PowerShell 'de [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) ve [Bash](https://docs.microsoft.com/windows/wsl/install-win10)üzerinde [kıvrımlı](https://curl.haxx.se/) kullanır.
 
-* Bash kullanıyorsanız, bir komut satırı JSON işlemcisi olan JQ da gerekir.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* Bash kullanıyorsanız, bir komut satırı JSON işlemcisi olan JQ da gerekir.  Bkz. [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
 ## <a name="base-uri-for-rest-api"></a>REST API için temel URI
 
-HDInsight `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`üzerinde REST API için temel Tekdüzen Kaynak tanımlayıcısı (URI), burada `CLUSTERNAME` kümenizin adıdır.  URI 'Lerinde küme adları **büyük/küçük harfe duyarlıdır**.  URI (`CLUSTERNAME.azurehdinsight.net`) öğesinin tam etki alanı adı (FQDN) bölümünde küme adı büyük/küçük harfe duyarsız olsa da, URI 'deki diğer oluşumlar büyük/küçük harfe duyarlıdır.
+HDInsight üzerinde REST API için temel Tekdüzen Kaynak tanımlayıcısı (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, burada `CLUSTERNAME` kümenizin adıdır.  URI 'Lerinde küme adları **büyük/küçük harfe duyarlıdır**.  URI (`CLUSTERNAME.azurehdinsight.net`) tam etki alanı adı (FQDN) bölümünde bulunan küme adı büyük/küçük harfe duyarsızdır, URI 'deki diğer oluşumlar büyük/küçük harfe duyarlıdır.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Web Hcat ile bir veya daha fazla REST iletişimini kullanırken, HDInsight kümesi yöneticisinin Kullanıcı adını ve parolasını sağlayarak isteklerin kimlik doğrulamasını yapmanız gerekir. REST API’sinin güvenliği [temel kimlik doğrulaması](https://en.wikipedia.org/wiki/Basic_access_authentication) ile sağlanır. Kimlik bilgilerinizin sunucuya güvenli bir şekilde gönderildiğinden emin olmak için, istekleri her zaman güvenli HTTP (HTTPS) kullanarak yapın.
 
 ### <a name="setup-preserve-credentials"></a>Kurulum (kimlik bilgilerini koru)
+
 Her bir örneğe yeniden girmemek için kimlik bilgilerinizi koruyun.  Küme adı ayrı bir adımda korunacaktır.
 
-**A. Bash**  
-Aşağıdaki betiği, gerçek parolanızla değiştirerek `PASSWORD` düzenleyin.  Sonra komutunu girin.
+**A. bash**  
+`PASSWORD` gerçek parolanızla değiştirerek aşağıdaki betiği düzenleyin.  Sonra komutunu girin.
 
 ```bash
 export password='PASSWORD'
 ```  
 
-**KENARI. PowerShell** aşağıdaki kodu yürütün ve açılır pencerede kimlik bilgilerinizi girin:
+**B. PowerShell** aşağıdaki kodu yürütün ve açılır pencerede kimlik bilgilerinizi girin:
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
 ### <a name="identify-correctly-cased-cluster-name"></a>Doğru şekilde oluşturulmuş küme adını tanımla
-Kümenin nasıl oluşturulduğuna bağlı olarak, küme adının gerçek büyük küçük harfleri beklediğinizden farklı olabilir.  Buradaki adımlarda gerçek büyük küçük harf görüntülenir ve ardından sonraki tüm örnekler için bir değişkende depoda yer verilmiştir.
 
-Aşağıdaki komut dosyalarını, küme adınızla `CLUSTERNAME` değiştirmek için düzenleyin. Sonra komutunu girin. (FQDN için küme adı, büyük/küçük harfe duyarlı değildir.)
+Kümenin nasıl oluşturulduğuna bağlı olarak, küme adının gerçek büyük küçük harfleri beklediğinizden farklı olabilir.  Buradaki adımlarda gerçek büyük/küçük harf görüntülenir ve sonra tüm örnekler için bir değişkende depoda yer verilmiştir.
+
+`CLUSTERNAME`, küme adınızla değiştirmek için aşağıdaki betikleri düzenleyin. Sonra komutunu girin. (FQDN için küme adı, büyük/küçük harfe duyarlı değildir.)
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -73,7 +75,7 @@ $clusterName = (ConvertFrom-Json $resp.Content).items.Clusters.cluster_name;
 $clusterName
 ```
 
-## <a id="curl"></a>Hive sorgusu çalıştırma
+## <a name="run-a-hive-query"></a>Hive sorgusu çalıştırma
 
 1. HDInsight kümenize bağlanabildiğinizi doğrulamak için aşağıdaki komutlardan birini kullanın:
 
@@ -96,10 +98,10 @@ $clusterName
 
     Bu komutta kullanılan parametreler aşağıdaki gibidir:
 
-    * `-u`-İsteğin kimliğini doğrulamak için kullanılan Kullanıcı adı ve parola.
-    * `-G`-Bu isteğin bir GET işlemi olduğunu gösterir.
+    * `-u`-isteğin kimliğini doğrulamak için kullanılan Kullanıcı adı ve parola.
+    * `-G`-bu isteğin bir GET işlemi olduğunu gösterir.
 
-1. URL `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`'nin başlangıcı tüm istekler için aynıdır. Yolu `/status`, isteğin, sunucu için webhcat (tempkaton olarak da bilinir) durumunun döndürülmeyeceğini gösterir. Ayrıca, aşağıdaki komutu kullanarak Hive sürümünü isteyebilirsiniz:
+1. URL 'nin başlangıcını `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`, tüm istekler için aynıdır. `/status`yolu, isteğin, sunucu için WebHCat (Tempkaton olarak da bilinir) durumunun döndürülmeyeceğini belirtir. Ayrıca, aşağıdaki komutu kullanarak Hive sürümünü isteyebilirsiniz:
 
     ```bash
     curl -u admin:$password -G https://$clusterName.azurehdinsight.net/templeton/v1/version/hive
@@ -138,13 +140,13 @@ $clusterName
 
     Bu istek, REST API isteğin bir parçası olarak veri gönderen POST yöntemini kullanır. Şu veri değerleri istekle birlikte gönderilir:
 
-     * `user.name`-Komutunu çalıştıran kullanıcı.
-     * `execute`-Yürütülecek HiveQL deyimleri.
-     * `statusdir`-Bu işin durumunun yazıldığı dizin.
+     * `user.name`-komutunu çalıştıran kullanıcı.
+     * `execute`-yürütülecek HiveQL deyimleri.
+     * `statusdir`-bu işin durumunun yazıldığı dizin.
 
    Bu deyimler aşağıdaki eylemleri gerçekleştirir:
 
-   * `DROP TABLE`-Tablo zaten varsa, silinir.
+   * `DROP TABLE`-tablo zaten varsa, silinir.
    * `CREATE EXTERNAL TABLE`-Hive içinde yeni bir ' External ' tablosu oluşturur. Dış tablolar yalnızca Hive içindeki tablo tanımını depolar. Veriler özgün konumda bırakılır.
 
      > [!NOTE]  
@@ -152,12 +154,12 @@ $clusterName
      >
      > Dış tablonun atılması, yalnızca tablo tanımı olan **verileri silmez.**
 
-   * `ROW FORMAT`-Veriler nasıl biçimlendirilir. Her günlükteki alanlar boşlukla ayrılır.
-   * `STORED AS TEXTFILE LOCATION`-Verilerin nerede depolandığını (örnek/veri dizini) ve metin olarak saklandığı yerdir.
-   * `SELECT`- **T4** sütununun **[Error]** değerini içerdiği tüm satırların sayısını seçer. Bu ifade, bu değeri içeren üç satır olduğu için **3** değerini döndürür.
+   * `ROW FORMAT`-veriler nasıl biçimlendirilir. Her günlükteki alanlar boşlukla ayrılır.
+   * `STORED AS TEXTFILE LOCATION`-verilerin depolandığı yer (örnek/veri dizini) ve metin olarak saklandığı yerdir.
+   * `SELECT`, **T4** sütununun **[Error]** değerini Içerdiği tüm satırların sayısını seçer. Bu ifade, bu değeri içeren üç satır olduğu için **3** değerini döndürür.
 
      > [!NOTE]  
-     > Hiveql deyimleri arasındaki boşlukların, kıvrımlı ile kullanıldığında `+` karakteriyle değiştirildiğine dikkat edin. Sınırlayıcı gibi bir boşluk içeren tırnak içine alınmış değerler ile `+`değiştirilmemelidir.
+     > HiveQL deyimleri arasındaki boşlukların, kıvrımlı ile kullanıldığında `+` karakteriyle değiştirildiğine dikkat edin. Sınırlayıcı gibi bir boşluk içeren tırnak işaretli değerler `+`ile değiştirilmemelidir.
 
       Bu komut, işin durumunu denetlemek için kullanılabilecek bir iş KIMLIĞI döndürür.
 
@@ -181,19 +183,15 @@ $clusterName
 
     İş tamamlandıysa, durum **başarılı**olur.
 
-1. İşin durumu **başarılı**olarak değiştirildikten sonra, Azure Blob depolamadan iş sonuçlarını alabilirsiniz. Sorguyla geçirilen `/example/rest`parametre, çıkış dosyasının konumunu içerir; bu durumda,. `statusdir` Bu adres, çıktıyı `example/curl` varsayılan depolama alanı kümelerindeki dizinde depolar.
+1. İşin durumu **başarılı**olarak değiştirildikten sonra, Azure Blob depolamadan iş sonuçlarını alabilirsiniz. Sorguyla geçirilen `statusdir` parametresi, çıkış dosyasının konumunu içerir; Bu durumda `/example/rest`. Bu adres, çıktıyı varsayılan depolama alanı kümelerindeki `example/curl` dizininde depolar.
 
     [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)kullanarak bu dosyaları listeleyebilir ve indirebilirsiniz. Azure depolama ile Azure CLı kullanma hakkında daha fazla bilgi için bkz. Azure [CLI 'Yi Azure depolama belgesiyle kullanma](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) .
 
-## <a id="nextsteps"></a>Sonraki adımlar
-
-HDInsight ile Hive hakkında genel bilgi için:
-
-* [HDInsight üzerinde Apache Hadoop ile Apache Hive kullanma](hdinsight-use-hive.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
 HDInsight 'ta Hadoop ile birlikte çalışmak için kullanabileceğiniz diğer yollar hakkında daha fazla bilgi için:
 
-* [HDInsight üzerinde Apache Hadoop Apache Pig kullanma](hdinsight-use-pig.md)
+* [HDInsight üzerinde Apache Hadoop ile Apache Hive kullanma](hdinsight-use-hive.md)
 * [HDInsight üzerinde Apache Hadoop MapReduce kullanma](hdinsight-use-mapreduce.md)
 
 Bu belgede kullanılan REST API hakkında daha fazla bilgi için bkz. [Webhcat başvuru](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) belgesi.

@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi ile Azure güvenlik ürünlerini tümleştirme
-description: Bu konu, Azure Güvenlik Merkezi ile tümleştirilmiş Azure güvenlik ürünlerini sunmaktadır.
+title: Azure Güvenlik Merkezi 'nde Azure güvenlik ürünleri için tehdit algılama
+description: Bu konuda, Azure Güvenlik Merkezi 'nin tehdit algılama sağlayabileceği Azure güvenlik ürünleri sunulmaktadır
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: ad4b0373-08ee-46ca-a573-638ed93a647c
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 693e7d35a0bb4c7dfbb3e033690a5e86e2c398a8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1ea207f0ba09e0637a08632d5c56591fd1335b22
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278341"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665713"
 ---
-# <a name="integration-of-azure-security-products-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Azure güvenlik ürünlerini tümleştirme
+# <a name="threat-detection-for-azure-waf-and-azure-ddos-protection"></a>Azure WAF ve Azure DDoS Koruması için tehdit algılama
 
-Azure Güvenlik Merkezi, aşağıdaki güvenlik ürünleriyle çalışmak için ek Microsoft lisansları sağlar:
+Azure Güvenlik Merkezi, aşağıdaki Azure güvenlik ürünleri için tehdit algılama sağlayabilir (her bir ürün için ayrı bir lisans gerekir):
 
 * [Azure WAF](#azure-waf)
 * [Azure DDoS Koruması](#azure-ddos)
@@ -38,12 +38,4 @@ DDoS saldırıları, bir uygulamanın kaynaklarını tüketerek uygulamanın ge�
 
 Azure DDoS koruması, uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı bir savunma sağlar. DDoS koruması farklı hizmet katmanları sağlar. Daha fazla bilgi için bkz. [Azure DDoS korumasına genel bakış](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
-DDoS koruma standardı aşağıdaki tür saldırıları hafifletmenize yardımcı olabilir:
-
-> [!div class="mx-tableFixed"]
-
-|Uyarı|Açıklama|
-|---|---|
-|**Volumetric saldırısı algılandı**|Bu saldırının amacı, ağ katmanını önemli miktarda meşru trafik ile taşmaktır. Bu, UDP floods, yükseltme floods ve diğer sahte paket floods içerir. DDoS koruması standardı, bu potansiyel çok gigabaytlık saldırıları, genel ağ ölçeklendirerek otomatik olarak, bu olası çok kiracılı saldırıları azaltır.|
-|**Protokol saldırısı algılandı**|Bu saldırılar, katman 3 ve katman 4 protokol yığınlarındaki zayıf bir durumu kötüye vererek hedefe erişilemez. SYN taşma saldırıları, yansıma saldırıları ve diğer protokol saldırıları içerir. DDoS koruması standardı, bu saldırıları azaltır, istemciyle etkileşime girerek ve kötü amaçlı trafiği engelleyerek kötü amaçlı ve meşru trafik arasında ayrım gerçekleştirebilir.|
-|**Kaynak (uygulama) katmanı saldırısı algılandı**|Bu saldırılar, ana bilgisayarlar arasında veri aktarımını kesintiye uğratan Web uygulaması paketlerini hedefleyebilir. Saldırılara HTTP protokol ihlalleri, SQL ekleme, siteler arası komut dosyası oluşturma ve diğer katman 7 saldırıları dahildir. Bu saldırılara karşı savunmak için DDoS koruma standardı ile Azure Application Gateway WAF 'yi kullanın. Ayrıca, Azure Marketi 'nde bulunan üçüncü taraf WAF teklifleri de mevcuttur.|
+Azure DDoS koruması uyarılarının bir listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-azureddos)bakın.

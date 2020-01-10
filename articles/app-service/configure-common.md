@@ -6,24 +6,28 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e4ba7326d9c23bed2406e62fe1a206501d05a1b1
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671958"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666201"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
 
-Bu konuda, [Azure Portalı]kullanarak Web Apps, mobil arka uç veya API uygulaması için genel ayarların nasıl yapılandırılacağı açıklanmaktadır.
+Bu konuda, [Azure Portal]kullanarak Web Apps, mobil arka uç veya API uygulaması için genel ayarların nasıl yapılandırılacağı açıklanmaktadır.
 
 ## <a name="configure-app-settings"></a>Uygulama ayarlarını yapılandırma
 
 App Service, uygulama ayarları, uygulama koduna ortam değişkenleri olarak geçirilen değişkenlerdir. Linux uygulamaları ve özel kapsayıcılar için App Service, kapsayıcıda ortam değişkenini ayarlamak için `--env` bayrağını kullanarak uygulama ayarlarını kapsayıcıya geçirir.
 
-[Azure Portalı]uygulamanızın yönetim sayfasına gidin. Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' na tıklayın.
+[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. 
 
-![Uygulama ayarları](./media/configure-common/open-ui.png)
+![Uygulama Hizmetleri arama](./media/configure-common/search-for-app-services.png)
+
+Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' nı seçin.
+
+![Uygulama Ayarları](./media/configure-common/open-ui.png)
 
 ASP.NET ve ASP.NET Core geliştiricileri için, App Service uygulama ayarlarının ayarlanması, *Web. config* veya *appSettings. JSON*içinde `<appSettings>` ayarlamak gibidir, ancak App Service içindeki değerler *Web. config* veya *appSettings. JSON*içinde olanları geçersiz kılar. *Web. config* veya *appSettings. JSON*içinde geliştirme ayarlarını (örneğin, yerel MySQL parolası) tutabilir, ancak üretim gizli dizileri (örneğin, Azure MySQL veritabanı parolası) App Service güvenlidir. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
 
@@ -82,9 +86,9 @@ Uygulama ayarları aşağıdaki JSON biçimlendirmesine sahiptir:
 
 ## <a name="configure-connection-strings"></a>Bağlantı ayarlarını yapılandırma
 
-[Azure Portalı], uygulamanın yönetim sayfasına gidin. Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' na tıklayın.
+[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' nı seçin.
 
-![Uygulama ayarları](./media/configure-common/open-ui.png)
+![Uygulama Ayarları](./media/configure-common/open-ui.png)
 
 ASP.NET ve ASP.NET Core geliştiricileri için, App Service bağlantı dizelerinin, *Web. config*'de `<connectionStrings>` ayarlama gibidir, ancak App Service ' de ayarladığınız değerler *Web. config*'de olanları geçersiz kılar. *Web. config* ve üretim gizli dizileri (ÖRNEĞIN, SQL veritabanı kimlik bilgileri) ' nde güvenli App Service için geliştirme ayarlarını (örneğin, veritabanı dosyası) koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
 
@@ -153,7 +157,7 @@ Bağlantı dizeleri aşağıdaki JSON biçimlendirmesine sahiptir:
 
 ## <a name="configure-general-settings"></a>Genel ayarları yapılandırma
 
-[Azure Portalı], uygulamanın yönetim sayfasına gidin. Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' na tıklayın.
+[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **Genel ayarlar**' ı seçin.
 
 ![Genel ayarlar](./media/configure-common/open-general.png)
 
@@ -176,9 +180,9 @@ Burada, uygulama için bazı ortak ayarları yapılandırabilirsiniz. Bazı ayar
 
 Bu ayar yalnızca Windows uygulamaları içindir.
 
-[Azure Portalı], uygulamanın yönetim sayfasına gidin. Uygulamanın sol menüsünde **yapılandırma** > **Varsayılan belgeler**' e tıklayın.
+[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **Varsayılan belgeler**' i seçin.
 
-![Genel ayarlar](./media/configure-common/open-documents.png)
+![Varsayılan belgeler](./media/configure-common/open-documents.png)
 
 Varsayılan belge, bir Web sitesinin kök URL 'sinde görüntülenen Web sayfasıdır. Listedeki ilk eşleşen dosya kullanılır. Yeni bir varsayılan belge eklemek için **Yeni belge**' ye tıklayın. **Kaydet**' e tıklamasını unutmayın.
 
@@ -186,9 +190,9 @@ Uygulama, statik içerik sunmak yerine URL 'ye bağlı olarak yönlendiren modü
 
 ## <a name="configure-path-mappings"></a>Yol eşlemelerini yapılandırma
 
-[Azure Portalı], uygulamanın yönetim sayfasına gidin. Uygulamanın sol menüsünde, **yapılandırma** > **yol eşlemeleri**' ne tıklayın.
+[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde, **yapılandırma** > **yol eşlemeleri**' ni seçin.
 
-![Genel ayarlar](./media/configure-common/open-path.png)
+![Yol eşlemeleri](./media/configure-common/open-path.png)
 
 **Yol eşlemeleri** sayfası, işletim sistemi türüne göre farklı şeyler gösterir.
 
@@ -251,7 +255,7 @@ Bkz. [Azure App Service için özel bir Linux kapsayıcısı yapılandırma](con
 <!-- URL List -->
 
 [ASP.NET SignalR]: https://www.asp.net/signalr
-[Azure Portalı]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Azure App Service'te özel etki alanı adını yapılandırma]: ./app-service-web-tutorial-custom-domain.md
 [Azure App Service’te hazırlık ortamları ayarlama]: ./deploy-staging-slots.md
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906

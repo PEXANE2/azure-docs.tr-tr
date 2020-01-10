@@ -1,26 +1,17 @@
 ---
-title: Azure’da bir Service Fabric uygulamasını bir kümeye dağıtma | Microsoft Docs
-description: Uygulamayı Visual Studio'dan bir kümeye dağıtmayı öğrenin.
-services: service-fabric
-documentationcenter: .net
+title: Azure 'da bir Service Fabric uygulamasını kümeye dağıtma
+description: Mevcut bir uygulamayı Visual Studio 'dan yeni oluşturulan bir Azure Service Fabric kümesine dağıtmayı öğrenin.
 author: athinanthny
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 37c27ae71eddcb5a35b9baeae250bee232c7acb7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213192"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646016"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Öğretici: Azure’da bir Service Fabric uygulamasını kümeye dağıtma
 
@@ -39,7 +30,7 @@ Bu öğretici serisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Azure Pipelines kullanarak CI/CD yapılandırın](service-fabric-tutorial-deploy-app-with-cicd-vsts.md).
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-monitoring-aspnet.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -93,7 +84,7 @@ Daha sonraki bir adımda gereken hizmet uç noktası ' nı bir yere göz atın. 
 
 ![Küme oluşturma](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
-**VM ayrıntısı** sekmesinde, Küme Yöneticisi hesabı için **Kullanıcı adını** ve **parolayı** girin.  Küme düğümleri için **sanal makine görüntüsünü** ve her küme düğümünün **sanal makine boyutunu** seçin.  **Gelişmiş** sekmesine tıklayın.
+**VM ayrıntısı** sekmesinde, Küme Yöneticisi hesabı için **Kullanıcı adını** ve **parolayı** girin.  Küme düğümleri için **sanal makine görüntüsünü** ve her küme düğümünün **sanal makine boyutunu** seçin.  Tıklayın **Gelişmiş** sekmesi.
 
 ![Küme oluşturma](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 

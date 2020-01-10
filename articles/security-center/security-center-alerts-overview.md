@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: bd538d436d1c900a370f522bccf724eaf87210b4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd3cef4d70ea3f78d7e135ad01e0e00b38c60b9
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582614"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666287"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarıları
 
@@ -35,7 +35,7 @@ Ayrıca saldırganlar, çok sayıda imza tabanlı savunma ve [bulut ortamlarına
 
 ## <a name="what-are-security-alerts"></a>Güvenlik uyarıları nedir?
 
-Uyarılar, güvenlik merkezi 'nin kaynaklarınızın tehditleri algıladığında oluşturduğu bildirimlerdir. Güvenlik Merkezi, uyarıları hızlı bir şekilde araştırmanız için gereken bilgilerle birlikte, uyarıları önceliklendirir ve listeler. Güvenlik Merkezi ayrıca bir saldırıyı nasıl düzeltebileceğiniz konusunda öneriler de sağlar.
+Uyarılar, Güvenlik Merkezi’nin kaynaklarınızda tehditler algıladığında oluşturduğu bildirimlerdir. Güvenlik Merkezi, uyarıları hızlı bir şekilde araştırmanız için gereken bilgilerle birlikte, uyarıları önceliklendirir ve listeler. Güvenlik Merkezi ayrıca bir saldırıyı nasıl düzeltebileceğiniz konusunda öneriler sağlar.
 
 ## Güvenlik Merkezi tehditleri nasıl algılar? <a name="detect-threats"> </a>
 
@@ -63,7 +63,7 @@ Davranış analizi, verileri analiz eden ve bilinen modeller koleksiyonuyla kar�
 
 Ayrıca, geniş bir kampanyanın destek kanıtını denetlemek için başka sinyallerle bağıntı vardır. Bu bağıntı yerleşik tehlike göstergeleriyle tutarlı olayları tanımlamaya yardımcı olur. 
 
-### <a name="anomaly-detection"></a>Anormallik algılama
+### <a name="anomaly-detection"></a>Anomali algılama
 
 Azure Güvenlik Merkezi, tehditleri tanımlamak için anormallik algılamayı da kullanır. Davranış analizinden (büyük veri kümelerinden türetilmiş bilinen modellere bağlıdır) farklı olarak anormallik algılama daha fazla “kişiselleştirilmiştir” ve dağıtımlarınıza özel taban çizgilerine odaklanır. Dağıtımlarınızın normal etkinliğini belirlemek için machine learning uygulanır ve sonra bir güvenlik olayını gösterebilecek aykırı değer koşullarını tanımlamak üzere kurallar oluşturulur.
 
@@ -105,13 +105,17 @@ Aşağıdaki konular, kaynak türlerine göre farklı uyarılarda size rehberlik
 Aşağıdaki konularda, Azure üzerinde dağıtılan kaynaklar için ek koruma katmanları uygulamak amacıyla, güvenlik merkezi 'nin Azure altyapısıyla tümleştirerek topladığı farklı Telemetriyi nasıl kullandığı açıklanmaktadır:
 
 * [Hizmet katmanı uyarıları](security-center-alerts-service-layer.md)
-* [Azure Güvenlik ürünleriyle tümleştirme](security-center-alerts-integration.md)
+* [Azure WAF ve Azure DDoS koruması için tehdit algılama](security-center-alerts-integration.md)
 
 ## <a name="what-are-security-incidents"></a>Güvenlik olayları nelerdir?
 
 Güvenlik olayı, her uyarıyı ayrı ayrı listelemek yerine ilgili uyarıların bir koleksiyonudur. Güvenlik Merkezi, farklı uyarıların ve düşük uygunlukta sinyallerin güvenlik olaylarına ilişkilendirilmesi için [bulut Akıllı uyarı bağıntısını](security-center-alerts-cloud-smart.md) kullanır.
 
 Güvenlik Merkezi, olayları kullanarak bir saldırı kampanyasının ve tüm ilgili uyarıların tek bir görünümünü sağlar. Bu görünüm, saldırganın hangi eylemleri yaptığını ve hangi kaynakların etkilendiğini hızlıca anlamanıza olanak sağlar. Daha fazla bilgi için bkz. [bulut Akıllı uyarı bağıntısı](security-center-alerts-cloud-smart.md).
+
+## <a name="security-alerts-in-azure-activity-log"></a>Azure etkinlik günlüğündeki güvenlik uyarıları
+
+Azure portal veya programlı olarak, güvenlik uyarıları ve olayları [Azure etkinlik günlüğünde](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)olay olarak denetlenir. Olay şeması hakkında daha fazla bilgi için bkz. [Azure etkinlik günlüğündeki güvenlik uyarıları](https://go.microsoft.com/fwlink/?linkid=2114113).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,18 +1,18 @@
 ---
 title: Dropbox 'a Bağlan
-description: Dropbox REST API 'Leri ve Azure Logic Apps dosya yükleme ve yönetme
+description: Azure Logic Apps kullanarak Dropbox 'ta dosyaları karşıya yükleyen ve yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/01/2019
 tags: connectors
-ms.openlocfilehash: b38f9b9626e5eec0272256aacc71f7503a006dd6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 8f54f832884b172761f62b16db29d2f0abd0dd46
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789823"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665760"
 ---
 # <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Dropbox 'ta dosya yükleme ve yönetme
 
@@ -20,7 +20,7 @@ Dropbox Bağlayıcısı ve Azure Logic Apps ile Dropbox hesabınızdaki dosyalar
 
 Bu makalede, mantıksal uygulamanızdan Dropbox 'a nasıl bağlanacağınız ve sonra **bir dosya oluşturulduğunda** ve açılan kutu **yolu kullanarak dosya Içeriğini alma** işlemi olduğunda Dropbox nasıl ekleneceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -28,7 +28,7 @@ Bu makalede, mantıksal uygulamanızdan Dropbox 'a nasıl bağlanacağınız ve 
 
 * [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)hakkında temel bilgi. Bu örnekte, boş bir mantıksal uygulama gerekir.
 
-## <a name="add-trigger"></a>Tetikleyici Ekle
+## <a name="add-trigger"></a>Tetikleyici ekleme
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
@@ -43,7 +43,7 @@ Tetikleyiciler listesinde, bu tetikleyiciyi seçin: **bir dosya oluşturulduğun
 
    Bu örnekte, dosya oluşturmayı izlemek istediğiniz klasörü seçin. Klasörlerinize gözatıp **klasör** kutusunun yanındaki klasör simgesini seçin.
 
-## <a name="add-action"></a>Eylem Ekle
+## <a name="add-action"></a>Eylem ekle
 
 Şimdi herhangi bir yeni dosyadan içerik alan bir eylem ekleyin.
 
@@ -64,7 +64,7 @@ Eylemler listesinden şu eylemi seçin: **yolu kullanarak dosya Içeriğini al**
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) dosyasında açıklandığı gibi Tetikleyiciler, Eylemler ve sınırlar gibi teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/dropbox/)bakın.
+Bağlayıcının Swagger dosyasında açıklandığı şekilde Tetikleyiciler, Eylemler ve sınırlar gibi teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/dropbox/)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,75 +1,66 @@
 ---
-title: Service Fabric yedekleme ve geri yükleme | Microsoft Docs
-description: Service Fabric yedekleme ve geri yükleme için kavramsal belgelerde
-services: service-fabric
-documentationcenter: .net
+title: Yedekleme ve geri yükleme Service Fabric
+description: Service Fabric yedekleme ve geri yükleme için kavramsal belgeler, güvenilir durum bilgisi olan hizmet ve Reliable Actors yedeklemesini yapılandırmaya yönelik bir hizmettir.
 author: mcoskun
-manager: chackdan
-editor: subramar,zhol
-ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: cd40f59cfa7846911c68206c3bc1e85a770b0fcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 712069a34b6bc5d8aa4bcbab3fdbf9fc9cd8958b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723876"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645557"
 ---
-# <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Yedekleme ve Reliable Services ve Reliable Actors geri yükleme
-Azure Service Fabric durum bu yüksek kullanılabilirliği sürdürmek için birden fazla düğümde çoğaltan bir yüksek kullanılabilirlik platformudur.  Bu nedenle, kümedeki bir düğümün başarısız olsa bile, hizmetler kullanılabilir olmaya devam. Bazı durumlarda daha bu yerleşik yedeklilik platform tarafından sağlanan bazı için yeterli olmakla birlikte bile hizmeti (bir dış depoya) verileri yedeklemek tercih edilir.
+# <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services ve Reliable Actors yedekleme ve geri yükleme
+Azure Service Fabric, bu yüksek kullanılabilirliği korumak için durumu birden çok düğüm genelinde çoğaltan yüksek kullanılabilirliğe sahip bir platformdur.  Bu nedenle, kümedeki bir düğüm başarısız olsa bile hizmetler kullanılabilir olmaya devam eder. Platform tarafından sunulan bu yerleşik yedeklik, bazı durumlarda hizmetin verileri (bir dış depoya) yedeklemesi için gerekli olabilir.
 
 > [!NOTE]
-> Yedekleme verilerinizi geri yükleme (ve beklendiği gibi çalışıp çalışmadığını test etmek için) kritik için veri kaybı senaryolarından kurtarabilirsiniz.
+> Veri kaybı senaryolarından kurtarabilmeniz için verilerinizi yedeklemek ve geri yüklemek (ve beklendiği gibi çalıştığını test etmek) önemlidir.
 > 
 
 > [!NOTE]
-> Microsoft öneriyor kullanılacak [düzenli yedekleme ve geri yükleme](service-fabric-backuprestoreservice-quickstart-azurecluster.md) güvenilir durum bilgisi olan hizmetler ve Reliable Actors veri yedeklemeyi yapılandırmak için. 
+> Microsoft, güvenilir durum bilgisi olan hizmetler ve Reliable Actors veri yedeklemesini yapılandırmak için [düzenli yedekleme ve geri yükleme](service-fabric-backuprestoreservice-quickstart-azurecluster.md) kullanmayı önerir. 
 > 
 
 
-Örneğin, bir hizmeti, aşağıdaki senaryolardan birini korumak için yedekleme isteyebilirsiniz:
+Örneğin, bir hizmet aşağıdaki senaryolardan korunmak için verileri yedeklemek isteyebilir:
 
-- Tüm Service Fabric kümesinin kalıcı kaybı durumunda.
-- Hizmet bölüm çoğaltmalarını çoğunu kalıcı kaybı
-- Yönetim hataları yapabildiği durumu yanlışlıkla silinirse veya bozulursa. Örneğin, yeterli ayrıcalığa sahip bir yönetici hizmet yanlışlıkla silerse, bu sorunla karşılaşabilirsiniz.
-- Veri bozulması neden hataları hizmetinde. Örneğin, bozuk verileri güvenilir bir koleksiyona yazma hizmeti kod yükseltmesi başladığında, bu sorunla karşılaşabilirsiniz. Böyle bir durumda, bir önceki durumuna geri döndürülmesi hem kod hem de veri olabilir.
-- Çevrimdışı veri işleme. Çevrimdışı verileri üreten hizmetten ayrı olarak gerçekleşen iş zekası için verilerin işlenmesi kullanışlı olabilir.
+- Service Fabric kümesinin tamamının kalıcı kaybolması durumunda.
+- Bir hizmet bölümünün çoğaltmalarının çoğunluğunun kalıcı kaybolması
+- Durumun yanlışlıkla silindiği veya bozulduğu yönetim hataları. Örneğin, yeterli ayrıcalığa sahip bir yönetici hizmeti yanlışlıkla silerse bu durum oluşabilir.
+- Hizmette veri bozulmasına neden olan hatalar. Örneğin, bu durum bir hizmet kodu yükseltmesinin hatalı verileri güvenilir bir koleksiyona yazmaya başladığında meydana gelebilir. Böyle bir durumda, hem kod hem de verilerin önceki bir duruma döndürülmesi gerekebilir.
+- Çevrimdışı veri işleme. Veri üreten hizmetten ayrı olarak gerçekleşen iş zekası için verilerin çevrimdışı işlenmesini sağlamak uygun olabilir.
 
-Yedekleme/Geri Yükleme özelliği güvenilir hizmetler oluşturma ve yedekleri geri yüklemek için API üzerinde derlenmiş hizmetleri sağlar. Platform tarafından sağlanan yedekleme API'leri engelleme okuma veya yazma işlemleri olmadan bir hizmet bölümün durumunun yedekleri izin verin. Geri yükleme, seçilen bir yedekten geri yüklenmesi durumu hizmeti bölümün API'leri sağlar.
+Yedekleme/geri yükleme özelliği, Reliable Services API üzerinde oluşturulan hizmetlerin yedeklemeleri oluşturup geri yüklemesine olanak tanır. Platform tarafından sunulan yedekleme API 'Leri, okuma veya yazma işlemlerini engellemeden bir hizmet bölümünün durumunun yedeğine izin verir. Geri yükleme API 'Leri, bir hizmet bölümünün durumunun seçili bir yedekten geri yüklenmesine izin verir.
 
 ## <a name="types-of-backup"></a>Yedekleme türleri
-Yedekleme iki seçenek vardır: Tam ve artımlı.
-Çoğaltma durumu yeniden oluşturmak için gereken tüm verileri içeren bir yedekleme tam bir yedeklemedir: denetim noktaları ve tüm günlük kayıtları.
-Kontrol noktalarına ve günlük olduğundan, kendi kendine tam bir yedekleme geri yüklenebilir.
+İki yedekleme seçeneği vardır: tam ve artımlı.
+Tam yedekleme, çoğaltma durumunu yeniden oluşturmak için gereken tüm verileri içeren bir yedeklemedir: kontrol noktaları ve tüm günlük kayıtları.
+Denetim noktaları ve günlüğe sahip olduğundan, tam yedekleme kendi kendine geri yüklenebilir.
 
-Kontrol noktalarını büyük olduğunda tam yedeklemeler sorun ortaya çıkar.
-Örneğin, durumu 16 GB olan bir çoğaltma ekleme kontrol noktaları olur en fazla yaklaşık 16 GB.
-Şu beş dakikalık bir kurtarma noktası hedefi varsa, çoğaltma beş dakikada desteklenmesi gerekir.
-50 MB üzerinde ek denetim noktaları 16 GB kopyalamak gereken her zaman bu yedekler (yapılandırılabilir kullanarak `CheckpointThresholdInMB`) tutarında günlükleri.
+Tam yedeklemelerle ilgili sorun, kontrol noktaları büyük olduğunda ortaya çıkar.
+Örneğin, 16 GB durumuna sahip bir çoğaltma, yaklaşık 16 GB 'a kadar olan denetim noktalarına sahip olur.
+Beş dakikalık bir kurtarma noktası hedefi varsa, çoğaltmanın her beş dakikada bir yedeklenmesi gerekir.
+Her yedeklediğinde, 50 MB 'lık (`CheckpointThresholdInMB`kullanılarak yapılandırılabilir) Günlükler için 16 GB 'lık denetim noktası kopyalamanız gerekir.
 
 ![Tam yedekleme örneği.](media/service-fabric-reliable-services-backup-restore/FullBackupExample.PNG)
 
-Bu sorunun çözümü artımlı yedeklemeler, burada yedekleme yalnızca değiştirilen günlük kayıtlarını son yedeklemeden bu yana verilmektedir.
+Bu sorunun çözümü, arka arkaya yalnızca son yedeklemeden bu yana değiştirilen günlük kayıtlarını içeren artımlı yedeklemedir.
 
 ![Artımlı yedekleme örneği.](media/service-fabric-reliable-services-backup-restore/IncrementalBackupExample.PNG)
 
-Artımlı yedeklemeler (kontrol noktalarını içermez) son yedeklemeden yalnızca değişiklikler olduğundan, bunlar daha hızlı olma eğilimindedir ancak bunlar, kendi geri yüklenemez.
-Artımlı yedekleme geri yüklemek için tüm yedekleme zinciri gereklidir.
-Bir yedekleme zinciri yedekleme tam yedekleme ile başlayan bir zinciri ve bitişik artımlı yedeklemelerin bir sayı takip eder.
+Artımlı yedeklemeler yalnızca son yedeklemeden (kontrol noktaları dahil değil) beri değiştiği için, bu, daha hızlı bir şekilde, ancak kendi kendilerine geri yüklenemez.
+Artımlı bir yedeklemeyi geri yüklemek için tüm yedekleme zinciri gereklidir.
+Yedekleme zinciri, bir tam yedekleme ile başlayan ve ardından bir dizi bitişik artımlı yedekleme ile bir yedekleme zinciridir.
 
-## <a name="backup-reliable-services"></a>Yedekleme güvenilir hizmetler
-Hizmet Yazar yedeklemeleri yapmak ne zaman ve yedeklemeleri depolanacağı tam denetime sahiptir.
+## <a name="backup-reliable-services"></a>Yedekleme Reliable Services
+Hizmet yazarı, yedeklemelerin ne zaman ve yedeklemelerin depolanacağı üzerinde tam denetime sahip olur.
 
-Bir yedekleme başlatmak için devralınan üye işlevini çağırmak hizmet gerekiyor `BackupAsync`.  
-Yedeklemeler yalnızca birincil çoğaltmalardan yapılabilir ve verilecek yazma durumu duyarlar.
+Bir yedekleme başlatmak için, hizmetin devralınan üye işlevi `BackupAsync`çağırması gerekir.  
+Yedeklemeler yalnızca birincil çoğaltmalardan yapılabilir ve yazma durumunun verilmesini gerektirir.
 
-Aşağıda gösterildiği gibi `BackupAsync` alır bir `BackupDescription` burada bir belirtebilirsiniz tam veya artımlı yedekleme yanı sıra, bir geri çağırma işlevi, nesne `Func<< BackupInfo, CancellationToken, Task<bool>>>` yedekleme klasörü yerel olarak oluşturuldu ve bazı taşınabilir hazır olduğunda çağrılır dış depolama.
+Aşağıda gösterildiği gibi, `BackupAsync` bir `BackupDescription` nesnesi alır, burada bir tam veya artımlı yedekleme belirtebilir ve bir geri çağırma işlevi `Func<< BackupInfo, CancellationToken, Task<bool>>>`, yedekleme klasörü yerel olarak oluşturulduğunda çağrılır ve bir dış depolamaya taşımaya hazır olur.
 
 ```csharp
 
@@ -79,19 +70,19 @@ await this.BackupAsync(myBackupDescription);
 
 ```
 
-Artımlı yedekleme almak için istek başarısız olabilir `FabricMissingFullBackupException`. Bu durum, aşağıdaki şeylerden biri gerçekleşmekte olduğunu gösterir:
+Artımlı yedekleme alma isteği `FabricMissingFullBackupException`ile başarısız olabilir. Bu özel durum aşağıdakilerden biri olduğunu gösterir:
 
-- Birincil haline gelmiştir olduğundan çoğaltma hiçbir zaman bir tam yedekleme sürdü,
-- son yedeklemeden kesildi bu yana günlük kayıtlarını bazıları veya
-- iletilen çoğaltma `MaxAccumulatedBackupLogSizeInMB` sınırı.
+- çoğaltma, birincil hale geldiği için hiçbir şekilde tam yedekleme gerçekleştirmiştir,
+- son yedeklemeden bu yana olan günlük kayıtlarının bazıları kesildi veya
+- çoğaltma `MaxAccumulatedBackupLogSizeInMB` sınırını geçti.
 
-Kullanıcılar, artımlı yedeklemeler yapılandırarak işaretleyebilmesine olasılığını artırabilir `MinLogSizeInMB` veya `TruncationThresholdFactor`.
-Bunlar artan değerleri arttıkça başına çoğaltma disk kullanımı.
-Daha fazla bilgi için [güvenilir Hizmetleri Yapılandırması](service-fabric-reliable-services-configuration.md)
+Kullanıcılar, `MinLogSizeInMB` veya `TruncationThresholdFactor`yapılandırarak artımlı yedeklemeler yapabilme olasılığını artırabilir.
+Bu değerlerin artırılması, çoğaltma diski kullanımı başına artar.
+Daha fazla bilgi için bkz. [Reliable Services Configuration](service-fabric-reliable-services-configuration.md)
 
-`BackupInfo` çalışma zamanı, yedekleme kaydedildiği klasörün konumu dahil olmak üzere yedekleme, ilgili bilgi sağlar (`BackupInfo.Directory`). Geri çağırma işlevi taşıyabilirsiniz `BackupInfo.Directory` harici bir depolama veya başka bir konuma.  Bu işlev, aynı zamanda başarılı bir şekilde yedekleme klasörü hedef konumuna taşımak mümkün olup olmadığını gösteren bir Boole döndürür.
+`BackupInfo`, yedekleme hakkında, çalışma zamanının yedeklemeyi kaydettiği klasörün konumu da dahil olmak üzere bilgiler sağlar (`BackupInfo.Directory`). Geri çağırma işlevi `BackupInfo.Directory` bir dış depoya veya başka bir konuma taşıyabilir.  Bu işlev ayrıca yedekleme klasörünü hedef konumuna başarıyla taşıyıp taşıyamadığını belirten bir bool döndürür.
 
-Aşağıdaki kodda nasıl `BackupCallbackAsync` yöntemi, yedekleme Azure Depolama'ya yüklemek için kullanılabilir:
+Aşağıdaki kod `BackupCallbackAsync` yönteminin Azure Storage 'a Yedekleme yüklemesi için nasıl kullanılabileceğini gösterir:
 
 ```csharp
 private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
@@ -104,34 +95,34 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 }
 ```
 
-Önceki örnekte `ExternalBackupStore` kullanılan örnek sınıfı, Azure Blob Depolama ile arabirim oluşturmak için ve `UploadBackupFolderAsync` klasörü sıkıştırır ve Azure Blob deposuna yerleştirir yöntemidir.
+Yukarıdaki örnekte `ExternalBackupStore`, Azure Blob depolama ile arabirim için kullanılan örnek sınıftır ve `UploadBackupFolderAsync`, klasörü sıkıştırır ve Azure Blob deposuna yerleştirir yöntemidir.
 
-Aşağıdakilere dikkat edin:
+Şunlara dikkat edin:
 
-  - Olabilir yalnızca bir yedekleme işlemi çoğaltma uçuşan herhangi bir zamanda. Birden fazla `BackupAsync` çağrısı aynı anda oluşturur `FabricBackupInProgressException` bir hareket halindeki yedeklemeleri sınırlamak için.
-  - Bir yedekleme işlemi devam ederken bir çoğaltma üzerinde başarısız olursa, yedekleme tamamlanmamış. Bu nedenle, yük devretme bittikten sonra çağırarak yedeklemeyi yeniden başlatmak için hizmetin sorumluluğu gelir `BackupAsync` gerektiği şekilde.
+  - Herhangi bir zamanda çoğaltma başına yalnızca bir yedekleme işlemi olabilir. Aynı anda birden fazla `BackupAsync` çağrısı, esnek yedeklemeleri bir ile sınırlamak için `FabricBackupInProgressException` oluşturur.
+  - Bir yedekleme devam ederken bir çoğaltma yük devreder, yedekleme tamamlanmamış olabilir. Bu nedenle, yük devretme bittikten sonra, gerektiğinde `BackupAsync` çağırarak yedeklemeyi yeniden başlatmak için hizmetin sorumluluğundadır.
 
-## <a name="restore-reliable-services"></a>Güvenilir Hizmetleri geri yükleme
-Genel olarak, bir geri yükleme işlemi gerçekleştirmek ihtiyacınız olabilecek durumlar bu kategoriden birine ayrılır:
+## <a name="restore-reliable-services"></a>Geri yükleme Reliable Services
+Genel olarak, bir geri yükleme işlemi gerçekleştirmeniz gerekebilecek durumlar şu kategorilerden birine girer:
 
-  - Hizmet bölüm veri kaybı. Örneğin, bir bölüm (birincil çoğaltma dahil) için iki tanesi üç çoğaltmalar için disk bozuk silinebilen veya. Yeni birincil verileri bir yedekten geri yüklemek gerekebilir.
-  - Tüm hizmet kaybolur. Örneğin, tüm hizmet ve bu nedenle hizmet yönetici kaldırır ve verilerin geri yüklenmesi gerekir.
-  - Hizmet çoğaltılan bozuk uygulama verileri (örneğin, bir uygulama hatası nedeniyle). Bu durumda, hizmet yükseltilebilir veya bozulma nedenini kaldırmak için geri gerekir ve bozuk olmayan veri geri yüklenmesi gerekir.
+  - Hizmet bölümü kayıp verileri. Örneğin, bir bölüm (birincil çoğaltma dahil) için üç çoğaltma için olan disk bozulur veya silinir. Yeni birincili verilerin bir yedekten geri yüklenmesi gerekebilir.
+  - Hizmetin tamamı kaybedilir. Örneğin, bir yönetici tüm hizmeti kaldırır ve bu nedenle hizmetin ve verilerin geri yüklenmesi gerekir.
+  - Hizmet bozuk uygulama verilerini (örneğin, bir uygulama hatası nedeniyle) çoğalttı. Bu durumda, bozulmanın nedenini kaldırmak için hizmetin yükseltilmesi veya döndürülmesi gerekir ve bozuk olmayan veriler geri yüklenmelidir.
 
-Birçok yaklaşım mümkün olsa da, bazı örnekler kullanarak sunuyoruz `RestoreAsync` yukarıdaki senaryolarından, kurtarılır.
+Birçok yaklaşım mümkün olsa da, Yukarıdaki senaryolardan kurtarmak için `RestoreAsync` kullanmaya ilişkin bazı örnekler sunuyoruz.
 
-## <a name="partition-data-loss-in-reliable-services"></a>Reliable Services özelliğinde bölüm veri kaybı
-Bu durumda, çalışma zamanı otomatik olarak veri kaybı algılaması ve çağırma `OnDataLossAsync` API.
+## <a name="partition-data-loss-in-reliable-services"></a>Reliable Services veri kaybını bölümle
+Bu durumda, çalışma zamanı otomatik olarak veri kaybını algılar ve `OnDataLossAsync` API 'sini çağırır.
 
-Kurtarmak için aşağıdakileri gerçekleştirmek hizmet Yazar gerekir:
+Kurtarmak için hizmet yazarının aşağıdakileri gerçekleştirmesi gerekir:
 
-  - Sanal temel sınıf yöntemini geçersiz kılma `OnDataLossAsync`.
-  - En son yedeklemesini hizmetin yedeklemeleri içeren dış konumu bulun.
-  - En son yedeği indir (ve bu sıkıştırılmış yedekleme klasörüne yedekleme sıkıştırmasını açın).
-  - `OnDataLossAsync` Yöntemi sağlayan bir `RestoreContext`. Çağrı `RestoreAsync` sağlanan API `RestoreContext`.
-  - Geri yükleme başarılı olduysa true döndürür.
+  - `OnDataLossAsync`sanal taban sınıfı metodunu geçersiz kılın.
+  - Hizmetin yedeklemelerini içeren dış konumda en son yedeklemeyi bulun.
+  - En son yedeklemeyi indirin (ve sıkıştırılmış dosyayı yedekleme klasörüne açın).
+  - `OnDataLossAsync` yöntemi bir `RestoreContext`sağlar. `RestoreAsync` API 'sini belirtilen `RestoreContext`çağırın.
+  - Geri yükleme başarılı olduysa doğru döndürün.
 
-Örnek aşağıdadır `OnDataLossAsync` yöntemi:
+Aşağıda `OnDataLossAsync` yönteminin örnek bir uygulamasıdır:
 
 ```csharp
 protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, CancellationToken cancellationToken)
@@ -146,44 +137,44 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-`RestoreDescription` için geçirilen `RestoreContext.RestoreAsync` çağrı adlı bir üyeyi içeren `BackupFolderPath`.
-Tek bir tam yedekleme, geri yüklerken bu `BackupFolderPath` tam yedekleme içeren klasörü yerel yoluna ayarlanmalıdır.
-Tam yedekleme ve artımlı yedeklemeler, bir dizi geri yüklerken `BackupFolderPath` tam yedekleme, ancak aynı zamanda tüm artımlı yedeklemeler yalnızca içeren klasörü yerel yoluna ayarlanmalıdır.
-`RestoreAsync` Çağrı throw `FabricMissingFullBackupException` varsa `BackupFolderPath` sağlanan tam yedeği içermiyor.
-Ayrıca oluşturabilecek `ArgumentException` varsa `BackupFolderPath` bozuk bir artımlı yedeklemeler zincirine sahiptir.
-Örneğin, tam yedekleme öğesini içeriyorsa, ilk artımlı ancak eşleşme sayısı ve üçüncü artımlı yedekleme ikinci artımlı yedekleme.
+`RestoreContext.RestoreAsync` çağrısına geçirilen `RestoreDescription` `BackupFolderPath`adlı bir üye içeriyor.
+Tek bir tam yedeklemeyi geri yüklerken, bu `BackupFolderPath` tam yedeklemenizi içeren klasörün yerel yolu olarak ayarlanmalıdır.
+Tam yedeklemeyi ve bir dizi artımlı yedeklemeyi geri yüklerken, `BackupFolderPath` yalnızca tam yedeklemeyi içermeyen klasörün yerel yoluna ve ayrıca tüm artımlı yedeklemelere ayarlanmalıdır.
+`RestoreAsync` çağrısı, belirtilen `BackupFolderPath` tam yedekleme içermiyorsa `FabricMissingFullBackupException` oluşturabilir.
+Ayrıca, `BackupFolderPath` daha fazla artımlı yedekleme zinciri varsa `ArgumentException` de oluşturabilir.
+Örneğin, tam yedeklemeyi içeriyorsa, ilk artımlı ve üçüncü artımlı yedekleme, ancak ikinci artımlı yedekleme yok.
 
 > [!NOTE]
-> RestorePolicy kasaya varsayılan olarak ayarlanır.  Diğer bir deyişle `RestoreAsync` yedekleme klasörü bu yineleme içinde yer alan durumuna eşit veya daha eski bir duruma içerdiğini algılarsa, API ArgumentException ile başarısız olur.  `RestorePolicy.Force` Bu güvenlik denetimi atlamak için kullanılabilir. Bu bir parçası olarak belirtilen `RestoreDescription`.
+> RestorePolicy varsayılan olarak güvenli olarak ayarlanır.  Bu, yedekleme klasörünün bu çoğaltmada bulunan duruma eşit veya ondan daha eski bir durum içerdiğini algıladığında `RestoreAsync` API 'SI ArgumentException ile başarısız olur.  `RestorePolicy.Force`, bu güvenlik denetimini atlamak için kullanılabilir. Bu, `RestoreDescription`bir parçası olarak belirtilir.
 > 
 
-## <a name="deleted-or-lost-service"></a>Silinmiş veya kayıp hizmeti
-Hizmet kaldırılırsa, verileri geri yüklenebilmesi için önce öncelikle hizmeti yeniden oluşturmanız gerekir.  Aynı yapılandırmaya sahip, örneğin, verileri sorunsuz bir şekilde geri yüklenebilir, böylece düzeni, bölümleme hizmeti oluşturmak önemlidir.  Verileri geri yüklemek için API, hizmet başladıktan sonra (`OnDataLossAsync` yukarıda) Bu hizmet, her bölümde çağrılması gerekir. Elde biri kullanılarak budur [FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) her bölüm üzerinde.  
+## <a name="deleted-or-lost-service"></a>Silinen veya kayıp hizmet
+Bir hizmet kaldırılırsa, verilerin geri yüklenebilmesi için önce hizmeti yeniden oluşturmanız gerekir.  Verilerin sorunsuz bir şekilde geri yüklenebilmesi için, aynı yapılandırmayla (örneğin bölümlendirme şeması) birlikte hizmetin oluşturulması önemlidir.  Hizmet kurulduktan sonra, verilerin geri yüklenmesi için API (`OnDataLossAsync` yukarıya), bu hizmetin her bölümünde çağrılması gerekir. Bunu sağlamanın bir yolu, her bölümde [FabricClient. TestManagementClient. StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) ' i kullanmaktır.  
 
-Bu noktadan sonra yukarıdaki senaryo aynı uygulamasıdır. Dış depodan en son ilgili yedeklemeyi geri yüklemek her bölüm gerekir. Bir uyarı, çalışma zamanı dinamik olarak bölüm kimlikleri oluşturduğundan bölüm kimliği artık, değişmiş olabilir emin olur. Bu nedenle, hizmet her bölüm için geri yükleme için en son yedekleme tanımlamak için uygun bölüm bilgileri ve hizmet adını depolamak gerekir.
+Bu noktada, uygulama yukarıdaki senaryodakiyle aynıdır. Her bölümün, son ilgili yedeklemenin dış depodan geri yüklenmesi gerekir. Tek bir desteklenmediği uyarısıyla, çalışma zamanı bölüm kimliklerini dinamik olarak oluşturduğundan bölüm KIMLIĞININ artık değişmiş olabilir. Bu nedenle, her bölüm için geri yüklenecek doğru en son yedeği tanımlamak üzere hizmetin uygun bölüm bilgilerini ve hizmet adını depolaması gerekir.
 
 > [!NOTE]
-> Kullanılacak önerilmez `FabricClient.ServiceManager.InvokeDataLossAsync` , küme durumunuz bozabilir olduğundan tüm hizmet geri yüklemek için her bir bölüm.
+> Her bölümde `FabricClient.ServiceManager.InvokeDataLossAsync`, hizmetin tamamını geri yüklemek için kullanılması önerilmez, çünkü bu durum küme durumlarınızın bozulmasına neden olabilir.
 > 
 
-## <a name="replication-of-corrupt-application-data"></a>Bozuk bir uygulama veri çoğaltma
-Yeni dağıtılmış uygulama yükseltmesi bir hata varsa, veri bozulmasına neden olabilir. Örneğin, geçersiz bir alan kodu ile güvenilir bir sözlükte her telefon numarası kaydı güncelleştirmek bir uygulama yükseltmesi başlayabilir.  Bu durumda, Service Fabric depolanan verilerin yapısını farkında olmadığından geçersiz telefon numaralarını çoğaltılır.
+## <a name="replication-of-corrupt-application-data"></a>Bozuk uygulama verilerinin çoğaltılması
+Yeni dağıtılan uygulama yükseltmesinin bir hatası varsa, bu durum verilerin bozulmasına neden olabilir. Örneğin, bir uygulama yükseltmesi, güvenilir bir Sözlükteki her telefon numarası kaydını geçersiz bir alan kodu ile güncelleştirmeye başlayabilir.  Bu durumda, Service Fabric depolanan verilerin doğası farkında olmadığından, geçersiz telefon numaraları çoğaltılır.
 
-Uygulama düzeyinde hizmet dondurma ve mümkünse, hata olmayan uygulama kodu sürümüne yükseltmek için veri bozulması neden böyle bir egregious hatayı algılayan sonra yapılacak ilk şey var.  Ancak, bile hizmet kodunu düzeltildikten sonra veriler hala bozuk olabilir ve bu nedenle veri geri yüklenmesi gerekebilir.  Bu gibi durumlarda, son yedeklemelerin da bozuk olabileceğinden en son yedekleme, geri yüklemek yeterli olmayabilir.  Bu nedenle, veriler bozuk önce yapılan son yedek bulmak sahip.
+Veri bozulmasına neden olan bir egregious hatasını algıladıktan sonra yapmanız gereken ilk şey, uygulamayı uygulama düzeyinde dondurmasıdır ve mümkünse hata olmayan uygulama kodu sürümüne yükseltilir.  Ancak, hizmet kodu sabitledikten sonra bile veriler bozuk olabilir ve bu nedenle verilerin geri yüklenmesi gerekebilir.  Bu gibi durumlarda, en son yedeklemeler de bozuk olabileceğinden en son yedeklemeyi geri yüklemek yeterli olmayabilir.  Bu nedenle, veriler bozuk olmadan önce yapılan son yedeklemeyi bulmanız gerekir.
 
-Hangi yedeklemeleri bozuk olduğundan emin değilseniz, yeni bir Service Fabric kümesi dağıtmayı ve etkilenen bölümleri olduğu gibi yukarıdaki yedeklerini geri "Silinmiş veya kayıp hizmeti" senaryo.  Her bölüm için yedeklemeleri en son geri yüklemeyi başlatmak için en az. Bozulma sahip olmayan bir yedekleme bulduğunuzda, taşıma / (Bu yedekleme) daha yeni olan tüm yedeklemeler bu bölümü silin. Her bölüm için bu işlemi yineleyin. Şimdi, `OnDataLossAsync` çağrılır üretim kümesindeki bir bölüme yukarıdaki işlemin çekilen bir dış depoda son yedeklemeden olacaktır.
+Hangi yedeklemelerin bozuk olduğundan emin değilseniz, yeni bir Service Fabric kümesi dağıtabilir ve etkilenen bölümlerin yedeklerini yukarıdaki "silinen veya kayıp hizmet" senaryosunda olduğu gibi geri yükleyebilirsiniz.  Her bölüm için en son yedeklemeleri en en en en üst düzeyde geri yüklemeyi başlatın. Bozulmaya sahip olmayan bir yedekleme bulduktan sonra bu bölümün daha yeni olan (Bu yedeklemeden) tüm yedeklerini taşıyın/silin. Her bölüm için bu işlemi tekrarlayın. Artık, üretim kümesindeki bölümde `OnDataLossAsync` çağrıldığında, dış depoda bulunan son yedek, yukarıdaki işlem tarafından seçilen bir yer olacaktır.
 
-Şimdi, adımları "silinmiş veya kayıp hizmet içinde" bölümü hatalı kod durumu bozulmuş önce hizmetinin durumunu durumuna geri yüklemek için kullanılabilir.
+Şimdi, "silinen veya kayıp hizmet" bölümündeki adımlar, hata durumu bozulması için hizmetin durumunu geri yüklemek üzere kullanılabilir.
 
-Aşağıdakilere dikkat edin:
+Şunlara dikkat edin:
 
-  - Geri yüklendiğinde, veriler kayboldu önce geri yüklenen yedekleme bölüm durumunu eski bir fırsat yoktur. Bu nedenle, mümkün olduğunca verileri kurtarmak için son çare olarak geri yüklemeniz gerekir.
-  - Yedekleme klasörü yolunu ve yedekleme klasörün içindeki dosyaların yollarını temsil eden dize FabricDataRoot yol ve uygulama türü adı'nın uzunluğu 255 karakterden daha uzun olabilir. Bu gibi bazı .NET yöntemleri neden `Directory.Move`, throw `PathTooLongException` özel durum. Bir geçici çözüm olduğu gibi doğrudan kernel32 API'leri çağırmak için `CopyFile`.
+  - Geri yükleme yaptığınızda, geri yüklenen yedeklemenin, verilerin kaybedilmeden önce bölümün durumundan daha eski olması olasılığı vardır. Bu nedenle, mümkün olduğunca çok veri kurtarmak için en son çare olarak geri yüklemeniz gerekir.
+  - Yedekleme klasörü yolunu ve yedekleme klasörü içindeki dosyaların yollarını temsil eden dize, FabricDataRoot yoluna ve uygulama türü adının uzunluğuna bağlı olarak 255 karakterden daha büyük olabilir. Bu, `Directory.Move`gibi bazı .NET yöntemlerinin `PathTooLongException` özel durumu oluşturması için neden olabilir. Bir geçici çözüm, `CopyFile`gibi Kernel32 API 'Leri doğrudan çağırdır.
 
 ## <a name="back-up-and-restore-reliable-actors"></a>Yedekleme ve geri yükleme Reliable Actors
 
 
-Reliable Actors Framework Reliable Services üzerinde oluşturulmuştur. Actor(s) barındıran ActorService bir durum bilgisi olan güvenilir hizmetidir. Bu nedenle, tüm yedekleme ve geri yükleme işlevlerini güvenilir hizmetlerin kullanılabilir de (durumu sağlayıcısı belirli davranışlarını) için Reliable Actors kullanılabilir. Bölüm başına temelinde yedeklemeler alınmayacak beri tüm aktörler için bölüm yedeklenecek (ve geri yükleme benzer ve bölüm başına temelinde gerçekleşir,) belirtir. Yedekleme/geri yükleme gerçekleştirmek için hizmet sahibi ActorService sınıfından türetilen özel aktör hizmeti sınıfı oluşturun ve ardından yapın yedekleme/geri yükleme yukarıda önceki bölümlerde açıklandığı gibi Reliable Services benzer.
+Reliable Actors Framework Reliable Services üzerine kurulmuştur. Aktörleri barındıran ActorService, durum bilgisi olan güvenilir bir hizmettir. Bu nedenle Reliable Services ' de kullanılabilen tüm yedekleme ve geri yükleme işlevleri Reliable Actors (durum sağlayıcıya özgü davranışlar hariç) için de kullanılabilir. Yedeklemeler bölüm başına temelinde alınacağından, bu bölümdeki tüm aktörlerin yedekleri yedeklenir (ve geri yükleme benzerdir ve bölüm başına temelinde olur). Yedekleme/geri yükleme gerçekleştirmek için, hizmet sahibi ActorService sınıfından türetilen özel bir aktör hizmeti sınıfı oluşturmalı ve daha sonra önceki bölümlerde açıklandığı gibi yedekleme/geri yükleme işlemini Reliable Services benzer hale getirmeniz gerekir.
 
 ```csharp
 class MyCustomActorService : ActorService
@@ -199,14 +190,14 @@ class MyCustomActorService : ActorService
 }
 ```
 
-Özel aktör hizmeti sınıfı oluşturduğunuzda, aktör kaydı sırasında da kaydetmeniz gerekir.
+Özel bir aktör hizmeti sınıfı oluşturduğunuzda, bu, aktör kaydı sırasında da kaydettirmeniz gerekir.
 
 ```csharp
 ActorRuntime.RegisterActorAsync<MyActor>(
     (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
 ```
 
-Reliable Actors için varsayılan durum sağlayıcısı `KvsActorStateProvider`. Artımlı yedekleme için varsayılan olarak etkin değil `KvsActorStateProvider`. Oluşturarak, artımlı yedeklemeyi etkinleştirebilirsiniz `KvsActorStateProvider` oluşturucusuna uygun ayar ve aşağıdaki kod parçacığında gösterildiği gibi ActorService oluşturucusuna geçirerek:
+Reliable Actors için varsayılan durum sağlayıcısı `KvsActorStateProvider`. Artımlı yedekleme, `KvsActorStateProvider`için varsayılan olarak etkinleştirilmemiştir. Aşağıdaki kod parçacığında gösterildiği gibi, oluşturucusunda uygun ayarla `KvsActorStateProvider` oluşturup daha sonra ActorService oluşturucusuna geçirerek artımlı yedeklemeyi etkinleştirebilirsiniz:
 
 ```csharp
 class MyCustomActorService : ActorService
@@ -222,51 +213,51 @@ class MyCustomActorService : ActorService
 }
 ```
 
-Artımlı yedekleme etkinleştirildikten sonra bir artımlı yedekleme ile FabricMissingFullBackupException aşağıdaki nedenlerden birinden dolayı başarısız olabilir ve artımlı yedekleri almadan önce tam bir yedekleme olması gerekir:
+Artımlı yedekleme etkinleştirildikten sonra, artımlı yedekleme gerçekleştirmek aşağıdaki nedenlerden biri için FabricMissingFullBackupException ile başarısız olabilir ve artımlı yedekleme (ler) almadan önce tam yedekleme yapmanız gerekir:
 
-  - Birincil duyurulduğu çoğaltmayı hiçbir zaman bir tam yedekleme duruma getirdi.
-  - Son yedeklemeden alındıktan sonra bazı günlük kayıtlarını kesildi.
+  - Çoğaltma, birincil hale geldiğinden dolayı hiçbir şekilde tam yedekleme gerçekleştirmez.
+  - Son yedeklemeden itibaren günlük kayıtlarının bazıları kesildi.
 
-Artımlı yedekleme etkinleştirildiğinde `KvsActorStateProvider` döngüsel arabellek günlük kayıtlarını yönetmenizi kullanmaz ve düzenli aralıklarla keser. Kullanıcı tarafından 45 dakika boyunca hiçbir yedekleme alınmışsa, sistem otomatik olarak günlük kayıtlarını keser. Bu aralığı belirterek yapılandırılabilir `logTruncationIntervalInMinutes` içinde `KvsActorStateProvider` Oluşturucusu (artımlı yedeklemeyi etkinleştirilirken benzer). Tüm verileri göndererek başka bir çoğaltma oluşturmak birincil çoğaltma gerekiyorsa günlük kayıtlarını da kesilmiş.
+Artımlı yedekleme etkinleştirildiğinde `KvsActorStateProvider`, günlük kayıtlarını yönetmek için dairesel arabellek kullanmaz ve düzenli aralıklarla keser. Kullanıcı tarafından 45 dakikalık bir süre boyunca bir yedekleme alınkalmadığında, sistem günlük kayıtlarını otomatik olarak keser. Bu Aralık, `KvsActorStateProvider` oluşturucuda `logTruncationIntervalInMinutes` belirtilerek yapılandırılabilir (artımlı yedeklemeyi etkinleştirirken buna benzer). Birincil çoğaltmanın, tüm verilerini göndererek başka bir çoğaltma oluşturması gerekiyorsa, günlük kayıtları da kesilebilir.
 
-Bir yedekleme zinciri geri yükleme yaparken, Reliable Services benzer BackupFolderPath tam yedekleme ve diğer artımlı yedekleri içeren alt dizinleri içeren bir alt ile alt dizinleri içermelidir. Yedekleme zinciri doğrulama başarısız olursa geri yükleme API ile ilgili hata iletisi FabricException durum oluşturur. 
-
-> [!NOTE]
-> `KvsActorStateProvider` şu anda ' % s'seçeneği RestorePolicy.Safe yok sayar. Bu özellik için destek önümüzdeki sürümlerden birinde planlanmaktadır.
-> 
-
-## <a name="testing-back-up-and-restore"></a>Yedekleme test ve geri yükleme
-Kritik verilerin yedeklenmekte ve geri yüklenebileceği emin olmak önemlidir. Bu çağırarak yapılabilir `Start-ServiceFabricPartitionDataLoss` veri kaybı veri yedekleme ve geri yükleme işlevselliğinin hizmetiniz beklenen şekilde çalışması için olup olmadığını test etmek için belirli bir bölüme zorlarsınız PowerShell cmdlet'i.  Program aracılığıyla veri kaybı çağırma ve bu olaydan geri yüklemek mümkündür.
+Yedekleme zincirinden, Reliable Services benzer şekilde geri yükleme yaparken, BackupFolderPath, tam yedekleme içeren bir alt dizine ve artımlı yedekleme içeren diğer alt dizinlere sahip alt dizinler içermelidir. Geri yükleme API 'SI, yedekleme zinciri doğrulaması başarısız olursa uygun hata iletisiyle FabricException oluşturur. 
 
 > [!NOTE]
-> Yedekleme için bir örnek uygulama bulmak ve geri yükleme işlevselliğinin github'da Web başvuru uygulaması. Lütfen bakmak `Inventory.Service` daha fazla ayrıntı için hizmet.
+> `KvsActorStateProvider` Şu anda RestorePolicy. Safe seçeneğini yoksayar. Bu özellik için destek, gelecek bir sürümde planlanmaktadır.
+> 
+
+## <a name="testing-back-up-and-restore"></a>Yedekleme ve geri yükleme sınanıyor
+Kritik verilerin yedeklenmekte olduğundan ve ' den geri yüklenebildiğinden emin olmak önemlidir. Bu işlem, hizmetinize yönelik veri yedekleme ve geri yükleme işlevselliğinin beklendiği gibi çalışıp çalışmadığını test etmek üzere belirli bir bölümdeki veri kaybını karşılayan PowerShell 'deki `Start-ServiceFabricPartitionDataLoss` cmdlet 'ini çağırarak yapılabilir.  Ayrıca, veri kaybını ve bu olaydan geri yüklemeyi de programlı bir şekilde çağırmak mümkündür.
+
+> [!NOTE]
+> GitHub 'da Web başvuru uygulamasında yedekleme ve geri yükleme işlevselliğinin örnek bir uygulamasını bulabilirsiniz. Daha fazla ayrıntı için lütfen `Inventory.Service` hizmetine bakın.
 > 
 > 
 
-## <a name="under-the-hood-more-details-on-backup-and-restore"></a>Başlık altında: yedekleme ve geri yükleme hakkında daha fazla bilgi
-Yedekleme ve geri yükleme hakkında daha fazla ayrıntı aşağıdadır.
+## <a name="under-the-hood-more-details-on-backup-and-restore"></a>Gelişmiş: yedekleme ve geri yükleme hakkında daha fazla ayrıntı
+Yedekleme ve geri yükleme ile ilgili bazı ayrıntılar aşağıda verilmiştir.
 
 ### <a name="backup"></a>Backup
-Güvenilir durum Yöneticisi tüm okuma engellemeden tutarlı yedeklemeler oluşturmak ya da yazma işlemleri olanağı sağlar. Bunu yapmak için bir denetim noktası ve günlük Kalıcılık mekanizması kullanır.  Güvenilir durum Yöneticisi kurtarma sürelerini geliştirmeye ve işlem günlük baskısı hafifletmek için belirli noktaları belirsiz (Basit) denetim noktası alır.  Zaman `BackupAsync` , güvenilir durum Yöneticisi tüm güvenilir nesneler bildirir, en son kontrol noktası dosyalarını yerel bir yedekleme klasörüne kopyalamak için çağrılır.  Ardından, güvenilir durum Yöneticisi, "Başlangıç işaretçisinden" yedekleme klasörüne en son günlük kaydı için başlangıç tüm günlük kayıtları kopyalar.  En son günlük kaydının kadar tüm günlük kayıtları yedeklemeye dahildir ve güvenilir durum Yöneticisi yazma tamamlanan günlük korur olduğundan, güvenilir durum Yöneticisi tüm işlemleri, kaydedilmiş olduğunu garanti (`CommitAsync` başarıyla verdi ) yedeklemeye dahil edilir.
+Güvenilir durum Yöneticisi herhangi bir okuma veya yazma işlemini engellemeden tutarlı yedeklemeler oluşturma olanağı sağlar. Bunu yapmak için, bir denetim noktası ve günlük Kalıcılık mekanizması kullanır.  Güvenilir durum Yöneticisi, işlem günlüğünden basıncını ortadan kaldırmak ve kurtarma sürelerini geliştirmek için belirli noktalarda belirsiz (hafif) denetim noktaları alır.  `BackupAsync` çağrıldığında, güvenilir durum Yöneticisi tüm güvenilir nesneleri, en son denetim noktası dosyalarını yerel bir yedekleme klasörüne kopyalayacak şekilde yönlendirir.  Ardından, güvenilir durum Yöneticisi "Başlangıç işaretçisi" den başlayarak yedekleme klasörüne en son günlük kaydına kadar tüm günlük kayıtlarını kopyalar.  En son günlük kaydına kadar olan tüm günlük kayıtları yedeklemeye dahil edildiğinden ve güvenilir durum Yöneticisi sonradan yazma günlüğünü koruyacağı için güvenilir durum Yöneticisi, kaydedilmiş tüm işlemlerin (`CommitAsync` başarıyla döndürülmesini) yedeklemeye dahil edildiğini garanti eder.
 
-Tamamlandıktan sonra herhangi bir işlem `BackupAsync` Mayıs adlı veya yedeklemeye olmayabilir.  Yerel yedekleme klasörü, platform tarafından doldurulmadı sonra (diğer bir deyişle, yerel yedekleme çalışma zamanı tarafından tamamlandığında), hizmetin yedekleme geri çağırma çağrılır.  Yedekleme klasörü Azure depolama gibi bir dış konuma taşımak için bu geri çağırma sorumludur.
+`BackupAsync` sonrasında işleme yapılan herhangi bir işlem, yedeklemede olabilir veya olmayabilir.  Yerel yedekleme klasörü platform tarafından doldurulduktan sonra (diğer bir deyişle, çalışma zamanı tarafından yerel yedekleme tamamlanır), hizmetin yedekleme geri çağırması çağrılır.  Bu geri çağırma, yedekleme klasörünü Azure depolama gibi bir dış konuma taşımaktan sorumludur.
 
 ### <a name="restore"></a>Geri Yükleme
-Güvenilir durum Yöneticisi'ni kullanarak bir yedekten geri yükleme yeteneği sağlar `RestoreAsync` API.  
-`RestoreAsync` Metodunda `RestoreContext` yalnızca içinde çağrılabilir `OnDataLossAsync` yöntemi.
-Tarafından döndürülen bool `OnDataLossAsync` hizmet, bir dış kaynaktan durumuna geri olup olmadığını gösterir.
-Varsa `OnDataLossAsync` döndürür true, Service Fabric, diğer tüm çoğaltmaları bu birincil sunucudan yeniden. Service Fabric sağlar alacak çoğaltmaları `OnDataLossAsync` çağrı ilk birincil role geçiş ancak durumu verilen okuma değil ya da durumu yazma.
-Bu, StatefulService uygulayıcıları için sunduğu gelir `RunAsync` kadar çağrılmaz `OnDataLossAsync` başarıyla tamamlanır.
-Ardından, `OnDataLossAsync` yeni birincil çağrılır.
-Hizmet başarıyla (true veya false döndürerek) Bu API tamamlandıktan ve ilgili yeniden yapılandırma tamamlandıktan kadar API teker teker çağrılan tutmak.
+Güvenilir durum Yöneticisi, `RestoreAsync` API 'sini kullanarak bir yedekten geri yükleme özelliği sağlar.  
+`RestoreContext` `RestoreAsync` yöntemi yalnızca `OnDataLossAsync` metodu içinde çağrılabilir.
+`OnDataLossAsync` tarafından döndürülen bool, hizmetin durumunu dış bir kaynaktan geri yükleyip döndürmediğini belirtir.
+`OnDataLossAsync` true değerini döndürürse, Service Fabric tüm diğer çoğaltmaları bu birincili yeniden oluşturacak. Service Fabric, birincil role ilk geçiş `OnDataLossAsync` çağırmak, ancak okuma durumu veya yazma durumu verilmemesini sağlar.
+Bu, StatefulService uygulayıcıları için `OnDataLossAsync` başarıyla bitene kadar `RunAsync` çağrılamayacağı anlamına gelir.
+Ardından, `OnDataLossAsync` yeni birincil üzerinde çağrılacaktır.
+Bir hizmet bu API 'YI başarılı bir şekilde tamamlayana kadar (doğru veya yanlış döndürerek) ve ilgili yeniden yapılandırma işlemini tamamladıktan sonra, API her seferinde bir kez çağrılacaktır.
 
-`RestoreAsync` ilk kez çağrıldı birincil çoğaltma tüm mevcut durumda bırakır. Daha sonra güvenilir durum Yöneticisi Yedekleme klasörde bulunan tüm güvenilir nesneler oluşturur. Ardından, bunların denetim noktaları yedekleme klasörü içinde geri güvenilir nesneler başlatmamanız. Son olarak, güvenilir durum Yöneticisi yedekleme klasörü içinde günlük kayıtları kendi durumunu kurtarır ve kurtarma işlemini gerçekleştirir. Kurtarma işleminin bir parçası olarak, yedek klasöründe günlük kayıtları taahhüdüne "başlangıç noktasından" başlatma işlemleri güvenilir nesneleri yeniden oynatılır. Bu adım, kurtarılan durumu tutarlı olmasını sağlar.
+`RestoreAsync` önce, çağrıldığı birincil çoğaltmadaki tüm mevcut durumu bırakır. Ardından güvenilir durum Yöneticisi, yedekleme klasöründe bulunan tüm güvenilir nesneleri oluşturur. Ardından, güvenilir nesneler 'in, yedekleme klasöründeki denetim noktalarından geri yüklenmesi istendi. Son olarak, güvenilir durum Yöneticisi yedekleme klasöründeki günlük kayıtlarından kendi durumunu kurtarır ve kurtarma gerçekleştirir. Kurtarma işleminin bir parçası olarak, yedekleme klasöründe kaydedilmiş günlük kayıtları olan "başlangıç noktasından" başlatılan işlemler güvenilir nesnelere yeniden yürütülür. Bu adım kurtarılan durumun tutarlı olmasını sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
   - [Güvenilir Koleksiyonlar](service-fabric-work-with-reliable-collections.md)
-  - [Reliable Services hızlı başlangıç](service-fabric-reliable-services-quick-start.md)
+  - [Hızlı başlangıç Reliable Services](service-fabric-reliable-services-quick-start.md)
   - [Reliable Services bildirimleri](service-fabric-reliable-services-notifications.md)
   - [Reliable Services yapılandırması](service-fabric-reliable-services-configuration.md)
-  - [Güvenilir koleksiyonlar için Geliştirici Başvurusu](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  - [Güvenilir koleksiyonlar için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
   - [Azure Service Fabric’te düzenli yedekleme ve geri yükleme](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 

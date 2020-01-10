@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: deneme ile Azure Active Directory tümleştirme | Microsoft Docs'
+title: 'Öğretici Azure Active Directory: bir kez deneme ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve deneme arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f8278f9c0b478d940a629d3308fd73ea474a4aa
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 964ba7ba9ebac84e2895e5a50f3fa31f1dbdd874
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081655"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659704"
 ---
-# <a name="tutorial-integrate-robin-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile bir kez deneme tümleştirin
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-robin"></a>Öğretici: bir kez deneme ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, Azure Active Directory (Azure AD) ile nasıl bir kez deneme tümleştirileceğini öğreneceksiniz. Azure AD ile bir kez deneme tümleştirdiğinizde şunları yapabilirsiniz:
 
@@ -33,7 +32,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile nasıl bir kez deneme tü
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -47,6 +46,9 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * Deneme **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * Deneme **süresi** Kullanıcı sağlamasını destekler
 
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
+
 ## <a name="adding-robin-from-the-gallery"></a>Galeriden bir kez deneme ekleme
 
 Tek bir kez deneme sürümü tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeriden yönetilen SaaS uygulamaları listenize bir deneme sürümü eklemeniz gerekir.
@@ -58,32 +60,30 @@ Tek bir kez deneme sürümü tümleştirmesini Azure AD 'ye göre yapılandırma
 1. **Galeriden Ekle** bölümünde, arama kutusuna bir **kez deneme** yazın.
 1. Sonuçlar panelinden bir **kez deneme** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-robin"></a>Azure AD çoklu oturum açmayı deneme için yapılandırın ve test edin
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu bir kez deneme ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu bir kez deneme ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 1. **[Deneme SSO 'Yu yapılandırma](#configure-robin-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    * Kullanıcının Azure AD gösterimine bağlı bir kez deneme sürümünde B. Simon 'a sahip olmak için bir deneme **[testi kullanıcısı oluşturun](#create-robin-test-user)** .
+    1. Kullanıcının Azure AD gösterimine bağlı bir kez deneme sürümünde B. Simon 'a sahip olmak için bir deneme **[testi kullanıcısı oluşturun](#create-robin-test-user)** .
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/)Uygulama tümleştirmesini **deneme** sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde uygulama, **IDP** tarafından başlatılan modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
-
-    ![Tek başına etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/preintegrated.png)
+1.  **Temel SAML yapılandırması** bölümünde, uygulama **IDP** başlatılmış modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının  **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -93,16 +93,15 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![image](common/default-attributes.png)
 
-1. Yukarıdaki şekilde, bir kez deneme uygulaması, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Yukarıdaki şekilde, bir kez deneme uygulaması, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
     | Ad | Kaynak özniteliği|
-    | ---------------|  --------- |
-    | Email | User. UserPrincipalName |
-    | FirstName |  Kullanıcı. |
-    | LastName |  User. soyadı |
+    | ---------------| --------- |
+    | FirstName | Kullanıcı. |
+    | Soyadı | User. soyadı |
+    | E-posta | Kullanıcı. Mail |
 
-
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
@@ -120,7 +119,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’ tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -146,20 +145,21 @@ Tek başına **Çoklu oturum açmayı** yapılandırmak için, indirilen **serti
 
 ### <a name="create-robin-test-user"></a>Deneme testi Kullanıcı Oluştur
 
-Bu bölümde, bir kez deneme sürümünde B. Simon adlı bir Kullanıcı oluşturulur. Deneme süresi, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı zaten bir kez deneme sürümünde yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, Britta Simon adlı bir Kullanıcı bir kez deneme sürümünde oluşturulur. Deneme süresi, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı zaten bir kez deneme sürümünde yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
-### <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
 Erişim panelinde bir deneme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız deneme sürümünde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="additional-resources"></a>Ek kaynaklar
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile yeniden denemeyi deneyin](https://aad.portal.azure.com/)
+

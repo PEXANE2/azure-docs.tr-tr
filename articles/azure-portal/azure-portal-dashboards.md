@@ -1,6 +1,6 @@
 ---
-title: Azure portalı panoları oluşturma ve paylaşma | Microsoft Docs
-description: Bu makalede, oluşturma, özelleştirme, yayımlama ve Azure portalında panoları paylaşma açıklar.
+title: Azure portal panoları oluşturma ve paylaşma | Microsoft Docs
+description: Bu makalede, Azure portal panoları oluşturma, özelleştirme, yayımlama ve paylaşma açıklanır.
 services: azure-portal
 documentationcenter: ''
 author: sewatson
@@ -13,162 +13,162 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/01/2019
-ms.author: kfollis
-ms.openlocfilehash: 8dd1349ca9ab62484eb6693291e3b869ff079dc1
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.author: mblythe
+ms.openlocfilehash: a3b4d7cb33bf0da0c4431d76a54644208ea6468f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537214"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640465"
 ---
-# <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure portalında panoları oluşturma ve paylaşma
+# <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure portalında pano oluşturma ve paylaşma
 
-Panolar, bulut kaynaklarınızı Azure portalında odaklı ve düzenli bir görünüm oluşturmak için bir yol sağlar. Panoları burada hızla gündelik işlemleri için görevler başlatabilir ve kaynakları izleme çalışma alanı olarak kullanın.  Projeleri, görevler veya kullanıcı rolleri, örneğin dayalı özel panolar oluşturun.  Azure portalı, başlangıç noktası olarak varsayılan bir Pano sağlar. Varsayılan panoyu düzenleyebilir, oluşturun ve ek panoları özelleştirin ve yayımlama ve diğer kullanıcılar için kullanılabilir hale getirmek için panoları paylaşma. Bu makalede, yeni bir pano oluşturun, özelleştirebilir ve yayımlama ve pano paylaşma açıklar.
+Panolar, bulut kaynaklarınızın Azure portal odaklanmış ve düzenlenmiş bir görünüm oluşturmanız için bir yol sağlar. Panoları günlük işlemler için hızlı bir şekilde başlatabileceğiniz ve kaynakları izleyebileceğiniz bir çalışma alanı olarak panoları kullanın.  Örneğin, projeler, görevler veya Kullanıcı rollerine dayalı özel panolar oluşturun.  Azure portal, başlangıç noktası olarak varsayılan bir pano sağlar. Varsayılan panoyu düzenleyebilir, ek panolar oluşturabilir ve özelleştirebilir, diğer kullanıcıların kullanımına sunmak için panoları yayımlayabilir ve paylaşabilirsiniz. Bu makalede, yeni bir pano oluşturma, arabirimi özelleştirme ve panoları yayımlama ve paylaşma açıklanır.
 
 ## <a name="create-a-new-dashboard"></a>Yeni pano oluşturma
 
-Bu örnekte, yeni, özel bir pano oluşturun ve bir ad atayın. Başlamak için aşağıdaki adımları izleyin:
+Bu örnekte, yeni, özel bir pano oluşturacağız ve bir ad atamalısınız. Kullanmaya başlamak için bu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Seçin **Pano** sol kenar üst bölümünden. Varsayılan görünümünüzü panoya zaten ayarlanmış olabilir.
-1. Seçin **+ yeni Pano**.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Sol kenar çubuğunun üst kısmından **Pano** ' yı seçin. Varsayılan görünüm zaten pano olarak ayarlanmış olabilir.
+1. **+ Yeni Pano**' yı seçin.
 
-    ![Varsayılan panosunun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-new.png)
+    ![Varsayılan panonun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-new.png)
 
-4. Bu eylem açar **kutucuk Galerisi**, kendisinden seçtiğiniz kutucukları ve burada, düzenleme kutucukları boş bir kılavuzdan.
+4. Bu eylem, kutucukları seçtiğiniz **kutucuk galerisini**ve kutucukları düzenlediğiniz boş bir Kılavuzu açar.
 
-    ![Kutucuk Galerisi ve boş kılavuz ekran görüntüsü](./media/azure-portal-dashboards/dashboard-name.png)
+    ![Kutucuk galerisinin ve boş kılavuzun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-name.png)
 
-5. Seçin **Panom'u** Panoda metin etiketi ve özel Pano kolayca belirlemenize yardımcı olacak bir ad girin.
-1. Seçin **özelleştirme Bitti** düzenleme modundan çıkmak için sayfa üstbilgisi.
+5. Pano etiketindeki **My Dashboard** metnini seçin ve özel panoyu kolayca belirlemenize yardımcı olacak bir ad girin.
+1. Düzenleme modundan çıkmak için sayfa üstbilgisindeki **özelleştirmeyi bitti** ' yi seçin.
 
-Pano görünümü artık boş panonuzu gösterir. Kullanımınıza sunulan panolar görmek için Pano adının yanındaki açılan seçin: liste diğer kullanıcıların oluşturulan ve paylaşılan panolar içerebilir.
+Artık Pano görünümünde boş pano görüntülenir. Kullanılabilir panoları görmek için Pano adının yanındaki açılan listeyi seçin. listede, diğer kullanıcıların oluşturduğu ve paylaştığı panolar bulunabilir.
 
-## <a name="edit-a-dashboard"></a>Bir panoyu Düzenle
+## <a name="edit-a-dashboard"></a>Panoyu düzenleme
 
-Şimdi, ekleme, yeniden boyutlandırma ve Azure kaynaklarınızı temsil eden kutucukları düzenlemek için panoyu düzenlemenize izin verir.
+Şimdi, Azure kaynaklarınızı temsil eden kutucukları eklemek, yeniden boyutlandırmak ve düzenlemek için panoyu düzenleyelim.
 
-### <a name="add-tiles"></a>Kutucuk Ekle
+### <a name="add-tiles"></a>Kutucuk ekle
 
-Kutucukları bir panoya eklemek için bu adımları izleyin:
-1. Seçin ![Düzenle simgesi](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Düzenle** sayfası başlığındaki.
+Bir panoya kutucuk eklemek için şu adımları izleyin:
+1. Sayfa başlığından **düzenlemek**](./media/azure-portal-dashboards/dashboard-edit-icon.png) ![Düzenle simgesini seçin.
 
-    ![Düzenleme vurgulama panosunun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-edit.png)
+    ![Pano vurgulama düzenleme ekran görüntüsü](./media/azure-portal-dashboards/dashboard-edit.png)
 
-2. Gözat **kutucuk Galerisi** veya istediğiniz kutucuğu bulmak için arama alanını kullanın.
-1. Seçin **Ekle** varsayılan boyut ve konum ile bir Pano kutucuğu otomatik olarak eklemek için. Veya, kutucuğu kılavuza sürükleyin ve istediğiniz yere yerleştirin.
+2. **Kutucuk galerisine** gidin veya istediğiniz kutucuğu bulmak için arama alanını kullanın.
+1. Kutucuğu varsayılan bir boyut ve konum ile panoya otomatik olarak eklemek için **Ekle** ' yi seçin. Ya da kutucuğu kılavuza sürükleyin ve istediğiniz yere yerleştirin.
 
-Birçok kaynak sayfalarında ("dikey pencereleri" olarak da bilinir), Komut çubuğundaki Raptiye simgesi bulunur. Simgeyi seçerseniz, kaynak sayfası temsil eden bir kutucuk şu anda etkin olan panoya sabitlenir. Bu yöntem, kutucuk, panonuza eklemek için alternatif bir yoludur.
+Birçok kaynak sayfası ("Blade" olarak da bilinir), komut çubuğunda bir raptiye simgesi içerir. Simgeyi seçerseniz, kaynak sayfayı temsil eden bir kutucuk Şu anda etkin olan panoya sabitlenmiştir. Bu yöntem, panonuza kutucuk eklemenin alternatif bir yoludur.
 
-![Raptiye simgesi ile sayfa komut çubuğunun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-pin-blade.png)
+![PIN simgesiyle sayfa komut çubuğunun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-pin-blade.png)
 
 > [!TIP]
-> Birden fazla kuruluş ile çalışıyorsanız, ekleme **kuruluş kimlik** hangi kuruluş kaynakları açıkça göstermek için panonuza kutucuk aittir.
+> Birden fazla kuruluşla çalışıyorsanız, kaynakların hangi kuruluşa ait olduğunu açıkça göstermek için panonuza **kuruluş kimliği** kutucuğunu ekleyin.
 >
 >
-### <a name="resize-or-rearrange-tiles"></a>Kutucukları yeniden veya yeniden boyutlandırma
-Bir döşeme boyutunu değiştirmek için veya bir Panodaki kutucukları yeniden düzenlemek için aşağıdaki adımları izleyin:
+### <a name="resize-or-rearrange-tiles"></a>Kutucukları yeniden boyutlandır veya yeniden Düzenle
+Bir kutucuğun boyutunu değiştirmek veya bir panodaki kutucukları yeniden düzenlemek için aşağıdaki adımları izleyin:
 
-1. Seçin ![Düzenle simgesi](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Düzenle** sayfası başlığındaki.
-1. Bir kutucuğun sağ alt köşesinde bağlam menüsünü seçin. Ardından bir döşeme boyutunu seçin. Destekleyen herhangi bir boyutta kutucuklar da kutucuğu istediğiniz boyuta sürükleyin sağlayan sağ alt köşesinde "tanıtıcısı" ekleyin.
+1. Sayfa başlığından **düzenlemek**](./media/azure-portal-dashboards/dashboard-edit-icon.png) ![Düzenle simgesini seçin.
+1. Bir kutucuğun sağ üst köşesindeki bağlam menüsünü seçin. Sonra bir kutucuk boyutu seçin. Herhangi bir boyutu destekleyen Kutucuklar, Kutucuğu istediğiniz boyuta sürüklemenize imkan tanıyan sağ alt köşedeki bir "tanıtıcı" da içerir.
 
-   ![Döşeme boyutu menüsü açık olan panosunun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-tile-resize.png)
+   ![Kutucuk boyutu menüsü açık olan panonun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-tile-resize.png)
 
-3. Bir kutucuk seçin ve kılavuzda Panonuzda düzenlemek için yeni bir konuma sürükleyin.
+3. Bir kutucuk seçin ve panonuzu düzenlemek için Kılavuzu kılavuz üzerinde yeni bir konuma sürükleyin.
 
-### <a name="additional-tile-configuration"></a>Ek kutucuk yapılandırma
+### <a name="additional-tile-configuration"></a>Ek kutucuk yapılandırması
 
-Bazı kutucuklar istediğiniz bilgileri göstermek için daha fazla yapılandırma gerekebilir. Örneğin, **ölçüm grafiği** kutucuğa sahip gelen bir ölçüm görüntülemek için ayarlanacak **Azure İzleyici**. Kutucuk verilerini Panodaki varsayılan saat ayarlarını geçersiz kılmak için de özelleştirebilirsiniz.
+Bazı kutucukların istediğiniz bilgileri göstermesi için daha fazla yapılandırma gerekebilir. Örneğin, **ölçüm grafiği** kutucuğunun **Azure izleyici**'den bir ölçüm görüntülemesi için ayarlanması gerekir. Ayrıca, kutucuk verilerini panonun varsayılan saat ayarlarını geçersiz kılmak için özelleştirebilirsiniz.
 
-Ekranları ayarlanması gereken herhangi bir kutucuğa bir **Yapılandır kutucuğu** kutucuğu özelleştirme kadar kapak sayfası. Bu başlığı seçin ve ardından gerekli kurulumu yapın.
+Ayarlanması gereken her kutucuk, kutucuğu özelleştirene kadar **kutucuk başlığını Yapılandır** sayfasını görüntüler. Bu başlığı seçin, sonra gerekli Kurulumu yapın.
 
-![Yapılandırma gerektiren kutucuğunun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-configure-tile.png)
+![Yapılandırma gerektiren kutucuğun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-configure-tile.png)
 
 > [!NOTE]
-> Markdown kutucuğunu panonuza özel, statik içeriği görüntülemenizi sağlar. Bu temel yönergeler, görüntü, bir dizi köprüler olabilir veya bile iletişim bilgileri. Markdown kutucuğu kullanma hakkında daha fazla bilgi için bkz. [özel markdown kutucuğunu kullanın](azure-portal-markdown-tile.md).
+> Markaşağı kutucuk, panonuzda özel ve statik içerik görüntülemenize imkan tanır. Bu temel yönergeler, bir görüntü, bir köprü kümesi veya hatta iletişim bilgileri olabilir. Markaşağı kutucuğu kullanma hakkında daha fazla bilgi için bkz. [özel markı kutucuğu kullanma](azure-portal-markdown-tile.md).
 >
 >
-### <a name="customize-tile-data"></a>Kutucuk verilerini Özelleştir
+### <a name="customize-tile-data"></a>Kutucuk verilerini özelleştirme
 
-Panodaki veriler, son 24 saat için etkinlik otomatik olarak gösterir. Bu kutucuk için farklı bir süre göstermek için bu adımları izleyin:
+Panodaki veriler, son 24 saat için etkinliği otomatik olarak gösterir. Yalnızca bu kutucuk için farklı bir zaman aralığı göstermek için şu adımları izleyin:
 
-1. Seçin ![filtre simgesine](./media/azure-portal-dashboards/dashboard-filter.png) sol üst köşesinde kutucuk veya seçin, filtre simgesini **kutucuk verilerini Özelleştir** bağlam menüsünden.
+1. Kutucuğun sol üst köşesinden ![filtre simgesine](./media/azure-portal-dashboards/dashboard-filter.png) filtre simgesini seçin ya da bağlam menüsünde **kutucuk verilerini Özelleştir** ' i seçin.
 
    ![Kutucuk bağlam menüsünün ekran görüntüsü](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
-2. Onay kutusunu seçin **kutucuk düzeyinde pano saat ayarlarını geçersiz kılma**.
+2. **Kutucuk düzeyinde Pano zaman ayarlarını geçersiz kılmak**için onay kutusunu seçin.
 
-   ![Kutucuk saat ayarlarını yapılandırmak için iletişim kutusunun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
+   ![Kutucuk zaman ayarlarını yapılandırmak için iletişim kutusunun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
 
-3. Bu kutucuğun göstermek için zaman aralığını seçin. Son 30 gün için son 30 dakika seçin veya özel bir aralık tanımlayın.
-1. Görüntülenecek zaman ayrıntı düzeyi seçin. Bu gibi durumlarda, bir dakikalık artışlarla herhangi bir yerde bir aylık gösterebilirsiniz.
+3. Bu kutucuk için gösterilecek zaman aralığını seçin. Son 30 dakika ile son 30 gün arasında seçim yapabilir veya özel bir Aralık tanımlayabilirsiniz.
+1. Görüntülenecek zaman parçalı yapısını seçin. Tek dakikalık artışlarla bir ay boyunca herhangi bir yere gösterebilirsiniz.
 1. **Uygula**’yı seçin.
 
-## <a name="delete-a-tile"></a>Bir kutucuğu Sil
+## <a name="delete-a-tile"></a>Kutucuğu silme
 
-Bir kutucuğu panodan kaldırmak için bu adımları izleyin:
+Bir panodaki kutucuğu kaldırmak için şu adımları izleyin:
 
-* Kutucuğun sağ üst köşesinde bağlam menüsünü seçin ve ardından **panodan kaldırmak**. veya,
-* Seçin ![Düzenle simgesi](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Düzenle** özelleştirme moduna girmek için. Kutucuğun sağ üst köşesinde üzerine gelin ve ardından ![Sil simgesi](./media/azure-portal-dashboards/dashboard-delete-icon.png) Sil simgesi kutucuğu panodan kaldırmak için.
+* Kutucuğun sağ üst köşesindeki bağlam menüsünü seçin ve **panodan kaldır**' ı seçin. Veya
+* Özelleştirme moduna girmek için **düzenle**](./media/azure-portal-dashboards/dashboard-edit-icon.png) ![Düzenle simgesini seçin. Kutucuğun sağ üst köşesine gelin, ardından panoyu panodan kaldırmak için ![Sil simgesini](./media/azure-portal-dashboards/dashboard-delete-icon.png) Sil simgesini seçin.
 
-   ![Kutucuğu panodan Kaldır gösteren ekran görüntüsü](./media/azure-portal-dashboards/dashboard-delete-tile.png)
+   ![Panodan kutucuğun nasıl kaldırılacağını gösteren ekran görüntüsü](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
-## <a name="clone-a-dashboard"></a>Bir Panoya kopyalama
+## <a name="clone-a-dashboard"></a>Bir panoyu kopyalama
 
-Mevcut bir panoya yeni bir Pano için bir şablon olarak kullanmak için aşağıdaki adımları izleyin:
+Mevcut bir panoyu yeni bir Pano için şablon olarak kullanmak için şu adımları izleyin:
 
-1. Pano görünümü kopyalamak istediğiniz panoyu gösterildiğini doğrulayın.
-1. Sayfa üst bilgisindeki seçin ![Kopyala simgesi](./media/azure-portal-dashboards/dashboard-clone.png) **kopya**.
-1. Adlı bir panonun kopyasını "kopyası *Pano adınızı*" açılarak düzenleme modunda. Yukarıdaki adımlar bu makalede yeniden adlandırabilir ve panoyu özelleştirme kullanın.
+1. Pano görünümünün kopyalamak istediğiniz panoyu göstermesini sağlayın.
+1. Sayfa üstbilgisinde ![Kopyala simgesini](./media/azure-portal-dashboards/dashboard-clone.png) **Kopyala**' yı seçin.
+1. Panonun " *Pano adınızın*kopyası" adlı bir kopyası düzenleme modunda açılır. Panoyu yeniden adlandırmak ve özelleştirmek için bu makaledeki yukarıdaki adımları kullanın.
 
-## <a name="publish-and-share-a-dashboard"></a>Yayımlama ve pano paylaşma
+## <a name="publish-and-share-a-dashboard"></a>Bir panoyu yayımlama ve paylaşma
 
-Bir panoyu oluşturduğunuzda, görebileceğiniz tek olduğunuz anlamına gelir. varsayılan olarak özeldir. Panolar başkalarının kullanılabilir hale getirmek için bunları diğer kullanıcılarla paylaşabilir. İlk olarak, Pano bir Azure kaynağı olarak yayımlamanız gerekir. Yayımlama ve özel bir Pano paylaşmak için bu adımları izleyin:
+Bir pano oluşturduğunuzda, bu, varsayılan olarak özeldir. Bu, onu görebilen tek bir tane olduğu anlamına gelir. Panoları başkaları için kullanılabilir hale getirmek için, bunları diğer kullanıcılarla paylaşabilirsiniz. İlk olarak, Panoyu bir Azure kaynağı olarak yayımlamanız gerekir. Özel bir panoyu yayımlamak ve paylaşmak için aşağıdaki adımları izleyin:
 
-1. Seçin ![Paylaş simgesi](./media/azure-portal-dashboards/dashboard-share-icon.png) **paylaşmak** sayfası başlığındaki. **Paylaşım + erişim denetimi** formu görüntülenir.
-1. Doğru Pano adının gösterildiğini onaylayın.
-1. Seçin bir **abonelik adı**. Abonelik erişimi olan kullanıcılar, paylaşılan panoyu kullanabilirsiniz. Tek tek kutucuklara tarafından temsil edilen kaynaklara erişimi, Azure rol tabanlı access control tarafından belirlenir.
-1. 'Pano' kaynak grubu seçili abonelik için bu panoyu yayımlamak için onay kutusunu seçin. Veya, onay kutusunu temizleyin ve bunun yerine mevcut bir kaynak grubuna yayımlamak seçin.
-1. Pano kaynak için bir konum seçin. Diğer kaynaklarla panoyu bulun öneririz. Not: var olan kaynak gruplarından seçerseniz, panoyu bu kaynak grubu ile otomatik olarak bulunur.
+1. Sayfa üstbilgisindeki ![paylaşma simgesini](./media/azure-portal-dashboards/dashboard-share-icon.png) **Share** ' u seçin. **Paylaşım ve erişim denetimi** formu görüntülenir.
+1. Doğru Pano adının gösterildiğini doğrulayın.
+1. **Abonelik adı**seçin. Aboneliğe erişimi olan kullanıcılar paylaşılan panoyu kullanabilir. Tek tek kutucukları temsil eden kaynaklara erişim, Azure rol tabanlı erişim denetimi tarafından belirlenir.
+1. Bu panoyu seçili abonelik için ' panolar ' kaynak grubunda yayımlamak için onay kutusunu seçin. İsterseniz onay kutusunu temizleyin ve bunun yerine var olan bir kaynak grubuna yayımlamayı seçin.
+1. Pano kaynağı için bir konum seçin. Panoyu diğer kaynaklarla bulmanızı öneririz. Note: mevcut kaynak gruplarından seçim yaparsanız, pano bu kaynak grubuyla otomatik olarak bulunur.
 1. **Yayımla**’yı seçin.
 
-   ![Panoyu yayımlama iletişim kutusunun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-publish.png)
+   ![Pano yayımlama iletişim kutusunun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-publish.png)
 
-### <a name="set-access-control-on-a-shared-dashboard"></a>Paylaşılan bir Panodaki erişim denetimini ayarlama
+### <a name="set-access-control-on-a-shared-dashboard"></a>Paylaşılan bir panoda erişim denetimini ayarlama
 
-Pano yayımladıktan sonra aşağıdaki adımları izleyerek panoya kimlerin yönetin:
+Pano yayımlandıktan sonra, aşağıdaki adımları izleyerek panoya kimlerin erişebileceğini yönetin:
 
-1. İçinde **paylaşım + erişim denetimi** bölmesinde **kullanıcıları yönetme**.
+1. **Paylaşım + erişim denetim** bölmesinde **Kullanıcıları Yönet**' i seçin.
 
-   ![Ekran görüntüsü Pano paylaşım ve erişim denetimi iletişim kutusu](./media/azure-portal-dashboards/dashboard-share-access-control.png)
+   ![Pano paylaşımı + erişim denetimi iletişim kutusunun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-share-access-control.png)
 
-2. **Erişim denetimi** sayfası açılır. Bu sayfada, birisi için erişim düzeyini gözden geçirin veya yeni bir rol ataması Ekle. Bir rol ataması eklediğinizde, Pano izinleri verdiğiniz.
+2. **Access Control** sayfası açılır. Bu sayfada, birisi için erişim düzeyini gözden geçirebilir veya yeni bir rol ataması ekleyebilirsiniz. Buraya bir rol ataması eklediğinizde, panoya izin vermiş olursunuz.
 
 > [!NOTE]
-> Kutucuklar, kuruluşunuzdaki kaynakların temsili görünümlerdir. Kaynaklara erişim rol tabanlı erişim denetimi atama yönetilir ve kaynak aşağı abonelikten izinler devralınmıştır. Bir panoya erişimi verme işlemi otomatik olarak izinleri Panoda gösterilen kaynaklara atamaz. Paylaşılan panolara ve kaynaklar için rol tabanlı erişim denetimi izinleri hakkında daha fazla bilgi için bkz. [rol tabanlı erişim denetimi ile panoları paylaşma](azure-portal-dashboard-share-access.md).
+> Kutucuklar, kuruluşunuzdaki kaynakların temsili görünümleridir. Kaynaklara erişim rol tabanlı erişim denetimi ataması aracılığıyla yönetilir ve izinler abonelikten kaynağa doğru devralınır. Bir panoya erişim verilmesi, panoda gösterilen kaynaklara otomatik olarak izin atamaz. Paylaşılan panolar ve kaynaklar için rol tabanlı erişim denetimi izinleri hakkında daha fazla bilgi için bkz. [rol tabanlı erişim denetimi ile panoları paylaşma](azure-portal-dashboard-share-access.md).
 
-### <a name="open-a-shared-dashboard"></a>Paylaşılan bir panoyu açın.
+### <a name="open-a-shared-dashboard"></a>Paylaşılan bir panoyu açma
 
-Bulmak ve paylaşılan bir panoyu açmak için bu adımları izleyin:
+Paylaşılan bir panoyu bulup açmak için şu adımları izleyin:
 
-1. Pano adının yanındaki açılan listeyi seçin.
-1. Pano görüntülenen listeden seçin veya **tüm panolara Gözat** açmak istediğiniz panoyu listede yoksa.
+1. Pano adının yanındaki açılan seçimi seçin.
+1. Açmak istediğiniz Pano listede yoksa, görünen panolar listesinden seçin veya **Tüm panolara gidin** .
 
-   ![Pano seçimi menüsünün ekran görüntüsü](./media/azure-portal-dashboards/dashboard-browse.png)
+   ![Pano seçim menüsünün ekran görüntüsü](./media/azure-portal-dashboards/dashboard-browse.png)
 
-3. İçinde **türü** alanın, Seç **paylaşılan panolar**.
-1. Bir veya daha fazla abonelik seçin. Pano adına göre filtrelemek için metin de girebilirsiniz.
-1. Bir pano, paylaşılan panoları listesinden seçin.
+3. **Tür** alanında, **paylaşılan panolar**' ı seçin.
+1. Bir veya daha fazla abonelik seçin. Panoları ada göre filtrelemek için de metin girebilirsiniz.
+1. Paylaşılan panolar listesinden bir pano seçin.
 
-## <a name="delete-a-dashboard"></a>Bir panoyu silme
+## <a name="delete-a-dashboard"></a>Panoyu silme
 
-Özel veya paylaşılan bir panoyu kalıcı olarak silmek için aşağıdaki adımları izleyin:
+Özel veya paylaşılan bir panoyu kalıcı olarak silmek için şu adımları izleyin:
 
-1. Pano adının yanında bulunan aşağı açılan listeden silmek istediğiniz panoyu seçin.
-1. Seçin ![Sil simgesi](./media/azure-portal-dashboards/dashboard-delete-icon.png) **Sil** sayfası başlığındaki.
-1. Özel bir Pano seçin **Tamam** onay iletişim kutusunda, panoyu kaldırma. Onay iletişim kutusunda, paylaşılan bir panoyu yayımlanan Pano artık başkaları tarafından görülebilir olduğunu onaylamak için onay kutusunu seçin. Sonra **Tamam**’ı seçin.
+1. Pano adının yanındaki aşağı açılan listeden silmek istediğiniz panoyu seçin.
+1. Sayfa başlığından **silmek**](./media/azure-portal-dashboards/dashboard-delete-icon.png) ![Sil simgesini seçin.
+1. Özel bir Pano için onay iletişim kutusunda **Tamam** ' ı seçerek panoyu kaldırın. Paylaşılan bir Pano için, onay iletişim kutusunda, yayımlanan panonun artık başkaları tarafından görüntülenemeyeceği onaylanacak onay kutusunu seçin. Sonra **Tamam**’ı seçin.
 
-   ![Silme onayının ekran görüntüsü](./media/azure-portal-dashboards/dashboard-delete-dash.png)
+   ![Silme onayı ekran görüntüsü](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,17 +1,17 @@
 ---
-title: Özel API 'lere kimlik doğrulaması ekleme
-description: Azure Logic Apps özel API 'Leri çağırmak için kimlik doğrulamasını ayarlama
+title: Özel API 'lere yapılan çağrıların güvenliğini sağlamak için kimlik doğrulaması ekleme
+description: Azure Logic Apps 'den özel API 'lere yönelik çağrıların güvenliğini sağlamak için kimlik doğrulaması ayarlama
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793149"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666916"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps 'den özel API 'lere güvenli çağrılar
 
@@ -199,14 +199,14 @@ Mantıksal uygulama tanımınızı kod görünümünde açın, **http** eylem ta
 
 | Özellik | Gereklidir | Açıklama | 
 | -------- | -------- | ----------- | 
-| Kiracı | Yes | Azure AD kiracısı için GUID | 
-| grubu | Yes | Web uygulamanız veya API uygulamanız için uygulama kimliğinden istemci KIMLIĞI olan, erişmek istediğiniz hedef kaynak için GUID | 
-| ClientID | Yes | Mantıksal uygulamanızın uygulama kimliğinden istemci KIMLIĞI olan, erişim isteyen istemcinin GUID 'SI | 
-| gizli dizi | Yes | Erişim belirtecini isteyen istemcinin uygulama kimliğinden anahtar veya parola | 
-| type | Yes | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth`. | 
+| tenant | Evet | Azure AD kiracısı için GUID | 
+| audience | Evet | Web uygulamanız veya API uygulamanız için uygulama kimliğinden istemci KIMLIĞI olan, erişmek istediğiniz hedef kaynak için GUID | 
+| clientID | Evet | Mantıksal uygulamanızın uygulama kimliğinden istemci KIMLIĞI olan, erişim isteyen istemcinin GUID 'SI | 
+| gizli dizi | Evet | Erişim belirtecini isteyen istemcinin uygulama kimliğinden anahtar veya parola | 
+| type | Evet | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth`. | 
 |||| 
 
-Örnek:
+Örneğin:
 
 ``` json
 {
@@ -250,9 +250,9 @@ Mantıksal uygulamanızdan gelen istekleri Web uygulamanıza veya API uygulaman�
 
 | Özellik | Gereklidir | Açıklama |
 | -------- | -------- | ----------- |
-| `type` | Yes | Kimlik doğrulama türü. SSL istemci sertifikaları için değerin `ClientCertificate`olması gerekir. |
+| `type` | Evet | Kimlik doğrulama türü. SSL istemci sertifikaları için değerin `ClientCertificate`olması gerekir. |
 | `password` | Hayır | İstemci sertifikasına (PFX dosyası) erişim parolası |
-| `pfx` | Yes | İstemci sertifikasının Base64 ile kodlanmış içeriği (PFX dosyası) |
+| `pfx` | Evet | İstemci sertifikasının Base64 ile kodlanmış içeriği (PFX dosyası) |
 ||||
 
 <a name="basic"></a>
@@ -273,9 +273,9 @@ Mantıksal uygulamanızdan Web uygulamanıza veya API uygulamanıza gelen istekl
 
 | Özellik | Gereklidir | Açıklama | 
 | -------- | -------- | ----------- | 
-| type | Yes | Kullanmak istediğiniz kimlik doğrulama türü. Temel kimlik doğrulaması için değer `Basic`olmalıdır. | 
-| kullanıcı adı | Yes | Kimlik doğrulaması için kullanmak istediğiniz Kullanıcı adı | 
-| password | Yes | Kimlik doğrulaması için kullanmak istediğiniz parola | 
+| type | Evet | Kullanmak istediğiniz kimlik doğrulama türü. Temel kimlik doğrulaması için değer `Basic`olmalıdır. | 
+| kullanıcı adı | Evet | Kimlik doğrulaması için kullanmak istediğiniz Kullanıcı adı | 
+| parola | Evet | Kimlik doğrulaması için kullanmak istediğiniz parola | 
 |||| 
 
 <a name="azure-ad-code"></a>

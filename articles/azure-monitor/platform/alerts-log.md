@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d540912d280302d2ae2166b75fb2d163458d7a61
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c8d9128e6956c460094be76eccce8d350ed41547
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677836"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658160"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme
 
@@ -44,7 +44,7 @@ Ayrıntılı ileri, Azure portal arabirimini kullanarak günlük uyarılarını 
 
 1. Uyarı oluştur bölümü, şu üç bölümden oluşur: *Uyarı koşulunu tanımlayın*, *uyarı ayrıntılarını tanımlayın*ve *Eylem grubunu tanımlayın*.
 
-    ![Kural Oluştur](media/alerts-log/AlertsPreviewAdd.png)
+    ![Kural oluşturma](media/alerts-log/AlertsPreviewAdd.png)
 
 1. **Kaynak Seç** bağlantısını kullanarak ve bir kaynak seçerek hedefi belirterek uyarı koşulunu tanımlayın. _Abonelik_, _kaynak türü_ve gerekli _kaynağı_seçerek filtre uygulayın.
 
@@ -90,7 +90,7 @@ Ayrıntılı ileri, Azure portal arabirimini kullanarak günlük uyarılarını 
 1. Üçüncü ve son adımla, uyarı koşulu karşılandığında uyarı kuralı için herhangi bir **eylem grubunun** tetiklenmesi gerekip gerekmediğini belirtin. Uyarı ile var olan herhangi bir eylem grubunu seçebilir veya yeni bir eylem grubu oluşturabilirsiniz. Seçili eylem grubuna göre, uyarı, Azure tarafından tetiklenir: e-posta gönderin, SMS gönderin, Web kancaları çağırın, Azure runbook 'Ları kullanarak düzeltin, ıTSM aracınızı gönderin, vb. [Eylem grupları](action-groups.md)hakkında daha fazla bilgi edinin.
 
     > [!NOTE]
-    > Azure eylem grupları aracılığıyla günlük uyarıları için tetiklenen runbook yüklerinin sınırları için [Azure abonelik hizmeti sınırlarına](../../azure-subscription-service-limits.md) bakın
+    > Azure eylem grupları aracılığıyla günlük uyarıları için tetiklenen runbook yüklerinin sınırları için [Azure abonelik hizmeti sınırlarına](../../azure-resource-manager/management/azure-subscription-service-limits.md) bakın
 
     **Günlük uyarıları** için, varsayılan eylemleri geçersiz kılmak üzere bazı ek işlevler kullanılabilir:
 
@@ -106,7 +106,7 @@ Ayrıntılı ileri, Azure portal arabirimini kullanarak günlük uyarılarını 
 
      Birkaç dakika içinde, uyarı etkin ve daha önce açıklandığı gibi tetikler.
 
-Ayrıca kullanıcılar, [Log Analytics](../log-query/portals.md) 'te analiz sorgusunu da sonlandırılabilir ve ardından ' uyarı ayarla ' düğmesine bir uyarı oluşturmak için bunu gönderebilir ve yukarıdaki öğreticide adım 6 ' dan sonraki yönergeleri izleyin.
+Ayrıca kullanıcılar, [Log Analytics](../log-query/portals.md) 'te analiz sorgusunu sonlandırabilir ve sonra ' uyarı ayarla ' düğmesine bir uyarı oluşturmak için bunu gönderebilir ve yukarıdaki öğreticide adım 6 ' dan sonraki yönergeleri izleyin.
 
  ![Log Analytics-uyarı ayarla](media/alerts-log/AlertsAnalyticsCreate.png)
 
@@ -202,7 +202,7 @@ Aşağıda, örnek verileri değişken olarak ayarlanmış şekilde, [sonuç tü
 
 ```
 
-Yukarıdaki örnek JSON (deyin) sampleScheduledQueryRule. JSON olarak kaydedilebilir ve bu izlenecek yol için [Azure portal Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)kullanılarak dağıtılabilir.
+Yukarıdaki örnek JSON (deyin) sampleScheduledQueryRule. JSON olarak kaydedilebilir ve bu izlenecek yol için [Azure portal Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)kullanılarak dağıtılabilir.
 
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Azure kaynak şablonu kullanarak çapraz kaynak sorgusuyla günlük uyarısı
@@ -299,7 +299,7 @@ Aşağıda, değişken olarak ayarlanan örnek verilerle birlikte, [Ölçüm Öl
 > [!IMPORTANT]
 > Günlük uyarısında çapraz kaynak sorgusu kullanılırken, [Authorizedresources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) kullanımı zorunludur ve kullanıcının belirtilen kaynak listesine erişimi olması gerekir
 
-Yukarıdaki örnek JSON (deyin) sampleScheduledQueryRule. JSON olarak kaydedilebilir ve bu izlenecek yol için [Azure portal Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)kullanılarak dağıtılabilir.
+Yukarıdaki örnek JSON (deyin) sampleScheduledQueryRule. JSON olarak kaydedilebilir ve bu izlenecek yol için [Azure portal Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)kullanılarak dağıtılabilir.
 
 ## <a name="managing-log-alerts-using-powershell"></a>PowerShell kullanarak günlük uyarılarını yönetme
 

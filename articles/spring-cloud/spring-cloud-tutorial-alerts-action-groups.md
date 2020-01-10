@@ -5,13 +5,13 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.openlocfilehash: 2be21b20c394ae8505ad18f2c411db7aab06215f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 12/29/2019
+ms.openlocfilehash: 49fea7d568e356169f8bbf0dfd1f4ce5c80a7223
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74694008"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690387"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Öğretici: uyarıları ve eylem gruplarını kullanarak yay bulut kaynaklarını Izleme
 
@@ -21,12 +21,12 @@ Bir uyarı ardışık düzeni kurmak için iki adım vardır:
 1. E-posta, SMS, runbook veya Web kancası gibi bir uyarı tetiklendiğinde gerçekleştirilecek eylemlerle bir eylem grubu ayarlayın. Eylem grupları, farklı uyarılar arasında yeniden kullanılabilir.
 2. Uyarı kurallarını ayarlayın. Kurallar, ölçüm düzenlerini hedef kaynağa, ölçüme, koşula, zaman toplamaya, vb. göre eylem gruplarıyla bağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğretici, Azure Spring gereksinimlerine ek olarak aşağıdaki kaynaklara bağımlıdır.
 
 * Dağıtılmış bir Azure yay bulutu örneği.  Başlamak için [hızlı](spring-cloud-quickstart-launch-app-cli.md) başlarımızı izleyin.
 
-* İzlenecek bir Azure kaynağı, örneğin bu makalede uygulanan veritabanı: [Azure Cosmos DB Ile Spring Data Apache Cassandra API kullanma](https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+* İzlenecek bir Azure kaynağı. Bu örnek, bir yay bulutu örneğini izler.
  
 Aşağıdaki yordamlar, bir yay bulutu örneğinin sol gezinti bölmesindeki **Uyarılar** seçeneğinden başlayarak hem **Eylem grubunu** hem de **uyarıyı** başlatır. (Yordam, Azure portal **Izlemeye genel bakış** sayfasından da başlayabilir.) 
 
@@ -70,21 +70,46 @@ Bir **Uyarı**yapılandırmak Için, **Uyarılar** sayfasına dönün ve **Uyar�
 
 1. **+ Yeni uyarı kuralı**' na tıklayın.
 
-  ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3.png)
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3.png)
 
-1. **Kural oluştur** sayfasında, **kaynak**, **koşul**ve **eylemleri**belirtin.  **Eylemler** bölmesinden, önceden tanımlanmış **Eylem grubunu**seçin.
+1. **Kural oluştur** sayfasında, **kaynağı**belirtin.
 
-1. **Uyarı ayrıntıları**' nın altında, uyarı kuralını adlandırın.
+1. **Koşul** ayarı, **bahar bulut** kaynaklarınızı izlemeye yönelik birçok seçenek sağlar.  **Sinyal mantığını Yapılandır** bölmesini açmak için **Ekle** ' ye tıklayın.
+
+1. Bir koşul seçin. Bu örnek, **SISTEM CPU kullanımı yüzdesini**kullanır.
+
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-1.png)
+
+1. **Eşik değerini** izleyici olarak ayarlamak için **sinyal mantığını Yapılandır** bölmesini aşağı kaydırın.
+
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-2.png)
+
+1. **Bitti**’ye tıklayın.
+
+İzlemek için kullanılabilen koşulların ayrıntıları için bkz. [Kullanıcı Portalı ölçümleri seçenekleri](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options).
+
+ **Eylemler**altında **eylem grubu seç**' e tıklayın. **Eylemler** bölmesinden, önceden tanımlanmış **Eylem grubunu**seçin.
+
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-3.png) 
+
+1. Aşağı kaydırın ve **Uyarı ayrıntıları**' nın altında, uyarı kuralını adlandırın.
+
+1. **Önem derecesini**ayarlayın.
 
 1. **Uyarı kuralı oluştur**' a tıklayın.
 
-  ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-4.png)
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-4.png)
 
 Yeni uyarı kuralının etkinleştirildiğini doğrulayın.
 
-  ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-5.png)
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-4.png)
+
+**Ölçüm** sayfası kullanılarak da bir kural oluşturulabilir:
+
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
+* [Kullanıcı Portalı ölçüm seçenekleri](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
 * [Azure portal eylem grupları oluşturma ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 * [Eylem gruplarında SMS uyarı davranışı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
 * [Öğretici: Azure Spring Cloud ile dağıtılmış Izleme kullanma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)

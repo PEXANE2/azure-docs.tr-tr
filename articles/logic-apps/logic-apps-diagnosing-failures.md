@@ -1,17 +1,17 @@
 ---
-title: Sorunları giderme ve tanılama hataları
-description: Azure Logic Apps iş akışı başarısızlıklarını nasıl giderebileceğinizi ve tanılamanıza öğrenin
+title: İş akışı hatalarının sorunlarını giderme ve tanılama
+description: Azure Logic Apps 'teki iş akışlarınızda sorunları, hataları ve hataları nasıl giderebileceğinizi ve tanılamanıza öğrenin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 93b6d9d2975aa1758afffd19deb1d315b974cc47
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 79cc9d1bf7aa9e8848197525646b0a3646a558d2
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790771"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666814"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps iş akışı hatalarının sorunlarını giderme ve tanılama
 
@@ -38,7 +38,7 @@ Her mantıksal uygulama tetikleyici ile başlar. Tetikleyici başlamazsa, önce 
    | ------ | ----------- | 
    | **Baarı** | Tetikleyici bitiş noktasını denetledi ve kullanılabilir verileri buldu. Genellikle, bu durum yanında "tetiklenen" bir durum da görünür. Aksi takdirde, tetikleyici tanımında karşılanmayan bir koşul veya `SplitOn` komutu olabilir. <p>Bu durum el ile tetikleyici, yineleme tetikleyicisi veya yoklama tetikleyicisi için uygulanabilir. Bir tetikleyici başarıyla çalıştırılabilir, ancak eylemler işlenmeyen hatalar üretmediğinde, çalıştırma yine de başarısız olabilir. | 
    | **Atlandı** | Tetikleyici bitiş noktasını denetledi ancak hiç veri bulmadı. | 
-   | **Başaramadı** | Bir hata oluştu. Başarısız bir tetikleyici için oluşturulan hata iletilerini gözden geçirmek için, bu tetikleyici denemesini seçin ve **çıktılar**' i seçin. Örneğin, geçerli olmayan girişler bulabilirsiniz. | 
+   | **Başarısız** | Bir hata oluşmuştur. Başarısız bir tetikleyici için oluşturulan hata iletilerini gözden geçirmek için, bu tetikleyici denemesini seçin ve **çıktılar**' i seçin. Örneğin, geçerli olmayan girişler bulabilirsiniz. | 
    ||| 
 
    Mantıksal uygulamanız birden çok öğe bulduğunda gerçekleşen aynı tarih ve saate sahip birden çok tetikleyici girişi olabilir. 
@@ -78,7 +78,7 @@ Tetiklenen her tetikleyici bir iş akışı çalıştırması başlatır. İş a
    | Durum | Açıklama | 
    | ------ | ----------- | 
    | **Baarı** | Tüm eylemler başarılı oldu. <p>Belirli bir eylemde herhangi bir hata meydana gelirse, iş akışında aşağıdaki bir eylem bu hatayı işledi. | 
-   | **Başaramadı** | En az bir eylem başarısız oldu ve hata işlemek için iş akışında sonraki hiçbir eylem ayarlanmadı. | 
+   | **Başarısız** | En az bir eylem başarısız oldu ve hata işlemek için iş akışında sonraki hiçbir eylem ayarlanmadı. | 
    | **Yürütüldükten** | İş akışı çalışıyor ancak iptal isteği alındı. | 
    | **Çalıştıran** | İş akışı şu anda çalışıyor. <p>Bu durum, kısıtlanmış iş akışları veya geçerli fiyatlandırma planı nedeniyle gerçekleşebilir. Daha fazla bilgi için [fiyatlandırma sayfasındaki eylem sınırlarına](https://azure.microsoft.com/pricing/details/logic-apps/)bakın. [Tanılama günlüğü](../logic-apps/logic-apps-monitor-your-logic-apps.md)ayarlarsanız, gerçekleşen tüm kısıtlama olayları hakkında da bilgi edinebilirsiniz. | 
    ||| 
@@ -91,7 +91,7 @@ Tetiklenen her tetikleyici bir iş akışı çalıştırması başlatır. İş a
 
    ![Bir mantıksal uygulama çalıştırmasının ayrıntılarını görüntüleme](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. Belirli bir adımla ilgili girişleri, çıkışları ve hata iletilerini incelemek için, şeklin genişleyeceği ve ayrıntıları gösterdiği şekilde bu adımı seçin. Örnek:
+3. Belirli bir adımla ilgili girişleri, çıkışları ve hata iletilerini incelemek için, şeklin genişleyeceği ve ayrıntıları gösterdiği şekilde bu adımı seçin. Örneğin:
 
    ![Adım ayrıntıları görüntüleme](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 

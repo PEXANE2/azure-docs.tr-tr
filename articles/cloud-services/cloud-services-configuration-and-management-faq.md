@@ -1,5 +1,6 @@
 ---
-title: Microsoft Azure Cloud Services SSS için yapılandırma ve yönetim sorunları | Microsoft Docs
+title: Yapılandırma ve yönetim sorunları hakkında SSS
+titleSuffix: Azure Cloud Services
 description: Bu makalede Microsoft Azure Cloud Services yapılandırma ve yönetimi hakkında sık sorulan sorular listelenmektedir.
 services: cloud-services
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 47a75d10f6016eb49061f9e7158b00899a387f2f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161756"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660622"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları: sık sorulan sorular (SSS)
 
@@ -135,7 +136,7 @@ Günlük dizinine yazmak için yerel depolama kotasını tüketmiş olursunuz.�
 * Günlük dosyalarını günlük dizininden el ile kaldırın.
 * Yerel kaynaklar için kota sınırını artırın.
 
-Daha fazla bilgi için aşağıdaki belgelere bakın:
+Daha fazla bilgi için, aşağıdaki belgelere bakın:
 * [Azure Depolama’daki tanılama verilerini depolama ve görüntüleme](cloud-services-dotnet-diagnostics-storage.md)
 * [IIS günlükleri, bulut hizmeti 'nde yazmayı durdurur](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
@@ -189,7 +190,7 @@ Microsoft, tehditleri algılamak için sunucuları, ağları ve uygulamaları s�
 Windows 10 ve Windows Server 2016 hem istemci hem de sunucu tarafında HTTP/2 desteğiyle birlikte gelir. İstemciniz (tarayıcı), TLS uzantıları aracılığıyla HTTP/2 ' yi görüşür ve TLS üzerinden IIS sunucusuna bağlanıyorsa, sunucu tarafında herhangi bir değişiklik yapmanız gerekmez. Bunun nedeni, TLS üzerinden HTTP/2 kullanımını belirten H2-14 üst bilgisi varsayılan olarak gönderilir. Diğer taraftan, istemciniz HTTP/2 ' ye yükseltmek için bir yükseltme üst bilgisi gönderiyorsa, yükseltmenin çalıştığından ve bir HTTP/2 bağlantısı ile sonlandırtığınızdan emin olmak için sunucu tarafında aşağıdaki değişikliği yapmanız gerekir. 
 
 1. Regedit. exe ' yi çalıştırın.
-2. Kayıt defteri anahtarına gidin: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Kayıt defteri anahtarına göz atın: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. **Duoenabled**adlı yenı bir DWORD değeri oluşturun.
 4. Değerini 1 olarak ayarlayın.
 5. Sunucunuzu yeniden başlatın.
@@ -197,7 +198,7 @@ Windows 10 ve Windows Server 2016 hem istemci hem de sunucu tarafında HTTP/2 de
 
 Daha fazla bilgi için bkz.
 
-- [IIS üzerinde HTTP/2](https://blogs.iis.net/davidso/http2)
+- [IIS HTTP/2](https://blogs.iis.net/davidso/http2)
 - [Video: Windows 10 ' da HTTP/2: tarayıcı, uygulamalar ve Web sunucusu](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
@@ -218,7 +219,7 @@ Cloud Services, Azure Resource Manager tabanlı bir hizmet olmadığı için rol
 
 Bkz. [Azure 'daki farklı rolleri anlayın](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="remote-desktop"></a>Uzak Masaüstü
+## <a name="remote-desktop"></a>Uzak masaüstü
 
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Microsoft tarafından bulut hizmeti örneklerine izin verilmeden Microsoft iç mühendisleri uzak masaüstü olabilir mi?
 Microsoft, sahip veya kendi designee 'den, yazılı izin (e-posta veya başka yazılı iletişim) olmadan bulut hizmetinize iç mühendislere izin vermeyecek katı bir işlem izler.
@@ -249,7 +250,7 @@ Cloud Services için Application Insights etkinleştirme hakkında daha fazla bi
 
 Cloud Services için Azure Tanılama günlüğe kaydetmenin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Azure Cloud Services ve sanal makineler için tanılamayı ayarlama](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
-## <a name="generic"></a>Yorlar
+## <a name="generic"></a>Genel
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>"Noalgılamasına f" i web siteme Nasıl yaparım? eklensin mi?
 İstemcilerin MIME türlerini algılaması için, *Web. config* dosyanıza bir ayar ekleyin.
@@ -276,7 +277,7 @@ Bunu IIS 'de bir ayar olarak da ekleyebilirsiniz. [Ortak Başlangıç görevleri
 [Genel başlangıç görevleri](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) makalesindeki IIS başlangıç betiğini kullanın.
 
 ### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>Bulut hizmetimin kota sınırı nedir?
-Bkz. [hizmete özgü sınırlar](../azure-subscription-service-limits.md#subscription-limits).
+Bkz. [hizmete özgü sınırlar](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits).
 
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Bulut hizmeti sanal makinemdeki sürücü neden çok az boş disk alanı gösteriyor?
 Bu beklenen davranıştır ve uygulamanızda herhangi bir soruna neden olmaz. Azure PaaS VM 'lerinde% AppRoot% sürücüsü için günlük kaydı etkinleştirilir ve bu, temelde dosyaların normalde kapladığı alan miktarını iki katına tüketir. Bununla birlikte, dikkat etmeniz gereken birkaç nokta vardır.

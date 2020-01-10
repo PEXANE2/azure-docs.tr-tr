@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b63032baa60d18f3d9d98fc403bdc1087c6c9b6b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350101"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660690"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch hizmet kotaları ve limitleri
 
@@ -41,7 +41,7 @@ Ayrıca kotaların garantili değerler olmadığına de unutmayın. Kotalar, Bat
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Kullanıcı abonelik modundaki çekirdek kotaları
 
-Havuz ayırma modu **Kullanıcı aboneliğine**ayarlanmış bir Batch hesabı oluşturduysanız, Kotalar farklı şekilde uygulanır. Bu modda, bir havuz oluşturulduğunda Batch VM 'Leri ve diğer kaynaklar doğrudan aboneliğinizde oluşturulur. Azure Batch çekirdekler kotaları, bu modda oluşturulan bir hesaba uygulanmaz. Bunun yerine, bölgesel işlem çekirdekleri ve diğer kaynaklar için aboneliğinizdeki kotalar uygulanır. [Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamalarında](../azure-subscription-service-limits.md)Bu kotalar hakkında daha fazla bilgi edinin.
+Havuz ayırma modu **Kullanıcı aboneliğine**ayarlanmış bir Batch hesabı oluşturduysanız, Kotalar farklı şekilde uygulanır. Bu modda, bir havuz oluşturulduğunda Batch VM 'Leri ve diğer kaynaklar doğrudan aboneliğinizde oluşturulur. Azure Batch çekirdekler kotaları, bu modda oluşturulan bir hesaba uygulanmaz. Bunun yerine, bölgesel işlem çekirdekleri ve diğer kaynaklar için aboneliğinizdeki kotalar uygulanır. [Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamalarında](../azure-resource-manager/management/azure-subscription-service-limits.md)Bu kotalar hakkında daha fazla bilgi edinin.
 
 ## <a name="pool-size-limits"></a>Havuz boyutu sınırları
 
@@ -53,7 +53,7 @@ Havuz boyutu sınırları Batch hizmeti tarafından ayarlanır. [Kaynak kotalar�
 | Batch hizmeti havuz ayırma modu | 100 |
 | Batch abonelik havuzu ayırma modu | 80 |
 | **[Yönetilen görüntü kaynağı 1 ile oluşturulan havuzdaki](batch-custom-images.md)işlem düğümleri**<sup></sup> ||
-| Adanmış düğümler | 2000 |
+| Ayrılmış düğümler | 2000 |
 | Düşük öncelikli düğümler | 1000 |
 
 düğüm içi iletişim olmayan havuzlar için <sup>1</sup> .
@@ -90,14 +90,14 @@ Batch hesabı kotalarınızı [Azure Portal][portal]görüntüleyin.
 ### <a name="increase-cores-quota-in-batch"></a>Toplu Işteki çekirdek kotasını artırma 
 
 1. Portal panonuzda **Yardım + Destek** kutucuğunu veya portalın sağ üst köşesindeki soru işaretini ( **?** ) seçin.
-1. **Yeni destek isteği** > **temelleri**' ni seçin.
+1. **Temel** > **Yeni destek isteği ' ni** seçin.
 1. **Temel bilgiler**:
    
-    a. **Sorun türü** > **hizmeti ve abonelik limitleri (kotalar)**
+    a. **Sorun türü** > **hizmet ve abonelik limitleri (kotalar)**
    
     b. Aboneliğinizi seçin.
    
-    c. **Kota türü** > **toplu işlem**
+    c. **Toplu** > **Kota türü**
       
     **İleri**’yi seçin.
     
@@ -139,13 +139,13 @@ Bir Azure sanal ağında dağıtılan sanal makine yapılandırmasındaki toplu 
 * Bir [genel IP adresi](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * Bir [yük dengeleyici](../load-balancer/load-balancer-overview.md)
 
-Bu kaynaklar, Batch havuzu oluşturulurken sağlanan sanal ağı içeren abonelikte ayrılır. Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../azure-subscription-service-limits.md) sınırlıdır. Büyük havuz dağıtımlarını bir sanal ağda planlarsanız, bu kaynaklar için aboneliğin kotalarını kontrol edin. Gerekirse, **Yardım + Destek**' i seçerek Azure Portal bir artış isteyin.
+Bu kaynaklar, Batch havuzu oluşturulurken sağlanan sanal ağı içeren abonelikte ayrılır. Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır. Büyük havuz dağıtımlarını bir sanal ağda planlarsanız, bu kaynaklar için aboneliğin kotalarını kontrol edin. Gerekirse, **Yardım + Destek**' i seçerek Azure Portal bir artış isteyin.
 
 
 ## <a name="related-topics"></a>İlgili konular
 * [Azure portal kullanarak Azure Batch hesabı oluşturma](batch-account-create-portal.md)
 * [Azure Batch özelliğe genel bakış](batch-api-basics.md)
-* [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-subscription-service-limits.md)
+* [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/

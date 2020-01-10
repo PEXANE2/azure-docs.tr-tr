@@ -1,20 +1,20 @@
 ---
 title: Office 365 video 'ya bağlanma
-description: Videoları Office 365 video REST API 'Leri ve Azure Logic Apps yönetme
+description: Azure Logic Apps kullanarak Office 365 videolarında videoları yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 05/18/2016
 tags: connectors
-ms.openlocfilehash: bf3c7c4faac3fcd4dd0c3f368fbe18a224ed591b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 8ac6b7b411e7f42dd076c5b16e7b500a819c617f
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789502"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665794"
 ---
-# <a name="get-started-with-the-office365-video-connector"></a>Office365 video bağlayıcısını kullanmaya başlama
+# <a name="manage-videos-in-office365-video-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak videoları Office365 videolarında yönetme
 
 Office 365 videosu hakkında bilgi almak, videoların listesini almak ve daha fazlası için Office 365 video 'ya bağlanın. Office 365 videosu ile şunları yapabilirsiniz:
 
@@ -26,7 +26,7 @@ Office 365 videosu hakkında bilgi almak, videoların listesini almak ve daha fa
 
 Şimdi bir mantıksal uygulama oluşturarak çalışmaya başlamak için bkz. [mantıksal uygulama oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-office365-video-connector"></a>Office365 video Bağlayıcısı bağlantısı oluşturma
+## <a name="connect-to-office365-video"></a>Office365 video 'ya bağlanma
 
 Bu bağlayıcıyı Logic Apps 'e eklediğinizde, Office 365 video hesabınızda oturum açmanız ve mantıksal uygulamaların hesabınıza bağlanmasına izin vermeniz gerekir.
 

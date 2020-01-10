@@ -2,18 +2,18 @@
 title: HDInsight 'ta Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirme-Azure
 description: Hata ayıklama ve analiz için Linux tabanlı HDInsight kümelerinden Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: 90de0b4bfad4c5096ebc38eb3d31fc41bca6649b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 01/02/2020
+ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494846"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658806"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux tabanlı HDInsight 'ta Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirme
 
@@ -21,7 +21,7 @@ ms.locfileid: "73494846"
 
 Yığın dökümleri, döküm oluşturulduğu sırada değişkenlerin değerleri de dahil olmak üzere, uygulamanın belleğinin anlık görüntüsünü içerir. Bu nedenle, çalışma zamanında oluşan sorunları tanılamak için faydalıdır.
 
-## <a name="whichServices"></a>Servislere
+## <a name="services"></a>Hizmetler
 
 Aşağıdaki hizmetler için yığın dökümlerini etkinleştirebilirsiniz:
 
@@ -33,16 +33,16 @@ Aşağıdaki hizmetler için yığın dökümlerini etkinleştirebilirsiniz:
 
 Ayrıca eşleme için yığın dökümlerini etkinleştirebilir ve HDInsight tarafından çalıştırılan işlemlerin azalmasını sağlayabilirsiniz.
 
-## <a name="configuration"></a>Yığın dökümü yapılandırmasını anlama
+## <a name="understanding-heap-dump-configuration"></a>Yığın dökümü yapılandırmasını anlama
 
 Yığın dökümleri, bir hizmet başlatıldığında JVM 'ye seçenekleri (bazen opts veya parametreler olarak bilinir) geçirerek etkinleştirilir. Çoğu [Apache Hadoop](https://hadoop.apache.org/) hizmet için, bu seçenekleri geçirmek üzere hizmeti başlatmak için kullanılan kabuk betiğini değiştirebilirsiniz.
 
-Her betikte, JVM 'ye geçirilen seçenekleri içeren **\*\_OPTS**için bir dışarı aktarma vardır. Örneğin, **Hadoop-env.sh** betiğinde, `export HADOOP_NAMENODE_OPTS=` ile başlayan çizgi, süs Code hizmeti seçeneklerini içerir.
+Her betikte, JVM 'ye geçirilen seçenekleri içeren **\*\_OPTS**için bir dışarı aktarma işlemi vardır. Örneğin, **Hadoop-env.sh** betiğinde, `export HADOOP_NAMENODE_OPTS=` ile başlayan çizgi, süs Code hizmeti seçeneklerini içerir.
 
 Bu işlemler MapReduce hizmetinin alt işlemi olduğundan, eşleme ve azaltma işlemleri biraz farklıdır. Her eşleme veya azaltma işlemi bir alt kapsayıcıda çalışır ve JVM seçeneklerini içeren iki giriş vardır. Hem **mapred-site. xml**içinde bulunur:
 
-* **MapReduce. admin. Map. child. Java. opts**
-* **MapReduce. admin. küçültme. child. Java. opts**
+* **mapreduce.admin.map.child.java.opts**
+* **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]  
 > Ambarı işlerken, değişiklikleri kümedeki düğümlerde çoğaltarak, hem betikler hem de mapred-site. xml ayarlarını değiştirmek için [Apache ambarı](https://ambari.apache.org/) kullanmanızı öneririz. Belirli adımlar için [Apache ambarı 'Nı kullanma](#using-apache-ambari) bölümüne bakın.
@@ -81,12 +81,7 @@ Bir **OutOfMemoryError** gerçekleştiğinde de bir komut dosyası tetikleyebili
 
 Bir hizmetin yapılandırmasını değiştirmek için aşağıdaki adımları kullanın:
 
-1. Kümeniz için ambarı Web Kullanıcı arabirimini açın. URL https://YOURCLUSTERNAME.azurehdinsight.net.
-
-    İstendiğinde, kümenizin HTTP hesabı adını (varsayılan: yönetici) ve parolayı kullanarak kimlik doğrulaması yapın.
-
-   > [!NOTE]  
-   > Kullanıcı adı ve parola için ambarı tarafından ikinci bir kez sorulabilir. Bu durumda, aynı hesap adını ve parolayı girin.
+1. Bir Web tarayıcısından `https://CLUSTERNAME.azurehdinsight.net`' a gidin; burada `CLUSTERNAME` kümenizin adıdır.
 
 2. Sol taraftaki listesini kullanarak, değiştirmek istediğiniz hizmet alanını seçin. Örneğin **, bir**. Orta alanda, **configs** sekmesini seçin.
 
@@ -121,4 +116,3 @@ Bir hizmetin yapılandırmasını değiştirmek için aşağıdaki adımları ku
    > **Yeniden başlatma** düğmesi girişleri, diğer hizmetler için farklı olabilir.
 
 8. Hizmetler yeniden başlatıldıktan sonra **bakım modunu**kapatmak Için **hizmet eylemleri** düğmesini kullanın. Bu ambarı, hizmet uyarılarını izlemeyi sürdürür.
-

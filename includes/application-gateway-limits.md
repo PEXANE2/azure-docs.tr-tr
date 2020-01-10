@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 3b692ed697d69deca4c50a0595cc54251bac4990
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 0ba21fe3789fba03cd4814d19fb103c3a2559c13
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74175022"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75662941"
 ---
 | Kaynak | Varsayılan/en yüksek sınır | Not |
 | --- | --- | --- |
@@ -36,7 +36,7 @@ ms.locfileid: "74175022"
 | En fazla URL uzunluğu|AŞAMAZ| |
 | HTTP/2 için üst bilgi boyutu üst sınırı |4 KB 'DIR| |
 | Dosya karşıya yükleme boyutu üst sınırı, standart |2 GB | |
-| En fazla dosya yükleme boyutu WAF |Orta WAF ağ geçitleri, 100 MB<br>Büyük WAF ağ geçitleri, 500 MB| |
+| En fazla dosya yükleme boyutu WAF |V1 orta WAF ağ geçitleri, 100 MB<br>V1 büyük WAF ağ geçitleri, 500 MB<br>v2 WAF, 750 MB| |
 | WAF gövde boyutu sınırı, dosyalar olmadan|128 KB||
 | En fazla WAF özel kuralları|100||
 | Maksimum WAF dışlamaları|100||

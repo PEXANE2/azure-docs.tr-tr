@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bebdd8beacb3b5fc91802fb41055df7e24b93218
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0fbff3679004b8278b7634c2dc21253973cf34d0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078961"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647671"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure sanal makineler SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -33,8 +33,8 @@ ms.locfileid: "70078961"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -148,7 +148,7 @@ ms.locfileid: "70078961"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -197,7 +197,7 @@ Bu SAP notları, Azure 'daki SAP konusuyla ilgilidir:
 | [1999351] |Windows 'da sanallaştırma: Gelişmiş Izleme |
 | [2243692] |SAP DBMS örneği için Azure Premium SSD depolama kullanımı |
 
-Genel varsayılan sınırlamalar ve en yüksek sınırlamalar dahil olmak üzere [Azure aboneliklerinin sınırlamaları][azure-subscription-service-limits-subscription]hakkında daha fazla bilgi edinin.
+Genel varsayılan sınırlamalar ve en yüksek sınırlamalar dahil olmak üzere [Azure aboneliklerinin sınırlamaları][azure-resource-manager/management/azure-subscription-service-limits-subscription]hakkında daha fazla bilgi edinin.
 
 ## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>Azure klasik dağıtım modeli Azure Resource Manager ile yüksek kullanılabilirliğe sahip SAP
 Azure Resource Manager ve klasik Azure dağıtım modelleri aşağıdaki alanlarda farklıdır:
@@ -207,7 +207,7 @@ Azure Resource Manager ve klasik Azure dağıtım modelleri aşağıdaki alanlar
 - SAP çoklu SID senaryoları desteği
 
 ### <a name="f76af273-1993-4d83-b12d-65deeae23686"></a>Kaynak grupları
-Azure Resource Manager, Azure aboneliğinizdeki tüm uygulama kaynaklarını yönetmek için kaynak gruplarını kullanabilirsiniz. Tümleşik bir yaklaşım olan bir kaynak grubunda, tüm kaynaklar aynı yaşam döngüsüne sahiptir. Örneğin, tüm kaynaklar aynı anda oluşturulur ve aynı zamanda silinir. [Kaynak grupları](../../../azure-resource-manager/resource-group-overview.md#resource-groups) hakkında daha fazla bilgi edinin.
+Azure Resource Manager, Azure aboneliğinizdeki tüm uygulama kaynaklarını yönetmek için kaynak gruplarını kullanabilirsiniz. Tümleşik bir yaklaşım olan bir kaynak grubunda, tüm kaynaklar aynı yaşam döngüsüne sahiptir. Örneğin, tüm kaynaklar aynı anda oluşturulur ve aynı zamanda silinir. [Kaynak grupları](../../../azure-resource-manager/management/overview.md#resource-groups) hakkında daha fazla bilgi edinin.
 
 ### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Azure Kaynak grubunda Azure iç yük dengeleyici bağımlılığı
 

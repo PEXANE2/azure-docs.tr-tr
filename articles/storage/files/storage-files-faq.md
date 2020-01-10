@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 6526f27177b5fb8640deb5302d8cb3aa4acf1a97
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e5b1880a12cda440a5772de80b8ec67b8f7ed5c3
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824270"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665388"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure dosyaları hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -127,20 +127,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 
 * <a id="afs-files-excluded"></a>**hangi dosya ve klasörlerin Azure dosya eşitleme tarafından otomatik olarak dışlandığından 
   ?**  
-    Varsayılan olarak, Azure Dosya Eşitleme aşağıdaki dosyaları dışlar:
-  * Desktop. ini
-  * thumbs. db
-  * ehthumbs.db
-  * ~$\*.\*
-  * \*.laccdb
-  * \*. tmp
-  * 635D02A9D91C401B97884B82B3BCDAEA.\*
-
-    Aşağıdaki klasörler varsayılan olarak da dışarıda bırakılır:
-
-  * \System Volume bilgileri
-  * GERI dönüşüm \$. BÖLME
-  * \Syncsharemlak
+  Bkz. [Atlanan dosyalar](storage-sync-files-planning.md#files-skipped).
 
 * <a id="afs-os-support"></a>
    **, Windows Server 2008 R2, Linux veya ağa bağlı depolama (NAS) cihazından Azure dosya eşitleme kullanabilir miyim?**  
@@ -374,7 +361,7 @@ Azure **Container Instance üzerinde bir Azure dosya paylaşımından bağlanabi
 
 * <a id="rest-rename"></a>
 **REST API yeniden adlandırma işlemi var mı?**  
-    Şu anda değil.
+    Şimdilik hayır.
 
 * <a id="nested-shares"></a>
 **iç içe paylaşımlar ayarlayabilir miyim? Diğer bir deyişle, bir paylaşıma ait mi?**  

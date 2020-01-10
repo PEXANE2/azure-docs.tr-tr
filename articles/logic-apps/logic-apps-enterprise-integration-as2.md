@@ -1,6 +1,6 @@
 ---
 title: B2B için AS2 iletileri gönderme ve alma
-description: Azure Logic Apps kullanarak B2B kurumsal tümleştirme senaryoları için Exchange AS2 iletileri
+description: Enterprise Integration Pack ile Azure Logic Apps kullanarak B2B kurumsal tümleştirme senaryoları için Exchange AS2 iletileri
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 08/22/2019
-ms.openlocfilehash: b2d7c8840da3bb44f9e220f2963dc4fee63176e2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790723"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666712"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için Exchange AS2 iletileri
 
@@ -49,7 +49,7 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
 > [!IMPORTANT]
 > Özgün AS2 Bağlayıcısı kullanımdan kalktı, bu nedenle bunun yerine **AS2 (v2)** bağlayıcısını kullandığınızdan emin olun. Bu sürüm özgün sürümle aynı özellikleri sağlar, Logic Apps çalışma zamanına göre yereldir ve aktarım hızı ve ileti boyutu açısından önemli performans iyileştirmeleri sağlar. Ayrıca, yerel v2 Bağlayıcısı tümleştirme hesabınıza bir bağlantı oluşturmanızı gerektirmez. Bunun yerine, Önkoşullar bölümünde açıklandığı gibi, tümleştirme hesabınızı bağlayıcıyı kullanmayı planladığınız Logic App 'e bağladığınızdan emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -88,7 +88,7 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
    | **AS2** | İleti alıcısının AS2 anlaşmanız tarafından belirtilen tanımlayıcısı |
    |||
 
-   Örnek:
+   Örneğin:
 
    ![İleti kodlama özellikleri](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 

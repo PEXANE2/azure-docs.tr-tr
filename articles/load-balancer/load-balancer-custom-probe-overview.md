@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: fdc7254b4c6e798c0f32f5fac3575474ed6ec1d0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077068"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690399"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer durum araştırmaları
 
-Azure Load Balancer ile yük dengeleme kuralları kullanırken, arka uç uç noktası durumunu algılamaya Load Balancer izin vermek için bir sistem durumu araştırmaları belirtmeniz gerekir.  Durum araştırması ve araştırma yanıtlarının yapılandırması, hangi arka uç havuzu örneklerinin yeni akışlar alacağını tespit eder. Bir arka uç uç noktasındaki uygulamanın başarısızlığını algılamak için sistem durumu araştırmalarını kullanabilirsiniz. Ayrıca, bir sistem durumu araştırmasına özel bir yanıt oluşturabilir ve yük veya planlanan kapalı kalma süresini yönetmek için akış denetimi için sistem durumu araştırması ' ni kullanabilirsiniz. Bir sistem durumu araştırması başarısız olduğunda, Load Balancer ilgili sağlıksız örneğe yeni akış göndermeyi durdurur.
+Azure Load Balancer ile yük dengeleme kuralları kullanırken, arka uç uç noktası durumunu algılamaya Load Balancer izin vermek için bir sistem durumu araştırmaları belirtmeniz gerekir.  Durum araştırması ve araştırma yanıtlarının yapılandırması, hangi arka uç havuzu örneklerinin yeni akışlar alacağını tespit eder. Bir arka uç uç noktasındaki uygulamanın başarısızlığını algılamak için sistem durumu araştırmalarını kullanabilirsiniz. Ayrıca, bir sistem durumu araştırmasına özel bir yanıt oluşturabilir ve yük veya planlanan kapalı kalma süresini yönetmek için akış denetimi için sistem durumu araştırması ' ni kullanabilirsiniz. Bir sistem durumu araştırması başarısız olduğunda, Load Balancer ilgili sağlıksız örneğe yeni akış göndermeyi durdurur. Giden bağlantı etkilenmez, yalnızca gelen bağlantı etkilendi.
 
 Durum araştırmaları birden çok protokolü destekler. Belirli bir sistem durumu araştırma protokolünün kullanılabilirliği Load Balancer SKU 'ya göre değişir.  Ayrıca, hizmetin davranışı, bu tabloda gösterildiği gibi Load Balancer SKU 'ya göre farklılık gösterir:
 
@@ -49,8 +49,8 @@ Durum araştırma yapılandırması aşağıdaki öğelerden oluşur:
 - Araştırmanın bağlantı noktası
 - Http (S) yoklamaları kullanılırken HTTP GET için kullanılacak HTTP yolu
 
-> [!NOTE]
-> Azure PowerShell, Azure CLı, şablonlar veya API kullanılırken bir araştırma tanımı zorunlu değildir veya denetlenir. Araştırma doğrulama testleri yalnızca Azure portalı kullanılırken yapılır.
+>[!NOTE]
+>Azure PowerShell, Azure CLı, şablonlar veya API kullanılırken bir araştırma tanımı zorunlu değildir veya denetlenir. Araştırma doğrulama testleri yalnızca Azure portalı kullanılırken yapılır.
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Uygulama sinyalini anlama, sinyalin algılanması ve platformun yeniden eylemi
 
@@ -120,6 +120,9 @@ Aşağıda, Kaynak Yöneticisi şablonunda bu tür bir araştırma yapılandırm
 HTTP ve HTTPS araştırmaları TCP araştırmasına dayanır ve belirtilen yola sahip bir HTTP GET oluşturur. Bu araştırmaların her ikisi de göreli yollar için HTTP GET destekler. HTTPS araştırmaları, aynı Aktarım Katmanı Güvenliği (TLS, SSL adıyla) birlikte HTTP araştırmaları gibi sarmalayıcı. Örnek bir HTTP 200 durum zaman aşımı süresi içinde yanıt verdiğinde durum yoklaması işaretlenir.  Sistem durumu araştırması, varsayılan olarak her 15 saniyede bir yapılandırılan durum araştırma bağlantı noktasını denetlemeye çalışır. En düşük araştırma aralığı 5 saniyedir. Tüm aralıkların toplam süresi 120 saniyeyi aşamaz.
 
 Araştırma bağlantı noktası Ayrıca hizmetin kendisi için de dinleyici olan yük dengeleyici rotasyondan örnekleri kaldırmak için kendi mantığınızı uygulamak üzere, HTTP/HTTPS araştırmaları da yararlı olabilir. Örneğin, % 90 CPU ise örneğini kaldırmaya karar ve 200 HTTP durum döndürür. 
+
+> [!NOTE] 
+> HTTPS araştırması, tüm zincirde en az bir SHA256 imza karması olan sertifikaların kullanılmasını gerektirir.
 
 Artık Cloud Services'ı kullanın ve w3wp.exe kullanan web rolleri, ayrıca otomatik izleme, Web sitesini ulaşın. Web sitesi kodunuzdaki hataları, yük dengeleyici araştırması için 200 durumu döndürür.
 

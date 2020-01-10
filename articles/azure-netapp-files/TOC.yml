@@ -81,5 +81,7 @@
       href: 'https://azure.microsoft.com/pricing/details/netapp/'
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=netapp'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla/netapp/'
     - name: Videolar
       href: azure-netapp-files-videos.md

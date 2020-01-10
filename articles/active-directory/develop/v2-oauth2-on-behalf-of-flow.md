@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa58f63e70c09e17328b849e7728604a65cb7ae1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 811fc7a4fc5d8ffba894bad837e95d6b27ecc8c3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964329"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689405"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform ve OAuth 2,0-adına akış
 
@@ -35,12 +35,12 @@ Bu makalede, uygulamanızdaki protokolde doğrudan programlanın nasıl yapılac
 
 > [!NOTE]
 >
-> - Microsoft Identity platform uç noktası tüm senaryoları ve özellikleri desteklemez. Microsoft Identity platform uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için [Microsoft Identity platform sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin. Özellikle, bilinen istemci uygulamaları Microsoft hesabı (MSA) ve Azure AD izleyicileri olan uygulamalar için desteklenmez. Bu nedenle, OBO 'nın ortak bir izin deseninin hem kişisel hem de iş veya okul hesaplarında oturum açmasını sağlayan istemciler için çalışmayacak. Akışın bu adımını işleme hakkında daha fazla bilgi edinmek için bkz. [Orta katmanlı uygulama için izin](#gaining-consent-for-the-middle-tier-application)alma.
+> - Microsoft Identity platform uç noktası tüm senaryoları ve özellikleri desteklemez. Microsoft Identity platform uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için [Microsoft Identity platform sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin. 
 > - Mayıs 2018 itibariyle, bazı örtük akış türetilmiş `id_token` OBO Flow için kullanılamaz. Tek sayfalı uygulamalar (maça 'Lar), OBO akışlarını gerçekleştirmek için orta katmanlı gizli bir istemciye **erişim** belirteci iletmelidir. Hangi istemcilerin OBO çağrıları gerçekleştirebileceği hakkında daha fazla bilgi için bkz. [sınırlamalar](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Protokol diyagramı
 
-Kullanıcının, [OAuth 2,0 yetkilendirme kodu verme akışını](v2-oauth2-auth-code-flow.md)kullanarak bir uygulamada kimliğinin doğrulandığını varsayın. Bu noktada, uygulamanın, orta katman Web API 'sine (API A) erişim için kullanıcının taleplerini ve onayını içeren *API a* (belirteç a) için bir erişim belirteci vardır. Şimdi API A 'nın, aşağı akış Web API 'sine (API B) kimliği doğrulanmış bir istek yapması gerekir.
+Kullanıcının, [OAuth 2,0 yetkilendirme kodu verme akışı](v2-oauth2-auth-code-flow.md) veya başka bir oturum akışı kullanarak bir uygulamada kimliğinin doğrulandığını varsayın. Bu noktada, uygulamanın, orta katman Web API 'sine (API A) erişim için kullanıcının taleplerini ve onayını içeren *API a* (belirteç a) için bir erişim belirteci vardır. Şimdi API A 'nın, aşağı akış Web API 'sine (API B) kimliği doğrulanmış bir istek yapması gerekir.
 
 Aşağıdaki adımlar, OBO akışını oluşturur ve aşağıdaki diyagramın yardımıyla açıklanır.
 
@@ -48,9 +48,9 @@ Aşağıdaki adımlar, OBO akışını oluşturur ve aşağıdaki diyagramın ya
 
 1. İstemci uygulaması, a belirteci ile API a 'ya bir istek yapar (bir API A `aud` talebi ile).
 1. API A, Microsoft Identity platform belirteci verme uç noktasında kimlik doğrular ve API B 'ye erişmek için bir belirteç ister.
-1. Microsoft Identity platform belirteci verme uç noktası, API A 'nın, belirteç A ile kimlik bilgilerini doğrular ve API B (belirteç B) için erişim belirtecini yayınlar.
-1. B belirteci, API B 'ye yönelik isteğin yetkilendirme üstbilgisinde ayarlanır.
-1. Güvenli kaynaktaki veriler, API B tarafından döndürülür.
+1. Microsoft Identity platform belirteci verme uç noktası, API A 'nın kimlik bilgilerini ve A belirtecini doğrular ve API B 'nin (belirteç B) erişim belirtecini API A 'ya yayınlar.
+1. Belirteç B, API B 'ye yönelik isteğin yetkilendirme üstbilgisindeki API A tarafından ayarlanır.
+1. Güvenli kaynaktaki veriler API B tarafından API A 'ya ve istemciye buradan döndürülür.
 
 > [!NOTE]
 > Bu senaryoda, orta katman hizmeti kullanıcının aşağı akış API 'sine erişim iznini almak için Kullanıcı etkileşimi yoktur. Bu nedenle, aşağı akış API 'sine erişim izni verme seçeneği, kimlik doğrulama sırasında izin adımının bir parçası olarak önde sunulur. Uygulamanızı için nasıl ayarlayacağınızı öğrenmek için bkz. [Orta katmanlı uygulama için izin](#gaining-consent-for-the-middle-tier-application)alma.
@@ -74,7 +74,7 @@ Paylaşılan bir gizli dizi kullanılırken hizmetten hizmete erişim belirteci 
 | `grant_type` | Gereklidir | Belirteç isteği türü. JWT kullanan bir istek için, değerin `urn:ietf:params:oauth:grant-type:jwt-bearer`olması gerekir. |
 | `client_id` | Gereklidir | [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atadığı uygulama (ISTEMCI) kimliği. |
 | `client_secret` | Gereklidir | Azure portal Uygulama kayıtları sayfasında uygulamanız için oluşturduğunuz istemci gizli anahtarı. |
-| `assertion` | Gereklidir | İstekte kullanılan belirtecin değeri. |
+| `assertion` | Gereklidir | İstekte kullanılan belirtecin değeri.  Bu belirteç, bu OBO isteğini (`client-id` alanı tarafından belirtilen uygulama) yapan uygulamanın hedef kitlesi olmalıdır. |
 | `scope` | Gereklidir | Belirteç isteği için bir alan ayrılmış kapsam listesi. Daha fazla bilgi için bkz. [kapsamlar](v2-permissions-and-consent.md). |
 | `requested_token_use` | Gereklidir | İsteğin nasıl işleneceğini belirtir. OBO akışında, değerin `on_behalf_of`olarak ayarlanması gerekir. |
 
@@ -161,7 +161,7 @@ Aşağıdaki örnek, https://graph.microsoft.com Web API 'SI için bir erişim b
 ```
 
 > [!NOTE]
-> Yukarıdaki erişim belirteci, v 1.0 biçimli bir belirteçtir. Bunun nedeni, belirtecin erişilmekte olan kaynağa göre sağlanması. Microsoft Graph, v 1.0 belirteçlerini istediğinde, bir istemci Microsoft Graph belirteçleri istediğinde, Microsoft Identity platform v 1.0 erişim belirteçleri üretir. Yalnızca uygulamalar erişim belirteçlerine bakmalıdır. İstemcilerin bunları incelemesi gerekmez.
+> Yukarıdaki erişim belirteci, v 1.0 biçimli bir belirteçtir. Bunun nedeni, belirtecin erişilmekte olan **kaynağa** göre sağlanması. Microsoft Graph, v 1.0 belirteçlerini kabul edecek şekilde ayarlanır. bu nedenle, bir istemci Microsoft Graph belirteçleri istediğinde, Microsoft Identity platform v 1.0 erişim belirteçleri üretir. Yalnızca uygulamalar erişim belirteçlerine bakmalıdır. İstemcilerin bunları incebir şekilde incelemesi **gerekir** .
 
 ### <a name="error-response-example"></a>Hata yanıtı örneği
 
@@ -193,29 +193,24 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Orta katmanlı uygulama için onay hakkı alma
 
-Uygulamanızın hedef kitleye bağlı olarak, OBO akışının başarılı olmasını sağlamaya yönelik farklı stratejiler göz önünde bulundurmayabilirsiniz. Her durumda, en son hedef, uygun izin verilmesini sağlamaktır. Bununla birlikte, bu durum, uygulamanızın desteklediği kullanıcılara bağlıdır.
+Uygulamanızın mimarisine veya kullanımına bağlı olarak, OBO akışının başarılı olmasını sağlamaya yönelik farklı stratejiler göz önünde bulundurmayabilirsiniz. Her durumda, en son hedef, istemci uygulamanın orta katman uygulamayı çağırabilmesi ve orta katman uygulamanın arka uç kaynağını çağırma iznine sahip olması için doğru izin verilmesini sağlamaktır. 
 
-### <a name="consent-for-azure-ad-only-applications"></a>Yalnızca Azure AD uygulamaları için onay
+> [!NOTE]
+> Daha önce Microsoft hesabı sistemi (kişisel hesaplar) "bilinen istemci uygulaması" alanını desteklemez, ne de birleştirilmiş onay gösterebilir.  Bu eklendi ve Microsoft Identity platform 'daki tüm uygulamalar, OBO çağrıları için gettign onayı için bilinen istemci uygulaması yaklaşımını kullanabilir. 
 
-#### <a name="default-and-combined-consent"></a>/.exe varsayılan ve Birleşik onay
+### <a name="default-and-combined-consent"></a>/.exe varsayılan ve Birleşik onay
 
-Yalnızca iş veya okul hesaplarında oturum açması gereken uygulamalar için geleneksel "bilinen Istemci uygulamaları" yaklaşımı yeterlidir. Orta katman uygulaması, istemcisini, bildiriminde bilinen istemci uygulamalar listesine ekler ve ardından istemci hem kendisi hem de orta katman uygulaması için bir Birleşik onay akışı tetikleyebilir. Microsoft Identity platform uç noktasında bu, [`/.default` kapsamı](v2-permissions-and-consent.md#the-default-scope)kullanılarak yapılır. Bilinen istemci uygulamalarını ve `/.default`kullanarak bir izin ekranını tetiklerken, onay ekranı hem istemcinin hem de orta katman API 'sine yönelik izinleri gösterir ve ayrıca orta katman API 'SI için gerekli izinleri ister. Kullanıcı her iki uygulama için de onay sağlar ve ardından OBO akışı işe yarar.
+Orta katman uygulaması, istemcisini, bildiriminde bilinen istemci uygulamalar listesine ekler ve ardından istemci hem kendisi hem de orta katman uygulaması için bir Birleşik onay akışı tetikleyebilir. Microsoft Identity platform uç noktasında bu, [`/.default` kapsamı](v2-permissions-and-consent.md#the-default-scope)kullanılarak yapılır. Bilinen istemci uygulamalarını ve `/.default`kullanarak bir izin ekranını tetiklerken, onay ekranı **hem istemcinin hem** de orta katman API 'sine yönelik izinleri gösterir ve ayrıca orta katman API 'si için gerekli izinleri ister. Kullanıcı her iki uygulama için de onay sağlar ve ardından OBO akışı işe yarar.
 
-Şu anda, kişisel Microsoft hesabı sistemi Birleşik onayı desteklemez ve bu nedenle kişisel hesaplara özel olarak oturum açmak isteyen uygulamalar için bu yaklaşım çalışmaz. Bir kiracıda Konuk hesabı olarak kullanılan kişisel Microsoft hesapları, Azure AD sistemi kullanılarak işlenir ve Birleşik izin ' dan geçebilir.
+### <a name="pre-authorized-applications"></a>Önceden yetkilendirilmiş uygulamalar
 
-#### <a name="pre-authorized-applications"></a>Önceden yetkilendirilmiş uygulamalar
+Kaynaklar, belirli bir uygulamanın her zaman belirli kapsamları alma iznine sahip olduğunu gösterebilir. Bu, öncelikli olarak bir ön uç istemcisi ile arka uç kaynağı arasındaki bağlantıları daha sorunsuz hale getirmek için yararlıdır. Bir kaynak, önceden yetkilendirilmiş birden çok uygulamayı bildirebilir. bu tür bir uygulama, bu izinleri bir OBO akışında isteyebilir ve Kullanıcı onay sağlamadan onları alabilir.
 
-Uygulama portalının bir özelliği "önceden yetkilendirilmiş uygulamalar" dır. Bu şekilde, bir kaynak belirli bir uygulamanın her zaman belirli kapsamları alma iznine sahip olduğunu gösteriyor olabilir. Bu, öncelikli olarak bir ön uç istemcisi ile arka uç kaynağı arasındaki bağlantıları daha sorunsuz hale getirmek için yararlıdır. Bir kaynak, önceden yetkilendirilmiş birden çok uygulamayı bildirebilir. bu tür bir uygulama, bu izinleri bir OBO akışında isteyebilir ve Kullanıcı onay sağlamadan onları alabilir.
-
-#### <a name="admin-consent"></a>Yönetici onayı
+### <a name="admin-consent"></a>Yönetici onayı
 
 Bir kiracı yöneticisi, uygulamanın orta katman uygulaması için yönetici onayı sağlayarak gereken API 'Leri çağırma iznine sahip olduğunu garanti edebilir. Bunu yapmak için, yönetici kendi kiracısında orta katman uygulamayı bulabilir, gerekli izinler sayfasını açabilir ve uygulama için izin vermek üzere seçim yapabilir. Yönetici onayı hakkında daha fazla bilgi için bkz. [onay ve izinler belgeleri](v2-permissions-and-consent.md).
 
-### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Azure AD + Microsoft hesabı uygulamaları için onay
-
-Kişisel hesapların izin modelindeki kısıtlamalar ve bir yöneten kiracının olmamasından dolayı, kişisel hesapların izin gereksinimleri Azure AD 'den biraz farklıdır. İçin kiracı genelinde onay sağlayacak bir kiracı yoktur ve Birleşik onay yapma özelliği de yoktur. Bu nedenle, diğer stratejiler de yalnızca Azure AD hesaplarını desteklemesi gereken uygulamalar için çalışır.
-
-#### <a name="use-of-a-single-application"></a>Tek bir uygulamanın kullanımı
+### <a name="use-of-a-single-application"></a>Tek bir uygulamanın kullanımı
 
 Bazı senaryolarda yalnızca tek bir orta katman ve ön uç istemcisi eşleştirmesi olabilir. Bu senaryoda, bir orta katman uygulaması gereksinimini tamamen ortadan, bu şekilde tek bir uygulama yapmak daha kolay olabilir. Ön uç ve Web API 'SI arasında kimlik doğrulaması yapmak için tanımlama bilgilerini, id_token veya uygulamanın kendisi için istenen erişim belirtecini kullanabilirsiniz. Ardından, bu tek uygulamadan arka uç kaynağına izin iste.
 

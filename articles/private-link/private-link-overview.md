@@ -2,17 +2,17 @@
 title: Azure Özel Bağlantı nedir?
 description: Azure özel bağlantı kullanarak Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişin.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 03fdd67adf5df440cafe4e7411064437b8ef89ac
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 127807a57598fcfe239db39cb9874bca955da44e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671552"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647365"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Azure Özel Bağlantı nedir? (Önizleme)
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama, Azure Cosmos DB ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki [özel bir uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Ayrıca, kendi [özel bağlantı hizmetinizi](private-link-service-overview.md) sanal ağınızda (VNet) oluşturabilir ve müşterilerinize özel olarak iletebilirsiniz. Azure özel bağlantısı kullanılarak kurulum ve tüketim deneyimi Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
@@ -65,7 +65,7 @@ Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırmas
 SSS için bkz. [Azure özel bağlantı SSS](private-link-faq.md).
  
 ## <a name="limits"></a>Sınırlar  
-Sınırlar için bkz. [Azure özel bağlantı limitleri](../azure-subscription-service-limits.md#private-link-limits).
+Sınırlar için bkz. [Azure özel bağlantı limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Portal kullanarak SQL veritabanı sunucusu için özel bir uç nokta oluşturma](create-private-endpoint-portal.md)

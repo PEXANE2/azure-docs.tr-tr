@@ -1,30 +1,21 @@
 ---
-title: Azure Service Fabric aktör silme | Microsoft Docs
-description: Service Fabric Reliable Actors ve bunların durumunu el ile silmeyi öğrenin.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric aktörleri silme
+description: Azure Service Fabric uygulamasındaki Reliable Actors ve bunların durumunu el ile ve tamamen silmeyi öğrenin.
 author: amanbha
-manager: chackdan
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: amanbha
-ms.openlocfilehash: e297a6f42774f29e2eca4a410b695d5bbb636300
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b90c5a10c64e273f1c8f48c7bf5713859796db65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726613"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645625"
 ---
-# <a name="delete-reliable-actors-and-their-state"></a>Reliable Actors ve durumlarını silme
-Çöp toplama devre dışı bırakılan aktör yalnızca aktör nesnesi temizler, ancak bir aktörün durum Yöneticisi'nde depolanan verileri kaldırmaz. Aktörün etkinleştirildiğinde, verileri yeniden durum Yöneticisi için kullanılabilir hale getirilir. Burada actors durum Yöneticisi'nde veri depolamak ve devre dışı bırakıldı ancak hiçbir zaman yeniden durumlarda, kullanıcıların verileri temizlemek gerekebilir.
+# <a name="delete-reliable-actors-and-their-state"></a>Reliable Actors ve durumlarını Sil
+Devre dışı bırakılmış aktörlerin atık toplama işlemi yalnızca aktör nesnesini temizler, ancak aktörün durum yöneticisinde depolanan verileri kaldırmaz. Bir aktör yeniden etkinleştirildiğinde, verileri durum Yöneticisi aracılığıyla tekrar kullanılabilir hale getirilir. Aktörlerin verileri durum Yöneticisi 'nde depolaması ve devre dışı bırakılmaması, ancak hiçbir zaman yeniden etkinleştirilmemesi durumunda, verilerinin temizlenmesi gerekebilir.
 
-[Actor hizmetinin](service-fabric-reliable-actors-platform.md) aktörler uzak bir çağrıyı yapandan silmek için bir işlev sağlar:
+[Aktör hizmeti](service-fabric-reliable-actors-platform.md) , uzak bir çağırandan aktörleri silmek için bir işlev sağlar:
 
 ```csharp
 ActorId actorToDelete = new ActorId(id);
@@ -43,23 +34,23 @@ ActorService myActorServiceProxy = ActorServiceProxy.create(
 myActorServiceProxy.deleteActorAsync(actorToDelete);
 ```
 
-Aktörün silme aktör şu anda etkin olup olmadığına bağlı olarak aşağıdaki etkileri gösterir:
+Aktörün silinmesi, aktörün Şu anda etkin olup olmadığına bağlı olarak aşağıdaki etkilere sahiptir:
 
 * **Etkin aktör**
-  * Aktör etkin aktörler listeden kaldırılır ve devre dışı bırakılır.
-  * Durumunu kalıcı olarak silinir.
+  * Aktör etkin aktör listesinden kaldırıldı ve devre dışı bırakıldı.
+  * Durumu kalıcı olarak silinir.
 * **Etkin olmayan aktör**
-  * Durumunu kalıcı olarak silinir.
+  * Durumu kalıcı olarak silinir.
 
-Aktörün çağrılamıyor aktör yöntemlerinden birini kendisinden hangi çalışma zamanı elde kilit aktör çağrısı tek iş parçacıklı erişimi zorunlu etrafında bir aktör çağrısı bağlam içinde yürütülürken aktör silinemiyor çünkü silin.
+Aktör tek iş parçacıklı erişimi zorlamak için aktör çağrısının etrafında bir kilit edinildiği için bir aktör, kendisini gerçekleştiren metotlarından birinin içinden silme işlemi çağrılamaz.
 
 Reliable Actors hakkında daha fazla bilgi için aşağıdakileri okuyun:
-* [Aktör süreölçerler ve anımsatıcılar](service-fabric-reliable-actors-timers-reminders.md)
+* [Aktör zamanlayıcılar ve anımsatıcıları](service-fabric-reliable-actors-timers-reminders.md)
 * [Aktör olayları](service-fabric-reliable-actors-events.md)
-* [Aktör'na yeniden giriş](service-fabric-reliable-actors-reentrancy.md)
+* [Aktör yeniden girişi](service-fabric-reliable-actors-reentrancy.md)
 * [Aktör tanılama ve performans izleme](service-fabric-reliable-actors-diagnostics.md)
-* [Aktör API başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# örnek kod](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Aktör API 'SI başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [C#Örnek kod](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java örnek kodu](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

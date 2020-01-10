@@ -1,20 +1,20 @@
 ---
 title: Google Drive 'a Bağlan
-description: Google Drive REST API 'Leri ve Azure Logic Apps dosya oluşturun ve yönetin
+description: Azure Logic Apps kullanarak Google Drive için dosya oluşturup yöneten iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 6310c3b7e5b84915fa336708bc702e94317ad04c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 155a579438747ca7de67eba6449b8a0191e86e2c
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789704"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666848"
 ---
-# <a name="get-started-with-the-google-drive-connector"></a>Google Drive bağlayıcısını kullanmaya başlama
+# <a name="create-and-manage-files-for-google-drive-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Google Drive için dosya oluşturma ve yönetme
 
 Dosya oluşturmak, satırları almak ve daha fazlası için Google Drive 'a bağlanın. Google Drive ile şunları yapabilirsiniz: 
 
@@ -33,8 +33,8 @@ Bağlantıyı oluşturduktan sonra, klasör yolu veya dosya adı gibi Google Dri
 
 ## <a name="connector-specific-details"></a>Bağlayıcıya özgü ayrıntılar
 
-Swagger 'da tanımlanan Tetikleyicileri ve eylemleri görüntüleyin ve ayrıca [bağlayıcı ayrıntılarında](/connectors/googledrive/)tüm limitleri inceleyin.
+Bağlayıcının Swagger açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için [bağlayıcının başvuru sayfasını](/connectors/googledrive/)gözden geçirin.
 
-## <a name="more-connectors"></a>Daha fazla bağlayıcı
+## <a name="next-steps"></a>Sonraki adımlar
 
-[API listesine](apis-list.md)geri dönün.
+* Diğer [Logic Apps bağlayıcıları](apis-list.md) hakkında bilgi edinin

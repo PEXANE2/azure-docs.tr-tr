@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 406b77a428ec725a3d8d070bd60fcd4440a5cb92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 90b84d936bda4e3a974e60934e82ac6c3389d85a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166476"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645778"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
@@ -80,7 +80,7 @@ NFS arka uç depolaması, uyumlu bir donanım/yazılım platformu olmalıdır. A
 
 Önbelleğiniz ile Azure Blob depolama 'yı kullanmak istiyorsanız, uyumlu bir depolama hesabı ve boş bir blob kapsayıcısı ya da [verileri Azure Blob depolamaya taşıma](hpc-cache-ingest.md)bölümünde açıklandığı gıbı Azure HPC önbellek biçimli verilerle doldurulmuş bir kapsayıcı gerekir.
 
-Bir depolama hedefi olarak eklemeyi denemeden önce hesabı ve kapsayıcıyı oluşturun.
+Depolama hedefi eklemeyi denemeden önce hesabı oluşturun. Hedefi eklediğinizde yeni bir kapsayıcı oluşturabilirsiniz.
 
 Uyumlu bir depolama hesabı oluşturmak için şu ayarları kullanın:
 

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7d4a400681113736c52046fb6aa5c04098ddda
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: fe08f1523b4b61653d89a9b3472355dd3eeaf69f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893238"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640117"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartdraw"></a>Öğretici: SmartDraw ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +32,7 @@ Bu öğreticide, SmartDraw 'ı Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -44,13 +43,8 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-
-
 * SmartDraw **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * SmartDraw **, tam zamanında** Kullanıcı sağlamayı destekler
-
-> [!NOTE]
-> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="adding-smartdraw-from-the-gallery"></a>Galeriden SmartDraw ekleme
 
@@ -63,7 +57,6 @@ SmartDraw 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden
 1. **Galeriden Ekle** bölümünde, arama kutusuna **SmartDraw** yazın.
 1. Sonuçlar panelinden **akıllı çizim** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-smartdraw"></a>Akıllı çizim için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak SmartDraw Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, SmartDraw ile ilgili bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
@@ -71,10 +64,10 @@ SmartDraw 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden
 Azure AD SSO 'yu SmartDraw ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 1. **[SmartDraw SSO 'Yu yapılandırma](#configure-smartdraw-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    1. Kullanıcı Azure AD gösterimine bağlı olan SmartDraw 'da B. Simon 'ya sahip olmak için **[SmartDraw test kullanıcısı oluşturun](#create-smartdraw-test-user)** .
+    * Kullanıcı Azure AD gösterimine bağlı olan SmartDraw 'da B. Simon 'ya sahip olmak için **[SmartDraw test kullanıcısı oluşturun](#create-smartdraw-test-user)** .
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
@@ -87,7 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1.  **Temel SAML yapılandırması** bölümünde, uygulama **IDP** başlatılmış modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının  **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
+1. **Temel SAML yapılandırması** bölümünde, uygulama zaten Azure ile önceden tümleştirildiği için kullanıcının herhangi bir adım yapması gerekmez.
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -96,13 +89,15 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Oturum açma URL 'SI değeri gerçek değil. Oturum açma URL 'si değerini, öğreticide daha sonra açıklanacak olan gerçek oturum açma URL 'SI ile güncelleştirirsiniz. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
+1. **Save (Kaydet)** düğmesine tıklayın.
+
 1. SmartDraw uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-1. SmartDraw uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
+1. SmartDraw uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Ad | Kaynak özniteliği|
     | ---------------| --------------- |
     | FirstName | Kullanıcı. |
     | Soyadı | User. soyadı |
@@ -117,7 +112,6 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
@@ -128,7 +122,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -150,20 +144,28 @@ Bu bölümde, SmartDraw erişimi vererek Azure çoklu oturum açma özelliğini 
 
 ## <a name="configure-smartdraw-sso"></a>SmartDraw SSO 'yu yapılandırma
 
-1. Farklı bir Web tarayıcısı penceresinde, SmartDraw yönetici olarak oturum açın.
+1. Akıllı çizim 'de yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-2. SmartDraw lisansınızı yönetme bölümünde **Çoklu oturum açma** seçeneğine tıklayın.
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+1. Tarayıcıya uzantı ekledikten sonra **SmartDraw ayarla** ' ya tıklayarak sizi SmartDraw uygulamasına yönlendirebilirsiniz. Buradan, SmartDraw oturumu açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-5 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+1. SmartDraw 'yi el ile kurmak isterseniz, yeni bir Web tarayıcısı penceresi açın ve SmartDraw şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+
+1. SmartDraw lisansınızı yönetme bölümünde **Çoklu oturum açma** seçeneğine tıklayın.
 
     ![SmartDraw yapılandırması](./media/smartdraw-tutorial/configure01.png)
 
-3. Yapılandırma sayfasında, aşağıdaki adımları uygulayın:
+1. Yapılandırma sayfasında, aşağıdaki adımları uygulayın:
 
     ![SmartDraw yapılandırması](./media/smartdraw-tutorial/configure02.png)
 
     a. **Etki alanınız (Acme.com gibi)** metin kutusunda, etki alanınızı yazın.
 
     b. **SP tarafından başlatılan oturum açma URL 'niz** , örneğiniz için olur ve Azure Portal **temel SAML yapılandırmasındaki** oturum açma URL 'si metin kutusuna yapıştırın.
-    
+
     c. **Akıllı çizim erişimine Izin vermek Için güvenlik grupları** kutusuna **Herkes**yazın.
 
     d. **SAML verenin URL** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
@@ -174,9 +176,9 @@ Bu bölümde, SmartDraw erişimi vererek Azure çoklu oturum açma özelliğini 
 
 ### <a name="create-smartdraw-test-user"></a>SmartDraw test kullanıcısı oluştur
 
-Bu bölümde, akıllı çizim 'de Britta Simon adlı bir Kullanıcı oluşturulur. SmartDraw, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı akıllı çizim 'de zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, SmartDraw 'de B. Simon adlı bir Kullanıcı oluşturulur. SmartDraw, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı akıllı çizim 'de zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
@@ -191,4 +193,3 @@ Erişim panelindeki SmartDraw kutucuğuna tıkladığınızda, SSO 'yu ayarladı
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile SmartDraw 'yi deneyin](https://aad.portal.azure.com/)
-

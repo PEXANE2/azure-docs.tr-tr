@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcd69fab269e39a8c78a56c08854262ca839d60f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d1d781ee16cd1c78f03b58288bf75e036e38cf00
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267134"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681234"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına iş veya okul hesabınızı ekleyin
 
@@ -28,7 +28,7 @@ Kuruluşunuz iki öğeli doğrulama kullanıyorsa, iş veya okul hesabınızı d
 
 ## <a name="add-your-work-or-school-account"></a>İş veya okul hesabınızı ekleyin
 
-1. Bilgisayarınızda [ek güvenlik doğrulama](https://aka.ms/mfasetup) sayfasına gidin.
+1. Bilgisayarınızda [ek güvenlik doğrulama](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) sayfasına gidin.
 
     >[!Note]
     >**Ek güvenlik doğrulama** sayfasını görmüyorsanız, yöneticiniz güvenlik bilgileri (Önizleme) deneyimini açmış olabilir. Bu durumda, [bir Authenticator uygulaması kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-auth-app.md) bölümündeki yönergeleri izlemelisiniz. Böyle bir durum söz konusu değilse, yardım almak için kuruluşunuzun yardım masasına başvurmanız gerekir. Güvenlik bilgileri hakkında daha fazla bilgi için bkz. [güvenlik bilgileri (Önizleme) genel bakış](user-help-security-info-overview.md).
