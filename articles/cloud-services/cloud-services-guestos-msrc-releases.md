@@ -10,17 +10,62 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/5/2019
+ms.date: 01/08/2020
 ms.author: raiye
-ms.openlocfilehash: 027fb5176ecf1fdb32119c933d1b44eaf9f82bb8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 97f4283e02dd3b67df5381f78e87c3ee5b23b74e
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894639"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779595"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
+
+## <a name="december-2019-guest-os"></a>Aralık 2019 Konuk işletim sistemi
+
+| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| --- | --- | --- | --- | --- |
+|  Rel 19-12  |  [4530692]  |  Windows Güvenliği  | [2,93] | 10. ara, 2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | [2,93] | 10. ara, 2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | [3,80] | 10. ara, 2019 |
+|  Rel 19-12  |  [4530698]  |  Windows Güvenliği  | [3,80] | 10. ara, 2019 |
+|  Rel 19-12  |  [4530730]  |  Windows Güvenliği  | [4,73] | 10. ara, 2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | [4,73] | 10. ara, 2019 |
+|  Rel 19-12  |  [4530689]  |  En son birikimli güncelleştirme  | [5,38] | 10. ara, 2019 |
+|  Rel 19-12  |  [4530715]  |  En son birikimli güncelleştirme  | [6,14] | 10. ara, 2019 |
+|  Rel 19-12  |  [4525235]  |  Güvenlik dışı  | [2,93] | 12 Kasım 2019 |
+|  Rel 19-12  |  [4531786]  |  Hizmet yığını güncelleştirmesi  | [2,93] | 10. ara, 2019 |
+|  Rel 19-12  |  [4525246]  |  Güvenlik dışı  | [3,80] | 12 Kasım 2019 |
+|  Rel 19-12  |  [4523208]  |  Hizmet yığını güncelleştirmesi  | [3,80] | 12 Kasım 2019 |
+|  Rel 19-12  |  [4525243]  |  Güvenlik dışı  | [4,73] | 12 Kasım 2019 |
+|  Rel 19-12  |  [4524445]  |  Hizmet yığını güncelleştirmesi  | [4,73] | 12 Kasım 2019 |
+|  Rel 19-12  |  [4520724]  |  Hizmet yığını güncelleştirmesi  | [5,38] | 12 Kasım 2019 |
+|  Rel 19-12  |  [4523204]  |  ServicingStackUpdate  | [6,14] | 12 Kasım 2019 |
+
+[4530692]: https://support.microsoft.com/kb/4530692
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530698]: https://support.microsoft.com/kb/4530698
+[4530730]: https://support.microsoft.com/kb/4530730
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530689]: https://support.microsoft.com/kb/4530689
+[4530715]: https://support.microsoft.com/kb/4530715
+[4525235]: https://support.microsoft.com/kb/4525235
+[4531786]: https://support.microsoft.com/kb/4531786
+[4525246]: https://support.microsoft.com/kb/4525246
+[4523208]: https://support.microsoft.com/kb/4523208
+[4525243]: https://support.microsoft.com/kb/4525243
+[4524445]: https://support.microsoft.com/kb/4524445
+[4520724]: https://support.microsoft.com/kb/4520724
+[4523204]: https://support.microsoft.com/kb/4523204
+[6,14]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,38]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,73]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,93]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
+
 
 ## <a name="november-2019-guest-os"></a>Kasım 2019 Konuk işletim sistemi
 

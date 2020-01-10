@@ -5,14 +5,14 @@ author: anthonychu
 ms.service: signalr
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/14/2019
 ms.author: antchu
-ms.openlocfilehash: 728111548176a0a3212b1677eeb192ccdc47fe88
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 0cf8705cf2567a60129681c2db41b0868f8fe182
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709506"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392131"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Hızlı başlangıç: Python kullanarak Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturma
 
@@ -24,11 +24,9 @@ Bu hızlı başlangıç; macOS, Windows veya Linux üzerinde çalıştırılabil
 
 [Visual Studio Code](https://code.visualstudio.com/) gibi bir kod editörünün yüklü olduğundan emin olun.
 
-Python Azure Işlev uygulamalarını yerel olarak çalıştırmak için [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing) (sürüm 2.7.1505 veya üzeri) yüklemesini yapın.
+Python Azure Işlev uygulamalarını yerel olarak çalıştırmak için [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (sürüm 2.7.1505 veya üzeri) yüklemesini yapın.
 
-Azure Işlevleri [Python 3,6](https://www.python.org/downloads/)gerektirir.
-
-Azure İşlevleri Çekirdek Araçları, uzantı yüklemek için [.NET Core SDK'sının](https://www.microsoft.com/net/download) yüklü olmasını gerektirir. Ancak, Python Azure Işlev uygulamaları oluşturmak için .NET bilgisi gerekmez.
+Azure Işlevleri için [Python 3,6 veya 3,7](https://www.python.org/downloads/)gerekir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -54,35 +52,35 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
 1. Kod Düzenleyicinizde, kopyalanmış depodaki *src/chat/Python* klasörünü açın.
 
-1. Python işlevlerini yerel olarak geliştirmek ve test etmek için bir Python 3,6 ortamında çalışmanız gerekir. Oluşturma ve adlı bir sanal ortam etkinleştirmek için aşağıdaki komutları çalıştırın `.venv`.
+1. Python işlevlerini yerel olarak geliştirmek ve test etmek için bir Python 3,6 veya 3,7 ortamında çalışmanız gerekir. `.venv`adlı bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın.
 
     **Linux veya macOS:**
 
     ```bash
-    python3.6 -m venv .venv
+    python3.7 -m venv .venv
     source .venv/bin/activate
     ```
 
     **Windows:**
 
     ```powershell
-    py -3.6 -m venv .venv
+    py -3.7 -m venv .venv
     .venv\scripts\activate
     ```
 
 1. *local.settings.sample.json* dosyasını *local.settings.json* olarak yeniden adlandırın.
 
-1. **local.settings.json** dosyasının içinde bağlantı dizesini **AzureSignalRConnectionString** ayarının değerine yapıştırın. Dosyayı kaydedin.
+1. **local.settings.json** dosyasının içinde, bağlantı dizesini **AzureSignalRConnectionString** ayarının değerine yapıştırın. Dosyayı kaydedin.
 
 1. Python işlevleri klasörler halinde düzenlenir. Her klasörde iki dosya vardır: *function. JSON* işlevde kullanılan bağlamaları tanımlar ve *\_\_init\_\_. Kopyala* işlevinin gövdesidir. Bu işlev uygulamasında iki adet HTTP ile tetiklenen işlev vardır:
 
     - **negotiate** - Geçerli bağlantı bilgileri döndürmek için *SignalRConnectionInfo* giriş bağlamasını kullanır.
     - **messages** - İstek gövdesinde bir sohbet iletisi alır ve iletiyi bağlı olan tüm istemci uygulamalara yaymak için *SignalR* çıkış bağlamasını kullanır.
 
-1. Terminalde, *src/chat/Python* klasöründe olduğunuzdan emin olun. Azure İşlevleri Çekirdek Araçlarını kullanarak uygulamayı çalıştırmak için gereken uzantıları yükleyin.
+1. Sanal ortamı etkinleştirilen terminalde, *src/chat/Python* klasöründe olduğunuzdan emin olun. PıP kullanarak gerekli Python paketlerini yükler.
 
     ```bash
-    func extensions install
+    python -m pip install -r requirements.txt
     ```
 
 1. İşlev uygulamasını çalıştırın.
