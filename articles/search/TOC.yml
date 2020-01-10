@@ -333,7 +333,7 @@
       items:
         - name: API sürümü 2019-05-06-Preview
           href: search-api-preview.md
-        - name: ResetSkills API’si
+        - name: Yetenekleri Sıfırlama API’si
           href: preview-api-resetskills.md
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.search/searchservices

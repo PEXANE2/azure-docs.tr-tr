@@ -504,6 +504,8 @@
           href: sql-database-security-tutorial.md
         - name: Stream Analytics ile verilerin akışını yapma
           href: sql-database-stream-analytics.md
+        - name: SQLite veritabanını Azure SQL Veritabanı Sunucusuz’a geçirme
+          href: tutorial-sqlite-db-to-azure-sql-serverless-offline.md
     - name: Kavramlar
       items:
         - name: Tek veritabanı kaynakları

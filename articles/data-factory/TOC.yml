@@ -29,84 +29,98 @@
       href: data-flow-create.md
 - name: Öğreticiler
   items:
-    - name: Buluttaki verileri kopyalama
+    - name: Verileri kopyalama ve alma
       items:
-        - name: Veri Kopyalama aracı
-          href: tutorial-copy-data-tool.md
-        - name: Kullanıcı arabirimi (UI)
-          href: tutorial-copy-data-portal.md
-        - name: .NET
-          href: tutorial-copy-data-dot-net.md
-    - name: Şirket içi verileri buluta kopyalama
-      items:
-        - name: Veri Kopyalama aracı
-          href: tutorial-hybrid-copy-data-tool.md
-        - name: Kullanıcı arabirimi (UI)
-          href: tutorial-hybrid-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-hybrid-copy-powershell.md
-    - name: Verileri toplu halde kopyalama
-      items:
-        - name: Kullanıcı arabirimi (UI)
-          href: tutorial-bulk-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-bulk-copy.md
-    - name: Verileri artımlı olarak kopyalama
-      href: tutorial-incremental-copy-overview.md
-      items:
-        - name: 1 - Bir tablodan kopyalama
-          items:
-            - name: Kullanıcı arabirimi (UI)
-              href: tutorial-incremental-copy-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-powershell.md
-        - name: 2 - Birden çok tablodan kopyalama
-          items:
-            - name: Kullanıcı arabirimi (UI)
-              href: tutorial-incremental-copy-multiple-tables-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-multiple-tables-powershell.md
-        - name: 3 - Değişiklik izleme özelliğini kullanma
-          items:
-            - name: Kullanıcı arabirimi (UI)
-              href: tutorial-incremental-copy-change-tracking-feature-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-change-tracking-feature-powershell.md
-        - name: 4 - lastmodifieddate parametresine göre yeni dosyaları kopyalama
+        - name: Azure Blob Depolama’dan Azure SQL Veritabanı’na
           items:
             - name: Veri Kopyalama aracı
+              href: tutorial-copy-data-tool.md
+            - name: Kullanıcı arabirimi (UI)
+              href: tutorial-copy-data-portal.md
+            - name: .NET
+              href: tutorial-copy-data-dot-net.md
+        - name: Şirket içi SQL Server veritabanından Azure Blob Depolama’ya
+          items:
+            - name: Veri Kopyalama aracı
+              href: tutorial-hybrid-copy-data-tool.md
+            - name: Kullanıcı arabirimi (UI)
+              href: tutorial-hybrid-copy-portal.md
+            - name: Azure PowerShell
+              href: tutorial-hybrid-copy-powershell.md
+        - name: Amazon Web Services S3’ten Azure Data Lake Storage’a
+          items:
+            - name: Azure Data Lake Storage Gen2
+              href: load-azure-data-lake-storage-gen2.md
+            - name: Azure Data Lake Storage Gen1
+              href: load-azure-data-lake-store.md
+        - name: Azure Data Lake Storage 1. Nesil’den Azure Data Lake Storage 2. Nesil’e
+          href: load-azure-data-lake-storage-gen2-from-gen1.md
+        - name: Azure SQL Veritabanı’ndan Azure Synapse Analytics’e
+          href: load-azure-sql-data-warehouse.md
+        - name: SAP BW’den Azure Data Lake Storage 2. Nesil’e
+          href: load-sap-bw-data.md
+        - name: Office 365’ten Azure Blob Depolama’ya
+          href: load-office-365-data.md
+        - name: Toplu haldeki birden çok tablo
+          items:
+            - name: Kullanıcı arabirimi (UI)
+              href: tutorial-bulk-copy-portal.md
+            - name: Azure PowerShell
+              href: tutorial-bulk-copy.md
+        - name: Artımlı olarak veri yükleme
+          href: tutorial-incremental-copy-overview.md
+          items:
+            - name: Bir Azure SQL veritabanı tablosundan
+              items:
+                - name: Kullanıcı arabirimi (UI)
+                  href: tutorial-incremental-copy-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-powershell.md
+            - name: Birden çok şirket içi SQL Server tablosundan
+              items:
+                - name: Kullanıcı arabirimi (UI)
+                  href: tutorial-incremental-copy-multiple-tables-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-multiple-tables-powershell.md
+            - name: SQL Server’da değişiklik izleme bilgilerini kullanma
+              items:
+                - name: Kullanıcı arabirimi (UI)
+                  href: tutorial-incremental-copy-change-tracking-feature-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: Son değiştirme tarihine göre yeni dosyalar
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
-        - name: 5 - Yeni dosyaları zamana göre bölümlenmiş dosya adıyla kopyalama
-          items:
-            - name: Veri Kopyalama aracı
+            - name: Zamana göre bölümlenmiş dosya adına göre yeni dosyalar
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: Veri akışlarıyla verileri dönüştürme ve hazırlama
+    - name: Verileri dönüştürme
       items:
-        - name: Eşleme veri akışıyla verileri dönüştürme
-          href: tutorial-data-flow.md
-        - name: Eşleme veri akışı video öğreticileri
-          href: data-flow-tutorials.md
-        - name: Hazırlama veri akışıyla verileri hazırlama
+        - name: Eşleme veri akışlarıyla verileri dönüştürme
+          items:
+            - name: Eşleme veri akışlarıyla verileri dönüştürme
+              href: tutorial-data-flow.md
+            - name: Eşleme veri akışı video öğreticileri
+              href: data-flow-tutorials.md
+        - name: Hazırlama veri akışlarıyla verileri hazırlama
           href: wrangling-data-flow-tutorial.md
-    - name: Dış dönüşümler
-      items:
-        - name: HDInsight Spark
+        - name: Dış hizmetler kullanma
           items:
-            - name: Kullanıcı arabirimi (UI)
-              href: tutorial-transform-data-spark-portal.md
-            - name: Azure PowerShell
-              href: tutorial-transform-data-spark-powershell.md
-        - name: Databricks Not Defteri
-          items:
-            - name: Kullanıcı arabirimi (UI)
-              href: transform-data-using-databricks-notebook.md
-    - name: Sanal ağda Hive dönüşümü
-      items:
-        - name: Kullanıcı arabirimi (UI)
-          href: tutorial-transform-data-hive-virtual-network-portal.md
-        - name: Azure PowerShell
-          href: tutorial-transform-data-hive-virtual-network.md
-    - name: Dallanma ve zincirleme ekleme
+            - name: HDInsight Spark
+              items:
+                - name: Kullanıcı arabirimi (UI)
+                  href: tutorial-transform-data-spark-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-transform-data-spark-powershell.md
+            - name: Databricks Not Defteri
+              items:
+                - name: Kullanıcı arabirimi (UI)
+                  href: transform-data-using-databricks-notebook.md
+            - name: Sanal ağda Hive dönüşümü
+              items:
+                - name: Kullanıcı arabirimi (UI)
+                  href: tutorial-transform-data-hive-virtual-network-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-transform-data-hive-virtual-network.md
+    - name: Denetim Akışı
       items:
         - name: Kullanıcı arabirimi (UI)
           href: tutorial-control-flow-portal.md
@@ -118,19 +132,6 @@
           href: tutorial-deploy-ssis-packages-azure.md
         - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
-    - name: Data Lake Storage Gen2 yükleme
-      href: load-azure-data-lake-storage-gen2.md
-      items:
-        - name: Data Lake Storage Gen1'den kopyalama
-          href: load-azure-data-lake-storage-gen2-from-gen1.md
-    - name: Synapse Analytics'i yükleme (eski adı SQL Veri Ambarı)
-      href: load-azure-sql-data-warehouse.md
-    - name: Data Lake Storage Gen1 yükleme
-      href: load-azure-data-lake-store.md
-    - name: SAP BW verilerini yükleme
-      href: load-sap-bw-data.md
-    - name: Office 365 verilerini yükleme
-      href: load-office-365-data.md
 - name: Örnekler
   items:
     - name: Kod örnekleri
@@ -518,12 +519,14 @@
           href: control-flow-expression-language-functions.md
         - name: Sistem değişkenleri
           href: control-flow-system-variables.md
-        - name: Veri akışı parametreleri
+        - name: Eşleme veri akışlarını parametreleştirme
           href: parameters-data-flow.md
     - name: Güvenlik
       items:
         - name: Veri taşırken güvenlikle ilgili dikkat edilmesi gerekenler
           href: data-movement-security-considerations.md
+        - name: Azure Integration Runtime IP adresleri
+          href: azure-integration-runtime-ip-addresses.md
         - name: Kimlik bilgilerini Azure Key Vault’ta depolama
           href: store-credentials-in-key-vault.md
         - name: İşlem hattı etkinliklerinde Azure Key Vault gizli dizilerini kullanma
@@ -616,20 +619,20 @@
           href: solution-template-move-files.md
         - name: Databricks ile verileri dönüştürme
           href: solution-template-databricks-notebook.md
-    - name: Sorun giderme kılavuzu
+    - name: Sorun giderme kılavuzları
       items:
-        - name: Etkinlik sorun giderme
+        - name: Etkinlikler
           href: data-factory-troubleshoot-guide.md
-        - name: Bağlayıcı sorunlarını giderme
+        - name: Bağlayıcılar
           href: connector-troubleshoot-guide.md
-        - name: Azure-SSIS IR Yönetimi Sorunlarını Giderme
-          href: ssis-integration-runtime-management-troubleshoot.md
-        - name: Şirket içinde barındırılan IR sorunlarını giderme
-          href: self-hosted-integration-runtime-troubleshoot-guide.md
-        - name: Azure-SSIS IR’de Paket Yürütme Sorunlarını Giderme
-          href: ssis-integration-runtime-ssis-activity-faq.md
-        - name: Veri Akışı Sorunlarını Giderme
+        - name: Veri Akışları
           href: data-flow-troubleshoot-guide.md
+        - name: Şirket içinde barındırılan Tümleştirme Çalışma Zamanları
+          href: self-hosted-integration-runtime-troubleshoot-guide.md
+        - name: Azure-SSIS Integration Runtime
+          href: ssis-integration-runtime-management-troubleshoot.md
+        - name: Azure-SSIS IR’de Paket Yürütme
+          href: ssis-integration-runtime-ssis-activity-faq.md
 - name: Senaryolar
   items:
     - name: Veri gölü ve EDW için veri geçişi

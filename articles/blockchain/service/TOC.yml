@@ -49,6 +49,8 @@
       href: manage-consortium-powershell.md
     - name: Logic Apps kullanma
       href: ethereum-logic-app.md
+    - name: Azure Blok Zinciri Hizmeti’ni izleme
+      href: monitor-azure-blockchain-service.md
 - name: Blok Zinciri Veri Yöneticisi
   items:
     - name: Veri yöneticisine genel bakış

@@ -83,7 +83,9 @@
       href: tutorial-connectivity.md
 - name: Kavramlar
   items:
-    - name: TLS 1.2 zorlaması
+    - name: TLS desteği
+      href: iot-hub-tls.md
+    - name: TLS 1.0 ve 1.1’in kullanımdan kaldırılması
       href: tls-1.2-everywhere.md
     - name: İleti zenginleştirmelerine genel bakış
       href: iot-hub-message-enrichments-overview.md

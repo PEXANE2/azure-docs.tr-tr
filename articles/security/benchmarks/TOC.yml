@@ -1,10 +1,10 @@
-- name: Azure Güvenlik Karşılaştırması
+- name: Azure Güvenlik Karşılaştırmaları
   href: index.yml
 - name: Giriş
   href: introduction.md
 - name: Güvenlik Denetimleri
   items:
-    - name: Genel Bakış
+    - name: Azure Güvenlik Denetimleri’ne genel bakış
       href: overview.md
     - name: Ağ Güvenliği
       href: security-control-network-security.md
