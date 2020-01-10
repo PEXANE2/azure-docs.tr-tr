@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/02/2018
-ms.openlocfilehash: ec625f203e9282d070e6c1b3b3d712be7ab789cf
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c2b889d4013abb60c9ad7bb4bcdc4e6546cfa37c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810376"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745946"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanı ve veri ambarı için uyarı oluşturma
 
@@ -42,7 +42,7 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz
 * [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
 * [komut satırı arabirimi (CLı)](../azure-monitor/platform/alerts-classic-portal.md)
-* [Azure Izleyici REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure İzleyici REST API'si](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure portal bir ölçümde uyarı kuralı oluşturma
 1. [Portalda](https://portal.azure.com/), izlemekte olduğunuz kaynağı bulun ve seçin.
@@ -74,7 +74,7 @@ Bir uyarı oluşturduktan sonra, bunu seçebilirsiniz:
 
 ## <a name="sql-database-alert-values"></a>SQL veritabanı uyarı değerleri
 
-| Kaynak Türü | Ölçüm adı | Kolay ad | Toplama türü | En düşük uyarı süresi penceresi|
+| Kaynak Türü | Ölçüm Adı | Kolay Ad | Toplama Türü | En düşük uyarı süresi penceresi|
 | --- | --- | --- | --- | --- |
 | SQL veritabanı | cpu_percent | CPU yüzdesi | Ortalama | 5 dakika |
 | SQL veritabanı | physical_data_read_percent | Veri G/Ç yüzdesi | Ortalama | 5 dakika |
@@ -84,7 +84,7 @@ Bir uyarı oluşturduktan sonra, bunu seçebilirsiniz:
 | SQL veritabanı | connection_successful | Başarılı bağlantılar | Toplam | 10 dakika |
 | SQL veritabanı | connection_failed | Başarısız Bağlantılar | Toplam | 10 dakika |
 | SQL veritabanı | blocked_by_firewall | Güvenlik duvarı tarafından engellendi | Toplam | 10 dakika |
-| SQL veritabanı | Çözül | Çık | Toplam | 10 dakika |
+| SQL veritabanı | ölü kilit | Çık | Toplam | 10 dakika |
 | SQL veritabanı | storage_percent | Veri boyutu yüzdesi | Maksimum | 30 dakika |
 | SQL veritabanı | xtp_storage_percent | Bellek içi OLTP depolama yüzdesi (Önizleme) | Ortalama | 5 dakika |
 | SQL veritabanı | workers_percent | Çalışan yüzdesi | Ortalama | 5 dakika |
@@ -118,5 +118,5 @@ Bir uyarı oluşturduktan sonra, bunu seçebilirsiniz:
 ## <a name="next-steps"></a>Sonraki adımlar
 * Toplayacağınız ve izleyebileceği bilgi türlerini içeren [Azure izlemeye genel bakış alın](../monitoring-and-diagnostics/monitoring-overview.md) .
 * [Uyarılarda Web kancalarını yapılandırma](../azure-monitor/platform/alerts-webhooks.md)hakkında daha fazla bilgi edinin.
-* [Tanılama günlüklerine genel bir bakış](../azure-monitor/platform/resource-logs-overview.md) alın ve hizmetinizde ayrıntılı yüksek frekanslı ölçümler toplayın.
+* [Tanılama günlüklerine genel bir bakış](../azure-monitor/platform/platform-logs-overview.md) alın ve hizmetinizde ayrıntılı yüksek frekanslı ölçümler toplayın.
 * Hizmetinizin kullanılabilir olduğundan ve yanıt verebilmesini sağlamak için [ölçüm koleksiyonuna genel bakış](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) alın.

@@ -8,27 +8,28 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: b36ed2cac7e5009a0581091252b36dcd5af81bd7
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 89581c8ae2fbdbb55a2abfbd527c8fdcf4b65761
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389983"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749557"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Tablo depolaması için performans ve ölçeklenebilirlik denetim listesi
 
 Microsoft, tablo depolama ile yüksek performanslı uygulamalar geliştirmeye yönelik bir dizi kanıtlanmış uygulama geliştirmiştir. Bu denetim listesi, geliştiricilerin performansı iyileştirmek için izleyebildiği önemli uygulamaları tanımlar. Uygulamanızı tasarlarken ve işlem boyunca bu uygulamaları göz önünde bulundurun.
 
-Azure depolama kapasitesi, işlem hızı ve bant genişliği için ölçeklenebilirlik ve performans hedefleri içerir. Azure depolama ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [depolama hesapları Için Azure Storage ölçeklenebilirlik ve performans hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
+Azure depolama kapasitesi, işlem hızı ve bant genişliği için ölçeklenebilirlik ve performans hedefleri içerir. Azure depolama ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json) ve [tablo depolaması için ölçeklenebilirlik ve performans hedefleri](scalability-targets.md).
 
 ## <a name="checklist"></a>Denetim Listesi
 
 Bu makale, tablo depolama uygulamanızı geliştirirken izleyebileceğiniz bir denetim listesi halinde performans için kanıtlanmış uygulamaları düzenler.
 
-| Bitti | Kategori | Tasarım değerlendirmesi |
+| Bitti | Kategori | Tasarımı ile ilgili dikkat edilmesi gerekenler |
 | --- | --- | --- |
 | &nbsp; |Ölçeklenebilirlik hedefleri |[Uygulamanızı en fazla depolama hesabı sayısından daha fazla kullanmak üzere tasarlayabilmeniz gerekebilir mi?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Ölçeklenebilirlik hedefleri |[Kapasite ve işlem sınırlarına yaklaşmaktan kaçınıyorsunuz musunuz?](#capacity-and-transaction-targets) |
+| &nbsp; |Ölçeklenebilirlik hedefleri |[Saniye başına ölçeklenebilirlik hedeflerine yaklaşıyor musunuz?](#targets-for-data-operations) |
 | &nbsp; |Networking (Ağ İletişimi) |[İstemci tarafı cihazlarda gereken performansa ulaşmak için yeterli yüksek bant genişliği ve düşük gecikme süresi var mı?](#throughput) |
 | &nbsp; |Networking (Ağ İletişimi) |[İstemci tarafı cihazların yüksek kaliteli bir ağ bağlantısı var mı?](#link-quality) |
 | &nbsp; |Networking (Ağ İletişimi) |[İstemci uygulaması, depolama hesabıyla aynı bölgede mi?](#location) |
@@ -41,7 +42,6 @@ Bu makale, tablo depolama uygulamanızı geliştirirken izleyebileceğiniz bir d
 | &nbsp; |Araçlar |[Microsoft tarafından sağlanmış istemci kitaplıklarının ve araçlarının en son sürümlerini kullanıyor musunuz?](#client-libraries-and-tools) |
 | &nbsp; |Yeniden deneme sayısı |[Daraltma hataları ve zaman aşımları için üstel geri alma ile yeniden deneme İlkesi kullanıyor musunuz?](#timeout-and-server-busy-errors) |
 | &nbsp; |Yeniden deneme sayısı |[Uygulamanız yeniden denenmeyen hatalara karşı yeniden denemeyi önler mi?](#non-retryable-errors) |
-| &nbsp; |Ölçeklenebilirlik hedefleri |[Saniye başına ölçeklenebilirlik hedeflerine yaklaşıyor musunuz?](#table-specific-scalability-targets) |
 | &nbsp; |Yapılandırma |[Tablo istekleriniz için JSON kullanıyor musunuz?](#use-json) |
 | &nbsp; |Yapılandırma |[Küçük isteklerin performansını artırmak için Nagle algoritmasını kapattık mı?](#disable-nagle) |
 | &nbsp; |Tablolar ve bölümler |[Verilerinizi düzgün şekilde bölümlensin mi?](#schema) |
@@ -61,7 +61,7 @@ Bu makale, tablo depolama uygulamanızı geliştirirken izleyebileceğiniz bir d
 
 Uygulamanız ölçeklenebilirlik hedeflerinin herhangi birini yaklaşırsa veya aşarsa, daha fazla işlem gecikmeleri veya azaltmasıyla karşılaşabilirler. Azure Storage uygulamanızı kısıtsalken, hizmet 503 (sunucu meşgul) veya 500 (Işlem zaman aşımı) hata kodları döndürmeye başlar. Ölçeklenebilirlik hedefleri sınırları içinde kalarak bu hatalardan kaçınmak, uygulamanızın performansını artırmanın önemli bir parçasıdır.
 
-Tablo hizmeti için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [depolama hesapları Için Azure Storage ölçeklenebilirlik ve performans hedefleri](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2ftables%2ftoc.json#azure-table-storage-scale-targets).
+Tablo hizmeti için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Tablo depolama Için ölçeklenebilirlik ve performans hedefleri](scalability-targets.md).
 
 ### <a name="maximum-number-of-storage-accounts"></a>En fazla depolama hesabı sayısı
 
@@ -77,9 +77,17 @@ Uygulamanız tek bir depolama hesabı için ölçeklenebilirlik hedeflerine yakl
     Verilerin sıkıştırılması bant genişliğini kaydedebilir ve ağ performansını iyileştireken performansı olumsuz etkileyebilir. İstemci tarafında veri sıkıştırma ve açma için ek işleme gereksinimlerinin performans etkisini değerlendirin. Sıkıştırılmış verilerin depolanması sorun gidermeyi daha zor hale getirir, çünkü verileri standart araçlar kullanarak görüntülemek daha zor olabilir.
 - Uygulamanız ölçeklenebilirlik hedeflerine yaklaşıyorsa, yeniden denemeler için bir üstel geri alma kullandığınızdan emin olun. Bu makalede açıklanan önerileri uygulayarak ölçeklenebilirlik hedeflerine ulaşmaktan kaçınmak en iyisidir. Ancak, yeniden denemeler için bir üstel geri alma kullanılması, uygulamanızın hızlı bir şekilde yeniden denenmesini engelleyecek ve bu da azaltmayı daha kötüleşmektedir. Daha fazla bilgi için [zaman aşımı ve sunucu meşgul hataları](#timeout-and-server-busy-errors)başlıklı bölüme bakın.
 
-## <a name="table-specific-scalability-targets"></a>Tabloya özgü ölçeklenebilirlik hedefleri
+### <a name="targets-for-data-operations"></a>Veri işlemleri için hedefler
 
-Tüm depolama hesabının bant genişliği kısıtlamalarına ek olarak, tablolarda aşağıdaki belirli ölçeklenebilirlik limiti vardır. Trafiğiniz arttıkça sistem yük dengelemeye başlayacaktır, ancak trafiğiniz ani bursts içeriyorsa, bu üretilen iş hacmini hemen alamıyoruz. Düzeniniz bursts içeriyorsa, depolama hizmeti otomatik olarak tablonuzun dengeleneceği sırada, veri bloğu sırasında azaltma ve/veya zaman aşımlarını görmeyi beklemelisiniz. Yavaş yavaş artırma işlemi, sistem zamanının uygun şekilde yük dengelemesine verdiği için genellikle daha iyi sonuçlar elde etmenizi sağlar.
+Depolama hesabınızın trafiği arttıkça Azure Storage yük dengeliklarından yararlanın, ancak trafik ani bural alıyorsa, bu üretilen iş hacmini hemen alamıyoruz. Azure depolama 'nın tablonuzun bakiyelerini otomatik olarak yüklemesi nedeniyle, veri bloğu sırasında azaltma ve/veya zaman aşımları görmeniz beklenir. Sistemin daha iyi sürede yük dengelenmesi gerektiği için yavaş yavaş çalışır.
+
+#### <a name="entities-per-second-storage-account"></a>Saniyedeki varlık sayısı (depolama hesabı)
+
+Tablolara erişim için ölçeklenebilirlik sınırı, her bir hesap için saniyede 20.000 varlık (1 KB her) kadar olur. Genel olarak, eklenen, güncellenen, silinen veya taranan her varlık bu hedefe doğru sayılır. Bu nedenle 100 varlıkları içeren bir toplu ekleme, 100 varlık olarak sayılır. 1000 varlıklarını tarayan ve 5 değerini döndüren bir sorgu, 1000 varlık olarak sayılır.
+
+#### <a name="entities-per-second-partition"></a>Saniyedeki varlık sayısı (bölüm)
+
+Tek bir bölümde, tablolara erişim için ölçeklenebilirlik hedefi, önceki bölümde açıklanan şekilde aynı sayımı kullanarak saniyede 2.000 varlıklardır (1 KB her).
 
 ## <a name="networking"></a>Networking (Ağ İletişimi)
 
@@ -281,5 +289,6 @@ Batch ekleme ve daha sonra varlık aralıklarını birlikte alma işlemi yapıyo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Depolama hesapları için Azure depolama ölçeklenebilirlik ve performans hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
+- [Tablo depolaması için ölçeklenebilirlik ve performans hedefleri](scalability-targets.md)
+- [Standart depolama hesapları için ölçeklenebilirlik ve performans hedefleri](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
 - [Durum ve hata kodları](/rest/api/storageservices/Status-and-Error-Codes2)

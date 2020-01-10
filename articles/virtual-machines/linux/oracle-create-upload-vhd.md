@@ -3,7 +3,7 @@ title: Oracle Linux VHD oluşturma ve karşıya yükleme
 description: Oracle Linux işletim sistemi içeren bir Azure sanal sabit diski (VHD) oluşturmayı ve yüklemeyi öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -12,33 +12,31 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 03/12/2018
-ms.author: szark
-ms.openlocfilehash: 16f3bc9e70f8fac6ab28318e1654742a2c3b76a1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.date: 12/10/2019
+ms.author: mimckitt
+ms.openlocfilehash: e0250737f1f2934548a16ee42e9ff582f2403c48
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035364"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747734"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Azure için Oracle Linux sanal makinesi hazırlama
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
 Bu makalede bir Oracle Linux işletim sistemini zaten bir sanal sabit diske yüklediğinizi varsaymış olursunuz. . Vhd dosyaları, örneğin Hyper-V gibi bir sanallaştırma çözümü oluşturmak için birden çok araç vardır. Yönergeler için bkz. [Hyper-V rolünü yükleyip sanal makineyi yapılandırma](https://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="oracle-linux-installation-notes"></a>Oracle Linux yükleme notları
+## <a name="oracle-linux-installation-notes"></a>Oracle Linux yükleme notları
 * Lütfen Azure için Linux hazırlama hakkında daha fazla ipucu için bkz. [Genel Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
-* Oracle 'ın Red Hat uyumlu çekirdeği ve bunların UEK3 (yerleşik olmayan kurumsal çekirdek), Hyper-V ve Azure 'da desteklenir. En iyi sonuçlar için lütfen Oracle Linux VHD 'nizi hazırlarken en son çekirdeğe güncelleştirdiğinizden emin olun.
+* Hyper-V ve Azure desteği, uygun olmayan kurumsal çekirdek (UEK) veya Red Hat uyumlu çekirdekle Oracle Linux.
 * Oracle 'ın UEK2, gerekli sürücüleri içermediğinden Hyper-V ve Azure üzerinde desteklenmez.
 * VHDX biçimi Azure 'da desteklenmiyor, yalnızca **sabıt VHD**.  Hyper-V Yöneticisi 'Ni veya Convert-VHD cmdlet 'ini kullanarak diski VHD biçimine dönüştürebilirsiniz.
 * Linux sistemini yüklerken, LVM yerine standart bölümler kullanmanız önerilir (genellikle çoğu yükleme için varsayılan değer). Bu, özellikle de bir işletim sistemi diskinin sorun gidermeye yönelik başka bir VM 'ye bağlanması gerekiyorsa, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. Tercih edilen durumlarda [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , veri disklerinde kullanılabilir.
-* 2\.6.37 altındaki Linux çekirdek sürümlerindeki bir hata nedeniyle, NUMA daha büyük VM boyutları için desteklenmez. Bu sorun, birincil olarak yukarı akış Red Hat 2.6.32 çekirdeğini kullanarak dağıtımları etkiler. Azure Linux aracısının (waagent) el ile yüklenmesi, Linux çekirdeğinin GRUB yapılandırmasında NUMA 'yı otomatik olarak devre dışı bırakır. Bunun hakkında daha fazla bilgiyi aşağıdaki adımlarda bulabilirsiniz.
+* 2\.6.37 ' den önceki Linux çekirdek sürümleri, Hyper-V üzerinde NUMA 'yı daha büyük VM boyutları ile desteklemez. Bu sorun öncelikle yukarı akış Red Hat 2.6.32 çekirdeğini kullanarak eski dağıtımları etkiler ve Oracle Linux 6,6 ve üzeri sürümlerde düzeltildi
 * İşletim sistemi diski üzerinde takas bölümü yapılandırmayın. Linux Aracısı, geçici kaynak diskinde bir takas dosyası oluşturmak için yapılandırılabilir.  Bunun hakkında daha fazla bilgiyi aşağıdaki adımlarda bulabilirsiniz.
 * Azure 'daki tüm VHD 'ler, 1 MB 'a hizalanmış bir sanal boyuta sahip olmalıdır. Bir ham diskten VHD 'ye dönüştürme yaparken,, dönüştürmeden önce ham disk boyutunun 1 MB 'ın katı olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
 * `Addons` deposunun etkinleştirildiğinden emin olun. `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) veya `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) dosyasını düzenleyin ve satır `enabled=0` bu dosyada **[`enabled=1`]** veya **[ol6_addons]** altında ol7_addons olacak şekilde değiştirin.
 
-## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
+## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6,4 ve üzeri
 Sanal makinenin Azure 'da çalışması için, işletim sistemindeki belirli yapılandırma adımlarını tamamlamalısınız.
 
 1. Hyper-V Yöneticisi 'nin orta bölmesinde, sanal makineyi seçin.
@@ -71,11 +69,11 @@ Sanal makinenin Azure 'da çalışması için, işletim sistemindeki belirli yap
 8. Aşağıdaki komutu çalıştırarak Python-pyasn1 ' i yüklemelisiniz:
    
         # sudo yum install python-pyasn1
-9. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için, bir metin düzenleyicisinde "/boot/grub/menu.lst" öğesini açın ve varsayılan çekirdeğin aşağıdaki parametreleri içerdiğinden emin olun:
+9. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için, bir metin düzenleyicisinde "/boot/grub/menu.lst" öğesini açın ve çekirdeğin aşağıdaki parametreleri içerdiğinden emin olun:
    
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300 numa=off
+        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
-   Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini de sağlar ve bu da hata ayıklama sorunlarını gidermek için Azure desteğine yardımcı olabilir. Bu, Oracle 'ın Red Hat uyumlu çekirdekte bir hata nedeniyle NUMA 'yı devre dışı bırakır.
+   Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini sağlar ve bu da hata ayıklama sorunlarını gidermek için Azure desteğine yardımcı olabilir.
    
    Yukarıdaki ' a ek olarak, aşağıdaki parametrelerin *kaldırılması* önerilir:
    
@@ -107,12 +105,12 @@ Sanal makinenin Azure 'da çalışması için, işletim sistemindeki belirli yap
 14. Hyper-V Yöneticisi 'nde **eylem-> kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
 
 ---
-## <a name="oracle-linux-70"></a>Oracle Linux 7.0 +
+## <a name="oracle-linux-70-and-later"></a>Oracle Linux 7,0 ve üzeri
 **Oracle Linux 7 ' deki değişiklikler**
 
 Oracle Linux 7 sanal makinesini Azure için hazırlamak, Oracle Linux 6 ' ya benzer, ancak dikkat edilmesi gereken bazı önemli farklılıklar vardır:
 
-* Hem Red Hat uyumlu çekirdek hem de Oracle UEK3, Azure 'da desteklenmektedir.  UEK3 çekirdeği önerilir.
+* Azure, uygun olmayan kurumsal çekirdek (UEK) veya Red Hat uyumlu çekirdekle Oracle Linux destekler. UEK ile Oracle Linux önerilir.
 * NetworkManager paketi artık Azure Linux aracısıyla çakışmayacaktır. Bu paket varsayılan olarak yüklenir ve kaldırılmadığını öneririz.
 * GRUB2 artık varsayılan önyükleme yükleyicisi olarak kullanıldığından, çekirdek parametrelerini düzenlemeyle ilgili yordam değişmiştir (aşağıya bakın).
 * XFS artık varsayılan dosya sistemidir. İsterseniz ext4 dosya sistemi hala kullanılabilir.
@@ -151,7 +149,7 @@ Oracle Linux 7 sanal makinesini Azure için hazırlamak, Oracle Linux 6 ' ya ben
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini de sağlar ve bu da hata ayıklama sorunlarını gidermek için Azure desteğine yardımcı olabilir. Ayrıca, NIC 'ler için yeni OEL 7 adlandırma kurallarını da kapatır. Yukarıdaki ' a ek olarak, aşağıdaki parametrelerin *kaldırılması* önerilir:
+   Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini de sağlar ve bu da hata ayıklama sorunlarını gidermek için Azure desteğine yardımcı olabilir. Ayrıca, Oracle Linux 7 ' deki NIC 'ler için adlandırma kurallarını, uygun olmayan kurumsal çekirdekle devre dışı bırakır. Yukarıdaki ' a ek olarak, aşağıdaki parametrelerin *kaldırılması* önerilir:
    
        rhgb quiet crashkernel=auto
    

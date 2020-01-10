@@ -2,14 +2,14 @@
 title: Kaynakları yönetim gruplarıyla düzenleme-Azure Idare
 description: Yönetim grupları, izinlerinin nasıl çalıştığı ve bu grupların nasıl kullanıldığı hakkında bilgi edinin.
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
-ms.date: 04/22/2019
+ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: 7e121ed256e04332ca7fd33c9fc48cd2bc7bae03
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 507f4575e6d8daa16a1ed7db3d429d2810a63a7c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960193"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750242"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Kaynaklarınızı Azure yönetim gruplarıyla düzenleme
 
@@ -23,7 +23,7 @@ Birleşik ilke ve erişim yönetimi için kaynaklarınızı bir hiyerarşi altı
 
 ![Yönetim grubu hiyerarşi ağacı örneği](./media/tree.png)
 
-İlke uygulayan bir hiyerarşi oluşturabilirsiniz. Örneğin bu, “Üretim” adlı grupta VM konumlarını ABD Batı Bölgesiyle sınırlayan bir ilke olabilir. Bu ilke, o yönetim grubu altındaki her iki EA aboneliğine devredilir ve o abonelikler altındaki tüm VM’ler için geçerli olur. Bu güvenlik ilkesi kaynak veya abonelik sahibi tarafından değiştirilemez ve bu da idarenin geliştirilmesine olanak tanır.
+İlke uygulayan bir hiyerarşi oluşturabilirsiniz. Örneğin bu, “Üretim” adlı grupta VM konumlarını ABD Batı Bölgesiyle sınırlayan bir ilke olabilir. Bu ilke, bu yönetim grubunun alt öğeleri olan tüm EA aboneliklerine devralınır ve bu abonelikler altındaki tüm sanal makinelere uygulanır. Bu güvenlik ilkesi kaynak veya abonelik sahibi tarafından değiştirilemez ve bu da idarenin geliştirilmesine olanak tanır.
 
 Yönetim gruplarını kullanacağınız başka bir senaryo ise birden fazla aboneliğe kullanıcı erişimi sağlamaktır. Birden çok aboneliği söz konusu yönetim grubu altına taşıyarak, yönetim grubu üzerinde tüm aboneliklere erişimi devralacak bir [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) (RBAC) ataması oluşturabilirsiniz.
 Yönetim grubunda bir atama olması, farklı abonelikler üzerinde RBAC komut dosyası kullanmak yerine kullanıcıların ihtiyaç duydukları her şeye erişmesini sağlayabilir.
@@ -45,7 +45,7 @@ Diğer tüm yönetim grupları ve abonelikler hiyerarşide en üstte yer alan bu
 ### <a name="important-facts-about-the-root-management-group"></a>Kök yönetim grubu hakkında önemli bilgiler
 
 - Varsayılan olarak kök yönetim grubunun görünen adı, **Kiracı kök grubu**’dur. Kimlik, Azure Active Directory Kimliği’dir.
-- Görünen adı değiştirmek için hesabınızın, kök yönetim grubunun Sahip veya Katkıda Bulunan rolüne atanması gerekir. Adı değiştirme adımları için bkz. [Yönetim grubunun adını değiştirme](manage.md#change-the-name-of-a-management-group).
+- Görünen adı değiştirmek için hesabınızın, kök yönetim grubunun Sahip veya Katkıda Bulunan rolüne atanması gerekir. Bir yönetim grubunun adını güncelleştirmek için [bir yönetim grubunun adını değiştirme](manage.md#change-the-name-of-a-management-group) konusuna bakın.
 - Diğer yönetim gruplarının aksine kök yönetim grubu taşınamaz veya silinemez.  
 - Tüm abonelikler ve yönetim grupları, dizinin içindeki bir kök yönetim grubu altında birleşir.
   - Dizindeki tüm kaynaklar, genel yönetim için kök yönetim grubu altında birleşir.
@@ -82,12 +82,12 @@ Bu geriye dönük doldurma işlemi hakkında sorularınız varsa şu adresten bi
 ## <a name="management-group-access"></a>Yönetim grubu erişimi
 
 Azure yönetim grupları tüm kaynak erişimleri ve rol tanımları için [Azure Rol Tabanlı Erişim Denetimi’ni (RBAC)](../../role-based-access-control/overview.md) destekler.
-Bu izinler, hiyerarşide mevcut olan alt kaynaklara devredilir. Herhangi bir yerleşik RBAC rolü, hiyerarşiyi kaynaklara devredecek bir yönetim grubuna atanabilir.
+Bu izinler, hiyerarşide mevcut olan alt kaynaklara devredilir. Herhangi bir RBAC rolü, hiyerarşiyi kaynaklara devralacak bir yönetim grubuna atanabilir.
 Örneğin, VM katılımcısı adlı RBAC rolü bir yönetim grubuna atanabilir. Bu rolün yönetim grubu üzerinde herhangi bir eylemi yoktur ancak o yönetim grubu altındaki tüm VM’lere devredilir.
 
 Aşağıdaki grafikte rollerin listesi ve yönetim gruplarında desteklenen eylemler gösterilmektedir.
 
-| RBAC Rol Adı             | Oluşturma | Yeniden Adlandır | Taşı** | Sil | Erişim Ata | İlke Ata | Okuma  |
+| RBAC Rol Adı             | Create | Yeniden adlandır | Taşı** | Sil | Erişim Ata | İlke Ata | Okuma  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Sahip                       | X      | X      | X      | X      | X             | X             | X     |
 |Katılımcı                 | X      | X      | X      | X      |               |               | X     |
@@ -100,13 +100,90 @@ Aşağıdaki grafikte rollerin listesi ve yönetim gruplarında desteklenen eyle
 *: MG Katılımcısı ve MG Okuyucusu, kullanıcıların bu eylemleri yalnızca yönetim grubu kapsamında gerçekleştirmesine izin verir.  
 \* *: Kök yönetim grubundaki rol atamaları, bir aboneliği veya yönetim grubunu bu gruba taşımak için gerekli değildir.  Hiyerarşi içindeki öğeleri taşımayla ilgili ayrıntılar için bkz. [Kaynaklarınızı yönetim gruplarıyla yönetme](manage.md).
 
-### <a name="custom-rbac-role-definition-and-assignment"></a>Özel RBAC Rol Tanımı ve Ataması
+## <a name="custom-rbac-role-definition-and-assignment"></a>Özel RBAC rol tanımı ve ataması
 
-Özel RBAC rolleri şu anda yönetim gruplarında desteklenmemektedir. Bu maddenin durumunu görüntülemek için [yönetim grubu geri bildirim forumuna](https://aka.ms/mgfeedback) bakın.
+Yönetim grupları için özel RBAC rol desteği şu anda bazı [kısıtlamalarla](#limitations)destekleniyor.  Yönetim grubu kapsamını rol tanımının atanabilir kapsamında tanımlayabilirsiniz.  Daha sonra bu özel RBAC rolü, bu yönetim grubu ve içindeki herhangi bir yönetim grubu, abonelik, kaynak grubu veya kaynak üzerinde atanmak üzere kullanılabilir olacaktır. Bu özel rol, hiyerarşide herhangi bir yerleşik rol gibi devralınır.    
+
+### <a name="example-definition"></a>Örnek tanım
+[Özel bir rol tanımlama ve oluşturma](../../role-based-access-control/custom-roles.md) , yönetim gruplarının eklenmesine göre değişmez. Yönetim grubu **/providers/Microsoft.Management/managementgroups/{GroupID}** tanımlamak için tam yolu kullanın. 
+
+Yönetim grubunun görünen adını değil, yönetim grubunun KIMLIĞINI kullanın. Bu ortak hata, her ikisi de bir yönetim grubu oluştururken özel tanımlanmış alanlar olduğundan oluşur. 
+
+```json
+...
+{
+  "Name": "MG Test Custom Role",
+  "Id": "id", 
+  "IsCustom": true,
+  "Description": "This role provides members understand custom roles.",
+  "Actions": [
+    "Microsoft.Management/managementgroups/delete",
+    "Microsoft.Management/managementgroups/read",
+    "Microsoft.Management/managementgroup/write",
+    "Microsoft.Management/managementgroup/subscriptions/delete",
+    "Microsoft.Management/managementgroup/subscriptions/write",
+    "Microsoft.resources/subscriptions/read",
+    "Microsoft.Authorization/policyAssignments/*",
+    "Microsoft.Authorization/policyDefinitions/*",
+    "Microsoft.Authorization/policySetDefinitions/*",
+    "Microsoft.PolicyInsights/*",
+    "Microsoft.Authorization/roleAssignments/*",
+    "Microsoft.Authorization/roledefinitions/*"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+        "/providers/microsoft.management/managementGroups/ContosoCorporate"
+  ]
+}
+...
+```
+
+### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>Rol tanımı ve atama hiyerarşisi yolunu bozan sorunlar
+Rol tanımları, yönetim grubu hiyerarşisi içinde herhangi bir yerde atanabilir kapsamdadır. Alt abonelikte gerçek rol ataması varken, bir üst yönetim grubunda rol tanımı tanımlanabilir. İki öğe arasında bir ilişki olduğundan, atamayı tanımdan ayırmaya çalışırken bir hata alacaksınız. 
+
+Örneğin: bir görselin hiyerarşinin küçük bir bölümüne bakalım. 
+
+![alt ağaç](./media/subtree.png)
+
+Pazarlama Yönetimi grubunda tanımlanmış özel bir rol olduğunu varsayalım. Bu özel rol daha sonra iki ücretsiz deneme aboneliğine atanır.  
+
+Bu aboneliklerden birini üretim yönetim grubunun bir alt öğesi olacak şekilde taşımaya çalışırsam, bu taşıma, abonelik rolü atamasından pazarlama yönetim grubu rolü tanımına kadar olan yolu keser. Bu senaryoda, bu ilişkiyi bozduğundan beri taşımaya izin verilmediğini belirten bir hata alırsınız.  
+
+Bu senaryoyu gidermeye yönelik birkaç farklı seçenek vardır:
+- Aboneliği yeni bir üst MG öğesine taşımadan önce abonelikten rol atamasını kaldırın.
+- Aboneliği rol tanımının atanabilir kapsamına ekleyin.
+- Rol tanımı içindeki atanabilir kapsamı değiştirin. Yukarıdaki örnekte, bir şekilde atanabilir kapsamları, hiyerarşinin her iki dalı tarafından ulaşılabilmesi için, bir pazarlama üzerinden kök yönetim grubuna güncelleştirebilirsiniz.   
+- Diğer dalda tanımlanacak ek bir özel rol oluşturun.  Bu yeni rol, rol atamasının abonelik üzerinde de değiştirilmesini gerektirir.  
+
+### <a name="limitations"></a>Sınırlamalar  
+Yönetim gruplarında özel roller kullanılırken var olan sınırlamalar vardır. 
+
+ - Yalnızca bir yönetim grubunu, yeni bir rolün atanabilir kapsamlarında tanımlayabilirsiniz.  Bu sınırlama, rol tanımlarının ve rol atamalarının kesilmediği durumların sayısını azaltmak için kullanılır.  Bu durum, rol atamasının bulunduğu bir abonelik veya yönetim grubu, rol tanımına sahip olmayan farklı bir üst öğeye taşındığında gerçekleşir.   
+ - RBAC veri düzlemi eylemlerinin yönetim grubu özel rollerinde tanımlanmasına izin verilmez.  Bu kısıtlama, veri düzlemi kaynak sağlayıcılarını güncelleştirmede RBAC eylemleriyle ilgili bir gecikme sorunu olduğu için gerçekleştirilir. Bu gecikme sorunu üzerinde çalışıyor ve tüm riskleri azaltmak için bu eylemler rol tanımından devre dışı bırakılacak.
+ - Azure Resource Manager, rol tanımının atanabilir kapsamındaki yönetim grubunun varlığını doğrulamaz.  Bir yazım hatası veya yanlış bir yönetim grubu kimliği listeleniyorsa, rol tanımı yine de oluşturulur.   
+
+## <a name="moving-management-groups-and-subscriptions"></a>Yönetim gruplarını ve abonelikleri taşıma 
+
+Bir yönetim grubuna veya aboneliğine başka bir yönetim grubunun alt öğesi olacak şekilde, üç kuralın da doğru olarak değerlendirilmesi gerekir.
+
+Taşıma eylemini gerçekleştiriyorsanız şunlar gerekir: 
+
+-  Alt abonelik veya yönetim grubundaki yönetim grubu yazma ve rol atama yazma izinleri.
+   - Yerleşik rol örneği **sahibi**
+- Hedef üst yönetim grubunda yönetim grubu yazma erişimi.
+   - Yerleşik rol örneği: **sahip**, **katkıda bulunan**, **Yönetim grubu katılımcısı**
+- Yönetim grubu var olan üst yönetim grubu üzerinde yazma erişimi.
+   - Yerleşik rol örneği: **sahip**, **katkıda bulunan**, **Yönetim grubu katılımcısı**
+
+**Özel durum**: hedef veya var olan üst yönetim grubu kök yönetim grubinise, izin gereksinimleri geçerli değildir. Kök yönetim grubu tüm yeni yönetim grupları ve abonelikler için varsayılan giriş noktası olduğundan, bir öğeyi taşımak için üzerinde izinleriniz olması gerekmez.
+
+Abonelikte sahip rolü geçerli yönetim grubundan devralınmışsa, taşıma hedefleriniz sınırlıdır. Aboneliği yalnızca sahip rolüne sahip olduğunuz başka bir yönetim grubuna taşıyabilirsiniz. Aboneliğin sahipliğini kaybedeceinizden katılımcı olduğunuz bir yönetim grubuna taşıyamazsınız. Abonelik için (yönetim grubundan devralınmaz) sahip rolüne doğrudan atandıysanız, katılımcısı olduğunuz herhangi bir yönetim grubuna taşıyabilirsiniz. 
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Etkinlik günlüklerini kullanarak yönetim gruplarını denetleme
 
-Yönetim grupları [Azure Etkinlik Günlüğü](../../azure-monitor/platform/activity-logs-overview.md)'nde desteklenir. Yönetim grubunda gerçekleşen tüm olayları, diğer Azure kaynaklarıyla aynı merkezi konumda arayabilirsiniz.  Örneğin, belirli bir yönetim grubunda yapılan tüm Rol Atamalarını veya İlke Ataması değişikliklerini görebilirsiniz.
+Yönetim grupları [Azure Etkinlik Günlüğü](../../azure-monitor/platform/platform-logs-overview.md)'nde desteklenir. Yönetim grubunda gerçekleşen tüm olayları, diğer Azure kaynaklarıyla aynı merkezi konumda arayabilirsiniz.  Örneğin, belirli bir yönetim grubunda yapılan tüm Rol Atamalarını veya İlke Ataması değişikliklerini görebilirsiniz.
 
 ![Yönetim Gruplarıyla Etkinlik Günlükleri](media/al-mg.png)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 5a46de9fa17790cb93ce7d5a2af8008d34d4dc35
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b092b037cc10671e89f18af287b52f8ad1c0060e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888793"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747299"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Izleyici ile Azure kaynaklarını izleme
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure kaynakları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
@@ -57,8 +57,8 @@ Azure 'daki kaynaklar, aşağıdaki diyagramı gösterilen şekilde [Günlükler
 
 
 - [Platform ölçümleri](../platform/data-platform-metrics.md) -düzenli aralıklarla otomatik olarak toplanan ve belirli bir zamanda kaynağın bazı yönlerini tanımlayan sayısal değerlerdir. 
-- [Kaynak günlükleri](../platform/resource-logs-overview.md) -bir Azure kaynağı içinde (veri düzlemi) gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Örneğin, bir Key Vault gizli anahtar alma veya bir veritabanına istek yapma. Kaynak günlüklerinin içeriği ve yapısı, Azure hizmeti ve kaynak türüne göre farklılık gösterir.
-- [Etkinlik günlüğü](../platform/activity-logs-overview.md) -abonelik içindeki her bir Azure kaynağında (Yönetim düzlemi) gerçekleştirilen işlemlere ilişkin öngörüler sağlar (örneğin, yeni bir kaynak oluşturma veya bir sanal makine başlatma). Bu, aboneliğinizdeki kaynaklar üzerinde herhangi bir yazma işlemi (PUT, POST, SILME) için ne zaman, kim ve ne zaman alındığını öğrenin.
+- [Kaynak günlükleri](../platform/platform-logs-overview.md) -bir Azure kaynağı içinde (veri düzlemi) gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Örneğin, bir Key Vault gizli anahtar alma veya bir veritabanına istek yapma. Kaynak günlüklerinin içeriği ve yapısı, Azure hizmeti ve kaynak türüne göre farklılık gösterir.
+- [Etkinlik günlüğü](../platform/platform-logs-overview.md) -abonelik içindeki her bir Azure kaynağında (Yönetim düzlemi) gerçekleştirilen işlemlere ilişkin öngörüler sağlar (örneğin, yeni bir kaynak oluşturma veya bir sanal makine başlatma). Bu, aboneliğinizdeki kaynaklar üzerinde herhangi bir yazma işlemi (PUT, POST, SILME) için ne zaman, kim ve ne zaman alındığını öğrenin.
 
 
 ## <a name="configuration-requirements"></a>Yapılandırma gereksinimleri
@@ -67,8 +67,8 @@ Azure 'daki kaynaklar, aşağıdaki diyagramı gösterilen şekilde [Günlükler
 Bazı izleme verileri otomatik olarak toplanır, ancak gereksinimlerinize bağlı olarak bazı yapılandırmalar yapmanız gerekebilir. Her bir izleme verileri türü için belirli bilgiler için aşağıdaki bilgilere bakın.
 
 - [Platform ölçümleri](../platform/data-platform-metrics.md) -platform ölçümleri, hiçbir yapılandırma gerekmeden [Azure izleyici ölçümlerine](../platform/data-platform-metrics.md) otomatik olarak toplanır. Azure Izleyici günlüklerine giriş göndermek veya Azure 'un dışına iletmek için bir tanılama ayarı oluşturun.
-- [Kaynak günlükleri](../platform/resource-logs-overview.md) -kaynak günlükleri Azure kaynakları tarafından otomatik olarak oluşturulur ancak bir tanılama ayarı olmadan toplanmaz.  Azure Izleyici günlüklerine giriş göndermek veya Azure 'un dışına iletmek için bir tanılama ayarı oluşturun.
-- [Etkinlik günlüğü](../platform/activity-logs-overview.md) -etkinlik günlüğü, yapılandırma gerekmeden otomatik olarak toplanır ve Azure Portal görüntülenebilir. Azure Izleyici günlüklerine kopyalamak veya bunları Azure 'un dışına iletmek için bir tanılama ayarı oluşturun.
+- [Kaynak günlükleri](../platform/platform-logs-overview.md) -kaynak günlükleri Azure kaynakları tarafından otomatik olarak oluşturulur ancak bir tanılama ayarı olmadan toplanmaz.  Azure Izleyici günlüklerine giriş göndermek veya Azure 'un dışına iletmek için bir tanılama ayarı oluşturun.
+- [Etkinlik günlüğü](../platform/platform-logs-overview.md) -etkinlik günlüğü, yapılandırma gerekmeden otomatik olarak toplanır ve Azure Portal görüntülenebilir. Azure Izleyici günlüklerine kopyalamak veya bunları Azure 'un dışına iletmek için bir tanılama ayarı oluşturun.
 
 ### <a name="log-analytics-workspace"></a>Log Analytics çalışma alanı
 Azure Izleyici günlüklerine veri toplanması Log Analytics çalışma alanı gerektirir. Yeni bir çalışma alanı oluşturarak hizmetinizi hızlı bir şekilde izlemeye başlayabilirsiniz, ancak diğer hizmetlerden veri toplayan bir çalışma alanı kullanmanın bir değeri olabilir. Gereksinimleriniz için en iyi çalışma alanı tasarımını belirlemenize yardımcı olmak üzere bir çalışma alanı oluşturma ve [Azure Izleyici günlükleri dağıtımınızı tasarlama](../platform/design-logs-deployment.md) hakkında bilgi için bkz. [Azure Portal Log Analytics çalışma alanı oluşturma](../learn/quick-create-workspace.md) . Kuruluşunuzda var olan bir çalışma alanını kullanıyorsanız, [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../platform/manage-access.md)bölümünde açıklandığı gibi uygun izinlere ihtiyacınız olacaktır. 
@@ -127,7 +127,7 @@ Azure Izleyici günlükleri, güçlü bir sorgu aracıyla analizler için birden
 
 - Günlük sorgularını yazmak için kullanılan sorgu dilini kullanma hakkında bir öğretici için bkz. [Azure izleyici 'de günlük sorgularıyla çalışmaya başlama](../log-query/get-started-queries.md) .
 - Azure Izleyici günlüklerinde kaynak günlüklerinin nasıl toplandığını ve bir sorgudaki bunlara nasıl erişecekleri hakkında bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure Kaynak günlüklerini toplama](../platform/resource-logs-collect-workspace.md) .
-- Kaynak günlük verilerinin Azure Izleyici günlüklerinde nasıl yapılandırıldığı hakkında bir açıklama için bkz. [koleksiyon modu](../platform/resource-logs-collect-workspace.md#collection-mode) .
+- Kaynak günlük verilerinin Azure Izleyici günlüklerinde nasıl yapılandırıldığı hakkında bir açıklama için bkz. [koleksiyon modu](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode) .
 - Azure Izleyici günlüklerinde tablosu hakkındaki ayrıntılar için her bir Azure hizmetine yönelik belgelere bakın.
 
 ![Günlükler](media/monitor-azure-resource/logs.png)

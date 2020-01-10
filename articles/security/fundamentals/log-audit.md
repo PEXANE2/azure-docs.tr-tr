@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: f53c7e7b045805a28223fb5670afc45c980454bc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498390"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750797"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure Güvenlik günlüğü ve denetimi
 
@@ -38,9 +38,9 @@ Bulut uygulamaları birçok hareketli parça ile karmaşıktır. Günlüğe kayd
 - Aksi takdirde el ile müdahale gerektiren eylemleri otomatikleştirin
 
 Azure günlükleri aşağıdaki türlerde kategorilere ayrılır:
-* **Denetim/Yönetim günlükleri** Azure Resource Manager oluşturma, GÜNCELLEŞTIRME ve silme işlemleri hakkında bilgi sağlar. Daha fazla bilgi için bkz. [Azure etkinlik günlükleri](../../azure-monitor/platform/activity-logs-overview.md).
+* **Denetim/Yönetim günlükleri** Azure Resource Manager oluşturma, GÜNCELLEŞTIRME ve silme işlemleri hakkında bilgi sağlar. Daha fazla bilgi için bkz. [Azure etkinlik günlükleri](../../azure-monitor/platform/platform-logs-overview.md).
 
-* **Veri düzlemi günlükleri** , Azure Kaynak kullanımının bir parçası olarak oluşturulan olaylar hakkında bilgi sağlar. Bu tür bir günlüğe örnek olarak, bir sanal makinede (VM) Windows olay sistemi, güvenlik ve uygulama günlükleri ve Azure Izleyici aracılığıyla yapılandırılan [tanılama günlükleri](../../azure-monitor/platform/resource-logs-overview.md) verilebilir.
+* **Veri düzlemi günlükleri** , Azure Kaynak kullanımının bir parçası olarak oluşturulan olaylar hakkında bilgi sağlar. Bu tür bir günlüğe örnek olarak, bir sanal makinede (VM) Windows olay sistemi, güvenlik ve uygulama günlükleri ve Azure Izleyici aracılığıyla yapılandırılan [tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md) verilebilir.
 
 * **İşlenen olaylar** , sizin adınıza işlenmiş olan çözümlenen olaylar/uyarılar hakkında bilgi sağlar. Bu tür örnekler, Azure [Güvenlik Merkezi](../../security-center/security-center-intro.md) 'nin aboneliğinizi işlediği ve çözümleymekte olduğu ve kısa güvenlik uyarıları sağladığı [Azure Güvenlik Merkezi uyarılarından](../../security-center/security-center-managing-and-responding-alerts.md) oluşur.
 
@@ -48,8 +48,8 @@ Aşağıdaki tabloda, Azure 'da kullanılabilen en önemli günlük türleri lis
 
 | Günlük kategorisi | Günlük türü | Kullanım | Tümleştirme |
 | ------------ | -------- | ------ | ----------- |
-|[Etkinlik günlükleri](../../azure-monitor/platform/activity-logs-overview.md)|Azure Resource Manager kaynaklardaki denetim düzlemi olayları|  Aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin öngörüler sağlar.|    REST API, [Azure izleyici](../../azure-monitor/platform/activity-logs-overview.md)|
-|[Azure Kaynak günlükleri](../../azure-monitor/platform/resource-logs-overview.md)|Abonelikte Azure Resource Manager kaynakların çalışması hakkında sık kullanılan veriler|   Kaynağınızın kendisi tarafından gerçekleştirilen işlemlere ilişkin öngörüler sağlar.| Azure İzleyici|
+|[Etkinlik günlükleri](../../azure-monitor/platform/platform-logs-overview.md)|Azure Resource Manager kaynaklardaki denetim düzlemi olayları|  Aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin öngörüler sağlar.|    REST API, [Azure izleyici](../../azure-monitor/platform/platform-logs-overview.md)|
+|[Azure Kaynak günlükleri](../../azure-monitor/platform/platform-logs-overview.md)|Abonelikte Azure Resource Manager kaynakların çalışması hakkında sık kullanılan veriler|   Kaynağınızın kendisi tarafından gerçekleştirilen işlemlere ilişkin öngörüler sağlar.| Azure İzleyici|
 |[Azure Active Directory raporlama](../../active-directory/reports-monitoring/overview-reports.md)|Günlükler ve raporlar | Kullanıcılar ve grup yönetimiyle ilgili Kullanıcı oturum açma etkinliklerini ve sistem etkinliği bilgilerini raporlar.|[Graph API'si](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[Sanal makineler ve bulut Hizmetleri](../../azure-monitor/learn/quick-collect-azurevm.md)|Windows olay günlüğü hizmeti ve Linux Syslog|  , Sanal makinelerde sistem verilerini yakalar ve verileri günlüğe kaydeder ve bu verileri seçtiğiniz bir depolama hesabına aktarır.|   Azure Izleyici 'de Windows (Windows Azure Tanılama [[wad](../../monitoring-and-diagnostics/azure-diagnostics.md)] depolama) ve Linux 'u kullanma|
 |[Azure Depolama Analizi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Depolama alanı günlüğü, bir depolama hesabı için ölçüm verileri sağlar|İzleme istekleri hakkında öngörüler sağlar, kullanım eğilimlerini analiz eder ve depolama hesabınızla ilgili sorunları tanılar.|   REST API veya [istemci kitaplığı](https://msdn.microsoft.com/library/azure/mt347887.aspx)|

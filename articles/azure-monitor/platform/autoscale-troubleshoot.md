@@ -1,19 +1,15 @@
 ---
 title: Azure otomatik ölçeklendirme sorunlarını giderme
 description: Service Fabric, sanal makineler, Web Apps ve bulut hizmetlerinde kullanılan Azure otomatik ölçeklendirmeyle ilgili sorunları izleme.
-author: rboucher
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/4/2019
-ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 410c182075d0aa288ad05195958c396f1a357ff1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893578"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751342"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure otomatik ölçeklendirme sorunlarını giderme
  
@@ -101,7 +97,7 @@ Otomatik ölçeklendirme ayarı ekranında, en son ölçeklendirme eylemlerini g
 
 ## <a name="autoscale-resource-logs"></a>Kaynak günlüklerini otomatik ölçeklendirme
 
-Otomatik Ölçeklendirme hizmeti, diğer Azure kaynakları ile aynı şekilde [kaynak günlükleri](resource-logs-overview.md)sağlar. İki günlük kategorisi vardır.
+Otomatik Ölçeklendirme hizmeti, diğer Azure kaynakları ile aynı şekilde [kaynak günlükleri](platform-logs-overview.md)sağlar. İki günlük kategorisi vardır.
 
 - **Otomatik ölçeklendirme değerlendirmeleri** -otomatik ölçeklendirme altyapısı her bir denetim her seferinde her bir koşul değerlendirmesi için günlük girişlerini kaydeder.  Giriş, ölçümlerin gözlemlenen değerleriyle ilgili ayrıntıları, değerlendirilen kuralları ve değerlendirme bir ölçeklendirme eylemiyle sonuçlanmış olduğunu içerir.
 

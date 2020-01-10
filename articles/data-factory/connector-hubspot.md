@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: cb7091cf61efab8e5bd7e9321911980a1f681476
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ef8d6a8d97b2f2c2cff62c629219efb43077c77
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929293"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754144"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Azure Data Factory (Önizleme) kullanarak HubSpot verileri kopyalama
 
@@ -49,20 +49,20 @@ Aşağıdaki özellikler, HubSpot bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **Hubspot** | Yes |
-| clientID | Hubspot uygulamanızla ilişkili istemci kimliği.  | Yes |
-| clientSecret | Hubspot uygulamanızla ilişkili istemci gizli anahtarı. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Yes |
-| accessToken | Başlangıçta tümleştirmenizi OAuth kimlik doğrulaması yapılırken alınan erişim belirteci. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Yes |
-| refreshToken | Başlangıçta tümleştirmenizi OAuth kimlik doğrulaması yapılırken elde yenileme belirteci. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Yes |
-| useEncryptedEndpoints | Veri kaynağı uç noktaları HTTPS kullanılarak şifrelenmiş olup olmadığını belirtir. Varsayılan değer true olur.  | Hayır |
-| useHostVerification | Ana bilgisayar adı sunucunun sertifikasında SSL üzerinden bağlanırken sunucu ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer true olur.  | Hayır |
-| usePeerVerification | SSL üzerinden bağlanırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true olur.  | Hayır |
+| type | Type özelliği ayarlanmalıdır: **Hubspot** | Evet |
+| clientID | HubSpot uygulamanız ile ilişkili istemci KIMLIĞI. [Buradan](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)hubın içinde uygulama oluşturmayı öğrenin. | Evet |
+| clientSecret | HubSpot uygulamanızla ilişkili istemci gizli dizisi. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
+| accessToken | Başlangıçta tümleştirmenizi OAuth kimlik doğrulaması yapılırken alınan erişim belirteci. [Burada](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)istemci kimliğiniz ve gizli dizinizle nasıl erişim belirteci alabileceğinizi öğrenin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
+| refreshToken | Başlangıçta tümleştirmenizi OAuth kimlik doğrulaması yapılırken elde yenileme belirteci. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
+| useEncryptedEndpoints | Veri kaynağı uç noktaları HTTPS kullanılarak şifrelenmiş olup olmadığını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| useHostVerification | Ana bilgisayar adı sunucunun sertifikasında SSL üzerinden bağlanırken sunucu ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| usePeerVerification | SSL üzerinden bağlanırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 
 **Örnek:**
 
 ```json
 {
-    "name": "HubspotLinkedService",
+    "name": "HubSpotLinkedService",
     "properties": {
         "type": "Hubspot",
         "typeProperties": {
@@ -92,20 +92,20 @@ HubSpot veri kopyalamak için dataset öğesinin type özelliği ayarlamak **Hub
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **HubspotObject** | Yes |
+| type | Dataset öğesinin type özelliği ayarlanmalıdır: **HubspotObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**
 
 ```json
 {
-    "name": "HubspotDataset",
+    "name": "HubSpotDataset",
     "properties": {
         "type": "HubspotObject",
         "typeProperties": {},
         "schema": [],        
         "linkedServiceName": {
-            "referenceName": "<Hubspot linked service name>",
+            "referenceName": "<HubSpot linked service name>",
             "type": "LinkedServiceReference"
         }
     }
@@ -122,7 +122,7 @@ HubSpot veri kopyalamak için kopyalama etkinliği için kaynak türünü ayarla
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **HubspotSource** | Yes |
+| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **HubspotSource** | Evet |
 | sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Companies where Company_Id = xxx"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**
@@ -134,7 +134,7 @@ HubSpot veri kopyalamak için kopyalama etkinliği için kaynak türünü ayarla
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Hubspot input dataset name>",
+                "referenceName": "<HubSpot input dataset name>",
                 "type": "DatasetReference"
             }
         ],

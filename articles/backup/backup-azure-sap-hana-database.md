@@ -3,12 +3,12 @@ title: Azure Backup ile Azure 'da bir SAP HANA veritabanını yedekleme
 description: Bu makalede, Azure Backup hizmeti ile SAP HANA bir veritabanını Azure sanal makinelerine nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: ed47f18c9dabc685d6fbe02804562ef86a93190a
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: c5df198d009f0d4a9f37a68d6b21386f06842722
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285896"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753961"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 
@@ -21,31 +21,86 @@ Bu makalede, öğreneceksiniz nasıl yapılır:
 >
 > * Kasa oluşturma ve yapılandırma
 > * Veritabanlarını bul
-> * Yedeklemeleri yapılandırma
+> * Yedekleri yapılandırma
 > * İsteğe bağlı yedekleme işi çalıştırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Veritabanını yedekleme için ayarlamak üzere [önkoşulları](tutorial-backup-sap-hana-db.md#prerequisites) ve [izin bölümlerine ayarlama](tutorial-backup-sap-hana-db.md#setting-up-permissions) bölümüne bakın.
 
 ### <a name="set-up-network-connectivity"></a>Ağ bağlantısını ayarlama
 
-Tüm işlemler için SAP HANA VM, Azure genel IP adresleri için bağlantı gerektirir. VM işlemleri (veritabanı bulma, yedeklemeleri yapılandırma, yedeklemeleri zamanlama, kurtarma noktalarını geri yükleme vb.) bağlantı olmadan çalışmaz. Azure veri merkezi IP aralıklarına erişime izin vererek bağlantı kurun:
+Tüm işlemler için SAP HANA VM, Azure genel IP adresleri için bağlantı gerektirir. VM işlemleri (veritabanı bulma, yedeklemeleri yapılandırma, yedeklemeleri zamanlama, kurtarma noktalarını geri yükleme vb.), Azure genel IP adreslerine bağlantı olmadan başarısız olur.
 
-* Azure veri merkezleri için [IP adresi aralıklarını](https://www.microsoft.com/download/details.aspx?id=41653) indirebilir ve ardından bu IP adreslerine erişime izin verebilirsiniz.
-* Ağ güvenlik grupları (NSG 'ler) kullanıyorsanız, tüm Azure genel IP adreslerine izin vermek için Azurecsesli [hizmet etiketini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) kullanabilirsiniz. NSG kurallarını değiştirmek için [set-AzureNetworkSecurityRule cmdlet 'ini](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) kullanabilirsiniz.
-* Aktarım, HTTPS üzerinden olduğundan, bağlantı noktası 443, izin verilenler-listesine eklenmelidir.
+Aşağıdaki seçeneklerden birini kullanarak bağlantı kurun:
+
+#### <a name="allow-the-azure-datacenter-ip-ranges"></a>Azure veri merkezi IP aralıklarına izin ver
+
+Bu seçenek, indirilen dosyadaki [IP aralıklarının](https://www.microsoft.com/download/details.aspx?id=41653) kullanılmasına izin verir. Bir ağ güvenlik grubuna (NSG) erişmek için set-AzureNetworkSecurityRule cmdlet 'ini kullanın. Güvenli Alıcılar listeniz yalnızca bölgeye özgü IP 'Leri içeriyorsa, kimlik doğrulamasını etkinleştirmek için Azure Active Directory (Azure AD) hizmet etiketini güvenli alıcılar listesini de güncelleştirmeniz gerekir.
+
+#### <a name="allow-access-using-nsg-tags"></a>NSG etiketlerini kullanarak erişime izin ver
+
+Bağlantıyı kısıtlamak için NSG kullanıyorsanız, Azure Backup giden erişime izin vermek için AzureBackup Service Tag ' i kullanmanız gerekir. Ayrıca, Azure AD ve Azure Storage [kurallarını](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) kullanarak kimlik doğrulama ve veri aktarımı için bağlantıya de izin vermeniz gerekir. Bu, Azure portal veya PowerShell aracılığıyla yapılabilir.
+
+Portalı kullanarak bir kural oluşturmak için:
+
+  1. **Tüm hizmetler**' de **ağ güvenlik grupları** ' na gidin ve ağ güvenlik grubunu seçin.
+  2. **Ayarlar**altında **giden güvenlik kuralları** ' nı seçin.
+  3. **Add (Ekle)** seçeneğini belirleyin. [Güvenlik kuralı ayarları](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** **hizmet etiketi** olarak ayarlandığından ve **hedef hizmet etiketinin** **AzureBackup**olarak ayarlandığından emin olun.
+  4. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle**' ye tıklayın.
+
+PowerShell kullanarak bir kural oluşturmak için:
+
+ 1. Azure hesabı kimlik bilgilerini ekleme ve ulusal bulutları güncelleştirme<br/>
+      `Add-AzureRmAccount`<br/>
+
+ 2. NSG aboneliğini seçin<br/>
+      `Select-AzureRmSubscription "<Subscription Id>"`
+
+ 3. NSG 'yi seçin<br/>
+    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+
+ 4. Azure Backup hizmet etiketi için giden izin verme kuralı ekle<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 5. Depolama hizmeti için giden kuralı izin ver etiketi ekle<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 6. AzureActiveDirectory Service etiketi için giden izin verme kuralı ekle<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+
+ 7. NSG 'yi kaydetme<br/>
+    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+
+**Azure Güvenlik Duvarı etiketlerini kullanarak erişime Izin verin**. Azure Güvenlik duvarı kullanıyorsanız, AzureBackup [FQDN etiketini](https://docs.microsoft.com/azure/firewall/fqdn-tags)kullanarak bir uygulama kuralı oluşturun. Bu, Azure Backup giden erişimine izin verir.
+
+**Trafiği yönlendirmek için BIR http proxy sunucusu dağıtın**. Azure VM 'de bir SAP HANA veritabanını yedeklerken, VM 'deki yedekleme uzantısı, Azure depolama 'ya Azure Backup ve verilere yönetim komutları göndermek için HTTPS API 'Lerini kullanır. Yedekleme uzantısı, kimlik doğrulaması için Azure AD 'yi de kullanır. Bu üç hizmetin yedekleme uzantısı trafiğini HTTP proxy üzerinden yönlendirin. Uzantılar, genel internet erişimi için yapılandırılan tek bileşendir.
+
+Bağlantı seçenekleri aşağıdaki avantajları ve dezavantajları içerir:
+
+**Seçenek** | **Avantajlar** | **Dezavantajlar**
+--- | --- | ---
+IP aralıklarına izin ver | Ek maliyet yok | IP adresi aralıkları zaman içinde değiştiğinden yönetilmesi karmaşıktır <br/><br/> Yalnızca Azure Storage değil Azure 'un tamamına erişim sağlar
+NSG hizmet etiketlerini kullanma | Aralık değişikliklerinin otomatik olarak birleştirilmesi için daha kolay yönetilmesi <br/><br/> Ek maliyet yok <br/><br/> | Yalnızca NSG 'ler ile kullanılabilir <br/><br/> Hizmetin tamamına erişim sağlar
+Azure Güvenlik Duvarı FQDN etiketlerini kullanma | Gerekli FQDN 'Ler otomatik olarak yönetildiğinden yönetimi daha kolay | Yalnızca Azure Güvenlik Duvarı ile kullanılabilir
+HTTP proxy kullanma | Depolama URL 'Lerinde ara sunucuya ayrıntılı denetime izin verilir <br/><br/> VM 'lere tek bir internet erişimi noktası <br/><br/> Azure IP adresi değişikliklerine tabi değildir | Proxy yazılımıyla VM çalıştırmak için ek maliyetler
 
 ## <a name="onboard-to-the-public-preview"></a>Genel önizlemeye ekleme
 
 Genel önizlemeye aşağıdaki şekilde katılın:
 
 * Portalda, [Bu makaleyi izleyerek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal)abonelik kimliğinizi Kurtarma Hizmetleri hizmet sağlayıcısına kaydedin.
-* PowerShell için bu cmdlet 'i çalıştırın. "Kayıtlı" olarak tamamlanmalıdır.
+* PowerShell 'de ' az ' modülü için bu cmdlet 'i çalıştırın. "Kayıtlı" olarak tamamlanmalıdır.
 
     ```powershell
     Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
+* PowerShell 'de ' Azurerd ' modülünü kullanıyorsanız, bu cmdlet 'i çalıştırın. "Kayıtlı" olarak tamamlanmalıdır.
+
+    ```powershell
+    Register-AzureRmProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
+    ```
+    
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -71,19 +126,19 @@ Genel önizlemeye aşağıdaki şekilde katılın:
 
 1. 2\. adımda **yedeklemeyi Yapılandır**' a tıklayın.
 
-    ![Yedeklemeyi Yapılandır](./media/backup-azure-sap-hana-database/configure-backup.png)
+    ![Yedekleme'yi yapılandırın](./media/backup-azure-sap-hana-database/configure-backup.png)
 2. **Yedeklenecek öğeleri seçin**' de, korumak istediğiniz tüm veritabanlarını seçin > **Tamam**' a tıklayın.
 
     ![Yedeklenecek öğeleri seçin](./media/backup-azure-sap-hana-database/select-items.png)
 3. **Yedekleme ilkesi** > **yedekleme Ilkesi**' ni seçin ve aşağıdaki yönergelere uygun olarak veritabanları için yeni bir yedekleme ilkesi oluşturun.
 
-    ![Yedekleme ilkesi seçin](./media/backup-azure-sap-hana-database/backup-policy.png)
+    ![Yedekleme ilkesi seçme](./media/backup-azure-sap-hana-database/backup-policy.png)
 4. İlkeyi oluşturduktan sonra **yedekleme** menüsünde **yedeklemeyi etkinleştir**' e tıklayın.
 
     ![Yedeklemeyi etkinleştir](./media/backup-azure-sap-hana-database/enable-backup.png)
 5. Yedekleme Yapılandırma ilerlemesini portalın **Bildirimler** alanında izleyin.
 
-### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluşturma
+### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluştur
 
 Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle korunduğunu tanımlar.
 
@@ -132,6 +187,9 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
 
 9. İlkeyi kaydetmek ve ana **yedekleme ilkesi** menüsüne dönmek için **Tamam** ' ı tıklatın.
 10. Yedekleme ilkesini tanımlamayı tamamladıktan sonra, **Tamam**' a tıklayın.
+
+> [!NOTE]
+> Her günlük yedeklemesi, bir kurtarma zinciri oluşturmak için önceki tam yedeklemeye zincirlenir. Bu tam yedekleme, son günlük yedeklemenin saklama süresi sona erene kadar bekletilecektir. Bu, tüm günlüklerin kurtarılabilmesini sağlamak için ek bir süre boyunca tam yedeklemenin korunduğu anlamına gelebilir. Kullanıcının haftalık tam yedekleme, günlük fark ve 2 saatlik günlük olduğunu varsayalım. Bunların hepsi 30 gün boyunca tutulur. Ancak, haftalık tam yedekleme yalnızca bir sonraki tam yedekleme kullanılabilir olduktan sonra temizlenir/silinebilir (30 + 7 gün sonra). , Haftalık tam yedekleme 16 Kasım 'da gerçekleşir. Bekletme ilkesine göre, 16 Aralık 'a kadar saklanması gerekir. Bu tam için en son günlük yedeklemesi, 22nd tarihinde bir sonraki zamanlanmış tam önce gerçekleşir. Bu günlük, 22nd 'e kadar kullanılabilir olana kadar, 16. ve tam 6. Bu nedenle, 16. dolu, 22nd 'e kadar korunur.
 
 ## <a name="run-an-on-demand-backup"></a>İsteğe bağlı yedekleme çalıştırma
 

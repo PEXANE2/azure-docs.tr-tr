@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 89364a3ee948abbe5d233052878abe92bc7663a7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: ece6fdb743035069bc6c666d6e90c76860f63e82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241680"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744916"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Linux tabanlı Azure HDInsight 'ta iş akışını tanımlamak ve çalıştırmak için Apache Hadoop ile Apache Oozie kullanma
 
@@ -28,7 +28,7 @@ Ayrıca, Java programları veya kabuk betikleri gibi bir sisteme özgü işleri 
 > [!NOTE]  
 > HDInsight ile iş akışlarını tanımlamaya yönelik başka bir seçenek Azure Data Factory kullanmaktır. Data Factory hakkında daha fazla bilgi edinmek için bkz. [Data Factory Ile Apache Pig ve Apache Hive kullanma][azure-data-factory-pig-hive]. Kurumsal Güvenlik Paketi kümeleriyle Oozie 'yi kullanmak için lütfen bkz. [HDInsight Hadoop kümelerinde Apache Oozie 'yi kurumsal güvenlik paketi Ile çalıştırma](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **HDInsight üzerinde bir Hadoop kümesi**. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -296,11 +296,11 @@ Oozie iş akışı tanımları, XML işlem tanımı dili olan Hadoop Işlem tan�
 
 2. Aşağıdaki XML 'i aşağıda gösterildiği gibi düzenleyin:
 
-    |Yer tutucu değeri| Değiştirilmiş değer|
+    |Yer tutucu değeri| Değiştirilen değer|
     |---|---|
     |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| Adım 1 ' den alınan değer.|
-    |Yöneticileri| Yönetici değilse HDInsight kümesi için oturum açma adınız.|
-    |serverName| Azure SQL veritabanı sunucu adı.|
+    |yönetici| Yönetici değilse HDInsight kümesi için oturum açma adınız.|
+    |SunucuAdı| Azure SQL veritabanı sunucu adı.|
     |sqlLogin| Azure SQL veritabanı sunucusu oturum açma.|
     |SQLPassword de belirtilmelidir| Azure SQL veritabanı sunucusu oturum açma parolası.|
 
@@ -394,10 +394,10 @@ Aşağıdaki adımlarda, kümedeki Oozie iş akışlarını göndermek ve yönet
 
     ```xml
     <name>oozie.base.url</name>
-    <value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
+    <value>http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.cloudapp.net:11000/oozie</value>
     ```
 
-    `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` bölümü Oozie komutuyla kullanılacak URL 'dir.
+    `http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.cloudapp.net:11000/oozie` bölümü Oozie komutuyla kullanılacak URL 'dir.
 
 2. URL 'YI daha önce aldığınız kodla değiştirecek şekilde kodu düzenleyin. URL için bir ortam değişkeni oluşturmak üzere aşağıdakileri kullanarak her komut için girmeniz gerekmez:
 
@@ -480,7 +480,7 @@ Oozie REST API ile, Oozie ile çalışan kendi araçlarınızı oluşturabilirsi
 
 * **URI**: REST API `https://CLUSTERNAME.azurehdinsight.net/oozie`küme dışından erişebilirsiniz.
 
-* **Kimlik doğrulama**: kimlik doğrulaması IÇIN, API 'yi, küme http hesabı (yönetici) ve parolasını kullanın. Örnek:
+* **Kimlik doğrulama**: kimlik doğrulaması IÇIN, API 'yi, küme http hesabı (yönetici) ve parolasını kullanın. Örneğin:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
@@ -657,7 +657,7 @@ Aşağıdakiler, karşılaşabileceğiniz ve bunları nasıl çözeolabileceğin
 
 ### <a name="ja009-cannot-initialize-cluster"></a>JA009: küme başlatılamıyor
 
-**Belirtiler**: Iş durumu **askıya alındı**olarak değişir. İşin ayrıntıları, `RunHiveScript` durumunu **START_MANUAL**olarak gösterir. Eylemi seçmek şu hata iletisini görüntüler:
+**Belirtiler**: Iş durumu **askıya alındı**olarak değişir. İşin ayrıntıları `RunHiveScript` durumunu **START_MANUAL**olarak gösterir. Eylemi seçmek şu hata iletisini görüntüler:
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
@@ -667,7 +667,7 @@ Aşağıdakiler, karşılaşabileceğiniz ve bunları nasıl çözeolabileceğin
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: Oozie &lt;kullanıcının kimliğine bürünmesine izin verilmiyor&gt;
 
-**Belirtiler**: Iş durumu **askıya alındı**olarak değişir. İşin ayrıntıları, `RunHiveScript` durumunu **START_MANUAL**olarak gösterir. Eylemi seçerseniz, aşağıdaki hata iletisini gösterir:
+**Belirtiler**: Iş durumu **askıya alındı**olarak değişir. İşin ayrıntıları `RunHiveScript` durumunu **START_MANUAL**olarak gösterir. Eylemi seçerseniz, aşağıdaki hata iletisini gösterir:
 
     JA002: User: oozie is not allowed to impersonate <USER>
 

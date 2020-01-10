@@ -1,30 +1,30 @@
 ---
 title: Depolama Gezgini ile bilgi deposunu (Önizleme) görüntüleme
 titleSuffix: Azure Cognitive Search
-description: Azure portal Depolama Gezgini bir Azure Bilişsel Arama bilgi deposu görüntüleyin ve çözümleyin. bilgi deposu Şu anda genel önizleme aşamasındadır.
+description: Azure portal Depolama Gezgini bir Azure Bilişsel Arama bilgi deposu görüntüleyin ve çözümleyin. Bilgi deposu Şu anda genel önizleme aşamasındadır.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ca2df05cf20ef51b2d5ca866f22bd9450dd6acaf
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/30/2019
+ms.openlocfilehash: 167316eca1f85530a040d4543f98ae34a9fb93c6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406562"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754071"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Depolama Gezgini bir bilgi deposu görüntüleme
 
 > [!IMPORTANT] 
-> bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
+> Bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
 Bu makalede, Azure portal Depolama Gezgini kullanarak bir bilgi deposuna nasıl bağlanacağınızı ve keşfedeceğinizi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-+ Bu kılavuzda kullanılan örnek bilgi deposunu oluşturmak için, [Azure Portal 'de bilgi deposu oluşturma](knowledge-store-create-portal.md) veya [rest kullanarak bir Azure bilişsel arama bilgi deposu oluşturma](knowledge-store-create-rest.md) bölümündeki adımları izleyin.
++ Bu kılavuzda kullanılan örnek bilgi deposunu oluşturmak için [Azure Portal bilgi deposu oluşturma](knowledge-store-create-portal.md) bölümündeki adımları izleyin.
 
 + Ayrıca, bilgi deposunu oluşturmak için kullandığınız Azure depolama hesabının adına, Azure portal erişim anahtarıyla birlikte ihtiyacınız olacaktır.
 
@@ -36,7 +36,7 @@ Bu makalede, Azure portal Depolama Gezgini kullanarak bir bilgi deposuna nasıl 
 
 1. Otelinizde **veri alma** Sihirbazı 'nı çalıştırdığınızda oluşturulan Azure Tablo projeksiyonlarını bir liste olarak görmek için **Tablolar** listesini genişletin, örnek verileri gözden geçirir.
 
-Anahtar tümceleri yaklaşım puanları, enlem ve Boylam konum verileri ve daha fazlası dahil olmak üzere zenginleştirilmiş verileri görüntülemek için herhangi bir tablo seçin.
+Anahtar ifadeler ve yaklaşım puanları dahil olmak üzere zenginleştirilmiş verileri görüntülemek için herhangi bir tablo seçin.
 
    ![Depolama Gezgini tabloları görüntüleme](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Depolama Gezgini tabloları görüntüleme")
 
@@ -50,7 +50,7 @@ Sorguları çalıştırmak için Komut çubuğundaki **sorgu** ' ya tıklayın v
 
 ## <a name="clean-up"></a>Temizleme
 
-Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 
@@ -62,4 +62,4 @@ Daha derin analizler için bu bilgi deposunu Power BI bağlayın veya farklı bi
 
 > [!div class="nextstepaction"]
 > [Power BI Ile bağlanma](knowledge-store-connect-power-bi.md)
-> [rest 'Te bilgi deposu oluşturma](knowledge-store-howto.md)
+> [rest 'Te bilgi deposu oluşturma](knowledge-store-create-rest.md)

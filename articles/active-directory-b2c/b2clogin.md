@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e4ebde6295c3f3467dd615b58d2140302aa86a61
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949992"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75367663"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeniden yönlendirme URL 'Lerini b2clogin.com olarak ayarlayın
 
@@ -58,7 +58,7 @@ B2clogin.com yeniden yönlendirme URL 'Leri için kullanabileceğiniz iki biçim
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-İkinci seçenek, `your-tenant-name.onmicrosoft.com`biçiminde kiracı etki alanı adınızı kullanır. Örnek:
+İkinci seçenek, `your-tenant-name.onmicrosoft.com`biçiminde kiracı etki alanı adınızı kullanır. Örneğin:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -93,7 +93,7 @@ Azure AD B2C tarafından korunan Azure API Management API ['leri geçirmek için
 
 [Msal.net][msal-dotnet] v2 veya daha önceki bir sürümünü kullanıyorsanız, *b2clogin.com*'e yeniden yönlendirmeye Izin vermek için **validateauthority** özelliğini istemci örneklemede `false` olarak ayarlayın. Bu ayar MSAL.NET v3 ve üzeri için gerekli değildir.
 
-```CSharp
+```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
 client.ValidateAuthority = false; // MSAL.NET v2 and earlier **ONLY**
 ```

@@ -1,14 +1,14 @@
 ---
 title: Yönetim gruplarınız ile çalışma-Azure Idare
 description: Yönetim grubu hiyerarşinizi görüntülemeyi, bakımını yapmayı, güncelleştirmeyi ve silmeyi öğrenin.
-ms.date: 05/22/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 90f4bacf462ed5f2590f51d15b6b660057c51738
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 59f1b48e0a668d506a87ae1ef14de6df76b26ad7
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960235"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751239"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kaynakları yönetim gruplarıyla yönetme
 
@@ -64,11 +64,9 @@ Bir yönetim grubunu silmek için aşağıdaki gereksinimlerin karşılanması g
 
 1. Yönetim grubu altında alt yönetim grubu veya abonelik yok.
 
-   - Bir aboneliği bir yönetim grubundan dışına taşımak için bkz. [aboneliği başka bir yönetim grubuna taşıma](#move-subscriptions-in-the-hierarchy).
+   - Bir aboneliği veya yönetim grubunu başka bir yönetim grubuna taşımak için bkz. [hiyerarşideki Yönetim gruplarını ve abonelikleri taşıma](#moving-management-groups-and-subscriptions).
 
-   - Bir yönetim grubunu başka bir yönetim grubuna taşımak için bkz. [Yönetim gruplarını hiyerarşide taşıma](#move-management-groups-in-the-hierarchy).
-
-1. Yönetim grubu ("sahip", "katkıda bulunan" veya "yönetim grubu katılımcısı") üzerinde yazma izinleriniz vardır. Sahip olduğunuz izinleri görmek için yönetim grubunu seçin ve ardından **IAM**' i seçin. RBAC rolleri hakkında daha fazla bilgi edinmek için bkz. [RBAC ile erişimi ve Izinleri yönetme](../../role-based-access-control/overview.md).  
+1. Yönetim grubu ("sahip", "katkıda bulunan" veya "yönetim grubu katılımcısı") üzerinde yazma izinlerine sahip olmanız gerekir. Sahip olduğunuz izinleri görmek için yönetim grubunu seçin ve ardından **IAM**' i seçin. RBAC rolleri hakkında daha fazla bilgi edinmek için bkz. [RBAC ile erişimi ve Izinleri yönetme](../../role-based-access-control/overview.md).  
 
 ### <a name="delete-in-the-portal"></a>Portalda Sil
 
@@ -194,25 +192,31 @@ Belirli bir yönetim grubunu ve altındaki hiyerarşinin tüm düzeylerini dönd
 az account management-group show --name 'Contoso' -e -r
 ```
 
-## <a name="move-subscriptions-in-the-hierarchy"></a>Abonelikleri hiyerarşide taşıma
+## <a name="moving-management-groups-and-subscriptions"></a>Yönetim gruplarını ve abonelikleri taşıma   
 
-Bir yönetim grubu oluşturmanın bir nedeni, abonelikleri birlikte paketlemenize neden olur. Yalnızca yönetim grupları ve abonelikler başka bir yönetim grubunun alt öğeleri haline getirilebilir. Bir yönetim grubuna taşınan bir abonelik, tüm Kullanıcı erişimini ve ilkelerini üst yönetim grubundan devralır.
+Bir yönetim grubu oluşturmanın bir nedeni, abonelikleri birlikte paketlemenize neden olur. Yalnızca yönetim grupları ve abonelikler başka bir yönetim grubunun alt öğeleri haline getirilebilir. Bir yönetim grubuna taşınan bir abonelik, tüm Kullanıcı erişimini ve ilkelerini üst yönetim grubundan devralır
 
-Aboneliği taşımak için aşağıdaki RBAC izinlerinin tümünün doğru olması gerekir:
+Bir yönetim grubu veya aboneliğini başka bir yönetim grubunun alt öğesi olacak şekilde taşırken, üç kural doğru olarak değerlendirilmelidir.
 
-- Alt abonelikte "sahip" rolü.
-- Hedef üst yönetim grubundaki "sahip", "katkıda bulunan" veya "yönetim grubu katılımcısı" rolü.
-- Mevcut üst yönetim grubunda "Owner", "katkıda bulunan" veya "yönetim grubu katılımcısı" rolü.
+Taşıma eylemini gerçekleştiriyorsanız şunlar gerekir: 
 
-Hedef veya var olan üst yönetim grubu kök yönetim grubinise, izin gereksinimleri geçerli değildir. Kök yönetim grubu tüm yeni yönetim grupları ve abonelikler için varsayılan giriş noktası olduğundan, bir öğeyi taşımak için üzerinde izinleriniz olması gerekmez.
+-  Alt abonelik veya yönetim grubundaki yönetim grubu yazma ve rol atama yazma izinleri.
+    - Yerleşik rol örneği **sahibi**
+- Hedef üst yönetim grubunda yönetim grubu yazma erişimi.
+    - Yerleşik rol örneği: **sahip**, **katkıda bulunan**, **Yönetim grubu katılımcısı**
+- Yönetim grubu var olan üst yönetim grubu üzerinde yazma erişimi.
+    - Yerleşik rol örneği: **sahip**, **katkıda bulunan**, **Yönetim grubu katılımcısı**
 
-Abonelikte sahip rolü geçerli yönetim grubundan devralınmışsa, taşıma hedefleriniz sınırlıdır. Aboneliği yalnızca sahip rolüne sahip olduğunuz başka bir yönetim grubuna taşıyabilirsiniz. Aboneliğin sahipliğini kaybedeceinizden katılımcı olduğunuz bir yönetim grubuna taşıyamazsınız. Abonelik için (yönetim grubundan devralınmaz) sahip rolüne doğrudan atandıysanız, katılımcısı olduğunuz herhangi bir yönetim grubuna taşıyabilirsiniz.
+**Özel durum**: hedef veya var olan üst yönetim grubu kök yönetim grubinise, izin gereksinimleri geçerli değildir. Kök yönetim grubu tüm yeni yönetim grupları ve abonelikler için varsayılan giriş noktası olduğundan, bir öğeyi taşımak için üzerinde izinleriniz olması gerekmez.
+
+Abonelikte sahip rolü geçerli yönetim grubundan devralınmışsa, taşıma hedefleriniz sınırlıdır. Aboneliği yalnızca sahip rolüne sahip olduğunuz başka bir yönetim grubuna taşıyabilirsiniz. Aboneliğin sahipliğini kaybedeceinizden katılımcı olduğunuz bir yönetim grubuna taşıyamazsınız. Abonelik (yönetim grubundan devralınmadı) için sahip rolüne doğrudan atandıysanız, bunu katılımcı olduğunuz herhangi bir yönetim grubuna taşıyabilirsiniz. 
 
 Azure portal hangi izinlere sahip olduğunu görmek için, yönetim grubunu seçin ve ardından **IAM**öğesini seçin. RBAC rolleri hakkında daha fazla bilgi edinmek için bkz. [RBAC ile erişimi ve Izinleri yönetme](../../role-based-access-control/overview.md).
 
-### <a name="move-subscriptions-in-the-portal"></a>Portalda abonelikleri taşıma
 
-#### <a name="add-an-existing-subscription-to-a-management-group"></a>Bir yönetim grubuna mevcut bir abonelik ekleme
+## <a name="move-subscriptions"></a>Abonelikleri taşıma 
+
+#### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Portalda bir yönetim grubuna mevcut bir abonelik ekleme
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
@@ -228,7 +232,7 @@ Azure portal hangi izinlere sahip olduğunu görmek için, yönetim grubunu seç
 
 1. "Kaydet" i seçin.
 
-#### <a name="remove-a-subscription-from-a-management-group"></a>Bir yönetim grubundan abonelik kaldırma
+#### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>Portalda bir yönetim grubundan abonelik kaldırma
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
@@ -276,9 +280,7 @@ Aboneliği yönetim grubundan kaldırmak için abonelik kaldırma komutunu kulla
 az account management-group subscription remove --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
-## <a name="move-management-groups-in-the-hierarchy"></a>Yönetim gruplarını hiyerarşide taşıma  
-
-Bir üst yönetim grubunu taşıdığınızda, bu grubun altındaki hiyerarşi onunla birlikte taşınır. Yönetim gruplarını taşımanız gereken erişim için bkz. [Yönetim grubu erişimi](overview.md#management-group-access).
+## <a name="move-management-groups"></a>Yönetim gruplarını taşıma 
 
 ### <a name="move-management-groups-in-the-portal"></a>Yönetim gruplarını portalda taşıma
 
@@ -318,7 +320,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Etkinlik günlüklerini kullanarak yönetim gruplarını denetleme
 
-Yönetim grupları [Azure Etkinlik Günlüğü](../../azure-monitor/platform/activity-logs-overview.md)'nde desteklenir. Diğer Azure kaynaklarıyla aynı merkezi konumdaki bir yönetim grubunda gerçekleşen tüm olayları sorgulayabilirsiniz.  Örneğin, belirli bir yönetim grubunda yapılan tüm Rol Atamalarını veya İlke Ataması değişikliklerini görebilirsiniz.
+Yönetim grupları [Azure Etkinlik Günlüğü](../../azure-monitor/platform/platform-logs-overview.md)'nde desteklenir. Diğer Azure kaynaklarıyla aynı merkezi konumdaki bir yönetim grubunda gerçekleşen tüm olayları sorgulayabilirsiniz.  Örneğin, belirli bir yönetim grubunda yapılan tüm Rol Atamalarını veya İlke Ataması değişikliklerini görebilirsiniz.
 
 ![Yönetim gruplarıyla etkinlik günlükleri](media/al-mg.png)
 

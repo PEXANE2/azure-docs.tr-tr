@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8b914b8ffe995cf31f8a22b6f80250431facc770
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682241"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747868"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği
 
@@ -33,7 +33,7 @@ HDInsight kümesindeki düğümler Azure sanal makineleri kullanılarak uygulan�
 
 HDInsight, Hadoop Hizmetleri üzerinde yüksek kullanılabilirlik sağlamak için iki baş düğüm sağlar. Her iki baş düğüm de aynı anda HDInsight kümesi içinde etkin ve çalışır. Apache, veya Apache Hadoop YARN gibi bazı hizmetler, belirli bir zamanda yalnızca bir baş düğümde bulunan ' etkin' ' dir. HiveServer2 veya Hive meta veri deposu gibi diğer hizmetler aynı anda her iki baş düğümde de etkindir.
 
-Baş düğümlerin (ve HDInsight 'taki diğer düğümlerin), düğümün ana bilgisayar adının bir parçası olarak sayısal bir değeri vardır. Örneğin, `hn0-CLUSTERNAME` veya `hn4-CLUSTERNAME`.
+Kümenizdeki farklı düğüm türlerine ait konak adlarını almak için lütfen [REST API ambarı](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)'nı kullanın.
 
 > [!IMPORTANT]  
 > Sayısal değeri bir düğümün birincil veya ikincil olup olmadığı ile ilişkilendirmeyin. Sayısal değer yalnızca her düğüm için benzersiz bir ad sağlamak üzere mevcuttur.
@@ -88,7 +88,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 Bu komut, `oozie` komutuyla kullanılacak iç URL 'YI içeren aşağıdakine benzer bir değer döndürür:
 
 ```output
-"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
+"oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
 ```
 
 REST API ambarı ile çalışma hakkında daha fazla bilgi için bkz. [HDInsight 'ı Apache ambarı REST API kullanarak izleme ve yönetme](hdinsight-hadoop-manage-ambari-rest-api.md).
@@ -101,13 +101,13 @@ Aşağıdaki yöntemleri kullanarak internet üzerinden doğrudan erişilemeyen 
 |---|---|
 |SSH|SSH kullanarak bir baş düğüme bağlandıktan sonra, kümedeki diğer düğümlere bağlanmak için baş düğümden SSH kullanabilirsiniz. Daha fazla bilgi için [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md) belgesine bakın.|
 |SSH tüneli|İnternet 'e açık olmayan düğümlerden birinde barındırılan bir Web hizmetine erişmeniz gerekiyorsa, bir SSH tüneli kullanmanız gerekir. Daha fazla bilgi için [HDInsight Ile SSH tüneli kullanma](hdinsight-linux-ambari-ssh-tunnel.md) belgesine bakın.|
-|Azure Sanal Ağ|HDInsight kümeniz bir Azure sanal ağının parçasıysa, aynı sanal ağ üzerindeki herhangi bir kaynak kümedeki tüm düğümlere doğrudan erişebilir. Daha fazla bilgi için bkz. [HDInsight için sanal ağ planlaması](hdinsight-plan-virtual-network-deployment.md) belgesi.|
+|Azure Sanal Ağı|HDInsight kümeniz bir Azure sanal ağının parçasıysa, aynı sanal ağ üzerindeki herhangi bir kaynak kümedeki tüm düğümlere doğrudan erişebilir. Daha fazla bilgi için bkz. [HDInsight için sanal ağ planlaması](hdinsight-plan-virtual-network-deployment.md) belgesi.|
 
 ## <a name="how-to-check-on-a-service-status"></a>Hizmet durumunu denetleme
 
 Baş düğümlerde çalışan hizmetlerin durumunu denetlemek için, ambarı Web Kullanıcı arabirimi veya ambarı REST API kullanın.
 
-### <a name="ambari-web-ui"></a>Ambarı Web Kullanıcı arabirimi
+### <a name="ambari-web-ui"></a>Ambari Web UI
 
 Ambarı Web Kullanıcı arabirimi `https://CLUSTERNAME.azurehdinsight.net`görüntülenebilir. **CLUSTERNAME** değerini kümenizin adıyla değiştirin. İstenirse, kümenizin HTTP Kullanıcı kimlik bilgilerini girin. Varsayılan HTTP Kullanıcı adı **yönetici** ve parola, kümeyi oluştururken girdiğiniz paroladır.
 
@@ -119,7 +119,7 @@ Durumu göstermek için bir hizmetin yanında görünebilen bir dizi simge vard�
 
 Aşağıdaki uyarılar bir kümenin kullanılabilirliğini izlemeye yardımcı olur:
 
-| Uyarı adı                               | Açıklama                                                                                                                                                                                  |
+| Uyarı Adı                               | Açıklama                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ölçüm Izleyici durumu                    | Bu uyarı, izleme durumu betiği tarafından belirlendiği şekilde ölçüm Izleyici işleminin durumunu gösterir.                                                                                   |
 | Ambarı aracı sinyali                   | Bu uyarı, sunucuda bir aracıyla ilgili iletişim kesildiğinde tetiklenir.                                                                                                                        |
@@ -194,7 +194,7 @@ Yanıt aşağıdaki JSON ile benzerdir:
 
 ```json
 {
-    "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+    "href" : "http://mycluster.wutj3h4ic1zejluqhxzvckxq0g.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
     "ServiceInfo" : {
     "cluster_name" : "mycluster",
     "service_name" : "HDFS",
@@ -203,7 +203,7 @@ Yanıt aşağıdaki JSON ile benzerdir:
 }
 ```
 
-URL, hizmetin **hn0-clustername**adlı bir baş düğümde çalışmakta olduğunu bize söyler.
+URL, hizmetin Şu anda **MyCluster. wutj3h4ic1zejluqhxzvckxq0g**adlı bir baş düğümde çalıştığını söyler.
 
 Durum, hizmetin Şu anda çalıştığını veya **başlatıldığını**söyler.
 

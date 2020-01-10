@@ -1,5 +1,6 @@
 ---
-title: "Öğretici: Azure veritabanı geçiş hizmeti 'ni kullanarak bir RDS MySQL için Azure veritabanı 'na MySQL için bir çevrimiçi geçiş yapın | Microsoft Docs"
+title: "Öğretici: RDS MySQL 'i MySQL için Azure veritabanı 'na geçirme"
+titleSuffix: Azure Database Migration Service
 description: Azure veritabanı geçiş hizmeti 'ni kullanarak RDS MySQL 'ten MySQL için Azure veritabanı 'na çevrimiçi geçiş gerçekleştirmeyi öğrenin.
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 10/28/2019
-ms.openlocfilehash: 2df76c5906037fc5ce35e0c3a6558b0240c4b2be
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 01/08/2020
+ms.openlocfilehash: c34de48d0184057f42d1b779abee56e1fa9ac169
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043298"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751296"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Öğretici: DMS kullanarak RDS MySQL 'i MySQL için Azure veritabanı 'na geçirme
 
@@ -26,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Mysqldump ve MySQL yardımcı programlarını kullanarak örnek şemayı geçirin.
-> * Azure veritabanı geçiş hizmeti 'nin bir örneğini oluşturun.
+> * Azure Veritabanı Geçiş Hizmeti örneği oluşturun.
 > * Azure veritabanı geçiş hizmeti 'ni kullanarak bir geçiş projesi oluşturun.
 > * Geçişi çalıştırma.
 > * Geçişi izleme.
@@ -41,7 +42,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu makalede, bir RDS MySQL örneğinden MySQL için Azure veritabanı 'na çevrimiçi geçiş gerçekleştirme işlemi açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -55,8 +56,8 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
 * [MySQL **çalışanları** örnek veritabanını](https://dev.mysql.com/doc/employee/en/employees-installation.html)indirin ve yükleyin.
 * [MySQL Için Azure veritabanı](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)'nın bir örneğini oluşturun.
-* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya VPN kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti Için bir Azure sanal ağı (VNet) oluşturun [ ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). VNet oluşturma hakkında daha fazla bilgi için, [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle de adım adım ayrıntılara sahip olan hızlı başlangıç makalelerine bakın.
-* VNet ağ güvenlik grubu kurallarınızın Azure veritabanı geçiş hizmeti 'ne yönelik aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445 ve 12000. Azure VNet NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)makalesine bakın.
+* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure sanal ağ oluşturun. Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
+* Sanal ağ ağ güvenlik grubu kurallarınızın, Azure veritabanı geçiş hizmeti 'ne yönelik aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445 ve 12000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)makalesine bakın.
 * Veritabanı altyapısı erişimine izin vermek için [Windows Güvenlik duvarınızı](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) (veya Linux Güvenlik duvarınızı) yapılandırın. MySQL Server için bağlantı noktası 3306 ' ya bağlantı için izin verin.
 
 > [!NOTE]
@@ -134,7 +135,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration kaynak sağlayıcısını kaydetme
 
-1. Azure portal'da oturum açın, **Tüm hizmetler**'i ve ardından **Abonelikler**'i seçin.
+1. Azure portal'da oturum açın, **Tüm hizmetler** seçeneğini belirleyin ve ardından **Abonelikler**'i seçin.
 
    ![Portal aboneliklerini gösterme](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-select-subscription1.png)
 
@@ -160,11 +161,11 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
 4. Azure veritabanı geçiş hizmeti örneğini oluşturmak istediğiniz konumu seçin.
 
-5. Mevcut bir VNet seçin veya yeni bir sanal ağ oluşturun.
+5. Var olan bir sanal ağı seçin veya yeni bir ağ oluşturun.
 
-    VNet, kaynak MySQL örneğine erişimi olan Azure veritabanı geçiş hizmeti 'ni ve hedef MySQL için Azure veritabanı örneğini sağlar.
+    Sanal ağ, Azure veritabanı geçiş hizmeti 'ne kaynak MySQL örneğine ve hedef Azure veritabanı için Azure veritabanı 'na erişim sağlar.
 
-    Azure portal VNet oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak sanal ağ oluşturma](https://aka.ms/DMSVnet)makalesine bakın.
+    Azure portal sanal ağ oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak sanal ağ oluşturma](https://aka.ms/DMSVnet)makalesine bakın.
 
 6. Fiyatlandırma katmanı seçin; Bu çevrimiçi geçiş için Premium: 4Vçekirdekleri fiyatlandırma katmanını seçtiğinizden emin olun.
 

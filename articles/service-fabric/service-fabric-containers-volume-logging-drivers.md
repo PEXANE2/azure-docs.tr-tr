@@ -1,31 +1,24 @@
 ---
-title: Service Fabric Azure dosyaları birim sürücüsü (GA) | Microsoft Docs
+title: Service Fabric için Azure dosyaları birim sürücüsü
 description: Service Fabric, kapsayıcıınızdan birimleri yedeklemek için Azure dosyalarının kullanılmasını destekler.
-services: service-fabric
-author: athinanthny
-manager: chackdan
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.author: atsenthi
-ms.openlocfilehash: 1287df567c60b7ad851c94a8ba787270255d0f35
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422790"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750048"
 ---
-# <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure dosyaları birim sürücüsü
-Docker kapsayıcıları için [Azure dosya](/azure/storage/files/storage-files-introduction) tabanlı birimler sağlayan bir [Docker birimi](https://docs.docker.com/engine/extend/plugins_volume/) eklentisi artık **GA (genel kullanıma sunuldu)** .
+# <a name="azure-files-volume-driver-for-service-fabric"></a>Service Fabric için Azure dosyaları birim sürücüsü
 
-Bu Docker birim eklentisi, Service Fabric kümelerine dağıtılabilen bir Service Fabric uygulaması olarak paketlenir. Amacı, kümeye dağıtılan diğer Service Fabric kapsayıcı uygulamalar için Azure Dosyalar tabanlı birimler sağlamaktır.
+Azure dosyaları birim sürücüsü, Docker kapsayıcıları için [Azure dosya](/azure/storage/files/storage-files-introduction) tabanlı birimler sağlayan bir [Docker Volume](https://docs.docker.com/engine/extend/plugins_volume/) eklentisidir. Küme içindeki diğer Service Fabric kapsayıcı uygulamalarına yönelik birimler sağlamak üzere bir Service Fabric kümesine dağıtılabilecek Service Fabric bir uygulama olarak paketlenmiştir.
 
 > [!NOTE]
-> Azure Files Volume eklentisinin sürümü 6.5.661.9590, GA (genel kullanıma sunuldu) bir sürümdür. 
+> Azure dosyaları toplu eklentisinin sürüm 6.5.661.9590, genel kullanıma sunuldu.
 >
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Azure Files Volume eklentisinin Windows sürümü yalnızca [Windows Server sürüm 1709](/windows-server/get-started/whats-new-in-windows-server-1709), [windows 10 sürüm 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) veya sonraki işletim sistemlerinde kullanılabilir.
 
 * Azure Files Volume eklentisinin Linux sürümü, Service Fabric tarafından desteklenen tüm işletim sistemi sürümlerinde kullanılabilir.
@@ -61,7 +54,6 @@ Azure Resource Manager şablonunuzun fabricSettings bölümünde (Azure dağıt�
   }
 ]
 ```
-
 
 ## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Azure dosyaları birim sürücüsü Service Fabric kullanarak örnek uygulama dağıtma
 

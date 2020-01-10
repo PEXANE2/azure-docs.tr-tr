@@ -1,19 +1,19 @@
 ---
 title: Bir arama dizinini yeniden derle
 titleSuffix: Azure Cognitive Search
-description: Bir Azure Bilişsel Arama dizinini yenilemek için yeni öğeler ekleyin, var olan öğeleri veya belgeleri güncelleştirin veya tam yeniden oluşturma veya kısmi artımlı dizin oluşturma içindeki eski belgeleri silin.
+description: Bir Azure Bilişsel Arama dizinini yenilemek için yeni öğeler ekleyin, var olan öğeleri veya belgeleri güncelleştirin veya bir tam yeniden oluşturma veya kısmi dizin oluşturma içindeki eski belgeleri silin.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b14c153f52e0427e289afeccdfd22d6510e4ace1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 18cfa3c6fde399ea61e09c5788c72ce20e5570e8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112957"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754400"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir dizini yeniden oluşturma
 
@@ -36,7 +36,7 @@ Bir dizini çevrimdışı duruma alan yeniden oluşturma 'nın aksine, *veri yen
 
 Diğer herhangi bir değişiklik, mevcut fiziksel yapıları etkilemeden yapılabilir. Özellikle, aşağıdaki değişiklikler dizin yeniden *oluşturma gerektirmez:*
 
-+ Yeni alan ekle
++ Yeni alan ekleme
 + Varolan bir alanda **alınabilir** özniteliği ayarla
 + Mevcut bir alanda **searchAnalyzer** ayarlama
 + Dizine yeni bir çözümleyici tanımı ekleme

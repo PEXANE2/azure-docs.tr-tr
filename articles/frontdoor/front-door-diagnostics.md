@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 229706ff91b776363d3e9de080e02cee5edf9c77
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e379e67fb733c968a755afd245d079239f559c89
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677907"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751408"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Azure ön kapı hizmeti 'nde ölçümleri ve günlükleri izleme
 
 Azure ön kapı hizmeti 'ni kullanarak kaynakları aşağıdaki yollarla izleyebilirsiniz:
 
-- **Ölçümler**. Azure ön kapısının Şu anda performans sayaçlarını görüntülemek için yedi ölçümü vardır.
+- **Ölçümleri**. Azure ön kapısının Şu anda performans sayaçlarını görüntülemek için yedi ölçümü vardır.
 - **Günlükler**. Etkinlik ve tanılama günlükleri, izleme amacıyla bir kaynaktan performans, erişim ve diğer verilerin kaydedilmesine veya kullanılmasına olanak tanır.
 
 ### <a name="metrics"></a>Ölçümler
@@ -31,13 +31,13 @@ Azure ön kapı hizmeti 'ni kullanarak kaynakları aşağıdaki yollarla izleyeb
 
 | Ölçüm | Ölçüm görünen adı | Birim | Boyutlar | Açıklama |
 | --- | --- | --- | --- | --- |
-| Istek sayısı | İstek Sayısı | Sayı | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapı tarafından sunulan istemci isteklerinin sayısı.  |
-| RequestSize | İstek boyutu | Sayacının | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemcilerden ön kapıya istek olarak gönderilen bayt sayısı. |
-| Yanıt boyutu | Yanıt boyutu | Sayacının | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapıdan istemcilere yanıt olarak gönderilen bayt sayısı. |
-| TotalLatency | Toplam gecikme süresi | Mayacak | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemci, ön kapıdan gelen son yanıt baytını kabul edene kadar ön kapıdan alınan istemci isteğinden hesaplanan süredir. |
-| BackendRequestCount | Arka uç Istek sayısı | Sayı | Http durumu</br>HttpStatusGroup</br>Sunucusundan | Ön kapıdan arka uçlara gönderilen isteklerin sayısı. |
-| BackendRequestLatency | Arka uç Isteği gecikmesi | Mayacak | Sunucusundan | Ön kapı arka uca Son Yanıt baytı aldığından, isteğin ön uca gönderildiği süre. |
-| BackendHealthPercentage | Arka uç sistem durumu yüzdesi | Yüzde | Sunucusundan</br>BackendPool | Ön kapıdan arka uçlara yapılan başarılı sistem durumu araştırmalarının yüzdesi. |
+| RequestCount | İstek Sayısı | Sayı | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapı tarafından sunulan istemci isteklerinin sayısı.  |
+| RequestSize | İstek boyutu | Bayt | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemcilerden ön kapıya istek olarak gönderilen bayt sayısı. |
+| Yanıt boyutu | Yanıt boyutu | Bayt | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapıdan istemcilere yanıt olarak gönderilen bayt sayısı. |
+| TotalLatency | Toplam gecikme süresi | Milisaniye | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemci, ön kapıdan gelen son yanıt baytını kabul edene kadar ön kapıdan alınan istemci isteğinden hesaplanan süredir. |
+| BackendRequestCount | Arka uç Istek sayısı | Sayı | Http durumu</br>HttpStatusGroup</br>Arka uç | Ön kapıdan arka uçlara gönderilen isteklerin sayısı. |
+| BackendRequestLatency | Arka uç Isteği gecikmesi | Milisaniye | Arka uç | Ön kapı arka uca Son Yanıt baytı aldığından, isteğin ön uca gönderildiği süre. |
+| BackendHealthPercentage | Arka uç sistem durumu yüzdesi | Yüzde | Arka uç</br>BackendPool | Ön kapıdan arka uçlara yapılan başarılı sistem durumu araştırmalarının yüzdesi. |
 | WebApplicationFirewallRequestCount | Web uygulaması güvenlik duvarı Istek sayısı | Sayı | PolicyName</br>RuleName</br>Eylem | Ön kapısının uygulama katmanı güvenliği tarafından işlenen istemci isteklerinin sayısı. |
 
 ## <a name="activity-log"></a>Etkinlik günlükleri
@@ -59,7 +59,7 @@ Etkinlik günlükleri, ön kapı hizmetinde gerçekleştirilen işlemler hakkın
 ## <a name="diagnostic-logging"></a>Tanılama günlükleri
 Tanılama günlükleri, denetim ve sorun giderme için önemli olan işlemler ve hatalar hakkında zengin bilgiler sağlar. Tanılama günlükleri, etkinlik günlüklerinden farklıdır.
 
-Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere yönelik öngörüler sağlar. Tanılama günlükleri, kaynağınızın gerçekleştirdiği işlemlere ilişkin öngörüler sağlar. Daha fazla bilgi için bkz. [Azure izleyici tanılama günlükleri](../azure-monitor/platform/resource-logs-overview.md).
+Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere yönelik öngörüler sağlar. Tanılama günlükleri, kaynağınızın gerçekleştirdiği işlemlere ilişkin öngörüler sağlar. Daha fazla bilgi için bkz. [Azure izleyici tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md).
 
 ![Tanılama günlükleri](./media/front-door-diagnostics/diagnostic-log.png)
 
@@ -69,18 +69,18 @@ Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere
 
 2. **Tanılama ayarları**' nı seçin.
 
-3. **Tanılamayı aç '** ı seçin. Tanılama günlüklerini bir depolama hesabı ölçümleriyle birlikte arşivleyin, bunları bir olay hub 'ına akıtır veya Azure Izleyici günlüklerine gönderin.
+3. Seçin **tanılamayı Aç**. Tanılama günlüklerini bir depolama hesabı ölçümleriyle birlikte arşivleyin, bunları bir olay hub 'ına akıtır veya Azure Izleyici günlüklerine gönderin.
 
 Ön kapı hizmeti şu anda tanılama günlükleri sağlıyor (toplu olarak saatlik). Tanılama günlükleri, her giriş için aşağıdaki şemaya sahip tek API istekleri sağlar:
 
 | Özellik  | Açıklama |
 | ------------- | ------------- |
-| ClientIP | İsteği yapan istemcinin IP adresi. |
+| ClientIp | İsteği yapan istemcinin IP adresi. |
 | Istemci bağlantı noktası | İsteği yapan istemcinin IP bağlantı noktası. |
-| httpMethod | İstek tarafından kullanılan HTTP yöntemi. |
+| HttpMethod | İstek tarafından kullanılan HTTP yöntemi. |
 | HttpStatusCode | Proxy 'den döndürülen HTTP durum kodu. |
 | HttpStatusDetails | İstek üzerine sonuçtaki durum. Bu dize değerinin anlamı, bir durum başvuru tablosunda bulunabilir. |
-| httpVersion | İstek veya bağlantı türü. |
+| HttpVersion | İstek veya bağlantı türü. |
 | RequestBytes | İstek üst bilgileri ve istek gövdesi dahil olmak üzere HTTP isteği iletisinin bayt cinsinden boyutu. |
 | RequestUri | Alınan isteğin URI 'SI. |
 | ResponseBytes | Yanıt olarak arka uç sunucusu tarafından gönderilen bayt.  |

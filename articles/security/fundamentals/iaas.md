@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 3368f72aeb7909c3e0a8653bb5b094729c4c45ed
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6a775da59680004dadf0cec872057adfd5a16f49
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228030"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749862"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure'da IaaS iş yükleri için en iyi güvenlik yöntemleri
 Bu makalede, VM 'Ler ve işletim sistemleri için en iyi güvenlik uygulamaları açıklanmaktadır.
@@ -81,7 +81,7 @@ Microsoft kötü amaçlı yazılımdan koruma ve iş ortağı çözümlerini, da
 **Ayrıntı**: [Güvenlik Merkezi ile Endpoint Protection sorunlarını yönetme](../../security-center/security-center-partner-integration.md)
 
 ## <a name="manage-your-vm-updates"></a>VM güncelleştirmelerinizi yönetin
-Tüm şirket içi VM 'Ler gibi Azure sanal makineleri, Kullanıcı tarafından yönetilmek üzere tasarlanmıştır. Azure, Windows güncelleştirmelerini bunlara göndermiyor. VM güncelleştirmelerinizi yönetmeniz gerekir.
+Tüm şirket içi VM 'Ler gibi Azure sanal makineleri, Kullanıcı tarafından yönetilmek üzere tasarlanmıştır. Azure bunlara Windows güncelleştirmelerini göndermez. VM güncelleştirmelerinizi yönetmeniz gerekir.
 
 **En iyi yöntem**: VM 'lerinizi güncel tutun.   
 **Ayrıntı**: Azure 'da, şirket içi ortamlarda veya diğer bulut sağlayıcılarında dağıtılan Windows ve Linux bilgisayarlarınıza yönelik işletim sistemi güncelleştirmelerini yönetmek Için Azure otomasyonu 'nda [güncelleştirme yönetimi](../../automation/automation-update-management.md) çözümünü kullanın. Tüm aracı bilgisayarlardaki kullanılabilir güncelleştirmelerin durumunu hızla değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
@@ -99,7 +99,7 @@ Windows Update kullanırsanız, otomatik Windows Update ayarını etkin bırakı
 **Ayrıntı**: tüm Windows güncelleştirmelerini denetleyin ve her dağıtımın ilk adımı olarak yükler. Bu ölçü, sizin veya kendi kitaplığınızdan gelen görüntüleri dağıtırken uygulanması özellikle önemlidir. Azure Marketi 'ndeki görüntüler varsayılan olarak otomatik olarak güncellense de, genel bir sürümden sonra bir gecikme süresi (birkaç hafta kadar) olabilir.
 
 **En iyi yöntem**: işletim sisteminin yeni bir sürümünü zorlamak için sanal makinelerinizi düzenli olarak yeniden dağıtın.   
-**Ayrıntı**: daha kolay bir şekilde DAĞıTMAK için VM 'nizi bir [Azure Resource Manager şablonuyla](../../azure-resource-manager/resource-group-authoring-templates.md) tanımlayın. Bir şablon kullanmak gerektiğinde düzeltme eki uygulanmış ve güvenli bir VM sağlar.
+**Ayrıntı**: daha kolay bir şekilde DAĞıTMAK için VM 'nizi bir [Azure Resource Manager şablonuyla](../../azure-resource-manager/templates/template-syntax.md) tanımlayın. Bir şablon kullanmak gerektiğinde düzeltme eki uygulanmış ve güvenli bir VM sağlar.
 
 **En iyi yöntem**: sanal makinelere güvenlik güncelleştirmelerini hızlıca uygulayın.   
 **Ayrıntı**: [eksik güvenlik güncelleştirmelerini tanımlamak ve bunları uygulamak](../../security-center/security-center-apply-system-updates.md)için Azure Güvenlik Merkezi 'ni (ücretsiz katman veya Standart katman) etkinleştirin.
@@ -139,7 +139,7 @@ Kaynak kötüye kullanımı, VM işlemlerinde gerekenden daha fazla kaynak tüke
 
 Kaynağınızın sistem durumu hakkında görünürlük elde etmek için [Azure izleyicisini](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) kullanmanızı öneririz. Azure Izleyici özellikleri:
 
-- [Kaynak tanılama günlük dosyaları](../../azure-monitor/platform/resource-logs-overview.md): VM kaynaklarınızı izler ve performansı ve kullanılabilirliği tehlikeye atabilecek olası sorunları tanımlar.
+- [Kaynak tanılama günlük dosyaları](../../azure-monitor/platform/platform-logs-overview.md): VM kaynaklarınızı izler ve performansı ve kullanılabilirliği tehlikeye atabilecek olası sorunları tanımlar.
 - [Azure tanılama uzantısı](/azure/azure-monitor/platform/diagnostics-extension-overview): Windows VM 'lerinde izleme ve tanılama özellikleri sağlar. Uzantıyı [Azure Resource Manager şablonun](/azure/virtual-machines/windows/extensions-diagnostics-template)bir parçası olarak ekleyerek bu özellikleri etkinleştirebilirsiniz.
 
 VM performansını izleyen kuruluşlar, performans desenlerindeki belirli değişikliklerin normal veya olağan dışı olup olmadığını belirleyemez. Normalden daha fazla kaynak kullanan bir VM, bir dış kaynaktan veya VM 'de çalışan güvenliği aşılmış bir işlemden saldırı anlamına gelebilir.
@@ -152,13 +152,13 @@ VM performansını izleyen kuruluşlar, performans desenlerindeki belirli deği�
 Aşağıda, Azure disk şifrelemesi 'ni kullanmaya yönelik en iyi yöntemler verilmiştir:
 
 **En iyi yöntem**: VM 'lerde şifrelemeyi etkinleştirin.   
-**Ayrıntı**: Azure disk şifrelemesi, şifreleme anahtarlarını oluşturup anahtar kasanıza yazar. Anahtar kasanızı şifreleme anahtarları yönetme, Azure AD kimlik doğrulaması gerektirir. Bu amaç için bir Azure AD uygulaması oluşturun. Kimlik doğrulama amacıyla, istemci gizli tabanlı kimlik doğrulaması veya [istemci sertifikası tabanlı Azure AD kimlik doğrulaması](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)kullanabilirsiniz.
+**Ayrıntı**: Azure disk şifrelemesi, şifreleme anahtarlarını oluşturup anahtar kasanıza yazar. Anahtar kasanızı şifreleme anahtarları yönetme, Azure AD kimlik doğrulaması gerektirir. Bu amaç için bir Azure AD uygulaması oluşturun. Kimlik doğrulama amacıyla ya da istemci gizli anahtarı tabanlı kimlik doğrulaması kullanabilirsiniz veya [istemci Azure AD'ye sertifika tabanlı kimlik doğrulaması](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
 
 **En iyi yöntem**: şifreleme anahtarları için ek bir güvenlik katmanı için anahtar şifreleme anahtarı (kek) kullanın. Anahtar kasanıza bir KEK ekleyin.   
 **Ayrıntı**: anahtar kasasında anahtar şifreleme anahtarı oluşturmak için [Add-azkeyvaultkey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 'ini kullanın. Ayrıca, anahtar yönetimi için şirket içi donanım güvenlik modülünüzü (HSM) bir KEK içeri aktarabilirsiniz. Daha fazla bilgi için [Key Vault belgelerine](../../key-vault/key-vault-hsm-protected-keys.md)bakın. Anahtar şifreleme anahtarı belirtildiğinde, Azure Disk şifrelemesi anahtar Kasası'na yazmadan önce şifreleme parolaları sarmalamak için bu anahtarı kullanır. Bu anahtarın bir şirket içi anahtar yönetimi HSM 'de bir kopyasını tutmak, anahtarların yanlışlıkla silinmesine karşı ek koruma sağlar.
 
 **En iyi yöntem**: diskler şifrelenmeden önce bir [anlık görüntü](../../virtual-machines/windows/snapshot-copy-managed-disk.md) ve/veya yedekleme yapın. Yedeklemeler, şifreleme sırasında beklenmeyen bir hata oluşursa bir kurtarma seçeneği sağlar.   
-**Ayrıntı**: yönetilen disklere sahip VM 'ler şifreleme gerçekleşmeden önce bir yedekleme gerektirir. Bir yedekleme yapıldıktan sonra, *-skipvmbackup* parametresini belirterek yönetilen diskleri şifrelemek için **set-AzVMDiskEncryptionExtension** cmdlet 'ini kullanabilirsiniz. Şifrelenmiş VM 'Leri yedekleme ve geri yükleme hakkında daha fazla bilgi için [Azure Backup](../../backup/backup-azure-vms-encryption.md) makalesine bakın.
+**Ayrıntı**: yönetilen disklere sahip VM 'ler şifreleme gerçekleşmeden önce bir yedekleme gerektirir. Bir yedekleme yapıldıktan sonra, *-skipvmbackup* parametresini belirterek yönetilen diskleri şifrelemek için **set-AzVMDiskEncryptionExtension** cmdlet 'ini kullanabilirsiniz. Yedekleme ve şifrelenmiş Vm'leri geri yükleme hakkında daha fazla bilgi için bkz. [Azure Backup](../../backup/backup-azure-vms-encryption.md) makalesi.
 
 **En iyi yöntem**: şifreleme gizli dizileri arasında bölge dizileri olmadığından emin olmak Için, Azure disk şifrelemesi, anahtar kasasının ve VM 'lerin aynı bölgede bulunmasını gerektirir.   
 **Ayrıntı**: şifrelenecek VM ile aynı bölgede yer alan bir Anahtar Kasası oluşturun ve kullanın.

@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 807a5ede3feee115b1a8dc51fe14966731fc7784
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 4c451c62a16a70d85d75ee00c3e08758e27425f6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240783"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749981"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Azure etkinlik günlüğünden veri bağlama
 
 
 
-Günlükleri [Azure etkinlik günlüğünden](../azure-monitor/platform/activity-logs-overview.md) Azure Sentinel 'e tek bir tıklama ile akışla aktarabilirsiniz. Etkinlik günlüğü, Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir abonelik günlüğü. Bu, Azure Resource Manager işlemsel verilerden hizmet durumu olaylarında güncelleştirmelere kadar olan bir veri aralığı içerir. Etkinlik günlüğünü kullanarak, aboneliğinizdeki kaynaklar üzerinde herhangi bir yazma işlemi (PUT, POST, SILME) için ' ne, kim ve ne zaman ' i belirleyebilirsiniz. Ayrıca, işlemi ve ilgili diğer özellikleri durumunu anlayabilirsiniz. Etkinlik günlüğü, klasik/"RDFE" modelini kullanan kaynaklara yönelik okuma (GET) işlemlerini veya işlemlerini içermez. 
+Günlükleri [Azure etkinlik günlüğünden](../azure-monitor/platform/platform-logs-overview.md) Azure Sentinel 'e tek bir tıklama ile akışla aktarabilirsiniz. Etkinlik günlüğü, Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir abonelik günlüğü. Bu Azure Resource Manager çalışma verilerinden Hizmet Durumu olaylarındaki güncelleştirmelere kadar değişebilir bir veri aralığını içerir. Etkinlik günlüğünü kullanarak, aboneliğinizdeki kaynaklar üzerinde herhangi bir yazma işlemi (PUT, POST, SILME) için ' ne, kim ve ne zaman ' i belirleyebilirsiniz. Ayrıca, işlemi ve ilgili diğer özellikleri durumunu anlayabilirsiniz. Etkinlik günlüğü, klasik/"RDFE" modelini kullanan kaynaklara yönelik okuma (GET) işlemlerini veya işlemlerini içermez. 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Genel yönetici veya Güvenlik Yöneticisi izinlerine sahip Kullanıcı
 

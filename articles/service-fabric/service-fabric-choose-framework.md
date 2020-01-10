@@ -1,72 +1,65 @@
 ---
-title: Service Fabric programlama modeline genel bakış | Microsoft Docs
-description: 'Service Fabric hizmetleri oluşturmak için iki çerçeveleri sunar: aktör çerçevesinde ve Hizmetleri çerçevesi. Bunlar, Basitlik ve denetimi içinde ayrı dengelemeler sağlar.'
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric programlama modeline genel bakış
+description: 'Service Fabric, hizmetler oluşturmak için iki çerçeve sunar: aktör çerçevesi ve hizmetler çerçevesi. Basitlik ve denetim açısından ayrı bir denge sunar.'
 author: vturecek
-manager: chackdan
-editor: vturecek
-ms.assetid: 974b2614-014e-4587-a947-28fcef28b382
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: d764cbe2df78cb9029a4109caa2998ddded5d6ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/07/2020
+ms.custom: sfrev
+ms.openlocfilehash: 11e32c9d1290227e638a314ed8417b1bed906842
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60341973"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749542"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric programlama modeline genel bakış
-Service Fabric, yazma ve hizmetlerinizi yönetmek için birden çok yol sunar. Hizmetleri, tam anlamıyla platformun özellikleri ve uygulama çerçeveleri için Service Fabric API'leri kullanmayı da tercih edebilirsiniz. Hizmetleri, herhangi bir dil veya barındırılan bir Service Fabric kümesindeki bir kapsayıcıda çalışan kodda yazılmış bir derlenmiş yürütülebilir program de olabilir.
+
+Service Fabric hizmetlerinizi yazmak ve yönetmek için birçok yol sunar. Hizmetler, platformun özelliklerinden ve uygulama çerçevelerinden tam olarak yararlanmak için Service Fabric API 'Lerini kullanmayı seçebilir. Hizmetler Ayrıca, Service Fabric kümesinde barındırılan bir kapsayıcıda çalışan herhangi bir dilde veya kodda yazılmış derlenmiş yürütülebilir program da olabilir.
 
 ## <a name="guest-executables"></a>Konuk yürütülebilir dosyaları
-A [Konuk yürütülebilir dosyası](service-fabric-guest-executables-introduction.md) olan mevcut, uygulamanızdaki bir hizmet olarak çalıştırma (herhangi bir dilde yazılmış) rastgele yürütülebilir. Konuk tarafından yürütülebilir uygulama Service Fabric SDK'sı API'leri doğrudan çağırmanız gerekmez. Ancak bunlar yine de bir platform sunar, özel sistem durumu hizmet bulunabilirliği gibi özelliklerinden yararlanmak ve Service Fabric tarafından kullanıma sunulan REST API'lerini çağırarak raporlama yükleyin. Bunlar ayrıca, tam uygulama yaşam döngüsü desteği de vardır.
 
-Konuk tarafından yürütülebilir uygulama ile ilk dağıtmaya başlamak [konuk tarafından yürütülebilir uygulama](service-fabric-deploy-existing-app.md).
+[Konuk yürütülebilir dosyası](service-fabric-guest-executables-introduction.md) , uygulamanızda bir hizmet olarak çalıştırılabilen mevcut, rastgele bir yürütülebilir dosyadır (herhangi bir dilde yazılmış). Konuk yürütülebilir dosyaları, Service Fabric SDK API 'Lerini doğrudan çağırmaz. Ancak, Service Fabric tarafından kullanıma sunulan REST API 'Lerini çağırarak hizmet bulunabilirliği, özel sistem durumu ve yükleme raporlaması gibi platform tekliflerinin özelliklerinden de faydalanır. Ayrıca, tam uygulama yaşam döngüsü desteği de vardır.
+
+İlk [Konuk yürütülebilir uygulamanızı](service-fabric-deploy-existing-app.md)dağıtarak Konuk yürütülebilir dosyaları kullanmaya başlayın.
 
 ## <a name="containers"></a>Kapsayıcılar
-Varsayılan olarak, Service Fabric dağıtır ve hizmet işlemleri olarak etkinleştirir. Service Fabric ayrıca Hizmetleri dağıtma [kapsayıcıları](service-fabric-containers-overview.md). Service Fabric Linux kapsayıcıları ve Windows kapsayıcıları dağıtımı, Windows Server 2016'da destekler. Kapsayıcı görüntüleri, tüm kapsayıcı depodan çekilir ve makineye dağıtılır. Konuk yürütülebilir dosyaları, Service Fabric durum bilgisi olmayan ya da durum bilgisi olan Reliable services veya kapsayıcılarında Reliable Actors olarak var olan uygulamaları dağıtabilir ve Hizmetleri ve kapsayıcıları aynı uygulama Hizmetleri'nde karıştırabilirsiniz.
 
-[Windows veya Linux hizmetlerinizi kapsayıcılı hale getirmek hakkında daha fazla bilgi edinin](service-fabric-deploy-container.md)
+Varsayılan olarak, Service Fabric Hizmetleri işlem olarak dağıtır ve etkinleştirir. Service Fabric Ayrıca, [kapsayıcılardaki](service-fabric-containers-overview.md)Hizmetleri dağıtabilir. Service Fabric, Windows Server 2016 ve üzeri sürümlerde Linux kapsayıcıları ve Windows kapsayıcıları dağıtımını destekler. Kapsayıcı görüntüleri, herhangi bir kapsayıcı deposundan çekilir ve makineye dağıtılabilir. Mevcut uygulamaları Konuk yürütülebilir dosyalar olarak dağıtabilir, durum bilgisiz veya durum bilgisi olan güvenilir hizmetler veya kapsayıcılarda Reliable Actors Service Fabric ve aynı uygulamadaki kapsayıcılardaki süreçler ve hizmetlerde Hizmetleri karıştırabilirsiniz.
+
+[Windows veya Linux 'ta hizmetlerinizin Kapsayıcılı hale getirme hakkında daha fazla bilgi edinin](service-fabric-deploy-container.md)
 
 ## <a name="reliable-services"></a>Reliable Services
-Güvenilir hizmetler, hizmetler Service Fabric platformu ile tümleştirin ve tam platform özelliklerden faydalanır yazmak için bir hafif altyapısıdır. Reliable Services en az bir yaşam döngüsü hizmetlerinizi yönetmek Service Fabric çalışma zamanı izin veren ve hizmetlerinizin çalışma zamanı ile etkileşim kurmak izin veren API kümesi sağlar. Uygulama Çerçevesi, tasarım ve uygulama seçenekleri üzerinde tam denetim veren minimal ve herhangi diğer uygulama çerçevesi, ASP.NET Core gibi barındırmak için kullanılabilir.
 
-Reliable Services, durum bilgisi olmayan, hizmetin her örneği eşit oluşturulur ve durumu Azure DB veya Azure tablo depolama gibi harici bir çözümde kalıcı web sunucuları gibi çoğu hizmet platformu benzer olabilir.
+Reliable Services, Service Fabric platformuyla tümleştirilen ve platform özelliklerinin tam kümesinden faydalanabilir hizmetler yazmak için kullanılan hafif bir çerçevedir. Reliable Services, Service Fabric çalışma zamanının hizmetlerinizin yaşam döngüsünü yönetmesine ve hizmetlerinizin çalışma zamanıyla etkileşime girmesine izin veren en az bir API kümesi sağlar. Uygulama çerçevesi en düşük düzeydedir, tasarım ve uygulama seçenekleri üzerinde tam denetim sağlar ve ASP.NET Core gibi başka bir uygulama çerçevesini barındırmak için kullanılabilir.
 
-Güvenilir hizmetler ayrıca durum bilgisi olan, bulunabilir dışlayan Service fabric'e burada durumu kalıcıdır hizmeti kendisini güvenilir koleksiyonlar kullanarak doğrudan. Durum çoğaltma ile yüksek kullanılabilirliğe yapılan ve, otomatik olarak Service Fabric tarafından yönetilen tüm bölümleme aracılığıyla dağıtılmış.
+Reliable Services, hizmetin her örneğinin eşit olarak oluşturulduğu ve Azure DB veya Azure Tablo depolaması gibi bir dış çözümde kalıcı olduğu Web sunucuları gibi çoğu hizmet platformlarına benzer şekilde durum bilgisiz olabilir.
 
-[Reliable Services hakkında daha fazla bilgi](service-fabric-reliable-services-introduction.md) veya başlayın [ilk güvenilir hizmetinizi yazma](service-fabric-reliable-services-quick-start.md).
+Service Fabric dışlamalı, Reliable Services durumu durum bilgisi olabilir, burada durum, güvenilir koleksiyonlar kullanılarak doğrudan hizmette kalıcı hale getirilir. Durum, çoğaltma aracılığıyla yüksek oranda kullanılabilir hale getirilir ve bölümleme aracılığıyla dağıtılır, Service Fabric tarafından otomatik olarak yönetilir.
+
+[Reliable Services hakkında daha fazla bilgi edinin](service-fabric-reliable-services-introduction.md) veya [ilk güvenilir hizmetinizi yazmaya](service-fabric-reliable-services-quick-start.md)başlayın.
 
 ## <a name="aspnet-core"></a>ASP.NET Core
-ASP.NET Core, modern bulut tabanlı İnternet'e bağlı uygulamalar, web uygulamaları, IOT uygulamaları ve mobil arka uçları gibi oluşturmaya yönelik yeni bir açık kaynaklı ve platformlar arası altyapılardan biridir. Durum bilgisiz ve durum bilgisi olan ASP.NET Core güvenilir koleksiyonlar ve Service Fabric'in Gelişmiş Düzenleme özelliklerinden yararlanan uygulamalar yazmak için Service Fabric ASP.NET Core ile tümleştirilir.
 
-[Service fabric'te ASP.NET Core hakkında daha fazla bilgi](service-fabric-reliable-services-communication-aspnetcore.md) veya başlayın [ilk ASP.NET Core Service Fabric uygulamanızı yazma](service-fabric-tutorial-create-dotnet-app.md).
+ASP.NET Core, Web uygulamaları, IoT uygulamaları ve mobil arka uçlar gibi modern bulut tabanlı Internet 'e bağlı uygulamalar oluşturmaya yönelik açık kaynaklı, platformlar arası bir çerçevedir. Service Fabric, güvenilir koleksiyonlardan ve Service Fabric gelişmiş düzenleme özelliğinden yararlanan hem durum bilgisi olmayan hem de durum bilgisi olan ASP.NET Core uygulamaları yazmak için ASP.NET Core ile tümleşir.
+
+[Service Fabric ASP.NET Core hakkında daha fazla bilgi edinin](service-fabric-reliable-services-communication-aspnetcore.md) veya [ilk ASP.NET Core Service Fabric uygulamanızı yazarak](service-fabric-tutorial-create-dotnet-app.md)çalışmaya başlayın.
 
 ## <a name="reliable-actors"></a>Reliable Actors
-Reliable Services üzerine inşa edilen güvenilir aktör çerçevesinde aktör tasarım deseni temel alınarak sanal gerçekleştiren deseni, uygulayan bir uygulama çerçevesidir. Reliable Actor çerçeve yürütme aktörler olarak adlandırılan tek iş parçacıklı işlem durumu ve bağımsız bir birim kullanır. Güvenilir aktör çerçevesinde aktörler ve önceden ayarlanan durumu kalıcılığını ve genişleme yapılandırmaları için yerleşik iletişim sağlar.
 
-Reliable Actors Reliable Services üzerinde oluşturulmuş bir uygulama çerçevesi olduğundan, Service Fabric platformu ve eksiksiz bir platform tarafından sunulan özelliklerin sağladığı avantajları ile tamamen tümleşiktir.
+Reliable Services üzerine inşa edilen güvenilir aktör çerçevesi, hesaplama [aktör modeline](https://en.wikipedia.org/wiki/Actor_model)göre [sanal aktör](https://research.microsoft.com/en-us/projects/orleans/) modelini uygulayan bir uygulama çerçevesidir. Güvenilir aktör çerçevesi, *aktör*olarak adlandırılan tek iş parçacıklı yürütme ile bağımsız işlem ve durum birimleri kullanır. Güvenilir aktör çerçevesi, aktörler ve önceden ayarlanmış durum kalıcılığı ve genişleme yapılandırmalarına yönelik yerleşik iletişim sağlar.
 
-[Reliable Actors hakkında daha fazla bilgi](service-fabric-reliable-actors-introduction.md) veya başlayın [ilk Reliable Actor hizmetinizi yazma](service-fabric-reliable-actors-get-started.md)
+Reliable Actors, Reliable Services yerleşik bir uygulama çerçevesi olduğundan, platform tarafından sunulan özelliklerin tam kümesinden Service Fabric platformu ve avantajları ile tamamen tümleşiktir.
 
+[Reliable Actors hakkında daha fazla bilgi edinin](service-fabric-reliable-actors-introduction.md) veya [ilk güvenilir aktör hizmetinizi yazmaya](service-fabric-reliable-actors-get-started.md) başlayın
 
-[ASP.NET Core kullanarak ön uç hizmet oluşturma](service-fabric-reliable-services-communication-aspnetcore.md)
+[ASP.NET Core kullanarak ön uç hizmeti oluşturma](service-fabric-reliable-services-communication-aspnetcore.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Service Fabric ve kapsayıcılar genel bakış](service-fabric-containers-overview.md)
+
+[Service Fabric ve kapsayıcılara genel bakış](service-fabric-containers-overview.md)
 
 [Reliable Services genel bakış](service-fabric-reliable-services-introduction.md)
 
-[Reliable Actors hizmetine genel bakış](service-fabric-reliable-actors-introduction.md)
+[Reliable Actors genel bakış](service-fabric-reliable-actors-introduction.md)
 
 [Service Fabric ve ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
-
-
-
-

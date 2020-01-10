@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: c2f6847a286a9c106fc094e9f0aa315d6b1f337d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 62e2e3f1a80cef04dc778d5a1950cca97d79dcb0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257096"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748385"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure İzleyici’de Azure Depolama ölçümleri
 
@@ -25,7 +25,7 @@ Azure Izleyici, farklı Azure hizmetleri genelinde izleme için birleştirilmiş
 
 Azure İzleyici ölçümlerine erişim birden çok yol sağlar. Bunlara [Azure Portal](https://portal.azure.com), Azure Izleyici API 'LERI (REST ve .net) ve Event Hubs gibi çözümleme çözümlerini de erişebilirsiniz. Daha fazla bilgi için bkz. [Azure Izleyici ölçümleri](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-Ölçümler varsayılan olarak etkindir ve son 93 güne kadar veri erişimi sağlayabilirsiniz. Uzun bir süre saklamak istiyorsanız ölçüm verileri bir Azure depolama hesabına arşivleyebilir. Bu yapılandırılan [tanılama ayarları](../../azure-monitor/platform/resource-logs-overview.md) Azure İzleyici'de.
+Ölçümler varsayılan olarak etkindir ve son 93 güne kadar veri erişimi sağlayabilirsiniz. Uzun bir süre saklamak istiyorsanız ölçüm verileri bir Azure depolama hesabına arşivleyebilir. Bu yapılandırılan [tanılama ayarları](../../azure-monitor/platform/platform-logs-overview.md) Azure İzleyici'de.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Azure portal ölçümler 'e erişin
 
@@ -136,7 +136,7 @@ Aşağıdaki yanıt, JSON biçiminde ölçüm değerleri içerir:
 
 ### <a name="access-metrics-with-the-net-sdk"></a>.NET SDK ile ölçümlere erişin
 
-Azure Izleyici, ölçüm tanımını ve değerlerini okumak için [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) sağlar. [Örnek kod](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) , SDK 'nın farklı parametrelerle nasıl kullanılacağını gösterir. Depolama ölçümleri için veya `0.18.0-preview` sonraki sürümü kullanmanız gerekir. Kaynak KIMLIĞI .NET SDK 'da kullanılır. Daha fazla bilgi için lütfen depolama alanındaki hizmetler için kaynak KIMLIĞINI anlama konusunu okuyun.
+Azure Izleyici, ölçüm tanımını ve değerlerini okumak için [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) sağlar. [Örnek kod](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) , SDK 'nın farklı parametrelerle nasıl kullanılacağını gösterir. Depolama ölçümleri için `0.18.0-preview` veya sonraki sürümü kullanmanız gerekir. Kaynak KIMLIĞI .NET SDK 'da kullanılır. Daha fazla bilgi için lütfen depolama alanındaki hizmetler için kaynak KIMLIĞINI anlama konusunu okuyun.
 
 Aşağıdaki örnek, depolama ölçümlerini okumak için Azure Izleyici .NET SDK 'sını nasıl kullanacağınızı gösterir.
 
@@ -179,7 +179,7 @@ Blob, tablo, dosya veya kuyruğun ölçüm tanımlarını listelemek istiyorsan�
 
 #### <a name="read-metric-values-with-the-net-sdk"></a>.NET SDK ile ölçüm değerlerini okuma
 
-Aşağıdaki örnek, hesap düzeyinde verilerin nasıl `UsedCapacity` okunacağını gösterir:
+Aşağıdaki örnek, `UsedCapacity` verilerinin hesap düzeyinde nasıl okunacağını gösterir:
 
 ```csharp
     public static async Task ReadStorageMetricValue()
@@ -302,19 +302,19 @@ Aşağıda, bir depolama hesabı için kaynak KIMLIĞINI belirtme biçimi göste
 
 Aşağıda, depolama hizmetlerinin her biri için kaynak KIMLIĞINI belirtme biçimi gösterilmektedir.
 
-* Blob hizmeti kaynak kimliği
+* Blob hizmeti kaynak KIMLIĞI
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
 ```
-* Tablo hizmeti kaynak kimliği
+* Tablo hizmeti kaynak KIMLIĞI
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
 ```
-* Kuyruk hizmeti kaynak kimliği
+* Kuyruk hizmeti kaynak KIMLIĞI
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 ```
-* Dosya hizmeti kaynak kimliği
+* Dosya hizmeti kaynak KIMLIĞI
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 ```
@@ -336,40 +336,40 @@ Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 
 | Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-| UsedCapacity | Depolama hesabı tarafından kullanılan depolama miktarı. Standart depolama hesapları için blob, tablo, dosya ve kuyruk tarafından kullanılan kapasitenin toplamıdır. Premium depolama ve Blob Depolama hesapları için BlobCapacity ile aynıdır. <br/><br/> Birim Bayt <br/> Toplama türü: Average <br/> Değer örneği: 1024 |
+| UsedCapacity | Depolama hesabı tarafından kullanılan depolama miktarı. Standart depolama hesapları için blob, tablo, dosya ve kuyruk tarafından kullanılan kapasitenin toplamıdır. Premium depolama ve Blob Depolama hesapları için BlobCapacity ile aynıdır. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 
-### <a name="blob-storage"></a>Blob depolama
-
-| Ölçüm Adı | Açıklama |
-| ------------------- | ----------------- |
-| BlobCapacity | Depolama hesabında kullanılan BLOB depolama alanı toplamı. <br/><br/> Birim Bayt <br/> Toplama türü: Average <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype**ve **blobtier** ([tanım](#metrics-dimensions)) |
-| BLOB sayısı    | Depolama hesabında depolanan BLOB nesnelerinin sayısı. <br/><br/> Birim Count <br/> Toplama türü: Average <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype**ve **blobtier** ([tanım](#metrics-dimensions)) |
-| ContainerCount    | Depolama hesabındaki kapsayıcıların sayısı. <br/><br/> Birim Count <br/> Toplama türü: Average <br/> Değer örneği: 1024 |
-| Dizin kapasitesi     | ADLS 2. hiyerarşik dizin tarafından kullanılan depolama miktarı <br/><br/> Birim Bayt <br/> Toplama türü: Average <br/> Değer örneği: 1024 |
-
-### <a name="table-storage"></a>Tablo depolama alanı
+### <a name="blob-storage"></a>Blob depolaması
 
 | Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-| TableCapacity | Depolama hesabı tarafından kullanılan tablo depolaması miktarı. <br/><br/> Birim Bayt <br/> Toplama türü: Average <br/> Değer örneği: 1024 |
-| TableCount   | Depolama hesabındaki tablo sayısı. <br/><br/> Birim Count <br/> Toplama türü: Average <br/> Değer örneği: 1024 |
-| TableEntityCount | Depolama hesabındaki tablo varlıklarının sayısı. <br/><br/> Birim Count <br/> Toplama türü: Average <br/> Değer örneği: 1024 |
+| BlobCapacity | Depolama hesabında kullanılan BLOB depolama alanı toplamı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype**ve **blobtier** ([tanım](#metrics-dimensions)) |
+| BLOB sayısı    | Depolama hesabında depolanan BLOB nesnelerinin sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype**ve **blobtier** ([tanım](#metrics-dimensions)) |
+| ContainerCount    | Depolama hesabındaki kapsayıcıların sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
+| Dizin kapasitesi     | ADLS 2. hiyerarşik dizin tarafından kullanılan depolama miktarı <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
+
+### <a name="table-storage"></a>Tablo depolaması
+
+| Ölçüm Adı | Açıklama |
+| ------------------- | ----------------- |
+| TableCapacity | Depolama hesabı tarafından kullanılan tablo depolaması miktarı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
+| TableCount   | Depolama hesabındaki tablo sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
+| TableEntityCount | Depolama hesabındaki tablo varlıklarının sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 
 ### <a name="queue-storage"></a>Kuyruk depolama
 
 | Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-| QueueCapacity | Depolama hesabı tarafından kullanılan kuyruk depolama miktarı. <br/><br/> Birim Bayt <br/> Toplama türü: Average <br/> Değer örneği: 1024 |
-| QueueCount   | Depolama hesabındaki sıraların sayısı. <br/><br/> Birim Count <br/> Toplama türü: Average <br/> Değer örneği: 1024 |
-| QueueMessageCount | Depolama hesabındaki süre dolma edilmemiş sıra iletilerinin sayısı. <br/><br/>Birim Count <br/> Toplama türü: Average <br/> Değer örneği: 1024 |
+| QueueCapacity | Depolama hesabı tarafından kullanılan kuyruk depolama miktarı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
+| QueueCount   | Depolama hesabındaki sıraların sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
+| QueueMessageCount | Depolama hesabındaki süre dolma edilmemiş sıra iletilerinin sayısı. <br/><br/>Birim: sayısı <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 
 ### <a name="file-storage"></a>Dosya depolama
 
 | Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-| Dosya kapasitesi | Depolama hesabı tarafından kullanılan dosya depolama alanı miktarı. <br/><br/> Birim Bayt <br/> Toplama türü: Average <br/> Değer örneği: 1024 |
-| FileCount   | Depolama hesabındaki dosyaların sayısı. <br/><br/> Birim Count <br/> Toplama türü: Average <br/> Değer örneği: 1024 |
-| Dosya ShareCount | Depolama hesabındaki dosya paylaşımlarının sayısı. <br/><br/> Birim Count <br/> Toplama türü: Average <br/> Değer örneği: 1024 |
+| Dosya kapasitesi | Depolama hesabı tarafından kullanılan dosya depolama alanı miktarı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
+| FileCount   | Depolama hesabındaki dosyaların sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
+| Dosya ShareCount | Depolama hesabındaki dosya paylaşımlarının sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 
 ## <a name="transaction-metrics"></a>İşlem ölçümleri
 
@@ -379,25 +379,25 @@ Azure depolama, Azure Izleyici 'de aşağıdaki işlem ölçümlerini sağlar.
 
 | Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-| İşlemler | Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız istekleri ve hata üreten istekleri içerir. <br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Geçerli Boyutlar: ResponseType, GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions))<br/> Değer örneği: 1024 |
-| Giriş | Giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir. <br/><br/> Birim Bayt <br/> Toplama türü: Toplam <br/> Geçerli Boyutlar: GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions)) <br/> Değer örneği: 1024 |
-| Çıkış | Çıkış verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz. <br/><br/> Birim Bayt <br/> Toplama türü: Toplam <br/> Geçerli Boyutlar: GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions)) <br/> Değer örneği: 1024 |
-| SuccessServerLatency | Azure Depolama tarafından gerçekleştirilen başarılı bir isteği işlemek için kullanılan ortalama süre. Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez. <br/><br/> Birim Milisaniye <br/> Toplama türü: Average <br/> Geçerli Boyutlar: GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions)) <br/> Değer örneği: 1024 |
-| Başarı E2e | Bir depolama hizmetine yapılan başarılı isteklerin veya belirtilen API işleminin ortalama uçtan uca gecikme süresi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir. <br/><br/> Birim Milisaniye <br/> Toplama türü: Average <br/> Geçerli Boyutlar: GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions)) <br/> Değer örneği: 1024 |
-| Kullanılabilirlik | Depolama hizmetinin veya belirtilen API işleminin kullanılabilirlik yüzdesi. Kullanılabilirlik, toplam faturalandırılabilir istek değerinin beklenmeyen hata üreten istekler dahil olmak üzere ilgili istek sayısına bölünmesiyle hesaplanır. Azaltılmış kullanılabilirlik ve depolama hizmetine veya belirtilen API işlemi için beklenmeyen tüm hatalar sonuçlanır. <br/><br/> Birim Percent <br/> Toplama türü: Average <br/> Geçerli Boyutlar: GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions)) <br/> Değer örneği: 99,99 |
+| İşlemler | Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız istekleri ve hata üreten istekleri içerir. <br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Geçerli Boyutlar: ResponseType, GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions))<br/> Değer örneği: 1024 |
+| Giriş | Giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir. <br/><br/> Birim: bayt <br/> Toplama türü: toplam <br/> Geçerli Boyutlar: GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions)) <br/> Değer örneği: 1024 |
+| Çıkış | Çıkış verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz. <br/><br/> Birim: bayt <br/> Toplama türü: toplam <br/> Geçerli Boyutlar: GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions)) <br/> Değer örneği: 1024 |
+| SuccessServerLatency | Azure Depolama tarafından gerçekleştirilen başarılı bir isteği işlemek için kullanılan ortalama süre. Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez. <br/><br/> Birim: milisaniye <br/> Toplama türü: Ortalama <br/> Geçerli Boyutlar: GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions)) <br/> Değer örneği: 1024 |
+| Başarı E2e | Bir depolama hizmetine yapılan başarılı isteklerin veya belirtilen API işleminin ortalama uçtan uca gecikme süresi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir. <br/><br/> Birim: milisaniye <br/> Toplama türü: Ortalama <br/> Geçerli Boyutlar: GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions)) <br/> Değer örneği: 1024 |
+| Erişilebilirlik | Depolama hizmetinin veya belirtilen API işleminin kullanılabilirlik yüzdesi. Kullanılabilirlik, toplam faturalandırılabilir istek değerinin beklenmeyen hata üreten istekler dahil olmak üzere ilgili istek sayısına bölünmesiyle hesaplanır. Beklenmeyen tüm hatalar, depolama hizmeti veya belirtilen API işlemi için kullanılabilirliğin azalmasıyla sonuçlanır. <br/><br/> Birim: yüzde <br/> Toplama türü: Ortalama <br/> Geçerli Boyutlar: GeoType, ApiName ve Authentication ([tanım](#metrics-dimensions)) <br/> Değer örneği: 99,99 |
 
 ## <a name="metrics-dimensions"></a>Ölçümleri boyutları
 
 Azure depolama, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler.
 
-| Boyut Adı | Açıklama |
+| Boyut adı | Açıklama |
 | ------------------- | ----------------- |
 | **BlobType** | Yalnızca blob ölçümleri için blob türü. Desteklenen değerler **Blockblob**, **pageblob**ve **Azure Data Lake Storage**. Append blobu BlockBlob 'a dahildir. |
-| **BlobTier** | Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Bkz. [Azure Storage blob katmanında](../blobs/storage-blob-storage-tiers.md)daha fazla bilgi. Desteklenen değerler şunlardır: <br/> <li>**Sık**erişimli: Etkin katman</li> <li>Seyrek **erişimli:** Cool katmanı</li> <li>**Arşiv**: Arşiv katmanı</li> <li>**Premium**: Blok Blobu için Premium katman</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Premium Sayfa Blobu için katman türleri</li> <li>**Standart**: Standart Sayfa Blobu için katman türü</li> <li>**Katmanlı olmayan**: Genel amaçlı v1 depolama hesabı için katman türü</li> |
+| **BlobTier** | Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Bkz. [Azure Storage blob katmanında](../blobs/storage-blob-storage-tiers.md)daha fazla bilgi. Desteklenen değerler şunlardır: <br/> <li>**Sık**erişimli: etkin katman</li> <li>**Cool**: Cool Tier</li> <li>**Arşiv**: Arşiv katmanı</li> <li>**Premium**: Blok Blobu için Premium katman</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Premium Sayfa Blobu için katman türleri</li> <li>**Standart**: standart sayfa blobu için katman türü</li> <li>**Katmanlanmadan**: genel amaçlı v1 depolama hesabı için katman türü</li> |
 | **GeoType** | Birincil veya Ikincil kümeden işlem. Kullanılabilir değerler **PRIMARY** ve **Secondary**' i içerir. İkincil kiracının nesnelerini okurken Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) için geçerlidir. |
-| **ResponseType** | İşlem yanıt türü. Kullanılabilir değerler şunlardır: <br/><br/> <li>**ServerOtherError**: Açıklananlar hariç diğer tüm sunucu tarafı hatalar </li> <li>**ServerBusyError**: HTTP 503 durum kodu döndüren, kimliği doğrulanmış istek. </li> <li>**ServerTimeoutError**: HTTP 500 durum kodu döndüren, zaman aşımına uğramış ve kimliği doğrulanmış istek. Zaman aşımı bir sunucu hatası nedeniyle gerçekleşti. </li> <li>**AuthorizationError**: Yetkisiz veri erişimi veya yetkilendirme hatası nedeniyle başarısız olmuş bir kimliği doğrulanmış istek. </li> <li>**NetworkError**: Ağ hataları nedeniyle başarısız olmuş bir kimliği doğrulanmış istek. Çoğunlukla bir istemci, zaman aşımı süre sonundan önce bağlantıyı erkenden kapattığında gerçekleşir. </li> <li>**ClientThrottlingError**: İstemci tarafı azaltma hatası. </li> <li>**ClientTimeoutError**: HTTP 500 durum kodu döndüren, zaman aşımına uğramış ve kimliği doğrulanmış istek. İstemcinin ağ zaman aşımı veya istek zaman aşımı depolama hizmetinin beklediğinden düşük bir değere ayarlanmışsa beklenen bir zaman aşımıdır. Aksi takdirde, bir ServerTimeoutError olarak bildirilir. </li> <li>**ClientOtherError**: Açıklananlar hariç diğer tüm istemci tarafı hatalar. </li> <li>**Success**: Başarılı istek</li> <li> **Başarılı bir kısıtlama**: Bir SMB istemcisi ilk denemede kısıtlandığında, ancak yeniden denemeler yapıldıktan sonra başarılı olan istek başarılı oldu.</li> |
+| **ResponseType** | İşlem yanıt türü. Kullanılabilir değerler şunlardır: <br/><br/> <li>**Serverothererror**: açıklananlar hariç diğer tüm sunucu tarafı hataları </li> <li>**Serverbusyerror**: kimliği doğrulanmış Istek bir http 503 durum kodu döndürdü. </li> <li>**Servertimeouterror**: bir http 500 durum kodu döndüren zaman aşımına uğramış istek kimliği. Zaman aşımı bir sunucu hatası nedeniyle gerçekleşti. </li> <li>**Authorizationerror**: yetkisiz veri erişimi veya yetkilendirme hatası nedeniyle başarısız olan kimliği doğrulanmış istek. </li> <li>**Networkerror**: ağ hataları nedeniyle başarısız olan kimliği doğrulanmış istek. Çoğunlukla bir istemci, zaman aşımı süre sonundan önce bağlantıyı erkenden kapattığında gerçekleşir. </li> <li>**Clientkısıtlar Lingerror**: istemci tarafı azaltma hatası. </li> <li>**Clienttimeouterror**: bir http 500 durum kodu döndüren zaman aşımına uğramış istek kimliği. İstemcinin ağ zaman aşımı veya istek zaman aşımı depolama hizmetinin beklediğinden düşük bir değere ayarlanmışsa beklenen bir zaman aşımıdır. Aksi takdirde, bir ServerTimeoutError olarak bildirilir. </li> <li>**Clienentothererror**: açıklananlar hariç diğer tüm istemci tarafı hataları. </li> <li>**Başarılı: başarılı**istek</li> <li> Başarılı **azaltma**: bir SMB istemcisi ilk denemede azaltılırsa, ancak yeniden denemeler yapıldıktan sonra başarılı olan istek.</li> |
 | **ApiName** | İşlemin adı. Örneğin: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Tüm işlem adları için bkz. [belge](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
-| **Kimlik Doğrulaması** | İşlemlerde kullanılan kimlik doğrulaması türü. Kullanılabilir değerler şunlardır: <br/> <li>**Accountkey**: İşlem, depolama hesabı anahtarıyla doğrulanır.</li> <li>**SAS**: İşlem, paylaşılan erişim imzaları ile doğrulanır.</li> <li>**OAuth**: İşlem, OAuth erişim belirteçleriyle doğrulanır.</li> <li>**Anonim**: İşlem anonim olarak istendi. Bu, ön kontrol isteklerini içermez.</li> <li>**Anonymousön hazırlığı**: İşlem, ön kontrol isteği.</li> |
+| **Kimlik doğrulaması** | İşlemlerde kullanılan kimlik doğrulaması türü. Kullanılabilir değerler şunlardır: <br/> <li>**Accountkey**: işlem, depolama hesabı anahtarıyla doğrulanır.</li> <li>**SAS**: işlem, paylaşılan erişim imzaları ile doğrulanır.</li> <li>**OAuth**: Işlem, OAuth erişim belirteçleriyle doğrulanır.</li> <li>**Anonim**: işlem anonim olarak istendi. Bu, ön kontrol isteklerini içermez.</li> <li>**Anonymousbir ön**kontrol: işlem, ön kontrol isteği.</li> |
 
 Boyutları destekleyen ölçümler için, karşılık gelen ölçüm değerlerini görmek için boyut değerini belirtmeniz gerekir. Örneğin, başarılı yanıtlar için **işlem** değerine bakarsanız, **responseType** boyutunu **başarılı**olarak filtrelemeniz gerekir. Ya da Blok Blobu için **Blobcount** değerine bakarsanız, **Blobtype** boyutunu **blockblob**ile filtrelemeniz gerekir.
 

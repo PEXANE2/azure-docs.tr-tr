@@ -7,25 +7,25 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: af47195a336739d604f0eb40ce6c5c54e15547cb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894088"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750946"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure Kaynak günlükleri için desteklenen hizmetler, şemalar ve Kategoriler
 
 > [!NOTE]
 > Kaynak günlükleri daha önce tanılama günlükleri olarak bilinirdi.
 
-Azure [izleyici kaynak günlükleri](../../azure-monitor/platform/resource-logs-overview.md) , bu hizmet veya kaynakların çalışmasını tanımlayan Azure hizmetleri tarafından oluşturulan günlüklerdir. Azure Izleyici aracılığıyla kullanılabilen tüm kaynak günlükleri, her bir hizmetin kendi olayları için benzersiz özellikler yaymasını sağlayan ortak bir üst düzey şemayı paylaşır.
+Azure [izleyici kaynak günlükleri](../../azure-monitor/platform/platform-logs-overview.md) , bu hizmet veya kaynakların çalışmasını tanımlayan Azure hizmetleri tarafından oluşturulan günlüklerdir. Azure Izleyici aracılığıyla kullanılabilen tüm kaynak günlükleri, her bir hizmetin kendi olayları için benzersiz özellikler yaymasını sağlayan ortak bir üst düzey şemayı paylaşır.
 
 Kaynak türünün bir birleşimi (`resourceId` özelliğinde kullanılabilir) ve `category` bir şemayı benzersiz bir şekilde tanımlar. Bu makalede, kaynak günlükleri için en üst düzey şema ve her hizmet için şemaların serileştirilmesi bağlantıları açıklanmaktadır.
 
 ## <a name="top-level-resource-logs-schema"></a>Üst düzey kaynak günlükleri şeması
 
-| Adı | Gerekli/İsteğe Bağlı | Açıklama |
+| Ad | Gerekli/İsteğe Bağlı | Açıklama |
 |---|---|---|
 | time | Gereklidir | Olayın zaman damgası (UTC). |
 | resourceId | Gereklidir | Olayı veren kaynağın kaynak KIMLIĞI. Kiracı Hizmetleri için bu,/Tenants/Tenant-id/Providers/Provider-nameformundadır. |
@@ -79,8 +79,8 @@ Kaynak tanılama günlükleri şeması, kaynak ve günlük kategorisine göre de
 | Kurtarma Hizmetleri | [Azure Backup için veri modeli](../../backup/backup-azure-reports-data-model.md)|
 | Arama |[Arama Trafik Analizi etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus günlükleri](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL Database | [Azure SQL veritabanı günlüğü](../../sql-database/sql-database-metrics-diag-logging.md) |
-| Akış Analizi |[İş günlükleri](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| SQL Veritabanı | [Azure SQL veritabanı günlüğü](../../sql-database/sql-database-metrics-diag-logging.md) |
+| Stream Analytics |[İş günlükleri](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Traffic Manager log şeması](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Sanal Ağlar | Şema kullanılamıyor. |
 | Sanal Ağ Geçitleri | Şema kullanılamıyor. |
@@ -313,7 +313,7 @@ Kaynak tanılama günlükleri şeması, kaynak ve günlük kategorisine göre de
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* [Kaynak günlükleri hakkında daha fazla bilgi edinin](../../azure-monitor/platform/resource-logs-overview.md)
+* [Kaynak günlükleri hakkında daha fazla bilgi edinin](../../azure-monitor/platform/platform-logs-overview.md)
 * [**Event Hubs** için kaynak kaynağı günlüklerini akışla](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 * [Azure Izleyici REST API kullanarak kaynak günlüğü tanılama ayarlarını değiştirme](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Log Analytics ile Azure depolama biriminden günlüklerini çözümleme](../../azure-monitor/platform/collect-azure-metrics-logs.md)

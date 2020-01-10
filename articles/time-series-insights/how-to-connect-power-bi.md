@@ -7,13 +7,13 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.date: 01/07/2020
+ms.openlocfilehash: 1f6b753052b882b75884503f8c05f34b8cead821
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705968"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749340"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Power BI Time Series Insights verileri görselleştirme
 
@@ -29,7 +29,7 @@ Son olarak, Azure Time Series Insights aracılığıyla zaman serisi verileri g�
 
 Henüz yoksa, [ücretsiz bir Azure aboneliğine](https://azure.microsoft.com/free/) kaydolduğunuzdan emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Power BI Desktop](https://powerbi.microsoft.com/downloads/) en son sürümünü indirin ve yükleyin
 * [Azure Time Series Insights Preview örneği](time-series-insights-update-how-to-manage.md) oluşturun veya oluşturun
@@ -41,8 +41,8 @@ Henüz yoksa, [ücretsiz bir Azure aboneliğine](https://azure.microsoft.com/fre
 
 Time Series Insights ortamınızı Power BI bağlamak için şu adımları izleyin:
 
-1. Time Series Insights Gezginini aç                      
-1. Verileri sorgu veya ham veri olarak dışarı aktarma                       
+1. Time Series Insights Gezginini aç
+1. Verileri sorgu veya ham veri olarak dışarı aktarma
 1. Power BI Desktop açın
 1. Özel sorgudan yükle
 
@@ -51,13 +51,14 @@ Time Series Insights ortamınızı Power BI bağlamak için şu adımları izley
 Kullanmaya başlamak için:
 
 1. Time Series Insights önizleme Gezginini açın ve verilerinizi seçin.
-1. Memnun olduğunuz bir görünümü oluşturduktan sonra, **diğer eylemler** açılan menüsüne gidin ve **Power BI Bağlan**' a tıklayın. 
+1. Memnun olduğunuz bir görünümü oluşturduktan sonra, **diğer eylemler** açılan menüsüne gidin ve **Power BI Bağlan**' a tıklayın.
 
     [![Time Series Insights önizleme Gezgini dışarı aktarma](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Parametrelerinizi bu sekmenin içinde ayarlayın:
 
-   1. Görüntülenecek göreli zaman dilimini belirtin. Mevcut görünümümüz varsa, bunu **var olan zaman dilimi**olarak bırakın. 
+   1. Görüntülenecek göreli zaman dilimini belirtin. Mevcut görünümümüz varsa, bunu **var olan zaman dilimi**olarak bırakın.
+   
    1. **Toplanan** ve **Ham olaylar**arasında seçim yapın. 
    
        > [!NOTE]
@@ -70,7 +71,7 @@ Kullanmaya başlamak için:
 
    1. Time Series Insights örneğinizi **Isınma deposu**için yapılandırmadıysanız, bir uyarı alırsınız.
 
-       [![Bağlan](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+       [![ısınma deposu uyarısı](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
        > Var olan örneğinizi Azure portal **yarı bir depolama** için yapılandırabilirsiniz.

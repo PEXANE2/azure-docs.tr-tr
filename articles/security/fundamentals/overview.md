@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: ed345fdf564c62e2d323b33013da784344c7a461
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8301dc779799ff67a348403e661fc7e66b9e721f
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595380"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750137"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 ## <a name="overview"></a>Genel Bakış
@@ -81,7 +81,7 @@ Application Insights, size en fazla Kullanıcı alacağınız, uygulamanın ne k
 Kilitlenmeler, sorunlar veya performans sorunları varsa, nedeni tanılamak için telemetri verilerinde ayrıntılı arama yapabilirsiniz. Ve uygulamanızın kullanılabilirliği ve performansı üzerinde herhangi bir değişiklik olursa hizmet size e-posta gönderir. Bu nedenle, gizlilik, bütünlük ve kullanılabilirlik güvenliği Triad 'de kullanılabilirliğine yardımcı olduğundan, uygulama öngörüleri değerli bir güvenlik aracı haline gelir.
 
 ### <a name="azure-monitor"></a>Azure İzleyici
-[Azure izleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) , Azure altyapısından ([etkinlik günlüğünden](../../azure-monitor/platform/activity-logs-overview.md)) ve her bir Azure kaynağından ([tanılama günlükleri](../../azure-monitor/platform/resource-logs-overview.md)) her ikisi de görselleştirme, sorgu, yönlendirme, uyarı, otomatik ölçeklendirme ve verileri otomatikleştirme olanağı sunar. Azure Izleyici 'yi kullanarak Azure günlükleri 'nde oluşturulan güvenlikle ilgili olaylar hakkında sizi uyarabilir.
+[Azure izleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) , Azure altyapısından ([etkinlik günlüğünden](../../azure-monitor/platform/platform-logs-overview.md)) ve her bir Azure kaynağından ([tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md)) her ikisi de görselleştirme, sorgu, yönlendirme, uyarı, otomatik ölçeklendirme ve verileri otomatikleştirme olanağı sunar. Azure Izleyici 'yi kullanarak Azure günlükleri 'nde oluşturulan güvenlikle ilgili olaylar hakkında sizi uyarabilir.
 
 ### <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
 [Azure izleyici günlükleri](https://azure.microsoft.com/documentation/services/log-analytics/) – Azure kaynaklarına ek olarak hem şirket içi hem de üçüncü taraf bulut tabanlı altyapı (AWS gibi) IÇIN bir BT yönetimi çözümü sağlar. Azure Izleyici 'deki veriler doğrudan Azure Izleyici günlüklerine yönlendirilebilir, böylece tüm ortamınız için ölçümleri ve günlükleri tek bir yerde görebilirsiniz.
@@ -130,12 +130,12 @@ Aşağıdaki türlerde günlükleri etkinleştirebilir veya devre dışı bırak
 -   Web sunucusu günlüğü-W3C Genişletilmiş günlük dosyası biçimini kullanarak HTTP işlemleri hakkında bilgiler. Bu, işlenen istek sayısı veya belirli bir IP adresinden kaç istek olduğu gibi genel site ölçümlerinin saptanmasında yararlıdır.
 
 #### <a name="application-diagnostics"></a>Uygulama Tanılama
-[Uygulama Tanılama](../../app-service/troubleshoot-diagnostic-logs.md) , bir Web uygulaması tarafından üretilen bilgileri yakalamanızı sağlar. ASP.NET uygulamaları, uygulama tanılama günlüğüne bilgileri günlüğe kaydetmek için [System. Diagnostics. Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) sınıfını kullanabilir. Uygulama Tanılama, uygulama performansıyla ilgili olanlar ve uygulama hataları ve hatalarıyla ilgili olan iki önemli tür olay vardır. Hatalar ve hatalar, bağlantı, güvenlik ve başarısızlık sorunlarına göre daha da ayrılabilir. Hata sorunları genellikle uygulama kodundaki bir sorunla ilgilidir.
+[Uygulama Tanılama](../../app-service/troubleshoot-diagnostic-logs.md) , bir Web uygulaması tarafından üretilen bilgileri yakalamanızı sağlar. ASP.NET uygulamaları, uygulama tanılama günlüğüne bilgileri günlüğe kaydetmek için [System. Diagnostics. Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) sınıfını kullanabilir. Uygulama Tanılamada, başlıca iki türde olay vardır: uygulama performansı ile ilgili olanlar ve uygulama arızaları ve hataları ile ilgili olanlar. Arızalar ve hatalar, bağlantı, güvenlik ve arıza sorunları olarak daha da ayrılabilir. Arıza sorunları, genellikle uygulama kodundaki bir sorunla ilgilidir.
 
-Uygulama Tanılama, aşağıdaki yollarla gruplanmış olayları görüntüleyebilirsiniz:
+Uygulama Tanılamada, bu şekilde gruplandırılmış olayları görebilirsiniz:
 
 -   Tümü (tüm olayları görüntüler)
--   Uygulama hataları (özel durum olaylarını görüntüler)
+-   Uygulama Hataları (özel durumları görüntüler)
 -   Performans (performans olaylarını görüntüler)
 
 ## <a name="storage"></a>Depolama
@@ -165,7 +165,7 @@ Birçok kuruluş için, bekleyen veri şifreleme, veri gizliliği, uyumluluk ve 
 -   [Azure disk şifrelemesi](../azure-security-disk-encryption-overview.md) , bir IaaS sanal makinesi tarafından kullanılan işletim sistemi disklerini ve veri disklerini şifrelemenizi sağlar.
 
 ### <a name="storage-analytics"></a>Depolama Analizi
-[Azure depolama Analizi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) günlüğe kaydetme gerçekleştirir ve depolama hesabı için ölçüm verileri sağlar. Bu verileri kullanarak istekleri izleyebilir, kullanım eğilimlerini çözümleyebilir ve depolama hesabınızdaki sorunları tanılayabilirsiniz. Depolama Analizi, başarılı ve başarısız isteklerle ilgili ayrıntılı bilgileri bir depolama hizmetine kaydeder. Bu bilgiler, bireysel istekleri izlemek ve bir depolama hizmetiyle ilgili sorunları tanılamak için kullanılabilir. İstekler en iyi çaba temelinde günlüğe kaydedilir. Aşağıdaki kimlik doğrulamalı istek türleri günlüğe kaydedilir:
+[Azure depolama Analizi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) günlüğe kaydetme gerçekleştirir ve depolama hesabı için ölçüm verileri sağlar. Bu verileri kullanarak istekleri izleyebilir, kullanım eğilimlerini çözümleyebilir ve depolama hesabınızdaki sorunları tanılayabilirsiniz. Depolama Analizi, bir depolama cihazına gönderilen başarılı ve başarısız isteklerle ilgili ayrıntılı bilgileri günlüğe kaydeder. Bu bilgileri kullanarak istekleri ayrı ayrı izleyebilir ve depolama hizmetiyle ilgili sorunları tanılayabilirsiniz. İstekler en iyi çaba temelinde günlüğe kaydedilir. Aşağıdaki türden kimliği doğrulanmış istekler kaydedilir:
 -   Başarılı istekler.
 
 -   Zaman aşımı, azaltma, ağ, yetkilendirme ve diğer hatalar da dahil olmak üzere başarısız istekler.
@@ -201,11 +201,11 @@ Zorlamalı tünel genellikle şirket içi güvenlik proxy 'leri ve güvenlik duv
 Ağ güvenlik grupları, Kullanıcı tanımlı rotalar ve Zorlamalı tünel, [OSI modelinin](https://en.wikipedia.org/wiki/OSI_model)ağ ve aktarım katmanlarında bir güvenlik düzeyi sağlar ve yığının daha yüksek düzeylerinde güvenliği etkinleştirmek istediğiniz zamanlar olabilir. Azure iş ortağı ağ güvenlik gereci çözümünü kullanarak bu gelişmiş ağ güvenliği özelliklerine erişebilirsiniz. [Azure Marketi](https://azure.microsoft.com/marketplace/) ' ni ziyaret ederek ve "güvenlik" ve "ağ güvenliği" araması yaparak en güncel Azure iş ortağı ağ güvenlik çözümlerini bulabilirsiniz.
 
 ### <a name="azure-virtual-network"></a>Azure Sanal Ağı
-Azure Virtual Network (VNet) buluttaki kendi ağınızın bir gösterimidir. Aboneliğiniz için ayrılmış olan Azure Network Fabric 'in mantıksal bir yalıtımının olması. Bu ağ içindeki IP adres bloklarını, DNS ayarlarını, güvenlik ilkelerini ve yol tablolarını tam olarak denetleyebilirsiniz. Azure sanal ağlarına Azure IaaS sanal makineleri (VM 'Ler) ve/veya [bulut hizmetleri 'ni (PaaS rol örnekleri)](../../cloud-services/cloud-services-choose-me.md) yerleştirebilir ve sanal ağlarınızı alt ağlara segmentleyebilirsiniz.
+Azure sanal ağ (VNet) buluttaki kendi ağınızın bir gösterimidir. Aboneliğiniz için ayrılmış olan Azure Network Fabric 'in mantıksal bir yalıtımının olması. Bu ağ içindeki IP adres bloklarını, DNS ayarlarını, güvenlik ilkelerini ve yol tablolarını tam olarak denetleyebilirsiniz. Azure sanal ağlarına Azure IaaS sanal makineleri (VM 'Ler) ve/veya [bulut hizmetleri 'ni (PaaS rol örnekleri)](../../cloud-services/cloud-services-choose-me.md) yerleştirebilir ve sanal ağlarınızı alt ağlara segmentleyebilirsiniz.
 
 Bunun yanı sıra, Azure'ın sunduğu [bağlantı seçeneklerinden](../../vpn-gateway/index.yml) birini kullanarak sanal ağı şirket içi ağınıza bağlayabilirsiniz. Özetle, IP adres blokları üzerinde tam bir kontrol sahibi olarak ve Azure'ın sunduğu kurumsal ölçek avantajıyla, ağınızı Azure'a genişletebilirsiniz.
 
-Azure ağ iletişimi, çeşitli güvenli uzaktan erişim senaryolarını destekler. Bunlardan bazıları şunlardır:
+Azure ağ iletişimi, çeşitli güvenli uzaktan erişim senaryolarını destekler. Bunlardan bazıları:
 
 -   [Bireysel iş istasyonlarını bir Azure sanal ağına bağlama](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
@@ -223,7 +223,7 @@ Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) 
 
 ![Express Route](./media/overview/azure-security-fig1.png)
 
-ExpressRoute ile Microsoft Azure, Office 365 ve CRM Online gibi Microsoft bulut hizmetlerine bağlantı kurabilirsiniz. Ortak yerleşim tesisinde bağlantı sağlayıcısı üzerinden herhangi bir ağdan herhangi bir ağa (IP VP), noktadan noktaya Ethernet ağı veya sanal çapraz bağlantısından bağlantı olabilir.
+ExpressRoute ile Microsoft Azure, Office 365 ve CRM Online gibi Microsoft bulut hizmetlerine bağlantı kurabilirsiniz. Ortak yerleşim tesisinde bağlantı sağlayıcısı üzerinden herhangi bir ağdan herhangi bir ağa (IP VPN), noktadan noktaya Ethernet ağı veya sanal çapraz bağlantısından bağlantı olabilir.
 
 ExpressRoute bağlantıları, genel Internet üzerinden geçmez ve bu nedenle VPN tabanlı çözümlerden daha güvenli olarak düşünülebilir. Bu, ExpressRoute bağlantılarına İnternet üzerindeki sıradan bağlantılara göre daha fazla güvenilirlik, yüksek hız, düşük gecikme ve normal bağlantılardan daha yüksek güvenlik sağlar.
 
@@ -288,7 +288,7 @@ NSG 'ler için aşağıdaki tanılama günlüğü kategorilerini etkinleştirebi
 ### <a name="security-center"></a>Güvenlik Merkezi
 [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md) , ağ güvenliği en iyi uygulamaları için Azure kaynaklarınızın güvenlik durumunu sürekli olarak analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızı korumak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden [öneriler](../../security-center/security-center-recommendations.md) oluşturur.
 
-## <a name="compute"></a>İşlem
+## <a name="compute"></a>Bilgi İşlem
 Bu bölümde, bu alandaki temel özelliklerle ilgili ek bilgiler ve bu yetenekler hakkında özet bilgiler sağlanmaktadır.
 
 ### <a name="antimalware--antivirus"></a>Kötü amaçlı yazılımdan koruma &
@@ -345,18 +345,18 @@ Kapsamlı bir kimlik ve erişim yönetimi bulut çözümü olan [Azure Active Di
 
 | Ücretsiz/ortak özellikler     | Temel Özellikler    |Premium P1 özellikleri |Premium P2 özellikleri | Azure Active Directory JOIN – yalnızca Windows 10 ile ilgili özellikler|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|   [Dizin nesneleri](../../active-directory/active-directory-whatis.md), [Kullanıcı/Grup Yönetimi (ekleme/güncelleştirme/silme)/Kullanıcı tabanlı sağlama, cihaz kaydı](../../active-directory/active-directory-whatis.md), [Çoklu oturum açma (SSO)](../../active-directory/active-directory-whatis.md), [bulut kullanıcıları için self servis parola değişikliği](../../active-directory/active-directory-whatis.md), [bağlanma (eşitleme motoru Şirket içi dizinleri Azure Active Directory)](../../active-directory/active-directory-whatis.md), [güvenlik/kullanım raporlarını](../../active-directory/active-directory-whatis.md) genişletir       |   [Grup tabanlı erişim yönetimi/sağlama](../../active-directory/active-directory-whatis.md), [bulut kullanıcıları Için self servis parola sıfırlama](../../active-directory/active-directory-whatis.md), [Şirket markası (oturum açma sayfaları/erişim paneli özelleştirmesi)](../../active-directory/active-directory-whatis.md), [uygulama proxy 'si](../../active-directory/active-directory-whatis.md), [SLA 99,9%](../../active-directory/active-directory-whatis.md) |  [Self servis grup ve uygulama yönetimi/self servis uygulama eklemeleri/Dinamik grupları](../../active-directory/active-directory-whatis.md), şirket içi geri yazma, Multi-Factor Authentication (bulut ve şirket ıçı (MFA sunucusu) [ile birlikte self servis parola sıfırlama/değiştirme/kilit açma](../../active-directory/active-directory-whatis.md) [ )](../../active-directory/active-directory-whatis.md), [MıM Cal + MIM sunucusu](../../active-directory/active-directory-whatis.md), [Cloud App Discovery](../../active-directory/active-directory-whatis.md), [Connect Health](../../active-directory/active-directory-whatis.md), [Grup hesapları için otomatik parola geçişi](../../active-directory/active-directory-whatis.md)|    [Kimlik koruması](../../active-directory/identity-protection/overview.md), [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [Bir cihazı Azure AD, Masaüstü SSO, Azure AD için Microsoft Passport, yönetici BitLocker kurtarma](../../active-directory/active-directory-whatis.md), [MDM otomatik kayıt, self servis BitLocker kurtarma, Azure AD katılımı aracılığıyla Windows 10 cihazlarına](../../active-directory/active-directory-whatis.md) ekleyin|
+|   [Dizin nesneleri](../../active-directory/active-directory-whatis.md), [Kullanıcı/Grup Yönetimi (ekleme/güncelleştirme/silme)/Kullanıcı tabanlı sağlama, cihaz kaydı](../../active-directory/active-directory-whatis.md), [Çoklu oturum açma (SSO)](../../active-directory/active-directory-whatis.md), [bulut kullanıcıları için self servis parola değişikliği](../../active-directory/active-directory-whatis.md), [bağlantı (Şirket içi dizinleri Azure Active Directory Ile genişleten eşitleme altyapısı)](../../active-directory/active-directory-whatis.md), [güvenlik/kullanım raporları](../../active-directory/active-directory-whatis.md)       |   [Grup tabanlı erişim yönetimi/sağlama](../../active-directory/active-directory-whatis.md), [bulut kullanıcıları Için self servis parola sıfırlama](../../active-directory/active-directory-whatis.md), [Şirket markası (oturum açma sayfaları/erişim paneli özelleştirmesi)](../../active-directory/active-directory-whatis.md), [uygulama proxy 'si](../../active-directory/active-directory-whatis.md), [SLA 99,9%](../../active-directory/active-directory-whatis.md) |  [Self servis grup ve uygulama yönetimi/self servis uygulama eklemeleri/Dinamik grupları](../../active-directory/active-directory-whatis.md), Şirket [içi geri yazma](../../active-directory/active-directory-whatis.md), [Multi-Factor Authentication (bulut ve şirket içi (MFA sunucusu))](../../active-directory/active-directory-whatis.md), [mım Cal + MIM sunucusu](../../active-directory/active-directory-whatis.md), [Cloud App Discovery](../../active-directory/active-directory-whatis.md), [Connect Health](../../active-directory/active-directory-whatis.md), [Grup hesapları için otomatik parola geçişi](../../active-directory/active-directory-whatis.md)|    [Kimlik koruması](../../active-directory/identity-protection/overview.md), [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [Bir cihazı Azure AD, Masaüstü SSO, Azure AD için Microsoft Passport, yönetici BitLocker kurtarma](../../active-directory/active-directory-whatis.md), [MDM otomatik kayıt, self servis BitLocker kurtarma, Azure AD katılımı aracılığıyla Windows 10 cihazlarına](../../active-directory/active-directory-whatis.md) ekleyin|
 
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) , kuruluşunuzdaki çalışanlar tarafından kullanılan bulut uygulamalarını tanımlamanızı sağlayan Azure Active Directory Premium bir özelliğidir.
 
-- [Azure Active Directory kimlik koruması](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) , risk algılamaları ve kuruluşunuzun özelliklerini etkileyebilecek olası güvenlik açıklarına birleştirilmiş bir görünüm sağlamak için Azure Active Directory anomali algılama yeteneklerini kullanan bir güvenlik hizmetidir lerinizde.
+- [Azure Active Directory kimlik koruması](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) , risk algılamalarını ve kuruluşunuzun kimliklerini etkileyebilecek olası güvenlik açıklarını içeren birleştirilmiş bir görünüm sağlamak için Azure Active Directory anomali algılama yeteneklerini kullanan bir güvenlik hizmetidir.
 
 - [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) , etki alanı denetleyicilerini dağıtmanıza gerek kalmadan Azure VM 'lerine bir etki alanına katmanızı sağlar. Kullanıcılar bu VM 'Lerde kurumsal Active Directory kimlik bilgilerini kullanarak oturum açabilir ve kaynaklara sorunsuz bir şekilde erişebilir.
 
 - [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) , tüketiciye yönelik uygulamalar için yüzlerce milyonlarca kimliğe ölçeklenebilen ve mobil ve web platformlarında tümleştirilebilen, yüksek oranda kullanılabilir küresel bir kimlik yönetimi hizmetidir. Müşterileriniz, var olan sosyal medya hesaplarını kullanan özelleştirilebilen deneyimler aracılığıyla tüm uygulamalarınızda oturum açabilir veya yeni tek başına kimlik bilgileri oluşturabilirsiniz.
 
-- [Azure ACTIVE DIRECTORY B2B işbirliği](https://aka.ms/aad-b2b-collaboration) , iş ortaklarının şirket uygulamalarınıza ve verilerinize kendi kendine yönetilen kimliklerini kullanarak erişmesini etkinleştirerek şirketler arası ilişkilerinizi destekleyen güvenli bir iş ortağı tümleştirme çözümüdür. .
+- [Azure ACTIVE DIRECTORY B2B işbirliği](https://aka.ms/aad-b2b-collaboration) , iş ortaklarının şirket uygulamalarınıza ve verilerinize kendi kendine yönetilen kimliklerini kullanarak erişmesini sağlayarak şirketler arası ilişkilerinizi destekleyen güvenli bir iş ortağı tümleştirme çözümüdür.
 
 - [Azure Active Directory katılması](https://azure.microsoft.com/documentation/articles/active-directory-azureadjoin-overview/) , merkezi yönetim için bulut yeteneklerini Windows 10 cihazlarına genişletmenizi sağlar. Kullanıcıların kurumsal veya kurumsal buluta Azure Active Directory aracılığıyla bağlanmasını sağlar ve uygulama ve kaynaklara erişimi basitleştirir.
 

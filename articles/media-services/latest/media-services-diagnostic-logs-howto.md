@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: e00da689820778a8cc7c5ce95184d4d8c79c70f2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bf83c87c71c8e05dc74d7754c82c76489de1bd85
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977718"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750888"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Tanılama günlüklerini izleme Media Services
 
@@ -26,7 +26,7 @@ ms.locfileid: "74977718"
 
 Bu makalede, verileri depolama hesabına yönlendirme ve sonra verileri görüntüleme işlemlerinin nasıl yapılacağı gösterilir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md).
 - [İzleme Media Services ölçümleri ve tanılama günlüklerini](media-services-metrics-diagnostic-logs.md)inceleyin.
@@ -49,7 +49,7 @@ Bu makalede, verileri depolama hesabına yönlendirme ve sonra verileri görünt
 
    ![Tanılama ayarları bölümü](media/media-services-diagnostic-logs/logs02.png)
 1. **Bekletme (gün)** kaydırıcısını 30’a ayarlayın. Bu kaydırıcı, depolama hesabında izleme verilerinin tutulacağı gün sayısını ayarlar. Azure İzleyici, belirtilen gün sayısından daha eski verileri otomatik olarak siler. Bekletme günü sayısının sıfır olması verileri süresiz olarak depolar.
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 Kaynağınızdaki izleme verileri artık depolama hesabına akar.
 
@@ -73,7 +73,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Örnek:
+Örneğin:
 
 ```cli
 az monitor diagnostic-settings create --name amsv3diagnostic \
@@ -181,8 +181,8 @@ Olayın depolama hesabında görünmesi için beş dakikaya kadar beklemeniz ger
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Azure Izleyici ölçümleri](../../azure-monitor/platform/data-platform.md)
-* [Azure Izleyici tanılama günlükleri](../../azure-monitor/platform/resource-logs-overview.md)
-* [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](../../azure-monitor/platform/resource-logs-overview.md)
+* [Azure Izleyici tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](../../azure-monitor/platform/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 12/09/2019
+ms.date: 01/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0fc5b1b4fcc0f5c09b06ad5d3681fcf3aed2962c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2df22b059cbc9a388a3a3d106bb0c1af1082ebec
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967737"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749114"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -43,7 +43,7 @@ Aşağıdaki tablo, coğrafi bölge içindeki Azure bölgeler ile ExpressRoute k
 | **Jeopolitik bölge** | **Azure bölgeleri** | **ExpressRoute konumları** |
 | --- | --- | --- |
 | **Australia Government** |Avustralya Orta, Avustralya Orta 2 |Kanberra, Kanberra2 |
-| **Avrupa** | Fransa Orta, Fransa Güney, Kuzey Avrupa, Batı Avrupa, UK Batı, UK Güney |Amsterdam, Amsterdam2, Copenhagen, Dublin, Frankfurt, Geneva, Londra, London2, Marseille, MILAN, Münih, Newport (Wales), Oslo, Paris, Stavanger, Stockholm, Zurich |
+| **Avrupa** | Fransa Orta, Fransa Güney, Almanya Kuzey, Almanya Orta Batı, Kuzey Avrupa, Norveç Doğu, Norveç Batı, İsviçre Kuzey, İsviçre Batı, UK Batı, UK Güney, Batı Avrupa |Amsterdam, Amsterdam2, Copenhagen, Dublin, Frankfurt, Geneva, Londra, London2, Marseille, MILAN, Münih, Newport (Wales), Oslo, Paris, Stavanger, Stockholm, Zurich |
 | **Kuzey Amerika** |Doğu ABD, Batı ABD, Doğu ABD 2, Batı ABD 2, Orta ABD, Orta Güney ABD, Orta Kuzey ABD, Batı Orta ABD, Orta Kanada, Doğu Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miamı, New York, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, toron |
 | **Asya** | Doğu Asya, Güneydoğu Asya |Hong Kong ÖIB, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
 | **Hindistan** | Batı Hindistan, Orta Hindistan, Güney Hindistan |Madras, Madras2, Bombay, Bombay2 |
@@ -89,7 +89,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Baş Telem](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |Desteklenen |Desteklenen |Hong Kong, Taipei |
 | **China Telecom Global** |Desteklenen |Desteklenen |Hong Kong SAR |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Desteklenen |Desteklenen |Chicago, Dallas, Montreal, Toronto, Washington DC |
-| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Desteklenen |Desteklenen |Amsterdam, Amsterdam2, Chicago, Dublin, Frankfurt, Londra, London2, Newport, New York, Osaka, Paris, Silicon Valley, Silicon Valley2, Singapur2, Tokyo |
+| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Desteklenen |Desteklenen |Amsterdam, Amsterdam2, Chicago, Dublin, Frankfurt, Londra, London2, Newport, New York, Osaka, Paris, Silicon Valley, Silicon Valley2, Singapur2, Tokyo, Washington DC |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Desteklenen |Desteklenen |Chicago, Silikon Vadisi, Washington DC |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Desteklenen |Desteklenen |Chicago, Denver, Los Angeles, New York, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2 |
 | **[DE-CıX](https://www.de-cix.net/en/de-cix-service-world/directcloud/find-a-cloud-service/detail/microsoft-azure)** | Desteklenen |Desteklenen |Amsterdam2, Frankfurt, Marseille|
@@ -97,18 +97,19 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **du datamena** |Desteklenen |Desteklenen | Dubai2 |
 | **eir** |Desteklenen |Desteklenen |Dublin|
 | **[Epsilon genel Iletişimler](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Desteklenen |Desteklenen |Singapur, Singapur2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Desteklenen |Desteklenen |Amsterdam, Atlanta, Chicago, Dallas, Dublin, Hong Kong ÖIB, Londra, London2, Los Angeles, Melbourne, Miamı, New York, Osaka, Paris, Sao Paulo, Seattle, Silicon Valley, Singapur, Stockholm, Sidney, Tokyo, Toron, Washington DC |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Desteklenen |Desteklenen |Amsterdam, Atlanta, Chicago, Dallas, Dublin, Geneva, Hong Kong ÖIB, Londra, London2, Los Angeles, Melbourne, Miamı, New York, Osaka, Paris, Sao Paulo, Seattle, Silicon Valley, Singapur, Stockholm, Sidney, Tokyo, Toron, Washington DC |
 | **Etisalat UAE** |Desteklenen |Desteklenen |Dubai|
 | **[eunetçalışma](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Desteklenen |Desteklenen |Amsterdam, Amsterdam2, Dublin, Londra |
 | **FarEasTone** |Desteklenen |Desteklenen |Taipei|
 | **GÉANT** |Desteklenen |Desteklenen |Amsterdam, Frankfurt, Marseille |
 | **[Genel Bulut Değişimi (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Desteklenen| Desteklenen | Chennai, Mumbai |
+| **Intelsat** | Desteklenen | Desteklenen | Washington DC2 |
 | **[InterCloud](https://www.intercloud.com/)** |Desteklenen |Desteklenen |Amsterdam, Chicago, Hong Kong, Londra, New York, Paris, Silicon Valley, Singapur, Washington DC, Zurich |
 | **[Internet2](https://www.internet2.edu/products-services/cloud-services-applications/microsoft-azure/#service-cloud-connect)** |Desteklenen |Desteklenen |Chicago, Dallas, Silicon Valley, Washington DC |
 | **[Internet Initiative Japan Inc. - IIJ](https://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Desteklenen |Desteklenen |Osaka, Tokyo |
 | **[Internet Solutions - Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Desteklenen |Desteklenen |Cape Town, Johannesburg, Londra |
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Desteklenen |Desteklenen |Amsterdam, Amsterdam2, Copenhagen, Dublin, Frankfurt, Londra, Marseille, Paris, Zurich |
-| **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Desteklenen |Desteklenen | Amsterdam, London2, Silicon Valley, toron |
+| **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Desteklenen |Desteklenen | Amsterdam, London2, Silicon Valley, Toron, Washington DC |
 | **Jaguar ağı** |Desteklenen |Desteklenen |Marseille|
 | **[JISC](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Desteklenen |Desteklenen |Londra |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Desteklenen |Desteklenen |Seoul |
@@ -118,7 +119,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Desteklenen |Desteklenen |Amsterdam, Chicago, Dallas, Londra, Newport (Wales), Sao Paulo, Seattle, Silicon Valley, Singapur, Washington DC |
 | **LG CNS** |Desteklenen |Desteklenen |Busan, Seul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Desteklenen |Desteklenen |Cape Town, Johannesburg |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Desteklenen |Desteklenen |Amsterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dubai2, Dublin, Hong Kong ÖIB, Las Vegas, Londra, London2, Los Angeles, Melbourne, Miamı, Montreal, New York, Perth, Quebec City, San Antonio, Seattle, Silicon Valley, Singapur, Singapur2, Sidney, Tokyo, Torto, Washington DC, Zurich |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Desteklenen |Desteklenen |Amsterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dubai2, Dublin, Frankfurt, Hong Kong ÖIB, Las Vegas, Londra, London2, Los Angeles, Melbourne, Miamı, Montreal, New York, Oslo, Perth, Quebec City, San Antonio, Seattle, Silicon Valley, Singapur, Singapur2, Sidney, Tokyo, Torüzerine, Washington DC, Zurich |
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |Desteklenen |Desteklenen |Londra |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Desteklenen |Desteklenen |Dallas, Los Angeles, MIAMI, Sao Paulo, Washington DC |
 | **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Desteklenen |Desteklenen |Newport(Galler) |
@@ -129,7 +130,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Optus](https://www.optus.com.au/enterprise/)** |Desteklenen |Desteklenen |Melbourne, Sidney |
 | **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |Desteklenen |Desteklenen |Amsterdam, Amsterdam2, Frankfurt, Hong Kong ÖIB, Johannesburg, Londra, Paris, Sao Paulo, Silicon Valley, Singapur, Sidney, Tokyo, Washington DC |
 | **[Cumxcom](https://www.orixcom.com/cloud-solutions/)** | Desteklenen | Desteklenen | Dubai2 |
-| **[PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)** |Desteklenen |Desteklenen |Chicago, Silikon Vadisi, Washington DC |
+| **[PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |Desteklenen |Desteklenen |Chicago, Silikon Vadisi, Washington DC |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |Desteklenen |Desteklenen |Chicago, Hong Kong ÖIB, Londra |
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Desteklenen |Desteklenen |Seoul |
 | **[IR](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | Desteklenen |Desteklenen | Washington DC |
@@ -143,7 +144,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Desteklenen |Desteklenen |Amsterdam, Sao Paulo |
 | **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Desteklenen |Desteklenen |Londra, London2 |
 | **Telenor** |Desteklenen |Desteklenen |Amsterdam, Londra, Oslo |
-| **[Telia Carrier](https://teliacarrier.com/our-services/connectivity/cloud-connect.html?title=Cloud%20Connect)** | Desteklenen | Desteklenen |Amsterdam, Chicago, Dallas, Frankfurt, Hong Kong, Londra, Paris, Silicon Valley, Stockholm, Washington DC |
+| **[Telia Carrier](https://www.teliacarrier.com/)** | Desteklenen | Desteklenen |Amsterdam, Chicago, Dallas, Frankfurt, Hong Kong, Londra, Oslo, Paris, Silicon Valley, Stockholm, Washington DC |
 | **Telmex Uninet**| Desteklenen | Desteklenen | Dallas |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Desteklenen |Desteklenen |Melbourne, Singapur, Sidney |
 | **[Telus](https://www.telus.com)** |Desteklenen |Desteklenen |Montreal, Seattle, Tora |
@@ -168,7 +169,7 @@ Azure Ulusal bulutlar birbirinden ve küresel ticari bir Azure 'dan yalıtılmı
 
 | **Hizmet sağlayıcı** | **Microsoft Azure** | **Office 365** | **Konumlar** |
 | --- | --- | --- | --- |
-| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Desteklenen |Desteklenen |Chicago, Phoenix, Washington DC |
+| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Desteklenen |Desteklenen |Chicago, Phoenix, Silicon Valley, Washington DC |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Desteklenen |Desteklenen |New York, Phoenix, San Antonio, Washington DC |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Desteklenen |Desteklenen |Chicago, Dallas, New York, Seattle, Silikon Vadisi, Washington DC |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Desteklenen |Desteklenen |Chicago, Silikon Vadisi, Washington DC |
@@ -207,7 +208,7 @@ Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlant�
   * [IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [NextDC](https://www.nextdc.com/)
-  * [PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/) 
+  * [PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure) 
 * Bağlantı sağlayıcınızı, ağınızı seçtiğiniz eşleme konumuna genişletmesini sağlayın.
   * Bağlantı sağlayıcınızın bağlantınızı yüksek oranda kullanılabilir şekilde genişlettiğinden emin olun, böylece hiç tek nokta arızası olmaz.
 * Microsoft’a bağlanmak için bağlantı sağlayınız olarak değişime sahip bir ExpressRoute bağlantı hattı sipariş edin.

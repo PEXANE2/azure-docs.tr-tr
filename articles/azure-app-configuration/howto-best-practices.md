@@ -1,6 +1,6 @@
 ---
-title: Azure uygulama yapılandırma en iyi yöntemler | Microsoft Docs
-description: En iyi Azure uygulama yapılandırmasını kullanma hakkında bilgi edinin
+title: Azure Uygulama yapılandırması en iyi uygulamalar | Microsoft Docs
+description: Azure Uygulama yapılandırması 'nı en iyi şekilde kullanmayı öğrenin
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,65 +12,65 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3d9a597e7ced631627a121f3f0757e472f9a4bae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b43ca5b6bec64d9283a64c9bcc0a3b60c21bca4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393584"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750424"
 ---
-# <a name="azure-app-configuration-best-practices"></a>Azure uygulama yapılandırma en iyi uygulamaları
+# <a name="azure-app-configuration-best-practices"></a>Azure Uygulama yapılandırması en iyi uygulamaları
 
-Bu makalede, Azure uygulama yapılandırması kullanılırken ortak desenler ve en iyi uygulamalar açıklanmaktadır.
+Bu makalede, Azure Uygulama yapılandırması 'nı kullanırken yaygın desenler ve en iyi uygulamalar ele alınmaktadır.
 
 ## <a name="key-groupings"></a>Anahtar gruplandırmaları
 
-Uygulama yapılandırma anahtarları düzenlemek için iki seçenek sunar:
+Uygulama yapılandırması anahtarları düzenlemek için iki seçenek sunar:
 
 * Anahtar ön ekleri
 * Etiketler
 
-Anahtarlarınızı grubuna bir veya iki seçeneklerini kullanabilirsiniz.
+Anahtarlarınızı gruplandırmak için bir veya iki seçenekten birini kullanabilirsiniz.
 
-*Anahtar önekleri* anahtarları başına bölümlerdir. Aynı öneke adlarını kullanarak, bir anahtar kümesini mantıksal olarak gruplayabilirsiniz. Ön ekleri gibi bir sınırlandırıcı ile bağlı birden çok bileşen içerebilir `/`benzer bir ad alanı oluşturmak için bir URL yolu. Bir uygulama yapılandırma deposunda birçok uygulama, Bileşen Hizmetleri ve ortamları için anahtarları depolamak için bu tür hiyerarşileri yararlıdır.
+*Anahtar ön ekleri* anahtarların başlangıç parçalarından oluşur. Adlarında aynı öneki kullanarak bir anahtar kümesini mantıksal olarak gruplandırabilirsiniz. Ön ekler, bir ad alanı oluşturmak için bir URL yoluna benzer `/`gibi sınırlayıcıyla bağlı birden çok bileşen içerebilir. Bu tür hiyerarşiler, tek bir uygulama yapılandırma deposundaki birçok uygulama, bileşen hizmeti ve ortam için anahtar depolarken yararlı olur.
 
-Akılda tutulması gereken önemli bir şey anahtarları uygulama kodunuza karşılık gelen ayarlarının değerleri almak için başvuruyor olmasıdır. Anahtarları değiştirmeniz gerekmez, aksi takdirde gerçekleşen her zaman kodunuzu değiştirmeniz gerekir.
+Dikkat edilmesi gereken önemli bir şey, anahtarların ilgili ayarların değerlerini almak için uygulama kodunuzun başvurduğu şeydir. Anahtarların değişmemesi veya herhangi bir zamanda kodunuzun değiştirilmesini değiştirmeniz gerekir.
 
-*Etiketleri* anahtarlar bir özniteliği olan. Bunların türevleri bir anahtar oluşturmak için kullanılır. Örneğin, bir anahtarın birden çok sürümünü etiketler atayabilirsiniz. Bir sürümü, bir yineleme, bir ortam veya diğer bir bağlam bilgileri olabilir. Uygulamanızı tamamen farklı bir anahtar değerler kümesini başka bir etiketi belirterek isteyebilir. Sonuç olarak, tüm anahtar başvurularını, kodunuzda değişmeden kalır.
+*Etiketler* anahtarlar üzerindeki bir özniteliktir. Anahtar çeşitleri oluşturmak için kullanılır. Örneğin, bir anahtarın birden çok sürümüne etiketler atayabilirsiniz. Bir sürüm yineleme, ortam ya da başka bir bağlamsal bilgi olabilir. Uygulamanız, başka bir etiket belirterek tamamen farklı bir anahtar değerleri kümesi isteyebilir. Sonuç olarak, tüm anahtar başvuruları kodunuzda değişmeden kalır.
 
-## <a name="key-value-compositions"></a>Anahtar-değer birleşimleri
+## <a name="key-value-compositions"></a>Anahtar-değer kompozisyonları
 
-Uygulama yapılandırması ile bağımsız varlıklar olarak depolanan tüm anahtarları değerlendirir. Uygulama yapılandırması, anahtarlar arasındaki herhangi bir ilişki çıkarsanacak veya anahtar değerlerini kendi hiyerarşi temelinde devralmak için çalışmaz. Birden fazla anahtarları, ancak etiketleri uygun yapılandırma, uygulama kodunda yığın ile birlikte kullanarak toplayabilirsiniz.
+Uygulama yapılandırması, onunla depolanan tüm anahtarları bağımsız varlıklar olarak değerlendirir. Uygulama yapılandırması, anahtarlar arasında herhangi bir ilişki çıkarması veya hiyerarşiye göre anahtar değerleri devralması denenmez. Ancak uygulama kodunuzda uygun yapılandırma yığınlayarak bağlanmış Etiketler kullanarak birden çok anahtar kümesini toplayabilirsiniz.
 
-Bir örneğe göz atalım. Adlı bir ayar olduğunu varsayalım **Asset1**, geliştirme ortamına bağlı değeri değişiklik gösterebilir. Boş bir etiket ve "Geliştirme" adlı bir etiketi "Asset1" adlı bir anahtar oluşturun. İlk etiketi için varsayılan değer yerleştirdiğiniz **Asset1**, belirli bir değeri "Geliştirme" için ikinci yerleştirin.
+Bir örneğe göz atalım. Değeri geliştirme ortamına göre değişebilen **Asset1**adlı bir ayarınız olduğunu varsayalım. Boş bir etiketi ve "geliştirme" adlı bir etiketi içeren "Asset1" adlı bir anahtar oluşturun. İlk etikette, **Asset1**için varsayılan değeri yerleştirmelisiniz ve "geliştirme" için belirli bir değeri ikinciden yerleştirebilirsiniz.
 
-Kodunuzda önce anahtar değerlerinin tüm etiketleri olmadan almak ve sonra "Geliştirme" etiketi ile ikinci kez aynı anahtar değerleri kümesini alır. İkinci kez değerleri aldığınızda, önceki değerleri anahtarların üzerine yazılır. .NET Core yapılandırma sistemi "birden çok kümesi yapılandırma verilerini birbirinin yığın" sağlar. Birden fazla kümesindeki bir anahtar varsa içerdiği belirlenen son kullanılır. Uygulama yapılandırması ile erişmek için yerel yapılandırma sağlayıcısı kullanıyorsanız gibi .NET Core, modern bir programlama çerçevesi ile bu yığın özellik ücretsiz sahip olursunuz. Aşağıdaki kod parçacığı, bir .NET Core uygulamasında yığın nasıl uygulayacağınıza dair gösterir:
+Kodunuzda, önce herhangi bir etiket olmadan anahtar değerlerini alır ve ardından "geliştirme" etiketiyle ikinci kez aynı anahtar değerleri kümesini alırsınız. İkinci seferinde değerleri aldığınızda, anahtarların önceki değerlerinin üzerine yazılır. .NET Core yapılandırma sistemi, her birinin üzerine birden çok yapılandırma verisi kümesini "yığmanızı" sağlar. Birden çok küme içinde bir anahtar varsa, onu içeren son küme kullanılır. .NET Core gibi modern programlama çerçevesiyle, uygulama yapılandırmasına erişmek için yerel bir yapılandırma sağlayıcısı kullanıyorsanız bu yığınlama özelliğini ücretsiz olarak alırsınız. Aşağıdaki kod parçacığı, .NET Core uygulamasında nasıl yığın uygulayabileceğinizi göstermektedir:
 
 ```csharp
 // Augment the ConfigurationBuilder with Azure App Configuration
 // Pull the connection string from an environment variable
 configBuilder.AddAzureAppConfiguration(options => {
     options.Connect(configuration["connection_string"])
-           .Use(KeyFilter.Any, LabelFilter.Null)
-           .Use(KeyFilter.Any, "Development");
+           .Select(KeyFilter.Any, LabelFilter.Null)
+           .Select(KeyFilter.Any, "Development");
 });
 ```
 
-## <a name="app-configuration-bootstrap"></a>Uygulama yapılandırma önyükleme
+## <a name="app-configuration-bootstrap"></a>Uygulama yapılandırması önyükleme
 
-Bir uygulama yapılandırma deposuna erişmek için Azure portalında kullanılabilir, bağlantı dizesini kullanabilirsiniz. Bağlantı dizeleri, kimlik bilgilerini içerdiğinden, gizli dizileri kabul edilmeleri. Bu gizli dizileri Azure Key Vault'ta depolanması gereken ve kodunuzu bunları almak için anahtar Kasası'na kimliğini doğrulaması gerekir.
+Bir uygulama yapılandırma deposuna erişmek için, Azure portal kullanılabilir olan bağlantı dizesini kullanabilirsiniz. Bağlantı dizeleri kimlik bilgisi bilgilerini içerdiğinden, bu değerler gizli olarak değerlendirilir. Bu gizli dizileri Azure Key Vault depolanması gerekir ve kodunuzun bunları almak için Key Vault kimlik doğrulaması gerekir.
 
-Azure Active Directory'de yönetilen kimlikleri özelliğiyle daha iyi bir seçenektir. Yönetilen kimliklerle uygulama yapılandırma deponuz için yalnızca uygulama yapılandırma uç nokta URL'sini önyükleme erişimi gerekir. URL uygulama kodunuza katıştırabilirsiniz (örneğin, *appsettings.json* dosyası). Bkz: [Azure ile tümleştirme yönetilen kimlikleri](howto-integrate-azure-managed-service-identity.md) Ayrıntılar için.
+Daha iyi bir seçenek, Azure Active Directory Yönetilen kimlikler özelliğini kullanmaktır. Yönetilen kimlikler ile, uygulama yapılandırma deponuza erişimi önyüklemek için yalnızca uygulama yapılandırma uç noktası URL 'sine ihtiyacınız vardır. URL 'YI uygulama kodunuza (örneğin, *appSettings. JSON* dosyasına) ekleyebilirsiniz. Ayrıntılar için bkz. [Azure tarafından yönetilen kimlikler Ile tümleştirme](howto-integrate-azure-managed-service-identity.md) .
 
-## <a name="app-or-function-access-to-app-configuration"></a>Uygulama yapılandırma uygulama ya da işlev erişimi
+## <a name="app-or-function-access-to-app-configuration"></a>Uygulama yapılandırmasına uygulama veya işlev erişimi
 
-Erişim web apps veya işlevleri için uygulama yapılandırma için aşağıdaki yöntemlerden birini kullanarak sağlayabilirsiniz:
+Aşağıdaki yöntemlerden birini kullanarak Web uygulamaları veya işlevleri için uygulama yapılandırmasına erişim sağlayabilirsiniz:
 
-* Azure portalı üzerinden, App Service uygulama ayarları, uygulama yapılandırma deposuna bağlantı dizesini girin.
-* Anahtar Kasası'nda bağlantı dizesini uygulama yapılandırma deponuza Store ve [App Service'ten başvuru](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
-* Azure'daki uygulama yapılandırması mağazaya erişmek için kimliklerini yönetilen. Daha fazla bilgi için [Azure ile tümleştirme yönetilen kimlikleri](howto-integrate-azure-managed-service-identity.md).
-* App Service gönderim yapılandırmasını uygulama yapılandırmasından. Uygulama yapılandırması doğrudan App Service'e veri gönderen bir dışarı aktarma işlevi (Azure portalı ve Azure CLI) sağlar. Bu yöntem ile hiç uygulama kodunu değiştirmeniz gerekmez.
+* Azure portal aracılığıyla, App Service uygulama ayarlarındaki uygulama yapılandırma deponuza bağlantı dizesini girin.
+* Bağlantı dizesini Key Vault, uygulama yapılandırma deponuza depolayın ve [App Service başvurun](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
+* Uygulama yapılandırma deposuna erişmek için Azure yönetilen kimliklerini kullanın. Daha fazla bilgi için bkz. [Azure yönetilen kimliklerle tümleştirme](howto-integrate-azure-managed-service-identity.md).
+* Uygulama yapılandırmasından App Service olarak yapılandırma gönderin. Uygulama yapılandırması, doğrudan App Service içine veri gönderen bir dışarı aktarma işlevi (Azure portal ve Azure CLı) sağlar. Bu yöntemle, uygulama kodunu her zaman değiştirmeniz gerekmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Anahtarları ve değerleri](./concept-key-value.md)
+* [Anahtarlar ve değerler](./concept-key-value.md)

@@ -2,17 +2,17 @@
 title: Kaynak günlüklerini toplama & analiz etme
 description: Kimlik doğrulama, görüntü gönderme ve resim çekme gibi Azure Container Registry kaynak günlüğü olaylarını kaydedin ve çözümleyin.
 ms.topic: article
-ms.date: 10/30/2019
-ms.openlocfilehash: ada8502724c1779b9bdab2e8ac7e8ea61c256e44
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/03/2020
+ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456418"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748008"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Tanılama değerlendirmesi ve denetimi için Azure Container Registry günlükleri
 
-Bu makalede, Azure [izleyici](../azure-monitor/overview.md)'nin özellikleri kullanılarak Azure Container Registry için günlük verilerinin nasıl toplanacağı açıklanır. Azure Izleyici, kayıt defterinizde Kullanıcı odaklı olaylar için [kaynak günlüklerini](../azure-monitor/platform/resource-logs-overview.md) (eski adıyla *tanılama günlükleri*olarak adlandırılır) toplar. Bu verileri toplayın ve aşağıdaki gibi gereksinimlerinizi karşılayacak şekilde kullanın:
+Bu makalede, Azure [izleyici](../azure-monitor/overview.md)'nin özellikleri kullanılarak Azure Container Registry için günlük verilerinin nasıl toplanacağı açıklanır. Azure Izleyici, kayıt defterinizde Kullanıcı odaklı olaylar için [kaynak günlüklerini](../azure-monitor/platform/platform-logs-overview.md) (eski adıyla *tanılama günlükleri*olarak adlandırılır) toplar. Bu verileri toplayın ve aşağıdaki gibi gereksinimlerinizi karşılayacak şekilde kullanın:
 
 * Güvenlik ve uyumluluk sağlamak için kayıt defteri kimlik doğrulama olaylarını denetleme 
 
@@ -26,9 +26,14 @@ Azure Izleyici 'yi kullanarak kaynak günlük verilerinin toplanması ek maliyet
 
 ## <a name="preview-limitations"></a>Önizleme sınırlamaları
 
-Depo düzeyindeki olayların günlüğe kaydedilmesi şu anda olayları silme veya etiketi kaldırma içermiyor. Yalnızca aşağıdaki depo olayları günlüğe kaydedilir:
-* Görüntüler ve diğer yapıtlar için **anında iletme olayları**
-* Görüntüler ve diğer yapıtlar için **çekme olayları**
+Görüntüler ve diğer yapıtlar için aşağıdaki depo düzeyi olaylar şu anda günlüğe kaydedilir:
+
+* **Anında iletme olayları**
+* **Çekme olayları**
+* **Olayların etiketini kaldır**
+* **Olayları silme** (depo silme olayları dahil)
+
+Şu anda günlüğe kayıtlı olmayan depo düzeyi olayları: Temizleme olayları.
 
 ## <a name="registry-resource-logs"></a>Kayıt defteri kaynak günlükleri
 
@@ -42,7 +47,7 @@ Kaynak günlükleri, iç işlemlerini tanımlayan Azure kaynakları tarafından 
   * Başarı veya başarısızlık durumu
   * Başlangıç ve bitiş zaman damgaları
 
-Azure, kaynak günlüklerine ek olarak, bir kapsayıcı kayıt defterinin oluşturulması veya silinmesi gibi Azure Yönetim olaylarının tek abonelik düzeyinde bir kaydı olan bir [etkinlik günlüğü](../azure-monitor/platform/activity-logs-overview.md)sağlar.
+Azure, kaynak günlüklerine ek olarak, bir kapsayıcı kayıt defterinin oluşturulması veya silinmesi gibi Azure Yönetim olaylarının tek abonelik düzeyinde bir kaydı olan bir [etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md)sağlar.
 
 ## <a name="enable-collection-of-resource-logs"></a>Kaynak günlüklerinin toplanmasını etkinleştir
 

@@ -1,5 +1,6 @@
 ---
-title: "Öğretici: Azure SQL veritabanı yönetilen örneğine SQL Server çevrimiçi geçişini gerçekleştirmek için Azure veritabanı geçiş hizmeti 'ni kullanma | Microsoft Docs"
+title: 'Öğretici: SQL Server çevrimiçi bir SQL yönetilen örneğine geçirme'
+titleSuffix: Azure Database Migration Service
 description: Azure veritabanı geçiş hizmeti 'ni kullanarak şirket içi SQL Server Azure SQL veritabanı yönetilen örneğine çevrimiçi geçiş gerçekleştirmeyi öğrenin.
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 12/04/2019
-ms.openlocfilehash: 53c0601be29c5cac9bddc37158d705f07349323d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 01/08/2020
+ms.openlocfilehash: 88bc90a50fb9579e29b8b31b4be23052275b2b28
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975032"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746843"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Öğretici: DMS kullanarak Azure SQL veritabanı yönetilen örneğine çevrimiçi olarak SQL Server geçirme
 
@@ -42,18 +43,21 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!IMPORTANT]
 > En iyi geçiş deneyimi için, Microsoft, hedef veritabanıyla aynı Azure bölgesinde Azure veritabanı geçiş hizmeti örneği oluşturulmasını önerir. Verileri bölgeler veya coğrafyalar arasında taşımak, geçiş sürecini yavaşlatabilir ve hatalara neden olabilir.
 
+> [!IMPORTANT]
+> Örnek yeniden yapılandırması veya planlı bakım nedeniyle oluşan kesintiye uğrama riskini en aza indirmek için, çevrimiçi geçiş sürecinin süresini olabildiğince azaltmak önemlidir. Böyle bir olay söz konusu olduğunda, geçiş işlemi baştan başlar. Planlı bakım durumunda, geçiş işleminin yeniden başlatılması için 36 saatlik bir yetkisiz kullanım süresi vardır.
+
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
 Bu makalede, SQL Server bir SQL veritabanı yönetilen örneğine çevrimiçi geçiş açıklanmaktadır. Çevrimdışı geçiş için bkz. [DMS kullanarak SQL Server SQL veritabanı yönetilen örneğine çevrimdışı geçirme](tutorial-sql-server-to-managed-instance.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
-* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınız için siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti Için bir Azure sanal ağı (VNet) oluşturun. Azure [veritabanı geçiş hizmeti 'ni kullanarak Azure SQL veritabanı yönetilen örnek geçişleri için ağ topolojilerini öğrenin](https://aka.ms/dmsnetworkformi). VNet oluşturma hakkında daha fazla bilgi için, [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle de adım adım ayrıntılara sahip olan hızlı başlangıç makalelerine bakın.
+* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure sanal ağ oluşturun. Azure [veritabanı geçiş hizmeti 'ni kullanarak Azure SQL veritabanı yönetilen örnek geçişleri için ağ topolojilerini öğrenin](https://aka.ms/dmsnetworkformi). Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
 
     > [!NOTE]
-    > VNet kurulumu sırasında, ExpressRoute 'u Microsoft 'a ağ eşlemesi ile kullanıyorsanız, aşağıdaki hizmet [uç noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) hizmetin sağlanacağı alt ağa ekleyin:
+    > Sanal ağ kurulumu sırasında, Microsoft 'a ağ eşlemesi ile ExpressRoute kullanırsanız, hizmetin sağlanacağı alt ağa aşağıdaki hizmet [uç noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ekleyin:
     >
     > * Hedef veritabanı uç noktası (örneğin, SQL uç noktası, Cosmos DB uç noktası vb.)
     > * Depolama uç noktası
@@ -66,9 +70,9 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
     > [!IMPORTANT]
     > Geçişin bir parçası olarak kullanılan depolama hesabı ile ilgili olarak şunlardan birini yapmanız gerekir:
     > * Tüm ağın depolama hesabına erişmesine izin vermeyi seçin.
-    > * VNet için ACL 'Leri ayarlayın. Daha fazla bilgi için [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security)makalesine bakın.
+    > * Sanal ağ için ACL 'Leri ayarlayın. Daha fazla bilgi için [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security)makalesine bakın.
 
-* VNet ağ güvenlik grubu kurallarınızın Azure veritabanı geçiş hizmeti 'ne yönelik aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445, 12000. Azure VNet NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)makalesine bakın.
+* Sanal ağ ağ güvenlik grubu kurallarınızın, Azure veritabanı geçiş hizmeti 'ne yönelik aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445, 12000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)makalesine bakın.
 * [Windows Güvenlik Duvarınızı kaynak veritabanı altyapısı erişimi](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) için yapılandırın.
 * Azure veritabanı geçiş hizmeti 'nin varsayılan olarak TCP bağlantı noktası 1433 olan kaynak SQL Server erişmesine izin vermek için Windows Güvenlik duvarınızı açın.
 * Dinamik bağlantı noktaları kullanarak birden çok adlandırılmış SQL Server örneği çalıştırıyorsanız, Azure veritabanı geçiş hizmeti 'nin kaynağınızdaki adlandırılmış bir örneğe bağlanabilmesi için SQL Browser hizmetini etkinleştirmek ve güvenlik duvarlarınız aracılığıyla 1434 numaralı UDP bağlantı noktasına erişime izin vermek isteyebilirsiniz. Server.
@@ -87,7 +91,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration kaynak sağlayıcısını kaydetme
 
-1. Azure portal'da oturum açın, **Tüm hizmetler**'i ve ardından **Abonelikler**'i seçin.
+1. Azure portal'da oturum açın, **Tüm hizmetler** seçeneğini belirleyin ve ardından **Abonelikler**'i seçin.
 
     ![Portal aboneliklerini gösterme](media/tutorial-sql-server-to-managed-instance-online/portal-select-subscriptions.png)
 
@@ -113,11 +117,11 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
 4. DMS örneğini oluşturmak istediğiniz konumu seçin.
 
-5. Mevcut bir VNet seçin veya bir sanal ağ oluşturun.
+5. Var olan bir sanal ağı seçin veya bir tane oluşturun.
 
-    VNet, kaynak SQL Server ve hedef SQL veritabanı yönetilen örneğine erişimi olan Azure veritabanı geçiş hizmeti sağlar.
+    Sanal ağ, kaynak SQL Server ve hedef SQL veritabanı yönetilen örneğine erişimi olan Azure veritabanı geçiş hizmeti sağlar.
 
-    Azure portal ' de VNet oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak sanal ağ oluşturma](https://aka.ms/DMSVnet)makalesine bakın.
+    Azure portal bir sanal ağ oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak sanal ağ oluşturma](https://aka.ms/DMSVnet)makalesine bakın.
 
     Daha fazla ayrıntı için [Azure veritabanı geçiş hizmeti 'ni kullanarak Azure SQL veritabanı yönetilen örnek geçişleri Için ağ topolojileri](https://aka.ms/dmsnetworkformi)makalesine bakın.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: e70144bc71c182a6ec1668ee81f458a236289331
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384190"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749943"
 ---
 # <a name="azure-network-security-overview"></a>Azure ağ güvenliğine genel bakış
 
@@ -32,7 +32,7 @@ Bu makalede, Azure 'un ağ güvenliği alanında sunduğu bazı seçenekler ele 
 * Ağ erişim denetimi
 * Azure Güvenlik Duvarı
 * Güvenli uzaktan erişim ve şirketler arası bağlantı
-* Kullanılabilirlik
+* Erişilebilirlik
 * Ad çözümlemesi
 * Çevre ağı (DMZ) mimarisi
 * Azure DDoS koruması
@@ -122,7 +122,7 @@ NSG 'ler, UDRs ve Zorlamalı tünel, [OSI modelinin](https://en.wikipedia.org/wi
 * Uygulamanıza erişim izni vermeden önce kimlik doğrulaması ve yetkilendirme
 * Yetkisiz giriş algılama ve yetkisiz giriş yanıtı
 * Üst düzey protokoller için uygulama katmanı incelemesi
-* URL filtreleme
+* URL filtre uygulama
 * Ağ düzeyinde virüsten koruma ve kötü amaçlı yazılımdan koruma
 * Bot koruması
 * Uygulama erişim denetimi
@@ -212,7 +212,7 @@ Daha fazla bilgi edinin:
 
 Sanal ağlarınızı bağlamak için başka bir yöntem de [VNET eşlemedir](../../virtual-network/virtual-network-peering-overview.md). Bu özellik, iki Azure ağını, aralarında iletişim kurmak zorunda kalmadan Microsoft omurga altyapısı üzerinden meydana gelecek şekilde bağlamanıza olanak tanır. VNET eşlemesi, Azure bölgelerinde aynı bölgedeki iki sanal ağı veya iki sanal ağı birbirine bağlayabilirler. NSG 'ler, farklı alt ağlar veya sistemler arasındaki bağlantıyı sınırlamak için kullanılabilir.
 
-## <a name="availability"></a>Kullanılabilirlik
+## <a name="availability"></a>Erişilebilirlik
 
 Kullanılabilirlik, herhangi bir güvenlik programının önemli bir bileşenidir. Kullanıcılarınız ve sistemleriniz ağ üzerinden erişmek için gereken değerlere erişegerekmiyorsa, hizmet tehlikede düşünülebilir. Azure, aşağıdaki yüksek kullanılabilirlik mekanizmalarını destekleyen ağ teknolojilerine sahiptir:
 
@@ -395,7 +395,7 @@ Daha fazla bilgi edinin:
 
 Ağ düzeyinde günlüğe kaydetme, herhangi bir ağ güvenliği senaryosu için bir anahtar işlevdir. Azure 'da, ağ düzeyinde günlüğe kaydetme bilgilerini almak için NSG 'ler için edinilen bilgileri günlüğe kaydedebilirsiniz. NSG günlüğe kaydetme sayesinde, şuradan bilgi alırsınız:
 
-* [Etkinlik günlükleri](../../azure-monitor/platform/activity-logs-overview.md). Azure aboneliklerinize gönderilen tüm işlemleri görüntülemek için bu günlükleri kullanın. Bu günlükler varsayılan olarak etkindir ve Azure portal içinde kullanılabilir. Daha önce denetim veya işlem günlükleri olarak bilinirdi.
+* [Etkinlik günlükleri](../../azure-monitor/platform/platform-logs-overview.md). Azure aboneliklerinize gönderilen tüm işlemleri görüntülemek için bu günlükleri kullanın. Bu günlükler varsayılan olarak etkindir ve Azure portal içinde kullanılabilir. Daha önce denetim veya işlem günlükleri olarak bilinirdi.
 * Olay günlükleri. Bu Günlükler, hangi NSG kurallarının uygulandığı hakkında bilgi sağlar.
 * Sayaç günlükleri. Bu Günlükler, her NSG kuralının trafiği reddetme veya izin verme için kaç kez uygulanacağını size sağlar.
 

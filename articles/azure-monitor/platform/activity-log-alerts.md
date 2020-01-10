@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: d3cb075d5ec0607453ca21f2574df7def02a4453
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c42f72800a93de714f0cc126939a28a8a6b5fce4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553714"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747534"
 ---
 # <a name="alerts-on-activity-log"></a>Etkinlik günlüğündeki uyarılar 
 
 ## <a name="overview"></a>Genel Bakış
-Etkinlik günlüğü uyarıları, uyarıda belirtilen koşullara uyan yeni bir [etkinlik günlüğü olayı](activity-log-schema.md) gerçekleştiğinde etkinleştiği uyarılardır. [Azure etkinlik günlüğüne](activity-logs-overview.md)kaydedilen olayların sırasına ve hacmine bağlı olarak, uyarı kuralı başlatılır. Etkinlik günlüğü uyarı kuralları, Azure kaynaklarıdır, bu nedenle bir Azure Resource Manager şablonu kullanılarak oluşturulabilirler. Ayrıca, Azure portal oluşturulabilir, güncelleştirilemeyebilir veya silinebilirler. Bu makalede, etkinlik günlüğü uyarılarının arkasındaki kavramlar tanıtılmaktadır. Etkinlik günlüğü uyarı kurallarının oluşturulması veya kullanımı hakkında daha fazla bilgi için bkz. [etkinlik günlüğü uyarıları oluşturma ve yönetme](alerts-activity-log.md).
+Etkinlik günlüğü uyarıları, uyarıda belirtilen koşullara uyan yeni bir [etkinlik günlüğü olayı](activity-log-schema.md) gerçekleştiğinde etkinleştiği uyarılardır. [Azure etkinlik günlüğüne](platform-logs-overview.md)kaydedilen olayların sırasına ve hacmine bağlı olarak, uyarı kuralı başlatılır. Etkinlik günlüğü uyarı kuralları, Azure kaynaklarıdır, bu nedenle bir Azure Resource Manager şablonu kullanılarak oluşturulabilirler. Ayrıca, Azure portal oluşturulabilir, güncelleştirilemeyebilir veya silinebilirler. Bu makalede, etkinlik günlüğü uyarılarının arkasındaki kavramlar tanıtılmaktadır. Etkinlik günlüğü uyarı kurallarının oluşturulması veya kullanımı hakkında daha fazla bilgi için bkz. [etkinlik günlüğü uyarıları oluşturma ve yönetme](alerts-activity-log.md).
 
 > [!NOTE]
 > Etkinlik günlüğü uyarı kategorisinde olaylar **için uyarılar oluşturulamıyor** .
@@ -31,7 +31,7 @@ Etkinlik günlüğünde hangi uyarı kurallarının oluşturulabileceği koşull
 
 Her iki durumda da, bir etkinlik günlüğü uyarısı yalnızca, uyarının oluşturulduğu abonelikteki olaylar için izler.
 
-Etkinlik günlüğü olayı için JSON nesnesindeki herhangi bir üst düzey özelliğe göre etkinlik günlüğü uyarısı yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure etkinlik günlüğü 'Ne genel bakış](./activity-logs-overview.md#categories-in-the-activity-log). Hizmet durumu olayları hakkında daha fazla bilgi edinmek için bkz. [hizmet bildirimlerinde etkinlik günlüğü uyarıları alma](./alerts-activity-log-service-notifications.md). 
+Etkinlik günlüğü olayı için JSON nesnesindeki herhangi bir üst düzey özelliğe göre etkinlik günlüğü uyarısı yapılandırabilirsiniz. Daha fazla bilgi için [etkinlik günlüğündeki Kategoriler](activity-log-view.md#categories-in-the-activity-log)bölümüne bakın. Hizmet durumu olayları hakkında daha fazla bilgi edinmek için bkz. [hizmet bildirimlerinde etkinlik günlüğü uyarıları alma](alerts-activity-log-service-notifications.md). 
 
 Etkinlik günlüğü uyarıları bazı yaygın seçeneklere sahiptir:
 

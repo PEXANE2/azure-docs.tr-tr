@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: b69abf098ba7646ebc98d126c7c0d949205d6275
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383971"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75530689"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python ve Jupyıter Not defterleri ile veri bilimi öğretmek için laboratuvar ayarlama
 
@@ -45,14 +45,14 @@ Bir sınıf Laboratuvarı ayarlarken aşağıdaki tablodaki ayarları kullanın.
 
 | Laboratuvar ayarları | Değer/yönergeler |
 | ------------ | ------------------ |
-|Sanal makine boyutu| Küçük GPU (Işlem). Bu boyut, yapay zeka ve derin öğrenme gibi yoğun işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. |
-|Sanal makine görüntüsü| Windows Server 2019 üzerinde SQL Server 2019 standart|
+|Sanal Makine Boyutu| Küçük GPU (Işlem). Bu boyut, yapay zeka ve derin öğrenme gibi yoğun işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. |
+|Sanal makine görüntüsü| Veri Bilimi Sanal Makinesi - Windows 2016|
 
 ## <a name="template-machine"></a>Şablon makinesi
 
 [Veri bilimi sanal makinesi-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) görüntüsü, bu tür bir sınıf için gereken ayrıntılı öğrenme çerçevelerini ve araçları sağlar.  Görüntü Jupyıter not defterlerini ve Visual Studio Code içerir.  [Jupi Not defterleri](http://jupyter-notebook.readthedocs.io) , veri bilimcilerinin ham veri almasına, hesaplamalar çalıştırmasına ve sonuçların tümünü aynı ortamda görüntülemesine olanak tanıyan bir Web uygulamasıdır.  Şablon makinemiz için Web uygulaması yerel olarak çalışır.  [Visual Studio Code](https://code.visualstudio.com/) , bir not defteri yazarken ve test edilirken zengin bir etkileşimli deneyim sağlayan bir IDE 'dir.  Daha fazla bilgi için bkz. [Visual Studio Code jupi Not defterleri Ile çalışma](https://code.visualstudio.com/docs/python/jupyter-support).
 
-Sınıfını ayarlamak için kalan görev, yerel Not defterleri sağlamaktır.  Azure Machine Learning örneklerini kullanma hakkında yönergeler için bkz. [jupi Not defterleri ile ortam yapılandırma](../../machine-learning/service/how-to-configure-environment.md#jupyter).  Ayrıca, şablon makinesinde kendi not defterlerinizi de sağlayabilirsiniz.  Şablon yayımlandığında Not defterleri tüm öğrenci makinelerine kopyalanır.
+Sınıfını ayarlamak için kalan görev, yerel Not defterleri sağlamaktır.  Azure Machine Learning örneklerini kullanma hakkında yönergeler için bkz. [jupi Not defterleri ile ortam yapılandırma](../../machine-learning/how-to-configure-environment.md#jupyter).  Ayrıca, şablon makinesinde kendi not defterlerinizi de sağlayabilirsiniz.  Şablon yayımlandığında Not defterleri tüm öğrenci makinelerine kopyalanır.
 
 ## <a name="cost-estimate"></a>Maliyet tahmini
 

@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8025228275afeb3f23268db759eb7659b9887132
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 7517c4d9b3f9b58d9cf745f5001078837e1fbfea
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670796"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748168"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -38,19 +38,21 @@ Aşağıdaki tabloda, her bir çoğaltma stratejisinin belirli bir olay türü (
 | Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | Hayır                              | Evet                              | Evet                                  | Evet                                  |
 | Bölge genelinde kesinti                                                                                     | Hayır                              | Hayır                               | Evet                                  | Evet                                  |
 | Bölge genelinde kullanım dışı kalması durumunda verilerinize (uzak, coğrafi olarak çoğaltılan bir bölgede) okuma erişimi | Hayır                              | Hayır                               | Evet (RA-GRS ile)                                   | Evet (RA-GZRS ile)                                 |
-| Belirli bir yıl \_ boyunca nesnelerin dayanıklılığını sağlamak \_ için tasarlandı                                          | en az% 99,999999999 (11 9) | en az% 99,9999999999 (12 9) | en az% 99.99999999999999 (16 9) | en az% 99.99999999999999 (16 9) |
-| Desteklenen depolama hesabı türleri                                                                   | GPv2, GPv1, blob                | GPv2                             | GPv2, GPv1, blob                     | GPv2                     |
-| Okuma istekleri için kullanılabilirlik SLA 'Sı | En az% 99,9 (Seyrek Erişimli Katman için% 99) | En az% 99,9 (Seyrek Erişimli Katman için% 99) | GRS için en az% 99,9 (Seyrek Erişimli Katman için% 99)<br /><br />RA-GRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) | GZRS için en az% 99,9 (Seyrek Erişimli Katman için% 99)<br /><br />RA-GZRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) |
-| Yazma istekleri için kullanılabilirlik SLA 'Sı | En az% 99,9 (Seyrek Erişimli Katman için% 99) | En az% 99,9 (Seyrek Erişimli Katman için% 99) | En az% 99,9 (Seyrek Erişimli Katman için% 99) | En az% 99,9 (Seyrek Erişimli Katman için% 99) |
+| Belirli<sup>bir yıl boyunca</sup> nesnelerin \_\_ dayanıklılığı sağlamak üzere tasarlandı                                          | en az% 99,999999999 (11 9) | en az% 99,9999999999 (12 9) | en az% 99.99999999999999 (16 9) | en az% 99.99999999999999 (16 9) |
+| Desteklenen depolama hesabı türleri<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
+| Okuma istekleri için kullanılabilirlik SLA 'Sı<sup>1</sup>  | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | GRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) | GZRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GZRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) |
+| Yazma istekleri için kullanılabilirlik SLA 'Sı<sup>1</sup>  | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) |
 
-Depolama hesabınızdaki tüm veriler, blok Blobları ve ekleme Blobları, sayfa Blobları, kuyruklar, tablolar ve dosyalar dahil olmak üzere çoğaltılır. Tüm depolama hesabı türleri çoğaltılır, ancak ZRS genel amaçlı v2 depolama hesabı gerektirir.
+<sup>1</sup> dayanıklılık ve kullanılabilirlik Için Azure depolama garantisi hakkında daha fazla bilgi için bkz. [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/).   
 
-Her artıklık seçeneği için fiyatlandırma bilgileri için bkz. [Azure Storage fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/). 
+<sup>2</sup> depolama hesabı türleri hakkında bilgi için bkz. [depolama hesabına genel bakış](storage-account-overview.md).
 
-Dayanıklılık ve kullanılabilirlik için Azure depolama garantisi hakkında daha fazla bilgi için bkz. [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/).
+Blok Blobları, ekleme Blobları, sayfa Blobları, kuyruklar, tablolar ve dosyalar dahil olmak üzere tüm depolama hesabı türlerinin tüm verileri çoğaltılır.
+
+Her artıklık seçeneği için fiyatlandırma bilgileri için bkz. [Azure Storage fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
 > [!NOTE]
-> Azure Premium Depolama şu anda yalnızca yerel olarak yedekli depolamayı (LRS) desteklemektedir.
+> Azure Premium Disk Depolama şu anda yalnızca yerel olarak yedekli depolamayı (LRS) desteklemektedir. Azure Premium Blok Blob depolama, belirli bölgelerde yerel olarak yedekli depolama (LRS) ve bölgesel olarak yedekli depolamayı (ZRS) destekler.
 
 ## <a name="changing-replication-strategy"></a>Çoğaltma stratejisini değiştirme
 
@@ -69,11 +71,12 @@ Depolama hesabınızı RA-GRS ' d e veya LRS 'ye geçirirseniz, bu hesap, dönü
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
+- [Depolama hesabına genel bakış](storage-account-overview.md)
 - [Yerel olarak yedekli depolama (LRS): Azure depolama için düşük maliyetli veri artıklığı](storage-redundancy-lrs.md)
-- [Bölgesel olarak yedekli depolama (ZRS): Yüksek oranda kullanılabilir Azure depolama uygulamaları](storage-redundancy-zrs.md)
+- [Bölgesel olarak yedekli depolama (ZRS): yüksek oranda kullanılabilir Azure depolama uygulamaları](storage-redundancy-zrs.md)
 - [Coğrafi olarak yedekli depolama (GRS): Azure depolama için çapraz bölgesel çoğaltma](storage-redundancy-grs.md)
 - [Yüksek kullanılabilirlik ve maksimum dayanıklılık (Önizleme) için coğrafi bölge yedekli depolama (GZRS)](storage-redundancy-gzrs.md)
-- [Azure depolama ölçeklenebilirlik ve performans hedefleri](storage-scalability-targets.md)
+- [Standart depolama hesapları için ölçeklenebilirlik ve performans hedefleri](scalability-targets-standard-account.md)
 - [RA-GRS depolama kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](../storage-designing-ha-apps-with-ragrs.md)
 - [Microsoft Azure Depolama yedeklilik seçenekleri ve Okuma Erişimli Coğrafi olarak yedekli depolama](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-- [SOSP kağıdı-Azure depolama: Güçlü tutarlılığı olan yüksek oranda kullanılabilir bir bulut depolama hizmeti](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [SOSP kağıdı-Azure depolama: güçlü tutarlılık içeren, yüksek oranda kullanılabilir bir bulut depolama hizmetidir](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

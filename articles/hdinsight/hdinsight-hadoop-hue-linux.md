@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: ef5bbc00ae0d3c7751bdcd4808c5368b0f5e1523
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 8a644beede4089133f88b824fd8d34dddec3b15e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688237"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751121"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop kümelerinde ton 'u yükleyip kullanma
 
@@ -45,7 +45,7 @@ Betik eyleminiz için aşağıdaki tablodaki bilgileri kullanın. Betik eylemler
 |Özellik |Değer |
 |---|---|
 |Betik türü:|-Özel|
-|Adı|Hue yükleme|
+|Ad|Hue yükleme|
 |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
 |Düğüm türleri:|Baş|
 
@@ -72,7 +72,7 @@ SSH tüneli, bir kez çalışmaya başladıktan sonra, kümedeki tona erişmenin
 
     Bu, aşağıdakine benzer bir ad döndürür:
 
-        hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+        myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     Bu, ton Web sitesinin bulunduğu birincil yayın düğümünün ana bilgisayar adıdır.
 
@@ -107,7 +107,7 @@ SSH tüneli, bir kez çalışmaya başladıktan sonra, kümedeki tona erişmenin
 > [!NOTE]  
 > Ton dosya tarayıcısı yalnızca HDInsight kümesiyle ilişkili varsayılan kapsayıcının içeriğini gösterebilir. Kümeyle ilişkili olabileceğiniz tüm ek depolama hesaplarına/kapsayıcılara dosya tarayıcısı kullanılarak erişilemeyecektir. Ancak, küme ile ilişkili ek kapsayıcılar her zaman Hive işleri için erişilebilir olacaktır. Örneğin, Hive düzenleyicide komut `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` girerseniz, ek kapsayıcıların içeriğini de görebilirsiniz. Bu komutta **newcontainer** bir kümeyle ilişkili varsayılan kapsayıcı değildir.
 
-## <a name="important-considerations"></a>Önemli konular
+## <a name="important-considerations"></a>Önemli noktalar
 
 1. Tonu yüklemek için kullanılan komut dosyası, yalnızca kümenin birincil yayın düğümüne yüklenir.
 

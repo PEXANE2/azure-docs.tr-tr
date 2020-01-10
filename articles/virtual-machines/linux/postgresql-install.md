@@ -14,19 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: f6d521c7003583228990c80a90c1454821f584d3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035259"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747808"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Azure’da PostgreSQL yükleme ve yapılandırma
 PostgreSQL, Oracle ve DB2 ile benzer gelişmiş bir açık kaynaklı veritabanıdır. Tam ACID uyumluluğu, güvenilir işlem işleme ve çok sürümlü eşzamanlılık denetimi gibi kurumsal özellikli özellikler içerir. Ayrıca, ANSI SQL ve SQL/MED gibi standartları destekler (Oracle, MySQL, MongoDB için yabancı veri sarmalayıcıları dahil) ve diğer birçok kişi). 12 yordamsal diller, GıN ve GiST dizinleri, uzamsal veri desteği ve JSON ya da anahtar-değer tabanlı uygulamalar için birden çok NoSQL benzeri Özellik desteğiyle yüksek düzeyde genişletilebilir.
 
 Bu makalede, Linux çalıştıran bir Azure sanal makinesine PostgreSQL yükleme ve yapılandırma hakkında bilgi edineceksiniz.
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="install-postgresql"></a>PostgreSQL yükleme
 > [!NOTE]
@@ -64,7 +63,7 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. Belgeler (HTML ve Man sayfaları) ve ek modüller (contrib) dahil olmak üzere derlenebilir her şeyi derlemek istiyorsanız aşağıdaki komutu çalıştırın:
+5. Belgeler (HTML ve Man sayfaları) ve ek modüller (`contrib`) dahil olmak üzere derlenebilir her şeyi derlemek istiyorsanız aşağıdaki komutu çalıştırın:
    
         # gmake install-world
    
@@ -200,7 +199,7 @@ Ayrıca, aşağıdaki komutu kullanarak tablo yapısını kontrol edebilirsiniz:
 
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 
-Şu çıktıyı görmeniz gerekir:
+Bu çıkışı görmelisiniz:
 
 ![image](./media/postgresql-install/no6.png)
 
@@ -217,7 +216,7 @@ Bir tabloyu göstermek için aşağıdaki komutu kullanın:
 
     select * from potluck;
 
-Çıktı:
+Çıkış şöyle olur:
 
 ![image](./media/postgresql-install/no7.png)
 
@@ -226,7 +225,7 @@ Tablodaki verileri silmek için aşağıdaki komutu kullanın:
 
     delete from potluck where name=’John’;
 
-Bu, "John" satırındaki tüm bilgileri siler. Çıktı:
+Bu, "John" satırındaki tüm bilgileri siler. Çıkış şöyle olur:
 
 ![image](./media/postgresql-install/no8.png)
 

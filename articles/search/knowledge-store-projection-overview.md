@@ -1,26 +1,26 @@
 ---
-title: Bir bilgi deposunda projeksiyonlarla çalışma (Önizleme)
+title: Bilgi deposundaki projeksiyonler (Önizleme)
 titleSuffix: Azure Cognitive Search
-description: Zenginleştirme veri dizini oluşturma işlem hattından zenginleştirilmiş verilerinizi tam metin arama dışındaki senaryolarda kullanmak üzere bir bilgi deposuna kaydedin ve şekillendirin. bilgi deposu Şu anda genel önizleme aşamasındadır.
+description: Zenginleştirme veri dizini oluşturma işlem hattından zenginleştirilmiş verilerinizi tam metin arama dışındaki senaryolarda kullanmak üzere bir bilgi deposuna kaydedin ve şekillendirin. Bilgi deposu Şu anda genel önizleme aşamasındadır.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790010"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754532"
 ---
-# <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir bilgi deposunda projeksiyonlarla çalışma
+# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir bilgi deposundaki projeksiyonlar
 
 > [!IMPORTANT] 
-> bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
+> Bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
-Azure Bilişsel Arama, dizin oluşturmanın bir parçası olarak yerleşik bilişsel yetenekler ve özel yetenekler aracılığıyla içerik zenginleştirme imkanı sunar. Zenginleştirme belgelerinize yapı ekler ve daha etkili bir şekilde arama yapın. Birçok örnekte, zenginleştirilmiş belgeler, bilgi madenciliği gibi arama dışındaki senaryolar için yararlıdır.
+Azure Bilişsel Arama, dizin oluşturmanın bir parçası olarak yerleşik bilişsel yetenekler ve özel yetenekler aracılığıyla içerik zenginleştirme imkanı sunar. Zenginleştirme, daha önce hiçbir yerde bulunmayan yeni bilgiler oluşturur: görüntülerden bilgi ayıklama, yaklaşım, anahtar ifadeler ve metinden varlıkları birkaç kez adlandırma. Zenginleştirme Ayrıca, ayırt edilmemiş metne yapı ekler. Bu işlemlerin tümü, tam metin araması yapan belgelerde oluşur. Birçok örnekte, bilgi madenciliği gibi arama dışındaki senaryolar için zenginleştirilmiş belgeler yararlıdır.
 
 [Bilgi deposunun](knowledge-store-concept-intro.md)bir bileşeni olan tahminler, bilgi madenciliği için fiziksel depolamaya kaydedilebilen zenginleştirilmiş belgelerin görünümleridir. Bir projeksiyon, verilerinizi, Power BI gibi araçların ek bir çaba olmadan okuyabilmesi için, ilişkilerini koruyarak, verilerinizi gereksinimlerinize göre hizalayan bir şekle "proje" sağlar.
 
@@ -34,7 +34,7 @@ Bilgi deposu üç tür projeksiyonları destekler:
 
 + **Dosyalar**: belgelerden ayıklanan görüntüleri kaydetmeniz gerektiğinde, dosya projeksiyonlar, normalleştirilmiş görüntüleri blob depolamaya kaydetmenizi sağlar.
 
-Bağlamda tanımlanan projeksiyonları görmek için [bilgi deposu ile çalışmaya](knowledge-store-howto.md)başlayın.
+Bağlamda tanımlanan projeksiyonları görmek için, [bekleyen bir bilgi deposu oluşturun](knowledge-store-create-rest.md).
 
 ## <a name="projection-groups"></a>Projeksiyon grupları
 
@@ -114,12 +114,6 @@ Aşağıda tablo projeksiyonlarını örnek verilmiştir.
 
 Bu örnekte gösterildiği gibi, anahtar tümcecikler ve varlıklar farklı tablolara modellenir ve her satır için üst (MainTable) öğesine geri bir başvuru içerir.
 
-<!---
-The following illustration is a reference to the Case-law exercise in [How to get started with knowledge store](knowledge-store-howto.md). In a scenario where a case has multiple opinions, and each opinion is enriched by identifying entities contained within it, you could model the projections as shown here.
-
-![Entities and relationships in tables](media/knowledge-store-projection-overview/TableRelationships.png "Modeling relationships in table projections")
---->
-
 ## <a name="object-projections"></a>Nesne projeksiyonları
 
 Nesne projeksiyonları herhangi bir düğümden kaynaksız bir şekilde zenginleştirme ağacının JSON temsilleridir. Çoğu durumda, bir tablo projeksiyonu oluşturan her yetenek için aynı **mil** , nesne projeksiyonu oluşturmak için kullanılabilir. 
@@ -143,10 +137,8 @@ Nesne projeksiyonları herhangi bir düğümden kaynaksız bir şekilde zenginle
         {
           "objects": [
             {
-              "storageContainer": "Reviews", 
-              "format": "json", 
-              "source": "/document/Review", 
-              "key": "/document/Review/Id" 
+              "storageContainer": "hotelreviews", 
+              "source": "/document/hotel"
             }
           ]
         },
@@ -160,9 +152,8 @@ Nesne projeksiyonları herhangi bir düğümden kaynaksız bir şekilde zenginle
 
 Nesne projeksiyonu oluşturmak, nesneye özgü birkaç özniteliği gerektirir:
 
-+ storageContainer: nesnelerin kaydedileceği kapsayıcı
++ storageContainer: nesnelerin kaydedileceği blob kapsayıcısı
 + Kaynak: projeksiyon kökü olan zenginleştirme ağacının düğümünün yolu
-+ anahtar: depolanacak nesnenin benzersiz bir anahtarını temsil eden bir yol. Kapsayıcıda Blobun adını oluşturmak için kullanılır.
 
 ## <a name="file-projection"></a>Dosya projeksiyonu
 
@@ -219,4 +210,4 @@ Son olarak, verilerinizi bilgi deposundan dışarı aktarmanız gerekiyorsa Azur
 Bir sonraki adım olarak, örnek verileri ve yönergeleri kullanarak ilk bilgi deponuzu oluşturun.
 
 > [!div class="nextstepaction"]
-> [Bilgi deposu oluşturma](knowledge-store-howto.md).
+> [Bekleyen bir bilgi deposu oluşturun](knowledge-store-create-rest.md).

@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24d601dc2116b7daf315bb3c6f20c4dc0b6f6ce5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382053"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749224"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB depolama için performans ve ölçeklenebilirlik denetim listesi
 
 Microsoft, BLOB depolama ile yüksek performanslı uygulamalar geliştirmeye yönelik bir dizi kanıtlanmış uygulama geliştirmiştir. Bu denetim listesi, geliştiricilerin performansı iyileştirmek için izleyebildiği önemli uygulamaları tanımlar. Uygulamanızı tasarlarken ve işlem boyunca bu uygulamaları göz önünde bulundurun.
 
-Azure depolama kapasitesi, işlem hızı ve bant genişliği için ölçeklenebilirlik ve performans hedefleri içerir. Azure depolama ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [depolama hesapları Için Azure Storage ölçeklenebilirlik ve performans hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Azure depolama kapasitesi, işlem hızı ve bant genişliği için ölçeklenebilirlik ve performans hedefleri içerir. Azure depolama ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) , [BLOB depolaması için ölçeklenebilirlik ve performans hedefleri](scalability-targets.md).
 
 ## <a name="checklist"></a>Denetim Listesi
 
 Bu makale, blob Storage uygulamanızı geliştirirken izleyebileceğiniz bir denetim listesi halinde performans için kanıtlanmış uygulamaları düzenler.
 
-| Bitti | Kategori | Tasarım değerlendirmesi |
+| Bitti | Kategori | Tasarımı ile ilgili dikkat edilmesi gerekenler |
 | --- | --- | --- |
 | &nbsp; |Ölçeklenebilirlik hedefleri |[Uygulamanızı en fazla depolama hesabı sayısından daha fazla kullanmak üzere tasarlayabilmeniz gerekebilir mi?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Ölçeklenebilirlik hedefleri |[Kapasite ve işlem sınırlarına yaklaşmaktan kaçınıyorsunuz musunuz?](#capacity-and-transaction-targets) |
@@ -58,7 +58,7 @@ Bu makale, blob Storage uygulamanızı geliştirirken izleyebileceğiniz bir den
 
 Uygulamanız ölçeklenebilirlik hedeflerinin herhangi birini yaklaşırsa veya aşarsa, daha fazla işlem gecikmeleri veya azaltmasıyla karşılaşabilirler. Azure Storage uygulamanızı kısıtsalken, hizmet 503 (sunucu meşgul) veya 500 (Işlem zaman aşımı) hata kodları döndürmeye başlar. Ölçeklenebilirlik hedefleri sınırları içinde kalarak bu hatalardan kaçınmak, uygulamanızın performansını artırmanın önemli bir parçasıdır.
 
-Kuyruk hizmeti ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
+Kuyruk hizmeti ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>En fazla depolama hesabı sayısı
 
@@ -99,7 +99,7 @@ Azure Storage 'ın BLOB verilerinizi nasıl bölümleyip performansı geliştirm
 
 BLOB depolama, ölçekleme ve yük dengeleme için Aralık tabanlı bölümleme şeması kullanır. Her Blobun, tam blob adından (hesap + kapsayıcı + blob) oluşan bir bölüm anahtarına sahiptir. Bölüm anahtarı, blob verilerini aralıklar halinde bölümlemek için kullanılır. Aralıklar daha sonra BLOB depolama arasında yük dengelenebilir.
 
-Aralık tabanlı bölümleme, sözcük temelli sıralamayı (örneğin, *mypayroll*, *myperformance*, *MyEmployees*, vb.) veya zaman damgalarını (*log20160101*, *log20160102*, log20160102) kullanan adlandırma kuralları anlamına gelir.vb.) aynı bölüm sunucusunda birlikte bulunan bölümlerin oluşmasına neden olma olasılığı yüksektir. , artan yükün daha küçük aralıklar halinde bölünmeleri gerekir. Aynı bölüm sunucusundaki Blobların birlikte bulunması performansı geliştirir, bu nedenle performans iyileştirmesinin önemli bir parçası, Blobları en verimli şekilde düzenleyen bir şekilde adlandırmayı içerir.
+Aralık tabanlı bölümleme, sözcük temelli sıralama (örneğin, *mypayroll*, *myperformance*, *MyEmployees*, vb.) veya zaman damgaları (*log20160101*, *log20160102*, *log20160102*, vb.) kullanan adlandırma kurallarının aynı bölüm sunucusunda birlikte bulunan bölümlerin oluşmasına neden olma olasılığını gösterir. , artan yükün daha küçük aralıklar halinde bölünmeleri gerekir. Aynı bölüm sunucusundaki Blobların birlikte bulunması performansı geliştirir, bu nedenle performans iyileştirmesinin önemli bir parçası, Blobları en verimli şekilde düzenleyen bir şekilde adlandırmayı içerir.
 
 Örneğin, bir kapsayıcı içindeki tüm Bloblar, bu bloblarda yük, Bölüm aralıklarının daha fazla yeniden dengelenmesini gerektirene kadar tek bir sunucu tarafından sunulabilir. Benzer şekilde, adları sözcük temelli sırada düzenlenmiş, bu hesapların bir veya tümünün birden çok bölüm sunucusuna bölünmesi gerekene kadar tek bir sunucu tarafından sunulabilir.
 
@@ -236,7 +236,7 @@ Azure depolama, blob 'ları bir depolama hesabında, depolama hesapları arasın
 
 ### <a name="blob-copy-apis"></a>Blob kopyalama API 'Leri
 
-Blob 'ları depolama hesaplarına kopyalamak için [URL 'Den yerleştirme](/rest/api/storageservices/put-block-from-url) işlemini kullanın. Bu işlem, verileri herhangi bir URL kaynağından bir blok blobuna eşzamanlı olarak kopyalar. @No__t-0 işleminin kullanılması, depolama hesaplarına veri geçirirken gereken bant genişliğini önemli ölçüde azaltabilir. Kopyalama işlemi hizmet tarafında gerçekleştiğinden, verileri indirmeniz ve yeniden yüklemeniz gerekmez.
+Blob 'ları depolama hesaplarına kopyalamak için [URL 'Den yerleştirme](/rest/api/storageservices/put-block-from-url) işlemini kullanın. Bu işlem, verileri herhangi bir URL kaynağından bir blok blobuna eşzamanlı olarak kopyalar. `Put Block from URL` işlemi kullanmak, verileri depolama hesaplarına geçirirken gereken bant genişliğini önemli ölçüde azaltabilir. Kopyalama işlemi hizmet tarafında gerçekleştiğinden, verileri indirmeniz ve yeniden yüklemeniz gerekmez.
 
 Aynı depolama hesabı içindeki verileri kopyalamak için [BLOB kopyalama](/rest/api/storageservices/Copy-Blob) işlemini kullanın. Verileri aynı depolama hesabı içinde kopyalamak genellikle hızla tamamlanır.  
 
@@ -285,5 +285,6 @@ Sayfa Blobları, uygulamanın verilerde rastgele yazma işlemleri yapması gerek
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Depolama hesapları için Azure depolama ölçeklenebilirlik ve performans hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [BLOB depolama için ölçeklenebilirlik ve performans hedefleri](scalability-targets.md)
+- [Standart depolama hesapları için ölçeklenebilirlik ve performans hedefleri](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Durum ve hata kodları](/rest/api/storageservices/Status-and-Error-Codes2)

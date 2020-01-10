@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: b53bf80774a0715c7a02d837975284e985958635
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b2209e2ada2d825714d08b6ac3237583df28272a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607427"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749370"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
 
 Bu makalede, Windows sanal masaüstü kiracısı ve ilgili oturum ana bilgisayar havuzu altyapısının ilk kurulumu sırasında sorunlar ele alınmaktadır.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -59,7 +59,7 @@ Ham hata örneği:
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Windows sanal masaüstü oturumu ana bilgisayarı VM 'Leri oluşturma
 
-Oturum Ana bilgisayar VM 'Leri çeşitli yollarla oluşturulabilir, ancak Uzak Masaüstü Hizmetleri/Windows sanal masaüstü ekipleri yalnızca Azure Resource Manager şablonuyla ilgili VM sağlama sorunlarını destekler. Azure Resource Manager şablonu [Azure Marketi](https://azuremarketplace.microsoft.com/) ve [GitHub](https://github.com/)' da kullanılabilir.
+Oturum Ana bilgisayar VM 'Leri çeşitli yollarla oluşturulabilir, ancak Windows sanal masaüstü ekibi yalnızca [Azure Marketi](https://azuremarketplace.microsoft.com/) TEKLIFIYLE ilgili VM sağlama sorunlarını destekler. Daha fazla bilgi için bkz. [Windows sanal masaüstü 'nü kullanan sorunlar-bir konak havuzu sağlama Azure Marketi teklifi](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Windows sanal masaüstü ile ilgili sorunlar – bir konak havuzu sağlama Azure Marketi teklifi
 
@@ -87,6 +87,27 @@ Windows sanal masaüstü – Azure Marketi 'nden bir konak havuzu şablonu sağl
     #create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%
     2FRDS-Templates%2Fmaster%2Fwvd-templates%2FCreate%20and%20provision%20WVD%20host%20pool%2FmainTemplate.json
     ```
+
+### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Hata: "şablon dağıtımı geçerli değil" hatası alıyorsunuz
+
+!["Şablon dağıtımı... ekran görüntüsü geçerli değil "hatası](media/troubleshooting-marketplace-validation-error-generic.png)
+
+Belirli bir eylem yapmadan önce, başarısız dağıtım doğrulamasına ilişkin ayrıntılı hatayı görmek için etkinlik günlüğünü denetlemeniz gerekir.
+
+Etkinlik günlüğündeki hatayı görüntülemek için:
+
+1. Geçerli Azure Marketi dağıtım sunumndan çıkın.
+2. Üst arama çubuğunda **etkinlik günlüğü**' nü arayıp seçin.
+3. Durumu **başarısız** olan **dağıtımı doğrula** adlı bir etkinlik bulun ve etkinliği seçin.
+   \* * Doğrulama dağıtımı * * etkinliğinin bir * * başarısız * * durum](media/troubleshooting-marketplace-validation-error-activity-summary.png) ekran görüntüsünü ![
+
+4. JSON ' ı seçin ve ardından "statusMessage" alanını görene kadar ekranın alt kısmına gidin.
+   JSON metninin statusMessage özelliği etrafında kırmızı bir kutu ile başarısız etkinliğin ekran görüntüsünü ![.](media/troubleshooting-marketplace-validation-error-json-boxed.png)
+
+İşlem şablonunuz kota sınırının üzerine gittiğinde, bunu onarmak için aşağıdaki işlemlerden birini yapabilirsiniz:
+
+ - Azure Marketi 'ni ilk kez kullandığınız parametrelerle çalıştırın, ancak bu kez daha az VM ve VM çekirdeği kullanır.
+ - Belirtilen VM SKU 'SU için Azure aboneliğinizin kotasını artırma isteği göndermek üzere bir tarayıcıda **StatusMessage** alanında gördüğünüz bağlantıyı açın.
 
 ## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Şablon ve PowerShell Istenen durum yapılandırması (DSC) hatalarını Azure Resource Manager
 
@@ -117,8 +138,16 @@ Ham hata örneği:
 
 **Neden 2:** Etki alanı adı çözümlenmiyor.
 
-**2. Çözüm:** VM 'Ler için "etki alanı adı çözümlenmiyor" hatası, [Oturum Ana BILGISAYAR VM yapılandırmasındaki](troubleshoot-vm-configuration.md)etki alanına katılmadığını görün.
+**2. Çözüm:** Bkz. [hata: etki alanı adı](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve) , [oturum ana makinesi yapılandırmasında](troubleshoot-vm-configuration.md)çözümlenmiyor.
 
+**Neden 3:** Sanal ağ (VNET) DNS yapılandırmanız **varsayılan**olarak ayarlanır.
+
+Bunu yapmak için aşağıdaki işlemleri yapın:
+
+1. Azure portalını açın ve **sanal ağlar** dikey penceresine gidin.
+2. VNET 'nizi bulun ve **DNS sunucuları**' nı seçin.
+3. Ekranınızın sağ tarafında DNS sunucuları menüsü görünmelidir. Bu menüde **özel**' i seçin.
+4. Özel altında listelenen DNS sunucularının etki alanı denetleyicinize veya Active Directory etki alanına göre eşleştiğinden emin olun. DNS sunucunuzu görmüyorsanız, değerini **DNS sunucusu Ekle** alanına girerek ekleyebilirsiniz.
 
 ### <a name="error-your-deployment-failedunauthorized"></a>Hata: dağıtımınız başarısız oldu. ..\Yetkilendirilmemiş
 
@@ -138,7 +167,7 @@ Ham hata örneği:
 
 **Neden 2:** Bağlantıyla geçici hata.
 
-**Çözüm:** PowerShell kullanarak oturum açarak Windows sanal masaüstü ortamının sağlıklı olduğunu onaylayın. [PowerShell ile bir konak havuzu oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)bölümünde VM kaydını el ile tamamlama.
+**Çözüm:** PowerShell kullanarak oturum açarak Windows sanal masaüstü ortamının sağlıklı olduğunu onaylayın. [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell.md)bölümünde VM kaydını el ile tamamlama.
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hata: belirtilen yönetici kullanıcı adına izin verilmiyor
 
@@ -326,7 +355,7 @@ Ham hata örneği:
 
 **Neden:** Belirtilen Windows sanal masaüstü kiracı yöneticisi, oturum açmak için Azure Multi-Factor Authentication (MFA) gerektirir.
 
-**Çözüm:** [Öğretici: PowerShell ile hizmet sorumluları ve rol atamaları oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)' daki adımları izleyerek bir hizmet sorumlusu oluşturun ve Windows sanal masaüstü kiracınız için bir rol atayın. Hizmet sorumlusu ile Windows sanal masaüstü 'nde oturum açadığınızı doğruladıktan sonra, kullandığınız yönteme bağlı olarak Azure Marketi teklifini veya GitHub Azure Resource Manager şablonunu yeniden çalıştırın. Yönteminizin doğru parametrelerini girmek için aşağıdaki yönergeleri izleyin.
+**Çözüm:** [Öğretici: PowerShell ile hizmet sorumluları ve rol atamaları oluşturma](create-service-principal-role-powershell.md)' daki adımları izleyerek bir hizmet sorumlusu oluşturun ve Windows sanal masaüstü kiracınız için bir rol atayın. Hizmet sorumlusu ile Windows sanal masaüstü 'nde oturum açadığınızı doğruladıktan sonra, kullandığınız yönteme bağlı olarak Azure Marketi teklifini veya GitHub Azure Resource Manager şablonunu yeniden çalıştırın. Yönteminizin doğru parametrelerini girmek için aşağıdaki yönergeleri izleyin.
 
 Azure Marketi teklifini çalıştırıyorsanız, Windows sanal masaüstü 'nde düzgün şekilde kimlik doğrulaması yapmak için aşağıdaki parametrelerin değerlerini sağlayın:
 
@@ -346,9 +375,10 @@ GitHub Azure Resource Manager şablonu çalıştırıyorsanız, Windows sanal ma
 
 - Windows sanal masaüstü ve yükseltme izlemelerinin sorunlarını giderme hakkında genel bilgi için bkz. [sorun giderme genel bakış, geri bildirim ve destek](troubleshoot-set-up-overview.md).
 - Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
-- Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bkz. [Uzak Masaüstü istemci bağlantıları](troubleshoot-client-connection.md).
+- Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bkz. [Windows sanal masaüstü hizmeti bağlantıları](troubleshoot-service-connection.md).
+- Uzak Masaüstü istemcileriyle ilgili sorunları gidermek için bkz [. uzak masaüstü Istemcisinde sorun giderme](troubleshoot-client.md)
 - Windows sanal masaüstü ile PowerShell kullanırken karşılaşılan sorunları gidermek için bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md).
-- Hizmet hakkında daha fazla bilgi edinmek için bkz. [Windows sanal masaüstü ortamı](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Sorun giderme öğreticisini öğrenmek için bkz. [öğretici: Kaynak Yöneticisi şablonu dağıtımlarının sorunlarını giderme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Denetim eylemleri hakkında bilgi edinmek için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Dağıtım sırasında hataları belirleme eylemleri hakkında bilgi edinmek için bkz. [dağıtım Işlemlerini görüntüleme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Hizmet hakkında daha fazla bilgi edinmek için bkz. [Windows sanal masaüstü ortamı](environment-setup.md).
+- Sorun giderme öğreticisini öğrenmek için bkz. [öğretici: Kaynak Yöneticisi şablonu dağıtımlarının sorunlarını giderme](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
+- Denetim eylemleri hakkında bilgi edinmek için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](../azure-resource-manager/resource-group-audit.md).
+- Dağıtım sırasında hataları belirleme eylemleri hakkında bilgi edinmek için bkz. [dağıtım Işlemlerini görüntüleme](../azure-resource-manager/resource-manager-deployment-operations.md).

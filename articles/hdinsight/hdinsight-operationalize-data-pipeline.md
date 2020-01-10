@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: c98640dbfbe47730b507ebdafdecad9623672e4e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
-ms.translationtype: HT
+ms.openlocfilehash: 8217beeda885896adb6ffec2a5dd0670c9622175
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552245"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748705"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Veri analizi işlem hattını kullanıma hazır hale getirme
 
@@ -542,7 +542,11 @@ Gördüğünüz gibi, düzenleyicinin çoğunluğu yalnızca yapılandırma bilg
 
 ```
 nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
+<<<<<<< HEAD
+jobTracker=[ACTIVE-HEADNODE-NAME].[UNIQUESTRING].dx.internal.cloudapp.net:8050
+=======
 jobTracker=[ACTIVERESOURCEMANAGER]:8050
+>>>>>>> 50a435bd9528fcbaac7bc5ab96745734e63167da
 queueName=default
 oozie.use.system.libpath=true
 appBase=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net/oozie

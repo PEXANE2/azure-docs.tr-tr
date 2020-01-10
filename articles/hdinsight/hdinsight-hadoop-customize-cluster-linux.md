@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 16b0fdcbae51b30e14fbf7ea4d98699dfaf19804
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: df5dbfc9c86294c7ec046d3a02832192bf67b4ce
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035748"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747080"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 
@@ -144,7 +144,7 @@ Betik eylemi betikleri aşağıdaki yardımcı programlar aracılığıyla kulla
 
 HDInsight, HDInsight kümelerine aşağıdaki bileşenleri yüklemek için komut dosyaları sağlar:
 
-| Ad | Betik |
+| Ad | Komut Dosyası |
 | --- | --- |
 | Azure depolama hesabı ekleme |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Bkz. [HDInsight 'a ek depolama hesapları ekleme](hdinsight-hadoop-add-storage.md). |
 | Hue yükleme |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Bkz. [HDInsight Hadoop kümelerinde ton 'U yükleyip kullanma](hdinsight-hadoop-hue-linux.md). |
@@ -328,7 +328,7 @@ Bir kümeye betikleri uygulamak üzere .NET SDK kullanmanın bir örneği için 
 
 ### <a name="the-azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Sol menüden **tüm hizmetler** > **Analytics** > **HDInsight kümelerine**gidin.
 
@@ -422,7 +422,7 @@ Betik eylemleri tarafından günlüğe kaydedilen bilgileri görüntülemek içi
 
 ### <a name="the-apache-ambari-web-ui"></a>Apache ambarı Web Kullanıcı arabirimi
 
-1. Tarayıcınızda https://CLUSTERNAME.azurehdinsight.net' a gidin. **CLUSTERNAME** değerini HDInsight kümenizin adıyla değiştirin.
+1. Tarayıcınızda `https://CLUSTERNAME.azurehdinsight.net` adresine gidin. **CLUSTERNAME** değerini HDInsight kümenizin adıyla değiştirin.
 
     İstendiğinde, küme için yönetici hesap adı, **yönetici**ve parolayı girin. Yönetici kimlik bilgilerini bir Web formunda yeniden girmeniz gerekebilir.
 
@@ -446,11 +446,11 @@ Küme oluşturma bir betik hatası nedeniyle başarısız olursa Günlükler kü
 
     Bu dizin altında Günlükler, **baş düğümüne**, **çalışan düğümü**ve **Zookeeper düğümü**için ayrı olarak düzenlenir. Aşağıdaki örneklere bakın:
 
-    * **Headnode**: `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net`
+    * **Headnode**: `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **Çalışan düğümü**: `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net`
+    * **Çalışan düğümü**: `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper düğümü**: `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
+    * **Zookeeper düğümü**: `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
 * Karşılık gelen konağın tüm **stdout** ve **stderr** depolama hesabına yüklenir. Her betik eylemi için bir **output-\*. txt** ve **Errors-\*. txt** . **Output-*. txt** dosyası, konakta çalıştırılan betiğin URI 'si hakkında bilgiler içerir. Aşağıdaki metin bu bilgilere bir örnektir:
 

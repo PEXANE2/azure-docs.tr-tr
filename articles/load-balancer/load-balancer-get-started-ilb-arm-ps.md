@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 547402fd2cca94f47a9ff0db3131d359bafd967a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b2c94e51e25fd34b7332e6653a9c2f2d5bb53139
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225380"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754244"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Azure PowerShell modülünü kullanarak iç yük dengeleyici oluşturma
 
@@ -48,7 +48,7 @@ Bir yük dengeleyiciyi dağıtmak için aşağıdaki nesneleri oluşturmanız ge
 * Araştırma yapılandırması: Sanal makineler için sistem durumu araştırmaları.
 * Gelen NAT kuralları: Sanal makinelere doğrudan erişim için bağlantı noktası kuralları.
 
-Yük dengeleyici bileşenleri hakkında daha fazla bilgi için bkz. [Yük dengeleyici için Azure Resource Manager desteği](load-balancer-arm.md).
+Yük dengeleyici bileşenleri hakkında daha fazla bilgi için bkz. [Azure Load Balancer bileşenleri](load-balancer-overview.md#load-balancer-components).
 
 Aşağıdaki adımlarda iki sanal makine arasında yük dengeleyici yapılandırma işlemleri açıklanmaktadır.
 
@@ -319,7 +319,7 @@ $slb | Set-AzLoadBalancer
 
 ## <a name="remove-an-existing-load-balancer"></a>Var olan yük dengeleyiciyi kaldırma
 
-**komutunu kullanarak**NRP-RG**kaynak grubundaki**NRP-LB`Remove-AzLoadBalancer` yük dengeleyiciyi silin:
+`Remove-AzLoadBalancer` komutunu kullanarak **NRP-RG** kaynak grubundaki **NRP-LB** yük dengeleyiciyi silin:
 
 ```azurepowershell-interactive
 Remove-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG

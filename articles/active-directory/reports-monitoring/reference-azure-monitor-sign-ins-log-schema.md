@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98157009b5a005d1d1f9efbe2f59bac1302cdb01
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014325"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748671"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Izleyici 'de Azure AD oturum açma günlüğü şemasını yorumlama
 
@@ -150,7 +150,7 @@ Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) oturum açma g
 | ThrottledRequests | Oturum açma işlemleri için bu değer her zaman *oturum açma etkinliğidir*. |
 | OperationVersion | İstemci tarafından istenen REST API sürümü. |
 | Kategori | Oturum açma işlemleri için bu değer her zaman *oturum*açadır. | 
-| Değerine | Günlüklerle ilişkili kiracı GUID 'SI. |
+| TenantId | Günlüklerle ilişkili kiracı GUID 'SI. |
 | ResultType | Oturum açma işleminin sonucu *başarılı* veya *başarısız*olabilir. | 
 | ResultSignature | Varsa, oturum açma işlemi için hata kodunu içerir. |
 | ResultDescription | Oturum açma işlemi için hata açıklaması sağlar. |
@@ -170,4 +170,4 @@ Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) oturum açma g
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure İzleyici denetim günlükleri şemasını yorumlama](reference-azure-monitor-audit-log-schema.md)
-* [Azure tanılama günlükleri hakkında daha fazla bilgi edinin](../../azure-monitor/platform/resource-logs-overview.md)
+* [Azure tanılama günlükleri hakkında daha fazla bilgi edinin](../../azure-monitor/platform/platform-logs-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure veritabanı geçiş hizmeti kullanma önkoşulları genel bakış | Microsoft Docs
-description: Bir genel bakış veritabanı geçişleri gerçekleştirmek için Azure veritabanı geçiş hizmeti kullanmak için önkoşulları hakkında bilgi edinin.
+title: Azure veritabanı geçiş hizmeti önkoşulları
+description: Veritabanı geçişleri gerçekleştirmek için Azure veritabanı geçiş hizmeti 'nin kullanımına ilişkin önkoşullara genel bakış hakkında bilgi edinin.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,34 +8,34 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 05/29/2019
-ms.openlocfilehash: 4e21014f7b4ed86846a100ed9a2b1cd4b0400974
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/08/2020
+ms.openlocfilehash: 7ba317da9524c322d47fe57a866d429ff8f7e952
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304266"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748729"
 ---
-# <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti kullanma önkoşulları genel bakış
+# <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti kullanımı için önkoşullara genel bakış
 
-Azure veritabanı geçiş Hizmeti'nin veritabanı geçişlerini gerçekleştirirken düzgün çalıştığından emin olmak için gereken birkaç önkoşul vardır. Bazı Önkoşullar, diğer ön koşulları için belirli bir senaryoya benzersiz çalışırken service tarafından desteklenen tüm senaryolarda (kaynak-hedef çiftlerinin) arasında geçerlidir.
+Azure veritabanı geçiş hizmeti 'nin veritabanı geçişleri gerçekleştirirken sorunsuz bir şekilde çalışmasını sağlamak için birkaç önkoşul gereklidir. Bazı Önkoşullar, hizmet tarafından desteklenen tüm senaryolarda (kaynak-hedef çiftleri) uygulanır, ancak diğer Önkoşullar belirli bir senaryoya özeldir.
 
-Azure veritabanı geçiş hizmeti kullanımıyla ilişkili Önkoşullar aşağıdaki bölümlerde listelenmiştir.
+Azure veritabanı geçiş hizmeti kullanılarak ilişkili önkoşullar aşağıdaki bölümlerde listelenmiştir.
 
-## <a name="prerequisites-common-across-migration-scenarios"></a>Geçiş senaryoları arasında ortak Önkoşullar
+## <a name="prerequisites-common-across-migration-scenarios"></a>Geçiş senaryolarında ortak olan Önkoşullar
 
-Tüm desteklenen geçiş senaryoları arasında ortak olan azure veritabanı geçiş hizmeti Önkoşullar dahil etme gereksinimi:
+Tüm desteklenen geçiş senaryolarında ortak olan Azure veritabanı geçiş hizmeti önkoşulları şunlar için gereklidir:
 
-* Kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlar Azure Resource Manager dağıtım modelini kullanarak bir Azure sanal ağı (VNet) için Azure veritabanı geçiş hizmeti oluşturma [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-* VNet ağ güvenlik grubu (NSG) kuralları aşağıdaki engelleme olun iletişim bağlantı noktası 443, 53, 9354, 445, 12000. Azure VNet NSG trafik filtreleme hakkında daha fazla ayrıntı için bkz [ağ güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
-* Kaynak veritabanlarınız önünde bir güvenlik duvarı Gereci kullanırken oluşan kaynak veritabanları geçiş için erişmek Azure veritabanı geçiş hizmeti izin vermek için güvenlik duvarı kuralları eklemeniz gerekebilir.
+* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure sanal ağ oluşturun.
+* Sanal ağ ağ güvenlik grubu (NSG) kurallarınızın, şu iletişim bağlantı noktalarını 443, 53, 9354, 445, 12000 engellemediğinden emin olun. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)makalesine bakın.
+* Kaynak veritabanınızın önünde bir güvenlik duvarı gereci kullanırken, Azure veritabanı geçiş hizmeti 'nin geçiş için kaynak veritabanına erişmesine izin vermek üzere güvenlik duvarı kuralları eklemeniz gerekebilir.
 * [Windows Güvenlik Duvarınızı veritabanı altyapısı erişimi](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) için yapılandırın.
 * [Sunucu Ağ Protokolünü Etkinleştirme veya Devre Dışı Bırakma](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure) makalesindeki yönergeleri izleyerek SQL Server Express yüklemesi sırasında varsayılan olarak devre dışı bırakılan TCP/IP protokolünü etkinleştirin.
 
     > [!IMPORTANT]
-    > Azure veritabanı geçiş hizmeti örneği oluşturma aynı kaynak grubu içinde yer almayan normalde sanal ağ ayarlarını erişim gerektirir. Sonuç olarak, DMS bir örneğini oluşturan kullanıcıya abonelik düzeyinde izni gerektirir. Gerektiği şekilde atayabilir, gerekli rolleri oluşturmak için aşağıdaki betiği çalıştırın:
+    > Azure veritabanı geçiş hizmeti 'nin bir örneğini oluşturmak, normalde aynı kaynak grubu içinde olmayan sanal networt ayarlarına erişim gerektirir. Sonuç olarak, DMS 'nin bir örneğini oluşturan kullanıcı abonelik düzeyinde izin gerektirir. Gerektiği şekilde atayabileceğiniz gerekli rolleri oluşturmak için aşağıdaki betiği çalıştırın:
     >
     > ```
     >
@@ -100,39 +100,39 @@ Tüm desteklenen geçiş senaryoları arasında ortak olan azure veritabanı ge�
     > Update-DmsConributorRole
     > ```
 
-## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-database"></a>Azure SQL veritabanına geçirme SQL Server için Önkoşullar
+## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-database"></a>SQL Server Azure SQL veritabanı 'na geçirmek için Önkoşullar
 
-Tüm geçiş senaryoları için ortak olan Azure veritabanı geçiş hizmeti önkoşullarının yanı sıra da özellikle bir senaryo veya başka bir geçerli önkoşulları vardır.
+Tüm geçiş senaryolarında ortak olan Azure veritabanı geçiş hizmeti önkoşullarının yanı sıra, özellikle bir senaryoya veya başka bir senaryoya uygulanan Önkoşullar da vardır.
 
-SQL Server önkoşulları tüm geçiş senaryoları için ortak olan ek olarak, Azure SQL veritabanı geçişleri gerçekleştirmek için Azure veritabanı geçiş hizmeti kullanırken aşağıdaki ek önkoşulları adres emin olun:
+Azure veritabanı geçiş hizmeti 'ni kullanarak Azure SQL veritabanı geçişlerini SQL Server gerçekleştirirken, tüm geçiş senaryolarında ortak olan önkoşullara ek olarak, aşağıdaki ek önkoşulları ele aldığınızdan emin olun:
 
-* Makalesinde ayrıntılı olarak C izleyerek bunu Azure SQL veritabanı örneğine bir örneğini oluşturmak[Azure portalında bir Azure SQL veritabanı oluştur](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
+* Azure SQL veritabanı örneğinin bir örneğini oluşturun ve bu,[Azure Portal bir Azure SQL veritabanı oluştur](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)makalesindeki ayrıntıyı izleyerek yapabilirsiniz.
 * [Data Migration Yardımcısı](https://www.microsoft.com/download/details.aspx?id=53595) 3.3 veya üzeri sürümünü indirip yükleyin.
 * Azure Veritabanı Geçiş Hizmeti'ne kaynak SQL Server erişimi sağlamak için Windows güvenlik duvarınızı açın. Varsayılan ayarlarda 1433 numaralı TCP bağlantı noktası kullanılır.
 * Dinamik bağlantı noktası kullanarak birden fazla adlandırılmış SQL Server örneği çalıştırıyorsanız, Azure Veritabanı Geçiş Hizmeti'nin kaynak sunucunuzdaki adlandırılmış örneğe bağlanabilmesi için SQL Browser Hizmeti'ni etkinleştirebilir ve güvenlik duvarınızda 1434 numaralı UDP bağlantı noktasına erişim izni verebilirsiniz.
-* Azure Veritabanı Geçiş Hizmeti'nin hedef veritabanlarına erişmesini sağlama amacıyla Azure SQL Veritabanı için sunucu düzeyinde [güvenlik duvarı kuralı](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) oluşturun. Azure Veritabanı Geçiş Hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
+* Azure Veritabanı Geçiş Hizmeti'nin hedef veritabanlarına erişmesini sağlama amacıyla Azure SQL Veritabanı için sunucu düzeyinde [güvenlik duvarı kuralı](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) oluşturun. Azure veritabanı geçiş hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
 * SQL Server örneğine bağlanmak için kullanılan kimlik bilgilerinin [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) izinlerine sahip olduğundan emin olun.
 * Hedef Azure SQL Veritabanı örneğine bağlanmak için kullanılan kimlik bilgilerinin hedef Azure SQL veritabanlarında CONTROL DATABASE iznine sahip olduğundan emin olun.
 
    > [!NOTE]
-   > Azure veritabanı geçiş hizmeti, SQL Server'dan Azure SQL veritabanı'na geçişler gerçekleştirmeyi kullanmak için gereken önkoşulları tam listesi için bkz [Azure SQL veritabanı için SQL Server'ı geçirme](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
+   > Azure veritabanı geçiş hizmeti 'ni kullanarak SQL Server Azure SQL veritabanı 'na geçiş işlemi gerçekleştirmek için gereken önkoşulların tüm listesi için bkz. [Azure SQL veritabanı 'Na geçiş SQL Server](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
    > 
 
-## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğine geçirme SQL Server için Önkoşullar
+## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>SQL Server Azure SQL veritabanı yönetilen örneği 'ne geçirme önkoşulları
 
-* Makalesinde ayrıntılı olarak bir Azure SQL veritabanı yönetilen örneği oluşturma [Azure portalında Azure SQL veritabanı yönetilen örneği oluşturma](https://aka.ms/sqldbmi).
-* SMB trafiği için Azure veritabanı geçiş hizmeti IP adresi veya alt ağ aralığı 445 numaralı bağlantı noktasında izin vermek için güvenlik duvarlarınızdan açın.
+* [Azure Portal Azure SQL veritabanı yönetilen örneği oluşturma](https://aka.ms/sqldbmi)makalesindeki ayrıntıyı IZLEYEREK Azure SQL veritabanı yönetilen örneği oluşturun.
+* Azure veritabanı geçiş hizmeti IP adresi veya alt ağ aralığı için bağlantı noktası 445 üzerindeki SMB trafiğine izin vermek üzere güvenlik duvarlarını açın.
 * Azure Veritabanı Geçiş Hizmeti'ne kaynak SQL Server erişimi sağlamak için Windows güvenlik duvarınızı açın. Varsayılan ayarlarda 1433 numaralı TCP bağlantı noktası kullanılır.
 * Dinamik bağlantı noktası kullanarak birden fazla adlandırılmış SQL Server örneği çalıştırıyorsanız, Azure Veritabanı Geçiş Hizmeti'nin kaynak sunucunuzdaki adlandırılmış örneğe bağlanabilmesi için SQL Browser Hizmeti'ni etkinleştirebilir ve güvenlik duvarınızda 1434 numaralı UDP bağlantı noktasına erişim izni verebilirsiniz.
 * Kaynak SQL Server ve hedef Yönetilen Örnek bağlantısı kurmak için kullanılan oturum açma bilgilerinin sysadmin sunucu rolüne üye olduğundan emin olun.
 * Azure Veritabanı Geçiş Hizmeti'nin kaynak veritabanını yedeklemek için kullanabileceği bir ağ paylaşımı oluşturun.
 * Kaynak SQL Server örneğini çalıştıran hizmet hesabının oluşturduğunuz ağ paylaşımında yazma ayrıcalıklarına sahip olduğundan ve kaynak sunucunun bilgisayar hesabının aynı paylaşımda okuma/yazma erişimine sahip olduğundan emin olun.
-* Önceden oluşturduğunuz ağ paylaşımında tam denetim ayrıcalığına sahip olan Windows kullanıcısını (ve parolasını) not edin. Azure Veritabanı Geçiş Hizmeti, geri yükleme işlemi için yedekleme dosyalarını Azure depolama kapsayıcısına yüklemek için kullanıcının kimlik bilgilerini kullanır.
-* Bir blob kapsayıcı oluşturun ve bu makaledeki adımları kullanarak SAS URI'sini Al [yönetme Azure Blob depolama kaynaklarını depolama Gezgini'yle](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). SAS URI'sini oluşturulurken İlkesi penceresinde tüm izinleri (okuma, yazma, silme, listeleme) seçtiğinizden emin olun.
+* Önceden oluşturduğunuz ağ paylaşımında tam denetim ayrıcalığına sahip olan Windows kullanıcısını (ve parolasını) not edin. Azure veritabanı geçiş hizmeti, yedekleme dosyalarını geri yükleme işlemi için Azure depolama kapsayıcısına yüklemek üzere Kullanıcı kimlik bilgisini taklit eder.
+* [Depolama Gezgini Ile Azure Blob depolama kaynaklarını yönetme](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)makalesindeki adımları kullanarak bir blob kapsayıcısı oluşturun ve SAS URI 'sini alın. SAS URI 'sini oluştururken ilke penceresinde tüm izinleri (okuma, yazma, silme, liste) seçtiğinizden emin olun.
 
    > [!NOTE]
-   > Azure SQL veritabanı yönetilen örneği için SQL Server'dan geçişleri gerçekleştirmek için Azure veritabanı geçiş hizmeti kullanmak için gereken önkoşulları tam listesi için bkz [Azure SQL veritabanı yönetilen örneği SQL Server'ı geçirme ](https://aka.ms/migratetomiusingdms).
+   > Azure veritabanı geçiş hizmeti 'ni kullanarak SQL Server Azure SQL veritabanı yönetilen örneği 'ne geçiş işlemi gerçekleştirmek için gereken önkoşulların tüm listesi için bkz. [Azure SQL veritabanı yönetilen örneği 'Ne geçiş SQL Server](https://aka.ms/migratetomiusingdms).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bölgesel kullanılabilirlik ve Azure veritabanı geçiş Hizmeti'nin genel bakış için bkz [Azure veritabanı geçiş hizmeti nedir](dms-overview.md).
+Azure veritabanı geçiş hizmeti ve bölgesel kullanılabilirliğine genel bakış için [Azure veritabanı geçiş hizmeti nedir](dms-overview.md)makalesine bakın.

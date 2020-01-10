@@ -16,19 +16,19 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ff6466ddc6b64dfe85ebfb190205859aeb39ad17
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 12a20abb4014712f26e5827bcd1d3c822e8b25a1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260830"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750719"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Tanılama günlükleri için bir Azure olay hub'ı ayarlama
 
 Azure Event Hubs için iki tür günlüğü görüntüleyebilirsiniz:
 
-* **[Etkinlik günlükleri](../azure-monitor/platform/activity-logs-overview.md)** : Bu günlüklerde bir işte gerçekleştirilen işlemlerle ilgili bilgiler vardır. Günlükler her zaman etkindir.
-* **[Tanılama günlükleri](../azure-monitor/platform/resource-logs-overview.md)** : Tanılama günlüklerini, bir işle gerçekleşen her şeyin daha zengin bir görünümü için yapılandırabilirsiniz. Tanılama günlüklerine yönelik güncelleştirmeleri ve iş çalışırken gerçekleşen etkinlikler dahil olmak üzere iş silinene kadar iş oluşturulur zamanından kapak etkinlikler.
+* **[Etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md)** : bir iş üzerinde gerçekleştirilen işlemler hakkında bilgi bu günlüklere sahipsiniz. Günlükler her zaman etkindir.
+* **[Tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md)** : gerçekleşen daha zengin bir görünüm her şeyin için tanılama günlükleri ile bir işi yapılandırabilirsiniz. Tanılama günlüklerine yönelik güncelleştirmeleri ve iş çalışırken gerçekleşen etkinlikler dahil olmak üzere iş silinene kadar iş oluşturulur zamanından kapak etkinlikler.
 
 ## <a name="enable-diagnostic-logs"></a>Tanılama günlüklerini etkinleştirme
 
@@ -54,7 +54,7 @@ Tanılama günlükleri, varsayılan olarak devre dışıdır. Tanılama günlük
 
 Yeni ayarları yaklaşık 10 dakika içinde etkinleşir. Bundan sonra günlüklerini arşivleme yapılandırılmış hedefte görünür **tanılama günlükleri** bölmesi.
 
-Tanılama yapılandırma hakkında daha fazla bilgi için bkz. [Azure tanılama günlükleri'ne genel bakış](../azure-monitor/platform/resource-logs-overview.md).
+Tanılama yapılandırma hakkında daha fazla bilgi için bkz. [Azure tanılama günlükleri'ne genel bakış](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Tanılama günlükleri kategorileri
 

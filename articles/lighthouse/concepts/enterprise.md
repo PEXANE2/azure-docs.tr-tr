@@ -3,12 +3,12 @@ title: Kurumsal senaryolarda Azure Lighthouse
 description: Azure açık Thouse özellikleri, birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini basitleştirmek için kullanılabilir.
 ms.date: 09/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: f610f943ed7faa0d2ad64ff2f1554cdd41d76ee8
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463906"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749214"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Kurumsal senaryolarda Azure Lighthouse
 
@@ -38,7 +38,7 @@ Her iki durumda da, [kaynaklara hangi kullanıcıların erişebileceğini tanım
 
 Azure Mathouse ve Azure Temsilcili kaynak yönetimi, verileri veya kaynakları fiziksel olarak taşımak yerine yalnızca bir kiracı ve yönetilen kiracılar arasında mantıksal bağlantılar sağlar. Ayrıca erişim, yönetim kiracısından yönetilen kiracılar 'a her zaman tek bir yönde gider.  Yönetim kiracısındaki kullanıcılar ve gruplar, yönetilen kiracı kaynaklarında yönetim işlemlerini gerçekleştirirken Multi-Factor Authentication kullanmaya devam etmelidir.
 
-İç veya dış idare ve uyumluluk guardları olan kuruluşlar, saydamlık gereksinimlerini karşılamak için [Azure etkinlik günlüklerini](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) kullanabilir. Kurumsal kiracılar yönetim ve yönetilen kiracı ilişkileri oluştururken, her Kiracıdaki kullanıcılar günlüğe kaydedilen etkinliği görüntüleyerek diğer Kiracıdaki kullanıcılar tarafından gerçekleştirilen eylemleri izleyebilir ve görünürlük elde edebilir.
+İç veya dış idare ve uyumluluk guardları olan kuruluşlar, saydamlık gereksinimlerini karşılamak için [Azure etkinlik günlüklerini](../../azure-monitor/platform/platform-logs-overview.md) kullanabilir. Kurumsal kiracılar yönetim ve yönetilen kiracı ilişkileri oluştururken, her Kiracıdaki kullanıcılar günlüğe kaydedilen etkinliği görüntüleyerek diğer Kiracıdaki kullanıcılar tarafından gerçekleştirilen eylemleri izleyebilir ve görünürlük elde edebilir.
 
 ## <a name="onboarding-process-considerations"></a>Ekleme süreci konuları
 

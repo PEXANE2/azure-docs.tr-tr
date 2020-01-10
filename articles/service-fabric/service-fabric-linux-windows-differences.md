@@ -1,50 +1,40 @@
 ---
-title: Linux ve Windows arasındaki Azure Service Fabric farklılıkları | Microsoft Docs
-description: Linux üzerinde Azure Service Fabric ve Windows üzerinde Azure Service Fabric arasındaki farklar.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Linux ve Windows arasındaki Azure Service Fabric farklılıkları
+description: Linux üzerindeki Azure Service Fabric ile Windows üzerindeki Azure Service Fabric arasındaki farklar.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 0010108a7f3f9341d28c0b2f146c2e2f421ce47d
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.custom: sfrev
+ms.openlocfilehash: c064291491110b17c172a561afbd1e65d6c08d06
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170578"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748536"
 ---
-# <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux ve Windows üzerinde Service Fabric arasındaki farklar
+# <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux ve Windows üzerindeki Service Fabric arasındaki farklar
 
-Windows üzerinde desteklenen ancak henüz Linux üzerinde olmayan bazı özellikler vardır. Sonuç olarak, özellik kümeleri eşlik edilir ve her sürümde bu özellik boşluğu küçülür. Kullanılabilir en son sürümler arasında aşağıdaki farklar vardır.
+Windows'da desteklenip Linux'ta henüz desteklenmeyen bazı özellikler mevcuttur. Bu nedenle özellik kümeleri birbirinden farklı olacak ve bu fark yeni sürümlerle azalacaktır. Kullanılabilir en son sürümler arasında aşağıdaki farklar vardır.
 
 * Envoy (ters proxy) Linux 'ta önizlemededir
-* Linux için tek başına yükleyici, Linux üzerinde henüz kullanılamaz
-* Konsol yeniden yönlendirme (Linux veya Windows üretim kümelerinde desteklenmez)
-* Linux üzerinde hata analizi hizmeti (FAS)
-* Service Fabric Services için DNS hizmeti (Linux üzerinde kapsayıcılar için DNS hizmeti desteklenir)
-* Belirli PowerShell komutlarının CLı komutu eşdeğerleri (çoğunlukla tek başına kümeler için geçerlidir)
+* Linux için tek başına yükleyici, Linux üzerinde kullanılamaz
+* Konsol yönlendirmesi (Linux veya Windows üretim kümelerinde desteklenmez)
+* Linux'ta Hata Analizi Hizmeti (FAS)
+* Service Fabric hizmetleri için DNS hizmeti (DNS hizmeti Linux üzerindeki kapsayıcılar için desteklenir)
+* Belirli Powershell komutlarının CLI komutu eşdeğerleri (liste aşağıda verilmiştir, komutların çoğu yalnızca tek başına kümeler için geçerlidir)
 * [Günlük uygulamasındaki ölçeklenebilirliği etkileyebilecek farklılıklar](service-fabric-concepts-scalability.md#choosing-a-platform)
 
-## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>Linux Service Fabric kümesinde çalışmayan PowerShell cmdlet 'leri
+## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>Linux Service Fabric kümesinde çalışmayan PowerShell cmdlet'leri
 
 * Invoke-ServiceFabricChaosTestScenario
 * Invoke-ServiceFabricFailoverTestScenario
 * Invoke-ServiceFabricPartitionDataLoss
-* Invoke-Servicefabricpartitionquorumkaybetme
+* Invoke-ServiceFabricPartitionQuorumLoss
 * Restart-ServiceFabricPartition
 * Start-ServiceFabricNode
 * Stop-ServiceFabricNode
-* Get-Servicefabricımatorecontent
+* Get-ServiceFabricImageStoreContent
 * Get-ServiceFabricChaosReport
-* Get-Servicefabricnodeınlationprogress
+* Get-ServiceFabricNodeTransitionProgress
 * Get-ServiceFabricPartitionDataLossProgress
 * Get-ServiceFabricPartitionQuorumLossProgress
 * Get-ServiceFabricPartitionRestartProgress
@@ -53,7 +43,7 @@ Windows üzerinde desteklenen ancak henüz Linux üzerinde olmayan bazı özelli
 * Start-ServiceFabricChaos
 * Start-ServiceFabricNodeTransition
 * Start-ServiceFabricPartitionDataLoss
-* Start-Servicefabricpartitionquorumkaybetme
+* Start-ServiceFabricPartitionQuorumLoss
 * Start-ServiceFabricPartitionRestart
 * Stop-ServiceFabricChaos
 * Stop-ServiceFabricTestCommand
@@ -75,8 +65,8 @@ Windows üzerinde desteklenen ancak henüz Linux üzerinde olmayan bazı özelli
 * Test-ServiceFabricClusterManifest
 * Test-ServiceFabricConfiguration
 * Update-ServiceFabricNodeConfiguration
-* Onayla-ServiceFabricRepairTask
-* Tam-ServiceFabricRepairTask
+* Approve-ServiceFabricRepairTask
+* Complete-ServiceFabricRepairTask
 * Get-ServiceFabricRepairTask
 * Invoke-ServiceFabricDecryptText
 * Invoke-ServiceFabricEncryptSecret
@@ -88,12 +78,11 @@ Windows üzerinde desteklenen ancak henüz Linux üzerinde olmayan bazı özelli
 * Stop-ServiceFabricRepairTask
 * Update-ServiceFabricRepairTaskHealthPolicy
 
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Linux üzerinde geliştirme ortamınızı hazırlama](service-fabric-get-started-linux.md)
 * [OSX üzerinde geliştirme ortamınızı hazırlama](service-fabric-get-started-mac.md)
-* [Yeumman kullanarak Linux üzerinde ilk Service Fabric Java uygulamanızı oluşturma ve dağıtma](service-fabric-create-your-first-linux-application-with-java.md)
-* [Service Fabric Çakışan Küreler Service Fabric eklentisini kullanarak Linux üzerinde ilk Java uygulamanızı oluşturma ve dağıtma](service-fabric-get-started-eclipse.md)
+* [Linux üzerinde Yeoman kullanarak ilk Service Fabric Java uygulamanızı oluşturma ve dağıtma](service-fabric-create-your-first-linux-application-with-java.md)
+* [Linux üzerinde Eclipse için Service Fabric Eklentisi kullanarak ilk Service Fabric Java uygulamanızı oluşturma ve dağıtma](service-fabric-get-started-eclipse.md)
 * [Linux üzerinde ilk CSharp uygulamanızı oluşturma](service-fabric-create-your-first-linux-application-with-csharp.md)
-* [Uygulamalarınızı yönetmek için Service Fabric CLı kullanın](service-fabric-application-lifecycle-sfctl.md)
+* [Uygulamalarınızı yönetmek için Service Fabric CLI'yı kullanma](service-fabric-application-lifecycle-sfctl.md)

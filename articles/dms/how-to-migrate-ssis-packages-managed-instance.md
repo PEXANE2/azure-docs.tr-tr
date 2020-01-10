@@ -1,6 +1,7 @@
 ---
-title: SQL Server Integration Services paketlerini Azure SQL veritabanı yönetilen örneğine geçirme | Microsoft Docs
-description: Bir Azure SQL veritabanı yönetilen örneği SQL Server Integration Services paketlerini geçirmeyi öğrenin.
+title: SSIS paketlerini SQL yönetilen örneğine geçirme
+titleSuffix: Azure Database Migration Service
+description: Azure veritabanı geçiş hizmeti 'ni veya Data Migration Yardımcısı kullanarak Azure SQL veritabanı yönetilen örneği 'ne SQL Server Integration Services (SSIS) paketlerini ve projelerini geçirmeyi öğrenin.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,47 +9,47 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 06/08/2019
-ms.openlocfilehash: 82a047616c199e37bfa22f53e02f3f7b224b47c1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/08/2020
+ms.openlocfilehash: 22f3e6a0e4c041024e826a7ed724d788ce77da62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083190"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751209"
 ---
-# <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>SQL Server Integration Services paketlerini Azure SQL veritabanı yönetilen örneğine geçirme
-SQL Server Integration Services (SSIS) kullanın ve bir Azure SQL veritabanı yönetilen örneği tarafından barındırılan SSISDB hedef SQL Server tarafından barındırılan SSISDB kaynağından SSIS projelerini/paketlerini geçiş yapmak istiyorsanız, Azure veritabanı geçiş hizmeti kullanabilirsiniz.
+# <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>SQL Server Integration Services paketlerini Azure SQL veritabanı yönetilen örneği 'ne geçirme
+SQL Server Integration Services (SSIS) kullanıyorsanız ve SSIS projelerinizi/SQL Server paketlerinizi Azure SQL veritabanı yönetilen örneği tarafından barındırılan hedef SSSıSDB 'ye geçirmek istiyorsanız, Azure veritabanı geçiş hizmeti ' ni kullanabilirsiniz.
 
-SSIS kullandığınız sürümü 2012'den daha eski veya geçiş, SSIS projelerini/paketlerini önce SSISDB olmayan paket deposu türlerini kullanın tümleştirme hizmetleri proje dönüştürme SSMS başlatılabilir Sihirbazı'nı kullanarak bunları dönüştürmeniz gerekir. Daha fazla bilgi için bkz [projeleri için proje dağıtım modeli dönüştürme](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
+SSIS 'nin kullandığınız sürümü 2012 'den daha eski veya SSIS projelerini/paketlerinizi geçirmeden önce, SSIS projelerinizi/paketlerinizi geçirmeden önce bunları, SSMS 'den başlatılabilen Tümleştirme Hizmetleri proje Dönüştürme Sihirbazı 'Nı kullanarak dönüştürmeniz gerekir. Daha fazla bilgi için [projeleri proje dağıtım modeline dönüştürme](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)makalesine bakın.
 
 > [!NOTE]
-> Azure veritabanı geçiş hizmeti (DMS) geçişi hedef Azure SQL veritabanı şu anda desteklemiyor. SSIS projelerini/paketlerini Azure SQL veritabanı yeniden dağıtmak için makalesine bakın. [yeniden SQL Server Integration Services paketlerini Azure SQL veritabanı](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
+> Azure veritabanı geçiş hizmeti (DMS) Şu anda Azure SQL veritabanını hedef geçiş hedefi olarak desteklemiyor. SSIS projelerini/paketlerini Azure SQL veritabanı 'na yeniden dağıtmak için [SQL Server Integration Services paketlerini Azure SQL veritabanı 'na yeniden dağıtma](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)makalesine bakın.
 
 Bu makalede şunları öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Kaynak SSIS projelerini/paketlerini değerlendirin.
-> * SSIS projelerini/paketlerini Azure'a geçirin.
+> * SSIS projelerini/paketlerini Azure 'a geçirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu adımları tamamlamak için ihtiyacınız vardır:
+Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
-* Kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlar Azure Resource Manager dağıtım modelini kullanarak bir Azure sanal ağı (VNet) için Azure veritabanı geçiş hizmeti oluşturmak için [ExpressRoute ](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Daha fazla bilgi için bkz [ağ topolojileri için Azure SQL veritabanı yönetilen örneği geçişlerinin Azure veritabanı geçiş hizmetini kullanarak]( https://aka.ms/dmsnetworkformi). Sanal ağ oluşturma hakkında daha fazla bilgi için bkz. [sanal ağ belgeleri](https://docs.microsoft.com/azure/virtual-network/)ve özellikle hızlı başlangıç makalelerini ile adım adım ayrıntıları.
-* VNet ağ güvenlik grubu kurallarınızı aşağıdaki gelen iletişim bağlantı noktaları için Azure veritabanı geçiş hizmeti engelleme emin olmak için: 443, 53, 9354, 445, 12000. Azure VNet NSG trafik filtreleme hakkında daha fazla ayrıntı için bkz [ağ güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
-* Yapılandırmak için [kaynak veritabanı altyapısı erişimi için Windows Güvenlik Duvarı](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017).
-* Varsayılan olarak 1433 numaralı TCP bağlantı noktası olan SQL Server kaynağına erişmek Azure veritabanı geçiş hizmeti izin vermek için Windows Güvenlik duvarını açmak için.
+* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için Microsoft Azure sanal ağ oluşturmak için. Daha fazla bilgi için [Azure veritabanı geçiş hizmeti 'ni kullanarak Azure SQL veritabanı yönetilen örnek geçişleri Için ağ topolojileri]( https://aka.ms/dmsnetworkformi)makalesine bakın. Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
+* Sanal ağ ağ güvenlik grubu kurallarınızın, Azure veritabanı geçiş hizmeti 'ne yönelik aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olmak için: 443, 53, 9354, 445, 12000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)makalesine bakın.
+* [Kaynak veritabanı altyapısı erişimi Için Windows Güvenlik duvarınızı](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017)yapılandırmak için.
+* Azure veritabanı geçiş hizmeti 'nin kaynak SQL Server erişmesine izin vermek üzere Windows Güvenlik duvarınızı açmak için, varsayılan olarak TCP bağlantı noktası 1433 ' dir.
 * Dinamik bağlantı noktası kullanarak birden fazla adlandırılmış SQL Server örneği çalıştırıyorsanız Azure Veritabanı Geçiş Hizmeti'nin kaynak sunucunuzdaki adlandırılmış örneğe bağlanabilmesi için SQL Browser Hizmeti'ni etkinleştirebilir ve güvenlik duvarınızda 1434 numaralı UDP bağlantı noktasına erişim izni verebilirsiniz.
 * Kaynak veritabanlarınızın önünde bir güvenlik duvarı cihazı kullanıyorsanız Azure Veritabanı Geçiş Hizmeti'nin geçiş amacıyla kaynak veritabanlarına ve 445 numaralı SMB bağlantı noktası aracılığıyla dosyalara erişmesi için güvenlik duvarı kuralları eklemeniz gerekebilir.
-* Azure SQL veritabanı yönetilen örneği SSISDB'yi barındırmak için. Makalesinde ayrıntılı olarak oluşturmak ihtiyacınız varsa izleyin [bir Azure SQL veritabanı yönetilen örneği oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started).
-* SQL Server ve hedef yönetilen örnek kaynağına bağlanmak için kullanılan oturum açma bilgileri sağlamak için sysadmin sunucu rolünün üyeleri olan.
-* Yönetilen örnek olarak Azure Data Factory (' % s'hedef Azure SQL veritabanı tarafından barındırılan SSISDB ile Azure-SSIS Integration Runtime (IR) içeren ADF) SSIS sağlandığından emin olun (makalesinde açıklandığı şekilde [Azure-SSIS oluşturma Azure Data factory'de tümleştirme çalışma zamanı](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)).
+* SSıSDB barındırmak için bir Azure SQL veritabanı yönetilen örneği. Bir tane oluşturmanız gerekiyorsa, [Azure SQL veritabanı yönetilen örneği oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)makalesindeki ayrıntıları izleyin.
+* Kaynak SQL Server ve hedef yönetilen örneği bağlamak için kullanılan oturum açma bilgilerinin sysadmin sunucu rolünün üyeleri olduğundan emin olmak için.
+* SSIS 'nin bir Azure SQL veritabanı yönetilen örneği tarafından barındırılan hedef SSSıSDB ile Azure-SSIS Integration Runtime (IR) içeren Azure Data Factory (ADF) olduğunu doğrulamak için ( [Azure Data Factory 'de Azure-SSIS tümleştirme çalışma zamanını oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)makalesinde açıklandığı gibi).
 
-## <a name="assess-source-ssis-projectspackages"></a>Kaynak SSIS projelerini/paketlerini değerlendirmek
+## <a name="assess-source-ssis-projectspackages"></a>Kaynak SSIS projelerini/paketlerini değerlendir
 
-Değerlendirme kaynağı SSISDB veritabanı geçiş Yardımcısı (DMA içine) henüz tümleşik değil, ancak SSIS projelerini/paketlerini değerlendirilen/SSISDB barındırılan bir Azure SQL veritabanı yönetilen örneği hedefine imzalanmasını gibi doğrulanması.
+Kaynak SSSıSDB değerlendirmesi henüz veritabanı Geçiş Yardımcısı (DMA) ile tümleştirmemişse, SSIS projeleriniz/paketleriniz, Azure SQL veritabanı yönetilen örneği üzerinde barındırılan hedef SSıSDB 'ye yeniden dağıtıldıklarında değerlendirilecek/onaylanır.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration kaynak sağlayıcısını kaydetme
 
@@ -56,7 +57,7 @@ Değerlendirme kaynağı SSISDB veritabanı geçiş Yardımcısı (DMA içine) h
 
     ![Portal aboneliklerini gösterme](media/how-to-migrate-ssis-packages-mi/portal-select-subscriptions.png)
 
-2. Azure veritabanı geçiş hizmeti örneği oluşturun ve ardından istediğiniz aboneliği seçin **kaynak sağlayıcıları**.
+2. Azure veritabanı geçiş hizmeti örneğini oluşturmak istediğiniz aboneliği seçin ve ardından **kaynak sağlayıcıları**' nı seçin.
 
     ![Kaynak sağlayıcılarını gösterme](media/how-to-migrate-ssis-packages-mi/portal-select-resource-provider.png)
 
@@ -68,7 +69,7 @@ Değerlendirme kaynağı SSISDB veritabanı geçiş Yardımcısı (DMA içine) h
 
 1. Azure portalda +**Kaynak oluştur**'u seçin, **Azure Veritabanı Geçiş Hizmeti** araması yapın ve açılan listeden **Azure Veritabanı Geçiş Hizmeti**'ni seçin.
 
-     ![Azure Market](media/how-to-migrate-ssis-packages-mi/portal-marketplace.png)
+     ![Azure Marketi](media/how-to-migrate-ssis-packages-mi/portal-marketplace.png)
 
 2. **Azure Veritabanı Geçiş Hizmeti** ekranında **Oluştur**'u seçin.
 
@@ -78,13 +79,13 @@ Değerlendirme kaynağı SSISDB veritabanı geçiş Yardımcısı (DMA içine) h
 
 4. DMS örneğini oluşturmak istediğiniz konumu seçin.
 
-5. Mevcut bir VNet seçin veya oluşturun.
+5. Var olan bir sanal ağı seçin veya bir tane oluşturun.
 
-    VNet Azure veritabanı geçiş hizmeti SQL Server kaynak ve hedef Azure SQL veritabanı yönetilen örneğine erişim sağlar.
+    Sanal ağ, Azure veritabanı geçiş hizmeti 'ne kaynak SQL Server erişimi sağlar ve Azure SQL veritabanı yönetilen örneği ' ni hedefleyin.
 
-    Azure portalında VNet oluşturma hakkında daha fazla bilgi için bkz [Azure portalını kullanarak bir sanal ağ oluşturma](https://aka.ms/DMSVnet).
+    Azure portal bir sanal ağ oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak sanal ağ oluşturma](https://aka.ms/DMSVnet)makalesine bakın.
 
-    Ek ayrıntılar için bkz [kullanarak Azure veritabanı geçiş hizmeti örneği geçişlerinin ağ topolojileri için Azure SQL DB yönetilen](https://aka.ms/dmsnetworkformi).
+    Daha fazla ayrıntı için [Azure veritabanı geçiş hizmeti 'ni kullanarak Azure SQL DB yönetilen örnek geçişleri Için ağ topolojileri](https://aka.ms/dmsnetworkformi)makalesine bakın.
 
 6. Fiyatlandırma katmanını seçin.
 
@@ -106,7 +107,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
 3. +**Yeni Geçiş Projesi**'ni seçin.
 
-4. Üzerinde **yeni geçiş projesi** projesi için bir ad belirtin, ekran **kaynak sunucu türü** metin kutusunda **SQL Server**, **hedef sunucu tür** metin kutusunda **Azure SQL veritabanı yönetilen örneği**ve ardından **etkinlik türünü seçin**seçin **SSIS paketi geçiş**.
+4. **Yeni geçiş projesi** ekranında, proje için bir ad belirtin, **kaynak sunucu türü** metin kutusunda **SQL Server**' i seçin, **hedef sunucu türü** metin kutusunda, **Azure SQL veritabanı yönetilen örneği**' ni seçin ve ardından **etkinlik türü seç**' i seçin, **SSIS paketi geçişi**' ni seçin.
 
    ![DMS projesi oluşturma](media/how-to-migrate-ssis-packages-mi/dms-create-project2.png)
 
@@ -129,9 +130,9 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
 ## <a name="specify-target-details"></a>Hedef ayrıntılarını belirtme
 
-1. Üzerinde **geçiş hedef ayrıntıları** ekranında, hedef bağlantı ayrıntılarını belirtin.
+1. **Geçiş hedefi ayrıntıları** ekranında, hedefin bağlantı ayrıntılarını belirtin.
 
-     ![Hedef ayrıntıları](media/how-to-migrate-ssis-packages-mi/dms-target-details2.png)
+     ![Hedef Ayrıntıları](media/how-to-migrate-ssis-packages-mi/dms-target-details2.png)
 
 2. **Kaydet**’i seçin.
 
@@ -139,7 +140,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
 1. **Geçiş özeti** ekranının **Etkinlik adı** metin kutusunda geçiş etkinliği için bir ad belirtin.
 
-2. İçin **SSIS projeleri ve bırakmaya üzerine seçeneği**, üzerine veya var olan SSIS projelerini ve ortamları yoksay belirtin.
+2. **SSIS projesi ve ortam üzerine yazma seçeneği**için, var olan SSIS projelerinin ve ortamlarının üzerine yazılıp yazılmayacağını belirtin.
 
     ![Geçiş projesi özeti](media/how-to-migrate-ssis-packages-mi/dms-project-summary2.png)
 
@@ -151,4 +152,4 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Microsoft Geçiş Kılavuzu gözden [veritabanı Geçiş Kılavuzu](https://datamigration.microsoft.com/).
+* Microsoft [veritabanı geçiş kılavuzu](https://datamigration.microsoft.com/)' nda geçiş kılavuzunu gözden geçirin.

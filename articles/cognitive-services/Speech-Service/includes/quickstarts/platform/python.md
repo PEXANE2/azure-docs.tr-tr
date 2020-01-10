@@ -7,15 +7,15 @@ author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 095c591f63cb228b48681ffc67499820631bbaf5
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 218d0dca43d126c1318c273603a4980697c465af
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816443"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752261"
 ---
 Bu kılavuzda, Python için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir.
 
@@ -28,7 +28,7 @@ Bu kılavuzda, Python için [konuşma SDK 'sının](~/articles/cognitive-service
   - Mac: macOS X sürüm 10,12 veya üzeri
   - Linux: Ubuntu 16,04, Ubuntu 18,04, x64 üzerinde debir 9
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Desteklenen Linux platformları, belirli kitaplıkların yüklü olmasını gerektirir (Güvenli Yuva Katmanı desteği için`libssl` ve ses desteği için `libasound2`). Bu kitaplıkların doğru sürümlerini yüklemek için gereken komutlar için aşağıdaki dağıtıma bakın.
 
@@ -47,7 +47,7 @@ Bu kılavuzda, Python için [konuşma SDK 'sının](~/articles/cognitive-service
         ```
 
 - Windows 'ta, platformunuz için [Visual Studio C++ 2019 için Microsoft Visual yeniden dağıtılabilir](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) gereklidir. Bunu ilk kez yüklemek, bu kılavuza devam etmeden önce Windows 'u yeniden başlatmanızı gerektirebilir.
-- Son olarak, [Python 3,5 veya sonraki bir sürümü](https://www.python.org/downloads/)gerekir. Yüklemenizi denetlemek için bir komut istemi açın ve komut `python --version` yazın ve sonucu denetleyin. Doğru yüklenmişse, "Python 3.5.1" veya benzer bir yanıt alırsınız.
+- Son olarak, [Python 3,5, 3,6 veya 3,7](https://www.python.org/downloads/)gerekecektir. Yüklemenizi denetlemek için bir komut istemi açın ve komut `python --version` yazın ve sonucu denetleyin. Doğru yüklenmişse, "Python 3.5.1" veya benzer bir yanıt alırsınız.
 
 ## <a name="install-the-speech-sdk-using-visual-studio-code"></a>Visual Studio Code kullanarak konuşma SDK 'sını yükler
 
@@ -78,7 +78,7 @@ MacOS kullanıyorsanız, yukarıdaki `pip` komutunu almak için aşağıdaki kom
 python3 -m pip install --upgrade pip
 ```
 
-`azure-cognitiveservices-speech`yüklemek için `pip` başarıyla kullandıysanız, ad alanını Python projelerinize aktararak konuşma SDK 'sını kullanabilirsiniz. Örnek:
+`azure-cognitiveservices-speech`yüklemek için `pip` başarıyla kullandıysanız, ad alanını Python projelerinize aktararak konuşma SDK 'sını kullanabilirsiniz. Örneğin:
 
 ```py
 import azure.cognitiveservices.speech as speechsdk

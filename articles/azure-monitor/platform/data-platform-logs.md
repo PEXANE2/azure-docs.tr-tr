@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 269744d5e9552d87c3fa619f33e02c833b3841be
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2772535ff5eb7cf1e50c40b8ff075f67e71e1326
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894173"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751021"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure İzleyici'deki günlükler
 
@@ -26,7 +26,7 @@ ms.locfileid: "74894173"
 Azure Izleyici 'deki Günlükler özellikle çeşitli kaynaklardaki veriler arasında karmaşık analizler gerçekleştirmek için yararlıdır. Bu makalede, günlüklerin Azure Izleyici 'de nasıl yapılandırıldığı, verilerle neler yapabilecekleri ve verileri günlüklerde depolayan farklı veri kaynakları tanımlandığı açıklanır.
 
 > [!NOTE]
-> Azure Izleyici günlüklerini ve Azure 'da günlük verilerinin kaynaklarını ayırt etmek önemlidir. Örneğin, Azure 'daki abonelik düzeyi olayları, Azure Izleyici menüsünden görüntüleyebileceğiniz bir [etkinlik günlüğüne](activity-logs-overview.md) yazılır. Çoğu kaynak, işletimsel bilgileri farklı konumlara iletebilmeniz için bir [kaynak günlüğüne](resource-logs-overview.md) yazar. Azure Izleyici günlükleri, tüm kaynak kümesinde derin analiz sağlamak üzere diğer izleme verileriyle birlikte etkinlik günlüklerini ve kaynak günlüklerini toplayan bir günlük veri platformudur.
+> Azure Izleyici günlüklerini ve Azure 'da günlük verilerinin kaynaklarını ayırt etmek önemlidir. Örneğin, Azure 'daki abonelik düzeyi olayları, Azure Izleyici menüsünden görüntüleyebileceğiniz bir [etkinlik günlüğüne](platform-logs-overview.md) yazılır. Çoğu kaynak, işletimsel bilgileri farklı konumlara iletebilmeniz için bir [kaynak günlüğüne](platform-logs-overview.md) yazar. Azure Izleyici günlükleri, tüm kaynak kümesinde derin analiz sağlamak üzere diğer izleme verileriyle birlikte etkinlik günlüklerini ve kaynak günlüklerini toplayan bir günlük veri platformudur.
 
 ## <a name="what-are-azure-monitor-logs"></a>Azure Izleyici günlükleri nelerdir?
 

@@ -3,25 +3,25 @@ title: İlke atama yapısının ayrıntıları
 description: Değerlendirme için kaynaklarla ilke tanımlarını ve parametreleri ilişkilendirmek üzere Azure Ilkesi tarafından kullanılan ilke atama tanımını açıklar.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9301004fe05afa77f3e73c6ec97335a17c237ce9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279479"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747210"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure İlkesi atama yapısı
 
-İlke atamaları, ilkeler veya girişimler sırasında hangi kaynakların atandığını tanımlamak için Azure Ilkesi tarafından kullanılır. İlke ataması, atama zamanında bu kaynak grubu için parametrelerin değerlerini belirleyebilir ve aynı kaynak özelliklerini, uyumluluk için farklı ihtiyaçlarla ele alan ilke tanımlarının yeniden kullanılmasını mümkün kılar.
+İlke atamaları, hangi ilkelerin veya girişimlerin hangi kaynaklara atandığını tanımlamak için Azure Ilkesi tarafından kullanılır. İlke ataması, atama zamanında bu kaynak grubu için parametrelerin değerlerini belirleyebilir ve aynı kaynak özelliklerini, uyumluluk için farklı ihtiyaçlarla ele alan ilke tanımlarının yeniden kullanılmasını mümkün kılar.
 
 Bir ilke ataması oluşturmak için JSON kullanırsınız. İlke ataması için öğeleri içerir:
 
 - Görünen ad
-- description
+- açıklama
 - meta veriler
 - zorlama modu
 - ilke tanımı
-- parameters
+- parametreler
 
 Örneğin, aşağıdaki JSON, _Donotenzorlama_ modunda dinamik parametrelerle bir ilke atamasını göstermektedir:
 
@@ -55,11 +55,11 @@ Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
 
 ## <a name="enforcement-mode"></a>Zorlama modu
 
-**Enforcementmode** özelliği, müşterilere ilke efektini başlatmadan veya [Azure etkinlik günlüğündeki](../../../azure-monitor/platform/activity-logs-overview.md)girişleri tetiklemeden mevcut kaynaklarda bir ilkenin sonucunu test etme yeteneği sağlar. Bu senaryo genellikle "What If" olarak adlandırılır ve güvenli dağıtım uygulamalarına hizalanır. **Enforcementmode** [devre dışı](./effects.md#disabled) etkilerden farklıdır, çünkü bu efekt kaynak değerlendirmesinin hiç oluşmasını önler.
+**Enforcementmode** özelliği, müşterilere ilke efektini başlatmadan veya [Azure etkinlik günlüğündeki](../../../azure-monitor/platform/platform-logs-overview.md)girişleri tetiklemeden mevcut kaynaklarda bir ilkenin sonucunu test etme yeteneği sağlar. Bu senaryo genellikle "What If" olarak adlandırılır ve güvenli dağıtım uygulamalarına hizalanır. **Enforcementmode** [devre dışı](./effects.md#disabled) etkilerden farklıdır, çünkü bu efekt kaynak değerlendirmesinin hiç oluşmasını önler.
 
 Bu özellik aşağıdaki değerlere sahiptir:
 
-|Mod |JSON değeri |Type |El ile düzelt |Etkinlik günlüğü girişi |Açıklama |
+|Mod |JSON değeri |Tür |El ile düzelt |Etkinlik günlüğü girişi |Açıklama |
 |-|-|-|-|-|-|
 |Etkin |Varsayılan |string |Evet |Evet |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
 |Devre dışı |Donotenzorlamalı |string |Evet |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |

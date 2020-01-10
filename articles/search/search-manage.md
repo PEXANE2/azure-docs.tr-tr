@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e00a810e7977e1c45c1833e0b901ff6804f7fb32
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113295"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754317"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal Azure Bilişsel Arama için hizmet yönetimi
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ Verilerinizi, veri merkezi düzeyinde bir kesinti varsa Azure Bilişsel Arama, h
 
 Microsoft 'un denetimi dışındaki çok sayıda hata oluşması durumunda sürekli hizmet gerekliyse, farklı bir bölgede [ek bir hizmet](search-create-service-portal.md) sağlayabilir ve dizinlerin tüm hizmetlerde tamamen yedekli olmasını sağlamak için coğrafi çoğaltma stratejisi uygulayabilirsiniz.
 
-Dizinleri doldurmak ve yenilemek için [Dizin oluşturucular](search-indexer-overview.md) kullanan müşteriler, aynı veri kaynağından yararlanan coğrafi olarak özel Dizin oluşturucular aracılığıyla olağanüstü durum kurtarmayı işleyebilir. Her biri Dizin Oluşturucu çalıştıran farklı bölgelerdeki iki hizmet, coğrafi yedeklilik sağlamak için aynı veri kaynağını dizinlede olabilir. Aynı zamanda coğrafi olarak yedekli veri kaynaklarından Dizin oluşturdıysanız Azure Bilişsel Arama dizin oluşturucularının yalnızca birincil çoğaltmalardan artımlı Dizin gerçekleştirebillerinin farkında olun. Bir yük devretme olayında, Dizin oluşturucuyu yeni birincil çoğaltmaya yeniden işaret ettiğinizden emin olun. 
+Dizinleri doldurmak ve yenilemek için [Dizin oluşturucular](search-indexer-overview.md) kullanan müşteriler, aynı veri kaynağından yararlanan coğrafi olarak özel Dizin oluşturucular aracılığıyla olağanüstü durum kurtarmayı işleyebilir. Her biri Dizin Oluşturucu çalıştıran farklı bölgelerdeki iki hizmet, coğrafi yedeklilik sağlamak için aynı veri kaynağını dizinlede olabilir. Aynı zamanda coğrafi olarak yedekli veri kaynaklarından dizin oluşturuyorsanız, Azure Bilişsel Arama Dizin oluşturucuların birincil çoğaltmalardan yalnızca artımlı dizin oluşturma (yeni, değiştirilen veya silinen belgelerden güncelleştirmeleri birleştirme) gerçekleştirebildiğinizden haberdar olun. Bir yük devretme olayında, Dizin oluşturucuyu yeni birincil çoğaltmaya yeniden işaret ettiğinizden emin olun. 
 
 Dizin oluşturucular kullanmıyorsanız, nesneleri ve verileri farklı arama hizmetlerine paralel olarak göndermek için uygulama kodunuzu kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure bilişsel arama performans ve iyileştirme](search-performance-optimization.md).
 

@@ -3,12 +3,12 @@ title: DPM sunucusunu iş yüklerini yedekleyecek şekilde hazırlama
 description: Bu makalede, Azure Backup hizmetini kullanarak System Center Data Protection Manager (DPM) yedeklemelerini Azure 'a nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: c7b662c07caecb7871ec9f8be89ffc76b8f7f5fb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2119d46ca6102286ca879777058a49938b501ad6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173144"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753955"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM ile iş yüklerini Azure 'a yedeklemeye hazırlanma
 
@@ -97,7 +97,7 @@ Kimlik bilgilerini almak için kasa kimlik bilgileri dosyasını Azure portal g�
 
 Kasa kimlik bilgileri dosyasını aşağıdaki gibi bir yerel makineye indirin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. DPM sunucusunu kaydetmek istediğiniz kasayı açın.
 3. **Ayarlar**' da **Özellikler**' e tıklayın.
 
@@ -105,7 +105,7 @@ Kasa kimlik bilgileri dosyasını aşağıdaki gibi bir yerel makineye indirin:
 
 4. **Yedekleme kimlik bilgileri** > **Özellikler** ' de **İndir**' e tıklayın. Portal kasa adının ve geçerli tarihin bir birleşimini kullanarak kasa kimlik bilgileri dosyasını oluşturur ve bu dosyayı indirme için kullanılabilir hale getirir.
 
-    ![İndirme](./media/backup-azure-dpm-introduction/vault-credentials.png)
+    ![İndirin](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
 5. Kasa kimlik bilgilerini klasöre indirmek için **Kaydet** ' e tıklayın veya **farklı kaydedin** ve bir konum belirtin. Dosyanın oluşturulması bir dakika kadar sürer.
 
@@ -119,7 +119,7 @@ Azure Backup tarafından yedeklenen her makinede Yedekleme aracısı (Ayrıca, M
     ![Kasa menüsünü açma](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. **Özellikler** sayfasında Azure Backup aracısını indirin.
 
-    ![İndirme](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
+    ![İndirin](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
 
 4. İndirmeden sonra Marsagentınstaller. exe ' yi çalıştırın. Aracıyı DPM makinesine yüklemek için.
 5. Aracı için bir yükleme klasörü ve önbellek klasörü seçin. Önbellek konumu boş alanı, yedekleme verilerinin en az %5 ' i olmalıdır.
@@ -127,7 +127,7 @@ Azure Backup tarafından yedeklenen her makinede Yedekleme aracısı (Ayrıca, M
 7. Azure Backup Aracısı yüklemeyi tamamlaması için .NET Framework 4,5 ve Windows PowerShell 'i (yüklenmemişse) yüklüyor.
 8. Aracı yüklendikten sonra pencereyi **kapatın** .
 
-    ![Kapat](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
+    ![Uyumluluk tekliflerini](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>DPM sunucusunu kasaya kaydetme
 
@@ -165,7 +165,7 @@ Azure Backup tarafından yedeklenen her makinede Yedekleme aracısı (Ayrıca, M
 
 7. DPM sunucusunu kasaya kaydetmek için **Kaydet** ' e tıklayın.
 
-Sunucu kasaya başarıyla kaydolduktan sonra, Microsoft Azure yedeklemeye başlamaya başlamaya hazırsınız.
+Sunucu kasaya başarıyla kaydolduktan sonra, Microsoft Azure yedeklemeye başlamaya başlamaya hazırsınız. İş yüklerini Azure 'a yedeklemek için DPM konsolundaki koruma grubunu yapılandırmanız gerekir. Koruma gruplarını dağıtmayı [öğrenin](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) .
 
 ## <a name="troubleshoot-vault-credentials"></a>Kasa kimlik bilgileri sorunlarını giderme
 

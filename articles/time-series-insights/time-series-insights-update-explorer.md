@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 17ba808ebfabb68765cf35bbf0799d117bc6383b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: d94daa5fbda4ee60ffc6671f7b50126662416043
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133443"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746402"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Azure Time Series Insights önizlemesi Gezgini
 
 Bu makalede Azure Time Series Insights Preview [demo Web uygulamasında](https://insights.timeseries.azure.com/preview/demo)kullanılabilen çeşitli özellikler ve seçenekler açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Time Series Insights önizleme Gezginini kullanmaya başlamak için şunları yapmanız gerekir:
 
@@ -58,7 +58,7 @@ Ortam paneline erişiminiz olan tüm zaman serisi görüşleri ortamları görü
 
 ## <a name="2-navigation-bar"></a>2. gezinti çubuğu
 
-  [Gezinti çubuğunu ![](media/v2-update-explorer/navigation-bar.png)](media/v2-update-explorer/navigation-bar.png#lightbox)
+  [Gezinti çubuğunu ![](media/v2-update-explorer/tsi-preview-navigation-bar.png)](media/v2-update-explorer/tsi-preview-navigation-bar.png#lightbox)
 
 İki görünüm arasından seçim yapmak için gezinti çubuğunu kullanın:
 
@@ -81,7 +81,7 @@ Zaman serisi modeli hakkında daha fazla bilgi için bkz: [kez serisi modelleri]
 
 Hiyerarşi ağacı ve arama paneli, grafiğinizde görüntülenmesini istediğiniz belirli zaman serisi örneklerini bulmak için [zaman serisi modeli](./time-series-insights-update-tsm.md) hiyerarşinizde kolayca arama yapmanıza ve gezinmenize izin verir. Örneklerinizi seçtiğinizde, bunlar yalnızca geçerli grafiğe eklenmez, ancak veri kutusuna da eklenir. 
 
-[Hiyerarşi ağacı ve arama paneli ![](media/v2-update-explorer/hierarchy-search.png)](media/v2-update-explorer/hierarchy-search.png#lightbox)
+[Hiyerarşi ağacı ve arama paneli ![](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
 Arama sonuçları bölmesi, göstermek istediğiniz örnekleri bulmayı kolaylaştıran bir hiyerarşi görünümünde veya liste görünümünde sonuçlarınızı görüntülemenize imkan tanır.
  
@@ -89,7 +89,7 @@ Arama sonuçları bölmesi, göstermek istediğiniz örnekleri bulmayı kolayla�
 
 İyi, örnek alanlarını ve seçili Time Series Insights örneklerle ilişkili diğer meta verileri görüntüler. Sağ taraftaki onay kutularını seçerek geçerli grafikten belirli örnekleri gizleyebilir veya görüntüleyebilirsiniz. 
 
-  [Önizleme iyi ![](media/v2-update-explorer/preview-well.png)](media/v2-update-explorer/preview-well.png#lightbox)
+  [Önizleme iyi ![](media/v2-update-explorer/tsi-preview-ui-explorer-well.png)](media/v2-update-explorer/tsi-preview-ui-explorer-well.png#lightbox)
 
 Öğenin sol tarafındaki kırmızı **silme** (çöp kutusu) denetimini seçerek, geçerli verilerdeki belirli veri öğelerini kaldırabilirsiniz. Ayrıca, her bir öğenin grafikte nasıl görüntülendiğini denetlemenize de olanak tanır. En az/en yüksek gölgeler, veri noktaları ekleyebilir, öğeyi zamanında kaydırabileceğiniz örnek bir şekilde görselleştirmeyi seçebilirsiniz. 
 
@@ -100,13 +100,13 @@ Ayrıca, araştırma denetimi zaman vardiyalarını ve dağılım çizimlerini k
 > [!NOTE]
 > Aşağıdaki iletiyi görürseniz, örnek seçilen zaman aralığı boyunca hiçbir veri içermez. Sorunu çözmek için, zaman aralığını artırın veya örneğin veri iletme süresini onaylayın.
 >
-> ![Veri bildirimi yok](media/v2-update-explorer/no-data-warning.png)
+> ![Veri bildirimi yok](media/v2-update-explorer/tsi-preview-no-data-warning.png)
 
 ## <a name="5-chart-panel"></a>5. Grafik bölmesi
 
 Grafik, zaman serisi örneklerini satır olarak görüntülemenizi sağlar. Grafik büyütmek için web denetimleri tıklayarak ortam paneli, veri modeli ve zaman aralığı Denetim Masası daraltabilirsiniz. 
 
-  [![önizleme grafiğine genel bakış](media/v2-update-explorer/chart-overview.png)](media/v2-update-explorer/chart-overview.png#lightbox)
+  [![önizleme grafiğine genel bakış](media/v2-update-explorer/tsi-preview-chart-overview.png)](media/v2-update-explorer/tsi-preview-chart-overview.png#lightbox)
 
 1. **Grafik türü**: görselleştirme için hangi veri öğelerinin kullanılabilir olduğunu denetler.
 
@@ -122,29 +122,29 @@ Grafik, zaman serisi örneklerini satır olarak görüntülemenizi sağlar. Graf
 
 1. **İşaretleyici öğesi**: Şu anda seçili olan veri öğesi ve ilgili ayrıntıları.
 
-Mevcut grafikteki bir veri noktasına **sağ tıklayıp** fare tuşunu basılı tutup seçili alanı seçtiğiniz uç noktaya sürükleyerek belirli bir veri dilimine daha fazla ayrıntıya gidebilirsiniz. Gri seçili alana **sağ tıklayın** ve aşağıda gösterildiği gibi **Yakınlaştır** ' a tıklayın. Ayrıca, telemetri olaylarını seçili TimeSpan içinde görüntüleyebilir ve indirebilirsiniz.
+Mevcut grafikteki bir veri noktasına **sağ tıklayıp** fare tuşunu basılı tutup seçili alanı seçtiğiniz uç noktaya sürükleyerek belirli bir veri dilimine daha fazla ayrıntıya gidebilirsiniz. Mavi, seçili alanı **sağ tıklatın** ve aşağıda gösterildiği gibi **Yakınlaştır** ' ı tıklatın. Ayrıca, telemetri olaylarını seçili TimeSpan içinde görüntüleyebilir ve indirebilirsiniz.
 
   [![önizlemesi grafiği önizlemesi](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
 **Yakınlaştırma** eylemini gerçekleştirdikten sonra, seçtiğiniz veri kümesini görürsünüz. Time Series Insights verilerinizin üç y ekseni gösterimlerine göre geçiş yapmak için biçim denetimini seçin.
 
-  [![Preview grafik y ekseni](media/v2-update-explorer/standard-chart.png)](media/v2-update-explorer/standard-chart.png#lightbox)
+  [![Preview grafik y ekseni](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png)](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png#lightbox)
 
 Burada, **Çakışan grafiğin**bir örneğini görebilirsiniz:
 
-  [Çakışan grafik seçeneği ![](media/v2-update-explorer/overlapping-chart.png)](media/v2-update-explorer/overlapping-chart.png#lightbox)
+  [Çakışan grafik seçeneği ![](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
-**Diğer eylemler** düğmesi, **indirmeyi CSV olarak** göstermek ve **Power BI seçeneklere aktarmak** için genişler.
+**Diğer eylemler** düğmesi, **indirmeyi CSV olarak**görüntülemek, **Power BI bağlanmak**, **grafik verilerini tablo olarak göstermek**ve **Ham olaylar seçeneklerini araştırmak** için genişler.
 
   [![daha fazla eylem seçeneği](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
 
-[Time Series Insights native Power BI Bağlayıcısı](concepts-power-bi.md)hakkında bilgi edinin.
+[Time Series Insights yerel Power BI Bağlayıcısı](concepts-power-bi.md)'Nda **Power BI Bağlan** seçeneği hakkında daha fazla bilgi edinin.
 
 ## <a name="6-time-editor-panel"></a>6. zaman Düzenleyicisi bölmesi
 
 Time Series Insights ile çalışırken ilk olarak bir zaman aralığı seçersiniz. Seçilen zaman aralığı Time Series Insights güncelleştirme pencere öğeleri ile düzenleme için kullanılabilen veri kümesini denetler.
 
-  [![zaman seçimi paneli](media/v2-update-explorer/timeline-element.png)](media/v2-update-explorer/timeline-element.png#lightbox)
+  [![zaman seçimi paneli](media/v2-update-explorer/tsi-preview-explorer-timeline-element.png)](media/v2-update-explorer/tsi-preview-explorer-timeline-element.png#lightbox)
 
 > [!TIP]
 > Zaman çizelgesinin bir kısmı, ısınma veya turuncu renkte vurgulanır ve bu da, normal mağazada kullanılabilir olan verilerin yayılmasını gösterir.
@@ -171,15 +171,15 @@ Time Series Insights önizlemesi gezinti paneli Time Series Insights uygulamanı
 
 ### <a name="current-session-share-link-control"></a>Geçerli oturumdaki paylaşımını bağlantı denetimi
 
-  [![paylaşma simgesi](media/v2-update-explorer/share-icon.png)](media/v2-update-explorer/share-icon.png#lightbox)
+  [![paylaşma simgesi](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
 
 Ekibinizle bir URL bağlantısı paylaşmak için yeni **paylaşma** simgesini seçin.
 
-  [Örnek URL 'nizi ![paylaşma](media/v2-update-explorer/share-your-view.png)](media/v2-update-explorer/share-your-view.png#lightbox)
+  [Örnek URL 'nizi ![paylaşma](media/v2-update-explorer/tsi-preview-explorer-share-your-view.png)](media/v2-update-explorer/tsi-preview-explorer-share-your-view.png#lightbox)
 
 ### <a name="tenant-section"></a>Kiracı bölümü
 
-  [![kiracı seçimi](media/v2-update-explorer/tenant-selection.png)](media/v2-update-explorer/tenant-selection.png#lightbox)
+  [![kiracı seçimi](media/v2-update-explorer/tsi-preview-explorer-tenant-selection.png)](media/v2-update-explorer/tsi-preview-explorer-tenant-selection.png#lightbox)
 
 * Geçerli Time Series Insights oturum açma hesabı bilgilerini görüntüler.
 * Kullanılabilir Time Series Insights temaları arasında geçiş yapmak için bunu kullanın.
@@ -189,7 +189,7 @@ Ekibinizle bir URL bağlantısı paylaşmak için yeni **paylaşma** simgesini s
 
 Yeni bir tema seçmek için sağ üst köşede bulunan profil simgenizi seçin. Ardından, **Temayı Değiştir**' i seçin.
 
-  [![teması seçimi](media/v2-update-explorer/theme-selection.png)](media/v2-update-explorer/theme-selection.png#lightbox)
+  [![teması seçimi](media/v2-update-explorer/tsi-preview-theme-selection.png)](media/v2-update-explorer/tsi-preview-theme-selection.png#lightbox)
 
 > [!TIP]
 > Dil seçimi, profil simgenizin seçilerek de kullanılabilir.
@@ -199,7 +199,7 @@ Azure zaman serisi öngörüleri Önizleme iki tema destekler:
 * **Açık tema**: Bu belge boyunca gösterilen varsayılan tema.
 * **Koyu tema**: gezgin 'i burada gösterildiği gibi işler:
 
-  [Seçili Koyu tema ![](media/v2-update-explorer/dark-theme-selected.png)](media/v2-update-explorer/dark-theme-selected.png#lightbox)
+  [Seçili Koyu tema ![](media/v2-update-explorer/tsi-preview-dark-theme-selected.png)](media/v2-update-explorer/tsi-preview-dark-theme-selected.png#lightbox)
 
 ## <a name="s1s2-environment-controls"></a>S1/S2 ortam denetimleri
 
@@ -226,7 +226,7 @@ Desteklenen sorgu işlemleri ve veri türleri hakkında daha fazla bilgi edinmek
 
 ### <a name="examples-of-where-clauses"></a>WHERE yan tümcelerinin örnekleri
 
-  [![WHERE yan tümcesi örnekleri](media/v2-update-explorer/example-queries.png)](media/v2-update-explorer/example-queries.png#lightbox)
+  [![WHERE yan tümcesi örnekleri](media/v2-update-explorer/tsi-preview-example-queries.png)](media/v2-update-explorer/tsi-preview-example-queries.png#lightbox)
 
 **Ölçü**: geçerli grafiğiniz için öğe olarak kullanabileceğiniz tüm sayısal sütunları (**Double**) görüntüleyen bir açılan liste.
 

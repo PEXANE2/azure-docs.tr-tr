@@ -1,51 +1,46 @@
 ---
-title: Genel bakış, Azure ve tek başına Service Fabric kümeleri | Microsoft Docs
-description: Tüm Vm'leri veya Windows Server veya Linux çalıştıran bilgisayarlarda, Service Fabric kümeleri oluşturabilirsiniz. Başka bir deyişle, dağıtmak ve bir Windows Server veya Linux bilgisayarları birbirine-şirket içi, Microsoft Azure veya tüm bulut sağlayıcıları ile sahip olduğunuz herhangi bir ortamda Service Fabric uygulamaları çalıştırmak kullanabilirsiniz.
-services: service-fabric
-documentationcenter: .net
+title: Azure ve tek başına Service Fabric kümelerine genel bakış
+description: Windows Server veya Linux çalıştıran tüm VM 'lerde veya bilgisayarlarda Service Fabric kümeleri oluşturabilirsiniz. Bu, şirket içinde, Microsoft Azure veya herhangi bir bulut sağlayıcısıyla birbirine bağlı bir Windows Server veya Linux bilgisayar kümesine sahip olduğunuz herhangi bir ortamda Service Fabric uygulamaları dağıtabileceğiniz ve çalıştırabileceğiniz anlamına gelir.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 02/01/2019
+ms.date: 01/07/2020
 ms.author: dekapur
-ms.openlocfilehash: 6d5169d8ea4480e95e09228f9eb02bd78fdd0be8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: sfrev
+ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393512"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751148"
 ---
-# <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Windows Server ve Linux kümeleri, Azure ve tek başına Service Fabric karşılaştırması
-Service Fabric kümesi bir ağa bağlı, mikro hizmetlerin dağıtıldığı ve yönetildiği sanal veya fiziksel makine kümesidir. Bir makine ya da bir kümenin parçası olan sanal makine bir küme düğümü adı verilir. Kümeler binlerce düğümde için ölçeklendirme yapabilir. Kümeye yeni düğümler eklerseniz, Service Fabric örnekleri ve hizmet bölüm çoğaltmaları sayısının artması düğümleri arasında yeniden dengeler. Genel uygulama performansını artıran ve bellek erişim çekişmesini azaltır. Kümedeki düğümler verimli bir şekilde kullanılmayan, kümedeki düğümlerin sayısını azaltabilirsiniz. Service Fabric yeniden örnekleri ve bölüm çoğaltmalarını azalan her düğümde donanım daha iyi kullanabilmesine için düğüm sayısını arasında yeniden dengeler.
+# <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Windows Server ve Linux 'ta Azure ve tek başına Service Fabric kümelerini karşılaştırma
 
-Service Fabric Service Fabric kümeleri herhangi bir VM veya Windows Server veya Linux çalıştıran bilgisayarlar üzerinde oluşturulmasını sağlar. Bu, dağıtmak ve birbirlerine bağlanış Windows Server veya Linux bilgisayarlar kümesi sahip olduğu herhangi bir ortamda Service Fabric uygulamaları çalıştırın, şirket içi, Microsoft Azure, mümkün olduğu anlamına gelir veya tüm bulut sağlayıcıları ile.
+Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makineye veya VM 'ye küme düğümü denir. Kümeler, binlerce düğüme ölçeklendirebilir. Kümeye yeni düğümler eklerseniz, hizmet bölümü çoğaltmaları ve örneklerinin artan düğüm sayısı genelinde yeniden dengelenmesi Service Fabric. Genel uygulama performansı, bellek düşüşlerine erişim için gelişir ve çekişmeyi geliştirir. Kümedeki düğümler verimli bir şekilde kullanılmıyorsa, kümedeki düğümlerin sayısını azaltabilirsiniz. Service Fabric, her düğümdeki donanımın daha iyi kullanılmasını sağlamak için bölüm çoğaltmalarını ve örnekleri, azaltılmış düğüm sayısı genelinde yeniden dengeler.
 
-## <a name="benefits-of-clusters-on-azure"></a>Azure'da kümeler avantajları
-Azure'da tümleştirme diğer Azure özellikleri ve operasyon ve küme yönetimi daha kolay ve daha güvenilir olmasını sağlayan hizmetler ile sunuyoruz.
+Service Fabric, Windows Server veya Linux çalıştıran tüm VM 'lerde veya bilgisayarlarda Service Fabric kümelerinin oluşturulmasına izin verir. Bu, birbirine bağlı bir Windows Server veya Linux bilgisayar kümesi, şirket içi, Microsoft Azure veya herhangi bir bulut sağlayıcısına sahip olduğunuz herhangi bir ortamda Service Fabric uygulamaları dağıtabileceğiniz ve çalıştırabileceğiniz anlamına gelir.
 
-* **Azure portalı:** Azure portalı küme oluşturmak ve yönetmek kolay hale getirir.
-* **Azure Resource Manager:** Azure Resource Manager kullanımı, bir birim olarak küme tarafından kullanılan tüm kaynakları kolay yönetilmesini sağlar ve maliyet izleme ve faturalandırma basitleştirir.
-* **Service Fabric kümesi bir Azure kaynağı olarak** bir Service Fabric kümesi olan bir Azure kaynağı azure'daki diğer kaynakları olduğu gibi modelini oluşturabilir.
-* **Azure altyapı tümleştirmesi** kullanılabilirliği ve güvenilirliği iyileştirmek işletim sistemi, ağ ve diğer yükseltme işlemleri için temel alınan Azure altyapısı sayesinde Service Fabric düzenler.  
-* **Tanılama:** Azure'da, Azure Tanılama ile tümleştirme sunuyoruz ve Azure İzleyici günlüğe kaydeder.
-* **Otomatik ölçeklendirme:** Azure'da kümeler için yerleşik otomatik ölçeklendirmeyi işlevselliği nedeniyle sanal makine ölçek kümeleri sunuyoruz. Şirket içinde ve diğer bulut ortamları, kendi otomatik ölçeklendirme özelliği veya el ile kümeleri ölçeklendirme için Service Fabric sunan API'lerini kullanarak ölçek oluşturmak gerekir.
+## <a name="benefits-of-clusters-on-azure"></a>Azure 'da kümelerin avantajları
 
-## <a name="benefits-of-standalone-clusters"></a>Tek başına kümeler avantajları
-* Kümenizi barındırmak amacıyla bulut sağlayıcıları seçebilirsiniz.
-* Service Fabric uygulamaları, bir kez yazılan ile birden çok barındırma ortamlarında değişiklik yapmadan en az çalıştırılabilir.
-* Service Fabric uygulamaları oluşturmak, bilgi barındıran bir ortamdan diğerine taşır.
-* Çalıştıran ve yöneten Service Fabric çalışma deneyimi taşıyan üzerinden bir ortamdan diğerine kümeleri.
-* Barındırma ortamı kısıtlamaları tarafından geniş ulaşarak sınırsızdır.
-* Bir veri merkezi veya Bulut sağlayıcısı bir Kararma varsa, hizmetler için başka bir dağıtım ortamı taşıyabilirsiniz nedeniyle ek bir koruma katmanı güvenilirlik ve yaygın kesintilerine karşı koruma bulunmaktadır.
+Azure 'da, diğer Azure özellikleri ve hizmetleriyle tümleştirme sağlıyoruz. Bu, kümenin işlemlerini ve yönetimini daha kolay ve güvenilir hale getirir.
+
+* **Azure Portal:** Azure portal kümeleri oluşturmayı ve yönetmeyi kolaylaştırır.
+* **Azure Resource Manager:** Azure Resource Manager kullanımı, küme tarafından kullanılan tüm kaynakların birim olarak kolay yönetilmesini sağlar ve maliyet izlemeyi ve faturalandırmayı basitleştirir.
+* **Azure kaynağı olarak Service Fabric kümesi** Service Fabric kümesi bir Azure kaynağıdır, bu nedenle Azure 'daki diğer kaynakları istediğiniz gibi modelleyebilirsiniz.
+* **Azure altyapısıyla tümleştirme** , Uygulamalarınızın kullanılabilirliğini ve güvenilirliğini artırmak için işletim sistemi, ağ ve diğer yükseltmelere yönelik temel Azure altyapısıyla birlikte koordinatları Service Fabric.  
+* **Tanılama:** Azure 'da Azure tanılama ve Azure Izleyici günlükleri ile tümleştirme sağlıyoruz.
+* **Otomatik ölçeklendirme:** Azure üzerindeki kümeler için, sanal makine ölçek kümeleri nedeniyle yerleşik otomatik ölçeklendirme işlevselliği sağlıyoruz. Şirket içi ve diğer bulut ortamlarında kendi otomatik ölçeklendirme özelliğini oluşturmanız veya Service Fabric kümeleri ölçeklendirmeye yönelik API 'Leri kullanarak el ile ölçeklendirmeniz gerekir.
+
+## <a name="benefits-of-standalone-clusters"></a>Tek başına kümelerin avantajları
+
+* Kümenizi barındırmak için herhangi bir bulut sağlayıcısı seçebilirsiniz.
+* Service Fabric uygulamalar, yazıldıktan sonra birden çok barındırma ortamında, hiçbir değişiklik yapmadan çalıştırılabilir.
+* Service Fabric uygulamaları oluşturma hakkında bilgi, bir barındırma ortamından diğerine taşır.
+* Service Fabric kümelerinin çalıştırılmasına ve yönetilmesine yönelik işletimsel deneyim, bir ortamdan diğerine devredilme deneyimi sağlar.
+* Geniş müşteri erişim, ortam kısıtlamalarını barındırarak sınırsız bir şekilde yapılır.
+* Bir veri merkezinde veya bulut sağlayıcısında bir kesinti varsa Hizmetleri başka bir dağıtım ortamına taşıyabilmeniz için çok sayıda güvenilirlik ve koruma daha yaygın kesintilere karşı koruma vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Genel Bakış okuyun [Azure'da Service Fabric kümeleri](service-fabric-azure-clusters-overview.md)
-* Genel Bakış okuyun [Service Fabric tek başına kümeler](service-fabric-standalone-clusters-overview.md)
+* [Azure 'da Service Fabric kümelerine](service-fabric-azure-clusters-overview.md) genel bakış konusunu okuyun
+* [Tek başına Service Fabric kümelerine](service-fabric-standalone-clusters-overview.md) Genel Bakış bölümünü okuyun
 * [Service Fabric destek seçenekleri](service-fabric-support.md) hakkında bilgi edinin

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 38fcda40a208da3f3f5aef5b13778ca38092d8f8
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 16897ad095afcacff04d53b0956a972c36a25893
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186109"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750811"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Azure Izleyici aracılığıyla Media Services ölçümleri ve tanılama günlüklerini izleme
 
 [Azure izleyici](../../azure-monitor/overview.md) , uygulamalarınızın nasıl çalıştığını anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak sağlar. Azure Izleyici tarafından toplanan tüm veriler iki temel türden birine uyar: ölçümler ve Günlükler. Media Services tanılama günlüklerini izleyebilir, toplanan ölçümler ve Günlükler için uyarılar ve bildirimler oluşturabilirsiniz. Ölçüm [Gezgini](../../azure-monitor/platform/metrics-getting-started.md)'ni kullanarak ölçüm verilerini görselleştirebilir ve çözümleyebilirsiniz. [Azure depolama](https://azure.microsoft.com/services/storage/)'ya Günlükler gönderebilir, bunları [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)akışa alabilir, [Log Analytics](https://azure.microsoft.com/services/log-analytics/)dışarı aktarabilir veya üçüncü taraf hizmetleri kullanabilirsiniz.
 
-Ayrıntılı bir genel bakış için bkz. [Azure Izleyici ölçümleri](../../azure-monitor/platform/data-platform.md) ve [Azure izleyici tanılama günlükleri](../../azure-monitor/platform/resource-logs-overview.md).
+Ayrıntılı bir genel bakış için bkz. [Azure Izleyici ölçümleri](../../azure-monitor/platform/data-platform.md) ve [Azure izleyici tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md).
 
 Bu konu, desteklenen [Media Services ölçümlerini](#media-services-metrics) ve [Media Services tanılama günlüklerini](#media-services-diagnostic-logs)açıklamaktadır.
 
@@ -62,7 +62,7 @@ Aşağıdaki Media Services [akış uç noktası](https://docs.microsoft.com/res
 
 |Ölçüm adı|Görünen ad|Açıklama|
 |---|---|---|
-|İstekleri|İstekleri|Akış uç noktası tarafından hizmet verilen toplam HTTP isteği sayısını sağlar.|
+|İstekler|İstekler|Akış uç noktası tarafından hizmet verilen toplam HTTP isteği sayısını sağlar.|
 |Çıkış|Çıkış|Çıkış baytlarının toplam sayısı. Örneğin, akış uç noktası tarafından akan baytlar.|
 |Başarı E2e|Başarılı uçtan uca gecikme süresi|Akış uç noktasının, yanıtın son baytı gönderilirken isteği aldığı zaman süresi.|
 
@@ -84,7 +84,7 @@ Bkz. [Media Services ölçümlerini izleme](media-services-metrics-howto.md).
 
 ## <a name="media-services-diagnostic-logs"></a>Tanılama günlüklerini Media Services
 
-Tanılama günlükleri, bir Azure kaynağının çalışması hakkında zengin ve sık veriler sağlar. Daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](../../azure-monitor/platform/resource-logs-overview.md).
+Tanılama günlükleri, bir Azure kaynağının çalışması hakkında zengin ve sık veriler sağlar. Daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](../../azure-monitor/platform/platform-logs-overview.md).
 
 Media Services aşağıdaki tanılama günlüklerini destekler:
 
@@ -111,7 +111,7 @@ Bkz. [Media Service tanılama günlüklerini izleme](media-services-diagnostic-l
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](../../azure-monitor/platform/resource-logs-overview.md)
+* [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](../../azure-monitor/platform/platform-logs-overview.md)
 * [Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-metric.md)
 * [Media Services ölçümlerini izleme](media-services-metrics-howto.md)
 * [Medya hizmeti tanılama günlüklerini izleme](media-services-diagnostic-logs-howto.md)

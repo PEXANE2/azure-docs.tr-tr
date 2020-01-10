@@ -1,40 +1,38 @@
 ---
 title: Bilgi deposuna giriş (Önizleme)
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama ve diğer uygulamalarda zenginleştirilmiş belgeleri görüntüleyebileceğiniz, yeniden şekillendirbileceğiniz ve kullanabileceğiniz Azure depolama 'ya zenginleştirilmiş belgeler gönderin. Bu özellik genel önizlemede.
+description: Azure Bilişsel Arama ve diğer uygulamalarda zenginleştirilmiş belgeleri görüntüleyebileceğiniz, yeniden şekillendirbileceğiniz ve kullanabileceğiniz Azure depolama 'ya zenginleştirilmiş belgeler gönderin. Bu özellik genel önizleme aşamasındadır.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: aa32f671756b8ba7f17c25592b6a15b66de42b2c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/11/2019
+ms.openlocfilehash: 9a6fa62384615f60da88bb41da8ad3538d34e62a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790016"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754102"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure Bilişsel Arama bilgi depolarına giriş
 
 > [!IMPORTANT] 
-> bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
+> Bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
-Bilgi deposu, daha sonraki analizler veya diğer aşağı akış işlemleri için bir [AI zenginleştirme ardışık düzeninde](cognitive-search-concept-intro.md) çıktıyı sürekli olarak sürdüren bir Azure bilişsel arama özelliğidir. *Zenginleştirilmiş bir belge* , yapay, yapılandırılmış ve AI süreçlerini kullanılarak çözümlenen içerikten oluşturulan bir ardışık düzen çıktıdır. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile zenginleştirilmiş belgeler korunur. 
+Bilgi deposu, bağımsız analiz veya aşağı akış işleme için bir [AI zenginleştirme ardışık düzeninde](cognitive-search-concept-intro.md) çıkışın devam eden bir Azure bilişsel arama özelliğidir. *Zenginleştirilmiş bir belge* , yapay, yapılandırılmış ve AI süreçlerini kullanılarak çözümlenen içerikten oluşturulan bir ardışık düzen çıktıdır. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile zenginleştirilmiş belgeler korunur. 
 
-Geçmişte Azure Bilişsel Arama bilişsel yetenekler kullandıysanız, *becerileri* bir belgeyi bir dizi şekilde taşımış olduğunu zaten anlarsınız. Sonuç bir bilgi deposundaki bir arama dizini veya (Bu önizlemede yeni) projeksiyonu olabilir. İki çıkış, arama dizini ve bilgi deposu, aynı içeriği paylaşır, ancak aynı şekilde depolanır ve çok farklı şekillerde kullanılır.
+Daha önce bilişsel becerileri kullandıysanız, *becerileri* bir belgeyi bir dizi enzenginleştirme aracılığıyla taşıyabileceğinizi zaten anlarsınız. Sonuç bir bilgi deposundaki bir arama dizini veya (Bu önizlemede yeni) projeksiyonu olabilir. İki çıkış, arama dizini ve bilgi deposu, aynı işlem hattının çarpımlarından oluşur; aynı girdilerden türetilmiş, ancak aynı şekilde yapılandırılmış, depolanmış ve çok farklı yollarla kullanılan çıktının sonucu.
 
 Azure [depolama](https://docs.microsoft.com/azure/storage/common/storage-account-overview), Azure Tablo depolama, Azure Blob depolama ya da her ikisi de fiziksel olarak bir bilgi deposu. Azure depolama 'ya bağlanabilecek herhangi bir araç veya işlem bilgi deposunun içeriğini kullanabilir.
 
 ![Ardışık düzen diyagramında bilgi deposu](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Ardışık düzen diyagramında bilgi deposu")
 
-Bilgi deposu kullanmak için, bir dizin oluşturma işlem hattındaki adım temelinde işlemleri tanımlayan bir beceri öğesine `knowledgeStore` öğesi ekleyin. Yürütme sırasında Azure Bilişsel Arama, Azure depolama hesabınızda bir alan oluşturur ve yapılandırmanıza bağlı olarak, belgeleri Bloblar veya tablolar halinde projeler halinde kaydeder.
-
 ## <a name="benefits-of-knowledge-store"></a>Bilgi deposunun avantajları
 
-Bilgi deposu, yerleşik olarak yapılandırılmamış ve yarı yapılandırılmış veri dosyalarından, uygulanan Analize sahip görüntü dosyalarında veya hatta yeni formlara yeniden şekillenen yapılandırılmış verilere karşı bir yapı, bağlam ve gerçek içerik sağlar. [Adım adım](knowledge-store-howto.md)bir kılavuzda, en çok yoğun bir JSON belgesinin alt yapılara nasıl bölümlendiğini, yeni yapılara reconstituted ve makine öğrenimi ve veri bilimi iş yükleri gibi aşağı akış işlemlerinde nasıl kullanılabilir yapıldığını görebilirsiniz.
+Bilgi deposu, yerleşik olarak yapılandırılmamış ve yarı yapılandırılmış veri dosyalarından, uygulanan Analize sahip görüntü dosyalarında veya hatta yapılandırılmış veriler, yeni formlara yeniden şekillendirilecek şekilde yapı, bağlam ve gerçek içerik sağlar. [Adım adım](knowledge-store-create-rest.md)bir kılavuzda, en çok yoğun bir JSON belgesinin alt yapılara nasıl bölümlendiğini, yeni yapılara reconstituted ve makine öğrenimi ve veri bilimi iş yükleri gibi aşağı akış işlemlerinde nasıl kullanılabilir yapıldığını görebilirsiniz.
 
-Bir AI zenginleştirme ardışık düzeninin ne işe yarayabileceği görmek faydalı olsa da, bilgi deposunun gerçek gücü verileri yeniden şekillendirmeye olanak tanır. Temel bir beceri ile başlayabilir ve daha sonra yeni yapılar halinde birleştirebileceğiniz, daha sonra Azure Bilişsel Arama yanı sıra diğer uygulamalarda kullanabileceğiniz daha fazla yapı düzeyleri eklemek için bunu yineleyebilirsiniz.
+Bir AI zenginleştirme ardışık düzeninin ne işe yarayabileceği görmek faydalı olsa da, bir bilgi deposunun gerçek potansiyeli verileri yeniden şekillendirmeye olanak tanır. Temel bir beceri ile başlayabilir ve daha sonra yeni yapılar halinde birleştirebileceğiniz, daha sonra Azure Bilişsel Arama yanı sıra diğer uygulamalarda kullanabileceğiniz daha fazla yapı düzeyleri eklemek için bunu yineleyebilirsiniz.
 
 Numaralandırılmış, bilgi deposunun avantajları şunları içerir:
 
@@ -47,153 +45,241 @@ Numaralandırılmış, bilgi deposunun avantajları şunları içerir:
 > [!Note]
 > AI zenginleştirme ve bilişsel becerileri yenilikleri nelerdir? Azure Bilişsel Arama, görüntü dosyaları üzerinden optik karakter tanıma (OCR), metin dosyalarından varlık tanıma ve anahtar tümceciği ayıklama ve daha fazlasını kullanarak kaynak verileri ayıklamak ve zenginleştirmek için bilişsel hizmetler düzenleme ve dil özellikleriyle tümleşir. Daha fazla bilgi için bkz. [Azure bilişsel arama 'de AI zenginleştirme](cognitive-search-concept-intro.md).
 
-## <a name="creating-a-knowledge-store"></a>Bilgi deposu oluşturma
+## <a name="physical-storage"></a>Fiziksel depolama alanı
 
-Bilgi deposu, bir [dizin oluşturucunun](search-indexer-overview.md)parçası olan [beceri](cognitive-search-working-with-skillsets.md)bir parçasıdır. 
+Bilgi deposunun fiziksel ifadesi, Beceri içindeki bir `knowledgeStore` tanımının `projections` öğesi aracılığıyla ifade edilir. Projeksiyon, bir çıktının yapısını, amaçlanan kullanım ile eşleşecek şekilde tanımlar.
 
-Bu önizlemede, REST API ve `api-version=2019-05-06-Preview`kullanarak ya da portalda **veri Içeri aktarma** Sihirbazı aracılığıyla bir bilgi deposu oluşturabilirsiniz.
+Projeksiyonlar tablo, nesne veya dosya olarak ifade edilebilir.
 
-### <a name="json-representation-of-a-knowledge-store"></a>Bilgi deposunun JSON temsili
+```json
+"knowledgeStore": { 
+    "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
+    "projections": [ 
+        { 
+            "tables": [ ], 
+            "objects": [ ], 
+            "files": [ ]
+        },
+                { 
+            "tables": [ ], 
+            "objects": [ ], 
+            "files": [ ]
+        }
+```
 
-Aşağıdaki JSON bir Dizin Oluşturucu tarafından çağrılan bir beceri parçası olan bir `knowledgeStore`belirtir (gösterilmez). AI zenginleştirme hakkında zaten bilgi sahibiyseniz, bir beceri, zenginleştirilmiş her belgenin oluşturulmasını, organizasyonunu ve akklığını belirler. Bir beceri, veri yapılarını modüle ediyorsanız en az bir yetenek, büyük olasılıkla yetenek başına bir yetenek içermelidir.
+Bu yapıda belirttiğiniz projeksiyonun türü, bilgi deposu tarafından kullanılan depolama türünü belirler.
 
-Bir `knowledgeStore` bağlantı ve projeksiyonlar oluşur. 
++ `tables`tanımladığınızda tablo depolaması kullanılır. Analitik araçlara giriş veya diğer veri depolarına veri çerçeveleri olarak dışarı aktarma için tablo Raporlama yapılarına ihtiyacınız olduğunda tablo projeksiyonu tanımlayın. Zenginleştirilmiş belgelerin alt kümesini veya çapraz bölümünü almak için birden çok `tables` belirtebilirsiniz. Aynı projeksiyon grubu içinde, tüm bunlarla çalışabilmeniz için tablo ilişkileri korunur.
 
-+ Bağlantı, Azure Bilişsel Arama ile aynı bölgedeki bir depolama hesabıdır. 
++ BLOB depolama, `objects` veya `files`tanımlarken kullanılır. `object` fiziksel temsili, zenginleştirilmiş bir belgeyi temsil eden hiyerarşik bir JSON yapısıdır. `file`, bir belgeden ayıklanan ve BLOB depolama alanına bozulmadan aktarılan bir görüntüdür.
 
-+ Projeksiyonlar tablosal, JSON nesneleri veya dosyalar olabilir. `Tables` Azure Tablo depolamada zenginleştirilmiş belgelerin fiziksel ifadesini tanımlayın. Azure Blob depolamada fiziksel JSON nesnelerini tanımlama `Objects`. `Files`, belgeyi kalıcı olacak şekilde ayıklamış resimler gibi ikili dosyalardır.
+Tek bir projeksiyon nesnesi, bir dizi `tables`, `objects`, `files`ve birçok senaryo için bir projeksiyon oluşturmak yeterli olabilir. 
 
-+ Projeksiyonlar, projeksiyon nesneleri koleksiyonudur, her projeksiyon nesnesi `tables`, `objects` ve `files`içerebilir. Tek bir projeksiyon dahilinde tasarlanan zenginler, türler arasında yansıtılsa bile (tablolar, nesneler veya dosyalar) ile ilgilidir. Projeksiyon nesneleri arasında projeksiyonlar birbiriyle ilişkili değildir ve bağımsızdır. Aynı şekil, birden çok yansıtma nesnesi olarak yansıtıldırılmış olabilir.
+Ancak, -`file` projeksiyonlar `object``table`-birden çok kümesi oluşturmak mümkündür ve farklı veri ilişkileri istiyorsanız bunu yapabilirsiniz. Bir küme içinde, bu ilişkilerin mevcut olduğu ve algılanabilmesi durumunda veriler birbiriyle ilgilidir. Ek kümeler oluşturursanız, her bir gruptaki belgeler hiçbir şekilde ilgili değildir. Birden çok projeksiyon grubu kullanmanın bir örneği, aynı verilerin bir çevrimiçi sisteminizle birlikte kullanılması ve bunun belirli bir şekilde temsil edilebilmesi için de tasarlanan bir veri bilimi ardışık düzeninde kullanılmak üzere aynı verilerin de olmasını istiyorsanız olabilir. ele.
+
+## <a name="requirements"></a>Gereksinimler 
+
+[Azure depolama alanı](https://docs.microsoft.com/azure/storage/) gereklidir. Fiziksel depolama alanı sağlar. BLOB depolama, tablo depolama veya her ikisini de kullanabilirsiniz. BLOB depolama, genellikle çıkış aşağı akış işlemlerine giderken, genellikle zenginleştirilmiş belgeler için kullanılır. Tablo depolama, genellikle analiz ve raporlama için kullanılan, zenginleştirilmiş belgelerin dilimlerine yöneliktir.
+
+[Beceri](cognitive-search-working-with-skillsets.md) gereklidir. `knowledgeStore` tanımını içerir ve zenginleştirilmiş bir belgenin yapısını ve birleşimini belirler. Boş bir beceri kullanarak bilgi deposu oluşturamazsınız. Beceri içinde en az bir beceriye sahip olmanız gerekir.
+
+[Dizin Oluşturucu](search-indexer-overview.md) gereklidir. Bir beceri, yürütmeyi yönlendiren bir Dizin Oluşturucu tarafından çağrılır. Dizin oluşturucular kendi gereksinimler ve öznitelikleri kümesiyle gelir. Bu özniteliklerin birkaçı bir bilgi deposunda doğrudan bir pul alır:
+
++ Dizin oluşturucular [desteklenen bir Azure veri kaynağı](search-indexer-overview.md#supported-data-sources) gerektirir (Azure 'da desteklenen bir kaynaktan veri çekilerek bilgi deposunu oluşturan işlem hattı başlatılır). 
+
++ Dizin oluşturucular bir arama dizini gerektirir. Bir Dizin Oluşturucu, hiç bir şekilde kullanmayı planlamıyorsanız bile bir dizin şeması sağlamanızı gerektirir. En az dizinde anahtar olarak atanan bir dize alanı bulunur.
+
++ Dizin oluşturucular, hedef alana kaynak alanı diğer adı için kullanılan isteğe bağlı alan eşlemeleri sağlar. Bir varsayılan alan eşlemesinin değiştirilmesine ihtiyacı varsa (farklı bir ad veya tür kullanmak için), bir dizin oluşturucu içinde [alan eşlemesi](search-indexer-field-mappings.md) oluşturabilirsiniz. Bilgi deposu çıktısı için, hedef bir blob nesnesi veya tablosunda bir alan olabilir.
+
++ Dizin oluşturucular zamanlamalar ve çeşitli veri kaynakları tarafından sunulan değişiklik algılama mekanizmaları gibi diğer özellikleri de bir bilgi deposuna uygulanabilir. Örneğin, içeriği yenilemek için düzenli aralıklarla zenginleştirme [zamanlayabilirsiniz](search-howto-schedule-indexers.md) . 
+
+## <a name="how-to-create-a-knowledge-store"></a>Bilgi deposu oluşturma
+
+Bilgi deposu oluşturmak için portalı veya önizleme REST API (`api-version=2019-05-06-Preview`) kullanın.
+
+### <a name="use-the-azure-portal"></a>Azure Portal’ı kullanma
+
+**Veri Içeri aktarma** Sihirbazı, bilgi deposu oluşturma seçeneklerini içerir. İlk araştırma için, [ilk bilgi deponuzu dört adımda oluşturun](knowledge-store-connect-power-bi.md).
+
+1. Desteklenen bir veri kaynağı seçin.
+
+1. Zenginleştirme belirtin: kaynak iliştirme, beceriler seçme ve bir bilgi deposu belirtme. 
+
+1. Dizin şeması oluşturun. Sihirbaz için gereklidir ve bir tane olabilir.
+
+1. Sihirbazı çalıştırın. Ayıklama, zenginleştirme ve depolama bu son adımda oluşur.
+
+### <a name="use-create-skillset-and-the-preview-rest-api"></a>Create beceri ve Preview REST API kullanın
+
+Bir `knowledgeStore`, bir [Dizin Oluşturucu](search-indexer-overview.md)tarafından çağrılan bir [beceri](cognitive-search-working-with-skillsets.md)içinde tanımlanır. Zenginleştirme sırasında Azure Bilişsel Arama, Azure depolama hesabınızda bir alan oluşturur ve yapılandırmanıza bağlı olarak, belgeleri Bloblar veya tablolar olarak zenginleştirir.
+
+Şu anda önizleme REST API, programlama yoluyla bilgi deposu oluşturabileceğiniz tek mekanizmadır. Araştırmanın kolay bir yolu, [Postman ve REST API kullanarak ilk bilgi deponuzi oluşturmaktır](knowledge-store-create-rest.md).
+
+Bu önizleme özelliği için başvuru içeriği, bu makalenin [API başvurusu](#kstore-rest-api) bölümünde bulunur. 
+
+<a name="tools-and-apps"></a>
+
+## <a name="how-to-connect-with-tools-and-apps"></a>Araçlar ve uygulamalar ile bağlanma
+
+Depolarda enzenginler varsa, Azure Blob veya tablo depolama 'ya bağlanan herhangi bir araç veya teknoloji, içeriği incelemek, çözümlemek veya kullanmak için kullanılabilir. Aşağıdaki liste bir başlangıç:
+
++ Zenginleştirilmiş belge yapısını ve içeriğini görüntülemek için [Depolama Gezgini](knowledge-store-view-storage-explorer.md) . Bilgi deposu içeriğini görüntülemek için bunu taban çizgisi aracınız olarak düşünün.
+
++ Raporlama ve analiz için [Power BI](knowledge-store-connect-power-bi.md) . 
+
++ Daha fazla düzenleme için [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) .
+
+<a name="kstore-rest-api"></a>
+
+## <a name="api-reference"></a>API başvurusu
+
+Bu bölüm, bir `knowledgeStore` tanımı içerecek şekilde değiştirilen [Create beceri (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) başvuru belgesi 'nin bir sürümüdür. 
+
+### <a name="example---knowledgestore-embedded-in-a-skillset"></a>Örnek-knowledgeStore Embedded beceri
+
+Aşağıdaki örnekte, bir beceri tanımının en altında `knowledgeStore` gösterilmektedir. 
+
+* İsteği formülleştirmek için **Post** veya **PUT** kullanın.
+* Bilgi deposu işlevine erişmek için REST API `api-version=2019-05-06-Preview` sürümünü kullanın. 
+
+```http
+POST https://[servicename].search.windows.net/skillsets?api-version=2019-05-06-Preview
+api-key: [admin key]
+Content-Type: application/json
+```
+
+İsteğin gövdesi, `knowledgeStore`içeren bir beceri tanımlayan bir JSON belgesidir.
 
 ```json
 {
-  "name": "my-new-skillset",
-  "description": "Example showing knowledgeStore placement in a skillset.",
+  "name": "my-skillset-name",
+  "description": "Extract organization entities and generate a positive-negative sentiment score from each document.",
   "skills":
   [
     {
-    "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
-    "context": "/document/content/phrases/*",
-    "inputs": [
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+      "categories": [ "Organization" ],
+      "defaultLanguageCode": "en",
+      "inputs": [
         {
-        "name": "text",
-        "source": "/document/content/phrases/*"
-        },
-        {
-        "name": "sentiment",
-        "source": "/document/content/phrases/*/sentiment"
+          "name": "text",
+          "source": "/document/content"
         }
-    ],
-    "outputs": [
+      ],
+      "outputs": [
         {
-        "name": "output",
-        "targetName": "analyzedText"
+          "name": "organizations",
+          "targetName": "organizations"
         }
-    ]
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "score",
+          "targetName": "mySentiment"
+        }
+      ]
     },
   ],
   "cognitiveServices": 
     {
     "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
     "description": "mycogsvcs resource in West US 2",
-    "key": "<your key goes here>"
+    "key": "<YOUR-COGNITIVE-SERVICES-KEY>"
     },
-  "knowledgeStore": { 
-    "storageConnectionString": "<your connection string goes here>", 
-    "projections": [ 
-        { 
-            "tables": [  
-            { "tableName": "Reviews", "generatedKeyName": "ReviewId", "source": "/document/Review" , "sourceContext": null, "inputs": []}, 
-            { "tableName": "Sentences", "generatedKeyName": "SentenceId", "source": "/document/Review/Sentences/*", "sourceContext": null, "inputs": []}, 
-            { "tableName": "KeyPhrases", "generatedKeyName": "KeyPhraseId", "source": "/document/Review/Sentences/*/KeyPhrases", "sourceContext": null, "inputs": []}, 
-            { "tableName": "Entities", "generatedKeyName": "EntityId", "source": "/document/Review/Sentences/*/Entities/*" ,"sourceContext": null, "inputs": []} 
-
-            ], 
-            "objects": [ 
-               
-            ], 
-            "files": [
-
-            ]  
-        },
-        { 
-            "tables": [ 
-            ], 
-            "objects": [ 
-                { 
-                "storageContainer": "Reviews", 
-                "format": "json", 
-                "source": "/document/Review", 
-                "key": "/document/Review/Id" 
-                } 
-            ],
-            "files": [
-                
-            ]  
-        }        
-    ]     
+    "knowledgeStore": { 
+        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
+        "projections": [ 
+            { 
+                "tables": [  
+                { "tableName": "Organizations", "generatedKeyName": "OrganizationId", "source": "/document/organizations*"}, 
+                { "tableName": "Sentiment", "generatedKeyName": "SentimentId", "source": "/document/mySentiment"}
+                ], 
+                "objects": [ ], 
+                "files": [  ]       
+            }    
+        ]     
     } 
 }
 ```
 
-Bu örnek herhangi bir görüntü içermez; dosya projeksiyonlarını kullanma örneği için bkz. [projeksiyonlarla çalışma](knowledge-store-projection-overview.md).
-### <a name="sources-of-data-for-a-knowledge-store"></a>Bilgi deposu için veri kaynakları
+### <a name="request-body-syntax"></a>İstek gövdesi sözdizimi  
 
-Bilgi deposu bir AI zenginleştirme işlem hattının çıktımıdır, girişler nelerdir? Bir bilgi deposuna ayıklamak, zenginleştirmek ve son olarak kaydetmek istediğiniz özgün veriler, arama Dizin oluşturucular tarafından desteklenen herhangi bir Azure veri kaynağından kaynaklanabilmelidir: 
+Aşağıdaki JSON, bir `indexer` (gösterilmez) tarafından çağrılan [`skillset`](https://docs.microsoft.com/rest/api/searchservice/create-skillset)bir parçası olan `knowledgeStore`belirtir. AI zenginleştirme hakkında zaten bilgi sahibiyseniz bir beceri, zenginleştirilmiş bir belgenin birleşimini belirler. Bir beceri, veri yapılarını modüle ediyorsanız en az bir yetenek, büyük olasılıkla yetenek başına bir yetenek içermelidir.
 
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+İstek yükünü yapılandırmak için sözdizimi aşağıdaki gibidir.
 
-* [Azure Blob Depolama](search-howto-indexing-azure-blob-storage.md)
+```json
+{   
+    "name" : "Required for POST, optional for PUT requests which sets the name on the URI",  
+    "description" : "Optional. Anything you want, or null",  
+    "skills" : "Required. An array of skills. Each skill has an odata.type, name, input and output parameters",
+    "cognitiveServices": "A key to Cognitive Services, used for billing.",
+    "knowledgeStore": { 
+        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
+        "projections": [ 
+            { 
+                "tables": [ 
+                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
+                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
+                    . . .
+                ], 
+                "objects": [ 
+                    {
+                    "storageContainer": "<BLOB-CONTAINER-NAME>", 
+                    "source": "<DOCUMENT-PATH>", 
+                    }
+                ], 
+                "files": [ 
+                    {
+                    "storageContainer": "<BLOB-CONTAINER-NAME>",
+                    "source": "/document/normalized_images/*"
+                    }
+                ]  
+            },
+            {
+                "tables": [ ],
+                "objects": [ ],
+                "files":  [ ]
+            }  
+        ]     
+    } 
+}
+```
 
-* [Azure Tablo Depolama](search-howto-indexing-azure-tables.md)
+`knowledgeStore` iki özelliğe sahiptir: bir Azure depolama hesabına `storageConnectionString` ve fiziksel depolamayı tanımlayan `projections`. Herhangi bir depolama hesabını kullanabilirsiniz, ancak aynı bölgedeki hizmetleri kullanmak uygun maliyetli olabilir.
 
-* [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+`projections` koleksiyonu İzdüşüm nesneleri içerir. Her projeksiyon nesnesinin, belirtilen veya null olan `tables`, `objects`, `files` (her biri) sahip olması gerekir. Yukarıdaki sözdizimi iki nesne gösterir, biri tam olarak belirtilir ve diğeri tamamen null. Yansıtma nesnesi içinde, depolama alanında ifade edildikten sonra veriler arasındaki ilişkiler korunur. 
 
-Oluşturduğunuz Dizin oluşturucular ve becerileri, bu içeriği bir dizin oluşturma iş yükünün parçası olarak ayıkladıktan ve zenginleştirerek, sonra sonuçları bir bilgi deposuna kaydeder.
+Yalıtımı ve belirli senaryoları desteklemek için ihtiyacınız olan çok sayıda yansıtma nesnesi oluşturun (örneğin, araştırma için kullanılan veri yapıları ve bir veri bilimi iş yükünde gerekenlere karşı). `source` ve `storageContainer` ya da bir nesne içindeki farklı değerlere `table` ayarlayarak belirli senaryolar için yalıtım ve özelleştirme sağlayabilirsiniz. Daha fazla bilgi ve örnek için bkz. [bir bilgi deposunda projeksiyonlarla çalışma](knowledge-store-projection-overview.md).
 
-### <a name="rest-apis-used-in-creation-of-a-knowledge-store"></a>Bilgi deposu oluştururken kullanılan REST API 'Leri
+|Özellik      | Uygulandığı öğe: | Açıklama|  
+|--------------|------------|------------|  
+|`storageConnectionString`| `knowledgeStore` | Gereklidir. Şu biçimde: `DefaultEndpointsProtocol=https;AccountName=<ACCOUNT-NAME>;AccountKey=<ACCOUNT-KEY>;EndpointSuffix=core.windows.net`|  
+|`projections`| `knowledgeStore` | Gereklidir. `tables`, `objects`, `files` ve ilgili özelliklerinden oluşan özellik nesnelerinin bir koleksiyonu. Kullanılmayan projeksiyonlar null olarak ayarlanabilir.|  
+|`source`| Tüm projeksiyler| Projeksiyonun kökü olan zenginleştirme ağacının düğümünün yolu. Bu düğüm, Beceri içindeki yeteneklerin herhangi birinin çıktıdır. Yollar, zenginleştirilmiş belgeyi temsil eden, ancak `/document/content/` veya belge ağacı içindeki düğümlere genişletilebilen `/document/`başlar. Örnekler: `/document/countries/*` (tüm ülkeler) veya `/document/countries/*/states/*` (tüm ülkelerde tüm durumlar). Belge yolları hakkında daha fazla bilgi için bkz. [beceri kavramları ve bileşimi](cognitive-search-working-with-skillsets.md).|
+|`tableName`| `tables`| Azure Tablo depolamada oluşturulacak bir tablo. |
+|`storageContainer`| `objects`, `files`| Azure Blob depolamada oluşturulacak kapsayıcının adı. |
+|`generatedKeyName`| `tables`| Bir belgeyi benzersiz bir şekilde tanımlayan tabloda oluşturulan sütun. Zenginleştirme ardışık düzeni, bu sütunu üretilen değerlerle doldurur.|
 
-Yalnızca iki API, bilgi deposu oluşturmak için gereken uzantılara sahiptir (beceri oluşturun ve Dizin Oluşturucu oluşturun). Diğer API 'Ler olduğu gibi kullanılır.
 
-| Nesne | REST API | Açıklama |
-|--------|----------|-------------|
-| Veri kaynağı | [Veri Kaynağı Oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Zenginleştirilmiş belgeler oluşturmak için kullanılan kaynak verileri sağlayan bir dış Azure veri kaynağını tanımlayan kaynak.  |
-| Beceri | [Beceri oluşturma (api-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Dizin oluşturma sırasında bir zenginleştirme ardışık düzeninde kullanılan [yerleşik yeteneklerin](cognitive-search-predefined-skills.md) ve özel bilişsel [yeteneklerin](cognitive-search-custom-skill-interface.md) kullanımını koordine eden bir kaynak. Bir beceri, alt öğe olarak `knowledgeStore` tanımına sahiptir. |
-| indeks | [Dizin Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Arama dizinini ifade eden bir şema. Dizindeki alanlar, kaynak verilerdeki alanlara veya zenginleştirme aşamasında üretilen alanlara (örneğin, varlık tanıma tarafından oluşturulan kuruluş adları için bir alan) eşlenir. |
-| dizinleyic | [Dizin Oluşturucu oluştur (api-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Dizin oluşturma sırasında kullanılan bileşenleri tanımlayan kaynak: veri kaynağı, Beceri, kaynak ve ara veri yapılarından hedef dizine ve dizinin kendisi de dahil olmak üzere. Dizin oluşturucuyu çalıştırmak, veri alımı ve zenginleştirme için tetikleyiciydi. Çıktı, kaynak verilerle doldurulan, becerileri aracılığıyla zenginleştirilmiş, Dizin şemasını temel alan bir arama dizinidir.  |
+### <a name="response"></a>Yanıt  
 
-### <a name="physical-composition-of-a-knowledge-store"></a>Bilgi deposunu fiziksel olarak oluşturma
-
- Bir `knowledgeStore` tanımının bir öğesi olan *projeksiyon*, hedeflenen kullanım ile eşleşecek şekilde çıktının şemasını ve yapısını ifade eder. Farklı biçimlerdeki ve şekillerdeki verileri kullanan uygulamalarınız varsa, birden çok projeksiyonu tanımlayabilirsiniz. 
-
-Projeksiyonlar nesne veya tablo olarak ifade edilebilir:
-
-+ Bir nesne olarak, projeksiyon BLOB depolama alanına eşlenir; burada projeksiyon, bir veri bilimi işlem hattı gibi senaryolar için JSON 'daki nesneler veya hiyerarşik gösterimler olan bir kapsayıcıya kaydedilir.
-
-+ Tablo olarak, projeksiyon tablo depolamasına eşlenir. Tablo temsili, veri analizi veya makine öğrenimi için veri çerçeveleri olarak dışa aktarma gibi senaryolar için ilişkileri korur. Zenginleştirilmiş projeksiyonlar daha sonra diğer veri depolarına kolayca aktarılabilir. 
-
-Bir bilgi deposunda, kuruluşunuzda çeşitli yapısal olarak uyum sağlamak için birden çok projeksiyonlar oluşturabilirsiniz. Geliştirici, zenginleştirilmiş bir belgenin tam JSON gösterimine erişim gerektirebilir, ancak veri bilimcileri veya analistleri, Beceri göre şekillendirilmiş veya modüler veri yapıları isteyebilir.
-
-Örneğin, zenginleştirme işleminin amaçlarından biri de bir modeli eğitmek için kullanılan bir veri kümesi oluşturacaksa, verileri nesne deposuna yansıtma, veri bilimi işlem hatlarınızın verilerini kullanmanın bir yoludur. Alternatif olarak, tablo projeksiyonunu zenginleştirilmiş belgeler temelinde hızlı bir Power BI panosu oluşturmak istiyorsanız tablo projeksiyonu iyi çalışacaktır.
-
-<a name="tools-and-apps"></a>
-
-## <a name="connecting-with-tools-and-apps"></a>Araçlar ve uygulamalarla bağlanma
-
-Depolarda enzenginler varsa, Azure Blob veya tablo depolama 'ya bağlanan herhangi bir araç veya teknoloji, içeriği incelemek, çözümlemek veya kullanmak için kullanılabilir. Aşağıdaki liste bir başlangıç:
-
-+ Zenginleştirilmiş belge yapısını ve içeriğini görüntülemek için [Depolama Gezgini](knowledge-store-view-storage-explorer.md) . Bilgi deposu içeriğini görüntülemek için bunu taban çizgisi aracınız olarak düşünün.
-
-+ Sayısal veriniz varsa raporlama ve analiz araçları için [Power BI](knowledge-store-connect-power-bi.md) .
-
-+ Daha fazla düzenleme için [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) .
+ Başarılı bir istek için "201 oluşturuldu" durum kodunu görmeniz gerekir. Varsayılan olarak, yanıt gövdesi oluşturulan beceri tanımı için JSON 'u içerir. Bilgi deposunun, bu beceri başvuran bir Dizin Oluşturucu çağırana kadar oluşturulmadığından emin olarak unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bilgi deposu, bir Azure depolama hesabına erişim özellikli herhangi bir istemci uygulaması tarafından tüketimine yönelik bir beceri tasarımı veya yeni yapıların oluşturulması için yararlı olan belgelerin kalıcılığını, yararlı bir şekilde veya yeni yapıların oluşturulmasını sağlar.
 
-Zenginleştirilmiş belgeler oluşturmaya yönelik en basit yaklaşım, **veri alma** Sihirbazı ' nı kullanmaktır, ancak nesnelerin nasıl oluşturulduğuna ve başvurulduğunu öğrenmek isterseniz daha kullanışlı olan Postman ve REST API de kullanabilirsiniz.
+Zenginleştirilmiş belgeler oluşturmak için en basit yaklaşım [Portal üzerinden](knowledge-store-create-portal.md)yapılır, ancak nesnelerin nasıl oluşturulduğuna ve başvurulduğunu öğrenmek isterseniz daha kullanışlı olan Postman ve REST API de kullanabilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Portalı kullanarak bir bilgi deposu oluşturun](knowledge-store-create-portal.md)
-> [POSTMAN ve REST API kullanarak bilgi deposu oluşturma](knowledge-store-create-rest.md)
+> [Postman ve REST kullanarak bilgi deposu oluşturma](knowledge-store-create-rest.md)

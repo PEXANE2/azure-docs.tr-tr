@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: d362512ac6d06577a5c46bb0c6dab461f07ae709
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: f963885f60116bf23087fceb6a92d18e71ac7f24
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457027"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745339"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure dijital TWINS 'de Kullanıcı tanımlı işlevlerde hata ayıklama
 
@@ -35,7 +35,7 @@ Azure dijital TWINS, sağlam günlük kaydı, izleme ve analiz desteği. Çözü
 
 * Azure dijital TWINS 'e özgü günlüğe kaydetme yapılandırması için, [izleme ve günlüğe kaydetmeyi yapılandırma](./how-to-configure-monitoring.md)makalesini okuyun.
 * Azure Izleyici ile etkin olan güçlü günlük ayarları hakkında bilgi edinmek için [Azure izleyicisine](../azure-monitor/overview.md) genel bakış bölümüne başvurun.
-* Azure dijital TWINS 'de Azure portal, Azure CLı veya PowerShell aracılığıyla tanılama günlüğü ayarlarını yapılandırmak için [Azure kaynaklarınızdaki günlük verilerini toplama ve](../azure-monitor/platform/resource-logs-overview.md) kullanma makalesini inceleyin.
+* Azure dijital TWINS 'de Azure portal, Azure CLı veya PowerShell aracılığıyla tanılama günlüğü ayarlarını yapılandırmak için [Azure kaynaklarınızdaki günlük verilerini toplama ve](../azure-monitor/platform/platform-logs-overview.md) kullanma makalesini inceleyin.
 
 Yapılandırıldıktan sonra tüm günlük kategorilerini, ölçümleri seçebilir ve güçlü Azure Izleyici Log Analytics çalışma alanlarını kullanarak hata ayıklama çabalarınızı destekleyebilirsiniz.
 
@@ -216,4 +216,4 @@ Tanılama ayarlarını etkinleştirirseniz, bu ortak özel durumlarla karşıla�
 
 - Azure dijital TWINS 'de [izleme ve günlükleri](./how-to-configure-monitoring.md) etkinleştirme hakkında bilgi edinin.
 
-- Azure günlük seçenekleri hakkında daha fazla bilgi için [Azure etkinlik günlüğü ' ne genel bakış](../azure-monitor/platform/activity-logs-overview.md) makalesini okuyun.
+- Azure günlük seçenekleri hakkında daha fazla bilgi için [Azure etkinlik günlüğü ' ne genel bakış](../azure-monitor/platform/platform-logs-overview.md) makalesini okuyun.

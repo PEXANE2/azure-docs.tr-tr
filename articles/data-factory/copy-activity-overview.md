@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 40bddaab6db5e7ed777ec55ca469a9e2d1c35c98
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927539"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754468"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Etkinliği Azure Data Factory Kopyala
 
@@ -49,15 +49,13 @@ Verileri bir kaynaktan havuza kopyalamak için kopyalama etkinliğini çalışt�
 
 ### <a name="supported-file-formats"></a>Desteklenen dosya biçimleri
 
-Dosyaları kopyalamak için kopyalama etkinliğini iki dosya tabanlı veri deposu arasında olduğu gibi kullanabilirsiniz. Bu durumda, veriler serileştirme veya serisini kaldırma olmadan etkin bir şekilde kopyalanır.
-
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Örneğin, aşağıdaki kopyalama etkinliklerini yapabilirsiniz:
+Kopyalama etkinliğini, dosyaları iki dosya tabanlı veri deposu arasında olduğu gibi kopyalamak için kullanabilirsiniz. Bu durumda, veriler serileştirme veya seri durumundan çıkarma yapılmadan verilerin verimli bir şekilde kopyalanabilmesi. Ayrıca, belirli bir biçimin dosyalarını ayrıştırarak veya oluşturabilirsiniz, örneğin, aşağıdakileri yapabilirsiniz:
 
-* Şirket içi SQL Server veritabanından veri kopyalayın ve verileri Parquet biçiminde Azure Data Lake Storage 2. yazın.
+* Şirket içi SQL Server veritabanından veri kopyalayın ve Parquet biçiminde Azure Data Lake Storage 2. yazın.
 * Metin (CSV) biçimindeki dosyaları şirket içi bir dosya sisteminden kopyalayın ve avro biçiminde Azure Blob depolama alanına yazın.
-* ZIP dosyalarını şirket içi bir dosya sisteminden kopyalayın, sıkıştırmasını açıp Azure Data Lake Storage 2. yazın.
+* ZIP dosyalarını şirket içi bir dosya sisteminden kopyalayın, açık olarak açıp Azure Data Lake Storage 2. ve ayıklanan dosyaları yazın.
 * Verileri Azure Blob depolama alanından gzip sıkıştırılmış metin (CSV) biçiminde kopyalayın ve Azure SQL veritabanı 'na yazın.
 * Serileştirme/seri durumdan çıkarma veya sıkıştırma/sıkıştırmayı gerektiren çok sayıda etkinlik.
 
@@ -127,17 +125,18 @@ Bir kopyalama etkinliğinin aşağıdaki şablonu desteklenen özelliklerin kaps
 
 | Özellik | Açıklama | Gerekli mi? |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği için `Copy` olarak ayarlayın | Yes |
-| inputs | Kaynak verilere işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir girişi destekler. | Yes |
-| outputs | Havuz verilerine işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir çıktıyı destekler. | Yes |
-| typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Yes |
-| source | Kopyalama kaynağı türünü ve verileri almak için karşılık gelen özellikleri belirtin.<br/><br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Yes |
-| sink | Kopyalama havuz türünü ve verileri yazmak için karşılık gelen özellikleri belirtin.<br/><br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Yes |
-| translator | Kaynak havuzu için açıkça bir sütun eşlemelerini belirtin. Bu özellik, varsayılan kopyalama davranışı gereksinimlerinizi karşılamıyorsa geçerlidir.<br/><br/>Daha fazla bilgi için bkz. [kopyalama etkinliğinde şema eşleme](copy-activity-schema-and-type-mapping.md). | Hayır |
-| dataIntegrationUnits | [Azure Integration Runtime](concepts-integration-runtime.md) 'ın veri kopyalama için kullandığı güç miktarını temsil eden bir ölçü belirtin. Bu birimler daha önce bulut veri taşıma birimi (DMU) olarak bilinirdi. <br/><br/>Daha fazla bilgi için bkz. [veri tümleştirme birimleri](copy-activity-performance.md#data-integration-units). | Hayır |
-| parallelCopies | Kaynaktan veri okurken ve havuza veri yazarken kopyalama etkinliğinin kullanmasını istediğiniz paralellik belirleyin.<br/><br/>Daha fazla bilgi için bkz. [paralel kopya](copy-activity-performance.md#parallel-copy). | Hayır |
-| enableStaging<br/>stagingSettings | Verileri kaynaktan havuza doğrudan kopyalamak yerine, blob depolamada geçici verilerin gösterilip gösterilmeyeceğini belirtin.<br/><br/>Faydalı senaryolar ve yapılandırma ayrıntıları hakkında daha fazla bilgi için bkz. [aşamalı kopya](copy-activity-performance.md#staged-copy). | Hayır |
-| enableskipıncompatiblerow<br/>redirectıncompatiblerowsettings| Kaynaktan havuza veri kopyaladığınızda uyumsuz satırları nasıl işleyeceğinizi seçin.<br/><br/>Daha fazla bilgi için bkz. [hata toleransı](copy-activity-fault-tolerance.md). | Hayır |
+| type | Kopyalama etkinliği için `Copy` olarak ayarlayın | Evet |
+| inputs | Kaynak verilere işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir girişi destekler. | Evet |
+| outputs | Havuz verilerine işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir çıktıyı destekler. | Evet |
+| typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Evet |
+| source | Kopyalama kaynağı türünü ve verileri almak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
+| sink | Kopyalama havuz türünü ve verileri yazmak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
+| translator | Kaynak havuzu için açıkça bir sütun eşlemelerini belirtin. Bu özellik, varsayılan kopyalama davranışı gereksinimlerinizi karşılamıyorsa geçerlidir.<br/>Daha fazla bilgi için bkz. [kopyalama etkinliğinde şema eşleme](copy-activity-schema-and-type-mapping.md). | Hayır |
+| dataIntegrationUnits | [Azure Integration Runtime](concepts-integration-runtime.md) 'ın veri kopyalama için kullandığı güç miktarını temsil eden bir ölçü belirtin. Bu birimler daha önce bulut veri taşıma birimi (DMU) olarak bilinirdi. <br/>Daha fazla bilgi için bkz. [veri tümleştirme birimleri](copy-activity-performance.md#data-integration-units). | Hayır |
+| parallelCopies | Kaynaktan veri okurken ve havuza veri yazarken kopyalama etkinliğinin kullanmasını istediğiniz paralellik belirleyin.<br/>Daha fazla bilgi için bkz. [paralel kopya](copy-activity-performance.md#parallel-copy). | Hayır |
+| Preserve | Veri kopyalama sırasında meta verilerin/ACL 'Lerin korunup korunmayacağını belirtin. <br/>Daha fazla bilgi için bkz. [meta verileri koruma](copy-activity-preserve-metadata.md). |Hayır |
+| enableStaging<br/>stagingSettings | Verileri kaynaktan havuza doğrudan kopyalamak yerine, blob depolamada geçici verilerin gösterilip gösterilmeyeceğini belirtin.<br/>Faydalı senaryolar ve yapılandırma ayrıntıları hakkında daha fazla bilgi için bkz. [aşamalı kopya](copy-activity-performance.md#staged-copy). | Hayır |
+| enableskipıncompatiblerow<br/>redirectıncompatiblerowsettings| Kaynaktan havuza veri kopyaladığınızda uyumsuz satırları nasıl işleyeceğinizi seçin.<br/>Daha fazla bilgi için bkz. [hata toleransı](copy-activity-fault-tolerance.md). | Hayır |
 
 ## <a name="monitoring"></a>İzleme
 
@@ -238,13 +237,9 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri de ayn�
 }
 ```
 
-## <a name="schema-and-data-type-mapping"></a>Şema ve veri türü eşlemesi
+## <a name="incremental-copy"></a>Artımlı kopyalama
 
-Kopyalama etkinliğinin kaynak verilerinizi havuzunuzu nasıl eşlediğini öğrenmek için bkz. [şema ve veri türü eşleme](copy-activity-schema-and-type-mapping.md) .
-
-## <a name="fault-tolerance"></a>Hataya dayanıklılık
-
-Varsayılan olarak, kopyalama etkinliği verileri kopyalamayı ve kaynak veri satırları havuz Veri satırlarıyla uyumsuz olduğunda bir hata döndürür. Kopyalamanın başarılı olması için kopyalama etkinliğini, uyumsuz satırları atlayıp günlüğe kaydetmek ve yalnızca uyumlu verileri kopyalamak üzere yapılandırabilirsiniz. Ayrıntılar için bkz. [kopyalama etkinliği hata toleransı](copy-activity-fault-tolerance.md) .
+Data Factory, Delta verilerini bir kaynak veri deposundan bir havuz veri deposuna artımlı olarak kopyalamanızı sağlar. Ayrıntılar için bkz. [öğretici: artımlı olarak veri kopyalama](tutorial-incremental-copy-overview.md).
 
 ## <a name="performance-and-tuning"></a>Performans ve ayar
 
@@ -258,8 +253,36 @@ Bu örnekte, bir kopya çalıştırması sırasında, Data Factory havuz Azure S
 
 ![Performansı ayarlama ipuçlarıyla izleme kopyalama](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>Artımlı kopyalama
-Data Factory, Delta verilerini bir kaynak veri deposundan bir havuz veri deposuna artımlı olarak kopyalamanızı sağlar. Ayrıntılar için bkz. [öğretici: artımlı olarak veri kopyalama](tutorial-incremental-copy-overview.md).
+## <a name="resume-from-last-failed-run"></a>Son başarısız çalıştırmayı geri edin
+
+Kopyalama etkinliği, büyük boyutlu dosyaları dosya tabanlı mağazalar arasında ikili biçimde kopyaladığınızda son başarısız çalıştıralım işlemini destekler, örneğin, Amazon S3 ' den Azure Data Lake Storage 2. ' ye veri geçirmek için. Şu dosya tabanlı bağlayıcılar için geçerlidir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure dosya depolama](connector-azure-file-storage.md), [dosya sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md) [,,](connector-hdfs.md)ve [SFTP](connector-sftp.md).
+
+Kopyalama etkinliği özgeçmişi aşağıdaki iki şekilde yararlanabilirsiniz:
+
+- **Etkinlik düzeyi yeniden deneme:** Kopyalama etkinliği için yeniden deneme sayısı ayarlayabilirsiniz. İşlem hattı yürütmesi sırasında, bu kopyalama etkinliği başarısız olursa, sonraki otomatik yeniden deneme son deneme hata noktasından başlar.
+- **Başarısız etkinlikten yeniden çalıştır:** İşlem hattı yürütme tamamlandıktan sonra, ADF Kullanıcı arabirimi izleme görünümündeki veya programlı olarak başarısız etkinlikten yeniden çalıştır tetikleyebilirsiniz. Başarısız etkinlik bir kopyalama etkinliğidir, işlem hattı Bu etkinlikten yalnızca yeniden çalıştırılmaz, ancak aynı zamanda önceki çalıştırmanın hata noktasından de sürdürülür.
+
+    ![Kopyalama özgeçmişi](media/copy-activity-overview/resume-copy.png)
+
+Birkaç noktaya göz önünde:
+
+- Dosya düzeyinde özgeçmişde gerçekleşir. Bir dosya kopyalanırken kopyalama etkinliği başarısız olursa, bir sonraki çalıştırmasında, bu belirli dosya yeniden kopyalanacaktır.
+- Özgeçmişin düzgün çalışması için yeniden başlatma arasında kopyalama etkinliği ayarlarını değiştirmeyin.
+- Amazon S3, Azure blob, Azure Data Lake Storage 2. ve Google Cloud Storage 'dan verileri kopyaladığınızda kopyalama etkinliği, rastgele sayıda kopyalanmış dosyanın içinden sürdürülür. Kaynak olarak dosya tabanlı bağlayıcıların geri kalanı için, kopyalama etkinliği, genellikle onlarca binlerce ve dosya yollarının uzunluğuna bağlı olarak değişiklik gösterdiği gibi, sınırlı sayıda dosyadan sürdürmeyi destekler; Bu sayıdan daha fazla dosya yeniden yönlendirme sırasında yeniden kopyalanacaktır.
+
+İkili dosya kopyalama işleminden farklı senaryolar için kopyalama etkinliği yeniden çalıştırma başlangıçtan başlar.
+
+## <a name="preserve-metadata-along-with-data"></a>Meta verileri verilerle birlikte koruyun
+
+Verileri kaynaktan havuza kopyalarken, Data Lake geçişi gibi senaryolarda, kopyalama etkinliğini kullanarak verilerle birlikte meta verileri ve ACL 'Leri de korumayı seçebilirsiniz. Ayrıntılar için bkz. [meta verileri koruma](copy-activity-preserve-metadata.md) .
+
+## <a name="schema-and-data-type-mapping"></a>Şema ve veri türü eşlemesi
+
+Kopyalama etkinliğinin kaynak verilerinizi havuzunuzu nasıl eşlediğini öğrenmek için bkz. [şema ve veri türü eşleme](copy-activity-schema-and-type-mapping.md) .
+
+## <a name="fault-tolerance"></a>Hataya dayanıklılık
+
+Varsayılan olarak, kopyalama etkinliği verileri kopyalamayı ve kaynak veri satırları havuz Veri satırlarıyla uyumsuz olduğunda bir hata döndürür. Kopyalamanın başarılı olması için kopyalama etkinliğini, uyumsuz satırları atlayıp günlüğe kaydetmek ve yalnızca uyumlu verileri kopyalamak üzere yapılandırabilirsiniz. Ayrıntılar için bkz. [kopyalama etkinliği hata toleransı](copy-activity-fault-tolerance.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki Hızlı Başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle bakın:

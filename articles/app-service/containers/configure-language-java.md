@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 571d4cd395cd0cec0982fedf267a88143fd73872
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 9c95772c8f10d7170a06d1d6793545a60fc8dd7c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805748"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750746"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için bir Linux Java uygulaması yapılandırma
 
@@ -238,24 +238,37 @@ Bu gizli dizileri Spring veya Tomcat yapılandırma dosyasına eklemek için ort
 
 ### <a name="using-the-java-key-store"></a>Java anahtar deposunu kullanma
 
-Varsayılan olarak, [App Service Linux 'a yüklenen](../configure-ssl-certificate.md) tüm ortak veya özel sertifikalar, kapsayıcı başladığında Java anahtar deposuna yüklenir. Bu, giden TLS bağlantıları yaparken karşıya yüklenen sertifikaların bağlantı bağlamında kullanılabileceği anlamına gelir. Sertifikanızı karşıya yükledikten sonra, Java anahtar deposuna yüklenmek üzere App Service yeniden başlatmanız gerekir.
+Varsayılan olarak, [App Service Linux 'a yüklenen](../configure-ssl-certificate.md) tüm ortak veya özel sertifikalar, kapsayıcı başladığında Ilgili Java anahtar depolarına yüklenir. Sertifikanızı karşıya yükledikten sonra, Java anahtar deposuna yüklenmek üzere App Service yeniden başlatmanız gerekir. Ortak sertifikalar `$JAVA_HOME/jre/lib/security/cacerts`konumundaki anahtar deposuna yüklenir ve özel sertifikalar `$JAVA_HOME/lib/security/client.jks`depolanır.
 
-App Service [BIR SSH bağlantısı açıp](app-service-linux-ssh-support.md) komut `keytool`çalıştırarak Java anahtar aracında etkileşim kurabilir veya hata ayıklayabilirsiniz. Komutların listesi için bkz. [anahtar araç belgeleri](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) . Sertifikalar, Java 'nın varsayılan anahtar deposu dosya konumunda depolanır `$JAVA_HOME/jre/lib/security/cacerts`.
-
-JDBC bağlantınızı şifrelemek için ek yapılandırma gerekebilir. Lütfen seçtiğiniz JDBC sürücünüz için belgelere bakın.
+Java anahtar deposundaki sertifikalarla JDBC bağlantınızı şifrelemek için ek yapılandırma gerekebilir. Lütfen seçtiğiniz JDBC sürücünüz için belgelere bakın.
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
-- [Cassandra](https://docs.datastax.com/developer/java-driver/4.3/)
+- [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
 
+#### <a name="initializing-the-java-key-store"></a>Java anahtar deposunu başlatma
 
-#### <a name="manually-initialize-and-load-the-key-store"></a>Anahtar deposunu el ile başlatma ve yükleme
+`import java.security.KeyStore` nesnesini başlatmak için, anahtar deposu dosyasını parolayla yükleyin. Her iki anahtar deposu için varsayılan parola "changeıt" dir.
 
-Anahtar deposunu başlatabilir ve sertifikaları el ile ekleyebilirsiniz. App Service sertifikaları anahtar deposuna otomatik olarak yüklemesini devre dışı bırakmak için `1` değeri ile `SKIP_JAVA_KEYSTORE_LOAD`bir uygulama ayarı oluşturun. Azure portal üzerinden App Service yüklenen tüm genel sertifikalar `/var/ssl/certs/`altında depolanır. Özel sertifikalar `/var/ssl/private/`altında depolanır.
+```java
+KeyStore keyStore = KeyStore.getInstance("jks");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/cacets"),
+    "changeit".toCharArray());
 
-KeyStore API 'SI hakkında daha fazla bilgi için lütfen [resmi belgelere](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)başvurun.
+KeyStore keyStore = KeyStore.getInstance("pkcs12");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/client.jks"),
+    "changeit".toCharArray());
+```
+
+#### <a name="manually-load-the-key-store"></a>Anahtar deposunu el ile yükleme
+
+Sertifikaları anahtar deposuna el ile yükleyebilirsiniz. App Service sertifikaları anahtar deposuna otomatik olarak yüklemesini devre dışı bırakmak için `1` değeri ile `SKIP_JAVA_KEYSTORE_LOAD`bir uygulama ayarı oluşturun. Azure portal üzerinden App Service yüklenen tüm genel sertifikalar `/var/ssl/certs/`altında depolanır. Özel sertifikalar `/var/ssl/private/`altında depolanır.
+
+App Service [BIR SSH bağlantısı açıp](app-service-linux-ssh-support.md) komut `keytool`çalıştırarak Java anahtar aracında etkileşim kurabilir veya hata ayıklayabilirsiniz. Komutların listesi için bkz. [anahtar araç belgeleri](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) . KeyStore API 'SI hakkında daha fazla bilgi için lütfen [resmi belgelere](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)başvurun.
 
 ## <a name="configure-apm-platforms"></a>APM platformlarını yapılandırma
 
@@ -313,7 +326,7 @@ App Service Linux gelen istekleri 80 numaralı bağlantı noktasına yönlendiri
 
 Bu yönergeler tüm veritabanı bağlantıları için geçerlidir. Yer tutucuları, seçtiğiniz veritabanının sürücü sınıfı adı ve JAR dosyası ile doldurmanız gerekir. , Ortak veritabanları için sınıf adları ve sürücü indirmeleri içeren bir tablodur.
 
-| Database   | Sürücü sınıfı adı                             | JDBC Sürücüsü                                                                      |
+| Veritabanı   | Sürücü sınıfı adı                             | JDBC Sürücüsü                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [İndir](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [İndir](https://dev.mysql.com/downloads/connector/j/) ("platformdan bağımsız" seçeneğini belirleyin) |
@@ -373,7 +386,7 @@ Başlangıç komut dosyanız, Server. xml dosyasına bir [XSL dönüştürmesi](
 apk add --update libxslt
 
 # Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /usr/local/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /home/tomcat/conf/server.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 Örnek bir xsl dosyası aşağıda verilmiştir. Örnek xsl dosyası, Tomcat Server. xml dosyasına yeni bir bağlayıcı düğümü ekler.

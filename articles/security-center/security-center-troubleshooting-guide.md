@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b9650c3c30d95c85f505b640564ff416931676ea
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 68d37bfbc629062a788ba32793b95c6f1653ff42
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559202"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749647"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Güvenlik Merkezi Sorun Giderme Kılavuzu
 
@@ -44,7 +44,7 @@ Müşteriler, uyarı açıklaması ve ilgi düzeyiyle ilgili geri bildirimde bul
 
 ## <a name="audit-log"></a>Denetim günlüğü
 
-Güvenlik Merkezi’nde yapılan sorun giderme işlemlerinin birçoğu, öncelikle başarısız bileşenlere ilişkin [Denetim Günlüğü](../azure-monitor/platform/activity-logs-overview.md) kayıtlarına bakılarak gerçekleştirilir. Denetim günlükleri ile aşağıdakileri belirleyebilirsiniz:
+Güvenlik Merkezi’nde yapılan sorun giderme işlemlerinin birçoğu, öncelikle başarısız bileşenlere ilişkin [Denetim Günlüğü](../azure-monitor/platform/platform-logs-overview.md) kayıtlarına bakılarak gerçekleştirilir. Denetim günlükleri ile aşağıdakileri belirleyebilirsiniz:
 
 * Hangi işlemlerin gerçekleştirildiği
 * İşlemi kimin başlattığı
@@ -92,8 +92,8 @@ Microsoft Monitoring Agent’ı bilgisayarınıza yüklerken farklı sonuçlar �
 |Yükleme başarısız oldu - genel hata | Microsoft Monitoring Agent yüklendi, ancak bir hata nedeniyle başarısız oldu. | [Uzantıyı el ile yükleyin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) veya Güvenlik Merkezi’nin yüklemeyi yeniden denemesi için uzantıyı kaldırın. |
 | Yükleme başarısız oldu - yerel aracı zaten yüklü | Microsoft Monitoring Agent yüklemesi başarısız oldu. Güvenlik Merkezi, VM 'de zaten yüklü olan bir yerel aracı (Log Analytics veya System Center Operations Manager) tanımladı. VM’nin iki ayrı çalışma alanına bildirimde bulunduğu çok girişli bir yapılandırmayı önlemek için, Microsoft Monitoring Agent yüklemesi durduruldu. | Çözümlemek için iki yol vardır: [Uzantıyı el ile yükleyin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) ve istediğiniz çalışma alanına bağlayın. Veya, istediğiniz çalışma alanını varsayılan çalışma alanı olarak ayarlayın ve aracının otomatik sağlamasını etkinleştirin.  Bkz. [otomatik sağlamayı etkinleştirme](security-center-enable-data-collection.md). |
 | Aracı çalışma alanına bağlanamıyor | Microsoft Monitoring Agent yüklendi, ancak ağ bağlantısı nedeniyle başarısız oldu.  İnternet erişiminin olduğundan veya aracı için geçerli bir HTTP ara sunucusunun yapılandırıldığından emin olun. | Bkz. izleme Aracısı ağ gereksinimleri. |
-| Aracı eksik veya bilinmeyen çalışma alanına bağlandı | Güvenlik Merkezi, VM’de yüklü Microsoft Monitoring Agent’ın erişimi olmayan bir çalışma alanına bağlandığını belirledi. | Bu durum iki koşulda meydana gelebilir. Çalışma alanı silindi ve artık mevcut değil. Aracıyı doğru çalışma alanıyla yeniden yükleyin veya aracıyı kaldırıp Güvenlik Merkezi’nin otomatik sağlama yüklemesini tamamlamasını bekleyin. İkinci koşul ise çalışma alanının, Güvenlik Merkezi’nin izinli olmadığı bir aboneliğe ait olmasıdır. Güvenlik Merkezi, aboneliklerin Microsoft Güvenlik Kaynak Sağlayıcısı'na erişim izni vermesini gerektirir. Etkinleştirmek için aboneliği Microsoft Güvenlik Kaynak Sağlayıcısı’na kaydedin. Bu işlem API, PowerShell, portal veya yalnızca Güvenlik Merkezi'ndeki **Genel Bakış** Panosunda abonelik filtrelenerek yapılabilir. Daha fazla bilgi için bkz. [Kaynak sağlayıcıları ve türleri](../azure-resource-manager/resource-manager-supported-services.md#azure-portal). |
-| Aracı yanıt vermiyor veya kimliği eksik | Güvenlik Merkezi, aracı yüklü olsa bile VM’den taranan güvenlik verilerini alamıyor. | Aracı, sinyal de dahil olmak üzere herhangi bir veri bildirmiyor. Aracı zarar görmüş olabilir veya trafiği engelleyen bir durum vardır. Ya da aracı verileri bildiriyordur, ancak bir Azure kaynak kimliği eksik olduğu için verilerin Azure VM ile eşleştirilmesi mümkün değildir. Linux sorunlarını gidermek için bkz. [Linux için Log Analytics Aracısı Için sorun giderme kılavuzu](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Windows’da sorun gidermek için bkz. [Windows Sanal Makineleri’nde Sorun Giderme](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
+| Aracı eksik veya bilinmeyen çalışma alanına bağlandı | Güvenlik Merkezi, VM’de yüklü Microsoft Monitoring Agent’ın erişimi olmayan bir çalışma alanına bağlandığını belirledi. | Bu durum iki koşulda meydana gelebilir. Çalışma alanı silindi ve artık mevcut değil. Aracıyı doğru çalışma alanıyla yeniden yükleyin veya aracıyı kaldırıp Güvenlik Merkezi’nin otomatik sağlama yüklemesini tamamlamasını bekleyin. İkinci koşul ise çalışma alanının, Güvenlik Merkezi’nin izinli olmadığı bir aboneliğe ait olmasıdır. Güvenlik Merkezi, aboneliklerin Microsoft Güvenlik Kaynak Sağlayıcısı'na erişim izni vermesini gerektirir. Etkinleştirmek için aboneliği Microsoft Güvenlik Kaynak Sağlayıcısı’na kaydedin. Bu işlem API, PowerShell, portal veya yalnızca Güvenlik Merkezi'ndeki **Genel Bakış** Panosunda abonelik filtrelenerek yapılabilir. Daha fazla bilgi için bkz. [Kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
+| Aracı yanıt vermiyor veya kimliği eksik | Güvenlik Merkezi, aracı yüklü olsa bile VM’den taranan güvenlik verilerini alamıyor. | Aracı, sinyal de dahil olmak üzere herhangi bir veri bildirmiyor. Aracı zarar görmüş olabilir veya trafiği engelleyen bir durum vardır. Ya da aracı verileri bildiriyordur, ancak bir Azure kaynak kimliği eksik olduğu için verilerin Azure VM ile eşleştirilmesi mümkün değildir. Linux'ta sorun gidermek için bkz: [Linux için Log Analytics aracısı için sorun giderme kılavuzu](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Windows’da sorun gidermek için bkz. [Windows Sanal Makineleri’nde Sorun Giderme](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
 | Aracı yüklü değil | Veri toplama devre dışıdır. | Güvenlik ilkesinde veri toplamayı etkinleştirin veya Microsoft Monitoring Agent’ı el ile yükleyin. |
 
 ## Monitoring Agent ağ gereksinimleriyle ilgili sorunları giderme <a name="mon-network-req"></a>
@@ -107,10 +107,10 @@ Aşağıdaki tabloda iletişim için gereken kaynaklar gösterilmektedir.
 
 | Aracı Kaynağı | Bağlantı Noktaları | HTTPS denetlemesini atlama |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Yes |
-| *.oms.opinsights.azure.com | 443 | Yes |
-| *.blob.core.windows.net | 443 | Yes |
-| *.azure-automation.net | 443 | Yes |
+| *.ods.opinsights.azure.com | 443 | Evet |
+| *.oms.opinsights.azure.com | 443 | Evet |
+| *.blob.core.windows.net | 443 | Evet |
+| *.azure-automation.net | 443 | Evet |
 
 Aracıyla ekleme sorunları yaşarsanız, [Operations Management Suite ekleme sorunlarını giderme](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) makalesini okuduğunuzdan emin olun.
 

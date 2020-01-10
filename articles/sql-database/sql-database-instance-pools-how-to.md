@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 13c58ddf5f51e5b63d2dbe425b3ec795e21dabb8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810344"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754044"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Azure SQL veritabanı örnek havuzları (Önizleme) nasıl yapılır Kılavuzu
 
@@ -26,7 +26,7 @@ Bu makalede, [örnek havuzlarının](sql-database-instance-pools.md)nasıl oluş
 
 Aşağıdaki tabloda, Azure portal ve PowerShell 'de örnek havuzlarla ilgili kullanılabilir işlemler ve bunların kullanılabilirlikleri gösterilmektedir.
 
-|Komut|Azure portal|PowerShell|
+|Komut|Azure Portal|PowerShell|
 |:---|:---|:---|
 |Örnek havuzu oluşturma|Hayır|Evet|
 |Örnek havuzunu güncelleştir (sınırlı sayıda özellik)|Hayır |Evet |
@@ -92,11 +92,17 @@ Aşağıdaki kısıtlamalar örnek havuzlar için geçerlidir:
 
 - Yalnızca Genel Amaçlı ve 5. nesil genel önizlemede kullanılabilir.
 - Havuz adı yalnızca küçük harf, rakam ve kısa çizgi içerebilir ve kısa çizgi ile başlayamaz.
-- Alt ağ KIMLIĞINI almak için `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`kullanın.
 - AHB 'yi (Azure Hibrit Avantajı) kullanmak istiyorsanız, örnek havuzu düzeyinde uygulanır. Havuz oluşturma sırasında lisans türünü ayarlayabilir veya oluşturulduktan sonra dilediğiniz zaman güncelleştirebilirsiniz.
 
 > [!IMPORTANT]
 > Örnek havuzun dağıtımı, yaklaşık 4,5 saat süren uzun süredir çalışan bir işlemdir.
+
+Ağ parametrelerini almak için:
+
+```powershell
+$virtualNetwork = Get-AzVirtualNetwork -Name "miPoolVirtualNetwork" -ResourceGroupName "myResourceGroup"
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork
+```
 
 Örnek havuzu oluşturmak için:
 
@@ -104,7 +110,7 @@ Aşağıdaki kısıtlamalar örnek havuzlar için geçerlidir:
 $instancePool = New-AzSqlInstancePool `
   -ResourceGroupName "myResourceGroup" `
   -Name "mi-pool-name" `
-  -SubnetId "/subscriptions/subscriptionID/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/miPoolVirtualNetwork/subnets/miPoolSubnet" `
+  -SubnetId $subnet.Id `
   -LicenseType "LicenseIncluded" `
   -VCore 80 `
   -Edition "GeneralPurpose" `

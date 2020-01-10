@@ -5,35 +5,39 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894522"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750372"
 ---
-# <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanında Azure Kaynak günlüklerini toplayın
-Azure 'da [kaynak günlükleri](resource-logs-overview.md) , bir Azure kaynağının iç işlemi hakkında zengin, sık veriler sağlar. Bu makalede, güçlü günlük sorgularını kullanarak ve ayrıca uyarılar gibi diğer Azure Izleyici özelliklerinden yararlanmak için, bu dosyayı Azure Izleyici günlüklerinde toplanan diğer izleme verileriyle analiz etmenizi sağlayan bir Log Analytics çalışma alanında kaynak günlüklerinin toplanması açıklanır. görüntüler. 
+# <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanında Azure platform günlüklerini toplayın
+Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. Bu makalede, güçlü günlük sorgularını kullanarak ve ayrıca uyarılar gibi diğer Azure Izleyici özelliklerinden yararlanmak için, bu dosyayı Azure Izleyici günlüklerinde toplanan diğer izleme verileriyle analiz etmenizi sağlayan bir Log Analytics çalışma alanında kaynak günlüklerinin toplanması açıklanır. görüntüler. 
 
 
-## <a name="what-you-can-do-with-resource-logs-in-a-workspace"></a>Çalışma alanındaki kaynak günlükleriyle yapabilecekleriniz
-Kaynak günlüklerinin bir Log Analytics çalışma alanında toplanması, tüm Azure kaynaklarınızın günlüklerini birlikte analiz etmenize ve aşağıdakiler de dahil olmak üzere [Azure Izleyici günlüklerine](data-platform-logs.md) sunulan tüm özelliklerden faydalanabilmenizi sağlar:
+## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>Çalışma alanında platform günlükleriyle yapabilecekleriniz
+Log Analytics çalışma alanında platform günlüklerinin toplanması, tüm Azure kaynaklarınızın günlüklerini birlikte analiz etmenize ve aşağıdakiler de dahil olmak üzere [Azure Izleyici günlüklerine](data-platform-logs.md) sunulan tüm özelliklerden yararlanmanıza olanak sağlar:
 
 * **Günlük sorguları** -tanılama verilerinizi hızlıca çözümlemek ve bunlarla ilgili Öngörüler elde etmek ve Azure izleyici 'deki diğer kaynaklardan toplanan verilerle analiz etmek için güçlü bir sorgu dili kullanarak [günlük sorguları](../log-query/log-query-overview.md) oluşturun.
 * **Uyarı** - [Azure izleyici 'de günlük uyarılarını](alerts-log.md)kullanarak kaynak günlükleriniz için tanımlanan kritik koşullar ve desenlerin öngörülü bildirimini alın.
 * **Görselleştirmeler** -bir günlük sorgusunun sonuçlarını bir Azure panosuna sabitleyin veya etkileşimli bir raporun parçası olarak çalışma kitabına dahil edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Henüz bir tane yoksa [Yeni bir çalışma alanı oluşturmanız](../learn/quick-create-workspace.md) gerekir. Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olduğundan, çalışma alanının kaynakla aynı abonelikte olması gerekmez.
 
 ## <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluştur
-Kaynak günlükleri varsayılan olarak toplanmaz. Azure kaynağı için bir tanılama ayarı oluşturarak bunları bir Log Analytics çalışma alanında ve diğer hedeflere toplayın. Ayrıntılar için bkz. [Azure 'da günlükleri ve ölçümleri toplamak için tanılama ayarı oluşturma](diagnostic-settings.md) .
+Azure kaynağı için bir tanılama ayarı oluşturarak, platform günlüklerini Log Analytics çalışma alanına ve diğer hedeflere gönderin. Ayrıntılar için bkz. [Azure 'da günlükleri ve ölçümleri toplamak için tanılama ayarı oluşturma](diagnostic-settings.md) .
 
-## <a name="collection-mode"></a>Toplama modu
-Log Analytics çalışma alanında toplanan veriler, [Azure Izleyici günlüklerinin yapısı](../log-query/logs-structure.md)bölümünde açıklandığı gibi tablolarda depolanır. Kaynak günlükleri tarafından kullanılan tablolar, kaynağın kullandığı koleksiyon türüne bağlıdır:
+
+## <a name="activity-log-collection"></a>Etkinlik günlüğü koleksiyonu
+Etkinlik günlüğünü en fazla beş Log Analytics çalışma alanına, tek bir abonelikten gönderebilirsiniz. Log Analytics çalışma alanında toplanan kaynak günlüğü verileri **AzureActivity** tablosunda depolanır. 
+
+## <a name="resource-log-collection-mode"></a>Kaynak günlüğü toplama modu
+Log Analytics çalışma alanında toplanan kaynak günlüğü verileri, [Azure Izleyici günlüklerinin yapısı](../log-query/logs-structure.md)bölümünde açıklandığı gibi tablolarda depolanır. Kaynak günlükleri tarafından kullanılan tablolar, kaynağın kullandığı koleksiyon türüne bağlıdır:
 
 - Azure tanılama-yazılan tüm veriler _AzureDiagnostics_ tablosuna gönderilir.
 - Kaynağa özgü veriler, kaynağın her kategorisi için ayrı ayrı tabloya yazılır.
@@ -120,5 +124,5 @@ Günlüklerinizi kaynağa özgü modu en kısa sürede kullanmak üzere geçirme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Kaynak günlükleri hakkında bilgi edinmek için bkz. [Azure Kaynak günlüklerine genel bakış](resource-logs-overview.md).
-* Log Analytics çalışma alanına kaynak günlüklerini toplamak üzere bir tanılama ayarı oluşturmak için bkz. [Azure 'da günlükleri ve ölçümleri toplamak için tanılama ayarı oluşturma](diagnostic-settings.md).
+* [Kaynak günlükleri hakkında daha fazla bilgi edinin](platform-logs-overview.md).
+* [Azure 'da günlüklerin ve ölçümlerin toplanması için tanılama ayarı oluşturun](diagnostic-settings.md).

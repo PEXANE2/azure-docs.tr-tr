@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0a1139f7bf1711a5f6d980e67a8a9027bfd3af52
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665317"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744737"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight sanal ağ mimarisi
 
@@ -31,6 +31,16 @@ Azure HDInsight kümelerinde farklı türlerde sanal makineler veya düğümler 
 | Bölge düğümü | HBase küme türü için bölge düğümü (veri düğümü olarak da anılır) bölge sunucusunu çalıştırır. Bölge sunucuları HBase tarafından yönetilen verilerin bir kısmını sunar ve yönetir. Bilgi işlem yeteneğini ölçeklendirmek ve maliyetleri yönetmek için, bölge düğümleri kümeden eklenebilir veya kaldırılabilir.|
 | Nimbus düğümü | Nimbus düğümü, fırtınası kümesi türü için baş düğüme benzer işlevler sağlar. Nimbus düğümü, Zookeeper aracılığıyla bir kümedeki diğer düğümlere görevler atar ve bu da halka topolojilerinin çalıştırılmasını koordine eder. |
 | Gözetmen düğümü | Halka küme türü için, gözetmen düğümü, istenen işlemi gerçekleştirmek için Nimbus düğümü tarafından sunulan yönergeleri yürütür. |
+
+## <a name="resource-naming-conventions"></a>Kaynak adlandırma kuralları
+
+Kümenizdeki düğümleri adreslarken lütfen tam etki alanı adlarını (FQDN) kullanın. [AMBARı API](hdinsight-hadoop-manage-ambari-rest-api.md)'sini kullanarak kümenizdeki çeşitli düğüm türleri için FQDN 'leri edinebilirsiniz. 
+
+Bu FQDN 'Ler `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`biçiminde olacaktır.
+
+`<node-type-prefix>`, yayın düğümleri için *hn* , çalışan düğümleri için *WN* ve Zookeeper düğümleri için *Zn* olacaktır.
+
+Yalnızca ana bilgisayar adına ihtiyacınız varsa, FQDN 'nin yalnızca ilk kısmını kullanın: `<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
 ## <a name="basic-virtual-network-resources"></a>Temel sanal ağ kaynakları
 

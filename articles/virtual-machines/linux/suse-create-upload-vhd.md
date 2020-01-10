@@ -3,7 +3,7 @@ title: Azure 'da SUSE Linux VHD oluşturma ve karşıya yükleme
 description: SUSE Linux işletim sistemi içeren bir Azure sanal sabit diski (VHD) oluşturmayı ve yüklemeyi öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,21 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
-ms.author: szark
-ms.openlocfilehash: d3241229fcf3ef99f71185c452ae615ec2cfc889
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: mimckitt
+ms.openlocfilehash: 5ff28e25bf3da33fcf85a77f850b3b8f5ac8bb6b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091217"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745821"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure için SLES veya openSUSE sanal makinesi hazırlama
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+
 Bu makalede, bir sanal sabit diske zaten SUSE veya openSUSE Linux işletim sistemi yüklediğinizi varsaymış olursunuz. . Vhd dosyaları, örneğin Hyper-V gibi bir sanallaştırma çözümü oluşturmak için birden çok araç vardır. Yönergeler için bkz. [Hyper-V rolünü yükleyip sanal makineyi yapılandırma](https://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="sles--opensuse-installation-notes"></a>SLES/openSUSE yükleme notları
+## <a name="sles--opensuse-installation-notes"></a>SLES/openSUSE yükleme notları
 * Lütfen Azure için Linux hazırlama hakkında daha fazla ipucu için bkz. [Genel Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
 * VHDX biçimi Azure 'da desteklenmiyor, yalnızca **sabıt VHD**.  Hyper-V Yöneticisi 'Ni veya Convert-VHD cmdlet 'ini kullanarak diski VHD biçimine dönüştürebilirsiniz.
 * Linux sistemini yüklerken, LVM yerine standart bölümler kullanmanız önerilir (genellikle çoğu yükleme için varsayılan değer). Bu, özellikle de bir işletim sistemi diskinin sorun gidermeye yönelik başka bir VM 'ye bağlanması gerekiyorsa, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. Tercih edilen durumlarda [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , veri disklerinde kullanılabilir.
@@ -79,12 +78,15 @@ Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin
     
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
-11. "/Etc/sysconfig/Network/DHCP" dosyasını düzenlemeniz ve `DHCLIENT_SET_HOSTNAME` parametreyi aşağıdaki şekilde değiştirmeniz önerilir:
+11. "/Etc/sysconfig/Network/DHCP" dosyasını düzenlemeniz ve `DHCLIENT_SET_HOSTNAME` parametresini aşağıdaki gibi değiştirmeniz önerilir:
     
      DHCLIENT_SET_HOSTNAME="no"
 12. "/Etc/sudoers" içinde, varsa, aşağıdaki satırları açıklama veya kaldırma:
     
-     Varsayılanlar targetpw # hedef kullanıcının parolasını ister, yani tümünü root = (tümü) # uyarı! Bunu yalnızca ' varsayılanlar targetpw ' ile birlikte kullanın!
+    ```
+     Defaults targetpw   # ask for the password of the target user i.e. root
+     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
+     ```
 13. SSH sunucusunun, önyükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun.  Bu genellikle varsayılandır.
 14. İşletim sistemi diskinde takas alanı oluşturmayın.
     
@@ -116,7 +118,7 @@ Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin
         # sudo zypper ar -f https://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
         # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
    
-    Daha sonra '`zypper lr`' komutunu çalıştırarak depoların eklendiğini doğrulayabilirsiniz. İlgili güncelleştirme depolarından birinin etkin olmaması durumunda aşağıdaki komutla etkinleştirin:
+    Daha sonra, '`zypper lr`' komutunu yeniden çalıştırarak depoların eklendiğini doğrulayabilirsiniz. İlgili güncelleştirme depolarından birinin etkin olmaması durumunda aşağıdaki komutla etkinleştirin:
    
         # sudo zypper mr -e [NUMBER OF REPOSITORY]
 4. Çekirdeği kullanılabilir en son sürüme güncelleştirin:
@@ -136,12 +138,16 @@ Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin
    Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini sağlar ve bu da hata ayıklama sorunlarını gidermek için Azure desteğine yardımcı olabilir. Ayrıca, varsa çekirdek önyükleme satırından aşağıdaki parametreleri kaldırın:
    
      libata. atapi_enabled = 0 Reserve = 0x1f0, 0x8
-7. "/Etc/sysconfig/Network/DHCP" dosyasını düzenlemeniz ve `DHCLIENT_SET_HOSTNAME` parametreyi aşağıdaki şekilde değiştirmeniz önerilir:
+7. "/Etc/sysconfig/Network/DHCP" dosyasını düzenlemeniz ve `DHCLIENT_SET_HOSTNAME` parametresini aşağıdaki gibi değiştirmeniz önerilir:
    
      DHCLIENT_SET_HOSTNAME="no"
 8. **Önemli:** "/Etc/sudoers" içinde, varsa, aşağıdaki satırları açıklama veya kaldırma:
-   
-     Varsayılanlar targetpw # hedef kullanıcının parolasını ister, yani tümünü root = (tümü) # uyarı! Bunu yalnızca ' varsayılanlar targetpw ' ile birlikte kullanın!
+     
+     ```
+     Defaults targetpw   # ask for the password of the target user i.e. root
+     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
+     ```
+
 9. SSH sunucusunun, önyükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun.  Bu genellikle varsayılandır.
 10. İşletim sistemi diskinde takas alanı oluşturmayın.
     

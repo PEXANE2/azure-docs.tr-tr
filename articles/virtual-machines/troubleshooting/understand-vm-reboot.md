@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4026de0b13a143a6bd3905e3d4fbb5071e196c21
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1bf023dc886481354306a763a0f9c56286c57e05
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384239"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749874"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM için sistemin yeniden başlatılmasını anlama
 
@@ -67,7 +67,7 @@ Kısa duraklama süresi nedeniyle, bu mekanizmadan güncelleştirme dağıtmak V
 
 ### <a name="user-initiated-reboot-or-shutdown-actions"></a>Kullanıcı tarafından başlatılan yeniden başlatma veya kapalı eylemler
 
-Azure portal, Azure PowerShell, komut satırı arabiriminden veya REST API yeniden başlatma işlemi gerçekleştirirseniz, olayı [Azure etkinlik günlüğünde](../../azure-monitor/platform/activity-logs-overview.md)bulabilirsiniz.
+Azure portal, Azure PowerShell, komut satırı arabiriminden veya REST API yeniden başlatma işlemi gerçekleştirirseniz, olayı [Azure etkinlik günlüğünde](../../azure-monitor/platform/platform-logs-overview.md)bulabilirsiniz.
 
 Eylemi VM 'nin işletim sisteminden gerçekleştirirseniz, olayı sistem günlüklerinde bulabilirsiniz.
 
@@ -97,7 +97,7 @@ Ana bilgisayar sunucusu herhangi bir nedenle yeniden başlatılamediğinde, Azur
 
 Bu konaktaki tüm VM 'Ler otomatik olarak farklı, sağlıklı bir konak sunucusuna yeniden konumlandırılır. Bu işlem genellikle 15 dakika içinde tamamlanır. Otomatik kurtarma işlemi hakkında daha fazla bilgi edinmek için bkz. [sanal makinelerin otomatik olarak kurtarılması](https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines).
 
-### <a name="unplanned-maintenance"></a>Planlanmamış bakım
+### <a name="unplanned-maintenance"></a>Plansız bakım
 
 Nadir durumlarda Azure işlem ekibinin, Azure platformunun genel durumunu sağlamak için bakım etkinlikleri gerçekleştirmesi gerekebilir. Bu davranış, VM kullanılabilirliğini etkileyebilir ve genellikle daha önce açıklandığı gibi otomatik kurtarma eylemine neden olur.  
 

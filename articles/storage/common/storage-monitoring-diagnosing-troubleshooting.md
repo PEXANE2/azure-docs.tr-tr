@@ -8,12 +8,12 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 34aa4ff6c54b34acf865af0b57c3dfa7945a637c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3d5f3ade3ef3b79ddb3996b5bf2d609b11aff8a5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212842"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748570"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -58,7 +58,7 @@ Azure depolama uygulamalarında uçtan uca sorun giderme kılavuzu için bkz. [A
   * [Ölçümler PercentNetworkError’da artış gösteriyor]
   * [İstemci HTTP 403 (Yasak) iletilerini alıyor]
   * [İstemci HTTP 404 (Bulunamadı) iletilerini alıyor]
-  * [İstemci HTTP 409 (Çakışma) iletileri alma]
+  * [İstemci HTTP 409 (Çakışma) iletilerini alıyor]
   * [Düşük PercentSuccess ölçümleri göster veya ClientOtherErrors işlem durumundaki işlemlerini analytics günlük girdilerine sahip]
   * [Kapasite ölçümlerini beklenmeyen artışı depolama kapasitesi kullanımı Göster]
   * [Sorununuzu geliştirme veya test için depolama öykünücüsünü kullanarak ortaya çıkar.]
@@ -69,11 +69,11 @@ Azure depolama uygulamalarında uçtan uca sorun giderme kılavuzu için bkz. [A
   * [Windows ile Azure dosyaları sorunlarını giderme](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [Linux ile Azure dosyaları sorunlarını giderme](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [Ekler]
-  * [Ek 1: HTTP ve HTTPS trafiğini yakalamak için Fiddler kullanma]
+  * [Ek 1: HTTP ve HTTPS trafiğini yakalamak için fiddler'ı kullanma]
   * [Ek 2: Ağ trafiğini yakalamak için Wireshark kullanma]
-  * [Ek 3: Ağ trafiğini yakalamak için Microsoft Message Analyzer 'ı kullanma]
-  * [Ek 4: Ölçümleri ve günlük verilerini görüntülemek için Excel 'i kullanma]
-  * [Ek 5: Azure DevOps için Application Insights izleme]
+  * [Ek 3: Ağ trafiğini yakalamak Microsoft Message Analyzer kullanma]
+  * [Ek 4: Ölçümleri görüntülemek ve verileri günlüğe kaydetmek için Excel kullanma]
+  * [Ek 5: Azure DevOps için Application Insights ile Izleme]
 
 ## <a name="introduction"></a>Giriş
 Bu kılavuzda, Azure depolama Istemci kitaplığı 'nda Azure Depolama Analizi, istemci tarafı günlüğe kaydetme gibi özelliklerin yanı sıra Azure depolama ile ilgili sorunları tanımlamak, tanılamak ve gidermek için diğer üçüncü taraf araçları nasıl kullanabileceğiniz gösterilmektedir.
@@ -106,7 +106,7 @@ Windows performans izleme hakkında bilgi sahibiyseniz, depolama ölçümlerini 
 
 Depolama hizmeti en iyi çabayı kullanarak ölçümleri toplar, ancak her depolama işlemini kaydedemeyebilir.
 
-Azure portal, bir depolama hesabı için kullanılabilirlik, toplam istek ve ortalama gecikme sayısı gibi ölçümleri görüntüleyebilirsiniz. Bir bildirim kuralı, kullanılabilirliği belirli bir düzeyin altına düşerse, yöneticiye uyarı verecek şekilde de ayarlanır. Bu verileri görüntülerken, araştırma için olası bir alan tablo hizmeti başarı yüzdesi% 100 ' dır (daha fazla bilgi için "[Düşük PercentSuccess ölçümleri göster veya ClientOtherErrors işlem durumundaki işlemlerini analytics günlük girdilerine sahip]").
+Azure portal, bir depolama hesabı için kullanılabilirlik, toplam istek ve ortalama gecikme sayısı gibi ölçümleri görüntüleyebilirsiniz. Bir bildirim kuralı, kullanılabilirliği belirli bir düzeyin altına düşerse, yöneticiye uyarı verecek şekilde de ayarlanır. Bu verileri görüntülerken, araştırma için olası bir alan tablo hizmeti başarı yüzdesi %100 ' dır (daha fazla bilgi için "[Düşük PercentSuccess ölçümleri göster veya ClientOtherErrors işlem durumundaki işlemlerini analytics günlük girdilerine sahip]" bölümüne bakın).
 
 Sağlıklı olduklarından ve beklendiği gibi çalıştığından emin olmak için Azure uygulamalarınızı sürekli olarak izlemeniz gerekir:
 
@@ -125,9 +125,9 @@ Bu bölümün geri kalanında, izlemeniz gereken ölçümler ve nedenleri açık
 Dünyanın dört bir yanındaki tüm Azure bölgelerindeki depolama hizmeti (ve diğer Azure Hizmetleri) durumunu görüntülemek için [Azure Portal](https://portal.azure.com) kullanabilirsiniz. İzleme, denetiminiz dışında bir sorun uygulamanız için kullandığınız bölgedeki depolama hizmetini etkileirse hemen görmenizi sağlar.
 
 [Azure Portal](https://portal.azure.com) , çeşitli Azure hizmetlerini etkileyen olayların bildirimlerini de verebilir.
-Not: Bu bilgiler, [Azure hizmet panosundaki](https://status.azure.com)geçmiş verilerle birlikte daha önce sunulmuştur.
+Note: Bu bilgiler, [Azure hizmet panosundaki](https://status.azure.com)geçmiş verilerle birlikte daha önce sunulmuştur.
 
-[Azure Portal](https://portal.azure.com) , Azure veri merkezlerinin içinden (iç izleme) sistem durumu bilgileri toplarken, Azure 'da barındırılan Web 'nize düzenli olarak erişen yapay işlemler oluşturmak için bir dış yaklaşım benimsemeye de göz önünde bulundurmanız gerekir. birden çok konumdan uygulama. Azure DevOps için [dynaTrace](https://www.dynatrace.com/en/synthetic-monitoring) ve Application Insights tarafından sunulan hizmetler bu yaklaşımın örnekleridir. Azure DevOps için Application Insights hakkında daha fazla bilgi için bkz. ek "[ek 5: Azure DevOps](#appendix-5)için Application Insights ile izleme. "
+[Azure Portal](https://portal.azure.com) , Azure veri merkezlerinin içinden (iç izleme) sistem durumu bilgileri toplarken, Azure 'da barındırılan Web uygulamanıza düzenli olarak birden çok konumdan erişen yapay işlemler oluşturmak için bir dış yaklaşımı benimsemeye de göz önünde bulundurmanız gerekir. Azure DevOps için [dynaTrace](https://www.dynatrace.com/en/synthetic-monitoring) ve Application Insights tarafından sunulan hizmetler bu yaklaşımın örnekleridir. Azure DevOps için Application Insights hakkında daha fazla bilgi için bkz. ek "[ek 5: Azure DevOps için Application Insights Ile izleme](#appendix-5)."
 
 ### <a name="monitoring-capacity"></a>İzleme kapasitesi
 Depolama ölçümleri yalnızca blob hizmeti için kapasite ölçümlerini depolar çünkü Bloblar genellikle depolanan verilerin en büyük oranını tutar (yazma sırasında, tablolarınızın ve kuyrukların kapasitesini izlemek için depolama ölçümlerini kullanmak mümkün değildir). Blob hizmeti için izlemeyi etkinleştirdiyseniz, bu verileri **$MetricsCapacityBlob** tablosunda bulabilirsiniz. Depolama ölçümleri, bu verileri günde bir kez kaydeder ve satırın kullanıcı verileriyle (değer **verileri**) veya analiz verileriyle (değer **Analizi**) ilişkili bir varlık Içerip Içermediğini anlamak için **rowkey** değerini kullanabilirsiniz. Depolanan her varlık, depolama hesabında kullanılan depolama alanı (bayt cinsinden ölçülen**Kapasite** ) ve geçerli kapsayıcı sayısı (**containercount**) ve Blobların (**objectCount**) hakkında bilgiler içerir. **$MetricsCapacityBlob** tablosunda depolanan kapasite ölçümleri hakkında daha fazla bilgi için, bkz. [depolama Analizi ölçüm tablosu şeması](https://msdn.microsoft.com/library/azure/hh343264.aspx).
@@ -140,9 +140,9 @@ Depolama ölçümleri yalnızca blob hizmeti için kapasite ölçümlerini depol
 Blob 'lar gibi çeşitli depolama nesnelerinin boyutunu tahmin etmeye yönelik yardım için bkz. [Azure depolama faturalandırmasını anlama – bant genişliği, işlemler ve kapasite](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
 
 ### <a name="monitoring-availability"></a>Kullanılabilirliği izleme
-Saatlik veya dakikalık ölçüm tablolarındaki **kullanılabilirlik** sütunundaki değeri izleyerek Depolama hesabınızdaki depolama hizmetlerinin kullanılabilirliğini izlemeniz gerekir; **$MetricsHourPrimaryTransactionsBlob**, **$ MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue** , **$MetricsCapacityBlob**. **Kullanılabilirlik** sütunu, hizmetin veya satır tarafından temsıl edilen API işleminin kullanılabilirliğini gösteren bir yüzde değeri içerir (satır, satırda hizmetin bir bütün olarak veya belırlı bir API işlemi için ölçümleri içerip **içermediğini gösterir)** .
+Saatlik veya dakikalık ölçüm tablolarındaki **kullanılabilirlik** sütunundaki değeri izleyerek Depolama hesabınızdaki depolama hizmetlerinin kullanılabilirliğini izlemeniz gerekir — **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$ MetricsCapacityBlob**. **Kullanılabilirlik** sütunu, hizmetin veya satır tarafından temsıl edilen API işleminin kullanılabilirliğini gösteren bir yüzde değeri Içerir ( **rowkey** , satırın bir bütün olarak veya belirli bir API işlemi olarak hizmet için ölçümler içerip içermediğini gösterir).
 
-% 100 ' den küçük bir değer, bazı depolama isteklerinin başarısız olduğunu gösterir. Ölçüm verilerinde, **Servertimeouterror**gibi farklı hata türleriyle isteklerin sayısını gösteren diğer sütunları inceleyerek neden başarısız olduğunu görebilirsiniz. Hizmetin bölümleri daha iyi yük dengeleme isteğine taşıdığı sırada geçici sunucu zaman aşımları gibi nedenlerle **kullanılabilirliği** geçici 100 olarak görmeniz beklenir; istemci uygulamanızdaki yeniden deneme mantığı, bu tür aralıklı koşulları işlemelidir. [Günlüğe kaydedilen işlemler ve durum iletileri depolama Analizi](https://msdn.microsoft.com/library/azure/hh343260.aspx) makale, depolama ölçümlerinin **kullanılabilirlik** hesaplamasına dahil edilen işlem türlerini listeler.
+%100 ' den küçük bir değer, bazı depolama isteklerinin başarısız olduğunu gösterir. Ölçüm verilerinde, **Servertimeouterror**gibi farklı hata türleriyle isteklerin sayısını gösteren diğer sütunları inceleyerek neden başarısız olduğunu görebilirsiniz. Hizmetin bölümleri daha iyi yük dengeleme isteğine taşıdığı sırada geçici sunucu zaman aşımları gibi nedenlerle **kullanılabilirliği** geçici 100 olarak görmeniz beklenir; istemci uygulamanızdaki yeniden deneme mantığı, bu tür aralıklı koşulları işlemelidir. [Günlüğe kaydedilen işlemler ve durum iletileri depolama Analizi](https://msdn.microsoft.com/library/azure/hh343260.aspx) makale, depolama ölçümlerinin **kullanılabilirlik** hesaplamasına dahil edilen işlem türlerini listeler.
 
 [Azure Portal](https://portal.azure.com), bir hizmetin **kullanılabilirliği** belirttiğiniz eşiğin altına düşerse sizi bilgilendirmek için uyarı kuralları ekleyebilirsiniz.
 
@@ -151,7 +151,7 @@ Bu kılavuzun "[Sorun giderme rehberi]" bölümünde kullanılabilirliğiyle ilg
 ### <a name="monitoring-performance"></a>Performansı izleme
 Depolama hizmetlerinin performansını izlemek için, saatlik ve dakikalık ölçüm tablolarından aşağıdaki ölçümleri kullanabilirsiniz.
 
-* **AverageE2ELatency** ve **averageserverlatency** sütunlarındaki değerler, depolama hizmetinin veya API işlem türünün işleme isteklerini geçen ortalama süreyi gösterir. **AverageE2ELatency** , isteği okumak için geçen süreyi içeren uçtan uca gecikme süresi ve isteği işlemek için geçen zamana ek olarak yanıtı gönderme (Bu nedenle, istek depoya ulaştığında ağ gecikme süresi de dahil) bir ölçüdür. hizmeti); **Averageserverlatency** yalnızca işlem zamanının bir ölçüsüdür ve bu nedenle istemciyle iletişim ile ilgili tüm ağ gecikmesini dışlar. Bu iki değer arasındaki önemli bir fark neden olabileceğini öğrenmek için bu kılavuzun devamındaki "[Ölçümler yüksek AverageE2ELatency ve düşük AverageServerLatency gösteriyor]" bölümüne bakın.
+* **AverageE2ELatency** ve **averageserverlatency** sütunlarındaki değerler, depolama hizmetinin veya API işlem türünün işleme isteklerini geçen ortalama süreyi gösterir. **AverageE2ELatency** , isteği okumak için geçen süreyi ve isteği işlemek için geçen süreyi içeren uçtan uca gecikme süresinin bir ölçüsüdür (Bu nedenle, istek depolama hizmetine ulaştığında ağ gecikmesini içerir); **Averageserverlatency** yalnızca işlem zamanının bir ölçüsüdür ve bu nedenle istemciyle iletişim ile ilgili tüm ağ gecikmesini dışlar. Bu iki değer arasındaki önemli bir fark neden olabileceğini öğrenmek için bu kılavuzun devamındaki "[Ölçümler yüksek AverageE2ELatency ve düşük AverageServerLatency gösteriyor]" bölümüne bakın.
 * **Totalingress** ve **TotalEgress** sütunlarındaki değerler, depolama HIZMETINIZE veya belirli bir API işlem türüne gelen ve çıkan toplam veri miktarını bayt cinsinden gösterir.
 * **Totalrequests** sütunundaki değerler, API işleminin depolama hizmetinin aldığı toplam istek sayısını gösterir. **Totalrequests** , depolama hizmetinin aldığı isteklerin toplam sayısıdır.
 
@@ -222,9 +222,9 @@ Depolama günlüğü, Azure Depolama hesabınızdaki depolama isteklerinin sunuc
 ### <a name="using-network-logging-tools"></a>Ağ günlüğü araçlarını kullanma
 İstemci ve sunucunun değiş tokuş olduğu veriler ve temel alınan ağ koşulları hakkında ayrıntılı bilgi sağlamak için istemci ile sunucu arasındaki trafiği yakalayabilirsiniz. Faydalı ağ günlüğü araçları şunları içerir:
 
-* [Fiddler](https://www.telerik.com/fiddler) , http ve https istek ve yanıt iletilerinin üst bilgilerini ve yük verilerini incelemenize olanak tanıyan, ücretsiz bir Web hata ayıklama proxy 'si. Daha fazla bilgi için bkz [. ek 1: HTTP ve HTTPS trafiğini](#appendix-1)yakalamak Için Fiddler 'ı kullanma.
-* [Microsoft Ağ İzleyicisi (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) ve [Wireshark](https://www.wireshark.org/) , çok çeşitli ağ protokolleri için ayrıntılı paket bilgilerini görüntülemenize olanak tanıyan ücretsiz ağ protokol çözümleyicileri vardır. Wireshark hakkında daha fazla bilgi için bkz.["ek 2: Ağ trafiğini](#appendix-2)yakalamak için Wireshark kullanma ".
-* Microsoft Message Analyzer, Microsoft 'un Netmon 'u yerine geçen ve ağ paketi verilerinin yakalanmasının yanı sıra diğer araçlardan yakalanan günlük verilerini görüntülemenize ve çözümlemenize yardımcı olan bir araçtır. Daha fazla bilgi için bkz[. ek 3: Ağ trafiğini](#appendix-3)yakalamak Için Microsoft Message Analyzer 'ı kullanma ".
+* [Fiddler](https://www.telerik.com/fiddler) , http ve https istek ve yanıt iletilerinin üst bilgilerini ve yük verilerini incelemenize olanak tanıyan, ücretsiz bir Web hata ayıklama proxy 'si. Daha fazla bilgi için bkz. [ek 1: http ve HTTPS trafiğini yakalamak Için Fiddler kullanma](#appendix-1).
+* [Microsoft Ağ İzleyicisi (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) ve [Wireshark](https://www.wireshark.org/) , çok çeşitli ağ protokolleri için ayrıntılı paket bilgilerini görüntülemenize olanak tanıyan ücretsiz ağ protokol çözümleyicileri vardır. Wireshark hakkında daha fazla bilgi için bkz. "[ek 2: ağ trafiğini yakalamak Için Wireshark kullanma](#appendix-2)".
+* Microsoft Message Analyzer, Microsoft 'un Netmon 'u yerine geçen ve ağ paketi verilerinin yakalanmasının yanı sıra diğer araçlardan yakalanan günlük verilerini görüntülemenize ve çözümlemenize yardımcı olan bir araçtır. Daha fazla bilgi için bkz. "[ek 3: ağ trafiğini yakalamak Için Microsoft Message Analyzer 'ı kullanma](#appendix-3)".
 * İstemci Makinenizin ağ üzerinden Azure depolama hizmetine bağlanıp bağlanamamasını denetlemek için temel bir bağlantı testi gerçekleştirmek istiyorsanız, bu işlemi istemcisinde standart **ping** aracını kullanarak yapamazsınız. Ancak, bağlantı denetlemek için [ **tcpıng** aracını](https://www.elifulkerson.com/projects/tcping.php) kullanabilirsiniz.
 
 Çoğu durumda, depolama günlüğü ve depolama Istemci kitaplığı 'ndaki günlük verileri bir sorunu tanılamak için yeterli olacaktır, ancak bazı senaryolarda bu ağ günlüğü araçlarının sağlayabilecek daha ayrıntılı bilgilere ihtiyacınız olabilir. Örneğin, HTTP ve HTTPS iletilerini görüntülemek için Fiddler kullanılması, depolama hizmetlerinden ve istemci uygulamasının depolama işlemlerini nasıl yeniden deneyeceğini incelemenize olanak tanıyan üst bilgi ve yük verilerini görüntülemenize olanak sağlar. Wireshark gibi protokol çözümleyicileri, paket düzeyinde çalışır ve kayıp paketleri ve bağlantı sorunlarını gidermenize olanak sağlayan TCP verilerini görüntülemenize olanak sağlar. İleti çözümleyici, hem HTTP hem de TCP katmanlarında çalışabilir.
@@ -323,7 +323,7 @@ Sorununuz, depolama hizmetlerinden birinin kullanılabilirliğiyle bağlantılı
 
 * [İstemci HTTP 403 (Yasak) iletilerini alıyor]
 * [İstemci HTTP 404 (Bulunamadı) iletilerini alıyor]
-* [İstemci HTTP 409 (Çakışma) iletileri alma]
+* [İstemci HTTP 409 (Çakışma) iletilerini alıyor]
 
 ---
 [Düşük PercentSuccess ölçümleri göster veya ClientOtherErrors işlem durumundaki işlemlerini analytics günlük girdilerine sahip]
@@ -374,9 +374,9 @@ queueServicePoint.UseNagleAlgorithm = false;
 #### <a name="investigating-network-latency-issues"></a>Ağ gecikme sorunlarını araştırma
 Genellikle, ağ nedeniyle oluşan yüksek uçtan uca gecikme süresi geçici koşullardır. Wireshark veya Microsoft Message Analyzer gibi araçları kullanarak, bırakılan paketler gibi geçici ve kalıcı ağ sorunlarını araştırabilirsiniz.
 
-Ağ sorunlarını gidermek için Wireshark kullanma hakkında daha fazla bilgi için, bkz[Ek 2: Ağ trafiğini yakalamak için Wireshark kullanma]yakalamak için Wireshark kullanma. "
+Ağ sorunlarını gidermek için Wireshark kullanma hakkında daha fazla bilgi için bkz. "[ek 2: ağ trafiğini yakalamak Için Wireshark kullanma]."
 
-Ağ sorunlarını gidermek üzere Microsoft ileti Çözümleyicisi 'ni kullanma hakkında daha fazla bilgi için,[Ek 3: Ağ trafiğini yakalamak için Microsoft Message Analyzer 'ı kullanma]yakalamak Için Microsoft Message Analyzer 'ı kullanma. "
+Ağ sorunlarını gidermek üzere Microsoft Ileti Çözümleyicisi 'ni kullanma hakkında daha fazla bilgi için, bkz. "[Ek 3: Ağ trafiğini yakalamak Microsoft Message Analyzer kullanma]".
 
 ### <a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>Ölçümler düşük AverageE2ELatency ve düşük AverageServerLatency gösterir, ancak istemci yüksek gecikme yaşar
 Bu senaryoda, en olası neden depolama hizmetine ulaşan depolama isteklerindeki bir gecikme olur. İstemciden gelen isteklerin neden blob hizmetine bunu yapmadığına ilişkin araştırma yapmanız gerekir.
@@ -391,9 +391,9 @@ Ayrıca, istemcinin birden çok yeniden deneme gerçekleştirip gerçekleştirme
 
 İstemcide herhangi bir sorun yoksa, paket kaybı gibi olası ağ sorunlarını araştırmanız gerekir. Ağ sorunlarını araştırmak için Wireshark veya Microsoft Message Analyzer gibi araçları kullanabilirsiniz.
 
-Ağ sorunlarını gidermek için Wireshark kullanma hakkında daha fazla bilgi için, bkz[Ek 2: Ağ trafiğini yakalamak için Wireshark kullanma]yakalamak için Wireshark kullanma. "
+Ağ sorunlarını gidermek için Wireshark kullanma hakkında daha fazla bilgi için bkz. "[ek 2: ağ trafiğini yakalamak Için Wireshark kullanma]."
 
-Ağ sorunlarını gidermek üzere Microsoft ileti Çözümleyicisi 'ni kullanma hakkında daha fazla bilgi için,[Ek 3: Ağ trafiğini yakalamak için Microsoft Message Analyzer 'ı kullanma]yakalamak Için Microsoft Message Analyzer 'ı kullanma. "
+Ağ sorunlarını gidermek üzere Microsoft Ileti Çözümleyicisi 'ni kullanma hakkında daha fazla bilgi için, bkz. "[Ek 3: Ağ trafiğini yakalamak Microsoft Message Analyzer kullanma]".
 
 ### <a name="metrics-show-high-AverageServerLatency"></a>Ölçümler yüksek AverageServerLatency gösteriyor
 Blob indirme istekleri için yüksek **Averageserverlatency** durumunda, aynı blob (veya blob kümesi) için yinelenen istekler olup olmadığını görmek Için depolama günlüğü günlüklerini kullanmanız gerekir. Blob karşıya yükleme istekleri için, istemcinin kullandığı blok boyutunu araştırmanız gerekir (örneğin, boyut olarak 64 K 'den az blok, okumalar 64 K öbekten daha az yer alıyorsa) ve birden çok istemci blokları paragraf içinde aynı blob 'a yüklüyorsanız llel. Ayrıca, saniye başına ölçeklenebilirlik hedeflerinin aşılmaya neden olan istek sayısı için dakika başına ölçümleri denetlemeniz gerekir: Ayrıca bkz. "[Ölçümler PercentTimeoutError’da artış gösteriyor]."
@@ -403,7 +403,7 @@ Aynı blob veya blob kümesi için yinelenen istekler olduğunda blob indirme is
 Yüksek **Averageserverlatency** değerleri, tarama işlemlerine neden olan veya ekleme/Prepend Anti-model ' i izleyen kötü tasarlanmış tablo veya sorguların bir belirtisi de olabilir. Daha fazla bilgi için bkz. "[Ölçümler PercentThrottlingError’da artış gösteriyor]".
 
 > [!NOTE]
-> Kapsamlı bir denetim listesi performans denetim listesi bulabilirsiniz: [Performans ve ölçeklenebilirlik denetim listesini Microsoft Azure depolama](storage-performance-checklist.md).
+> Kapsamlı bir denetim listesi performans denetim listesi bulabilirsiniz: [Microsoft Azure depolama performans ve ölçeklenebilirlik denetim listesi](storage-performance-checklist.md).
 >
 >
 
@@ -417,7 +417,7 @@ Bir uygulamanın bir sıraya ileti eklemesi ve kuyruktan okunabilmesi için kull
 * Beklenenden daha uzun bir süre boyunca beklenen **E2ELatency** ve **serverlatency** değerlerinden daha yüksek bir sıra işlemi için depolama günlüğü günlüklerini inceleyin.
 
 ### <a name="metrics-show-an-increase-in-PercentThrottlingError"></a>Ölçümler Percentkısıtlar Lingerror 'da artış gösteriyor
-Bir depolama hizmetinin ölçeklenebilirlik hedeflerini aşarsanız azaltma hataları oluşur. Depolama hizmeti, tek bir istemcinin veya kiracının hizmeti diğer harcamanıza karşı kullanmazlarını güvence altına almak için kısıtlar. Daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](storage-scalability-targets.md) , depolama hesapları için ölçeklenebilirlik hedefleri ve depolama hesapları içindeki bölümlerin performans hedefleri hakkında ayrıntılar için.
+Bir depolama hizmetinin ölçeklenebilirlik hedeflerini aşarsanız azaltma hataları oluşur. Depolama hizmeti, tek bir istemcinin veya kiracının hizmeti diğer harcamanıza karşı kullanmazlarını güvence altına almak için kısıtlar. Daha fazla bilgi için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](scalability-targets-standard-account.md) , depolama hesapları için ölçeklenebilirlik hedefleri ve depolama hesapları içindeki bölümlerin performans hedefleri hakkında ayrıntılar için.
 
 **Percentkısıtlar Lingerror** ölçümü, azaltma hatasıyla başarısız olan isteklerin yüzdesinde bir artış gösterip, iki senaryodan birini araştırmanız gerekir:
 
@@ -435,7 +435,7 @@ Uygulama için yüksek etkinlik dönemleriyle aynı olan **Percentkısıtlar Lin
 >
 
 #### <a name="permanent-increase-in-PercentThrottlingError"></a>Percentkısıtlar Lingerror hatası içinde kalıcı artış
-İşlem birimlerinizde kalıcı bir artış takip eden **Percentkısıtlanror** için tutarlı bir yüksek değer görüyorsanız veya uygulamanızda ilk yük testlerini gerçekleştirirken, uygulamanızın nasıl olduğunu değerlendirmeniz gerekir depolama bölümlerinin kullanılması ve bir depolama hesabı için ölçeklenebilirlik hedeflerine yaklaşıp yaklaşmayacağı. Örneğin, bir kuyrukta (tek bir bölüm olarak sayılır) azaltma hataları görüyorsanız, işlemleri birden çok bölüme yaymak için ek kuyruklar kullanmayı göz önünde bulundurmanız gerekir. Bir tabloda azaltma hatalarını görüyorsanız, daha geniş bir bölüm anahtarı değerleri kullanarak işlemlerinizi birden çok bölüme yaymak için farklı bölümleme düzeni kullanmayı göz önünde bulundurmanız gerekir. Bu sorunun yaygın bir nedeni, bölüm anahtarı olarak tarihi seçtiğiniz ve ardından belirli bir gündeki tüm verilerin tek bir bölüme yazıldığı bir açık/ön ek önleme modelidir. Bu, yükleme altında bu, bir yazma sorunu oluşmasına neden olabilir. Farklı bir bölümlendirme tasarımını düşünün veya blob depolamanın kullanılması daha iyi bir çözüm olup olmadığını değerlendirin. Ayrıca, azaltmanın, trafikte ani artışlar nedeniyle oluşup oluşmadığını denetleyin ve isteklerin örüntüklerini yumuştırabilmenin yollarını araştırın.
+İşlem birimlerinizde kalıcı bir artışı takip eden, **Percentkısıtıngerror** için tutarlı bir yüksek değer görüyorsanız veya uygulamanızda ilk yük testlerini gerçekleştirirken, uygulamanızın depolama bölümlerini nasıl kullandığını ve bir depolama hesabı için ölçeklenebilirlik hedeflerine yaklaşıp yaklaşmadığını değerlendirmeniz gerekir. Örneğin, bir kuyrukta (tek bir bölüm olarak sayılır) azaltma hataları görüyorsanız, işlemleri birden çok bölüme yaymak için ek kuyruklar kullanmayı göz önünde bulundurmanız gerekir. Bir tabloda azaltma hatalarını görüyorsanız, daha geniş bir bölüm anahtarı değerleri kullanarak işlemlerinizi birden çok bölüme yaymak için farklı bölümleme düzeni kullanmayı göz önünde bulundurmanız gerekir. Bu sorunun yaygın bir nedeni, bölüm anahtarı olarak tarihi seçtiğiniz ve ardından belirli bir gündeki tüm verilerin tek bir bölüme yazıldığı bir açık/ön ek önleme modelidir. Bu, yükleme altında bu, bir yazma sorunu oluşmasına neden olabilir. Farklı bir bölümlendirme tasarımını düşünün veya blob depolamanın kullanılması daha iyi bir çözüm olup olmadığını değerlendirin. Ayrıca, azaltmanın, trafikte ani artışlar nedeniyle oluşup oluşmadığını denetleyin ve isteklerin örüntüklerini yumuştırabilmenin yollarını araştırın.
 
 İşlemlerinizi birden çok bölüme dağıtırsanız, depolama hesabı için ayarlanan ölçeklenebilirlik limitlerinin farkında olmanız gerekir. Örneğin, her biri saniyede en fazla 2.000 KB ileti kullanan on sıra kullandıysanız, depolama hesabı için saniyede 20.000 ileti genel sınırında olursunuz. Saniyede 20.000 ' den fazla varlık işlemek istiyorsanız, birden çok depolama hesabı kullanmayı göz önünde bulundurmanız gerekir. Ayrıca, isteklerinizin ve varlıklarınızın boyutunun, depolama hizmeti istemcilerinizi azaltarak bir etkisi olduğunu da göz önünde bulundurmanız gerekir: daha büyük istekleriniz ve varlıklarınız varsa, daha erken kısıtlanıyor olabilirsiniz.
 
@@ -454,36 +454,36 @@ Verimsiz sorgu tasarımı, tablo bölümlerinin ölçeklenebilirlik sınırları
 >
 >
 
-**Percenttimeouterror** ölçümü aşağıdaki ölçümlerin bir toplamadır: **Clienttimeouterror**, **anonymousclienttimeouterror**, **sasclienttimeouterror**, **servertimeouterror**, **anonymousservertimeouterror**ve **sasservertimeouterror**.
+**Percenttimeouterror** ölçümü, şu ölçümlerin bir toplamadır: **clienttimeouterror**, **anonymousclienttimeouterror**, **sasclienttimeouterror**, **Servertimeouterror**, **anonymousservertimeouterror**ve **sasservertimeouterror**.
 
 Sunucu zaman aşımları sunucuda bir hata nedeniyle oluşur. Sunucu üzerindeki bir işlem istemci tarafından belirtilen zaman aşımını aştığından istemci zaman aşımları meydana gelir; Örneğin, depolama Istemci kitaplığını kullanan bir istemci, **Queuerequestoptions** sınıfının **servertimeout** özelliğini kullanarak bir işlem için zaman aşımı ayarlayabilir.
 
 Sunucu zaman aşımları, daha fazla araştırma gerektiren depolama hizmetiyle ilgili bir sorun olduğunu gösterir. Hizmet için ölçeklenebilirlik limitlerini vurarak, bu soruna neden olabilecek trafikte herhangi bir ani artışlar belirlemek için ölçümleri kullanabilirsiniz. Sorun kesintili ise, hizmette yük dengeleme etkinliği olabilir. Sorun kalıcıdır ve uygulamanız hizmetin ölçeklenebilirlik sınırlarına ulaşmasından kaynaklanmadığında, bir destek sorunu oluşturmalısınız. İstemci zaman aşımları için, zaman aşımının istemcide uygun bir değere ayarlanmış olup olmadığını ve istemcide ayarlanan zaman aşımı değerini değiştirip bir depolama hizmetindeki işlemlerin performansını nasıl geliştirebileceğinizi araştırın (örneğin, en iyi duruma getirme tablonuz, iletilerinizin boyutunu sorgular veya azaltır.
 
 ### <a name="metrics-show-an-increase-in-PercentNetworkError"></a>Ölçümler PercentNetworkError 'da artış gösteriyor
-Ölçümleriniz, depolama hizmetlerinizin biri için **Percentnetworkerror** 'da artış gösterir. **Percentnetworkerror** ölçümü, aşağıdaki ölçümlerin bir toplamadır: **Networkerror**, **Anonymousnetworkerror**ve **sasnetworkerror**. Bu durum, istemci bir depolama isteği yaptığında depolama hizmeti bir ağ hatası algıladığında meydana gelir.
+Ölçümleriniz, depolama hizmetlerinizin biri için **Percentnetworkerror** 'da artış gösterir. **Percentnetworkerror** ölçümü, şu ölçümlerin bir toplamadır: **networkerror**, **anonymousnetworkerror**ve **sasnetworkerror**. Bu durum, istemci bir depolama isteği yaptığında depolama hizmeti bir ağ hatası algıladığında meydana gelir.
 
 Bu hatanın en yaygın nedeni, depolama hizmetindeki zaman aşımı süresi dolmadan önce bir istemci bağlantısının kesilmesi olur. İstemcinin depolama hizmetinden ne zaman ve ne zaman bağlantısını kesmediğini anlamak için, istemcinizdeki kodu araştırın. Ayrıca, istemciden gelen ağ bağlantısı sorunlarını araştırmak için Wireshark, Microsoft Ileti Çözümleyicisi veya Tcping ' i de kullanabilirsiniz. Bu araçlar, [Ekler]' de açıklanmıştır.
 
 ### <a name="the-client-is-receiving-403-messages"></a>İstemci HTTP 403 (yasak) iletileri alıyor
 İstemci uygulamanızda HTTP 403 (Yasak) hataları oluşuyorsa büyük ihtimalle istemci depolama isteği gönderirken süresi dolmuş bir Paylaşılan Erişim İmzası (SAS) kullandığı içindir. (Saat sapması, geçersiz anahtarlar ve boş üst bilgiler gibi başka olası nedenler de vardır.) Sorun süresi dolmuş bir SAS anahtarından kaynaklanıyorsa sunucu tarafı Depolama Günlük Kaydı günlük verilerinde herhangi bir giriş görmezsiniz. Aşağıdaki tabloda, oluşan bu sorunu gösteren depolama Istemci kitaplığı tarafından oluşturulan istemci tarafı günlüğünden bir örnek gösterilmektedir:
 
-| Source | Verbosity | Verbosity | İstemci istek kimliği | İşlem metni |
+| Kaynak | Verbosity | Verbosity | İstemci istek kimliği | İşlem metni |
 | --- | --- | --- | --- | --- |
-| Microsoft. Azure. Storage |Information |3 |85d077ab-… |Yalnızca konum modu Primarylocation 'a göre konum birincil olan işlem başlatılıyor. |
-| Microsoft. Azure. Storage |Information |3 |85d077ab-... |İçin zaman uyumlu istek başlatılıyor<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
-| Microsoft. Azure. Storage |Information |3 |85d077ab-... |Yanıt bekleniyor. |
-| Microsoft. Azure. Storage |Uyarı |2 |85d077ab-... |Yanıt beklenirken özel durum oluşturuldu: Uzak sunucu hata döndürdü: (403) Yasak. |
-| Microsoft. Azure. Storage |Information |3 |85d077ab-... |Yanıt alındı. Durum kodu = 403, Istek KIMLIĞI = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 =, ETag =. |
-| Microsoft. Azure. Storage |Uyarı |2 |85d077ab-... |İşlem sırasında özel durum oluştu: Uzak sunucu hata döndürdü: (403) yasak.. |
-| Microsoft. Azure. Storage |Information |3 |85d077ab-... |İşlemin yeniden denenip denenmeyeceğini denetleme. Yeniden deneme sayısı = 0, HTTP durum kodu = 403, özel durum = uzak sunucu bir hata döndürdü: (403) yasak.. |
-| Microsoft. Azure. Storage |Information |3 |85d077ab-... |Sonraki konum, konum moduna bağlı olarak birincil olarak ayarlanmıştır. |
-| Microsoft. Azure. Storage |Hata |1\. |85d077ab-... |Yeniden deneme ilkesi, yeniden deneme için izin vermedi. Uzak sunucu ile başarısız olma bir hata döndürdü: (403) Yasak. |
+| Microsoft. Azure. Storage |Bilgi |3 |85d077ab-… |Yalnızca konum modu Primarylocation 'a göre konum birincil olan işlem başlatılıyor. |
+| Microsoft. Azure. Storage |Bilgi |3 |85d077ab-... |<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> için zaman uyumlu istek başlatılıyor |
+| Microsoft. Azure. Storage |Bilgi |3 |85d077ab-... |Yanıt bekleniyor. |
+| Microsoft. Azure. Storage |Uyarı |2 |85d077ab-... |Yanıt beklenirken özel durum oluştu: uzak sunucu bir hata döndürdü: (403) yasak. |
+| Microsoft. Azure. Storage |Bilgi |3 |85d077ab-... |Yanıt alındı. Durum kodu = 403, Istek KIMLIĞI = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 =, ETag =. |
+| Microsoft. Azure. Storage |Uyarı |2 |85d077ab-... |İşlem sırasında özel durum oluştu: uzak sunucu bir hata döndürdü: (403) yasak.. |
+| Microsoft. Azure. Storage |Bilgi |3 |85d077ab-... |İşlemin yeniden denenip denenmeyeceğini denetleme. Yeniden deneme sayısı = 0, HTTP durum kodu = 403, özel durum = uzak sunucu bir hata döndürdü: (403) yasak.. |
+| Microsoft. Azure. Storage |Bilgi |3 |85d077ab-... |Sonraki konum, konum moduna bağlı olarak birincil olarak ayarlanmıştır. |
+| Microsoft. Azure. Storage |Hata |1 |85d077ab-... |Yeniden deneme ilkesi, yeniden deneme için izin vermedi. Uzak sunucu ile başarısız olma bir hata döndürdü: (403) yasak. |
 
 Bu senaryoda, istemci belirteci sunucuya göndermeden önce SAS belirtecinin ne kadar süre doldığına ilişkin araştırma yapmalısınız:
 
 * Genellikle bir istemcinin hemen kullanması için SAS oluştururken başlangıç zamanı ayarlamamalısınız. Geçerli zamanı kullanarak SAS belirtecini oluşturan konak ile depolama hizmeti arasında küçük saat farklılıkları varsa depolama hizmeti henüz geçerli olmayan bir SAS alabilir.
-* Bir SAS belirtecinin sona erme süresini çık kısa ayarlamayın. Ayrıca, SAS belirtecini oluşturan konakla depolama hizmeti arasındaki küçük saat farklılıkları, bir SAS belirtecinin süresinin beklenenden erken dolmuş gibi görünmesine de neden olabilir.
+* Bir SAS belirtecinin sona erme süresini çok kısa ayarlamayın. Ayrıca, SAS belirtecini oluşturan konakla depolama hizmeti arasındaki küçük saat farklılıkları, bir SAS belirtecinin süresinin beklenenden erken dolmuş gibi görünmesine de neden olabilir.
 * SAS anahtarındaki sürüm parametresi (örneğin, **ZF = 2015-04-05**), kullanmakta olduğunuz depolama istemci kitaplığının sürümüyle eşleşiyor mu? Her zaman [depolama Istemci kitaplığı](https://www.nuget.org/packages/WindowsAzure.Storage/)'nın en son sürümünü kullanmanızı öneririz.
 * Depolama erişim anahtarlarınızı yeniden oluşturursanız mevcut SAS belirteçleri geçerliliğini kaybedebilir. İstemci uygulamalarının önbelleğe alması için sona erme süresi uzun olan SAS belirteçleri oluşturursanız bu sorunla karşılaşabilirsiniz.
 
@@ -516,44 +516,44 @@ Günlük girişleri:
 
 | İstek Kimliği | İşlem metni |
 | --- | --- |
-| 07b26a5d-... |İçin https://domemaildist.blob.core.windows.net/azuremmblobcontainer zaman uyumlu istek başlatılıyor. |
+| 07b26a5d-... |https://domemaildist.blob.core.windows.net/azuremmblobcontainer için zaman uyumlu istek başlatılıyor. |
 | 07b26a5d-... |StringToSign = HEAD............ x-MS-Client-Request-id: 07b26a5d-.... x-MS-Date: Tue, 03 Haz 2014 10:33:11 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. ResType: Container. |
 | 07b26a5d-... |Yanıt bekleniyor. |
-| 07b26a5d-... |Yanıt alındı. Durum kodu = 200, Istek KIMLIĞI = eeead849-... Content-MD5 =, ETag = &quot;0x8d14d2dc63d059b&quot;. |
+| 07b26a5d-... |Yanıt alındı. Durum kodu = 200, Istek KIMLIĞI = eeead849-... Content-MD5 =, ETag = &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |Yanıt üst bilgileri başarıyla işlendi ve işlemin geri kalanı ile devam ediliyor. |
 | 07b26a5d-... |Yanıt gövdesi indiriliyor. |
 | 07b26a5d-... |İşlem başarıyla tamamlandı. |
-| 07b26a5d-... |İçin https://domemaildist.blob.core.windows.net/azuremmblobcontainer zaman uyumlu istek başlatılıyor. |
+| 07b26a5d-... |https://domemaildist.blob.core.windows.net/azuremmblobcontainer için zaman uyumlu istek başlatılıyor. |
 | 07b26a5d-... |StringToSign = SIL............ x-MS-Client-Request-id: 07b26a5d-.... x-MS-Date: Tue, 03 Haz 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. ResType: Container. |
 | 07b26a5d-... |Yanıt bekleniyor. |
 | 07b26a5d-... |Yanıt alındı. Durum kodu = 202, Istek KIMLIĞI = 6ab2a4cf-..., Content-MD5 =, ETag =. |
 | 07b26a5d-... |Yanıt üst bilgileri başarıyla işlendi ve işlemin geri kalanı ile devam ediliyor. |
 | 07b26a5d-... |Yanıt gövdesi indiriliyor. |
 | 07b26a5d-... |İşlem başarıyla tamamlandı. |
-| e2d06d78-... |İçin https://domemaildist.blob.core.windows.net/azuremmblobcontainer zaman uyumsuz istek başlatılıyor.</td> |
+| e2d06d78-... |https://domemaildist.blob.core.windows.net/azuremmblobcontainer için zaman uyumsuz istek başlatılıyor.</td> |
 | e2d06d78-... |StringToSign = HEAD............ x-MS-Client-Request-id: e2d06d78-.... x-MS-Date: Tue, 03 Haz 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. ResType: Container. |
 | e2d06d78-... |Yanıt bekleniyor. |
-| de8b1c3c-... |İçin https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt zaman uyumlu istek başlatılıyor. |
+| de8b1c3c-... |https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt için zaman uyumlu istek başlatılıyor. |
 | de8b1c3c-... |StringToSign = PUT... 64. qCmF + Tsqlphq/YYK50mP9ZQ = =........ x-MS-blob-türü: BlockBlob. x-MS-Client-Request-ID: de8b1c3c-.... x-MS-Date: Tue, 03 Haz 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated. txt. |
 | de8b1c3c-... |İstek verileri yazma hazırlığı yapılıyor. |
-| e2d06d78-... |Yanıt beklenirken özel durum oluşturuldu: Uzak sunucu hata döndürdü: (404) bulunamadı... |
+| e2d06d78-... |Yanıt beklenirken özel durum oluştu: uzak sunucu bir hata döndürdü: (404) bulunamadı.. |
 | e2d06d78-... |Yanıt alındı. Durum kodu = 404, Istek KIMLIĞI = 353ae3bc-..., Content-MD5 =, ETag =. |
 | e2d06d78-... |Yanıt üst bilgileri başarıyla işlendi ve işlemin geri kalanı ile devam ediliyor. |
 | e2d06d78-... |Yanıt gövdesi indiriliyor. |
 | e2d06d78-... |İşlem başarıyla tamamlandı. |
-| e2d06d78-... |İçin https://domemaildist.blob.core.windows.net/azuremmblobcontainer zaman uyumsuz istek başlatılıyor. |
+| e2d06d78-... |https://domemaildist.blob.core.windows.net/azuremmblobcontainer için zaman uyumsuz istek başlatılıyor. |
 | e2d06d78-... |StringToSign = PUT... 0........: x-MS-Client-Request-id: e2d06d78-.... x-MS-Date: Tue, 03 Haz 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. ResType: Container. |
 | e2d06d78-... |Yanıt bekleniyor. |
 | de8b1c3c-... |İstek verileri yazılıyor. |
 | de8b1c3c-... |Yanıt bekleniyor. |
-| e2d06d78-... |Yanıt beklenirken özel durum oluşturuldu: Uzak sunucu hata döndürdü: (409) çakışması.. |
+| e2d06d78-... |Yanıt beklenirken özel durum oluştu: uzak sunucu bir hata döndürdü: (409) çakışma.. |
 | e2d06d78-... |Yanıt alındı. Durum kodu = 409, Istek KIMLIĞI = c27da20e-..., Content-MD5 =, ETag =. |
 | e2d06d78-... |Hata yanıtı gövdesi indiriliyor. |
-| de8b1c3c-... |Yanıt beklenirken özel durum oluşturuldu: Uzak sunucu hata döndürdü: (404) bulunamadı... |
+| de8b1c3c-... |Yanıt beklenirken özel durum oluştu: uzak sunucu bir hata döndürdü: (404) bulunamadı.. |
 | de8b1c3c-... |Yanıt alındı. Durum kodu = 404, Istek KIMLIĞI = 0eaeab3e-..., Content-MD5 =, ETag =. |
-| de8b1c3c-... |İşlem sırasında özel durum oluştu: Uzak sunucu hata döndürdü: (404) bulunamadı... |
-| de8b1c3c-... |Yeniden deneme ilkesi, yeniden deneme için izin vermedi. Uzak sunucu ile başarısız olma bir hata döndürdü: (404) bulunamadı... |
-| e2d06d78-... |Yeniden deneme ilkesi, yeniden deneme için izin vermedi. Uzak sunucu ile başarısız olma bir hata döndürdü: (409) çakışması.. |
+| de8b1c3c-... |İşlem sırasında özel durum oluştu: uzak sunucu bir hata döndürdü: (404) bulunmadı.. |
+| de8b1c3c-... |Yeniden deneme ilkesi, yeniden deneme için izin vermedi. Uzak sunucu ile başarısız olma bir hata döndürdü: (404) bulunamadı.. |
+| e2d06d78-... |Yeniden deneme ilkesi, yeniden deneme için izin vermedi. Uzak sunucu ile başarısız olma bir hata döndürdü: (409) çakışma.. |
 
 Bu örnekte, günlük istemcisinin, **Uploadfromstream** yönteminden (de8b1c3c-...) Isteklerle **Createifnotexists** yönteminden (istek kimliği e2d06d78...) istek olduğunu gösterir. Bu araya ekleme, istemci uygulaması bu yöntemleri zaman uyumsuz olarak çağırdığından oluşur. Bu kapsayıcıdaki bir blob 'a herhangi bir veriyi karşıya yüklemeyi denemeden önce kapsayıcıyı oluşturduğundan emin olmak için istemcideki zaman uyumsuz kodu değiştirin. En ideal olarak, tüm Kapsayıcılarınızı önceden oluşturmalısınız.
 
@@ -562,16 +562,16 @@ Bu örnekte, günlük istemcisinin, **Uploadfromstream** yönteminden (de8b1c3c-
 
 Aşağıdaki tabloda, depolama günlüğü günlük dosyasından örnek bir sunucu tarafı günlüğü iletisi gösterilmektedir:
 
-| Name | Value |
+| Ad | Değer |
 | --- | --- |
 | İstek başlangıç saati | 2014-05-30T06:17:48.4473697 Z |
 | İşlem türü     | GetBlobProperties            |
 | İstek durumu     | SASAuthorizationError        |
 | HTTP durum kodu   | 404                          |
-| Kimlik doğrulama türü| 'Larının                          |
+| Kimlik doğrulaması türü| Sas                          |
 | Hizmet türü       | Blob                         |
 | İstek URL'si        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
-| &nbsp;                 |   ? ZF = 2014-02-14 & SR = c & sı = mypolicy & SIG = xxxxx&;api-Version = 2014-02-14 |
+| &nbsp;                 |   ? ZF = 2014-02-14 & SR = c & sı = mypolicy & SIG = XXXXX&;api-Version = 2014-02-14 |
 | İstek KIMLIĞI üstbilgisi  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | İstemci istek kimliği  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 
@@ -616,7 +616,7 @@ client.SetServiceProperties(sp);
 #### <a name="network-failure"></a>Ağ hatası
 Bazı durumlarda, kayıp ağ paketleri istemciye HTTP 404 iletileri döndüren depolama hizmetine yol açabilir. Örneğin, istemci uygulamanız bir varlığı tablo hizmetinden silerken, istemcinin tablo hizmetinden bir "HTTP 404 (bulunamadı)" durum iletisini bildiren bir depolama özel durumu oluşturmasını görürsünüz. Tabloyu Tablo depolama hizmetinde araştırdığınızda, hizmetin varlığı istendiği gibi sildiğine bakabilirsiniz.
 
-İstemcideki özel durum ayrıntıları, istek için tablo hizmeti tarafından atanan istek KIMLIĞINI (7e84f12d...) içerir: Bu bilgileri, içindeki **istek kimliği üst bilgisi** sütununda arayarak, sunucu tarafı depolama günlüklerinde istek ayrıntılarını bulmak için kullanabilirsiniz. günlük dosyası. Ayrıca, bu gibi hataların ne zaman yapılacağını belirlemek için ölçümleri de kullanabilir ve ardından günlük dosyalarında ölçümler bu hatayı kaydetti zamanına göre arama yapın. Bu günlük girdisi, silmenin "HTTP (404) Istemci diğer hatası" durum iletisiyle başarısız olduğunu gösterir. Aynı günlük girdisi, istemci tarafından **istemci-istek kimliği** sütununda oluşturulan istek kimliğini de içerir (813ea74f...).
+İstemcideki özel durum ayrıntıları, istek için tablo hizmeti tarafından atanan istek KIMLIĞINI (7e84f12d...) içerir: günlük dosyasında **istek kimliği-üst bilgi** sütununda arayarak, istek ayrıntılarını sunucu tarafı depolama günlüklerinde bulmak için bu bilgileri kullanabilirsiniz. Ayrıca, bu gibi hataların ne zaman yapılacağını belirlemek için ölçümleri de kullanabilir ve ardından günlük dosyalarında ölçümler bu hatayı kaydetti zamanına göre arama yapın. Bu günlük girdisi, silmenin "HTTP (404) Istemci diğer hatası" durum iletisiyle başarısız olduğunu gösterir. Aynı günlük girdisi, istemci tarafından **istemci-istek kimliği** sütununda oluşturulan istek kimliğini de içerir (813ea74f...).
 
 Sunucu tarafı günlüğü aynı varlık için başarılı bir silme işlemi için aynı **istemci-istek kimliği** değerine (813ea74f...) sahip başka bir giriş de içerir ve aynı istemciden. Bu başarılı silme işlemi, başarısız silme isteğinden çok kısa bir süre önce gerçekleşti.
 
@@ -625,9 +625,9 @@ Bu senaryonun en olası nedeni, istemcinin tablo hizmetine varlık için bir sil
 Bu sorun sık sık oluşuyorsa, istemcinin tablo hizmetinden alınan bildirimleri almasının neden başarısız olduğunu araştırmanız gerekir. Sorun kesintili ise, "HTTP (404) bulunamadı" hatasını yakalayıp istemcide günlüğe kaydedin, ancak istemcinin devam etmesine izin verin.
 
 ### <a name="the-client-is-receiving-409-messages"></a>İstemci HTTP 409 (çakışma) iletilerini alıyor
-Aşağıdaki tabloda iki istemci işlemi için sunucu tarafı günlüğünden ayıklama işlemi gösterilmektedir: **Deleteifexists** , aynı blob kapsayıcısı adı kullanılarak **Createifnotexists** tarafından hemen izlenir. Her istemci işlemi, sunucuya iki istekle gönderilir, ilk olarak bir **Getcontainerproperties** , kapsayıcının var olup olmadığını kontrol etmek için, ardından **DeleteContainer** veya **CreateContainer** isteği ile sonuçlanır.
+Aşağıdaki tabloda iki istemci işlemi için sunucu tarafı günlüğünden ayıklama gösterilmektedir: **Deleteifexists** , aynı blob kapsayıcısı adı kullanılarak **Createifnotexists** tarafından hemen izlenir. Her istemci işlemi, sunucuya iki istekle gönderilir, ilk olarak bir **Getcontainerproperties** , kapsayıcının var olup olmadığını kontrol etmek için, ardından **DeleteContainer** veya **CreateContainer** isteği ile sonuçlanır.
 
-| Timestamp | İşlem | Sonuç | Kapsayıcı adı | İstemci istek kimliği |
+| Zaman damgası | İşlem | Sonuç | Kapsayıcı adı | İstemci istek kimliği |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |
@@ -643,9 +643,9 @@ Silme/yeniden oluşturma düzeni sık tekrarlanıyorsa istemci uygulaması yeni 
 
 Bu işlemlerin başarıyla tamamlandığını ve bu nedenle kullanılabilirlik gibi diğer ölçümleri etkilemediğini unutmayın. Başarılı bir şekilde yürütülen ancak başarısız HTTP durum kodlarına neden olan işlemlere ilişkin bazı örnekler şunlardır:
 
-* **Resourcenotfound** (404 bulunamadı), örneğin, varolmayan bir bloba yönelik GET isteğinden.
-* **Resourcealreadyexists** (Çakışma 409), örneğin, kaynağın zaten bulunduğu bir **Createifnotexist** işlemi.
-* **Conditionnotmet** (304 değiştirilmez), örneğin, bir istemcinin bir **ETag** değeri göndermesi ve yalnızca son işlemden sonra güncelleştirilmiş olması halınde bir http **If-None-Match** üst bilgisi göndermesi gibi koşullu bir işlemden.
+* **Resourcenotfound** (404 bulunamadı), örneğin, var olmayan bir blob 'A yönelik Get isteğinden.
+* **Resourcealreadyexists** (çakışma 409), örneğin, kaynağın zaten bulunduğu bir **Createifnotexist** işlemi.
+* **Conditionnotmet** (değiştirilmedi 304), örneğin, bir Istemcinin bir **ETag** değeri göndermesi ve yalnızca son işlemden sonra GÜNCELLEŞTIRILMIŞ olması halinde bir http **If-None-Match** üst bilgisi göndermesi gibi koşullu bir işlemden.
 
 Depolama hizmetlerinin sayfa [ortak REST API hata kodlarında](https://msdn.microsoft.com/library/azure/dd179357.aspx)döndürdüğü ortak REST API hata kodlarının bir listesini bulabilirsiniz.
 
@@ -679,8 +679,8 @@ Daha fazla bilgi için bkz. [Geliştirme ve Sınama için Azure Storage Öykün�
 ### <a name="you-are-encountering-problems-installing-the-Windows-Azure-SDK"></a>.NET için Azure SDK 'Yı yüklerken sorunlarla karşılaşdığınızda
 SDK 'yı yüklemeye çalıştığınızda, depolama öykünücüsünü yerel makinenize yüklemeye çalışırken başarısız olur. Yükleme günlüğü aşağıdaki iletilerden birini içerir:
 
-* Catietexec:  Hata: SQL örneğine erişilemiyor
-* Catietexec:  Hata: Veritabanı oluşturulamıyor
+* Catietexec: hata: SQL örneğine erişilemiyor
+* Catietexec: hata: veritabanı oluşturulamıyor
 
 Bunun nedeni, var olan LocalDB yüklemesinde bir sorundur. Varsayılan olarak, depolama öykünücüsü, Azure depolama hizmetleri 'nde benzetim yaparken verileri kalıcı hale getirmek için LocalDB 'yi kullanır. SDK 'Yı yüklemeyi denemeden önce bir komut istemi penceresinde aşağıdaki komutları çalıştırarak LocalDB örneğinizi sıfırlayabilirsiniz.
 
@@ -700,11 +700,11 @@ sqllocaldb create v11.0
 * Oluşan hatalar hakkında daha ayrıntılı bilgi için, sunucu tarafı günlük verilerinizi aramanıza yardımcı olması için ölçüm bilgilerini kullanabilirsiniz. Bu bilgiler sorunu gidermenize ve çözmenize yardımcı olabilir.
 * Sunucu tarafı günlüklerindeki bilgiler sorunu başarıyla gidermek için yeterli değilse, istemci uygulamanızın davranışını araştırmak için depolama Istemci kitaplığı istemci tarafı günlüklerini ve Fiddler, Wireshark ve Microsoft gibi araçları kullanabilirsiniz Ağınızı araştırmak için ileti Çözümleyicisi.
 
-Fiddler kullanma hakkında daha fazla bilgi için bkz:[Ek 1: HTTP ve HTTPS trafiğini yakalamak için Fiddler kullanma]yakalamak Için Fiddler 'ı kullanma. "
+Fiddler kullanma hakkında daha fazla bilgi için bkz. "[Ek 1: HTTP ve HTTPS trafiğini yakalamak için fiddler'ı kullanma]."
 
-Wireshark kullanma hakkında daha fazla bilgi için bkz.[Ek 2: Ağ trafiğini yakalamak için Wireshark kullanma]yakalamak için Wireshark kullanma. "
+Wireshark kullanma hakkında daha fazla bilgi için bkz. "[ek 2: ağ trafiğini yakalamak Için Wireshark kullanma]."
 
-Microsoft Message Analyzer 'ı kullanma hakkında daha fazla bilgi için bkz[Ek 3: Ağ trafiğini yakalamak için Microsoft Message Analyzer 'ı kullanma]yakalamak Için Microsoft Message Analyzer 'ı kullanma. "
+Microsoft Message Analyzer 'ı kullanma hakkında daha fazla bilgi için bkz. "[Ek 3: Ağ trafiğini yakalamak Microsoft Message Analyzer kullanma]".
 
 ## <a name="appendices"></a>Ekler IFM
 Appendıces, Azure depolama (ve diğer hizmetler) ile ilgili sorunları tanılarken ve sorunlarını giderirken yararlı bulabileceğiniz çeşitli araçları betimlebiliriz. Bu araçlar Azure Storage 'ın bir parçası değildir ve bazıları üçüncü taraf ürünlerdir. Bu nedenle, bu appendıces ' de açıklanan araçlar, Microsoft Azure veya Azure depolama ile sahip olduğunuz herhangi bir destek sözleşmesi kapsamında değildir ve bu nedenle değerlendirme işleminizin bir parçası olarak, Bu araçların sağlayıcıları.
@@ -728,7 +728,7 @@ Fiddler 'in yakaladığı trafik miktarını sınırlamak için **Filtreler** se
 
 ![][5]
 
-### <a name="appendix-2"></a>Ek 2: Ağ trafiğini yakalamak için Wireshark kullanma
+### <a name="appendix-2"></a>Ek 2: ağ trafiğini yakalamak için Wireshark kullanma
 [Wireshark](https://www.wireshark.org/) , çok çeşitli ağ protokolleri için ayrıntılı paket bilgilerini görüntülemenize olanak tanıyan bir ağ protokol çözümleyicisidir.
 
 Aşağıdaki yordamda, Azure Depolama hesabınızdaki tablo hizmetine Wireshark yüklediğiniz yerel makineden gelen trafik için ayrıntılı paket bilgilerinin nasıl yakalanacağı gösterilmektedir.
@@ -756,7 +756,7 @@ Ayrıca, TCP verilerini, TCP verilerine sağ tıklayıp **TCP akışını izle**
 >
 >
 
-### <a name="appendix-3"></a>Ek 3: Ağ trafiğini yakalamak için Microsoft Message Analyzer 'ı kullanma
+### <a name="appendix-3"></a>Ek 3: ağ trafiğini yakalamak için Microsoft Ileti Çözümleyicisi 'ni kullanma
 Microsoft Message Analyzer 'ı HTTP ve HTTPS trafiğini Fiddler için benzer bir şekilde yakalamak ve ağ trafiğini Wireshark ile benzer bir şekilde yakalamak için kullanabilirsiniz.
 
 #### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Microsoft Message Analyzer 'ı kullanarak bir Web izleme oturumu yapılandırma
@@ -778,7 +778,7 @@ Microsoft Message Analyzer **Web proxy** izlemesi hakkında daha fazla bilgi iç
 Microsoft Message Analyzer 'daki yerleşik **Web proxy** Izlemesi Fiddler 'a dayalıdır; Bu, istemci tarafı HTTPS trafiğini yakalayabilir ve şifrelenmemiş HTTPS iletilerini görüntüleyebilir. **Web proxy** izlemesi, şifrelenmemiş iletilere erişim sağlayan tüm http ve HTTPS trafiği için yerel bir proxy yapılandırarak işe yarar.
 
 #### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Microsoft Message Analyzer kullanarak ağ sorunlarını tanılama
-İstemci uygulaması ve depolama hizmeti arasındaki HTTP/HTTPs trafiğinin ayrıntılarını yakalamak için Microsoft Message Analyzer **Web proxy** izlemeyi kullanmanın yanı sıra, yerleşik **yerel bağlantı katmanı** izlemesini ağı yakalamak için de kullanabilirsiniz Paket bilgileri. Bu, Wireshark ile yakalayabilmeniz ve bırakılan paketler gibi ağ sorunlarını tanılamak için benzer verileri yakalamanızı sağlar.
+İstemci uygulaması ve depolama hizmeti arasındaki HTTP/HTTPs trafiğinin ayrıntılarını yakalamak için Microsoft Message Analyzer **Web proxy** izlemeyi kullanmanın yanı sıra, yerleşik **yerel bağlantı katmanı** izlemesini ağ paketi bilgilerini yakalamak için de kullanabilirsiniz. Bu, Wireshark ile yakalayabilmeniz ve bırakılan paketler gibi ağ sorunlarını tanılamak için benzer verileri yakalamanızı sağlar.
 
 Aşağıdaki ekran görüntüsünde, **DiagnosisTypes** sütununda bazı **bilgilendirici** Iletilerle örnek bir **yerel bağlantı katmanı** izlemesi gösterilmektedir. **DiagnosisTypes** sütunundaki bir simgeye tıkladığınızda iletinin ayrıntıları gösterilir. Bu örnekte, istemciden bir onay almadığı için sunucu #305 yeniden aktarılan ileti:
 
@@ -790,7 +790,7 @@ Microsoft Message Analyzer 'da izleme oturumu oluştururken, izlemede gürültü
 
 Microsoft Message Analyzer yerel bağlantı katmanı izleme hakkında daha fazla bilgi için bkz. [Microsoft-PEF-NDIS-PacketCapture sağlayıcısı](https://technet.microsoft.com/library/jj659264.aspx).
 
-### <a name="appendix-4"></a>Ek 4: Ölçümleri ve günlük verilerini görüntülemek için Excel 'i kullanma
+### <a name="appendix-4"></a>Ek 4: ölçümleri ve günlük verilerini görüntülemek için Excel kullanma
 Birçok araç, Azure Tablo depolamadan depolama ölçümleri verilerini, görüntüleme ve analiz amacıyla Excel 'e yüklemeyi kolaylaştıran ayrılmış bir biçimde indirmenizi sağlar. Azure Blob Storage 'dan alınan depolama günlüğü verileri, Excel 'e yükleyebildiğiniz ayrılmış bir biçimde zaten vardır. Ancak, [depolama Analizi günlük biçimi](https://msdn.microsoft.com/library/azure/hh343259.aspx) ve [depolama Analizi ölçüm tablosu şeması](https://msdn.microsoft.com/library/azure/hh343264.aspx)bilgilerine göre uygun sütun başlıkları eklemeniz gerekir.
 
 Depolama günlüğü verilerinizi blob depolamadan indirdikten sonra Excel 'e aktarmak için:
@@ -801,7 +801,7 @@ Depolama günlüğü verilerinizi blob depolamadan indirdikten sonra Excel 'e ak
 
 **Metin Içeri aktarma Sihirbazı**'nın 1. adımında, tek sınırlayıcı olarak **noktalı virgül** ' i seçin ve **metin niteleyicisi**olarak çift tırnak işareti seçin. Ardından **son** ' a tıklayın ve verilerin çalışma kitabınıza yerleştirileceği yeri seçin.
 
-### <a name="appendix-5"></a>Ek 5: Azure DevOps için Application Insights izleme
+### <a name="appendix-5"></a>Ek 5: Azure DevOps için Application Insights ile Izleme
 Ayrıca, performans ve kullanılabilirlik izlemenin bir parçası olarak Azure DevOps için Application Insights özelliğini de kullanabilirsiniz. Bu araç şunları yapabilir:
 
 * Web hizmetinizin kullanılabilir ve yanıt verdiğini doğrulayın. Uygulamanız Web hizmeti kullanan bir Web sitesi veya bir cihaz uygulaması olsa da, dünyanın dört bir yanındaki konumlardan birkaç dakikada bir URL 'YI test edebilir ve bir sorun olup olmadığını bilmenizi sağlayabilir.
@@ -862,7 +862,7 @@ Azure depolama 'da analiz hakkında daha fazla bilgi için şu kaynaklara bakın
 [Paylaşılan Erişim İmzası (SAS) yetkilendirme sorunu]: #SAS-authorization-issue
 [İstemci tarafı JavaScript kodunun nesneye erişim izni yok]: #JavaScript-code-does-not-have-permission
 [Ağ hatası]: #network-failure
-[İstemci HTTP 409 (Çakışma) iletileri alma]: #the-client-is-receiving-409-messages
+[İstemci HTTP 409 (Çakışma) iletilerini alıyor]: #the-client-is-receiving-409-messages
 
 [Düşük PercentSuccess ölçümleri göster veya ClientOtherErrors işlem durumundaki işlemlerini analytics günlük girdilerine sahip]: #metrics-show-low-percent-success
 [Kapasite ölçümlerini beklenmeyen artışı depolama kapasitesi kullanımı Göster]: #capacity-metrics-show-an-unexpected-increase
@@ -874,11 +874,11 @@ Azure depolama 'da analiz hakkında daha fazla bilgi için şu kaynaklara bakın
 [Bir depolama hizmetindeki farklı bir sorun olması]: #you-have-a-different-issue-with-a-storage-service
 
 [Ekler]: #appendices
-[Ek 1: HTTP ve HTTPS trafiğini yakalamak için Fiddler kullanma]: #appendix-1
+[Ek 1: HTTP ve HTTPS trafiğini yakalamak için fiddler'ı kullanma]: #appendix-1
 [Ek 2: Ağ trafiğini yakalamak için Wireshark kullanma]: #appendix-2
-[Ek 3: Ağ trafiğini yakalamak için Microsoft Message Analyzer 'ı kullanma]: #appendix-3
-[Ek 4: Ölçümleri ve günlük verilerini görüntülemek için Excel 'i kullanma]: #appendix-4
-[Ek 5: Azure DevOps için Application Insights izleme]: #appendix-5
+[Ek 3: Ağ trafiğini yakalamak Microsoft Message Analyzer kullanma]: #appendix-3
+[Ek 4: Ölçümleri görüntülemek ve verileri günlüğe kaydetmek için Excel kullanma]: #appendix-4
+[Ek 5: Azure DevOps için Application Insights ile Izleme]: #appendix-5
 
 <!--Image references-->
 [1]: ./media/storage-monitoring-diagnosing-troubleshooting/overview.png

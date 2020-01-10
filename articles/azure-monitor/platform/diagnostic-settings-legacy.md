@@ -7,15 +7,15 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 12/20/2019
-ms.openlocfilehash: 4c910fd72805ce8cb1e7baa6b4252d6b2192fe36
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: e3a8048d8bcb8bb737c511a8b8bb6b57f9e81403
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541523"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750985"
 ---
 # <a name="collect-azure-activity-log-with-legacy-settings"></a>Eski ayarlarla Azure etkinlik günlüğü toplayın
-[Azure etkinlik günlüğü](activity-logs-overview.md) , Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform günlüğliğidir](platform-logs-overview.md) . Son olarak, etkinlik günlüğü girdilerini bir [Olay Hub 'ına veya depolama hesabına](activity-log-export.md) göndermek için bir günlük profili oluşturdunuz ve bir [Log Analytics çalışma alanına](activity-log-collect.md)toplamak için bağlayıcı kullandınız. Bu makalede, Yöntemler arasındaki fark, var olan eski ayarlarla çalışma ve tanılama ayarlarına hazırlık için eski ayarların nasıl temizleneceğini açıklanmaktadır.
+[Azure etkinlik günlüğü](platform-logs-overview.md) , Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform günlüğliğidir](platform-logs-overview.md) . Son olarak, etkinlik günlüğü girdilerini bir [Olay Hub 'ına veya depolama hesabına](activity-log-export.md) göndermek için bir günlük profili oluşturdunuz ve bir [Log Analytics çalışma alanına](activity-log-collect.md)toplamak için bağlayıcı kullandınız. Bu makalede, Yöntemler arasındaki fark, var olan eski ayarlarla çalışma ve tanılama ayarlarına hazırlık için eski ayarların nasıl temizleneceğini açıklanmaktadır.
 
 
 ## <a name="differences-between-methods"></a>Yöntemler arasındaki farklılıklar

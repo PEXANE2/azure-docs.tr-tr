@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: fb697003da8c0604b2ce1e8956fcd434014b5b82
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0294efb7510d4240cfdd6386c7f8bef1d4184538
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077046"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754483"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Kaynak Yöneticisi için PowerShell kullanarak Internet 'e yönelik yük dengeleyici oluşturmaya başlama
 
@@ -55,13 +55,13 @@ Aşağıdaki adımlarda, PowerShell ile Azure Resource Manager kullanarak Intern
 
 Yük dengeleyici dağıtmak için aşağıdaki nesneleri oluşturun ve yapılandırın:
 
-* Ön uç IP yapılandırması: Gelen ağ trafiği için genel IP adreslerini içerir.
-* Arka uç adres havuzu: Sanal makinelerin yük dengeleyiciden ağ trafiği alması için ağ arabirimlerini (NIC’ler) içerir.
+* Ön uç IP yapılandırması-gelen ağ trafiği için genel IP adreslerini içerir.
+* Arka uç adres havuzu-sanal makinelerin yük dengeleyiciden ağ trafiği alması için ağ arabirimlerini (NIC 'ler) içerir.
 * Yük dengeleme kuralları: Yük dengeleyici üzerindeki bir genel bağlantı noktasını arka uç adres havuzundaki bağlantı noktasına eşleme kurallarını içerir.
 * Gelen NAT kuralları: Yük dengeleyici üzerindeki bir genel bağlantı noktasını arka uç adres havuzundaki belirli bir sanal makineye ait bağlantı noktasına eşleme kurallarını içerir.
 * Araştırmalar: Arka uç adres havuzundaki sanal makine örneklerinin kullanılabilirliğini kontrol etmek için kullanılan durum araştırmalarını içerir.
 
-Daha fazla bilgi için bkz. [Yük Dengeleyici için Azure Resource Manager desteği](load-balancer-arm.md).
+Daha fazla bilgi için bkz. [Azure Load Balancer bileşenleri](load-balancer-overview.md#load-balancer-components).
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>PowerShell’i Resource Manager’ı kullanacak şekilde ayarlama
 

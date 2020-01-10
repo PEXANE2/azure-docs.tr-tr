@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e9fd4602d661dd4223c8caa2ec02eaf56284735a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114545"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754554"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir AI zenginleştirme ardışık düzeninde beceri oluşturma 
 
@@ -249,7 +249,7 @@ Olası bir sonuç, aşağıdaki çizime benzer şekilde oluşturulmuş bir yapı
 
 [Bilgi deposu](knowledge-store-concept-intro.md) , zenginleştirilmiş belgeyi kaydetmek için Azure bilişsel arama bir önizleme özelliğidir. Azure depolama hesabı tarafından desteklenen, oluşturduğunuz bir bilgi deposu, verileri zenginleştirdiği depodur. 
 
-Bir beceri öğesine bilgi deposu tanımı eklenir. İşlemin tamamına yönelik bir anlatım için bkz. [bilgi deposu ile çalışmaya başlama](knowledge-store-howto.md).
+Bir beceri öğesine bilgi deposu tanımı eklenir. İşlemin tamamına yönelik bir anlatım için bkz. [rest 'te bilgi deposu oluşturma](knowledge-store-create-rest.md).
 
 ```json
 "knowledgeStore": {

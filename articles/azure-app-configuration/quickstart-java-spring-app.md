@@ -1,25 +1,21 @@
 ---
-title: Azure Uygulama yapılandırması 'nı kullanmayı öğrenmek için hızlı başlangıç | Microsoft Docs
+title: Azure Uygulama yapılandırması 'nı kullanmayı öğrenmek için hızlı başlangıç
 description: Java Spring uygulamalarıyla Azure Uygulama yapılandırması 'nı kullanmaya yönelik hızlı başlangıç.
 services: azure-app-configuration
 documentationcenter: ''
-author: yidon
-manager: jeffya
+author: lisaguthrie
+manager: maiye
 editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: Spring
-ms.workload: tbd
-ms.date: 01/08/2019
-ms.author: yidon
-ms.openlocfilehash: e8f6f9ca610c515deca6ed1bdbee54f40cacf427
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 12/17/2019
+ms.author: lcozzens
+ms.openlocfilehash: 172fe646b294ca511a22128094c56172c4268018
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184929"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750296"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile bir Java Spring uygulaması oluşturma
 
@@ -45,7 +41,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 ## <a name="create-a-spring-boot-app"></a>Spring Boot uygulaması oluşturma
 
-Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start.spring.io/) 'yi kullanırsınız.
+Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.spring.io/) ' i kullanın.
 
 1. <https://start.spring.io/> adresine gidin.
 
@@ -54,7 +50,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
    * **Java**Ile **Maven** projesi oluşturun.
    * 2,0 ' e eşit veya ondan büyük bir **Spring Boot** sürümü belirtin.
    * Uygulamanız için **Grup** ve **yapıt** adlarını belirtin.
-   * **Web** bağımlılığını ekleyin.
+   * **Yay Web** bağımlılığını ekleyin.
 
 3. Önceki seçenekleri belirttikten sonra **proje oluştur**' u seçin. İstendiğinde, projeyi yerel bilgisayarınızdaki bir yola indirin.
 
@@ -68,13 +64,17 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M5</version>
+        <version>1.1.0</version>
     </dependency>
     ```
 
 3. Uygulamanızın paket dizininde *MessageProperties. Java* adlı yeni bir Java dosyası oluşturun. Aşağıdaki satırları ekleyin:
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+
     @ConfigurationProperties(prefix = "config")
     public class MessageProperties {
         private String message;
@@ -92,6 +92,11 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
 4. Uygulamanızın paket dizininde *Hellocontroller. Java* adlı yeni bir Java dosyası oluşturun. Aşağıdaki satırları ekleyin:
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.RestController;
+
     @RestController
     public class HelloController {
         private final MessageProperties properties;
@@ -110,18 +115,20 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
 5. Ana uygulama Java dosyasını açın ve bu özelliği etkinleştirmek için `@EnableConfigurationProperties` ekleyin.
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
 
 6. Uygulamanızın Resources dizininde `bootstrap.properties` adlı yeni bir dosya oluşturun ve aşağıdaki satırları dosyaya ekleyin. Örnek değerleri, uygulama yapılandırma deponuzın uygun özellikleriyle değiştirin.
 
-    ```properties
+    ```CLI
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
     ```
 
@@ -129,15 +136,17 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
 
 1. Maven ile Spring Boot uygulamanızı derleyin ve çalıştırın, örneğin:
 
-    ```shell
+    ```CLI
     mvn clean package
     mvn spring-boot:run
     ```
+
 2. Uygulamanız çalıştırıldıktan sonra, uygulamanızı test etmek için *kıvrımlı* kullanın, örneğin:
 
-      ```shell
+      ```CLI
       curl -X GET http://localhost:8080/
       ```
+
     Uygulama yapılandırma deposuna girdiğiniz iletiyi görürsünüz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

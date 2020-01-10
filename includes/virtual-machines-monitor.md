@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 93a2554b5d3cc24e1b5fc1e3d0f18ed1bfe0579c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: fbc6889507e58c4721597a1108337fcb1f8756a2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71692053"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751582"
 ---
 Azure 'da barındırılan VM 'lerin önemli büyümesi sayesinde, destekledikleri uygulamaları ve altyapı hizmetlerini etkileyen performans ve sistem durumu sorunlarını belirlemek önemlidir. Temel izleme, Azure ile varsayılan olarak, CPU kullanımı, disk kullanımı, bellek kullanımı ve konak Hiper Yöneticisi tarafından toplanan ağ trafiği ölçüm türlerine göre dağıtılır. Konuk işletim sisteminden sanal makinelerinizdeki tanılamayı yapılandırmak için ek ölçüm ve günlük verileri, [uzantıları](../articles/virtual-machines/windows/extensions-features.md) kullanılarak toplanabilir.
 
@@ -43,20 +43,20 @@ Azure [hizmet durumu](../articles/service-health/service-health-overview.md) , A
 
 [Azure Kaynak durumu](../articles/service-health/resource-health-overview.md) , kaynaklarınızı etkileyen bir Azure sorunu tanılamanıza ve destek almanıza yardımcı olur. Kaynaklarınızın hem geçerli durumu hem de geçmişteki durumları hakkında bilgi verir ve sorunların etkisini azaltmanıza katkıda bulunur. Kaynak durumu, Azure hizmetleriyle ilgili sorunlarda yardıma ihtiyacınız olduğunda teknik destek sağlar.
 
-## <a name="azure-activity-log"></a>Azure etkinlik günlüğü
+## <a name="azure-activity-log"></a>Azure Etkinlik Günlüğü
 
-[Azure etkinlik günlüğü](../articles/azure-monitor/platform/activity-logs-overview.md) , Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir abonelik günlüğü. Günlük, Azure Resource Manager işletimsel verilerden hizmet durumu olaylarında güncelleştirmelere kadar bir veri aralığı içerir. VM 'nizin günlüğünü görüntülemek için Azure portal etkinlik günlüğü ' ne tıklayabilirsiniz.
+[Azure etkinlik günlüğü](../articles/azure-monitor/platform/platform-logs-overview.md) , Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir abonelik günlüğü. Günlük, Azure Resource Manager işletimsel verilerden hizmet durumu olaylarında güncelleştirmelere kadar bir veri aralığı içerir. VM 'nizin günlüğünü görüntülemek için Azure portal etkinlik günlüğü ' ne tıklayabilirsiniz.
 
 Etkinlik günlüğünde yapabileceğiniz bazı şeyler şunlardır:
 
-- [Etkinlik günlüğü olayında uyarı](../articles/azure-monitor/platform/activity-logs-overview.md)oluşturma.
+- [Etkinlik günlüğü olayında uyarı](../articles/azure-monitor/platform/platform-logs-overview.md)oluşturma.
 - Bir üçüncü taraf hizmeti veya Power BI gibi özel analizler tarafından alım için [bir olay hub 'ına akış](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) .
 - [Power BI içerik paketini](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)kullanarak Power BI analiz edin.
 - Arşiv veya el ile inceleme için [bir depolama hesabına kaydedin](../articles/azure-monitor/platform/archive-activity-log.md) . Günlük profilini kullanarak saklama süresini (gün olarak) belirtebilirsiniz.
 
 Etkinlik günlüğü verilerine [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), [Azure CLı](https://docs.microsoft.com/cli/azure/monitor)veya [izleme REST API 'lerini](https://docs.microsoft.com/rest/api/monitor/)kullanarak da erişebilirsiniz.
 
-[Azure Kaynak günlükleri](../articles/azure-monitor/platform/resource-logs-overview.md) , kendi işlemi hakkında zengin ve sık veriler sağlayan, VM 'niz tarafından yayılan günlüklerdir. Kaynak günlükleri, VM 'de gerçekleştirilen işlemler hakkında Öngörüler sunarak etkinlik günlüğünden farklıdır.
+[Azure Kaynak günlükleri](../articles/azure-monitor/platform/platform-logs-overview.md) , kendi işlemi hakkında zengin ve sık veriler sağlayan, VM 'niz tarafından yayılan günlüklerdir. Kaynak günlükleri, VM 'de gerçekleştirilen işlemler hakkında Öngörüler sunarak etkinlik günlüğünden farklıdır.
 
 Tanılama günlükleri ile gerçekleştirebileceğiniz işlemlerden bazıları şunlardır:
 
@@ -66,7 +66,7 @@ Tanılama günlükleri ile gerçekleştirebileceğiniz işlemlerden bazıları �
 
 ## <a name="advanced-monitoring"></a>Gelişmiş izleme
 
-Azure VM ve sanal makine ölçek kümeleri tarafından desteklenen uygulama veya hizmetin görünürlüğü için, Konuk işletim sistemi veya VM 'de çalışan iş yüküyle ilgili sorunların, uygulamanın kullanılabilirliğini veya performansını etkileyip etkilemediğini anlamak için tanımlanması veya bir uygulamayla ilgili sorun hem [VM'ler için Azure izleyici](../articles/azure-monitor/insights/vminsights-overview.md) hem de [Application Insights](../articles/azure-monitor/app/app-insights-overview.md)etkinleştirin.
+Azure VM ve sanal makine ölçek kümeleri tarafından desteklenen uygulama veya hizmetin görünürlüğü için, uygulamanın kullanılabilirliğini veya performansını etkileyip etkilemediğini veya uygulamada bir sorun olduğunu anlamak için konuk işletim sistemi veya VM 'de çalışan iş yüküyle ilgili sorunların tanımlanması, hem [VM'ler için Azure izleyici](../articles/azure-monitor/insights/vminsights-overview.md) hem de [Application Insights](../articles/azure-monitor/app/app-insights-overview.md)etkinleştirin.
 
 VM'ler için Azure İzleyici, Windows ve Linux sanal makinelerinizin farklı süreçler ve diğer kaynaklardaki ve dış süreçlerdeki birbirine bağlı bağımlılıklar dahil olmak üzere, Windows ve Linux VM 'lerinizin performansını ve sistem durumunu analiz ederek ölçeklendirerek Azure sanal makinelerinizi (VM keşfede. Sorun araştırmada ve sanal makinelerinizin kapasitesini değerlendirmekte yardımcı olacak çeşitli eğilim performansı grafikleri içerir. Bağımlılık haritasında, izlenen ve izlenmeyen makineler, işlem ve bu makineler arasında etkin ağ bağlantıları gösterilir ve standart ağ bağlantısı ölçümlerine sahip eğilim grafikleri gösterilmektedir. Application Insights ile birlikte, uygulamanızı izler ve HTTP istekleri, özel durumlar vb. gibi Telemetriyi yakalayın. böylece, VM 'Ler ve uygulamanız arasındaki sorunları ilişkilendirebilmenizi sağlayabilirsiniz. VM'ler için Azure İzleyici tarafından toplanan izleme verilerinden algılanan önemli koşullar hakkında uyarı almak için [Azure izleyici uyarılarını](../articles/azure-monitor/platform/alerts-overview.md) yapılandırın.
 

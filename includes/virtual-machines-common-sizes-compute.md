@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 21b982389b186e949b21352f4b11bd6b4aa06dcb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dd94f29317e703a68ba1b4a78639f635034d4492
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279188"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75752269"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -31,7 +31,7 @@ Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
 
-| Boyut             | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut             | Sanal çekirdek | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000/31 (32)           | 3200/47                | 2 / 875                 |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000/63 (64)           | 6400/95                | 2 / 1750               |
@@ -44,6 +44,15 @@ Premium depolama önbelleği: desteklenir
 
 <sup>1</sup> Fsv2 serisi VM 'ler özelliği, hiper Iş parçacığı teknolojisinin Intel®.
 
-<sup>2</sup> 64 'Den fazla vCPU kullanımı, desteklenen bu konuk işletim sistemlerinden birini gerektirir: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 ve Red Hat Enterprise Linux, centos 7,3 ya da LIS 4.2.1 ile Oracle Linux 7,3.
+<sup>2</sup> 64 'Den fazla vCPU kullanımı, desteklenen bu konuk işletim sistemlerinden birini gerektirir:
+- Windows Server 2016 veya üzeri
+- Ubuntu 16,04 LTS veya üzeri, Azure ayarlanmış çekirdekle (4,15 çekirdek veya üzeri)
+- SLES 12 SP2 veya üzeri
+- RHEL veya CentOS Sürüm 6,7, Microsoft tarafından sunulan LIS paketi 4.3.1 (veya üzeri) yüklenmiş olarak 6,10
+- RHEL veya CentOS Sürüm 7,3, Microsoft tarafından sunulan LIS paketi 4.2.1 (veya üzeri) yüklü
+- RHEL veya CentOS Sürüm 7,6 veya üzeri
+- UEK4 veya üzeri ile Oracle Linux
+- Arka bağlantı noktaları çekirdeği, 10. ve üzeri ile 9.
+- 4,14 çekirdekine sahip CoreOS veya üzeri
 
 <sup>3</sup> örnek, tek bir müşteriye adanmış donanımlar için yalıtılmıştır.

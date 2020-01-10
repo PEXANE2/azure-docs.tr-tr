@@ -12,16 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 1c49c6221e9b310a1b14a4e06a296befc7f6da4d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a809cabd2ace1b18af6c93dc54348137e9ba5750
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111730"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749914"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM için ağ arabirimini sıfırlama 
-
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Bu makalede, sonrasında Microsoft Azure Windows sanal makinesine (VM) bağlanamadığınızda sorunları çözümlemek için Azure Windows VM 'nin ağ arabiriminin nasıl sıfırlanacağı gösterilmektedir:
 
@@ -34,7 +32,7 @@ Bu makalede, sonrasında Microsoft Azure Windows sanal makinesine (VM) bağlanam
 
 ### <a name="for-vms-deployed-in-resource-group-model"></a>Kaynak grubu modelinde dağıtılan VM 'Ler için
 
-1.  [Azure Portal](https://ms.portal.azure.com) gidin.
+1.  [Azure portalına](https://ms.portal.azure.com) gidin.
 2.  Etkilenen sanal makineyi seçin.
 3.  **Ağ** ' ı seçin ve ardından VM 'Nin ağ arabirimini seçin.
 
@@ -76,9 +74,9 @@ Bu makalede, sonrasında Microsoft Azure Windows sanal makinesine (VM) bağlanam
 
 Ağ arabirimini sıfırlamak için şu adımları izleyin:
 
-#### <a name="use-azure-portal"></a>Azure portalı kullanma
+#### <a name="use-azure-portal"></a>Azure portalını kullanma
 
-1.  [Azure Portal]( https://ms.portal.azure.com) gidin.
+1.  [Azure portalına]( https://ms.portal.azure.com) gidin.
 2.  **Sanal makineler (klasik)** öğesini seçin.
 3.  Etkilenen sanal makineyi seçin.
 4.  **IP adreslerini**seçin.
@@ -116,7 +114,7 @@ Ağ arabirimini sıfırlamak için şu adımları izleyin:
 ## <a name="delete-the-unavailable-nics"></a>Kullanılamayan NIC 'Leri silme
 Makineye Uzak Masaüstü 'nü etkinleştirdikten sonra olası sorundan kaçınmak için eski NIC 'Leri silmeniz gerekir:
 
-1.  Aygıt Yöneticisi açın.
+1.  Cihaz Yöneticisi'ni açın.
 2.  **Gizli aygıtları göstermek** > **görüntüle** ' yi seçin.
 3.  **Ağ bağdaştırıcılarını**seçin. 
 4.  "Microsoft Hyper-V ağ bağdaştırıcısı" olarak adlandırılan bağdaştırıcıları denetleyin.

@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 3af951d120282767bd71bc569d8c0bfe39dafffe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a5aa6a2e2578a995e4ef00489557fc02623e2d6a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705458"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744833"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Azure portal (Önizleme) kullanarak bekleyen Azure Event Hubs verilerini şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
 Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -87,7 +87,7 @@ Anahtarı anahtar kasasında Azure Anahtar Kasası döndürme mekanizmasını ku
 > Anahtar kasanızdan var olan bir şifreleme anahtarını silip Event Hubs ad alanındaki yeni bir anahtarla değiştirirseniz, silme anahtarı bir saate kadar geçerli olduğundan (eski anahtarla şifrelenen), eski verileriniz de erişilebilir durumda olabilir  Yeni veriler ile, artık yalnızca yeni anahtar kullanılarak erişilebilir. Bu davranış, özelliğin önizleme sürümünde tasarımdır. 
 
 ## <a name="set-up-diagnostic-logs"></a>Tanılama günlükleri ayarlama 
-BYOK etkinleştirilmiş ad alanları için tanılama günlüklerini ayarlama, bir ad alanı müşteri tarafından yönetilen anahtarlarla şifrelendiğinde, işlemler hakkında gerekli bilgileri sağlar. Bu Günlükler etkinleştirilebilir ve daha sonra bir olay hub 'ına bağlanabilir veya Log Analytics aracılığıyla analiz edilebilir ya da özelleştirilmiş analizler gerçekleştirmek için depolama alanına akışı yapılabilir. Tanılama günlükleri hakkında daha fazla bilgi edinmek için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/resource-logs-overview.md).
+BYOK etkinleştirilmiş ad alanları için tanılama günlüklerini ayarlama, bir ad alanı müşteri tarafından yönetilen anahtarlarla şifrelendiğinde, işlemler hakkında gerekli bilgileri sağlar. Bu Günlükler etkinleştirilebilir ve daha sonra bir olay hub 'ına bağlanabilir veya Log Analytics aracılığıyla analiz edilebilir ya da özelleştirilmiş analizler gerçekleştirmek için depolama alanına akışı yapılabilir. Tanılama günlükleri hakkında daha fazla bilgi edinmek için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="enable-user-logs"></a>Kullanıcı günlüklerini etkinleştir
 Müşteri tarafından yönetilen anahtarlar için günlükleri etkinleştirmek üzere bu adımları izleyin.
@@ -104,20 +104,20 @@ Müşteri tarafından yönetilen anahtarlar için günlükleri etkinleştirmek �
 
     ![Müşteri tarafından yönetilen anahtar Kullanıcı günlükleri seçeneğini belirleyin](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
 
-## <a name="log-schema"></a>Günlük şeması 
-Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her girdinin aşağıdaki tabloda açıklanan biçimi kullanan dize alanları vardır. 
+## <a name="log-schema"></a>Günlüğü şeması 
+Tüm günlükler, JavaScript nesne gösterimi (JSON) biçiminde depolanır. Her girdinin aşağıdaki tabloda açıklanan biçimi kullanan dize alanları vardır. 
 
-| Adı | Açıklama |
+| Ad | Açıklama |
 | ---- | ----------- | 
-| Silinecek | Başarısız olan görevin açıklaması. |
-| Etkinlik kimliği | İzleme için kullanılan iç KIMLIK. |
+| TaskName | Başarısız görev açıklaması. |
+| Etkinlik Kimliği | İzleme için kullanılan iç KIMLIK. |
 | category | Görevin sınıflandırmasını tanımlar. Örneğin, anahtar kasanızın anahtarı devre dışı bırakılmışsa, bir bilgi kategorisi olur veya bir anahtarın sarmalanmamış olması durumunda hataya neden olabilir. |
 | resourceId | Azure Resource Manager kaynak KIMLIĞI |
 | keyVault | Anahtar kasasının tam adı. |
 | anahtar | Event Hubs ad alanını şifrelemek için kullanılan anahtar adı. |
 | version | Kullanılan anahtarın sürümü. |
-| çalışmasını | Anahtar kasasındaki anahtarda gerçekleştirilen işlem. Örneğin, anahtarı devre dışı bırakma/etkinleştirme, sarmalama veya kaydırmayı kaldırma |
-| kodudur | İşlemle ilişkili kod. Örnek: hata kodu, 404, anahtarın bulunamadığı anlamına gelir. |
+| operation | Anahtar kasasındaki anahtarda gerçekleştirilen işlem. Örneğin, anahtarı devre dışı bırakma/etkinleştirme, sarmalama veya kaydırmayı kaldırma |
+| kod | İşlemle ilişkili kod. Örnek: hata kodu, 404, anahtarın bulunamadığı anlamına gelir. |
 | message | İşlemle ilişkili herhangi bir hata iletisi |
 
 Müşteri tarafından yönetilen anahtar için günlüğe bir örnek aşağıda verilmiştir:

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: ecc996cc07cfbf22a04a620ca426ca97056a9a9d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 547ca9c98d77b2aaa6d3630bff4b2ec10dcc5be0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371216"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754178"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>PowerShell kullanarak Azure 'da bir VM 'ye bağlantı noktalarını ve uç noktaları açma
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -97,5 +97,5 @@ Bu örnekte, HTTP trafiğine izin vermek için basit bir kural oluşturdunuz. A�
 
 * [Azure Resource Manager’a genel bakış](../../azure-resource-manager/management/overview.md)
 * [Ağ güvenlik grubu nedir?](../../virtual-network/security-overview.md)
-* [Yük dengeleyiciler için Azure Resource Manager genel bakış](../../load-balancer/load-balancer-arm.md)
+* [Azure Load Balancer genel bakış](../../load-balancer/load-balancer-overview.md)
 

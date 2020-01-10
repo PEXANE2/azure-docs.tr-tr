@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/23/2019
-ms.openlocfilehash: b93bf4f67c2581b7cac476b83fc130bf344cfa83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/19/2019
+ms.openlocfilehash: 8f17a3ffbbee2bc702be1c2c690a1d6c85d792cb
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476731"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751048"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Izleyici için izleme verileri kaynakları
 Azure Izleyici, [günlükleri](data-platform-logs.md) ve [ölçümleri](data-platform-metrics.md)içeren [ortak bir izleme verileri platformunu](data-platform.md) temel alır. Bu platforma verilerin toplanması, birden fazla kaynaktan gelen verilerin Azure Izleyici 'de ortak bir araç kümesi kullanılarak analiz edilmesini sağlar. İzleme verileri belirli senaryoları desteklemek için başka konumlara de gönderilebilir ve bazı kaynaklar günlüklere veya ölçümlere toplanmadan önce diğer konumlara yazılabilir.
@@ -32,7 +32,7 @@ Aşağıdaki tabloda, Azure 'a özgü uygulama katmanları kısaca açıklanmakt
 
 | Katman | Açıklama | Collection yöntemi |
 |:---|:---|:---|
-| [Azure kiracısı](#azure-tenant) | Azure Active Directory gibi kiracı düzeyinde Azure hizmetlerinin çalışması hakkındaki veriler. | Portalda AAD verilerini görüntüleyin veya bir kiracı tanılama ayarı kullanarak koleksiyonu Azure Izleyici 'ye yapılandırın. |
+| [Azure kiracısı](#azure-tenant) | Azure Active Directory gibi kiracı düzeyindeki Azure hizmetlerinin çalışmasıyla ilgili veriler. | Portalda AAD verilerini görüntüleyin veya bir kiracı tanılama ayarı kullanarak koleksiyonu Azure Izleyici 'ye yapılandırın. |
 | [Azure aboneliği](#azure-subscription) | Azure aboneliğinizdeki Kaynak Yöneticisi ve hizmet durumu gibi çapraz kaynak hizmetlerinin sistem durumu ve yönetimiyle ilgili veriler. | Portalda görüntüleyin veya bir günlük profili kullanarak Azure Izleyici 'de koleksiyonu yapılandırın. |
 | [Azure kaynakları](#azure-resources) |  Her bir Azure kaynağının işlemi ve performansı hakkındaki veriler. | Ölçümler otomatik olarak toplanır, Ölçüm Gezgini içinde görüntüleyin.<br>Azure Izleyici 'de günlükleri toplamak için tanılama ayarlarını yapılandırın.<br>Belirli kaynak türlerine yönelik daha ayrıntılı izleme için çözümleri ve öngörüleri izleme. |
 
@@ -67,7 +67,7 @@ Azure aboneliğinizin sistem durumu ve işlemiyle ilgili telemetri.
 ![Azure aboneliği](media/data-sources/azure-subscription.png)
 
 ### <a name="azure-activity-log"></a>Azure etkinlik günlüğü 
-[Azure etkinlik günlüğü](activity-logs-overview.md) , Azure aboneliğinizdeki kaynaklarda yapılan tüm yapılandırma değişiklikleri kayıtlarıyla birlikte hizmet durumu kayıtlarını içerir. Etkinlik günlüğü tüm Azure kaynakları için kullanılabilir ve _dış_ görünümünü temsil eder.
+[Azure etkinlik günlüğü](platform-logs-overview.md) , Azure aboneliğinizdeki kaynaklarda yapılan tüm yapılandırma değişiklikleri kayıtlarıyla birlikte hizmet durumu kayıtlarını içerir. Etkinlik günlüğü tüm Azure kaynakları için kullanılabilir ve _dış_ görünümünü temsil eder.
 
 | Hedef | Açıklama | Başvuru |
 |:---|:---|
@@ -100,7 +100,7 @@ Azure aboneliğinizin sistem durumu ve işlemiyle ilgili telemetri.
 | Event Hubs | Event Hubs kullanarak ölçümleri diğer konumlara akış. |[Dış bir araçla tüketim için Azure izleme verilerini bir olay hub 'ına akış](stream-monitoring-data-event-hubs.md) |
 
 ### <a name="resource-logs"></a>Kaynak günlükleri
-[Kaynak günlükleri](resource-logs-overview.md) bir Azure kaynağının _iç_ işlemine ilişkin öngörüler sağlar.  Kaynak günlükleri otomatik olarak oluşturulur, ancak her kaynak için toplanmaları için bir hedef belirtmek üzere bir tanılama ayarı oluşturmanız gerekir.
+[Kaynak günlükleri](platform-logs-overview.md) bir Azure kaynağının _iç_ işlemine ilişkin öngörüler sağlar.  Kaynak günlükleri otomatik olarak oluşturulur, ancak her kaynak için toplanmaları için bir hedef belirtmek üzere bir tanılama ayarı oluşturmanız gerekir.
 
 Kaynak günlüklerinin yapılandırma gereksinimleri ve içerikleri kaynak türüne göre farklılık gösterir ve tüm hizmetler henüz bunları oluşturmaz. Her hizmet hakkındaki ayrıntılar ve ayrıntılı yapılandırma yordamlarına bağlantılar için bkz. [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](diagnostic-logs-schema.md) . Hizmet Bu makalede listelenmiyorsa, bu hizmet şu anda kaynak günlükleri oluşturmaz.
 
@@ -131,6 +131,7 @@ Windows veya Linux sanal makinelerinizin kapsamlı izleme ve yönetimi için Log
 | Hedef | Açıklama | Başvuru |
 |:---|:---|:---|
 | Azure İzleyici Günlükleri | Log Analytics Aracısı doğrudan veya System Center Operations Manager aracılığıyla Azure Izleyici 'ye bağlanır ve yapılandırdığınız veri kaynaklarından veya uygulamalar için ek Öngörüler sağlayan izleme çözümleriyle veri toplamanıza olanak tanır sanal makinede çalışıyor. | [Azure Izleyici 'de aracı veri kaynakları](agent-data-sources.md)<br>[Operations Manager Azure Izleyici 'ye bağlama](om-agents.md) |
+| VM depolaması | VM'ler için Azure İzleyici, özel bir konumda durum bilgilerini depolamak için Log Analytics aracısını kullanır. Daha fazla bilgi için sonraki bölüme bakın.  |
 
 
 ### <a name="azure-monitor-for-vms"></a>VM'ler için Azure İzleyici 
@@ -139,7 +140,7 @@ Windows veya Linux sanal makinelerinizin kapsamlı izleme ve yönetimi için Log
 | Hedef | Açıklama | Başvuru |
 |:---|:---|:---|
 | Azure İzleyici Günlükleri | Aracıdaki işlem ve bağımlılıklarla ilgili verileri depolar. | [Uygulama bileşenlerini anlamak için VM'ler için Azure İzleyici (Önizleme) eşlemesini kullanma](../insights/vminsights-maps.md) |
-| VM depolaması | VM'ler için Azure İzleyici, özel bir konumda durum bilgilerini depolar. Bu, yalnızca [Azure Kaynak sistem durumu REST API](/rest/api/resourcehealth/)ek olarak Azure Portal VM'ler için Azure izleyici kullanılabilir. | [Azure sanal makinelerinizin sistem durumunu anlayın](../insights/vminsights-health.md)<br>[Azure Kaynak durumu REST API](https://docs.microsoft.com/rest/api/resourcehealth/) |
+| VM depolaması | VM'ler için Azure İzleyici, özel bir konumda durum bilgilerini depolamak için Log Analytics aracısını kullanır. Bu, yalnızca [Azure Kaynak sistem durumu REST API](/rest/api/resourcehealth/)ek olarak Azure Portal VM'ler için Azure izleyici kullanılabilir. | [Azure sanal makinelerinizin sistem durumunu anlayın](../insights/vminsights-health.md)<br>[Azure Kaynak durumu REST API](https://docs.microsoft.com/rest/api/resourcehealth/) |
 
 
 
@@ -157,7 +158,7 @@ Bir izleme paketi yükleyerek bir uygulama için Application Insights etkinleşt
 | Azure İzleyici Günlükleri | Sayfa görünümleri, uygulama istekleri, özel durumlar ve izlemeler dahil olmak üzere uygulamanız hakkındaki işletimsel veriler. | [Azure Izleyici 'de günlük verilerini çözümleme](../log-query/log-query-overview.md) |
 |                    | Uygulama Haritası ve telemetri bağıntısını desteklemek için uygulama bileşenleri arasındaki bağımlılık bilgileri. | [Application Insights telemetri bağıntısı](../app/correlation.md) <br> [Uygulama Eşlemesi](../app/app-map.md) |
 |            | Uygulamanızın genel Internet 'teki farklı konumlardan kullanılabilirliğini ve yanıt hızını test eden kullanılabilirlik testlerinin sonuçları. | [Web sitelerinin kullanılabilirliğini ve yanıt hızını izleme](../app/monitor-web-app-availability.md) |
-| Azure Izleyici ölçümleri | Application Insights, uygulamanızda Azure Izleyici ölçümleri veritabanına tanımladığınız özel ölçümlere ek olarak uygulamanın performansını ve işlemini açıklayan ölçümleri toplar. | [Application Insights 'de günlük tabanlı ve önceden toplanmış ölçümler](../app/pre-aggregated-metrics-log-metrics.md)<br>[Özel olaylar ve ölçümler için Application Insights API 'SI](../app/api-custom-events-metrics.md) |
+| Azure Izleyici ölçümleri | Application Insights, uygulamanızda Azure Izleyici ölçümleri veritabanına tanımladığınız özel ölçümlere ek olarak uygulamanın performansını ve işlemini açıklayan ölçümleri toplar. | [Application Insights’taki günlük tabanlı ve önceden kümelenmiş ölçümler](../app/pre-aggregated-metrics-log-metrics.md)<br>[Özel olaylar ve ölçümler için Application Insights API](../app/api-custom-events-metrics.md) |
 | Azure Depolama | Arşivleme için uygulama verilerini Azure depolama 'ya gönderin. | [Application Insights’tan telemetriyi dışarı aktarma](../app/export-telemetry.md) |
 |            | Kullanılabilirlik testlerinin ayrıntıları Azure Storage 'da depolanır. Yerel Analize indirmek için Azure portal Application Insights kullanın. Kullanılabilirlik testlerinin sonuçları Azure Izleyici günlüklerinde depolanır. | [Web sitelerinin kullanılabilirliğini ve yanıt hızını izleme](../app/monitor-web-app-availability.md) |
 |            | Profil Oluşturucu izleme verileri Azure depolama 'da depolanır. Yerel Analize indirmek için Azure portal Application Insights kullanın.  | [Application Insights ile Azure 'da üretim uygulamaları profilini yapın](../app/profiler-overview.md) 

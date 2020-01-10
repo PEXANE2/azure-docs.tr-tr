@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 0feca8b477a1d76eae9e3f41de0026a33cc3249d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ab07da38c01b052a4220274fb059683a22950a3f
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259346"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750713"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>IoT Hub işlemler izlemeden tanılama ayarlarına geçirin
 
-IoT Hub içindeki işlemlerin durumunu izlemek için [İşlem izlemeyi](iot-hub-operations-monitoring.md) kullanan müşteriler, bu Iş akışını Azure izleyici 'nin bir özelliği olan [Azure tanılama ayarlarına](../azure-monitor/platform/resource-logs-overview.md)geçirebilir. Tanılama ayarları birçok Azure hizmeti için kaynak düzeyinde tanılama bilgilerini sağlar.
+IoT Hub içindeki işlemlerin durumunu izlemek için [İşlem izlemeyi](iot-hub-operations-monitoring.md) kullanan müşteriler, bu Iş akışını Azure izleyici 'nin bir özelliği olan [Azure tanılama ayarlarına](../azure-monitor/platform/platform-logs-overview.md)geçirebilir. Tanılama ayarları birçok Azure hizmeti için kaynak düzeyinde tanılama bilgilerini sağlar.
 
 **IoT Hub işlemler izleme işlevi kullanım dışıdır**ve portaldan kaldırılmıştır. Bu makalede, iş yüklerinizi işlemler izlemeden tanılama ayarlarına taşıma adımları sağlanır. Kullanımdan kaldırma zaman çizelgesi hakkında daha fazla bilgi için bkz. Azure [izleme Ile Azure IoT çözümlerinizi izleme ve Azure Kaynak durumu](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
 

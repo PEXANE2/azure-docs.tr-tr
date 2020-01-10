@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 82e62b6d0925aa53fc8456addb4732b16e69080b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9b08dd60020dad6f747167f35e8d172fdc24a59e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935933"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751881"
 ---
 GPU iyileştirilmiş VM boyutları, tek veya birden çok NVıDıA GPU ile kullanılabilen özelleştirilmiş sanal makinelerdir. Bu boyutlar, işlem yoğunluğu, grafik yoğun ve görselleştirme iş yükleri için tasarlanmıştır. Bu makalede GPU 'Lar, vCPU 'Lar, veri diskleri ve NIC 'lerin sayısı ve türleri hakkında bilgi sağlanır. Bu gruplandırmadaki her boyut için depolama verimlilik ve ağ bant genişliği de mevcuttur.
 
@@ -93,22 +93,34 @@ NCv3 serisi VM 'Ler [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center
 
 *RDMA özellikli
 
-## <a name="ndv2-series-preview"></a>NDv2 serisi (Önizleme)
+## <a name="updated-ndv2-series-preview"></a>NDv2-Series güncelleştirildi (Önizleme)
 
 Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
 
-InfiniBand: desteklenmiyor
+InfiniBand: destekleniyor
 
-NDv2 serisi sanal makine, HPC, AI ve makine öğrenimi iş yüklerinin ihtiyaçlarına göre tasarlanan GPU ailesine yeni bir ektir. 8 NVıDıA Tesla V100 NVLINK ile bağlantılı GPU 'Lar ve 40 Intel Xeon Platinum 8168 (ufuk Gölü) çekirdeği ve 672 GiB ile desteklenir. NDv2 örneği Cuda, TensorFlow, Pytorch, Caffe ve diğer çerçeveleri kullanarak HPC ve AI iş yükleri için mükemmel FP32 ve FP64 performansı sağlar.
+NDv2 serisi sanal makine, en zorlu GPU hızlandırmalı AI, makine öğrenimi, simülasyon ve HPC iş yüklerinin ihtiyaçları için tasarlanan GPU ailesine yeni bir ektir. 
 
-[Önizleme sırasında bu makinelere kaydolun ve erişim kazanın](https://aka.ms/ndv2signup).
+NDv2, her biri 32 GB GPU belleği bulunan 8 NVıDıA Tesla V100 NVLINK bağlantılı GPU 'Lar tarafından desteklenir. Her NDv2 VM 'nin ayrıca 40 hiper olmayan Intel Xeon Platinum 8168 (ufuk Gölü) çekirdeği ve 672 GiB sistem belleği vardır. 
+
+NDv2 örnekleri, CUDA GPU ile iyileştirilmiş hesaplama kernels ' lerini kullanan HPC ve AI, ML ve analiz araçlarının yanı sıra TensorFlow, Pytorch, Caffe, RAPıDS ve diğer gibi GPU hızlandırmasını destekleyen birçok AI, ML ve analiz aracını sağlar çerçeveleri. 
+
+Kritik olarak, NDv2 her ikisi de hesaplama için (VM başına 8 GPU) ve genişleme (birden çok VM birlikte çalışan birden fazla sanal makine) iş yükleri için oluşturulmuştur. NDv2 serisi artık 100 Gigabit InfiniBand EDR arka uç ağını destekleyerek, AI ve ML için dağıtılmış eğitim dahil paralel senaryolar için yüksek performanslı Kümelemeye olanak tanır. Bu arka uç ağı, NVıDıA 'nin NCCL2 kitaplıkları tarafından çalıştırılan ve GPU 'Ların sorunsuz kümelemesine izin veren tüm önemli InfiniBand protokollerini destekler.
+
+> ND40rs_v2 VM 'de [InfiniBand etkinleştirilirken](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) lütfen 4.7-1.0.0.1 Mellanox ofed sürücüsünü kullanın.
+
+> Daha fazla GPU belleği nedeniyle, yeni ND40rs_v2 VM [2. nesil sanal makinelerin](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) ve Market görüntülerinin kullanılmasını gerektirir. 
+
+> [NDv2 sanal makine önizlemesine erken erişim istemek için kaydolun.](https://aka.ms/AzureNDrv2Preview)
+
+> Lütfen unutmayın: GPU başına 16 GB bellek içeren ND40s_v2 artık önizleme için kullanılamaz ve güncelleştirilmiş ND40rs_v2 yerini almıştır.
 <br>
 
 | Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | En fazla veri diski | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En yüksek ağ bant genişliği | En fazla NIC |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_ND40s_v2 | 40 | 672 | 2948 | 8 V100 (NVLink) | 16 | 32 | 80000/800 | 24000 Mbps | 8 |
+| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 16 | 32 | 80000/800 | 24000 Mbps | 8 |
 
 ## <a name="nd-series"></a>ND serisi
 

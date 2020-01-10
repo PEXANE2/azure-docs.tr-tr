@@ -6,19 +6,19 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/19/2019
+ms.date: 01/08/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 7b44597b24adce05498eed273c9494cae3360ed6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 271a4f116b8b929e17c3a0379bef91d6b80e1490
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168808"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754445"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
-Azure Güvenlik Duvarı, Azure Sanal Ağ kaynaklarınızı koruyan yönetilen, bulut tabanlı bir güvenlik hizmetidir. Yerleşik yüksek kullanılabilirliğe sahip ve Kısıtlanmamış bulut ölçeklenebilirliğine sahip bir hizmet olarak tam durum bilgisi olmayan bir güvenlik duvarıdır.
+Azure Güvenlik Duvarı, Azure Sanal Ağ kaynaklarınızı koruyan yönetilen, bulut tabanlı bir güvenlik hizmetidir. Yerleşik yüksek kullanılabilirlik oranına ve kısıtlamasız bulut ölçeklenebilirliğine sahip, tam durum bilgisi olan bir hizmet olarak güvenlik duvarıdır.
 
 ![Güvenlik duvarına genel bakış](media/overview/firewall-threat.png)
 
@@ -65,7 +65,7 @@ FQDN etiketleri, tanınan Azure hizmeti ağ trafiğine güvenlik duvarınızda i
 
 Hizmet etiketi, güvenlik kuralı oluşturma sırasındaki karmaşıklığı en aza indirmeye yardımcı olmak için bir IP adresi ön eki grubunu temsil eder. Kendi hizmet etiketinizi oluşturamaz ve bir etiket içinde hangi IP adreslerinin ekleneceğini belirtebilirsiniz. Hizmet etiketine dahil olan adres ön ekleri Microsoft tarafından yönetilir ve hizmet etiketi adresler değiştikçe otomatik olarak güncelleştirilir.
 
-## <a name="threat-intelligence"></a>Tehdit bilgileri
+## <a name="threat-intelligence"></a>Tehdit zekası
 
 Güvenlik duvarınız için tehdit bilgileri tabanlı filtrelemeyi etkinleştirerek, kötü amaçlı olduğu bilinen IP adresleri ve etki alanları ile trafik yaşanması durumunda uyarı alabilir ve trafiği reddedebilirsiniz. IP adresleri ve etki alanları, Microsoft Tehdit Bilgileri akışından alınır.
 
@@ -94,7 +94,7 @@ Tüm olaylar Azure Izleyici ile tümleşiktir ve günlükleri bir depolama hesab
 
 Azure Güvenlik Duvarı, ödeme kartı sektör (PCI), hizmet kuruluşu denetimleri (SOC) ve Uluslararası Standardizasyon Teşkilatı (ISO) ile uyumludur. Şu anda SOC 1 tür 2, SOC 2 tür 2, SOC 3, PCI DSS ve ISO 27001, 27018, 20000-1, 22301, 9001, 27017 desteklemektedir.
 
-Daha fazla bilgi için lütfen [Microsoft Uyumluluk Kılavuzu](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide)’na bakın.
+Daha fazla bilgi için bkz. [Microsoft Uyumluluk Kılavuzu](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide).
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
@@ -106,7 +106,6 @@ TCP/UDP dışı protokollere (örneğin ICMP) yönelik ağ filtreleme kuralları
 |ICMP için eksik PowerShell ve CLI desteği|Azure PowerShell ve CLI ağ kurallarında geçerli bir protokol olarak ICMP'yi desteklemez.|Portal ve REST API aracılığıyla bir protokol olarak ıCMP kullanmak yine de mümkündür. PowerShell ve CLı için yakında ıCMP eklemek üzere çalışıyoruz.|
 |FQDN etiketleri bir protokol: bağlantı noktası ayarlamayı gerektirir|FQDN etiketleriyle uygulama kuralları için bağlantı noktası: protokol tanımı gerekir.|Bağlantı noktası:protokol değeri olarak **https** kullanabilirsiniz. FQDN etiketleri kullanıldığında bu alanı isteğe bağlı hale getirmek için çalışıyoruz.|
 |Bir güvenlik duvarını farklı bir kaynak grubuna veya aboneliğe taşıma desteklenmiyor|Bir güvenlik duvarının farklı bir kaynak grubuna veya aboneliğe taşınması desteklenmez.|Bu işlevi desteklemek, yol haritamız üzerinde. Bir güvenlik duvarını başka bir kaynak grubuna veya aboneliğe taşımak için geçerli örneği silmeniz ve yeni kaynak grubunda veya abonelikte yeniden oluşturmanız gerekir.|
-|Ağ ve uygulama kurallarında bağlantı noktası aralığı|Bağlantı noktaları, yönetim ve sistem durumu araştırmaları için ayrıldığından yüksek bağlantı noktaları 64.000 ile sınırlıdır. |Bu sınırlamayı rahat hale getiriyoruz.|
 |Tehdit bilgileri uyarıları maskeli olabilir|Giden filtreleme maskeleri için hedef 80/443 olan ağ kuralları yalnızca uyarı moduna yapılandırıldığında tehdit bilgileri uyarılarını arar.|Uygulama kurallarını kullanarak 80/443 için giden filtreleme oluşturun. Ya da tehdit zekası modunu **uyarı ve reddetme**olarak değiştirin.|
 |Azure Güvenlik Duvarı yalnızca ad çözümlemesi için Azure DNS kullanır|Azure Güvenlik Duvarı yalnızca Azure DNS kullanarak FQDN 'leri çözer. Özel bir DNS sunucusu desteklenmez. Diğer alt ağlarda DNS çözümlemesi üzerinde hiçbir etkisi yoktur.|Bu sınırlamayı rahat hale getiriyoruz.|
 |Azure Güvenlik Duvarı SNAT/DNAT özel IP hedefleri için çalışmıyor|Azure Güvenlik Duvarı SNAT/DNAT desteği Internet çıkış/giriş ile sınırlıdır. SNAT/DNAT Şu anda özel IP hedefleri için çalışmıyor. Örneğin, bağlı bileşene bağlı olarak.|Bu geçerli bir kısıtlamadır.|

@@ -8,24 +8,24 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 8ab4cb6b06f0f023a8f6368dac633a97afe29fd4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: eb1821537e6e25b05dfdca3107729eecf4c6e1bf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390019"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750502"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Kuyruk depolama için performans ve ölçeklenebilirlik denetim listesi
 
 Microsoft, kuyruk depolama ile yüksek performanslı uygulamalar geliştirmeye yönelik bir dizi kanıtlanmış uygulama geliştirmiştir. Bu denetim listesi, geliştiricilerin performansı iyileştirmek için izleyebildiği önemli uygulamaları tanımlar. Uygulamanızı tasarlarken ve işlem boyunca bu uygulamaları göz önünde bulundurun.
 
-Azure depolama kapasitesi, işlem hızı ve bant genişliği için ölçeklenebilirlik ve performans hedefleri içerir. Azure depolama ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [depolama hesapları Için Azure Storage ölçeklenebilirlik ve performans hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
+Azure depolama kapasitesi, işlem hızı ve bant genişliği için ölçeklenebilirlik ve performans hedefleri içerir. Azure depolama ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) ve [kuyruk depolaması için ölçeklenebilirlik ve performans hedefleri](scalability-targets.md).
 
 ## <a name="checklist"></a>Denetim Listesi
 
 Bu makale, sıra depolama uygulamanızı geliştirirken izleyebileceğiniz bir denetim listesi halinde performans için kanıtlanmış uygulamaları düzenler.
 
-| Bitti | Kategori | Tasarım değerlendirmesi |
+| Bitti | Kategori | Tasarımı ile ilgili dikkat edilmesi gerekenler |
 | --- | --- | --- |
 | &nbsp; |Ölçeklenebilirlik hedefleri |[Uygulamanızı en fazla depolama hesabı sayısından daha fazla kullanmak üzere tasarlayabilmeniz gerekebilir mi?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Ölçeklenebilirlik hedefleri |[Kapasite ve işlem sınırlarına yaklaşmaktan kaçınıyorsunuz musunuz?](#capacity-and-transaction-targets) |
@@ -51,7 +51,7 @@ Bu makale, sıra depolama uygulamanızı geliştirirken izleyebileceğiniz bir d
 
 Uygulamanız ölçeklenebilirlik hedeflerinin herhangi birini yaklaşırsa veya aşarsa, daha fazla işlem gecikmeleri veya azaltmasıyla karşılaşabilirler. Azure Storage uygulamanızı kısıtsalken, hizmet 503 (sunucu meşgul) veya 500 (Işlem zaman aşımı) hata kodları döndürmeye başlar. Ölçeklenebilirlik hedefleri sınırları içinde kalarak bu hatalardan kaçınmak, uygulamanızın performansını artırmanın önemli bir parçasıdır.
 
-Kuyruk hizmeti ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#azure-queue-storage-scale-targets).
+Kuyruk hizmeti ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>En fazla depolama hesabı sayısı
 
@@ -194,5 +194,6 @@ Uygulama mimarinizi ölçeklenebilir hale getirmek için kuyrukları kullanın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Depolama hesapları için Azure depolama ölçeklenebilirlik ve performans hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [Kuyruk depolama için ölçeklenebilirlik ve performans hedefleri](scalability-targets.md)
+- [Standart depolama hesapları için ölçeklenebilirlik ve performans hedefleri](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 - [Durum ve hata kodları](/rest/api/storageservices/Status-and-Error-Codes2)
