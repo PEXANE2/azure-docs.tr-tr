@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d70e87a9a0c7fb9b28f2a025db15ce4ba666255
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 43e50f8787516b1877f7867419b6edfd819ad158
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379607"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746053"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD JOIN Uygulamanızı planlayın
 
@@ -24,7 +24,7 @@ Azure AD katılımı, kullanıcılarınızın üretken ve güvenli tutulması s�
 
 Bu makale, Azure AD JOIN uygulamanızı planlamak için gereken bilgileri sağlar.
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, [Azure Active Directory 'de cihaz yönetimine giriş](../device-management-introduction.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
@@ -34,13 +34,13 @@ Azure AD JOIN uygulamanızı planlamak için şunu öğrenmeniz gerekir:
 
 |   |   |
 |---|---|
-|![Onay][1]|Senaryolarınızı gözden geçirin|
-|![Onay][1]|Kimlik altyapınızı gözden geçirin|
-|![Onay][1]|Cihaz yönetimini değerlendirin|
-|![Onay][1]|Uygulamalar ve kaynaklarla ilgili önemli noktaları anlama|
-|![Onay][1]|Sağlama seçeneklerinizi anlayın|
-|![Onay][1]|Kurumsal durum dolaşımı yapılandırma|
-|![Onay][1]|Koşullu erişimi yapılandırma|
+|![İşaretli][1]|Senaryolarınızı gözden geçirin|
+|![İşaretli][1]|Kimlik altyapınızı gözden geçirin|
+|![İşaretli][1]|Cihaz yönetimini değerlendirin|
+|![İşaretli][1]|Uygulamalar ve kaynaklarla ilgili önemli noktaları anlama|
+|![İşaretli][1]|Sağlama seçeneklerinizi anlayın|
+|![İşaretli][1]|Kurumsal durum dolaşımı yapılandırma|
+|![İşaretli][1]|Koşullu erişimi yapılandırma|
 
 ## <a name="review-your-scenarios"></a>Senaryolarınızı gözden geçirin 
 
@@ -75,7 +75,7 @@ AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz ge
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
 
-Kimlik sağlayıcınız bu protokolleri desteklemiyorsa Azure AD katılımı yerel olarak çalışmaz. Windows 10 1809 ' den başlayarak, kullanıcılarınız [Windows 10 ' da Web oturumu açma](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)yoluyla SAML tabanlı bir kimlik sağlayıcısı Ile BIR Azure AD 'ye katılmış cihazda oturum açabilirler. Şu anda, Web oturumu açma bir önizleme özelliğidir ve üretim dağıtımları için önerilmez.
+Kimlik sağlayıcınız bu protokolleri desteklemiyorsa Azure AD katılımı yerel olarak çalışmaz. 
 
 >[!NOTE]
 > Şu anda Azure AD JOIN, [birincil kimlik doğrulama yöntemi olarak dış kimlik doğrulama sağlayıcılarıyla yapılandırılmış AD FS 2019](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary)ile çalışmıyor. Azure AD JOIN, birincil yöntem olarak parola kimlik doğrulaması varsayılan olarak, bu senaryoda kimlik doğrulama hatalarıyla sonuçlanır
@@ -87,7 +87,7 @@ Cihazları Azure AD 'ye katmak için akıllı kartlar veya sertifika tabanlı ki
 
 **Öneri:** Windows 10 cihazlarına güçlü, parola açısından daha az kimlik doğrulama için Iş için Windows Hello 'Yu uygulayın.
 
-### <a name="user-configuration"></a>Kullanıcı Yapılandırması
+### <a name="user-configuration"></a>Kullanıcı yapılandırması
 
 İçinde kullanıcı oluşturursanız:
 
@@ -169,7 +169,7 @@ Cihazın bir etki alanı denetleyicisine erişimi varsa, kullanıcılar Azure AD
 
 Bir cihazın şirket içi etki alanı denetleyicisine erişimi olduğunda kullanıcılarınızın Azure AD 'ye katılmış cihazlarından SSO 'SU vardır.
 
-### <a name="printers"></a>Yazıcılarınızı
+### <a name="printers"></a>Yazıcılar
 
 Yazıcılar için, Azure AD 'ye katılmış cihazlarda yazıcı bulmak için [hibrit bulut yazdırma](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) 'yı dağıtmanız gerekir. 
 
@@ -266,9 +266,9 @@ Kapsamınızı temel alarak aşağıdakilerden biri olur:
 
 MDM yapılandırmanızla ilgili üç URL vardır:
 
-- MDM kullanım koşulları URL 'SI
-- MDM bulma URL 'SI 
-- MDM uyumluluk URL 'SI
+- MDM kullanım koşulları URL'si
+- MDM bulma URL'si 
+- MAM uyumluluk URL’si
 
 ![Uygulama ekleme](./media/azureadjoin-plan/06.png)
 

@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
-ms.openlocfilehash: 7f5fe404c93b7db22444b9dad97a0d3474c33a16
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257081"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751131"
 ---
 # <a name="security-controls-for-api-management"></a>API Management için güvenlik denetimleri
 
@@ -34,22 +34,22 @@ Bu makalede, API Management yerleşik olarak bulunan güvenlik denetimleri Belge
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
 | Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | | |
-| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | [Azure Izleyici etkinlik günlükleri](../azure-monitor/platform/activity-logs-overview.md) | |
-| Veri düzlemi günlüğü ve denetimi| Evet | [Azure izleyici tanılama günlükleri](../azure-monitor/platform/resource-logs-overview.md) ve (isteğe bağlı olarak) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  | |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | [Azure Izleyici etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md) | |
+| Veri düzlemi günlüğü ve denetimi| Evet | [Azure izleyici tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md) ve (isteğe bağlı olarak) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  | |
 
 
 ## <a name="identity"></a>Kimlik
 
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
-| Authentication| Evet | |  |
-| Authorization| Evet | |  |
+| Kimlik Doğrulaması| Evet | |  |
+| Yetkilendirme| Evet | |  |
 
-## <a name="data-protection"></a>Veri koruma
+## <a name="data-protection"></a>Veri koruması
 
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |---|---|--|--|
-| Bekleyen sunucu tarafı şifrelemesi: Microsoft tarafından yönetilen anahtarlar | Evet | Sertifikalar, anahtarlar ve gizli-adlandırılmış değerler gibi hassas veriler hizmet tarafından yönetilen hizmet örneği anahtarları ile şifrelenir. |  |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet | Sertifikalar, anahtarlar ve gizli-adlandırılmış değerler gibi hassas veriler hizmet tarafından yönetilen hizmet örneği anahtarları ile şifrelenir. |  |
 | Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır | Tüm şifreleme anahtarları hizmet örneği başına alınır ve hizmet yönetilir. |  |
 | Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |  |
 | Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | [Express Route](../expressroute/index.yml) ve VNET şifrelemesi, [Azure ağı](../virtual-network/index.yml)tarafından sağlanır. |  |

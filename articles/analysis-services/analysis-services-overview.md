@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: eb69028a3b5ea232fbafe8286c3067a22f06d455
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ee107ffdc677a0feffbdaf1441d77a8ed05f2c94
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572823"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749694"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -24,7 +24,7 @@ Azure Analysis Services, bulutta kurumsal düzeyde veri modelleri sağlayan, tam
 
 **Video:** Azure Analysis Services’in Microsoft’un genel BI özelliklerine ne kadar uygun olduğu hakkında bilgi almak için [Azure Analysis Services’e Genel Bakış](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) bölümüne göz atın.
 
-## <a name="get-up-and-running-quickly"></a>Hızla çalışmaya başlayın
+## <a name="get-up-and-running-quickly"></a>Hızlıca hazırlanıp işe başlayın
 
 Azure portalında, birkaç dakikada [sunucu oluşturabilirsiniz](analysis-services-create-server.md). Ayrıca, Azure Resource Manager [şablonları](../azure-resource-manager/resource-manager-create-first-template.md) ve PowerShell'le, bildirim temelli bir şablon kullanarak sunucu oluşturabilirsiniz. Basit bir şablonla, sunucu kaynaklarını ve bunların yanında depolama hesapları ve Azure İşlevleri gibi diğer Azure bileşenlerini dağıtabilirsiniz. 
 
@@ -40,7 +40,7 @@ Azure Analysis Services; **Geliştirici**, **Temel** ve **Standart** katmanları
 
 Bu katman değerlendirme, geliştirme ve test senaryoları için önerilir. Tek bir plan, standart katman ile sunulan aynı işlevleri içerir ancak işlemci gücü, QPU ve bellek boyutu bakımından sınırlıdır. Bu katmanda sorgu çoğaltma ölçeği *artırılamaz*. Bu katman bir SLA sunmaz.
 
-|Planlama  |QPU’lar  |Bellek (GB)  |
+|Plan  |QPU’lar  |Bellek (GB)  |
 |---------|---------|---------|
 |D1    |    20     |    3     |
 
@@ -49,7 +49,7 @@ Bu katman değerlendirme, geliştirme ve test senaryoları için önerilir. Tek 
 
 Bu katman küçük tablolu modeller, sınırlı düzeyde kullanıcı eşzamanlılığı ve basit veri yenileme gereksinimlerine sahip olan üretim çözümleri için önerilir. Bu katmanda sorgu çoğaltma ölçeği *artırılamaz*. Perspektifler, çoklu bölümler ve DirectQuery tablolu model özellikleri bu katmanda *desteklenmez*.  
 
-|Planlama  |QPU’lar  |Bellek (GB)  |
+|Plan  |QPU’lar  |Bellek (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
 |B2    |    80     |    16     |
@@ -58,7 +58,7 @@ Bu katman küçük tablolu modeller, sınırlı düzeyde kullanıcı eşzamanlı
 
 Bu katman, kullanıcı eşzamanlılığının elastik olmasını gerektiren ve hızla büyüyen veri modellerine sahip olan görev açısından kritik üretim uygulamalarına yöneliktir. Neredeyse gerçek zamanlı veri modeli güncelleştirmeleri için gelişmiş veri yenilemeyi ve tüm tablo modelleme özelliklerini destekler.
 
-|Planlama  |QPU’lar  |Bellek (GB)  |
+|Plan  |QPU’lar  |Bellek (GB)  |
 |---------|---------|---------|
 |S0    |    40     |    10     |
 |S1    |    100     |    25     |
@@ -79,15 +79,15 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 |Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
-|Güney Brezilya     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
+|Brezilya Güney     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Kanada Orta    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |Doğu ABD     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |Doğu ABD 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Doğu ABD 2     |     S8, S9, S8v2, S9v2   |    1    |
 |Orta Kuzey ABD     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Orta Güney ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Batı Orta ABD   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|Güney Orta ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Orta Batı ABD   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |Batı ABD     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |Batı ABD     |    S8, S9, S8v2, S9v2   |    2  |
 |Batı ABD 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
@@ -99,7 +99,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |---------|---------|:---------:|
 |Kuzey Avrupa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Kuzey Avrupa     |    S8v2, S9v2      |    3     |
-|Birleşik Krallık Güney     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
+|Birleşik Krallık, Güney     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Batı Avrupa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Batı Avrupa    |   S8, S9, S8v2, S9v2  |  1  |
 
@@ -107,10 +107,10 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 |Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
-|Avustralya Doğu     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Avustralya Doğu     |    S8, S9, S8v2, S9v2    |    1     |
-|Avustralya Güneydoğu     | B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Japonya Doğu     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Doğu Avustralya     |    B1, B2, S0, S1, S2, S4     |    3     |
+|Doğu Avustralya     |    S8, S9, S8v2, S9v2    |    1     |
+|Güneydoğu Avustralya     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Doğu Japonya     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Güneydoğu Asya     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |Batı Hindistan     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
@@ -118,7 +118,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="scale-updown-pause-and-resume"></a>Ölçek artırma\azaltma, duraklatma ve sürdürme
 
-Sunucunuzu yükseltin, indirin veya duraklatın. Azure portalını kullanın ve PowerShell'i kullanarak kolayca tam denetim sahibi olun. Sadece kullandığınız kadar ödersiniz.  
+Sunucunuzu yükseltin, indirin veya duraklatın. Azure portalını kullanın ve PowerShell'i kullanarak kolayca tam denetim sahibi olun. Yalnızca kullandığınız kadar ödersiniz.  
 
 ### <a name="scale-out-resources-for-fast-query-responses"></a>Hızlı sorgu yanıtları için genişletme kaynakları
 
@@ -157,7 +157,7 @@ Azure Analysis Services, birden fazla düzeyde hassas verileriniz için güvenli
 
 Sunucu düzeyinde Analysis Services, güvenlik duvarı, Azure kimlik doğrulaması, sunucu yöneticisi rolleri ve sunucu tarafı şifreleme sağlar. Veri modeli düzeyinde, Kullanıcı rolleri, satır düzeyi ve nesne düzeyinde güvenlik, verilerinizin güvende olduğundan ve yalnızca bunu gördüğü kullanıcılar tarafından görülendiğinden emin olmanızı sağlar.
 
-### <a name="firewall"></a>Güvenlik duvarı
+### <a name="firewall"></a>Güvenlik Duvarı
 
 Azure Analysis Services Güvenlik Duvarı, kurallarda belirtilen IP adresleri dışındaki tüm istemci bağlantılarını engeller. Varsayılan olarak, güvenlik duvarı koruması yeni sunucular için etkin değildir. Önerilen güvenlik duvarı koruması etkinleştirilir ve kurallar sunucu sağlama komut dosyasının bir parçası olarak veya sunucu oluşturulduktan hemen sonra portalda yapılandırılır. İstemci IP’lerine veya aralığa göre izin verilen IP adreslerini belirten kuralları yapılandırın. Power BI (hizmet) bağlantılarına da izin verilebilir veya bağlantılar engellenebilir. Güvenlik duvarı ve kuralları portaldan ya da PowerShell kullanarak yapılandırın. Daha fazla bilgi için bkz. [Sunucu güvenlik duvarı yapılandırma](analysis-services-qs-firewall.md).
 
@@ -177,7 +177,7 @@ Analysis Services, sunucu ve model veritabanı işlemlerine, nesnelerine ve veri
   
 Yönetici olmayan ve verileri sorgulayan son kullanıcılara, veritabanı rolleri aracılığıyla erişim izni verilir. Veritabanı rolü, veritabanında ayrı bir nesne olarak oluşturulur ve yalnızca bu rolün oluşturulduğu veritabanı için geçerli olur. Veritabanı rolleri, (veritabanı) Yönetici, Okuma ile Okuma ve İşleme izinleri tarafından tanımlanır. Kullanıcı ve grup hesapları, SSMS veya PowerShell kullanılarak eklenir.
 
-### <a name="row-level-security"></a>Satır düzeyi güvenlik
+### <a name="row-level-security"></a>Satır düzeyinde güvenlik
 
 Tüm uyumluluk düzeylerindeki tablolu modeller, satır düzeyinde güvenliği destekler. Satır düzeyinde güvenlik, bir tablodaki satırları ve bir kullanıcının sorgulayabileceği ilişkili bir tablonun birçok yönündeki herhangi bir satırı tanımlayan DAX ifadeleri kullanılarak modelde yapılandırılır. DAX ifadeleri kullanan satır filtreleri, Okuma ile Okuma ve İşleme izinleri için tanımlanır. 
 
@@ -224,7 +224,7 @@ Power BI, Excel, Reporting Services ve üçüncü taraf araçlar gibi modern ver
 
 ## <a name="monitoring-and-diagnostics"></a>İzleme ve tanılama
 
-Azure Analysis Services, Azure ölçümleriyle tümleşiktir ve sunucularınızın performans ve durumunu izlemenize yardımcı olan çok sayıda kaynağa özgü ölçüm sağlar. Daha fazla bilgi için bkz. [Sunucu ölçümlerini izleme](analysis-services-monitor.md). Ölçümleri [Azure kaynak tanılama günlükleri](../azure-monitor/platform/resource-logs-overview.md) ile kaydedin. Azure [depolama](https://azure.microsoft.com/services/storage/)'ya günlükleri izleyip gönderin, [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a aktarın [ve Azure 'Da bir hizmet olan](https://www.microsoft.com/cloud-platform/operations-management-suite)Azure [izleyici günlüklerine](https://azure.microsoft.com/services/log-analytics/)dışarı aktarın. Daha fazla bilgi için bkz. [Tanılama günlüğüne kaydetmeyi ayarlama](analysis-services-logging.md).
+Azure Analysis Services, Azure ölçümleriyle tümleşiktir ve sunucularınızın performans ve durumunu izlemenize yardımcı olan çok sayıda kaynağa özgü ölçüm sağlar. Daha fazla bilgi için bkz. [Sunucu ölçümlerini izleme](analysis-services-monitor.md). Ölçümleri [Azure kaynak tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md) ile kaydedin. Azure [depolama](https://azure.microsoft.com/services/storage/)'ya günlükleri izleyip gönderin, [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a aktarın [ve Azure 'Da bir hizmet olan](https://www.microsoft.com/cloud-platform/operations-management-suite)Azure [izleyici günlüklerine](https://azure.microsoft.com/services/log-analytics/)dışarı aktarın. Daha fazla bilgi için bkz. [Tanılama günlüğüne kaydetmeyi ayarlama](analysis-services-logging.md).
 
 Azure Analysis Services ayrıca [Dynamic Management Görünümleri (DMV)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) kullanmayı destekler. SQL söz dizimine göre DMV’ler, sunucu örneği hakkında meta veri ve izleme bilgileri döndüren şema satır kümeleri ile arabirim oluşturur.
 
@@ -232,7 +232,7 @@ Azure Analysis Services ayrıca [Dynamic Management Görünümleri (DMV)](https:
 
 Azure Analysis Services’e özgü belgeler buraya eklenir. Makaleleri bulmak için tarayıcı ekranınızın sol tarafındaki içindekiler bölümünü kullanın. 
 
-Azure Analysis Services tablolu modeller, SQL Server Analysis Services tablolu modellerle çok aynı olduğundan, SQL Server Analysis Services ' de paylaşılan kavramsal, yordamsal, geliştirici ve başvuru makaleleriyle ilgili kapsamlı bir kitaplık vardır. [ Belgeler](https://docs.microsoft.com/analysis-services/analysis-services-overview). SQL Server Analysis Services belgelerindeki makaleler, bunların Azure Analysis Services için de geçerli olup olmadığını başlığın altındaki bir APPLIES TO başlığı ile gösterir.
+Azure Analysis Services tablolu modeller SQL Server Analysis Services tablo modelleriyle aynı olduğundan, [SQL Server Analysis Services belgelerinde](https://docs.microsoft.com/analysis-services/analysis-services-overview)paylaşılan kavramsal, yordamsal, geliştirici ve başvuru makalelerinin kapsamlı bir kitaplığı vardır. SQL Server Analysis Services belgelerindeki makaleler, bunların Azure Analysis Services için de geçerli olup olmadığını başlığın altındaki bir APPLIES TO başlığı ile gösterir.
 
 ![Paylaşılan belgeler](./media/analysis-services-overview/aas-overview-applies-to.png)
 
@@ -246,7 +246,7 @@ Katkınız belge ekibi tarafından gözden geçirilecek ve onaylanması durumund
 
 Azure Analysis Services belgeleri ayrıca [GitHub Sorunları](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)’nı kullanır. Ürün veya belgeler hakkında geri bildirim sağlayabilirsiniz. Bir makalenin altındaki **Geri bildirim** seçeneğini kullanın. GitHub Sorunları SQL Server Analysis Services belgeleri için henüz etkin değildir. 
 
-## <a name="blogs"></a>Bloglar
+## <a name="blogs"></a>Web Günlükleri
 
 Her şey çok hızlı gelişiyor. [Power BI blogundan](https://powerbi.microsoft.com/blog/category/analysis-services/) ve [Azure blogundan](https://azure.microsoft.com/blog/)en son bilgileri alın.
 

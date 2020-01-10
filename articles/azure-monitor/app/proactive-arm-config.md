@@ -8,16 +8,16 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 74014a91684749eec7c4086a88785f2024694677
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: bc66a286bee193b377731a549129446bba431cb3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929087"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749047"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Application Insights akıllı algılama kurallarını yönetme
 
-Application Insights içindeki akıllı algılama kuralları [Azure Resource Manager şablonlar](../../azure-resource-manager/resource-group-authoring-templates.md)kullanılarak yönetilebilir ve yapılandırılabilir.
+Application Insights içindeki akıllı algılama kuralları [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md)kullanılarak yönetilebilir ve yapılandırılabilir.
 Bu yöntem, Azure Resource Manager otomasyonu ile yeni Application Insights kaynakları dağıtıldığında veya mevcut kaynakların ayarlarını değiştirirken kullanılabilir.
 
 ## <a name="smart-detection-rule-configuration"></a>Akıllı algılama kuralı yapılandırması
@@ -133,9 +133,12 @@ Application Insights kaynak adını değiştirdiğinizden ve ilgili akıllı alg
 
 ```
 
-### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Hata Anoıes v2 (klasik olmayan) uyarı kuralı
+### <a name="failure-anomalies-alert-rule"></a>Hata bozuklukları uyarı kuralı
 
-Bu Azure Resource Manager şablonu, 2 önem derecesine sahip bir hata anomali v2 uyarı kuralını yapılandırmayı gösterir. Hata Anoparçaları uyarı kuralının bu yeni sürümü, yeni Azure uyarı platformunun bir parçasıdır ve [Klasik uyarı](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)kullanımdan kaldırma işleminin bir parçası olarak kullanımdan kaldırılan klasik sürümü değiştirir.
+Bu Azure Resource Manager şablonu, önem derecesi 2 olan bir hata anomali uyarı kuralını yapılandırmayı gösterir. Hata Anoparçaları uyarı kuralının bu yeni sürümü, yeni Azure uyarı platformunun bir parçasıdır ve [Klasik uyarı](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)kullanımdan kaldırma işleminin bir parçası olarak kullanımdan kaldırılan klasik sürümü değiştirir.
+
+> [!NOTE]
+> Hata bozuklukları küresel bir hizmettir, bu nedenle kural konumu genel konumda oluşturulur.
 
 ```json
 {
@@ -166,7 +169,7 @@ Bu Azure Resource Manager şablonu, 2 önem derecesine sahip bir hata anomali v2
 ```
 
 > [!NOTE]
-> Bu Azure Resource Manager şablonu, hata Anoileri v2 uyarı kuralı için benzersizdir ve bu makalede açıklanan diğer klasik akıllı algılama kurallarından farklıdır.   
+> Bu Azure Resource Manager şablonu hata anomali uyarı kuralı için benzersizdir ve bu makalede açıklanan diğer klasik akıllı algılama kurallarından farklıdır.
 
 ## <a name="smart-detection-rule-names"></a>Akıllı algılama kuralı adları
 

@@ -1,25 +1,21 @@
 ---
 title: Azure hizmeti bildirimlerinde etkinlik günlüğü uyarılarını al
 description: Azure hizmeti gerçekleştiğinde SMS, e-posta veya Web Kancası aracılığıyla bildirim alın.
-author: stephbaron
-ms.author: stbaron
-services: monitoring
-ms.service: service-health
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 40ffe0b377a5cbb21f07c479097958d7c15a2879
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d318adc76959ac24f4be9946167965a83053f632
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383157"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749313"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma
 ## <a name="overview"></a>Genel Bakış
 
 Bu makalede, Azure portal kullanarak hizmet durumu bildirimleri için etkinlik günlüğü uyarılarını ayarlama konusu gösterilmektedir.  
 
-Hizmet durumu bildirimleri, etkinlik günlüğünde depolanan büyük miktarda bilgi hacmi verilen [Azure etkinlik günlüğünde](../azure-monitor/platform/activity-logs-overview.md) depolanır, hizmet durumu bildirimlerinde uyarıları görüntülemeyi ve ayarlamayı kolaylaştırmak için ayrı bir kullanıcı arabirimi vardır. 
+Hizmet durumu bildirimleri, etkinlik günlüğünde depolanan büyük miktarda bilgi hacmi verilen [Azure etkinlik günlüğünde](../azure-monitor/platform/platform-logs-overview.md) depolanır, hizmet durumu bildirimlerinde uyarıları görüntülemeyi ve ayarlamayı kolaylaştırmak için ayrı bir kullanıcı arabirimi vardır. 
 
 Azure, Azure aboneliğinize hizmet durumu bildirimleri gönderdiğinde bir uyarı alabilirsiniz. Uyarıyı temel alarak yapılandırabilirsiniz:
 
@@ -64,7 +60,7 @@ Azure Resource Manager şablonları kullanarak hizmet durumu bildirim uyarılar�
     > [!NOTE]
     > Bu abonelik, etkinlik günlüğü uyarısını kaydetmek için kullanılır. Uyarı kaynağı bu aboneliğe dağıtılır ve etkinlik günlüğündeki olayları izler.
 
-1. Uyarı almak istediğiniz **olay türlerini** seçin: *Hizmet sorunu*, *Planlı bakım*ve *sistem durumu Danışma belgeleri* 
+1. Uyarı almak istediğiniz **olay türlerini** seçin: *hizmet sorunu*, *Planlı bakım*ve *sistem durumu Danışma belgeleri* 
 
 1. Uyarı **kuralları adı** ve **açıklaması**girerek uyarı ayrıntılarınızı tanımlayın.
 
@@ -76,11 +72,11 @@ Azure Resource Manager şablonları kullanarak hizmet durumu bildirim uyarılar�
 
 1. Alıcının bir listesini, alıcıların şunları sağlayarak tanımlayın:
 
-    a. **Ad**: Alıcının adını, diğer adını veya tanımlayıcıyı girin.
+    a. **Ad**: alıcının adını, diğer adını veya tanımlayıcıyı girin.
 
     b. **Eylem türü**: SMS, e-posta, Web kancası, Azure uygulaması ve daha fazlasını seçin.
 
-    c. **Ayrıntılar**: Seçilen eylem türüne bağlı olarak bir telefon numarası, e-posta adresi, Web kancası URI 'SI vb. girin.
+    c. **Ayrıntılar**: seçilen eylem türüne bağlı olarak bir telefon numarası, e-posta adresi, Web kancası URI 'si vb. girin.
 
 1. Eylem grubunu oluşturmak için **Tamam** ' ı seçin ve sonra uyarılarınızı gerçekleştirmek için **Uyarı kuralı oluşturun** .
 

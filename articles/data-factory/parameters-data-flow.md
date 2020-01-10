@@ -1,21 +1,20 @@
 ---
-title: Azure Data Factory eşleme veri akışı parametreleri
+title: Eşleme veri akışları parametreleştiriliyor
 description: Data Factory işlem hatlarından eşleme veri akışını Parametreleştirme hakkında bilgi edinin
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 0a1051d67bf45e96f82833ef8190008204cdc90b
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 01/07/2020
+ms.openlocfilehash: c589cfeab7a812e09ce7f7620e93b72bd362859a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "72387546"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746155"
 ---
-# <a name="mapping-data-flow-parameters"></a>Veri akışı parametrelerini eşleme
-
-
+# <a name="parameterizing-mapping-data-flows"></a>Eşleme veri akışları parametreleştiriliyor
 
 Azure Data Factory veri akışlarını eşleme, parametrelerin kullanımını destekler. Daha sonra deyimlerinizin tamamında kullanabileceğiniz veri akışı tanımınızın içinde parametreler tanımlayabilirsiniz. Parametre değerleri, veri akışını Yürüt etkinliği aracılığıyla çağıran işlem hattı tarafından ayarlanabilir. Veri akışı etkinlik ifadelerindeki değerleri ayarlamak için üç seçeneğiniz vardır:
 
@@ -28,29 +27,37 @@ Verilerinizi genel amaçlı, esnek ve yeniden kullanılabilir hale getirmek içi
 > [!NOTE]
 > İşlem hattı denetim akışı ifadelerini kullanmak için, veri akışı parametresi dize türünde olmalıdır.
 
-## <a name="create-parameters-in-mapping-data-flow"></a>Eşleme veri akışında parametreler oluşturma
+## <a name="create-parameters-in-a-mapping-data-flow"></a>Eşleme veri akışında parametre oluşturma
 
-Veri akışınıza parametreler eklemek için, genel özellikleri görmek üzere veri akışı tuvalinin boş kısmına tıklayın. Ayarlar bölmesinde ' Parametreler ' adlı bir sekme görürsünüz. Yeni bir parametre oluşturmak için ' yeni ' düğmesine tıklayın. Her parametre için bir ad atamanız, bir tür seçmeniz ve isteğe bağlı olarak varsayılan bir değer ayarlamanız gerekir.
+Veri akışınıza parametreler eklemek için, genel özellikleri görmek üzere veri akışı tuvalinin boş kısmına tıklayın. Ayarlar bölmesinde, **parametre**adlı bir sekme görürsünüz. Yeni bir parametre oluşturmak için **Yeni** ' yi seçin. Her parametre için bir ad atamanız, bir tür seçmeniz ve isteğe bağlı olarak varsayılan bir değer ayarlamanız gerekir.
 
 ![Veri akışı parametreleri oluşturma](media/data-flow/create-params.png "Veri akışı parametreleri oluşturma")
 
-Parametreler herhangi bir veri akışı ifadesinde kullanılabilir. Parametreler $ ile başlar ve sabittir. ' Parametreler ' sekmesi altında, Ifade oluşturucusunun içindeki kullanılabilir parametrelerin listesini bulacaksınız.
+## <a name="use-parameters-in-a-mapping-data-flow"></a>Eşleme veri akışında parametreleri kullanma 
+
+Parametrelere, herhangi bir veri akışı ifadesinde başvurulabilir. Parametreler $ ile başlar ve sabittir. **Parametreler** sekmesinde, ifade oluşturucusunun içindeki kullanılabilir parametrelerin listesini bulacaksınız.
 
 ![Veri akışı parametre ifadesi](media/data-flow/parameter-expression.png "Veri akışı parametre ifadesi")
 
-## <a name="use-parameters-in-your-data-flow"></a>Veri akışındaki parametreleri kullanma
+**Yeni parametre** ' i seçip adı ve türü belirterek hızlı bir şekilde ek parametreler ekleyebilirsiniz.
 
-* Dönüştürme ifadelerinizin içindeki parametre değerlerini kullanabilirsiniz. Parametre listesini Ifade oluşturucusunun Parametreler sekmesinde bulabilirsiniz. ![Veri akışı parametrelerini kullanma](media/data-flow/params9.png "Uo veri akışı parametreleri ")
+![Veri akışı parametre ifadesi](media/data-flow/new-parameter-expression.png "Veri akışı parametre ifadesi")
 
-* Ayrıca parametreler, kaynak ve havuz dönüştürme ayarlarınıza yönelik dinamik değerleri yapılandırmak için de kullanılır. Yapılandırılabilir alanların içine tıkladığınızda, "dinamik contect Ekle" bağlantısının göründüğünü görürsünüz. Buraya tıkladığınızda, dinamik değerleri kullanmak için parametreleri kullanabileceğiniz bir Ifade oluşturucusuna götürür. ![Veri akışı dinamik içeriği](media/data-flow/params6.png "Data akış dinamik içeriği ")
+### <a name="passing-in-a-column-name-as-a-parameter"></a>Sütun adını parametre olarak geçirme
 
-## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>İşlem hattından eşleme veri akışı parametrelerini ayarlama
+Ortak bir model, bir sütun adını parametre değeri olarak geçirmektir. Parametresiyle ilişkili sütuna başvurmak için `byName()` işlevini kullanın. Sütunu, `toString()`gibi bir atama işleviyle uygun türe dönüştürmeyi unutmayın.
 
-Veri akışınızı parametrelerle oluşturduktan sonra, veri akışını Yürüt etkinliğinin bulunduğu bir işlem hattından çalıştırabilirsiniz. Etkinliği işlem hattı Tuvalinize ekledikten sonra, etkinliğin ' Parametreler ' sekmesinde kullanılabilir veri akışı parametreleri görüntülenir.
+Örneğin, bir dize sütununu bir parametre `columnName`göre eşlemek isterseniz, `toString(byName($columnName))`bir türetilmiş sütun dönüşümü ekleyebilirsiniz.
+
+![Sütun adını parametre olarak geçirme](media/data-flow/parameterize-column-name.png "Sütun adını paramete olarak geçirme")
+
+## <a name="assign-parameter-values-from-a-pipeline"></a>İşlem hattından parametre değerleri atama
+
+Veri akışınızı parametrelerle oluşturduktan sonra, veri akışını Yürüt etkinliğinin bulunduğu bir işlem hattından çalıştırabilirsiniz. Etkinliği işlem hattı Tuvalinize ekledikten sonra etkinliğin **Parametreler** sekmesinde kullanılabilir veri akışı parametreleri görüntülenir.
 
 ![Veri akışı parametresini ayarlama](media/data-flow/parameter-assign.png "Veri akışı parametresini ayarlama")
 
-Parametre veri türü dize ise, parametre değerlerini ayarlamak için metin kutusuna tıkladığınızda bir işlem hattı veya bir veri akışı ifadesi girmeyi seçebilirsiniz. Ardışık düzen ifadesini seçerseniz, işlem hattı ifade paneli sunulur. Dize ilişkilendirme sözdiziminin içinde `'@{<expression>}'` kullanarak işlem hattı işlevlerini eklediğinizden emin olun; örneğin:
+Parametre veri türü dize ise, parametre değerlerini ayarlamak için metin kutusuna tıkladığınızda bir işlem hattı veya bir veri akışı ifadesi girmeyi seçebilirsiniz. Ardışık düzen ifadesini seçerseniz, işlem hattı ifade paneli sunulur. Ardışık düzen işlevlerini `'@{<expression>}'`kullanarak dize ilişkilendirme sözdizimi içinde eklediğinizden emin olun, örneğin:
 
 ```'@{pipeline().RunId}'```
 

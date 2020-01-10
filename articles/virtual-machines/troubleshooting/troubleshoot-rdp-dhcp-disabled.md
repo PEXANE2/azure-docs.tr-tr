@@ -12,32 +12,31 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: ef44931cc3b36bcab64a2de840d9264c1b8fdedb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058016"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749884"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>DHCP İstemci hizmetini devre dışı olduğundan, Azure sanal makinelerinde RDP olamaz
 
 Bu makalede bir sorun sanal DHCP İstemci hizmetini devre dışı bırakıldıktan sonra Uzak Masaüstü Azure Windows sanal makinelerin (VM'ler) olamaz.
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>Belirtiler
 VM'yi DHCP İstemci hizmetini devre dışı olduğundan, Azure'da bir VM ile RDP bağlantısı yapamazsınız. Ne zaman iade ekran [önyükleme tanılaması](../troubleshooting/boot-diagnostics.md) Azure Portal'da, VM normal önyüklenir ve kimlik bilgileri oturum açma ekranında bekleyeceği görürsünüz. Uzaktan olay günlüklerini VM ile Olay Görüntüleyicisi'ni kullanarak görüntüleyin. DHCP istemci hizmeti kullanmaya değil veya başlatılamıyor görürsünüz. Aşağıdaki örnek bir oturum:
 
-**Günlük adı**: Sistem </br>
-**Kaynak**: Hizmet denetimi Yöneticisi </br>
-**Tarih**: 12/16/2015 11:19:36 </br>
-**Olay kimliği**: 7022 </br>
-**Görev kategorisi**: Yok. </br>
-**Düzey**: Hata </br>
+**Oturum adı**: Sistem </br>
+**Kaynak**: Hizmet Denetimi Yöneticisi </br>
+**Tarih**: 16/12/2015 11:19:36: 00 </br>
+**Olay Kimliği**: 7022 </br>
+**Görev kategorisi**: yok </br>
+**Düzey**: hata </br>
 **Anahtar sözcükler**: Klasik</br>
-**Kullanıcı**: Yok </br>
+**Kullanıcı**: yok </br>
 **Bilgisayar**: myvm.cosotos.com</br>
-**Açıklama**: DHCP Istemci hizmeti başlatılırken askıda kaldı.</br>
+**Açıklama**: DHCP istemci hizmeti başlatılırken askıya alındı.</br>
 
 Resource Manager Vm'leri için olay 7022 aşağıdaki komutu kullanarak günlükleri için sorgu seri erişim konsol özelliğini kullanabilirsiniz:
 
@@ -183,7 +182,7 @@ Bu sorunu çözmek için DHCP etkinleştirmek için seri denetimi kullanın veya
 
 1. [İşletim sistemi diskini bir kurtarma VM'si ekleme](../windows/troubleshoot-recovery-disks-portal.md).
 2. Kurtarma VM'sini bir Uzak Masaüstü Bağlantısı'nı başlatın. Bağlı disk olarak işaretlenmiş olduğundan emin olun **çevrimiçi** Disk Yönetimi Konsolu'nda. Ekli işletim sistemi diski için atanan sürücü harfini unutmayın.
-3.  Yükseltilmiş bir komut istemi örneği açın (**yönetici olarak çalıştır**). Ardından aşağıdaki betiği çalıştırın. Bu betik, ekli işletim sistemi diski için atanan sürücü harfini olduğunu varsayar **F**. Vm'nizde değer harf uygun şekilde değiştirin.
+3.  Yükseltilmiş bir komut istemi örneği açın (**yönetici olarak çalıştır**). Ardından aşağıdaki betiği çalıştırın. Bu betik, bağlı işletim sistemi diskine atanan sürücü harfinin **F**olduğunu varsayar. Harfi, sanal makinenizin değeri ile uygun şekilde değiştirin.
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM

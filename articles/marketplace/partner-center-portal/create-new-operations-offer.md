@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 4708f2e0d6d4aadba228b82cf07e0a7f58b8f68a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0318f851f547aed7c7682c9e6841f71d56c98be1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825597"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750921"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Yeni bir Dynamics 365 for Operations teklifi oluşturma
 
@@ -99,11 +99,11 @@ Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 ### <a name="category"></a>Kategori
 
-En az bir ve en fazla üç kategori seçin. Bu, teklifinizi uygun Market arama alanına yerleştirmek için kullanılacaktır. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğine dikkat edin. 
+Birincil ve ikincil kategori dahil olmak üzere en fazla iki (2) kategori seçin (isteğe bağlı). Her birincil ve/veya ikincil kategori için en fazla iki (2) alt kategori seçin. Alt kategori seçilmezse, teklif seçili kategoride bulunabilir olmaya devam eder.
 
 ### <a name="industry"></a>Sektör
 
-[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+İsteğe bağlı olarak her bir sektör altında en fazla iki sektör ve iki ifade seçebilirsiniz. Bu kategoriler, arama filtrelerinde sektör ve verticileri kullanıldığında ve storefront içinde uygulandığında teklifinizi görüntülemek için kullanılır.  Teklifiniz belirli bir sektör ve/veya dikey hedefleniyorsa, teklifinizin teklif açıklamasında seçili endüstrileri veya açıklamaları nasıl desteklediğini açıkladığınızdan emin olun.  Aksi takdirde, teklifiniz sektöre özgü değilse, bir seçim yapmayın ve bu bölümü boş bırakın.
 
 ### <a name="app-version"></a>Uygulama sürümü
 
@@ -209,7 +209,7 @@ Teklifinizin nasıl çalıştığını gösteren ekran görüntüleri ekleyin. E
 
 - [Market teklif listeleri için en iyi uygulamalar](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-## <a name="availability"></a>Kullanılabilirlik
+## <a name="availability"></a>Erişilebilirlik
 
 **Kullanılabilirlik** sayfası, teklifinizi nerede ve nasıl kullanılabilir hale getirmek için size seçenekler sağlar.
 
@@ -269,13 +269,13 @@ Aşağıdaki test sürücüsü türleri, her biri kendi teknik yapılandırma ge
 
 - **Örnekler**: bir türü (sıcak veya soğuk) ve kullanılabilir örneklerin sayısını seçin; Bu değer teklifinizin kullanılabildiği bölge sayısıyla çarpılacak.
 
-**Sık**erişimli: Bu örnek türü dağıtılır ve seçilen bölgeye göre erişim bekleniyor. Müşteriler, bir dağıtımı beklemek yerine bir test sürücüsünün *sık* erişimli örneklerine anında erişebilir. Zorunluluğunu getirir, bu örneklerin her zaman Azure aboneliğinizde çalışıyor olması, bu nedenle daha büyük bir çalışma süresi maliyeti doğuracaktır. En az bir *sıcak* örnek olması önemle önerilir, çünkü çoğu müşteri tam dağıtımları beklemek Istemelidir ve *etkin* örnek yoksa, müşteri kullanımındaki bir bırakmaya neden olur.
+**Sık**erişimli: Bu örnek türü dağıtılır ve seçilen bölgeye göre erişim bekleniyor. Müşteriler, bir dağıtımı beklemek yerine bir test sürücüsünün *sık* erişimli örneklerine anında erişebilir. Artırabilen maliyeti daha büyük bir çalışma süresi tabi şekilde, bu örneklerin her zaman Azure aboneliğinize göre çalıştığını ' dir. En az bir *sıcak* örnek olması önemle önerilir, çünkü çoğu müşteri tam dağıtımları beklemek Istemelidir ve *etkin* örnek yoksa, müşteri kullanımındaki bir bırakmaya neden olur.
 
 **Soğuk**: Bu örnek türü, bölge başına büyük olasılıkla dağıtılabilecek örneklerin toplam sayısını temsil eder. Soğuk örnekler, bir müşteri test sürücüsünü istediğinde tüm test sürücüsü Kaynak Yöneticisi şablonun dağıtılmasını gerektirir, böylece *soğuk* örnekler, *etkin* örneklere göre yüklenmeye çok daha yavaştır. Zorunluluğunu getirir, yalnızca test sürücüsünün süresi için ödeme yapmanız gereken *bir deyişle, Azure aboneliğinizde her zaman* bir *sıcak* örnekle birlikte çalışmıyor.
 
 - **Test sürücüsü Azure Resource Manager şablonu**: Azure Resource Manager şablonunuzu içeren. zip ' i yükleyin.  Hızlı başlangıç makalesinde Azure Resource Manager şablonu oluşturma hakkında daha fazla bilgi edinin [Azure Portal kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-- **Sınama sürücüsü süresi** (zorunlu): test sürücüsünün etkin kalacağı sürenin uzunluğunu saat cinsinden belirtin. Bu süre dolduktan sonra test sürücüsü otomatik olarak sona erer. Bu süre yalnızca birkaç saat (örn. "2" saat, "1,5" geçerli değildir) ile ayarlanabilir.
+- **Sınama sürücüsü süresi** (zorunlu): test sürücüsünün etkin kalacağı sürenin uzunluğunu saat cinsinden belirtin. Bu süre sona erdikten sonra Test Sürüşü otomatik olarak sona erer. Bu süre yalnızca birkaç saat (örn. "2" saat, "1,5" geçerli değildir) ile ayarlanabilir.
 
 ### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Dynamics 365 test sürücüsü için teknik yapılandırma
 
@@ -337,7 +337,7 @@ Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 - **Kullanıcı el ile** (gerekli): test sürücünüzün deneyiminizin derinlemesine bir yolu. Kullanıcı el kitabı, müşterinin test sürücüsüyle karşılaşmasını istediğiniz şekilde tam olarak kapsamalıdır ve sahip olabileceği sorulara başvuru olarak görev yapar. Dosya, karşıya yüklendikten sonra PDF biçiminde ve adlandırılmalıdır (en fazla 255 karakter) olmalıdır.
 
-- **Videolar: video ekleme** (isteğe bağlı): Videolar YouTube veya Vimeo 'a yüklenebilir ve burada bir bağlantı ve küçük resim görüntüsü (533 x 324 piksel) ile birlikte başvuruluyorsa, müşterinin test sürücüsünü daha iyi anlamasına yardımcı olmak için bilgi Teklifinizin özelliklerini başarıyla kullanma ve avantajlarını vurgulayan senaryoları anlama.
+- **Videolar: video ekleme** (isteğe bağlı): videolar, YouTube veya Vimeo 'a yüklenebilir ve burada bir bağlantı ve küçük resim görüntüsü (533 x 324 piksel) ile birlikte başvuruda bulunabilir. böylece, bir müşterinin test sürücüsünü daha iyi anlamasına yardımcı olmak için, teklif özelliklerinin nasıl kullanılacağına ve avantajlarının vurgulanmasını sağlayan senaryolar hakkında bilgi edinmek
   - **Ad** (gerekli)
   - **URL (yalnızca YouTube veya Vimeo)** (gerekli)
   - **Küçük resim (533 x 324px)** : görüntü dosyası png biçiminde olmalıdır.
@@ -354,11 +354,11 @@ Bu dosya. xls veya. xlsx biçiminde olmalıdır. Birden fazla raporunuz varsa, t
 
 ### <a name="does-solution-include-localizations"></a>Çözüm yerelleştirmeler içeriyor mu?
 
-Çözüm yerel standartlar ve ilkelerin kullanımına izin verirseniz (örneğin, farklı ülkeler/bölgeler için gereken farklı Bordro kurallarına uygunsa) **Evet** ' i seçin. Aksi takdirde **Hayır**' ı seçin.
+Çözüm yerel standartlar ve ilkelerin kullanımına izin verirseniz (örneğin, farklı ülkeler/bölgeler için gereken farklı Bordro kurallarına uygunsa) **Evet** ' i seçin. Aksi takdirde seçin **Hayır**.
 
 ### <a name="does-solution-enable-translations"></a>Çözüm çevirileri etkinleştirir mi?
 
-Çözümünüzdeki metin diğer dillere çevrilebilmesi için **Evet** yanıtını verin. Aksi takdirde **Hayır**' ı seçin.
+Çözümünüzdeki metin diğer dillere çevrilebilmesi için **Evet** yanıtını verin. Aksi takdirde seçin **Hayır**.
 
 ## <a name="publish"></a>Yayımlama
 
@@ -377,4 +377,4 @@ Bu teklifi ilk kez yayınlıyorsanız, şunları yapabilirsiniz:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ticari Market 'te mevcut bir teklifi güncelleştirme](./update-existing-offer.md)
+- [Ticari Market'te bulunan bir teklifi güncelleştirme](./update-existing-offer.md)

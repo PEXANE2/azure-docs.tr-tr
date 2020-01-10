@@ -1,29 +1,30 @@
 ---
-title: Azure Kaynak günlüklerini bir olay hub 'ına akış
+title: Azure platformu günlüklerini bir olay hub 'ına akış
 description: Üçüncü taraf Sıems ve diğer Log Analytics çözümleri gibi dış sistemlere veri göndermek için Azure Kaynak günlüklerinin bir olay hub 'ına akışını nasıl sağlayacağınızı öğrenin.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 680570c5102f656b2b2d2e05f9e08f51fe892f44
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304937"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750348"
 ---
-# <a name="stream-azure-resource-logs-to-azure-event-hubs"></a>Azure Kaynak günlüklerini Azure Event Hubs akış
-Azure 'da [kaynak günlükleri](resource-logs-overview.md) , bir Azure kaynağının iç işlemi hakkında zengin, sık veriler sağlar. Bu makalede, üçüncü taraf Sıems ve diğer Log Analytics çözümleri gibi dış sistemlere veri göndermek için Olay Hub 'larına akış kaynak günlükleri açıklanır.
+# <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Azure platformu günlüklerini Azure Event Hubs akış
+Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar.  Bu makalede, üçüncü taraf Sıems ve diğer Log Analytics çözümleri gibi dış sistemlere veri göndermek için Olay Hub 'larına yönelik akış platformu günlükleri açıklanır.
 
 
-## <a name="what-you-can-do-with-resource-logs-sent-to-an-event-hub"></a>Bir olay hub 'ına gönderilen kaynak günlükleriyle yapabilecekleriniz
-Aşağıdaki işlevleri sağlamak için Azure 'daki Olay Hub 'larına kaynak günlükleri akışı yapın:
+## <a name="what-you-can-do-with-platform-logs-sent-to-an-event-hub"></a>Bir olay hub 'ına gönderilen platform günlükleriyle neler yapabilirsiniz?
+Aşağıdaki işlevleri sağlamak için Azure 'daki Olay Hub 'larına platform günlüklerini akışla.
 
-* Günlük verilerini üçüncü taraf bir SıEM veya Log Analytics aracına yöneltmek için tüm kaynak günlüklerinizi tek bir olay hub 'ına akış halinde **kaydeder** .
-* **Özel bir telemetri ve günlüğe kaydetme platformu oluşturma** – Olay Hub 'larının yüksek düzeyde ölçeklenebilir yayımla-abone olma yapısı, kaynak günlüklerini özel bir teletry platformunda esnek bir şekilde içe almanıza olanak sağlar. Ayrıntılar için bkz. [Event Hubs Azure 'Da küresel ölçekli telemetri platformunu tasarlama ve boyutlandırma](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
+* Günlük verilerini üçüncü taraf bir SıEM veya Log Analytics aracına yöneltmek için tüm platform günlüklerinizi tek bir olay hub **'ına akışa alma** .
+  
+* **Özel bir telemetri ve günlüğe kaydetme platformu oluşturma** – Olay Hub 'larının yüksek düzeyde ölçeklenebilir yayımla-abone olma yapısı, platform günlüklerini özel bir teletry platformunda esnek bir şekilde içe almanıza olanak sağlar. Ayrıntılar için bkz. [Event Hubs Azure 'Da küresel ölçekli telemetri platformunu tasarlama ve boyutlandırma](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
 
 * **Power BI veri akışı yaparak hizmet durumunu görüntüleyin** – tanılama verilerinizi Azure hizmetlerinizden neredeyse gerçek zamanlı içgörüler halinde dönüştürmek için Event Hubs, Stream Analytics ve Power BI kullanın. Bkz. [Stream Analytics ve Power BI: Bu çözümdeki Ayrıntılar için veri akışı için gerçek zamanlı analiz panosu](../../stream-analytics/stream-analytics-power-bi-dashboard.md) .
 
@@ -39,27 +40,26 @@ Aşağıdaki işlevleri sağlamak için Azure 'daki Olay Hub 'larına kaynak gü
     CROSS APPLY GetArrayElements(e.records) AS records
     ```
 
-## <a name="prerequisites"></a>Önkoşullar
-Henüz bir tane yoksa [bir olay hub 'ı oluşturmanız](../../event-hubs/event-hubs-create.md) gerekir. Daha önce bu Event Hubs ad alanına kaynak günlükleri akıdıysanız, bu olay hub 'ı yeniden kullanılacaktır.
+## <a name="prerequisites"></a>Ön koşullar
+Henüz bir tane yoksa [bir olay hub 'ı oluşturmanız](../../event-hubs/event-hubs-create.md) gerekir. Bu Event Hubs ad alanını kullanan bir tanılama ayarınız zaten varsa, bu olay hub 'ı yeniden kullanılacaktır.
 
 Ad alanı için paylaşılan erişim ilkesi, akış mekanizmanın sahip olduğu izinleri tanımlar. Event Hubs akışının yönetilmesi, gönderilmesi ve dinlemesi izinlerinin olması gerekir. Event Hubs ad alanınız için Yapılandır sekmesinin altındaki Azure portal paylaşılan erişim ilkeleri oluşturabilir veya değiştirebilirsiniz.
 
 Tanılama ayarını akış içerecek şekilde güncelleştirmek için, bu Event Hubs yetkilendirme kuralında ListKey izninizin olması gerekir. Ayarı yapılandıran kullanıcının her iki aboneliğe ve her iki aboneliğe de aynı AAD kiracısına sahip olması koşuluyla, Event Hubs ad alanının, günlükleri yayan abonelikle aynı abonelikte olması gerekmez.
 
 ## <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluştur
-Kaynak günlükleri varsayılan olarak toplanmaz. Azure kaynağı için bir tanılama ayarı oluşturarak bunları bir olay hub 'ına ve diğer hedeflere gönderin. Ayrıntılar için bkz. [Azure 'da günlükleri ve ölçümleri toplamak için tanılama ayarı oluşturma](diagnostic-settings.md) .
+Bir Azure kaynağı için tanılama ayarı oluşturarak, platform günlüklerini bir olay hub 'ına ve diğer hedeflere gönderin. Ayrıntılar için bkz. [Azure 'da günlükleri ve ölçümleri toplamak için tanılama ayarı oluşturma](diagnostic-settings.md) .
 
-## <a name="stream-data-from-compute-resources"></a>İşlem kaynaklarından veri akışı
-Bu makaledeki işlem, [Azure Kaynak günlüklerine genel bakış](diagnostic-settings.md)bölümünde açıklandığı gibi işlem dışı kaynaklar içindir.
-Windows Azure Tanılama aracısını kullanarak Azure işlem kaynaklarından kaynak günlüklerini akışla. Ayrıntılar için [Event Hubs kullanarak bkz. Azure Tanılama verileri etkin yolda akışa](diagnostics-extension-stream-event-hubs.md) alma.
+## <a name="collect-data-from-compute-resources"></a>İşlem kaynaklarından veri toplama
+Tanılama ayarları, Azure işlem kaynakları için, Konuk işletim sistemleri veya iş yükleri değil, diğer kaynaklar gibi kaynak günlüklerini toplar. Bu verileri toplamak için [Log Analytics aracısını](log-analytics-agent.md)yüklersiniz. 
 
 
 ## <a name="consuming-log-data-from-event-hubs"></a>Olay Hub 'larından günlük verilerini kullanma
-Olay Hub 'larından kaynak günlüklerini kullandığınızda, aşağıdaki tablodaki öğelerle birlikte JSON biçiminde olur.
+Olay Hub 'larından platform günlükleri, JSON biçiminde aşağıdaki tablodaki öğelerle kullanılır.
 
-| Öğe adı | Açıklama |
+| Öğe Adı | Açıklama |
 | --- | --- |
-| kaydeden |Bu yükteki tüm günlük olaylarının bir dizisi. |
+| kayıtlar |Bu yükteki tüm günlük olaylarının bir dizisi. |
 | time |Olayın gerçekleştiği zaman. |
 | category |Bu olay için günlük kategorisi. |
 | resourceId |Bu olayı oluşturan kaynağın kaynak KIMLIĞI. |
@@ -68,7 +68,7 @@ Olay Hub 'larından kaynak günlüklerini kullandığınızda, aşağıdaki tabl
 | properties |Etkinliğin özellikleri. Bunlar, bölümünde [ ]()açıklandığı gibi her bir Azure hizmeti için farklılık gösterir. |
 
 
-Aşağıda Event Hubs örnek çıkış verileri verilmiştir:
+Aşağıda bir kaynak günlüğü için Event Hubs örnek çıkış verileri verilmiştir:
 
 ```json
 {
@@ -135,7 +135,8 @@ Aşağıda Event Hubs örnek çıkış verileri verilmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Kaynak günlükleri hakkında daha fazla bilgi edinin](platform-logs-overview.md).
+* [Azure 'da günlüklerin ve ölçümlerin toplanması için tanılama ayarı oluşturun](diagnostic-settings.md).
 * [Azure izleyici ile Azure Active Directory günlükleri akışı](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).
-* [Azure Kaynak günlükleri hakkında daha fazla bilgi edinin](resource-logs-overview.md).
 * [Event Hubs kullanmaya başlayın](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
 

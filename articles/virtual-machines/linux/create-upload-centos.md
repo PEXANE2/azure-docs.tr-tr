@@ -3,23 +3,20 @@ title: Azure 'da CentOS tabanlı bir Linux VHD oluşturma ve karşıya yükleme
 description: CentOS tabanlı bir Linux işletim sistemi içeren bir Azure sanal sabit diski (VHD) oluşturmayı ve yüklemeyi öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 0e518e92-e981-43f4-b12c-9cba1064c4bb
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/25/2019
-ms.author: szark
-ms.openlocfilehash: 1ac2b24649363538d2728f302941b5a4bf5dd357
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.author: mimckitt
+ms.openlocfilehash: a5a6dd7e451d3204c8ab2bd2eae95db93c2f0837
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534151"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750235"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure’da CentOS tabanlı bir sanal makine hazırlama
 
@@ -29,7 +26,7 @@ CentOS tabanlı bir Linux işletim sistemi içeren bir Azure sanal sabit diski (
 * [Azure için CentOS 7.0 + sanal makinesi hazırlama](#centos-70)
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işletim sistemini zaten yüklemiş olduğunuz varsayılmaktadır. . Vhd dosyaları, örneğin Hyper-V gibi bir sanallaştırma çözümü oluşturmak için birden çok araç vardır. Yönergeler için bkz. [Hyper-V rolünü yükleyip sanal makineyi yapılandırma](https://technet.microsoft.com/library/hh846766.aspx).
 
@@ -229,7 +226,7 @@ Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işleti
 
 
 
-## <a name="centos-70"></a>CentOS 7.0 +
+## <a name="centos-70"></a>CentOS 7.0+
 
 **CentOS 7 (ve benzer türetme) değişiklikleri**
 

@@ -8,19 +8,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5dd698b28a01ed251492cf34e9da2dda4d0c2580
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 180b7c203755553c343e0f7fc65c93092b330124
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241988"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751316"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için Güvenli Yuva Katmanı (SSL) şifrelemesini ve kimlik doğrulamasını ayarlama
 
 Bu makalede, Apache Kafka istemcileri ve Apache Kafka aracıları arasında SSL şifrelemesini ayarlama konusu gösterilmektedir. Ayrıca, istemcilerin kimlik doğrulamasının nasıl ayarlanacağını gösterir (bazen iki yönlü SSL olarak adlandırılır).
 
 > [!Important]
-> Kafka uygulamaları için kullanabileceğiniz iki istemci vardır: bir Java istemcisi ve bir konsol istemcisi. Yalnızca `ProducerConsumer.java` Java istemcisi hem üretme hem de kullanma için SSL kullanabilir. Konsol üreticisi istemci `console-producer.sh` SSL ile çalışmıyor.
+> Kafka uygulamaları için kullanabileceğiniz iki istemci vardır: bir Java istemcisi ve bir konsol istemcisi. Yalnızca Java istemci `ProducerConsumer.java` hem üretim hem de kullanma için SSL kullanabilir. Konsol üreticisi istemci `console-producer.sh` SSL ile çalışmıyor.
 
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka Aracısı kurulumu
 
@@ -49,7 +49,7 @@ Aracı Kurulum işleminin Özeti aşağıdaki gibidir:
 Aracı kurulumunu gerçekleştirmek için aşağıdaki ayrıntılı yönergeleri kullanın:
 
 > [!Important]
-> Aşağıdaki kod parçacıkları wnX, üç çalışan düğümünden birine yönelik bir kısaltmadır ve uygun şekilde `wn0`, `wn1` veya `wn2` ile değiştirilmelidir. `WorkerNode0_Name` ve `HeadNode0_Name`, `wn0-abcxyz` veya `hn0-abcxyz`gibi ilgili makinelerin adlarıyla değiştirilmelidir.
+> Aşağıdaki kod parçacıkları wnX, üç çalışan düğümünden birine yönelik bir kısaltmadır ve `wn0`, `wn1` veya `wn2` uygun şekilde yerine gelmelidir. `WorkerNode0_Name` ve `HeadNode0_Name` ilgili makinelerin adlarıyla değiştirilmelidir.
 
 1. HDInsight için, sertifika yetkilisinin (CA) rolünü dolduracağı baş düğüm 0 ' da ilk kurulumu gerçekleştirin.
 
@@ -130,7 +130,7 @@ Yapılandırma değişikliğini gerçekleştirmek için aşağıdaki adımları 
 
     ![Kafka SSL yapılandırma özelliklerini ambarı 'nda Düzenle](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 
-1. **Özel Kafka-Broker** altında **SSL. Client. auth** özelliğini `required` olarak ayarlayın. Bu adım yalnızca kimlik doğrulaması ve şifrelemeyi ayarlıyorsanız gereklidir.
+1. **Özel Kafka-Broker** altında **SSL. Client. auth** özelliğini `required`olarak ayarlayın. Bu adım yalnızca kimlik doğrulaması ve şifrelemeyi ayarlıyorsanız gereklidir.
 
     ![Kafka SSL yapılandırma özelliklerini ambarı 'nda Düzenle](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
@@ -157,10 +157,10 @@ Yapılandırma değişikliğini gerçekleştirmek için aşağıdaki adımları 
 
 İstemci kurulumunu gerçekleştirmek için aşağıdaki adımları izleyin:
 
-1. İstemci makinesinde (hn1) oturum açın.
+1. İstemci makinesinde (bekleyen baş düğüm) oturum açın.
 1. Bir Java anahtar deposu oluşturun ve aracı için imzalı bir sertifika alın. Ardından sertifikayı CA 'nın çalıştığı VM 'ye kopyalayın.
-1. İstemci sertifikasını imzalamak için CA makinesine (hn0) geçiş yapın.
-1. İstemci makinesine (hn1) gidin ve `~/ssl` klasörüne gidin. İmzalı sertifikayı istemci makinesine kopyalayın.
+1. İstemci sertifikasını imzalamak için CA makinesine (etkin baş düğüm) geçin.
+1. İstemci makinesine (bekleyen baş düğüm) gidin ve `~/ssl` klasöre gidin. İmzalı sertifikayı istemci makinesine kopyalayın.
 
 ```bash
 cd ssl
@@ -174,11 +174,11 @@ keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-requ
 # Copy the cert to the CA
 scp client-cert-sign-request3 sshuser@HeadNode0_Name:~/tmp1/client-cert-sign-request
 
-# Switch to the CA machine (hn0) to sign the client certificate.
+# Switch to the CA machine (active head node) to sign the client certificate.
 cd ssl
 openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:MyServerPassword123
 
-# Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert from the CA (hn0) to client machine
+# Return to the client machine (standby head node), navigate to ~/ssl folder and copy signed cert from the CA (active head node) to client machine
 scp -i ~/kafka-security.pem sshuser@HeadNode0_Name:/tmp1/client-cert-signed
 
 # Import CA cert to trust store
@@ -191,7 +191,7 @@ keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert 
 keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -alias my-local-pc1 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 ```
 
-Son olarak, `client-ssl-auth.properties` dosyasını `cat client-ssl-auth.properties` komutuyla görüntüleyin. Aşağıdaki satırlara sahip olmalıdır:
+Son olarak, dosya `client-ssl-auth.properties` komut `cat client-ssl-auth.properties`ile görüntüleyin. Aşağıdaki satırlara sahip olmalıdır:
 
 ```bash
 security.protocol=SSL
@@ -206,7 +206,7 @@ ssl.key.password=MyClientPassword123
 
 Kimlik doğrulamasına ihtiyacınız yoksa yalnızca SSL şifrelemesini ayarlama adımları şunlardır:
 
-1. İstemci makinesinde (hn1) oturum açın ve `~/ssl` klasörüne gidin
+1. İstemci makinesinde (hn1) oturum açın ve `~/ssl` klasöre gidin
 1. İmzalı sertifikayı, CA makinesinden (wn0) istemci makinesine kopyalayın.
 1. CA sertifikasını truststore 'a aktarma
 1. CA sertifikasını anahtar deposu 'a aktarma
@@ -226,7 +226,7 @@ keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cer
 keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 ```
 
-Son olarak, `client-ssl-auth.properties` dosyasını `cat client-ssl-auth.properties` komutuyla görüntüleyin. Aşağıdaki satırlara sahip olmalıdır:
+Son olarak, dosya `client-ssl-auth.properties` komut `cat client-ssl-auth.properties`ile görüntüleyin. Aşağıdaki satırlara sahip olmalıdır:
 
 ```bash
 security.protocol=SSL

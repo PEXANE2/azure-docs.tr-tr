@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 92bfa4f13467763fd88b9ae993554aef69355d75
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 9d0919651842a6f6f935c9f1e338c9d335b80f47
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555224"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749166"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Sabit depolamayla iş açısından kritik blob verilerini depolayın
 
@@ -40,15 +40,15 @@ Sabit depolama aşağıdaki özellikleri destekler:
 
 - **[Yasal tutma ilkesi desteği](#legal-holds)** : bekletme aralığı bilinmiyorsa, kullanıcılar yasal tutmaları, yasal saklama temizlenene kadar sabit verileri depolayacak şekilde ayarlayabilir.  Yasal bir saklama ilkesi ayarlandığında, Bloblar oluşturulabilir ve okunabilir, ancak değiştirilemez veya silinemez. Her yasal saklama, bir tanımlayıcı dize olarak kullanılan Kullanıcı tanımlı bir alfasayısal etiketle (örneğin, bir durum KIMLIĞI, olay adı vb.) ilişkilendirilir. 
 
-- **Tüm blob katmanları Için destek**: solucan Ilkeleri Azure Blob depolama katmanından bağımsızdır ve tüm katmanlara uygulanır: sık erişimli, seyrek erişimli ve arşiv. Kullanıcılar iş yükleri için en uygun maliyetli katmana veri geçirebilir, bu da veri dengeszliği sağlar.
+- **Tüm blob katmanları Için destek**: solucan Ilkeleri Azure Blob depolama katmanından bağımsızdır ve tüm katmanlara uygulanır: sık erişimli, seyrek erişimli ve arşiv. Kullanıcılar verileri iş yüklerine göre en uygun maliyetli katmanda depolarken verilerin de sabit tutulmasını sağlayabilir.
 
-- **Kapsayıcı düzeyinde yapılandırma**: kullanıcılar, zaman tabanlı bekletme ilkelerini ve geçerli saklama etiketlerini kapsayıcı düzeyinde yapılandırabilir. Kullanıcılar, basit kapsayıcı düzeyi ayarları kullanarak zaman tabanlı bekletme ilkeleri oluşturup kilitleyebilir, bekletme aralıklarını genişletebilir, yasal tutmaları ayarlayabilir ve temizleyebilir ve daha fazlasını yapabilir. Bu ilkeler, kapsayıcıdaki tüm Bloblar, hem mevcut hem de yeni için geçerlidir.
+- **Kapsayıcı düzeyinde yapılandırma**: kullanıcılar, zaman tabanlı bekletme ilkelerini ve geçerli saklama etiketlerini kapsayıcı düzeyinde yapılandırabilir. Kullanıcılar basit kapsayıcı düzeyi ayarlarını kullanarak zamana bağlı saklama ilkelerini oluşturup kilitleme, saklama aralıklarını uzatma ve yasal tutma ayarlayıp silme gibi daha birçok işlem yapabilir. Bu ilkeler kapsayıcıdaki mevcut ve yeni tüm bloblara uygulanır.
 
-- **Denetim günlüğü desteği**: her kapsayıcı bir ilke Denetim günlüğü içerir. Kilitleme zaman tabanlı bekletme ilkeleri için yedi adede kadar zamana dayalı saklama komutu gösterir ve Kullanıcı KIMLIĞI, komut türü, zaman damgaları ve bekletme aralığını içerir. Yasal tutar için, günlük Kullanıcı KIMLIĞI, komut türü, zaman damgaları ve yasal saklama etiketlerini içerir. Bu günlük, SEC 17A-4 (f) mevzuat yönergelerine uygun olarak ilkenin kullanım ömrü boyunca tutulur. [Azure etkinlik günlüğü](../../azure-monitor/platform/activity-logs-overview.md) tüm denetim düzlemi etkinliklerinin daha kapsamlı bir günlüğünü gösterir; [Azure tanılama günlüklerini](../../azure-monitor/platform/resource-logs-overview.md) etkinleştirme, veri düzlemi işlemlerini korur ve gösterir. Yasal bir şekilde veya başka amaçlar için gerekli olabileceğinden, bu günlükleri kalıcı olarak depolamak kullanıcının sorumluluğundadır.
+- **Denetim günlüğü desteği**: her kapsayıcı bir ilke Denetim günlüğü içerir. Kilitleme zaman tabanlı bekletme ilkeleri için yedi adede kadar zamana dayalı saklama komutu gösterir ve Kullanıcı KIMLIĞI, komut türü, zaman damgaları ve bekletme aralığını içerir. Yasal tutma olaylarında günlük girişinde kullanıcı kimliği, komut türü, zaman damgaları ve yasal tutma etiketleri yer alır. Bu günlük, SEC 17A-4 (f) mevzuat yönergelerine uygun olarak ilkenin kullanım ömrü boyunca tutulur. [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md) tüm denetim düzlemi etkinliklerinin daha kapsamlı bir günlüğünü gösterir; [Azure tanılama günlüklerini](../../azure-monitor/platform/platform-logs-overview.md) etkinleştirme, veri düzlemi işlemlerini korur ve gösterir. Düzenlemeler veya diğer amaçlar doğrultusunda ihtiyaç duyulabilecek günlüklerin düzenli olarak depolanması kullanıcının sorumluluğundadır.
 
 ## <a name="how-it-works"></a>Nasıl çalışır
 
-Azure Blob depolama için sabit depolama, iki tür SOLUCANı veya sabit ilkeyi destekler: zamana dayalı bekletme ve yasal tutar. Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi veya yasal saklama alanı uygulandığında, mevcut tüm Bloblar 30 saniyeden az bir şekilde sabit bir solucan durumuna geçer. Bu kapsayıcıya yüklenen tüm yeni Bloblar da sabit duruma geçer. Tüm Bloblar sabit duruma taşındıktan sonra, değişmez ilke onaylanır ve sabit kapsayıcıda var olan ve yeni nesneler için tüm üzerine yazma veya silme işlemlerine izin verilmez.
+Azure Blob depolama için sabit depolama özelliği, iki WORM veya sabit ilke türünü destekler: zamana bağlı saklama ve yasal tutma. Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi veya yasal saklama alanı uygulandığında, mevcut tüm Bloblar 30 saniyeden az bir şekilde sabit bir solucan durumuna geçer. Bu kapsayıcıya yüklenen tüm yeni Bloblar da sabit duruma geçer. Tüm Bloblar sabit duruma taşındıktan sonra, değişmez ilke onaylanır ve sabit kapsayıcıda var olan ve yeni nesneler için tüm üzerine yazma veya silme işlemlerine izin verilmez.
 
 Kapsayıcıda veya depolama hesabında sabit bir ilkeyle korunan blob varsa kapsayıcı ve depolama hesabı silinmesine izin verilmez. Kilitli zaman tabanlı bekletme ilkesine veya yasal tutmaya sahip en az bir blob varsa kapsayıcı silme işlemi başarısız olur. Geçerli bir bekletme aralığına sahip en az bir solucan kapsayıcısı veya etkin saklama aralığı olan bir blob varsa, depolama hesabı silme işlemi başarısız olur.
 
@@ -59,7 +59,7 @@ Kapsayıcıda veya depolama hesabında sabit bir ilkeyle korunan blob varsa kaps
 
 Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi uygulandığında, kapsayıcıdaki tüm Bloblar, *etkin* saklama dönemi süresince sabit durumda kalır. Mevcut bloblar için geçerli olan saklama süresi, blob oluşturma zamanı ile kullanıcı tarafından belirtilen saklama aralığı arasındaki farka eşittir.
 
-Yeni bloblar için geçerli olan saklama süresi, kullanıcı tarafından belirtilen saklama aralığına eşittir. Kullanıcılar bekletme aralığını genişletebildiğinden, sabit depolama, etkin saklama süresini hesaplamak için Kullanıcı tarafından belirtilen bekletme aralığının en son değerini kullanır.
+Yeni bloblar için geçerli olan saklama süresi, kullanıcı tarafından belirtilen saklama aralığına eşittir. Kullanıcılar saklama süresini uzatabildiğinden, sabit depolama geçerli olan saklama süresinin hesaplanmasında kullanıcı tarafından belirtilen en son saklama aralığı değeri kullanılır.
 
 Örneğin, bir kullanıcının beş yıl bekletme aralığı ile zaman tabanlı bir bekletme ilkesi oluşturduğunu varsayalım. Bu kapsayıcıda bulunan mevcut bir blob, _testblob1_, bir yıl önce oluşturuldu. _Testblob1_ için geçerli saklama süresi dört yıldır. Yeni blob, _testblob2_, kapsayıcıya yüklendiğinde, yeni blob için geçerli saklama süresi beş yıldır.
 
@@ -76,7 +76,7 @@ Aşağıdaki sınırlar bekletme ilkeleri için geçerlidir:
 
 Yasal bir saklama ayarladığınızda, yasal saklama temizlenene kadar tüm mevcut ve yeni Bloblar sabit durumda kalır. Yasal tutmaları ayarlama ve temizleme hakkında daha fazla bilgi için bkz. [BLOB depolama için imlebilirlik Ilkelerini ayarlama ve yönetme](storage-blob-immutability-policies-manage.md).
 
-Bir kapsayıcı aynı anda hem yasal ayrı tutmaya hem de zaman tabanlı bir bekletme ilkesine sahip olabilir. Geçerli saklama süresi sona erse bile, bu kapsayıcıdaki tüm Bloblar, tüm yasal tutmalar temizlenene kadar sabit durumda kalır. Buna karşılık, bir blob, yasal saklama süresi sona erene kadar sabit bir durumda kalır, ancak tüm yasal tutmalar temizlenmiş olsa da geçerlidir.
+Bir kapsayıcı aynı anda hem yasal ayrı tutmaya hem de zaman tabanlı bir bekletme ilkesine sahip olabilir. Geçerli saklama süresi sona erse dahi tüm yasal tutma durumları kaldırılana kadar kapsayıcı içindeki tüm bloblar sabit durumda kalır. Buna karşın tüm yasal tutma ilkeleri silinse dahi geçerli olan saklama süresi boyunca blob sabit durumda kalır.
 
 Aşağıdaki tabloda, farklı sabit senaryolar için devre dışı bırakılmış BLOB depolama işlemlerinin türleri gösterilmektedir. Daha fazla bilgi için bkz. [Azure Blob hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) belgeleri.
 
@@ -116,7 +116,7 @@ Hayır, mevcut veya yeni oluşturulan genel amaçlı v2 veya blob depolama hesap
 
 **Yalnızca yasal bir saklama ve zaman tabanlı bekletme ilkesi uygulayabilir miyim?**
 
-Evet, bir kapsayıcıda aynı anda hem yasal bir saklama hem de zaman tabanlı bir bekletme ilkesi bulunabilir. Geçerli saklama süresi sona erse bile, bu kapsayıcıdaki tüm Bloblar, tüm yasal tutmalar temizlenene kadar sabit durumda kalır. Buna karşılık, bir blob, yasal saklama süresi sona erene kadar sabit bir durumda kalır, ancak tüm yasal tutmalar temizlenmiş olsa da geçerlidir.
+Evet, bir kapsayıcıda aynı anda hem yasal bir saklama hem de zaman tabanlı bir bekletme ilkesi bulunabilir. Geçerli saklama süresi sona erse dahi tüm yasal tutma durumları kaldırılana kadar kapsayıcı içindeki tüm bloblar sabit durumda kalır. Buna karşın tüm yasal tutma ilkeleri silinse dahi geçerli olan saklama süresi boyunca blob sabit durumda kalır.
 
 **Yasal saklama ilkeleri yalnızca yasal bir şekilde geçerlidir veya başka kullanım senaryolarında bulunabilir mi?**
 

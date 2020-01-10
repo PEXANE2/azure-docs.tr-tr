@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 177c110ce9679f3d564918dfac50b3e3f66f84ce
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2d150006fb4638d3efb15111013d17e43c8b125e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893595"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747012"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 'da klasik uyarılar nelerdir?
 
@@ -93,7 +93,7 @@ Uyarı kuralları ve bunları kullanarak yapılandırma hakkında bilgi alın:
 * [Klasik ölçüm uyarılarını yapılandırma PowerShell](alerts-classic-portal.md)
 * [Klasik ölçüm uyarılarını yapılandırma komut satırı arabirimi (CLI)](alerts-classic-portal.md)
 * [Klasik ölçüm uyarılarını Yapılandırma Azure izleyici REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* [Etkinlik günlüğü](activity-logs-overview.md) hakkında daha fazla bilgi edinin
+* [Etkinlik günlüğü](platform-logs-overview.md) hakkında daha fazla bilgi edinin
 * [Etkinlik günlüğü uyarılarını Azure Portal aracılığıyla](activity-log-alerts.md) yapılandırma
 * [Etkinlik günlüğü uyarılarını Kaynak Yöneticisi aracılığıyla](alerts-activity-log.md) yapılandırma
 * [Etkinlik günlüğü uyarısı Web kancası şemasını](activity-log-alerts-webhook.md) gözden geçirme

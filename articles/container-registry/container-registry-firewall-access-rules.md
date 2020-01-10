@@ -1,42 +1,42 @@
 ---
 title: Güvenlik Duvarı erişim kuralları
-description: Bir güvenlik duvarının arkasındaki Azure Container Registry 'ye erişmek için kuralları yapılandırın.
+description: ("Beyaz listeye") REST API ve depolama uç noktası etki alanı adlarına veya hizmete özel IP adresi aralıklarına erişime izin vererek bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırın.
 ms.topic: article
 ms.date: 07/17/2019
-ms.openlocfilehash: 6a0a169f7e5a7e07771cb9fee474b7f4a9391a4e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 4d3c4ff4ca19d8b563c185e5c314011823081df1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455193"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745193"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırma
 
 Bu makalede, Azure Container Registry 'ye erişime izin vermek için güvenlik duvarınızdaki kuralların nasıl yapılandırılacağı açıklanır. Örneğin, bir güvenlik duvarı veya proxy sunucusu arkasındaki bir Azure IoT Edge cihazın bir kapsayıcı görüntüsünü çekmek için bir kapsayıcı kayıt defterine erişmesi gerekebilir. Ya da, bir şirket içi ağdaki kilitlenmiş bir sunucunun bir görüntüyü göndermek için erişmesi gerekebilir.
 
-Bir kapsayıcı kayıt defterinde yalnızca bir Azure sanal ağı veya genel IP adresi aralığı içinde erişime izin vermek için gelen ağ erişim kurallarını yapılandırmak istiyorsanız bkz. [bir sanal ağ üzerinden Azure Container Registry 'ye erişimi kısıtlama](container-registry-vnet.md).
+Bunun yerine, bir kapsayıcı kayıt defterinde yalnızca bir Azure sanal ağı veya genel IP adres aralığından gelen ağ erişim kurallarını yapılandırmak istiyorsanız bkz. [bir Azure Container Registry 'ye erişimi bir sanal ağdan kısıtlama](container-registry-vnet.md).
 
 ## <a name="about-registry-endpoints"></a>Kayıt defteri uç noktaları hakkında
 
 Bir Azure Container Registry 'ye görüntü veya diğer yapıtları çekmek veya göndermek için, Docker Daemon gibi bir istemcinin iki ayrı uç nokta ile HTTPS üzerinden etkileşimde bulunması gerekir.
 
-* **Kayıt defteri REST API uç noktası** -kimlik doğrulama ve kayıt defteri yönetim işlemleri kayıt defterinin ortak REST API uç noktası aracılığıyla işlenir. Bu uç nokta, kayıt defterinin veya ilişkili bir IP adresi aralığının oturum açma sunucusu URL 'sidir. 
+* **Kayıt defteri REST API uç noktası** -kimlik doğrulama ve kayıt defteri yönetim işlemleri kayıt defterinin ortak REST API uç noktası aracılığıyla işlenir. Bu uç nokta, kayıt defterinin oturum açma sunucusu adı veya ilişkili bir IP adresi aralığıdır. 
 
-* **Depolama uç noktası** -Azure, kapsayıcı görüntülerini ve diğer yapıtları yönetmek için her kayıt defteri adına Azure Storage hesaplarında [BLOB depolamayı ayırır](container-registry-storage.md) . Bir istemci bir Azure Container Registry içindeki görüntü katmanlarına eriştiğinde, kayıt defteri tarafından sağlanmış bir depolama hesabı uç noktası kullanarak istek yapar.
+* **Depolama uç noktası** -Azure, kapsayıcı görüntüleri ve diğer yapıtlar için verileri yönetmek üzere her kayıt defteri adına Azure Storage hesaplarında [BLOB depolamayı ayırır](container-registry-storage.md) . Bir istemci bir Azure Container Registry içindeki görüntü katmanlarına eriştiğinde, kayıt defteri tarafından sağlanmış bir depolama hesabı uç noktası kullanarak istek yapar.
 
 Kayıt defteriniz coğrafi olarak [çoğaltılırsa](container-registry-geo-replication.md), bir istemcinin belirli bir bölgedeki veya birden çok ÇOĞALTıLAN bölgedeki REST ve depolama uç noktalarıyla etkileşimde olması gerekebilir.
 
-## <a name="allow-access-to-rest-and-storage-urls"></a>REST ve depolama URL 'Lerine erişime izin ver
+## <a name="allow-access-to-rest-and-storage-domain-names"></a>REST ve depolama alanı adlarına erişime izin ver
 
-* **REST uç noktası** -`myregistry.azurecr.io` gibi kayıt DEFTERI sunucusu URL 'sine erişime izin ver
-* **Depolama uç noktası** -joker karakter `*.blob.core.windows.net` kullanarak tüm Azure Blob depolama hesaplarına erişime izin ver
+* **REST uç noktası** -`myregistry.azurecr.io` gibi tam kayıt defteri oturum açma sunucu adına erişime izin ver
+* **Depolama (veri) uç noktası** -joker karakter `*.blob.core.windows.net` kullanarak tüm Azure Blob depolama hesaplarına erişime izin ver
 
 
 ## <a name="allow-access-by-ip-address-range"></a>IP adresi aralığına göre erişime izin ver
 
-Belirli IP adreslerine erişime izin vermeniz gerekiyorsa [Azure IP aralıkları ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519)' u indirin.
+Kuruluşunuzun yalnızca belirli IP adreslerine veya adres aralıklarına erişime izin vermek için ilkeler varsa, [Azure IP aralıklarını ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519)' u indirin.
 
-ACR REST uç nokta IP aralıklarını bulmak için JSON dosyasında **AzureContainerRegistry** araması yapın.
+Erişime izin vermeniz gereken ACR REST uç nokta IP aralıklarını bulmak için JSON dosyasında **AzureContainerRegistry** aratın.
 
 > [!IMPORTANT]
 > Azure hizmetleri için IP adresi aralıkları değişebilir ve güncelleştirmeler haftalık olarak yayımlanır. JSON dosyasını düzenli olarak indirin ve erişim kurallarınızın gerekli güncelleştirmelerini yapın. Senaryonuz Azure Container Registry erişmek için bir Azure sanal ağındaki ağ güvenlik grubu kurallarını yapılandırmayı içeriyorsa, bunun yerine **AzureContainerRegistry** [Service etiketini](#allow-access-by-service-tag) kullanın.

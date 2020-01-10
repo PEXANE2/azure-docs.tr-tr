@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 840e8b3bc86281a8c42689b1cb68917741ef2bd9
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: feb7fa0b3f820c3f918fc8a5c817e7fe5fb15fc9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240635"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75610412"
 ---
 # <a name="connect-windows-firewall"></a>Windows güvenlik duvarını bağlama
 
@@ -30,7 +30,8 @@ Windows Güvenlik Duvarı Bağlayıcısı, Azure Sentinel çalışma alanınıza
 
 
 > [!NOTE]
-> Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
+> - Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
+> - Azure Sentinel ve Azure Güvenlik Merkezi aynı çalışma alanına toplanırsa, bu bağlayıcı aracılığıyla Windows Güvenlik Duvarı çözümünü etkinleştirmeniz gerekmez. Yine de etkinleştirdiyseniz, yinelenen verilere neden olmaz. 
 
 ## <a name="enable-the-connector"></a>Bağlayıcıyı etkinleştirme 
 

@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: d3959b9a86ccc2d42cbf7bd188ce86bf4b7a2e63
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 14946a05f021a9b155fd9a9621f73bde980970fa
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670080"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750474"
 ---
 # <a name="deployment-best-practices"></a>Dağıtım En Iyi uygulamaları
 
@@ -24,7 +24,7 @@ Her geliştirme ekibinin, her türlü bulut hizmetinde verimli bir dağıtım i�
 
 Dağıtım kaynağı, uygulama kodunuzun konumudur. Üretim uygulamaları için dağıtım kaynağı genellikle [GitHub, BitBucket veya Azure Repos](deploy-continuous-deployment.md)gibi sürüm denetimi yazılımıyla barındırılan bir depodur. Geliştirme ve test senaryolarında, dağıtım kaynağı [Yerel makinenizde bir proje](deploy-local-git.md)olabilir. App Service [, OneDrive ve Dropbox klasörlerini](deploy-content-sync.md) de dağıtım kaynakları olarak destekler. Bulut klasörleri App Service kullanmaya başlamanızı kolaylaştırırken, genellikle bu kaynak kurumsal düzeyde üretim uygulamaları için kullanılması önerilmez. 
 
-### <a name="build-pipeline"></a>Derleme işlem hattı
+### <a name="build-pipeline"></a>Derleme İşlem Hattı
 
 Bir dağıtım kaynağına karar verdikten sonra bir sonraki adımınız bir yapı işlem hattı seçmek olur. Derleme işlem hattı kaynak kodunuzu dağıtım kaynağından okur ve uygulamayı bir çalıştırılabilir durumda almak için bir dizi adımı (kodu derleme, HTML ve JavaScript 'i çalıştırma, testleri çalıştırma ve paketleme bileşenleri) yürütür. Yapı işlem hattı tarafından yürütülen belirli komutlar, dil yığınınıza bağlıdır. Bu işlemler Azure Pipelines gibi bir yapı sunucusunda yürütülebilir veya yerel olarak yürütülür.
 
@@ -66,3 +66,12 @@ Kapalı kalma süresini engellemek için her zaman yerel önbelleği [dağıtım
 ### <a name="high-cpu-or-memory"></a>Yüksek CPU veya bellek
 
 App Service planınız kullanılabilir CPU veya belleğin %90 ' den fazla kullanılıyorsa, temeldeki sanal makinede dağıtımınızı işleme sorunu olabilir. Bu durumda, dağıtımı gerçekleştirmek için örnek sayınız geçici olarak ölçeklendirin. Dağıtım tamamlandıktan sonra, örnek sayısını önceki değerine döndürebilirsiniz.
+
+En iyi uygulamalar hakkında daha fazla bilgi için [App Service tanılama](https://docs.microsoft.com/azure/app-service/overview-diagnostics) ' yı ziyaret ederek kaynağına özgü eyleme dönüştürülebilir en iyi yöntemleri bulabilirsiniz.
+
+- [Azure Portal](https://portal.azure.com)Web uygulamanıza gidin.
+- App Service Tanılama ' yı açan sol gezinmede **sorunları Tanıla ve çöz** ' e tıklayın.
+- **En Iyi Yöntemler** giriş sayfası kutucuğu seçin.
+- En iyi yapılandırma uygulamalarına göre uygulamanızın geçerli durumunu görüntülemek için en iyi yapılandırmanın kullanılabilirlik & performansı veya **en iyi** uygulamaları **Için en iyi yöntemler** ' e tıklayın.
+
+Bu bağlantıyı, kaynağınız için App Service tanılamayı doğrudan açmak için de kullanabilirsiniz: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.

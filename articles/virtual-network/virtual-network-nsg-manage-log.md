@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 55fc18a718d0c69ba90a86ff6aea00d32a8f465b
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9829e713f19ab9755e9dc79d676446c8048e09b3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196743"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751190"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Ağ güvenlik grubu için tanılama günlüğü
 
@@ -29,9 +29,9 @@ Bir ağ güvenlik grubu (NSG), bir sanal ağ alt ağına, ağ arabirimine veya h
 
 Tanılama günlükleri yalnızca Azure Resource Manager dağıtım modeliyle dağıtılan NSG 'ler için kullanılabilir. Klasik dağıtım modeli aracılığıyla dağıtılan NSG 'ler için tanılama günlüğünü etkinleştiremezsiniz. İki modeli daha iyi anlamak için bkz. [Azure dağıtım modellerini anlama](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Tanılama günlüğü, için tanılama verilerini toplamak istediğiniz *her* NSG için ayrı olarak etkinleştirilir. Bunun yerine işlemsel veya etkinlik, Günlükler ile ilgileniyorsanız, bkz. Azure [etkinlik günlüğü](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Tanılama günlüğü, için tanılama verilerini toplamak istediğiniz *her* NSG için ayrı olarak etkinleştirilir. Bunun yerine işlemsel veya etkinlik, Günlükler ile ilgileniyorsanız, bkz. Azure [etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="enable-logging"></a>Günlü kaydını etkinleştir
+## <a name="enable-logging"></a>Günlüğü etkinleştirme
 
 Tanılama günlük kaydını etkinleştirmek için [Azure Portal](#azure-portal), [POWERSHELL](#powershell)veya [Azure CLI](#azure-cli) 'yı kullanabilirsiniz.
 
@@ -198,7 +198,7 @@ Kural sayacı günlüğü, kaynaklara uygulanan her bir kuralla ilgili bilgiler 
 
 ## <a name="view-and-analyze-logs"></a>Günlükleri görüntüleme ve çözümleme
 
-Tanılama günlüğü verilerini görüntülemeyi öğrenmek için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tanılama verilerini buraya gönderirseniz:
+Tanılama günlüğü verilerini görüntülemeyi öğrenmek için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tanılama verilerini buraya gönderirseniz:
 - **Azure izleyici günlükleri**: Gelişmiş Öngörüler için [ağ güvenlik grubu Analizi](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) çözümünü kullanabilirsiniz. Bu çözüm, bir sanal makinedeki ağ arabiriminin MAC adresine göre trafiğe izin veren veya reddeden NSG kuralları için görselleştirmeler sağlar.
 - **Azure depolama hesabı**: VERILER bir PT1H. JSON dosyasına yazılır. Şunu bulabilirsiniz:
@@ -207,7 +207,7 @@ Tanılama günlüğü verilerini görüntülemeyi öğrenmek için bkz. [Azure t
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha önce denetim veya işletimsel Günlükler olarak bilinen [etkinlik günlüğü](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)hakkında daha fazla bilgi edinin. Etkinlik günlüğü, Azure dağıtım modelinden oluşturulan NSG 'ler için varsayılan olarak etkindir. Etkinlik günlüğündeki NSG 'ler üzerinde hangi işlemlerin tamamlandığını öğrenmek için aşağıdaki kaynak türlerini içeren girdileri arayın:
+- Daha önce denetim veya işletimsel Günlükler olarak bilinen [etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)hakkında daha fazla bilgi edinin. Etkinlik günlüğü, Azure dağıtım modelinden oluşturulan NSG 'ler için varsayılan olarak etkindir. Etkinlik günlüğündeki NSG 'ler üzerinde hangi işlemlerin tamamlandığını öğrenmek için aşağıdaki kaynak türlerini içeren girdileri arayın:
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups

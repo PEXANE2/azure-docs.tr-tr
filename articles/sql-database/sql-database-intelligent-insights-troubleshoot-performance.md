@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: b6ec1952d730b6515032572def65806a1ccbc0b2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 386c44cbf7a86e1a1dc92b918d87d0d8c1e60dd2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810362"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744710"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Akıllı İçgörüler Azure SQL veritabanı performans sorunlarını giderme
 
@@ -35,7 +35,7 @@ Akıllı İçgörüler, sorgu yürütme bekleme süreleri, hatalar veya zaman a�
 | [Kaynak sınırlarına ulaşma](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Görüntülenen abonelikte kullanılabilir kaynakların (DTU), veritabanı çalışan iş parçacıklarının veya veritabanı oturum açma oturumlarının tüketimi sınırlara ulaştı. Bu, SQL veritabanı performansını etkiliyor. | CPU kaynaklarının tüketimi, yönetilen örnek sınırlarına ulaşıyor. Bu, veritabanı performansını etkiliyor. |
 | [İş yükü artışı](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | İş yükü artışı veya veritabanındaki iş yükünün sürekli birikmesi algılandı. Bu, SQL veritabanı performansını etkiliyor. | İş yükü artışı algılandı. Bu, veritabanı performansını etkiliyor. |
 | [Bellek baskısı](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | İstenen bellek verdiği çalışanların, istatistiksel olarak önemli miktarda süre için bellek ayırmaları beklemesi gerekir. Ya da gerekli bellek izni veren çalışanların daha yüksek bir birikmesi vardır. Bu, SQL veritabanı performansını etkiliyor. | Bellek izni isteyen çalışanlar, istatistiksel olarak önemli bir süre için bellek ayırmaları bekliyor. Bu, veritabanı performansını etkiliyor. |
-| [Lemeye](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | SQL veritabanı performansını etkileyen aşırı veritabanı kilitleme algılandı. | Veritabanı performansını etkileyen aşırı veritabanı kilitleme algılandı. |
+| [Kilitleme](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | SQL veritabanı performansını etkileyen aşırı veritabanı kilitleme algılandı. | Veritabanı performansını etkileyen aşırı veritabanı kilitleme algılandı. |
 | [Artan MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Maksimum paralellik derecesi seçeneği (MAXDOP), sorgu yürütme verimliliğini etkileyecek şekilde değiştirildi. Bu, SQL veritabanı performansını etkiliyor. | Maksimum paralellik derecesi seçeneği (MAXDOP), sorgu yürütme verimliliğini etkileyecek şekilde değiştirildi. Bu, veritabanı performansını etkiliyor. |
 | [Pagemandal çekişmesi](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Birden çok iş parçacığı aynı anda, daha fazla bekleme süreleriyle sonuçlanan ve pagemanmaya neden olan bellek içi veri arabelleği sayfalarına erişmeyi deniyor. Bu, SQL veritabanı performansını etkiliyor. | Birden çok iş parçacığı aynı anda, daha fazla bekleme süreleriyle sonuçlanan ve pagemanmaya neden olan bellek içi veri arabelleği sayfalarına erişmeyi deniyor. Bu, performansı veritabanını etkiliyor. |
 | [Eksik dizin](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | SQL veritabanı performansını etkileyen eksik dizin algılandı. | Veritabanı performansını etkileyen eksik dizin algılandı. |
@@ -110,7 +110,7 @@ Ayrıca, birden çok veritabanı üzerinde iyileştirerek veya dağıtarak iş y
 
 Ek sorun giderme önerileri için bkz. [bellek desteği: çok sayıda adı olan, bilinmeyen SQL Server bellek tüketicisi](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
-## <a name="locking"></a>Lemeye
+## <a name="locking"></a>Kilitleme
 
 ### <a name="what-is-happening"></a>Ne oluyor
 
@@ -188,7 +188,7 @@ Tanılama günlüğü, iş yükü performansını etkilemek için tanımlanan so
 > SQL Database 'in sürekli performans iyileştirmesi için, [SQL veritabanı otomatik ayarlamayı](sql-database-automatic-tuning.md)etkinleştirmenizi öneririz. SQL veritabanı yerleşik zeka 'nın bu benzersiz özelliği, SQL veritabanınızı sürekli olarak izler ve veritabanlarınızın dizinlerini otomatik olarak oluşturur.
 >
 
-## <a name="new-query"></a>Yeni sorgu
+## <a name="new-query"></a>Yeni Sorgu
 
 ### <a name="what-is-happening"></a>Ne oluyor
 
@@ -331,4 +331,4 @@ Akıllı İçgörüler, genellikle performans sorununun kök neden analizini ger
 - [Akıllı içgörüler](sql-database-intelligent-insights.md) kavramları öğrenin.
 - [Azure SQL veritabanı performans tanılama günlüğünü akıllı içgörüler](sql-database-intelligent-insights-use-diagnostics-log.md)kullanın.
 - [Azure SQL Analytics kullanarak Azure SQL veritabanını](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)izleyin.
-- [Azure kaynaklarınızdan günlük verilerini toplamayı ve](../azure-monitor/platform/resource-logs-overview.md)kullanmayı öğrenin.
+- [Azure kaynaklarınızdan günlük verilerini toplamayı ve](../azure-monitor/platform/platform-logs-overview.md)kullanmayı öğrenin.

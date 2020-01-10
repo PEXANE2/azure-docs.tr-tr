@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed376a3f500f6d6af3d0eab7f98b68e856513600
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 66be29b6d16e422eebd381cddb83ce94adf9f76e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547041"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745455"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure dijital TWINS 'de izlemeyi yapılandırma
 
@@ -26,7 +26,7 @@ Bu makalede günlüğe kaydetme ve izleme seçenekleri ve bunları Azure dijital
 
 ## <a name="review-activity-logs"></a>Etkinlik günlüklerini gözden geçirme
 
-Azure [etkinlik günlükleri](../azure-monitor/platform/activity-logs-overview.md) her bir Azure hizmet örneği için abonelik düzeyinde olay ve işlem geçmişlerine hızlı öngörüler sağlar.
+Azure [etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md) her bir Azure hizmet örneği için abonelik düzeyinde olay ve işlem geçmişlerine hızlı öngörüler sağlar.
 
 Abonelik düzeyi olaylar şunları içerir:
 
@@ -57,7 +57,7 @@ Gelişmiş etkinlik günlüğü için:
 
 ## <a name="enable-customer-diagnostic-logs"></a>Müşteri tanılama günlüklerini etkinleştir
 
-Azure [Tanılama ayarları](../azure-monitor/platform/resource-logs-overview.md) , her bir Azure örneği için etkinlik günlüğünü tamamlamak üzere ayarlanabilir. Etkinlik günlükleri abonelik düzeyindeki etkinliklerle ilgilidir, tanılama günlüğü kaynakların işletimsel geçmişiyle ilgili öngörüler sağlar.
+Azure [Tanılama ayarları](../azure-monitor/platform/platform-logs-overview.md) , her bir Azure örneği için etkinlik günlüğünü tamamlamak üzere ayarlanabilir. Etkinlik günlükleri abonelik düzeyindeki etkinliklerle ilgilidir, tanılama günlüğü kaynakların işletimsel geçmişiyle ilgili öngörüler sağlar.
 
 Tanılama günlüğü örnekleri şunları içerir:
 
@@ -127,8 +127,8 @@ Azure dijital TWINS ayrıca uygulamaya özgü günlüğe kaydetme ve güvenlik d
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure [etkinlik günlükleri](../azure-monitor/platform/activity-logs-overview.md)hakkında daha fazla bilgi edinin.
+- Azure [etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md)hakkında daha fazla bilgi edinin.
 
-- [Tanılama günlüklerine genel bir bakış](../azure-monitor/platform/resource-logs-overview.md)okuyarak Azure tanılama ayarlarını daha ayrıntılı olarak inceleyin.
+- [Tanılama günlüklerine genel bir bakış](../azure-monitor/platform/platform-logs-overview.md)okuyarak Azure tanılama ayarlarını daha ayrıntılı olarak inceleyin.
 
 - [Azure izleyici günlükleri](../azure-monitor/log-query/get-started-portal.md)hakkında daha fazla bilgi edinin.

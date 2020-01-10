@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/23/2019
+ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: c5b9c1d294cd984ca3cf062d3b657239995e5908
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566373"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751736"
 ---
 Artımlı anlık görüntüler (Önizleme), alınan yönetilen diskler için zaman içinde son anlık görüntüden bu yana yapılan tüm değişikliklerden oluşur. Artımlı bir anlık görüntüyü indirmeye veya başka bir şekilde kullanmaya çalıştığınızda, tam VHD kullanılır. Yönetilen disk anlık görüntülerinin bu yeni özelliği, siz tercih etmediğiniz müddetçe her bir anlık görüntü ile tüm diski depolamak için artık gerekli olmadığından daha fazla maliyetli olabilir. Düzenli anlık görüntülerle olduğu gibi, artımlı anlık görüntüler tam yönetilen disk oluşturmak için veya düzenli bir anlık görüntü oluşturmak için kullanılabilir.
 
@@ -21,11 +21,9 @@ Artımlı anlık görüntü ve normal anlık görüntü arasında birkaç fark v
 
 Artımlı anlık görüntüler, yönetilen diskler için benzersiz olarak kullanılabilen bir fark özelliği de sunar. Bunlar, blok düzeyine kadar, aynı yönetilen disklerin iki artımlı anlık görüntüsü arasında değişiklik almanızı sağlar. Bu özelliği, anlık görüntüleri bölgeler arasında kopyalarken veri parmak izini azaltmak için kullanabilirsiniz.
 
-Henüz önizlemeye kaydolmadıysanız ve artımlı anlık görüntüleri kullanmaya başlamak istiyorsanız, genel önizlemeye erişim sağlamak için AzureDisks@microsoft.com adresinden e-posta gönderin.
-
 ## <a name="restrictions"></a>Kısıtlamalar
 
-- Artımlı anlık görüntüler şu anda yalnızca Doğu ABD, Orta ABD, Kanada Orta, Orta Batı ABD ve Kuzey Avrupa içinde kullanılabilir.
+- Artımlı anlık görüntüler şu anda yalnızca Doğu ABD, Doğu ABD 2, Orta ABD, Orta Batı ABD, Kanada Doğu, Kanada Orta ve Kuzey Avrupa içinde kullanılabilir.
 - Bir diskin boyutunu değiştirdikten sonra Artımlı anlık görüntüler şu anda oluşturulamaz.
 - Artımlı anlık görüntüler şu anda abonelikler arasında taşınamaz.
 - Şu anda, belirli bir anda belirli bir anlık görüntü ailesinin en fazla beş anlık görüntüsüne sahip SAS URI 'Leri oluşturabilirsiniz.
@@ -156,8 +154,4 @@ Artımlı bir anlık görüntü oluşturmak için Azure Resource Manager şablon
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-1. Henüz önizlemeye kaydolmadıysanız ve artımlı anlık görüntüleri kullanmaya başlamak istiyorsanız, genel önizlemeye erişim sağlamak için AzureDisks@microsoft.com adresinden e-posta gönderin. 
-
-2. Fark özelliğini kullanarak Artımlı anlık görüntülerin siteler arası kopyası için aşağıdaki örnekleri gezin   
-
-    - [Azure .NET SDK 'larını kullanma](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)
+.NET kullanarak Artımlı anlık görüntülerin fark yeteneğini gösteren örnek kodu görmek isterseniz, bkz. [Azure yönetilen diskler yedeklemelerini, artımlı anlık görüntülerin fark yeteneği ile başka bir bölgeye kopyalama](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).

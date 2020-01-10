@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/31/2017
-ms.openlocfilehash: a79bf07c91ef80509355a10c1401d1ab94cc5118
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: eb43db7a67063622f6a6125178267573cd209471
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552743"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748809"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure etkinlik günlüğü uyarıları için Web kancaları
 Bir eylem grubu tanımının bir parçası olarak, Web kancası uç noktalarını etkinlik günlüğü uyarı bildirimlerini alacak şekilde yapılandırabilirsiniz. Web kancaları ile bu bildirimleri, işlem sonrası veya özel eylemler için diğer sistemlere yönlendirebilirsiniz. Bu makalede, bir Web kancası için HTTP POST yükünün nasıl göründüğü gösterilmektedir.
@@ -259,10 +259,10 @@ Hizmet durumu bildirimi etkinlik günlüğü uyarılarında belirli şema ayrın
 
 | Öğe adı | Açıklama |
 | --- | --- |
-| durum |Ölçüm uyarıları için kullanılır. Etkinlik günlüğü uyarıları için her zaman "etkinleştirildi" olarak ayarlayın. |
-| bağlam |Olayın bağlamı. |
+| status |Ölçüm uyarıları için kullanılır. Etkinlik günlüğü uyarıları için her zaman "etkinleştirildi" olarak ayarlayın. |
+| context |Olayın bağlamı. |
 | resourceProviderName |Etkilenen kaynağın kaynak sağlayıcısı. |
-| ConditionType 'ı seçin |Always "Event." |
+| conditionType |Always "Event." |
 | ad |Uyarı kuralının adı. |
 | id |Uyarının kaynak KIMLIĞI. |
 | açıklama |Uyarı açıklaması, uyarı oluşturulduğunda ayarlanır. |
@@ -272,25 +272,25 @@ Hizmet durumu bildirimi etkinlik günlüğü uyarılarında belirli şema ayrın
 | resourceGroupName |Etkilenen kaynak için kaynak grubunun adı. |
 | properties |Olayla ilgili ayrıntıları içeren `<Key, Value>` çiftleri (yani `Dictionary<String, String>`) kümesi. |
 | olay |Olay hakkında meta veriler içeren öğe. |
-| Yetkisi |Etkinliğin rol tabanlı Access Control özellikleri. Bu özellikler genellikle eylemi, rolü ve kapsamı içerir. |
+| authorization |Etkinliğin rol tabanlı Access Control özellikleri. Bu özellikler genellikle eylemi, rolü ve kapsamı içerir. |
 | category |Etkinliğin kategorisi. Desteklenen değerler arasında yönetim, uyarı, güvenlik, ServiceHealth ve öneri bulunur. |
-| yapana |Kullanılabilirliği temel alarak işlemi, UPN talebini veya SPN talebini gerçekleştiren kullanıcının e-posta adresi. Belirli sistem çağrıları için null olabilir. |
+| caller |Kullanılabilirliği temel alarak işlemi, UPN talebini veya SPN talebini gerçekleştiren kullanıcının e-posta adresi. Belirli sistem çağrıları için null olabilir. |
 | correlationId |Genellikle dize biçimindeki bir GUID. CorrelationId 'ye sahip olaylar aynı daha büyük eyleme aittir ve genellikle bir CorrelationId paylaşır. |
 | eventDescription |Etkinliğin statik metin açıklaması. |
 | Eventdataıd |Etkinliğin benzersiz tanımlayıcısı. |
-| EventSource |Olayı oluşturan Azure hizmetinin veya altyapısının adı. |
+| eventSource |Olayı oluşturan Azure hizmetinin veya altyapısının adı. |
 | httpRequest |İstek genellikle Clientrequestıd, clientIpAddress ve HTTP yöntemini (örneğin, PUT) içerir. |
-| düzeyde |Şu değerlerden biri: kritik, hata, uyarı ve bilgilendirici. |
+| level |Şu değerlerden biri: kritik, hata, uyarı ve bilgilendirici. |
 | operationId |Genellikle tek bir işleme karşılık gelen olaylar arasında paylaşılan bir GUID. |
 | operationName |İşlemin adı. |
 | properties |Etkinliğin özellikleri. |
-| durum |dizisinde. İşlemin durumu. Ortak değerler başlangıç, devam etme, başarılı, başarısız, etkin ve Çözümlenmiş. |
+| status |Dize. İşlemin durumu. Ortak değerler başlangıç, devam etme, başarılı, başarısız, etkin ve Çözümlenmiş. |
 | Dosya |Genellikle karşılık gelen REST çağrısının HTTP durum kodunu içerir. Alt durumu tanımlayan diğer dizeleri de içerebilir. Ortak alt durum değerleri Tamam (HTTP durum kodu: 200), oluşturulan (http durum kodu: 201), kabul edildi (http durum kodu: 202), Içerik yok (http durum kodu: 204), hatalı Istek (http durum kodu: 400), bulunamadı (http durum kodu: 404), çakışma (http durum kodu: 409 ), İç sunucu hatası (HTTP durum kodu: 500), hizmet kullanılamıyor (HTTP durum kodu: 503) ve ağ geçidi zaman aşımı (HTTP durum kodu: 504). |
 
-Tüm diğer etkinlik günlüğü uyarılarıyla ilgili belirli şema ayrıntıları için bkz. [Azure etkinlik günlüğü 'Ne genel bakış](../../azure-monitor/platform/activity-logs-overview.md).
+Tüm diğer etkinlik günlüğü uyarılarıyla ilgili belirli şema ayrıntıları için bkz. [Azure etkinlik günlüğü 'Ne genel bakış](../../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Etkinlik günlüğü hakkında daha fazla bilgi edinin](../../azure-monitor/platform/activity-logs-overview.md).
+* [Etkinlik günlüğü hakkında daha fazla bilgi edinin](../../azure-monitor/platform/platform-logs-overview.md).
 * Azure [uyarıları üzerinde Azure Otomasyonu betikleri (runbook 'lar) yürütün](https://go.microsoft.com/fwlink/?LinkId=627081).
 * Bir [Azure uyarısından Twilio aracılığıyla SMS göndermek için bir mantıksal uygulama kullanın](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Bu örnek, ölçüm uyarıları içindir, ancak etkinlik günlüğü uyarısıyla çalışacak şekilde değiştirilebilir.
 * Bir [Azure uyarısından bir bolluk iletisi göndermek için bir mantıksal uygulama kullanın](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Bu örnek, ölçüm uyarıları içindir, ancak etkinlik günlüğü uyarısıyla çalışacak şekilde değiştirilebilir.

@@ -1,38 +1,38 @@
 ---
-title: Azure 'da günlüklerin ve ölçümlerin toplanması için tanılama ayarı oluştur | Microsoft Docs
+title: Azure 'da günlüklerin ve ölçümlerin toplanması için tanılama ayarı oluştur
 description: Azure platformu günlüklerini Azure Izleyici günlüklerine, Azure depolama 'ya veya Azure Event Hubs iletmek için Tanılama ayarları oluşturun.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b90e5ccf38e95d33c4b5b6f3b8da0e91a4facb5a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 22932121b97c1b0fe91c46b5eea0222a022a4e61
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023733"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751075"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluştur
-Azure 'daki [Platform günlükleri](resource-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. Bu makalede, farklı hedeflere platform günlüklerini toplamak için tanılama ayarlarını oluşturma ve yapılandırma hakkında ayrıntılı bilgi verilmektedir.
+Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. Bu makalede, farklı hedeflere platform günlükleri göndermek için tanılama ayarlarını oluşturma ve yapılandırma hakkında ayrıntılı bilgi verilmektedir.
 
-Her Azure kaynağı kendi tanılama ayarını gerektirir. Tanılama ayarı bu kaynak için aşağıdakileri tanımlar:
+> [!IMPORTANT]
+> Etkinlik günlüğünü toplamak üzere bir tanılama ayarı oluşturmadan önce, önce eski yapılandırmaları devre dışı bırakmanız gerekir. Ayrıntılar için bkz. [eski ayarlarla Azure etkinlik günlüğü toplama](diagnostic-settings-legacy.md) .
+
+Her Azure kaynağı, aşağıdakileri tanımlayan kendi tanılama ayarını gerektirir:
 
 - Ayarda tanımlanan hedeflere gönderilen günlük kategorileri ve ölçüm verileri. Kullanılabilir Kategoriler farklı kaynak türleri için farklılık gösterir.
 - Günlükleri göndermek için bir veya daha fazla hedef. Geçerli hedeflere Log Analytics çalışma alanı, Event Hubs ve Azure Storage dahildir.
-- Azure depolama 'da depolanan veriler için bekletme ilkesi.
  
-Tek bir tanılama ayarı, hedeflerin her birinden birini tanımlayabilir. Belirli bir hedef türünden birine (örneğin, iki farklı Log Analytics çalışma alanı) birden fazla veri göndermek istiyorsanız, daha sonra birden çok ayar oluşturun. Her kaynak en fazla 5 tanılama ayarlarına sahip olabilir.
+Tek bir tanılama ayarı, hedeflerin her birinden fazlasını tanımlayabilir. Belirli bir hedef türünden birine (örneğin, iki farklı Log Analytics çalışma alanı) birden fazla veri göndermek istiyorsanız, daha sonra birden çok ayar oluşturun. Her kaynak en fazla 5 tanılama ayarlarına sahip olabilir.
 
-> [!NOTE]
-> Etkinlik günlüğü, diğer platform günlükleriyle aynı hedeflere iletilebilir, ancak tanılama ayarlarıyla yapılandırılmamıştır. Ayrıntılar için bkz. [Azure 'Da platform günlüklerine genel bakış](platform-logs-overview.md#destinations) .
 
 > [!NOTE]
 > [Platform ölçümleri](metrics-supported.md) , [Azure izleyici ölçümlerine](data-platform-metrics.md)otomatik olarak toplanır. Tanılama ayarları, belirli Azure hizmetleri için Azure Izleyici günlüklerine yönelik ölçümleri, [günlük sorguları](../log-query/log-query-overview.md)kullanılarak diğer izleme verileriyle analiz edilmek üzere toplamak için kullanılabilir.
 
-## <a name="destinations"></a>Yeri 
+## <a name="destinations"></a>Hedefler 
 Platform günlükleri aşağıdaki tablodaki hedeflere gönderilebilir. Her bir hedefin yapılandırması, bu makalede açıklanan tanılama ayarlarını oluşturmak için aynı işlem kullanılarak gerçekleştirilir. Bu hedefe veri gönderme hakkındaki ayrıntılar için aşağıdaki tablodaki her bir bağlantıyı izleyin.
 
 | Hedef | Açıklama |
@@ -41,22 +41,24 @@ Platform günlükleri aşağıdaki tablodaki hedeflere gönderilebilir. Her bir 
 | [Olay Hub 'ları](resource-logs-stream-event-hubs.md) | Günlüklerin Event Hubs gönderilmesi, üçüncü taraf SIG 'ler ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışını sağlar. |
 | [Azure depolama hesabı](resource-logs-collect-storage.md) | Günlükleri bir Azure depolama hesabına arşivleme, denetim, statik analiz veya yedekleme için faydalıdır. |
 
-
-> [!IMPORTANT]
-> Azure Data Lake Storage 2. hesapları, Azure portal geçerli bir seçenek olarak listelenseler bile, şu anda Tanılama ayarları için hedef olarak desteklenmemektedir.
-
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Azure portal Tanılama ayarları oluşturma
 Azure portal tanılama ayarlarını Azure Izleyici menüsünden ya da kaynak menüsünden yapılandırabilirsiniz.
 
-1. Azure portal Azure Izleyici menüsünde **Ayarlar** ' ın altında **Tanılama ayarları** ' na tıklayın ve ardından kaynağa tıklayın.
+1. Azure portal tanılama ayarlarını yapılandırdığınız konum kaynağa bağlıdır.
 
-    ![Tanılama ayarları](media/diagnostic-settings/menu-monitor.png)
+   - Tek bir kaynak için kaynak menüsünde **izleyici** ' nin altındaki **Tanılama ayarları** ' na tıklayın.
 
-    Ya da Azure portal kaynak menüsünde **izleyici**' nin altındaki **Tanılama ayarları** ' na tıklayın.
+        ![Tanılama ayarları](media/diagnostic-settings/menu-resource.png)
 
-    ![Tanılama ayarları](media/diagnostic-settings/menu-resource.png)
+    - Bir veya daha fazla kaynak için, Azure Izleyici menüsünde **Ayarlar** altında **Tanılama ayarları** ' na tıklayın ve ardından kaynağa tıklayın.
+    
+        ![Tanılama ayarları](media/diagnostic-settings/menu-monitor.png)
 
-2. Hiçbir ayar kaynağı varsa, istenen bir ayar oluşturmak için seçtiğiniz. **Tanılamayı aç**’a tıklayın.
+    - Etkinlik günlüğü için, **Azure izleyici** menüsünde **etkinlik günlüğü** ' ne ve ardından **Tanılama ayarları**' na tıklayın. Etkinlik günlüğü için eski tüm yapılandırmaları devre dışı bıraktığınızdan emin olun. Ayrıntılar için bkz. [var olan ayarları devre dışı bırakma](diagnostic-settings-legacy.md#disable-existing-settings) .
+
+        ![Tanılama ayarları](media/diagnostic-settings/menu-activity-log.png)
+
+2. Hiçbir ayar kaynağı varsa, istenen bir ayar oluşturmak için seçtiğiniz. **Tanılama ayarı Ekle**' ye tıklayın.
 
    ![Tanılama ayarını - mevcut hiçbir ayar Ekle](media/diagnostic-settings/add-setting.png)
 
@@ -77,16 +79,14 @@ Azure portal tanılama ayarlarını Azure Izleyici menüsünden ya da kaynak men
 
     ![Tanılama ayarını - var olan ayarları Ekle](media/diagnostic-settings/setting-details.png)
 
-5. Belirtilen hedeflere gönderilecek veri kategorilerinin her birinin kutusunu işaretleyin. **Bir depolama hesabına arşivleme**seçeneğini belirlediyseniz, [saklama süresini](resource-logs-collect-storage.md#data-retention)de belirtmeniz gerekecektir.
+5. Belirtilen hedeflere gönderilecek veri kategorilerinin her birinin kutusunu işaretleyin. Kategorilerin listesi her bir Azure hizmeti için farklılık gösterecektir.
 
+   > [!NOTE]
+   > Çok boyutlu ölçümlerin tanılama ayarları aracılığıyla gönderilmesi şu anda desteklenmemektedir. Boyutlu ölçümler, boyut değerlerinin toplamı alınarak düzleştirilmiş tek yönlü ölçümler olarak dışarı aktarılır.
+   >
+   > *Örneğin*: Bir Olay Hub'ındaki 'Gelen İletiler' ölçümü, kuyruk düzeyi temelinde araştırılıp grafiği oluşturulabilir. Ancak, tanılama ayarları aracılığıyla dışarı aktarılan ölçüm, Olay Hub’ındaki tüm kuyruklarda tüm gelen iletiler halinde ifade edilir.
 
-
-> [!NOTE]
-> Çok boyutlu ölçümlerin tanılama ayarları aracılığıyla gönderilmesi şu anda desteklenmemektedir. Boyutlu ölçümler, boyut değerlerinin toplamı alınarak düzleştirilmiş tek yönlü ölçümler olarak dışarı aktarılır.
->
-> *Örneğin*: Bir Olay Hub'ındaki 'Gelen İletiler' ölçümü, kuyruk düzeyi temelinde araştırılıp grafiği oluşturulabilir. Ancak, tanılama ayarları aracılığıyla dışarı aktarılan ölçüm, Olay Hub’ındaki tüm kuyruklarda tüm gelen iletiler halinde ifade edilir.
-
-4. **Save (Kaydet)** düğmesine tıklayın.
+6. **Save (Kaydet)** düğmesine tıklayın.
 
 Birkaç dakika sonra, yeni ayar bu kaynak için ayarlar listenizde görünür ve yeni olay verileri oluşturulmasıyla Günlükler belirtilen hedeflere akışla kaydedilir. Bir olayın ne zaman yayınlandığına ve [bir Log Analytics çalışma alanında göründüğünde](data-ingestion-time.md)on beş dakika sürebilir.
 
@@ -95,16 +95,22 @@ Birkaç dakika sonra, yeni ayar bu kaynak için ayarlar listenizde görünür ve
 ## <a name="create-diagnostic-settings-using-powershell"></a>PowerShell kullanarak tanılama ayarları oluşturma
 [Azure PowerShell](powershell-quickstart-samples.md)bir tanılama ayarı oluşturmak için [set-azdiagnosticsetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 'ini kullanın. Bu cmdlet 'in parametrelerinin açıklamaları için belgelerine bakın.
 
+> [!IMPORTANT]
+> Azure etkinlik günlüğü için bu yöntemi kullanamazsınız. Bunun yerine, bir Kaynak Yöneticisi şablonu oluşturmak ve PowerShell ile dağıtmak için [Kaynak Yöneticisi şablonu kullanarak Azure izleyici 'de tanılama ayarı oluştur](diagnostic-settings-template.md) ' u kullanın.
+
 Aşağıda, üç hedefi kullanarak bir tanılama ayarı oluşturan örnek bir PowerShell cmdlet 'i verilmiştir.
 
 
 ```powershell
-Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault -Category AuditEvent -MetricCategory AllMetrics -Enabled $true -StorageAccountId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount -RetentionEnabled $true -RetentionInDays 7 -WorkspaceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace  -EventHubAuthorizationRuleId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault -Category AuditEvent -MetricCategory AllMetrics -Enabled $true -StorageAccountId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount -WorkspaceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace  -EventHubAuthorizationRuleId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
 
 ## <a name="create-diagnostic-settings-using-azure-cli"></a>Azure CLı kullanarak tanılama ayarları oluşturma
 [Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest)ile bir tanılama ayarı oluşturmak için [az Monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) komutunu kullanın. Parametrelerinin açıklamaları için bu komuta yönelik belgelere bakın.
+
+> [!IMPORTANT]
+> Azure etkinlik günlüğü için bu yöntemi kullanamazsınız. Bunun yerine, bir Kaynak Yöneticisi şablonu oluşturmak ve CLı ile dağıtmak için [Kaynak Yöneticisi şablonu kullanarak Azure izleyici 'de tanılama ayarı oluştur](diagnostic-settings-template.md) ' u kullanın.
 
 Aşağıda, üç hedefi kullanarak bir tanılama ayarı oluşturmak için örnek bir CLı komutu verilmiştir.
 
@@ -114,8 +120,8 @@ Aşağıda, üç hedefi kullanarak bir tanılama ayarı oluşturmak için örnek
 az monitor diagnostic-settings create  \
 --name KeyVault-Diagnostics \
 --resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault \
---logs    '[{"category": "AuditEvent","enabled": true,"retentionPolicy": {"days": 7,"enabled": true}}]' \
---metrics '[{"category": "AllMetrics","enabled": true,"retentionPolicy": {"days": 7,"enabled": true}}]' \
+--logs    '[{"category": "AuditEvent","enabled": true}]' \
+--metrics '[{"category": "AllMetrics","enabled": true}]' \
 --storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount \
 --workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace \
 --event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
@@ -126,8 +132,8 @@ az monitor diagnostic-settings create  \
 
 
 ### <a name="configure-diagnostic-settings-using-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak tanılama ayarlarını yapılandırma
-Bkz. bir Kaynak Yöneticisi şablonuyla tanılama ayarlarını oluşturmak veya güncelleştirmek için [bir kaynak yöneticisi şablonu kullanarak kaynak oluşturmada tanılama ayarlarını otomatik olarak etkinleştir](diagnostic-settings-template.md) .
+Kaynak Yöneticisi şablonuyla Tanılama ayarları oluşturmak veya güncelleştirmek için [Kaynak Yöneticisi şablonu kullanarak Azure izleyici 'de tanılama ayarı oluşturma](diagnostic-settings-template.md) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure platformu günlükleri hakkında daha fazla bilgi edinin](resource-logs-overview.md)
+* [Azure platformu günlükleri hakkında daha fazla bilgi edinin](platform-logs-overview.md)

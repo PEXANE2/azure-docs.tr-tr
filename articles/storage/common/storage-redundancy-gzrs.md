@@ -8,18 +8,18 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e1789122079d5cbc6f5914a6fd6a69a38df04e45
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534302"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748266"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
 Coğrafi bölge yedekli depolama (GZRS) (Önizleme) marrıes, [coğrafi olarak yedekli depolama (GRS)](storage-redundancy-grs.md)tarafından sağlandığı şekilde bölgesel kesintilerden koruma ile bölgesel olarak yedekli [depolamanın (ZRS)](storage-redundancy-zrs.md) yüksek oranda kullanılabilir olması. Bir GZRS Storage hesabındaki veriler, birincil bölgedeki üç [Azure kullanılabilirlik](../../availability-zones/az-overview.md) alanı arasında çoğaltılır ve ayrıca bölgesel felaketlerden koruma için ikincil bir coğrafi bölgeye çoğaltılır. Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirilir ve bir bölgesel çift oluşturur. Daha ayrıntılı bilgi ve özel durumlar için [belgelere](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)bakın.
 
-Bir GZRS depolama hesabı ile bir kullanılabilirlik alanı kullanılamaz hale gelirse veya kurtarılamaz durumdaysa verileri okumaya ve yazmaya devam edebilirsiniz. Ayrıca, tüm bölgesel bir kesinti veya birincil bölgenin kurtarılamaz bir olağanüstü durum durumunda verileriniz de dayanıklı olur. GZRS belirli bir yıl boyunca nesnelerin en az% 99.99999999999999 (16 9) oranında dayanıklılığını sağlamak üzere tasarlanmıştır. GZRS, LRS, ZRS, GRS veya RA-GRS ile aynı [ölçeklenebilirlik hedeflerini](storage-scalability-targets.md) de sunmaktadır. Uygulamalarınızın birincil bölgedeki bir olağanüstü durum durumunda verileri okuyabilmeleri gerekiyorsa, isteğe bağlı olarak, Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) ile ikincil bölgedeki verilere okuma erişimini etkinleştirebilirsiniz.
+Bir GZRS depolama hesabı ile bir kullanılabilirlik alanı kullanılamaz hale gelirse veya kurtarılamaz durumdaysa verileri okumaya ve yazmaya devam edebilirsiniz. Ayrıca, tüm bölgesel bir kesinti veya birincil bölgenin kurtarılamaz bir olağanüstü durum durumunda verileriniz de dayanıklı olur. GZRS belirli bir yıl boyunca nesnelerin en az% 99.99999999999999 (16 9) oranında dayanıklılığını sağlamak üzere tasarlanmıştır. GZRS, LRS, ZRS, GRS veya RA-GRS ile aynı ölçeklenebilirlik hedeflerini de sunmaktadır. Uygulamalarınızın birincil bölgedeki bir olağanüstü durum durumunda verileri okuyabilmeleri gerekiyorsa, isteğe bağlı olarak, Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) ile ikincil bölgedeki verilere okuma erişimini etkinleştirebilirsiniz.
 
 Microsoft, olağanüstü durum kurtarma için tutarlılık, dayanıklılık, yüksek kullanılabilirlik, mükemmel performans ve esnekliği gerektiren uygulamalar için GZRS kullanılmasını önerir. Bölgesel bir olağanüstü durum durumunda ikincil bölgeye yönelik okuma erişiminin ek güvenliği için, depolama hesabınız için RA-GZRS ' y i etkinleştirin.
 
@@ -151,7 +151,7 @@ Dinamik geçiş istemek için [Azure Portal](https://ms.portal.azure.com/#blade/
     - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, "\_\_ bölgesindeki [LRS, GRS] öğesinden GZRS 'e geçiş yapmak istiyorum." ya da "\_\_ bölgesinde [LRS, RA-GRS] konumundan RA-GZRS ' a geçiş yapmak istiyorum."
 5. **İleri**’yi seçin.
 6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
-7. **Oluştur**'u seçin.
+7. **Oluştur**’u seçin.
 
 Destek temsilcisi, yardım sağlamak için sizinle iletişim kuracaktır.
 
@@ -160,3 +160,4 @@ Destek temsilcisi, yardım sağlamak için sizinle iletişim kuracaktır.
 - [Azure Depolama çoğaltması](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Yerel olarak yedekli depolama (LRS): Azure depolama için düşük maliyetli veri artıklığı](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
 - [Bölgesel olarak yedekli depolama (ZRS): yüksek oranda kullanılabilir Azure depolama uygulamaları](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 
+- [Standart depolama hesapları için ölçeklenebilirlik ve performans hedefleri](scalability-targets-standard-account.md)

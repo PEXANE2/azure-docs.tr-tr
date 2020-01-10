@@ -14,20 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 6d43fa2621aa95bdcf18d5c033d1347e13dc3f67
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 53ffc6dd36dbf8588b5e1eb26b461e22c7445092
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101483"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747687"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM 'de Oracle Database oluşturma
 
 Bu kılavuzda, bir Oracle 12c veritabanı oluşturmak için [Oracle marketi Galeri görüntüsünden](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) bir Azure sanal makinesi dağıtmak üzere Azure CLI kullanılarak ayrıntılar bulunur. Sunucu dağıtıldıktan sonra, Oracle veritabanını yapılandırmak için SSH aracılığıyla bağlanırsınız. 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
 CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
 
@@ -56,7 +54,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-VM 'yi oluşturduktan sonra, Azure CLı aşağıdaki örneğe benzer bilgiler görüntüler. Değerini aklınızda yapın `publicIpAddress`. Bu adresi sanal makineye erişmek için kullanırsınız.
+VM 'yi oluşturduktan sonra, Azure CLı aşağıdaki örneğe benzer bilgiler görüntüler. `publicIpAddress`değerini aklınızda edin. Bu adresi sanal makineye erişmek için kullanırsınız.
 
 ```azurecli
 {
@@ -144,13 +142,13 @@ Oracle yazılımı Market görüntüsüne zaten yüklenmiş. Örnek bir veritaba
 
 3. Oracle değişkenlerini ayarlama
 
-Bağlanmadan önce iki ortam değişkeni ayarlamanız gerekir: *ORACLE_HOME* ve *ORACLE_SID*.
+Bağlanmadan önce, iki ortam değişkeni ayarlamanız gerekir: *ORACLE_HOME* ve *ORACLE_SID*.
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-Ayrıca,. bashrc dosyasına ORACLE_HOME ve ORACLE_SID değişkenleri ekleyebilirsiniz. Bu, gelecekteki oturum açma işlemleri için ortam değişkenlerini kaydeder. Aşağıdaki deyimlerin, seçtiğiniz düzenleyiciyi kullanarak `~/.bashrc` dosyaya eklendiğinden emin olun.
+Ayrıca,. bashrc dosyasına ORACLE_HOME ve ORACLE_SID değişkenleri ekleyebilirsiniz. Bu, gelecekteki oturum açma işlemleri için ortam değişkenlerini kaydeder. Aşağıdaki deyimlerin, seçtiğiniz düzenleyiciyi kullanarak `~/.bashrc` dosyasına eklendiğinden emin olun.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -190,14 +188,14 @@ Veritabanını araştırmak için kullanabileceğiniz bir GUI yönetim aracı i�
       3           PDB1                      MOUNT
     ```
 
-4. İçin `PDB1` OPEN_MODE okuma yazma değilse, PDB1 açmak için şu komutu çalıştırın:
+4. `PDB1` için OPEN_MODE okuma yazma değilse, PDB1 açmak için şu komutu çalıştırın:
 
    ```bash
     alter session set container=pdb1;
     alter database open;
    ```
 
-SQLplus oturumunu sonlandırın ve Oracle kullanıcısının oturumu kapatmak için `quit` yazmanız `exit` gerekir.
+SQLplus oturumunu sonlandırmak için `quit` yazmanız ve Oracle kullanıcısının oturumu kapatmak için `exit` yazmanız gerekir.
 
 ## <a name="automate-database-startup-and-shutdown"></a>Veritabanı başlangıcını ve kapatılmasını otomatikleştirin
 
@@ -208,13 +206,13 @@ Varsayılan olarak Oracle veritabanı, sanal makineyi yeniden başlattığınız
     sudo su -
     ```
 
-2.  En sevdiğiniz düzenleyiciyi kullanarak dosyayı `/etc/oratab` düzenleyin ve varsayılan `N` olarak `Y`değiştirin:
+2.  En sevdiğiniz düzenleyiciyi kullanarak dosya `/etc/oratab` düzenleyin ve varsayılan `N` `Y`olarak değiştirin:
 
     ```bash
     cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y
     ```
 
-3.  Adlı `/etc/init.d/dbora` bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
+3.  `/etc/init.d/dbora` adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
 
     ```
     #!/bin/sh

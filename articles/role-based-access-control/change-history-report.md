@@ -15,16 +15,16 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5758f480c9216cf71e47509682053b39f0b15bf
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 753c626fe44193b83cbd992f225fe01c2ff67f89
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172410"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744812"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Azure kaynaklarında RBAC değişiklikleri için etkinlik günlüklerini görüntüleme
 
-Bazen, denetim veya sorun giderme amacıyla Azure kaynaklarında rol tabanlı erişim denetimi (RBAC) değişiklikleri hakkında bilgilere ihtiyacınız vardır. Herhangi bir kişi, aboneliklerinizde rol atamaları veya rol tanımlarında değişiklik yaptığında, değişiklikler [Azure etkinlik günlüğüne](../azure-monitor/platform/activity-logs-overview.md)kaydedilir. Son 90 güne ait tüm RBAC değişikliklerini görmek için etkinlik günlüklerini görüntüleyebilirsiniz.
+Bazen, denetim veya sorun giderme amacıyla Azure kaynaklarında rol tabanlı erişim denetimi (RBAC) değişiklikleri hakkında bilgilere ihtiyacınız vardır. Herhangi bir kişi, aboneliklerinizde rol atamaları veya rol tanımlarında değişiklik yaptığında, değişiklikler [Azure etkinlik günlüğüne](../azure-monitor/platform/platform-logs-overview.md)kaydedilir. Son 90 güne ait tüm RBAC değişikliklerini görmek için etkinlik günlüklerini görüntüleyebilirsiniz.
 
 ## <a name="operations-that-are-logged"></a>Günlüğe kaydedilen işlemler
 
@@ -35,18 +35,18 @@ Aşağıda, etkinlik günlüğüne kaydedilen RBAC ile ilgili işlemler verilmi�
 - Özel rol tanımı oluştur veya güncelleştir
 - Özel rol tanımını sil
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure Portal
 
-Kullanmaya başlamanın en kolay yolu Azure portal etkinlik günlüklerini görüntüleme yöntemidir. Aşağıdaki ekran görüntüsünde, rol atamasını ve rol tanımı işlemlerini görüntüleyecek şekilde filtrelenmiş bir etkinlik günlüğü örneği gösterilmektedir. Ayrıca, günlükleri CSV dosyası olarak indirmek için bir bağlantı içerir.
+Başlamanın en kolay yolu Azure portalıyla etkinlik günlüklerini görüntülemektir. Aşağıdaki ekran görüntüsünde, rol atamasını ve rol tanımı işlemlerini görüntüleyecek şekilde filtrelenmiş bir etkinlik günlüğü örneği gösterilmektedir. Ayrıca, günlükleri CSV dosyası olarak indirmek için bir bağlantı içerir.
 
 ![Portalı kullanan etkinlik günlükleri-ekran görüntüsü](./media/change-history-report/activity-log-portal.png)
 
 Portaldaki etkinlik günlüğünde birkaç filtre vardır. RBAC ile ilgili filtreler şunlardır:
 
-|Filtre  |Value  |
+|Filtrele  |Değer  |
 |---------|---------|
 |Olay kategorisi     | <ul><li>Yönetim</li></ul>         |
-|Çalışma     | <ul><li>Rol ataması oluştur</li> <li>Rol atamasını sil</li> <li>Özel rol tanımı oluştur veya güncelleştir</li> <li>Özel rol tanımını sil</li></ul>      |
+|İşlem     | <ul><li>Rol ataması oluştur</li> <li>Rol atamasını sil</li> <li>Özel rol tanımı oluştur veya güncelleştir</li> <li>Özel rol tanımını sil</li></ul>      |
 
 
 Etkinlik günlükleri hakkında daha fazla bilgi için bkz. [etkinlik günlüğündeki olayları görüntüleme](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).

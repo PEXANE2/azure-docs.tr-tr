@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 5fede76fbc97b31cbbcdaec1b17f838100d35511
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 76603642b90bd4d3926e10ce1c5a3c38391362cf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195829"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749767"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>VPN aracılığıyla HDInsight 'ta Apache Spark uygulamalarında uzaktan hata ayıklamak için Azure Toolkit for IntelliJ kullanma
 
@@ -27,9 +27,9 @@ Bu makalede, HDInsight Spark kümesinde bir Spark işi göndermek ve sonra masa�
 1. IntelliJ FIKRTE bir Scala uygulaması oluşturun ve sonra uzaktan hata ayıklama için yapılandırın.
 1. Uygulamayı çalıştırın ve hata ayıklayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**. Daha fazla bilgi için bkz. [ücretsiz Azure deneme](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)sürümü.
+* **Bir Azure aboneliği**. Daha fazla bilgi için bkz. [ücretsiz Azure deneme](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)sürümü.
 * **HDInsight 'Ta bir Apache Spark kümesi**. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 * **Oracle Java geliştirme seti**. [Oracle Web sitesinden](https://aka.ms/azure-jdks)yükleyebilirsiniz.
 * **IntelliJ fikri**. Bu makalede 2017,1 sürümü kullanılmaktadır. Bunu, [JetBrains Web sitesinden](https://www.jetbrains.com/idea/download/)yükleyebilirsiniz.
@@ -75,12 +75,12 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     ```
     # For headnode0
-    192.xxx.xx.xx hn0-nitinp
-    192.xxx.xx.xx hn0-nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
+    192.xxx.xx.xx nitinp
+    192.xxx.xx.xx nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
     
     # For headnode1
-    192.xxx.xx.xx hn1-nitinp
-    192.xxx.xx.xx hn1-nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
+    192.xxx.xx.xx nitinp
+    192.xxx.xx.xx nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
     ```
 
 1. HDInsight kümesi tarafından kullanılan Azure sanal ağına bağladığınız bilgisayardan, ana bilgisayar adının yanı sıra IP adresini ve ana bilgisayar adını kullanarak baş düğümlere ping atabildiğinizi doğrulayın.
@@ -141,15 +141,15 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
     Konak dosyası için küme baş düğüm IP adresini ve ana bilgisayar adlarını masaüstünde zaten ekledik, `scp` komutlarını aşağıdaki şekilde kullanabilirsiniz:
 
     ```bash
-    scp sshuser@hn0-nitinp:/etc/hadoop/conf/core-site.xml .
-    scp sshuser@hn0-nitinp:/etc/hadoop/conf/yarn-site.xml .
+    scp sshuser@nitinp:/etc/hadoop/conf/core-site.xml .
+    scp sshuser@nitinp:/etc/hadoop/conf/yarn-site.xml .
     ```
 
     Bu dosyaları projenize eklemek için, bunları proje ağacınızdaki **/src** klasörü altına kopyalayın, örneğin `<your project directory>\src`.
 
 1. `core-site.xml` dosyasını aşağıdaki değişiklikleri yapmak için güncelleştirin:
 
-   a. Şifrelenen anahtarı değiştirin. `core-site.xml` dosyası, kümeyle ilişkili depolama hesabının şifreli anahtarını içerir. Projeye eklediğiniz `core-site.xml` dosyasında, şifrelenen anahtarı varsayılan depolama hesabıyla ilişkili gerçek depolama anahtarıyla değiştirin. Daha fazla bilgi için bkz. [depolama erişim anahtarlarınızı yönetme](../../storage/common/storage-account-manage.md#access-keys).
+   a. Şifrelenen anahtarı değiştirin. `core-site.xml` dosyası, kümeyle ilişkili depolama hesabının şifreli anahtarını içerir. Projeye eklediğiniz `core-site.xml` dosyasında, şifrelenen anahtarı varsayılan depolama hesabıyla ilişkili gerçek depolama anahtarıyla değiştirin. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
 
     ```xml
     <property>

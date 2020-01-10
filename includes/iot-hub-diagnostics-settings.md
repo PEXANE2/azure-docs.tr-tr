@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 2498711a5b7e5bce29cd0054ba40257f8f996d43
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3778ec2fac13aee29ce361402a535ca70fd56c33
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266832"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750687"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>Tanılama ayarlarıyla günlüğü etkinleştir
 
@@ -25,7 +25,7 @@ ms.locfileid: "71266832"
 
 3. Seçin **tanılamayı Aç**.
 
-   ![Tanılamayı aç](./media/iot-hub-diagnostics-settings/turnondiagnostics.png)
+   ![Tanılamayı açma](./media/iot-hub-diagnostics-settings/turnondiagnostics.png)
 
 4. Tanılama ayarlarına bir ad verin.
 
@@ -33,7 +33,7 @@ ms.locfileid: "71266832"
 
    * Bir depolama hesabına arşivle
    * Bir olay hub'ına akış yap
-   * Log Analytics'e gönder
+   * Log Analytics’e gönderme
 
 6. Hangi işlemleri izlemek istediğinizi seçin ve bu işlemler için günlükleri etkinleştirin. Tanılama ayarlarının rapor aldığı işlemler şunlardır:
 
@@ -49,7 +49,7 @@ ms.locfileid: "71266832"
    * İş işlemleri
    * Doğrudan yöntemler  
    * Dağıtılmış izleme (Önizleme)
-   * Yapılandırmaları
+   * Yapılandırmalar
    * Cihaz akışları
    * Cihaz ölçümleri
 
@@ -63,4 +63,4 @@ Select-AzSubscription -SubscriptionName <subscription that includes your IoT Hub
 Set-AzDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```
 
-Yeni ayarları yaklaşık 10 dakika içinde etkinleşir. Bundan sonra, Günlükler **Tanılama ayarları** dikey penceresinde yapılandırılan arşivleme hedefi ' nde görüntülenir. Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve](../articles/azure-monitor/platform/resource-logs-overview.md)kullanma.
+Yeni ayarları yaklaşık 10 dakika içinde etkinleşir. Bundan sonra, Günlükler **Tanılama ayarları** dikey penceresinde yapılandırılan arşivleme hedefi ' nde görüntülenir. Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve](../articles/azure-monitor/platform/platform-logs-overview.md)kullanma.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4f37c54699329f43a5bbdd5c4543ae3a7b2166f5
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: dcf6160c3650975431bf50fcf5bcba67f833a717
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048841"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750457"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları
 Azure Dosya Eşitleme, şirket içi sunucularınızı Azure dosyalarına bağlayarak çok siteli eşitlemeyi ve bulut katmanlama özelliklerini etkinleştirir. Bu nedenle, bir şirket içi sunucu internet 'e bağlı olmalıdır. BT yöneticisinin, sunucunun Azure Cloud Services 'e ulaşması için en iyi yolu karar vermesini gerektirir.
@@ -22,7 +22,7 @@ Bu makale, başarıyla sunulan belirli gereksinimlere ve seçeneklere ilişkin �
 ## <a name="overview"></a>Genel Bakış
 Azure Dosya Eşitleme, Windows sunucunuz, Azure dosya paylaşımınız ve diğer birçok Azure hizmeti arasında, eşitleme grubunuzda açıklandığı gibi verileri eşitlemek için bir Orchestration hizmeti görevi görür. Azure Dosya Eşitleme düzgün şekilde çalışması için sunucularınızı aşağıdaki Azure hizmetleriyle iletişim kuracak şekilde yapılandırmanız gerekecektir:
 
-- Azure Storage
+- Azure Depolama
 - Azure Dosya Eşitleme
 - Azure Resource Manager
 - Kimlik doğrulama hizmetleri
@@ -84,7 +84,7 @@ Makine genelindeki proxy ayarlarını yapılandırmak için aşağıdaki adımla
 
       Note: depolama eşitleme Aracısı (filesyncsvc) hizmeti durdurulduktan sonra otomatik olarak başlayacak.
 
-## <a name="firewall"></a>Güvenlik duvarı
+## <a name="firewall"></a>Güvenlik Duvarı
 Önceki bölümde belirtildiği gibi, 443 numaralı bağlantı noktasının giden trafik açık olması gerekir. Veri merkezinizdeki, dalınızdaki veya bölgenizdeki ilkelere bağlı olarak, bu bağlantı noktası üzerinden trafiği belirli etki alanlarına kısıtlamak istenebilir veya gerekli olabilir.
 
 Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
@@ -107,33 +107,33 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 
 | Bulut  | Bölge | Birincil uç nokta URL 'SI | Eşleştirilmiş bölge | Bulma URL 'SI |
 |--------|--------|----------------------|---------------|---------------|
-| Genel |Avustralya Doğu | https:\//kailani-aue.one.microsoft.com | Avustralya Güneydoğu | https:\//tm-kailani-aue.one.microsoft.com |
-| Genel |Avustralya Güneydoğu | https:\//kailani-aus.one.microsoft.com | Avustralya Doğu | https:\//tm-kailani-aus.one.microsoft.com |
-| Genel | Güney Brezilya | https:\//brazilsouth01.afs.azure.net | Orta Güney ABD | https:\//tm-brazilsouth01.afs.azure.net |
-| Genel | Orta Kanada | https:\//kailani-cac.one.microsoft.com | Doğu Kanada | https:\//tm-kailani-cac.one.microsoft.com |
-| Genel | Doğu Kanada | https:\//kailani-cae.one.microsoft.com | Orta Kanada | https:\//tm-kailani.cae.one.microsoft.com |
+| Genel |Doğu Avustralya | https:\//kailani-aue.one.microsoft.com | Güneydoğu Avustralya | https:\//tm-kailani-aue.one.microsoft.com |
+| Genel |Güneydoğu Avustralya | https:\//kailani-aus.one.microsoft.com | Doğu Avustralya | https:\//tm-kailani-aus.one.microsoft.com |
+| Genel | Brezilya Güney | https:\//brazilsouth01.afs.azure.net | Güney Orta ABD | https:\//tm-brazilsouth01.afs.azure.net |
+| Genel | Kanada Orta | https:\//kailani-cac.one.microsoft.com | Kanada Doğu | https:\//tm-kailani-cac.one.microsoft.com |
+| Genel | Kanada Doğu | https:\//kailani-cae.one.microsoft.com | Kanada Orta | https:\//tm-kailani.cae.one.microsoft.com |
 | Genel | Orta Hindistan | https:\//kailani-cin.one.microsoft.com | Güney Hindistan | https:\//tm-kailani-cin.one.microsoft.com |
 | Genel | Orta ABD | https:\//kailani-cus.one.microsoft.com | Doğu ABD 2 | https:\//tm-kailani-cus.one.microsoft.com |
 | Genel | Doğu Asya | https:\//kailani11.one.microsoft.com | Güneydoğu Asya | https:\//tm-kailani11.one.microsoft.com |
 | Genel | Doğu ABD | https:\//kailani1.one.microsoft.com | Batı ABD | https:\//tm-kailani1.one.microsoft.com |
 | Genel | Doğu ABD 2 | https:\//kailani-ess.one.microsoft.com | Orta ABD | https:\//tm-kailani-ess.one.microsoft.com |
-| Genel | Japonya Doğu | https:\//japaneast01.afs.azure.net | Japonya Batı | https:\//tm-japaneast01.afs.azure.net |
-| Genel | Japonya Batı | https:\//japanwest01.afs.azure.net | Japonya Doğu | https:\//tm-japanwest01.afs.azure.net |
+| Genel | Doğu Japonya | https:\//japaneast01.afs.azure.net | Batı Japonya | https:\//tm-japaneast01.afs.azure.net |
+| Genel | Batı Japonya | https:\//japanwest01.afs.azure.net | Doğu Japonya | https:\//tm-japanwest01.afs.azure.net |
 | Genel | Kore Orta | https:\//koreacentral01.afs.azure.net/ | Kore Güney | https:\//tm-koreacentral01.afs.azure.net/ |
 | Genel | Kore Güney | https:\//koreasouth01.afs.azure.net/ | Kore Orta | https:\//tm-koreasouth01.afs.azure.net/ |
-| Genel | Orta Kuzey ABD | https:\//northcentralus01.afs.azure.net | Orta Güney ABD | https:\//tm-northcentralus01.afs.azure.net |
+| Genel | Orta Kuzey ABD | https:\//northcentralus01.afs.azure.net | Güney Orta ABD | https:\//tm-northcentralus01.afs.azure.net |
 | Genel | Kuzey Avrupa | https:\//kailani7.one.microsoft.com | Batı Avrupa | https:\//tm-kailani7.one.microsoft.com |
-| Genel | Orta Güney ABD | https:\//southcentralus01.afs.azure.net | Orta Kuzey ABD | https:\//tm-southcentralus01.afs.azure.net |
+| Genel | Güney Orta ABD | https:\//southcentralus01.afs.azure.net | Orta Kuzey ABD | https:\//tm-southcentralus01.afs.azure.net |
 | Genel | Güney Hindistan | https:\//kailani-sin.one.microsoft.com | Orta Hindistan | https:\//tm-kailani-sin.one.microsoft.com |
 | Genel | Güneydoğu Asya | https:\//kailani10.one.microsoft.com | Doğu Asya | https:\//tm-kailani10.one.microsoft.com |
-| Genel | Birleşik Krallık Güney | https:\//kailani-uks.one.microsoft.com | Birleşik Krallık Batı | https:\//tm-kailani-uks.one.microsoft.com |
-| Genel | Birleşik Krallık Batı | https:\//kailani-ukw.one.microsoft.com | Birleşik Krallık Güney | https:\//tm-kailani-ukw.one.microsoft.com |
-| Genel | Batı Orta ABD | https:\//westcentralus01.afs.azure.net | Batı ABD 2 | https:\//tm-westcentralus01.afs.azure.net |
+| Genel | Birleşik Krallık, Güney | https:\//kailani-uks.one.microsoft.com | Birleşik Krallık, Batı | https:\//tm-kailani-uks.one.microsoft.com |
+| Genel | Birleşik Krallık, Batı | https:\//kailani-ukw.one.microsoft.com | Birleşik Krallık, Güney | https:\//tm-kailani-ukw.one.microsoft.com |
+| Genel | Orta Batı ABD | https:\//westcentralus01.afs.azure.net | Batı ABD 2 | https:\//tm-westcentralus01.afs.azure.net |
 | Genel | Batı Avrupa | https:\//kailani6.one.microsoft.com | Kuzey Avrupa | https:\//tm-kailani6.one.microsoft.com |
 | Genel | Batı ABD | https:\//kailani.one.microsoft.com | Doğu ABD | https:\//tm-kailani.one.microsoft.com |
-| Genel | Batı ABD 2 | https:\//westus201.afs.azure.net | Batı Orta ABD | https:\//tm-westus201.afs.azure.net |
-| Devlet | ABD Devleti Arizona | https:\//usgovarizona01.afs.azure.us | ABD Devleti Texas | https:\//tm-usgovarizona01.afs.azure.us |
-| Devlet | ABD Devleti Texas | https:\//usgovtexas01.afs.azure.us | ABD Devleti Arizona | https:\//tm-usgovtexas01.afs.azure.us |
+| Genel | Batı ABD 2 | https:\//westus201.afs.azure.net | Orta Batı ABD | https:\//tm-westus201.afs.azure.net |
+| Resmi Kurumlar | US Gov Arizona | https:\//usgovarizona01.afs.azure.us | US Gov Teksas | https:\//tm-usgovarizona01.afs.azure.us |
+| Resmi Kurumlar | US Gov Teksas | https:\//usgovtexas01.afs.azure.us | US Gov Arizona | https:\//tm-usgovtexas01.afs.azure.us |
 
 - Yerel olarak yedekli (LRS) veya bölge yedekli (ZRS) depolama hesapları kullanıyorsanız, yalnızca "birincil uç nokta URL 'SI" altında listelenen URL 'YI etkinleştirmeniz gerekir.
 
@@ -144,6 +144,15 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 > - https:\//kailani.one.microsoft.com (birincil uç nokta: Batı ABD)
 > - https:\//kailani1.one.microsoft.com (eşleştirilmiş başarısız bölge: Doğu ABD)
 > - https:\//tm-kailani.one.microsoft.com (birincil bölgenin bulma URL 'SI)
+
+## <a name="test-network-connectivity-to-service-endpoints"></a>Hizmet uç noktalarına ağ bağlantısını test etme
+Bir sunucu Azure Dosya Eşitleme hizmetine kaydedildikten sonra, bu sunucuya özgü tüm uç noktalar (URL) ile iletişimleri test etmek için test-StorageSyncNetworkConnectivity cmdlet 'i ve ServerRegistration. exe kullanılabilir. Bu cmdlet, tamamlanmamış iletişim, sunucunun Azure Dosya Eşitleme ile tamamen çalışmasını engellediğinde ve proxy ve güvenlik duvarı yapılandırmalarının ince ayar yapmak için kullanılabilir olduğunda sorun gidermeye yardımcı olabilir.
+
+Ağ bağlantısı testini çalıştırmak için, Azure Dosya Eşitleme Aracısı sürüm 9,1 veya üstünü yükledikten sonra aşağıdaki PowerShell komutlarını çalıştırın:
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Test-StorageSyncNetworkConnectivity
+```
 
 ## <a name="summary-and-risk-limitation"></a>Özet ve risk sınırlaması
 Bu belgede daha önce bulunan listeler, şu anda iletişim kuran Azure Dosya Eşitleme URL 'Leri içerir. Güvenlik duvarlarının bu etki alanlarına giden trafiğe izin alabilmesi gerekir. Microsoft bu listeyi güncel tutmaya devam eden bir çaba harcar.

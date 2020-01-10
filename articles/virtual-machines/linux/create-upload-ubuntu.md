@@ -3,29 +3,24 @@ title: Azure 'da bir Ubuntu Linux VHD oluşturma ve karşıya yükleme
 description: Ubuntu Linux işletim sistemi içeren bir Azure sanal sabit diski (VHD) oluşturmayı ve yüklemeyi öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 3e097959-84fc-4f6a-8cc8-35e087fd1542
+author: MicahMcKittrick-MSFT
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: szark
-ms.openlocfilehash: cdf2c6c0d5621223655fc4571affcdde4563ac97
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.author: mimckitt
+ms.openlocfilehash: e8226322ad1aa9a1079834cc26b4ff8a1b40a204
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258277"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750156"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure’da Ubuntu sanal makinesi hazırlama
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="official-ubuntu-cloud-images"></a>Resmi Ubuntu bulut görüntüleri
-Ubuntu artık, adresinden [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)Indirmek üzere resmi Azure VHD 'leri yayımlar. Azure için kendi özelleştirilmiş Ubuntu görüntünüzü oluşturmanız gerekiyorsa, bu bilinen çalışma VHD 'leri ile başlamanız ve gerektiğinde özelleştirmeniz önerilir. En son görüntü yayınları her zaman aşağıdaki konumlarda bulunabilir:
+
+Ubuntu artık [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)adresinden indirmek üzere resmi Azure VHD 'leri yayımlar. Azure için kendi özelleştirilmiş Ubuntu görüntünüzü oluşturmanız gerekiyorsa, bu bilinen çalışma VHD 'leri ile başlamanız ve gerektiğinde özelleştirmeniz önerilir. En son görüntü yayınları her zaman aşağıdaki konumlarda bulunabilir:
 
 * Ubuntu 12.04/kesinlikli: [Ubuntu-12,04-Server-cloudımg-AMD64-Disk1. vhd. zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 14.04/Trusty: [Ubuntu-14,04-Server-cloudimg-AMD64-Disk1. vhd. zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
@@ -33,7 +28,7 @@ Ubuntu artık, adresinden [https://cloud-images.ubuntu.com/](https://cloud-image
 * Ubuntu 18.04/Bionic: [Bionic-Server-cloudimg-AMD64. vhd. zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
 * Ubuntu 18.10/COSMIC: [Cosmic-Server-cloudimg-AMD64. vhd. zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yüklediğinizi varsaymış olursunuz. . Vhd dosyaları, örneğin Hyper-V gibi bir sanallaştırma çözümü oluşturmak için birden çok araç vardır. Yönergeler için bkz. [Hyper-V rolünü yükleyip sanal makineyi yapılandırma](https://technet.microsoft.com/library/hh846766.aspx).
 
 **Ubuntu yükleme notları**
@@ -46,7 +41,7 @@ Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yük
 
 ## <a name="manual-steps"></a>El ile adımlar
 > [!NOTE]
-> Azure için kendi özel Ubuntu görüntünüzü oluşturmayı denemeden önce lütfen [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) bunun yerine önceden oluşturulmuş ve test edilmiş görüntüleri kullanmayı göz önünde bulundurun.
+> Azure için kendi özel Ubuntu görüntünüzü oluşturmayı denemeden önce lütfen bunun yerine [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) önceden oluşturulmuş ve test edilmiş görüntüleri kullanmayı düşünün.
 > 
 > 
 
@@ -54,9 +49,9 @@ Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yük
 
 2. Sanal makine penceresini açmak için **Bağlan** ' a tıklayın.
 
-3. Görüntüdeki geçerli depoları, Ubuntu 'un Azure depolarını kullanacak şekilde değiştirin. Adımlar, Ubuntu sürümüne bağlı olarak biraz farklılık gösterir.
+3. Görüntüdeki geçerli depoları, Ubuntu 'ın Azure deposunu kullanacak şekilde değiştirin. Adımlar, Ubuntu sürümüne bağlı olarak biraz farklılık gösterir.
    
-    Düzenlemeden `/etc/apt/sources.list`önce, bir yedekleme yapmanız önerilir:
+    `/etc/apt/sources.list`düzenlemeden önce, bir yedekleme yapmanız önerilir:
    
         # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
@@ -108,11 +103,11 @@ Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yük
     - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
 
 
-5. Grub için çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu bir metin düzenleyicisinde `/etc/default/grub` açmak için, adlı `GRUB_CMDLINE_LINUX_DEFAULT` değişkeni bulun (veya gerekirse ekleyin) ve aşağıdaki parametreleri içerecek şekilde düzenleyin:
+5. Grub için çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu bir metin düzenleyicisinde `/etc/default/grub` açmak için `GRUB_CMDLINE_LINUX_DEFAULT` adlı değişkeni bulun (veya gerekirse ekleyin) ve aşağıdaki parametreleri içerecek şekilde düzenleyin:
    
         GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
 
-    Bu dosyayı kaydedip kapatın ve sonra çalıştırın `sudo update-grub`. Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini sağlar ve bu da hata ayıklama sorunlarıyla birlikte Azure teknik desteğine yardımcı olabilir.
+    Bu dosyayı kaydedip kapatın ve ardından `sudo update-grub`çalıştırın. Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini sağlar ve bu da hata ayıklama sorunlarıyla birlikte Azure teknik desteğine yardımcı olabilir.
 
 6. SSH sunucusunun, önyükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun.  Bu genellikle varsayılandır.
 
@@ -122,7 +117,7 @@ Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yük
         # sudo apt-get install walinuxagent
 
    > [!Note]
-   >  Paket, yüklüyse `NetworkManager` ve`NetworkManager-gnome`paketlerinikaldırabilir. `walinuxagent`
+   >  `walinuxagent` paketi, yüklenmişse `NetworkManager` ve `NetworkManager-gnome` paketlerini kaldırabilir.
 
 
 1. Sanal makinenin sağlamasını kaldırmak ve Azure 'da sağlamak üzere hazırlamak için aşağıdaki komutları çalıştırın:

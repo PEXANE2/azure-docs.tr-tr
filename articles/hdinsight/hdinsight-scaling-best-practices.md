@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 15d44f95cccf15fd0f7615655f5bbac1b0c35127
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2d26cbce3398b9a44530553fbff0413c631b7579
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706054"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744775"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
 
@@ -29,13 +29,13 @@ Aşağıda özetlenen yöntemlerden birini kullanarak bir kümeyi el ile ölçek
 
 Microsoft, kümeleri ölçeklendirmek için aşağıdaki yardımcı programları sağlar:
 
-|Utility | Açıklama|
+|Yardımcı program | Açıklama|
 |---|---|
 |[PowerShell az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -clustername \<küme adı >-Targetınstancecount \<newsize >|
 |[PowerShell Azurerd](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -clustername \<küme adı >-Targetınstancecount \<newsize >|
 |[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az HDInsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --kaynak grubu \<kaynak grubu >--ad \<küme adı >--Target-Instance-Count \<newsize >|
 |[Azure CLI](hdinsight-administer-use-command-line.md)|Azure HDInsight küme yeniden boyutlandırma \<clusterName > \<hedef örnek sayısı > |
-|[Azure portalda](https://portal.azure.com)|HDInsight kümesi bölmesini açın, sol taraftaki menüden **küme boyutu** ' nu seçin, ardından küme boyutu bölmesinde çalışan düğümlerinin sayısını yazın ve Kaydet ' i seçin.|  
+|[Azure Portal](https://portal.azure.com)|HDInsight kümesi bölmesini açın, sol taraftaki menüden **küme boyutu** ' nu seçin, ardından küme boyutu bölmesinde çalışan düğümlerinin sayısını yazın ve Kaydet ' i seçin.|  
 
 ![Azure portal ölçeği kümesi seçeneği](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
 
@@ -126,7 +126,7 @@ ResourceManager Kullanıcı arabirimine doğrudan `https://<HDInsightClusterName
 yarn application -kill <application_id>
 ```
 
-Örnek:
+Örneğin:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"
@@ -147,10 +147,10 @@ org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create director
 ```
 
 ```
-org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
+org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.cloudapp.net:10001 [active-headnode-name.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-`/var/log/hadoop/hdfs/` klasöründen, ne zaman güvenli moda girmediğini görmek için, küme ölçeklendiği zaman yakınında, ad düğümü günlüklerini gözden geçirebilirsiniz. Günlük dosyaları `Hadoop-hdfs-namenode-hn0-clustername.*`olarak adlandırılır.
+`/var/log/hadoop/hdfs/` klasöründen, ne zaman güvenli moda girmediğini görmek için, küme ölçeklendiği zaman yakınında, ad düğümü günlüklerini gözden geçirebilirsiniz. Günlük dosyaları `Hadoop-hdfs-namenode-<active-headnode-name>.*`olarak adlandırılır.
 
 Önceki hataların kök nedeni, Hive 'in sorguları çalıştırırken, geçici dosyalara bir süre içinde bağlı olmasına bağlıdır. IBir güvenli moda girdiğinde Hive, IBU öğesine yazamadığından sorguları çalıştıramıyor. Çalışma alanındaki geçici dosyalar, tek tek çalışan düğümü VM 'lerine bağlı olan yerel sürücüde bulunur ve en az üç çoğaltmadan diğer çalışan düğümleri arasında çoğaltılır.
 
@@ -194,7 +194,7 @@ Hive geçici dosyaların arkasında bırakılırsa, güvenli moddan kaçınmak i
     Dosyalar mevcut olduğunda örnek bir çıktı aşağıda verilmiştir:
 
     ```output
-    sshuser@hn0-scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
+    sshuser@scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/_tmp_space.db
     -rw-r--r--   3 hive hdfs         27 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/inuse.info
