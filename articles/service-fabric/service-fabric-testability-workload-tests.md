@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric uygulamalarında hata benzetimi yapma | Microsoft Docs
-description: Hizmetlerinizi doğru ve düzgün olmayan hatalara karşı nasıl harlaştırmak.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric uygulamalarında hata benzetimi yapma
+description: Azure Service Fabric hizmetlerinizin düzgün ve düzgün olmayan hatalara karşı nasıl sağlamlaştıralınacağını öğrenin.
 author: anmolah
-manager: chackdan
-editor: ''
-ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: bbb89b66231c949627c7ffbf99ebe9b5dd379ca2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348710"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645999"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Hizmet iş yükleri sırasında hata benzetimleri yapma
 Azure 'daki test Service Fabric senaryoları, geliştiricilerin bireysel hatalarıyla ilgilenme konusunda endişelenmelerine olanak tanır. Ancak, istemci iş yükünün ve hatalarının açık bir şekilde aramasının gerekebileceği senaryolar vardır. İstemci iş yükünün ve hatalarının araya getirilmesi, hata oluştuğunda hizmetin gerçekten bir eylem gerçekleştirmesini sağlar. Test edilebilirlik 'nın sağladığı denetim düzeyi verildiğinde, bunlar iş yükü yürütmesinin kesin noktalarında olabilir. Bu hata, uygulamadaki farklı durumlardaki hataları bulabilir ve kaliteyi iyileştirebilir.
@@ -27,12 +18,12 @@ Azure 'daki test Service Fabric senaryoları, geliştiricilerin bireysel hatalar
 ## <a name="sample-custom-scenario"></a>Örnek özel senaryo
 Bu test, iş yükünü [düzgün ve düzgün olmayan hatalarla](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)karşılıklı bırakan bir senaryoyu gösterir. Hatalar, hizmet işlemlerinin ortasında veya en iyi sonuçlar için işlem olarak bildirilmelidir.
 
-Dört iş yükü sunan bir hizmetin örneğini inceleyelim: A, B, C ve D. Her biri bir iş akışı kümesine karşılık gelir ve işlem, depolama veya karıştırma olabilir. Basitlik sağlamak için örneğimizde iş yüklerini Özet olarak ekleyeceğiz. Bu örnekte yürütülen farklı hatalar şunlardır:
+Dört iş yükü sunan bir hizmetin örneğini ele alalım: A, B, C ve D. her biri bir iş akışı kümesine karşılık gelir ve işlem, depolama ya da bir karıştırma olabilir. Basitlik sağlamak için örneğimizde iş yüklerini Özet olarak ekleyeceğiz. Bu örnekte yürütülen farklı hatalar şunlardır:
 
-* RestartNode: Makinenin yeniden başlatılmasının benzetimini yapmak için düzgün olmayan hata.
-* RestartDeployedCodePackage: Hizmet ana bilgisayarı işleminin çökmesinin benzetimini yapmak için düzgün olmayan hata.
-* RemoveReplica: Çoğaltma kaldırma benzetimi için düzgün hatası.
-* MovePrimary Service Fabric yük dengeleyici tarafından tetiklenen çoğaltma hareketlerinin benzetimini yapmak için düzgün hatası.
+* RestartNode: makinenin yeniden başlatılmasının benzetimini yapmak için düzgün olmayan hata.
+* RestartDeployedCodePackage: hizmet ana bilgisayar işleminin çökmelerini taklit etmek için düzgün olmayan hata.
+* RemoveReplica: Çoğaltma kaldırma benzetimi için düzgün hata.
+* MovePrimary: Service Fabric yük dengeleyici tarafından tetiklenen çoğaltma hareketlerinin benzetimini yapmak için düzgün hatası.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

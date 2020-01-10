@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: 549fd8f4cb770d472eefd1c504e42837fa8230dd
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e7a61cc64ae72adfcbeb347ddd076065ccc3a321
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066860"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645863"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
 
@@ -77,8 +77,8 @@ ms.locfileid: "71066860"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md (SAP için Azure sanal makineleri DBMS dağıtımı)
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f (VM 'Ler ve VHD 'Ler için önbelleğe alma)
@@ -234,7 +234,7 @@ ms.locfileid: "71066860"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (Depolama: Microsoft Azure Depolama ve veri diskleri)
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
 [sap-pam]: https://support.sap.com/pam (SAP ürün kullanılabilirliği matrisi)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -253,7 +253,7 @@ ms.locfileid: "71066860"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -315,7 +315,7 @@ Azure sanal makineleri, işlem ve depolama kaynakları, en kısa sürede ve uzun
 
 Bu makalede, farklı dağıtım seçenekleri ve sorun giderme dahil olmak üzere Azure 'daki sanal makinelerde (VM) SAP uygulamaları dağıtma adımları ele alınmaktadır. Bu makalede, [SAP NetWeaver için planlama ve uygulama Için Azure sanal makineler][planning-guide]'de bilgi oluşturulur. Ayrıca SAP yazılım yükleme ve dağıtmaya yönelik birincil kaynaklar olan SAP yükleme belgelerini ve SAP notlarını da tamamlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -416,7 +416,7 @@ Azure Marketi 'nden bir görüntüyle yeni bir sanal makine oluşturmanın en ko
 1.  **İşlem**' ı seçin ve ardından dağıtmak istediğiniz işletim sistemi türünü seçin. Örneğin, Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2) veya Oracle Linux 7,2. Varsayılan liste görünümü desteklenen tüm işletim sistemlerini göstermez. Tam liste için **Tümünü göster** ' i seçin. SAP yazılım dağıtımı için desteklenen işletim sistemleri hakkında daha fazla bilgi için bkz. SAP Note [1928533].
 1.  Sonraki sayfada hüküm ve koşulları gözden geçirin.
 1.  **Bir dağıtım modeli seçin** kutusunda **Kaynak Yöneticisi**' yi seçin.
-1.  **Oluştur**'u seçin.
+1.  **Oluştur**’u seçin.
 
 Sihirbaz, ağ arabirimleri ve depolama hesapları gibi gerekli tüm kaynaklara ek olarak, sanal makineyi oluşturmak için gerekli parametreleri ayarlama sırasında size rehberlik eder. Bu parametrelerden bazıları şunlardır:
 
@@ -692,7 +692,7 @@ Aşağıdaki akış çizelgesi, genelleştirilmiş olmayan bir Azure VHD kullana
 
 Disk zaten Azure 'da yüklenip tanımlanmışsa (bkz. [SAP NetWeaver Için Azure sanal makineleri planlama ve uygulama][planning-guide]), sonraki birkaç bölümde açıklanan görevleri yapın.
 
-#### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+#### <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
 
 Azure portal aracılığıyla özel bir işletim sistemi diski kullanarak bir dağıtım oluşturmak için [Azure-QuickStart-Templates GitHub deposunda][azure-quickstart-templates-github]yayımlanan SAP şablonunu kullanın. Ayrıca, PowerShell kullanarak el ile bir sanal makine da oluşturabilirsiniz.
 
@@ -912,7 +912,7 @@ Aşağıdaki parametreleri ayarlayın:
 
   Ayrıca, \\vb.\\regionserverclnt. cfg ' de listelenen IP adreslerine yönelik yollar eklemeniz gerekir. Aşağıdaki şekilde bir örnek gösterilmektedir:
 
-  ![Zorlamalı tünel oluşturma][deployment-guide-figure-50]
+  ![Zorlamalı tünel][deployment-guide-figure-50]
 
 
 * **RHEL for**

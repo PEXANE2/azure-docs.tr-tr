@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 1fd59bd18947d2c7aaba787ff7ce286e76f4f890
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 21acbde147d5c1751480332e5cd9c89cdb43f8e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150040"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644962"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux’ta HDInsight kullanma ile ilgili bilgiler
 
 Azure HDInsight kümeleri, Azure bulutu 'nda çalışan tanıdık bir Linux ortamında Apache Hadoop sağlar. Çoğu şey için, tüm Linux üzerinde Hadoop yüklemesi gibi çalışır. Bu belge, bilmeniz gereken belirli farklılıkları çağırır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu belgedeki adımların birçoğu, sisteminizde yüklü olması gerekebilecek aşağıdaki yardımcı programları kullanır.
 
@@ -52,7 +52,7 @@ Bu komut, hizmeti açıklayan bir JSON belgesi döndürür ve ardından [JQ](htt
 
 ## <a name="remote-access-to-services"></a>Hizmetlere uzaktan erişim
 
-* **Ambarı (Web)**  - https://CLUSTERNAME.azurehdinsight.net
+* **Ambarı (Web)**  - `https://CLUSTERNAME.azurehdinsight.net`
 
     Küme Yöneticisi Kullanıcı ve parolasını kullanarak kimlik doğrulaması yapın ve ardından ambarı 'nda oturum açın.
 
@@ -63,14 +63,14 @@ Bu komut, hizmeti açıklayan bir JSON belgesi döndürür ve ardından [JQ](htt
     >
     > Ambarı Web Kullanıcı arabiriminin tüm işlevlerini kullanmak için, küme baş düğümünde proxy Web trafiği için bir SSH tüneli kullanın. Bkz. [Apache ambarı Web UI, ResourceManager, JobHistory, süs Code, Oozie ve diğer Web UG erişimi IÇIN SSH tüneli kullanma](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambarı (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
+* **Ambarı (REST)**  - `https://CLUSTERNAME.azurehdinsight.net/ambari`
 
     > [!NOTE]  
     > Küme Yöneticisi Kullanıcı ve parolasını kullanarak kimlik doğrulaması yapın.
     >
     > Kimlik doğrulaması düz metin-bağlantının güvenli olduğundan emin olmak için her zaman HTTPS kullanın.
 
-* **Webhcat (Temptaton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
+* **Webhcat (Temptaton)**  - `https://CLUSTERNAME.azurehdinsight.net/templeton`
 
     > [!NOTE]  
     > Küme Yöneticisi Kullanıcı ve parolasını kullanarak kimlik doğrulaması yapın.

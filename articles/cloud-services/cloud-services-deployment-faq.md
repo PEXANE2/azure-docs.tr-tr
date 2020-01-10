@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 2ffa6d7b1cf0550c97a60614f3f00ddc4b955218
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: f935e8fc1e5d6d64bffaeb582e8b248317f49687
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154812"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660605"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services dağıtım sorunları: Sık sorulan sorular (SSS)
+# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için dağıtım sorunları: sık sorulan sorular (SSS)
 
 Bu makalede [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services)dağıtım sorunları hakkında sık sorulan sorular yer almaktadır. Boyut bilgileri için [Cloud SERVICES VM boyutu sayfasına](cloud-services-sizes-specs.md) de başvurabilirsiniz.
 
@@ -32,29 +32,29 @@ Bir bulut hizmetinin her iki yuvada de bir dağıtımı varsa, tüm bulut hizmet
 
 Bulut hizmetinizin bulunduğu kümede dağıtım isteğinizi karşılamak için yeterli fiziksel işlem kaynağı olmadığında ayırma sorunları oluşur.
 
-Bu tür ayırma hatalarını azaltmaya yönelik yardım için bkz [. bulut hizmeti ayırma hatası: Çözümler](cloud-services-allocation-failures.md#solutions).
+Bu tür ayırma hatalarını azaltmaya yönelik yardım için bkz. [bulut hizmeti ayırma hatası: çözümler](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Bir bulut hizmeti dağıtımının ölçeklendirilmesi veya ölçeklendirilmesi neden bazen ayırma hatasına neden olabilir?
 Bir bulut hizmeti dağıtıldığında, genellikle belirli bir kümeye sabitlenmiştir. Bu, var olan bir bulut hizmetinin ölçeği artırma/genişletme aynı kümede yeni örnekler ayırmalıdır. Küme kapasiteye yaklaştığı takdirde veya istenen VM boyutu/türü yoksa, istek başarısız olabilir.
 
-Bu tür ayırma hatalarını azaltmaya yönelik yardım için bkz [. bulut hizmeti ayırma hatası: Çözümler](cloud-services-allocation-failures.md#solutions).
+Bu tür ayırma hatalarını azaltmaya yönelik yardım için bkz. [bulut hizmeti ayırma hatası: çözümler](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Neden bir bulut hizmetini bir benzeşim grubuna dağıtma bazen ayırma hatasına neden olabilir mi?
 Bulut hizmeti bir benzeşim grubuna sabitlenmemişse, boş bir bulut hizmetine yeni bir dağıtım, söz konusu bölgedeki herhangi bir kümede yapı tarafından ayrılabilir. Aynı benzeşim grubuna yönelik dağıtımlar aynı kümede denenmeyecektir. Küme kapasiteye yaklaştığı takdirde istek başarısız olabilir.
 
-Bu tür ayırma hatalarını azaltmaya yönelik yardım için bkz [. bulut hizmeti ayırma hatası: Çözümler](cloud-services-allocation-failures.md#solutions).
+Bu tür ayırma hatalarını azaltmaya yönelik yardım için bkz. [bulut hizmeti ayırma hatası: çözümler](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>VM boyutunu değiştirme veya var olan bir bulut hizmetine yeni bir VM ekleme nedenleri bazen ayırma hatasına neden olabilir mi?
 Bir veri merkezindeki kümeler farklı makine türleri yapılandırmasına sahip olabilir (örneğin, bir seri, AV2 serisi, D serisi, Dv2 serisi, G serisi, H serisi vb.). Ancak tüm kümelerin tüm VM türleri olması gerekmez. Örneğin, zaten serinin bir kümesinde dağıtılmış olan bir bulut hizmetine D serisi VM eklemeye çalışırsanız, bir ayırma hatası yaşarsınız. Bu durum, VM SKU boyutlarını değiştirmeye çalışırsanız (örneğin, bir serinin D serisine geçiş yapmak için) de gerçekleşir.
 
-Bu tür ayırma hatalarını azaltmaya yönelik yardım için bkz [. bulut hizmeti ayırma hatası: Çözümler](cloud-services-allocation-failures.md#solutions).
+Bu tür ayırma hatalarını azaltmaya yönelik yardım için bkz. [bulut hizmeti ayırma hatası: çözümler](cloud-services-allocation-failures.md#solutions).
 
-Bölgenizdeki kullanılabilir boyutları denetlemek için bkz [. Microsoft Azure: Bölgeye](https://azure.microsoft.com/regions/services)göre kullanılabilir ürünler.
+Bölgenizdeki kullanılabilir boyutları denetlemek için bkz. [Microsoft Azure: bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/regions/services).
 
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Aboneliğimde veya hizmetmdeki sınırlar/kotalar/kısıtlamalar nedeniyle neden bir bulut hizmeti dağıtıyor?
-Ayrılan kaynaklar bölge/veri merkezi düzeyinde hizmetiniz için izin verilen varsayılan veya en yüksek kotayı aşarsa, bulut hizmeti dağıtımı başarısız olabilir. Daha fazla bilgi için bkz. [Cloud Services sınırları](../azure-subscription-service-limits.md#azure-cloud-services-limits).
+Ayrılan kaynaklar bölge/veri merkezi düzeyinde hizmetiniz için izin verilen varsayılan veya en yüksek kotayı aşarsa, bulut hizmeti dağıtımı başarısız olabilir. Daha fazla bilgi için bkz. [Cloud Services sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits).
 
-Ayrıca, portalda aboneliğiniz için geçerli kullanımı/kotayı da izleyebilirsiniz: Azure Portal = > abonelikler = > \<uygun abonelik > = > "kullanım + kota".
+Ayrıca, portalda aboneliğiniz için geçerli kullanım/kotayı da izleyebilirsiniz: Azure portal = > abonelikler = \<> uygun abonelik > = > "kullanım + kota".
 
 Kaynak kullanımı/tüketim ile ilgili bilgiler de Azure Faturalama API'leri aracılığıyla alınabilir. Bkz. [Azure Kaynak kullanımı API 'si (Önizleme)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
 

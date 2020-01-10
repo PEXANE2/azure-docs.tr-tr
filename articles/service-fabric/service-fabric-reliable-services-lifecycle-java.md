@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric Reliable Services yaşam döngüsü | Microsoft Docs
-description: Service Fabric Reliable Services yaşam döngüsü olayları hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: java
+title: Azure Service Fabric Reliable Services yaşam döngüsü
+description: Durum bilgisiz ve durum bilgisi olmayan hizmetler için Java kullanarak bir Azure Service Fabric Reliable Services uygulamasındaki yaşam döngüsü olayları hakkında bilgi edinin.
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 36c1ff2ace944d84120bf456060c7504170a814c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d3be958a0649ed3e80df2d63adbdf0b91831dbd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772950"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639607"
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services yaşam döngüsü
 > [!div class="op_single_selector"]
@@ -27,115 +19,115 @@ ms.locfileid: "60772950"
 >
 >
 
-Reliable Services, Azure Service Fabric programlama modelleri biridir. Reliable Services yaşam döngüsü hakkında öğrenme, temel yaşam döngüsü olaylarını anlamak en önemlidir. Olayları tam sıralama yapılandırma ayrıntıya bağlıdır. 
+Reliable Services Azure Service Fabric kullanılabilen programlama modellerinden biridir. Reliable Services yaşam döngüsü hakkında bilgi edinirken temel yaşam döngüsü olaylarının anlaşılması önemlidir. Olayların tam sıralaması yapılandırma ayrıntılarına bağlıdır. 
 
-Genel olarak, aşağıdaki olaylar Reliable Services yaşam döngüsü içerir:
+Genel olarak, Reliable Services yaşam döngüsü aşağıdaki olayları içerir:
 
-* Başlatma sırasında:
-  * Hizmetleri oluşturulur.
-  * Hizmetleri oluşturmak ve sıfır veya daha fazla dinleyicileri döndürmek için fırsatınız olur.
-  * Hizmet ile iletişim için döndürülen tüm dinleyiciler açılmadı.
-  * Hizmetin `runAsync` yöntemi çağrıldığında, hizmet, uzun süre çalışan yapın veya arka plan iş.
-* Kapatma sırasında:
-  * Geçildi iptal belirteci `runAsync` iptal edilir ve dinleyicileri kapatılır.
-  * Hizmet nesnesi imha.
+* Başlangıç sırasında:
+  * Hizmetler oluşturulur.
+  * Hizmetler, sıfır veya daha fazla dinleyici oluşturma ve döndürme fırsatına sahiptir.
+  * Hizmet ile iletişim için döndürülen tüm dinleyiciler açılır.
+  * Hizmetin `runAsync` yöntemi çağrılır, bu nedenle hizmet uzun süre çalışan veya arka plan işi gerçekleştirebilir.
+* Kapatılırken:
+  * `runAsync` geçirilen iptal belirteci iptal edilir ve dinleyiciler kapalıdır.
+  * Hizmet nesnesinin kendisi kaldırılabilir.
 
-Reliable Services özelliğinde olayların sırası, güvenilir hizmet durum bilgisi olan veya bağlı olarak biraz değişebilir. 
+Reliable Services içindeki olayların sırası, güvenilir hizmetin durum bilgisiz veya durum bilgisiz olmasına bağlı olarak biraz değişebilir. 
 
-Ayrıca, durum bilgisi olan hizmetler için birincil takas senaryo incelemeniz gerekir. Bu dizisi sırasında birincil rolü başka bir çoğaltmaya aktarılır (veya geri gelir) olmadan hizmet kapatılıyor. 
+Ayrıca, durum bilgisi olan hizmetler için birincil takas senaryosunu ele almanız gerekir. Bu sıra sırasında, birincil rolü başka bir çoğaltmaya aktarılır (veya geri gelir) hizmet kapatılmadan önce. 
 
-Son olarak, hata veya hata koşulları hakkında düşünmek zorunda.
+Son olarak, hata veya hata koşulları hakkında düşünmeniz gerekir.
 
-## <a name="stateless-service-startup"></a>Durum bilgisi olmayan hizmet başlatma
-Durum bilgisi olmayan hizmet yaşam döngüsü oldukça basittir. Olayların sırası şöyledir:
+## <a name="stateless-service-startup"></a>Durum bilgisi olmayan hizmet başlangıcı
+Durum bilgisi olmayan bir hizmetin yaşam döngüsü oldukça basittir. Olayların sırası aşağıda verilmiştir:
 
-1. Hizmeti oluşturulur.
-2. Bu olaylar, paralel olarak gerçekleşir:
-    - `StatelessService.createServiceInstanceListeners()` çağrılır, ve tüm dinleyicileri açıldığında döndürdü. `CommunicationListener.openAsync()` Her dinleyici adı verilir.
-    - Hizmetin `runAsync` yöntemi (`StatelessService.runAsync()`) olarak adlandırılır.
-3. Varsa, hizmetin kendi `onOpenAsync` yöntemi çağrılır. Özellikle, `StatelessService.onOpenAsync()` çağrılır. Genel olmayan bir geçersiz kılma budur ancak kullanılabilir.
+1. Hizmet oluşturulur.
+2. Bu olaylar paralel olarak oluşur:
+    - `StatelessService.createServiceInstanceListeners()` çağrılır ve döndürülen tüm dinleyiciler açılır. `CommunicationListener.openAsync()` her dinleyicide çağrılır.
+    - Hizmetin `runAsync` yöntemi (`StatelessService.runAsync()`) çağırılır.
+3. Varsa, hizmetin kendi `onOpenAsync` yöntemi çağırılır. Özellikle, `StatelessService.onOpenAsync()` çağrılır. Bu, yaygın olmayan bir geçersiz kılma, ancak kullanılabilir.
 
-Dinleyici oluşturup çağrı ve çağrısı arasında hiçbir sıralama olduğuna dikkat edin önemlidir `runAsync`. Dinleyiciler önce açabilir `runAsync` başlatılır. Benzer şekilde, `runAsync` önce iletişim dinleyicileri açık veya hatta yapılandırıldıktan önce çağrılır. Herhangi bir eşitleme gerekiyorsa, uygulayan tarafından yapılması gerekir. Bazı yaygın çözümleri şunlardır:
+Dinleyicileri oluşturma ve açma çağrısı ile `runAsync`çağrısı arasında bir sıralama olmadığını unutmayın. `runAsync` başlatılmadan önce dinleyiciler açılabilir. Benzer şekilde, `runAsync`, iletişim dinleyicileri açılmadan önce ya da oluşturulmadan önce çağrılabilir. Herhangi bir eşitleme gerekliyse, uygulayan tarafından yapılması gerekir. Yaygın olarak karşılaşılan bazı çözümler şunlardır:
 
-* Bazen dinleyicileri diğer bilgileri oluşturulur veya başka bir çalışma yapılmadan kadar çalışamaz. İş genellikle hizmetin oluşturucuda yapılabilir, durum bilgisi olmayan hizmetler için. Sırasında yapılabilir `createServiceInstanceListeners()` çağrısı, ya da dinleyici oluşumu bir parçası olarak.
-* Bazen kodu `runAsync` kadar dinleyicileri başlatılamıyor. Bu durumda, ek koordinasyon gereklidir. Dinleyiciler bayrak ekleme genel bir çözümdür. Dinleyiciler bittiğinde bayrak belirtir. `runAsync` Yöntemi denetler bu asıl işi devam etmeden önce.
+* Bazen, diğer bilgiler oluşturuluncaya veya diğer iş tamamlanana kadar dinleyiciler çalışamaz. Durum bilgisi olmayan hizmetler için bu iş genellikle hizmetin oluşturucusunda yapılabilir. `createServiceInstanceListeners()` çağrısı sırasında veya dinleyicinin oluşturulması kapsamında yapılabilir.
+* Bazen `runAsync` kod, dinleyiciler açık olana kadar başlamaz. Bu durumda, ek koordinasyon gereklidir. Yaygın bir çözüm, dinleyicilerde bayrak eklemektir. Bayrak, dinleyicilerinin ne zaman bittiğini gösterir. `runAsync` yöntemi, asıl çalışmaya devam etmeden önce bunu denetler.
 
-## <a name="stateless-service-shutdown"></a>Durum bilgisi olmayan hizmet kapanması
-Bir durum bilgisi olmayan hizmeti kapatılıyor, aynı deseni takip edilen, ancak geriye doğru:
+## <a name="stateless-service-shutdown"></a>Durum bilgisi olmayan hizmet kapatması
+Durum bilgisi olmayan bir hizmetin kapatılması sırasında, aynı model izlenir, ancak tersi durumda:
 
-1. Bu olaylar, paralel olarak gerçekleşir:
-    - Tüm açık dinleyiciler kapatılır. `CommunicationListener.closeAsync()` Her dinleyici adı verilir.
-    - Geçildi iptal belirteci `runAsync()` iptal edilir. İptal belirtecinin denetimi `isCancelled` özelliği döndürür `true`ve çağrılırsa, belirtecin `throwIfCancellationRequested` yöntem bir `CancellationException`.
-2. Zaman `closeAsync()` her dinleyici tamamlandıktan ve `runAsync()` de tamamlanır, hizmetin `StatelessService.onCloseAsync()` yöntemi çağrıldığında, varsa. Yeniden, bu yaygın bir geçersiz kılma değil, ancak güvenli bir şekilde kaynakları kapatın, arka plan işlemesi durdurmak, dış durumu kaydediyor son veya varolan bağlantıları kapatmak için kullanılabilir.
-3. Sonra `StatelessService.onCloseAsync()` tamamlandığında, hizmet nesnesi imha.
+1. Bu olaylar paralel olarak oluşur:
+    - Açık tüm dinleyiciler kapanır. `CommunicationListener.closeAsync()` her dinleyicide çağrılır.
+    - `runAsync()` geçirilen iptal belirteci iptal edildi. İptal belirtecinin `isCancelled` özelliği `true`döndürür ve çağrılırsa, belirtecin `throwIfCancellationRequested` yöntemi bir `CancellationException`atar.
+2. Her dinleyicide `closeAsync()` bittiğinde ve `runAsync()` tamamlandığında, varsa hizmetin `StatelessService.onCloseAsync()` yöntemi çağrılır. Bu, ortak bir geçersiz kılma değildir, ancak kaynakları güvenli bir şekilde kapatmak, arka planda işlemeyi durdurmak, dış durumu kaydetmek veya mevcut bağlantıları kapatmak için kullanılabilir.
+3. `StatelessService.onCloseAsync()` tamamlandıktan sonra, hizmet nesnesi kaldırılabilir.
 
 ## <a name="stateful-service-startup"></a>Durum bilgisi olan hizmet başlatma
-Durum bilgisi olan hizmetler birkaç değişiklik ile durum bilgisi olmayan hizmetler için benzer bir düzeni vardır.  Durum bilgisi olan hizmet başlatma olayların sırası şöyledir:
+Durum bilgisi olan hizmetlerde, az sayıda değişiklikle durum bilgisi olmayan hizmetlere benzer bir model vardır.  Durum bilgisi olan bir hizmeti başlatmak için olayların sırası aşağıda verilmiştir:
 
-1. Hizmeti oluşturulur.
-2. `StatefulServiceBase.onOpenAsync()` çağrılır. Bu çağrı hizmette yaygın olarak geçersiz kılınmış değil.
-3. Bu olaylar, paralel olarak gerçekleşir:
+1. Hizmet oluşturulur.
+2. `StatefulServiceBase.onOpenAsync()` çağrılır. Bu çağrı, hizmette genellikle geçersiz kılınmaz.
+3. Bu olaylar paralel olarak oluşur:
     - `StatefulServiceBase.createServiceReplicaListeners()` çağrılır. 
-      - Hizmet, birincil hizmet ise, döndürülen tüm dinleyicileri açılır. `CommunicationListener.openAsync()` Her dinleyici adı verilir.
-      - İkincil bir hizmet hizmeti ise yalnızca dinleyicileri olarak işaretlenmiş `listenOnSecondary = true` açılmadı. İkincil veritabanı üzerinde açık olan dinleyicileri olması daha az yaygındır.
-    - Hizmet şu anda birincil, hizmete ait olup olmadığını `StatefulServiceBase.runAsync()` yöntemi çağrılır.
-4. Tüm çoğaltma dinleyicinin sonra `openAsync()` bitiş çağırır ve `runAsync()` çağrıldığında `StatefulServiceBase.onChangeRoleAsync()` çağrılır. Bu çağrı hizmette yaygın olarak geçersiz kılınmış değil.
+      - Hizmet bir birincil hizmet ise, döndürülen tüm dinleyiciler açılır. `CommunicationListener.openAsync()` her dinleyicide çağrılır.
+      - Hizmet ikincil bir hizmet ise, yalnızca `listenOnSecondary = true` olarak işaretlenen dinleyiciler açılır. İkincil öğeler üzerinde açık olan dinleyicilerinin olması daha az yaygındır.
+    - Hizmet şu anda birincil ise, hizmetin `StatefulServiceBase.runAsync()` yöntemi çağrılır.
+4. Tüm çoğaltma dinleyicisinin `openAsync()` sonuna çağrı yapıldıktan sonra `runAsync()` çağrıldığında `StatefulServiceBase.onChangeRoleAsync()` çağrılır. Bu çağrı, hizmette genellikle geçersiz kılınmaz.
 
-Durum bilgisi olan hizmet, durum bilgisi olmayan hizmetler var. benzer hiçbir sırası dinleyiciler, oluşturulan ve açılan arasında koordinasyon gereksinimini olabildiğince ve ne zaman `runAsync` çağrılır. Koordinasyon gerekiyorsa, çözümleri çok aynıdır. Ancak, durum bilgisi olan hizmet için bir ek durum vardır. Söyleyin iletişim dinleyicileri gelen çağrıları bazı içinde tutulan bilgileri gerektirir [güvenilir koleksiyonlar](service-fabric-reliable-services-reliable-collections.md). Reliable Collections okunabilir veya yazılabilir önce iletişim dinleyicileri açabilir çünkü ve önce `runAsync` başlatır, bazı ek koordinasyon gereklidir. Basit ve en yaygın hata kodunu döndürmek iletişim dinleyicileri için çözümüdür. İstemci isteği yeniden denemek için bilmeniz gereken hata kodu kullanır.
+Durum bilgisi olmayan hizmetlere benzer şekilde, durum bilgisi olan hizmette, dinleyicilerinin oluşturulduğu ve açıldığı sırada ve `runAsync` çağrıldığında hiçbir koordinasyon yoktur. Koordine etmeniz gerekiyorsa, çözümler çok aynıdır. Ancak durum bilgisi olan hizmet için bir ek durum daha vardır. İletişim dinleyicilerine gelen çağrıların bazı [güvenilir koleksiyonlar](service-fabric-reliable-services-reliable-collections.md)içinde bilgi gerektirdiğini varsayalım. İletişim dinleyicileri, güvenilir koleksiyonlar okunabilir veya yazılabilir olmadan önce açılabileceğinden ve `runAsync` başlamadan önce, bazı ek koordinasyon gereklidir. En basit ve en yaygın çözüm, iletişim dinleyicilerinin bir hata kodu döndürmesi içindir. İstemci, isteği yeniden denemeyi bilmemiz için hata kodunu kullanır.
 
-## <a name="stateful-service-shutdown"></a>Durum bilgisi olan hizmet kapanması
-Durum bilgisi olmayan hizmetler gibi yaşam döngüsü olayları sırasında kapatma başlatma sırasında aynıdır, ancak tersine. Durum bilgisi olan hizmet kapatılıyor, aşağıdaki olaylar gerçekleşir:
+## <a name="stateful-service-shutdown"></a>Durum bilgisi olan hizmet kapatması
+Durum bilgisi olmayan hizmetler gibi, kapatılırken yaşam döngüsü olayları başlangıç sırasında ve ters çevrilme sırasında aynıdır. Durum bilgisi olan bir hizmet kapatıldığında, aşağıdaki olaylar gerçekleşir:
 
-1. Bu olaylar, paralel olarak gerçekleşir:
-    - Tüm açık dinleyiciler kapatılır. `CommunicationListener.closeAsync()` Her dinleyici adı verilir.
-    - Geçildi iptal belirteci `runAsync()` iptal edilir. Bir iptal belirtecinin çağrı `isCancelled()` yöntemi döndürür `true`ve çağrılırsa, belirtecin `throwIfCancellationRequested()` yöntem bir `OperationCanceledException`.
-2. Sonra `closeAsync()` her dinleyici tamamlandıktan ve `runAsync()` de tamamlanır, hizmetin `StatefulServiceBase.onChangeRoleAsync()` çağrılır. Bu çağrı hizmette yaygın olarak geçersiz kılınmış değil.
+1. Bu olaylar paralel olarak oluşur:
+    - Açık tüm dinleyiciler kapanır. `CommunicationListener.closeAsync()` her dinleyicide çağrılır.
+    - `runAsync()` geçirilen iptal belirteci iptal edildi. İptal belirtecinin `isCancelled()` yöntemine bir çağrı `true`döndürür ve çağrılırsa, belirtecin `throwIfCancellationRequested()` yöntemi bir `OperationCanceledException`oluşturur.
+2. Her dinleyicide `closeAsync()` tamamlandıktan sonra ve `runAsync()` tamamlandığında hizmetin `StatefulServiceBase.onChangeRoleAsync()` çağrılır. Bu çağrı, hizmette genellikle geçersiz kılınmaz.
 
    > [!NOTE]  
-   > Bekleyen `runAsync` tamamlanması yalnızca bu çoğaltma birincil çoğaltmaya ise gereklidir.
+   > `runAsync` bitmesi için, yalnızca bu çoğaltma birincil bir çoğaltmaysa gereklidir.
 
-3. Sonra `StatefulServiceBase.onChangeRoleAsync()` yöntemi tamamlandığında, `StatefulServiceBase.onCloseAsync()` yöntemi çağrılır. Bu çağrı, seyrek bir geçersiz kılma olmakla birlikte kullanılabilir.
-3. Sonra `StatefulServiceBase.onCloseAsync()` tamamlandığında, hizmet nesnesi imha.
+3. `StatefulServiceBase.onChangeRoleAsync()` yöntemi bittikten sonra, `StatefulServiceBase.onCloseAsync()` yöntemi çağrılır. Bu çağrı yaygın olmayan bir geçersiz kılma, ancak kullanılabilir.
+3. `StatefulServiceBase.onCloseAsync()` tamamlandıktan sonra, hizmet nesnesi kaldırılabilir.
 
-## <a name="stateful-service-primary-swaps"></a>Durum bilgisi olan hizmet birincil değiştirir
-Durum bilgisi olan hizmet çalışırken, iletişim dinleyicileri açıldığından ve `runAsync` için durum bilgisi olan hizmet, yalnızca birincil çoğaltmalara yöntemi çağrılır. İkincil çoğaltma oluşturulur, ancak daha fazla çağrı görürsünüz. Durum bilgisi olan hizmet çalışırken, şu anda çoğaltma birincil değiştirebilirsiniz. Durum bilgisi olan bir çoğaltma görebilirsiniz yaşam döngüsü olaylarını çoğaltma indirgenir veya değiştirme sırasında yükseltilen olmasına göre değişir.
+## <a name="stateful-service-primary-swaps"></a>Durum bilgisi olan hizmet birincil takas
+Durum bilgisi olan bir hizmet çalışırken, iletişim dinleyicileri açılır ve `runAsync` yöntemi yalnızca durum bilgisi olan hizmetlerin birincil çoğaltmaları için çağırılır. İkincil çoğaltmalar oluşturulur, ancak daha fazla çağrı yapılmaz. Durum bilgisi olan bir hizmet çalışırken birincil olan çoğaltma değişebilir. Durum bilgisi olan bir çoğaltmanın görebileceği yaşam döngüsü olayları, değişim sırasında çoğaltmanın indirgenme veya yükseltilme olmasına bağlıdır.
 
 ### <a name="for-the-demoted-primary"></a>İndirgenen birincil için
-Service Fabric iletileri işlemeyi durdur ve herhangi bir arka plan iş durdurmak için yetkisi birincil çoğaltma gerekir. Bu adım hizmet zaman kapatıldığında benzer. İkincil ettiğinden bir hizmet imha değil veya kapalı, farktır. Aşağıdaki olaylar gerçekleşir:
+Service Fabric, ileti işlemeyi durdurmak ve arka plan işlerini durdurmak için indirgenen birincil çoğaltmaya ihtiyaç duyuyor. Bu adım hizmetin kapatıldığı zaman ile benzerdir. Bir farklılık, hizmetin ikincil olarak kaldığı için çıkarlanmadığı veya kapatılmadığı bir farktır. Aşağıdaki olaylar gerçekleşir:
 
-1. Bu olaylar, paralel olarak gerçekleşir:
-    - Tüm açık dinleyiciler kapatılır. `CommunicationListener.closeAsync()` Her dinleyici adı verilir.
-    - Geçildi iptal belirteci `runAsync()` iptal edilir. Bir iptal belirtecinin denetimini `isCancelled()` yöntemi döndürür `true`. Çağrılırsa, belirtecin `throwIfCancellationRequested()` yöntem bir `OperationCanceledException`.
-2. Sonra `closeAsync()` her dinleyici tamamlandıktan ve `runAsync()` de tamamlanır, hizmetin `StatefulServiceBase.onChangeRoleAsync()` çağrılır. Bu çağrı hizmette yaygın olarak geçersiz kılınmış değil.
+1. Bu olaylar paralel olarak oluşur:
+    - Açık tüm dinleyiciler kapanır. `CommunicationListener.closeAsync()` her dinleyicide çağrılır.
+    - `runAsync()` geçirilen iptal belirteci iptal edildi. İptal belirtecinin `isCancelled()` yönteminin bir denetimi `true`döndürür. Çağrılırsa, belirtecin `throwIfCancellationRequested()` yöntemi bir `OperationCanceledException`oluşturur.
+2. Her dinleyicide `closeAsync()` tamamlandıktan sonra ve `runAsync()` tamamlandığında hizmetin `StatefulServiceBase.onChangeRoleAsync()` çağrılır. Bu çağrı, hizmette genellikle geçersiz kılınmaz.
 
 ### <a name="for-the-promoted-secondary"></a>Yükseltilen ikincil için
-Benzer şekilde, Service Fabric kablo iletileri dinlemeye başla ve tamamlanması gereken herhangi bir arka plan görevi başlatmak için yükseltilen ikincil bir çoğaltmaya gerekir. Bu işlem, hizmet oluşturulduğunda benzerdir. Çoğaltma zaten farktır. Aşağıdaki olaylar gerçekleşir:
+Benzer şekilde, Service Fabric, hattaki iletileri dinlemeye başlamak için yükseltilen ikincil çoğaltmanın yanı sıra tamamlaması gereken tüm arka plan görevlerini başlatır. Bu işlem, hizmetin oluşturulduğu zaman ile benzerdir. Fark, çoğaltmanın kendisi zaten var. Aşağıdaki olaylar gerçekleşir:
 
-1. Bu olaylar, paralel olarak gerçekleşir:
-    - `StatefulServiceBase.createServiceReplicaListeners()` çağrılan ve tüm dinleyicileri açıldığında döndürdü. `CommunicationListener.openAsync()` Her dinleyici adı verilir.
+1. Bu olaylar paralel olarak oluşur:
+    - `StatefulServiceBase.createServiceReplicaListeners()` çağrılır ve döndürülen tüm dinleyiciler açılır. `CommunicationListener.openAsync()` her dinleyicide çağrılır.
     - Hizmetin `StatefulServiceBase.runAsync()` yöntemi çağrılır.
-2. Tüm çoğaltma dinleyicinin sonra `openAsync()` bitiş çağırır ve `runAsync()` çağrıldığında `StatefulServiceBase.onChangeRoleAsync()` çağrılır. Bu çağrı hizmette yaygın olarak geçersiz kılınmış değil.
+2. Tüm çoğaltma dinleyicisinin `openAsync()` sonuna çağrı yapıldıktan sonra `runAsync()` çağrıldığında `StatefulServiceBase.onChangeRoleAsync()` çağrılır. Bu çağrı, hizmette genellikle geçersiz kılınmaz.
 
-### <a name="common-issues-during-stateful-service-shutdown-and-primary-demotion"></a>Durum bilgisi olan hizmet kapanması ve birincil indirgeme sırasında sık karşılaşılan sorunlar
-Service Fabric durum bilgisi olan bir hizmeti için birden çok nedenden dolayı birincil değiştirir. En yaygın nedenleri şunlardır [küme yeniden Dengeleme](service-fabric-cluster-resource-manager-balancing.md) ve [uygulama yükseltmesi](service-fabric-application-upgrade.md). Bu işlemler sırasında hizmet uyar, önemli `cancellationToken`. Bu normal hizmeti kapatma sırasında da geçerlidir IF gibi hizmeti silindi.
+### <a name="common-issues-during-stateful-service-shutdown-and-primary-demotion"></a>Durum bilgisi olan hizmet kapanışı ve birincil indirgeme sırasında sık karşılaşılan sorunlar
+Service Fabric, birden çok nedenden dolayı durum bilgisi olan bir hizmetin birincili olarak değiştirir. En yaygın nedenler [küme yeniden dengeleme](service-fabric-cluster-resource-manager-balancing.md) ve [uygulama yükseltmeleridir](service-fabric-application-upgrade.md). Bu işlemler sırasında, hizmetin `cancellationToken`olması önemlidir. Bu, hizmetin silinmiş olması gibi normal hizmet kapatmaları sırasında da geçerlidir.
 
-İptal düzgün bir şekilde işlemez Hizmetleri, çeşitli sorunlar oluşabilir. Bu işlem, Service Fabric Hizmetleri düzgün bitirmesini beklediğinden yavaş yükleniyor. Bu sonuç olarak başarısız yükseltme, zaman aşımına uğruyor ve geri alma neden olabilir. İptal belirtecini kabul etmenin hatası imbalanced kümeleri da neden olabilir. Düğümleri sık aldığından kümeleri dengesiz hale gelir. Ancak, başka bir yere taşınması çok uzun sürdüğü için Hizmetleri dengelenir olamaz. 
+İptali sorunsuz bir şekilde işlemeyen hizmetler, birkaç sorunla karşılaşabilir. Bu işlemler, Service Fabric hizmetlerin düzgün şekilde durdurulmasını beklediği için yavaştır. Bu, son olarak zaman aşımına uğrar ve geri alma işlemi başarısız yükseltmelere neden olabilir. İptal belirtecini karşılamamanın başarısız olmasına neden olabilir. Düğümler sık kullanıldığından, kümeler dengesiz hale gelir. Ancak, hizmetler başka bir yere taşınamayacak kadar uzun sürdüğü için yeniden dengelenemeyecek. 
 
-Durum bilgisi olan hizmetler olduğundan, ayrıca hizmetleri kullanmak büyük olasılıkla [güvenilir koleksiyonlar](service-fabric-reliable-services-reliable-collections.md). Birincil indirgenir, Service Fabric'te gerçekleşen ilk şey temel alınan durum yazma erişimi iptal edilmediğini biridir. Bu hizmet yaşam döngüsü etkileyebilecek sorunları ikinci bir set yol açar. Dönüş özel durumları, zamanlama ve yineleme olup taşınırken göre koleksiyonlar veya kapat. Bu özel durumların doğru bir şekilde işlemek önemlidir. 
+Hizmetler durum bilgisi olduğundan, hizmetlerin [güvenilir koleksiyonlar](service-fabric-reliable-services-reliable-collections.md)kullanması da olasıdır. Service Fabric, birincil bir indirgendiğinde, temel alınan duruma Yazma erişiminin iptal edilmesi gerekir. Bu, hizmet yaşam döngüsünü etkileyebilecek ikinci bir sorun kümesine yol açar. Koleksiyonlar, zamanlamaya göre özel durumlar, çoğaltmanın taşınıp taşınmakta veya kapatılmakta olup olmadığı için döndürülür. Bu özel durumları doğru bir şekilde işlemek önemlidir. 
 
-Service Fabric tarafından oluşturulan özel durumları olan ya da kalıcı [(`FabricException`)](https://docs.microsoft.com/java/api/system.fabric.exception) veya geçici [(`FabricTransientException`)](https://docs.microsoft.com/java/api/system.fabric.exception.fabrictransientexception). Kalıcı özel durumlar günlüğe kaydedilir ve durum. Geçici özel durumlar, yeniden deneme mantığı temelinde denenebilir.
+Service Fabric tarafından oluşturulan özel durumlar kalıcı [(`FabricException`)](https://docs.microsoft.com/java/api/system.fabric.exception) ya da geçici [(`FabricTransientException`)](https://docs.microsoft.com/java/api/system.fabric.exception.fabrictransientexception). Kalıcı özel durumlar günlüğe kaydedilir ve oluşturulmalıdır. Geçici özel durumlar, yeniden deneme mantığına göre yeniden denenebilir.
 
-Sınama ve doğrulama Reliable Services önemli bir bölümü, gelen kullanarak özel durumları işleme `ReliableCollections` hizmet yaşam döngüsü olayları ile birlikte okunmalıdır. Hizmetinizi yük altında her zaman çalıştırmanızı öneririz. Yükseltmeler de yapmalısınız ve [chaos test](service-fabric-controlled-chaos.md) üretim ortamına dağıtmadan önce. Hizmetinizi düzgün şekilde uygulandığını ve bunu doğru şekilde yaşam döngüsü olaylarını işler temel adımları sağlamak.
+Test ve doğrulama Reliable Services önemli bir parçası, hizmet yaşam döngüsü olaylarıyla birlikte `ReliableCollections` kullanmaktan gelen özel durumları işledir. Hizmetinizi her zaman yükleme altında çalıştırmanızı öneririz. Ayrıca üretime dağıtım yapmadan önce yükseltmeler ve [Chaos testi](service-fabric-controlled-chaos.md) gerçekleştirmeniz gerekir. Bu temel adımlar, hizmetinizin doğru şekilde uygulandığından ve yaşam döngüsü olaylarını doğru şekilde işleyeceğinden emin olmanıza yardımcı olur.
 
-## <a name="notes-on-service-lifecycle"></a>Hizmet yaşam döngüsü ile ilgili notlar
-* Her iki `runAsync()` yöntemi ve `createServiceInstanceListeners/createServiceReplicaListeners` çağrılarıdır isteğe bağlı. Bir hizmet bir, iki veya hiçbiri olabilir. Örneğin, hizmet tüm yanıt kullanıcı çağrı yapar, gerek yoktur, uygulamak için `runAsync()`. İletişim dinleyicileri ve ilişkili kodunu gereklidir.  Benzer şekilde, oluşturma ve iletişim dinleyicileri döndürerek isteğe bağlıdır. Hizmet, yalnızca uygulamak gereken şekilde yapmak için yalnızca arka plan iş olabilir `runAsync()`.
-* Bir hizmet için geçerli olduğundan `runAsync()` başarıyla ve ondan geri dönüş. Bu hata durumu olarak kabul değil. Bu hizmet sonlandırma arka plan işi temsil eder. Durum bilgisi olan Reliable Services için `runAsync()` hizmet, birincil sunucudan yetkisi varsa yeniden adlandırılan ve ardından birincil siteye yükseltildi.
-* Hizmet gelen çıkılıyorsa `runAsync()` bazı beklenmeyen özel durum olarak, bu hata. Hizmet nesnesi kapatılır ve sistem durumu hata bildirilir.
-* Yazma olanağı hemen olmasa da zaman sınırı bu yöntemleri döndüren üzerinde kaybedersiniz. Bu nedenle, herhangi bir gerçek çalışma tamamlanamıyor. İptal isteği alır almaz mümkün olduğunca çabuk dönüş öneririz. Hizmetinizi şu API çağrıları için makul bir süre içinde yanıt vermezse, Service Fabric hizmetinizi zorla sonlandırabilir. Bu genellikle, yalnızca uygulama yükseltmeleri veya hizmet ne zaman siliniyor sırasında gerçekleşir. Bu zaman aşımı, varsayılan değer 15 dakikadır.
-* Hataları `onCloseAsync()` yolu sonucunda `onAbort()` çağrılan. Bu çağrı, hizmeti temizlemek ve talep tüm kaynakları serbest bırakmak son şans, mümkün olan en iyi bir fırsattır. Bu genellikle düğümde kalıcı bir hata algılandığında veya Service Fabric güvenilir hizmeti örneğinin yaşam döngüsü iç hatalar nedeniyle yönetememesi durumunda olarak adlandırılır.
-* `OnChangeRoleAsync()` durum bilgisi olan hizmet çoğaltma rolü, örneğin birincil veya ikincil değiştirirken çağırılır. Birincil çoğaltmalara yazma durumu verilmiştir (oluşturun ve güvenilir koleksiyonlar için yazma izni verilir). İkincil çoğaltmalar, Okuma durumu (yalnızca var olan güvenilir koleksiyonlardan okuyabilir) atanır. Çoğu iş durum bilgisi olan hizmet, birincil çoğaltma üzerinde gerçekleştirilir. İkincil çoğaltmaların salt okunur doğrulama, rapor oluşturma, veri araştırma veya diğer salt okunur işleri gerçekleştirebilirsiniz.
+## <a name="notes-on-service-lifecycle"></a>Hizmet yaşam döngüsü notları
+* Hem `runAsync()` yöntemi hem de `createServiceInstanceListeners/createServiceReplicaListeners` çağrıları isteğe bağlıdır. Bir hizmette tek bir, her ikisi birden olabilir veya hiçbiri olabilir. Örneğin, hizmet tüm işini Kullanıcı çağrılarına yanıt olarak alıyorsa, `runAsync()`uygulaması için gerekli değildir. Yalnızca iletişim dinleyicileri ve bunlarla ilişkili kod gereklidir.  Benzer şekilde, iletişim dinleyicileri oluşturma ve döndürme isteğe bağlıdır. Hizmetin yalnızca bir arka plan işi olabilir, bu nedenle yalnızca `runAsync()`uygulaması gerekir.
+* Bir hizmetin başarıyla `runAsync()` tamamlaması ve bundan geri dönmesi için geçerlidir. Bu bir hata koşulu olarak kabul edilmez. Hizmet bitirme 'nin arka plan çalışmasını temsil eder. Durum bilgisi olmayan Reliable Services için, hizmet birincili indirgendiyse ve sonra birincil olarak geri yükseltildiğinde `runAsync()` yeniden çağırılır.
+* Bir hizmet beklenmeyen bir özel durum vererek `runAsync()` 'tan çıkılırken bu bir hata olur. Hizmet nesnesi kapatılır ve bir sistem durumu hatası bildirilir.
+* Bu yöntemlerin döndürülmesinin zaman sınırı olmasa da, anında yazma özelliğini kaybedersiniz. Bu nedenle, herhangi bir gerçek çalışmayı tamamlayamazsınız. İptal isteğini aldıktan sonra mümkün olduğunca hızlı bir şekilde dönebilmenizi öneririz. Hizmetiniz bu API çağrılarına makul bir süre içinde yanıt vermezse, Service Fabric hizmetinizi zorla sonlandırabilirler. Genellikle bu durum yalnızca uygulama yükseltmeleri sırasında veya bir hizmetin silindiği zaman gerçekleşir. Bu zaman aşımı varsayılan olarak 15 dakikadır.
+* `onCloseAsync()` yolundaki hatalara `onAbort()` çağrılmakta. Bu çağrı, hizmetin talep ettikleri tüm kaynakları temizlemesi ve serbest bırakmak için en iyi çaba bir fırsattır. Bu, genellikle düğümde kalıcı bir hata algılandığında veya Service Fabric iç hatalardan dolayı hizmet örneğinin yaşam döngüsünü güvenilir bir şekilde yönetebilmeniz durumunda çağrılır.
+* `OnChangeRoleAsync()`, durum bilgisi olan hizmet çoğaltması rolü değiştirirken (örneğin, birincil veya ikincil) çağrılır. Birincil çoğaltmalara yazma durumu verilir (güvenilir koleksiyonlar oluşturma ve bunlara yazma izni verilir). İkincil çoğaltmalara okuma durumu verilir (yalnızca mevcut güvenilir koleksiyonlardan okunabilir). Durum bilgisi olan bir hizmette çoğu iş, birincil çoğaltmada gerçekleştirilir. İkincil çoğaltmalar salt okuma doğrulaması, rapor oluşturma, veri madenciliği veya diğer salt okuma işleri gerçekleştirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Reliable Services giriş](service-fabric-reliable-services-introduction.md)
-* [Reliable Services hızlı başlangıç](service-fabric-reliable-services-quick-start-java.md)
+* [Hızlı başlangıç Reliable Services](service-fabric-reliable-services-quick-start-java.md)
 

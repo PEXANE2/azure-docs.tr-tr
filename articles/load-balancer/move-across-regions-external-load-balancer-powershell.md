@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: d8dfbf3f86a2233571a99c4ad832ef7bd3c3ed48
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a24eb4608e7630d5b613751fa2120361eccd7672
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077587"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644826"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Azure dış Load Balancer Azure PowerShell kullanarak başka bir bölgeye taşıma
 
@@ -20,7 +20,7 @@ Mevcut dış yük dengeleyicinizi bir bölgeden diğerine taşımak istediğiniz
 Azure dış yük dengeleyiciler bir bölgeden diğerine taşınamaz. Ancak, bir dış yük dengeleyicinin mevcut yapılandırmasını ve genel IP 'sini dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz.  Daha sonra, yük dengeleyiciyi ve genel IP 'yi bir şablona dışarı aktararak ve parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonları yeni bölgeye dağıtabilmeniz için kaynağı başka bir bölgede da oluşturabilirsiniz.  Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz. [kaynak gruplarını şablonlara dışarı aktarma](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure dış yük dengeleyicinin, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 
@@ -32,7 +32,7 @@ Azure dış yük dengeleyiciler bir bölgeden diğerine taşınamaz. Ancak, bir 
 
 - Azure aboneliğinizin, kullanılan hedef bölgede dış yük dengeleyiciler oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
 
-- Aboneliğinizin bu işleme yönelik yük dengeleyiciler eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)
+- Aboneliğinizin bu işleme yönelik yük dengeleyiciler eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
 
 
 ## <a name="prepare-and-move"></a>Hazırlama ve taşıma
@@ -116,7 +116,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
     ```
 8. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
-    * **SKU** - >  **Resource-Group-name >. JSON dosyasındaki SKU adı özelliğini değiştirerek, yapılandırmadaki genel IP 'yi standart iken \<** Basic veya Basic 'e dönüştürebilirsiniz:
+    * **SKU** - **\<Resource-group-name >. json** dosyasındaki **SKU** > **adı** özelliğini değiştirerek, yapılandırmadaki genel IP 'yi standart iken Basic veya Basic 'e dönüştürebilirsiniz:
 
          ```json
             "resources": [
@@ -133,7 +133,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
          Temel ve standart SKU genel IP 'leri arasındaki farklılıklar hakkında daha fazla bilgi için bkz. [genel IP adresi oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
-    * **Genel IP ayırma yöntemi** ve **boşta kalma zaman aşımı** -, **publicıpallocationmethod** özelliğini **dinamik** veya **statik** ile dinamik olarak değiştirerek şablonda bu seçeneklerin her ikisini de değiştirebilirsiniz. Boşta **kalma zaman aşımı özelliği,** istediğiniz tutara göre değiştirilebilir.  Varsayılan değer **4**' dir:
+    * **Ortak IP ayırma yöntemi** ve **boşta kalma zaman aşımı** - **publicıpallocationmethod** özelliğini **dinamik** veya **statik** olarak **dinamik**olarak değiştirerek şablonda bu seçeneklerin her ikisini de değiştirebilirsiniz . Boşta **kalma zaman aşımı özelliği,** istediğiniz tutara göre değiştirilebilir.  Varsayılan değer **4**' dir:
 
          ```json
          "resources": [
@@ -161,14 +161,14 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         Ayırma yöntemleri ve boşta kalma zaman aşımı değerleri hakkında daha fazla bilgi için bkz. [genel IP adresi oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
 
-9. **Resource-Group-name >. json dosyasını kaydedin. \<**
+9. **Resource-Group-name >. json dosyasını\<** kaydedin.
 
 10. Hedef bölgede, hedef genel IP 'nin [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)kullanılarak dağıtılması için bir kaynak grubu oluşturun.
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. **Düzenlenmiş\<kaynak-grup adı >. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
+11. Düzenlenmiş **\<Resource-Group-name >. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
 
     ```azurepowershell-interactive
 
@@ -232,7 +232,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
     ```
 
-6.  Yukarıda taşınan hedef genel IP 'nin değerini düzenlemek için, önce kaynak kimliğini edinmeniz ve sonra  **\<kaynak-grup-adı >. JSON** dosyasına kopyalamanız ve yapıştırmanız gerekir.  KIMLIĞI almak için [Get-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0)komutunu kullanın:
+6.  Yukarıdaki hedef genel IP 'nin değerini düzenlemek için, önce kaynak KIMLIĞINI edinmeniz ve sonra **\<Resource-Group-name >. JSON** dosyasına kopyalamanız ve yapıştırmanız gerekir.  KIMLIĞI almak için [Get-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0)komutunu kullanın:
 
     ```azurepowershell-interactive
     $targetPubIPID = (Get-AzPublicIPaddress -Name <target-public-ip-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -244,7 +244,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupLB-Move/providers/Microsoft.Network/publicIPAddresses/myPubIP-in-move
     ```
 
-7.  Resource-Group **-Name >. json dosyasında, kaynak kimliği ' ni genel IP dış kimliği için ikinci parametrede DefaultValue yerine değişkenden yapıştırın, yolu tırnak içine aldığınızdan emin \<** olun:
+7.  **\<Resource-Group-name >. JSON** dosyasında, **kaynak kimliğini** genel IP dış kimliği için ikinci parametrede **DefaultValue** yerine değişkenin içine yapıştırın, yolu tırnak içine aldığınızdan emin olun:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -261,7 +261,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
     ```
 
-8.  Yük Dengeleyici için giden NAT ve giden kurallarını yapılandırdıysanız, giden genel IP 'nin dış KIMLIĞI için bu dosyada üçüncü bir giriş bulunur.  Giden genel IP 'nin kimliğini edinmek ve bu girişi  **\<kaynak-grup-adı >. JSON** dosyasına yapıştırmak için **hedef bölgede** yukarıdaki adımları yineleyin:
+8.  Yük Dengeleyici için giden NAT ve giden kurallarını yapılandırdıysanız, giden genel IP 'nin dış KIMLIĞI için bu dosyada üçüncü bir giriş bulunur.  Giden genel IP 'nin KIMLIĞINI edinmek ve bu girişi **\<Resource-Group-name >. JSON** dosyasına yapıştırmak için **hedef bölgede** yukarıdaki adımları yineleyin:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -282,7 +282,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         },
     ```
 
-10. Dış yük dengeleyici yapılandırmasının taşınacağı hedef bölgeyi düzenlemek için,  **\<Resource-Group-name >. JSON** dosyasındaki **Resources** altındaki **Location** özelliğini değiştirin:
+10. Dış yük dengeleyici yapılandırmasının taşınacağı hedef bölgeyi düzenlemek için, **\<Resource-Group-name >. JSON** dosyasındaki **Resources** altında **Location** özelliğini değiştirin:
 
     ```json
         "resources": [
@@ -306,7 +306,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
     ```
 12. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
     
-    * **SKU** -grup- >  **\<adı >. json ' daki SKU adı özelliğini değiştirerek, yapılandırmadaki dış yük dengeleyiciyi standart iken temel veya temel olarak değiştirebilirsiniz.** dosya:
+    * **SKU** - **\<Resource-group-name >. json** dosyasındaki **SKU** > **adı** özelliğini değiştirerek, yapılandırmadaki dış yük dengeleyiciyi standart olarak temel veya temel olarak değiştirebilirsiniz:
 
         ```json
         "resources": [
@@ -322,7 +322,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         ```
       Temel ve standart SKU yük dengeleyiciler arasındaki farklar hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer genel bakış](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)
 
-    * **Yük Dengeleme kuralları** -  **\<kaynak-grup-adı >. JSON** dosyasının **loadBalancingRules** bölümüne girdi ekleyerek veya kaldırarak yapılandırmaya Yük Dengeleme kuralları ekleyebilir veya kaldırabilirsiniz:
+    * **Yük Dengeleme kuralları** : **\<kaynak-grup-adı >. JSON** dosyasının **loadBalancingRules** bölümüne girdi ekleyerek veya kaldırarak, yapılandırmaya Yük Dengeleme kuralları ekleyebilir veya kaldırabilirsiniz.
 
         ```json
         "loadBalancingRules": [
@@ -354,7 +354,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         ```
        Yük Dengeleme kuralları hakkında daha fazla bilgi için bkz. [Azure Load Balancer nedir?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Yoklamalar** -  **\<Resource-Group-name >. JSON** dosyasının **yoklamalar** bölümüne girdi ekleyerek veya kaldırarak, yapılandırmadaki yük dengeleyici için bir araştırma ekleyebilir veya kaldırabilirsiniz:
+    * **Yoklamalar** - **\<kaynak-grup-adı >. JSON** dosyasının **yoklamalar** bölümüne girdi ekleyerek veya kaldırarak, yapılandırmadaki yük dengeleyici için bir araştırma ekleyebilir veya kaldırabilirsiniz:
 
         ```json
         "probes": [
@@ -374,7 +374,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         ```
        Azure Load Balancer sistem durumu araştırmaları hakkında daha fazla bilgi için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
 
-    * **Gelen NAT kuralları** -  **\<Resource-Group-name >. JSON** dosyasının **ınboundnatrules** bölümüne girdi ekleyerek veya kaldırarak yük dengeleyici için gelen NAT kuralları ekleyebilir veya kaldırabilirsiniz:
+    * **Gelen NAT kuralları** - **\<Resource-group-name >. JSON** dosyasının **ınboundnatrules** bölümüne girdi ekleyerek veya kaldırarak yük dengeleyici için gelen NAT kuralları ekleyebilir veya kaldırabilirsiniz:
 
         ```json
         "inboundNatRules": [
@@ -396,7 +396,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
                     }
                 ]
         ```
-        Bir gelen NAT kuralı ekleme veya kaldırma işlemini gerçekleştirmek için, kural var olmalıdır veya  **\<kaynak-grup-adı >. JSON** dosyasının sonunda bir **tür** özelliği olarak kaldırılmalıdır:
+        Bir gelen NAT kuralı ekleme veya kaldırma işleminin tamamlanabilmesi için, kuralın **\<kaynak-grup-adı >. JSON** dosyasının sonunda bir **tür** özelliği olarak mevcut veya kaldırılmış olması gerekir:
 
         ```json
         {
@@ -422,7 +422,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         ```
         Gelen NAT kuralları hakkında daha fazla bilgi için bkz. [Azure Load Balancer nedir?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Giden kuralları** -  **\<Resource-Group-name >. JSON** dosyasındaki **outboundrules** özelliğini düzenleyerek, yapılandırmaya giden kuralları ekleyebilir veya kaldırabilirsiniz:
+    * **Giden kuralları** - **\<Resource-group-name >. JSON** dosyasındaki **outboundrules** özelliğini düzenleyerek, yapılandırmada giden kuralları ekleyebilir veya kaldırabilirsiniz:
 
         ```json
         "outboundRules": [
@@ -450,14 +450,14 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
          Giden kuralları hakkında daha fazla bilgi için bkz. [Load Balancer giden kuralları](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)
 
-13. **Resource-Group-name >. json dosyasını kaydedin. \<**
+13. **Resource-Group-name >. json dosyasını\<** kaydedin.
     
 10. Hedef dış yük dengeleyicinin [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)kullanılarak dağıtılması için hedef bölgede bir kaynak grubu oluşturun veya bir kaynak grubu oluşturun. Yukarıdaki mevcut kaynak grubu, bu işlemin bir parçası olarak da kullanılabilir:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. **Düzenlenmiş\<kaynak-grup adı >. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
+11. Düzenlenmiş **\<Resource-Group-name >. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
 
     ```azurepowershell-interactive
 

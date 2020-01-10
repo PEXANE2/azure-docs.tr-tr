@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: de63799400a10afc1930cd373df0c8dd86320f78
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9bc0b32d3c94cabc1a772f02bf21f31e73f1306f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212005"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75642157"
 ---
 # <a name="azure-private-dns-faq"></a>Azure Özel DNS hakkında SSS
 
@@ -34,7 +34,7 @@ Hayır. Özel bölgeler, sanal ağlarla birlikte çalışır. Sanal makineler ve
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Aynı özel bölge, çözümlenmek üzere birkaç sanal ağ için de kullanılabilir mi?
 
-Evet. Bir özel DNS bölgesini binlerce sanal ağla bağlayabilirsiniz. Daha fazla bilgi için bkz. [Azure DNS sınırları](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)
+Evet. Bir özel DNS bölgesini binlerce sanal ağla bağlayabilirsiniz. Daha fazla bilgi için bkz. [Azure DNS sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Farklı bir aboneliğe ait olan bir sanal ağ, özel bir bölgeye bağlanabilir mi?
 
@@ -71,7 +71,7 @@ Bu sonekin nasıl değiştirileceği hakkında yönergeler için [, DNS sunucunu
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Azure DNS özel bölgelerin kullanım sınırları nelerdir?
 
-Azure DNS özel bölgelerin kullanım limitleriyle ilgili ayrıntılar için [Azure DNS sınırlara](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) bakın.
+Azure DNS özel bölgelerin kullanım limitleriyle ilgili ayrıntılar için [Azure DNS sınırlara](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) bakın.
 
 ## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Var olan özel DNS bölgelerimin yeni Portal deneyiminde neden gösterilmeliyim?
 

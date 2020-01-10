@@ -4,15 +4,15 @@ description: Azure dosyaları dağıtımı için planlama yaparken göz önünde
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 12/18/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c81f06d924a0ba871115e0ae0164d61449855263
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927874"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665256"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -35,7 +35,7 @@ Kayıtlı sunucu nesnesi, sunucunuz (veya kümeniz) ile depolama eşitleme hizme
 
 ### <a name="azure-file-sync-agent"></a>Azure Dosya Eşitleme Aracısı
 Azure Dosya Eşitleme aracısı, Windows Server’ın bir Azure dosya paylaşımı ile eşitlenmesini sağlayan indirilebilir bir pakettir. Azure Dosya Eşitleme aracısının üç ana bileşeni vardır: 
-- **FileSyncSvc. exe**: sunucu uç noktalarında yapılan değişiklikleri izlemekten sorumlu olan arka plan Windows hizmeti ve eşitleme oturumlarını Azure 'a başlatma.
+- **FileSyncSvc. exe**: sunucu uç noktalarında yapılan değişiklikleri Izlemenin ve Azure 'da eşitleme oturumlarını başlatmaktan sorumlu olan arka plan hizmeti.
 - **Storagessync. sys**: Azure dosya eşitleme dosya sistemi filtresi (bulut katmanlama etkinleştirildiğinde).
 - **PowerShell yönetim cmdlet 'leri**: Microsoft. Storagessync Azure Kaynak sağlayıcısı ile etkileşim kurmak için kullandığınız PowerShell cmdlet 'leri. Bunları, aşağıdaki (varsayılan) konumlarda bulabilirsiniz:
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
@@ -69,7 +69,7 @@ Bulut katmanlaması, sık erişilen dosyaların sunucu üzerinde yerel olarak ö
 Bu bölüm, Windows Server özellikleri ve rolleri ve üçüncü taraf çözümleriyle Azure Dosya Eşitleme Aracı sistem gereksinimlerini ve birlikte çalışabilirliği ele alır.
 
 ### <a name="evaluation-cmdlet"></a>Değerlendirme cmdlet 'i
-Azure Dosya Eşitleme dağıtılmadan önce, Azure Dosya Eşitleme değerlendirme cmdlet 'ini kullanarak sistem ile uyumlu olup olmadığını değerlendirmelisiniz. Bu cmdlet, dosya sisteminiz ve veri kümeniz ile desteklenmeyen karakterler veya desteklenmeyen bir işletim sistemi sürümü gibi olası sorunları denetler. Denetimlerinin, aşağıda bahsedilen özelliklerin tümünü kapsamadığını unutmayın; dağıtımınızın sorunsuz bir şekilde çalışmasını sağlamak için bu bölümün geri kalanını dikkatle okumanız önerilir. 
+Azure Dosya Eşitleme dağıtılmadan önce, Azure Dosya Eşitleme değerlendirme cmdlet 'ini kullanarak sistem ile uyumlu olup olmadığını değerlendirmelisiniz. Bu cmdlet, dosya sisteminiz ve veri kümeniz ile desteklenmeyen karakterler veya desteklenmeyen bir işletim sistemi sürümü gibi olası sorunları denetler. Denetimleri, aşağıda bahsedilen özelliklerinin çoğunu kapsar; dağıtımınızın sorunsuz bir şekilde çalışmasını sağlamak için bu bölümün geri kalanını dikkatle okumanız önerilir. 
 
 Değerlendirme cmdlet 'i, buradaki yönergeleri izleyerek yüklenebilen az PowerShell modülünün yüklenerek yüklenebilir: [Azure PowerShell yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
@@ -141,8 +141,10 @@ Sonuçları CSV 'de göstermek için:
 
 | Dosya/klasör | Not |
 |-|-|
+| pagefile.sys | Sisteme özel dosya |
 | Desktop. ini | Sisteme özel dosya |
-| ethumbs.db$ | Küçük resimler için geçici dosya |
+| thumbs. db | Küçük resimler için geçici dosya |
+| ehthumbs.db | Medya küçük resimleri için geçici dosya |
 | ~$\*.\* | Office geçici dosyası |
 | \*. tmp | Geçici dosya |
 | \*.laccdb | DB kilitleme dosyasına erişin|
@@ -177,7 +179,7 @@ Azure Dosya Eşitleme, Windows Server 2012 R2 'deki aynı birimde yinelenen veri
     - Boş alan ilkesi, heatmap kullanarak birimdeki boş alana göre dosyaları katmana devam edecektir.
     - Tarih ilkesi, dosyalara erişirken yinelenenleri kaldırma iyileştirme işi nedeniyle katmanlama için uygun olabilecek dosyaların katmanlamasını atlar.
 - Devam eden yinelenenleri kaldırma iyileştirme işleri için, dosya zaten katmanlı değilse, tarih ilkesiyle bulut katmanlaması, yinelenen verileri kaldırma [Minimumfileagedays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) ayarı tarafından gecikilir. 
-    - Örnek: MinimumFileAgeDays ayarı 7 gün, bulut katmanlama tarihi ilkesi ise 30 gün ise, tarih ilkesi dosyaları 37 gün sonra katman olarak alır.
+    - Örnek: MinimumFileAgeDays ayarı yedi gün, bulut katmanlama tarihi ilkesi ise 30 gün ise, tarih ilkesi dosyaları 37 gün sonra katman olarak alır.
     - Note: bir dosya Azure Dosya Eşitleme göre katmanlandıktan sonra, yinelenenleri kaldırma iyileştirme işi dosyayı atlar.
 - Azure Dosya Eşitleme Aracısı yüklü Windows Server 2012 R2 çalıştıran bir sunucu Windows Server 2016 veya Windows Server 2019 ' ye yükseltilirse, yinelenen verileri kaldırma ve bulut katmanlaması desteği için aşağıdaki adımlar gerçekleştirilmelidir:  
     - Windows Server 2012 R2 için Azure Dosya Eşitleme aracısını kaldırın ve sunucuyu yeniden başlatın.
@@ -194,7 +196,7 @@ Azure Dosya Eşitleme, DFS ad alanları (DFS-N) ve DFS Çoğaltma (DFS-R) ile bi
 **DFS çoğaltma (DFS-r)** : DFS-r ve Azure dosya eşitleme her ikisi de çoğaltma çözümleri olduğundan, çoğu durumda DFS-r 'yi Azure dosya eşitleme değiştirmeniz önerilir. DFS-R ve Azure Dosya Eşitleme kullanmak istediğiniz birkaç senaryo vardır:
 
 - Bir DFS-R dağıtımından Azure Dosya Eşitleme dağıtımına geçiriyoruz. Daha fazla bilgi için, [DFS çoğaltma (DFS-R) dağıtımını Azure dosya eşitleme geçirme](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync)konusuna bakın.
-- Dosya verilerinizin bir kopyasına ihtiyacı olan her şirket içi sunucu değil, doğrudan internet 'e bağlanabilir.
+- Dosya verilerinizin bir kopyasına ihtiyaç duymayan her şirket içi sunucu, doğrudan internet 'e bağlanabilir.
 - Şube sunucuları, Azure Dosya Eşitleme kullanmak istediğiniz tek bir hub sunucusu üzerinde verileri birleştirir.
 
 Azure Dosya Eşitleme ve DFS-R 'nin yan yana çalışması için:
@@ -221,13 +223,13 @@ Microsoft 'un Şirket içi virüsten koruma çözümleri, Windows Defender ve Sy
 ### <a name="backup-solutions"></a>Yedekleme çözümleri
 Virüsten koruma çözümleri gibi, yedekleme çözümleri katmanlı dosyaların geri alınmasına neden olabilir. Şirket içi yedekleme ürünü yerine Azure dosya paylaşımının yedeklenmesi için bir bulut yedekleme çözümü kullanmanızı öneririz.
 
-Şirket içi yedekleme çözümü kullanıyorsanız, yedeklemeler, bulut katmanlaması devre dışı olan eşitleme grubundaki bir sunucuda gerçekleştirilmelidir. Geri yükleme gerçekleştirirken birim düzeyinde veya dosya düzeyinde geri yükleme seçeneklerini kullanın. Dosya düzeyi geri yükleme seçeneği kullanılarak geri yüklenen dosyalar, eşitleme grubundaki tüm uç noktalarla eşitlenir ve mevcut dosyalar yedekten geri yüklenen sürümle birlikte değişir.  Birim düzeyinde geri yüklemeler, Azure dosya paylaşımındaki veya diğer sunucu uç noktalarında yeni dosya sürümlerinin yerini olmayacaktır.
+Şirket içi yedekleme çözümü kullanıyorsanız, yedeklemelerin bulut katmanlaması devre dışı olan eşitleme grubundaki bir sunucuda gerçekleştirilmesi gerekir. Geri yükleme gerçekleştirirken birim düzeyinde veya dosya düzeyinde geri yükleme seçeneklerini kullanın. Dosya düzeyi geri yükleme seçeneği kullanılarak geri yüklenen dosyalar, eşitleme grubundaki tüm uç noktalarla eşitlenir ve mevcut dosyalar yedekten geri yüklenen sürümle birlikte değişir.  Birim düzeyinde geri yüklemeler, Azure dosya paylaşımındaki veya diğer sunucu uç noktalarında yeni dosya sürümlerinin yerini olmayacaktır.
 
 > [!Note]  
 > Çıplak (BMR) geri yükleme beklenmeyen sonuçlara neden olabilir ve şu anda desteklenmemektedir.
 
 > [!Note]  
-> Azure dosya eşitleme Aracısı sürüm 9 ' da, VSS anlık görüntüleri (önceki sürümler dahil), artık bulut katmanlaması etkinleştirilmiş birimlerde desteklenmektedir. Ancak, PowerShell aracılığıyla önceki sürüm uyumluluğunu etkinleştirmeniz gerekir. [Nasıl olduğunu öğrenin](storage-files-deployment-guide.md).
+> Azure Dosya Eşitleme aracısının 9. sürümünde, VSS anlık görüntüleri (önceki sürümler dahil), artık bulut katmanlaması etkinleştirilmiş birimlerde desteklenmektedir. Ancak, PowerShell aracılığıyla önceki sürüm uyumluluğunu etkinleştirmeniz gerekir. [Nasıl olduğunu öğrenin](storage-files-deployment-guide.md).
 
 ### <a name="encryption-solutions"></a>Şifreleme çözümleri
 Şifreleme çözümleri için destek, nasıl uygulandığına bağlıdır. Azure Dosya Eşitleme ile birlikte çalışmak bilinmektedir:
@@ -289,10 +291,10 @@ Azure Dosya Eşitleme, yalnızca depolama eşitleme hizmeti ile aynı bölgedeki
 Yıldız işaretleri ile işaretlenmiş bölgeler için, bu bölgelerde Azure depolama 'ya erişim istemek üzere Azure desteği 'ne başvurmanız gerekir. İşlem [Bu belgede](https://azure.microsoft.com/global-infrastructure/geographies/)özetlenmiştir.
 
 ### <a name="azure-disaster-recovery"></a>Azure olağanüstü durum kurtarma
-Azure bölgesinin kaybedilmesine karşı korunmak için, Azure Dosya Eşitleme [coğrafi olarak yedekli depolama artıklığı](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) seçeneğiyle tümleştirilir. GRS depolama, birincil bölgedeki depolama alanı arasında zaman uyumsuz blok çoğaltma kullanarak çalışır ve bu da eşleştirilmiş ikincil bölgede depolama alanı. Bir Azure bölgesinin geçici veya kalıcı olarak çevrimdışı çalışmasına neden olan bir olağanüstü durum durumunda, Microsoft depolama 'yı eşleştirilmiş bölgeye devreder. 
+Azure bölgesinin kaybedilmesine karşı korunmak için, Azure Dosya Eşitleme [coğrafi olarak yedekli depolama artıklığı](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) seçeneğiyle tümleştirilir. GRS depolama, birincil bölgedeki depolama alanı arasında zaman uyumsuz blok çoğaltma kullanarak çalışır ve bu da eşleştirilmiş ikincil bölgede depolama alanı. Bir Azure bölgesinin geçici veya kalıcı olarak çevrimdışı olmasına neden olan bir olağanüstü durum durumunda, Microsoft depolama 'yı eşleştirilmiş bölgeye devreder. 
 
 > [!Warning]  
-> Azure dosya paylaşımınızı bir GRS depolama hesabında bulut uç noktası olarak kullanıyorsanız, depolama hesabı yük devretmesini başlatmamanız gerekir. Bunun yapılması eşitlemenin durmasına neden olur ve yeni katmanlı dosyalar söz konusu olduğunda beklenmedik veri kaybına neden olabilir. Azure bölgesinin kaybedilmesi durumunda, Microsoft, depolama hesabı yük devretmesini Azure Dosya Eşitleme ile uyumlu bir şekilde tetikleyecektir.
+> Azure dosya paylaşımınızı bir GRS depolama hesabında bulut uç noktası olarak kullanıyorsanız, depolama hesabı yük devretmesini başlatmamanız gerekir. Bunun yapılması eşitlemenin çalışmayı durdurmasına neden olur ve yeni katmanlanmış dosyalar söz konusu olduğunda beklenmedik veri kaybına da yol açabilir. Azure bölgesinin kaybedilmesi durumunda, Microsoft, depolama hesabı yük devretmesini Azure Dosya Eşitleme ile uyumlu bir şekilde tetikleyecektir.
 
 Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretme tümleştirmesini desteklemek için, tüm Azure Dosya Eşitleme bölgeler, depolama tarafından kullanılan ikincil bölgeyle eşleşen bir ikincil bölgeyle eşleştirilir. Bu çiftler aşağıdaki gibidir:
 
@@ -333,6 +335,30 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure Dosya Eşitleme aracısı güncelleştirme ilkesi
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="recommended-azure-file-sync-machine-configuration"></a>Azure Dosya Eşitleme makine yapılandırması önerilir
+
+Azure Dosya Eşitleme makine gereksinimleri, ad alanındaki nesne sayısına ve veri kümesindeki dalgalanma göre belirlenir. Tek bir sunucu birden çok eşitleme grubuna ve bir sunucunun eklendiği tam ad alanı için aşağıdaki tablo hesaplarında listelenen nesne sayısına bağlanabilir. Örneğin, 10.000.000 nesneleriyle sunucu uç noktası A ve 10.000.000 Objects = 20.000.000 nesneleriyle sunucu uç noktası B. Bu örnek dağıtım için, ilk geçiş için, sabit durum için 8CPU, 16GiB bellek ve (mümkünse) 48GiB bellek önereceğiz.
+ 
+Ad alanı verileri performans nedenleriyle bellekte depolanır. Bu nedenle, daha büyük ad alanları iyi performans sağlamak için daha fazla bellek gerektirir ve daha fazla dalgalanma daha fazla CPU gerektirir. 
+ 
+Aşağıdaki tabloda, ad alanının boyutunu ve tipik genel amaçlı dosya paylaşımları için kapasiteye dönüştürme işleminin yanı sıra ortalama dosya boyutu 512Kıb ' dir. Dosya boyutlarınız daha küçükse, aynı kapasite miktarı için ek bellek eklemeyi göz önünde bulundurun. Bellek yapılandırmanızı ad alanının boyutuna dayandırın.
+
+| Ad alanı boyutu-dosyalar & dizinler (milyonlarca)  | Tipik kapasite (TiB)  | CPU Çekirdekleri  | Önerilen bellek (GiB) |
+|---------|---------|---------|---------|
+| 3        | 1.4     | 2        | 8 (ilk eşitleme)/2 (tipik dalgalanma)      |
+| 5        | 2.3     | 2        | 16 (ilk eşitleme)/4 (tipik dalgalanma)    |
+| 10       | 4.7     | 4        | 32 (ilk eşitleme)/8 (tipik dalgalanma)   |
+| 30       | 14,0    | 8        | 48 (ilk eşitleme)/16 (tipik dalgalanma)   |
+| 50       | 23,3    | 16       | 64 (ilk eşitleme)/32 (tipik dalgalanma)  |
+| 100 *     | 46,6    | 32       | 128 (ilk eşitleme)/32 (tipik dalgalanma)  |
+
+\*100.000.000 'den fazla dosya & Dizin şu anda desteklenmiyor. Bu bir hafif sınır.
+
+> [!TIP]
+> Bir ad alanının ilk eşitlemesi yoğun bir işlemdir ve ilk eşitleme tamamlanana kadar daha fazla bellek ayırmayı öneririz. Bu gerekli değildir, ancak ilk eşitlemeyi hızlandırabilir. 
+> 
+> Normal karmaşıklık, her gün değişen ad alanı% 0,5 ' dir. Daha yüksek dalgalanma düzeyleri için daha fazla CPU eklemeyi düşünün. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Güvenlik duvarını ve proxy ayarlarını değerlendirin](storage-sync-files-firewall-and-proxy.md)

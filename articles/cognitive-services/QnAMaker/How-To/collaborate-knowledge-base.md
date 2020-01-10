@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 01/03/2020
 ms.author: diberry
-ms.openlocfilehash: d9c91d54fb357807682cd57f46b04454e4e2cfec
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b5adc7ebacde056a141ca3b361b9eb2ea7900a39
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876659"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660758"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>Bilgi bankasında işbirliği yapın
 
-Soru-Cevap Oluşturma, bir Bilgi Bankası 'nda birden çok kişinin işbirliği yapmasına izin verir. Bu özellik Azure [rol tabanlı Access Control](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)sağlanır. 
+Soru-Cevap Oluşturma, birden fazla kişinin aynı Soru-Cevap Oluşturma kaynaktaki tüm bilgi tabanlarında işbirliği yapmasına izin verir. Bu özellik Azure [rol tabanlı Access Control](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)sağlanır.
 
 Soru-Cevap Oluşturma hizmetinizi biriyle paylaşmak için aşağıdaki adımları gerçekleştirin:
 

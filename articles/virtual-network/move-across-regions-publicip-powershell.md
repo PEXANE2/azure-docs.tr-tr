@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: d18dfa7ebed3aefbf6fdb3ffdb6fdd2cf2160cb4
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: c55b6011381d385fed7c7b8175ff02ec9be66fdb
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71038933"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641596"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-azure-powershell"></a>Azure PowerShell kullanarak Azure genel IP 'yi başka bir bölgeye taşıma
 
@@ -20,7 +20,7 @@ Mevcut Azure genel IP 'lerini bir bölgeden diğerine taşımak istediğiniz çe
 Azure genel IP 'Leri bölgeye özeldir ve bir bölgeden diğerine taşınamaz. Bununla birlikte, genel bir IP 'nin var olan yapılandırmasını dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz.  Daha sonra, genel IP 'yi bir şablona dışarı aktararak, hedef bölgeyle eşleşecek parametreleri değiştirerek ve sonra şablonu yeni bölgeye dağıtabilmeniz için kaynağı başka bir bölgede da oluşturabilirsiniz.  Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz. [kaynak gruplarını şablonlara dışarı aktarma](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure genel IP 'nin taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 
@@ -32,7 +32,7 @@ Azure genel IP 'Leri bölgeye özeldir ve bir bölgeden diğerine taşınamaz. B
 
 - Azure aboneliğinizin, kullanılan hedef bölgede ortak IP 'Ler oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
 
-- Aboneliğinizin bu işlem için genel IP 'lerin eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Aboneliğinizin bu işlem için genel IP 'lerin eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Hazırlama ve taşıma
@@ -117,7 +117,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
     ```
 8. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
-    * **SKU** - >  **Resource-Group-name >. JSON dosyasındaki SKU adı özelliğini değiştirerek, yapılandırmadaki genel IP 'yi standart iken \<** Basic veya Basic 'e dönüştürebilirsiniz:
+    * **SKU** - **\<Resource-group-name >. json** dosyasındaki **SKU** > **adı** özelliğini değiştirerek, yapılandırmadaki genel IP 'yi standart iken Basic veya Basic 'e dönüştürebilirsiniz:
 
          ```json
             "resources": [
@@ -134,7 +134,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
 
          Temel ve standart SKU genel IP 'leri arasındaki farklılıklar hakkında daha fazla bilgi için bkz. [genel IP adresi oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
-    * **Genel IP ayırma yöntemi** ve **boşta kalma zaman aşımı** -, **publicıpallocationmethod** özelliğini **dinamik** veya **statik** ile dinamik olarak değiştirerek şablonda bu seçeneklerin her ikisini de değiştirebilirsiniz. Boşta **kalma zaman aşımı özelliği,** istediğiniz tutara göre değiştirilebilir.  Varsayılan değer **4**' dir:
+    * **Ortak IP ayırma yöntemi** ve **boşta kalma zaman aşımı** - **publicıpallocationmethod** özelliğini **dinamik** veya **statik** olarak **dinamik**olarak değiştirerek şablonda bu seçeneklerin her ikisini de değiştirebilirsiniz . Boşta **kalma zaman aşımı özelliği,** istediğiniz tutara göre değiştirilebilir.  Varsayılan değer **4**' dir:
 
          ```json
          "resources": [
@@ -162,14 +162,14 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
         Ayırma yöntemleri ve boşta kalma zaman aşımı değerleri hakkında daha fazla bilgi için bkz. [genel IP adresi oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
 
-9. **Resource-Group-name >. json dosyasını kaydedin. \<**
+9. **Resource-Group-name >. json dosyasını\<** kaydedin.
 
 10. Hedef bölgede, hedef genel IP 'nin [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)kullanılarak dağıtılması için bir kaynak grubu oluşturun.
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. **Düzenlenmiş\<kaynak-grup adı >. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
+11. Düzenlenmiş **\<Resource-Group-name >. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
 
     ```azurepowershell-interactive
 

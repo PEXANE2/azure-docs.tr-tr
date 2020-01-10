@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 83910c2209b5d3d3d67578ae41afb902bc885171
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037468"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647892"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Bir veya daha fazla Always on kullanılabilirlik grubu dinleyicisi yapılandırma-Kaynak Yöneticisi
 Bu konuda nasıl yapılacağı gösterilmektedir:
@@ -137,7 +137,7 @@ Birden fazla kullanılabilirlik grubu kullanmak için yük dengeleyicisine ek bi
 > [!NOTE]
 > SQL Server kullanılabilirlik grupları için, her IP adresi için belirli bir yoklama bağlantı noktası gerekir. Örneğin, bir yük dengeleyicideki bir IP adresi araştırma bağlantı noktası 59999 ' i kullanıyorsa, bu yük dengeleyicide başka IP adresleri araştırma bağlantı noktası 59999 ' i kullanabilir.
 
-* Yük dengeleyici sınırları hakkında daha fazla bilgi için bkz. [ağ sınırları](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)altında **yük dengeleyici başına özel ön uç IP 'si** Azure Resource Manager.
+* Yük dengeleyici sınırları hakkında daha fazla bilgi için bkz. [ağ sınırları](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)altında **yük dengeleyici başına özel ön uç IP 'si** Azure Resource Manager.
 * Kullanılabilirlik grubu sınırları hakkında daha fazla bilgi için bkz. [kısıtlamalar (kullanılabilirlik grupları)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
 
 Aşağıdaki betik var olan bir yük dengeleyiciye yeni bir IP adresi ekler. ILB, Yük Dengeleme ön uç bağlantı noktası için dinleyici bağlantı noktasını kullanır. Bu bağlantı noktası SQL Server dinlediği bağlantı noktası olabilir. SQL Server varsayılan örnekleri için bağlantı noktası 1433 ' dir. Bir kullanılabilirlik grubunun Yük Dengeleme kuralı, bir kayan IP (doğrudan sunucu dönüşü) gerektirir, bu nedenle arka uç bağlantı noktası ön uç bağlantı noktasıyla aynı olur. Ortamınızın değişkenlerini güncelleştirin. 

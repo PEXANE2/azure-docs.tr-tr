@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric ters proxy tanılaması | Microsoft Docs
-description: İstek işlemenin ters proxy 'de nasıl izleneceğini ve tanılacağınızı öğrenin.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric ters proxy tanılaması
+description: Azure Service Fabric uygulaması için ters proxy 'de istek işlemeyi izlemeyi ve tanılamayı öğrenin.
 author: kavyako
-manager: vipulm
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: 6074b799e992371d41de050f68690e450f008789
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933961"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645472"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>İstek işlemesini ters ara sunucuda izleme ve tanılama
 
@@ -104,7 +96,7 @@ Aşağıda, bir birinin karşılaşabileceği ortak hata günlüklerini yorumlam
      }
      }
      ```
-     Ters proxy 'nin 404 döndürdüğü başka bir örnek: ApplicationGateway\Http yapılandırma parametresi **Secureonlymode** , **https**üzerinde dinleme yapan ters proxy ile true olarak ayarlanır, ancak tüm çoğaltma uç noktaları güvenli değildir ( HTTP üzerinde dinleme).
+     Ters proxy 'nin 404 döndürdüğü başka bir örnek: ApplicationGateway\Http yapılandırma parametresi **Secureonlymode** , **https**üzerinde dinleme yapan ters proxy ile true olarak ayarlanır, ancak tüm çoğaltma uç noktaları güvenli değildir (http üzerinde dinleme).
      Ters proxy, isteği iletmek için HTTPS üzerinde dinleme yapan bir uç nokta bulamadığı için 404 döndürür. Olay yükünde parametreleri çözümlemek sorunu daraltmaya yardımcı olur:
     
      ```
@@ -181,9 +173,9 @@ Aşağıda, bir birinin karşılaşabileceği ortak hata günlüklerini yorumlam
       }
     }
     ```
-5. Ters proxy 404 FABRIC_E_SERVICE_DOES_NOT_EXIST döndürür
+5. Ters proxy 404 döndürür FABRIC_E_SERVICE_DOES_NOT_EXIST
 
-    FABRIC_E_SERVICE_DOES_NOT_EXIST hatası, hizmet bildiriminde hizmet uç noktası için URI şeması belirtilmemişse döndürülür.
+    Hizmet bildiriminde hizmet uç noktası için URI şeması belirtilmemişse FABRIC_E_SERVICE_DOES_NOT_EXIST hata döndürülür.
 
     ```
     <Endpoint Name="ServiceEndpointHttp" Port="80" Protocol="http" Type="Input"/>

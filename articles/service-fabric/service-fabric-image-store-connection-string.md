@@ -1,56 +1,47 @@
 ---
-title: Azure Service Fabric görüntü deposu bağlantı dizesi | Microsoft Docs
-description: Görüntü deposu bağlantı dizesi anlama
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric görüntü deposu bağlantı dizesi
+description: Kullanımları ve uygulamaları Service Fabric kümesine dahil olmak üzere görüntü deposu bağlantı dizesi hakkında bilgi edinin.
 author: alexwun
-manager: chackdan
-editor: ''
-ms.assetid: 00f8059d-9d53-4cb8-b44a-b25149de3030
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 4a56b48c0041e963b89312c59335b45cabacc1bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3395248188c2a16736cfc8cea262fe163a6944b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720204"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645676"
 ---
-# <a name="understand-the-imagestoreconnectionstring-setting"></a>Imagestoreconnectionstring ayarını anlama
+# <a name="understand-the-imagestoreconnectionstring-setting"></a>Imatoreconnectionstring ayarını anlayın
 
-Bazı belgelerimize size kısaca "ImageStoreConnectionString" parametre varlığı gerçekten anlamını açıklayan olmadan bahsedebilirsiniz. Ve bir makale gibi aracılığıyla olduktan sonra [PowerShell kullanarak dağıtma ve Kaldır uygulamaları][10], tüm yaptığınız gibi görünüyor kopyala/yapıştır hedef kümenin küme bildiriminde gösterildiği gibi bir değerdir. Ayar küme yapılandırılabilir olması gerekir, ancak aracılığıyla bir küme oluşturduğunuzda [Azure portalında][11], bu ayarı yapılandırma seçeneği yoktur ve her zaman "fabric: ImageStore" olur. Bu ayarın amacı nedir?
+Bazı belgelerimizde, gerçekten ne anlama geldiğini açıklamadan "ımatoreconnectionstring" parametresinin varlığını kısaca açıkladık. [PowerShell kullanarak uygulama dağıtma ve kaldırma][10]gibi bir makalede ilerledikten sonra, tüm yaptığınız gibi görünen değeri hedef kümenin küme bildiriminde gösterildiği gibi kopyalayın/yapıştırın. Bu nedenle ayar küme başına yapılandırılabilir olmalıdır, ancak [Azure Portal][11]aracılığıyla bir küme oluşturduğunuzda, bu ayarı yapılandırma seçeneği yoktur ve her zaman "Fabric: ımaıt" olur. Bu ayarın amacı ne olacak?
 
 ![Küme bildirimi][img_cm]
 
-Service Fabric dahili Microsoft tüketim için bir platform olarak birçok farklı ekip tarafından başlatılan bazı yönlerini üst düzeyde özelleştirilebilir - "Görüntü Store" gibi bir yönü için. Esas olarak, görüntü Store takılabilir uygulama paketlerini depolamak için deposudur. Uygulamanız, kümedeki bir düğüme dağıtıldığında, o düğümde görüntü Store ', uygulama paketinin içeriği indirir. Imagestoreconnectionstring belirli bir küme için doğru görüntü Store bulmak için istemcileri ve düğümler için gerekli tüm bilgileri içeren bir ayardır.
+Çok çeşitli ekipler tarafından dahili Microsoft tüketimine yönelik bir platform olarak Service Fabric, bu nedenle, bunun bazı yönleri oldukça özelleştirilebilirdir. "Görüntü Deposu" böyle bir yöntür. Temelde Görüntü Deposu, uygulama paketlerini depolamak için takılabilir bir depodur. Uygulamanız kümedeki bir düğüme dağıtıldığında, bu düğüm Görüntü Deposu uygulama paketinizin içeriğini indirir. Imatoreconnectionstring, belirli bir küme için doğru Görüntü Deposu bulmak üzere hem istemciler hem de düğümler için gerekli tüm bilgileri içeren bir ayardır.
 
-Şu anda görüntü Store sağlayıcıları üç olası türü vardır ve bunların karşılık gelen bağlantı dizeleri aşağıdaki gibidir:
+Şu anda üç olası Görüntü Deposu sağlayıcısı vardır ve bunlara karşılık gelen bağlantı dizeleri aşağıdaki gibidir:
 
-1. Görüntü Store hizmeti: "fabric: ImageStore"
+1. Görüntü Deposu Service: "Fabric: ımabir"
 
-2. Dosya sistemi: "file:[file sistem yolu]"
+2. Dosya sistemi: "dosya: [dosya sistemi yolu]"
 
-3. Azure Depolama: "xstore:DefaultEndpointsProtocol = https; AccountName = […]; AccountKey = […]; Kapsayıcı = […] "
+3. Azure depolama: "XSTORE: DefaultEndpointsProtocol = https; AccountName = [...]; AccountKey = [...]; Kapsayıcı = [...] "
 
-Üretim ortamında kullanılan sağlayıcı türü görüntü Store, Service Fabric Explorer'ın görebileceğiniz bir durum bilgisi olan kalıcı sistemi hizmetidir hizmetidir. 
+Üretimde kullanılan sağlayıcı türü, Service Fabric Explorer görebileceğiniz bir durum bilgisi olmayan kalıcı sistem hizmeti olan Görüntü Deposu hizmetidir. 
 
-![Görüntü Store hizmeti][img_is]
+![Görüntü Deposu hizmeti][img_is]
 
-Görüntü Store küme içindeki bir sistem hizmetinde barındırma paket deposu için dış bağımlılıkları ortadan kaldırır ve depolama konumu üzerinde daha fazla denetim sağlıyor. Gelecekteki geliştirmeleri görüntü Store etrafında ilk değilse özel görüntü Store sağlayıcısı hedef olasılığı düşüktür. İstemci zaten hedef kümeye bağlı olduğundan, görüntü Store hizmet sağlayıcı için bağlantı dizesini herhangi bir benzersiz bilgi yok. İstemci, yalnızca sistem hizmetini hedefleyen protokollerin kullanılması gerektiğini bilmeniz gerekir.
+Görüntü Deposu küme içindeki bir sistem hizmetinde barındırmak, paket deposunun dış bağımlılıklarını ortadan kaldırır ve depolama alanı üzerinde daha fazla denetim elde etmenizi sağlar. Görüntü Deposu bir sonraki iyileştirmeler, özel olarak değil, önce Görüntü Deposu sağlayıcıyı hedefleyebilir. İstemci hedef kümeye zaten bağlı olduğundan, Görüntü Deposu hizmet sağlayıcısı için bağlantı dizesi benzersiz bilgiler içermez. İstemcinin yalnızca sistem hizmetini hedefleyen protokollerin kullanılması gerektiğini bilmeleri gerekir.
 
-Dosya sistemi sağlayıcısı yerine görüntü Store hizmeti için yerel bir hazır kümeleri geliştirme sırasında küme biraz daha hızlı önyükleme için kullanılır. Fark genellikle daha küçüktür, ancak çoğu yeni başlayanlar için kullanışlı bir iyileştirme geliştirme sırasında olduğu. Diğer depolama sağlayıcısı türleri de olan bir yerel hazır bir küme dağıtmak mümkün mü, ancak genellikle bu yana geliştirme/test iş akışı sağlayıcısı bakılmaksızın aynı kalır. Bunu yapmak için bir neden yoktur. Azure depolama sağlayıcısının yalnızca görüntü Store hizmet sağlayıcısı sunulmadan önce dağıtılan kümeleri için eski destek eski bulunmaktadır.
+Kümeyi biraz daha hızlı önyüklemek için geliştirme sırasında yerel tek Box kümelerine yönelik Görüntü Deposu hizmeti yerine dosya sistemi sağlayıcısı kullanılır. Fark genellikle küçüktür, ancak geliştirme sırasında çoğu katlara yönelik faydalı bir iyileştirmedir. Yerel bir kutu kümesini diğer depolama sağlayıcısı türleriyle birlikte dağıtmak da mümkündür, ancak geliştirme/test iş akışı sağlayıcıdan bağımsız olarak aynı kaldığından genellikle bunu yapmanız gerekmez. Azure depolama sağlayıcısı yalnızca Görüntü Deposu hizmeti sağlayıcısı sunulmadan önce dağıtılan eski kümelerin eski desteği için mevcuttur.
 
-Ayrıca, dosya sistemi sağlayıcısı veya Azure depolama sağlayıcısının birden çok küme arasındaki bir görüntü Store paylaşım yöntemi olarak kullanılmalıdır - her küme görüntüye çakışan veri yazabilen gibi bu küme yapılandırması veri bozulmasına neden olur Store. Sağlanan uygulama paketlerini birden fazla küme arasında paylaşmak için kullanmak [sfpkg] [ 12] bunun yerine, hangi dosyaların herhangi bir dış depolama indirme URI'si ile karşıya yüklenebilir.
+Ayrıca, dosya sistemi sağlayıcısı veya Azure depolama sağlayıcısı, birden çok küme arasında Görüntü Deposu paylaşma yöntemi olarak kullanılmalıdır. Bu, her küme, görüntüye çakışan veriler yazabileceğinden küme yapılandırma verilerinin bozulmasına yol açabilir Saklayabilir. Sağlanan uygulama paketlerini birden çok küme arasında paylaştırmak için, indirme URI 'SI olan herhangi bir harici depoya yüklenebilen yerine [sfpkg][12] dosyalarını kullanın.
 
-Bu nedenle Imagestoreconnectionstring yapılandırılabilir olsa da, yalnızca varsayılan ayarı kullanın. Visual Studio aracılığıyla azure'a yayımlarken, parametre otomatik olarak sizin için uygun şekilde ayarlanır. Azure'da barındırılan kümelerine programlamalı dağıtım için bağlantı dizesi her zaman "fabric: ImageStore" dir. Şüpheye düştüğünüzde değeri her zaman tarafından gibi küme bildiriminin alarak doğrulanabilir rağmen [PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx), veya [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest). Hem şirket içinde test ve üretim kümeleri her zaman da görüntü Store hizmeti sağlayıcısı kullanacak şekilde yapılandırılmalıdır.
+Bu nedenle, ımabtoreconnectionstring yapılandırılabilir, ancak varsayılan ayarı kullanmanız yeterlidir. Visual Studio aracılığıyla Azure 'a yayımlarken, parametre sizin için otomatik olarak ayarlanır. Azure 'da barındırılan kümelere programlı dağıtım için bağlantı dizesi her zaman "doku: ımabir" dir. Şüpheli halde, bunun değeri [PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), [.net](https://msdn.microsoft.com/library/azure/mt161375.aspx)veya [rest](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest)tarafından küme bildirimi alınırken her zaman doğrulanabilir. Hem şirket içi test hem de üretim kümeleri her zaman Görüntü Deposu hizmet sağlayıcısını kullanacak şekilde yapılandırılmalıdır.
 
 ### <a name="next-steps"></a>Sonraki adımlar
-[Dağıtma ve PowerShell kullanarak uygulamaları kaldırma][10]
+[PowerShell kullanarak uygulama dağıtma ve kaldırma][10]
 
 <!--Image references-->
 [img_is]: ./media/service-fabric-image-store-connection-string/image_store_service.png

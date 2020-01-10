@@ -3,18 +3,18 @@ title: Hortonçalışmakorumalı alanı ile Azure Toolkit for IntelliJ kullanma
 description: Azure Toolkit for IntelliJ 'de, Hortonçalışmalar korumalı alanı ile birlikte HDInsight araçlarını kullanmayı öğrenin.
 keywords: Hadoop araçları, Hive sorgusu, IntelliJ, hortonçalışmalar korumalı alanı, IntelliJ için Azure araç seti
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 783d7fc8bc26ce2c715c774e63ecf60c5b75a439
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076269"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647841"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Hortonçalışmalar korumalı alanı ile IntelliJ için HDInsight araçlarını kullanma
 
@@ -22,7 +22,7 @@ Apache Scala uygulamaları geliştirmek için IntelliJ için HDInsight araçlar�
 
 [IntelliJ fikri](https://www.jetbrains.com/idea/) , bilgisayar yazılımı geliştirmeye yönelik bir Java tümleşik geliştirme ORTAMıDıR (IDE). Verilerinizi Hortonçalışmalar korumalı alanı üzerinde geliştirip test ettikten sonra, uygulamaları [Azure HDInsight](apache-hadoop-introduction.md)'a taşıyabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
@@ -53,7 +53,7 @@ Bu bölümde, IntelliJ FIKRINI kullanarak örnek bir Scala projesi oluşturacaks
    2. **Yapı aracı** listesinde, senaryonuza göre aşağıdakilerden birini seçin:
 
       * **Maven**: Scala proje oluşturma Sihirbazı desteği için.
-      * **SBT**: , Scala projesi için bağımlılıkları ve oluşturmayı yönetmek için.
+      * **SBT**: ve Scala projesi için oluşturma bağımlılıklarını ve oluşturmayı yönetmek için.
 
    ![IntelliJ yeni Scala projesi oluştur](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
@@ -62,7 +62,7 @@ Bu bölümde, IntelliJ FIKRINI kullanarak örnek bir Scala projesi oluşturacaks
 
    1. **Proje adı** kutusuna bir proje adı girin.
    2. **Proje konumu** kutusuna bir proje konumu girin.
-   3. **Proje SDK 'sı** açılan listesinin yanındaki **Yeni**' yi seçin, **JDK**' i seçin ve ardından Java JDK sürüm 1,7 veya üzeri için klasörü belirtin. Spark 2. x kümesi için **Java 1,8** ' ı seçin. Spark 1. x kümesi için **Java 1,7** ' ı seçin. Varsayılan konum C:\Program Files\java\jdk1.8.x_xxxşeklindedir.
+   3. **Proje SDK 'sı** açılan listesinin yanındaki **Yeni**' yi seçin, **JDK**' i seçin ve ardından Java JDK sürüm 1,7 veya üzeri için klasörü belirtin. Spark 2. x kümesi için **Java 1,8** ' ı seçin. Spark 1. x kümesi için **Java 1,7** ' ı seçin. Varsayılan konum C:\Program Files\Java\jdk1.8. x_xxx şeklindedir.
    4. **Spark sürümü** açılan listesinde, Scala proje oluşturma SIHIRBAZı Spark SDK ve Scala SDK için doğru sürümü tümleştirir. Spark kümesi sürümü 2.0’dan eskiyse **Spark 1.x** seçeneğini belirleyin. Aksi takdirde, **Spark2.x** seçeneğini belirleyin. Bu örnek Spark 1.6.2 (Scala 2.10.5) kullanır. **Scala 2.10. x**olarak işaretlenmiş depoyu kullandığınızdan emin olun. Scala 2.11. x olarak işaretlenmiş depoyu kullanmayın.
     
       ![IntelliJ Scala proje özellikleri oluştur](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
@@ -158,4 +158,3 @@ Bir öykünücüyü bir proje göndermek için:
 
 - [Apache Spark uygulamalar oluşturmak için Azure Toolkit for Eclipse HDInsight araçlarını kullanmayı](../spark/apache-spark-eclipse-tool-plugin.md)öğrenin.
 
-- Çakışan Küreler HDInsight araçları hakkında bir video için bkz. [Spark uygulamaları oluşturmak Için HDInsight araçları kullanma](https://mix.office.com/watch/1rau2mopb6fha).

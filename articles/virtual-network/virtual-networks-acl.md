@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 38655a9da103d1d669f87c6195be7f17702f9348
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0002e61827817af958007e1f789219e9291990d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056684"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647773"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Uç nokta erişim denetim listesi nedir?
 
@@ -39,7 +39,7 @@ Ağ ACL 'Lerini kullanarak şunları yapabilirsiniz:
 * Belirli bir sanal makine uç noktasında doğru kural kümesinin uygulandığından emin olmak için kural sıralamasını kullanın (en küçükten en büyüğe)
 * Belirli bir uzak alt ağ IPv4 adresi için bir ACL belirtin.
 
-ACL sınırları için [Azure Limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) makalesine bakın.
+ACL sınırları için [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) makalesine bakın.
 
 ## <a name="how-acls-work"></a>ACL 'Ler nasıl çalışır?
 ACL, kuralların listesini içeren bir nesnedir. Bir ACL oluşturup bir sanal makine uç noktasına uyguladığınızda, VM 'nizin ana bilgisayar düğümünde paket filtrelemesi gerçekleşir. Bu, uzak IP adreslerinden gelen trafiğin, VM 'niz yerine eşleşen ACL kuralları için ana bilgisayar düğümü tarafından filtrelenmiştir anlamına gelir. Bu, sanal makinenizin, paket filtrelemede değerli CPU döngülerini harcamasını önler.
@@ -76,19 +76,19 @@ Aşağıdaki örnekte, RDP uç noktasına yalnızca iki ortak IPv4 adres aralı�
 | 200 |159.0.0.0/8 |3389 |İzin ver |
 
 ### <a name="rule-order"></a>Kural sırası
-Uç nokta için birden çok kural belirtilebildiğinden, hangi kuralın öncelikli olduğunu belirleyebilmek için kuralları düzenlemenin bir yolu olmalıdır. Kural sırası önceliği belirtir. Ağ ACL 'Leri *En düşük öncelik* kuralı sırasını izler. Aşağıdaki örnekte, 80 numaralı bağlantı noktası için yalnızca belirli IP adresi aralıklarına erişim izni verilir. Bunu yapılandırmak için, 175.1.0.1/24 alanındaki adresler için bir \# reddetme kuralı (kural 100) vardır. Daha sonra 175.0.0.0/8 altındaki diğer tüm adreslere erişime izin veren öncelik 200 ile ikinci bir kural belirtilir.
+Uç nokta için birden çok kural belirtilebildiğinden, hangi kuralın öncelikli olduğunu belirleyebilmek için kuralları düzenlemenin bir yolu olmalıdır. Kural sırası önceliği belirtir. Ağ ACL 'Leri *En düşük öncelik* kuralı sırasını izler. Aşağıdaki örnekte, 80 numaralı bağlantı noktası için yalnızca belirli IP adresi aralıklarına erişim izni verilir. Bunu yapılandırmak için, 175.1.0.1/24 alanındaki adresler için bir reddetme kuralı (kural \# 100) vardır. Daha sonra 175.0.0.0/8 altındaki diğer tüm adreslere erişime izin veren öncelik 200 ile ikinci bir kural belirtilir.
 
 **Örnek – kural önceliği**
 
 | **Kurallar #** | **Uzak alt ağ** | **Uç noktası** | **İzin verme/reddetme** |
 | --- | --- | --- | --- |
-| 100 |175.1.0.1/24 |80 |Reddet |
+| 100 |175.1.0.1/24 |80 |Deny |
 | 200 |175.0.0.0/8 |80 |İzin ver |
 
-## <a name="network-acls-and-load-balanced-sets"></a>Ağ ACL 'Leri ve yük dengeli kümeler
+## <a name="network-acls-and-load-balanced-sets"></a>Ağ ACL'leri ve yük dengeli ayarlar
 Ağ ACL 'Leri, yük dengeli bir küme uç noktasında belirtilebilir. Yük dengeli bir küme için bir ACL belirtilmişse, ağ ACL 'SI bu yük dengeli küme içindeki tüm sanal makinelere uygulanır. Örneğin, "bağlantı noktası 80" ile bir yük dengeli küme oluşturulduysa ve yük dengeli küme 3 VM içeriyorsa, bir VM 'nin "bağlantı noktası 80" uç noktasında oluşturulan ağ ACL 'SI otomatik olarak diğer VM 'lere uygulanır.
 
-![Ağ ACL 'Leri ve yük dengeli kümeler](./media/virtual-networks-acl/IC674733.png)
+![Ağ ACL'leri ve yük dengeli ayarlar](./media/virtual-networks-acl/IC674733.png)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 [PowerShell kullanarak uç noktalar için erişim denetim listelerini yönetme](virtual-networks-acl-powershell.md)

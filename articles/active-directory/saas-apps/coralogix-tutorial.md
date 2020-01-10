@@ -1,10 +1,10 @@
 ---
-title: 'Öğretici: Coralogix ile tümleştirme Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: Coralogix ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Coralogix arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: ba79bfc1-992e-4924-b76a-8eb0dfb97724
 ms.service: active-directory
@@ -13,98 +13,77 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/2/2019
+ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8589c366c029ab51c7cd740a1b63cff7c0481a51
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7e56d2104fd5e82b60f4e6aaa32d1bbc191d67d4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158460"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638777"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Öğretici: Coralogix ile tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>Öğretici: Coralogix ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Coralogix 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Coralogix 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, Coralogix 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Coralogix 'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de Coralogix 'e erişimi olan ' i denetleyebilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Coralogix (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portal.
+* Azure AD 'de Coralogix 'e erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Coralogix için otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Coralogix ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-- Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, bir [aylık deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)alabilirsiniz.
-- Bir Coralogix çoklu oturum açma etkin aboneliği. 
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Coralogix çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Coralogix, SP tarafından başlatılan SSO 'yu destekler.
+* Coralogix, **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="add-coralogix-from-the-gallery"></a>Galeriden Coralogix ekleme
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
-Coralogix 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için, önce Galeriden Coralogix 'i yönetilen SaaS uygulamaları listenize ekleyin.
+## <a name="adding-coralogix-from-the-gallery"></a>Galeriden Coralogix ekleme
 
-Galeriden Coralogix eklemek için aşağıdaki adımları uygulayın:
+Coralogix 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Coralogix ' i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com)sol bölmedeki **Azure Active Directory** simgesini seçin.
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Coralogix** yazın.
+1. Sonuçlar panelinden **Coralogix** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-coralogix"></a>Coralogix için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+**B. Simon**adlı bir test kullanıcısı kullanarak Coralogix Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Coralogix içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+Azure AD SSO 'yu Coralogix ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-3. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini seçin.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[Coralogix SSO 'Yu yapılandırma](#configure-coralogix-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. **[Coralogix test kullanıcısı oluşturun](#create-coralogix-test-user)** -bu, kullanıcının Azure AD gösterimine bağlı olan coralogix 'de B. Simon 'a sahip olmak için.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-4. Arama kutusuna **Coralogix**yazın. Sonuçlar bölmesinden **Coralogix** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesini seçin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-     ![Sonuçlar listesinde coralogix](common/search-new-app.png)
+1. [Azure Portal](https://portal.azure.com/), **Coralogix** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-Bu bölümde, Britta Simon adlı bir test kullanıcısına göre Coralogix ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
-Çoklu oturum açma için, Coralogix 'te bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı kurmanız gerekir.
-
-Coralogix ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için, önce aşağıdaki yapı taşlarını doldurun:
-
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD çoklu oturum açmayı yapılandırın](#configure-azure-ad-single-sign-on) .
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için [Coralogix çoklu oturum açmayı yapılandırın](#configure-coralogix-single-sign-on) .
-3. Britta Simon ile Azure AD çoklu oturum açma sınamasını test etmek için [bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user) .
-4. Azure AD 'de çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirmek için [Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user) .
-5. Coralogix 'te kullanıcının Azure AD gösterimine bağlı olan Britta Simon 'ın bir karşılığı olacak şekilde [coralogix test kullanıcısı oluşturun](#create-a-coralogix-test-user) .
-6. Yapılandırmanın çalıştığını doğrulamak için [Çoklu oturum açmayı test](#test-single-sign-on) edin.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı Coralogix ile yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **Coralogix** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML** ' yi seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. **Temel SAML yapılandırması** iletişim kutusunda, aşağıdaki adımları uygulayın:
-
-    ![Coralogix etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
     a. **Oturum açma URL 'si** kutusunda, aşağıdaki düzene sahıp bir URL girin: `https://<SUBDOMAIN>.coralogix.com`
 
@@ -112,18 +91,18 @@ Azure AD çoklu oturum açmayı Coralogix ile yapılandırmak için aşağıdaki
     
     `https://api.coralogix.com/saml/metadata.xml`
 
-    or
+    veya
 
     `https://aws-client-prod.coralogix.com/saml/metadata.xml` 
 
     > [!NOTE]
     > Oturum açma URL 'SI değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Coralogix istemci desteği ekibine](mailto:info@coralogix.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümündeki desenlere de başvurabilirsiniz.
 
-5. Coralogix uygulaması, SAML onaylamalarını belirli bir biçimde bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesini seçin.
+ 1. Coralogix uygulaması, SAML onaylamalarını belirli bir biçimde bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesini seçin.
 
     ![image](common/edit-attribute.png)
 
-6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, **düzenleme** simgesini kullanarak talepleri düzenleyin. Ayrıca, önceki görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırmak için **yeni talep Ekle** öğesini kullanarak talepler ekleyebilirsiniz. Ardından aşağıdaki adımları uygulayın:
+1. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, **düzenleme** simgesini kullanarak talepleri düzenleyin. Ayrıca, önceki görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırmak için **yeni talep Ekle** öğesini kullanarak talepler ekleyebilirsiniz. Ardından aşağıdaki adımları uygulayın:
     
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **Düzenle simgesini** seçin.
 
@@ -135,89 +114,65 @@ Azure AD çoklu oturum açmayı Coralogix ile yapılandırmak için aşağıdaki
 
     d. **Kaydet**’i seçin.
 
-7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksinimlerinize göre verilen seçeneklerden indirmek için **İndir** ' i seçin. Ardından bu dosyayı bilgisayarınıza kaydedin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-8. **Coralogix ayarlama** bölümünde uygun URL 'leri kopyalayın.
+1. **Coralogix ayarlama** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum açma URL 'SI
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-    b. Azure AD tanımlayıcısı
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-    c. Oturum kapatma URL 'SI
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**'a tıklayın.
 
-### <a name="configure-coralogix-single-sign-on"></a>Coralogix çoklu oturum açmayı yapılandırma
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-**Coralogix** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve Azure Portal URL 'Leri, [coralogix destek ekibine](mailto:info@coralogix.com)gönderin. SAML SSO bağlantısının her iki tarafında da düzgün şekilde ayarlandığından emin olurlar.
+Bu bölümde, Coralogix 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Coralogix**' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-2. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+## <a name="configure-coralogix-sso"></a>Coralogix SSO 'yu yapılandırma
 
-3. **Kullanıcı** iletişim kutusunda aşağıdaki adımları uygulayın.
+**Coralogix** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [coralogix destek ekibine](mailto:info@coralogix.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
+### <a name="create-coralogix-test-user"></a>Coralogix test kullanıcısı oluştur
 
-    a. **Ad** alanına **Brittasıon**yazın.
-  
-    b. **Kullanıcı adı** alanına "brittasimon@yourcompanydomain.extension" yazın. Örneğin, bu durumda "brittasimon@contoso.com" girebilirsiniz.
+Bu bölümde, Coralogix 'te Britta Simon adlı bir Kullanıcı oluşturacaksınız. Coralogix platformunda kullanıcıları eklemek için [coralogix destek ekibi](mailto:info@coralogix.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri unutmayın.
+## <a name="test-sso"></a>Test SSO 'SU 
 
-    d. **Oluştur**'u seçin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
-
-Bu bölümde, Coralogix 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
-
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **coralogix**' i seçin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde **Coralogix**' i seçin.
-
-    ![Uygulamalar listesindeki Coralogix bağlantısı](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle** düğmesini seçin. Sonra **atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' u seçin. Ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-6. SAML assertion 'da bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesini seçin.
-
-### <a name="create-a-coralogix-test-user"></a>Coralogix test kullanıcısı oluşturma
-
-Bu bölümde, Coralogix 'te Britta Simon adlı bir Kullanıcı oluşturacaksınız. Coralogix platformunda kullanıcıları eklemek için [coralogix destek ekibi](mailto:info@coralogix.com) ile çalışın. Çoklu oturum açma kullanmadan önce kullanıcıları oluşturmanız ve etkinleştirmeniz gerekir.
-
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
-
-Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı Uygulamaps portalını kullanarak test edersiniz.
-
-Uygps portalında Coralogix kutucuğunu seçtiğinizde, Coralogix için otomatik olarak oturum açmış olmanız gerekir. Uygulamaps portalı hakkında daha fazla bilgi için, bkz. [Uygulamaps portalı nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Coralogix kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Coralogix ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile Coralogix 'i deneyin](https://aad.portal.azure.com/)
 

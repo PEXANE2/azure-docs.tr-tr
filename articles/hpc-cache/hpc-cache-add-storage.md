@@ -4,14 +4,14 @@ description: Azure HPC önbelleğinizin, uzun süreli dosya depolaması için ş
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 396ed84856604c297551c4593e0d7b82b92ac924
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166647"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647245"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -33,6 +33,8 @@ Azure portal, önbellek örneğinizi açın ve sol kenar çubuğundaki **depolam
 
 Yeni bir BLOB depolama hedefi boş bir blob kapsayıcısına veya Azure HPC önbellek bulut dosya sistemi biçimindeki verilerle doldurulmuş bir kapsayıcıya ihtiyaç duyuyor. [Verileri Azure Blob depolamaya taşıma](hpc-cache-ingest.md)bölümünde bir blob kapsayıcısını önceden yükleme hakkında daha fazla bilgi edinin.
 
+Bu sayfadan, eklemeden hemen önce yeni bir kapsayıcı oluşturabilirsiniz.
+
 Bir Azure Blob kapsayıcısı tanımlamak için bu bilgileri girin.
 
 ![Yeni bir Azure Blob depolama hedefi için bilgilerle doldurulmuş depolama hedefi ekleme sayfasının ekran görüntüsü](media/hpc-cache-add-blob.png)
@@ -41,13 +43,15 @@ Bir Azure Blob kapsayıcısı tanımlamak için bu bilgileri girin.
 
 * **Depolama hedefi adı** -Azure HPC önbelleğinde bu depolama hedefini tanımlayan bir ad ayarlayın.
 * **Hedef türü** - **BLOB**seçin.
-* **Depolama hesabı** -kullanmak istediğiniz kapsayıcıya sahip hesabı seçin.
+* **Depolama hesabı** -kullanmak istediğiniz hesabı seçin.
 
   [Erişim rolleri ekleme](#add-the-access-control-roles-to-your-account)bölümünde açıklandığı gibi, depolama hesabına erişmek için önbellek örneğini yetkilendirmeniz gerekecektir.
 
   Kullanabileceğiniz depolama hesabı türü hakkında daha fazla bilgi için, [BLOB depolama gereksinimlerini](hpc-cache-prereqs.md#blob-storage-requirements)okuyun.
 
-* **Depolama kapsayıcısı** -bu hedefin blob kapsayıcısını seçin.
+* **Depolama kapsayıcısı** -bu hedefin blob kapsayıcısını seçin veya **Yeni oluştur**' a tıklayın.
+
+  ![Yeni kapsayıcı için ad ve erişim düzeyi (özel) belirtme iletişim kutusunun ekran görüntüsü](media/add-blob-new-container.png)
 
 * **Sanal ad alanı yolu** -bu depolama hedefi için istemciye yönelik dosya yolunu ayarlayın. Sanal ad alanı özelliği hakkında daha fazla bilgi edinmek için [toplanan ad alanını Yapılandır](hpc-cache-namespace.md) makalesini okuyun.
 
@@ -146,9 +150,9 @@ Bu tablo, kullanım modeli farklarını özetler:
 
 | Kullanım modeli | Önbelleğe alma modu | Arka uç doğrulaması | En fazla geri yazma gecikmesi |
 | ---- | ---- | ---- | ---- |
-| Yoğun, seyrek okunan yazma işlemleri | Okuma | hiçbir zaman | None |
-| %15 yazma boyutundan büyük | Okuma/yazma | hiçbir zaman | 1 saat |
-| İstemcileri önbelleği atlar | Okuma | 30 saniye | None |
+| Yoğun, seyrek okunan yazma işlemleri | Okuma | Hiçbir zaman | Hiçbiri |
+| %15 yazma boyutundan büyük | Okuma/yazma | Hiçbir zaman | 1 saat |
+| İstemcileri önbelleği atlar | Okuma | 30 saniye | Hiçbiri |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

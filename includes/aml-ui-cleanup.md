@@ -8,12 +8,12 @@ ms.topic: include
 author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
-ms.openlocfilehash: 96ede63b097999247675364217cf458a268e54d9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929662"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659890"
 ---
 >[!IMPORTANT]
 >Diğer Azure Machine Learning öğreticileri ve nasıl yapılır makaleleri için önkoşul olarak oluşturduğunuz kaynakları kullanabilirsiniz.
@@ -38,11 +38,11 @@ Denemenizi oluşturduğunuz tasarımcıda, her bir varlığı seçerek ve ardın
 
 Burada oluşturduğunuz işlem hedefi, kullanılmadıysa *otomatik olarak sıfır düğümlere otomatik olarak ölçeklendirilir* . Bu eylem, ücretleri en aza indirmek için yapılır. İşlem hedefini silmek istiyorsanız şu adımları uygulayın:
 
-![Varlıkları Sil](./media/aml-ui-cleanup/delete-asset.png)
+![Varlıkları silme](./media/aml-ui-cleanup/delete-asset.png)
 
 Her bir veri kümesini seçip **kayıt Sil**' i seçerek, veri kümelerinin kaydını çalışma alanınızdan silebilirsiniz.
 
-![Veri kümesinin kaydını sil](./media/aml-ui-cleanup/unregister-dataset.png)
+![Veri kümesinin kaydını sil](./media/aml-ui-cleanup/unregister-dataset1225.png)
 
 Bir veri kümesini silmek için Azure portal veya Azure Depolama Gezgini kullanarak depolama hesabına gidin ve bu varlıkları el ile silin.
 

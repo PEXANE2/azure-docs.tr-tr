@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: b417823d0ec7ed838186d53c1bb25400a148e0e9
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 1790a7806b1abbe4d537f309f33dee686e30662b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533908"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645047"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Öğretici: HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for IntelliJ kullanma
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Apache Spark uygulamaları geliştirme
 > * Uygulamayı Azure HDInsight kümesine gönder
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
@@ -187,7 +187,7 @@ Apache ambarı yönetilen Kullanıcı adını kullanarak bir HDInsight kümesini
         |----|----|
         |Kaynak türünü bağla|Aşağı açılan listeden **HDInsight kümesi** ' ni seçin.|
         |Küme adı/URL 'SI| Küme adı girin.|
-        |Kimlik doğrulama türü| **Temel kimlik doğrulaması** olarak bırak|
+        |Kimlik Doğrulama Türü| **Temel kimlik doğrulaması** olarak bırak|
         |User Name| Küme Kullanıcı adı ' nı girin, varsayılan olarak admin ' dir.|
         |Parola| Kullanıcı adı için parola girin.|
 
@@ -201,7 +201,7 @@ Apache ambarı yönetilen Kullanıcı adını kullanarak bir HDInsight kümesini
         |Livy uç noktası| Livy uç noktası girin|
         |Küme Adı| Küme adı girin.|
         |Yarn uç noktası|İsteğe bağlı.|
-        |Kimlik doğrulama türü| **Temel kimlik doğrulaması** olarak bırak|
+        |Kimlik Doğrulama Türü| **Temel kimlik doğrulaması** olarak bırak|
         |User Name| Küme Kullanıcı adı ' nı girin, varsayılan olarak admin ' dir.|
         |Parola| Kullanıcı adı için parola girin.|
 
@@ -232,13 +232,13 @@ Bir Scala uygulaması oluşturduktan sonra kümeye gönderebilirsiniz.
     |Spark kümeleri (yalnızca Linux)|Uygulamanızı çalıştırmak istediğiniz HDInsight Spark kümesini seçin.|
     |Göndermek için bir yapıt seçin|Varsayılan ayarı bırakın.|
     |Ana sınıf adı|Varsayılan değer, seçili dosyadaki ana sınıftır. Üç noktayı ( **...** ) seçerek sınıfı değiştirebilirsiniz  ve başka bir sınıf seçebilirsiniz.|
-    |İş yapılandırması|Varsayılan anahtarları ve/veya değerleri değiştirebilirsiniz. Daha fazla bilgi için bkz. [Apache Livy REST API](https://livy.incubator.apache.org./docs/latest/rest-api.html).|
+    |İş yapılandırması|Varsayılan anahtarları ve/veya değerleri değiştirebilirsiniz. Daha fazla bilgi için bkz. [Apache Livy REST API](https://livy.incubator.apache.org/docs/latest/rest-api.html).|
     |Komut satırı bağımsız değişkenleri|Gerekirse ana sınıf için boşlukla ayrılmış bağımsız değişkenler girebilirsiniz.|
     |Başvurulan Jliler ve başvurulan dosyalar|Varsa, başvurulan jars ve dosyalar için yollar girebilirsiniz. Azure sanal dosya sisteminde, şu anda yalnızca ADLS Gen 2 kümesini destekleyen dosyalara da gidebilirsiniz. Daha fazla bilgi için: [Apache Spark yapılandırma](https://spark.apache.org/docs/latest/configuration.html#runtime-environment).  Ayrıca bkz. [kaynakları kümeye yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer).|
     |İş yükleme depolaması|Ek seçenekleri açığa çıkarmak için genişletin.|
-    |Depolama türü|Açılan listeden **karşıya yüklemek Için Azure blobu kullan** ' ı seçin.|
+    |Depolama Türü|Açılan listeden **karşıya yüklemek Için Azure blobu kullan** ' ı seçin.|
     |Depolama Hesabı|Depolama hesabınızı girin.|
-    |Depolama anahtarı|Depolama anahtarınızı girin.|
+    |Depolama Anahtarı|Depolama anahtarınızı girin.|
     |Depolama kapsayıcısı|**Depolama hesabı** ve **depolama anahtarı** girildikten sonra, açılan listeden depolama kapsayıcınızı seçin.|
 
     ![Spark gönderimi iletişim kutusu](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)

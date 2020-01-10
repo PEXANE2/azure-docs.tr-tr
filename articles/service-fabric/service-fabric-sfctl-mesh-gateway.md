@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl ağı ağ geçidi | Microsoft Docs
-description: Service Fabric CLı sfctl ağı ağ geçidi komutlarını açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl ağı ağ geçidi
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Service Fabric ağ geçidi kaynaklarını alma ve silmeye yönelik komutların bir listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: e50dc6942163d8ea7926b468e66087e8d98775ee
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 86e63f88cf1412b54fad6f9e386a1a5052463917
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901233"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646169"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh gateway
 Ağ Geçidi kaynaklarını alın ve silin.

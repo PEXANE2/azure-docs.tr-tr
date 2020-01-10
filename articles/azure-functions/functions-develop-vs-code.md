@@ -3,12 +3,12 @@ title: Visual Studio Code kullanarak Azure Işlevleri geliştirme
 description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cf96a0630440904282f076de2f916fb3dbf3eb1c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 54bbc46c703646f4680f6dc22d5c4b6781614ae7
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975593"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667552"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Işlevleri geliştirme
 
@@ -38,7 +38,7 @@ Bu makalede, işlevleri geliştirmek ve Azure 'da yayımlamak için Azure Işlev
 > [!IMPORTANT]
 > Tek bir işlev uygulaması için yerel geliştirme ve Portal geliştirmeyi karışmayın. Yerel bir projeden bir işlev uygulamasına yayımladığınızda, dağıtım işlemi portalda geliştirdiğiniz işlevlerin üzerine yazar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Visual Studio Code için [Azure işlevleri uzantısı][visual studio code için azure işlevleri uzantısı]yükleyip çalıştırmadan önce, şu gereksinimleri karşılamanız gerekir:
 
@@ -94,10 +94,6 @@ Bu noktada, [function. json dosyasını değiştirerek](#add-a-function-to-your-
 
 HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketlerinde uygulanır. Gereken Tetikleyiciler ve bağlamalar için uzantı paketlerini yüklemeniz gerekir. Bağlama Uzantıları yükleme işlemi projenizin diline bağlıdır.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Projenizde ihtiyaç duyduğunuz uzantı paketlerini yüklemek için, Terminal penceresinde [DotNet paket Ekle](/dotnet/core/tools/dotnet-add-package) komutunu çalıştırın. Aşağıdaki komut blob, kuyruk ve tablo depolaması için bağlamaları uygulayan Azure Storage uzantısını yüklüyor.
@@ -105,6 +101,10 @@ Projenizde ihtiyaç duyduğunuz uzantı paketlerini yüklemek için, Terminal pe
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ---
 
@@ -114,13 +114,13 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 Bu eylemin sonuçları projenizin diline bağlıdır:
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-Projede yeni bir klasör oluşturulur. Klasör yeni bir Function. JSON dosyası ve yeni JavaScript kod dosyası içeriyor.
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Projenize yeni C# bir sınıf kitaplığı (. cs) dosyası eklenir.
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+Projede yeni bir klasör oluşturulur. Klasör yeni bir Function. JSON dosyası ve yeni JavaScript kod dosyası içeriyor.
 
 ---
 
@@ -129,6 +129,24 @@ Projenize yeni C# bir sınıf kitaplığı (. cs) dosyası eklenir.
 Giriş ve çıkış bağlamaları ekleyerek işlevinizi genişletebilirsiniz. Bağlama ekleme işlemi projenizin diline bağlıdır. Bağlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
 
 Aşağıdaki örnekler, depolama hesabının bağlantı dizesinin yerel. Settings. JSON içindeki `MyStorageConnection` uygulama ayarında ayarlandığı `outqueue`adlı bir depolama kuyruğuna bağlanır.
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+Aşağıdaki parametreyi `Run` yöntemi tanımına eklemek için işlev yöntemini güncelleştirin:
+
+```cs
+[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
+```
+
+Bu kod aşağıdaki `using` ifadesini eklemenizi gerektirir:
+
+```cs
+using Microsoft.Azure.WebJobs.Extensions.Storage;
+```
+
+`msg` parametresi, işlev tamamlandığında çıkış bağlamaya yazılan bir ileti koleksiyonunu temsil eden bir `ICollector<T>` türüdür. Koleksiyona bir veya daha fazla ileti eklersiniz. Bu iletiler, işlev tamamlandığında kuyruğa gönderilir.
+
+Daha fazla bilgi için bkz. [kuyruk depolama çıkışı bağlama](functions-bindings-storage-queue.md#output---c-example) belgeleri.
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -144,7 +162,7 @@ Aşağıda yeni bir depolama çıkış bağlaması tanımlamak için örnek iste
 | **Yön içeren bağlamayı seçin** | `Azure Queue Storage` | Bağlama bir Azure depolama kuyruğu bağlamadır. |
 | **Kodunuzda bu bağlamayı tanımlamak için kullanılan ad** | `msg` | Kodunuzda başvurulan bağlama parametresini tanımlayan ad. |
 | **İletinin gönderileceği kuyruk** | `outqueue` | Bağlamanın yazdığı kuyruğun adı. *SıraAdı* mevcut olmadığında, bağlama ilk kullanımda oluşturulur. |
-| **"Yerel. Setting. JSON" ayarını seçin** | `MyStorageConnection` | Depolama hesabı için bağlantı dizesini içeren bir uygulama ayarının adı. `AzureWebJobsStorage` ayarı, işlev uygulamasıyla oluşturduğunuz depolama hesabı için bağlantı dizesini içerir. |
+| **"Local. Settings. JSON" ayarını seçin** | `MyStorageConnection` | Depolama hesabı için bağlantı dizesini içeren bir uygulama ayarının adı. `AzureWebJobsStorage` ayarı, işlev uygulamasıyla oluşturduğunuz depolama hesabı için bağlantı dizesini içerir. |
 
 Bu örnekte, function. JSON dosyanızdaki `bindings` dizisine aşağıdaki bağlama eklenir:
 
@@ -168,25 +186,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 Daha fazla bilgi edinmek için [kuyruk depolama çıkışı bağlama](functions-bindings-storage-queue.md#output---javascript-example) başvurusuna bakın.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-Aşağıdaki parametreyi `Run` yöntemi tanımına eklemek için işlev yöntemini güncelleştirin:
-
-```cs
-[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
-```
-
-Bu kod aşağıdaki `using` ifadesini eklemenizi gerektirir:
-
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
-
 ---
-
-`msg` parametresi, işlev tamamlandığında çıkış bağlamaya yazılan bir ileti koleksiyonunu temsil eden bir `ICollector<T>` türüdür. Koleksiyona bir veya daha fazla ileti eklersiniz. Bu iletiler, işlev tamamlandığında kuyruğa gönderilir.
-
-Daha fazla bilgi için bkz. [kuyruk depolama çıkışı bağlama](functions-bindings-storage-queue.md#output---c-example) belgeleri.
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 

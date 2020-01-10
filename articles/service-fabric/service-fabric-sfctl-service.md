@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl hizmeti | Microsoft Docs
-description: Service Fabric CLı sfctl hizmeti komutlarını açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl hizmeti
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Hizmetleri, hizmet türlerini ve hizmet paketlerini yönetmeye yönelik komutların bir listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 63f901da3f64e62a55ab27904b8a38156957a7ee
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 24ba7fea2ed51ea57c0a44e3c1f26b5df6043e1e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901000"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639080"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Hizmeti, hizmet türlerini ve hizmet paketlerini oluşturun, silin ve yönetin.
@@ -37,17 +28,17 @@ Hizmeti, hizmet türlerini ve hizmet paketlerini oluşturun, silin ve yönetin.
 | açıklama | Mevcut bir Service Fabric hizmetinin açıklamasını alır. |
 | kapsayıcı-günlüklerinizi al | Service Fabric düğümüne dağıtılan kapsayıcının kapsayıcı günlüklerini alır. |
 | sağlık | Belirtilen Service Fabric hizmetinin sistem durumunu alır. |
-| Bilgisine | Service Fabric uygulamasına ait olan belirli hizmet hakkındaki bilgileri alır. |
+| info | Service Fabric uygulamasına ait olan belirli hizmet hakkındaki bilgileri alır. |
 | list | Uygulama KIMLIĞI tarafından belirtilen uygulamaya ait tüm hizmetlerle ilgili bilgileri alır. |
-| Bildirim | Hizmet türünü açıklayan bildirimi alır. |
+| manifest | Hizmet türünü açıklayan bildirimi alır. |
 | paket dağıtma | Belirtilen hizmet bildirimiyle ilişkili paketleri belirtilen düğümdeki görüntü önbelleğine indirir. |
 | paket-sistem durumu | Bir Service Fabric düğümü ve uygulaması için dağıtılan belirli bir uygulama için bir hizmet paketinin sistem durumu hakkındaki bilgileri alır. |
 | paket-bilgi | Belirtilen adı tam olarak eşleşen bir Service Fabric düğümünde dağıtılan hizmet paketlerinin listesini alır. |
 | paket listesi | Bir Service Fabric düğümünde dağıtılan hizmet paketlerinin listesini alır. |
-| Kurtarılamıyor | Service Fabric kümesine, şu anda yetersayı kaybından takılmış olan hizmeti kurtarmaya çalışmak zorunda olduğunu gösterir. |
-| rapor-sistem durumu | Service Fabric hizmetine bir sistem durumu raporu gönderir. |
+| kurtarma | Service Fabric kümesine, şu anda yetersayı kaybından takılmış olan hizmeti kurtarmaya çalışmak zorunda olduğunu gösterir. |
+| report-health | Service Fabric hizmetine bir sistem durumu raporu gönderir. |
 | çözmek | Service Fabric bölümünü çözün. |
-| tür listesi | Service Fabric kümesinde sağlanan uygulama türü tarafından desteklenen hizmet türleriyle ilgili bilgileri içeren listeyi alır. |
+| type-list | Service Fabric kümesinde sağlanan uygulama türü tarafından desteklenen hizmet türleriyle ilgili bilgileri içeren listeyi alır. |
 | update | Verilen güncelleştirme açıklamasını kullanarak belirtilen hizmeti güncelleştirir. |
 
 ## <a name="sfctl-service-app-name"></a>sfctl hizmeti uygulaması-adı
@@ -104,7 +95,7 @@ Belirtilen Service Fabric hizmetini oluşturur.
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --app-id [gerekli] | Uygulamanın kimliği. Bu genellikle uygulamanın ' Fabric\:' URI düzeni olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar ' \~ ' karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı ' Fabric\:/MyApp/APP1 ' ise, uygulama kimliği önceki sürümlerde 6.0 + ve ' MyApp/APP1 ' içinde ' MyApp\~APP1 ' olur. |
+| --app-id [gerekli] | Uygulamanın kimliği. Bu genellikle uygulamanın ' Fabric\:' URI düzeni olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar '\~' karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı ' Fabric\:/MyApp/APP1 ' ise, uygulama kimliği önceki sürümlerde 6.0 + ve ' MyApp/APP1 ' içinde ' MyApp\~APP1 ' olur. |
 | --ad [gerekli] | Hizmetin adı. Bu, uygulama KIMLIĞININ bir alt öğesi olmalıdır. Bu, `fabric\:` URI 'SI de dahil olmak üzere tam addır. Örneğin, hizmet `fabric\:/A/B` bir uygulama `fabric\:/A`alt öğesidir. |
 | --hizmet-türü [gerekli] | Hizmet türünün adı. |
 | --etkinleştirme-mod | Hizmet paketi için etkinleştirme modu. |
@@ -490,7 +481,7 @@ Belirtilen Service Fabric hizmetinin sistem durumunu raporlar. Rapor, sistem dur
 | --- | --- |
 | --Health-Property [gerekli] | Sistem durumu bilgilerinin özelliği. <br><br> Bir varlık, farklı özellikler için sistem durumu raporlarına sahip olabilir. Özelliği, rapor tetikleyen durum koşulunu kategorilere ayırmak için Raporlayıcı esnekliğine izin veren sabit bir sabit listesi olmayan bir dizedir. Örneğin, SourceId "Localizçi" olan bir Raporlayıcı, bir düğümdeki kullanılabilir diskin durumunu izleyebilir, bu nedenle söz konusu düğümdeki "AvailableDisk" özelliğini bildirebilirler. Aynı Reporter, düğüm bağlantısını izleyip aynı düğümde bir özelliği "bağlantı" bildirebilirler. Sistem durumu deposunda, bu raporlar belirtilen düğüm için ayrı sistem durumu olayları olarak kabul edilir. SourceID ile birlikte, özelliği sistem durumu bilgilerini benzersiz şekilde tanımlar. |
 | --sistem durumu-durumu [gerekli] | Olası değerler arasında\: ' geçersiz ', ' Tamam ', ' uyarı ', ' Error ', ' Unknown ' verilebilir. |
-| --hizmet kimliği [gerekli] | Hizmetin kimliği. <br><br> Bu genellikle hizmetin ' Fabric\:' URI düzeni olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar ' \~ ' karakteriyle sınırlandırılmıştır. Örneğin, hizmet adı ' Fabric\:/MyApp/APP1/svc1 ' ise, hizmet kimliği, önceki sürümlerde 6.0 + ve "MyApp/APP1/svc1" içinde "MyApp\~APP1\~svc1 ' olur. |
+| --hizmet kimliği [gerekli] | Hizmetin kimliği. <br><br> Bu genellikle hizmetin ' Fabric\:' URI düzeni olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar '\~' karakteriyle sınırlandırılmıştır. Örneğin, hizmet adı ' Fabric\:/MyApp/APP1/svc1 ' ise, hizmet kimliği, önceki sürümlerde 6.0 + ve "MyApp/APP1/svc1" içinde "MyApp\~APP1\~svc1 ' olur. |
 | --kaynak-kimliği [gerekli] | Sistem durumu bilgilerini oluşturan istemci/izleme/sistem bileşenini tanımlayan kaynak adı. |
 | --Açıklama | Sistem durumu bilgilerinin açıklaması. <br><br> Bu, raporla ilgili okunabilir bilgileri eklemek için kullanılan serbest metni temsil eder. Açıklama için en fazla dize uzunluğu 4096 karakterdir. Belirtilen dize daha uzunsa otomatik olarak kesilir. Kesilmişse, açıklamanın son karakterleri "[kesildi]" işaretçisini ve toplam dize boyutu 4096 karakterdir. İşaretin varlığı, kesilmesinin gerçekleştiği kullanıcılara işaret eden anlamına gelir. Kesilmişse, açıklamanın özgün dizeden 4096 karakterden daha az olduğunu unutmayın. |
 | --hemen | Raporun hemen gönderilmesi gerekip gerekmediğini belirten bir bayrak. <br><br> Bir sistem durumu raporu, sistem durumu deposuna ileten bir Service Fabric ağ geçidi uygulamasına gönderilir. Immediate değeri true olarak ayarlanırsa, HTTP ağ geçidi uygulamasının kullandığı doku istemci ayarlarından bağımsız olarak, rapor HTTP ağ geçidinden sistem durumu deposuna anında gönderilir. Bu, mümkün olan en kısa sürede gönderilmesi gereken kritik raporlar için kullanışlıdır. Zamanlama ve diğer koşullara bağlı olarak, raporun gönderilmesi yine de başarısız olabilir, örneğin, HTTP ağ geçidi kapalıysa veya ileti ağ geçidine ulaşmazsa. Anında false değeri ayarlandıysa, rapor HTTP ağ geçidindeki sistem durumu istemci ayarlarına bağlı olarak gönderilir. Bu nedenle, Healthreportsendınterval yapılandırmasına göre toplu hale gelir. Durum istemcisinin sistem durumu raporlama iletilerini sistem durumu rapor işleme ile en iyi hale getirmesine izin verdiğinden, bu önerilen ayardır. Varsayılan olarak, raporlar anında gönderilmez. |

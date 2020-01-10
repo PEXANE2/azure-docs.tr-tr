@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: b9a5dbd8e24659493bbbefd50c3e234dca3dbdd9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129331"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639880"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks kümeleri için bölgesel olağanüstü durum kurtarma
 
@@ -21,7 +21,7 @@ Bu makalede, Azure Databricks kümeleri ve bu tasarımı gerçekleştirmek için
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks mimarisi
 
-Yüksek düzeyde, Azure portal bir Azure Databricks çalışma alanı oluşturduğunuzda, seçili Azure bölgesinde (örneğin, Batı ABD), aboneliğinizde bir Azure kaynağı olarak bir [yönetilen gereç](../managed-applications/overview.md) dağıtılır. Bu gereç, aboneliğinizde bulunan bir [ağ güvenlik grubu](../virtual-network/manage-network-security-group.md) ve bir Azure depolama hesabı Ile bir [Azure sanal ağında](../virtual-network/virtual-networks-overview.md) dağıtılır. Sanal ağ, Databricks çalışma alanına çevre düzeyi güvenliği sağlar ve ağ güvenlik grubu üzerinden korunur. Çalışma alanı içinde, çalışan ve sürücü VM 'si türü ve Databricks çalışma zamanı sürümünü sağlayarak Databricks kümeleri oluşturabilirsiniz. Kalıcı veriler, Azure Blob depolama veya Azure Data Lake Storage olabilen depolama hesabınızda kullanılabilir. Küme oluşturulduktan sonra, işleri Belirli bir kümeye ekleyerek Not defterleri, REST API 'Leri, ODBC/JDBC uç noktaları aracılığıyla çalıştırabilirsiniz.
+Yüksek düzeyde, Azure portal bir Azure Databricks çalışma alanı oluşturduğunuzda, seçili Azure bölgesinde (örneğin, Batı ABD), aboneliğinizde bir Azure kaynağı olarak bir [yönetilen gereç](../azure-resource-manager/managed-applications/overview.md) dağıtılır. Bu gereç, aboneliğinizde bulunan bir [ağ güvenlik grubu](../virtual-network/manage-network-security-group.md) ve bir Azure depolama hesabı Ile bir [Azure sanal ağında](../virtual-network/virtual-networks-overview.md) dağıtılır. Sanal ağ, Databricks çalışma alanına çevre düzeyi güvenliği sağlar ve ağ güvenlik grubu üzerinden korunur. Çalışma alanı içinde, çalışan ve sürücü VM 'si türü ve Databricks çalışma zamanı sürümünü sağlayarak Databricks kümeleri oluşturabilirsiniz. Kalıcı veriler, Azure Blob depolama veya Azure Data Lake Storage olabilen depolama hesabınızda kullanılabilir. Küme oluşturulduktan sonra, işleri Belirli bir kümeye ekleyerek Not defterleri, REST API 'Leri, ODBC/JDBC uç noktaları aracılığıyla çalıştırabilirsiniz.
 
 Databricks denetim düzlemi, Databricks çalışma alanı ortamını yönetir ve izler. Küme oluşturma gibi herhangi bir yönetim işlemi denetim düzleden başlatılacak. Zamanlanan işler gibi tüm meta veriler, hata toleransı için coğrafi çoğaltma ile bir Azure veritabanında depolanır.
 

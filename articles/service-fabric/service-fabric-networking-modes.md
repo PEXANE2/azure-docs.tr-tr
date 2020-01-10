@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric kapsayıcı Hizmetleri için ağ modlarını yapılandırma | Microsoft Docs
+title: Kapsayıcı Hizmetleri için ağ modlarını yapılandırma
 description: Azure Service Fabric tarafından desteklenen farklı ağ modlarını ayarlamayı öğrenin.
-services: service-fabric
-documentationcenter: .net
 author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: aa7b63453a5147742e27b9bb32ad05221e745f8c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168799"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639811"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric kapsayıcı ağ modları
 
@@ -30,7 +21,7 @@ Hizmet bildiriminizde bir statik uç noktaya sahip bir kapsayıcı hizmetiniz va
 Bir kapsayıcı hizmeti yeniden başlatıldığında veya kümedeki başka bir düğüme taşınırsa, IP adresi değişir. Bu nedenle, kapsayıcı Hizmetleri 'ni bulmaya yönelik dinamik olarak atanan IP adresini kullanmanızı önermiyoruz. Hizmet bulma için yalnızca Service Fabric Adlandırma Hizmeti veya DNS hizmeti kullanılmalıdır. 
 
 >[!WARNING]
->Azure, sanal ağ başına toplam 65.356 IP 'ye izin verir. Düğüm sayısının toplamı ve kapsayıcı hizmeti örneklerinin sayısı (Açık modu kullanılarak) bir sanal ağ içindeki 65.356 IP 'yi aşamaz. Yüksek yoğunluklu senaryolar için NAT ağ modunu öneririz. Ek olarak, yük dengeleyici gibi diğer bağımlılıkların göz önünde bulundurulması gereken diğer [sınırlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits) olacaktır. Şu anda düğüm başına 50 IP 'ye kadar sınanmış ve kanıtlanmış kararlı durumda. 
+>Azure, sanal ağ başına toplam 65.356 IP 'ye izin verir. Düğüm sayısının toplamı ve kapsayıcı hizmeti örneklerinin sayısı (Açık modu kullanılarak) bir sanal ağ içindeki 65.356 IP 'yi aşamaz. Yüksek yoğunluklu senaryolar için NAT ağ modunu öneririz. Ek olarak, yük dengeleyici gibi diğer bağımlılıkların göz önünde bulundurulması gereken diğer [sınırlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) olacaktır. Şu anda düğüm başına 50 IP 'ye kadar sınanmış ve kanıtlanmış kararlı durumda. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Açık ağ modunu ayarlama
@@ -203,14 +194,14 @@ Bir kapsayıcı hizmeti yeniden başlatıldığında veya kümedeki başka bir d
    |Ayar |Değer | |
    | --- | --- | --- |
    |Öncelik |2000 | |
-   |Adı |Custom_Dns  | |
+   |Ad |Custom_Dns  | |
    |Kaynak |VirtualNetwork | |
    |Hedef | VirtualNetwork | |
    |Hizmet | DNS (UDP/53) | |
    |Eylem | Allow  | |
    | | |
 
-4. Her hizmet için uygulama bildiriminde ağ modunu belirtin: `<NetworkConfig NetworkType="Open">`. **Açık** ağ modu, hizmette ayrılmış bir IP adresi elde eden sonuçlara neden olur. Bir mod belirtilmemişse, hizmet varsayılan olarak **NAT** moduna alır. Aşağıdaki bildirim örneğinde, `NodeContainerServicePackage1` ve `NodeContainerServicePackage2` Hizmetleri her biri aynı bağlantı noktasını dinleyebilir (her iki hizmet de `Endpoint1` ' de dinleme yapılır). Açık ağ modu belirtildiğinde, `PortBinding` yapılandırması belirtilemez.
+4. Her hizmet için uygulama bildiriminde ağ modunu belirtin: `<NetworkConfig NetworkType="Open">`. **Açık** ağ modu, hizmette ayrılmış bir IP adresi elde eden sonuçlara neden olur. Bir mod belirtilmemişse, hizmet varsayılan olarak **NAT** moduna alır. Aşağıdaki bildirim örneğinde, `NodeContainerServicePackage1` ve `NodeContainerServicePackage2` hizmetleri her biri aynı bağlantı noktasını dinler (her iki hizmet de `Endpoint1`dinler). Açık ağ modu belirtildiğinde `PortBinding` yapılandırması belirtilemez.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

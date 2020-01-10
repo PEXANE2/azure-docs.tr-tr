@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 1f31bb78fced6db2a26559cbd098407823161dfc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928777"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646906"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
 
@@ -157,6 +157,8 @@ Yapılandırma bölmesinde aşağıdaki GitHub deposu ayarları gösterilmektedi
 
 - Data Factory görsel yazma araçları ile GitHub tümleştirmesi yalnızca, Data Factory genel kullanıma sunulan sürümünde çalışmaktadır.
 
+- Her kaynak türü için (işlem hatları ve veri kümeleri gibi) en fazla 1.000 varlık tek bir GitHub dalında getirilebilir. Bu sınıra ulaşıldığında, kaynaklarınızı ayrı fabrikalar halinde bölmek için önerilir.
+
 ## <a name="switch-to-a-different-git-repo"></a>Farklı bir git deposuna geç
 
 Farklı bir git deposuna geçiş yapmak için, Data Factory Genel Bakış sayfasının sağ üst köşesindeki **Git deposu ayarları** simgesine tıklayın. Simgeyi göremiyorsanız, yerel tarayıcı önbelleğinizi temizleyin. Geçerli depoyla ilişkilendirmeyi kaldırmak için simgeyi seçin.
@@ -185,7 +187,7 @@ Bir veri fabrikası ile ilişkili her bir Azure Repos git deposu bir işbirliği
 
 ### <a name="configure-publishing-settings"></a>Yayımlama ayarlarını yapılandırma
 
-Yayımla dalını yapılandırmak için-diğer bir deyişle, Kaynak Yöneticisi şablonlarının kaydedildiği dal-işbirliği dalında kök klasöre bir `publish_config.json` dosyası ekleyin. Data Factory, bu dosyayı okur, alanı `publishBranch`arar ve belirtilen değere sahip yeni bir dal (zaten yoksa) oluşturur. Ardından, tüm Kaynak Yöneticisi şablonlarını belirtilen konuma kaydeder. Örnek:
+Yayımla dalını yapılandırmak için-diğer bir deyişle, Kaynak Yöneticisi şablonlarının kaydedildiği dal-işbirliği dalında kök klasöre bir `publish_config.json` dosyası ekleyin. Data Factory, bu dosyayı okur, alanı `publishBranch`arar ve belirtilen değere sahip yeni bir dal (zaten yoksa) oluşturur. Ardından, tüm Kaynak Yöneticisi şablonlarını belirtilen konuma kaydeder. Örneğin:
 
 ```json
 {

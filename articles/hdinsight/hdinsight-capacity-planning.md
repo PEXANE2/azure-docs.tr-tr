@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9080a0f327aae50a87b5e69ec157a46181a38a65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682249"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640950"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight kümeleri için kapasite planlaması
 
@@ -47,7 +47,7 @@ Zaten verilerinizi içeren bir depolama hesabınız veya Data Lake Storage varsa
 
 Bir HDInsight kümesi dağıtıldıktan sonra, ek Azure depolama hesapları ekleyebilir veya diğer Data Lake Storage erişebilirsiniz. Tüm depolama hesaplarınız, kümenizle aynı konumda bulunmalıdır. Bir Data Lake Storage farklı bir konumda olabilir, ancak bu, bazı veri okuma/yazma gecikme süresini ortaya çıkarabilir.
 
-Azure depolama 'nın bazı [Kapasite limitleri](../azure-subscription-service-limits.md#storage-limits)vardır, Data Lake Storage 1. neredeyse sınırsız olur.
+Azure depolama 'nın bazı [Kapasite limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)vardır, Data Lake Storage 1. neredeyse sınırsız olur.
 
 Bir küme, farklı depolama hesaplarının birleşimine erişebilir. Tipik örnekler şunlardır:
 
@@ -92,9 +92,19 @@ Bazen birden çok eşlemelerin paralel yürütülmesi ve çok düğümlü bir k�
 
 ## <a name="quotas"></a>Kotalar
 
-Hedef küme VM 'nizin boyutunu, ölçeğini ve türünü belirledikten sonra, aboneliğinizin geçerli kota kapasitesi sınırlarını kontrol edin. Bir kota sınırına ulaştığınızda, yeni kümeler dağıtabilir veya daha fazla çalışan düğümü ekleyerek var olan kümelerin ölçeğini ölçeklendiremeyebilirsiniz. Tek kota sınırı, her abonelik için bölge düzeyinde bulunan CPU çekirdekleri kotasına yöneliktir. Örneğin, aboneliğiniz Doğu ABD bölgesinde 30 çekirdek sınırına sahip olabilir. Bir kota artışı istemeniz gerekiyorsa, aşağıdaki adımları uygulayın:
+Hedef küme VM 'nizin boyutunu, ölçeğini ve türünü belirledikten sonra, aboneliğinizin geçerli kota kapasitesi sınırlarını kontrol edin. Bir kota sınırına ulaştığınızda, yeni kümeler dağıtabilir veya daha fazla çalışan düğümü ekleyerek var olan kümelerin ölçeğini ölçeklendiremeyebilirsiniz. Tek kota sınırı, her abonelik için bölge düzeyinde bulunan CPU çekirdekleri kotasına yöneliktir. Örneğin, aboneliğiniz Doğu ABD bölgesinde 30 çekirdek sınırına sahip olabilir. 
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+Kullanılabilir çekirdekleri denetlemek için aşağıdaki adımları uygulayın:
+
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+2. HDInsight kümesinin **genel bakış** sayfasına gidin. 
+3. Sol menüde **Kota limitleri**' ne tıklayın.
+
+   Sayfa, kullanımdaki çekirdek sayısını, kullanılabilir çekirdek sayısını ve toplam çekirdekleri görüntüler.
+
+Bir kota artışı istemeniz gerekiyorsa, aşağıdaki adımları uygulayın:
+
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. Sayfanın sol alt tarafında **Yardım + Destek** ' i seçin.
 1. **Yeni destek isteği**’ni seçin.
 1. **Yeni destek isteği** sayfasında, **temel bilgiler** sekmesinde aşağıdaki seçenekleri belirleyin:
@@ -115,7 +125,7 @@ Hedef küme VM 'nizin boyutunu, ölçeğini ve türünü belirledikten sonra, ab
 
 [Bir kota artışı istemek için desteğe başvurabilirsiniz](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-Ancak, bazı bazı kota limitleri vardır, örneğin tek bir Azure aboneliği en fazla 10.000 çekirdeğe sahip olabilir. Bu limitlere ilişkin ayrıntılar için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Ancak, bazı bazı kota limitleri vardır, örneğin tek bir Azure aboneliği en fazla 10.000 çekirdeğe sahip olabilir. Bu limitlere ilişkin ayrıntılar için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

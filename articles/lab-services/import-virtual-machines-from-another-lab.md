@@ -1,6 +1,6 @@
 ---
-title: Başka bir laboratuvar Azure DevTest Labs'de sanal makineler alma | Microsoft Docs
-description: Sanal makineleri başka bir laboratuvarda geçerli laboratuara içeri aktarmayı öğrenin.
+title: Azure DevTest Labs | sanal makinelerini başka bir laboratuvardan içeri aktarın | Microsoft Docs
+description: Sanal makineleri başka bir laboratuvardan geçerli laboratuvara nasıl içeri aktaracağınızı öğrenin.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,45 +12,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: ca6ed58cfabb5027830828812c4820c1b586875c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0778759958e70c564779f5493d7cf8b646f6ced0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61322887"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644656"
 ---
-# <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Başka bir laboratuar ortamında Azure DevTest Labs sanal makineleri içeri aktarın
-Bu makalede sanal makineleri başka bir laboratuvarda, laboratuvarda içeri aktarma hakkında bilgi sağlar.
+# <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Azure DevTest Labs içindeki başka bir laboratuvardan sanal makineleri içeri aktarma
+Bu makalede, sanal makinelerin başka bir laboratuvardan laboratuvarınızda nasıl içeri aktarılacağı hakkında bilgi sağlanır.
 
 ## <a name="scenarios"></a>Senaryolar
-Vm'leri, başka bir laboratuvarda bir laboratuvarda alma gerek duyduğunuz senaryolara bazı senaryolar aşağıda verilmiştir:
+VM 'Leri bir laboratuvardan başka bir laboratuvarya içeri aktarmanız gereken bazı senaryolar aşağıda verilmiştir:
 
-- Bir kişi takımdaki kuruluş içinde başka bir gruba taşınacağını ve yeni takımın DevTest Labs kullanarak Geliştirici Masaüstü almak ister.
-- Grup erişti bir [abonelik düzeyi kota](../azure-subscription-service-limits.md) ve birkaç aboneliği teams'e yukarı split istiyor
-- Express Route (veya başka bir yeni ağ topolojisi) şirket taşınıyor ve takım, bu yeni altyapı kullanmak için sanal makineleri taşımak istiyor
+- Ekipte bulunan bir kişi kuruluş içindeki başka bir gruba taşınıyor ve geliştirici masaüstünü yeni ekibin DevTest Labs 'e almak istiyor.
+- Grup, [abonelik düzeyi kotasına](../azure-resource-manager/management/azure-subscription-service-limits.md) ulaştı ve takımları birkaç aboneliğe bölmek istiyor
+- Şirket hızlı rotaya (veya başka bir yeni ağ topolojisine) taşınıyor ve takım sanal makineleri bu yeni altyapıyı kullanacak şekilde taşımak istiyor
 
 ## <a name="solution-and-constraints"></a>Çözüm ve kısıtlamalar
-Bu özellik, Vm'leri (kaynak) bir laboratuar ortamında başka bir laboratuvara (hedef) içeri aktarmanıza olanak sağlar. İsteğe bağlı olarak, hedef VM işlemi için yeni bir ad verebilirsiniz. İçeri aktarma işlemi, diskleri, zamanlamalar, ağ ayarları ve benzeri gibi tüm bağımlılıkları içerir.
+Bu özellik, VM 'Leri bir laboratuvarda (kaynak) başka bir laboratuvarda (hedef) içeri aktarmanızı sağlar. İsteğe bağlı olarak, işlemdeki hedef sanal makine için yeni bir ad verebilirsiniz. İçeri aktarma işlemi diskler, zamanlamalar, ağ ayarları vb. gibi tüm bağımlılıkları içerir.
 
-Bu işlem biraz zaman alabilir ve aşağıdaki faktörlerden etkilenir:
+İşlem biraz zaman alır ve aşağıdaki faktörlerden etkilenir:
 
-- Sayı/boyutu (bir kopyalama işlemi ve taşıma işlemi olduğundan) kaynak makineye bağlı diskler
-- ' % S'hedef (örneğin, Güneydoğu Asya Doğu ABD bölgesinde) uzaklık.
+- Kaynak makineye bağlı disklerin sayısı/boyutu (bir kopyalama işlemi olduğundan ve taşıma işlemi değil)
+- Hedefe mesafe (örneğin, Doğu ABD bölge, Güneydoğu Asya).
 
-İşlem tamamlandıktan sonra kaynak sanal makine kapatma ve yeni bir hedef laboratuvarda çalıştırıyorsa kalır.
+İşlem tamamlandıktan sonra kaynak sanal makine kapalı kalır ve yeni bir hedef laboratuvarda çalışır.
 
-Sanal makineleri bir laboratuar ortamında başka bir laboratuvara aktarmak planlama yaparken dikkat edilmesi gereken iki anahtar kısıtlamaları vardır:
+' De bir laboratuvardan başka bir laboratuvara VM 'Leri içeri aktarmayı planlarken dikkat etmeniz için iki temel kısıtlama vardır:
 
-- Abonelikler arasında ve farklı bölgelerdeki sanal makine içeri aktarmalar desteklenir ancak aboneliklerin aynı Azure Active Directory kiracısı ile ilişkilendirilmesi gerekir.
-- Sanal makineler kaynak Laboratuvar talep edilebilir bir durumda olmalıdır.
-- VM'nin hedef Laboratuvardaki Laboratuvar sahibini ve kaynak Laboratuvar sahibi olmanız.
-- Şu anda bu özellik yalnızca Powershell ve REST API desteklenir.
+- Abonelikler arasında ve bölgeler arasında sanal makine içeri aktarmaları desteklenir, ancak abonelikler aynı Azure Active Directory kiracısıyla ilişkilendirilmelidir.
+- Sanal makineler, kaynak laboratuvarında çakışmaz bir durumda olmamalıdır.
+- Kaynak laboratuvarında sanal makinenin sahibi olursunuz ve hedef laboratuvardaki laboratuvarın sahibidir.
+- Şu anda bu özellik yalnızca PowerShell ve REST API aracılığıyla desteklenir.
 
-## <a name="use-powershell"></a>PowerShell kullanma
-ImportVirtualMachines.ps1 dosyası indirin [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines). Betik, tek bir VM veya kaynak Laboratuvardaki tüm VM'ler hedef laboratuara içeri aktarmak için kullanabilirsiniz.
+## <a name="use-powershell"></a>PowerShell'i kullanma
+[GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines)'Dan ımportvirtualmachines. ps1 dosyasını indirin. Betiği, kaynak laboratuvardaki tüm VM 'Leri hedef laboratuvarya aktarmak için kullanabilirsiniz.
 
-### <a name="use-powershell-to-import-a-single-vm"></a>Tek bir VM için PowerShell kullanma
-Bu powershell betiği yürütülürken, VM kaynak ve hedef Laboratuvar tanımlama ve isteğe bağlı olarak hedef makine için kullanılacak yeni bir ad sağlayarak gerektirir:
+### <a name="use-powershell-to-import-a-single-vm"></a>Tek bir VM 'yi içeri aktarmak için PowerShell 'i kullanma
+Bu PowerShell betiğini yürütmek için kaynak VM ve hedef laboratuvarın belirlenmesi ve isteğe bağlı olarak hedef makine için kullanılacak yeni bir ad sağlama gerekir:
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
@@ -61,8 +61,8 @@ Bu powershell betiği yürütülürken, VM kaynak ve hedef Laboratuvar tanımlam
                             -DestinationVirtualMachineName "<Optional: specify a new name for the imported VM in the destination lab>"
 ```
 
-### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>Kaynak Laboratuvardaki tüm sanal makineleri içeri aktarmak için PowerShell kullanma
-Kaynak sanal makinenin belirtilmezse, betik DevTest labs'teki tüm sanal makineler otomatik olarak içeri aktarır.  Örneğin:
+### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>Kaynak laboratuvardaki tüm VM 'Leri içeri aktarmak için PowerShell 'i kullanma
+Kaynak sanal makine belirtilmemişse, komut dosyası DevTest Labs içindeki tüm sanal makineleri otomatik olarak içeri aktarır.  Örneğin:
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
@@ -71,8 +71,8 @@ Kaynak sanal makinenin belirtilmezse, betik DevTest labs'teki tüm sanal makinel
                             -DestinationDevTestLabName "<Name of the destination lab>"
 ```
 
-## <a name="use-http-rest-to-import-a-vm"></a>Bir VM almak için HTTP REST kullanma
-REST araması, basit bir işlemdir. Size kaynak ve hedef kaynaklarını belirlemek için yeterli bilgi sunar. İşlem gerçekleştikten hedef Laboratuvar kaynakta unutmayın.
+## <a name="use-http-rest-to-import-a-vm"></a>VM 'yi içeri aktarmak için HTTP REST kullanma
+REST çağrısı basittir. Kaynak ve hedef kaynakları belirlemek için yeterli bilgi verirsiniz. İşlemin hedef laboratuvar kaynağında gerçekleşeceğini unutmayın.
 
 ```REST
 POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/resourceGroups/<DestinationResourceGroup>/providers/Microsoft.DevTestLab/labs/<DestinationLab>/ImportVirtualMachine?api-version=2017-04-26-preview
@@ -85,5 +85,5 @@ POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/reso
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-- [Bir laboratuvara yönelik ilkeleri ayarlama](devtest-lab-get-started-with-lab-policies.md)
+- [Laboratuvar ilkelerini ayarlama](devtest-lab-get-started-with-lab-policies.md)
 - [Sık sorulan sorular](devtest-lab-faq.md)

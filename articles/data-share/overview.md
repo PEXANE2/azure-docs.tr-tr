@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 43972bc8e64e0bf88aae00126735d3e0c8751254
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499361"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660809"
 ---
 # <a name="what-is-azure-data-share"></a>Azure Veri Paylaşımı nedir?
 
@@ -21,7 +21,7 @@ Birçok kuruluşun paylaşıldıkları veriler için sorumlu olması gerekir. Bi
 
 Azure veri paylaşma, kuruluşların birden çok müşteriyle ve iş ortaklarıyla basit ve güvenli bir şekilde veri paylaşmasını sağlar. Yalnızca birkaç tıklamayla yeni bir veri paylaşma hesabı temin edebilir, veri kümeleri ekleyebilir ve müşterilerinizi ve iş ortaklarınızı veri paylaşımınıza davet edebilirsiniz. Veri sağlayıcıları her zaman paylaşıldıkları verilerin denetimidir. Azure veri paylaşımında, ne zaman ve kim tarafından paylaşılan verilerin yönetilmesi ve izlenmesi kolay hale gelir. 
 
-Veri sağlayıcısı, veri paylaşımıyla ilgili kullanım koşulları belirtilerek verilerinin nasıl ele alındığını kontrol ediyor olabilir. Veri tüketicisinin verileri alabilmesi için bu koşulları kabul etmesi gerekir. Veri sağlayıcıları, veri tüketicilerinin güncelleştirme alma sıklığını belirtebilir. Yeni güncelleştirmelere erişim, veri sağlayıcısı tarafından herhangi bir zamanda iptal edilebilir. 
+Veri sağlayıcısı, veri paylaşımıyla ilgili kullanım koşulları belirtilerek verilerinin nasıl ele alındığını kontrol ediyor olabilir. Veri tüketicisinin verileri alabilmek için önce bu koşulları kabul etmesi gerekir. Veri sağlayıcıları, veri tüketicilerinin güncelleştirmeleri ne sıklıkta alacağını belirtebilir. Veri sağlayıcıları istedikleri zaman yeni güncelleştirmelere erişimi iptal edebilir. 
 
 Azure veri paylaşımında, üçüncü tarafların verileri zenginleştirerek analiz ve AI senaryolarına kadar zengin bir şekilde birleştirerek Öngörüler geliştirmeye yardımcı olur. Azure veri paylaşım kullanarak paylaşılan verileri hazırlamak, işlemek ve analiz etmek için Power ot Azure Analytics araçlarını kolayca kullanın. 
 
@@ -47,7 +47,7 @@ Veri sağlayıcıları, veri tüketicilerini bir anlık görüntü zamanlaması 
 
 Bir veri tüketicisi bir veri paylaşımının kabul ettiğinde, verileri seçtikleri bir veri deposunda alabilecektir. Örneğin, veri sağlayıcısı verileri Azure Blob depolama kullanarak paylaşıyorsa veri tüketicisi bu verileri Azure Data Lake Store alabilir. Benzer şekilde, veri sağlayıcısı bir Azure SQL veri ambarından veri paylaşıyorsa veri tüketicisi, verileri bir Azure Data Lake Store, Azure SQL veritabanı veya Azure SQL veri ambarı 'na almak isteyip istemediğinizi seçebilirler. SQL tabanlı kaynaklardan paylaşım durumunda veri tüketicisi Ayrıca, Parquet veya CSV 'de veri alıp almamasını da seçebilir. 
 
-Yerinde paylaşım Şu anda Azure Veri Gezgini için sınırlı önizlemededir. Veri sağlayıcıları, bir sembolik bağlantı aracılığıyla veri hareketi olmadan, bulunduğu yerde verileri paylaşabilir. Azure Veri Gezgini için yerinde paylaşımın sınırlı önizlemesine [buradan](https://aka.ms/azuredatasharepreviewsignup)kaydolun. 
+Yerinde paylaşım Şu anda Azure Veri Gezgini için sınırlı önizlemededir. Veri sağlayıcıları, bir sembolik bağlantı aracılığıyla veri hareketi olmadan, bulunduğu yerde verileri paylaşabilir. Azure Veri Gezgini 'ın sınırlı önizlemesine kaydolup [yerinde paylaşım için](https://aka.ms/azuredatasharepreviewsignup)kaydolun. 
 
 ## <a name="key-capabilities"></a>Temel işlevler
 

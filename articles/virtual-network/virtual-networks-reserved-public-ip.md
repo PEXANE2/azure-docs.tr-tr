@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: 675e7a7b557a3f19ea4d8d4960316c3859cbb9c1
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: c1de86c1d12109853bb5d6d1aac4143caab9199f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058485"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638230"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Ayrılmış IP adresler (klasik dağıtım)
 
@@ -28,7 +28,7 @@ ms.locfileid: "71058485"
 IP adreslerinin değiştirilmesini engellemek için bir IP adresi ayırabilirsiniz. Ayrılmış IP 'Ler yalnızca VIP olarak kullanılabilir, ancak kaynaklar kapatılsa veya durdurulmuş (serbest bırakıldığında) bulut hizmeti için IP adresinin aynı kalmasını sağlar. Ayrıca, VIP olarak kullanılan mevcut dinamik IP 'Leri ayrılmış bir IP adresine de dönüştürebilirsiniz.
 
 > [!IMPORTANT]
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır:  [Kaynak Yöneticisi ve klasik](../azure-resource-manager/resource-manager-deployment-model.md). Bu makale klasik dağıtım modelini incelemektedir. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. [Kaynak Yöneticisi dağıtım modelini](virtual-network-ip-addresses-overview-arm.md)kullanarak STATIK genel IP adresini nasıl ayıracağınızı öğrenin.
+> Azure’da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır:  [Resource Manager ve klasik](../azure-resource-manager/resource-manager-deployment-model.md). Bu makale klasik dağıtım modelini incelemektedir. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. [Kaynak Yöneticisi dağıtım modelini](virtual-network-ip-addresses-overview-arm.md)kullanarak STATIK genel IP adresini nasıl ayıracağınızı öğrenin.
 
 Azure 'daki IP adresleri hakkında daha fazla bilgi edinmek için [IP adresleri](virtual-network-ip-addresses-overview-classic.md) makalesini okuyun.
 
@@ -41,7 +41,7 @@ Azure 'daki IP adresleri hakkında daha fazla bilgi edinmek için [IP adresleri]
 - Tüm Azure hizmetleri için ayrılmış bir IP kullanabilir miyim?
     Hayır. Ayrılmış IP 'Ler, yalnızca bir VIP aracılığıyla kullanıma sunulan VM 'Ler ve bulut hizmeti örneği rolleri için kullanılabilir.
 - Kaç tane ayrılmış IP 'den ihtiyacım olabilir?
-    Ayrıntılar için bkz. [Azure Limitleri](../azure-subscription-service-limits.md#networking-limits) makalesi.
+    Ayrıntılar için bkz. [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) makalesi.
 - Ayrılmış IP 'Ler için bir ücret var mı?
     Bazen. Fiyatlandırma ayrıntıları için [ayrılmış IP adresi fiyatlandırma ayrıntıları](https://go.microsoft.com/fwlink/?LinkID=398482) sayfasına bakın.
 - Nasıl yaparım? bir IP adresi ayırsın mı?
@@ -83,7 +83,7 @@ Beklenen çıktı:
     OperationStatus      : Succeeded
 
 >[!NOTE]
->PowerShell ile ayrılmış bir IP adresi oluşturduğunuzda, ' de ayrılmış IP 'yi oluşturmak için bir kaynak grubu belirtemezsiniz. Azure, bunu *varsayılan ağ* adlı bir kaynak grubuna otomatik olarak koyar. [Azure Portal](https://portal.azure.com)kullanarak ayrılmış IP oluşturursanız, seçtiğiniz herhangi bir kaynak grubunu belirtebilirsiniz. Ayrılmış IP 'yi *varsayılan ağ* dışında bir kaynak grubunda oluşturursanız, `Get-AzureReservedIP` ve gibi komutlarla ayrılmış IP 'ye başvurduğunuzda her seferinde, ve `Remove-AzureReservedIP`gibi komutlarla ad *grubuna başvurmanız gerekir. ayrılmış-IP-adı*.  Örneğin, *Myresourcegroup*adlı bir kaynak grubunda *myreservedıp* adlı ayrılmış bir IP oluşturursanız, *Myresourcegroup MYRESERVEDıP adlı grup*olarak ayrılmış IP adına başvurmanız gerekir.   
+>PowerShell ile ayrılmış bir IP adresi oluşturduğunuzda, ' de ayrılmış IP 'yi oluşturmak için bir kaynak grubu belirtemezsiniz. Azure, bunu *varsayılan ağ* adlı bir kaynak grubuna otomatik olarak koyar. [Azure Portal](https://portal.azure.com)kullanarak ayrılmış IP oluşturursanız, seçtiğiniz herhangi bir kaynak grubunu belirtebilirsiniz. Ayrılmış IP 'yi *varsayılan ağ* dışında bir kaynak grubunda oluşturursanız, ayrılmış ıp 'yi `Get-AzureReservedIP` ve `Remove-AzureReservedIP`gibi komutlarla her başvurduğunuzda, ad *grubu kaynak grubu adı ayrılmış-IP-adı*' na başvurmanız gerekir.  Örneğin, *Myresourcegroup*adlı bir kaynak grubunda *myreservedıp* adlı ayrılmış bir IP oluşturursanız, *Myresourcegroup MYRESERVEDıP adlı grup*olarak ayrılmış IP adına başvurmanız gerekir.   
 
 
 Bir IP ayrıldıktan sonra, siz silene kadar aboneliğiniz ile ilişkili kalır. Ayrılmış bir IP 'yi şu şekilde silin:
@@ -98,7 +98,7 @@ Azure klasik CLı kullanarak *Orta ABD* konumunda bulunan genel IP adresleri hav
 > [!NOTE]
 > Klasik dağıtım için Azure klasik CLı kullanmanız gerekir. Klasik Azure CLı yükleme hakkında daha fazla bilgi için bkz [. Azure klasık CLI yükleme](https://docs.microsoft.com/cli/azure/install-classic-cli?view=azure-cli-latest)
   
- Komutundaki
+ Komut:
  
 ```azurecli
 azure network reserved-ip create <name> <location>
@@ -110,13 +110,13 @@ azure network reserved-ip create <name> <location>
 
 Azure CLı kullanarak aboneliğinizde hangi IP adreslerinin ayrıldığını aşağıda gösterildiği gibi görebilirsiniz: 
 
-Komutundaki
+Komut:
 ```azurecli
 azure network reserved-ip list
 ```
 Bir IP ayrıldıktan sonra, siz silene kadar aboneliğiniz ile ilişkili kalır. Ayrılmış bir IP 'yi şu şekilde silin:
 
-Komutundaki
+Komut:
 
  ```azurecli
  azure network reserved-ip delete <name>
@@ -126,7 +126,7 @@ Komutundaki
  azure network reserved-ip delete MyReservedIP
  ```
 ## <a name="reserve-the-ip-address-of-an-existing-cloud-service"></a>Mevcut bir bulut hizmetinin IP adresini ayır
-Mevcut bir bulut hizmetinin IP adresini `-ServiceName` parametresini ekleyerek ayırabilirsiniz. Bir bulut hizmeti *TestService* 'in ıp adresini *Orta ABD* konumunda aşağıdaki gibi ayırın:
+`-ServiceName` parametresini ekleyerek mevcut bir bulut hizmetinin IP adresini ayırabilirsiniz. Bir bulut hizmeti *TestService* 'in ıp adresini *Orta ABD* konumunda aşağıdaki gibi ayırın:
 
 - Azure PowerShell kullanma (klasik):
 
@@ -136,7 +136,7 @@ Mevcut bir bulut hizmetinin IP adresini `-ServiceName` parametresini ekleyerek a
 
 - Azure CLı (klasik) kullanma:
   
-    Komutundaki
+    Komut:
 
     ```azurecli
      azure network reserved-ip create <name> <location> -r <service-name> -d <deployment-name>
@@ -161,7 +161,7 @@ New-AzureVMConfig -Name TestVM -InstanceSize Small -ImageName $image.ImageName `
 | New-AzureVM -ServiceName TestService -ReservedIPName MyReservedIP -Location "Central US"
 ```
 > [!NOTE]
-> Bir bulut hizmeti ile kullanmak üzere ayrılmış bir IP oluşturduğunuzda, gelen iletişim için *VIP:&lt;Port numarası >* kullanarak VM 'ye başvurursunuz. IP ayırma, VM 'ye doğrudan bağlanabilmeniz anlamına gelmez. Ayrılmış IP, VM 'nin dağıtıldığı bulut hizmetine atanır. VM 'ye doğrudan IP 'ye bağlanmak istiyorsanız, örnek düzeyinde genel IP yapılandırmanız gerekir. Örnek düzeyi genel IP, doğrudan sanal makinenize atanan bir genel IP türüdür (ıLPıP olarak adlandırılır). Ayrılamaz. Daha fazla bilgi için [örnek düzeyinde ortak IP (ıLPıP)](virtual-networks-instance-level-public-ip.md) makalesini okuyun.
+> Bir bulut hizmeti ile kullanmak üzere ayrılmış bir IP oluşturduğunuzda, gelen iletişim için *VIP:&lt;bağlantı noktası numarası >* kullanarak VM 'ye başvurursunuz. IP ayırma, VM 'ye doğrudan bağlanabilmeniz anlamına gelmez. Ayrılmış IP, VM 'nin dağıtıldığı bulut hizmetine atanır. VM 'ye doğrudan IP 'ye bağlanmak istiyorsanız, örnek düzeyinde genel IP yapılandırmanız gerekir. Örnek düzeyi genel IP, doğrudan sanal makinenize atanan bir genel IP türüdür (ıLPıP olarak adlandırılır). Ayrılamaz. Daha fazla bilgi için [örnek düzeyinde ortak IP (ıLPıP)](virtual-networks-instance-level-public-ip.md) makalesini okuyun.
 > 
 
 ## <a name="remove-a-reserved-ip-from-a-running-deployment"></a>Çalışan bir dağıtımdan ayrılmış IP 'yi kaldırma
@@ -174,7 +174,7 @@ Remove-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName Test
 ```
 
 ### <a name="using-azure-cli-classic"></a>Azure CLı 'yi kullanma (klasik)
-Komutundaki
+Komut:
 
 ```azurecli
 azure network reserved-ip disassociate <name> <service-name> <deployment-name>
@@ -192,7 +192,7 @@ azure network reserved-ip disassociate MyReservedIP TestService asmtest8942
 
 Ayrılmış bir IP 'yi bir abonelikten tamamen kaldırmak için aşağıdaki komutu çalıştırın:
 
-Komutundaki
+Komut:
 
 ```azurecli
 azure network reserved-ip delete <name>
@@ -222,7 +222,7 @@ Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestSer
 ### <a name="using-azure-cli-classic"></a>Azure CLı 'yi kullanma (klasik)
 Azure CLı kullanarak, yeni bir ayrılmış IP 'yi çalışan bulut hizmeti dağıtımınız ile aşağıdaki gibi ilişkilendirebilirsiniz:
 
-Komutundaki
+Komut:
 ```azurecli
 azure network reserved-ip associate <name> <service-name> <deployment-name>
 ```

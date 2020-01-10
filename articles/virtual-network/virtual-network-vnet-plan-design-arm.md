@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 47da2524f719e53edcbd89686a1a0b76fa6e79cd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3624c8fd8b15f6d35917f4ead676221d93a26ddc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802718"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646498"
 ---
-# <a name="plan-virtual-networks"></a>Sanal ağları planlayın
+# <a name="plan-virtual-networks"></a>Sanal ağları planlama
 
 Denemek için bir sanal ağ oluşturmak oldukça kolaydır, ancak olasılığınızı, kuruluşunuzun üretim ihtiyaçlarını desteklemek için zaman içinde birden çok sanal ağı dağıtacaksınız. Bazı planlamayla, sanal ağlar dağıtabilir ve ihtiyacınız olan kaynakları daha verimli bir şekilde bağlayabilirsiniz. Bu makaledeki bilgiler, sanal ağları zaten biliyorsanız ve bunlarla çalışan bir deneyim varsa en çok yardımcı olur. Sanal ağlar hakkında bilgi sahibi değilseniz, [sanal ağa genel bakış](virtual-networks-overview.md)' ı okumanız önerilir.
 
@@ -39,9 +39,9 @@ Tüm Azure kaynakları bir Azure bölgesinde ve aboneliğinde oluşturulur. Kayn
 
 ## <a name="subscriptions"></a>Abonelikler
 
-Her abonelik için gereken sayıda sanal ağı en fazla [sınıra](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)kadar dağıtabilirsiniz. Bazı kuruluşların, örneğin farklı departmanlar için farklı abonelikleri vardır. Abonelikler hakkında daha fazla bilgi ve ilgili konular için bkz. [abonelik](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy)İdaresi.
+Her abonelik için gereken sayıda sanal ağı en fazla [sınıra](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)kadar dağıtabilirsiniz. Bazı kuruluşların, örneğin farklı departmanlar için farklı abonelikleri vardır. Abonelikler hakkında daha fazla bilgi ve ilgili konular için bkz. [abonelik](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy)İdaresi.
 
-## <a name="segmentation"></a>Ayrılmasını
+## <a name="segmentation"></a>Kesimleme
 
 Her bir abonelik ve bölge başına birden çok sanal ağ oluşturabilirsiniz. Her bir sanal ağ içinde birden çok alt ağ oluşturabilirsiniz. Aşağıdaki önemli noktalar, kaç sanal ağın ve alt ağın gerekli olduğunu belirlemenize yardımcı olur:
 
@@ -51,14 +51,14 @@ Sanal ağ, Azure genel ağının sanal, yalıtılmış bir parçasıdır. Her sa
 
 - Trafiği ayrı sanal ağlara yalıtmak için herhangi bir kuruluş güvenlik gereksinimi var mı? Sanal ağları bağlamayı tercih edebilirsiniz. Sanal ağları bağladığınızda, sanal ağlar arasındaki trafik akışını denetlemek için güvenlik duvarı gibi bir ağ sanal gereci uygulayabilirsiniz. Daha fazla bilgi için bkz. [güvenlik](#security) ve [bağlantı](#connectivity).
 - Sanal ağları ayrı [aboneliklerde](#subscriptions) veya [bölgelerde](#regions)yalıtmak için herhangi bir kuruluş gereksinimi var mı?
-- Bir [ağ arabirimi](virtual-network-network-interface.md) , BIR VM 'nin diğer kaynaklarla iletişim kurmasını sağlar. Her ağ arabirimine atanmış bir veya daha fazla özel IP adresi vardır. Bir sanal ağda kaç ağ arabirimi ve [özel IP adresi](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) gerekir? Bir sanal ağ içinde sahip olabilirsiniz ağ arabirimlerinin ve özel IP adreslerinin sayısı için [sınırlar](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) vardır.
+- Bir [ağ arabirimi](virtual-network-network-interface.md) , BIR VM 'nin diğer kaynaklarla iletişim kurmasını sağlar. Her ağ arabirimine atanmış bir veya daha fazla özel IP adresi vardır. Bir sanal ağda kaç ağ arabirimi ve [özel IP adresi](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) gerekir? Bir sanal ağ içinde sahip olabilirsiniz ağ arabirimlerinin ve özel IP adreslerinin sayısı için [sınırlar](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) vardır.
 - Sanal ağı başka bir sanal ağa veya şirket içi ağa bağlamak istiyor musunuz? Bazı sanal ağları birbirlerine veya şirket içi ağlara bağlamayı tercih edebilirsiniz, ancak diğerlerini kullanamazsınız. Daha fazla bilgi için bkz. [bağlantı](#connectivity). Başka bir sanal ağa veya şirket içi ağa bağlandığınız her sanal ağ, benzersiz bir adres alanına sahip olmalıdır. Her sanal ağın adres alanına atanan bir veya daha fazla ortak veya özel adres aralığı vardır. Bir adres aralığı, sınıfsız Internet etki alanı yönlendirme (CıDR) biçiminde belirtilir, örneğin 10.0.0.0/16. Sanal ağların [adres aralıkları](manage-virtual-network.md#add-or-remove-an-address-range) hakkında daha fazla bilgi edinin.
 - Farklı sanal ağlardaki kaynaklar için herhangi bir kuruluş yönetim gereksinimleriniz var mı? Bu durumda, kuruluşunuzdaki bireylere [izin atamasını](#permissions) kolaylaştırmak veya farklı sanal ağlara farklı ilkeler atamak için kaynakları ayrı sanal ağa ayırabilirsiniz.
 - Bazı Azure hizmet kaynaklarını bir sanal ağa dağıttığınızda, kendi sanal ağını oluşturamazlar. Bir Azure hizmetinin kendi sanal ağını oluşturup oluşturmadığını öğrenmek için, [bir sanal ağa dağıtılabilecek her bir Azure hizmeti](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)için bilgiler bölümüne bakın.
 
 ### <a name="subnets"></a>Alt ağlar
 
-Bir sanal ağ, [sınırlara](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)kadar bir veya daha fazla alt ağa ayrılabilir. Bir abonelikte tek bir alt ağ veya birden çok sanal ağ oluşturma konusunda karar verirken dikkate almanız gerekenler:
+Bir sanal ağ, [sınırlara](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)kadar bir veya daha fazla alt ağa ayrılabilir. Bir abonelikte tek bir alt ağ veya birden çok sanal ağ oluşturma konusunda karar verirken dikkate almanız gerekenler:
 
 - Her alt ağ, sanal ağın adres alanı içinde CıDR biçiminde belirtilen benzersiz bir adres aralığına sahip olmalıdır. Adres aralığı, sanal ağdaki diğer alt ağlarla çakışamaz.
 - Bazı Azure hizmet kaynaklarını bir sanal ağa dağıtmayı planlıyorsanız, kendi alt ağını gerektirebilir veya oluşturabilir, bu nedenle bunlar için yeterli ayrılmamış alan olması gerekir. Bir Azure hizmetinin kendi alt ağını oluşturup oluşturmadığını öğrenmek için, [bir sanal ağa dağıtılabilecek her bir Azure hizmeti](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)için bilgiler bölümüne bakın. Örneğin, bir sanal ağı Azure VPN Gateway kullanarak şirket içi bir ağa bağladığınızda, sanal ağın ağ geçidi için ayrılmış bir alt ağı olmalıdır. [Ağ geçidi alt ağları](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)hakkında daha fazla bilgi edinin.
@@ -107,7 +107,7 @@ Bir sanal ağdaki kaynaklar, Azure 'un [YERLEŞIK DNS](virtual-networks-name-res
 
 ## <a name="permissions"></a>İzinler
 
-Azure, kaynaklara [göre rol tabanlı erişim denetimi](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) kullanır. İzinler şu hiyerarşide bir [kapsama](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) atandı: yönetim grubu, abonelik, kaynak grubu ve tek kaynak. Hiyerarşi hakkında daha fazla bilgi edinmek için bkz. [kaynaklarınızı düzenleme](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Azure sanal ağları ve eşleme, ağ güvenlik grupları, hizmet uç noktaları ve yol tabloları gibi ilgili tüm özellikleri ile çalışmak için kuruluşunuzun üyelerini yerleşik [Sahibe](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [katkıda](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)buluna 'ya atayabilir veya [ Ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolleri ve ardından rolü uygun kapsama atayın. Bir sanal ağ özellikleri alt kümesi için belirli izinler atamak istiyorsanız, [özel bir rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oluşturun ve [sanal ağlar](manage-virtual-network.md#permissions), [alt ağlar ve hizmet uç noktaları](virtual-network-manage-subnet.md#permissions), ağ arabirimleri için gereken belirli izinleri atayın [ ](virtual-network-network-interface.md#permissions), [eşleme](virtual-network-manage-peering.md#permissions), [Ağ ve uygulama güvenlik grupları](manage-network-security-group.md#permissions)ya da rol için [Rota tabloları](manage-route-table.md#permissions) .
+Azure, kaynaklara [göre rol tabanlı erişim denetimi](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) kullanır. İzinler şu hiyerarşide bir [kapsama](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) atandı: yönetim grubu, abonelik, kaynak grubu ve tek kaynak. Hiyerarşi hakkında daha fazla bilgi edinmek için bkz. [kaynaklarınızı düzenleme](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Azure sanal ağları ve eşleme, ağ güvenlik grupları, hizmet uç noktaları ve yol tabloları gibi ilgili tüm özellikleri ile çalışmak için kuruluşunuzun üyelerini yerleşik [sahip](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [katkıda](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)bulunan veya [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rollerine atayabilir ve ardından rolü uygun kapsama atayabilirsiniz. Bir sanal ağ özellikleri alt kümesi için belirli izinler atamak istiyorsanız, [özel bir rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oluşturun ve [sanal ağlar](manage-virtual-network.md#permissions), [alt ağlar ve hizmet uç noktaları](virtual-network-manage-subnet.md#permissions), [ağ arabirimleri](virtual-network-network-interface.md#permissions), [eşleme](virtual-network-manage-peering.md#permissions), [Ağ ve uygulama güvenlik grupları](manage-network-security-group.md#permissions)ya da [tablo yönlendirme tabloları](manage-route-table.md#permissions) için gereken belirli izinleri atayın.
 
 ## <a name="policy"></a>İlke
 

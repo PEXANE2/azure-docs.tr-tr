@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a96429a84fab10c033cc18a2c35edb4b2a056924
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b9d7e7f705d091834b0a3b694ea8bf0cf6b65ef9
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895382"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708347"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Spring Cloud uygulaması başlatın
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğrenecek
 > * Her mikro hizmeti dağıtma
 > * Uygulamanız için genel uç nokta atama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 >[!Note]
 > Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizleme sırasında destek hakkında daha fazla bilgi için lütfen [SSS](https://azure.microsoft.com/support/faq/) veya dosya dosyası [destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) inceleyerek daha fazla bilgi edinebilirsiniz.
@@ -68,6 +68,10 @@ az extension add --name spring-cloud
 
 Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **genel bakış** sayfası, dağıtıldıktan sonra görüntülenir.
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=provision)
+
+
 ## <a name="set-up-your-configuration-server"></a>Yapılandırma sunucunuzu ayarlama
 
 1. Hizmete **genel bakış** sayfasına gidin ve **yapılandırma sunucusu**' nu seçin.
@@ -76,9 +80,12 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. **Etiketi** "config" olarak ayarlayın.
 
-1. Değişikliklerinizi kaydetmek için **Uygula**'yı seçin.
+1. Yaptığınız değişiklikleri kaydetmek için **Apply**'ı (Uygula) seçin.
 
     ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=config-server)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Mikro hizmet uygulamaları oluşturma ve dağıtma
 
@@ -121,6 +128,9 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. Uygulamaların dağıtılmasının tamamlanmasının birkaç dakika sürer. Dağıtıldığını doğrulamak için Azure portal **uygulamalar** dikey penceresine gidin. Her üç uygulamanın bir satırını görmeniz gerekir.
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
+
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Ağ geçidine genel uç nokta atama
 
 1. Soldaki menüden **uygulamalar** sekmesini açın.
@@ -135,6 +145,8 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
     ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

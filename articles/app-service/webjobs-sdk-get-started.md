@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 33ae3f9f928a55f50f4ecd0c6c98790a384e880b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 11df1557fdcad059910dd2a87e9056e19a90bf01
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684192"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640863"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay odaklı arka plan işleme için Azure WebJobs SDK ile çalışmaya başlama
 
@@ -19,7 +19,7 @@ Bu makalede, Visual Studio 2019 kullanarak bir Azure WebJobs SDK projesi oluştu
 
 Bu makalede, Web Işlerinin bir .NET Core konsol uygulaması olarak nasıl dağıtılacağı gösterilir. Web Işlerini .NET Framework konsol uygulaması olarak dağıtmak için bkz. [WebJobs as .NET Framework konsol Apps](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps). Yalnızca .NET Framework destekleyen WebJobs SDK sürüm 2. x ile ilgileniyorsanız, bkz. [Visual Studio kullanarak Web Işleri geliştirme ve dağıtma-Azure App Service](webjobs-dotnet-deploy-vs.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure geliştirme** iş yüküyle [Visual Studio 2019 ' ü yükler](/visualstudio/install/) . Zaten Visual Studio 'Ya sahipseniz ancak iş yükünüz yoksa, araçları **ve özellikleri almak > araçlar**' ı seçerek iş yükünü ekleyin.
 
@@ -195,7 +195,7 @@ Yerel olarak çalışan Azure depolama öykünücüsü, Web Işleri SDK 'sının
 
 1. App Service uygulamanızı oluşturduğunuz **bölgeyi** veya size yakın bir bölgeyi seçin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
    ![Depolama hesabı oluştur](./media/webjobs-sdk-get-started/create-storage-account.png)
 
@@ -257,17 +257,17 @@ Bu bölümde, projeyi yerel olarak oluşturup çalıştırın ve bir kuyruk ilet
 
 1. Kuyruğun adı olarak *kuyruğu* girin ve ardından **Tamam**' ı seçin.
 
-   ![Sıra oluştur](./media/webjobs-sdk-get-started/create-queue.png)
+   ![Kuyruk oluşturma](./media/webjobs-sdk-get-started/create-queue.png)
 
 1. Yeni sıranın düğümüne sağ tıklayın ve ardından **kuyruğu görüntüle**' yi seçin.
 
 1. **Ileti Ekle** simgesini seçin.
 
-   ![Sıra oluştur](./media/webjobs-sdk-get-started/create-queue-message.png)
+   ![Kuyruk oluşturma](./media/webjobs-sdk-get-started/create-queue-message.png)
 
 1. **Ileti Ekle** iletişim kutusunda *Merhaba dünya girin!* **ileti metni**olarak **Tamam**' ı seçin. Kuyrukta artık bir ileti var.
 
-   ![Sıra oluştur](./media/webjobs-sdk-get-started/hello-world-text.png)
+   ![Kuyruk oluşturma](./media/webjobs-sdk-get-started/hello-world-text.png)
 
 1. Projeyi tekrar çalıştırın.
 
@@ -320,13 +320,13 @@ Bu bölümde, Azure 'a dağıtmadan önce Application Insights günlüğü ayarl
 
 1. **Bağlantı dizeleri** kutusuna aşağıdaki girişi ekleyin.
 
-   |Adı  |bağlantı dizesi  |Veritabanı türü|
+   |Ad  |bağlantı dizesi  |Veritabanı türü|
    |---------|---------|------|
    |AzureWebJobsStorage | {daha önce kopyaladığınız depolama bağlantı dizesi}|Özel|
 
 1. **Uygulama ayarları** kutusunda bir Application Insights izleme anahtarı yoksa, daha önce kopyaladığınız birini ekleyin. (İzleme anahtarı, App Service uygulamasının nasıl oluşturulduğuna bağlı olarak zaten orada olabilir.)
 
-   |Adı  |Değer  |
+   |Ad  |Değer  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {izleme anahtarı} |
 
@@ -399,7 +399,7 @@ Günlüğe kaydetme [Application Insights](../azure-monitor/app/app-insights-ove
 
 Bu bölümde, günlüğe kaydetme verilerinin artık Application Insights ve konsoluna gittiğini doğrulamak için yerel olarak yeniden çalıştırırsınız.
 
-1. Bir kuyruk iletisi oluşturmak için Visual Studio 'da **Sunucu Gezgini** kullanın, [daha önce](#trigger-the-function-in-azure)yaptığınız gibi, *Hello App Insights* girin. ileti metni olarak.
+1. [Daha önce](#test-locally)yaptığınız gibi bir kuyruk iletisi oluşturmak Için Visual Studio 'da **Sunucu Gezgini** kullanın, örneğin *Hello App Insights girin!* ileti metni olarak.
 
 1. Projeyi çalıştırın.
 
@@ -407,13 +407,15 @@ Bu bölümde, günlüğe kaydetme verilerinin artık Application Insights ve kon
 
 1. Konsol penceresini kapatın.
 
-1. [Azure Portal](https://portal.azure.com/)açın ve Application Insights kaynağına gidin.
+1. Application Insights kaynağınızı görüntülemek için [Azure Portal](https://portal.azure.com/) gidin. Arama yapın ve **Application Insights**seçin.
+
+1. Application Insights örneğinizi seçin.
 
 1. **Ara**' yı seçin.
 
    ![Arama Seç](./media/webjobs-sdk-get-started/select-search.png)
 
-1. *Merhaba uygulama öngörülerini görmüyorsanız!* ileti, birkaç dakika için düzenli aralıklarla **Yenile** ' yi seçin. (Application Insights istemcisinin işlem yaptığı günlükleri temizlemesi biraz zaman aldığı için Günlükler hemen görünmez.)
+1. *Merhaba uygulama öngörülerini görmüyorsanız!* ileti, birkaç dakika için düzenli aralıklarla **Yenile** ' yi seçin. (Günlükler hemen görünmez, çünkü Application Insights istemcisinin işlediği günlükleri temizlemesi biraz zaman alır.)
 
    ![Application Insights oturum açar](./media/webjobs-sdk-get-started/logs-in-ai.png)
 

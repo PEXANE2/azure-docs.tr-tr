@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 9ba9be7b4761e6633ffe3063b6bdba53c56b93bd
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0be2efd3783d9a0a7992819c984c993c64000ecd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561641"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644877"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure DevTest Labs altyapı yönetimi-kaynaklar
 Bu makalede, kuruluşunuzdaki DevTest Labs için kaynakların hizalaması ve yönetimi ele alınmaktadır. 
@@ -44,7 +44,7 @@ Azure Enterprise Portal içinde DevTest aboneliğini etkinleştirmek **Önerilen
 
 Bu model, bir kuruluşa Azure DevTest Labs dağıtma esnekliği sağlar. Bir kuruluş, 100 ile 1000 arasındaki sanal makinelere paralel olarak çalışan çeşitli iş birimleri için yüzlerce Laboratuvarı destekleyebilir. Aynı yapılandırma yönetimi ve güvenlik denetimleri ilkelerini paylaşabilen merkezi bir kurumsal laboratuvar çözümü kavramını yükseltir.
 
-Bu model Ayrıca, kuruluşun Azure aboneliğiyle ilişkili kaynak sınırlarını tüketmemesini sağlar. Abonelik ve hizmet limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-subscription-service-limits.md). DevTest Labs sağlama işlemi çok sayıda kaynak grubu kullanabilir. Limitlerin Azure DevTest aboneliğindeki bir destek isteğiyle artırılmasını isteyebilirsiniz. Geliştirme aboneliği kullanımda büyüdükçe, üretim aboneliği içindeki kaynaklar etkilenmez. DevTest Labs 'i ölçeklendirme hakkında daha fazla bilgi için bkz. [DevTest Labs 'de ölçek kotaları ve sınırları](devtest-lab-scale-lab.md).
+Bu model Ayrıca, kuruluşun Azure aboneliğiyle ilişkili kaynak sınırlarını tüketmemesini sağlar. Abonelik ve hizmet limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md). DevTest Labs sağlama işlemi çok sayıda kaynak grubu kullanabilir. Limitlerin Azure DevTest aboneliğindeki bir destek isteğiyle artırılmasını isteyebilirsiniz. Geliştirme aboneliği kullanımda büyüdükçe, üretim aboneliği içindeki kaynaklar etkilenmez. DevTest Labs 'i ölçeklendirme hakkında daha fazla bilgi için bkz. [DevTest Labs 'de ölçek kotaları ve sınırları](devtest-lab-scale-lab.md).
 
 İçin atanması gereken ortak bir abonelik düzeyi sınırı, hem üretim hem de geliştirme aboneliklerini desteklemek için ağ IP aralığı atamalarının nasıl ayrıldığı. Bu atamalar zaman içinde büyüme (Şirket içi bağlantının veya kuruluşun Azure 'un uygulamasına varsayılan olarak kullanmak yerine ağ yığınını yönetmesini gerektiren başka bir ağ topolojisi varsayarak) için hesap almalıdır. Önerilen uygulama, büyük bir IP adresi ön ekine sahip ve küçük alt ağlarla birden çok sanal ağa sahip olmak yerine birçok büyük alt ağa ayrılmış olan birkaç sanal ağa sahip olmalıdır. Örneğin, 10 abonelikle, 10 sanal ağ (her abonelik için bir tane) tanımlayabilirsiniz. Yalıtım gerektirmeyen tüm laboratuvarlar, aboneliğin VNET 'inde aynı alt ağı paylaşabilir.
 

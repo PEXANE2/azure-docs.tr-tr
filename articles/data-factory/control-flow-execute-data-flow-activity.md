@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory 'de veri akışı etkinliği
+title: Veri akışı etkinliği
 description: Data Factory işlem hattının içinden veri akışları yürütme.
 services: data-factory
 documentationcenter: ''
@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 10/07/2019
-ms.openlocfilehash: 47126d1cf51f4b27863bb0b11e73cfe5592b8d57
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/02/2020
+ms.openlocfilehash: d0b9c59852175b91b4bf799a366ae5124fa0ae42
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929874"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644808"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 'de veri akışı etkinliği
 
@@ -30,6 +30,10 @@ Veri akışı etkinliğini, veri akışları eşleme yoluyla dönüştürmek ve 
       "dataflow": {
          "referenceName": "MyDataFlow",
          "type": "DataFlowReference"
+      },
+      "compute": {
+         "coreCount": 8,
+         "computeType": "General"
       },
       "staging": {
           "linkedService": {
@@ -50,8 +54,10 @@ Veri akışı etkinliğini, veri akışları eşleme yoluyla dönüştürmek ve 
 
 Özellik | Açıklama | İzin verilen değerler | Gereklidir
 -------- | ----------- | -------------- | --------
-veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | Yes
-ıntegrationruntime | Veri akışının çalıştığı işlem ortamı | IntegrationRuntimeReference | Yes
+veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | Evet
+ıntegrationruntime | Veri akışının çalıştığı işlem ortamı. Belirtilmemişse, Otomatik Çözümle Azure tümleştirme çalışma zamanı kullanılacaktır | IntegrationRuntimeReference | Hayır
+compute. coreCount | Spark kümesinde kullanılan çekirdek sayısı. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | 8, 16, 32, 48, 80, 144, 272 | Hayır
+compute. computeType | Spark kümesinde kullanılan işlem türü. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | "Genel", "ComputeOptimized", "Memoryoptimlanmış" | Hayır
 hazırlama. linkedService | Bir SQL DW kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan depolama hesabı | LinkedServiceReference | Yalnızca veri akışı bir SQL DW 'yi okuduğunda veya yazıyorsa
 hazırlama. folderPath | Bir SQL DW kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan BLOB depolama hesabındaki klasör yolu | Dize | Yalnızca veri akışı bir SQL DW 'yi okuduğunda veya yazıyorsa
 
@@ -59,7 +65,7 @@ hazırlama. folderPath | Bir SQL DW kaynağı veya havuzu kullanıyorsanız, Pol
 
 ### <a name="data-flow-integration-runtime"></a>Veri akışı tümleştirme çalışma zamanı
 
-Veri akışı etkinliği yürütmesinde kullanılacak Integration Runtime seçin. Data Factory, varsayılan olarak, Azure tümleştirme çalışma zamanını dört çalışan çekirdekle ve yaşam süresi (TTL) ile birlikte kullanır. Bu IR genel amaçlı bir işlem türüne sahiptir ve fabrikanızın bulunduğu bölgede çalışır. Veri akışı etkinlik yürütmenizi için belirli bölgeleri, işlem türünü, çekirdek sayılarını ve TTL 'yi tanımlayan kendi Azure tümleştirme çalışma zamanlarını oluşturabilirsiniz.
+Veri akışı etkinliği yürütmesinde kullanılacak Integration Runtime seçin. Data Factory, varsayılan olarak, Azure tümleştirme çalışma zamanını dört çalışan çekirdekle ve canlı kalma süresi (TTL) ile otomatik çözümle 'yi kullanacaktır. Bu IR genel amaçlı bir işlem türüne sahiptir ve fabrikanızın bulunduğu bölgede çalışır. Veri akışı etkinlik yürütmenizi için belirli bölgeleri, işlem türünü, çekirdek sayılarını ve TTL 'yi tanımlayan kendi Azure tümleştirme çalışma zamanlarını oluşturabilirsiniz.
 
 İşlem hattı yürütmeleri için küme, yürütme başlamadan önce birkaç dakika süren bir iş kümesidir. TTL belirtilmemişse, bu başlangıç saati her işlem hattı çalıştırmasında gereklidir. Bir TTL belirtirseniz, son yürütmeden sonra belirtilen süre için bir sıcak küme havuzu etkin kalır ve daha kısa başlangıç süreleri elde edilir. Örneğin, 60 dakikalık bir TTL 'SI varsa ve bir veri akışını saatte bir kez çalıştırırsanız, küme havuzu etkin kalır. Daha fazla bilgi için bkz. [Azure tümleştirme çalışma zamanı](concepts-integration-runtime.md).
 
@@ -85,6 +91,12 @@ Veri akışınız parametreli veri kümeleri kullanıyorsa, **Ayarlar** sekmesin
 Veri akışınız parametreleştirilmiş ise, **Parametreler** sekmesindeki veri akışı parametrelerinin dinamik değerlerini ayarlayın. Dinamik veya değişmez değer parametre değerlerini atamak için ADF işlem hattı ifade dilini (yalnızca dize türleri için) veya veri akışı ifade dilini kullanabilirsiniz. Daha fazla bilgi için bkz. [veri akışı parametreleri](parameters-data-flow.md).
 
 ![Veri akışı parametre örneğini Yürüt](media/data-flow/parameter-example.png "Parametre örneği")
+
+### <a name="parameterized-compute-properties"></a>Parametreli işlem özellikleri.
+
+Azure Integration Runtime 'ı otomatik çözümle ve COMPUTE. coreCount ve COMPUTE. computeType değerlerini belirttiğinizde çekirdek sayısı veya işlem türünü parametreleştirebilirsiniz.
+
+![Veri akışı parametre örneğini Yürüt](media/data-flow/parameterize-compute.png "Parametre örneği")
 
 ## <a name="pipeline-debug-of-data-flow-activity"></a>Veri akışı etkinliğinin işlem hattı hata ayıklaması
 

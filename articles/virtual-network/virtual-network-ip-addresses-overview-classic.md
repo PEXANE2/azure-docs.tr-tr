@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 207e728d25df9192f8a600b13d86330af8311700
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 7b197e1acf696c2ae6e919ee2eddacfb82ac3802
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058920"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646787"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure 'da IP adresi türleri ve ayırma yöntemleri (klasik)
 Diğer Azure kaynaklarıyla, şirket içi ağınızla ve İnternet’le iletişim kurmak için Azure kaynaklarına IP adresleri atayabilirsiniz. Azure 'da kullanabileceğiniz iki tür IP adresi vardır: genel ve özel.
@@ -28,7 +28,7 @@ Genel IP adresleri, Azure genel kullanıma yönelik hizmetler de dahil olmak üz
 Özel IP adresleri, ağınızı Azure 'a genişletmek için bir VPN ağ geçidi veya ExpressRoute bağlantı hattı kullandığınızda bir Azure sanal ağı (VNet), bir bulut hizmeti ve şirket içi ağınız içinde iletişim kurmak için kullanılır.
 
 > [!IMPORTANT]
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır:  [Kaynak Yöneticisi ve klasik](../resource-manager-deployment-model.md).  Bu makale klasik dağıtım modelini incelemektedir. Microsoft, en yeni dağıtımların Kaynak Yöneticisi kullanmasını önerir. [IP adresleri](virtual-network-ip-addresses-overview-arm.md) makalesini okuyarak kaynak YÖNETICISI içindeki IP adresleri hakkında bilgi edinin.
+> Azure’da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır:  [Resource Manager ve klasik](../resource-manager-deployment-model.md).  Bu makale klasik dağıtım modelini incelemektedir. Microsoft, en yeni dağıtımların Kaynak Yöneticisi kullanmasını önerir. [IP adresleri](virtual-network-ip-addresses-overview-arm.md) makalesini okuyarak kaynak YÖNETICISI içindeki IP adresleri hakkında bilgi edinin.
 
 ## <a name="public-ip-addresses"></a>Genel IP adresleri
 Genel IP adresleri, Azure kaynaklarının, [Redu](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [SQL veritabanları](../sql-database/sql-database-technical-overview.md)ve [Azure depolama](../storage/common/storage-introduction.md)gibi Azure önbelleği gibi Internet ve Azure genel kullanıma yönelik hizmetleriyle iletişim kurmasına olanak tanır.
@@ -88,7 +88,7 @@ Azure [Application Gateway](../application-gateway/application-gateway-introduct
 ### <a name="at-a-glance"></a>Bir bakışta
 Aşağıdaki tabloda, olası ayırma yöntemlerine (dinamik/statik) sahip her kaynak türü ve birden çok genel IP adresi atama yeteneği gösterilmektedir.
 
-| Resource | Dinamik | Statik | Birden çok IP adresi |
+| Kaynak | Dinamik | Statik | Birden çok IP adresi |
 | --- | --- | --- | --- |
 | Bulut hizmeti |Evet |Evet |Evet |
 | IaaS VM veya PaaS rol örneği |Evet |Hayır |Hayır |
@@ -138,7 +138,7 @@ Bir [Azure Internal Load Balancer](../load-balancer/load-balancer-internal-overv
 ### <a name="at-a-glance"></a>Bir bakışta
 Aşağıdaki tabloda, olası ayırma yöntemleri (dinamik/statik) ve birden çok özel IP adresi atama yeteneği ile her kaynak türü gösterilmektedir.
 
-| Resource | Dinamik | Statik | Birden çok IP adresi |
+| Kaynak | Dinamik | Statik | Birden çok IP adresi |
 | --- | --- | --- | --- |
 | VM ( *tek başına* bulut hizmeti veya VNET 'te) |Evet |Evet |Evet |
 | PaaS rol örneği ( *tek başına* bulut hizmeti veya VNET 'te) |Evet |Hayır |Hayır |
@@ -150,12 +150,12 @@ Aşağıdaki tabloda, abonelik başına Azure 'da IP adreslemeye uygulanan sın�
 
 |  | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
-| Genel IP adresleri (dinamik) |5 |Desteğe Başvurun |
-| Ayrılmış genel IP adresleri |20 |Desteğe Başvurun |
-| Dağıtım başına genel VIP (bulut hizmeti) |5 |Desteğe Başvurun |
-| Dağıtım başına özel VIP (ıLB) (bulut hizmeti) |1\. |1\. |
+| Genel IP adresleri (dinamik) |5 |desteğe başvurun |
+| Ayrılmış genel IP adresleri |20 |desteğe başvurun |
+| Dağıtım başına genel VIP (bulut hizmeti) |5 |desteğe başvurun |
+| Dağıtım başına özel VIP (ıLB) (bulut hizmeti) |1 |1 |
 
-Azure 'da [ağ için tüm sınırları](../azure-subscription-service-limits.md#networking-limits) okuduğunuzdan emin olun.
+Azure 'da [ağ için tüm sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) okuduğunuzdan emin olun.
 
 ## <a name="pricing"></a>Fiyatlandırma
 Çoğu durumda, genel IP adresleri ücretsizdir. Ek ve/veya statik genel IP adresleri kullanmak için kabul edilen bir ücret vardır. [Genel IP 'lerin fiyatlandırma yapısını](https://azure.microsoft.com/pricing/details/ip-addresses/)anladığınızdan emin olun.
@@ -163,14 +163,14 @@ Azure 'da [ağ için tüm sınırları](../azure-subscription-service-limits.md#
 ## <a name="differences-between-resource-manager-and-classic-deployments"></a>Kaynak Yöneticisi ve klasik dağıtımlar arasındaki farklılıklar
 Kaynak Yöneticisi ve klasik dağıtım modelindeki IP adresleme özelliklerinin bir karşılaştırması aşağıda verilmiştir.
 
-|  | Resource | Klasik | Resource Manager |
+|  | Kaynak | Klasik | Kaynak Yöneticisi |
 | --- | --- | --- | --- |
-| **Genel IP adresi** |***'NIN*** |ILPıP (yalnızca dinamik) olarak adlandırılır |Genel IP olarak adlandırılır (dinamik veya statik) |
+| **Genel IP Adresi** |***VM*** |ILPıP (yalnızca dinamik) olarak adlandırılır |Genel IP olarak adlandırılır (dinamik veya statik) |
 |  ||Bir IaaS VM 'sine veya bir PaaS rol örneğine atandı |VM 'nin NIC 'i ile ilişkili |
 |  |***Internet 'e yönelik yük dengeleyici*** |VIP (dinamik) veya Ayrılmış IP (statik) olarak adlandırılır |Genel IP olarak adlandırılır (dinamik veya statik) |
 |  ||Bir bulut hizmetine atandı |Yük dengeleyicinin ön uç yapılandırması ile ilişkili |
 |  | | | |
-| **Özel IP adresi** |***'NIN*** |DIP olarak adlandırılır |Özel IP adresi olarak adlandırılır |
+| **Özel IP adresi** |***VM*** |DIP olarak adlandırılır |Özel IP adresi olarak adlandırılır |
 |  ||Bir IaaS VM 'sine veya bir PaaS rol örneğine atandı |VM 'nin NIC 'sine atandı |
 |  |***İç yük dengeleyici (ıLB)*** |ILB 'ye atandı (dinamik veya statik) |ILB 'nin ön uç yapılandırmasına atandı (dinamik veya statik) |
 

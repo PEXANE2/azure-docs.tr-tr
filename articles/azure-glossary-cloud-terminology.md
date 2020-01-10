@@ -1,7 +1,7 @@
 ---
-title: Azure sözlüğünü - Azure sözlüğünü | Microsoft Docs
-description: Azure platformunda bulut terimleri için Azure sözlüğünü kullanın. Bu kısa Azure sözlüğünü tanımları için Azure genel bulut koşulları sağlar.
-keywords: Azure sözlüğü, bulut terimleri, Azure sözlüğünü, terim tanımları, bulut koşulları
+title: Azure sözlüğü-Azure sözlüğü | Microsoft Docs
+description: Azure platformunda bulut terminolojisini anlamak için Azure sözlüğünü kullanın. Bu kısa Azure sözlüğü, Azure için ortak bulut koşullarına yönelik tanımlar sağlar.
+keywords: Azure sözlüğü, bulut terminolojisi, Azure sözlüğü, terminoloji tanımları, bulut koşulları
 services: na
 documentationcenter: na
 author: MonicaRush
@@ -15,148 +15,148 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f5e0344cb1da86661ae87b5e45bd93dd181e7bb0
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60325434"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659568"
 ---
-# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure sözlüğünü: Azure platformunda bulut terimleri sözlüğü
+# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure sözlüğü: Azure platformunda bulut terminolojisi sözlüğü
 
-Microsoft Azure sözlüğünü kısa bir Azure platformu bulut terimleri Sözlüğü ' dir. Ayrıca bkz:
+Microsoft Azure sözlüğü, Azure platformunun bulut terminolojisi için kısa bir sözlüktür. Ayrıca bkz:
 
-* [Microsoft Azure ve Amazon Web Hizmetleri](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) -tanımları Azure hizmetlerini ve AWS karşılıkları.<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
-* [Bulut bilgi işlem terimleri](https://azure.microsoft.com/overview/cloud-computing-dictionary/) -genel sektör bulut terimleri.
+* Azure hizmetlerinin ve AWS karşılıkları [Microsoft Azure ve Amazon Web Services](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) tanımları.<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
+* [Bulut bilgi işlem terimleri](https://azure.microsoft.com/overview/cloud-computing-dictionary/) -genel sektör bulutu koşulları.
 
 ## <a name="account"></a>account
-Erişim ve bir Azure aboneliğini yönetmek için kullanılan bir hesap. Aşağıdakilerden herhangi birinin bir hesap olmasına karşın, genellikle bir Azure hesabı adlandırılır: var olan bir iş, okul veya kişisel Microsoft hesabı veya bir Office 365 kullanıcı adı ve parola. İçin kaydolduğunuzda, bir Azure aboneliğini yönetmek için bir hesap oluşturabilirsiniz [ücretsiz deneme sürümü](https://azure.microsoft.com).  
-Bkz: [Office 365 hesabınızı kullanarak bir Azure aboneliği için kaydolun](billing/billing-use-existing-office-365-account-azure-subscription.md) ve [oturum açmak için kullanabileceğiniz hesaplar](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+Bir Azure aboneliğine erişmek ve bunları yönetmek için kullanılan bir hesap. Genellikle bir hesap şu şekilde olabilir: mevcut bir iş, okul veya kişisel Microsoft hesabı ya da Office 365 Kullanıcı adı ve parolası. [Ücretsiz denemeye](https://azure.microsoft.com)kaydolduğunuzda bir Azure aboneliğini yönetmek için de bir hesap oluşturabilirsiniz.  
+[Oturum açmak için kullanabileceğiniz](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) [Office 365 hesabınız ve hesaplarınız ile bir Azure aboneliğine kaydolma](billing/billing-use-existing-office-365-account-azure-subscription.md) konusuna bakın.
 
 ## <a name="api-app"></a>API uygulaması
-Başka bir ad [App Service uygulaması](#app-service-app).
+[App Service uygulama](#app-service-app)için başka bir ad.
 
 ## <a name="app-service-app"></a>App Service uygulaması
-İşlem kaynakları, [Azure App Service](app-service/overview.md) bir Web sitesi veya web uygulamasını web API barındırmak için veya [mobil uygulama arka ucu](app-service-mobile/app-service-mobile-value-prop.md). App Service uygulamalarını da denir *uygulama hizmetleri*, *web uygulamaları*, *API apps*, ve *mobil uygulamalar*.
+[Azure App Service](app-service/overview.md) bir Web sitesi veya Web uygulaması, Web API 'si veya [mobil uygulama arka ucu](app-service-mobile/app-service-mobile-value-prop.md)barındırmak için sağladığı işlem kaynakları. App Service uygulamalar *uygulama hizmetleri*, *Web uygulamaları*, *API uygulamaları*ve *mobil uygulamalar*olarak da adlandırılır.
 
-## <a name="availability-set"></a>Kullanılabilirlik kümesi
-Uygulama yedeklilik ve güvenilirliği sağlamak için birlikte yönetilen sanal makineler koleksiyonudur. Bir kullanılabilirlik kümesi kullanımı ya da planlı veya Plansız bakım olayı sırasında en az bir sanal makine kullanılabilir olmasını sağlar.  
-Bkz: [Windows sanal makinelerin kullanılabilirliğini yönetme](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ve [Linux sanal makinelerin kullanılabilirliğini yönetme](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## <a name="availability-set"></a>kullanılabilirlik kümesi
+Uygulama artıklığı ve güvenilirliği sağlamak için birlikte yönetilen bir sanal makine koleksiyonu. Kullanılabilirlik kümesi kullanımı, planlı veya plansız bir bakım olayı sırasında en az bir sanal makinenin kullanılabilir olmasını sağlar.  
+Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ve [Linux sanal makinelerinin kullanılabilirliğini yönetme](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="classic-model"></a>Azure Klasik dağıtım modeli
-İki birini [dağıtım modelleri](resource-manager-deployment-model.md) (Azure Resource Manager yeni modeli olduğundan) Azure kaynakları dağıtmak için kullanılır. Bazı Azure Hizmetleri yalnızca Resource Manager dağıtım modelini destekleyen, bazı yalnızca klasik dağıtım modelini destekler ve bazı her ikisini de destekler. Her bir Azure hizmeti için belgelere destekledikleri hangi modellere belirtir.
+## <a name="classic-model"></a>Azure klasik dağıtım modeli
+Azure 'da kaynak dağıtmak için kullanılan iki [dağıtım modelinden](resource-manager-deployment-model.md) biri (yeni model Azure Resource Manager). Bazı Azure hizmetleri yalnızca Kaynak Yöneticisi dağıtım modelini destekler, bazıları yalnızca klasik dağıtım modelini destekler ve her ikisini de destekler. Her Azure hizmeti için belgeler, hangi model destekler destekledikleri belirler.
 
-## <a name="cli"></a>Azure komut satırı arabirimi (CLI)
-Windows, macOS ve Linux'tan Azure hizmetlerini yönetmek için kullanılan bir komut satırı arabirimi.  Bazı hizmetler ve hizmet özellikleri yalnızca PowerShell veya CLI aracılığıyla yönetilebilir. Bkz: [Azure CLI](/cli/azure)
+## <a name="cli"></a>Azure komut satırı arabirimi (CLı)
+Windows, macOS ve Linux 'tan Azure hizmetlerini yönetmek için kullanılabilen bir komut satırı arabirimi.  Bazı hizmetler veya hizmet özellikleri yalnızca PowerShell veya CLı aracılığıyla yönetilebilir. Bkz. [Azure CLI](/cli/azure)
 
 ## <a name="powershell"></a>Azure PowerShell
-Windows bilgisayarlarından Azure hizmetlerini bir komut satırı üzerinden yönetmek için bir komut satırı arabirimi. Bazı hizmetler ve hizmet özellikleri yalnızca PowerShell veya CLI aracılığıyla yönetilebilir.
-Bkz: [nasıl Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview)
+Windows bilgisayarlardan bir komut satırı aracılığıyla Azure hizmetlerini yönetmek için bir komut satırı arabirimi. Bazı hizmetler veya hizmet özellikleri yalnızca PowerShell veya CLı aracılığıyla yönetilebilir.
+Bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview)
 
 ## <a name="arm-model"></a>Azure Resource Manager dağıtım modeli
-İki birini [dağıtım modelleri](resource-manager-deployment-model.md) (diğeri ise Klasik dağıtım modeli) Microsoft Azure kaynakları dağıtmak için kullanılır. Bazı Azure Hizmetleri yalnızca Resource Manager dağıtım modelini destekleyen, bazı yalnızca klasik dağıtım modelini destekler ve bazı her ikisini de destekler. Her bir Azure hizmeti için belgelere destekledikleri hangi modellere belirtir.
+Microsoft Azure içinde kaynak dağıtmak için kullanılan iki [dağıtım modelinden](resource-manager-deployment-model.md) biri (diğer klasik dağıtım modelidir). Bazı Azure hizmetleri yalnızca Kaynak Yöneticisi dağıtım modelini destekler, bazıları yalnızca klasik dağıtım modelini destekler ve her ikisini de destekler. Her Azure hizmeti için belgeler, hangi model destekler destekledikleri belirler.
 
-## <a name="fault-domain"></a>Hata etki alanı
-Aynı anda büyük olasılıkla başarısız olabilir bir kullanılabilirlik kümesindeki sanal makinelerin koleksiyonu. Bir örnek, ortak bir güç kaynağı ve ağ anahtarını paylaşan bir raf üstü makinelerinizde grubudur. Azure'da sanal makineler bir kullanılabilirlik kümesindeki birden çok hata etki alanlarına otomatik olarak ayrılır.  
-Bkz: [Windows sanal makinelerin kullanılabilirliğini yönetme](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) veya [Linux sanal makinelerin kullanılabilirliğini yönetme](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
+## <a name="fault-domain"></a>hata etki alanı
+Aynı anda başarısız olabilecek bir kullanılabilirlik kümesindeki sanal makinelerin toplanması. Bir raf içindeki ortak bir güç kaynağı ve ağ anahtarını paylaşan bir makine grubudur. Azure 'da, bir kullanılabilirlik kümesindeki sanal makineler birden çok hata etki alanı arasında otomatik olarak ayrılır.  
+Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) veya [Linux sanal makinelerinin kullanılabilirliğini yönetme](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
 
-## <a name="geo"></a>Coğrafi
-Genellikle iki veya daha fazla bölge içeren veri yerleşikliği için tanımlı bir sınırı. Sınırları içinde veya Ulusal sınırların ötesinde olabilir ve vergi düzenlemeleriyle etkilenir. Her coğrafi en az bir bölge vardır. Asya Pasifik ve Japonya coğrafyalar örnekleridir. Olarak da adlandırılan *Coğrafya*.  
-Bkz: [Azure bölgeleri](best-practices-availability-paired-regions.md)
+## <a name="geo"></a>Co
+Genellikle iki veya daha fazla bölge içeren veri yerleşimi için tanımlanmış sınır. Sınırlar Ulusal kenarlıkların içinde veya ötesinde olabilir ve vergi Yönetmeliği etkilenebilir. Her coğrafi bölgede en az bir bölge vardır. Coğrafyalar örnekleri Asya Pasifik ve Japonya örnekleridir. *Coğrafya*da denir.  
+Bkz. [Azure bölgeleri](best-practices-availability-paired-regions.md)
 
-## <a name="geo-replication"></a>Coğrafi çoğaltma
-Bloblar, tablolar ve Kuyruklar bölgesel çift içinde gibi içerik otomatik olarak çoğaltma işlemi.  
-Bkz: [Azure SQL veritabanı için etkin coğrafi çoğaltma](sql-database/sql-database-geo-replication-overview.md)
+## <a name="geo-replication"></a>coğrafi çoğaltma
+Bir bölge çiftindeki Bloblar, tablolar ve kuyruklar gibi içeriği otomatik olarak çoğaltma işlemi.  
+Bkz. [Azure SQL veritabanı Için etkin coğrafi çoğaltma](sql-database/sql-database-geo-replication-overview.md)
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
 ## <a name="image"></a>image
-Herhangi bir sayıda sanal makineler oluşturmak için kullanılan uygulama yapılandırması ve işletim sistemi içeren bir dosya. Azure'da görüntülerinin iki tür vardır: Sanal makine görüntüsünü ve işletim sistemi görüntüsü. Bir VM görüntüsü, işletim sistemi ve görüntü oluşturulduğunda bir sanal makineye bağlı tüm diskleri içerir. Yalnızca genelleştirilmiş işletim sistemi hiçbir veri disk yapılandırmaları olan bir işletim sistemi görüntüsü içerir.  
-Bkz: [seçin PowerShell veya CLI ile azure'da Windows sanal makine görüntülerine erişin ve](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Herhangi bir sayıda sanal makine oluşturmak için kullanılabilen işletim sistemini ve uygulama yapılandırmasını içeren bir dosya. Azure 'da iki tür görüntü vardır: VM görüntüsü ve işletim sistemi görüntüsü. Bir VM görüntüsü, bir işletim sistemini ve görüntü oluşturulduğunda bir sanal makineye bağlı tüm diskleri içerir. Bir IŞLETIM sistemi görüntüsü yalnızca veri diski yapılandırmasına sahip olmayan genelleştirilmiş bir işletim sistemi içerir.  
+Bkz. [PowerShell veya CLI Ile Azure 'Da Windows sanal makine görüntülerine gitme ve seçimi seçme](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="limits"></a>sınırları
-Oluşturulabilecek kaynakları ya da elde edilebilir performans Kıyaslama sayısı. Sınırlar genellikle abonelikler, hizmetler ve teklifleri ile ilişkilidir.  
-Bkz: [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](azure-subscription-service-limits.md)
+## <a name="limits"></a>sınırlar
+Oluşturulabilen kaynak sayısı veya elde edilebilir performans kıyaslaması. Sınırlar genellikle abonelikler, hizmetler ve tekliflerle ilişkilendirilir.  
+Bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](azure-resource-manager/management/azure-subscription-service-limits.md)
 
-## <a name="load-balancer"></a>Yük Dengeleyici
-Gelen trafiği bir ağdaki bilgisayarlar arasında dağıtan bir kaynaktır. Azure'da bir yük dengeleyici sanal makineleri bir yük dengeleyici kümesinde tanımlanan trafiği dağıtır. A [yük dengeleyici](load-balancer/load-balancer-overview.md) internet'e yönelik olabilir ya da iç olabilir.  
+## <a name="load-balancer"></a>yük dengeleyici
+Bir ağdaki bilgisayarlar arasında gelen trafiği dağıtan bir kaynaktır. Azure 'da, yük dengeleyici trafiği bir yük dengeleyici kümesinde tanımlanan sanal makinelere dağıtır. [Yük dengeleyici](load-balancer/load-balancer-overview.md) internet 'e yönelik olabilir veya iç olabilir.  
 
 ## <a name="mobile-app"></a>Mobil uygulama
-Başka bir ad [App Service uygulaması](#app-service-app).
+[App Service uygulama](#app-service-app)için başka bir ad.
 
-## <a name="offer"></a>Teklif
-Fiyatlandırma, krediler ve bir Azure aboneliği için geçerli olan ilgili koşulları.  
-Bkz: [Azure Teklif Ayrıntıları sayfası](https://azure.microsoft.com/support/legal/offer-details/)
+## <a name="offer"></a>teklif
+Fiyatlandırma, krediler ve bir Azure aboneliği için geçerli olan ilgili koşullar.  
+Bkz. [Azure teklif ayrıntıları sayfası](https://azure.microsoft.com/support/legal/offer-details/)
 
 ## <a name="portal"></a>portal
-Dağıtma ve Azure hizmetlerini yönetmek için kullanılan güvenli web portalı.
+Azure hizmetlerini dağıtmak ve yönetmek için kullanılan güvenli Web portalı.
 
-## <a name="region"></a>bölge
-Çapraz Ulusal Kenarlıklar ve bir veya daha fazla veri içeren bir coğrafi içindeki alan. Fiyatlandırma, bölgesel hizmetler ve teklif türleri bölge düzeyinde kullanıma sunulur. Bir bölge, genellikle birkaç yüz mil kadar uzaklıkta olabilecek başka bir bölgeyle eşleştirilir. Bölgesel çiftler, olağanüstü durum kurtarma ve yüksek kullanılabilirlik senaryoları için bir mekanizma kullanılabilir. Olarak da adlandırılan *konumu*.  
-Bkz: [Azure bölgeleri](best-practices-availability-paired-regions.md)
+## <a name="region"></a>bölgesinde kullanılamıyor
+Bir coğrafi alan içindeki ve bir veya daha fazla veri merkezi içeren bir alan. Fiyatlandırma, bölgesel hizmetler ve teklif türleri bölge düzeyinde sunulur. Bir bölge genellikle başka bir bölgeyle eşleştirilmiştir ve bu, birkaç yüz mil 'e kadar sürebilir. Bölgesel çiftler, olağanüstü durum kurtarma ve yüksek kullanılabilirlik senaryoları için bir mekanizma olarak kullanılabilir. *Konum*olarak da adlandırılır.  
+Bkz. [Azure bölgeleri](best-practices-availability-paired-regions.md)
 
 ## <a name="resource"></a>resource
-Azure çözümünüzü parçası olan bir öğe. Her bir Azure hizmeti veritabanları veya sanal makineler gibi kaynakların farklı türlerini dağıtmanıza olanak sağlar.   
-Bkz: [Azure Resource Manager'a genel bakış](azure-resource-manager/resource-group-overview.md)
+Azure çözümünüzün bir parçası olan bir öğe. Her Azure hizmeti, veritabanları veya sanal makineler gibi farklı türlerde kaynakları dağıtmanıza olanak sağlar.   
+Bkz. [Azure Resource Manager genel bakış](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="resource-group"></a>kaynak grubu
-Kaynak bir uygulama için ilgili kaynakları tutan Yöneticisi'nde bir kapsayıcı. Kaynak grubunun tüm kaynaklar için bir uygulama veya mantıksal olarak birlikte gruplandırılmış kaynaklar dahil edebilirsiniz. Kuruluş için önemli olan faktörleri temel alarak kaynakları kaynak gruplarına nasıl ayıracağınızı belirleyebilirsiniz.  
-Bkz: [Azure Resource Manager'a genel bakış](azure-resource-manager/resource-group-overview.md)
+Bir uygulama için ilgili kaynakları tutan Kaynak Yöneticisi bir kapsayıcı. Kaynak grubu bir uygulamanın tüm kaynaklarını veya yalnızca mantıksal olarak birlikte gruplanmış kaynakları içerebilir. Kuruluş için önemli olan faktörleri temel alarak kaynakları kaynak gruplarına nasıl ayıracağınızı belirleyebilirsiniz.  
+Bkz. [Azure Resource Manager genel bakış](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="arm-template"></a>Resource Manager şablonu
-Bir veya daha fazla Azure kaynakları bildirimli olarak tanımlayan ve dağıtılan kaynaklar arasındaki bağımlılıkları tanımlayan bir JSON dosyası. Şablon, kaynakları tutarlı ve sürekli olarak dağıtmak için kullanılabilir.  
-Bkz: [Azure Resource Manager şablonları yazma](resource-group-authoring-templates.md)
+Bir veya daha fazla Azure kaynağını bildirimli olarak tanımlayan ve dağıtılan kaynaklar arasındaki bağımlılıkları tanımlayan bir JSON dosyası. Şablon, kaynakları tutarlı ve sürekli olarak dağıtmak için kullanılabilir.  
+Bkz. [yazma Azure Resource Manager şablonları](resource-group-authoring-templates.md)
 
-## <a name="resource-provider"></a>Kaynak sağlayıcısı
-Kaynakları sağlayan bir hizmet dağıtma ve Resource Manager ile yönetin. Her kaynak sağlayıcısı dağıtılan kaynaklarla çalışmaya yönelik işlemler sunar. Kaynak sağlayıcıları, Azure portalı, Azure PowerShell ve çeşitli programlama SDK'ları erişilebilir.  
-Bkz: [Azure Resource Manager'a genel bakış](azure-resource-manager/resource-group-overview.md)
+## <a name="resource-provider"></a>kaynak sağlayıcısı
+Kaynak Yöneticisi aracılığıyla dağıtabileceğiniz ve yönetebileceğiniz kaynakları sağlayan bir hizmet. Her kaynak sağlayıcısı dağıtılan kaynaklarla çalışmaya yönelik işlemler sunar. Kaynak sağlayıcılarına Azure portal, Azure PowerShell ve birkaç programlama SDK 'Ları aracılığıyla erişilebilir.  
+Bkz. [Azure Resource Manager genel bakış](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="role"></a>role
-Kullanıcılar, gruplar ve hizmetlere atanabilen erişimi denetlemek için bir anlamına gelir. Rolleri gibi oluşturmak, yönetmek ve Azure kaynaklarında okuma eylemleri gerçekleştiremezsiniz.  
-Bkz: [RBAC: Yerleşik roller](role-based-access-control/built-in-roles.md)
+Kullanıcılara, gruplara ve hizmetlere atanabilen erişimi denetlemek için bir yol. Roller, Azure kaynakları üzerinde oluşturma, yönetme ve okuma gibi eylemleri gerçekleştirebilir.  
+Bkz [. RBAC: yerleşik roller](role-based-access-control/built-in-roles.md)
 
-## <a name="sla"></a>Hizmet düzeyi sözleşmesi (SLA)
-Çalışma süresi ve bağlantı için Microsoft'un taahhütleri açıklar sözleşme. Her bir Azure hizmeti, belirli bir SLA yoktur.  
-Bkz: [hizmet düzeyi sözleşmeleri](https://azure.microsoft.com/support/legal/sla/)
+## <a name="sla"></a>hizmet düzeyi sözleşmesi (SLA)
+Microsoft 'un çalışma süresi ve bağlantı taahhütlerini açıklayan anlaşma. Her Azure hizmetinin belirli bir SLA 'sı vardır.  
+Bkz. [hizmet düzeyi sözleşmeleri](https://azure.microsoft.com/support/legal/sla/)
 
 ## <a name="sas"></a>paylaşılan erişim imzası (SAS)
-Hesap anahtarınız açığa çıkarmadan bir kaynağa sınırlı erişim vermenizi sağlayan bir imza. Örneğin, [Azure depolama kullanan SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) blobları gibi nesneleri istemci erişim vermek için. [IOT Hub kullanan SAS](iot-hub/iot-hub-devguide-security.md#security-tokens) cihazları telemetri göndermesine izin vermek için.
+Hesap anahtarınızı açığa çıkarmadan bir kaynağa sınırlı erişim vermenizi sağlayan bir imza. Örneğin, Azure depolama, blob 'lar gibi nesnelere istemci erişimi sağlamak için [SAS kullanır](storage/common/storage-dotnet-shared-access-signature-part-1.md) . IoT Hub, cihazları telemetri göndermek için izin vermek üzere [SAS kullanır](iot-hub/iot-hub-devguide-security.md#security-tokens) .
 
 ## <a name="storage-account"></a>depolama hesabı
-Azure Storage Azure Blob, kuyruk, tablo ve dosya hizmetleri sunan bir hesap erişim. Depolama hesabı adı, Azure Storage veri nesneleriniz için benzersiz ad alanı tanımlar.  
-Bkz: [Azure depolama hesapları hakkında](storage/common/storage-create-storage-account.md)
+Azure depolama 'da Azure blob, kuyruk, tablo ve dosya hizmetlerine erişmenizi sağlayan bir hesap. Depolama hesabı adı, Azure Storage veri nesneleri için benzersiz ad alanını tanımlar.  
+Bkz. [Azure depolama hesapları hakkında](storage/common/storage-create-storage-account.md)
 
 ## <a name="subscription"></a>aboneliği
-Bir müşteri sözleşme ile Microsoft'un Azure Hizmetleri elde etmelerini sağlayan. Abonelik fiyatlandırması ve ilgili koşulların, seçilen abonelik için teklif tarafından yönetilir.
-Bkz: [Microsoft çevrimiçi Abonelik Sözleşmesi](https://azure.microsoft.com/support/legal/subscription-agreement/) ve [Azure aboneliklerinin Azure Active Directory ile ilişkisi](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+Microsoft 'un Azure hizmetlerini almasına olanak tanıyan bir müşterinin sözleşmesi. Abonelik fiyatlandırması ve ilgili şartlar, abonelik için seçilen teklif tarafından yönetilir.
+Bkz. [Microsoft çevrimiçi abonelik sözleşmesi](https://azure.microsoft.com/support/legal/subscription-agreement/) ve [Azure abonelikleriyle ilişkili Azure Active Directory](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 ## <a name="tag"></a>tag
-Bir dizin oluşturma terim yönetme ve fatura gereksinimlerinize göre kaynakları kategorilere ayırmanızı sağlar. Karmaşık bir kaynak koleksiyonu olduğunda, bu varlıkları en anlamlı bir şekilde görselleştirmeniz etiketleri kullanabilirsiniz. Örneğin, kuruluşunuzda benzer görevleri üstlenen veya aynı departmana ait olan kaynakları etiketleyebilirsiniz.  
-Bkz: [etiketleri kullanarak Azure kaynaklarınızı düzenleme](resource-group-using-tags.md)
+Kaynakları yönetmek veya faturalandırmaya yönelik gereksinimlerinize göre sınıflandırmanızı sağlayan bir dizin oluşturma terimi. Karmaşık bir kaynak koleksiyonunuz olduğunda, bu varlıkları en anlamlı hale getiren şekilde görselleştirmek için Etiketler kullanabilirsiniz. Örneğin, kuruluşunuzda benzer görevleri üstlenen veya aynı departmana ait olan kaynakları etiketleyebilirsiniz.  
+Bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](resource-group-using-tags.md)
 
-## <a name="update-domain"></a>Güncelleme etki alanı
-Sanal makineler bir kullanılabilirlik kümesinde aynı anda güncelleştirilir koleksiyonu. Sanal makineler aynı güncelleştirme etki alanında, planlanan bakım sırasında birlikte yeniden başlatılır. Azure, aynı anda birden çok güncelleştirme etki alanı hiçbir zaman yeniden başlatılır. Bir yükseltme etki alanı da bilinir.  
-Bkz: [Windows sanal makinelerin kullanılabilirliğini yönetme](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ve [Linux sanal makinelerin kullanılabilirliğini yönetme](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## <a name="update-domain"></a>etki alanını güncelleştir
+Aynı anda güncelleştirilmiş bir kullanılabilirlik kümesindeki sanal makinelerin toplanması. Aynı güncelleştirme etki alanındaki sanal makineler, planlı bakım sırasında birlikte yeniden başlatılır. Azure tek seferde birden çok güncelleştirme etki alanını yeniden başlatmaz. Yükseltme etki alanı da denir.  
+Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ve [Linux sanal makinelerinin kullanılabilirliğini yönetme](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="vm"></a>Sanal makine
-Bir işletim sistemini çalıştıran bir fiziksel bilgisayar yazılım uygulamasıdır. Birden çok sanal makine aynı donanımda aynı anda çalıştırabilirsiniz. Azure'da sanal makineler bir çeşitli boyutlarda kullanılabilir.  
-Bkz: [sanal makineler belgeleri](https://azure.microsoft.com/documentation/services/virtual-machines/)
+## <a name="vm"></a>sanal makine
+Bir işletim sistemi çalıştıran fiziksel bir bilgisayarın yazılım uygulamasıdır. Aynı donanımda birden çok sanal makine aynı anda çalışabilir. Azure 'da, sanal makineler çeşitli boyutlarda kullanılabilir.  
+Bkz. [sanal makineler belgeleri](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
 ## <a name="vm-extension"></a>sanal makine uzantısı
-Bir kaynak, davranış veya diğer programları iş ya da etkileşime olanağı ile çalışan bir bilgisayara sağlamak ya da yardımcı olan özellikler uygular. Örneğin, VM erişimi uzantısı sıfırlama veya bir Azure sanal makinesinde uzaktan erişim değerleri değiştirmek için kullanabilirsiniz.
+Diğer programların çalışmasına yardımcı olan veya çalışan bir bilgisayarla etkileşime girebilme olanağı sağlayan davranışlar veya özellikler uygulayan bir kaynaktır. Örneğin, bir Azure sanal makinesindeki uzaktan erişim değerlerini sıfırlamak veya değiştirmek için VM erişimi uzantısını kullanabilirsiniz.
 <!-- This definition seems obscure to me; maybe a list of examples would work better than a conceptual definition? -->
-Bkz: [sanal makine uzantıları ve özellikleri (Windows) hakkında](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) veya [ilgili sanal makine uzantıları ve özellikleri (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Bkz. [sanal makine uzantıları ve özellikleri (Windows)](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) veya [sanal makine uzantıları ve özellikleri hakkında (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="vnet"></a>Sanal ağ
-Bir ağ, diğer tüm Azure kiracılardan yalıtılmış Azure kaynaklarınızı arasında bağlantı sağlar. Bir [Azure VPN ağ geçidi](vpn-gateway/vpn-gateway-about-vpngateways.md) bir sanal ağ ve şirket içi ağ arasında sanal ağlar arasında bağlantı sağlar. Ayrıca, IP adres bloklarını, DNS ayarları, güvenlik ilkeleri ve rota tabloları sanal ağ içinde tam olarak denetleyebilirsiniz.  
-Bkz: [sanal ağa genel bakış](virtual-network/virtual-networks-overview.md)  
+## <a name="vnet"></a>sanal ağ
+Diğer tüm Azure kiracılarından yalıtılmış Azure kaynaklarınız arasında bağlantı sağlayan bir ağ. [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) , sanal ağlar ve bir sanal ağ ile şirket içi ağ arasında bağlantı kurmanıza olanak tanır. IP adresi bloklarını, DNS ayarlarını, güvenlik ilkelerini ve bir sanal ağ içindeki yol tablolarını tam olarak denetleyebilirsiniz.  
+Bkz. [sanal ağa genel bakış](virtual-network/virtual-networks-overview.md)  
 
 ## <a name="web-app"></a>Web uygulaması
-Başka bir ad [App Service uygulaması](#app-service-app).
+[App Service uygulama](#app-service-app)için başka bir ad.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Azure’ı kullanmaya başlama](https://azure.microsoft.com/get-started/)
-* [Bulut Kaynak Merkezi](https://azure.microsoft.com/resources/)  
+* [Bulut kaynak merkezi](https://azure.microsoft.com/resources/)  
 * [İş uygulamanız için Azure](https://azure.microsoft.com/overview/business-apps-on-azure/)
 * [Veri merkezinizde Azure](https://azure.microsoft.com/overview/business-apps-on-azure/)
 

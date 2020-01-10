@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 1679862b1660d3c8b2505c6e0c54f203f5d4665d
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 18f4edf5cc63a448779423cc1b302130b4b80724
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383527"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75692522"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Azure Container Instance kaynağı oluşturma
 
@@ -22,7 +22,7 @@ ms.locfileid: "74383527"
 
 2. **Temel bilgiler** sekmesinde, aşağıdaki ayrıntıları girin:
 
-    |Ayar|Value|
+    |Ayar|Değer|
     |--|--|
     |Abonelik|Aboneliğinizi seçin.|
     |Kaynak grubu|Kullanılabilir kaynak grubunu seçin veya `cognitive-services`gibi yeni bir tane oluşturun.|
@@ -35,18 +35,18 @@ ms.locfileid: "74383527"
 
 3. **Ağ** sekmesinde, aşağıdaki ayrıntıları girin:
 
-    |Ayar|Value|
+    |Ayar|Değer|
     |--|--|
     |Bağlantı Noktaları|TCP bağlantı noktasını `5000`olarak ayarlayın. 5000 numaralı bağlantı noktasında kapsayıcıyı kullanıma sunar.|
 
 4. **Gelişmiş** sekmesinde, Azure Container Instance kaynağının kapsayıcı faturalama ayarları Için gereken **ortam değişkenlerini** girin:
 
-    | Anahtar | Value |
+    | Anahtar | Değer |
     |--|--|
     |`apikey`|Kaynağın **anahtarlar** sayfasından kopyalanmış. Boşluk veya kesik çizgi olmayan 32 alfasayısal karakter dizesidir `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
     |`billing`|Kaynağın **genel bakış** sayfasından kopyalanmış.|
     |`eula`|`accept`|
 
-1. **Gözden geçir ve oluştur** 'a tıklayın
-1. Doğrulama işleminden sonra oluşturma işlemini tamamladıktan sonra **Oluştur** ' a tıklayın.
-1. Kaynak başarıyla dağıtıldığında,
+5. **Gözden geçir ve oluştur** 'a tıklayın
+6. Doğrulama işleminden sonra oluşturma işlemini tamamladıktan sonra **Oluştur** ' a tıklayın.
+7. Kaynak başarıyla dağıtıldığında,

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b448099dab0e79dca38310396896be46cf2e0ff6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826268"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647722"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT Çözüm Hızlandırıcıları için sık sorulan sorular
 
@@ -23,10 +23,10 @@ Ayrıca bkz. [bağlı fabrikada özgü SSS](iot-accelerators-faq-cf.md) ve [uzak
 
 Kaynak kodu aşağıdaki GitHub depolarında depolanır:
 
-* [Uzaktan İzleme çözümü hızlandırıcısı (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [Uzaktan İzleme çözümü hızlandırıcısı (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
-* [Tahmine dayalı bakım çözüm hızlandırıcısı](https://github.com/Azure/azure-iot-predictive-maintenance)
-* [Bağlı Fabrika çözüm hızlandırıcısı](https://github.com/Azure/azure-iot-connected-factory)
+* [Uzaktan Izleme Çözüm Hızlandırıcısı (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
+* [Uzaktan Izleme Çözüm Hızlandırıcısı (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+* [Tahmine dayalı bakım Çözüm Hızlandırıcısı](https://github.com/Azure/azure-iot-predictive-maintenance)
+* [Bağlı fabrika çözümü Hızlandırıcısı](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Çözüm hızlandırıcılarına yönelik cihaz istemcileri geliştirmek için hangi SDK’ları kullanabilirim?
 
@@ -82,7 +82,7 @@ Evet. Bugün mevcut olan herhangi bir çözüm, Azure aboneliğinizde çalışma
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Bir abonelikte kaç IoT Hub örneği sağlayabilirim?
 
-Varsayılan olarak, [abonelik başına 10 IoT Hub](../azure-subscription-service-limits.md#iot-hub-limits)'ı sağlayabilirsiniz. Bu sınırı yükseltmek için bir [Azure destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oluşturabilirsiniz. Sonuç olarak, her çözüm Hızlandırıcısı yeni bir IoT Hub sağladığından, belirli bir abonelikte en fazla 10 çözüm hızlandırıcıyı sağlayabilirsiniz.
+Varsayılan olarak, [abonelik başına 10 IoT Hub](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-limits)'ı sağlayabilirsiniz. Bu sınırı yükseltmek için bir [Azure destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oluşturabilirsiniz. Sonuç olarak, her çözüm Hızlandırıcısı yeni bir IoT Hub sağladığından, belirli bir abonelikte en fazla 10 çözüm hızlandırıcıyı sağlayabilirsiniz.
 
 ### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Bir abonelikte kaç Azure Cosmos DB örneği sağlayabilirim?
 

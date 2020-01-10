@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7bdd1e1922d9d8845a8187cabb3fd39af4694ab
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 75fe9c8587a15ed37366dceda05b5befb353ebb3
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077908"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647518"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>SAP NetWeaver yüksek kullanılabilirliği 'ni bir Windows Yük devretme kümesine ve Azure 'daki SAP Ass/SCS örnekleri için dosya paylaşımında yükler
 
@@ -36,8 +36,8 @@ ms.locfileid: "70077908"
 
 [sap-powershell-scrips]:https://github.com/Azure-Samples/sap-powershell
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [s2d-in-win-2016]:https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview
 [sofs-overview]:https://technet.microsoft.com/library/hh831349(v=ws.11).aspx
@@ -193,17 +193,17 @@ ms.locfileid: "70077908"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
 Bu makalede, Windows Server yük devretme kümesi (WSFC) ile Azure 'da yüksek kullanılabilirliğe sahip bir SAP sisteminin nasıl yükleneceği ve yapılandırılacağı ve SAP Ass/SCS örneklerinin kümelenmesi için bir seçenek olarak Genişleme Dosya Sunucusu açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Yüklemeye başlamadan önce aşağıdaki makaleleri gözden geçirin:
 
-* [Mimari Kılavuzu: Dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma][sap-high-availability-guide-wsfc-file-share]
+* [Mimari Kılavuzu: dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği kümesi][sap-high-availability-guide-wsfc-file-share]
 
 * [SAP Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşma kullanarak Azure altyapı SAP yüksek kullanılabilirliği hazırlama][sap-high-availability-infrastructure-wsfc-file-share]
 
@@ -231,13 +231,13 @@ Kurulum, kullandığınız DBMS 'ye bağlı olarak farklılık gösterdiğinden,
 
 SOFS kümesinde aşağıdaki birim ve dosya payını oluşturun:
 
-* SOFS küme paylaşılan `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` birimi (CSV) üzerinde SAP globalhost dosya yapısı
+* SOFS küme paylaşılan biriminde (CSV) SAP GLOBALHOST dosyası `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` yapısı
 
 * SAPMNT dosya paylaşma
 
 * SAPMNT dosya paylaşımında ve için tam denetim ile klasör üzerinde güvenlik ayarlayın:
-    * Etki alanı > \sap_\<SID > _GlobalAdmin Kullanıcı grubu \<
-    * SAP ascs/SCS küme düğümü bilgisayar nesneleri \<etki alanı > \clusternode1 $ ve \<etki alanı > \clusternode2 $
+    * \<etkı alanı > \ SAP_\<SID > _GlobalAdmin Kullanıcı grubu
+    * SAP ASCS/SCS küme düğümü bilgisayar nesneleri \<etkı alanı > \ClusterNode1 $ ve \<etkı alanı > \ClusterNode2 $
 
 Yansıtma dayanıklılığı olan bir CSV birimi oluşturmak için, SOFS küme düğümlerinden birinde aşağıdaki PowerShell cmdlet 'ini yürütün:
 
@@ -299,7 +299,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 İlk küme düğümüne bir SAP ASCS/SCS örneği yükler. Örneği yüklemek için SAP SWPM yükleme aracında şuraya gidin:
 
-**\<Ürün >**  >  >  **DBMS>\<** yükleme > uygulama sunucusu ABAP (veya Java) **yüksek kullanılabilirlik sistemi >**  >  **Yoks/SCS örneği** **İlk küme düğümü.**  > 
+**\<ürün >**  >  **\<DBMS** > > **yükleme** > **uygulama sunucusu ABAP** (ya da **Java**) > **yüksek kullanılabilirlik sistemi** > **ascs/SCS örneği** > **ilk küme düğümünü**.
 
 ### <a name="add-a-probe-port"></a>Araştırma bağlantı noktası ekle
 
@@ -309,21 +309,21 @@ PowerShell kullanarak SAP-SID-IP araştırma bağlantı noktasını bir SAP küm
 
 İkinci küme düğümüne bir SAP ASCS/SCS örneği yükler. Örneği yüklemek için SAP SWPM yükleme aracında şuraya gidin:
 
-**\<Ürün >**  >  >  **DBMS>\<** yükleme > uygulama sunucusu ABAP (veya Java) **yüksek kullanılabilirlik sistemi >**  >  **Yoks/SCS örneği** **Ek küme düğümü.**  > 
+**\<ürün >**  >  **\<DBMS** > > **yükleme** > **uygulama sunucusu ABAP** (ya da **Java**) > **yüksek kullanılabilirlik sistemi** > **ascs/SCS örneği** > **ek küme düğümü**.
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>SAP ASCS/SCS örnek profilini güncelleştirme
 
-SAP ascs/SCS örnek profili \<SID >_ascs/SCS\<NR >_ \<Host > parametrelerini güncelleştirin.
+SAP ASCS/SCS örnek profilindeki parametreleri \<SID >_ascs/scs\<Nr >_ \<Host > güncelleştirin.
 
 
 | Parametre adı | Parametre değeri |
 | --- | --- |
 | GW/netstat_once | **0** |
-| EnQue/encnı/set_so_keepalive  | **değeri** |
+| EnQue/encnı/set_so_keepalive  | **true** |
 | hizmet/ha_check_node | **1** |
 
-SAP ASCS/SCS örneğini yeniden başlatın. Her `KeepAlive` iki sap ascs/SCS küme düğümlerinde parametreleri ayarla, [SAP ascs/SCS örneğinin küme düğümlerinde kayıt defteri girişlerini ayarlamak][high-availability-guide]için yönergeleri izleyin. 
+SAP ASCS/SCS örneğini yeniden başlatın. Hem SAP ASCS/SCS küme düğümlerinde hem de `KeepAlive` parametreleri ayarlama, [SAP ascs/SCS örneğinin küme düğümlerinde kayıt defteri girişlerini ayarlamak][high-availability-guide]için yönergeleri izleyin. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Bir DBMS örneği ve SAP uygulama sunucuları yükler
 

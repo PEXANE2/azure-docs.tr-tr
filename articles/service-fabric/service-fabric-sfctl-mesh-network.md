@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl kafes ağı | Microsoft Docs
-description: Service Fabric CLı sfctl ağ komutlarını açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl kafes ağı
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Service Fabric kafes ağ kaynaklarını alma ve silmeye yönelik komutların listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 4d74e3d37891ad50d8bbaa69757d0d99c80591cc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 2d9d86d41dc031cca2730011c2322e9feb30c827
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901225"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646135"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh network
 Kafes ağ kaynaklarını alın ve silin.

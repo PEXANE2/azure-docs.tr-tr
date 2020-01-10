@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: d6f417e53e7d7a1a242a0c0dc56c2356f78f5344
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828960"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640797"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Azure portal kullanarak bir Azure sanal ağını başka bir bölgeye taşıma
 
@@ -20,7 +20,7 @@ Mevcut bir Azure sanal ağını bir bölgeden diğerine taşımaya yönelik çe�
 Sanal ağı başka bir bölgeye taşımayı gerçekleştirmek için bir Azure Resource Manager şablonu kullanabilirsiniz. Bunu, sanal ağı bir şablona vererek, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtarak yapabilirsiniz. Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Sanal ağınızın, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 
@@ -32,7 +32,7 @@ Sanal ağı başka bir bölgeye taşımayı gerçekleştirmek için bir Azure Re
 
 - Azure aboneliğinizin hedef bölgede sanal ağlar oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı etkinleştirmek için desteğe başvurun.
 
-- Aboneliğinizin bu işleme yönelik sanal ağların eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun. Daha fazla bilgi için bkz. [Azure aboneliği ile hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Aboneliğinizin bu işleme yönelik sanal ağların eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun. Daha fazla bilgi için bkz. [Azure aboneliği ile hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Taşıma için hazırlanma
@@ -42,7 +42,7 @@ Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıt
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve **kaynak grupları**' nı seçin.
 1. Kaynak sanal ağı içeren kaynak grubunu bulun ve ardından seçin.
-1. @No__t **ayarları**seçin-1**şablonu dışarı aktar**.
+1. **Şablonu dışarı aktar** > **Ayarlar** ' ı seçin.
 1. **Şablonu dışarı aktar** bölmesinde **Dağıt**' ı seçin.
 1. Çevrimiçi Düzenleyicinizde *Parameters. JSON* dosyasını açmak için **şablon** > **parametreleri Düzenle**' yi seçin.
 1. Sanal ağ adının parametresini düzenlemek için, **Parametreler**altındaki **değer** özelliğini değiştirin:
@@ -63,7 +63,7 @@ Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıt
 
 1. Düzenleyicide **Kaydet** ' i seçin.
 
-1. Çevrimiçi düzenleyicide *Template. JSON* dosyasını açmak için **şablon** > **Şablonu Düzenle**' yi seçin.
+1. Çevrimiçi düzenleyicide *Template. JSON* dosyasını açmak için **şablon > şablonu** **Düzenle**' yi seçin.
 
 1. Çevrimiçi düzenleyicide, sanal ağın taşınacağı hedef bölgeyi düzenlemek için **kaynaklar**altındaki **Location** özelliğini değiştirin:
 
@@ -85,7 +85,7 @@ Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıt
 
     ```
 
-1. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/). Bölge için kod, boşluk olmadan (örneğin, **Orta ABD** = **merkezileştirme**) bölge adıdır.
+1. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/). Bölgenin kodu, boşluk olmadan bölge adıdır (örneğin, **Orta ABD** = **merkezileştirme**).
 
 1. Seçim Gereksinimlerinize bağlı olarak, şablondaki diğer parametreleri de değiştirebilirsiniz:
 
@@ -178,13 +178,13 @@ Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıt
 
 1. Çevrimiçi düzenleyicide **Kaydet**' i seçin.
 
-1. Hedef sanal ağın dağıtılacağı aboneliği seçmek için **temel** > **aboneliği**' ni seçin.
+1. Hedef sanal ağın dağıtılacağı aboneliği seçmek için > **abonelik** **temelleri** ' ni seçin.
 
 1. Hedef sanal ağın dağıtılacağı kaynak grubunu seçmek için **temel** > **kaynak grubu**' nu seçin. 
 
     Hedef sanal ağ için yeni bir kaynak grubu oluşturmanız gerekiyorsa, **Yeni oluştur**' u seçin. Adın, var olan sanal ağdaki kaynak kaynak grubu adıyla aynı olmadığından emin olun.
 
-1. **Temel** > **konumunun** , sanal ağın dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
+1. **Temel** > **konumun** , sanal ağın dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
 
 1. **Ayarlar**' ın altında, ad ' ın daha önce parametreler düzenleyicisinde girdiğiniz adla eşleştiğini doğrulayın.
 

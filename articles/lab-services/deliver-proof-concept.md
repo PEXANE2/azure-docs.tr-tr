@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: takamath
-ms.openlocfilehash: 13e3f6be851e81b1186d55bb313dd23f1920f007
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ca843213760cee60799568a6f33059c2bd91c835
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616346"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643296"
 ---
 # <a name="deliver-a-proof-of-concept"></a>Kavram kanıtı sunun 
 
-Azure DevTest Labs yönelik temel senaryolarından biri, bulutta geliştirme ve test ortamlarını etkinleştirir. Örneklere şunlar dahildir:
+Azure DevTest Labs yönelik temel senaryolarından biri, bulutta geliştirme ve test ortamlarını etkinleştirir. Örneğin:
 
 * Bulutta geliştirici masaüstleri oluşturma.
 * Ortamları test için yapılandırma.
@@ -33,7 +33,7 @@ DevTest Labs Ayrıca, kuruluşun kurumsal güvenlik, mevzuata ve uyumluluk ilkel
 
 Her kuruluşun, Azure DevTest Labs başarıyla ortamlarına nasıl dahil edilebilir olması için farklı gereksinimleri vardır. Bu makalede, kuruluşların başarılı bir kavram kanıtı sağlamak için tamamlaması gereken en yaygın adımlar açıklanmaktadır. Kavram kanıtı, başarılı bir uçtan uca dağıtıma yönelik ilk adımdır. 
 
-## <a name="getting-started"></a>Başlarken 
+## <a name="getting-started"></a>Başlangıç 
 
 Kavram kanıtı sunmaya başlamak için. Azure ve DevTest Labs hakkında bilgi edinmek için biraz zaman harcamanız önemlidir.  Kaynak başlangıç kaynakları aşağıda verilmiştir: 
 
@@ -43,12 +43,12 @@ Kavram kanıtı sunmaya başlamak için. Azure ve DevTest Labs hakkında bilgi e
 * [DevTest Labs kurumsal belgeleri](devtest-lab-guidance-prescriptive-adoption.md)
 * [Azure ağa giriş](../virtual-network/virtual-networks-overview.md)
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 DevTest Labs ile pilot veya kavram kanıtı 'nı başarılı bir şekilde tamamlamaya yönelik birkaç önkoşul vardır: 
 
-* **Azure aboneliği**: Kuruluşlar, Azure 'a erişim sağlayan mevcut bir [Kurumsal Anlaşma](https://azure.microsoft.com/pricing/purchase-options/enterprise-agreement/) sahiptir ve DevTest Labs için mevcut veya yeni bir abonelik kullanabilirler. Alternatif olarak, kuruluşlar pilot süresince bir [Visual Studio aboneliği](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/) kullanabilir (ücretsiz Azure kredilerinden faydalanabilirsiniz). Bu seçeneklerden hiçbiri yoksa, bir kuruluş, [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/search/?&OCID=AID719825_SEM_g4lyBqgB&lnkd=Bing_Azure_Brand&msclkid=ecc4275a31b61375749e7a5322c20de8&dclid=CMGW5-m78-ICFaLt4QodmUwGtQ)oluşturabilir ve kullanabilir. Bir Kurumsal Anlaşma varsa, [Kurumsal Geliştirme ve test aboneliği](https://azure.microsoft.com/offers/ms-azr-0148p/) kullanmak, Windows 10/Windows 8.1 istemci işletim sistemlerine ve geliştirme ve test iş yüklerine yönelik indirimli ücretler için erişim sağlamak için harika bir seçenektir. 
-* **Azure Active Directory kiracı**: Kullanıcıları yönetmeyi etkinleştirmek için (örneğin, Kullanıcı ekleme veya laboratuvar sahipleri ekleme), bu kullanıcıların pilot için Azure aboneliğinde kullanılan [Azure Active Directory kiracının](https://azure.microsoft.com/services/active-directory/) bir parçası olması gerekir. Genellikle kuruluşlar, kullanıcıların bulutta şirket içi kimliklerini kullanmasını sağlamak için [karma kimlik](../active-directory/hybrid/whatis-hybrid-identity.md) ayarlayacaktır, ancak bu, DevTest Labs pilot için gerekli değildir. 
+* **Azure aboneliği**: kuruluşlar, genellikle Azure 'a erişim sağlayan mevcut bir [Kurumsal Anlaşma](https://azure.microsoft.com/pricing/purchase-options/enterprise-agreement/) sahiptir ve DevTest Labs için mevcut veya yeni bir abonelik kullanabilir. Alternatif olarak, kuruluşlar pilot süresince bir [Visual Studio aboneliği](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/) kullanabilir (ücretsiz Azure kredilerinden faydalanabilirsiniz). Bu seçeneklerden hiçbiri yoksa, bir kuruluş, [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/search/?&OCID=AID719825_SEM_g4lyBqgB&lnkd=Bing_Azure_Brand&msclkid=ecc4275a31b61375749e7a5322c20de8&dclid=CMGW5-m78-ICFaLt4QodmUwGtQ)oluşturabilir ve kullanabilir. Kurumsal Anlaşma bir [Kurumsal Geliştirme ve test aboneliği](https://azure.microsoft.com/offers/ms-azr-0148p/) kullanmak, Windows 10/Windows 8.1 istemci işletim sistemlerine erişim sağlamak ve geliştirme ve test iş yükleri için indirimli ücretler için harika bir seçenektir. 
+* **Azure Active Directory kiracı**: kullanıcıları yönetmeyi etkinleştirmek için (örneğin, Kullanıcı ekleme veya laboratuvar sahipleri ekleme), bu kullanıcılar pilot için Azure aboneliğinde kullanılan [Azure Active Directory kiracının](https://azure.microsoft.com/services/active-directory/) bir parçası olmalıdır. Genellikle kuruluşlar, kullanıcıların bulutta şirket içi kimliklerini kullanmasını sağlamak için [karma kimlik](../active-directory/hybrid/whatis-hybrid-identity.md) ayarlayacaktır, ancak bu, DevTest Labs pilot için gerekli değildir. 
 
 ## <a name="scoping-of-the-pilot"></a>Pilot kapsamı 
 
@@ -124,10 +124,10 @@ Kavram kanıtı oluştururken öncelikle sonuçlar üzerine odaklanıyoruz (elde
 
 Bir tam DevTest Labs çözümünü bırakmadan önce bazı önemli planlama ve tasarım kararları almanız gerekir. Kavram kanıtı üzerinde çalışma deneyimi, bu kararları almanıza yardımcı olabilir. Daha ayrıntılı bilgiler şunlardır: 
 
-* **Abonelik topolojisi**: Azure 'daki kaynaklara yönelik kurumsal düzeyde gereksinimler, [tek bir abonelik içindeki kullanılabilir kotaların](https://docs.microsoft.com/azure/azure-subscription-service-limits)ötesine daha fazla genişletebilir. Bu, ilk abonelik limitlerini artırmak için birden çok Azure aboneliğine ve/veya hizmet isteğine sahiptir. Kaynakları abonelikler arasında nasıl dağıtacağınıza karar vermeniz önemlidir. Bir değerli kaynak, daha sonra kaynakları başka bir aboneliğe taşımak zor olduğundan, [abonelik karar kılavuzudur](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/) . Örneğin, bir laboratuvar oluşturulduktan sonra başka bir aboneliğe taşınamaz.  
+* **Abonelik topolojisi**: Azure 'daki kaynaklara yönelik kurumsal düzeyde gereksinimler, [tek bir abonelik içindeki kullanılabilir kotaların](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)ötesine daha fazla genişletebilir. Bu, ilk abonelik limitlerini artırmak için birden çok Azure aboneliğine ve/veya hizmet isteğine sahiptir. Kaynakları abonelikler arasında nasıl dağıtacağınıza karar vermeniz önemlidir. Bir değerli kaynak, daha sonra kaynakları başka bir aboneliğe taşımak zor olduğundan, [abonelik karar kılavuzudur](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/) . Örneğin, bir laboratuvar oluşturulduktan sonra başka bir aboneliğe taşınamaz.  
 * **Ağ topolojisi**: DevTest Labs tarafından otomatik olarak oluşturulan [varsayılan ağ altyapısı](../app-service/networking-features.md) , kurumsal kullanıcıların gereksinimlerini ve kısıtlamalarını karşılamak için yeterli olmayabilir. [Azure ExpressRoute 'a bağlı sanal ağlar](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/), abonelikler arasında bağlantı için [hub ve bağlı bileşen](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) , hatta yalnızca şirket içi bağlantıyı sağlamak için de [zorlanacak yönlendirme](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) hakkında bilgi almak yaygındır. DevTest Labs, laboratuvarda yeni sanal makineler oluştururken kullanımını etkinleştirmek için mevcut sanal ağların laboratuvara bağlanmasını sağlar. 
-* **Sanal makinelere uzaktan erişim**: DevTest Labs 'de bulunan sanal makinelere uzaktan erişim için birçok seçenek vardır. En kolay genel IP 'Leri veya paylaşılan genel IP 'Leri kullanmaktır. Bunlar [, laboratuvarda kullanılabilir](devtest-lab-shared-ip.md)olan ayarlardır. Bu seçenekler yeterli değilse, uzaktan erişim ağ geçidi kullanmak da bir seçenektir. Bu seçenek [DevTest Labs Enterprise Reference mimarisinde](devtest-lab-reference-architecture.md) gösterilir ve [DevTest Labs Uzak Masaüstü Ağ geçidi belgelerinde](configure-lab-remote-desktop-gateway.md)daha ayrıntılı olarak açıklanmıştır. Kuruluşlar, laboratuvarlarını şirket içi ağına bağlamak için ExpressRoute veya siteden siteye VPN de kullanabilir. Bu seçenek, internet 'te hiçbir etkilenmesiz özel IP adreslerini temel alarak sanal makinelere doğrudan uzak masaüstü veya SSH bağlantıları sağlar. 
-* **Izinleri işleme**: DevTest Labs 'de yaygın olarak kullanılan iki anahtar izinleri [sahip ve laboratuar Kullanıcı](devtest-lab-add-devtest-user.md). Laboratuvardaki her erişim düzeyiyle güvenilir olacak şekilde, DevTest Labs 'nin genel kullanıma sunulmadan önce karar vermeniz önemlidir. Ortak bir model, laboratuvar sahibi olarak (örneğin, ekip lideri) laboratuvar sahibi ve takım üyeleri olarak laboratuar kullanıcıları olarak bütçe sahibidir. Bu model, bütçesinden sorumlu olan kişinin (ekip lideri) ilke ayarlarını ayarlamasını ve ekibi bütçe içinde tutmasını sağlar.  
+* **Sanal makinelere uzaktan erişim**: DevTest Labs 'de bulunan sanal makinelere uzaktan erişim için birçok seçenek vardır. En kolay genel IP 'Leri veya paylaşılan genel IP 'Leri kullanmaktır. Bunlar [, laboratuvarda kullanılabilir olan ayarlardır](devtest-lab-shared-ip.md). Bu seçenekler yeterli değilse, uzaktan erişim ağ geçidi kullanmak da bir seçenektir. Bu seçenek [DevTest Labs Enterprise Reference mimarisinde](devtest-lab-reference-architecture.md) gösterilir ve [DevTest Labs Uzak Masaüstü Ağ geçidi belgelerinde](configure-lab-remote-desktop-gateway.md)daha ayrıntılı olarak açıklanmıştır. Kuruluşlar, laboratuvarlarını şirket içi ağına bağlamak için ExpressRoute veya siteden siteye VPN de kullanabilir. Bu seçenek, internet 'te hiçbir etkilenmesiz özel IP adreslerini temel alarak sanal makinelere doğrudan uzak masaüstü veya SSH bağlantıları sağlar. 
+* **Izinleri işleme**: DevTest Labs 'de yaygın olarak kullanılan iki anahtar izinleri [Owner ve Lab User](devtest-lab-add-devtest-user.md). Laboratuvardaki her erişim düzeyiyle güvenilir olacak şekilde, DevTest Labs 'nin genel kullanıma sunulmadan önce karar vermeniz önemlidir. Ortak bir model, laboratuvar sahibi olarak (örneğin, ekip lideri) laboratuvar sahibi ve takım üyeleri olarak laboratuar kullanıcıları olarak bütçe sahibidir. Bu model, bütçesinden sorumlu olan kişinin (ekip lideri) ilke ayarlarını ayarlamasını ve ekibi bütçe içinde tutmasını sağlar.  
 
 ## <a name="completing-the-proof-of-concept"></a>Kavram kanıtı Tamamlanıyor 
 

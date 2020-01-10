@@ -1,28 +1,19 @@
 ---
-title: 'Öğretici: Service Fabric tek başına kümesini temizleme - Azure Service Fabric | Microsoft Docs'
-description: Bu öğreticide, tek başına kümenizi nasıl temizleyeceğinizi öğrenirsiniz
-services: service-fabric
-documentationcenter: .net
+title: Tek başına kümeyi Temizleme
+description: Bu öğreticide, tek başına Service Fabric kümenizdeki AWS veya Azure kaynaklarını temizlemeyi öğreneceksiniz.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bebe3a2dc83b651e713ee80d7b11068b13096e04
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385167"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639029"
 ---
-# <a name="tutorial-clean-up-your-standalone-cluster"></a>Öğretici: Tek başına kümenizi Temizleme
+# <a name="tutorial-clean-up-your-standalone-cluster"></a>Öğretici: Tek başına kümenizi temizleme
 
 Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fabric’in benimsediği "her işletim sistemi, her bulut" yaklaşımının bir parçası olarak bir küme oluşturma seçeneği sunar. Bu öğretici serisinde, AWS veya Azure üzerinde barındırılan bir tek başına küme oluşturur ve bu kümeye bir uygulama yüklersiniz.
 
@@ -45,7 +36,7 @@ Serinin dördüncü kısmında öğrenecekleriniz:
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. `Y` İstendiğinde, Çıktınıza, kendi IP adreslerinizin yerini alarak aşağıdaki gibi görünür:
+5. İstendiğinde `Y` girin, bu işlem başarılı olursa, kendi IP adreslerinizle birlikte yerine aşağıdaki gibi görünür:
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -63,7 +54,7 @@ Serinin dördüncü kısmında öğrenecekleriniz:
 1. AWS hesabınızda oturum açın.
 2. EC2 Konsolu'na gidin.
 3. Öğreticinin birinci bölümünde oluşturduğunuz üç düğümü seçin.
-4. **Eylemler** > **örneği**durumSonlandır > ' a tıklayın.
+4. **Son** ** >  > ** **Eylemler** ' e tıklayın.
 
 ## <a name="clean-up-azure-resources"></a>Azure kaynaklarını Temizleme
 

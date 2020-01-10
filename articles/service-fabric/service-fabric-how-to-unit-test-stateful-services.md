@@ -1,54 +1,43 @@
 ---
-title: Azure Service Fabric durum bilgisi olan hizmetler için birim testleri geliştirirsiniz | Microsoft Docs
-description: Service Fabric durum bilgisi olan hizmetler için birim testleri geliştirmeyi öğrenin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Durum bilgisi olan hizmetler için birim testleri geliştirme
+description: Durum bilgisi olan hizmetler için Azure Service Fabric birim testi ve geliştirme sırasında göz önünde bulundurmanız gereken özel noktalar hakkında bilgi edinin.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: b066296ca52d3067f8985245161eb4fa7b484a07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720136"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639845"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Durum bilgisi olan hizmetler için birim testleri oluşturma
-Birim testi Service Fabric durum bilgisi olan hizmetler mutlaka geleneksel uygulama veya etki alanına özgü birim testi tarafından yakalanabilen değil yaygın hataları açıklığa kavuşturur. Durum bilgisi olan hizmetler için birim testleri geliştirirken akılda tutulması gereken bazı noktalar vardır.
+Durum bilgisi olan hizmetler Service Fabric birim testi, geleneksel uygulama veya etki alanına özgü birim testi tarafından yakalanmak zorunda olmayan yaygın hataları açığa kaldırır. Durum bilgisi olan hizmetler için birim testleri geliştirirken göz önünde tutulması gereken bazı özel noktalar vardır.
 
-1. Her yineleme uygulama kodu yürütür, ancak farklı bir bağlam altında. Hizmet üç kopyaya kullanıyorsa, hizmet kodunu paralel farklı bağlam/rolü altında üç düğümlerinde yürütüyor.
-2. Durum bilgisi olan hizmet içinde depolanan durumu arasında tüm çoğaltmaları tutarlı olmalıdır. Bu tutarlılık,-hazır durum Yöneticisi ve güvenilir koleksiyonlar sağlar. Ancak, uygulama kodu tarafından yönetilmek üzere bellek içi durumu gerekir.
-3. Her çoğaltma sırasında küme üzerinde çalışan roller, belirli bir noktada değiştirir. Birincil barındıran düğümü, kullanılamıyor veya aşırı yüklenmiş olur olay, bir ikincil çoğaltma, birincil hale gelir. Service Fabric Hizmetleri altında farklı bir rol sonunda yürütmek için bu nedenle planlamanız gerekir için doğal bir davranış budur.
+1. Her çoğaltma uygulama kodunu yürütür, ancak farklı bir bağlam altında. Hizmet üç çoğaltma kullanıyorsa, hizmet kodu, farklı bağlam/rol altında paralel olarak üç düğüm üzerinde yürütüyordur.
+2. Durum bilgisi olan hizmet içinde depolanan durum tüm çoğaltmalar arasında tutarlı olmalıdır. Durum Yöneticisi ve güvenilir koleksiyonlar, bu tutarlılığı kullanıma hazır olarak sağlayacaktır. Ancak, bellek içi durumunun uygulama kodu tarafından yönetilmesi gerekir.
+3. Her çoğaltma, küme üzerinde çalışırken bazı bir noktada rolleri değiştirecek. Birincil bir çoğaltma, birincili barındıran düğümün kullanılamaz veya aşırı yüklü hale gelmesini durumunda birincil olur. Bu, Service Fabric için doğal bir davranıştır ve bu nedenle hizmetler, sonunda farklı bir rol altında yürütmeyi planlıyor olmalıdır.
 
-Bu makalede varsayar [birim Service Fabric durum bilgisi olan hizmetler testi](service-fabric-concepts-unit-testing.md) okunmuş.
+Bu makalede, [Service Fabric ' de durum bilgisi olmayan hizmetlerin](service-fabric-concepts-unit-testing.md) okunduğunu olduğu varsayılır.
 
-## <a name="the-servicefabricmocks-library"></a>ServiceFabric.Mocks kitaplığı
-3\.3.0, Sürüm'den itibaren [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) orchestration çoğaltmaları durum yönetimi ve sahte işlem için bir API sağlar. Bu örneklerde kullanılır.
+## <a name="the-servicefabricmocks-library"></a>ServiceFabric. Moaltını kitaplığı
+Sürüm 3.3.0 itibariyle [Servicefabric. Moze](https://www.nuget.org/packages/ServiceFabric.Mocks/) , çoğaltmaları ve durum yönetimini düzenleme IÇIN bir API sağlar. Bu örneklerde kullanılacaktır.
 
 [Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
 [GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
-*ServiceFabric.Mocks değil ait veya Microsoft tarafından korunur. Ancak, şu anda Microsoft kitaplığı birim testi durum bilgisi olan hizmetler için önerilen budur.*
+*ServiceFabric. Moaltını, Microsoft tarafından sahip değil veya korunmaz. Ancak, şu anda birim testi durum bilgisi olmayan hizmetler için Microsoft tarafından önerilen bir kitaplıktır.*
 
 ## <a name="set-up-the-mock-orchestration-and-state"></a>Sahte düzenleme ve durumunu ayarlama
-Bir test Yerleştir kısmı bir parçası olarak sahte bir çoğaltma kümesi ve durum Yöneticisi oluşturulur. Çoğaltma kümesi, ardından her yineleme için test edilmiş hizmet örneği oluşturma hakimi olursunuz. Yürütülen yaşam döngüsü olayları gibi de ait `OnChangeRole` ve `RunAsync`. Sahte bir durum Yöneticisi durum Yöneticisi karşı gerçekleştirilen tüm işlemler çalıştırın ve gerçek durum Yöneticisi olduğu gibi kalmasını sağlayacaktır.
+Bir testin düzenleme bölümünün parçası olarak, bir sahte çoğaltma kümesi ve durum Yöneticisi oluşturulur. Çoğaltma kümesi daha sonra, her çoğaltma için Sınanan hizmetin bir örneğini oluşturur. Ayrıca, `OnChangeRole` ve `RunAsync`gibi yaşam döngüsü olaylarını da yürütmektedir. Sahte durum Yöneticisi, durum yöneticisine karşı gerçekleştirilen tüm işlemlerin çalışır durumda olduğundan emin olur ve gerçek durum Yöneticisi olarak saklanır.
 
-1. Test edilen hizmet örneği bir hizmet Fabrika temsilcisi oluşturun. Hizmet üreteci geri genellikle içinde bulunan bu benzer veya aynı olmalıdır `Program.cs` bir Service Fabric hizmet ya da aktör için. Bu, aşağıdaki imzası izlemelidir:
+1. Sınanan hizmeti örneklendirilecek bir Service Factory temsilcisi oluşturun. Bu, tipik olarak bir Service Fabric hizmeti veya aktör için `Program.cs` bulunan hizmet fabrikası geri çağırması ile benzerdir veya aynı olmalıdır. Bu, aşağıdaki imzayı izlemelidir:
    ```csharp
    MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
    ```
-2. Bir örneğini oluşturmak `MockReliableStateManager` sınıfı. Bu durum Yöneticisi ile tüm etkileşimler sahte.
-3. Bir örneğini oluşturmak `MockStatefulServiceReplicaSet<TStatefulService>` burada `TStatefulService` test edilen hizmet türüdür. Bu temsilci #1. adımda oluşturduğunuz ve #2'de örneği durum Yöneticisi'ni gerektirir
-4. Çoğaltmalar, çoğaltma kümesine ekleyin. (Örneğin, birincil, ActiveSecondary, IdleSecondary) rolü ve çoğaltma kimliği belirtin
-   > Çoğaltma kimlikleri tutun! Bu, büyük olasılıkla işlemi sırasında kullanılacak ve birim testi bölümlerini onay.
+2. `MockReliableStateManager` sınıfının bir örneğini oluşturun. Bu, tüm etkileşimleri durum yöneticisiyle birlikte kullanacaktır.
+3. Test edilen hizmetin türü olan `TStatefulService` `MockStatefulServiceReplicaSet<TStatefulService>` örneğini oluşturun. Bu, #1 adımında oluşturulan temsilcinin ve durum Yöneticisi 'nin #2 ' de oluşturulmasını gerektirir
+4. Çoğaltma kümesine çoğaltmalar ekleyin. Rolü (örneğin, birincil, ActiveSecondary, ıdde Ikincil) ve çoğaltmanın KIMLIĞINI belirtin
+   > Çoğaltma kimliklerinde tutun! Bu, büyük olasılıkla bir birim testinin hareket ve onaylama bölümlerinde kullanılır.
 
 ```csharp
 //service factory to instruct how to create the service instance
@@ -65,8 +54,8 @@ await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 2);
 await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 3);
 ```
 
-## <a name="execute-service-requests"></a>Hizmet istekleri
-Hizmet isteklerini aramalar ve kolaylık özellikleri kullanarak belirli bir çoğaltma üzerinde çalıştırılabilir.
+## <a name="execute-service-requests"></a>Hizmet isteklerini Yürüt
+Hizmet istekleri, kullanışlı özellikler ve aramalar kullanılarak belirli bir çoğaltmada yürütülebilir.
 ```csharp
 const string stateName = "test";
 var payload = new Payload(StatePayload);
@@ -81,8 +70,8 @@ await replicaSet[2].ServiceInstance.InsertAsync(stateName, payload);
 await replicaSet.FirstActiveSecondary.InsertAsync(stateName, payload);
 ```
 
-## <a name="execute-a-service-move"></a>Hizmet taşıma yürütün
-Sahte çoğaltma kümesine hizmet taşır farklı türde tetiklemek için çeşitli kullanışlı yöntemler sunar.
+## <a name="execute-a-service-move"></a>Hizmet taşımayı yürütme
+Sahte çoğaltma kümesi, farklı türlerde hizmet hareketlerinin tetiklenmesi için çeşitli kullanışlı yöntemler sunar.
 ```csharp
 //promote the first active secondary to primary
 replicaSet.PromoteNewReplicaToPrimaryAsync();
@@ -101,7 +90,7 @@ PromoteNewReplicaToPrimaryAsync(4)
 ```
 
 ## <a name="putting-it-all-together"></a>Hepsini bir araya getirme
-Şu test, bir üç düğümlü çoğaltma ayarlama ayarlama ve rol değişiklikten sonra verileri ikincil bölgeden kullanılabilir olduğu doğrulanıyor gösterir. Veri sırasında eklediyseniz bu catch tipik bir sorun olduğunu `InsertAsync` bir şey bellek veya bir güvenilir koleksiyon çalıştırılmadan kaydedilmiş `CommitAsync`. Her iki durumda da ikincil birincil ile eşitlenmemiş olabilir. Hizmet taşındıktan sonra bu tutarsız yanıtlarını sunulmasını sağlar.
+Aşağıdaki test, üç düğümlü bir çoğaltma kümesi ayarlamayı ve bir rol değişikliğinden sonra verilerin ikincil tarafından kullanılabilir olduğunu doğrulamayı gösterir. Bu durum, `InsertAsync` sırasında eklenen verilerin `CommitAsync`çalıştırmadan bir veya güvenilir bir koleksiyondaki bir şeye kaydedilmesidir. Her iki durumda da ikincil, birincil ile eşitlenmemiş olur. Bu, hizmet taşındıktan sonra tutarsız yanıtlara yol açabilir.
 
 ```csharp
 [TestMethod]
@@ -139,4 +128,4 @@ public async Task TestServiceState_InMemoryState_PromoteActiveSecondary()
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Nasıl test edeceğinizi öğrenmek [hizmetten hizmete iletişimi](service-fabric-testability-scenarios-service-communication.md) ve [denetimli chaos ile hataların benzetimini](service-fabric-controlled-chaos.md).
+[Hizmetten hizmete iletişimi](service-fabric-testability-scenarios-service-communication.md) test etmeyi ve [denetlenen Chaos kullanarak hataların benzetimini](service-fabric-controlled-chaos.md)yapmayı öğrenin.

@@ -7,17 +7,17 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: f2479d9f3e278d23d62275b667f78d1fd70dd151
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.date: 01/03/2020
+ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889700"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660333"
 ---
-# <a name="routing-events-and-messages"></a>Yönlendirme olayları ve iletileri
+# <a name="routing-iot-events-and-messages"></a>IoT olaylarını ve iletilerini yönlendirme
 
-IoT çözümleri genellikle depolama, analiz ve daha fazlasını içeren birkaç güçlü hizmeti kapsar. Bu makalede, Azure dijital TWINS uygulamalarının Azure Analytics, AI ve depolama hizmetlerine bağlanarak daha ayrıntılı Öngörüler ve işlevler vermesini açıklar.
+Nesnelerin İnterneti çözümleri, genellikle depolama, analiz ve daha fazlasını içeren birkaç güçlü hizmeti kapsar. Bu makalede, Azure dijital TWINS uygulamalarının Azure Analytics, AI ve depolama hizmetlerine bağlanarak daha ayrıntılı Öngörüler ve işlevler vermesini açıklar.
 
 ## <a name="route-types"></a>Rota türleri  
 
@@ -55,7 +55,7 @@ Azure dijital TWINS Şu anda seçili uç noktaya gönderilecek olan aşağıdaki
 > Tüm **Endpointtypes** tüm **eventTypes**'ı desteklemez.
 > Her bir **EndpointType**için Izin verilen **eventTypes** için aşağıdaki tabloya bakın.
 
-|             | DeviceMessages Iletileri | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
+|             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
 | EventHub|     X          |         X         |     X       |      X       |   X       |
 | ServiceBus|              |         X         |     X       |      X       |   X       |

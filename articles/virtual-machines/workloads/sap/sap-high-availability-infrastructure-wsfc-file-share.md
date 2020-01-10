@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9b7ac97cb190073966f9be450e9f9e04014fbd7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cc2295f6151b3cde81c27c8ed1116013e1a3f9a9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078050"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647552"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>SAP Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşma kullanarak SAP yüksek kullanılabilirlik için Azure altyapısını hazırlama
 
@@ -39,8 +39,8 @@ ms.locfileid: "70078050"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -203,17 +203,17 @@ ms.locfileid: "70078050"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-Bu makalede, bir Windows Server Yük Devretme Kümelemesi kümesine (WSFC) yüksek kullanılabilirliğe sahip SAP sistemleri yüklemek ve yapılandırmak için gereken Azure altyapı hazırlama adımları açıklanır ve bu da, SAP yoks/SCS Kümelemesi larında.
+Bu makalede, SAP Ass/SCS örneklerinin kümelenmesi için bir seçenek olarak genişleme dosya paylaşımının kullanıldığı bir Windows Server Yük Devretme Kümelemesi kümesine (WSFC) yüksek kullanılabilirliğe sahip SAP sistemleri yüklemek ve yapılandırmak için gereken Azure altyapı hazırlama adımları açıklanır.
 
 ## <a name="prerequisite"></a>Önkoşul
 
 Yüklemeye başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 
-* [Mimari Kılavuzu: Dosya paylaşma kullanarak bir Windows Yük devretme kümesindeki SAP ASCS/SCS örnekleri kümesi][sap-high-availability-guide-wsfc-file-share]
+* [Mimari Kılavuzu: dosya paylaşma kullanarak bir Windows Yük devretme kümesindeki küme SAP ASCS/SCS örnekleri][sap-high-availability-guide-wsfc-file-share]
 
 
 ## <a name="host-names-and-ip-addresses"></a>Ana bilgisayar adları ve IP adresleri
@@ -222,17 +222,17 @@ Yüklemeye başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 | --- | --- | --- | --- |
 | İlk küme düğümü yoks/SCS kümesi | yoks-1 | 10.0.6.4 | yoks-as |
 | İkinci küme düğümü yoks/SCS kümesi | yoks-2 | 10.0.6.5 | yoks-as |
-| Küme ağ adı |yoks-CL | 10.0.6.6 | yok |
-| SAP PR1 yoks küme ağı adı |PR1-yoks | 10.0.6.7 | yok |
+| Küme ağ adı |yoks-CL | 10.0.6.6 | Yok |
+| SAP PR1 yoks küme ağı adı |PR1-yoks | 10.0.6.7 | Yok |
 
 
-**Tablo 1**: YOKS/SCS kümesi
+**Tablo 1**: yoks/SCS kümesi
 
 | SAP \<SID > | SAP ASCS/SCS örnek numarası |
 | --- | --- |
-| PR1 | 0 |
+| PR1 | 00 |
 
-**Tablo 2**: SAP ASCS/SCS örneği ayrıntıları
+**Tablo 2**: SAP ascs/SCS örneği ayrıntıları
 
 
 | Sanal konak adı rolü | Sanal konak adı | Statik IP adresi | Kullanılabilirlik kümesi |
@@ -240,10 +240,10 @@ Yüklemeye başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 | İlk küme düğümü | SOFS-1 | 10.0.6.10 | SOFS-as |
 | İkinci küme düğümü | SOFS-2 | 10.0.6.11 | SOFS-as |
 | Üçüncü küme düğümü | SOFS-3 | 10.0.6.12 | SOFS-as |
-| Küme ağ adı | SOFS-CL | 10.0.6.13 | yok |
-| SAP genel ana bilgisayar adı | sapglobal | Tüm küme düğümlerinin IP 'lerini kullan | yok |
+| Küme ağ adı | SOFS-CL | 10.0.6.13 | Yok |
+| SAP genel ana bilgisayar adı | sapglobal | Tüm küme düğümlerinin IP 'lerini kullan | Yok |
 
-**Tablo 3**: Genişleme Dosya Sunucusu kümesi
+**Tablo 3**: genişleme dosya sunucusu kümesi
 
 
 ## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>Bir SAP ASCS/SCS kümesi, bir veritabanı yönetim sistemi (DBMS) kümesi ve SAP uygulama sunucusu örnekleri için VM dağıtma
@@ -322,9 +322,9 @@ Depolama Alanları Doğrudan ve Azure tarafından yönetilen disklerle Genişlem
 
 Yönetilen diskleri kullanmanızı öneririz.
 
-![Şekil 1: Yönetilen diskler içeren Genişleme Dosya Sunucusu Kaynak Yöneticisi şablonu için Kullanıcı arabirimi ekranı][sap-ha-guide-figure-8010]
+![Şekil 1: yönetilen diskler içeren Genişleme Dosya Sunucusu Kaynak Yöneticisi şablonu için Kullanıcı arabirimi ekranı][sap-ha-guide-figure-8010]
 
-_**Şekil 1**: Yönetilen diskler içeren Genişleme Dosya Sunucusu Kaynak Yöneticisi şablonu için Kullanıcı arabirimi ekranı_
+_**Şekil 1**: yönetilen diskler içeren genişleme dosya sunucusu Kaynak Yöneticisi şablonu için Kullanıcı arabirimi ekranı_
 
 Şablonda şunları yapın:
 1. **VM sayısı** kutusunda, en az **2**sayısını girin.
@@ -332,13 +332,13 @@ _**Şekil 1**: Yönetilen diskler içeren Genişleme Dosya Sunucusu Kaynak Yöne
 3. **SOFS adı** kutusuna SAP Küresel Ana bilgisayar ağ adı, **sapglobalhost**yazın.
 4. **Paylaşma adı** kutusuna, **sapmnt**dosya paylaşma adını girin.
 
-### <a name="use-unmanaged-disks"></a>Yönetilmeyen diskleri kullanma
+### <a name="use-unmanaged-disks"></a>Yönetilmeyen diskler kullanma
 
 Depolama Alanları Doğrudan ve Azure yönetilmeyen disklerle Genişleme Dosya Sunucusu dağıtmaya yönelik Azure Resource Manager şablonu [GitHub][arm-sofs-s2d-non-managed-disks]' da kullanılabilir.
 
-![Şekil 2: Yönetilen diskler olmadan Genişleme Dosya Sunucusu Azure Resource Manager şablonu için Kullanıcı arabirimi ekranı][sap-ha-guide-figure-8011]
+![Şekil 2: yönetilen diskler olmadan Genişleme Dosya Sunucusu Azure Resource Manager şablonu için Kullanıcı arabirimi ekranı][sap-ha-guide-figure-8011]
 
-_**Şekil 2**: Yönetilen diskler olmadan Genişleme Dosya Sunucusu Azure Resource Manager şablonu için Kullanıcı arabirimi ekranı_
+_**Şekil 2**: yönetilen diskler olmadan genişleme dosya sunucusu Azure Resource Manager şablonu için Kullanıcı arabirimi ekranı_
 
 **Depolama hesabı türü** kutusunda **Premium Depolama**' yı seçin. Diğer tüm ayarlar, yönetilen diskler ayarlarıyla aynıdır.
 

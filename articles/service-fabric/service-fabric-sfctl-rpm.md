@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl rpm | Microsoft Docs
-description: Service Fabric CLı sfctl RPM komutlarını açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl rpm
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Onarım Yöneticisi hizmeti için komutların bir listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 9c37dc8131f14a3b35e68b3e88502c91f96810f6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 674970276046034d13801db7c1bb4ab5175385fb
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901028"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639097"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Komutları onarma Yöneticisi hizmetine sorgula ve gönder.
@@ -102,4 +93,4 @@ Bu API Service Fabric platformunu destekler; doğrudan kodunuzdan kullanılması
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- Learn how to use the Service Fabric CLI using the [sample scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).

@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: a3ad3314b8a18ec6a63b5d51bc7d8b3f9d7a6260
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7557ed43d9ecb8fc7a584e7e8239bc7ccb972e99
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818295"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647178"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL veritabanı sunucuları ve bunların yönetimi
 
 ## <a name="what-is-an-azure-sql-database-server"></a>Azure SQL veritabanı sunucusu nedir?
 
-SQL veritabanı sunucusu, birden çok tek veya [havuza alınmış](sql-database-elastic-pool.md) veritabanları, [oturum açmalar](sql-database-manage-logins.md), [güvenlik duvarı kuralları](sql-database-firewall-configure.md), [denetim kuralları](sql-database-auditing.md), [tehdit algılama ilkeleri](sql-database-threat-detection.md)ve [için merkezi bir yönetim noktası görevi gören mantıksal bir yapıdır. Yük devretme grupları](sql-database-auto-failover-group.md) BIR SQL veritabanı sunucusu, kaynak grubundan farklı bir bölgede olabilir. SQL veritabanı sunucusu, Azure SQL veritabanını oluşturabilmeniz için mevcut olmalıdır. SQL veritabanı sunucusu tarafından yönetilen tüm veritabanları, SQL veritabanı sunucusuyla aynı bölge içinde oluşturulur.
+SQL veritabanı sunucusu, birden çok tek veya [havuza alınmış](sql-database-elastic-pool.md) veritabanları, [oturum açmalar](sql-database-manage-logins.md), [güvenlik duvarı kuralları](sql-database-firewall-configure.md), [denetim kuralları](sql-database-auditing.md), [tehdit algılama ilkeleri](sql-database-threat-detection.md)ve [Yük devretme grupları](sql-database-auto-failover-group.md) IÇIN bir merkezi yönetim noktası görevi gören bir mantıksal yapıdır ve bir SQL veritabanı sunucusu, kaynak grubundan farklı bir bölgede olabilir. SQL veritabanı sunucusu, Azure SQL veritabanını oluşturabilmeniz için mevcut olmalıdır. SQL veritabanı sunucusu tarafından yönetilen tüm veritabanları, SQL veritabanı sunucusuyla aynı bölge içinde oluşturulur.
 
 Bir SQL veritabanı sunucusu, şirket içi dünyada bildiğiniz bir SQL Server örneğinden farklıdır. Özellikle, SQL veritabanı hizmeti, veritabanlarını yöneten SQL veritabanı sunucusuyla ilişkili olarak veritabanlarının konumuyla ilgili hiçbir garanti vermez ve örnek düzeyinde erişim veya özellik gerektirmez. Buna karşılık, yönetilen bir örnekteki örnek veritabanlarının hepsi, şirket içi dünyada SQL Server hakkında bilgi sahibi olduğunuz şekilde birlikte bulunur.
 
@@ -40,7 +40,7 @@ Bir SQL veritabanı sunucusu:
 - Veritabanı erişimi için bağlantı uç noktası sağlar (`<serverName>`.database.windows.net)
 - Bir ana veritabanına bağlanarak DMV’ler aracılığıyla içerdiği kaynaklarla ilgili meta verilere erişim sağlar
 - Veritabanları için, oturum açma bilgileri, güvenlik duvarı, denetim, tehdit algılama ve gibi yönetim ilkeleri için kapsam sağlar
-- , Üst abonelik içindeki bir kota ile kısıtlanır (varsayılan olarak abonelik başına altı sunucu) ve [burada abonelik sınırlarına bakın](../azure-subscription-service-limits.md).
+- , Üst abonelik içindeki bir kota ile kısıtlanır (varsayılan olarak abonelik başına altı sunucu) ve [burada abonelik sınırlarına bakın](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - , İçerdiği kaynaklar için veritabanı kotası ve DTU veya sanal çekirdek kotası kapsamını sağlar (örneğin, 45.000 DTU)
 - Kapsanan kaynaklarda etkinleştirilen yetenekler için sürüm kapsamıdır
 - Sunucu düzeyinde asıl kullanıcı bilgileri bir sunucudaki tüm veritabanlarını yönetebilir

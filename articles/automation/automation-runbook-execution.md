@@ -2,19 +2,15 @@
 title: Azure Otomasyonu 'nda runbook yürütmesi
 description: Azure Otomasyonu 'ndaki bir runbook 'un nasıl işlendiği hakkındaki ayrıntıları açıklar.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ddeeaeccc0a10d19a070a91d7bd9bef2b31c0570
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850763"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658126"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu 'nda runbook yürütmesi
 
@@ -37,11 +33,11 @@ Azure Otomasyonu 'ndaki runbook 'lar, Azure 'da veya [karma Runbook Worker](auto
 |Azure kaynaklarıyla tümleştirme|Azure korumalı alanı|Azure 'da barındırılan kimlik doğrulama daha basittir. Azure VM 'de karma runbook çalışanı kullanıyorsanız, [Azure kaynakları için Yönetilen kimlikler](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) kullanabilirsiniz|
 |Azure kaynaklarını yönetmek için en iyi performans|Azure korumalı alanı|Betik aynı ortamda çalışır ve bu da daha az gecikme süresine sahiptir|
 |İşlem maliyetlerini en aza indir|Azure korumalı alanı|İşlem yükü yok, VM 'ye gerek yok|
-|Uzun süre çalışan betik|Karma Runbook Çalışanı|Azure korumalı alanlar, [kaynaklarla ilgili sınırlamalara](../azure-subscription-service-limits.md#automation-limits) sahiptir|
+|Uzun süre çalışan betik|Karma Runbook Çalışanı|Azure korumalı alanlar, [kaynaklarla ilgili sınırlamalara](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) sahiptir|
 |Yerel hizmetlerle etkileşim kurma|Karma Runbook Çalışanı|Doğrudan konak makinesine erişebilir|
 |Üçüncü taraf yazılım ve yürütülebilir dosyaları gerektir|Karma Runbook Çalışanı|İşletim sistemini yönetiyoruz ve yazılım yükleyebilir|
 |Runbook ile bir dosyayı veya klasörü izleme|Karma Runbook Çalışanı|Karma Runbook Worker üzerinde [izleyici görevi](automation-watchers-tutorial.md) kullanma|
-|Yoğun kaynak kullanımı betiği|Karma Runbook Çalışanı| Azure korumalı alanlar, [kaynaklarla ilgili sınırlamalara](../azure-subscription-service-limits.md#automation-limits) sahiptir|
+|Yoğun kaynak kullanımı betiği|Karma Runbook Çalışanı| Azure korumalı alanlar, [kaynaklarla ilgili sınırlamalara](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) sahiptir|
 |Belirli gereksinimlere sahip modülleri kullanma| Karma Runbook Çalışanı|Bazı örnekler şunlardır:</br> **WinSCP** -WinSCP. exe ' de bağımlılık </br> **Iısadministration** -IIS 'nin etkinleştirilmesini gerektirir|
 |Yükleyici gerektiren modülü yükleme|Karma Runbook Çalışanı|Korumalı alan için modüller copable olmalıdır|
 |4\.7.2 'ten farklı .NET Framework gerektiren runbook 'ları veya modülleri kullanma|Karma Runbook Çalışanı|Automation korumalı alanlar .NET Framework 4.7.2 sahiptir ve bunu yükseltmenin bir yolu yoktur|
@@ -320,7 +316,7 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 Azure Otomasyonu, bulutta bulunan tüm runbook 'lar arasında kaynak paylaşmak için, üç saatten uzun bir süreyle çalışan işleri geçici olarak kaldırır veya sonlandırır. [PowerShell tabanlı runbook 'lar](automation-runbook-types.md#powershell-runbooks) ve [Python runbook 'ların](automation-runbook-types.md#python-runbooks) işleri durdurulur ve yeniden başlatılmaz ve iş durumu durdurulmuş olarak gösterilir.
 
-Uzun süre çalışan görevler için [karma Runbook Worker](automation-hrw-run-runbooks.md#job-behavior)kullanılması önerilir. Karma runbook çalışanları, dengeli bir paylaşımdan sınırlı değildir ve bir runbook 'un ne kadar süreyle yürütülemediği konusunda bir sınırlama yoktur. Diğer iş sınırları hem Azure sanal [değerleri](../azure-subscription-service-limits.md#automation-limits) hem de karma runbook çalışanları için geçerlidir. Karma runbook çalışanları 3 saatlik bir paylaşılan sınır ile sınırlı olmasa da, runbook 'ların üzerinde çalıştığı, beklenmeyen yerel altyapı sorunlarından yeniden başlatma davranışlarını destekleyecek şekilde geliştirilebilmelidir.
+Uzun süre çalışan görevler için [karma Runbook Worker](automation-hrw-run-runbooks.md#job-behavior)kullanılması önerilir. Karma runbook çalışanları, dengeli bir paylaşımdan sınırlı değildir ve bir runbook 'un ne kadar süreyle yürütülemediği konusunda bir sınırlama yoktur. Diğer iş sınırları hem Azure sanal [değerleri](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) hem de karma runbook çalışanları için geçerlidir. Karma runbook çalışanları 3 saatlik bir paylaşılan sınır ile sınırlı olmasa da, runbook 'ların üzerinde çalıştığı, beklenmeyen yerel altyapı sorunlarından yeniden başlatma davranışlarını destekleyecek şekilde geliştirilebilmelidir.
 
 Diğer bir seçenek de runbook 'u alt runbook 'ları kullanarak iyileştirmeniz olur. Runbook 'iniz birkaç veritabanında bir veritabanı işlemi gibi birkaç kaynak üzerinde aynı işlevle döngüye alıyorsa, bu işlevi bir [alt runbook](automation-child-runbooks.md) 'a taşıyabilir ve [Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) cmdlet 'i ile çağırabilirsiniz. Bu alt runbook 'ların her biri ayrı işlemlerde paralel olarak yürütülür. Bu davranış, üst runbook 'un tamamlanacağı toplam süreyi düşürür. Alt runbook tamamlandıktan sonra gerçekleştirilen işlemler varsa, her bir alt öğe için iş durumunu denetlemek üzere runbook 'inizdeki [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) cmdlet 'ini kullanabilirsiniz.
 

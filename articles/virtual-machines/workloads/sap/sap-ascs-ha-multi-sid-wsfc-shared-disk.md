@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fada16b3ca5307a28eebca4dfe97dc96ba389212
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1f7e9551e6a48350b8f23e9d6ce1d47a1a903c63
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098688"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643262"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -34,9 +34,9 @@ ms.locfileid: "70098688"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [load-balancer-multivip-overview]:../../../load-balancer/load-balancer-multivip-overview.md
 
 
@@ -199,7 +199,7 @@ ms.locfileid: "70098688"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -222,11 +222,11 @@ Bu makalede, paylaşılan disk ile var olan bir Windows Server Yük Devretme Kü
 >Bir WSFC kümesindeki en fazla SAP ASCS/SCS örneği sayısı, her bir Azure iç yük dengeleyici için en fazla özel ön uç IP sayısına eşittir.
 >
 
-Yük dengeleyici sınırları hakkında daha fazla bilgi için ağ sınırları içindeki ["yük dengeleyici başına özel ön uç IP" bölümüne bakın: Azure Resource Manager][networking-limits-azure-resource-manager].
+Yük dengeleyici sınırları hakkında daha fazla bilgi için [ağ sınırları: Azure Resource Manager][networking-limits-azure-resource-manager]"yük dengeleyiciye göre özel ön uç IP" bölümüne bakın.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu diyagramda gösterildiği gibi, **dosya paylaşma**kullanarak BIR SAP ascs/SCS örneği için kullanılacak bir wsfc kümesini zaten yapılandırdınız.
 
@@ -244,7 +244,7 @@ Amaç, burada gösterildiği gibi birden çok SAP ABAP yoks veya SAP Java SCS k�
 
 ![Azure 'da birden çok SAP ASCS/SCS kümelenmiş örneği][sap-ha-guide-figure-6002]
 
-Yük dengeleyici sınırları hakkında daha fazla bilgi için ağ sınırları içindeki ["yük dengeleyici başına özel ön uç IP" bölümüne bakın: Azure Resource Manager][networking-limits-azure-resource-manager].
+Yük dengeleyici sınırları hakkında daha fazla bilgi için [ağ sınırları: Azure Resource Manager][networking-limits-azure-resource-manager]"yük dengeleyiciye göre özel ön uç IP" bölümüne bakın.
 
 İki yüksek kullanılabilirliğe sahip SAP sistemiyle tam yatay şöyle görünür:
 
@@ -254,9 +254,9 @@ Yük dengeleyici sınırları hakkında daha fazla bilgi için ağ sınırları 
 
 Altyapınızı hazırlamak için aşağıdaki parametrelerle ek bir SAP ASCS/SCS örneği yükleyebilirsiniz:
 
-| Parametre adı | Value |
+| Parametre adı | Değer |
 | --- | --- |
-| SAP YOKS/SCS SID 'SI |PR1-lb-yoks |
+| SAP YOKS/SCS SıD 'SI |PR1-lb-yoks |
 | SAP DBMS iç yük dengeleyici | PR5 |
 | SAP sanal ana bilgisayar adı | PR5-SAP-CL |
 | SAP ASCS/SCS sanal ana bilgisayar IP adresi (ek Azure yük dengeleyici IP adresi) | 10.0.0.50 |

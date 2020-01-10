@@ -6,28 +6,27 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/14/2019
-ms.openlocfilehash: 4e6b648ed70f6ff57a2d11cde43b8168b800fcb3
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 12/13/2019
+ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806924"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638893"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight 'ta Apache Spark otomatik makine öğrenimi ile Azure Machine Learning iş yüklerini çalıştırma
 
 Azure Machine Learning, makine öğrenimi modellerinin oluşturulmasını, eğitimini ve dağıtımını basitleştirir ve hızlandırır. Otomatik makine öğrenimi (otomatik ml) içinde, tanımlı bir hedef özelliğine sahip eğitim verileriyle başlar ve ardından, eğitim puanlarına göre verilerinizin en iyi modelini otomatik olarak seçmek için algoritmaların ve özellik seçimlerinin birleşimleri aracılığıyla yineleyebilirsiniz. HDInsight, müşterilerin yüzlerce düğüm içeren kümeler sağlamasını sağlar. HDInsight kümesinde Spark üzerinde çalışan oto ml, kullanıcıların eğitim işlerini bir genişleme düzeyinde çalıştırmak ve birden çok eğitim işini paralel olarak çalıştırmak için bu düğümlerde işlem kapasitesini kullanmalarına olanak sağlar. Bu, kullanıcıların, diğer büyük veri iş yükleriyle işlem paylaşımı sırasında oto ml denemeleri çalıştırmasına olanak tanır.
- 
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>HDInsight kümesine Azure Machine Learning yüklemesi
 
-Otomatik makine öğrenimi hakkında genel öğreticiler için bkz. [öğretici: gerileme modelinizi derlemek için otomatik makine öğrenimi kullanma](../../machine-learning/service/tutorial-auto-train-models.md).
-Tüm yeni HDInsight-Spark kümeleri, AzureML-otomatik ml SDK 'Sı ile önceden yüklenmiş olarak gelir. Bu [örnek Jupyter Not defteri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi)ile HDInsight üzerinde, oto ml ile çalışmaya başlayın. Bu Jupyter Notebook, basit bir sınıflandırma sorunu için otomatik makine öğrenimi sınıflandırmasının nasıl kullanılacağını gösterir.
+Otomatik makine öğrenimi hakkında genel öğreticiler için bkz. [öğretici: gerileme modelinizi derlemek için otomatik makine öğrenimi kullanma](../../machine-learning/tutorial-auto-train-models.md).
+Tüm yeni HDInsight-Spark kümeleri, AzureML-otomatik ml SDK 'Sı ile önceden yüklenmiş olarak gelir.
 
 > [!Note]
 > Azure Machine Learning paketleri Python3 Conda ortamına yüklenir. Yüklü Jupyter Not defteri, PySpark3 çekirdeği kullanılarak çalıştırılmalıdır.
 
-Alternatif olarak, Zeppelin not defterlerini kullanarak oto ml 'yi de kullanabilirsiniz.
+Zeppelin not defterlerini kullanarak, oto ml 'yi de kullanabilirsiniz.
 
 > [!Note]
 > Zeppelin, Python 'un doğru sürümünü seçmediği [bilinen bir sorun](https://community.hortonworks.com/content/supportkb/207822/the-livypyspark3-interpreter-uses-python-2-instead.html) PySpark3. Lütfen belgelenen işi kullanın.
@@ -46,6 +45,7 @@ auth_sp = ServicePrincipalAuthentication(
     service_principal_password='<Azure AD Application Key>'
 )
 ```
+
 Aşağıdaki kod parçacığı, bir **Azure AD kullanıcısı**kullanarak bir kimlik doğrulama belirteci oluşturur.
 
 ```python
@@ -76,5 +76,5 @@ Ayrıca, bir kerelik kayıt kullanarak, veri deposunu çalışma alanıyla de ka
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Otomatik makine öğrenimi 'nin arkasındaki eğitim hakkında daha fazla bilgi için bkz. [Microsoft 'un otomatik makine öğrenimini kullanarak yayın modelleri](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/) .
-* Azure ML otomatikleştirilmiş ML yeteneklerini kullanma hakkında daha fazla bilgi için, bkz. [Azure Machine Learning yeni otomatik makine öğrenimi özellikleri](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
+* Azure ML otomatik ML yeteneklerini kullanma hakkında daha fazla bilgi için, bkz. [Azure Machine Learning yeni otomatik makine öğrenimi özellikleri](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
 * [Microsoft Research 'ten bir oto ml projesi](https://www.microsoft.com/research/project/automl/)

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: 29962fa217c34088ed17fdea68c2c1189a3bfcd2
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: a72e98341ecafcda98cc2fde34cf1f9d4eaff94c
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996587"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658279"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway nedir?
 
@@ -139,14 +139,14 @@ Application Gateway Standard_v2 ve WAF_v2 SKU, otomatik ölçeklendirme veya sab
 
 Application Gateway standart ve WAF SKU Şu anda üç boyutta sunulmaktadır: **küçük**, **Orta**ve **büyük**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
 
-Application Gateway limitlerinin tam listesi için bkz. [Application Gateway hizmet limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
+Application Gateway limitlerinin tam listesi için bkz. [Application Gateway hizmet limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
 Aşağıdaki tabloda SSL boşaltması etkin olan her bir Application Gateway v1 örneği için ortalama performans performansı gösterilmektedir:
 
 | Ortalama arka uç sayfa yanıt boyutu | Küçük | Orta | Büyük |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mbps |13 Mbps |50 Mb/sn |
-| 100 KB |35 Mbps |100 Mbps |200 Mbps |
+| 100 KB |35 Mbps |100 Mb/sn |200 Mbps |
 
 > [!NOTE]
 > Bu değerler bir uygulama ağ geçidi verimliliği için yaklaşık değerlerdir. Gerçek verimlilik; ortalama sayfa boyutu, arka uç örneklerinin konumu ve bir sayfaya hizmet etmek için işleme süresi gibi çeşitli ortam ayrıntılarına bağlıdır. Tam performans rakamlarına ulaşmak için kendi testlerinizi çalıştırmanız gerekir. Bu değerler yalnızca kapasite planlama konusunda yardımcı olmak için verilmiştir.

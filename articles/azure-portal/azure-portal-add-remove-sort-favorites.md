@@ -1,23 +1,23 @@
 ---
-title: Azure portal sık kullanılanları ekleme, kaldırma ve sıralama | Microsoft Docs
-description: Sık Kullanılanlar listesine öğe eklemeyi veya kaldırmayı ve öğelerin sırasını sıralamayı öğrenin
+title: Azure portal sık kullanılanları ekleyin, kaldırın ve düzenleyin | Microsoft Docs
+description: Sık Kullanılanlar listesine öğe ekleme veya kaldırma ve öğelerin sırasını yeniden düzenleme hakkında bilgi edinin
 services: azure-portal
-keywords: Larını
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+keywords: Sık Kullanılanlar, Portal
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: 51228f4a28b5c6e19bf341b5576540d36bcaae64
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 57ce053f268558886dad33d450d48f9a0889a10a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579508"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640576"
 ---
-# <a name="add-remove-and-sort-favorites"></a>Ekleme, kaldırma ve sık kullanılanları sıralama
+# <a name="add-remove-and-rearrange-favorites"></a>Sık kullanılanları ekleme, kaldırma ve yeniden düzenleme
 
 En sık kullandığınız hizmetlere hızla gidebilmeniz için **Sık Kullanılanlar** listenizden öğe ekleyin veya kaldırın. **Sık Kullanılanlar** listenize bazı yaygın Hizmetleri zaten ekledik, ancak büyük olasılıkla özelleştirmek isteyeceksiniz. **Sık Kullanılanlar**'da yaptığınız değişiklikleri görecek tek bir siz olursunuz.
 
@@ -51,7 +51,7 @@ Artık bir öğeyi doğrudan **Sık Kullanılanlar** listesinden kaldırabilirsi
 
 2. Bilgi kartında, doldurulacak ve doldurulmamış olarak değiştiği için yıldızı seçin. Hizmet, **Sık Kullanılanlar** listesinden kaldırılır.
 
-## <a name="sort-favorites"></a>Sık kullanılanları Sırala
+## <a name="rearrange-favorites"></a>Sık kullanılanları yeniden Düzenle
 
 En sevdiğiniz hizmetlerin listelenme sırasını değiştirebilirsiniz. Menü öğesini yalnızca **Sık Kullanılanlar**altındaki başka bir konuma sürükleyip bırakın.
 

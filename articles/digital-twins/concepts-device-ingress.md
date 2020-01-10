@@ -1,19 +1,19 @@
 ---
 title: Cihaz bağlantısı ve telemetri girişi-Azure dijital TWINS | Microsoft Docs
-description: Azure dijital TWINS 'te bir cihazı bağlamayı ve eklemeyi öğrenin.
+description: Azure dijital TWINS 'te IoT cihazından bağlama, ekleme ve Telemetriyi gönderme hakkında bilgi edinin.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 529baf6a3eedf1d7490e8138642e90928a209876
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 01/03/2020
+ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010120"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660350"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Cihaz bağlantısı ve telemetri sorunları
 
@@ -67,11 +67,11 @@ Cihazınızın ileti biçimi ve yükünü, çözümünüzün ihtiyaçlarına uya
 
  Bir **iletinin** yük içeriği, 256 KB 'a kadar olan rastgele veri olabilir. [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) türünün özellikleri için birkaç gereksinim bekleniyor. Tablo, sistem tarafından desteklenen gerekli ve isteğe bağlı özellikleri gösterir.
 
-| Özellik adı | Değer | Gerekli | Açıklama |
+| Özellik adı | Değer | Gereklidir | Açıklama |
 |---|---|---|---|
-| **DigitalTwins-telemetri** | 1.0 | Yes | Sisteme bir ileti tanımlayan sabit bir değer. |
-| **DigitalTwins-Sensorhardwareıd** | `string(72)` | Yes | **İletiyi**gönderen sensör için benzersiz bir tanımlayıcı. Bu değer, sistemin işlemesi için bir nesnenin **HardwareID** özelliği ile aynı olmalıdır. Örneğin, `00FF0643BE88-CO2`. |
-| **CreationTimeUtc** | `string` | Hayır | Yükün örnekleme süresini tanımlayan [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) biçimli bir tarih dizesi. Örneğin, `2018-09-20T07:35:00.8587882-07:00`. |
+| **DigitalTwins-telemetri** | 1.0 | Evet | Sisteme bir ileti tanımlayan sabit bir değer. |
+| **DigitalTwins-Sensorhardwareıd** | `string(72)` | Evet | **İletiyi**gönderen sensör için benzersiz bir tanımlayıcı. Bu değer, sistemin işlemesi için bir nesnenin **HardwareID** özelliği ile aynı olmalıdır. Örneğin, `00FF0643BE88-CO2`. |
+| **CreationTimeUtc** | `string` | Hayır | Yükün örnekleme süresini tanımlayan [ıso 8601](https://www.iso.org/iso-8601-date-and-time-format.html) biçimli bir tarih dizesi. Örneğin, `2018-09-20T07:35:00.8587882-07:00`. |
 | **ID** | `string` | Hayır | Sistem genelinde olayları izlemek için kullanılan bir UUID. Örneğin, `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>İletinizi dijital TWINS 'e gönderin

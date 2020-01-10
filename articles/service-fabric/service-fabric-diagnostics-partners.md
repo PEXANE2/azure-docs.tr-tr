@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric Izleme Iş ortakları | Microsoft Docs
-description: Azure Service Fabric iş ortağı izleme çözümleriyle izlemeyi öğrenin
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric Izleme Iş ortakları
+description: Azure Service Fabric uygulamalarını, kümelerini ve altyapısını iş ortağı izleme çözümleriyle izlemeyi öğrenin.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8353c8846820aa996214e6b119a2f9027b8b6fe6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232442"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645727"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric Izleme Iş ortakları
 
@@ -31,7 +22,7 @@ DynaTrace ile tümleştirdiğimiz Service Fabric kümelerinizi izlemek için bir
 
 ## <a name="datadog"></a>Datadog
 
-Dataköpek, hem Windows hem de Linux örnekleri için bir VMSS uzantısına sahiptir. Datadog kullanarak Windows olay günlüklerini toplayabilir ve bu nedenle Windows 'da Service Fabric platform olayları toplayabilirsiniz. Tanılama verilerinizi [buradaki veri adaylarına](https://www.datadoghq.com/blog/azure-monitoring-enhancements/#integrate-with-azure-service-fabric)gönderme yönergelerine göz atın.
+Dataköpek, hem Windows hem de Linux örnekleri için bir VMSS uzantısına sahiptir. Veri köpek kullanarak Windows olay günlüklerini toplayabilir ve bu nedenle Windows 'da Service Fabric platform olayları toplayabilirsiniz. Tanılama verilerinizi [buradaki veri adaylarına](https://www.datadoghq.com/blog/azure-monitoring-enhancements/#integrate-with-azure-service-fabric)gönderme yönergelerine göz atın.
 
 ## <a name="appdynamics"></a>AppDynamics
 
@@ -43,11 +34,11 @@ Yeni relik, Service Fabric uygulamalarla iyi tümleşen bir başka uygulama perf
 
 ## <a name="elk"></a>ELK 
 
-ELK yığını, bir açık kaynak teknolojileri koleksiyonudur: Elaol Search, Logstash ve kibana. Bunların birleşimini kullanarak, Service Fabric izleme ve tanılama verilerini toplayabilir, saklayabilir ve analiz edebilirsiniz. Bunu Service Fabric yerel Java uygulamalarıyla nasıl yapacağız hakkında bir öğretici [sunuyoruz.](service-fabric-tutorial-java-elk.md) 
+ELK yığını, bir açık kaynaklı teknolojiler koleksiyonudur: Elaol Search, Logstash ve kibana. Bu teknolojileri birlikte kullanarak, Service Fabric izleme ve tanılama verilerini toplayabilir, saklayabilir ve analiz edebilirsiniz. Bunu Service Fabric yerel Java uygulamalarıyla nasıl yapacağız hakkında bir öğretici [sunuyoruz.](service-fabric-tutorial-java-elk.md) 
 
 ## <a name="humio"></a>Humio
 
-Humio, buluttan veya Şirket içindeki Service Fabric gerçek zamanlı olarak uygulama ve olaylarınızdan günlük toplayabilen bir günlük toplama hizmetidir. Humio, Live Observability 'a ek olarak, tanılamalarınıza ilişkin öngörüleri görüntülemek ve toplamak için resim analizi ve görselleştirme özellikleri sağlar. Humio, uygun maliyetli fiyatlandırma planları içerir ve bu, hızlı bir hızla hızlanırken ölçeklendirilmesi için oluşturulmuştur. Service Fabric platform olayları ve uygulama telemetrisiyle doğrudan tümleştirilir. Humio ve [Service Fabric tümleştirme hakkında](https://github.com/humio/service-fabric-humio)daha fazla bilgi edinebilirsiniz.
+Humio, buluttan veya Şirket içindeki Service Fabric gerçek zamanlı olarak uygulama ve olaylarınızdan günlük toplayabilen bir günlük toplama hizmetidir. Humio, Live Observability 'a ek olarak, tanılamalarınızın bilgilerini görüntülemek ve toplamak için son teknoloji Analizi ve görselleştirme özellikleri sunar. Humio, uygun maliyetli fiyatlandırma planları içerir ve bu, hızlı bir hızla hızlanırken ölçeklendirilmesi için oluşturulmuştur. Service Fabric platform olayları ve uygulama telemetrisiyle doğrudan tümleştirilir. Humio ve [Service Fabric tümleştirme hakkında](https://github.com/humio/service-fabric-humio)daha fazla bilgi edinebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

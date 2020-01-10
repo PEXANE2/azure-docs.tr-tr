@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/17/2019
-ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/02/2020
+ms.openlocfilehash: 10149c6eb06e6d2994233aa365f237e6d9330c48
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930335"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644774"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi Birleştir
 
@@ -25,11 +25,14 @@ Eşleme veri akışları Şu anda beş farklı JOIN türünü desteklemektedir.
 
 ### <a name="inner-join"></a>İç birleşim
 
-İç birleşim yalnızca her iki tabloda eşleşen değerleri olan satırları çıktı olarak verir.
+İç birleşim yalnızca her iki tabloda eşleşen değerleri olan satırları çıktı.
 
 ### <a name="left-outer"></a>Sol dış
 
 Sol dış birleşim, sol akıştaki tüm satırları ve doğru akıştan eşleşen kayıtları döndürür. Sol akıştaki bir satırda eşleşme yoksa, doğru akıştaki çıkış sütunları NULL olarak ayarlanır. Çıktı, bir iç birleşim ile döndürülen satırlar ve sol akıştaki eşleşmeyen satırlar olacaktır.
+
+> [!NOTE]
+> Veri akışları tarafından kullanılan Spark altyapısı, bazı durumlarda, JOIN koşullarınızda de olası Kartezyen ürünleri olacaktır. Bu durumda, özel bir çapraz birleşime geçiş yapabilir ve ekleme koşulunuz el ile girebilirsiniz. Bu durum, yürütme altyapısının ilişkinin her iki tarafından tüm satırları hesaplaması ve sonra satırları filtrelemeniz gerekeceğinden, veri akışlarınızda daha yavaş performans oluşmasına neden olabilir.
 
 ### <a name="right-outer"></a>Sağ dış
 
@@ -39,9 +42,16 @@ Sağ dış birleşim, sol akıştaki doğru akıştaki ve eşleşen kayıtlardan
 
 Tam dış birleşim, eşleşmeyen sütunlarda NULL değerler ile her iki taraftan da tüm sütunları ve satırları çıktı.
 
-### <a name="cross-join"></a>Çapraz Birleştirme
+### <a name="custom-cross-join"></a>Özel çapraz ekleme
 
-Çapraz birle, iki akışın çapraz çarpımını bir koşula göre çıktı. Eşitlik olmayan bir koşul kullanıyorsanız, çapraz ekleme koşulunuz olarak bir özel ifade belirtin. Çıkış akışı, JOIN koşulunu karşılayan tüm satırlar olacaktır. Her satır bileşimini çıkaran bir Kartezyen ürün oluşturmak için, birleşim koşulunuz olarak `true()` belirtin.
+Çapraz birle, iki akışın çapraz çarpımını bir koşula göre çıktı. Eşitlik olmayan bir koşul kullanıyorsanız, çapraz ekleme koşulunuz olarak bir özel ifade belirtin. Çıkış akışı, JOIN koşulunu karşılayan tüm satırlar olacaktır.
+
+Bu birleştirme türünü, eşlenmemiş birleşimler ve ```OR``` koşulları için kullanabilirsiniz.
+
+Açıkça tam bir Kartezyen ürün oluşturmak isterseniz, eşleştirilecek yapay bir anahtar oluşturmak için, birleştirmenin önüne iki bağımsız akışın her birinde türetilmiş sütun dönüşümünü kullanın. Örneğin, ```SyntheticKey``` adlı her akıştaki türetilmiş sütunda yeni bir sütun oluşturun ve ```1```eşit olarak ayarlayın. Daha sonra ```a.SyntheticKey == b.SyntheticKey``` özel bir JOIN ifadesi olarak kullanın.
+
+> [!NOTE]
+> Özel bir çapraz birleşimde sol ve sağ İlişkinizdeki her bir taraftan en az bir sütun eklediğinizden emin olun. Her bir taraftaki sütunlar yerine statik değerlerle çapraz birleştirmeleri yürütmek, veri akışlarınızın düzgün bir şekilde gerçekleştirmesini sağlamak için tüm veri kümesinin tam taramasına neden olur.
 
 ## <a name="configuration"></a>Yapılandırma
 
@@ -104,9 +114,9 @@ TripData, TripFare
     )~> JoinMatchedData
 ```
 
-### <a name="cross-join-example"></a>Çapraz ekleme örneği
+### <a name="custom-cross-join-example"></a>Özel çapraz ekleme örneği
 
-Aşağıdaki örnek, `CartesianProduct` adlı bir JOIN dönüştürmedir `TripData` ve sağ Akış `TripFare`. Bu dönüşüm iki akış alır ve satırlarının Kartezyen bir ürününü döndürür. Tam bir Kartezyen ürün çıkış yaptığından, JOIN koşulu `true()`. `joinType` `cross`. `broadcast` `'left'`değer olduğundan, yalnızca sol akışta yayını etkinleştiriyoruz.
+Aşağıdaki örnek, `JoiningColumns` adlı bir JOIN dönüştürmedir `LeftStream` ve sağ Akış `RightStream`. Bu dönüşüm iki akış alır ve sütun `leftstreamcolumn` sütun `rightstreamcolumn`daha büyük olan tüm satırları birleştirir. `joinType` `cross`. Yayınlama etkinleştirilmemiş `broadcast` `'none'`değer içeriyor.
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
@@ -115,12 +125,12 @@ Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde g�
 Bu dönüşüm için veri akışı betiği aşağıdaki kod parçacığında verilmiştir:
 
 ```
-TripData, TripFare
+LeftStream, RightStream
     join(
-        true(),
+        leftstreamcolumn > rightstreamcolumn,
         joinType:'cross',
-        broadcast: 'left'
-    )~> CartesianProduct
+        broadcast: 'none'
+    )~> JoiningColumns
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 40b277f0b1bfb3501bb246e555d46db5e1ee9f95
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279316"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638264"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL veritabanı kaynak sınırları ve kaynak İdaresi
 
@@ -99,7 +99,9 @@ Tek veritabanları için, iş yükü grubu sınırları veritabanına göre tüm
 
 Azure depolama 'daki veri dosyalarını kullanan temel, standart ve Genel Amaçlı veritabanları için, bir veritabanında bu ıOPS sayısını birikecek yeterli veri dosyası yoksa veya veriler dosyalar arasında eşit olarak dağıtılmıyorsa veya temeldeki Blobların performans katmanı kaynak idare sınırının altındaki ıOPS/aktarım hızını sınırlıyorsa, `primary_group_max_io` değeri ulaşılabilir olmayabilir. Benzer şekilde, sık işlem işleme tarafından oluşturulan küçük günlük IOs ile, temel Azure depolama blobunun ıOPS sınırı nedeniyle `primary_max_log_rate` değeri bir iş yükü tarafından ulaşılabilir olmayabilir.
 
-[Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)ve [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) görünümlerinde bildirilen `avg_data_io_percent` ve `avg_log_write_percent`gibi kaynak kullanım değerleri, maksimum kaynak idare limitlerinin yüzdesi olarak hesaplanır. Bu nedenle, kaynak İdaresi, ıOPS/aktarım hızı dışındaki faktörler olduğunda, bildirilen kaynak kullanımı %100 altında kalsa da, iş yükünün arttığı sırada ıOPS/üretilen iş düzleştirme ve gecikme sürelerini görmek mümkündür. Veritabanı dosyası başına okuma ve yazma ıOPS, aktarım hızı ve gecikme süresini görmek için [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) işlevini kullanın. Bu işlev, `avg_data_io_percent`'e göre hesaba katılmaz, ancak temeldeki depolamanın ıOPS ve aktarım hızını kullanır ve gözlemlenen depolama gecikmesini etkileyebilir.
+[Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)ve [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) görünümlerinde bildirilen `avg_data_io_percent` ve `avg_log_write_percent`gibi kaynak kullanım değerleri, maksimum kaynak idare limitlerinin yüzdesi olarak hesaplanır. Bu nedenle, kaynak İdaresi, ıOPS/aktarım hızı dışındaki faktörler olduğunda, bildirilen kaynak kullanımı %100 altında kalsa da, iş yükünün arttığı sırada ıOPS/üretilen iş düzleştirme ve gecikme sürelerini görmek mümkündür. 
+
+Veritabanı dosyası başına okuma ve yazma ıOPS, aktarım hızı ve gecikme süresini görmek için [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) işlevini kullanın. Bu işlev, `avg_data_io_percent`'e göre hesaba katılmaz, ancak temeldeki depolamanın ıOPS ve aktarım hızını kullanır ve gözlemlenen depolama gecikmesini etkileyebilir. İşlev Ayrıca, sırasıyla `io_stall_queued_read_ms` ve `io_stall_queued_write_ms` sütunlarında, okuma ve yazma işlemleri için GÇ kaynak İdaresi tarafından kullanıma sunulmuş ek gecikme süresi de sunmaktadır.
 
 ### <a name="transaction-log-rate-governance"></a>İşlem günlüğü oranı idare
 
@@ -132,6 +134,6 @@ Günlük hızı idarecisi trafik şekillendirme, aşağıdaki bekleme türleri a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Genel Azure limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-subscription-service-limits.md).
+- Genel Azure limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - DTU 'Lar ve eDTU 'lar hakkında daha fazla bilgi için bkz. [DTU ve eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model).
 - Tempdb boyut limitleri hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda tempdb](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).

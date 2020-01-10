@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4db330a875b8241b642bcbc71fb0866c9833ee7e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182735"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638689"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolü ayarlarını yapılandırma
 
@@ -58,10 +58,17 @@ Azure Kaynak rolü ayarlarını açmak için aşağıdaki adımları izleyin.
 
 1. Bu rolün bildirim ayarı sekmesine ulaşmak için sayfanın alt kısmındaki **bildirim** sekmesini veya **Sonraki: etkinleştirme** düğmesini kullanın. Bu ayarlar, bu rolle ilgili tüm e-posta bildirimlerini denetler.
 
-    > [!NOTE]
-    > Bu bildirimler Kullanıcı arabirimi şu anda Azure bölgeleri ve abonelikleri genelinde alındı. Bu ayrıntılı bildirimleri yapılandıramıyorum, lütfen bir gün veya iki gün sonra yeniden denetleyin.
-
     ![Rol ayarları sayfasındaki rol bildirimleri sekmesi](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+    Rol ayarları sayfasındaki **Bildirimler** sekmesinde, Privileged Identity Management bildirimleri alan ve aldıkları bildirimler üzerinde ayrıntılı denetim olanağı sunar.
+
+    - **E-postayı kapatma**<br>Varsayılan alıcı onay kutusunu temizleyerek ve ek alıcıları silerek belirli e-postaları devre dışı bırakabilirsiniz.  
+
+    - **E-postaları belirtilen e-posta adresleriyle sınırla**<br>Varsayılan alıcı onay kutusunu temizleyerek varsayılan alıcılara gönderilen e-postaları devre dışı bırakabilirsiniz. Daha sonra ek alıcılar olarak ek e-posta adresleri ekleyebilirsiniz. Birden fazla e-posta adresi eklemek istiyorsanız, bunları noktalı virgül (;) ile ayırın.
+
+    - **Varsayılan alıcılara ve ek alıcılara e-posta gönder**<br>Varsayılan alıcı onay kutusunu seçerek ve ek alıcıların e-posta adreslerini ekleyerek, hem varsayılan alıcıya hem de ek alıcıya e-posta gönderebilirsiniz.
+
+    - **Yalnızca kritik e-postalar**<br>Her e-posta türü için, yalnızca kritik e-postaları alma onay kutusunu seçebilirsiniz. Bunun anlamı Privileged Identity Management, yalnızca e-posta acil bir eylem gerektirdiğinde, yapılandırılan alıcılara e-posta gönderilmeye devam edecektir. Örneğin, kullanıcıların rol atamasını genişletmesini isteyen e-postalar tetiklenmeyecektir, bu da yöneticilerin bir uzantı isteğini onaylaması gereken e-posta tetiklenecektir.
 
 1. Rol ayarlarını güncelleştirmek için herhangi bir zamanda **Güncelleştir** düğmesini seçin.
 

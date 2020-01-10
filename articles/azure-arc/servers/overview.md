@@ -10,12 +10,12 @@ keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, g�
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06e3b490f4f9cef64ae8bca5aed4d0518f10ba0e
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951438"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659631"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Sunucular için Azure Arc nedir?
 
@@ -41,7 +41,7 @@ Genel önizleme sürümü, değerlendirme amacıyla tasarlanmıştır ve kritik 
 
 ## <a name="azure-subscription-and-service-limits"></a>Azure aboneliği ve hizmet limitleri
 
-Lütfen Azure Resource Manager sınırlarını okuduğunuzdan emin olun ve [abonelik](../../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)için listelenen yönergelere ve [kaynak gruplarına](../../azure-subscription-service-limits.md#resource-group-limits)göre bağlanacak makinelerin sayısını planlayın. Özellikle, varsayılan olarak, kaynak grubu başına 800 sunucu sınırı vardır.
+Lütfen Azure Resource Manager sınırlarını okuduğunuzdan emin olun ve [abonelik](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)için listelenen yönergelere ve [kaynak gruplarına](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)göre bağlanacak makinelerin sayısını planlayın. Özellikle, varsayılan olarak, kaynak grubu başına 800 sunucu sınırı vardır.
 
 ## <a name="networking-configuration"></a>Ağ yapılandırması
 
@@ -107,7 +107,7 @@ az provider register --namespace 'Microsoft.HybridCompute'
 az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-Ayrıca, [Azure Portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)altındaki adımları izleyerek Portal 'ı kullanarak kaynak sağlayıcılarını kaydedebilirsiniz.
+Ayrıca, [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)altındaki adımları izleyerek Portal 'ı kullanarak kaynak sağlayıcılarını kaydedebilirsiniz.
 
 ## <a name="machine-changes-after-installing-the-agent"></a>Aracıyı yükledikten sonra makine değişiklikleri
 

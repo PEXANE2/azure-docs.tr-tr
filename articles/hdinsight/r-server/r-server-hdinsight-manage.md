@@ -8,22 +8,22 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: e0ce8b97df6f2d6e95255d3f4dfc9f76fa08a594
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b2c16c27c0dfc0c30a99c52544cc4d2278eadfc7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123550"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647739"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta ML hizmetleri kümesini yönetme
 
 Bu makalede, birden çok eşzamanlı kullanıcı ekleme, bir ML Hizmetleri kümesine uzaktan bağlanma, işlem bağlamını değiştirme gibi görevleri gerçekleştirmek için Azure HDInsight 'ta mevcut bir ML hizmetleri kümesini yönetmeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir ML Hizmetleri kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **ml Hizmetleri** seçme.
 
-* Bir Secure Shell (SSH) istemcisi: Bir SSH istemcisi HDInsight kümesine uzaktan bağlanmak ve komutları doğrudan küme üzerinde çalıştırmak için kullanılır. Daha fazla bilgi için bkz [. HDInsight Ile SSH kullanma.](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir Secure Shell (SSH) istemcisi: HDInsight kümesine uzaktan bağlanmak ve komutları doğrudan küme üzerinde çalıştırmak için bir SSH istemcisi kullanılır. Daha fazla bilgi için bkz [. HDInsight Ile SSH kullanma.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="enable-multiple-concurrent-users"></a>Birden çok eş zamanlı kullanıcı etkinleştirme
 
@@ -48,11 +48,11 @@ RStudio kümenin Edge düğümünde çalıştığı için burada birkaç adım v
 2. Kenar düğümüne daha fazla Linux kullanıcısı ekleme
 3. RStudio Topluluk sürümünü oluşturulan kullanıcıyla kullanma
 
-### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>1\. adım: Edge düğümünde oturum açmak için oluşturulan SSH kullanıcısını kullanma
+### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>1\. Adım: kenar düğümünde oturum açmak için oluşturulan SSH kullanıcısını kullanma
 
 Edge düğümüne erişmek için [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md) konusundaki yönergeleri izleyin. HDInsight üzerinde ML Hizmetleri kümesi için kenar düğümü adresi `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
-### <a name="step-2-add-more-linux-users-in-edge-node"></a>2\. adım: Kenar düğümüne daha fazla Linux kullanıcısı ekleme
+### <a name="step-2-add-more-linux-users-in-edge-node"></a>2\. Adım: Kenar düğümüne daha fazla Linux kullanıcısı ekleme
 
 Kenar düğümüne bir kullanıcı eklemek için şu komutları çalıştırın:
 
@@ -68,9 +68,9 @@ Aşağıdaki ekran görüntüsünde çıktılar gösterilmektedir.
 
 "Geçerli Kerberos parolası:" sorulduğunda, bunu yoksaymak için yalnızca **ENTER** tuşuna basın. `useradd` komutundaki `-m` seçeneği, sistemin RStudio Topluluk sürümü için gerekli olan kullanıcı ana klasörünü oluşturacağını belirtir.
 
-### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>3\. adım: RStudio Topluluk sürümünü oluşturulan kullanıcıyla kullanma
+### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>3\. Adım: RStudio Topluluk sürümünü oluşturulan kullanıcıyla kullanma
 
-RStudio 'dan https://CLUSTERNAME.azurehdinsight.net/rstudio/ ' ye erişin. Kümeyi oluşturduktan sonra ilk kez oturum açıyorsanız, Küme Yöneticisi kimlik bilgilerini ve ardından oluşturduğunuz SSH kullanıcı kimlik bilgilerini girin. İlk oturum açma işlemi değilse, yalnızca oluşturduğunuz SSH kullanıcısına ait kimlik bilgilerini girin.
+`https://CLUSTERNAME.azurehdinsight.net/rstudio/`RStudio 'Ya erişin. Kümeyi oluşturduktan sonra ilk kez oturum açıyorsanız, Küme Yöneticisi kimlik bilgilerini ve ardından oluşturduğunuz SSH kullanıcı kimlik bilgilerini girin. İlk oturum açma işlemi değilse, yalnızca oluşturduğunuz SSH kullanıcısına ait kimlik bilgilerini girin.
 
 Ayrıca, başka bir tarayıcı penceresinden aynı anda özgün kimlik bilgilerini (varsayılan olarak *sshuser*) kullanarak da oturum açabilirsiniz.
 
@@ -110,11 +110,11 @@ Bir işlem bağlamı, hesaplamanın kenar düğümünde yerel olarak yapılması
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>R kodunu birden fazla düğüme dağıtma
 
-HDInsight üzerinde ML hizmetleri sayesinde, var olan R kodunu alabilir ve kullanarak `rxExec`kümedeki birden çok düğüm arasında çalıştırabilirsiniz. Bu işlev bir parametre tarama veya benzetme işlemi sırasında yararlıdır. `rxExec` kullanımını gösteren bir kod örneği aşağıda verilmiştir:
+HDInsight üzerinde ML hizmetleri sayesinde, var olan R kodunu alabilir ve `rxExec`kullanarak kümedeki birden çok düğüm arasında çalıştırabilirsiniz. Bu işlev bir parametre tarama veya benzetme işlemi sırasında yararlıdır. `rxExec` kullanımını gösteren bir kod örneği aşağıda verilmiştir:
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-Spark bağlamını hala kullanıyorsanız, bu komut kodun `(Sys.info()["nodename"])` çalıştırıldığı çalışan düğümlerinin düğüler değerini döndürür. Örneğin, dört düğümlü bir kümede aşağıdaki kod parçacığına benzer bir çıktı almayı düşünüyorsunuz:
+Spark bağlamını kullanmaya devam ediyorsanız, bu komut kod `(Sys.info()["nodename"])` çalıştırıldığı çalışan düğümlerinin düğüyi değerini döndürür. Örneğin, dört düğümlü bir kümede aşağıdaki kod parçacığına benzer bir çıktı almayı düşünüyorsunuz:
 
     $rxElem1
         nodename
@@ -169,13 +169,13 @@ Yeni işlevlerin kullanımına ilişkin bazı örnek kodlar aşağıdaki kod ile
     rxSparkDisconnect(myHadoopCluster)
 
 
-Bu yeni işlevlerin kullanımına ilişkin ek bilgi için, `?RxHivedata` ve `?RxParquetData` komutlarının kullanımıyla ml hizmetlerindeki çevrimiçi yardıma bakın.  
+Bu yeni işlevlerin kullanımı hakkında daha fazla bilgi için, `?RxHivedata` ve `?RxParquetData` komutlarının kullanımı aracılığıyla ML hizmetlerindeki çevrimiçi yardım 'a bakın.  
 
 ## <a name="install-additional-r-packages-on-the-cluster"></a>Kümeye ek R paketleri yükler
 
 ### <a name="to-install-r-packages-on-the-edge-node"></a>Uç düğümüne R paketleri yüklemek için
 
-Kenar düğümüne ek R paketleri yüklemek isterseniz, SSH aracılığıyla Edge düğümüne bağlandıktan sonra doğrudan r `install.packages()` konsolu içinden kullanabilirsiniz. 
+Kenar düğümüne ek R paketleri yüklemek isterseniz, SSH aracılığıyla Edge düğümüne bağlandıktan sonra doğrudan R konsolu içinden `install.packages()` kullanabilirsiniz. 
 
 ### <a name="to-install-r-packages-on-the-worker-node"></a>Çalışan düğümüne R paketleri yüklemek için
 
@@ -192,7 +192,7 @@ Kümenin çalışan düğümlerine R paketleri yüklemek için bir betik eylemi 
 
    * **Ad**için, betik eylemi için bir ad sağlayın.
 
-     * **Bash betiği URI 'si**için girin `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Bu, çalışan düğümüne ek R paketleri yükleyen betiğtir
+     * **Bash betiği URI 'si**için `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`girin. Bu, çalışan düğümüne ek R paketleri yükleyen betiğtir
 
    * Yalnızca **çalışan**için onay kutusunu seçin.
 

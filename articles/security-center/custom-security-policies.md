@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 3e60c0e165b8f9ec79aac2048011d9e315b0ce18
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 34dbace304ccf70891ef53dd768de60d87e26967
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483969"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666644"
 ---
 # <a name="using-custom-security-policies-preview"></a>Özel güvenlik ilkeleri kullanma (Önizleme)
 
 Azure Güvenlik Merkezi, sistem ve ortamınızın güvenliğini sağlamaya yardımcı olmak için güvenlik önerileri oluşturur. Bu öneriler, tüm müşterilere sağlanan genel, varsayılan güvenlik ilkesine dahil olan sektör en iyi uygulamalarına dayalıdır. Ayrıca, güvenlik merkezi 'nin sektör ve mevzuat standartları hakkında bilgi edinmeleri de gelebilir.
 
-Bu önizleme özelliği ile kendi *özel* girişimlerinizi ekleyebilirsiniz. Daha sonra ortamınız oluşturduğunuz ilkeleri izmazsa öneriler alacaksınız.
+Bu önizleme özelliği ile kendi *özel* girişimlerinizi ekleyebilirsiniz. Daha sonra ortamınız oluşturduğunuz ilkeleri izmazsa öneriler alacaksınız. Oluşturmakta olduğunuz özel girişimler, mevzuat uyumluluklarını [geliştirme](security-center-compliance-dashboard.md)öğreticisinde açıklanan, mevzuat uyumluluk panosundaki yerleşik girişimlerin yanında görüntülenir.
 
 [Burada](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) açıklandığı gibi, Azure ilke belgelerinde, özel girişim'niz için bir konum belirttiğinizde bir yönetim grubu veya abonelik olması gerekir. 
 
@@ -58,6 +58,12 @@ Bu önizleme özelliği ile kendi *özel* girişimlerinizi ekleyebilirsiniz. Dah
 
     > [!NOTE]
     > Yeni girişimler oluşturmak için abonelik sahibi kimlik bilgileri gerekir. Azure rolleri hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde izinler](security-center-permissions.md).
+
+    Yeni girişim devreye girer ve etkiyi aşağıdaki iki yolla görebilirsiniz:
+
+    * Güvenlik Merkezi kenar çubuğundan Ilke & uyumluluğu altında, **mevzuat uyumluluğu**' nu seçin. Uyumluluk panosu, yeni özel girişiminizi yerleşik girişimlerle birlikte göstermek için açılır.
+    
+    * Ortamınız tanımladığınız ilkeleri izmazsa öneriler almaya başlar.
 
 1. İlkenize yönelik sonuç önerilerini görmek için kenar çubuğundan **öneriler** ' e tıklayarak öneriler sayfasını açın. Öneriler "özel" bir etiketle görüntülenir ve yaklaşık bir saat içinde kullanılabilir.
 

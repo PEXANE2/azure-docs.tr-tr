@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6aaa98bea5e6cf1bdffc3dbe28e42e9545a626ea
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4158df06b4eea175a4225e478325f8f151795850
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593620"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660639"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Azure’da içerik teslim ağı nedir?
 İçerik teslim ağı (CDN), kullanıcılara etkili bir şekilde web içeriği teslim edebilen dağıtılmış bir sunucu ağıdır. CDN’ler gecikme süresini en aza indirmek için, önbelleğe alınmış içerikleri son kullanıcılara yakın olan bulunma noktası (POP) konumlarındaki uç sunucularda depolar. 
@@ -35,7 +35,7 @@ Web sitesi varlıklarını teslim etmek için Azure CDN kullanmanın avantajlar�
 
 Geçerli CDN düğümü konumlarının listesi için bkz. [Azure CDN POP konumları](cdn-pop-locations.md).
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 ![CDN'ye Genel Bakış](./media/cdn-overview/cdn-overview.png)
 
 1. Bir kullanıcı (Alice), _&lt;uç nokta adı&gt;_ .azureedge.net gibi özel bir etki alanı adına sahip olan bir URL’yi kullanarak bir dosya (varlık olarak da adlandırılır) isteğinde bulunur. Bu ad, bir uç nokta konak adı veya özel bir etki alanı olabilir. DNS, genellikle coğrafi olarak kullanıcıya en yakın bulunma noktası olan en iyi performansa sahip bulunma noktası konumuna isteği yönlendirir.
@@ -59,7 +59,7 @@ Her Azure aboneliği aşağıdaki kaynaklar için varsayılan sınırlara sahipt
  - Bir CDN profilinde oluşturulabilecek uç nokta sayısı. 
  - Bir uç noktaya eşlenebilecek özel etki alanı sayısı.
 
-CDN aboneliği sınırları hakkında daha fazla bilgi için bkz. [CDN sınırları](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+CDN aboneliği sınırları hakkında daha fazla bilgi için bkz. [CDN sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
     
 ## <a name="azure-cdn-features"></a>Azure CDN özellikleri
 Azure CDN aşağıdaki temel özellikleri sunar:

@@ -6,21 +6,21 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 839e608aa4bba26712ae5b0c160da40db279bbc9
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: dce267178c3caf813ccdcac4bba86ccfde3f3421
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219194"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647195"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Azure ağ güvenlik grubu (NSG) Azure portal kullanarak başka bir bölgeye taşıma
 
 Mevcut NSG 'lerinizi bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, test için aynı yapılandırma ve güvenlik kurallarına sahip bir NSG oluşturmak isteyebilirsiniz. Ayrıca, olağanüstü durum kurtarma planlamasının bir parçası olarak bir NSG 'yi başka bir bölgeye taşımak isteyebilirsiniz.
 
-Azure Güvenlik grupları bir bölgeden diğerine taşınamaz. Bununla birlikte, bir NSG 'nin mevcut yapılandırma ve güvenlik kurallarını dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz.  Daha sonra, NSG 'yi bir şablona dışarı aktararak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtabilmeniz için kaynağı başka bir bölgede aşamalandırın.  Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz [. hızlı başlangıç: Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın.
+Azure Güvenlik grupları bir bölgeden diğerine taşınamaz. Bununla birlikte, bir NSG 'nin mevcut yapılandırma ve güvenlik kurallarını dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz.  Daha sonra, NSG 'yi bir şablona dışarı aktararak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtabilmeniz için kaynağı başka bir bölgede aşamalandırın.  Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure ağ güvenlik grubunun, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 
@@ -32,7 +32,7 @@ Azure Güvenlik grupları bir bölgeden diğerine taşınamaz. Bununla birlikte,
 
 - Azure aboneliğinizin, kullanılan hedef bölgede NSG 'ler oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
 
-- Aboneliğinizin bu işlem için NSG 'lerin eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Aboneliğinizin bu işlem için NSG 'lerin eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Hazırlama ve taşıma
@@ -41,11 +41,11 @@ Aşağıdaki adımlar, yapılandırma ve güvenlik kuralı için ağ güvenlik g
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>Şablonu dışarı aktarma ve portaldan dağıtma
 
-1. [Azure Portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
+1. [Azure portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
 2. Kaynak NSG 'yi içeren kaynak grubunu bulun ve üzerine tıklayın.
-3. > **Ayarları** > **dışarı aktarma şablonu**' nu seçin.
+3. > **Ayarları** > **şablonu dışarı aktar**' ı seçin.
 4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
-5. **Şablon** > **düzenleme parametreleri** ' ne tıklayarak **Parameters. JSON** dosyasını çevrimiçi düzenleyicide açın.
+5. Çevrimiçi düzenleyicide **Parameters. JSON** dosyasını açmak için **şablon** > **parametreleri Düzenle** ' ye tıklayın.
 6. NSG adının parametresini düzenlemek için, **Parametreler**altındaki **Value** özelliğini değiştirin:
 
     ```json
@@ -64,7 +64,7 @@ Aşağıdaki adımlar, yapılandırma ve güvenlik kuralı için ağ güvenlik g
 
 8.  Düzenleyicide **Kaydet** ' e tıklayın.
 
-9.  Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon** > **düzenleme** şablonu ' na tıklayın.
+9.  Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon > şablonu** **Düzenle** ' ye tıklayın.
 
 10. NSG yapılandırma ve güvenlik kurallarının taşınacağı hedef bölgeyi düzenlemek için, çevrimiçi düzenleyicideki **kaynaklar** altındaki **Location** özelliğini değiştirin:
 
@@ -84,7 +84,7 @@ Aşağıdaki adımlar, yapılandırma ve güvenlik kuralı için ağ güvenlik g
 
     ```
 
-11. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD** = **merkezileştirme**.
+11. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bölge için kod, boşluk içermeyen bölge adıdır, **Orta ABD** = **merkezileştirme**.
 
 12. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
@@ -153,11 +153,11 @@ Aşağıdaki adımlar, yapılandırma ve güvenlik kuralı için ağ güvenlik g
 
 13. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
 
-14. Hedef NSG 'nin dağıtılacağı aboneliği seçmek için **temel bilgiler** > **aboneliği** ' ne tıklayın.
+14. Hedef NSG 'nin dağıtılacağı aboneliği seçmek için > **temel bilgiler** **aboneliğine** tıklayın.
 
 15. Hedef NSG 'nin dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef NSG için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut NSG kaynak kaynak grubuyla aynı olmadığından emin olun.
 
-16. **Temel bilgilerin** >  **,** NSG 'nin dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
+16. **Temel** > **konumun** , NSG 'nin dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
 
 17. **Ayarların** , yukarıdaki parametreler düzenleyicisinde girdiğiniz adla eşleştiğini doğrulayın.
 

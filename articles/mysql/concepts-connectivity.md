@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b598fafbbfce9a2c0a824dd6530d07a5933a2873
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 92e213a87796247128e7e3810db99fde8525e12a
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765215"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659228"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na geçici hataları işleyin ve verimli bir şekilde bağlanın
 
@@ -52,7 +52,7 @@ Veritabanı bağlantıları sınırlı bir kaynaktır; bu nedenle, MySQL için A
 
 Veritabanı bağlantılarını yönetmek, uygulamanın performansı üzerinde önemli bir etkiye sahip olabilir. Uygulamanızın performansını iyileştirmek için, hedefin, anahtar kodu yollarında bağlantıların oluşturulması ve zaman sayısını azaltmanız gerekir. MySQL için Azure veritabanı 'na bağlanmak üzere veritabanı bağlantı havuzunun veya kalıcı bağlantıların kullanılması önemle önerilir. Veritabanı bağlantı havuzu, veritabanı bağlantılarının oluşturulmasını, yönetilmesini ve ayrılmasını işler. Bir program bir veritabanı bağlantısı istediğinde, yeni bir bağlantı oluşturmak yerine var olan boştaki veritabanı bağlantılarının ayrılmasını önceliklendirir. Program veritabanı bağlantısını kullanmayı bitirdikten sonra, bağlantı yalnızca kapatılmak yerine daha fazla kullanım için hazırlanmak üzere kurtarılır.
 
-Daha iyi bir çizim için, bu makale örnek olarak JAVA kullanan [bir örnek kod parçası](./sample-scripts-java-connection-pooling.md) sağlar. Daha fazla bilgi için bkz. [Apache Common DBCP](http://commons.apache.org/proper/commons-dbcp/).
+Daha iyi bir çizim için, bu makale örnek olarak JAVA kullanan [bir örnek kod parçası](./sample-scripts-java-connection-pooling.md) sağlar. Daha fazla bilgi için bkz. [Apache Common DBCP](https://commons.apache.org/proper/commons-dbcp/).
 
 > [!NOTE]
 > Sunucu, kaynakları boşaltmak için bir süre boşta durumunda olan bir bağlantıyı kapatmak üzere bir zaman aşımı mekanizması yapılandırır. Bunları kullanırken kalıcı bağlantıların verimliliğini sağlamak için doğrulama sistemini ayarladığınızdan emin olun. Daha fazla bilgi için bkz. [kalıcı bağlantıların verimliliğini sağlamak için istemci tarafında doğrulama sistemlerini yapılandırma](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections).

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl düğümü | Microsoft Docs
-description: Service Fabric CLı sfctl düğüm komutlarını açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl düğümü
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Küme düğümlerini yönetmek için komutların bir listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 29a66beb354edc96a9ece2bb37766dbde6a9fe49
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 43b242d6c7c41b6198b8f909ab5ae056f0982307
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901096"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645302"
 ---
 # <a name="sfctl-node"></a>sfctl node
 Bir küme oluşturan düğümleri yönetin.
@@ -28,14 +19,14 @@ Bir küme oluşturan düğümleri yönetin.
 
 |Komut|Açıklama|
 | --- | --- |
-| dıı | Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına göre devre dışı bırakın. |
-| etkinleştirebilir | Şu anda devre dışı bırakılmış bir Service Fabric küme düğümünü etkinleştirin. |
+| veya etkinleşir | Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına göre devre dışı bırakın. |
+| seçin | Şu anda devre dışı bırakılmış bir Service Fabric küme düğümünü etkinleştirin. |
 | sağlık | Service Fabric düğümünün sistem durumunu alır. |
-| Bilgisine | Service Fabric kümesindeki belirli bir düğüm hakkındaki bilgileri alır. |
+| info | Service Fabric kümesindeki belirli bir düğüm hakkındaki bilgileri alır. |
 | list | Service Fabric kümesindeki düğümlerin listesini alır. |
 | yükleme | Service Fabric düğümünün yükleme bilgilerini alır. |
 | durumu Kaldır | Bir düğümdeki kalıcı durumun kalıcı olarak kaldırıldığını veya kaybediltiğini Service Fabric bildirir. |
-| rapor-sistem durumu | Service Fabric düğümünde bir sistem durumu raporu gönderir. |
+| report-health | Service Fabric düğümünde bir sistem durumu raporu gönderir. |
 | restart | Service Fabric küme düğümünü yeniden başlatır. |
 | geçiş | Bir küme düğümünü başlatır veya sonlandırır. |
 | geçiş-durum | StartNodeTransition kullanılarak başlatılan bir işlemin ilerleme durumunu alır. |

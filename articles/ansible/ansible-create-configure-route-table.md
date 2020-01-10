@@ -4,12 +4,12 @@ description: Anormal kullanarak Azure yol tabloları oluşturmayı, yönetmeyi v
 keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, ağ, rota, yol tablosu
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d1e44a98405bc1009f6f3d56d90fc1fd655d77d5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1f08aebe7e9dcc1c5687f50ac91c7cb8cc8a62eb
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156497"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659806"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Öğretici: Azure yol tablolarını anormal kullanarak yapılandırma
 
@@ -23,14 +23,14 @@ Azure, Azure alt ağları, sanal ağlar ve şirket içi ağlar arasındaki trafi
 >
 > Yol tablosu oluşturma bir sanal ağ ve alt ağ oluşturma bir yönlendirme tablosunu alt ağ ile Ilişkilendirme rota tablosunun alt ağ ile Ilişkisini kaldırma rotalar oluşturma ve silme rota tablosunu sorgulama rota tablosunu silme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="create-a-route-table"></a>Yönlendirme tablosu oluşturma
 
-Bu bölümdeki PlayBook kodu bir yol tablosu oluşturur. Rota tablosu limitleri hakkında daha fazla bilgi için bkz. [Azure Limitleri](/azure/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
+Bu bölümdeki PlayBook kodu bir yol tablosu oluşturur. Rota tablosu limitleri hakkında daha fazla bilgi için bkz. [Azure Limitleri](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
 
 Aşağıdaki playbook'u `route_table_create.yml` olarak kaydedin:
 

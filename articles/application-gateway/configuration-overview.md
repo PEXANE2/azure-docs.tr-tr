@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 79867bd048be882414e247af11c133ed481788a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996664"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658347"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -25,7 +25,7 @@ Bu görüntüde, üç dinleyici içeren bir uygulama gösterilmektedir. İlk iki
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure sanal ağı ve adanmış alt ağ
 
@@ -46,9 +46,9 @@ En az/28 olan bir alt ağ boyutu kullanmanızı öneririz. Bu boyut size 11 kull
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Application Gateway alt ağındaki ağ güvenlik grupları
 
-Ağ güvenlik grupları (NSG 'ler) Application Gateway desteklenir. Ancak çeşitli kısıtlamalar vardır:
+Ağ güvenlik grupları (NSG 'ler) Application Gateway desteklenir. Ancak bazı kısıtlamalar vardır:
 
-- Application Gateway v1 SKU 'SU için 65503-65534 TCP bağlantı noktalarında gelen Internet trafiğine izin vermeniz gerekir ve v2 SKU 'SU için TCP bağlantı noktaları 65200-65535, hedef alt ağa sahip *olmalıdır.* Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları Azure sertifikaları tarafından korunur (kilitlidir). Bu ağ geçitlerinin müşterileri de dahil olmak üzere dış varlıklar, uygun sertifikalara sahip olmayan bu uç noktalar üzerinde değişiklik başlatamaz.
+- Application Gateway v1 SKU 'SU için 65503-65534 TCP bağlantı noktalarında gelen Internet trafiğine ve **Gatewaymanager** hizmet **etiketi ile hedef** alt ağa sahip v2 SKU 'su için TCP bağlantı noktaları 65200-65535 ' ye izin vermelisiniz. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları Azure sertifikaları tarafından korunur (kilitlidir). Bu ağ geçitlerinin müşterileri de dahil olmak üzere dış varlıklar bu uç noktalar üzerinde iletişim kuramaz.
 
 - Giden internet bağlantısı engellenmiyor. NSG 'deki varsayılan giden kurallar internet bağlantısına izin verir. Şunları yapmanızı öneririz:
 
@@ -57,12 +57,12 @@ Ağ güvenlik grupları (NSG 'ler) Application Gateway desteklenir. Ancak çeşi
 
 - **AzureLoadBalancer** etiketinin trafiğine izin verilmelidir.
 
-##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Birkaç kaynak IP 'ye Application Gateway erişime izin ver
+#### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Birkaç kaynak IP 'ye Application Gateway erişime izin ver
 
 Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıdaki kısıtlamaları alt ağa bu öncelik sırasına göre yerleştirin:
 
-1. Kaynak IP veya IP aralığından gelen trafiğe ve hedefin tüm Application Gateway alt ağı ya da yapılandırılmış özel ön uç IP 'si olarak izin verir. NSG ortak IP üzerinde çalışmaz.
-2. Tüm kaynaklardan gelen isteklere Application Gateway v1 SKU 'SU için 65503-65534 bağlantı noktasına ve [arka uç durumu iletişimi](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)IÇIN v2 SKU 'su için 65200-65535 bağlantı noktalarına izin verin. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları Azure sertifikaları tarafından korunur (kilitlidir). Uygun sertifikalar yerine, dış varlıklar bu uç noktalar üzerinde değişiklik başlatamaz.
+1. Kaynak IP veya IP aralığından gelen trafiğe, gelen erişim bağlantı noktası (örneğin, HTTP erişimi için bağlantı noktası 80) olarak tüm Application Gateway alt ağ adres aralığı ve hedef bağlantı noktası olarak izin verin.
+2. Application Gateway v1 SKU 'SU için 65503-65534 olarak **kaynak ve hedef** bağlantı **noktası olarak kaynak** kaynaklı gelen isteklere ve [arka uç sistem durumu iletişimi](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)için v2 SKU 'su için 65200-65535 bağlantı noktalarına izin verin. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları Azure sertifikaları tarafından korunur (kilitlidir). Uygun sertifikalar yerine, dış varlıklar bu uç noktalar üzerinde değişiklik başlatamaz.
 3. [Ağ güvenlik grubundaki](https://docs.microsoft.com/azure/virtual-network/security-overview)gelen Azure Load Balancer Araştırmaları (*AzureLoadBalancer* Tag) ve gelen sanal ağ trafiğine (*VirtualNetwork* etiketi) izin verin.
 4. Engelle-All kuralını kullanarak diğer tüm gelen trafiği engelleyin.
 5. Tüm hedefler için internet 'e giden trafiğe izin verin.
@@ -74,10 +74,10 @@ V1 SKU 'SU için, Kullanıcı tanımlı yollar (UDRs), uçtan uca istek/yanıt i
 V2 SKU 'SU için UDRs Application Gateway alt ağında desteklenmez. Daha fazla bilgi için bkz. [Azure Application Gateway v2 SKU 'su](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
 
 > [!NOTE]
-> UDRs, v2 SKU 'SU için desteklenmez.  UDRs 'ye ihtiyacınız varsa v1 SKU 'SU dağıtmaya devam etmelisiniz.
+> UDRs, v2 SKU 'SU için şu anda desteklenmiyor.
 
 > [!NOTE]
-> Application Gateway alt ağında UDRs kullanmak, [arka uç sistem durumu görünümündeki](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) sistem durumunun "bilinmiyor" olarak görünmesine neden olur. Ayrıca, Application Gateway günlüklerin ve ölçümlerin oluşturulmasına neden olur. Arka uç sistem durumunu, günlükleri ve ölçümleri görüntüleyebilmeniz için Application Gateway alt ağında UDRs 'yi kullanmanızı öneririz.
+> Application Gateway alt ağında UDRs kullanmak, [arka uç sistem durumu görünümündeki](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) sistem durumunun "bilinmiyor" olarak görünmesine neden olabilir. Ayrıca, Application Gateway günlüklerin ve ölçümlerin oluşturulmasına neden olabilir. Arka uç sistem durumunu, günlükleri ve ölçümleri görüntüleyebilmeniz için Application Gateway alt ağında UDRs 'yi kullanmanızı öneririz.
 
 ## <a name="front-end-ip"></a>Ön uç IP 'si
 
@@ -165,7 +165,7 @@ Genel özel hata sayfasını yapılandırmak için, bkz. [Azure PowerShell Confi
 
 Bir arka uç sunucu grubu için SSL sertifika yönetimini merkezileştirmek ve şifreleme şifre çözme ek yükünü azaltabilirsiniz. Merkezi SSL işleme, güvenlik gereksinimlerinize uygun bir merkezi SSL ilkesi belirtmenize de olanak tanır. *Varsayılan*, *önceden tanımlanmış*veya *özel* SSL ilkesi seçebilirsiniz.
 
-SSL ilkesini SSL protokolü sürümlerini denetlemek için yapılandırırsınız. Bir uygulama ağ geçidini TLS 1.0, TLS 1.1 ve TLS 1.2 ile TLS el sıkışmaları için minimum protokol sürümünü kullanacak şekilde yapılandırabilirsiniz. Varsayılan olarak, SSL 2,0 ve 3,0 devre dışıdır ve yapılandırılamaz. Daha fazla bilgi için bkz. [SSL ilkesine genel bakış Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
+SSL ilkesini SSL protokolü sürümlerini denetlemek için yapılandırırsınız. Bir uygulama ağ geçidini TLS 1.0, TLS 1.1 ve TLS 1.2 ile TLS el sıkışmaları için en düşük protokol sürümünü kullanacak şekilde yapılandırabilirsiniz. Varsayılan olarak, SSL 2,0 ve 3,0 devre dışıdır ve yapılandırılamaz. Daha fazla bilgi için bkz. [SSL ilkesine genel bakış Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
 
 Bir dinleyici oluşturduktan sonra, bunu bir istek yönlendirme kuralıyla ilişkilendirirsiniz. Bu kural, dinleyicide alınan isteklerin arka uca nasıl yönlendirildiğini belirler.
 
@@ -256,7 +256,7 @@ Bu özellik, bir kullanıcı oturumunu aynı sunucuda tutmak istediğinizde yara
 
 ### <a name="connection-draining"></a>Bağlantı boşaltma
 
-Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç havuz üyelerini dikkatlice kaldırmanıza yardımcı olur. Bu ayarı, kural oluşturma sırasında bir arka uç havuzunun tüm üyelerine uygulayabilirsiniz. Bir arka uç havuzunun tüm kaydını kaldırmak örneklerinin mevcut bağlantıları sürdürmeye devam etmesini ve yapılandırılabilir bir zaman aşımı için, yeni istek veya bağlantı almamasını sağlar. Bunun tek istisnası, ağ geçidi ile yönetilen oturum benzeşimi nedeniyle kayıt kaldırma örnekleri için bir isteklerdir ve kayıt kaldırma örneklerine yönelik olarak bu örneklere yönelik olarak devam eder. Bağlantı boşaltma, arka uç havuzundan açıkça kaldırılan arka uç örnekleri için geçerlidir.
+Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç havuz üyelerini dikkatlice kaldırmanıza yardımcı olur. Bu ayarı, kural oluşturma sırasında bir arka uç havuzunun tüm üyelerine uygulayabilirsiniz. Bir arka uç havuzunun tüm kaydını kaldırmak örneklerinin mevcut bağlantıları sürdürmeye devam etmesini ve yapılandırılabilir bir zaman aşımı için, yeni istek veya bağlantı almamasını sağlar. Bunun tek istisnası, ağ geçidi tarafından yönetilen oturum benzeşimi nedeniyle kaydını kaldırmak örneklerine yönelik isteklerdir ve kaydını kaldırmak örneklerine iletilmeye devam edecektir. Bağlantı boşaltma, arka uç havuzundan açıkça kaldırılan arka uç örnekleri için geçerlidir.
 
 ### <a name="protocol"></a>Protokol
 

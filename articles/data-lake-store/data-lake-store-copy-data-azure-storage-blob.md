@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 0225405c5d3a511bbb2bbb08c1c13e5adedd5096
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ad408df140be49da2e50ef810285dd850e9da6a1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903767"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638880"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Azure depolama Bloblarından veri kopyalama Azure Data Lake Storage 1.
 
@@ -31,11 +31,11 @@ Ayrıca, AdlCopy aracını iki farklı modda kullanabilirsiniz:
 * Araç, görevi gerçekleştirmek için Data Lake Storage 1. kaynakları kullandığı **tek başına**.
 * Data Lake Analytics hesabınıza atanan birimlerin kopyalama işlemini gerçekleştirmek için kullanıldığı **Data Lake Analytics bir hesabı kullanarak**. Kopyalama görevlerini öngörülebilir bir şekilde gerçekleştirmeyi ararken bu seçeneği kullanmak isteyebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleye başlamadan önce aşağıdakilere sahip olmanız ve aşağıdaki işlemleri yapmış olmanız gerekir:
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure depolama Blobları** kapsayıcısı bazı verilerle.
 * **Data Lake Storage 1. hesabı**. Bir oluşturma hakkında yönergeler için bkz. Azure Data Lake Storage 1. kullanmaya [başlama](data-lake-store-get-started-portal.md)
 * **Data Lake Analytics hesabı (isteğe bağlı)** -Data Lake Analytics hesabının nasıl oluşturulacağı hakkında yönergeler için bkz. [Azure Data Lake Analytics kullanmaya başlama](../data-lake-analytics/data-lake-analytics-get-started-portal.md) .
@@ -90,7 +90,7 @@ Söz diziminde parametreler aşağıda açıklanmıştır:
 
 ### <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 
-Bir Azure Blob depolama hesabından kopyalama yapıyorsanız, BLOB depolama tarafında kopyalama sırasında azaltılan bir durum olabilir. Bu, kopyalama işinizin performansını düşürür. Azure Blob depolama sınırları hakkında daha fazla bilgi edinmek için bkz. Azure [aboneliği ve hizmet sınırları](../azure-subscription-service-limits.md)'Nda Azure depolama sınırları.
+Bir Azure Blob depolama hesabından kopyalama yapıyorsanız, BLOB depolama tarafında kopyalama sırasında azaltılan bir durum olabilir. Bu, kopyalama işinizin performansını düşürür. Azure Blob depolama sınırları hakkında daha fazla bilgi edinmek için bkz. Azure [aboneliği ve hizmet sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md)'Nda Azure depolama sınırları.
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-another-data-lake-storage-gen1-account"></a>Başka bir Data Lake Storage 1. hesabından veri kopyalamak için AdlCopy (tek başına) kullanın
 

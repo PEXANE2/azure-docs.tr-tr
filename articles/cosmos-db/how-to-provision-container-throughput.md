@@ -4,20 +4,20 @@ description: Azure portal, CLı, PowerShell ve çeşitli diğer SDK 'Ları kulla
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: ed6a55c8b6049f16e96a4a95ecf3ef125db908d7
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: bfd18a009ed9ab5edffafcd0327b1d846cae02d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872052"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643857"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısında üretilen iş sağlama
 
 Bu makalede, Azure Cosmos DB bir kapsayıcı (koleksiyon, grafik veya tablo) üzerinde üretilen iş sağlama açıklanmaktadır. Tek bir kapsayıcıda üretilen iş sağlama veya [bir veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md) ve veritabanı içindeki kapsayıcılar arasında paylaşma sağlayabilirsiniz. Azure portal, Azure CLı veya Azure Cosmos DB SDK 'Ları kullanarak bir kapsayıcıda aktarım hızı sağlayabilirsiniz.
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure Portal
 
 1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
@@ -77,7 +77,7 @@ const { database } = await client.databases.createIfNotExists({ id: "databaseId"
 
 // Create a container with the specified throughput
 const { resource } = await database.containers.createIfNotExists({
-id: "contaierId ",
+id: "containerId",
 throughput: 1000
 });
 
@@ -95,7 +95,7 @@ offer.content.offerThroughput = 2000;
 await client.offer(offer.id).replace(offer);
 ```
 
-### <a id="dotnet-cassandra"></a>Cassandra API
+### <a id="dotnet-cassandra"></a>Cassandra API’si
 
 Benzer komutlar, CQL uyumlu herhangi bir sürücü aracılığıyla verilebilir.
 

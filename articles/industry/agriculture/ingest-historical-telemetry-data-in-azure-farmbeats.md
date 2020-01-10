@@ -1,0 +1,385 @@
+---
+title: Geçmiş telemetri verilerini alma
+description: Bu makalede, geçmiş Telemetri verilerinin nasıl alınacağını açıklanır.
+author: uhabiba04
+ms.topic: article
+ms.date: 11/04/2019
+ms.author: v-umha
+ms.openlocfilehash: 76d355413bc0dceb91f7cfa1a3988f48e2701d5e
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667498"
+---
+# <a name="ingest-historical-telemetry-data"></a>Geçmiş telemetri verilerini alma
+
+Bu makalede, geçmiş algılayıcı verilerinin Azure Farmınts 'e alınması açıklanmaktadır.
+
+Cihazlar ve algılayıcılar gibi Nesnelerin İnterneti (IoT) kaynaklarından geçmiş verileri almak, Farmınts 'de yaygın bir senaryodur. Cihazlar ve sensörler için meta veriler oluşturur ve ardından geçmiş verileri, kurallı bir biçimde Farmto 'Lar için kullanırsınız.
+
+## <a name="before-you-begin"></a>Başlamadan önce
+
+Bu makaleye devam etmeden önce, IoT 'den bir araya getirme ve geçmiş verileri topladığınızdan emin olun.
+Ayrıca, aşağıdaki adımlarda belirtildiği gibi iş ortağı erişimini de etkinleştirmeniz gerekir.
+
+## <a name="enable-partner-access"></a>İş ortağı erişimini etkinleştir
+
+Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz gerekir. Bu adım, cihaz iş ortağınız olarak Azure Farmtts örneğine erişimi olan bir istemci oluşturur ve sonraki adımlarda gerekli olan aşağıdaki değerleri sağlar:
+
+- API uç noktası: Bu veri hub URL 'sidir, örneğin, https://\<Datahub >. azurewebsites. net.
+- Kiracı Kimliği
+- İstemci Kimliği
+- Gizli anahtar
+- EventHub bağlantı dizesi
+
+Şu adımları izleyin.
+
+>[!NOTE]
+> Aşağıdaki adımları uygulamak için yönetici olmanız gerekir.
+
+1. Bu [betiği](https://aka.ms/farmbeatspartnerscript)indirip yerel sürücünüzde ayıklayın. ZIP dosyasının içinde iki dosya bulunur.
+2. [Azure portalında](https://portal.azure.com/) oturum açın ve Azure Cloud Shell'i açın. Bu seçenek, portalın sağ üst köşesindeki araç çubuğunda bulunur.
+
+    ![Azure portal araç çubuğu](./media/for-tutorials/navigation-bar-1.png)
+
+3. Ortamın **PowerShell**olarak ayarlandığından emin olun.
+
+    ![PowerShell ayarı](./media/for-tutorials/power-shell-new-1.png)
+
+4. Cloud Shell örneğindeki 1. adımdan indirdiğiniz iki dosyayı karşıya yükleyin.
+
+    ![Araç çubuğundaki Karşıya Yükle düğmesi](./media/for-tutorials/power-shell-two-1.png)
+
+5. Dosyaların karşıya yüklendiği dizine gidin.
+
+   >[!NOTE]
+   > Varsayılan olarak, dosyalar giriş dizinine/giriş/Kullanıcı adına yüklenir.
+6. Şu komutu kullanarak betiği çalıştırın:
+
+    ```azurepowershell-interactive
+    ./generateCredentials.ps1
+    ```
+
+7. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin. EventHub bağlantı dizesi, Swagger içindeki API yanıtının bir parçası olarak kullanılabilir.
+
+## <a name="create-device-or-sensor-metadata"></a>Cihaz veya algılayıcı meta verileri oluşturma
+
+ Artık gerekli kimlik bilgilerine sahip olduğunuza göre, cihazı ve algılayıcıları tanımlayabilirsiniz. Bunu yapmak için, Farmpts API 'Lerini çağırarak meta verileri oluşturun. Lütfen yukarıdaki bölümde oluşturduğunuz istemci uygulaması olarak API 'Leri çağırmanız gerekeceğini unutmayın.
+
+ Farmrets veri hub 'ı, cihaz veya algılayıcı meta verilerinin oluşturulmasını ve yönetilmesini sağlayan aşağıdaki API 'Lere sahiptir.
+
+- /**devicemodel**: devicemodel, Cihazın üreticisi ve bir ağ geçidi ya da düğüm olan cihaz türü gibi cihazın meta verilerine karşılık gelir.
+- **cihaz**/: cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir.
+- **sensormodel**/: sensormodel, üretici, analog veya dijital olan algılayıcı türü ve çevresel sıcaklık ve basınç gibi algılayıcı ölçümü gibi algılayıcı meta verilerine karşılık gelir.
+- /**algılayıcı**: algılayıcı, değerleri kaydeden bir fiziksel sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.  
+
+
+|        DeviceModel   |  Öneriler   |
+| ------- | -------             |
+|     Tür (düğüm, ağ geçidi)        |          Cihaz düğümü veya ağ geçidi türü      |
+|          Üretici            |         Üreticinin adı    |
+|  ProductCode                    |  Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800.  |
+|            Bağlantı Noktaları          |     Bağlantı noktası adı ve türü, dijital veya analog.
+|     Ad                 |  Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
+      Açıklama     | Modelin anlamlı bir açıklamasını sağlayın.
+|    Özellikler          |    Üreticiden ek özellikler.   |
+|    **cihaz**             |                      |
+|   Devicemodelıd     |     İlişkili cihaz modelinin KIMLIĞI.  |
+|  Donanım kimliği          | Cihazın MAC adresi gibi benzersiz KIMLIĞI.
+|  Reportingınterval        |   Saniye cinsinden raporlama aralığı.
+|  Konum            |  Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).   
+|Parentdeviceıd       |    Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir ağ geçidine bağlı bir düğüm. Bir düğümde ağ geçidi olarak Parentdeviceıd vardır.  |
+|    Ad            | Kaynağı tanımlamak için bir ad. Cihaz iş ortakları, iş ortağı tarafında cihaz adı ile tutarlı bir ad göndermelidir. İş ortağı cihaz adı Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmtts 'ye yayılmalıdır.|
+|     Açıklama       |      Anlamlı bir açıklama sağlayın. |
+|     Özellikler    |  Üreticiden ek özellikler.
+|     **SensorModel**        |          |
+|       Tür (analog, dijital)          |      Onun analog veya dijital olup olmadığı algılayıcı türü.       |
+|          Üretici            |       Algılayıcısı üreticisi.     |
+|     ProductCode| Ürün kodu veya model adı veya numarası. Örneğin, RS-CO2-N01. |
+|       Sensorölçüleri > adı       | Algılayıcı ölçüsünün adı. Yalnızca küçük harf desteklenir. Farklı derinlikleri olan ölçümler için derinliği belirtin. Örneğin, soil_moisture_15cm. Bu ad telemetri verileriyle tutarlı olmalıdır.  |
+|          Sensorölçüleri > veri türü       |Telemetri veri türü. Şu anda, Double destekleniyor.|
+|    Sensorölçüleri > türü    |Algılayıcı Telemetri verilerinin ölçüm türü. Sistem tanımlı türler şunlardır AmbientTemperature, CO2, Depth, Elektriicalttivity, Leafwetity, length, LiquidLevel, Nitrate, O2, PH, Fospnefret, PointInTime, Potassium, basınç, RainGauge, Relativenem, Salınity, SoilMoisture, Soilsıcaklık, SolarRadiation, durum, TimeDuration, UVRadiation, Uıvindex, hacim, WIN Direction, WIN Run, Wıngıı, Evapotranspiration, PAR. Daha fazla eklemek için/ExtendedType API 'sine bakın.|
+|        Sensorölçüleri > birimi              | Algılayıcı telemetri verileri birimi. Sistem tarafından tanımlanan birimler NoUnit, santigrat, Fahrenhayt, Kelvin, Rankine, Pascal, CIO, PSI, milimetre, santimetre, metre, Inç, fit, mil, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, Partspermilyon, MicroMol, mikro Molesperlitre, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Santibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litre, MilliLiter, saniyeler, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour daha fazla bilgi eklemek Için/ExtendedType API 'sine bakın.|
+|    Sensorölçüleri > AggregationType    |  Değerler None, Average, Maximum, minimum veya Standardsapması olabilir.  |
+|          Ad            | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.  |
+|    Açıklama        | Modelin anlamlı bir açıklamasını sağlayın.  |
+|   Özellikler       |  Üreticiden ek özellikler.  |
+|    **Algılayıcısı**      |          |
+| Donanım kimliği          |   Üretici tarafından ayarlanan algılayıcı için benzersiz KIMLIK. |
+|  Sensormodelıd     |    İlişkili algılayıcı modelinin KIMLIĞI.   |
+| Konum          |  Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).|
+|   Bağlantı noktası > adı        |  Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bunun, cihaz modelinde tanımlananla aynı ada sahip olması gerekir. |
+|    DeviceID  |    Algılayıcıın bağlı olduğu cihazın KIMLIĞI.     |
+| Ad            |   Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.|
+|    Açıklama      | Anlamlı bir açıklama sağlayın. |
+|    Özellikler        |Üreticiden ek özellikler. |
+
+Nesneler hakkında daha fazla bilgi için bkz. [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
+
+### <a name="api-request-to-create-metadata"></a>Meta veri oluşturmak için API isteği
+
+Bir API isteği oluşturmak için, HTTP (POST) yöntemini, API hizmeti URL 'sini ve sorgulanacak bir kaynağa yönelik URI 'yi birleştiren, verileri gönderecek, oluşturacak veya silebileceğiniz bir kaynağa birleştirmelisiniz. Daha sonra bir veya daha fazla HTTP istek üst bilgisi eklersiniz. API hizmetinin URL 'si, API uç noktasıdır, diğer bir deyişle, Datahub URL 'SI (https://\<yourdatahub >. azurewebsites. net).  
+
+### <a name="authentication"></a>Kimlik Doğrulaması
+
+Farmrets veri hub 'ı, önceki bölümde oluşturulan aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır:
+
+- İstemci Kimliği
+- Gizli anahtar
+- Kiracı Kimliği
+
+Bu kimlik bilgilerini kullanarak, çağıran bir erişim belirteci isteyebilir. Belirtecin sonraki API isteklerinde, üst bilgi bölümünde aşağıdaki gibi gönderilmesi gerekir:
+
+```
+headers = *{"Authorization": "Bearer " + access_token, …}*
+```
+
+Aşağıdaki örnek Python kodu, Farmtts 'e yönelik sonraki API çağrıları için kullanılabilen erişim belirtecini verir: 
+
+```python
+import azure 
+
+from azure.common.credentials import ServicePrincipalCredentials 
+import adal 
+#FarmBeats API Endpoint 
+ENDPOINT = "https://<yourdatahub>.azurewebsites.net" [Azure website](https://<yourdatahub>.azurewebsites.net)
+CLIENT_ID = "<Your Client ID>"   
+CLIENT_SECRET = "<Your Client Secret>"   
+TENANT_ID = "<Your Tenant ID>" 
+AUTHORITY_HOST = 'https://login.microsoftonline.com' 
+AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID 
+#Authenticating with the credentials 
+context = adal.AuthenticationContext(AUTHORITY) 
+token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLIENT_ID, CLIENT_SECRET) 
+#Should get an access token here 
+access_token = token_response.get('accessToken') 
+```
+
+
+**HTTP istek üstbilgileri**
+
+Aşağıda, Farmrets veri hub 'ına bir API çağrısı yaptığınızda belirtilmesi gereken en yaygın istek üstbilgileri verilmiştir:
+
+- **Content-Type**: Application/JSON
+- **Yetkilendirme**: taşıyıcı < erişim-belirteç >
+- **Kabul et**: uygulama/JSON
+
+### <a name="input-payload-to-create-metadata"></a>Meta veri oluşturmak için giriş yükü
+
+DeviceModel
+
+
+```json
+{
+  "type": "Node",
+  "manufacturer": "string",
+  "productCode": "string",
+  "ports": [
+    {
+      "name": "string",
+      "type": "Analog"
+    }
+  ],
+  "name": "string",
+  "description": "string",
+  "properties": {
+    "additionalProp1": {},
+    "additionalProp2": {},
+    "additionalProp3": {}
+  }
+}
+```
+
+Cihaz
+
+```json
+{
+  "deviceModelId": "string",
+  "hardwareId": "string",
+  "farmId": "string",
+  "reportingInterval": 0,
+  "location": {
+    "latitude": 0,
+    "longitude": 0,
+    "elevation": 0
+  },
+  "parentDeviceId": "string",
+  "name": "string",
+  "description": "string",
+  "properties": {
+    "additionalProp1": {},
+    "additionalProp2": {},
+    "additionalProp3": {}
+  }
+}
+```
+
+SensorModel
+
+```json
+{
+  "type": "Analog",
+  "manufacturer": "string",
+  "productCode": "string",
+  "sensorMeasures": [
+    {
+      "name": "string",
+      "dataType": "Double",
+      "type": "string",
+      "unit": "string",
+      "aggregationType": "None",
+      "depth": 0,
+      "description": "string"
+    }
+  ],
+  "name": "string",
+  "description": "string",
+  "properties": {
+    "additionalProp1": {},
+    "additionalProp2": {},
+    "additionalProp3": {}
+  }
+}
+
+```
+Algılayıcısı
+
+```json
+{
+  "hardwareId": "string",
+  "sensorModelId": "string",
+  "location": {
+    "latitude": 0,
+    "longitude": 0,
+    "elevation": 0
+  },
+  "depth": 0,
+  "port": {
+    "name": "string",
+    "type": "Analog"
+  },
+  "deviceId": "string",
+  "name": "string",
+  "description": "string",
+  "properties": {
+    "additionalProp1": {},
+    "additionalProp2": {},
+    "additionalProp3": {}
+  }
+}
+```
+Aşağıdaki örnek istek bir cihaz oluşturur. Bu istek, istek gövdesiyle birlikte JSON girişi olarak giriş içeriyor.
+
+```bash
+curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
+"accept: application/json" -H  "Content-Type: application/json" -H
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
+\"reportingInterval\": 900,  \"name\": \"Device123\",  
+\"description\": \"Test Device 123\"}" *
+```
+
+> [!NOTE]
+> API 'Ler oluşturulan her örnek için benzersiz kimlikler döndürür. Karşılık gelen telemetri iletilerini göndermek için kimlikleri tutmanız gerekir.
+
+### <a name="send-telemetry"></a>Telemetri gönderme
+
+Artık, Farmtts 'de cihazları ve algılayıcıları oluşturduğunuza göre, ilişkili telemetri iletilerini gönderebilirsiniz.
+
+### <a name="create-a-telemetry-client"></a>Telemetri istemcisi oluşturma
+
+İşlenmek üzere Azure Event Hubs telemetri göndermeniz gerekir. Azure Event Hubs, bağlı cihazlardan ve uygulamalardan gerçek zamanlı veri (telemetri) alımı sağlayan bir hizmettir. Telemetriye telemetri verileri göndermek için, Farmtts 'deki bir olay hub 'ına ileti gönderen bir istemci oluşturun. Telemetri gönderme hakkında daha fazla bilgi için bkz. [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send).
+
+### <a name="send-a-telemetry-message-as-the-client"></a>İstemci olarak bir telemetri iletisi gönder
+
+Event Hubs istemcisi olarak bir bağlantı kurulduktan sonra, Olay Hub 'ına JSON olarak iletiler gönderebilirsiniz.
+
+Aşağıda, belirtilen bir olay hub 'ına bir istemci olarak telemetri gönderen örnek Python kodu verilmiştir:
+
+```python
+import azure
+from azure.eventhub import EventHubClient, Sender, EventData, Receiver, Offset
+EVENTHUBCONNECTIONSTRING = "<EventHub Connection String provided by customer>"
+EVENTHUBNAME = "<EventHub Name provided by customer>"
+
+write_client = EventHubClient.from_connection_string(EVENTHUBCONNECTIONSTRING, eventhub=EVENTHUBNAME, debug=False)
+sender = write_client.add_sender(partition="0")
+write_client.run()
+for i in range(5):
+    telemetry = "<Canonical Telemetry message>"
+    print("Sending telemetry: " + telemetry)
+    sender.send(EventData(telemetry))
+write_client.stop()
+
+```
+
+Geçmiş algılayıcı veri biçimini Azure Farmtarafından anladığı kurallı bir biçime dönüştürün. Kurallı ileti biçimi aşağıdaki gibidir:
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        }
+      ]
+    }
+ ]
+}
+```
+
+İlgili cihazları ve algılayıcıları ekledikten sonra, önceki bölümde açıklandığı gibi telemetri iletisinde cihaz KIMLIĞINI ve algılayıcı KIMLIĞINI alın.
+
+Telemetri iletisine bir örnek aşağıda verilmiştir:
+
+
+ ```json
+{
+  "deviceid": "7f9b4b92-ba45-4a1d-a6ae-c6eda3a5bd12",
+  "timestamp": "2019-06-22T06:55:02.7279559Z",
+  "version": "1",
+  "sensors": [
+    {
+      "id": "d8e7beb4-72de-4eed-9e00-45e09043a0b3",
+      "sensordata": [
+        {
+          "timestamp": "2019-06-22T06:55:02.7279559Z",
+          "hum_max": 15
+        },
+        {
+          "timestamp": "2019-06-22T06:55:02.7279559Z",
+          "hum_min": 42
+        }
+      ]
+    },
+    {
+      "id": "d8e7beb4-72de-4eed-9e00-45e09043a0b3",
+      "sensordata": [
+        {
+          "timestamp": "2019-06-22T06:55:02.7279559Z",
+          "hum_max": 20
+        },
+        {
+          "timestamp": "2019-06-22T06:55:02.7279559Z",
+          "hum_min": 89
+        }
+      ]
+    }
+  ]
+}
+```
+
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+REST API tabanlı tümleştirme ayrıntıları hakkında daha fazla bilgi için bkz. [REST API](references-for-azure-farmbeats.md#rest-api).

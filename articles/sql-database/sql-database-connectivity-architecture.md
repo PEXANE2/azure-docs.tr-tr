@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 6f6c64acf814b39d38138ed0e6a9c6075b693c7d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707975"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647688"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL bağlantı mimarisi
 
@@ -39,11 +39,11 @@ Aşağıdaki adımlarda, bir bağlantının Azure SQL veritabanına nasıl kurul
 
 Azure SQL veritabanı, SQL veritabanı sunucusunun bağlantı ilkesi ayarı için aşağıdaki üç seçeneği destekler:
 
-- **Yeniden yönlendir (önerilir):** İstemciler, veritabanını barındıran düğüme doğrudan bağlantı kurar, en düşük gecikme süresine ve iyileştirilerek önde gelen. Bu modu kullanmak için istemciler gerekir
+- **Yeniden yönlendir (önerilir):** İstemciler, veritabanını barındıran düğüme doğrudan bağlantı kurar, azaltılmış gecikme süresi ve geliştirilmiş işleme için önde gelen bir işlem sağlar. Bu modu kullanmak için istemciler gerekir
    - İstemciden gelen ve giden iletişimin, 11000 11999 aralığındaki bağlantı noktalarında bulunan bölgedeki tüm Azure IP adreslerine izin verin.  
    - 1433 numaralı bağlantı noktasındaki istemciden Azure SQL veritabanı ağ geçidi IP adreslerine gelen ve giden iletişime izin verin.
 
-- **Proxy:** Bu modda, tüm bağlantılar Azure SQL veritabanı ağ geçitleri aracılığıyla, artan gecikme süresine ve azaltmak için önde gelen bir şekilde kullanılır. Bu modu kullanmak için istemciler, istemciden gelen ve giden iletişimin bağlantı noktası 1433 ' deki Azure SQL veritabanı ağ geçidi IP adreslerine izin vermek için gerekir.
+- **Proxy:** Bu modda, tüm bağlantılar Azure SQL veritabanı ağ geçitleri aracılığıyla, artan gecikme süresi ve düşük aktarım hızı için önde gelen aracılardır. Bu modu kullanmak için istemciler, istemciden gelen ve giden iletişimin bağlantı noktası 1433 ' deki Azure SQL veritabanı ağ geçidi IP adreslerine izin vermek için gerekir.
 
 - **Varsayılan:** Bu, bağlantı ilkesini açıkça `Proxy` veya `Redirect`olarak değiştirmediğiniz takdirde, oluşturulduktan sonra tüm sunucularda etkin olan bağlantı ilkesidir. Varsayılan ilke, Azure 'ın içinden (örneğin, bir Azure sanal makinesinden) kaynaklanan tüm istemci bağlantıları için`Redirect` ve dış kaynaklı tüm istemci bağlantıları için `Proxy`(örneğin, yerel iş istasyonunuzdan gelen bağlantılar).
 

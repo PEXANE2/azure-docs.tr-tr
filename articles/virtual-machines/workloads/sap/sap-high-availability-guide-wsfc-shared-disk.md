@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 848b15cef43efa62fdff6715bfcfef9819f4e100
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7fae3c08dd4b51b8c8dc9437fce5b5b5de063726
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078267"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637925"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -31,8 +31,8 @@ ms.locfileid: "70078267"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -178,7 +178,7 @@ ms.locfileid: "70078267"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -191,7 +191,7 @@ Windows Server Yük Devretme Kümelemesi, Windows 'da yüksek kullanılabilirli�
 
 Yük devretme kümesi, uygulamaların ve hizmetlerin kullanılabilirliğini artırmak için birlikte çalışan 1 + n bağımsız sunucu (düğümler) grubudur. Bir düğüm hatası oluşursa, Windows Server Yük Devretme Kümelemesi oluşabilecek hata sayısını hesaplar ve uygulamalar ve hizmetler sağlamak için sağlıklı bir kümeyi sürdürür. Yük Devretme Kümelemesi elde etmek için farklı çekirdek modlarında seçim yapabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaledeki görevlere başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 
 * [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar][sap-high-availability-architecture-scenarios]
@@ -219,35 +219,35 @@ Windows 'da SAP ASCS/SCS örneği SAP Merkezi Hizmetleri, SAP ileti sunucusu, s�
 SAP ASCS/SCS örneği aşağıdaki bileşenlere sahiptir:
 
 * SAP Merkezi Hizmetleri:
-    * İki işlem, bir ileti ve sıraya alma sunucusu ve bu \<iki işleme erişmek için kullanılan bir ascs/SCS sanal ana bilgisayar adı >.
-    * Dosya yapısı: S:\usr\sap\\&lt;SID&gt;\ Ass/SCS\<örnek numarası\>
+    * İki işlem, bir ileti ve sıraya alma sunucusu ve bu iki işleme erişmek için kullanılan bir \<ASCS/SCS sanal ana bilgisayar adı >.
+    * Dosya yapısı: S:\usr\sap\\&lt;SID&gt;\ yoks/SCS\<örnek numarası\>
 
 
 * SAP Küresel Ana bilgisayar dosyaları:
-  * Dosya yapısı: S:\usr\sap\\&lt;SID&gt;\sys\...
-  * Aşağıdaki UNC yolunu\\kullanarak bu genel s:\usr\sap&lt;SID&gt;\sys\... Files öğesine erişim sağlayan sapmnt dosya paylaşma:
+  * Dosya yapısı: S:\usr\sap\\&lt;SID&gt;\SYS\...
+  * Bu genel S:\usr\sap\\&lt;SID&gt;\SYS\.erişim sağlayan sapmnt dosya paylaşma. Aşağıdaki UNC yolunu kullanarak dosyalar:
 
-    \\\\< ascs/SCS sanal ana bilgisayar\>adı \ sapmnt&gt;\\&lt;SID \\.sys..
+    \\\\< yoks/SCS sanal ana bilgisayar adı\>\sapmnt\\&lt;SID&gt;\SYS\...
 
 
-![Şekil 2: Bir SAP ASCS/SCS örneği için süreçler, dosya yapısı ve küresel ana bilgisayar sapmnt dosya paylaşma][sap-ha-guide-figure-8001]
+![Şekil 2: bir SAP ASCS/SCS örneği için süreçler, dosya yapısı ve küresel ana bilgisayar sapmnt dosya paylaşma][sap-ha-guide-figure-8001]
 
 _**Şekil 2:** Bir SAP ASCS/SCS örneği için süreçler, dosya yapısı ve küresel ana bilgisayar sapmnt dosya paylaşma_
 
 Yüksek kullanılabilirliğe sahip bir ayarda SAP ASCS/SCS örneklerini kümelerinolursunuz. SAP ASCS/SCS ve SAP Küresel Ana bilgisayar dosyalarını yerleştirmek için *Kümelenmiş Paylaşılan diskleri* (örneğimizde sürücü S) kullanıyoruz.
 
-![Şekil 3: Paylaşılan disk ile SAP ASCS/SCS HA mimarisi][sap-ha-guide-figure-8002]
+![Şekil 3: paylaşılan disk ile SAP ASCS/SCS HA mimarisi][sap-ha-guide-figure-8002]
 
 _**Şekil 3:** Paylaşılan disk ile SAP ASCS/SCS HA mimarisi_
 
 > [!IMPORTANT]
 > Bu iki bileşen aynı SAP yoks/SCS örneği altında çalışır:
->* Aynı \<yoks/SCS sanal ana bilgisayar adı >, SAP iletisi ve sıraya alma sunucu işlemlerine ve SAP Küresel Ana bilgisayar dosyalarına sapmnt dosya paylaşımıyla erişmek için kullanılır.
+>* Aynı \<ASCS/SCS sanal ana bilgisayar adı >, SAP iletisi ve sıraya alma sunucu işlemlerine ve SAP Küresel Ana bilgisayar dosyalarına sapmnt dosya paylaşımıyla erişmek için kullanılır.
 >* Aynı küme paylaşılan disk sürücüsü öğeleri arasında paylaşılır.
 >
 
 
-![Şekil 4: Paylaşılan disk ile SAP ASCS/SCS HA mimarisi][sap-ha-guide-figure-8003]
+![Şekil 4: paylaşılan disk ile SAP yoks/SCS HA mimarisi][sap-ha-guide-figure-8003]
 
 _**Şekil 4:** Paylaşılan disk ile SAP ASCS/SCS HA mimarisi_
 

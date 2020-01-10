@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565325"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644928"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs SSS
 Azure DevTest Labs hakkındaki en yaygın soruların bazılarına yanıt alın.
@@ -40,7 +40,7 @@ DevTest Labs 'de yeni özellikler hakkında bilgi sahibi olmak için DevTest [La
 Artık sonraki sürümlerde Twitter işleyicimizi kullanarak kesinti güncellemeleri göndereceğiz. Kesintiler ve bilinen hatalar hakkında en son güncelleştirmeleri almak için bizi Twitter 'da izleyin.
 
 ### <a name="twitter"></a>Twitter
-Twitter tanıtıcımız:[@azlabservices](https://twitter.com/azlabservices)
+Twitter tanıtıcımız: [@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="general"></a>Genel
 ### <a name="what-if-my-question-isnt-answered-here"></a>Sorum burada yanıtlanmazsa ne olacak?
@@ -81,14 +81,14 @@ DevTest Labs ücretsiz bir hizmettir. Laboratuvar oluşturma ve DevTest Labs 'de
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>DevTest Labs 'deki farklı güvenlik düzeyleri nelerdir?
 Güvenlik erişimi rol tabanlı Access Control (RBAC) tarafından belirlenir. Erişimin nasıl çalıştığını öğrenmek için, RBAC tarafından tanımlanan bir izin, rol ve kapsam arasındaki farkları öğrenmenize yardımcı olur.
 
-- **İzin**: İzin, belirli bir eyleme tanımlı bir erişimdir. Örneğin, bir izin tüm sanal makinelere okunabilir.
-- **Rol**: Rol, gruplandırılabilen ve bir kullanıcıya atanabilecek bir izinler kümesidir. Örneğin, abonelik sahibi rolüne sahip bir kullanıcının abonelik içindeki tüm kaynaklara erişimi vardır.
-- **Kapsam**: Kapsam, bir Azure kaynağı hiyerarşisinde yer alan bir düzeydir. Örneğin, bir kapsam bir kaynak grubu, tek bir laboratuvar veya tüm abonelik olabilir.
+- **İzin**: izin, belirli bir eyleme tanımlı bir erişimdir. Örneğin, bir izin tüm sanal makinelere okunabilir.
+- **Rol**: rol, gruplandırılabilen ve bir kullanıcıya atanabilecek bir izinler kümesidir. Örneğin, abonelik sahibi rolüne sahip bir kullanıcının abonelik içindeki tüm kaynaklara erişimi vardır.
+- **Kapsam**: kapsam, bir Azure kaynağı hiyerarşisinde yer alan bir düzeydir. Örneğin, bir kapsam bir kaynak grubu, tek bir laboratuvar veya tüm abonelik olabilir.
 
 DevTest Labs kapsamı içinde, Kullanıcı izinlerini tanımlayan iki tür rol vardır:
 
-- **Laboratuvar sahibi**: Laboratuvar sahibinin laboratuvardaki tüm kaynaklara erişimi vardır. Laboratuvar sahibi ilkeleri değiştirebilir, herhangi bir VM 'ye okuyup yazabilir, sanal ağı değiştirebilir ve benzeri devam edebilir.
-- **Laboratuvar kullanıcısı**: Laboratuvar kullanıcısı VM 'Ler, ilkeler ve sanal ağlar gibi tüm laboratuvar kaynaklarını görüntüleyebilir. Ancak, bir laboratuvar kullanıcısı ilkeleri veya diğer kullanıcılar tarafından oluşturulan VM 'Leri değiştiremez.
+- **Laboratuvar sahibi**: Laboratuvar sahibi, laboratuvardaki tüm kaynaklara erişebilir. Laboratuvar sahibi ilkeleri değiştirebilir, herhangi bir VM 'ye okuyup yazabilir, sanal ağı değiştirebilir ve benzeri devam edebilir.
+- **Laboratuvar kullanıcısı**: Laboratuvar kullanıcısı VM 'ler, ilkeler ve sanal ağlar gibi tüm laboratuvar kaynaklarını görüntüleyebilir. Ancak, bir laboratuvar kullanıcısı ilkeleri veya diğer kullanıcılar tarafından oluşturulan VM 'Leri değiştiremez.
 
 Ayrıca, DevTest Labs 'de özel roller de oluşturabilirsiniz. DevTest Labs 'de özel roller oluşturmayı öğrenmek için bkz. [belirli laboratuvar ilkelerine Kullanıcı Izinleri verme](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
 
@@ -162,11 +162,11 @@ Ortak kaynak grubu senaryosu:
 Geçerli kurumsal adlandırma kurallarını Azure işlemlerine genişletmek ve bunları DevTest Labs ortamında tutarlı hale getirmek isteyebilirsiniz. DevTest Labs dağıtımı yaparken, belirli başlangıç ilkelerine sahip olmanız önerilir. Bu ilkeleri, tutarlılığı zorlamak için bir merkezi betik ve JSON şablonları ile dağıtırsınız. Adlandırma ilkeleri, abonelik düzeyinde uygulanan Azure ilkeleri aracılığıyla uygulanabilir. Azure Ilkesi için JSON örnekleri için bkz. [Azure ilke örnekleri](../governance/policy/samples/index.md).
 
 ### <a name="how-many-labs-can-i-create-under-the-same-subscription"></a>Aynı abonelikte kaç tane laboratuvar oluşturabilirim?
-Abonelik başına oluşturulabilecek laboratuvarların sayısında belirli bir sınır yoktur. Ancak, abonelik başına kullanılan kaynak miktarı sınırlıdır. [Azure aboneliklerine yönelik sınırlar ve Kotalar](../azure-subscription-service-limits.md) hakkında bilgi edinmek için [Bu sınırları nasıl artırabileceğiniz](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)hakkında bilgi edinebilirsiniz.
+Abonelik başına oluşturulabilecek laboratuvarların sayısında belirli bir sınır yoktur. Ancak, abonelik başına kullanılan kaynak miktarı sınırlıdır. [Azure aboneliklerine yönelik sınırlar ve Kotalar](../azure-resource-manager/management/azure-subscription-service-limits.md) hakkında bilgi edinmek için [Bu sınırları nasıl artırabileceğiniz](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)hakkında bilgi edinebilirsiniz.
 
 
 ### <a name="how-many-vms-can-i-create-per-lab"></a>Laboratuvar başına kaç VM oluşturabilirim?
-Laboratuvar başına oluşturulabilecek VM sayısında belirli bir sınır yoktur. Ancak, kullanılan kaynaklar (VM çekirdekleri, genel IP adresleri vb.) abonelik başına sınırlıdır. [Azure aboneliklerine yönelik sınırlar ve Kotalar](../azure-subscription-service-limits.md) hakkında bilgi edinmek için [Bu sınırları nasıl artırabileceğiniz](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)hakkında bilgi edinebilirsiniz.
+Laboratuvar başına oluşturulabilecek VM sayısında belirli bir sınır yoktur. Ancak, kullanılan kaynaklar (VM çekirdekleri, genel IP adresleri vb.) abonelik başına sınırlıdır. [Azure aboneliklerine yönelik sınırlar ve Kotalar](../azure-resource-manager/management/azure-subscription-service-limits.md) hakkında bilgi edinmek için [Bu sınırları nasıl artırabileceğiniz](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)hakkında bilgi edinebilirsiniz.
 
 ### <a name="how-do-i-determine-the-ratio-of-users-per-lab-and-the-overall-number-of-labs-that-are-needed-across-an-organization"></a>Nasıl yaparım?, laboratuvar başına Kullanıcı oranını ve bir kuruluşta gerekli olan toplam laboratuvarların sayısını belirlemektir mi?
 Aynı geliştirme projesiyle ilişkili iş birimlerinin ve geliştirme gruplarının aynı laboratuvarda ilişkili olmasını öneririz. Her iki gruba da aynı ilke, görüntü ve kapalı ilke türlerinin uygulanmasını sağlar.
@@ -176,7 +176,7 @@ Coğrafi sınırları da dikkate almanız gerekebilir. Örneğin, Kuzey Doğu Bi
 Ayrıca, Azure DevOps Projeleri içindeki belirli bir proje için de laboratuvar kullanabilirsiniz. Daha sonra, her iki kaynak kümesine erişime izin veren belirtilen bir Azure Active Directory grubu aracılığıyla güvenliği uygularsınız. Laboratuvara atanan sanal ağ, kullanıcıları birleştirmek için başka bir sınır olabilir.
 
 ### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>Laboratuvardaki kaynakların silinmesini nasıl önleyebiliriz?
-Yalnızca yetkili kullanıcıların kaynakları silmesi veya laboratuvar ilkelerini değiştirmesi için uygun izinleri laboratuvar düzeyinde ayarlamanızı öneririz. Geliştiricilerin **DevTest Labs Kullanıcı** grubu içine yerleştirilmesi gerekir. Lider geliştiricisi veya altyapı lideri, **DevTest Labs sahibi**olmalıdır. Yalnızca iki laboratuar sahibi olmasını öneririz. Bu ilke, bozulmayı önlemek için kod deposuna doğru genişletilir. Laboratuvar kullanıcılarının kaynakları kullanma hakları vardır ancak laboratuvar ilkelerini güncelleştiremez. Her bir yerleşik grubun bir laboratuvarda sahip olduğu rolleri ve hakları listeleyen aşağıdaki makaleye bakın: [Azure DevTest Labs ' de sahip ve kullanıcı ekleyin](devtest-lab-add-devtest-user.md).
+Yalnızca yetkili kullanıcıların kaynakları silmesi veya laboratuvar ilkelerini değiştirmesi için uygun izinleri laboratuvar düzeyinde ayarlamanızı öneririz. Geliştiricilerin **DevTest Labs Kullanıcı** grubu içine yerleştirilmesi gerekir. Lider geliştiricisi veya altyapı lideri, **DevTest Labs sahibi**olmalıdır. Yalnızca iki laboratuar sahibi olmasını öneririz. Bu ilke, bozulmayı önlemek için kod deposuna doğru genişletilir. Laboratuvar kullanıcılarının kaynakları kullanma hakları vardır ancak laboratuvar ilkelerini güncelleştiremez. Her bir yerleşik grubun bir laboratuvar dahilinde sahip olduğu rolleri ve hakları listeleyen aşağıdaki makaleye bakın: [Azure DevTest Labs sahip ve Kullanıcı ekleme](devtest-lab-add-devtest-user.md).
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>Nasıl yaparım? laboratuvara doğrudan bir bağlantı paylaşsın mı?
 
@@ -285,7 +285,7 @@ Daha ayrıntılı bir açıklama için bkz. DevTest Labs 'de [özel resimleri ve
 
 Laboratuvarınız ile ilişkili hedef depolama hesabını bulmak için:
 
-1.  [Azure Portal](https://portal.azure.com) oturum açın.
+1.  [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2.  Sol taraftaki menüden **kaynak grupları**' nı seçin.
 3.  Laboratuvarınız ile ilişkili kaynak grubunu bulun ve seçin.
 4.  **Genel bakış**' ın altında, depolama hesaplarından birini seçin.
@@ -304,10 +304,10 @@ Belirli endişeleriniz veya kuruluş gereksinimleriniz yoksa, Azure Marketi vars
 - Tüm makineler için yerinde olması gereken uyumluluk veya yasal koşullar (örneğin, güvenlik ilkeleri).
 - Özel görüntülerin kullanılması, hafif olarak düşünülmemelidir. Bu temel görüntüler için VHD dosyalarını yönetmeniz gerektiği için, daha fazla karmaşıklık sağlar. Ayrıca, bu temel görüntülerin yazılım güncelleştirmeleriyle düzenli olarak yayama yapmanız gerekir. Bu güncelleştirmeler yeni işletim sistemi (OS) güncelleştirmelerini ve yazılım paketinin kendisi için gereken güncelleştirme veya yapılandırma değişikliklerini içerir.
 
-## <a name="artifacts"></a>Yapıtlar
+## <a name="artifacts"></a>Artifacts
 
 ### <a name="what-are-artifacts"></a>Yapıtlar nelerdir?
-Yapıtlar, en son bitleri dağıtmak veya geliştirme araçlarınızı bir VM 'ye dağıtmak için kullanabileceğiniz özelleştirilebilir öğelerdir. VM 'yi oluştururken sanal makinenize yapıt ekleyin. VM sağlandıktan sonra yapıtlar VM 'nizi dağıtıp yapılandırır. [Genel GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)depolarımızda, önceden var olan çeşitli yapıtlar mevcuttur. [Kendi yapıtlarınızı](devtest-lab-artifact-author.md)da yazabilirsiniz.
+Yapıtlar, en son bitleri dağıtmak veya geliştirme araçlarınızı bir VM 'ye dağıtmak için kullanabileceğiniz özelleştirilebilir öğelerdir. VM 'yi oluştururken sanal makinenize yapıt ekleyin. VM sağlandıktan sonra yapıtlar VM 'nizi dağıtıp yapılandırır. [Genel GitHub depolarımızda](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), önceden var olan çeşitli yapıtlar mevcuttur. [Kendi yapıtlarınızı](devtest-lab-artifact-author.md)da yazabilirsiniz.
 
 ### <a name="my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it"></a>VM oluşturma sırasında yapım başarısız oldu. Nasıl yaparım? sorun gidermi?
 Başarısız yapıtlarınız için günlük alma hakkında bilgi edinmek için bkz. [DevTest Labs 'de yapıt hatalarının nasıl tanılanacağı](devtest-lab-troubleshoot-artifact-failure.md).
@@ -324,7 +324,7 @@ Başarısız yapıtlarınız için günlük alma hakkında bilgi edinmek için b
 Kuruluşunuzun genel idare ve yapılandırma yönetimi stratejisinin bir parçası olarak, merkezi bir depo kullanmanızı öneririz. Birden çok depo kullandığınızda, bu kişiler zaman içinde yönetilmeyen yazılımların siloları haline gelebilir. Merkezi bir depoyla, birden fazla ekip projeleri için bu depodan yapıları kullanabilir. Standartlaştırma, güvenlik ve yönetim kolaylığı sağlar ve çabalarınızın çoğaltılmasını ortadan kaldırır. Merkezileşmeyi bir parçası olarak, uzun süreli yönetim ve sürdürülebilirlik için önerilen uygulamalar aşağıdaki eylemlerdir:
 
 - Azure Repos kimlik doğrulaması ve yetkilendirme için Azure aboneliğinin kullandığı Azure Active Directory kiracısıyla ilişkilendirin.
-- Merkezi olarak yönetilen Azure Active Directory `All DevTest Labs Developers` adında bir grup oluşturun. Yapıt geliştirmeye katkıda bulunan tüm geliştiriciler bu gruba yerleştirilmelidir.
+- Merkezi olarak yönetilen Azure Active Directory `All DevTest Labs Developers` adlı bir grup oluşturun. Yapıt geliştirmeye katkıda bulunan tüm geliştiriciler bu gruba yerleştirilmelidir.
 - Aynı Azure Active Directory grubu, Azure Repos deposuna ve laboratuvarına erişim sağlamak için kullanılabilir.
 - Azure Repos, dallandırma veya dallama, birincil üretim deposundan ayrı bir geliştirme deposunda ayrı olarak kullanılmalıdır. İçerik yalnızca, doğru bir kod incelemesi sonrasında bir çekme isteğiyle birlikte Ana dala eklenir. Kod gözden geçiren değişikliği onayladığında, ana dalın bakımında sorumlu olan bir lider geliştiricisi, güncelleştirilmiş kodu birleştirir.
 
@@ -345,14 +345,14 @@ Aşağıdaki blog gönderileri Azure DevOps Services uzantısını kullanma hakk
 
 Diğer sürekli tümleştirme (CI)/sürekli teslim (CD) araç zincirleri için, [Azure PowerShell cmdlet 'lerini](../azure-resource-manager/resource-group-template-deploy.md) ve [.net sdk](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/)'larını kullanarak [Azure Resource Manager şablonlarını](https://azure.microsoft.com/resources/templates/) dağıtarak aynı senaryolara ulaşabilirsiniz. Ayrıca, toolzinciriniz ile tümleştirilecek [DevTest Labs Için REST API 'lerini](https://aka.ms/dtlrestapis) de kullanabilirsiniz.
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Networking (Ağ İletişimi)
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>DevTest Labs ortamım için yeni bir sanal ağ oluşturmalı ve var olan bir sanal ağı kullanıyor mıyım?
 Sanal makinelerinizin mevcut altyapıyla etkileşime ihtiyacı varsa, DevTest Labs ortamınızda var olan bir sanal ağı kullanmayı göz önünde bulundurun. ExpressRoute kullanırsanız, aboneliklerde kullanılmak üzere atanan IP adresi alanınızı parçalara atabilmeniz için sanal ağlar/alt ağların miktarını en aza indirmek isteyebilirsiniz. 
 
 Burada VNet eşleme[modelini (hub-bağlı bileşen modeli](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) de kullanmayı göz önünde bulundurun. Bu yaklaşım, abonelikler arasında VNET/subnet iletişimini mümkün bir şekilde sunar. Aksi halde, her DevTest Labs ortamının kendi sanal ağı olabilir. 
 
-Abonelik başına sanal ağ sayısında [sınırlar](../azure-subscription-service-limits.md) vardır. Varsayılan miktar 50 ' dir, ancak bu sınır 100 olarak yükseltilebilir.
+Abonelik başına sanal ağ sayısında [sınırlar](../azure-resource-manager/management/azure-subscription-service-limits.md) vardır. Varsayılan miktar 50 ' dir, ancak bu sınır 100 olarak yükseltilebilir.
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Paylaşılan IP ile genel IP ve özel IP 'yi ne zaman kullanmalıyım?
  

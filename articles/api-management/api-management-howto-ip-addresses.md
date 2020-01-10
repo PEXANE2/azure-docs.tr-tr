@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: cab63a17ddfed49684cc37609d9f2ae5bde9bdd3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178198"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689379"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API Management IP adresleri
 
@@ -57,17 +57,17 @@ Genel IP adresleri yanıtın bir parçası olacaktır:
 
 [Çoklu bölgesel dağıtımlarda](api-management-howto-deploy-multi-region.md), her bölgesel dağıtımın tek BIR genel IP adresi vardır.
 
-## <a name="ip-addresses-of-api-management-service-in-vnet"></a>VNET 'teki API Management hizmetinin IP adresleri
+## <a name="ip-addresses-of-api-management-service-in-vnet"></a>VNet 'teki API Management hizmetinin IP adresleri
 
 API Management hizmetiniz bir sanal ağın içindeyse, iki tür IP adresine sahip olur-genel ve özel.
 
-Genel IP adresleri, bağlantı noktası `3443` üzerinde dahili iletişim için kullanılır (örneğin, Azure Resource Manager aracılığıyla). Dış VNET yapılandırmasında, çalışma zamanı API trafiği için de kullanılır. API Management bir istek, herkese açık (Internet 'e yönelik) arka uca gönderildiğinde, bir genel IP adresi isteğin kaynağı olarak görünür olur.
+Genel IP adresleri, bağlantı noktası `3443`-yapılandırma yönetimi için kullanılır (örneğin, Azure Resource Manager üzerinden). Dış VNet yapılandırmasında, çalışma zamanı API trafiği için de kullanılır. API Management bir istek, herkese açık (Internet 'e yönelik) arka uca gönderildiğinde, bir genel IP adresi isteğin kaynağı olarak görünür olur.
 
 Özel sanal IP (VIP) adresleri, ağ içinden API Management uç noktalarına, geliştirici portalına ve doğrudan API erişimi için yönetim düzlemini bağlamak için kullanılır. Ağ içinde DNS kayıtlarını ayarlamak için bunları kullanabilirsiniz.
 
 Azure portal her iki türün adreslerini ve API çağrısının yanıtını görürsünüz:
 
-![VNET IP adresinde API Management](media/api-management-howto-ip-addresses/vnet-ip.png)
+![VNet IP adresinde API Management](media/api-management-howto-ip-addresses/vnet-ip.png)
 
 
 ```json
@@ -89,6 +89,8 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 }
 ```
 
+API Management, VNet dışındaki bağlantılar için genel bir IP adresi ve sanal ağ içindeki bağlantılar için özel bir IP adresi kullanır.
+
 ## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>Tüketim katmanının IP adresleri API Management hizmeti
 
 API Management hizmetiniz bir tüketim katmanı hizmeti ise, ayrılmış bir IP adresi yoktur. Tüketim katmanı hizmeti, paylaşılan bir altyapıda ve belirleyici bir IP adresi olmadan çalışır. 
@@ -102,6 +104,6 @@ API Management geliştirici, temel, standart ve Premium katmanlarında genel IP 
 * Hizmet silinir ve sonra yeniden oluşturulur.
 * Hizmet aboneliği [askıya alındı](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) veya [Uyarı](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) verebilir (örneğin, ödeme dışı) ve ardından yeniden belirtilir.
 * Azure sanal ağı, hizmetine eklenir veya hizmete kaldırılır.
-* API Management hizmeti harici ve Iç VNET dağıtım modu arasında geçiş yaptı.
+* API Management hizmeti harici ve Iç VNet dağıtım modu arasında geçiş yaptı.
 
 [Çoklu bölgesel dağıtımlarda](api-management-howto-deploy-multi-region.md), bölge yeniden BELIRTILMIŞSE bölgesel IP adresi değişir.

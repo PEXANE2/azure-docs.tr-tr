@@ -1,6 +1,6 @@
 ---
-title: Azure portal ayarlarını silin veya dışarı | Microsoft Docs
-description: Dışarı aktarma veya silebilir, kullanıcı ayarları, özel panolar ve özel ayarları Azure portalında nasıl öğrenin.
+title: Azure portal ayarlarını dışarı veya silme | Microsoft Docs
+description: Azure portal Kullanıcı ayarlarınızı, Özel panoları ve özel ayarları nasıl dışarı aktarıp silebileceğinizi öğrenin.
 services: azure-portal
 keywords: ''
 author: santhoshsomayajula
@@ -9,46 +9,46 @@ ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.author: kfollis
-ms.openlocfilehash: fde7ffbaa3ef4d47eea48302a99948932aeb4f00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mblythe
+ms.openlocfilehash: f033af37985077f4d8df9d541b55764df0c75eda
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551676"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640185"
 ---
 # <a name="export-or-delete-user-settings"></a>Kullanıcı ayarlarını dışarı aktarma veya silme
 
-Özel bir deneyim oluşturmak için Azure portalında ayarları ve özellikleri kullanabilirsiniz. Özel ayarlarınızla ilgili bilgiler, Azure'da depolanır. Dışarı aktarma veya aşağıdaki kullanıcı verilerini silin:
+Özel bir deneyim oluşturmak için Azure portal ayarları ve özellikleri kullanabilirsiniz. Özel ayarlarınızla ilgili bilgiler Azure 'da depolanır. Aşağıdaki kullanıcı verilerini dışa aktarabilir veya silebilirsiniz:
 
-* Azure portalında özel panolar
-* Sık kullanılan abonelikleri veya dizinleri ve son oturum açtığınız dizin gibi kullanıcı ayarları
+* Azure portal özel panolar
+* Sık kullanılan abonelikler veya dizinler gibi Kullanıcı ayarları ve oturum açan son dizin
 * Temalar ve diğer özel portal ayarları
 
-Silmeden önce ayarlarınızı gözden geçirin ve dışarı aktarmak iyi bir fikirdir. Pano yeniden veya özel ayarlar yineleme zaman alıcı olabilir.
+Ayarlarınızı silmeden önce dışa ve gözden geçirmek iyi bir fikirdir. Panoları yeniden derleme veya özel ayarları yeniden oluşturma zaman alabilir.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="export-or-delete-your-portal-settings"></a>Dışarı aktarma veya portal ayarlarınızı Sil
+## <a name="export-or-delete-your-portal-settings"></a>Portal ayarlarınızı dışarı veya silme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Portalın üst bilgisindeki seçin **ayarları**.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Portalın üst bilgisinde **Ayarlar**' ı seçin.
 
-    ![Portal ayarlar dişli simgesini gösteren ekran görüntüsü](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
+    ![Portal ayarlarını dişli olarak gösteren ekran görüntüsü](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
 
-3. Seçin **tüm ayarları dışarı aktar** veya **tüm ayarları ve özel panoları Sil**.
+3. **Tüm ayarları dışarı aktar** veya **tüm ayarları ve özel panoları Sil '** i seçin.
 
-    ![Portal gösteren ekran görüntüsü dışarı aktarma ve ayarları Sil](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
+    ![Portalın dışarı ve silme ayarlarını gösteren ekran görüntüsü](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
 
-      Aşağıdaki tabloda, bu eylemleri açıklar.
+      Aşağıdaki tabloda bu eylemler açıklanmaktadır.
 
       | Eylem | Açıklama |
       | --- | --- |
-      | **Tüm ayarları Dışarı Aktar** | Renk teması, Sık Kullanılanlar ve özel panolar gibi kullanıcı ayarlarınızı içeren bir .json dosyası oluşturur.|
-      | **Tüm ayarları ve özel panoları Sil** | Portala yaptığınız diğer özel ayarları ve özel panoları tüm bağlantıları siler. |
+      | **Tüm ayarları dışarı aktar** | Renk teması, Sık Kullanılanlar ve özel panolarınız gibi kullanıcı ayarlarınızı içeren bir. JSON dosyası oluşturur.|
+      | **Tüm ayarları ve özel panoları silme** | Özel panolar ve portalda yaptığınız diğer özel ayarlar için tüm bağlantıları siler. |
 
 > [!NOTE]
-> Kullanıcı ayarları dinamik doğasını ve verilerin bozulma riskini nedeniyle .json dosyasından ayarlar içeri aktarılamıyor.
+> Kullanıcı ayarlarının dinamik doğası ve veri bozulması riski nedeniyle,. json dosyasından ayarları içeri aktaramazsınız.
 >
 >
 
@@ -56,4 +56,4 @@ Silmeden önce ayarlarınızı gözden geçirin ve dışarı aktarmak iyi bir fi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure panoları oluşturma ve paylaşma](azure-portal-dashboard-share-access.md)
-* [Ekleme, kaldırma ve sıralama Sık Kullanılanlar](azure-portal-add-remove-sort-favorites.md)
+* [Sık kullanılanları ekleme, kaldırma ve sıralama](azure-portal-add-remove-sort-favorites.md)

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl oluştur | Microsoft Docs
-description: Service Fabric CLı sfctl oluşturma komutlarını açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl oluşturma
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Docker Compose uygulamalar için komutların bir listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 561616fca7401f5251c4fbac67173260a665b602
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3a9fa142dd45674e4a3e88745acffef225b80a64
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901663"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645404"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Docker Compose uygulamalar oluşturun, silin ve yönetin.
@@ -30,11 +21,11 @@ Docker Compose uygulamalar oluşturun, silin ve yönetin.
 | --- | --- |
 | oluşturmaya | Service Fabric oluşturma dağıtımı oluşturur. |
 | list | Service Fabric kümesinde oluşturulan oluşturma dağıtımlarının listesini alır. |
-| temizlenmesine | Kümeden varolan bir Service Fabric oluşturma dağıtımını siler. |
-| durum | Service Fabric oluşturma dağıtımı hakkında bilgi alır. |
-| yükseltmenizi | Service Fabric kümesinde bir oluşturma dağıtımını yükseltmeye başlar. |
-| yükseltme-geri alma | Service Fabric kümesinde bir dağıtım yükseltmesini oluşturma ile çalışmaya başlar. |
-| yükseltme-durum | Bu Service Fabric oluşturma dağıtımı üzerinde gerçekleştirilen en son yükseltmenin ayrıntılarını alır. |
+| kaldırma | Kümeden varolan bir Service Fabric oluşturma dağıtımını siler. |
+| status | Service Fabric oluşturma dağıtımı hakkında bilgi alır. |
+| upgrade | Service Fabric kümesinde bir oluşturma dağıtımını yükseltmeye başlar. |
+| upgrade-rollback | Service Fabric kümesinde bir dağıtım yükseltmesini oluşturma ile çalışmaya başlar. |
+| upgrade-status | Bu Service Fabric oluşturma dağıtımı üzerinde gerçekleştirilen en son yükseltmenin ayrıntılarını alır. |
 
 ## <a name="sfctl-compose-create"></a>sfctl oluşturma oluştur
 Service Fabric oluşturma dağıtımı oluşturur.
@@ -43,7 +34,7 @@ Service Fabric oluşturma dağıtımı oluşturur.
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Dağıtım-adı [gerekli] | Dağıtımın adı. |
+| --Dağıtım-adı [gerekli] | Dağıtım adı. |
 | --File-Path [gerekli] | Hedef Docker Compose dosyasının yolu. |
 | --şifrelenmiş-Pass | Bir kapsayıcı kayıt defteri parolası istemek yerine, zaten şifrelenmiş bir geçiş ifadesi kullanın. |
 | --sahip-Pass | , Kapsayıcı kayıt defteri için bir parola sorar. |
@@ -136,7 +127,7 @@ Sağlanan yükseltme parametrelerini doğrular ve parametreler geçerliyse dağ�
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Dağıtım-adı [gerekli] | Dağıtımın adı. |
+| --Dağıtım-adı [gerekli] | Dağıtım adı. |
 | --File-Path [gerekli] | Hedef Docker Compose dosyasının yolu. |
 | --Varsayılan-svc-tür-sistem durumu-eşleme | Hizmetlerin sistem durumunu değerlendirmek için kullanılan sistem durumu ilkesini tanımlayan JSON kodlu sözlük. |
 | --şifrelenmiş-Pass | Bir kapsayıcı kayıt defteri parolası istemek yerine, zaten şifrelenmiş bir geçiş ifadesi kullanın. |

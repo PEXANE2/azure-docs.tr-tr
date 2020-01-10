@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 0c243d216e00adf49a6425e5b7be0d38caeef043
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929058"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658551"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'e (AKS) geçiş
 
@@ -78,7 +78,7 @@ az aks create \
 
 Kümeleri geçirirken dış Azure hizmetlerinizi bağlı kalabilirsiniz. Bunlar kaynak yeniden oluşturma gerektirmez, ancak işlevleri sürdürmek için önceki yeni kümelere bağlantıların güncelleştirilmesini gerektirecektir.
 
-* Azure Container Kayıt Defteri
+* Azure Container Registry
 * Log Analytics
 * Application Insights
 * Traffic Manager
@@ -91,7 +91,7 @@ Geçiş sırasında aboneliğinize daha fazla sanal makine dağıtılacağından
 
 IP 'Leri tüketmemenizi sağlamak için [ağ kotaları](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests) artışı istemeniz gerekebilir. Ek bilgi için bkz. [AKS için ağ ve IP aralıkları](https://docs.microsoft.com/azure/aks/configure-kubenet) .
 
-Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet sınırları](https://docs.microsoft.com/azure/azure-subscription-service-limits). Geçerli kotalarınızı denetlemek için, Azure portal [abonelikler dikey penceresine](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)gidin, aboneliğinizi seçin ve ardından **kullanım + kotalar**' ı seçin.
+Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Geçerli kotalarınızı denetlemek için, Azure portal [abonelikler dikey penceresine](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)gidin, aboneliğinizi seçin ve ardından **kullanım + kotalar**' ı seçin.
 
 ## <a name="high-availability-and-business-continuity"></a>Yüksek kullanılabilirlik ve Iş sürekliliği
 

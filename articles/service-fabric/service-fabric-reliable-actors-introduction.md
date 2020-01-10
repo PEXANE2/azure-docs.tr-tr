@@ -1,80 +1,71 @@
 ---
-title: Service Fabric Reliable Actors hizmetine genel bakış | Microsoft Docs
-description: Service Fabric Reliable Actors programlama modelini giriş.
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric Reliable Actors Hizmetine Genel Bakış
+description: Sanal aktör düzenine göre Service Fabric Reliable Actors programlama modeline giriş.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 7fdad07f-f2d6-4c74-804d-e0d56131f060
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 5a237e23dffed76e6122e17b59c85d20ca7e1baf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60727207"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645574"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors hizmetine giriş
-Reliable Actors, temel bir Service Fabric uygulama altyapısıdır [sanal aktör](https://research.microsoft.com/en-us/projects/orleans/) deseni. Reliable Actors API Service Fabric tarafından sağlanan ölçeklenebilirlik ve güvenilirlik garantisi temel alan bir tek iş parçacıklı programlama modeli sağlar.
+Reliable Actors, [sanal aktör](https://research.microsoft.com/en-us/projects/orleans/) düzenine göre Service Fabric bir uygulama çerçevesidir. Reliable Actors API 'SI, Service Fabric tarafından sağlanan ölçeklenebilirlik ve güvenilirlik garantisi üzerine inşa olan tek iş parçacıklı bir programlama modeli sağlar.
 
-## <a name="what-are-actors"></a>Aktörler nelerdir?
-Aktörün bir yalıtılmış, bağımsız işlem ve tek iş parçacıklı yürütme durumunu birimidir. [Gerçekleştiren deseni](https://en.wikipedia.org/wiki/Actor_model) , bu aktörler çok sayıda eşzamanlı olarak yürütebilir ve birbirinden eşzamanlı veya dağıtılmış sistemler için hesaplama bir modeldir. Aktörler birbiriyle iletişim kurabilir ve daha fazla aktör oluşturabilirler.
+## <a name="what-are-actors"></a>Aktör nedir?
+Aktör, tek iş parçacıklı yürütme ile yalıtılmış, bağımsız bir işlem ve durum birimidir. [Aktör](https://en.wikipedia.org/wiki/Actor_model) modeli, bu aktörlerin çok sayıda aynı anda ve birbirinden bağımsız olarak yürütebileceği eşzamanlı veya dağıtılmış sistemler için bir hesaplama modelidir. Aktörler birbirleriyle iletişim kurabilir ve daha fazla aktör oluşturabilir.
 
-### <a name="when-to-use-reliable-actors"></a>Reliable Actors kullanıldığı durumlar
-Service Fabric Reliable Actors aktör tasarım deseni uygulamasıdır. Tüm yazılım tasarım deseni ile gibi belirli bir desene kullanıp kullanmayacağınızı olup olmadığını bir yazılımı tasarlama üzerinde sorun göre yapılır karar deseni uyar.
+### <a name="when-to-use-reliable-actors"></a>Ne zaman kullanılacağı Reliable Actors
+Service Fabric Reliable Actors aktör tasarım deseninin bir uygulamasıdır. Herhangi bir yazılım tasarımı modelinde olduğu gibi, belirli bir model kullanılıp kullanılmayacağını kararla, yazılım tasarımı sorununun modele uygun olup olmadığına göre yapılır.
 
-Aktör tasarım olsa da Desen bir dizi dağıtılmış sistem sorunlarını ve senaryoları, desen ve uygulamadan framework kısıtlamaları göz önüne alarak yapılmalıdır dikkatli iyi bir uygun olamaz. Genel rehberlik sağlaması sorun veya senaryo, model gerçekleştiren deseni göz önünde bulundurun:
+Aktör tasarım deseninin bir dizi dağıtılmış sistem sorunu ve senaryosuna uygun olmasına rağmen, düzenin kısıtlamaları ve bunu uygulayan çerçevenin yapılması gerekir. Genel kılavuz olarak, sorun veya senaryonuzu modellemek için aktör modelini göz önünde bulundurun:
 
-* Çok sayıda sorunu alanınızı içerir (binlerce veya daha fazlası) küçük, bağımsız ve ayrı birim durumu ve mantığı.
-* Dış bileşenlerinden durumu aktörler kümesi sorgulama dahil olmak üzere önemli etkileşim gerektirmeyen tek iş parçacıklı nesneleriyle çalışma istiyorsunuz.
-* Aktör örneklerinizi g/ç işlemleri vererek beklenmedik gecikmeler ile çağıranlar engellemez.
+* Sorun alanınız, büyük bir sayı (binlerce veya daha fazla), küçük, bağımsız ve yalıtılmış birim ve mantık birimleri içerir.
+* Dış bileşenlerden önemli bir etkileşim gerektirmeyen tek iş parçacıklı nesnelerle çalışmak istiyorsunuz, bu da durumu bir aktör kümesi genelinde sorgulama dahil.
+* Aktör örneklerinizin, g/ç işlemleri vererek öngörülemeyen gecikmelerle arayanlara engel olmaz.
 
-## <a name="actors-in-service-fabric"></a>Service fabric'te aktörler
-Service Fabric'te Reliable Actors framework aktörler uygulanır: Üst kısmındaki yerleşik bir aktör desen tabanlı bir uygulama çerçevesi [Service Fabric güvenilir hizmetler](service-fabric-reliable-services-introduction.md). Yazdığınız her Reliable Actor hizmetinin aslında bir bölümlenmiş, durum bilgisi olan güvenilir hizmetidir.
+## <a name="actors-in-service-fabric"></a>Service Fabric aktörler
+Service Fabric, aktörler Reliable Actors Framework 'te uygulanır: [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md)en üstünde oluşturulan aktör temelli bir uygulama çerçevesi. Yazdığınız her güvenilir aktör hizmeti, aslında bölümlenmiş ve durum bilgisi olan güvenilir bir hizmettir.
 
-Her aktör, bir .NET nesnesini .NET türünün bir örneği olduğu şekilde özdeş bir aktör türü örneği olarak tanımlanır. Örneğin, bir hesap makinesi işlevselliğini uygulayan bir aktör türü olabilir ve çeşitli düğümler bir küme genelinde dağıtılan birçok aktör türü olabilir. Her bir aktör, bir aktör kimliğine göre benzersiz olarak tanımlanır
+Her aktör bir aktör türünün örneği olarak tanımlanır, .NET nesnesinin bir .NET türünün örneği olduğu şekilde aynıdır. Örneğin, bir Hesaplayıcı işlevselliğini uygulayan bir aktör türü olabilir ve bir küme genelinde çeşitli düğümlerde dağıtılan bu türden birçok aktör olabilir. Her bir aktör bir aktör KIMLIĞI tarafından benzersiz şekilde tanımlanır.
 
 ## <a name="actor-lifetime"></a>Aktör ömrü
-Service Fabric aktör sanal kendi ömürlerine kendi bellek içi gösterimine bağlanmayan anlamına gelir. Sonuç olarak, bunlar açıkça oluşturulmuş veya yok gerekmez. Reliable Actors çalışma zamanı, aktör kimliği için bir isteği aldığında bir aktör ilk zaman otomatik olarak etkinleştirir. Bir aktör, bir süre için kullanılmıyorsa, Reliable Actors çalışma zamanının çöp-bellekteki nesne toplar. Daha sonra yeniden etkinleştirilmesi gerekir, aktörün varlığı bilgisine de korur. Daha fazla ayrıntı için [aktör yaşam döngüsü ve atık toplama](service-fabric-reliable-actors-lifecycle.md).
+Service Fabric aktörler sanal, yani yaşam sürelerinin bellek içi gösterimine bağlı olmadığı anlamına gelir. Sonuç olarak, açıkça oluşturulması veya yok edilmesi gerekmez. Reliable Actors çalışma zamanı, aktör KIMLIĞI için bir istek aldığında bir aktöri otomatik olarak etkinleştirir. Aktör bir süre boyunca kullanılmıyorsa, Reliable Actors çalışma zamanı atık-bellek içi nesneyi toplar. Ayrıca, aktörin varlığına daha sonra yeniden etkinleştirilmesi gerekir. Daha ayrıntılı bilgi için bkz. [aktör yaşam döngüsü ve çöp toplama](service-fabric-reliable-actors-lifecycle.md).
 
-Bu sanal aktör ömrü soyutlama sanal aktör modeli sonucunda bazı uyarılar gerçekleştirir ve aslında Reliable Actors uygulaması bu modelden bazen farklıdır.
+Bu sanal aktör yaşam süresi soyutlama, sanal aktör modelinin bir sonucu olarak bazı uyarılar taşır ve Reliable Actors uygulama bu modelden zaman içinde farklılık gösterir.
 
-* Bir aktör (aktör nesnenin oluşturulması neden) otomatik olarak etkinleştirilir ilk kez bir ileti, aktör kimliğini gönderilir Belirli bir süre sonra çöp olarak toplanacak aktör nesnedir. Gelecekte, aktör kodu yeniden kullanarak oluşturulması için yeni bir aktör nesne neden olur. Nesnenin yaşam süresi bir aktörün durumu outlives durum Yöneticisi'nde depolandığında.
-* Herhangi bir aktör yöntemi arayan bir aktör kimliği için o aktör etkinleştirir. Bu nedenle aktör türleri çalışma zamanı tarafından örtük olarak çağırılamaz oluşturucularına sahiptir. Bu nedenle, hizmet tarafından aktörün oluşturucusuna parametre geçirilen ancak istemci kodu aktör türü oluşturucusuna parametreleri geçiremezsiniz. Aktör başlatma parametreleri istemciden gerektiriyorsa aktörler kısmen başlatılmış bir durumda diğer yöntemleri üzerinde çağrılır zamanına göre oluşturulabilir, sonucudur. Aktörün istemci etkinleştirme için tek giriş noktası yok.
-* Reliable Actors aktör nesneleri örtük olarak oluşturmuş olsanız da; açıkça bir aktör ve durumunu silme becerisine sahip.
+* Aktör KIMLIĞI bir ileti ilk kez gönderildiğinde aktör otomatik olarak etkinleştirilir (aktör nesnesi oluşturulmasını sağlar). Bir süre sonra aktör nesnesi atık olarak toplanır. Gelecekte aktör KIMLIĞINI yeniden kullanmak yeni bir aktör nesnesinin oluşturulmasına neden olur. Aktörün durumu, durum Yöneticisi 'nde depolanırken nesnenin ömrünü aşacak.
+* Aktör KIMLIĞI için herhangi bir aktör yöntemi çağrılması, bu aktörü etkinleştirir. Bu nedenle, aktör türlerinin Oluşturucusu çalışma zamanı tarafından örtük olarak çağırılır. Bu nedenle, istemci kodu aktör türünün oluşturucusuna parametreleri geçirebilse de, parametrelerin hizmetin kendisi tarafından oluşturucusuna geçirilmesi istenebilir. Bunun sonucunda, aktör kısmen başlatılmış bir durumda, diğer yöntemlerin çağrıldığı zamana göre oluşturulabilir ve aktör istemciden başlatma parametreleri gerektiriyorsa. İstemciden bir aktörün etkinleştirilmesi için tek bir giriş noktası yoktur.
+* Reliable Actors, aktör nesneleri örtülü olarak oluştursa da, aktör ve durumunu açıkça silme olanağınız vardır.
 
 ## <a name="distribution-and-failover"></a>Dağıtım ve yük devretme
-Ölçeklenebilirlik ve güvenilirlik sağlamak için Service Fabric aktör küme genelinde dağıtır ve otomatik olarak onları başarısız düğümlerden sağlıklı olanlara gerekli olarak geçirir. Üzerinden bir Özet budur bir [bölümlenmiş, durum bilgisi olan Reliable Services](service-fabric-concepts-partitioning.md). Dağıtım, ölçeklenebilirlik, güvenilirlik ve otomatik yük devretme: all aktörler içinde çalışan olgu da durum bilgisi olan güvenilir hizmet olarak adlandırılan sağlanan *Actor hizmetinin*.
+Ölçeklenebilirlik ve güvenilirlik sağlamak için Service Fabric aktörleri küme genelinde dağıtır ve bunları otomatik olarak başarısız düğümlerden, gerektiği gibi sağlıklı bir şekilde geçirir. Bu, [bölümlenmiş ve durum bilgisi olan güvenilir bir hizmet](service-fabric-concepts-partitioning.md)üzerinde soyutlamadır. Dağıtım, ölçeklenebilirlik, güvenilirlik ve otomatik yük devretme, aktörlerin *aktör hizmeti*olarak adlandırılan durum bilgisi olan güvenilir bir hizmetin içinde çalıştığı gerçeğini sağlamıştır.
 
-Aktörler Actor hizmetinin bölümler arasında dağıtılır ve bu bölümler bir Service Fabric kümesindeki düğümler arasında dağıtılır. Her hizmet bölümü aktörler kümesini içerir. Service Fabric, dağıtım ve yük devretme hizmet bölümlerini işlemlerini yönetir.
+Aktör, aktör hizmetinin bölümlerine dağıtılır ve bu bölümler bir Service Fabric kümesindeki düğümlere dağıtılır. Her hizmet bölümü bir aktör kümesi içerir. Service Fabric, hizmet bölümlerinin dağıtımını ve yük devretmesini yönetir.
 
-Örneğin, bir aktör hizmeti dokuz bölümleri varsayılan aktör bölüm yerleştirme kullanarak üç düğümlerine dağıtılmış olan thusly dağıtılmış:
+Örneğin, varsayılan aktör bölümü yerleştirmesi kullanılarak üç düğüme dağıtılan dokuz bölümlü bir aktör hizmeti şu şekilde dağıtılır:
 
 ![Reliable Actors dağıtım][2]
 
-Aktör çerçevesinde sizin için bölüm düzeni ve anahtar aralığı ayarlarını yönetir. Bu, bazı seçenekler basitleştirir ancak bazı önemli noktalar da gerçekleştirir:
+Aktör çerçevesi, bölüm düzenini ve anahtar aralığı ayarlarını sizin için yönetir. Bu, bazı seçimleri basitleştirir ancak bazı konuları da taşır:
 
-* Reliable Services bir bölümleme düzeni, (bir aralık bölümleme düzenini kullanırken) anahtar aralığı seçin ve bölüm sayısı olanak tanır. Reliable Actors (Tekdüzen Int64 düzeni) bölümleme aralığın sınırlıdır ve tam Int64 anahtar aralığı kullanmanızı gerektirir.
-* Varsayılan olarak, aktör rastgele Tekdüzen dağıtımlarında kaynaklanan bölümlere yerleştirilir.
-* Aktörler rastgele yerleştirildiğinden aktör işlemler her zaman serileştirme ve seri durumundan çıkarma, gecikme süresi ve ek yükü yansıtılmasını yöntemi arama verilerinin dahil olmak üzere, ağ iletişimi gerektirir beklenmelidir.
-* Gelişmiş senaryolar Int64 aktör belirli bölümlere eşlemek kimlikleri kullanarak denetim aktör bölüm yerleştirme için mümkündür. Ancak, bunun yapılması bölümler arasında bu nedenle aktör dengesiz bir dağıtım sonuçlanabilir.
+* Reliable Services bir bölümleme şeması, anahtar aralığı (Aralık bölümleme şeması kullanırken) ve bölüm sayısı seçmenize olanak sağlar. Reliable Actors, Aralık bölümleme şeması (Tekdüzen Int64 şeması) ile kısıtlıdır ve tam Int64 anahtar aralığını kullanmanızı gerektirir.
+* Varsayılan olarak, aktör, Tekdüzen dağıtımına neden olan bölümlere rastgele yerleştirilir.
+* Aktör rastgele yerleştirildiğinden, aktör işlemlerinin her zaman, yöntem çağrı verilerinin serileştirme ve serisini kaldırma, gecikme süresi ve ek yükü dahil, her zaman ağ iletişimi gerektirmesinin beklenmelidir.
+* Gelişmiş senaryolarda, belirli bölümlerle eşlenen Int64 aktör kimliklerini kullanarak aktör bölümü yerleşimini denetlemek mümkündür. Ancak bunu yapmak, bölümler arasında aktörlerin dengesiz bir dağıtımına neden olabilir.
 
-Aktör hizmeti nasıl bölümlenir ile ilgili daha fazla bilgi için [kavramları aktörler için bölümleme](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
+Aktör hizmetlerinin nasıl bölümlenme hakkında daha fazla bilgi için [aktörlerin bölümlendirme kavramlarını](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)inceleyin.
 
 ## <a name="actor-communication"></a>Aktör iletişimi
-Aktör etkileşimleri interface'i gerçekleştiren ve aynı arabirimi üzerinden bir aktör için bir proxy alır istemci tarafından paylaşılan bir arabirimde tanımlanır. Bu arabirim, aktör metotları zaman uyumsuz olarak çağırma için kullanıldığından, görev döndüren arabirimdeki her yöntem olmalıdır.
+Aktör etkileşimleri, arabirimini uygulayan aktör tarafından paylaşılan bir arabirimde ve bir aktör için aynı arabirim aracılığıyla bir proxy alan istemci tarafından tanımlanır. Bu arabirim aktör yöntemlerini zaman uyumsuz olarak çağırmak için kullanıldığından, arabirimdeki her yöntemin görev döndürmesi gerekir.
 
-Yöntem çağrıları ve yanıtlarını sonuçta ağ isteklerine kümede, bu nedenle bağımsız değişkenler neden ve sonuç türleri döndürmeleri görevlerin platform tarafından seri hale getirilebilir olması gerekir. Özellikle, olmalıdır [veri sözleşme seri hale getirilebilir](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
+Yöntem etkinleştirmeleri ve yanıtları sonuç olarak kümedeki ağ isteklerine neden olur, bu nedenle döndürülen görevlerin bağımsız değişkenleri ve sonuç türleri platform tarafından seri hale getirilebilir olmalıdır. Özellikle, bunların [seri hale getirilebilir veri anlaşması](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)olmaları gerekir.
 
-### <a name="the-actor-proxy"></a>Aktör proxy
-Reliable Actors istemci API aktör örneği bir aktör istemci arasındaki iletişimi sağlar. Aktörün ile iletişim kurmak için bir istemci aktör arabirimi uygulayan bir aktör proxy nesnesi oluşturur. İstemci proxy nesnesi yöntemleri çağırarak aktör ile etkileşime girer. Aktör proxy istemci aktör ve aktör aktör iletişim için kullanılabilir.
+### <a name="the-actor-proxy"></a>Aktör proxy 'si
+Reliable Actors istemci API 'SI, bir aktör örneği ve aktör istemcisi arasında iletişim sağlar. Bir aktör ile iletişim kurmak için, istemci aktör arabirimini uygulayan bir aktör proxy nesnesi oluşturur. İstemci, proxy nesnesi üzerinde Yöntemler çağırarak aktörle etkileşime girer. Aktör proxy 'si, istemci-aktör ve aktör-aktör iletişimi için kullanılabilir.
 
 ```csharp
 // Create a randomly distributed actor ID
@@ -99,54 +90,54 @@ myActor.DoWorkAsync().get();
 ```
 
 
-Aktör proxy nesnesi oluşturmak için kullanılan bilgilerin iki parça kimliği ve uygulama adı olduğuna dikkat edin. Uygulama adı tanımlar ancak kimliği aktör benzersiz olarak tanımlayan [Service Fabric uygulaması](service-fabric-reliable-actors-platform.md#application-model) aktör dağıtıldığı.
+Aktör proxy nesnesini oluşturmak için kullanılan iki bilgi parçasının aktör KIMLIĞI ve uygulama adı olduğunu unutmayın. Aktör KIMLIĞI aktöri benzersiz şekilde tanımlar, ancak uygulama adı aktörün dağıtıldığı [Service Fabric uygulamayı](service-fabric-reliable-actors-platform.md#application-model) tanımlar.
 
-`ActorProxy`(C#) / `ActorProxyBase`İstemci tarafında (Java) sınıfı aktör Kimliğine göre bulun ve bir iletişim kanalı ile açmak için gerekli çözümlemesi gerçekleştirir. Aktör iletişim hatalarına ve yük devretme durumunda bulmak için de deneme. Sonuç olarak, ileti teslimi, aşağıdaki özelliklere sahiptir:
+İstemci tarafındaki `ActorProxy`C#()/`ActorProxyBase`(Java) sınıfı, aktöri kimliğe göre bulmak için gerekli çözümü gerçekleştirir ve bununla bir iletişim kanalı açar. Ayrıca, iletişim arızaları ve yük devretme durumlarında aktöri bulmayı yeniden dener. Sonuç olarak, ileti teslimi aşağıdaki özelliklere sahiptir:
 
-* İleti, en iyi çaba teslimatıdır.
-* Aktör, aynı istemciden yinelenen iletileri alabilirsiniz.
+* İleti teslimi en iyi çabadır.
+* Aktörler aynı istemciden yinelenen iletiler alabilir.
 
 ## <a name="concurrency"></a>Eşzamanlılık
-Reliable Actors çalışma zamanı, aktör yöntemleri erişmek için bir basit sırayla oynadıkları erişim modeli sağlar. Başka bir deyişle, birden fazla iş parçacığı herhangi bir zamanda bir aktör nesnenin kod içinde etkin olabilir. Veri erişimi için eşitleme mekanizmaları gerek olmadığından erişim sırayla oynadıkları eş zamanlı sistemleri büyük ölçüde kolaylaştırır. Ayrıca, ilgili özel konular her aktör örneğinin ile tek iş parçacıklı erişimi yapısı sistemleri tasarlanmalıdır anlamına gelir.
+Reliable Actors çalışma zamanı, aktör yöntemlerine erişmek için basit bir açma tabanlı erişim modeli sağlar. Bu, bir aktör nesnesinin kodu içinde herhangi bir zamanda birden fazla iş parçacığının etkin olamayacağı anlamına gelir. Veri erişimi için eşitleme mekanizmalarına gerek olmadığı için, çift tabanlı erişim, eşzamanlı sistemleri büyük ölçüde basitleştirir. Ayrıca sistemler, her aktör örneğinin tek iş parçacıklı erişim doğası için özel hususlar ile tasarlanmalıdır.
 
-* Bir tek aktör örneği aynı anda birden fazla isteği işleyemiyor. Eş zamanlı istekleri işlemek üzere bekleniyorsa aktör örneği bir aktarım hızı performans sorununa neden olabilir.
-* Bir dış istek aktörleri birine aynı anda yapılır ancak iki aktörler arasında döngüsel bir istek varsa aktörler birbirine kilitlenme. Actor çalışma zamanına otomatik olarak aktör çağrılarda zaman aşımına uğrar ve olası kilitlenme durumları kesmek için çağırana özel durum.
+* Tek bir aktör örneği aynı anda birden fazla isteği işleyemez. Bir aktör örneği, eşzamanlı isteklerin işlenmesi bekleniyorsa üretilen iş sorununa neden olabilir.
+* İki aktör arasında döngüsel bir istek olduğunda aktör, bir dış istek aynı anda aktörlerin birine eşzamanlı olarak yapıldığında birbirini karşılıklı hale getirilebilir. Aktör çalışma zamanı, aktör çağrılarında otomatik olarak zaman aşımına uğrar ve olası kilitlenme durumlarını kesintiye uğratmak için çağırana özel durum oluşturur.
 
-![Reliable Actors iletişimi][3]
+![Reliable Actors iletişim][3]
 
-### <a name="turn-based-access"></a>Kullanıma dayalı olarak erişimi
-Bir bırakma diğer aktörler veya istemcilere gelen bir isteğe yanıt olarak bir aktör yöntemi tam olarak yürütülmesini veya tam olarak yürütülmesini oluşur bir [Zamanlayıcı/anımsatıcı](service-fabric-reliable-actors-timers-reminders.md) geri çağırma. Bu yöntemleri ve geri aramalar zaman uyumsuz olmasına karşın, aktör çalışma zamanı bunları Interleave değil. Yeni bir kullanıma izin verilmeden önce bir bırakma eksiksiz olması gerekir. Diğer bir deyişle, şu anda yürütülmekte olan bir aktör yöntemi veya Zamanlayıcı/anımsatıcı geri çağırma yeni bir yöntem çağrısından önce tam olarak bitmiş olmalıdır veya geri çağırma izin verilir. Bir yöntem veya geri çağırma yürütme yöntemden döndürdü veya geri çağırma ve yöntem veya geri çağırma tarafından döndürülen görev tamamlandığında tamamlanmış kabul edilir. Bu, sırayla oynadıkları eşzamanlılık bile farklı yöntemleri, zamanlayıcılar ve geri çağırmalar arasında dikkate değer vurgulama olur.
+### <a name="turn-based-access"></a>Açma tabanlı erişim
+Bir etkinleştirme, diğer aktörlerden veya istemcilerden gelen bir isteğe yanıt olarak bir aktör yönteminin tamamen yürütülmesinden veya bir [Zamanlayıcı/anımsatıcı](service-fabric-reliable-actors-timers-reminders.md) geri çağrısının tamamen yürütülmesinden oluşur. Bu yöntemler ve geri çağrılar zaman uyumsuz olsa da aktör çalışma zamanı bunları toplamaz. Yeni bir dönüşme izin verilinceye kadar bir sırayla tam olarak bitmesi gerekir. Diğer bir deyişle, bir yönteme veya geri çağrıya yönelik yeni bir çağrıya izin verilmeden önce yürütülmekte olan bir aktör yöntemi veya zamanlayıcı/anımsatıcı geri çağırma işlemi tamamen tamamlanmış olmalıdır. Bir yöntem veya geri çağırma, yürütme yöntemden veya geri aramadan döndürülürse ve yöntem veya geri çağırma tarafından döndürülen görev tamamlandığında tamamlandı olarak değerlendirilir. Farklı yöntemler, zamanlayıcılar ve geri çağırmaların yanında, çift yönlü eşzamanlılık olduğunu vurgulamayı unutmayın.
 
-Aktörler çalışma zamanı tarafından bir bırakma başlangıcını ve kilidi serbest bırakma sonunda bir aktör başına kilit alınırken sırayla oynadıkları eşzamanlılık zorlar. Bu nedenle, sırayla oynadıkları eşzamanlılık aktör başına temelinde ve değil aktörler arasında zorunlu tutulur. Aktör yöntemleri ve Zamanlayıcı/anımsatıcı geri çağırmaları adına farklı aktör eşzamanlı olarak yürütebilir.
+Aktör çalışma zamanı, bir aktör başına kilit alarak ve kilidin sonunda kilidi serbest bırakarak çift tabanlı eşzamanlılık uygular. Bu nedenle, açık tabanlı eşzamanlılık aktör genelinde değil, aktör temelinde zorlanır. Aktör yöntemleri ve Zamanlayıcı/anımsatıcı geri çağırmaları farklı aktör adına aynı anda çalıştırılabilir.
 
-Aşağıdaki örnek, yukarıdaki kavramları göstermektedir. İki zaman uyumsuz yöntemleri uygulayan bir aktör türü göz önünde bulundurun (örneğin *Method1* ve *Method2*), bir Zamanlayıcı ve anımsatıcı bir. Aşağıdaki diyagramda iki aktörler adına bu yöntemleri ve geri aramalar yürütülmesi için bir zaman çizelgesi örneği gösterilmektedir (*ActorId1* ve *ActorId2*) bu aktör türe ait.
+Aşağıdaki örnekte yukarıdaki kavramlar gösterilmektedir. İki zaman uyumsuz Yöntem (deyin, *Method1* ve *Method2*), bir süreölçeri ve bir anımsatıcı uygulayan bir aktör türü düşünün. Aşağıdaki diyagramda, bu aktör türüne ait olan iki aktör (*ActorId1* ve *ActorId2*) adına bu yöntemlerin ve geri çağırmaların yürütülmesi için bir zaman çizelgesi örneği gösterilmektedir.
 
-![Reliable Actors çalışma zamanı sırayla oynadıkları eşzamanlılık ve erişim][1]
+![Reliable Actors çalışma zamanı açma tabanlı eşzamanlılık ve erişim][1]
 
-Bu diyagram, bu kuralları aşağıdaki gibidir:
+Bu diyagram aşağıdaki kuralları izler:
 
-* Her dikey çizgi belirli bir aktör adına bir yöntem veya bir geri çağırma yürütülmesini mantıksal akışı gösterilmektedir.
-* Dikey her satırda işaretlenmiş olayların kronolojik sırayla eskiler gerçekleşen yeni olaylar ile oluşur.
-* Farklı renkler, farklı aktörler için karşılık gelen zaman çizelgeleri için kullanılır.
-* Vurgulama aktör başına kilit bir yöntem veya geri çağırma adına tutulduğu süreyi belirtmek için kullanılır.
+* Her dikey çizgi, belirli bir aktör adına bir yöntem veya geri çağırma yürütme mantıksal akışını gösterir.
+* Her dikey satırda işaretlenen olaylar kronolojik sırada oluşur ve daha yeni olaylar daha eski olanlarla daha sonra gerçekleşirler.
+* Farklı aktörlerin karşılık gelen zaman çizelgeleri için farklı renkler kullanılır.
+* Vurgulama, bir yöntem veya geri çağırma adına aktör başına kilidin tutulduğu süreyi belirtmek için kullanılır.
 
-Dikkate alınması gereken bazı önemli noktalar:
+Göz önünde bulundurmanız gereken bazı önemli noktaları:
 
-* Sırada *Method1* adına yürütme *ActorId2* istemci isteğine yanıt olarak *xyz789*, başka bir istemci isteği (*abc123*) ulaşan, ayrıca gerektirir *Method1* tarafından yürütülecek *ActorId2*. Ancak, ikinci yürütülmesini *Method1* önceki yürütme tamamlanana kadar yeniden başlamaz. Benzer şekilde, kayıtlı bir anımsatıcı olarak *ActorId2* sırasında ateşlenir *Method1* istemci isteğine yanıt olarak yürütülen *xyz789*. Anımsatıcı geri çağırma yalnızca her iki yürütme sonra yürütülür *Method1* getirildiğinden. Tüm bu olduğu için zorunlu kılınmayı sırayla oynadıkları eşzamanlılık nedeniyle *ActorId2*.
-* Benzer şekilde, sırayla oynadıkları eşzamanlılık ayrıca için zorunlu *ActorId1*tarafından yürütülmesi gösterildiği gibi *Method1*, *Method2*ve adınaZamanlayıcısıgeriçağırma *ActorId1* seri biçimde'olmuyor.
-* Yürütülmesini *Method1* adına *ActorId1* adına yürütme ile çakışıyor *ActorId2*. Eşzamanlılık sırayla oynadıkları yalnızca bir aktör içinde ve aktörler arasında değil zorunlu olmasıdır.
-* Bazı yöntemi/geri çağırma yürütmeleri `Task`(C#) / `CompletableFuture`yöntemin dönüşünün ardından döndürülen tarafından yöntemi/geri çağırma tamamlandıktan (Java). Bazı bazılarında, zaman uyumsuz işlem zaten yöntemi/geri döndürür zamanında tamamlandı. Her iki durumda da, yalnızca hem yöntemi/geri döndürür ve zaman uyumsuz işlem tamamlandıktan sonra aktör başına kilit serbest bırakılır.
+* *Method1* , istemci isteğine *Xyz789*yanıt olarak *ActorId2* adına yürütülürken, *Ayrıca Method1 tarafından yürütülmesini gerektiren başka* bir istemci isteği (*abc123*) varolur *.* Ancak, *Method1* 'in ikinci yürütmesi, önceki yürütme bitinceye kadar başlamaz. Benzer şekilde, *ActorId2* tarafından kaydedilen bir anımsatıcı, *Method1* *istemci isteğine yanıt*olarak yürütüldüğünde ateşlenir. Anımsatıcı geri çağırması yalnızca *Method1* yürütmeleri tamamlandıktan sonra yürütülür. Bunun hepsi, *ActorId2*için zorunlu tabanlı eşzamanlılık nedeniyle yapılır.
+* Benzer şekilde, ActorId1 için açık tabanlı eşzamanlılık, *Method1*, *Method2*ve zamanlayıcı geri çağrısının bir seri bir *biçimde olması adına* bir şekilde yürütülmesi tarafından gösterildiği gibi,için de zorlanır.
+* *ActorId1* adına *Method1* yürütmesi, *ActorId2*adına yürütme ile çakışıyor. Bunun nedeni, çift tabanlı eşzamanlılık yalnızca aktör içinde zorlanır ve aktörler arasında değil.
+* Yöntem/geri çağırma yürütmelerinin bazılarında, yöntem/geri çağırma tarafındanC#döndürülen `Task`()/`CompletableFuture`(Java), yöntem dönüşinden sonra sonlanır. Bazı bazılarında, zaman uyumsuz işlem, metodun/geri aramanın döndürdüğü zaman tarafından zaten bitmiştir. Her iki durumda da, aktör başına kilit yalnızca Yöntem/geri çağırma, ve zaman uyumsuz işlem bittikten sonra serbest bırakılır.
 
 ### <a name="reentrancy"></a>Yeniden giriş
-Aktörler çalışma zamanı'na yeniden giriş varsayılan olarak izin verir. Bu olması durumunda bir aktör yöntemi anlamına gelir *aktör A* üzerinde bir yöntemi çağıran *aktör B*, sırayla çağıran başka bir yöntem üzerinde *aktör A*, yöntemi çalışmasına izin. Aynı mantıksal çağrı zincirine bağlam parçası olmasıdır. Zamanlayıcı ve anımsatıcı tüm çağrıları ile yeni mantıksal çağrı bağlamına başlayın. Bkz: [Reliable Actors yeniden giriş](service-fabric-reliable-actors-reentrancy.md) daha fazla ayrıntı için.
+Aktör çalışma zamanı varsayılan olarak yeniden giriş yapılmasına izin verir. Yani aktör bir aktör yöntemi, aktör *B*üzerinde bir *yöntemi çağırırsa,* bu yöntem *bir aktör*üzerinde başka bir yöntemi çağırırsa, bu yöntemin çalışmasına izin verilir. Bunun nedeni, aynı mantıksal çağrı zinciri bağlamının bir parçası olması olabilir. Tüm Zamanlayıcı ve anımsatıcı çağrıları yeni mantıksal çağrı bağlamıyla başlar. Daha fazla ayrıntı için [Reliable Actors yeniden](service-fabric-reliable-actors-reentrancy.md) giriş bölümüne bakın.
 
-### <a name="scope-of-concurrency-guarantees"></a>Eşzamanlılık garanti kapsamında
-Aktörler çalışma zamanı, bu yöntemlerden birini çağırma burada denetlediği durumlarda bu eşzamanlılık garantileri sağlar. Örneğin, Zamanlayıcı ve anımsatıcı geri çağırmaları yanı sıra, istemci isteğine yanıt olarak gerçekleştirilen yöntem çağrıları için bu garantileri sağlar. Ancak, aktör kodu doğrudan aktörler çalışma zamanı tarafından sağlanan mekanizmaları dışında bu yöntemleri çağırırsa, çalışma zamanı eşzamanlılık konusunda garanti sağlayamaz. Örneğin, aktör yöntemler tarafından döndürülen görev ile ilişkili olmayan bazı görev bağlamında yöntemi çağrılırsa, çalışma zamanı tutarlılık garantileri sağlayamaz. Aktör, kendi oluşturan bir iş parçacığından yöntemi çağrılırsa, çalışma zamanı ayrıca tutarlılık garantileri sağlayamaz. Bu nedenle, arka plan işlemleri gerçekleştirmek için aktör kullanmalısınız [aktör süreölçerler ve anımsatıcılar aktör](service-fabric-reliable-actors-timers-reminders.md) sırayla oynadıkları eşzamanlılık Uy.
+### <a name="scope-of-concurrency-guarantees"></a>Eşzamanlılık garantisi kapsamı
+Aktör çalışma zamanı, bu yöntemlerin çağrılmasını denetlediği durumlarda bu eşzamanlılık garantisi sağlar. Örneğin, bir istemci isteğine yanıt olarak yapılan yöntem etkinleştirmeleri ve Zamanlayıcı ve anımsatıcı geri çağırmaları için bu onay garantisi sağlar. Ancak aktör kodu, aktör çalışma zamanı tarafından belirtilen mekanizmaların dışında doğrudan bu yöntemleri çağırdıysa, çalışma zamanı hiçbir eşzamanlılık garantisi sağlayamaz. Örneğin, yöntemi aktör yöntemleri tarafından döndürülen görevle ilişkilendirilmemiş bir görev bağlamında çağrılırsa, çalışma zamanı eşzamanlılık garantisi sağlayamaz. Yöntem, aktörün kendi kendine oluşturduğu bir iş parçacığından çağrılırsa, çalışma zamanı eşzamanlılık garantisi da sağlayamaz. Bu nedenle, arka plan işlemleri gerçekleştirmek için aktör, [aktör zamanlayıcıları ve](service-fabric-reliable-actors-timers-reminders.md) çift tabanlı eşzamanlılık kullanan aktör anımsatıcıları kullanmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-İlk Reliable Actors hizmetinizi oluşturarak başlayın:
-   * [.NET üzerinde Reliable Actors hizmetini kullanmaya başlama](service-fabric-reliable-actors-get-started.md)
-   * [Üzerinde Java Reliable Actors hizmetini kullanmaya başlama](service-fabric-reliable-actors-get-started-java.md)
+İlk Reliable Actors hizmetinizi oluşturmaya başlayın:
+   * [.NET üzerinde Reliable Actors kullanmaya başlama](service-fabric-reliable-actors-get-started.md)
+   * [Java 'da Reliable Actors kullanmaya başlama](service-fabric-reliable-actors-get-started-java.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png

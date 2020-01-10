@@ -1,20 +1,16 @@
 ---
 title: Azure Service Fabric için güvenlik denetimleri
-description: Azure Service Fabric değerlendirmek için güvenlik denetimlerinin denetim listesi
-services: service-fabric
-documentationcenter: ''
+description: Azure Service Fabric için güvenlik denetimleri hakkında bilgi edinin. Yerleşik güvenlik denetimlerinin denetim listesini içerir.
 author: msmbaldwin
-manager: rkarlin
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d62c7848588c494c8190f0d429ce2d6641928b52
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a8bb49e20ec5812a4882966c6918cf2bd59f36a0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886481"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645438"
 ---
 # <a name="security-controls-for-azure-service-fabric"></a>Azure Service Fabric için güvenlik denetimleri
 
@@ -43,14 +39,14 @@ Bu makale, Azure Service Fabric yerleşik olarak bulunan güvenlik denetimlerini
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Authentication| Evet | Kimlik doğrulaması Azure Active Directory. |
-| Authorization| Evet | SFRP aracılığıyla çağrılar için kimlik ve erişim yönetimi (ıAM). Doğrudan küme uç noktasına yapılan çağrılar iki rolü destekler: Kullanıcı ve yönetici. Müşteri, API 'Leri her iki role de eşleyebilir. |
+| Kimlik Doğrulaması| Evet | Kimlik doğrulaması Azure Active Directory. |
+| Yetkilendirme| Evet | SFRP aracılığıyla çağrılar için kimlik ve erişim yönetimi (ıAM). Doğrudan küme uç noktasına yapılan çağrılar iki rolü destekler: Kullanıcı ve yönetici. Müşteri, API 'Leri her iki role de eşleyebilir. |
 
-## <a name="data-protection"></a>Veri koruma
+## <a name="data-protection"></a>Veri koruması
 
 | Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Bekleyen sunucu tarafı şifrelemesi: Microsoft tarafından yönetilen anahtarlar | Evet | Müşteri, kümeye ve kümenin oluşturulduğu sanal makine ölçek kümesine sahip. Azure disk şifrelemesi, sanal makine ölçek kümesi üzerinde etkinleştirilebilir. |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet | Müşteri, kümeye ve kümenin oluşturulduğu sanal makine ölçek kümesine sahip. Azure disk şifrelemesi, sanal makine ölçek kümesi üzerinde etkinleştirilebilir. |
 | Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet | Müşteri, kümeye ve kümenin oluşturulduğu sanal makine ölçek kümesine sahip. Azure disk şifrelemesi, sanal makine ölçek kümesi üzerinde etkinleştirilebilir. |
 | Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok |  |
 | Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet |  |

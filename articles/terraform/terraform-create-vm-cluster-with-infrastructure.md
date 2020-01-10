@@ -3,12 +3,12 @@ title: Öğretici-Terrayform ve HCL ile Azure VM kümesi oluşturma
 description: Azure 'da yük dengeleyiciye sahip bir Linux sanal makine kümesi oluşturmak için Terrayform ve HCL kullanma
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: f28cbbf13015d07c9d789ed258a9e2b0582ba1da
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159259"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665366"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Öğretici: Terrayform ve HCL ile Azure VM kümesi oluşturma
 
@@ -58,7 +58,7 @@ Bu bölümde bir Azure hizmet sorumlusu ve hizmet sorumlusu kimlik bilgilerini i
 
 6. Terraform değişkenlerinin değerlerini için yeni bir dosya oluşturun. Terartform değişken dosyanızı, geçerli dizinde varsa, `terraform.tfvars` adlı herhangi bir dosyayı (veya `*.auto.tfvars`bir desen takip eden) otomatik olarak yüklediği `terraform.tfvars` adlandırma yaygındır. 
 
-7. Aşağıdaki kodu değişken dosyanıza kopyalayın. Yer tutucuları şu şekilde değiştirdiğinizden emin olun: `subscription_id` için `az account set` komutunu çalıştırdığınızda belirttiğiniz Azure abonelik kimliğini kullanın. `tenant_id` için `tenant` komutunun döndürdüğü `az ad sp create-for-rbac` değerini kullanın. `client_id` için `appId` komutunun döndürdüğü `az ad sp create-for-rbac` değerini kullanın. `client_secret` için `password` komutunun döndürdüğü `az ad sp create-for-rbac` değerini kullanın.
+7. Aşağıdaki kodu değişken dosyanıza kopyalayın. Yer tutucuları şu şekilde değiştirdiğinizden emin olun: `subscription_id` için `az account set` komutunu çalıştırdığınızda belirttiğiniz Azure abonelik kimliğini kullanın. `tenant_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `tenant` değerini kullanın. `client_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `appId` değerini kullanın. `client_secret` için `az ad sp create-for-rbac` komutunun döndürdüğü `password` değerini kullanın.
 
    ```hcl
    subscription_id = "<azure-subscription-id>"
@@ -208,7 +208,7 @@ Bu bölümde altyapınız için kaynak tanımlarını içeren dosyayı oluştura
       disable_password_authentication = false
     }
 
-    tags {
+    tags = {
       environment = "staging"
     }
    }
@@ -260,10 +260,10 @@ Varsayılan olarak, Terlım, değişkenleri dosyanızı şu şekilde bulmaya ça
 - `terraform.tfvars` adlı dosya
 - İle adlı dosya şu kalıbı kullanıyor: `*.auto.tfvars`
 
-Ancak, değişkenler dosyanız önceki iki kurallardan birini izlemelidir. Bu durumda, `-var-file` parametresiyle birlikte değişkenlerin dosya adını belirtin. Aşağıdaki örnekte bu nokta gösterilmektedir:
+Ancak, değişkenler dosyanız önceki iki kurallardan birini izlemelidir. Bu durumda, değişken dosya adınızın bir uzantı içermediği `-var-file` parametresi ile değişkenlerin dosya adını belirtin. Aşağıdaki örnekte bu nokta gösterilmektedir:
 
 ```hcl
-terraform plan -var-file <my-variables-file.tf>
+terraform plan -var-file <my-variables-file>
 ```
 
 Terrayform, yapılandırma dosyasında belirtilen durumu elde etmek için gereken eylemleri belirler.

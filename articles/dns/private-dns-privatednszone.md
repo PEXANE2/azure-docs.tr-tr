@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 462c873221a4bdc622a9b118b6699a9719a5f88d
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: a951bc07c4a8ed42b1c116332d13674656bbaafd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71961248"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646804"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>Özel Azure DNS bölgesi nedir?
 
@@ -23,9 +23,9 @@ Azure Özel DNS, bir sanal ağdaki etki alanı adlarını yönetmek ve çözüml
 [Sanal ağ bağlantıları](./private-dns-virtual-network-links.md)oluşturarak, özel bir DNS bölgesini bir veya daha fazla sanal ağa bağlayabilirsiniz.
 Ayrıca, bir sanal ağda dağıtılan sanal makineler için DNS kayıtlarının yaşam döngüsünü otomatik olarak yönetmek üzere [otomatik kayıt](./private-dns-autoregistration.md) özelliğini de etkinleştirebilirsiniz.
 
-## <a name="limits"></a>Değerleri
+## <a name="limits"></a>Sınırlar
 
-Bir abonelikte kaç tane özel DNS bölgesinin oluşturabileceğiniz ve özel bir DNS bölgesinde kaç kayıt kümesinin desteklendiği hakkında bilgi edinmek için bkz. [Azure DNS sınırları](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)
+Bir abonelikte kaç tane özel DNS bölgesinin oluşturabileceğiniz ve özel bir DNS bölgesinde kaç kayıt kümesinin desteklendiği hakkında bilgi edinmek için bkz. [Azure DNS sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
 
 ## <a name="restrictions"></a>Kısıtlamalar
 

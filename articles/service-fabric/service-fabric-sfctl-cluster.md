@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl kümesi | Microsoft Docs
-description: Service Fabric CLı sfctl kümesi komutlarını açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl kümesi
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Kümeleri yönetmeye yönelik komutların bir listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: a42062f6f6b671d853f47e3f170b366799829a62
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 807457f3edaef8e0edcdbf53b482e2e4ffee174c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901483"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639165"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Service Fabric kümelerini seçin, yönetin ve çalıştırın.
@@ -31,19 +22,19 @@ Service Fabric kümelerini seçin, yönetin ve çalıştırın.
 | kod sürümleri | Service Fabric kümesinde sağlanan doku kodu sürümlerinin bir listesini alır. |
 | yapılandırma-sürümler | Service Fabric kümesinde sağlanan yapı yapılandırma sürümlerinin bir listesini alır. |
 | sağlık | Service Fabric kümesinin sistem durumunu alır. |
-| Bildirim | Service Fabric küme bildirimini alın. |
+| manifest | Service Fabric küme bildirimini alın. |
 | işlem-iptal | Kullanıcı tarafından alınmış bir hata işlemini iptal eder. |
 | işlem-liste | Belirtilen girişe göre filtrelenmiş Kullanıcı tarafından gerçekleştirilen hata işlemlerinin bir listesini alır. |
-| sağlamaya | Service Fabric kümesinin kodunu veya yapılandırma paketlerini sağlayın. |
+| provision | Service Fabric kümesinin kodunu veya yapılandırma paketlerini sağlayın. |
 | kurtarma-sistem | Service Fabric kümesine, şu anda yetersayı kaybından takılı olan sistem hizmetlerini kurtarmaya çalışılması gerektiğini gösterir. |
-| rapor-sistem durumu | Service Fabric kümesinde bir sistem durumu raporu gönderir. |
-| seçin | Service Fabric küme uç noktasına bağlanır. |
+| report-health | Service Fabric kümesinde bir sistem durumu raporu gönderir. |
+| {1&gt;seçin&lt;1} | Service Fabric küme uç noktasına bağlanır. |
 | bağlantıyı göster | Bu sfctl örneğinin hangi Service Fabric kümesini bağlandığını gösterin. |
-| kaldırmak | Service Fabric kümesinin kodunu veya yapılandırma paketlerini sağlamayı kaldırma. |
-| yükseltmenizi | Service Fabric kümesinin kodunu veya yapılandırma sürümünü yükseltmeye başlayın. |
-| yükseltme-özgeçmişi | Küme yükseltmesini bir sonraki yükseltme etki alanına geçiş yapın. |
-| yükseltme-geri alma | Service Fabric kümesinin yükseltmesini geri alma. |
-| yükseltme-durum | Geçerli küme yükseltmesinin ilerlemesini alır. |
+| unprovision | Service Fabric kümesinin kodunu veya yapılandırma paketlerini sağlamayı kaldırma. |
+| upgrade | Service Fabric kümesinin kodunu veya yapılandırma sürümünü yükseltmeye başlayın. |
+| upgrade-resume | Küme yükseltmesini bir sonraki yükseltme etki alanına geçiş yapın. |
+| upgrade-rollback | Service Fabric kümesinin yükseltmesini geri alma. |
+| upgrade-status | Geçerli küme yükseltmesinin ilerlemesini alır. |
 | yükseltme-güncelleştirme | Service Fabric küme yükseltmesinin yükseltme parametrelerini güncelleştirin. |
 
 ## <a name="sfctl-cluster-code-versions"></a>sfctl küme kodu-sürümler
@@ -446,7 +437,7 @@ Service Fabric küme yükseltmesinin yükseltme parametrelerini güncelleştirin
 | --sağlıksız-düğümler | Bir hata raporlanmadan önce, sağlıksız düğümlerin izin verilen en büyük yüzdesi. <br><br> Örneğin, düğümlerin %10 ' un sağlıksız olmasını sağlamak için bu değer 10 olur. Yüzde, küme hatalı olarak değerlendirilmeden önce sağlıksız olabilecek düğümlerin maksimum toleranslı yüzdesini temsil eder. Yüzde oranı kabul edilir ancak en az bir sağlıksız düğüm varsa, sistem durumu uyarı olarak değerlendirilir. Yüzde, sağlıksız düğümlerin sayısı kümedeki toplam düğüm sayısına bölünerek hesaplanır. Hesaplama, küçük sayıda düğümde bir hata olduğunu tolerans için yukarı yuvarlar. Büyük kümelerde, bazı düğümler her zaman onarım için kapatılacaktır ve bu nedenle bu yüzdenin bu yüzdeyi kabul edecek şekilde yapılandırılması gerekir. |
 | --Upgrade-Domain-Delta-sağlıksız-Nodes | Küme yükseltmeleri sırasında izin verilen yükseltme etki alanı düğümlerinin izin verilen maksimum yüzdesi.  Varsayılan değer 15\:. <br><br> Delta, yükseltmenin başlangıcında yükseltme etki alanı düğümlerinin durumu ve sistem durumu değerlendirmesi sırasında yükseltme etki alanı düğümlerinin durumu arasında ölçülür. Denetim, yükseltme etki alanlarının durumunun toleranslı limitlerin içinde olduğundan emin olmak için tüm tamamlanan yükseltme etki alanlarında her yükseltme etki alanı yükseltme tamamlandıktan sonra gerçekleştirilir. |
 | --Upgrade-etki alanı zaman aşımı | Her yükseltme etki alanının, FailureAction yürütülmeden önce tamamlaması gereken süre miktarı. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. |
-| --yükseltme-tür | Olası değerler şunlardır\: ' geçersiz ', ' kayan ', ' Rolling_ForceRestart '.  Varsayılan\: alınıyor. |
+| --yükseltme-tür | Olası değerler arasında\: ' geçersiz ', ' kayan ', ' Rolling_ForceRestart ' verilebilir.  Varsayılan\: alınıyor. |
 | --Upgrade-Timeout | FailureAction yürütülmeden önce genel yükseltmenin tamamlaması gereken süre miktarı. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. |
 | --hata olarak uyarı | Uyarıların hatalarla aynı önem derecesine sahip olup olmadığını gösterir. |
 

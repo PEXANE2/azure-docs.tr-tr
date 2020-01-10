@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 69711f7ac20882617de175b1b90d8df4f2858c4d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22bf4dcd472cf2d7804b571e09093535f30b053f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498089"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647433"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight kümesinde yavaş veya başarısız bir iş sorunlarını giderme
 
@@ -33,7 +33,7 @@ Yavaş veya başarısız bir kümeyi tanılamak için, ortamın ilişkili Azure 
 
 HDInsight, kümelerle ilgili sorunları belirlemek ve gidermek için kullanabileceğiniz birçok araç sağlar. Aşağıdaki adımlar bu araçlara kılavuzluk eder ve sorunu işaret eden öneriler sağlar.
 
-### <a name="identify-the-problem"></a>Sorunu tanımla
+### <a name="identify-the-problem"></a>Soruyu tanımlama
 
 Sorunu belirlemenize yardımcı olması için aşağıdaki soruları göz önünde bulundurun:
 
@@ -90,7 +90,7 @@ HDInsight çeşitli Azure hizmetlerini kullanır. Azure HDInsight üzerinde sana
 
 #### <a name="check-azure-service-usage-limits"></a>Azure hizmeti kullanım sınırlarını denetle
 
-Büyük bir küme veya aynı anda birçok küme oluşturduysanız, bir Azure hizmet sınırını aştıysanız bir küme başarısız olabilir. Hizmet limitleri, Azure aboneliğinize bağlı olarak farklılık gösterir. Daha fazla bilgi için bkz. [Azure aboneliği ile hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Büyük bir küme veya aynı anda birçok küme oluşturduysanız, bir Azure hizmet sınırını aştıysanız bir küme başarısız olabilir. Hizmet limitleri, Azure aboneliğinize bağlı olarak farklılık gösterir. Daha fazla bilgi için bkz. [Azure aboneliği ile hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 Microsoft 'un kullanılabilir HDInsight kaynakları sayısını (VM çekirdekleri ve VM örnekleri gibi) [Kaynak Yöneticisi çekirdek kota artışı isteği](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)ile artırmayı isteyebilirsiniz.
 
 #### <a name="check-the-release-version"></a>Yayın sürümünü denetleyin

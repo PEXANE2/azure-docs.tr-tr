@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 12/18/2019
 ms.author: alzam
-ms.openlocfilehash: 2836a89f491d731a11e6bc6fc56e0d049f01ac9a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 59af4189b52c2ad7a1109ffb03accedbc69dc6c6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151412"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647926"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>P2S OpenVPN Protokolü bağlantıları için bir VPN istemcisi yapılandırma: Azure AD kimlik doğrulaması (Önizleme)
 
@@ -34,11 +34,15 @@ Azure VPN Istemcisini (Önizleme) indirmek için bu [bağlantıyı](https://www.
 
 Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun sertifikaların yüklü olduğundan emin olun. Sertifikalar hakkında daha fazla bilgi için bkz. [istemci sertifikalarını Install](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-  ![CERT](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
+  ![cert](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
 
 ### <a name="radius"></a>RADIUS istemci profili oluşturmak için
 
   ![La](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+  
+> [!NOTE]
+> Sunucu parolası P2S VPN istemci profiline aktarılabilir.  İstemci profilini dışarı aktarma yönergeleri [burada](about-vpn-profile-download.md)bulunabilir.
+>
 
 ### <a name="export"></a>Bir istemci profilini dışarı ve dağıtım
 
@@ -46,33 +50,33 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 1. Dışarı aktarmak istediğiniz VPN istemci profilini vurgulayın, **...** öğesini seçin ve ardından **dışarı aktar**' ı seçin.
 
-    ![İşlemi](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![dışarı aktarma](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Bu profili kaydetmek istediğiniz konumu seçin, dosya adını olduğu gibi bırakın ve **Kaydet** ' i seçerek XML dosyasını kaydedin.
 
-    ![İşlemi](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![dışarı aktarma](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="import"></a>İstemci profilini içeri aktarmak için
 
 1. Sayfasında **Içeri aktar**' ı seçin.
 
-    ![aktarmaya](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![içeri aktarma](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. Profil XML dosyasına gidin ve seçin. Dosya seçili olduğunda **Aç**' ı seçin.
 
-    ![aktarmaya](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![içeri aktarma](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. Profilin adını belirtin ve **Kaydet**' i seçin.
 
-    ![aktarmaya](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![içeri aktarma](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. VPN 'ye bağlanmak için **Bağlan** ' ı seçin.
 
-    ![aktarmaya](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![içeri aktarma](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. Bağlandıktan sonra simge yeşil ve **bağlı**olarak görünür.
 
-    ![aktarmaya](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![içeri aktarma](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="delete"></a>İstemci profilini silmek için
 
@@ -112,19 +116,19 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 1. VPN istemcinizin ana sayfasında **VPN ayarları**' nı seçin.
 
-    ![Otomatik](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![otomobil](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. Uygulamalar arasında geçiş yap iletişim kutusunda **Evet** ' i seçin.
 
-    ![Otomatik](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![otomobil](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. Ayarlamak istediğiniz bağlantının zaten bağlı olmadığından emin olun, sonra profili vurgulayın ve **otomatik olarak bağlan** onay kutusunu işaretleyin.
 
-    ![Otomatik](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![otomobil](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. VPN bağlantısını başlatmak için **Bağlan** ' ı seçin.
 
-    ![Otomatik](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![otomobil](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose"></a>Bağlantı sorunlarını Tanıla
 
@@ -143,6 +147,26 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 4. Tanılama sonuçlarını görüntüleyin.
 
     ![tanın](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
+
+## <a name="faq"></a>SSS
+
+### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine DNS sonekleri eklensin mi?
+
+İndirilen profil XML dosyasını değiştirebilir ve **\<dnssuffixes >\<dnssudüzeltmesini > \</dnssudüzeltmesini >\</dnssuffixes >** etiketleri ekleyebilirsiniz
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnssuffixes>
+          <dnssuffix>.mycorp.com</dnssuffix>
+          <dnssuffix>.xyz.com</dnssuffix>
+          <dnssuffix>.etc.net</dnssuffix>
+    </dnssuffixes>
+    
+</clientconfig>
+</azvpnprofile>
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

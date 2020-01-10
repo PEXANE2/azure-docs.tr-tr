@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 25342cfbb8ac7ad5538b1f009c75f1d101bfc047
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560640"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644895"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs altyapısını idare edin-uygulama geçişi ve Tümleştirme
 Geliştirme/test laboratuvarı ortamınız kurulduktan sonra, aşağıdaki soruları düşünmeniz gerekir:
@@ -93,7 +93,7 @@ DevTest Labs ortamım için yeni bir sanal ağ oluşturmalı ve var olan bir san
 ### <a name="answer"></a>Yanıt
 Sanal makinelerinizin mevcut altyapıyla etkileşime ihtiyacı varsa, DevTest Labs ortamınızda var olan bir sanal ağı kullanmayı göz önünde bulundurmanız gerekir. Ayrıca, ExpressRoute kullanırsanız, aboneliklerde kullanılmak üzere atanan IP adresi alanınızı parçalara atabilmeniz için sanal ağlar/alt ağların miktarını en aza indirmek isteyebilirsiniz. Ayrıca, burada VNet eşleme modelini (hub-ışınsal-uç modeli) kullanmayı göz önünde bulundurmanız gerekir. Bu yaklaşım, belirli bir bölgedeki abonelikler arasında VNET/alt ağ iletişimini mümkün olmakla birlikte bölgeler arasında eşleme, Azure ağ iletişimi için bir güncel özelliktir.
 
-Aksi halde, her DevTest Labs ortamının kendi sanal ağı olabilir. Ancak, abonelik başına sanal ağ sayısında [sınırlar](../azure-subscription-service-limits.md) olduğunu unutmayın. Varsayılan miktar 50 ' dir, ancak bu sınır 100 olarak yükseltilebilir.
+Aksi halde, her DevTest Labs ortamının kendi sanal ağı olabilir. Ancak, abonelik başına sanal ağ sayısında [sınırlar](../azure-resource-manager/management/azure-subscription-service-limits.md) olduğunu unutmayın. Varsayılan miktar 50 ' dir, ancak bu sınır 100 olarak yükseltilebilir.
 
 ## <a name="shared-public-or-private-ip"></a>Paylaşılan, genel veya özel IP
 
@@ -117,7 +117,7 @@ Kullanıcı başına veya laboratuvar başına kaç sanal makine ayarlayabilirim
 Kullanıcı başına veya laboratuvar başına sanal makine sayısını göz önünde bulundurarak, başlıca üç sorun vardır:
 
 - Ekibin laboratuvardaki kaynaklar üzerinde harcayacağı **genel maliyet** . Birçok makine çalıştırmak kolaydır. Maliyetleri denetlemek için, bir mekanizma Kullanıcı başına ve/veya laboratuvar başına sanal makine sayısını sınırlandırmanız
-- Bir laboratuvardaki sanal makinelerin toplam sayısı, kullanılabilir [abonelik düzeyi kotalarıyla](../azure-subscription-service-limits.md) etkilendi. Üst limitlerden biri, abonelik başına 800 kaynak gruplarıdır. DevTest Labs Şu anda her VM için yeni bir kaynak grubu oluşturuyor (paylaşılan genel IP 'Ler kullanılmamışsa). Bir abonelikte 10 laboratuvar varsa, laboratuvarlar her laboratuvarda yaklaşık 79 sanal makineye (10 laboratuvarın kendisi için 800 üst sınırı – 10 kaynak grubu 79) uygun olabilir.
+- Bir laboratuvardaki sanal makinelerin toplam sayısı, kullanılabilir [abonelik düzeyi kotalarıyla](../azure-resource-manager/management/azure-subscription-service-limits.md) etkilendi. Üst limitlerden biri, abonelik başına 800 kaynak gruplarıdır. DevTest Labs Şu anda her VM için yeni bir kaynak grubu oluşturuyor (paylaşılan genel IP 'Ler kullanılmamışsa). Bir abonelikte 10 laboratuvar varsa, laboratuvarlar her laboratuvarda yaklaşık 79 sanal makineye (10 laboratuvarın kendisi için 800 üst sınırı – 10 kaynak grubu 79) uygun olabilir.
 - Laboratuvar, Express Route aracılığıyla şirket içi ağa bağlıysa (örneğin), VNet/alt ağ için **TANıMLANMıŞ IP adresi alanları** mevcuttur. Laboratuvardaki VM 'Lerin oluşturulmasının başarısız olmamasını sağlamak için (hata: IP adresi alınamıyor), laboratuvar sahipleri, kullanılabilir IP adresi alanı ile birlikte Laboratuvar başına en fazla VM 'Leri belirtebilir.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager şablonlarını kullanma

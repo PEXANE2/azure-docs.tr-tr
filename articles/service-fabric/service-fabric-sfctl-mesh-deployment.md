@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl kafes dağıtımı | Microsoft Docs
-description: CLı sfctl ağ dağıtım komutlarını Service Fabric açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl kafes dağıtımı
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Service Fabric kafes kaynakları oluşturmak için komutların bir listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: dbecf8e96c6cb5d0d6d873309d848304fe33eaaa
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6512cce075906fc8708a39fa0747ec27be33e961
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901245"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645370"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 Service Fabric kafes kaynakları oluşturun.

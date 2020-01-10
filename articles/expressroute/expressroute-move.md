@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
-ms.openlocfilehash: f232e1e8a1f7121b047a846fc2c614b48e757f76
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076651"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645914"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute bağlantı hatlarını klasikten Resource Manager dağıtım modeline taşıma
 Bu makale, bir Azure ExpressRoute bağlantı hattını klasikten Azure Resource Manager dağıtım modeline taşmanın ne anlama geldiği hakkında genel bir bakış sağlar.
@@ -39,7 +39,7 @@ Resource Manager dağıtım modelinde oluşturulmuş ExpressRoute bağlantı hat
 * ExpressRoute bağlantı hattında klasik dağıtım modeline erişim **allowClassicOperations** parametresi tarafından denetlenir.
 
 > [!IMPORTANT]
-> [Hizmet sınırlamaları](../azure-subscription-service-limits.md) sayfasında belgelenen tüm kotalar uygulanır. Örnek olarak, standart bir bağlantı hattı her iki klasik ve Resource Manager dağıtım modeli üzerinden en fazla 10 sanal ağ bağlantısına sahip olabilir.
+> [Hizmet sınırlamaları](../azure-resource-manager/management/azure-subscription-service-limits.md) sayfasında belgelenen tüm kotalar uygulanır. Örnek olarak, standart bir bağlantı hattı her iki klasik ve Resource Manager dağıtım modeli üzerinden en fazla 10 sanal ağ bağlantısına sahip olabilir.
 > 
 > 
 

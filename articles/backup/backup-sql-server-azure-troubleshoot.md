@@ -3,12 +3,12 @@ title: SQL Server veritabanı yedeklemesi sorunlarını giderme
 description: Azure Backup ile Azure VM 'lerde çalışan SQL Server veritabanlarının yedeklenmesi için sorun giderme bilgileri.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 95f7966fa59f0a1f6f6a3c9c6832cc573f89e05c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: d49843e8fd96df29a7359ec639e42d312ad584e2
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172119"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659262"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -20,11 +20,30 @@ Yedekleme işlemi ve sınırlamaları hakkında daha fazla bilgi için bkz. [Azu
 
 Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için, **AzureBackupWindowsWorkload** uzantısını bu sanal makineye yüklemelisiniz. **Usererrorsqlnosysadminmembership**hatasını alırsanız, SQL Server Örneğiniz gereken yedekleme izinlerine sahip olmadığı anlamına gelir. Bu hatayı onarmak için [VM Izinlerini ayarlama](backup-azure-sql-database.md#set-vm-permissions)bölümündeki adımları izleyin.
 
+## <a name="troubleshoot-discover-and-configure-issues"></a>Sorunları bulma ve yapılandırma sorunlarını giderme
+Bir kurtarma hizmetleri Kasası oluşturup yapılandırdıktan sonra, veritabanlarının keşfedilmesinden ve yedeklemenin yapılandırılması iki adımlı bir işlemdir.<br>
+
+![sql](./media/backup-azure-sql-database/sql.png)
+
+Yedekleme yapılandırması sırasında, SQL sanal makinesi ve örnekleri **VM 'Lerde bulma** ve **yedeklemeyi yapılandırma** (yukarıdaki görüntüye bakın) ' de görünür olmadığından emin olun:
+
+### <a name="step-1-discovery-dbs-in-vms"></a>1\. Adım: VM 'lerde keşif veritabanları
+
+- VM, bulunan VM listesinde listelenmemişse ve aynı zamanda başka bir kasada SQL yedeklemesi için kayıtlı değilse, [bulma SQL Server yedekleme](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases) adımlarını izleyin.
+
+### <a name="step-2-configure-backup"></a>2\. Adım: yedeklemeyi yapılandırma
+
+- SQL VM 'nin veritabanlarını korumak için kullanılan kasada kayıtlı olduğu kasasında [yedekleme yapılandırma](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup) adımlarını izleyin.
+
+SQL VM 'nin yeni kasada kayıtlı olması gerekiyorsa, eski kasadaki kaydı kaldırılmalıdır.  Bir SQL VM 'sinin kasadan silinmesi, korunan tüm veri kaynaklarının korunmasını gerektirir ve yedeklenen verileri silebilirsiniz. Yedeklenen verileri silme, bozucu bir işlemdir.  SQL VM kaydını silmek için tüm önlemleri inceledikten ve gerçekleştirdikten sonra, bu VM 'yi yeni bir kasa ile kaydedin ve yedekleme işlemini yeniden deneyin.
+
+
+
 ## <a name="error-messages"></a>Hata iletileri
 
 ### <a name="backup-type-unsupported"></a>Yedekleme türü desteklenmiyor
 
-| Severity | Açıklama | Olası nedenler | Önerilen eylem |
+| Önem Derecesi | Açıklama | Olası nedenler | Önerilen eylem |
 |---|---|---|---|
 | Uyarı | Bu veritabanının geçerli ayarları, ilişkili ilkede mevcut olan bazı yedekleme türlerini desteklemiyor. | <li>Ana veritabanında yalnızca tam bir veritabanı yedekleme işlemi yapılabilir. Değişiklik yedeklemesi veya işlem günlüğü yedeklemesi de mümkün değildir. </li> <li>Basit kurtarma modelindeki tüm veritabanları, işlem günlüklerinin yedeklenme izin vermez.</li> | İlkedeki tüm yedekleme türlerinin desteklendiği şekilde veritabanı ayarlarını değiştirin. Ya da, geçerli ilkeyi yalnızca desteklenen Yedekleme türlerini içerecek şekilde değiştirin. Aksi takdirde, desteklenmeyen yedekleme türleri zamanlanmış yedekleme sırasında atlanır veya isteğe bağlı yedekleme için yedekleme işi başarısız olur.
 
@@ -125,18 +144,27 @@ Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için
 |---|---|---|
 Kasa, 24 saatlik bir yayılmaya izin verilen bu işlemler için maksimum sınırına ulaştığından, işlem engellendi. | 24 saatin bir sınırında bir işlem için izin verilen en yüksek sınıra ulaştıysanız, bu hata gelir. Bu hata genellikle değiştirme ilkesi veya otomatik koruma gibi ölçekli işlemler olduğunda gelir. Clouddosabsolutelimitulaştığı durumdan farklı olarak, bu durumu çözmek için pek çok şey yapabilirsiniz, aslında Azure Backup hizmet, söz konusu tüm öğeler için işlemleri dahili olarak yeniden dener.<br> Örneğin: bir ilkeyle korunan çok sayıda veri kaynağı varsa ve bu ilkeyi değiştirmeye çalışırsanız, korumalı öğelerin her biri için koruma işlerini yapılandırma tetikleyecektir ve bazen bu gibi işlemler için izin verilen en yüksek sınıra ulaşabiliriz.| Azure Backup hizmeti, 24 saat sonra bu işlemi otomatik olarak yeniden deneyecek.
 
+### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
+
+| Hata iletisi | Olası nedenler | Önerilen eylem |
+|---|---|---|
+VM, internet bağlantısı sorunları nedeniyle Azure Backup hizmetine başvuramayacak. | VM, Azure Backup hizmeti, Azure depolama veya Azure Active Directory Hizmetleri için giden bağlantı gerektirir.| -Bağlantıyı kısıtlamak için NSG kullanıyorsanız, Azure Backup hizmeti, Azure depolama veya Azure Active Directory Hizmetleri Azure Backup giden erişime izin vermek için AzureBackup Service etiketini kullanmanız gerekir. Erişim vermek için bu [adımları](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) izleyin.<br>-DNS 'nin Azure uç noktalarını çözümlediğinden emin olun.<br>-Sanal makinenin internet erişimini engelleyen bir yük dengeleyicinin arkasında olup olmadığını denetleyin. VM 'lere ortak IP atayarak bulma işlemi çalışacaktır.<br>-Yukarıdaki üç hedef hizmete yapılan çağrıları engelleyen bir güvenlik duvarı/virüsten koruma/proxy olmadığından emin olun.
+
+
 ## <a name="re-registration-failures"></a>Yeniden kayıt sorunları
 
 Yeniden kaydetme işlemini tetiklemeniz için aşağıdaki belirtilerden bir veya daha fazlasını denetleyin:
 
-* VM 'de şu hata kodlarından birine sahip tüm işlemler (yedekleme, geri yükleme ve yapılandırma) başarısız oluyor: **Workloadextensionnoterişilebilen**, **usererrorworkloadextensionnotyüklü**, **workloadextensionnotsun** , **Workloadextensiondidntdequeuemsg**.
-* Yedekleme öğesi için **Yedekleme durumu** alanı **erişilebilir değil**olarak gösteriliyor. Aynı durumla sonuçlanmasına neden olabilecek tüm diğer nedenler arasında bir kural yapın:
+* Tüm işlemler (yedekleme, geri yükleme ve yapılandırma gibi) VM 'de şu hata kodlarından biriyle başarısız oluyor: **Workloadextensionnoterişilebilen**, **usererrorworkloadextensionnotyüklü**, **workloadextensionnotsun,** **workloadextensiondidntdequeuemsg**.
+* Yedekleme öğesi için **yedekleme durum** alanı **erişilebilir değil**olarak gösteriyorsa, aynı durum oluşmasına neden olabilecek diğer tüm nedenleri inceleyin:
 
-  * VM 'de yedeklemeyle ilgili işlemler gerçekleştirme izninin bulunmaması  
-  * Sanal makineyi kapatıp yedeklemeler gerçekleşmiyor
-  * Ağ sorunları  
+  * VM 'de yedeklemeyle ilgili işlemler gerçekleştirme izninin bulunmaması.
+  * Sanal makineyi kapatıp yedeklemeler gerçekleşmiyor.
+  * Ağ sorunları.
 
-  ![Bir VM 'yi yeniden kaydettirme içindeki "erişilebilir değil" durumu](./media/backup-azure-sql-database/re-register-vm.png)
+   ![VM 'yi yeniden kaydetme](./media/backup-azure-sql-database/re-register-vm.png)
+
+
 
 * Her zaman açık kullanılabilirlik grubu söz konusu olduğunda, yedekleme tercihini değiştirdikten veya bir yük devretmeden sonra yedeklemeler başarısız olarak başlatılır.
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: c5675dea2676122d96276b7cdb90b4c3c5340c7a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71961235"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646770"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Sanal ağ bağlantısı nedir?
 
@@ -31,9 +31,9 @@ Bir özel DNS bölgesinin birden çok kayıt sanal ağı olabilir, ancak her san
 Özel bir DNS bölgesi altında bir sanal ağ bağlantısı oluşturduğunuzda ve DNS kaydı oto kaydını etkinleştirmemelidir seçeneğini belirlediğinizde, sanal ağ yalnızca bir sanal ağ olarak değerlendirilir. Bu tür ağlarda dağıtılan sanal makineler için DNS kayıtları, bağlantılı özel DNS bölgesinde otomatik olarak oluşturulmaz. Ancak, bu tür bir ağda dağıtılan sanal makineler DNS kayıtlarını özel DNS bölgesinden başarıyla sorgulayabilir. Bu kayıtlar sizin tarafınızdan el ile oluşturulabilir veya özel DNS bölgesi ile kayıt ağları olarak bağlanmış diğer sanal ağlardan doldurulabilir.
 Bir özel DNS bölgesinin birden çok çözünürlükte sanal ağı olabilir ve bir sanal ağ ile ilişkili birden fazla çözümleme bölgesi olabilir.
 
-## <a name="limits"></a>Değerleri
+## <a name="limits"></a>Sınırlar
 
-Kaç tane kayıt ve çözüm ağı olduğunu anlamak için özel DNS bölgelerine nasıl bağlayabileceğinizi [Azure DNS sınırlara](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) bakın
+Kaç tane kayıt ve çözüm ağı olduğunu anlamak için özel DNS bölgelerine nasıl bağlayabileceğinizi [Azure DNS sınırlara](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) bakın
 
 ## <a name="other-considerations"></a>Diğer konular
 

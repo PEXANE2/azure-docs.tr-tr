@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: 753c239f4bf4d6a8f31d4dc5ca771f312cd34578
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: dc316e5bbb88359ff8b1e8a4fc35a56541a577f6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828990"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646719"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Azure PowerShell kullanarak bir Azure sanal ağını başka bir bölgeye taşıma
 
@@ -20,7 +20,7 @@ Mevcut bir Azure sanal ağını bir bölgeden diğerine taşımaya yönelik çe�
 Sanal ağı başka bir bölgeye taşımayı gerçekleştirmek için bir Azure Resource Manager şablonu kullanabilirsiniz. Bunu, sanal ağı bir şablona vererek, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtarak yapabilirsiniz. Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için bkz. [kaynak gruplarını şablonlara dışarı aktarma](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates).
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Sanal ağınızın, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 
@@ -32,7 +32,7 @@ Sanal ağı başka bir bölgeye taşımayı gerçekleştirmek için bir Azure Re
 
 - Azure aboneliğinizin hedef bölgede sanal ağlar oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı etkinleştirmek için desteğe başvurun.
 
-- Aboneliğinizin bu işleme yönelik sanal ağların eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun. Daha fazla bilgi için bkz. [Azure aboneliği ile hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Aboneliğinizin bu işleme yönelik sanal ağların eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun. Daha fazla bilgi için bkz. [Azure aboneliği ile hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Taşıma için hazırlanma
@@ -60,7 +60,7 @@ Sanal ağı dışa aktarmak ve PowerShell 'i kullanarak hedef sanal ağı dağı
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. İndirilen dosya, kaynağın verildiği kaynak grubuyla aynı ada sahiptir. Komutuyla verdiğiniz *\<resource-Group-name >. JSON* dosyasını bulun ve ardından düzenleyicide açın:
+1. İndirilen dosya, kaynağın verildiği kaynak grubuyla aynı ada sahiptir. Komutuyla verdiğiniz *\<Resource-Group-name >. JSON* dosyasını bulun ve ardından düzenleyicide açın:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -105,7 +105,7 @@ Sanal ağı dışa aktarmak ve PowerShell 'i kullanarak hedef sanal ağı dağı
     Get-AzLocation | format-table
     ```
 
-1. Seçim Gereksinimlerinize bağlı olarak, *\<resource-Group-name >. JSON* dosyasındaki diğer parametreleri de değiştirebilirsiniz:
+1. Seçim Gereksinimlerinize bağlı olarak, *\<Resource-Group-name >. JSON* dosyasındaki diğer parametreleri de değiştirebilirsiniz:
 
     * **Adres alanı**: dosyayı kaydetmeden önce, **kaynak** > **Adresalanı** bölümünü değiştirerek ve **addresspredüzeltmelerinin** özelliğini değiştirerek sanal ağın adres alanını değiştirebilirsiniz:
 
@@ -193,7 +193,7 @@ Sanal ağı dışa aktarmak ve PowerShell 'i kullanarak hedef sanal ağı dağı
          ]
         ```
 
-1. *@No__t-1resource-Group-name >. JSON* dosyasını kaydedin.
+1. *Resource-Group-name >. json dosyasını\<* kaydedin.
 
 1. [Yeni-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)kullanılarak dağıtılacak hedef sanal ağın hedef bölgede bir kaynak grubu oluşturun:
     
@@ -201,7 +201,7 @@ Sanal ağı dışa aktarmak ve PowerShell 'i kullanarak hedef sanal ağı dağı
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. Düzenlenmiş *\<resource-Group-name >. JSON* dosyasını, önceki adımda oluşturduğunuz kaynak grubuna [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
+1. Düzenlenmiş *\<Resource-Group-name >. JSON* dosyasını, önceki adımda oluşturduğunuz kaynak grubuna [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
 
     ```azurepowershell-interactive
 

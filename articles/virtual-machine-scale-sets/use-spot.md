@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 68315b1b0d290b107fe2d28a9e3b49be009b78b8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d2c8e599e44e48517920862e1fcf83e1a5e24910
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782248"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647637"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Önizleme: sanal makine ölçek kümeleri için Azure spot VM 'Ler 
 
@@ -50,7 +50,7 @@ Kullanıcılar [Azure zamanlanan olaylar](../virtual-machines/linux/scheduled-ev
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Ölçek kümelerinde spot VM 'Leri dağıtma
 
 Ölçek kümeleri üzerinde spot VM 'Leri dağıtmak için yeni *Öncelik* bayrağını *nokta*olarak ayarlayabilirsiniz. Ölçek kümesindeki tüm sanal makineler, spot olarak ayarlanacak. Spot VM 'Ler içeren bir ölçek kümesi oluşturmak için aşağıdaki yöntemlerden birini kullanın:
-- [Azure portalda](#portal)
+- [Azure Portal](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Azure Resource Manager şablonları](#resource-manager-templates)
@@ -151,7 +151,7 @@ Y **:** Kapasiteye ihtiyacınız varsa, nokta VM 'Leri yerine standart VM 'Ler k
 
 **S:** Kota, Spot için nasıl yönetilir?
 
-Y **:** Spot örnekleri ve standart örneklerin ayrı kota havuzları olacaktır. Spot kota, VM 'Ler ve ölçek kümesi örnekleri arasında paylaşılır. Daha fazla bilgi için bkz. [Azure aboneliği ile hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Y **:** Spot örnekleri ve standart örneklerin ayrı kota havuzları olacaktır. Spot kota, VM 'Ler ve ölçek kümesi örnekleri arasında paylaşılır. Daha fazla bilgi için bkz. [Azure aboneliği ile hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 
 **S:** Nokta için ek kota isteyebilir miyim?
@@ -192,8 +192,8 @@ Y **:** Nokta VM kullanılabilirliği için aşağıdaki tabloya bakın.
 
 | Azure kanalları               | Azure spot VM kullanılabilirliği       |
 |------------------------------|-----------------------------------|
-| Kurumsal Sözleşme         | Yes                               |
-| Kullandıkça Öde                | Yes                               |
+| Kurumsal Sözleşme         | Evet                               |
+| Kullandıkça Öde                | Evet                               |
 | Bulut hizmeti sağlayıcısı (CSP) | [İş ortağınızla iletişime geçin](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Avantajlar                     | Kullanılamıyor                     |
 | Sponsorlu                    | Kullanılamıyor                     |

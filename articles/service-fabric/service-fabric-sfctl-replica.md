@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLı-sfctl çoğaltması | Microsoft Docs
-description: Service Fabric CLı sfctl çoğaltma komutlarını açıklar.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLı-sfctl çoğaltması
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Çoğaltmaları yönetmek için komutların bir listesini içerir.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 34e53311e5338e540c1d987896112de39890de3b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a0588d84a79407b5df5033f0a32851fc708d598b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901043"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646050"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 Hizmet bölümlerine ait çoğaltmaları yönetin.
@@ -28,13 +19,13 @@ Hizmet bölümlerine ait çoğaltmaları yönetin.
 
 |Komut|Açıklama|
 | --- | --- |
-| dağıtılan | Service Fabric düğümüne dağıtılan çoğaltmanın ayrıntılarını alır. |
-| dağıtılan-liste | Bir Service Fabric düğümüne dağıtılan çoğaltmaların listesini alır. |
+| deployed | Service Fabric düğümüne dağıtılan çoğaltmanın ayrıntılarını alır. |
+| deployed-list | Bir Service Fabric düğümüne dağıtılan çoğaltmaların listesini alır. |
 | sağlık | Service Fabric durum bilgisi olan bir hizmet çoğaltmasının veya durum bilgisi olmayan hizmet örneğinin sistem durumunu alır. |
-| Bilgisine | Service Fabric bölümün bir yinelemesi hakkındaki bilgileri alır. |
+| info | Service Fabric bölümün bir yinelemesi hakkındaki bilgileri alır. |
 | list | Service Fabric hizmet bölümünün çoğaltmaları hakkındaki bilgileri alır. |
-| temizlenmesine | Düğüm üzerinde çalışan bir hizmet çoğaltmasını kaldırır. |
-| rapor-sistem durumu | Service Fabric çoğaltmasında bir sistem durumu raporu gönderir. |
+| kaldırma | Düğüm üzerinde çalışan bir hizmet çoğaltmasını kaldırır. |
+| report-health | Service Fabric çoğaltmasında bir sistem durumu raporu gönderir. |
 | restart | Bir düğümde çalışan kalıcı bir hizmetin hizmet çoğaltmasını yeniden başlatır. |
 
 ## <a name="sfctl-replica-deployed"></a>sfctl çoğaltması dağıtıldı

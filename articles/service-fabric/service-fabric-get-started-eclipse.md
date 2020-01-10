@@ -1,25 +1,16 @@
 ---
-title: Eclipse için Azure Service Fabric eklentisi | Microsoft Docs
-description: Eclipse için Service Fabric eklentisini kullanmaya başlayın.
-services: service-fabric
-documentationcenter: java
+title: Çakışan Küreler için Azure Service Fabric eklentisi
+description: Çakışan Küreler ve Service Fabric sunulan eklenti kullanarak Java 'da Azure Service Fabric kullanmaya başlama hakkında bilgi edinin.
 author: rapatchi
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: c15ca6d68512bc79ce4e5a27f5ce4f7ea6bc3080
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: b779873488f1fff754d4105249b28f545738c11b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035437"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645710"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java uygulama geliştirmesi için Service Fabric eklentisi
 Eclipse, Java geliştiricileri için en yaygın kullanılan tümleşik geliştirme ortamlarından (IDE’ler) biridir. Bu makalede, Azure Service Fabric ile çalışmak için Eclipse geliştirme ortamınızı ayarlama işlemi ele alınmaktadır. Service Fabric eklentisini yükleme, Service fabric uygulaması oluşturma ve Service Fabric uygulamanızı Eclipse’teki yerel veya uzak bir Service Fabric kümesine dağıtma hakkında bilgi edinin. 
@@ -40,12 +31,12 @@ Eclipse'te Service Fabric eklentisi yükleyebilirsiniz. Eklenti, Java hizmetleri
 
 [Eclipse sitesinden](https://www.eclipse.org) Eclipse Neon veya sonraki bir sürümü yükleyin.  Ayrıca Buildship 2.2.1 veya sonraki bir sürümü de yükleyin (Service Fabric eklentisi, eski Buildship sürümleriyle uyumlu değildir):
 -   Yüklü bileşenlerin sürümlerini denetlemek için Eclipse’te **Yardım** > **Eclipse Hakkında** > **Yükleme Ayrıntıları** seçeneğine gidin.
--   Buildsevkiyat 'u güncelleştirmek için bkz [. tutulma buildsevkiyat: Gradle][buildship-update]için tutulma eklentileri.
+-   Buildsevkiyat 'u güncelleştirmek için bkz. [tutulma Buildsevkiyat: Gradle Için tutulma eklentileri][buildship-update].
 -   Eclipse güncelleştirmelerini denetleyip yüklemek için **Yardım** > **Güncelleştirmeleri Denetle** seçeneğine gidin.
 
 Service Fabric eklentisini yüklemek için **Yardım** > **Yeni Yazılım Yükle** seçeneğine gidin.
 1. **Birlikte çalış** kutusuna https:\//DL.Microsoft.com/Eclipse girin.
-2.           **Ekle**'yi tıklatın.
+2. **Ekle**'ye tıklayın.
 
    ![Eclipse için Service Fabric eklentisi][sf-eclipse-plugin-install]
 3. Service Fabric eklentisini seçip **İleri**’ye tıklayın.
@@ -57,7 +48,7 @@ Service Fabric eklentisi zaten yüklüyse, en yeni sürümü yükleyin.
 3. Service Fabric eklentisini güncelleştirdikten sonra Gradle projesini de yenileyin.  **build.gradle** öğesine sağ tıklayın ve **Yenile**’yi seçin.
 
 > [!NOTE]
-> Service Fabric eklentisi yavaş yükleniyor veya güncelleştiriliyorsa, bunun nedeni bir Eclipse ayarı olabilir. Eclipse, Eclipse örneğinize kaydedilmiş siteleri güncelleştirmek üzere tüm değişikliklere ait meta verileri toplar. Bir Service Fabric eklenti güncelleştirmesini denetleme ve yükleme işlemini hızlandırmak için **Kullanılabilir Yazılım Siteleri** bölümüne gidin. Service Fabric eklentisi konumunu işaret eden bir tane hariç tüm sitelerin onay kutularını temizleyin (https:\//DL.Microsoft.com/Eclipse/Azure/servicefabric).
+> Service Fabric eklentisi yavaş yükleniyor veya güncelleştiriliyorsa, bunun nedeni bir Eclipse ayarı olabilir. Eclipse, Eclipse örneğinize kaydedilmiş siteleri güncelleştirmek üzere tüm değişikliklere ait meta verileri toplar. Bir Service Fabric eklenti güncelleştirmesini denetleme ve yükleme işlemini hızlandırmak için **Kullanılabilir Yazılım Siteleri** bölümüne gidin. Service Fabric eklentisi konumunu işaret eden bir tane hariç tüm sitelerin onay kutularını temizleyin (https:\//dl.microsoft.com/eclipse/azure/servicefabric).
 
 > [!NOTE]
 >Eclipse Mac bilgisayarınızda beklendiği gibi çalışmıyorsa (veya süper kullanıcı olarak çalışmanızı gerektiriyorsa), **ECLIPSE_INSTALLATION_PATH** klasörüne ve ardından **Eclipse.app/Contents/MacOS** alt klasörüne gidin. `./eclipse` öğesini çalıştırarak Eclipse’i başlatın.
@@ -111,7 +102,7 @@ Service Fabric uygulamanızı oluşturduktan sonra, yerel kümeye dağıtmak iç
 
 3.  Bağlam menüsünde, **uygulamayı dağıt**' ı tıklatın.
 4.  Dağıtım işleminin ilerlemesini konsol penceresinde izleyebilirsiniz.
-5.  Uygulamanızın çalıştığını doğrulamak için, bir tarayıcı penceresinde [http://localhost:19080/Explorer](http://localhost:19080/Explorer)yerel kümenizde Service Fabric Explorer açın. **Uygulamalar** düğümünü genişletin ve uygulamanızın çalıştığından emin olun. 
+5.  Uygulamanızın çalıştığını doğrulamak için, [http://localhost:19080/Explorer](http://localhost:19080/Explorer)bir tarayıcı penceresinde yerel kümenizde Service Fabric Explorer açın. **Uygulamalar** düğümünü genişletin ve uygulamanızın çalıştığından emin olun. 
 
 Yerel kümeyi kullanarak uygulamanızın tutulma 'da hata ayıklamanın nasıl yapılacağını öğrenmek için bkz. [tutulma 'de Java hizmetinde hata ayıklama](./service-fabric-debugging-your-application-java.md).
 
@@ -135,14 +126,14 @@ Uygulamanızı buluta yayımlamak için şu adımları izleyin:
     openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
     ```
 
-   PFX dosyası parola korumalı değilse, son parametre için kullanın `--passin pass:` .
+   PFX dosyası parola korumalı değilse, son parametre için `--passin pass:` kullanın.
 
 2. **Publishprofiles** dizininde **Cloud. JSON** dosyasını açın. Küme uç noktası ve güvenlik kimlik bilgilerini kümeniz için uygun şekilde yapılandırmanız gerekir.
 
-   - Alan `ConnectionIPOrURL` , kümenizin IP adresini veya URL 'sini içerir. Değerin URL şeması (`https://`) içermediğini unutmayın.
-   - Varsayılan `ConnectionPort` olarak, bu bağlantı noktasını `19080`kümeniz için değiştirmediğiniz takdirde alanın olması gerekir.
-   - Bu `ClientKey` alan, yerel makinenizde, istemci veya küme sertifikanız için özel anahtarı içeren ped biçimli bir. Pee veya. Key dosyasına işaret etmelidir.
-   - Alan `ClientCert` , yerel makinenizde, istemciniz veya kümeniz için sertifika verilerini içeren ped biçimli bir. Pee veya. CRT dosyasına işaret etmelidir. Sertifika. 
+   - `ConnectionIPOrURL` alanı, kümenizin IP adresini veya URL 'sini içerir. Değerin URL şeması (`https://`) içermediğini unutmayın.
+   - Kümeniz için bu bağlantı noktasını açıkça değiştirmediğiniz müddetçe, varsayılan olarak `ConnectionPort` alanı `19080`olmalıdır.
+   - `ClientKey` alanı, yerel makinenizde, istemci veya küme sertifikanız için özel anahtarı içeren ped biçimli. Pee veya. Key dosyasına işaret etmelidir.
+   - `ClientCert` alanı, yerel makinenizde, istemciniz veya kümeniz için sertifika verilerini içeren ped biçimli bir. Pee veya. CRT dosyasına işaret etmelidir. certificate. 
 
      ```bash
      {
@@ -168,13 +159,13 @@ Uygulamanızı buluta yayımlamak için şu adımları izleyin:
 
 Güvenli Linux kümelerinde, uygulamanız Reliable Services Hizmetleri içeriyorsa, hizmetlerinizin Service Fabric çalışma zamanı API 'Lerini çağırmak için kullanabileceği bir sertifika yapılandırmanız da gerekir. Daha fazla bilgi edinmek için bkz. [Reliable Services uygulamasını Linux kümelerinde çalışacak şekilde yapılandırma](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
 
-Java 'da yazılmış bir Service Fabric Reliable Services uygulamasının güvenli bir Linux kümesine nasıl dağıtılacağı hakkında hızlı bir yol için bkz [. hızlı başlangıç: Java Reliable Services uygulaması](./service-fabric-quickstart-java-reliable-services.md)dağıtın.
+Java 'da yazılmış bir Service Fabric Reliable Services uygulamasının güvenli bir Linux kümesine nasıl dağıtılacağı hakkında hızlı bir yol için bkz. [hızlı başlangıç: java Reliable Services uygulaması dağıtma](./service-fabric-quickstart-java-reliable-services.md).
 
 ## <a name="deploy-a-service-fabric-application-by-using-eclipse-run-configurations"></a>Çakışan Küreler çalışan yapılandırma kullanarak Service Fabric uygulaması dağıtma
 
 Service Fabric uygulamanızı dağıtmanın alternatif bir yolu, Eclipse çalıştırma yapılandırmalarının kullanılmasıdır.
 
-1. Tutulma ' da **Çalıştır** > çalışma**yapılandırması**' na gidin.
+1. Tutulma ' da Çalıştır > Çalıştır **yapılandırma**' **ya gidin.**
 2. **Grade Projesi** altındaki **ServiceFabricDeployer** çalıştırma yapılandırmasını seçin.
 3. Sağ bölmedeki **bağımsız değişkenler** sekmesinde, **IP**, **bağlantı noktası**, **Clientcert**ve **clientkey** parametrelerinin dağıtımınız için uygun şekilde ayarlandığından emin olun. Varsayılan olarak parametreler, aşağıdaki ekran görüntüsünde gösterildiği gibi yerel kümeye dağıtılacak şekilde ayarlanır. Uygulamanızı Azure 'da yayımlamak için, parametreleri Azure kümeniz için uç nokta ayrıntılarını ve güvenlik kimlik bilgilerini içerecek şekilde değiştirebilirsiniz. Daha fazla bilgi için bkz. önceki bölüm, [Service Fabric uygulamanızı Çakışan Küreler Azure 'Da yayımlayın](#publish-your-service-fabric-application-to-azure-with-eclipse).
 
@@ -233,7 +224,7 @@ Service Fabric Java kitaplıklarını yakın zamanda Service Fabric Java SDK’s
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Java güvenilir hizmet uygulaması oluşturma ve yerel olarak ve Azure 'a dağıtma hakkında hızlı adımlar için bkz [. hızlı başlangıç: Java Reliable Services uygulaması](./service-fabric-quickstart-java-reliable-services.md)dağıtın.
+- Java güvenilir hizmet uygulaması oluşturma ve bunu yerel olarak ve Azure 'a dağıtma hakkında hızlı adımlar için bkz. [hızlı başlangıç: Java Reliable Services uygulaması dağıtma](./service-fabric-quickstart-java-reliable-services.md).
 - Yerel kümenizde Java uygulamasında hata ayıklama yapmayı öğrenmek için bkz. [tutulma 'de Java hizmetinde hata ayıklama](./service-fabric-debugging-your-application-java.md).
 - Service Fabric uygulamalarını izleme ve tanılama hakkında bilgi edinmek için bkz. [yerel makine geliştirme kurulumunda hizmetleri izleme ve tanılama](./service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 01/06/2020
 ms.author: dapine
-ms.openlocfilehash: aecbb9bb94fc251ee0142b611c54d16304793e50
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 30fd19634f6054b8b636dabcb4ef83b118554468
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901824"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689428"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>Azure Container Instances 'a Language Understanding (LUSıS) kapsayıcısını dağıtma
 
@@ -25,7 +25,20 @@ Bilişsel Hizmetler [lusıs](luis-container-howto.md) kapsayıcısını Azure [C
 
 [!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
-[!INCLUDE [Create LUIS Container instance resource](../containers/includes/create-container-instances-resource.md)]
+## <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
+
+LUSıS kapsayıcısı, çalışma zamanında çekilecek bir `.gz` modeli dosyası gerektirir. Kapsayıcı, kapsayıcı örneğinden bir birim bağlaması aracılığıyla bu model dosyasına erişebilmelidir. Azure dosya paylaşma oluşturma hakkında bilgi için bkz. [dosya paylaşma oluşturma](../../storage/files/storage-how-to-create-file-share.md). Daha sonra ihtiyacınız olacak şekilde Azure depolama hesabı adı, anahtar ve dosya paylaşımının adını göz önünde ayırın.
+
+### <a name="export-and-upload-packaged-luis-app"></a>Paketlenmiş LUSıS uygulamasını dışarı ve karşıya yükleme
+
+LUO modelini (paketlenmiş uygulama) Azure dosya paylaşımında karşıya yüklemek için <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener"> <span class="docon docon-navigate-external x-hidden-focus"> </span>önce bu dosyayı Luo portalından dışarı aktarmanız </a>gerekir. Azure portal, depolama hesabı kaynağının **genel bakış** sayfasına gidin ve **dosya paylaşımları**' nı seçin. Son oluşturduğunuz dosya paylaşımının adını seçip **karşıya yükle** düğmesini seçin.
+
+> [!div class="mx-imgBorder"]
+> ![dosya paylaşımında karşıya yükle](media/luis-how-to-deploy-to-aci/upload-file-share.png)
+
+LUSıS model dosyasını karşıya yükleyin.
+
+[!INCLUDE [Create LUIS Container instance resource](../containers/includes/create-container-instances-resource-from-azure-cli.md)]
 
 [!INCLUDE [API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 

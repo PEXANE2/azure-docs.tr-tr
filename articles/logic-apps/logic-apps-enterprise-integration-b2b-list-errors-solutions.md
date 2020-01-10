@@ -1,6 +1,6 @@
 ---
-title: B2B senaryoları için hatalar ve çözümler
-description: Azure Logic Apps B2B senaryolarına yönelik hataları ve çözümleri bulma
+title: B2B senaryolarında yaygın hatalara ve sorunlara yönelik çözümler
+description: Azure Logic Apps 'de B2B senaryolarında sorun giderirken sık karşılaşılan hatalar ve sorunlar için çözümler bulun
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
-ms.openlocfilehash: 176bc3642f7c923b50cbf2f7a97096f88dc02817
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 38e281ce3d8117bff719b1bb572f09acbbb89669
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790701"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666695"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Azure Logic Apps için B2B hataları ve çözümleri
 
@@ -63,7 +63,7 @@ Bu makale, Logic Apps B2B senaryolarında oluşabilecek hataların giderilmesine
 | Kullanıcı eylemi | İş ortağına göndermeden önce AS2Message 'e @base64ToBinary ekleyin. |
 |||
 
-Örnek:
+Örneğin:
 
 ```json
 "HTTP": {
@@ -83,7 +83,7 @@ Bu makale, Logic Apps B2B senaryolarında oluşabilecek hataların giderilmesine
 | Kullanıcı eylemi | İş ortağına göndermeden önce MDN 'ye @base64ToBinary ekleyin. | 
 |||
 
-Örnek:
+Örneğin:
 
 ```json
 "Response": {

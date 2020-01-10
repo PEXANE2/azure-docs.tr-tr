@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b671fe9a4ecd35cbe9d70f398f8d39664203fc58
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8d28566cb10ddd1637eb81dffd102df6bd7b6e7a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782118"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663080"
 ---
 Spot VM 'Lerin kullanılması, önemli bir maliyet tasarruflarından kullanılmamış kapasitemizin avantajlarından yararlanmanızı sağlar. Azure 'un kapasiteyi her zaman yapması gerektiğinde, Azure altyapısı spot VM 'Leri çıkarır. Bu nedenle, spot VM 'Ler toplu işleme işleri, geliştirme/test ortamları, büyük işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilen iş yükleri için mükemmeldir.
 
@@ -78,7 +78,7 @@ Y **:** Kapasiteye ihtiyacınız varsa, nokta VM 'Leri yerine standart VM 'Ler k
 
 **S:** Spot VM 'Ler için kota nasıl yönetilir?
 
-Y **:** Spot VM 'Lerin ayrı bir kota havuzu olacaktır. Spot kota, VM 'Ler ve ölçek kümesi örnekleri arasında paylaşılır. Daha fazla bilgi için bkz. [Azure aboneliği ile hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Y **:** Spot VM 'Lerin ayrı bir kota havuzu olacaktır. Spot kota, VM 'Ler ve ölçek kümesi örnekleri arasında paylaşılır. Daha fazla bilgi için bkz. [Azure aboneliği ile hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 
 **S:** Nokta için ek kota isteyebilir miyim?
@@ -94,8 +94,8 @@ Y **:** Nokta VM kullanılabilirliği için aşağıdaki tabloya bakın.
 
 | Azure kanalları               | Azure spot VM kullanılabilirliği       |
 |------------------------------|-----------------------------------|
-| Kurumsal Sözleşme         | Yes                               |
-| Kullandıkça Öde                | Yes                               |
+| Kurumsal Sözleşme         | Evet                               |
+| Kullandıkça Öde                | Evet                               |
 | Bulut hizmeti sağlayıcısı (CSP) | [İş ortağınızla iletişime geçin](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Avantajlar                     | Kullanılamıyor                     |
 | Sponsorlu                    | Kullanılamıyor                     |

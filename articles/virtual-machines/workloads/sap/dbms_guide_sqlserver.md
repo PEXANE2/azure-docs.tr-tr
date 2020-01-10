@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 803b1e397efd4a6f9ddaa3bae1d101c8f204e728
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a0fbed1f4dd62b2d75d39f475d2fe124c55a2b97
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328306"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645812"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler DBMS dağıtımı SQL Server
 
@@ -77,8 +77,8 @@ ms.locfileid: "74328306"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide_general.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -235,7 +235,7 @@ ms.locfileid: "74328306"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -249,7 +249,7 @@ ms.locfileid: "74328306"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -453,7 +453,7 @@ Azure Marketi 'ndeki SQL Server görüntüleri, SAP NetWeaver uygulamaları içi
 
 İşlem yalnızca birkaç dakika sürer. Adımın doğru sonuçla sonlandırıp sonlanmadığını doğrulamak için aşağıdaki adımları gerçekleştirin:
 
-* SQL Server Management Studio'yu açın.
+* SQL Server Management Studio’yu açın.
 * Bir sorgu penceresi açın.
 * Komut sp_helpsort SQL Server ana veritabanında yürütün.
 
@@ -489,7 +489,7 @@ Bir etki alanı mümkün değilse, burada açıklandığı gibi veritabanı yans
 
 Azure 'da veritabanı yansıtmayı ayarlamaya yönelik bir öğretici şurada bulunabilir: <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
 
-### <a name="sql-server-always-on"></a>SQL Server her zaman açık
+### <a name="sql-server-always-on"></a>SQL Server Always On
 Her zaman açık SAP şirket içi için desteklenir (bkz. SAP Note [1772688]), Azure 'da SAP ile birlikte desteklenir. Bu noktada Azure, şirket içinde mümkün olduğu için AD/DNS nesnesi oluşturulmasına izin vermediğinden, SQL Server kullanılabilirlik grubu dinleyicisinin (Azure kullanılabilirlik kümesiyle karıştırılmamalıdır) dağıtılmasıyla ilgili bazı özel noktalar vardır. Bu nedenle, belirli bir Azure davranışını aşmak için bazı farklı yükleme adımları gereklidir.
 
 Kullanılabilirlik grubu dinleyicisi kullanan bazı noktalar şunlardır:
@@ -552,7 +552,7 @@ Bu kılavuzda birçok öneri bulunur ve Azure dağıtımınızı planlamadan ön
 1. Azure 'da en fazla avantaj sunan SQL Server 2017 gibi en son DBMS sürümünü kullanın. 
 2. Veri dosyası yerleşimini ve Azure kısıtlamalarını dengelemek için SAP sisteminizi Azure 'da dikkatle planlayın:
    * Çok fazla disk bulundurmayın, ancak gerekli ıOPS 'nize ulaşabildiğinizden emin olmak için yeterli.
-   * Yönetilen diskler kullanmıyorsanız, ıOPS 'nin Azure depolama hesabı başına da sınırlı olduğunu ve bu depolama hesaplarının her bir Azure aboneliği ([daha fazla ayrıntı][azure-subscription-service-limits]) içinde sınırlı olduğunu unutmayın. 
+   * Yönetilen diskler kullanmıyorsanız, ıOPS 'nin Azure depolama hesabı başına da sınırlı olduğunu ve bu depolama hesaplarının her bir Azure aboneliği ([daha fazla ayrıntı][azure-resource-manager/management/azure-subscription-service-limits]) içinde sınırlı olduğunu unutmayın. 
    * Yalnızca daha yüksek bir verimlilik elde etmeniz gerekiyorsa diskler genelinde Stripe.
 3. Hiçbir koşulda yazılım yüklemeyin veya herhangi bir dosyayı hiçbir şekilde kalıcı hale getirin. kalıcı olmayan ve bu sürücüdeki herhangi bir şey Windows yeniden başlatıldığında kaybolduğu için sürücü.
 4. Azure Standart depolama için disk önbelleği kullanmayın.

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9748c0d04f958648f7919b7ac29dc58d5a137ac
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a6dddd13f31366e5a99d6c68ab82b048de4064b2
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279047"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681370"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Kendi parolanızı sıfırlamak için doğrulama yöntemi bilgilerinizi kaydedin
 
@@ -29,7 +29,7 @@ Son Kullanıcı olarak, Azure Active Directory (Azure AD) self servis parola sı
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>SSPR ile kimlik doğrulama verilerini kaydetme veya onaylama
 
-1. Cihazınızda Web tarayıcısını açın ve [parola sıfırlama kaydı sayfasına](https://aka.ms/ssprsetup)gidin.
+1. Cihazınızda Web tarayıcısını açın ve [parola sıfırlama kaydı sayfasına](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup)gidin.
 2. Kullanıcı adınızı ve yöneticinizin sağlandığı parolayı girin.
 3. BT personelinizin her şeyi nasıl yapılandırdığına bağlı olarak, aşağıdaki seçeneklerden biri veya daha fazlası, yapılandırıp doğrulamanız için kullanılabilir. Yöneticinizin bilgilerinizi kullanma izni varsa, bazı bilgileri sizin için doldurabilir.
     * **Ofis telefonu**: yalnızca yöneticiniz bu seçeneği belirleyebilir.

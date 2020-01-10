@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 01/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 5e69df816e67ddc346ac8452c9bdc8bbd68fa426
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
-ms.translationtype: HT
+ms.openlocfilehash: 630535103656e13ca43d958ef2a4124a4ea940ac
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546951"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658296"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -116,7 +116,7 @@ DF olarak bildirilen birim boyutu, Azure NetApp Files biriminin büyüyebileceğ
 Azure NetApp Files, NFSv3 ve NFSv 4.1 destekler. NFS sürümünü kullanarak bir birim oluşturabilirsiniz. 
 
 > [!IMPORTANT] 
-> NFSv 4.1 özelliğine erişim için izin verilenler listesi gerekir.  İzin verilenler listesine eklenmeyi istemek için <anffeedback@microsoft.com>bir istek gönderebilirsiniz. 
+> NFSv 4.1 özelliğine erişim için beyaz liste gerekir.  Beyaz liste istemek için <anffeedback@microsoft.com>bir istek gönderebilirsiniz. 
 
 
 ### <a name="how-do-i-enable-root-squashing"></a>Nasıl yaparım? kök ele geçirme etkinleştirilsin mi?
@@ -131,7 +131,7 @@ Evet, bir SMB birimini dağıtabilmeniz için önce bir Active Directory bağlan
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Kaç Active Directory bağlantı destekleniyor?
 
-Azure NetApp Files Şu anda abonelik başına bir Active Directory bağlantısını desteklemektedir. Ayrıca, Active Directory bağlantısı tek bir NetApp hesabına özgüdür; hesaplar arasında paylaşılmaz. 
+Azure NetApp Files Şu anda NetApp hesabı başına, abonelik başına ve her bölgede yalnızca bir Active Directory bağlantısını desteklemektedir; bağlantı, NetApp hesaplarında paylaşılmaz.
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files Azure Active Directory destekliyor mu? 
 

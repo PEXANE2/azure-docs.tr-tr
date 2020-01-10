@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: d800f20826723d3a626d9a0f5f83664927c1185c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4dbc830ea106dee7ef21a28eb3aee63c94680be2
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927590"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664849"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ISM ürünlerini/hizmetlerini BT Hizmet Yönetimi Bağlayıcısı bağlama
 Bu makalede, çalışma öğelerinizi merkezi olarak yönetmek için ıTSM ürününüz/hizmetiniz ile Log Analytics BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılacağı hakkında bilgi sağlanır. ISMC hakkında daha fazla bilgi için bkz. [genel bakış](../../azure-monitor/platform/itsmc-overview.md).
@@ -32,7 +32,7 @@ Aşağıdaki ıTSM ürünleri/hizmetleri desteklenir. Ürünün ıSMC 'a nasıl 
 
 Aşağıdaki bölümlerde, System Center Service Manager ürününüzü Azure 'daki ıSMC 'a bağlama hakkında ayrıntılı bilgi sağlanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -160,7 +160,7 @@ Karma bağlantı için dinleyici kurulumunu yapılandırmak üzere aşağıdaki 
 
 3. Azure kimlik bilgilerinizle oturum açın ve karma bağlantının oluşturulduğu aboneliğinizi seçin.
 
-4. **Kaydet** düğmesine tıklayın.
+4. **Save (Kaydet)** düğmesine tıklayın.
 
 Karma bağlantınız başarıyla bağlandı.
 
@@ -177,10 +177,10 @@ Aşağıdaki örnek görüntüde başarılı bir bağlantının ayrıntıları g
 
 Aşağıdaki bölümlerde, ServiceNow ürününüzü Azure 'daki ıSMC 'a bağlama hakkında ayrıntılı bilgi sağlanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Aşağıdaki önkoşulların karşılandığından emin olun:
 - ISMC yüklendi. Daha fazla bilgi: [BT hizmet yönetimi Bağlayıcısı çözümü ekleme](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- ServiceNow desteklenen sürümler: Madrid, Londra, Kingston, Jakarta, Istanbul, Helsinki, Genfiliz.
+- ServiceNow desteklenen sürümler: New York, Madrid, Londra, Kingston, Jakarta, Istanbul, Helsinki, Genfiliz.
 
 **ServiceNow yöneticilerinin ServiceNow örneğinde aşağıdakileri yapması gerekir**:
 - ServiceNow ürünü için istemci KIMLIĞI ve istemci gizli dizisi oluşturun. İstemci KIMLIĞI ve gizli dizi oluşturma hakkında bilgi için, aşağıdaki bilgileri gerekli şekilde inceleyin:
@@ -283,7 +283,7 @@ Kullanıcı başarılı bir şekilde oluşturulduktan sonra, **yükleme denetim 
 Aşağıdaki bölümlerde, Provance ürününüzü Azure 'daki ıSMC 'a bağlama hakkında ayrıntılı bilgi sağlanmaktadır.
 
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -336,7 +336,7 @@ Daha fazla bilgi: [Azure uyarılarından ITSM iş öğeleri oluşturun](../../az
 
 Aşağıdaki bölümlerde, Cherwell ürününüzü Azure 'daki ıSMC 'a bağlama hakkında ayrıntılı bilgi sağlanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulların karşılandığından emin olun:
 
