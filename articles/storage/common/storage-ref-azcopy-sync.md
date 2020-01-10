@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9bfe88c34c78d18f2f5aefb8ae6946b9786030ad
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6ecba85a859e902922dfa2b7563a3ceb96a9ef4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023506"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457464"
 ---
 # <a name="azcopy-sync"></a>azcopy eşitleme
 
@@ -37,7 +37,7 @@ Eşitle komutu kopyalama komutundan farklı yollarla farklılık gösterir:
 
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
-- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
 - [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
 - [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
 - [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
@@ -106,8 +106,9 @@ Tek bir blobu eşitleme:
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
+```
 
-Sync a virtual directory:
+Sanal bir dizini Eşitle:
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
@@ -137,6 +138,8 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 **--Delete-Destination** dizesi, kaynakta mevcut olmayan hedefe ait ek dosyaların silinip oluşturulmayacağını tanımlar. True, false veya Prompt olarak ayarlanabilir. Sor olarak ayarlandıysa, kullanıcıya dosyaları ve Blobları silmeye başlamadan önce bir soru sorulur. (varsayılan ' false '). (varsayılan "false")
 
 **--exclude-Attributes** dizesi (yalnızca Windows) öznitelikleri öznitelik listesiyle eşleşen dosyaları hariç tutar. Örneğin: A; Malar Sağ
+
+**--exclude-yol** dizesi kopyalama sırasında bu yolları hariç tutar. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler (örneğin: myFolder; myFolder/subDirName/File. PDF). Hesap çapraz geçiş ile birlikte kullanıldığında, yollar kapsayıcı adını içermez.
 
 **--exclude-model** dize, adın model listesiyle eşleştiği dosyaları hariç tutar. Örneğin: *. jpg;* . PDF; exactName
 

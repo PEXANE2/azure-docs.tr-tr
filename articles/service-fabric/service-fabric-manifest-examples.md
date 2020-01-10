@@ -1,24 +1,16 @@
 ---
 title: Azure Service Fabric uygulama bildirimi örnekleri
 description: Service Fabric bir uygulama için uygulama ve hizmet bildirimi ayarlarını yapılandırmayı öğrenin.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 969f15ecb45164e3b3f26c22f756a022e55782ed
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6f44d2ddaac11545a3a3dc52fd20e02263c6ad67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451635"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric uygulama ve hizmet bildirimi örnekleri
 Bu bölüm, uygulama ve hizmet bildirimlerinin örneklerini içerir. Bu örneklerde önemli senaryolar gösterilmemelidir, ancak kullanılabilir farklı ayarlar ve bunların nasıl kullanılacağı gösterilir. 

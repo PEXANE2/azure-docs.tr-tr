@@ -6,24 +6,30 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0678d437a5c24b8193e7440a62445fb30ec97759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460516"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme
 
-Azure depolama, istekleri blob ve kuyruk depolamaya yetkilendirmek için Azure Active Directory (AD) kullanılmasını destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusuna izinler vermek için kullanabilirsiniz. Güvenlik sorumlusunun bir OAuth 2,0 belirteci döndürmesi için Azure AD tarafından kimliği doğrulanır. Belirteç, blob veya kuyruk depolama alanındaki bir kaynağa erişme isteğine yetki vermek için kullanılabilir.
+Azure depolama, istekleri blob ve kuyruk depolamaya yetkilendirmek için Azure Active Directory (Azure AD) kullanılmasını destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusuna izinler vermek için kullanabilirsiniz. Güvenlik sorumlusunun bir OAuth 2,0 belirteci döndürmesi için Azure AD tarafından kimliği doğrulanır. Belirteç daha sonra blob veya kuyruk depolamaya karşı bir isteği yetkilendirmek için kullanılabilir.
 
-Azure AD tarafından döndürülen bir OAuth 2,0 belirtecini kullanarak kullanıcıları veya uygulamaları yetkilendirmek, paylaşılan anahtar yetkilendirmesi ve paylaşılan erişim imzaları (SAS) üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Azure AD ile, hesap erişim anahtarını kodunuzla depolamanız ve potansiyel güvenlik açıklarına karşı risk altında olması gerekmez. Uygulamalarınızla paylaşılan anahtar yetkilendirmesi kullanmaya devam edebilirsiniz, ancak Azure AD atlama 'yi kullanarak hesap erişim anahtarınızı kodunuzla depolama gereksinimini ortadan kaldırabilirsiniz. Ayrıca, Depolama hesabınızdaki kaynaklara ayrıntılı erişim sağlamak için paylaşılan erişim imzaları (SAS) kullanmaya devam edebilirsiniz, ancak Azure AD SAS belirteçlerini yönetmeye gerek kalmadan veya güvenliği aşılmış bir SAS iptal etme gereksinimi olmadan benzer yetenekler sunmaktadır. Microsoft, mümkün olduğunda Azure depolama uygulamalarınızla Azure AD yetkilendirmesi kullanılmasını önerir.
+Azure AD ile Azure depolama 'da istekleri yetkilendirmek, paylaşılan anahtar yetkilendirmesi üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Microsoft, paylaşılan anahtardaki olası güvenlik açıklarını en aza indirmek mümkün olduğunda blob ve kuyruk uygulamalarınızla Azure AD yetkilendirmesi kullanılmasını önerir.
 
-Azure AD ile yetkilendirme, tüm genel bölgelerde ve ulusal bulutlarda tüm genel amaçlı ve BLOB depolama hesapları için kullanılabilir. Yalnızca Azure Resource Manager dağıtım modeliyle oluşturulan depolama hesapları Azure AD yetkilendirmesini destekler. Azure AD ile yetkilendirme, Azure Tablo depolama için desteklenmez.
+Azure AD ile yetkilendirme, tüm genel bölgelerde ve ulusal bulutlarda tüm genel amaçlı ve BLOB depolama hesapları için kullanılabilir. Yalnızca Azure Resource Manager dağıtım modeliyle oluşturulan depolama hesapları Azure AD yetkilendirmesini destekler.
+
+Blob Storage Ayrıca Azure AD kimlik bilgileriyle imzalanmış paylaşılan erişim imzaları (SAS) oluşturulmasını destekler. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları ile verilere sınırlı erişim verme](storage-sas-overview.md).
+
+Azure dosyaları, yalnızca etki alanına katılmış VM 'Ler için SMB üzerinden Azure AD ile yetkilendirmeyi destekler. Azure dosyaları için SMB üzerinden Azure AD kullanma hakkında bilgi edinmek için bkz. [Azure dosyaları IÇIN SMB üzerinden Azure Active Directory yetkilendirmeye genel bakış](../files/storage-files-active-directory-overview.md).
+
+Azure AD ile yetkilendirme, Azure Tablo depolama için desteklenmez. İstekleri tablo depolamaya yetkilendirmek için paylaşılan anahtar kullanın.
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Blob 'lar ve kuyruklar için Azure AD 'ye Genel Bakış
 
@@ -78,10 +84,6 @@ Azure portal, bir kapsayıcıya veya kuyruğa gittiğinizde hangi yetkilendirme 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>PowerShell veya Azure CLı 'dan veri erişimi
 
 Azure CLı ve PowerShell Azure AD kimlik bilgileriyle oturum açmayı destekler. Oturum açtıktan sonra oturumunuz bu kimlik bilgileri altında çalışır. Daha fazla bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLI veya PowerShell komutlarını çalıştırma](storage-auth-aad-script.md).
-
-## <a name="azure-ad-authorization-over-smb-for-azure-files"></a>Azure dosyaları için SMB üzerinden Azure AD yetkilendirmesi
-
-Azure dosyaları, yalnızca etki alanına katılmış VM 'Ler (Önizleme) için SMB üzerinden Azure AD ile yetkilendirmeyi destekler. Azure dosyaları için SMB üzerinden Azure AD kullanma hakkında bilgi edinmek için bkz. [Azure dosyaları IÇIN SMB üzerinden Azure Active Directory yetkilendirmeyi genel bakış (Önizleme)](../files/storage-files-active-directory-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

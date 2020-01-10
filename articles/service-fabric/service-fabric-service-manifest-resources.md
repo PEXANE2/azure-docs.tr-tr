@@ -1,25 +1,14 @@
 ---
-title: Service Fabric hizmet uç noktalarını belirtme | Microsoft Docs
+title: Service Fabric hizmet uç noktalarını belirtme
 description: HTTPS uç noktalarını ayarlama dahil olmak üzere bir hizmet bildiriminde uç nokta kaynaklarını açıklama
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: da36cbdb-6531-4dae-88e8-a311ab71520d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: bb3fd77df60be68408fceea683ee4b8b74d77427
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: cc4eedf5e5fee0bbfa0a763e9b9ec0dd25409afa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242921"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464175"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Bir hizmet bildiriminde kaynakları belirtme
 ## <a name="overview"></a>Genel Bakış
@@ -198,7 +187,7 @@ Parametreleri aşağıda ekleyin:
   </Parameters>
 ```
 
-Uygulamayı dağıttığınızda, bu değerleri ApplicationParameters olarak geçirebilirsiniz.  Örnek:
+Uygulamayı dağıttığınızda, bu değerleri ApplicationParameters olarak geçirebilirsiniz.  Örneğin:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
@@ -206,7 +195,7 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 Note: ApplicationParameters için değerler boşsa, karşılık gelen EndPointName için ServiceManifest içinde belirtilen varsayılan değere geri döneceğiz.
 
-Örnek:
+Örneğin:
 
 Belirttiğiniz hizmet bildiriminde
 

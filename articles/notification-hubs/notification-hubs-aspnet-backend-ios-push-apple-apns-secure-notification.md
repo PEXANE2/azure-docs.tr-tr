@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs güvenli gönderim
+title: İOS için Azure Notification Hubs güvenli gönderimi
 description: Azure 'dan bir iOS uygulamasına güvenli anında iletme bildirimleri göndermeyi öğrenin. Kod örnekleri, amaç-C ve ile C#yazılmıştır.
 documentationcenter: ios
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4a175b14d44ef7ba019c28fbd03bac98ada7a2a3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 96d1dd514f6fb9c11d7194714337583d6b4387cf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212137"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530757"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs güvenli gönderim
 
@@ -60,19 +60,19 @@ Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucun
 
 Bu hedefe ulaşmak için, uygulama arka ucundan güvenli içerik almak üzere mantığı yazmanız gerekir.
 
-1. ' `AppDelegate.m`De, uygulamanın arka uca gönderilen bildirim kimliğini işleyeceği şekilde sessiz bildirimler için kaydoldığından emin olun. Didsonlandırhlaunchingwithoptions içindeki `UIRemoteNotificationTypeNewsstandContentAvailability` seçeneği ekleyin:
+1. `AppDelegate.m`, uygulamanın arka uca gönderilen bildirim KIMLIĞINI işleyeceği şekilde sessiz bildirimler için kaydoldığından emin olun. Didsonlandırhlaunchingwithoptions içinde `UIRemoteNotificationTypeNewsstandContentAvailability` seçeneğini ekleyin:
 
     ```objc
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
     ```
-2. Aşağıdaki bildirimle en üstteki uygulama eklemebölümünde:`AppDelegate.m`
+2. `AppDelegate.m` aşağıdaki bildirimle üst kısımdaki bir uygulama ekleyin:
 
     ```objc
     @interface AppDelegate ()
     - (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
     @end
     ```
-3. Ardından, daha önce elde edilen arka ucunuzla birlikte yer tutucuyu `{back-end endpoint}` yerine, uygulama bölümüne aşağıdaki kodu ekleyin:
+3. Daha önce elde edilen arka ucunuzla birlikte `{back-end endpoint}` yer tutucusunu yerine, uygulama bölümüne aşağıdaki kodu ekleyin:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
@@ -126,7 +126,7 @@ Bu hedefe ulaşmak için, uygulama arka ucundan güvenli içerik almak üzere ma
 
     ![][IOS1]
 
-6. İçinde `AppDelegate.m` anında iletme bildirimlerini işlemek için aşağıdaki yöntemi ekleyin:
+6. `AppDelegate.m` anında iletme bildirimlerini işlemek için aşağıdaki yöntemi ekleyin:
 
     ```objc
     -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler

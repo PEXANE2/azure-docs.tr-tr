@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: 7bc5544249b7e476afde08281aa005569ef6f8ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d1e21827dda26f1c577f6cc70a5e34bb09a34d9c
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873735"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500067"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'SI için grafik veri modelleme
 
@@ -23,7 +23,7 @@ Aşağıdaki belge, grafik veri modelleme önerileri sağlamak için tasarlanmı
 Bu kılavuzda özetlenen işlem aşağıdaki varsayımlar temelinde olur:
  * Sorun-alanı içindeki **varlıklar** tanımlanır. Bu varlıkların her istek için otomatik olarak _tüketilmesi_ amaçlanmıştır. Diğer bir deyişle, veritabanı sistemi birden çok sorgu isteğinde tek bir varlığın verilerini almak üzere tasarlanmamıştır.
  * Veritabanı sistemi için **okuma ve yazma gereksinimlerinin** anlaşılmasıdır. Bu gereksinimler, grafik veri modeli için gereken iyileştirmelere kılavuzluk eder.
- * [Apache Tinkerpop özelliği grafik standardının](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) ilkeleri iyi anlaşılmıştır.
+ * [Apache Tinkerpop özelliği grafik standardının](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) ilkeleri iyi anlaşılmıştır.
 
 ## <a name="when-do-i-need-a-graph-database"></a>Grafik veritabanına ne zaman ihtiyacım var?
 
@@ -41,7 +41,7 @@ Bir sonraki adım, grafiğin analitik veya işlemsel amaçlar için kullanılaca
 
 ## <a name="how-to-use-graph-objects"></a>Graph nesnelerini kullanma
 
-[Apache Tinkerpop özelliği grafik standardı](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) iki tür nesne **köşeleri** ve **kenarlarını**tanımlar. 
+[Apache Tinkerpop özelliği grafik standardı](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) iki tür nesne **köşeleri** ve **kenarlarını**tanımlar. 
 
 Grafik nesnelerindeki özellikler için en iyi uygulamalar şunlardır:
 

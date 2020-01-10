@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Özel arama web sayfası oluşturma - Bing Özel Arama'
 titleSuffix: Azure Cognitive Services
-description: Özel bir Bing arama örneğini yapılandırmayı ve bir Web sayfasıyla tümleştirmeyi öğrenin.
+description: Özel bir Bing arama örneğini yapılandırmayı ve bu öğreticiyle bir Web sayfası ile tümleştirmeyi öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5a4d797fecca8e040a6e22bf59a5776b1ffff80f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977208"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448779"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Öğretici: Özel Arama web sayfası oluşturma
 
@@ -32,7 +32,7 @@ Ele alınan görevler şunlardır:
 > - Sabitlenmiş girişleri ekleme
 > - Özel aramayı bir web sayfasıyla tümleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Öğreticiyi takip edebilmek için Bing Özel Arama API'si için bir abonelik anahtarına ihtiyacınız olacaktır.  Anahtar alma için bkz: [Bilişsel Hizmetleri Deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
 - Visual Studio 2017 veya sonraki bir sürümü yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz.
@@ -45,7 +45,7 @@ Bing Özel Arama örneği oluşturmak için:
   
 2. Özel arama [portalına](https://customsearch.ai) gidin.  
   
-3. Bir Microsoft hesabı (MSA) kullanarak portalda oturum açın. Hesabınız yoksa **Microsoft hesabı oluşturun**'a tıklayın. Portalı ilk kez kullanıyorsanız verilerinize erişim izni istenir. **Evet**'e tıklayın.  
+3. Bir Microsoft hesabı (MSA) kullanarak portalda oturum açın. Hesabınız yoksa **Microsoft hesabı oluşturun**'a tıklayın. Portalı ilk kez kullanıyorsanız verilerinize erişim izni istenir. **Evet**’e tıklayın.  
   
 4. Oturum açtıktan sonra **Yeni özel arama**'ya tıklayın. **Yeni özel arama örneği oluştur** penceresinde kolay anlaşılır ve arama tarafından döndürülen içeriğin türüne uygun bir ad girin. Adı dilediğiniz zaman değiştirebilirsiniz.  
   

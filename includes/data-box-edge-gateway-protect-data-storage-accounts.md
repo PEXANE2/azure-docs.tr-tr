@@ -4,19 +4,19 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 653c175a559f5c0b7dc551b396e91276332df20a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8840e6649058837207c75dbdf7baa5c0b11ef387
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67189015"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468552"
 ---
-Cihazınızı verilerinizi azure'da için hedef olarak kullanılan bir depolama hesabı ile ilişkilidir. Depolama hesabına erişim için abonelik ve iki adet 512 bit Depolama tarafından denetlenen erişim anahtarları, depolama hesabıyla ilişkilendirilmiş.
+Cihazınız, Azure 'daki verileriniz için hedef olarak kullanılan bir depolama hesabıyla ilişkilendirilir. Depolama hesabına erişim, bu depolama hesabıyla ilişkili abonelik ve 2 512-bit depolama erişim anahtarlarına göre denetlenir.
 
-Veri kutusu sınır cihazı, depolama hesabına eriştiğinde anahtarlarından birini kimlik doğrulaması için kullanılır. Düzenli aralıklarla anahtarlarını döndürmek için diğer anahtarı ayrılmış tutulur.
+Data Box Edge cihaz depolama hesabına eriştiğinde, anahtarlardan biri kimlik doğrulaması için kullanılır. Diğer anahtar ayrılmış olarak tutulur, bu sayede anahtarları düzenli olarak döndürebilirsiniz.
 
-Güvenlik nedenleriyle, çok sayıda veri merkezleri anahtar döndürme gerektirir. Anahtar döndürme için bu en iyi uygulamaları izlemenizi öneririz:
+Güvenlik nedenleriyle birçok veri merkezi için anahtar döndürme gerekir. Anahtar dönüşü için aşağıdaki en iyi yöntemleri izlemeniz önerilir:
 
-- Depolama hesabı anahtarınız depolama hesabınızın kök parolasına benzer. Hesap anahtarınızın dikkatli bir şekilde koruyun. Yok parola diğer kullanıcılara dağıtmak, sabit kod veya başkalarının erişebileceği düz metin, herhangi bir yere kaydedin.
-- [Hesap anahtarınızın yeniden](../articles/storage/common/storage-account-manage.md#regenerate-access-keys) düşünüyorsanız portal Azure tehlikeye girebilir.
-- Azure yöneticiniz düzenli olarak değiştirin veya doğrudan depolama hesabına erişmek için Azure portalında depolama bölümünü kullanarak birincil veya ikincil anahtarını yeniden gerekir.
+- Depolama hesabı anahtarınız depolama hesabınızın kök parolasına benzer. Hesap anahtarınızı dikkatle koruyun. Parolayı diğer kullanıcılara dağıtmayın, sabit kodlarım veya başkalarının erişebileceği düz metin içinde herhangi bir yere kaydedin.
+- Tehlikede olduğunu düşünüyorsanız, Azure portal aracılığıyla hesap anahtarınızı yeniden oluşturun. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../articles/storage/common/storage-account-keys-manage.md).
+- Azure yöneticiniz, depolama hesabına doğrudan erişmek için Azure portal depolama bölümünü kullanarak birincil veya ikincil anahtarı düzenli aralıklarla değiştirmeli veya yeniden üretmelidir.

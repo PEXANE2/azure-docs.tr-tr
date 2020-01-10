@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell betiği-Azure Cosmos DB Get üretilen Iş (RU/s) Tablo API'si
+title: Azure Cosmos DB için üretilen iş (RU/s) almak için PowerShell betiği Tablo API'si
 description: Azure PowerShell betiği-Azure Cosmos DB Get üretilen Iş (RU/s) Tablo API'si
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5d3fa2e2122c006825a8413a2ca2f292bda2de74
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 76645dee5927b321b0a974911ce6514d4277c6c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178704"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441281"
 ---
 # <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB Tablo API'si için bir tablo için üretilen Iş (RU/sn) Al
 

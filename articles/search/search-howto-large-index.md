@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bd158eaf22025a64d7464c632d3f0fa510a4b5a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: b4b6c57b08de07cae431f015c8d8f53cdf3a50a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460732"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Bilişsel Arama büyük veri kümelerini dizin oluşturma
 
@@ -34,7 +34,7 @@ Toplu dizin oluşturma, REST veya .NET kullanan tek istekler veya Dizin oluştur
 
 ## <a name="option-2-add-resources"></a>2\. seçenek: kaynak ekleme
 
-[Standart fiyatlandırma katmanlarından](search-sku-tier.md) birinde sağlanan hizmetler genellikle hem depolama hem de iş yükleri (sorgular ya da dizin oluşturma) için yetersiz kapasiteye sahiptir ve bu sayede [bölüm ve çoğaltmanın artması](search-capacity-planning.md) için açık bir çözüm sayılır daha büyük veri kümelerini koname. En iyi sonuçları elde etmek için, her iki kaynağa de ihtiyacınız vardır: depolama için bölümler ve veri alımı iş çoğaltmaları.
+[Standart fiyatlandırma katmanlarından](search-sku-tier.md) birinde sağlanan hizmetler genellikle hem depolama hem de iş yükleri (sorgular ya da dizin oluşturma) için daha fazla kapasiteye sahiptir. Bu, [bölüm ve çoğaltmanın artması](search-capacity-planning.md) daha büyük veri kümelerini kapsayan bir açık çözümü saymaktadır. En iyi sonuçları elde etmek için, her iki kaynağa de ihtiyacınız vardır: depolama için bölümler ve veri alımı iş çoğaltmaları.
 
 Çoğaltmaları ve bölümleri artırmak, maliyetinizi artıran etkinliklerdir, ancak en fazla yük altında sürekli olarak dizin oluşturmadığınız sürece, dizin oluşturma işlemi süresince ölçek ekleyebilir ve ardından kaynak düzeylerini dizin oluşturma işleminin süresi boyunca aşağı doğru ayarlayabilirsiniz bitirdikten.
 
@@ -74,7 +74,7 @@ Paralel işleme şu öğelere sahiptir:
 + Tüm dizin oluşturucularının aynı anda çalışmasını zamanlayın.
 
 > [!NOTE]
-> Azure Bilişsel Arama, çoğaltmaları veya bölümleri belirli iş yüklerine ayırabilirsiniz. Ağır eşzamanlı dizin oluşturma riski, sisteminizin sorgu performansının üstesinden gelme riskini ortadan kaldırır. Bir sınama ortamınız varsa, bu avantajları anlamak için öncelikle Paralel dizin oluşturma uygulayın.
+> Azure Bilişsel Arama, dizin oluşturma veya sorgu işlemeye bireysel çoğaltmalar veya bölümler atayamazsınız. Sistem, kaynakların nasıl kullanıldığını belirler. Sorgu performansına etkisini anlamak için, bir test ortamında, üretime vermeden önce Paralel dizin oluşturmayı deneyebilirsiniz.  
 
 ### <a name="how-to-configure-parallel-indexing"></a>Paralel dizin oluşturmayı yapılandırma
 

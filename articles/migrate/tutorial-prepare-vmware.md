@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cc1eb4c4fce1398365145b2f3d63db984635d667
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196220"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454546"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware VM 'lerini değerlendirme ve Azure 'a geçiş için hazırlama
 
@@ -124,7 +124,7 @@ Gereci dağıtmadan önce gereç gereksinimlerini denetleyin.
 
 1. Gereç gereksinimlerini ve sınırlamalarını [doğrulayın](migrate-support-matrix-vmware.md#assessment-appliance-requirements) .
 2. URL tabanlı bir güvenlik duvarı proxy 'SI kullanıyorsanız, gerecin erişmesi gereken Azure URL 'Lerini [gözden geçirin](migrate-support-matrix-vmware.md#assessment-url-access-requirements) . Proxy 'nin, URL 'Leri ararken alınan CNAME kayıtlarını çözümlediği emin olun.
-3. Bulma ve değerlendirme sırasında gerecin topladığı [performans verilerini](migrate-appliance.md#collected-performance-data-vmware)ve [meta verileri](migrate-appliance.md#collected-metadata-vmware) gözden geçirin.
+3. Bulma ve değerlendirme sırasında gereç tarafından toplanan [performans verilerini](migrate-appliance.md#collected-performance-data-vmware) ve [meta verileri](migrate-appliance.md#collected-metadata-vmware) gözden geçirin.
 4. Gereç tarafından erişilen bağlantı noktalarını [aklınızda edin](migrate-support-matrix-vmware.md#assessment-port-requirements) .
 5. VCenter Server, hesabınızın bir OVA dosyası kullanarak VM oluşturma izinlerine sahip olduğundan emin olun. Azure geçişi gereci bir OVA dosyası kullanarak bir VMware VM 'si olarak dağıtırsınız.
 

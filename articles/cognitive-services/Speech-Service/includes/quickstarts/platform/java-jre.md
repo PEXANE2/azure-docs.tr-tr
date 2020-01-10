@@ -7,15 +7,15 @@ author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 195d43739ff27a493b2f2923eac43df03313963b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5f6b994bce1d38872cffb1e6e389136742be6d48
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816277"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466564"
 ---
 Bu kılavuzda, 64 bit Java 8 JRE için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir.
 
@@ -31,7 +31,7 @@ Bu kılavuzda, 64 bit Java 8 JRE için [konuşma SDK 'sının](~/articles/cognit
   - Mac: macOS X sürüm 10,13 veya üzeri
   - Linux: 64-bit yalnızca Ubuntu 16,04, Ubuntu 18,04 veya detem 9
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) veya [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 

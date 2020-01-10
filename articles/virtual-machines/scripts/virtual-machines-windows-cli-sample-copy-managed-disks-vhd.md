@@ -1,6 +1,6 @@
 ---
-title: Azure CLI örneği - yönetilen diskleri bir depolama hesabına kopyalayın.
-description: Azure CLI örneği - dışarı aktarma veya bir depolama hesabı için bir yönetilen disklere kopyalayın.
+title: Yönetilen diskleri bir depolama hesabına kopyalama-CLı örneği
+description: Azure CLı örneği-yönetilen diskleri bir s Storage hesabına aktarın veya kopyalayın.
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: d6009a723297d03dc854d06529315b22b2f4de16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92c752c56c37b854bc793d897c664337cf8bfccd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60789520"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463627"
 ---
-# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Azure CLI kullanarak bir depolama hesabına yönetilen disk dışarı aktarma/kopyalama
+# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Azure CLı kullanarak yönetilen bir diski depolama hesabına aktarma/kopyalama
 
 Bu betik yönetilen diskin VHD dosyasını aynı veya farklı bölgede bulunan bir depolama hesabına aktarır. İlk olarak yönetilen diskin SAS URI'sini oluşturur ve sonra onu VHD dosyasını bir depolama hesabına kopyalamak için kullanır. Bu betiği bölgesel genişleme için yönetilen disklerinizi kopyalama amacıyla kullanabilirsiniz.
 
@@ -50,4 +50,4 @@ Bu betik bir yönetilen diskin SAS URI'sini oluşturmak için aşağıdaki komut
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
 
-Ek sanal makine ve yönetilen disk CLI betiği örnekleri bulunabilir [Azure Windows VM belgeleri](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ek sanal makine ve yönetilen diskler CLı betiği örnekleri, [Azure WINDOWS VM belgelerinde](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bulunabilir.

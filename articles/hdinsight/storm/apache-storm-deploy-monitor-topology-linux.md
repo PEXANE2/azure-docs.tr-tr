@@ -1,25 +1,25 @@
 ---
 title: Azure HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme
 description: Linux tabanlı HDInsight 'ta fırtınası panosunu kullanarak Apache Storm topolojilerini dağıtmayı, izlemeyi ve yönetmeyi öğrenin. Visual Studio için Hadoop araçları 'nı kullanın.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 82c5db4f75f131ebdc2434955108e7d50237d9ba
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228880"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494976"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme 
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme
 
 Bu belgede, HDInsight kümelerinde fırtınası üzerinde çalışan [Apache Storm](https://storm.apache.org/) topolojilerinin yönetilmesi ve izlenmesi hakkında temel bilgileri öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
 
@@ -34,42 +34,40 @@ Visual Studio için Data Lake araçları 'nı kullanarak, fırtınası kümenize
 1. Visual Studio için Data Lake araçları 'nın en son sürümünü henüz yüklemediyseniz bkz. [Visual Studio için Data Lake araçları kullanma](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     > [!NOTE]  
-    > Visual Studio için Data Lake araçları, daha önce Visual Studio için HDInsight araçları olarak adlandırılmıştı.
+    > Azure Data Lake ve Stream Analytics araçları, daha önce Visual Studio için HDInsight araçları olarak adlandırılmıştı.
     >
-    > Visual Studio için Data Lake araçları, Visual Studio 2019 için **Azure Iş yüküne** eklenmiştir.
+    > Visual Studio için Azure Data Lake ve Stream Analytics araçları, Visual Studio 2019 için **Azure geliştirme** iş yüküne dahildir.
 
-2. Visual Studio'yu açın.
+1. Visual Studio’yu çalıştırın.
 
-3. **Başlangıç** penceresinde **Yeni proje oluştur**' u seçin.
+1. **Başlangıç** penceresinde **Yeni proje oluştur**' u seçin.
 
-4. **Yeni proje oluştur** penceresinde arama kutusunu seçin ve *fırtınası*girin. Sonra sonuç listesinden **fırtınası örneği** ' ni seçin ve **İleri**' yi seçin.
+1. **Yeni proje oluştur** penceresinde arama kutusunu seçin ve `Storm`girin. Sonra sonuç listesinden **fırtınası örneği** ' ni seçin ve **İleri**' yi seçin.
 
-5. Yeni projeyi **yapılandırın** penceresinde, bir **Proje adı**girin ve ' a gidin veya yeni projenin kaydedileceği **konumu** oluşturun. Ardından **Oluştur**’u seçin.
+1. Yeni projeyi **yapılandırın** penceresinde, bir **Proje adı**girin ve ' a gidin veya yeni projenin kaydedileceği **konumu** oluşturun. Ardından **Oluştur**’u seçin.
 
     ![Yeni proje pencerenizi, Visual Studio 'yu yapılandırın](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-6. **Çözüm Gezgini**, projeye sağ tıklayın ve **HDInsight 'Ta fırtınası 'ya gönder**' i seçin.
+1. **Sunucu Gezgini**, **Azure** ' a sağ tıklayın ve **Microsoft Azure aboneliğine Bağlan...** öğesini seçin ve oturum açma işlemini doldurun.
+
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve **HDInsight 'Ta fırtınası 'ya gönder**' i seçin.
 
     > [!NOTE]  
     > İstenirse, Azure aboneliğinizin oturum açma kimlik bilgilerini girin. Birden fazla aboneliğiniz varsa, HDInsight kümesi için bir fırtınası içeren bir oturum açın.
 
-7. **Topolojiyi gönder** iletişim kutusunda, **fırtınası kümesi** aşağı açılan listesinde, HDInsight kümesinde fırtınası ' ı seçin ve ardından **Gönder**' i seçin. **Çıkış** bölmesini görüntüleyerek gönderimin başarılı olup olmadığını izleyebilirsiniz.
+1. **Topolojiyi gönder** iletişim kutusunda, **fırtınası kümesi** aşağı açılan listesinde, HDInsight kümesinde fırtınası ' ı seçin ve ardından **Gönder**' i seçin. **Çıkış** bölmesini görüntüleyerek gönderimin başarılı olup olmadığını izleyebilirsiniz.
 
 ## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>SSH ve fırtınası komutunu kullanarak bir topoloji gönderme
 
-SSH kullanarak fırtınası için bir topoloji göndermek için:
+1. Kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
-1. HDInsight kümesine bağlanmak için SSH kullanın. `USERNAME`, SSH kullanıcı adınızın adı ( *sshuser*gibi) ile değiştirin. `CLUSTERNAME`, HDInsight kümenizin adıyla değiştirin.
-
-    ```shell
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    HDInsight kümenize bağlanmak için SSH kullanma hakkında daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. SSH oturumınızdan, **WORDCOUNT** örnek topolojisini başlatmak için aşağıdaki komutu kullanın:
 
-2. *WORDCOUNT* örnek topolojisini başlatmak için aşağıdaki komutu kullanın:
-
-    ```ssh
+    ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
     ```
 
@@ -176,15 +174,15 @@ Fırtınası Kullanıcı arabiriminin ana sayfası aşağıdaki bilgileri sağla
 
 | Section | Açıklama |
 | --- | --- |
-| **Küme Özeti** | Fırtınası kümesiyle ilgili temel bilgiler. |
-| **Nimbus Özeti** | Temel Nimbus bilgilerinin listesi. |
-| **Topoloji Özeti** | Çalışan topolojilerden oluşan bir liste. Belirli bir topoloji hakkında daha fazla bilgi görüntülemek için **ad** sütununda bağlantısını seçin. |
-| **Gözetmen Özeti** | Fırtınası hakkında bilgi. Belirli bir gözetmen ile ilişkili çalışan kaynaklarını görmek için **konak** veya **kimlik** sütunundaki bağlantısını seçin. |
-| **Nimbus yapılandırması** | Küme için Nimbus yapılandırması. |
+| Küme özeti| Fırtınası kümesiyle ilgili temel bilgiler. |
+| Nimbus Özeti | Temel Nimbus bilgilerinin listesi. |
+| Topoloji Özeti | Çalışan topolojilerden oluşan bir liste. Belirli bir topoloji hakkında daha fazla bilgi görüntülemek için **ad** sütununda bağlantısını seçin. |
+| Gözetmen Özeti | Fırtınası hakkında bilgi. Belirli bir gözetmen ile ilişkili çalışan kaynaklarını görmek için **konak** veya **kimlik** sütunundaki bağlantısını seçin. |
+| Nimbus yapılandırması | Küme için Nimbus yapılandırması. |
 
 Fırtınası Kullanıcı arabirimi ana sayfası bu Web sayfasına benzer şekilde görünür:
 
-![Ana sayfa, fırtınası Kullanıcı arabirimi, Apache Storm topolojileri, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
+![Ana sayfa, fırtınası Kullanıcı arabirimi, Apache Storm topolojileri, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
 
 #### <a name="topology-summary"></a>Topoloji Özeti
 
@@ -192,30 +190,30 @@ Fırtınası Kullanıcı arabirimi ana sayfası bu Web sayfasına benzer şekild
 
 | Section | Açıklama |
 | --- | --- |
-| **Topoloji Özeti** | Topolojiyle ilgili temel bilgiler. |
-| **Topoloji eylemleri** | Topoloji için yapabileceğiniz yönetim eylemleri. Kullanılabilir eylemler, bu bölümün ilerleyen kısımlarında açıklanmıştır. |
-| **Topoloji istatistikleri** | Topoloji hakkında istatistikler. Bu bölümdeki bir girdinin zaman çerçevesini ayarlamak için **pencere** sütununda bağlantısını seçin. |
-| **Spout** *(zaman dilimi)* | Topoloji tarafından kullanılan spomalar. Belirli bir Spout hakkında daha fazla bilgi görüntülemek için **kimlik** sütunundaki bağlantısını seçin. |
-| **Cıvatalar** *(zaman dilimi)* | Topoloji tarafından kullanılan cıvatları. Belirli bir cıvata ilişkin daha fazla bilgi görüntülemek için **kimlik** sütunundaki bağlantısını seçin. |
-| **Çalışan kaynakları** | Çalışan kaynaklarının bir listesi. Belirli bir çalışan kaynağı hakkında daha fazla bilgi görüntülemek için **konak** sütunundaki bağlantısını seçin. |
-| **Topoloji görselleştirme** | Topoloji görselleştirmesini görüntüleyen bir **görselleştirmeyi göster** düğmesi. |
-| **Topoloji yapılandırması** | Seçilen topoloji yapılandırması. |
+| Topoloji Özeti | Topolojiyle ilgili temel bilgiler. |
+| Topoloji eylemleri| Topoloji için yapabileceğiniz yönetim eylemleri. Kullanılabilir eylemler, bu bölümün ilerleyen kısımlarında açıklanmıştır. |
+| Topoloji istatistikleri | Topoloji hakkında istatistikler. Bu bölümdeki bir girdinin zaman çerçevesini ayarlamak için **pencere** sütununda bağlantısını seçin. |
+| Spout *(zaman dilimi)* | Topoloji tarafından kullanılan spomalar. Belirli bir Spout hakkında daha fazla bilgi görüntülemek için **kimlik** sütunundaki bağlantısını seçin. |
+| Cıvatalar *(zaman dilimi)* | Topoloji tarafından kullanılan cıvatları. Belirli bir cıvata ilişkin daha fazla bilgi görüntülemek için **kimlik** sütunundaki bağlantısını seçin. |
+| Çalışan kaynakları | Çalışan kaynaklarının bir listesi. Belirli bir çalışan kaynağı hakkında daha fazla bilgi görüntülemek için **konak** sütunundaki bağlantısını seçin. |
+| Topoloji görselleştirme | Topoloji görselleştirmesini görüntüleyen bir **görselleştirmeyi göster** düğmesi. |
+| Topoloji yapılandırması | Seçilen topoloji yapılandırması. |
 
 Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görünür:
 
-![Topoloji Özet sayfası, fırtınası Kullanıcı arabirimi, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+![Topoloji Özet sayfası, fırtınası Kullanıcı arabirimi, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
 
 **Topoloji eylemleri** bölümünde, bir eylem yapmak için aşağıdaki düğmeleri seçebilirsiniz:
 
 | Düğme | Açıklama |
 | --- | --- |
-| **Etkinleştir** | Devre dışı bırakılan bir topoloji işlemeyi sürdürür. |
-| **Çıkarma** | Çalışan bir topolojiyi duraklatır. |
-| **Dengeleme** | Topolojinin paralelliğini ayarlar. Kümedeki düğüm sayısını değiştirdikten sonra çalışan topolojileri yeniden dengelemeniz gerekir. Bu işlem, topolojinin kümedeki ek veya azaltılan düğüm sayısını dengelemek üzere paralellik ayarlamasını sağlar.<br/><br/>Daha fazla bilgi için bkz. <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Apache Storm topolojisinin paralelliğini anlama</a>.
-| **Kapatmayın** | Belirtilen zaman aşımından sonra bir fırtınası topolojisini sonlandırır. |
-| **Hata ayıklama** | Çalışan topoloji için bir hata ayıklama oturumu başlatır. |
-| **Hata ayıklamayı Durdur** | Çalışan topoloji için hata ayıklama oturumunu sonlandırır. |
-| **Günlük düzeyini Değiştir** | Hata ayıklama günlüğü düzeyini değiştirir. |
+| Etkinleştir | Devre dışı bırakılan bir topoloji işlemeyi sürdürür. |
+| Devre dışı bırak | Çalışan bir topolojiyi duraklatır. |
+| Dengeleme | Topolojinin paralelliğini ayarlar. Kümedeki düğüm sayısını değiştirdikten sonra çalışan topolojileri yeniden dengelemeniz gerekir. Bu işlem, topolojinin kümedeki ek veya azaltılan düğüm sayısını dengelemek üzere paralellik ayarlamasını sağlar.<br/><br/>Daha fazla bilgi için bkz. <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Apache Storm topolojisinin paralelliğini anlama</a>.
+| kapatmayın | Belirtilen zaman aşımından sonra bir fırtınası topolojisini sonlandırır. |
+| Hata ayıklama | Çalışan topoloji için bir hata ayıklama oturumu başlatır. |
+| Hata ayıklamayı Durdur | Çalışan topoloji için hata ayıklama oturumunu sonlandırır. |
+| Günlük düzeyini Değiştir | Hata ayıklama günlüğü düzeyini değiştirir. |
 
 ##### <a name="spout-and-bolt-summary"></a>Spout ve cıvata Özeti
 
@@ -223,18 +221,18 @@ Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görü
 
 | Section | Açıklama |
 | --- | --- |
-| **Bileşen Özeti** | Spout veya cıvam hakkındaki temel bilgiler. |
-| **Bileşen eylemleri** | **Hata Ayıkla ve** **Hata Ayıkla** düğmeleri. |
-| **Spout istatistikleri** veya **cıvatlar istatistikleri** | Spout veya cıvata ilişkin istatistikler. Bu bölümdeki bir girdinin zaman çerçevesini ayarlamak için **pencere** sütununda bağlantısını seçin. |
-| (Yalnızca cıvata)<br/>**Giriş İstatistikleri** *(zaman dilimi)* | Sürgüsü tarafından tüketilen giriş akışları hakkında bilgi. |
-| **Çıkış istatistikleri** *(zaman dilimi)* | Spout veya cıvata yayılan akışlar hakkında bilgiler. |
-| **Profil oluşturma ve hata ayıklama** | Bu sayfadaki bileşenlerin profilini oluşturma ve hata ayıklama için denetimler. **Durum/zaman aşımı (dakika)** değerini ayarlayabilir ve **jstack**için düğmeler, **çalışan**ve **yığın**' ı seçebilirsiniz. |
-| **Yürüticileri** *(zaman dilimi)* | Spout veya cıvatanın örnekleri hakkında bilgi. Bu örnek için üretilen tanılama bilgilerinin günlüğünü görüntülemek için, belirli bir yürütücü için **bağlantı noktası** girişini seçin. Ayrıca, **konak** sütunundaki bağlantısını seçerek belirli bir yürütücü ile ilişkili çalışan kaynaklarını da görebilirsiniz. |
-| **Hatası** | Spout veya cıvata ilgili tüm hata bilgileri. |
+| Bileşen Özeti | Spout veya cıvam hakkındaki temel bilgiler. |
+| Bileşen eylemleri | **Hata Ayıkla ve** **Hata Ayıkla** düğmeleri. |
+| Spout istatistikleri veya cıvatlar istatistikleri | Spout veya cıvata ilişkin istatistikler. Bu bölümdeki bir girdinin zaman çerçevesini ayarlamak için **pencere** sütununda bağlantısını seçin. |
+| (Yalnızca cıvata)<br/>Giriş İstatistikleri *(zaman dilimi)* | Sürgüsü tarafından tüketilen giriş akışları hakkında bilgi. |
+| Çıkış istatistikleri *(zaman dilimi)* | Spout veya cıvata yayılan akışlar hakkında bilgiler. |
+| Profil oluşturma ve hata ayıklama | Bu sayfadaki bileşenlerin profilini oluşturma ve hata ayıklama için denetimler. **Durum/zaman aşımı (dakika)** değerini ayarlayabilir ve **jstack**için düğmeler, **çalışan**ve **yığın**' ı seçebilirsiniz. |
+| Yürüticileri *(zaman dilimi)* | Spout veya cıvatanın örnekleri hakkında bilgi. Bu örnek için üretilen tanılama bilgilerinin günlüğünü görüntülemek için, belirli bir yürütücü için **bağlantı noktası** girişini seçin. Ayrıca, **konak** sütunundaki bağlantısını seçerek belirli bir yürütücü ile ilişkili çalışan kaynaklarını da görebilirsiniz. |
+| Hatalar | Spout veya cıvata ilgili tüm hata bilgileri. |
 
 Fırtınası Özeti sayfası, bu Web sayfasına benzer şekilde görünür:
 
-![Cıvata Özet sayfası, fırtınası Kullanıcı arabirimi, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+![Cıvata Özet sayfası, fırtınası Kullanıcı arabirimi, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
 
 ## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>REST API kullanarak topolojiyi izleyin ve yönetin
 

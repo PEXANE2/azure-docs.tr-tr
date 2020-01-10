@@ -1,34 +1,34 @@
 ---
-title: Toplu algılama ve Power BI kullanarak anormallikleri görselleştirin
+title: 'Öğretici: toplu algılama ve Power BI kullanarak anomali görselleştirin'
 titleSuffix: Azure Cognitive Services
-description: Anomali algılayıcı API 'sini ve Power BI, zaman serisi verileriniz genelinde anormallikleri görselleştirmek için kullanın.
+description: Anomali algılayıcısı API 'sini kullanmayı ve zaman serisi verileriniz genelinde anormallikleri görselleştirmek için Power BI öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: fa78e737cd863d19e294c5001dfd27b07760521f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1d1f71ed56138f2c799c7410508c0bc4899e7887
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840877"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448846"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Öğretici: toplu algılama ve Power BI kullanarak anomali görselleştirin
 
 Toplu iş olarak ayarlanan zaman serisi verilerinin içindeki bozukluklar bulmak için bu öğreticiyi kullanın. Power BI Masaüstü 'nü kullanarak bir Excel dosyası alır, anomali algılayıcı API 'sine yönelik verileri hazırlar ve bunun genelinde istatistiksel bozukluklar görselleştirebilirsiniz.
 
-Bu öğreticide, aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Zaman serisi veri kümesini içeri ve dışarı dönüştürmek için Power BI Desktop kullanma
 > * Batch anomali algılama için anomali algılayıcı API 'siyle Power BI Desktop tümleştirme
 > * Beklenen ve görülen değerler ve anomali algılama sınırları dahil olmak üzere verilerinizde bulunan anormallikleri görselleştirin.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/)ücretsiz olarak kullanılabilir.
 * Zaman serisi veri noktaları içeren bir Excel dosyası (. xlsx). Bu hızlı başlangıçta örnek veriler [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) 'da bulunabilir
@@ -68,7 +68,7 @@ Yeni sorgunuzun seçili olduğundan emin olun ve ardından **Gelişmiş Düzenle
 
 ![Power BI içindeki "Gelişmiş Düzenleyici" düğmesinin görüntüsü](../media/tutorials/advanced-editor-screen.png)
 
-Gelişmiş Düzenleyici içinde, tablodaki sütunları ayıklamak ve API 'ye göndermek için aşağıdaki Power Query a kod parçacığını kullanın. Daha sonra sorgu, JSON yanıtından bir tablo oluşturur ve döndürür. @No__t-0 değişkenini geçerli anomali algılayıcı API anahtarınızla ve `endpoint` ' i uç noktanızla değiştirin. Sorguyu Gelişmiş Düzenleyici girdikten sonra **bitti**' ye tıklayın.
+Gelişmiş Düzenleyici içinde, tablodaki sütunları ayıklamak ve API 'ye göndermek için aşağıdaki Power Query a kod parçacığını kullanın. Daha sonra sorgu, JSON yanıtından bir tablo oluşturur ve döndürür. `apiKey` değişkenini geçerli anomali algılayıcı API anahtarınızla değiştirin ve uç noktanızla `endpoint`. Sorguyu Gelişmiş Düzenleyici girdikten sonra **bitti**' ye tıklayın.
 
 ```M
 (table as table) => let
@@ -112,7 +112,7 @@ Gelişmiş Düzenleyici içinde, tablodaki sütunları ayıklamak ve API 'ye gö
  in results
 ```
 
-Aşağıdaki `Sheet1` **' ı seçerek**veri sayfanızda sorguyu çağırın ve ardından **çağır**' a tıklayın. 
+Aşağıdaki `Sheet1` **parametre girin**' i seçerek veri sayfanızda sorguyu çağırın ve **çağır**' a tıklayın. 
 
 !["Gelişmiş Düzenleyici" düğmesinin görüntüsü](../media/tutorials/invoke-function-screenshot.png)
 
@@ -131,7 +131,7 @@ Ayrıca, API 'ye nasıl bağlanmak istediğinizi belirtmenizi isteyen bir ileti 
 
 ![Erişim kimlik bilgilerini belirtme isteğini gösteren bir görüntü](../media/tutorials/edit-credentials-message.png)
 
-Bu hatayı onarmak için iletideki **kimlik bilgilerini düzenle** ' ye tıklayın. İletişim kutusu görüntülendikten sonra, API 'ye anonim olarak bağlanmak için **anonim** ' i seçin. Ardından **Bağlan**' a tıklayın. 
+Bu hatayı onarmak için iletideki **kimlik bilgilerini düzenle** ' ye tıklayın. İletişim kutusu görüntülendikten sonra, API 'ye anonim olarak bağlanmak için **anonim** ' i seçin. Ardından **Bağlan**’a tıklayın. 
 
 Ardından, değişiklikleri uygulamak için **giriş** şeridindeki **Kapat & Uygula** ' ya tıklayın.
 
@@ -160,11 +160,11 @@ Power BI penceresinin sağ tarafında, **alanlar** bölmesinin altında, **çağ
 
 ![Yeni hızlı ölçü ekranının görüntüsü](../media/tutorials/new-quick-measure.png)
 
-Görüntülenen ekranda, hesaplama olarak **filtrelenmiş değer** ' i seçin. **Taban değerini** `Sum of Value` olarak ayarlayın. Sonra **çağrılan işlev** alanlarından `IsAnomaly` ' ı **filtrelemek**için sürükleyin. **Filtre** açılan menüsünden `True` ' ı seçin.
+Görüntülenen ekranda, hesaplama olarak **filtrelenmiş değer** ' i seçin. **Taban değerini** `Sum of Value`olarak ayarlayın. Sonra, **çağrılan işlev** alanlarından `IsAnomaly` **filtrelemek**için sürükleyin. **Filtre** açılan menüsünden `True` ' yi seçin.
 
 ![Yeni hızlı ölçü ekranının görüntüsü](../media/tutorials/new-quick-measure-2.png)
 
-**Tamam**' a tıkladıktan sonra, alanlarınız listesinin en altında bir `Value for True` alanı olacaktır. Sağ tıklayın ve **anomali**olarak yeniden adlandırın. Bunu grafiğin **değerlerine**ekleyin. Daha sonra **Biçim** aracını seçin ve X ekseni türünü **kategorik**olarak ayarlayın.
+**Tamam**' a tıkladıktan sonra, alanları listesinin en altında bir `Value for True` alana sahip olursunuz. Sağ tıklayın ve **anomali**olarak yeniden adlandırın. Bunu grafiğin **değerlerine**ekleyin. Daha sonra **Biçim** aracını seçin ve X ekseni türünü **kategorik**olarak ayarlayın.
 
 ![Yeni hızlı ölçü ekranının görüntüsü](../media/tutorials/format-x-axis.png)
 

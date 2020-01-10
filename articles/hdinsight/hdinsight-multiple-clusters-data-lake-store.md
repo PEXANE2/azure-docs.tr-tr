@@ -1,20 +1,19 @@
 ---
 title: Birden çok HDInsight kümesi bir Azure Data Lake Storage hesabı &
 description: Tek bir Data Lake Storage hesabıyla birden fazla HDInsight kümesi kullanmayı öğrenin
-keywords: HDInsight depolama,,, yapılandırılmış veriler, yapılandırılmamış veriler, Data Lake Store
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: hrasheed
-ms.openlocfilehash: ba0c26d87f2161af514c9430eae5c9949ef92b15
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498196"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495752"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Azure Data Lake Storage hesabıyla birden çok HDInsight kümesi kullanma
 
@@ -23,22 +22,21 @@ Data Lake Storage, yalnızca büyük miktarlarda veriyi barındırmak için idea
 
 Bu makale, birden çok **etkin** HDInsight kümesinde kullanılabilecek tek ve paylaşılan bir Data Lake Storage hesabı ayarlamaya yönelik Data Lake Storage yöneticisine öneriler sağlar. Bu öneriler, paylaşılan bir Data Lake Storage hesabında birden çok güvenli ve güvenli olmayan Apache Hadoop kümelerini barındırmak için geçerlidir.
 
-
 ## <a name="data-lake-storage-file-and-folder-level-acls"></a>Data Lake Storage dosya ve klasör düzeyinde ACL 'Ler
 
 Bu makalenin geri kalanında, [Azure Data Lake Storage erişim denetiminde](../data-lake-store/data-lake-store-access-control.md)ayrıntılı olarak açıklanan Azure Data Lake Storage dosya ve klasör düzeyi ACL 'lerinde iyi bir bilgiye sahip olduğunuzu varsaymaktadır.
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Birden çok HDInsight kümesi için Data Lake Storage kurulum
+
 Data Lake Storage hesabıyla birden çok HDInsight kümesi kullanma önerilerini açıklamak için iki düzeyli bir klasör hiyerarşisi getirmemize izin verin. **/Clusters/finans**klasör yapısına sahip bir Data Lake Storage hesabınız olduğunu düşünün. Bu yapıyla, finans organizasyonu için gereken tüm kümeler depolama konumu olarak/Clusters/finans kullanabilir. Daha sonra, başka bir kuruluş, pazarlama söylediğinde aynı Data Lake Storage hesabını kullanarak HDInsight kümeleri oluşturmak istiyorsa,/Clusters/Marketing oluşturamazlar. Şimdilik yalnızca **/Clusters/finans**' ı kullanalım.
 
-Bu klasör yapısını HDInsight kümeleri tarafından etkin bir şekilde kullanılmak üzere etkinleştirmek için, Data Lake Storage Yöneticisi tabloda açıklandığı gibi uygun izinleri atamalıdır. Tabloda gösterilen izinler, varsayılan ACL 'Ler değil, Access-ACL 'Lerine karşılık gelir. 
-
+Bu klasör yapısını HDInsight kümeleri tarafından etkin bir şekilde kullanılmak üzere etkinleştirmek için, Data Lake Storage Yöneticisi tabloda açıklandığı gibi uygun izinleri atamalıdır. Tabloda gösterilen izinler, varsayılan ACL 'Ler değil, Access-ACL 'Lerine karşılık gelir.
 
 |Klasör  |İzinler  |Sahip olan kullanıcı  |Sahip olan grup  | Adlandırılmış Kullanıcı | Adlandırılmış Kullanıcı izinleri | Adlandırılmış Grup | Adlandırılmış Grup izinleri |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |Yöneticileri |Yöneticileri  |Hizmet sorumlusu |--x  |FINGRP   |r-x         |
-|/kümeler | rwxr-x--x |Yöneticileri |Yöneticileri |Hizmet sorumlusu |--x  |FINGRP |r-x         |
-|/Clusters/finans | rwxr-x--t |Yöneticileri |FINGRP  |Hizmet sorumlusu |RWX  |-  |-     |
+|/ | rwxr-x--x  |yönetici |yönetici  |Hizmet sorumlusu |--x  |FINGRP   |r-x         |
+|/kümeler | rwxr-x--x |yönetici |yönetici |Hizmet sorumlusu |--x  |FINGRP |r-x         |
+|/Clusters/finans | rwxr-x--t |yönetici |FINGRP  |Hizmet sorumlusu |RWX  |-  |-     |
 
 Tabloda,
 
@@ -57,9 +55,7 @@ Göz önünde bulundurmanız gereken bazı önemli noktaları.
 
     |Klasör  |İzinler  |Sahip olan kullanıcı  |Sahip olan grup  | Adlandırılmış Kullanıcı | Adlandırılmış Kullanıcı izinleri | Adlandırılmış Grup | Adlandırılmış Grup izinleri |
     |---------|---------|---------|---------|---------|---------|---------|---------|
-    |/Clusters/finanace/fincluster01 | rwxr-x---  |Hizmet Sorumlusu |FINGRP  |- |-  |-   |-  | 
-   
-
+    |/Clusters/finanace/fincluster01 | rwxr-x---  |Hizmet Sorumlusu |FINGRP  |- |-  |-   |-  |
 
 ## <a name="recommendations-for-job-input-and-output-data"></a>İş girişi ve çıkış verileri için öneriler
 
@@ -71,7 +67,7 @@ Tek bir Data Lake Storage hesabını paylaşabilen küme sayısı sınırı, bu 
 
 ## <a name="support-for-default-acls"></a>Varsayılan ACL 'Ler için destek
 
-Adlandırılmış Kullanıcı erişimi (yukarıdaki tabloda gösterildiği gibi) ile bir hizmet sorumlusu oluştururken, adlandırılmış kullanıcıyı varsayılan-ACL ile **eklememeyi** öneririz. Varsayılan ACL 'Ler kullanılarak adlandırılmış Kullanıcı erişiminin sağlanması, sahip olan Kullanıcı, sahip olan grup ve diğerleri için 770 izinlerinin atanmasına neden olur. Bu varsayılan 770 değeri, sahip olan kullanıcının (7) veya sahibi olan grubun (7) izinlerini almaz, diğerleri için tüm izinleri alır (0). Bu, [bilinen sorunlar ve geçici çözümler](#known-issues-and-workarounds) bölümünde ayrıntılı olarak açıklanan belirli bir kullanım durumu ile ilgili bilinen bir soruna neden olur.
+Adlandırılmış Kullanıcı erişimi (yukarıdaki tabloda gösterildiği gibi) ile bir hizmet sorumlusu oluştururken, adlandırılmış kullanıcıyı varsayılan-ACL ile **eklememeyi** öneririz. Varsayılan ACL 'Ler kullanılarak adlandırılmış Kullanıcı erişiminin sağlanması, sahip olan Kullanıcı, sahip olan grup ve diğerleri için 770 izinlerinin atanmasına neden olur. Bu varsayılan 770 değeri, sahip olan Kullanıcı (7) veya sahibi olan grup (7) için izin almasa da, diğerleri için tüm izinleri alır (0). Bu, [bilinen sorunlar ve geçici çözümler](#known-issues-and-workarounds) bölümünde ayrıntılı olarak açıklanan belirli bir kullanım durumu ile ilgili bilinen bir soruna neden olur.
 
 ## <a name="known-issues-and-workarounds"></a>Bilinen sorunlar ve geçici çözümler
 
@@ -88,9 +84,10 @@ Bu ayarlar, [Yarn 247](https://hwxmonarch.atlassian.net/browse/YARN-247)' de yak
 Daha önce bağlı olan Yarn Jira ile bağlantılı olarak, ortak kaynakları yerelleştirirken, yorumdur, uzak dosya sistemindeki izinlerini denetleyerek, istenen tüm kaynakların gerçekten genel olduğunu doğrular. Bu koşula uymayan herhangi bir LocalResource, yerelleştirme için reddedilir. İzinleri denetle, "diğerleri" için dosyaya okuma erişimi içerir. Bu senaryo, Azure Data Lake ' de HDInsight kümeleri barındırırken kullanıma hazır değildir, çünkü Azure Data Lake tüm "diğer" erişimini kök klasör düzeyinde reddeder.
 
 #### <a name="workaround"></a>Geçici çözüm
+
 Yukarıdaki tabloda gösterildiği gibi, örneğin **/** , **/kümeler** ve **/Clusters/finans** gibi **diğer kullanıcılar** için okuma-yürütme izinlerini ayarlayın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Hızlı başlangıç: HDInsight'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+- [Hızlı başlangıç: HDInsight'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+- [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](hdinsight-hadoop-use-data-lake-storage-gen2.md)

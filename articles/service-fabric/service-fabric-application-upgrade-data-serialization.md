@@ -1,66 +1,56 @@
 ---
-title: 'Uygulama yükseltme: verileri serileştirme | Microsoft Docs'
-description: Veri seri hale getirme ve uygulama yükseltmelerini etkilemesi için en iyi yöntemler.
-services: service-fabric
-documentationcenter: .net
+title: 'Uygulama yükseltme: Verileri serileştirme'
+description: Veri serileştirme ve bunların sıralı uygulama yükseltmelerini nasıl etkilediği için en iyi uygulamalar.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: a5f36366-a2ab-4ae3-bb08-bc2f9533bc5a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 55cbd869e7434469ebddd7af493c91bfedafc594
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614438"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457488"
 ---
-# <a name="how-data-serialization-affects-an-application-upgrade"></a>Veri seri hale getirme, bir uygulama yükseltmesi nasıl etkiler?
-İçinde bir [sıralı yükseltme uygulama](service-fabric-application-upgrade.md), düğümlerinin bir alt kümesi, aynı anda bir yükseltme etki alanı yükseltme uygulanır. Bu işlem sırasında bazı yükseltme etki alanları, uygulamanızın daha yeni sürümüne ve bazı yükseltme etki alanlarında, uygulamanın eski sürümünü temel. Dağıtım sırasında uygulamanızın yeni sürümünü verilerinizi eski sürümü okuyabilir ve uygulamanızın eski sürümünü verilerinizi yeni sürümünü okuyabilir olmalıdır. Veri biçimi ileriye ve geriye dönük olarak uyumlu değilse, yükseltme başarısız olabilir veya daha da kötüsü, veriler kaybolursa veya bozulursa. Hangi veri biçiminiz oluşturan ve verilerinizin ileriye ve geriye doğru olmasını sağlamaya yönelik en iyi uygulamaları sunar anlatılmaktadır uyumlu.
+# <a name="how-data-serialization-affects-an-application-upgrade"></a>Veri serileştirmesi bir uygulama yükseltmesini nasıl etkiler
+Bir sıralı [uygulama yükseltmesinde](service-fabric-application-upgrade.md), yükseltme bir tek seferde bir yükseltme etki alanı olmak üzere düğümlerin bir alt kümesine uygulanır. Bu işlem sırasında, bazı yükseltme etki alanları uygulamanızın daha yeni bir sürümüdür ve bazı yükseltme etki alanları uygulamanızın eski bir sürümüdür. Dağıtım sırasında, uygulamanızın yeni sürümü verilerinizin eski sürümünü okuyabilmelidir ve uygulamanızın eski sürümü verilerinizin yeni sürümünü okuyabilmelidir olması gerekir. Veri biçimi ileri ve geri uyumlu değilse, yükseltme başarısız olabilir veya daha kötü, veriler kaybolabilir veya bozulabilir. Bu makalede, veri biçiminizi ne oluşturduğunu ve verilerinizin ileriye ve geriye dönük olarak uyumlu olmasını sağlamak için en iyi yöntemleri sunan açıklanır.
 
-## <a name="what-makes-up-your-data-format"></a>Veri biçiminiz yapan nedir?
-Kalıcı ve çoğaltılan veriler, Azure Service Fabric gelir, C# sınıfları. Kullanan uygulamalar için [güvenilir koleksiyonlar](service-fabric-reliable-services-reliable-collections.md), kuyruklar ve güvenilir bir sözlük nesneleri verilerdir. Kullanan uygulamalar için [Reliable Actors](service-fabric-reliable-actors-introduction.md), yani bir aktör yedekleme durumu. Bunlar C# sınıfları kalıcı ve çoğaltılması için Serileştirilebilir olmalıdır. Bu nedenle, veri biçimi serileştirilme şeklini nasıl, de serileştirilme şeklini özellikleri ve alanları tarafından tanımlanır. Örneğin, bir `IReliableDictionary<int, MyClass>` seri hale getirilmiş bir veridir `int` ve seri hale getirilmiş bir `MyClass`.
+## <a name="what-makes-up-your-data-format"></a>Veri biçiminizi ne yapar?
+Azure Service Fabric, kalıcı ve çoğaltılan veriler sınıflarınızdan C# gelir. [Güvenilir koleksiyonlar](service-fabric-reliable-services-reliable-collections.md)kullanan uygulamalar için, bu veriler güvenilir sözlüklerdeki ve kuyruklardaki nesnelerdir. [Reliable Actors](service-fabric-reliable-actors-introduction.md)kullanan uygulamalar için, aktör için yedekleme durumudur. Bu C# sınıfların kalıcı olması ve çoğaltılması için seri hale getirilebilir olması gerekir. Bu nedenle, veri biçimi serileştirilmiş olan alanlar ve özellikler tarafından ve nasıl serileştirildikleri gibi tanımlanır. Örneğin, bir `IReliableDictionary<int, MyClass>` verileri serileştirilmiş bir `int` ve serileştirilmiş `MyClass`.
 
-### <a name="code-changes-that-result-in-a-data-format-change"></a>Bir veri biçimi değişikliği ile sonuçlanan kod değişiklikleri
-Veri biçimi tarafından belirlenen bu yana C# sınıfları sınıfları değişiklikleri neden olabilir bir veri biçimi değişikliği. Sıralı yükseltme veri biçimi değişikliği kaldırabileceğinden emin olmak için dikkatli olunması gerekir. Bu örnekler veri biçimi değişikliklere neden olabilir:
+### <a name="code-changes-that-result-in-a-data-format-change"></a>Veri biçimi değişikliğine neden olan kod değişiklikleri
+Veri biçimi sınıflar tarafından C# belirlendiği için sınıflardaki değişiklikler bir veri biçimi değişikliğine neden olabilir. Sıralı bir yükseltmenin veri biçimi değişikliğini işleyebileceğini güvence altına almak için dikkatli olunmalıdır. Veri biçimi değişikliklerine neden olabilecek örnekler:
 
-* Ekleme veya alanlar ve Özellikler'i kaldırma
-* Alanlar ve Özellikler yeniden adlandırma
-* Alanlar ve Özellikler türlerini değiştirme
-* Sınıf adı veya ad alanı değiştirme
+* Alan veya özellik ekleme veya kaldırma
+* Alanları veya özellikleri yeniden adlandırma
+* Alan veya özellik türlerini değiştirme
+* Sınıf adını veya ad alanını değiştirme
 
-### <a name="data-contract-as-the-default-serializer"></a>Varsayılan serileştirici olarak veri anlaşması
-Veri eski bir olsa bile seri hale getirici veri okumak ve geçerli sürüme seri durumdan çıkarmak için genellikle sorumlu olduğu veya *yeni* sürümü. Varsayılan serileştirici olan [veri sözleşmesi serileştiricisi](https://msdn.microsoft.com/library/ms733127.aspx), iyi tanımlanmış sürüm kuralları vardır. Güvenilir koleksiyonlar geçersiz kılınacak seri hale getirici izin ver, ancak Reliable Actors şu anda yapın. Veri serileştirici yükseltmeyi etkinleştirme önemli bir rol oynar. Veri sözleşmesi serileştiricisi için Service Fabric uygulamaları öneririz seri hale getirici ' dir.
+### <a name="data-contract-as-the-default-serializer"></a>Varsayılan serileştirici olarak veri sözleşmesi
+Seri hale getirici, verileri okumaktan ve verilerin daha eski veya *daha yeni* bir sürümde olsa bile geçerli sürüme serileştirilmesinden genellikle sorumludur. Varsayılan serileştirici, iyi tanımlanmış sürüm oluşturma kurallarına sahip olan [veri sözleşmesi serileştiricsahiptir](https://msdn.microsoft.com/library/ms733127.aspx). Güvenilir koleksiyonlar seri hale getiricinin geçersiz kılınmasına izin verir, ancak Reliable Actors Şu anda değil. Veri serileştirici, çalışırken yükseltmeleri olanaklı hale getirmekte önemli bir rol oynar. Veri sözleşmesi serileştiricisi, Service Fabric uygulamaları için önerdiğimiz serileştiricsahiptir.
 
-## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Veri biçimi sıralı yükseltme nasıl etkiler?
-Sıralı yükseltme sırasında burada seri hale getirici çalışılırsa, eski bir iki ana senaryo vardır veya *yeni* verilerinizin sürümü:
+## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Veri biçimi sıralı yükseltmeyi nasıl etkiler
+Sıralı yükseltme sırasında, seri hale getiricinin verilerinizin daha eski veya *daha yeni* bir sürümüyle karşılaşabilecekleri iki ana senaryo vardır:
 
-1. Bir düğüm yükseltilir ve yedeklemeyi başlattıktan sonra yeni seri hale getirici trvalý veri yükleyecek diske eski sürümü.
-2. Küme sıralı yükseltmesi sırasında kodunuzu eski ve yeni sürümleri bir karışımını içerir. Çoğaltmaları farklı yükseltme etki alanlarında yer alabilir ve çoğaltmaları veri birbirlerine göndermek olduğundan, verilerinizin yeni ve/veya eski sürümü, seri hale getirici yeni ve/veya eski sürümü tarafından karşılaşılabilir.
+1. Bir düğüm yükseltildikten ve yedekleme başladıktan sonra, yeni serileştirici, kalıcı olan verileri eski sürüm tarafından diske yükler.
+2. Çalışırken yükseltme sırasında, küme, kodunuzun eski ve yeni sürümlerinin bir karışımını içerir. Çoğaltmalar farklı yükseltme etki alanlarına yerleştirilebileceğinizden ve çoğaltmalar birbirlerine veri gönderediklerinden, verilerinizin yeni ve/veya eski sürümü seri hale getiricinin yeni ve/veya eski sürümü ile karşılaşabilir.
 
 > [!NOTE]
-> "Eski sürümü" ve "yeni sürümü" Burada çalışan kod sürümüne bakın. "Yeni seri hale getirici", uygulamanızın yeni sürümünü içinde yürütülen seri hale getirici kod ifade eder. "Yeni veri" serileştirilmiş ifade eder C# uygulamanızın yeni sürümünü sınıfı.
+> Burada "yeni sürüm" ve "eski sürüm", çalışan kodunuzun sürümüne başvurur. "Yeni serileştirici", uygulamanızın yeni sürümünde yürütülen seri hale getirici kodunu ifade eder. "Yeni veriler", uygulamanızın yeni sürümünden serileştirilmiş C# sınıfa başvurur.
 > 
 > 
 
-İki kod ve veri biçimi sürümü hem ileriye hem geriye dönük uyumlu. Uyumlu değillerse, sıralı yükseltme başarısız olabilir veya veri kaybı olabilir. Başka bir sürüm ile karşılaştığında kod veya seri hale getirici özel durumlar veya bir hata oluşturabilecek sıralı yükseltme başarısız olabilir. Örneğin, yeni özellik eklenmiştir, ancak eski seri hale getirici seri durumundan çıkarma sırasında atar, veriler kaybolabilir.
+Kodun ve veri biçiminin iki sürümü hem ileriye hem de geriye dönük olarak uyumlu olmalıdır. Bunlar uyumlu değilse, hareketli yükseltme başarısız olabilir veya veriler kaybolabilir. Kod veya seri hale getirici diğer sürümle karşılaştığında özel durumlar veya bir hata oluşturabileceğinden, yuvarlama yükseltmesi başarısız olabilir. Örneğin, yeni bir özellik eklendiyse, ancak eski seri hale getirici serisini kaldırma sırasında atarsa veriler kaybolabilir.
 
-Veri anlaşması verilerinizi uyumlu olmasını sağlamaya yönelik önerilen çözümdür. Ekleme, kaldırma ve alanları değiştirmek için iyi tanımlanmış sürüm kuralları var. Ayrıca, sınıf devralma ile ilgili bilinmeyen alanlarla ilgilenme ve Serileştirme ve seri durumundan çıkarma işlemine takma desteği bulunur. Daha fazla bilgi için [kullanarak veri anlaşması](https://msdn.microsoft.com/library/ms733127.aspx).
+Veri sözleşmesi, verilerinizin uyumlu olduğundan emin olmak için önerilen çözümdür. Alan ekleme, kaldırma ve değiştirme için iyi tanımlanmış sürüm kuralları içerir. Ayrıca, bilinmeyen alanlarla işleme, serileştirme ve seri kaldırma işlemine bağlama ve sınıf devralma ile ilgilenme desteği de vardır. Daha fazla bilgi için bkz. [veri sözleşmesini kullanma](https://msdn.microsoft.com/library/ms733127.aspx).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Uygulamayı kullanarak Visual Studio yükseltme](service-fabric-application-upgrade-tutorial.md) Visual Studio kullanarak bir uygulama yükseltmesi size yol gösterir.
+[Visual Studio 'Yu kullanarak uygulamanızı yükseltmek](service-fabric-application-upgrade-tutorial.md) , Visual Studio kullanarak bir uygulama yükseltme işleminde size yol gösterir.
 
-[Uygulama Powershell kullanarak yükseltme](service-fabric-application-upgrade-tutorial-powershell.md) PowerShell kullanarak bir uygulama yükseltmesi size yol gösterir.
+[PowerShell kullanarak uygulamanızı yükseltmek](service-fabric-application-upgrade-tutorial-powershell.md) , PowerShell kullanarak bir uygulama yükseltme işleminde size yol gösterir.
 
-Uygulamanızı kullanarak yükseltme nasıl kontrol [yükseltme parametreleri](service-fabric-application-upgrade-parameters.md).
+Uygulamanızın [yükseltme parametrelerini](service-fabric-application-upgrade-parameters.md)kullanarak nasıl yükseltileceğini denetleyin.
 
-Uygulamanızı yükseltilirken başvurarak gelişmiş işlevselliği kullanmanıza öğrenin [Gelişmiş konular](service-fabric-application-upgrade-advanced.md).
+[Gelişmiş konulara](service-fabric-application-upgrade-advanced.md)başvurarak uygulamanızı yükseltirken gelişmiş işlevselliği nasıl kullanacağınızı öğrenin.
 
-Yaygın sorunlar uygulama yükseltmeleri adımları başvurarak düzeltme [uygulama yükseltme sorunlarını giderme](service-fabric-application-upgrade-troubleshooting.md).
+Uygulama [yükseltmelerinde sorun giderme](service-fabric-application-upgrade-troubleshooting.md)adımlarını izleyerek uygulama yükseltmelerinde karşılaşılan yaygın sorunları giderin.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 9a36b46d11657ef52051f8bf8df1e4944051da23
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c166811bbfd27691f9a01a944d304d06560b0232
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454268"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445189"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>İzleme Azure Cosmos DB
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure Cosmos veritabanları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
@@ -37,55 +37,24 @@ Aşağıdaki bölümler, Azure Cosmos DB toplanan belirli verileri açıklayarak
 ![Cosmos DB için Azure Izleyici](media/monitor-cosmos-db/azure-monitor-cosmos-db.png)
 
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>Azure Cosmos DB toplanan verileri izleme
+
 Azure Cosmos DB, [Azure kaynaklarından gelen verileri izleme](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar. Azure Cosmos DB tarafından oluşturulan günlüklere ve ölçümlere ilişkin ayrıntılı bir başvuru için bkz. [Azure Cosmos DB izleme verileri başvurusu](monitor-cosmos-db-reference.md) .
 
 Her Azure Cosmos veritabanı için Azure portal **genel bakış** sayfası, isteği ve saatlik faturalandırma kullanımı dahil olmak üzere veritabanı kullanımının kısa bir görünümünü içerir. Bu yararlı bir bilgi olmakla kalmaz, yalnızca küçük miktarda izleme verisi kullanılabilir. Bu verilerden bazıları otomatik olarak toplanır ve analiz için kullanılabilir, ancak bazı yapılandırma ile ek veri toplamayı etkinleştirebilirsiniz.
 
 ![Genel Bakış sayfası](media/monitor-cosmos-db/overview-page.png)
 
-
-
-## <a name="diagnostic-settings"></a>Tanılama ayarları
-Platform ölçümleri ve etkinlik günlüğü otomatik olarak toplanır, ancak kaynak günlüklerini toplamak veya Azure Izleyici dışında iletmek için bir tanılama ayarı oluşturmanız gerekir. Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmaya yönelik ayrıntılı süreç için [Azure 'da platform günlüklerini ve ölçümlerini toplamak üzere tanılama ayarı oluşturma](../azure-monitor/platform/diagnostic-settings.md) konusuna bakın.
-
-Bir tanılama ayarı oluşturduğunuzda hangi günlük kategorilerinin toplanacağını belirlersiniz. Azure Cosmos DB kategorileri, örnek verilerle birlikte aşağıda listelenmiştir.
-
- * **Dataplanerequests**: Azure Cosmos DB içindeki SQL, Graph, MongoDB, Cassandra ve tablo API'si hesaplarını Içeren tüm API 'lere arka uç isteklerini günlüğe kaydetmek için bu seçeneği belirleyin. Önemli özellikler: Requestücret, statusCode, ClientIpAddress ve PartitionID.
-
-    ```
-    { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
-    ```
-
-* **Mongorequests**: Ön uçtaki kullanıcı tarafından başlatılan istekleri günlüğe kaydetmek için bu seçeneği belirleyin. Bu seçenek, Istekleri MongoDB IÇIN Azure Cosmos DB API 'sine istemcilere sunar. MongoDB istekleri, MongoRequests ve DataPlaneRequests içinde görünür. Önemli özellikler: Requestücret, opCode.
-
-    ```
-    { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
-    ```
-
-* **QueryRuntimeStatistics**: yürütülen sorgu metnini günlüğe kaydetmek için bu seçeneği belirleyin. 
-
-    ```
-    { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
-    ```
-
-* **Partitionkeystatistics**: Bölüm anahtarlarının istatistiklerini günlüğe kaydetmek için bu seçeneği belirleyin. Bu, şu anda Bölüm anahtarlarının depolama boyutu (KB) ile temsil edilir. Günlük, çoğu veri depolamasını kaplayan ilk üç bölüm anahtarına göre yayılır.
-
-    ```
-    { "time": "2019-10-11T02:33:24.2018744Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "PartitionKeyStatistics", "properties": {"subscriptionId": "<your_subscription_ID>","regionName": "West US 2","databaseName": "KustoQueryResults","collectionname": "CapacityMetrics","partitionkey": "["CapacityMetricsPartition.136"]","sizeKb": "2048270"}}
-    ```
-
-* **Ölçüm istekleri**: Azure Cosmos DB ' den gelen ölçüm verilerini tanılama ayarındaki hedeflere toplamak için bu seçeneği belirleyin. Bu, Azure ölçümlerinde otomatik olarak toplanan verileri de aynı şekilde toplamıştır. Her iki veri türünü birlikte analiz etmek ve ölçüm verilerini Azure Izleyici dışında göndermek için kaynak günlükleriyle ölçüm verileri toplayın.
-
 ## <a name="analyzing-metric-data"></a>Ölçüm verileri çözümleniyor
+
 Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. Bu deneyimi kullanmayla ilgili ayrıntılar ve farklı Azure Cosmos DB senaryoları çözümlemek için bkz. [Azure izleyici 'de Azure Cosmos DB ölçümleri izleme ve hata ayıklama](cosmos-db-azure-monitor-metrics.md) .
 
 **Azure izleyici** menüsünden **ölçümler** ' i açarak Ölçüm Gezgini 'ni kullanarak diğer Azure hizmetlerinden ölçümlerle Azure Cosmos DB için ölçümleri çözümleyebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) kullanmaya başlama. Tüm Azure Cosmos DB ölçümleri **Standart ölçümlerde Cosmos DB**ad alanıdır. Bir grafiğe filtre eklerken bu ölçümler ile aşağıdaki boyutları kullanabilirsiniz:
 
 - CollectionName
-- VeritabanıAdı
+- DatabaseName
 - OperationType
 - Bölge
-- Durum
+- StatusCode
 
 
 ## <a name="analyzing-log-data"></a>Günlük verileri çözümleniyor
@@ -102,7 +71,7 @@ Azure Izleyici günlüklerindeki veriler, her tablonun kendine ait benzersiz öz
 
 ### <a name="azure-cosmos-db-log-analytics-queries-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics sorguları Azure Cosmos DB
 
-Azure Cosmos Kapsayıcılarınızı izlemenize yardımcı olması için **günlük araması** arama çubuğuna girebileceğiniz bazı sorgular aşağıda verilmiştir. Bu sorgular [Yeni dille](../log-analytics/log-analytics-log-search-upgrade.md)çalışır.
+Azure Cosmos Kapsayıcılarınızı izlemenize yardımcı olması için **günlük araması** arama çubuğuna girebileceğiniz bazı sorgular aşağıda verilmiştir. Bu sorguları çalışmak [yeni dil](../log-analytics/log-analytics-log-search-upgrade.md).
 
 Azure Cosmos veritabanlarınızı izlemenize yardımcı olması için kullanabileceğiniz sorgular aşağıda verilmiştir.
 
@@ -198,10 +167,10 @@ Azure Cosmos veritabanlarınızı izlemenize yardımcı olması için kullanabil
 ## <a name="monitor-azure-cosmos-db-programmatically"></a>Azure Cosmos DB program aracılığıyla izleyin
 Hesap düzeyindeki ölçümleri hesap depolama kullanım ve toplam istekleri gibi Portalı'nda SQL API'leri üzerinden kullanılabilir değil. Ancak, SQL API'leri kullanarak koleksiyon düzeyinde kullanım verileri alabilir. Koleksiyon düzeyi verileri almak için aşağıdakileri yapın:
 
-* REST API kullanmak için, [koleksiyonda BIR get işlemi gerçekleştirin](https://msdn.microsoft.com/library/mt489073.aspx). Koleksiyon kotası ve kullanım bilgileri yanıtındaki x-ms-resource-quota ve x-ms-resource-kullanım üstbilgileri döndürülür.
-* .NET SDK 'yı kullanmak için, **Collectionsizeusage**, **databaseusage**, **documentusage**gibi birçok kullanım özelliği içeren bir [resourceres,](https://msdn.microsoft.com/library/dn799209.aspx) döndüren [documentclient. readdocumentcollectionasync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) yöntemini kullanın.
+* REST API'sini kullanmayı [koleksiyonunda bir GET gerçekleştirmek](https://msdn.microsoft.com/library/mt489073.aspx). Koleksiyon kotası ve kullanım bilgileri yanıtındaki x-ms-resource-quota ve x-ms-resource-kullanım üstbilgileri döndürülür.
+* .NET SDK'yı kullanmak için [DocumentClient.ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) döndüren yöntemi bir [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx) gibi çeşitli kullanım özellikleri içeren  **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**ve daha fazlası.
 
-Ek ölçümlere erişmek için [Azure izleyici SDK 'sını](https://www.nuget.org/packages/Microsoft.Azure.Insights)kullanın. Kullanılabilir ölçüm tanımlarını çağrılarak alınabilir:
+Ek ölçümlere erişmek için kullanmanız [Azure İzleyici SDK'sı](https://www.nuget.org/packages/Microsoft.Azure.Insights). Kullanılabilir ölçüm tanımlarını çağrılarak alınabilir:
 
     https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metricDefinitions?api-version=2015-04-08
 

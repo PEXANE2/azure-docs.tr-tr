@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 11/08/2019
-ms.openlocfilehash: 9c4dca6dc5def1b1c458f28aa2d3ab992bd705d2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/16/2019
+ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792719"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75527867"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
 Bazen mantıksal uygulamalarınızın ve tümleştirme hesaplarınızın, bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md)içindeki sanal makineler (VM) ve diğer sistemler veya hizmetler gibi güvenli kaynaklara erişmesi gerekir. Bu erişimi ayarlamak için, mantıksal uygulamalarınızı çalıştırabileceğiniz ve tümleştirme hesaplarınızı oluşturabileceğiniz [bir *tümleştirme hizmeti ortamı* (ISE) oluşturabilirsiniz](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) .
 
-Bir ıSE oluşturduğunuzda, Azure sanal ağınıza ait olan ve Azure sanal ağınıza Logic Apps hizmetin özel ve yalıtılmış bir örneğini *dağıtan Azure sanal* ağınıza yönelik olarak Azure sanal ağınıza yönelik bir sanal makine oluşturun. Bu özel örnek, depolama gibi özel kaynaklar kullanır ve genel "küresel" Logic Apps hizmetinden ayrı olarak çalışır. Yalıtılmış özel örneğinizi ve genel Global örneği ayırmak, diğer Azure kiracılarının uygulamalarınızın performansı üzerinde sahip olabileceği etkileri azaltmaya yardımcı olur ve bu da ["gürültülü komşular" etkisi](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)olarak da bilinir.
+Bir ıSE oluşturduğunuzda, Azure sanal ağınıza ait olan ve Azure sanal ağınıza Logic Apps hizmetin özel ve yalıtılmış bir örneğini *dağıtan Azure sanal* ağınıza yönelik olarak Azure sanal ağınıza yönelik bir sanal makine oluşturun. Bu özel örnek, depolama gibi özel kaynaklar kullanır ve genel, "genel", çok kiracılı Logic Apps hizmetinden ayrı olarak çalışır. Yalıtılmış özel örneğinizi ve genel Global örneği ayırmak, diğer Azure kiracılarının uygulamalarınızın performansı üzerinde sahip olabileceği etkileri azaltmaya yardımcı olur ve bu da ["gürültülü komşular" etkisi](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)olarak da bilinir. ISE, size kendi statik IP adreslerinizi de sağlar. Bu IP adresleri, genel, çok kiracılı hizmette Logic Apps tarafından paylaşılan statik IP adreslerinden ayrıdır.
 
 ISE 'nizi oluşturduktan sonra mantıksal uygulamanızı veya tümleştirme hesabınızı oluşturmaya geçtiğinizde, mantıksal uygulamanız veya tümleştirme hesabınızın konumu olarak ıSE 'yi seçebilirsiniz:
 
@@ -27,7 +27,7 @@ Mantıksal uygulamanız artık bu öğelerden herhangi birini kullanarak sanal a
 
 * Bu sistem için **Ise**etiketli bağlayıcı
 * HTTP tetikleyicisi veya eylemi gibi **çekirdek**etiketli bir yerleşik tetikleyici veya eylem
-* Özel bağlayıcı
+* Özel bir bağlayıcı
 
 Bu genel bakışta, bir ıSE 'nin mantıksal uygulamalarınızın ve tümleştirme hesaplarınızın Azure sanal ağınıza doğrudan erişimini nasıl verdiği ve bir ıSE ile küresel Logic Apps hizmeti arasındaki farkları karşılaştıran daha fazla ayrıntı açıklanmaktadır.
 
@@ -47,7 +47,7 @@ Bir ıSE 'de Logic Apps, genel Logic Apps hizmetiyle aynı kullanıcı deneyimle
 
 * Azure Blob depolama, dosya depolama ve tablo depolama
 * Azure kuyrukları, Azure Service Bus, Azure Event Hubs ve IBM MQ
-* Dosya sistemi, FTP ve SFTP-SSH
+* FTP ve SFTP-SSH
 * SQL Server, Azure SQL veri ambarı Azure Cosmos DB
 * AS2, x12 ve EDIOLGU
 
@@ -86,11 +86,13 @@ Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azur
 
 ## <a name="ise-endpoint-access"></a>ISE uç noktası erişimi
 
-ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı tercih edebilirsiniz. Bu uç noktalar, işinizdeki Logic Apps 'teki istek veya Web kancasının, sanal ağınızın dışından çağrı alıp almamadığını belirtir. Bu uç noktalar Ayrıca Logic App çalıştırma geçmişinde girişlere ve çıkışlara erişimi de etkiler.
+ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı tercih edebilirsiniz. Seçiminiz, işinizdeki Logic Apps 'teki istek veya Web kancasının, sanal ağınızın dışından çağrı alıp alamayacağını belirler.
 
-* **İç**: e-postalarda Logic Apps çağrılarına ve yalnızca *sanal ağınızın* içinden çalıştırma geçmişinde girişlere ve çıkışlara erişilmesine izin veren özel uç noktalar
+Bu uç noktalar Ayrıca Logic Apps çalıştırma geçmişinizdeki girişlere ve çıkışlara erişme yöntemini de etkiler.
 
-* **Dış**: işinizdeki Logic Apps çağrılarına ve *sanal ağınızın dışından* çalıştırma geçmişindeki giriş ve çıkışlara erişilmesine izin veren genel uç noktalar
+* **İç**: işinizdeki Logic Apps çağrılarına izin veren özel uç noktalar, çalışma geçmişinde *yalnızca sanal ağınızın* içinden Logic Apps girişlerini ve çıktılarını görüntüleyebilir ve bunlara erişebilirsiniz
+
+* **Dış**: işinizdeki Logic Apps çağrılarına izin veren genel uç noktalar, *sanal ağınızın dışından*çalıştırma geçmişinde Logic Apps girişlerini ve çıktılarını görüntüleyebilir ve bunlara erişebilirsiniz. Ağ güvenlik grupları (NSG 'ler) kullanıyorsanız, çalıştırma geçmişinin giriş ve çıkışlarına erişime izin vermek için gelen kurallarla ayarlandıklarından emin olun. Daha fazla bilgi için bkz. [Ise için erişimi etkinleştirme](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
 
 > [!IMPORTANT]
 > Erişim uç noktası seçeneği yalnızca ıSE oluşturma sırasında kullanılabilir ve daha sonra değiştirilemez.

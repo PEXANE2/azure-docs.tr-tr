@@ -5,25 +5,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/28/2019
+ms.date: 12/17/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 518c57bc3327511b70deef143826f2a1b9df8639
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 74ef8270b5efcd3b7cdf756c103dcc2e1c935508
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188041"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460509"
 ---
-Bir RBAC rolü için bir güvenlik sorumlusu atamadan önce güvenlik sorumlusu olması gereken erişim kapsamını belirleyin. En iyi uygulamalar, her zaman yalnızca olası en dar kapsamdan vermek en iyi olduğunu gerektirir.
+Bir güvenlik sorumlusuna RBAC rolü atamadan önce, güvenlik sorumlusunun sahip olması gereken erişimin kapsamını saptayın. En iyi uygulamalar, yalnızca en dar olası kapsamı sağlamak için her zaman en iyi seçenektir.
 
-Aşağıdaki listede, Azure blob ve kuyruk kaynaklarına erişimi dar kapsamlı başlatma kapsamını sınırlandırabilirsiniz düzeyleri açıklanmaktadır:
+Aşağıdaki listede, en dar kapsamdan başlayarak Azure Blob ve kuyruk kaynaklarına erişimi kapsamındaki düzeyler açıklanmaktadır:
 
-- **Tek bir kapsayıcı.** Bu kapsamda bir rol ataması tüm blobların kapsayıcı, hem de kapsayıcı özellikleri ve meta veriler için geçerlidir.
-- **Tek bir kuyruk.** Bu kapsamda bir rol ataması iletileri kuyruğa yanı sıra özellikleri ve meta verileri için geçerlidir.
-- **Depolama hesabı.** Bu kapsamda bir rol ataması, tüm kapsayıcılar ve bunların bloblar veya tüm sıralarının ve iletilerinin geçerlidir.
-- **Kaynak grubu.** Bu kapsamda bir rol ataması tüm kuyruklarda tüm depolama hesaplarını kaynak grubunda ve kapsayıcılar için geçerlidir.
-- **Abonelik.** Bu kapsamda bir rol ataması kapsayıcıları veya tüm depolama hesaplarını Abonelikteki kaynak gruplarının tüm kuyruklarda tüm geçerlidir.
+- **Tek bir kapsayıcı.** Bu kapsamda bir rol ataması, kapsayıcıdaki tüm Blobların yanı sıra kapsayıcı özellikleri ve meta veriler için de geçerlidir.
+- **Tek bir kuyruk.** Bu kapsamda, bir rol atamasının kuyruktaki iletiler, Ayrıca kuyruk özellikleri ve meta veriler için geçerli olduğunu.
+- **Depolama hesabı.** Bu kapsamda, bir rol ataması tüm kapsayıcılar ve Blobları için ya da tüm kuyruklar ve bunların iletileri için geçerlidir.
+- **Kaynak grubu.** Bu kapsamda, bir rol ataması, kaynak grubundaki tüm depolama hesaplarında bulunan tüm kapsayıcılar veya kuyruklar için geçerlidir.
+- **Abonelik.** Bu kapsamda, bir rol ataması, abonelikteki tüm kaynak gruplarındaki tüm depolama hesaplarında tüm kapsayıcılar veya kuyruklar için geçerlidir.
 
 > [!IMPORTANT]
-> Aboneliğinize bir Azure DataBricks ad alanı varsa, abonelik kapsamında atanan rollerin, blob ve kuyruk veri erişim engellenir.
+> Aboneliğiniz bir Azure DataBricks ad alanı içeriyorsa, abonelik kapsamındaki roller blob ve kuyruk verilerine erişim vermez. Bunun yerine kaynak grubu, depolama hesabı veya kapsayıcı veya kuyruk için kapsam rolleri.     

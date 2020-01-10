@@ -17,17 +17,24 @@ ms.date: 07/12/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f962cd9bc8c975ccaef90f61f20eea4cf1e4935e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2192c472e00d123780ec6bc5574e7b9fe326258b
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014332"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495315"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Raporlama için Azure AD PowerShell cmdlet’leri
 
 > [!NOTE] 
 > Bu PowerShell cmdlet 'leri Şu anda yalnızca [Azure AD önizleme](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) modülüyle çalışır. Önizleme modülünün üretim kullanımı için önerilmediğini lütfen unutmayın. 
+
+Genel önizleme sürümünü yüklemek için aşağıdakileri kullanın. 
+
+```powershell
+Install-module AzureADPreview
+```
+PowerShell kullanarak Azure AD 'ye bağlanma hakkında daha fazla bilgi için lütfen [Graph Için Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)makalesine bakın.  
 
 Azure Active Directory (Azure AD) raporlarında, yönlerinizde (denetim günlükleri) ve kimlik doğrulama verilerinde (oturum açma günlükleri) tüm yazma işlemlerinde bulunan etkinliklerle ilgili ayrıntılı bilgi edinebilirsiniz. Bilgiler MS Graph API kullanılarak kullanılabilir olsa da, artık raporlama için Azure AD PowerShell cmdlet 'lerini kullanarak aynı verileri alabilirsiniz.
 

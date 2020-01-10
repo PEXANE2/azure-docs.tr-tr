@@ -1,26 +1,16 @@
 ---
-title: Visual Studio 'da uygulamanızda hata ayıklama | Microsoft Docs
+title: Visual Studio’da uygulamanızın hatalarını ayıklama
 description: Yerel bir geliştirme kümesinde Visual Studio 'da geliştirip hata ayıklaarak hizmetlerinizin güvenilirliğini ve performansını artırabilirsiniz.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.custom: vs-azure
-ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: ee5354845efba0cce92ccf4f11eb3480684e7509
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 18b32c0fb0b2d203b3536e7a859e149da8453f76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947895"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458124"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Visual Studio 'Yu kullanarak Service Fabric uygulamanızda hata ayıklama
 > [!div class="op_single_selector"]
@@ -33,7 +23,7 @@ ms.locfileid: "71947895"
 Azure Service Fabric uygulamanızı yerel bir bilgisayar geliştirme kümesinde dağıtarak ve hata ayıkladıktan sonra zamandan ve paradan tasarruf edebilirsiniz. Visual Studio 2019 veya 2015, uygulamayı yerel kümeye dağıtabilir ve hata ayıklayıcıyı otomatik olarak uygulamanızın tüm örneklerine bağlayın. Hata ayıklayıcıya bağlanmak için Visual Studio 'nun yönetici olarak çalıştırılması gerekir.
 
 1. [Service Fabric geliştirme ortamınızı ayarlama](service-fabric-get-started.md)adımlarını izleyerek bir yerel geliştirme kümesi başlatın.
-2. **F5** tuşuna basın veya **Hata Ayıkla** > **hata ayıklamayı Başlat**öğesine tıklayın.
+2. **Hata ayıklamayı başlatmak** > **F5** tuşuna basın veya **Hata Ayıkla** öğesine tıklayın.
    
     ![Bir uygulamada hata ayıklamayı başlatma][startdebugging]
 3. Kodunuzda kesme noktaları ayarlayın ve **Hata Ayıkla** menüsündeki komutlar ' a tıklayarak uygulamada gezinin.

@@ -10,23 +10,23 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: acac881a790644532121697e6b79e57a98b168fe
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839838"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454713"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio model sonuçlarını yorumlama (klasik)
 Bu konuda, tahmin sonuçlarının Azure Machine Learning Studio (klasik) görselleştirilmesi ve yorumlanması açıklanmaktadır. Bir modeli eğitdikten ve bunun üzerine ("model puanlanır") ilişkin tahminleri tamamladıktan sonra, tahmin sonucunu anlamanız ve yorumlamanıza gerek duyarsınız.
 
 
 
-Azure Machine Learning Studio klasik sürümünde dört ana makine öğrenimi modeli vardır:
+Azure Machine Learning Studio (klasik) üzerinde dört önemli makine öğrenimi modeli vardır:
 
 * Sınıflandırma
-* Lenmesi
-* regresyon
+* Kümeleme
+* Regresyon
 * Öneren sistemleri
 
 Bu modellerin üzerine tahmin için kullanılan modüller şunlardır:
@@ -39,7 +39,7 @@ Bu belgede, bu modüllerin her biri için tahmin sonuçlarının nasıl yorumlan
 
 Bu konuda tahmin yorumu ele alınmaktadır, ancak model değerlendirmesi uygulanmaz. Modelinizin nasıl değerlendirileceği hakkında daha fazla bilgi için bkz. [Azure Machine Learning Studio model performansını değerlendirme (klasik)](evaluate-model-performance.md).
 
-Azure Machine Learning Studio klasik sürümüne yeni başladıysanız ve başlamak için basit bir deneme oluşturma konusunda yardıma ihtiyacınız varsa, bkz. [Azure Machine Learning studio 'de basit bir deneme oluşturma (klasik)](create-experiment.md).
+Azure Machine Learning Studio (klasik) ' i kullanmaya yeni başladıysanız ve başlamak için basit bir deneme oluşturma konusunda yardıma ihtiyacınız varsa, bkz. [Azure Machine Learning studio 'de basit bir deneme oluşturma (klasik)](create-experiment.md).
 
 ## <a name="classification"></a>Sınıflandırma
 Sınıflandırma sorunlarının iki alt kategorisi vardır:
@@ -52,7 +52,7 @@ Azure Machine Learning Studio (klasik), bu sınıflandırma türlerinin her biri
 ### <a name="two-class-classification"></a>İki sınıf sınıflandırma
 **Örnek deneme**
 
-İki sınıflı bir sınıflandırma sorununa örnek Iris çiçekler sınıflandırmasıdır. Görev, Iris çiçekler özelliklerine göre sınıflandırılır. Azure Machine Learning Studio klasik sürümünde belirtilen Iris veri kümesi, yalnızca iki çiçek türler (sınıflar 0 ve 1) örneklerini içeren popüler [Iris veri kümesinin](https://en.wikipedia.org/wiki/Iris_flower_data_set) bir alt kümesidir. Her çiçek için dört Özellik (sepal uzunluğu, sepal genişliği, Petal uzunluğu ve Petal genişliği) vardır.
+İki sınıflı bir sınıflandırma sorununa örnek Iris çiçekler sınıflandırmasıdır. Görev, Iris çiçekler özelliklerine göre sınıflandırılır. Azure Machine Learning Studio (klasik) ' de belirtilen Iris veri kümesi, yalnızca iki çiçek türler (sınıflar 0 ve 1) örneklerini içeren popüler [Iris veri kümesinin](https://en.wikipedia.org/wiki/Iris_flower_data_set) bir alt kümesidir. Her çiçek için dört Özellik (sepal uzunluğu, sepal genişliği, Petal uzunluğu ve Petal genişliği) vardır.
 
 ![Iris denemesinin ekran görüntüsü](./media/interpret-model-results/1.png)
 
@@ -137,7 +137,7 @@ Web hizmetini yayımladıktan ve çalıştırdıktan sonra bazı giriş özelli�
 
 Şekil 10. Birden çok Lass sınıflandırmasının Web hizmeti sonucu
 
-## <a name="regression"></a>regresyon
+## <a name="regression"></a>Regresyon
 Gerileme sorunları, sınıflandırma sorunlarından farklıdır. Bir sınıflandırma sorunu içinde, bir Iris çiçeği ait olduğu sınıf gibi ayrı sınıfları tahmin etmeye çalışıyorsunuz. Ancak aşağıdaki bir gerileme sorunu örneğinde görebileceğiniz gibi, bir otomobil fiyatı gibi sürekli bir değişkeni tahmin etmeye çalışıyorsunuz demektir.
 
 **Örnek deneme**
@@ -174,7 +174,7 @@ Web hizmeti çalıştırıldığında döndürülen sonuç Şekil 14 ' ü gibi g
 
 Şekil 14. Bir otomobil fiyat gerileme sorununun Web hizmeti sonucu
 
-## <a name="clustering"></a>Lenmesi
+## <a name="clustering"></a>Kümeleme
 **Örnek deneme**
 
 Bir kümeleme denemesi oluşturmak için Iris veri kümesini yeniden kullanalım. Burada, veri kümesindeki sınıf etiketlerini filtreleyerek yalnızca özellikler ve kümeleme için kullanılabilir hale getirebilirsiniz. Bu Iris kullanım durumu ' nda, eğitim süreci sırasında iki sınıf olacak küme sayısını belirtin. Bu, çiçekleri iki sınıfa Kümelendirmek anlamına gelir. Deneme şekil 15 ' te gösterilmiştir.
@@ -224,9 +224,9 @@ Web hizmetini çalıştırdıktan sonra, döndürülen sonuç Şekil 19 gibi gö
 
 * Müşterilerden Restoran derecelendirmeleri
 * Müşteri özelliği verileri
-* Restoran özellik verileri
+* Restoran özelliği verileri
 
-Azure Machine Learning Studio klasik sürümünde [tren Matchbox öneren][train-matchbox-recommender] modülü ile yapabiliriz birkaç şey vardır:
+Azure Machine Learning Studio (klasik) ile [eğitme kutusu öneren][train-matchbox-recommender] modülü ile yapabiliriz birkaç şey vardır:
 
 * Belirli bir Kullanıcı ve öğe için derecelendirmeleri tahmin etme
 * Belirli bir kullanıcıya öğe önerme

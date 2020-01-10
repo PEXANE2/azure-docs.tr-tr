@@ -4,21 +4,21 @@ description: Bu hızlı başlangıçta bir IOT Edge cihazı oluşturma ve ardın
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/09/2019
+ms.date: 11/06/2019
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6163a7f9b7c3aa1b37b263433c4dea7f0c3bcf5e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2a5a5bc91e4d83975d05d63dbab4b621734a0ac5
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457670"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494716"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma
 
-Kapsayıcılı kodu bir sanal IoT Edge cihazına dağıtarak bu hızlı başlangıçta Azure IoT Edge test edin. IoT Edge, iş yüklerinizi kenarda daha fazla gönderebilmeniz için cihazlarınızda kodu uzaktan yönetmenizi sağlar. Bu hızlı başlangıçta, IoT Edge cihazınız için bir Azure sanal makinesi kullanmanızı öneririz. Bu, tüm önkoşulların yüklü olduğu bir test makinesini hızlıca oluşturmanızı ve sonra işiniz bittiğinde silmenizi sağlar. 
+Kapsayıcılı kodu bir sanal IoT Edge cihazına dağıtarak bu hızlı başlangıçta Azure IoT Edge test edin. IoT Edge, iş yüklerinizi kenarda daha fazla gönderebilmeniz için cihazlarınızda kodu uzaktan yönetmenizi sağlar. Bu hızlı başlangıçta, IoT Edge cihazınız için bir Azure sanal makinesi kullanmanızı öneririz. Bu, tüm önkoşulların yüklü olduğu bir test makinesini hızlıca oluşturmanızı ve sonra işiniz bittiğinde silmenizi sağlar.
 
 Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
@@ -43,7 +43,7 @@ Azure IoT uzantısını cloud shell örneğine ekleyin.
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bulut kaynakları:
 
@@ -62,9 +62,9 @@ IoT Edge cihazı:
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
-   Yeni sanal makinenin oluşturulması ve başlatılması birkaç dakika sürebilir.
+   Yeni sanal makinenin oluşturulup başlatılması birkaç dakika sürebilir.
 
-   Yeni bir sanal makine oluşturduğunuzda, Create komutu çıkışının bir parçası olarak belirtilen **Publicıpaddress**' i bir yere getirin. Bu hızlı başlangıcın sonraki bölümlerinde sanal makineye bağlanmak için bu genel IP adresi kullanır.
+   Yeni bir sanal makine oluşturduğunuzda, Not **Publicıpaddress**, oluşturma komut çıktısı bir parçası olarak sağlanır. Bu hızlı başlangıcın sonraki bölümlerinde sanal makineye bağlanmak için bu genel IP adresi kullanır.
 
 * Azure IoT Edge çalışma zamanını kendi cihazınızda çalıştırmayı tercih ediyorsanız, [Linux üzerinde Azure IoT Edge çalışma zamanını yüklemek](how-to-install-iot-edge-linux.md)için yönergeleri izleyin.
 
@@ -76,10 +76,10 @@ Azure CLı ile IoT Hub 'ı oluşturarak hızlı başlangıcı başlatın.
 
 IoT Hub’ın ücretsiz düzeyi bu hızlı başlangıç için kullanılabilir. IoT Hub'ı daha önce kullandıysanız ve oluşturulmuş ücretsiz hub'ınız varsa bu IoT hub'ını kullanabilirsiniz. Her aboneliğin yalnızca bir ücretsiz IoT hub’ı olabilir.
 
-Aşağıdaki kod, **IoTEdgeResources** kaynak grubunda ücretsiz bir **F1** hub’ı oluşturur. *{hub_name}* değerini IoT hub'ınız için benzersiz bir adla değiştirin.
+Aşağıdaki kod, **IoTEdgeResources** kaynak grubunda ücretsiz bir **F1** hub’ı oluşturur. `{hub_name}`, IoT Hub 'ınız için benzersiz bir adla değiştirin.
 
    ```azurecli-interactive
-   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1
+   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
    Aboneliğinizde zaten bir ücretsiz hub olduğu için hata alırsanız, SKU değerini **S1** olarak değiştirin. IOT hub'ı adı kullanılamıyor, bir hata alırsanız, başka birisi zaten bu ada sahip bir hub'ı olduğu anlamına gelir. Yeni bir ad deneyin.
@@ -92,7 +92,7 @@ Yeni oluşturulan IoT hub'ına bir IoT Edge cihazı kaydedin.
 
 IoT Edge cihazınız için, IoT Hub 'ınız ile iletişim kurabilmesi için bir cihaz kimliği oluşturun. Cihaz kimliği bulutta kalır ve fiziksel cihazla cihaz kimliği arasında bağlantı kurmak için benzersiz bir bağlantı dizesi kullanılır.
 
-IoT Edge cihazlar sıradan IoT cihazlarından farklı şekilde yönetilemediğinden, bu kimliği `--edge-enabled` bayrağıyla bir IoT Edge cihaz için olacak şekilde bildirin.
+IOT Edge cihazları sınıflardır ve tipik bir IOT cihazlarında farklı yönetilebilir olduğundan, bu kimlik ile IOT Edge cihazı için bildirmek `--edge-enabled` bayrağı.
 
 1. Azure Cloud Shell'de aşağıdaki komutu girerek hub'ınızda **myEdgeDevice** adlı bir cihaz oluşturun.
 
@@ -108,7 +108,7 @@ IoT Edge cihazlar sıradan IoT cihazlarından farklı şekilde yönetilemediğin
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. `connectionString` anahtarının değerini JSON çıktısından kopyalayın ve kaydedin. Bu değer, cihaz bağlantı dizesidir. Sonraki bölümde IoT Edge çalışma zamanını yapılandırmak için bu bağlantı dizesini kullanacaksınız.
+3. `connectionString` anahtarının değerini JSON çıktısından kopyalayın ve kaydedin. Bu değer, cihaz bağlantı dizesidir. Bu bağlantı dizesini bir sonraki bölümde IoT Edge çalışma zamanını yapılandırmak için kullanacaksınız.
 
    ![CLı çıktısından bağlantı dizesini al](./media/quickstart/retrieve-connection-string.png)
 
@@ -124,7 +124,7 @@ IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Üç bile�
 
 ### <a name="set-the-connection-string-on-the-iot-edge-device"></a>IOT Edge cihazında bağlantı dizesini Ayarla
 
-Önkoşul bölümünde açıklandığı gibi Ubuntu sanal makinesinde Azure IoT Edge kullanıyorsanız, cihazınızda IoT Edge çalışma zamanı zaten yüklüdür. Cihazınızı, önceki bölümde aldığınız cihaz bağlantı dizesi ile yapılandırmanız yeterlidir. Bunu, sanal makineye bağlanmak zorunda kalmadan uzaktan yapabilirsiniz. Aşağıdaki komutu çalıştırarak **{device_connection_string}** öğesini kendi dizeniz ile değiştirin.
+Önkoşul bölümünde açıklandığı gibi Ubuntu sanal makinesinde Azure IoT Edge kullanıyorsanız, cihazınızda IoT Edge çalışma zamanı zaten yüklüdür. Cihazınızı, önceki bölümde aldığınız cihaz bağlantı dizesi ile yapılandırmanız yeterlidir. Bu işlemi uzaktan, sanal makineye bağlanmadan gerçekleştirebilirsiniz. Aşağıdaki komutu çalıştırarak `{device_connection_string}` kendi dizeniz ile değiştirin.
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
@@ -134,7 +134,7 @@ Yerel makinenizde veya bir ARM32 ya da ARM64 cihazında IoT Edge çalıştırıy
 
 ### <a name="view-the-iot-edge-runtime-status"></a>IoT Edge çalışma zamanı durumunu görüntüleme
 
-Bu hızlı başlangıçtaki komutların geri kalanı IoT Edge cihazınızın kendisinde gerçekleşirken cihazda neler olduğunu görmeniz için. Bir sanal makine kullanıyorsanız, oluşturma komutu tarafından çıktı olan genel IP adresini kullanarak o makineye şimdi bağlanın. Genel IP adresini sanal makinenizin genel bakış sayfasında Azure Portalı'nda da bulabilirsiniz. Sanal makinenize bağlanmak için aşağıdaki komutu kullanın. Önkoşullarda önerilenden farklı bir Kullanıcı adı kullandıysanız **{azureuser}** öğesini değiştirin. **{Publicıpaddress}** değerini makinenizin adresi ile değiştirin.
+Bu hızlı başlangıçtaki komutların geri kalanı IoT Edge cihazınızın kendisinde gerçekleşirken cihazda neler olduğunu görmeniz için. Bir sanal makine kullanıyorsanız, oluşturma komutu tarafından çıktı olan genel IP adresini kullanarak o makineye şimdi bağlanın. Genel IP adresini sanal makinenizin genel bakış sayfasında Azure Portalı'nda da bulabilirsiniz. Sanal makinenize bağlanmak için aşağıdaki komutu kullanın. Önkoşullarda önerilenden farklı bir Kullanıcı adı kullandıysanız `{azureuser}` değiştirin. `{publicIpAddress}`, makinenizin adresi ile değiştirin.
 
    ```azurecli-interactive
    ssh azureuser@{publicIpAddress}
@@ -143,7 +143,7 @@ Bu hızlı başlangıçtaki komutların geri kalanı IoT Edge cihazınızın ken
 Çalışma zamanının IoT Edge cihazınıza başarıyla yüklenip yapılandırıldığını doğrulayın.
 
 >[!TIP]
->`iotedge` komutlarını çalıştırmak için yükseltilmiş ayrıcalıklara ihtiyacınız olacaktır. Makinenizdeki oturumu kapattıktan sonra IoT Edge çalışma zamanını yükleyip oturum açtığınızda izinleriniz otomatik olarak güncelleştirilir. O zamana kadar komutların önüne **sudo** eklemenize gerekir.
+>`iotedge` komutlarını çalıştırmak için yükseltilmiş ayrıcalıklara ihtiyacınız olacaktır. Makinenizdeki oturumu kapattıktan sonra IoT Edge çalışma zamanını yükleyip oturum açtığınızda izinleriniz otomatik olarak güncelleştirilir. Bundan sonra komutların önünde `sudo` kullanın.
 
 1. IoT Edge güvenlik arka plan programının sistem hizmeti olarak çalışıp çalışmadığını denetleyin.
 
@@ -172,7 +172,7 @@ IoT Edge cihazınız yapılandırıldı. Bulutta dağıtılan modülleri çalı�
 ## <a name="deploy-a-module"></a>Modül dağıtma
 
 Azure IoT Edge cihazınızı, IoT Hub'ına telemetri verileri gönderecek bir modül dağıtmak için buluttan yönetin.
-![diyagramı-buluttan cihaza modül dağıtma](./media/quickstart-linux/deploy-module.png)
+![Diyagram - modülü buluttan cihaza dağıtın](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
@@ -180,7 +180,7 @@ Azure IoT Edge cihazınızı, IoT Hub'ına telemetri verileri gönderecek bir mo
 
 Bu hızlı başlangıçta, yeni bir IoT Edge cihazı oluşturdunuz ve üzerine IoT Edge çalışma zamanını yüklediniz. Ardından, cihazın kendisinde değişiklik yapmak zorunda kalmadan cihazda çalıştırmak üzere bir IoT Edge modülünü dağıtmak için Azure portal kullandınız.
 
-Bu durumda, gönderdiğiniz modül test için kullanabileceğiniz örnek veriler oluşturur. Sanal sıcaklık algılayıcı modülü, daha sonra test için kullanabileceğiniz ortam verileri oluşturur. Sanal algılayıcı hem makinenin hem de makinenin bulunduğu ortamın izlenmesini izler. Örneğin, bu algılayıcı bir sunucu odasında, bir fabrika katında veya bir rüzgar Turbin üzerinde olabilir. İleti çevresel sıcaklık ve nem, makine sıcaklığı ve basınç ve bir zaman damgası içerir. IoT Edge öğreticileri, bu modülle oluşturulan verileri analiz için test verileri olarak kullanır.
+Bu durumda, gönderdiğiniz modül test için kullanabileceğiniz örnek veriler oluşturur. Sanal sıcaklık algılayıcı modülü, daha sonra test için kullanabileceğiniz ortam verileri oluşturur. Sanal algılayıcı hem makinenin hem de makinenin bulunduğu ortamın izlenmesini izler. Örneğin bu sensör bir sunucu odasında, fabrika sahasında veya rüzgar türbininde olabilir. İletide ortam sıcaklığı ve nemi, makine sıcaklığı ve basıncı ile bir zaman damgası bulunur. IoT Edge öğreticileri, bu modülle oluşturulan verileri analiz için test verileri olarak kullanır.
 
 IOT Edge Cihazınızda bir komut istemi yeniden açın veya Azure CLI SSH bağlantısından kullanın. Buluttan dağıtılan modülün IoT Edge cihazınızda çalıştığından emin olun:
 
@@ -217,10 +217,9 @@ az group delete --name IoTEdgeResources
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-
 Bu hızlı başlangıçta bir IoT Edge cihaz oluşturdunuz ve cihaza kod dağıtmak için Azure IoT Edge bulut arabirimini kullandınız. Artık ortamı hakkında ham veri üreten bir test cihazınız var.
 
-Bir sonraki adım, iş mantığınızı çalıştıran IoT Edge modüller oluşturmaya başlayabilmeniz için yerel geliştirme ortamınızı ayarlamanıza olanak sağlar. 
+Bir sonraki adım, iş mantığınızı çalıştıran IoT Edge modüller oluşturmaya başlayabilmeniz için yerel geliştirme ortamınızı ayarlamanıza olanak sağlar.
 
 > [!div class="nextstepaction"]
 > [Linux cihazları için IoT Edge modülleri geliştirmeye başlama](tutorial-develop-for-linux.md)

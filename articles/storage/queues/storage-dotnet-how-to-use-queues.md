@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: aa92b72b09ed28b41d85ac7c7605077761657d40
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5ffee146bdbd666d4175af2f49f6b447743b2bc0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721556"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457671"
 ---
-# <a name="get-started-with-azure-queue-storage-using-net"></a>.NET kullanarak Azure Kuyruk Depolamaya başlayın
+# <a name="get-started-with-azure-queue-storage-using-net"></a>.NET kullanarak Azure Kuyruk depolamayı kullanmaya başlama
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
@@ -31,7 +31,7 @@ Bu öğreti, Azure kuyruk depolama kullanarak bazı genel senaryolar için .NET 
 
 **Tahmini tamamlanma süresi:** 45 dakika
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [.NET için Azure Storage ortak istemci kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
@@ -52,7 +52,7 @@ Ardından, geliştirme ortamınızı Visual Studio’da ayarlayın; böylece bu 
 Visual Studio'da yeni bir Windows konsol uygulaması oluşturun. Aşağıdaki adımlarda, Visual Studio 2019 ' de bir konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. Adımlar Visual Studio’nun diğer sürümlerinde de benzerdir.
 
 1. **Dosya** > **Yeni** > **Proje**’yi seçin
-2. **Platform** > **pencerelerini** seçin
+2. **Platform** > **Windows** seçin
 3. **Konsol Uygulaması (.NET Framework)** öğesini seçin
 4. **İleri**’yi seçin
 5. **Proje adı** alanına uygulamanız için bir ad girin
@@ -66,9 +66,9 @@ Azure depolama istemci kitaplıklarını, Azure bulut hizmeti veya Web uygulamas
 
 Bu öğreticiyi tamamlayabilmeniz için projenizde aşağıdaki üç pakete başvurmanız gerekir:
 
-* [.Net Için ortak Istemci kitaplığı Microsoft Azure depolama](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Bu paket, Depolama hesabınızdaki veri kaynaklarına programlı erişim sağlar.
-* [.NET için Microsoft Azure depolama kuyruk kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Bu istemci kitaplığı, bir istemci tarafından erişilebilen iletilerin depolanması için Microsoft Azure Depolama Kuyruk hizmeti birlikte çalışmaya izin verebilir.
-* [.NET için Microsoft Azure Configuration Manager kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Bu paket, uygulamanızın nerede çalıştığını fark etmeksizin yapılandırma dosyasında bir bağlantı dizesini ayrıştırmak için bir sınıf sağlar.
+* [.Net Için ortak Istemci kitaplığı Microsoft Azure depolama](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Bu paket Depolama hesabınızdaki veri kaynaklarına programlı erişim sağlar.
+* [.NET için Microsoft Azure depolama kuyruk kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Bu istemci kitaplığı, bir istemci tarafından erişilebilecek iletileri depolamak için Microsoft Azure depolama kuyruk hizmeti birlikte çalışmaya izin verebilir.
+* [.NET için Microsoft Azure Configuration Manager Kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Bu paket, uygulamanızın nerede çalıştığına bakmaksızın yapılandırma dosyasından bağlantı dizesini ayrıştırmak için bir sınıf sağlar.
 
 Bu paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları uygulayın:
 
@@ -89,7 +89,7 @@ Bu kılavuzdaki örnekleri çalıştırmak için iki ortam seçeneğiniz vardır
 * Kodunuzu buluttaki bir Azure Storage hesabına karşı çalıştırabilirsiniz.
 * Kodunuzu Azure Storage öykünücüsüne karşı çalıştırabilirsiniz. Depolama öykünücüsü, buluttaki Azure Storage hesabına öykünen bir yerel ortamdır. Öykünücü, uygulamanız geliştirildiği sırada kodunuzu test etmek ve hatalarını ayıklamak için bağımsız bir seçenektir. Öykünücü iyi bilinen hesabı ve anahtarı kullanır. Daha fazla bilgi için bkz. [Geliştirme ve test için Azure depolama öykünücüsünü kullanma](../common/storage-use-emulator.md).
 
-Buluttaki bir depolama hesabını hedefliyorsanız, depolama hesabınız için birincil erişim anahtarını Azure portalından kopyalayın. Daha fazla bilgi için bkz. [Erişim anahtarları](../common/storage-account-manage.md#access-keys)
+Buluttaki bir depolama hesabını hedefliyorsanız, depolama hesabınız için birincil erişim anahtarını Azure portalından kopyalayın. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../common/storage-account-keys-manage.md).
 
 > [!NOTE]
 > Azure Storage ile ilişkili maliyetlerin oluşmasını önlemek için depolama öykünücüsünü hedefleyebilirsiniz. Ancak, buluttaki bir Azure Storage hesabını hedeflemeyi seçerseniz, bu öğreticiyi gerçekleştirme maliyetleri göz ardı edilecektir.
@@ -163,7 +163,7 @@ CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
 Artık Kuyruk depolamadan veri okuyan ve bu depolamaya veri yazan kodu yazmaya hazırsınız.
 
-## <a name="create-a-queue"></a>Bir kuyruk oluşturma
+## <a name="create-a-queue"></a>Kuyruk oluşturma
 
 Bu örnek, zaten yoksa, nasıl bir kuyruk oluşturulacağını gösterir:
 

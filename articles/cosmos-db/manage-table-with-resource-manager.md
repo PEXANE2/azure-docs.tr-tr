@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB için Azure Resource Manager şablonlar Tablo API'si
+title: Azure Cosmos DB için Kaynak Yöneticisi şablonlar Tablo API'si
 description: Azure Cosmos DB Tablo API'si oluşturmak ve yapılandırmak için Azure Resource Manager şablonları kullanın.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: bd30f240700ea4dcf9c9ec20b8007a4445ae35e5
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 0f3c4562fde9ac57315c72b89ed156051aea062b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960557"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445235"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Cosmos DB Tablo API'si kaynaklarını yönetme
 
@@ -77,7 +77,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bazı ek kaynaklar aşağıda verilmiştir:
+Aşağıdaki ek kaynakları da inceleyebilirsiniz:
 
 - [Azure Resource Manager belgeleri](/azure/azure-resource-manager/)
 - [Azure Cosmos DB kaynak sağlayıcısı şeması](/azure/templates/microsoft.documentdb/allversions)

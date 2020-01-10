@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: b42314d1c8c1bd734181f02c36ae3f43507e9b79
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 0c26f94d0a51b7912d3f964e3cc96ec392fec69b
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815214"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495167"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: konuşma SDK 'sını kullanarak bot uygulamanızı etkinleştirin
 
@@ -50,7 +50,7 @@ Bu öğreticinin şu şekilde ele alınmaktadır:
 > * Özel anahtar sözcük etkinleştirme Ekle
 > * Tanınan ve konuşulan konuşma dilini değiştirmeyi öğrenin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için gerekenler aşağıda verilmiştir:
 
@@ -72,7 +72,7 @@ Bu öğreticide oluşturacağınız istemci uygulaması, el ile Azure hizmetleri
    * **Kaynak grubunuz**için bir ad girin. **SpeechEchoBotTutorial-ResourceGroup**önerilir.
    * **Bölge** açılır listesinden **Batı ABD**' yi seçin.
 1. **Gözden geçir ve oluştur**' a tıklayın. Okuma **doğrulamasının geçtiğini**belirten bir başlık görmeniz gerekir.
-1. **Oluştur**’a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
+1. **Oluştur**'a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
 1. Bu öğreticide daha sonra oluşturacağınız kaynaklarda olduğu gibi, kolay erişim için bu kaynak grubunu panonuza sabitlemek iyi bir fikirdir. Bu kaynak grubunu sabitlemek istiyorsanız panonun sağ üst köşesindeki sabitleme simgesine tıklayın.
 
 ### <a name="choosing-an-azure-region"></a>Azure bölgesi seçme
@@ -117,7 +117,7 @@ Sonraki adım App Service bir plan oluşturmaktır. App Service planı, bir web 
 
 1. [Azure Portal](https://portal.azure.com) gidin ve sol gezinmede **kaynak oluştur** ' u seçin.
 2. Arama çubuğuna **App Service plan**yazın. Sonra, arama sonuçlarından **App Service plan** kartını bulun ve seçin.
-3. **Oluştur**’a tıklayın.
+3. **Oluştur**'a tıklayın.
 4. Sizden bazı bilgiler sağlamanız istenecektir:
    * **Aboneliği** **ücretsiz denemeye** ayarlayın (mevcut bir aboneliği de kullanabilirsiniz).
    * **Kaynak grubu**için **SpeechEchoBotTutorial-ResourceGroup**öğesini seçin.
@@ -126,7 +126,7 @@ Sonraki adım App Service bir plan oluşturmaktır. App Service planı, bir web 
    * **Bölge**için **Batı ABD**' yi seçin.
    * **Fiyatlandırma katmanı**Için **Standart S1** ' in seçildiğinden emin olun. Bu, varsayılan değer olmalıdır. Değilse, **Işletim sistemini** yukarıda açıklandığı gibi **Windows** 'a ayarladığınızdan emin olun.
 5. **Gözden geçir ve oluştur**' a tıklayın. Okuma **doğrulamasının geçtiğini**belirten bir başlık görmeniz gerekir.
-6. **Oluştur**’a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
+6. **Oluştur**'a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
 
 Bu noktada, kaynak grubunuz (**SpeechEchoBotTutorial-ResourceGroup**) iki kaynak olduğunu kontrol edin:
 
@@ -166,7 +166,7 @@ Bazı kaynaklar oluşturduğunuza göre artık bir bot oluşturalım. Adın gös
 1. [Bot Framework öykünücü](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) sürümü 4.3.0 veya üstünü yükler
 2. Bot Framework öykünücüsünü başlatın ve botunuzu açın:
    * **Dosya** -> **bot 'ı açın**.
-3. Bot 'unuzun URL 'sini girin. Örnek:
+3. Bot 'unuzun URL 'sini girin. Örneğin:
 
    ```
    http://localhost:3978/api/messages
@@ -187,7 +187,7 @@ Sonraki adım, yankı bot 'ı Azure 'a dağıtmaktır. Bir bot dağıtmanın bir
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
-1. **Çözüm Gezgini**, **yankı bot** çözümüne sağ tıklayın ve **Yayımla...** ' yı seçin.
+1. **Çözüm Gezgini**, **yankı bot** projesine sağ tıklayın ve Yayımla ' yı seçin **...**
 1. **Bir yayımlama hedefi seç** başlıklı yeni bir pencere açılır.
 1. Sol gezinti **App Service** seçin, **Yeni oluştur**' u ve ardından **Yayımla**' yı seçin.
 1. **App Service oluştur** penceresi göründüğünde:
@@ -221,7 +221,7 @@ Botunuzun Web yuvalarını kullanarak doğrudan hat konuşma kanalıyla iletişi
 2. Sol gezinti bölmesinde **Ayarlar**altında **yapılandırma**' ya tıklayın.
 3. **Genel ayarlar** sekmesini seçin.
 4. **Web Yuvaları** geçiş biçimini bulun ve **Açık**olarak ayarlayın.
-5. **Kaydet** düğmesine tıklayın.
+5. **Save (Kaydet)** düğmesine tıklayın.
 
 > [!TIP]
 > Hizmeti durdurmak veya yeniden başlatmak için Azure App Service sayfanızın en üstündeki denetimleri kullanabilirsiniz. Bu sorun giderirken yararlı olabilir.
@@ -233,11 +233,11 @@ Botunuzu barındırmak için bir Azure App Service oluşturduğunuza göre, sonr
 > [!NOTE]
 > Botların kanallardan yararlanma hakkında daha fazla bilgi edinmek istiyorsanız bkz. [bir bot 'ı kanallara bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0).
 
-1. İlk adım kayıt için yeni bir kaynak oluşturmaktır. [Azure portalda](https://portal.azure.com) **Kaynak oluştur**’a tıklayın.
+1. İlk adım kayıt için yeni bir kaynak oluşturmaktır. [Azure portalda](https://portal.azure.com)**Kaynak oluştur**’a tıklayın.
 2. Arama çubuğunda, Sonuçlar görüntülendikten **sonra,** **bot kanalları kaydı**' nı seçin.
-3. **Oluştur**’a tıklayın.
+3. **Oluştur**'a tıklayın.
 4. Sizden bazı bilgiler sağlamanız istenecektir:
-   * **Bot adı**için **SpeechEchoBotTutorial-botregistration**yazın.
+   * **Bot tutamacı**için **SpeechEchoBotTutorial-botregistration**yazın.
    * **Abonelik**Için **ücretsiz deneme**' yı seçin.
    * **Kaynak grubu**için **SpeechEchoBotTutorial-ResourceGroup**öğesini seçin.
    * **Konum**için **Batı ABD**' yi seçin.
@@ -245,7 +245,7 @@ Botunuzu barındırmak için bir Azure App Service oluşturduğunuza göre, sonr
      * **Mesajlaşma uç noktası**için, sonuna `/api/messages` yolu eklenmiş Web uygulamanızın URL 'sini girin. Örneğin: genel olarak benzersiz uygulamanızın adı **EchoBot20190805125647**ise, mesajlaşma uç noktanız şöyle olacaktır: `https://EchoBot20190805125647.azurewebsites.net/api/messages/`.
      * **Application Insights**Için bunu **kapalı**olarak ayarlayabilirsiniz. Daha fazla bilgi için bkz. [bot Analytics](https://docs.microsoft.com/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0).
      * **Otomatik uygulama kimliği ve parola oluşturmayı**yoksay.
-5. **Bot kanalları kaydına** geri gidin ve **Oluştur**' a tıklayın.
+5. **Bot kanalları kayıt** dikey penceresinin alt kısmındaki **Oluştur**' a tıklayın.
 
 Bu noktada, Azure portal kaynak grubunuzu **SpeechEchoBotTutorial-ResourceGroup** ' u kontrol edin. Şimdi dört kaynak göstermesi gerekir:
 
@@ -268,11 +268,11 @@ Bu noktada, Azure portal kaynak grubunuzu **SpeechEchoBotTutorial-ResourceGroup*
    * **Daha fazla kanal**arayın, **doğrudan hat konuşmayı**bulun ve tıklatın.
    * Sayfadaki **doğrudan konuşmayı Yapılandır**' ı, ardından "bilişsel hizmet hesabı" olarak etiketlenen açılan menüyü genişleterek sayfada bulunan metni gözden geçirin.
    * Daha önce oluşturduğunuz konuşma kaynağını (ör. **SpeechEchoBotTutorial-Speech**) seçerek bot 'unuzu konuşma abonelik anahtarınızla ilişkilendirin.
-   * **Kaydet** düğmesine tıklayın.
+   * **Save (Kaydet)** düğmesine tıklayın.
 
 1. Sol gezinti bölmesinde **Ayarlar**' a tıklayın.
    * **Akış uç noktasını etkinleştir**etiketli kutuyu işaretleyin. Bu, bot ve doğrudan hat konuşma kanalı arasında Web Yuvaları üzerinde oluşturulmuş bir iletişim protokolünü etkinleştirmek için gereklidir.
-   * **Kaydet** düğmesine tıklayın.
+   * **Save (Kaydet)** düğmesine tıklayın.
 
 > [!TIP]
 > Daha fazla bilgi edinmek istiyorsanız, bkz. [konuşmayı doğrudan konuşmaya bağlamak için bir bot bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0). Bu sayfa, ek bilgi ve bilinen sorunları içerir.
@@ -383,29 +383,50 @@ Doğrudan hat konuşma Istemci kaynak kodunda, anahtar sözcük algılamayı etk
 1. [`DLSpeechClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/Models.cs) , BIR konuşma SDK yöntemine [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-)bir çağrı içerir. Bu, bir dosyanın diskteki yerel bir dosyadan örneğini oluşturmak için kullanılır.
 1. [`DLSpeechClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/MainWindow.xaml.cs) , sürekli anahtar sözcük algılamayı ETKINLEŞTIREN konuşma SDK yöntemine [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync)bir çağrı içerir.
 
-## <a name="optional-change-the-language-and-redeploy-your-bot"></a>Seçim Dili değiştirme ve bot uygulamanızı yeniden dağıtma
+## <a name="optional-change-the-language-and-bot-voice"></a>Seçim Dili ve bot sesini değiştirme
 
-Oluşturduğunuz bot, Ingilizce 'yi dinleyecektir ve yanıt vermelidir. Ancak, Ingilizce 'yi kullanma sınırlı değildir. Bu bölümde, bot 'unuzun dinlemesi ve yanıt verdiği dilin nasıl değiştirileceğini ve bot 'ın yeniden dağıtılması hakkında bilgi edineceksiniz.
+Oluşturduğunuz bot, varsayılan Amerikan Ingilizcesi metin okuma sesi ile Ingilizce 'yi dinler ve bu şekilde yanıt verir. Ancak, Ingilizce veya varsayılan bir ses ile sınırlı değilsiniz. Bu bölümde, bot 'unuzun dinleyeceği ve yanıt verdiği dilin nasıl değiştirileceğini öğreneceksiniz. Ayrıca, bu dil için farklı bir ses seçme hakkında bilgi edineceksiniz.
 
 ### <a name="change-the-language"></a>Dili değiştirme
 
-1. `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`açarak başlayalım.
-2. Ardından SSML 'yi bulun. `<speak></speak>` etiketlere yerleştirildiğinden, kolayca bulabilirsiniz.
-3. SSML dizesinde `<voice name>` etiketini bulun, `<voice name='de-DE-Stefan-Apollo'>`ile değiştirin ve kaydedin. Bu biçimli dize, metin okuma hizmetine, Almanca için en iyi duruma getirilmiş ses `de-DE-Stefan-Apollo`kullanarak sentezlenmiş bir konuşma yanıtı döndürmesini söyler.
+[Konuşma-metin](language-support.md#speech-to-text) tablosunda belirtilen dillerden herhangi birini seçebilirsiniz. Aşağıdaki örnekte, dili Almanca olarak değiştirecağız.
 
->[!NOTE]
-> Almanca ile sınırlı değildir ve [konuşma hizmetinden](language-support.md#text-to-speech)kullanılabilir sesler listesinden seçim yapabilirsiniz.
+1. Doğrudan hat konuşma Istemci uygulamasını açın, Ayarlar düğmesine (sağ üst dişli simgesine) tıklayın ve dil alanına `de-de` girin (Bu, [konuşma-metin](language-support.md#speech-to-text) tablosunda belirtilen yerel ayar değeridir). Bu, varsayılan `en-us`geçersiz kılmak için konuşulan dili tanınmak üzere ayarlar. Bu ayrıca doğrudan hat konuşma kanalına, bot yanıtı için varsayılan bir Alman sesi kullanmasını söyler.
+2. Ayarlar sayfasını kapatın ve yankı bot 'a yeni bir bağlantı kurmak için yeniden Bağlan düğmesine tıklayın.
+3. Mikrofon düğmesine tıklayın ve Almanya 'da bir ifade söyleyin. Tanınan metin ve yankı bot 'ın varsayılan Alman sesiyle yanıt olarak olduğunu görürsünüz.
+
+
+### <a name="change-the-default-bot-voice"></a>Varsayılan bot sesini değiştirme
+
+Metin okuma sesinin belirlenmesi ve söylenişi, bir konuşmayı basit metin yerine bir [konuşma Sensimi biçimlendirme dili](speech-synthesis-markup.md) (SSML) biçiminde belirtiyorsa, telaffuz denetimi yapılabilir. Yankı botu SSML kullanmaz, ancak bunu yapmak için kodu kolayca değiştirebiliriz. Aşağıdaki örnekte, varsayılan kadın sesi yerine Almanya sesli Stefan Apollo (erkek ses) kullanılacak şekilde SSML 'yi Echo bot yanıtına ekledik. Diliniz için desteklenen [standart sesler](language-support.md#standard-voices) ve [sinir seslerinizin](language-support.md#neural-voices) listesini görüntüleyin.
+
+1. `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`açarak başlayalım.
+2. Şu iki satırı bulun:
+    ```csharp
+    var replyText = $"Echo: {turnContext.Activity.Text}";
+    await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
+    ```
+3. Bunları ile değiştirin:
+    ```csharp
+    var replyText = $"Echo: {turnContext.Activity.Text}";
+    var replySpeak = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='de-DE'>
+                    <voice name='Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo)'>" +
+                    $"{replyText}" + "</voice></speak>";
+    await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replySpeak), cancellationToken);
+    ```
+4. Visual Studio 'da çözümünüzü derleyin ve tüm derleme hatalarını düzeltin.
+
+' MessageFactory. Text ' yöntemindeki ikinci bağımsız değişken, bot yanıtında [etkinlik konuş alanını](https://github.com/Microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) ayarlar. Yukarıdaki değişiklik ile, varsayılan olmayan bir Almanya sesi belirtmek için basit metinden SSML 'ye değiştirilmiştir.
 
 ### <a name="redeploy-your-bot"></a>Botunuzu yeniden dağıtın
 
 Şimdi de gerekli bir değişikliği yapmış olduğunuza göre, bir sonraki adım, Azure App Service yeniden yayımlamanız ve denemek için:
 
-1. Visual Studio 'da çözümünüzü derleyin ve tüm derleme hatalarını düzeltin.
-2. Çözüm Gezgini penceresinde, **yankı bot** projesine sağ tıklayın ve **Yayımla**' yı seçin.
-3. Önceki dağıtım yapılandırmanız varsayılan olarak zaten yüklenmiştir. **EchoBot20190805125647-Web dağıtımı**' nin yanında **Yayımla** ' ya tıklamanız yeterlidir.
-4. **Yayımla başarılı** Iletisi Visual Studio çıktı penceresinde görünür ve bir Web sayfası, "bot 'niz hazırlanıyor!" iletisiyle başlatılır.
-5. Doğrudan hat konuşma Istemci uygulamasını açın, Ayarlar düğmesine (sağ üst dişli simgesine) tıklayın ve dil alanına `de-de` girin. Bu, varsayılan `en-us`geçersiz kılmak için konuşulan dili tanınmak üzere ayarlar.
-6. Yeni dağıtılan bot ile yeniden bağlanmak için [doğrudan hat konuşma Istemcisini oluşturma](#build-the-direct-line-speech-client) bölümünde yer alan yönergeleri izleyin, yeni dilde konuşun ve yeni sesle bu dilde her bir bot yanıtı dinleyin.
+1. Çözüm Gezgini penceresinde, **yankı bot** projesine sağ tıklayın ve **Yayımla**' yı seçin.
+2. Önceki dağıtım yapılandırmanız varsayılan olarak zaten yüklenmiştir. **EchoBot20190805125647-Web dağıtımı**' nin yanında **Yayımla** ' ya tıklamanız yeterlidir.
+3. **Yayımla başarılı** Iletisi Visual Studio çıktı penceresinde görünür ve bir Web sayfası, "bot 'niz hazırlanıyor!" iletisiyle başlatılır.
+4. Doğrudan hat konuşma Istemci uygulamasını açın, Ayarlar düğmesine (sağ üst dişli simgesine) tıklayın ve dil alanında `de-de` hala olduğundan emin olun.
+5. Yeni dağıtılan bot ile yeniden bağlanmak için [doğrudan hat konuşma Istemcisini oluşturma](#build-the-direct-line-speech-client) bölümünde yer alan yönergeleri izleyin, yeni dilde konuşun ve yeni sesle bu dilde her bir bot yanıtı dinleyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -1,67 +1,58 @@
 ---
-title: Azure Service Fabric'e otomatik ölçeklendirme Hizmetleri ve kapsayıcıları | Microsoft Docs
-description: Azure Service Fabric, otomatik ölçeklendirme Hizmetleri ve kapsayıcıları için ilkeler ayarlamanızı sağlar.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric Hizmetleri ve kapsayıcıları otomatik ölçeklendirme
+description: Azure Service Fabric, hizmetler ve kapsayıcılar için otomatik ölçeklendirme ilkeleri ayarlamanıza olanak sağlar.
 author: radicmilos
-manager: ''
-editor: nipuzovi
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 8e57c071c9fd93a8581d574aeec2b23b38b3ab95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844032"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452078"
 ---
-# <a name="introduction-to-auto-scaling"></a>Otomatik ölçeklendirme giriş
-Otomatik ölçeklendirme Hizmetleri raporladığınız ya da kendi kaynak kullanımını temel alarak yük hizmetlerinizi dinamik olarak ölçeklendirmeniz mi ek bir Service fabric özelliktir. Otomatik ölçeklendirme, büyük esneklik sağlar ve ek örnekler ya da isteğe bağlı hizmetinizin bölümler sağlama sağlar. Tüm otomatik ölçeklendirme işlemi, otomatik ve şeffaf ve bir hizmette ilkelerinizi ayarladıktan sonra hizmet düzeyinde el ile ölçeklendirme işlemleri için gerek yoktur. Otomatik ölçeklendirme üzerinde hizmet oluşturma zamanında veya herhangi bir zamanda hizmet güncelleştirerek kapatılabilir.
+# <a name="introduction-to-auto-scaling"></a>Otomatik ölçeklendirmeye giriş
+Otomatik ölçeklendirme, hizmetlerin raporlanması gereken yükün veya kaynakların kullanımlarına göre dinamik olarak ölçeklendirilmesine yönelik Service Fabric ek bir özelliktir. Otomatik ölçeklendirme, büyük ölçüde esneklik sağlar ve isteğe bağlı olarak hizmetinizin ek örneklerinin veya bölümlerinin sağlanmasına olanak tanır. Otomatik ölçeklendirme işleminin tamamı otomatik ve şeffaftır ve ilkeleri bir hizmette ayarladıktan sonra hizmet düzeyinde el ile ölçeklendirme işlemlerine gerek yoktur. Otomatik Ölçeklendirme hizmeti oluşturma sırasında veya hizmeti güncelleştirilerek herhangi bir zamanda açılabilir.
 
-Otomatik ölçeklendirme kullanışlı olduğu bir yaygın bir senaryo, belirli bir hizmet üzerindeki yükü zamanla değişir andır. Örneğin, bir ağ geçidi ölçeklendirebilirsiniz gibi bir hizmet gelen istekleri işlemek için gerekli kaynaklar miktarına göre. Ölçeklendirme kuralları aşağıdaki gibi görünebilir örneği bir göz atalım:
-* Ağ tüm örneklerini ikiden fazla çekirdek ortalama kullanıyorsanız, ağ geçidi hizmetini bir daha fazla örnek ekleyerek ölçeklendirin. Her saat bunu ancak hiçbir zaman toplam sekizden fazla örneğe sahip.
-* Ağ tüm örneklerini az 0,5 çekirdek ortalama kullanıyorsanız, hizmette bir örnek kaldırarak ölçeklendirin. Her saat bunu ancak hiçbir zaman toplam üçten daha az sayıda örneğe sahip.
+Belirli bir hizmet üzerindeki yükün zamana göre farklılık gösterdiği, otomatik ölçeklendirmenin yararlı olduğu yaygın bir senaryo. Örneğin, bir ağ geçidi gibi bir hizmet, gelen istekleri işlemek için gereken kaynak miktarına göre ölçeklendirebilirler. Bu ölçeklendirme kurallarının nasıl görünebileceklerini bir örneğe bakalım:
+* Ağ geçidimin tüm örnekleri ortalama üzerinde ikiden fazla çekirdek kullanıyorsa, daha sonra bir örnek ekleyerek Ağ Geçidi hizmetini ölçeklendirin. Bu saati her saat yapın, ancak toplamda yedi taneden fazla örneğe sahip olmaz.
+* Ağ geçidimin tüm örnekleri ortalama 0,5 çekirdek kullanıyorsa, bir örneği kaldırarak hizmeti ' de ölçeklendirin. Bu saati her saat yapın, ancak toplamda üçten az örnek yoktur.
 
-Otomatik ölçeklendirme, kapsayıcılar ve normal bir Service Fabric Hizmetleri için desteklenir. Otomatik ölçeklendirme kullanmak için 6.2 sürümü veya üzeri çalıştırması gerekir Service Fabric çalışma zamanı. 
+Otomatik ölçeklendirme, hem kapsayıcılar hem de normal Service Fabric Hizmetleri için desteklenir. Otomatik ölçeklendirmeyi kullanabilmeniz için, Service Fabric çalışma zamanının 6,2 veya sonraki bir sürümü üzerinde çalışıyor olmanız gerekir. 
 
-Bu makalenin geri kalanında, yolları etkinleştirmek veya otomatik ölçeklendirme, devre dışı bırakmak için ölçeklendirme ilkeleri tanımlar ve bu özelliği kullanmak örnekler sağlar.
+Bu makalenin geri kalanında ölçekleme ilkeleri, otomatik ölçeklendirmeyi etkinleştirme veya devre dışı bırakma yolları açıklanmakta ve bu özelliğin nasıl kullanılacağına ilişkin örnekler verilmektedir.
 
-## <a name="describing-auto-scaling"></a>Otomatik ölçeklendirme açıklayan
-Bir Service Fabric kümesindeki her bir hizmet için otomatik ölçeklendirme ilkeleri tanımlanabilir. Her bir ölçeklendirme İlkesi iki bölümden oluşur:
-* **Tetikleyici ölçeklendirme** hizmetini ölçekleme ne zaman gerçekleştirilecek açıklar. Tetikleyicinin içinde tanımlanmış koşullar, bir hizmet veya daraltılacağı olmadığını belirlemek için düzenli olarak denetlenir.
+## <a name="describing-auto-scaling"></a>Otomatik ölçeklendirmeyi açıklama
+Otomatik ölçeklendirme ilkeleri, bir Service Fabric kümesindeki her bir hizmet için tanımlanabilir. Her ölçeklendirme ilkesi iki bölümden oluşur:
+* **Ölçeklendirme tetikleyicisi** , hizmetin ölçeklendirilmesine ne zaman gerçekleştirileceğini açıklar. Tetikleyicide tanımlanan koşullar, bir hizmetin ölçeklendirilmesi gerekip gerekmediğini belirlemede düzenli aralıklarla denetlenir.
 
-* **Ölçeklendirme mekanizması** tetiklendiğinde nasıl ölçekleme gerçekleştirileceğini açıklar. Tetikleyici koşulları karşılandığında mekanizması yalnızca uygulanır.
+* **Ölçeklendirme mekanizması** , tetiklendikten sonra ölçeklendirmeyi nasıl gerçekleştirileceğini açıklar. Mekanizma yalnızca tetikleyiciden gelen koşullar karşılandığında uygulanır.
 
-Şu anda desteklenen tüm tetikleyiciler ile birlikte çalışma [mantıksal yükleme ölçümleri](service-fabric-cluster-resource-manager-metrics.md), veya CPU veya bellek kullanımı gibi fiziksel ölçümlerle. Her iki durumda da, Service Fabric ölçüm için bildirilen yük izler ve düzenli aralıklarla ölçeklendirme gerekip gerekmediğini belirlemek için tetikleyici olarak değerlendirilir.
+Şu anda desteklenen tüm tetikleyiciler, [mantıksal yük ölçümleriyle](service-fabric-cluster-resource-manager-metrics.md)veya CPU ya da bellek kullanımı gibi fiziksel ölçülerle çalışır. Her iki durumda da Service Fabric, ölçüm için bildirilen yükü izler ve ölçeklendirmeyi, ölçeklendirmenin gerekip gerekmediğini belirlemede düzenli aralıklarla değerlendirir.
 
-Şu anda otomatik ölçekleme için desteklenen iki mekanizma vardır. İlk otomatik ölçeklendirme gerçekleştirildiği ekleyerek veya kaldırarak kapsayıcılar veya durum bilgisi olmayan hizmetler için tasarlanmıştır [örnekleri](service-fabric-concepts-replica-lifecycle.md). Durum bilgisi olan ve durum bilgisi olmayan hizmetler için otomatik ölçeklendirme da ekleyerek gerçekleştirilebilir veya kaldırma adlı [bölümleri](service-fabric-concepts-partitioning.md) hizmeti.
+Otomatik ölçeklendirme için şu anda desteklenen iki mekanizma vardır. Birincisi, durum bilgisi olmayan hizmetler veya [örnek](service-fabric-concepts-replica-lifecycle.md)ekleyerek veya kaldırarak otomatik ölçeklendirmenin gerçekleştirildiği kapsayıcılar için tasarlanmıştır. Durum bilgisiz ve durum bilgisi olmayan hizmetler için, otomatik ölçeklendirme, hizmetin adlandırılmış [bölümlerini](service-fabric-concepts-partitioning.md) ekleyerek veya kaldırarak da gerçekleştirilebilir.
 
 > [!NOTE]
-> Şu anda hizmet başına yalnızca bir ölçeklendirme İlkesi ve ölçeklendirme İlkesi başına yalnızca bir ölçeklendirme tetikleyici desteği yoktur.
+> Şu anda hizmet başına yalnızca bir ölçeklendirme ilkesi desteği vardır ve ölçek ilkesi başına yalnızca bir ölçeklendirme tetikleyicisi vardır.
 
-## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Ortalama bölüm yük tetikleyici bağlı olarak örnek ölçeklendirme
-İlk tetikleyici türünü bir durum bilgisi olmayan hizmet bölümdeki örneklerinin yük temel alır. Ölçüm yükleri bir bölüm, her örneği için yük almak için ilk düzleştirilmiş ve ardından bu değerleri bölüm tüm örneklerinde ortalaması alınır. Hizmet zaman ölçeklendirileceği belirlemek üç faktöre vardır:
+## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Örnek tabanlı ölçeklendirmeyle ortalama bölüm yükleme tetikleyicisi
+İlk tetikleyici türü, durum bilgisi olmayan bir hizmet bölümündeki örneklerin yükünü temel alır. Ölçüm yüklemeleri, bir bölümün her örneğinin yükünü elde etmek için ilk kez düzgünleştirilir ve bu değerler bölümün tüm örneklerinde ortalaması alınır. Hizmetin ne zaman ölçekleneceğini tespit eden üç etken vardır:
 
-* _Alt yükleme eşiği_ hizmeti ne zaman olacağını belirleyen bir değer **ölçeği**. Ortalama yük tüm örneklerinin bölüm bu değerden düşükse, hizmet olarak ayarlanacaktır.
-* _Üst yükleme eşiği_ hizmeti ne zaman olacağını belirleyen bir değer **ölçeği**. Ortalama yük tüm örneklerinin bölüm bu değerden daha yüksek ise, hizmetin kullanıma ayarlanacaktır.
-* _Ölçeklendirme aralığı_ tetikleyici ne sıklıkla kontrol edileceği belirler. Ölçeklendirme gerekliyse tetikleyici iade edildikten sonra mekanizması uygulanır. Ölçeklendirme gerekmiyorsa, hiçbir işlem yapılmadı. Yeniden ölçeklendirme aralığı sona ermeden önce her iki durumda da, tetikleyici yeniden denetlenmez.
+* _Alt yük eşiği_ , hizmetin ne zaman **ölçeklendirileceğini**belirleyen bir değerdir. Bölümlerin tüm örneklerinin ortalama yükü bu değerden düşükse, hizmet içinde ölçeklendirilecektir.
+* _Büyük yük eşiği_ , hizmetin ne zaman gösterileceğini belirleyen bir **değerdir.** Bölümün tüm örneklerinin ortalama yükü bu değerden yüksekse, hizmet dışa ayarlanır.
+* _Ölçeklendirme aralığı_ , tetikleyicinin ne sıklıkta denetleneceğini belirler. Tetikleyici denetlendikten sonra, ölçeklendirilmesi gerekiyorsa mekanizmanın uygulanması gerekir. Ölçeklendirme gerekmiyorsa, hiçbir eylem yapılmaz. Her iki durumda da, ölçeklendirmenin zaman aşımı süresi dolmadan önce tetikleyici yeniden denetlenmeyecektir.
 
-Bu tetikleyici yalnızca durum bilgisi olmayan hizmetler ile (durum bilgisi olmayan kapsayıcılar veya Service Fabric Hizmetleri) kullanılabilir. Ne zaman bir hizmet birden çok bölüm olması durumunda, tetikleyici her bölüm için ayrı olarak değerlendirilir ve her bölüm bağımsız olarak uygulanan belirtilen mekanizmasına sahip olur. Bu nedenle, bu durumda, bazı hizmet bölümlerini kullanıma ölçeklendirileceği, içindeki bazı ölçeğinin azaltılıp ve bazı hiç aynı zamanda, kendi iş yüküne göre ölçeği olmaz mümkündür.
+Bu tetikleyici yalnızca durum bilgisi olmayan hizmetler (durum bilgisi olmayan kapsayıcılar veya Service Fabric Hizmetleri) ile kullanılabilir. Bir hizmette birden çok bölüm varsa, tetikleyici her bölüm için ayrı olarak değerlendirilir ve her bölüm, belirtilen mekanizmanın bağımsız olarak uygulanmasını sağlar. Bu nedenle, bu durumda hizmetin bazı bölümlerinin ölçeği ölçeklenmez, bazıları içinde ölçeklenmez ve bazıları, yüküne bağlı olarak aynı anda ölçeklendirilmez.
 
-Bu tetikleyici ile kullanılabilecek tek PartitionInstanceCountScaleMechanism mekanizmadır. Bu mekanizma nasıl uygulanacağını belirlemek üç faktöre vardır:
-* _Ölçeği artırma_ kaç tane eklenecek veya mekanizması tetiklendiğinde kaldırıldı belirler.
-* _En fazla örnek sayısı_ ölçeklendirmeye yönelik üst sınır tanımlar. Örneklerinin bölüm sayısı bu sınırı ulaşırsa, ardından hizmeti, bağımsız olarak yük ölçeklenmez. -1 değerini belirterek bu sınırı çıkarın ve hizmetin çalışması ölçeği, mümkün olduğunca (sınır kümedeki kullanılabilir düğüm sayısını yoktur) out mümkündür.
-* _En az örnek sayısı_ ölçeklendirme için alt sınırı tanımlar. Örneklerinin bölüm sayısı bu sınırı ulaşırsa, ardından hizmeti, bağımsız olarak yük ölçeklenmez.
+Bu tetikleyici ile kullanılabilen tek mekanizma Partitionınstancecountscalemechanısm ' dir. Bu mekanizmanın nasıl uygulanacağını tespit eden üç etken vardır:
+* _Ölçek artışı_ , mekanizma tetiklendiğinde kaç örnek ekleneceğini veya kaldırılacağını belirler.
+* _En fazla örnek sayısı_ ölçekleme için üst sınırı tanımlar. Bölüm örneklerinin sayısı bu sınıra ulaşırsa, yük ne olursa olsun, hizmet ölçeklenmez. -1 değerini belirterek bu sınırı atlayabilirsiniz ve bu durumda hizmet mümkün olduğunca (sınır kümede kullanılabilir olan düğüm sayısıdır), bu sınırı atlamak mümkündür.
+* _Minimum örnek sayısı_ ölçekleme için alt sınırı tanımlar. Bölüm örneklerinin sayısı bu sınıra ulaşırsa, yük ne olursa olsun hizmet bu sınıra göre ölçeklenmez.
 
-## <a name="setting-auto-scaling-policy"></a>Otomatik ölçeklendirme İlkesi ayarlama
+## <a name="setting-auto-scaling-policy"></a>Otomatik ölçeklendirme ilkesi ayarlanıyor
 
-### <a name="using-application-manifest"></a>Uygulama bildirimi kullanarak
+### <a name="using-application-manifest"></a>Uygulama bildirimini kullanma
 ``` xml
 <LoadMetrics>
 <LoadMetric Name="MetricB" Weight="High"/>
@@ -73,7 +64,7 @@ Bu tetikleyici ile kullanılabilecek tek PartitionInstanceCountScaleMechanism me
 </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
-### <a name="using-c-apis"></a>C# API'lerini kullanma
+### <a name="using-c-apis"></a>API C# 'leri kullanma
 ```csharp
 FabricClient fabricClient = new FabricClient();
 StatelessServiceDescription serviceDescription = new StatelessServiceDescription();
@@ -94,7 +85,7 @@ serviceDescription.ScalingPolicies.Add(policy);
 serviceDescription.ServicePackageActivationMode = ServicePackageActivationMode.ExclusiveProcess
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
-### <a name="using-powershell"></a>PowerShell'i kullanma
+### <a name="using-powershell"></a>PowerShell 'i kullanma
 ```posh
 $mechanism = New-Object -TypeName System.Fabric.Description.PartitionInstanceCountScaleMechanism
 $mechanism.MinInstanceCount = 1
@@ -115,35 +106,35 @@ $scalingpolicies.Add($scalingpolicy)
 Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName" -ScalingPolicies $scalingpolicies
 ```
 
-## <a name="average-service-load-trigger-with-partition-based-scaling"></a>Ortalama hizmet yük tetikleyici tabanlı bölüm ölçeklendirme
-İkinci tetikleyici, bir hizmetin tüm bölümlerin yükünü alır. Ölçüm yükleri, her çoğaltma veya örnek bir bölümü için yük almak için ilk düzleştirilmiş. Durum bilgisi olan hizmetler için yük bölümün durum bilgisi olmayan hizmetler için ortalama yük tüm örneklerinin bölüm bölümün yük olsa birincil çoğaltmanın yükünü olarak değerlendirilir. Bu değerler, hizmetin tüm bölümler ortalaması alınır ve bu değer, otomatik ölçeklendirmeyi tetiklemek için kullanılır. Önceki mekanizması olduğu gibi aynı hizmet ölçeklendirildiğinde belirleyen üç faktör vardır:
+## <a name="average-service-load-trigger-with-partition-based-scaling"></a>Bölüm tabanlı ölçeklendirmeyle ortalama hizmet yükleme tetikleyicisi
+İkinci tetikleyici, bir hizmetin tüm bölümlerinin yükünü temel alır. Ölçüm yüklemeleri, bir bölümün her çoğaltması veya örneği için yük almak üzere ilk olarak düzgünleştirilir. Durum bilgisi olan hizmetler için, Bölüm yükü birincil çoğaltmanın yükü olarak kabul edilir, ancak durum bilgisiz Hizmetleri için bölüm yükü bölümün tüm örneklerinin ortalama yüklerdir. Bu değerler, hizmetin tüm bölümlerinde ortalaması alınır ve bu değer otomatik ölçeklendirmeyi tetiklemek için kullanılır. Önceki mekanizmasıyla aynı şekilde, hizmetin ne zaman ölçekleneceğini tespit eden üç etken vardır:
 
-* _Alt yükleme eşiği_ hizmeti ne zaman olacağını belirleyen bir değer **ölçeği**. Ortalama yük hizmetinin tüm bölümlerin bu değerden düşükse, hizmet olarak ayarlanacaktır.
-* _Üst yükleme eşiği_ hizmeti ne zaman olacağını belirleyen bir değer **ölçeği**. Ortalama yük hizmetinin tüm bölümlerin bu değerden daha yüksek ise, hizmetin kullanıma ayarlanacaktır.
-* _Ölçeklendirme aralığı_ tetikleyici ne sıklıkla kontrol edileceği belirler. Ölçeklendirme gerekliyse tetikleyici iade edildikten sonra mekanizması uygulanır. Ölçeklendirme gerekmiyorsa, hiçbir işlem yapılmadı. Yeniden ölçeklendirme aralığı sona ermeden önce her iki durumda da, tetikleyici yeniden denetlenmez.
+* _Alt yük eşiği_ , hizmetin ne zaman **ölçeklendirileceğini**belirleyen bir değerdir. Hizmetin tüm bölümlerinin ortalama yükü bu değerden düşükse, hizmet içinde ölçeklendirilir.
+* _Büyük yük eşiği_ , hizmetin ne zaman gösterileceğini belirleyen bir **değerdir.** Hizmetin tüm bölümlerinin ortalama yükü bu değerden yüksekse, hizmet dışa ayarlanır.
+* _Ölçeklendirme aralığı_ , tetikleyicinin ne sıklıkta denetleneceğini belirler. Tetikleyici denetlendikten sonra, ölçeklendirilmesi gerekiyorsa mekanizmanın uygulanması gerekir. Ölçeklendirme gerekmiyorsa, hiçbir eylem yapılmaz. Her iki durumda da, ölçeklendirmenin zaman aşımı süresi dolmadan önce tetikleyici yeniden denetlenmeyecektir.
 
-Bu tetikleyiciyi olabilir hem de durum bilgisi olan ve olmayan Hizmetleri ile kullanılır. Bu tetikleyici ile kullanılabilecek tek AddRemoveIncrementalNamedPartitionScalingMechanism mekanizmadır. Yeni bir bölüm eklendikten sonra hizmeti kullanıma ölçeklenir ve hizmet var olan bölümleri birinde ölçeklendirildiğinde kaldırılır. Hizmet oluşturulduğunda veya güncelleştirildiğinde ve hizmet oluşturma/güncelleştirme başarısız olur, bu koşullar karşılanmazsa denetlenecek kısıtlamaları vardır:
-* Adlandırılmış bölüm düzeni, hizmet için kullanılmalıdır.
-* Bölüm adları olmalıdır ardışık tamsayı numaraları gibi "0", "1"...
+Bu tetikleyici her ikisi de durum bilgisi olan ve durum bilgisi olmayan hizmetler ile kullanılabilir. Bu tetikleyici ile kullanılabilen tek mekanizma AddRemoveIncrementalNamedPartitionScalingMechanism ' dir. Hizmet ölçeklendirildiğinde yeni bir bölüm eklenir ve hizmet mevcut bölümlerden birinde ölçeklendirilirse kaldırılır. Hizmet oluşturulduğunda veya güncelleştirilirken denetlenecek kısıtlamalar vardır ve bu koşullar karşılanmazsa hizmet oluşturma/güncelleştirme başarısız olur:
+* Hizmet için adlandırılmış bölüm şeması kullanılmalıdır.
+* Bölüm adları, "0", "1",... gibi ardışık tamsayı sayılar olmalıdır.
 * İlk bölüm adı "0" olmalıdır.
 
-Bir hizmet ilk üç bölümlü oluşturduysanız, örneğin, yalnızca geçerli bölüm adları için "0", "1" ve "2" bir olasılıktır.
+Örneğin, bir hizmet başlangıçta üç bölümden oluşturulmuşsa, Bölüm adı için geçerli tek olasılık "0", "1" ve "2" dir.
 
-Gerçek otomatik ölçeklendirme, gerçekleştirilen işlemleri de bu adlandırma şeması uyar:
-* Hizmet, geçerli bölümlerini "0", "1" ve "2" adlı, Ölçek genişletme için eklenecek bölüm "3" şeklinde ilerler.
-* Hizmet, geçerli bölümlerini "0", "1" ve "2" adlı, ölçeklendirme için kaldırılacak bölüm adı "2" bölümüne yoktur.
+Gerçekleştirilen gerçek otomatik ölçeklendirme işlemi, bu adlandırma düzenine de uyum sağlayacak:
+* Hizmetin geçerli bölümleri "0", "1" ve "2" olarak adlandırılmışsa, ölçek genişletme için eklenecek Bölüm "3" olarak adlandıralınacaktır.
+* Hizmetin geçerli bölümleri "0", "1" ve "2" olarak adlandırılmışsa, içinde ölçeklendirilmesi için kaldırılacak Bölüm "2" adlı bölümdür.
 
-Kullanan örnekleri ekleyerek veya kaldırarak tarafından ölçeklendirme mekanizması olarak ile aynı, bu mekanizma nasıl uygulanacağını belirleyen üç parametre vardır:
-* _Ölçeği artırma_ kaç bölümleri eklendi veya mekanizması tetiklendiğinde kaldırıldı belirler.
-* _En yüksek bölüm sayısı_ ölçeklendirmeye yönelik üst sınır tanımlar. Hizmet bölüm sayısı bu sınırı ulaşırsa, ardından hizmeti, bağımsız olarak yük ölçeklenmez. -1 değerini belirterek bu sınırı çıkarın ve hizmetin çalışması ölçeği, mümkün olduğu kadar (kümeyi gerçek kapasitesi sınırı kadar) out mümkündür.
-* _En az örnek sayısı_ ölçeklendirme için alt sınırı tanımlar. Hizmet bölüm sayısı bu sınırı ulaşırsa, ardından hizmeti, bağımsız olarak yük ölçeklenmez.
+Örnekleri ekleyerek veya kaldırarak ölçeklendirmeyi kullanan mekanizmasıyla aynı şekilde, bu mekanizmanın nasıl uygulanacağını belirten üç parametre vardır:
+* _Ölçek artışı_ , mekanizma tetiklendiğinde kaç bölümden ekleneceğini veya kaldırılacağını belirler.
+* _En fazla bölüm sayısı_ ölçekleme için üst sınırı tanımlar. Hizmetin bölüm sayısı bu sınıra ulaşırsa, yük ne olursa olsun, hizmet ölçeklenmez. -1 değerini belirterek bu sınırı atlamak mümkündür ve bu durumda hizmet mümkün olduğunca (sınır kümenin gerçek kapasitesidir) ayarlanır.
+* _Minimum örnek sayısı_ ölçekleme için alt sınırı tanımlar. Hizmetin bölüm sayısı bu sınıra ulaşırsa, yük ne olursa olsun hizmet bu sınıra göre ölçeklenmez.
 
 > [!WARNING] 
-> Durum bilgisi olan hizmetlerle AddRemoveIncrementalNamedPartitionScalingMechanism kullanıldığında, Service Fabric ekleme veya kaldırma bölümlerini **bildirim veya uyarısı olmadan**. Ölçeklendirme mekanizması tetiklendiğinde verilerin yeniden bölümlenmesi gerçekleştirilmeyecek. Durumda ölçeği artırma işlemi, yeni bölümler boş olur ve ölçeği azaltma işlemi durumunda **bölüm içerdiği tüm verilerle birlikte silinecek**.
+> AddRemoveIncrementalNamedPartitionScalingMechanism, durum bilgisi olmayan hizmetlerle kullanıldığında, Service Fabric **bildirim veya uyarı olmaksızın**bölüm ekler veya kaldırır. Ölçeklendirme mekanizması tetiklendiğinde verilerin yeniden bölümlenmesi gerçekleştirilmeyecektir. Ölçeği artırma işlemi durumunda, yeni bölümler boş olur ve ölçeği azaltma işlemi durumunda, **bölüm içerdiği tüm verilerle birlikte silinir**.
 
-## <a name="setting-auto-scaling-policy"></a>Otomatik ölçeklendirme İlkesi ayarlama
+## <a name="setting-auto-scaling-policy"></a>Otomatik ölçeklendirme ilkesi ayarlanıyor
 
-### <a name="using-application-manifest"></a>Uygulama bildirimi kullanarak
+### <a name="using-application-manifest"></a>Uygulama bildirimini kullanma
 ``` xml
 <ServiceScalingPolicies>
     <ScalingPolicy>
@@ -152,7 +143,7 @@ Kullanan örnekleri ekleyerek veya kaldırarak tarafından ölçeklendirme mekan
     </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
-### <a name="using-c-apis"></a>C# API'lerini kullanma
+### <a name="using-c-apis"></a>API C# 'leri kullanma
 ```csharp
 FabricClient fabricClient = new FabricClient();
 StatefulServiceUpdateDescription serviceUpdate = new StatefulServiceUpdateDescription();
@@ -171,7 +162,7 @@ serviceUpdate.ScalingPolicies = new List<ScalingPolicyDescription>;
 serviceUpdate.ScalingPolicies.Add(policy);
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/ServiceName"), serviceUpdate);
 ```
-### <a name="using-powershell"></a>PowerShell'i kullanma
+### <a name="using-powershell"></a>PowerShell 'i kullanma
 ```posh
 $mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedPartitionScalingMechanism
 $mechanism.MinPartitionCount = 1
@@ -192,9 +183,9 @@ $scalingpolicies.Add($scalingpolicy)
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -TargetReplicaSetSize 3 -MinReplicaSetSize 2 -HasPersistedState true -PartitionNames @("0","1") -ServicePackageActivationMode ExclusiveProcess -ScalingPolicies $scalingpolicies
 ```
 
-## <a name="auto-scaling-based-on-resources"></a>Kaynaklar temelinde otomatik ölçeklendirme
+## <a name="auto-scaling-based-on-resources"></a>Kaynaklara göre otomatik ölçeklendirme
 
-Kaynak İzleyicisi hizmeti ölçeklendirmek etkinleştirmek için gerçek kaynaklar temelinde.
+Kaynak İzleyicisi hizmetini gerçek kaynaklara göre ölçeklendirmeye olanak tanımak için
 
 ``` json
 "fabricSettings": [
@@ -204,8 +195,8 @@ Kaynak İzleyicisi hizmeti ölçeklendirmek etkinleştirmek için gerçek kaynak
     "ResourceMonitorService"
 ],
 ```
-Gerçek fiziksel kaynakları temsil eden iki ölçüm vardır. Bunlardan biri olan servicefabric: / Gerçek cpu kullanımı (yarı çekirdek 0,5 gösterir şekilde) ve diğer temsil eden _CpuCores olan servicefabric: / MB bellek kullanımında temsil eden _MemoryInMB.
-ResourceMonitorService kullanıcı Hizmetleri cpu ve bellek kullanımını izlemekten sorumludur. Ağırlıklı hareketli ortalama, bu hizmet için olası kısa süreli ani hesap için geçerli olur. Kaynak İzleme kapsayıcılı ve kapsayıcılı olmayan uygulamaları Windows ve Linux'ta kapsayıcılı olanlar için desteklenir. Otomatik ölçeklendirme kaynakları, hizmetleri etkin için yalnızca etkin [özel işlem modeli](service-fabric-hosting-model.md#exclusive-process-model).
+Gerçek fiziksel kaynakları temsil eden iki ölçüm vardır. Bunlardan biri, gerçek CPU kullanımını temsil eden servicefabric:/_CpuCores (dolayısıyla 0,5, yarı bir çekirdeği temsil eder) ve diğeri, MB olarak bellek kullanımını temsil eden servicefabric:/_MemoryInMB olur.
+ResourceMonitorService, Kullanıcı hizmetlerinin CPU ve bellek kullanımını izlemekten sorumludur. Bu hizmet, olası kısa süreli artışlar için hesaba göre ağırlıklı hareketli ortalama uygular. Kaynak izleme, Windows üzerinde Kapsayıcılı ve kapsayıcısız uygulamalar ve Linux üzerinde Kapsayıcılı uygulamalar için desteklenir. Kaynaklarda otomatik ölçekleme yalnızca [özel işlem modelinde](service-fabric-hosting-model.md#exclusive-process-model)etkinleştirilen hizmetler için etkinleştirilmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi edinin [uygulama ölçeklenebilirlik](service-fabric-concepts-scalability.md).
+[Uygulama ölçeklenebilirliği](service-fabric-concepts-scalability.md)hakkında daha fazla bilgi edinin.

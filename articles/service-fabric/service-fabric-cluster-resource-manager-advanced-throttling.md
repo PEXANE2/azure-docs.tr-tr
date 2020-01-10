@@ -1,49 +1,40 @@
 ---
-title: Service Fabric Küme Kaynak Yöneticisi'nde azaltma | Microsoft Docs
-description: Service Fabric küme kaynak yöneticisi tarafından sağlanan kısıtlamalar yapılandırmayı öğrenin.
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric kümesi kaynak yöneticisi 'nde azaltma
+description: Service Fabric kümesi Kaynak Yöneticisi tarafından sunulan kısıtları yapılandırmayı öğrenin.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 4a44678b-a5aa-4d30-958f-dc4332ebfb63
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 4abc3e4a28b8b98070affe19b7b7ca38f904c45b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4d78b339bab02b5c44a31939e0da769dc21c3ec
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60384978"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452171"
 ---
-# <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Service Fabric Küme Kaynak Yöneticisi azaltma
-Kümenin küme kaynak yöneticisi doğru şekilde yapılandırmış olduğunuz bile kesintiye. Örneğin, bir yükseltme sırasında oluştuysa ne olacağını eşzamanlı düğüm ve hata etki alanı hataları - olabilir? Küme Kaynak Yöneticisi her zaman her şeyi düzeltmek yeniden düzenleme ve küme düzeltme çalışılırken kümenin kaynak tüketmeye çalışır. Kısıtlamalar yardımcı küme kaynakları sabitlemek için - kullanabilmesi için bir backstop sağlamak düğümleri geri dönün, düzeltilmiş BITS dağıtılan ağ bölümlerinden onarımı.
+# <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Service Fabric kümesini daraltma Kaynak Yöneticisi
+Küme Kaynak Yöneticisi doğru şekilde yapılandırsanız bile, küme kesilebilir. Örneğin, eşzamanlı düğüm ve hata etki alanı hatası olabilir. yükseltme sırasında bu durum oluşursa ne olur? Küme Kaynak Yöneticisi her zaman her şeyi gidermeye çalışır ve kümeyi yeniden düzenlemeye ve gidermeye çalışan kümenin kaynaklarını tüketerek. Kısıtlar ki, kümenin kararlı hale getirmek için kaynakları kullanabilmesi için bir geri durağı sağlar. düğümler geri gelir, ağ bölümleri, düzeltilen bitler dağıtılır.
 
-Durumlarda bu tür yardımcı olmak için çeşitli kısıtlamalar Service Fabric Küme Kaynak Yöneticisi'ni içerir. Bu kısıtlamalar tüm oldukça büyük hammers ' dir. Genellikle, dikkatli planlama ve sınama yapılmadan değiştirilmesi olmamalıdır.
+Bu tür durumlara yardımcı olmak için Service Fabric kümesi Kaynak Yöneticisi çeşitli kısıtları içerir. Bu kısıtların hepsi oldukça büyük hakökleri. Genellikle dikkatli planlama ve test olmadan değiştirilmemelidir.
 
-Küme Kaynak Yöneticisi'nin kısıtlamalar değiştirirseniz, beklenen gerçek yüke ayarlamak. Küme Sabitle bazı durumlarda daha uzun sürer geldiğini bile bazı kısıtlamalar yerinde ihtiyacınız belirleyebilir. Test kısıtlamalar için doğru değerleri belirlemek için gereklidir. Kısıtlamalar makul bir sürede değişikliklerine yanıt verme kümesine izin vermek için yeterince yüksek ve gerçekten çok fazla kaynak tüketimi önlemek için yeterince düşük olması gerekir. 
+Küme Kaynak Yöneticisi kısıtlarını değiştirirseniz, bunları beklenen gerçek yükle ayarlamanız gerekir. Kümenin bazı durumlarda daha uzun süre sürme anlamına geliyor olsa bile, bazı kısıtlamalar yapmanız gerektiğini belirleyebilirsiniz. Kısıtlar için doğru değerleri belirlemek için test gereklidir. Kümenin değişikliklere makul bir süre içinde yanıt vermesini ve çok fazla kaynak tüketimine engel olmak için yeterince düşük olması gerekir. 
 
-Çoğu zaman müşterilerin gördük zaten kısıtlanmış bir kaynak ortamında olduğundan bırakıldı kısıtlamalar kullanın. Bazı örnekler tek tek düğümlere veya paralel işleme sınırlamaları nedeniyle çok sayıda durum bilgisi olan çoğaltma oluşturmak mümkün olmayan diskler için sınırlı ağ bant genişliği olacaktır. Kısıtlamaları, başarısız veya yavaş işlem neden olan bu kaynaklar, işlemleri sık zora. Müşteriler kısıtlamalar kullanılan ve süreyi genişletme olduğunda bu durumlarda, kümenin kararlı bir duruma ulaşmak için alır. Müşteriler ayrıca, düşük genel güvenilirlik kısıtlanan sırada çalışan son anladım.
+Müşterilerin gördük çoğu zaman, zaten kaynak kısıtlı bir ortamda olduğu için bu bir azaldık. Bazı örnekler, tek tek düğümler için sınırlı ağ bant genişliğidir veya üretilen iş sınırlamaları nedeniyle paralel olarak çok sayıda durum bilgisi olan çoğaltmalar oluşturamayacak diskler olabilir. Kısıtlamadan, işlemler bu kaynakları kesintiye sokabilir ve işlemlerin başarısız olmasına veya yavaş olmasına neden olabilir. Bu durumlarda, müşteriler, kümenin kararlı duruma ulaşması için gereken süreyi genişlettikleri ve bildikleri süreyi azaltır. Müşteriler, azaldıkça daha düşük bir genel güvenilirlik altında çalışmaya bitebilirler.
 
 
-## <a name="configuring-the-throttles"></a>Kısıtlamalar yapılandırma
+## <a name="configuring-the-throttles"></a>Kısıtları yapılandırma
 
-Service Fabric çoğaltma hareketleri sayısını azaltma için iki mekanizma vardır. Service Fabric 5.7 önce var olan varsayılan bir mekanizma azaltma izin taşımaların mutlak bir sayı temsil eder. Bu, her boyuttaki kümeleri için çalışmaz. Özellikle büyük kümeler için varsayılan değer, daha küçük kümelerinde etkisi yaparken gerekli olsa bile Dengeleme aşağı önemli ölçüde yavaşlatmasını çok küçük olabilir. Önceki Bu mekanizma yüzde tabanlı kısıtlanarak, hizmetleri ve düğüm sayısını düzenli olarak değiştiği dinamik kümeleriyle daha iyi ölçeklenir yerini almıştır.
+Service Fabric çoğaltma hareketlerinin sayısını daraltma için iki mekanizma vardır. Service Fabric 5,7 ' den önce mevcut olan varsayılan mekanizma, izin verilen mutlak sayıda hareketi olarak azaltmayı temsil eder. Bu, her boyuttaki kümeler için çalışmaz. Özellikle, büyük kümeler için varsayılan değer çok küçük olabilir, gerekli olduğunda bile dengelemeyi önemli ölçüde yavaşlatarak daha küçük kümeler üzerinde hiçbir etkisi olmaz. Bu önceki mekanizmanın yerine, hizmet ve düğümlerin sayısı düzenli olarak değişen dinamik kümelerle daha iyi ölçeklendirerek yüzde tabanlı azaltmaya karşı değiştirilmiştir.
 
-Kısıtlamalar kümelerindeki çoğaltmaların sayısı yüzdesi temel alır. Yüzde tabanlı kısıtlamalar etkinleştirme kuralı belirtme: "hareket % çoğaltmalarının birden fazla 10 10 dakikalık bir aralığı", örneğin.
+Kısıtlar, kümelerdeki yineleme sayısının yüzdesini temel alır. Yüzde tabanlı kısıtlar kuralın "10 dakikalık bir aralıkta %10 ' dan fazlasını taşıma", örneğin
 
 Yüzde tabanlı azaltma için yapılandırma ayarları şunlardır:
 
-  - GlobalMovementThrottleThresholdPercentage - hareketleri kümedeki herhangi bir zamanda, izin verilen en fazla sayısı, yinelemeler kümedeki toplam sayısının yüzdesi olarak ifade edilen. 0 sınır olmadığını. Varsayılan değer 0’dır. Bu ayar ve GlobalMovementThrottleThreshold belirtilirse, ardından daha pasif sınırı kullanılır.
-  - GlobalMovementThrottleThresholdPercentageForPlacement - hareketleri çoğaltmaları kümedeki toplam sayısının yüzdesi olarak ifade edilen yerleştirme aşamasında, izin verilen en fazla sayısı. 0 sınır olmadığını. Varsayılan değer 0’dır. Bu ayar ve GlobalMovementThrottleThresholdForPlacement belirtilirse, ardından daha pasif sınırı kullanılır.
-  - GlobalMovementThrottleThresholdPercentageForBalancing - hareketleri çoğaltmaları kümedeki toplam sayısının yüzdesi olarak ifade edilen karşı aşamasında, izin verilen en fazla sayısı. 0 sınır olmadığını. Varsayılan değer 0’dır. Bu ayar ve GlobalMovementThrottleThresholdForBalancing belirtilirse, ardından daha pasif sınırı kullanılır.
+  - GlobalMovementThrottleThresholdPercentage-kümede her zaman izin verilen maksimum hareket sayısı (kümedeki toplam çoğaltma sayısının yüzdesi olarak ifade edilir). 0 sınır olmadığını gösterir. Varsayılan değer 0’dır. Hem bu ayar hem de GlobalMovementThrottleThreshold belirtilmişse, daha fazla koruyucu sınırı kullanılır.
+  - GlobalMovementThrottleThresholdPercentageForPlacement-yerleştirme aşamasında izin verilen en fazla taşıma sayısı, kümedeki toplam çoğaltma sayısının yüzdesi olarak ifade edilir. 0 sınır olmadığını gösterir. Varsayılan değer 0’dır. Hem bu ayar hem de Globalmovementthrottlethresholdforyerleştirmesi belirtilmişse, daha fazla koruyucu sınır kullanılır.
+  - GlobalMovementThrottleThresholdPercentageForBalancing-Dengeleme aşamasında izin verilen en fazla hareket sayısı, kümedeki toplam çoğaltma sayısının yüzdesi olarak ifade edilir. 0 sınır olmadığını gösterir. Varsayılan değer 0’dır. Hem bu ayar hem de Globalmovementthrottlethresholdfordengeleme belirtilmişse, daha fazla koruyucu sınırı kullanılır.
 
-Azaltma yüzdesi belirtirken, %5 0,05 belirtmeniz gerekir. Bu kısıtlamalar yönetilen saniye cinsinden belirtilen GlobalMovementThrottleCountingInterval aralığıdır.
+Kısıtlama yüzdesini belirtirken, 0,05 olarak %5 değerini belirtmeniz gerekir. Bu kısıtlamaların yönetileceği Aralık, saniyeler içinde belirtilen Globalmovementthrottlecountingınterval ' dır.
 
 
 ``` xml
@@ -55,7 +46,7 @@ Azaltma yüzdesi belirtirken, %5 0,05 belirtmeniz gerekir. Bu kısıtlamalar yö
 </Section>
 ```
 
-tek başına dağıtımlarında ClusterConfig.json veya Azure için Template.json aracılığıyla kümeleri barındırılan:
+Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla:
 
 ```json
 "fabricSettings": [
@@ -83,14 +74,14 @@ tek başına dağıtımlarında ClusterConfig.json veya Azure için Template.jso
 ]
 ```
 
-### <a name="default-count-based-throttles"></a>Varsayılan sayısı temel kısıtlamalar
-Daha eski kümeleri sahip veya bu yapılandırmalar beri yükseltilmiş kümelerinde hala korur durumunda bu bilgiler verilmiştir. Genel olarak, bunlar yüzde tabanlı kısıtlamalar ile yukarıdaki değiştirilir önerilir. Yüzde tabanlı azaltma varsayılan olarak devre dışı olduğundan bu kısıtlamalar bir küme için varsayılan kısıtlamalar devre dışı ve yüzde tabanlı kısıtlamalar ile değiştirilen kadar devam eder. 
+### <a name="default-count-based-throttles"></a>Varsayılan sayı tabanlı kısıtları
+Bu bilgiler, daha eski kümeleriniz varsa veya bu yapılandırmaların yükseltilme sonrasında bu yapılandırmaların hala tutulması durumunda sunulmaktadır. Genel olarak, bunların yukarıdaki yüzde tabanlı kısıtlamalar ile değiştirilmesini öneririz. Yüzde tabanlı azaltma varsayılan olarak devre dışı bırakıldığı için, bu kısıtlamalar devre dışı bırakılıncaya ve yüzde tabanlı kısıtlarla değiştirilene kadar bir küme için varsayılan kısıtları azaltır. 
 
-  - GlobalMovementThrottleThreshold – Bu ayar, bazı zamanla hareketleri kümedeki toplam sayısını denetler. Süreyi saniye cinsinden GlobalMovementThrottleCountingInterval olarak belirtilir. GlobalMovementThrottleThreshold için varsayılan değer 1000'dir ve 600 GlobalMovementThrottleCountingInterval için varsayılan değerdir.
-  - MovementPerPartitionThrottleThreshold – Bu ayar, bazı zaman içinde herhangi bir hizmet bölümü için hareketleri toplam sayısını denetler. Süreyi saniye cinsinden MovementPerPartitionThrottleCountingInterval olarak belirtilir. MovementPerPartitionThrottleThreshold için varsayılan değer 50'dir ve 600 MovementPerPartitionThrottleCountingInterval için varsayılan değerdir.
+  - GlobalMovementThrottleThreshold – Bu ayar, kümedeki hareketlerin bir süre içinde toplam hareket sayısını denetler. Toplam süre, Globalmovementthrottlecountingınterval olarak Saniyeler içinde belirtilir. GlobalMovementThrottleThreshold için varsayılan değer 1000, Globalmovementthrottlecountingınterval için de varsayılan değer 600 ' dir.
+  - MovementPerPartitionThrottleThreshold – Bu ayar, herhangi bir zamanda herhangi bir hizmet bölümünün toplam hareket sayısını denetler. Süre, Movementperpartitionthrottlecountingınterval olarak Saniyeler içinde belirtilir. MovementPerPartitionThrottleThreshold için varsayılan değer 50 ' dir ve Movementperpartitionthrottlecountingınterval için varsayılan değer 600 ' dir.
 
-Bu kısıtlamalar yapılandırmasını yüzde tabanlı azaltma olarak aynı deseni izler.
+Bu kısıtların yapılandırması, yüzde tabanlı daraltma ile aynı kalıbı izler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Küme Kaynak Yöneticisi yönetir ve kümedeki yük dengeleyen hakkında bilgi almak için makalesine göz atın [Yük Dengeleme](service-fabric-cluster-resource-manager-balancing.md)
-- Küme Kaynak Yöneticisi kümesi tanımlamak için birçok seçenek vardır. Bunlar hakkında daha fazla bilgi için bu makalede atın [açıklayan bir Service Fabric kümesi](service-fabric-cluster-resource-manager-cluster-description.md)
+- Kaynak Yöneticisi kümenin, kümedeki yükü nasıl yönettiğini ve dengelemediğini öğrenmek için [Yük Dengeleme](service-fabric-cluster-resource-manager-balancing.md) sayfasındaki makaleye göz atın
+- Küme Kaynak Yöneticisi, kümeyi açıklamak için birçok seçenek içerir. Bunlarla ilgili daha fazla bilgi edinmek için [Service Fabric kümesini açıklama](service-fabric-cluster-resource-manager-cluster-description.md) konusunda bu makaleye göz atın

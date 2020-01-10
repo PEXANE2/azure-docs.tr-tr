@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6ffa17010f874eeb82fe8f4c367f0a0ac429979b
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: d97073666a18a3ffb7a88e1d2350f213ef589e6a
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815509"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562536"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Konuşma Sentezi Biçimlendirme Dili (SSML)
 
@@ -147,6 +147,8 @@ Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek içi
 | `en-US-JessaNeural` | tür =`cheerful` | Olumlu ve mutlu bir ehareketini ifade eder |
 | | tür =`empathy` | Bir fikir ve anlalama hakkında ifade eder |
 | | tür =`chat` | Rastgele, gevşek bir tonda konuşabilirsiniz |
+| | tür =`newscast` | Haber yayınlarına benzer şekilde resmi bir tonu ifade eder |
+| | tür =`customerservice` | Müşteri Hizmetleri olarak kolay ve hasta bir şekilde konuşun |
 | `zh-CN-XiaoxiaoNeural` | tür =`newscast` | Haber yayınlarına benzer şekilde resmi bir tonu ifade eder |
 | | tür =`sentiment` | Dokunmadan bir ileti veya hikaye ileten |
 
@@ -185,7 +187,7 @@ Sözcükler arasına duraklamalar (veya molalar) eklemek için `break` öğesini
 | gücüyle | Aşağıdaki değerlerden birini kullanarak duraklamanın göreli süresini belirtir:<ul><li>yok</li><li>x-zayıf</li><li>zayıf</li><li>Orta (varsayılan)</li><li>tanımlayıcı</li><li>x-Strong</li></ul> | İsteğe Bağlı |
 | time | Saniye veya milisaniye cinsinden bir duraklama 'nin mutlak süresini belirtir. Geçerli değer örnekleri 2s ve 500 ' dir | İsteğe Bağlı |
 
-| gücüyle | Açıklama |
+| Gücüyle | Açıklama |
 |----------|-------------|
 | Hiçbiri veya hiçbir değer sağlanmazsa | 0 ms |
 | x-zayıf | 250 MS |
@@ -291,7 +293,7 @@ Bürünsel öznitelik değerleri geniş bir aralığa göre değişebildiğinden
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
 | perde | Metnin taban çizgisi aralığını gösterir. Bu aralığı şöyle ifade edebilirsiniz:<ul><li>Sayı olarak ifade edilen ve ardından "Hz" (Hertz) gelen mutlak bir değer. Örneğin, 600Hz.</li><li>"+" Veya "-" işaretinden sonra gelen ve ardından "Hz" veya "St" gelen bir sayı olarak ifade edilen, sıklığı değiştirecek bir miktar belirten göreli bir değer. Örneğin: + 80Hz veya-2ST. "St", değişim biriminin standart Diatonic ölçeğinde bir ton (yarım bir adım) yarısı olan semitone olduğunu gösterir.</li><li>Sabit değer:<ul><li>x-düşük</li><li>zayıf</li><li>orta</li><li>yüksek</li><li>x-yüksek</li><li>default</li></ul></li></ul>. | İsteğe Bağlı |
-| kapalı | Sinir sesleriniz için kontur desteklenmez. Dağılım, konuşma çıkışında belirtilen zaman konumlarında bir hedef dizisi olarak konuşma içeriği için değişen değişiklik değişikliklerini temsil eder. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örnek: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, aralığı yükseltmek veya azaltmak için miktarı belirtir (bkz. `pitch`). | İsteğe Bağlı |
+| kapalı | Sinir sesleriniz için kontur desteklenmez. Dağılım, konuşma çıkışında belirtilen zaman konumlarında bir hedef dizisi olarak konuşma içeriği için değişen değişiklik değişikliklerini temsil eder. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örneğin: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, aralığı yükseltmek veya azaltmak için miktarı belirtir (bkz. `pitch`). | İsteğe Bağlı |
 | aralık  | Metin için sıklık aralığını temsil eden bir değer. `pitch`anlatmak için kullanılan mutlak değerleri, göreli değerleri veya numaralandırma değerlerini kullanarak `range` ifade edebilirsiniz. | İsteğe Bağlı |
 | oran  | Metnin konuşma oranını gösterir. `rate` şu şekilde ifade edebilirsiniz:<ul><li>Varsayılan değer çarpanı olarak davranan sayı olarak ifade edilen göreli bir değer. Örneğin, *1* değeri, fiyata hiçbir değişikliğe neden olmaz. *5* değeri, oranın bir haline neden olur. *3* değeri, ücretle sonuçlanmasına neden olur.</li><li>Sabit değer:<ul><li>x-yavaş</li><li>yavaş</li><li>orta</li><li>Hızlı</li><li>x-Fast</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
 | duration  | Konuşma birleştirme (TTS) hizmeti, metni saniye veya milisaniye olarak okurken geçmesi gereken süre. Örneğin, *2s* veya *1800ms*. | İsteğe Bağlı |
@@ -469,7 +471,7 @@ SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
 | YN | Arka plan ses dosyasının konumunu/URL 'sini belirtir. | SSML belgenizde arka plan sesi kullanılıyorsa gereklidir. |
-| birim | Arka plan ses dosyasının hacmini belirtir. **Kabul edilen değerler**: `100` dahil `0`. Varsayılan değer `1`. | İsteğe Bağlı |
+| birim | Arka plan ses dosyasının hacmini belirtir. **Kabul edilen değerler**: `100` dahil `0`. Varsayılan değer: `1`. | İsteğe Bağlı |
 | FADEIN | Arka plan sesinin saniye cinsinden silinme süresini belirtir. Varsayılan değer, belirme olmadan eşdeğer olan `0`. **Kabul edilen değerler**: `10000` dahil `0`.  | İsteğe Bağlı |
 | fadeout | Arka plan sesinin milisaniye cinsinden silinme süresini belirtir. Varsayılan değer `0`, soluklaştırma denk gelen. **Kabul edilen değerler**: `10000` dahil `0`.  | İsteğe Bağlı |
 

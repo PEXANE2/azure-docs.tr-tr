@@ -7,15 +7,15 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 9635798720667e38a767f26fc2e5f5374e420059
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 838145f8573e11deff8566c932a9c73c6f59f03b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795544"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561669"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Application Gateway giriş denetleyicisi nedir?
-Application Gateway giriş denetleyicisi (AGIC), [Azure Kubernetes hizmeti (AKS](https://azure.microsoft.com/services/kubernetes-service/) ) müşterilerinin Azure 'un yerel [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7 yük dengeleyicisinden bulut yazılımlarını kullanıma sunmasına olanak sağlayan bir Kubernetes uygulamasıdır Internet. AGIC, üzerinde barındırdığı Kubernetes kümesini izler ve bir Application Gateway sürekli olarak güncelleştirir, böylece seçili hizmetler Internet 'e sunulur.
+Application Gateway giriş denetleyicisi (AGIC), [Azure Kubernetes hizmeti (AKS](https://azure.microsoft.com/services/kubernetes-service/) ) müşterilerinin, bulut yazılımlarını Internet 'e sunmak için Azure 'un yerel [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7 yük dengeleyicisinden yararlanmasını sağlayan bir Kubernetes uygulamasıdır. AGIC, üzerinde barındırdığı Kubernetes kümesini izler ve bir Application Gateway sürekli olarak güncelleştirir, böylece seçili hizmetler Internet 'e sunulur.
 
 Giriş denetleyicisi, müşterinin AKS 'i üzerinde kendi Pod 'iyle çalışır. AGIC, değişiklikler için Kubernetes kaynaklarının bir alt kümesini izler. AKS kümesinin durumu belirli bir yapılandırmaya Application Gateway çevrilir ve [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)uygulanır.
 
@@ -28,7 +28,7 @@ AGIC 'e ek olarak Application Gateway kullanmak, TLS ilkesi ve Web uygulaması g
 
 ![Azure Application Gateway + AKS](./media/application-gateway-ingress-controller-overview/architecture.png)
 
-AGIC, hizmet ve dağıtımlar/pods ile birlikte Kubernetes giriş [kaynağı](http://kubernetes.io/docs/user-guide/ingress/)aracılığıyla yapılandırılır. Azure 'un yerel Application Gateway L7 yük dengeleyicisinden yararlanarak birçok özellik sağlar. Birkaç ad vermek için:
+AGIC, hizmet ve dağıtımlar/pods ile birlikte Kubernetes giriş [kaynağı](https://kubernetes.io/docs/user-guide/ingress/)aracılığıyla yapılandırılır. Azure 'un yerel Application Gateway L7 yük dengeleyicisinden yararlanarak birçok özellik sağlar. Birkaç ad vermek için:
   - URL yönlendirme
   - Tanımlama bilgisi tabanlı benzeşim
   - SSL sonlandırma

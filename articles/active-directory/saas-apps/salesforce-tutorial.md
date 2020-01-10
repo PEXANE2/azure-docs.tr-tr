@@ -4,24 +4,23 @@ description: Azure Active Directory ve Salesforce arasında çoklu oturum açmay
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d2d7d420-dc91-41b8-a6b3-59579e043b35
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 12/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d137a96a967e017c67da7dfabf25502de32ba7a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 71521348c5510696add4399d3046833d3b42193c
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970066"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561907"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Öğretici: Salesforce ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +32,7 @@ Bu öğreticide Salesforce 'ı Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -70,27 +69,23 @@ Salesforce 'un Azure AD ile tümleştirilmesini yapılandırmak için, galeridek
 Azure AD SSO 'yu Salesforce ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-2. **[SALESFORCE SSO 'Yu yapılandırma](#configure-salesforce-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    1. Kullanıcının Azure AD gösterimine bağlı olan Salesforce 'ta B. Simon 'un bir karşılığı olan **[Salesforce test kullanıcısı oluşturun](#create-salesforce-test-user)** .
-3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[SALESFORCE SSO 'Yu yapılandırma](#configure-salesforce-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    * Kullanıcının Azure AD gösterimine bağlı olan Salesforce 'ta B. Simon 'un bir karşılığı olan **[Salesforce test kullanıcısı oluşturun](#create-salesforce-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı Salesforce ile yapılandırmak için aşağıdaki adımları uygulayın:
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/) **Salesforce** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak değeri yazın:
 
@@ -107,11 +102,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Salesforce istemci desteği ekibine](https://help.salesforce.com/support) başvurun.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. **Salesforce ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
+1. **Salesforce ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
@@ -125,10 +120,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
-   
-    > [!NOTE]
-    > Salesforce Kullanıcı öznitelikleri, SAML doğrulaması için büyük/küçük harfe duyarlıdır.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -150,48 +142,56 @@ Bu bölümde, Salesforce 'a erişim vererek Azure çoklu oturum açma özelliği
 
 ## <a name="configure-salesforce-sso"></a>Salesforce SSO 'yu yapılandırma
 
-1. Tarayıcınızda yeni bir sekme açın ve Salesforce yönetici hesabınızda oturum açın.
+1. Bu yapılandırmayı Salesforce 'ta otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-2. Sayfanın sağ üst köşesindeki **Ayarlar simgesi** altında **Kurulum** ' a tıklayın.
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+1. Tarayıcıya uzantı ekledikten sonra **Salesforce 'U ayarla** öğesine tıkladığınızda sizi Salesforce çoklu oturum açma uygulamasına yönlendirirsiniz. Buradan, Salesforce çoklu oturum açma 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-13 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+1. Salesforce 'ı el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve Salesforce şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+
+1. Sayfanın sağ üst köşesindeki **Ayarlar simgesi** altında **Kurulum** ' a tıklayın.
 
     ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/configure1.png)
 
-3. Gezinti bölmesinde **Ayarlar** ' a gidin, ilgili bölümü genişletmek için **kimlik** ' e tıklayın. Ardından **Çoklu oturum açma ayarları**' na tıklayın.
+1. Gezinti bölmesinde **Ayarlar** ' a gidin, ilgili bölümü genişletmek için **kimlik** ' e tıklayın. Ardından **Çoklu oturum açma ayarları**' na tıklayın.
 
     ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-admin-sso.png)
 
-4. **Çoklu oturum açma ayarları** sayfasında **Düzenle** düğmesine tıklayın.
+1. **Çoklu oturum açma ayarları** sayfasında **Düzenle** düğmesine tıklayın.
 
     ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-admin-sso-edit.png)
 
     > [!NOTE]
     > Salesforce hesabınız için çoklu oturum açma ayarlarını etkinleştiremeyebilirsiniz [Salesforce istemci desteği ekibine](https://help.salesforce.com/support)başvurmanız gerekebilir.
 
-5. **SAML etkin**' i seçin ve ardından **Kaydet**' e tıklayın.
+1. **SAML etkin**' i seçin ve ardından **Kaydet**' e tıklayın.
 
-      ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-enable-saml.png)
+    ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-enable-saml.png)
 
-6. SAML çoklu oturum açma ayarlarınızı yapılandırmak için **meta veri dosyasından yeni**' ye tıklayın.
+1. SAML çoklu oturum açma ayarlarınızı yapılandırmak için **meta veri dosyasından yeni**' ye tıklayın.
 
     ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
-7. Azure portal indirdiğiniz meta veri XML dosyasını karşıya yüklemek için **Dosya Seç** ' e tıklayın ve **Oluştur**' a tıklayın.
+1. Azure portal indirdiğiniz meta veri XML dosyasını karşıya yüklemek için **Dosya Seç** ' e tıklayın ve **Oluştur**' a tıklayın.
 
     ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/xmlchoose.png)
 
-8. **SAML çoklu oturum açma ayarları** sayfasında, alanlar otomatik olarak doldurulur ve Kaydet ' e tıklayın.
+1. **SAML çoklu oturum açma ayarları** sayfasında, alanlar otomatik olarak doldurulur ve Kaydet ' e tıklayın.
 
     ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/salesforcexml.png)
 
-9. Salesforce ' daki sol gezinti bölmesinde **Şirket ayarları** ' na tıklayarak ilgili bölümü genişletin ve **etki alanım**' a tıklayın.
+1. Salesforce ' daki sol gezinti bölmesinde **Şirket ayarları** ' na tıklayarak ilgili bölümü genişletin ve **etki alanım**' a tıklayın.
 
     ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-my-domain.png)
 
-10. **Kimlik doğrulama yapılandırması** bölümüne gidin ve **Düzenle** düğmesine tıklayın.
+1. **Kimlik doğrulama yapılandırması** bölümüne gidin ve **Düzenle** düğmesine tıklayın.
 
     ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-11. **Kimlik doğrulama yapılandırması** bölümünde, SAML SSO yapılandırmanızın **kimlik doğrulama hizmeti** olarak **Azuresso** ' ı denetleyip **Kaydet**' e tıklayın.
+1. **Kimlik doğrulama yapılandırması** bölümünde, SAML SSO yapılandırmanızın **kimlik doğrulama hizmeti** olarak **Azuresso** ' ı denetleyip **Kaydet**' e tıklayın.
 
     ![Çoklu oturum açmayı yapılandırın](./media/salesforce-tutorial/sf-auth-config.png)
 

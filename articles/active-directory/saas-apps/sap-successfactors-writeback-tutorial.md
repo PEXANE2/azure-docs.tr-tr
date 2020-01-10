@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: c780ee973c1dabb15c37b2519eb8253d2371080a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932313"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530043"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>Öğretici: Azure AD 'den SAP 'ye yönelik öznitelik geri yazma özelliğini yapılandırma başarılı etmenleri (Önizleme)
 Bu öğreticinin amacı, Azure AD 'deki öznitelikleri başarılı bir şekilde çalışan merkezi 'ne geri yazma için gerçekleştirmeniz gereken adımları gösteriyoruz. Şu anda geri yazma için desteklenen tek öznitelik e-posta özniteliğidir. 
@@ -129,12 +129,12 @@ Bu bölüm için adımları sağlar
    * **Kiracı URL 'si –** Başarılı olan OData API hizmetleri uç noktasının adını girin. Yalnızca http veya https olmayan sunucunun ana bilgisayar adını girin. Bu değer şöyle görünmelidir: **api-Server-Name.SuccessFactors.com**.
 
    * **Bildirim e-postası –** E-posta adresinizi girin ve "hata oluşursa e-posta gönder" onay kutusunu işaretleyin.
-         > [!NOTE]
-         > The Azure AD Provisioning Service sends email notification if the provisioning job goes into a [quarantine](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) state.
+    > [!NOTE]
+    > Azure AD sağlama hizmeti, sağlama işi [karantina](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) durumuna geçtiğinde e-posta bildirimi gönderir.
 
    * **Bağlantıyı Sına** düğmesine tıklayın. Bağlantı testi başarılı olursa üstteki **Kaydet** düğmesine tıklayın. Başarısız olursa, başarılı olan kimlik bilgilerinin ve URL 'nin geçerli olduğunu iki kez kontrol edin.
     >[!div class="mx-imgBorder"]
-    >![Azure portalda](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
+    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
 
    * Kimlik bilgileri başarıyla kaydedildikten sonra, **eşlemeler** bölümü **Azure Active Directory kullanıcılara yönelik** varsayılan eşleme eşitlemesini gösterir
 
@@ -152,7 +152,7 @@ Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl
 
 1. **Öznitelik eşlemeleri** bölümünde, yalnızca bir başarılı bir Kullanıcı PROFILINI Azure AD kullanıcısına bağlamak için kullanılan eşleşen kimliği değiştirebilir ve Azure AD 'deki bir özniteliği e-posta kaynağı olarak görev görür. 
     >[!div class="mx-imgBorder"]
-    >![Azure portalda](./media/sap-successfactors-inbound-provisioning/sfwb-attribute-mapping.png)
+    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sfwb-attribute-mapping.png)
 
    >[!NOTE]
    >Başarılı bir şekilde geri yazma yalnızca email özniteliğini destekler. Yeni öznitelikler eklemek için lütfen **Yeni eşleme Ekle** 'yi kullanmayın. 
@@ -170,7 +170,7 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
 
 1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık**olarak ayarlayın.
 
-2. **Kaydet** düğmesine tıklayın.
+2. **Save (Kaydet)** düğmesine tıklayın.
 
 3. Bu işlem ilk eşitlemeyi başlatacak ve bu da, başarılı bir sayıda kullanıcının başarılı olan kiracı kiracısında olmasına bağlı olarak birkaç saat sürebilir. İlerleme çubuğunu, eşitleme döngüsünün ilerlemesini izlemek için kontrol edebilirsiniz. 
 

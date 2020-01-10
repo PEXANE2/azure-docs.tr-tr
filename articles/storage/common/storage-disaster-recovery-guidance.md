@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2e0ae05ff8c32a70991769171cb29b229c2b0be1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895363"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526371"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Olağanüstü durum kurtarma ve hesap yük devretme (Önizleme)
 
@@ -174,10 +174,11 @@ VM kapatılırken geçici bir diskte depolanan tüm verilerin kaybedildiğini ak
 ### <a name="unsupported-features-or-services"></a>Desteklenmeyen özellikler veya hizmetler
 Önizleme sürümü için hesap yük devretmesi için aşağıdaki özellikler veya hizmetler desteklenmez:
 
-- Azure Dosya Eşitleme, depolama hesabı yük devretmesini desteklemez. Azure Dosya Eşitleme bulut uç noktaları olarak kullanılan Azure dosya paylaşımlarını içeren depolama hesapları yük devretmemelidir. Bunun yapılması eşitlemenin durmasına neden olur ve yeni katmanlı dosyalar söz konusu olduğunda beklenmedik veri kaybına neden olabilir.  
+- Azure Dosya Eşitleme, depolama hesabı yük devretmesini desteklemez. Azure Dosya Eşitleme'de bulut uç noktaları olarak kullanılan Azure dosya paylaşımlarının bulunduğu depolama hesapları yük devretmemelidir. Bunun yapılması eşitlemenin çalışmayı durdurmasına neden olur ve yeni katmanlanmış dosyalar söz konusu olduğunda beklenmedik veri kaybına da yol açabilir.  
 - Arşivlenmiş blob 'ları içeren bir depolama hesabı yük devredilemez. Arşivlenmiş Blobları yük devri planlamadığınız ayrı bir depolama hesabında saklayın.
 - Premium blok bloblarını içeren bir depolama hesabı yük devredilemez. Premium blok bloblarını destekleyen depolama hesapları Şu anda coğrafi artıklığı desteklemez.
-- Yük devretme işlemi tamamlandıktan sonra, aşağıdaki özellikler, başlangıçta etkinse çalışmayı durdurur: [olay abonelikleri](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [yaşam döngüsü Ilkeleri](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [depolama Analizi günlüğü](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- [Solucan ve kullanılabilirlik ilkesi](../blobs/storage-blob-immutable-storage.md) etkinleştirilmiş kapsayıcıları içeren bir depolama hesabı yük devredilemez. Kilitlemeli/kilitlenmiş zamana dayalı saklama veya yasal saklama ilkeleri, uyumluluk sağlamak için yük devretmeyi önler.
+- Yük devretme işlemi tamamlandıktan sonra, aşağıdaki özellikler, başlangıçta etkin olursa çalışmayı durdurabilir: [olay abonelikleri](../blobs/storage-blob-event-overview.md), [değişiklik akışı](../blobs/storage-blob-change-feed.md), [yaşam döngüsü ilkeleri](../blobs/storage-lifecycle-management-concepts.md)ve [depolama Analizi günlüğe kaydetme](storage-analytics-logging.md).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Yük devretmeye alternatif olarak verileri kopyalama
 

@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a3df48115dde27478446614c0446d64709adbc6f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a9c058e590e5df9ab9ec82d900e22f7154d00a0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226791"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561941"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Işlevleri ağ seçenekleri
 
@@ -32,8 +32,8 @@ Barındırma modellerinin farklı düzeylerde ağ yalıtımı vardır. Doğru ol
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Özel site erişimini & gelen IP kısıtlamaları](#inbound-ip-restrictions)|Evet ✅|Evet ✅|Evet ✅|Evet ✅|
 |[Sanal ağ tümleştirmesi](#virtual-network-integration)|❌Hayır|✅Evet (bölgesel)|✅Evet (bölgesel ve ağ geçidi)|Evet ✅|
-|[Sanal ağ Tetikleyicileri (HTTP olmayan)](#virtual-network-triggers-non-http)|❌Hayır| ❌Hayır|Evet ✅|Evet ✅|
-|[Karma bağlantılar](#hybrid-connections)|❌Hayır|Evet ✅|Evet ✅|Evet ✅|
+|[Sanal ağ Tetikleyicileri (HTTP olmayan)](#virtual-network-triggers-non-http)|❌Hayır| Evet ✅ |Evet ✅|Evet ✅|
+|[Karma bağlantılar](#hybrid-connections) (yalnızca Windows)|❌Hayır|Evet ✅|Evet ✅|Evet ✅|
 |[Giden IP kısıtlamaları](#outbound-ip-restrictions)|❌Hayır| ❌Hayır|❌Hayır|Evet ✅|
 
 ## <a name="inbound-ip-restrictions"></a>Gelen IP kısıtlamaları
@@ -91,7 +91,7 @@ Sanal ağ tümleştirmesinin desteklemediği bazı şeyler vardır, örneğin:
 
 * Sürücü takma
 * Active Directory tümleştirmesi
-* Tanımlaya
+* NetBIOS
 
 Azure Işlevlerinde sanal ağ tümleştirmesi App Service Web Apps ile paylaşılan altyapıyı kullanır. İki tür sanal ağ tümleştirmesi hakkında daha fazla bilgi edinmek için bkz.:
 
@@ -123,19 +123,51 @@ Key Vault hizmet uç noktalarıyla güvenlik altına alınırsa, şu anda [Key V
 
 ## <a name="virtual-network-triggers-non-http"></a>Sanal ağ Tetikleyicileri (HTTP olmayan)
 
-Şu anda, bir sanal ağ içinden HTTP dışında işlev tetiklerinin kullanılması için, işlev uygulamanızı bir App Service planında veya bir App Service Ortamı çalıştırmanız gerekir.
+Şu anda, bir sanal ağ içinden HTTP olmayan tetikleyici işlevlerini iki şekilde kullanabilirsiniz: 
++ İşlev uygulamanızı Premium bir planda çalıştırın ve sanal ağ tetikleme desteğini etkinleştirin.
++ İşlev uygulamanızı bir App Service planında veya App Service Ortamı çalıştırın.
 
-Örneğin, yalnızca bir sanal ağdan gelen trafiği kabul etmek için Azure Cosmos DB yapılandırmak istediğinizi varsayalım. İşlev uygulamanızı, bu kaynaktaki Azure Cosmos DB Tetikleyicileri yapılandırmak üzere bu sanal ağla sanal ağ tümleştirmesi sağlayan bir App Service planında dağıtmanız gerekir. Önizleme süresince, sanal ağ tümleştirmesini yapılandırmak Premium planın bu Azure Cosmos DB kaynağını tetiklemesine izin vermez.
+### <a name="premium-plan-with-virtual-network-triggers"></a>Sanal ağ tetikleyicilerine sahip Premium plan
 
-Nelerin desteklendiğini iki kez kontrol etmek için [http olmayan tüm tetikleyiciler için bu listeye](./functions-triggers-bindings.md#supported-bindings) bakın.
+Premium bir planda çalışırken, HTTP olmayan tetikleyici işlevlerini bir sanal ağ içinde çalışan hizmetlere bağlayabilirsiniz. Bunu yapmak için, işlev uygulamanız için sanal ağ tetikleme desteğini etkinleştirmeniz gerekir. **Sanal ağ tetikleme desteği** ayarı, **işlev uygulaması ayarları**altındaki [Azure Portal](https://portal.azure.com) bulunur.
+
+![VNETToggle](media/functions-networking-options/virtual-network-trigger-toggle.png)
+
+Sanal ağ tetikleyicilerini şu Azure CLı komutunu kullanarak da etkinleştirebilirsiniz:
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <premium_plan_name> --set properties.functionsRuntimeScaleMonitoringEnabled=1
+```
+
+Sanal ağ Tetikleyicileri, Işlevler çalışma zamanının 2. x ve üzerinde desteklenir. Aşağıdaki HTTP olmayan tetikleyici türleri desteklenir.
+
+| Uzantı | En Düşük Sürüm |
+|-----------|---------| 
+|[Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 veya üzeri |
+|[Microsoft. Azure. WebJobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 veya üzeri|
+|[Microsoft. Azure. WebJobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus)| 3.2.0 veya üzeri|
+|[Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)| 3.0.5 veya üzeri|
+|[Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)| 2.0.0 veya üzeri|
+
+> [!IMPORTANT]
+> Sanal ağ tetikleme desteğini etkinleştirirken, yalnızca yukarıdaki tetikleyici türleri uygulamanızla dinamik olarak ölçeklendirin. Yukarıda listelenmeyen Tetikleyicileri kullanmaya devam edebilirsiniz, ancak bunlar önceden çarpımış örnek sayısının ötesinde ölçeklendirilmez. Tetikleyicilerin tüm listesi için [Tetikleyiciler ve bağlamalar '](./functions-triggers-bindings.md#supported-bindings) a bakın.
+
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>Sanal ağ tetikleyicilerle plan ve App Service Ortamı App Service
+
+İşlev uygulamanız App Service planınızdan veya bir App Service Ortamı çalıştırıldığında HTTP olmayan tetikleyici işlevleri kullanabilirsiniz. İşlevlerinizin doğru tetiklenmesi için, tetikleyici bağlantısında tanımlanan kaynağa erişimi olan bir sanal ağa bağlı olmanız gerekir. 
+
+Örneğin, yalnızca bir sanal ağdan gelen trafiği kabul etmek için Azure Cosmos DB yapılandırmak istediğinizi varsayalım. Bu durumda, işlev uygulamanızı sanal ağ ile sanal ağ tümleştirmesi sağlayan bir App Service planına dağıtmanız gerekir. Bu, bir işlevin bu Azure Cosmos DB kaynak tarafından tetiklenmesi sağlar. 
 
 ## <a name="hybrid-connections"></a>Karma Bağlantılar
 
-[Karma bağlantılar](../service-bus-relay/relay-hybrid-connections-protocol.md) , diğer ağlardaki uygulama kaynaklarına erişmek için kullanabileceğiniz bir Azure Relay özelliğidir. Uygulamadan bir uygulama uç noktasına erişim sağlar. Uygulamanıza erişmek için kullanamazsınız. Karma Bağlantılar, tüketim planı hariç tüm işlevler için kullanılabilir.
+[Karma bağlantılar](../service-bus-relay/relay-hybrid-connections-protocol.md) , diğer ağlardaki uygulama kaynaklarına erişmek için kullanabileceğiniz bir Azure Relay özelliğidir. Uygulamadan bir uygulama uç noktasına erişim sağlar. Uygulamanıza erişmek için kullanamazsınız. Karma Bağlantılar, tüketim planı hariç Windows üzerinde çalışan işlevler için kullanılabilir.
 
 Azure Işlevlerinde kullanıldığında, her karma bağlantı tek bir TCP ana bilgisayarı ve bağlantı noktası bileşimiyle söz konusu. Bu, karma bağlantının uç noktasının, TCP dinleme bağlantı noktasına eriştiğiniz sürece herhangi bir işletim sisteminde ve herhangi bir uygulamada olabileceği anlamına gelir. Karma Bağlantılar özelliği, uygulama protokolünün ne olduğunu veya ne erişmekte olduğunu bilmez veya ilgilenmez. Yalnızca ağ erişimi sağlar.
 
 Daha fazla bilgi edinmek için [Karma Bağlantılar App Service belgelerine](../app-service/app-service-hybrid-connections.md)bakın. Aynı yapılandırma adımları Azure Işlevlerini destekler.
+
+>[!IMPORTANT]
+> Karma Bağlantılar yalnızca Windows planlarında desteklenir. Linux desteklenmez
 
 ## <a name="outbound-ip-restrictions"></a>Giden IP kısıtlamaları
 

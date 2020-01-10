@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 12/16/2019
 ms.author: juliako
-ms.openlocfilehash: 4f8491e31747eda9cbe8689ba7db3026df0ff3ad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f3825f6c9186c5e04807dd3890a14fcc6d370989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454673"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı Video Indexer hesabını yönetme
 
@@ -24,7 +24,7 @@ Bu makalede, Azure aboneliğinize ve bir Azure Media Services hesabına bağlı 
 > [!NOTE]
 > Bu konuda açıklanan hesap yapılandırma ayarlarını yapmak için Video Indexer hesap sahibi olmanız gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Azure 'A bağlı](connect-to-azure.md)olarak açıklandığı gibi video Indexer hesabınızı Azure 'a bağlayın. 
 
@@ -49,6 +49,17 @@ Videolarınızın Dizin Oluşturucu hesabınız Azure 'a bağlıysa, aşağıdak
 * Ayrılmış ayrılmış birimlerin sayısı ve türü.
 
 Hesabınızın bazı ayarlamaları olması gerekiyorsa, **Ayarlar** sayfasında hesap yapılandırmanızla ilgili hataları ve uyarıları görürsünüz. İletiler, değişiklikler yapmanız gereken Azure portal tam konumlarına bağlantılar içerir. Daha fazla bilgi için aşağıdaki [hata ve uyarılar](#errors-and-warnings) bölümüne bakın.
+
+## <a name="repair-the-connection-to-azure"></a>Azure bağlantısını onarın
+
+[Video Indexer](https://www.videoindexer.ai/) sayfanızın **Azure Media Services bağlantısını Güncelleştir** iletişim kutusunda, aşağıdaki ayarlar için değerler sağlamanız istenir: 
+
+|Ayar|Açıklama|
+|---|---|
+|Azure abonelik KIMLIĞI|Abonelik KIMLIĞI Azure portal elde edilebilir. Sol panelde **tüm hizmetler** ' e tıklayın ve "abonelikler" i arayın. **Abonelikler** ' i seçin ve aboneliklerinizin LISTESINDEN istediğiniz kimliği seçin.|
+|Azure Media Services kaynak grubu adı|Media Services hesabı oluşturduğunuz kaynak grubunun adı.|
+|Uygulama Kimliği|Bu Video Indexer hesabı için oluşturduğunuz Azure AD uygulama KIMLIĞI (belirtilen Media Services hesabının izinleriyle). <br/><br/>Uygulama KIMLIĞINI almak için Azure portal gidin. Media Services hesap altında, hesabınızı seçin ve **API erişimi**' ne gidin. **Hizmet sorumlusu -> Azure AD Uygulaması MEDIA SERVICES API 'Sine Bağlan** 'a tıklayın. İlgili parametreleri kopyalayın.|
+|Uygulama anahtarı|Yukarıda belirttiğiniz Media Services hesabınızla ilişkili Azure AD uygulama anahtarı. <br/><br/>Uygulama anahtarını almak için Azure portal gidin. Media Services hesap altında, hesabınızı seçin ve **API erişimi**' ne gidin. **Hizmet sorumlusu ile MEDIA SERVICES API 'Sine Bağlan** ' a tıklayın -> uygulama -> **sertifikalarını gizli &** **yönetin** . İlgili parametreleri kopyalayın.|
 
 ## <a name="auto-scale-reserved-units"></a>Ayrılmış birimleri otomatik ölçeklendir
 

@@ -11,17 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 9dd81484d8afab66fcb76f8fccdea348ef6a34c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90e51e8b56bd3fb63d56c630d47770e97f439796
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681493"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563556"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory bağlı hizmetler
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-create-datasets.md)
-> * [Geçerli sürüm](concepts-datasets-linked-services.md)
+> * [Geçerli sürüm](concepts-linked-services.md)
 
 Bu makalede, bağlı hizmetlerin ne olduğu, JSON biçiminde nasıl tanımlandığı ve Azure Data Factory işlem hatları 'nda nasıl kullanıldığı açıklanmaktadır.
 
@@ -61,12 +61,12 @@ Data Factory bağlı bir hizmet, JSON biçiminde aşağıdaki gibi tanımlanır:
 
 Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 
-Özellik | Açıklama | Gerekli |
+Özellik | Açıklama | Gereklidir |
 -------- | ----------- | -------- |
 ad | Bağlı hizmetin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Evet |
 type | Bağlı hizmetin türü. Örneğin: AzureStorage (veri deposu) veya AzureBatch (işlem). TypeProperties açıklamasına bakın. | Evet |
 typeProperties | Tür özellikleri her bir veri deposu veya işlem için farklıdır. <br/><br/> Desteklenen veri deposu türleri ve bunların tür özellikleri için, bu makaledeki [veri kümesi türü](concepts-datasets-linked-services.md#dataset-type) tablosuna bakın. Bir veri deposuna özgü tür özellikleri hakkında bilgi edinmek için veri deposu Bağlayıcısı makalesine gidin. <br/><br/> Desteklenen işlem türleri ve bunların tür özellikleri için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md). | Evet |
-connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel bir ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır
+connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel bir ağda yer alıyorsa) kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. | Hayır
 
 ## <a name="linked-service-example"></a>Bağlı hizmet örneği
 Aşağıdaki bağlı hizmet bir Azure Storage bağlı hizmetidir. Türün AzureStorage olarak ayarlandığını unutmayın. Azure depolama bağlı hizmetinin tür özellikleri bir bağlantı dizesi içerir. Data Factory hizmeti, çalışma zamanında veri deposuna bağlanmak için bu bağlantı dizesini kullanır.
@@ -77,10 +77,7 @@ Aşağıdaki bağlı hizmet bir Azure Storage bağlı hizmetidir. Türün AzureS
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -95,9 +92,9 @@ Aşağıdaki bağlı hizmet bir Azure Storage bağlı hizmetidir. Türün AzureS
 Şu araçlardan veya SDK 'Lardan birini kullanarak bağlı hizmetler oluşturabilirsiniz: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager şablonu ve Azure Portal
 
 ## <a name="data-store-linked-services"></a>Veri deposu bağlı hizmetleri
-[Bağlayıcı genel bakış](copy-activity-overview.md#supported-data-stores-and-formats) makalesindeki Data Factory tarafından desteklenen veri listesini bulabilirsiniz. Desteklenen bağlantı özelliklerini öğrenmek için bir veri deposuna tıklayın.
+[Bağlayıcı genel bakış](copy-activity-overview.md#supported-data-stores-and-formats) makalesindeki Data Factory tarafından desteklenen veri depolarının listesini bulabilirsiniz. Desteklenen bağlantı özelliklerini öğrenmek için bir veri deposuna tıklayın.
 
-## <a name="compute-linked-services"></a>İşlem bağlantılı hizmetler
+## <a name="compute-linked-services"></a>İşlem bağlı hizmetleri
 Farklı işlem ortamları hakkında ayrıntılı bilgi edinmek için [desteklenen başvuru işlem ortamları](compute-linked-services.md) , veri fabrikanınızdan ve farklı yapılandırmalardan bağlanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

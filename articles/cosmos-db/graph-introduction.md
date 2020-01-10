@@ -7,20 +7,20 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/18/2019
 ms.author: lbosq
-ms.openlocfilehash: 1f46eb1995e2e7cb098098ebd22eedbd194dc6a6
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9151b54d7fa0b64a465aa8384cb4bfdb8e72c482
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310247"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500011"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB’ye giriş: Gremlin API
+# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB: Gremlin API'sine giriş
 
-[Azure Cosmos DB, Microsoft](introduction.md)'un görev açısından kritik uygulamalar için genel olarak dağıtılmış, çok modelli bir veritabanı hizmetidir.  Bu, çok modelli bir veritabanıdır ve belge, anahtar-değer, grafik ve sütun ailesi veri modellerini destekler. Azure Cosmos DB Gremlin API, herhangi bir ölçek için tasarlanan tam olarak yönetilen bir veritabanı hizmetinde grafik verilerini depolamak ve bunlarla çalışmak için kullanılır.  
+[Azure Cosmos DB](introduction.md) , Microsoft 'un görev açısından kritik uygulamalar için genel olarak dağıtılmış, çok modelli veritabanı hizmetidir. Bu, çok modelli bir veritabanıdır ve belge, anahtar-değer, grafik ve sütun ailesi veri modellerini destekler. Azure Cosmos DB Gremlin API, herhangi bir ölçek için tasarlanan tam olarak yönetilen bir veritabanı hizmetinde grafik verilerini depolamak ve bunlarla çalışmak için kullanılır.  
 
 ![Azure Cosmos DB grafik mimarisi](./media/graph-introduction/cosmosdb-graph-architecture.png)
 
-Bu makale, Azure Cosmos DB Gremlin API'ye genel bir bakış sağlar ve milyarlarca köşesi ve kenarı olan yoğun grafikleri depolamak için bunu nasıl kullanabileceğinizi açıklar. Daha fazla milisaniyelik gecikme süresiyle grafikleri sorgulayabilir ve Graf yapısını kolayca geliştirebilirsiniz. Azure Cosmos DB Gremlin API 'si [Apache tinkerpop](https://tinkerpop.apache.org) Graph veritabanı standardını temel alır ve Gremlin sorgu dilini kullanır. 
+Bu makale, Azure Cosmos DB Gremlin API'ye genel bir bakış sağlar ve milyarlarca köşesi ve kenarı olan yoğun grafikleri depolamak için bunu nasıl kullanabileceğinizi açıklar. Daha fazla milisaniyelik gecikme süresiyle grafikleri sorgulayabilir ve Graf yapısını kolayca geliştirebilirsiniz. Azure Cosmos DB Gremlin API 'SI [Apache TinkerPop](https://tinkerpop.apache.org) Graf veritabanı standardını temel alır ve Gremlin sorgu dilini kullanır. 
 
 Azure Cosmos DB Gremlin API 'SI, grafik veritabanı algoritmalarının gücünü yüksek düzeyde ölçeklenebilir, yönetilen altyapıyla birleştirerek esneklik ve ilişkisel yaklaşımlarla ilişkili en yaygın veri sorunlarına yönelik benzersiz ve esnek bir çözüm sunar. 
 
@@ -56,7 +56,7 @@ Azure Cosmos DB Gremlin API 'nin sunduğu farklı özellikler şunlardır:
 
 * **Apache TinkerPop ile uyumluluk**
 
-  Azure Cosmos DB, [Açık kaynaklı Apache TinkerPop standardını](http://tinkerpop.apache.org/)destekler. Tinkerpop Standard, Azure Cosmos DB Gremlin API 'siyle kolayca tümleştirilebilen, uygulama ve kitaplıkların örnek bir ekosistemine sahiptir. 
+  Azure Cosmos DB, [Açık kaynaklı Apache TinkerPop standardını](https://tinkerpop.apache.org/)destekler. Tinkerpop Standard, Azure Cosmos DB Gremlin API 'siyle kolayca tümleştirilebilen, uygulama ve kitaplıkların örnek bir ekosistemine sahiptir. 
 
 * **Ayarlanabilir tutarlılık düzeyleri**
 
@@ -88,7 +88,7 @@ Grafik veritabanı yaklaşımı, depolama katmanındaki kalıcı ilişkileri tem
 
 ### <a name="property-graph-objects"></a>Özellik grafiği nesneleri
 
-Özellik [grafiği](http://mathworld.wolfram.com/Graph.html) [köşeler](http://mathworld.wolfram.com/GraphEdge.html)ve kenarlardan oluşan bir yapıdır. [](http://mathworld.wolfram.com/GraphVertex.html) Her iki nesne de özellik olarak rastgele sayıda anahtar-değer çiftine sahip olabilir. 
+Özellik [grafiği](http://mathworld.wolfram.com/Graph.html) [köşeler ve kenarlardan](http://mathworld.wolfram.com/GraphEdge.html) [oluşan bir](http://mathworld.wolfram.com/GraphVertex.html) yapıdır. Her iki nesne de özellik olarak rastgele sayıda anahtar-değer çiftine sahip olabilir. 
 
 * Köşeler **-köşeler** , bir kişi, yer veya olay gibi ayrı varlıkları gösterir.
 
@@ -105,17 +105,17 @@ Sorguların Gremlin’de nasıl ifade edildiğini anlamak için örnek bir grafi
 
 Bu grafik, aşağıdaki *köşe* türlerine sahiptir (Gremlin içinde "etiket" adı verilir):
 
-- **Kişiler**: Grafikte üç kişi, deneme, Thomas ve ben bulunur
-- **Ilgi alanları**: Bu örnekteki ilgi alanları, bu örnekte futbol oyunu
-- **Cihazlar**: Kişilerin kullandığı cihazlar
-- **Işletim sistemleri**: Cihazların üzerinde çalıştığı işletim sistemleri
+- **Kişiler**: grafikte üç kişi, deneme, Thomas ve ben bulunur
+- **Ilgi alanları**: Bu örnekte, futbol oyununun oyunu
+- **Cihazlar**: kişilerin kullandığı cihazlar
+- **Işletim sistemleri**: cihazların üzerinde çalıştığı işletim sistemleri
 
 Aşağıdaki *uç* türleri/Etiketler aracılığıyla bu varlıklar arasındaki ilişkileri temsil ediyoruz:
 
 - **Biliyor**: Örneğin, "Thomas biliyor"
-- **Ilgileniyor**: Grafımız kişilerin ilgi alanlarınızı göstermek için örneğin, "Ben futbol ile ilgileniyor"
-- **Runsos**: Dizüstü bilgisayar Windows işletim sistemini çalıştırır
-- Şunu **kullanır**: Bir kişinin hangi cihaza kullandığını göstermek için. Örneğin Robin, seri numarası 77 olan bir Motorola telefon kullanır
+- **İlgileniyor**: grafımızda bulunan kişilerin ilgi alanlarınızı göstermek Için "Ben futbol ile ilgileniyor"
+- **Runsos**: dizüstü bilgisayar Windows işletim sistemini çalıştırır
+- Bir kişinin hangi cihaza kullandığını göstermek için: **kullanır**. Örneğin Robin, seri numarası 77 olan bir Motorola telefon kullanır
 
 Şimdi [Gremlin Console](https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console)’u kullanarak bu grafiğe yönelik birkaç işlem yapalım. Dilerseniz bu işlemleri, tercih ettiğiniz platformdaki (Java, Node.js, Python veya .NET) Gremlin sürücülerini kullanarak da gerçekleştirebilirsiniz.  Azure Cosmos DB’de nelerin desteklendiğine bakmadan önce söz dizimine hakkında bilgi edinmek için birkaç örneğe bakalım.
 

@@ -7,17 +7,17 @@ author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 024e6121e950ba27cf18b65434d712af80d1ec17
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 17e986954e98b7a3c0ea85324afbf77ce1428d68
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817871"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467012"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -26,7 +26,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=windows)
 
-## <a name="add-sample-code"></a>Örnek kod ekleme
+## <a name="add-sample-code"></a>Örnek kodu ekleyin
 
 1. **helloworld.cpp** kaynak dosyasını açın.
 
@@ -69,9 +69,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
    ```
 
-1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
+1. Aynı dosyada `YourSubscriptionKey` dizesini abonelik anahtarınız ile değiştirin.
 
-1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
+1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
 
 1. Dize `helloworld.wav` kendi dosya adıyla değiştirin.
 

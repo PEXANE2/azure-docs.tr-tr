@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 5c1a146a12fd8881982826e0a87868a6eaf05cb1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9db6b5ff517a1b0d67e59591ee634dfad685527b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851849"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461460"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL veritabanı ve Azure SQL veri ambarı IP güvenlik duvarı kuralları
 
@@ -101,7 +101,7 @@ Bir bilgisayar Internet 'ten veritabanı sunucunuza bağlanmaya çalıştığın
 
 ### <a name="connections-from-inside-azure"></a>Azure içinden bağlantılar
 
-Azure içinde barındırılan uygulamaların SQL sunucunuza bağlanmasına izin vermek için Azure bağlantıları etkinleştirilmelidir. Azure 'dan bir uygulama, veritabanı sunucunuza bağlanmaya çalıştığında, güvenlik duvarı Azure bağlantılarına izin verildiğini doğrular. *0.0.0.0* DEĞERINE eşit IP adreslerini başlatma ve bitiş bir güvenlik duvarı ayarı, Azure bağlantılarına izin verildiğini gösterir. Bağlantıya izin verilmiyorsa, istek SQL veritabanı sunucusuna erişmez.
+Azure içinde barındırılan uygulamaların SQL sunucunuza bağlanmasına izin vermek için Azure bağlantıları etkinleştirilmelidir. Azure 'dan bir uygulama, veritabanı sunucunuza bağlanmaya çalıştığında, güvenlik duvarı Azure bağlantılarına izin verildiğini doğrular. *0.0.0.0* DEĞERINE eşit IP adreslerini başlatma ve bitiş bir güvenlik duvarı ayarı, Azure bağlantılarına izin verildiğini gösterir. Bu, güvenlik duvarı kuralları ayarlanarak doğrudan Azure Portal dikey penceresinden açılabilir **ve güvenlik duvarları ve sanal ağlar** ayarlarında **Bu sunucuya erişmek için Azure hizmetlerine ve kaynaklarına erişime izin ver** ' **i** değiştirebilirsiniz. Bağlantıya izin verilmiyorsa, istek SQL veritabanı sunucusuna erişmez.
 
 > [!IMPORTANT]
 > Bu seçenek, güvenlik duvarını diğer müşterilerin aboneliklerinden gelen bağlantılar da dahil olmak üzere Azure 'daki tüm bağlantılara izin verecek şekilde yapılandırır. Bu seçeneği belirlerseniz, oturum açma ve kullanıcı izinlerinizin yalnızca yetkili kullanıcılara erişimi sınırlandırdığınızdan emin olun.
@@ -152,8 +152,8 @@ Sunucunuzun genel bakış sayfası açılır. Tam sunucu adını (örneğin, *my
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |Sunucu |Geçerli sunucu düzeyi IP güvenlik duvarı kurallarını görüntüler |
 | [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |
 | [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kurallarını kaldırır |
-| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Database |Geçerli veritabanı düzeyinde IP güvenlik duvarı kurallarını görüntüler |
-| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Database |Veritabanı düzeyinde IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |
+| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Veritabanı |Geçerli veritabanı düzeyinde IP güvenlik duvarı kurallarını görüntüler |
+| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Veritabanı |Veritabanı düzeyinde IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |
 | [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |Veri tabanları |Veritabanı düzeyinde IP güvenlik duvarı kurallarını kaldırır |
 
 Aşağıdaki örnek, mevcut kuralları gözden geçirir, *contoso*sunucusunda bir IP adresi aralığı sunar ve bir IP güvenlik duvarı kuralını siler:

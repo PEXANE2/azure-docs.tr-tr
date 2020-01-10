@@ -4,22 +4,22 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: ee368b58195d61a1c6792a3a3655122af7104d58
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012306"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469342"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure Storage Bağlı Hizmeti
 **Azure depolama bağlı hizmeti** , veri fabrikasını Azure depolama 'ya genel erişimle sağlayan **hesap anahtarını**kullanarak bir Azure Depolama hesabını Azure veri fabrikasına bağlayabilmeniz için izin verir. Aşağıdaki tabloda, Azure Storage bağlı hizmetine özgü JSON öğelerine ilişkin açıklama verilmiştir.
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type |Type özelliği şu şekilde ayarlanmalıdır: **AzureStorage** |Evet |
+| type |Type özelliği: **Azurestorage** olarak ayarlanmalıdır |Evet |
 | connectionString |ConnectionString özelliği için Azure depolama 'ya bağlanmak için gereken bilgileri belirtin. |Evet |
 
-Azure depolama 'nın hesap anahtarını görüntüleme/kopyalama adımları için aşağıdaki bölüme bakın: [Erişim anahtarları](../articles/storage/common/storage-account-manage.md#access-keys).
+Depolama hesabı erişim anahtarlarını alma hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../articles/storage/common/storage-account-keys-manage.md).
 
 **Örnek:**  
 
@@ -42,14 +42,14 @@ Paylaşılan erişim imzası (SAS) Depolama hesabınızdaki kaynaklara temsilci 
 > Azure Data Factory artık yalnızca **HIZMET SAS** 'yi destekliyor ancak hesap SAS 'sı değil. Azure portal veya Depolama Gezgini tarafından kullanılabilen SAS URL 'sinin, desteklenmeyen bir hesap SAS 'si olduğunu not edin.
 
 > [!TIP]
-> Depolama hesabınız için bir hizmet SAS oluşturmak için aşağıdaki PowerShell komutlarını çalıştırabilirsiniz (yer tutucuları değiştirin ve gerekli izni verin):`$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> Depolama hesabınız için bir hizmet SAS oluşturmak için aşağıdaki PowerShell komutlarını çalıştırabilirsiniz (yer tutucuları değiştirin ve gerekli izinleri verin): `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Azure Storage SAS bağlı hizmeti, bir Azure Depolama hesabını, paylaşılan erişim Imzası (SAS) kullanarak bir Azure Data Factory 'ye bağlayabilmeniz için izin verir. Veri fabrikasını depolama alanındaki tüm/belirli kaynaklara (blob/kapsayıcı) kısıtlı/zamana göre erişim ile sağlar. Aşağıdaki tabloda, Azure Storage SAS bağlı hizmetine özgü JSON öğeleri için açıklama verilmiştir. 
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type |Type özelliği şu şekilde ayarlanmalıdır: **AzureStorageSas** |Evet |
+| type |Type özelliği: **Azurestorampasas** olarak ayarlanmalıdır |Evet |
 | sasUri |Blob, kapsayıcı veya tablo gibi Azure depolama kaynakları için paylaşılan erişim Imzası URI 'SI belirtin.  |Evet |
 
 **Örnek:**

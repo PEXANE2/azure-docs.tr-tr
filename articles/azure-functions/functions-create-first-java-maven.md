@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cb43f558a5c983a8a4cc3823b278b75cb8cde78d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef81ff1d3d42e3c9e2ba5d4187f5b5805d35d900
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230737"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562043"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Hızlı başlangıç: Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Maven kullanma
 
@@ -21,7 +21,7 @@ Bu makalede, Maven komut satırı aracıyla Azure Işlevleri için bir Java işl
 > You can also create a Kotlin-based Azure Functions project by using the azure-functions-kotlin-archetype instead. Visit the [GitHub repository](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype) for more information.
 -->
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Java kullanarak işlevleri geliştirmek için aşağıdakilerin yüklü olması gerekir:
 
@@ -72,17 +72,20 @@ Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değe
 | ----- | ----------- |
 | **ID** | Java için [paket adlandırma kurallarını](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) takip eden tüm projelerde projenizi benzersiz bir şekilde tanımlayan bir değer. Bu hızlı başlangıçtaki örneklerde `com.fabrikam.functions`kullanılır. |
 | **ArtifactId** | Bir sürüm numarası olmadan jar adı olan bir değer. Bu hızlı başlangıçtaki örneklerde `fabrikam-functions`kullanılır. |
-| **Sürüm** | `1.0-SNAPSHOT`varsayılan değerini seçin. |
+| **version** | `1.0-SNAPSHOT`varsayılan değerini seçin. |
 | **leyebilir** | Oluşturulan işlev kodu için Java paketi olan bir değer. Varsayılan değeri kullanın. Bu hızlı başlangıçtaki örneklerde `com.fabrikam.functions`kullanılır. |
 | **appName** | Azure 'da yeni işlev uygulamanızı tanımlayan genel olarak benzersiz ad. _ArtifactId_ , rastgele bir sayı ile eklenmiş olan varsayılanı kullanın. Bu değeri, daha sonra ihtiyacınız olacağını unutmayın. |
-| **appRegion** | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. Varsayılan değer: `westus`. Tüm bölgelerin bir listesini almak için bu [Azure CLI] komutunu çalıştırın:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **Kaynak** | İşlev uygulamanızın oluşturulacağı yeni [kaynak grubunun](../azure-resource-manager/resource-group-overview.md) adı. Bu hızlı başlangıçta örnekleri tarafından kullanılan `myResourceGroup`kullanın. Kaynak grubu, Azure aboneliğiniz için benzersiz olmalıdır.|
+| **appRegion** | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. Varsayılan: `westus`. Tüm bölgelerin bir listesini almak için bu [Azure CLI] komutunu çalıştırın:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
+| **resourceGroup** | İşlev uygulamanızın oluşturulacağı yeni [kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu hızlı başlangıçta örnekleri tarafından kullanılan `myResourceGroup`kullanın. Kaynak grubu, Azure aboneliğiniz için benzersiz olmalıdır.|
 
 Onaylamak için `Y` yazın veya ENTER tuşuna basın.
 
 Maven, proje dosyalarını _ArtifactId_adında yeni bir klasörde oluşturur. bu örnekte `fabrikam-functions`. 
 
 Yeni Function. Java dosyasını bir metin düzenleyicisinde *src/Main/Java* yolundan açın ve oluşturulan kodu gözden geçirin. Bu kod, isteğin gövdesini yansıtan [http ile tetiklenen](functions-bindings-http-webhook.md) bir işlevdir. 
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
@@ -119,6 +122,9 @@ Hello AzureFunctions!
 ```
 Yerel olarak çalıştırılırken [işlev anahtarı](functions-bindings-http-webhook.md#authorization-keys) gerekli değildir. İşlev kodunu durdurmak için terminalde `Ctrl+C` komutunu kullanın.
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+
 ## <a name="deploy-the-function-to-azure"></a>İşlevi Azure’a dağıtma
 
 İşlev uygulamanızı ilk kez dağıttığınızda Azure 'da bir işlev uygulaması ve ilgili kaynaklar oluşturulur. Dağıtmadan önce, Azure aboneliğinizde oturum açmak için [az Login](/cli/azure/authenticate-azure-cli) Azure CLI komutunu kullanın. 
@@ -139,7 +145,7 @@ mvn azure-functions:deploy
 Bu `azure-functions:deploy` Maven hedefi, Azure 'da aşağıdaki kaynakları oluşturur:
 
 + Kaynak grubu. Sağladığınız _resourceGroup_ ile adlandırılmış.
-+ depolama hesabı. Işlevleri için gereklidir. Ad, depolama hesabı adı gereksinimlerine göre rastgele oluşturulur.
++ Depolama hesabı. Işlevleri için gereklidir. Ad, depolama hesabı adı gereksinimlerine göre rastgele oluşturulur.
 + App Service planı. Belirtilen _Appregion_'da işlev uygulamanız için sunucusuz barındırma. Ad rastgele oluşturulur.
 + İşlev uygulaması. İşlev uygulaması, işlevleriniz için dağıtım ve yürütme birimidir. Ad, rastgele oluşturulmuş bir sayıyla eklenmiş olan _uygulamadır_. 
 
@@ -147,11 +153,14 @@ Dağıtım ayrıca proje dosyalarını paketleyip, paket Çalıştır modu etkin
 
 Dağıtım tamamlandıktan sonra, işlev uygulaması uç noktalarınıza erişmek için kullanabileceğiniz URL 'YI görürsünüz. Yayımladığımız HTTP tetikleyicisi `authLevel = AuthorizationLevel.FUNCTION`kullandığından, işlev uç noktasını HTTP üzerinden çağırmak için işlev anahtarını almanız gerekir. İşlev anahtarını almanın en kolay yolu [Azure Portal].
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
+
 ## <a name="get-the-http-trigger-url"></a>HTTP tetikleyici URL 'sini al
 
 <!--- We can updates this to remove portal dependency after the Maven archetype returns the full URLs with keys on publish (https://github.com/microsoft/azure-maven-plugins/issues/571). -->
 
-İşlevinizi tetiklemeniz için gereken URL 'yi, Azure portal işlev anahtarıyla alabilirsiniz. 
+İşlevinizi tetiklemek için gereken URL 'yi, Azure portal işlev anahtarıyla alabilirsiniz. 
 
 1. [Azure Portal]gidin, oturum açın, sayfanın üst kısmında **arama** yapmak için işlev uygulamanızın _appname_ öğesini yazın ve ENTER tuşuna basın.
  
@@ -176,6 +185,9 @@ Bu, istek gövdesinde `AzureFunctions` ile işlev uç noktasına bir POST isteğ
 ```Output
 Hello AzureFunctions!
 ```
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için ServiceNow 'ı yapılandırın | Microsoft Docs"
+title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için ServiceNow 'ı yapılandırma | Microsoft Docs"
 description: Azure AD 'den ServiceNow 'a Kullanıcı hesaplarını otomatik olarak sağlamayı ve sağlamayı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -13,100 +13,141 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 12/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85783339c7d1348f598f924f14d9b40cd0c8cd22
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: da733eef4dcfc15db10bb5bf303086ae601189ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443216"
 ---
-# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için ServiceNow 'ı yapılandırma
+# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ServiceNow 'ı yapılandırma
 
-Bu öğreticinin amacı, Azure AD 'den ServiceNow 'a Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için ServiceNow ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
-
-> [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
-
-## <a name="prerequisites"></a>Önkoşullar
-
-Azure AD tümleştirmesini ServiceNow ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
-
-- Azure AD aboneliği
-- ServiceNow için, ServiceNow, Calgary sürümü veya üzeri bir örnek veya kiracı
-- ServiceNow Express için ServiceNow Express, Helsinki sürümü veya üzeri bir örnek
-
-> [!NOTE]
-> Bu öğreticideki adımları test etmek için üretim ortamı kullanarak önermiyoruz.
-
-Bu öğreticideki adımları test etmek için bu önerileri izlemelidir:
-
-- Gerekli olmadıkça, üretim ortamında kullanmayın.
-- Azure AD deneme ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-
-## <a name="assigning-users-to-servicenow"></a>Kullanıcıları ServiceNow 'a atama
-
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve gruplar eşitlenir.
-
-Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların ServiceNow uygulamanıza erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ServiceNow uygulamanıza atayabilirsiniz: [Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem ServiceNow hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak [ServiceNow](https://www.servicenow.com/) için kullanıcıları ve grupları otomatik olarak hazırlar ve serbest hazırlar. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md). 
 
 
-> [!IMPORTANT]
->*   Sağlama yapılandırmasını test etmek için ServiceNow 'a tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
->*   Bir kullanıcıyı ServiceNow 'a atarken geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
->*   Azure AD 'de rol oluşturma ve yapılandırma hakkında daha fazla bilgi için lütfen bu [bağlantıya](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) başvurun
+## <a name="capabilities-supported"></a>Desteklenen yetenekler
+> [!div class="checklist"]
+> * ServiceNow 'da Kullanıcı oluşturma
+> * ServiceNow 'daki kullanıcıları artık erişim gerektirdiklerinde kaldırın
+> * Kullanıcı özniteliklerinin Azure AD ile ServiceNow arasında eşitlenmiş olmasını sağlama
+> * ServiceNow 'da grupları ve grup üyeliklerini sağlama
+> * ServiceNow ['Da çoklu oturum açma](servicenow-tutorial.md) (önerilir)
 
-## <a name="enable-automated-user-provisioning"></a>Otomatik Kullanıcı sağlamayı etkinleştir
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu bölümde, Azure AD 'nizi ServiceNow 'ın Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup atamasını temel alan ServiceNow 'da atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için nasıl yapılandıracağınız konusunda kılavuzluk eder.
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-> [!TIP]
->Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri Izleyerek ServiceNow için SAML tabanlı çoklu oturum açmayı da seçebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+* [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
+* Calgary veya üzeri bir [ServiceNow örneği](https://www.servicenow.com/)
+* Helsinki veya üzeri bir [ServiceNow Express örneği](https://www.servicenow.com/)
+* Yönetim rolüyle ServiceNow 'da bir kullanıcı hesabı
 
-### <a name="configure-automatic-user-account-provisioning"></a>Otomatik Kullanıcı hesabı sağlamayı yapılandırma
+## <a name="step-1-plan-your-provisioning-deployment"></a>1\. Adım Sağlama dağıtımınızı planlayın
+1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
+2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
+3. [Azure AD ve ServiceNow arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-1. [Azure portal](https://portal.azure.com) **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
+## <a name="step-2-configure-servicenow-to-support-provisioning-with-azure-ad"></a>2\. Adım. ServiceNow 'ı Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
 
-1. Çoklu oturum açma için ServiceNow 'ı zaten yapılandırdıysanız arama alanını kullanarak ServiceNow örneğinizi arayın. Aksi takdirde, **Ekle** ' yi seçin ve uygulama galerisinde **ServiceNow** için arama yapın. Arama sonuçlarından ServiceNow ' ı seçin ve uygulama listenize ekleyin.
+1. ServiceNow örnek adınızı belirler. Örnek adını ServiceNow 'e erişmek için kullandığınız URL 'de bulabilirsiniz. Aşağıdaki örnekte, örnek adı dev35214 ' dir.
 
-1. ServiceNow örneğinizi seçin, sonra **sağlama** sekmesini seçin.
+![ServiceNow örneği](media/servicenow-provisioning-tutorial/servicenow_instance.png)
 
-1. **Sağlama** modunu **Otomatik**olarak ayarlayın. 
+    
+2. ServiceNow 'da yönetici için kimlik bilgilerini alın. ServiceNow içindeki kullanıcı profiline gidin ve kullanıcının yönetici rolüne sahip olduğunu doğrulayın. 
 
-    ![sağlama](./media/servicenow-provisioning-tutorial/provisioning.png)
+![ServiceNow yönetici rolü](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
 
-1. Yönetici kimlik bilgileri bölümünde aşağıdaki adımları uygulayın:
-   
-    a. **ServiceNow örnek adı** metin kutusuna ServiceNow örnek adını yazın.
+## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>3\. Adım. Azure AD uygulama galerisinden ServiceNow ekleme
 
-    b. **ServiceNow Yönetici Kullanıcı adı** metin kutusuna bir yöneticinin kullanıcı adını yazın.
+ServiceNow 'ı Azure AD Uygulama Galerisi ' ne ekleyerek ServiceNow 'a sağlamayı yönetmeye başlayın. Önceden SSO için ServiceNow kurulumunu yaptıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
 
-    c. **ServiceNow yönetici parolası** metin kutusunda, yöneticinin parolası.
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4\. Adım. Sağlama kapsamında kim olacağını tanımlama 
 
-1. Azure portal, Azure AD 'nin ServiceNow uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, ServiceNow hesabınızda Takım Yöneticisi izinlerine sahip olduğundan emin olun ve **"yönetici kimlik bilgileri"** adımını yeniden deneyin.
+Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup özniteliklerine göre sağlanacak olan kapsamlarına olanak tanır. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, uygulamayı kullanıcılara ve gruplara atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca Kullanıcı veya grubun özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
 
-1. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin.
+* ServiceNow 'a Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan erişim rolüne sahip kullanıcılar sağlanmasından çıkarılır ve sağlama günlüklerinde etkin değil olarak işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolü ise, ek roller eklemek için [uygulama bildirimini güncelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
 
-1. Kaydet ' e tıklayın **.**
+* Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
 
-1. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları ServiceNow** ' ı seçin.
 
-1. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den ServiceNow 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için ServiceNow içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
+## <a name="step-5-configure-automatic-user-provisioning-to-servicenow"></a>5\. Adım. ServiceNow 'a otomatik Kullanıcı sağlamayı yapılandırma 
 
-1. ServiceNow için Azure AD sağlama hizmetini etkinleştirmek üzere ayarlar bölümünde **sağlama durumunu** **Açık** olarak değiştirin
+Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
 
-1. Kaydet ' e tıklayın **.**
+### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>Azure AD 'de ServiceNow için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-Kullanıcılar ve Gruplar bölümünde ServiceNow 'a atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitleme hizmeti çalışıyor sürece yaklaşık 40 dakikada oluşan sonraki eşitlemeler uzun sürer. İlerlemeyi izlemek ve ServiceNow uygulamanızda sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerini sağlamak için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+
+2. Uygulamalar listesinde **ServiceNow**' ı seçin.
+
+    ![Uygulamalar listesindeki ServiceNow bağlantısı](common/all-applications.png)
+
+3. **Sağlama** sekmesini seçin.
+
+    ![Sağlama sekmesi](common/provisioning.png)
+
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+
+    ![Sağlama sekmesi](common/provisioning-automatic.png)
+
+5. **Yönetici kimlik bilgileri** bölümünde ServiceNow yönetici kimlik bilgilerinizi ve Kullanıcı adınızı girin. Azure AD 'nin ServiceNow 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, ServiceNow hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+
+    ![alınıyor](./media/servicenow-provisioning-tutorial/provisioning.png)
+
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
+
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
+
+7. **Kaydet**’i seçin.
+
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları ServiceNow**' ı seçin.
+
+9. **Öznitelik eşleme** bölümünde Azure AD 'Den ServiceNow 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için ServiceNow içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz ServiceNow API 'sinin, bu özniteliğe göre kullanıcıların filtrelemesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+
+10. **Eşlemeler** bölümünde, **Azure Active Directory grupları ServiceNow**' a eşitler ' ı seçin.
+
+11. **Öznitelik eşleme** bölümünde Azure AD 'Den ServiceNow 'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, ServiceNow güncelleştirme işlemlerinde grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+
+12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+
+13. ServiceNow için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+
+14. **Ayarlar** bölümünde **kapsamda** Istenen değerleri seçerek ServiceNow 'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+
+    ![Sağlama kapsamı](common/provisioning-scope.png)
+
+15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+
+Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm Kullanıcı ve grupların ilk eşitleme döngüsünü başlatır. İlk döngü daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki Döngülerde yerine daha uzun sürer. 
+
+## <a name="step-6-monitor-your-deployment"></a>6\. Adım. Dağıtımınızı izleme
+Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
+
+1. Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
+2. Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
+3. Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.  
+
+## <a name="troubleshooting-tips"></a>Sorun Giderme İpuçları
+* **Invalidlookupreference:** ServiceNow içindeki bölüm ve konum gibi belirli öznitelikleri sağlarken, bu değerler ServiceNow içindeki bir başvuru tablosunda zaten mevcut olmalıdır. Örneğin, ServiceNow 'daki **tablo adı ekleme** tablosunda iki konumunuz (Seattle, Los Angeles) ve üç departman (Sales, finans, pazarlama) olabilir. Departmanı "Sales" ve Location 'ın "Seattle" olduğu bir Kullanıcı sağlamaya çalışırsanız, başarılı bir şekilde hazırlanacaktır. "Sales" departmanı ve "LA" konumuyla bir Kullanıcı sağlamaya çalışırsanız Kullanıcı sağlanmaz. Konum, ServiceNow 'daki başvuru tablosuna eklenmelidir veya Azure AD 'deki User özniteliği ServiceNow 'ın biçimiyle eşleşecek şekilde güncellenmelidir. 
+* **Entryjoiningpropertyvalueısmissing:** Eşleşen özniteliği tanımlamak için [öznitelik eşlemelerinizi](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) gözden geçirin. Sağlamaya çalıştığınız kullanıcı veya grupta bu değer bulunmalıdır. 
+* Tüm gereksinimleri veya sınırlamaları anlamak için [ServiceNow soap API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) 'sini gözden geçirin (örneğin, bir kullanıcı için ülke kodunu belirtme biçimi)
+* Bazı ServiceNow dağıtımları, Azure AD sağlama hizmeti için IP aralıklarının izin sağlamasını gerektirir. Azure AD sağlama hizmeti için ayrılmış IP aralıkları [burada](https://www.microsoft.com/download/details.aspx?id=56519) "AzureActiveDirectoryDomainServices" altında bulunabilir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-* [Çoklu oturum açmayı yapılandırma](servicenow-tutorial.md)
 
+## <a name="next-steps"></a>Sonraki adımlar
 
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)

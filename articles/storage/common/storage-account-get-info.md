@@ -1,5 +1,6 @@
 ---
-title: .NET-Azure depolama ile depolama hesabı türü ve SKU adı edinme
+title: .NET ile depolama hesabı türü ve SKU adı alın
+titleSuffix: Azure Storage
 description: .NET istemci kitaplığını kullanarak Azure depolama hesabı türü ve SKU adı alma hakkında bilgi edinin.
 services: storage
 author: mhopkins-msft
@@ -8,12 +9,12 @@ ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0008d8fa9a33db95b0695ce998d4fc267d6222da
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1cff950f2c420651ffa09ffe76a0d1389da84c10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985356"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457479"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>.NET ile depolama hesabı türü ve SKU adı alın
 
@@ -23,9 +24,9 @@ Hesap bilgileri, sürüm 2018-03-28 ' den başlayarak hizmet sürümlerinde kull
 
 ## <a name="about-account-type-and-sku-name"></a>Hesap türü ve SKU adı hakkında
 
-**Hesap türü**: Geçerli hesap türleri şunlardır `BlobStorage` `BlockBlobStorage` `FileStorage`,,, ve`StorageV2`. `Storage` [Azure depolama hesabına genel bakış](storage-account-overview.md) , çeşitli depolama hesaplarının açıklamaları dahil olmak üzere daha fazla bilgi içerir.
+**Hesap türü**: geçerli hesap türleri `BlobStorage`, `BlockBlobStorage`, `FileStorage`, `Storage`ve `StorageV2`içerir. [Azure depolama hesabına genel bakış](storage-account-overview.md) , çeşitli depolama hesaplarının açıklamaları dahil olmak üzere daha fazla bilgi içerir.
 
-**SKU adı**: Geçerli SKU adları `Premium_LRS` `Premium_ZRS` ,`Standard_LRS` ,,`Standard_ZRS`,, ,`Standard_RAGZRS`,ve içerir. `Standard_RAGRS` `Standard_GRS` `Standard_GZRS` SKU adları büyük/küçük harfe duyarlıdır ve [Skuname sınıfında](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)dize alanlarıdır.
+**SKU adı**: geçerli sku adları `Premium_LRS`, `Premium_ZRS`, `Standard_GRS`, `Standard_GZRS`, `Standard_LRS`, `Standard_RAGRS`, `Standard_RAGZRS`ve `Standard_ZRS`içerir. SKU adları büyük/küçük harfe duyarlıdır ve [Skuname sınıfında](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)dize alanlarıdır.
 
 ## <a name="retrieve-account-information"></a>Hesap bilgilerini al
 
@@ -63,6 +64,4 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
 
 [Azure Portal](https://portal.azure.com) ve Azure REST API aracılığıyla bir depolama hesabında gerçekleştirebileceğiniz diğer işlemler hakkında bilgi edinin.
 
-- [Depolama hesabını yönetme](storage-account-manage.md)
-- [Depolama hesabını yükseltme](storage-account-upgrade.md)
 - [Hesap bilgilerini al işlemi (REST)](/rest/api/storageservices/get-account-information)

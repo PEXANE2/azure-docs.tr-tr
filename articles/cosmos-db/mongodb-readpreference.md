@@ -1,6 +1,6 @@
 ---
-title: MongoDB API'si ile Azure Cosmos DB'nin MongoDB okuma tercihini kullanarak
-description: Okuma tercihini MongoDB API'si ile Azure Cosmos DB'nin MongoDB için kullanmayı öğrenin
+title: MongoDB için Azure Cosmos DB API 'SI ile okuma tercihi kullanın
+description: MongoDB için Azure Cosmos DB API 'siyle MongoDB okuma tercihini nasıl kullanacağınızı öğrenin
 author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
@@ -8,28 +8,28 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 8fc66d70b840578bff086519a7b39e5f389a3de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10e6ed556abe8f8c438e5436fbb93c1b70b85d2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479622"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445170"
 ---
-# <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB'nin MongoDB kullanarak genel olarak nasıl dağıtacağınızı okur
+# <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB MongoDB için API 'sini kullanarak genel olarak okuma dağıtımı
 
-Bu makalede, okuma işlemleri ile Global olarak dağıtma işlemi gösterilmektedir [MongoDB okuma tercihini](https://docs.mongodb.com/manual/core/read-preference/) Azure Cosmos DB'nin MongoDB kullanarak ayarlar.
+Bu makalede, MongoDB için Azure Cosmos DB API 'sini kullanarak [MongoDB okuma tercihi](https://docs.mongodb.com/manual/core/read-preference/) ayarları ile okuma işlemlerinin genel olarak nasıl dağıtılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
-Bu [hızlı](tutorial-global-distribution-mongodb.md) ayarlamak için Azure portalını kullanarak yönergeleri yukarı genel dağıtım Cosmos hesabıyla ve buna bağlanmak için makalesi.
+Genel dağıtım ile Cosmos hesabı ayarlamak için Azure portal kullanma hakkında yönergeler için bu [hızlı başlangıç](tutorial-global-distribution-mongodb.md) makalesine başvurun ve sonra buna bağlanın.
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
 Git bash gibi bir git terminal penceresi açın ve `cd` ile çalışma dizinine gidin.  
 
-Örnek depoyu kopyalamak için aşağıdaki komutları çalıştırın. İlgilendiğiniz platformunuza bağlı olarak, aşağıdaki örnek depoları birini kullanın:
+Örnek depoyu kopyalamak için aşağıdaki komutları çalıştırın. İlgilendiğiniz platforma bağlı olarak, aşağıdaki örnek depolardan birini kullanın:
 
 1. [.NET örnek uygulaması](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference)
 2. [NodeJS örnek uygulaması]( https://github.com/Azure-Samples/azure-cosmos-db-mongodb-node-geo-readpreference)
@@ -44,20 +44,20 @@ git clone <sample repo url>
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Kullanılan platforma bağlı olarak gerekli paketleri yükleyin ve uygulamayı başlatın. Bağımlılıkları yüklemek için örnek uygulama depoya Benioku DOSYASINA izleyin. Örneğin, NodeJS örnek uygulamada, gerekli paketleri yükleyin ve uygulamayı başlatmak için aşağıdaki komutları kullanın.
+Kullanılan platforma bağlı olarak, gerekli paketleri yükleyip uygulamayı başlatın. Bağımlılıkları yüklemek için örnek uygulama deposuna dahil edilen Benioku dosyasını izleyin. Örneğin, NodeJS örnek uygulamasında, gerekli paketleri yüklemek ve uygulamayı başlatmak için aşağıdaki komutları kullanın.
 
 ```bash
 cd mean
 npm install
 node index.js
 ```
-Uygulama bir MongoDB kaynağına bağlanmayı dener ve bağlantı dizesi geçersiz olduğu için başarısız olur. Bağlantı dizesini güncellemek için Benioku adımları `url`. Ayrıca, güncelleştirme `readFromRegion` Cosmos hesabınızdaki bir okuma bölgesine. Aşağıdaki yönergeler, NodeJS örnekten şunlardır:
+Uygulama bir MongoDB kaynağına bağlanmaya çalışır ve bağlantı dizesi geçersiz olduğundan başarısız olur. `url`bağlantı dizesini güncelleştirmek için BENIOKU dosyasındaki adımları izleyin. Ayrıca, `readFromRegion` Cosmos hesabınızda bir okuma bölgesi olarak güncelleştirin. Aşağıdaki yönergeler NodeJS örneğinden alınır:
 
 ```
 * Next, substitute the `url`, `readFromRegion` in App.Config with your Cosmos account's values. 
 ```
 
-Sonra aşağıdaki adımları, örnek uygulama çalışır ve aşağıdaki çıktıyı üretir:
+Bu adımları tamamladıktan sonra örnek uygulama çalışır ve aşağıdaki çıktıyı üretir:
 
 ```
 connected!
@@ -71,24 +71,24 @@ readDefaultfunc query completed!
 readFromSecondaryfunc query completed!
 ```
 
-## <a name="read-using-read-preference-mode"></a>Okuma tercihini modu kullanılarak okuyun
+## <a name="read-using-read-preference-mode"></a>Okuma tercihi modunu kullanarak okuma
 
-MongoDB protokolü, istemcilerin kullanmak aşağıdaki okuma tercihini modları sağlar:
+MongoDB protokolü, istemcilerin kullanması için aşağıdaki okuma tercihi modlarını sağlar:
 
-1. PRIMARY
+1. BIRINC
 2. PRIMARY_PREFERRED
-3. İKİNCİL
+3. IK
 4. SECONDARY_PREFERRED
-5. EN YAKIN
+5. ÝN
 
-Ayrıntılı başvuru [MongoDB okuma tercihini davranışı](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior) her birinin davranışı hakkında ayrıntılar için belgeleri okuyun tercih modları. Cosmos DB'de birincil yazma bölgesi ve ikincil okuma bölgesi eşlenir eşlenir.
+Bu okuma tercihi modlarının her birinin davranışıyla ilgili ayrıntılar için ayrıntılı [MongoDB okuma tercihi davranış](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior) belgelerine bakın. Cosmos DB, birincil olarak yazma bölgesi ve ikincil haritalar ile, bölge okumak için eşlenir.
 
-Genel senaryolara bağlı olarak, aşağıdaki ayarları kullanmanızı öneririz:
+Yaygın senaryolara bağlı olarak, aşağıdaki ayarları kullanmanızı öneririz:
 
-1. Varsa **düşük gecikme süreli okuma** olan gerekli kullanın **NEAREST** tercih modu okuyun. Okuma işlemleri için bu ayarı yönlendirir en yakın bölgede kullanılabilir. En yakın bölgeyi yazma bölgesi ise, ardından bu işlemleri ilgili bölgeye yönlendirilir olduğunu unutmayın.
-2. Varsa **okumalar yüksek kullanılabilirlik ve coğrafi dağıtım** gereklidir (gecikme değil bir kısıtlama), ardından **ikincil tercih edilen** tercih modu okuyun. Bu ayar, okuma işlemleri kullanılabilir bir okuma bölgesine yönlendirir. Ardından, hiçbir okuma bölgesi varsa, istekleri yazma bölgesinden yönlendirilir.
+1. **Düşük gecikmeli okumalar** gerekliyse, **en yakın** okuma tercihi modunu kullanın. Bu ayar, okuma işlemlerini kullanılabilir en yakın bölgeye yönlendirir. En yakın bölge, yazma bölgedeyse, bu işlemlerin bu bölgeye yönlendirildiğini unutmayın.
+2. **Yüksek kullanılabilirlik ve çok sayıda okumaların coğrafi dağıtımı** gerekliyse (gecikme bir kısıtlama değildir), ardından **İkincil tercih edilen** okuma tercihi modunu kullanın. Bu ayar okuma işlemlerini kullanılabilir bir okuma bölgesine yönlendirir. Kullanılabilir okuma bölgesi yoksa istekler yazma bölgesine yönlendirilir.
 
-Örnek uygulamayı alınan aşağıdaki kod, en yakın okuma tercihini Nodejs'de yapılandırma işlemi gösterilmektedir:
+Örnek uygulamadaki aşağıdaki kod parçacığında, NodeJS ' de en yakın okuma tercihini yapılandırma gösterilmektedir:
 
 ```javascript
   var query = {};
@@ -99,7 +99,7 @@ Genel senaryolara bağlı olarak, aşağıdaki ayarları kullanmanızı öneriri
   });
 ```
 
-Benzer şekilde, aşağıdaki kod parçacığında SECONDARY_PREFERRED okuma tercihini Nodejs'de yapılandırma işlemi gösterilmektedir:
+Benzer şekilde, aşağıdaki kod parçacığında NodeJS içinde SECONDARY_PREFERRED okuma tercihi 'nin nasıl yapılandırılacağı gösterilmektedir:
 
 ```javascript
   var query = {};
@@ -110,7 +110,7 @@ Benzer şekilde, aşağıdaki kod parçacığında SECONDARY_PREFERRED okuma ter
   });
 ```
 
-Okuma tercihini geçirerek de ayarlanabilir `readPreference` bağlantı dizesi URI seçeneklerinin bir parametre olarak:
+Okuma tercihi, bağlantı dizesi URI 'SI seçeneklerinde `readPreference` bir parametre olarak geçirerek de ayarlanabilir:
 
 ```javascript
 const MongoClient = require('mongodb').MongoClient;
@@ -132,11 +132,11 @@ MongoClient.connect(url, function(err, client) {
 });
 ```
 
-Diğer platformlar için karşılık gelen örnek uygulama depoları gibi başvurmak [.NET](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference) ve [Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference).
+[.Net](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference) ve [Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference)gibi diğer platformlar için karşılık gelen örnek uygulama deposuna bakın.
 
 ## <a name="read-using-tags"></a>Etiketleri kullanarak okuma
 
-Okuma tercihini modu ek olarak, MongoDB protokolü, okuma işlemleri yönlendirmek için etiketleri kullanımına izin verir. MongoDB, Cosmos DB'nin API'sindeki `region` etiketi varsayılan olarak bir parçası olarak dahil `isMaster` yanıt:
+MongoDB protokolü, okuma tercih moduna ek olarak, okuma işlemlerini yönlendirmek için etiketlerin kullanılmasına izin verir. MongoDB için Cosmos DB API 'sinde, `region` etiketi, `isMaster` yanıtının bir parçası olarak varsayılan olarak dahil edilir:
 
 ```json
 "tags": {
@@ -144,9 +144,9 @@ Okuma tercihini modu ek olarak, MongoDB protokolü, okuma işlemleri yönlendirm
       }
 ```
 
-Bu nedenle, MongoClient kullanabilirsiniz `region` etiketi okuma işlemlerini belirli bölgelere yönlendirmek için bölge adı. Cosmos hesapları için bölge adlarının Azure Portal'da sol altında bulunabilir **ayarlar çoğaltma verilerini genel ->** . Bu ayar, elde etmek için yararlıdır **yalıtım okuma** -yalnızca belirli bir bölgeye okuma işlemleri doğrudan istediğiniz durumlarda hangi istemci uygulaması. Bu ayar, olmayan-üretim/analiz için idealdir, arka planda çalışan ve üretim kritik Hizmetleri senaryoları yazın.
+Bu nedenle, MongoClient, okuma işlemlerini belirli bölgelere yönlendirmek için bölge adı ile birlikte `region` etiketini kullanabilir. Cosmos hesapları için, bölge adları, sol taraftaki ayarlar ' ın altında Azure portal, **genel olarak çoğaltma verileri >** ' nde bulunabilir. Bu ayar, istemci uygulamanın okuma işlemlerini yalnızca belirli bir bölgeye yönlendirmek istediği **okuma yalıtımına** ulaşmak için yararlıdır. Bu ayar, arka planda çalıştırılan ve üretim açısından kritik hizmetler olmayan, üretim dışı/analiz türü senaryolar için idealdir.
 
-Örnek uygulamayı alınan aşağıdaki kod, nodejs'de etiketlerle okuma tercihini yapılandırma işlemi gösterilmektedir:
+Örnek uygulamadaki aşağıdaki kod parçacığında, NodeJS içindeki etiketlerle oku tercihinin nasıl yapılandırılacağı gösterilmektedir:
 
 ```javascript
  var query = {};
@@ -157,13 +157,13 @@ Bu nedenle, MongoClient kullanabilirsiniz `region` etiketi okuma işlemlerini be
   });
 ```
 
-Diğer platformlar için karşılık gelen örnek uygulama depoları gibi başvurmak [.NET](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference) ve [Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference).
+[.Net](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference) ve [Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference)gibi diğer platformlar için karşılık gelen örnek uygulama deposuna bakın.
 
-Bu makalede, genel okuma işlemleri için MongoDB API'si ile Azure Cosmos DB'nin okuma tercihini kullanma dağıtmayı öğrendiniz.
+Bu makalede, MongoDB için Azure Cosmos DB API 'SI ile okuma tercihini kullanarak okuma işlemlerini küresel olarak nasıl dağıtabileceğiniz hakkında bilgi edindiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam etmeyecekseniz aşağıdaki adımları uygulayarak Azure portalında bu makalede tarafından oluşturulan tüm kaynakları silin:
+Bu uygulamayı kullanmaya devam edemeyecekiz aşağıdaki adımlarla Azure portal Bu makalede oluşturulan tüm kaynakları silin:
 
 1. Azure portalında sol taraftaki menüden, **Kaynak grupları**'na ve ardından oluşturduğunuz kaynağın adına tıklayın. 
 2. Kaynak grubu sayfanızda, **Sil**'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil**'e tıklayın.
@@ -171,5 +171,5 @@ Bu uygulamayı kullanmaya devam etmeyecekseniz aşağıdaki adımları uygulayar
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Cosmos DB’ye MongoDB verileri aktarma](mongodb-migrate.md)
-* [MongoDB için Azure Cosmos DB API'si ile Global olarak dağıtılmış bir veritabanı Kurulumu](tutorial-global-distribution-mongodb.md)
+* [MongoDB için Azure Cosmos DB API 'SI ile küresel olarak dağıtılmış bir veritabanı kurma](tutorial-global-distribution-mongodb.md)
 * [Azure Cosmos DB öykünücüsü ile yerel olarak geliştirme](local-emulator.md)

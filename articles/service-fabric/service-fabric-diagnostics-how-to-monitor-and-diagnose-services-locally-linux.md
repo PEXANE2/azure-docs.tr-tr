@@ -1,27 +1,16 @@
 ---
-title: Linux 'ta Azure Service Fabric uygulamalarında hata ayıklama | Microsoft Docs
+title: Linux 'ta Azure Service Fabric uygulamalarında hata ayıklama
 description: Yerel bir Linux geliştirme makinesinde Service Fabric hizmetlerinizi izlemeyi ve tanılamayı öğrenin.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 4eebe937-ab42-4429-93db-f35c26424321
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 017b359f4c6da438f5179813fa3ed1ad2c536834
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168868"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526303"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Yerel makine geliştirme kurulumunda hizmetleri izleme ve tanılama
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Yerel bir Linux makine geliştirme kurulumunda hizmetleri izleme ve tanılama
 
 
 > [!div class="op_single_selector"]
@@ -35,7 +24,7 @@ Hizmetlerin Kullanıcı deneyimine en düşük kesintilerle devam etmesine izin 
 
 ## <a name="debugging-service-fabric-java-applications"></a>Java uygulamalarında hata ayıklama Service Fabric
 
-Java uygulamaları için [birden çok günlük](https://en.wikipedia.org/wiki/Java_logging_framework) çerçevesi mevcuttur. @No__t-0, JRE 'nin varsayılan seçeneği olduğundan, [GitHub 'daki kod örnekleri](https://github.com/Azure-Samples/service-fabric-java-getting-started)için de kullanılır. Aşağıdaki tartışmada `java.util.logging` çerçevesinin nasıl yapılandırılacağı açıklanmaktadır.
+Java uygulamaları için [birden çok günlük](https://en.wikipedia.org/wiki/Java_logging_framework) çerçevesi mevcuttur. `java.util.logging`, JRE 'nin varsayılan seçeneği olduğundan, [GitHub 'daki kod örnekleri](https://github.com/Azure-Samples/service-fabric-java-getting-started)için de kullanılır. Aşağıdaki tartışmada `java.util.logging` çerçevesinin nasıl yapılandırılacağı açıklanmaktadır.
 
 Java. util. Logging kullanarak, uygulama günlüklerinizi bellek, çıkış akışları, konsol dosyaları veya yuvalara yeniden yönlendirebilirsiniz. Bu seçeneklerin her biri için çerçevede zaten sağlanmış olan varsayılan işleyiciler vardır. Tüm günlükleri yerel bir dosyaya yeniden yönlendirmek üzere uygulamanız için dosya işleyicisini yapılandırmak üzere bir `app.properties` dosyası oluşturabilirsiniz.
 
@@ -51,14 +40,14 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-@No__t-0 dosyası tarafından işaret edilen klasör var olmalıdır. @No__t-0 dosyası oluşturulduktan sonra, `java.util.logging.config.file` ' i `app.properties` dosyasına ayarlamak için giriş noktası komut dosyanızı `<applicationfolder>/<servicePkg>/Code/` klasöründeki `entrypoint.sh` ' i de değiştirmeniz gerekir. Giriş aşağıdaki kod parçacığı gibi görünmelidir:
+`app.properties` dosya tarafından işaret edilen klasör var olmalıdır. `app.properties` dosyası oluşturulduktan sonra, `entrypoint.sh` `app.properties` `java.util.logging.config.file` `<applicationfolder>/<servicePkg>/Code/` klasöre ayarlamak için giriş noktası komut dosyanızı da değiştirmeniz gerekir. Giriş aşağıdaki kod parçacığı gibi görünmelidir:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Bu yapılandırma, `/tmp/servicefabric/logs/` ' dan dönen bir biçimde günlüklerin toplanmasına neden olur. Bu durumda bulunan günlük dosyası, burada yer aldığı Kapsamım% u.% g. log:
+Bu yapılandırma, günlüklerin `/tmp/servicefabric/logs/`bir döndürme sırasında toplanmasına neden olur. Bu durumda bulunan günlük dosyası, burada yer aldığı Kapsamım% u .% g. log:
 * **% u** eşzamanlı Java işlemlerinde çakışmaları çözümlemek için benzersiz bir sayıdır.
 * **% g** , döndürme günlükleri arasında ayrım yapmak için oluşturma numarasıdır.
 
@@ -131,7 +120,7 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-Yukarıdaki kod parçacığı, günlükleri `/tmp/MyServiceLog.txt` ' daki bir dosyaya çıktı. Bu dosya adının uygun şekilde güncelleştirilmesi gerekir. Günlükleri konsola yönlendirmek isterseniz, özelleştirilmiş EventListener Sınıfınıza aşağıdaki kod parçacığını kullanın:
+Yukarıdaki kod parçacığı, günlükleri `/tmp/MyServiceLog.txt`bir dosyaya çıktı. Bu dosya adının uygun şekilde güncelleştirilmesi gerekir. Günlükleri konsola yönlendirmek isterseniz, özelleştirilmiş EventListener Sınıfınıza aşağıdaki kod parçacığını kullanın:
 
 ```csharp
 public static TextWriter Out = Console.Out;

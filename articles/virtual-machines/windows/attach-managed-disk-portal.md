@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d98fdab6dcd0abb70967d1e17d138a860a31da5f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0610b235d218c24c108e39aeb9bd3b2cf8c9c663
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039313"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463443"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Azure portalını kullanarak bir Windows VM'ye yönetilen bir veri diski ekleme
 
@@ -21,7 +21,7 @@ Bu makalede, Azure portalını kullanarak bir Windows sanal makinesi (VM) için 
 
 ## <a name="add-a-data-disk"></a>Veri diski ekleme
 
-1. İçinde [Azure portalında](https://portal.azure.com), sol taraftaki menüden **sanal makineler**.
+1. Veri diski eklemek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
 2. Listeden bir sanal makine seçin.
 3. Üzerinde **sanal makine** sayfasında **diskleri**.
 4. Üzerinde **diskleri** sayfasında **Ekle veri diski**.

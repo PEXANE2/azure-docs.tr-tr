@@ -1,38 +1,38 @@
 ---
-title: MongoDB için Azure Cosmos DB'nin API'SİNDE depolanan verileri yönetmek için MongoDB uzantı komutları
-description: Bu makalede, MongoDB için Azure Cosmos DB'nin API'SİNDE depolanan verileri yönetmek için MongoDB uzantı komutları kullanmayı açıklar.
+title: MongoDB için Azure Cosmos DB API 'sindeki verileri yönetmek için MongoDB uzantı komutları
+description: Bu makalede MongoDB için Azure Cosmos DB API 'sinde depolanan verileri yönetmek üzere MongoDB uzantı komutlarının nasıl kullanılacağı açıklanır.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925647"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445213"
 ---
-# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB'nin API'SİNDE depolanan verileri yönetmek için MongoDB uzantı komutları kullanma 
+# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde depolanan verileri yönetmek için MongoDB uzantı komutlarını kullanma 
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Azure Cosmos DB API'si ile açık kaynak kullanarak MongoDB için iletişim kurabilir [MongoDB istemcisi sürücüsünü](https://docs.mongodb.org/ecosystem/drivers). Azure Cosmos DB MongoDB API'si için bağlı kalarak mevcut istemci sürücülerin kullanımını etkinleştirir. [MongoDB kablo protokolüne](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
+Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Açık kaynaklı [MongoDB istemci sürücülerinden](https://docs.mongodb.org/ecosystem/drivers)herhangi birini kullanarak MongoDB için Azure Cosmos DB API 'si ile iletişim kurabilirsiniz. Azure Cosmos DB MongoDB API 'SI, mevcut istemci sürücülerinin [MongoDB kablo protokolüne](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)bağlanarak kullanımını sağlar.
 
-MongoDB için Azure Cosmos DB'nin API'sini kullanarak, Cosmos DB genel dağıtım, otomatik parçalanmasını, yüksek kullanılabilirlik, gecikme süresi garanti eder, otomatik, yedeklemeler, bekleyen şifreleme gibi avantajlardan yararlanabilirsiniz ve çok daha fazlasını yatırımlarınızı koruma while MongoDB uygulamanızda.
+MongoDB için Azure Cosmos DB API 'sini kullanarak küresel dağıtım, otomatik parçalama, yüksek kullanılabilirlik, gecikme süreleri, otomatik, bekleyen şifreleme, yedeklemeler ve çok daha fazlası gibi avantajCosmos DB ların yanı sıra yatırımlarınızı korurken bu avantajlardan yararlanabilirsiniz. MongoDB uygulamanızda.
 
-## <a name="mongodb-protocol-support"></a>MongoDB için protokol desteği
+## <a name="mongodb-protocol-support"></a>MongoDB protokol desteği
 
-Varsayılan olarak, Azure Cosmos DB API, MongoDB MongoDB daha fazla ayrıntı için sunucu sürümü 3.2, uyumlu olduğu için bkz. [desteklenen özellikleri ve söz dizimi](mongodb-feature-support.md). Özellikleri veya MongoDB 3.4 sürümü eklenen sorgu işleçleri şu anda bir Azure Cosmos DB MongoDB API'si önizleme olarak kullanılabilir. Aşağıdaki uzantı komutları belirli işlevleri Azure Cosmos DB, MongoDB için Azure Cosmos DB'nin API'SİNDE depolanan veriler üzerinde CRUD işlemleri gerçekleştirirken destekler:
+Varsayılan olarak, MongoDB için Azure Cosmos DB API 'SI MongoDB sunucu sürümü 3,2 ile uyumludur, daha fazla ayrıntı için bkz. [desteklenen özellikler ve sözdizimi](mongodb-feature-support.md). MongoDB sürüm 3,4 ' ye eklenen özellikler veya sorgu işleçleri Şu anda MongoDB için Azure Cosmos DB API 'sinde önizleme olarak sunulmaktadır. Aşağıdaki uzantı komutları, MongoDB için Azure Cosmos DB API 'sinde depolanan veriler üzerinde CRUD işlemleri gerçekleştirirken Azure Cosmos DB belirli işlevselliği destekler:
 
-* [Veritabanı oluşturma](#create-database)
-* [Veritabanını Güncelleştir](#update-database)
-* [Veritabanı Al](#get-database)
-* [Koleksiyon oluşturma](#create-collection)
-* [Koleksiyonu güncelleştir](#update-collection)
-* [Koleksiyonu alma](#get-collection)
+* [Veritabanı oluştur](#create-database)
+* [Veritabanını güncelleştir](#update-database)
+* [Veritabanını al](#get-database)
+* [Koleksiyon Oluştur](#create-collection)
+* [Koleksiyonu Güncelleştir](#update-collection)
+* [Koleksiyonu al](#get-collection)
 
-## <a id="create-database"></a> Veritabanı oluşturma
+## <a id="create-database"></a>Veritabanı oluştur
 
-Create database uzantı komutu yeni bir MongoDB veritabanı oluşturur. Veritabanı adı karşı komutu yürütülmeden veritabanları bağlamdan kullanılır. CreateDatabase komut biçimi aşağıdaki gibidir:
+Veritabanı uzantısı Oluştur komutu yeni bir MongoDB veritabanı oluşturur. Veritabanı adı, komutun yürütüldüğü veritabanları bağlamından kullanılır. CreateDatabase komutunun biçimi aşağıdaki gibidir:
 
 ```
 {
@@ -41,16 +41,16 @@ Create database uzantı komutu yeni bir MongoDB veritabanı oluşturur. Veritaba
 }
 ```
 
-Komut içinde Parametreler aşağıdaki tabloda açıklanmaktadır:
+Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 
 |**Alan**|**Tür** |**Açıklama** |
 |---------|---------|---------|
-| Özel   |  string  |   Ad özel komut, "CreateDatabase" olmalıdır.      |
-| offerThroughput | int  | Veritabanı üzerinde ayarladığınız sağlanan aktarım hızı. Bu parametre isteğe bağlıdır. |
+| Şerit   |  string  |   Özel komutun adı, "CreateDatabase" olmalıdır.      |
+| Offerüretilen Iş | int  | Veritabanında ayarladığınız üretilen iş hacmi. Bu parametre isteğe bağlıdır. |
 
 ### <a name="output"></a>Çıktı
 
-Varsayılan özel komut yanıtı döndürür. Bkz: [varsayılan çıkış](#default-output) çıktıyı parametrelerle için özel komutu.
+Varsayılan özel komut yanıtını döndürür. Çıktıda parametreler için özel komutun [varsayılan çıktısına](#default-output) bakın.
 
 ### <a name="examples"></a>Örnekler
 
@@ -65,16 +65,16 @@ db.runCommand({customAction: "CreateDatabase"});
 
 **Aktarım hızı ile veritabanı oluşturma**
 
-"Test" ve sağlanan aktarım hızı 1000 RU adlı bir veritabanı oluşturmak için aşağıdaki komutu kullanın:
+"Test" adlı bir veritabanı oluşturmak ve 1000 ru 'nin sağlanan verimini sağlamak için aşağıdaki komutu kullanın:
 
 ```shell
 use test
 db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 ```
 
-## <a id="update-database"></a> Veritabanını Güncelleştir
+## <a id="update-database"></a>Veritabanını güncelleştir
 
-Güncelleştirme veritabanı uzantısı komut belirtilen veritabanıyla ilişkili özelliklerini güncelleştirir. Şu anda yalnızca "offerThroughput" özelliğini güncelleştirebilirsiniz.
+Veritabanı uzantısını Güncelleştir komutu, belirtilen veritabanıyla ilişkili özellikleri güncelleştirir. Şu anda yalnızca "Offerüretilen Iş" özelliğini güncelleştirebilirsiniz.
 
 ```
 {
@@ -83,31 +83,31 @@ Güncelleştirme veritabanı uzantısı komut belirtilen veritabanıyla ilişkil
 }
 ```
 
-Komut içinde Parametreler aşağıdaki tabloda açıklanmaktadır:
+Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 
 |**Alan**|**Tür** |**Açıklama** |
 |---------|---------|---------|
-| Özel    |    string     |   Özel komut adı. "UpdateDatabase" olmalıdır.      |
-|  offerThroughput   |  int       |     Veritabanı üzerinde ayarlamak istediğiniz yeni sağlanan aktarım hızı.    |
+| Şerit    |    string     |   Özel komutun adı. "UpdateDatabase" olmalıdır.      |
+|  Offerüretilen Iş   |  int       |     Veritabanında ayarlamak istediğiniz yeni sağlanan aktarım hızı.    |
 
 ### <a name="output"></a>Çıktı
 
-Varsayılan özel komut yanıtı döndürür. Bkz: [varsayılan çıkış](#default-output) çıktıyı parametrelerle için özel komutu.
+Varsayılan özel komut yanıtını döndürür. Çıktıda parametreler için özel komutun [varsayılan çıktısına](#default-output) bakın.
 
 ### <a name="examples"></a>Örnekler
 
-**Güncelleştirme bir veritabanıyla ilişkili sağlanan aktarım hızı**
+**Bir veritabanıyla ilişkili sağlanan aktarım hızını güncelleştirme**
 
-Sağlanan aktarım hızı bir veritabanının 1200 RU'ları için "test" adı ile güncelleştirmek için aşağıdaki komutu kullanın:
+"Test" adlı bir veritabanının sağlanan verimini 1200 ru 'ya güncelleştirmek için aşağıdaki komutu kullanın:
 
 ```shell
 use test
 db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 ```
 
-## <a id="get-database"></a> Veritabanı Al
+## <a id="get-database"></a>Veritabanını al
 
-Get veritabanı uzantısı komut veritabanı nesnesi döndürür. Veritabanı adı, veritabanı bağlamında karşı komutu yürütülmeden kullanılır.
+Veritabanı uzantısını Al komutu, veritabanı nesnesini döndürür. Veritabanı adı, komutun yürütüldüğü veritabanı bağlamından kullanılır.
 
 ```
 {
@@ -115,39 +115,39 @@ Get veritabanı uzantısı komut veritabanı nesnesi döndürür. Veritabanı ad
 }
 ```
 
-Komut içinde Parametreler aşağıdaki tabloda açıklanmaktadır:
+Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 
 
 |**Alan**|**Tür** |**Açıklama** |
 |---------|---------|---------|
-|  Özel   |   string      |   Özel komut adı. "Getcollection" olmalıdır|
+|  Şerit   |   string      |   Özel komutun adı. "GetDatabase" olmalıdır|
         
 ### <a name="output"></a>Çıktı
 
-Komut başarılı olursa, yanıt bir belgesiyle aşağıdaki alanları içerir:
+Komut başarılı olursa, yanıt aşağıdaki alanları içeren bir belge içerir:
 
 |**Alan**|**Tür** |**Açıklama** |
 |---------|---------|---------|
-|  `ok`   |   `int`     |   Yanıt durumu. 1 == başarılı. 0 hata ==.      |
+|  `ok`   |   `int`     |   Yanıtın durumu. 1 = = başarılı. 0 = = hata.      |
 | `database`    |    `string`        |   Veritabanının adı.      |
-|   `provisionedThroughput`  |    `int`      |    Veritabanı üzerinde ayarlanır sağlanan aktarım hızı. Bu isteğe bağlı bir yanıt parametredir.     |
+|   `provisionedThroughput`  |    `int`      |    Veritabanında ayarlanan üretilen iş hacmi. Bu, isteğe bağlı bir yanıt parametresidir.     |
 
-Komut başarısız olursa, varsayılan bir özel komut yanıt döndürülür. Bkz: [varsayılan çıkış](#default-output) çıktıyı parametrelerle için özel komutu.
+Komut başarısız olursa, varsayılan bir özel komut yanıtı döndürülür. Çıktıda parametreler için özel komutun [varsayılan çıktısına](#default-output) bakın.
 
 ### <a name="examples"></a>Örnekler
 
-**Veritabanı Al**
+**Veritabanını al**
 
-"Test" adlı bir veritabanı için veritabanı nesnesini almak için aşağıdaki komutu kullanın:
+"Test" adlı bir veritabanının veritabanı nesnesini almak için aşağıdaki komutu kullanın:
 
 ```shell
 use test
 db.runCommand({customAction: "GetDatabase"});
 ```
 
-## <a id="create-collection"></a> Koleksiyon oluşturma
+## <a id="create-collection"></a>Koleksiyon Oluştur
 
-Oluşturma koleksiyonu uzantısı komut yeni bir MongoDB koleksiyonu oluşturur. Veritabanı adı karşı komutu yürütülmeden veritabanları bağlamdan kullanılır. CreateCollection komut biçimi aşağıdaki gibidir:
+Koleksiyon uzantısı Oluştur komutu yeni bir MongoDB koleksiyonu oluşturur. Veritabanı adı, komutun yürütüldüğü veritabanları bağlamından kullanılır. CreateCollection komutunun biçimi aşağıdaki gibidir:
 
 ```
 {
@@ -158,24 +158,24 @@ Oluşturma koleksiyonu uzantısı komut yeni bir MongoDB koleksiyonu oluşturur.
 }
 ```
 
-Komut içinde Parametreler aşağıdaki tabloda açıklanmaktadır:
+Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 
 |**Alan**|**Tür** |**Açıklama** |
 |---------|---------|---------|
-| Özel    | string | Özel komut adı. "CreateCollection" olmalıdır     |
-| Koleksiyon      | string | Koleksiyon adı                                   |
-| offerThroughput | int    | Veritabanını ayarlamak için sağlanan aktarım hızı'ı seçin. İsteğe bağlı bir parametredir |
-| shardKey        | string | Parçalı koleksiyon oluşturmak için parça anahtarı yolu. İsteğe bağlı bir parametredir |
+| Şerit    | string | Özel komutun adı. "CreateCollection" olmalıdır     |
+| koleksiyon      | string | Koleksiyonun adı                                   |
+| Offerüretilen Iş | int    | Veritabanında ayarlanacak üretilen Iş hacmi. Bu, Isteğe bağlı bir parametredir |
+| shardKey        | string | Parçalı bir koleksiyon oluşturmak için parça anahtar yolu. Bu, Isteğe bağlı bir parametredir |
 
 ### <a name="output"></a>Çıktı
 
-Varsayılan özel komut yanıtı döndürür. Bkz: [varsayılan çıkış](#default-output) çıktıyı parametrelerle için özel komutu.
+Varsayılan özel komut yanıtını döndürür. Çıktıda parametreler için özel komutun [varsayılan çıktısına](#default-output) bakın.
 
 ### <a name="examples"></a>Örnekler
 
-**Unsharded koleksiyon oluşturma**
+**Parçalı olmayan bir koleksiyon oluşturma**
 
-Adı "testCollection" ve sağlanan aktarım hızı 1000 RU ile unsharded koleksiyonu oluşturmak için aşağıdaki komutu kullanın: 
+"TestCollection" adlı ve 1000 ru tarafından sağlanan aktarım hızı ile birlikte bulunan bir koleksiyon oluşturmak için aşağıdaki komutu kullanın: 
 
 ```shell
 use test
@@ -184,16 +184,16 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 **Parçalı koleksiyon oluşturma**
 
-Adı "testCollection" ve sağlanan aktarım hızı 1000 RU ile bir parçalı koleksiyon oluşturmak için aşağıdaki komutu kullanın:
+"TestCollection" adlı parçalı bir koleksiyon oluşturmak ve 1000 ru tarafından sağlanan verimlilik için aşağıdaki komutu kullanın:
 
 ```shell
 use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", offerThroughput: 1000, shardKey: "a.b" });
 ```
 
-## <a id="update-collection"></a> Koleksiyonu güncelleştir
+## <a id="update-collection"></a>Koleksiyonu Güncelleştir
 
-Güncelleştirme koleksiyonu uzantısı komut belirtilen koleksiyonla ilişkili özelliklerini güncelleştirir.
+Koleksiyon uzantısını Güncelleştir komutu, belirtilen koleksiyonla ilişkili özellikleri güncelleştirir.
 
 ```
 {
@@ -203,32 +203,32 @@ Güncelleştirme koleksiyonu uzantısı komut belirtilen koleksiyonla ilişkili 
 }
 ```
 
-Komut içinde Parametreler aşağıdaki tabloda açıklanmaktadır:
+Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 
 |**Alan**|**Tür** |**Açıklama** |
 |---------|---------|---------|
-|  Özel   |   string      |   Özel komut adı. "UpdateCollection" olmalıdır.      |
-|  Koleksiyon   |   string      |   Koleksiyonun adı.       |
-| offerThroughput   |int|   Koleksiyonda ayarlamak için sağlanan aktarım hızı'ı seçin.|
+|  Şerit   |   string      |   Özel komutun adı. "UpdateCollection" olması gerekir.      |
+|  koleksiyon   |   string      |   Koleksiyonun adı.       |
+| Offerüretilen Iş   |int|   Koleksiyonda ayarlanacak sağlanan aktarım hızı.|
 
 ## <a name="output"></a>Çıktı
 
-Varsayılan özel komut yanıtı döndürür. Bkz: [varsayılan çıkış](#default-output) çıktıyı parametrelerle için özel komutu.
+Varsayılan özel komut yanıtını döndürür. Çıktıda parametreler için özel komutun [varsayılan çıktısına](#default-output) bakın.
 
 ### <a name="examples"></a>Örnekler
 
-**Güncelleştirme bir koleksiyonla ilişkilendirilen sağlanan aktarım hızı**
+**Bir koleksiyonla ilişkili sağlanan aktarım hızını güncelleştirme**
 
-Adı "testCollection" ile bir koleksiyon için sağlanan aktarım hızına 1200 RU'ları güncelleştirmek için aşağıdaki komutu kullanın:
+"TestCollection" adlı bir koleksiyonun sağlanan verimini 1200 ru olarak güncelleştirmek için aşağıdaki komutu kullanın:
 
 ```shell
 use test
 db.runCommand({customAction: "UpdateCollection", collection: "testCollection", offerThroughput: 1200 });
 ```
 
-## <a id="get-collection"></a> Koleksiyonu alma
+## <a id="get-collection"></a>Koleksiyonu al
 
-Get koleksiyon özel komutu, koleksiyon nesnesini döndürür.
+Koleksiyonu al özel komutu koleksiyon nesnesini döndürür.
 
 ```
 {
@@ -237,32 +237,32 @@ Get koleksiyon özel komutu, koleksiyon nesnesini döndürür.
 }
 ```
 
-Komut içinde Parametreler aşağıdaki tabloda açıklanmaktadır:
+Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 
 
 |**Alan**|**Tür** |**Açıklama** |
 |---------|---------|---------|
-| Özel    |   string      |   Özel komut adı. "Belirtilmiş" olmalıdır.      |
-| Koleksiyon    |    string     |    Koleksiyonun adı.     |
+| Şerit    |   string      |   Özel komutun adı. "GetCollection" olmalıdır.      |
+| koleksiyon    |    string     |    Koleksiyonun adı.     |
 
 ### <a name="output"></a>Çıktı
 
-Komut başarılı olursa, yanıt bir belgesiyle aşağıdaki alanları içerir.
+Komut başarılı olursa, yanıt aşağıdaki alanları içeren bir belge içerir
 
 
 |**Alan**|**Tür** |**Açıklama** |
 |---------|---------|---------|
-|  `ok`   |    `int`     |   Yanıt durumu. 1 == başarılı. 0 hata ==.      |
+|  `ok`   |    `int`     |   Yanıtın durumu. 1 = = başarılı. 0 = = hata.      |
 | `database`    |    `string`     |   Veritabanının adı.      |
 | `collection`    |    `string`     |    Koleksiyonun adı.     |
-|  `shardKeyDefinition`   |   `document`      |  Bir parça anahtarı kullanılan dizin belirtimi belgesi. Bu isteğe bağlı bir yanıt parametredir.       |
-|  `provisionedThroughput`   |   `int`      |    Koleksiyonda ayarlamak için sağlanan aktarım hızı'ı seçin. Bu isteğe bağlı bir yanıt parametredir.     |
+|  `shardKeyDefinition`   |   `document`      |  Parçalı anahtar olarak kullanılan dizin belirtim belgesi. Bu, isteğe bağlı bir yanıt parametresidir.       |
+|  `provisionedThroughput`   |   `int`      |    Koleksiyonda ayarlanacak sağlanan aktarım hızı. Bu, isteğe bağlı bir yanıt parametresidir.     |
 
-Komut başarısız olursa, varsayılan bir özel komut yanıt döndürülür. Bkz: [varsayılan çıkış](#default-output) çıktıyı parametrelerle için özel komutu.
+Komut başarısız olursa, varsayılan bir özel komut yanıtı döndürülür. Çıktıda parametreler için özel komutun [varsayılan çıktısına](#default-output) bakın.
 
 ### <a name="examples"></a>Örnekler
 
-**Koleksiyonu alma**
+**Koleksiyonu al**
 
 "TestCollection" adlı bir koleksiyon için koleksiyon nesnesini almak için aşağıdaki komutu kullanın:
 
@@ -271,19 +271,19 @@ use test
 db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 ```
 
-## <a id="default-output"></a> Varsayılan özel komut çıktısı
+## <a id="default-output"></a>Özel bir komutun varsayılan çıkışı
 
-Belirtilmezse, özel bir yanıt bir belgesiyle aşağıdaki alanları içerir:
+Belirtilmemişse, özel bir yanıt aşağıdaki alanlara sahip bir belge içerir:
 
 |**Alan**|**Tür** |**Açıklama** |
 |---------|---------|---------|
-|  `ok`   |    `int`     |   Yanıt durumu. 1 == başarılı. 0 hata ==.      |
-| `code`    |   `int`      |   Komut başarısız oldu, yalnızca döndürülen (yani Tamam == 0). MongoDB hata kodunu içerir. Bu isteğe bağlı bir yanıt parametredir.      |
-|  `errMsg`   |  `string`      |    Komut başarısız oldu, yalnızca döndürülen (yani Tamam == 0). Kolay bir hata iletisi içerir. Bu isteğe bağlı bir yanıt parametredir.      |
+|  `ok`   |    `int`     |   Yanıtın durumu. 1 = = başarılı. 0 = = hata.      |
+| `code`    |   `int`      |   Yalnızca komut başarısız olduğunda (örneğin, ok = = 0) döndürülür. MongoDB hata kodunu içerir. Bu, isteğe bağlı bir yanıt parametresidir.      |
+|  `errMsg`   |  `string`      |    Yalnızca komut başarısız olduğunda (örneğin, ok = = 0) döndürülür. Kullanıcı dostu bir hata iletisi içerir. Bu, isteğe bağlı bir yanıt parametresidir.      |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından aşağıdaki Azure Cosmos DB kavramları öğrenmeniz geçebilirsiniz: 
+Sonra aşağıdaki Azure Cosmos DB kavramları öğrenmek için devam edebilirsiniz: 
 
-* [Azure Cosmos DB'yi dizine ekleme](../cosmos-db/index-policy.md)
-* [Yaşam süresi otomatik olarak Azure Cosmos DB'de verilerle süresi dolacak](../cosmos-db/time-to-live.md)
+* [Azure Cosmos DB 'de dizin oluşturma](../cosmos-db/index-policy.md)
+* [Azure Cosmos DB verileri yaşam süresi ile otomatik olarak sona erer](../cosmos-db/time-to-live.md)
