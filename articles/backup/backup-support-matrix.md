@@ -3,12 +3,12 @@ title: Azure Backup destek matrisi
 description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 2c33c71e579cc6fa5d01ba086fb1a9a4fc9c142c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dc709294b92fd26343e9520e3775b9f079aba94f
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172079"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708489"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -26,7 +26,7 @@ Azure Backup yedeklemeleri düzenlemek ve yönetmek için kurtarma hizmetleri ka
 
 Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanmaktadır:
 
-**Özelliği** | **Ayrıntılar**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Abonelikte kasa** | Tek bir abonelikte en fazla 500 kurtarma hizmeti Kasası.
 **Kasadaki makineler** | Tek bir kasada en fazla 1.000 Azure VM.<br/><br/> 50 MABS sunucusuna kadar tek bir kasada kayıt yapılabilir.
@@ -54,7 +54,7 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 
 **Sınır** | **Ayrıntılar**
 --- | ---
-**Azure VM veri diskleri** | 16 sınırı
+**Azure VM veri diskleri** | 16 sınırı <br> 16'dan fazla diski (en çok 32 disk) olan VM'lerin özel önizlemesine kaydolmak için AskAzureBackupTeam@microsoft.com adresinden bize yazın
 **Azure VM veri diski boyutu** | Tek bir disk boyutu 32 TB 'a kadar ve bir VM 'deki tüm diskler için en fazla 256 TB olabilir.
 
 ### <a name="azure-vm-backup-options"></a>Azure VM yedekleme seçenekleri
@@ -74,7 +74,7 @@ Linux makinelerini yedeklemek istiyorsanız, bu destek aşağıda verilmiştir:
 
 **Yedekleme türü** | **Linux (Azure onaysed)**
 --- | ---
-**Linux çalıştıran şirket içi makinenin doğrudan yedeklemesi** | Desteklenmiyor. MARS Aracısı yalnızca Windows makinelerine yüklenebilir.
+**Linux çalıştıran şirket içi makinenin doğrudan yedeklemesi** | Desteklenmez. MARS Aracısı yalnızca Windows makinelerine yüklenebilir.
 **Linux çalıştıran Azure VM 'yi yedeklemek için aracı uzantısı kullanma** | [Özel betikler](backup-azure-linux-app-consistent.md)kullanarak uygulamayla tutarlı yedekleme.<br/><br/> Dosya düzeyinde kurtarma.<br/><br/> Kurtarma noktasından veya diskten bir VM oluşturarak geri yükleyin.
 **Linux çalıştıran şirket içi veya Azure VM 'yi yedeklemek için DPM 'yi kullanma** | Hyper-V ve VMWare üzerinde Linux konuk VM 'lerinin dosya ile tutarlı yedeklemesi.<br/><br/> Hyper-V ve VMWare Linux konuk VM 'lerinin VM geri yüklemesi.<br/><br/> Dosya tutarlı yedekleme, Azure VM için kullanılamaz.
 **Linux çalıştıran şirket içi makineyi veya Azure VM 'yi yedeklemek için MABS kullanma** | Hyper-V ve VMWare üzerinde Linux konuk VM 'lerinin dosya ile tutarlı yedeklemesi.<br/><br/> Hyper-V ve VMWare Linux konuk VM 'lerinin VM geri yüklemesi.<br/><br/> Dosya tutarlı yedekleme, Azure VM 'Leri için kullanılamaz.
@@ -112,10 +112,10 @@ Azure Backup, geçiş sırasında ve bekleyen veriler için şifrelemeyi destekl
 
 **Makin** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-**DPM/MABS olmayan şirket içi Windows makineleri** | ![Yes][green] | ![Yes][green]
-**Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
-**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
-**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
+**DPM/MABS olmayan şirket içi Windows makineleri** | ![Evet][green] | ![Evet][green]
+**Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
+**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
+**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
 
 ## <a name="compression-support"></a>Sıkıştırma desteği
 
@@ -126,9 +126,9 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 
 **Makin** | **MABS/DPM 'ye Sıkıştır (TCP)** | **Kasaya Sıkıştır (HTTPS)**
 --- | --- | ---
-**Şirket içi Windows makinelerini doğrudan yedekleme** | NA | ![Yes][green]
-**VM uzantısı kullanarak Azure VM 'lerini yedekleme** | NA | NA
-**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Yes][green] | ![Yes][green]
+**Şirket içi Windows makinelerini doğrudan yedekleme** | Yok | ![Evet][green]
+**VM uzantısı kullanarak Azure VM 'lerini yedekleme** | Yok | Yok
+**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Evet][green] | ![Evet][green]
 
 ## <a name="retention-limits"></a>Bekletme sınırları
 
@@ -141,6 +141,19 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 **Kurtarma noktası bekletme** | Günlük, haftalık, aylık, yıllık
 **Maksimum bekletme süresi** | Yedekleme sıklığına bağlıdır
 **DPM/MABS diskindeki kurtarma noktaları** | dosya sunucuları için 64; uygulama sunucuları için 448 <br/><br/>Şirket içi DPM için sınırsız bant kurtarma noktası
+
+## <a name="cross-region-restore"></a>Çapraz bölge geri yükleme
+
+Azure Backup, veri kullanılabilirliği ve dayanıklılık özelliğini güçlendirin ve müşterilere verileri ikincil bir bölgeye geri yüklemek için tam denetim sağlayan çapraz bölge geri yükleme özelliğini ekledi. Bu özelliği yapılandırmak için [çapraz bölge geri yüklemeyi ayarla makalesini](backup-create-rs-vault.md#set-cross-region-restore)ziyaret edin. Bu özellik aşağıdaki yönetim türleri için desteklenir:
+
+| Yedekleme yönetimi türü | Desteklenen                                                    | Desteklenen bölgeler |
+| ---------------------- | ------------------------------------------------------------ | ----------------- |
+| Azure VM               | Evet. 4 TB 'den az diski olan şifrelenmiş VM 'Ler ve VM 'Ler için genel sınırlı Önizleme desteklenir | Orta Batı ABD   |
+| MARS Aracısı/şirket içi | Hayır                                                           | Yok               |
+| SQL/SAP HANA          | Hayır                                                           | Yok               |
+| 'Nın                    | Hayır                                                           | Yok               |
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

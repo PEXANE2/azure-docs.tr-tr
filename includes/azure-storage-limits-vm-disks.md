@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: 8b25d2395811a2197aff6d653c5038a4380021e9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 12/25/2019
 ms.locfileid: "68669877"
 ---
 Bir Azure sanal makinesine çok sayıda veri diski ekleyebilirsiniz. Bir sanal makinenin veri disklerinin ölçeklenebilirlik ve performans hedeflerine bağlı olarak, performans ve kapasite gereksinimlerinizi karşılamak için gereken disk sayısını ve türünü belirleyebilirsiniz.
@@ -20,14 +20,14 @@ Bir Azure sanal makinesine çok sayıda veri diski ekleyebilirsiniz. Bir sanal m
 
 Aşağıdaki tabloda, abonelik başına bölge başına düşen kaynak sayısı için varsayılan ve en fazla limit gösterilmektedir. Kaynak grubu başına yönetilen disk sayısı, anlık görüntüler ve görüntüler için bir sınır yoktur.  
 
-> | Resource | Varsayılan limit  | Üst sınır |
+> | Kaynak | Varsayılan limit  | Üst sınır |
 > | --- | --- | --- |
-> | Standart yönetilen diskler | 50,000 | 50,000 |
-> | Standart SSD yönetilen diskler | 50,000 | 50,000 |
-> | Premium yönetilen diskler | 50,000 | 50,000 |
-> | Standard_LRS anlık görüntüleri | 50,000 | 50,000 |
-> | Standard_ZRS anlık görüntüleri | 50,000 | 50,000 |
-> | Yönetilen görüntü | 50,000 | 50,000 |
+> | Standart yönetilen diskler | 50.000 | 50.000 |
+> | Standart SSD yönetilen diskler | 50.000 | 50.000 |
+> | Premium yönetilen diskler | 50.000 | 50.000 |
+> | Standard_LRS anlık görüntüler | 50.000 | 50.000 |
+> | Standard_ZRS anlık görüntüler | 50.000 | 50.000 |
+> | Yönetilen görüntü | 50.000 | 50.000 |
 
 * **Standart depolama hesapları için:** Standart depolama hesabında en fazla 20.000 ıOPS toplam istek oranı vardır. Standart depolama hesabındaki tüm sanal makine disklerinizdeki toplam ıOPS, bu sınırı aşmamalıdır.
   

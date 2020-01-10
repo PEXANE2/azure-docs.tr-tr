@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5badcbe2a76c41bdc1431abae617e35b7555eb88
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9544d086eb9535af779bf2febe0cc63c180f7fd3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497904"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529601"
 ---
 # <a name="export-data-module"></a>Veri modülünü dışarı aktarma
 
@@ -29,7 +29,7 @@ Bu modül verilerinizi aşağıdaki bulut veri hizmetlerine aktarmayı destekler
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Verilerinizi dışarı aktarmadan önce önce Azure Machine Learning çalışma alanınıza önce bir veri deposu kaydetmeniz gerekir. Daha fazla bilgi için bkz. [verilere erişme](../service/how-to-access-data.md).
+Verilerinizi dışarı aktarmadan önce önce Azure Machine Learning çalışma alanınıza önce bir veri deposu kaydetmeniz gerekir. Daha fazla bilgi için bkz. [verilere erişme](../how-to-access-data.md).
 
 ## <a name="how-to-configure-export-data"></a>Dışarı aktarma verilerini yapılandırma
 
@@ -39,7 +39,7 @@ Verilerinizi dışarı aktarmadan önce önce Azure Machine Learning çalışma 
 
 1. **Özellikler** bölmesini açmak Için **verileri dışarı aktar** ' ı seçin.
 
-1. **Veri deposu**için, açılan listeden var olan bir veri deposunu seçin. Yeni bir veri deposu da oluşturabilirsiniz. [Nasıl yapılır-erişimli verileri](../service/how-to-access-data.md) ziyaret ederek öğrenin
+1. **Veri deposu**için, açılan listeden var olan bir veri deposunu seçin. Yeni bir veri deposu da oluşturabilirsiniz. [Nasıl yapılır-erişimli verileri](../how-to-access-data.md) ziyaret ederek öğrenin
 
 1. Verilerin yazılacağı veri deposundaki yolu tanımlayın. 
 

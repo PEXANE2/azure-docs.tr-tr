@@ -1,91 +1,93 @@
 ---
-title: Office 365 Outlook 'a bağlanma
-description: Office 365 REST API 'Leri ve Azure Logic Apps e-posta, kişi ve takvimleri yönetme
+title: Office 365 Outlook'a bağlanma
+description: Azure Logic Apps kullanarak Office 365 Outlook 'ta e-posta, kişi ve takvimleri yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 01/08/2020
 tags: connectors
-ms.openlocfilehash: 858366947fe21a20d6f112fc51899d1533a36472
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789590"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732738"
 ---
-# <a name="get-started-with-the-office-365-outlook-connector"></a>Office 365 Outlook bağlayıcısını kullanmaya başlama
-Office 365 Outlook Bağlayıcısı, Office 365 ' de Outlook ile etkileşime izin verebilir. Kişileri ve takvim öğelerini oluşturmak, düzenlemek ve güncelleştirmek için bu bağlayıcıyı kullanın, ayrıca e-posta alın, gönderin ve yanıtlayın.
+# <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Office 365 Outlook 'ta e-postaları, kişileri ve takvimleri yönetme
 
-Office 365 Outlook ile şunları yapabilirsiniz:
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Office 365 Outlook Bağlayıcısı](/connectors/office365connector/)sayesinde, Logic Apps oluşturarak Office 365 hesabınızı yöneten otomatik görevler ve iş akışları oluşturabilirsiniz. Örneğin, bu görevleri otomatikleştirin:
 
-* Office 365 ' deki e-posta ve takvim özelliklerini kullanarak iş akışınızı oluşturun. 
-* Yeni bir e-posta olduğunda, bir takvim öğesi güncelleştirilirken ve daha fazlası olduğunda iş akışınızı başlatmak için Tetikleyicileri kullanın.
-* Bir e-posta göndermek, yeni bir takvim olayı oluşturmak ve daha fazlasını yapmak için eylemleri kullanın. Örneğin, Salesforce (bir tetikleyici) içinde yeni bir nesne olduğunda, Office 365 Outlook (bir eylem) için bir e-posta gönderin. 
+* E-posta alın, gönderin ve yanıtlayın. 
+* Takviminizde toplantılar zamanlayın.
+* Kişiler ekleyin ve düzenleyin. 
 
-Bu makalede, Office 365 Outlook bağlayıcısının bir mantıksal uygulamada nasıl kullanılacağı gösterilir ve ayrıca Tetikleyiciler ve eylemler listelenir.
+İş akışınızı başlatmak için herhangi bir tetikleyiciyi kullanabilirsiniz. Örneğin, yeni bir e-posta geldiğinde, bir takvim öğesi güncelleştirilirken veya fark hizmetinde bir olay gerçekleştiğinde Salesforce gibi. Tetikleyici olayına yanıt veren eylemleri (örneğin, e-posta gönder veya yeni bir takvim olayı oluşturma) kullanabilirsiniz. 
 
 > [!NOTE]
-> Makalenin bu sürümü, genel kullanıma yönelik Logic Apps için geçerlidir (GA).
-> 
-> 
+> Bir @outlook.com veya @hotmail.com hesabına yönelik görevleri otomatikleştirmek için, [Outlook.com bağlayıcısını](../connectors/connectors-create-api-outlook.md)kullanın.
 
-Logic Apps hakkında daha fazla bilgi edinmek için bkz. [Logic Apps nedir](../logic-apps/logic-apps-overview.md) ve [mantıksal uygulama oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+## <a name="prerequisites"></a>Ön koşullar
 
-## <a name="connect-to-office-365"></a>Office 365’e bağlanın
-Mantıksal uygulamanızın herhangi bir hizmete erişebilmesi için önce hizmete bir *bağlantı* oluşturmanız gerekir. Bir bağlantı, mantıksal uygulama ile başka bir hizmet arasında bağlantı sağlar. Örneğin, Office 365 Outlook 'a bağlanmak için önce bir Office 365 *bağlantısına*ihtiyacınız vardır. Bağlantı oluşturmak için, bağlanmak istediğiniz hizmete erişmek için normalde kullandığınız kimlik bilgilerini girin. Bu nedenle, Office 365 Outlook ile bağlantıyı oluşturmak için Office 365 hesabınızın kimlik bilgilerini girin.
+* [Office 365 hesabı](https://www.office.com/)
 
-## <a name="create-the-connection"></a>Bağlantı oluşturma
-> [!INCLUDE [Steps to create a connection to Office 365](../../includes/connectors-create-api-office365-outlook.md)]
-> 
-> 
+* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-## <a name="use-a-trigger"></a>Tetikleyici kullanma
-Tetikleyici, bir mantıksal uygulamada tanımlanan iş akışını başlatmak için kullanılabilen bir olaydır. Hizmeti, istediğiniz zaman aralığında ve sıklıkta "yoklamayı" tetikler. [Tetikleyiciler hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+* Office 365 Outlook hesabınıza erişmek istediğiniz mantıksal uygulama. İş akışınızı Office 365 Outlook tetikleyicisi ile başlatmak için [boş bir mantıksal uygulamanız](../logic-apps/quickstart-create-first-logic-app-workflow.md)olması gerekir. İş akışınıza Office 365 Outlook eylemi eklemek için mantıksal uygulamanızın zaten bir tetikleyicisi olması gerekir.
 
-1. Mantıksal uygulamada, tetikleyicilerin bir listesini almak için "Office 365" yazın:  
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-trigger.png)
-2. Yakında **gerçekleşecek bir olay yakında başlatıldığında Office 365 Outlook**' u seçin. Zaten bir bağlantı varsa, açılan listeden bir takvim seçin.
-   
-    ![](./media/connectors-create-api-office365-outlook/sample-calendar.png)
-   
-    Oturum açmanız istenirse, bağlantıyı oluşturmak için oturum açma ayrıntılarını girin. Bu konuda [bağlantı oluşturma](connectors-create-api-office365-outlook.md#create-the-connection) adımları listelenir. 
-   
-   > [!NOTE]
-   > Bu örnekte, mantıksal uygulama bir takvim olayı güncelleştirildikten sonra çalışır. Bu tetikleyicinin sonuçlarını görmek için size bir kısa mesaj Gönderen başka bir eylem ekleyin. Örneğin, takvim olayı 15 dakika içinde başlatıldığında size metin veren Twilio *Send ileti* eylemini ekleyin. 
-   > 
-   > 
-3. **Düzenle** düğmesini seçin ve **Sıklık** ve **Aralık** değerlerini ayarlayın. Örneğin, tetikleyicinin 15 dakikada bir yoklamasını istiyorsanız, **sıklığı** **dakika**olarak ayarlayın ve **aralığı** **15**olarak ayarlayın. 
-   
-    ![](./media/connectors-create-api-office365-outlook/calendar-settings.png)
-4. Değişikliklerinizi **kaydedin** (araç çubuğunun sol üst köşesi). Mantıksal uygulamanız kaydedilir ve otomatik olarak etkinleştirilebilir.
+## <a name="add-a-trigger"></a>Tetikleyici ekleme
 
-## <a name="use-an-action"></a>Eylem kullanma
-Eylem, mantıksal uygulamada tanımlanan iş akışı tarafından yürütülen bir işlemdir. [Eylemler hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+[Tetikleyici](../logic-apps/logic-apps-overview.md#logic-app-concepts) , mantıksal uygulamanızda iş akışını başlatan bir olaydır. Bu örnek mantıksal uygulama, belirtilen Aralık ve sıklık temelinde e-posta hesabınızda güncelleştirilmiş herhangi bir takvim olayını denetleyen bir "yoklama" tetikleyicisi kullanır.
 
-1. Artı işaretini seçin. Birkaç seçenek görürsünüz: **eylem ekleme**, **koşul ekleme**veya **daha fazla** seçenekten biri.
+1. [Azure Portal](https://portal.azure.com), mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
+
+1. Arama kutusuna filtreniz olarak `office 365 outlook` girin. Bu örnek **yakında yaklaşan bir olayın ne zaman başlaması**gerektiğini belirler.
    
-    ![](./media/connectors-create-api-office365-outlook/add-action.png)
-2. **Eylem Ekle**' yi seçin.
-3. Tüm kullanılabilir eylemlerin listesini almak için metin kutusuna "Office 365" yazın.
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-actions.png) 
-4. Örneğimizde **Office 365 Outlook-kişi oluştur**' u seçin. Zaten bir bağlantı varsa, **klasör kimliğini**, **verilen adı**ve diğer özellikleri seçin:  
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-sampleaction.png)
-   
-    Bağlantı bilgileri istenirse, bağlantıyı oluşturmak için ayrıntıları girin. Bu konuda [bağlantı oluşturmak için](connectors-create-api-office365-outlook.md#create-the-connection) bu özellikler açıklanmaktadır. 
-   
-   > [!NOTE]
-   > Bu örnekte, Office 365 Outlook 'ta yeni bir kişi oluşturacağız. İlgili kişiyi oluşturmak için başka bir tetikleyiciden çıkış kullanabilirsiniz. Örneğin, *bir nesne oluşturulduğunda* Salesforce ekleyin. Ardından, yeni kişiyi Office 365 ' de oluşturmak için SalesForce alanlarını kullanan Office 365 Outlook *kişi oluştur* eylemini ekleyin. 
-   > 
-   > 
-5. Değişikliklerinizi **kaydedin** (araç çubuğunun sol üst köşesi). Mantıksal uygulamanız kaydedilir ve otomatik olarak etkinleştirilebilir.
+   ![Mantıksal uygulamanızı başlatmak için tetikleyiciyi seçin](./media/connectors-create-api-office365-outlook/office365-trigger.png)
+
+1. Oturum açmanız istenirse, mantıksal uygulamanızın hesabınıza bağlanabilmesi için Office 365 kimlik bilgilerinizi sağlayın. Aksi takdirde, bağlantınız zaten varsa, tetikleyicisinin özelliklerine ilişkin bilgileri belirtin.
+
+   Bu örnek, tetikleyicinin denetlediği takvimi seçer, örneğin:
+
+   ![Tetikleyicinin özelliklerini yapılandırın](./media/connectors-create-api-office365-outlook/select-calendar.png)
+
+1. Tetikleyicide **Sıklık** ve **Aralık** değerlerini ayarlayın. **Saat dilimi**gibi diğer kullanılabilir tetikleyici özelliklerini eklemek için **yeni parametre Ekle** listesinden bu özellikleri seçin.
+
+   Örneğin, tetikleyicinin takvimi 15 dakikada bir denetlemesini istiyorsanız **Sıklık** değerini **dakika**olarak ayarlayın ve **aralığı** `15`olarak ayarlayın. 
+
+   ![Tetikleyici için sıklık ve Aralık ayarlama](./media/connectors-create-api-office365-outlook/calendar-settings.png)
+
+1. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+
+Şimdi tetikleyici tetiklendiğinde çalışan bir eylem ekleyin. Örneğin, bir takvim olayı 15 dakika içinde başladığında bir metin gönderen Twilio **Ileti gönder** eylemini ekleyebilirsiniz.
+
+## <a name="add-an-action"></a>Eylem ekleme
+
+[Eylem](../logic-apps/logic-apps-overview.md#logic-app-concepts) , mantıksal uygulamanızdaki iş akışı tarafından çalıştırılan bir işlemdir. Bu örnek mantıksal uygulama, Office 365 Outlook 'ta yeni bir kişi oluşturur. Kişiyi oluşturmak için başka bir tetikleyiciden veya eylemden çıktıyı kullanabilirsiniz. Örneğin, mantıksal uygulamanızın **bir kayıt oluşturulduğunda**Dynamics 365 tetikleyicisini kullandığını varsayalım. Office 365 Outlook **kişi oluştur** eylemini ekleyebilir ve yeni kişiyi oluşturmak için Salesforce tetikleyicisinden çıktıları kullanabilirsiniz.
+
+1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+
+1. İş akışınızda son adım olarak bir eylem eklemek için **yeni adım**' ı seçin. 
+
+   Adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
+
+1. Arama kutusuna filtreniz olarak `office 365 outlook` girin. Bu örnek, **kişi oluştur**öğesini seçer.
+
+   ![Mantıksal uygulamanızda çalıştırılacak eylemi seçin](./media/connectors-create-api-office365-outlook/office365-actions.png) 
+
+1. Oturum açmanız istenirse, mantıksal uygulamanızın hesabınıza bağlanabilmesi için Office 365 kimlik bilgilerinizi sağlayın. Aksi takdirde, bağlantınız zaten varsa, eylemin özelliklerine ilişkin bilgileri belirtin.
+
+   Bu örnek, eylemin yeni kişiyi oluşturduğu kişiler klasörünü seçer, örneğin:
+
+   ![Eylemin özelliklerini yapılandırın](./media/connectors-create-api-office365-outlook/select-contacts-folder.png)
+
+   Diğer kullanılabilir eylem özelliklerini eklemek için bu özellikleri **yeni parametre Ekle** listesinden seçin.
+
+1. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
 ## <a name="connector-specific-details"></a>Bağlayıcıya özgü ayrıntılar
 
-Swagger 'da tanımlanan Tetikleyicileri ve eylemleri görüntüleyin ve ayrıca [bağlayıcı ayrıntılarında](/connectors/office365connector/)tüm limitleri inceleyin. 
+Bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/office365connector/)bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

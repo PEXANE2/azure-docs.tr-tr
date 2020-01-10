@@ -1,18 +1,14 @@
 ---
 title: Kapsayıcılar için Azure Izleyici için performans uyarıları oluşturma | Microsoft Docs
 description: Bu makalede, kapsayıcılar için Azure Izleyici 'den bellek ve CPU kullanımı için günlük sorgularına dayalı özel uyarıların nasıl oluşturulacağı açıklanır.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/26/2019
-ms.openlocfilehash: 66baa3095744c8b486430d587b992ba507d87733
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 01/07/2020
+ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841634"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730934"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'de performans sorunları için uyarıları ayarlama
 
@@ -288,13 +284,14 @@ Daha önce sağlanmış olan günlük arama kurallarından birini kullanarak Azu
 >
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. Sol taraftaki bölmeden **izleyici** ' yi seçin. **Öngörüler**altında **kapsayıcılar**' ı seçin.
-3. **Izlenen kümeler** sekmesinde listeden bir küme seçin.
-4. **İzleme**altında sol taraftaki bölmede **Günlükler** ' i seçerek Azure izleyici günlükleri sayfasını açın. Azure Log Analytics sorgularını yazmak ve yürütmek için bu sayfayı kullanın.
-5. **Günlükler** sayfasında **+ Yeni uyarı kuralı**' nı seçin.
-6. **Koşul** bölümünde, **özel günlük araması her seferinde \<** , önceden tanımlanmış özel günlük koşulu > tanımsız mantığı seçin. Doğrudan Azure Izleyici günlükleri sayfasından bir uyarı kuralı oluşturduğumuz için **özel günlük araması** sinyali türü otomatik olarak seçilir.  
-7. Daha önce belirtilen [sorgulardan](#resource-utilization-log-search-queries) birini **arama sorgusu** alanına yapıştırın.
-8. Uyarıyı şu şekilde yapılandırın:
+2. Azure portal, **Log Analytics çalışma alanlarını**arayıp seçin.
+3. Log Analytics çalışma alanları listenizde, kapsayıcılar için Azure Izleyicisini destekleyen çalışma alanını seçin. 
+4. Sol taraftaki bölmede **Günlükler** ' i seçerek Azure izleyici günlükleri sayfasını açın. Azure Log Analytics sorgularını yazmak ve yürütmek için bu sayfayı kullanın.
+5. **Günlükler** sayfasında, daha önce belirtilen [sorgulardan](#resource-utilization-log-search-queries) birini **arama sorgusu** alanına yapıştırın ve sonra sonuçları doğrulamak için **Çalıştır** ' ı seçin. Bu adımı gerçekleştirmeyin ve **+ Yeni uyarı** seçeneği seçilecek şekilde kullanılamaz.
+6. Günlük uyarısı oluşturmak için **+ Yeni uyarı** ' yı seçin.
+7. **Koşul** bölümünde, **özel günlük araması her seferinde \<** , önceden tanımlanmış özel günlük koşulu > tanımsız mantığı seçin. Doğrudan Azure Izleyici günlükleri sayfasından bir uyarı kuralı oluşturduğumuz için **özel günlük araması** sinyali türü otomatik olarak seçilir.  
+8. Daha önce belirtilen [sorgulardan](#resource-utilization-log-search-queries) birini **arama sorgusu** alanına yapıştırın.
+9. Uyarıyı şu şekilde yapılandırın:
 
     1. Aşağı açılan **Tetikleyici** listesinden **Metrik ölçüm**'ü seçin. Ölçüm ölçümü, sorgudaki her bir nesne için belirtilen eşiğin üzerinde bir değer olan bir uyarı oluşturur.
     1. **Koşul**Için, **büyüktür**' i seçin ve CPU ve bellek kullanımı uyarıları için ilk temel **eşik** olarak **75** girin. Yetersiz disk alanı uyarısı için **90**girin. Ya da ölçütlerinizi karşılayan farklı bir değer girin.
@@ -302,11 +299,11 @@ Daha önce sağlanmış olan günlük arama kurallarından birini kullanarak Azu
     1. Kapsayıcı CPU veya bellek kullanımı için bir uyarı yapılandırmak için, **toplama**altında, **kapsayıcıadı**' nı seçin. Küme düğümü düşük disk uyarısını yapılandırmak için **Clusterıd**' yi seçin.
     1. **Göre değerlendirilen** bölümünde, **Dönem** değerini **60 dakika**olarak ayarlayın. Kural, her 5 dakikada bir çalışır ve geçerli zamandan son bir saat içinde oluşturulan kayıtları döndürür. Olası veri gecikmesi için zaman aralığını geniş bir pencere hesabına ayarlama. Ayrıca, uyarının hiçbir şekilde tetiklendiği yanlış negatifi önlemek için sorgunun verileri döndürdüğünden emin olmanızı sağlar.
 
-9. Uyarı kuralını gerçekleştirmek için **bitti** ' yi seçin.
-10. **Uyarı kuralı adı** alanına bir ad girin. Uyarı hakkındaki ayrıntıları sağlayan bir **Açıklama** belirtin. Ve, belirtilen seçeneklerden uygun bir önem derecesi düzeyi seçin.
-11. Uyarı kuralını hemen etkinleştirmek için, **oluşturma sırasında kuralı etkinleştir**için varsayılan değeri kabul edin.
-12. Mevcut bir **eylem grubu** seçin veya yeni bir grup oluşturun. Bu adım, bir uyarının tetiklendiği her seferinde aynı eylemlerin alınmasını sağlar. BT veya DevOps işlemleri takımınızın olayları yönetme şeklini temel alarak yapılandırın.
-13. Uyarı kuralını gerçekleştirmek için **Uyarı kuralı oluştur** ' u seçin. Hemen çalıştırılmaya başlar.
+10. Uyarı kuralını gerçekleştirmek için **bitti** ' yi seçin.
+11. **Uyarı kuralı adı** alanına bir ad girin. Uyarı hakkındaki ayrıntıları sağlayan bir **Açıklama** belirtin. Ve, belirtilen seçeneklerden uygun bir önem derecesi düzeyi seçin.
+12. Uyarı kuralını hemen etkinleştirmek için, **oluşturma sırasında kuralı etkinleştir**için varsayılan değeri kabul edin.
+13. Mevcut bir **eylem grubu** seçin veya yeni bir grup oluşturun. Bu adım, bir uyarının tetiklendiği her seferinde aynı eylemlerin alınmasını sağlar. BT veya DevOps işlemleri takımınızın olayları yönetme şeklini temel alarak yapılandırın.
+14. Uyarı kuralını gerçekleştirmek için **Uyarı kuralı oluştur** ' u seçin. Hemen çalıştırılmaya başlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

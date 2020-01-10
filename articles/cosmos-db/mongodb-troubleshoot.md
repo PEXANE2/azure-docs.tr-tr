@@ -4,15 +4,15 @@ description: Bu belgede, MongoDB için Azure Cosmos DB API 'sinde karşılaşıl
 author: roaror
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/05/2019
 ms.author: roaror
-ms.openlocfilehash: ece975fa37e500b1c160210684a0cb46e719c48b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 41d667f4e90114052a17c5707989634bbb5fc421
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754965"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719843"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sindeki yaygın sorunları giderme
 
@@ -24,10 +24,10 @@ MongoDB için Azure Cosmos DB API 'SI, MongoDB 'nin kablo protokolünün 3,2 sü
 
 | Hata               | Kodlayın  | Açıklama  | Çözüm  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Tüketilen istek birimlerinin toplam sayısı, koleksiyonun sağlanan istek birimi hızından daha fazla ve kısıtlanmış. | Azure portal bir kapsayıcıya veya bir kapsayıcı kümesine atanmış üretilen işi ölçeklendirebilir veya işlemi yeniden deneyebilirsiniz. |
-| ExceededMemoryLimit | 16501 | Çok kiracılı bir hizmet olarak, işlem istemcinin bellek işlem biriminden çıktı. | Daha kısıtlayıcı sorgu ölçütleri aracılığıyla işlemin kapsamını azaltın veya [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)destek ekibiyle iletişime geçin. Örnek: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
+| TooManyRequests     | 16500 | İstek birimleri tüketilen toplam sayısı, koleksiyon için sağlanan istek birimi hızdan daha ve kısıtlanan. | Azure portal bir kapsayıcıya veya bir kapsayıcı kümesine atanmış üretilen işi ölçeklendirebilir veya işlemi yeniden deneyebilirsiniz. |
+| ExceededMemoryLimit | 16501 | Çok kiracılı bir hizmet, istemcinin bellek birimi işlemi geçti. | Destek ile iletişime geçin veya daha kısıtlayıcı bir sorgu ölçütü ile bir işlem kapsamını azaltın [Azure portalında](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Örnek: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | Belirtilen order by öğesine karşılık gelen dizin yolu hariç tutulur/order by sorgusunda, kendisine sunulabilecek bir bileşik dizin yoktur. | 2 | Sorgu, dizini oluşturulmamış bir alana sıralama isteğinde bulunur. | Denenen sıralama sorgusu için eşleşen bir dizin (veya bileşik dizin) oluşturun. |
-| MongoDB hat sürümü sorunları | - | MongoDB sürücülerinin eski sürümleri, bağlantı dizelerindeki Azure Cosmos hesabının adını algılayamaz. | MongoDB bağlantı dizesi için Cosmos DB API 'sinin sonundaki *@AppName = @**AccountName***  , burada ***AccountName*** Cosmos DB hesabınızın adıdır. |
+| MongoDB hat sürümü sorunları | - | MongoDB sürücülerinin eski sürümleri, bağlantı dizelerindeki Azure Cosmos hesabının adını algılayamaz. | Append *appName = @**accountName**@* MongoDB bağlantı dizesi, Cosmos DB'nin API'sini sonunda burada ***accountName*** Cosmos DB hesabının adıdır . |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

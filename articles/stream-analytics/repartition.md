@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: bbea71464e8a1f4e93e510106d372257f155b0c6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935058"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732391"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Azure Stream Analytics ile işlemeyi iyileştirmek için yeniden bölümleme kullanın
 
@@ -21,11 +21,11 @@ Bu makalede, tam olarak [Paralelleştirilmesi](stream-analytics-scale-jobs.md)ge
 Şunu yaparsanız [paralelleştirme](stream-analytics-parallelization.md) kullanmeyebilirsiniz:
 
 * Giriş akışınız için bölüm anahtarını denetlememeniz gerekir.
-* Kaynak "sprtikleriniz", daha sonra birleştirilmek zorunda olan birden çok bölüm genelinde giriş. 
-
-## <a name="how-to-repartition"></a>Yeniden bölümleme
+* Kaynak "sprtikleriniz", daha sonra birleştirilmek zorunda olan birden çok bölüm genelinde giriş.
 
 Event Hubs için **PartitionID** gibi bir doğal giriş şemasına göre parçalı olmayan bir akışta verileri işleçalıştığınızda yeniden bölümlendirip veya reshuffling gereklidir. Yeniden bölümlerseniz, her parça bağımsız olarak işlenebilir ve bu da akış işlem hattınızı daha erken ölçeklendirmenize olanak tanır.
+
+## <a name="how-to-repartition"></a>Yeniden bölümleme
 
 Yeniden bölümlemek için, sorginizdeki bir **bölüm by** ifadesinden **sonra anahtar sözcüğünü** kullanın. Aşağıdaki örnek, verileri **DeviceID** 'yi 10 bölüm sayısına göre bölümlendirir. **DeviceID** 'nin karması, hangi bölümün hangi alt akışı kabul edeceğini tespit etmek için kullanılır. Veriler bölümlenmiş her akış için bağımsız olarak temizlenir ve çıktının bölümlenmiş yazmaları desteklediği kabul edilir ve 10 bölüm vardır.
 

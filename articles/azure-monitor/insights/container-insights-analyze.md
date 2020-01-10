@@ -1,18 +1,14 @@
 ---
 title: Kapsayıcılar için Azure Izleyici ile Kubernetes izleme | Microsoft Docs
 description: Bu makalede, bir Kubernetes kümesinin, kapsayıcılar için Azure Izleyici ile performansını nasıl görüntüleyebileceğinizi ve analiz edeceğinizi açıklanmaktadır.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: 1cd0223a16a6308e777e4a0167154e975202df7b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 01/07/2020
+ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872987"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75731025"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme performansınızı izleyin
 
@@ -24,13 +20,7 @@ Kapsayıcılar için Azure Izleyicisini etkinleştirme hakkında daha fazla bilg
 
 Azure Izleyici, Windows Server 2019 ' i çalıştıran tüm izlenen Kubernetes kümelerinin sistem durumunu ve aboneliklerinizde kaynak grupları arasında dağıtılan Windows Server ' i gösteren bir çoklu küme görünümü sağlar. Çözüm tarafından izlenmeyen tüm ortamlarda bulunan kümeleri gösterir. Küme durumunu hemen anlayabilir ve buradan düğüm ve denetleyici performans sayfasına gidebilir veya kümenin performans grafiklerini görmek için gidebilirsiniz. Algılanan ve izlenmeyen olarak tanımlanan AKS kümelerinde, her zaman için izlemeyi etkinleştirebilirsiniz. 
 
-Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan kapsayıcılar için Azure Izleyici ile izlemenin başlıca farkları şunlardır:
-
-- Bellek RSS ölçümü Windows düğüm ve kapsayıcıları için kullanılamaz.
-- Disk depolama kapasitesi bilgileri Windows düğümleri için kullanılamaz.
-- Canlı Günlükler desteği Windows kapsayıcı günlükleri hariç kullanılabilir.
-- Docker ortamları değil yalnızca Pod ortamları izlenir.
-- Önizleme sürümü ile en fazla 30 Windows Server kapsayıcısı desteklenir. Bu sınırlama, Linux kapsayıcıları için geçerlidir. 
+Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan kapsayıcılar için Azure Izleyici ile izlemenin başlıca farkları, [burada](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) genel bakış makalesinde açıklanmıştır.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -201,7 +191,7 @@ Bu bilgiler, kümenizdeki düğümler arasında doğru kapsayıcılara sahip olu
 
 | Sütun | Açıklama | 
 |--------|-------------|
-| Adı | Ana bilgisayar adı. |
+| Ad | Ana bilgisayarın adı. |
 | Durum | Düğüm durumu görünümünü Kubernetes. |
 | Min&nbsp;%, Ort&nbsp;%, 50. Yüzdeliğini&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;%  | Seçili süre ve çözüm oranlarına dayanarak ortalama düğüm yüzdesi. |
 | En az, ortalama, 50 TH, 90 TH, en fazla | Ortalama düğümlerin fiili değeri, seçilen süre boyunca yüzdebirlik değerini temel alır. Ortalama değer bir düğüm için ayarlanan CPU/bellek sınırı üzerinden ölçülür. Pod ve kapsayıcılar için, ana bilgisayar tarafından bildirilen ortalama değerdir. |
@@ -230,7 +220,7 @@ Denetleyicileri görüntülerken görüntülenen bilgiler aşağıdaki tabloda a
 
 | Sütun | Açıklama | 
 |--------|-------------|
-| Adı | Denetleyicinin adı.|
+| Ad | Denetleyicinin adı.|
 | Durum | Çalışma bittikten sonra, *Tamam*, *sonlandırıldı*, *başarısız*, *durduruldu*veya *duraklatıldı*gibi bir durumla çalıştıktan sonra kapsayıcıların toplama durumu. Kapsayıcı çalışıyorsa ancak durum doğru şekilde görüntülenmiyorsa veya aracı tarafından çekilmediyse ve 30 dakikadan uzun süredir yanıt vermediyse durum *bilinmiyor*demektir. Durum simgesinin ek ayrıntıları aşağıdaki tabloda verilmiştir.|
 | Min&nbsp;%, Ort&nbsp;%, 50. Yüzdeliğini&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;%| Her varlık için yüzdebirlik ve seçili ölçümün ortalama yüzdesi toplama ortalaması. |
 | En az, ortalama, 50 TH, 90 TH, en fazla  | Seçilen yüzdelik dilim için kapsayıcı ortalama CPU millicore veya bellek performansını dökümü. Ortalama değer, bir pod için CPU/bellek sınırını zamandan ölçülür. |
@@ -267,7 +257,7 @@ Kapsayıcıları görüntülerken görüntülenen bilgiler aşağıdaki tabloda 
 
 | Sütun | Açıklama | 
 |--------|-------------|
-| Adı | Denetleyicinin adı.|
+| Ad | Denetleyicinin adı.|
 | Durum | Kapsayıcılar, varsa durumu. Durum simgesi, ek ayrıntılar sonraki tabloda verilmiştir.|
 | Min&nbsp;%, Ort&nbsp;%, 50. Yüzdeliğini&nbsp;%,&nbsp;90 .%, 95.&nbsp;%, Max&nbsp;% | Her varlık için yüzdebirlik ve seçili ölçümün ortalama yüzdesini dökümü. |
 | En az, ortalama, 50 TH, 90 TH, en fazla | Ortalama CPU millicore veya bellek performans seçilen yüzdelik dilim kapsayıcısının dökümü. Ortalama değer, bir pod için CPU/bellek sınırını zamandan ölçülür. |

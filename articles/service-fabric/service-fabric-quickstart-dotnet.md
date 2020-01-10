@@ -1,26 +1,17 @@
 ---
 title: Azure 'da Service Fabric hızlı bir şekilde bir .NET uygulaması oluşturun
 description: Bu hızlı başlangıçta, Service Fabric güvenilir hizmetler örnek uygulaması kullanarak Azure için .NET uygulaması oluşturursunuz.
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: azure-vs
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: dfc8890d58763bd193f6a0b4137fc972d26beb9f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e3d984fee75dcdb8d4e14e7b454e74a3f7c629f2
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013211"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730153"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Hızlı başlangıç: Service Fabric'e bir .NET güvenilir hizmetler uygulaması dağıtma
 
@@ -39,7 +30,7 @@ Bu uygulamayı kullanarak şunları yapmayı öğrenirsiniz:
 * Birden çok düğüm arasında uygulamanın ölçeğini genişletme
 * Toplu uygulama yükseltmesi yapma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -60,6 +51,8 @@ Bu hızlı başlangıcı tamamlamak için:
 > Kümeyi oluşturduğunuzda Docker 'ın çalışma nedeni, kümenin kapsayıcı özellikleri etkin olarak oluşturulur. Docker çalışmıyorsa, kapsayıcı özelliklerini etkinleştirmek için kümeyi yeniden oluşturmanız gerekecektir.
 > Bu belirli bir hızlı başlangıç için gereksiz olsa da, kümeyi oluştururken Docker 'ın çalışmasını sağlamak için en iyi yöntem olarak eklenmiştir.
 > Terminal penceresi açarak ve hata oluşup oluşmadığını görmek için `docker ps` komutunu çalıştırarak Docker'ı çalışmasını test edin. Yanıt bir hata göstermiyorsa, Docker çalışıyor ve siz de küme oluşturmaya hazırsınız demektir.
+>
+> [Kapsayıcılar için Windows 10 veya Windows Server 'ı ayarlama](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. Yönetici olarak yeni, yükseltilmiş bir PowerShell penceresi açın.
 2. Aşağıdaki PowerShell komutunu çalıştırarak geliştirme kümesini oluşturun:
@@ -146,7 +139,7 @@ Kodda neler olduğuna bakmak için aşağıdaki adımları tamamlayın:
 
      ![Oy Arka Uç Hizmeti Ekleme](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-   - Yöntemin ilk satırında **(1)** , `StateManager` `counts` adlı güvenilir bir sözlük alır veya ekler.
+   - Yöntemin ilk satırında **(1)** , `StateManager``counts` adlı güvenilir bir sözlük alır veya ekler.
    - Güvenilir bir sözcükteki değerlerle tüm etkileşimler bir işlem gerektirir; bu using deyimi **(2)** o işlemi oluşturur.
    - İşlemde, oylama seçeneği için uygun anahtarın değerini güncelleştirin ve işlemi yürütün **(3)** . Commit yöntemi döndüğünde, sözlükteki veriler güncelleştirilir ve kümedeki diğer düğümlere çoğaltılır. Artık veriler güvenli bir şekilde kümede depolanır ve arka uç hizmeti verilerin kullanılabilir olduğu diğer düğümlere yük devretebilir.
 5. Devam etmek için **F5** tuşuna basın

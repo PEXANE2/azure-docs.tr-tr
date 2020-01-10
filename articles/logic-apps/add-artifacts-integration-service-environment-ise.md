@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7221619c8d9388a9f6d46ec1dfbb11e467db861a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: c597bc4430e4390f0e29e4fe8ae4014521e1ae74
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793297"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732281"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınıza (ıSE) yapıt ekleme
 
-Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturduktan sonra, Azure sanal ağınızdaki kaynaklara erişebilmeleri için Logic Apps, tümleştirme hesapları ve bağlayıcılar gibi yapıtları ekleyin.
+Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturduktan sonra, Azure sanal ağınızdaki kaynaklara erişebilmeleri için Logic Apps, tümleştirme hesapları ve bağlayıcılar gibi yapıtları ekleyin. Örneğin, ıSE 'nizi oluşturduktan sonra kullanılabilir hale gelen yönetilen ıSE bağlayıcıları mantıksal uygulama tasarımcısında otomatik olarak görünmez. Bu ıSE bağlayıcılarını kullanabilmeniz için, mantıksal uygulama Tasarımcısı 'nda gözükmeleri için [Bu bağlayıcıları el ile ekleyip dağıtmanız](#add-ise-connectors-environment) gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -84,17 +84,17 @@ ISE kullanan bir tümleştirme hesabı oluşturmak için aşağıdaki adımları
 
 ## <a name="add-ise-connectors"></a>ISE bağlayıcıları ekleme
 
-Kullanım için kullanılabilen, ancak Ise 'de dağıtılmayan Microsoft tarafından yönetilen bağlayıcılar ekleyebilirsiniz.
+ISE 'nizi oluşturduktan sonra sunulan Microsoft tarafından yönetilen bağlayıcılar, mantıksal uygulama Tasarımcısı 'ndaki bağlayıcı seçicisinde otomatik olarak görünmez. Bu ıSE bağlayıcılarını kullanabilmeniz için, mantıksal uygulama Tasarımcısı 'nda görünmesi için bu bağlayıcıları el ile eklemeniz ve ıSE 'ye dağıtmanız gerekir.
 
 1. ISE menüsünde, **Ayarlar**' ın altında, **yönetilen bağlayıcılar**' ı seçin. Araç çubuğunda **Ekle**' yi seçin.
 
    ![Yönetilen bağlayıcıları görüntüleme](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. **Yeni bir yönetilen bağlayıcı Ekle** bölmesinde, **bağlayıcı bul** listesini açın. İstediğiniz bağlayıcı kullanılabiliyorsa, bu bağlayıcıyı seçin ve ardından **Oluştur**' u seçin.
+1. **Yeni bir yönetilen bağlayıcı Ekle** bölmesinde, **bağlayıcı bul** listesini açın. Kullanmak istediğiniz, ancak henüz ıSE dağıtımı yapılmamış olan ıSE bağlayıcısını seçin. **Oluştur**’u seçin.
 
-   Listede yalnızca uygun olan ancak ıSE içinde dağıtılmayan bağlayıcılar gösterilir. ISE 'de zaten dağıtılan bağlayıcılar seçim için kullanılamaz olarak görünür.
+   ![ISE 'de dağıtmak istediğiniz ıSE bağlayıcısını seçin](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
-   ![Uygun bağlayıcı seçin](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+   Yalnızca sizin için uygun olan ancak yalnız ıSE 'e dağıtılan ıSE bağlayıcıları, seçmeniz için kullanılabilir. ISE 'de zaten dağıtılan bağlayıcılar seçim için kullanılamaz olarak görünür.
 
 <a name="create-custom-connectors-environment"></a>
 

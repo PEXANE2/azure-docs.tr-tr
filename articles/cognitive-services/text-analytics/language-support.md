@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 529568cf4f667e72b0b4fb7ba83d0b85c4a90341
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fcf7051a631e74f2f6db918c7c861e32295ae9e8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499990"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732646"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Metin Analizi API'si için dil ve bölge desteği
 
@@ -31,9 +31,9 @@ Daha az sıklıkta kullanılan bir dilde ifade ettiğiniz bir içeriğiniz varsa
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Yaklaşım Analizi, Anahtar İfade Ayıklama ve adlandırılmış varlık tanıma
 
-Yaklaşım analizi, anahtar ifade ayıklama ve varlık tanıma için, desteklenen dillerin listesi, çözümleyiciler ek dillerin dil kurallarına uyum sağlayacak şekilde iyileştirilmişse daha seçmeli olur. Adlandırılmış varlık tanıma v2 'de, [varlık türlerinin](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition-v2) tam kümesi için destek şu anda aşağıdaki dillerle sınırlıdır: 
-* İngilizce
-* Çince-Basitleştirilmiş
+Yaklaşım analizi, anahtar ifade ayıklama ve varlık tanıma için, desteklenen dillerin listesi, çözümleyiciler ek dillerin dil kurallarına uyum sağlayacak şekilde iyileştirilmişse daha seçmeli olur. Adlandırılmış varlık tanıma v2 'de, [varlık türlerinin](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) tam kümesi için destek şu anda aşağıdaki dillerle sınırlıdır: 
+* Türkçe
+* Basitleştirilmiş Çince
 * Fransızca
 * Almanca
 * İspanyolca
@@ -47,15 +47,15 @@ Dil desteği başlangıçta, genel kullanıma açık (GA) duruma, her biri birbi
 > [!NOTE]
 > Adlandırılmış varlık tanıma (NER) v3 genel önizlemesi için ayrıntılı dil desteği için bkz. [adlandırılmış varlık türleri](named-entity-types.md).
 
-| Dil              | Dil kodu | Yaklaşım | Anahtar ifadeler | Adlandırılmış Varlık Tanıma | Varlık bağlama |       Notlar        |
+| Dil              | Dil kodu | Duygu | Anahtar ifadeler | Adlandırılmış Varlık Tanıma | Varlık bağlama |       Notlar        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | Arapça                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Çekçe                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| Çince-Basitleştirilmiş    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
-| Çince-Geleneksel   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
+| Basitleştirilmiş Çince    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| Geleneksel Çince   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | Danca                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Felemenkçe                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| İngilizce               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
+| Türkçe               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
 | Fince               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Fransızca                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
 | Almanca                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
@@ -75,7 +75,7 @@ Dil desteği başlangıçta, genel kullanıma açık (GA) duruma, her biri birbi
 
 \* dil desteği önizlemede
 
-\** [yaklaşım Analizi v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) ve/veya [adlandırılmış varlık tanıma v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview) Genel önizlemelerinde de mevcuttur.
+\** [yaklaşım Analizi v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) ve/veya [adlandırılmış varlık tanıma v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) Genel önizlemelerinde de mevcuttur.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 68515c51862ada0b1aa794c09b3a6730504a57ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873259"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732595"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki konum SıNıRı yan tümcesi
 
@@ -37,7 +37,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Açıklamalar
   
-  Konum SıNıRı yan tümcesinde hem konum sayısı hem de LIMIT sayısı gereklidir. İsteğe bağlı bir `ORDER BY` yan tümcesi kullanılırsa, sonuç kümesi, sıralı değerlerin atlanarak oluşturulur. Aksi halde sorgu sabit bir değerler sırası döndürür. Şu anda bu yan tümce yalnızca tek bir bölüm içindeki sorgularda desteklenir, çapraz bölümleme sorguları henüz desteklememektedir.
+  Konum SıNıRı yan tümcesinde hem konum sayısı hem de LIMIT sayısı gereklidir. İsteğe bağlı bir `ORDER BY` yan tümcesi kullanılırsa, sonuç kümesi, sıralı değerlerin atlanarak oluşturulur. Aksi halde sorgu sabit bir değerler sırası döndürür. Bu yan tümce artık tek bir bölüm içindeki sorgular ve çapraz bölümleme sorguları için desteklenir.
 
 ## <a name="examples"></a>Örnekler
 

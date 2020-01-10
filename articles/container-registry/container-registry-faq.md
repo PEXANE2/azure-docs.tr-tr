@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 1f2c79b47df4cf44b6fa3981bac4a5a3bf61c4df
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456397"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708317"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -32,7 +32,7 @@ Evet. Kayıt defteri oluşturmak için kullanabileceğiniz [bir şablon](https:/
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 'deki görüntüleri taramak için güvenlik güvenlik açığı var mı?
 
-Evet. [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) ve [deniz mavisi](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)belgelerine bakın.
+Evet. [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration), [twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) ve [deniz mavisi](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)belgelerine bakın.
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Kubernetes Azure Container Registry yapılandırma Nasıl yaparım??
 
@@ -101,7 +101,7 @@ Güvenlik duvarı kuralı değişikliklerinin yayılması biraz zaman alır. Gü
 - [Görüntüleri sildikten sonra kayıt defteri kotası kullanımı neden Azaltılmıyor?](#why-does-the-registry-quota-usage-not-reduce-after-deleting-images)
 - [Depolama kotası değişikliklerini doğrulamak Nasıl yaparım? mı?](#how-do-i-validate-storage-quota-changes)
 - [Nasıl yaparım? bir kapsayıcıda CLı çalıştırırken kayıt defterimde kimlik doğrulaması yapılsın mı?](#how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container)
-- [Azure Container Registry yalnızca TLS v 1.2 yapılandırmasını ve TLS v 1.2 'yi etkinleştirmeyi sağlar mi?](#does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12)
+- [TLS 1,2 nasıl etkinleştirilir?](#how-to-enable-tls-12)
 - [Azure Container Registry Içerik güvenini destekliyor mu?](#does-azure-container-registry-support-content-trust)
 - [Kayıt defteri kaynağını yönetme izni olmadan çekme veya gönderme görüntülerine erişim izni Nasıl yaparım? mı?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Kayıt defteri için otomatik görüntü karantinasını etkinleştirmek Nasıl yaparım?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
@@ -181,9 +181,12 @@ Ardından kayıt defterinizde kimlik doğrulaması yapın:
 az acr login -n MyRegistry
 ```
 
-### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>Azure Container Registry yalnızca TLS v 1.2 yapılandırmasını ve TLS v 1.2 'yi etkinleştirmeyi sağlar mi?
+### <a name="how-to-enable-tls-12"></a>TLS 1,2 nasıl etkinleştirilir?
 
-Evet. Herhangi bir son Docker istemcisini (sürüm 18.03.0 ve üzeri) kullanarak TLS 'yi etkinleştirin. 
+Herhangi bir yeni Docker istemcisini (sürüm 18.03.0 ve üzeri) kullanarak TLS 1,2 'yi etkinleştirin. 
+
+> [!IMPORTANT]
+> Azure Container Registry 13 Ocak 2020 tarihinden itibaren, sunuculardan ve uygulamalardan gelen tüm güvenli bağlantıların TLS 1,2 kullanması gerekir. TLS 1,0 ve 1,1 desteği kullanımdan kaldırılacak.
 
 ### <a name="does-azure-container-registry-support-content-trust"></a>Azure Container Registry, İçerik Güveni'ni destekler mi?
 
@@ -427,14 +430,14 @@ Lütfen ağ yöneticinize başvurun veya ağ yapılandırmanızı ve bağlantın
 
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Neden çekme veya gönderim isteği izin verilmeyen işlemle başarısız oluyor?
 
-İşlemlerin izin vermediği bazı senarios şunlardır:
-* Klasik kayıt defterleri artık desteklenmiyor. Lütfen [az ACR Update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) veya Azure portalını kullanarak desteklenen bir [SKU](https://aka.ms/acr/skus) 'ya yükseltin.
+İşlemlere izin verilmeyen bazı senaryolar aşağıda verilmiştir:
+* Klasik kayıt defterleri artık desteklenmiyor. Lütfen [az ACR Update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) veya Azure Portal kullanarak desteklenen bir [SKU](https://aka.ms/acr/skus) 'ya yükseltin.
 * Resim veya depo silinemeyebilir veya güncelleştirilemeyebilir. Geçerli öznitelikleri görüntülemek için [az ACR Show Repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) komutunu kullanabilirsiniz.
 * Görüntü karantinaya alındı ise bazı işlemlere izin verilmez. [Karantina](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)hakkında daha fazla bilgi edinin.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 - Fiddler 'da https şifresini çözmeyi etkinleştir: <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Docker Kullanıcı arabirimi aracılığıyla bir proxy kullanmak için Docker 'ı etkinleştirin: <https://docs.docker.com/docker-for-windows/#proxies>

@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786427"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732459"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
@@ -132,13 +132,13 @@ Ortamınızda Kullanıcı sağlamayı dağıtmaya yönelik stratejiyi öğrenmek
 
 Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle oluşur. Bu girişlerin oluşmasını önlemek için, [doğru paydaşları](https://aka.ms/deploymentplans) ve proje giriş ve accountatçlarını belgeleyerek projedeki paydaş rollerinin iyi anlaşıldığından emin olun.
 
-### <a name="plan-communications"></a>İletişimleri planlayın
+### <a name="plan-communications"></a>İletişimi planlama
 
 İletişim, her yeni hizmetin başarısı için önemlidir. Deneyimlerinizin nasıl değiştirileceği, ne zaman değiştirileceği ve sorunlarla karşılaştıkları durumlarda nasıl destek kazanabilecekleri hakkında daha etkin bir şekilde iletişim kurun.
 
 ### <a name="plan-a-pilot"></a>Pilot planı planlayın
 
-Otomatik Kullanıcı sağlamanın ilk yapılandırmasının, üretim ortamındaki tüm kullanıcılara ölçeklendirmeden önce küçük bir kullanıcı alt kümesiyle bir test ortamında olmasını öneririz.
+Otomatik Kullanıcı sağlamanın ilk yapılandırmasının, üretim ortamındaki tüm kullanıcılara ölçeklendirmeden önce küçük bir kullanıcı alt kümesiyle bir test ortamında olmasını öneririz. Pilot çalıştırmaya yönelik [en iyi uygulamalar](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) bölümüne bakın.
 
 #### <a name="best-practices-for-a-pilot"></a>Pilot için en iyi uygulamalar  
 
@@ -235,7 +235,7 @@ Uygulama için otomatik Kullanıcı sağlamayı yapılandırdıktan sonra, bu ç
 | Kullanıcı bilgileri, Azure AD 'de herhangi bir yöntemle güncelleştirilir | Güncelleştirilmiş Kullanıcı öznitelikleri, artımlı bir döngüden sonra hedef sisteme yansıtılır |
 | Kullanıcı kapsam dışında | Kullanıcı nesnesi devre dışı veya silinmiş. <br>Note: Bu davranış, [Workday sağlaması](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)için geçersiz kılınır. |
 
-### <a name="plan-security"></a>Plan güvenliği
+### <a name="plan-security"></a>Güvenliği planlama
 
 Bir dağıtımın parçası olarak bir güvenlik incelemesinin gerekli olması yaygındır. Bir güvenlik incelemesi gerekiyorsa, hizmet olarak kimlik için bir genel bakış sağlayan birçok Azure AD [Teknik](https://www.microsoft.com/download/details.aspx?id=36391) incelemesine bakın.
 

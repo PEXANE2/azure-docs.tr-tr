@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 01/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37091b2551d68e241c7179949c3eb1db9a381de6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382170"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707014"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Nasıl yapılır: risk ilkelerini yapılandırma ve etkinleştirme
 
@@ -31,7 +31,7 @@ Her iki ilke de ortamınızda risk algılamalarını otomatik hale getirmek ve r
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Kuruluşunuz, risk algılandığında kullanıcıların kendi kendini düzeltmesine izin vermek isterse, kullanıcıların hem self servis parola sıfırlama hem de Azure Multi-Factor Authentication için kayıtlı olmaları gerekir. En iyi deneyim için [Birleşik güvenlik bilgileri kayıt deneyiminin etkinleştirilmesini](../authentication/howto-registration-mfa-sspr-combined.md) öneririz. Kullanıcıların kendi kendini düzeltmesine izin vermek, yönetici müdahalesine gerek kalmadan onları daha hızlı bir şekilde daha hızlı bir şekilde geri alır. Yöneticiler bu olayları görmeye devam edebilir ve bunu bulduktan sonra araştırabilir. 
 
@@ -46,6 +46,8 @@ Microsoft 'un önerisi, Kullanıcı risk ilkesi eşiğini **yüksek** olarak ve 
 ## <a name="exclusions"></a>İstisnalar
 
 Tüm ilkeler, [acil erişim veya kesme camı yönetici hesaplarınız](../users-groups-roles/directory-emergency-access.md)gibi kullanıcıların dışlanmasını sağlar. Kuruluşlar, hesapların kullanıldığı yönteme göre diğer hesapları belirli ilkelerden hariç tutmaları gerektiğini tespit edebilir. Hala geçerli olup olmadığını görmek için tüm dışlamaları düzenli olarak incelenmelidir.
+
+Yapılandırılan güvenilir [ağ konumları](../conditional-access/location-condition.md) , bazı risk algılamalarındaki kimlik koruması tarafından hatalı pozitif sonuçları azaltmak için kullanılır.
 
 ## <a name="enable-policies"></a>İlkeleri etkinleştir
 

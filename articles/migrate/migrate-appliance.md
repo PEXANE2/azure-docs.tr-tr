@@ -1,17 +1,14 @@
 ---
-title: Azure geçişi gereç mimarisi
+title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 49545ca6c43c272c3fd84f8bee59b8617aae136d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c3ac39759cc096bb27535877084e14f4ed50cea9
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232563"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719588"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -25,59 +22,107 @@ Bu makalede, Azure geçişi gereci açıklanmaktadır. Microsoft Azure için uyg
 
 Azure geçiş gereç türleri ve kullanımı aşağıdaki gibidir.
 
-**Farklı dağıtıldı** | **Kullanıldığı yer** | **Ayrıntılar**
---- | --- |  ---
-VMware VM | Azure geçişi değerlendirme aracı ile VMware VM değerlendirmesi.<br/><br/> Azure geçişi sunucu geçiş aracı ile VMware VM aracısız geçişi | OVA şablonunu indirin ve gereç sanal makinesini oluşturmak için vCenter Server alın.
-Hyper-V VM | Azure geçişi değerlendirme aracı ile Hyper-V VM değerlendirmesi. | Sıkıştırılmış VHD 'yi indirin ve gereç sanal makinesini oluşturmak için Hyper-V ' d e aktarın.
+**Senaryo** | **Araç** | **İçin kullanılan** 
+--- | --- 
+VMware VM | Azure geçişi: Sunucu değerlendirmesi; Azure geçişi: sunucu geçişi | VMware VM 'lerini bulma<br/><br/> Uygulamaları ve bağımlılıkları bulma<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.<br/><br/> VMware VM 'lerini aracısız geçişle çoğaltın.
+Hyper-V VM | Azure geçişi: Sunucu değerlendirmesi | Hyper-V VM 'lerini bulma<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.
+Fiziksel makine |  Azure geçişi: değerlendirme aracı |  Fiziksel sunucuları bulma<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.
 
-## <a name="appliance-access"></a>Gereç erişimi
+## <a name="appliance---vmware"></a>Gereç-VMware 
 
-Gereci yapılandırdıktan sonra, Gereç VM 'sine TCP bağlantı noktası 3389 üzerinden uzaktan erişebilirsiniz. Ayrıca, 44368 numaralı bağlantı noktası üzerinden gereç için Web yönetimi uygulamasına uzaktan erişim sağlayabilirsiniz: `https://<appliance-ip-or-name>:44368`.
-
-## <a name="appliance-license"></a>Gereç lisansı
-Gereç, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
-
-## <a name="appliance-agents"></a>Gereç aracıları
-Gereç bu aracıların yüklü olduğunu.
-
-**Aracı** | **Ayrıntılar**
+**Gereksinim** | **VMware** 
 --- | ---
-Keşif Aracısı | Şirket içi sanal makinelerin yapılandırma verilerini toplar
-Değerlendirme aracısı | VM performans verilerini toplamak için şirket içi ortamı profiller.
-Geçiş bağdaştırıcısı | VM çoğaltmasını düzenleyin ve VM 'Ler ile Azure arasındaki iletişimi koordine edin.
-Geçiş ağ geçidi | Çoğaltılan VM verilerini Azure 'a gönderir.
+**İndirme biçimi** | . OVA 
+**İndirme bağlantısı** | https://aka.ms/migrate/appliance/vmware 
+**İndirme boyutu** | 11,2 GB
+**Lisans** | İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
+**Donanım** | VCenter 'daki kaynaklar, 32 GB RAM 8 vCPU ile, 80 GB disk depolaması ve harici bir sanal anahtarla bir VM ayırır. 
+**Karma değeri** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256:4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+**vCenter sunucusu/ana bilgisayar** | Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır.<br/><br/> 5,5, 6,0, 6,5 veya 6,7 vCenter Server çalışıyor.
+**Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
+**Bulma** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
+**Gereç bileşenleri** | Yönetim uygulaması: dağıtım sırasında Kullanıcı girişi için gereç 'de Web uygulaması.<br/> Keşif Aracısı: makine yapılandırma verilerini toplar.<br/> Değerlendirme Aracısı: performans verilerini toplayın.<br/> DRA: VM çoğaltmasını düzenleyin ve makineler/Azure arasındaki iletişimi koordine edin.<br/> Ağ geçidi: çoğaltılan verileri Azure 'a gönderir.<br/> Otomatik güncelleştirme hizmeti: güncelleştirme bileşenleri (24 saatte bir çalışır).
 
 
-## <a name="appliance-deployment-requirements"></a>Gereç dağıtım gereksinimleri
+## <a name="appliance---hyper-v"></a>Gereç-Hyper-V
 
-- Bir VMware gereci ve gerecin erişmesi gereken URL 'Lerin dağıtım gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware.md#assessment-appliance-requirements) .
-- Hyper-V gereci ve gerecin erişmesi gereken URL 'Lerin dağıtım gereksinimlerini [gözden geçirin](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) .
+**Gereksinim** | **Hyper-V** 
+--- | ---
+**İndirme biçimi** | Daraltılmış klasör (VHD Ile)
+**İndirme bağlantısı** | https://aka.ms/migrate/appliance/hyperv 
+**İndirme boyutu** | 10 GB
+**Lisans** | İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
+**Donanım** | Hyper-V konağındaki kaynaklar, 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir dış anahtar ayırır.
+**Karma değeri** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+**Hyper-V konağı** | Windows Server 2012 R2 veya üstünü çalıştırın.
+**Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
+**Bulma** | Bir gereç, vCenter Server en fazla 5000 VMware VM 'yi bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
+**Gereç bileşenleri** | Yönetim uygulaması: dağıtım sırasında Kullanıcı girişi için gereç 'de Web uygulaması.<br/> Keşif Aracısı: makine yapılandırma verilerini toplar.<br/> Değerlendirme Aracısı: performans verilerini toplayın.<br/>  Otomatik güncelleştirme hizmeti: güncelleştirme bileşenleri (24 saatte bir çalışır)
 
 
-## <a name="collected-performance-data-vmware"></a>Toplanan performans verileri-VMware
+## <a name="appliance---physical"></a>Gereç-fiziksel
+
+**Gereksinim** | **Z** 
+--- | ---
+**İndirme biçimi** | Daraltılmış klasör (PowerShell yükleyici betiği ile)
+**İndirme bağlantısı** | [İndirme bağlantısı](https://go.microsoft.com/fwlink/?linkid=2105112)
+**İndirme boyutu** | 59,7 MB
+**Donanım** | Çalışan makine, 80 GB depolama alanı etrafında 16 GB RAM, 8 vCPU gerektirir.
+**Karma değeri** | MD5:96fd99581072c400aa605ab036a0a7c0<br/><br/> SHA256: f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+**Yazılım** | Gereç makinesi Windows Server 2016 çalıştırmalıdır. Sunucu ayrılmış bir fiziksel sunucu veya VM olmalıdır.
+**Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
+**Bulma** | Bir gereç, en fazla 250 fiziksel sunucu bulabilir.
+**Gereç bileşenleri** | Yönetim uygulaması: dağıtım sırasında Kullanıcı girişi için gereç 'de Web uygulaması.<br/> Keşif Aracısı: makine yapılandırma verilerini toplar.<br/> Değerlendirme Aracısı: performans verilerini toplayın.<br/>  Otomatik güncelleştirme hizmeti: güncelleştirme bileşenleri (24 saatte bir çalışır).
+**Erişim/bağlantı noktaları** | Gereci yapılandırdıktan sonra, Gereç ile Uzak Masaüstü bağlantılarına izin vermek için 3389 numaralı TCP bağlantı noktası üzerinden gelen bağlantılar.<br/><br/> Bağlantı noktası 44368 ' de, ' https://< gereç-IP-veya-adı >: 44368 ' nı kullanarak gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar:<br/><br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 numaralı bağlantı noktası üzerinden giden bağlantılar.
+
+## <a name="url-access"></a>URL erişimi
+
+Azure geçişi gereci internet bağlantısı gerektirir.
+
+- Gereci dağıttığınızda Azure geçişi, aşağıdaki tabloda özetlenen URL 'lere bir bağlantı denetimi yapar.
+- İnternet 'e bağlanmak için URL tabanlı bir ara sunucu kullanıyorsanız, bu URL 'lere erişim izni verin ve proxy 'nin URL 'Leri ararken alınan CNAME kayıtlarını çözümlediği emin olun.
+
+**URL** | **Ayrıntılar**  
+--- | --- |
+*.portal.azure.com  | Azure portala gidin.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Azure aboneliğinizde oturum açın.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Gereç için Azure geçişi ile iletişim kurmak üzere Active Directory uygulamalar oluşturun.
+management.azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
+dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
+*.vault.azure.net | Azure Key Vault gizli dizileri yönetin.
+aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver.
+download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
+*.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Azure geçişi hizmeti URL 'Lerine bağlanın.
+*.blob.core.windows.net | Verileri depolama hesaplarına yükleyin.
+
+
+## <a name="collected-data---vmware"></a>Toplanan veriler-VMware
+
+### <a name="collected-performance-data-vmware"></a>Toplanan performans verileri-VMware
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM performans verileri aşağıda verilmiştir.
 
-**Veriler** | **Sayaç** | **Değerlendirme etkisi**
+**Veriler** | **Counter** | **Değerlendirme etkisi**
 --- | --- | ---
-CPU utilization | CPU. Usage. Average | Önerilen VM boyutu/maliyet
+CPU kullanımı | CPU. Usage. Average | Önerilen VM boyutu/maliyet
 Bellek kullanımı | mem. kullanım. Ortalama | Önerilen VM boyutu/maliyet
 Disk okuma üretilen işi (MB/saniye) | virtualDisk. Read. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
-Disk yazma işleme (MB/saniye) | virtualDisk. Write. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
+Disk yazma miktarı (MB/saniye) | virtualDisk. Write. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
 Saniye başına disk okuma işlemi | virtualDisk. Numberreadaveryaşlandırılmış. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
-Saniye başına disk yazma işlemi | virtualDisk. Numberwriteortalama. Ortalama  | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
+Saniye başına disk yazma işlemleri | virtualDisk. Numberwriteortalama. Ortalama  | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
 NIC okuma üretilen işi (MB/saniye) | net. alınan. Ortalama | VM boyutu için hesaplama
-NIC yazma üretimi (MB/saniye) | net. iletilmiş. Average  |VM boyutu için hesaplama
+NIC yazma üretilen işi (MB/saniye) | net. iletilmiş. Average  |VM boyutu için hesaplama
 
 
-## <a name="collected-metadata-vmware"></a>Toplanan meta veriler-VMware
+### <a name="collected-metadata-vmware"></a>Toplanan meta veriler-VMware
 
 > [!NOTE]
 > Azure geçişi gereci tarafından bulunan meta veriler, uygulamalarınızı Azure 'a geçirirken, Azure uygunluk analizi, uygulama bağımlılığı Analizi ve maliyet planlaması gerçekleştirerek uygulamalarınızı doğru boyuta getirmenize yardımcı olmak için kullanılır. Microsoft bu verileri, herhangi bir lisans uyumluluğu denetimine göre kullanmaz.
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM meta verilerinin tam listesini aşağıda bulabilirsiniz.
 
-**Veriler** | **Sayaç**
+**Veriler** | **Counter**
 --- | --- 
 **Makine ayrıntıları** | 
 VM Kimliği | 'nin. Config. ınstanceuuıd 
@@ -92,7 +137,7 @@ Bellek (MB) | 'nin. Config. Hardware. MemoryMB
 Disk sayısı | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). Count
 Disk boyutu listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
 Ağ bağdaştırıcıları listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > Virtualalethernet). Count
-CPU utilization | CPU. Usage. Average
+CPU kullanımı | CPU. Usage. Average
 Bellek kullanımı |mem. kullanım. Ortalama
 **Disk başına Ayrıntılar** | 
 Disk anahtarı değeri | dis. Anahtar
@@ -112,7 +157,7 @@ IPv6 adresleri | 'nin. Guest.Net
 Aktarım hızını oku (MB/saniye) | net. alınan. Ortalama
 Yazma üretilen işi (MB/saniye) | net. iletilmiş. Average
 **Envanter yolu ayrıntıları** | 
-Name | kapsayıcı. GetType (). Ada
+Ad | kapsayıcı. GetType (). Ada
 Alt nesnenin türü | kapsayıcı. ChildType
 Başvuru ayrıntıları | kapsayıcı. MoRef
 Üst Ayrıntılar | Container. Parent
@@ -122,16 +167,16 @@ Konak klasörü başına veri merkezi ayrıntıları | (Datacenter) kapsayıcıs
 Konak başına küme ayrıntıları | ((ClusterComputeResource) kapsayıcısı). Konağının
 VM başına ana bilgisayar ayrıntıları | (HostSystem) kapsayıcısı). 'Nın
 
+## <a name="collected-data---hyper-v"></a>Toplanan veriler-Hyper-V
 
-
-## <a name="collected-performance-data-hyper-v"></a>Toplanan performans verileri-Hyper-V
+### <a name="collected-performance-data-hyper-v"></a>Toplanan performans verileri-Hyper-V
 
 > [!NOTE]
 > Azure geçişi gereci tarafından bulunan meta veriler, uygulamalarınızı Azure 'a geçirirken, Azure uygunluk analizi, uygulama bağımlılığı Analizi ve maliyet planlaması gerçekleştirerek uygulamalarınızı doğru boyuta getirmenize yardımcı olmak için kullanılır. Microsoft bu verileri, herhangi bir lisans uyumluluğu denetimine göre kullanmaz.
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper VM performans verileri aşağıda verilmiştir.
 
-**Performans sayacı sınıfı** | **Sayaç** | **Değerlendirme etkisi**
+**Performans sayacı sınıfı** | **Counter** | **Değerlendirme etkisi**
 --- | --- | ---
 Hyper-V hiper yönetici sanal Işlemcisi | % Konuk çalışma zamanı | Önerilen VM boyutu/maliyet
 Hyper-V Dinamik Bellek VM | Geçerli basınç (%)<br/> Konuk görünür fiziksel bellek (MB) | Önerilen VM boyutu/maliyet
@@ -144,7 +189,7 @@ Hyper-V sanal ağ bağdaştırıcısı | Gönderilen bayt/saniye | VM boyutu iç
 - Bellek kullanımı (geçerli basınç * Konuk görünür fiziksel bellek)/100.
 - Disk ve ağ kullanım değerleri, listelenen Hyper-V performans sayaçlarından toplanır.
 
-## <a name="collected-metadata-hyper-v"></a>Toplanan meta veriler-Hyper-V
+### <a name="collected-metadata-hyper-v"></a>Toplanan meta veriler-Hyper-V
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper-V VM meta verilerinin tam listesidir.
 
@@ -162,15 +207,15 @@ Dinamik bellek etkin | Msvm_MemorySettingData | DynamicMemoryEnabled
 VM güç durumu | Msvm_ComputerSystem | EnabledState
 **Disk başına Ayrıntılar** | 
 Disk tanımlayıcısı | Msvm_VirtualHardDiskSettingData | Virtualdiskıd
-Sanal sabit disk türü | Msvm_VirtualHardDiskSettingData | Type
+Sanal sabit disk türü | Msvm_VirtualHardDiskSettingData | Tür
 Sanal sabit disk boyutu | Msvm_VirtualHardDiskSettingData | Maxınternalsize
 Sanal sabit disk üst öğesi | Msvm_VirtualHardDiskSettingData | ParentPath
 **NIC başına Ayrıntılar** | 
 IP adresleri (yapay NIC 'ler) | Msvm_GuestNetworkAdapterConfiguration | IpAdresleri
 DHCP etkin (yapay NIC 'ler) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
-NIC KIMLIĞI (yapay NIC 'ler) | Msvm_SyntheticEthernetPortSettingData | InstanceId
+NIC KIMLIĞI (yapay NIC 'ler) | Msvm_SyntheticEthernetPortSettingData | InstanceID
 NIC MAC adresi (yapay NIC 'ler) | Msvm_SyntheticEthernetPortSettingData | Adres
-NIC KIMLIĞI (eski NIC 'ler) | MsvmEmulatedEthernetPortSetting verileri | InstanceId
+NIC KIMLIĞI (eski NIC 'ler) | MsvmEmulatedEthernetPortSetting verileri | InstanceID
 NIC MAC KIMLIĞI (eski NIC 'ler) | MsvmEmulatedEthernetPortSetting verileri | Adres
 
 
@@ -180,18 +225,17 @@ NIC MAC KIMLIĞI (eski NIC 'ler) | MsvmEmulatedEthernetPortSetting verileri | Ad
 
 Gereç, aşağıdaki işlemi kullanarak vCenter sunucularıyla ve Hyper-V konaklarıyla/kümesiyle iletişim kurar.
 
-
 1. **Bulmayı Başlat**:
     - Hyper-V gereci üzerinde bulmayı başlattığınızda, WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerindeki Hyper-V konaklarıyla iletişim kurar.
     - VMware gereci üzerinde bulmayı başlattığınızda, varsayılan olarak TCP bağlantı noktası 443 üzerindeki vCenter Server ile iletişim kurar. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bunu gereç Web uygulamasında yapılandırabilirsiniz.
 2. **Meta verileri ve performans verilerini toplayın**:
     - Gereç, 5985 ve 5986 bağlantı noktalarında Hyper-V konağı üzerinden Hyper-V VM verilerini toplamak için bir Genel Bilgi Modeli (CıM) oturumu kullanır.
     - Gereç, vCenter Server VMware VM verilerini toplamak için varsayılan olarak bağlantı noktası 443 ile iletişim kurar.
-3. **Veri Gönder**: gereç, toplanan verileri Azure geçişi sunucu değerlendirmesini ve Azure geçişi sunucu geçişini SSL bağlantı noktası 443 üzerinden gönderir.
+3. **Veri Gönder**: gereç, toplanan verileri Azure geçişi sunucu değerlendirmesini ve Azure geçişi sunucu geçişini SSL bağlantı noktası 443 üzerinden gönderir. Gereç Internet üzerinden Azure 'a bağlanabilir veya ExpressRoute 'u ortak/Microsoft eşlemesi ile birlikte kullanabilirsiniz.
     - Performans verileri için, Gereç gerçek zamanlı kullanım verilerini toplar.
         - Performans verileri her bir performans ölçümü için VMware için 20 saniyede bir ve Hyper-V için her 30 saniyede bir toplanır.
-        - Toplanan veriler on dakika boyunca tek bir veri noktası oluşturmak için toplanır.
-        - En yüksek kullanım değeri, 20/30 saniyelik tüm veri noktalarından seçilir ve değerlendirme hesaplaması için Azure 'a gönderilir.
+        - Toplanan veriler 10 dakika boyunca tek bir veri noktası oluşturmak için toplanır.
+        - En yüksek kullanım değeri tüm 20/30 saniyelik veri noktalarından seçilir ve değerlendirme hesaplaması için Azure 'a gönderilir.
         - Değerlendirme özelliklerinde belirtilen yüzdebirlik değerine (50./90./yüzde/sn) göre, on dakikalık noktaları artan düzende sıralanır ve değerlendirmeyi hesaplamak için uygun yüzdebirlik değeri kullanılır
     - Sunucu geçişi için, Gereç VM verilerini toplamaya başlar ve bunu Azure 'a çoğaltır.
 4. **Değerlendirin ve geçirin**: artık Azure geçişi sunucu değerlendirmesini kullanarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz. Ayrıca, Azure geçişi sunucu geçişini kullanarak VMware VM 'Leri geçirmeyi daha az VM çoğaltmasını düzenlemek için de başlatabilirsiniz.

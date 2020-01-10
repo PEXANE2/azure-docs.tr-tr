@@ -1,18 +1,14 @@
 ---
-title: Azure geçişi 'nde VMware değerlendirmesi ve geçiş desteği
-description: Azure geçişi 'nde VMware VM değerlendirmesi/geçiş desteği hakkında bilgi edinin.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Azure geçişi 'nde VMware desteği
+description: Azure geçişi 'nde VMware değerlendirmesi/geçiş desteği hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 135680a9b0b6c8b5520958c884d99a83f1f87c88
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.date: 01/02/2020
+ms.openlocfilehash: b4d498b869bafe579e2539a049aae58ac6f26575
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196271"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719452"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware değerlendirmesi ve geçiş için destek matrisi
 
@@ -26,7 +22,7 @@ Tablo, VMware VM 'Leri için desteklenen senaryoları özetler.
 **Dağıtım** | **Ayrıntılar**
 --- | ---
 **Şirket içi VMware VM 'lerini değerlendirme** | İlk değerlendirmenizi [ayarlayın](tutorial-prepare-vmware.md) .<br/><br/> Büyük ölçekli bir değerlendirme [çalıştırın](scale-vmware-assessment.md) .
-**VMware VM 'lerini geçirme** | Aracısız geçiş kullanarak geçiş yapabilir veya aracı tabanlı bir geçiş kullanabilirsiniz. [Daha fazla bilgi edinin](server-migrate-overview.md)
+**VMware VM 'lerini geçirme** | Aracısız geçiş kullanarak geçiş yapabilir veya aracı tabanlı bir geçiş kullanabilirsiniz. [Daha fazla bilgi](server-migrate-overview.md)
 
 
 ## <a name="azure-migrate-projects"></a>Azure geçişi projeleri
@@ -39,10 +35,10 @@ Tablo, VMware VM 'Leri için desteklenen senaryoları özetler.
 
 **Coğrafya** | **Meta veri depolama konumu**
 --- | ---
-Azure Devlet Kurumları | ABD Devleti Virginia
+Azure Devlet Kurumları | ABD Hükümeti Virginia
 Asya Pasifik | Doğu Asya veya Güneydoğu Asya
 Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
-Brezilya | Güney Brezilya
+Brezilya | Brezilya Güney
 Kanada | Kanada Orta veya Kanada Doğu
 Avrupa | Kuzey Avrupa veya Batı Avrupa
 Fransa | Fransa Orta
@@ -50,7 +46,7 @@ Hindistan | Orta Hindistan veya Güney Hindistan
 Japonya |  Japonya Doğu veya Japonya Batı
 Güney Kore | Kore Orta veya Kore Güney
 Birleşik Krallık | UK Güney veya UK Batı
-Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
+Birleşik Devletler | Orta ABD veya Batı ABD 2
 
 
  > [!NOTE]
@@ -65,7 +61,7 @@ Azure geçişi: Sunucu değerlendirmesi uygulamalar, rol ve özellikleri bulabil
 --- | ---
 Desteklenen makineler | Şirket içi VMware sanal makineleri
 Makine işletim sistemi | Tüm Windows ve Linux sürümleri
-Kimlik Bilgileri | Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir. Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
+Kimlik bilgileri | Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir. Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
 Uygulama bulma için makine sınırları | Gereç başına 10000. proje başına 35000
 
 ## <a name="assessment-vcenter-server-requirements"></a>Değerlendirme-vCenter Server gereksinimleri
@@ -80,11 +76,10 @@ Bu tablo, VMware sanallaştırma sunucuları için değerlendirme desteğini ve 
 
 Azure geçişi 'nin değerlendirme ve aracısız geçiş için VM 'Leri bulması için vCenter Server erişmesi gerekir.
 
-- Uygulamalar bulmayı veya bağımlılığı aracısız bir şekilde görselleştirmeyi planlıyorsanız, **Konuk işlemleri** > **sanal makineler** için etkinleştirilen ayrıcalıklarla birlikte salt okuma erişimli bir vCenter Server hesabı oluşturun.
-
-  ![vCenter Server hesabı ayrıcalıkları](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
-
-- Uygulama bulmayı ve aracısız bağımlılık görselleştirmesini yapma planlandıysanız, vCenter Server için salt okunurdur bir hesap ayarlayın.
+**Görev** | **Gerekli izinler**
+--- | ---
+Yalnızca değerlendirme | salt vCenter Server hesabı.
+[Uygulama bulma](how-to-discover-applications.md) veya [aracısız bağımlılık görselleştirmesiyle](how-to-create-group-machine-dependencies-agentless.md) değerlendirme | salt okuma erişimi olan ve **Konuk işlemleri** > **sanal makineler** için etkinleştirilen ayrıcalıkların vCenter Server hesabı.
 
 ## <a name="assessment-appliance-requirements"></a>Değerlendirme-gereç gereksinimleri
 
@@ -92,9 +87,9 @@ Azure geçişi, VMware VM 'lerini bulmaya ve Azure geçişi 'ne VM meta verileri
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**Gereç dağıtımı** | Gereci bir VMware VM 'si olarak dağıtırsınız. VCenter Server, 32 GB RAM, 8 vCPU ile, 80 GB disk depolama ve dış sanal anahtar ile bir VM ayırmak için yeterli sayıda kaynağa ihtiyacınız vardır.<br/><br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/> Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır.
+**Gereç dağıtımı** | Gereci bir VMware VM 'si olarak dağıtırsınız. VCenter Server, 32 GB RAM, 8 vCPU, 80 GB disk depolama ve harici bir sanal anahtar içeren bir VM ayırmak için yeterli kaynağa ihtiyacınız vardır.<br/><br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/> Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır.
 **Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> Bir projede en fazla 35.000 sanal makineyi değerlendirebilirsiniz.
-**Keşfini** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
+**Bulma** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
 **Değerlendirme grubu** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.
 **Değerlendirme** | Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
 
@@ -109,9 +104,9 @@ Azure geçişi gereci internet bağlantısı gerektirir.
 **URL** | **Ayrıntılar**  
 --- | --- |
 *.portal.azure.com  | Azure portal Azure geçişi ' ne gidin.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Azure aboneliğinizde oturum açın.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Azure aboneliğinizde oturum açın.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
-Management.Azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
+management.azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
 dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
 *.vault.azure.net | Azure Key Vault gizli dizileri yönetin.
 *.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
@@ -121,7 +116,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 ## <a name="assessment-port-requirements"></a>Değerlendirme-bağlantı noktası gereksinimleri
 
-**Aygıtların** | **Bağlanma**
+**cihaz** | **bağlantı**
 --- | ---
 Elektrikli | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> 44368 numaralı bağlantı noktası ile gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 numaralı bağlantı noktası üzerinden giden bağlantılar.
 vCenter server | TCP bağlantı noktası 443 ' deki gelen bağlantılar, gerecin değerlendirmeler için yapılandırma ve performans meta verilerini toplamasına izin verir. <br/><br/> Gereç, bağlantı noktası 443 ' de varsayılan olarak vCenter 'a bağlanır. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bulmayı ayarlarken bağlantı noktasını değiştirebilirsiniz.
@@ -138,8 +133,8 @@ Bağımlılık görselleştirme, değerlendirmek ve geçirmek istediğiniz makin
         - Yukarıdaki işlemlerin çalıştırıldığı yüklü uygulamaların adları
         - Hayır. her yoklama aralığında algılanan bağlantıların sayısı
 - **Aracı tabanlı bağımlılık görselleştirmesi**: aracı tabanlı bağımlılık görselleştirmesini kullanmak için, çözümlemek istediğiniz her şirket içi makineye aşağıdaki aracıları indirmeniz ve yüklemeniz gerekir.
-    - Microsoft Monitoring Agent (MMA) her makineye yüklenmelidir. MMA aracısının nasıl yükleneceği hakkında [daha fazla bilgi edinin](how-to-create-group-machine-dependencies.md#install-the-mma) .
-    - Bağımlılık aracısının her makinede yüklü olması gerekir. Bağımlılık aracısının nasıl yükleneceği hakkında [daha fazla bilgi edinin](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) .
+    - Her makineye Microsoft Monitoring Agent 'ı (MMA) yükler. MMA aracısının nasıl yükleneceği hakkında [daha fazla bilgi edinin](how-to-create-group-machine-dependencies.md#install-the-mma) .
+    - Her makineye bağımlılık aracısını yükler. Bağımlılık aracısının nasıl yükleneceği hakkında [daha fazla bilgi edinin](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) .
     - Ayrıca, İnternet bağlantısı olmayan makineleriniz varsa, bu makinelere Log Analytics ağ geçidini indirip yüklemeniz gerekir.
 
 ## <a name="migration---limitations"></a>Geçiş-sınırlamalar
@@ -212,9 +207,9 @@ Azure geçişi gereci internet 'e internet bağlantısı gerektirir.
 **URL** | **Ayrıntılar**  
 --- | ---
 *.portal.azure.com | Azure portal Azure geçişi ' ne gidin.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Azure aboneliğinizde oturum açın.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Azure aboneliğinizde oturum açın.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
-Management.Azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
+management.azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
 dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
 *.vault.azure.net | Azure Key Vault gizli dizileri yönetin.
 *.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
@@ -225,7 +220,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 ## <a name="agentless-migration-port-requirements"></a>Aracısız geçiş-bağlantı noktası gereksinimleri
 
-**Aygıtların** | **Bağlanma**
+**cihaz** | **bağlantı**
 --- | ---
 Elektrikli | 443 numaralı bağlantı noktası, çoğaltılan verileri Azure 'a yüklemek ve Azure geçiş Hizmetleri ile iletişim kurmak için çoğaltma ve geçiş işlemlerini düzenleyen giden bağlantılar.
 vCenter server | Bağlantı noktası 443 ' deki gelen bağlantılar, gerecin çoğaltma düzenlemesine olanak tanımak için anlık görüntü oluşturma, veri kopyalama, anlık görüntüleri yayınlama
@@ -268,12 +263,12 @@ Boş disk alanı (bekletme diski) | 600 GB
 **Yazılım ayarları** |
 İşletim sistemi | Windows Server 2016 veya Windows Server 2012 R2
 İşletim sistemi yerel ayarı | İngilizce (en-us)
-IOCTL | TLS 1,2 etkinleştirilmelidir.
+TLS | TLS 1,2 etkinleştirilmelidir.
 .NET Framework | .NET Framework 4,6 veya üzeri bir sürüm makinede yüklü olmalıdır (güçlü şifreleme etkin.
 MySQL | MySQL 'in gereç üzerinde yüklü olması gerekir.<br/> MySQL yüklenmelidir. El ile yükleyebilirsiniz veya Site Recovery gereç dağıtımı sırasında yükleyebilir.
 Diğer uygulamalar | Çoğaltma gereci üzerinde başka uygulamalar çalıştırmayın.
 Windows Server rolleri | Bu rolleri etkinleştirmeyin: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V
-Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi edinin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Önceden var olan varsayılan Web sitesi yok <br> -Var olan bir Web sitesi/uygulama dinleme 443 bağlantı noktasında dinleniyor <br>- [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştir
 **Ağ ayarları** |
 IP adresi türü | Statik
@@ -331,7 +326,7 @@ Azure geçişi 'ne indirme ve yükleme | Gereci yüklerken ve MySQL istendiğind
 **ALACAĞıNı** | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz.
 **Iscsı hedefleri** | Iscsı hedefleri olan VM 'Ler aracısız geçiş için desteklenmez.
 **Çok yollu GÇ** | Desteklenmez.
-**Depolama vMotion** | Desteklenir
+**Depolama vMotion** | Desteklenen
 **Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
 **IPv6** | Desteklenmez.
 
@@ -350,7 +345,7 @@ Mobility hizmetini dağıttığınızda, aşağıdaki tabloda özetlenen URL 'le
 *.portal.azure.com | Azure portal Azure geçişi ' ne gidin.
 *.windows.net | Azure aboneliğinizde oturum açın.
 *.microsoftonline.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
-Management.Azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
+management.azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
 dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
 *.vault.azure.net | Azure Key Vault gizli dizileri yönetin.
 *.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
@@ -359,9 +354,9 @@ dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlükle
 
 ## <a name="agent-based-migration-port-requirements"></a>Aracı tabanlı geçiş-bağlantı noktası gereksinimleri
 
-**Aygıtların** | **Bağlanma**
+**cihaz** | **bağlantı**
 --- | ---
-VM’ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci (yapılandırma sunucusu) ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
+Sanal Makineler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci (yapılandırma sunucusu) ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
 Çoğaltma gereci | Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.
 İşlem sunucusu | İşlem sunucusu çoğaltma verilerini alır, bu verileri iyileştirir ve şifreler ve 443 giden bağlantı noktası üzerinden Azure depolama 'ya gönderir.<br/> Varsayılan olarak, işlem sunucusu çoğaltma gereci üzerinde çalışır.
 
@@ -374,7 +369,7 @@ Azure 'a çoğaltılan tüm şirket içi VM 'Lerin bu tabloda özetlenen Azure V
 Konuk işletim sistemi | [Aracısız çoğaltma kullanarak VMware VM 'leri](#agentless-migration-vmware-vm-requirements)için desteklenen işletim sistemlerini ve [aracı tabanlı çoğaltma kullanan VMware VM](#agent-based-migration-vmware-vm-requirements)'lerini doğrulayın.<br/> Desteklenen bir işletim sistemi üzerinde çalışan herhangi bir iş yükünü geçirebilirsiniz. | Desteklenmiyorsa denetim başarısız olur.
 Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmiyorsa denetim başarısız olur.
 İşletim sistemi disk boyutu | 2\.048 GB 'a kadar. | Desteklenmiyorsa denetim başarısız olur.
-İşletim sistemi disk sayısı | 1\. | Desteklenmiyorsa denetim başarısız olur.
+İşletim sistemi disk sayısı | 1 | Desteklenmiyorsa denetim başarısız olur.
 Veri diski sayısı | 64 veya daha az. | Desteklenmiyorsa denetim başarısız olur.
 Veri diski boyutu | 4\.095 GB 'a kadar | Desteklenmiyorsa denetim başarısız olur.
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir. |

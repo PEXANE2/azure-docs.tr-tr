@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 11/7/2019
+ms.date: 01/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0f69fc6b606f2f848b9a14d29addbbde11f07a3e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 661ada4e5d620d4977290986f5649b91363202fe
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927997"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75706997"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -19,7 +19,7 @@ Hizmet sağlayıcısı olarak, Azure kaynaklarını, [Azure Portal](https://port
 
 ## <a name="understanding-customer-tenants"></a>Müşteri kiracılarını anlama
 
-Azure Active Directory (Azure AD) kiracısı, kuruluşun bir gösterimidir. Bu, bir kuruluşun Azure, Microsoft 365 veya diğer hizmetlere kaydolarak Microsoft ile bir ilişki oluşturduklarında aldığı adanmış bir Azure AD örneğidir. Her Azure AD kiracısı farklı ve diğer Azure AD kiracılarından ayrıdır ve kendi kiracı KIMLIĞINE (bir GUID) sahiptir. Daha fazla bilgi için bkz. [Azure Active Directory nedir?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+Azure Active Directory (Azure AD) kiracısı, kuruluşun bir gösterimidir. Bu, bir kuruluşun Azure, Microsoft 365 veya diğer hizmetlere kaydolarak Microsoft ile bir ilişki oluşturduklarında aldığı adanmış bir Azure AD örneğidir. Her Azure AD kiracısı farklı ve diğer Azure AD kiracılarından ayrıdır ve kendi kiracı KIMLIĞINE (bir GUID) sahiptir. Daha fazla bilgi için bkz. [Azure Active Directory nedir?](../../active-directory/fundamentals/active-directory-whatis.md)
 
 Genellikle, bir müşterinin Azure kaynaklarını yönetmek için, hizmet sağlayıcılarının bu müşterinin kiracısıyla ilişkili bir hesabı kullanarak Azure portal oturum açması gerekir ve Kullanıcı hesaplarını oluşturmak ve yönetmek için müşterinin kiracısında bir yönetici gerektirir hizmet sağlayıcı için.
 
@@ -43,31 +43,31 @@ Ayrıca, Azure Temsilcili kaynak yönetimi görevlerini gerçekleştirmek için 
 
 Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar üzerinde gerçekleştirilebilir. Platformlar arası yönetimin etkili olabilmesi için aşağıdaki önemli senaryolardan bazılarını aşağıda bulabilirsiniz.
 
-[Sunucular Için Azure Arc (Önizleme)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
+[Sunucular Için Azure Arc (Önizleme)](../../azure-arc/servers/overview.md):
 
-- Azure 'daki [Windows Server veya Linux makinelerini](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) , Azure 'daki abonelik ve/veya kaynak grupları için temsilci olarak bağlayın
+- Azure 'daki [Windows Server veya Linux makinelerini](../../azure-arc/servers/quickstart-onboard-portal.md) , Azure 'daki abonelik ve/veya kaynak grupları için temsilci olarak bağlayın
 - Azure Ilkesi ve etiketleme gibi Azure yapılarını kullanarak bağlı makineleri yönetme
 
-[Azure Otomasyonu](https://docs.microsoft.com/azure/automation/):
+[Azure Otomasyonu](../../automation/index.yml):
 
 - Atanan müşteri kaynaklarına erişmek ve bunlarla çalışmak için Otomasyon hesaplarını kullanma
 
-[Azure Backup](https://docs.microsoft.com/azure/backup/):
+[Azure Backup](../../backup/index.yml):
 
 - Müşteri kiracılarında müşteri verilerini yedekleme ve geri yükleme
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com//azure/aks/):
+[Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
 - Barındırılan Kubernetes ortamlarını yönetme ve müşteri kiracılarında Kapsayıcılı uygulamaları dağıtma ve yönetme
 
-[Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/):
+[Azure izleyici](../../azure-monitor/index.yml):
 
 - Tüm aboneliklerdeki uyarıları görüntüleyebilme olanağı sayesinde, temsilci atanmış abonelikler için uyarıları görüntüleme
 - Temsilcili abonelikler için etkinlik günlüğü ayrıntılarını görüntüleme
 - Log Analytics: birden çok Kiracıdaki uzak müşteri çalışma alanlarından verileri sorgulama
 - Web kancaları aracılığıyla hizmet sağlayıcı kiracısındaki Azure Otomasyonu runbook 'ları veya Azure Işlevleri gibi Otomasyonu tetikleyen müşteri kiracılarında uyarı oluşturma
 
-[Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/):
+[Azure ilkesi](../../governance/policy/index.yml):
 
 - Uyumluluk anlık görüntüleri, atanan abonelikler içindeki atanmış ilkelerin ayrıntılarını gösterir
 - Temsilci atanmış bir abonelik içinde ilke tanımları oluşturma ve düzenleme
@@ -75,11 +75,11 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 - Müşteriler, yazdığı ilkelerin yanı sıra hizmet sağlayıcı tarafından yazılan ilkeleri görür
 - [DeployIfNotExists 'i düzeltebilir veya müşteri kiracısında atamaları değiştirebilirler](../how-to/deploy-policy-remediation.md)
 
-[Azure Kaynak Grafiği](https://docs.microsoft.com/azure/governance/resource-graph/):
+[Azure Kaynak Grafiği](../../governance/resource-graph/index.yml):
 
 - Şimdi döndürülen sorgu sonuçlarında kiracı KIMLIĞINI içerir, bu da bir aboneliğin müşteri kiracısına veya hizmet sağlayıcı kiracısına ait olup olmadığını tanımlamanızı sağlar
 
-[Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/):
+[Azure Güvenlik Merkezi](../../security-center/index.yml):
 
 - Çapraz kiracı görünürlüğü
   - Güvenlik ilkelerine uyumluluğu izleyin ve tüm kiracıların kaynakları genelinde güvenlik kapsamı sağlayın
@@ -96,27 +96,28 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
   - Sunucuların yalnızca Uyarlamalı uygulama denetimleriyle birlikte olması gereken uygulamaları ve süreçler çalıştırdığından emin olun
   - Dosya bütünlüğü Izleme (FIM) ile önemli dosyalarda ve kayıt defteri girdilerindeki değişiklikleri izleme
 
-[Azure Sentinel](https://docs.microsoft.com/azure/sentinel/multiple-tenants-service-providers):
+[Azure Sentinel](../../sentinel/multiple-tenants-service-providers.md):
 
-- Müşteri kiracılarında Azure Sentinel kaynaklarını yönetme
+- [Müşteri Kiracılarında](../../sentinel/multiple-tenants-service-providers.md) Azure Sentinel kaynaklarını yönetme
+- [Birden çok müşteri kiracısından saldırıları izleyin ve güvenlik uyarılarını görüntüleyin](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
 
-[Azure hizmet durumu](https://docs.microsoft.com/azure/service-health/):
+[Azure hizmet durumu](../../service-health/index.yml):
 
 - Azure Kaynak Durumu ile müşteri kaynaklarının sistem durumunu izleme
 - Müşterileriniz tarafından kullanılan Azure hizmetlerinin sistem durumunu izleme
 
-[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/):
+[Azure Site Recovery](../../site-recovery/index.yml):
 
 - Müşteri kiracılarında Azure sanal makineler için olağanüstü durum kurtarma seçeneklerini yönetme (VM uzantılarını kopyalamak için RunAs hesaplarını kullanmayacağınızı unutmayın)
 
-[Azure sanal makineleri](https://docs.microsoft.com/azure/virtual-machines/):
+[Azure sanal makineleri](../../virtual-machines/index.yml):
 
 - Müşteri kiracılarında Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlamak için sanal makine uzantılarını kullanın
 - Müşteri kiracılarında Azure VM 'lerinde sorun gidermek için önyükleme tanılamayı kullanma
 - Müşteri kiracılarında seri konsol ile VM 'Lere erişme
 - Bir VM 'ye uzaktan oturum açma için Azure Active Directory kullanmayacağınızı ve disk şifrelemesi için parolalar, gizlilikler veya şifreleme anahtarları için bir sanal makineyi Key Vault ile tümleştiremiyorum gerektiğini unutmayın
 
-[Azure Sanal Ağ](https://docs.microsoft.com/azure/virtual-network/):
+[Azure Sanal Ağ](../../virtual-network/index.yml):
 
 - Sanal ağlar ve sanal ağ arabirim kartları (vNIC 'ler) ile müşteri kiracılar arasında dağıtın ve yönetin
 
@@ -128,9 +129,9 @@ Destek istekleri:
 Tüm senaryolarla, lütfen aşağıdaki geçerli sınırlamalara dikkat edin:
 
 - Azure Resource Manager tarafından işlenen istekler, Azure tarafından atanan kaynak yönetimi kullanılarak gerçekleştirilebilir. Bu isteklerin işlem URI 'Leri `https://management.azure.com`başlar. Ancak, kaynak türünün bir örneği tarafından işlenen istekler (örneğin, Anahtar Kasası gizli dizileri erişimi veya depolama veri erişimi), Azure tarafından atanan kaynak yönetimi ile desteklenmez. Bu isteklerin işlem URI 'Leri genellikle örneğiniz için benzersiz olan ve `https://myaccount.blob.core.windows.net` veya `https://mykeyvault.vault.azure.net/`gibi bir adresle başlar. İkincisi ayrıca yönetim işlemleri yerine genellikle veri operasyonlardır. 
-- Rol atamalarının rol tabanlı erişim denetimi (RBAC) [yerleşik rollerini](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kullanması gerekir. Tüm yerleşik roller Şu anda, sahip veya [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) iznine sahip herhangi bir yerleşik rol haricinde Azure tarafından yetkilendirilen kaynak yönetimi ile desteklenmektedir. Kullanıcı erişimi yönetici rolü yalnızca [yönetilen kimliklere rol atama](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)konusunda sınırlı kullanım için desteklenir.  Özel roller ve [Klasik abonelik yöneticisi rolleri](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) desteklenmez.
+- Rol atamalarının rol tabanlı erişim denetimi (RBAC) [yerleşik rollerini](../../role-based-access-control/built-in-roles.md)kullanması gerekir. Tüm yerleşik roller Şu anda, sahip veya [Dataactions](../../role-based-access-control/role-definitions.md#dataactions) iznine sahip herhangi bir yerleşik rol haricinde Azure tarafından yetkilendirilen kaynak yönetimi ile desteklenmektedir. Kullanıcı erişimi yönetici rolü yalnızca [yönetilen kimliklere rol atama](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)konusunda sınırlı kullanım için desteklenir.  Özel roller ve [Klasik abonelik yöneticisi rolleri](../../role-based-access-control/classic-administrators.md) desteklenmez.
 - Şu anda, abonelik Azure Databricks kullanıyorsa, Azure tarafından atanan kaynak yönetimi için abonelik (veya bir abonelik içinde kaynak grubu) ekleyemezsiniz. Benzer şekilde, **Microsoft. ManagedServices** kaynak sağlayıcısı ile ekleme için bir abonelik kaydedilmişse, bu abonelik için şu anda bir Databricks çalışma alanı oluşturamazsınız.
-- Kaynak kilitleri olan Azure tarafından atanan kaynak yönetimi için abonelikler ve kaynak grupları ekleyebilirsiniz, ancak bu kilitler, eylemlerin yönetim kiracısındaki kullanıcılar tarafından gerçekleştirilmesini engellemez. Azure tarafından yönetilen uygulamalar veya Azure şemaları (sistem tarafından atanan reddetme atamaları) tarafından oluşturulanlar gibi sistem tarafından yönetilen kaynakları koruyan [atamaları reddetme](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) , yönetim kiracısındaki kullanıcıların bu kaynaklara göre davranmasını önler; Bununla birlikte, müşteri kiracısındaki kullanıcılar kendi reddetme atamalarını oluşturamaz (Kullanıcı tarafından atanan reddetme atamaları).
+- Kaynak kilitleri olan Azure tarafından atanan kaynak yönetimi için abonelikler ve kaynak grupları ekleyebilirsiniz, ancak bu kilitler, eylemlerin yönetim kiracısındaki kullanıcılar tarafından gerçekleştirilmesini engellemez. Azure tarafından yönetilen uygulamalar veya Azure şemaları (sistem tarafından atanan reddetme atamaları) tarafından oluşturulanlar gibi sistem tarafından yönetilen kaynakları koruyan [atamaları reddetme](../../role-based-access-control/deny-assignments.md) , yönetim kiracısındaki kullanıcıların bu kaynaklara göre davranmasını önler; Bununla birlikte, müşteri kiracısındaki kullanıcılar kendi reddetme atamalarını oluşturamaz (Kullanıcı tarafından atanan reddetme atamaları).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

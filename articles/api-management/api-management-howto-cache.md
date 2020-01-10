@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 76a87d539e19acc30944a6a896cb0e01f431fa37
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073573"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708364"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Azure API Management performansını artırmak için önbelleğe alma ekleme
 
@@ -34,19 +34,19 @@ API Management işlemleri yanıt önbelleğe alma için yapılandırılabilir. Y
 > * API'nize yanıt önbelleği ekleme
 > * Eylem halinde önbelleğe alma işlemini doğrulama
 
-## <a name="availability"></a>Kullanılabilirlik
+## <a name="availability"></a>Erişilebilirlik
 
 > [!NOTE]
 > İç önbellek, Azure API Management **Tüketim** katmanında kullanılamıyor. Bunun yerine [redin için bir dış Azure önbelleği kullanabilirsiniz](api-management-howto-cache-external.md) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
 + [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 + [API içeri aktarma ve yayımlama](import-and-publish.md)
 
-## <a name="caching-policies"> </a>Önbelleğe alma ilkelerini ekleme
+## <a name="caching-policies"> </a>Önbelleğe alma ilkeleri ekleme
 
 Bu örnekte önbelleğe alma ilkeleri kullanılarak, **GetSpeakers** işlemine yapılan ilk istek işlemi arka uç hizmetinden bir yanıt döndürür. Bu yanıt, belirtilen üst bilgiler ve sorgu dizesi parametreleri tarafından önbelleğe alınır ve anahtarlanır. Eşleşen parametrelerle, işleme yapılan sonraki çağrılar, önbelleğe alma süresi aralığı sona erinceye kadar, önbelleğe alınan yanıtın döndürülmesini sağlar.
 
@@ -70,12 +70,12 @@ Bu örnekte önbelleğe alma ilkeleri kullanılarak, **GetSpeakers** işlemine y
 
 9. **Giden** öğesinde, şu ilkeyi ekleyin:
 
-        <cache-store caching-mode="cache-on" duration="20" />
+        <cache-store duration="20" />
 
     **Süre** önbelleğe alınan yanıtların sona erme aralığını belirtir. Bu örnekte, aralık **20** saniyedir.
 
 > [!TIP]
-> [Azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklandığı gibi dış önbellek kullanıyorsanız, önbelleğe alma ilkelerinin `caching-type` özniteliğini belirtmek isteyebilirsiniz. Daha fazla ayrıntı için bkz. [API Management önbelleğe alma ilkeleri](api-management-caching-policies.md) .
+> [Azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklandığı gibi, bir dış önbellek kullanıyorsanız, önbelleğe alma ilkelerinin `caching-type` özniteliğini belirtmek isteyebilirsiniz. Daha fazla ayrıntı için bkz. [API Management önbelleğe alma ilkeleri](api-management-caching-policies.md) .
 
 ## <a name="test-operation"> </a>İşlem çağırma ve önbelleğe almayı test etme
 Önbelleğe alma eylemini görmek için, işlemi geliştirici portalından çağırın.

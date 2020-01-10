@@ -6,18 +6,26 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 74fcce412b2673a3ec9e4809cef018f1afbc3530
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 2f6203deb5e06ba69a3b4d06297d5e702992c79d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812846"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708065"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>TLS 1,0 ve 1,1 ' i Redsıs için Azure Cache ile birlikte kullanarak kaldırma
 
 Aktarım Katmanı Güvenliği (TLS) sürüm 1,2 veya üzeri için özel kullanıma yönelik sektör genelinde bir gönderim vardır. TLS sürümleri 1,0 ve 1,1, BEAST ve POOTEKı gibi saldırılara açıktır ve diğer yaygın güvenlik açıkları ve Etkilenmeler (CVE) zayıflıklarına sahip olur. Ayrıca, ödeme kartı sektör (PCI) uyumluluk standartları tarafından önerilen modern şifreleme yöntemlerini ve şifre paketlerini desteklemezler. Bu [TLS güvenlik blogu](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) , bu güvenlik açıklarından bazılarını daha ayrıntılı bir şekilde açıklamaktadır.
 
-Bu önemli noktaların hiçbiri bir sorun oluştursa da yakında TLS 1,0 ve 1,1 kullanımını durdurmanız önerilir. Redsıs için Azure önbelleği, bu TLS sürümlerinin 31 Mart 2020 ' de desteklenmesini durdurur. Bu tarihten sonra, uygulamanızın önbelleğiyle iletişim kurması için TLS 1,2 veya üstünü kullanması gerekecektir.
+Bu çaba kapsamında, Redsıs için Azure önbelleğinde aşağıdaki değişiklikleri yapacağız:
+
+* 13 Ocak 2020 tarihinden itibaren, yeni oluşturulan önbellek örnekleri için varsayılan en düşük TLS sürümünü 1,2 olacak şekilde yapılandıracağız.  Mevcut önbellek örnekleri bu noktada güncelleştirilmeyecek.  Gerekirse, geriye doğru uyumluluk için [En düşük TLS sürümünü](cache-configure.md#access-ports) yeniden 1,0 veya 1,1 olarak değiştirebilirsiniz.  Bu değişiklik Azure portal veya diğer yönetim API 'Leri aracılığıyla yapılabilir.
+* 31 Mart 2020 ' den itibaren, 1,0 ve 1,1 TLS sürümlerini desteklemeye başlayacağız. Bu değişiklikten sonra, uygulamanız önbelleğiyle iletişim kurmak için TLS 1,2 veya sonraki bir sürümü kullanmanız gerekecektir.
+
+Ayrıca, bu değişikliğin bir parçası olarak, eski, güvenli olmayan şifresi üzerinde anlaşılamadı paketleri desteğini kaldıracağız.  Önbellek en düşük TLS sürümü 1,2 ile yapılandırıldığında desteklenen şifresi üzerinde anlaşılamadı paketlerimiz aşağıdakiler ile kısıtlanır.
+
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
 Bu makalede, bu önceki TLS sürümlerindeki bağımlılıkların nasıl algılanacağı ve uygulamanızdan kaldırılacağı hakkında genel yönergeler sunulmaktadır.
 
@@ -42,15 +50,15 @@ Redsıs .NET Core istemcileri varsayılan olarak en son TLS sürümünü kullan�
 
 ### <a name="java"></a>Java
 
-Redsıs Java istemcileri Java sürüm 6 veya daha önceki bir sürümünde TLS 1,0 kullanır. TLS 1,0, önbellekte devre dışı bırakılmışsa, jedsıs, Lettuce ve Sedisson, redin için Azure önbelleğine bağlanamaz. Şu anda bilinen bir geçici çözüm yok.
+Redsıs Java istemcileri Java sürüm 6 veya daha önceki bir sürümünde TLS 1,0 kullanır. TLS 1,0, önbellekte devre dışı bırakılmışsa, jedsıs, Lettuce ve Redisson, redin için Azure önbelleğine bağlanamaz. Yeni TLS sürümlerini kullanmak için Java çatısını yükseltin.
 
-Java 7 veya sonraki sürümlerde, Redsıs istemcileri varsayılan olarak TLS 1,2 kullanmaz ancak bu için yapılandırılabilir. Bu yapılandırmayı şu an için Lettuce ve Oydisson desteklemez. Önbellek yalnızca TLS 1,2 bağlantısı kabul ediyorsa bunlar kesilir. Jedsıs, aşağıdaki kod parçacığı ile temeldeki TLS ayarlarını belirtmenize olanak sağlar:
+Java 7 için Redsıs istemcileri varsayılan olarak TLS 1,2 kullanmaz ancak bu için yapılandırılabilir. Jedsıs, aşağıdaki kod parçacığı ile temeldeki TLS ayarlarını belirtmenize olanak sağlar:
 
 ``` Java
 SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 SSLParameters sslParameters = new SSLParameters();
 sslParameters.setEndpointIdentificationAlgorithm("HTTPS");
-sslParameters.setProtocols(new String[]{"TLSv1", "TLSv1.1", "TLSv1.2"});
+sslParameters.setProtocols(new String[]{"TLSv1.2"});
  
 URI uri = URI.create("rediss://host:port");
 JedisShardInfo shardInfo = new JedisShardInfo(uri, sslSocketFactory, sslParameters, null);
@@ -59,6 +67,10 @@ shardInfo.setPassword("cachePassword");
  
 Jedis jedis = new Jedis(shardInfo);
 ```
+
+Letgce ve Redisson istemcileri henüz TLS sürümünün belirtilmesini desteklemez, bu nedenle önbellek yalnızca TLS 1,2 bağlantısı kabul ediyorsa kesilir. Bu istemcilere yönelik düzeltmeler incelenmektedir, bu nedenle bu desteğe sahip güncelleştirilmiş bir sürüm için bu paketlere danışın.
+
+Java 8 ' de, TLS 1,2 varsayılan olarak kullanılır ve çoğu durumda istemci yapılandırmanızda güncelleştirmeler gerektirmemelidir. Güvenli olması için uygulamanızı test edin.
 
 ### <a name="nodejs"></a>Node.js
 

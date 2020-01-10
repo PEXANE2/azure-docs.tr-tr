@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6af9da060f7742fe2a9b9656199edd5feb67bec1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3238de3f1d3416964af05db031b5ecec20e4f140
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687406"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720200"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service Ruby ve Postgres uygulaması oluşturma
 
@@ -30,14 +30,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
 * [Git'i yükleyin](https://git-scm.com/)
 * [Ruby 2.3'ü yükleyin](https://www.ruby-lang.org/en/documentation/installation/)
 * [Ruby on Rails 5.1'i yükleyin](https://guides.rubyonrails.org/v5.1/getting_started.html)
-* [PostgreSQL’i yükleyin ve çalıştırın](https://www.postgresql.org/download/)
+* [PostgreSQL’i yükleme ve çalıştırma](https://www.postgresql.org/download/)
 
 ## <a name="prepare-local-postgres"></a>Yerel Postgres sunucusunu hazırlama
 
@@ -151,7 +151,7 @@ PostgreSQL sunucusu için Azure Veritabanı oluşturulduğunda Azure CLI, aşağ
 Cloud Shell'de, [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) komutunu kullanarak Postgres sunucunuzun istemci bağlantılarına izin vermesi için bir güvenlik duvarı kuralı oluşturun. Hem başlangıç hem bitiş IP’si 0.0.0.0 olarak ayarlandığında, güvenlik duvarı yalnızca diğer Azure kaynakları için açılır. *\<Postgres-Server-name >* yer tutucusu için benzersiz bir sunucu adı koyun.
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!TIP] 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: dbc17cff2347cd86db3296f4aa2de76ef0f75460
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 41289110049a7f907b76c8f9a8b2d9dc850f201c
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468084"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707212"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
@@ -57,7 +57,7 @@ Microsoft kimlik ve erişim yönetimi çözümleri, çok faktörlü kimlik doğr
 
 Azure Active Directory (Azure AD) güvenlik avantajları şunlardır:
 
-- Karma kuruluşunuzda her bir kullanıcı için tek bir kimlik oluşturup yönetin, kullanıcıları, grupları ve cihazları eşitlenmiş halde tutun.
+- Karma kuruluşunuzdaki her kullanıcı için tek bir kimlik oluşturup yönetebilir ve kullanıcıları, grupları ve cihazları eşitleyebilirsiniz.
 
 - Önceden tümleştirilmiş binlerce SaaS uygulaması da dahil olmak üzere uygulamalarınıza çoklu oturum açma erişimi sağlayın.
 
@@ -73,7 +73,7 @@ Temel Azure kimlik yönetimi özellikleri aşağıda verilmiştir:
 
 - Çoklu oturum açma
 
-- Multi-factor authentication
+- Çok faktörlü kimlik doğrulama
 
 - Güvenlik izleme, uyarılar ve makine öğrenimi tabanlı raporlar
 
@@ -91,11 +91,11 @@ Temel Azure kimlik yönetimi özellikleri aşağıda verilmiştir:
 
 Birçok kuruluş, son kullanıcı üretkenliği için Office 365, Box ve Salesforce gibi hizmet olarak yazılım (SaaS) uygulamalarını kullanır. Tarihsel olarak, BT personeli her bir SaaS uygulamasında kullanıcı hesaplarını tek tek oluşturmak ve güncelleştirmek için gereklidir ve kullanıcıların her bir SaaS uygulaması için bir parolayı hatırlamaları gerekiyordu.
 
-[Azure AD, şirket içi Active Directory buluta genişlettiğinden](../../active-directory/manage-apps/what-is-single-sign-on.md), kullanıcıların kendi birincil kurumsal hesaplarını yalnızca etki alanına katılmış cihazlarda ve şirket kaynaklarında oturum açmasını sağlayarak, ayrıca işinden.
+[Azure AD, şirket içi Active Directory buluta genişlettiğinden](../../active-directory/manage-apps/what-is-single-sign-on.md), kullanıcıların kendi birincil kurumsal hesaplarını yalnızca etki alanına katılmış cihazlarda ve şirket kaynaklarında oturum açmasını ve ayrıca işleri için gereken tüm Web ve SaaS uygulamalarını kullanmasını sağlar.
 
 Kullanıcıların birden çok Kullanıcı adı ve parola kümesini yönetmesi gerekmez, uygulama erişimi kuruluş gruplarına ve çalışanların durumlarına göre otomatik olarak sağlanabilir veya etkinleştirilebilir. Azure AD, kullanıcıların SaaS uygulamaları genelinde erişimini merkezi olarak yönetmenizi sağlayan [güvenlik ve erişim idare denetimleri sunmaktadır](../../active-directory/active-directory-enterprise-apps-manage-sso.md) .
 
-#### <a name="multi-factor-authentication"></a>Multi-factor authentication
+#### <a name="multi-factor-authentication"></a>Çok faktörlü kimlik doğrulama
 
 [Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) , birden fazla doğrulama yönteminin kullanılmasını gerektiren bir kimlik doğrulama yöntemidir ve Kullanıcı oturum açma işlemlerine ve işlemlerine kritik ikinci bir güvenlik katmanı ekler. MFA, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken veri ve uygulamalara erişimi [korumaya yardımcı olur](../../active-directory/authentication/concept-mfa-howitworks.md) . Telefon araması, SMS mesajı veya mobil uygulama bildirimi ya da doğrulama kodu ve üçüncü taraf OAuth belirteçleri aracılığıyla güçlü kimlik doğrulaması sağlar.
 
@@ -171,7 +171,7 @@ Buluttaki veri korumasına yönelik anahtarlardan biri, verilerinizin gerçekle�
 
 - Rest: buna, fiziksel medyada statik olarak bulunan tüm bilgi depolama nesneleri, kapsayıcılar ve türler, manyetik veya optik disk olmak üzere dahildir.
 
-- Geçiş içi: veriler, bir hizmet veri yolu (Şirket içinden buluta veya ExpressRoute gibi karma bağlantılar dahil) arasında veya bir giriş/çıkış işlemi sırasında, ağ üzerinden gibi bileşenler, konumlar veya programlar arasında aktarıldığında , hareket halindeyken olduğu düşünüldük.
+- Geçiş içi: veriler, bir hizmet veri yolu (Şirket içinden buluta veya ExpressRoute gibi karma bağlantılar da dahil olmak üzere) arasında bileşenler, konumlar veya programlar arasında aktarıldığında, bu, hareket halindeyken olduğu gibi düşünülebilir.
 
 ### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
@@ -256,7 +256,7 @@ Daha büyük veri kümeleri, [ExpressRoute](https://azure.microsoft.com/services
 
 Azure portalını kullanarak Azure depolama ile etkileşim ediyorsanız, tüm işlemler HTTPS üzerinden gerçekleşir. [Azure depolama](https://azure.microsoft.com/services/storage/) ve [Azure SQL veritabanı](https://azure.microsoft.com/services/sql-database/)Ile etkileşim kurmak için https üzerinden [depolama REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) de kullanılabilir.
 
-Yoldaki verileri koruyamadığı kuruluşlar, [ortadaki adam saldırıları](https://technet.microsoft.com/library/gg195821.aspx), [gizlice dinleme](https://technet.microsoft.com/library/gg195641.aspx)ve oturum ele geçirme işlemleri için daha açıktır. Bu saldırılar, gizli verilere erişim kazanmanız için ilk adım olabilir.
+Yoldaki verileri koruyamadığı kuruluşlar, [ortadaki adam saldırıları](https://technet.microsoft.com/library/gg195821.aspx), [gizlice dinleme](https://technet.microsoft.com/library/gg195641.aspx)ve oturum ele geçirme işlemleri için daha açıktır. Bu saldırılar gizli verilere erişim kazanmanın ilk adımı olabilir.
 
 [VPN Gateway Için planlama ve tasarım](../../vpn-gateway/vpn-gateway-about-vpngateways.md)makalesini okuyarak Azure VPN seçeneği hakkında daha fazla bilgi edinebilirsiniz.
 
@@ -476,7 +476,7 @@ Ağ güvenliğinizi denetlemek, ağ güvenlik açıklarını saptamak ve BT güv
 
 - Satılan öğeler veya oyun kazanıldı gibi iş olaylarını izlemek için istemci veya sunucu kodunda yazdığınız **özel olaylar ve ölçümler** .
 
-Uygulamanızın altyapısı genellikle bir sanal makine, depolama hesabı, sanal ağ veya web uygulaması, veritabanı, veritabanı sunucusu ya da 3. taraf hizmetler gibi birçok bileşenden meydana gelir. Bu bileşenleri ayrı varlıklar olarak değerlendirmez, bunun yerine bunları tek bir varlığın ilgili ve birbirine bağımlı parçaları olarak kabul edersiniz. Bunları gruplar halinde dağıtmak, yönetmek ve izlemek isteyebilirsiniz. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) çözümünüzdeki kaynaklarla bir grup olarak çalışmanıza olanak sağlar.
+Uygulamanızın altyapısı genellikle bir sanal makine, depolama hesabı, sanal ağ veya web uygulaması, veritabanı, veritabanı sunucusu ya da 3. taraf hizmetler gibi birçok bileşenden meydana gelir. Bu bileşenleri ayrı varlıklar olarak değerlendirmez, bunun yerine bunları tek bir varlığın ilgili ve birbirine bağımlı parçaları olarak kabul edersiniz. Bunları gruplar halinde dağıtmak, yönetmek ve izlemek isteyebilirsiniz. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) çözümünüzdeki kaynaklarla bir grup olarak çalışmanıza olanak sağlar.
 
 Çözümünüzdeki tüm kaynakları tek ve eşgüdümlü bir işlemle dağıtabilir, güncelleştirebilir veya silebilirsiniz. Dağıtım için bir şablon kullanabilirsiniz. Üstelik bu şablon test, hazırlık ve üretim gibi farklı ortamlarda da çalışabilir. Resource Manager kaynaklarınızı dağıttıktan sonra yönetmenize yardımcı olmak için güvenlik, denetleme ve etiketleme özellikleri sunar.
 

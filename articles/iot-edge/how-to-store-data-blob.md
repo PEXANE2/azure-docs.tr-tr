@@ -1,26 +1,26 @@
 ---
 title: Blok blobları cihazlarda - Azure IOT Edge Store | Microsoft Docs
 description: Katmanlama ve yaşam süresi özelliklerini anlayın, bkz. desteklenen blob Storage işlemleri ve BLOB depolama hesabınıza bağlanma.
-author: arduppal
-manager: mchad
-ms.author: arduppal
+author: kgremban
+ms.author: kgremban
 ms.reviewer: arduppal
-ms.date: 08/07/2019
+ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0dd999d7c7e42f4b881465c8473e0069952561ba
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 3496e0942488a881dbb376d0e53228956e10a7f3
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456766"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75729450"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge Azure Blob Storage ile verileri kenarda depolayın
 
-IoT Edge 'de Azure Blob depolama, uç noktada bir [Blok Blobu](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) depolama çözümü sağlar. IoT Edge cihazınızdaki BLOB depolama modülü bir Azure Blok Blobu hizmeti gibi davranır, ancak blok Blobları IoT Edge cihazınızda yerel olarak depolanır. Aynı Azure depolama SDK'ın yöntemleri kullanarak bloblarınızın erişebilir veya zaten kullanılan blob API çağrılarını engelle. Bu makalede, IoT Edge cihazınızda bir blob hizmeti çalıştıran IoT Edge kapsayıcısında Azure Blob depolama ile ilgili kavramlar açıklanmaktadır.
+IoT Edge üzerindeki Azure Blob depolama alanı, uç noktada bir [Blok Blobu](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) ve [ekleme blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) depolama çözümü sağlar. IoT Edge cihazınızdaki BLOB depolama modülü, Blobların IoT Edge cihazınızda yerel olarak depolanması dışında bir Azure Blob hizmeti gibi davranır. Bloblarınıza, daha önce kullandığınız Azure depolama SDK yöntemlerini veya blob API çağrılarını kullanarak erişebilirsiniz. Bu makalede, IoT Edge cihazınızda bir blob hizmeti çalıştıran IoT Edge kapsayıcısında Azure Blob depolama ile ilgili kavramlar açıklanmaktadır.
 
 Bu modül senaryolarda yararlı olur:
+
 * verilerin işlenebilmesi veya buluta aktarılıncaya kadar yerel olarak depolanması gereken durumlar. Bu veriler, videolar, resimler, Finans verileri, barındırma verileri veya diğer yapılandırılmamış veriler olabilir.
 * cihazlar sınırlı bağlantı içeren bir yerde bulunduğunda.
 * verilere düşük gecikme süreli erişim sağlamak için verileri yerel olarak işlemek istediğinizde, mümkün olduğunca hızlı bir şekilde yanıt verebilirseniz.
@@ -33,38 +33,37 @@ Bu modül **Devicetocloudupload** ve **deviceoto Delete** özellikleriyle birlik
 
 **Devicetocloudupload** , yapılandırılabilir bir işlevdir. Bu işlev, zaman aralıklı internet bağlantısı desteğiyle, verileri yerel blob depolamadan Azure 'a otomatik olarak yükler. Şunları yapmanıza olanak sağlar:
 
-- DeviceToCloudUpload özelliğini açın/kapatın.
-- Verilerin NewestFirst veya OldestFirst gibi Azure 'a kopyalandığı sırayı seçin.
-- Verilerinizin karşıya yüklenmesini istediğiniz Azure Depolama hesabını belirtin.
-- Azure 'a yüklemek istediğiniz kapsayıcıları belirtin. Bu modül hem kaynak hem de hedef kapsayıcı adlarını belirtmenize olanak tanır.
-- Bulut depolamaya yükleme tamamlandıktan sonra Blobları hemen silme özelliğini seçin
-- Tam blob yüklemesi yapın (`Put Blob` işlemi kullanarak) ve blok düzeyinde karşıya yükleme (`Put Block` ve `Put Block List` işlemlerini kullanarak).
+* DeviceToCloudUpload özelliğini açın/kapatın.
+* Verilerin NewestFirst veya OldestFirst gibi Azure 'a kopyalandığı sırayı seçin.
+* Verilerinizin karşıya yüklenmesini istediğiniz Azure Depolama hesabını belirtin.
+* Azure 'a yüklemek istediğiniz kapsayıcıları belirtin. Bu modül hem kaynak hem de hedef kapsayıcı adlarını belirtmenize olanak tanır.
+* Bulut depolamaya yükleme tamamlandıktan sonra Blobları hemen silme özelliğini seçin
+* Tam blob yüklemesi yapın (`Put Blob` işlemi kullanarak) ve blok düzeyinde karşıya yükleme (`Put Block`, `Put Block List` ve `Append Block` işlemlerini kullanarak).
 
 Bu modül Blobun blokları içeriyorsa blok düzeyinde karşıya yükleme kullanır. Yaygın senaryolardan bazıları şunlardır:
 
-- Uygulamanız, daha önce karşıya yüklenen bir Blobun bazı blokları güncelleştirir, bu modül tüm blobu değil yalnızca güncelleştirilmiş blokları karşıya yükler.
-- Modül, blob 'u karşıya yüklüyor ve internet bağlantısı geri geldiğinde, bağlantı tekrar tekrar olduğunda blob tamamını değil yalnızca kalan blokları karşıya yükler.
+* Uygulamanız daha önce karşıya yüklenen bir blok Blobun bazı blokları güncelleştirir veya yeni blokları bir Append blobuna ekler. Bu modül, tüm blobu değil yalnızca güncelleştirilmiş blokları karşıya yükler.
+* Modül, blob 'u karşıya yüklüyor ve internet bağlantısı geri geldiğinde, bağlantı tekrar tekrar olduğunda blob tamamını değil yalnızca kalan blokları karşıya yükler.
 
 Blob karşıya yükleme sırasında beklenmeyen bir işlem sonlandırması (güç hatası gibi) olursa, modül yeniden çevrimiçi olduktan sonra karşıya yükleme işlemi sırasında oluşan tüm bloklar tekrar karşıya yüklenir.
 
 **Deviceoto silme** , yapılandırılabilir bir işlevdir. Bu işlev, belirtilen süre (dakika cinsinden ölçülür) sona erdiğinde bloblarınızı yerel depolamadan otomatik olarak siler. Şunları yapmanıza olanak sağlar:
 
-- Deviceoto Delete özelliğini açın/kapatın.
-- Blobların otomatik olarak silineceği süreyi dakika cinsinden (Deleteafsonlandırutes) belirtin.
-- Deleteafsonlandırutes değerinin süresi dolarsa blobu karşıya yüklerken bekletme özelliğini seçin.
+* Deviceoto Delete özelliğini açın/kapatın.
+* Blobların otomatik olarak silineceği süreyi dakika cinsinden (Deleteafsonlandırutes) belirtin.
+* Deleteafsonlandırutes değerinin süresi dolarsa blobu karşıya yüklerken bekletme özelliğini seçin.
 
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir Azure IoT Edge cihazı:
 
-- [Linux](quickstart-linux.md) veya [Windows cihazları](quickstart.md)için Hızlı Başlangıç bölümündeki adımları izleyerek geliştirme makinenizi veya bir sanal makineyi IoT Edge bir cihaz olarak kullanabilirsiniz.
+* [Linux](quickstart-linux.md) veya [Windows cihazları](quickstart.md)için Hızlı Başlangıç bölümündeki adımları izleyerek geliştirme makinenizi veya bir sanal makineyi IoT Edge bir cihaz olarak kullanabilirsiniz.
 
-- Desteklenen işletim sistemleri ve mimarilerin bir listesi için [desteklenen Azure IoT Edge sistemleri](support.md#operating-systems) bölümüne bakın. IoT Edge modülündeki Azure Blob depolama, aşağıdaki mimarilere destek sunar:
-    - Windows AMD64
-    - Linux AMD64
-    - Linux ARM32
-    - Linux ARM64 (Önizleme)
+* Desteklenen işletim sistemleri ve mimarilerin bir listesi için [desteklenen Azure IoT Edge sistemleri](support.md#operating-systems) bölümüne bakın. IoT Edge modülündeki Azure Blob depolama, aşağıdaki mimarilere destek sunar:
+  * Windows AMD64
+  * Linux AMD64
+  * Linux ARM32
+  * Linux ARM64 (Önizleme)
 
 Bulut kaynakları:
 
@@ -84,7 +83,7 @@ Bu ayarın adı `deviceToCloudUploadProperties`. IoT Edge simülatör kullanıyo
 | uploadOrder | NewestFirst, OldestFirst | Verilerin Azure 'a kopyalandığı sırayı seçmenizi sağlar. Varsayılan olarak `OldestFirst` olarak ayarlayın. Sıra, blob 'un son değiştirilme zamanına göre belirlenir. <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
 | cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"`, verilerinizin karşıya yüklenmesini istediğiniz depolama hesabını belirtmenize olanak tanıyan bir bağlantı dizesidir. `Azure Storage Account Name`, `Azure Storage Account Key``End point suffix`belirtin. Verilerin karşıya yükleneceği Azure 'un uygun EndpointSuffix öğesini ekleyin; küresel Azure, kamu Azure ve Microsoft Azure Stack değişir. <br><br> Burada Azure Storage SAS bağlantı dizesini belirtmeyi seçebilirsiniz. Ancak bu özelliği süresi dolmuşsa güncelleştirmeniz gerekir. <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Azure 'a yüklemek istediğiniz kapsayıcı adlarını belirtmenize olanak tanır. Bu modül hem kaynak hem de hedef kapsayıcı adlarını belirtmenize olanak tanır. Hedef kapsayıcı adını belirtmezseniz, kapsayıcı adı otomatik olarak `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`olarak atanır. Hedef kapsayıcı adı için şablon dizeleri oluşturabilir, olası değerler sütununa bakabilirsiniz. <br>*% h-> IoT Hub adı (3-50 karakter). <br>*% d-> IoT Edge cihaz KIMLIĞI (1-129 karakter). <br>*% d-> Modül adı (1-64 karakter). <br>*% c-> kaynak kapsayıcısı adı (3 ile 63 karakter arasında). <br><br>Kapsayıcı adının en büyük boyutu 63 karakterdir, çünkü kapsayıcının boyutu 63 karakteri aşarsa, her bir bölümü (IoTHubName, ıotedgedeviceıd, ModuleName, SourceContainerName) 15 olarak kırpacaktır karakterle. <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
-| deleteAfterUpload | TRUE, false | Varsayılan olarak `false` olarak ayarlayın. `true`olarak ayarlandığında, bulut depolamaya yükleme tamamlandığında verileri otomatik olarak siler. <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
+| deleteAfterUpload | TRUE, false | Varsayılan olarak `false` olarak ayarlayın. `true`olarak ayarlandığında, bulut depolamaya yükleme tamamlandığında verileri otomatik olarak siler. <br><br> **Dikkat**: ekleme bloblarını kullanıyorsanız, bu ayar başarılı bir karşıya yükleme işleminden sonra ekleme bloblarını yerel depolamadan siler ve gelecekte bu bloblara yapılan tüm ekleme engelleme işlemleri başarısız olur. Bu ayarı dikkatli bir şekilde kullanın, uygulamanız sık sık ekleme işlemleri yaparsanız veya sürekli ekleme işlemlerini desteklemiyorsa bunu etkinleştirmeyin.<br><br> Ortam değişkeni: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`. |
 
 
 ### <a name="deviceautodeleteproperties"></a>Deviceoto Deleteproperties
@@ -95,7 +94,7 @@ Bu ayarın adı `deviceAutoDeleteProperties`. IoT Edge simülatör kullanıyorsa
 | ----- | ----- | ---- |
 | deleteOn | TRUE, false | Varsayılan olarak `false` olarak ayarlayın. Özelliği etkinleştirmek istiyorsanız, bu alanı `true`olarak ayarlayın. <br><br> Ortam değişkeni: `deviceAutoDeleteProperties__deleteOn={false,true}` |
 | deleteAfterMinutes | `<minutes>` | Süreyi dakika olarak belirtin. Bu değerin süresi dolarsa modül yerel depolamadan Blobları otomatik olarak siler. <br><br> Ortam değişkeni: `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
-| retainWhileUploading | TRUE, false | Varsayılan olarak, `true`olarak ayarlanır ve Deleteafsonlandırutes süresi dolarsa blob 'u bulut depolamaya yüklerken korur. `false` olarak ayarlayabilirsiniz ve Deleteafsonlandırutes süresi dolduktan hemen sonra verileri siler. Note: Bu özelliğin iş için uploadOn, true olarak ayarlanmalıdır. <br><br> Ortam değişkeni: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
+| retainWhileUploading | TRUE, false | Varsayılan olarak, `true`olarak ayarlanır ve Deleteafsonlandırutes süresi dolarsa blob 'u bulut depolamaya yüklerken korur. `false` olarak ayarlayabilirsiniz ve Deleteafsonlandırutes süresi dolduktan hemen sonra verileri siler. Note: Bu özelliğin iş için uploadOn, true olarak ayarlanmalıdır.  <br><br> **Dikkat**: ekleme bloblarını kullanıyorsanız, bu ayar, değerin süresi dolarsa yerel depolamadan ekleme bloblarını siler ve bu bloblara gelecekteki tüm ekleme engelleme işlemleri başarısız olur. Süre sonu değerinin, uygulamanız tarafından gerçekleştirilen ekleme işlemlerinin beklenen sıklığı için yeterince büyük olduğundan emin olmak isteyebilirsiniz.<br><br> Ortam değişkeni: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>Yerel depolama alanı olarak SMB paylaşımının kullanımı
 Windows konakta Bu modülün Windows kapsayıcısını dağıtırken, yerel depolama yolunuz olarak SMB paylaşma sağlayabilirsiniz.
@@ -111,7 +110,7 @@ New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath
 ```
 Örnek: <br>
 `$creds = Get-Credential` <br>
-`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G: `
+`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:`
 
 Bu komut, uzak SMB sunucusunda kimlik doğrulamak için kimlik bilgilerini kullanır. Ardından, uzak paylaşımın yolunu G: sürücü harfi ile eşleyin (kullanılabilir başka herhangi bir sürücü harfi olabilir). IoT cihazında artık G: sürücüsündeki bir yola eşlenen veri hacmi vardır. 
 
@@ -133,7 +132,7 @@ sudo chmod -R 700 <blob-dir>
 
 Örnek:<br>
 `sudo chown -R 11000:11000 /srv/containerdata` <br>
-`sudo chmod -R 700 /srv/containerdata `
+`sudo chmod -R 700 /srv/containerdata`
 
 
 Hizmeti, bir kullanıcı olarak bir kullanıcı olarak çalıştırmanız **gerekiyorsa, dağıtım**bildiriminizde "Kullanıcı" özelliği altındaki createOptions içinde özel kullanıcı kimliğinizi belirtebilirsiniz. Böyle bir durumda, varsayılan veya kök Grup KIMLIĞI `0`kullanmanız gerekir.
@@ -157,7 +156,7 @@ Modülünüzün günlük dosyalarını yapılandırma hakkında daha fazla bilgi
 
 Hesap adı ve IOT Edge Cihazınızda blob depolamaya erişmek, bir modül için yapılandırılan hesap anahtarı kullanabilirsiniz.
 
-IOT Edge Cihazınızı herhangi bir depolama alanı için blob uç nokta olarak belirtmek için yaptığınız istekleri. IoT Edge cihaz bilgilerini ve yapılandırdığınız hesap adını kullanarak [açık depolama uç noktası için bir bağlantı dizesi oluşturabilirsiniz](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) .
+IOT Edge Cihazınızı herhangi bir depolama alanı için blob uç nokta olarak belirtmek için yaptığınız istekleri. Yapabilecekleriniz [bir açık depolama uç noktası için bir bağlantı dizesi oluşturma](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) IOT Edge cihaz bilgileri ve yapılandırdığınız hesabı adını kullanarak.
 
 - IoT Edge modülündeki Azure Blob depolama alanının çalıştığı aynı cihaza dağıtılan modüller için, blob uç noktası: `http://<module name>:11002/<account name>`.
 - Farklı bir cihazda çalışan modüller veya uygulamalar için ağınız için doğru uç noktayı seçmeniz gerekir. Ağ kurulumunuza bağlı olarak, dış modülünüzün veya uygulamanızdan alınan veri trafiğinin IoT Edge modülünde Azure Blob depolamayı çalıştıran cihaza ulaşabilmesi için bir uç nokta biçimi seçin. Bu senaryonun blob uç noktası şunlardan biridir:
@@ -171,20 +170,21 @@ Azure Blob depolama belgeleri, birkaç dilde hızlı başlangıç örnek kodunu 
 
 Aşağıdaki hızlı başlangıç örnekleri, IoT Edge tarafından da desteklenen dilleri kullanır, bu nedenle bunları BLOB depolama modülünün yanı sıra IoT Edge modüller olarak dağıtabilirsiniz:
 
-- [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-    - Modülün bu sürümü blob oluşturma süresi döndürmediğinden Bu SDK kullanılırken bilinen bir sorunla karşılaştık. Bu nedenle, liste Blobları gibi birkaç yöntem çalışmıyor. Geçici bir çözüm olarak, blob istemcisinde açıkça API sürümünü ' 2017-04-17 ' olarak ayarladı. <br>Örnek: `block_blob_service._X_MS_VERSION = '2017-04-17'`
-- [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
-- [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-v10.md)
-- [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
-- [Go](../storage/blobs/storage-quickstart-blobs-go.md)
-- [PHP](../storage/blobs/storage-quickstart-blobs-php.md)
+* [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+* [Python](../storage/blobs/storage-quickstart-blobs-python.md)
+  * Python SDK 'sının V 2.1 'den önceki sürümlerde, modülün blob oluşturma zamanını döndürmediği bilinen bir sorunu vardır. Bu sorun nedeniyle, liste Blobları gibi bazı yöntemler çalışmaz. Geçici bir çözüm olarak, blob istemcisinde API sürümünü açık olarak ' 2017-04-17 ' olarak ayarlayın. Örnek:  `block_blob_service._X_MS_VERSION = '2017-04-17'`
+  * [Blob örneği Ekle](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
+* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
+* [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-v10.md)
+* [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
+* [Go](../storage/blobs/storage-quickstart-blobs-go.md)
+* [PHP](../storage/blobs/storage-quickstart-blobs-php.md)
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Azure Depolama Gezgini ile yerel depolamaya bağlanma
 
 [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) , yerel depolama hesabınıza bağlanmak için kullanabilirsiniz.
 
-1. Azure Depolama Gezgini indir ve yükle
+1. Azure Depolama Gezgini’ni indirme ve yükleme
 
 1. Bağlantı dizesi kullanarak Azure depolama 'ya bağlanma
 
@@ -194,7 +194,7 @@ Aşağıdaki hızlı başlangıç örnekleri, IoT Edge tarafından da desteklene
 
 1. Yerel depolama hesabınız içinde kapsayıcı oluşturma
 
-1. Dosya yüklemeyi blok Bloblar olarak başlatın.
+1. Dosyaları blok Blobları veya ekleme Blobları olarak yüklemeye başlayın.
    > [!NOTE]
    > Bu modül, sayfa bloblarını desteklemez.
 
@@ -210,55 +210,65 @@ Tüm Azure Blob depolama işlemleri IoT Edge Azure Blob depolama tarafından des
 
 Desteklenen:
 
-- Kapsayıcıları listeleme
+* Kapsayıcıları listeleme
 
 Desteklenmeyen:
 
-- Alma ve blob hizmeti özelliklerini ayarla
-- Denetim öncesi blob isteği
-- BLOB hizmeti istatistikleri alın
-- Hesap bilgilerini alma
+* Alma ve blob hizmeti özelliklerini ayarla
+* Denetim öncesi blob isteği
+* BLOB hizmeti istatistikleri alın
+* Hesap bilgilerini alma
 
 ### <a name="containers"></a>Kapsayıcılar
 
 Desteklenen:
 
-- Oluşturma ve kapsayıcı silme
-- Kapsayıcı özellikleri ve meta verileri alma
-- Blobları listeleme
-- Alma ve kapsayıcı ACL ayarlama
-- Kümesi kapsayıcı meta verileri
+* Oluşturma ve kapsayıcı silme
+* Kapsayıcı özellikleri ve meta verileri alma
+* Blobları listeleme
+* Alma ve kapsayıcı ACL ayarlama
+* Kümesi kapsayıcı meta verileri
 
 Desteklenmeyen:
 
-- Kira kapsayıcı
+* Kira kapsayıcı
 
 ### <a name="blobs"></a>Bloblar
 
 Desteklenen:
 
-- Yerleştirme, alma ve blob silme
-- Alma ve blob özelliklerini ayarlama
-- Alma ve blob meta verileri ayarlama
+* Yerleştirme, alma ve blob silme
+* Alma ve blob özelliklerini ayarlama
+* Alma ve blob meta verileri ayarlama
 
 Desteklenmeyen:
 
-- Kira blob'u
-- Blob anlık görüntüsü
-- Kopyalama ve kopyalama blob durdurma
-- Blobu silme işlemi geri
-- Blob katmanı Ayarla
+* Kira blob'u
+* Blob anlık görüntüsü
+* Kopyalama ve kopyalama blob durdurma
+* Blobu silme işlemi geri
+* Blob katmanı Ayarla
 
 ### <a name="block-blobs"></a>Blok blobları
 
 Desteklenen:
 
-- Yerleştirme bloğu
-- Koy ve engelleme listesine alın
+* Yerleştirme bloğu
+* Koy ve engelleme listesine alın
 
 Desteklenmeyen:
 
-- URL'den blok yerleştirme
+* URL'den blok yerleştirme
+
+### <a name="append-blobs"></a>Ekleme blobları
+
+Desteklenen:
+
+* Ekleme bloğu
+
+Desteklenmeyen:
+
+* URL 'den ekleme bloğu
 
 ## <a name="event-grid-on-iot-edge-integration"></a>IoT Edge tümleştirmede Event Grid
 > [!CAUTION]

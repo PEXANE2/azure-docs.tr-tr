@@ -6,17 +6,14 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f0d3d36d3489557f0a07e9400c59debb2dca7073
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671463"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75728761"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma
-
-> [!NOTE] 
-> Key Vault başvuruları Linux tüketim planlarında Şu anda kullanılamıyor.
 
 Bu konu başlığı altında, herhangi bir kod değişikliğine gerek kalmadan App Service veya Azure Işlevleri uygulamanızda Azure Key Vault gizliliklerle nasıl çalışılacağı gösterilmektedir. [Azure Key Vault](../key-vault/key-vault-overview.md) , erişim ilkeleri ve denetim geçmişi üzerinde tam denetim ile merkezi gizli dizi yönetimi sağlayan bir hizmettir.
 
@@ -51,7 +48,7 @@ Key Vault bir başvuru, `{referenceString}` aşağıdaki seçeneklerden biriyle 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
-Kopyalamaktır
+Alternatif olarak:
 
 ```
 @Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)
@@ -190,7 +187,7 @@ Ek bilgi edinmek için yerleşik algılayıcıları da kullanabilirsiniz.
 ### <a name="using-the-detector-for-app-service"></a>App Service için algılayıcısının kullanımı
 
 1. Portalda uygulamanıza gidin.
-2. **Tanıla ve sorunları çöz '** ü seçin.
+2. **Sorunları tanılama ve çözme**’yi seçin.
 3. **Kullanılabilirlik ve performans** ' ı seçin ve **Web uygulaması** ' nı seçin.
 4. **Uygulama ayarları tanılamayı Key Vault** bulun ve **daha fazla bilgi**'ye tıklayın.
 
@@ -199,6 +196,6 @@ Ek bilgi edinmek için yerleşik algılayıcıları da kullanabilirsiniz.
 
 1. Portalda uygulamanıza gidin.
 2. **Platform özellikleri** ' ne gidin.
-3. **Tanıla ve sorunları çöz '** ü seçin.
+3. **Sorunları tanılama ve çözme**’yi seçin.
 4. **Kullanılabilirlik ve performans** ' ı seçin ve **işlev uygulaması çalışmıyor veya raporlama hataları** ' nı seçin.
 5. **Uygulama ayarları tanılamayı Key Vault** ' ye tıklayın.

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 099ed3c3c0ac2abe034388849385a45b44b32b34
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: bff2ed48a78bfbae984dea5e5474971817023bc6
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145960"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75729330"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>Always On VPN kullanıcı tüneli yapılandırma
 
@@ -99,9 +99,10 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    ```
 1. Aşağıdaki metni kopyalayın ve *Vpnprofile. xml* olarak *Usercert. ps1*ile aynı klasöre kaydedin. Ortamınıza uyması için aşağıdaki metni düzenleyin:
 
-   * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
-   * `<Address>192.168.3.5</Address>`
-   * `<Address>192.168.3.4</Address>`
+   * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
+   * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
+   * `<Address>192.168.3.4</Address>  <= IP of resource in the vnet or the vnet address space`
+   * `<PrefixSize>32</PrefixSize>     <= Subnet mask`
 
    ```
     <VPNProfile>  
@@ -140,7 +141,7 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
     <RegisterDNS>true</RegisterDNS>
     </VPNProfile>
    ```
-1. PowerShell 'i yönetici olarak çalıştırın.
+1. PowerShell'i yönetici olarak çalıştırın.
 
 1. PowerShell 'de, *Usercert. ps1* ve *vpnprofile. xml* ' nin bulunduğu klasöre geçin ve aşağıdaki komutu çalıştırın:
 

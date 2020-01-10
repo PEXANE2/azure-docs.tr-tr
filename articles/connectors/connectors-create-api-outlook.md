@@ -1,53 +1,77 @@
 ---
 title: Outlook.com 'e bağlanma
-description: Outlook.com REST API 'Leri ile e-posta, takvim ve kişileri yönetme ve Azure Logic Apps
+description: Azure Logic Apps kullanarak e-posta, takvim ve kişileri Outlook.com içinde yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
-ms.openlocfilehash: 750efc2cb928bf127c4f3c68d5a58c5f52ca7d51
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789383"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707195"
 ---
-# <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>Azure Logic Apps ile e-posta, takvim ve kişileri Outlook.com içinde yönetme
+# <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak e-posta, takvim ve kişileri Outlook.com içinde yönetin
 
-Bu makalede, Outlook.com hesabınızı Box Bağlayıcısı ile bir mantıksal uygulama içinde nasıl oluşturabileceğiniz ve yönetebileceğiniz gösterilmektedir. Bu şekilde, Outlook.com hesabınız için görevleri ve iş akışlarını otomatikleştiren mantıksal uygulamalar oluşturabilirsiniz, örneğin:
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Outlook.com Bağlayıcısı](/connectors/outlook/)ile mantıksal uygulamalar oluşturarak @outlook.com veya @hotmail.com hesabınızı yöneten otomatik görevler ve iş akışları oluşturabilirsiniz. Örneğin, bu görevleri otomatikleştirin:
 
-* E-posta gönderin. 
-* Toplantıları zamanlayın.
-* Kişi ekle. 
+* E-posta alın, gönderin ve yanıtlayın.
+* Takviminizde toplantılar zamanlayın.
+* Kişiler ekleyin ve düzenleyin.
 
-Logic Apps 'e yeni başladıysanız [Azure Logic Apps ne olduğunu](../logic-apps/logic-apps-overview.md)gözden geçirin.
+İş akışınızı başlatmak için herhangi bir tetikleyiciyi kullanabilirsiniz. Örneğin, yeni bir e-posta geldiğinde, bir takvim öğesi güncelleştirilirken veya fark hizmetinde bir olay olduğunda. Tetikleyici olayına yanıt veren eylemleri (örneğin, e-posta gönder veya yeni bir takvim olayı oluşturma) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+> [!NOTE]
+> @fabrikam.onmicrosoft.comgibi bir Microsoft iş hesabının görevlerini otomatik hale getirmek için [Office 365 Outlook bağlayıcısını](../connectors/connectors-create-api-office365-outlook.md)kullanın.
+
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir [Outlook.com hesabı](https://outlook.live.com/owa/)
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-* Outlook.com hesabınıza erişmek istediğiniz mantıksal uygulama. Mantıksal uygulamanızı bir Outlook tetikleyicisiyle başlatmak için [boş bir mantıksal uygulama](../logic-apps/quickstart-create-first-logic-app-workflow.md)gerekir. 
+* Outlook.com hesabınıza erişmek istediğiniz mantıksal uygulama. İş akışınızı bir Outlook.com tetikleyicisi ile başlatmak için [boş bir mantıksal uygulamanız](../logic-apps/quickstart-create-first-logic-app-workflow.md)olması gerekir. İş akışınıza bir Outlook.com eylemi eklemek için mantıksal uygulamanızın zaten bir tetikleyicisi olması gerekir.
 
-* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)hakkında temel bilgi.
+## <a name="add-a-trigger"></a>Tetikleyici ekleme
 
-## <a name="connect-to-outlookcom"></a>Outlook.com 'e bağlanma
+[Tetikleyici](../logic-apps/logic-apps-overview.md#logic-app-concepts) , mantıksal uygulamanızda iş akışını başlatan bir olaydır. Bu örnek mantıksal uygulama, belirtilen Aralık ve sıklık temelinde e-posta hesabınızda yeni e-postaları denetleyen "yoklama" tetikleyicisi kullanır.
 
-[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+1. [Azure Portal](https://portal.azure.com), mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
-[!INCLUDE [Connect to Outlook.com](../../includes/connectors-create-api-outlook.md)]
+1. Arama kutusuna filtreniz olarak "outlook.com" yazın. Bu örnek için **Yeni bir e-posta geldiğinde**öğesini seçin.
+
+1. Oturum açmanız istenirse, mantıksal uygulamanızın hesabınıza bağlanabilmesi için Outlook.com kimlik bilgilerinizi sağlayın. Aksi takdirde, bağlantınız zaten varsa tetikleyici özellikleri için bilgileri sağlayın:
+
+1. Tetikleyicide **Sıklık** ve **Aralık** değerlerini ayarlayın.
+
+   Örneğin, tetikleyicinin 15 dakikada bir yoklamasını istiyorsanız, **sıklığı** **dakika**olarak ayarlayın ve **aralığı** **15**olarak ayarlayın.
+
+1. Tasarımcı araç çubuğunda, mantıksal uygulamanızı kaydeden **Kaydet**' i seçin.
+
+Tetikleyiciye yanıt vermek için başka bir eylem ekleyin. Örneğin, bir e-posta geldiğinde metin gönderen Twilio **Send ileti** eylemini ekleyebilirsiniz.
+
+## <a name="add-an-action"></a>Eylem ekleme
+
+[Eylem](../logic-apps/logic-apps-overview.md#logic-app-concepts) , mantıksal uygulamanızdaki iş akışı tarafından çalıştırılan bir işlemdir. Bu örnek mantıksal uygulama, Outlook.com hesabınızdan bir e-posta gönderir. Eylemi doldurmak için başka bir tetikleyiciden gelen çıktıyı kullanabilirsiniz. Örneğin, **bir nesne oluşturulduğunda** mantıksal uygulamanızın Salesforce kullandığını varsayalım. Outlook.com **e-posta gönder** eylemini ekleyebilir ve e-postadaki Salesforce tetikleyicisinden çıktıları kullanabilirsiniz.
+
+1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+
+1. İş akışınızda son adım olarak bir eylem eklemek için **yeni adım**' ı seçin. 
+
+   Adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
+
+1. Arama kutusuna filtreniz olarak "outlook.com" yazın. Bu örnek için **e-posta gönder**' i seçin. 
+
+1. Oturum açmanız istenirse, mantıksal uygulamanızın hesabınıza bağlanabilmesi için Outlook.com kimlik bilgilerinizi sağlayın. Aksi takdirde, bağlantınız zaten varsa, eylem özellikleri için bilgileri sağlayın.
+
+1. Tasarımcı araç çubuğunda, mantıksal uygulamanızı kaydeden **Kaydet**' i seçin.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
 Bağlayıcının Swagger dosyasında açıklandığı şekilde Tetikleyiciler, Eylemler ve sınırlar gibi teknik ayrıntılar için [bağlayıcının başvuru sayfasına](/connectors/outlook/)bakın. 
-
-## <a name="get-support"></a>Destek alın
-
-* Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
-* Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

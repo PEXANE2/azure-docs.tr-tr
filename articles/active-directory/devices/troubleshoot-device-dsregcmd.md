@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ef3edace53cf7367716027811cf3061b617a9a6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379194"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707953"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Dsregcmd komutunu kullanarak cihazların sorunlarını giderme
 
@@ -28,10 +28,10 @@ Bu bölümde cihaz JOIN durumu parametreleri listelenmektedir. Aşağıdaki tabl
 
 | Azureadkatıldı | Enterprisekatılmış | Domainkatılmış | Cihaz durumu |
 | ---   | ---   | ---   | ---   |
-| YES | NO | NO | Azure AD 'ye katılmış |
-| NO | NO | YES | Etki alanına katılmış |
-| YES | NO | YES | Karma AD 'ye katılmış |
-| NO | YES | YES | Şirket içi DRS 'ye katılmış |
+| EVET | NO | NO | Azure AD 'ye katılmış |
+| NO | NO | EVET | Etki alanına katılmış |
+| EVET | NO | EVET | Karma AD 'ye katılmış |
+| NO | EVET | EVET | Şirket içi DRS 'ye katılmış |
 
 > [!NOTE]
 > Workplace Join (Azure AD kayıtlı) durumu "Kullanıcı durumu" bölümünde görüntülenir
@@ -297,10 +297,22 @@ Bu bölümde, buluta katılmış bir cihazda gerçekleştirilen sağlamlık dene
 
 ## <a name="ngc-prerequisite-check"></a>NGC önkoşul denetimi
 
-Bu bölüm, bir NGC anahtarının sağlanması için önkoşul denetimlerini gerçekleştirir. 
+Bu bölüm, Iş için Windows Hello (WHFB) sağlamaya yönelik önkoşul denetimlerini gerçekleştirir. 
 
 > [!NOTE]
-> Kullanıcı zaten NGC kimlik bilgilerini başarıyla yapılandırdıysa dsregcmd/Status içinde NGC önkoşul denetimi ayrıntılarını göremeyebilirsiniz.
+> Kullanıcı zaten WHFB 'yi başarıyla yapılandırdıysa dsregcmd/Status içinde NGC önkoşul denetimi ayrıntılarını göremeyebilirsiniz.
+
+- **Idevicekatılmış:** CIHAZ Azure AD 'ye KATıLıRSA "Evet" olarak ayarlanır.
+- **Iuserazuread:** -oturum açmış kullanıcı Azure AD 'de mevcutsa "Evet" olarak ayarlanır.
+- **PolicyEnabled:** cihazda whfb ilkesi ETKINSE "Evet" olarak ayarlayın.
+- **Postlogonenabled:** -platform tarafından yerel olarak tetikleniyorsa, "Evet" olarak ayarlayın. "Hayır" olarak ayarlanırsa, Iş için Windows Hello kaydı 'nın özel bir mekanizma tarafından tetiklendiğini belirtir
+- **Deviceuygun:** -CIHAZ whfb ile kaydolma için donanım gereksinimini KARŞıLıYORSA "Evet" olarak ayarlanır.
+- **Sessionisnotremote:** -geçerli kullanıcı doğrudan cihazda oturum açtıysa ve uzaktan DEĞILSE "Evet" olarak ayarlanır.
+- **Certenrollment:** whfb için sertifika kayıt yetkilisini belirten Whfb sertifika güven dağıtımına özgüdür. WHFB ilkesinin kaynağı grup ilkesi, kaynak MDM ise "mobil cihaz yönetimi" ise "kayıt yetkilisi" olarak ayarlayın. Aksi halde "hiçbiri"
+- **Adfsrefreshtoken:** -Whfb sertifika güven dağıtımına özgü. Yalnızca CertEnrollment "kayıt yetkilisi" ise vardır. Cihazın Kullanıcı için kurumsal bir PRT olup olmadığını gösterir.
+- **Adfsraready:** -Whfb sertifika güven dağıtımına özgü.  Yalnızca CertEnrollment "kayıt yetkilisi" ise vardır. ADFS, WHFB 'yi desteklediği bulma meta verilerinde belirtilmişse *ve* oturum açma sertifikası şablonu kullanılabiliyorsa, "Evet" olarak ayarlayın.
+- **Logoncerttemplateready:** -Whfb sertifika güven dağıtımına özgü. Yalnızca CertEnrollment "kayıt yetkilisi" ise vardır. Oturum açma sertifikası şablonunun durumu geçerliyse "Evet" olarak ayarlayın ve ADFS RA sorunlarını gidermeye yardımcı olur.
+- **PreReqResult:** -tüm whfb önkoşul değerlendirmesinin sonucunu sağlar. Kullanıcı bir sonraki sefer oturum açtığında, WHFB kaydı, oturum açma sonrası görevi olarak başlatılacaksa "sağlayacak" olarak ayarlanır.
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>Örnek NGC önkoşul denetimi çıkışı
 

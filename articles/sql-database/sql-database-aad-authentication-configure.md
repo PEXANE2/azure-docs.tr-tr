@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 11/06/2019
-ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 01/07/2020
+ms.openlocfilehash: dc2661bbc443201d6a2da4b5efb7ecdc2caad444
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901339"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732578"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -236,7 +236,7 @@ CLı komutları hakkında daha fazla bilgi için bkz. [az SQL mi](/cli/azure/sql
 
 Aşağıdaki iki yordamda, Azure portal Azure SQL Server için ve PowerShell kullanarak Azure Active Directory Yöneticisi sağlama işlemleri gösterilmektedir.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure Portal
 
 1. [Azure Portal](https://portal.azure.com/), sağ üst köşede, olası etkin dizinlerin listesini aşağı eklemek için bağlantınızı seçin. Varsayılan Azure AD olarak doğru Active Directory seçin. Bu adım, Azure AD ve SQL Server aynı aboneliğin kullanıldığından emin olmak için abonelikle ilişkili Active Directory Azure SQL Server ile bağlantılandırır. (Azure SQL Server, Azure SQL veritabanı veya Azure SQL veri ambarı 'nı barındırıyor olabilir.)
 
@@ -345,14 +345,17 @@ CLı komutları hakkında daha fazla bilgi için bkz. [az SQL Server](/cli/azure
 Uygulamalarınızın veya kullanıcılarınızın Azure AD kimliklerini kullanarak Azure SQL veritabanı veya Azure SQL veri ambarı 'na bağlandığı tüm istemci makinelerde aşağıdaki yazılımları yüklemelisiniz:
 
 - [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).NET Framework 4,6 veya üzeri.
-- SQL Server için Azure Active Directory kimlik doğrulama kitaplığı (*Adalsql. DLL*), [Microsoft SQL Server için Microsoft Active Directory Authentication Library](https://www.microsoft.com/download/details.aspx?id=48742)'de bulunan İndirme Merkezi 'nden birden çok dilde (x86 ve AMD64) kullanılabilir.
+- SQL Server için Azure Active Directory kimlik doğrulaması kitaplığı (*adal. DLL*). Aşağıda, adal içeren en son SSMS, ODBC ve OLE DB sürücüsünü yüklemek için karşıdan yükleme bağlantıları verilmiştir *. DLL* kitaplığı.
+    1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+    1. [SQL Server için ODBC sürücüsü 17](https://www.microsoft.com/download/details.aspx?id=56567)
+    1. [SQL Server için 18 OLE DB sürücüsü](https://www.microsoft.com/download/details.aspx?id=56730)
 
 Bu gereksinimleri şu şekilde karşılayabilirsiniz:
 
-- [Visual Studio 2015 için](https://msdn.microsoft.com/library/mt204009.aspx) [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) veya SQL Server veri araçları yüklemek .NET Framework 4,6 gereksinimini karşılar.
-- SSMS, Adalsql 'in x86 sürümünü yüklüyor *. DLL*.
-- SSDT, Adalsql 'in AMD64 sürümünü yüklüyor *. DLL*.
-- [Visual Studio Indirmelerinin](https://www.visualstudio.com/downloads/download-visual-studio-vs) en son Visual studio indirmeleri .NET Framework 4,6 gereksinimini karşılar, ancak Adalsql 'nin gerekli AMD64 sürümünü yüklemez *. DLL*.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) veya [SQL Server veri araçları](/sql/ssdt/download-sql-server-data-tools-ssdt) en son sürümünü yüklemek .NET Framework 4,6 gereksinimini karşılar.
+    - SSMS, adal 'in x86 sürümünü yüklüyor *. DLL*.
+    - SSDT, adal 'in AMD64 sürümünü yüklüyor *. DLL*.
+    - [Visual Studio Indirmelerinin](https://www.visualstudio.com/downloads/download-visual-studio-vs) en son Visual studio indirmeleri .NET Framework 4,6 gereksinimini karşılar, ancak adal 'nin gerekli AMD64 sürümünü yüklemez *. DLL*.
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Veritabanınızda Azure AD kimlikleriyle eşlenen kapsanan veritabanı kullanıcıları oluşturun
 
@@ -513,9 +516,13 @@ Aşağıdaki deyimler, [Indirme merkezinden](https://www.microsoft.com/download/
 > `-G` komutuyla `sqlcmd` sistem kimlikleriyle çalışmaz ve Kullanıcı sorumlusu oturumu gerektirir.
 
 ```cmd
-sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  
+sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
+
+## <a name="troubleshooting-azure-ad-authentication"></a>Azure AD kimlik doğrulaması sorunlarını giderme
+
+Azure AD kimlik doğrulamasıyla ilgili sorunları gidermeye yönelik yönergeler şu blogda bulunabilir: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

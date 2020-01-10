@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Depolama yönetilen disklerde uygulamanızı sınama
+title: Uygulamanızı Azure Disk Depolama üzerinde değerlendirme
 description: Uygulamanızı Azure 'da değerlendirme süreci hakkında bilgi edinin.
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 01/11/2019
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 600b456cd77d866f1365b7dadfa9ea2473db0fa4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 77e542e9bff399e58b433286385864478bcb5076
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698769"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719554"
 ---
 # <a name="benchmarking-a-disk"></a>Diski sınama
 
@@ -26,7 +26,6 @@ Aşağıdaki örnekleri izlemek için standart bir DS14 VM oluşturun ve VM 'ye 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yüksek performanslı bir makale için tasarımımızda ilerleyin. Bu durumda, prototip için mevcut uygulamanıza benzer bir denetim listesi oluşturacaksınız. Değerlendirme araçlarını kullanarak, iş yüklerinin benzetimini yapabilir ve prototip uygulamasındaki performansı ölçebilir. Bunu yaparak, hangi disk teklifini, uygulama performansı gereksinimlerinizin eşleşeceğini veya geçebileceği tespit edebilirsiniz. Daha sonra üretim uygulamanız için aynı yönergeleri uygulayabilirsiniz.
+[Yüksek performans için tasarlamaya yönelik](premium-storage-performance.md)makalemize ilerleyin.
 
-> [!div class="nextstepaction"]
-> [Yüksek performanslı başlangıç için tasarlama](premium-storage-performance.md) hakkındaki makaleye bakın.
+Bu makalede, prototip için mevcut uygulamanıza benzer bir denetim listesi oluşturacaksınız. Değerlendirme araçlarını kullanarak, iş yüklerinin benzetimini yapabilir ve prototip uygulamasındaki performansı ölçebilir. Bunu yaparak, hangi disk teklifini, uygulama performansı gereksinimlerinizin eşleşeceğini veya geçebileceği tespit edebilirsiniz. Daha sonra üretim uygulamanız için aynı yönergeleri uygulayabilirsiniz.

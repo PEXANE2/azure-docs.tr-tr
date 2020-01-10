@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8de36ea9f7bb77443b22e038172ee69bb8435b29
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311227"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708171"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure depolama 'da statik Web sitesi barındırma
 
@@ -52,17 +52,20 @@ Kullanıcılar Web sitesinin genel URL 'sini kullanarak bir tarayıcıdan site i
 
 |Araç| Kılavuz |
 |----|----|
-|**Azure portalda** | [Azure portal kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure Portal** | [Azure portal kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#portal-find-url) |
 |**Azure CLI** | [Azure CLı kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#cli-find-url) |
 |**Azure PowerShell modülü** | [PowerShell kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#powershell-find-url) |
 
-Sitenizin URL 'SI bölgesel bir kod içerir. Örneğin `https://contosoblobaccount.z22.web.core.windows.net/` URL 'SI, `z22` bölgesel kodunu içerir.
+Sitenizin URL 'SI bölgesel bir kod içerir. Örneğin, URL `https://contosoblobaccount.z22.web.core.windows.net/` bölgesel kod `z22`içerir.
 
 Bu kodun URL 'de kalması gerekir, ancak yalnızca iç kullanım içindir ve bu kodu başka bir şekilde kullanmak zorunda kalmazsınız.
 
 Statik Web sitesi barındırmayı etkinleştirdiğinizde belirttiğiniz dizin belgesi, kullanıcılar siteyi açtıklarında ve belirli bir dosya belirtmezseniz görüntülenir (örneğin: `https://contosoblobaccount.z22.web.core.windows.net`).  
 
 Sunucu bir 404 hatası döndürürse ve Web sitesini etkinleştirdiğinizde bir hata belgesi belirtmediğinde, kullanıcıya varsayılan bir 404 sayfası döndürülür.
+
+> [!NOTE]
+> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) , statik Web sitesinde desteklenmez.
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Web kapsayıcısının genel erişim düzeyini ayarlamanın etkisi
 
@@ -74,9 +77,9 @@ Aşağıdaki ekran görüntüsünde Azure portal ortak erişim düzeyi ayarı g�
 
 Birincil statik Web sitesi uç noktası etkilenmediğinden, genel erişim düzeyinde yapılan bir değişiklik birincil blob hizmeti uç noktasını etkiler.
 
-Örneğin, **$Web** kapsayıcısının genel erişim düzeyini ( **Anonim erişim olmadan)** **BLOB 'a (yalnızca blob 'lar için anonim okuma erişimi**) değiştirirseniz, birincil statik Web sitesi uç noktasına genel erişim düzeyi `https://contosoblobaccount.z22.web.core.windows.net/index.html` değişmez.
+Örneğin, **$Web** kapsayıcısının genel erişim düzeyini ( **Anonim erişim olmadan)** **BLOB 'a (yalnızca blob 'lar için anonim okuma erişimi**) değiştirirseniz, birincil statik Web sitesi uç noktası `https://contosoblobaccount.z22.web.core.windows.net/index.html` genel erişim düzeyi değişmez.
 
-Ancak, birincil blob hizmeti uç noktasına `https://contosoblobaccount.blob.core.windows.net/$web/index.html` ' a Genel erişim Private ' dan Public ' e değişir. Artık kullanıcılar bu iki uç noktanın birini kullanarak bu dosyayı açabilir.
+Ancak, birincil blob hizmeti uç noktası `https://contosoblobaccount.blob.core.windows.net/$web/index.html` genel erişimi Private ' dan Public ' e değişir. Artık kullanıcılar bu iki uç noktanın birini kullanarak bu dosyayı açabilir.
 
 ## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>Content Delivery Network (CDN) ve Güvenli Yuva Katmanı (SSL) desteği
 

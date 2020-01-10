@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: d4269480887dba994559271de7e68b2ba2b460b6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227818"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708266"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure dosyaları performans sorunlarını giderme
 
@@ -26,7 +26,7 @@ Premium paylaşımdaki varsayılan kota 100 GiB 'dir ve bu da 100 temel ıOPS (b
 
 Paylaşımınızın kısıtlandığından emin olmak için, portalda Azure ölçümlerinden yararlanabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. **Tüm hizmetler** ' i seçin ve ardından **ölçümler**' i arayın.
 
@@ -42,6 +42,9 @@ Paylaşımınızın kısıtlandığından emin olmak için, portalda Azure ölç
 
 ![Premium dosya paylaşımları için ölçüm seçenekleri](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
+> [!NOTE]
+> Bir dosya paylaşımının kısıtlandığı bir uyarı almak için, bkz. [bir dosya paylaşma kısıtlandığında uyarı oluşturma](#how-to-create-an-alert-if-a-file-share-is-throttled).
+
 ### <a name="solution"></a>Çözüm
 
 - Paylaşımınızda daha yüksek bir kota belirterek sağlanan kapasiteyi yükseltin.
@@ -54,7 +57,7 @@ Paylaşımınızın kısıtlandığından emin olmak için, portalda Azure ölç
 
 ![Ölçümlerinizin API adı için filtre](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
 - Meta veri işlemlerinin sayısını azaltmak için uygulamanın değiştirilip değiştirilemeyeceğini denetleyin.
 - Dosya paylaşımında bir VHD ekleyin ve veri üzerinde dosya işlemleri gerçekleştirmek için VHD 'YI istemciden SMB 'ye bağlayın. Bu yaklaşım tek yazıcı ve birden çok okuyucu senaryosu için geçerlidir ve meta veri işlemlerinin yerel olmasına olanak sağlar ve yerel olarak doğrudan bağlanmış bir depolamaya benzer bir performans sunar.
@@ -82,7 +85,7 @@ Müşteri tarafından kullanılan uygulama tek iş parçacıklı ise, bu, sağla
 
 Bunun olası nedenlerinden biri, SMB çoklu kanal desteğinin olmamasıdır. Şu anda Azure dosya paylaşımları yalnızca tek kanalı destekler, bu nedenle istemci sanal makineden sunucuya yalnızca bir bağlantı vardır. Bu tek bağlantı, istemci sanal makinesinde tek bir çekirdeğe gereğinden, bu nedenle bir VM 'den en fazla üretilen iş ulaşılabilir, tek bir çekirdekle bağlanır.
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
 - Daha büyük bir çekirdekli VM 'nin alınması, aktarım hızını artırmaya yardımcı olabilir.
 - İstemci uygulamasını birden çok VM 'den çalıştırmak, aktarım hızını artırır.
@@ -95,7 +98,7 @@ Bunun olası nedenlerinden biri, SMB çoklu kanal desteğinin olmamasıdır. Şu
 
 Bu, Linux üzerinde SMB istemcisinin uygulanmasıyla ilgili bilinen bir sorundur.
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
 - Yükü birden çok VM arasında yayın.
 - Aynı VM 'de, **nosharesock** seçeneğiyle birden çok bağlama noktası kullanın ve yükü bu bağlama noktalarına yayın.
@@ -107,7 +110,7 @@ Bu, Linux üzerinde SMB istemcisinin uygulanmasıyla ilgili bilinen bir sorundur
 
 Dizin kiraları için destek eksikliği yok.
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
 - Mümkünse, kısa bir süre içinde aynı dizinde aşırı açma/kapatma tanıtıcısından kaçının.
 - Linux VM 'Ler için, bağlama seçeneği olarak **actimeo =\<sec >** belirterek Dizin giriş önbelleği zaman aşımını artırın. Bu, varsayılan olarak bir saniyedir ve üç ya da beş gibi daha büyük bir değer yardımcı olabilir.
@@ -119,7 +122,7 @@ Dizin kiraları için destek eksikliği yok.
 
 Büyük GÇ derinliği, CentOS/RHEL üzerinde desteklenmez.
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
 - CentOS 8/RHEL 8 ' e yükseltin.
 - Ubuntu olarak değiştirin.
@@ -134,7 +137,7 @@ Azure dosyaları 'na ve Azure dosyalarına yavaş dosya kopyalama ile karşıla�
 
 İstemci uygulaması, temel ıOPS 'yi sürekli olarak aşıyor. Şu anda, istek yükünün hizmet tarafı yumuşatması yoktur, bu nedenle istemci temel ıOPS 'yi aşarsa hizmet tarafından kısıtlanacaktır. Bu kısıtlama, istemcinin bir jtery/testere-tooth ıOPS düzeniyle karşılaşmasına neden olabilir. Bu durumda, istemci tarafından elde edilen ortalama ıOPS, taban ıOPS değerinden daha düşük olabilir.
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
 - Paylaşımın kısıtlanmaması için istemci uygulamasından gelen istek yükünü azaltın.
 - Paylaşımın kısıtlanmaması için paylaşımın kotasını artırın.
@@ -145,7 +148,7 @@ Azure dosyaları 'na ve Azure dosyalarına yavaş dosya kopyalama ile karşıla�
 
 DirectoryOpen/DirectoryClose çağrılarının sayısı en üst API çağrılarından ise ve istemcinin bu çok sayıda çağrı yapmasına gerek duymuyorsanız, Azure istemci VM 'de yüklü virüsten koruma sorunu olabilir.
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
 - Bu sorunla ilgili bir düzelme, [Windows Için Nisan platformu güncelleştirmesinde](https://support.microsoft.com/help/4052623/update-for-windows-defender-antimalware-platform)sunulmaktadır.
 
@@ -155,9 +158,9 @@ DirectoryOpen/DirectoryClose çağrılarının sayısı en üst API çağrılar�
 
 Çok sayıda dosya oluşturmaya bağlı olan iş yükleri, Premium dosya paylaşımlarının ve standart dosya paylaşımlarının performansı arasında önemli bir farklılık görmeyecektir.
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
-- Yok.
+- Hiçbiri.
 
 ## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Windows 8.1 veya Server 2012 R2 'den yavaş performans
 
@@ -165,6 +168,41 @@ DirectoryOpen/DirectoryClose çağrılarının sayısı en üst API çağrılar�
 
 GÇ yoğun iş yükleri için Azure dosyalarına erişirken beklenen gecikme süresinden daha yüksek.
 
-### <a name="workaround"></a>Geçici Çözüm
+### <a name="workaround"></a>Geçici çözüm
 
 - Kullanılabilir [düzeltmeyi](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1)yükler.
+
+## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Dosya paylaşma kısıtlandığında uyarı oluşturma
+
+1. [Azure Portal](https://portal.azure.com), **izleyici**' ye tıklayın. 
+
+2. **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
+
+3. Uyarı vermek istediğiniz dosya paylaşımının bulunduğu **depolama hesabı/dosya** kaynağını seçmek için **Seç** ' e tıklayın ve ardından **bitti**' ye tıklayın. Örneğin, depolama hesabı adı contoso ise, contoso/dosya kaynağını seçin.
+
+4. Koşul eklemek için **Ekle** ' ye tıklayın.
+
+5. Depolama hesabı için desteklenen sinyallerin bir listesini göreceksiniz, **işlem** ölçümünü seçin.
+
+6. **Sinyal mantığını Yapılandır** dikey penceresinde, **yanıt türü** boyutuna gidin, **boyut değerleri** açılan penceresine tıklayın ve **başarılı olarak daraltma** (SMB IÇIN) veya **clientesişror** (REST için) seçeneğini belirleyin. 
+
+  > [!NOTE]
+  > Başarılı bir kısıtlama veya Clientazaltıngerror boyut değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir.  Boyut değerini eklemek için, **boyut değerleri** açılan listesi yanındaki **+** tıklatın, **başarılı olarak azaltma** veya **Clientkısıtıngerror**yazın, **Tamam** ' a tıklayın ve ardından #6 adımını tekrarlayın.
+
+7. **Dosya paylaşımının** boyutuna gidin, **boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımından seçin. 
+
+  > [!NOTE]
+  > Dosya paylaşımı standart bir dosya paylaşımındaysa, standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılan değeri boş olur. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir. 
+
+8. Ölçüm uyarı kuralını değerlendirmek için kullanılan **Uyarı parametrelerini** (eşik, operatör, aggreme ayrıntı düzeyi ve sıklık) tanımlayın ve **bitti**' ye tıklayın.
+
+  > [!TIP]
+  > Statik bir eşik kullanıyorsanız, ölçüm grafiği dosya paylaşımının kısıtlandığı durumlarda makul bir eşiği belirlemesine yardımcı olabilir. Dinamik bir eşik kullanıyorsanız, ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler.
+
+9. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir **eylem grubu** (e-posta, SMS, vb.) ekleyin.
+
+10. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+
+11. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
+
+Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılara genel bakış]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
