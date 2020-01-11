@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 01/06/2020
-ms.openlocfilehash: 21e9884ab4559b510b13691ac5cafccb753622d6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: a905054b1b2a04fa2b7865d2c1065ccee37cffc0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690799"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860439"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Hızlı Başlangıç: Azure Time Series Insights’ı Keşfedin
 
@@ -74,7 +74,7 @@ Bu Time Series Insights gezgin hızlı başlangıcı, genel kullanıma sunulan �
 
    [Terim eklemek ![](media/quickstart/quickstart-add-a-term.png)](media/quickstart/quickstart-add-a-term.png#lightbox)
 
-1. Seçili tüm arama terimlerini görmek veya improvised serisi filtreleme için **filtre serisi** kutusuna bir filtre terimi girmek Için, **filtre serisi** kutusunu boş bırakın.
+1. Tüm seçili arama koşullarını göstermek veya improvised serisi filtreleme için **filtre serisi** kutusuna bir filtre terimi girmek Için, **filtre serisi** kutusunu boş bırakın.
 
    [![filtresi serisi](media/quickstart/quickstart-filter-series.png)](media/quickstart/quickstart-filter-series.png#lightbox)
 

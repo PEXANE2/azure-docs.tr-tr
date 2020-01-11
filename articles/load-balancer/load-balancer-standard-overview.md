@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 5a4240065039bd6e0633a19c8aad00604970c216
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 68f95c893646d76a80a4edfeb557064660ff9f1c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834669"
+ms.locfileid: "75864273"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure Standart Load Balancer genel bakış
 
@@ -38,20 +38,6 @@ Load Balancer kaynağının işlevleri her zaman ön uç, bir kural, sistem duru
 Bir anahtar yönü, kaynak için sanal ağın kapsamıdır.  Temel Load Balancer bir kullanılabilirlik kümesi kapsamında mevcut olsa da, bir Standart Load Balancer sanal ağın kapsamıyla tamamen tümleşiktir ve tüm sanal ağ kavramları geçerlidir.
 
 Load Balancer kaynaklar, Azure 'un, oluşturmak istediğiniz senaryoya ulaşmak için çok kiracılı altyapısını nasıl programtabileceği hakkında ifade ettiğiniz nesnelerdir.  Load Balancer kaynakları ile gerçek altyapı arasında doğrudan ilişki yoktur; Load Balancer oluşturmak bir örnek oluşturmaz, kapasite her zaman kullanılabilir olur ve göz önünde bulundurulması gereken başlangıç veya ölçeklendirme gecikmeleri yoktur. 
-
-## <a name="why-use-standard-load-balancer"></a>Neden Standart Load Balancer kullanmalıyım?
-
-Standart Load Balancer uygulamalarınızı ölçeklendirmenizi ve küçük ölçekli dağıtımlardan büyük ve karmaşık çok bölgeli mimarilere kadar yüksek düzeyde kullanılabilirlik oluşturmanızı sağlar.
-
-Standart Load Balancer ve temel Load Balancer arasındaki farklılıklara genel bakış için aşağıdaki tabloyu gözden geçirin:
-
->[!NOTE]
-> Yeni tasarımlarda Standart Load Balancer kullanılmalıdır. 
-
-[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
-
-Load Balancer, [fiyatlandırma](https://aka.ms/lbpricing)ve [SLA](https://aka.ms/lbsla) [için hizmet sınırlarını](https://aka.ms/lblimits)gözden geçirin.
-
 
 ### <a name="backend"></a>Arka uç havuzu
 
@@ -184,12 +170,6 @@ SKU 'Lar değişebilir değildir. Bir kaynak SKU 'sundan diğerine geçmek için
 4. Tüm sanal makine örneklerini yeni standart SKU kaynaklarına ekleyin.
 
 >[!IMPORTANT]
->
->Temel ve standart SKU 'ların kullanımıyla ilgili sınırlamalar vardır.
->
->Standart SKU 'nun HA bağlantı noktaları ve tanılama özellikleri yalnızca standart SKU 'da kullanılabilir. Standart SKU 'dan temel SKU 'ya geçiş yapamazsınız ve ayrıca bu özellikleri de koruyabilirsiniz.
->
->Hem temel hem de standart SKU, bu makalede özetlenen sayıda farklılık vardır.  Bunları anladığınızdan ve hazırlandığınızdan emin olun.
 >
 >Eşleşen SKU 'Ların Load Balancer ve genel IP kaynakları için kullanılması gerekir. Temel SKU kaynakları ve standart SKU kaynaklarının bir karışımı olamaz. Tek başına sanal makineleri, bir kullanılabilirlik kümesi kaynağındaki sanal makineleri veya sanal makine ölçek kümesi kaynaklarını aynı anda iki SKU’ya iliştiremezsiniz.
 

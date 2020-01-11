@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 85d882cff968c9b68ece104e850a7f16c33947b2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12c624c6798ca48cad9312cafaf3425091a82a71
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435099"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867451"
 ---
 # <a name="what-are-application-templates"></a>Uygulama şablonları nedir?
 
@@ -42,6 +42,7 @@ Uygulama şablonu seçiminiz, uygulamanızın cihazlar için Tak ve Kullan gibi 
 - Perakende > Dijital dağıtım merkezi
 - Mağaza Içi analiz-koşul izleme > perakende
 - Mağaza Içi > Retail Analytics – kullanıma alma
+- Perakende > Mikro Karşılama Merkezi
 - Perakende > Akıllı envanter yönetimi
 - Enerji > Akıllı ölçüm izleme
 - Enerji > güneş paneli izleme

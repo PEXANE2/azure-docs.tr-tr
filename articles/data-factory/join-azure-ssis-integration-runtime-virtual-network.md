@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: a4b0debc712504e8cb3c6d61372bd3a82c7932bb
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: b068eeeada842f2439f6135bfa8567a6c9709d12
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497027"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862824"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS tümleştirme çalışma zamanını bir sanal ağa katma
 
@@ -30,10 +30,20 @@ Azure Data Factory SQL Server Integration Services (SSIS) kullanırken, Azure-SS
 
 - Azure-SSIS IR çalışan SSIS paketlerinden IP güvenlik duvarı kurallarıyla yapılandırılmış veri depolarına/kaynaklara bağlanmak istiyorsunuz.
 
-Data Factory, Azure-SSIS IR klasik dağıtım modeli veya Azure Resource Manager dağıtım modeli aracılığıyla oluşturulan bir sanal ağa eklemenize olanak tanır. 
+Data Factory, Azure-SSIS IR klasik dağıtım modeli veya Azure Resource Manager dağıtım modeli aracılığıyla oluşturulan bir sanal ağa eklemenize olanak tanır.
 
 > [!IMPORTANT]
 > Klasik sanal ağ kullanım dışı olduğundan bunun yerine Azure Resource Manager sanal ağı kullanın.  Klasik sanal ağı zaten kullanıyorsanız, Azure Resource Manager sanal ağa mümkün olan en kısa sürede geçiş yapın.
+
+Bir [sanal ağ öğreticisine katılması Için Azure-SQL Server Integration Services (SSIS) tümleştirme çalışma zamanı (IR) yapılandırma](tutorial-deploy-ssis-virtual-network.md) , Azure Portal üzerinden en düşük adımları gösterir. Bu makale öğreticiye genişleterek tüm isteğe bağlı görevleri açıklar:
+
+- Sanal ağ kullanıyorsanız (klasik).
+- Azure-SSIS IR için kendi genel IP adreslerini getir.
+- Kendi etki alanı adı sistemi (DNS) sunucunuzu kullanıyorsanız.
+- Alt ağda bir ağ güvenlik grubu (NSG) kullanıyorsanız.
+- Azure ExpressRoute veya Kullanıcı tanımlı yol (UDR) kullanıyorsanız.
+- Özelleştirilmiş Azure-SSIS IR kullanıyorsanız.
+- Azure PowerShell sağlama kullanıyorsanız.
 
 ## <a name="access-to-on-premises-data-stores"></a>Şirket içi veri depolarına erişim
 
@@ -319,7 +329,7 @@ Azure Resource Manager Sanal ağınızı veya klasik Sanal ağınızı yapıland
 
    ![Veri fabrikaları listesi](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
-1. Listeden Azure-SSIS IR veri fabrikanızı seçin. Veri fabrikanızın giriş sayfasını görürsünüz. **& dağıtım** kutucuğunu seçin. Data Factory Kullanıcı arabirimini ayrı bir sekmede görürsünüz. 
+1. Listeden Azure-SSIS IR veri fabrikanızı seçin. Veri fabrikanızın giriş sayfasını görürsünüz. **Yazar & İzleyicisi** kutucuğunu seçin. Data Factory Kullanıcı arabirimini ayrı bir sekmede görürsünüz. 
 
    ![Data factory giriş sayfası](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
 

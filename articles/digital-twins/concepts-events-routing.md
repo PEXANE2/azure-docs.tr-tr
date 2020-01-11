@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 65b760eaf28d907fab3654ed92f960be7556b0d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660333"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862365"
 ---
 # <a name="routing-iot-events-and-messages"></a>IoT olaylarını ve iletilerini yönlendirme
 
@@ -53,7 +53,7 @@ Azure dijital TWINS Şu anda seçili uç noktaya gönderilecek olan aşağıdaki
 
 > [!IMPORTANT]  
 > Tüm **Endpointtypes** tüm **eventTypes**'ı desteklemez.
-> Her bir **EndpointType**için Izin verilen **eventTypes** için aşağıdaki tabloya bakın.
+> Her bir **EndpointType**için Izin verilen **eventTypes** için aşağıdaki tabloyu gözden geçirin.
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
@@ -62,10 +62,10 @@ Azure dijital TWINS Şu anda seçili uç noktaya gönderilecek olan aşağıdaki
 | EventGrid|               |         X         |     X       |      X       |   X       |
 
 >[!NOTE]  
->Uç noktaların oluşturulması ve olayların şeması örnekleri hakkında daha fazla bilgi için bkz. [Çıkış ve uç noktalar](how-to-egress-endpoints.md).
+>Uç noktaların oluşturulması ve olayların ' şeması, okunan [Çıkış ve uç noktaların](how-to-egress-endpoints.md)örnekleri hakkında daha fazla bilgi için.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure dijital TWINS önizleme sınırları hakkında bilgi edinmek için bkz. [Genel Önizleme hizmeti sınırları](concepts-service-limits.md).
+- Azure dijital TWINS önizleme sınırları hakkında bilgi edinmek için [Genel Önizleme hizmeti sınırlarını](concepts-service-limits.md)okuyun.
 
-- Bir Azure dijital TWINS örneği denemek için, [kullanılabilir odaları bulmak için hızlı](quickstart-view-occupancy-dotnet.md)başlangıca bakın.
+- Bir Azure dijital TWINS örneği denemek için, [kullanılabilir odaları bulmak için hızlı başlangıcı](quickstart-view-occupancy-dotnet.md)okuyun.

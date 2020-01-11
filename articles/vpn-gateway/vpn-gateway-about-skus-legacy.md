@@ -1,19 +1,18 @@
 ---
-title: Eski Azure sanal ağ VPN Gateway SKU 'Ları | Microsoft Docs
+title: Eski Azure sanal ağ VPN Gateway SKU 'Ları
 description: Eski sanal ağ geçidi SKU 'Ları ile çalışma Temel, standart ve HighPerformance.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5c745258929d495c1e568a156690f569de9f0e36
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533914"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861923"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Sanal ağ geçidi SKU 'Ları (eski SKU 'Lar) ile çalışma
 
@@ -37,7 +36,7 @@ Eski ağ geçidi fiyatlandırmasını, [ExpressRoute fiyatlandırma sayfasında]
 
 Ağ geçidinizi aynı SKU ailesi içindeki bir ağ geçidi SKU 'SU ile yeniden boyutlandırabilirsiniz. Örneğin, standart bir SKU 'SU varsa, HighPerformance SKU 'suna yeniden boyutlandırabilirsiniz. Ancak, eski SKU 'Lar ve yeni SKU aileleri arasında VPN ağ geçidinizi yeniden boyutlandıramazsınız. Örneğin, standart bir SKU 'dan bir VpnGw2 SKU 'suna veya temel SKU 'yu VpnGw1 'e gidemezsiniz.
 
-### <a name="resource-manager"></a>Resource Manager
+### <a name="resource-manager"></a>Kaynak Yöneticisi
 
 PowerShell kullanarak Kaynak Yöneticisi dağıtım modeli için bir ağ geçidini yeniden boyutlandırmak üzere aşağıdaki komutu kullanın:
 

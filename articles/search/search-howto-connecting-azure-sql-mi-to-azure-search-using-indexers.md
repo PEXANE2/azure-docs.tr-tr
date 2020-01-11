@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 16daf4a79252134703715ccd88f0b10dda7f4fa6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0f91775e0175b4b4af9b57fa96e389c3a2a22564
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792164"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863130"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Bilişsel Arama Dizin oluşturucudan SQL yönetilen örneği 'ne bağlantı yapılandırma
 
@@ -33,6 +33,13 @@ Ayrıca, genel uç noktasını **güvenlik** > **sanal ağ** altında bulunan me
 Ağ güvenlik grubunun Azure hizmetlerinden gelen bağlantılara izin veren doğru **gelen güvenlik kurallarına** sahip olup olmadığını denetleyin.
 
    ![NSG gelen güvenlik kuralı](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG gelen güvenlik kuralı")
+
+> [!NOTE]
+> Geçerli kuralı (`public_endpoint_inbound`) 2 kuralıyla değiştirerek, yönetilen SQL örneğiniz için gelen erişimde daha kısıtlayıcı olmasını seçebilirsiniz:
+>
+> * `AzureCognitiveSearch` [hizmeti etiketiyle](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) gelen erişime izin veriliyor ("kaynak" = `AzureCognitiveSearch`)
+>
+> * Arama hizmetinin IP adresinden gelen erişime izin vererek, tam etki alanı adına (örn., `<your-search-service-name>.search.windows.net`) ping ile elde edilebilir. ("Kaynak" = `IP address`)
 
 ## <a name="get-public-endpoint-connection-string"></a>Genel uç nokta bağlantı dizesi al
 **Genel uç nokta** için bağlantı dizesini kullandığınızdan emin olun (bağlantı noktası 1433 değil bağlantı noktası 3342).

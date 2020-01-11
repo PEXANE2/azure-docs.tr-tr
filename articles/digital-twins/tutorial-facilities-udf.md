@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 80fd1275f3bf9585ff8e40a94d0de2d422baec71
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b988d500ed2a201bb31f0d3a7cbeb7df00af9faf
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383235"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860903"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Öğretici: Azure dijital TWINS önizlemesi ile derleme ve izleme çalışma koşullarınızı sağlama
 
@@ -64,7 +64,7 @@ Algılayıcı verilerinizin işlenmesini özelleştirmek için Kullanıcı tanı
 
 Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı işleve alan yöneticisi rolünü atar. Bu rol, sağlanan boşlukların herhangi birinden gelen olaylara erişmesine izin verir. 
 
-1. `matcherNames`provisionSample.yaml*adlı dosyanın* düğümüne aşağıdaki satırı ekleyerek veya var olan satırın açıklamasını kaldırarak UDF'yi sıcaklık eşleştiricisini içerecek şekilde yapılandırın:
+1. *provisionSample.yaml* adlı dosyanın `matcherNames` düğümüne aşağıdaki satırı ekleyerek veya var olan satırın açıklamasını kaldırarak UDF'yi sıcaklık eşleştiricisini içerecek şekilde yapılandırın:
 
     ```yaml
             - Matcher Temperature
@@ -234,7 +234,7 @@ Bu bölümde, örnekte *cihaz bağlantısı* adlı projeyi kullanacaksınız. Ha
 
 ## <a name="get-results-of-the-user-defined-function"></a>Kullanıcı tanımlı işlevin sonuçlarını al
 
-Örneğiniz cihaz ve sensör verilerini her aldığında kullanıcı tanımlı işlev çalışır. Bu bölüm, Kullanıcı tanımlı işlevin sonuçlarını almak için Azure dijital TWINS örneğinizi sorgular. Neredeyse gerçek zamanlı olarak, bir odanın yeni olduğunu ve sıcaklığın doğru olduğunu göreceksiniz. 
+Örneğiniz cihaz ve sensör verilerini her aldığında kullanıcı tanımlı işlev çalışır. Bu bölüm, Kullanıcı tanımlı işlevin sonuçlarını almak için Azure dijital TWINS örneğinizi sorgular. Neredeyse gerçek zamanlı olarak, bir odanın yeni olduğunu ve sıcaklığın doğru olduğunu bir yere bildirilecek. 
 
 1. Örneği veya yeni bir komut penceresini sağlamak için kullandığınız komut penceresini açın ve örneğin **Occupancy-quickstart\src** klasörüne yeniden gidin.
 
@@ -254,7 +254,7 @@ Bu bölümde, örnekte *cihaz bağlantısı* adlı projeyi kullanacaksınız. Ha
 
 Bu noktada Azure dijital İkizlerini keşfetmeye durdurmak istiyorsanız, bu öğreticide oluşturulan kaynakları silmek çekinmeyin:
 
-1. [Azure Portal](https://portal.azure.com)sol menüden **tüm kaynaklar**' ı seçin, dijital TWINS kaynak grubunuzu seçin ve **Sil**' i seçin.
+1. Sol menüden [Azure portalında](https://portal.azure.com)seçin **tüm kaynakları**dijital İkizlerini kaynak grubunuzu seçin ve seçin **Sil**.
 
     > [!TIP]
     > Dijital İkizlerini örneğinizin silme sorun olduysa, bir hizmet güncelleştirmesi düzeltme alındı. Örneğiniz silme yeniden deneyin.

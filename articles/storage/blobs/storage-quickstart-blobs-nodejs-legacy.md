@@ -1,48 +1,46 @@
 ---
-title: 'Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı v2'
-description: Nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturun. Blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Node. js v2 için Azure Storage istemci kitaplığı 'nı kullanın.
+title: 'Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı ile v10 arasındaki'
+description: JavaScript için Azure Storage istemci kitaplığı ile v10 arasındaki ile Node. js ' de blob ve kapsayıcılar oluşturma, karşıya yükleme ve silme
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/04/2019
+ms.date: 09/24/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 7300d4eccec5b1e4b3b5b7dc292cf6150a42e7b4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.topic: quickstart
+ms.openlocfilehash: dd59dec65f75a17c35750140349101c600a92636
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269678"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862858"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı v2
+# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı ile v10 arasındaki
 
-Bu nasıl yapılır kılavuzunda, Azure Blob depolama ile Blobları karşıya yüklemek, indirmek ve listelemek için Node. js v2 için istemci kitaplığı 'nı nasıl kullanacağınızı öğreneceksiniz.
+Bu hızlı başlangıçta blob yükleme, indirme, listeleme ve silme ile kapsayıcıları yönetme amacıyla Node.js'de [JavaScript için Azure Storage v10 SDK'sını](https://github.com/Azure/azure-sdk-for-js) kullanmayı öğreneceksiniz.
 
-> [!TIP]
-> Node. js için Azure Storage istemci kitaplığı 'nın en son sürümü ile v10 arasındaki 'dir. Microsoft, mümkün olduğunda istemci kitaplığı 'nın en son sürümünü kullanmanızı önerir. İle v10 arasındaki kullanmaya başlamak için bkz. [hızlı başlangıç: JavaScript Için Azure Storage istemci kitaplığı 'nı kullanarak Blobları karşıya yükleme, indirme, listeleme ve silme (Önizleme)](storage-quickstart-blobs-nodejs-v10.md).
+## <a name="prerequisites"></a>Ön koşullar
 
-## <a name="prerequisites"></a>Önkoşullar
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-
-[Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM)bir Azure depolama hesabı oluşturun. Hesap oluşturmayla ilgili yardım için bkz. [Depolama hesabı oluşturma](../common/storage-quickstart-create-account.md).
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 
-[Örnek uygulama](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) basit bir Node. js konsol uygulamasıdır. Başlamak için, aşağıdaki komutu kullanarak depoyu makinenize kopyalayın:
+Bu hızlı başlangıçtaki [örnek uygulama](https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git), basit bir Node.js konsol uygulamasıdır. Başlamak için, aşağıdaki komutu kullanarak depoyu makinenize kopyalayın:
 
 ```bash
-git clone https://github.com/Azure-Samples/storage-blobs-node-quickstart.git
+git clone https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git
 ```
 
-Uygulamayı açmak için, *storage-blobs-node-quickstart* klasörünü arayın ve sık kullandığınız kod düzenleme ortamınızda açın.
+Ardından uygulama klasörüne geçin:
 
-[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
+```bash
+cd azure-storage-js-v10-quickstart
+```
 
-## <a name="configure-your-storage-connection-string"></a>Depolama bağlantı dizelerinizi yapılandırma
+Şimdi klasörü sık kullandığınız kod düzenleme ortamında açın.
 
-Uygulamayı çalıştırmadan önce, depolama hesabınız için bağlantı dizesi sağlamanız gerekir. Örnek depo, *.env.example* adlı bir dosya içerir. *.example* uzantısını kaldırarak bu dosyayı yeniden adlandırabilirsiniz. Böylece *.env* adlı bir dosya elde edilir. *.env* dosyasının içinde, *AZURE_STORAGE_CONNECTION_STRING* anahtarının sonrasına bağlantı dizesi değerinizi ekleyin.
+## <a name="configure-your-storage-credentials"></a>Depolama kimlik bilgilerini yapılandırma
+
+Uygulamayı çalıştırmadan önce, depolama hesabınız için güvenlik kimlik bilgilerini sağlamanız gerekir. Örnek depo, *.env.example* adlı bir dosya içerir. *.example* uzantısını kaldırarak bu dosyayı yeniden adlandırın. Böylece *.env* adlı bir dosya elde edilir. *.env* dosyasında *AZURE_STORAGE_ACCOUNT_NAME* ve *AZURE_STORAGE_ACCOUNT_ACCESS_KEY* anahtarlarının altına hesap adı ve erişim anahtarı değerlerinizi ekleyin.
 
 ## <a name="install-required-packages"></a>Gerekli paketleri yükleme
 
@@ -53,312 +51,360 @@ npm install
 ```
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
+
 Bağımlılıklar yüklendiğine göre aşağıdaki komutu göndererek örneği çalıştırabilirsiniz:
 
 ```bash
 npm start
 ```
 
-Betikten çıkış şununla benzerlik gösterecektir:
+Uygulamadan çıkış şu örnekle benzerlik gösterecektir:
 
 ```bash
+Container "demo" is created
 Containers:
  - container-one
  - container-two
-Container "demo" is created
+ - demo
 Blob "quickstart.txt" is uploaded
 Local file "./readme.md" is uploaded
 Blobs in "demo" container:
  - quickstart.txt
+ - readme-stream.md
  - readme.md
-Blob downloaded blob content: "hello Blob SDK"
+Blob downloaded blob content: "hello!"
 Blob "quickstart.txt" is deleted
 Container "demo" is deleted
 Done
 ```
 
-Bu örnek için yeni bir depolama hesabı kullanıyorsanız, "*kapsayıcılar*" etiketi altında listelenen herhangi bir kapsayıcı adı göremeyebilirsiniz.
+Bu hızlı başlangıç için yeni bir depolama hesabı kullanıyorsanız, yalnızca "*kapsayıcılar:* " etiketinin altında listelenen *demo* kapsayıcısını görebilirsiniz.
 
 ## <a name="understanding-the-code"></a>Kodu anlama
-İlk ifade değerleri ortam değişkenlerine yüklemek için kullanılır.
+
+Örnek, Azure Blob depolama ad alanından bir dizi sınıfı ve işlevi içeri aktararak başlar. İçeri aktarılan öğelerin her biri örnekte kullanıldıkları noktada açıklanmıştır.
+
+```javascript
+const {
+    Aborter,
+    BlobURL,
+    BlockBlobURL,
+    ContainerURL,
+    ServiceURL,
+    SharedKeyCredential,
+    StorageURL,
+    uploadStreamToBlockBlob
+} = require('@azure/storage-blob');
+```
+
+Kimlik bilgileri, uygun bağlama göre ortam değişkenlerinden okunur.
 
 ```javascript
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').load();
+    require('dotenv').config();
 }
 ```
 
-*dotenv* modülü uygulama hata ayıklama için yerel olarak çalıştırılırken ortam değişkenlerini yükler. Değerler *.env* adlı bir dosyada tanımlanır ve geçerli yürütme bağlamına yüklenir. Üretim bağlamlarında, bu değerleri sunucu yapılandırması sağlar ve bu nedenle bu kod yalnızca betik bir “üretim” bağlamı altında çalıştırılmadığında çalıştırılır.
+*dotenv* modülü uygulama hata ayıklama için yerel olarak çalıştırılırken ortam değişkenlerini yükler. Değerler *.env* adlı bir dosyada tanımlanır ve geçerli yürütme bağlamına yüklenir. Üretim ortamında, bu değerleri sunucu yapılandırması sağlar ve bu nedenle bu kod yalnızca betik bir “üretim” ortamında *çalıştırılmadığında* çalışır.
+
+Bir sonraki modül bloğu, arabirimine dosya sistemi desteği sunmak için içeri aktarılır.
 
 ```javascript
+const fs = require('fs');
 const path = require('path');
-const storage = require('azure-storage');
 ```
 
-Modüllerin amacı aşağıdaki gibidir: 
+Bu modüllerin amacı aşağıdaki gibidir: 
 
-*.env* adlı dosya geçerli yürütme bağlamına
-- *path*, blob depolamaya yüklenecek dosyanın mutlak dosya yolunu belirlemek için gereklidir
-- *Azure-Storage* , Node. js Için [Azure depolama istemci kitaplığı](https://docs.microsoft.com/javascript/api/azure-storage) modülüdür
+- *fs*, dosya sistemiyle birlikte çalışmak için kullanılan yerel Node.js modülüdür
 
-Daha sonra, **blobService** değişkeni Azure Blob hizmetinin yeni bir örneği olarak başlatılır.
+- *path*, Blob depolamaya dosya yükleme sırasında kullanılan dosya mutlak yolunu belirlemek için gereklidir
+
+Ardından ortam değişkeni değerleri okunur ve sabit değerler halinde ayarlanır.
 
 ```javascript
-const blobService = storage.createBlobService();
+const STORAGE_ACCOUNT_NAME = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+const ACCOUNT_ACCESS_KEY = process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY;
+```
+Sonraki sabit değer kümesi, yükleme işlemleri sırasında dosya boyutu hesaplama amacının gerçekleştirilmesine yardımcı olur.
+
+```javascript
+const ONE_MEGABYTE = 1024 * 1024;
+const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-Aşağıdaki uygulamada, *blobService* işlevlerinin her biri bir *Promise* içinde kaydırılır ve bu da *Azure Depolama API*’sinin geri çağrı yapısını kolaylaştırmak için JavaScript'in *async* işlevine ve [await](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) işlecine erişilmesini sağlar. Her bir işlev için başarılı bir yanıt döndürüldüğünde Promise, eyleme özgü bir iletiyle birlikte alakalı verilerle çözümleme gerçekleştirir.
-
-### <a name="list-containers"></a>Kapsayıcıları listeleme
-
-*listContainers* işlevi gruplar içindeki kapsayıcıların koleksiyonlarını döndüren [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) öğesini çağırır.
+API tarafından yapılan istekler belirli bir sürenin sonunda zaman aşımına uğrayacak şekilde ayarlanabilir. [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) sınıfı isteklerin zaman aşımının yönetilmesinden sorumludur ve arkasından gelen sabit, bu örnekte kullanılan zaman aşımlarını tanımlamak için kullanılır.
 
 ```javascript
-const listContainers = async () => {
-    return new Promise((resolve, reject) => {
-        blobService.listContainersSegmented(null, (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `${data.entries.length} containers`, containers: data.entries });
-            }
-        });
-    });
-};
-```
-
-Grupların boyutu [ListContainersOptions](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.listcontaineroptions?view=azure-node-latest) ile yapılandırılabilir. *listContainersSegmented* çağrıldığında, [ContainerResult](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.containerresult?view=azure-node-latest) örnekleri dizisi olarak blob meta verileri döndürülür. Sonuçlar, 5.000’er olarak artan toplu işler (segmentler) halinde döndürülür. Bir kapsayıcıda 5.000’den fazla blob varsa, sonuçlar *continuationToken* için bir değer içerir. Blob kapsayıcısında yer alan sonraki segmentleri listelemek için, ikinci bağımsız değişken olarak devamlılık belirtecini *listContainersSegment* öğesine geri gönderebilirsiniz.
-
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
-
-*createContainer* işlevi, [createContainerIfNotExists](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) öğesini çağırır ve blob için uygun erişim düzeyini ayarlar.
-
-```javascript
-const createContainer = async (containerName) => {
-    return new Promise((resolve, reject) => {
-        blobService.createContainerIfNotExists(containerName, { publicAccessLevel: 'blob' }, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Container '${containerName}' created` });
-            }
-        });
-    });
-};
-```
-
-*createContainerIfNotExists* için ikinci parametre (**options**), [publicAccessLevel](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) için bir değer kabul eder. *publicAccessLevel* için *blob* değeri, belirli blob verilerinin genel kullanıma sunulduğunu belirtir. Bu ayar, kapsayıcının içeriklerini listeleme yeteneği sağlayan *kapsayıcı* düzeyinde erişimin tersidir.
-
-**createContainerIfNotExists** kullanılması, kapsayıcı önceden mevcut olduğunda uygulamanın hata döndürmeden *createContainer* komutunu birçok defa çalıştırmasına olanak sağlar. Üretim ortamında, uygulama genelinde aynı kapsayıcı kullanıldığında çoğu zaman **createContainerIfNotExists** komutunu yalnızca bir defa çağırırsınız. Bu durumlarda, önceden portal veya Azure CLI aracılığıyla kapsayıcı oluşturabilirsiniz.
-
-### <a name="upload-text"></a>Metni karşıya yükleme
-
-*uploadString* işlevi [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) öğesini blob kapsayıcısına rastgele bir dize yazmak (veya dizenin üzerine yazmak) için çağırır.
-
-```javascript
-const uploadString = async (containerName, blobName, text) => {
-    return new Promise((resolve, reject) => {
-        blobService.createBlockBlobFromText(containerName, blobName, text, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Text "${text}" is written to blob storage` });
-            }
-        });
-    });
-};
-```
-### <a name="upload-a-local-file"></a>Yerel bir dosyayı karşıya yükleme
-
-*uploadLocalFile* işlevi, dosya sistemindeki bir dosyayı blob depolamaya yüklemek ve yazmak veya söz konusu dosyanın üzerine yazmak için [createBlockBlobFromLocalFile](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromlocalfile-string--string--string--errororresult-blobresult--) işlevini kullanır. 
-
-```javascript
-const uploadLocalFile = async (containerName, filePath) => {
-    return new Promise((resolve, reject) => {
-        const fullPath = path.resolve(filePath);
-        const blobName = path.basename(filePath);
-        blobService.createBlockBlobFromLocalFile(containerName, blobName, fullPath, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Local file "${filePath}" is uploaded` });
-            }
-        });
-    });
-};
-```
-Bloblara içerik yüklemenin başka bir yolu da [text](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest-string--string--string---buffer--errororresult-blobresult--) ve [streams](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--) ile çalışmaktır. Dosyanın blob depolamanıza yüklendiğini doğrulamak için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)’ni kullanarak hesabınızdaki verileri görüntüleyebilirsiniz.
-
-### <a name="list-the-blobs"></a>Blobları listeleme
-
-*listBlobs* işlevi, bir kapsayıcıdaki blob meta verileri listesini döndürmek için [listBlobsSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listblobssegmented-string--continuationtoken--errororresult-listblobsresult--) yöntemini çağırır. 
-
-```javascript
-const listBlobs = async (containerName) => {
-    return new Promise((resolve, reject) => {
-        blobService.listBlobsSegmented(containerName, null, (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `${data.entries.length} blobs in '${containerName}'`, blobs: data.entries });
-            }
-        });
-    });
-};
-```
-
-*listBlobsSegmented* çağrıldığında, [BlobResult](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.blobresult?view=azure-node-latest) örnekleri dizisi olarak blob meta verileri döndürülür. Sonuçlar, 5.000’er olarak artan toplu işler (segmentler) halinde döndürülür. Bir kapsayıcıda 5.000’den fazla blob varsa, sonuçlar **continuationToken** için bir değer içerir. Blob kapsayıcısında yer alan sonraki segmentleri listelemek için, ikinci bağımsız değişken olarak devamlılık belirtecini **listBlobSegmented** öğesine geri gönderebilirsiniz.
-
-### <a name="download-a-blob"></a>Blob indirme
-
-*downloadBlob* işlevi, belirtilen mutlak dosya yoluna blobun içeriklerini indirmek için [getBlobToText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) öğesini kullanır.
-
-```javascript
-const downloadBlob = async (containerName, blobName) => {
-    const dowloadFilePath = path.resolve('./' + blobName.replace('.txt', '.downloaded.txt'));
-    return new Promise((resolve, reject) => {
-        blobService.getBlobToText(containerName, blobName, (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Blob downloaded "${data}"`, text: data });
-            }
-        });
-    });
-};
-```
-Burada gösterilen uygulama kaynağı değiştirir ve blob içeriklerini dize olarak döndürür. Blobu bir [akış](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) olarak veya doğrudan bir [yerel dosyaya](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) da indirebilirsiniz.
-
-### <a name="delete-a-blob"></a>Blob silme
-
-*deleteBlob* işlevi [deleteBlobIfExists](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deleteblobifexists-string--string--errororresult-boolean--) işlevini çağırır. Adından da anlaşılacağı gibi bu işlev, blob önceden silindiyse bir hata döndürmez.
-
-```javascript
-const deleteBlob = async (containerName, blobName) => {
-    return new Promise((resolve, reject) => {
-        blobService.deleteBlobIfExists(containerName, blobName, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Block blob '${blobName}' deleted` });
-            }
-        });
-    });
-};
-```
-
-### <a name="delete-a-container"></a>Kapsayıcı silme
-
-Kapsayıcılar blob hizmetinden *deleteContainer* yöntemi çağrılıp kapsayıcı adı geçirilerek silinir.
-
-```javascript
-const deleteContainer = async (containerName) => {
-    return new Promise((resolve, reject) => {
-        blobService.deleteContainer(containerName, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Container '${containerName}' deleted` });
-            }
-        });
-    });
-};
+const ONE_MINUTE = 60 * 1000;
 ```
 
 ### <a name="calling-code"></a>Kodu çağırma
 
-JavaScript'in *async/await* söz dizimini desteklemek için, tüm çağırma kodu *execute* adlı bir işlev içinde sarmalanır. Daha sonra yürütme çağrılır ve bir promise olarak işlenir.
+JavaScript'in *async/await* söz dizimini desteklemek için, tüm çağırma kodu *execute* adlı bir işlev içinde sarmalanır. Daha sonra *execute* çağrılır ve bir promise olarak işlenir.
 
 ```javascript
 async function execute() {
-    // commands 
+    // commands... 
 }
 
 execute().then(() => console.log("Done")).catch((e) => console.log(e));
 ```
-Aşağıdaki tüm kod `// commands` açıklamasının yerleştirildiği yürütme işlevinin içinde çalıştırılır.
+
+Aşağıdaki tüm kod `// commands...` açıklamasının yerleştirildiği yürütme işlevinin içinde çalıştırılır.
 
 İlk olarak, Blob deposuna karşıya yüklemek için ad ve örnek içerik atamak ve yerel dosyaya işaret etmek üzere ilgili değişkenler bildirilir.
 
 ```javascript
 const containerName = "demo";
 const blobName = "quickstart.txt";
-const content = "hello Node SDK";
+const content = "hello!";
 const localFilePath = "./readme.md";
-let response;
 ```
 
-Depolama hesabındaki kapsayıcıları listelemek için, listContainers işlevi çağrılır ve döndürülen kapsayıcı listesi çıkış penceresine kaydedilir.
+Hesap kimlik bilgileri bir işlem hattı oluşturmak için kullanılır ve bu işlem hattı isteklerin REST API'sine gönderilme şeklini yönetir. İşlem hatları iş parçacığı güvenli bileşenlerdir ve yeniden deneme ilkeleri, günlüğe kaydetme, HTTP yanıtı seri durumdan çıkarma kuralları ve daha fazlası için gerekli mantığı belirtir.
+
+```javascript
+const credentials = new SharedKeyCredential(STORAGE_ACCOUNT_NAME, ACCOUNT_ACCESS_KEY);
+const pipeline = StorageURL.newPipeline(credentials);
+const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.windows.net`, pipeline);
+```
+
+Bu kod bloğunda aşağıdaki sınıflar kullanılmıştır:
+
+- [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy) sınıfı istek işlem hattına göndermek üzere depolama hesabı kimlik bilgilerinin sarmalanmasından sorumludur.
+
+- [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy) sınıfı yeni bir işlem hattı oluşturulmasından sorumludur.
+
+- [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy), REST API'sinde kullanılan bir URL modeller. Bu sınıfın örnekleri kapsayıcıları listeleme gibi eylemler gerçekleştirmenizi ve kapsayıcı URL'lerini oluşturmak için bağlam bilgisi sunmanızı sağlar.
+
+*ServiceURL* örneği, depolama hesabınızdaki kapsayıcıları ve blobları yönetmek için [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy) ve [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy) örnekleriyle birlikte kullanılır.
+
+```javascript
+const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
+const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, blobName);
+```
+
+*containerURL* ve *blockBlobURL* değişkenleri, depolama hesabında işlem gerçekleştirmek için örnek boyunca yeniden kullanılmıştır. 
+
+Bu noktada kapsayıcı, depolama hesabında mevcut değildir. *ContainerURL* örneği, işlem gerçekleştirebileceğiniz URL'yi temsil eder. Bu örneği kullanarak kapsayıcı oluşturabilir ve silebilirsiniz. Bu kapsayıcının konumu, şunun gibi bir konuma karşılık gelir:
+
+```bash
+https://<ACCOUNT_NAME>.blob.core.windows.net/demo
+```
+
+*blockBlobURL*, tek bir blobu yönetmek ve bu sayede blob içeriği yüklemek, indirmek ve silmek için kullanılır. Burada gösterilen URL şu konuma benzerdir:
+
+```bash
+https://<ACCOUNT_NAME>.blob.core.windows.net/demo/quickstart.txt
+```
+
+Kapsayıcıda olduğu gibi blok blobu da henüz mevcut değildir. *blockBlobURL* değişkeni daha sonra içerik yükleyerek blobu oluşturmak için kullanılır.
+
+### <a name="using-the-aborter-class"></a>Aborter sınıfını kullanma
+
+API tarafından yapılan istekler belirli bir sürenin sonunda zaman aşımına uğrayacak şekilde ayarlanabilir. *Aborter* sınıfı, isteklerin zaman aşımına uğradığını yönetmekten sorumludur. Aşağıdaki kod, bir istek kümesinin yürütülmesi için 30 dakika verildiği bir bağlam oluşturur.
+
+```javascript
+const aborter = Aborter.timeout(30 * ONE_MINUTE);
+```
+
+Aborters, şu işlevleri sunarak istekler üzerinde denetim sahibi olmanızı sağlar:
+
+- belirli bir istek grubu için verilen süreyi belirleme
+- grup içindeki tek bir isteğin ne kadar yürütülmesi gerektiğini belirleme
+- istekleri iptal etme
+- isteklerinizin tamamının zaman aşımına uğramasını önlemek için *Aborter.none* statik üyesini kullanma
+
+### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+
+Kapsayıcı oluşturmak için *ContainerURL*'nin *create* metodu kullanılır.
+
+```javascript
+await containerURL.create(aborter);
+console.log(`Container: "${containerName}" is created`);
+```
+
+Kapsayıcı adı *ContainerURL.fromServiceURL(serviceURL, containerName)* çağrıldığında tanımlandığından kapsayıcıyı oluşturmak için *create* metodunun çağrılması yeterlidir.
+
+### <a name="show-container-names"></a>Kapsayıcı adlarını gösterme
+
+Hesaplarda çok sayıda kapsayıcı depolanabilir. Aşağıdaki kod kapsayıcıları bölümlenmiş bir şekilde listeleyerek çok sayıda kapsayıcı arasında geçiş yapmayı göstermektedir. *showContainerNames* işlevine *ServiceURL* ve *Aborter* örnekleri geçirilmiştir.
 
 ```javascript
 console.log("Containers:");
-response = await listContainers();
-response.containers.forEach((container) => console.log(` -  ${container.name}`));
+await showContainerNames(serviceURL, aborter);
 ```
 
-Kapsayıcılar listesi kullanılabilir duruma geldikten sonra, oluşturmak istediğiniz kapsayıcının zaten mevcut olup olmadığını öğrenmek için *findIndex* Dizisi yöntemini kullanabilirsiniz. Kapsayıcı mevcut değilse oluşturulur.
+*showContainerNames* işlevi *listContainersSegment* metodunu kullanarak depolama hesabından kapsayıcı adı gruplarını ister.
 
 ```javascript
-const containerDoesNotExist = response.containers.findIndex((container) => container.name === containerName) === -1;
+async function showContainerNames(aborter, serviceURL) {
+    let marker = undefined;
 
-if (containerDoesNotExist) {
-    await createContainer(containerName);
-    console.log(`Container "${containerName}" is created`);
+    do {
+        const listContainersResponse = await serviceURL.listContainersSegment(aborter, marker);
+        marker = listContainersResponse.nextMarker;
+        for(let container of listContainersResponse.containerItems) {
+            console.log(` - ${ container.name }`);
+        }
+    } while (marker);
 }
 ```
-Daha sonra, bir dize ve yerel bir dosya Blob depolamaya yüklenir.
+
+Yanıt döndürüldüğünde *containerItems* yinelenerek ad konsola kaydedilir. 
+
+### <a name="upload-text"></a>Metni karşıya yükleme
+
+Metni bloba yüklemek için *upload* metodunu kullanın.
 
 ```javascript
-await uploadString(containerName, blobName, content);
+await blockBlobURL.upload(aborter, content, content.length);
 console.log(`Blob "${blobName}" is uploaded`);
-
-response = await uploadLocalFile(containerName, localFilePath);
-console.log(response.message);
 ```
-Blobları listelemek için işlem, kapsayıcıları listeleme ile aynıdır. *listBlobs* çağrısı kapsayıcıdaki blobların bir dizisini döndürür ve bunlar çıkış penceresine kaydedilir.
+
+Burada metin ve uzunluğu metoda geçirilmiştir.
+
+### <a name="upload-a-local-file"></a>Yerel bir dosyayı karşıya yükleme
+
+Yerel bir dosyayı kapsayıcıya yüklemek için kapsayıcı URL'sine ve dosya yoluna ihtiyacınız vardır.
+
+```javascript
+await uploadLocalFile(aborter, containerURL, localFilePath);
+console.log(`Local file "${localFilePath}" is uploaded`);
+```
+
+*uploadLocalFile* işlevi dosya yolunu ve blok blobu hedefini bağımsız değişken olarak alan *uploadFileToBlockBlob* işlevini çağırır.
+
+```javascript
+async function uploadLocalFile(aborter, containerURL, filePath) {
+
+    filePath = path.resolve(filePath);
+
+    const fileName = path.basename(filePath);
+    const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, fileName);
+
+    return await uploadFileToBlockBlob(aborter, filePath, blockBlobURL);
+}
+```
+
+### <a name="upload-a-stream"></a>Bir akışı karşıya yükleme
+
+Akışların karşıya yüklenmesi de desteklenir. Bu örnek bir yerel dosyayı upload metoduna geçirilmek üzere bir akış olarak açar.
+
+```javascript
+await uploadStream(containerURL, localFilePath, aborter);
+console.log(`Local file "${localFilePath}" is uploaded as a stream`);
+```
+
+*uploadStream* işlevi akışı depolama kapsayıcısına yüklemek için *uploadStreamToBlockBlob* işlevini çağırır.
+
+```javascript
+async function uploadStream(aborter, containerURL, filePath) {
+    filePath = path.resolve(filePath);
+
+    const fileName = path.basename(filePath).replace('.md', '-stream.md');
+    const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, fileName);
+
+    const stream = fs.createReadStream(filePath, {
+      highWaterMark: FOUR_MEGABYTES,
+    });
+
+    const uploadOptions = {
+        bufferSize: FOUR_MEGABYTES,
+        maxBuffers: 5,
+    };
+
+    return await uploadStreamToBlockBlob(
+                    aborter, 
+                    stream, 
+                    blockBlobURL, 
+                    uploadOptions.bufferSize, 
+                    uploadOptions.maxBuffers);
+}
+```
+
+Karşıya yükleme sırasında *uploadStreamToBlockBlob* işlevi yeniden deneme olasılığına karşı akış verilerini önbelleğe almak için arabellek ayırır. *maxBuffers* değeri en fazla kaç arabellek kullanılacağını belirler. Her arabellek ayrı bir karşıya yükleme isteği oluşturur. Ne kadar çok arabellek kullanılırsa hız da o kadar artar ancak bellek kullanımı da aynı ölçüde artış gösterir. Arabellek sayısı performans sorununun istemci yerine ağ veya diske aktarılacağı kadar yüksek olduğunda yükleme hızı sabitlenir.
+
+### <a name="show-blob-names"></a>Blob adlarını gösterme
+
+Hesaplarda birden fazla kapsayıcı bulunabileceği gibi her bir kapsayıcıda da çok sayıda blob bulunabilir. Bir kapsayıcı içindeki bloblara erişmek için *ContainerURL* sınıfı örneği kullanılabilir.
 
 ```javascript
 console.log(`Blobs in "${containerName}" container:`);
-response = await listBlobs(containerName);
-response.blobs.forEach((blob) => console.log(` - ${blob.name}`));
+await showBlobNames(aborter, containerURL);
 ```
 
-Bir blobu indirmek için, yanıt yakalanır ve blob değerine erişmek için kullanılır. Yanıttan readableStreamBody bir dizeye dönüştürülür ve çıkış penceresine kaydedilir.
+*showBlobNames* işlevi kapsayıcıdaki blob gruplarını istemek için *listBlobFlatSegment* işlevini çağırır.
 
 ```javascript
-response = await downloadBlob(containerName, blobName);
-console.log(`Downloaded blob content: "${response.text}"`);
+async function showBlobNames(aborter, containerURL) {
+    let marker = undefined;
+
+    do {
+        const listBlobsResponse = await containerURL.listBlobFlatSegment(Aborter.none, marker);
+        marker = listBlobsResponse.nextMarker;
+        for (const blob of listBlobsResponse.segment.blobItems) {
+            console.log(` - ${ blob.name }`);
+        }
+    } while (marker);
+}
 ```
 
-Son olarak, blob ve kapsayıcı depolama hesabından silinir.
+### <a name="download-a-blob"></a>Blob indirme
+
+Blob oluşturulduktan sonra içeriği *download* metodu kullanılarak indirilebilir.
 
 ```javascript
-await deleteBlob(containerName, blobName);
-console.log(`Blob "${blobName}" is deleted`);
+const downloadResponse = await blockBlobURL.download(aborter, 0);
+const downloadedContent = await streamToString(downloadResponse.readableStreamBody);
+console.log(`Downloaded blob content: "${downloadedContent}"`);
+```
 
-await deleteContainer(containerName);
+Yanıt bir akış olarak döndürülür. Bu örnekte, akış aşağıdaki *Streamtostring* yardımcı işlevini kullanarak bir dizeye dönüştürülür.
+
+```javascript
+// A helper method used to read a Node.js readable stream into a string
+async function streamToString(readableStream) {
+    return new Promise((resolve, reject) => {
+      const chunks = [];
+      readableStream.on("data", data => {
+        chunks.push(data.toString());
+      });
+      readableStream.on("end", () => {
+        resolve(chunks.join(""));
+      });
+      readableStream.on("error", reject);
+    });
+}
+```
+
+### <a name="delete-a-blob"></a>Blob silme
+
+*BlockBlobURL* örneğinden gelen *delete* metodu, kapsayıcıdaki bir blobu siler.
+
+```javascript
+await blockBlobURL.delete(aborter)
+console.log(`Block blob "${blobName}" is deleted`);
+```
+
+### <a name="delete-a-container"></a>Kapsayıcı silme
+
+*ContainerURL* örneğinden gelen *delete* metodu, depolama hesabındaki bir kapsayıcıyı siler.
+
+```javascript
+await containerURL.delete(aborter);
 console.log(`Container "${containerName}" is deleted`);
 ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
+
 Depolama hesabına yazılan tüm veriler kod örneğinin sonunda otomatik olarak silinir. 
-
-## <a name="resources-for-developing-nodejs-applications-with-blobs"></a>Bloblarla Node.js uygulamaları geliştirme kaynakları
-
-Blob depolama ile Node.js geliştirmeye yönelik şu ek kaynaklara bakın:
-
-### <a name="binaries-and-source-code"></a>İkili dosyalar ve kaynak kodu
-
-- GitHub’da Azure Depolama için [Node.js istemci kitaplığı kaynak kodunu](https://github.com/Azure/azure-storage-node) görüntüleyin ve yükleyin.
-
-### <a name="client-library-reference-and-samples"></a>İstemci kitaplığı başvurusu ve örnekleri
-
-- Node.js istemci kitaplığı hakkında daha fazla bilgi için bkz. [Node.js API başvurusu](https://docs.microsoft.com/javascript/api/overview/azure/storage).
-- Node.js istemci kitaplığı kullanılarak yazılmış [Blob depolama örneklerini](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=nodejs&term=blob) araştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Node. js kullanarak yerel bir disk ve Azure Blob depolama arasında bir dosya yükleme işleminin nasıl yapılacağı gösterilir. Blob depolamayla çalışma hakkında daha fazla bilgi edinmek için, GitHub deposuyla devam edin.
+Bu hızlı başlangıçta Node.js kullanarak Azure Blob depolamadaki blobları ve kapsayıcıları yönetme adımları gösterilmektedir. Bu SDK ile çalışma hakkında daha fazla bilgi edinmek için, GitHub deposunu inceleyin.
 
 > [!div class="nextstepaction"]
-> [For Node. js ve tarayıcılar için JavaScript Microsoft Azure Depolama SDK 'Sı](https://github.com/Azure/azure-storage-node)
+> Azure Storage [JAVASCRIPT API başvurusu](/javascript/api/overview/azure/storage?view=azure-node-legacy)
+> [JavaScript deposu için Azure Storage ile v10 arasındaki SDK](https://github.com/Azure/azure-storage-js)

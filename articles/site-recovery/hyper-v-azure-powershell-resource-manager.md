@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 548fa8181c4841d8f57de485c0a4e714b5e9321a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082689"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863919"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell ve Azure Resource Manager kullanarak Hyper-V VM 'Leri için Azure 'da olağanüstü durum kurtarmayı ayarlama
 
@@ -188,7 +188,13 @@ Başlamadan önce, belirtilen depolama hesabının kasa ile aynı Azure bölgesi
 
         Succeeded
 
-
+> [!NOTE]
+> Azure 'da CMK özellikli yönetilen disklere çoğaltmak istiyorsanız az PowerShell 3.3.0 onlıve sürümlerini kullanarak aşağıdaki adımları uygulayın:
+>
+> 1. VM özelliklerini güncelleştirerek yönetilen disklere yük devretmeyi etkinleştirme
+> 2. Korumalı öğenin her bir diski için disk KIMLIĞINI getirmek üzere Get-Asrreplicationkorudıdıtem cmdlet 'ini kullanın
+> 3. Disk KIMLIĞININ disk şifreleme kümesine eşlenmesini içermesi için New-Object "System. Collections. Generic. Dictionary ' ' 2 [System. String, System. String]" cmdlet 'ini kullanarak bir sözlük nesnesi oluşturun. Bu disk şifreleme kümelerinin hedef bölgede sizin tarafınızdan önceden oluşturulması gerekir.
+> 4. -DiskIdToDiskEncryptionSetMap parametresinin sözlük nesnesini geçirerek set-Asrreplicationkorunabilir Dıdıtem cmdlet 'ini kullanarak VM özelliklerini güncelleştirin.
 
 ## <a name="step-8-run-a-test-failover"></a>8\. Adım: yük devretme testi çalıştırma
 1. Yük devretme testini aşağıdaki şekilde çalıştırın:

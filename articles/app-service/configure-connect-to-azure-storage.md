@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: ad70bbe36369c03225079d1194043e6ceb109c6f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671004"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866990"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>App Service bir Windows kapsayıcısında Azure dosyalarını yapılandırma
 
@@ -20,7 +20,7 @@ ms.locfileid: "74671004"
 
 Bu kılavuzda, Windows kapsayıcılarında Azure depolama 'ya nasıl erişebileceğiniz gösterilmektedir. Yalnızca [Azure dosya paylaşımları](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli) ve [Premium dosya paylaşımları](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-premium-fileshare) desteklenir. Azure dosya paylaşımlarını bu nasıl yapılır ile kullanıyorsunuz. Avantajlar güvenli içerik, içerik taşınabilirlik, birden çok uygulamaya erişim ve birden çok aktarım yöntemi içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 veya üzeri).
 - [Azure App Service var olan bir Windows kapsayıcı uygulaması](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container)
@@ -30,6 +30,15 @@ Bu kılavuzda, Windows kapsayıcılarında Azure depolama 'ya nasıl erişebilec
 > [!NOTE]
 > Azure dosyaları varsayılan olmayan depolama ve Web uygulamasına dahil edilmeyen ayrı olarak faturalandırılır. Altyapı sınırlamaları nedeniyle güvenlik duvarı yapılandırması kullanımını desteklemez.
 >
+
+## <a name="limitations"></a>Sınırlamalar
+
+- Windows kapsayıcılarındaki Azure depolama **Önizleme** aşamasındadır ve **Üretim senaryolarında** **desteklenmez** .
+- Windows kapsayıcılarındaki Azure depolama, yalnızca **Azure dosya kapsayıcıları** (okuma/yazma) bağlamasını destekler.
+- Windows kapsayıcılarındaki Azure depolama, Windows App Service planlarına kendi kod senaryolarınızı getirmek için şu anda **desteklenmiyor** .
+- Windows kapsayıcılarındaki Azure depolama, altyapı sınırlamaları nedeniyle **depolama güvenlik duvarı** yapılandırmasını kullanmayı **desteklemez** .
+- Windows kapsayıcılarındaki Azure depolama, uygulama başına **en fazla beş** bağlama noktası belirtmenizi sağlar.
+- Azure depolama, bağımsız olarak faturalandırılır ve Web uygulamanıza **dahil edilmez** . [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage)hakkında daha fazla bilgi edinin.
 
 ## <a name="link-storage-to-your-web-app-preview"></a>Depolama alanını Web uygulamanıza bağlama (Önizleme)
 
@@ -48,7 +57,6 @@ Bir Azure dosya paylaşımının bir Web uygulamasıyla bağlantısı kuruldukta
 ```azurecli
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
 ```
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

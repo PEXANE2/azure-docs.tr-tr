@@ -1,25 +1,19 @@
 ---
-title: Azure Noktadan siteye bağlantı sorunlarını giderme | Microsoft Docs
+title: Azure Noktadan siteye bağlantı sorunlarını giderme
+titleSuffix: Azure VPN Gateway
 description: Noktadan siteye bağlantı sorunlarını nasıl giderebileceğinizi öğrenin.
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/30/2019
 ms.author: genli
-ms.openlocfilehash: cfa95f2aab5ba270aea0a36b037ae293b36c7b28
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 2c5e8b344cad6928ee586dc5a5b69095f0b14552
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695533"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863657"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Sorun giderme: Azure Noktadan siteye bağlantı sorunları
 
@@ -133,7 +127,7 @@ VPN istemcisini kullanarak bir Azure sanal ağına bağlanmaya çalıştığın�
 
 ### <a name="symptom"></a>Belirti
 
-Aşağıdaki hata iletisini alırsınız:
+Aşağıdaki hata iletisini alıyorsunuz:
 
 **Dosya indirme hatası. Hedef URI belirtilmedi.**
 
@@ -307,11 +301,11 @@ Bu sorunu çözmek için [Azure VPN Gateway 'i sıfırlayın](vpn-gateway-resetg
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hata: "iptal sunucusu çevrimdışı olduğu için iptal işlevi iptali kontrol edemedi. (Hata 0x80092013) "
 
 ### <a name="causes"></a>Nedenler
-İstemci http://crl3.digicert.com/ssca-sha2-g1.crl ve http://crl4.digicert.com/ssca-sha2-g1.crlerişemediğinde bu hata iletisi oluşur.  İptal denetiminin bu iki siteye erişimi olması gerekir.  Bu sorun genellikle ara sunucu yapılandırılmış istemcide gerçekleşir. Bazı ortamlarda, istekler proxy sunucusundan geçmezse, sınır güvenlik duvarında reddedilir.
+İstemci http://crl3.digicert.com/ssca-sha2-g1.crl ve http://crl4.digicert.com/ssca-sha2-g1.crl erişemediğinde bu hata iletisi oluşur.  İptal denetiminin bu iki siteye erişimi olması gerekir.  Bu sorun genellikle ara sunucu yapılandırılmış istemcide gerçekleşir. Bazı ortamlarda, istekler proxy sunucusundan geçmezse, sınır güvenlik duvarında reddedilir.
 
 ### <a name="solution"></a>Çözüm
 
-Proxy sunucusu ayarlarını kontrol edin, istemcinin http://crl3.digicert.com/ssca-sha2-g1.crl ve http://crl4.digicert.com/ssca-sha2-g1.crlerişebildiğinizden emin olun.
+Proxy sunucusu ayarlarını kontrol edin, istemcinin http://crl3.digicert.com/ssca-sha2-g1.crl ve http://crl4.digicert.com/ssca-sha2-g1.crl erişebildiğinizden emin olun.
 
 ## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN Istemci hatası: RAS/VPN sunucunuzda yapılandırılan bir ilke nedeniyle bağlantı engellendi. (Hata 812)
 
@@ -339,10 +333,10 @@ NIC sürücüsü güncel değil.
 
 NIC sürücüsünü güncelleştirin:
 
-1. **Başlat**' a tıklayın, **Aygıt Yöneticisi**yazın ve sonuç listesinden seçin. Yönetici parolası veya onay istenirse parolayı yazın ya da onay sağlayın.
+1. **Başlat**' a tıklayın, **Aygıt Yöneticisi**yazın ve sonuç listesinden seçin. Yönetici parolası veya onay istenirse, parolayı yazın veya onay verin.
 2. **Ağ bağdaştırıcıları** kategorilerinde, GÜNCELLEŞTIRMEK istediğiniz NIC 'i bulun.  
 3. Cihaz adına çift tıklayın, **Sürücüyü Güncelleştir**' i seçin, **güncelleştirilmiş sürücü yazılımı Için otomatik olarak ara**' yı seçin.
-4. Windows yeni bir sürücü bulamazsa cihaz üreticisinin Web sitesinde arama yapmayı deneyebilir ve talimatlarını takip edebilirsiniz.
+4. Windows yeni bir sürücü bulmazsa, cihaz üreticisinin Web sitesinde bir sürücü arayıp yükleme yönergelerini izleyebilirsiniz.
 5. Bilgisayarı yeniden başlatın ve bağlantıyı yeniden deneyin.
 
 ## <a name="error-file-download-error-target-uri-is-not-specified"></a>Hata: ' dosya indirme hatası hedef URI 'SI belirtilmedi '

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 365507f482217bd804bbd5017d4dbbaf8c187ad2
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326891"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863606"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge teknik belirtimleri
 
@@ -23,29 +23,29 @@ Microsoft Azure Data Box Edge cihazınızın donanım bileşenleri, bu makalede 
 
 Data Box Edge cihaz, işlem ve bellek için aşağıdaki belirtimlere sahiptir:
 
-| Min           | Value                  |
+| Belirtim           | Değer                  |
 |-------------------------|----------------------------|
 | CPU    | 2 X 10 çekirdek CPU                     |
-| Bellek              | 128 GB RAM                  |
+| Hafıza              | 128 GB RAM                  |
 
 
 ## <a name="fpga-specifications"></a>FPGA belirtimleri
 
 Bir alan programlanabilir kapı dizisi (FPGA), Machine Learning (ML) senaryolarına izin veren her Data Box Edge cihazına dahildir. 
 
-| Min           | Value                  |
+| Belirtim           | Değer                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel vara 10 <br> Kullanılabilir derin sinir ağı (DNN) modelleri, [bulut FPGA örnekleri tarafından desteklenenlerle](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#whats-supported-on-azure)aynıdır.| 
+| FPGA   | Intel vara 10 <br> Kullanılabilir derin sinir ağı (DNN) modelleri, [bulut FPGA örnekleri tarafından desteklenenlerle](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure)aynıdır.| 
 
 
 ## <a name="power-supply-unit-specifications"></a>Güç kaynağı birimi belirtimleri
 
 Data Box Edge cihazda yüksek performanslı fanlarla iki 100-240 V güç kaynağı birimi (PSUs) vardır. İki PSUs, yedekli bir güç yapılandırması sağlar. Bir PSU başarısız olursa, başarısız modül değiştirilinceye kadar cihaz normal olarak diğer PSU üzerinde çalışmaya devam eder. Aşağıdaki tabloda, PSUs teknik özellikleri listelenmektedir.
 
-| Min           | 750 W PSU                  |
+| Belirtim           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maksimum çıkış gücü    | 750 W                     |
-| Sıklık               | 50/60 Hz                   |
+| Frequency               | 50/60 Hz                   |
 | Voltaj aralığı seçimi | Otomatik olarak değişen: 100-240 V AC |
 | Etkin takılabilir           | Evet                        |
 
@@ -57,14 +57,14 @@ The following table lists the typical power consumption data (actual values may 
 
 Data Box Edge cihazlarda 9 X 2,5 "NVMe SSDs, her biri 1,6 TB kapasiteye sahiptir. Bu SSD 'Ler, 1 bir işletim sistemi diski ve diğer 8 ise veri disklerdir. Cihaz için kullanılabilen toplam kapasite kabaca 12,5 TB 'tır. Aşağıdaki tabloda, cihazın depolama kapasitesinin ayrıntıları verilmiştir.
 
-|     Min                          |     Value             |
+|     Belirtim                          |     Değer             |
 |--------------------------------------------|-----------------------|
 |    Katı hal sürücüleri (SSD 'Ler) sayısı     |    8                  |
 |    Tek SSD kapasitesi                     |    1,6 TB             |
 |    Toplam kapasite                          |    12,8 TB            |
 |    Toplam kullanılabilir kapasite *                  |    ~ 12,5 TB            |
 
-**Bazı boşluklar iç kullanım için ayrılmıştır.*
+**bazı boşluklar iç kullanım için ayrılmıştır.*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>Kutu boyutları ve ağırlık belirtimleri
 
@@ -105,8 +105,8 @@ Bu bölümde sıcaklık, nem ve yükseklik gibi çevre duvarı ortamıyla ilgili
 
 |     Kutu         |     Çevresel sıcaklık aralığı     |     Çevresel göreli nem     |     En fazla Dew noktası     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    İşletimsel        |    10 °C-35 °C (50 °F-86 °F)         |    % 10-% 80 yoğunlaşmayan.         |    29 °C (84 °F)            |
-|    İşlemsel olmayan    |    -40 °C ila 65 °C (-40 °F-149 °F)     |    % 5-% 95 yoğunlaşmayan.          |    33 °C (91 °F)            |
+|    Çalışma        |    10 °C-35 °C (50 °F-86 °F)         |    %10-%80 yoğunlaşmayan.         |    29 °C (84 °F)            |
+|    İşlemsel olmayan    |    -40 °C ila 65 °C (-40 °F-149 °F)     |    %5-%95 yoğunlaşmayan.          |    33 °C (91 °F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Airflow, yükseklik, darbe, titreşim, yönlendirme, güvenlik ve EMC
 
@@ -121,7 +121,7 @@ Bu bölümde sıcaklık, nem ve yükseklik gibi çevre duvarı ortamıyla ilgili
 |    Titreşim, işlemsel olmayan           |    15 dakika boyunca 1,88 G<sub>RMS</sub> 10 hz Ila 500 Hz (altı tarafta test edilmiştir.)                                                                                                                                                  |
 |    Yönlendirme ve bağlama             |    19 "raf bağlama                                                                                                                                                                                        |
 |    Güvenlik ve onaylar                 |    EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/ıEC 60950-1:2005 ED2 + a1:2009 + a2:2013 EN 62311:2008                                                                                                                                                                       |
-|    EMC                                  |    FCC A, ICES-003 <br>EN 55032:2012/CISPPR 32:2012  <br>EN 55032:2015/CISPPR 32:2015  <br>EN 55024:2010 + A1:2015/CISPPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/ıEC 61000-3-2:2014 (sınıf D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013                                                                                                                                                                                         |
+|    EMC                                  |    FCC A, ıCES-003 <br>EN 55032:2012/CıSPPR 32:2012  <br>EN 55032:2015/CıSPPR 32:2015  <br>EN 55024:2010 + A1:2015/CıSPPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/ıEC 61000-3-2:2014 (sınıf D)   <br>EN 61000-3-3:2013/ıEC 61000-3-3:2013                                                                                                                                                                                         |
 |    Enerji             |    Komisyon Yönetmeliği (AB) No. 617/2013                                                                                                                                                                                        |
 |    RoHS           |    EN 50581:2012                                                                                                                                                                                        |
 

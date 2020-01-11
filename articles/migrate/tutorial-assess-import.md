@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: b9ad5ea6def79c4d7f132558b8b5339bac6f1bc3
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158659"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861311"
 ---
 # <a name="assess-servers-using-imported-data"></a>İçeri aktarılan verileri kullanarak sunucuları değerlendirme
 
@@ -26,7 +26,7 @@ Bu makalede, [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Aşağıdakilere dikkat edin:
+Şunlara dikkat edin:
 
 - Tek bir CSV dosyasında en fazla 20000 sunucu ekleyebilirsiniz.
 - CSV kullanarak bir Azure geçişi projesine en fazla 20000 sunucu ekleyebilirsiniz.
@@ -96,7 +96,7 @@ CSV şablonunu indirin ve buna sunucu bilgilerini ekleyin.
 
 1. **Azure geçişi: Sunucu değerlendirmesi** > **sunucuları** > **geçiş hedeflerde** **bul**' a tıklayın.
 2. **Makine bul**' da, **kullanarak içeri aktar ' ı seçin. CSV**.
-3. İndirmek için **İndir** ' e tıklayın. CSV şablonu. Alternatif olarak, [doğrudan indirebilirsiniz](https://go.microsoft.com/fwlink/?linkid=2108404).
+3. İndirmek için **İndir** ' e tıklayın. CSV şablonu. Alternatif olarak, [doğrudan indirebilirsiniz](https://go.microsoft.com/fwlink/?linkid=2109031).
 
     ![İndirme. CSV şablonu](./media/tutorial-assess-import/download-template.png)
 
@@ -113,11 +113,11 @@ Aşağıdaki tabloda, doldurulacak dosya alanları özetlenmektedir.
 
 **Alan adı** | **Girilmesi** | **Ayrıntılar**
 --- | --- | ---
-**Sunucu adı** | Yes | FQDN 'yi belirtmeyi öneririz.
+**Sunucu adı** | Evet | FQDN 'yi belirtmeyi öneririz.
 **IP adresi** | Hayır | Sunucu adresi.
-**Çekirdek sayısı** | Yes | Sunucuya ayrılan işlemci çekirdeklerinin sayısı.
-**Bellek** | Yes | Sunucuya ayrılan toplam RAM (MB).
-**İşletim sistemi adı** | Yes | Sunucu işletim sistemi.
+**Çekirdek sayısı** | Evet | Sunucuya ayrılan işlemci çekirdeklerinin sayısı.
+**Bellek** | Evet | Sunucuya ayrılan toplam RAM (MB).
+**İşletim sistemi adı** | Evet | Sunucu işletim sistemi.
 **İşletim sistemi sürümü** | Hayır | Sunucu işletim sistemi sürümü.
 **Disk sayısı** | Hayır | Ayrı disk ayrıntıları sağlanmışsa gerekli değildir.
 **Disk 1 boyutu**  | Hayır | Maksimum disk boyutu (GB)<br/> Şablona [sütun ekleyerek](#add-multiple-disks) daha fazla disk için ayrıntılar ekleyebilirsiniz. En fazla sekiz disk ekleyebilirsiniz.
@@ -218,7 +218,7 @@ Bulmadan sonra, sunucuların Azure portal göründüğünü doğrulayabilirsiniz
 
 Azure geçişi: Sunucu değerlendirmesi kullanarak oluşturabileceğiniz iki tür değerlendirme vardır.
 
-**Değerlendirme** | **Ayrıntılar** | **Veri**
+**Değerlendirme** | **Ayrıntılar** | **Veriler**
 --- | --- | ---
 **Performans tabanlı** | Belirtilen performans verileri değerlerini temel alan değerlendirmeler | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)** : Şirket ıçı disklerin IOPS ve aktarım hızına göre.
 **Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: belirtilen sunucu boyutu temel alınarak<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.
@@ -231,7 +231,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 1. Değerlendirme oluşturmak için [en iyi uygulamaları](best-practices-assessment.md) gözden geçirin.
 2. **Sunucular** sekmesinde, **Azure geçişi: Sunucu değerlendirmesi** kutucuğunda **değerlendir**' e tıklayın.
 
-    ![Değerlendirme](./media/tutorial-assess-physical/assess.png)
+    ![Değerlendirin](./media/tutorial-assess-physical/assess.png)
 
 2. **Sunucuları değerlendir**bölümünde, değerlendirme için bir ad belirtin.
 3. **Bulma kaynağı**' nda, **Azure geçişi ' ne içeri aktarma yoluyla eklenen makineleri** seçin

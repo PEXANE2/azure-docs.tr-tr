@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b79ca1d93baf1941d5de8db0c314f9cd21e51056
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c7a70d8209c5c349fc082d939a24deac23fa954d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328150"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863436"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Bir ortama veri erişimi verme
 
@@ -27,7 +27,7 @@ Bu makalede, Azure Time Series Insights önizleme erişim ilkelerinin iki türü
 
 ## <a name="sign-in-to-time-series-insights"></a>Time Series Insights oturum açın
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. Time Series Insights ortamınızı bulun. **Arama** kutusuna `Time Series` girin. Arama sonuçlarında **zaman serisi ortamını** seçin.
 1. Listeden Zaman Serisi Görüşleri ortamınızı seçin.
 
@@ -113,7 +113,7 @@ Başka bir kiracıdan bir Azure AD kullanıcısına Time Series Insights ortamı
 
 1. Konuk artık yönetici tarafından belirtilen ortam URL 'sini kullanarak paylaşılan ortama erişebilir. Anında erişim için bu URL 'YI Web tarayıcısına girebilirler.
 
-1. Konuk Kullanıcı, zaman serisi Gezgini 'nin sağ üst köşesindeki profil simgesini seçerek yöneticinin kiracısına sahip olur.
+1. Yöneticinin kiracısı, zaman serisi Gezgini 'nin sağ üst köşesindeki profil simgesi seçildikten sonra Konuk kullanıcıya görüntülenecektir.
 
     [insights.azure.com üzerinde avatar seçimi ![](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 

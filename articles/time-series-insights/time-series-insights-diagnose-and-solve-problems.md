@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3e73afa89ee61243784c5952eeda26a79d508dee
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900233"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863419"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Time Series Insights ortamınızdaki sorunları tanılayın ve çözün
 
@@ -34,7 +34,7 @@ Bu makalede Azure Time Series Insights ortamınızda karşılaşabileceğiniz ba
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Neden: olay kaynak verileri JSON biçiminde değil
 
-Azure Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için bkz [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
+Azure Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için [desteklenen JSON şekillerini](./how-to-shape-query-json.md)okuyun.
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Neden B: olay kaynak anahtarında gerekli bir izin eksik
 
@@ -69,7 +69,7 @@ Olay kaynağınızda eski olaylarınız varsa, azaltmayı iki şekilde değişti
 - Time Series Insights ' de görünmesini istemediğiniz eski olayları kaldırmaya yardımcı olması için olay kaynağınızın saklama sınırlarını değiştirin.
 - Eski olayların aktarım hızını artırmak için daha büyük bir ortam boyutu sağlayın (birim sayısı). Yukarıdaki örneği kullanarak, aynı S1 ortamını bir gün için beş birim ile artırırsanız, ortam bir gün içinde yakalamalı. Sabit durum olay üretim, günde 1.000.000 veya daha az olay ise, olaydan sonra etkinliğin kapasitesini tek bir birimle azaltabilirsiniz.
 
-Azaltma sınırı, ortamın SKU 'SU türü ve kapasitesine göre zorlanır. Ortamdaki tüm olay kaynakları bu kapasiteyi paylaşır. IoT Hub veya Olay Hub 'ınızın olay kaynağı verileri zorlanan limitlerin ötesinde alıyorsa, azaltma ve bir öteleme görürsünüz.
+Azaltma sınırı, ortamın SKU 'SU türü ve kapasitesine göre zorlanır. Ortamdaki tüm olay kaynakları bu kapasiteyi paylaşır. IoT Hub veya Olay Hub 'ınızın olay kaynağı verileri zorlanan limitlerin ötesinde alıyorsa, azaltma ve bir gecikme yaşar.
 
 Aşağıdaki şekilde, S1 SKU 'SU ve 3 kapasitesi olan bir Time Series Insights ortamı gösterilmektedir. Günde 3.000.000 olay alabilir.
 
@@ -82,11 +82,11 @@ Aşağıdaki şekilde, S1 SKU 'SU ve 3 kapasitesi olan bir Time Series Insights 
 
 Kapasitesi 3 olan bir S1 SKU ortamı, her dakikada yalnızca 2.100 olay alabilir (her gün 1.000.000 olay 700 = ayda, üç birim için dakikada olay = 2.100 olay). 
 
-Düzleştirme mantığının nasıl çalıştığını yüksek düzeyde anlamak için bkz. [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
+Düzleştirme mantığının nasıl çalıştığını yüksek düzeyde anlamak için [desteklenen JSON şekillerini](./how-to-shape-query-json.md)okuyun.
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>Aşırı azaltma için önerilen çözümler
 
-Gecikme sayısını onarmak için ortamınızın SKU kapasitesini artırın. Daha fazla bilgi için bkz. [Time Series Insights ortamınızı ölçeklendirme](time-series-insights-how-to-scale-your-environment.md).
+Gecikme sayısını onarmak için ortamınızın SKU kapasitesini artırın. Daha fazla bilgi için [Time Series Insights ortamınızdaki ölçeği](time-series-insights-how-to-scale-your-environment.md)okuyun.
 
 ### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>Neden B: geçmiş verilerin ilk alımı yavaşlar
 
@@ -109,9 +109,9 @@ Zaman damgası özelliği adının ve değerinin aşağıdaki kurallara uygun ol
 
 Zaman damgası özelliği adınızın yakalanıp düzgün şekilde çalışmasını sağlamanın en kolay yolu Time Series Insights Gezginini kullanmaktır. Time Series Insights Gezgini ' nde, grafiği kullanarak, zaman damgası özellik adını girdikten sonra bir süre seçin. Seçime sağ tıklayın ve ardından **olayları keşfet** seçeneğini belirleyin.
 
-İlk sütun üst bilgisi, zaman damgası özelliğinin adı olmalıdır. Sözcük **zaman damgasının**yanında **($TS)** öğesini görmeniz gerekir.
+İlk sütun üst bilgisi, zaman damgası özelliğinin adı olmalıdır. Sözcük **zaman damgasının**yanında **($TS)** görüntülenir.
 
-Aşağıdaki değerleri görmemelisiniz:
+Aşağıdaki değerler görüntülenmeyecektir:
 
 - *(ABC)* : Time Series Insights, veri değerlerini dizeler olarak okudığını gösterir.
 - *Takvim simgesi*: Time Series Insights, veri değerini *DateTime*olarak okudığını gösterir.

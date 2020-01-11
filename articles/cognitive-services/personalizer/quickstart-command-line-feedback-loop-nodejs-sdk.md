@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 10/23/2019
+ms.date: 01/09/2020
 ms.author: diberry
-ms.openlocfilehash: 91aee7f4a110490495a3cf840e6b3ef3282c91c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bec68cbb88a9acacbc1a9a081ce3d8612b709d18
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446364"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860240"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>Hızlı başlangıç: node. js için kişiselleştirici istemci kitaplığı
 
@@ -26,7 +26,7 @@ Node. js için kişiselleştirici istemci kitaplığı ile çalışmaya başlay�
  * Kişiselleştirmeye yönelik eylemlerin listesini sıralama.
  * En çok kullanılan derecelendirme eyleminin başarısını belirten rapor ödül.
 
-[Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [paketi (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
+[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -49,7 +49,7 @@ Bu hızlı başlangıcı kullanmanın birkaç adımı vardır:
 
 Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak kişiselleştirici için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
-* [Deneme anahtarını](https://azure.microsoft.com/try/cognitive-services) ücretsiz olarak 7 gün boyunca geçerli olacak şekilde öğrenin. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
+* [Deneme anahtarını](https://azure.microsoft.com/try/cognitive-services) ücretsiz olarak 7 gün boyunca geçerli olacak şekilde öğrenin. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.
 * [Azure Portal](https://portal.azure.com/)kaynağı görüntüleyin.
 
 Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, iki [ortam değişkeni](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)oluşturun:
@@ -62,13 +62,13 @@ Azure portal, hem anahtar hem de uç nokta değerleri **hızlı başlangıç** s
 
 ## <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Bir `package.json` dosyası oluşturmak için `npm init -y` komutunu çalıştırın. 
+Bir `package.json` dosyası oluşturmak için `npm init -y` komutunu çalıştırın.
 
 ```console
 npm init -y
@@ -100,11 +100,11 @@ Bir kişiselleştirici döngüsü ilk kez oluşturulduğunda, üzerinden eğitel
 
 Kişiselleştirici istemci, anahtarınızı içeren Microsoft. Rest. ServiceClientCredentials kullanarak Azure 'da kimlik doğrulaması yapan bir Personizerclient nesnesidir.
 
-İçeriğin bir derecesini sormak için bir RankRequest oluşturun ve ardından istemciye geçirin. Rank yöntemi. Rank yöntemi, derecelendirilen içeriği içeren bir RankResponse döndürür. 
+İçeriğin bir derecesini sormak için bir RankRequest oluşturun ve ardından istemciye geçirin. Rank yöntemi. Rank yöntemi, derecelendirilen içeriği içeren bir RankResponse döndürür.
 
-Kişiselleştiriciye bir ödül göndermek için bir RewardRequest oluşturun ve ardından istemciye geçirin. Reward yöntemi. 
+Kişiselleştiriciye bir ödül göndermek için bir RewardRequest oluşturun ve ardından istemciye geçirin. Reward yöntemi.
 
-Bu hızlı başlangıçta önemsiz bir şekilde belirlenir. Bir üretim sisteminde, İleri [puanı](concept-rewards.md) neyin etkilediğini ve ne kadar karmaşık bir süreç olabileceğini belirleme, zaman içinde değiştirmeye karar verebilirsiniz. Bu, kişiselleştirici mimarinizdeki birincil tasarım kararlarından biri olmalıdır. 
+Bu hızlı başlangıçta önemsiz bir şekilde belirlenir. Bir üretim sisteminde, İleri [puanı](concept-rewards.md) neyin etkilediğini ve ne kadar karmaşık bir süreç olabileceğini belirleme, zaman içinde değiştirmeye karar verebilirsiniz. Bu, kişiselleştirici mimarinizdeki birincil tasarım kararlarından biri olmalıdır.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -116,7 +116,7 @@ Bu kod parçacıkları, Node. js için kişiselleştirici istemci kitaplığı i
 
 ## <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE 'de `sample.js`adlı yeni bir Node. js uygulaması oluşturun. 
+Tercih ettiğiniz düzenleyicide veya IDE 'de `sample.js`adlı yeni bir Node. js uygulaması oluşturun.
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
@@ -146,7 +146,7 @@ Eylemler, Kişiselleştiriciye göre derecelendirmek istediğiniz içerik seçim
 
 ## <a name="create-the-learning-loop"></a>Öğrenme döngüsünü oluşturma
 
-Kişiselleştirici öğrenme döngüsü, bir [derece](#request-a-rank) ve [yeniden](#send-a-reward) arama çağrısı döngüsüdür. Bu hızlı başlangıçta, içeriği kişiselleştirmek için her bir derecelendirme çağrısı, kişiselleştirmeden hizmetin içeriği derecelendirerek ne kadar iyi bir şekilde bilgi verdiğini söyleyerek bir ödül çağrısıyla izlenir. 
+Kişiselleştirici öğrenme döngüsü, bir [derece](#request-a-rank) ve [yeniden](#send-a-reward) arama çağrısı döngüsüdür. Bu hızlı başlangıçta, içeriği kişiselleştirmek için her bir derecelendirme çağrısı, kişiselleştirmeden hizmetin içeriği derecelendirerek ne kadar iyi bir şekilde bilgi verdiğini söyleyerek bir ödül çağrısıyla izlenir.
 
 Aşağıdaki döngü kodu, kullanıcıdan komut satırında tercihlerini sorma, bu bilgileri kişisel olarak sıralama için gönderme, derecelendirme seçimini bir liste arasından seçim yapmak üzere müşteriye sunma ve sonra bir yeniden Kişiselleştirici, hizmetin seçimi derecelendirerek ne kadar iyi olduğunu işaret ediyor.
 
@@ -161,9 +161,9 @@ Kod dosyasını çalıştırmadan önce [içerik seçimlerini almak](#get-conten
 
 ## <a name="request-a-rank"></a>Bir derece iste
 
-Sıralama isteğini tamamlayabilmeniz için, program kullanıcının tercihlerine içerik seçenekleri oluşturmasını ister. İşlem, `excludeActions`olarak gösterilen derecenin dışında tutulacak içerik oluşturabilir. Sıralama isteğinin, sıralanmış yanıtı almak için [Eylemler](concepts-features.md#actions-represent-a-list-of-options), CurrentContext, excludeactions ve benzersiz bir sıra olay KIMLIĞI (GUID olarak) gerekir. 
+Sıralama isteğini tamamlayabilmeniz için, program kullanıcının tercihlerine içerik seçenekleri oluşturmasını ister. İşlem, `excludeActions`olarak gösterilen derecenin dışında tutulacak içerik oluşturabilir. Sıralama isteğinin, sıralanmış yanıtı almak için [Eylemler](concepts-features.md#actions-represent-a-list-of-options), CurrentContext, excludeactions ve benzersiz bir sıra olay KIMLIĞI (GUID olarak) gerekir.
 
-Bu hızlı başlangıçta, günün saati ve Kullanıcı yiyecek tercihi basit bağlam özelliklerine sahiptir. Üretim sistemlerinde, [eylemleri ve özellikleri](concepts-features.md) belirlemek ve [değerlendirmek](concept-feature-evaluation.md) önemsiz olmayan bir şekilde olabilir.  
+Bu hızlı başlangıçta, günün saati ve Kullanıcı yiyecek tercihi basit bağlam özelliklerine sahiptir. Üretim sistemlerinde, [eylemleri ve özellikleri](concepts-features.md) belirlemek ve [değerlendirmek](concept-feature-evaluation.md) önemsiz olmayan bir şekilde olabilir.
 
 [!code-javascript[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/node/sample.js?name=rank)]
 
@@ -171,7 +171,7 @@ Bu hızlı başlangıçta, günün saati ve Kullanıcı yiyecek tercihi basit ba
 
 Yeniden isteği tamamlamaya yönelik olarak, program kullanıcının seçimini komut satırından alır, her seçime bir sayısal değer atar, sonra benzersiz sıralama olay kimliğini ve sayısal değeri ödül yöntemine gönderir.
 
-Bu hızlı başlangıç, sıfır veya 1 olarak basit bir sayı atar. Üretim [sistemlerinde, bu çağrıya ne](concept-rewards.md) zaman ve ne gönderileceğini belirlemek, özel gereksinimlerinize bağlı olarak önemsiz olmayan bir önemi olabilir. 
+Bu hızlı başlangıç, sıfır veya 1 olarak basit bir sayı atar. Üretim [sistemlerinde, bu çağrıya ne](concept-rewards.md) zaman ve ne gönderileceğini belirlemek, özel gereksinimlerinize bağlı olarak önemsiz olmayan bir önemi olabilir.
 
 [!code-javascript[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/node/sample.js?name=reward)]
 

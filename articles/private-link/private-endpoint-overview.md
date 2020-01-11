@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 673b74515ba03bc71e60a68b21b9330f9e62d424
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 38f424287788537cc5711bab8da60b5798a84b3a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647399"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867683"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
 
@@ -58,6 +58,9 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Azure depolama alanı**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Kuyruk (kuyruk, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (Web, web_secondary)        |
 |**Azure Data Lake Storage 2. Nesil**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)       |
 |**Azure Cosmos DB** | Microsoft. Azu, Smosdb/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tablo|
+|**PostgreSQL için Azure veritabanı-tek sunucu** | Microsoft. DBforPostgreSQL/sunucuları   | Postgressqlserver |
+|**MySQL için Azure Veritabanı** | Microsoft. Dbformyısql/sunucuları    | Te yapılandırılmış MySQLServer |
+|**MariaDB için Azure Veritabanı** | Microsoft. Dbformarıdb/sunucular    | mariadbServer |
  
 ## <a name="network-security-of-private-endpoints"></a>Özel uç noktaların ağ güvenliği 
 Azure hizmetleri için özel uç noktalar kullanılırken, trafik belirli bir özel bağlantı kaynağıyla güvenli hale getirilir. Platform yalnızca belirtilen özel bağlantı kaynağına ulaşan ağ bağlantılarını doğrulamak için bir erişim denetimi gerçekleştirir. Aynı Azure hizmeti içindeki ek kaynaklara erişmek için ek özel uç noktalar gereklidir. 
@@ -112,6 +115,9 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 |Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
 |Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
 |Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|Tablo|privatelink.table.cosmos.azure.com|
+|PostgreSQL için Azure veritabanı-tek sunucu (Microsoft. DBforPostgreSQL/Servers)|Postgressqlserver|privatelink.postgres.database.azure.com|
+|MySQL için Azure veritabanı (Microsoft. Dbformyısql/sunucular)|Te yapılandırılmış MySQLServer|privatelink.mysql.database.azure.com|
+|MariaDB için Azure veritabanı (Microsoft. Dbformarıdb/sunucular)|mariadbServer|privatelink.mariadb.database.azure.com|
  
 Azure, çözümü önerilen etki alanı adlarına yönlendirmek için ortak DNS üzerinde kurallı bir ad DNS kaydı (CNAME) oluşturur. Özel uç noktalarınızın özel IP adresi ile çözümlemeyi geçersiz kılabileceksiniz. 
  
@@ -136,3 +142,9 @@ Aşağıdaki tabloda özel uç noktalar kullanılırken bilinen kısıtlamaları
 - [Portalı kullanarak depolama hesabı için özel bir uç nokta oluşturma](create-private-endpoint-storage-portal.md)
 - [Portal kullanarak Azure Cosmos hesabı için özel bir uç nokta oluşturma](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Azure PowerShell kullanarak kendi özel bağlantı hizmetinizi oluşturun](create-private-link-service-powershell.md)
+- [PostgreSQL için Azure veritabanı-Portal 'ı kullanarak tek sunucu için kendi özel bağlantısını oluşturun](../postgresql/howto-configure-privatelink-portal.md)
+- [PostgreSQL için Azure veritabanı-CLı kullanarak tek bir sunucu için kendi özel bağlantısını oluşturun](../postgresql/howto-configure-privatelink-cli.md)
+- [Portalı kullanarak MySQL için Azure veritabanı için kendi özel bağlantısını oluşturun](../mysql/howto-configure-privatelink-portal.md)
+- [CLı kullanarak MySQL için Azure veritabanı için kendi özel bağlantısını oluşturun](../mysql/howto-configure-privatelink-cli.md)
+- [Portal kullanarak MariaDB için Azure veritabanı için kendi özel bağlantısını oluşturun](../mariadb/howto-configure-privatelink-portal.md)
+- [CLı kullanarak MariaDB için Azure veritabanı için kendi özel bağlantısını oluşturun](../mariadb/howto-configure-privatelink-cli.md)

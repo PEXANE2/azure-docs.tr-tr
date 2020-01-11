@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66be29b6d16e422eebd381cddb83ce94adf9f76e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 38f5af3cb2006e4b029f8979a213c0af10f1ed8a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745455"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863589"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure dijital TWINS 'de izlemeyi yapılandırma
 
@@ -97,7 +97,7 @@ Kullanım örnekleri şunlardır:
 Tam günlük sorgulama [Azure izleyici günlükleri](../azure-monitor/log-query/log-query-overview.md)aracılığıyla sağlanır. Bu güçlü özellikleri ayarlamak için:
 
 1. Azure portal **Log Analytics** için arama yapın.
-1. Kullanılabilir **Log Analytics çalışma alanı** örneklerinizi görürsünüz. Bir tane seçin ve sorgu için **günlükleri** seçin:
+1. Kullanılabilir **Log Analytics çalışma alanı** örnekleri görüntülenecektir. Bir tane seçin ve sorgu için **günlükleri** seçin:
 
     [![Log Analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
@@ -109,7 +109,7 @@ Tam günlük sorgulama [Azure izleyici günlükleri](../azure-monitor/log-query/
 
    [![günlük yönetimi](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
-Güçlü sorgu işlemleri hakkında daha fazla bilgi için bkz. [sorguları](../azure-monitor/log-query/get-started-queries.md)kullanmaya başlama.
+Güçlü sorgu işlemleri hakkında daha fazla bilgi için [sorguları](../azure-monitor/log-query/get-started-queries.md)kullanmaya başlama makalesini okuyun.
 
 > [!NOTE]
 > İlk kez **Log Analytics çalışma alanına** olay gönderirken 5 dakikalık bir gecikmeyle karşılaşabilirsiniz.
@@ -123,7 +123,7 @@ Azure Izleyici günlükleri Ayrıca, **Tanılama ve çözme sorunlarını**belir
 
 ## <a name="other-options"></a>Diğer seçenekler
 
-Azure dijital TWINS ayrıca uygulamaya özgü günlüğe kaydetme ve güvenlik denetimini destekler. Azure dijital TWINS örneğiniz için sunulan tüm Azure günlük seçeneklerine ilişkin kapsamlı bir genel bakış için bkz. [Azure günlük denetimi](../security/fundamentals/log-audit.md) makalesi.
+Azure dijital TWINS ayrıca uygulamaya özgü günlüğe kaydetme ve güvenlik denetimini destekler. Azure dijital TWINS örneğiniz için sunulan tüm Azure günlük seçeneklerine ilişkin kapsamlı bir genel bakış için [Azure günlük denetimi](../security/fundamentals/log-audit.md) makalesini okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

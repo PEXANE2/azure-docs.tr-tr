@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 426ec57b3dbce884e55ef7a11ccca32ed295d70d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 12e642e59a1341926a0c4d66533465cecfc21709
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111900"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863147"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure Bilişsel Arama Dizin oluşturucudan Azure sanal makinesinde SQL Server bağlantı yapılandırma
 
@@ -72,8 +72,12 @@ Aşağıdaki bağlantılar, VM dağıtımları için NSG yapılandırması hakk�
 
 IP adresleme, sorunu ve olası geçici çözümleri fark ediyorsanız kolayca ele alınması gereken birkaç zorluk ortaya çıkarabilir. Kalan bölümler, ACL 'deki IP adresleriyle ilgili sorunları işlemeye yönelik öneriler sağlar.
 
-#### <a name="restrict-access-to-the-search-service-ip-address"></a>Arama hizmeti IP adresine erişimi kısıtla
-SQL Azure VM 'lerinizi herhangi bir bağlantı isteğine açık hale getirmek yerine, ACL 'deki arama hizmetinizin IP adresine erişimi kısıtlamanız önemle önerilir. IP adresini, arama hizmetinizin FQDN 'sini (örneğin, `<your-search-service-name>.search.windows.net`) ping yaparak kolayca bulabilirsiniz.
+#### <a name="restrict-access-to-the-azure-cognitive-search"></a>Azure Bilişsel Arama erişimi kısıtlama
+SQL Azure sanal makinelerinizi tüm bağlantı isteklerine açık hale getirmek yerine, arama hizmetinizin IP adresine ve ACL 'deki `AzureCognitiveSearch` [hizmeti ETIKETININ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP adresi aralığına erişimi kısıtlamanız önemle önerilir.
+
+Arama hizmetinizin FQDN 'sini (örneğin, `<your-search-service-name>.search.windows.net`) ping yaparak IP adresini bulabilirsiniz.
+
+Azure Bilişsel Arama hizmetinizin, [INDIRILEBILIR JSON dosyalarını](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) veya [hizmet etiketi bulma API 'si](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)aracılığıyla bulunduğu belirli bölge IÇIN `AzureCognitiveSearch` [hizmet etiketinin](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP adresi aralığını bulabilirsiniz. IP adresi aralığı haftalık olarak güncelleştirilir.
 
 #### <a name="managing-ip-address-fluctuations"></a>IP adresi dalgalanmaları yönetme
 Arama hizmetinizin yalnızca bir arama birimi (yani bir çoğaltma ve bir bölüm) varsa, hizmet yeniden başlatmaları sırasında IP adresi değişir ve bu, arama hizmetinizin IP adresine sahip mevcut bir ACL 'yi geçersiz kılmıştır.

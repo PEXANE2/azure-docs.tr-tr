@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2dae0a31ad53a777f5ae88c1c12f988d2f80630a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550275"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867414"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Sertifika için hazırlamış bir IoT Tak ve Kullan önizleme cihazı oluşturun
 
@@ -35,7 +35,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Vs Code Uzantı paketi Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-Ayrıca, hızlı başlangıçta oluşturduğunuz IoT Tak ve Kullan cihazının olması gerekir: cihaz [oluşturmak için bir cihaz yetenek modeli kullanın](quickstart-create-pnp-device-windows.md).
+Ayrıca, Windows için bir cihaz hızlı başlangıcı [oluşturmak üzere cihaz yetenek modeli kullanma](quickstart-create-pnp-device-windows.md) ' yı da doldurmanız gerekir. Hızlı başlangıç, Vcpkg kullanarak geliştirme ortamınızı ayarlamayı ve örnek bir proje oluşturmayı gösterir.
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Yetenek modeli ve arabirimleri depolayın
 
@@ -107,20 +107,53 @@ Cihazı onaylamak için, [Azure IoT cihaz sağlama hizmeti (DPS)](https://docs.m
 
 1. Cihaz kodu saplaması oluşturmak için kullanmak istediğiniz DCM dosyasını seçin.
 
-1. Proje adını girin, bu, cihaz uygulamanızın adıdır.
+1. **Sample_device**gibi proje adını girin. Bu, cihaz uygulamanızın adıdır.
 
 1. Dil olarak **ANSI C** 'yi seçin.
 
 1. Bağlantı yöntemi olarak, **DPS (cihaz sağlama hizmeti) ile simetrik anahtar** arasında seçim yapın.
 
-1. Cihaz işletim sistemine bağlı olarak, Linux 'ta **CMake projesini Windows** veya **CMake** projesinde proje şablonu olarak seçin.
+1. Proje şablonunuz olarak **Windows 'Da CMake projesi '** ni seçin.
+
+1. Cihaz SDK 'sını dahil etmek için **Vcpkg aracılığıyla** öğesini seçin.
 
 1. VS Code, oluşturulan cihaz kodu saplama dosyaları ile yeni bir pencere açar.
 
-1. Kodu oluşturduktan sonra, uygulama için parametreler olarak DPS kimlik bilgilerini (**DPS kimlik kapsamı**, **DPS simetrik anahtar**, **cihaz kimliği**) girin. Sertifika portalından kimlik bilgilerini almak için bkz. [ıot Tak ve kullan cihazınızı bağlama ve test](tutorial-certification-test.md#connect-and-discover-interfaces)etme.
+## <a name="build-and-run-the-code"></a>Kodu derleyin ve çalıştırın
 
-    ```cmd/sh
-    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
+Oluşturulan cihaz kodu saplaması oluşturmak için Vcpkg paketini kullanın. Oluşturduğunuz uygulama, IoT Hub 'ına bağlanan bir cihaza benzetir. Uygulama telemetri ve Özellikler gönderir ve komutları alır.
+
+1. `sample_device` klasöründe bir `cmake` alt dizini oluşturun ve bu klasöre gidin:
+
+    ```cmd
+    mkdir cmake
+    cd cmake
+    ```
+
+1. Oluşturulan kod Saplaması oluşturmak için aşağıdaki komutları çalıştırın (yer tutucuyu Vcpkg depoağınızın diziniyle değiştirin):
+
+    ```cmd
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
+
+    cmake --build .
+    ```
+    
+    > [!NOTE]
+    > Visual Studio 2017 veya 2015 kullanıyorsanız, kullanmakta olduğunuz yapı araçlarına göre CMake oluşturucuyu belirtmeniz gerekir:
+    >```cmd
+    ># Either
+    >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    ># or
+    >cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    >```
+
+    > [!NOTE]
+    > CMake derleyicinizi C++ bulamazsa, önceki komutu çalıştırdığınızda derleme hataları alırsınız. Bu durumda, [Visual Studio komut isteminde](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)bu komutu çalıştırmayı deneyin.
+
+1. Oluşturma işlemi başarıyla tamamlandıktan sonra, DPS kimlik bilgilerini (**DPS kimlik kapsamı**, **DPS simetrik anahtar**, **cihaz kimliği**) uygulamanın parametreleri olarak girin. Sertifika portalından kimlik bilgilerini almak için bkz. [ıot Tak ve kullan cihazınızı bağlama ve test](tutorial-certification-test.md#connect-and-discover-interfaces)etme.
+
+    ```cmd\sh
+    .\Debug\sample_device.exe [Device ID] [DPS ID Scope] [DPS symmetric key]
     ```
 
 ### <a name="implement-standard-interfaces"></a>Standart arabirimleri Uygula

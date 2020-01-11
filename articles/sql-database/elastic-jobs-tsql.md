@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: deefc1cc1d8fe82eab9ec0085b3a11ccd2fe7840
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820593"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861345"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) kullanarak elastik veritabanı Işleri oluşturma ve yönetme
 
@@ -350,7 +350,7 @@ ORDER BY start_time DESC
 ```
 
 
-## <a name="cancel-a-job"></a>İşi iptal et
+## <a name="cancel-a-job"></a>Bir işi iptal etme
 
 Aşağıdaki örnek, bir işin nasıl iptal edildiğini gösterir.  
 [*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
@@ -521,7 +521,7 @@ Güncellenme işinin adı. job_name nvarchar (128).
 [ **\@Enabled =** ] etkin  
 İş zamanlamasının etkin olup olmadığını belirtir (1) veya etkin değil (0). Etkin bit.
 
-[ **\@schedule_interval_type =** ] schedule_interval_type  
+[ **\@schedule_interval_type=** ] schedule_interval_type  
 Değer, işin ne zaman yürütüleceğini belirtir. schedule_interval_type nvarchar (50) ve aşağıdaki değerlerden biri olabilir:
 
 - ' Bir kez ',
@@ -906,7 +906,7 @@ Adımın kaldırılacağı işin adı. job_name, varsayılan değer olmadan nvar
 0 (başarılı) veya 1 (hata)
 
 #### <a name="remarks"></a>Açıklamalar
-Yok.
+Hiçbiri.
  
 #### <a name="permissions"></a>İzinler
 Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
@@ -934,7 +934,7 @@ Durdurulacak iş yürütmenin kimlik numarası. job_execution_id, varsayılan de
 0 (başarılı) veya 1 (hata)
 
 #### <a name="remarks"></a>Açıklamalar
-Yok.
+Hiçbiri.
  
 #### <a name="permissions"></a>İzinler
 Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
@@ -994,7 +994,7 @@ Silinecek hedef grubun adı. target_group_name, varsayılan değer olmadan nvarc
 0 (başarılı) veya 1 (hata)
 
 #### <a name="remarks"></a>Açıklamalar
-Yok.
+Hiçbiri.
 
 #### <a name="permissions"></a>İzinler
 Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
@@ -1192,7 +1192,7 @@ GO
 Aşağıdaki görünümler [işler veritabanında](sql-database-job-automation-overview.md#job-database)kullanılabilir.
 
 
-|Görünüm  |Açıklama  |
+|Görüntüle  |Açıklama  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  İş yürütme geçmişini gösterir.      |
 |[Çizelge](#jobs-view)     |   Tüm işleri gösterir.      |
@@ -1200,7 +1200,7 @@ Aşağıdaki görünümler [işler veritabanında](sql-database-job-automation-o
 |[JobSteps](#jobsteps-view)     |     Her bir işin geçerli sürümündeki tüm adımları gösterir.    |
 |[jobstep_versions](#jobstep_versions-view)     |     Her bir işin tüm sürümlerindeki tüm adımları gösterir.    |
 |[target_groups](#target_groups-view)     |      Tüm hedef gruplarını gösterir.   |
-|[target_group_members](#target_groups_members-view)     |   Tüm hedef grupların tüm üyelerini gösterir.      |
+|[target_group_members](#target_group_members-view)     |   Tüm hedef grupların tüm üyelerini gösterir.      |
 
 
 ### <a name="job_executions-view"></a>job_executions görünümü
@@ -1212,21 +1212,21 @@ Aşağıdaki görünümler [işler veritabanında](sql-database-job-automation-o
 
 |Sütun adı|   Veri türü   |Açıklama|
 |---------|---------|---------|
-|**job_execution_id**   |benzersiz tanımlayıcı|  İş yürütme örneğinin benzersiz KIMLIĞI.
+|**job_execution_id**   |uniqueidentifier|  İş yürütme örneğinin benzersiz KIMLIĞI.
 |**job_name**   |nvarchar (128)  |İşin adı.
-|**job_id** |benzersiz tanımlayıcı|  İşin benzersiz KIMLIĞI.
+|**job_id** |uniqueidentifier|  İşin benzersiz KIMLIĞI.
 |**job_version**    |int    |İşin sürümü (iş her değiştirililişinde otomatik olarak güncelleştirilir).
 |**step_id**    |int|   Adım için benzersiz (Bu iş için) tanımlayıcı. NULL, bunun ana iş yürütmesi olduğunu gösterir.
-|**is_active**| sürümleri |Bilgilerin etkin mi yoksa devre dışı mı olduğunu gösterir. 1 etkin işleri gösterir ve 0 etkin değil anlamına gelir.
+|**is_active**| bit |Bilgilerin etkin mi yoksa devre dışı mı olduğunu gösterir. 1 etkin işleri gösterir ve 0 etkin değil anlamına gelir.
 |**uyor**| nvarchar (50)|İşin durumunu gösteren değer: ' Created ', ' sürüyor ', ' Failed ', ' başarılı ', ' atlandı ', ' SucceededWithSkipped '|
 |**create_time**|   datetime2 (7)|   İşin oluşturulduğu tarih ve saat.
 |**start_time** |datetime2 (7)|  İşin yürütmeye başladığı tarih ve saat. İş henüz yürütülmemişse NULL.
 |**end_time**|  datetime2 (7)    |İşin yürütmenin bittiği tarih ve saat. İş henüz yürütülmemişse veya henüz yürütmeyi tamamlamamışsa NULL.
 |**current_attempts**   |int    |Adımın yeniden denenme sayısı. Ana iş 0 olacak, alt iş yürütmeleri yürütme ilkesine göre 1 veya daha büyük olacaktır.
 |**current_attempt_start_time** |datetime2 (7)|  İşin yürütmeye başladığı tarih ve saat. NULL, bunun ana iş yürütmesi olduğunu gösterir.
-|**last_message**   |nvarchar (max)| İş veya adım geçmişi iletisi. 
+|**last_message**   |nvarchar(max)| İş veya adım geçmişi iletisi. 
 |**target_type**|   nvarchar (128)   |Bir sunucudaki tüm veritabanları, bir elastik havuzdaki veya bir veritabanındaki tüm veritabanları dahil hedef veritabanı veya veritabanı koleksiyonu türü. Target_type için geçerli değerler ' SqlServer ', ' Sqtalakpool ' veya ' SqlDatabase ' değerleridir. NULL, bunun ana iş yürütmesi olduğunu gösterir.
-|**target_id**  |benzersiz tanımlayıcı|  Hedef grubu üyesinin benzersiz KIMLIĞI.  NULL, bunun ana iş yürütmesi olduğunu gösterir.
+|**target_id**  |uniqueidentifier|  Hedef grubu üyesinin benzersiz KIMLIĞI.  NULL, bunun ana iş yürütmesi olduğunu gösterir.
 |**target_group_name**  |nvarchar (128)  |Hedef grubun adı. NULL, bunun ana iş yürütmesi olduğunu gösterir.
 |**target_server_name**|    nvarchar (256)|  Hedef grupta bulunan SQL veritabanı sunucusunun adı. Yalnızca target_type ' SqlServer ' ise belirtilir. NULL, bunun ana iş yürütmesi olduğunu gösterir.
 |**target_database_name**   |nvarchar (128)| Hedef grupta bulunan veritabanının adı. Yalnızca target_type ' SqlDatabase ' olduğunda belirtilir. NULL, bunun ana iş yürütmesi olduğunu gösterir.
@@ -1241,9 +1241,9 @@ Tüm işleri gösterir.
 |Sütun adı|   Veri türü|  Açıklama|
 |------|------|-------|
 |**job_name**|  nvarchar (128)   |İşin adı.|
-|**job_id**|    benzersiz tanımlayıcı    |İşin benzersiz KIMLIĞI.|
+|**job_id**|    uniqueidentifier    |İşin benzersiz KIMLIĞI.|
 |**job_version**    |int    |İşin sürümü (iş her değiştirililişinde otomatik olarak güncelleştirilir).|
-|**açıklaması**    |nvarchar (512)| İş için açıklama. etkin bit, işin etkin veya devre dışı olduğunu belirtir. 1 etkin işleri gösterir ve 0 devre dışı işleri gösterir.|
+|**description**    |nvarchar (512)| İş için açıklama. etkin bit, işin etkin veya devre dışı olduğunu belirtir. 1 etkin işleri gösterir ve 0 devre dışı işleri gösterir.|
 |**schedule_interval_type** |nvarchar (50)   |İşin ne zaman yürütüleceğini belirten değer: ' bir kez ', ' dakika ', ' saat ', ' Days ', ' hafta ', ' ay '
 |**schedule_interval_count**|   int|    İşin her yürütmesi arasında gerçekleştirilecek schedule_interval_type dönemi sayısı.|
 |**schedule_start_time**    |datetime2 (7)|  İşin en son başladığı tarih ve saat.|
@@ -1259,7 +1259,7 @@ Tüm iş sürümlerini gösterir.
 |Sütun adı|   Veri türü|  Açıklama|
 |------|------|-------|
 |**job_name**|  nvarchar (128)   |İşin adı.|
-|**job_id**|    benzersiz tanımlayıcı    |İşin benzersiz KIMLIĞI.|
+|**job_id**|    uniqueidentifier    |İşin benzersiz KIMLIĞI.|
 |**job_version**    |int    |İşin sürümü (iş her değiştirililişinde otomatik olarak güncelleştirilir).|
 
 
@@ -1272,29 +1272,29 @@ Her bir işin geçerli sürümündeki tüm adımları gösterir.
 |Sütun adı    |Veri türü| Açıklama|
 |------|------|-------|
 |**job_name**   |nvarchar (128)| İşin adı.|
-|**job_id** |benzersiz tanımlayıcı   |İşin benzersiz KIMLIĞI.|
+|**job_id** |uniqueidentifier   |İşin benzersiz KIMLIĞI.|
 |**job_version**|   int|    İşin sürümü (iş her değiştirililişinde otomatik olarak güncelleştirilir).|
 |**step_id**    |int    |Adım için benzersiz (Bu iş için) tanımlayıcı.|
 |**step_name**  |nvarchar (128)  |Adımın benzersiz (Bu iş için) adı.|
 |**command_type**   |nvarchar (50)   |İş adımında yürütülecek komutun türü. V1 için, değer ' TSql ' değerine eşit ve varsayılan değer olarak ayarlanmalıdır.|
 |**command_source** |nvarchar (50)|  Komutun konumu. V1 için, ' Inline ' varsayılan ve yalnızca kabul edilen değerdir.|
-|**komutundaki**|   nvarchar (max)|  Command_type aracılığıyla elastik işler tarafından yürütülecek komutlar.|
+|**komutundaki**|   nvarchar(max)|  Command_type aracılığıyla elastik işler tarafından yürütülecek komutlar.|
 |**credential_name**|   nvarchar (128)   |İşi yürütmek için kullanılan veritabanı kapsamlı kimlik bilgisinin adı.|
 |**target_group_name**| nvarchar (128)   |Hedef grubun adı.|
-|**target_group_id**|   benzersiz tanımlayıcı|   Hedef grubun benzersiz KIMLIĞI.|
-|**initial_retry_interval_seconds**|    int |İlk yeniden deneme denemesinden önceki gecikme. Varsayılan değer 1 ' dir.|
+|**target_group_id**|   uniqueidentifier|   Hedef grubun benzersiz KIMLIĞI.|
+|**initial_retry_interval_seconds**|    int |İlk yeniden deneme denemesinden önceki gecikme. Varsayılan değer 1'dir.|
 |**maximum_retry_interval_seconds** |int|   Yeniden deneme girişimleri arasındaki gecikme üst sınırı. Denemeler arasındaki gecikme bu değerden daha büyük büyürken, bunun yerine bu değere eşit hale gelir. Varsayılan değer 120 ' dir.|
-|**retry_interval_backoff_multiplier**  |gerçek|  Birden çok iş adımı yürütme denemesi başarısız olursa yeniden deneme gecikmesine uygulanacak çarpan. Varsayılan değer 2,0 ' dir.|
+|**retry_interval_backoff_multiplier**  |real|  Birden çok iş adımı yürütme denemesi başarısız olursa yeniden deneme gecikmesine uygulanacak çarpan. Varsayılan değer 2,0 ' dir.|
 |**retry_attempts** |int|   Bu adım başarısız olursa, kullanılacak yeniden deneme sayısı. Varsayılan değer 10 ' dur. Bu, yeniden deneme girişimi olmadığını gösterir.|
 |**step_timeout_seconds**   |int|   Yeniden deneme girişimleri arasındaki dakika cinsinden süre. Varsayılan değer 0 dakikalık bir aralığı gösteren 0 ' dır.|
 |**output_type**    |nvarchar (11)|  Komutun konumu. Geçerli önizlemede, ' Inline ' varsayılan ve yalnızca kabul edilen değerdir.|
 |**output_credential_name**|    nvarchar (128)   |Sonuç kümesini depolamak üzere hedef sunucuya bağlanmak için kullanılacak kimlik bilgilerinin adı.|
-|**output_subscription_id**|    benzersiz tanımlayıcı|   Sorgu yürütmeden sonuçlar kümesi için hedef server\database aboneliğinin benzersiz KIMLIĞI.|
+|**output_subscription_id**|    uniqueidentifier|   Sorgu yürütmeden sonuçlar kümesi için hedef server\database aboneliğinin benzersiz KIMLIĞI.|
 |**output_resource_group_name** |nvarchar (128)| Hedef sunucunun bulunduğu kaynak grubu adı.|
 |**output_server_name**|    nvarchar (256)   |Sonuç kümesi için hedef sunucunun adı.|
 |**output_database_name**   |nvarchar (128)| Sonuç kümesi için hedef veritabanının adı.|
-|**output_schema_name** |nvarchar (max)| Hedef şemanın adı. Belirtilmezse, varsayılan olarak dbo olur.|
-|**output_table_name**| nvarchar (max)|  Sorgu sonuçlarından sonuçları kümesinin depolayabileceği tablonun adı. Tablo, zaten mevcut değilse, sonuçlar kümesi şemasına göre otomatik olarak oluşturulur. Şemanın sonuçlar kümesi şemasıyla eşleşmesi gerekir.|
+|**output_schema_name** |nvarchar(max)| Hedef şemanın adı. Belirtilmezse, varsayılan olarak dbo olur.|
+|**output_table_name**| nvarchar(max)|  Sorgu sonuçlarından sonuçları kümesinin depolayabileceği tablonun adı. Tablo, zaten mevcut değilse, sonuçlar kümesi şemasına göre otomatik olarak oluşturulur. Şemanın sonuçlar kümesi şemasıyla eşleşmesi gerekir.|
 |**max_parallelism**|   int|    İş adımının her seferinde çalışacağı, esnek havuz başına en fazla veritabanı sayısı. Varsayılan değer NULL, yani hiçbir sınır yoktur. |
 
 
@@ -1313,23 +1313,23 @@ Tüm hedef gruplarını listeler.
 |Sütun adı|Veri türü| Açıklama|
 |-----|-----|-----|
 |**target_group_name**| nvarchar (128)   |Hedef grubun adı, veritabanı koleksiyonu. 
-|**target_group_id**    |benzersiz tanımlayıcı   |Hedef grubun benzersiz KIMLIĞI.
+|**target_group_id**    |uniqueidentifier   |Hedef grubun benzersiz KIMLIĞI.
 
-### <a name="target_groups_members-view"></a>target_groups_members görünümü
+### <a name="target_group_members-view"></a>target_group_members görünümü
 
-[işler]. [target_groups_members]
+[işler]. [target_group_members]
 
 Tüm hedef grupların tüm üyelerini gösterir.
 
 |Sütun adı|Veri türü| Açıklama|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar (128|Hedef grubun adı, veritabanı koleksiyonu. |
-|**target_group_id**    |benzersiz tanımlayıcı   |Hedef grubun benzersiz KIMLIĞI.|
+|**target_group_id**    |uniqueidentifier   |Hedef grubun benzersiz KIMLIĞI.|
 |**membership_type**    |int|   Hedef grup üyesinin hedef gruba dahil edilip edilmediğini belirtir. Target_group_name için geçerli değerler ' Include ' veya ' exclude '.|
 |**target_type**    |nvarchar (128)| Bir sunucudaki tüm veritabanları, bir elastik havuzdaki veya bir veritabanındaki tüm veritabanları dahil hedef veritabanı veya veritabanı koleksiyonu türü. Target_type için geçerli değerler ' SqlServer ', ' Sqtalakpool ', ' SqlDatabase ' veya ' SqlShardMap '.|
-|**target_id**  |benzersiz tanımlayıcı|  Hedef grubu üyesinin benzersiz KIMLIĞI.|
+|**target_id**  |uniqueidentifier|  Hedef grubu üyesinin benzersiz KIMLIĞI.|
 |**refresh_credential_name**    |nvarchar (128)  |Hedef grup üyesine bağlanmak için kullanılan veritabanı kapsamlı kimlik bilgisinin adı.|
-|**subscription_id**    |benzersiz tanımlayıcı|  Aboneliğin benzersiz KIMLIĞI.|
+|**subscription_id**    |uniqueidentifier|  Aboneliğin benzersiz KIMLIĞI.|
 |**resource_group_name**    |nvarchar (128)| Hedef grup üyesinin bulunduğu kaynak grubunun adı.|
 |**server_name**    |nvarchar (128)  |Hedef grupta bulunan SQL veritabanı sunucusunun adı. Yalnızca target_type ' SqlServer ' ise belirtilir. |
 |**database_name**  |nvarchar (128)  |Hedef grupta bulunan veritabanının adı. Yalnızca target_type ' SqlDatabase ' olduğunda belirtilir.|

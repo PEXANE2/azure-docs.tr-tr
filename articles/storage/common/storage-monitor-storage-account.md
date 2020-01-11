@@ -4,16 +4,16 @@ description: Azure portal kullanarak Azure 'da bir depolama hesabını izlemeyi 
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2018
+ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e9ef700e45acc55f476d72883107b0c5c958fa7f
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211862"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862841"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure portal bir depolama hesabını izleme
 
@@ -53,7 +53,7 @@ Varsayılan ölçüm kümesi, depolama hesabı dikey penceresindeki grafiklerde 
 **Durumu** **kapalı**olarak ayarlayarak ölçüm toplamayı ve günlüğe kaydetmeyi devre dışı bırakabilirsiniz.
 
 > [!NOTE]
-> Azure depolama, depolama hesabınızın ölçümlerini depolamak için [Tablo Depolaması](storage-introduction.md#table-storage) kullanır ve ölçümleri hesabınızdaki tablolarda depolar. Daha fazla bilgi için bkz. [Ölçümler nasıl depolanır](storage-analytics-metrics.md#how-metrics-are-stored).
+> Azure depolama, depolama hesabınızın ölçümlerini depolamak için [Tablo Depolaması](storage-introduction.md#table-storage) kullanır ve ölçümleri hesabınızdaki tablolarda depolar. Daha fazla bilgi için bkz. . [Ölçümler nasıl depolanır](storage-analytics-metrics.md#how-metrics-are-stored).
 >
 
 ## <a name="customize-metrics-charts"></a>Ölçüm grafiklerini özelleştirme
@@ -109,10 +109,10 @@ Depolama kaynağı ölçümleri için eşiklere ulaşıldığında sizi bilgilen
 Portal panonuza herhangi bir depolama hesabınız için Azure depolama ölçümleri grafikleri ekleyebilirsiniz.
 
 1. Panonuzu [Azure Portal](https://portal.azure.com)görüntülerken **panoyu Düzenle** ' yi seçin.
-1. **Kutucuk galerisinde**,**türe** >  **göre kutucukları bul**' u seçin.
-1. **Tür** > **depolama hesapları**' nı seçin.
+1. **Kutucuk galerisinde** > **türe** **göre kutucukları bul** ' u seçin.
+1.  > **depolama hesapları** **yazın** ' ı seçin.
 1. **Kaynaklar**' da, ölçümlerini panoya eklemek istediğiniz depolama hesabını seçin.
-1. **Kategori** > **izlemeyi**seçin.
+1. **İzleme** > **kategorileri** seçin.
 1. Görüntülenmesini istediğiniz ölçüm için grafik kutucuğunu panonuza sürükleyip bırakın. Panoda görüntülenmesini istediğiniz tüm ölçümler için tekrarlayın. Aşağıdaki görüntüde, "blob 'Lar-toplam istek" grafiği bir örnek olarak vurgulanır, ancak tüm grafikler panonuza yerleştirme için kullanılabilir.
 
    ![Azure portal kutucuk Galerisi](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
@@ -129,14 +129,14 @@ Blob, tablo ve kuyruk Hizmetleri için okuma, yazma ve silme istekleri için Azu
 >
 
 1. [Azure Portal](https://portal.azure.com)depolama **hesapları**' nı seçin ve depolama hesabı dikey penceresini açmak için depolama hesabı adı ' nı seçin.
-1. Menü dikey penceresinin **izleme** bölümünde **Tanılama** ' yı seçin.
+1. Menü dikey penceresinin **izleme (klasik)** bölümünde **Tanılama ayarları (klasik)** seçeneğini belirleyin.
 
     ![Azure portal Izleme altındaki tanılama menü öğesi.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
 1. **Durumun** **Açık**olarak ayarlandığından emin olun ve günlük kaydını etkinleştirmek istediğiniz **Hizmetleri** seçin.
 
     ![Azure portal günlüğe kaydetmeyi yapılandırın.](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. **Kaydet**’e tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 Tanılama günlükleri, depolama hesabınızda *$logs* adlı bir blob kapsayıcısına kaydedilir. Günlük verilerini [Microsoft Depolama Gezgini](https://storageexplorer.com)gibi bir Depolama Gezgini ile veya program aracılığıyla depolama istemci kitaplığı veya PowerShell kullanarak görüntüleyebilirsiniz.
 

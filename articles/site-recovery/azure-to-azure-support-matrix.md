@@ -2,13 +2,14 @@
 title: Azure Site Recovery ile Azure VM olağanüstü durum kurtarma için destek matrisi
 description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüstü durum kurtarma desteğini özetler.
 ms.topic: article
-ms.date: 12/23/2019
-ms.openlocfilehash: b8809682f4d2bed72eec1d64b2ac40b664237632
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 01/10/2020
+ms.author: raynew
+ms.openlocfilehash: 1e30170f521fa21cb69fb1879ea4335025d8d959
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551599"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863936"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure VM olağanüstü durum kurtarma için destek matrisi
 
@@ -202,7 +203,7 @@ Yedekleme | LRS ve GRS desteklenir.<br/><br/> ZRS desteklenmez.
 Seyrek erişimli ve sık erişimli depolama | Desteklenmiyor | Seyrek erişimli ve sık erişimli depolamada VM diskleri desteklenmez
 Depolama Alanları | Desteklenen |
 Bekleyen şifreleme (SSE) | Desteklenen | SSE, depolama hesaplarında varsayılan ayardır.   
-Bekleyen şifreleme (CMK) | Desteklenmiyor |   
+Bekleyen şifreleme (CMK) | Desteklenen | Yönetilen diskler için hem yazılım hem de HSM anahtarları desteklenir    
 Windows işletim sistemi için Azure disk şifrelemesi (ADE) | Yönetilen disklere sahip VM 'Ler için desteklenir. Yönetilmeyen diskleri kullanan VM 'Ler desteklenmez |
 Linux işletim sistemi için Azure disk şifrelemesi (ADE) | Desteklenen |
 Sık erişimli ekleme | Desteklenen | Çoğaltılan bir Azure VM 'ye eklediğiniz bir veri diski için çoğaltmanın etkinleştirilmesi, yönetilen diskleri kullanan VM 'Ler için desteklenir.

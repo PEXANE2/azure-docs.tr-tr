@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d611806d31719899d249b29ed4b0ea499280252
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3b8c25c09b87dc8e9874870881173944fea1ee73
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894906"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864358"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Sorgu performansını en üst düzeye çıkarmak için JSON şekli 
 
@@ -50,7 +50,7 @@ Aşağıdaki kılavuz mümkün olan en iyi sorgu performansını sağlamanıza y
 
 ## <a name="example-overview"></a>Örneğe genel bakış
 
-Aşağıdaki iki örnek, önceki önerileri vurgulamak için olayların nasıl gönderileceğini göstermektedir. Her örneği izleyerek önerilerin nasıl uygulandığını görebilirsiniz.
+Aşağıdaki iki örnek, önceki önerileri vurgulamak için olayların nasıl gönderileceğini göstermektedir. Her örneği izleyerek önerilerin nasıl uygulandığını inceleyebilirsiniz.
 
 Örnekler, birden çok cihazın ölçüm veya sinyal gönderen bir senaryoya dayalıdır. Ölçümler veya sinyaller Flow ücreti, altyapı yağ baskısı, sıcaklık ve nem olabilir. İlk örnekte, tüm cihazlarda birkaç ölçüm vardır. İkinci örnekte birçok cihaz vardır ve her bir cihaz birçok benzersiz ölçü gönderir.
 
@@ -95,14 +95,14 @@ Azure buluta gönderildiğinde JSON 'a serileştirilmiş bir [IoT cihaz iletisi 
 
 * Anahtar özelliği **DeviceID**olan başvuru verileri tablosu:
 
-   | deviceId | Ileti | deviceLocation |
+   | deviceId | Ileti | DeviceLocation |
    | --- | --- | --- |
    | FXXX | LINE\_DATA | AV |
    | FYYY | LINE\_DATA | US |
 
 * Time Series Insights olay tablosu, düzleştirme sonrasında:
 
-   | deviceId | Ileti | deviceLocation | timestamp | dizi. Akış hızı ft3/sn | dizi. Petrol baskısı PSI altyapısı |
+   | deviceId | Ileti | DeviceLocation | timestamp | dizi. Akış hızı ft3/sn | dizi. Petrol baskısı PSI altyapısı |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | LINE\_DATA | AV | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
    | FXXX | LINE\_DATA | AV | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
@@ -165,7 +165,7 @@ Azure buluta gönderildiğinde JSON 'a serileştirilmiş bir [IoT cihaz iletisi 
 
 * Anahtar özellikleri **DeviceID** ve **Series. TagId**olan başvuru verileri tablosu:
 
-   | deviceId | Series. TagId | Ileti | deviceLocation | type | birim |
+   | deviceId | Series. TagId | Ileti | DeviceLocation | type | birim |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | porate oranı | LINE\_DATA | AV | Akış hızı | ft3/s |
    | FXXX | Oilbasınç | LINE\_DATA | AV | Motor yağ basıncı | psi |
@@ -174,7 +174,7 @@ Azure buluta gönderildiğinde JSON 'a serileştirilmiş bir [IoT cihaz iletisi 
 
 * Time Series Insights olay tablosu, düzleştirme sonrasında:
 
-   | deviceId | Series. TagId | Ileti | deviceLocation | type | birim | timestamp | Series. Value |
+   | deviceId | Series. TagId | Ileti | DeviceLocation | type | birim | timestamp | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | porate oranı | LINE\_DATA | AV | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | Oilbasınç | LINE\_DATA | AV | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 34.7 |

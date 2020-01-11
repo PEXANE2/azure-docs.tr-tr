@@ -1,5 +1,5 @@
 ---
-title: "VNet 'ten VNet 'e bağlantı kullanarak bir Azure sanal ağını başka bir VNet 'e bağlama: PowerShell | Microsoft Docs"
+title: "Azure VPN Gateway VNet 'ten VNet 'e bağlantı kullanarak VNet 'i başka bir sanal ağa bağlama: PowerShell"
 description: Sanal ağlar arası bağlantı ve PowerShell kullanarak sanal ağları birbirine bağlayın.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: dbf59740af64bf8d403b6596a17646304c0f1eb0
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385780"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860563"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell kullanarak sanal ağlar arası VPN ağ geçidi bağlantısı yapılandırma
 
@@ -21,7 +21,7 @@ Bu makale, sanal ağlar arası bağlantı türünü kullanarak sanal ağları ba
 Bu makaledeki adımlar Resource Manager dağıtım modeli için geçerlidir ve PowerShell kullanır. Ayrıca aşağıdaki listeden farklı bir seçenek belirtip farklı bir dağıtım aracı veya dağıtım modeli kullanarak da bu yapılandırmayı oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -40,7 +40,7 @@ Sanal ağlar arası bağlantı yapılandırma, sanal ağları kolayca bağlaman�
 
 Karmaşık bir ağ yapılandırmasıyla çalışıyorsanız, sanal ağlarınızı, sanal ağlar arası bağlantı adımları yerine [Siteden Siteye](vpn-gateway-create-site-to-site-rm-powershell.md) adımlarını kullanarak bağlamayı tercih edebilirsiniz. Siteden Siteye adımlarını kullandığınızda, yerel ağ geçitlerini kendiniz oluşturup yapılandırırsınız. Her sanal ağa ait yerel ağ geçidi, diğer sanal ağa yerel bir site gibi davranır. Bunun yapılması, trafiği yönlendirmek için yerel ağ geçidine ait ek bir adres alanı belirtmenize olanak sağlar. Bir sanal ağın adres alanı değiştiğinde, değişimi yansıtmak için ona karşılık gelen yerel ağ geçidini güncelleştirmeniz gerekir. Otomatik olarak güncelleştirilmez.
 
-### <a name="vnet-peering"></a>VNet eşlemesi
+### <a name="vnet-peering"></a>Sanal ağ eşleme
 
 Sanal ağlarınızı, Sanal Ağ Eşleme kullanarak bağlamayı düşünebilirsiniz. Sanal ağ eşleme, bir VPN gateway kullanmadığından farklı kısıtlamaları vardır. Ayrıca, [sanal ağ eşleme fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-network), [Sanal Ağlar Arası VPN Gateway fiyatlandırmasından](https://azure.microsoft.com/pricing/details/vpn-gateway) farklı olarak hesaplanır. Daha fazla bilgi için bkz. [VNet eşlemesi](../virtual-network/virtual-network-peering-overview.md).
 
@@ -65,11 +65,11 @@ Kümeler arasındaki temel fark, farklı aboneliklerde bulunan sanal ağlar içi
 
 Bu alıştırma için, yapılandırmaları birleştirebilir veya yalnızca birlikte çalışmak istediğiniz yapılandırmayı seçebilirsiniz. Tüm yapılandırmalar VNet-VNet bağlantı türünü kullanır. Ağ trafiği, birbirine doğrudan bağlı sanal ağlar arasında akar. Bu alıştırmada TestVNet4 trafiği TestVNet5’e yönlendirilmez.
 
-* [Aynı abonelikte bulunan sanal](#samesub)ağlar: Bu yapılandırmanın adımları TestVNet1 ve TestVNet4'ü kullanır.
+* [Aynı abonelikte bulunan sanal ağlar:](#samesub) Bu yapılandırmanın adımları TestVNet1 ve TestVNet4’ü kullanır.
 
   ![v2v diyagramı](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [Farklı aboneliklerde bulunan sanal](#difsub)ağlar: Bu yapılandırmanın adımları TestVNet1 ve TestVNet5 kullanır.
+* [Farklı abonelikte bulunan sanal ağlar:](#difsub) Bu yapılandırmanın adımları TestVNet1 ve TestVNet5’i kullanır.
 
   ![v2v diyagramı](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
@@ -91,34 +91,34 @@ Aşağıdaki adımlarda kendi ağ geçidi alt ağları ve yapılandırmalarıyla
 
 **Değerler TestVNet1 için:**
 
-* VNET Adı: TestVNet1
-* Kaynak Grubu: TestRG1
-* Konum: East US
-* TestVNet1 10.11.0.0/16 & 10.12.0.0/16
-* Uçta 10.11.0.0/24
-* Sunucusundan 10.12.0.0/24
-* GatewaySubnet 10.12.255.0/27
-* GatewayName VNet1GW
-* Genel IP: VNet1GWIP
-* VPNType RouteBased
-* Bağlantı (1to4): VNet1toVNet4
-* Bağlantı (1to5): VNet1toVNet5 (farklı aboneliklerdeki sanal ağlar Için)
-* Belirtildi VNet2VNet
+* VNet Name: TestVNet1
+* Resource Group: TestRG1
+* Location: East US
+* TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
+* FrontEnd: 10.11.0.0/24
+* BackEnd: 10.12.0.0/24
+* GatewaySubnet: 10.12.255.0/27
+* GatewayName: VNet1GW
+* Public IP: VNet1GWIP
+* VPNType: RouteBased
+* Connection(1to4): VNet1toVNet4
+* Connection(1to5): VNet1toVNet5 (Farklı aboneliklerde bulunan sanal ağlar için)
+* ConnectionType: VNet2VNet
 
 **Değerler TestVNet4 için:**
 
-* VNET Adı: TestVNet4
+* VNet Name: TestVNet4
 * TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
-* Uçta 10.41.0.0/24
-* Sunucusundan 10.42.0.0/24
-* GatewaySubnet 10.42.255.0/27
-* Kaynak Grubu: TestRG4
-* Konum: Batı ABD
-* GatewayName VNet4GW
-* Genel IP: VNet4GWIP
-* VPNType RouteBased
-* Bağlantı: VNet4toVNet1
-* Belirtildi VNet2VNet
+* FrontEnd: 10.41.0.0/24
+* BackEnd: 10.42.0.0/24
+* GatewaySubnet: 10.42.255.0/27
+* Resource Group: TestRG4
+* Location: West US
+* GatewayName: VNet4GW
+* Public IP: VNet4GWIP
+* VPNType: RouteBased
+* Connection: VNet4toVNet1
+* ConnectionType: VNet2VNet
 
 
 ### <a name="Step2"></a>Adım 2 - oluşturma ve TestVNet1 yapılandırma
@@ -310,18 +310,18 @@ Yeni sanal ağ olan TestVNet5’in IP adresi alanının kendi Sanal Ağ aralıkl
 
 **Değerler TestVNet5 için:**
 
-* VNET Adı: TestVNet5
-* Kaynak Grubu: TestRG5
-* Konum: Japonya Doğu
-* TestVNet5 10.51.0.0/16 & 10.52.0.0/16
-* Uçta 10.51.0.0/24
-* Sunucusundan 10.52.0.0/24
-* GatewaySubnet 10.52.255.0.0/27
-* GatewayName VNet5GW
-* Genel IP: VNet5GWIP
-* VPNType RouteBased
-* Bağlantı: VNet5toVNet1
-* Belirtildi VNet2VNet
+* VNet Name: TestVNet5
+* Resource Group: TestRG5
+* Location: Japan East
+* TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
+* FrontEnd: 10.51.0.0/24
+* BackEnd: 10.52.0.0/24
+* GatewaySubnet: 10.52.255.0.0/27
+* GatewayName: VNet5GW
+* Public IP: VNet5GWIP
+* VPNType: RouteBased
+* Connection: VNet5toVNet1
+* ConnectionType: VNet2VNet
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>7\. Adım - TestVNet5'i oluşturma ve yapılandırma
 

@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: f5c0f6d9f6f7f35722f3df5f35dc1da945f21b9a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229048"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860954"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Azure Digital TWINS güvenliği en iyi yöntemleri
 
@@ -46,7 +46,7 @@ IoT alanını güvenle güvenli hale getirmeye yönelik bazı önemli uygulamala
 > [!div class="checklist"]
 > * Kaydedilmiş, depolanmış veya kalıcı verileri şifreleyin.
 > * Parolaların veya anahtarların düzenli aralıklarla değiştirilmesini veya yenilenmesini gerektir.
-> * Erişimi ve izinleri role göre dikkatle kısıtlayın. Aşağıda, [rol tabanlı erişim denetimi en iyi uygulamaları](#role-based-access-control-best-practices) bölümüne bakın.
+> * Erişimi ve izinleri role göre dikkatle kısıtlayın. Aşağıdaki [En Iyi rol tabanlı erişim denetimi uygulamalarını](#role-based-access-control-best-practices) okuyun.
 > * Her ağdaki cihazların diğerlerinden yalıtılmış olması için bölünmüş bir ağ topolojisini göz önünde bulundurun.
 > * Güçlü şifreleme kullanın. Uzun parolalar gerektir, güvenli protokoller ve [çok faktörlü kimlik doğrulaması](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)kullanın.
 
@@ -56,7 +56,7 @@ IoT alanını güvenle güvenli hale getirmeye yönelik bazı önemli uygulamala
 > Kapsamlı bir IoT güvenlik stratejisi başlatmak için Azure [IoT güvenlik en iyi yöntemlerini](../iot-fundamentals/iot-security-best-practices.md) okuyun.
 
 > [!NOTE]
-> Olay işleme ve izleme hakkında daha fazla bilgi için bkz. [Azure Digital TWINS ile olayları ve Iletileri yönlendirme](./concepts-events-routing.md).
+> Olay işleme ve izleme hakkında daha fazla bilgi için [Azure dijital TWINS Ile rota olaylarını ve iletilerini](./concepts-events-routing.md)okuyun.
 
 ## <a name="azure-active-directory-best-practices"></a>En iyi Azure Active Directory uygulamalar
 

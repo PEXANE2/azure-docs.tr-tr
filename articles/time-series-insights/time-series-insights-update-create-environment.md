@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 12/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6adb48b9d6c490b60302f93101506ec53679ae4f
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530402"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861821"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Öğretici: bir Azure zaman serisi öngörüleri Önizleme ortamı ayarlama
 
@@ -39,7 +39,7 @@ Henüz yoksa ücretsiz bir [Azure aboneliğine](https://azure.microsoft.com/free
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* En azından, Azure aboneliği için **katkıda bulunan** rolüne sahip olmanız gerekir. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimi ve Azure Portal kullanarak erişimi yönetme](../role-based-access-control/role-assignments-portal.md).
+* En azından, Azure aboneliği için **katkıda bulunan** rolüne sahip olmanız gerekir. Daha fazla bilgi için [rol tabanlı erişim denetimi ve Azure Portal kullanarak erişimi yönetme](../role-based-access-control/role-assignments-portal.md)konusunu okuyun.
 
 ## <a name="create-a-device-simulation"></a>Cihaz benzetimi oluşturma
 
@@ -62,12 +62,12 @@ Bu bölümde, bir Azure IoT Hub örneğine veri gönderen üç sanal cihaz oluş
 
    [cihaz benzetimi çözümünü sağlamak ![.](media/v2-update-provision/iot-solution-accelerators-configuration.png)](media/v2-update-provision/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Sağlama tamamlandıktan sonra, dağıtım durumunun **sağlamadan** **başlamaya**taşındığını gösteren iki güncelleştirme görürsünüz. 
+1. Sağlama tamamlandıktan sonra, dağıtım durumunun **sağlamadan** **başlamaya**taşındığını bildiren iki bildirim görüntülenir. 
 
    >[!IMPORTANT]
    > Çözüm hızlandırıcıyı henüz girmeyin! Daha sonra geri döneceksiniz, bu Web sayfasını açık tutun.
 
-   [![cihaz benzetimi çözüm sağlama işlemi tamamlanmıştır.](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
+   [![cihaz benzetimi çözüm hazırları tamamlanmıştır.](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
 
 1. Şimdi, Azure portal yeni oluşturulan kaynakları inceleyin. **Kaynak grupları** sayfasında, son adımda sunulan **çözüm adı** kullanılarak yeni bir kaynak grubunun oluşturulduğunu fark edersiniz. Cihaz benzetimi için oluşturulan kaynakları unutmayın.
 
@@ -92,7 +92,7 @@ Bu bölümde, Azure Time Series Insights önizleme ortamının nasıl oluşturul
     | **Kaynak grubu** | Mevcut bir kaynak grubunu seçin veya Azure Time Series Insights Preview ortamı kaynağı için yeni bir kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarına yönelik bir kapsayıcıdır. En iyi uygulama, cihaz simülatörü tarafından oluşturulan diğer IoT kaynaklarıyla aynı kaynak grubunu kullanmaktır. |
     | **Konum** | Azure Time Series Insights Preview ortamınız için bir veri merkezi bölgesi seçin. Ek gecikme süresini önlemek için, cihaz simülatörü tarafından oluşturulan IoT Hub 'ınız ile aynı bölgede Azure Time Series Insights önizleme ortamınızı oluşturmak en iyisidir. |
     | **Tier** |  **PAYG** (*Kullandıkça Öde*) öğesini seçin. Bu, Azure Time Series Insights önizleme ürünü için SKU 'dır. |
-    | **Özellik adı** | Zaman serisi örneğinizi benzersiz bir şekilde tanımlayan bir değer girin. **ÖZELLIK kimliği** kutusuna girdiğiniz değer daha sonra değiştirilemez. Bu öğretici için ***ıothub-Connection-Device-ID***girin. Zaman serisi KIMLIĞI hakkında daha fazla bilgi edinmek için bkz. [bir zaman SERISI kimliği seçmek Için en iyi uygulamalar](./time-series-insights-update-how-to-id.md). |
+    | **Özellik adı** | Zaman serisi örneğinizi benzersiz bir şekilde tanımlayan bir değer girin. **ÖZELLIK kimliği** kutusuna girdiğiniz değer daha sonra değiştirilemez. Bu öğretici için ***ıothub-Connection-Device-ID***girin. Zaman serisi KIMLIĞI hakkında daha fazla bilgi edinmek için, [zaman SERISI kimliği seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md)okuyun. |
     | **Depolama hesabı adı** | Yeni bir depolama hesabı için genel olarak benzersiz bir ad girin.|
     |**Isınma deposunu etkinleştir**|Isınma mağazasını etkinleştirmek için **Evet** ' i seçin. Daha sonra geri dönüp bu ayarı etkinleştirebilirsiniz. |
     |**Veri bekletme (gün)**|Varsayılan 7 gün seçeneğini belirleyin. |
@@ -125,7 +125,7 @@ Bu bölümde, Azure Time Series Insights önizleme ortamının nasıl oluşturul
 
     [![gözden geçir + oluştur düğmesi ile sayfa oluştur.](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 
-    Dağıtımınızın durumunu görebilirsiniz:
+    Dağıtımınızın durumunu gözden geçirebilirsiniz:
 
     [dağıtımın tamamlandığını ![bildirim.](media/v2-update-provision/tsi-deployment-notification.png)](media/v2-update-provision/tsi-deployment-notification.png#lightbox)
 
@@ -169,7 +169,7 @@ Time Series Insights ortamınızı dağıttığınıza göre, analiz için veri 
 
     **Benzetimi Başlat**' ı seçin.
 
-    Cihaz benzetimi panosunda, **etkin cihazlar** ve **Toplam mesaj**görürsünüz.
+    Cihaz benzetimi panosunda, **etkin cihazlar** ve **Toplam iletiler** görüntülenir.
 
     [Azure IoT simülasyonu panosu ![.](media/v2-update-provision/tsi-see-active-devices-and-messages.png)](media/v2-update-provision/tsi-see-active-devices-and-messages.png#lightbox)
 
@@ -181,9 +181,9 @@ Bu bölümde, [Azure Time Series Insights önizleme Gezginini](./time-series-ins
 
     [Time Series Insights önizleme Gezgini URL 'sini ![.](media/v2-update-provision/tsi-select-explorer-url.png)](media/v2-update-provision/tsi-select-explorer-url.png#lightbox)
 
-1. Time Series Insights Gezgini 'nde, ekranın üst kısmına yayılan bir çubuk görürsünüz. Bu, kullanılabilirlik seçicinizdeki bir değer. En az iki 2 e seçili olduğundan emin olun ve gerekirse, seçici tutamaçlarını seçip sola ve sağa sürükleyerek zaman çerçevesini genişletin.
+1. Time Series Insights Gezgini 'nde, ekranın üst kısmına yayılan bir çubuk görüntülenir. Bu, kullanılabilirlik seçicinizdeki bir değer. En az iki 2 e seçili olduğundan emin olun ve gerekirse, seçici tutamaçlarını seçip sola ve sağa sürükleyerek zaman çerçevesini genişletin.
 
-1. Sol tarafta **zaman serisi örneklerini** görebileceksiniz.
+1. Sol tarafta **zaman serisi örnekleri** görüntülenecektir.
 
     [üst öğe olmayan örneklerin listesini ![.](media/v2-update-provision/tsi-explorer-unparented-instances.png)](media/v2-update-provision/tsi-explorer-unparented-instances.png#lightbox)
 
@@ -205,7 +205,7 @@ Bu bölümde, [Azure Time Series Insights önizleme Gezginini](./time-series-ins
 
 ## <a name="define-and-apply-a-model"></a>Model tanımlama ve uygulama
 
-Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Modeli tamamlayabilmeniz için türler, hiyerarşiler ve örnekler tanımlarsınız. Veri modelleme hakkında daha fazla bilgi için bkz. [zaman serisi modeli](./time-series-insights-update-tsm.md).
+Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Modeli tamamlayabilmeniz için türler, hiyerarşiler ve örnekler tanımlarsınız. Veri modelleme hakkında daha fazla bilgi edinmek için [zaman serisi modelini](./time-series-insights-update-tsm.md)okuyun.
 
 1. Gezgin 'de **model** sekmesini seçin:
 
@@ -254,9 +254,9 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
     **Uygula**’yı seçin.
 
-1. **Kaydet**’i seçin. Oluşturulan üç değişken görmeniz gerekir.
+1. **Kaydet**’i seçin. Üç değişken oluşturulur ve görüntülenir.
 
-    [tür eklendikten sonra ![, Model görünümünde buna bakın.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
+    [tür eklendikten sonra ![Model görünümünde gözden geçirin.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
 1. **Hiyerarşiler** sekmesini seçin. Ardından **+ Ekle**' yi seçin.
    

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: ded3fc97c4cdf041fdf50d7b4aa9a9b2fbdf1c84
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913498"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867160"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile hizmet sorumluları
 
@@ -131,6 +131,8 @@ AKS ve Azure AD hizmet sorumlularını kullanılırken aşağıdaki noktalara di
 - Hizmet sorumlusu **İstemci kimliğini** belirttiğinizde `appId` değerini kullanın.
 - Kubernetes kümesindeki aracı düğümü VM 'lerinde hizmet sorumlusu kimlik bilgileri dosyada depolanır `/etc/kubernetes/azure.json`
 - Hizmet sorumlusunu otomatik olarak oluşturmak için [az aks Create][az-aks-create] komutunu kullandığınızda, hizmet sorumlusu kimlik bilgileri, komutu çalıştırmak için kullanılan makinedeki `~/.azure/aksServicePrincipal.json` dosyaya yazılır.
+- Ek AKS CLı komutlarına özel olarak bir hizmet sorumlusu geçirmezseniz, `~/.azure/aksServicePrincipal.json` konumunda bulunan varsayılan hizmet sorumlusu kullanılır.  
+- Ayrıca, isteğe bağlı olarak aksServicePrincipal. json dosyasını kaldırabilir ve AKS 'ler yeni bir hizmet sorumlusu oluşturur.
 - [Az aks Create][az-aks-create]tarafından oluşturulan bir aks kümesini sildiğinizde, otomatik olarak oluşturulan hizmet sorumlusu silinmez.
     - Hizmet sorumlusunu silmek için, kümenizin *Serviceprincipalprofile. ClientID* ' yi sorgulayın ve [az ad App Delete][az-ad-app-delete]ile silin. Aşağıdaki kaynak grubunu ve küme adlarını kendi değerlerinizle değiştirin:
 

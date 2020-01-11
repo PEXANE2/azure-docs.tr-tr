@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: b54034dc8828fb8a96f488197e517ef07ed55ab5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460405"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863487"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API 'SI için kimlik doğrulaması ve yetkilendirme
 
@@ -87,7 +87,7 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
    1. Uygulamanın adına belirteci almak için Azure Active Directory uygulama kaydı bölümünde **uygulama kimliği** ve **istemci gizli** anahtarını (uygulama anahtarı) kullanın.
 
-   1. ' C#De, aşağıdaki kod, uygulama adına belirteci alabilir. Tüm örnek için bkz. [sorgu verileri kullanarak C# ](time-series-insights-query-data-csharp.md).
+   1. ' C#De, aşağıdaki kod, uygulama adına belirteci alabilir. Tüm örnek için, [ C#kullanarak sorgu verilerini ](time-series-insights-query-data-csharp.md)okuyun.
 
         [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
 
@@ -107,7 +107,7 @@ Bu bölümde, Time Series Insights GA ve Preview API 'Lerinde sorgu yapmak için
 [TIME SERIES INSIGHTS REST API 'lerinde](https://docs.microsoft.com/rest/api/time-series-insights/)kimliği doğrulanmış sorgular gerçekleştirmek için, seçtiğiniz Rest Istemcisi (Postman, JavaScript, C#) kullanılarak [Yetkilendirme üst bilgisinde](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir. 
 
 > [!TIP]
-> [JavaScript istemci SDK 'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) grafik ve grafiklerle birlikte kullanarak, Time Series Insights API 'lerinde program aracılığıyla nasıl kimlik doğrulaması yapılacağını görmek için barındırılan Azure TIME SERIES INSIGHTS [istemci SDK örnek görselleştirmesine](https://tsiclientsample.azurewebsites.net/) bakın.
+> [JavaScript istemci SDK 'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) grafik ve grafiklerle birlikte kullanarak Time Series Insights API 'lerinde program aracılığıyla nasıl kimlik doğrulaması yapılacağını öğrenmek için barındırılan Azure TIME SERIES INSIGHTS [istemci SDK örnek görselleştirmesini](https://tsiclientsample.azurewebsites.net/) okuyun.
 
 ### <a name="http-headers"></a>HTTP üstbilgileri
 
@@ -135,7 +135,7 @@ Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
 | Yanıt üst bilgisi | Açıklama |
 | --- | --- |
-| İçerik türü | Yalnızca `application/json` desteklenir. |
+| İçerik türü | yalnızca `application/json` desteklenir. |
 | x-MS-istek kimliği | Sunucu tarafından oluşturulan istek KIMLIĞI. , Bir isteği araştırmak üzere Microsoft 'a başvurmak için kullanılabilir. |
 | x-MS-Property-Found-Behavior | GA API isteğe bağlı yanıt üst bilgisi. Olası değerler `ThrowError` (varsayılan) veya `UseNull`. |
 
@@ -161,10 +161,10 @@ Gerekli URL sorgu dizesi parametreleri API sürümüne bağımlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- GA Time Series Insights API 'sini çağıran örnek kod için bkz. [sorgu verileri kullanma C# ](./time-series-insights-query-data-csharp.md).
+- GA Time Series Insights API 'sini çağıran örnek kod için, [ C#kullanarak sorgu verilerini ](./time-series-insights-query-data-csharp.md)okuyun.
 
-- Time Series Insights API kodu örnekleri için bkz. [sorgu Önizleme verileri kullanılarak C# ](./time-series-insights-update-query-data-csharp.md).
+- Preview Time Series Insights API kodu örnekleri için [kullanarak C#sorgu önizleme verilerini ](./time-series-insights-update-query-data-csharp.md)okuyun.
 
-- API başvuru bilgileri için bkz. [sorgu API 'si başvuru](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) belgeleri.
+- API başvuru bilgileri için [sorgu API 'si başvuru](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) belgelerini okuyun.
 
 - [Hizmet sorumlusu oluşturmayı](../active-directory/develop/howto-create-service-principal-portal.md)öğrenin.

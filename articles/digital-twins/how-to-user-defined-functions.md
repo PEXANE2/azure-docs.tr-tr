@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 824fe611867216233e223e505f5321b23b7406fb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7334d4292db710a32b888d9a3ad4e78872d15227
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383306"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863521"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Azure dijital TWINS 'de Kullanıcı tanımlı işlevler oluşturma
 
@@ -193,11 +193,11 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Daha karmaşık bir Kullanıcı tanımlı işlev kodu örneği için bkz. [doluluk hızlı](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)başlangıcı.
+Daha karmaşık bir Kullanıcı tanımlı işlev kodu örneği için, [doluluk hızlı](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)başlangıcını okuyun.
 
 ## <a name="create-a-role-assignment"></a>Rol ataması oluşturma
 
-Kullanıcı tanımlı işlevin altında çalışacağı bir rol ataması oluşturun. Kullanıcı tanımlı işlev için herhangi bir rol ataması yoksa, yönetim API 'SI ile etkileşim kurmak için gerekli izinlere sahip olmaz veya grafik nesnelerinde eylem gerçekleştirmeye yönelik erişime sahip olmaz. Kullanıcı tanımlı bir işlevin gerçekleştirebileceği eylemler, Azure Digital TWINS yönetim API 'Leri içinde rol tabanlı erişim denetimi aracılığıyla belirtilir ve tanımlanır. Örneğin, Kullanıcı tanımlı işlevler belirli roller veya belirli erişim denetimi yolları belirtilerek kapsamda sınırlandırılabilir. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimi](./security-role-based-access-control.md) belgeleri.
+Kullanıcı tanımlı işlevin altında çalışacağı bir rol ataması oluşturun. Kullanıcı tanımlı işlev için herhangi bir rol ataması yoksa, yönetim API 'SI ile etkileşim kurmak için gerekli izinlere sahip olmaz veya grafik nesnelerinde eylem gerçekleştirmeye yönelik erişime sahip olmaz. Kullanıcı tanımlı bir işlevin gerçekleştirebileceği eylemler, Azure Digital TWINS yönetim API 'Leri içinde rol tabanlı erişim denetimi aracılığıyla belirtilir ve tanımlanır. Örneğin, Kullanıcı tanımlı işlevler belirli roller veya belirli erişim denetimi yolları belirtilerek kapsamda sınırlandırılabilir. Daha fazla bilgi için [rol tabanlı erişim denetimi](./security-role-based-access-control.md) belgelerini okuyun.
 
 1. Kullanıcı tanımlı işlevinizde atamak istediğiniz rol KIMLIĞINI almak için tüm roller için [SISTEM API 'Sini sorgulayın](./security-create-manage-role-assignments.md#retrieve-all-roles) . Şunları yapmak için kimliği doğrulanmış bir HTTP GET isteği yaparak:
 

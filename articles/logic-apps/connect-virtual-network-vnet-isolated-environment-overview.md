@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8d57c15fffaa6a9d18ad3c83716f99247512c15
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527867"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860767"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
@@ -23,7 +23,7 @@ ISE 'nizi oluşturduktan sonra mantıksal uygulamanızı veya tümleştirme hesa
 
 ![Tümleştirme hizmeti ortamını seçin](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-Mantıksal uygulamanız artık bu öğelerden herhangi birini kullanarak sanal ağınıza doğrudan veya bağlı olan sistemlere doğrudan erişebilir:
+Mantıksal uygulamanız artık mantıksal uygulamanızla aynı ıSE içinde çalışan bu öğelerden herhangi birini kullanarak sanal ağınıza doğrudan veya bağlı olan sistemlere doğrudan erişebilir:
 
 * Bu sistem için **Ise**etiketli bağlayıcı
 * HTTP tetikleyicisi veya eylemi gibi **çekirdek**etiketli bir yerleşik tetikleyici veya eylem
@@ -43,23 +43,21 @@ Bu genel bakışta, bir ıSE 'nin mantıksal uygulamalarınızın ve tümleştir
 
 Azure 'da tümleşik bir hizmet ortamı (ıSE) oluşturduğunuzda, ıSE *'nizi eklemek Istediğiniz Azure* sanal ağını seçebilirsiniz. Azure daha sonra Logic Apps hizmetinin özel bir örneğini sanal ağınıza çıkartır veya dağıtır. Bu eylem, mantıksal uygulamalarınızı özel kaynaklarda oluşturabileceğiniz ve çalıştırabileceğiniz bir yalıtılmış ortam oluşturur. Mantıksal uygulamanızı oluşturduğunuz zaman, mantıksal uygulamanızı sanal ağınıza ve bu ağdaki kaynaklara doğrudan erişmenizi sağlayan uygulamanızın konumu olarak ıSE 'nizi seçersiniz.
 
-Bir ıSE 'de Logic Apps, genel Logic Apps hizmetiyle aynı kullanıcı deneyimlerini ve benzer özellikleri sağlar. Yalnızca aynı yerleşik Tetikleyicileri, yerleşik eylemleri ve bağlayıcıları küresel Logic Apps hizmetinden kullanamazsınız, ancak aynı zamanda ıSE 'ye özgü bağlayıcılar da kullanabilirsiniz. Örneğin, bir ıSE 'de çalışan sürümler sunan bazı standart bağlayıcılar aşağıda verilmiştir:
+Bir ıSE 'de Logic Apps, genel küresel Logic Apps hizmetiyle aynı kullanıcı deneyimlerini ve benzer özellikleri sağlar. Genel Logic Apps hizmetinde bulunan tüm yerleşik Tetikleyicileri, eylemleri ve yönetilen bağlayıcıları kullanabilirsiniz. Bazı yönetilen bağlayıcılar ek ıSE sürümlerini sunar. Bu fark, çalıştırıldıkları yerde ve bir ıSE içinde çalışırken Logic App Designer 'da görüntülenen Etiketler ' de bulunur.
 
-* Azure Blob depolama, dosya depolama ve tablo depolama
-* Azure kuyrukları, Azure Service Bus, Azure Event Hubs ve IBM MQ
-* FTP ve SFTP-SSH
-* SQL Server, Azure SQL veri ambarı Azure Cosmos DB
-* AS2, x12 ve EDIOLGU
+![ISE 'de etiketleri olan ve olmayan bağlayıcılar](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-built-in-actions-triggers-managed-connectors.png)
 
-ISE ve ıSE olmayan bağlayıcılar arasındaki fark, Tetikleyiciler ve eylemlerin çalıştırıldığı konumlardır:
+* Yerleşik Tetikleyiciler ve eylemler **temel** etiketi görüntüler ve her zaman mantıksal uygulamanızla aynı Ise çalıştırılır. **Ise** etiketini görüntüleyen yönetilen bağlayıcılar, mantıksal UYGULAMANıZLA aynı Ise içinde de çalışır.
 
-* ISE 'de, HTTP gibi yerleşik Tetikleyiciler ve eylemler her zaman mantıksal uygulamanızla aynı çalışma alanında çalışır ve **çekirdek** etiketi görüntüler.
+  Örneğin, ıSE sürümlerini sunan bazı bağlayıcılar aşağıda verilmiştir:
 
-  !["Çekirdek" yerleşik Tetikleyiciler ve Eylemler ' i seçin](./media/connect-virtual-network-vnet-isolated-environment-overview/select-core-built-in-actions-triggers.png)
+  * Azure Blob depolama, dosya depolama ve tablo depolama
+  * Azure kuyrukları, Azure Service Bus, Azure Event Hubs ve IBM MQ
+  * FTP ve SFTP-SSH
+  * SQL Server, Azure SQL veri ambarı Azure Cosmos DB
+  * AS2, x12 ve EDIOLGU
 
-* Bir ıSE 'de çalışan bağlayıcıların genel Logic Apps hizmetinde bulunan genel olarak barındırılan sürümleri vardır. İki sürüm sunan bağlayıcılar için **Ise** etiketine sahip bağlayıcılar her zaman mantıksal uygulamanızla aynı Ise çalıştırılır. **Ise** etiketi olmayan bağlayıcılar küresel Logic Apps hizmetinde çalışır.
-
-  ![ISE bağlayıcıları seçin](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
+* Her zaman genel küresel Logic Apps hizmetinde herhangi bir ek etiket görüntülememe yönetilen bağlayıcılar, ancak bu bağlayıcıları ıSE tabanlı bir mantıksal uygulamada kullanmaya devam edebilirsiniz.
 
 ISE Ayrıca çalışma süresi, depolama tutma, aktarım hızı, HTTP isteği ve yanıt zaman aşımları, ileti boyutları ve özel bağlayıcı istekleri için daha fazla sınır sağlar. Daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](logic-apps-limits-and-config.md).
 

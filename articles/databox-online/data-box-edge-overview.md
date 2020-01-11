@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 38aa45a9fe9e182fa98756725a8b20d737929d23
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 654ca34ae4c0e393920965083567e3d9c71148d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585386"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863640"
 ---
 # <a name="what-is-azure-stack-edge"></a>Azure Stack Edge nedir? 
 
@@ -27,7 +27,7 @@ Azure Stack Edge, bir hizmet olarak donanım çözümüdür. Microsoft, hızland
 
 Azure Stack Edge 'in Edge 'de hızlı Machine Learning (ML) için kullanılabileceği ve verileri Azure 'a göndermeden önce ön işlemesi için kullanabileceğiniz çeşitli senaryolar aşağıda verilmiştir.
 
-- **Azure Machine Learning Ile çıkarım** -Azure Stack Edge ile, veri buluta gönderilmeden önce üzerinde işlem yapılabilir hızlı sonuçlar almak için ml modellerini çalıştırabilirsiniz. Tam veri kümesi, ML modellerinizi yeniden eğitmeye ve artırmaya devam etmek için isteğe bağlı olarak aktarılabilir. Azure Stack Edge cihazında Azure ML donanım hızlandırılmış modellerini kullanma hakkında daha fazla bilgi için bkz. [Azure Stack Edge üzerinde Azure ML Hardware hızlandırılmış modellerini dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- **Azure Machine Learning Ile çıkarım** -Azure Stack Edge ile, veri buluta gönderilmeden önce üzerinde işlem yapılabilir hızlı sonuçlar almak için ml modellerini çalıştırabilirsiniz. Tam veri kümesi, ML modellerinizi yeniden eğitmeye ve artırmaya devam etmek için isteğe bağlı olarak aktarılabilir. Azure Stack Edge cihazında Azure ML donanım hızlandırılmış modellerini kullanma hakkında daha fazla bilgi için bkz. [Azure Stack Edge üzerinde Azure ML Hardware hızlandırılmış modellerini dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Önceden işlem** yapılabilir bir veri kümesi oluşturmak Için verileri Azure 'a göndermeden önce veri dönüştürme. Önceden işleme şu amaçlarla kullanılabilir: 
 
@@ -76,7 +76,7 @@ Azure Stack Edge çözümü, Azure Stack Edge kaynağı, Azure Stack Edge fiziks
     Web tabanlı kullanıcı arabirimini kullanma hakkında daha fazla bilgi için, [Azure Stack kenarını yönetmek üzere Web tabanlı kullanıcı arabirimini kullanma](data-box-edge-manage-access-power-connectivity-mode.md)bölümüne gidin.
 
 
-## <a name="region-availability"></a>Bölge kullanılabilirliği
+## <a name="region-availability"></a>Bölgelere göre kullanılabilirlik
 
 Azure Stack Edge fiziksel cihazı, Azure kaynağı ve verileri aktardığınız hedef depolama hesabının hepsi aynı bölgede olmalıdır.
 

@@ -3,24 +3,24 @@ title: Team Data Science Process Azure'da Yürütülüyor izlenecek yollar
 description: Bir iş akışı veya işlem hattı akıllı bir uygulama oluşturmak için bulut ve şirket içi araçları ve Hizmetleri araya getirilebileceğini öğrenin.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 98595ea0ef5b6d9d4cef0f239390b364fb1e4e75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fa21cc690742a71100c53b4e5b6ce122d1a6147
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589054"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864086"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Team Data Science Process yürütme izlenecek yollar
 
-Bunlar **uçtan uca izlenecek yollar** Team Data Science Process belirli senaryolar için adımları gösterilmektedir. Bunlar bir iş akışı veya işlem hattı oluşturmak için bulut, şirket içi araçları ve Hizmetleri birleştirmek nasıl çalışılacağını bir **akıllı uygulama**. Tarafından izlenecek yollar gruplandırılmıştır **platform** kullandıkları.
+Bu **kapsamlı izlenecek yollar** , belirli senaryolar Için ekip veri bilimi işlemindeki adımları gösterir. Bulut, şirket içi araçları ve Hizmetleri **akıllı bir uygulama**için bir iş akışında nasıl birleştirebileceğinizi gösterir. Tarafından izlenecek yollar gruplandırılmıştır **platform** kullandıkları.
 
 
 ## <a name="walkthrough-descriptions"></a>İzlenecek yol açıklamaları
@@ -40,7 +40,7 @@ Neler ilgili platformlar üzerinde bu gözden geçirme örnekleri sağlar, kısa
 
 Team Data Science Process oluşturan anahtar bileşenleri bir tartışma için bkz [Team Data Science Process genel bakış](overview.md).
 
-Veri bilimi projelerinizi yapısı için kullanabileceğiniz Team Data Science Process yaşam döngüsü için bkz [Team Data Science Process yaşam döngüsü](lifecycle.md). Yaşam döngüsü, başlangıçtan bitişe kadar bunlar yürütüldüğünde projeleri genellikle izlemeniz adımlarını özetler. 
+Team Data Science Işlem yaşam döngüsü hakkında bir tartışma için bkz. [Team Data Science işlem yaşam döngüsü](lifecycle.md). Bu yaşam döngüsü, başlangıçtan sonuna kadar olan adımları özetler ve bu da projeler genellikle yürütüldüğünde izler. 
 
-Azure veri bilimi işlemi oluşturan görevler rehberlik konuları genel bakış için bkz. [Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
+Genel bakış için bkz. [veri bilimi işlemi](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 49c925cfe61084d8fedfdf953d469db4bd2c10b1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 714faa43f34de965055ceba80de08972dd4192ac
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792683"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861209"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps içindeki yönetilen kimlikleri kullanarak Azure kaynaklarına erişimi kimlik doğrulaması
 
@@ -24,7 +24,7 @@ Daha fazla bilgi için şu konulara bakın:
 * [Giden aramalarda desteklenen kimlik doğrulama türleri](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
 * [Mantıksal uygulamalar için yönetilen kimlik sınırları](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure aboneliği veya aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). Hem yönetilen kimlik hem de erişim istediğiniz hedef Azure kaynağının aynı Azure aboneliğini kullanması gerekir.
 
@@ -40,10 +40,8 @@ Daha fazla bilgi için şu konulara bakın:
 
 Kullanıcı tarafından atanan kimliklerin aksine, sistem tarafından atanan kimliği el ile oluşturmanız gerekmez. Mantıksal uygulamanızın sistem tarafından atanan kimliğini ayarlamak için kullanabileceğiniz seçenekler şunlardır:
 
-* [Azure portalda](#azure-portal-system-logic-app)
+* [Azure Portal](#azure-portal-system-logic-app)
 * [Azure Resource Manager şablonları](#template-system-logic-app)
-* [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
-* [Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 
 <a name="azure-portal-system-logic-app"></a>
 
@@ -115,7 +113,17 @@ Azure mantıksal uygulama kaynak tanımınızı oluşturduğunda, `identity` nes
 
 ## <a name="give-identity-access-to-resources"></a>Kaynaklara kimlik erişimi verme
 
-Mantıksal uygulamanız için yönetilen bir kimlik ayarladıktan sonra, [Bu kimliğe diğer Azure kaynaklarına erişim izni verebilirsiniz](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md). Bu kimliği, kimlik doğrulaması için kullanabilirsiniz.
+Mantıksal uygulamanızın kimlik doğrulaması için sistem tarafından atanan yönetilen kimliğini kullanabilmeniz için, kimliği kullanmayı planladığınız Azure kaynağına kimlik erişimi verin. Bu görevi gerçekleştirmek için, hedef Azure kaynağında ilgili kimliğe uygun rolü atayın. Kullanabileceğiniz seçenekler şunlardır:
+
+* [Azure Portal](#azure-portal-assign-access)
+* [Azure Resource Manager şablonu](../role-based-access-control/role-assignments-template.md)
+* Azure PowerShell ([New-Azroleatama](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment))-daha fazla bilgi için bkz. [Azure RBAC ve Azure PowerShell kullanarak rol ataması ekleme](../role-based-access-control/role-assignments-powershell.md).
+* Azure CLı ([az rol atama oluşturma](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create))-daha fazla bilgi için bkz. [Azure RBAC ve Azure CLI kullanarak rol ataması ekleme](../role-based-access-control/role-assignments-cli.md).
+* [Azure REST API](../role-based-access-control/role-assignments-rest.md)
+
+<a name="azure-portal-assign-access"></a>
+
+### <a name="assign-access-in-the-azure-portal"></a>Azure portal erişim atama
 
 1. [Azure Portal](https://portal.azure.com), yönetilen kimliğinizin erişimini istediğiniz Azure kaynağına gidin.
 
@@ -167,11 +175,11 @@ Bu adımlarda, Azure portal aracılığıyla yönetilen kimliğin bir tetikleyic
 
    | Özellik | Gereklidir | Açıklama |
    |----------|----------|-------------|
-   | **Yöntem** | Yes | Çalıştırmak istediğiniz işlem tarafından kullanılan HTTP yöntemi |
-   | **KULLANıLMAMıŞSA** | Yes | Hedef Azure kaynağına veya varlığına erişmek için uç nokta URL 'SI. URI sözdizimi genellikle Azure kaynağı veya hizmeti için [kaynak kimliğini](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) içerir. |
+   | **Yöntem** | Evet | Çalıştırmak istediğiniz işlem tarafından kullanılan HTTP yöntemi |
+   | **KULLANıLMAMıŞSA** | Evet | Hedef Azure kaynağına veya varlığına erişmek için uç nokta URL 'SI. URI sözdizimi genellikle Azure kaynağı veya hizmeti için [kaynak kimliğini](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) içerir. |
    | **Üst Bilgiler** | Hayır | İçerik türü gibi giden isteğe dahil etmek veya istediğiniz tüm üst bilgi değerleri |
    | **Sorgular** | Hayır | Belirli bir işlemin parametresi ya da çalıştırmak istediğiniz işlem için API sürümü gibi isteğe dahil etmek istediğiniz veya isteğe dahil etmek istediğiniz sorgu parametreleri |
-   | **Kimlik doğrulaması** | Yes | Hedef kaynağa veya varlığa erişimi doğrulamak için kullanılacak kimlik doğrulaması türü |
+   | **Kimlik doğrulaması** | Evet | Hedef kaynağa veya varlığa erişimi doğrulamak için kullanılacak kimlik doğrulaması türü |
    ||||
 
    Belirli bir örnek olarak, [anlık görüntü blobu işlemini](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) , Azure depolama hesabındaki bir blob üzerinde daha önce Kimliğiniz için daha önce ayarladığınız bir blob üzerinde çalıştırmak istediğinizi varsayalım. Ancak, [Azure Blob depolama Bağlayıcısı](https://docs.microsoft.com/connectors/azureblob/) Şu anda bu işlemi sunmaz. Bunun yerine, [http eylemini](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) veya başka bir [BLOB hizmeti REST API işlemini](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs)kullanarak bu işlemi çalıştırabilirsiniz.
@@ -183,11 +191,11 @@ Bu adımlarda, Azure portal aracılığıyla yönetilen kimliğin bir tetikleyic
 
    | Özellik | Gereklidir | Örnek değer | Açıklama |
    |----------|----------|---------------|-------------|
-   | **Yöntem** | Yes | `PUT`| Anlık görüntü blobu işleminin kullandığı HTTP yöntemi |
-   | **KULLANıLMAMıŞSA** | Yes | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Bu söz dizimini kullanan Azure genel (genel) ortamındaki bir Azure Blob depolama dosyasının kaynak KIMLIĞI |
+   | **Yöntem** | Evet | `PUT`| Anlık görüntü blobu işleminin kullandığı HTTP yöntemi |
+   | **KULLANıLMAMıŞSA** | Evet | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Bu söz dizimini kullanan Azure genel (genel) ortamındaki bir Azure Blob depolama dosyasının kaynak KIMLIĞI |
    | **Üst Bilgiler** | Evet, Azure depolama için | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Azure depolama işlemleri için gereken `x-ms-blob-type` ve `x-ms-version` üst bilgi değerleri. <p><p>**Önemli**: giden http tetikleyicisinde ve Azure depolama için eylem isteklerinde, üst bilgi, çalıştırmak istediğiniz işlem için `x-ms-version` ÖZELLIĞINI ve API sürümünü gerektirir. <p>Daha fazla bilgi için şu konulara bakın: <p><p>- [istek üstbilgileri-anlık görüntü blobu](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>[Azure depolama hizmetleri için - sürümü oluşturma](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
    | **Sorgular** | Evet, bu işlem için | `comp` = `snapshot` | Anlık görüntü blobu işleminin sorgu parametresi adı ve değeri. |
-   | **Kimlik doğrulaması** | Yes | `Managed Identity` | Azure Blob 'a erişim kimlik doğrulaması için kullanılacak kimlik doğrulaması türü |
+   | **Kimlik doğrulaması** | Evet | `Managed Identity` | Azure Blob 'a erişim kimlik doğrulaması için kullanılacak kimlik doğrulaması türü |
    |||||
 
    Bu özellik değerlerinin tümünü gösteren örnek HTTP eylemi aşağıda verilmiştir:
@@ -225,7 +233,7 @@ Bu adımlarda, Azure portal aracılığıyla yönetilen kimliğin bir tetikleyic
 
 Mantıksal uygulamanız için sistem tarafından atanan kimlik kullanımını durdurmak için şu seçeneklere sahipsiniz:
 
-* [Azure portalda](#azure-portal-disable)
+* [Azure Portal](#azure-portal-disable)
 * [Azure Resource Manager şablonları](#template-disable)
 * [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/remove-azroleassignment)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-delete)

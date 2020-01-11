@@ -3,12 +3,12 @@ title: Konuk yapılandırma ilkeleri oluşturma
 description: Azure PowerShell ile Windows veya Linux VM 'Leri için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608533"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867330"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Konuk yapılandırma ilkeleri oluşturma
 
@@ -65,7 +65,7 @@ Konuk yapılandırması bir makineyi denetleyemiyorsa, önce doğru durumda olup
 
 #### <a name="configuration-requirements"></a>Yapılandırma gereksinimleri
 
-Konuk yapılandırmasının özel bir yapılandırmayı kullanması için tek gereksinim, yapılandırmanın adının kullanıldığı her yerde tutarlı olması içindir.  Buna içerik paketi için. zip dosyasının adı, içerik paketi içinde depolanan MOF dosyasındaki yapılandırma adı ve ARM 'de Konuk atama adı olarak kullanılan yapılandırma adı dahildir.
+Konuk yapılandırmasının özel bir yapılandırmayı kullanması için tek gereksinim, yapılandırmanın adının kullanıldığı her yerde tutarlı olmasını sağlar. Bu ad gereksinimi, içerik paketi için. zip dosyasının adını, içerik paketi içinde depolanan MOF dosyasındaki yapılandırma adını ve konuk atama adı olarak bir Kaynak Yöneticisi şablonunda kullanılan yapılandırma adını içerir.
 
 #### <a name="get-targetresource-requirements"></a>Get-TargetResource gereksinimleri
 
@@ -181,7 +181,7 @@ Ayrıca, özel bir ağdaki makineler için [hizmet uç noktası](../../../storag
 
 Azure Ilke Konuk yapılandırması ' nda, çalışma zamanında kullanılan gizli dizileri yönetmenin en iyi yolu Azure Key Vault ' de depoındır. Bu tasarım özel DSC kaynakları içinde uygulanır.
 
-1. İlk olarak, Azure 'da Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun.
+1. Azure 'da Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun.
 
    Kimlik, Key Vault ' de depolanan gizli dizileri erişmek için makineler tarafından kullanılır. Ayrıntılı adımlar için, bkz. [Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
@@ -193,9 +193,9 @@ Azure Ilke Konuk yapılandırması ' nda, çalışma zamanında kullanılan gizl
 1. Kullanıcı tarafından atanan kimliği makinenize atayın.
 
    Ayrıntılı adımlar için bkz. [PowerShell kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
-   Ölçek ' te, Azure Ilkesi aracılığıyla Azure Resource Manager kullanarak bu kimliği atayın. Ayrıntılı adımlar için bkz. [bir şablon kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
+   Bu kimliği Azure Ilkesi aracılığıyla Azure Resource Manager kullanarak, ölçeklendirerek atayın. Ayrıntılı adımlar için bkz. [bir şablon kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
 
-1. Son olarak, özel kaynağınız içinde, makinede bulunan belirteci kullanarak Key Vault erişmek için yukarıda oluşturulan istemci KIMLIĞINI kullanın.
+1. Makinede bulunan belirteci kullanarak Key Vault erişmek için, yukarıda oluşturulan istemci KIMLIĞINI özel kaynağınız içinde kullanın.
 
    Key Vault örneğinin `client_id` ve URL 'si kaynağa [Özellikler](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) olarak geçirilebilir, böylece kaynağın birden çok ortamda güncellenmesi gerekmez veya değerler değiştirilmeleri gerekir.
 
@@ -305,7 +305,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-Linux ilkeleri için, yapılandırmanızda **Attributesymlcontent** özelliğini ekleyin ve değerlerin üzerine yazın. Konuk yapılandırma Aracısı, öznitelikleri depolamak için InSpec tarafından kullanılan YaML dosyasını otomatik olarak oluşturur. Aşağıdaki örneğe bakın.
+Linux ilkeleri için, yapılandırmanızda **Attributesymlcontent** özelliğini ekleyin ve değerleri gerektiği gibi üzerine yazın. Konuk yapılandırma Aracısı, öznitelikleri depolamak için InSpec tarafından kullanılan YAML dosyasını otomatik olarak oluşturur. Aşağıdaki örneğe bakın.
 
 ```powershell
 Configuration FirewalldEnabled {

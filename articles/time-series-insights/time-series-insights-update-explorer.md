@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: d94daa5fbda4ee60ffc6671f7b50126662416043
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746402"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861770"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Azure Time Series Insights önizlemesi Gezgini
 
@@ -48,7 +48,7 @@ Azure Time Series Insights önizleme Gezgini aşağıdaki yedi öğeden oluşur:
 
 ## <a name="1-environment-panel"></a>1. ortam paneli
 
-Ortam paneline erişiminiz olan tüm zaman serisi görüşleri ortamları görüntüler. Liste, Kullandıkça Öde (Önizleme) ortamlarının yanı sıra S1/S2 ortamlarını (genel kullanılabilirlik) içerir. Hemen burada almak için kullanmak istediğiniz Time Series Insights ortamına tıklamanız yeterlidir.
+Ortam paneline erişiminiz olan tüm zaman serisi görüşleri ortamları görüntüler. Liste, Kullandıkça Öde (Önizleme) ortamlarının yanı sıra S1/S2 ortamlarını (genel kullanılabilirlik) içerir. Hemen burada almak için kullanmak istediğiniz Time Series Insights ortamı seçmeniz yeterlidir.
 
 1. Görüntülenmiş ortamınızın yanındaki aşağı açılan oku seçin.
 
@@ -75,7 +75,7 @@ Azure Time Series Insights önizlemesi, zaman serisi modelinizdeki tam oluşturm
 * **Zaman serisi modeli hiyerarşisi**: hiyerarşileri verilerinizin sistematik kuruluşlar şunlardır. Time Series Insights veri farklı varlıklar arasındaki ilişkileri hiyerarşileri kullanılırlar.
 * **Zaman serisi modeli örneği**: zaman serisi örneklerdir. Çoğu durumda, bu, ortamdaki varlığın benzersiz tanımlayıcısı olan **DeviceID** veya **AssetID**.
 
-Zaman serisi modeli hakkında daha fazla bilgi için bkz: [kez serisi modelleri](./time-series-insights-update-tsm.md).
+Zaman serisi modeli hakkında daha fazla bilgi edinmek için okuma [zamanları dizi modelleri](./time-series-insights-update-tsm.md).
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. hiyerarşi ağacı ve arama paneli
 
@@ -98,7 +98,7 @@ Ayrıca, araştırma denetimi zaman vardiyalarını ve dağılım çizimlerini k
   [![Iyi düzen seçenekleri](media/v2-update-explorer/well-layout-options.png)](media/v2-update-explorer/well-layout-options.png#lightbox)
 
 > [!NOTE]
-> Aşağıdaki iletiyi görürseniz, örnek seçilen zaman aralığı boyunca hiçbir veri içermez. Sorunu çözmek için, zaman aralığını artırın veya örneğin veri iletme süresini onaylayın.
+> Aşağıdaki ileti görüntülenirse, örnek seçilen zaman aralığı boyunca hiçbir veri içermez. Sorunu çözmek için, zaman aralığını artırın veya örneğin veri iletme süresini onaylayın.
 >
 > ![Veri bildirimi yok](media/v2-update-explorer/tsi-preview-no-data-warning.png)
 
@@ -110,9 +110,9 @@ Grafik, zaman serisi örneklerini satır olarak görüntülemenizi sağlar. Graf
 
 1. **Grafik türü**: görselleştirme için hangi veri öğelerinin kullanılabilir olduğunu denetler.
 
-1. **Aralık boyutu**: Aralık boyutu kaydırıcı Aracı, aynı zaman dilimi boyunca aralıkların yakınlaştırmasını ve ölçeğini görmenizi sağlar. Bu, çok büyük bir zaman dilimi arasında hareket konusunda daha kesin bir denetim sağlar ve bu sayede, verilerinizin ayrıntılı, yüksek çözünürlüklü bir şekilde kesişimlerini görmenizi sağlar. Kaydırıcının varsayılan başlangıç noktası, Seçiminizdeki verilerin en uygun görünümü olarak ayarlanır; dengeleme çözümü, sorgu hızı ve ayrıntı düzeyi.
+1. **Aralık boyutu**: Aralık boyutu kaydırıcı Aracı, aynı zaman dilimi boyunca aralıkların yakınlaştırmasını ve ölçeğini görmenizi sağlar. Bu, çok büyük bir zaman dilimi arasında hareket konusunda daha kesin bir denetim sağlar ve bu sayede, verilerinizin ayrıntılı, yüksek çözünürlüklü bir şekilde kesişimlerini gözden geçirmenize olanak tanır. Kaydırıcının varsayılan başlangıç noktası, Seçiminizdeki verilerin en uygun görünümü olarak ayarlanır; dengeleme çözümü, sorgu hızı ve ayrıntı düzeyi.
 
-1. **Yakınlaştır ve Kaydır**: grafiği yakınlaştırmak ve kaydırmak için bu denetime tıklayın.
+1. **Yakınlaştır ve Kaydır**: grafiği yakınlaştırmak ve kaydırmak için bu denetimi seçin.
 
 1. **Y ekseni denetimi**: kullanılabilir Y ekseni görünümü seçeneklerinde geçiş yapar:
 
@@ -122,15 +122,15 @@ Grafik, zaman serisi örneklerini satır olarak görüntülemenizi sağlar. Graf
 
 1. **İşaretleyici öğesi**: Şu anda seçili olan veri öğesi ve ilgili ayrıntıları.
 
-Mevcut grafikteki bir veri noktasına **sağ tıklayıp** fare tuşunu basılı tutup seçili alanı seçtiğiniz uç noktaya sürükleyerek belirli bir veri dilimine daha fazla ayrıntıya gidebilirsiniz. Mavi, seçili alanı **sağ tıklatın** ve aşağıda gösterildiği gibi **Yakınlaştır** ' ı tıklatın. Ayrıca, telemetri olaylarını seçili TimeSpan içinde görüntüleyebilir ve indirebilirsiniz.
+Mevcut grafikteki bir veri noktasına **sağ tıklayıp** fare tuşunu basılı tutup seçili alanı seçtiğiniz uç noktaya sürükleyerek belirli bir veri dilimine daha fazla ayrıntıya gidebilirsiniz. Mavi, seçili alana sağ tıklayın ve ardından aşağıda gösterildiği gibi **Yakınlaştır** **' ı** seçin. Ayrıca, telemetri olaylarını seçili TimeSpan içinde görüntüleyebilir ve indirebilirsiniz.
 
   [![önizlemesi grafiği önizlemesi](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
-**Yakınlaştırma** eylemini gerçekleştirdikten sonra, seçtiğiniz veri kümesini görürsünüz. Time Series Insights verilerinizin üç y ekseni gösterimlerine göre geçiş yapmak için biçim denetimini seçin.
+**Yakınlaştırma** eylemini gerçekleştirdikten sonra, seçtiğiniz veri kümesi görüntülenir. Time Series Insights verilerinizin üç y ekseni gösterimlerine göre geçiş yapmak için biçim denetimini seçin.
 
   [![Preview grafik y ekseni](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png)](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png#lightbox)
 
-Burada, **Çakışan grafiğin**bir örneğini görebilirsiniz:
+Burada, **Çakışan bir grafiğe** örnek verilmiştir:
 
   [Çakışan grafik seçeneği ![](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
@@ -207,7 +207,7 @@ Azure zaman serisi öngörüleri Önizleme iki tema destekler:
 
 Bu bölüm yalnızca güncelleştirilmiş kullanıcı Arabiriminde Gezgin kullanma girişimi mevcut S1/S2 ortamlar için geçerlidir. Genel kullanıma açık ürün ve önizleme birleşimini kullanmak isteyebilirsiniz. Bazı işlevler mevcut kullanıcı Arabiriminden güncelleştirilmiş Gezgini'ne ekledik ancak mevcut zaman serisi görüşleri Gezgin ortamında S1/S2 için tam kullanıcı Arabirimi deneyimi elde edebilirsiniz. 
 
-Hiyerarşi yerine, ortamınızda sorgular tanımladığınız Time Series Insights terimler panelini görürsünüz. Bir koşula göre verilerinizi filtrelemek için kullanın.
+Hiyerarşi yerine, Time Series Insights terimleri bölmesi görüntülenir. Terimler paneli ortamınızda sorgular tanımlamanızı sağlar. Ayrıca, bir koşula göre verileri filtrelemek için kullanın.
 
   [sorgu panelinin ![](media/v2-update-explorer/s1-s2-preview-query.png)](media/v2-update-explorer/s1-s2-preview-query.png#lightbox)
 
@@ -222,7 +222,7 @@ Zaman serisi öngörüleri Önizleme Koşulları Düzenleyicisi paneli aşağıd
 | `IN` | Dize, Bool, Double, DateTime, zaman aralığı, NULL | Tüm işlenenler aynı türde veya NULL sabiti olması. |
 | `HAS` | Dize | Sağ tarafta yalnızca sabit dize sabit değerlerine izin verilir. Boş dize ve NULL değerlerine izin verilmez. |
 
-Desteklenen sorgu işlemleri ve veri türleri hakkında daha fazla bilgi edinmek için bkz. [zaman serisi ifadesi (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+Desteklenen sorgu işlemleri ve veri türleri hakkında daha fazla bilgi edinmek için, okuma [zaman serisi ifadesi (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
 ### <a name="examples-of-where-clauses"></a>WHERE yan tümcelerinin örnekleri
 

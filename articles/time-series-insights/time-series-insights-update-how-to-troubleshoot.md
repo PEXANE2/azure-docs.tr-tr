@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fc3aa6caa6266d2cd42e4783e8e39d5cc92c220
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452599"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861583"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Önizleme ortamını tanılama ve sorunlarını giderme
 
@@ -29,7 +29,7 @@ Time Series Insights ortamına erişim izniniz yoksa bu sorun oluşabilir. Kulla
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Sorun: Önizleme Gezgininde hiçbir veri görülmedi
 
-[Azure Time Series Insights önizleme Gezgininde](https://insights.timeseries.azure.com/preview)verilerinizi görmemenizin birkaç yaygın nedeni vardır.
+Verilerinizin [Azure Time Series Insights önizleme Gezgininde](https://insights.timeseries.azure.com/preview)görünmemesinin bazı yaygın nedenleri vardır.
 
 - Olay kaynağınız veri almıyor olabilir.
 
@@ -39,7 +39,7 @@ Time Series Insights ortamına erişim izniniz yoksa bu sorun oluşabilir. Kulla
 
 - Olay kaynak verileriniz JSON biçiminde değil.
 
-    Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için bkz [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
+    Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için [desteklenen JSON şekillerini](./how-to-shape-query-json.md)okuyun.
 
 - Olay kaynak anahtarınıza gerekli bir izin eksik.
 
@@ -61,13 +61,13 @@ Time Series Insights ortamına erişim izniniz yoksa bu sorun oluşabilir. Kulla
 
 - Sağlama sırasında belirtilen zaman serisi KIMLIĞI özelliği yanlış, eksik veya null.
 
-    Bu sorun, ortamı sağlama sırasında zaman serisi KIMLIĞI özelliği yanlış yapılandırılmışsa meydana gelebilir. Daha fazla bilgi için bkz. [bir zaman SERISI kimliği seçmek Için en iyi uygulamalar](./time-series-insights-update-how-to-id.md). Şu anda, mevcut bir Time Series Insights ortamını farklı bir zaman serisi KIMLIĞI kullanacak şekilde güncelleştiremezsiniz.
+    Bu sorun, ortamı sağlama sırasında zaman serisi KIMLIĞI özelliği yanlış yapılandırılmışsa meydana gelebilir. Daha fazla bilgi için, [zaman SERISI kimliği seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md)okuyun. Şu anda, mevcut bir Time Series Insights ortamını farklı bir zaman serisi KIMLIĞI kullanacak şekilde güncelleştiremezsiniz.
 
 ## <a name="problem-some-data-shows-but-some-is-missing"></a>Sorun: bazı veriler gösteriliyor, ancak bazıları eksik
 
 Zaman serisi KIMLIĞI olmadan veri gönderiyor olabilirsiniz.
 
-- Bu sorun, yük içindeki zaman serisi KIMLIĞI alanı olmadan olayları gönderdiğinizde meydana gelebilir. Daha fazla bilgi için bkz. [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
+- Bu sorun, yük içindeki zaman serisi KIMLIĞI alanı olmadan olayları gönderdiğinizde meydana gelebilir. Daha fazla bilgi için [desteklenen JSON şekillerini](./how-to-shape-query-json.md)okuyun.
 - Bu sorun, ortamınız kısıtlanmakta olduğu için meydana gelebilir.
 
     > [!NOTE]
@@ -97,7 +97,7 @@ Zaman damgası özelliği açıkça belirtilmemişse, varsayılan zaman damgası
 
 - Time Series Insights S1 veya S2 ortamına erişim sağlayabilirsiniz.
 
-   Zaman serisi modelleri yalnızca Kullandıkça Öde ortamlarında desteklenir. Time Series Insights önizleme Gezgini ' nden S1 veya S2 ortamınıza erişme hakkında daha fazla bilgi için bkz. [Explorer 'da verileri görselleştirme](./time-series-insights-update-explorer.md).
+   Zaman serisi modelleri yalnızca Kullandıkça Öde ortamlarında desteklenir. Time Series Insights önizleme Gezgini ' nden S1 veya S2 ortamınıza erişme hakkında daha fazla bilgi için, [Gezgin 'de verileri görselleştir](./time-series-insights-update-explorer.md)' i okuyun.
 
    [ortamda hiçbir olay ![.](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
@@ -107,7 +107,7 @@ Zaman damgası özelliği açıkça belirtilmemişse, varsayılan zaman damgası
 
 ## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>Sorun: Önizleme Gezgini 'ndeki tüm örneklerim üst öğeye sahip değil
 
-Ortamınızda tanımlı bir zaman serisi model hiyerarşisi yoksa bu sorun oluşabilir. Daha fazla bilgi için bkz. [zaman serisi modelleriyle çalışma](./time-series-insights-update-how-to-tsm.md).
+Ortamınızda tanımlı bir zaman serisi model hiyerarşisi yoksa bu sorun oluşabilir. Daha fazla bilgi için [zaman serisi modelleriyle çalışma](./time-series-insights-update-how-to-tsm.md)makalesini okuyun.
 
   [![üst öğe olmayan örnekler, bir uyarı görüntüler.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b9491a4438ff07222bb5ce5bd684964bdfc0031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c068e33bc7844c464bc8a289387990128d96dd35
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452826"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861804"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights nedir?
 
@@ -67,7 +67,7 @@ Azure Time Series Insights her yeni olayı bir satır olarak yakalar ve depolar 
 
 ## <a name="capabilities"></a>Yetenekler
 
-- **Hızlıca kullanmaya**başlayın: Azure Time Series Insights ön veri hazırlığı gerektirmez, bu sayede IoT Hub 'ınızda veya Olay Hub 'ınızdaki milyonlarca olaya hızlıca bağlanabilirsiniz. Bağlandıktan sonra, IoT çözümlerinizi hızla doğrulamak için sensör verilerini görselleştirin ve bunlarla etkileşim kurabilirsiniz. Kod yazmadan verilerinizle etkileşim kurabilir ve yeni bir dil öğrenmeniz gerekmez. Time Series Insights, ileri düzey kullanıcılar için ayrıntılı, serbest metin bir sorgu yüzeyi sağlar ve sonra araştırmayı işaret edin.
+- **Hızlıca kullanmaya**başlayın: Azure Time Series Insights ön veri hazırlığı gerektirmez, bu sayede IoT Hub 'ınızda veya Olay Hub 'ınızdaki milyonlarca olaya hızlıca bağlanabilirsiniz. Bağlandıktan sonra, IoT çözümlerinizi hızla doğrulamak için sensör verilerini görselleştirin ve bunlarla etkileşim kurabilirsiniz. Kod yazmadan verilerinizle etkileşim kurabilir ve yeni bir dil öğrenmeniz gerekmez. Time Series Insights, gelişmiş kullanıcılar için ayrıntılı, serbest metinli bir sorgu yüzeyi sağlar ve bu araştırma üzerine gelin ve sağ tıklayın.
 
 - **Neredeyse gerçek zamanlı**içgörüler: Time Series Insights, tek dakikalık bir gecikmeyle günde milyonlarca algılayıcı olayını alabilir. Time Series Insights, algılayıcı verilerinize ilişkin Öngörüler elde etmenize yardımcı olur. Eğilimleri ve anormallikleri belirlemek, kök neden analizleri gerçekleştirmek ve maliyetli kapalı kalma süresini önlemek için bu uygulamayı kullanın. Gerçek zamanlı ve geçmiş veriler arasındaki çapraz bağıntı, verilerdeki gizli eğilimleri bulmanıza yardımcı olur.
 
@@ -82,7 +82,7 @@ Başlamak için aşağıdaki adımları izleyin.
 1. Azure portal bir Time Series Insights ortamı sağlayın.
 1. IoT Hub 'ı veya Olay Hub 'ı gibi bir olay kaynağına bağlanın.
 1. Başvuru verilerini karşıya yükleyin. Bu ek bir hizmet değildir.
-1. Time Series Insights gezgininde verilerinizi dakikalar halinde görün.
+1. Time Series Insights Gezgini ile verilerinizi dakikalar içinde gözden geçirin ve görüntüleyin.
 
 ## <a name="explorer"></a>Gezgin
 

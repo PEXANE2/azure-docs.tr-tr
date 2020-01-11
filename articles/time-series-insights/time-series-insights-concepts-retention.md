@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2c68c64202efec6d7dab745b6e1bdc029fa3976f
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: f479433ef486c12a00f74b220d46f84f5f979e7c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561289"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863470"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Azure Time Series Insights veri saklama süresini anlama
 
@@ -44,7 +44,7 @@ Her iki veri saklama ilkesi de aşağıda daha ayrıntılı olarak açıklanmı�
 ## <a name="purge-old-data"></a>Eski verileri temizle
 
 - **Eski verileri temizle** Azure Time Series Insights ortamları için varsayılan ayardır.  
-- Kullanıcılar Time Series Insights ortamlarında *en son verileri* her zaman görmek istedikleri zaman, **eski verileri temizle** tercih edilir.
+- Kullanıcılar Time Series Insights ortamlarında *en son verileri* her zaman sahip olmak istedikleri zaman, **eski verileri temizle** tercih edilir.
 - **Eski verileri temizle** ayarı, ortamın sınırlarına (saklama süresi, boyutu veya sayısı, hangisi önce gelirse) ulaşıldığında verileri *temizler* . Bekletme varsayılan olarak 30 güne ayarlanır.
 - En eski veriler önce temizlenir ("ilk Ilk çıkar" yaklaşımı).
 

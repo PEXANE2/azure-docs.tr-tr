@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Azure dev alanında özel bir Held deposu kullanın.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar, Held
 manager: gwallace
-ms.openlocfilehash: f212df74ab8102391e4170ccef6b0c3b1129b046
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dddec69dc019f286c714a09e6f1a7e47240d5572
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279913"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867276"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Azure Dev Spaces bir özel Held deposu kullanın
 
@@ -35,6 +35,9 @@ Projenizin dizinine gidin ve `azds prep`çalıştırın.
 ```cmd
 azds prep --public
 ```
+
+> [!TIP]
+> `prep` komutu, projeniz için [bir Dockerfile ve Held grafiği](../how-dev-spaces-works.md#prepare-your-code) oluşturmaya çalışır. Azure Dev Spaces, kodunuzu derlemek ve çalıştırmak için bu dosyaları kullanır, ancak projenin oluşturulup çalıştırıldığını değiştirmek istiyorsanız bu dosyaları değiştirebilirsiniz.
 
 Uygulamanızın grafik dizininde grafiğinizdeki bir [requirements. YAML][helm-requirements] dosyası oluşturun. Örneğin, uygulamanız *APP1*olarak adlandırılmışsa, *grafikler/APP1/requirements. YAML*oluşturursunuz.
 

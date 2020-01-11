@@ -1,35 +1,35 @@
 ---
-title: 'Azure VPN ağ geçidinde OpenVPN yapılandırmak nasıl: PowerShell | Microsoft Docs'
-description: Azure VPN ağ geçidi için OpenVPN yapılandırma adımları
+title: "Azure VPN Gateway 'de OpenVPN 'i yapılandırma: PowerShell"
+description: Azure için OpenVPN yapılandırma adımları VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: 609c2ef91fafe0ae955252a594292d861e772f87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02514285570b764c6f7392b789f2ff7b427bb3a6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002955"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863766"
 ---
-# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>OpenVPN için Azure noktadan siteye VPN ağ geçidi yapılandırma
+# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Azure Noktadan siteye VPN Gateway için OpenVPN 'yi yapılandırma
 
-Bu makalede, ayarladığınız yardımcı **OpenVPN® Protokolü** Azure VPN Gateway'de. Makale, bir çalışma noktadan siteye ortamı zaten sahip olduğunuzu varsayar. Bunu yapmazsanız, noktadan siteye VPN oluşturma için 1. adımda yönergeleri kullanın.
+Bu makale, Azure VPN Gateway üzerinde **OpenVPN® Protokolü** ayarlamanıza yardımcı olur. Makalesinde, zaten çalışan bir noktadan siteye ortamınız olduğunu varsayılmaktadır. Bunu yapmazsanız, Noktadan siteye VPN oluşturmak için adım 1 ' deki yönergeleri kullanın.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="vnet"></a>1. Noktadan siteye VPN oluşturma
 
-İşlevsel bir noktadan siteye ortam zaten yoksa, bir oluşturmaya yönelik yönergeyi uygulayın. Bkz: [noktadan siteye VPN oluşturma](vpn-gateway-howto-point-to-site-resource-manager-portal.md) oluşturmak ve yerel Azure sertifika kimlik doğrulaması ile noktadan siteye VPN ağ geçidi yapılandırmak için. 
+Zaten çalışan bir noktadan siteye ortamınız yoksa, bir tane oluşturmak için yönergeyi izleyin. Yerel Azure sertifikası kimlik doğrulamasıyla Noktadan siteye VPN ağ geçidi oluşturmak ve yapılandırmak için bkz. [noktadan sıteye VPN oluşturma](vpn-gateway-howto-point-to-site-resource-manager-portal.md) . 
 
 > [!IMPORTANT]
-> Temel SKU OpenVPN için desteklenmiyor.
+> Temel SKU, OpenVPN için desteklenmez.
 
-## <a name="enable"></a>2. Ağ geçidi üzerinde OpenVPN etkinleştir
+## <a name="enable"></a>2. ağ geçidinde OpenVPN 'i etkinleştirin
 
-Ağ geçidinizde OpenVPN etkinleştirin. Ağ geçidi zaten noktadan siteye için (Ikev2 veya SSTP) aşağıdaki komutları çalıştırmadan önce yapılandırıldığından emin olun:
+Ağ geçidinizdeki OpenVPN 'i etkinleştirin. Aşağıdaki komutları çalıştırmadan önce ağ geçidinin Noktadan siteye (Ikev2 veya SSTP) zaten yapılandırılmış olduğundan emin olun:
 
 ```azurepowershell-interactive
 $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $name
@@ -38,6 +38,6 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVP
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-OpenVPN ait istemcileri yapılandırmak için bkz: [yapılandırma OpenVPN istemciler](vpn-gateway-howto-openvpn-clients.md).
+İstemcileri OpenVPN için yapılandırmak için bkz. [OpenVPN Istemcilerini yapılandırma](vpn-gateway-howto-openvpn-clients.md).
 
-**"OpenVPN" OpenVPN Inc.'in ticari markasıdır.**
+**"OpenVPN", OpenVPN Inc 'nin ticari markasıdır.**

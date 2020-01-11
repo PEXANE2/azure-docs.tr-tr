@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561344"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863402"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights gecikme süresini azaltmak için azaltmayı izleyin ve azaltır
 
@@ -74,11 +74,11 @@ Uyarılar, ortamınızın neden olduğu gecikme sorunlarını tanılamanıza ve 
 
 ## <a name="throttling-and-ingress-management"></a>Daraltma ve giriş yönetimi
 
-* Kısıtladıysanız, *alınan Ileti zaman gecikmesi*için bir değer görürsünüz ve bu, zaman serisi öngörülerinin arkasındaki sürenin gerçek zamandan (Appx dizin oluşturma süresi dışında) ne kadar süreyle olduğunu size bildiren bir ileti alırsınız. 30-60 saniye).  
+* Kısıtladıysanız, zaman serisi öngörüleri ortamınızın, ileti olay kaynağını (Appx dizin oluşturma süresi dışında) ne kadar süreyle kullandığını bildiren *Ileti saati gecikmesi* için bir değer kaydedilir. 30-60 saniye).  
 
   *Alınan Ileti sayısı gecikmesi* de bir değer içermelidir, bu da arkasında kaç ileti olduğunu belirlemenizi sağlar.  En kolay şekilde, ortamınızın kapasitesini, farkı aşmanızı sağlayacak bir boyuta artırmanız gerekir.  
 
-  Örneğin, S1 ortamınızın 5.000.000 ileti gecikmesini gösterir olduğunu görürseniz, bir gün boyunca daha fazla bilgi almak için ortamınızın boyutunu altı birim olarak artırabilirsiniz.  Daha hızlı bir şekilde daha fazla yakalamak için daha fazla artırabilirsiniz. Yakalama dönemi, özellikle bir ortamı ilk kez sağlarken, özellikle de olayları zaten olan bir olay kaynağına bağladığınızda veya çok sayıda geçmiş verileri toplu olarak karşıya yüklerken yaygın bir oluşumdır.
+  Örneğin, S1 ortamınız 5.000.000 ileti gecikmesi içeriyorsa, bir gün boyunca daha fazla işlem yapmak için ortamınızın boyutunu altı birim olarak artırabilirsiniz.  Daha hızlı bir şekilde daha fazla yakalamak için daha fazla artırabilirsiniz. Yakalama dönemi, özellikle bir ortamı ilk kez sağlarken, özellikle de olayları zaten olan bir olay kaynağına bağladığınızda veya çok sayıda geçmiş verileri toplu olarak karşıya yüklerken yaygın bir oluşumdır.
 
 * Başka bir yöntem de bir giriş **saklı olayları** ayarlaması > = bir eşik değeri 2 saatlik bir dönem boyunca toplam ortam kapasitenizin altına göre biraz daha düşük.  Bu uyarı, gecikme süresinin yüksek olma olasılığını gösteren kapasiteyi sürekli olarak anlamanıza yardımcı olabilir. 
 
@@ -86,11 +86,11 @@ Uyarılar, ortamınızın neden olduğu gecikme sorunlarını tanılamanıza ve 
 
 * Kısıtladığınızı kuşkulanıyorsanız, giriş **alınan iletilerinizi** olay kaynağınızın yumurtılan iletileriyle karşılaştırabilirsiniz.  Olay Hub 'ınız giriş **alınızdan**daha büyükse, Time Series Insights muhtemelen kısıtlanıyor demektir.
 
-## <a name="improving-performance"></a>Performansı artırma
+## <a name="improving-performance"></a>Performansı geliştirme
 
 Azaltmayı veya gecikmeyi azaltmak için, bunu düzeltmenin en iyi yolu ortamınızın kapasitesini artırmaktır.
 
-Ortamınızı çözümlemek istediğiniz veri miktarı için düzgün şekilde yapılandırarak gecikme süresini ve azaltmaktan kaçınabilirsiniz. Ortamınıza kapasite ekleme hakkında daha fazla bilgi için bkz. [ortamınızı ölçeklendirme](time-series-insights-how-to-scale-your-environment.md).
+Ortamınızı çözümlemek istediğiniz veri miktarı için düzgün şekilde yapılandırarak gecikme süresini ve azaltmaktan kaçınabilirsiniz. Ortamınıza kapasite ekleme hakkında daha fazla bilgi için [ortamınızın ölçeğini](time-series-insights-how-to-scale-your-environment.md)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b25639b237979aff8980c1ff5b8787d298c157e1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452445"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861481"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights Preview ortamınızı planlayın
 
 Bu makalede Azure Time Series Insights önizlemeyi kullanarak hızlı bir şekilde planlamak ve kullanmaya başlamak için en iyi yöntemler açıklanmaktadır.
 
 > [!NOTE]
-> Genel kullanılabilirlik Time Series Insights örneği planlamak için en iyi uygulamalar için bkz. [Azure Time Series Insights genel kullanılabilirlik ortamınızı planlayın](time-series-insights-environment-planning.md).
+> Genel kullanılabilirlik Time Series Insights örneği planlamak için en iyi uygulamalar için, [Azure Time Series Insights genel kullanım ortamınızın planını](time-series-insights-environment-planning.md)okuyun.
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Planlama ve hazırlık için en iyi uygulamalar
 
@@ -34,7 +34,7 @@ Ortamınızı planlamaya ve hazırlamaya yönelik en iyi uygulamalar aşağıdak
 * [JSON 'da olayları verimli](#shape-your-events)bir şekilde gönderme.
 * [İş olağanüstü durum kurtarma seçeneklerini](#business-disaster-recovery)Time Series Insights.
 
-Azure Time Series Insights Kullandıkça Öde iş modelini kullanır. Ücretler ve kapasite hakkında daha fazla bilgi için bkz. [Time Series Insights fiyatlandırması](https://azure.microsoft.com/pricing/details/time-series-insights/).
+Azure Time Series Insights Kullandıkça Öde iş modelini kullanır. Ücretler ve kapasite hakkında daha fazla bilgi için [Time Series Insights fiyatlandırmayı](https://azure.microsoft.com/pricing/details/time-series-insights/)okuyun.
 
 ## <a name="the-preview-environment"></a>Önizleme ortamı
 
@@ -48,7 +48,7 @@ Sağlama sürecinin bir parçası olarak, bir ısınma deposunu etkinleştirmek 
 Isınma mağazasındaki sorgular ücretsizdir, ancak soğuk depodaki sorgular maliyetlendirilir. Sorgu desenlerinizi anlamanız ve ısınma Mağazası yapılandırmanızı buna göre planlamanız önemlidir. En son veriler üzerinde etkileşimli analizler 'in, ısınma mağazalarınızın yanı sıra, uzun süreli eğilimler soğuk bir şekilde bulunmasını öneririz.
 
 > [!NOTE]
-> Isınma verilerinizi sorgulama hakkında daha fazla bilgi edinmek için [buraya bakın](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters).
+> Isınma verilerinizi sorgulama hakkında daha fazla bilgi edinmek için [API başvurusunu](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters)okuyun.
 
 Başlamak için üç ek öğe gereklidir:
 
@@ -80,7 +80,7 @@ Boş bırakıldığında, olay zaman damgası olarak bir olay kaynağının olay
 
 Artık Time Series Insights ortamınızın zaman serisi modelini yapılandırabilirsiniz. Yeni model IoT verilerini bulmayı ve çözümlemeyi kolaylaştırır. Zaman serisi verilerinin listesini alma, bakım ve zenginleştirmeye olanak sağlar ve tüketiciye yönelik veri kümelerini hazırlamaya yardımcı olur. Model, benzersiz kaynağı türler ve hiyerarşiler olarak bilinen değişkenlerle ilişkilendiren bir örnekle eşlenen zaman serisi kimliklerini kullanır. Yeni [zaman serisi modeli](./time-series-insights-update-tsm.md)hakkında bilgi edinin.
 
-Model dinamiktir, bu nedenle herhangi bir zamanda derlenebilir. Hızlı bir başlangıç yapmak için, Time Series Insights verileri dağıtmadan önce derleyin ve karşıya yükleyin. Modelinizi derlemek için bkz. [zaman serisi modelini kullanma](./time-series-insights-update-how-to-tsm.md).
+Model dinamiktir, bu nedenle herhangi bir zamanda derlenebilir. Hızlı bir başlangıç yapmak için, Time Series Insights verileri dağıtmadan önce derleyin ve karşıya yükleyin. Modelinizi derlemek için [zaman serisi modelini kullanın](./time-series-insights-update-how-to-tsm.md)' ı okuyun.
 
 Birçok müşteri için, zaman serisi modeli mevcut bir varlık modeliyle veya ERP sistemiyle eşlenir. Mevcut bir modeliniz yoksa, hızlı bir şekilde çalışmaya başlaması için önceden oluşturulmuş bir kullanıcı deneyimi [sağlanır](https://github.com/Microsoft/tsiclient) . Bir modelin size nasıl yardımcı olabileceğini öğrenmek için [örnek Tanıtım ortamını](https://insights.timeseries.azure.com/preview/demo)görüntüleyin.
 
@@ -93,7 +93,7 @@ Parmak için iyi bir kural:
 * Meta verileri zaman serisi modelinize depolayın.
 * Zaman serisi modunun, örnek alanlarının ve olayların yalnızca gerekli bilgileri (örneğin, zaman serisi KIMLIĞI veya zaman damgası özelliği) içerdiğinden emin olun.
 
-Daha fazla bilgi için bkz. [Şekil olayları](./time-series-insights-send-events.md#supported-json-shapes).
+Daha fazla bilgi için [Şekil olaylarını](./time-series-insights-send-events.md#supported-json-shapes)okuyun.
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

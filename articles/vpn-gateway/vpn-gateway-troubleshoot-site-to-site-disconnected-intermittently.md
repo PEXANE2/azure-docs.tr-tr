@@ -1,27 +1,21 @@
 ---
-title: Azure siteden siteye VPN bağlantısını zaman aralıklı olarak giderme | Microsoft Docs
+title: Azure siteden siteye VPN bağlantısını zaman aralıklı olarak giderme
 description: Siteden siteye VPN bağlantısının düzenli olarak bağlantısı kesilmesinde sorun giderme hakkında bilgi edinin.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 394062257f09bb0b8cfa6875795b88d35404f87c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058831"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862569"
 ---
-# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Sorunu Azure siteden siteye VPN bağlantısı zaman aralıklı
+# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Sorun giderme: Azure siteden siteye VPN bağlantısı zaman aralıklı
 
 Yeni veya mevcut bir Microsoft Azure siteden siteye VPN bağlantısının kararlı olmaması veya düzenli olarak kesilme sorunu yaşayabilirsiniz. Bu makalede, sorunun nedenini belirlemenize ve çözmenize yardımcı olmak için sorun giderme adımları sunulmaktadır. 
 

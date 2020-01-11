@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d4470a89455fd4b49fb7bb5ae26375f9cf9884c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a14f3f6c17423dd9a86cbafe477fb8148932d43c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456998"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863538"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure dijital TWINS Swagger başvuru belgeleri
 
@@ -50,9 +50,9 @@ Yönetim API 'SI nesne modelleri de listelenir.
 
 Anahtar özniteliklerinin daha ayrıntılı bir özeti için listelenen her nesne modelini seçebilirsiniz.
 
-[modellerin içeriğini görmek için genişletilen Swagger modellerini ![](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[modellerin içeriğini okumak için genişletilen Swagger modellerini ![](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
-Oluşturulan Swagger nesne modelleri, tüm kullanılabilir Azure dijital TWINS [nesnelerini ve API 'leri](./concepts-objectmodel-spatialgraph.md)görmek için uygundur. Geliştiriciler, Azure dijital TWINS üzerinde çözümler oluştururken bu kaynağı kullanabilir.
+Oluşturulan Swagger nesne modelleri, tüm kullanılabilir Azure dijital TWINS [nesnelerini ve API 'lerini](./concepts-objectmodel-spatialgraph.md)okumak için uygundur. Geliştiriciler, Azure dijital TWINS üzerinde çözümler oluştururken bu kaynağı kullanabilir.
 
 ## <a name="endpoint-summary"></a>Uç nokta Özeti
 
@@ -66,13 +66,13 @@ Listelenen her uç nokta, aşağıdakiler gibi gerekli istek bilgilerini de içe
 
 [Swagger Kullanıcı arabiriminde görünen Swagger uç noktaları ![](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
-Daha ayrıntılı bir genel bakış görmek için her bir kaynağı seçin.
+Daha ayrıntılı bir genel bakış sağlamak için her bir kaynağı, ek içeriğini görüntüleyecek şekilde seçin.
 
 ## <a name="use-swagger-to-test-endpoints"></a>Uç noktaları test etmek için Swagger kullanın
 
 Swagger, bir API uç noktasını doğrudan belgeler kullanıcı arabiriminden test edebilmesidir.
 
-Belirli bir uç noktayı seçtikten sonra, **deneyin**seçeneğini görürsünüz.
+Belirli bir uç noktayı seçtikten sonra, **deneyin** düğmesine basın.
 
 [![Swagger It Out düğmesini deneyin](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
@@ -84,7 +84,7 @@ Testi yürütmeden sonra, yanıt verilerini doğrulayabilirsiniz.
 
 ## <a name="swagger-response-data"></a>Swagger yanıt verileri
 
-Listelenen her uç nokta, geliştirme ve testlerinizi doğrulamak için yanıt gövdesi verilerini de içerir. Bu örnekler, başarılı HTTP istekleri için görmek istediğiniz durum kodlarını ve JSON 'yi içerir.
+Listelenen her uç nokta, geliştirme ve testlerinizi doğrulamak için yanıt gövdesi verilerini de içerir. Bu örneklerde, başarılı HTTP istekleri için durum kodları ve JSON bulunur.
 
 [![Swagger JSON yanıtı örneği](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
@@ -124,7 +124,7 @@ Azure Active Directory kaydını tamamladıktan sonra:
 
     [![Swagger yeniden yönlendirme kalıcı](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
-OAuth 2,0 tarafından korunan etkileşimli test istekleri hakkında daha fazla bilgi edinmek için [resmi belgelere](https://swagger.io/docs/specification/authentication/oauth2/)bakın.
+OAuth 2,0 tarafından korunan etkileşimli test istekleri hakkında daha fazla bilgi edinmek için [resmi belgeleri](https://swagger.io/docs/specification/authentication/oauth2/)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

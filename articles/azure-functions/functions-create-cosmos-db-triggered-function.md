@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 922babb4b9b80c91ea99062170cf224346df192a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 830c7cdee247118ed24fc9b3a2a9efe8609c75d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769430"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863317"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB tarafından tetiklenen bir işlev oluşturma
 
@@ -64,10 +64,10 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
     | Ayar      | Önerilen değer  | Açıklama                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **Adı** | Varsayılan | Şablonun önerdiği varsayılan işlev adını kullanın.|
-    | **Azure Cosmos DB hesabı bağlantısı** | Yeni ayar | **Yeni**'yi ve ardından **Aboneliğinizi**, önceden oluşturduğunuz **Veritabanı hesabını** ve **Seç**'i belirtin. Bunu yaptığınızda hesap bağlantınız için bir uygulama ayarı oluşturulur. Bu ayar, veritabanına bağlanmak için bağlama tarafından kullanılır. |
-    | **Koleksiyon adı** | Öğeler | İzlenecek koleksiyonun adı. |
-    | **Yoksa kira koleksiyonu oluşturun** | Onay işaretli | Koleksiyon henüz mevcut değil, bu yüzden oluşturun. |
-    | **Veritabanı adı** | Görevler | İzlenecek koleksiyonu içeren veritabanının adı. |
+    | **Azure Cosmos DB hesabı bağlantısı** | Yeni ayar | **Yeni**'yi ve ardından **Aboneliğinizi**, önceden oluşturduğunuz **Veritabanı hesabını** ve **Seç**'i belirtin. Bunu yaptığınızda hesap bağlantınız için bir uygulama ayarı oluşturulur. Bu ayar bağlama tarafından veritabanı bağlantısı için kullanılır. |
+    | **Kapsayıcı adı** | Öğeler | İzlenecek kapsayıcının adı. |
+    | **Mevcut değilse kira kapsayıcısı oluştur** | Onay işaretli | Kapsayıcı zaten mevcut değil, oluşturun. |
+    | **Veritabanı adı** | Görevler | İzlenecek kapsayıcının bulunduğu veritabanının adı. |
 
 1. **Oluştur**’a tıklayarak Azure Cosmos DB tarafından tetiklenen işlevinizi oluşturun. İşlev oluşturulduktan sonra şablon temelli işlev kodu görüntülenir.  
 
@@ -75,9 +75,9 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
     Bu işlev şablonu, günlüklere belge sayısını ve ilk belgenin kimliğini yazar.
 
-Daha sonra, Azure Cosmos DB hesabınız bağlar ve `Tasks` veritabanında `Items` koleksiyonunu oluşturursunuz.
+Sonra, Azure Cosmos DB hesabınıza bağlanır ve `Tasks` veritabanında `Items` kapsayıcısını oluşturursunuz.
 
-## <a name="create-the-items-collection"></a>Öğeler koleksiyonunu oluşturma
+## <a name="create-the-items-container"></a>Öğe kapsayıcısını oluşturma
 
 1. Tarayıcıdaki yeni bir sekmede [Azure portalının](https://portal.azure.com) ikinci bir örneğini açın.
 
@@ -87,33 +87,32 @@ Daha sonra, Azure Cosmos DB hesabınız bağlar ve `Tasks` veritabanında `Items
 
 1. Azure Cosmos DB hesabınızı seçin ve ardından **Veri Gezgini**’ni seçin. 
 
-1. **Koleksiyonlar** bölümünde **taskDatabase**’i seçip **Yeni Koleksiyon**’u seçin.
+1. **SQL API 'si**altında **Görevler** veritabanı ' nı seçin ve **yeni kapsayıcı**' yı seçin.
 
-    ![Koleksiyon oluşturun](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
+    ![Bir kapsayıcı oluşturma](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container.png)
 
-1. **Koleksiyon Ekle** bölümünde, resmin altındaki tabloda gösterilen ayarları kullanın. 
+1. **Kapsayıcı Ekle**' de, görüntünün altındaki tabloda gösterilen ayarları kullanın. 
 
-    ![taskCollection’ı tanımlama](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection2.png)
+    ![Görevler kapsayıcısını tanımlama](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container2.png)
 
     | Ayar|Önerilen değer|Açıklama |
     | ---|---|--- |
     | **Veritabanı Kimliği** | Görevler |Yeni veritabanınızın adı. Bu, işlev bağlamanızda tanımlanan adla eşleşmelidir. |
-    | **Koleksiyon Kimliği** | Öğeler | Yeni koleksiyonun adı. Bu, işlev bağlamanızda tanımlanan adla eşleşmelidir.  |
-    | **Depolama kapasitesi** | Sabit (10 GB)|Varsayılan değeri kullanın. Bu değer, veritabanının depolama kapasitesidir. |
-    | **Aktarım hızı** |400 RU| Varsayılan değeri kullanın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz. |
-    | **[Bölüm anahtarı](../cosmos-db/partition-data.md)** | /kategori|Verileri her bölüme eşit şekilde dağıtan bir bölüm anahtarı. Koleksiyon performansının yüksek olması için doğru bölüm anahtarının seçilmesi önemlidir. | 
+    | **Kapsayıcı Kimliği** | Öğeler | Yeni kapsayıcının adı. Bu, işlev bağlamanızda tanımlanan adla eşleşmelidir.  |
+    | **[Bölüm anahtarı](../cosmos-db/partition-data.md)** | /kategori|Verileri her bölüme eşit şekilde dağıtan bir bölüm anahtarı. Doğru bölüm anahtarının seçilmesi, bir performanslı kapsayıcı oluşturmak için önemlidir. | 
+    | **Aktarım hızı** |400 RU| Varsayılan değeri kullanın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz. |    
 
-1. Items koleksiyonunu oluşturmak için **Tamam**’a tıklayın. Koleksiyonun oluşturulması biraz zaman alabilir.
+1. Öğeler kapsayıcısını oluşturmak için **Tamam** ' ı tıklatın. Kapsayıcının oluşturulması kısa bir zaman alabilir.
 
-İşlev bağlamasında belirtilen koleksiyon oluşturulduktan sonra bu yeni koleksiyona belge ekleyerek işlevi test edebilirsiniz.
+İşlev bağlamasında belirtilen kapsayıcı varsa, bu yeni kapsayıcıya öğe ekleyerek işlevi test edebilirsiniz.
 
 ## <a name="test-the-function"></a>İşlevi test etme
 
-1. Veri Gezgini’nde yeni **taskCollection** koleksiyonunu genişletin, **Belgeler**’i ve sonra **Yeni Belge**’yi seçin.
+1. Veri Gezgini yeni **öğeler** kapsayıcısını genişletin, **öğeler**' i seçin ve sonra **Yeni öğe**' yi seçin.
 
-    ![taskCollection’da belge oluşturma](./media/functions-create-cosmos-db-triggered-function/create-document-in-collection.png)
+    ![Öğeler kapsayıcısında bir öğe oluşturma](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
 
-1. Yeni belgenin içeriğini aşağıdaki içerikle değiştirip **Kaydet**’i seçin.
+1. Yeni öğenin içeriğini aşağıdaki içerikle değiştirin ve ardından **Kaydet**' i seçin.
 
         {
             "id": "task1",

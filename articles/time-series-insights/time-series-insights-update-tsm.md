@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374755"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861396"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede zaman serisi modeli
 
@@ -129,7 +129,7 @@ Time Series Insights ortamı için bir olay kaynağı yapılandırıldıktan son
 ```
 
 > [!TIP]
-> Time Series Insights örneği API 'SI ve oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için bkz. [veri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesi ve [örnek API Rest belgeleri](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
+> Time Series Insights örneği API 'SI ve oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesini ve [örnek API Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)okuyun.
 
 ## <a name="time-series-model-hierarchies"></a>Zaman serisi model hiyerarşileri
 
@@ -186,7 +186,7 @@ Hiyerarşiler JSON içinde şu şekilde temsil edilir:
 * `ManufactureDate`, üst `year` ve alt `month`sahip bir hiyerarşiyi tanımlar. Her `ManufactureDate` birden çok `years`olabilir ve bu da birden çok `months`sahip olabilir.
 
 > [!TIP]
-> Time Series Insights örneği API 'SI ve CRUD desteği için, [veri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesi ve [HIYERARŞI API 'si Rest belgeleri](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)bölümüne bakın.
+> Time Series Insights örneği API 'SI ve CRUD desteği için, [verileri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesini ve [HIYERARŞI API 'si Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)okuyun.
 
 ### <a name="hierarchy-example"></a>Hiyerarşi örneği
 
@@ -231,7 +231,7 @@ Bir türü veya daha fazla değişken olabilir. Örneğin, bir zaman serisi mode
 [![zaman serisi model türü örneği](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Time Series Insights örneği API 'SI ve CRUD desteği için bkz. [veri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) MAKALESI ve [API Rest belge türü](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> Time Series Insights örneği API 'SI ve CRUD desteği için, [veri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesini okuyun ve [API Rest belgelerini yazın](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ### <a name="type-properties"></a>Tür özellikleri
 
@@ -391,7 +391,7 @@ Değişkenler, zaman serisi modelinin tür tanımında depolanır ve depolanan t
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Time Series Insights Preview Storage and ınress](./time-series-insights-update-storage-ingress.md).
+- [Azure Time Series Insights önizleme depolama ve](./time-series-insights-update-storage-ingress.md)giriş makalesini okuyun.
 
 - [Azure Time Series Insights önizlemede veri modellemesinde](./time-series-insights-update-how-to-tsm.md) yaygın zaman serisi modeli işlemleri hakkında bilgi edinin
 

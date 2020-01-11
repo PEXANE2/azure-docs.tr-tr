@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 5c2c519ece9806b92c3e455d5f550bc2abfc9f3b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660350"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862484"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Cihaz bağlantısı ve telemetri sorunları
 
@@ -21,7 +21,7 @@ Cihazlar ve sensörler tarafından gönderilen telemetri verileri, herhangi bir 
 
 Başlamak için, uzamsal grafiğin kökünde bir Azure IoT Hub kaynağı oluşturun. IoT Hub kaynağı, kök alanının altındaki tüm cihazların ileti göndermesini sağlar. IoT Hub oluşturulduktan sonra, cihazları Dijital TWINS örneği içinde sensörler ile kaydedin. Cihazlar, [Azure IoT cihaz SDK 'sı](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks)aracılığıyla dijital bir TWINS hizmetine veri gönderebilir.
 
-Cihazları ekleme hakkında adım adım yönergeler için bkz. [dijital TWINS dağıtma ve yapılandırma öğreticisi](tutorial-facilities-setup.md). Bir bakışta, adımlar şunlardır:
+Cihazları ekleme hakkında adım adım yönergeler için, [dijital TWINS dağıtma ve yapılandırma öğreticisini](tutorial-facilities-setup.md)okuyun. Bir bakışta, adımlar şunlardır:
 
 - [Azure Portal](https://portal.azure.com)bir dijital TWINS örneği dağıtın.
 - Grafiğinizde boşluk oluşturun.

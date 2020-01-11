@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 1f6b753052b882b75884503f8c05f34b8cead821
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749340"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863851"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Power BI Time Series Insights verileri görselleştirme
 
@@ -51,7 +51,7 @@ Time Series Insights ortamınızı Power BI bağlamak için şu adımları izley
 Kullanmaya başlamak için:
 
 1. Time Series Insights önizleme Gezginini açın ve verilerinizi seçin.
-1. Memnun olduğunuz bir görünümü oluşturduktan sonra, **diğer eylemler** açılan menüsüne gidin ve **Power BI Bağlan**' a tıklayın.
+1. Memnun olduğunuz bir görünümü oluşturduktan sonra, **diğer eylemler** açılan menüsüne gidin ve **Power BI Bağlan**' ı seçin.
 
     [![Time Series Insights önizleme Gezgini dışarı aktarma](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
@@ -118,7 +118,7 @@ Verileri Power BI 'e aktardığınıza göre, görsellerin bulunduğu bir rapor 
 
     [çizgi grafik oluşturmak ![](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  Tuvalinize başka bir grafik eklemek için, çizgi grafik dışında tuval üzerinde herhangi bir yere tıklayın ve bu işlemi tekrarlayın.
+1.  Tuvalinize başka bir grafik eklemek için, çizgi grafik dışında tuval üzerinde herhangi bir yeri seçin ve bu işlemi tekrarlayın.
 
     [![paylaşmak için ek grafikler oluşturun](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 
@@ -138,7 +138,7 @@ Genel bakış olarak:
 1. JSON yükünü istediğiniz gibi değiştirin.
 1. **Bitti** ' yi seçin ve ardından & **Power Query Düzenleyicisi penceresinde**Uygula ' yı **kapatın** .
 
-İstenen değişikliklerin uygulandığını görmeniz gerekir.  
+Arabirim artık uyguladığınız istenen değişiklikleri yansıtır.  
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
@@ -146,4 +146,4 @@ Genel bakış olarak:
 
 * [Power BI Masaüstü](https://docs.microsoft.com/power-bi/desktop-query-overview)hakkında daha fazla bilgi edinin.
 
-* [TIME SERIES INSIGHTS GA Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) ve [Time Series Insights önizleme Gezgini](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)' ne bakın.
+* [TIME SERIES INSIGHTS GA Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) ve [Time Series Insights önizleme Gezgini](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)' ni okuyun.

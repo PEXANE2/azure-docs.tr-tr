@@ -2,13 +2,14 @@
 title: Azure Site Recovery hizmetiyle ilgili genel sorular
 description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular ele alınmaktadır.
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497542"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863572"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
 
@@ -101,7 +102,8 @@ Evet. Bir bölgede Site Recovery kasa oluşturduğunuzda, çoğaltma ve yük dev
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery çoğaltma işlemini şifreleyebilir mi?
 Sanal makineler ve fiziksel sunucular için, şirket içi siteler arasında çoğaltma geçişi desteklenir. Azure 'a çoğaltılan sanal makineler ve fiziksel sunucular için hem çapraz geçiş hem de [bekleyen şifreleme (Azure 'da)](https://docs.microsoft.com/azure/storage/storage-service-encryption) desteklenir.
 
-
+### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>Tüm şirket içi Azure Site Recovery bileşenlerinde TLS 1,2 ' I nasıl zorlayabilirim?
+Çoğaltılan öğeler üzerinde yüklü olan Mobility aracıları yalnızca TLS 1,2 üzerinde Işlem sunucusuyla iletişim kurar. Bununla birlikte, yapılandırma sunucusundan Azure 'a ve Işlem sunucusundan Azure 'a iletişim, TLS 1,1 veya 1,0 ' de olabilir. Lütfen tüm yapılandırma sunucularında ve sizin tarafınızdan ayarlanan Işlem sunucularında TLS 1,2 ' i zorlamak için [yönergeleri](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi) izleyin.
 
 
 ## <a name="disaster-recovery"></a>Olağanüstü durum kurtarma

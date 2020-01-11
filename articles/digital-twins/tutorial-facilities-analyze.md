@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d955711c44e3822f9c37d47b390b928701ab773b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790325"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861005"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Öğretici: Time Series Insights kullanarak Azure dijital TWINS 'deki olayları görselleştirin ve çözümleyin
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure Event Hubs kullanarak veri akışı yapın.
 > * Time Series Insights ile çözümleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide Azure Digital Twins kurulumunu [yapılandırmış](tutorial-facilities-setup.md) ve [sağlamış](tutorial-facilities-udf.md) olduğunuz kabul edilmektedir. Devam etmeden önce aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -52,11 +52,11 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. Sol bölmede **Kaynak oluştur**'u seçin.
 
-1. **Event Hubs** araması yapın ve sonuçlardan seçin. **Oluştur**'u seçin.
+1. **Event Hubs** araması yapın ve sonuçlardan seçin. **Oluştur**’u seçin.
 
     [![Event Hubs ad alanı oluşturma](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
 
-1. Event Hubs ad alanınız için bir **ad** girin. **Fiyatlandırma katmanı**, **aboneliğiniz**, dijital TWINS örneğiniz için kullandığınız **kaynak grubu** ve **konum**için **Standart** ' ı seçin. **Oluştur**'u seçin.
+1. Event Hubs ad alanınız için bir **ad** girin. **Fiyatlandırma katmanı**, **aboneliğiniz**, dijital TWINS örneğiniz için kullandığınız **kaynak grubu** ve **konum**için **Standart** ' ı seçin. **Oluştur**’u seçin.
 
 1. Event Hubs ad alanı dağıtımı ' nda **genel bakış** bölmesini seçin, sonra **Kaynağa Git**' i seçin.
 
@@ -69,7 +69,7 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
    Olay Hub 'ı dağıtıldıktan sonra, **etkin** durumdaki Event Hubs ad alanının **Event Hubs** bölmesinde görünür. **Genel bakış** bölmesini açmak için bu olay hub 'ını seçin.
 
-1. Üstteki **Tüketici grubu** düğmesini seçin ve Tüketici grubu için **tsıevents** gibi bir ad girin. **Oluştur**'u seçin.
+1. Üstteki **Tüketici grubu** düğmesini seçin ve Tüketici grubu için **tsıevents** gibi bir ad girin. **Oluştur**’u seçin.
 
     [Olay Hub 'ı Tüketici grubu ![](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
@@ -139,7 +139,7 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. [Azure Portal](https://portal.azure.com)sol bölmesinde **kaynak oluştur**' u seçin. 
 
-1. **Time Series Insights** genel KULLANıLABILIRLIK (GA) kaynağını arayın ve seçin. **Oluştur**'u seçin.
+1. **Time Series Insights** genel KULLANıLABILIRLIK (GA) kaynağını arayın ve seçin. **Oluştur**’u seçin.
 
 1. Time Series Insights örneğiniz için bir **Ad** girin ve **Abonelik** girişinizi seçin. Dijital TWINS örneğiniz için kullandığınız **kaynak grubunu** ve **konumunuzu**seçin. **İleri ' yi seçin: olay kaynağı** düğmesi veya **olay kaynağı** sekmesi.
 
@@ -157,7 +157,7 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. **Ortama git** düğmesi [Time Series Insights Gezginini](../time-series-insights/time-series-insights-explorer.md)açar. Herhangi bir olayı göstermez, dijital TWINS örnekinizdeki **cihaz bağlantısı** projesine göz atarak cihaz olaylarının benzetimini yapın ve `dotnet run`çalıştırın.
 
-1. Birkaç benzetimli olay oluşturulduktan sonra, Time Series Insights Explorer 'a geri dönün ve üstteki Yenile düğmesini seçin. Sanal algılayıcı verileriniz için oluşturulan analitik grafikleri görmeniz gerekir. 
+1. Birkaç benzetimli olay oluşturulduktan sonra, Time Series Insights Explorer 'a geri dönün ve üstteki Yenile düğmesini seçin. Sanal algılayıcı verileriniz için oluşturulmakta olan analitik grafiklerinizde yer görüntülenir. 
 
     [Time Series Insights Gezgininde grafik ![](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
@@ -174,7 +174,7 @@ Bu noktanın ötesinde Azure dijital TWINS 'in araştırmalarını durdurmak ist
 1. [Azure Portal](https://portal.azure.com)sol menüden **tüm kaynaklar**' ı seçin, dijital TWINS kaynak grubunuzu seçin ve **Sil**' i seçin.
 
     > [!TIP]
-    > Dijital TWINS örneğinizi silme konusunda sorun yaşıyorsanız, bu düzeltmeyle birlikte bir hizmet güncelleştirmesi kullanıma alındı. Lütfen örneğinizi silmeyi yeniden deneyin.
+    > Dijital İkizlerini örneğinizin silme sorun olduysa, bir hizmet güncelleştirmesi düzeltme alındı. Örneğiniz silme yeniden deneyin.
 
 2. Gerekirse, iş makinenizdeki örnek uygulamaları silin.
 

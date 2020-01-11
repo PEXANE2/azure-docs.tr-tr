@@ -4,14 +4,14 @@ description: Azure portal kullanarak Azure HPC önbelleğini yönetme ve güncel
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 9cd5ad151c977838fea30f52c7d4a93b4663c8ff
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166737"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867075"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Azure portal önbelleğinizi yönetin
 
@@ -23,7 +23,7 @@ Genel Bakış sayfasını açmak için Azure portal ön belleği kaynağını se
 
 Sayfanın üst kısmındaki düğmeler, önbelleği yönetmenize yardımcı olabilir:
 
-* [**Flush**](#flush-cached-data) -tüm önbelleğe alınmış verileri depolama hedeflerine yazar
+* [**Flush**](#flush-cached-data) -değiştirilen verileri depolama hedeflerine yazar
 * [**Yükseltme**](#upgrade-cache-software) -önbellek yazılımını güncelleştirir
 * **Yenile** -genel bakış sayfasını yeniden yükler
 * [**Sil**](#delete-the-cache) -önbelleği kalıcı olarak yok eder
@@ -63,9 +63,18 @@ Yazılım güncelleştirmesini başlatmak için **Yükselt** düğmesine tıklay
 
 **Sil** düğmesi önbelleği yok eder. Bir önbelleği sildiğinizde, tüm kaynakları yok edilir ve artık hesap ücretlerine tabi değildir.
 
-Önbelleği sildiğinizde depolama hedefleri etkilenmez. Daha sonra gelecekteki bir önbelleğe ekleyebilir veya onları ayrı olarak yetkisini alabilirsiniz.
+Depolama hedefleri olarak kullanılan arka uç depolama birimleri, önbelleği sildiğinizde etkilenmez. Daha sonra gelecekteki bir önbelleğe ekleyebilir veya onları ayrı olarak yetkisini alabilirsiniz.
 
-Önbellek, son kapatılma işleminin bir parçası olarak, kaydedilmemiş verileri otomatik olarak depolama hedeflerine temizler.
+> [!NOTE]
+> Azure HPC önbelleği, önbellek silinmeden önce, önbellekteki verileri otomatik olarak arka uç depolama sistemlerine yazar.
+>
+> Önbellekteki tüm verilerin uzun süreli depolamaya yazıldığından emin olmak için şu yordamı izleyin:
+>
+> 1. Depolama hedefleri sayfasındaki Sil düğmesini kullanarak her bir depolama hedefini Azure HPC önbelleğinden [kaldırın](hpc-cache-edit-storage.md#remove-a-storage-target) . Hedef kaldırılmadan önce sistem, önbellekteki değiştirilen verileri otomatik olarak arka uç depolama sistemine yazar.
+> 1. Depolama hedefinin tamamen kaldırılmasını bekleyin. Önbellekten yazılacak çok fazla veri varsa işlem bir saat veya daha uzun sürebilir. İşlem tamamlandığında, bir portal bildirimi silme işleminin başarılı olduğunu ve depolama hedefinin listeden kaybolduğunu söyler.
+> 1. Etkilenen tüm depolama hedefleri silindikten sonra, önbelleğin silinmesi güvenlidir.
+>
+> Alternatif olarak, önbelleğe alınmış verileri kaydetmek için [Temizleme](#flush-cached-data) seçeneğini kullanabilirsiniz, ancak bir istemci, temizleme tamamlandıktan sonra ancak önbellek örneği yok edildiğinde önbellekte bir değişiklik yazdığında, çalışmanın kaybedilmesi için küçük bir risk vardır.
 
 ## <a name="cache-metrics-and-monitoring"></a>Önbellek ölçümleri ve izleme
 

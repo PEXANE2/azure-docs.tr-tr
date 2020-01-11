@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 2fc66514bdf33611f9e6266d35a2d537fe3b9261
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d2f25774f89182004e23605bf4c37d1e1d739df7
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084900"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867030"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell kullanarak Hyper-V VM 'lerini ikincil bir siteye olağanüstü durum kurtarmayı ayarlama (Kaynak Yöneticisi)
 
@@ -29,7 +29,7 @@ Bu makalede, System Center Virtual Machine Manager bulutlarındaki Hyper-V VM 'l
 - Çoğaltmak istediğiniz VM 'Lerin [çoğaltılan makine desteğiyle](site-recovery-support-matrix-to-sec-site.md)uyumlu olduğundan emin olun.
 
 
-## <a name="prepare-for-network-mapping"></a>Ağ eşlemesi için hazırlanma
+## <a name="prepare-for-network-mapping"></a>Ağ eşlemeye hazırlama
 
 Kaynak ve hedef bulutlarda şirket içi Virtual Machine Manager VM ağları arasında [ağ eşleme](hyper-v-vmm-network-mapping.md) haritaları. Eşleme sürecinde şu işlemler gerçekleştirilir:
 
@@ -194,6 +194,14 @@ Sunucular, bulutlar ve ağlar doğru yapılandırıldıktan sonra buluttaki VM '
 3. VM için çoğaltmayı etkinleştirin.
 
           $jobResult = Set-AzSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
+
+> [!NOTE]
+> Azure 'da CMK özellikli yönetilen disklere çoğaltmak istiyorsanız az PowerShell 3.3.0 onlıve sürümlerini kullanarak aşağıdaki adımları uygulayın:
+>
+> 1. VM özelliklerini güncelleştirerek yönetilen disklere yük devretmeyi etkinleştirme
+> 2. Korumalı öğenin her bir diski için disk KIMLIĞINI getirmek üzere Get-Asrreplicationkorudıdıtem cmdlet 'ini kullanın
+> 3. Disk KIMLIĞININ disk şifreleme kümesine eşlenmesini içermesi için New-Object "System. Collections. Generic. Dictionary ' ' 2 [System. String, System. String]" cmdlet 'ini kullanarak bir sözlük nesnesi oluşturun. Bu disk şifreleme kümelerinin hedef bölgede sizin tarafınızdan önceden oluşturulması gerekir.
+> 4. -DiskIdToDiskEncryptionSetMap parametresinin sözlük nesnesini geçirerek set-Asrreplicationkorunabilir Dıdıtem cmdlet 'ini kullanarak VM özelliklerini güncelleştirin.
 
 ## <a name="run-a-test-failover"></a>Yük devretme testi çalıştırma
 

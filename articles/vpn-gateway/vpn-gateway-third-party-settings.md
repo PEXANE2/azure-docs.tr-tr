@@ -1,26 +1,19 @@
 ---
-title: Azure VPN Gateway için topluluk tarafından önerilen üçüncü taraf VPN veya güvenlik duvarı cihaz ayarları | Microsoft Docs
+title: Azure VPN Gateway için topluluk tarafından önerilen üçüncü taraf VPN veya güvenlik duvarı cihaz ayarları
 description: Azure VPN Gateway için topluluk tarafından önerilen üçüncü taraf VPN veya güvenlik duvarı cihaz ayarları hakkında bilgi edinin.
 services: vpn-gateway
-documentationcenter: ''
 author: chadmath
 manager: dcscontentpm
-editor: ''
-tags: azure-vpn-gateway
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: aa4650897abcd38fec4d45f57969d4bf30b9d773
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: b87340fbb3f94eee106fc5d0d72117d30e331035
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058854"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862722"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Azure VPN Gateway için topluluk tarafından önerilen üçüncü taraf VPN veya güvenlik duvarı cihaz ayarları
 

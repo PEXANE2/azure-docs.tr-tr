@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 12/20/2019
-ms.openlocfilehash: b97c8c51bc63fb0c1ff0070714e7393d11ea0dbf
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 023128d35030f99458bc5fd2c7a4a155a856e4c9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497314"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861515"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Hızlı başlangıç: Azure Time Series Insights Preview demo ortamını keşfet
 
@@ -45,7 +45,7 @@ Time Series Insights önizleme Gezgini geçmiş verileri ve kök neden analizini
 
       [Contoso tesis 1 ' de ![W7](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
-1. Contoso, Rüzgar Turbin **W7**içinde bir yangın buldu. Opın ons, yangın ne olduğuna ilişkin farklılık gösterir. Time Series Insights, yangın uyarı algılayıcısının yangın sırasında etkinleştirildiğini görebiliriz.
+1. Contoso, Rüzgar Turbin **W7**içinde bir yangın buldu. Opın ons, yangın ne olduğuna ilişkin farklılık gösterir. Time Series Insights, yangın sırasında etkinleştirilen yangın uyarı algılayıcısı görüntülenir.
 
    1. Görünüm aralığını **3/9/17 20:00:00.00 olarak 3/10/17 20:00:00.00 (UTC)** olarak değiştirin.
    1. **Güvenlik sistemi** > **firealert**' i seçin.
@@ -59,7 +59,7 @@ Time Series Insights önizleme Gezgini geçmiş verileri ve kök neden analizini
 
       [aynı anda diğer olayları gözden ![](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
-1. Yağ basıncı ve etkin uyarı sensörleri, yangın 'tan önce. Daha önce harekete geçmiş olan diğer işaretleri görmek için görüntülenen zaman serisini genişletin. Her iki algılayıcı zaman içinde sürekli olarak dalgalanılır. Dalgalanmalar kalıcı ve worrisme deseninin olduğunu gösterir.
+1. Yağ basıncı ve etkin uyarı sensörleri, yangın 'tan önce. Harekete geçiren önde gelen diğer işaretleri gözden geçirmek için görüntülenen zaman serisini genişletin. Her iki algılayıcı zaman içinde sürekli olarak dalgalanılır. Dalgalanmalar kalıcı ve worrisme deseninin olduğunu gösterir.
 
     * Görünüm aralığını **2/24/17 20:00:00.00 olarak 3/10/17 20:00:00.00 (UTC)** olarak değiştirin.
 
@@ -86,7 +86,7 @@ Time Series Insights ve algılayıcı telemetrisi kullanarak, geçmiş verilerde
 
        [![görünüm aralığını değiştirin ve W6 seçin](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
 
-1. Uyarı, oluşturucunun gerilimiyle ilgili bir sorun olduğunu gösterir. Oluşturucunun genel güç çıkışı, geçerli aralıktaki normal parametreler içindedir. Zaman sıklığımızı artırarak, başka bir model ortaya çıktı görürsünüz. Bir bırakma kapalı olur.
+1. Uyarı, oluşturucunun gerilimiyle ilgili bir sorun olduğunu gösterir. Oluşturucunun genel güç çıkışı, geçerli aralıktaki normal parametreler içindedir. Zaman sıklığımızı artırarak başka bir model ortaya çıktı. Bir bırakma kapalı olur.
 
     1. **VoltageActuatorSwitchWarning** algılayıcısı 'nı kaldırın.
     1. **Generator sistem** > **activepower**öğesini seçin.
@@ -100,7 +100,7 @@ Time Series Insights ve algılayıcı telemetrisi kullanarak, geçmiş verilerde
 
       [![zaman aralığını 60 güne uzat](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
-1. Diğer algılayıcı veri noktaları, daha fazla bağlam sağlamak için eklenebilir. Daha fazla algılayıcı, sorunun anlaşılmasından daha fazla bilgi sahibi. Şimdi gerçek değerleri görmek için bir işaret bırakın. 
+1. Diğer algılayıcı veri noktaları, daha fazla bağlam sağlamak için eklenebilir. Daha fazla algılayıcı, sorunun anlaşılmasından daha fazla bilgi sahibi. Gerçek değerleri göstermek için bir işaret bırakmaya izin verin. 
 
     1. **Oluşturucu sistemi**' ni seçin ve ardından üç algılayıcı seçin **: GridVoltagePhase1**, **GridVoltagePhase2**ve **GridVoltagePhase3**.
     1. Görünür alandaki son veri noktasında bir işaretleyici bırakın.

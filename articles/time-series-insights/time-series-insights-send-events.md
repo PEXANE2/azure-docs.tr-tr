@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dfd9a8d2723136ef68d983eb99bf2391fb87879
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 159f79e61b43761db5a65c101928d4e6ac5b4d29
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894840"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861787"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Bir olay hub'ı kullanarak zaman serisi görüşleri ortamına olayları gönderme
 
@@ -24,7 +24,7 @@ Bu makalede, Azure Event Hubs 'da bir olay hub 'ı oluşturma ve yapılandırma 
 
 ## <a name="configure-an-event-hub"></a>Olay hub’ını yapılandırma
 
-1. Bir olay hub'ı oluşturmayı öğrenmek için bkz: [Event Hubs belgeleri](https://docs.microsoft.com/azure/event-hubs/).
+1. Bir olay hub 'ı oluşturmayı öğrenmek için [Event Hubs belgelerini](https://docs.microsoft.com/azure/event-hubs/)okuyun.
 1. Arama kutusuna arama **Event Hubs**. Döndürülen listeden seçin **Event Hubs**.
 1. Olay hub'ınızı seçin.
 1. Bir olay hub 'ı oluşturduğunuzda, bir olay hub 'ı ad alanı oluşturuyorsunuz. Ad alanı içinde henüz bir olay hub 'ı oluşturmadıysanız, menüde, **varlıklar**altında bir olay hub 'ı oluşturun.  
@@ -55,13 +55,13 @@ Bu makalede, Azure Event Hubs 'da bir olay hub 'ı oluşturma ve yapılandırma 
 
 ## <a name="add-a-time-series-insights-instance"></a>Time Series Insights örneği ekleme
 
-Time Series Insights güncelleştirme örnekleri bağlamsal veriler için gelen telemetri verilerini eklemek için kullanır. Verileri kullanarak sorgu zamanında birleştirilmiş bir **zaman serisi kimliği**. Bu makalede daha sonra kullandığımız örnek wınıdmills projesi için **zaman SERISI kimliği** `id`. Zaman serisi Insight örnekleri ve **zaman SERISI kimliği**hakkında daha fazla bilgi edinmek için bkz. [zaman serisi modelleri](./time-series-insights-update-tsm.md).
+Time Series Insights güncelleştirme örnekleri bağlamsal veriler için gelen telemetri verilerini eklemek için kullanır. Verileri kullanarak sorgu zamanında birleştirilmiş bir **zaman serisi kimliği**. Bu makalede daha sonra kullandığımız örnek wınıdmills projesi için **zaman SERISI kimliği** `id`. Zaman serisi Insight örnekleri ve **zaman SERISI kimliği**hakkında daha fazla bilgi edinmek Için [zaman serisi modellerini](./time-series-insights-update-tsm.md)okuyun.
 
 ### <a name="create-a-time-series-insights-event-source"></a>Zaman serisi görüşleri olay kaynağı oluşturma
 
 1. Olay kaynağı oluşturmadıysanız, adımlarını tamamlamanız [olay kaynağı oluşturma](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 
-1. İçin bir değer ayarlamanız `timeSeriesId`. Hakkında daha fazla bilgi edinmek için **zaman serisi kimliği**, bkz: [zaman serisi modelleri](./time-series-insights-update-tsm.md).
+1. İçin bir değer ayarlamanız `timeSeriesId`. **Zaman SERISI kimliği**hakkında daha fazla bilgi edinmek Için [zaman serisi modellerini](./time-series-insights-update-tsm.md)okuyun.
 
 ### <a name="push-events-to-windmills-sample"></a>Olayları, wınte milfrels örneğine gönder
 
@@ -80,7 +80,7 @@ Time Series Insights güncelleştirme örnekleri bağlamsal veriler için gelen 
 
 1. Seçin **başlatmak için tıklatın**. Simülatör doğrudan kullanabileceğiniz JSON örneği oluşturur.
 
-1. Azure portalında event hub'ınıza geri dönün. **Genel bakış** sayfasında, Olay Hub 'ı tarafından alınan yeni olayları görürsünüz.
+1. Azure portalında event hub'ınıza geri dönün. **Genel bakış** sayfasında, Olay Hub 'ı tarafından alınan yeni olaylar görüntülenir.
 
     [Olay Hub 'ı için ölçümleri gösteren bir olay hub 'ı genel bakış sayfası ![](media/send-events/review-windmill-telemetry.png)](media/send-events/review-windmill-telemetry.png#lightbox)
 

@@ -5,12 +5,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 12/06/2019
-ms.openlocfilehash: 8d0c1edd2766d5fa46603d241c4f769fe5777cd1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dec7f022a73c5eb47c99b2d2d38e1a3258bcf14e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981388"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861480"
 ---
 ## <a name="business-disaster-recovery"></a>İş olağanüstü durum kurtarma
 
@@ -55,7 +55,7 @@ Genel olarak, bir Time Series Insights ortamını yinelemek için en iyi yol, ye
 
 Yinelenen bir ortam oluşturmak için:
 
-1. İkinci bir bölgede bir ortam oluşturun. Daha fazla bilgi için, bkz. [Azure Portal yeni Time Series Insights ortam oluşturma](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
+1. İkinci bir bölgede bir ortam oluşturun. Daha fazla bilgi için [Azure Portal yeni Time Series Insights ortamı oluştur](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)' u okuyun.
 1. Olay kaynağınız için ikinci bir ayrılmış Tüketici grubu oluşturun.
 1. Bu olay kaynağını yeni ortama bağlayın. İkinci adanmış tüketici grubunu seçtiğinizden emin olun.
 1. Time Series Insights [IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) ve [Event Hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) belgelerini gözden geçirin.
@@ -71,5 +71,5 @@ Bir olay oluşursa:
 > * Bir gecikme da oluşabilir.
 > * İşlemler tekrar yönlendirilmesiyle ileti işleme içindeki bir kopan ani meydana gelebilir.
 > 
-> Daha fazla bilgi için bkz. [Time Series Insights gecikme süresini azaltma](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency).
+> Daha fazla bilgi için [Time Series Insights gecikme süresini azaltır](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency).
 

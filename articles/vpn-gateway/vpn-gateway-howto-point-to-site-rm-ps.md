@@ -1,18 +1,19 @@
 ---
-title: 'Noktadan siteye VPN ve yerel Azure sertifikası kimlik doğrulaması kullanarak bir bilgisayardan Azure sanal ağına bağlanma: PowerShell | Microsoft Docs'
+title: "Bilgisayar-P2S VPN ve yerel Azure sertifika kimlik doğrulamasından VNet 'e bağlanma: PowerShell"
 description: P2S ve otomatik olarak imzalanan veya CA tarafından verilen sertifikaları kullanarak Windows ve Mac OS X istemcilerini bir Azure sanal ağa güvenli bir şekilde bağlayın. Bu makalede PowerShell kullanılmıştır.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 17d07b508c7ecd8b5750bf5f4108cb789a419c42
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b67c77f25b14263abe7207359c00660df635df13
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843543"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863817"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Yerel Azure sertifikası kimlik doğrulaması kullanarak bir VNet 'e Noktadan siteye VPN bağlantısı yapılandırma: PowerShell
 
@@ -43,24 +44,24 @@ Bu makaledeki adımların çoğu Cloud Shell kullanabilir. Ancak, kök sertifika
 
 Örnek değerleri kullanarak bir test ortamı oluşturabilir veya bu makaledeki örnekleri daha iyi anlamak için bu değerlere bakabilirsiniz. Değişkenler makalenin [1](#declare). bölümünde ayarlanır. İzlenecek yol olarak adımları kullanıp değerleri değiştirmeden uygulayabilir veya ortamınızı yansıtacak şekilde değiştirebilirsiniz.
 
-* **Ada VNet1**
+* **Ad: VNet1**
 * **Adres alanı: 192.168.0.0/16** ve **10.254.0.0/16**<br>Bu örnekte, bu yapılandırmanın birden çok adres alanıyla çalıştığını göstermek için birden fazla adres alanı kullanılır. Ancak, bu yapılandırma için birden çok adres alanı gerekli değildir.
-* **Alt ağ adı: Uçta**
+* **Alt ağ adı: FrontEnd**
   * **Alt ağ adres aralığı: 192.168.1.0/24**
-* **Alt ağ adı: Sunucusundan**
+* **Alt ağ adı: BackEnd**
   * **Alt ağ adres aralığı: 10.254.1.0/24**
 * **Alt ağ adı: GatewaySubnet**<br>VPN ağ geçidinin çalışması için Alt Ağ adı olarak *GatewaySubnet*'in kullanılması zorunludur.
-  * **GatewaySubnet adres aralığı: 192.168.200.0/24** 
+  * **Ağ Geçidi Alt Ağ adres aralığı: 192.168.200.0/24** 
 * **VPN istemcisi adres havuzu: 172.16.201.0/24**<br>Sanal ağa, bu Noktadan Siteye bağlantıyı kullanarak bağlanan VPN istemcileri, VPN istemci adresi havuzundan bir IP adresi alır.
-* **Aboneliğiniz** Birden fazla aboneliğiniz varsa, doğru olanı kullandığınızdan emin olun.
-* **Kaynak grubu: TestRG**
-* **Konumuna Doğu ABD**
-* **DNS sunucusu: Ad çözümlemesi** için kullanmak istediğiniz DNS sunucusunun IP adresi. (isteğe bağlı)
-* **GW adı: Vnet1GW**
-* **Genel IP adı: VNet1GWPIP**
-* **VpnType RouteBased** 
+* **Abonelik:** Birden fazla aboneliğiniz varsa doğru aboneliği kullandığınızdan emin olun.
+* **Kaynak Grubu: TestRG**
+* **Konum: Doğu ABD**
+* DNS Sunucusu: Ad çözümlemesi için kullanmak istediğiniz **DNS sunucusunun IP adresi**. (isteğe bağlı)
+* **Ağ Geçidi Adı: Vnet1GW**
+* **Ortak IP adı: VNet1GWPIP**
+* **VpnType: RouteBased** 
 
-## <a name="declare"></a>1. Oturum açma ve değişkenleri ayarlama
+## <a name="declare"></a>1. oturum açma ve değişkenleri ayarlama
 
 Bu bölümde oturum açıp bu yapılandırma için kullanılan değerleri bildirirsiniz. Belirtilen değerler örnek betiklerde kullanılır. Değerleri, ortamınızı yansıtacak şekilde değiştirin. Veya, bildirilen değerleri kullanın ve bir alıştırma olarak adımları uygulayın.
 
@@ -90,7 +91,7 @@ Kullanmak istediğiniz değişkenleri bildirin. Aşağıdaki örneği kullanın 
   $GWIPconfName = "gwipconf"
   ```
 
-## <a name="ConfigureVNet"></a>2. Sanal ağ yapılandırma
+## <a name="ConfigureVNet"></a>2. VNet yapılandırma
 
 1. Bir kaynak grubu oluşturun.
 
@@ -126,7 +127,7 @@ Kullanmak istediğiniz değişkenleri bildirin. Aşağıdaki örneği kullanın 
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="creategateway"></a>3. VPN ağ geçidini oluşturma
+## <a name="creategateway"></a>3. VPN Gateway oluşturma
 
 Sanal ağınız için sanal ağ geçidini yapılandırın ve oluşturun.
 
@@ -150,22 +151,22 @@ $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPool $VPNClientAddressPool
 ```
 
-## <a name="Certificates"></a>5. Sertifika oluşturma
+## <a name="Certificates"></a>5. sertifika oluşturma
 
 Noktadan Siteye VPN’lerde VPN istemcilerinin kimlik doğrulamasını yapmak için Azure tarafından sertifikalar kullanılır. Kök sertifikanın ortak anahtar bilgilerini Azure'a yükleyin. Bundan sonra ortak anahtar, 'güvenilir' olarak kabul edilir. Güvenilir kök sertifikadan istemci sertifikaları oluşturulmalı ve sonra Sertifikalar-Geçerli Kullanıcı/Kişisel sertifika deposundaki her bir istemci bilgisayara yüklenmelidir. Sertifika, sanal ağ ile bağlantı başlattığında istemcinin kimliğini doğrulamak için kullanılır. 
 
 Otomatik olarak imzalanan sertifikalar kullanıyorsanız bu sertifikaların belirli parametreler kullanılarak oluşturulması gerekir. [PowerShell ve Windows 10](vpn-gateway-certificates-point-to-site.md)'a yönelik yönergeler yardımıyla, otomatik olarak imzalanan sertifika oluşturabilir veya Windows 10'a sahip değilseniz [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) kullanabilirsiniz. Otomatik olarak imzalanan kök sertifika ve istemci sertifikası oluştururken yönergelerdeki adımları uygulamanız önemlidir. Aksi halde, oluşturduğunuz sertifikalar P2S bağlantılarıyla uyumlu olmaz ve bağlantı hatası alırsınız.
 
-### <a name="cer"></a>1. Kök sertifikaya ilişkin .cer dosyasını alma
+### <a name="cer"></a>1. kök sertifika için. cer dosyasını alın
 
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
 
-### <a name="generate"></a>2. İstemci sertifikası oluşturma
+### <a name="generate"></a>2. istemci sertifikası oluşturma
 
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="upload"></a>6. Kök sertifikanın ortak anahtar bilgilerini karşıya yükleme
+## <a name="upload"></a>6. kök sertifika ortak anahtar bilgilerini karşıya yükleyin
 
 VPN ağ geçidini oluşturma işleminin tamamlandığını doğrulayın. İşlem tamamlandıktan sonra, güvenilen kök sertifikanın .cer dosyasını (ortak anahtar bilgilerini içerir) Azure’a yükleyebilirsiniz. Bir .cer dosyası karşıya yüklendikten sonra Azure, güvenilir kök sertifikadan oluşturulmuş bir istemci sertifikasının yüklü olduğu istemcilerin kimliklerini doğrulamak için bu dosyayı kullanabilir. Daha sonra gerekirse, toplam 20 adede kadar güvenilir kök sertifika dosyasını karşıya yükleyebilirsiniz.
 
@@ -190,7 +191,7 @@ Azure Cloud Shell kullanarak bu bilgileri karşıya yükleyemezsiniz. PowerShell
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64
    ```
 
-## <a name="clientcertificate"></a>7. Dışarı aktarılan bir istemci sertifikasını yükleme
+## <a name="clientcertificate"></a>7. bir içe aktarılmış istemci sertifikası yükler
 
 İstemci sertifikalarını oluşturmak için kullandığınız bilgisayardan farklı bir istemci bilgisayarda bir P2S bağlantı oluşturmak istiyorsanız, bir istemci sertifikası yüklemeniz gerekir. Bir istemci sertifikası yüklenirken, istemci sertifikası dışarı aktarılırken oluşturulan parola gerekir.
 
@@ -198,11 +199,11 @@ Azure Cloud Shell kullanarak bu bilgileri karşıya yükleyemezsiniz. PowerShell
 
 Yükleme adımları için bkz. [İstemci sertifikası yükleme](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-## <a name="clientconfig"></a>8. Yerel VPN istemcisini yapılandırma
+## <a name="clientconfig"></a>8. yerel VPN istemcisini yapılandırma
 
 VPN istemcisi yapılandırma dosyaları, P2S bağlantısı üzerinden bir sanal ağa bağlanmak üzere cihazları yapılandırmak için gereken ayarları içerir. VPN istemcisi yapılandırma dosyalarını oluşturma ve yükleme yönergeleri için bkz. [Yerel Azure sertifika doğrulaması P2S yapılandırmaları için VPN istemci yapılandırma dosyalarını oluşturma ve yükleme](point-to-site-vpn-client-configuration-azure-cert.md).
 
-## <a name="connect"></a>9. Azure'a Bağlanma
+## <a name="connect"></a>9. Azure 'a bağlanma
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>Windows VPN istemcisinden bağlanmak için
 
@@ -211,7 +212,7 @@ VPN istemcisi yapılandırma dosyaları, P2S bağlantısı üzerinden bir sanal 
 >
 >
 
-1. İstemci bilgisayarda sanal ağınıza bağlanmak için VPN bağlantılarında gezinin ve oluşturduğunuz VPN bağlantısını bulun. Bu VPN bağlantısı sanal ağınızla aynı ada sahiptir. **Bağlan**'a tıklayın. Sertifika kullanımına ilişkin bir açılır ileti görüntülenebilir. Yükseltilmiş ayrıcalıklar kullanmak için **Devam**’a tıklayın. 
+1. İstemci bilgisayarda VNet'inize bağlanmak için VPN bağlantılarında gezinin ve oluşturduğunuz VPN bağlantısını bulun. Bu VPN bağlantısı sanal ağınızla aynı ada sahiptir. **Bağlan**'a tıklayın. Sertifika kullanımına ilişkin bir açılır ileti görüntülenebilir. Yükseltilmiş ayrıcalıklar kullanmak için **Devam**’a tıklayın. 
 2. **Bağlantı** durum sayfasında **Bağlan**'a tıklayarak bağlantıyı başlatın. Bir **Sertifika Seç** ekranı çıkarsa, gösterilen istemci sertifikasının bağlanmak için kullanmak istediğiniz sertifika olduğunu doğrulayın. Başka bir sertifika gösteriliyorsa, açılan liste okunu kullanarak doğru sertifikayı seçin ve **Tamam**’a tıklayın.
 
    ![VPN istemcisinin Azure’a bağlanması](./media/vpn-gateway-howto-point-to-site-rm-ps/clientconnect.png)
@@ -406,4 +407,4 @@ Parmak izini, iptal edilen istemci sertifikaları listesinden kaldırarak bir is
 ## <a name="next-steps"></a>Sonraki adımlar
 Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için bkz. [Sanal Makineler](https://docs.microsoft.com/azure/). Ağ ve sanal makineler hakkında daha fazla bilgi edinmek için, bkz. [Azure ve Linux VM ağına genel bakış](../virtual-machines/linux/azure-vm-network-overview.md).
 
-P2S sorun giderme bilgileri [için sorun giderme: Azure Noktadan siteye bağlantı sorunları](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
+P2S sorun giderme bilgileri için [Sorun giderme: Azure noktadan siteye bağlantısı sorunları](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

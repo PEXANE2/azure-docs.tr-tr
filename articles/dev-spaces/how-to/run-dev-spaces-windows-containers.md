@@ -5,12 +5,12 @@ ms.date: 07/25/2019
 ms.topic: conceptual
 description: Windows kapsayıcıları ile mevcut bir kümede Azure Dev Spaces çalıştırmayı öğrenin
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Windows kapsayıcıları
-ms.openlocfilehash: 7410c0e38b84979f0977973b2d6ccf588e2b1230
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 855b877653d4cf60c8165af3094fe0e68ca5e6dd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484006"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867305"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces kullanarak Windows kapsayıcılarıyla etkileşim kurma
 
@@ -146,7 +146,12 @@ azds prep --public
 azds up
 ```
 
-`azds prep --public` komutu, uygulamanız için Helu grafiğini ve Dockerfiles 'ı oluşturur. `azds up` komutu, hizmetinizi ad alanında çalıştırır.
+`azds prep --public` komutu, uygulamanız için Helu grafiğini ve Dockerfiles 'ı oluşturur.
+
+> [!TIP]
+> Projeniz için [Dockerfile ve HELI grafiği](../how-dev-spaces-works.md#prepare-your-code) , kodunuzu derlemek ve çalıştırmak için Azure dev Spaces tarafından kullanılır, ancak projenin oluşturulup çalıştırıldığını değiştirmek istiyorsanız bu dosyaları değiştirebilirsiniz.
+
+`azds up` komutu, hizmetinizi ad alanında çalıştırır.
 
 ```console
 $ azds up

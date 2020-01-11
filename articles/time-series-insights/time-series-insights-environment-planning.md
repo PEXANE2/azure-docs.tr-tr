@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 13bff4abcb308e4d5ea55f360d979e3e67d313c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39665e0361747e0f75fa6c92f244317b995ce6a8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452859"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863385"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Insights GA ortamınızı planlayın
 
@@ -32,7 +32,7 @@ Bu makalede, Azure Time Series Insights genel kullanılabilirlik (GA) ortamını
 
 Azure Time Series Insights kullanmaya başlamak için, ne kadar veri göndermeyi beklediğinizi ve verilerinizi ne kadar süreyle depolamanız gerektiğini biliyorsanız bu en iyisidir.  
 
-Time Series Insights SKU 'Larının kapasitesi ve bekletme hakkında daha fazla bilgi için bkz. [Time Series Insights fiyatlandırması](https://azure.microsoft.com/pricing/details/time-series-insights/).
+Time Series Insights SKU 'Larının kapasitesi ve bekletme hakkında daha fazla bilgi için [Time Series Insights fiyatlandırmayı](https://azure.microsoft.com/pricing/details/time-series-insights/)okuyun.
 
 Time Series Insights ortamınızı uzun süreli başarıyı en iyi şekilde planlamak için aşağıdaki öznitelikleri göz önünde bulundurun:
 
@@ -71,7 +71,7 @@ Tutma durumunu ayarlayabilir ve Azure portal ortamın yapılandırma sayfasında
    [![bekletmeyi yapılandırma](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
-> Uygun veri saklama ilkesinin nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [saklama nasıl yapılandırılır](./time-series-insights-how-to-configure-retention.md).
+> Uygun bir veri saklama ilkesinin nasıl uygulanacağı hakkında daha fazla bilgi edinmek için, [bekletmeyi yapılandırma](./time-series-insights-how-to-configure-retention.md)makalesini okuyun.
 
 ## <a name="ingress-capacity"></a>Giriş kapasitesi
 
@@ -103,7 +103,7 @@ Giriş gereksinimlerinizi hesaplamak için:
 
 ### <a name="mitigate-throttling-and-latency"></a>Azaltma ve gecikme süresini azaltma
 
-Azaltma ve gecikme süresinin nasıl önleneceği hakkında bilgi için bkz. [gecikme süresini ve azaltmayı azaltma](time-series-insights-environment-mitigate-latency.md).
+Azaltma ve gecikme süresinin nasıl önleneceği hakkında daha fazla bilgi için, azaltma [gecikmesini ve azaltmayı](time-series-insights-environment-mitigate-latency.md)okuyun.
 
 ## <a name="shape-your-events"></a>Olaylarınızı şekillendirin
 
@@ -119,7 +119,7 @@ Time Series Insights olayları yollamanın, sağladığınız ortamın boyutunu 
 > [!NOTE]
 > Başvuru verileri geriye dönük olarak katılmadı. Yapılandırma ve karşıya yükleme sonrasında yalnızca geçerli ve gelecekteki giriş verileri eşleştirilir ve başvuru veri kümesine birleştirilir. Time Series Insights için büyük miktarda geçmiş verisi gönderilmesini ve Time Series Insights önce karşıya yüklemeden veya başvuru verilerini oluşturmazsanız, çalışmanızı yinelemek zorunda kalabilirsiniz (İpucu: eğlenceli değil).  
 
-Time Series Insights ' de başvuru verilerinizi oluşturma, karşıya yükleme ve yönetme hakkında daha fazla bilgi edinmek için bkz. [başvuru veri kümesi belgeleri](time-series-insights-add-reference-data-set.md).
+Time Series Insights ' de başvuru verilerinizi oluşturma, karşıya yükleme ve yönetme hakkında daha fazla bilgi edinmek için, [başvuru veri kümesi belgelerimizi](time-series-insights-add-reference-data-set.md)okuyun.
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

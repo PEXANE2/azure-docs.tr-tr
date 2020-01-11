@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: a810076c8836acccf83733df02fbd0a29a8eba9b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b5950c3769431420c199711190a02ad0be1e177
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460312"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863504"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Time Series Insights ortamınız için Azure portal kullanarak bir başvuru veri kümesi oluşturun
 
@@ -72,7 +72,7 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
    [![başvuru verilerini gözden geçirin](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
-1. Her bir sütunu inceleyerek veri türünün kabul edilen olduğunu görüntüleyin ve gerekirse veri türünü değiştirin.  Sütun başlığındaki veri türü sembolünü seçin: Double (sayısal veriler) için **#** , **t |** Boolean için F veya dize Için **ABC** .
+1. Kabul edilen veri türünü anlamak için her sütunu gözden geçirin ve gerekirse veri türünü değiştirin.  Sütun başlığındaki veri türü sembolünü seçin: Double (sayısal veriler) için **#** , **t |** Boolean için F veya dize Için **ABC** .
 
    [![sütun başlıklarında veri türleri seçin.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
@@ -116,4 +116,4 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
 * [Başvuru verilerini programlamayla yönetin](time-series-insights-manage-reference-data-csharp.md).
 
-* Tam API başvurusu için [Başvuru Verileri API'si](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) belgesine bakın.
+* Tüm API başvurusu için [başvuru verileri API 'si](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) belgesini okuyun.

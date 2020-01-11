@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: dada1a8ed8b1725905ee2ad159e385d1bee62fc6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1deca696ba576849701eb8719de7fbaa7895a26a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615105"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861413"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri depolama ve giriş
 
@@ -116,9 +116,9 @@ Diğer hizmetlerle birlikte kullanmak üzere Time Series Insights önizleme Gezg
 
 Verilerinize üç genel yolla erişebilirsiniz:
 
-* Time Series Insights önizleme Gezgini ' nden. Verileri bir CSV dosyası olarak gezgin 'den dışarı aktarabilirsiniz. Daha fazla bilgi için [Time Series Insights önizleme Gezgini](./time-series-insights-update-explorer.md)' ne bakın.
-* Time Series Insights Preview API 'sinden. API uç noktasına `/getRecorded`adresinden ulaşabilirsiniz. Bu API hakkında daha fazla bilgi edinmek için bkz. [zaman serisi sorgusu](./time-series-insights-update-tsq.md).
-* Doğrudan bir Azure Storage hesabından. Time Series Insights Preview verilerinize erişmek için kullandığınız hesaba okuma erişiminizin olması gerekir. Daha fazla bilgi için bkz. [depolama hesabı kaynaklarınıza erişimi yönetme](../storage/blobs/storage-manage-access-to-resources.md).
+* Time Series Insights önizleme Gezgini ' nden. Verileri bir CSV dosyası olarak gezgin 'den dışarı aktarabilirsiniz. Daha fazla bilgi için [Time Series Insights önizleme Gezgini](./time-series-insights-update-explorer.md)' ni okuyun.
+* Time Series Insights Preview API 'sinden. API uç noktasına `/getRecorded`adresinden ulaşabilirsiniz. Bu API hakkında daha fazla bilgi edinmek için [zaman serisi sorgusunu](./time-series-insights-update-tsq.md)okuyun.
+* Doğrudan bir Azure Storage hesabından. Time Series Insights Preview verilerinize erişmek için kullandığınız hesaba okuma erişiminizin olması gerekir. Daha fazla bilgi için, [depolama hesabı kaynaklarınıza erişimi yönetme](../storage/blobs/storage-manage-access-to-resources.md)konusunu okuyun.
 
 ### <a name="data-deletion"></a>Veri silme
 
@@ -128,7 +128,7 @@ Time Series Insights önizleme dosyalarınızı silmeyin. Yalnızca Time Series 
 
 Parquet, verimli depolama ve performans için tasarlanan açık kaynaklı bir sütunlu dosya biçimidir. Time Series Insights önizleme, bu nedenlerle Parquet kullanır. Veri, ölçek sırasında sorgu performansı için zaman serisi KIMLIĞINE göre verileri bölümler.  
 
-Parquet dosya türü hakkında daha fazla bilgi için, bkz. [Parquet belgeleri](https://parquet.apache.org/documentation/latest/).
+Parquet dosya türü hakkında daha fazla bilgi için, [Parquet belgelerini](https://parquet.apache.org/documentation/latest/)okuyun.
 
 Time Series Insights önizlemesi verilerinizin kopyalarını aşağıdaki gibi depolar:
 

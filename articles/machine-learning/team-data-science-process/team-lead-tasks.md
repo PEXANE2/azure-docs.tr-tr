@@ -2,26 +2,26 @@
 title: Takım için görevleri takım veri bilimi işlemi takıma sağlama
 description: Ekip veri bilimi süreç ekibi üzerinde bir takım için görevlere ilişkin ayrıntılı bir anlatım
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327242"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864290"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Takım veri bilimi süreç ekibi üzerinde ekip liderine yönelik görevler
 
 Bu makalede, bir *ekibin* veri bilimi ekibi için tamamladığı görevler açıklanmaktadır. Ekip lideri hedefi, [ekip veri bilimi işlemini](overview.md) (TDSP) standartlaştırmaya yönelik işbirliği yapan bir ekip ortamı kurmaya yönelik. TDSP, işbirliğinin ve Team Learning 'in artırılmasına yardımcı olmak için tasarlanmıştır. 
 
-TDSP, tahmine dayalı analiz çözümlerini ve akıllı uygulamaları verimli bir şekilde sunmak için çevik ve yinelemeli bir veri bilimi metodolojisidir. Süreç, Microsoft 'un ve sektördeki en iyi uygulama ve yapıların, şirketlerin analiz programlarının avantajlarından tamamen yararlanmalarına yardımcı olmak için veri bilimi girişimlerinin başarılı bir şekilde uygulanması için gerekli olan en iyi yöntem ve yapıların bir bölümünü açığa çıkarın. TDSP üzerinde standartlaştırarak bir veri bilimi ekibi için personel rollerinin ve ilişkili görevlerin bir özeti için bkz. [Team Data Science işlem rolleri ve görevleri](roles-tasks.md).
+TDSP, tahmine dayalı analiz çözümlerini ve akıllı uygulamaları verimli bir şekilde sunmak için çevik ve yinelemeli bir veri bilimi metodolojisidir. Süreç, Microsoft ve sektör açısından en iyi uygulamaları ve yapıları ayırsın.  Amaç, veri bilimi girişimlerinin başarılı bir uygulamasıdır ve analiz programlarının avantajlarını tamamen tamamlıyoruz. TDSP üzerinde standartlaştırarak bir veri bilimi ekibi için personel rollerinin ve ilişkili görevlerin bir özeti için bkz. [Team Data Science işlem rolleri ve görevleri](roles-tasks.md).
 
 Bir ekip lideri, bir kuruluşun veri bilimi birimindeki çeşitli veri bilimlerinden oluşan bir ekibi yönetir. Veri bilimi biriminin boyutuna ve yapısına bağlı olarak, [Grup Yöneticisi](group-manager-tasks.md) ve ekip lideri aynı kişi olabilir ya da görevlerini yedeklerin kapılarına devredebilir. Ancak görevlerin kendileri değiştirmeyin. 
 
@@ -49,7 +49,7 @@ Aşağıdaki öğreticide, ayrıntılı adımlarda adım adım gösterilmektedir
 > [!NOTE] 
 > Bu makalede, Microsoft 'ta TDSP 'nin uygulanması nedeniyle bir TDSP ekip ortamı ayarlamak için Azure DevOps ve DSVM kullanılmaktadır. Takımınız diğer kod barındırma veya geliştirme platformlarını kullanıyorsa, ekip sağlama görevleri aynıdır, ancak bunları tamamlamaya yönelik yol farklı olabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, aşağıdaki kaynakların ve izinlerin [Grup yöneticiniz](group-manager-tasks.md)tarafından ayarlandığı varsayılır:
 
@@ -142,7 +142,7 @@ Ekip depolarınızı grup yöneticiniz tarafından ayarlanan ortak depoların i�
    
 1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL**'si altında grup ortak şablon deponuzun URL 'sini girin. URL *: https:\//\<sunucu adı >/\<kuruluş adı >/_Git/\<Depo adı >* . Örneğin: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_Git/GroupProjectTemplate*. 
    
-1. **Içeri aktar**' ı seçin. Grup şablonu deponuzun içeriği takım şablonu deponuza aktarılır. 
+1. **Al**'ı seçin. Grup şablonu deponuzun içeriği takım şablonu deponuza aktarılır. 
    
    ![Grup ortak şablon deposunu içeri aktar](./media/team-lead-tasks/import-repo-2.png)
    

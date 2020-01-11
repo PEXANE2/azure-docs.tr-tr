@@ -4,16 +4,28 @@ description: Azure HPC önbellek depolama hedeflerini düzenleme
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 115e75c0149a35104d9c3696710bf8231a98743d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168525"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866998"
 ---
 # <a name="edit-storage-targets"></a>Depolama hedeflerini düzenleme
+
+Bir depolama hedefini önbelleğin **depolama hedefleri** sayfasından kaldırabilir veya değiştirebilirsiniz.
+
+## <a name="remove-a-storage-target"></a>Depolama hedefini kaldırma
+
+Bir depolama hedefini kaldırmak için listeden seçin ve **Sil** düğmesine tıklayın.
+
+Bu eylem, bu Azure HPC önbellek sistemiyle depolama hedefi ilişkilendirmesini kaldırır, ancak arka uç depolama sistemini değiştirmez. Örneğin, bir Azure Blob depolama kapsayıcısı kullandıysanız, kapsayıcı ve içeriği önbellekten silindikten sonra hala mevcut olur. Kapsayıcıyı farklı bir Azure HPC önbelleğine ekleyebilir, bu önbelleğe yeniden ekleyebilir veya Azure portal ile silebilirsiniz.
+
+Önbellekte depolanan tüm dosya değişiklikleri, depolama hedefi kaldırılmadan önce arka uç depolama sistemine yazılır. Bu işlem bir saat veya daha fazla değişiklik zaman alabilir ve çok sayıda değiştirilen veri önbellekte bulunur.
+
+## <a name="update-storage-targets"></a>Depolama hedeflerini güncelleştirme
 
 Bazı özelliklerini değiştirmek için depolama hedeflerini düzenleyebilirsiniz. Farklı depolama türleri için farklı özellikler düzenlenebilir:
 
@@ -23,7 +35,7 @@ Bazı özelliklerini değiştirmek için depolama hedeflerini düzenleyebilirsin
 
   * Ad alanı yolu
   * Kullanım modeli
-  * Dışarı Aktarma
+  * Dışarı Aktar
   * Alt dizini dışarı aktar
 
 Depolama hedefinin adını, türünü veya arka uç depolama sistemini (blob kapsayıcısı veya NFS ana bilgisayar adı/IP adresi) düzenleyemezsiniz. Bu özellikleri değiştirmeniz gerekiyorsa, depolama hedefini silin ve yeni değerle bir değiştirme oluşturun.

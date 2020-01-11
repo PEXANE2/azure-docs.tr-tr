@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 387f3df7313c26c5cd8f7fee7c9b58ec3b5c4552
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 83462d47af49a02817dcfa05afcd8fdb5e0beab1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872572"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863715"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Öğretici: Azure Time Series Insights ortamı oluşturma
 
@@ -30,9 +30,9 @@ Bu öğretici, sanal cihazlardan alınan verilerle doldurulan bir Azure Time Ser
 > [!IMPORTANT]
 > Henüz yoksa ücretsiz bir [Azure aboneliğine](https://azure.microsoft.com/free/) kaydolun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure oturum açma hesabınız Ayrıca aboneliğin **sahip** rolünün bir üyesi olmalıdır. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimi ve Azure Portal kullanarak erişimi yönetme](../role-based-access-control/role-assignments-portal.md).
+* Azure oturum açma hesabınız Ayrıca aboneliğin **sahip** rolünün bir üyesi olmalıdır. Daha fazla bilgi için [rol tabanlı erişim denetimi ve Azure Portal kullanarak erişimi yönetme](../role-based-access-control/role-assignments-portal.md)konusunu okuyun.
 
 ## <a name="review-video"></a>Videoyu gözden geçirin
 
@@ -72,7 +72,7 @@ Bu öğretici Ayrıca IoT Hub için örnek telemetri verileri oluşturmak ve ak�
 
    [cihaz benzetimi çözümünü ![sağlama](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Sağlama tamamlandıktan sonra, dağıtım durumunun **sağlamadan** **başlamaya**taşındığını gösteren iki güncelleştirme görürsünüz. 
+1. Sağlama tamamlandıktan sonra, dağıtım durumunun **sağlamadan** **başlamaya**taşındığını bildiren iki güncelleştirme görüntülenir. 
 
    >[!IMPORTANT]
    > Çözüm hızlandırıcıyı henüz girmeyin! Daha sonra geri döneceksiniz, bu Web sayfasını açık tutun.
@@ -162,7 +162,7 @@ Bu son bölümde Telemetri verilerinin Time Series Insights ortamda oluşturuldu
 
    [Time Series Insights Gezgini ![](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
 
-1. Time Series Insights Gezgini Azure portal hesabınızı kullanarak yükler ve kimliğini doğrular. İlk görünümden sonra, Time Series Insights ortamının sanal telemetri verileriyle doldurulduğu grafik alanında görebilirsiniz. Daha dar bir zaman aralığını filtrelemek için sol üst köşedeki açılan eklentiyi seçin. Cihaz benzetimi süresini kapsayacak kadar büyük bir zaman aralığı girin. Ardından, arama Büyüteç Camı ' nı seçin.
+1. Time Series Insights Gezgini Azure portal hesabınızı kullanarak yükler ve kimliğini doğrular. Başlangıçta, Time Series Insights ortamının, sanal telemetri verileriyle birlikte doldurulduğu grafik alanı görüntülenir. Daha dar bir zaman aralığını filtrelemek için sol üst köşedeki açılan eklentiyi seçin. Cihaz benzetimi süresini kapsayacak kadar büyük bir zaman aralığı girin. Ardından, arama Büyüteç Camı ' nı seçin.
 
    [![Time Series Insights Explorer zaman aralığı Filtresi](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
@@ -198,4 +198,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Artık kendi Time Series Insights ortamınızı oluşturmayı bildiğinize göre, bir Time Series Insights ortamından veri tüketen bir Web uygulaması oluşturmayı öğrenin:
 
 > [!div class="nextstepaction"]
-> [Bkz. barındırılan istemci SDK görselleştirme örnekleri](https://tsiclientsample.azurewebsites.net/)
+> [Barındırılan istemci SDK görselleştirme örneklerini oku](https://tsiclientsample.azurewebsites.net/)

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f3ecb3bedb8e0f55590aca1aa1c0e0c185f9acc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369261"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860257"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Azure 'da gerçek zamanlı analiz ve akış işleme teknolojisini seçin
 
@@ -41,10 +41,6 @@ Azure Stream Analytics, zengin kullanıma hazır bir deneyim içerir. Ek bir kur
 * 100-ms ' den fazla Event Hubs giriş girişi, Event Hubs ve en yüksek aktarım hızı ile Event Hubs ağ gecikmesi de dahil olmak üzere çıkış girişi ' ne kadar
 
 ## <a name="when-to-use-other-technologies"></a>Diğer teknolojilerin ne zaman kullanılacağı
-
-### <a name="you-need-to-input-from-or-output-to-kafka"></a>Kafka 'den giriş yapmanız veya çıkış yapmanız gerekir
-
-Azure Stream Analytics Apache Kafka giriş veya çıkış bağdaştırıcısı yok. Olaylarınız varsa veya Kafka 'e göndermesi gerekiyorsa ve kendi Kafka kümenizi çalıştırma gereksinimine sahip değilseniz, olay Göndericisini değiştirmeden Event Hubs Kafka API 'sini kullanarak Event Hubs olayları göndererek Stream Analytics kullanmaya devam edebilirsiniz. Kendi Kafka kümenizi çalıştırmanız gerekirse, [Azure HDInsight](../hdinsight/storm/apache-storm-overview.md)'ta [Azure Databricks](../azure-databricks/index.yml)veya fırtınası üzerinde tam olarak desteklenen Spark yapısal akışını kullanabilirsiniz.
 
 ### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>JavaScript dışındaki bir dilde UDF 'ler, Udalar ve özel seri hale getiriciler yazmak istiyorsunuz veyaC#
 

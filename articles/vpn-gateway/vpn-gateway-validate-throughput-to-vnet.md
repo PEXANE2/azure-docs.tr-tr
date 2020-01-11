@@ -1,20 +1,20 @@
 ---
-title: Microsoft Azure Sanal Ağ VPN aktarım hızını doğrulama | Microsoft Docs
+title: Microsoft Azure Sanal Ağ VPN aktarım hızını doğrulama
 description: Bu belgenin amacı, kullanıcının şirket içi kaynaklarından bir Azure sanal makinesine ağ aktarım hızını doğrulaması için yardım sağlamaktır.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
-manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 9c2f50c49037305663330a3c455e40291b9e6242
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a88e339e82484c2ec1cd2276f6218fa718b990f9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058810"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860495"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Bir sanal ağa VPN aktarım hızını doğrulama
 
@@ -64,7 +64,7 @@ Bu araç diske okuma/yazma işlemi gerçekleştirmez. Yalnızca bir uçtan diğe
 [Iperf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)'yi indirin. Ayrıntılar için bkz. [Iperf belgeleri](https://iperf.fr/iperf-doc.php).
 
  > [!NOTE]
- > Bu makalede ele alınan üçüncü taraf ürünleri, Microsoft 'tan bağımsız şirketler tarafından üretilmektedir. Microsoft bu ürünlerin performansı veya güvenilirliği hakkında hiçbir garanti vermez.
+ > Bu makalede ele alınan üçüncü taraf ürünleri, Microsoft 'tan bağımsız şirketler tarafından üretilmektedir. Microsoft bu ürünlerin performansı hakkında zımni ya da başka türlü hiçbir garanti vermez.
 
 ### <a name="run-iperf-iperf3exe"></a>Iperf (iperf3. exe) Çalıştır
 
@@ -84,7 +84,7 @@ Bu araç diske okuma/yazma işlemi gerçekleştirmez. Yalnızca bir uçtan diğe
    netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
    ```
 
-   **Azure Linux:** Azure Linux görüntülerinin izin veren güvenlik duvarları vardır. Bir bağlantı noktasında dinleme yapan bir uygulama varsa, trafiğe izin verilir. Güvenli hale getirilen özel görüntülerin, açıkça açılan bağlantı noktalarına ihtiyacı olabilir. Ortak Linux işletim sistemi katmanı güvenlik duvarları `iptables`, `ufw`, veya `firewalld`içerir.
+   **Azure Linux:** Azure Linux görüntülerinin izin veren güvenlik duvarları vardır. Bir bağlantı noktasında dinleme yapan bir uygulama varsa, trafiğe izin verilir. Güvenli hale getirilen özel görüntülerin, açıkça açılan bağlantı noktalarına ihtiyacı olabilir. Ortak Linux işletim sistemi-katman güvenlik duvarları `iptables`, `ufw`veya `firewalld`içerir.
 
 1. Sunucu düğümünde, iperf3. exe ' nin ayıklandığı dizine geçin. Ardından sunucu modunda Iperf komutunu çalıştırın ve aşağıdaki komutlar olarak 5001 numaralı bağlantı noktasını dinlemek üzere ayarlayın:
 
@@ -107,7 +107,7 @@ Bu araç diske okuma/yazma işlemi gerçekleştirmez. Yalnızca bir uçtan diğe
 
    Aşağıdaki ekranda bu örnekteki çıktı gösterilmektedir:
 
-   ![Output](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
+   ![Çıktı](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
 
 1. SEÇIM Test sonuçlarını korumak için şu komutu çalıştırın:
 
@@ -126,7 +126,7 @@ Bu araç diske okuma/yazma işlemi gerçekleştirmez. Yalnızca bir uçtan diğe
 
 [Latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) ' nin en son sürümünü indirin
 
-Latte. exe ' yi ayrı bir klasöre yerleştirmeyi düşünün, örneğin`c:\tools`
+Latte. exe ' yi `c:\tools` gibi ayrı bir klasöre yerleştirmeyi düşünün
 
 ### <a name="allow-latteexe-through-the-windows-firewall"></a>Windows Güvenlik Duvarı aracılığıyla latte. exe ' ye izin ver
 
@@ -224,7 +224,7 @@ Yüklemeyi hızlı yapın
 
 Önceki adımlarla (Iperf/NTTTCP/vb.) birlikte değerlendirilen genel aktarım hızı iyi olsa bile, Windows Gezgini 'ni kullanırken veya bir RDP oturumunu sürükleyip bırakarak yavaş dosya kopyalama işlemi yaşayabilirsiniz. Bu sorun, normalde aşağıdaki faktörlerden biri veya her ikisi nedeniyle oluşur:
 
-* Windows Gezgini ve RDP gibi dosya kopyalama uygulamaları, dosyaları kopyalarken birden çok iş parçacığı kullanmaz. Daha iyi performans için, dosyaları 16 veya 32 iş parçacığı kullanarak kopyalamak üzere [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) gibi çok iş parçacıklı bir dosya kopyalama uygulaması kullanın. RichCopy içindeki dosya kopyası için iş parçacığı numarasını değiştirmek üzere **eylem** > **kopyalama seçenekleri** > **dosya kopyalama**' ya tıklayın.
+* Windows Gezgini ve RDP gibi dosya kopyalama uygulamaları, dosyaları kopyalarken birden çok iş parçacığı kullanmaz. Daha iyi performans için, dosyaları 16 veya 32 iş parçacığı kullanarak kopyalamak üzere [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) gibi çok iş parçacıklı bir dosya kopyalama uygulaması kullanın. RichCopy içindeki dosya kopyası için iş parçacığı numarasını değiştirmek üzere **, >  > ** **dosya kopyalama** **seçeneklerini Kopyala** ' ya tıklayın.
 
    ![Yavaş dosya kopyalama sorunları](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
@@ -238,9 +238,9 @@ Yüklemeyi hızlı yapın
 
 Azure 'un yerel ağ geçidinde VPN üzerinden ulaşmasını istediğiniz şirket içi aralıkların alt ağları belirtiliyor. Aynı anda, Azure 'daki VNET adres alanını şirket içi cihaza tanımlayın.
 
-* **Rota tabanlı ağ geçidi**: Rota temelli VPN’lerle ilgili ilke veya trafik seçici herhangi birinden herhangi birine (veya joker karakterler) olarak yapılandırılır.
+* **Rota tabanlı ağ geçidi**: rota tabanlı VPN 'ler için ilke veya trafik Seçicisi herhangi bir (veya joker karakter) olarak yapılandırılır.
 
-* **Ilke tabanlı ağ geçidi**: İlke temelli VPN'ler, şirket içi ağınızla Azure VNet'iniz arasında adres öneklerinin birleşimleri temelindeki IPsec tüneller üzerinden paketleri şifreler ve yönlendirirler. İlke (veya Trafik Seçici) çoğunlukla VPN yapılandırmasında bir erişim listesi olarak tanımlanır.
+* **Ilke tabanlı ağ geçidi**: Ilke tabanlı VPN 'ler, şirket içi ağınız ve Azure VNET arasındaki adres ön eklerinin birleşimlerine bağlı olarak paketleri IPSec tünellerine göre şifreler ve yönlendirir. İlke (veya Trafik Seçici) çoğunlukla VPN yapılandırmasında bir erişim listesi olarak tanımlanır.
 
 * **UsePolicyBasedTrafficSelector** bağlantıları: ("UsePolicyBasedTrafficSelectors" bir bağlantı $true Için, Azure VPN ağ geçidini şirket içi Ilke tabanlı VPN güvenlik duvarına bağlanacak şekilde yapılandırır. PolicyBasedTrafficSelectors 'ı etkinleştirirseniz, VPN cihazınızın, şirket içi ağ (yerel ağ geçidi) öneklerinizin ve Azure sanal ağ öneklerine ait tüm birleşimleriyle tanımlanmış olan eşleşen trafik seçicilerini içerdiğinden emin olmanız gerekir (yerine herhangi bir-herhangi bir.
 
@@ -252,7 +252,7 @@ Aşağıdaki araçları kullanarak gecikme süresini kontrol edebilirsiniz:
 
 * WinMTR
 * Tcpizleme Oute
-* `ping`Ayrıca `psping` (Bu araçlar, RTT için iyi bir tahmin sağlayabilir, ancak her durumda kullanılamaz.)
+* `ping` ve `psping` (Bu araçlar, RTT için iyi bir tahmin sağlayabilir, ancak her durumda kullanılamaz.)
 
 ![Gecikme süresini denetle](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 

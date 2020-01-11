@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 88bc90a50fb9579e29b8b31b4be23052275b2b28
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/10/2020
+ms.openlocfilehash: e9a24daeeab906419416a3a10fda901c91d9fb33
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746843"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863232"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Öğretici: DMS kullanarak Azure SQL veritabanı yönetilen örneğine çevrimiçi olarak SQL Server geçirme
 
@@ -44,7 +44,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > En iyi geçiş deneyimi için, Microsoft, hedef veritabanıyla aynı Azure bölgesinde Azure veritabanı geçiş hizmeti örneği oluşturulmasını önerir. Verileri bölgeler veya coğrafyalar arasında taşımak, geçiş sürecini yavaşlatabilir ve hatalara neden olabilir.
 
 > [!IMPORTANT]
-> Örnek yeniden yapılandırması veya planlı bakım nedeniyle oluşan kesintiye uğrama riskini en aza indirmek için, çevrimiçi geçiş sürecinin süresini olabildiğince azaltmak önemlidir. Böyle bir olay söz konusu olduğunda, geçiş işlemi baştan başlar. Planlı bakım durumunda, geçiş işleminin yeniden başlatılması için 36 saatlik bir yetkisiz kullanım süresi vardır.
+> Örnek yeniden yapılandırması veya planlı bakım nedeniyle kesintiye uğrama riskini en aza indirmek için çevrimiçi geçiş işleminin süresini olabildiğince azaltın. Böyle bir olay söz konusu olduğunda, geçiş işlemi baştan başlar. Planlı bakım durumunda, geçiş işleminin yeniden başlatılması için 36 saatlik bir yetkisiz kullanım süresi vardır.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
@@ -70,7 +70,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
     > [!IMPORTANT]
     > Geçişin bir parçası olarak kullanılan depolama hesabı ile ilgili olarak şunlardan birini yapmanız gerekir:
     > * Tüm ağın depolama hesabına erişmesine izin vermeyi seçin.
-    > * Sanal ağ için ACL 'Leri ayarlayın. Daha fazla bilgi için [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security)makalesine bakın.
+    > * Mı alt ağında [alt ağ temsilcisini](https://docs.microsoft.com/azure/virtual-network/manage-subnet-delegation) açın ve bu alt ağa izin vermek Için depolama hesabı güvenlik duvarı kurallarını güncelleştirin.
 
 * Sanal ağ ağ güvenlik grubu kurallarınızın, Azure veritabanı geçiş hizmeti 'ne yönelik aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445, 12000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)makalesine bakın.
 * [Windows Güvenlik Duvarınızı kaynak veritabanı altyapısı erişimi](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) için yapılandırın.
@@ -208,7 +208,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
     | | |
     |--------|---------|
-    |**SMB Ağ konumu paylaşımı** | Azure veritabanı geçiş hizmeti 'nin geçiş için kullanabileceği tam veritabanı yedekleme dosyalarını ve işlem günlüğü yedekleme dosyalarını içeren yerel SMB ağ veya Azure dosya paylaşımıdır. Kaynak SQL Server örneğini çalıştıran hizmet hesabının ağ paylaşımında okuma/yazma ayrıcalıkları olmalıdır. Ağ paylaşımındaki bir sunucunun FQDN veya IP adresi değerini girin, örneğin: '\\\sunucuadi.etkialaniadi.com\yedeklemeklasoru' veya '\\\IP adresi\yedeklemeklasoru'.|
+    |**SMB Ağ konumu paylaşımı** | Azure veritabanı geçiş hizmeti 'nin geçiş için kullanabileceği tam veritabanı yedekleme dosyalarını ve işlem günlüğü yedekleme dosyalarını içeren yerel SMB ağ veya Azure dosya paylaşımıdır. Kaynak SQL Server örneğini çalıştıran hizmet hesabının ağ paylaşımında okuma/yazma ayrıcalıkları olmalıdır. Ağ paylaşımındaki bir sunucunun FQDN veya IP adresi değerini girin, örneğin: '\\\sunucuadi.etkialaniadi.com\yedeklemeklasoru' veya '\\\IP adresi\yedeklemeklasoru'. Daha iyi performans için, geçirilecek her veritabanı için ayrı bir klasör kullanılması önerilir. Veritabanı düzeyinde dosya paylaşımının yolunu, **Gelişmiş ayarlar** seçeneğini kullanarak sağlayabilirsiniz. |
     |**Kullanıcı adı** | Windows kullanıcısının yukarıda belirttiğiniz ağ paylaşımında tam denetim ayrıcalığına sahip olduğundan emin olun. Azure veritabanı geçiş hizmeti, yedekleme dosyalarını geri yükleme işlemi için Azure depolama kapsayıcısına yüklemek üzere Kullanıcı kimlik bilgisinin kimliğine bürünecektir. Azure dosya paylaşımının kullanılması durumunda Kullanıcı adı olarak AZURE \ ile önceden tamamlandı depolama hesabı adını kullanın. |
     |**Parola** | Kullanıcının parolası. Azure dosya paylaşımının kullanılması durumunda, parola olarak bir depolama hesabı anahtarı kullanın. |
     |**Azure Depolama Hesabının aboneliği** | Azure Depolama Hesabını içeren aboneliği seçin. |
@@ -216,10 +216,11 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
     ![Geçiş Ayarlarını Yapılandırma](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
+    > [!NOTE]
+    > Azure veritabanı geçiş hizmeti hata ' sistem hatası 53 ' veya ' sistem hatası 57 ' gösteriyorsa, neden Azure veritabanı geçiş hizmeti 'nin Azure dosya paylaşımında erişime neden olabilir. Bu hatalardan biriyle karşılaşırsanız lütfen [buradaki](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)yönergeleri kullanarak sanal ağdan depolama hesabına erişim izni verin.
 
-> [!NOTE]
-  > Azure veritabanı geçiş hizmeti ' sistem hatası 53 ' veya ' sistem hatası 57 ' hatasını gösteriyorsa, nedeni, Azure veritabanı geçiş hizmeti 'nin Azure dosya paylaşımının erişimine yol açabilir. Bu hatalardan biriyle karşılaşırsanız lütfen [buradaki](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)yönergeleri kullanarak sanal ağdan depolama hesabına erişim izni verin.
-
+    > [!IMPORTANT]
+    > Geri döngü denetimi işlevselliği etkinse ve kaynak SQL Server ile dosya paylaşımı aynı bilgisayarındaysa, kaynak FQDN kullanılarak paylaşım dosyalarına erişemez. Bu sorunu onarmak için [buradaki](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd)yönergeleri kullanarak geri döngü denetim işlevlerini devre dışı bırakın.
 
 2. **Kaydet**’i seçin.
 

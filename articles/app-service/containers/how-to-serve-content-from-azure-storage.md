@@ -1,67 +1,64 @@
 ---
-title: Linux 'ta özel depolama kapsayıcısı iliştirme
+title: Azure depolama 'dan Linux kapsayıcılarına içerik sunma
 description: Azure App Service ' de Linux kapsayıcınıza özel ağ paylaşımının nasıl ekleneceğini öğrenin. Uygulamalar arasında dosya paylaşma, statik içeriği uzaktan yönetme ve yerel olarak erişme, vb.
 author: msangapu-msft
 ms.topic: article
-ms.date: 2/04/2019
+ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 00c60edeefa5fd8d1304aa5fc301a3b0304f5ca3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 0a1e811787a43be76f94b13a6ec9886510c47d1d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671781"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866968"
 ---
-# <a name="attach-azure-storage-containers-to-linux-containers"></a>Linux kapsayıcılarına Azure Storage kapsayıcıları iliştirme
+# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux üzerinde App Service Azure Storage 'tan içerik sunma
 
-Bu kılavuzda, [Azure Storage](/azure/storage/common/storage-introduction)kullanılarak Linux üzerinde App Service ağ paylaşımlarının nasıl ekleneceği gösterilmektedir. Avantajlar, güvenli içerik, içerik taşınabilirlik, kalıcı depolama, birden çok uygulamaya erişim ve birden fazla aktarım yöntemi içerir.
+Bu kılavuzda, Linux üzerinde App Service Azure Storage 'ın nasıl ekleneceği gösterilmektedir. Avantajlar, güvenli içerik, içerik taşınabilirlik, kalıcı depolama, birden çok uygulamaya erişim ve birden fazla aktarım yöntemi içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
 
-- Mevcut bir Web uygulaması (Linux veya Kapsayıcılar için Web App üzerinde App Service).
+> [!IMPORTANT]
+> Linux üzerinde App Service Azure Storage bir **Önizleme** özelliğidir. Bu özellik **Üretim senaryolarında desteklenmez**.
+>
+
+## <a name="prerequisites"></a>Ön koşullar
+
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 veya üzeri).
+- [Linux uygulamasında](https://docs.microsoft.com/azure/app-service/containers/)mevcut bir App Service.
+- Bir [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli)
+- Bir [Azure dosya paylaşma ve dizini](https://docs.microsoft.com/azure/storage/common/storage-azure-cli#create-and-manage-file-shares).
 
-## <a name="create-azure-storage"></a>Azure depolama oluşturma
 
-> [!NOTE]
-> Azure depolama, varsayılan olmayan depolama ve Web uygulamasına dahil edilmeyen ayrı olarak faturalandırılır.
+## <a name="limitations-of-azure-storage-with-app-service"></a>App Service ile Azure depolama 'nın sınırlamaları
+
+- App Service ile Azure depolama, Linux ve Kapsayıcılar için Web App App Service için **Önizleme** aşamasındadır. **Üretim senaryolarında**bu **desteklenmez** .
+- App Service ile Azure depolama, **Azure dosya kapsayıcıları** (okuma/yazma) ve **Azure Blob kapsayıcıları** (salt okuma) bağlamayı destekler
+- App Service ile Azure depolama, altyapı sınırlamaları nedeniyle **depolama güvenlik duvarı** yapılandırmasını kullanmayı **desteklemez** .
+- App Service ile Azure depolama, uygulama başına **en fazla beş** bağlama noktası belirtmenizi sağlar.
+- Azure depolama, Web uygulamanıza **dahil değildir** ve ayrı olarak faturalandırılır. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage)hakkında daha fazla bilgi edinin.
+
+> [!WARNING]
+> Azure Blob depolama kullanan App Service yapılandırma, Şubat 2020 ' de salt okunabilir hale gelir. [Daha fazla bilgi](https://github.com/Azure/app-service-linux-docs/blob/master/BringYourOwnStorage/mounting_azure_blob.md)
 >
-> Kendi depolama alanınızı getir, altyapı sınırlamaları nedeniyle depolama güvenlik duvarı yapılandırmasını kullanmayı desteklemez.
->
 
-Azure [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli)oluşturun.
+## <a name="configure-your-app-with-azure-storage"></a>Uygulamanızı Azure Storage ile yapılandırma
 
-```azurecli
-#Create Storage Account
-az storage account create --name <storage_account_name> --resource-group myResourceGroup
+[Azure depolama hesabınızı, dosya paylaşımınızı ve dizininizi](#prerequisites)oluşturduktan sonra uygulamanızı Azure Storage ile yapılandırabilirsiniz.
 
-#Create Storage Container
-az storage container create --name <storage_container_name> --account-name <storage_account_name>
-```
+Bir depolama hesabını App Service uygulamanızdaki bir dizine bağlamak için [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) komutunu kullanın. Depolama türü AzureBlob veya AzureFiles olabilir. Bu örnekte AzureFiles kullanılır.
 
-## <a name="upload-files-to-azure-storage"></a>Azure depolama 'ya dosya yükleme
-
-Yerel bir dizini depolama hesabına yüklemek için aşağıdaki örnekte olduğu gibi [`az storage blob upload-batch`](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload-batch) komutunu kullanın:
-
-```azurecli
-az storage blob upload-batch -d <full_path_to_local_directory> --account-name <storage_account_name> --account-key "<access_key>" -s <source_location_name>
-```
-
-## <a name="link-storage-to-your-web-app-preview"></a>Depolama alanını Web uygulamanıza bağlama (Önizleme)
 
 > [!CAUTION]
-> Bir Web uygulamasında var olan bir dizinin bir depolama hesabına bağlanması, dizin içeriğini silecektir. Mevcut bir uygulama için dosyaları geçiriyorsanız, başlamadan önce uygulamanızın ve içeriğinin yedeğini alın.
+> Web uygulamanızda bağlama yolu olarak belirtilen dizin boş olmalıdır. Dış bağlama eklendiğinde, bu dizinde depolanan içerikler silinir. Mevcut bir uygulama için dosyaları geçiriyorsanız, başlamadan önce uygulamanızın ve içeriğinin yedeğini alın.
 >
 
-Bir depolama hesabını App Service uygulamanızdaki bir dizine bağlamak için [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) komutunu kullanın. Depolama türü AzureBlob veya AzureFiles olabilir. Bu kapsayıcı için AzureBlob kullanırsınız.
-
 ```azurecli
-az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureBlob --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory>
+az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureFiles --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory>
 ```
 
 Bunu, bir depolama hesabına bağlanmasını istediğiniz diğer dizinler için yapmanız gerekir.
 
-## <a name="verify"></a>Doğrulama
+## <a name="verify-azure-storage-link-to-the-web-app"></a>Web uygulamasına Azure Storage bağlantısını doğrulama
 
 Bir depolama kapsayıcısı bir Web uygulamasına bağlandıktan sonra, aşağıdaki komutu çalıştırarak bunu doğrulayabilirsiniz:
 
@@ -69,11 +66,11 @@ Bir depolama kapsayıcısı bir Web uygulamasına bağlandıktan sonra, aşağı
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
 ```
 
-## <a name="use-custom-storage-in-docker-compose"></a>Docker Compose özel depolama kullan
+## <a name="use-azure-storage-in-docker-compose"></a>Docker Compose 'de Azure Storage 'ı kullanma
 
 Azure depolama, özel kimlik kullanarak çok Kapsayıcılı uygulamalarla bağlanabilir. Özel kimlik adını görüntülemek için [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)çalıştırın.
 
-*Docker-Compose. yıml* dosyanızda `volumes` seçeneğini `custom-id`eşleyin. Örnek:
+*Docker-Compose. yıml* dosyanızda `volumes` seçeneğini `custom-id`eşleyin. Örneğin:
 
 ```yaml
 wordpress:
@@ -85,3 +82,4 @@ wordpress:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure App Service Web uygulamalarını yapılandırın](../configure-common.md).
+

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: c0413e4b9b0995c6712d30bbc22550d0ae10183b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562196"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863249"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Azure Digital Twins'e genel bakış
 
@@ -95,7 +95,7 @@ Azure Digital Twins, verileri fiziksel dünyayla eşitlemek için Azure IoT Hub'
 
 [Azure dijital TWINS ![Azure IoT Hub üzerinde oluşturulmuş bir hizmettir](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-IoT hakkında daha fazla bilgi için bkz. [Azure IoT teknolojileri ve çözümleri](../iot-fundamentals/iot-services-and-technologies.md).
+IoT hakkında daha fazla bilgi için [Azure IoT teknolojilerini ve çözümlerini](../iot-fundamentals/iot-services-and-technologies.md)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
