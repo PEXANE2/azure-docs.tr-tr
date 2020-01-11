@@ -98,6 +98,8 @@
               href: concepts-data-access-and-security-threat-protection.md
             - name: Azure AD kimlik doğrulaması
               href: concepts-aad-authentication.md
+            - name: Özel Bağlantı
+              href: concepts-data-access-and-security-private-link.md
         - name: İş sürekliliği
           items:
             - name: İş sürekliliğine giriş
@@ -251,6 +253,12 @@
               href: howto-manage-vnet-using-portal.md
             - name: Azure CLI
               href: howto-manage-vnet-using-cli.md
+        - name: Özel Bağlantı
+          items:
+            - name: Azure portal
+              href: howto-configure-privatelink-portal.md
+            - name: Azure CLI
+              href: howto-configure-privatelink-cli.md
         - name: Sunucuyu yeniden başlatma
           items:
             - name: Azure portal

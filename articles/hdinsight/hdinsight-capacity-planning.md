@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9080a0f327aae50a87b5e69ec157a46181a38a65
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640950"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887249"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight kümeleri için kapasite planlaması
 
@@ -123,7 +123,7 @@ Bir kota artışı istemeniz gerekiyorsa, aşağıdaki adımları uygulayın:
 > [!NOTE]  
 > Özel bir bölgedeki HDInsight Core kotasını artırmanız gerekiyorsa, [bir beyaz liste isteği gönderebilirsiniz](https://aka.ms/canaryintwhitelist).
 
-[Bir kota artışı istemek için desteğe başvurabilirsiniz](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+[Bir kota artışı istemek için desteğe başvurabilirsiniz](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
 Ancak, bazı bazı kota limitleri vardır, örneğin tek bir Azure aboneliği en fazla 10.000 çekirdeğe sahip olabilir. Bu limitlere ilişkin ayrıntılar için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
