@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3aee53b823af5929ce48045d1addcbc4881b2825
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638281"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894604"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Sanal Ağ nedir?
 
@@ -79,7 +79,7 @@ Azure varsayılan olarak alt ağlar, bağlı sanal ağlar, şirket içi ağlar v
 
 ## <a name="azure-vnet-limits"></a>Azure VNet sınırları
 
-Dağıtabileceğiniz Azure kaynakları sayısında belirli sınırlar vardır. Azure ağ sınırlarının çoğu en büyük değer olan değerlerdir. Ancak, [VNET sınırları sayfasında](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)belirtilen [bazı ağ sınırlarını artırabilirsiniz](../azure-supportability/networking-quota-requests.md) . 
+Dağıtabileceğiniz Azure kaynakları sayısında belirli sınırlar vardır. Azure ağ sınırlarının çoğu en büyük değer olan değerlerdir. Ancak, [VNET sınırları sayfasında](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)belirtilen [bazı ağ sınırlarını artırabilirsiniz](../azure-portal/supportability/networking-quota-requests.md) . 
 
 ## <a name="pricing"></a>Fiyatlandırma
 

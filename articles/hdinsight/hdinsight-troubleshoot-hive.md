@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 9169bd9a63666238e9d6b97d86bf1e9e10312c1b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076518"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895229"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak Apache Hive sorunlarını giderme
 
@@ -39,7 +39,7 @@ Apache ambarı 'nda Apache Hive yükleri ile çalışırken önde gelen sorular 
     hive -f alltables.sql
     ```
 
-Çözüm adımlarında bulunan kod, yeni kümedeki veri yollarının Eski kümedeki veri yollarıyla aynı olduğunu varsayar. Veri yolları farklıysa, oluşturulan `alltables.sql` dosyayı tüm değişiklikleri yansıtacak şekilde el ile düzenleyebilirsiniz.
+Çözüm adımlarında bulunan kod, yeni kümedeki veri yollarının Eski kümedeki veri yollarıyla aynı olduğunu varsayar. Veri yolları farklıysa, oluşturulan `alltables.sql` dosyasını değişiklikleri yansıtacak şekilde el ile düzenleyebilirsiniz.
 
 ### <a name="additional-reading"></a>Ek okuma
 
@@ -120,17 +120,17 @@ Apache ambarı 'nda Apache Hive yükleri ile çalışırken önde gelen sorular 
    İlk bağımsız değişken olarak örnek bir program sağlamanız gerekir.
 
    Geçerli program adları şunları içerir:
-    - **Containerreuseanalyzer**: Bir DAG 'de kapsayıcı yeniden kullanım ayrıntılarını yazdırma
-    - **Kritikyol**: Bir DAG 'nin kritik yolunu bulma
-    - **LocalityAnalyzer**: Bir DAG 'de yerleşim ayrıntılarını yazdırma
-    - **Karıştırılmış Letimeanalyzer**: Bir DAG 'de karıştırma süresi ayrıntılarını çözümleme
-    - **SkewAnalyzer**: Bir DAG 'de eğme ayrıntılarını çözümleme
-    - **Yavaşlatma Nodeanalyzer**: Bir DAG 'de düğüm ayrıntılarını yazdırma
-    - **Yavaştaskidentifier**: Bir DAG 'de yavaş görev ayrıntılarını yazdırma
-    - **SlowestVertexAnalyzer**: Bir DAG 'da en yavaş köşe ayrıntılarını Yazdır
-    - **SpillAnalyzer**: Bir DAG 'de taşma ayrıntılarını yazdırma
-    - **TaskConcurrencyAnalyzer**: Görev eşzamanlılık ayrıntılarını bir DAG 'da yazdırma
-    - **Vertexlevelkritikpathanalyzer**: Bir DAG 'de köşe düzeyinde kritik yolu bulma
+    - **Containerreuseanalyzer**: bir dag 'de kapsayıcı yeniden kullanım ayrıntılarını yazdırma
+    - **Kritikpath**: bir dag 'nin kritik yolunu bulma
+    - **LocalityAnalyzer**: konum AYRıNTıLARıNı bir dag 'da yazdırma
+    - **Karıştırılmış Letimeanalyzer**: bir dag 'de karıştırma süresi ayrıntılarını çözümleme
+    - **SkewAnalyzer**: bir dag 'de eğme ayrıntılarını çözümleme
+    - **Yavaşlatma Nodeanalyzer**: bir dag 'de düğüm ayrıntılarını yazdırma
+    - **Yavaştaskidentifier**: bir dag 'de yavaş görev ayrıntılarını yazdırma
+    - **SlowestVertexAnalyzer**: en yavaş köşe AYRıNTıLARıNı bir dag 'da Yazdır
+    - **SpillAnalyzer**: bir dag 'de taşma ayrıntılarını yazdırma
+    - **TaskConcurrencyAnalyzer**: görev eşzamanlılık AYRıNTıLARıNı bir dag 'da yazdırma
+    - **Vertexlevelcriticalhandle Pathanalyzer**: bir dag 'de köşe düzeyinde kritik yolu bulma
 
 ### <a name="additional-reading"></a>Ek okuma
 
@@ -167,6 +167,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 - Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-- [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+- [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

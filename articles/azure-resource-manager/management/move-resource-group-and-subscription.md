@@ -3,12 +3,12 @@ title: Kaynakları yeni bir aboneliğe veya kaynak grubuna taşıma
 description: Kaynakları yeni kaynak grubuna veya aboneliğe taşıma için Azure Resource Manager'ı kullanın.
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 60c2046b1bbdc92c9b63c748c7d758659abfbe46
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: c91081ee25a3b98fa25b8b9b9047da186b22181b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659498"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891348"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
 
@@ -33,7 +33,7 @@ Bir kaynağı taşımadan önce yapmanız gereken bazı önemli adımlar vardır
    * [Kurtarma Hizmetleri taşıma Kılavuzu](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Sanal makineler taşıma Kılavuzu](./move-limitations/virtual-machines-move-limitations.md)
 
-1. Kaynak ve hedef abonelikler etkin olmalıdır. Devre dışı bırakılmış bir hesabı etkinleştirirken sorun yaşıyorsanız, [bir Azure destek isteği oluşturun](../../azure-supportability/how-to-create-azure-support-request.md). Seçin **abonelik yönetimi** sorun türü için.
+1. Kaynak ve hedef abonelikler etkin olmalıdır. Devre dışı bırakılmış bir hesabı etkinleştirirken sorun yaşıyorsanız, [bir Azure destek isteği oluşturun](../../azure-portal/supportability/how-to-create-azure-support-request.md). Seçin **abonelik yönetimi** sorun türü için.
 
 1. Kaynak ve hedef abonelikler aynı içinde bulunmalıdır [Azure Active Directory kiracısı](../../active-directory/develop/quickstart-create-new-tenant.md). Her iki aboneliğin aynı Kiracı Kimliğine sahip denetlemek için Azure PowerShell veya Azure CLI'yı kullanın.
 

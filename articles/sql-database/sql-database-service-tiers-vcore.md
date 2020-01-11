@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: d57f1e87c503a86a522fdb3004b021fbcb5c6ff1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c01e5c508644214c078dfc42ae8c77964933a277
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351390"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896003"
 ---
 # <a name="vcore-model-overview"></a>Sanal çekirdek modeline genel bakış
 
@@ -32,8 +32,8 @@ Sanal çekirdek modelindeki hizmet katmanı seçenekleri Genel Amaçlı, İş A�
 ||**Genel amaçlı**|**İş açısından kritik**|**Hiper ölçekli**|
 |---|---|---|---|
 |Şunlar için en iyisidir:|Birçok iş yükü. Bütçeye dayalı, dengeli ve ölçeklenebilir işlem ve depolama seçenekleri sunar. |, Birkaç yalıtılmış çoğaltma kullanarak ve en yüksek g/ç performansı sunan iş uygulamalarına en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.  , Birden fazla yalıtılmış veritabanı çoğaltmasının yapılandırılmasına izin vererek daha yüksek esnekliği hatalara olanak sağlar. |
-|Depolama|Uzak depolamayı kullanır.<br/>**Tek veritabanı ve elastik havuz sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Sunucusuz işlem**:<br/>5 GB-3 TB<br/>**Yönetilen örnek**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**Tek veritabanı ve elastik havuz sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Yönetilen örnek**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
-|G/ç verimlilik (yaklaşık)|**Tek veritabanı ve elastik havuz**: 500 IOPS, vCore başına en fazla 40000 IOPS.<br/>**Yönetilen örnek**: [dosyanın boyutuna](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)bağlıdır.|en fazla 320.000 IOPS 'ye kadar vCore başına 5000 ıOPS|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin IOPS iş yüküne bağlı olacaktır.|
+|Depolama|Uzak depolamayı kullanır.<br/>**Tek veritabanları ve elastik havuzlar tarafından sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Sunucusuz işlem**:<br/>5 GB-3 TB<br/>**Yönetilen örnek**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**Tek veritabanları ve elastik havuzlar tarafından sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Yönetilen örnek**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
+|IOPS ve aktarım hızı (yaklaşık)|**Tek veritabanları ve elastik havuzlar**: [tek veritabanları](../sql-database/sql-database-vcore-resource-limits-single-databases.md) ve [elastik havuzlar](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)için kaynak sınırlarına bakın.<br/>**Yönetilen örnek**: bkz. [Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics).|[Tek veritabanları](../sql-database/sql-database-vcore-resource-limits-single-databases.md) ve [elastik havuzlar](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)için kaynak sınırlarına bakın.|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS ve aktarım hızı iş yüküne bağlıdır.|
 |Erişilebilirlik|1 çoğaltma, okuma ölçeğinde çoğaltmalar yok|3 çoğaltma, 1 [okuma ölçeği çoğaltma](sql-database-read-scale-out.md),<br/>bölge yedekli yüksek kullanılabilirlik (HA)|1 okuma-yazma çoğaltması, artı 0-4 [okuma ölçekli çoğaltmalar](sql-database-read-scale-out.md)|
 |Yedeklemeler|[Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 gün (varsayılan olarak 7 gün)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 gün (varsayılan olarak 7 gün)|Azure uzak depolama 'da anlık görüntü tabanlı yedeklemeler. Geri yükleme bu anlık görüntüleri hızlı kurtarma için kullanır. Yedeklemeler anında gerçekleşir ve işlem g/ç performansını etkilemez. Geri yükleme işlemleri hızlıdır ve veri boyutu (saatler veya günler yerine dakikalar içinde).|
 |Bellek içi|Desteklenmiyor|Desteklenen|Desteklenmiyor|

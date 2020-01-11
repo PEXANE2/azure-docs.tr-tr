@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: c4177e4310be3e03b64c260d88239de71f70c17a
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720149"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894893"
 ---
 # <a name="what-is-automated-machine-learning"></a>Nedir, makine öğrenimi otomatik?
 
@@ -95,7 +95,7 @@ Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek i�
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Gelişmiş ön işleme: isteğe bağlı korleştirme
 
-Eksik değerler imputation, kodlama ve dönüşümler gibi ek gelişmiş ön işleme ve korleştirme de mevcuttur. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#preprocess). Bu ayarı şu şekilde etkinleştirin:
+Veri guardı, kodlama ve dönüşümler gibi ek gelişmiş ön işleme ve korkleştirme de mevcuttur. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#preprocess). Bu ayarı şu şekilde etkinleştirin:
 
 + Azure Machine Learning Studio: **yapılandırma çalıştırması** bölümünde [Bu adımlarla](how-to-create-portal-experiments.md) **Görünüm özellik ayarlarını** seçme.
 
@@ -161,7 +161,7 @@ Daha fazla bilgi edinin ve [zaman serisi tahmini için otomatik makine öğrenim
 
 * tatil algılama ve korleştirme
 * zaman serisi ve DNN öğrenenler (Auto-ARıMA, Prophet, Foresertcn)
-* Gruplandırma yoluyla birçok model desteği
+* Gruplandırma yoluyla birçok model desteklenir
 * çıkış sonrası çapraz doğrulama
 * yapılandırılabilir lags
 * sıralı pencere toplama özellikleri

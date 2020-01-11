@@ -3,12 +3,12 @@ title: Azure Işlevlerinde tüketim planı maliyetlerini tahmin etme
 description: İşlev uygulamanızı Azure 'da bir tüketim planında çalıştırırken tabi olabilecek maliyetleri daha iyi tahmin etme hakkında bilgi edinin.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613067"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890312"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Tüketim planı maliyetlerini tahmin etme
 
@@ -22,7 +22,7 @@ Azure Işlevleri 'nde çalışan bir uygulama için şu anda üç tür barındı
 
 İşlev performansınızı ve maliyet gereksinimlerinizi en iyi şekilde destekleyen planı seçtiniz. Daha fazla bilgi için bkz. [Azure işlevleri ölçeklendirme ve barındırma](functions-scale.md).
 
-Bu makale, değişken maliyetleriyle sonuçlandığından yalnızca tüketim planıyla ilgilidir. 
+Bu makale, değişken maliyetleriyle sonuçlandığından yalnızca tüketim planıyla ilgilidir. Bu makale, [Tüketim planı maliyet faturalama SSS](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ) makalesinin yerini alır.
 
 Dayanıklı İşlevler, bir tüketim planında da çalıştırılabilir. Dayanıklı İşlevler kullanırken maliyet konuları hakkında daha fazla bilgi için, bkz. [dayanıklı işlevler faturalandırma](./durable/durable-functions-billing.md).
 

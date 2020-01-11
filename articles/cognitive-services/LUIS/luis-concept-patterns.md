@@ -1,7 +1,7 @@
 ---
 title: Desenler yardım tahmini-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bir desen çok daha fazla konuşma sağlamadan bir amaç için daha yüksek doğruluk derecesi elde etmek sağlar.
+description: Düzenler, bir amaç için normalde gerekenden çok daha az konuşma sağlayarak doğruluk oranını artırmanıza olanak tanır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 32b9b42ee0962353405616e501de95b19e40ea1a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6c1b548de25369c162b4a08dfa20fce62c17f99f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280847"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890280"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Desenlerini tahmin doğruluğunu artırmak
-Desenler, çeşitli konuşma çok benzer olduğunda doğruluğunu artırmak için tasarlanmıştır.  Bir desen çok daha fazla konuşma sağlamadan bir amaç için daha yüksek doğruluk derecesi elde etmek sağlar. 
+Desenler, çeşitli konuşma çok benzer olduğunda doğruluğunu artırmak için tasarlanmıştır.  Düzenler, bir amaç için normalde gerekenden çok daha az konuşma sağlayarak doğruluk oranını artırmanıza olanak tanır. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Düşük hedefi güvenle desenleri çözün
 Kuruluş şeması ile ilgili olarak çalışan bir rapor bir insan kaynakları uygulamasında göz önünde bulundurun. Bir çalışanın adı ve ilişki LUIS çalışanlar ilgili döndürür. Tom, çalışanın sahip bir yönetici adı Alice ve adlı Astları ekibi dikkate alın: Michael Rebecca ve Carl.
@@ -50,7 +50,7 @@ Bir model öncelikle amaç ve rollerin tahminine yardımcı olmak için tasarlan
 Birden çok kuralı tek bir düzende daraltarak, geliştirilmiş varlık tahminini görmeyi beklememeniz gerekmez. Basit varlıkların tetiklenmesi için, bu tür varlıkları eklemeniz veya liste varlıklarını kullanmanız gerekir, ancak sizin düzeniniz tetikleymeyecektir.
 
 ## <a name="patterns-use-entity-roles"></a>Varlık rolleri desenleri kullanın
-Bir Desendeki iki veya daha fazla varlık bağlamsal olarak ilişkiliyse, desenler hakkında bağlamsal bilgileri ayıklamak için, desenler varlık [rollerini](luis-concept-roles.md) kullanır.  
+İki veya daha fazla varlık desenindeki bağlamsal ilişkiliyse, varlık desenleri kullanın [rolleri](luis-concept-roles.md) varlıklarla ilgili bağlamsal bilgi ayıklamak için.  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Desenler olmadan ve tahmin puanları
 Yeterli örnek konuşma göz önünde bulundurulduğunda, LUIS tahmin olasılık desensiz imkanımız olacaktır. Desen çok konuşma sağlamaya gerek kalmadan güvenilirlik puanı artırın.  
@@ -62,9 +62,9 @@ Bir düzeni desen içinde varlıkları ilk algılama ve ardından bir kelimeleri
 Her bir amaç için bir desen olduğu sürece, örnekleri olmayan amaçlar içeren bir uygulama oluşturabilirsiniz. Tek bir uygulama için, bu, örnek bir varlık gerektirdiğinden, bu model makine tarafından öğrenilen varlıklar içermemelidir. 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
-[En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
+Bilgi [en iyi uygulamalar](luis-concept-best-practices.md).
 
-## <a name="pattern-syntax"></a>Desen sözdizimi
+## <a name="pattern-syntax"></a>Desen söz dizimi
 
 [Model sözdizimi başvurusundan](reference-pattern-syntax.md)bir model sözdizimi öğrenin. 
 
@@ -73,8 +73,8 @@ Her bir amaç için bir desen olduğu sürece, örnekleri olmayan amaçlar içer
 Desenler hakkında daha fazla bilgi edinin:
 
 * [Desenler ekleme](luis-how-to-model-intent-pattern.md)
-* [Nasıl eklenir. herhangi bir varlık](luis-how-to-add-entities.md##add-a-patternany-entity)
+* [Nasıl eklenir. herhangi bir varlık](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [Desenler sözdizimi](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]
-> [Bu öğreticide desenleri uygulamayı öğrenin](luis-tutorial-pattern.md)
+> [Bu öğreticide desenlerini uygulama hakkında bilgi edinin](luis-tutorial-pattern.md)

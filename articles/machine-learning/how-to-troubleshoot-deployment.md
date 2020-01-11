@@ -11,34 +11,28 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9361f1ca998d32a998794a7e95220ee5c7ac623
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: bf86826d77c690b60c7b091d6250a85fffd21fc0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834776"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896330"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Kubernetes hizmeti ve Azure Container Instances dağıtımı Azure Machine Learning sorunlarını giderme
 
 Azure Machine Learning kullanarak Azure Container Instances (ACI) ve Azure Kubernetes hizmeti (AKS) ile genel Docker dağıtım hatalarını çözmenin veya çözme hakkında bilgi edinin.
 
-Azure Machine Learning bir modeli dağıttığınızda, sistem bir dizi görevi gerçekleştirir. Dağıtım görevleri şunlardır:
+Azure Machine Learning bir modeli dağıttığınızda, sistem bir dizi görevi gerçekleştirir.
+
+Model dağıtımı için önerilen ve en güncel yaklaşım, bir [ortam](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) nesnesini giriş parametresi olarak kullanan [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 'sidir. Bu durumda hizmetimiz dağıtım aşaması sırasında sizin için bir temel Docker görüntüsü oluşturacak ve gerekli modelleri tek bir çağrıda bağlamamız gerekir. Temel dağıtım görevleri şunlardır:
 
 1. Çalışma alanı model kayıt defterinde modeli kaydedin.
 
-2. Bir Docker görüntüsü oluşturun dahil olmak üzere:
-    1. Kayıt defterinden kayıtlı modeli indirin. 
-    2. Bir dockerfile ortam yaml dosyasında belirttiğiniz bağımlılıkları temel bir Python ortamı oluşturun.
-    3. Model dosyalarınızı ve sağladığınız Puanlama betiği dockerfile'da ekleyin.
-    4. Dockerfile'ı kullanarak yeni bir Docker görüntüsü oluşturun.
-    5. Çalışma alanı ile ilişkili Azure Container Registry ile Docker görüntü kaydedin.
+2. Çıkarım yapılandırmasını tanımla:
+    1. Ortam YAML dosyasında belirttiğiniz bağımlılıklara göre bir [ortam](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) nesnesi oluşturun veya temin ortamlarımızın birini kullanın.
+    2. Ortama ve Puanlama betiğine göre bir çıkarım yapılandırması (ınenceconfig nesnesi) oluşturun.
 
-    > [!IMPORTANT]
-    > Kodunuza bağlı olarak, görüntü oluşturma, sizin giriş bilgileriniz olmadan otomatik olarak gerçekleşir.
-
-3. Docker görüntüsünü Azure Container örneği (ACI) hizmetine veya Azure Kubernetes Service (AKS) dağıtın.
-
-4. Yeni bir kapsayıcı (veya kapsayıcıları) ACI veya AKS başlatın. 
+3. Modeli Azure Container Instance (ACI) hizmetine veya Azure Kubernetes Service 'e (AKS) dağıtın.
 
 Bu işlem hakkında daha fazla bilgi [Model Yönetimi](concept-model-management-and-deployment.md) giriş.
 
@@ -56,11 +50,14 @@ Bu işlem hakkında daha fazla bilgi [Model Yönetimi](concept-model-management-
 
 Herhangi bir sorun çalıştırırsanız, yapılacak ilk şey dağıtım görevi bölmektir (önceki açıklanmıştır) sorunu ayırt etmek için tek tek adımlara.
 
-Bu işlevlerin her ikisi de tek bir eylem olarak bahsedilen adımları gerçekleştirirken, [Web hizmeti. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none--overwrite-false-) API veya [WebService. deploy_from_model (](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none--overwrite-false-) Genellikle bu API 'Ler kullanışlıdır, ancak bunları aşağıdaki API çağrılarına değiştirerek sorun gidermeye yönelik adımları kesmeniz yardımcı olur.
+[Model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 'si aracılığıyla bir [ortam](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) nesnesi ile bir giriş parametresi olarak yeni/önerilen dağıtım yöntemi kullandığınızı varsayarak, kodunuz üç ana adıma ayrılabilir:
 
-1. Modeli kaydedin. Bazı örnek kodlar aşağıda verilmiştir:
+1. Modeli kaydedin. Örnek kod aşağıda verilmiştir:
 
     ```python
+    from azureml.core.model import Model
+
+
     # register a model out of a run record
     model = best_run.register_model(model_name='my_best_model', model_path='outputs/my_model.pkl')
 
@@ -68,99 +65,35 @@ Bu işlevlerin her ikisi de tek bir eylem olarak bahsedilen adımları gerçekle
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. Görüntü oluşturun. Bazı örnek kodlar aşağıda verilmiştir:
+2. Dağıtım için çıkarım yapılandırmasını tanımla:
 
     ```python
-    # configure the image
-    image_config = ContainerImage.image_configuration(runtime="python",
-                                                      entry_script="score.py",
-                                                      conda_file="myenv.yml")
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    # create the image
-    image = Image.create(name='myimg', models=[model], image_config=image_config, workspace=ws)
 
-    # wait for image creation to finish
-    image.wait_for_creation(show_output=True)
+    # create inference configuration based on the requirements defined in the YAML
+    myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     ```
 
-3. Görüntü hizmeti olarak dağıtalım. Bazı örnek kodlar aşağıda verilmiştir:
+3. Önceki adımda oluşturulan çıkarım yapılandırmasını kullanarak modeli dağıtın:
 
     ```python
-    # configure an ACI-based deployment
-    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    from azureml.core.webservice import AciWebservice
 
-    aci_service = Webservice.deploy_from_image(deployment_config=aci_config, 
-                                               image=image, 
-                                               name='mysvc', 
-                                               workspace=ws)
-    aci_service.wait_for_deployment(show_output=True)    
+
+    # deploy the model
+    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    aci_service = Model.deploy(workspace=ws,
+                           name='my-service',
+                           models=[model],
+                           inference_config=inference_config,
+                           deployment_config=aci_config)
+    aci_service.wait_for_deployment(show_output=True)
     ```
 
 Tek tek görevler dağıtım işlemine aşağı kıran sonra en yaygın hataların bazıları göz atabilirsiniz.
-
-## <a name="image-building-fails"></a>Görüntü oluşturma başarısız
-
-Docker görüntüsü derlenemez, [Image. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) veya [Service. wait_for_deployment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) çağrısı bazı ipuçları sunabileceği bazı hata iletileriyle başarısız olur. Görüntü oluşturma günlüğü hataları ile ilgili daha fazla ayrıntı bulabilirsiniz. Aşağıda bazı örnek kodlar görüntü derleme günlük URI'si bulma göstermez.
-
-```python
-# if you already have the image object handy
-print(image.image_build_log_uri)
-
-# if you only know the name of the image (note there might be multiple images with the same name but different version number)
-print(ws.images['myimg'].image_build_log_uri)
-
-# list logs for all images in the workspace
-for name, img in ws.images.items():
-    print(img.name, img.version, img.image_build_log_uri)
-```
-
-Görüntü günlük URI'si, Azure blob Depolama'nızda depolanan bir günlük dosyasına işaret eden bir SAS URL'si ' dir. Yalnızca kopyalama ve yapıştırma URI ve bir tarayıcı penceresi içinde indirin ve günlük dosyasını görüntüleyin.
-
-### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault erişim ilkesi ve Azure Resource Manager şablonları
-
-Görüntü derlemesi, Azure Key Vault erişim ilkesiyle ilgili bir sorun nedeniyle da başarısız olabilir. Bu durum, çalışma alanını ve ilişkili kaynakları (Azure Key Vault dahil), birden çok kez oluşturmak için bir Azure Resource Manager şablonu kullandığınızda meydana gelebilir. Örneğin, şablonu bir sürekli tümleştirme ve dağıtım işlem hattının bir parçası ile aynı parametrelerle birden çok kez kullanmak.
-
-Şablonlar aracılığıyla kaynak oluşturma işlemlerinin çoğu ıdempotent, ancak Key Vault şablon her kullanıldığında erişim ilkelerini temizler. Erişim ilkelerinin temizlenmesi, onu kullanan var olan bir çalışma alanının Key Vault erişimini keser. Yeni görüntü oluşturmaya çalıştığınızda bu durum hatalara neden olur. Aşağıda, alacağınız hataların örnekleri verilmiştir:
-
-__Portal__:
-```text
-Create image "myimage": An internal server error occurred. Please try again. If the problem persists, contact support.
-```
-
-__SDK__:
-```python
-image = ContainerImage.create(name = "myimage", models = [model], image_config = image_config, workspace = ws)
-Creating image
-Traceback (most recent call last):
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 341, in create
-    resp.raise_for_status()
-  File "C:\Python37\lib\site-packages\requests\models.py", line 940, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://eastus.modelmanagement.azureml.net/api/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>/images?api-version=2018-11-19
-
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 346, in create
-    'Content: {}'.format(resp.status_code, resp.headers, resp.content))
-azureml.exceptions._azureml_exception.WebserviceException: Received bad response from Model Management Service:
-Response Code: 500
-Headers: {'Date': 'Tue, 26 Feb 2019 17:47:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'api-supported-versions': '2018-03-01-preview, 2018-11-19', 'x-ms-client-request-id': '3cdcf791f1214b9cbac93076ebfb5167', 'x-ms-client-session-id': '', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains; preload'}
-Content: b'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}'
-```
-
-__CLI__:
-```text
-ERROR: {'Azure-cli-ml Version': None, 'Error': WebserviceException('Received bad response from Model Management Service:\nResponse Code: 500\nHeaders: {\'Date\': \'Tue, 26 Feb 2019 17:34:05
-GMT\', \'Content-Type\': \'application/json\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'api-supported-versions\': \'2018-03-01-preview, 2018-11-19\', \'x-ms-client-request-id\':
-\'bc89430916164412abe3d82acb1d1109\', \'x-ms-client-session-id\': \'\', \'Strict-Transport-Security\': \'max-age=15724800; includeSubDomains; preload\'}\nContent:
-b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}\'',)}
-```
-
-Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
-
-* Aynı parametreler için şablonu birden çok kez dağıtmayın. Ya da yeniden oluşturmak için şablonu kullanmadan önce mevcut kaynakları silin.
-* Key Vault erişim ilkelerini inceleyin ve sonra şablonun `accessPolicies` özelliğini ayarlamak için bu ilkeleri kullanın.
-* Key Vault kaynağının zaten var olup olmadığını denetleyin. Varsa, şablon aracılığıyla yeniden oluşturmayın. Örneğin, zaten varsa Key Vault kaynağı oluşturmayı devre dışı bırakmanızı sağlayan bir parametre ekleyin.
 
 ## <a name="debug-locally"></a>Yerel olarak hata ayıkla
 
@@ -169,17 +102,17 @@ Bir modeli ACG veya AKS 'e dağıtmaya yönelik sorunlarla karşılaşırsanız,
 > [!WARNING]
 > Yerel Web hizmeti dağıtımları, üretim senaryolarında desteklenmez.
 
-Yerel olarak dağıtmak için kodunuzu bir dağıtım yapılandırması oluşturmak üzere `LocalWebservice.deploy_configuration()` kullanmak üzere değiştirin. Ardından, hizmeti dağıtmak için `Model.deploy()` kullanın. Aşağıdaki örnek, bir modeli (`model` değişkeninde yer alan) yerel bir Web hizmeti olarak dağıtır:
+Yerel olarak dağıtmak için kodunuzu bir dağıtım yapılandırması oluşturmak üzere `LocalWebservice.deploy_configuration()` kullanmak üzere değiştirin. Ardından, hizmeti dağıtmak için `Model.deploy()` kullanın. Aşağıdaki örnek, bir modeli (model değişkeninde yer alan) yerel bir Web hizmeti olarak dağıtır:
 
 ```python
-from azureml.core.model import InferenceConfig, Model
 from azureml.core.environment import Environment
+from azureml.core.model import InferenceConfig, Model
 from azureml.core.webservice import LocalWebservice
+
 
 # Create inference configuration based on the environment definition and the entry script
 myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
 inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-
 # Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
@@ -329,13 +262,12 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
 
 `autoscale_target_utilization`, `autoscale_max_replicas`ve `autoscale_min_replicas` ayarlama hakkında daha fazla bilgi için, bkz. [Akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) modül başvurusu.
 
-
 ## <a name="advanced-debugging"></a>Gelişmiş hata ayıklama
 
 Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. Örneğin, giriş betiği başarısız olursa ve neden ek günlüğe kaydetme ile saptanamaz. Visual Studio Code ve Visual Studio için Python Araçları (PTVSD) kullanarak Docker kapsayıcısının içinde çalışan koda iliştirebilirsiniz.
 
 > [!IMPORTANT]
-> Bu hata ayıklama yöntemi, bir modeli yerel olarak dağıtmak için `Model.deploy()` ve `LocalWebservice.deploy_configuration` kullanılırken çalışmaz. Bunun yerine, [containerımage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) sınıfını kullanarak bir görüntü oluşturmanız gerekir. 
+> Bu hata ayıklama yöntemi, bir modeli yerel olarak dağıtmak için `Model.deploy()` ve `LocalWebservice.deploy_configuration` kullanılırken çalışmaz. Bunun yerine, [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) yöntemini kullanarak bir görüntü oluşturmanız gerekir.
 
 Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Docker kullanma hakkında daha fazla bilgi için [Docker belgelerine](https://docs.docker.com/)bakın.
 
@@ -384,13 +316,14 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies 
-    
+
+
     # Usually a good idea to choose specific version numbers
     # so training is made on same packages as scoring
     myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
                                 'scikit-learn==0.19.1', 'pandas==0.23.4'],
-                                 pip_packages = ['azureml-defaults==1.0.17', 'ptvsd'])
-    
+                                 pip_packages = ['azureml-defaults==1.0.45', 'ptvsd'])
+
     with open("myenv.yml","w") as f:
         f.write(myenv.serialize_to_string())
     ```
@@ -406,70 +339,33 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
     print("Debugger attached...")
     ```
 
-1. Hata ayıklama sırasında görüntünün dosyalarında yeniden oluşturmanız gerekmeden değişiklikler yapmak isteyebilirsiniz. Docker görüntüsüne bir metin Düzenleyicisi (VIM) yüklemek için `Dockerfile.steps` adlı yeni bir metin dosyası oluşturun ve dosyanın içeriği olarak aşağıdakileri kullanın:
-
-    ```text
-    RUN apt-get update && apt-get -y install vim
-    ```
-
-    Bir metin Düzenleyicisi, yeni bir görüntü oluşturmadan değişiklikleri test etmek için Docker görüntüsündeki dosyaları değiştirmenize olanak sağlar.
-
-1. `Dockerfile.steps` dosyasını kullanan bir görüntü oluşturmak için, bir görüntü oluştururken `docker_file` parametresini kullanın. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir:
+1. Ortam tanımına dayalı bir görüntü oluşturun ve görüntüyü yerel kayıt defterine çekin. Hata ayıklama sırasında görüntünün dosyalarında yeniden oluşturmanız gerekmeden değişiklikler yapmak isteyebilirsiniz. Docker görüntüsüne bir metin Düzenleyicisi (VIM) yüklemek için `Environment.docker.base_image` ve `Environment.docker.base_dockerfile` özelliklerini kullanın:
 
     > [!NOTE]
     > Bu örnekte, `ws` Azure Machine Learning çalışma alanınıza işaret ettiğini ve bu `model` dağıtıldığı model olduğunu varsaymaktadır. `myenv.yml` dosyası, adım 1 ' de oluşturulan Conda bağımlılıklarını içerir.
 
     ```python
-    from azureml.core.image import Image, ContainerImage
-    image_config = ContainerImage.image_configuration(runtime= "python",
-                                 execution_script="score.py",
-                                 conda_file="myenv.yml",
-                                 docker_file="Dockerfile.steps")
+    from azureml.core.conda_dependencies import CondaDependencies
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    image = Image.create(name = "myimage",
-                     models = [model],
-                     image_config = image_config, 
-                     workspace = ws)
-    # Print the location of the image in the repository
-    print(image.image_location)
+
+    myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
+    myenv.docker.base_image = NONE
+    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04\nRUN apt-get update && apt-get install vim -y"
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
+    package = Model.package(ws, [model], inference_config)
+    package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.
+    package.pull()
     ```
 
-Görüntü oluşturulduktan sonra, kayıt defterindeki görüntü konumu görüntülenir. Konum aşağıdaki metne benzer:
+    Görüntü oluşturulup indirildikten sonra, görüntü yolu (Bu örnekte de kendi Özeti olan depo, ad ve etiket dahil) aşağıdakine benzer bir iletide görüntülenir:
 
-```text
-myregistry.azurecr.io/myimage:1
-```
-
-Bu metin örneğinde, kayıt defteri adı `myregistry` ve görüntü `myimage`olarak adlandırılır. Görüntü sürümü `1`.
-
-### <a name="download-the-image"></a>Görüntüyü indirin
-
-1. Bir komut istemi, Terminal veya başka bir kabuk açın ve Azure Machine Learning çalışma alanınızı içeren Azure aboneliğinde kimlik doğrulaması yapmak için aşağıdaki [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) komutunu kullanın:
-
-    ```azurecli
-    az login
+    ```text
+    Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. Görüntünüzü içeren Azure Container Registry (ACR) kimlik doğrulaması yapmak için aşağıdaki komutu kullanın. `myregistry`, görüntüyü kaydettiğinizde döndürülen ile değiştirin:
-
-    ```azurecli
-    az acr login --name myregistry
-    ```
-
-1. Görüntüyü yerel Docker 'a indirmek için aşağıdaki komutu kullanın. `myimagepath`, görüntüyü kaydettiğinizde döndürülen konumla değiştirin:
-
-    ```bash
-    docker pull myimagepath
-    ```
-
-    Görüntü yolu `myregistry.azurecr.io/myimage:1`benzer olmalıdır. Kayıt defteriniz `myregistry`, resminiz `myimage` ve `1` görüntü sürümüdür.
-
-    > [!TIP]
-    > Önceki adımdan alınan kimlik doğrulaması son olarak süresiz değildir. Kimlik doğrulama komutu ve çekme komutu arasında yeterince uzun süre beklerseniz bir kimlik doğrulama hatası alırsınız. Bu durumda, yeniden kimlik doğrulaması yapın.
-
-    İndirme işleminin tamamlanma süresi Internet bağlantınızın hızına bağlıdır. İşlem sırasında bir indirme durumu görüntülenir. İndirme işlemi tamamlandıktan sonra, indirildiği doğrulamak için `docker images` komutunu kullanabilirsiniz.
-
-1. Görüntüyle çalışmayı kolaylaştırmak için, bir etiket eklemek üzere aşağıdaki komutu kullanın. `myimagepath` değerini 2. adımdaki konum değeriyle değiştirin.
+1. Görüntüyle çalışmayı kolaylaştırmak için, bir etiket eklemek üzere aşağıdaki komutu kullanın. `myimagepath`, önceki adımdaki konum değeriyle değiştirin.
 
     ```bash
     docker tag myimagepath debug:1

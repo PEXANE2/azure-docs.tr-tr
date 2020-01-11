@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 8d2873dd2fd36ed1193aed457a04baae94a043a2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d6b66c4a4924f8455b58b930621d6a7b93901a2a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951828"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887623"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -23,8 +23,8 @@ Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritab
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| Kapsayıcı başına en fazla ru ([adanmış aktarım hızı sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
-| Veritabanı başına en fazla ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
+| Kapsayıcı başına en fazla ru ([adanmış aktarım hızı sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
+| Veritabanı başına en fazla ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
 | Maksimum ru/(mantıksal) bölüm anahtarı | 10,000 |
 | Tüm öğelerin tamamında en fazla depolama alanı (mantıksal) bölüm anahtarı| 10 GB |
 | En fazla farklı (mantıksal) bölüm anahtarı sayısı | İş çalışma zamanında |
@@ -64,8 +64,8 @@ Azure portal, Azure PowerShell, Azure CLı ve Azure Resource Manager şablonlar�
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| Abonelik başına en fazla veritabanı hesabı | Varsayılan olarak 50. [Azure destek bileti](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz|
-| En fazla bölgesel yük devretme sayısı | Varsayılan olarak 1/saat. [Azure destek bileti](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz|
+| Abonelik başına en fazla veritabanı hesabı | Varsayılan olarak 50. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz|
+| En fazla bölgesel yük devretme sayısı | Varsayılan olarak 1/saat. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz|
 
 > [!NOTE]
 > Bölgesel yük devretme işlemleri yalnızca tek bölgeye yazma hesapları için geçerlidir. Çok bölgeli yazma hesapları, yazma bölgesinin değiştirilmesini gerektirmez veya hiçbir sınıra sahip olmaz.
@@ -132,7 +132,7 @@ Cosmos DB yetkilendirme için HMAC kullanır. Kapsayıcılar, bölüm anahtarlar
 | --- | --- |
 | En büyük ana belirteç süre sonu zamanı | 15 dk  |
 | En düşük kaynak belirteci süre sonu zamanı | 10 dakika  |
-| En fazla kaynak belirteci süre sonu zamanı | Varsayılan olarak 24 saat. [Azure destek bileti](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz|
+| En fazla kaynak belirteci süre sonu zamanı | Varsayılan olarak 24 saat. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz|
 | Belirteç yetkilendirme için maksimum saat eğriltme| 15 dk |
 
 Cosmos DB, yazma işlemleri sırasında tetikleyicilerin yürütülmesini destekler. Hizmet, her yazma işlemi için en fazla bir ön tetikleyici ve bir tetikleme tetiklemeyi destekler. 

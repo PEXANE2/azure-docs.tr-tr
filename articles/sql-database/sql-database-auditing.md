@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 70cbc761c7e334ed9b13e3cd7d915102917ff149
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0266c08052cd3db7d9081d6b617da94703b9ab77
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780207"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896315"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimini kullanmaya başlayın
 
@@ -86,8 +86,11 @@ Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması aç�
     ![Gezinti bölmesi][3]
 
 5. **Yeni** -artık denetim günlüklerinin yazılacağı yeri yapılandırmak için birden çok seçeneğiniz vardır. Günlükleri bir Azure depolama hesabına, Azure Izleyici günlüklerine göre tüketim için bir Log Analytics çalışma alanına veya Olay Hub 'ı kullanarak tüketim için Olay Hub 'ına yazabilirsiniz. Bu seçeneklerin herhangi bir birleşimini yapılandırabilirsiniz ve denetim günlükleri her birine yazılır.
-
-   > [!WARNING]
+  
+  > [!NOTE]
+   >Sunucu veya veritabanı düzeyinde denetim olayları için bir sabit günlük deposu yapılandırmak isteyen müşteri, [Azure Storage tarafından sunulan yönergeleri] (https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) ) izlemelidir.
+  
+  > [!WARNING]
    > Log Analytics için denetimin etkinleştirilmesi, alma ücretlerine göre maliyet doğurur. Lütfen bu [seçeneği](https://azure.microsoft.com/pricing/details/monitor/)kullanarak ilişkili maliyetten haberdar olun veya denetim günlüklerini bir Azure depolama hesabında depolamayı düşünün.
 
     ![depolama seçenekleri](./media/sql-database-auditing-get-started/auditing-select-destination.png)

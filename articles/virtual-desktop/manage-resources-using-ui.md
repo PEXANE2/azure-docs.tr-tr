@@ -1,27 +1,24 @@
 ---
-title: Yönetim aracını dağıtma-Azure
-description: Windows sanal masaüstü kaynaklarını yönetmek için bir kullanıcı arabirimi aracı nasıl yüklenir.
+title: Yönetim aracını bir Azure Resource Manager şablonuyla dağıtma-Azure
+description: Windows sanal masaüstü kaynaklarını yönetmek için bir Azure Resource Manager şablonuyla Kullanıcı arabirimi aracı nasıl yüklenir.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: tutorial
-ms.date: 11/09/2019
+ms.topic: conceptual
+ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: ad0c67cea6a5a9b487cd47aa7c10d10da1438050
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 187c92f8e5b0148577f204f68077c58ea9ab9a3d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384276"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887368"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>Öğretici: bir yönetim aracı dağıtın
+# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla bir Yönetim Aracı dağıtma
 
-Yönetim Aracı, Microsoft sanal masaüstü kaynaklarını yönetmek için bir kullanıcı arabirimi (UI) sağlar. Bu öğreticide, yönetim aracını dağıtmayı ve bu sunucuya bağlanmayı öğreneceksiniz.
+Bu makaledeki yönergeler, Azure Resource Manager şablonu kullanarak Kullanıcı arabirimini nasıl dağıtacağınızı bildirir.
 
->[!NOTE]
->Bu yönergeler, kuruluşunuzun mevcut işlemleriyle kullanılabilecek Windows sanal masaüstüne özgü bir yapılandırma içindir.
-
-## <a name="important-considerations"></a>Önemli konular
+## <a name="important-considerations"></a>Önemli noktalar
 
 Uygulamanın Windows sanal masaüstü ile etkileşime girmesine izin gerektirdiğinden, bu araç Işletmeler arası (B2B) senaryolarını desteklemez. Her Azure Active Directory (AAD) kiracının aboneliğinin kendi ayrı yönetim aracı dağıtımına ihtiyacı olacaktır.
 
@@ -33,18 +30,17 @@ Aşağıdaki tarayıcılar yönetim aracıyla uyumludur:
 - Mozilla Firefox 52,0 veya üzeri
 - Safari 10 veya üzeri (yalnızca macOS)
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Azure Resource Manager şablonunu çalıştırmak için gerekenler
+## <a name="what-you-need-to-deploy-the-management-tool"></a>Yönetim aracını dağıtmak için gerekenler
 
-Azure Resource Manager şablonu dağıtmadan önce, yönetim Kullanıcı ARABIRIMINI dağıtmak için Azure Active Directory bir kullanıcıya ihtiyacınız vardır. Bu Kullanıcı şunları sağlamalıdır:
+Yönetim aracını dağıtmadan önce, bir uygulama kaydı oluşturmak ve yönetim kullanıcı arabirimini dağıtmak için bir Azure Active Directory (Azure AD) kullanıcısına sahip olmanız gerekir. Bu Kullanıcı şunları sağlamalıdır:
 
 - Azure Multi-Factor Authentication (MFA) devre dışı
 - Azure aboneliğinizde kaynak oluşturma izniniz var
-- Azure AD uygulaması oluşturma izniniz vardır. Kullanıcının [gerekli izinlere](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)sahip olup olmadığını denetlemek için bu adımları izleyin.
+- Azure AD uygulaması oluşturma izniniz vardır. [Gerekli izinlere](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)sahip olan yönergeleri izleyerek, kullanıcılarınızın gerekli izinlere sahip olup olmadığını denetlemek için bu adımları izleyin.
 
-Azure Resource Manager şablonu dağıttıktan sonra, doğrulamak üzere yönetim kullanıcı arabirimini başlatmak isteyeceksiniz. Bu Kullanıcı şunları sağlamalıdır:
-- Windows sanal masaüstü kiracınızı görüntülemek veya düzenlemek için bir rol ataması yapın
+Yönetim aracını dağıttıktan ve yapılandırdıktan sonra, her şeyin çalıştığından emin olmak için kullanıcıdan yönetim kullanıcı arabirimini başlatması gerektiğini öneririz. Yönetim Kullanıcı arabirimini başlatan kullanıcının Windows sanal masaüstü kiracı 'sını görüntülemesine veya düzenlemesine izin veren bir rol ataması olmalıdır.
 
-## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>Yönetim Kullanıcı arabirimini sağlamak için Azure Resource Manager şablonunu çalıştırma
+## <a name="deploy-the-management-tool"></a>Yönetim aracını dağıtma
 
 Başlamadan önce, temsil edilen Azure Active Directory (AAD) için [Windows sanal masaüstü onay sayfasını](https://rdweb.wvd.microsoft.com) ziyaret ederek sunucu ve istemci uygulamalarının onay aldığından emin olun.
 
@@ -52,26 +48,24 @@ Azure Kaynak Yönetimi şablonunu dağıtmak için aşağıdaki yönergeleri izl
 
 1. [GitHub Azure RDS-templates sayfasına](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)gidin.
 2. Şablonu Azure 'a dağıtın.
-    - Kurumsal abonelikte dağıtım yapıyorsanız, aşağı kaydırın ve **Azure 'A dağıt**' ı seçin. Bkz. [şablon parametreleri Için rehberlik](#guidance-for-template-parameters).
+    - Kurumsal abonelikte dağıtım yapıyorsanız, aşağı kaydırın ve **Azure 'A dağıt**' ı seçin. 
     - ' Yi bir bulut çözümü sağlayıcısı aboneliğine dağıtıyorsanız, Azure 'a dağıtmak için aşağıdaki yönergeleri izleyin:
         1. Aşağı kaydırın ve **Azure 'A dağıt**' a sağ tıkladıktan sonra **bağlantı konumunu Kopyala**' yı seçin.
         2. Not Defteri gibi bir metin Düzenleyicisi açın ve bağlantıyı buraya yapıştırın.
         3. <https://portal.azure.com/> ve diyez etiketinden (#) önce, bir at işareti (@) ve ardından kiracı etki alanı adını girin. Şöyle bir örnek: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
         4. Bulut çözümü sağlayıcısı aboneliğine yönetici/katkıda bulunan izinleri olan bir kullanıcı olarak Azure portal oturum açın.
         5. Metin düzenleyicisine kopyaladığınız bağlantıyı adres çubuğuna yapıştırın.
-
-### <a name="guidance-for-template-parameters"></a>Şablon parametreleri Kılavuzu
-Araç yapılandırmasına yönelik parametrelerin nasıl girilmesi aşağıda verilmiştir:
-
-- **Isserviceprincipal** parametresi için **false**' ı seçin.
-- Kimlik bilgileri için Multi-Factor Authentication devre dışı ile Azure Active Directory kimlik bilgilerinizi girin. Bu kimlik bilgileri, Azure 'da oturum açmak ve Azure AD uygulaması ile Azure Web uygulaması kaynaklarını oluşturmak için kullandığınız bir uygulamadır. Daha fazla bilgi edinmek için bkz. [Azure Resource Manager şablonunu çalıştırmak Için gerekenler](#what-you-need-to-run-the-azure-resource-manager-template).
-- **ApplicationName**için, uygulamanız için Azure Active Directory kaydedilecek benzersiz bir ad kullanın. Bu ad Web uygulaması URL 'SI için de kullanılacaktır. Örneğin, "Apr3UX" gibi bir ad kullanabilirsiniz.
+3. Parametreleri girerken şunları yapın:
+    - **Isserviceprincipal** parametresi için **false**' ı seçin.
+    - Kimlik bilgileri için Multi-Factor Authentication devre dışı olan Azure AD kimlik bilgilerinizi girin. Bu kimlik bilgileri, Azure AD uygulaması ve Azure kaynakları oluşturmak için kullanılacaktır. Daha fazla bilgi edinmek için [Yönetim Aracı 'nı dağıtmak için](#what-you-need-to-deploy-the-management-tool)gerekenler bölümüne bakın.
+    - **ApplicationName**için, uygulamanız için Azure Active Directory kaydedilecek benzersiz bir ad kullanın. Bu ad Web uygulaması URL 'SI için de kullanılacaktır. Örneğin, "Apr3UX" gibi bir ad kullanabilirsiniz.
+4. Parametreleri girdikten sonra hüküm ve koşulları kabul edin ve **satın al**' ı seçin.
 
 ## <a name="provide-consent-for-the-management-tool"></a>Yönetim aracı için onay sağlayın
 
 GitHub Azure Resource Manager şablonu tamamlandıktan sonra, Azure portal bir App Service planıyla birlikte iki uygulama hizmeti içeren bir kaynak grubu bulacaksınız.
 
-Oturum açmadan ve yönetim aracını kullanmadan önce, yönetim aracı ile ilişkili yeni Azure Active Directory uygulamasına izin vermeniz gerekir. Onay sunarak, yönetim aracının, araçta oturum açan kullanıcı adına Windows sanal masaüstü yönetimi çağrıları yapmasına izin vermiş olursunuz.
+Oturum açmadan önce yönetim aracını kullanmadan önce, yönetim aracı ile ilişkili yeni Azure AD uygulaması için onay sağlamanız gerekir. Onay sağlanması, yönetim aracının, araçta oturum açmış olan kullanıcı adına Windows sanal masaüstü yönetimi çağrıları yapmasını sağlar.
 
 ![UI yönetim aracına izin verdiğiniz zaman girilen izinleri gösteren ekran görüntüsü.](media/management-ui-delegated-permissions.png)
 
@@ -102,18 +96,15 @@ Aracı başlatmak için aşağıdaki yönergeleri izleyin:
 1. Şablonda belirttiğiniz adı taşıyan Azure App Services kaynağını seçin (örneğin, Apr3UX) ve onunla ilişkili URL 'ye gidin. Örneğin, <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Windows sanal masaüstü kimlik bilgilerinizi kullanarak oturum açın.
 3. Bir kiracı grubu seçmeniz istendiğinde, açılan listeden **varsayılan kiracı grubu** ' nu seçin.
-4. Varsayılan kiracı grubu ' nu seçtiğinizde, pencerenizin sağ tarafında bir menü görünür. Bu menüde, kiracı grubunuzun adını bulun ve seçin.
-
-> [!NOTE]
-> Özel bir kiracı grubunuz varsa, açılan listeden seçim yapmak yerine adı el ile girin.
+4. **Varsayılan kiracı grubu**' nu seçtiğinizde, pencerenizin sol tarafında bir menü görünür. Bu menüde, kiracı grubunuzun adını bulun ve seçin.
+  
+  > [!NOTE]
+  > Özel bir kiracı grubunuz varsa, açılan listeden seçim yapmak yerine adı el ile girin.
 
 ## <a name="report-issues"></a>Sorunları raporla
 
-Yönetim Aracı veya diğer Windows Sanal Masaüstü araçlarıyla ilgili herhangi bir sorunla karşılaşırsanız, GitHub 'da raporlamak için [Uzak Masaüstü Hizmetleri ARM şablonlarındaki](https://github.com/Azure/RDS-Templates/blob/master/README.md) yönergeleri izleyin.
+Yönetim Aracı veya diğer Windows Sanal Masaüstü araçlarıyla ilgili herhangi bir sorun yaşıyorsanız, GitHub 'da raporlamak için [Uzak Masaüstü Hizmetleri Azure Resource Manager şablonlarındaki](https://github.com/Azure/RDS-Templates/blob/master/README.md) yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yönetim aracına nasıl dağıtılacağını ve bağlandığınızı öğrendiğinize göre, hizmet sorunlarını ve sistem durumu belgelerini izlemek için Azure hizmet durumunu nasıl kullanacağınızı öğrenebilirsiniz.
-
-> [!div class="nextstepaction"]
-> [Hizmet uyarıları ayarlama öğreticisi](./set-up-service-alerts.md)
+Yönetim aracına nasıl dağıtılacağını ve bağlandığınızı öğrendiğinize göre, Azure hizmeti yardımı 'nı kullanarak hizmet sorunlarını ve sistem durumu Danışma belgelerini nasıl izleyeceğinizi öğrenebilirsiniz. Daha fazla bilgi edinmek için bkz. [hizmet uyarılarını ayarlama öğreticisi](./set-up-service-alerts.md).

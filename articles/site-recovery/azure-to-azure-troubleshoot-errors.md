@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: asgang
-ms.openlocfilehash: b3c459c0eaac98a1cb704b4346153f77ec974188
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: asgangal
+ms.openlocfilehash: efa05f5769bcd174992a7a91a522c5f30ce6e448
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084918"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895006"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure-Azure VM çoğaltma hatalarında sorun giderme
 
@@ -34,7 +34,7 @@ Kaynak VM yapılandırmasını destekleyen bir boyut yoksa, aşağıdaki ileti g
 
 ### <a name="fix-the-problem"></a>Sorunu
 
-Aboneliğinizi hedef konumda gereken boyutlarda VM 'Ler oluşturacak şekilde etkinleştirmek için [Azure Faturalandırma desteği](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) 'ne başvurun. Sonra başarısız olan işlemi yeniden deneyin.
+Aboneliğinizi hedef konumda gereken boyutlarda VM 'Ler oluşturacak şekilde etkinleştirmek için [Azure Faturalandırma desteği](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) 'ne başvurun. Sonra başarısız olan işlemi yeniden deneyin.
 
 Hedef konumun bir kapasite kısıtlaması varsa, çoğaltmayı devre dışı bırakın. Daha sonra, aboneliğin gereken boyutlarda VM 'Ler oluşturmak için yeterli kotası olan farklı bir konuma çoğaltmayı etkinleştirin.
 
@@ -80,7 +80,7 @@ SuSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (vey
 
 1. Symantec kök CA sertifikası bulunamazsa, dosyayı indirmek için aşağıdaki komutu çalıştırın. Herhangi bir hata olup olmadığını denetleyin ve ağ hataları için önerilen eylemleri izleyin.
 
-    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
+    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
 
 1. Baltidaha fazla kök CA sertifikasının mevcut olup olmadığını denetleyin:
 
@@ -88,7 +88,7 @@ SuSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (vey
 
 1. Baltidaha fazla kök CA sertifikası bulunamazsa, sertifikayı indirmek için şu komutu çalıştırın:
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root. pem**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root. pem**
 
 1. DigiCert_Global_Root_CA sertifikasının mevcut olup olmadığını denetleyin:
 
@@ -106,7 +106,7 @@ SuSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (vey
 
 1. Sertifikalar için konu karmalarının çözümlemeyin olarak oluşturulup oluşturulmayacağını denetlemek için şu komutları çalıştırın:
 
-    - Komutundaki
+    - Komut:
 
         **# ls-l | GREP Baltimore**
 
@@ -116,7 +116,7 @@ SuSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (vey
 
         `-rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem`
 
-    - Komutundaki
+    - Komut:
 
         **# ls-l | GREP VeriSign_Class_3_Public_Primary_Certification_Authority_G5**
 
@@ -126,7 +126,7 @@ SuSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (vey
 
         `lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem`
 
-    - Komutundaki
+    - Komut:
 
         **# ls-l | GREP DigiCert_Global_Root**
 
@@ -150,7 +150,7 @@ SuSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (vey
 
 1. Dosyaların mevcut olup olmadığını denetleyin:
 
-    - Komutundaki
+    - Komut:
 
         **# ls-l 653b494a. 0 b204d74a. 0 3513523f. 0**
 

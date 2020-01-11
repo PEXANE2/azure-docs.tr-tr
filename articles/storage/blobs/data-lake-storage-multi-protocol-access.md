@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: aebd7b58a2107ac109a03d3ce12f27d65ba0ab90
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f34c5d5069a158579864320d0fbf965de8936d9c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769821"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896123"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage çoklu protokol erişimi
 
@@ -47,17 +47,17 @@ BLOB depolama özellikleri için destek genişlemeye devam ettiğinden, bu tablo
 
 |BLOB depolama özelliği | Destek düzeyi |
 |---|---|
-|[Seyrek Erişimli erişim katmanı](storage-blob-storage-tiers.md)|Genel olarak kullanılabilir|
-|Blob REST API 'Leri|Genel olarak kullanılabilir|
-|Blob SDK 'Ları |Genel olarak kullanılabilir|
-|[PowerShell (blob)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Genel olarak kullanılabilir|
-|[CLı (blob)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Genel olarak kullanılabilir|
+|[Seyrek Erişimli erişim katmanı](storage-blob-storage-tiers.md)|Genel kullanıma sunuldu|
+|Blob REST API 'Leri|Genel kullanıma sunuldu|
+|Blob SDK 'Ları |Genel kullanıma sunuldu|
+|[PowerShell (blob)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Genel kullanıma sunuldu|
+|[CLı (blob)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Genel kullanıma sunuldu|
+|[Azure Event Grid aracılığıyla bildirimler](data-lake-storage-events.md)|Genel kullanıma sunuldu|
 |Dosya sistemi semantiğinin bulunduğu blob SDK 'Ları ([.net](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-dotnet) &vert; [Python](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-python) &vert; [Java](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-java))|Önizleme|
 |[Dosya sistemi semantiğinin bulunduğu PowerShell](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-powershell)|Önizleme|
 |[Dosya sistemi semantiklerine sahip CLı](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-cli)|Önizleme|
 |[Tanılama günlükleri](../common/storage-analytics-logging.md)| Önizleme|
 |[Yaşam döngüsü yönetim ilkeleri](storage-lifecycle-management-concepts.md)| Önizleme|
-|[Azure Event Grid aracılığıyla bildirimler](data-lake-storage-events.md)|Önizleme|
 |[Arşiv erişim katmanı](storage-blob-storage-tiers.md)| Önizleme|
 |[blobsigortası](storage-how-to-mount-container-linux.md)|Henüz desteklenmiyor|
 |[Sabit depolama](storage-blob-immutable-storage.md)|Henüz desteklenmiyor|
@@ -78,11 +78,11 @@ Desteklenen BLOB depolama özelliklerinin listesi gibi, bu tabloda görünen ö�
 
 |Azure hizmeti | Destek düzeyi |
 |---|---|
-|[Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|Genel olarak kullanılabilir|
-|[Azure Event Hubs yakalama](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|Genel olarak kullanılabilir|
-|[Azure Akış Analizi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|Genel olarak kullanılabilir|
-|[IoT Hub’ı](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|Genel olarak kullanılabilir|
-|[Logic Apps](https://azure.microsoft.com/services/logic-apps/)|Genel olarak kullanılabilir|
+|[Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|Genel kullanıma sunuldu|
+|[Azure Event Hubs yakalama](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|Genel kullanıma sunuldu|
+|[Azure Akış Analizi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|Genel kullanıma sunuldu|
+|[IoT Hub’ı](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|Genel kullanıma sunuldu|
+|[Logic Apps](https://azure.microsoft.com/services/logic-apps/)|Genel kullanıma sunuldu|
 |[Azure Bilişsel Arama](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|Önizleme|
 
 Data Lake Storage 2. için Azure ekosistem desteğinin tüm listesi için bkz. [Azure hizmetleriyle Azure Data Lake Storage tümleştirme](data-lake-storage-integrate-with-azure-services.md).

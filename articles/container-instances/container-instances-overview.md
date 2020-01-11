@@ -4,12 +4,12 @@ description: Azure Container Instances hizmeti, sanal makinelerin yönetilmesi g
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552330"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888043"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances nedir?
 
@@ -54,7 +54,7 @@ Bazı özellikler Şu anda Linux kapsayıcılarıyla kısıtlıdır:
 * Kapsayıcı grubu başına birden çok kapsayıcı
 * Birim bağlama ([Azure dosyaları](container-instances-volume-azure-files.md), [emptydir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [gizli](container-instances-volume-secret.md))
 * Azure Izleyici ile [kaynak kullanımı ölçümleri](container-instances-monitor.md)
-* [Sanal ağ dağıtımı](container-instances-vnet.md) (Önizleme)
+* [Sanal ağ dağıtımı](container-instances-vnet.md)
 * [GPU kaynakları](container-instances-gpu.md) (Önizleme)
 
 Windows kapsayıcı dağıtımları için, yaygın [Windows temel görüntülerine](container-instances-faq.md#what-windows-base-os-images-are-supported)göre görüntüleri kullanın.
@@ -66,12 +66,9 @@ Windows kapsayıcı dağıtımları için, yaygın [Windows temel görüntüleri
 
 Azure Container Instances, aynı ana makineyi, yerel ağı, depolama alanını ve yaşam döngüsünü paylaşan [birden çok kapsayıcı grubunun](container-instances-container-groups.md) zamanlanmasını destekler. Böylece ana uygulama kapsayıcınızı, günlüğe kaydetme yan bölmesi gibi diğer destekleyici kapsayıcılarla birleştirebilirsiniz.
 
-## <a name="virtual-network-deployment-preview"></a>Sanal ağ dağıtımı (önizleme)
+## <a name="virtual-network-deployment"></a>Sanal ağ dağıtımı
 
-Şu anda önizleme sürümünde olan bu Azure Container Instances özelliği, [kapsayıcı örneklerinin bir Azure sanal ağına dağıtılmasını sağlar](container-instances-vnet.md). Kapsayıcı örneklerini sanal ağınızdaki bir alt ağa dağıtarak şirket içindekiler dahil olmak üzere ([VPN ağ geçidi](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../expressroute/expressroute-introduction.md) aracılığıyla) sanal ağ içindeki diğer kaynaklarla güvenli bir şekilde iletişim kurmalarını sağlayabilirsiniz.
-
-> [!IMPORTANT]
-> Azure Container Instances belirli özellikleri önizlemede ve bazı [sınırlamalar geçerlidir](container-instances-vnet.md#preview-limitations). Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliklerin bazı yönleri genel kullanıma (GA) önce değişebilir.
+Şu anda Azure bölgelerinin bir alt kümesindeki üretim iş yükleri için kullanılabilir. bu Azure Container Instances özelliği, [kapsayıcı örneklerinin bir Azure sanal ağına dağıtılmasını](container-instances-vnet.md)mümkün hale getirmenizi sunar. Kapsayıcı örneklerini sanal ağınızdaki bir alt ağa dağıtarak şirket içindekiler dahil olmak üzere ([VPN ağ geçidi](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../expressroute/expressroute-introduction.md) aracılığıyla) sanal ağ içindeki diğer kaynaklarla güvenli bir şekilde iletişim kurmalarını sağlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

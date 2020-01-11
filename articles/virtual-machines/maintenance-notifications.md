@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: f39e5ee7126fe381ad4ba77ec9a876db5f0a1ef6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 60d9c7fb57e079fde54d60df9b90266ccb94acdc
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747253"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895827"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Planlı bakım bildirimlerini işleme
 
@@ -29,7 +29,7 @@ Azure sanal makine konak altyapısının güvenilirlik, performans ve güvenliğ
 
 Yeniden başlatma gerektiren planlı bakım dalgaları 'nda zamanlanır. Her bir dalga, farklı kapsama (bölgelere) sahiptir.
 
-- Bir dalga, müşterilere yönelik bir bildirimle başlar. Varsayılan olarak, bildirim abonelik sahibine ve ortak sahiplerine gönderilir. [Etkinlik günlüğü uyarılarını](../azure-monitor/platform/platform-logs-overview.md)kullanarak e-posta, SMS ve Web kancaları gibi daha fazla alıcı ve mesajlaşma seçeneği ekleyebilirsiniz.  
+- Bir dalga, müşterilere yönelik bir bildirimle başlar. Varsayılan olarak, bildirim abonelik sahibine ve ortak sahiplerine gönderilir. [Etkinlik günlüğü uyarılarını](../service-health/alerts-activity-log-service-notifications.md)kullanarak e-posta, SMS ve Web kancaları gibi daha fazla alıcı ve mesajlaşma seçeneği ekleyebilirsiniz.  
 - Bir bildirim alındıktan sonra, bir *self servis penceresi* kullanılabilir hale getirilir. Bu pencere sırasında, sanal makinelerinizin hangilerinin etkilendiğini sorgulayabilir ve kendi zamanlama gereksinimlerinize göre bakım başlatabilirsiniz. Self servis penceresi genellikle yaklaşık 35 gündür.
 - Self Servis penceresinden sonra, *Zamanlanmış bir bakım penceresi* başlar. Bu pencere sırasında, Azure tarafından zamanlama ve gerekli bakım sanal makinenize uygulanıyor. 
 

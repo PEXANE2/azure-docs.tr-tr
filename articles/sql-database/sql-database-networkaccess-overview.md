@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 16de1d9fcf86459b6bcadd9d8c372e436aad0915
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802932"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894785"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL veritabanı ve veri ambarı ağ erişim denetimleri
 
@@ -47,24 +47,53 @@ Bu ayarı, Azure SQL Server aşağıdaki gibi oluşturulduktan sonra güvenlik d
 
 Azure SQL Server olarak ayarlandığında **, Azure sınırının** içindeki tüm kaynaklardan gelen iletişimlere izin verir, bu da aboneliğinizin bir parçası olmayabilir veya olmayabilir.
 
-Çoğu durumda, **Açık** ayarı, çoğu müşterinin izin verilenden daha fazla izne sahiptir. Bu ayarı **kapalı** olarak ayarlamak ve daha kısıtlayıcı IP güvenlik duvarı kuralları ya da sanal ağ güvenlik duvarı kuralları ile değiştirmek isteyebilir. Bunun yapılması aşağıdaki özellikleri etkiler:
+Çoğu durumda, **Açık** ayarı, çoğu müşterinin izin verilenden daha fazla izne sahiptir. Bu ayarı **kapalı** olarak ayarlamak ve daha kısıtlayıcı IP güvenlik duvarı kuralları ya da sanal ağ güvenlik duvarı kuralları ile değiştirmek isteyebilir. Bunun yapılması, Azure 'da sanal ağınızın parçası olmayan ve bu nedenle bir Azure IP adresi aracılığıyla SQL veritabanı 'na bağlanan VM 'lerde çalışan aşağıdaki özellikleri etkiler.
 
 ### <a name="import-export-service"></a>İçeri aktarma hizmeti al
+İçeri aktarma verme hizmeti, **Azure hizmetlerinin sunucuya erişmesine Izin ver** ayarı çalışmıyor. Ancak, [SqlPackage. exe ' yi bir Azure VM 'sinden el ile çalıştırarak veya](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) DACFX API kullanarak doğrudan kodunuzda dışarı aktarmayı gerçekleştirerek soruna geçici bir çözüm bulabilirsiniz.
 
-Azure SQL veritabanı Içeri aktarma verme hizmeti, Azure 'daki VM 'lerde çalışır. Bu VM 'Ler VNet 'iniz içinde değildir ve bu nedenle veritabanınıza bağlanırken bir Azure IP 'si alın. **Azure hizmetlerinin sunucuya erişmesine Izin ver** kaldırıldığında, bu VM 'ler veritabanlarınıza erişemez.
-DACFx API kullanarak doğrudan kodunuzda BACPAC içeri aktarma veya dışarı aktarma işlemini çalıştırarak soruna geçici bir çözüm bulabilirsiniz.
+### <a name="data-sync"></a>Data Sync
+Veri eşitleme özelliğini, **Azure hizmetlerinin sunucuya erişmesine Izin ver** özelliği kapalı olarak kullanmak Için, **hub** veritabanını barındıran BÖLGENIN **SQL hizmeti etiketinden** [IP adresleri eklemek](sql-database-server-level-firewall-rule.md) üzere ayrı ayrı güvenlik duvarı kuralı girdileri oluşturmanız gerekir.
+Bu sunucu düzeyi güvenlik duvarı kurallarını hem **hub** 'ı hem de **üye** veritabanlarını (farklı bölgelerde olabilir) barındıran mantıksal sunuculara ekleyin
 
-### <a name="sql-database-query-editor"></a>SQL veritabanı sorgu Düzenleyicisi
+Batı ABD bölgenin SQL Service etiketine karşılık gelen IP adreslerini oluşturmak için aşağıdaki PowerShell betiğini kullanın
+```powershell
+PS C:\>  $serviceTags = Get-AzNetworkServiceTag -Location eastus2
+PS C:\>  $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql.WestUS" }
+PS C:\> $sql.Properties.AddressPrefixes.Count
+70
+PS C:\> $sql.Properties.AddressPrefixes
+13.86.216.0/25
+13.86.216.128/26
+13.86.216.192/27
+13.86.217.0/25
+13.86.217.128/26
+13.86.217.192/27
+```
 
-Azure SQL veritabanı sorgu Düzenleyicisi, Azure 'daki sanal makinelere dağıtılır. Bu VM 'Ler VNet 'iniz içinde değil. Bu nedenle VM 'Ler, veritabanınıza bağlanırken bir Azure IP 'si alır. **Azure hizmetlerinin sunucuya erişmesine Izin ver**kaldırıldığında, bu VM 'ler veritabanlarınıza erişemez.
+> [!TIP]
+> Get-AzNetworkServiceTag, location parametresini belirtirken sql Service etiketinin genel aralığını döndürür. Eşitleme grubunuz tarafından kullanılan Merkez veritabanını barındıran bölgeye filtre uyguladığınızdan emin olun
 
-### <a name="table-auditing"></a>Tablo denetimi
+PowerShell betiğinin çıktısının sınıfsız etki alanları arası yönlendirme (CıDR) gösterimi içinde ve [Get-IPrangeStartEnd. ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) kullanarak bir başlangıç ve bitiş IP adresi biçimine dönüştürülmesi gerektiğini unutmayın
+```powershell
+PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26                                                                   
+start        end
+-----        ---
+52.229.17.64 52.229.17.127
+```
 
-Mevcut olduğunda, SQL veritabanınızda denetimi etkinleştirmenin iki yolu vardır. Azure SQL Server hizmet uç noktalarını etkinleştirdikten sonra tablo denetimi başarısız olur. Burada risk azaltma, blob denetimine geçmadır.
+CıDR 'ten gelen tüm IP adreslerini başlangıç ve bitiş IP adresi biçimine dönüştürmek için aşağıdaki ek adımları uygulayın.
 
-### <a name="impact-on-data-sync"></a>Veri eşitlemeye etkisi
+```powershell
+PS C:\>foreach( $i in $sql.Properties.AddressPrefixes) {$ip,$cidr= $i.split('/') ; Get-IPrangeStartEnd -ip $ip -cidr $cidr;}                                                                                                                
+start          end
+-----          ---
+13.86.216.0    13.86.216.127
+13.86.216.128  13.86.216.191
+13.86.216.192  13.86.216.223
+```
+Artık bunları farklı güvenlik duvarı kuralları olarak ekleyebilir ve sonra **Azure hizmetlerinin sunucuya erişmesine Izin ver** seçeneğini ayarlayabilirsiniz.
 
-Azure SQL veritabanı, Azure IP 'Leri kullanarak veritabanlarınıza bağlanan veri eşitleme özelliğine sahiptir. Hizmet uç noktalarını kullanırken, Azure hizmetlerinin SQL veritabanı sunucunuza sunucu erişimine erişmesine **Izin ver** ' i devre dışı bırakır ve veri eşitleme özelliğini bozacaksınız.
 
 ## <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
 IP tabanlı güvenlik duvarı, istemci makinelerin [IP adreslerini açıkça eklemeene](sql-database-server-level-firewall-rule.md) kadar veritabanı sunucunuza tüm erişimi önleyen bir Azure SQL Server özelliğidir.

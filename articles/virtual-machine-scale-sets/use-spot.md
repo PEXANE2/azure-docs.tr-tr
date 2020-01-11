@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: d2c8e599e44e48517920862e1fcf83e1a5e24910
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b57c13d4a5c671595a3e82ac7858c027456107f2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647637"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894068"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Önizleme: sanal makine ölçek kümeleri için Azure spot VM 'Ler 
 
@@ -156,7 +156,7 @@ Y **:** Spot örnekleri ve standart örneklerin ayrı kota havuzları olacaktır
 
 **S:** Nokta için ek kota isteyebilir miyim?
 
-Y **:** Evet, [Standart kota isteği işlemi](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests)aracılığıyla spot VM 'lerle ilgili kotayı artırmak için isteği gönderebileceksiniz.
+Y **:** Evet, [Standart kota isteği işlemi](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)aracılığıyla spot VM 'lerle ilgili kotayı artırmak için isteği gönderebileceksiniz.
 
 
 **S:** Varolan ölçek kümelerini spot ölçek kümelerine dönüştürebilir miyim?

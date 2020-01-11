@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 304d0615a12871fb4a9610058bc1be0ad6dff806
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6dd0734d39237545b7a9bc2553fcd9dea75b8ee0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929542"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892814"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory kullanarak DB2 'den veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -51,7 +51,7 @@ DB2 veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayab
 > - I için DB2 (AS400): kopyalama etkinliğini kullanmadan önce, Power User 'ın oturum açma kullanıcısı için koleksiyon oluşturmasına izin verin. Komut: `create collection <username>`
 > - Z/OS veya LUW için DB2: paket yetkilileri ve bağlama, BINERDD ve BIND, BINERDD ile yüksek ayrıcalıklı bir hesap-Power User veya admin kullanın-kopyalama etkinliğini bir kez çalıştırmak için, gerekli paket kopyalama sırasında otomatik olarak oluşturulur. Daha sonra, sonraki kopya çalışmalarınız için normal kullanıcıya dönebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -69,12 +69,12 @@ Aşağıdaki özellikler DB2 bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği: **DB2** olarak ayarlanmalıdır | Yes |
-| sunucu |DB2 sunucusunun adı. Sunucu adının sonuna iki nokta (`server:port`) ile ayrılmış bağlantı noktası numarasını belirtebilirsiniz. |Yes |
-| veritabanı |DB2 veritabanının adı. |Yes |
-| authenticationType |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değer: **temel**. |Yes |
-| kullanıcı adı |DB2 veritabanına bağlanmak için Kullanıcı adını belirtin. |Yes |
-| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Yes |
+| type | Type özelliği: **DB2** olarak ayarlanmalıdır | Evet |
+| sunucu |DB2 sunucusunun adı. Sunucu adının sonuna iki nokta (`server:port`) ile ayrılmış bağlantı noktası numarasını belirtebilirsiniz. |Evet |
+| veritabanı |DB2 veritabanının adı. |Evet |
+| authenticationType |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değer: **temel**. |Evet |
+| kullanıcı adı |DB2 veritabanına bağlanmak için Kullanıcı adını belirtin. |Evet |
+| parola |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
 | packageCollection | Veritabanı sorgulanırken, gerekli paketlerin ADF tarafından otomatik olarak oluşturulduğu yeri belirtin | Hayır |
 | Certificatecommonadı | Güvenli Yuva Katmanı (SSL) veya Aktarım Katmanı Güvenliği (TLS) şifrelemesini kullandığınızda, sertifika ortak adı için bir değer girmeniz gerekir. | Hayır |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
@@ -112,7 +112,7 @@ DB2 'den veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **Db2Table** olarak ayarlanmalıdır | Yes |
+| type | DataSet 'in Type özelliği: **Db2Table** olarak ayarlanmalıdır | Evet |
 | schema | Şemanın adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
 | table | Tablonun adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve `table` kullanın. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
@@ -147,7 +147,7 @@ DB2 'den veri kopyalamak için aşağıdaki özellikler, etkinlik **kaynağını
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **Db2Source** olarak ayarlanmalıdır | Yes |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **Db2Source** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**
@@ -222,4 +222,4 @@ DB2 'den veri kopyalarken aşağıdaki eşlemeler DB2 veri türlerinden, geçici
 Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md##supported-data-stores-and-formats).
+Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

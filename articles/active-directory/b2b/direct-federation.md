@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5b6e99c803fb703f18b61200c28cbdac3282750
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272747"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888884"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Konuk kullanıcılar için AD FS ve üçüncü taraf sağlayıcılarla doğrudan Federasyon (Önizleme)
 |     |
@@ -31,7 +31,7 @@ Bir iş ortağının IDP 'si ile doğrudan Federasyon ayarladığınızda, bu et
 > Doğrudan Federasyon Konuk kullanıcıları kiracı bağlamını içeren bir bağlantı kullanarak oturum etmelidir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>`ya da doğrulanmış bir etki alanı olması durumunda `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com`). Uygulama ve kaynakların doğrudan bağlantıları, kiracı bağlamını dahil ettikleri sürece da çalışır. Doğrudan Federasyon kullanıcıları, kiracı bağlamı olmayan ortak uç noktaları kullanarak oturum açamıyor. Örneğin, `https://myapps.microsoft.com`, `https://portal.azure.com`veya `https://teams.microsoft.com` kullanımı bir hataya neden olur.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Bir Konuk kullanıcının kimliği doğrudan Federasyonla mı?
-Bir kuruluşla doğrudan Federasyonu ayarladıktan sonra, davet ettiğiniz tüm yeni Konuk kullanıcılardan kimlik doğrulaması doğrudan Federasyon kullanılarak yapılır. Doğrudan Federasyonu ayarlamanın, sizin için bir davet zaten kullanılmış olan Konuk kullanıcılar için kimlik doğrulama yöntemini değiştirmediğini unutmayın. Bazı örnekler şunlardır:
+Bir kuruluşla doğrudan Federasyonu ayarladıktan sonra, davet ettiğiniz tüm yeni Konuk kullanıcılardan kimlik doğrulaması doğrudan Federasyon kullanılarak yapılır. Doğrudan Federasyonu ayarlamanın, sizin için bir davet zaten kullanılmış olan Konuk kullanıcılar için kimlik doğrulama yöntemini değiştirmediğini unutmayın. İşte bazı örnekler:
  - Konuk kullanıcılar sizinle davetleri zaten kullanıyor ve daha sonra kuruluşlarıyla doğrudan Federasyon ayarladıysanız, bu Konuk kullanıcılar doğrudan Federasyonu ayarlamadan önce kullandıkları kimlik doğrulama yöntemini kullanmaya devam eder.
  - Bir iş ortağı organizasyonu ile doğrudan Federasyon ayarlayıp Konuk kullanıcıları davet ederseniz ve daha sonra iş ortağı organizasyonu daha sonra Azure AD 'ye geçerse, davetiyeleri zaten kullanan Konuk kullanıcılar doğrudan Federasyonu kullanmaya devam eder. kiracınızdaki Federasyon ilkesi var.
  - Doğrudan Federasyonu bir iş ortağı kuruluşla silerseniz, şu anda doğrudan Federasyon kullanan tüm konuk kullanıcılar oturum açamıyor.
@@ -83,23 +83,23 @@ Hayır, [e-posta bir kerelik geçiş kodu](one-time-passcode.md) özelliğinin b
 Azure AD B2B, SAML protokolünü kullanan kimlik sağlayıcılarıyla federasyona eklemek için aşağıda listelenen belirli gereksinimlere sahip olacak şekilde yapılandırılabilir. SAML kimlik sağlayıcınız ile Azure AD arasında güven ayarlama hakkında daha fazla bilgi için bkz. [Çoklu oturum açma IÇIN saml 2,0 kimlik sağlayıcısı (IDP) kullanma](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
 
 > [!NOTE]
-> Not doğrudan Federasyonun hedef etki alanının Azure AD 'de DNS doğrulanmamış olması gerekir. Kimlik doğrulama URL 'SI etki alanı, hedef etki alanı ile eşleşmelidir veya izin verilen bir kimlik sağlayıcısının etki alanı olması gerekir. Ayrıntılar için [sınırlamalar](#limitations) bölümüne bakın. 
+> Doğrudan Federasyonun hedef etki alanı, Azure AD 'de DNS doğrulanmamış olmalıdır. Kimlik doğrulama URL 'SI etki alanı, hedef etki alanı ile eşleşmelidir veya izin verilen bir kimlik sağlayıcısının etki alanı olması gerekir. Ayrıntılar için [sınırlamalar](#limitations) bölümüne bakın. 
 
 #### <a name="required-saml-20-attributes-and-claims"></a>Gerekli SAML 2,0 öznitelikleri ve talepleri
 Aşağıdaki tablolarda, üçüncü taraf kimlik sağlayıcısında yapılandırılması gereken belirli öznitelikler ve talepler için gereksinimler gösterilmektedir. Doğrudan Federasyonu ayarlamak için, kimlik sağlayıcısından SAML 2,0 yanıtında aşağıdaki öznitelikler alınmalıdır. Bu öznitelikler, çevrimiçi güvenlik belirteci hizmeti XML dosyasına bağlanarak veya el ile girilerek yapılandırılabilir.
 
 IDP 'den SAML 2,0 yanıtı için gerekli öznitelikler:
 
-|Öznitelik  |Value  |
+|Öznitelik  |Değer  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|Hedef kitle     |`urn:federation:MicrosoftOnline`         |
+|Hedef Kitle     |`urn:federation:MicrosoftOnline`         |
 |Veren     |İş ortağı IDP veren URI 'SI (örneğin `http://www.example.com/exk10l6w90DHM0yi...`)         |
 
 
 IDP tarafından verilen SAML 2,0 belirteci için gerekli talepler:
 
-|Öznitelik  |Value  |
+|Öznitelik  |Değer  |
 |---------|---------|
 |NameID biçimi     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -116,15 +116,15 @@ Aşağıdaki tablolarda, üçüncü taraf WS-beslik kimlik sağlayıcısında ya
 
 IDP 'den WS-BESM iletisinde gerekli öznitelikler:
  
-|Öznitelik  |Value  |
+|Öznitelik  |Değer  |
 |---------|---------|
 |Passıverequestorendpoint     |`https://login.microsoftonline.com/login.srf`         |
-|Hedef kitle     |`urn:federation:MicrosoftOnline`         |
+|Hedef Kitle     |`urn:federation:MicrosoftOnline`         |
 |Veren     |İş ortağı IDP veren URI 'SI (örneğin `http://www.example.com/exk10l6w90DHM0yi...`)         |
 
 IDP tarafından verilen WS-Besme belirteci için gerekli talepler:
 
-|Öznitelik  |Value  |
+|Öznitelik  |Değer  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -209,7 +209,7 @@ PowerShell kullanarak doğrudan Federasyonu bir kimlik sağlayıcısıyla kaldı
    Connect-AzureAD
    ```
 3. Oturum açma isteminde, yönetilen genel yönetici hesabıyla oturum açın. 
-4. Aşağıdaki komutu girin:
+4. Aşağıdaki komutu kullanın:
    ```powershell
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
    ```

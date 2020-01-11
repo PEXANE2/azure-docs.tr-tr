@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 784e31b823c65c0b908dc07582805e7a69d19563
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 8c358b727a436f1951337005883b5d577119fac1
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304860"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895616"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure dijital TWINS için Postman 'ı yapılandırma
 
@@ -66,7 +66,7 @@ Azure Active Directory uygulamanızı OAuth 2,0 örtük izin akışını kullana
 
     Manifest. JSON 'inizdeki **oauth2AllowImplicitFlow** ayarını etkinleştirmek için **erişim belirteçlerini** denetleyin.
 
-    [![ortak istemci yapılandırma ayarı](../../includes/media/digital-twins-permissions/aad-public-client.png)](../../includes/media/digital-twins-permissions/aad-public-client.png#lightbox)
+    [![ortak istemci yapılandırma ayarı](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1. Azure Active Directory uygulamanızın **uygulama kimliğini** kopyalayın ve saklayın. Bu, izleyen adımlarda kullanılır.
 
@@ -94,19 +94,19 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
 
     | Alan  | Değer |
     |---------|---------|
-    | Verme türü | `Implicit` |
-    | Geri çağırma URL 'SI | `https://www.getpostman.com/oauth2/callback` |
-    | Kimlik doğrulama URL 'SI | **2. adımdaki** **yetkilendirme URL 'sini** kullanın |
+    | Veriliş Türü | `Implicit` |
+    | Geri Çağırma URL’si | `https://www.getpostman.com/oauth2/callback` |
+    | Kimlik Doğrulama URL’si | **2. adımdaki** **yetkilendirme URL 'sini** kullanın |
     | İstemci Kimliği | Önceki bölümden oluşturulmuş veya yeniden kullanılan Azure Active Directory uygulamasının **uygulama kimliğini** kullanın |
     | Kapsam | Boş bırakın |
-    | State | Boş bırakın |
-    | İstemci kimlik doğrulaması | `Send as Basic Auth header` |
+    | Eyalet | Boş bırakın |
+    | İstemci Kimlik Doğrulaması | `Send as Basic Auth header` |
 
 1. İstemci şu şekilde görünmelidir:
 
     [![Postman istemci belirteci örneği](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
-1. **Istek belirtecini**seçin.
+1. **Belirteç İste**’ye tıklayın.
   
 1. Aşağı kaydırın ve **belirteci kullan**' ı seçin.
 
@@ -130,7 +130,7 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
    > * Her bölüm için bu üst bilgileri belirtmeniz gerekmez.
    > * Tüm istek için `multipart/mixed` veya başka bir uygun **Içerik türü** seçmelisiniz.
 
-1. Son olarak, çok parçalı HTTP POST isteğinizi göndermek için **Gönder** ' i seçin. `200` veya `201` durum kodu başarılı bir isteği gösterir. Ayrıca ilgili yanıt iletisini görürsünüz.
+1. Son olarak, çok parçalı HTTP POST isteğinizi göndermek için **Gönder** ' i seçin. `200` veya `201` durum kodu başarılı bir isteği gösterir. Uygun yanıt iletisi, istemci arabiriminde görüntülenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

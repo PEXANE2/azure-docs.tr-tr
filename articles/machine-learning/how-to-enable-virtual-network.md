@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/13/2019
-ms.openlocfilehash: 548b74dbaf36fa0a0b5f999d1de61a0c05241c61
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/03/2020
+ms.openlocfilehash: 333d7faacfb5965e74eae69f07ff974a8fff8f25
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690828"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894004"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Bu makalede, *Gelişmiş güvenlik ayarları*, temel veya Deneysel kullanım dur
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>Çalışma alanınız için bir depolama hesabı kullanın
 
-Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak üzere şunları yapın:
+Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak için aşağıdaki adımları kullanın:
 
 1. Bir sanal ağın arkasında bir işlem kaynağı (örneğin, bir Machine Learning işlem örneği veya kümesi) oluşturun veya çalışma alanına (örneğin, bir HDInsight kümesi, sanal makine veya Azure Kubernetes hizmet kümesi) bir işlem kaynağı ekleyin. İşlem kaynağı deneme veya model dağıtımı için olabilir.
 
@@ -58,7 +58,7 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak �
 
    ![Azure portal Azure Storage sayfasındaki "güvenlik duvarları ve sanal ağlar" alanı](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
-1. __Güvenlik duvarları ve sanal ağlar__ sayfasında, aşağıdakileri yapın:
+1. __Güvenlik duvarları ve sanal ağlar__ sayfasında, aşağıdaki işlemleri yapın:
     - __Seçili ağlar__'ı seçin.
     - __Sanal ağlar__altında __var olan sanal ağ ekle__ bağlantısını seçin. Bu eylem, işlemin bulunduğu sanal ağı ekler (bkz. 1. adım).
 
@@ -88,7 +88,8 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak �
 * Azure Container Repository deposu örneklerine parolalar
 * Veri depolarına yönelik bağlantı dizeleri
 
-Bir sanal ağın arkasındaki Azure Key Vault Azure Machine Learning deneme yeteneklerini kullanmak için şunları yapın:
+Bir sanal ağın arkasındaki Azure Key Vault Azure Machine Learning deneme yeteneklerini kullanmak için aşağıdaki adımları kullanın:
+
 1. Çalışma alanıyla ilişkili olan anahtar kasasına gidin.
 
    [Azure Machine Learning çalışma alanıyla ilişkili anahtar kasasını ![](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
@@ -97,7 +98,7 @@ Bir sanal ağın arkasındaki Azure Key Vault Azure Machine Learning deneme yete
 
    ![Key Vault bölmesindeki "güvenlik duvarları ve sanal ağlar" bölümü](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 
-1. __Güvenlik duvarları ve sanal ağlar__ sayfasında, aşağıdakileri yapın:
+1. __Güvenlik duvarları ve sanal ağlar__ sayfasında, aşağıdaki işlemleri yapın:
     - __Erişime Izin ver__' ın altında __Seçili ağlar__' ı seçin.
     - __Sanal ağlar__altında, deneme hesapla'nizin bulunduğu sanal ağı eklemek için __var olan sanal ağları Ekle__ ' yi seçin.
     - __Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver__altında __Evet__' i seçin.
@@ -158,11 +159,11 @@ Azure portal NSG kural yapılandırması aşağıdaki görüntülerde gösterilm
 
 ### <a id="limiting-outbound-from-vnet"></a>Sanal ağ ile giden bağlantıyı sınırlayın
 
-Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın giden erişimini sınırlandırmak istiyorsanız, aşağıdakileri yapın:
+Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın giden erişimini sınırlandırmak istiyorsanız aşağıdaki adımları kullanın:
 
 - NSG kurallarını kullanarak giden internet bağlantısını reddedin.
 
-- Giden trafiği şu şekilde sınırlayın:
+- Giden trafiği şu öğelerle sınırla:
    - Depolama alanı __hizmet etiketi__ kullanılarak Azure storage __. Region_Name__ (örneğin, Storage. EastUS)
    - Azure Container Registry, __AzureContainerRegistry. Region_Name__ __hizmet etiketi__ kullanılarak (örneğin, AzureContainerRegistry. EastUS)
    - __AzureMachineLearning__ __hizmet etiketi__ kullanılarak Azure Machine Learning
@@ -223,13 +224,13 @@ Daha fazla bilgi için bkz. [Sanal ağda Azure Batch havuzu oluşturma](../batch
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>Sanal ağda bir işlem kümesi oluşturma
 
-Machine Learning İşlem kümesi oluşturmak için aşağıdakileri yapın:
+Machine Learning İşlem kümesi oluşturmak için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com), Azure Machine Learning çalışma alanınızı seçin.
 
 1. __Uygulama__ bölümünde __işlem__' i seçin ve ardından __İşlem Ekle__' yi seçin.
 
-1. Bu işlem kaynağını bir sanal ağ kullanacak şekilde yapılandırmak için aşağıdakileri yapın:
+1. Bu işlem kaynağını bir sanal ağ kullanacak şekilde yapılandırmak için aşağıdaki işlemleri yapın:
 
     a. __Ağ yapılandırması__için __Gelişmiş__' i seçin.
 
@@ -297,14 +298,14 @@ Bir sanal ağla Azure Databricks kullanma hakkında ayrıntılı bilgi için bkz
 > [!IMPORTANT]
 > Azure Machine Learning yalnızca Ubuntu çalıştıran sanal makineleri destekler.
 
-Bir sanal makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip bir sanal ağda kullanmak için şunları yapın:
+Sanal bir makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip bir sanal ağda kullanmak için aşağıdaki adımları kullanın:
 
 1. Azure portal veya Azure CLı kullanarak bir VM veya HDInsight kümesi oluşturun ve kümeyi bir Azure sanal ağına yerleştirin. Daha fazla bilgi için aşağıdaki makalelere bakın:
     * [Linux VM 'Ler için Azure sanal ağları oluşturma ve yönetme](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [Azure sanal ağını kullanarak HDInsight 'ı genişletme](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
 
-1. Azure Machine Learning, VM veya kümedeki SSH bağlantı noktasıyla iletişim kurmasına izin vermek için, ağ güvenlik grubu için bir kaynak girişi yapılandırın. SSH bağlantı noktası genellikle bağlantı noktası 22 ' dir. Bu kaynaktan gelen trafiğe izin vermek için aşağıdakileri yapın:
+1. Azure Machine Learning, VM veya kümedeki SSH bağlantı noktasıyla iletişim kurmasına izin vermek için, ağ güvenlik grubu için bir kaynak girişi yapılandırın. SSH bağlantı noktası genellikle bağlantı noktası 22 ' dir. Bu kaynaktan gelen trafiğe izin vermek için aşağıdaki işlemleri yapın:
 
     * __Kaynak__ açılan listesinde __hizmet etiketi__' ni seçin.
 
@@ -332,7 +333,7 @@ Bir sanal makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip b
 
 ## <a name="use-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetini (AKS) kullanma
 
-Çalışma alanınıza bir sanal ağdaki AKS eklemek için aşağıdakileri yapın:
+Bir sanal ağdaki AKS 'leri çalışma alanınıza eklemek için aşağıdaki adımları kullanın:
 
 > [!IMPORTANT]
 > Aşağıdaki yordama başlamadan önce, [Azure Kubernetes Service (AKS) içindeki gelişmiş ağı yapılandırma (aks)](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites) ve kümenizin IP adreslemesini planlayın bölümündeki önkoşulları izleyin.
@@ -347,7 +348,7 @@ Bir sanal makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip b
 
 1. __Uygulama__ bölümünde __işlem__' i seçin ve ardından __İşlem Ekle__' yi seçin.
 
-1. Bu işlem kaynağını bir sanal ağ kullanacak şekilde yapılandırmak için aşağıdakileri yapın:
+1. Bu işlem kaynağını bir sanal ağ kullanacak şekilde yapılandırmak için aşağıdaki işlemleri yapın:
 
     - __Ağ yapılandırması__için __Gelişmiş__' i seçin.
 
@@ -393,6 +394,82 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Oluşturma işlemi tamamlandığında, bir sanal ağın arkasındaki AKS kümesinde çıkarım veya model Puanlama çalıştırabilirsiniz. Daha fazla bilgi için bkz. [AKS 'e dağıtma](how-to-deploy-and-where.md).
 
+### <a name="use-private-ips-with-azure-kubernetes-service"></a>Azure Kubernetes hizmeti ile özel IP 'Leri kullanma
+
+Varsayılan olarak, AKS dağıtımlarına genel bir IP adresi atanır. Bir sanal ağ içinde AKS kullanırken, bunun yerine özel bir IP adresi kullanabilirsiniz. Özel IP adreslerine yalnızca sanal ağ veya birleştirilmiş ağların içinden erişilebilir.
+
+Özel bir IP adresi, bir _iç yük dengeleyici_kullanmak üzere aks 'ler yapılandırılarak etkinleştirilir. 
+
+> [!IMPORTANT]
+> Azure Kubernetes hizmet kümesini oluştururken özel IP 'yi etkinleştiremezsiniz. Mevcut bir kümeye güncelleştirme olarak etkinleştirilmelidir.
+
+Aşağıdaki kod parçacığı, **Yeni BIR AKS kümesi oluşturmayı**ve ardından özel bir IP/iç yük dengeleyici kullanmak üzere güncelleştirmeyi göstermektedir:
+
+```python
+import azureml.core
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute import AksCompute, ComputeTarget
+
+# Verify that cluster does not exist already
+try:
+    aks_target = AksCompute(workspace=ws, name=aks_cluster_name)
+    print("Found existing aks cluster")
+
+except:
+    print("Creating new aks cluster")
+
+    # Create AKS configuration
+    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    # Set info for existing virtual network to create the cluster in
+    prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
+    prov_config.vnet_name = "myvnetname"
+    prov_config.service_cidr = "10.0.0.0/16"
+    prov_config.dns_service_ip = "10.0.0.10"
+    prov_config.subnet_name = "default"
+    prov_config.docker_bridge_cidr = "172.17.0.1/16"
+
+    # Create compute target
+    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+    
+    # Update AKS configuration to use an internal load balancer
+    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", "default")
+    aks_target.update(update_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+```
+
+__Azure CLI__
+
+```azurecli-interactive
+az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
+```
+
+Komutu tarafından başvurulan `body.json` dosyasının içeriği aşağıdaki JSON belgesine benzer:
+
+```json
+{ 
+    "location": “<region>”, 
+    "properties": { 
+        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
+        "computeType": "AKS", 
+        "provisioningState": "Succeeded", 
+        "properties": { 
+            "loadBalancerType": "InternalLoadBalancer", 
+            "agentCount": <agent-count>, 
+            "agentVmSize": "vm-size", 
+            "clusterFqdn": "<cluster-fqdn>" 
+        } 
+    } 
+} 
+```
+
+> [!NOTE]
+> Şu anda, var olan bir kümede __iliştirme__ işlemi gerçekleştirirken yük dengeleyiciyi yapılandıramazsınız. Önce kümeyi eklemeniz ve sonra yük dengeleyiciyi değiştirmek için bir güncelleştirme işlemi gerçekleştirmeniz gerekir.
+
+AKS ile iç yük dengeleyiciyi kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmeti ile iç yük dengeleyici kullanma](/azure/aks/internal-lb).
+
 ## <a name="use-azure-firewall"></a>Azure Güvenlik duvarını kullanma
 
 Azure Güvenlik Duvarı 'nı kullanırken aşağıdaki adreslere gelen ve giden trafiğe izin vermek için bir ağ kuralı yapılandırmanız gerekir:
@@ -414,4 +491,3 @@ Ağ kuralını yapılandırma hakkında daha fazla bilgi için bkz. [Azure Güve
 * [Eğitim ortamlarını ayarlama](how-to-set-up-training-targets.md)
 * [Modelleri dağıtılacağı yeri](how-to-deploy-and-where.md)
 * [SSL ile güvenli bir şekilde model dağıtma](how-to-secure-web-service.md)
-

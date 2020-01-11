@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 80eadcadad58cc126a9213c9e5bc5c65c1eb5c6c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793437"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896395"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma modeli
 
@@ -29,7 +29,7 @@ Genel veya "küresel" Azure Logic Apps hizmetinde çalışan yeni mantıksal uyg
 
 * Özel eylemler olan Tetikleyiciler. Tüm mantıksal uygulamalar ilk adım olarak bir tetikleyici gerektirir.
 * ["Yerleşik" veya http gibi yerel eylemler](../connectors/apis-list.md#built-in) , Azure işlevlerine yapılan çağrılar ve API Management vb.)
-* Outlook 365, Dropbox vb. gibi [yönetilen bağlayıcılar](../connectors/apis-list.md##managed-connectors) için çağrılar
+* Outlook 365, Dropbox vb. gibi [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-connectors) için çağrılar
 * Döngüler, koşullu deyimler vb. gibi denetim akışı adımları
 
 Standart [Bağlayıcılar](../connectors/apis-list.md#managed-connectors) [standart bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden ücretlendirilir. Genel kullanıma sunulan [Kurumsal bağlayıcılar](../connectors/apis-list.md#managed-connectors) [Kurumsal bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden ücretlendirilir, ancak genel önizleme kurumsal bağlayıcıları [standart bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden ücretlendirilir.

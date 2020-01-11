@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: e1393b02948f2d86329263504d582fe78a474377
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974351"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890269"
 ---
 # <a name="pattern-syntax"></a>Desen söz dizimi
 
@@ -33,7 +33,7 @@ Model sözdizimi aşağıdaki sözdizimini destekler:
 |varlık| {} küme ayraçları|2|{Entity-Name} formu nerede?|
 |isteğe bağlı|[]-köşeli parantezler<BR><BR>Herhangi bir isteğe bağlı ve gruplandırma birleşiminin iç içe geçme düzeylerinde 3 sınırı vardır |2|Soru işareti isteğe bağlıdır [?]|
 |gruplandırma|()-parantez|2|(a \| b)|
-|or| \|-dikey çubuk (kanal)<br><br>Bir gruptaki dikey çubuklar (veya) üzerinde 2 sınırı vardır |-|WHERE formu ({form-adı-Short} &#x7c; {form-adı-Long} &#x7c; {form-numarası})|
+|veya| \|-dikey çubuk (kanal)<br><br>Bir gruptaki dikey çubuklar (veya) üzerinde 2 sınırı vardır |-|WHERE formu ({form-adı-Short} &#x7c; {form-adı-Long} &#x7c; {form-numarası})|
 |söylenişi başlangıcı ve/veya bitişi|^-şapka işareti|-|^ söylenişi 'a başla<br>söylenişi tamamlandı ^<br>{Number} varlık ^ ile tüm söylenişi ile tam sabit değer eşleşmesi ^|
 
 ## <a name="nesting-syntax-in-patterns"></a>Desenlerdeki iç içe sözdizimi
@@ -62,7 +62,7 @@ Entity1, Origin (Seattle) ve hedef (Cairo) gibi rollere sahip bir konum ise ve v
 
 |İzin Verildi|Örnek|
 |--|--|
-|Yes|([(test1 &#x7c; test2)] &#x7c; test3)|
+|Evet|([(test1 &#x7c; test2)] &#x7c; test3)|
 |Hayır|([([test1] &#x7c; test2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Ya da tabanlı sözdizimi olan gruplar için iç içe sınırları
@@ -71,7 +71,7 @@ Entity1, Origin (Seattle) ve hedef (Cairo) gibi rollere sahip bir konum ise ve v
 
 |İzin Verildi|Örnek|
 |--|--|
-|Yes|(test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
+|Evet|(test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
 |Hayır|(test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Bir varlık için bir desen şablonu eklemek için söz dizimi
@@ -142,7 +142,7 @@ Noktalama işaretleri (`?`, `!`, `.`) göz ardı edilmelidir ve desenlerdeki kö
 Desenler hakkında daha fazla bilgi edinin:
 
 * [Desenler ekleme](luis-how-to-model-intent-pattern.md)
-* [Nasıl eklenir. herhangi bir varlık](luis-how-to-add-entities.md##add-a-patternany-entity)
+* [Nasıl eklenir. herhangi bir varlık](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [Desenler kavramları](luis-concept-patterns.md)
 
 . JSON yanıtında [yaklaşım nasıl döndürüleceğini](luis-reference-prebuilt-sentiment.md) anlayın.

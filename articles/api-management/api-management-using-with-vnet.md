@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: apimpm
-ms.openlocfilehash: 4a188a8de4f1cbf9d5bc20f7e514e3f5a2c752dc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 26a353251bd85a30ab26c86f3d6b363b0a84e074
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074621"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889539"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlarla Azure API Management kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -31,7 +31,7 @@ Azure API Management, sanal ağ (VNET) içinde dağıtılabilir ve bu sayede ağ
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
@@ -45,44 +45,47 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>Azure portal kullanarak VNET bağlantısını etkinleştirme
 
-1. [Azure Portal](https://portal.azure.com/)APIM örneğinize gidin.
-2. **Sanal ağ**' ı seçin.
-3. API Management örneğini bir sanal ağın içine dağıtılacak şekilde yapılandırın.
+1. API Management örneğinizi bulmak için [Azure Portal](https://portal.azure.com) gidin. **API Management Hizmetleri**arayın ve seçin.
+
+2. API Management örneğinizi seçin.
+
+3. **Sanal ağ**'ı seçin.
+4. API Management örneğini bir sanal ağın içine dağıtılacak şekilde yapılandırın.
 
     ![API Management sanal ağ menüsü][api-management-using-vnet-menu]
-4. İstenen erişim türünü seçin:
+5. İstenen erişim türünü seçin:
 
-   * **Kapalı**: bu varsayılandır. API Management bir sanal ağa dağıtılmadı.
+    * **Kapalı**: bu varsayılandır. API Management bir sanal ağa dağıtılmadı.
 
-   * **Harici**: API Management ağ geçidi ve geliştirici portalına bir dış yük dengeleyici aracılığıyla genel İnternet üzerinden erişilebilir. Ağ Geçidi, sanal ağ içindeki kaynaklara erişebilir.
+    * **Harici**: API Management ağ geçidi ve geliştirici portalına bir dış yük dengeleyici aracılığıyla genel İnternet üzerinden erişilebilir. Ağ Geçidi, sanal ağ içindeki kaynaklara erişebilir.
 
-     ![Ortak eşleme][api-management-vnet-public]
+        ![Ortak eşleme][api-management-vnet-public]
 
-   * **İç**: API Management ağ geçidi ve geliştirici portalına yalnızca iç yük dengeleyici aracılığıyla sanal ağ içinden erişilebilir. Ağ Geçidi, sanal ağ içindeki kaynaklara erişebilir.
+    * **İç**: API Management ağ geçidi ve geliştirici portalına yalnızca iç yük dengeleyici aracılığıyla sanal ağ içinden erişilebilir. Ağ Geçidi, sanal ağ içindeki kaynaklara erişebilir.
 
-     ![Özel eşleme][api-management-vnet-private]
+        ![Özel eşleme][api-management-vnet-private]
 
-     Artık API Management hizmetinizin sağlandığı tüm bölgelerin bir listesini görürsünüz. Her bölge için bir VNET ve alt ağ seçin. Liste, yapılandırdığınız bölgede kurulu olan Azure aboneliklerinizde bulunan hem klasik hem de Kaynak Yöneticisi sanal ağlarla doldurulur.
+6. **Dış** veya **iç**' yı seçtiyseniz, API Management hizmetinizin sağlandığı tüm bölgelerin bir listesini görürsünüz. Bir **konum**seçin ve ardından **sanal ağını** ve **alt ağını**seçin. Sanal ağ listesi, yapılandırdığınız bölgede ayarlanmış olan Azure aboneliklerinizde bulunan hem klasik hem de Kaynak Yöneticisi sanal ağlarla doldurulur.
 
-     > [!IMPORTANT]
-     > Bir Azure API Management örneğini bir Kaynak Yöneticisi VNET 'e dağıttığınızda, hizmet Azure API Management örnekleri dışında başka hiçbir kaynak içermeyen bir ayrılmış alt ağda olmalıdır. Azure API Management örneğini diğer kaynakları içeren bir Kaynak Yöneticisi VNET alt ağına dağıtmaya yönelik bir girişim yapılırsa, dağıtım başarısız olur.
-     >
+    > [!IMPORTANT]
+    > Bir Azure API Management örneğini bir Kaynak Yöneticisi VNET 'e dağıttığınızda, hizmet Azure API Management örnekleri dışında başka hiçbir kaynak içermeyen bir ayrılmış alt ağda olmalıdır. Azure API Management örneğini diğer kaynakları içeren bir Kaynak Yöneticisi VNET alt ağına dağıtmaya yönelik bir girişim yapılırsa, dağıtım başarısız olur.
 
-     ![VPN seçin][api-management-setup-vpn-select]
+    Sonra **Uygula**'yı seçin. API Management örneğinizin **sanal ağ** sayfası, yeni sanal ağ ve alt ağ seçimlerinizle güncelleştirilir.
 
-5. Üst gezinti çubuğunda **Kaydet** ' e tıklayın.
-6. Üst gezinti çubuğunda **ağ yapılandırması Uygula** ' ya tıklayın.
+    ![VPN seçin][api-management-setup-vpn-select]
+
+7. Üst gezinti çubuğunda **Kaydet**' i ve ardından **ağ yapılandırması Uygula**' yı seçin.
 
 > [!NOTE]
 > API Management örneğinin VIP adresi, VNET 'in her etkin veya devre dışı bırakıldığı her seferinde değişecektir.
-> API Management **dış** sunucudan **iç** veya tam tersi yönde taşındığında VIP adresi de değişir
+> API Management **dış** sunucudan **iç**veya tam tersi yönde taşındığında VIP adresi de değişecektir.
 >
 
 > [!IMPORTANT]
 > VNET 'ten API Management kaldırır veya içinde dağıtıldığı bir değişikliği değiştirirseniz, daha önce kullanılmış olan VNET, altı saate kadar kilitli kalabilir. Bu süre boyunca VNET 'i silmek veya yeni bir kaynak dağıtmak mümkün olmayacaktır. Bu davranış, API-sürüm 2018-01-01 ve öncesini kullanan istemciler için geçerlidir. API-sürüm 2019-01-01 ve üzeri kullanan istemciler, ilişkili API Management hizmeti silindikten hemen sonra sanal ağ serbest bırakılır.
 
 ## <a name="enable-vnet-powershell"> </a>PowerShell cmdlet 'LERINI kullanarak VNET bağlantısını etkinleştirme
-Ayrıca, PowerShell cmdlet 'lerini kullanarak VNET bağlantısını etkinleştirebilirsiniz
+Ayrıca, PowerShell cmdlet 'lerini kullanarak VNET bağlantısını etkinleştirebilirsiniz.
 
 * **VNET içinde API Management hizmeti oluşturma**: sanal ağ Içinde bir Azure API Management hizmeti oluşturmak için [New-Azapimana,](/powershell/module/az.apimanagement/new-azapimanagement) cmdlet 'ini kullanın.
 
@@ -133,8 +136,8 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 
     | Azure ortamı | Uç Noktalar                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure genel      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com burada `East US 2` eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Kamu  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Genel      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com burada `East US 2` eastus2.warm.ingestion.msftcloudes.com</li></ul> |
+    | Azure Devlet Kurumları  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
     | Azure Çin       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
 + **SMTP geçişi**: konak `smtpi-co1.msn.com`, `smtpi-ch1.msn.com`, `smtpi-db3.msn.com`, `smtpi-sin.msn.com` ve `ies.global.microsoft.com` altında çözümlenen SMTP geçişi için giden ağ bağlantısı
@@ -151,8 +154,8 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
     
      | Azure ortamı | Yönetim IP adresleri                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure genel      | 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 52.159.16.255/32, 40.82.157.167/32, 51.137.136.0/32, 40.81.185.8/32, 40.81.47.216/32, 51.145.56.125/32, 40.81.89.24/32, 52.224.186.99/32, 51.145.179.78/32, 52.140.238.179/32, 40.66.60.111/32, 52.139.80.117/32, 20.46.144.85/32, 191.233.24.179/32, 40.90.185.46/32, 102.133.130.197/32, 52.139.20.34/32, 40.80.232.185/32, 13.71.49.1/32, 13.64.39.16/32, 20.40.160.107/32 20.37.52.67/32, 20.44.33.246/32, 13.86.102.66/32, 20.40.125.155/32, 51.143.127.203/32, 52.253.225.124/32, 52.253.159.160/32, 20.188.77.119/32, 20.44.72.3/32, 52.142.95.35/32, 52.139.152.27/32, 20.39.80.2/32, 51.107.96.8/32, 20.39.99.81/32, 20.37.81.41/32, 51.107.0.91/32, 102.133.0.79/32, 51.116.96.0/32, 51.116.0.0 |
-    | Azure Kamu  | 52.127.42.160/32, 52.127.34.192/32 |
+    | Azure Genel      | 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 52.159.16.255/32, 40.82.157.167/32, 51.137.136.0/32, 40.81.185.8/32, 40.81.47.216/32, 51.145.56.125/32, 40.81.89.24/32, 52.224.186.99/32, 51.145.179.78/32, 52.140.238.179/32, 40.66.60.111/32, 52.139.80.117/32, 20.46.144.85/32, 191.233.24.179/32, 40.90.185.46/32, 102.133.130.197/32, 52.139.20.34/32, 40.80.232.185/32, 13.71.49.1/32, 13.64.39.16/32, 20.40.160.107/32 20.37.52.67/32, 20.44.33.246/32, 13.86.102.66/32, 20.40.125.155/32, 51.143.127.203/32, 52.253.225.124/32, 52.253.159.160/32, 20.188.77.119/32, 20.44.72.3/32, 52.142.95.35/32, 52.139.152.27/32, 20.39.80.2/32, 51.107.96.8/32, 20.39.99.81/32, 20.37.81.41/32, 51.107.0.91/32, 102.133.0.79/32, 51.116.96.0/32, 51.116.0.0 |
+    | Azure Devlet Kurumları  | 52.127.42.160/32, 52.127.34.192/32 |
     | Azure Çin       | 139.217.51.16/32, 139.217.171.176/32 |
 
   * Zorlamalı tünel sağlayan diğer API Management hizmet bağımlılıkları için, ana bilgisayar adını çözümlemek ve uç noktaya ulaşmak için bir yol olmalıdır. Bunlar şunlardır

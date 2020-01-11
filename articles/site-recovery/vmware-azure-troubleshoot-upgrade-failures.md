@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
-ms.openlocfilehash: 0e6631d36f8b8153c34f787f8941b45b7522aceb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b59f933fedd5f1d3ed3f7972b1a1fe653df31be2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083918"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893908"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Microsoft Azure Site Recovery Sağlayıcısını yükseltme hatalarını giderme
 
@@ -27,7 +27,7 @@ Yazılımın daha yüksek bir sürümü zaten yüklü olduğundan yükseltme des
 Yükseltmek için aşağıdaki adımları kullanın:
 
 1. Birleşik kurulum Site Recovery Microsoft Azure indirin:
-   1. [Azure Site Recovery makalesindeki hizmet güncelleştirmelerinin](service-updates-how-to.md##links-to-currently-supported-update-rollups) "Şu anda desteklenen güncelleştirme paketlerinin bağlantıları" bölümünde, yükseltmekte olduğunuz sağlayıcıyı seçin.
+   1. [Azure Site Recovery makalesindeki hizmet güncelleştirmelerinin](service-updates-how-to.md#links-to-currently-supported-update-rollups) "Şu anda desteklenen güncelleştirme paketlerinin bağlantıları" bölümünde, yükseltmekte olduğunuz sağlayıcıyı seçin.
    2. Toplama sayfasında, **güncelleştirme bilgileri** bölümünü bulun ve Site Recovery birleşik kurulum Microsoft Azure Için güncelleştirme paketini indirin.
 
 2. Bir komut istemi açın ve Birleşik kurulum dosyasını indirdiğiniz klasöre gidin. Aşağıdaki komutu kullanarak kurulum dosyalarını indirden ayıklayın, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;ayıklanan dosyalar için klasör yolu&gt;.
@@ -51,7 +51,7 @@ Sorunu gidermek için.
 1. Kayıt Defteri Düzenleyicisi 'Ni (Regedit. exe) başlatın ve HKEY_LOCAL_MACHINE \Software\wow6432node\ınmage Systems\yüklü Products\10 dalını açın.
 1. `Build_Version` anahtar değerini inceleyin. En son sürüme ayarlanırsa sürüm numarasını küçültün. Örneğin, en son sürüm 9,22 ise.\* ve `Build_Version` anahtarı bu değere ayarlanır, sonra 9,21 olarak küçültün.\*.
 1. Birleşik kurulum Site Recovery en son Microsoft Azure indirin:
-   1. [Azure Site Recovery makalesindeki hizmet güncelleştirmelerinin](service-updates-how-to.md##links-to-currently-supported-update-rollups) "Şu anda desteklenen güncelleştirme paketlerinin bağlantıları" bölümünde, yükseltmekte olduğunuz sağlayıcıyı seçin.
+   1. [Azure Site Recovery makalesindeki hizmet güncelleştirmelerinin](service-updates-how-to.md#links-to-currently-supported-update-rollups) "Şu anda desteklenen güncelleştirme paketlerinin bağlantıları" bölümünde, yükseltmekte olduğunuz sağlayıcıyı seçin.
    2. Toplama sayfasında, **güncelleştirme bilgileri** bölümünü bulun ve Site Recovery birleşik kurulum Microsoft Azure Için güncelleştirme paketini indirin.
 1. Bir komut istemi açın ve birleştirilmiş kurulum dosyasını indirdiğiniz klasöre gidin ve aşağıdaki komutu kullanarak kurulum dosyalarını indirmeden ayıklayın, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;ayıklanan dosyalar için klasör yolu&gt;.
 

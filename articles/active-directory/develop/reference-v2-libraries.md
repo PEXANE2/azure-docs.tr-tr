@@ -18,12 +18,12 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d2b2ea9d878db8284aa44cdbdacb92c8cd4fabe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7ff9e2015b4621c89b6a831cf7000aa32db5ea6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423998"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888938"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft Identity platform kimlik doğrulama kitaplıkları
 
@@ -108,7 +108,7 @@ Standartlarla uyumlu herhangi bir kitaplık için Microsoft Identity platform u�
 * Kitaplık kodundaki sorunlar ve yeni özellik istekleri için kitaplık sahibine başvurun.
 * Hizmet tarafı protokol uygulamasındaki sorunlar ve yeni özellik istekleri için Microsoft ile iletişim kurun.
 * Protokolde görmek istediğiniz ek özellikler için [bir özellik isteği](https://feedback.azure.com/forums/169401-azure-active-directory) yapın.
-* Microsoft Identity platform uç noktasının OAuth 2,0 veya OpenID Connect 1,0 ile uyumlu olmadığı bir sorun bulursanız [bir destek Isteği oluşturun](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) .
+* Microsoft Identity platform uç noktasının OAuth 2,0 veya OpenID Connect 1,0 ile uyumlu olmadığı bir sorun bulursanız [bir destek Isteği oluşturun](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .
 
 ## <a name="related-content"></a>İlgili içerikler
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849284"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889067"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Öğretici: Azure Key Vault kullanarak Azure Databricks Azure Blob depolamaya erişme
 
@@ -26,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure Databricks çalışma alanı oluşturma ve gizli dizi kapsamı ekleme
 > * Azure Databricks blob kapsayıcınıza erişin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
-> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
+> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Depolama hesabı ve BLOB kapsayıcısı oluşturma
 
@@ -68,7 +68,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
    ![Azure Kaynak arama kutusu oluşturma](./media/store-secrets-azure-key-vault/find-key-vault-resource.png)
 
-2. Key Vault kaynağı otomatik olarak seçilir. **Oluştur**'u seçin.
+2. Key Vault kaynağı otomatik olarak seçilir. **Oluştur**’u seçin.
 
    ![Key Vault kaynağı oluşturma](./media/store-secrets-azure-key-vault/create-key-vault-resource.png)
 
@@ -76,7 +76,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
    |Özellik|Açıklama|
    |--------|-----------|
-   |Adı|Anahtar kasanızın benzersiz adı.|
+   |Ad|Anahtar kasanızın benzersiz adı.|
    |Abonelik|Bir abonelik seçin.|
    |Kaynak grubu|Bir kaynak grubu seçin veya yeni bir tane oluşturun.|
    |Konum|Konum seçin.|
@@ -94,7 +94,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    |Özellik|Değer|
    |--------|-----------|
    |Karşıya yükleme seçenekleri|Manual|
-   |Adı|Depolama hesabı anahtarınız için kolay ad.|
+   |Ad|Depolama hesabı anahtarınız için kolay ad.|
    |Değer|depolama hesabınızdan key1.|
 
    ![Yeni Anahtar Kasası gizli dizisi özellikleri](./media/store-secrets-azure-key-vault/create-storage-secret.png)
@@ -121,7 +121,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
    ![Databricks çalışma alanı özellikleri](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 
-   **Oluştur**'u seçin.
+   **Oluştur**’u seçin.
 
 3. Azure portal yeni oluşturulan Azure Databricks kaynağına gidin ve **çalışma alanını Başlat**' ı seçin.
 

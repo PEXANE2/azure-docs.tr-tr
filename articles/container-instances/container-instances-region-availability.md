@@ -4,12 +4,12 @@ description: Farklı Azure bölgelerindeki Azure Container Instances hizmeti iç
 ms.topic: article
 ms.date: 12/17/2019
 ms.author: danlep
-ms.openlocfilehash: 456b9754d7a6e88705853d4c4d701110e4841eb0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9de5b08eed3aa10015813cbb4724ef4e947005fb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445822"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888014"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure bölgelerindeki Azure Container Instances kaynak kullanılabilirliği
 
@@ -45,9 +45,9 @@ Windows Server 2019 tabanlı kapsayıcılar (Önizleme) ile kapsayıcı gruplar�
 | Doğu ABD 2, Batı ABD 2 | Windows | 2 | 3,5 |
 
 
-## <a name="availability---virtual-network-deployment-preview"></a>Kullanılabilirlik-sanal ağ dağıtımı (Önizleme)
+## <a name="availability---virtual-network-deployment"></a>Kullanılabilirlik-sanal ağ dağıtımı
 
-Aşağıdaki bölgeler ve kaynaklar bir [Azure sanal ağında](container-instances-vnet.md) (Önizleme) dağıtılan bir kapsayıcı grubu için kullanılabilir.
+Aşağıdaki bölgeler ve kaynaklar, bir [Azure sanal ağında](container-instances-vnet.md)dağıtılan bir kapsayıcı grubu için kullanılabilir.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 

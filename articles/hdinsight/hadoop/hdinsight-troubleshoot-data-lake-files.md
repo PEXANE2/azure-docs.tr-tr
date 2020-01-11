@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 7b511ab0c3093747d6e713754c04533e5f25b6ad
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 21269f7d5a9ec832a49a613351702dd24be156af
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087391"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894160"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Azure HDInsight 'ta Data Lake depolama dosyalarına erişilemiyor
 
@@ -30,7 +30,7 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 Kullanıcı, dosyalar/klasörler üzerinde hizmet sorumlusu (SP) izinlerini iptal etmiş olabilir.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 1. SP 'nin yol üzerinde çapraz geçiş yapmak için ' x ' iznine sahip olduğundan emin olun. Daha fazla bilgi için bkz. [izinler](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). Data Lake depolama hesabındaki dosyalara/klasörlere erişimi denetlemek için örnek DFS komutu:
 
@@ -42,7 +42,7 @@ Kullanıcı, dosyalar/klasörler üzerinde hizmet sorumlusu (SP) izinlerini ipta
 
 ---
 
-## <a name="issue-service-principal-certificate-expiry"></a>Sorun: Hizmet sorumlusu sertifikası süre sonu
+## <a name="issue-service-principal-certificate-expiry"></a>Sorun: hizmet sorumlusu sertifikası süre sonu
 
 Şuna benzer bir hata iletisi alıyorsunuz:
 
@@ -66,7 +66,7 @@ Hizmet sorumlusu erişimi için belirtilen sertifikanın geçerliliği bitmiş o
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
     ```
 
-1. URL `core-site.xml property`  -  'lerden`fs.azure.datalake.token.provider.service.urls`birini alın.
+1. `core-site.xml property` - `fs.azure.datalake.token.provider.service.urls`URL 'lerden birini alın.
 
 1. OAuth belirtecini almak için aşağıdaki kıvrımlı komutunu çalıştırın.
 
@@ -99,7 +99,7 @@ Hizmet sorumlusu erişimi için belirtilen sertifikanın geçerliliği bitmiş o
     Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.cloudapp.net:909/api/oauthtoken}
     ```
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 Aşağıdaki PowerShell betiğini kullanarak yeni bir sertifika oluşturun veya var olan sertifikayı atayın:
 
@@ -171,6 +171,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

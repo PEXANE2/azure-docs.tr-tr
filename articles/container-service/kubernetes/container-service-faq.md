@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/30/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 9b17548bf840ff0e2f94ed6933e5abdcc04110c8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: f031f55bbff534181459bb1bf7469f315aee27cb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286510"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887793"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>Kullanım DıŞı Kapsayıcı hizmeti sık sorulan sorular
 
@@ -64,7 +64,7 @@ Bir Kubernetes kümesini dağıtmak için [Azure CLI komutlarını](../../contai
 1, 3 veya 5 ana düğüm içeren bir küme oluşturabilirsiniz. En fazla 100 aracı düğümü seçebilirsiniz.
 
 > [!IMPORTANT]
-> Daha büyük kümeler için ve düğümlerinize yönelik seçtiğiniz VM boyutuna bağlı olarak, aboneliğinizdeki çekirdek kotasını artırmanız gerekebilir. Bir kota artışı istemek için ücretsiz olarak [çevrimiçi müşteri destek isteği](../../azure-supportability/how-to-create-azure-support-request.md) açın. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/) kullanıyorsanız, yalnızca sınırlı sayıda Azure işlem çekirdeği kullanabilirsiniz.
+> Daha büyük kümeler için ve düğümlerinize yönelik seçtiğiniz VM boyutuna bağlı olarak, aboneliğinizdeki çekirdek kotasını artırmanız gerekebilir. Bir kota artışı istemek için ücretsiz olarak [çevrimiçi müşteri destek isteği](../../azure-portal/supportability/how-to-create-azure-support-request.md) açın. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/) kullanıyorsanız, yalnızca sınırlı sayıda Azure işlem çekirdeği kullanabilirsiniz.
 > 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Bir küme oluşturulduktan sonra ana sunucu sayısını nasıl artırabilirim? 
@@ -116,7 +116,7 @@ Daha fazla bilgi için bkz. [Azure Container Service kümesine bağlanma](../../
 
 Düzeltmeler hala etkin bir şekilde kullanıma hazır olan Windows üzerinde bazı bilinen DNS sorunları vardır. Ortamınızın bundan faydalanabilir olması için lütfen en güncel ACS-Engine ve Windows sürümünü ( [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) ve [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) yüklü) kullandığınızdan emin olun. Aksi takdirde lütfen azaltma adımları için aşağıdaki tabloya bakın:
 
-| DNS Belirtisi | Geçici Çözüm  |
+| DNS Belirtisi | Geçici çözüm  |
 |-------------|-------------|
 |İş yükü kapsayıcısı kararsız olduğunda ve çöktüğünde ağ ad alanı temizlenir | Etkilenen hizmetleri yeniden dağıtın |
 | Hizmet VIP erişimi bozuk | Her zaman bir normal (ayrılıklı olmayan) bir podun çalıştırılmasını sağlamak için bir [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) yapılandırın |

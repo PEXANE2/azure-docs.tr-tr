@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: fb1e22b0ca1da00bf2665d863b40f19fa1621771
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0e409ffdedbac822aedf48833f2dd85f8e04afa2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721303"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894972"
 ---
-# <a name="delete-a-site-recovery-services-vault"></a>Site Recovery Services kasasını silme
+# <a name="delete-a-site-recovery-services-vault"></a>Site Recovery Hizmetleri kasasını silme
 
 Bu makalede, Site Recovery için bir kurtarma hizmetleri kasasının nasıl silineceği açıklanır. Azure Backup kullanılan bir kasayı silmek için bkz. [Azure 'da bir yedekleme kasasını silme](../backup/backup-azure-delete-vault.md).
 
@@ -44,7 +44,7 @@ Bir kasayı silebilmeniz için önce kayıtlı sunucuları ve kasadaki öğeleri
 
 1. System Center VMM tarafından yönetilen Hyper-V VM 'lerini silmek için [aşağıdaki adımları](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario) izleyin.
 2. Tüm çoğaltma ilkelerinin ilişkisini kaldırın ve silin. Bunu, **System Center VMM** > **çoğaltma Ilkeleri**için **Site Recovery altyapı** > >.
-3. Bağlı bir VMM sunucusunun kaydını silmek için [Bu adımları](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server) izleyin.
+3. Bağlı bir VMM sunucusunun kaydını silmek için [Bu adımları](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) izleyin.
 4. Ardından kasayı silin.
 
 ## <a name="delete-a-vault-hyper-v-vm-to-azure"></a>Azure 'a bir kasa-Hyper-V VM 'si silme

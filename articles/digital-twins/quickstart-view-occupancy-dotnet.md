@@ -9,13 +9,13 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 11/12/2019
-ms.openlocfilehash: 621b02363310ccc6f3dc1b32807874307210e964
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/10/2020
+ms.openlocfilehash: 6c9c5df27f4a361e534bac2fe21b2c470f8d0186
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861141"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895559"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Hızlı Başlangıç: Azure dijital İkizlerini kullanarak kullanılabilir odaları bulun.
 
@@ -23,7 +23,7 @@ Azure dijital İkizlerini service, fiziksel ortamınızın dijital bir görünt�
 
 Bu hızlı başlangıçta kullanılmaktadır [.NET örnekleri çifti](https://github.com/Azure-Samples/digital-twins-samples-csharp) sanal ofis binasını dijitalleştirerek. Bu yapı içinde kullanılabilir odaları nasıl gösterir. Dijital İkizlerini kullanmaya birçok sensörlerden ortamınız ile ilişkilendirebilirsiniz. Bunu ayrıca kullanılabilir odanıza hava kalitesini sanal algılayıcı tasarruf edilen karbon dioksit için Yardım en uygun olup olmadığını öğrenebilirsiniz. Örnek uygulamalarından biridir, bu senaryo görselleştirmenize yardımcı olmak için rastgele sensör verilerini oluşturur.
 
-Aşağıdaki videoda hızlı başlangıç ayarları özetlenir:
+Aşağıdaki video hızlı başlangıç kurulumunu özetler:
 
 >[!VIDEO https://www.youtube.com/embed/1izK266tbMI]
 
@@ -83,11 +83,11 @@ Uzamsal graph kullanılarak sağlanan [provisionSample.yaml](https://github.com/
 
 1. Sağlama adım birkaç dakika sürebilir. Ayrıca, IOT hub'ı dijital İkizlerini örneğinizin içinde sağlar. IOT hub'ı durum gösterilene kadar aracılığıyla döngü =`Running`.
 
-    [örnek durum = çalışıyor ![sağlama](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
+    [örnek durum = çalışıyor ![sağlama](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-provision-sample.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-provision-sample.png#lightbox)
 
 1. Yürütme sonunda kopyalama `ConnectionString` cihazın kullanılmak üzere cihaz simülatörü örnek. Yalnızca bu görüntüde ana hatlarıyla belirtilen dizeyi kopyalayın.
 
-    [bağlantı dizesini kopyalamak ![](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png)](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png#lightbox)
+    [bağlantı dizesini kopyalamak ![](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-connection-string.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-connection-string.png#lightbox)
 
     >[!TIP]
     > Görüntüleyebilir ve uzamsal graph aracılığıyla değiştirmek [Azure dijital İkizlerini graf Görüntüleyicisi](https://github.com/Azure/azure-digital-twins-graph-viewer).
@@ -104,7 +104,7 @@ Aşağıdaki adımları izleyerek algılayıcı simülatörü cihaz uygulamasın
 1. Düzen [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) güncelleştirilecek **DeviceConnectionString** önceki ile `ConnectionString`. Güncelleştirilen dosyayı kaydedin.
 1. Çalıştırma `dotnet run` sensör verilerini göndermeyi başlatamadı.%n%nolası. Aşağıdaki görüntüde gösterildiği gibi Azure dijital TWINS 'e gönderilir.
 
-     [![cihaz bağlantısı](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
+     [![cihaz bağlantısı](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png#lightbox)
 
 1. Bu simülatörünü çalıştırın, böylece sonraki adım eylemi ile yan yana sonuçlarını görüntüleyebilirsiniz olanak tanır. Bu pencere dijital çiftleri için gönderilen sanal sensör verilerini gösterir. Sonraki adım sorgular gerçek zamanlı olarak güncel hava ile kullanılabilir odaları bulunacak.
 
@@ -123,7 +123,7 @@ Sensör örnek iki algılayıcılar için rastgele veri değerleri benzetimini y
    - `Room is available and air is fresh`
    - `Room is not available or air quality is poor`
 
-     [![yeni hava ile kullanılabilir alanlar Al](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
+     [![yeni hava ile kullanılabilir alanlar Al](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-get-available.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-get-available.png#lightbox)
 
 Bu hızlı başlangıçta ne olduğunu ve hangi API 'Lerin çağrıldığını anlamak için, `digital-twins-samples-csharp`' de bulunan kod çalışma alanı projesiyle [Visual Studio Code](https://code.visualstudio.com/Download) açın. Aşağıdaki komutu kullanın:
 

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: f3f89de07e2e17a4dda47ce3650391af38663004
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087198"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894307"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark için OutOfMemoryError özel durumları
 
@@ -56,15 +56,15 @@ java.lang.OutOfMemoryError
 
 Bu özel durumun en olası nedeni, Java sanal makineleri (JVMs) yeterli yığın bellek tahsis edildiği ' dir. Bu JVM 'Ler, Apache Spark uygulamasının bir parçası olarak yürüticileri veya sürücüler olarak başlatılır.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 1. Spark uygulamasının işleyeceği verilerin boyut üst sınırını belirleyin. Giriş verilerini dönüştürerek oluşturulan ara veriler ve ara verileri daha fazla dönüştürme ile üretilen çıkış verileri temelinde, en fazla giriş verisi boyutuna göre boyut tahmini yapın. Başlangıçtaki tahmin yeterli değilse, boyutu biraz artırabilir ve bellek hataları alt tarafına kadar yineleme yapın.
 
-1. Kullanılacak HDInsight kümesinin, Spark uygulamasını barındırmak için yeterli kaynağa (bellek ve ayrıca çekirdek olarak) sahip olduğundan emin olun. Bu, **kullanılan bellek** değerleri için kümenin Yarn Kullanıcı arabiriminin küme ölçümleri bölümü görüntülenirken belirlenebilir. Kullanılan **bellek toplamı** ve **sanal çekirdekler** karşılaştırması **Sanal çekirdekler toplam**.
+1. Kullanılacak HDInsight kümesinin, Spark uygulamasını barındırmak için yeterli kaynağa (bellek ve ayrıca çekirdek olarak) sahip olduğundan emin olun. Bu, **kullanılan bellek** **değerleri ve kullanılan bellek ve** **sanal** çekirdek sayısı karşılaştırması için kümenin Yarn Kullanıcı arabirimine ait küme ölçümleri bölümü görüntülenirken **belirlenebilir.**
 
     ![Yarn çekirdek bellek görünümü](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
-1. Aşağıdaki Spark yapılandırmasını uygun değerlere ayarlayın. Uygulama gereksinimlerini kümedeki kullanılabilir kaynaklarla dengeleyin. Bu değerler, YARN tarafından görüntülenen kullanılabilir bellek ve çekirdekler için% 90 ' ı aşmamalıdır ve Spark uygulamasının en düşük bellek gereksinimini de karşılamalıdır:
+1. Aşağıdaki Spark yapılandırmasını uygun değerlere ayarlayın. Uygulama gereksinimlerini kümedeki kullanılabilir kaynaklarla dengeleyin. Bu değerler, YARN tarafından görüntülenen kullanılabilir bellek ve çekirdekler için %90 ' ı aşmamalıdır ve Spark uygulamasının en düşük bellek gereksinimini de karşılamalıdır:
 
     ```
     spark.executor.instances (Example: 8 for 8 executor count)
@@ -114,9 +114,9 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
-Spark yapılandırmasındaki `SPARK_DAEMON_MEMORY` özelliği düzenleyerek Spark geçmiş sunucu belleğini artırabilir ve tüm hizmetleri yeniden başlatabilirsiniz.
+Spark yapılandırmasındaki `SPARK_DAEMON_MEMORY` özelliğini düzenleyerek Spark geçmiş sunucu belleğini artırabilir ve tüm hizmetleri yeniden başlatabilirsiniz.
 
 Bunu, Spark2/config/Advanced Spark2-env bölümünü seçerek, ambarı tarayıcısı kullanıcı arabiriminden yapabilirsiniz.
 
@@ -130,7 +130,7 @@ Tüm etkilenen hizmetleri ambarı 'ndan yeniden başlattığınızdan emin olun.
 
 ---
 
-## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>Senaryo: Apache Spark kümesinde Livy sunucusu başlatılamıyor
+## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>Senaryo: Apache Spark kümesinde Livy sunucu başlatılamaz
 
 ### <a name="issue"></a>Sorun
 
@@ -194,13 +194,13 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>Nedeni
 
-`java.lang.OutOfMemoryError: unable to create new native thread`Ana işletim sistemi, JVM 'lere daha fazla yerel iş parçacığı atayamaz. Bu özel durumun, işlem başına iş parçacığı sayısı sınırının ihlalinden kaynaklanmış olduğunu doğrulamıştır.
+`java.lang.OutOfMemoryError: unable to create new native thread` ana işletim sistemi, JVM 'lere daha fazla yerel iş parçacığı atayamaz. Bu özel durumun, işlem başına iş parçacığı sayısı sınırının ihlalinden kaynaklanmış olduğunu doğrulamıştır.
 
 Livy sunucusu beklenmedik şekilde sonlandırıldığında, Spark kümelerine yapılan tüm bağlantılar da sonlandırılır. Bu, tüm işlerin ve ilgili verilerin kaybedildiği anlamına gelir. HDP 2,6 oturum kurtarma mekanizması tanıtılmıştı, Livy sunucu geri alındıktan sonra kurtarılacak Zookeeper içinde oturum ayrıntılarını depolar.
 
 Livy aracılığıyla çok sayıda iş gönderildiğinde, Livy sunucusu için yüksek kullanılabilirlik parçası olan bu oturum durumlarını ZK 'de (HDInsight kümelerinde) depolar ve Livy hizmeti yeniden başlatıldığında bu oturumları kurtarır. Beklenmedik sonlandırma sonrasında, Livy oturum başına bir iş parçacığı oluşturur ve bu, çok fazla iş parçacığı oluşturulmasını neden olan belirli bir sayıda kurtarılabilir oturumu biriktirir.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 Aşağıda açıklanan adımları kullanarak tüm girdileri silin.
 
@@ -239,7 +239,7 @@ Aşağıda açıklanan adımları kullanarak tüm girdileri silin.
 1. Yukarıdaki komutun tamamlanmasını bekleyin ve imleci bir süre sonra yeniden başlatın ve bu işlemin başarılı olması gerekir.
 
 > [!NOTE]
-> `DELETE`Yürütme tamamlandıktan sonra tüm oturum. Tek tek toplu oturumlar, bir tasarıma göre olan Spark uygulaması tamamlandıktan hemen sonra otomatik olarak silinmez. Livy oturumu, Livy Rest sunucusuna yönelik bir POST isteği tarafından oluşturulan bir varlıktır. Varlığı `DELETE` silmek için bir çağrı gerekir. Ya da GC 'nin başlatılmasını beklememiz gerekir.
+> yürütmeyi tamamladıktan sonra, Livy oturumu `DELETE`. Tek tek toplu oturumlar, bir tasarıma göre olan Spark uygulaması tamamlandıktan hemen sonra otomatik olarak silinmez. Livy oturumu, Livy Rest sunucusuna yönelik bir POST isteği tarafından oluşturulan bir varlıktır. Varlığı silmek için bir `DELETE` çağrısı gerekir. Ya da GC 'nin başlatılmasını beklememiz gerekir.
 
 ---
 
@@ -253,6 +253,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

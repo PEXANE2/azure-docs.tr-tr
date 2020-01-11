@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: 404aa1d345bb1e30a0fe55d033d49d7dd8ba5a1b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b7dd11c3a71c46bbc06b205c6b4300337683305a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893472"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889005"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Hızlı başlangıç: kendi sanal ağınızda Azure Databricks çalışma alanı oluşturma
 
@@ -29,7 +29,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
-> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
+> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
 
     |Ayar|Önerilen değer|Açıklama|
     |-------|---------------|-----------|
-    |Adı|databricks-hızlı başlangıç|Sanal ağınız için bir ad seçin.|
+    |Ad|databricks-hızlı başlangıç|Sanal ağınız için bir ad seçin.|
     |Adres alanı|10.1.0.0/16|CıDR gösteriminde sanal ağın adres aralığı. CıDR aralığı/16 ile/24 arasında olmalıdır|
     |Abonelik|\<Aboneliğiniz\>|Kullanmak istediğiniz Azure aboneliğini seçin.|
     |Kaynak grubu|databricks-hızlı başlangıç|**Yeni oluştur** ' u seçin ve hesabınız için yeni bir kaynak grubu adı girin.|
@@ -70,7 +70,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
     |Kaynak grubu|databricks-hızlı başlangıç|Sanal ağ için kullandığınız kaynak grubunu seçin.|
     |Konum|\<Kullanıcılarınıza en yakın bölgeyi seçin\>|Sanal ağınızla aynı konumu seçin.|
     |Fiyatlandırma Katmanı|Standart veya Premium arasından seçim yapın.|Fiyatlandırma katmanları hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).|
-    |Sanal ağınızda Azure Databricks çalışma alanı dağıtma (VNet)|Yes|Bu ayar, sanal ağınıza bir Azure Databricks çalışma alanı dağıtmanıza olanak tanır.|
+    |Sanal ağınızda Azure Databricks çalışma alanı dağıtma (VNet)|Evet|Bu ayar, sanal ağınıza bir Azure Databricks çalışma alanı dağıtmanıza olanak tanır.|
     |Sanal Ağ|databricks-hızlı başlangıç|Önceki bölümde oluşturduğunuz sanal ağı seçin.|
     |Ortak alt ağ adı|Genel-alt ağ|Varsayılan genel alt ağ adını kullanın.|
     |Ortak alt ağ CıDR aralığı|10.179.64.0/18|/26 dahil olmak üzere bir CıDR aralığı kullanın.|

@@ -9,28 +9,28 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 01/07/2020
 ms.custom: include file
-ms.openlocfilehash: afce629cc4aa5e3bb62bd2cf2eeaf8af12dc7d9f
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9ccdc7a438d1dade534d39dc97a39a3bdae37dc4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752287"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895525"
 ---
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Giriş yan çubuğunu seçin ve ardından **kaynak oluştur ' a**tıklayın. 
 
-   [![giriş yan çubuğunu genişletip + kaynak oluştur ' u seçin.](./media/create-digital-twins-portal/create-a-resource.png)](./media/create-digital-twins-portal/create-a-resource.png#lightbox)
+   [![giriş yan çubuğunu genişletip + kaynak oluştur ' u seçin.](./media/create-digital-twins-portal/azure-portal-create-a-resource.png)](./media/create-digital-twins-portal/azure-portal-create-a-resource.png#lightbox)
 
 1. **Dijital TWINS**araması yapın ve **dijital TWINS**' i seçin. 
 
-   [Yeni bir dijital TWINS örneği oluşturmak için ![seçimleri](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+   [Yeni bir dijital TWINS örneği oluşturmak için ![seçimleri](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png)](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png#lightbox)
 
    Alternatif olarak, **nesnelerin interneti**öğesini seçin ve **dijital TWINS (Önizleme)** öğesini seçin.
 
 1. Dağıtım işlemini başlatmak için **Oluştur**’u seçin.
 
-   [![kaynağın dağıtımını oluşturma ve onaylama](./media/create-digital-twins-portal/create-and-confirm-resource.png)](./media/create-digital-twins-portal/create-and-confirm-resource.png#lightbox)
+   [![kaynağın dağıtımını oluşturma ve onaylama](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png)](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png#lightbox)
 
 1. **Digital Twins** bölmesine şu bilgileri girin:
    * **Kaynak Adı**: Digital Twins örneğiniz için benzersiz bir ad oluşturun.

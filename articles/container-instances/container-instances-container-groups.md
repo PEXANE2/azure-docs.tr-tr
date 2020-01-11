@@ -4,12 +4,12 @@ description: Azure Container Instances içinde kapsayıcı grupları hakkında b
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 19fa50f83a2593b8914931e25fa99cb2e4896227
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770280"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888065"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances kapsayıcı grupları
 
@@ -32,7 +32,7 @@ Bu örnek kapsayıcı grubu:
 * , Birim bağlama olarak iki Azure dosya paylaşımı içerir ve her kapsayıcı paylaşımların birini yerel olarak takar.
 
 > [!NOTE]
-> Çoklu kapsayıcı grupları Şu anda yalnızca Linux kapsayıcılarını destekliyor. Windows kapsayıcıları için Azure Container Instances yalnızca tek bir örnek dağıtımını destekler. Tüm özellikleri Windows kapsayıcılarına getirmek için çalıştık, ancak geçerli platform farklılıklarını hizmete [genel bakış](container-instances-overview.md#linux-and-windows-containers)bölümünde bulabilirsiniz.
+> Çoklu kapsayıcı grupları Şu anda yalnızca Linux kapsayıcılarını destekliyor. Windows kapsayıcıları için Azure Container Instances yalnızca tek bir kapsayıcı örneğinin dağıtımını destekler. Tüm özellikleri Windows kapsayıcılarına getirmek için çalıştık, ancak geçerli platform farklılıklarını hizmete [genel bakış](container-instances-overview.md#linux-and-windows-containers)bölümünde bulabilirsiniz.
 
 ## <a name="deployment"></a>Kurulum
 
@@ -44,19 +44,19 @@ Bir kapsayıcı grubunun yapılandırmasını korumak için, [az kapsayıcı dı
 
 ## <a name="resource-allocation"></a>Kaynak ayırma
 
-Azure Container Instances, gruptaki örneklerin [kaynak isteklerini][resource-requests] ekleyerek CPU, bellek ve Isteğe bağlı [GPU 'lar][gpus] (Önizleme) gibi kaynakları çok kapsayıcılı bir gruba ayırır. CPU kaynaklarını örnek olarak alma Örneğin, her biri 1 CPU isteyen iki örneğe sahip bir kapsayıcı grubu oluşturursanız, kapsayıcı grubuna 2 CPU tahsis edilir.
+Azure Container Instances, gruptaki örneklerin [kaynak isteklerini][resource-requests] ekleyerek CPU, bellek ve Isteğe bağlı [GPU 'lar][gpus] (Önizleme) gibi kaynakları çok kapsayıcılı bir gruba ayırır. CPU kaynaklarını örnek olarak alma Örneğin, her biri 1 CPU isteyen iki kapsayıcı örneğiyle bir kapsayıcı grubu oluşturursanız, kapsayıcı grubuna 2 CPU tahsis edilir.
 
-### <a name="resource-usage-by-instances"></a>Örneklere göre kaynak kullanımı
+### <a name="resource-usage-by-container-instances"></a>Kapsayıcı örneklerine göre kaynak kullanımı
 
-Bir gruptaki her kapsayıcı örneği, kaynak isteğinde belirtilen kaynakları tahsis edilir. Ancak, bir gruptaki bir örnek tarafından kullanılan en fazla kaynak, isteğe bağlı [kaynak sınırı][resource-limits] özelliğini yapılandırırsanız farklı olabilir. Bir örneğin kaynak sınırı zorunlu [kaynak isteği][resource-requests] özelliğinden büyük veya buna eşit olmalıdır.
+Bir gruptaki her kapsayıcı örneği, kaynak isteğinde belirtilen kaynakları tahsis edilir. Ancak, bir gruptaki kapsayıcı örneği tarafından kullanılan en fazla kaynak, isteğe bağlı [kaynak sınırı][resource-limits] özelliğini yapılandırırsanız farklı olabilir. Bir kapsayıcı örneğinin kaynak sınırı, zorunlu [kaynak isteği][resource-requests] özelliğinden büyük veya buna eşit olmalıdır.
 
-* Kaynak sınırı belirtmezseniz, örneğin en büyük kaynak kullanımı kaynak isteğiyle aynı olur.
+* Kaynak sınırı belirtmezseniz, kapsayıcı örneğinin en yüksek kaynak kullanımı kaynak isteğiyle aynıdır.
 
-* Bir örnek için bir sınır belirtirseniz, örneğin en büyük kullanım süresi istekten daha büyük olabilir ve bu, ayarladığınız sınıra kadar fazladır. Karşılık gelen, gruptaki diğer örneklere göre kaynak kullanımı azalabilir. Bir örnek için ayarlayabileceğiniz maksimum kaynak sınırı, gruba ayrılan toplam kaynaktır.
+* Bir kapsayıcı örneği için bir sınır belirtirseniz, örneğin en büyük kullanım süresi istekten daha büyük olabilir ve bu, ayarladığınız sınıra kadar büyüktür. Karşılık gelen, gruptaki diğer kapsayıcı örnekleri tarafından kaynak kullanımı azalabilir. Bir kapsayıcı örneği için ayarlayabileceğiniz maksimum kaynak sınırı, gruba ayrılan toplam kaynaktır.
     
-Örneğin, her biri 1 CPU isteyen iki örneğe sahip bir grupta, kapsayıcılarınızın biri diğer CPU 'ların çalışmasını gerektiren bir iş yükü çalıştırabilir.
+Örneğin, her biri 1 CPU isteyen iki kapsayıcı örneği olan bir grupta, kapsayıcılarınızın biri diğer CPU 'ların çalışmasını gerektiren bir iş yükü çalıştırabilir.
 
-Bu senaryoda, örnek için 2 CPU kaynak sınırı ayarlayabilirsiniz. Bu yapılandırma, kapsayıcının, varsa tam 2 CPU 'ya kadar kullanmasına izin verir.
+Bu senaryoda, kapsayıcı örneği için 2 CPU kaynak sınırı ayarlayabilirsiniz. Bu yapılandırma, kapsayıcı örneğinin varsa tam 2 CPU 'ya kadar kullanmasına izin verir.
 
 ### <a name="minimum-and-maximum-allocation"></a>En düşük ve en yüksek ayırma
 
@@ -68,9 +68,9 @@ Bu senaryoda, örnek için 2 CPU kaynak sınırı ayarlayabilirsiniz. Bu yapıla
 
 Kapsayıcı grupları, bir dış IP adresini, bu IP adresinde bir veya daha fazla bağlantı noktasını ve tam etki alanı adı (FQDN) olan bir DNS etiketini paylaşabilir. Dış istemcilerin Grup içindeki bir kapsayıcıya ulaşmasını sağlamak için, bağlantı noktasını IP adresinde ve kapsayıcıdan kullanıma sunmalısınız. Grup içindeki kapsayıcılar bir bağlantı noktası ad alanını paylaştığından, bağlantı noktası eşleştirmesi desteklenmez. Kapsayıcı grubu silindiğinde kapsayıcı grubunun IP adresi ve FQDN serbest bırakılır. 
 
-Bir kapsayıcı grubu içinde, kapsayıcılar örnekleri, bu bağlantı noktaları grubun IP adresinde veya kapsayıcıdan dışarıdan sunulmasa bile, herhangi bir bağlantı noktasında localhost aracılığıyla birbirlerine ulaşabilir.
+Kapsayıcı grubu içinde, kapsayıcı örnekleri, bu bağlantı noktaları grubun IP adresinde veya kapsayıcıdan dışarıdan sunulmasa bile, herhangi bir bağlantı noktasında localhost aracılığıyla birbirlerine ulaşabilir.
 
-Kapsayıcıların sanal ağdaki diğer kaynaklarla güvenli bir şekilde iletişim kurmasına izin vermek için, isteğe bağlı olarak kapsayıcı gruplarını bir [Azure sanal ağına][virtual-network] (Önizleme) dağıtın.
+Kapsayıcıların sanal ağdaki diğer kaynaklarla güvenli bir şekilde iletişim kurmasına izin vermek için, isteğe bağlı olarak kapsayıcı gruplarını bir [Azure sanal ağına][virtual-network] dağıtın.
 
 ## <a name="storage"></a>Depolama
 

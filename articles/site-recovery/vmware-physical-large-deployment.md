@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: e08c7d5f794611a92688e931f35da7482c04407f
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082214"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895788"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM 'Leri/fiziksel sunucular için ölçekte olağanüstü durum kurtarmayı ayarlama
 
@@ -85,7 +85,7 @@ Hedef abonelikteki kullanılabilir kotaların yük devretmeyi işlemek için yet
 
 **Görev** | **Ayrıntılar** | **Eylem**
 --- | --- | ---
-**Çekirdekleri denetleyin** | Kullanılabilir kotanın çekirdekleri, yük devretme sırasında toplam hedef sayısına eşit veya daha fazla değilse yük devretme başarısız olur. | VMware VM 'Leri için, hedef abonelikte Dağıtım Planlayıcısı temel öneriyi karşılamak üzere yeterince çekirdeğe sahip olup olmadığınızı denetleyin.<br/><br/> Fiziksel sunucular için Azure çekirdekleri el ile tahminleri karşıladığından emin olun.<br/><br/> Kotaları denetlemek için, Azure portal > **abonelikte**, **kullanım + kotalar**' a tıklayın.<br/><br/> Kotaları artırma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) .
+**Çekirdekleri denetleyin** | Kullanılabilir kotanın çekirdekleri, yük devretme sırasında toplam hedef sayısına eşit veya daha fazla değilse yük devretme başarısız olur. | VMware VM 'Leri için, hedef abonelikte Dağıtım Planlayıcısı temel öneriyi karşılamak üzere yeterince çekirdeğe sahip olup olmadığınızı denetleyin.<br/><br/> Fiziksel sunucular için Azure çekirdekleri el ile tahminleri karşıladığından emin olun.<br/><br/> Kotaları denetlemek için, Azure portal > **abonelikte**, **kullanım + kotalar**' a tıklayın.<br/><br/> Kotaları artırma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
 **Yük devretme sınırlarını denetle** | Yük devretme sayısı Site Recovery yük devretme sınırlarını aşamaz. |  Yük devretme işlemleri sınırları aşarsa, abonelikler ekleyebilir, birden fazla aboneliğe yük devreedebilir veya bir abonelik için kotayı artırabilirsiniz. 
 
 
@@ -100,7 +100,7 @@ Uyumluluk ne anlama geliyor? Azure VM 'yi başlatmak için, Azure 'un önyüklem
 
 **Makine Azure ile uyumlu mı?** | **Azure VM sınırları (yönetilen disk yük devretmesi)**
 --- | --- 
-Yes | 2000
+Evet | 2000
 Hayır | 1000
 
 - Sınırlar, aboneliğin hedef bölgesinde en az diğer işlerin devam ettiğini varsayar.

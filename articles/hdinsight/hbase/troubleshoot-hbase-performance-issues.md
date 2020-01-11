@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 0466b08e551a5fa9da37afe2e5ad175ef28c804e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529575"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887164"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase performans sorunlarını giderme
 
@@ -57,7 +57,7 @@ Sorgularınızı aniden daha kötüleştikten sonra uygulama kodunuzda olası ha
 
 ## <a name="migration-issues"></a>Geçiş sorunları
 
-Azure HDInsight 'a geçiş yapıyorsanız geçişinizin sistematik ve doğru şekilde, tercihen Otomasyon aracılığıyla yapıldığından emin olun. El ile geçişten kaçının. Şunları yaptığınızdan emin olun:
+Azure HDInsight 'a geçiş yapıyorsanız geçişinizin sistematik ve doğru şekilde, tercihen Otomasyon aracılığıyla yapıldığından emin olun. El ile geçişten kaçının. Şunlardan emin olun:
 
 - Tablo öznitelikleri doğru şekilde geçirilir. Öznitelikler, Compression, Bloom filtreleri vb. içerebilir.
 
@@ -67,7 +67,7 @@ Azure HDInsight 'a geçiş yapıyorsanız geçişinizin sistematik ve doğru şe
 
 HDInsight HBase 'de, HFiles uzak depolama üzerinde depolanır. Önbellek kaçırılması durumunda, şirket içi sistemlerdeki veriler yerel olarak korunduğundan, okuma maliyeti şirket içi sistemlerden daha yüksektir. Çoğu senaryoda, HBase önbelleklerinin (blok önbelleği ve demet önbelleği) akıllı kullanımı bu sorunu aşmak için tasarlanmıştır. Sorunun atlalanamadığı durumlarda, Premium Blok Blobu hesabı kullanmak bu soruna yardımcı olabilir. Windows Azure Depolama Blobu sürücüsü, okuma modunu (sıralı olarak rastgele) temel alarak blok halinde veri getirmek için `fs.azure.read.request.size` gibi belirli özellikleri kullanır, bu nedenle okumalar üzerinde daha yüksek gecikme sürelerinin örnekleri olmaya devam edebilir. Empırical denemeleri aracılığıyla okuma isteği blok boyutunu (`fs.azure.read.request.size`) 512 KB olarak ayarlamanın yanı sıra HBase tablolarının blok boyutunu aynı boyut olarak eşleştirirken en iyi sonucu elde edin.
 
-En büyük boyut düğümleri kümelerinde, HDInsight HBase, `regionservers` çalıştıran sanal makineye bağlı yerel bir Premium SSD dosya olarak `bucketcache` sağlar. Bunun yerine yığın dışı önbelleğin kullanılması bazı geliştirme sağlayabilir. Bu geçici çözüm, kullanılabilir bellek kullanımı ve muhtemelen dosya tabanlı önbellekten daha küçük olabilecek bir sınırlamaya sahiptir, bu nedenle her zaman en iyi seçim olmayabilir.
+En büyük boyut düğümleri kümelerinde, HDInsight HBase, `regionservers`çalıştıran sanal makineye bağlı yerel bir Premium SSD dosya olarak `bucketcache` sağlar. Bunun yerine yığın dışı önbelleğin kullanılması bazı geliştirme sağlayabilir. Bu geçici çözüm, kullanılabilir bellek kullanımı ve muhtemelen dosya tabanlı önbellekten daha küçük olabilecek bir sınırlamaya sahiptir, bu nedenle her zaman en iyi seçim olmayabilir.
 
 Aşağıda, belirlediğimiz diğer özel parametrelerden bazıları ve değişen derecenin sağlanmasına yardımcı olmak için verilmiştir:
 
@@ -104,7 +104,7 @@ Aşağıda, belirlediğimiz diğer özel parametrelerden bazıları ve değişen
 - RPC zaman aşımları: **3 dakika**
 
    - RPC zaman aşımları HBase RPC zaman aşımı, HBase istemci tarayıcısı zaman aşımı ve Phoenix sorgu zaman aşımı içerir. 
-   - @No__t_0 parametresinin hem sunucu ucunda hem de istemci ucunda aynı değere ayarlandığından emin olun. Aynı değillerse, bu ayar `OutOfOrderScannerException` ilişkili istemci-uç hatalarına yol açar. Bu ayar büyük taramalar için düşük bir değere ayarlanmalıdır. Bu değer **100**olarak ayarlanmıştır.
+   - `hbase.client.scanner.caching` parametresinin hem sunucu ucunda hem de istemci ucunda aynı değere ayarlandığından emin olun. Aynı değillerse, bu ayar `OutOfOrderScannerException`ilişkili istemci-uç hatalarına yol açar. Bu ayar büyük taramalar için düşük bir değere ayarlanmalıdır. Bu değer **100**olarak ayarlanmıştır.
 
 ## <a name="other-considerations"></a>Diğer konular
 
@@ -122,6 +122,6 @@ Sorununuz çözümlenmemiş kalırsa, daha fazla destek için aşağıdaki kanal
 
 - Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-- [@No__t_1](https://twitter.com/azuresupport)bağlayın. Bu, müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabıdır. Azure Community 'yi doğru kaynaklara bağlar: yanıtlar, destek ve uzmanlar.
+- [@AzureSupport](https://twitter.com/azuresupport)bağlayın. Bu, müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabıdır. Azure Community 'yi doğru kaynaklara bağlar: yanıtlar, destek ve uzmanlar.
 
-- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Microsoft Azure aboneliğiniz abonelik yönetimine ve faturalandırma desteğine erişim içerir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Microsoft Azure aboneliğiniz abonelik yönetimine ve faturalandırma desteğine erişim içerir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

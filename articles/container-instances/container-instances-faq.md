@@ -3,19 +3,19 @@ title: Sık sorulan sorular
 description: Azure Container Instances hizmetiyle ilgili sık sorulan soruların yanıtları
 author: dkkapur
 ms.topic: article
-ms.date: 4/25/2019
-ms.openlocfilehash: b5888efe210ab0f3794895d350c5647b6f685880
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 01/07/2020
+ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484128"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888048"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances hakkında sık sorulan sorular
 
 Bu makalede Azure Container Instances hakkında sık sorulan sorular ele alınmaktadır.
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deployment"></a>Kurulum
 
 ### <a name="how-large-can-my-container-image-be"></a>Kapsayıcı resminiz ne kadar büyük olabilir?
 
@@ -83,7 +83,7 @@ Geçerli bölge kullanılabilirliği [burada](container-instances-region-availab
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Özel VNet 'te çalışan örneklere hangi özellikler sağlanıyor?
 
-Seçtiğiniz bir Azure sanal ağında kapsayıcı grupları dağıtabilir ve VNet içindeki trafiği Azure kaynaklarınızın tamamında yönlendirmek için kapsayıcı gruplarına özel IP 'Ler atayabilirsiniz. Bir kapsayıcı grubunun bir sanal ağa dağıtılması Şu anda önizleme aşamasındadır ve bu özelliğin bazı yönleri genel kullanıma (GA) önce değişebilir. Güncelleştirilmiş bilgiler için [Önizleme sınırlamalarına](container-instances-vnet.md#preview-limitations) bakın.
+Seçtiğiniz [bir Azure sanal ağında kapsayıcı grupları dağıtabilir](container-instances-vnet.md) ve VNET Içindeki trafiği Azure kaynaklarınızın tamamında yönlendirmek için kapsayıcı gruplarına özel IP 'ler atayabilirsiniz. Bir kapsayıcı grubunun bir sanal ağa dağıtılması, Azure bölgelerinin bir alt kümesindeki üretim iş yükleri için şu anda kullanılabilir.
 
 ## <a name="pricing"></a>Fiyatlandırma
 

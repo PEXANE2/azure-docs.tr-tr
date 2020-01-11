@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c05b29dd5909d1371c71bffb9db555c15c5d23ed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75764652"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894031"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Azure Machine Learning Studio ile otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -150,11 +150,12 @@ Varyans| Bu sütunun verilerinin ne kadar yayıldığı, ortalama değerinden ol
 Komutunu| Bu sütun verilerinin normal bir dağılıma göre ne kadar farklı olduğunu gösteren ölçü.
 Basıklık| Bu sütun verilerinin ne kadar süden bir normal dağıtımla karşılaştırıldığı ölçüdür.
 
+
 <a name="preprocess"></a>
 
 ## <a name="advanced-preprocessing-options"></a>Gelişmiş ön işleme seçenekleri
 
-Denemeleri 'nizi yapılandırırken `Preprocess`gelişmiş ayarı etkinleştirebilirsiniz. Bunun yapılması, aşağıdaki veri ön işleme ve korleştirme adımlarının otomatik olarak gerçekleştirildiği anlamına gelir.
+Denemeleri 'nizi yapılandırırken `Preprocess`gelişmiş ayarı etkinleştirebilirsiniz. Bunun yapılması, aşağıdaki veri taşıma ve işlem adımlarının otomatik olarak gerçekleştirildiği bir parçası olarak gerçekleştirilir.
 
 |&nbsp;adımları ön işleme| Açıklama |
 | ------------- | ------------- |
@@ -167,6 +168,20 @@ Denemeleri 'nizi yapılandırırken `Preprocess`gelişmiş ayarı etkinleştireb
 |Metin hedefi kodlaması|Metin girişi için, her bir sınıfın olasılığını oluşturmak için kelimeleri olan bir yığılmış Doğrusal model kullanılır.|
 |Kanıt ağırlığı (WoE)|, Kategorik sütunların bağıntısı olarak hedef sütuna bir ölçü olarak, WoE hesaplar. Sınıf içi ve sınıf dışı olasılıkların oranının günlüğü olarak hesaplanır. Bu adım, her sınıf için bir sayısal özellik sütunu verir ve eksik değerler ve aykırı değer işleme gereksinimini ortadan kaldırır.|
 |Küme uzaklığı|K. a, tüm sayısal sütunlarda kümeleme modeli anlamına gelir.  Her bir örneğin her bir kümenin centroıd değerine her bir örnek arasındaki mesafeyi içeren, her küme için yeni bir sayısal özellik olan yeni özellik çıkışları.|
+
+### <a name="data-guardrails"></a>Veri, guardrayları
+
+Otomatikleştirilmiş makine öğrenimi, verileriniz ile ilgili olası sorunları belirlemenize yardımcı olmak için veri guardları sunar (örneğin, eksik değerler, sınıf dengesizliği) ve geliştirilmiş sonuçlar için düzeltici eylemler elde etmenize yardımcı olur. Kullanılabilen çok sayıda en iyi uygulama vardır ve güvenilir sonuçlara ulaşmak için uygulanabilir. 
+
+Aşağıdaki tabloda, şu anda desteklenen veri guardı ve kullanıcıların denemelerini gönderirken içinden gelebilmesi gereken ilgili durumlar açıklanmaktadır.
+
+Guarddemiryolu|Durum|&nbsp;tetikleyicisi için koşul&nbsp;
+---|---|---
+Eksik&nbsp;değerleri&nbsp;imputation |**Geçirilen** <br> <br> **Sabit**|    Giriş&nbsp;sütunlarında eksik değer yok <br> <br> Bazı sütunlarda eksik değerler var
+Çapraz doğrulama|**Yapıldığını**|Açık bir doğrulama kümesi sağlanmazsa
+Yüksek&nbsp;kardinalite&nbsp;Özellik&nbsp;algılama|  **Geçirilen** <br> <br>**Yapıldığını**|   Yüksek kardinalite özellikleri algılanmadı <br><br> Yüksek kardinalite girdi sütunları algılandı
+Sınıf dengesi algılama |**Geçirilen** <br><br><br>**Uyarı** |Sınıflar eğitim verilerinde dağıtılır; Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir <br> <br> Eğitim verilerinde sınıflar imlenebilir
+Zaman serisi veri tutarlılığı|**Geçirilen** <br><br><br><br> **Sabit** |<br> Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve olası bellek dışı sorunlar algılandı. <br> <br>Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve bu, denemenizin belleği tükenmesine neden olacak. Öteleme veya kayan pencere kapatılmış.
 
 ## <a name="run-experiment-and-view-results"></a>Deneme çalıştırma ve sonuçları görüntüleme
 

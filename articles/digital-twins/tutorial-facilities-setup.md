@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 68bc6f8c81fb44dc26d2208d33893c21ff9b5b3c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/10/2020
+ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860988"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895505"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Öğretici: Azure dijital TWINS önizlemesi dağıtma ve uzamsal bir grafik yapılandırma
 
@@ -129,7 +129,6 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
     return results;
 }
-
 ```
 
 Bu işlev kullanır [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) aynı klasörde yer alan. Bu dosyayı açın ve bir ofis binasındaki hiyerarşisini unutmayın: *mekan*, *kat*, *alan*, ve *odaları*. Bu fiziksel alanların herhangi birinde *cihazlar* ve *sensörler* bulunabilir. Her girişin bir önceden tanımlanmış sahip `type` &mdash;Örneğin, Floor, yer.
@@ -150,7 +149,7 @@ Uzamsal graflar ve nesne modelleri hakkında daha fazla bilgi için okuma [dijit
 
 - **devices**: Alanlarda, bir dizi sensörü yöneten fiziksel veya sanal varlıklar olan `devices` öğeleri bulunabilir. Örneğin, bir cihaz bir kullanıcıya ait telefon, Raspberry Pi algılayıcı pod veya bir ağ geçidi olabilir. Örnekteki hayali binanın **Focus Room** adlı odasında bir **Raspberry Pi 3 A1** cihazı bulunmaktadır. Her cihaz düğümü, örneğe sabit kodlanmış benzersiz bir `hardwareId` değerine sahiptir. Bu örneği üretim amaçlı kullanım için yapılandırmak isterseniz bu değerleri kendi sisteminizdeki değerlerle değiştirmeniz gerekir.  
 
-- **algılayıcılar**: bir cihaza birden çok içerebilir `sensors`. Bunlar algılayabilir ve sıcaklık, hareket ve pil düzeyi kayıt fiziksel değişiklikleri ister. Her sensör düğümü, burada sabit kodlanmış `hardwareId` değeriyle benzersiz olarak tanımlanmıştır. Gerçek bir uygulama için bu kurulumda sensörlerden öğesinin benzersiz tanımlayıcıları kullanarak değiştirin. ProvisionSample.yaml dosyayı kaydetmek için iki algılayıcılara sahiptir *hareket* ve *CarbonDioxide*. CarbonDioxide sensörünün tanımlandığı satırların altına aşağıdaki satırları ekleyerek *Temperature* (Sıcaklık) kaydı yapacak yeni bir sensör ekleyin. Bunlar provisionSample.yaml içinde derleme dışı bırakılan satır olarak verildiğini unutmayın. Bunları kaldırarak açıklamasını `#` kuyruğun her satırın karakter. 
+- **algılayıcılar**: bir cihaza birden çok içerebilir `sensors`. Bunlar algılayabilir ve sıcaklık, hareket ve pil düzeyi kayıt fiziksel değişiklikleri ister. Her sensör düğümü, burada sabit kodlanmış `hardwareId` değeriyle benzersiz olarak tanımlanmıştır. Gerçek bir uygulama için bu kurulumda sensörlerden öğesinin benzersiz tanımlayıcıları kullanarak değiştirin. ProvisionSample.yaml dosyayı kaydetmek için iki algılayıcılara sahiptir *hareket* ve *CarbonDioxide*. CarbonDioxide sensörünün tanımlandığı satırların altına aşağıdaki satırları ekleyerek *Temperature* (Sıcaklık) kaydı yapacak yeni bir sensör ekleyin. Bunlar, yorumlanan Sample. YAML 'de açıklamalı çizgiler olarak sağlanır. Bunları kaldırarak açıklamasını `#` kuyruğun her satırın karakter. 
 
     ```yaml
             - dataType: Temperature

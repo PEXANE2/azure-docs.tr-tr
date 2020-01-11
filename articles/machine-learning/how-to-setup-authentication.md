@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: c3da9c6a49fd79946d62b0319bead1bd721f3aa6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ce85c45d80a776af84a0987cfbc3f496c2bbb72b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536713"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893953"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -170,7 +170,8 @@ ws.get_details()
 
 Yukarıdaki adımlarda oluşturulan hizmet sorumlusu, Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/)kimlik doğrulaması için de kullanılabilir. Otomatik iş akışlarında gözetimsiz kimlik doğrulaması için hizmetten hizmete çağrılara izin veren Azure Active Directory [istemci kimlik bilgileri verme akışı](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)' nı kullanırsınız. Örnekler hem Python hem de Node. js ' de [adal kitaplığı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) ile uygulanır, ancak OpenID Connect 1,0 'yi destekleyen herhangi bir açık kaynak kitaplığı da kullanabilirsiniz. 
 
-> ! NOTUN MSAL. js, ADAL 'den daha yeni bir kitaplıktır, ancak özellikle belirli bir kullanıcıya bağlı etkileşimli/UI kimlik doğrulaması için tasarlanan bir istemci tarafı kitaplığı olduğundan, MSAL. js ile istemci kimlik bilgilerini kullanarak hizmetten hizmete kimlik doğrulaması yapılamaz. REST API ile otomatikleştirilmiş iş akışları oluşturmak için aşağıda gösterildiği gibi ADAL kullanmanızı öneririz.
+> [!NOTE]
+> MSAL. js, ADAL 'den daha yeni bir kitaplıktır, ancak özellikle belirli bir kullanıcıya bağlı etkileşimli/UI kimlik doğrulaması için tasarlanan bir istemci tarafı kitaplığı olduğundan, MSAL. js ile istemci kimlik bilgilerini kullanarak hizmetten hizmete kimlik doğrulaması yapılamaz. REST API ile otomatikleştirilmiş iş akışları oluşturmak için aşağıda gösterildiği gibi ADAL kullanmanızı öneririz.
 
 ### <a name="nodejs"></a>Node.js
 
@@ -268,15 +269,19 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores = 1,
                                                 auth_enable=True)
 ```
 
-Ardından, üst `WebService` sınıfını kullanarak dağıtımda özel ACI yapılandırmasını kullanabilirsiniz.
+Daha sonra, `Model` sınıfını kullanarak dağıtımda özel ACI yapılandırmasını kullanabilirsiniz.
 
 ```python
-from azureml.core.webservice import Webservice
+from azureml.core.model import Model, InferenceConfig
 
-aci_service = Webservice.deploy_from_image(deployment_config=aci_config,
-                                           image=image,
-                                           name="aci_service_sample",
-                                           workspace=ws)
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
+aci_service = Model.deploy(workspace=ws,
+                       name="aci_service_sample",
+                       models=[model],
+                       inference_config=inference_config,
+                       deployment_config=aci_config)
 aci_service.wait_for_deployment(True)
 ```
 

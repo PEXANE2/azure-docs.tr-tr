@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf1e5f9f47ebdc132bdc826af3e54d206095085
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603400"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888677"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
@@ -115,7 +115,7 @@ Varsayılan olarak tarayıcı, doğru bölgeyi Internet veya Intranet ' i belirl
 
 Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol vardır:
 
-| Seçenek | Yönetici değerlendirmesi | Kullanıcı deneyimi |
+| Seçenek | Yönetici değerlendirmesi | Kullanıcı deneyimleri |
 | --- | --- | --- |
 | Grup İlkesi | Yönetici, Intranet bölgesi ayarlarının düzenlemesini kilitler | Kullanıcılar kendi ayarlarını değiştiremezler |
 | Grup İlkesi tercihi |  Yönetici, Intranet bölgesi ayarlarında düzenlenmesine izin veriyor | Kullanıcılar kendi ayarlarını değiştirebilir |
@@ -124,7 +124,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 
 1. Grup İlkesi Yönetimi Düzenleyicisi aracını açın.
 2. Kullanıcılarınıza veya tümüne uygulanan Grup ilkesini düzenleyin. Bu örnek **varsayılan etki alanı ilkesi**kullanır.
-3. **Internet Explorer** > **Internet denetim masası** > **Yönetim Şablonları** > **Windows bileşenleri** **Kullanıcı yapılandırma** > **ilkesi** > ' ne gidin >  **Güvenlik sayfası**. Ardından **siteden bölgeye atama listesi**' ni seçin.
+3. **Internet Explorer** > **Internet Denetim Masası** > **güvenlik sayfasına** > **Windows bileşenleri** > **Yönetim Şablonları** > **Kullanıcı Yapılandırması** > **ilkesi** ' ne gidin. Ardından **siteden bölgeye atama listesi**' ni seçin.
     ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso6.png)
 4. İlkeyi etkinleştirin ve iletişim kutusuna aşağıdaki değerleri girin:
    - **Değer adı**: Kerberos biletleri Iletileceği Azure AD URL 'si.
@@ -140,11 +140,11 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
    > Bazı kullanıcıların sorunsuz SSO 'yu kullanmasını engellemek istiyorsanız (örneğin, bu kullanıcılar paylaşılan kiler 'de oturum açtığında), önceki değerleri **4**olarak ayarlayın. Bu eylem, Azure AD URL 'sini kısıtlanmış bölgeye ekler ve her seferinde sorunsuz SSO başarısız olur.
    >
 
-5. **Tamam**' ı ve ardından yeniden **Tamam** ' ı seçin.
+5. **Tamam**’ı ve ardından tekrar **Tamam**’ı seçin.
 
     ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. **Internet Explorer** > **Internet denetim masası** > **Yönetim Şablonları** > **Windows bileşenleri** **Kullanıcı yapılandırma** > **ilkesi** > ' ne gidin >  **Güvenlik sayfası** > **Intranet bölgesi**. Ardından **betik aracılığıyla durum çubuğunda güncelleştirmelere Izin ver**' i seçin.
+6. **Internet Explorer** > Internet **Denetim Masası** > **Güvenlik sayfası** > **Intranet bölgesi** > **Yönetim Şablonları** **Kullanıcı Yapılandırması** > **ilkesi** >  > **Windows bileşenleri** ' ne gidin. Ardından **betik aracılığıyla durum çubuğunda güncelleştirmelere Izin ver**' i seçin.
 
     ![Çoklu oturum açma](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -213,7 +213,7 @@ Belirli bir kullanıcı için özelliği test etmek için aşağıdaki koşullar
   - Kullanıcı bir kurumsal cihazda oturum açar.
   - Cihaz Active Directory etki alanına katıldı. Cihazın [Azure AD 'ye katılmış](../active-directory-azureadjoin-overview.md) _olması gerekmez_ .
   - Cihazın, şirket kablolu veya kablosuz ağ ya da VPN bağlantısı gibi bir uzaktan erişim bağlantısı aracılığıyla etki alanı denetleyicinize (DC) doğrudan bağlantısı vardır.
-  - Bu kullanıcıya grup ilkesi aracılığıyla [özelliği kullanıma](##step-3-roll-out-the-feature) sunulaştınız.
+  - Bu kullanıcıya grup ilkesi aracılığıyla [özelliği kullanıma](#step-3-roll-out-the-feature) sunulaştınız.
 
 Kullanıcının yalnızca Kullanıcı adını girdiği ancak parolayı değil, senaryoyu test etmek için:
    - Yeni bir özel tarayıcı oturumunda `https://myapps.microsoft.com/` oturum açın.

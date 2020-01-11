@@ -7,52 +7,52 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
-ms.openlocfilehash: 377a75d098ab4238fadc16b218bc69235f2e732a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091542"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887147"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight 'ta bölge sunucularıyla ilgili sorunlar
 
 Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
 
-## <a name="scenario-unassigned-regions"></a>Senaryo: Atanmamış bölgeler
+## <a name="scenario-unassigned-regions"></a>Senaryo: atanmamış bölgeler
 
 ### <a name="issue"></a>Sorun
 
-Komut çalıştırılırken `hbase hbck` şuna benzer bir hata iletisi görürsünüz:
+`hbase hbck` komutu çalıştırılırken şuna benzer bir hata iletisi görürsünüz:
 
 ```
 multiple regions being unassigned or holes in the chain of regions
 ```
 
-Apache HBase Master kullanıcı arabiriminden, tüm bölge sunucularında dengesiz olan bölge sayısını görebilirsiniz. Ardından, bölge zincirindeki delikleri `hbase hbck` görmek için komutunu çalıştırabilirsiniz.
+Apache HBase Master kullanıcı arabiriminden, tüm bölge sunucularında dengesiz olan bölge sayısını görebilirsiniz. Ardından, bölge zincirindeki delikleri görmek için `hbase hbck` komutu çalıştırabilirsiniz.
 
 ### <a name="cause"></a>Nedeni
 
 Boşluklar, çevrimdışı bölgelerin sonucu olabilir.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 Atamaları düzeltir. Atanmamış bölgeleri normal duruma geri getirmek için aşağıdaki adımları izleyin:
 
 1. SSH kullanarak HDInsight HBase kümesinde oturum açın.
 
-1. ZooKeeper `hbase zkcli` Shell ile bağlanmak için komutunu çalıştırın.
+1. ZooKeeper Shell ile bağlanmak için `hbase zkcli` komutunu çalıştırın.
 
-1. `rmr /hbase/regions-in-transition` Veya`rmr /hbase-unsecure/regions-in-transition` komutunu çalıştırın.
+1. `rmr /hbase/regions-in-transition` veya `rmr /hbase-unsecure/regions-in-transition` komutunu çalıştırın.
 
-1. Komutu kullanarak `exit` Zookeeper kabuğu 'ndan çıkın.
+1. `exit` komutu kullanarak Zookeeper kabuğu 'ndan çıkın.
 
 1. Apache ambarı Kullanıcı arabirimini açın ve ardından etkin HBase Master hizmetini yeniden başlatın.
 
-1. Komutu `hbase hbck` yeniden çalıştırın (başka herhangi bir seçenek olmadan). Çıktıyı denetleyin ve tüm bölgelerin atandığından emin olun.
+1. `hbase hbck` komutunu yeniden çalıştırın (başka hiçbir seçenek olmadan). Çıktıyı denetleyin ve tüm bölgelerin atandığından emin olun.
 
 ---
 
-## <a name="scenario-dead-region-servers"></a>Senaryo: Ölü bölge sunucuları
+## <a name="scenario-dead-region-servers"></a>Senaryo: ölü bölge sunucuları
 
 ### <a name="issue"></a>Sorun
 
@@ -64,19 +64,19 @@ Birden çok bölme dizini.
 
 1. Geçerli WALs listesini al: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
 
-1. `wals.out` Dosyayı inceleyin. Çok fazla sayıda bölme dizini varsa (*-bölme ile başlayarak), bu dizinler nedeniyle bölge sunucusu muhtemelen başarısız olur.
+1. `wals.out` dosyasını inceleyin. Çok fazla sayıda bölme dizini varsa (*-bölme ile başlayarak), bu dizinler nedeniyle bölge sunucusu muhtemelen başarısız olur.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 1. Ambarı portalından HBase 'i durdurun.
 
-1. Wals 'in yeni listesini almak için yürütün `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` .
+1. WALs 'in yeni listesini almak için `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` yürütün.
 
-1. *-Bölme dizinlerini geçici bir klasöre `splitWAL`taşıyın ve *-bölme dizinlerini silin.
+1. *-Bölme dizinlerini geçici bir klasöre taşıyın, `splitWAL`ve *-bölme dizinlerini silin.
 
-1. Zookeeper `hbase zkcli` Shell ile bağlanmak için komutunu yürütün.
+1. Zookeeper Shell ile bağlanmak için `hbase zkcli` komutunu yürütün.
 
-1. Yürütün `rmr /hbase-unsecure/splitWAL`.
+1. `rmr /hbase-unsecure/splitWAL`yürütün.
 
 1. HBase hizmetini yeniden başlatın.
 
@@ -86,6 +86,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

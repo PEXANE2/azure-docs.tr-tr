@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: e70cd6d7745b2754bdda6992c587c5c72643869b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0cc9328fa08f7e9125ecb41576c67f95382bc1bf
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912503"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892369"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory kullanarak OData kaynağından veri kopyalama
 
@@ -40,7 +40,7 @@ OData kaynağından desteklenen herhangi bir havuz veri deposuna veri kopyalayab
 - OData sürüm 3,0 ve 4,0.
 - Aşağıdaki kimlik doğrulamalarından birini kullanarak verileri kopyalama: **anonim**, **temel**, **Windows**, **AAD hizmet sorumlusu**ve **Azure kaynakları için Yönetilen kimlikler**.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -56,11 +56,11 @@ OData bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | **Type** özelliği **OData**olarak ayarlanmalıdır. |Yes |
-| url | OData hizmetinin kök URL 'SI. |Yes |
-| authenticationType | OData kaynağına bağlanmak için kullanılan kimlik doğrulaması türü. İzin verilen değerler **anonim**, **temel**, **Windows**, **Aadserviceprincipal**ve **managedserviceıdentity**. Kullanıcı tabanlı OAuth desteklenmez. | Yes |
+| type | **Type** özelliği **OData**olarak ayarlanmalıdır. |Evet |
+| url | OData hizmetinin kök URL 'SI. |Evet |
+| authenticationType | OData kaynağına bağlanmak için kullanılan kimlik doğrulaması türü. İzin verilen değerler **anonim**, **temel**, **Windows**, **Aadserviceprincipal**ve **managedserviceıdentity**. Kullanıcı tabanlı OAuth desteklenmez. | Evet |
 | userName adı | Belirtin **userName** temel veya Windows kimlik doğrulamasını kullanır. | Hayır |
-| password | Belirtin **password** , belirtilen kullanıcı için hesap **userName**. Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için türü. Ayrıca, [Azure Key Vault depolanan bir gizli](store-credentials-in-key-vault.md)dizi için de başvurabilirsiniz. | Hayır |
+| parola | Belirtin **password** , belirtilen kullanıcı için hesap **userName**. Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için türü. Ayrıca, [Azure Key Vault depolanan bir gizli](store-credentials-in-key-vault.md)dizi için de başvurabilirsiniz. | Hayır |
 | servicePrincipalId | Azure Active Directory uygulamasının istemci KIMLIĞINI belirtin. | Hayır |
 | aadServicePrincipalCredentialType | Hizmet sorumlusu kimlik doğrulaması için kullanılacak kimlik bilgisi türünü belirtin. İzin verilen değerler: `ServicePrincipalKey` veya `ServicePrincipalCert`. | Hayır |
 | servicePrincipalKey | Azure Active Directory uygulamasının anahtarını belirtin. Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
@@ -205,8 +205,8 @@ OData 'ten veri kopyalamak için, veri kümesinin **Type** özelliğini **ODataR
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Veri kümesinin **Type** özelliği **ODataResource**olarak ayarlanmalıdır. | Yes |
-| yol | OData kaynağının yolu. | Yes |
+| type | Veri kümesinin **Type** özelliği **ODataResource**olarak ayarlanmalıdır. | Evet |
+| yol | OData kaynağının yolu. | Evet |
 
 **Örnek**
 
@@ -241,7 +241,7 @@ OData 'ten veri kopyalamak için aşağıdaki özellikler, etkinlik **kaynağın
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının **Type** özelliği **odatasource**olarak ayarlanmalıdır. | Yes |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği **odatasource**olarak ayarlanmalıdır. | Evet |
 | sorgu | Verileri filtrelemek için OData sorgu seçenekleri. Örnek: `"$select=Name,Description&$top=5"`.<br/><br/>**Note**: OData BAĞLAYıCıSı Birleşik URL 'den verileri kopyalar: `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`. Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Hayır |
 
 **Örnek**
@@ -310,4 +310,4 @@ OData 'ten veri kopyaladığınızda, OData veri türleri ve Azure Data Factory 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kopyalama etkinliği kaynak olarak destekler ve şu havuzlar Azure Data Factory'de veri depolarının listesi için bkz. [desteklenen veri depoları ve biçimler](copy-activity-overview.md##supported-data-stores-and-formats).
+Kopyalama etkinliği kaynak olarak destekler ve şu havuzlar Azure Data Factory'de veri depolarının listesi için bkz. [desteklenen veri depoları ve biçimler](copy-activity-overview.md#supported-data-stores-and-formats).

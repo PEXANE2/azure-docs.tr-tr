@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 8a371f902703287ed3105ed53a57d6341b9528d4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 27f32a922a1b063096b0ccf28a01a78d442e0271
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415104"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889276"
 ---
 # <a name="get-help-with-your-system"></a>Sisteminizle ilgili yardım alın
 
@@ -51,4 +51,4 @@ Destek biletinin kümenizdeki bir kaynakla etiketlendiğinden emin olmak için a
 
 ## <a name="request-a-quota-increase"></a>Kota artışı iste
 
-Azure için avere vFXT 'yi dağıtmak için gereken bileşenleri öğrenmek üzere [vfxt kümesine yönelik kotayı](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster) okuyun. Azure portal [bir kota artışı isteyebilirsiniz](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) .
+Azure için avere vFXT 'yi dağıtmak için gereken bileşenleri öğrenmek üzere [vfxt kümesine yönelik kotayı](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster) okuyun. Azure portal [bir kota artışı isteyebilirsiniz](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .

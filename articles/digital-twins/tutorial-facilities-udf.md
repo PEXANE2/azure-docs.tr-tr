@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/13/2019
-ms.openlocfilehash: b988d500ed2a201bb31f0d3a7cbeb7df00af9faf
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/10/2020
+ms.openlocfilehash: 6cf6a8f7de181a81d60028e33ba2631815c8ca04
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860903"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895348"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Öğretici: Azure dijital TWINS önizlemesi ile derleme ve izleme çalışma koşullarınızı sağlama
 
@@ -38,7 +38,7 @@ Bu öğreticide, [Azure dijital TWINS kurulumunuzu tamamladığınız](tutorial-
 - Örnek derlemek ve çalıştırmak için geliştirme makinenizde [sürüm 2.1.403 veya sonraki bir sürümü .NET Core SDK](https://www.microsoft.com/net/download) . Doğru sürümün yüklendiğini doğrulamak için `dotnet --version` çalıştırın. 
 - Örnek kodu incelemek için [Visual Studio Code](https://code.visualstudio.com/). 
 
-> [!TIP]
+>[!TIP]
 > Yeni bir örnek sağlıyorsanız benzersiz bir dijital TWINS örnek adı kullanın.
 
 ## <a name="define-conditions-to-monitor"></a>İzleme koşullarını tanımlama
@@ -74,7 +74,7 @@ Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı
 
    Sıcaklık ve diğer koşulları izlemek için JavaScript dosyasını değiştirin. Odada hiçbir hareket algılanmadığında koşullara bakmak için aşağıdaki kod satırlarını ekleyin; karbon dioksit seviyelerinin 1.000 ppm ve sıcaklığın 78 derece Fahrenbir süre altında olması gerekir.
 
-   > [!NOTE]
+   >[!NOTE]
    > Bu bölüm, Kullanıcı tanımlı bir işlevi yazmanın tek bir yolu hakkında bilgi edinmek için *Src\actions\userdefinedfunctions\kullanılabilirliği bility.exe* dosyasını değiştirir. Ancak, [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) dosyasını doğrudan kurulumda kullanmayı seçebilirsiniz. Bu dosya, öğretici için gerekli olan tüm değişikliklere sahiptir. Bunun yerine bu dosyayı kullanırsanız, [Src\actions\provisionsample.exe](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)yolunda **betik** anahtarı için doğru dosya adını kullandığınızdan emin olun.
 
     a. Dosyanın en üstünde, `// Add your sensor type here` açıklamasının altına sıcaklık için şu satırları ekleyin:
@@ -178,7 +178,7 @@ Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı
     dotnet run ProvisionSample
     ```
 
-   > [!IMPORTANT]
+   >[!IMPORTANT]
    > Dijital TWINS yönetim API 'nize yetkisiz erişimi engellemek için, **doluluk-hızlı başlangıç** uygulaması Azure hesabı kimlik bilgilerinizle oturum açmanızı gerektirir. Kimlik bilgilerinizi kısa bir süre kaydeder, bu nedenle her çalıştırdığınızda oturum açmanız gerekmez. Bu program ilk kez çalıştığında ve bu tarihten sonra kaydettiğiniz kimlik bilgilerinizin süresi dolduğunda, uygulama sizi oturum açma sayfasına yönlendirir ve bu sayfaya girilecek oturuma özgü bir kod verir. Azure hesabınızda oturum açmak için yönergeleri izleyin.
 
 1. Hesabınız doğrulandıktan sonra uygulama, *provisionsample. YAML*içinde yapılandırılmış şekilde örnek bir uzamsal grafik oluşturmaya başlar. Sağlama bitene kadar bekleyin. İşlem birkaç dakika sürer. Bundan sonra, komut penceresindeki iletileri gözlemleyin ve uzamsal grafiklerinizin nasıl oluşturulduğuna dikkat edin. Uygulamanın kök düğümde veya `Venue`bir IoT Hub 'ı nasıl oluşturduğunu fark edin.
@@ -187,7 +187,7 @@ Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı
 
     [![sağlama örneği](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
-> [!TIP]
+>[!TIP]
 > Hatanın ortasında "bir iş parçacığı çıkışı veya uygulama isteği nedeniyle g/ç işlemi iptal edildi" hatasıyla benzer bir hata iletisi alırsanız, komutu yeniden çalıştırmayı deneyin. Bu durum, HTTP istemcisinin bir ağ sorunundan zaman aşımına uğramasından kaynaklanabilir.
 
 ## <a name="simulate-sensor-data"></a>Sensör verilerinin simülasyonunu yapma
@@ -229,7 +229,7 @@ Bu bölümde, örnekte *cihaz bağlantısı* adlı projeyi kullanacaksınız. Ha
     dotnet run
     ```
 
-   > [!NOTE]
+   >[!NOTE]
    > Simülasyon örneği doğrudan dijital TWINS örneğiniz ile iletişim kurmadığından, kimlik doğrulaması yapmanız gerekmez.
 
 ## <a name="get-results-of-the-user-defined-function"></a>Kullanıcı tanımlı işlevin sonuçlarını al
@@ -246,7 +246,7 @@ Bu bölümde, örnekte *cihaz bağlantısı* adlı projeyi kullanacaksınız. Ha
 
 Çıkış penceresi, Kullanıcı tanımlı işlevin cihaz benzetimine ait olayları nasıl yürüttüğünde gösterir. 
 
-   [UDF için ![çıkışı](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [UDF için ![çıkışı](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png)](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png#lightbox)
 
 İzlenen koşul karşılanıyorsa, Kullanıcı tanımlı işlevi, [daha önce](#create-a-user-defined-function)gördüğünüz gibi ilgili iletiyle birlikte alanın değerini ayarlar. `GetAvailableAndFreshSpaces` işlevi, konsolundaki iletiyi yazdırır.
 
@@ -256,7 +256,7 @@ Bu noktada Azure dijital İkizlerini keşfetmeye durdurmak istiyorsanız, bu ö�
 
 1. Sol menüden [Azure portalında](https://portal.azure.com)seçin **tüm kaynakları**dijital İkizlerini kaynak grubunuzu seçin ve seçin **Sil**.
 
-    > [!TIP]
+    >[!TIP]
     > Dijital İkizlerini örneğinizin silme sorun olduysa, bir hizmet güncelleştirmesi düzeltme alındı. Örneğiniz silme yeniden deneyin.
 
 2. Gerekirse, iş makinenizdeki örnek uygulamaları silin.

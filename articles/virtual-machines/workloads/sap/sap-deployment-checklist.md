@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddba2b70bc9d9e01518cdc0f373fc31224e9c932
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b3a424c142fbfcbfe5e4c1802f3ba61da655f77f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425945"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896026"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -76,7 +76,7 @@ Bu aşamada, SAP iş yükünüzün geçişini Azure platformuna planlarsınız. 
     - [Etiketleme stratejisi](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#tags-and-billing).
     - VM 'Ler ve diğer altyapı bileşenleri ve/veya mantıksal adlar için adlandırma kuralları.
 5.  Microsoft Premier Destek sözleşmesi. Microsoft Teknik Hesap yöneticinizin (TAM) kimliğini yapın. SAP destek gereksinimleri için bkz. [sap destek notunun #2015553](https://launchpad.support.sap.com/#/notes/2015553).
-6.  Abonelikler için Azure abonelikleri ve çekirdek kota sayısı. Gerektiğinde [Azure aboneliklerinin kotalarını artırmak için destek Istekleri açın](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) .
+6.  Abonelikler için Azure abonelikleri ve çekirdek kota sayısı. Gerektiğinde [Azure aboneliklerinin kotalarını artırmak için destek Istekleri açın](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
 7.  SAP verilerini Azure 'a geçirmek için veri azaltma ve veri geçişi planı. SAP NetWeaver sistemlerinde SAP, büyük miktarlarda veri hacminin nasıl sınırlandırılmasıyla ilgili yönergeler sağlar. SAP ERP sistemlerinde veri yönetimiyle ilgili [Bu SAP kılavuzuna](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) bakın. İçeriğin bazıları Ayrıca genel olarak NetWeaver ve S/4HANA sistemleri için de geçerlidir.
 8.  Otomatikleştirilmiş bir dağıtım yaklaşımı. Azure üzerinde altyapı dağıtımları Otomasyonu hedefi, belirleyici bir şekilde dağıtılır ve belirleyici sonuçlar elde etmek için kullanılır. Birçok müşteri PowerShell veya CLı tabanlı betikleri kullanır. Ancak SAP için Azure altyapısını dağıtmak ve hatta SAP yazılımı yüklemek için kullanabileceğiniz çeşitli açık kaynaklı teknolojiler vardır. GitHub 'da örnekleri bulabilirsiniz:
     - [Azure bulutta otomatik SAP dağıtımları](https://github.com/Azure/sap-hana)

@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/07/2020
-ms.openlocfilehash: 7a3749f61e6e656f750059ee76881a2e3f3b7912
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d6419e86e1a541638a7053654bfcd7945aa41ae7
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75865044"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891066"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Izleyici müşteri tarafından yönetilen anahtar yapılandırması 
 
-Bu makalede, müşteri tarafından yönetilen anahtarları (CMK) Log Analytics çalışma alanlarınızı ve Application Insights bileşenlerinizi yapılandırmaya yönelik arka plan bilgileri ve adımlar sağlanmaktadır. Yapılandırıldıktan sonra, çalışma alanlarına gönderilen tüm veriler Azure Key Vault anahtarınızla şifrelenir.
+Bu makale, Log Analytics çalışma alanlarınız ve Application Insights bileşenleriniz için müşteri tarafından yönetilen anahtarları (CMK) yapılandırmaya yönelik arka plan bilgileri ve adımları sağlar. Yapılandırıldıktan sonra, çalışma alanlarına gönderilen tüm veriler Azure Key Vault anahtarınızla şifrelenir.
 
 Yapılandırmadan önce aşağıdaki [sınırlamaları ve kısıtlamaları](#Limitations and constraints) incelemenizi öneririz.
 

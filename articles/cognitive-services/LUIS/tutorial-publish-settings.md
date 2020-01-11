@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: diberry
-ms.openlocfilehash: 7683a73fd1f403847089dc722e5f6382acd948cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447688"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890383"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Öğretici: yayımlama ayarı olarak yaklaşım Analizi ekleme
 
@@ -128,7 +128,7 @@ Bir yayımlama ayarı olduğundan, bu dosyayı amaçlar veya varlıklar sayfalar
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-* Yaklaşım analizi, bilişsel hizmet [metin analizi](../Text-Analytics/index.yml)tarafından sağlanır. Özellik [desteklenen diller](luis-language-support.md##languages-supported)metin analizi kısıtlıdır.
+* Yaklaşım analizi, bilişsel hizmet [metin analizi](../Text-Analytics/index.yml)tarafından sağlanır. Özellik [desteklenen diller](luis-language-support.md#languages-supported)metin analizi kısıtlıdır.
 * [Eğitme](luis-how-to-train.md)
 * [Yayımlama nasıl yapılır?](luis-how-to-publish-app.md)
 * [LUSıS portalında test etme](luis-interactive-test.md)

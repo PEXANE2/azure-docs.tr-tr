@@ -15,12 +15,12 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 805f984ebdb5e95a9f3a46fab010cecf5c811547
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c042cf22334a0163cd5b89e556210db0cd5c15f4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424490"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888768"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Nasıl yapılır: uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma
 
@@ -37,9 +37,9 @@ Bu uygulama rolleri, uygulamanın kayıt bildiriminde [Azure Portal](https://por
 ### <a name="declare-app-roles-using-azure-portal"></a>Azure portal kullanarak uygulama rolleri bildirme
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Üstteki çubukta hesabınızı seçin ve ardından dizin ' i **değiştirin**.
-1. **Dizin + abonelik** bölmesi açıldıktan sonra, **Sık Kullanılanlar** veya **tüm dizinler** listesinden uygulamanızı kaydetmek istediğiniz Active Directory kiracıyı seçin.
-1. Sol taraftaki Gezinti bölmesinde **tüm hizmetler** ' i seçin ve **Azure Active Directory**' yi seçin.
+1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin.
+1. **Sık Kullanılanlar** veya **tüm dizinler** listesinde, uygulamanızı kaydetmek istediğiniz Active Directory kiracıyı seçin.
+1. Azure portal, araması yapın ve **Azure Active Directory**seçin.
 1. **Azure Active Directory** bölmesinde, tüm uygulamalarınızın listesini görüntülemek için **uygulama kayıtları** ' ı seçin.
 1. İçinde uygulama rollerini tanımlamak istediğiniz uygulamayı seçin. Ardından **bildirim**' ı seçin.
 1. `appRoles` ayarını bularak ve tüm uygulama rollerinizi ekleyerek uygulama bildirimini düzenleyin.

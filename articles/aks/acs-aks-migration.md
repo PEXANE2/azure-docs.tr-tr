@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658551"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889516"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'e (AKS) geçiş
 
@@ -87,9 +87,9 @@ Kümeleri geçirirken dış Azure hizmetlerinizi bağlı kalabilirsiniz. Bunlar 
 
 ## <a name="ensure-valid-quotas"></a>Geçerli kotalar olduğundan emin olun
 
-Geçiş sırasında aboneliğinize daha fazla sanal makine dağıtılacağından, Kotalarınızın ve limitlerinizin bu kaynaklar için yeterli olduğunu doğrulamanız gerekir. [VCPU kotasında](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests)artış istemeniz gerekebilir.
+Geçiş sırasında aboneliğinize daha fazla sanal makine dağıtılacağından, Kotalarınızın ve limitlerinizin bu kaynaklar için yeterli olduğunu doğrulamanız gerekir. [VCPU kotasında](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)artış istemeniz gerekebilir.
 
-IP 'Leri tüketmemenizi sağlamak için [ağ kotaları](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests) artışı istemeniz gerekebilir. Ek bilgi için bkz. [AKS için ağ ve IP aralıkları](https://docs.microsoft.com/azure/aks/configure-kubenet) .
+IP 'Leri tüketmemenizi sağlamak için [ağ kotaları](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) artışı istemeniz gerekebilir. Ek bilgi için bkz. [AKS için ağ ve IP aralıkları](https://docs.microsoft.com/azure/aks/configure-kubenet) .
 
 Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Geçerli kotalarınızı denetlemek için, Azure portal [abonelikler dikey penceresine](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)gidin, aboneliğinizi seçin ve ardından **kullanım + kotalar**' ı seçin.
 

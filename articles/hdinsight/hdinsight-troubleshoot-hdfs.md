@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1c5d9f665c9b3e7a439a09f4259f304f8f8b1a0a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 6b0a81a2f3af10a1e5ad60c6c33357a6e906ee47
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718323"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895243"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak Apache Hadoop, sorun giderme
 
@@ -37,7 +37,7 @@ Azure Blob depolama veya HDInsight kümesinin içinden Azure Data Lake Storage y
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. Kaynak kodundan, aşağıdaki örnek uygulamada olduğu gibi, URI `hdfs://mycluster/` ' ı kullanın:
+2. Kaynak koddan aşağıdaki örnek uygulamada olduğu gibi, URL `hdfs://mycluster/` harfine kullanın:
 
     ```Java
     import java.io.IOException;
@@ -62,7 +62,7 @@ Azure Blob depolama veya HDInsight kümesinin içinden Azure Data Lake Storage y
     }
     ```
 
-3. Aşağıdaki komutla, HDInsight kümesinde derlenen. jar dosyasını (örneğin, `java-unit-tests-1.0.jar` adlı bir dosya) çalıştırın:
+3. Aşağıdaki komutla, HDInsight kümesinde derlenen. jar dosyasını (örneğin, `java-unit-tests-1.0.jar`adlı bir dosya) çalıştırın:
 
     ```apache
     hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -72,12 +72,12 @@ Azure Blob depolama veya HDInsight kümesinin içinden Azure Data Lake Storage y
     hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.lck
     ```
 
-## <a name="du"></a>du
+## <a name="du"></a>DU
 
 [-Du](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) komutu, belirli bir dizinde bulunan dosya ve dizinlerin boyutlarını veya yalnızca bir dosya olması durumunda bir dosyanın uzunluğunu görüntüler.
 
-@No__t-0 seçeneği, görüntülenmekte olan dosya uzunluklarının toplam özetini oluşturur.  
-@No__t-0 seçeneği, dosya boyutlarını biçimlendirir.
+`-s` seçeneği, görüntülenmekte olan dosya uzunluklarının toplam özetini oluşturur.  
+`-h` seçeneği, dosya boyutlarını biçimlendirir.
 
 Örnek:
 
@@ -102,6 +102,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@No__t-1](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

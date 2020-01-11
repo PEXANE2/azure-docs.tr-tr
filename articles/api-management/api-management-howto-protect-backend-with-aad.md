@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 82341f29ffda03c5f047d7566ff64884c6698b07
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36b4b597ae70642fee8726555ea71b5164c13cca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442506"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889380"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory ve API Management ile OAuth 2,0 kullanarak API 'YI koruma
 
@@ -47,12 +47,12 @@ Adımlara hızlı bir genel bakış aşağıda verilmiştir:
 
 Bir API 'yi Azure AD ile korumak için ilk adım, API 'YI temsil eden bir uygulamayı Azure AD 'ye kaydettirebilir. 
 
-1. [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin. 
+1. Uygulamanızı kaydetmek için [Azure Portal](https://portal.azure.com) gidin. **API kayıtlarını**arayın ve seçin.
 
 1. **Yeni kayıt**seçeneğini belirleyin. 
 
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin: 
-    - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `backend-app`. 
+    - **Ad** bölümünde, uygulamanın kullanıcılarına, *arka uç-uygulama*gibi görüntülenecek anlamlı bir uygulama adı girin. 
     - **Desteklenen hesap türleri** bölümünde, senaryonuza uygun bir seçenek belirleyin. 
 
 1. **Yeniden yönlendirme URI 'si** bölümünü boş bırakın.
@@ -63,23 +63,23 @@ Bir API 'yi Azure AD ile korumak için ilk adım, API 'YI temsil eden bir uygula
 
 1. **BIR API 'Yi kullanıma** sunma ' yı seçin ve **uygulama kimliği URI** 'sini varsayılan değerle ayarlayın. Daha sonra bu değeri kaydedin.
 
-1. **Kapsam Ekle** SAYFASıNDA, API tarafından desteklenen yeni bir kapsam oluşturun. (örn., okuma) ve kapsamı oluşturmak için *Kapsam Ekle* ' ye tıklayın. API 'niz tarafından desteklenen tüm kapsamları eklemek için bu adımı tekrarlayın.
+1. **Kapsam** ekleme sayfasını göstermek **için kapsam Ekle düğmesini seçin** . Ardından, API tarafından desteklenen yeni bir kapsam oluşturun (örneğin, `Files.Read`). Son olarak, kapsamı oluşturmak için **Kapsam Ekle** düğmesini seçin. API 'niz tarafından desteklenen tüm kapsamları eklemek için bu adımı tekrarlayın.
 
-1. Kapsam oluşturulduğunda, sonraki adımda kullanmak üzere bunu bir yere unutmayın. 
+1. Kapsamlar oluşturulduğunda, bunları sonraki adımda kullanmak üzere bir yere unutmayın. 
 
 ## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>Bir istemci uygulamasını göstermek için Azure AD 'de başka bir uygulamayı kaydetme
 
 API 'YI çağıran her istemci uygulamasının, Azure AD 'de bir uygulama olarak kaydedilmesi gerekir. Bu örnekte, istemci uygulaması API Management geliştirici portalındaki geliştirici konsoludur. Geliştirici konsolunu göstermek için Azure AD 'de başka bir uygulamanın nasıl kaydedileceği aşağıda açıklanmaktadır.
 
-1. [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin. 
+1. Uygulamanızı kaydetmek için [Azure Portal](https://portal.azure.com) gidin. **API kayıtlarını**arayın ve seçin.
 
 1. **Yeni kayıt**seçeneğini belirleyin.
 
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin: 
-    - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `client-app`. 
-    - **Desteklenen hesap türleri** bölümünde, **herhangi bir kuruluş dizininde hesaplar**' ı seçin. 
+    - **Ad** bölümünde, uygulamanın kullanıcılarına, örneğin *istemci-uygulama*gibi görüntülenecek anlamlı bir uygulama adı girin. 
+    - **Desteklenen hesap türleri** bölümünde, **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-Multitenant) hesaplar**' ı seçin. 
 
-1. **Yeniden yönlendirme URI 'si** bölümünde `Web` ' yi seçin ve URL 'yi girin `https://contoso5.portal.azure-api.net/signin`
+1. **Yeniden yönlendirme URI 'si** bölümünde `Web` ' yi seçin ve `https://contoso5.portal.azure-api.net/signin`URL 'sini girin.
 
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin. 
 
@@ -91,23 +91,23 @@ API 'YI çağıran her istemci uygulamasının, Azure AD 'de bir uygulama olarak
 
 1. **İstemci parolası Ekle**altına bir **Açıklama**girin. Anahtarın ne zaman sona ereceğini seçin ve **Ekle**' yi seçin.
 
-Gizli dizi oluşturulduğunda, sonraki adımda kullanmak üzere anahtar değerini bir yere getirin. 
+Gizli dizi oluşturulduğunda, sonraki bir adımda kullanılacak anahtar değerini aklınızda bulunur. 
 
 ## <a name="grant-permissions-in-azure-ad"></a>Azure AD 'de izin verme
 
 API 'yi ve geliştirici konsolunu temsil etmek üzere iki uygulama kaydettirdiğiniz için, istemci uygulamanın arka uç uygulamasını çağırmasını sağlamak için izinler vermeniz gerekir.  
 
-1. **Uygulama kayıtları**gidin. 
+1. İstemci uygulamanıza izinler vermek için [Azure Portal](https://portal.azure.com) gidin. **API kayıtlarını**arayın ve seçin.
 
-1. `client-app`' yi seçin ve uygulama için sayfa listesinde **API izinleri**' ne gidin.
+1. İstemci uygulamanızı seçin. Ardından, uygulama için sayfa listesinden **API izinleri**' ni seçin.
 
 1. **Izin Ekle**' yi seçin.
 
-1. **BIR API seçin**altında `backend-app`bulun ve seçin.
+1. **BIR API seçin**' in altında, **API 'lerim**' i seçin ve ardından arka uç uygulamanızı bulun ve seçin.
 
-1. **Temsilci izinleri**altında, `backend-app` için uygun izinleri seçin ve ardından **izin Ekle**' ye tıklayın.
+1. **Temsilci izinleri**altında, arka uç uygulamanız için uygun izinleri seçin ve ardından **izin Ekle**' yi seçin.
 
-1. İsteğe bağlı olarak, **API izinleri** sayfasında, bu dizindeki tüm kullanıcılar adına izin vermek için sayfanın altındaki **<-kiracı adı > Için yönetici izni ver** ' e tıklayın. 
+1. İsteğe bağlı olarak, **API izinleri** sayfasında, bu dizindeki tüm kullanıcılar adına izin vermek üzere **kiracı adı > \<Için yönetici onayı ver** ' i seçin. 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>Geliştirici konsolunda OAuth 2,0 Kullanıcı yetkilendirmesini etkinleştirme
 

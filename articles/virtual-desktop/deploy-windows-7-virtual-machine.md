@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 90b871c2b75f7ed40c290231ef822258c6b4e6d4
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 28111e45d365069f80f10b88c38618dbb2b4651d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606882"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896214"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesi dağıtma
 
@@ -35,20 +35,21 @@ Windows sanal masaüstü 'nde Windows 7 VM ayarlamak için:
 5. SANAL makinenizde Windows Update gidin.
 6. Tüm Windows güncelleştirmelerini önemli kategoride yükler.
 7. Tüm Windows güncelleştirmelerini Isteğe bağlı kategoride (dil paketleri hariç) yükler. Bu, bu yönergeleri tamamlayabilmeniz için ihtiyaç duyduğunuz Uzak Masaüstü Protokolü 8,0 güncelleştirmesini ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)) yüklüyor.
-8. Yerel Grup İlkesi Düzenleyicisi açın ve **bilgisayar yapılandırması** > **Yönetim Şablonları** > **Windows bileşenleri** ** > Uzak Masaüstü Hizmetleri > Uzak Masaüstü oturumu ana bilgisayarı** **uzak oturum ortamı** > .
+8. Yerel Grup İlkesi Düzenleyicisi açın ve **Yönetim Şablonları** > **Windows bileşenleri** ** > Uzak Masaüstü Hizmetleri** ** > Uzak Masaüstü oturumu ana bilgisayarı** **uzak oturum ortamı** > **bilgisayar yapılandırması** ' na gidin.
 9. Uzak Masaüstü Protokolü 8,0 ilkesini etkinleştirin.
-10. Aşağıdaki komutu çalıştırarak sanal makineyi yeniden başlatın:
+10. Bu sanal makineyi Active Directory etki alanınıza ekleyin.
+11. Aşağıdaki komutu çalıştırarak sanal makineyi yeniden başlatın:
     
      ```cmd
      shutdown /r /t 0
      ```
     
-11. Kayıt belirteci almak için [buradaki](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) yönergeleri izleyin.
-12. Windows [7 Için Windows sanal masaüstü aracısını indirin](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
-13. Windows [7 Için Windows sanal masaüstü Aracısı Yöneticisi 'Ni indirin](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
-14. Windows sanal masaüstü Aracısı yükleyicisini açın ve yönergeleri izleyin. İstendiğinde, 11. adımda oluşturduğunuz kayıt anahtarını verin.
-15. Windows sanal masaüstü yükleyicisi 'ni açın ve yönergeleri izleyin.
-16. İsteğe bağlı olarak, VM 'ye doğrudan Uzak Masaüstü Protokolü erişimi kaldırmak için TCP/3389 bağlantı noktasını engelleyin.
+12. Kayıt belirteci almak için [buradaki](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) yönergeleri izleyin.
+13. Windows [7 Için Windows sanal masaüstü aracısını indirin](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
+14. Windows [7 Için Windows sanal masaüstü Aracısı Yöneticisi 'Ni indirin](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
+15. Windows sanal masaüstü Aracısı yükleyicisini açın ve yönergeleri izleyin. İstendiğinde, 12. adımda oluşturduğunuz kayıt anahtarını verin.
+16. Windows sanal masaüstü yükleyicisi 'ni açın ve yönergeleri izleyin.
+17. İsteğe bağlı olarak, VM 'ye doğrudan Uzak Masaüstü Protokolü erişimi kaldırmak için TCP/3389 bağlantı noktasını engelleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

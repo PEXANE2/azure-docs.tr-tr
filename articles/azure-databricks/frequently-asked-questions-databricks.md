@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 3febdbc8f55f6ccd65eba97de984a9a38ddf214e
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f4164966d1a9662a72d41fefcb7cfbb1b444d614
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129328"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888993"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks hakkında sık sorulan sorular
 
@@ -48,7 +48,7 @@ Databricks ile karşılaşabileceğiniz bazı sorunlar aşağıda verilmiştir.
 
 #### <a name="solution"></a>Çözüm
 
-1. [Azure Portal](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 1. **Abonelikler**, kullandığınız abonelik ve ardından **kaynak sağlayıcıları**' nı seçin. 
 1. Kaynak sağlayıcıları listesinde, **Microsoft. Databricks**' de, **Kaydet**' i seçin. Kaynak sağlayıcısını kaydetmek için abonelikte katkıda bulunan veya sahip rolü olmalıdır.
 
@@ -92,7 +92,7 @@ Bu soruna yönelik birkaç çözüm aşağıda verilmiştir:
 
 #### <a name="solution"></a>Çözüm
 
-Databricks kümeleri düğüm başına tek bir genel IP adresi kullanır. Aboneliğiniz zaten tüm genel IP 'lerini kullanıyorsa, [kotayı artırmayı istemeniz](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)gerekir. **Sorun türü**olarak **Kota** ' i ve **Ağ: ARM** ' i **Kota türü**olarak seçin. **Ayrıntılar**' da genel IP adresi kotası artışı isteyin. Örneğin, sınırlarınız Şu anda 60 ise ve 100 düğümlü bir küme oluşturmak istiyorsanız, 160 için bir sınır artışı isteyin.
+Databricks kümeleri düğüm başına tek bir genel IP adresi kullanır. Aboneliğiniz zaten tüm genel IP 'lerini kullanıyorsa, [kotayı artırmayı istemeniz](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)gerekir. **Sorun türü**olarak **Kota** ' i ve **Ağ: ARM** ' i **Kota türü**olarak seçin. **Ayrıntılar**' da genel IP adresi kotası artışı isteyin. Örneğin, sınırlarınız Şu anda 60 ise ve 100 düğümlü bir küme oluşturmak istiyorsanız, 160 için bir sınır artışı isteyin.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Sorun: küme ayarlanırken ikinci bir bulut sağlayıcısı türü başlatma hatası oluştu (MissingSubscriptionRegistration)
 
@@ -103,7 +103,7 @@ Azure hata kodu: MissingSubscriptionRegistration Azure hata iletisi: abonelik ' 
 
 #### <a name="solution"></a>Çözüm
 
-1. [Azure Portal](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 1. **Abonelikler**, kullandığınız abonelik ve ardından **kaynak sağlayıcıları**' nı seçin. 
 1. Kaynak sağlayıcıları listesinde, **Microsoft. COMPUTE**' de, **Kaydet**' i seçin. Kaynak sağlayıcısını kaydetmek için abonelikte katkıda bulunan veya sahip rolü olmalıdır.
 

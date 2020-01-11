@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 013cf619edd998752265b8fa7e58e36869c830c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450210"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891261"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR hizmeti hakkında SSS
 
@@ -37,7 +37,7 @@ Uygulama sunucularınız varsa, bu hata iletisi, SignalR hizmet örneğinize ba�
 Olası nedenler şunlardır:
 - SignalR hizmeti ile hiçbir uygulama sunucusu bağlanmadı. Olası bağlantı hataları için uygulama sunucusu günlüklerine bakın. Bu durumda, birden fazla uygulama sunucusu olan yüksek kullanılabilirlik ayarında nadir olarak karşılaşılır.
 - SignalR hizmet örneklerinde bağlantı sorunları var. Bu sorun geçicidir ve otomatik olarak kurtarılır.
-Bir saatten uzun süre devam ederse, [GitHub 'da bir sorun açın](https://github.com/Azure/azure-signalr/issues/new) veya [Azure 'da bir destek isteği oluşturun](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
+Bir saatten uzun süre devam ederse, [GitHub 'da bir sorun açın](https://github.com/Azure/azure-signalr/issues/new) veya [Azure 'da bir destek isteği oluşturun](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Birden çok uygulama sunucusu olduğunda, istemci iletileri tüm sunuculara mı, yoksa yalnızca biri mi gönderilir?
 

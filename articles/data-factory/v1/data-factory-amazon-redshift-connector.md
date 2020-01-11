@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3c9e10df9f2be2a07bc7b7af0e01905d5b278d35
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924877"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894205"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Redshift 'Tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -34,7 +34,7 @@ Data Factory Şu anda yalnızca Amazon Redshift 'ten [desteklenen bir havuz veri
 > [!TIP]
 > Amazon Redshift 'den büyük miktarlarda veri kopyalarken en iyi performansı elde etmek için, Amazon Simple Storage Service (Amazon S3) aracılığıyla yerleşik Redshift **Unload** komutunu kullanmayı düşünün. Ayrıntılar için bkz. [Amazon Redshift 'tan veri kopyalamak IÇIN kaldırma kullanma](#use-unload-to-copy-data-from-amazon-redshift).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Verileri şirket içi veri deposuna taşıyorsanız, şirket içi bir makineye [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) yükleyebilirsiniz. Şirket içi makine IP adresini kullanarak Amazon Redshift kümesine bir ağ geçidi için erişim izni verin. Yönergeler için bkz. [kümeye erişim yetkisi verme](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Verileri bir Azure veri deposuna taşımak için, [Microsoft Azure veri merkezleri tarafından kullanılan Işlem IP adresi ve SQL aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)bakın.
 
@@ -61,12 +61,12 @@ Aşağıdaki tabloda, Amazon Redshift bağlı hizmetine özgü JSON öğeleri i�
 
 | Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
-| **type** |Bu özellik **AmazonRedshift**olarak ayarlanmalıdır. |Yes |
-| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
+| **type** |Bu özellik **AmazonRedshift**olarak ayarlanmalıdır. |Evet |
+| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
 | **bağ** |Amazon Redshift sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası sayısı. |Hayır (varsayılan değer 5439) |
-| **veritabanınızı** |Amazon Redshift veritabanının adı. |Yes |
-| **Kullanıcı adı** |Veritabanına erişimi olan kullanıcının adı. |Yes |
-| **Parola** |Kullanıcı hesabının parolası. |Yes |
+| **veritabanınızı** |Amazon Redshift veritabanının adı. |Evet |
+| **Kullanıcı adı** |Veritabanına erişimi olan kullanıcının adı. |Evet |
+| **Parola** |Kullanıcı hesabının parolası. |Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
@@ -146,7 +146,7 @@ Bu örnek, bir Amazon Redshift veritabanından Azure Blob depolama alanına nas�
 * [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde bağlı bir hizmet.
 * [Relationaltable](#dataset-properties) türünde bir giriş [veri kümesi](data-factory-create-datasets.md)
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) türünde bir çıkış [veri kümesi](data-factory-create-datasets.md)
-* [Relationalsource](#copy-activity-properties) ve [blobsink](data-factory-azure-blob-connector.md##copy-activity-properties) özelliklerini kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md)
+* [Relationalsource](#copy-activity-properties) ve [blobsink](data-factory-azure-blob-connector.md#copy-activity-properties) özelliklerini kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md)
 
 Örnek, Amazon Redshift 'deki bir sorgu sonucundan verileri saatlik bir Azure blobuna kopyalar. Örnekte kullanılan JSON özellikleri, varlık tanımlarını izleyen bölümlerde açıklanmıştır.
 

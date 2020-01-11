@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 01/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d578b5d08fecde733bb7b257057e480fef83c4e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ad7065ba6378bcb383e67b4a58d7c195e88679ca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754427"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890676"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Öğretici: Azure AD çoklu oturum açma (SSO) ile NetSuite tümleştirme
 
@@ -33,7 +32,7 @@ Bu öğreticide, NetSuite 'i Azure Active Directory (Azure AD) ile tümleştirme
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -71,9 +70,8 @@ NetSuite 'in Azure AD ile tümleştirilmesini yapılandırmak için, aşağıdak
 Azure AD SSO 'yu NetSuite ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso) .
-
-    a. Kullanıcı B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için [bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user) .  
-    b. Azure AD çoklu oturum açma özelliğini kullanmak için Kullanıcı B. Simon 'u etkinleştirmek üzere [Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user) .
+    * Kullanıcı B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için [bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user) .  
+    * Azure AD çoklu oturum açma özelliğini kullanmak için Kullanıcı B. Simon 'u etkinleştirmek üzere [Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user) .
 1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için [NetSuite SSO 'Yu yapılandırın](#configure-netsuite-sso) .
     * [Netsuite test kullanıcısını](#create-the-netsuite-test-user) , kullanıcının Azure AD gösterimine bağlı olan Netsuite 'e ait B. Simon kullanıcısına karşılık gelen bir şekilde oluşturun.
 1. Yapılandırmanın çalıştığını doğrulamak için [test SSO 'su](#test-sso) .
@@ -90,52 +88,32 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için aşağıdakileri yapın:
 
 1. **Temel SAML yapılandırması** bölümünde, **yanıt URL 'si** metin kutusuna AŞAĞıDAKI biçimlerden birine bir URL yazın:
 
-    ```
-    https://<tenant-name>.NetSuite.com/saml2/acs
-    https://<tenant-name>.na1.NetSuite.com/saml2/acs
-    https://<tenant-name>.na2.NetSuite.com/saml2/acs
-    https://<tenant-name>.sandbox.NetSuite.com/saml2/acs
-    https://<tenant-name>.na1.sandbox.NetSuite.com/saml2/acs
-    https://<tenant-name>.na2.sandbox.NetSuite.com/saml2/acs
-    ```
+    ||
+    |-|
+    | `https://<Account ID>.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na1.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na2.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
     > [!NOTE]
     > Yukarıdaki URL 'Lerdeki değerler gerçek değildir. Bunları gerçek yanıt URL 'siyle güncelleştirin. Değeri almak için, [Netsuite istemci desteği ekibine](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen biçimlere de başvurabilirsiniz.
 
-    NetSuite uygulaması, SAML onaylamaları 'nın belirli bir biçimde görüntülenmesini bekliyor. SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemeniz gerekir. 
-    
-1. **Kullanıcı öznitelikleri** bölmesini açmak için **Düzenle** ("kurşun kalem") simgesini seçin. Bölmesinde, aşağıdaki görüntüde gösterildiği gibi varsayılan özniteliklerin bir listesi görüntülenir: 
+1. NetSuite uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![Kullanıcı öznitelikleri bölmesi](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-    Bu özniteliklere ek olarak, NetSuite uygulaması SAML yanıtına birkaç özniteliğin daha geri geçirilmesini bekler. 
+1. NetSuite uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-1. **Kullanıcı öznitelikleri** bölmesinde, **Kullanıcı talepleri**altında, aşağıdaki tabloda gösterilen SAML belirteci özniteliğini eklemek için aşağıdaki adımları gerçekleştirin:
-
-    | Adı | Kaynak özniteliği | 
+    | Ad | Kaynak özniteliği |
     | ---------------| --------------- |
     | account  | `account id` |
 
-    a. **Kullanıcı taleplerini Yönet** bölmesini açmak için **yeni talep Ekle** ' yi seçin.
+    > [!NOTE]
+    > Hesap özniteliğinin değeri gerçek değil. Bu değeri, Bu öğreticinin ilerleyen kısımlarında açıklandığı gibi güncelleştireceksiniz.
 
-    b. **Ad** kutusuna, bu satır için gösterilen öznitelik adını yazın.
-
-    c. **Ad alanı** kutusunu boş bırakın.
-
-    d. **Kaynak** açılan listesinde **öznitelik**' i seçin.
-
-    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini girin.
-
-    f. **Tamam**’ı seçin.
-
-    g. **Kaydet**’i seçin.
-
-    >[!NOTE]
-    >Hesap özniteliğinin değeri gerçek değil. Bu değeri, Bu öğreticinin ilerleyen kısımlarında açıklandığı gibi güncelleştireceksiniz.
-
-1. **SAML ile çoklu oturum açmayı ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML**'i arayın.
-
-1. Sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. SAML ile çoklu oturum açmayı ayarlama sayfasında, SAML Imzalama sertifikası bölümünde, Federasyon meta verileri XML 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için Indir ' i seçin.
 
     ![Sertifika Indirme bağlantısı](common/metadataxml.png)
 
@@ -143,22 +121,22 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için aşağıdakileri yapın:
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmede  > **kullanıcılar**  > **tüm kullanıcılar**' ı **Azure Active Directory** seçin.
+1. Azure portal sol bölmede > **kullanıcılar** > **tüm kullanıcılar**' ı **Azure Active Directory** seçin.
 
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
 
 1. **Kullanıcı** özellikleri bölmesinde, şu adımları izleyin:
 
    a. **Ad** kutusuna **B. Simon**girin.  
    b. **Kullanıcı adı** kutusuna username@companydomain.extension girin (örneğin, B.Simon@contoso.com).  
    c. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.  
-   d. **Oluştur**'u seçin.
+   d. **Oluştur**’u seçin.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
 Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştirirsiniz.
 
@@ -166,7 +144,7 @@ Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure ço
 1. Uygulamalar listesinde **Netsuite**' i seçin.
 1. Genel Bakış bölmesinde **Yönet** bölümünü bulun ve ardından **Kullanıcılar ve gruplar** bağlantısını seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle** ' yi seçin ve sonra **atama Ekle** bölmesinde **Kullanıcılar ve gruplar**' ı seçin.
 
@@ -183,7 +161,7 @@ Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure ço
 
 1. Tarayıcınızda yeni bir sekme açın ve NetSuite şirket sitenizde yönetici olarak oturum açın.
 
-2. Üst gezinti çubuğunda, **Kurulum**' u ve ardından **Şirket**  > **özellikleri etkinleştir**' i seçin.
+2. Üst gezinti çubuğunda, **Kurulum**' u ve ardından **Şirket** > **özellikleri etkinleştir**' i seçin.
 
     ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-setupsaml.png)
 
@@ -215,9 +193,9 @@ Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure ço
 
     b. **SAMLV2 Identity Provider meta verileri**altında, **IDP meta veri dosyasını karşıya yükle**' yi seçin ve ardından Azure Portal indirdiğiniz meta veri dosyasını karşıya yüklemek için **Araştır** ' ı seçin.
 
-    c. **Gönder**' i seçin.
+    c. Seçin **gönderme**.
 
-9. NetSuite üst gezinti çubuğunda **Kurulum**' **u seçin ve şirket  >  şirket** **bilgileri**' ni seçin.
+9. NetSuite üst gezinti çubuğunda **Kurulum**' **u seçin ve şirket > şirket** **bilgileri**' ni seçin.
 
     ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-com.png)
 
@@ -265,7 +243,7 @@ Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure ço
 
     ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-edit-user.png)
 
-    girişindeki. **Roller** bölmesinde, oluşturduğunuz uygun rolü atayın.
+    l. **Roller** bölmesinde, oluşturduğunuz uygun rolü atayın.
 
     ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/ns-add-role.png)
 
@@ -275,7 +253,7 @@ Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure ço
 
 Bu bölümde, NetSuite 'te B. Simon adlı bir Kullanıcı oluşturulur. NetSuite, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı NetSuite 'de zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
@@ -283,8 +261,7 @@ Erişim panelinde NetSuite kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [Azure AD ile NetSuite 'i deneyin](https://aad.portal.azure.com/)
-

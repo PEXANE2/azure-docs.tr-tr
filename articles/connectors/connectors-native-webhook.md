@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 7ff411ae082acfe2d465ab9d3371982b0693c226
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 14daa37a414e814ed6de036bbb625933ce2532e0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787055"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888133"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps 'de HTTP Web kancalarını kullanarak otomatik olay tabanlı iş akışları oluşturun ve çalıştırın
 
@@ -44,7 +44,7 @@ Daha fazla bilgi için şu konulara bakın:
 * [Web kancaları ve abonelikler](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
 * [Web kancasını destekleyen özel API 'Ler oluşturma](../logic-apps/logic-apps-create-api-app.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -100,7 +100,7 @@ Bu yerleşik eylem, belirtilen hizmetle bir geri çağırma URL 'SI kaydeder, ma
 
    Bu örnek, adımın daha açıklayıcı bir ada sahip olması için eylemi "HTTP Web kancası eylemi" olarak yeniden adlandırır.
 
-1. Abone ve abonelik kaldırma çağrıları için kullanmak istediğiniz [http Web kancası tetikleyici parametrelerine](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger) benzer http Web kancası eylem parametrelerinin değerlerini sağlayın, örneğin:
+1. Abone ve abonelik kaldırma çağrıları için kullanmak istediğiniz [http Web kancası tetikleyici parametrelerine](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) benzer http Web kancası eylem parametrelerinin değerlerini sağlayın, örneğin:
 
    ![HTTP Web kancası eylem parametrelerini girin](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
@@ -114,7 +114,7 @@ Bu yerleşik eylem, belirtilen hizmetle bir geri çağırma URL 'SI kaydeder, ma
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Tetikleyici ve eylem parametreleri hakkında daha fazla bilgi için, bkz. [http Web kancası parametreleri](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger).
+Tetikleyici ve eylem parametreleri hakkında daha fazla bilgi için, bkz. [http Web kancası parametreleri](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger).
 
 ### <a name="output-details"></a>Çıkış ayrıntıları
 
@@ -122,15 +122,15 @@ Bu bilgileri döndüren bir HTTP Web kancası tetikleyicisinden veya eyleminden 
 
 | Özellik adı | Tür | Açıklama |
 |---------------|------|-------------|
-| bilgisinde | object | İstekten gelen üstbilgiler |
-| bölümü | object | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
+| üstbilgiler | object | İstekten gelen üstbilgiler |
+| body | object | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
 | durum kodu | int | İstekteki durum kodu |
 |||
 
 | Durum kodu | Açıklama |
 |-------------|-------------|
 | 200 | TAMAM |
-| 202 | Eden |
+| 202 | Kabul edildi |
 | 400 | Hatalı istek |
 | 401 | Yetkilendirilmemiş |
 | 403 | Yasak |

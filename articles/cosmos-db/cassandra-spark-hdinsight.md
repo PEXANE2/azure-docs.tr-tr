@@ -1,6 +1,6 @@
 ---
-title: Erişim Azure Cosmos DB Cassandra API'si YARN üzerinde spark'tan HDInsight ile
-description: Bu makalede Azure Cosmos DB Cassandra API'SİNİN YARN ile HDInsight üzerinde Spark ile nasıl çalışılacağı ele alınmıştır.
+title: HDInsight ile YARN 'de Spark Azure Cosmos DB Cassandra API erişme
+description: Bu makalede, bkz. HDInsight ile YARN 'de Spark 'tan Azure Cosmos DB Cassandra API nasıl çalışılacağı
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,34 +8,34 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f728baedf9e325f224ce52e64325064f553d2671
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bef4ee14cb4a7d64d80dc5776d8ecea0f831881a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893711"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887641"
 ---
-# <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Erişim Azure Cosmos DB Cassandra API'si YARN üzerinde spark'tan HDInsight ile
+# <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>HDInsight ile YARN 'de Spark Azure Cosmos DB Cassandra API erişme
 
-Bu makalede Azure Cosmos DB Cassandra API'SİNİN Spark HDInsight Spark ile YARN üzerinde spark-shell erişmek nasıl ele alınmaktadır. HDInsight, Microsoft'un Hortonworks Hadoop PaaS azure'da nesne depolama için HDFS yararlanır ve dahil olmak üzere birkaç model olarak sağlanır gelen olan [Spark](../hdinsight/spark/apache-spark-overview.md).  Bu belgedeki içeriği HDInsight Spark başvuruyor, ancak tüm Hadoop dağıtımları için geçerlidir.  
+Bu makalede, bir Azure Cosmos DB Cassandra API, YARN 'de Spark-Shell ile olan HDInsight, Microsoft 'un Azure 'da bulunan Hortonçalışmalar Hadoop PaaS 'in, Azure 'da, [bir.](../hdinsight/spark/apache-spark-overview.md)  Bu belgedeki içerik HDInsight-Spark 'a başvurduğundan, tüm Hadoop dağıtımları için geçerlidir.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Azure Cosmos DB Cassandra API'si sağlama](create-cassandra-dotnet.md#create-a-database-account)
+* [Sağlama Azure Cosmos DB Cassandra API](create-cassandra-dotnet.md#create-a-database-account)
 
-* [Azure Cosmos DB Cassandra API'sine bağlanma hakkında temel bilgileri gözden geçirin](cassandra-spark-generic.md)
+* [Azure Cosmos DB bağlanma temellerini inceleyin Cassandra API](cassandra-spark-generic.md)
 
-* [Bir HDInsight Spark kümesi sağlama](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)
+* [HDInsight-Spark kümesi sağlama](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)
 
-* [Cassandra API ile çalışmak için kod örnekleri gözden geçirin](cassandra-spark-generic.md#next-steps)
+* [Cassandra API ile çalışmak için kod örneklerini gözden geçirin](cassandra-spark-generic.md#next-steps)
 
-* [Bu nedenle tercih ederseniz cqlsh doğrulama için kullanın.](cassandra-spark-generic.md##connecting-to-azure-cosmos-db-cassandra-api-from-spark)
+* [İsterseniz doğrulama için csqlsh kullanın](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
-* **Cassandra API Spark2 yapılandırmasında** -Cassandra için Spark Bağlayıcısı, Cassandra bağlantı Spark bağlamı bir parçası olarak başlatılması için ayrıntıları gerektirir. Jupyter not defteri başlattığında, bağlam ve spark oturumunun zaten başlatılmış ve durdurmak ve tam HDInsight varsayılan Jupyter not defteri başlatma bir parçası olarak her bir yapılandırmaya sahip olmadığı sürece Spark bağlamı yeniden başlatmak için önerilir değil. Bir geçici çözüm, Ambari, doğrudan Spark2 hizmet yapılandırması Cassandra örnek ayrıntıları eklemektir. Bu, Spark2 hizmeti yeniden başlatma gerektiren Küme başına tek seferlik bir etkinliktir.
+* **Spark2 ' de yapılandırma Cassandra API** -Cassandra için Spark Bağlayıcısı, Cassandra bağlantı ayrıntılarının Spark bağlamının bir parçası olarak başlatılmasını gerektirir. Jupyter Not defterini başlattığınızda Spark oturumu ve bağlamı zaten başlatılmış ve HDInsight varsayılan Jupyter Not defteri 'nin bir parçası olarak her yapılandırma kümesiyle tamamlanmadıkça, Spark bağlamını durdurup yeniden başlatmanız önerilmez. Tek bir geçici çözüm, Cassandra örneği ayrıntılarını doğrudan ambarı, Spark2 hizmet yapılandırmasına eklemektir. Bu, küme başına bir Spark2 hizmeti yeniden başlatması gerektiren tek seferlik bir etkinliktir.
  
-  1. Ambari, Spark2 hizmeti ve select yapılandırmaları için Git
+  1. Ambarı, Spark2 Service 'e gidin ve yapılandırmalarını 'leri seçin
 
-  2. Ardından özel spark2-ayarlarına gidin ve aşağıdaki yeni bir özellik ekleyin ve Spark2 hizmetini yeniden başlatın:
+  2. Ardından özel spark2-Varsayılanlar ' a gidin ve aşağıdaki ile yeni bir özellik ekleyin ve Spark2 hizmetini yeniden başlatın:
 
   ```scala
   spark.cassandra.connection.host=YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmosdb.azure.com<br>
@@ -45,17 +45,17 @@ Bu makalede Azure Cosmos DB Cassandra API'SİNİN Spark HDInsight Spark ile YARN
   spark.cassandra.auth.password=YOUR_COSMOSDB_KEY<br>
   ```
 
-## <a name="access-azure-cosmos-db-cassandra-api-from-spark-shell"></a>Spark kabuğundan erişim Azure Cosmos DB Cassandra API'si
+## <a name="access-azure-cosmos-db-cassandra-api-from-spark-shell"></a>Spark kabuğu 'ndan Cassandra API Azure Cosmos DB erişim
 
-Spark shell test keşif amacıyla kullanılır.
+Spark kabuğu test/araştırma amaçları için kullanılır.
 
-* Spark-shell kümenizin Spark sürümü ile uyumlu gerekli maven bağımlılıkları ile başlatın.
+* Kümenizin Spark sürümüyle uyumlu gereken Maven bağımlılıklarıyla Spark-Shell ' i başlatın.
 
   ```scala
   spark-shell --packages "com.datastax.spark:spark-cassandra-connector_2.11:2.3.0,com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0"
   ```
 
-* DDL ve DML bazı işlemler yürütün
+* Bazı DDL ve DML işlemlerini yürütün
 
   ```scala
   import org.apache.spark.rdd.RDD
@@ -86,7 +86,7 @@ Spark shell test keşif amacıyla kullanılır.
   spark.conf.set("spark.cassandra.connection.keep_alive_ms", "60000000") //Increase this number as needed
   ```
 
-* CRUD işlemleri çalıştırma
+* CRUD işlemlerini çalıştırma
 
   ```scala
   //1) Create table if it does not exist
@@ -112,28 +112,28 @@ Spark shell test keşif amacıyla kullanılır.
   spark.read.format("org.apache.spark.sql.cassandra").options(Map( "table" -> "books", "keyspace" -> "books_ks")).load.show
   ```
 
-## <a name="access-azure-cosmos-db-cassandra-api-from-jupyter-notebooks"></a>Jupyter not defterleri gelen Azure Cosmos DB Cassandra API'sine erişim
+## <a name="access-azure-cosmos-db-cassandra-api-from-jupyter-notebooks"></a>Jupi not defterlerinden Cassandra API Azure Cosmos DB erişim
 
-HDInsight Spark Zeppelin ve Jupyter not defteri Hizmetleri ile birlikte gelir. Scala ve Python desteği her iki web tabanlı bir not defteri ortamları değildirler. Not defterlerini etkileşimli keşif analizi ve işbirliği için kullanışlı olsa da işletimsel/productionized işlemleri için tasarlanmamıştır.
+HDInsight-Spark, Zeppelin ve Jupyter Not defteri hizmetleriyle birlikte gelir. Bunlar, Scala ve Python destekleyen Web tabanlı dizüstü bilgisayar ortamlardır. Not defterleri etkileşimli araştırmacı analizler ve işbirliği için harika, ancak işlemsel/etkili işlemler için tasarlanmamıştır.
 
-Aşağıdaki Jupyter Notebook belgeleri, HDInsight Spark kümesine yüklenebilir ve Azure Cosmos DB Cassandra API'si ile çalışmak için hazır örnekleri sağlar. İlk not defterini gözden geçirdiğinizden emin olun `1.0-ReadMe.ipynb` Azure Cosmos DB Cassandra API'sine bağlanmak için Spark hizmeti yapılandırmasını gözden geçirmek için.
+Aşağıdaki jupi Not defterleri, HDInsight Spark kümenize yüklenebilir ve Azure Cosmos DB Cassandra API çalışmaya yönelik hazırlık örnekleri sağlayabilir. Azure Cosmos DB Cassandra API bağlanmak üzere Spark hizmeti yapılandırmasını gözden geçirmek için `1.0-ReadMe.ipynb` ilk not defterini gözden geçirdiğinizden emin olun.
 
-Bu not defterlerini altında indirme [azure-cosmos-db-cassandra-api-spark-notebooks-jupyter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/master/scala/) makinenize.
+Bu not defterlerini [Azure-Cosmos-DB-Cassandra-api-Spark-Not defterleri-jupyıter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/master/scala/) altında makinenize indirin.
   
 ### <a name="how-to-upload"></a>Karşıya yükleme:
-Jupyter başlattığında, Scala için gidin. İlk olarak bir dizin oluşturun ve Not Defterleri dizine yükleyin. En üstte karşıya yükleme düğmesini olan sağ tarafı.  
+Jupyıter 'ı başlattığınızda Scala 'ya gidin. Önce bir dizin oluşturun ve ardından not defterlerini dizine yükleyin. Karşıya Yükle düğmesi üst, sağ taraftaki bir düğmedir.  
 
-### <a name="how-to-run"></a>Çalıştırmayı öğrenin:
-Not defterlerini ve her bir not defteri hücre sırayla çalışır.  Tüm hücreleri yürütün veya shift + her hücre için girmek için her bir not defteri üst kısmındaki Çalıştır düğmesinin tıklayın.
+### <a name="how-to-run"></a>Nasıl çalıştırılır:
+Not defterlerini ve her bir not defteri hücresini sırayla çalıştırın.  Tüm hücreleri yürütmek için her bir not defterinin en üstündeki Çalıştır düğmesine veya her bir hücre için SHIFT + enter 'a tıklayın.
 
-## <a name="access-with-azure-cosmos-db-cassandra-api-from-your-spark-scala-program"></a>Spark Scala programınızdan ile Azure Cosmos DB Cassandra API'sine erişim
+## <a name="access-with-azure-cosmos-db-cassandra-api-from-your-spark-scala-program"></a>Spark Scala programınızdaki Azure Cosmos DB Cassandra API erişim
 
-Üretimde otomatik işlemler için Spark programları kümesine gönderilen [spark-submit](https://spark.apache.org/docs/latest/submitting-applications.html).
+Üretim aşamasındaki otomatikleştirilmiş süreçler için Spark programları [Spark-gönder](https://spark.apache.org/docs/latest/submitting-applications.html)aracılığıyla kümeye gönderilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Spark Scala oluşturma IDE içinde program ve yürütme için Lıvy aracılığıyla HDInsight Spark kümesine gönderin](../hdinsight/spark/apache-spark-create-standalone-application.md)
+* [Bir IDE 'de Spark Scala programı oluşturma ve yürütme için Livy aracılığıyla HDInsight Spark kümesine gönderme](../hdinsight/spark/apache-spark-create-standalone-application.md)
 
-* [Spark Scala programdan Azure Cosmos DB Cassandra API'sine bağlanma](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
+* [Spark Scala programından Azure Cosmos DB Cassandra API bağlama](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
 
-* [Cassandra API ile çalışmak için kod örnekleri tam listesi](cassandra-spark-generic.md)
+* [Cassandra API ile çalışmak için kod örneklerinin tüm listesi](cassandra-spark-generic.md)
