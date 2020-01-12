@@ -3,12 +3,12 @@ title: Azure Işlevleri için Python geliştirici başvurusu
 description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: adea5603c997380dde6731b53bc99ba7443e310b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 374770c50300b9ca37253b3323a02c3371bfa521
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769015"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903228"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -382,7 +382,7 @@ Yerel geliştirme için, uygulama ayarları [yerel. Settings. json dosyasında t
 
 ## <a name="python-version"></a>Python sürümü 
 
-Şu anda Azure Işlevleri hem Python 3.6. x hem de 3.7. x (resmi cpi dağıtımlarını) destekler. Yerel olarak çalıştırılırken, çalışma zamanı kullanılabilir Python sürümünü kullanır. Azure 'da işlev uygulamanızı oluştururken belirli bir Python sürümü istemek için [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) komutunun `--runtime-version` seçeneğini kullanın.  
+Şu anda Azure Işlevleri hem Python 3.6. x hem de 3.7. x (resmi cpi dağıtımlarını) destekler. Yerel olarak çalıştırılırken, çalışma zamanı kullanılabilir Python sürümünü kullanır. Azure 'da işlev uygulamanızı oluştururken belirli bir Python sürümü istemek için [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) komutunun `--runtime-version` seçeneğini kullanın. Yalnızca İşlev Uygulaması oluşturulurken sürüm değişikliğine izin verilir.  
 
 ## <a name="package-management"></a>Paket yönetimi
 

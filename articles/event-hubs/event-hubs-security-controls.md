@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 277a745d26961ed509258d5423fc3c0da9b79a24
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: ae357d25a37e188ed043aaa0ca750bb0e52d58da
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219399"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903542"
 ---
 # <a name="security-controls-for-azure-event-hubs"></a>Azure Event Hubs için güvenlik denetimleri
 
@@ -41,15 +41,15 @@ Bu makale, Azure Event Hubs yerleşik olarak bulunan güvenlik denetimlerini bel
 
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
-| Authentication| Evet | | [Azure Event Hubs erişimi yetkilendirme](authorize-access-event-hubs.md), [Azure Active Directory kullanarak Event Hubs kaynaklarına](authorize-access-azure-active-directory.md)erişimi yetkilendirme, [paylaşılan erişim imzalarını kullanarak Event Hubs kaynaklarına erişimi yetkilendirme](authorize-access-shared-access-signature.md) |
-| Authorization|  Evet | | [Event Hubs kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama](authenticate-managed-identity.md), [Event Hubs kaynaklarına erişmek için Azure Active Directory ile bir uygulamanın kimliğini](authenticate-application.md)doğrulama, [kullanarak Event Hubs kaynaklara erişimi kimlik doğrulama paylaşılan erişim imzaları (SAS)](authenticate-shared-access-signature.md) |
+| Kimlik Doğrulaması| Evet | | [Azure Event Hubs erişimi yetkilendirme](authorize-access-event-hubs.md), [Azure Active Directory kullanarak Event Hubs kaynaklarına](authorize-access-azure-active-directory.md)erişimi yetkilendirme, [paylaşılan erişim imzalarını kullanarak Event Hubs kaynaklarına erişimi yetkilendirme](authorize-access-shared-access-signature.md) |
+| Yetkilendirme|  Evet | | [Event Hubs kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama](authenticate-managed-identity.md), [Event Hubs kaynaklarına erişmek için Azure Active Directory ile bir uygulamanın kimliğini](authenticate-application.md)doğrulama, [paylaşılan erişim imzalarını (SAS) kullanarak Event Hubs kaynaklarına erişimin kimliğini doğrulama](authenticate-shared-access-signature.md) |
 
-## <a name="data-protection"></a>Veri koruma
+## <a name="data-protection"></a>Veri koruması
 
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |---|---|--|--|
-| Bekleyen sunucu tarafı şifrelemesi: Microsoft tarafından yönetilen anahtarlar |  Evet | |  |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır |  |  |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar |  Evet | |  |
+| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet. Adanmış kümeler için kullanılabilir. | Azure Anahtar Kasası 'nda müşteri tarafından yönetilen anahtar, bekleyen bir olay hub 'ında verileri şifrelemek için kullanılabilir. | [Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın](configure-customer-managed-key.md) |
 | Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |  |
 | Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | |  |
 | Şifrelenmiş API çağrıları| Evet |  |  |

@@ -7,99 +7,92 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: b9ad5ea6def79c4d7f132558b8b5339bac6f1bc3
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 060399952545c903fec8ecf08d99e438883c9fd1
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861311"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902532"
 ---
-# <a name="assess-servers-using-imported-data"></a>İçeri aktarılan verileri kullanarak sunucuları değerlendirme
+# <a name="assess-servers-by-using-imported-data"></a>İçeri aktarılan verileri kullanarak sunucuları değerlendirme
 
-Bu makalede, [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool)Ile, CSV kullanarak sunucu meta verilerini içeri aktararak şirket içi sunucuların nasıl değerlendirileneceği açıklanmaktadır. Bu değerlendirme yöntemiyle, değerlendirme oluşturmak için Azure geçişi gereci ayarlamanız gerekmez. Bu, şu durumlarda yararlı olur:
+Bu makalede, sunucu meta verilerini virgülle ayrılmış değerler (CSV) biçiminde içe aktararak [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracı ile şirket içi sunucuların nasıl değerlendirileneceği açıklanmaktadır. Bu değerlendirme yöntemi, değerlendirme oluşturmak için Azure geçişi gerecini ayarlamanıza gerek yoktur. Şu durumlarda yararlı olur:
 
-- Gereci dağıtmadan önce hızlı bir başlangıç değerlendirmesi oluşturmak istiyorsunuz.
+- Gereci dağıtmadan önce hızlı, ilk değerlendirme oluşturmak istersiniz.
 - Azure geçişi gerecini kuruluşunuza dağıtamazsınız.
 - Şirket içi sunuculara erişime izin veren kimlik bilgilerini paylaşamazsınız.
-- Güvenlik kısıtlamaları, Gereç tarafından toplanan verileri Azure 'a toplamayı ve göndermeyi önler. İçeri aktarılan bir dosya ile, paylaştığınız verileri denetleyebilir ve çok fazla veri (örneğin, IP adresleri sağlamak) isteğe bağlıdır.
-
+- Güvenlik kısıtlamaları, Gereç tarafından toplanan verileri Azure 'a toplamayı ve göndermeyi önler. İçeri aktarılan bir dosyada paylaştığınız verileri kontrol edebilirsiniz. Ayrıca, verilerin büyük bölümü (örneğin, IP adresleri sağlama) isteğe bağlıdır.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Şunlara dikkat edin:
+Şu noktalara dikkat edin:
 
-- Tek bir CSV dosyasında en fazla 20000 sunucu ekleyebilirsiniz.
-- CSV kullanarak bir Azure geçişi projesine en fazla 20000 sunucu ekleyebilirsiniz.
-- Azure sunucu değerlendirmesini geçirmek için CSV 'yi birden çok kez kullanarak sunucu bilgilerini karşıya yükleyebilirsiniz.
-- Şirket içi ortamınızı geçiş için değerlendirirken uygulama bilgilerinin toplanması yararlı olsa da, Azure geçişi sunucu değerlendirmesi Şu anda uygulama düzeyi değerlendirmesi gerçekleştirmez ve şu durumlarda uygulamaları hesaba almaz değerlendirme oluşturma.
+- Tek bir CSV dosyasında en fazla 20.000 sunucu ekleyebilirsiniz.
+- CSV kullanarak bir Azure geçişi projesine en fazla 20.000 sunucusu ekleyebilirsiniz.
+- CSV kullanarak sunucu bilgilerini sunucu değerlendirmesine birden çok kez yükleyebilirsiniz.
+- Uygulama bilgilerinin toplanması, şirket içi ortamınızı geçiş için değerlendirmek için yararlıdır. Ancak, sunucu değerlendirmesi Şu anda uygulama düzeyinde değerlendirme gerçekleştirmez veya bir değerlendirme oluştururken uygulamaları hesaba alabilir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Bir Azure geçişi projesi ayarlayın.
 > * Sunucu bilgileriyle bir CSV dosyası girin.
-> * Azure geçişi sunucu değerlendirmesi 'ne sunucu bilgilerini eklemek için dosyayı içeri aktarın.
+> * Sunucu değerlendirmesi ' ne sunucu bilgilerini eklemek için dosyayı içeri aktarın.
 > * Bir değerlendirme oluşturun ve gözden geçirin.
 
 > [!NOTE]
-> Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir, böylece bir kavram kanıtı hızlı bir şekilde ayarlayabilmenizi sağlayabilirsiniz. Öğreticiler mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. Ayrıntılı yönergeler için, nasıl yapılır makalelerini gözden geçirin.
+> Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir, böylece bir kavram kanıtı hızlı bir şekilde oluşturabilirsiniz. Öğreticiler mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. Ayrıntılı yönergeler için nasıl yapılır kılavuzlarını gözden geçirin.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
-
 
 ## <a name="set-azure-permissions-for-azure-migrate"></a>Azure geçişi için Azure izinleri ayarlama
 
 Azure hesabınız, Azure geçişi projesi oluşturmak için izinlere ihtiyaç duyuyor.
 
 1. Azure portal aboneliğini açın ve **erişim denetimi (IAM)** seçeneğini belirleyin.
-2. **Erişimi denetle**' de ilgili hesabı bulun ve izinleri görüntülemek için tıklatın.
-3. **Katkıda bulunan** veya **sahip** izinlerinizin olması gerekir.
+2. **Erişimi denetle**' de ilgili hesabı bulun ve ardından izinleri görüntülemek için seçin.
+3. **Katkıda bulunan** veya **sahip** izninizin olduğundan emin olun.
     - Henüz ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi olursunuz.
     - Abonelik sahibi değilseniz, rolü atamak için sahip ile çalışın.
 
-
 ## <a name="set-up-an-azure-migrate-project"></a>Azure geçişi projesi ayarlama
 
-Aşağıdaki şekilde yeni bir Azure Geçişi projesi oluşturun.
+Yeni bir Azure geçişi projesi ayarlamak için:
 
-1. Azure portalı > **Tüm hizmetler** bölümünde **Azure Geçişi**’ni arayın.
+1. Azure portal, **tüm hizmetler**' de **Azure geçişi**' ni arayın.
 2. **Hizmetler** altında **Azure Geçişi**’ni seçin.
-3. **Genel Bakış** bölümünde **Sunucuları bul, değerlendir ve geçiş** altında **Sunucuları değerlendir ve geçir** üzerine tıklayın.
+3. **Genel bakış**bölümünde, **sunucuları değerlendir, değerlendir ve geçir**altında, **sunucuları değerlendir ve geçir**' i seçin.
 
     ![Sunucuları bulma ve değerlendirme](./media/tutorial-assess-import/assess-migrate.png)
 
-4. **Başlarken** bölümünde **Araç ekle**’ye tıklayın.
-5. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.     
-6. **Proje ayrıntıları**' nda proje adını ve projeyi oluşturmak istediğiniz coğrafi konumu belirtin.
+4. **Başlarken**' de **araç ekle**' yi seçin.
+5. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.
+6. **Proje ayrıntıları**' nda projeyi oluşturmak istediğiniz proje adını ve coğrafi konumu belirtin. Daha fazla bilgi için:
 
-    - Desteklenen coğrafi lıkları [gözden geçirin](migrate-support-matrix.md#supported-geographies) . Proje coğrafyası yalnızca şirket içi sanal makinelerden toplanan meta verileri depolamak için kullanılır.
+    - [Desteklenen coğrafi lıkları](migrate-support-matrix.md#supported-geographies)gözden geçirin. Proje coğrafyası yalnızca şirket içi sanal makinelerden toplanan meta verileri depolamak için kullanılır.
     - Bir geçiş çalıştırdığınızda herhangi bir hedef bölgeyi seçebilirsiniz.
 
     ![Azure geçişi projesi oluşturma](./media/tutorial-assess-import/migrate-project.png)
 
-
-7. **İleri**’ye tıklayın.
+7. **İleri**’yi seçin.
 8. **Değerlendirme Seç aracında** **Azure geçişi: Sunucu değerlendirmesi** > **İleri**' yi seçin.
 
-    ![Azure geçişi projesi oluşturma](./media/tutorial-assess-import/assessment-tool.png)
+    ![Azure geçişi değerlendirmesi oluşturma](./media/tutorial-assess-import/assessment-tool.png)
 
 9. **Geçiş aracını seç** bölümünde **Şimdilik geçiş aracı eklemeyi atla** > **İleri** seçeneğini belirleyin.
-10. **İnceleme + araç ekleme** bölümünde ayarları gözden geçirip **Araç ekle**’ye tıklayın.
-11. Azure Geçişi projesinin dağıtılması için birkaç dakika bekleyin. Proje sayfasına yönlendirilirsiniz. Projeyi görmüyorsanız Azure Geçişi panosundaki **Sunuculardan** erişebilirsiniz.
-
+10. **Gözden geçir + araçlar Ekle**' de ayarları gözden geçirin ve ardından **araç ekle**' yi seçin.
+11. Azure Geçişi projesinin dağıtılması için birkaç dakika bekleyin. Bundan sonra proje sayfasına yönlendirilirsiniz. Projeyi görmüyorsanız Azure Geçişi panosundaki **Sunuculardan** erişebilirsiniz.
 
 ## <a name="prepare-the-csv"></a>CSV 'yi hazırlama
 
 CSV şablonunu indirin ve buna sunucu bilgilerini ekleyin.
 
-
 ### <a name="download-the-template"></a>Şablonu indirme
 
-1. **Azure geçişi: Sunucu değerlendirmesi** > **sunucuları** > **geçiş hedeflerde** **bul**' a tıklayın.
-2. **Makine bul**' da, **kullanarak içeri aktar ' ı seçin. CSV**.
-3. İndirmek için **İndir** ' e tıklayın. CSV şablonu. Alternatif olarak, [doğrudan indirebilirsiniz](https://go.microsoft.com/fwlink/?linkid=2109031).
+1. **Azure geçişi: Sunucu değerlendirmesi** > **sunucuları** > **geçiş hedeflerde** **bul**' u seçin.
+2. **Makine bul**' da **CSV kullanarak içeri aktar**' ı seçin.
+3. CSV şablonunu indirmek için **İndir** ' i seçin. Alternatif olarak, [doğrudan indirebilirsiniz](https://go.microsoft.com/fwlink/?linkid=2109031).
 
-    ![İndirme. CSV şablonu](./media/tutorial-assess-import/download-template.png)
-
+    ![CSV şablonunu indir](./media/tutorial-assess-import/download-template.png)
 
 ### <a name="add-server-information"></a>Sunucu bilgileri ekleme
 
@@ -108,65 +101,64 @@ Sunucu verilerini toplayın ve CSV dosyasına ekleyin.
 - Verileri toplamak için, VMware vSphere veya yapılandırma yönetimi veritabanınız (CMDB) gibi şirket içi sunucu yönetimi için kullandığınız araçlardan dışarı aktarabilirsiniz.
 - Örnek verileri gözden geçirmek için [örnek dosyayı](https://go.microsoft.com/fwlink/?linkid=2108405)indirin.
 
-
-Aşağıdaki tabloda, doldurulacak dosya alanları özetlenmektedir.
+Aşağıdaki tabloda, doldurulacak dosya alanları özetlenmektedir:
 
 **Alan adı** | **Girilmesi** | **Ayrıntılar**
 --- | --- | ---
-**Sunucu adı** | Evet | FQDN 'yi belirtmeyi öneririz.
+**Sunucu adı** | Evet | Tam etki alanı adını (FQDN) belirtmeyi öneririz.
 **IP adresi** | Hayır | Sunucu adresi.
-**Çekirdek sayısı** | Evet | Sunucuya ayrılan işlemci çekirdeklerinin sayısı.
+**Sayısı** | Evet | Sunucuya ayrılan işlemci çekirdekleri sayısı.
 **Bellek** | Evet | Sunucuya ayrılan toplam RAM (MB).
 **İşletim sistemi adı** | Evet | Sunucu işletim sistemi.
 **İşletim sistemi sürümü** | Hayır | Sunucu işletim sistemi sürümü.
 **Disk sayısı** | Hayır | Ayrı disk ayrıntıları sağlanmışsa gerekli değildir.
-**Disk 1 boyutu**  | Hayır | Maksimum disk boyutu (GB)<br/> Şablona [sütun ekleyerek](#add-multiple-disks) daha fazla disk için ayrıntılar ekleyebilirsiniz. En fazla sekiz disk ekleyebilirsiniz.
+**Disk 1 boyutu**  | Hayır | Maksimum disk boyutu (GB cinsinden).<br/>Şablona [sütun ekleyerek](#add-multiple-disks) daha fazla disk için ayrıntılar ekleyebilirsiniz. En fazla sekiz disk ekleyebilirsiniz.
 **Disk 1 okuma Ops** | Hayır | Saniye başına disk okuma işlemi.
 **Disk 1 yazma Ops** | Hayır | Saniye başına disk yazma işlemi.
-**Disk 1 okuma aktarım hızı** | Hayır | Diskten saniyede MB/saniye cinsinden okunan veriler.
-**Disk 1 yazma aktarım hızı** | Hayır | Saniye başına saniyede diske yazılan veriler (saniye başına MB).
-**CPU kullanım yüzdesi** | Hayır | CPU kullanım yüzdesi.
-**Bellek kullanım yüzdesi** | Hayır | RAM kullanım yüzdesi.
+**Disk 1 okuma aktarım hızı** | Hayır | Diskten saniyede okunan veriler, MB/saniye cinsinden.
+**Disk 1 yazma aktarım hızı** | Hayır | Saniyede diske yazılan veriler (MB/saniye).
+**CPU kullanım yüzdesi** | Hayır | Kullanılan CPU yüzdesi.
+**Bellek kullanım yüzdesi** | Hayır | Kullanılan RAM yüzdesi.
 **Toplam disk okuma Ops** | Hayır | Saniye başına disk okuma işlemi.
 **Toplam disk yazma Ops** | Hayır | Saniye başına disk yazma işlemi.
 **Toplam disk okuma performansı** | Hayır | Diskten MB/saniye cinsinden okunan veriler.
-**Toplam disk yazma performansı** | Hayır | Saniye başına MB cinsinden diske yazılan veriler.
-**Ağa gelen üretilen iş** | Hayır | Sunucu tarafından saniyede MB cinsinden alınan veriler.
-**Ağdan giden üretilen iş** | Hayır | Sunucu tarafından saniyede MB cinsinden aktarılan veriler.
-**Bellenim türü** | Hayır | Sunucu üretici yazılımı. Değerler "BIOS" veya "UEFı" olabilir
+**Toplam disk yazma performansı** | Hayır | Diske yazılan veriler MB/saniye cinsinden.
+**Aktarım sırasında ağ** | Hayır | Sunucu tarafından saniyede MB cinsinden alınan veriler.
+**Ağ çıkış performansı** | Hayır | Sunucu tarafından saniye başına MB cinsinden aktarılan veriler.
+**Bellenim türü** | Hayır | Sunucu üretici yazılımı. Değerler "BIOS" veya "UEFı" olabilir.
 **Sunucu türü** | Hayır | Değerler "fiziksel" veya "sanal" olabilir.
 **Yöneticiye** | Hayır | Makinenin çalıştığı hiper yönetici. <br/> Değerler "VMware", "Hyper-V", "Xen", "AWS", "GCP" veya "Other" olabilir.
 **Hiper yönetici sürüm numarası** | Hayır | Hiper yönetici sürümü.
-**Sanal makine KIMLIĞI** | Hayır | VM tanımlayıcısı. Bu, VMware vCenter VM için **ınstanceuuıd** veya Hyper-v için **Hyper-v VM kimliği** 'dir.
-**Virtual Machine Manager KIMLIĞI** | Hayır | Bu, VMWare vCenter için **ınstanceuuıd** 'dir. Hyper-V için gerekli değildir.
+**Sanal makine KIMLIĞI** | Hayır | VM tanımlayıcısı. Bu, bir VMware vCenter VM veya Hyper-v için **Hyper-v VM kimliği** Için olan **ınstanceuuıd** değeridir.
+**Virtual Machine Manager KIMLIĞI** | Hayır | Bu, VMWare vCenter için **ınstanceuuıd** değeridir. Hyper-V için gerekli değildir.
 **MAC adresi**| Hayır | Sunucu MAC adresi.
 **BıOS KIMLIĞI** | Hayır | Sunucu BIOS KIMLIĞI.
-**Özel sunucu KIMLIĞI**| Hayır | Şirket içinde yerel benzersiz sunucu kimlikleri. <br/> İçeri aktarılan sunucuyu yerel KIMLIĞE göre izlemek için faydalıdır.
-**Uygulama 1 adı** | Hayır | Sunucuda çalışan iş yüklerinin adı.<br/> Şablona [sütun ekleyerek](#add-multiple-applications) daha fazla uygulama için ayrıntılar ekleyebilirsiniz. En fazla beş uygulama ekleyebilirsiniz.
+**Özel sunucu KIMLIĞI** | Hayır | Şirket içi yerel, benzersiz sunucu KIMLIĞI. <br/> İçeri aktarılan sunucuyu yerel KIMLIĞE göre izlemek için faydalıdır.
+**Uygulama 1 adı** | Hayır | Sunucuda çalışan iş yükünün adı.<br/>Şablona [sütun ekleyerek](#add-multiple-applications) daha fazla uygulama için ayrıntılar ekleyebilirsiniz. En fazla beş uygulama ekleyebilirsiniz.
 **Uygulama 1 türü** | Hayır | Sunucuda çalışan iş yükünün türü
 **Uygulama 1 sürümü** | Hayır | Sunucuda çalışan iş yükünün sürümü.
-**Uygulama 1 lisansı süre sonu** | Hayır | İş yükü için lisans bitiş tarihi (varsa).
+**Uygulama 1 lisansı süre sonu** | Hayır | İş yükünün lisans bitiş tarihi (varsa).
 **İş birimi** | Hayır | Sunucunun ait olduğu iş birimi.
 **İşletme sahibi** | Hayır | İş birimi sahibi.
 **İş uygulaması adı** | Hayır | Uygulamanın ait olduğu uygulamanın adı.
 **Konum** | Hayır | Sunucunun bulunduğu veri merkezi.
-**Sunucu yetkisini alma tarihi** | Hayır | Fiziksel sunucunun veya sanal sunucunun temel alınan fiziksel sunucusunun yetkisini alma
+**Sunucu yetkisini alma tarihi** | Hayır | Fiziksel sunucunun veya sanal sunucunun temel alınan fiziksel sunucusunun yetkisini alma.
 
 ### <a name="add-operating-systems"></a>İşletim sistemleri ekleme
 
-Değerlendirme, belirli işletim sistemi adlarını tanır. Belirttiğiniz herhangi bir işletim sistemi adı, [desteklenen adlar](#supported-operating-system-names) listesindeki seçeneklerden biriyle aynı olmalıdır.
-
+Değerlendirme, belirli işletim sistemi adlarını tanır. Belirttiğiniz ad, [desteklenen adlar listesindeki](#supported-operating-system-names)dizelerden biriyle tam olarak eşleşmelidir.
 
 ### <a name="add-multiple-disks"></a>Birden çok disk Ekle
 
-Şablon, ilk disk için varsayılan alanlar sağlar.  8 ' e kadar disk için benzer sütunlar ekleyebilirsiniz.
+Şablon, ilk disk için varsayılan alanlar sağlar. En fazla sekiz diske benzer sütunlar ekleyebilirsiniz.
 
 Örneğin, ikinci bir disk için tüm alanları belirtmek için şu sütunları ekleyin:
 
-Disk 2 boyut disk 2 okuma Ops disk 2 yazma Ops disk 2 okuma işleme disk 2 yazma işleme
-
-İsteğe bağlı olarak, yalnızca bir disk için belirli alanlar ekleyebilirsiniz.
-
+- Disk 2 boyutu
+- Disk 2 okuma Ops
+- Disk 2 yazma Ops
+- Disk 2 okuma performansı
+- Disk 2 yazma işleme
 
 ### <a name="add-multiple-applications"></a>Birden çok uygulama ekleme
 
@@ -174,81 +166,72 @@ Disk 2 boyut disk 2 okuma Ops disk 2 yazma Ops disk 2 okuma işleme disk 2 yazma
 
 Örneğin, ikinci bir uygulama için tüm alanları belirtmek için şu sütunları ekleyin:
 
-Uygulama 2 ad uygulama 2 tür uygulama 2 sürüm uygulama 2 lisans bitiş tarihi
-
-
-İsteğe bağlı olarak, yalnızca bir uygulama için belirli alanlar ekleyebilirsiniz.
+- Uygulama 2 adı
+- Uygulama 2 türü
+- Uygulama 2 sürümü
+- Uygulama 2 lisansı süre sonu
 
 > [!NOTE]
-> Uygulama bilgileri, geçiş için şirket içi ortamınızı değerlendirirken faydalıdır. Ancak, Azure geçişi sunucu değerlendirmesi Şu anda uygulama düzeyi değerlendirmesi gerçekleştirmez ve bir değerlendirme oluştururken uygulamaları hesaba almaz.
+> Uygulama bilgileri, geçiş için şirket içi ortamınızı değerlendirmek için yararlıdır. Ancak, Azure geçişi sunucu değerlendirmesi Şu anda uygulama düzeyinde değerlendirme gerçekleştirmez veya bir değerlendirme oluştururken uygulamaları hesaba alabilir.
 
+## <a name="import-the-server-information"></a>Sunucu bilgilerini içeri aktarma
 
-## <a name="upload-the-server-information"></a>Sunucu bilgilerini karşıya yükle
+CSV şablonuna bilgi ekledikten sonra sunucuları sunucu değerlendirmesi içine aktarın.
 
-CSV şablonuna bilgi ekledikten sonra, sunucuları Azure geçişi: Sunucu değerlendirmesi ' ne aktarın.
-
-1. Azure geçişi > **bilgisayarları bul**' da, doldurulmuş şablona gidin.
-2. **İçeri Aktar**’a tıklayın.
+1. Azure geçişi 'nde, **bulma makineler**bölümünde, tamamlanan şablona gidin.
+2. **Al**'ı seçin.
 3. İçeri aktarma durumu gösterilir.
     - Durum durumunda uyarı görünürse, bunları çözebilir ya da bunları bilmeden devam edebilirsiniz.
-    - Uyarılarla önerildiği şekilde sunucu bilgilerini iyileştirmek, değerlendirme doğruluğunu geliştirir.
-    - Görüntülenen uyarıları görüntülemek ve onarmak için **uyarı ayrıntılarını İndir ' e tıklayın. CSV**. Bu, uyarılar eklenmiş şekilde CSV 'yi indirir. Uyarıları gözden geçirebilir ve gerektiğinde sorunları giderebilirsiniz.
-    Durum durumunda hata görünüyorsa (içeri aktarma durumu **başarısız**olur), içeri aktarmaya devam edebilmeniz için önce bunları çözmeniz gerekir. Bunu yapmak için, şimdi hata ayrıntıları eklenmiş CSV 'yi indirin. Gerektiğinde hataları gözden geçirin ve çözün. Ardından değiştirilen dosyayı yeniden karşıya yükleyin.
+    - Değerlendirme doğruluğunu artırmak için, Uyarılar bölümünde önerildiği gibi sunucu bilgilerini geliştirebilirsiniz.
+    - Uyarıları görüntülemek ve onarmak için **uyarı ayrıntılarını İndir ' i seçin. CSV**. Bu işlem CSV 'yi dahil edilen uyarılarla indirir. Uyarıları gözden geçirin ve sorunları gerektiği şekilde giderin.
+    - Durum, içeri aktarma durumunun **başarısız**olması için durumda görünüyorsa, içeri aktarmaya devam edebilmeniz için önce bu hataları çözmeniz gerekir:
+        1. Artık hata ayrıntılarını içeren CSV 'yi indirin.
+        1. Hataları gözden geçirin ve gerektiği şekilde çözün. 
+        1. Değiştirilen dosyayı yeniden karşıya yükleyin.
 4. İçeri aktarma durumu **tamamlandığında**, sunucu bilgileri içeri aktarılır.
 
+## <a name="update-server-information"></a>Sunucu bilgilerini güncelleştir
 
-> [!NOTE]
-> Azure geçişi 'ne yüklenen sunucu bilgilerini güncelleştirmek için aynı **sunucu adını**kullanarak sunucuya yönelik verileri yeniden yükleyin. Şablon alındıktan sonra **sunucu adı** alanının değiştirilemeyeceğini unutmayın. Sunucuları silme Şu anda desteklenmiyor.
+Sunucu için verileri aynı **sunucu adıyla**yeniden içeri aktararak sunucu bilgilerini güncelleştirebilirsiniz. **Sunucu adı** alanını değiştiremezsiniz. Sunucuları silme işlemi şu anda desteklenmiyor.
 
-## <a name="updating-server-information"></a>Sunucu bilgileri güncelleştiriliyor
+## <a name="verify-servers-in-the-portal"></a>Portalda sunucuları doğrulama
 
-Sunucu için verileri aynı **sunucu adıyla**yeniden karşıya yükleyerek sunucu bilgilerini güncelleştirebilirsiniz. **Sunucu adı** alanını değiştiremezsiniz.
-
-Sunucuları silme işlemi şu anda desteklenmiyor.
-
-### <a name="verify-servers-in-the-portal"></a>Portalda sunucuları doğrulama
-
-Bulmadan sonra, sunucuların Azure portal göründüğünü doğrulayabilirsiniz.
+Azure portal, bulma sonrasında sunucuların göründüğünü doğrulamak için:
 
 1. Azure geçişi panosunu açın.
-2. **Azure geçişi-sunucular** > **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
-3. **Içeri aktarma tabanlı** sekmesine tıklayın.
+2. **Azure geçişi-sunucular** > **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeyi seçin.
+3. **Içeri aktarma tabanlı** sekmesini seçin.
 
-## <a name="set-up-an-assessment"></a>Değerlendirme ayarlama
+## <a name="set-up-and-run-an-assessment"></a>Değerlendirme ayarlama ve çalıştırma
 
-Azure geçişi: Sunucu değerlendirmesi kullanarak oluşturabileceğiniz iki tür değerlendirme vardır.
+Sunucu değerlendirmesi kullanarak iki tür değerlendirme oluşturabilirsiniz.
 
-**Değerlendirme** | **Ayrıntılar** | **Veriler**
+**Değerlendirme türü** | **Ayrıntılar** | **Veriler**
 --- | --- | ---
-**Performans tabanlı** | Belirtilen performans verileri değerlerini temel alan değerlendirmeler | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)** : Şirket ıçı disklerin IOPS ve aktarım hızına göre.
-**Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: belirtilen sunucu boyutu temel alınarak<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.
+**Performans tabanlı** | Belirtilen performans verileri değerlerini temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)** : giriş/çıkış/sanıye (IOPS) ve şirket içi disklerin verimlilik temelinde.
+**Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: belirtilen sunucu boyutunu temel alır.<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.
 
-
-### <a name="run-an-assessment"></a>Değerlendirme çalıştırma
-
-Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
+Bir değerlendirme çalıştırmak için:
 
 1. Değerlendirme oluşturmak için [en iyi uygulamaları](best-practices-assessment.md) gözden geçirin.
-2. **Sunucular** sekmesinde, **Azure geçişi: Sunucu değerlendirmesi** kutucuğunda **değerlendir**' e tıklayın.
+2. **Sunucular** sekmesinde, **Azure geçişi: Sunucu değerlendirmesi** kutucuğunda **değerlendir**' i seçin.
 
     ![Değerlendirin](./media/tutorial-assess-physical/assess.png)
 
-2. **Sunucuları değerlendir**bölümünde, değerlendirme için bir ad belirtin.
-3. **Bulma kaynağı**' nda, **Azure geçişi ' ne içeri aktarma yoluyla eklenen makineleri** seçin
-3. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle**’ye tıklayın.
+3. **Sunucuları değerlendir**bölümünde, değerlendirme için bir ad belirtin.
+4. **Bulma kaynağı**' nda **Azure geçişi ' ne içeri aktarma yoluyla eklenen makineler**' i seçin.
+5. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle** ' yi seçin.
 
     ![Değerlendirme özellikleri](./media/tutorial-assess-physical/view-all.png)
 
-3. **Grup Seç veya oluştur**' da, **Yeni oluştur**' u seçin ve bir grup adı belirtin. Bir grup, değerlendirme için bir veya daha fazla VM 'yi toplar.
-4. **Gruba makine ekleme**' de gruba eklenecek sunucular ' ı seçin.
-5. Grubu oluşturmak için **değerlendirme oluştur** ' a tıklayın ve değerlendirmeyi çalıştırın.
+6. **Grup Seç veya oluştur**' da, **Yeni oluştur**' u seçin ve bir grup adı belirtin. Bir grup, değerlendirme için bir veya daha fazla VM 'yi toplar.
+7. **Gruba makine ekleme**' de gruba eklenecek sunucular ' ı seçin.
+8. Grubu oluşturmak için **değerlendirme oluştur** ' u seçin ve ardından değerlendirmeyi çalıştırın.
 
     ![Değerlendirme oluşturma](./media/tutorial-assess-physical/assessment-create.png)
 
-6. Değerlendirme oluşturulduktan sonra, **Azure geçişi: Sunucu değerlendirmesi** > **değerlendirmeleri** > **sunucularda** görüntüleyin.
-7. Excel dosyası olarak indirmek için **Değerlendirmeyi dışarı aktar**’a tıklayın.
-
-
+9. Değerlendirme oluşturulduktan sonra, **Azure geçişi: Sunucu değerlendirmesi** > **değerlendirmeleri** > **sunucularda** görüntüleyin.
+10. Bir Microsoft Excel dosyası olarak indirmek için **dışarı aktarma değerlendirmesi** ' ni seçin.
 
 ## <a name="review-an-assessment"></a>Değerlendirmeyi gözden geçirme
 
@@ -260,58 +243,193 @@ Bir değerlendirme şunları açıklar:
 
 ### <a name="view-an-assessment"></a>Değerlendirme görüntüleme
 
-1. **Sunucular** >  **geçiş hedefleri** ' nde **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendirmeler** ' a tıklayın.
-2. **Değerlendirmede**, bir değerlendirmeye tıklayarak açın.
+1. **Sunucular** > **geçiş hedefleri** ' nde **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendirmeler** ' ı seçin.
+2. **Değerlendirmede**, açmak için bir değerlendirme seçin.
 
     ![Değerlendirme özeti](./media/tutorial-assess-physical/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>Azure hazırlığını gözden geçirme
 
-1. **Azure 'a hazırlık**bölümünde, sunucuların Azure 'a geçiş için hazır olup olmadığını doğrulayın.
+1. **Azure 'a hazırlık**bölümünde, sunucuların Azure 'a geçiş için hazır olup olmadığını saptayın.
 2. Durumu gözden geçirin:
     - **Azure Için hazırlanma**: Azure geçişi, değerlendirmede VM 'ler IÇIN bir VM boyutu ve maliyet tahminleri önerir.
     - **Koşullara hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.
     - **Azure için hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.
-    - **Hazır olma durumu bilinmiyor**: veri kullanılabilirliği sorunları nedeniyle Azure geçişi hazırlığı değerlendiremez kullanılır.
+    - **Hazır olma durumu bilinmiyor**: Azure geçişi, veri kullanılabilirliği sorunları nedeniyle hazırlığı değerlendiremez.
 
-2. **Azure hazırlık** durumuna tıklayın. Sunucu hazırlığı ayrıntılarını görüntüleyebilir ve işlem, depolama ve ağ ayarları dahil sunucu ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
+3. Bir **Azure hazırlık** durumu seçin. İşlem, depolama ve ağ ayarları dahil sunucu ayrıntılarını görmek için sunucu hazırlığı ayrıntılarını görüntüleyebilir ve ayrıntıya gidebilirsiniz.
 
 ### <a name="review-cost-details"></a>Maliyet ayrıntılarını gözden geçirin
 
-Bu görünüm Azure 'da çalışan VM 'lerin tahmini işlem ve depolama maliyetini gösterir.
+Bu görünüm Azure 'da çalışan VM 'lerin tahmini işlem ve depolama maliyetini gösterir. Yapabilecekleriniz:
 
-1. Aylık işlem ve depolama maliyetlerini gözden geçirin. Ücretler, değerlendirilen gruptaki tüm sunucular için toplanır.
+- Aylık işlem ve depolama maliyetlerini gözden geçirin. Ücretler, değerlendirilen gruptaki tüm sunucular için toplanır.
 
     - Maliyet tahminleri, bir makine için boyut önerilerini ve bunların disklerini ve özelliklerini temel alır.
     - İşlem ve depolama için tahmini aylık maliyetler gösterilir.
-    - Maliyet tahmini, şirket içi sunucuları IaaS VM 'Leri olarak çalıştırmak içindir. Azure geçişi sunucu değerlendirmesi PaaS veya SaaS maliyetlerini göz önünde bulundurmaz.
+    - Maliyet tahmini, şirket içi sunucuları hizmet olarak altyapı (IaaS) VM 'Leri olarak çalıştırmak içindir. Sunucu değerlendirmesi hizmet olarak platform (PaaS) veya hizmet olarak yazılım (SaaS) maliyetlerini kabul etmez.
 
-2. Aylık depolama maliyeti tahminlerini gözden geçirebilirsiniz. Bu görünüm, farklı türlerdeki depolama disklerinin üzerine bölünen, değerlendirilen grup için toplanan depolama maliyetlerini gösterir.
-3. Belirli VM 'Lerin ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
+- Aylık depolama maliyeti tahminlerini gözden geçirin. Bu görünüm, değerlendirilen grup için toplanan depolama maliyetlerini gösterir ve farklı türlerde depolama diskleri arasında bölünür.
+- Belirli VM 'Lerin ayrıntılarını görmek için detaya gidin.
 
 > [!NOTE]
-> Güven derecelendirmeleri, CSV kullanarak Azure geçişi sunucu değerlendirmesi ' ne içeri aktarılan sunucu değerlendirmelerine atanmaz.
-
+> Güven derecelendirmeleri, CSV kullanılarak sunucu değerlendirmesi içine aktarılan sunucu değerlendirmelerine atanmaz.
 
 ## <a name="supported-operating-system-names"></a>Desteklenen işletim sistemi adları
 
-Ad | Ad
---- | ---
-**A-H** |
-Apple Mac OS X 10 | Asıanux 3<br/>Asıanux 4<br/>Asıanux 5
-CentOS<br/>CentOS 4/5 | CoreOS Linux
-Borçlu GNU/Linux 4<br/>Borçlu GNU/Linux 5<br/>Borçlu GNU/Linux 6<br/>Borçlu GNU/Linux 7<br/>De, GNU/Linux 8 | FreeBSD
-**I-R** |
-IBM OS/2 | MS-DOS |
-Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11
-Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora |
-**S-T** |
-SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7 | Serenlik sistemleri eComStation 1<br/>Çevre sistemleri, eComStation 2
-Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enterprise 10<br/> SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE
-**U-Z** |
-Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
-Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server eşiği<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
+<!-- BEGIN A - H -->
 
+:::row:::
+   :::column span="2":::
+      **A-H**
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      Apple Mac OS X 10
+   :::column-end:::
+   :::column span="":::
+      Asıanux 3<br/>
+      Asıanux 4<br/>
+      Asıanux 5
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      CentOS<br/>
+      CentOS 4/5
+   :::column-end:::
+   :::column span="":::
+      CoreOS Linux
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      Borçlu GNU/Linux 4<br/>
+      Borçlu GNU/Linux 5<br/>
+      Borçlu GNU/Linux 6<br/>
+      Borçlu GNU/Linux 7<br/>
+      De, GNU/Linux 8
+   :::column-end:::
+   :::column span="":::
+      FreeBSD
+   :::column-end:::
+:::row-end:::
+
+<!-- BEGIN I - R -->
+
+:::row:::
+   :::column span="2":::
+      **I-R**
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      IBM OS/2
+   :::column-end:::
+   :::column span="":::
+      MS-DOS
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      Novell NetWare 5<br/>
+      Novell NetWare 6
+   :::column-end:::
+   :::column span="":::
+      Oracle Linux<br/>
+       Oracle Linux 4/5<br/>
+      Oracle Solaris 10<br/>
+       Oracle Solaris 11
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      Red Hat Enterprise Linux 2<br/>
+      Red Hat Enterprise Linux 3<br/>
+      Red Hat Enterprise Linux 4<br/>
+      Red Hat Enterprise Linux 5<br/>
+      Red Hat Enterprise Linux 6<br/>
+      Red Hat Enterprise Linux 7<br/>
+      Red Hat Fedora
+   :::column-end:::
+:::row-end:::
+
+<!-- BEGIN S - T -->
+
+:::row:::
+   :::column span="2":::
+      **S-T**
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      SCO OpenServer 5<br/>
+      SCO OpenServer 6<br/>
+      SCO UnixWare 7
+   :::column-end:::
+   :::column span="":::
+      Serenlik sistemleri eComStation 1<br/>
+      Çevre sistemleri, eComStation 2
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      Sun Microsystems Solaris 8<br/>
+      Sun Microsystems Solaris 9
+   :::column-end:::
+   :::column span="":::
+      SUSE Linux Enterprise 10<br/>
+      SUSE Linux Enterprise 11<br/>
+      SUSE Linux Enterprise 12<br/>
+      SUSE Linux Enterprise 8/9<br/>
+      SUSE Linux Enterprise 11<br/>
+      SUSE openSUSE
+   :::column-end:::
+:::row-end:::
+
+<!-- BEGIN U - Z -->
+:::row:::
+   :::column span="2":::
+      **U-Z**
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      Ubuntu Linux
+   :::column-end:::
+   :::column span="":::
+      VMware ESXi 4<br/>
+      VMware ESXi 5<br/>
+      VMware ESXi 6
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      Windows 10<br/>
+      Windows 2000<br/>
+      Windows 3<br/>
+      Windows 7<br/>
+      Windows 8<br/>
+      Windows 95<br/>
+      Windows 98<br/>
+      Windows NT<br/>
+      Windows Server (R) 2008<br/>
+      Windows Server 2003
+   :::column-end:::
+   :::column span="":::
+      Windows Server 2008<br/>
+      Windows Server 2008 R2<br/>
+      Windows Server 2012<br/>
+      Windows Server 2012 R2<br/>
+      Windows Server 2016<br/>
+      Windows Server 2019<br/>
+      Windows Server eşiği<br/>
+      Windows Vista<br/>
+      Windows Web Server 2008 R2<br/>
+      Windows XP Professional
+   :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -319,6 +437,6 @@ Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
 > * İçeri aktarılan sunucular Azure geçişi: CSV kullanarak sunucu değerlendirmesi.
-> * Bir değerlendirme oluşturulup gözden geçirildi
+> * Bir değerlendirme oluşturulup gözden geçirildi.
 
 Şimdi daha doğru değerlendirmeler için [bir gereç dağıtın](./migrate-appliance.md) ve [bağımlılık Analizi](./concepts-dependency-visualization.md)kullanarak daha derin değerlendirme için sunucuları birlikte gruplar halinde toplayın.

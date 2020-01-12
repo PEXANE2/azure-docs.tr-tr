@@ -8,14 +8,14 @@ author: axisc
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 356f825524192c3b6cf7df7f0460975f23ea4f7c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852295"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903312"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal-preview"></a>Azure portal (Önizleme) kullanarak geri kalan Azure Service Bus verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
+# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal kullanarak geri kalan Azure Service Bus verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
 Azure Service Bus Premium, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Service Bus Premium, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
 
 ## <a name="overview"></a>Genel Bakış
@@ -27,7 +27,6 @@ BYOK özelliğinin etkinleştirilmesi, ad alanınız üzerinde bir kerelik kurul
 > Hizmet tarafı şifrelemesi için müşterinin yönettiği anahtar için bazı uyarılar vardır. 
 >   * Bu özellik [Azure Service Bus Premium](service-bus-premium-messaging.md) katmanı tarafından desteklenir. Standart katman Service Bus ad alanları için etkinleştirilemez.
 >   * Şifreleme yalnızca yeni veya boş ad alanları için etkinleştirilebilir. Ad alanı veri içeriyorsa, şifreleme işlemi başarısız olur.
->   * [Sanal ağ (VNet) hizmet uç noktaları](service-bus-service-endpoints.md) Service Bus ad alanınız için Azure Key Vault yapılandırılmışsa bYok desteklenmez. 
 
 Anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için Azure Key Vault kullanabilirsiniz. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/key-vault-overview.md)
 
@@ -40,7 +39,7 @@ Bu makalede, Azure portal kullanarak, müşteri tarafından yönetilen anahtarla
 Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için şu adımları izleyin:
 
 1. Service Bus Premium ad alanına gidin.
-2. Service Bus ad alanının **Ayarlar** sayfasında **şifreleme (Önizleme)** öğesini seçin.
+2. Service Bus ad alanının **Ayarlar** sayfasında **şifreleme**' yi seçin.
 3. Aşağıdaki görüntüde gösterildiği gibi **geri kalan müşteri tarafından yönetilen anahtar şifrelemesini** seçin.
 
     ![Müşteri tarafından yönetilen anahtarı etkinleştir](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -106,9 +105,6 @@ Anahtarı anahtar kasasında Azure Anahtar Kasası döndürme mekanizmasını ku
 Şifreleme anahtarlarına erişimin iptal edilmemesi Service Bus verileri temizleyemezsiniz. Ancak, verilere Service Bus ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri hakkında daha fazla bilgi edinin ve anahtar kasasının güvenliğini [güvenli bir şekilde bir anahtar kasasına erişin](../key-vault/key-vault-secure-your-key-vault.md).
 
 Şifreleme anahtarı iptal edildiğinde, şifrelenen ad alanındaki Service Bus hizmeti çalışamaz hale gelir. Anahtara erişim etkinleştirilirse veya silinen anahtar geri yüklenirse, şifrelenmiş Service Bus ad alanındaki verilere erişebilmek için Service Bus hizmet anahtarı seçer.
-
-> [!NOTE]
-> Anahtar kasaınızdan var olan bir şifreleme anahtarını silip Service Bus ad alanındaki yeni bir anahtarla değiştirirseniz, silme anahtarı bir saate kadar geçerli olduğundan (eski anahtarla şifrelenen), eski verileriniz (eski anahtarla şifrelenir) hala erişilebilir olabilir Artık yalnızca yeni anahtar kullanılarak erişilebilen yeni verilerle g. Bu davranış, özelliğin önizleme sürümünde tasarımdır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:

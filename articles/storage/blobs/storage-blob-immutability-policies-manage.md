@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 79d7454722900eb1d9d6280e35313ef2f4a5cd54
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555684"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903497"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB depolama için dengesde kullanılabilirlik ilkelerini ayarlama ve yönetme
 
@@ -57,7 +57,7 @@ Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak blob depolamada
 
     ![İlke türü altındaki "etiket adı" kutusu](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
 
-9. Yasal bir tutmayı temizlemek için uygulanan geçerli saklama tanımlayıcı etiketini kaldırmanız yeterlidir.
+9. Yasal bir tutmayı temizlemek için uygulanan geçerli saklama tanımlayıcı etiketini kaldırın.
 
 ### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -165,6 +165,20 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 ```
 
 ---
+
+## <a name="enabling-allow-protected-append-blobs-writes"></a>Korumalı ekleme bloblarına izin vermeyi etkinleştirme
+
+Şu anda, bu belirli [Portal bağlantısı](https://aka.ms/immutableappendblobs)aracılığıyla yalnızca zamana dayalı bekletme ilkelerine yönelik `allowProtectedAppendWrites` ayara erişebilirsiniz. 
+
+> [!IMPORTANT] 
+>  Zamana bağlı saklama için korumalı ekleme bloblarını yazma ayarı şu anda kullanılabilir ve yalnızca aşağıdaki bölgelerde görülebilir:
+> - Doğu ABD
+> - Güney Orta ABD
+> - Batı ABD 2
+>
+> Daha fazla bilgi için bkz. [korumalı ekleme Blobları yazmaları Için Izin verme](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+
+![Ek ekleme yazmaları sağlar](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

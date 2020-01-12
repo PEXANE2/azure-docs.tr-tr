@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f1d30ef56350c3e1df796f20e3f9f39fdbc6428a
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666503"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902833"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Şifreleme gereksinimleri ve Azure VPN ağ geçitleri hakkında
 
@@ -34,7 +34,7 @@ Azure VPN Gateway için ayarlanan varsayılan ilke, [siteden siteye VPN Gateway 
 
 ## <a name="cryptographic-requirements"></a>Şifreleme gereksinimleri
 
-Genellikle uyumluluk veya güvenlik gereksinimleri nedeniyle belirli şifreleme algoritmaları veya parametreleri gerektiren iletişimler için, Azure VPN ağ geçitlerini belirli şifreleme algoritmalarıyla özel bir IPSec/ıKE ilkesi kullanacak şekilde yapılandırabilirsiniz ve Azure varsayılan ilke kümeleri yerine anahtar güçleri.
+Genellikle uyumluluk veya güvenlik gereksinimleri nedeniyle belirli şifreleme algoritmaları veya parametreler gerektiren iletişimler için, Azure VPN ağ geçitlerini, Azure varsayılan ilke kümeleri yerine belirli şifreleme algoritmalarına ve anahtar güçlerine sahip özel bir IPSec/ıKE ilkesi kullanacak şekilde yapılandırabilirsiniz.
 
 Örneğin, Azure VPN ağ geçitlerinin Ikev2 ana mod ilkeleri yalnızca Diffie-Hellman grubu 2 ' yi (1024 bit) kullanır, ancak örneğin 14 (2048-bit), Grup 24 (2048-bit MODP grubu) veya ECP (Eliptik Eğri) gibi ıKE 'de kullanılacak daha güçlü gruplar belirtmeniz gerekebilir. gruplar) 256 veya 384 bit (sırasıyla grup 19 ve grup 20). Benzer gereksinimler IPSec hızlı mod ilkeleri için de geçerlidir.
 

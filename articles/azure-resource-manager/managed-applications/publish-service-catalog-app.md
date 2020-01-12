@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: de2b79c5016b44011a14c1071eab6579f3a0b6df
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e756617a700d258078e84a3fa11c8aceb6f4dd88
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650257"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903277"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Yönetilen uygulama tanımı oluşturma ve yayımlama
 
@@ -18,7 +18,7 @@ ms.locfileid: "75650257"
 
 Kuruluşunuzun üyelerine yönelik Azure [yönetilen uygulamaları](overview.md) oluşturup yayımlayabilirsiniz. Örneğin, BT departmanı kurumsal standartlara uymak için yönetilen uygulamalar yayımlayabilir. Bu yönetilen uygulamalara Azure marketten değil, hizmet kataloğu üzerinden erişilebilir.
 
-Yönetilen bir uygulamayı hizmet kataloğu için yayımlamak istiyorsanız şunları yapmanız gerekir:
+Azure hizmet kataloğunuza yönetilen bir uygulama yayımlamak için şunları yapmanız gerekir:
 
 * Yönetilen uygulama ile dağıtılacak kaynakları tanımlayan bir şablon oluşturun.
 * Yönetilen uygulamayı dağıtırken portal için kullanıcı arabirimi öğeleri tanımlayın.
@@ -207,6 +207,108 @@ New-AzManagedApplicationDefinition `
   -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
+
+## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Yönetilen uygulama tanımı için kendi depolama alanınızı getirin
+Yönetilen uygulama tanımınızı, oluşturma sırasında sizin tarafınızdan belirtilen bir depolama hesabı içinde depolamayı tercih edebilirsiniz. böylece, konum ve erişim, mevzuata gereksinimleriniz için tam olarak sizin tarafınızdan yönetilebilir.
+
+> [!NOTE]
+> Kendi depolama alanınızı getir yalnızca ARM şablonuyla desteklenir veya yönetilen uygulama tanımının REST API dağıtımlarıyla desteklenir.
+
+### <a name="select-your-storage-account"></a>Depolama hesabınızı seçin
+Service Catalog ile kullanmak üzere yönetilen uygulama tanımınızı içeren [bir depolama hesabı oluşturmanız](../../storage/common/storage-account-create.md) gerekir.
+
+Depolama hesabının kaynak KIMLIĞINI kopyalayın. Tanım dağıtıldığında daha sonra kullanılacaktır.
+
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Depolama hesabınızda "gereç kaynak sağlayıcısı" için rol atamasını ayarlama
+Yönetilen uygulama tanımınızın depolama hesabınıza dağıtılabilmesi için, yönetim dosyalarını depolama hesabınızın kapsayıcısına yazabilmesi için **gereç kaynak sağlayıcısı** rolüne katkıda bulunan izinleri vermeniz gerekir.
+
+1. [Azure portalında](https://portal.azure.com) depolama hesabınıza gidin.
+1. Depolama hesabının erişim denetimi ayarlarını göstermek için **erişim denetimi (IAM)** seçeneğini belirleyin. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
+1. **Rol ataması Ekle** penceresinde, **katkıda** bulunan rolünü seçin. 
+1. **Erişim ata** ALANıNDAN **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
+1. **Gereç kaynak sağlayıcısı** rolünü ara ' yı **seçin** ve bunu seçin.
+1. Rol atamasını kaydedin.
+
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Yönetilen uygulama tanımını ARM şablonuyla dağıtma 
+
+Paketlenmiş yönetilen uygulamanızı, tanım dosyaları kendi depolama hesabınızda depolanan ve tutulan hizmet kataloğunda yeni bir yönetilen uygulama tanımı olarak dağıtmak için aşağıdaki ARM şablonunu kullanın:
+   
+```json
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "applicationName": {
+            "type": "string",
+            "metadata": {
+                "description": "Managed Application name"
+            }
+        },
+        "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
+    },
+        "definitionStorageResourceID": {
+            "type": "string",
+            "metadata": {
+                "description": "Storage account resource ID for where you're storing your definition"
+            }
+        },
+        "_artifactsLocation": {
+            "type": "string",
+            "metadata": {
+                "description": "The base URI where artifacts required by this template are located."
+            }
+        }
+    },
+    "variables": {
+        "lockLevel": "None",
+        "description": "Sample Managed application definition",
+        "displayName": "Sample Managed application definition",
+        "managedApplicationDefinitionName": "[parameters('applicationName')]",
+        "packageFileUri": "[parameters('_artifactsLocation')]",
+        "defLocation": "[parameters('definitionStorageResourceID')]",
+        "managedResourceGroupId": "[concat(subscription().id,'/resourceGroups/', concat(parameters('applicationName'),'_managed'))]",
+        "applicationDefinitionResourceId": "[resourceId('Microsoft.Solutions/applicationDefinitions',variables('managedApplicationDefinitionName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Solutions/applicationDefinitions",
+            "apiVersion": "2019-07-01",
+            "name": "[variables('managedApplicationDefinitionName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "lockLevel": "[variables('lockLevel')]",
+                "description": "[variables('description')]",
+                "displayName": "[variables('displayName')]",
+                "packageFileUri": "[variables('packageFileUri')]",
+                "storageAccountId": "[variables('defLocation')]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+ApplicationDefintion 'un özelliklerine **Storageaccountıd** adlı yeni bir özellik ekledik ve tanımınızı kendi değeri olarak depolamak istediğiniz depolama hesabı kimliğini sağlayın:
+
+Uygulama tanımı dosyalarının, **applicationdefinitions**başlıklı bir kapsayıcıda, belirtilen depolama hesabınıza kaydedildiğini doğrulayabilirsiniz.
+
+> [!NOTE]
+> Ek güvenlik için, yönetilen bir uygulama tanımı oluşturmak için [şifreleme etkin olan bir Azure depolama hesabı blobu](../../storage/common/storage-service-encryption.md)içinde depolama alanı tanımlayabilirsiniz. Tanım içerikleri, depolama hesabının şifreleme seçenekleri aracılığıyla şifrelenir. Yalnızca dosya izinlerine sahip kullanıcılar, hizmet kataloğunda tanımı görebilir.
 
 ### <a name="make-sure-users-can-see-your-definition"></a>Kullanıcıların tanımınızı görebilmesini sağlama
 

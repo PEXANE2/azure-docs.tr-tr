@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 5d652eb3bad72bded8e85a6ac841aae7a9c82a40
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: e66314e06aa87a01dcd2a3ff0a51ae86082173e3
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75663092"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75904442"
 ---
 Genel amaçlı VM boyutları dengeli CPU-bellek oranını sağlar. Test ve geliştirme, küçük - orta boyutlu veritabanları, düşük - orta yoğunluklu trafiğe sahip web sunucuları için idealdir. Bu makalede, bu gruplandırmadaki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı hakkında bilgi sağlanır.
 
@@ -29,7 +29,7 @@ Genel amaçlı VM boyutları dengeli CPU-bellek oranını sağlar. Test ve geli�
 
   Örnek D Serisi Kullanım örnekleri arasında kurumsal düzeyde uygulamalar, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz vardır.
 
-- Dav4-Series ve Dasv4-Series, 128 GB L3 önbellek kullanan çok iş parçacıklı bir yapılandırmada, en 256 fazla 128 GB L3 önbellek kullanan<sup>yeni 7452</sup> boyutlardır. bu L3 önbelleğin her 8 çekirdeğe, genel amaçlı iş yüklerini çalıştırmaya yönelik müşteri seçeneklerinin artması. Dav4-Series ve Dasv4 serisi, D & Dsv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+- Dav4-Series ve Dasv4 serisi, çok iş parçacıklı bir yapılandırmada, 128 MB 'a kadar L3 önbellek kullanan<sup>yeni 7452</sup> boyutlardır ve her 8 çekirdeğe, genel amaçlı iş yüklerini çalıştırmaya yönelik müşteri seçeneklerini artırarak, en fazla 8 ' 256 e varan bir yapılandırma. Dav4-Series ve Dasv4 serisi, D & Dsv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
   
 ## <a name="b-series"></a>B serisi
 

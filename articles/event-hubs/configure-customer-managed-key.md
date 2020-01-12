@@ -8,18 +8,15 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a5aa6a2e2578a995e4ef00489557fc02623e2d6a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744833"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903278"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Azure portal (Önizleme) kullanarak bekleyen Azure Event Hubs verilerini şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
 Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
-
->[!NOTE]
-> Bu özellik şu anda önizleme sürümündedir. ' De bir üretim ortamında kullanmanızı öneririz.
 
 ## <a name="overview"></a>Genel Bakış
 Azure Event Hubs artık, Microsoft tarafından yönetilen anahtarlarla veya müşteri tarafından yönetilen anahtarlarla (Kendi Anahtarını Getir – BYOK), bekleyen verileri şifreleme seçeneğini desteklemektedir. Bu özellik, Azure Event Hubs verilerini bekleyen bir şekilde şifrelemek için kullanılan müşteri tarafından yönetilen anahtarlara erişimi oluşturmanıza, döndürmenize, devre dışı bırakmanızı ve iptal etmenize olanak sağlar.
@@ -41,7 +38,7 @@ Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için
 
 1. Event Hubs Ayrılmış kümenize gidin.
 1. BYOK ' u etkinleştirmek istediğiniz ad alanını seçin.
-1. Event Hubs ad alanının **Ayarlar** sayfasında **şifreleme (Önizleme)** öğesini seçin. 
+1. Event Hubs ad alanının **Ayarlar** sayfasında **şifreleme**' yi seçin. 
 1. Aşağıdaki görüntüde gösterildiği gibi **geri kalan müşteri tarafından yönetilen anahtar şifrelemesini** seçin. 
 
     ![Müşteri tarafından yönetilen anahtarı etkinleştir](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -72,8 +69,6 @@ Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşter
         ![Anahtar kasasından anahtar seçin](./media/configure-customer-managed-key/select-key-from-key-vault.png)
     1. Anahtarın ayrıntılarını girin ve **Seç**' e tıklayın. Bu, müşteri tarafından yönetilen anahtar ile ad alanındaki bekleyen verilerin şifrelenmesini sağlar. 
 
-        > [!NOTE]
-        > Önizleme için yalnızca tek bir anahtar seçebilirsiniz. 
 
 ## <a name="rotate-your-encryption-keys"></a>Şifreleme anahtarlarınızı döndürün
 Anahtarı anahtar kasasında Azure Anahtar Kasası döndürme mekanizmasını kullanarak döndürebilirsiniz. Daha fazla bilgi için bkz. [anahtar dönüşü ve denetimini ayarlama](../key-vault/key-vault-key-rotation-log-monitoring.md). Etkinleştirme ve sona erme tarihleri, anahtar döndürmeyi otomatik hale getirmek için de ayarlanabilir. Event Hubs hizmet yeni anahtar sürümlerini algılar ve otomatik olarak kullanmaya başlar.
@@ -82,9 +77,6 @@ Anahtarı anahtar kasasında Azure Anahtar Kasası döndürme mekanizmasını ku
 Şifreleme anahtarlarına erişimin iptal edilmemesi Event Hubs verileri temizleyemezsiniz. Ancak, verilere Event Hubs ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri hakkında daha fazla bilgi edinin ve anahtar kasasının güvenliğini [güvenli bir şekilde bir anahtar kasasına erişin](../key-vault/key-vault-secure-your-key-vault.md).
 
 Şifreleme anahtarı iptal edildiğinde, şifrelenen ad alanındaki Event Hubs hizmeti çalışamaz hale gelir. Anahtara erişim etkinleştirilirse veya silme anahtarı geri yüklenirse, şifrelenmiş Event Hubs ad alanındaki verilere erişebilmek için Event Hubs hizmet anahtarı seçer.
-
-> [!NOTE]
-> Anahtar kasanızdan var olan bir şifreleme anahtarını silip Event Hubs ad alanındaki yeni bir anahtarla değiştirirseniz, silme anahtarı bir saate kadar geçerli olduğundan (eski anahtarla şifrelenen), eski verileriniz de erişilebilir durumda olabilir  Yeni veriler ile, artık yalnızca yeni anahtar kullanılarak erişilebilir. Bu davranış, özelliğin önizleme sürümünde tasarımdır. 
 
 ## <a name="set-up-diagnostic-logs"></a>Tanılama günlükleri ayarlama 
 BYOK etkinleştirilmiş ad alanları için tanılama günlüklerini ayarlama, bir ad alanı müşteri tarafından yönetilen anahtarlarla şifrelendiğinde, işlemler hakkında gerekli bilgileri sağlar. Bu Günlükler etkinleştirilebilir ve daha sonra bir olay hub 'ına bağlanabilir veya Log Analytics aracılığıyla analiz edilebilir ya da özelleştirilmiş analizler gerçekleştirmek için depolama alanına akışı yapılabilir. Tanılama günlükleri hakkında daha fazla bilgi edinmek için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
@@ -171,10 +163,6 @@ Aşağıda, BYOK şifrelemesi etkinleştirildiğinde aranacak ortak hatalar kodl
 
 > [!IMPORTANT]
 > BYOK şifrelemesini kullanan bir ad alanında coğrafi DR 'yi etkinleştirmek için, eşleştirme için ikincil ad alanı adanmış bir kümede olmalıdır ve üzerinde sistem tarafından atanmış bir yönetilen kimlik etkin olmalıdır. Daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
-
-> [!NOTE]
-> Sanal ağ (VNet) hizmet uç noktaları Event Hubs ad alanınız için Azure Key Vault yapılandırılmışsa BYOK desteklenmez. 
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 9b08dd60020dad6f747167f35e8d172fdc24a59e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b9637265d263a75949d5a70c3e4f0ce06044d93c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751881"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901816"
 ---
 GPU iyileştirilmiş VM boyutları, tek veya birden çok NVıDıA GPU ile kullanılabilen özelleştirilmiş sanal makinelerdir. Bu boyutlar, işlem yoğunluğu, grafik yoğun ve görselleştirme iş yükleri için tasarlanmıştır. Bu makalede GPU 'Lar, vCPU 'Lar, veri diskleri ve NIC 'lerin sayısı ve türleri hakkında bilgi sağlanır. Bu gruplandırmadaki her boyut için depolama verimlilik ve ağ bant genişliği de mevcuttur.
 
@@ -56,7 +56,7 @@ NCv2 serisi VM 'Ler [NVIDIA Tesla P100](https://www.nvidia.com/en-us/data-center
 NC24rs v2 yapılandırması, sıkı şekilde bağlanmış paralel bilgi işlem iş yükleri için iyileştirilmiş, düşük gecikme süreli ve yüksek performanslı bir ağ arabirimi sağlar.
 
 > [!IMPORTANT]
-> Bu boyut ailesi için, aboneliğinizdeki vCPU (çekirdek) kotası başlangıçta her bölgede 0 olarak ayarlanır. Bu aile için [kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/) [vCPU kotası artışı isteyin](../articles/azure-supportability/resource-manager-core-quotas-request.md) .
+> Bu boyut ailesi için, aboneliğinizdeki vCPU (çekirdek) kotası başlangıçta her bölgede 0 olarak ayarlanır. Bu aile için [kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/) [vCPU kotası artışı isteyin](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) .
 >
 
 | Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | En fazla veri diski | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC |
@@ -79,7 +79,7 @@ Premium depolama önbelleği: desteklenir
 NCv3 serisi VM 'Ler [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center/tesla-v100/) GPU 'ları tarafından desteklenir. Bu GPU 'Lar 1.5 x 'in NCv2 serisi hesaplama performansını sağlayabilir. Müşteriler rezervoır modelleme, DNA sıralaması, protestolu analiz, Monte Carlo simülasyonları ve diğerleri gibi geleneksel HPC iş yükleri için bu güncelleştirilmiş GPU 'ların avantajlarından yararlanabilir. NC24rs v3 yapılandırması, sıkı şekilde bağlanmış paralel bilgi işlem iş yükleri için iyileştirilmiş, düşük gecikme süreli ve yüksek performanslı bir ağ arabirimi sağlar. GPU 'Ların yanı sıra, NCv3 serisi VM 'Ler Intel Xeon E5-2690 v4 (geniş) CPU 'Lar tarafından da desteklenir.
 
 > [!IMPORTANT]
-> Bu boyut ailesi için, aboneliğinizdeki vCPU (çekirdek) kotası başlangıçta her bölgede 0 olarak ayarlanır. Bu aile için [kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/) [vCPU kotası artışı isteyin](../articles/azure-supportability/resource-manager-core-quotas-request.md) .
+> Bu boyut ailesi için, aboneliğinizdeki vCPU (çekirdek) kotası başlangıçta her bölgede 0 olarak ayarlanır. Bu aile için [kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/) [vCPU kotası artışı isteyin](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) .
 >
 
 | Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | En fazla veri diski | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC |
@@ -131,7 +131,7 @@ Premium depolama önbelleği: desteklenir
 ND serisi sanal makineler, AI için tasarlanan GPU ailesine ve derin öğrenme iş yüklerine yeni bir ektir. Eğitim ve çıkarım için mükemmel performans sunar. ND örnekleri [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU 'Lar ve Intel Xeon E5-2690 v4 (çok Iyi) CPU 'lar tarafından desteklenir. Bu örnekler Microsoft Cognitive Toolkit, TensorFlow, Caffe ve diğer çerçeveleri kullanan AI iş yükleri için tek duyarlıklı kayan nokta işlemleri için mükemmel bir performans sağlar. Ayrıca, ND serisi çok daha büyük bir GPU bellek boyutu (24 GB) sunarak daha büyük sinir ağı modellerinin sığdırılmasına imkan tanır. NC serisi gibi, ND serisi, RDMA aracılığıyla ikincil düşük gecikmeli, yüksek performanslı bir ağ ve InfiniBand bağlantısı sunan bir yapılandırma sunarak çok sayıda GPU 'yu kapsayan büyük ölçekli eğitim işleri çalıştırabilirsiniz.
 
 > [!IMPORTANT]
-> Bu boyut ailesinde, aboneliğinizdeki bölge başına vCPU (çekirdek) kotası başlangıçta 0 olarak ayarlanır. Bu aile için [kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/) [vCPU kotası artışı isteyin](../articles/azure-supportability/resource-manager-core-quotas-request.md) .
+> Bu boyut ailesinde, aboneliğinizdeki bölge başına vCPU (çekirdek) kotası başlangıçta 0 olarak ayarlanır. Bu aile için [kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/) [vCPU kotası artışı isteyin](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) .
 >
 
 | Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | En fazla veri diski | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC |

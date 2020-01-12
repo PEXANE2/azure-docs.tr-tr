@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad6e912f976095ae7d8fd5276b0f1365566c181a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 4df22108591fe3f80078bce050081c4953443847
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74143784"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902991"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Yerel Azure sertifikası kimlik doğrulaması P2S yapılandırmaları için VPN istemcisi yapılandırma dosyalarını oluşturma ve yapılandırma
 
@@ -95,7 +95,7 @@ Mac 'te sertifika kimlik doğrulaması için yerel VPN istemcisini yapılandırm
 
    **Arabirim** DEĞERI ' VPN ' ve **VPN türü** değeri ' Ikev2 '. **Hizmet adı** alanında profil için bir ad belirtin ve ardından **Oluştur** ' a tıklayarak VPN istemci bağlantı profilini oluşturun.
 
-   ![Network](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![ağ](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. **Genel** klasöründe, **vpnsettings. xml** dosyasından **VPNServer** etiket değerini kopyalayın. Bu değeri, profilin **sunucu adresine** ve **uzak kimlik** alanlarına yapıştırın.
 
    ![sunucu bilgileri](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -107,7 +107,7 @@ Mac 'te sertifika kimlik doğrulaması için yerel VPN istemcisini yapılandırm
    ![sertifika](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Bir kimlik seçin seçim** yapabileceğiniz sertifikaların listesini görüntüler. Doğru sertifikayı seçip **devam**' a tıklayın.
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![kimlik](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. **Yerel kimlik** alanında, sertifikanın (adım 6 ' dan) adını belirtin. Bu örnekte, "ikev2Client.com" olur. Ardından, değişiklikleri kaydetmek için **Uygula** düğmesine tıklayın.
 
    ![uygulayabilirsiniz](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
