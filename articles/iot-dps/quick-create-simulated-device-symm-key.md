@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 73d2e075dd4d3cf9e9b37aa9131ab5f4c822e140
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4e84a43f8984e2adeac916e467a8cac693ee453d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895919"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912446"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Hızlı Başlangıç: Simetrik anahtarlar ile bir simülasyon cihazı sağlama
 
@@ -51,6 +51,8 @@ SDK bir simülasyon cihazı için örnek kod içerir. Simülasyon cihazı, cihaz
 1. [CMake derleme sistemini](https://cmake.org/download/)indirin.
 
     `CMake` yüklemesine başlamadan **önce** makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
+
+    CMake derleme sisteminin daha eski sürümleri bu makalede kullanılan çözüm dosyasını oluşturamıyor. CMake 'in daha yeni bir sürümünü kullandığınızdan emin olun.
 
 2. **Etiketler** ' e tıklayın ve [Azure IoT C SDK 'sının yayın sayfasında](https://github.com/Azure/azure-iot-sdk-c/releases/latest)en son sürüm için etiket adını bulun.
 
@@ -136,6 +138,8 @@ Bu bölümde cihazın önyükleme sırasını Cihaz Sağlama Hizmeti örneğiniz
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
+
+    Dosya CMake dizininizde oluşturulmadığından, CMake derleme sisteminin yeni bir sürümünü kullandığınızdan emin olun.
 
 3. Visual Studio'nun *Çözüm Gezgini* penceresinde **Sağlama\_Örnekleri** klasörüne gidin. **prov\_dev\_client\_sample** adlı örnek projeyi genişletin. **Kaynak Dosyalar**'ı genişletin ve **prov\_dev\_client\_sample.c** dosyasını açın.
 

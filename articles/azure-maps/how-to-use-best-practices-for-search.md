@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar arama hizmetini kullanarak etkin bir şekilde arama yapma | Microsoft Docs
-description: Azure haritalar arama hizmetini kullanarak arama için en iyi yöntemleri kullanmayı öğrenin
+title: Azure haritalar 'ı kullanarak verimli bir şekilde arama Arama Hizmeti | Microsoft Azure haritaları
+description: Microsoft Azure haritaları kullanarak arama için en iyi yöntemleri kullanmayı öğrenin Arama Hizmeti
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/08/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 88f864abc82ea6ba70559c8db5db2d0fe07383b1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aa3c7b58b3a391de40940636a67a4a224c44fe10
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768835"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911362"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Azure haritalar 'ı kullanmak için en iyi uygulamalar Arama Hizmeti
 

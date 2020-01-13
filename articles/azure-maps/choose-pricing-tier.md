@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar için fiyatlandırma katmanı sağ seçin | Microsoft Docs
-description: Azure haritalar tarafından sağlanan katmanları fiyatlandırması hakkında bilgi edinin
+title: Doğru fiyatlandırma katmanını seçin | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları tarafından sunulan fiyatlandırma katmanları hakkında bilgi edineceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 01/02/2019
@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 1bf60014b20f4cec29d661db4deb029fea4ab1d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ff774f9848db948058075a98504e6c13db5467a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60796286"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911759"
 ---
-# <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure haritalar fiyatlandırma katmanı sağ seçin
+# <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure haritalar 'da doğru fiyatlandırma katmanını seçin
 
-Azure Haritalar, iki fiyatlandırma katmanı sunuyor. Bu makalenin amacı, fiyatlandırma katmanını gereksinimlerinize sağ seçmenize yardımcı olmaktır. Fiyatlandırma katmanı sağ seçmenize yardımcı olması için aşağıdaki iki soruları kendinize sorun.
+Azure Haritalar, iki fiyatlandırma katmanı sunuyor. Bu makalenin amacı, gereksinimleriniz için doğru fiyatlandırma katmanını seçmenize yardımcı olmak içindir. Doğru fiyatlandırma katmanını seçmenize yardımcı olmak için aşağıdaki iki soruyu kendinize sorun.
 
-## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Kullanmak hangi Jeo-uzamsal özellikler planlıyor musunuz?
-Çekirdek Jeo-uzamsal API hizmeti gereksinimlerinizi karşılıyorsa S0 fiyatlandırma katmanını size uygun olduğunu. Uygulamanız için daha gelişmiş özellikleri isterseniz, kabul edilirse için S1 fiyatlandırma katmanını göz önünde bulundurun. Örnek özellikleri alma rota aralığı ve batch coğrafi kodlama karma resimler areal. **Fiyatlandırma katmanı özellikleri** aşağıdaki tabloda, uygulamanızın ihtiyaçlarına daha iyi bir fikir verir. Ayrıca, uygulamanız için en uygun bir fiyatlandırma katmanı seçmenize yardımcı olur.
+## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Hangi jeo kullanım özelliklerini kullanmayı planlıyorum?
+Çekirdek Jeo-uzamsal API 'Leri hizmet gereksinimlerinizi karşılıyorsa, S0 fiyatlandırma katmanı sizin için doğru olur. Uygulamanız için daha gelişmiş yetenekler istiyorsanız S1 fiyatlandırma katmanını tercih edin. Örnek yetenekler, Areal Plus hibrit, yönlendirme aralığı alma ve toplu iş coğrafi kodlama olanakları vardır. Aşağıdaki **Fiyatlandırma Katmanı Özellikleri** tablosu, uygulamanızın ihtiyaçlarına daha iyi fikir verir. Ayrıca, uygulamanız için en uygun fiyatlandırma katmanını seçmenize de yardımcı olur.
 
-## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Desteklemek kaç tane eş zamanlı kullanıcı planlıyor musunuz? 
-S0 ve S1 fiyatlandırma katmanları farklı miktarda veri aktarım hızı işleyin. Fiyatlandırma Katmanı'nın bir Azure haritalar'ı seçmeden önce kendinize bazı sorular sorun. "Kaç tane eş zamanlı kullanıcı miyim desteklemek istiyor musunuz?" örneğidir Fiyatlandırma katmanı S0 işleme kadar **Saniyedeki sorgu sayısı 50**. S1 fiyatlandırma katmanını tutamaçları **Saniyedeki sorgu sayısı 50'den fazla**.
+## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Kaç tane eşzamanlı kullanıcı desteklemeyi planlıyorum? 
+S0 ve S1 fiyatlandırma katmanları farklı miktarda veri aktarımını işler. Azure haritalar fiyatlandırma katmanını seçmeden önce bazı sorularınızı sorun. Örnek olarak "kaç tane eşzamanlı kullanıcı desteklemek istiyorum?" S0 fiyatlandırma katmanı, **saniyede 50 sorgunun sayısını**işler. S1 fiyatlandırma katmanı, **saniye başına 50 ' den fazla sorgu**işler.
 
-### <a name="pricing-tier-capabilities"></a>Fiyatlandırma katmanı özellikleri
+### <a name="pricing-tier-capabilities"></a>Fiyatlandırma Katmanı Özellikleri
 
 | Özellik                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
-| Arama (İleri Sar/ters coğrafi kodlama, ilgilenilen noktaları)  |        ✓           |     ✓    |
-| Batch coğrafi kodlama (Önizleme)              |                   |     ✓    |
-| Aramaya ilişkin çokgenler          |                   |     ✓    |
+| Ara (FWD/Rev coğrafi kodlama, ilgi noktaları)  |        ✓           |     ✓    |
+| Toplu iş coğrafi kodlama (Önizleme)              |                   |     ✓    |
+| Aramadan çokgenler          |                   |     ✓    |
 | Yönlendirme                                 |        ✓           |     ✓    |
-| Rota aralığı                    |                   |     ✓    |
-| Toplu iş (Önizleme) yönlendirme                |                   |     ✓    |
-| Matris (Önizleme) yönlendirme               |                   |     ✓    |
+| Yol aralığı                    |                   |     ✓    |
+| Batch yönlendirme (Önizleme)                |                   |     ✓    |
+| Matris yönlendirme (Önizleme)               |                   |     ✓    |
 | İşleme                                  |        ✓           |     ✓    |
-| Gözünüzde yanı sıra karma resimler    |            |     ✓    |
+| Imagery Plus karma canlandırın    |            |     ✓    |
 | Trafik                                 |        ✓           |     ✓    |
 | Saat dilimleri                              |        ✓           |     ✓    |
 | Coğrafi konum (Önizleme)                |        ✓           |     ✓    |
@@ -47,22 +47,22 @@ S0 ve S1 fiyatlandırma katmanları farklı miktarda veri aktarım hızı işley
 
 
 
-Bu ek veri noktaları, dikkate değer vardır:
-* Ne tür bir kurumsal var mı?
-* Ne kadar kritik olduğunu oluşturulmakta olan uygulama?
+Bu ek veri noktalarına göz önünde bulundurulmayı düşünülüyor:
+* Ne tür bir kuruluş kullanıyorsunuz?
+* Uygulama ne kadar kritik oluşturuluyor?
 
-Bkz: **hedeflenen müşteriler fiyatlandırma katmanı** tablo S0 ve S1 fiyatlandırma katmanlarının daha iyi bir fikir edinebilirsiniz. Daha fazla bilgi için [Azure haritalar fiyatlandırma](https://azure.microsoft.com/pricing/details/azure-maps/). 
+S0 ve S1 fiyatlandırma katmanlarından daha iyi bir fikir almak için **fiyatlandırma katmanı hedeflenen müşteriler** tablosuna bakın. Daha fazla bilgi için bkz. [Azure Maps fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-maps/). 
 
-### <a name="pricing-tier-targeted-customers"></a>Müşteriler fiyatlandırma katmanı hedeflenen
+### <a name="pricing-tier-targeted-customers"></a>Fiyatlandırma Katmanı hedeflenen müşteriler
 
 | Fiyatlandırma katmanı  |     Hedeflenen müşteriler                                                                |
 |---------------|:-----------------------------------------------------------------------------------------|
-| S0            |    <p>S0 fiyatlandırma katmanı küçük veya orta ölçekli işletmelerin isteyen müşterilere yöneliktir. Bu, yüksek hacimli eşzamanlı kullanıcı düşünmüyorsanız, fiyatlandırma katmanı sağ olur. Yukarıdaki tabloda gösterilen API'leri çekirdek Jeo uzamsal hizmet gereksinimlerinizi karşılıyorsa da sağ. Bu genel kullanıma sunulmuştur. Uygulamalar için tüm üretim aşamada çalışır: kavram kanıtı geliştirme ve test uygulama üretim ve dağıtım için erken aşama.<p>|
-| S1            |    <p>S1 fiyatlandırma katmanını, büyük ölçekli Kurumsal, görev açısından kritik uygulamaları veya yüksek hacimli eşzamanlı kullanıcı için destek geçirilmesi gereken müşterilere yöneliktir. Ayrıca Gelişmiş Jeo-uzamsal hizmetler ihtiyaç duyan müşteriler için bir hizmettir.</p>|
+| S0            |    <p>S0 fiyatlandırma katmanı, küçük ya da orta ölçekli kuruluşlar olan müşteriler içindir. Yüksek miktarda eşzamanlı kullanıcı beklenmezseniz, sizin için doğru fiyatlandırma katmanınız. Yukarıdaki tabloda gösterilen temel Jeo-uzamsal API 'Lerin hizmet gereksinimlerinizi karşılaması durumunda da bu da doğru olur. Bu katman genel kullanıma sunulmuştur. Üretim aşamasındaki tüm aşamalardaki uygulamalar için geçerlidir: kavram kanıtı geliştirme ve uygulama üretim ve dağıtımına yönelik erken aşama testi.<p>|
+| S1            |    <p>S1 fiyatlandırma katmanı, büyük ölçekli kurumsal, görev açısından kritik uygulamalar veya çok sayıda eşzamanlı kullanıcı için destek gerektiren müşterilere yöneliktir. Bu, gelişmiş Jeo-uzamsal hizmetler gerektiren müşteriler için de gereklidir.</p>|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görüntüle ve Değiştir fiyatlandırma katmanları hakkında daha fazla bilgi edinin:
+Fiyatlandırma katmanlarını görüntüleme ve değiştirme hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"] 
-> [Bir fiyatlandırma Katmanı'nı yönetme](how-to-manage-pricing-tier.md)
+> [Fiyatlandırma katmanını yönetme](how-to-manage-pricing-tier.md)

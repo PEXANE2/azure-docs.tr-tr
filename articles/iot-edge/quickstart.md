@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ab3805e39112d4d37635571d8aa43030a1896951
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: aa6d3d61cb2ce0972653f787976a89e3d372ae27
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552449"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912351"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü sanal bir Windows cihazına dağıtma
 
@@ -227,7 +227,7 @@ iotedge logs SimulatedTemperatureSensor -f
 
    ![Verileri modülünüzden görüntüleme](./media/quickstart/iotedge-logs.png)
 
-Ayrıca, [Visual Studio Code Için azure IoT Hub araç seti uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (eskiden Azure IoT araç seti uzantısı) kullanarak IoT Hub 'ınıza gelen iletileri izleyebilirsiniz.
+Ayrıca, [Visual Studio Code Için Azure IoT Hub uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)kullanarak IoT Hub 'ınıza gelen iletileri izleyebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
