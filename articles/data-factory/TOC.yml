@@ -132,6 +132,12 @@
           href: tutorial-deploy-ssis-packages-azure.md
         - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
+        - name: Sanal ağa katılma
+          href: tutorial-deploy-ssis-virtual-network.md
+    - name: Uçtan uca laboratuvarlar
+      items:
+        - name: Veri fabrikası ve veri paylaşımı kullanarak veri tümleştirme
+          href: lab-data-flow-data-share.md
 - name: Örnekler
   items:
     - name: Kod örnekleri
@@ -673,18 +679,18 @@
       href: /python/api/overview/azure/datafactory?view=azure-python
 - name: Kaynaklar
   items:
+    - name: Teknik incelemeler
+      href: whitepapers.md
+    - name: SSS
+      href: frequently-asked-questions.md
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?product=data-factory'
     - name: 'Soru sorun: MSDN forumu'
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
     - name: 'Soru sorun: Stack Overflow'
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: Özellik isteme
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: SSS
-      href: frequently-asked-questions.md
-    - name: Teknik incelemeler
-      href: whitepapers.md
-    - name: Yol Haritası
-      href: 'https://azure.microsoft.com/roadmap/?tag=data-factory'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: Bölgelere göre kullanılabilirlik

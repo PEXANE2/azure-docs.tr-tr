@@ -91,6 +91,8 @@
       items:
         - name: Günlük verileri
           href: platform/data-security.md
+        - name: Müşteri tarafından yönetilen anahtarlar
+          href: platform/customer-managed-keys.md
         - name: Kişisel günlük verilerini işleme
           href: platform/personal-data-mgmt.md
         - name: 'Uygulama verilerini toplama, bekletme ve depolama'

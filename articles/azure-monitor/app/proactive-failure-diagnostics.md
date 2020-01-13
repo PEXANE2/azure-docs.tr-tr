@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 1eebb41c83071f34cf367826a21c4bfbf0189394
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c556f726cd63971abe1e9b6d8b87117bb3e378db
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748907"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912848"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Akıllı algılama-hata bozuklukları
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) , Web uygulamanız başarısız isteklerin hızında anormal bir artış yaşıyorsa sizi neredeyse gerçek zamanlı olarak uyarır. HTTP isteklerinin veya başarısız olarak bildirilen bağımlılık çağrılarının hızında olağan dışı bir artış algılar. İstekler için, başarısız olan isteklerin genellikle 400 veya üzeri yanıt kodları vardır. Sorunu önceliklendirmenize ve tanılamanıza yardımcı olması için, uyarı ayrıntılarında hataların özelliklerinin ve ilgili uygulama verilerinin bir analizi verilmiştir. Ayrıca, daha fazla tanılama için Application Insights portalına bağlantılar da vardır. Özelliğin, normal hata oranını tahmin etmek için makine öğrenimi algoritmalarını kullandığından, kurulum veya yapılandırma gerekmez.
@@ -48,13 +48,11 @@ Bir analiz tetiklendiğinde, hizmet, hataların nitelediği bir değer modelini 
 
 Yukarıdaki örnekte analiz, çoğu hataların belirli bir sonuç kodu, istek adı, sunucu URL 'SI Konağı ve rol örneği hakkında olduğunu tespit etti. 
 
-Buna karşılık, analiz, istemci işletim sistemi özelliğinin birden çok değer üzerinde dağıtıldığını tespit etti ve bu nedenle listelenmez.
-
 Hizmetiniz bu çağrılarla birlikte görüntülendiğinde, çözümleyici, tanımladığı kümedeki isteklerle ilişkili bir özel durum ve bağımlılık hatası arar ve bu isteklerle ilişkili izleme günlüklerinin bir örneğidir.
 
 Sonuç analizi, bir olarak yapılandırmadığınız sürece size uyarı olarak gönderilir.
 
-[El ile ayarladığınız uyarılar](../../azure-monitor/app/alerts.md)gibi, uyarının durumunu inceleyebilir ve Application Insights kaynağınızın Uyarılar sayfasında yapılandırabilirsiniz. Ancak, diğer uyarıların aksine akıllı algılama 'yı ayarlamanıza veya yapılandırmanıza gerek yoktur. İsterseniz, devre dışı bırakabilir veya hedef e-posta adreslerini değiştirebilirsiniz.
+[El ile ayarladığınız uyarılar](../../azure-monitor/app/alerts.md)gibi, tetiklenen uyarının durumunu inceleyebilirsiniz ve sorun düzeltildiğinde çözülebilir. Application Insights kaynağınızın Uyarılar sayfasında uyarı kurallarını yapılandırın. Ancak, diğer uyarıların aksine akıllı algılama 'yı ayarlamanıza veya yapılandırmanıza gerek yoktur. İsterseniz, devre dışı bırakabilir veya hedef e-posta adreslerini değiştirebilirsiniz.
 
 ### <a name="alert-logic-details"></a>Uyarı mantığı ayrıntıları
 
@@ -63,6 +61,7 @@ Uyarılar, özel makine öğrenimi algoritmız tarafından tetiklenir, bu nedenl
 * 20 dakikalık bir sıralı zaman penceresinde isteklerin/bağımlılıkların hata yüzdesi analizi.
 * Son 20 dakikalık hata yüzdesinin son 40 dakikalık ve son yedi günün hızına bir karşılaştırması ve standart sapmanın X-Times ' i aşan önemli sapmaları aramak.
 * Uygulamanın istek hacmine/bağımlılıklara göre farklılık gösteren, en düşük hata yüzdesi için uyarlamalı sınır kullanma.
+* Sorun artık 8-24 saat için algılanmadıysa, tetiklenen uyarı İzleyicisi koşulunu otomatik olarak çözebilecek mantık vardır.
 
 ## <a name="configure-alerts"></a>Uyarı yapılandırma
 
@@ -83,7 +82,7 @@ Yapılandırmak için uyarıya tıklayın.
 
 [![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
 
-Akıllı algılamayı devre dışı bırakabildiğinize, ancak silemezsiniz (veya başka bir tane oluşturamazsınız).
+Hata anomali uyarı kuralını devre dışı bırakabildiğinize veya silebildiğinize, ancak aynı Application Insights kaynağında başka bir tane oluşturamazsınız.
 
 ## <a name="example-of-failure-anomalies-alert-webhook-payload"></a>Hata anomali uyarı Web kancası yükü örneği
 

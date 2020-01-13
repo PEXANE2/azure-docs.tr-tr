@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 0955e4082056963b075544aad2c66be9c0f8c8d9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 84bb33f724622ba994c81b1d09c99b6399fd36ac
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893714"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913113"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerinin sunucu tarafı şifrelemesi
 
@@ -68,13 +68,14 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için bkz. [Po
 
 Şimdilik aşağıdaki kısıtlamalara de ihtiyacımız vardır:
 
-- **Yalnızca Orta Batı ABD, Orta Güney ABD, Doğu ABD 2, Doğu ABD, Batı ABD 2, Orta Kanada ve Kuzey Avrupa mevcuttur.**
+- Doğu ABD, Batı ABD 2 ve Orta Güney ABD bir GA teklifi olarak mevcuttur.
+- Orta Batı ABD, Doğu ABD 2, Kanada Orta ve Kuzey Avrupa genel önizleme olarak kullanılabilir.
 - Sunucu tarafı şifreleme ve müşterinin yönettiği anahtarlar kullanılarak şifrelenen özel görüntülerden oluşturulan diskler, müşteri tarafından yönetilen aynı anahtar kullanılarak şifrelenmelidir ve aynı abonelikte olmalıdır.
 - Sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla şifrelenen disklerden oluşturulan anlık görüntüler, müşteri tarafından yönetilen aynı anahtarlarla şifrelenmelidir.
 - Sunucu tarafı şifreleme kullanılarak şifrelenen özel görüntüler ve müşteri tarafından yönetilen anahtarlar paylaşılan görüntü galerisinde kullanılamaz.
 - Müşteri tarafından yönetilen anahtarlarınızla ilgili tüm kaynakların (Azure Anahtar kasaları, disk şifreleme kümeleri, VM 'Ler, diskler ve anlık görüntüler) aynı abonelikte ve bölgede olması gerekir.
 - Müşteri tarafından yönetilen anahtarlarla şifrelenen diskler, anlık görüntüler ve görüntüler başka bir aboneliğe taşınamaz.
-- Disk şifreleme kümesini oluşturmak için Azure portalını kullanıyorsanız, anlık görüntüleri şimdilik kullanamazsınız.
+- Disk şifreleme kümesini oluşturmak için Azure portal kullanırsanız, anlık görüntüleri şimdilik kullanamazsınız.
 - 2080 boyutundaki yalnızca ["Soft" ve "Hard" RSA anahtarları](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) desteklenir, başka anahtarlar veya boyutlar desteklenmez.
 
 ### <a name="powershell"></a>PowerShell
@@ -180,6 +181,50 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Empty -DiskSizeInGB
 
 Update-AzVM -ResourceGroupName $rgName -VM $vm
 
+```
+
+#### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Market görüntüsü kullanarak bir sanal makine ölçek kümesi oluşturma, işletim sistemi ve veri disklerini müşteri tarafından yönetilen anahtarlarla şifreleme
+
+```PowerShell
+$VMLocalAdminUser = "yourLocalAdminUser"
+$VMLocalAdminSecurePassword = ConvertTo-SecureString Password@123 -AsPlainText -Force
+$LocationName = "westcentralus"
+$ResourceGroupName = "yourResourceGroupName"
+$ComputerNamePrefix = "yourComputerNamePrefix"
+$VMScaleSetName = "yourVMSSName"
+$VMSize = "Standard_DS3_v2"
+$diskEncryptionSetName="yourDiskEncryptionSetName"
+    
+$NetworkName = "yourVNETName"
+$SubnetName = "yourSubnetName"
+$SubnetAddressPrefix = "10.0.0.0/24"
+$VnetAddressPrefix = "10.0.0.0/16"
+    
+$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+
+$Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroupName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+
+$ipConfig = New-AzVmssIpConfig -Name "myIPConfig" -SubnetId $Vnet.Subnets[0].Id 
+
+$VMSS = New-AzVmssConfig -Location $LocationName -SkuCapacity 2 -SkuName $VMSize -UpgradePolicyMode 'Automatic'
+
+$VMSS = Add-AzVmssNetworkInterfaceConfiguration -Name "myVMSSNetworkConfig" -VirtualMachineScaleSet $VMSS -Primary $true -IpConfiguration $ipConfig
+
+$diskEncryptionSet=Get-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName -Name $diskEncryptionSetName
+
+# Enable encryption at rest with customer managed keys for OS disk by setting DiskEncryptionSetId property 
+
+$VMSS = Set-AzVmssStorageProfile $VMSS -OsDiskCreateOption "FromImage" -DiskEncryptionSetId $diskEncryptionSet.Id -ImageReferenceOffer 'WindowsServer' -ImageReferenceSku '2012-R2-Datacenter' -ImageReferenceVersion latest -ImageReferencePublisher 'MicrosoftWindowsServer'
+
+$VMSS = Set-AzVmssOsProfile $VMSS -ComputerNamePrefix $ComputerNamePrefix -AdminUsername $VMLocalAdminUser -AdminPassword $VMLocalAdminSecurePassword
+
+# Add a data disk encrypted at rest with customer managed keys by setting DiskEncryptionSetId property 
+
+$VMSS = Add-AzVmssDataDisk -VirtualMachineScaleSet $VMSS -CreateOption Empty -Lun 1 -DiskSizeGB 128 -StorageAccountType Premium_LRS -DiskEncryptionSetId $diskEncryptionSet.Id
+
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+
+New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMScaleSetName
 ```
 
 > [!IMPORTANT]

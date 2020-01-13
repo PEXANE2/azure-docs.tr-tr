@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: be9331ccd548628bfc27172c4f6e625bdba1632c
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 81ef598c846d98548be2d3e7647166d655398921
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158906"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912808"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Azure App Service Web uygulamalarınızı ve API 'lerinizi koruyun
 
@@ -29,7 +29,7 @@ Azure App Service planınız için Gelişmiş tehdit korumasını etkinleştirme
 
 App Service planı etkinken, Güvenlik Merkezi, App Service planınız kapsamındaki kaynakları değerlendirir ve bulguları temelinde güvenlik önerileri oluşturur. Güvenlik Merkezi, App Service çalıştığı VM örneğini ve yönetim arabirimini korur. Ayrıca, App Service ' de çalışan uygulamalarınıza gönderilen istekleri ve yanıtları izler.
 
-Güvenlik Merkezi, bulut ölçeğinden yararlanır ve Azure 'un ortak Web uygulaması saldırılarını izlemek için bir bulut sağlayıcısı olarak sahip olduğu görünürlüğe sahiptir. Güvenlik Merkezi, uygulamalarınızda saldırıları bulabilir ve gelişen saldırıları tanımlayabilir. saldırganlar keşif aşamasında olsa bile, Azure 'da barındırılan birden çok uygulama üzerinde güvenlik açıklarını belirlemek için tarama yapın. Azure-Native hizmeti olarak Güvenlik Merkezi, bu PaaS için temeldeki işlem düğümlerini kapsayan ana bilgisayar tabanlı güvenlik analizlerini sunmaya yönelik benzersiz bir konumda de bulunur ve Güvenlik Merkezi 'nin önceden kullanılmış olan Web uygulamalarına yönelik saldırıları algılamasını sağlar.
+Güvenlik Merkezi, bulut ölçeğinden yararlanır ve Azure 'un ortak Web uygulaması saldırılarını izlemek için bir bulut sağlayıcısı olarak sahip olduğu görünürlüğe sahiptir. Güvenlik Merkezi, uygulamalarınızda saldırıları bulabilir ve gelişen saldırıları tanımlayabilir. saldırganlar keşif aşamasında olsa bile, Azure 'da barındırılan birden çok uygulama üzerinde güvenlik açıklarını belirlemek için tarama yapın. Azure-Native hizmeti olarak Güvenlik Merkezi, bu PaaS için temeldeki işlem düğümlerini kapsayan ana bilgisayar tabanlı güvenlik analizlerini sunmaya yönelik benzersiz bir konumda de bulunur ve Güvenlik Merkezi 'nin önceden kullanılmış olan Web uygulamalarına yönelik saldırıları algılamasını sağlar. Güvenlik Merkezi 'nin tehdit algılama uyarılarının Azure App Service Ayrıntılar için bkz. [bulut Yerel bilgi işlem Için tehdit algılama](security-center-alerts-compute.md#azure-app-service-).
 
 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>App Service izlemeyi ve korumayı etkinleştirme

@@ -113,6 +113,8 @@
       items:
         - name: Güvenliğe genel bakış
           href: search-security-overview.md
+        - name: Özel uç nokta oluşturma
+          href: service-create-private-endpoint.md
         - name: Hizmet anahtar yönetimi
           href: search-security-api-keys.md
         - name: Rol tabanlı yönetici erişimi

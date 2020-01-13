@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: f5a7e9f1248f9a73786fb9c4a6ecb32691400881
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 61e45a5d13da7af42bbed273e5b39ce2af15d1ca
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894925"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912769"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerinin sunucu tarafı şifrelemesi
 
@@ -67,13 +67,14 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için bkz. [Po
 
 Şimdilik aşağıdaki kısıtlamalara de ihtiyacımız vardır:
 
-- **Yalnızca Orta Batı ABD, Orta Güney ABD, Doğu ABD 2, Doğu ABD, Batı ABD 2, Orta Kanada ve Kuzey Avrupa mevcuttur.**
+- Doğu ABD, Batı ABD 2 ve Orta Güney ABD bir GA teklifi olarak mevcuttur.
+- Orta Batı ABD, Doğu ABD 2, Kanada Orta ve Kuzey Avrupa genel önizleme olarak kullanılabilir.
 - Sunucu tarafı şifreleme ve müşterinin yönettiği anahtarlar kullanılarak şifrelenen özel görüntülerden oluşturulan diskler, müşteri tarafından yönetilen aynı anahtar kullanılarak şifrelenmelidir ve aynı abonelikte olmalıdır.
 - Sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla şifrelenen disklerden oluşturulan anlık görüntüler, müşteri tarafından yönetilen aynı anahtarlarla şifrelenmelidir.
 - Sunucu tarafı şifreleme kullanılarak şifrelenen özel görüntüler ve müşteri tarafından yönetilen anahtarlar paylaşılan görüntü galerisinde kullanılamaz.
 - Müşteri tarafından yönetilen anahtarlarınızla ilgili tüm kaynakların (Azure Anahtar kasaları, disk şifreleme kümeleri, VM 'Ler, diskler ve anlık görüntüler) aynı abonelikte ve bölgede olması gerekir.
 - Müşteri tarafından yönetilen anahtarlarla şifrelenen diskler, anlık görüntüler ve görüntüler başka bir aboneliğe taşınamaz.
-- Disk şifreleme kümesini oluşturmak için Azure portalını kullanıyorsanız, anlık görüntüleri şimdilik kullanamazsınız.
+- Disk şifreleme kümesini oluşturmak için Azure portal kullanırsanız, anlık görüntüleri şimdilik kullanamazsınız.
 
 ### <a name="cli"></a>CLI
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Azure Key Vault ve DiskEncryptionSet 'nizi ayarlama
@@ -136,8 +137,20 @@ diskEncryptionSetName=yourDiskencryptionSetName
 diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
 
 az vm create -g $rgName -n $vmName -l $location --image $image --size $vmSize --generate-ssh-keys --os-disk-encryption-set $diskEncryptionSetId --data-disk-sizes-gb 128 128 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
+```
 
+#### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Market görüntüsü kullanarak bir sanal makine ölçek kümesi oluşturma, işletim sistemi ve veri disklerini müşteri tarafından yönetilen anahtarlarla şifreleme
 
+```azurecli
+rgName=ssecmktesting
+vmssName=ssecmktestvmss5
+location=WestCentralUS
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+diskEncryptionSetName=diskencryptionset786
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+az vmss create -g $rgName -n $vmssName --image UbuntuLTS --upgrade-policy automatic --admin-username azureuser --generate-ssh-keys --os-disk-encryption-set $diskEncryptionSetId --data-disk-sizes-gb 64 128 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
 #### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeyi kullanarak şifrelenen boş bir disk oluşturma ve bunu bir VM 'ye iliştirme

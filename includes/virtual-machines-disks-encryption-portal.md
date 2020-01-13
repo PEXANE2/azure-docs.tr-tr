@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/10/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 165a115f35810c1bfe463a571affb2e44ed74205
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a799339f2780c2bc372c39120a6e20b34d907326
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893845"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912737"
 ---
 ### <a name="portal"></a>Portal
 
@@ -24,28 +24,28 @@ Diskleriniz için müşteri tarafından yönetilen anahtarların kurulması, ilk
 1. [Azure Portal](https://portal.azure.com/) oturum açın ve Key Vault arayın
 1. **Anahtar kasaları**arayın ve seçin.
 
-![SSE-Key-Vault-Portal-Search. png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)
+    [![SSE-Key-Vault-Portal-Search. png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
 
-> [!IMPORTANT]
-> Azure anahtar kasanızın, disk şifreleme kümesi, VM, diskler ve anlık görüntülerinin tümünün başarılı olması için aynı bölgede ve aboneliğin olması gerekir.
+    > [!IMPORTANT]
+    > Azure anahtar kasanızın, disk şifreleme kümesi, VM, diskler ve anlık görüntülerinin tümünün başarılı olması için aynı bölgede ve aboneliğin olması gerekir.
 
 1. Yeni bir Key Vault oluşturmak için **+ Ekle** ' yi seçin.
 1. Yeni bir kaynak grubu oluşturma
 1. Bir Anahtar Kasası adı girin, bir bölge seçin ve bir fiyatlandırma katmanı seçin.
 1. **Gözden geçir + oluştur**' u seçin, seçimlerinizi doğrulayın ve **Oluştur**' u seçin.
 
-![SSE-Create-a-Key-Vault. png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-vault.png)
+    ![SSE-Create-a-Key-Vault. png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-vault.png)
 
 1. Anahtar kasanızın dağıtımı tamamlandıktan sonra, bunu seçin.
 1. **Ayarlar**altında **anahtarlar** ' ı seçin.
 1. **Oluştur/Içeri aktar** 'ı seçin
 
-![SSE-Key-Vault-Generate-Settings. png](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
+    ![SSE-Key-Vault-Generate-Settings. png](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
-1. Her iki **anahtar türünü** de **RSA** ve **RSA anahtar boyutu** **2080**olarak ayarlayın.
+1. Her iki **anahtar türünü** **RSA** ve **RSA anahtar boyutu** **2080**olarak ayarlayın.
 1. Kalan seçimleri istediğiniz gibi doldurup **Oluştur**' u seçin.
 
-![SSE-Create-a-Key-Generate. png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
+    ![SSE-Create-a-Key-Generate. png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
 
 #### <a name="setting-up-your-disk-encryption-set"></a>Disk şifreleme kümesini ayarlama
 
@@ -54,7 +54,7 @@ Disk şifreleme kümeleri oluşturup yapılandırmak için şu bağlantıyı kul
 1. [Disk şifreleme kümeleri bağlantısını](https://aka.ms/diskencryptionsets)açın.
 1. **+ Ekle**' yi seçin.
 
-![SSE-Create-disk-Encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
+    ![SSE-Create-disk-Encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
 1. Kaynak grubunuzu seçin, şifreleme kümesini adlandırın ve anahtar kasanız ile aynı bölgeyi seçin.
 1. **Anahtar Kasası ve anahtar**seçin.
@@ -62,13 +62,13 @@ Disk şifreleme kümeleri oluşturup yapılandırmak için şu bağlantıyı kul
 1. **Seç**' e basın.
 1. **Gözden geçir + oluştur** ve sonra **Oluştur**' u seçin.
 
-![SSE-disk-ENC-set-Blade-Key. png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
+    ![SSE-disk-ENC-set-Blade-Key. png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
 
 1. Oluşturma tamamlandıktan sonra disk şifrelemesi kümesini açın ve açılan uyarıyı seçin.
 
-![SSE-disk-ENC-Alert-Fix. png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-alert-fix.png)
+    ![SSE-disk-ENC-Alert-Fix. png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-alert-fix.png)
 
-İki bildirim açılır ve başarılı olmalıdır. Bunu yapmak, anahtar kasanız kümesini kullanmanıza olanak sağlar.
+İki bildirim açılır ve başarılı olmalıdır. Bunun yapılması, anahtar kasanızın bulunduğu disk şifreleme kümesini kullanmanıza olanak sağlar.
 
 ![disk-ENC-Notification-Success. png](media/virtual-machines-disk-encryption-portal/disk-enc-notification-success.png)
 
@@ -81,10 +81,10 @@ VM dağıtım işlemi standart dağıtım işlemine benzer, tek fark, VM 'yi di�
 1. **Temel** sekmede, disk şifreleme kümesi ve Azure Key Vault aynı bölgeyi seçin.
 1. **Temel** sekmedeki diğer değerleri istediğiniz şekilde girin.
 
-![SSE-Create-a-VM-Region. png](media/virtual-machines-disk-encryption-portal/sse-create-a-vm-region.png)
+    ![SSE-Create-a-VM-Region. png](media/virtual-machines-disk-encryption-portal/sse-create-a-vm-region.png)
 
-1. **Diskler** sekmesinde, **müşteri tarafından yönetilen anahtarla bekleyen şifreleme**' yi seçin.
+1. **Diskler** sekmesinde, **müşteri tarafından yönetilen bir anahtarla bekleyen şifreleme**' yi seçin.
 1. Disk **şifreleme kümesi** açılır penceresinde disk şifreleme kümesini seçin.
 1. Diğer seçimleri istediğiniz gibi yapın.
 
-![SSE-Create-VM-Select-CMK-Encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
+    ![SSE-Create-VM-Select-CMK-Encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
