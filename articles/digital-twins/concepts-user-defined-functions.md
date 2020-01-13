@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 5b1c3e6dcd106e16ab07f707729f31ee1e269461
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 75ed2029582438ede43687addfd54c0a187e0120
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660316"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861107"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Veri işleme ve kullanıcı tanımlı işlevleri
 
@@ -104,7 +104,7 @@ Kullanıcı tanımlı işlevler JavaScript 'te yazılabilir. Yardımcı yönteml
 - Gelen algılayıcı okuma için belirli koşullar karşılandığında bir bildirim oluşturun.
 - Bir bildirim göndermeden önce algılayıcı okumaya grafik meta verileri ekleyin.
 
-Daha fazla bilgi için bkz. [Kullanıcı tanımlı işlevleri kullanma](./how-to-user-defined-functions.md).
+Daha fazla bilgi için [Kullanıcı tanımlı Işlevlerin nasıl kullanılacağını](./how-to-user-defined-functions.md)okuyun.
 
 #### <a name="examples"></a>Örnekler
 
@@ -114,7 +114,7 @@ Daha fazla bilgi için bkz. [Kullanıcı tanımlı işlevleri kullanma](./how-to
 
 ### <a name="role-assignment"></a>Rol ataması
 
-Kullanıcı tanımlı bir işlevin eylemleri, hizmet içindeki verilerin güvenliğini sağlamak için Azure dijital TWINS [rol tabanlı erişim denetimine](./security-role-based-access-control.md) tabidir. Rol atamaları, uzamsal grafikle ve varlıklarıyla etkileşimde bulunmak için hangi kullanıcı tanımlı işlevlerin uygun izinlere sahip olduğunu tanımlar. Örneğin, Kullanıcı tanımlı bir işlev, belirli bir alanda grafik verileri *oluşturma*, *okuma*, *güncelleştirme*veya *silme* özelliğine sahip olabilir. Kullanıcı tanımlı işlev grafiğe veri istediğinde veya bir eylemi denediğinde Kullanıcı tanımlı bir işlevin erişim düzeyi denetlenir. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimi](./security-create-manage-role-assignments.md).
+Kullanıcı tanımlı bir işlevin eylemleri, hizmet içindeki verilerin güvenliğini sağlamak için Azure dijital TWINS [rol tabanlı erişim denetimine](./security-role-based-access-control.md) tabidir. Rol atamaları, uzamsal grafikle ve varlıklarıyla etkileşimde bulunmak için hangi kullanıcı tanımlı işlevlerin uygun izinlere sahip olduğunu tanımlar. Örneğin, Kullanıcı tanımlı bir işlev, belirli bir alanda grafik verileri *oluşturma*, *okuma*, *güncelleştirme*veya *silme* özelliğine sahip olabilir. Kullanıcı tanımlı işlev grafiğe veri istediğinde veya bir eylemi denediğinde Kullanıcı tanımlı bir işlevin erişim düzeyi denetlenir. Daha fazla bilgi için [rol tabanlı erişim denetimi](./security-create-manage-role-assignments.md)makalesini okuyun.
 
 Bir Eşleştirici, rol ataması olmayan kullanıcı tanımlı bir işlevin tetiklenmesi mümkündür. Bu durumda, Kullanıcı tanımlı işlev grafikten veri okuyamazsa.
 

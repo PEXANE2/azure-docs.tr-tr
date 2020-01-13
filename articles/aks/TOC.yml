@@ -229,6 +229,8 @@
           href: certificate-rotation.md
         - name: Özel küme oluşturma
           href: private-clusters.md
+        - name: Diskler için BYOK
+          href: azure-disk-customer-managed-keys.md
     - name: İzleme ve günlüğe kaydetme
       items:
         - name: Kapsayıcılar için Azure İzleyici

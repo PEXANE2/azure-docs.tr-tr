@@ -848,6 +848,8 @@
           href: ./hdinsight-management-ip-addresses.md
         - name: Azure güvenlik duvarına yönelik hizmet etiketleri
           href: ./hdinsight-service-tags.md
+        - name: Müşteri tarafından yönetilen anahtar disk şifrelemesi
+          href: ./disk-encryption.md
     - name: Nasıl yapılır
       items:
         - name: Kimlik bilgileri yönetimi için Kimlik Aracısı kullanma

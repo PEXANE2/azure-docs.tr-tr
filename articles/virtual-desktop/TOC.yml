@@ -16,9 +16,7 @@
       href: manage-app-groups.md
     - name: 5. Hizmet güncelleştirmelerini doğrulamak için konak havuzu oluşturma
       href: create-validation-host-pool.md
-    - name: 6. Bir yönetim aracı dağıtma
-      href: manage-resources-using-ui.md
-    - name: 7. Hizmet uyarılarını ayarlama
+    - name: 6. Hizmet uyarılarını ayarlama
       href: set-up-service-alerts.md
 - name: Nasıl yapılır
   items:
@@ -70,6 +68,12 @@
       href: set-up-scaling-script.md
     - name: Akışı özelleştirme
       href: customize-feed-for-virtual-desktop-users.md
+    - name: Yönetim aracını dağıtma
+      items:
+        - name: Azure Resource Manager şablonu
+          href: manage-resources-using-ui.md
+        - name: PowerShell
+          href: manage-resources-using-ui-powershell.md
     - name: Hizmet tanılamalarını kullanma
       items:
         - name: Tanılama aracını dağıtma

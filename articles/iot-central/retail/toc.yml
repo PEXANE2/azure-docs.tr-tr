@@ -36,6 +36,8 @@
       href: architecture-smart-inventory-management-pnp.md
     - name: Mağaza analizi mimarisi
       href: store-analytics-architecture.md
+    - name: Mikro karşılama merkezi uygulama şablonu mimarisi
+      href: architecture-micro-fulfillment-center-pnp.md
     - name: Bağlantı
       href: ../preview/overview-iot-central-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Uygulama şablonları nedir?

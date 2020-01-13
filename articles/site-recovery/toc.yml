@@ -177,6 +177,8 @@
               href: azure-to-azure-how-to-enable-replication.md
             - name: Şifrelenmiş VM’ler için Azure-Azure arası çoğaltmayı etkinleştirme
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
+            - name: CMK etkinleştirilmiş diskleri olan VM’ler için Azure’dan Azure’a çoğaltmayı etkinleştirme
+              href: azure-to-azure-how-to-enable-replication-cmk-disks.md
             - name: S2D VM’ler için Azure-Azure arası çoğaltmayı etkinleştirme
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
             - name: Eklenen disk için çoğaltmayı etkinleştirme

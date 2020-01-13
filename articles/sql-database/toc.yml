@@ -337,6 +337,8 @@
               href: sql-database-design-first-database-csharp.md
         - name: Verileri yükleme ve taşıma
           items:
+            - name: Azure VM’sinden içeri veya dışarı aktarma
+              href: import-export-from-vm.md
             - name: BACPAC dosyasından veritabanını içeri aktarma
               href: sql-database-import.md
             - name: BACPAC dosyasından veritabanını dışarı aktarma

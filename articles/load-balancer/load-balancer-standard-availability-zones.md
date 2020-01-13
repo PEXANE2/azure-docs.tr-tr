@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: e7ddb548d8dad5bdcc3021941877903377af9318
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771487"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903342"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer ve Kullanılabilirlik Bölgeleri
 
@@ -209,10 +209,6 @@ Bölgesel olarak yedekli bir seçenek ve hizmet için tek bir IP adresi ile ayn�
 Zonal, bölge için açık bir garanti sağlayabilir ve bu da bölgenin sistem durumuyla birlikte açık bir şekilde paylaşım yapabilir. Bir IP adresi ön ucu veya bölgesel iç Load Balancer ön ucu ile Load Balancer kuralı oluşturmak, özellikle iliştirilen kaynağınız aynı bölgedeki bir zeli sanal makinedir.  Ya da uygulamanız, bir kaynağın bir süre önce bulunduğu bölge hakkında açık bilgi gerektiriyor ve ayrı bölgelerde açık bir şekilde kullanılabilirlik hakkında bir neden olmak istiyorsunuz.  Bölgeler arasında dağıtılmış uçtan uca bir hizmet için birden çok zikzak ön eki kullanıma sunabilirsiniz (yani, birden fazla sanal makine ölçek kümesi için bölge başına düşen ön uçlar).  Ve, genel IP adresleri ise, bu birden fazla bölgesel ön uçlarınızın [Traffic Manager](../traffic-manager/traffic-manager-overview.md)hizmetinizi kullanıma sunmak için kullanabilirsiniz.  Ya da, üçüncü taraf izleme çözümleri aracılığıyla bölge sistem durumu ve Performans öngörüleri elde etmek ve genel hizmeti bölgesel olarak yedekli bir ön uç ile kullanıma sunmak için birden fazla bölgesel ön ucu kullanabilirsiniz. Yalnızca aynı bölgeye hizalanmış ve büyük olasılıkla olası olabilecek çapraz bölge senaryolarına karşı, yalnızca Zine ön uçlar içeren bölgesel kaynaklarına sahip olmanız gerekir.  Tek tek kaynaklar yalnızca kullanılabilirlik bölgelerinin mevcut olduğu bölgelerde bulunur.
 
 Hizmetin, hizmet mimarisini bilmeden daha iyi bir seçim olduğu konusunda genel bir rehberlik yoktur.  Uygulamanızın hata senaryolarıyla olan dayanıklılığını artırmak için [Azure bulut tasarım modellerini](https://docs.microsoft.com/azure/architecture/patterns/) gözden geçirin.
-
-## <a name="limitations"></a>Sınırlamalar
-
-- Veri düzlemi tamamen bölge yedekli olsa da (ZGen garantisi belirtilmediği sürece), denetim düzlemi işlemleri tam olarak bölgesel olarak yedekli değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Kullanılabilirlik alanları](../availability-zones/az-overview.md) hakkında daha fazla bilgi edinin

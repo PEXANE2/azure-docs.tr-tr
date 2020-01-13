@@ -57,10 +57,12 @@
               href: team-development-nodejs.md
     - name: Kavramlar
       items:
-        - name: Geliştirme Alanları Nasıl Çalışır?
+        - name: Geliştirme Alanları nasıl çalışır?
           href: how-dev-spaces-works.md
         - name: Dev Spaces ile VS Code nasıl çalışır?
           href: how-vs-code-works-with-dev-spaces.md
+        - name: Farklı ağ topolojilerinde ağ yapılandırması
+          href: configure-networking.md
     - name: Nasıl yapılır
       items:
         - name: Azure Dev Spaces’i yükleme

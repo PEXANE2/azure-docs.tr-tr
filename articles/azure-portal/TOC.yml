@@ -32,6 +32,30 @@
       href: azure-portal-export-delete-settings.md
     - name: Azure portalı nasıl yapılır video serisi
       href: azure-portal-video-series.md
+    - name: Destek isteklerini oluşturma ve yönetme
+      items:
+        - name: Azure destek isteği oluşturma
+          href: supportability/how-to-create-azure-support-request.md
+        - name: Destek isteği için dosyaları karşıya yükleme
+          href: supportability/how-to-use-file-uploader.md
+        - name: Kota artışı isteme
+          items:
+            - name: İşlem vCPU sınırını artırma
+              items:
+                - name: Resource Manager dağıtım modeli
+                  items:
+                    - name: VM serisi vCPU sınırını artırma
+                      href: supportability/per-vm-quota-requests.md
+                    - name: Toplam bölgesel vCPU sınırını artırma
+                      href: supportability/regional-quota-requests.md
+                    - name: Nokta kota sınırını artırma
+                      href: supportability/low-priority-quota.md
+                - name: Klasik dağıtım modeli
+                  href: supportability/classic-deployment-model-quota-increase-requests.md
+            - name: Ağ sınırını artırma
+              href: supportability/networking-quota-requests.md
+        - name: Bölge veya SKU abonelik sorunlarını giderme
+          href: supportability/sku-series-unavailable.md
 - name: Başvuru
   items:
     - name: Klavye kısayolları

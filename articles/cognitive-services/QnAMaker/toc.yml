@@ -147,6 +147,8 @@
       href: troubleshooting.md
     - name: Dosya biçimleri
       items:
+        - name: Markdown başvurusu
+          href: reference-markdown-format.md
         - name: Toplu test TSV
           href: reference-tsv-format-batch-testing.md
     - name: REST API Başvurusu

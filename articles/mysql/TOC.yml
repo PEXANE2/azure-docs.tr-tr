@@ -93,6 +93,8 @@
           href: concepts-data-access-and-security-threat-protection.md
         - name: Özel Bağlantı
           href: concepts-data-access-security-private-link.md
+        - name: Veri Şifrelemesi
+          href: concepts-data-encryption-mysql.md
     - name: İş sürekliliği
       items:
         - name: İş sürekliliğine giriş
@@ -232,6 +234,10 @@
           href: howto-configure-privatelink-portal.md
         - name: Azure CLI
           href: howto-configure-privatelink-cli.md
+    - name: Veri Şifrelemesi
+      items:
+        - name: Azure portal
+          href: howto-data-encryption-portal.md
     - name: Sunucuyu yeniden başlatma
       items:
         - name: Azure portal

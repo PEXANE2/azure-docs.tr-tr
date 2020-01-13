@@ -111,6 +111,8 @@
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: Tümleştirme hizmeti ortamlarına yapıtlar ekleme
           href: add-artifacts-integration-service-environment-ise.md
+        - name: Tümleştirme hizmeti ortamları için müşteri tarafından yönetilen şifreleme anahtarları ayarlama
+          href: customer-managed-keys-integration-service-environment.md
     - name: Şirket içi verilere erişim
       items:
         - name: Veri ağ geçidi yükleme

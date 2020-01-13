@@ -55,10 +55,14 @@
   items:
     - name: Dağıtma
       items:
-        - name: Sanal ağda dağıtma (önizleme)
+        - name: Sanal ağda dağıtma
           href: container-instances-vnet.md
         - name: Azure Container Registry üzerinden dağıtma
           href: container-instances-using-azure-container-registry.md
+        - name: Dağıtım verilerini şifreleme
+          href: container-instances-encrypt-data.md
+        - name: Ayrılmış konaklara dağıtma
+          href: container-instances-dedicated-hosts.md
     - name: Kapsayıcı senaryoları
       items:
         - name: Bir kez çalıştırılan görevler için yeniden başlatma ilkesini ayarlama

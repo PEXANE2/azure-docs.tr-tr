@@ -184,7 +184,7 @@
           items:
             - name: GPU için iyileştirilmiş
               href: sizes-gpu.md
-            - name: GPU sürücülerini kurma
+            - name: NVIDIA GPU sürücülerini ayarlama
               href: n-series-driver-setup.md
             - name: AMD GPU sürücülerini kurma
               href: n-series-amd-driver-setup.md

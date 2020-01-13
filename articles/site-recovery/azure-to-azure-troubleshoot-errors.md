@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery Azure VM çoğaltma sorunlarını giderme
 description: Olağanüstü durum kurtarma için Azure sanal makinelerini çoğaltma sırasında oluşan sorunları giderin.
-author: asgang
+author: rochakm
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: asgangal
-ms.openlocfilehash: efa05f5769bcd174992a7a91a522c5f30ce6e448
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.author: rochakm
+ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895006"
+ms.locfileid: "75902549"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure-Azure VM çoğaltma hatalarında sorun giderme
 
@@ -66,7 +66,7 @@ Daha fazla bilgi için bkz. [Güvenilen kökleri ve izin verilmeyen sertifikalar
 
 En son güvenilen kök sertifikalarını ve VM 'deki en son sertifika iptal listesini almak için Linux işletim sistemi sürümünüzün dağıtıcısında sunulan yönergeleri izleyin.
 
-SuSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (veya *symbağlantılar*) kullandığından, şu adımları izleyin:
+SUSE Linux bir sertifika listesini sürdürmek için sembolik bağlantılar (veya *symbağlantılar*) kullandığından, şu adımları izleyin:
 
 1. Kök kullanıcı olarak oturum açın.
 

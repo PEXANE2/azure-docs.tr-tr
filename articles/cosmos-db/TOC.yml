@@ -82,6 +82,8 @@
       href: resource-manager-samples.md
 - name: Kavramlar
   items:
+    - name: NoSQL ile ilişkisel veritabanlarının karşılaştırması
+      href: relational-nosql.md
     - name: Genel dağıtım
       items:
         - name: Genel Bakış
@@ -976,6 +978,8 @@
           href: certificate-based-authentication.md
         - name: Kullanıcı erişimini yalnızca veri işlemleriyle sınırlama
           href: how-to-restrict-user-data.md
+        - name: Müşteri tarafından yönetilen anahtarları yapılandırma
+          href: how-to-setup-cmk.md
     - name: Kurumsal kullanıma hazır olma
       items:
         - name: Verileri bir yedeklemeden geri yükleme
@@ -1058,6 +1062,8 @@
           href: cassandra-migrate-cosmos-db-blitzz.md
         - name: Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme
           href: migrate-cosmosdb-data.md
+        - name: Birden çoka ilişkisel verileri geçirme
+          href: migrate-relational-to-cosmos-db-sql-api.md
     - name: Toplu yürütücü kitaplığı
       items:
         - name: Toplu yürütücü kitaplığı hakkında
