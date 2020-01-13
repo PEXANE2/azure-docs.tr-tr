@@ -63,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Azure hizmet katmanları için tehdit algılama
           href: security-center-alerts-service-layer.md
-        - name: Azure WAF ve Azure DDoS Koruması için tehdit algılama
+        - name: Azure WAF ve Azure DDoS Koruması’ndan tehdit algılama uyarıları
           href: security-center-alerts-integration.md
         - name: Bulut Akıllı Uyarı bağıntısı (olaylar)
           href: security-center-alerts-cloud-smart.md

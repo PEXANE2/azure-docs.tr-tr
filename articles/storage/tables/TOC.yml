@@ -75,7 +75,7 @@
       href: table-storage-design-modeling.md
     - name: Tablo tasarımı desenleri
       href: table-storage-design-patterns.md
-- name: Nasıl yapılır kılavuzları
+- name: Nasıl yapılır
   items:
     - name: Depolama hesabı oluşturma
       displayName: 'resource manager, resource manager template, template, ARM'
@@ -83,11 +83,49 @@
       maintainContext: true
     - name: Depolama hesabını yükseltme
       href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: Hesap anahtarlarını görüntüleme ve yönetme
-      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Depolama öykünücüsü kullanma
       href: /azure/storage/common/storage-use-emulator?toc=%2fazure%2fstorage%2ftables%2ftoc.json
       maintainContext: true
+    - name: Tablo verilerinin güvenliğini sağlama
+      items:
+        - name: Tablo verilerine erişimi yetkilendirme
+          items:
+            - name: Hesap anahtarlarını görüntüleme ve yönetme
+              href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Bağlantı dizelerini yapılandırma
+              href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Azure Depolama REST API’sini kullanma
+              href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Azure Depolama şifrelemesini yönetme
+          items:
+            - name: Müşteri tarafından yönetilen anahtarları destekleyen bir hesap oluşturma
+              href: ../common/account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Müşteri tarafından yönetilen anahtarları yapılandırma
+              items:
+                - name: Portal
+                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+                - name: PowerShell
+                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Hesap için şifreleme anahtarı modelini denetleme
+              href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: İstemci tarafında şifrelemeyi yapılandırma
+          items:
+            - name: .NET
+              href: ../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Java
+              href: ../common/storage-client-side-encryption-java.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Python
+              href: ../common/storage-client-side-encryption-python.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Ağ güvenliğini yapılandırma
+          items:
+            - name: Güvenlik duvarlarını ve sanal ağları yapılandırma
+              href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Güvenli aktarım gerektir
+              href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Aktarım Katmanı Güvenliğini etkinleştirme
+              href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Veri aktarma
       items:
         - name: AzCopy (v10)

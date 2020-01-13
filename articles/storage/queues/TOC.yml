@@ -144,9 +144,9 @@
                   href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Azure Depolama şifrelemesini yönetme
               items:
-                - name: Hesap için şifreleme anahtarı modelini denetleme
-                  href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Müşteri tarafından yönetilen şifreleme anahtarlarını yapılandırma
+                - name: Müşteri tarafından yönetilen anahtarları destekleyen bir hesap oluşturma
+                  href: ../common/account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Müşteri tarafından yönetilen anahtarları yapılandırma
                   items:
                     - name: Portal
                       href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
@@ -154,6 +154,8 @@
                       href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                     - name: Azure CLI
                       href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Hesap için şifreleme anahtarı modelini denetleme
+                  href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: İstemci tarafında şifrelemeyi yapılandırma
           items:
             - name: .NET
