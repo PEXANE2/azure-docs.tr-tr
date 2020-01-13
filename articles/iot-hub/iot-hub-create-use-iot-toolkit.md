@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 3fe4dfae2e86d549056805e87c0fd3927697fe24
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 668087ae596688e86b7b84a16bc5c0fd0f9fcef6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890560"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912232"
 ---
 # <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Visual Studio Code için Azure IoT araçlarını kullanarak IoT Hub 'ı oluşturma
 
@@ -30,15 +30,15 @@ Bu makaleyi tamamlayabilmeniz için şunlar gerekir:
 
 - Visual Studio Code için [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) .
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
-1. Visual Studio Code ' de **Gezgin** görünümünü açın.
+1. Visual Studio Code'da açmak **Gezgini** görünümü.
 
-2. Gezgin 'in alt kısmındaki **Azure IoT Hub cihazlar** bölümünü genişletin. 
+2. Explorer alt kısmında, Genişlet **Azure IOT Hub cihazları** bölümü. 
 
    ![Azure IoT Hub cihazlarını Genişlet](./media/iot-hub-create-use-iot-toolkit/azure-iot-hub-devices.png)
 
-3. **Azure IoT Hub Devices** bölüm üstbilgisindeki **..** . öğesine tıklayın. Üç noktayı görmüyorsanız üstbilginin üzerine gelin. 
+3. Tıklayarak **...**  içinde **Azure IOT Hub cihazları** bölüm başlığı. Üç nokta simgesini görmüyorsanız, üst bilgisinin üzerinde gezdirin. 
 
 4. **IoT Hub oluştur**' a tıklayın.
 
@@ -64,4 +64,4 @@ Artık Visual Studio Code için Azure IoT araçlarını kullanarak bir IoT Hub '
 
 * [Azure IoT Hub cihaz yönetimi için Visual Studio Code Azure IoT araçları 'nı kullanma](iot-hub-device-management-iot-toolkit.md)
 
-* [Bkz. Azure IoT Hub araç seti wiki sayfası](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).
+* [Bkz. Azure IoT Hub for vs Code wiki sayfası](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).

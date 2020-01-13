@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar 'da Hava durumu Hizmetleri kavramları | Microsoft Docs
-description: Azure haritalar 'da Hava durumu hizmetleri hakkında bilgi edinin
+title: Hava durumu Hizmetleri kavramları | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure Maps Hava durumu Hizmetleri için uygulanan kavramlar hakkında bilgi edineceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9d464ab172fcb375d62b9928818362574a485231
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382461"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911021"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure haritalar 'da Hava durumu Hizmetleri
 
@@ -26,8 +26,8 @@ Hava durumu hizmeti API 'Lerinden bazıları, kullanıcının ölçümde veya ek
 |unitType|Açıklama         |
 |--------|--------------------|
 |0       |fit                |
-|1\.       |cm              |
-|2       |kilometre               |
+|1       |Cm              |
+|2       |mil               |
 |3       |milimetre          |
 |4       |santimetre ölçümü          |
 |5       |si               |
@@ -45,7 +45,7 @@ Hava durumu hizmeti API 'Lerinden bazıları, kullanıcının ölçümde veya ek
 |17      |Celsius             |
 |18      |Fahrenhayt          |
 |19      |Kelvin              |
-|20      |yüzdeyi             |
+|20      |{1&gt;yüzde&lt;1}             |
 |21      |float               |
 |22      |integer             |
 
@@ -54,9 +54,9 @@ Hava durumu hizmeti API 'Lerinden bazıları, kullanıcının ölçümde veya ek
 
 Hava durumu hizmeti API 'Lerinden bazıları, bu simgeyi tanımlamak için kullanılabilecek sayısal bir değer olan yanıtta simge kodları (iconCode) döndürüyor. Lütfen uygulamalarınızdan bu görüntülere doğrudan bağlamayın, URL 'Ler ve değişecektir.
 
-| Simge numarası |Simge| Gün | gerçekleştirilmiştir | Metin |
+| Simge numarası |Simge| Gün | Gerçekleştirilmiştir | Metin |
 |-------------|:----:|-----|-------|------|
-| 1\.           |![](./media/weather-services-concepts/sunny-i.png)                      | Evet |  Hayır    | Güneşli|
+| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Evet |  Hayır    | Güneşli|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Evet |  Hayır    | Çoğunlukla güneş|
 | 3           |![](./media/weather-services-concepts/partly-sunny.png)                | Evet |  Hayır    | Kısmi güneş|
 | 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | Evet |  Hayır    | Aralıklı bulutlar|
@@ -77,7 +77,7 @@ Hava durumu hizmeti API 'Lerinden bazıları, bu simgeyi tanımlamak için kulla
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Evet |  Hayır    | Flurrıes ile kısmen güneş|
 | 22           |![](./media/weather-services-concepts/snow-i.png)                      | Evet |  Evet   | Kar|
 | 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Evet |  Hayır    | Genellikle kar ile Cloudy|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Evet |  Evet   | CE |
+| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Evet |  Evet   | Ice |
 | 25           |![](./media/weather-services-concepts/sleet-i.png)                     | Evet |  Evet   | Uyun|
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Evet |  Evet   | Yağmur dondurma|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Evet |  Evet   | Yağmur ve kar|

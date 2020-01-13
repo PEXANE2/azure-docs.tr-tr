@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar hesabınıza ait fiyatlandırma katmanını yönetme | Microsoft Docs
-description: Azure haritalar hesabınızda ve kendi fiyatlandırma katmanları yönetmek için Azure portalını kullanabilirsiniz.
+title: Azure haritalar hesabınızın fiyatlandırma katmanını yönetin | Microsoft Azure haritaları
+description: Microsoft Azure haritalar hesabınızı ve fiyatlandırma katmanını yönetmek için Azure portal kullanabilirsiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/12/2019
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 43f5c6ea42464a83d070775fae8c5befe35bf60d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8cba1e56b96f24764af00f04f399d0cdbe54be24
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60794196"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911473"
 ---
-# <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Azure haritalar hesabınızda fiyatlandırma katmanını yönetme
+# <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Azure haritalar hesabınızın fiyatlandırma katmanını yönetme
 
-Azure haritalar hesabınız Azure portalından fiyatlandırma katmanını yönetebilirsiniz. Oluşturduktan sonra bir [hesabı](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), görüntüleyebilir veya hesabınıza ait fiyatlandırma katmanını değiştirme.
+Azure haritalar hesabınızın fiyatlandırma katmanını Azure portal aracılığıyla yönetebilirsiniz. [Hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturduktan sonra, hesabınızın fiyatlandırma katmanını görüntüleyebilir veya değiştirebilirsiniz.
 
-Hakkında daha fazla bilgi edinin [seçme içinde Azure haritalar fiyatlandırma katmanı sağ](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier).
+[Azure haritalar 'da doğru fiyatlandırma katmanını seçme](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)hakkında daha fazla bilgi alın.
 
 ## <a name="view-your-pricing-tier"></a>Fiyatlandırma katmanınızı görüntüleyin
 
-Seçtiğiniz fiyatlandırma Katmanı'nı görüntülemek için gidin **fiyatlandırma katmanı** Ayarlar menüsünden seçeneği.
+Seçtiğiniz fiyatlandırma katmanını görüntülemek için, Ayarlar menüsünde **fiyatlandırma katmanı** seçeneğine gidin.
 
-![Fiyatlandırma katmanı seçilen görünümü](./media/how-to-manage-pricing-tier/view-pricing-tier.png)
+![Seçilen fiyatlandırma katmanını görüntüle](./media/how-to-manage-pricing-tier/view-pricing-tier.png)
 
 ## <a name="change-a-pricing-tier"></a>Fiyatlandırma katmanını değiştirme
 
-Azure haritalar hesabınızı oluşturduktan sonra yükseltme ya da Azure haritalar hesabınız için fiyatlandırma katmanını düşürme. Yükseltme veya düşürme gitmek için **fiyatlandırma katmanı** Ayarlar menüsünden seçeneği. Vurgulanan değil fiyatlandırma katmanını seçin. Seçin **Kaydet** düğmesini seçtiğiniz fiyatlandırma katmanı seçeneğini kaydedin.
+Azure haritalar hesabınızı oluşturduktan sonra, Azure haritalar hesabınızın fiyatlandırma katmanını yükseltebilir veya indirgemeniz gerekir. Yükseltmek veya alçaldüşürmek için ayarlar menüsünde **fiyatlandırma katmanı** seçeneğine gidin. Vurgulanmayan fiyatlandırma katmanını seçin. Seçtiğiniz fiyatlandırma katmanı seçeneğinizi kaydetmek için **Kaydet** düğmesini seçin.
 
 ![Fiyatlandırma katmanını değiştirme](./media/how-to-manage-pricing-tier/change-pricing-tier.png)
 
 > [!NOTE]
-> Yeni Abonelik anahtarları veya istemci kimliği (Azure AD kimlik doğrulaması) yükseltin ya da Azure haritalar hesabınız için fiyatlandırma katmanını düşürme oluşturmak zorunda değilsiniz.
+> Azure haritalar hesabınız için fiyatlandırma katmanını yükseltirsiniz veya indirgemeniz durumunda yeni abonelik anahtarları veya istemci KIMLIĞI (Azure AD kimlik doğrulaması için) oluşturmanız gerekmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure haritalar hesabınız için API kullanım ölçümleri hakkında bilgi edinin:
+Azure haritalar hesabınız için API kullanım ölçümlerini nasıl görebileceğinizi öğrenin:
 
 > [!div class="nextstepaction"] 
 > [Kullanım ölçümlerini görüntüle](./how-to-view-api-usage.md)

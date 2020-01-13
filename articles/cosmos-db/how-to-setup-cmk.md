@@ -4,14 +4,15 @@ description: Azure Cosmos DB hesabınız için müşteri tarafından yönetilen 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 01/11/2020
 ms.author: thweiss
-ms.openlocfilehash: 32266abd5bcf8d7e137095d130ee872cc07edaf0
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ROBOTS: noindex, nofollow
+ms.openlocfilehash: 964c3e4e2de43e6bcae353f0b525eb62e6613361
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904087"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911883"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-db-account"></a>Azure Cosmos DB hesabınız için müşteri tarafından yönetilen anahtarları yapılandırın
 
@@ -30,13 +31,13 @@ Müşteri tarafından yönetilen anahtarların [Azure Key Vault](../key-vault/ke
 
 ### <a name="1-make-sure-the-azure-cosmos-db-resource-provider-is-registered-for-your-azure-subscription"></a>1. Azure aboneliğiniz için Azure Cosmos DB kaynak sağlayıcısının kayıtlı olduğundan emin olun
 
-Azure portal Azure aboneliğinize gidin ve sol menüden "kaynak sağlayıcıları" öğesini seçin:
+Azure portal Azure aboneliğinize gidin ve sol menüden **kaynak sağlayıcıları** ' nı seçin:
 
 ![Sol menüden "kaynak sağlayıcıları" girdisi](./media/how-to-setup-cmk/portal-rp.png)
 
-"Microsoft. DocumentDB" kaynak sağlayıcısını arayın.
+**Microsoft. DocumentDB** kaynak sağlayıcısı için arama yapın.
 - Kaynak sağlayıcı zaten kayıtlı olarak işaretlenmişse, hiçbir şeyin gerçekleştirilmesi gerekmez.
-- Aksi takdirde, seçin ve "Kaydet" e tıklayın:
+- Aksi takdirde, seçin ve **Kaydet**' e tıklayın:
 
     ![Microsoft. DocumentDB kaynak sağlayıcısını kaydetme](./media/how-to-setup-cmk/portal-rp-register.png)
 
@@ -50,34 +51,34 @@ Mevcut bir Azure Key Vault örneğinde bu özellikleri nasıl etkinleştireceği
 
 ### <a name="3-add-an-access-policy-to-your-azure-key-vault-instance"></a>3. Azure Key Vault örneğine bir erişim ilkesi ekleyin
 
-Azure portal, şifreleme anahtarlarınızı barındırmak için kullanmayı planladığınız Azure Key Vault örneğine gidin. Ardından, sol taraftaki menüden "erişim Ilkeleri" ni seçin:
+Azure portal, şifreleme anahtarlarınızı barındırmak için kullanmayı planladığınız Azure Key Vault örneğine gidin. Ardından, sol menüden **erişim ilkeleri** ' ni seçin:
 
 ![Sol menüden "erişim ilkeleri"](./media/how-to-setup-cmk/portal-akv-ap.png)
 
-- "+ Erişim Ilkesi Ekle" seçeneğine tıklayın
-- "Anahtar izinleri" açılan menüsünde "Al", "anahtar sarmalama" ve "anahtar sarmalama" i seçin:
+- **+ Erişim Ilkesi Ekle** ' yi seçin
+- **Anahtar izinleri** açılan menüsünde **Al**, **sarmalama tuşu** ve **sarmalama tuşu**' nı seçin:
 
     ![Doğru izinleri seçme](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-- "Asıl seçin" altında "hiçbiri seçili değil" öğesine tıklayın, "Azure Cosmos DB" sorumlusunu arayıp seçin ve ardından alt kısımdaki "Seç" e tıklayın ("Azure Cosmos DB" sorumlusu bulunamazsa, "Microsoft. DocumentDB" kaynağını yeniden kaydetmeniz gerekebilir 2. adımdaki sağlayıcı:
+- **Asıl seçin**altında **hiçbiri seçili**' i seçin. Ardından, **Azure Cosmos DB** sorumlusunu arayıp seçin. Son olarak, en altta **Seç** ' e tıklayın ( **Azure Cosmos DB** sorumlusu bulunamazsa, 1 **. adımda Microsoft. DocumentDB** kaynak sağlayıcısını yeniden kaydetmeniz gerekebilir):
 
     ![Azure Cosmos DB sorumlusunu seçme](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
-- Yeni erişim ilkesini eklemek için "Ekle" ye tıklayın
+- Yeni erişim ilkesini eklemek için **Ekle** ' yi seçin
 
 ### <a name="4-generate-a-key-in-azure-key-vault"></a>4. Azure Key Vault bir anahtar oluşturun
 
-Azure portal, şifreleme anahtarlarınızı barındırmak için kullanmayı planladığınız Azure Key Vault örneğine gidin. Ardından, sol menüden "anahtarlar" ı seçin:
+Azure portal, şifreleme anahtarlarınızı barındırmak için kullanmayı planladığınız Azure Key Vault örneğine gidin. Ardından, sol menüden **anahtarlar** ' ı seçin:
 
 ![Sol menüden "anahtarlar" girdisi](./media/how-to-setup-cmk/portal-akv-keys.png)
 
-- "Oluştur/Al" düğmesine tıklayın
-- Yeni anahtar için bir ad girin, bir RSA anahtar boyutu seçin (en iyi güvenlik için en az 3072 önerilir) ve "Oluştur" a tıklayın:
+- **Oluştur/Içeri aktar** 'ı seçin
+- Yeni anahtar için bir ad girin, bir RSA anahtar boyutu seçin (en iyi güvenlik için en az 3072 önerilir) ve **Oluştur**' u seçin:
 
     ![Yeni anahtar oluşturma](./media/how-to-setup-cmk/portal-akv-gen.png)
 
 - Anahtar oluşturulduktan sonra, yeni oluşturulan anahtara, sonra geçerli sürümüne tıklayın
-- Son eğik çizgiden sonraki bölüm dışında anahtarın "anahtar tanımlayıcısını" kopyalayın:
+- Son eğik çizgiden sonraki bölüm dışında anahtarın **anahtar tanımlayıcısını** kopyalayın:
 
     ![Anahtarın anahtar tanımlayıcısı kopyalanıyor](./media/how-to-setup-cmk/portal-akv-keyid.png)
 
@@ -85,15 +86,18 @@ Azure portal, şifreleme anahtarlarınızı barındırmak için kullanmayı plan
 
 #### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
-Azure portal yeni bir Azure Cosmos DB hesabı oluştururken "şifreleme" adımındaki "müşteri tarafından yönetilen anahtar" seçeneğini belirleyin. "Anahtar URI 'SI" alanında, 4. adım 'dan kopyalanmış Azure Key Vault anahtarın URI 'sini geçirin:
+Azure portal yeni bir Azure Cosmos DB hesabı oluştururken **şifreleme** adımında **müşteri tarafından yönetilen anahtar** ' ı seçin. **Anahtar URI 'si** alanında, 4. adımdan kopyalanmış Azure Key Vault anahtarın URI 'sini geçirin:
 
 ![Azure portal CMK parametrelerini ayarlama](./media/how-to-setup-cmk/portal-cosmos-enc.png)
 
 #### <a name="using-powershell"></a>PowerShell'i kullanma
 
 PowerShell ile yeni bir Azure Cosmos DB hesabı oluştururken,
-- "PropertyObject" içindeki "keyVaultKeyUri" özelliği altındaki 4. adımdan kopyalanmış Azure Key Vault anahtarının URI 'sini geçirin,
+- 4\. adımda, **Propertyobject**Içindeki **Keyvaultkeyuri** özelliği ALTıNA kopyalanmış Azure Key Vault anahtarın URI 'sini geçirin,
 - API sürümü olarak "2019-12-12" kullandığınızdan emin olun.
+
+> [!IMPORTANT]
+> Hesabın CMK ile başarıyla oluşturulabilmesi için `Location` parametresi açıkça ayarlanmalıdır.
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -118,10 +122,13 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 #### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanma
 
 Bir Azure Resource Manager şablonuyla yeni bir Azure Cosmos DB hesabı oluştururken:
-- "Özellikler" nesnesindeki "keyVaultKeyUri" özelliği altındaki 4. adımdan kopyalanmış Azure Key Vault anahtarının URI 'sini geçirin
+- **Properties** nesnesinde **Keyvaultkeyuri** özelliği altındaki 4. ADıMDAN kopyalanmış Azure Key Vault anahtarının URI 'sini geçirin
 - API sürümü olarak "2019-12-12" kullandığınızdan emin olun
 
-```
+> [!IMPORTANT]
+> Hesabın CMK ile başarıyla oluşturulabilmesi için `location` parametresi açıkça ayarlanmalıdır.
+
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",

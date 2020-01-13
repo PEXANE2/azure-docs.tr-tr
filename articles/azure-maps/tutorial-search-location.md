@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure haritalar ile arama'
-description: "Öğretici: Azure haritalar 'ı kullanarak yakın ilgi çekici bir noktada arama yapın"
+title: 'Öğretici: harita üzerinde yakındaki konumları arama | Microsoft Azure haritaları'
+description: Bu öğreticide, Microsoft Azure haritaları kullanarak bir harita üzerindeki yakın konumları (ilgi çekici noktaları) nasıl arayalabileceğinizi öğreneceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ae2d7b3d855f1c06397d4eb0f977dd04aa841942
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432717"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910820"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak yakındaki ilgi noktalarını arama
 
@@ -49,7 +49,7 @@ Aşağıdaki adımları uygulayarak yeni bir Haritalar hesabı oluşturun:
     * *Lisans*’ı ve *Gizlilik Bildirimi*’ni okuyun ve onay kutusunu işaretleyerek koşulları kabul edin.
     * **Oluştur** düğmesine tıklayın.
 
-![Portalda Haritalar hesabı oluşturma](./media/tutorial-search-location/create-account.png)
+![Azure portal Azure Maps hesabı oluşturma](./media/tutorial-search-location/create-account.png)
 
 <a id="getkey"></a>
 
@@ -61,7 +61,7 @@ Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API’lerini
 2. Ayarlar bölümünde **kimlik doğrulaması**' nı seçin.
 3. **Birincil Anahtar**’ı panonuza kopyalayın. Bu öğreticinin ilerleyen kısmında kullanmak üzere bunu yerel olarak kaydedin.
 
-![Portalda Birincil Anahtar’ı alma](./media/tutorial-search-location/get-key.png)
+![Azure portal birincil anahtarı al](./media/tutorial-search-location/get-key.png)
 
 Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 

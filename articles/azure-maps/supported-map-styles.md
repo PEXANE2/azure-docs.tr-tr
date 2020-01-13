@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar 'da desteklenen harita stilleri | Microsoft Docs
-description: Azure haritalar tarafından desteklenen harita stilleri
+title: Desteklenen harita stilleri | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları tarafından desteklenen farklı eşleme işleme stilleri hakkında bilgi edineceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 05/06/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5368aec04eb0a57654adf5b0d5914282a979dcfd
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 92e48486777d82589a56074790dd709c5d525859
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325409"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910636"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure haritalar desteklenen harita stilleri
 Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita stilini destekler.
@@ -21,7 +21,7 @@ Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita st
 ## <a name="road"></a>Road
 **Yol** Haritası, bu özelliklerin etiketleriyle birlikte yollar, doğal ve yapay Özellikler görüntüleyen standart bir eşlemedir.
 
-![Road](./media/supported-map-styles/road.png)
+![yol haritası stili](./media/supported-map-styles/road.png)
 
 **Geçerli API 'Ler:**
 * [Harita resmi](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -39,10 +39,10 @@ Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita st
 **Geçerli API 'Ler:**
 * Web SDK eşlemesi denetimi
 
-## <a name="satellite"></a>uydu 
+## <a name="satellite"></a>satellite 
 **Uydu** stili, uydu ve hava imasıy 'nin bir birleşimidir.
 
-![uydu](./media/supported-map-styles/satellite.png)
+![uydu kutucuk harita stili](./media/supported-map-styles/satellite.png)
 
 **Geçerli API 'Ler:**
 * [Uydu kutucuğu](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
@@ -52,7 +52,7 @@ Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita st
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için bir karma değer.
 
-![satellite_road_labels](./media/supported-map-styles/satellite_road_labels.png)
+![satellite_road_labels harita stili](./media/supported-map-styles/satellite_road_labels.png)
 
 **Geçerli API 'Ler:**
 * Web SDK eşlemesi denetimi
@@ -61,7 +61,7 @@ Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için 
 ## <a name="grayscale_dark"></a>grayscale_dark
 **gri tonlamalı koyu** , yol haritası stilinin karanlık bir sürümüdür.
 
-![gray_scale](./media/supported-map-styles/grayscale_dark.png)
+![gray_scale harita stili](./media/supported-map-styles/grayscale_dark.png)
 
 **Geçerli API 'Ler:**
 * [Harita resmi](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -73,17 +73,17 @@ Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için 
 ## <a name="grayscale_light"></a>grayscale_light
 **gri tonlama ışığı** , yol haritası stilinin hafif bir sürümüdür.
 
-![gri tonlamalı hafif](./media/supported-map-styles/grayscale_light.png)
+![gri tonlamalı hafif harita stili](./media/supported-map-styles/grayscale_light.png)
 
 **Geçerli API 'Ler:**
 * Web SDK eşlemesi denetimi
 * Android harita denetimi
 
 
-## <a name="night"></a>gerçekleştirilmiştir
+## <a name="night"></a>Gece
 **gece** , yol haritası stilinin renkli yollar ve semboller ile karanlık bir sürümüdür.
 
-![gerçekleştirilmiştir](./media/supported-map-styles/night.png)
+![gece harita stili](./media/supported-map-styles/night.png)
 
 **Geçerli API 'Ler:**
 * Web SDK eşlemesi denetimi
@@ -92,7 +92,7 @@ Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 **trafik gölgeli tahliye** , dünya dağılımlarıyla birlikte tamamlanan bir Azure Maps ana stilidir.
 
-![gölgeli tahliye](./media/supported-map-styles/shaded-relief.png)
+![gölgeli emniyet Haritası stili](./media/supported-map-styles/shaded-relief.png)
 
 **Geçerli API 'Ler:**
 * [Harita kutucuğu](https://docs.microsoft.com/rest/api/maps/render/getmaptile)

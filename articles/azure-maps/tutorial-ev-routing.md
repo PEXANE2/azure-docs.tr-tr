@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme'
-description: "Öğretici: Azure haritalar yönlendirme API 'Leri ve Azure Notebooks kullanarak elektrik Araçlar yönlendirin."
+title: 'Öğretici: Azure Notebooks (Python) kullanarak elektrik taşıtlar yönlendirme | Microsoft Azure haritaları'
+description: Microsoft Azure haritaları yönlendirme API 'Leri ve Azure Notebooks kullanarak elektrik Araçlar yönlendirin.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 7039cd73263388f206075a53d7898e0d15da6b03
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f45859370ae178fb186399fdd2648bf37f0985aa
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613695"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910916"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 

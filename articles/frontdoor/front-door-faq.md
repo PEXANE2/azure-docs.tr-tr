@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 39051014e5e474264a44983fb366bc08f02c31e0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dd315277e6e8f29a103760d605a7da4603190c20
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639863"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908865"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Azure ön kapı hizmeti hakkında sık sorulan sorular
 
@@ -99,7 +99,7 @@ Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekil
     > Ön kapısının arka uç IP alanı daha sonra değişebilir, ancak [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519)ile tümleştirilebilmemiz için bu işlem yapılmadan önce bu şekilde daha önce de olur. Herhangi bir değişiklik veya güncelleştirme için [Azure IP aralıklarına ve hizmet etiketlerine](https://www.microsoft.com/download/details.aspx?id=56519) abone olmanızı öneririz.
 
 -   Ön kapı tarafından gönderilen '**X-iletilen-Host**' gelen üstbilgisinin değerlerini filtreleyin. Üst bilgi için izin verilen tek değerler, ön kapı yapılandırmasında tanımlanan ön uç Konakları olmalıdır. Özellikle de daha da özel olarak, bu belirli arka uçta yalnızca trafiğini kabul etmek istediğiniz ana bilgisayar adları.
-    - Örnek: ön kapı yapılandırma 'nın şu ön uç Konakları _`contoso.azurefd.net`_ (A), _`www.contoso.com`_ (B), _ (C) ve _`notifications.contoso.com`_ (D) olduğunu varsayalım. İki arka uç X ve Y olduğunu varsayalım. 
+    - Örnek: ön kapı yapılandırma 'nın şu ön uç Konakları _`contoso.azurefd.net`_ (A), _`www.contoso.com`_ (B), _`api.contoso.com`_ (C) ve _`notifications.contoso.com`_ (D) olduğunu varsayalım. İki arka uç X ve Y olduğunu varsayalım. 
     - Arka uç X yalnızca A ve B ana bilgisayar adlarından trafik almalıdır. arka uç Y, bir, C ve D 'den trafik alabilir.
     - Bu nedenle, arka uç X 'te yalnızca '**X-iletilen-Host**' üst bilgisi _`contoso.azurefd.net`_ veya _`www.contoso.com`_ olarak ayarlanan trafiği kabul etmelisiniz. Diğer her şey için, arka uç X trafiği reddeder.
     - Benzer şekilde, arka uç Y 'de, yalnızca "**X-iletilen-Host**" başlığına sahip trafiği yalnızca _`contoso.azurefd.net`_ , _`api.contoso.com`_ veya _`notifications.contoso.com`_ olarak kabul etmelisiniz. Diğer her şey için, arka uç Y trafiği reddetmelidir.

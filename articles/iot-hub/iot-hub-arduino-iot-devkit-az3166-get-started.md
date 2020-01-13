@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 3cdeecd5b7698274b899832d7a66a5572a114e4b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 139d1a470c67d5dab310c4fa2a9171f433df2061
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954510"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912372"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 'i Azure 'a bağlama IoT Hub
 
@@ -63,7 +63,7 @@ DevKit 'i bilgisayarınıza bağlamak için şu adımları izleyin:
 
 Hızlı başlangıç, telemetrinin IoT Hub göndermek için önceden derlenmiş DevKit bellenimini kullanır. Çalıştırmadan önce bir IoT Hub oluşturun ve bir cihazı hub 'a kaydedersiniz.
 
-### <a name="create-an-iot-hub"></a>IoT hub oluşturma
+### <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -174,7 +174,7 @@ DevKit için geliştirme ortamını hazırlamak üzere aşağıdaki adımları i
     > [Azure IoT araçları uzantı paketini yükler](vscode:extension/vsciot-vscode.azure-iot-tools)
 
     > [!NOTE]
-    > Azure IoT araçları uzantı paketi, çeşitli IoT devkit cihazlarında geliştirme ve hata ayıklama için kullanılan [Azure IoT cihaz çalışma ekranı](https://aka.ms/iot-workbench) 'nı içerir. Azure IoT araçları uzantı paketine da dahil olan [azure IoT Hub araç seti](https://aka.ms/iot-toolkit), Azure IoT Hub 'larını yönetmek ve bunlarla etkileşim kurmak için kullanılır.
+    > Azure IoT araçları uzantı paketi, çeşitli IoT devkit cihazlarında geliştirme ve hata ayıklama için kullanılan [Azure IoT cihaz çalışma ekranı](https://aka.ms/iot-workbench) 'nı içerir. Azure IoT araçları uzantı paketine dahil edilen [azure IoT Hub uzantısı](https://aka.ms/iot-toolkit), Azure IoT Hub 'larını yönetmek ve bunlarla etkileşim kurmak için kullanılır.
 
 5. Arduino ayarları ile VS Code yapılandırın.
 
@@ -328,7 +328,7 @@ IoT Hub içindeki cihazdan buluta (D2C) iletilerini izlemek için [Azure IoT ara
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın, oluşturduğunuz IoT Hub bulun.
 
-    ![Azure portalında](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
+    ![Azure Portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
 1. **Paylaşılan erişim ilkeleri** bölmesinde, **ıothubowner Ilkesine**tıklayın ve IoT Hub 'ınızın bağlantı dizesini yazın.
 

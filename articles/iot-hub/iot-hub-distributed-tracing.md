@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457059"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911890"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Dağıtılmış izleme (Önizleme) ile Azure IoT cihazdan buluta iletileri izleme
 
@@ -208,15 +208,15 @@ Buluttan izlenecek ileti yüzdesini değiştirmek için cihaz ikizi güncelleşt
 
 1. Seçim Örnekleme hızını farklı bir değere değiştirin ve iletilerin uygulama özelliklerinde `tracestate` dahil olduğu sıklığa göre değişikliği gözlemleyin.
 
-### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>VS Code için Azure IoT Hub araç setini kullanarak güncelleştir
+### <a name="update-using-azure-iot-hub-for-vs-code"></a>VS Code için Azure IoT Hub kullanarak güncelleştir
 
-1. VS Code yükleyip Azure IoT Hub Toolkit 'in en son sürümünü [buradan](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)vs Code yüklersiniz.
+1. VS Code yükleyip VS Code için Azure IoT Hub en son sürümünü [buradan](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)yüklersiniz.
 
 1. VS Code açın ve [IoT Hub bağlantı dizesi ayarlayın](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites).
 
 1. Cihazı genişletin ve **Dağıtılmış Izleme ayarını (Önizleme)** arayın. Altında, alt düğümün **Dağıtılmış Izleme ayarını (Önizleme) Güncelleştir** ' e tıklayın.
 
-    ![Azure IoT Hub araç seti 'nde dağıtılmış izlemeyi etkinleştirme](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
+    ![Azure IoT Hub uzantısı 'nda dağıtılmış izlemeyi etkinleştir](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
 1. Açılan pencerede **Etkinleştir**' i seçin ve ardından ENTER tuşuna basarak örnekleme oranı olarak 100 ' i doğrulayın.
 

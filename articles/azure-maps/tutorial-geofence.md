@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure haritalar kullanarak bölge oluşturma'
-description: "Öğretici: Azure haritalar 'ı kullanarak bölge düzeni ayarlayın."
+title: 'Öğretici: bir haritada bölge alanı oluşturma ve cihazları izleme | Microsoft Azure haritaları'
+description: Bu öğreticide, Microsoft Azure Maps uzamsal hizmetini kullanarak bölge sınırlaması ile ilişkili cihazları nasıl ayarlayacağınızı ve bölge olarak izlemeyi öğrenin.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e408adfe1daed402ef690224368e846bd0a97c8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407825"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910937"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak bölge bölge ayarlama
 
@@ -58,7 +58,7 @@ Postman uygulamasını açın ve Azure Maps, veri yükleme API 'sini kullanarak 
 
 3. **Parametreler**' e tıklayın ve post isteği URL 'si için kullanılacak aşağıdaki anahtar/değer çiftlerini girin. Abonelik anahtarı değerini Azure haritalar anahtarınızla değiştirin.
    
-    ![Anahtar-değer params Postman](./media/tutorial-geofence/postman-key-vals.png)
+    ![Postman 'da verileri karşıya yükleme (bölge bölge) parametreleri](./media/tutorial-geofence/postman-key-vals.png)
 
 4. **Gövde** ' ye tıklayın, ham giriş biçimi ' ni seçin ve açılan listeden giriş BIÇIMI olarak JSON ' ı seçin. Karşıya yüklenecek veri olarak aşağıdaki JSON 'ı sağlayın:
 
@@ -177,7 +177,7 @@ Daha fazla bilgi için [desteklenen tüm olay işleyicilerini](https://docs.micr
 
 1. Azure portal bir mantıksal uygulama oluşturma
 
-   ![Logic Apps oluştur](./media/tutorial-geofence/logic-app.png)
+   ![Bölge olaylarını işlemek için Azure Logic Apps oluşturma](./media/tutorial-geofence/logic-app.png)
 
 2. Bir HTTP isteği tetikleyicisi seçin ve Outlook Bağlayıcısı 'nda "e-posta gönder" eylemini seçin
   
@@ -185,7 +185,7 @@ Daha fazla bilgi için [desteklenen tüm olay işleyicilerini](https://docs.micr
 
 3. HTTP URL uç noktasını oluşturmak için mantıksal uygulamayı kaydedin ve HTTP URL 'sini kopyalayın.
 
-   ![Logic Apps uç noktası](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![Logic Apps uç noktası oluşturma](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Azure haritalar olayları aboneliği oluşturma
@@ -196,15 +196,15 @@ Bölge giriş olayları için bir olay aboneliği oluşturmak üzere aşağıdak
 
 1. [Bu portal bağlantısı](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/dashboard/) aracılığıyla Azure haritalar hesabınıza gidin ve olaylar sekmesini seçin.
 
-   ![Azure haritalar olayları](./media/tutorial-geofence/events-tab.png)
+   ![Azure Maps hesap olaylarına gidin](./media/tutorial-geofence/events-tab.png)
 
 2. Bir olay aboneliği oluşturmak için olaylar sayfasından olay aboneliği ' ni seçin.
 
-   ![Azure haritalar olayları aboneliği](./media/tutorial-geofence/create-event-subscription.png)
+   ![Azure haritalar olayları aboneliği oluşturma](./media/tutorial-geofence/create-event-subscription.png)
 
 3. Olayların aboneliğini adlandırın ve ENTER olay türüne abone olun. Şimdi "uç nokta türü" olarak Web kancası ' yi seçin ve mantıksal uygulamanızın HTTP URL uç noktasını "uç noktaya" kopyalayın
 
-   ![Olay aboneliği](./media/tutorial-geofence/events-subscription.png)
+   ![Azure haritalar olayları abonelik ayrıntıları](./media/tutorial-geofence/events-subscription.png)
 
 
 ## <a name="use-geofence-api"></a>Geofence API kullanma
@@ -214,7 +214,7 @@ Bir **cihazın** (donanımların durumun parçası olduğunu) bir bölge 'nin i�
 > [!Note]
 > Yukarıdaki senaryo ve davranış, aşağıdaki şekilde beş farklı konumu yansıtacak şekilde aynı **cihaz kimliğini** temel alır.
 
-![Bölge Haritası](./media/tutorial-geofence/geofence.png)
+![Azure haritalar 'da bölge sınırı Haritası](./media/tutorial-geofence/geofence.png)
 
 Postman uygulamasında, yukarıda oluşturduğunuz koleksiyonda yeni bir sekme açın. Oluşturucu sekmesinde HTTP yöntemini Al ' ı seçin:
 

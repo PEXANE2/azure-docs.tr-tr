@@ -8,16 +8,16 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: c5fd37c532e2abf2697c741e4dab10a945926e2b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775694"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908926"
 ---
 # <a name="internet-peering-overview"></a>Internet eşlemesi genel bakış
 
-Eşleme, Microsoft 'un, Microsoft çevrimiçi hizmetler ve Microsoft Azure hizmetlerinden Internet trafiğini değiştirme amacıyla Microsoft 'un küresel ağı (AS8075) ve ağınız arasındaki iç bağlantıdır. Taşıyıcılar veya hizmet sağlayıcıları, Microsoft ile kenar konumlarımızla bağlantı kurmak isteyebilir. Her istek, eşleme ilkenize bağlı olduğundan emin olmak için Microsoft Azure ağ tarafından gözden geçirilir. Microsoft Network ile bir eşlemeyi iki şekilde ayarlayabilirsiniz:
+Eşleme, Microsoft 'un, Microsoft çevrimiçi hizmetler ve Microsoft Azure hizmetlerinden Internet trafiğini değiştirme amacıyla Microsoft 'un küresel ağı (AS8075) ve ağınız arasındaki iç bağlantıdır. Taşıyıcılar veya hizmet sağlayıcıları, Microsoft ile kenar konumlarımızla bağlantı kurmak isteyebilir. Her istek, eşleme ilkenize bağlı olduğundan emin olmak için Microsoft tarafından incelenir. Microsoft Network ile bir eşlemeyi iki şekilde ayarlayabilirsiniz:
 
 * **Doğrudan eşleme:**
 
@@ -33,7 +33,7 @@ Eşleme, Microsoft 'un, Microsoft çevrimiçi hizmetler ve Microsoft Azure hizme
 * Gereksiz konumlarda Microsoft ile eşleme yaparak, müşteri trafiğini ağ veya transit sağlayıcınızın ağındaki hatalara karşı koruyun.
 * Eşleme bağlantılarınız hakkında performans ölçümlerini öğrenin ve ağınızı sorun gidermek için öngörüleri kullanın.
 
-## <a name="benefits-of-using-azure"></a>Azure kullanmanın avantajları
+## <a name="benefits-of-using-azure-to-set-up-peering"></a>Eşleme ayarlamak için Azure kullanmanın avantajları
 
 Azure PowerShell veya Portal kullanarak Microsoft ile eşleme isteyebilirsiniz. Bu şekilde ayarlanan eşleme bir Azure kaynağı olarak yönetilir ve aşağıdaki avantajları sağlar:
 * Microsoft ile eşlemeyi ayarlamak ve yönetmek için Basitleştirilmiş ve haritasıdır adımları.

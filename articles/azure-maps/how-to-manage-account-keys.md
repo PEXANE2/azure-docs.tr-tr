@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar hesabınızı yönetme | Microsoft Docs
-description: Azure haritalar hesabınızı yönetmek için Azure portal kullanabilirsiniz.
+title: Azure portalında Azure Maps hesabınızı yönetme | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları hesabınızı yönetmek için Azure portal nasıl kullanacağınızı öğreneceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a5697989696d0d375e52baeb9f7332e7013d16bf
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 92c76780473372c3e2ef87cdf4da0f21a22d9ac6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768852"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911510"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure haritalar hesabınızı yönetme
 
@@ -31,13 +31,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 4. Yeni hesabınızın bilgilerini girin.
 
-![Portala hesap bilgilerini girin](./media/how-to-manage-account-keys/new-account-portal.png)
+![Azure portal Azure Maps hesap bilgilerini girin](./media/how-to-manage-account-keys/new-account-portal.png)
 
 ## <a name="delete-an-account"></a>Hesap silme
 
 Azure portal bir hesabı silebilirsiniz. Hesaba genel bakış sayfasına gidin ve **Sil**' i seçin.
 
-![Portalda hesabınızı silme](./media/how-to-manage-account-keys/account-delete-portal.png)
+![Azure portal Azure Maps hesabınızı silme](./media/how-to-manage-account-keys/account-delete-portal.png)
 
 Daha sonra bir onay sayfası görürsünüz. Adını yazarak hesabınızın silinmesini doğrulayabilirsiniz.
 

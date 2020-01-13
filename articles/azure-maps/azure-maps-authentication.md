@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar ile kimlik doğrulama | Microsoft Docs
-description: Microsoft Azure haritalar hizmetlerini kullanmak için Azure Active Directory (Azure AD) veya paylaşılan anahtar kimlik doğrulaması. Azure Maps abonelik anahtarını almayı öğrenin.
+title: Kimlik doğrulama yöntemleri | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritalar hizmetlerini kullanmak için Azure Active Directory (Azure AD) veya paylaşılan anahtar kimlik doğrulaması hakkında bilgi edineceksiniz. Azure Maps abonelik anahtarını almayı öğrenin.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/30/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a58436063009b732a15e74c8a3fc3f95b8df29cf
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 006adae99b2430f4c08ce5fc692598e48f45c239
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834194"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911818"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Haritalar ile kimlik doğrulaması
 

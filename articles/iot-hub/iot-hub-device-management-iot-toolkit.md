@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 03997bb6999af9ebaad36cc95f7834e3b9ed4569
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953205"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911927"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub cihaz yönetimi için Visual Studio Code Azure IoT araçları 'nı kullanma
 
@@ -71,7 +71,7 @@ Geliştirme makinenizde çeşitli yönetim seçenekleriyle Visual Studio Code i�
 
 2. Giriş kutusuna yöntem adını ve yükünü girin.
 
-3. Sonuçlar, **Azure IoT Hub araç seti** görünümünde **çıktı** > gösterilir.
+3. Sonuçlar, **Azure IoT Hub** görünümünde **çıktı** > gösterilir.
 
 ## <a name="read-device-twin"></a>Cihaz ikizi okuma
 
@@ -95,7 +95,7 @@ IoT Hub 'ından cihazınıza bir ileti göndermek için şu adımları izleyin:
 
 2. Giriş kutusuna iletiyi girin.
 
-3. Sonuçlar, **Azure IoT Hub araç seti** görünümünde **çıktı** > gösterilir.
+3. Sonuçlar, **Azure IoT Hub** görünümünde **çıktı** > gösterilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: 8a9f0008f1a1ea1a57f3c0e7e17b8cf3ae5e959c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d4d9d2ff899a169ee81544761fe87fed3cca06c4
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434531"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912320"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Bir IOT Edge ağ geçidi cihazı aracılığıyla Modbus TCP cihazlarını bağlama
 
@@ -71,7 +71,7 @@ Modbus modülünden gelen verileri görüntüleyin:
 iotedge logs modbus
 ```
 
-Ayrıca, cihazın gönderdiği Telemetriyi, [Visual Studio Code Için azure IoT Hub araç seti uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (eskiden Azure IoT araç seti uzantısı) kullanarak da görüntüleyebilirsiniz.
+Ayrıca, cihazın gönderdiği Telemetriyi, [Visual Studio Code Için azure IoT Hub uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (eskiden Azure IoT araç seti uzantısı) kullanarak da görüntüleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

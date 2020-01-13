@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 12/04/2019
 ms.author: dibotero
-ms.openlocfilehash: a7216e697680bcc049d2ceb4caec74adfc1760b0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 74bf0422bbe6c2c1c84365c1e8f9329a01ff9fdd
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74897396"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75909032"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Azure Internet Çözümleyicisi sorunlarını giderme
 
@@ -22,6 +22,7 @@ Bu makale, yaygın Internet çözümleyici sorunları için sorun giderme adıml
 **Karneler bölümünde "Bu karne için yeterli ölçüm toplanmadı"**
 
 Şunlara dikkat edin:
+- İstemci betiği bir **https** Web sitesine katıştırmalıdır. Betik bir düz metin (**http://** ) veya yerel (**File://** ) Web sitesinde çalışıyorsa ölçümler toplanmaz.
 - Ölçüm verileri yalnızca Internet Çözümleyicisi profilinin istemci betiği gerçek Kullanıcı trafiği alan bir uygulamaya katıştırılmışsa toplanacaktır. Yapay trafik (örneğin, Azure WebApp performans testleri) genellikle katıştırılmış JavaScript kodunu yürütmez, bu nedenle bu tür trafik tarafından hiçbir ölçüm oluşturulmaz.
 - Zaman serisi saat bir kez üretildikten sonra, yeni ölçüm verilerinin görünmesi için en az bu süreyi beklemeniz gerekir.
 - Karneler günlük olarak (her günün sonunda UTC saati) oluşturulur.

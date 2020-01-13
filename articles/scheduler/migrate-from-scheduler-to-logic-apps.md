@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c5de7b7bf30726dbfbf165799280ad892eca628a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890172"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911990"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler işlerini Azure Logic Apps geçirin
 
@@ -106,7 +106,7 @@ Tek seferlik bir işi el ile çalıştırmak veya tetiklemek için, mantıksal u
 
 Örneğin, Postman uygulamasını kullanarak bu örneğe benzer ayarlarla bir POST isteği oluşturabilir ve sonra isteği yapmak için **Gönder** ' i seçebilirsiniz.
 
-| İstek yöntemi | URL'si | Gövde | Üst bilgiler |
+| İstek yöntemi | URL | Gövde | Üst bilgiler |
 |----------------|-----|------|---------|
 | **POST** | <*uç noktası-URL*> | **Madde** <p>**JSON (uygulama/JSON)** <p>**Ham** kutusuna, istekte göndermek istediğiniz yükü girin. <p>**Note**: Bu ayar, **üst bilgiler** değerlerini otomatik olarak yapılandırır. | **Anahtar**: içerik türü <br>**Değer**: uygulama/JSON |
 |||||
@@ -169,7 +169,7 @@ Bir eylemin işlem sırasında mantıksal uygulamanızda yeniden çalıştırmay
 
    ![Yeniden deneme ilkesini seçin](./media/migrate-from-scheduler-to-logic-apps/retry-policy.png)
 
-## <a name="handle-exceptions-and-errors"></a>Özel durumları ve hataları işle
+## <a name="handle-exceptions-and-errors"></a>Özel durumları ve hataları işleme
 
 Azure Scheduler 'da, varsayılan eylem çalışamazsa, hata koşulunu ele alan bir alternatif eylem çalıştırabilirsiniz. Azure Logic Apps Ayrıca aynı görevi gerçekleştirebilirsiniz.
 
@@ -191,7 +191,7 @@ Azure Scheduler 'da, varsayılan eylem çalışamazsa, hata koşulunu ele alan b
 
 1. İşiniz bittiğinde **Bitti**'yi seçin.
 
-Özel durum işleme hakkında daha fazla bilgi edinmek için bkz. [işleme hataları ve özel durumlar-RunAfter özelliği](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property).
+Özel durum işleme hakkında daha fazla bilgi edinmek için bkz. [işleme hataları ve özel durumlar-RunAfter özelliği](../logic-apps/logic-apps-exception-handling.md#control-run-after-behavior).
 
 ## <a name="faq"></a>SSS
 
@@ -229,7 +229,7 @@ Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik d
 
 1. İstediğiniz destek seçeneğini belirleyin. Ücretli bir destek planınız varsa **İleri**' yi seçin.
 
-**Topluluğundan**
+**Topluluk**
 
 * [Azure Logic Apps Forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)

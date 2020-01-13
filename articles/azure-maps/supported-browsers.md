@@ -1,6 +1,6 @@
 ---
-title: Web SDK desteklenen tarayıcılar-Azure Maps | Microsoft Docs
-description: Azure Maps web SDK için desteklenen tarayıcılar hakkında bilgi edinin
+title: Web SDK desteklenen tarayıcılar | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure Maps web SDK 'Sı için desteklenen tarayıcılar ve tarayıcının desteklenen bir tarayıcı olup olmadığını denetleme hakkında bilgi edineceksiniz.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 6aa256f026033a8b204b3c2ab1080f9f63ef63d7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a67a358d45ac61c955c26f495169f7cd8364074
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432798"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910457"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK destekleyen tarayıcılar
 

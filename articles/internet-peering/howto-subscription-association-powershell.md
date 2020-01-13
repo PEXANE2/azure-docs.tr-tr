@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e7239fdedafedc96a382de6c3c2f90b5da4df00c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75774256"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908979"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>PowerShell kullanarak eşdüzey ASN 'yi Azure aboneliğiyle ilişkilendir
 
@@ -29,7 +29,24 @@ Bir eşleme isteği göndermeden önce, aşağıdaki adımları kullanarak ASN '
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure hesabınızda oturum açın ve aboneliğinizi seçin
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
+### <a name="register-for-peering-resource-provider"></a>Eşleme kaynak sağlayıcısı için kaydolun
+Aşağıdaki komutu kullanarak aboneliğinizde eşleme kaynak sağlayıcısına kaydolun. Bunu yürütütemezsiniz, eşlemeyi ayarlamak için gereken Azure kaynaklarına erişilemez.
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace Microsoft.Peering
+```
+
+Aşağıdaki komutları kullanarak kayıt durumunu kontrol edebilirsiniz:
+```powershell
+Get-AzResourceProvider -ProviderNamespace Microsoft.Peering
+```
+
+> [!IMPORTANT]
+> Devam etmeden önce *Registrationstate* 'In "kayıtlı" olmasını bekleyin. Komutu yürütmeden bu işlem 5 ila 30 dakika sürebilir.
+
 ### <a name="update-the-peer-information-associated-with-this-subscription"></a>Bu abonelikle ilişkili eş bilgilerini güncelleştir
+
+Eş bilgilerini güncelleştirme örneği aşağıda verilmiştir.
 
 ```powershell
 New-AzPeerAsn `

@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar 'da yakınlaştırma düzeyleri ve kutucuk Kılavuzu | Microsoft Docs
-description: Azure haritalar 'da yakınlaştırma düzeyleri ve kutucuk Kılavuzu hakkında bilgi edinin
+title: Yakınlaştırma düzeyleri ve kutucuk Kılavuzu | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritalardaki yakınlaştırma düzeyleri ve kutucuk Kılavuzu hakkında bilgi edineceksiniz.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 68fbb9b8cd65e24d0fea0c571e5cf01b53560ba7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 09d6e357b87b59e8010e38693806da5f26f5b679
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407579"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910766"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Yakınlaştırma düzeyleri ve kutucuk kılavuzu
 
@@ -26,7 +26,7 @@ Harita alımı ve görüntüleme performansını iyileştirmek için harita kare
 
 <center>
 
-![dünya kutucuğu](./media/zoom-levels-and-tile-grid/world0.png)</center>
+![World harita kutucuğu](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
 Yakınlaştırma düzeyi 1, dünyayı işlemek için dört kutucuk kullanır: 2 x 2 kare
 

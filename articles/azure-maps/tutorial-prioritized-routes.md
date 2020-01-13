@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Maps ile birden çok yol'
-description: 'Öğretici: Azure Maps kullanarak farklı seyahat modları için rotalar bulma'
+title: 'Öğretici: seyahat moduna göre birden çok yol bulma | Microsoft Azure haritaları'
+description: Bu öğreticide, Microsoft Azure haritaları kullanarak farklı seyahat modlarına yönelik yolların nasıl bulunacağını öğreneceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cec7027ee0eadae2284e9aa2b127c195870ee929
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 258572d4451be6d9a1090c032467e85889148d14
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613644"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910858"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Öğretici: Azure Maps kullanarak farklı seyahat modları için rotalar bulma
 
@@ -117,7 +117,7 @@ Aşağıdaki adımlarda, Harita Denetimi API’sinin tümleşik olduğu statik b
 
 2. **MapTruckRoute.html** dosyasını kaydedin ve tarayıcınızın sayfasını yenileyin. Eşlemle etkileşim kurabilir ve Los Angeles 'ta yakınlaştırırsanız, geçerli trafik verileriyle birlikte bir cadde görmeniz gerekir.
 
-   ![Trafik haritasını görüntüleme](./media/tutorial-prioritized-routes/traffic-map.png)
+   ![Bir haritadaki trafiği görüntüleme](./media/tutorial-prioritized-routes/traffic-map.png)
 
 <a id="queryroutes"></a>
 

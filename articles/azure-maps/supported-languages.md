@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar 'da yerelleştirme desteği | Microsoft Docs
-description: Azure haritalar 'daki hizmetler için desteklenen diller hakkında bilgi edinin
+title: Yerelleştirme desteği | Microsoft Azure haritaları
+description: Bu makalede Microsoft Azure haritaların Hizmetleri için desteklenen diller hakkında bilgi edineceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 64197cc85822997926a8011af8cb3b981fa9064d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 4926cb2bb4cb1aa15b212cc7130e0db995a24ed9
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286411"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910426"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure haritalar 'da yerelleştirme desteği
 
@@ -25,7 +25,7 @@ Azure haritalar, ülkeye/bölgeye göre çeşitli dilleri ve görünümleri dest
 Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. Aşağıdaki tabloda her hizmet için desteklenen dil kodları sağlanmaktadır.  
   
 
-| Kimlik         | Name                   |  Haritalar | Ara | Yönlendirme | Hava durumu | Trafik olayları | JS eşleme denetimi |
+| Kimlik         | Ad                   |  Haritalar | Arama | Yönlendirme | Hava durumu | Trafik olayları | JS eşleme denetimi |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | Afrikaner dili              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arapça                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -35,7 +35,7 @@ Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. A
 | AB-ES      | Bask dili                 |       |    ✓   |         |         |                   |                |
 | BG-BG      | Bulgarca              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
 | CA-ES      | Katalanca                |       |    ✓   |         |    ✓      |                   |                |
-| zh-HanS    | Çince (Basitleştirilmiş)   |       |  zh-CN |         |     zh-CN   |                   |                |
+| zh-HanS    | ve   |       |  zh-CN |         |     zh-CN   |                   |                |
 | zh-HanT    | Çince (Hong Kong ÖİB)  |  |   |    |    zh-HK   |                   |           |
 | zh-HanT    | Çince (Tayvan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Hırvatça               |       |    ✓   |         |    ✓      |                   |                |
@@ -46,13 +46,13 @@ Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. A
 | tr-AU      | İngilizce (Avustralya)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | tr NZ      | İngilizce (Yeni Zelanda)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | İngilizce (Büyük Britanya) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-US      | İngilizce (ABD)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| tr-TR      | İngilizce (ABD)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | Estonca               |       |    ✓   |         |      ✓    |         ✓         |                |
 | fıfıph     | Filipin dili               |       |       |         |     ✓    |                   |                |
 | FI-FI      | Fince                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-FR      | Fransızca                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-CA      | Fransızca (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
-| GL-ES      | Galiçya dili               |       |    ✓   |         |         |                   |                |
+| gl-ES      | Galiçya dili               |       |    ✓   |         |         |                   |                |
 | de-DE      | Almanca                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | Yunanca                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
 | Gu-ın      | Gucerat dili                |       |       |         |     ✓    |                   |                |
@@ -69,9 +69,9 @@ Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. A
 | es-419     | Latin Amerika Ispanyolca |       |    ✓   |         |         |                   |                |
 | lv-LV      | Letonca                |       |    ✓   |         |     ✓    |         ✓         |                |
 | lt-LT      | Litvanca             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| MK-MK      | CA             |       |       |         |     ✓    |                   |                |
+| MK-MK      | Makedonca             |       |       |         |     ✓    |                   |                |
 | ms-MY      | Malay dili (Latin)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
-| Mr-ın      | Marathi                 |       |       |         |     ✓    |                   |                |
+| Mr-ın      | Marathi dili                 |       |       |         |     ✓    |                   |                |
 | NB-yok      | Norveççe Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | NGT        | Yerel betiklerdeki tüm bölgeler için nötr on-resmi diller varsa |   ✓     |        |         |       |        |      ✓          |
 | NGT-Latn   | Nötr zemin.-Latin exonbiri. Varsa Latin betiği kullanılacaktır |   ✓     |        |         |         |                |        ✓         |
@@ -81,7 +81,7 @@ Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. A
 | PA-ın      | Pencap dili                 |       |       |         |     ✓    |                   |                |
 | Ro-RO      | Rumence               |       |    ✓    |         |     ✓    |         ✓         |                |
 | ru-RU      | Rusça                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| SR-Cyrl-RS | Sırpça (Kiril)     |       |   SR-RS  |         |    SR-RS     |                   |                |
+| sr-Cyrl-RS | Sırpça (Kiril)     |       |   SR-RS  |         |    SR-RS     |                   |                |
 | sr-Latn-RS | Sırpça (Latin)        |       |       |         |     sr-Latn    |                   |                |
 | SK-SK      | Slovakça             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | SL-SL      | Slovence              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
@@ -148,7 +148,7 @@ Varsayılan olarak görünüm parametresi, istekte tanımlanmasanız bile **birl
 
 Aşağıdaki tabloda desteklenen görünümler sağlanmaktadır.
 
-| Görünüm         | Açıklama                            |  Haritalar | Ara | JS Harita Denetimi |
+| Görüntüle         | Açıklama                            |  Haritalar | Arama | JS Harita Denetimi |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Birleşik Arap Emirlikleri (Arapça görünüm)    |   ✓   |        |     ✓          |
 | AR           | Arjantin (argentinian görünümü)           |   ✓   |    ✓   |     ✓          |

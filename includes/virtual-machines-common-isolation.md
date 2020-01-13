@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7705ea3b60d8c8e2b189ad555d1b53fa395aa1fb
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459150"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912514"
 ---
 Azure Compute, belirli bir donanım türüyle sınırlanmış ve tek bir müşteriye ayrılmış olan sanal makine boyutları sunar.  Bu sanal makine boyutları, uyumluluk ve düzenleme gereksinimleri gibi öğeler içeren iş yükleri nedeniyle diğer müşterilerden yüksek ölçüde yalıtıma ihtiyaç duyan iş yükleri için idealdir.  Müşteriler Ayrıca, [iç içe geçmiş sanal makineler Için Azure desteği](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)'ni kullanarak bu yalıtılmış sanal makinelerin kaynaklarını daha fazla alt bölümlere ayırmak da tercih edebilir.
 
@@ -30,7 +30,7 @@ Yalıtılmış bir boyut kullanılması, sanal makinenizin o belirli sunucu örn
 Her kullanılabilir yalıtılmış boyut hakkında daha fazla bilgiyi [burada](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)bulabilirsiniz.
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>15 Şubat 2020 ' de D15_v2/DS15_v2 yalıtımını devre dışı bırakma
-Azure ayrılmış ana bilgisayarı artık, kuruluşunuzun Linux ve Windows sanal makinelerini tek kiracılı fiziksel sunucularda çalıştırmanıza olanak tanır. Yalıtılmış Azure VM 'lerini Azure ayrılmış ana bilgisayarıyla tamamen değiştirmeyi planlıyoruz. **15 şubat 2020 '** den sonra, D15_v2/DS15_v2 Azure VM 'leri artık donanım yalıtılamayabilir.
+Azure ayrılmış ana bilgisayarı artık, kuruluşunuzun Linux ve Windows sanal makinelerini tek kiracılı fiziksel sunucularda çalıştırmanıza olanak tanır. Yalıtılmış Azure VM 'lerini Azure ayrılmış ana bilgisayarıyla tamamen değiştirmeyi planlıyoruz. **15 şubat 2020 '** den sonra, D15_v2/DS15_v2 Azure VM 'leri artık donanım yalıtılmış olmayacaktır.
 
 ## <a name="how-does-this-affect-me"></a>Bu değişiklik beni nasıl etkileyecek?
 15 Şubat 2020 ' den sonra, artık D15_v2/DS15_v2 Azure sanal makineleriniz için bir yalıtım garantisi sağlamayız. 

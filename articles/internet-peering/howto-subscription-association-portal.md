@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: d3737be5a3186774f230aef9d932464a27a764f4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775647"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912216"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Portalı kullanarak eşdüzey ASN 'yi Azure aboneliğine ilişkilendirin
 
@@ -25,6 +25,34 @@ Bir eşleme isteği göndermeden önce, aşağıdaki adımları kullanarak ASN '
 
 ### <a name="sign-in-to-the-portal"></a>Portalda oturum açın
 [!INCLUDE [Account](./includes/account-portal.md)]
+
+### <a name="register-for-peering-resource-provider"></a>Eşleme kaynak sağlayıcısı için kaydolun
+Aşağıdaki adımları izleyerek aboneliğinizde eşleme kaynak sağlayıcısına kaydolun. Bunu yürütütemezsiniz, eşlemeyi ayarlamak için gereken Azure kaynaklarına erişilemez.
+
+1. Portalın sol üst köşesindeki **abonelikler** ' e tıklayın. Bunu görmüyorsanız, **daha fazla hizmet** ' e tıklayın ve arama yapın.
+
+    > [!div class="mx-imgBorder"]
+    > ![açık abonelikler](./media/rp-subscriptions-open.png)
+
+1. Eşleme için kullanmak istediğiniz aboneliğe tıklayın.
+
+    > [!div class="mx-imgBorder"]
+    > ![](./media/rp-subscriptions-launch.png) aboneliği Başlat
+
+1. Abonelik açıldıktan sonra, sol taraftaki **kaynak sağlayıcıları**' na tıklayın. Sonra sağ bölmede, ara penceresinde *eşleme* araması yapın veya **Microsoft. eşleme** ' yi bulmak için kaydırma çubuğunu kullanın ve **duruma**bakın. Durum ***kayıtlıysa***, aşağıdaki adımları atlayın ve bölüm **peerasn oluşturun**bölümüne ilerleyin. Durum ***Notregistered***Ise, **Microsoft. eşleme** ' yi seçin ve **Kaydet**' e tıklayın.
+
+    > [!div class="mx-imgBorder"]
+    > ![kayıt başlatma](./media/rp-register-start.png)
+
+1. Durumunun ***kayıt***olarak değiştiğini gözlemleyin.
+
+    > [!div class="mx-imgBorder"]
+    > ![kayıt devam ediyor](./media/rp-register-progress.png)
+
+1. Kayıt işleminin tamamlanabilmesi için en az bir dakika bekleyin. Ardından **Yenile** ' ye tıklayın ve durumun ***kayıtlı***olduğunu doğrulayın.
+
+    > [!div class="mx-imgBorder"]
+    > ![kaydı tamamlandı](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn oluştur
 Bir otonom sistem numarası 'nı (ASN) Azure aboneliğiyle ilişkilendirmek için yeni bir PeerAsn kaynağı oluşturabilirsiniz. İlişkilendirmeniz gereken her ASN için bir **Peerasn** oluşturarak, birden fazla ASNs 'yi bir abonelikle ilişkilendirebilirsiniz.

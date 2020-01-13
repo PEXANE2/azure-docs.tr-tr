@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Azure Maps ile etkileşimli harita arama'
-description: Azure hızlı başlangıç-Azure haritaları kullanarak bir demo etkileşimli harita araması oluşturma
+title: 'Hızlı başlangıç: Azure Maps ile etkileşimli harita arama | Microsoft Azure haritaları'
+description: Microsoft Azure Maps web SDK 'sını kullanarak etkileşimli harita araması için tanıtım Web uygulaması oluşturmayı öğrenin.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408407"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910690"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Hızlı başlangıç: Azure haritalar kullanarak etkileşimli arama haritası oluşturma
 
@@ -57,7 +57,7 @@ Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API’lerini
 2. Ayarlar bölümünde **kimlik doğrulaması**' nı seçin.
 3. **Birincil Anahtar**’ı panonuza kopyalayın. Bu öğreticinin ilerleyen kısmında kullanmak üzere bunu yerel olarak kaydedin.
 
-![Portalda Birincil Anahtar’ı alma](./media/quick-demo-map-app/get-key.png)
+![Azure portal birincil anahtar Azure Haritalar anahtarını al](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>Uygulamayı indirme
 
@@ -73,7 +73,7 @@ Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API’lerini
 4. Etkileşimli arama deneyimini deneyin. Demo Web uygulamasının sol üst köşesindeki arama kutusunda **Restoran**' ı arayın.
 5. Farenizi arama kutusunun altında görüntülenen adresler ve konumlar listesinin üzerine taşıyın. Haritadaki karşılık gelen PIN 'in bu konumla ilgili bilgileri nasıl göründüğüne dikkat edin. Özel işletmelerin gizliliğini korumak için kurgusal ad ve adresler gösterilir.
 
-    ![Etkileşimli arama Web uygulaması](./media/quick-demo-map-app/interactive-search.png)
+    ![Etkileşimli harita arama Web uygulaması](./media/quick-demo-map-app/interactive-search.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

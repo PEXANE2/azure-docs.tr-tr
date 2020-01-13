@@ -1,6 +1,6 @@
 ---
-title: Mobility hizmeti veri yapılarını Azure haritalar | Microsoft Docs
-description: Azure haritalar Mobility hizmeti veri yapılarını
+title: Azure haritalar 'da Mobility hizmeti veri yapıları | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure Maps Mobility Hizmetleri aracılığıyla döndürülen ortak alanlar ve veri yapıları hakkında bilgi edineceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 06/05/2019
@@ -8,63 +8,63 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 29e8a9d7555ca836b6266879f3b3c1e32ffd3980
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 213910ee2439fa958b9f1d4926883eb8e066ba41
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735564"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910716"
 ---
-# <a name="data-structures-in-azure-maps-mobility-service"></a>Azure haritalar Mobility hizmeti veri yapılarını
+# <a name="data-structures-in-azure-maps-mobility-service"></a>Azure Maps Mobility hizmetindeki veri yapıları
 
-Bu makalede Metro alanı kavramını sunar [Azure haritalar Mobility hizmetini](https://aka.ms/AzureMapsMobilityService) ve Hizmetler üzerinden döndürülen bazı ortak alanlar, sorgulandığında için ortak bir geçiş durdurur ve satırlar. Mobility hizmeti API'lerini kullanmaya başlamadan önce bu makalede giderek öneririz. Bu ortak alanlar aşağıda ele alır.
+Bu makalede, [Azure Maps Mobility hizmetinde](https://aka.ms/AzureMapsMobilityService) Metro alanı kavramı ve hizmetler aracılığıyla, genel aktarım duraklarına ve çizgilere yönelik sorgulanırken bazı ortak alanlar tanıtılmaktadır. Mobility hizmeti API 'Leri ile çalışmaya başlamadan önce bu makaleyi kullanmanızı öneririz. Aşağıda bu ortak alanları tartıştık.
 
 ## <a name="metro-area"></a>Metro alanı
 
-Mobility hizmeti verileri desteklenen metro bölüme ayrılır. Metro alanları Şehir sınırları izlemeyin, metro alan birden fazla şehir, örneğin, densely doldurulmuş Şehir ve kendi çevreleyen şehirler içerebilir; ve ülke/bölge metro bir alan olabilir. 
+Mobility hizmeti verileri, desteklenen Metro alanlarında bölünür. Metro alanlarında şehir sınırları uygulanmaz, bir metro alanı birden çok şehir içerebilir; Örneğin, daha seyrek doldurulmuş şehir ve onun çevresindeki şehir; bir ülke/bölge de bir metro alanı olabilir. 
 
-`metroID` Çağırmak için kullanılan alanın metro kimliği [alma Metro alanı bilgisi API](https://aka.ms/AzureMapsMobilityMetroAreaInfo) istek desteklenen geçiş türleri ve metro alanının geçiş kurumları ve etkin uyarıları gibi ek ayrıntılar için. Azure haritalar alma Metro API'si kullanarak desteklenen metro alanlarını ve metroIDs istemek için kullanabilirsiniz. Metro alan, değiştirilebilir Kimlikleridir.
+`metroID`, desteklenen aktarım türlerini ve aktarım kurumları ve etkin uyarılar gibi Metro alanı için ek ayrıntıları istemek üzere [Metro alanı bilgilerini al API](https://aka.ms/AzureMapsMobilityMetroAreaInfo) 'sini çağırmak için kullanılabilen bir metro alanı kimliğidir. Desteklenen Metro alanını ve metroIDs istemek için Azure haritalar 'ın Metro API 'sini kullanmasını sağlayabilirsiniz. Metro alanı kimlikleri değişikliğe tabidir.
 
-**metroID:** 522 **adı:** Seattle Ankara Bellevue
+**metroID:** 522 **ad:** Seattle-Tacoma-Bellevue
 
-![Seattle metro alanı](./media/mobility-service-data-structure/seattle-metro.png)
+![Seattle-Metro alanı](./media/mobility-service-data-structure/seattle-metro.png)
 
-## <a name="stop-ids"></a>Kimlikleri Durdur
+## <a name="stop-ids"></a>Kimliği durdur
 
-Geçiş durakları başvurulabilir kimlikleri, iki tür tarafından [genel aktarım akışı belirtimi (GFTS)](https://gtfs.org/) kimliği (stopKey adlandırılır) ve Azure haritalar kimliği (stopId adlandırılır) durdurun. Zaman içinde durakları söz konusu olduğunda, bu kimliği daha kararlı ve fiziksel Durdur mevcut olduğu sürece büyük olasılıkla değiştirmez, Azure haritalar durdurma kimliği kullanmak için önerilir. Fiziksel Durdur herhangi bir değişiklik olmasına rağmen GTFS durdurma kimliği daha sık örneğin GTFS sağlayıcısı değiştirmeniz gerekiyor veya yeni GTFS sürüm yayımlandıktan, durumunda güncelleştirilir.
+Aktarım duraklarına iki tür kimlik, [genel transit akış belirtimi (GFTS)](https://gtfs.org/) kimliği (stopkey olarak adlandırılır) ve Azure HARITALAR durdurma kimliği (stopid olarak adlandırılır) tarafından başvurulabilir. Zamana göre durdurulduğunda, bu KIMLIK daha kararlı olduğundan ve fiziksel durun varolduğu sürece değişmeyecek olduğundan, Azure haritalar durdurma KIMLIĞINI kullanmanız önerilir. GTFS durdurma KIMLIĞI daha sık güncelleştirilir. Örneğin, GTFS sağlayıcısının bunu değiştirmesi veya yeni bir GTFS sürümü yayınlanması durumunda, fiziksel durun hiçbir değişikliği olmamasına karşın.
 
-Başlamak için yakında geçiş durdurur kullanarak isteyebilir [alma yakında aktarım API](https://aka.ms/AzureMapsMobilityNearbyTransit).
+Başlamak için, yakın transit isteklerini [Al](https://aka.ms/AzureMapsMobilityNearbyTransit)' ı kullanarak yakında geçiş durduruluyor.
 
 ## <a name="line-groups-and-lines"></a>Satır grupları ve satırlar
 
-Mobility hizmeti, satırları bir paralel veri modeli kullanır ve daha iyi değişikliklerle başa çıkmak için satır grupları öğesinden devralınan [GTFS](https://gtfs.org/) yollar ve gelişlerin veri modeli.
+Mobility hizmeti, [Gtfs](https://gtfs.org/) rotalarından ve gezileri veri modelinden devralınan değişikliklerle daha iyi uğraşmak için satırlar ve satır grupları için bir paralel veri modeli kullanır.
 
 
 ### <a name="line-groups"></a>Satır grupları
 
-Grup haline getirdiği mantıksal olarak aynı grubunun parçası olan tüm satırları varlığın satır grubudur. Genellikle iki satır, bir giderek noktası a, B, diğer noktası B'den A'ya, her iki ait aynı kamu Ulaşımını Ajans döndüren ve aynı satır numarasına sahip bir satır grubu içerir. Ancak, satır grubu iki satırdan veya yalnızca tek bir satır içindeki olduğu durumlar olabilir.
+Bir satır grubu, aynı grubun mantıksal bir parçası olan tüm satırları gruplandıran bir varlıktır. Genellikle bir satır grubu iki satır, biri A 'dan B 'ye, diğeri de aynı genel taşıma ajanına ait olan ve aynı satır numarasına sahip olacak şekilde B 'den A 'ya gidiyor. Ancak, bir satır grubunun iki satırı veya yalnızca tek bir satırı içerdiği durumlar olabilir.
 
 
-### <a name="lines"></a>satırları
+### <a name="lines"></a>Satırlar
 
-Yukarıda açıklandığı gibi her bir satır grubu satır kümesinden oluşur. Genellikle bir yön ve her satırın her satırını açıklayan iki satır grubuna oluşur. Ancak, bazen belirli bir Komşuları ve bazen saptıran satırı daha fazla hangi satırda bir satır grubu örneğin var. oluşturan olduğu vakaları desteklemez ve her iki durumda da aynı satır numarası altında işletilen ve diğer durumlarda vardır bir satır g tek bir satır, örneğin döngüsel bir satır tek bir yön ile ruplama oluşur.
+Yukarıda açıklandığı gibi, her satır grubu bir dizi satırdan oluşur. Genellikle her satır bir yönü açıklar ve her satır grubu iki satırdan oluşur. Ancak, bir satır grubunu daha fazla satır oluşturan durumlar vardır. Örneğin, bazen belirli bir semte gezinerek bir satır vardır ve bazen aynı satır numarası altındaki her iki durumda da çalıştırılır ve bir satır g rubu tek bir satırdan oluşur, örneğin tek yönlü dairesel bir çizgi.
 
-Başlamak için satır grupları kullanarak isteyebilirsiniz [alma geçiş satırı API](https://aka.ms/AzureMapsMobilityTransitLine) ve sonraki satırları Veriler'i.
+Başlamak için, [geçiş satırı al API 'sini](https://aka.ms/AzureMapsMobilityTransitLine) ve daha sonra satırlarda detaya gitmeyi kullanarak satır grupları isteyebilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İstek Mobility Hizmeti'ni kullanarak geçiş verilerini öğrenin:
+Mobility hizmetini kullanarak geçiş verileri isteme hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [İstek aktarım sırasında verileri nasıl](how-to-request-transit-data.md)
+> [Geçiş verileri isteme](how-to-request-transit-data.md)
 
-Mobility hizmetini kullanarak gerçek zamanlı veri isteği işlemleri gerçekleştirmeyi öğreneceksiniz:
-
-> [!div class="nextstepaction"]
-> [Gerçek zamanlı veri isteği nasıl](how-to-request-real-time-data.md)
-
-Azure haritalar Mobility hizmeti API belgelerini keşfedin
+Mobility hizmetini kullanarak gerçek zamanlı veriler isteme hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Mobility hizmeti API'si belgeleri](https://aka.ms/AzureMapsMobilityService)
+> [Gerçek zamanlı veriler isteme](how-to-request-real-time-data.md)
+
+Azure haritalar Mobility hizmeti API 'SI belgelerini inceleyin
+
+> [!div class="nextstepaction"]
+> [Mobility hizmeti API 'SI belgeleri](https://aka.ms/AzureMapsMobilityService)

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure haritalar kullanarak bir mağaza Bulucu oluşturma'
-description: 'Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturun.'
+title: 'Öğretici: Azure Maps kullanarak bir mağaza Bulucu uygulaması oluşturma | Microsoft Azure haritaları'
+description: Bu öğreticide, Microsoft Azure Maps web SDK 'sını kullanarak bir depo Konumlandırıcı Web uygulaması oluşturmayı öğreneceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408035"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910962"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturma
 
@@ -43,13 +43,13 @@ Koda geçmeden önce tasarım ile başlamak iyi bir fikirdir. Mağaza konumları
 
 <center>
 
-Contoso Coffee kahve dükkanı için mağaza bulucunun ![tel kafes](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+Contoso kahve mağaza konumları için mağaza Bulucu uygulamasının tel kafes ![](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Bu mağaza bulucunun kullanışlılığını en üst düzeye çıkarmak için, bir kullanıcının ekran genişliği 700 pikselden daha küçük olduğunda ayarlayan bir yanıt veren düzen ekledik. Hızlı yanıt veren bir düzen, mağaza bulucunun bir mobil cihazda olduğu gibi küçük bir ekranda kullanılmasını kolaylaştırır. Küçük ekran düzeninin tel kafesi aşağıda verilmiştir:  
 
 <center>
 
-bir mobil cihazda contoso kahve Mağazası bulucunun ![tel kafes](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+bir mobil cihazda contoso kahve Mağazası Bulucu uygulamasının tel kafes ![](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
 Wireframes oldukça basittir bir uygulama gösterir. Uygulamanın bir arama kutusu, yakındaki mağazaların listesi, bazı işaretçileri olan bir eşlem (semboller) ve Kullanıcı bir işaretleyici seçtiğinde ek bilgi görüntüleyen bir açılır pencere. Daha ayrıntılı bilgi için, bu öğreticide bu mağaza bulucusunu geliştirdiğimiz özellikler şunlardır:
 

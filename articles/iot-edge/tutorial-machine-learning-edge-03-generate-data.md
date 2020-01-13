@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d51a577b8a460e872b2baddcb668b13981609e40
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c56dd23084feabeb72f084b03e055d4aa09a11d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707739"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912275"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Öğretici: sanal cihaz verileri oluşturma
 
@@ -111,7 +111,7 @@ Proje binamız olduğuna göre, bağlantı dizesine erişmek ve veri oluşturma 
 
    Bir istem görmüyorsanız, ENTER ' u seçin.
 
-1. Terminalde `dotnet run` girin.
+1. Terminale `dotnet run` girin.
 
 1. IoT Hub bağlantı dizesi istendiğinde, önceki bölümde kopyaladığınız bağlantı dizesini yapıştırın.
 
@@ -123,7 +123,7 @@ Proje binamız olduğuna göre, bağlantı dizesine erişmek ve veri oluşturma 
 
 1. Herhangi bir cihaza sağ tıklayıp **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçerek hub 'a gönderilen iletileri görebilirsiniz. İletiler, Visual Studio Code ' deki çıkış bölmesinde görünür.
 
-1. **Azure IoT Hub araç seti** çıkış bölmesine tıklayarak izlemeyi durdurun ve **yerleşik olay uç noktasını İzlemeyi Durdur**' u seçin.
+1. **Azure IoT Hub** çıktı bölmesine tıklayarak izlemeyi durdurun ve **yerleşik olay uç noktasını İzlemeyi Durdur**' u seçin.
 
 1. Uygulamanın tamamlanmasını, birkaç dakika sürer.
 

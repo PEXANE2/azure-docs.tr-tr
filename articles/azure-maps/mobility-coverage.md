@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar 'da Mobility kapsamı | Microsoft Docs
-description: Azure haritalar 'da Mobility kapsamı hakkında bilgi edinin
+title: Mobility (Transit) kapsamı | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları 'nda Mobility kapsamı hakkında bilgi edineceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 06/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1fcad7d3d0cc45f0cfdc0d6523d5fdbc8f573fe2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 658d282260b6c9c427527fdc07bf05a0218fda4a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577004"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910712"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure haritalar Mobility kapsamı
 
@@ -46,7 +46,7 @@ Aşağıdaki tabloda Azure Maps Mobility hizmeti için kapsam bilgileri sağlanm
 | Peru | Cusco, Lima |
 | Porto Riko | San Juan |
 | Uruguay | Montevideo, Punta del Este |
-| Amerika Birleşik Devletleri | <p>Albümde (NY), Albuquerque (NM), Anchorage (AK), Appleton-Oshkosh-Neenah (WI), Asheville (NC), Atina (OH), Atlanta (GA), Austin (TX), Maersalanı (CA), Baltimore), Bellevue (WA), Berkshire Ilçe (MA), Birminghemi (AL), Bloomington (ın), Boıse (ID), Boston ( MA), Boulder (CO) Brevard Ilçesi (FL), Buffalo (NY), Butte (MT), Cape Cod), orta Ilçe (PA), Şaign-Urbana (IL), Charleston (SC), Charleston (WV), Charlotte (NC), Charlottesville (VA), Chattanooga (TN), Cheyenne (WY), Chicago (IL), Cincinnati (OH), Citrus Ilçe (FL), Cleveland (OH), Coachella Valley (CA), Colorado Sprsler (CO), Kolumbiyası (TN), Columbus (OH), Corpus Christi (TX), Dallas/Ileri değer (TX), Dayton (OH), Delaware, Denver (CO), Des Moines (IA), Detroit (mı), Duluth (MN), El Paso (TX), Eugene (veya ), Fairbanks (AK), Fargo (ND), Fayetteville (NC), Flagpersoneliniz (AZ), FLINT (mı) Fort Collins (CO), Fort Wayne (IN), Fresno (CA), Gainesville (FL), Grand çatallar (ND), Grand Kpıds (mı), yeşil yuva (WI), hayalet Sboro (NC), Greenville (SC), Gunnison (CO), Hampton yollar (VA ), Hanford (CA), Hartford (CT), Hernando Ilçe (FL), Honolulu (HI), Houston (TX), Hımoldt Ilçesi (CA), Huntsville (AL), Indianapolis (IN), Ithaca (NY), Jackson (MS), Jackson (TN), Jacksonville-St. John 'ın Ilçesi (FL), Johnson City (TN), Jonesboro (AR), Joplin (MO), Juneau (AK), kalet Zoo (mı), Kansas City (MO), KAUAI (HI), Ketchum (ID), Kxville (TN), Lafayette (IN), Lancaster (PA), Lansing (mı), Las Vegas (NV), Lawrence (KS), eser Ilçesi (FL), Lexington (KY), Lincoln Ilçe (veya), Little Rock (AR), Los Angeles ( CA), Louisville (KY), Madison (WI), McAllen (TX), Mempu (TN), Miamı (FL), Milwaukee/Waukesha (WI), Minneapolis-St. Paul (MN), Missoula (MT), Modesto (USA), Moldova (IL), Monroe Ilçe (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), Navaho Nation), Yeni Haven (CT), New Orleans (LA), NYC-NJ), Ocala (FL), Okaloosa Ilçesi (FL), Oklahoma City (Tamam), Omaha (NE), Orlando (FL), Panama City (FL), Pensacola (FL), Peoria (IL), Philaphia (PA), Phoenix (AZ), Mantsburgh (PA), Portland (ME), Portland (veya), Racine (WI), Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), Roanoke Valley (VA-Lynchburg), Rochester (NY), Rocky Sıradağlar National Park), standart dışı Valley (veya), Roseburg (veya), Roseville (CA), Sacramento (CA), Salem (ya da), anahtar-Lake City (UT), San antonıo (TX), San Diego ( CA), San Lusıs Obispo (CA), Santa Barbara (CA), Noel Fe (NM), Sarasota (FL), Savannah (GA), Seacoast Region (NH), Seattle-Tacoma-Bellevue (WA), SF Bay alanı (CA), Sioux City (IA), Sioux düşerse (SD), Sıtka (AK), FIME (WA), Springfield (IL), Springfield (toplu), St. George (UT), St. LOUIS (MO), Stockton (CA), Syracuse-Utika (NY), Tallahassee (FL), kura-St. Petersburg (FL), Terre Haute (IN), Totado (OH), Topeka (KS), çapraz şehir (mı), Tucson (AZ), Tulsa (Tamam), Vermont, Victorville (CA), Volusia Ilçe (FL), Waco (TX), Washington (DC), su Bury (CT), Wichita (KS), Wilmington (NC), Yakima (WA), York Ilçesi (PA), Yıuma Ilçesi (AZ)</p>|
+| Amerika Birleşik Devletleri | <p>Albümde (NY), Albuquerque (NM), Anchorage (AK), Appleton-Oshkosh-Neenah (WI), Asheville (NC), Atina (OH), Atlanta (GA), Austin (TX), Bakersalanı (CA), Baltimore), Bellevue (WA), Berkshire Ilçe (MA), Birminghemi (AL), Bloomington (ın), Boıse (ID), Boston (MA), Boulder (CO) Brevard Ilçesi (FL), Buffalo (NY), Butte (MT), Cape Cod), orta Ilçe (PA), Şaign-Urbana (IL), Charleston (SC), Charleston (WV), Charlotte (NC), Charlottesville (VA), Chattanooga (TN), Cheyenne (WY), Chicago (IL), Cincinnati (OH), Citrus Ilçe (FL), Cleveland (OH), Coachella Valley (CA), Colorado Sprsler (CO), Kolumbiyası (TN), Columbus (OH), Corpus Christi (TX), Dallas/geçen değer (TX), Dayton (OH), Delaware, Denver (CO), Des Moines (IA), Detroit (mı), Duluth (MN), El Paso (TX), Eugene (veya), Fairbanks (AK), Fargo (ND), Fayetteville (NC), Flagpersonelin (AZ), FLINT (mı) Fort Collins (CO), Fort Wayne (ın), Fresno (CA), Gainesville (FL), genel çatallar (ND), Grand KPID (mı), yeşil yuva (WI), doğa Sboro (NC), Greenville (SC), Gunnison (CO), Hampton yollar (VA ), Hanford (CA), Hartford (CT), Hernando Ilçe (FL), Honolulu (HI), Houston (TX), Hpooldt Ilçesi (CA), Huntsville (AL), Indianapolis (IN), Ithaca (NY), Jackson (MS), Jackson (TN), Jacksonville-St. John 'ın Ilçesi (FL), Johnson City (TN), Jonesboro (AR), Joplin (MO), Juneau (AK), Kaitzoo (mı), Kansas City (MO), KAUAI (HI), Ketchum (ID), Kxville (TN), Lafayette (ın), Lancaster (PA), Lansing (MI), Las Vegas (NV), Lawrence (KS), eser Ilçesi (FL), Lexington (KY), Lincoln Ilçe (veya), Little Rock (AR), Los Angeles (CA), Louisville (KY), Madison (WI), McAllen (TX), Mempu (TN), Miamı (FL), Milwaukee/Waukesha (WI), Minneapolis-St. Paul (MN), Missoula (MT), Modesto (USA), Molven (IL), Monroe Ilçe (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), Navaho Nation), yeni Haven (CT), New Orleans (LA), NYC-NJ), Ocala (FL), Okaloosa Ilçe (FL), Oklahoma City (Tamam), Omaha (NE), Orlando (FL), Panama City (FL), Pensacola (FL), Peoria (IL), Philaphia (PA), Phoenix (AZ), Mantsburgh (PA), Portland (ME), Portland (veya), Racine (WI), Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), Roanoke Valley (VA-Lynchburg), Rochester (NY), Rocky Sıradağlar National Park), standart dışı Valley (veya), Roseburg (veya), Roseville (CA), Sacramento (CA), Salem (veya), standart Lake City (UT), San antonıo (TX), San Diego (CA), San LUIS Obispo (CA), Santa Barbara (CA), Santa Fe (NM), Sarasota (FL), Savannah (GA), Seacoast Region (NH), Seattle-Tacoma-Bellevue (WA), SF Bay alanı (CA), SIOUX City (IA), Sioux, Sıtka (e), Spokane (WA), Springfield (IL), Springfield (kütle), St. George (UT), St. LOUIS (MO), Stockton (CA), Syracuse-Utika (NY), Tallahassee (FL), bir Vatik-St. Petersburg (FL), Terre Haute (IN), Totado (OH), Topeka (KS), çapraz şehir (mı), Tucson (AZ), Tulsa (Tamam), Vermont, Victorville (CA), Volusia Ilçe (FL), Waco (TX), Washington (DC), su Bury (CT), Wichita (KS), Wilmington (NC), Yakima (WA), York Ilçesi (PA), Yıuma Ilçesi (AZ)</p>|
 | \+ ABD Virgin Adaları | ABD Virgin Adaları * |
 
 
@@ -56,8 +56,8 @@ Aşağıdaki tabloda Azure Maps Mobility hizmeti için kapsam bilgileri sağlanm
 |--------|---------|
 | Avustralya      | <p>ADELAIDE, Gamze Sprdikler, Bowen, Brisbane, Mindaberg QLD, Burnie, CAIRNS, Canbera, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, manyetik Adası, Maryborough-Hervey Bay, Melbourne, Yeni Güney Galler, Perth, RockHampton, Güney Doğu Queensland, Sidney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
 | Çin | <p> Changchun, Changsha, Chengdu, Chongqing, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jina, Nanjing, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yanday, Yiing, Zhuhai, Shanghai, PI, Guangzhou, Shenzhen, Zhengzhou</P>| 
-| Hong Kong ÖiB | Hong Kong ÖiB *|
-| Makao ÖİB | Makao ÖİB *|
+| Hong Kong SAR | Hong Kong çın ÖIB *|
+| Makao ÖİB | Makao ÖIB *|
 | Hindistan | Ahmedadbad, Bengaluru, Delhi, Mumbai, Kapsamım|
 | Endonezya | Bandung, Banyuwangi, Batam, Denpasar, Jakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
 | Japonya | Shizuoka tercih Ecture, Tokyo, Wakkanai, Yashi Shi tercih Ecture |
@@ -77,11 +77,11 @@ Aşağıdaki tabloda Azure Maps Mobility hizmeti için kapsam bilgileri sağlanm
 |----------------|---------|
 | Andorra        | Andora La Vella |
 | Atina         | Chios | 
-| Avusturya        | Viyana |
+| Avusturya        | Vienna |
 | Belarus        | Gomel, Grodno, Polotsk & Novopolotsk, Zhlobin, Vileyıka, Maladziečna, Minsk, Rechyıtsa | 
 | Belçika        | 'Ya |
 | Bolivya        | La Paz, Santa Cruz de la Sierra | 
-| Bosna Hersek | Bosna-Hersek | 
+| Bosna - Hersek | Bosna | 
 | Bulgaristan       | <p>Balchık, Blagoevgrad, Burgaz, Dobrich, Gabrovo, Haskovo, Kardzhali, Lovech, Nessebar, Pazardzhik, Pleven, Plovdiv, Ruse, Shumence, Sliven, Stara Zagora, Vratsa, Yambol, Varna, Veliko, Sofia</P> |
 | Hırvatistan | Crikvenika, Dubrovnik, Rijeka, Slovanski Brod, Zagreb | 
 | Kıbrıs | Larnaca, Limassol, Nicoya | 

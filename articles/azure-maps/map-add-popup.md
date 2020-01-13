@@ -1,6 +1,6 @@
 ---
-title: Azure Maps ile bir açılan pencere ekleyin | Microsoft Docs
-description: Azure Maps web SDK 'sına açılan pencere ekleme.
+title: Haritada bir noktaya açılan pencere Ekle | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure Maps web SDK 'sını kullanarak bir noktaya açılan pencere eklemeyi öğreneceksiniz.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cde6c745034d0963bd372e36e6e5a046113c202b
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 79bafb331cb7ad38ea7cad9e510b22886b647764
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976562"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911140"
 ---
 # <a name="add-a-popup-to-the-map"></a>Haritaya bir açılan pencere ekleyin
 
@@ -22,7 +22,7 @@ Bu makalede, haritada bir noktaya açılan pencerenin nasıl ekleneceği göster
 
 ## <a name="understand-the-code"></a>Kodu anlama
 
-Aşağıdaki kod, bir sembol katmanını kullanarak eşlemeye ve `name` `description` özelliklerine sahip bir nokta özelliği ekler. [Açılan sınıfın](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) bir örneği oluşturulur, ancak gösterilmez. Fare olayları simge katmanına eklendiğinde, fare simge işaretinin üzerine geldiğinde ve devre dışı bırakıldığında açılan pencerenin açılmasını ve kapatılmasını tetikler. İşaret simgesi üzerine `position` gelindiğinde, açılan menünün özelliği işaret konumuyla güncellenir `content` ve seçenek, nokta özelliğinin `name` ve `description` özelliklerini sarmalanmış olan bir HTML ile güncelleştirilir. Açılan pencere daha sonra kendi `open` işlevini kullanarak haritada görüntülenir.
+Aşağıdaki kod, bir sembol katmanını kullanarak eşlemeye `name` ve `description` özelliklerine sahip bir nokta özelliği ekler. [Açılan sınıfın](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) bir örneği oluşturulur, ancak gösterilmez. Fare olayları simge katmanına eklendiğinde, fare simge işaretinin üzerine geldiğinde ve devre dışı bırakıldığında açılan pencerenin açılmasını ve kapatılmasını tetikler. İşaret simgesi üzerine gelindiğinde, açılan pencerenin `position` özelliği işaretin konumuyla güncellenir ve `content` seçeneği, nokta özelliğinin `name` ve `description` özelliklerini sarmalayan bazı HTML ile güncelleştirilir. Açılır pencere daha sonra `open` işlevi kullanılarak haritada görüntülenir.
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -80,7 +80,7 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Azure haritalar 'ı kullanarak bir açılan pencere ekleme' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Azure haritaları kullanarak bir açılan pencere ekleme</a> kalemine bakın.
+<iframe height='500' scrolling='no' title='Azure haritalar 'ı kullanarak bir açılan pencere ekleme' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da Azure maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Azure Maps kullanarak bir açılan pencere ekleme</a> kalemine bakın.
 </iframe>
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>Birden çok noktayla açılan pencereyi yeniden kullanma
@@ -89,17 +89,17 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Çoklu PIN ile açılan pencereyi yeniden kullanma' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>birden fazla PIN ile açılan pencereyi yeniden kullanma</a> kalemine bakın.
+<iframe height='500' scrolling='no' title='Çoklu PIN ile açılan pencereyi yeniden kullanma' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>birden çok PIN Ile açılan pencereyi yeniden kullanma</a> kalemine bakın.
 </iframe>
 
 ## <a name="customizing-a-popup"></a>Açılan pencereyi özelleştirme
 
-Varsayılan olarak, açılan pencerede beyaz bir arka plan, altta bir işaretçi ok ve sağ üst köşedeki bir Kapat düğmesi bulunur. Aşağıdaki örnek, açılan pencere `fillColor` seçeneğini kullanarak arka plan rengini siyah olarak değiştirir. Kapat düğmesi, `shoCloseButton` seçeneği false olarak ayarlanarak kaldırılır. Açılan menünün HTML içeriği, açılan pencerenin kenarlarından doldurulmuş 10 piksel kullanır ve metin siyah arka planda beyaz bir şekilde görünür.  
+Varsayılan olarak, açılan pencerede beyaz bir arka plan, altta bir işaretçi ok ve sağ üst köşedeki bir Kapat düğmesi bulunur. Aşağıdaki örnek, açılan pencerenin `fillColor` seçeneğini kullanarak arka plan rengini siyaha dönüştürür. Kapat düğmesi, `shoCloseButton` seçeneğinin false olarak ayarlanarak kaldırılır. Açılan menünün HTML içeriği, açılan pencerenin kenarlarından doldurulmuş 10 piksel kullanır ve metin siyah arka planda beyaz bir şekilde görünür.  
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Özelleştirilmiş açılan pencere" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>özelleştirilmiş açılan pencere</a> başlığına bakın.
+<a href='https://codepen.io'>Codepen</a>'Da Azure haritalar (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>özelleştirilmiş açılan pencere</a> başlığına bakın.
 </iframe>
 
 ## <a name="popup-events"></a>Açılan olaylar
@@ -109,7 +109,7 @@ Açılanlar açılabilir, kapatılabilir ve sürüklenip kapatılabilir. Açıla
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Açılan olaylar" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalem <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>açılan olayları</a> ' na bakın.
+<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalem <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>açılan olayları</a> ' na bakın.
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -117,7 +117,7 @@ Açılanlar açılabilir, kapatılabilir ve sürüklenip kapatılabilir. Açıla
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Kutu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)

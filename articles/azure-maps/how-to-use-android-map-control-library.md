@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar 'da Android harita denetimini kullanmaya başlama | Microsoft Docs
-description: Azure haritalar 'daki Android harita denetimi.
+title: Android harita denetimi ile çalışmaya başlama | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak Android harita denetimiyle çalışmaya nasıl başlacağınızı öğreneceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cb79b24a37758307657c1245622fa980123cc5c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432928"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911409"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanmaya başlama Android SDK
 
@@ -43,7 +43,7 @@ Azure Haritalar Android SDK yüklemeden önce Android Studio indirin ve boş bir
 
 Android Studio yükleme ve yeni bir proje oluşturma hakkında daha fazla yardım için [Android Studio belgelerine](https://developer.android.com/studio/intro/) bakın.
 
-![Proje oluşturma](./media/how-to-use-android-map-control-library/form-factor-android.png)
+![Android Studio 'da proje oluşturma ](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
 ## <a name="set-up-a-virtual-device"></a>Sanal cihaz ayarlama
 
@@ -217,7 +217,7 @@ Android Studio uygulamayı derlemek birkaç saniye sürer. Oluşturma işlemi ta
 
 <center>
 
-![Android eşleme](./media/how-to-use-android-map-control-library/android-map.png)</center>
+Android uygulamasında Azure Maps ![](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
 ## <a name="localizing-the-map"></a>Haritayı yerelleştirme
 
@@ -263,8 +263,8 @@ Dil "fr-FR" olarak ayarlanmış ve bölgesel görünüm "Auto" olarak ayarlanmı
 
 <center>
 
-![Fransızca](./media/how-to-use-android-map-control-library/android-localization.png)
-etiketleri gösteren harita resmi </center>
+Azure haritalar ![, resimleri Fransızca](./media/how-to-use-android-map-control-library/android-localization.png)
+göstermek için eşleyin </center>
 
 Desteklenen dillerin ve bölgesel görünümlerin tamamen listesi [burada](supported-languages.md)belgelenmiştir.
 

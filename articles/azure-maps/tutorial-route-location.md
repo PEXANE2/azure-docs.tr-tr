@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Maps ile rota bulma'
-description: "Öğretici: Azure haritalar 'ı kullanarak bir ilgi noktasına yönlendirme"
+title: 'Öğretici: bir konuma yol bulma | Microsoft Azure haritaları'
+description: Bu öğreticide, Microsoft Azure haritaları yönlendirme hizmeti kullanarak bir harita üzerindeki bir konuma (ilgi noktası) nasıl bir konuma nasıl bir yol işleneceğini gösterilmektedir.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: efc60acae78c96983e79044ae1ba7399154f3568
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613610"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910847"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak bir ilgi noktasına yönlendirme
 
@@ -168,7 +168,7 @@ Bu öğreticide rota başlangıcı ve bitişi için bir simge ve rota yolu için
 
 3. **MapRoute.html** dosyasını kaydedin ve tarayıcınızı yenileyin. Artık harita Seattle üzerinden ortalanıyor ve başlangıç noktasını işaret eden mavi PIN 'i ve bitiş noktasını işaret eden yuvarlak mavi PIN 'i görebilirsiniz.
 
-   ![Başlangıç ve bitiş noktaları işaretlenmiş şekilde haritayı görüntüleme](media/tutorial-route-location/map-pins.png)
+   ![Yolların başlangıç ve bitiş noktasını haritada görüntüle](media/tutorial-route-location/map-pins.png)
 
 <a id="getroute"></a>
 

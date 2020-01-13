@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar 'da Web harita denetimi ile çalışmaya başlama | Microsoft Docs
-description: Azure haritalar harita denetimi istemci tarafı JavaScript kitaplığını nasıl kullanacağınızı öğrenin.
+title: Web harita denetimi ile çalışmaya başlama | Microsoft Azure haritaları
+description: Haritalar ve katıştırılmış Azure Maps işlevlerini Web veya mobil uygulamanıza işlemek için Microsoft Azure Maps harita denetimi istemci tarafı JavaScript kitaplığını kullanmayı öğrenin.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d70d0e1107a6ee1b53b178d8912c1b808472b142
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d50b97ad47f4b09ae4fec363e7d0a2c7f6b841df
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432908"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911349"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure haritalar harita denetimini kullanma
 

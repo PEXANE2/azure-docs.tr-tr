@@ -1,6 +1,6 @@
 ---
-title: Azure Haritalar’a Genel Bakış | Microsoft Docs
-description: Azure Haritalar tanıtımı
+title: Genel Bakış | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure Eşlemlerde hizmetler ve yetenekler hakkında bilgi edineceksiniz ve uygulamalarınızda bunlardan nasıl yararlanacaktır.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/04/2019
@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: dbcb0e87159efc7cc33101cdd5eee55afbdf3c10
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 353850cacb06dcc8a0db1b957114db314d7002a3
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516648"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911843"
 ---
 # <a name="what-is-azure-maps"></a>Azure Haritalar nedir?
 
-Azure Maps, Web ve mobil uygulamalara doğru coğrafi içerik sağlamak için yeni eşleme verilerini kullanan Jeo-uzamsal hizmetler topluluğudur. Azure haritalar şunları sağlar:
+Azure Haritalar, web ve mobil uygulamalara coğrafi bağlam sağlamak amacıyla yeni harita verilerini kullanan bir jeo-uzamsal hizmetler koleksiyonudur. Azure haritalar şunları sağlar:
 
 * Haritaları birden çok stilde ve uydu Imagery 'de işlemek için REST API 'Leri.
 * Dünyanın dört bir yanındaki adres, yer ve ilgi noktalarını arar.
@@ -92,7 +92,7 @@ Yönlendirme özellikleri hakkında ayrıntılı bilgi için [route API belgeler
 
 ### <a name="search-service"></a>Arama hizmeti
 
-Arama hizmeti, geliştiricilerin adresleri, yerleri, iş listelerini ada veya kategoriye göre ve diğer coğrafi bilgileri aramasına yardımcı olur. Arama hizmeti, kacode adreslerini ve çapraz Streets 'leri, Latitudes ve Longitudes temelinde [ters](https://en.wikipedia.org/wiki/Reverse_geocoding) kaydedebilir.
+Arama hizmeti, geliştiricilerin adresleri, yerleri, iş listelerini ada veya kategoriye göre ve diğer coğrafi bilgileri aramasına yardımcı olur. Arama hizmeti, [kacode](https://en.wikipedia.org/wiki/Reverse_geocoding) adreslerini ve çapraz Streets 'leri, Latitudes ve Longitudes temelinde ters kaydedebilir.
 
 ![Haritada arama örneği](media/about-azure-maps/Introduction_Search.png)
 
@@ -145,8 +145,8 @@ Bu hizmetle ilgili ayrıntılar için, [saat dilimi API 'si belgelerini](https:/
 
 Trafik hizmeti, geliştiricilerin trafik bilgileri gerektiren Web uygulamaları ve mobil uygulamalar oluşturmak için kullanabileceği bir Web hizmetleri paketidir. Hizmet, iki tür veri sağlar:
 
-* Trafik akışı: Ağdaki tüm anahtar yolların gerçek zamanlı gözlemlenen hızları ve seyahat süreleri.
-* Trafik olayları: Trafik sıkışıklıklarının 'nin ve yol ağı çevresindeki olayların güncel görünümü.
+* Trafik akışı: ağdaki tüm anahtar yolların gerçek zamanlı gözlemlenen hızları ve seyahat süreleri.
+* Trafik olayları: trafik sıkışıklıklarının 'nin ve yol ağı çevresindeki olayların güncel görünümü.
 
 ![Trafik bilgilerine sahip bir harita örneği](media/about-azure-maps/Introduction_Traffic.png)
 
@@ -184,7 +184,7 @@ Geçerli IP adresinizin konumunun yukarıdaki desteklenmeyen ülkelerden birinde
 Azure haritalar 'ı gösteren örnek bir uygulama deneyin:
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Web uygulaması oluşturma](quick-demo-map-app.md)
+> [Hızlı başlangıç: Web uygulaması oluşturma](quick-demo-map-app.md)
 
 Azure haritalar 'da güncel kalın: 
 

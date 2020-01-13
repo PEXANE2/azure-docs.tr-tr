@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar 'da coğrafi kodlama kapsamı | Microsoft Docs
-description: Microsoft Azure Eşlemlerde coğrafi kodlama kapsamı hakkında bilgi edinin ve Azure Maps Geocoder ' i kullanabileceğiniz bölgelerde/ülkelerde.
+title: Coğrafi kodlama kapsamı | Microsoft Azure haritaları
+description: Konum adresini Enlem ve boylam koordinatları olarak dönüştürme işlemi, coğrafi kodlama olarak bilinir. Bu makalede, Microsoft Azure Eşlemlerde coğrafi kodlama kapsamına sahip bölgeler hakkında bilgi edineceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/31/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4def947c13588cde57b55aeaa9d958eafa923093
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 38d25b7494f8b2f3e1abdac959edde8969d7d4c7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768818"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911622"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure haritalar coğrafi kodlama kapsamı
 

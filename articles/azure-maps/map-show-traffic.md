@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar ile trafiği gösterme | Microsoft Docs
-description: Azure Haritalar Web SDK 'sında trafik verilerini görüntüleme.
+title: Bir haritada trafiği göster | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir Haritada trafik verilerini görüntülemeyi öğreneceksiniz.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b765f6f35cecfdd3183b4432954fcfb2548de046
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8370b71bfa980dbd099ade59a3a19633dfd5dc72
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874874"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910886"
 ---
 # <a name="show-traffic-on-the-map"></a>Haritada trafiği göster
 
@@ -22,7 +22,7 @@ Azure haritalar 'da kullanılabilen iki tür trafik verisi vardır:
 
 - Olay verileri-oluşturma, yol kapanışları ve kazalardan dolayı gibi şeyler için nokta ve hat tabanlı verilerden oluşur.
 - Akış verileri-yollar üzerindeki trafik akışı hakkında ölçümler sağlar. Trafik akışı verileri genellikle, trafiğin hız sınırına veya başka bir ölçüme göre ne kadar trafik yavaşlatıyor olduğunu temel alarak yollar için kullanılır. Azure haritalar 'daki trafik akışı verileri üç farklı ölçüm ölçümüne sahiptir:
-    - `relative`-yolun ücretsiz akış hızına göre değişir.
+    - `relative`-yolun ücretsiz akış hızına bağlıdır.
     - `absolute`-yolda tüm taşıtlardan oluşan mutlak hızdır.
     - `relative-delay`-beklenen ortalama gecikmeden daha yavaş olan bölgeleri görüntüler.
 
@@ -40,7 +40,7 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Haritada trafiği gösterme' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. kaleme Azure Maps ( <a href='https://codepen.io'></a><a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>bir haritadaki trafiği gösterme</a> .
+<iframe height='500' scrolling='no' title='Haritada trafiği gösterme' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. kaleme Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>bir haritadaki trafiği gösterme</a> ( <a href='https://codepen.io'>codepen</a>).
 </iframe>
 
 ## <a name="traffic-overlay-options"></a>Trafik kaplama seçenekleri
@@ -50,7 +50,7 @@ Aşağıdaki araç, işleme değişikliğini görmek için farklı trafik kaplam
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="Trafik kaplama seçenekleri" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>trafiği kaplama seçeneklerine</a> bakın.
+<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile ilgili kalem <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>trafiği kaplama seçeneklerine</a> bakın.
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar

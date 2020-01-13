@@ -1,6 +1,6 @@
 ---
-title: Event Grid kullanarak Azure haritalar olaylarına tepki verme | Microsoft Docs
-description: Event Grid kullanarak Azure haritalar olaylarına tepki verme konusunda bilgi edinin.
+title: Event Grid kullanarak eşleme olaylarına tepki verme | Microsoft Azure haritaları
+description: Bu makalede, Event Grid kullanarak Microsoft Azure Maps olaylarına nasıl tepki alabileceğinizi öğreneceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/08/2019
@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a70011b934398ac4e7f74bb67013e93bb5e86e4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a946d189706c9c789ab884670d13b0b3e7fcb0c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60799164"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911805"
 ---
-# <a name="react-to-azure-maps-events-by-using-event-grid"></a>Event Grid kullanarak Azure haritalar olaylarına tepki verme 
+# <a name="react-to-azure-maps-events-by-using-event-grid"></a>Event Grid kullanarak Azure Maps olaylarına tepki verme 
 
-Azure haritalar, diğer hizmetler ve aşağı akış tetikleyici işlemleri olay bildirimleri göndermenizi sağlayarak, Azure Event Grid ile tümleşir. Bu makalenin amacı, iş uygulamalarınızı önemli olaylara güvenilir, ölçeklenebilir ve güvenli bir şekilde tepki verebilir böylece Azure haritalar olaylarını dinleyecek şekilde yapılandırmanıza yardımcı olmaktır. Örneğin, bir veritabanını güncelleştirmek, bilet oluşturma ve bir cihaz bir bölge sınırının girer her zaman bir e-posta bildirimi göndermeye gibi birden çok eylem gerçekleştiren bir uygulama oluşturun.
+Azure Maps, diğer hizmetlere olay bildirimleri gönderebilmek ve aşağı akış süreçlerini tetikleyebilmeniz için Azure Event Grid ile tümleşir. Bu makalenin amacı, kritik olaylara güvenilir, ölçeklenebilir ve güvenli bir şekilde yanıt vermek için Azure haritalar olaylarını dinlemek üzere iş uygulamalarınızı yapılandırmanıza yardımcı olmak içindir. Örneğin, bir veritabanını güncelleştirme, Bilet oluşturma ve bir cihaz bölge bölge her girdiğinde bir e-posta bildirimi sunma gibi birden çok eylem gerçekleştiren bir uygulama oluşturun.
 
-Azure Event Grid; Yayımla kullanan bir tam olarak yönetilen olay yönlendirme hizmetini-abonelik modeli. Olay kılavuzu gibi Azure Hizmetleri için yerleşik desteği vardır [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview) ve [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview)ve olay uyarıları için Web kancalarını kullanan Azure dışı hizmetleri sunabilirsiniz. Event Grid tarafından olay işleyicileri tam bir listesi için bkz. [Azure Event grid'e giriş](https://docs.microsoft.com/azure/event-grid/overview).
+Azure Event Grid, yayımlama-abonelik modeli kullanan tam olarak yönetilen bir olay yönlendirme hizmetidir. Event Grid Azure [işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview) ve [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview)gibi Azure hizmetleri için yerleşik desteğe sahiptir ve Web kancalarını kullanarak Azure olmayan hizmetlere olay uyarıları sunabilir. Event Grid desteklediği olay işleyicilerinin tüm listesi için bkz. [Azure Event Grid giriş](https://docs.microsoft.com/azure/event-grid/overview).
 
 
 ![Azure Event Grid işlevsel modeli](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
@@ -28,17 +28,17 @@ Azure Event Grid; Yayımla kullanan bir tam olarak yönetilen olay yönlendirme 
 
 ## <a name="azure-maps-events-types"></a>Azure haritalar olay türleri
 
-Event grid'i kullanır [olay abonelikleri](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) abonelere olay iletileri yönlendirmek için. Azure haritalar hesabı aşağıdaki olay türlerini gösterir: 
+Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) kullanır. Azure haritalar hesabı aşağıdaki olay türlerini yayar: 
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | İçin belirtilen olarak bölge sınırı içinde dışında öğesinden alınan koordinatları taşınmış oluşturulur |
-| Microsoft.Maps.GeofenceExited | İçin belirtilen olarak bölge sınırının dışında içinde öğesinden alınan koordinatları taşınmış oluşturulur |
-| Microsoft.Maps.GeofenceResult | Bölge sınırlaması sorgu durumundan bağımsız olarak bir sonuç döndürür. her zaman gerçekleşti |
+| Microsoft. maps. Geofencegirildi | Alınan Koordinatlar, belirli bir bölge sınırı 'ın içinden içine arasında taşındığında tetiklenir |
+| Microsoft. maps. Geofenceçıkıldı | Alınan koordinatlar belirli bir bölge içinden dışarıya taşındığında tetiklenir |
+| Microsoft. maps. GeofenceResult | Bölge sınırlama sorgusu, durumdan bağımsız olarak bir sonuç döndürdüğünde tetiklenir |
 
 ## <a name="event-schema"></a>Olay şeması
 
-Aşağıdaki örnek show şeması GeofenceResult
+Aşağıdaki örnek GeofenceResult için şemayı gösterir
 
 ```JSON
 {   
@@ -76,17 +76,17 @@ Aşağıdaki örnek show şeması GeofenceResult
 }
 ```
 
-## <a name="tips-for-consuming-events"></a>Olayları için ipuçları
+## <a name="tips-for-consuming-events"></a>Olayları tüketme ipuçları
 
-Azure haritalar döndürürüz olayları işleyen uygulamaları birkaç önerilen uygulamaları izlemelisiniz:
+Azure haritalar bölge olaylarını işleyen uygulamalar, önerilen birkaç uygulamayı izlemelidir:
 
-* Birden çok abonelik aynı olay işleyicisi için rota olayları için yapılandırılabilir. Olayları belirli bir kaynaktan olduğunu varsayar değil önemlidir. Her zaman beklediğiniz bir kaynaktan geldiğinden emin olmak için mesajı konusuna bakın.
-* İletiler sıralamaya veya farklı bir gecikmeden sonra geldiğinde. Kullanım `X-Correlation-id` alanındaki nesneleri ilgili bilgilerinizi güncel olup olmadığını anlamak için yanıt üst bilgisi.
-* Ne zaman Get ve POST Döndürürüz API'sini ayarlamak mod parametresi ile çağrıldığında `EnterAndExit`, kendisi için durumu'dan önceki Döndürürüz API çağrısını değişti bölge sınırının içinde her geometrisi için Enter veya çıkış bir olay oluşturulur.
+* Aynı olay işleyicisine olayları yönlendirmek için birden çok abonelik yapılandırılabilir. Olayların belirli bir kaynaktan olduğunu varsaymamak önemlidir. Beklenen kaynaktan geldiğinden emin olmak için ileti konusunu her zaman denetleyin.
+* İletiler bir gecikmeden veya bir gecikmeden sonra gelebilir. Nesneler hakkındaki bilgilerinizin güncel olup olmadığını anlamak için yanıt üstbilgisindeki `X-Correlation-id` alanını kullanın.
+* Get ve post bölge sınırı API 'si `EnterAndExit`olarak ayarlanan mod parametresi ile çağrıldığında, durumun önceki bölge API çağrısından değiştiği bölge alanındaki her bir geometri için bir Enter veya Exit olayı oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bölge sınırlaması denetimi işlemleri için bir yapı sitede kullanma hakkında daha fazla bilgi için bkz:
+Bir oluşturma sitesindeki işlemleri denetlemek için bölge sınırlaması kullanma hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"] 
-> [Azure haritalar'ı kullanarak bir bölge sınırının ayarlayın](tutorial-geofence.md)
+> [Azure haritalar 'ı kullanarak bölge kümesi oluşturma](tutorial-geofence.md)

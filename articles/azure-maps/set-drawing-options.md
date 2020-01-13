@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar 'da çizim araçları modülünü kullanma | Microsoft Docs
-description: Azure Haritalar Web SDK 'sını kullanarak çizim seçenekleri verilerini ayarlama
+title: Çizim araçları modülü | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak çizim seçenekleri verilerini ayarlamayı öğreneceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0ac9bc775798a14e6431718bc602d8ff41288c10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2f23d4d7962fc4a01ac2f9d20dc834bcd2f08be5
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408163"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910577"
 ---
 # <a name="use-the-drawing-tools-module"></a>Çizim araçları modülünü kullanma
 

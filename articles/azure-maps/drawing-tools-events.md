@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar 'a bir çizim araç çubuğu ekleme | Microsoft Docs
-description: Azure Haritalar Web SDK 'sını kullanarak bir haritaya Çizim araç çubuğu ekleme
+title: Haritaya Çizim araç çubuğu ekleme | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritaya Çizim araç çubuğu ekleme hakkında bilgi edineceksiniz.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 63848ecf92daecf28f6e0046e87da15355aa35c1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: fd235f3f39d67f86c8387add79ca0dbf17dc5906
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561839"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911676"
 ---
 # <a name="drawing-tool-events"></a>Çizim aracı olayları
 
