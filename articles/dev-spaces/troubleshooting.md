@@ -3,14 +3,14 @@ title: Sorun giderme
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: conceptual
-description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
+description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 64b9cda61e5af3e8b9ea52477b5bf4fa879f48e6
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a52d27733168c55f9e34d15f6675dd7bce0f8aad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483863"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438102"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -22,9 +22,9 @@ Azure Dev Spaces kullanırken bir sorununuz varsa, [Azure dev Spaces GitHub depo
 
 Sorunları daha etkili bir şekilde gidermek için inceleme için daha ayrıntılı Günlükler oluşturmaya yardımcı olabilir.
 
-Visual Studio uzantısı için `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` ortam değişkenini 1 olarak ayarlayın. Visual Studio ortam değişkeni için etkili olması için yeniden emin olun. Etkinleştirildikten sonra, ayrıntılı Günlükler `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` dizininize yazılır.
+Visual Studio uzantısı için `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` ortam değişkeni 1. Visual Studio ortam değişkeni için etkili olması için yeniden emin olun. Etkinleştirildikten sonra, ayrıntılı Günlükler `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` dizininize yazılır.
 
-CLı 'de, komut yürütme sırasında `--verbose` anahtarını kullanarak daha fazla bilgi alabilirsiniz. Ayrıca `%TEMP%\Azure Dev Spaces`daha ayrıntılı günlüklere de gidebilirsiniz. Bir Mac üzerinde, bir terminal penceresinden `echo $TMPDIR` çalıştırılarak GEÇICI dizin bulunabilir. Bir Linux bilgisayarda, GEÇICI dizin genellikle `/tmp`.
+CLI, komut yürütme sırasında daha fazla bilgi kullanarak çıkarabilirsiniz `--verbose` geçin. Daha ayrıntılı günlükleri de göz atabilirsiniz `%TEMP%\Azure Dev Spaces`. Mac bilgisayarlarda, çalıştırarak TEMP dizininde bulunabilir `echo $TMPDIR` bir terminal penceresinden. Bir Linux bilgisayarında, TEMP dizini genellikle olan `/tmp`.
 
 Azure Dev Spaces, tek bir örneğin veya Pod hata ayıklaması yaparken en iyi şekilde de geçerlidir. `azds.yaml` dosyası, Kubernetes 'in hizmetinize çalıştığı düğüm sayısını gösteren bir, *Replicacount*ayarı içerir. Uygulamanızı belirli bir hizmet için birden çok Pod çalıştıracak şekilde yapılandırmak üzere *replicacount* değerini değiştirirseniz, hata ayıklayıcı alfabetik olarak listelendiğinde ilk Pod 'a iliştirir. Özgün Pod geri dönüştürüldüğünde hata ayıklayıcı farklı bir pod 'a iliştirir, muhtemelen beklenmedik davranışa neden olur.
 
@@ -115,7 +115,7 @@ Uygun bir Dockerfile varsa, uygulamanızı Azure Dev Spaces çalıştırmak içi
 
 `azds up`çalıştırılırken, bu hatayı görebilirsiniz. Hem `azds up` hem de `azds prep`, geliştirme alanınızda çalıştırmak istediğiniz projenin kök dizininden çalıştırılmalıdır.
 
-Bu sorunu gidermek için:
+Bu sorunu düzeltmek için:
 1. Geçerli dizin hizmeti kodunuzu içeren kök klasöre değiştirin. 
 1. Kod klasöründe _azds. YAML_ dosyanız yoksa Docker, Kubernetes ve Azure dev Spaces varlıkları oluşturmak için `azds prep` çalıştırın.
 
@@ -157,7 +157,7 @@ Aynı AKS kümesinde hem HELI komutları hem de dev Spaces komutlarının kullan
 
 ### <a name="existing-dockerfile-not-used-to-build-a-container"></a>Mevcut Dockerfile bir kapsayıcı oluşturmak için kullanılmıyor
 
-Azure Dev Spaces, projenizdeki belirli bir _Dockerfile_ 'ı işaret etmek için yapılandırılabilir. Kapsayıcınız derlemek istediğiniz _dockerfile_ ' ı Azure dev Spaces görünürse, hangi dockerfile 'ın kullanılacağını açıkça Azure dev Spaces söylemeniz gerekebilir. 
+Azure geliştirme alanları, belirli bir işaret edecek şekilde yapılandırılabilir _Dockerfile_ projenizdeki. Kapsayıcınız derlemek istediğiniz _dockerfile_ ' ı Azure dev Spaces görünürse, hangi dockerfile 'ın kullanılacağını açıkça Azure dev Spaces söylemeniz gerekebilir. 
 
 Bu sorunu gidermeye yönelik Azure Dev Spaces, projenizde oluşturulan _azds. YAML_ dosyasını açın. Güncelleştirme *yapılandırması: geliştirme: oluşturma: dockerfile* kullanmak Istediğiniz dockerfile 'ı işaret etmek için. Örneğin:
 
@@ -214,8 +214,8 @@ azds up --verbose --output json
 
 Visual Studio'da:
 
-1. **Araçlar > seçenekler** ' i açın ve **Projeler ve çözümler**altında **Oluştur ve Çalıştır**' ı seçin.
-2. **MSBuild proje derlemesi çıkış ayrıntı düzeyi** ayarını **ayrıntılı** veya **Tanılama**olarak değiştirin.
+1. Açık **Araçlar > Seçenekler** altında **projeler ve çözümler**, seçin **derleme ve çalıştırma**.
+2. Ayarlarını değiştirmek için **MSBuild proje oluşturması çıkış ayrıntısı** için **ayrıntılı** veya **tanılama**.
 
     ![Ekran Araçlar, Seçenekler iletişim kutusu](media/common/VerbositySetting.PNG)
 
@@ -267,7 +267,7 @@ Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetini
 * *BranchCache* ' e sağ tıklayın ve *Özellikler*' i seçin.
 * *Durdur*' a tıklayın.
 * İsteğe bağlı olarak, *Başlangıç türünü* *devre dışı*olarak ayarlayarak devre dışı bırakabilirsiniz.
-* *OK (Tamam)* düğmesine tıklayın.
+* *Tamam*’a tıklayın.
 
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Azure Dev Spaces ile Visual Studio ve Visual Studio Code kullanma hakkında genel sorunlar
 
@@ -302,9 +302,9 @@ Bu sorunu giderecek [Azure dev Spaces için vs Code uzantısını](get-started-n
 
 ### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Hata "geçersiz ' CWD ' değeri '/src '. Sistem belirtilen dosyayı bulamıyor." veya "Başlat: '/ src / [Proje ikili dosya yolu]' programı yok"
 
-Visual Studio Code hata ayıklayıcıyı çalıştırırken bu hatayı görebilirsiniz. Varsayılan olarak, VS Code uzantısı kapsayıcıda proje için çalışma dizini olarak `src` kullanır. `Dockerfile` farklı bir çalışma dizini belirtmek üzere güncelleştirdiyseniz, bu hatayı görebilirsiniz.
+Visual Studio Code hata ayıklayıcıyı çalıştırırken bu hatayı görebilirsiniz. Varsayılan olarak, VS Code uzantısı kullanan `src` kapsayıcı üzerindeki proje için çalışma dizini olarak. Güncelleştirdiyseniz, `Dockerfile` farklı bir çalışma dizini belirtmek için bu hatayı görebilirsiniz.
 
-Bu sorunu onarmak için, proje klasörünüzün `.vscode` alt dizininde bulunan `launch.json` dosyasını güncelleştirin. `configurations->cwd` yönergesini, projenizin `Dockerfile`tanımlanan `WORKDIR` aynı dizine işaret etmek üzere değiştirin. Ayrıca `configurations->program` yönergesini de güncelleştirmeniz gerekebilir.
+Bu sorunu onarmak için, proje klasörünüzün `.vscode` alt dizininde bulunan `launch.json` dosyasını güncelleştirin. Değişiklik `configurations->cwd` yönergesi ile aynı dizine işaret edecek şekilde `WORKDIR` projenizin tanımlı `Dockerfile`. Güncelleştirmeniz gerekebilir `configurations->program` de yönergesi.
 
 ### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Hata "' azds ' Kanal programının kodu 126 ile beklenmedik şekilde çıktı."
 
@@ -324,7 +324,7 @@ Bu soruna yönelik geçici bir geçici çözüm, kümedeki her bir düğümde *F
 
 `azds.exe` yüklü değilse veya doğru yapılandırılmamışsa bu hata oluşabilir.
 
-Bu sorunu gidermek için:
+Bu sorunu düzeltmek için:
 
 1. `azds.exe`için% ProgramFiles%/Microsoft SDKs\Azure\Azure dev Spaces CLı konumunu denetleyin. Yoktur, bu konuma PATH ortam değişkenine ekleyin.
 2. `azds.exe` yüklü değilse, aşağıdaki komutu çalıştırın:
@@ -397,7 +397,7 @@ Denetleyicinin Kullanıcı RBAC rolünü güncelleştirmek için:
 
 `azds prep` komutuna `--public` anahtarını belirterek veya Visual Studio 'daki `Publicly Accessible` onay kutusunu seçerek hizmetiniz için genel bir URL uç noktası yapılandırabilirsiniz. Genel DNS adı, hizmetinizi geliştirme alanlarında çalıştırdığınızda otomatik olarak kaydedilir. Bu DNS adı kayıtlı değilse, genel URL 'ye bağlanılırken bir *sayfa görüntülenemiyor* veya Web tarayıcınızda *siteye ulaşılamıyor* hatası görürsünüz.
 
-Bu sorunu gidermek için:
+Bu sorunu düzeltmek için:
 
 * Dev Spaces hizmetlerinizle ilişkili tüm URL 'Lerin durumunu kontrol edin:
 
@@ -416,22 +416,22 @@ Bu sorunu gidermek için:
 
 Hizmetinizi erişmeye çalışırken bu hatayı görebilirsiniz. Örneğin, ne zaman, hizmetin URL'sini bir tarayıcıda gidin. Bu hata kapsayıcı bağlantı noktasının kullanılamadığı anlamına gelir. Bu, aşağıdaki nedenlerden kaynaklanabilir:
 
-* , Yine yerleşik dağıtılan ve sürecinde kapsayıcıdır. Bu sorun, `azds up` çalıştırırsanız veya hata ayıklayıcıyı başlatırsanız ve sonra başarılı bir şekilde dağıtılmadan önce kapsayıcıya erişmeyi denerseniz ortaya çıkabilir.
-* Bağlantı noktası yapılandırması, _Dockerfile_, Helmchart ve bir bağlantı noktasını açan tüm sunucu kodları arasında tutarlı değildir.
+* , Yine yerleşik dağıtılan ve sürecinde kapsayıcıdır. Çalıştırırsanız bu sorun ortaya çıkabilecek `azds up` veya hata ayıklayıcıyı başlatın ve ardından başarıyla dağıtıldığını önce kapsayıcı erişmeyi deneyin.
+* Bağlantı noktası yapılandırması arasında tutarlı değil, _Dockerfile_, Helm grafiği ve sunucu kodlar bir bağlantı noktası açar.
 
-Bu sorunu gidermek için:
+Bu sorunu düzeltmek için:
 
 1. Kapsayıcı yerleşik/dağıtılan aşamasında olan 2-3 saniye bekleyin ve hizmete tekrar erişmeyi deneyin. 
 1. Bağlantı noktası yapılandırmanızı denetleyin. Belirtilen bağlantı noktası numaraları aşağıdaki varlıkların tümünde **özdeş** olmalıdır:
-    * **Dockerfile:** `EXPOSE` yönergesi tarafından belirtilen.
-    * **[Helb grafiği](https://docs.helm.sh):** `externalPort` ve bir hizmetin `internalPort` değerleriyle (genellikle `values.yml` dosyasında bulunur) belirtilir,
-    * Uygulama kodunda açılan tüm bağlantı noktaları, örneğin Node. js: `var server = app.listen(80, function () {...}`
+    * **Dockerfile:** tarafından belirtilen `EXPOSE` yönergesi.
+    * **[Helm grafiği](https://docs.helm.sh):** tarafından belirtilen `externalPort` ve `internalPort` değerleri bir hizmet için (genellikle bulunan bir `values.yml` dosyası),
+    * Örneğin, Node.js içinde uygulama kodunda açılan tüm bağlantı noktaları: `var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>"MyLibrary" tür veya ad alanı adı bulunamadı
 
 Kullanmakta olduğunuz bir kitaplık projesi bulunamıyor. Geliştirme alanları ile derleme bağlamı varsayılan olarak proje/hizmet düzeyindedir.  
 
-Bu sorunu gidermek için:
+Bu sorunu düzeltmek için:
 
 1. Yapı bağlamını çözüm düzeyine ayarlamak için `azds.yaml` dosyasını değiştirin.
 2. `Dockerfile` ve `Dockerfile.develop` dosyalarını proje dosyalarına başvuracak şekilde değiştirin, örneğin `.csproj`, yeni derleme bağlamına doğru göreli olarak.
@@ -469,9 +469,9 @@ Yığınlarınız yeniden başlatıldıktan sonra, Azure Dev Spaces var olan ad 
 
 Küme düğümlerinden gelen çıkış trafiğinin kısıtlandığı bir AKS kümesinde Azure Dev Spaces etkinleştirmek için aşağıdaki FQDN 'Lere izin vermeniz gerekir:
 
-| FQDN                                    | Bağlantı Noktası      | Bir yönetim grubuna bağlanmak veya bağlı bir yönetim grubunun özelliklerini düzenlemek için Yönetim çalışma alanında      |
+| FQDN                                    | Bağlantı noktası      | Kullanım      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS: 443 | Linux alp ve diğer Azure Dev Spaces görüntülerini çekmek için |
 | gcr.io | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
 | storage.googleapis.com | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
-| azds-<guid>.<location>.azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE%\.azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir|
+| azds-<guid>.<location>. azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE%\.azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir|

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066933"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435785"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Ölçeklendirerek ayıklama, dönüştürme ve yükleme (ETL)
 
@@ -51,11 +51,11 @@ Azure Data Factory hakkında daha fazla bilgi için [belgelerine](../../data-fac
 
 ## <a name="ingest-file-storage-and-result-storage"></a>Alma dosya depolama ve sonuç depolama
 
-Kaynak veri dosyaları genellikle Azure Storage veya Azure Data Lake Storage bir konuma yüklenir. Dosyalar herhangi bir biçimde olabilir, ancak genellikle CSV 'ler gibi düz dosyalardır. 
+Kaynak veri dosyaları genellikle Azure Storage veya Azure Data Lake Storage bir konuma yüklenir. Dosyalar herhangi bir biçimde olabilir, ancak genellikle CSV 'ler gibi düz dosyalardır.
 
-### <a name="azure-storage"></a>Azure Storage 
+### <a name="azure-storage"></a>Azure Depolama
 
-[Azure depolama](https://azure.microsoft.com/services/storage/blobs/) 'nın [belirli ölçeklenebilirlik hedefleri](../../storage/common/storage-scalability-targets.md)vardır.  Birçok analitik düğüm için Azure depolama, çok daha küçük dosyalarla ilgilenirken en iyi şekilde ölçeklendirilir.  Azure depolama, kaç dosya olduğunu ya da dosyaların ne kadar büyük olduğunu (sınırlarınız dahilinde olduğu sürece) değil, aynı performansı garanti eder.  Diğer bir deyişle, verilerin bir alt kümesini ya da tüm verileri kullanıp kullanmayacağınızı, terabaytlarca veri depolayabilirsiniz ve yine de tutarlı performans sağlayabilirsiniz.
+[Azure depolama](https://azure.microsoft.com/services/storage/blobs/) 'nın belirli ölçeklenebilirlik hedefleri vardır. Daha fazla bilgi için bkz. [BLOB depolama Için ölçeklenebilirlik ve performans hedefleri](../../storage/blobs/scalability-targets.md). Birçok analitik düğüm için Azure depolama, çok daha küçük dosyalarla ilgilenirken en iyi şekilde ölçeklendirilir.  Azure depolama, kaç dosya olduğunu ya da dosyaların ne kadar büyük olduğunu (sınırlarınız dahilinde olduğu sürece) değil, aynı performansı garanti eder.  Diğer bir deyişle, verilerin bir alt kümesini ya da tüm verileri kullanıp kullanmayacağınızı, terabaytlarca veri depolayabilirsiniz ve yine de tutarlı performans sağlayabilirsiniz.
 
 Azure depolama 'nın birçok farklı blob türü vardır.  *Ekleme blobu* , web günlüklerinin veya algılayıcı verilerinin depolanması için harika bir seçenektir.  
 
@@ -77,7 +77,7 @@ ADLS, Azure Olay Hub 'ı veya Apache Storm kullanılarak olay alımı için de i
 
 Veri kümelerini terabayt aralığında karşıya yüklemek için, özellikle de veriler şirket içi bir konumdan geliyorsa, ağ gecikmesi önemli bir sorun olabilir.  Böyle durumlarda, aşağıdaki seçenekleri kullanabilirsiniz:
 
-* Azure ExpressRoute:  Azure ExpressRoute, Azure veri merkezleri ile şirket içi altyapınız arasında özel bağlantılar oluşturmanızı sağlar. Bu bağlantılar, büyük miktarlarda veri aktarmaya yönelik güvenilir bir seçenek sağlar. Daha fazla bilgi için bkz. [Azure ExpressRoute belgeleri](../../expressroute/expressroute-introduction.md).
+* Azure ExpressRoute: Azure ExpressRoute, Azure veri merkezleri ile şirket içi altyapınız arasında özel bağlantılar oluşturmanızı sağlar. Bu bağlantılar, büyük miktarlarda veri aktarmaya yönelik güvenilir bir seçenek sağlar. Daha fazla bilgi için bkz. [Azure ExpressRoute belgeleri](../../expressroute/expressroute-introduction.md).
 
 * Verilerin "çevrimdışı" yüklenmesi. Azure [içeri/dışarı aktarma hizmeti](../../storage/common/storage-import-export-service.md) 'ni kullanarak verilerinize bir Azure veri merkezine sabit disk sürücüleri gönderebilirsiniz. Verileriniz ilk olarak Azure Storage Bloblarına yüklenir. Daha sonra, Azure depolama Bloblarındaki verileri Data Lake Storage kopyalamak için [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) veya [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) aracını kullanabilirsiniz.
 
@@ -129,7 +129,7 @@ Apache flome, büyük miktarlarda günlük verilerini verimli bir şekilde topla
 
 Apache akışkan, Azure HDInsight ile kullanılamaz.  Şirket içi Hadoop yüklemesi, verileri Azure depolama Bloblarına veya Azure Data Lake Storage göndermek için akıcı bir şekilde kullanabilir.  Daha fazla bilgi için bkz. [HDInsight Ile Apache Flobana kullanımı](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
-## <a name="transform"></a>Dönüştürme
+## <a name="transform"></a>Dönüşüm
 
 Seçilen konumda veriler varsa, bunu temizlemeniz, birleştirmeniz veya belirli bir kullanım deseninin hazırlanması gerekir.  Hive, Pig ve Spark SQL, bu tür bir çalışma için iyi seçimlerdir.  Bunlar HDInsight 'ta desteklenirler. 
 

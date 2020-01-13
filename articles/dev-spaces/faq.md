@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Azure Dev Spaces hakkında bazı yaygın soruların yanıtlarını bulun
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 2baab0812061bec7dcf08d35056804313d873889
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c904ae5809a36859ba6428bf026c9016a1a8f747
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482303"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867186"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces hakkında sık sorulan sorular
 
@@ -18,7 +18,7 @@ Bu, Azure Dev Spaces hakkında sıkça sorulan soruları ele alınmaktadır.
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Şu anda hangi Azure bölgeleri Azure Dev Spaces sağlıyor?
 
-Kullanılabilir bölgelerin tüm listesi için bkz. [Desteklenen bölgeler ve Konfigürasyonlar][supported-regions].
+Kullanılabilir bölgelerin tüm listesi için bkz. [Desteklenen bölgeler][supported-regions] .
 
 ## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>Genel IP adresi olmadan Azure Dev Spaces kullanabilir miyim?
 
@@ -34,7 +34,7 @@ Evet, [traefik][ingress-https-traefik]kullanarak kendi GIRIŞ hesabınızı http
 
 ## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Azure Dev Spaces, kubenet yerine CNı kullanan bir kümede kullanabilir miyim? 
 
-Evet, ağ için CNı kullanan bir AKS kümesinde Azure Dev Spaces kullanabilirsiniz. Örneğin, bir AKS kümesinde Azure Dev Spaces, ağ için CNı kullanan [mevcut Windows kapsayıcılarıyla][windows-containers]birlikte kullanabilirsiniz.
+Evet, ağ için CNı kullanan bir AKS kümesinde Azure Dev Spaces kullanabilirsiniz. Örneğin, bir AKS kümesinde Azure Dev Spaces, ağ için CNı kullanan [mevcut Windows kapsayıcılarıyla][windows-containers]birlikte kullanabilirsiniz. Azure Dev Spaces ile ağ için CNı kullanma hakkında daha fazla bilgiye [buradan](configure-networking.md#using-azure-container-networking-with-azure-dev-spaces)ulaşabilirsiniz.
 
 ## <a name="can-i-use-azure-dev-spaces-with-windows-containers"></a>Windows kapsayıcılarıyla Azure Dev Spaces kullanabilir miyim?
 
@@ -42,19 +42,11 @@ Evet, ağ için CNı kullanan bir AKS kümesinde Azure Dev Spaces kullanabilirsi
 
 ## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>API sunucusu yetkilendirilmiş IP adresi aralıkları etkin olan AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
 
-Evet, [API sunucusu YETKILENDIRILMIŞ IP adresi aralıkları][aks-auth-range] etkin olan aks kümelerinde Azure dev Spaces kullanabilirsiniz. Kümenizi [oluştururken][aks-auth-range-create] , [bölgeniz temelinde ek aralıklara izin vermeniz][aks-auth-range-ranges]gerekir. Ayrıca, var olan bir kümeyi bu ek aralıklara izin verecek şekilde [güncelleştirebilirsiniz][aks-auth-range-update] .
+Evet, [API sunucusu YETKILENDIRILMIŞ IP adresi aralıkları][aks-auth-range] etkin olan aks kümelerinde Azure dev Spaces kullanabilirsiniz. Azure Dev Spaces ile etkinleştirilmiş bir AKS kümesi ile ilgili daha fazla bilgi için, ile etkinleştirilen IP adresi aralıklarını [burada](configure-networking.md#using-api-server-authorized-ip-ranges-with-azure-dev-spaces)bulabilirsiniz.
 
 ### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Küme düğümleri için kısıtlanmış çıkış trafiği ile AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
 
-Evet, aşağıdaki FQDN 'Lere izin verildiğinde, [küme düğümleri Için kısıtlanmış çıkış trafiği][aks-restrict-egress-traffic] olan aks kümelerinde Azure dev Spaces kullanabilirsiniz:
-
-| FQDN                                    | Bağlantı Noktası      | Bir yönetim grubuna bağlanmak veya bağlı bir yönetim grubunun özelliklerini düzenlemek için Yönetim çalışma alanında      |
-|-----------------------------------------|-----------|----------|
-| cloudflare.docker.com | HTTPS: 443 | Linux alp ve diğer Azure Dev Spaces görüntülerini çekmek için |
-| gcr.io | HTTP: 443 | Held/Tiller görüntülerini çekmek için |
-| storage.googleapis.com | HTTP: 443 | Held/Tiller görüntülerini çekmek için |
-| azds-<guid>.<location>.azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE%\.azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir |
-
+Evet, doğru FQDN 'Lere izin verildiğinde, [küme düğümleri için kısıtlanmış çıkış trafiği][aks-restrict-egress-traffic] olan aks kümelerinde Azure dev Spaces kullanabilirsiniz. Azure Dev Spaces ile etkin küme düğümleri için kısıtlanmış çıkış trafiği ile AKS kümelerini kullanma hakkında daha fazla [bilgi edinebilirsiniz.](configure-networking.md#ingress-and-egress-network-traffic-requirements)
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
@@ -64,5 +56,5 @@ Evet, aşağıdaki FQDN 'Lere izin verildiğinde, [küme düğümleri Için kıs
 [dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [windows-containers]: how-to/run-dev-spaces-windows-containers.md

@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 49e7fd49e000a3d4475c60a0c58cf6a2c7455fa5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 243bbd431b7332d06a4e14581aa5c02bae2b7cba
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531406"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896286"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma 
 
@@ -150,7 +150,7 @@ Aşağıdaki yönergelerde, [Azure Sanal ağınızı](https://docs.microsoft.com
    
    Bu örnekte, her bir HANA verisi ve günlük birimi için ayrı bir Azure NetApp Files birimi kullandık. Daha küçük veya üretken olmayan sistemlerde daha uygun maliyetli bir yapılandırma için, tüm veri takmaları ve tüm günlüklerin tek bir birime takar.  
 
-### <a name="important-considerations"></a>Önemli konular
+### <a name="important-considerations"></a>Önemli noktalar
 
 SUSE yüksek kullanılabilirlik mimarisinde SAP NetWeaver için Azure NetApp Files oluştururken aşağıdaki önemli noktalara dikkat edin:
 
@@ -429,7 +429,9 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
     mount 10.23.1.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
     echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
-    </code></pre>`
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
 
 5. **[A]** SAP HANA grubunu ve kullanıcıyı el ile oluşturun. Bu grup sapsys ve Kullanıcı **hn1**adm kimlikleri, ekleme sırasında belirtilen kimliklere ayarlanmalıdır. (Bu örnekte, kimlikler **1001**olarak ayarlanır.) Kimlikler doğru şekilde ayarlanmamışsa birimlere erişemezsiniz. Grup sapsys ve Kullanıcı hesapları **hn1**adm ve Sapadm kimlikleri tüm sanal makinelerde aynı olmalıdır.  
 
@@ -570,7 +572,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
      * **Sistem kullanımını Seç/dizini girin [4]** : **4** girin (özel için)
      * **Veri birimlerinin konumu** için [/Hana/Data/hn1]: varsayılanı kabul etmek için ENTER tuşuna basın
      * **Günlük birimlerinin konumu** için [/Hana/log/hn1]: varsayılanı kabul etmek için ENTER tuşuna basın
-     * **Maksimum bellek ayırmayı kısıtlamak için?** [n]\: **n** girin
+     * **Maksimum bellek ayırmayı kısıtlamak için?** [n]: **n** girin
      * Host hanadb1 [hanadb1] **Için sertifika ana bilgisayar adı** : varsayılanı kabul etmek için ENTER tuşuna basın
      * Host hanadb2 [hanadb2] **Için sertifika ana bilgisayar adı** : varsayılanı kabul etmek için ENTER tuşuna basın
      * Host hanadb3 [hanadb3] **Için sertifika ana bilgisayar adı** : varsayılanı kabul etmek için ENTER tuşuna basın

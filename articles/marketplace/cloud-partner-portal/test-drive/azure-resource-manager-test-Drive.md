@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8b2a24b6f2d7df92f1c8ea1b22432471aa432011
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838071"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644911"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager Test Sürüşü
 
@@ -141,7 +141,7 @@ Bu parametre yeni bir rastgele kullanıcı adı ile test Sürüşü başlatır:
 
 Çözümünüz için rastgele veya sabit kullanıcı adlarını kullanabilirsiniz.
 
-#### <a name="password"></a>password
+#### <a name="password"></a>parola
 
 Bu parametre yeni, rastgele bir parola ile test Sürüşü başlatır:
 
@@ -289,7 +289,7 @@ Test sürücü Resource Manager şablonları için ancak bunu\'Test Sürüşü i
 
 Daha fazla şeyi dikkate atmanız aboneliktir ve hizmet sınırları. Örneğin, en fazla on 4 çekirdekli sanal makineler dağıtmak istiyorsanız, Laboratuvarınız için kullandığınız abonelik 40 çekirdek kullanmanıza izin verdiğinden emin olmak gerekir.
 
-Azure aboneliği ve hizmet sınırları hakkında daha fazla bilgi bulabilirsiniz [bu makalede](https://docs.microsoft.com/azure/azure-subscription-service-limits). Aynı anda birden çok Test Sürüşleri alınabilir gibi aboneliğinizin işleyebileceğini doğrulayın \# eş zamanlı Test gerçekleştirilebilecek sürücüleri, toplam sayı ile çarpılan çekirdek.
+Azure aboneliği ve hizmet sınırları hakkında daha fazla bilgi bulabilirsiniz [bu makalede](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Aynı anda birden çok Test Sürüşleri alınabilir gibi aboneliğinizin işleyebileceğini doğrulayın \# eş zamanlı Test gerçekleştirilebilecek sürücüleri, toplam sayı ile çarpılan çekirdek.
 
 ### <a name="what-to-upload"></a>Ne yüklemek için
 
@@ -410,7 +410,7 @@ Verilen kullanıyoruz uygulamayı aboneliğinize dağıtmak için biz uygulaman�
 1. Rol olarak ayarla **katkıda bulunan**.
 1. Azure AD uygulama adını yazın ve rol atamak için uygulamayı seçin.
     ![İzin Ekle](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
-1. **Kaydet**’e tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 **Azure AD uygulama anahtarı -** *gerekli* bir kimlik doğrulama anahtarını oluşturmak için son alandır. Anahtarı altında anahtarı bir açıklama ekleyin, ardından süresiz olarak süresini Kaydet'i belirleyin. Bu **önemli** süresi dolmuş zorunda kalmamak için anahtar, hangi test sürüşünüz üretimde çalışmamasına neden olur. Bu değeri kopyalayın ve gerekli Test Sürüşü alanına yapıştırın.
 
@@ -420,7 +420,7 @@ Verilen kullanıyoruz uygulamayı aboneliğinize dağıtmak için biz uygulaman�
 
 Test Sürüşü alanlarınızı doldurulan sahip olduğunuza göre üzerinden geçmek ve **yeniden yayımlamanız** teklifinizi. Test Sürüşünüz sertifika geçtikten sonra gitmesi gereken bir müşteri deneyimini Java'da test **Önizleme** teklifinizin. Test Sürüşü kullanıcı Arabiriminde başlatın ve ardından Azure aboneliğinizi Azure portalın içinde açın ve Test Sürüşleri tam olarak doğru şekilde dağıtıldığını doğrulayın.
 
-![Azure portal](./media/azure-resource-manager-test-drive/subdetails9.png)
+![Azure Portal](./media/azure-resource-manager-test-drive/subdetails9.png)
 
 Bir müşteri ile tamamlandıktan sonra Test Sürüşü hizmeti otomatik olarak bu kaynak gruplarını temizler, böylece müşterileriniz için hazırlanan gibi herhangi bir Test Sürüşü örneği silmeyin dikkat edin önemlidir.
 
