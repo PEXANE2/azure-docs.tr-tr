@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 01/03/2020
-ms.openlocfilehash: 333d7faacfb5965e74eae69f07ff974a8fff8f25
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/13/2020
+ms.openlocfilehash: f1cedd9851e425de1e4b6392d42a11dbf9f92644
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894004"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934375"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -167,7 +167,7 @@ Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın 
    - Depolama alanı __hizmet etiketi__ kullanılarak Azure storage __. Region_Name__ (örneğin, Storage. EastUS)
    - Azure Container Registry, __AzureContainerRegistry. Region_Name__ __hizmet etiketi__ kullanılarak (örneğin, AzureContainerRegistry. EastUS)
    - __AzureMachineLearning__ __hizmet etiketi__ kullanılarak Azure Machine Learning
-   - İşlem örneği, Azure bulutu, __Azurecyüksek. Region_Name__ (örneğin, Azurecyüksek. kuzeydoğu) __hizmet etiketi__ kullanılarak yapılır.
+   - İşlem örneği olması durumunda, __AzureResourceManager__ __Service Tag__ ile Azure bulutu
 
 Azure portal NSG kural yapılandırması aşağıdaki görüntüde gösterilmektedir:
 

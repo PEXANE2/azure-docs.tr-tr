@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: d955711c44e3822f9c37d47b390b928701ab773b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/10/2020
+ms.openlocfilehash: 38bd1755ed87050cf8b91a0a82f6e5f1d2af9db5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861005"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933809"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Öğretici: Time Series Insights kullanarak Azure dijital TWINS 'deki olayları görselleştirin ve çözümleyin
 
@@ -54,16 +54,16 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. **Event Hubs** araması yapın ve sonuçlardan seçin. **Oluştur**’u seçin.
 
-    [![Event Hubs ad alanı oluşturma](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
+    [![Event Hubs ad alanı oluşturma](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png#lightbox)
 
 1. Event Hubs ad alanınız için bir **ad** girin. **Fiyatlandırma katmanı**, **aboneliğiniz**, dijital TWINS örneğiniz için kullandığınız **kaynak grubu** ve **konum**için **Standart** ' ı seçin. **Oluştur**’u seçin.
 
 1. Event Hubs ad alanı dağıtımı ' nda **genel bakış** bölmesini seçin, sonra **Kaynağa Git**' i seçin.
 
-    [Dağıtımdan sonra Event Hubs ad alanını ![](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
+    [Dağıtımdan sonra Event Hubs ad alanını ![](./media/tutorial-facilities-analyze/tutorial-event-hub-ns.png)](./media/tutorial-facilities-analyze/tutorial-event-hub-ns.png#lightbox)
 
 1. Event Hubs ad alanına **genel bakış** bölmesinde, üstteki **Olay Hub** 'ı düğmesini seçin.
-    [![Olay Hub 'ı düğmesi](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
+    [![Olay Hub 'ı düğmesi](./media/tutorial-facilities-analyze/tutorial-create-event-hub.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hub.png#lightbox)
 
 1. Olay Hub 'ınız için bir **ad** girin ve **Oluştur**' u seçin.
 
@@ -143,15 +143,15 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. Time Series Insights örneğiniz için bir **Ad** girin ve **Abonelik** girişinizi seçin. Dijital TWINS örneğiniz için kullandığınız **kaynak grubunu** ve **konumunuzu**seçin. **İleri ' yi seçin: olay kaynağı** düğmesi veya **olay kaynağı** sekmesi.
 
-    [Time Series Insights örneği oluşturmak için ![seçimleri](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
+    [Time Series Insights örneği oluşturmak için ![seçimleri](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png)](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png#lightbox)
 
 1. **Olay kaynağı** sekmesinde, bir **ad**girin, **kaynak türü**olarak **Olay Hub** 'ı seçin ve oluşturduğunuz Olay Hub 'ına başvurmak için diğer değerlerin doğru seçildiğinden emin olun. **Olay Hub 'ı erişim ilkesi adı**için **ManageSend** ' ı seçin ve ardından **Olay Hub 'ı Tüketici grubu**için önceki bölümde oluşturduğunuz tüketici grubunu seçin. **İncele ve oluştur**’u seçin.
 
-    [Olay kaynağı oluşturmak için ![seçimleri](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
+    [Olay kaynağı oluşturmak için ![seçimleri](./media/tutorial-facilities-analyze/tutorial-tsi-event-source.png)](./media/tutorial-facilities-analyze/tutorial-tsi-event-source.png#lightbox)
 
 1. **Gözden geçir + oluştur** bölmesinde, girdiğiniz bilgileri gözden geçirin ve **Oluştur**' u seçin.
 
-1. Dağıtım bölmesinde, az önce oluşturduğunuz Time Series Insights kaynağını seçin. Time Series Insights ortamınız için **genel bakış** bölmesini açar.
+1. Dağıtım bölmesinde, oluşturduğunuz Time Series Insights kaynağını seçin. Time Series Insights ortamınız için **genel bakış** bölmesini açar.
 
 1. Üstteki **ortama git** düğmesini seçin. Veri erişim uyarısı alırsanız, Time Series Insights örneğiniz için **veri erişim ilkeleri** bölmesini açın, **Ekle**' yi seçin, rol olarak **katkıda bulunan** ' i seçin ve uygun kullanıcıyı seçin.
 
@@ -159,7 +159,7 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. Birkaç benzetimli olay oluşturulduktan sonra, Time Series Insights Explorer 'a geri dönün ve üstteki Yenile düğmesini seçin. Sanal algılayıcı verileriniz için oluşturulmakta olan analitik grafiklerinizde yer görüntülenir. 
 
-    [Time Series Insights Gezgininde grafik ![](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
+    [Time Series Insights Gezgininde grafik ![](./media/tutorial-facilities-analyze/tsi-explorer-with-adt-telemetry.png)](./media/tutorial-facilities-analyze/tsi-explorer-with-adt-telemetry.png#lightbox)
 
 1. Time Series Insights Gezgini 'nde, odalarınızdan, sensörlerden ve diğer kaynaklardaki farklı olaylar ve veriler için grafikler ve heyomaps oluşturabilirsiniz. Sol tarafta, kendi görselleştirmelerinizi oluşturmak için **Ölçü** **ve aşağı** açılan kutuları kullanın. 
 

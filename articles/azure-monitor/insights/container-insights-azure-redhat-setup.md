@@ -1,14 +1,14 @@
 ---
 title: Azure Red Hat OpenShift kümelerini kapsayıcılar için Azure Izleyici ile yapılandırma | Microsoft Docs
-description: Bu makalede, Azure Red Hat OpenShift 'te barındırılan Kubernetes kümelerini izlemek üzere kapsayıcılar için Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
+description: Bu makalede, Azure Red Hat OpenShift 'te barındırılan Azure Izleyici ile bir Kubernetes kümesi izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 6922cb7b143989ba329df972a06825629c4c5020
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: cb68d08f86efa395f9d4567a00e74632a293ea3f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405567"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930371"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift kümelerini kapsayıcılar için Azure Izleyici ile yapılandırma
 
@@ -27,10 +27,8 @@ Kapsayıcılar için Azure Izleyici, yeni bir veya daha fazla Azure Red Hat Open
 
 Kapsayıcılar için Azure Izleyici, [genel bakış](container-insights-overview.md) makalesinde açıklandığı şekilde Azure Red Hat OpenShift 'i izlemeyi destekler, ancak aşağıdaki özellikler hariç:
 
-- Canlı veriler
-- Prometheus ölçümleri scraping
+- Canlı veriler (Önizleme)
 - Küme düğümlerinden ve yığınlardan [ölçümler toplayın](container-insights-update-metrics.md) ve bunları Azure izleyici ölçümleri veritabanında depolarsınız
-- Sistem durumu özelliği
 
 ## <a name="prerequisites"></a>Ön koşullar
 

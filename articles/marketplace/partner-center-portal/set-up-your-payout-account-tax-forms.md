@@ -3,16 +3,16 @@ Description: Ticari Market 'teki teklif satışlarından para almak için, ödem
 title: Ödeme hesabınızı ve vergi formlarınızı ayarlama | Azure Marketi
 ms.date: 12/10/2019
 ms.topic: article
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
-ms.openlocfilehash: 73ee800a837e7cd201025c93c7e88ad46f7fe256
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a6ef9711d6047a75ca5058f12e95d72a79628e30
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980224"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934166"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Ödeme hesabınızı ve vergi formlarınızı ayarlama
 

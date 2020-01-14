@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/5/2019
+ms.date: 1/13/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f8ed6be825470504b5e7b45a15c4faa9cf5ccfc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397351"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932890"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
@@ -555,7 +555,12 @@ az group deployment create \
 
 Daha yeni ölçüm uyarıları çok boyutlu ölçümler üzerinde uyarı vermeyi ve birden çok ölçütü desteklemeyi destekler. Boyut ölçümleri üzerinde daha gelişmiş bir ölçüm uyarısı kuralı oluşturmak ve birden çok ölçüt belirtmek için aşağıdaki şablonu kullanabilirsiniz.
 
-Uyarı kuralı birden çok ölçüt içerdiğinde, boyutların kullanımı her ölçüt içindeki boyut başına bir değerle sınırlıdır.
+Bu şekilde, birden çok ölçüt içeren bir uyarı kuralında boyutlar kullanırken aşağıdaki kısıtlamalara göz önünde olun:
+- Her ölçüt içinde yalnızca boyut başına bir değer seçebilirsiniz.
+- Bir boyut değeri olarak "\*" kullanamazsınız.
+- Farklı criterions ' de yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılan bir boyut değeri, bu ölçümler için (ilgili criterions) aynı şekilde açıkça ayarlanmalıdır.
+    - Aşağıdaki örnekte, hem **işlemler** hem de **SuccessE2ELatency** ölçümleri bir **API adı** boyutuna sahip olduğundan ve *Criterion1* **API adı** boyutu için *"GetBlob"* değerini belirttiğinden, bu durumda *criterion2* Ayrıca **API adı** boyutu için bir *"GetBlob"* değeri ayarlamış olmalıdır.
+
 
 Bu izlenecek yolun amacına uygun olarak JSON 'u advancedstaticmetricalert. JSON olarak kaydedin.
 
@@ -784,9 +789,6 @@ az group deployment create \
     --parameters @advancedstaticmetricalert.parameters.json
 ```
 
->[!NOTE]
->
-> Bir uyarı kuralı birden çok ölçüt içerdiğinde, boyutların kullanımı her ölçüt içindeki boyut başına bir değerle sınırlıdır.
 
 ## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Birden çok boyutu izleyen statik ölçüm uyarısı şablonu
 

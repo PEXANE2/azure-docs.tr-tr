@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/05/2019
+ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9922f1c4cbb0afca74c911d9b2bc9f0eab0714
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422760"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932652"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmesi nedir?
 
@@ -97,27 +97,34 @@ Kuruluşunuzda erişim gözden geçirmeleri dağıtmaya hazırsanız, bu adımla
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-### <a name="which-users-must-have-licenses"></a>Hangi kullanıcıların Lisansı olmalıdır?
+### <a name="how-many-licenses-must-you-have"></a>Kaç lisansa sahip olmanız gerekir?
 
-Erişim incelemeleriyle etkileşim kuran her kullanıcının ücretli Azure AD Premium P2 lisansı olması gerekir. Örneğin:
+Aşağıdaki görevleri yerine getirmek istediğiniz çalışanlara sahip olduğunuz için, dizininizde en az sayıda Azure AD Premium P2 lisansa sahip olduğundan emin olun:
 
-- Erişim gözden geçirmesi oluşturan Yöneticiler
+- Gözden geçirenler olarak atanan üye ve Konuk kullanıcılar
+- Kendi kendine İnceleme gerçekleştiren üye ve Konuk kullanıcılar
 - Erişim gözden geçirmesi gerçekleştiren Grup sahipleri
-- Gözden geçirenler olarak atanan kullanıcılar
-- Kendi kendine İnceleme gerçekleştiren kullanıcılar
+- Erişim gözden geçirmesi gerçekleştiren uygulama sahipleri
 
-Ayrıca, Konuk kullanıcılardan kendi erişimini gözden geçirmesini isteyebilirsiniz. Kendi kuruluşunuzun kullanıcılarından birine atadığınız her ücretli Azure AD Premium P2 lisansı için, dış Kullanıcı tahsisatından beş adede kadar Konuk kullanıcıya davet etmek için Azure AD işletmeden işletmeye (B2B) kullanabilirsiniz. Bu Konuk kullanıcılar Azure AD Premium P2 özelliklerini de kullanabilir. Daha fazla bilgi için bkz. [Azure AD B2B işbirliği Lisanslama Kılavuzu](../b2b/licensing-guidance.md).
+Aşağıdaki görevler için Azure AD Premium P2 lisansları gerekli **değildir** :
 
-Sahip olmanız gereken lisansların sayısını belirlemenize yardımcı olacak bazı örnek senaryolar aşağıda verilmiştir.
+- Genel yönetici veya Kullanıcı Yöneticisi rollerine sahip kullanıcılar için erişim gözden geçirmeleri ayarlama, ayarları yapılandırma veya kararların kararlarını uygulama hakkında herhangi bir lisans gerekmez.
 
-| Senaryo | Hesaplama | Gerekli sayıda lisans |
+Kendi kuruluşunuzun kullanıcılarından birine atadığınız her ücretli Azure AD Premium P2 lisansı için, dış Kullanıcı tahsisatından beş adede kadar Konuk kullanıcıya davet etmek için Azure AD işletmeden işletmeye (B2B) kullanabilirsiniz. Bu Konuk kullanıcılar Azure AD Premium P2 özelliklerini de kullanabilir. Daha fazla bilgi için bkz. [Azure AD B2B işbirliği Lisanslama Kılavuzu](../b2b/licensing-guidance.md).
+
+Lisanslar hakkında daha fazla bilgi için bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md).
+
+### <a name="example-license-scenarios"></a>Örnek lisans senaryoları
+
+Sahip olmanız gereken lisans sayısını belirlemenize yardımcı olacak bazı örnek lisans senaryoları aşağıda verilmiştir.
+
+| Senaryo | Hesaplama | Lisans sayısı |
 | --- | --- | --- |
-| Yönetici, 500 Kullanıcıyla Grup A 'nın erişim incelemesini oluşturur. 3 Grup sahibini gözden geçirenler olarak atar. | Her grup sahibine ait yönetici + 3 Lisansı için gözden geçirenler olarak 1 lisans. | 4 |
-| Yönetici, 500 Kullanıcıyla Grup A 'nın erişim incelemesini oluşturur. Kendi kendine İnceleme yapar. | 1 her kullanıcı için yönetici + 500 lisansı için kendi kendini gözden geçirenler olarak lisanslayın. | 501 |
-| Yönetici, 5 Kullanıcı ve 25 Konuk kullanıcıyla Grup B 'ye yönelik bir erişim incelemesi oluşturur. Kendi kendine İnceleme yapar. | 1 her kullanıcı için yönetici + 5 Lisansı için kendi kendini gözden geçirenler olarak lisanslayın.<br/>(Konuk kullanıcılar gereken 1:5 oranına göre ele alınmıştır) | 6 |
-| Yönetici, 5 Kullanıcı ve 108 Konuk kullanıcıyla Grup C 'nin erişim incelemesini oluşturur. Kendi kendine İnceleme yapar. | 1 her kullanıcıya yönelik yönetici + 5 Lisansı, gerekli 1:5 oranında tüm 108 Konuk kullanıcıları kapsayacak şekilde, her bir kullanıcı için kendi kendine gözden geçirenler ve 16 ek lisans olarak lisanslayın.<br/>5\*6 = 30 Konuk Kullanıcı olan 1 + 5 = 6 lisans. Kalan (108-5\*6) = 78 Konuk kullanıcılar için 78/5 = 16 ek lisans gerekir. Bu nedenle Total, 6 + 16 = 22 lisans gerekir. | 22 |
-
-Kullanım için lisansları atama hakkında daha fazla bilgi için, bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md).
+| Yönetici, 75 Kullanıcı ve 1 Grup sahibi ile A grubu için bir erişim incelemesi oluşturur ve Grup sahibini gözden geçiren olarak atar. | 1 Grup sahibi için gözden geçiren olarak lisans | 1 |
+| Yönetici, 500 Kullanıcı ve 3 Grup sahibi olan B grubunun erişim incelemesini oluşturur ve 3 Grup sahibini gözden geçirenler olarak atar. | Her grup sahibi için gözden geçirenler olarak 3 lisans | 3 |
+| Yönetici, 500 Kullanıcıyla Grup B 'ye erişim incelemesi oluşturur. Kendi kendine İnceleme yapar. | Her Kullanıcı için kendi kendini gözden geçirenler olarak 500 lisans | 500 |
+| Yönetici, 50 üye kullanıcıları ve 25 Konuk kullanıcıyla Grup C 'nin erişim incelemesini oluşturur. Kendi kendine İnceleme yapar. | Her Kullanıcı için kendi kendine gözden geçirenler olarak 50 lisans.<br/>(Konuk kullanıcılar gereken 1:5 oranına göre ele alınmıştır) | 50 |
+| Yönetici, 6 üye kullanıcısı ve 108 Konuk kullanıcıyla Grup D 'ye yönelik bir erişim incelemesi oluşturur. Kendi kendine İnceleme yapar. | Her bir kullanıcı için kendi kendine gözden geçirenler olarak 6 lisans ve gerekli 1:5 oranında tüm 108 Konuk kullanıcıları kapsayacak ek lisanslar. 6\*5 = 30 Konuk kullanıcıyı kapsayan 6 lisans. Kalan (108-6\*5) = 78 Konuk kullanıcılar için 78/5 = 16 ek lisans gerekir. Bu nedenle Total, 6 + 16 = 22 lisans gerekir. | 22 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

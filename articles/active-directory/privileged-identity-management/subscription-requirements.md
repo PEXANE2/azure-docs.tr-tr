@@ -13,45 +13,50 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 01/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6e336ec40ba2b9f6d3018e6a4f5b2ac721077aa
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 70696cdb95fffc1e5faa46ca1b5f2180633ed63a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895109"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932330"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Privileged Identity Management kullanılacak lisans gereksinimleri
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PıM) kullanmak için, bir dizinin geçerli bir lisansı olması gerekir. Ayrıca, lisansların Yöneticiler ve ilgili kullanıcılara atanması gerekir. Bu makalede Privileged Identity Management kullanmak için lisans gereksinimleri açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="valid-licenses"></a>Geçerli lisanslar
 
-Privileged Identity Management kullanmak için, dizininiz aşağıdaki ücretli veya deneme lisanslarından birine sahip olmalıdır:
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5
-- Microsoft 365 M5
+## <a name="how-many-licenses-must-you-have"></a>Kaç lisansa sahip olmanız gerekir?
 
-Daha fazla bilgi için bkz. [Azure Active Directory nedir?](../fundamentals/active-directory-whatis.md).
+Aşağıdaki görevleri yerine getirmek istediğiniz çalışanlara sahip olduğunuz için, dizininizde en az sayıda Azure AD Premium P2 lisansa sahip olduğundan emin olun:
 
-## <a name="which-users-must-have-licenses"></a>Hangi kullanıcıların Lisansı olmalıdır?
-
-Privileged Identity Management avantajlarından sorumlu olan veya bir avantajdan yararlanan her yönetici veya Kullanıcı bir lisansa sahip olmalıdır. Örneğin:
-
-- Azure AD rollerine yönelik PıM kullanılarak yönetilen Yöneticiler
-- Azure Kaynak rolleri ile PıM kullanılarak yönetilen Yöneticiler
-- Ayrıcalıklı rol yöneticisi rolüne atanan yöneticiler
 - PıM kullanılarak yönetilen Azure AD rollerine uygun olarak atanan kullanıcılar
-- Kullanıcı PıM 'de istekleri onaylayabilir/reddedebiliyor
+- PıM 'de etkinleştirme isteklerini onaylayabilecek veya reddedebilen kullanıcılar
 - Tam zamanında veya doğrudan (zaman tabanlı) atamalarla bir Azure Kaynak rolüne atanan kullanıcılar  
 - Erişim gözden geçirmesi için atanan kullanıcılar
 - Erişim gözden geçirmeleri gerçekleştiren kullanıcılar
 
-Kullanım için lisansları atama hakkında daha fazla bilgi için, bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md).
+Aşağıdaki görevler için Azure AD Premium P2 lisansları gerekli **değildir** :
+
+- PıM 'yi ayarlama, uyarıları alma ve erişim incelemelerini ayarlama gibi genel yönetici veya ayrıcalıklı rol yöneticisi rollerine sahip kullanıcılar için lisans gerekmez.
+
+Lisanslar hakkında daha fazla bilgi için bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md).
+
+## <a name="example-license-scenarios"></a>Örnek lisans senaryoları
+
+Sahip olmanız gereken lisans sayısını belirlemenize yardımcı olacak bazı örnek lisans senaryoları aşağıda verilmiştir.
+
+| Senaryo | Hesaplama | Lisans sayısı |
+| --- | --- | --- |
+| Woodgrove Bank, farklı departmanlar için 10 yönetici ve PıM 'yi yapılandıran ve yöneten 2 genel yönetici vardır. Bunlar beş yönetici için uygun hale getirir. | Uygun yöneticiler için beş lisans | 5 |
+| Grafik tasarımı Enstitüsü, 14 ' ün PıM aracılığıyla yönettiği 25 yöneticileridir. Rol etkinleştirme onay gerektirir ve kuruluşta etkinleştirmeleri onaylayabilecek üç farklı kullanıcı vardır. | uygun roller ve üç onaylayan için 14 lisans | 17 |
+| Contoso, 50 'e 42 ait, PıM aracılığıyla yönetilmekte olan yöneticilerine sahiptir. Rol etkinleştirme onay gerektirir ve kuruluşta etkinleştirmeleri onaylayabilecek beş farklı kullanıcı vardır. Contoso Ayrıca, yönetici rollerine atanan kullanıcılara yönelik aylık incelemeler ve gözden geçirenler, kullanıcının PıM tarafından yönetilen yönetici rollerde bulunmayan Kullanıcı yöneticilerinde de bulunur. | uygun rollere yönelik 42 lisans + beş onaylayan + altı gözden geçiren | 53 |
 
 ## <a name="what-happens-when-a-license-expires"></a>Lisansın süresi dolarsa ne olur?
 

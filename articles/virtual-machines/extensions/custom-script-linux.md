@@ -3,7 +3,7 @@ title: Azure 'da Linux VM 'lerde Özel betikler çalıştırma
 description: Özel Betik uzantısı v2 'yi kullanarak Linux VM yapılandırma görevlerini otomatikleştirme
 services: virtual-machines-linux
 documentationcenter: ''
-author: axayjo
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
-ms.author: akjosh
-ms.openlocfilehash: 87826b5bec4294ce45355ab0cfc4df373895563b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: mimckitt
+ms.openlocfilehash: da7ade4b4724f8d155deb1c109587a311d03375c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073221"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931026"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux sanal makineleri ile Azure Özel Betik uzantısı sürüm 2 kullanın
 Özel Betik uzantısı sürüm 2, Azure sanal makinelerinde betikleri indirir ve çalıştırır. Bu uzantı, dağıtım sonrası yapılandırma, yazılım yükleme veya başka bir yapılandırma/yönetim görevi için yararlıdır. Azure depolama veya başka bir erişilebilir internet konumundan betikleri indirebilir veya onları uzantı çalışma zamanına verebilirsiniz. 
@@ -61,7 +61,7 @@ Betiğiniz yerel bir sunucu üzerinde ise, hala ek güvenlik duvarı/ağ güvenl
 * Betik çalışırken Azure portalı veya CLI üzerinden uzantı durumunu yalnızca "geçiş durumunda" şeklinde görürsünüz. Çalışan bir betikte daha sık durum güncelleştirmeleri istiyorsanız kendi çözümünüzü oluşturmanız gerekir.
 * Özel Betik uzantısı, ara sunucuları yerel olarak desteklemez, ancak komut dosyanız içinde, *kıvrımlı*gibi proxy sunucularını destekleyen bir dosya aktarım aracı kullanabilirsiniz. 
 * Betiklerinizin veya komutlarınızın Güvenebildiği varsayılan olmayan dizin konumlarından haberdar olun, bunu işlemek için mantığın.
-
+*  Üretim VMSS örneklerine özel betik dağıtırken, JSON şablonu aracılığıyla dağıtılması ve SAS belirteci üzerinde denetiminiz olan betik depolama hesabınızı depolamanız önerilir. 
 
 
 ## <a name="extension-schema"></a>Uzantı şeması
@@ -121,6 +121,7 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 | storageAccountKey (ör.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
 ### <a name="property-value-details"></a>Özellik değeri ayrıntıları
+* `apiVersion`: en güncel apiVersion, aşağıdaki komutu kullanarak [Kaynak Gezgini](https://resources.azure.com/) veya Azure CLI aracılığıyla bulunabilir `az provider list -o json`
 * `skipDos2Unix`: (isteğe bağlı, Boole) betik tabanlı dosya URL 'Leri veya betiği dos2unix dönüştürmeyi atlayın.
 * `timestamp` (isteğe bağlı, 32-bit tamsayı) bu alanı yalnızca bu alanın değerini değiştirerek betiğin yeniden çalıştırılmasını tetiklemek için kullanın.  Herhangi bir tamsayı değeri kabul edilebilir; yalnızca önceki değerden farklı olmalıdır.
   * `commandToExecute`: (betik ayarlanmamışsa**gereklidir** , dize) ve yürütülecek giriş noktası betiği. Komutunuz parolalar gibi gizli dizileri içeriyorsa bunun yerine bu alanı kullanın.

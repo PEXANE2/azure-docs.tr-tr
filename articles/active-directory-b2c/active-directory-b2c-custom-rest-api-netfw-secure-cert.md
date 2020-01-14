@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d396de57a12285fb6cc682510fa6f95585465d0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 0201c0947c2f6052182721294e8972e29479825d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949866"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930636"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>İstemci sertifikalarını kullanarak yeniden takip eden hizmetinizi güvenli hale getirin
 
@@ -34,7 +34,7 @@ Bu makalede nasıl yapılacağı açıklanır:
 * Sertifikayı Azure AD B2C ilkesi anahtarlarına yükleyin.
 * Özel ilkenizi istemci sertifikasını kullanacak şekilde yapılandırın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * [REST API talep alışverişlerinde tümleştirme](active-directory-b2c-custom-rest-api-netfw.md) makalesindeki adımları uygulayın.
 * Geçerli bir sertifika (özel anahtara sahip bir. pfx dosyası) alın.
 
@@ -67,7 +67,7 @@ Bu makalede nasıl yapılacağı açıklanır:
 
     ![Azure portal anahtar oluştur sayfasında ilke anahtarını karşıya yükle](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
-7. **Oluştur**'u seçin.
+7. **Oluştur**’u seçin.
 
 8. Kiracınızda kullanılabilen anahtarları görüntülemek için `B2C_1A_B2cRestClientCertificate` anahtarı oluşturduğunuzdan emin olun ve **Ilke anahtarları**' nı seçin.
 
@@ -100,17 +100,19 @@ Bu makalede nasıl yapılacağı açıklanır:
 
 ## <a name="step-4-upload-the-policy-to-your-tenant"></a>4\. Adım: ilkeyi kiracınıza yükleme
 
-1. [Azure Portal](https://portal.azure.com), [Azure AD B2C kiracınızın bağlamına](active-directory-b2c-navigate-to-b2c-context.md)geçin ve ardından **Azure AD B2C**' yı seçin.
+1. [Azure Portal](https://portal.azure.com), Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
-2. **Kimlik deneyimi çerçevesini**seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 
-3. **Tüm ilkeler**' i seçin.
+1. **Kimlik deneyimi çerçevesini**seçin.
 
-4. **Ilkeyi karşıya yükle**' yi seçin.
+1. **Tüm ilkeler**' i seçin.
 
-5. Varsa **Ilkenin üzerine yaz** onay kutusunu seçin.
+1. **Ilkeyi karşıya yükle**' yi seçin.
 
-6. *TrustFrameworkExtensions. xml* dosyasını karşıya yükleyin ve ardından doğrulamayı geçirdiğinizden emin olun.
+1. Varsa **Ilkenin üzerine yaz** onay kutusunu seçin.
+
+1. *TrustFrameworkExtensions. xml* dosyasını karşıya yükleyin ve ardından doğrulamayı geçirdiğinizden emin olun.
 
 ## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>5\. Adım: Şimdi Çalıştır 'ı kullanarak özel ilkeyi test etme
 1. **Azure AD B2C ayarları**' nı açın ve ardından **kimlik deneyimi çerçevesi**' ni seçin.

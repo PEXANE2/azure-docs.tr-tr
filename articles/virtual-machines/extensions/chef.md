@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8a5b54131210d243015b37bf234408fd9d2b4c12
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073198"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933617"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Linux ve Windows için Chef VM Uzantısı
 
 Chef Software, Linux ve Windows için fiziksel ve sanal sunucu yapılandırmalarının yönetilmesine olanak sağlayan bir DevOps otomasyon platformu sunar. Chef VM uzantısı, sanal makinelerde Chef sağlayan bir uzantıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -151,6 +151,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 | 51 | Bu uzantı, sanal makinenin işletim sisteminde desteklenmiyor | |
 
 Ek sorun giderme bilgileri [Chef VM Uzantısı Benioku](https://github.com/chef-partners/azure-chef-extension)dosyasında bulunabilir.
+
+> [!NOTE]
+> Chef ile doğrudan ilgili başka herhangi bir şey için [Chef desteğiyle](https://www.chef.io/support/)iletişim kurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

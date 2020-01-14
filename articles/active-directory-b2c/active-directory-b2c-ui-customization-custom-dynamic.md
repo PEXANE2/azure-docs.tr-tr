@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dbc932bd7a68212ce94f2ad07de6e625d26c0918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: ae29a068ef29898c3fa27d3620d1e6be0be4bf3b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950247"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931196"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: özel ilkeler kullanarak, Dinamik içerikle Kullanıcı arabirimini yapılandırma
 
@@ -24,7 +24,7 @@ ms.locfileid: "74950247"
 
 Azure Active Directory B2C (Azure AD B2C) özel ilkeleri kullanarak bir sorgu dizesinde bir parametre gönderebilirsiniz. Parametreyi HTML uç noktanıza ileterek sayfa içeriğini dinamik olarak değiştirebilirsiniz. Örneğin web veya mobil uygulamanızdan ilettiğiniz bir parametreye göre Azure AD B2C kaydolma veya oturum açma sayfanızdaki arka plan görüntüsünü değiştirebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede, özel ilkeler kullanılarak Azure AD B2C Kullanıcı arabiriminin *Dinamik içerikle* nasıl özelleştirileceği konusuna odaklanılmaktadır. Başlamak için bkz. [özel Ilkede UI özelleştirmesi](active-directory-b2c-ui-customization-custom.md).
 
 >[!NOTE]
@@ -217,17 +217,19 @@ HTML5 şablonunuz kullanıma hazırlanıyor. Ancak, `ContentDefinition` kodunda 
     ![LoadUri öğesi vurgulanmış örnek XML kod parçacığı](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>6\. Adım: ilkeyi kiracınıza yükleme
-1. [Azure Portal](https://portal.azure.com), [Azure AD B2C kiracınızın bağlamına](active-directory-b2c-navigate-to-b2c-context.md)geçin ve ardından **Azure AD B2C**' yı seçin.
+1. [Azure Portal](https://portal.azure.com), Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
-2. **Kimlik deneyimi çerçevesini**seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 
-3. **Tüm ilkeler**' i seçin.
+1. **Kimlik deneyimi çerçevesini**seçin.
 
-4. **Ilkeyi karşıya yükle**' yi seçin.
+1. **Tüm ilkeler**' i seçin.
 
-5. Varsa **Ilkenin üzerine yaz** onay kutusunu seçin.
+1. **Ilkeyi karşıya yükle**' yi seçin.
 
-6. *TrustFrameworkExtensions. xml* dosyasını karşıya yükleyin ve doğrulamayı geçirdiğinizden emin olun.
+1. Varsa **Ilkenin üzerine yaz** onay kutusunu seçin.
+
+1. *TrustFrameworkExtensions. xml* dosyasını karşıya yükleyin ve doğrulamayı geçirdiğinizden emin olun.
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>7\. Adım: Şimdi Çalıştır 'ı kullanarak özel ilkeyi test etme
 1. **Azure AD B2C ayarları**' nı ve ardından **kimlik deneyimi çerçevesi**' ni seçin.
@@ -345,7 +347,3 @@ Oturum açma sayfasında **Şimdi kaydolun** bağlantısını seçerseniz, taray
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>Seçim Tüm ilke dosyalarını ve kodunu indirin
 * [Özel ilkeleri kullanmaya başlama talimatlarını](active-directory-b2c-get-started-custom.md) tamamladıktan sonra, kendi özel ilke dosyalarınızı kullanarak senaryonuzu oluşturmanızı öneririz. Başvurunuz için [örnek ilke dosyaları](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)sağladık.
 * [Başvuru Için örnek Visual Studio çözümünden](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)tüm kodu indirebilirsiniz.
-
-
-
-

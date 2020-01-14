@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 21acbde147d5c1751480332e5cd9c89cdb43f8e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644962"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934549"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux’ta HDInsight kullanma ile ilgili bilgiler
 
@@ -254,11 +254,7 @@ HDInsight Yönetilen bir hizmettir. Azure, kümeyle ilgili bir sorun algılarsa,
 * Bir hizmet veya Web sitesi yükleyip yapılandırın.
 * Kümedeki birden fazla düğümde yapılandırma değişiklikleri gerektiren bir bileşeni yükler ve yapılandırın.
 
-Komut dosyası eylemleri Bash betikleridir. Betikler, küme oluşturma sırasında çalışır ve ek bileşenleri yüklemek ve yapılandırmak için kullanılır. Aşağıdaki bileşenleri yüklemek için örnek betikler verilmiştir:
-
-* [Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
-
-Kendi Betik Eylemlerinizi geliştirme hakkında daha fazla bilgi için bkz. [HDInsight ile Betik Eylemi geliştirme](hdinsight-hadoop-script-actions-linux.md).
+Komut dosyası eylemleri Bash betikleridir. Betikler, küme oluşturma sırasında çalışır ve ek bileşenleri yüklemek ve yapılandırmak için kullanılır. Kendi Betik Eylemlerinizi geliştirme hakkında daha fazla bilgi için bkz. [HDInsight ile Betik Eylemi geliştirme](hdinsight-hadoop-script-actions-linux.md).
 
 ### <a name="jar-files"></a>Jar dosyaları
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc5c875f4ae54ed334318efc5a1d5610b89bdda5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444784"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929594"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB ORDER BY yan tümcesi
 
@@ -52,7 +52,7 @@ ORDER BY <sort_specification>
    ORDER BY yan tümcesi, dizin oluşturma ilkesinin sıralanmakta olan alanlar için bir dizin içermesini gerektirir. Azure Cosmos DB sorgusu çalışma zamanı, hesaplanan özelliklere karşı değil, özellik adına göre sıralamayı destekler. Azure Cosmos DB birden çok SıRALAMAYı destekler. Bir sorguyu birden çok sıra özellikleriyle çalıştırmak için, sıralanan alanlarda bir [bileşik dizin](index-policy.md#composite-indexes) tanımlamanız gerekir.
    
 > [!Note] 
-> .NET SDK 3.4.0 veya üstünü kullanırken, sıralanan özellikler bazı belgeler için tanımsız olabileceğinden, bu özelliklerde açıkça bir dizin oluşturmanız gerekir. Varsayılan dizin oluşturma ilkesi, sıralama özelliğinin tanımsız olduğu belgelerin alınmasına izin vermez.
+> Sıralanan özellikler bazı belgeler için tanımsız olabilir ve bunları bir SıRALAMA sorgusuna almak istiyorsanız, bu özelliklerde açıkça bir dizin oluşturmanız gerekir. Varsayılan dizin oluşturma ilkesi, sıralama özelliğinin tanımsız olduğu belgelerin alınmasına izin vermez.
 
 ## <a name="examples"></a>Örnekler
 

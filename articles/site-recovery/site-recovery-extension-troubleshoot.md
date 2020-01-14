@@ -1,99 +1,99 @@
 ---
-title: Azure Site Recovery aracıları ile ilgili sorunları giderme | Microsoft Docs
-description: Belirtiler, nedenleri ve çözümleri, Azure Site Recovery Aracısı hataları hakkında bilgi sağlar.
-author: asgang
+title: Azure Site Recovery aracılarıyla ilgili sorunları giderme | Microsoft Docs '
+description: Azure Site Recovery Aracısı hatalarının belirtileri, nedenleri ve çözümleri hakkında bilgi sağlar.
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 5ea701682c03370cea46f9126ecf78427a776371
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: carmonm
+ms.openlocfilehash: 0de5a9843b8029c1e1926ae296f43fc95b48106c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61280680"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930123"
 ---
-# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Azure Site Recovery Aracısı ile ilgili sorunları giderme
+# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Azure Site Recovery aracısında sorun giderme
 
-Bu makale, Azure Site Recovery hataları VM aracısı ve uzantı ile ilgili yardımcı olacak sorun giderme adımlarını çözmek sağlar.
+Bu makalede, VM Aracısı ve uzantısıyla ilgili Azure Site Recovery hatalarını çözmenize yardımcı olabilecek sorun giderme adımları sunulmaktadır.
 
 
 ## <a name="azure-site-recovery-extension-time-out"></a>Azure Site Recovery uzantısı zaman aşımı  
 
-Hata iletisi: "Görev Yürütme uzantı işleminin başlatılması izlenirken zaman aşımına uğradı"<br>
+Hata iletisi: "uzantı işleminin başlatılması izlenirken görev yürütme zaman aşımına uğradı"<br>
 Hata kodu: "151076"
 
- Azure Site Recovery, sanal makinede korumayı etkinleştirme işini bir parçası olarak bir uzantı yükleyin. Aşağıdaki koşullardan herhangi biri işinin başarısız olmasına ve tetiklenmekte karşı koruma engelleyebilir. Aşağıdaki sorun giderme adımlarını tamamlayın ve sonra işlemi yeniden deneyin:
+ Korumayı etkinleştirme işinin bir parçası olarak sanal makineye bir uzantı Azure Site Recovery. Aşağıdaki koşullardan herhangi biri, korumanın tetiklenmesi ve işin başarısız olmasına engel olabilir. Aşağıdaki sorun giderme adımlarını tamamlayıp işleminizi yeniden deneyin:
 
-**1. neden: [VM Aracısı yüklendi, ancak (Windows VM'ler için) yanıt vermiyor](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
-**2. neden: [Sanal Makineye yüklenen Aracı (Linux VM'ler için) güncel değil](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**3. neden: [Site Recovery uzantısı yükleme veya güncelleştirme başarısız](#the-site-recovery-extension-fails-to-update-or-load)**  
+**Neden 1: [Aracı VM 'ye yüklendi, ancak yanıt vermiyor (Windows VM 'leri için)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
+**Neden 2: [VM 'de yüklü olan aracı güncel değil (Linux VM 'ler için)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Neden 3: [Site Recovery uzantısı güncelleştirilemiyor veya yüklenemiyor](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-Hata iletisi: "Önceki site recovery uzantısı işlemi beklenenden uzun sürüyor."<br>
+Hata iletisi: "önceki Site Recovery uzantısı işlemi beklenenden uzun sürüyor."<br>
 Hata kodu: "150066"<br>
 
-**1. neden: [VM Aracısı yüklendi, ancak (Windows VM'ler için) yanıt vermiyor](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
-**2. neden: [Sanal Makineye yüklenen Aracı (Linux VM'ler için) güncel değil](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**3. neden: [Site Recovery uzantı durumu yanlış](#the-site-recovery-extension-fails-to-update-or-load)**  
+**Neden 1: [Aracı VM 'ye yüklendi, ancak yanıt vermiyor (Windows VM 'leri için)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
+**Neden 2: [VM 'de yüklü olan aracı güncel değil (Linux VM 'ler için)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Neden 3: [Site Recovery uzantısı durumu yanlış](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>VM aracısı yanıt vermediği için koruma başarısız olur.
+## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>VM Aracısı yanıt vermediği için koruma başarısız oluyor
 
-Hata iletisi: "Görev Yürütme uzantı işleminin başlatılması izlenirken zaman aşımına uğradı."<br>
+Hata iletisi: "uzantı işleminin başlatılması izlenirken görev yürütme zaman aşımına uğradı."<br>
 Hata kodu: "151099"<br>
 
-Azure Konuk Aracısı sanal makinede hazır durumda değilse, bu hata oluşabilir.
-Azure Konuk aracı durumunu kontrol edebilirsiniz [Azure portalında](https://portal.azure.com/). Koruma ve durum iade aktarmaya çalıştığınız sanal makineye gidin "VM > Ayarlar > Özellikler > aracı durumu". Çoğu zaman aracının durumunu haline hazır sanal makine yeniden başlatıldıktan sonra. Ancak, yeniden başlatma, olası bir seçenek değil veya sorunu hala karşılaştığınız, ardından aşağıdaki sorun giderme adımlarını tamamlayın.
+Bu hata, sanal makinedeki Azure Konuk Aracısı, Ready durumunda değilse oluşabilir.
+Azure Konuk aracısının durumunu [Azure Portal](https://portal.azure.com/)denetleyebilirsiniz. Korumaya çalıştığınız sanal makineye gidin ve "VM > ayarları > Özellikler > Aracı durumu" içindeki durumu denetleyin. Çoğu zaman, sanal makine yeniden başlatıldıktan sonra aracının durumu kullanılabilir hale gelir. Ancak yeniden başlatma olası bir seçenek değilse veya sorunu yaşamaya devam ediyorsanız, aşağıdaki sorun giderme adımlarını izleyin.
 
-**1. neden: [VM Aracısı yüklendi, ancak (Windows VM'ler için) yanıt vermiyor](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
-**2. neden: [Sanal Makineye yüklenen Aracı (Linux VM'ler için) güncel değil](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Neden 1: [Aracı VM 'ye yüklendi, ancak yanıt vermiyor (Windows VM 'leri için)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
+**Neden 2: [VM 'de yüklü olan aracı güncel değil (Linux VM 'ler için)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 
-Hata iletisi: "Görev Yürütme uzantı işleminin başlatılması izlenirken zaman aşımına uğradı."<br>
+Hata iletisi: "uzantı işleminin başlatılması izlenirken görev yürütme zaman aşımına uğradı."<br>
 Hata kodu: "151095"<br>
 
-Bu Linux makinesine aracı sürümü eski olduğunda oluşur. Lütfen aşağıdaki sorun giderme adımı tamamlayın.<br>
-  **1. neden: [Sanal Makineye yüklenen Aracı (Linux VM'ler için) güncel değil](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+Bu, Linux makinesindeki aracı sürümü eski olduğunda meydana gelir. Lütfen aşağıdaki sorun giderme adımını doldurun.<br>
+  **Neden 1: [VM 'de yüklü olan aracı güncel değil (Linux VM 'ler için)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 ## <a name="causes-and-solutions"></a>Nedenler ve çözümler
 
-### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>VM Aracısı yüklendi, ancak (Windows VM'ler için) yanıt vermiyor
+### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Aracı VM 'ye yüklendi, ancak yanıt vermiyor (Windows VM 'Leri için)
 
 #### <a name="solution"></a>Çözüm
-VM Aracısı bozulduysa veya hizmet durdurulmuş. VM aracısını yeniden yüklemeyi en son sürümü Al yardımcı olur. Ayrıca, hizmeti ile iletişimi yeniden yardımcı olur.
+VM Aracısı bozulmuş olabilir veya hizmet durdurulmuş olabilir. VM Aracısı 'nı yeniden yüklemek en son sürümü almaya yardımcı olur. Hizmet ile iletişimin yeniden başlatılmasına de yardımcı olur.
 
-1. Belirlemek olup olmadığını "Windows Azure Konuk Aracısı hizmeti" VM Hizmetleri (services.msc) çalışıyor. Yeniden başlatmayı deneyin "Windows Azure Konuk aracısı hizmetinin".    
-2. Windows Azure Konuk aracı hizmetini Hizmetleri'nde, Denetim Masası ' nda görünür değilse Git **programlar ve Özellikler** Windows Konuk aracısı yüklü olup olmadığını belirlemek için.
-4. Windows Azure Konuk Aracısı görünürse **programlar ve Özellikler**, Windows Konuk Aracısı'nı kaldırın.
-5. İndirme ve yükleme [Aracısı MSI en son sürümünü](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Yüklemeyi tamamlamak için yönetici hakları olmalıdır.
-6. Windows Azure Konuk aracı hizmetleri Hizmetleri'nde göründüğünden emin olun.
-7. Koruma işi yeniden başlatın.
+1. "Windows Azure Konuk Aracısı hizmeti" nin VM hizmetlerinde (Services. msc) çalışıp çalışmadığını belirleme. "Windows Azure Konuk Aracısı hizmeti" ni yeniden başlatmayı deneyin.    
+2. Windows Azure Konuk Aracısı hizmeti Hizmetler 'de görülemiyorsa, Denetim Masası 'nda, Windows Konuk Aracısı hizmetinin yüklenip yüklenmediğini öğrenmek için **Programlar ve Özellikler** ' e gidin.
+4. Windows Azure Konuk Aracısı **Programlar ve Özellikler**' de görünürse, Windows Konuk aracısını kaldırın.
+5. [Aracı MSI ' nın en son sürümünü](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)indirip yükleyin. Yüklemeyi gerçekleştirmek için yönetici haklarına sahip olmanız gerekir.
+6. Windows Azure Konuk Aracısı hizmetlerinin hizmetler 'de göründüğünü doğrulayın.
+7. Koruma işini yeniden başlatın.
 
-Ayrıca, doğrulayın [Microsoft .NET 4.5 yüklü](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) VM. .NET 4.5 hizmetiyle iletişim kurmak VM aracısı gereklidir.
+Ayrıca, VM 'de [Microsoft .NET 4,5 ' nin yüklü](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) olduğunu doğrulayın. VM aracısının hizmetle iletişim kurması için .NET 4,5 gerekir.
 
-### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Sanal Makineye yüklenen Aracı (Linux VM'ler için) güncel değil
+### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 'de yüklü olan aracı güncel değil (Linux VM 'Leri için)
 
 #### <a name="solution"></a>Çözüm
-Aracı veya uzantı ilgili hataları Linux Vm'leri için en güncel olmayan bir VM Aracısı etkileyen sorunları nedeniyle oluşur. Bu sorunu gidermek için bu yönergeleri izleyin:
+Linux VM 'Leri için aracıyla ilgili veya uzantı ile ilgili çoğu başarısızlık, süresi geçmiş bir VM aracısını etkileyen sorunlardan kaynaklanır. Bu sorunu gidermek için aşağıdaki genel yönergeleri izleyin:
 
-1. Yönergelerini izleyin [Linux VM Aracısı güncelleştirilirken](../virtual-machines/linux/update-agent.md).
+1. [LINUX VM aracısını güncelleştirme](../virtual-machines/linux/update-agent.md)yönergelerini izleyin.
 
    > [!NOTE]
-   > Biz *önemle tavsiye* yalnızca bir dağıtım deposu aracılığıyla aracıyı güncelleştirin. Aracı kodu doğrudan Github'dan indiriliyor ve güncelleştirirken önermiyoruz. Dağıtımınız için en son aracıyı yüklemek yönergeler mevcut, ilgili kişi dağıtım desteği değilse. En son aracı için denetlenecek Git [Windows Azure Linux Aracısı](https://github.com/Azure/WALinuxAgent/releases) GitHub deposunda sayfası.
+   > Aracıyı yalnızca bir dağıtım deposu aracılığıyla güncelleştirmenizi *önemle tavsiye* ederiz. Doğrudan GitHub 'dan aracı kodunu indirmenizi ve güncelleştirmeyi önermiyoruz. Dağıtım için en son aracı kullanılamıyorsa, nasıl yükleneceğine ilişkin yönergeler için dağıtım desteğiyle iletişim kurun. En son aracıyı denetlemek için GitHub deposundaki [Windows Azure Linux Aracısı](https://github.com/Azure/WALinuxAgent/releases) sayfasına gidin.
 
-2. Aşağıdaki komutu çalıştırarak Azure Aracısı VM üzerinde çalıştığından emin olun: `ps -e`
+2. Şu komutu çalıştırarak Azure aracısının VM 'de çalıştığından emin olun: `ps -e`
 
-   İşlem çalışıyor durumda değilse, aşağıdaki komutları kullanarak yeniden başlatın:
+   İşlem çalışmıyorsa, aşağıdaki komutları kullanarak yeniden başlatın:
 
    * Ubuntu için: `service walinuxagent start`
    * Diğer dağıtımlar için: `service waagent start`
 
-3. [Otomatik yeniden başlatma aracı yapılandırma](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
-4. Sanal makine korumasını etkinleştirin.
+3. [Otomatik yeniden başlatma aracısını yapılandırın](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
+4. Sanal makinenin korunmasını etkinleştirin.
 
 
 
-### <a name="the-site-recovery-extension-fails-to-update-or-load"></a>Site Recovery uzantısı yükleme veya güncelleştirme başarısız
-Uzantı durumu ise "boş ', 'NotReady' veya makalesindeki.
+### <a name="the-site-recovery-extension-fails-to-update-or-load"></a>Site Recovery uzantısı güncelleştirilemiyor veya yüklenemiyor
+Uzantı durumu "Empty" ise, ' NotReady ' veya geçiş işlemi.
 
 #### <a name="solution"></a>Çözüm
 
@@ -101,14 +101,14 @@ Uzantıyı kaldırın ve işlemi yeniden başlatın.
 
 Uzantıyı kaldırmak için:
 
-1. İçinde [Azure portalında](https://portal.azure.com/)yedekleme hatası yaşayan VM'yi gidin.
+1. [Azure Portal](https://portal.azure.com/), yedekleme hatası yaşayan VM 'ye gidin.
 2. Seçin **ayarları**.
 3. **Uzantılar**'ı seçin.
-4. Seçin **Site kurtarma uzantısı**.
-5. Seçin **kaldırma**.
+4. **Site Recovery uzantısı**' nı seçin.
+5. **Kaldır**'ı seçin.
 
-Linux VM, VMSnapshot uzantısı Azure Portalı'nda görünmüyorsa için [Azure Linux aracısını güncelleştirme](../virtual-machines/linux/update-agent.md), ve ardından korumayı çalıştırın. 
+Linux VM için, VMSnapshot uzantısı Azure portal görünmüyorsa, [Azure Linux aracısını güncelleştirin](../virtual-machines/linux/update-agent.md)ve ardından korumayı çalıştırın. 
 
-Bu adımları sırasında koruma yüklenmesi uzantısı neden olur.
+Bu adımların tamamlanması, uzantının koruma sırasında yeniden yüklenmesine neden olur.
 
 

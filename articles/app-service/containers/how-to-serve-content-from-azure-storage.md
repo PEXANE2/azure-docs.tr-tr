@@ -5,21 +5,20 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 0a1e811787a43be76f94b13a6ec9886510c47d1d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866968"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930005"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux üzerinde App Service Azure Storage 'tan içerik sunma
 
-Bu kılavuzda, Linux üzerinde App Service Azure Storage 'ın nasıl ekleneceği gösterilmektedir. Avantajlar, güvenli içerik, içerik taşınabilirlik, kalıcı depolama, birden çok uygulamaya erişim ve birden fazla aktarım yöntemi içerir.
-
-
-> [!IMPORTANT]
-> Linux üzerinde App Service Azure Storage bir **Önizleme** özelliğidir. Bu özellik **Üretim senaryolarında desteklenmez**.
+> [!NOTE]
+> Bu makale, Linux kapsayıcıları için geçerlidir. Özel Windows kapsayıcılarına dağıtmak için bkz. [App Service bir Windows kapsayıcısında Azure dosyalarını yapılandırma](../configure-connect-to-azure-storage.md). Linux üzerinde App Service Azure Storage bir **Önizleme** özelliğidir. Bu özellik **Üretim senaryolarında desteklenmez**.
 >
+
+Bu kılavuzda, Linux üzerinde App Service Azure Storage 'ın nasıl ekleneceği gösterilmektedir. Avantajlar, güvenli içerik, içerik taşınabilirlik, kalıcı depolama, birden çok uygulamaya erişim ve birden fazla aktarım yöntemi içerir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

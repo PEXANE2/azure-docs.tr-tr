@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 12e642e59a1341926a0c4d66533465cecfc21709
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7933e2608ae0b59a6dce89169f4bb1faba0aa25e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863147"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934142"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure Bilişsel Arama Dizin oluşturucudan Azure sanal makinesinde SQL Server bağlantı yapılandırma
 
@@ -77,7 +77,7 @@ SQL Azure sanal makinelerinizi tüm bağlantı isteklerine açık hale getirmek 
 
 Arama hizmetinizin FQDN 'sini (örneğin, `<your-search-service-name>.search.windows.net`) ping yaparak IP adresini bulabilirsiniz.
 
-Azure Bilişsel Arama hizmetinizin, [INDIRILEBILIR JSON dosyalarını](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) veya [hizmet etiketi bulma API 'si](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)aracılığıyla bulunduğu belirli bölge IÇIN `AzureCognitiveSearch` [hizmet etiketinin](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP adresi aralığını bulabilirsiniz. IP adresi aralığı haftalık olarak güncelleştirilir.
+`AzureCognitiveSearch` [hizmeti ETIKETININ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP adresi aralığını [indirilebilir JSON dosyalarını](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) veya [hizmet etiketi bulma API 'si](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)aracılığıyla bulabilirsiniz. IP adresi aralığı haftalık olarak güncelleştirilir.
 
 #### <a name="managing-ip-address-fluctuations"></a>IP adresi dalgalanmaları yönetme
 Arama hizmetinizin yalnızca bir arama birimi (yani bir çoğaltma ve bir bölüm) varsa, hizmet yeniden başlatmaları sırasında IP adresi değişir ve bu, arama hizmetinizin IP adresine sahip mevcut bir ACL 'yi geçersiz kılmıştır.

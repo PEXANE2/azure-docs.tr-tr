@@ -11,21 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f728338284c755116414a03cbc586915e1cc9325
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0ec3153e5b1bfbe04a079d1cfc44e8e8709784d4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462207"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931145"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Azure RBAC ve Azure PowerShell kullanarak rol atamalarını listeleme
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] Bu makalede, Azure PowerShell kullanarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Kuruluşunuzun, [Azure tarafından yetkilendirilen kaynak yönetimi](../lighthouse/concepts/azure-delegated-resource-management.md)kullanan bir hizmet sağlayıcısına dış kaynaklı yönetim işlevleri varsa, bu hizmet sağlayıcısı tarafından yetkilendirilen rol atamaları burada gösterilmez.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

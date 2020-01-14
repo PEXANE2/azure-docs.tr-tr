@@ -2,18 +2,18 @@
 title: Azure Site Recovery eklenen bir Azure VM diski için çoğaltmayı etkinleştirme
 description: Bu makalede, Azure Site Recovery ile olağanüstü durum kurtarma için etkinleştirilen bir Azure VM 'sine eklenen bir disk için çoğaltmanın nasıl etkinleştirileceği açıklanır.
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.author: asgang
-ms.openlocfilehash: 6cbe71d67417ce817d317b65f27d0e6ceabec983
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: carmonm
+ms.openlocfilehash: 08ab539a1b05c67ef77c84389dad7247b72355d6
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084998"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929889"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Azure VM 'ye eklenen bir disk için çoğaltmayı etkinleştirme
 

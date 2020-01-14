@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 7700c61a978532a63fc5b3298d45b8e7041dba40
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/10/2020
+ms.openlocfilehash: 1cd617204bbc12a99b6ae9e3b55fbc59b0e0578a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790353"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933747"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Öğretici: Logic Apps kullanarak Azure dijital TWINS boşluklarından bildirimler alma
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Olayları Azure Event Grid ile tümleştirin.
 > * Olayları Logic Apps bildirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide Azure Digital Twins kurulumunu [yapılandırmış](tutorial-facilities-setup.md) ve [sağlamış](tutorial-facilities-udf.md) olduğunuz kabul edilmektedir. Devam etmeden önce aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -55,9 +55,9 @@ Bu bölümde, Azure dijital TWINS örneğinden olayları toplamak için [Event G
 
 1. Sol bölmede **Kaynak oluştur**'u seçin. 
 
-1. **Event Grid Konu Başlığı** araması yapın ve sonuçlardan seçin. **Oluştur**'u seçin.
+1. **Event Grid Konu Başlığı** araması yapın ve sonuçlardan seçin. **Oluştur**’u seçin.
 
-1. Event Grid konu başlığınız için bir **Ad** girin ve **Abonelik** seçimi yapın. Dijital TWINS örneğiniz için kullandığınız veya oluşturduğunuz **kaynak grubunu** ve **konumunu**seçin. **Oluştur**'u seçin. 
+1. Event Grid konu başlığınız için bir **Ad** girin ve **Abonelik** seçimi yapın. Dijital TWINS örneğiniz için kullandığınız veya oluşturduğunuz **kaynak grubunu** ve **konumunu**seçin. **Oluştur**’u seçin. 
 
     [![olay kılavuzu oluşturma konusu](./media/tutorial-facilities-events/create-event-grid-topic.png)](./media/tutorial-facilities-events/create-event-grid-topic.png#lightbox)
 
@@ -65,7 +65,7 @@ Bu bölümde, Azure dijital TWINS örneğinden olayları toplamak için [Event G
 
 1. **Erişim anahtarları**' nı seçin ve **anahtar 1** ile **anahtar 2** ' yi geçici bir dosyaya kopyalayın. Sonraki bölümde uç noktayı oluşturmak için bu değerlere ihtiyacınız olacak.
 
-    [![Event Grid anahtarları](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
+    [![Event Grid anahtarları](./media/tutorial-facilities-events/tutorial-event-grid-keys.png)](./media/tutorial-facilities-events/tutorial-event-grid-keys.png#lightbox)
 
 ### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Olay Kılavuzu konusu için bir uç nokta oluşturma
 
@@ -110,11 +110,11 @@ Diğer hizmetlerden alınan olaylara yönelik otomatik görevler oluşturmak iç
 
 1. [Azure Portal](https://portal.azure.com)sol bölmesinde **kaynak oluştur**' u seçin.
 
-1. **Mantıksal Uygulama** araması yapın ve yeni bir kaynak oluşturun. **Oluştur**'u seçin.
+1. **Mantıksal Uygulama** araması yapın ve yeni bir kaynak oluşturun. **Oluştur**’u seçin.
 
-1. Mantıksal uygulama kaynağınız için bir **ad** girin ve ardından **abonelik**, **kaynak grubu**ve **konum**' u seçin. **Oluştur**'u seçin.
+1. Mantıksal uygulama kaynağınız için bir **ad** girin ve ardından **abonelik**, **kaynak grubu**ve **konum**' u seçin. **Oluştur**’u seçin.
 
-    [![Logic Apps kaynağı oluşturma](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
+    [![Logic Apps kaynağı oluşturma](./media/tutorial-facilities-events/tutorial-create-logic-app.png)](./media/tutorial-facilities-events/tutorial-create-logic-app.png#lightbox)
 
 1. Logic Apps kaynağınızı dağıtıldığında açın ve **mantıksal uygulama Tasarımcısı** bölmesini açın. 
 
@@ -172,7 +172,7 @@ Diğer hizmetlerden alınan olaylara yönelik otomatik görevler oluşturmak iç
 
    c. İkinci **bir değer seçin** metin kutusu içinde `UdfCustom`girin.
 
-   [Seçili koşulları ![](./media/tutorial-facilities-events/logic-app-condition.png)](./media/tutorial-facilities-events/logic-app-condition.png#lightbox)
+   [Seçili koşulları ![](./media/tutorial-facilities-events/tutorial-logic-app-condition.png)](./media/tutorial-facilities-events/tutorial-logic-app-condition.png#lightbox)
 
 1. **Eğer true ise** penceresinde:
 
@@ -182,9 +182,9 @@ Diğer hizmetlerden alınan olaylara yönelik otomatik görevler oluşturmak iç
 
    c. **Alıcı** kutusuna bildirimlerin gönderilmesi için e-posta adresinizi yazın. **Konu**alanında, **daha düşük hava kalitesi Için metin olarak dijital TWINS bildirimi**yazın. Ardından, **JSON ayrıştırma**için **dinamik Içerik** listesinden **topologyobjectıd** ' yi seçin.
 
-   d. Aynı penceredeki **gövde** altında şuna benzer bir metin girin: **bir odada zayıf hava kalitesi ve sıcaklığın ayarlanması gerekir**. **Dinamik içerik** listesinden öğeleri kullanarak ayrıntılı bir şekilde çekinmeyin.
+   d. Aynı penceredeki **gövde** altında aşağıdakine benzer bir metin girin: **bir odada zayıf hava kalitesi ve sıcaklık ayarlanması gerekiyor**. **Dinamik içerik** listesinden öğeleri kullanarak ayrıntılı bir şekilde çekinmeyin.
 
-   [![Logic Apps "e-posta gönderme" seçimleri](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
+   [![Logic Apps "e-posta gönderme" seçimleri](./media/tutorial-facilities-events/tutorial-logic-app-send-email.png)](./media/tutorial-facilities-events/tutorial-logic-app-send-email.png#lightbox)
 
 1. **Mantıksal uygulama Tasarımcısı** bölmesinin en üstündeki **Kaydet** düğmesini seçin.
 
@@ -194,16 +194,16 @@ Birkaç dakika içinde, bu Logic Apps kaynağından e-posta bildirimleri almaya 
 
    [e-posta bildirimi ![](./media/tutorial-facilities-events/logic-app-notification.png)](./media/tutorial-facilities-events/logic-app-notification.png#lightbox)
 
-Bu e-postaları almayı durdurmak için portalda Logic Apps kaynağına gidin ve **genel bakış** bölmesini seçin. **Devre dışı bırak**seçeneğini belirleyin.
+Bu e-postaları almayı durdurmak için portalda Logic Apps kaynağına gidin ve **genel bakış** bölmesini seçin. Seçin **devre dışı**.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu noktada Azure dijital TWINS araştırmalarını durdurmak istiyorsanız bu öğreticide oluşturulan kaynakları silebilirsiniz:
+Bu noktada Azure dijital İkizlerini keşfetmeye durdurmak istiyorsanız, bu öğreticide oluşturulan kaynakları silmek çekinmeyin:
 
-1. [Azure Portal](https://portal.azure.com)sol menüden **tüm kaynaklar**' ı seçin, dijital TWINS kaynak grubunuzu seçin ve **Sil**' i seçin.
+1. Sol menüden [Azure portalında](https://portal.azure.com)seçin **tüm kaynakları**dijital İkizlerini kaynak grubunuzu seçin ve seçin **Sil**.
 
     > [!TIP]
-    > Dijital TWINS örneğinizi silme konusunda sorun yaşıyorsanız, bu düzeltmeyle birlikte bir hizmet güncelleştirmesi kullanıma alındı. Lütfen örneğinizi silmeyi yeniden deneyin.
+    > Dijital İkizlerini örneğinizin silme sorun olduysa, bir hizmet güncelleştirmesi düzeltme alındı. Örneğiniz silme yeniden deneyin.
 
 2. Gerekirse, iş makinenizdeki örnek uygulamaları silin.
 

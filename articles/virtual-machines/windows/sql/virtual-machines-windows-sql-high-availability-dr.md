@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: ac62ec49803bf55bbe61e08e60b648dd6c268510
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358018"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933951"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure Sanal Makineler’de SQL Server için yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
@@ -77,7 +77,7 @@ Kullanılabilirlik grupları, veritabanı yansıtma, günlük aktarma ve Azure b
 
 ## <a name="free-dr-replica-in-azure"></a>Azure 'da ücretsiz DR çoğaltması
 
-[Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)varsa, pasif Dr örneği için ek lisans ücretleri oluşturmadan, her zaman açık kullanılabilirlik grupları veya yük devretme kümesi örnekleri kullanmak SQL Server ile karma olağanüstü durum kurtarma (Dr) planları uygulayabilirsiniz.
+[Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)varsa, pasif Dr örneği için ek lisans maliyetleri yapmadan SQL Server ile karma olağanüstü durum kurtarma (Dr) planları uygulayabilirsiniz.
 
 Aşağıdaki görüntüde kurulum, 12 çekirdek kullanan bir şirket içi SQL Server dağıtımı için bir olağanüstü durum kurtarma çoğaltması olarak 12 çekirdekli bir Azure sanal makinesinde çalışan SQL Server kullanır. Geçmişte, şirket içi ve Azure sanal makine dağıtımı için SQL Server 12 çekirdeğe lisans almanız gerekir. Yeni avantaj, bir Azure sanal makinesinde çalışan pasif çoğaltma avantajlarına sahiptir. Artık Azure sanal makinesinde pasif çoğaltma için olağanüstü durum kurtarma ölçütleri karşılandığında şirket içinde çalışan SQL Server 12 çekirdeğe lisans almanız gerekir.
 

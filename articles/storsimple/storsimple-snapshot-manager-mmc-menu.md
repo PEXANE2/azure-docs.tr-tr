@@ -1,9 +1,9 @@
 ---
-title: StorSimple Snapshot Manager MMC menü eylemlerinin | Microsoft Docs
-description: StorSimple Snapshot Manager'da standart Microsoft Yönetim Konsolu (MMC) menü eylemlerinin kullanmayı açıklar.
+title: StorSimple Snapshot Manager MMC menü eylemleri | Microsoft Docs
+description: StorSimple Snapshot Manager 'de standart Microsoft Yönetim Konsolu (MMC) menü eylemlerinin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
@@ -13,92 +13,92 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: be761f0a2e59878139ae54dba62634a53b172711
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: ced075395c4f2a51308d5d3b0cbe4c0153a17816
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715262"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931476"
 ---
-# <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager'da MMC menü eylemlerinin kullanın
+# <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager MMC menü eylemlerini kullanma
 
 ## <a name="overview"></a>Genel Bakış
-StorSimple Snapshot Manager'da tüm eylem menüleri ve tüm çeşitlerini listelenen aşağıdaki eylemleri görürsünüz **eylemleri** bölmesi.
+StorSimple Snapshot Manager, tüm eylem menülerinde ve **Eylemler** bölmesinin tüm çeşitlerinde listelenen aşağıdaki eylemleri görürsünüz.
 
-* Görünüm
-* Buradan yeni pencere 
+* Görüntüle
+* Buradan Yeni Pencere 
 * Yenile 
 * Listeyi dışarı aktar 
-* Help 
+* Yardım 
 
-Bu Eylemler, Microsoft Yönetim Konsolu (MMC) bir parçasıdır ve StorSimple Snapshot Manager için özel değildir. Bu öğretici, bu eylemleri açıklar ve bunların her birini StorSimple Snapshot Manager'da kullanmayı açıklar.
+Bu eylemler Microsoft Yönetim Konsolu 'nun (MMC) bir parçasıdır ve StorSimple Snapshot Manager özgü değildir. Bu öğreticide, bu eylemler açıklanmakta ve bunların her birinin StorSimple Snapshot Manager nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="view"></a>Görünüm
-Kullanabileceğiniz **görünümü** değiştirmek için seçeneği **sonuçları** bölmesi görünümü ve konsol penceresi görünümünü değiştirmek için. 
+## <a name="view"></a>Görüntüle
+**Görünüm** seçeneğini, **sonuçlar** bölmesi görünümünü değiştirmek ve konsol penceresi görünümünü değiştirmek için kullanabilirsiniz. 
 
-#### <a name="to-change-the-results-pane-view"></a>Sonuçlar bölmesinde görünümü değiştirmek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde herhangi bir düğüme sağ tıklayın veya düğümünü genişletin ve bir öğeyi sağ **sonuçları** bölmesi ve ardından **görünümü** seçeneği. 
-3. Görünür sütunlar eklemek ve kaldırmak için **sonuçları** bölmesinde tıklayın **sütunları Ekle/Kaldır**. **Sütunları Ekle/Kaldır** iletişim kutusu görüntülenir.
+#### <a name="to-change-the-results-pane-view"></a>Sonuçlar Bölmesi görünümünü değiştirmek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde herhangi bir düğüme sağ tıklayın veya düğümü genişletin ve **sonuçlar** bölmesinde bir öğeye sağ tıklayın ve ardından **Görünüm** seçeneğine tıklayın. 
+3. **Sonuçlar** bölmesinde görünen sütunları eklemek veya kaldırmak Için **sütun Ekle/Kaldır**' a tıklayın. **Sütunları Ekle/Kaldır** iletişim kutusu görüntülenir.
    
-    ![Sütun ekleme veya sonuçlar bölmesinden kaldırma](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Add_remove_columns.png) 
+    ![Sonuçlar bölmesinde sütun ekleyin veya kaldırın](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Add_remove_columns.png) 
 4. Formu aşağıdaki gibi doldurun:
    
-   * Öğeleri seçin **kullanılabilir** sütunlar listesinde ve tıklayın **Ekle** ekleneceği **görüntülenen sütunlar** listesi. 
-   * İçinde öğeler **görüntülenen sütunlar** listesinde ve tıklayın **Kaldır** listeden kaldırmak için. 
-   * Bir öğe seçin **görüntülenen** sütunlar listesinde ve tıklayın **Yukarı Taşı** veya **Aşağı Taşı** öğeyi listede yukarı veya aşağı taşımak için. 
-   * Tıklayın **Varsayılanları Geri Yükle** varsayılana geri dönmek için **sonuçları** bölme yapılandırması. 
-5. Seçimlerinizi tamamladıktan sonra tıklayın **Tamam**. 
+   * **Kullanılabilir** sütunlar listesinden öğeler ' i seçin ve bunları **görüntülenecek sütunlar** listesine eklemek için **Ekle** ' ye tıklayın. 
+   * **Görüntülenecek sütunlar** listesinde öğeler ' e tıklayın ve listeden kaldırmak için **Kaldır** ' a tıklayın. 
+   * **Görüntülenecek** sütunlar listesinden bir öğe seçin ve öğeyi listede yukarı veya aşağı taşımak Için **Yukarı taşı** veya **aşağı taşı** ' ya tıklayın. 
+   * Varsayılan **sonuçlar** bölmesi yapılandırmasına geri dönmek Için **Varsayılanları geri yükle** ' ye tıklayın. 
+5. Seçimlerinizle işiniz bittiğinde **Tamam**' a tıklayın. 
 
 #### <a name="to-change-the-console-window-view"></a>Konsol penceresi görünümünü değiştirmek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde, herhangi bir düğüme sağ tıklayın, **görünümü**ve ardından **Özelleştir**. **Özelleştir** iletişim kutusu görüntülenir.
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde herhangi bir düğüme sağ tıklayın, **Görünüm**' ü ve ardından **Özelleştir**' i tıklatın. **Özelleştir** iletişim kutusu görüntülenir.
    
     ![Konsol penceresini özelleştirin](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
-3. Konsol penceresinde öğeleri göstermek veya gizlemek için onay kutularının işaretini kaldırın veya seçin. Seçimlerinizi tamamladıktan sonra tıklayın **Tamam**.
+3. Konsol penceresinde öğeleri göstermek veya gizlemek için onay kutularını işaretleyin veya temizleyin. Seçimlerinizle işiniz bittiğinde **Tamam**' a tıklayın.
 
-## <a name="new-window-from-here"></a>Buradan yeni pencere
-Kullanabileceğiniz **buradan yeni pencere** seçeneği yeni bir konsol penceresi açın.
+## <a name="new-window-from-here"></a>Buradan Yeni Pencere
+Yeni bir konsol penceresi açmak için **buradan yeni pencere** seçeneğini kullanabilirsiniz.
 
 #### <a name="to-open-a-new-console-window"></a>Yeni bir konsol penceresi açmak için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde, herhangi bir düğüme sağ tıklayın ve ardından **buradan yeni pencere**. 
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde herhangi bir düğüme sağ tıklayın ve ardından **buradan yeni pencere**' ye tıklayın. 
    
-    Kapsamı yalnızca seçtiğiniz gösteren yeni bir pencere görüntülenir. Örneğin, sağ, **yedekleme ilkelerini** düğüm, yeni pencere yalnızca gösterilir **yedekleme ilkelerini** düğümünde **kapsam** bölmesi ve tanımlanmış yedekleme listesi ilkeleri **sonuçları** bölmesi. Aşağıdaki örneğe bakın.
+    Yalnızca seçtiğiniz kapsamı gösteren yeni bir pencere görüntülenir. Örneğin, **yedekleme ilkeleri** düğümüne sağ tıklarsanız, yeni pencere, **kapsam** bölmesinde yalnızca **yedekleme ilkeleri** düğümünü ve **sonuçlar** bölmesinde tanımlanmış yedekleme ilkelerinin bir listesini gösterir. Aşağıdaki örneğe bakın.
    
-    ![Buradan yeni pencere](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_NewWindow.png) 
+    ![Buradan Yeni Pencere](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_NewWindow.png) 
 
 ## <a name="refresh"></a>Yenile
-Kullanabileceğiniz **Yenile** konsol penceresinde güncelleştirmek için eylem.
+Konsol penceresini güncelleştirmek için **Yenile** eylemini kullanabilirsiniz.
 
-#### <a name="to-update-the-console-window"></a>Konsol penceresinde güncelleştirmek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde herhangi bir düğüme sağ tıklayın veya düğümünü genişletin ve bir öğeyi sağ **sonuçları** bölmesi ve ardından **Yenile**. 
+#### <a name="to-update-the-console-window"></a>Konsol penceresini güncelleştirmek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde herhangi bir düğüme sağ tıklayın veya düğümü genişletin ve **sonuçlar** bölmesinde bir öğeye sağ tıklayın ve ardından **Yenile**' ye tıklayın. 
 
 ## <a name="export-list"></a>Listeyi dışarı aktar
-Kullanabileceğiniz **listeyi dışarı aktar** listesini bir virgülle ayrılmış değer (CSV) dosyasına kaydetmek için eylem. Örneğin, yedekleme ilkeleri veya yedekleme kataloğunu listesini dışarı aktarabilirsiniz. Ardından, analiz için bir elektronik tablo uygulamaya CSV dosyasını içeri aktarabilirsiniz.
+Bir listeyi bir virgülle ayrılmış değer (CSV) dosyasına kaydetmek için **Listeyi dışarı aktar** eylemini kullanabilirsiniz. Örneğin, yedekleme ilkeleri veya yedekleme kataloğu listesini dışarı aktarabilirsiniz. Daha sonra, bir analiz için bir elektronik tablo uygulamasına CSV dosyasını içeri aktarabilirsiniz.
 
-#### <a name="to-save-a-list-in-a-comma-separated-value-csv-file"></a>Bir liste bir virgülle ayrılmış değer (CSV) dosyasına kaydetmek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın. 
-2. İçinde **kapsam** bölmesinde herhangi bir düğüme sağ tıklayın veya düğümünü genişletin ve bir öğeyi sağ **sonuçları** bölmesi ve ardından **listeyi dışarı aktar**. 
-3. **Listeyi dışarı aktar** iletişim kutusu görüntülenir. Formu aşağıdaki gibi doldurun: 
+#### <a name="to-save-a-list-in-a-comma-separated-value-csv-file"></a>Bir listeyi bir virgülle ayrılmış değer (CSV) dosyasına kaydetmek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın. 
+2. **Kapsam** bölmesinde herhangi bir düğüme sağ tıklayın veya düğümü genişletin ve **sonuçlar** bölmesinde bir öğeye sağ tıklayın ve ardından **Listeyi dışarı aktar**' a tıklayın. 
+3. **Listeyi dışarı aktar** iletişim kutusu görünür. Formu aşağıdaki gibi doldurun: 
    
-   1. İçinde **dosya adı** kutusunda CSV dosyası için bir ad yazın veya aşağı açılan listeden seçmek için oka tıklayın.
-   2. İçinde **farklı kaydetme türü** kutusunda oka tıklayın ve açılan listeden bir dosya türünü seçin.
-   3. Yalnızca seçilen öğeleri kaydetmek için satırları seçin ve ardından **yalnızca seçili satırları Kaydet** onay kutusu. Dışarı aktarılan tüm listeleri kaydetmek için temizleyin **yalnızca seçili satırları Kaydet** onay kutusu.
-   4. **Kaydet**’e tıklayın.
+   1. **Dosya adı** kutusuna CSV dosyası için bir ad yazın veya açılan listeden seçmek için oka tıklayın.
+   2. **Farklı kaydet türü** kutusunda, oka tıklayın ve açılan listeden bir dosya türü seçin.
+   3. Yalnızca seçili öğeleri kaydetmek için, satırları seçin ve ardından **yalnızca seçili satırları kaydet** onay kutusunu tıklayın. Tüm dışarıya kaydedilmiş listeleri kaydetmek için **yalnızca seçili satırları kaydet** onay kutusunu temizleyin.
+   4. **Save (Kaydet)** düğmesine tıklayın.
       
-      ![Listeyi virgülle ayrılmış değer dosyası olarak dışarı aktar](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
+      ![Listeyi virgülle ayrılmış bir değer dosyası olarak dışarı aktar](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
-## <a name="help"></a>Help
-Kullanabileceğiniz **yardımcı** StorSimple Snapshot Manager ve MMC kullanılabilir çevrimiçi Yardımı görüntülemek için menü.
+## <a name="help"></a>Yardım
+StorSimple Snapshot Manager ve MMC için kullanılabilir çevrimiçi yardımı görüntülemek üzere **Yardım** menüsünü kullanabilirsiniz.
 
-#### <a name="to-view-available-online-help"></a>Kullanılabilir çevrimiçi Yardım görüntülemek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde herhangi bir düğüme sağ tıklayın veya düğümünü genişletin ve bir öğeyi sağ **sonuçları** bölmesi ve ardından **yardımcı**. 
+#### <a name="to-view-available-online-help"></a>Kullanılabilir çevrimiçi yardımı görüntülemek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde herhangi bir düğüme sağ tıklayın veya düğümü genişletin ve **sonuçlar** bölmesinde bir öğeye sağ tıklayın ve ardından **Yardım**' a tıklayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Daha fazla bilgi edinin [StorSimple Snapshot Manager kullanıcı arabirimini](storsimple-use-snapshot-manager.md).
-* Daha fazla bilgi edinin [StorSimple çözümünüzü yönetmek için StorSimple anlık görüntü Yöneticisi'ni kullanarak](storsimple-snapshot-manager-admin.md).
+* [StorSimple Snapshot Manager Kullanıcı arabirimi](storsimple-use-snapshot-manager.md)hakkında daha fazla bilgi edinin.
+* StorSimple [çözümünüzü yönetmek Için storsimple Snapshot Manager kullanma](storsimple-snapshot-manager-admin.md)hakkında daha fazla bilgi edinin.
 

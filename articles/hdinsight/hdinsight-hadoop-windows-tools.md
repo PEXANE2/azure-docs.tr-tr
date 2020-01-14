@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 0fd299ea6ceb9631ff473ec2ac9f37be2f6be215
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 3ec50acc693452fe73d929effcea98b12fc5ff8b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495740"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933945"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Windows BILGISAYARDAN HDInsight üzerinde Apache Hadoop ekosisteminde çalışma
 
@@ -58,7 +58,7 @@ Visual Studio ile gerçekleştirebileceğiniz görev örnekleri ve Visual Studio
 Kümeleri yönetmek ve büyük veri uygulamaları geliştirmek için Visual Studio 'Yu .NET SDK ile birlikte kullanabilirsiniz. Aşağıdaki görevler için diğer Ides 'i kullanabilirsiniz, ancak örnekler Visual Studio 'da gösterilir.
 
 Visual Studio 'da .NET SDK ile gerçekleştirebileceğiniz görev örnekleri:
-* [.NET Framework bir uygulamadan kümeler oluşturun ve HDInsight 'ta çalışın](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md).
+* [.Net Için Azure HDıNSIGHT SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
 * [.NET SDK kullanarak Apache Hive sorguları çalıştırın](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 * [Apache Hadoop C# üzerinde Apache Hive ve Apache Pig akışıyla Kullanıcı tanımlı işlevler kullanın](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 

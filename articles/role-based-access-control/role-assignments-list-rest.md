@@ -12,19 +12,22 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e20edcb5e2406c216711a2e0f696ef06e19fe21e
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8a9841e2a8a8ec0aede94f849b7818c86f9862df
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710405"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934090"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Azure RBAC ve REST API kullanarak rol atamalarını listeleyin
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] Bu makalede, REST API kullanılarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
+
+> [!NOTE]
+> Kuruluşunuzun, [Azure tarafından yetkilendirilen kaynak yönetimi](../lighthouse/concepts/azure-delegated-resource-management.md)kullanan bir hizmet sağlayıcısına dış kaynaklı yönetim işlevleri varsa, bu hizmet sağlayıcısı tarafından yetkilendirilen rol atamaları burada gösterilmez.
 
 ## <a name="list-role-assignments"></a>Rol atamalarını listeleme
 

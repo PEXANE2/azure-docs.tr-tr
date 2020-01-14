@@ -16,24 +16,24 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: ea0d284b8220e4f8bc7bc1b91684654b32da7065
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a042e768ef6693d2ced6d679947a6fe321d259bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035381"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934712"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure’da Linux VM’nizi iyileştirme
 Bir Linux sanal makinesi (VM) oluşturmak, komut satırından veya portaldan kolayca yapılır. Bu öğreticide, Microsoft Azure platformunda performansını en iyi duruma getirecek şekilde ayarlamış olduğunuzdan emin olmanız gösterilmektedir. Bu konu, Ubuntu sunucu sanal makinesini kullanır, ancak aynı zamanda [kendi görüntülerinizi şablon olarak](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)kullanarak Linux sanal makinesi de oluşturabilirsiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu konu, zaten çalışan bir Azure aboneliğiniz olduğunu varsayar ([ücretsiz deneme kaydı](https://azure.microsoft.com/pricing/free-trial/)) ve Azure aboneliğinizde zaten bir VM sağladınız. [VM](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)oluşturmadan önce [az oturum açma](/cli/azure/reference-index) ile Azure ABONELIĞINIZDE en son [Azure CLI](/cli/azure/install-az-cli2) 'nın yüklü olduğundan ve oturum açmış olduğunuzdan emin olun.
 
 ## <a name="azure-os-disk"></a>Azure işletim sistemi diski
 Azure 'da bir Linux VM oluşturduktan sonra, onunla ilişkili iki disk vardır. **/dev/sda** , işletim sistemi diskinizdeki **/dev/sdb** geçici diskdedir.  Ana IŞLETIM sistemi diski ( **/dev/sda**), hızlı VM önyükleme süresi için en iyi duruma getirilmiş ve iş yükleriniz için iyi performans sağlamayan bir şey için kullanmayın. Verilerinize yönelik kalıcı ve iyileştirilmiş depolama alanı almak için sanal makinenize bir veya daha fazla disk eklemek istiyorsunuz. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Boyut ve performans hedefleri için disk ekleme
-VM boyutuna bağlı olarak, bir G serisi makinede 32 bir D serisi ve 64 diskte 16 adede kadar ek disk (her biri 1 TB 'a kadar) ekleyebilirsiniz. Alanınız ve IOPS gereksinimlerinize göre gereken sayıda ek disk eklersiniz. Her diskin standart depolama için 500 IOPS ve Premium Depolama için disk başına en fazla 5000 IOPS performans hedefi vardır.
+VM boyutuna bağlı olarak, bir G serisi makinede bir D serisi ve 64 disk üzerinde 16 ' ya kadar ek disk, her biri boyut olarak 32 TB 'a kadar olan bir G serisi makinede 32 diske ekleyebilirsiniz. Alanınız ve IOPS gereksinimlerinize göre gereken sayıda ek disk eklersiniz. Her diskin standart depolama için 500 IOPS ve Premium Depolama için disk başına en fazla 20.000 IOPS performans hedefi vardır.
 
 Önbellek ayarlarının **ReadOnly** veya **none**olarak ayarlandığı Premium Depolama disklerinde en yüksek IOPS 'yi başarmak Için, dosya sistemini Linux 'a bağlama sırasında **engelleri** devre dışı bırakmanız gerekir. Premium Depolama ile desteklenen disklere yazma işlemleri bu önbellek ayarları için dayanıklı olduğundan, engelleri gerekmez.
 

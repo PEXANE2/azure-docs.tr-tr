@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: d052226470042d374544de0b7e1ced4ca0f48a14
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 376d7c1a9d2fe2ebce857362fd216e2047eb1f7b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564159"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934326"
 ---
 # <a name="security-control-network-security"></a>Güvenlik denetimi: ağ güvenliği
 
@@ -29,7 +29,9 @@ Tüm sanal ağ alt ağı dağıtımlarının, uygulamanızın güvenilen bağlan
 
 Alternatif olarak, belirli bir kullanım durumu varsa, gereksinimler Azure Güvenlik Duvarı kullanılarak karşılanır.
 
-Özel bağlantıyla ilgili genel bilgiler: https://docs.microsoft.com/azure/private-link/private-link-overview
+Özel bağlantıyla ilgili genel bilgiler:
+
+https://docs.microsoft.com/azure/private-link/private-link-overview
 
 Sanal ağ oluşturma:
 
@@ -55,7 +57,7 @@ NSG akış günlüklerini etkinleştirme:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Azure Güvenlik Merkezi tarafından sunulan ağ güvenliğini anlama:
+Azure Güvenlik Merkezi tarafından sunulan ağ güvenliğini anlayın:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
@@ -97,11 +99,11 @@ Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama:
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma 'yi anlama
+Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma 'yi anlama:
 
 https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening
 
-Azure Güvenlik Merkezi 'Ni tam zamanında ağ Access Control anlama
+Azure Güvenlik Merkezi 'Ni, tam zamanında ağ Access Control anlayın:
 
 https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
@@ -113,9 +115,13 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 Akış kayıtları oluşturmak için NSG akış günlüklerini bir depolama hesabına kaydedin. Anormal etkinlikleri araştırmak için gerekliyse, ağ Izleyicisi paket yakalamayı etkinleştirin.
 
-NSG akış günlüklerini etkinleştirme: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+NSG akış günlüklerini etkinleştirme:
 
-Ağ İzleyicisini etkinleştirme: https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+
+Ağ Izleyicisi 'ni etkinleştirme:
+
+https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: ağ tabanlı yetkisiz giriş algılama/yetkisiz erişim önleme sistemleri (KIMLIKLER/IP 'ler) dağıtma
 
@@ -137,11 +143,17 @@ Azure Güvenlik Duvarı ile uyarıları yapılandırma: https://docs.microsoft.c
 
 Güvenilen sertifikalar için HTTPS/SSL özellikli Web uygulamaları için Azure Application Gateway dağıtın.
 
-Application Gateway dağıtma: https://docs.microsoft.com/azure/application-gateway/quick-create-portal
+Application Gateway dağıtma:
 
-Application Gateway HTTPS kullanacak şekilde yapılandırma: https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+https://docs.microsoft.com/azure/application-gateway/quick-create-portal
 
-Azure Web uygulaması ağ geçitleri ile katman 7 yük dengelemesini anlama: https://docs.microsoft.com/azure/application-gateway/overview
+Application Gateway HTTPS kullanacak şekilde yapılandırma:
+
+https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+
+Azure Web uygulaması ağ geçitleri ile katman 7 yük dengelemesini anlayın:
+
+https://docs.microsoft.com/azure/application-gateway/overview
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: ağ güvenlik kurallarının karmaşıklığını ve yönetim yükünü en aza indirme
 
@@ -149,9 +161,11 @@ Azure Web uygulaması ağ geçitleri ile katman 7 yük dengelemesini anlama: htt
 |--|--|--|
 | 1.8 | 1,5 | Müşteri |
 
-Ağ güvenlik gruplarında veya Azure Güvenlik duvarında ağ erişim denetimleri tanımlamak için &nbsp;sanal ağ hizmeti etiketlerini kullanın. Hizmet etiketlerini güvenlik kuralı oluştururken belirli IP adreslerinin yerine kullanabilirsiniz. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı (örn., Apimanaya) belirterek, ilgili hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
+Ağ güvenlik gruplarında veya Azure Güvenlik duvarında ağ erişim denetimleri tanımlamak için sanal ağ hizmeti etiketlerini kullanın. Hizmet etiketlerini güvenlik kuralı oluştururken belirli IP adreslerinin yerine kullanabilirsiniz. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı (örn., Apimanaya) belirterek, ilgili hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
 
-Hizmet etiketlerini anlama ve kullanma: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Hizmet etiketlerini anlayın ve kullanın:
+
+https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: ağ cihazları için standart güvenlik yapılandırmalarının bakımını yapma
 
@@ -161,7 +175,7 @@ Hizmet etiketlerini anlama ve kullanma: https://docs.microsoft.com/azure/virtual
 
 Azure Ilkesiyle ağ kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın.
 
-Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, RBAC denetimleri ve ilkeleri gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Şemayı yeni abonelikler ve ortamlara uygulayabilir, denetim ve yönetimi, sürüm oluşturma aracılığıyla ince ayar yapabilirsiniz.
+Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, RBAC denetimleri ve ilkeleri gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Şema ' i yeni aboneliklere uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetime ince ayar yapabilirsiniz.
 
 Azure Ilkesini yapılandırma ve yönetme:
 

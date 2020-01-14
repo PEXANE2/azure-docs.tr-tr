@@ -1,9 +1,9 @@
 ---
-title: Yedekleme ilkelerini StorSimple Snapshot Manager | Microsoft Docs
-description: StorSimple Snapshot Manager MMC ek bileşeninde oluşturmak ve zamanlanmış yedeklemeleri denetleyen yedekleme ilkelerini yönetmek için nasıl kullanılacağını açıklar.
+title: StorSimple Snapshot Manager yedekleme ilkeleri | Microsoft Docs
+description: Zamanlanmış yedeklemeleri denetleyen yedekleme ilkelerini oluşturmak ve yönetmek için StorSimple Snapshot Manager MMC ek bileşeninin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
@@ -13,84 +13,84 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: 7dac26b058b959011e38b4373369b8a1115d2705
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 7b2df6c8384e78094d80a17d8982b0db9edf73e1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687270"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933353"
 ---
-# <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Yedekleme ilkeleri oluşturma ve yönetme için StorSimple Snapshot Manager'ı kullanın
+# <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Yedekleme ilkeleri oluşturmak ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
-Bir yedekleme ilkesine birim verilerinizi yerel olarak veya bulutta yedeklemek için bir zamanlama oluşturur. Bir yedekleme ilkesi oluşturduğunuzda, bekletme ilkesi belirtebilirsiniz. (En fazla 64 anlık görüntüleri tutabilirsiniz.) Yedekleme ilkeleri hakkında daha fazla bilgi için bkz. [yedekleme türleri](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) içinde [StorSimple 8000 serisi: bir karma bulut çözümü](storsimple-overview.md).
+Yedekleme ilkesi birim verilerini yerel olarak veya bulutta yedeklemeye yönelik bir zamanlama oluşturur. Bir yedekleme ilkesi oluşturduğunuzda, bir bekletme ilkesi de belirtebilirsiniz. (En fazla 64 anlık görüntü tutabilirsiniz.) Yedekleme ilkeleri hakkında daha fazla bilgi için bkz. [StorSimple 8000 serisinde yedekleme türleri: karma bulut çözümü](storsimple-overview.md). [](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies)
 
 Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
 
-* Bir yedekleme ilkesi oluşturma
-* Yedekleme ilkesini Düzenle
+* Yedekleme ilkesi oluştur
+* Yedekleme ilkesini düzenleme
 * Yedekleme ilkesini silme
 
-## <a name="create-a-backup-policy"></a>Bir yedekleme ilkesi oluşturma
+## <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluştur
 Yeni bir yedekleme ilkesi oluşturmak için aşağıdaki yordamı kullanın.
 
 #### <a name="to-create-a-backup-policy"></a>Bir yedekleme ilkesi oluşturmak için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde sağ **yedekleme ilkeleri**, tıklatıp **yedekleme İlkesi Oluştur**.
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **yedekleme ilkeleri**' ne sağ tıklayın ve **yedekleme İlkesi Oluştur**' a tıklayın.
 
-    ![Bir yedekleme ilkesi oluşturma](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
+    ![Yedekleme ilkesi oluştur](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
 
-    **Bir ilke oluşturmak** iletişim kutusu görüntülenir.
+    **Ilke oluştur** iletişim kutusu görüntülenir.
 
-    ![İlke - Genel sekmesi oluştur](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
-3. Üzerinde **genel** sekmesinde, aşağıdaki bilgileri doldurun:
+    ![Ilke oluşturma-Genel sekmesi](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
+3. **Genel** sekmesinde, aşağıdaki bilgileri doldurun:
 
-   1. İçinde **adı** metin kutusunda, ilke için bir ad yazın.
-   2. İçinde **birim grubu** birim grup adı metin kutusunda, ilke ile ilişkili.
-   3. Şunlardan birini seçin **yerel anlık görüntü** veya **bulut anlık görüntü**.
-   4. Korumak için anlık görüntü sayısını seçin. Seçerseniz **tüm**, 64 anlık görüntüleri olur (maksimum) korunur.
-4. Tıklayın **zamanlama** sekmesi.
+   1. **Ad** metin kutusuna ilke için bir ad yazın.
+   2. **Birim grubu** metin kutusuna ilkeyle ilişkili birim grubunun adını yazın.
+   3. **Yerel anlık görüntü** veya **bulut anlık görüntüsü**seçin.
+   4. Tutulacak anlık görüntü sayısını seçin. **Tümü**' nü seçerseniz, 64 anlık görüntü korunur (maksimum).
+4. **Zamanlama** sekmesine tıklayın.
 
-    ![İlke - zamanlama sekmesi oluştur](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
-5. Üzerinde **zamanlama** sekmesinde, aşağıdaki bilgileri doldurun:
+    ![Ilke oluşturma-Zamanlama sekmesi](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
+5. **Zamanla** sekmesinde, aşağıdaki bilgileri doldurun:
 
-   1. Tıklayın **etkinleştirme** sonraki yedekleme işini zamanlamak için onay kutusu.
-   2. Altında **ayarları**seçin **bir kez**, **günlük**, **haftalık**, veya **aylık**.
-   3. İçinde **Başlat** metin kutusuna Takvim simgesine tıklayın ve bir başlangıç tarihini seçin.
-   4. Altında **Gelişmiş ayarlar**, isteğe bağlı bir yineleme zamanlamaları ve bitiş tarihi ayarlayabilirsiniz.
-   5. **Tamam**'ı tıklatın.
+   1. Sonraki yedeklemeyi zamanlamak için **Etkinleştir** onay kutusuna tıklayın.
+   2. **Ayarlar**altında **bir kez**, **günlük**, **haftalık**veya **aylık**' ı seçin.
+   3. **Başlat** metin kutusunda Takvim simgesine tıklayın ve bir başlangıç tarihi seçin.
+   4. **Gelişmiş ayarlar**altında, isteğe bağlı yineleme zamanlamaları ve bitiş tarihi ayarlayabilirsiniz.
+   5. **Tamam**’a tıklayın.
 
-Yedekleme ilkesini oluşturduktan sonra aşağıdaki bilgiler gözükür **sonuçları** bölmesi:
+Bir yedekleme ilkesi oluşturduktan sonra, **sonuçlar** bölmesinde aşağıdaki bilgiler görüntülenir:
 
-* **Adı** – yedekleme ilkesi adı.
-* **Tür** – yerel anlık görüntü veya Bulut anlık görüntüsü.
-* **Birim grubu** -ilkeyle ilişkili birim grubu.
-* **Bekletme** – anlık görüntü sayısını korunur; sınır 64'tür.
-* **Oluşturulan** – bu ilkenin oluşturulduğu tarih.
-* **Etkin** : ilke şu anda etkin olup: **Doğru** yürürlükte; olduğunu gösterir **False** etkin olmadığını gösterir.
+* **Ad** : yedekleme ilkesinin adı.
+* **Tür** – yerel anlık görüntü veya bulut anlık görüntüsü.
+* **Birim grubu** – ilkeyle ilişkili birim grubu.
+* **Bekletme** : korunan anlık görüntü sayısı; maksimum değer 64 ' dir.
+* **Oluşturuldu** : Bu ilkenin oluşturulduğu tarih.
+* **Enabled** – ilkenin Şu anda etkin olup olmadığını belirtir: **true** , geçerli olduğunu gösterir; **False** , etkin olmadığını gösterir.
 
-## <a name="edit-a-backup-policy"></a>Yedekleme ilkesini Düzenle
-Mevcut bir yedekleme ilkesi düzenlemek için aşağıdaki yordamı kullanın.
+## <a name="edit-a-backup-policy"></a>Yedekleme ilkesini düzenleme
+Mevcut bir yedekleme ilkesini düzenlemek için aşağıdaki yordamı kullanın.
 
-#### <a name="to-edit-a-backup-policy"></a>Bir yedekleme ilkesi düzenlemek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde tıklayın **yedekleme ilkeleri** düğümü. Yedekleme ilkelerini görünür **sonuçları** bölmesi.
-3. Düzenleyin ve ardından istediğiniz ilkesine sağ **Düzenle**.
+#### <a name="to-edit-a-backup-policy"></a>Bir yedekleme ilkesini düzenlemek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **yedekleme ilkeleri** düğümüne tıklayın. Tüm yedekleme ilkeleri **sonuçlar** bölmesinde görünür.
+3. Düzenlemek istediğiniz ilkeye sağ tıklayın ve ardından **Düzenle**' ye tıklayın.
 
-    ![Yedekleme ilkesini Düzenle](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png)
-4. Zaman **bir ilke oluşturmak** penceresi görüntülenirse, değişikliklerinizi girin ve ardından **Tamam**.
+    ![Yedekleme ilkesini düzenleme](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png)
+4. **Ilke oluştur** penceresi göründüğünde, değişikliklerinizi girin ve ardından **Tamam**' a tıklayın.
 
 ## <a name="delete-a-backup-policy"></a>Yedekleme ilkesini silme
-Bir yedekleme İlkesi silmek için aşağıdaki yordamı kullanın.
+Bir yedekleme ilkesini silmek için aşağıdaki yordamı kullanın.
 
-#### <a name="to-delete-a-backup-policy"></a>Bir yedekleme İlkesi silinemedi
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde tıklayın **yedekleme ilkeleri** düğümü. Yedekleme ilkelerini görünür **sonuçları** bölmesi.
-3. Silin ve ardından istediğiniz yedekleme ilkesine sağ **Sil**.
-4. Onay iletisi göründüğünde tıklayın **Evet**.
+#### <a name="to-delete-a-backup-policy"></a>Bir yedekleme ilkesini silmek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **yedekleme ilkeleri** düğümüne tıklayın. Tüm yedekleme ilkeleri **sonuçlar** bölmesinde görünür.
+3. Silmek istediğiniz yedekleme ilkesini sağ tıklatın ve ardından **Sil**' e tıklayın.
+4. Onay iletisi göründüğünde **Evet**' e tıklayın.
 
-    ![Yedek İlkesi onayını Sil](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
+    ![Yedek ilkesi onayını sil](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bilgi edinmek için nasıl [StorSimple çözümünüzü yönetmek için StorSimple Snapshot Manager kullanmak](storsimple-snapshot-manager-admin.md).
-* Bilgi edinmek için nasıl [yedekleme işleri görüntüleme ve yönetme için StorSimple Snapshot Manager kullanmak](storsimple-snapshot-manager-manage-backup-jobs.md).
+* StorSimple [çözümünüzü yönetmek Için storsimple Snapshot Manager](storsimple-snapshot-manager-admin.md)nasıl kullanacağınızı öğrenin.
+* [StorSimple Snapshot Manager kullanarak yedekleme işlerini görüntüleme ve yönetme](storsimple-snapshot-manager-manage-backup-jobs.md)hakkında bilgi edinin.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a956638e8bd74c974012834ca650195e5bee37e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 24aa0d3d3f12934c54ac9aaa5ab8ae5c0d710825
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949449"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930499"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP temel kimlik doğrulaması kullanarak yeniden takip eden hizmetlerinizin güvenliğini sağlama
 
@@ -28,7 +28,7 @@ Bu makalede, bakım dahil olmak üzere yalnızca doğrulanan kullanıcıların A
 
 Daha fazla bilgi için bkz. [ASP.NET Web API 'de temel kimlik doğrulaması](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Azure AD B2C Kullanıcı yolculuğu makalesindeki talep alışverişlerinde tümleştirme REST API](active-directory-b2c-custom-rest-api-netfw.md) adımları uygulayın.
 
@@ -249,7 +249,7 @@ Yeniden deneme hizmetiniz istemci KIMLIĞI (Kullanıcı adı) ve gizli anahtar t
 
 7. **Anahtar kullanımı**için **imza**' yı seçin.
 
-8. **Oluştur**'u seçin.
+8. **Oluştur**’u seçin.
 
 9. `B2C_1A_B2cRestClientId` anahtarını oluşturduğunuzdan emin olun.
 
@@ -270,7 +270,7 @@ Yeniden deneme hizmetiniz istemci KIMLIĞI (Kullanıcı adı) ve gizli anahtar t
 
 7. **Anahtar kullanımı**için **imza**' yı seçin.
 
-8. **Oluştur**'u seçin.
+8. **Oluştur**’u seçin.
 
 9. `B2C_1A_B2cRestClientSecret` anahtarını oluşturduğunuzdan emin olun.
 
@@ -303,17 +303,19 @@ Yeniden deneme hizmetiniz istemci KIMLIĞI (Kullanıcı adı) ve gizli anahtar t
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>5\. Adım: ilkeyi kiracınıza yükleme
 
-1. [Azure Portal](https://portal.azure.com), [Azure AD B2C kiracınızın bağlamına](active-directory-b2c-navigate-to-b2c-context.md)geçin ve ardından **Azure AD B2C**' yı açın.
+1. [Azure Portal](https://portal.azure.com), Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
-2. **Kimlik deneyimi çerçevesini**seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 
-3. **Tüm ilkeleri**açın.
+1. **Kimlik deneyimi çerçevesini**seçin.
 
-4. **Ilkeyi karşıya yükle**' yi seçin.
+1. **Tüm ilkeleri**açın.
 
-5. Varsa **Ilkenin üzerine yaz** onay kutusunu seçin.
+1. **Ilkeyi karşıya yükle**' yi seçin.
 
-6. *TrustFrameworkExtensions. xml* dosyasını karşıya yükleyin ve ardından doğrulamayı geçirdiğinizden emin olun.
+1. Varsa **Ilkenin üzerine yaz** onay kutusunu seçin.
+
+1. *TrustFrameworkExtensions. xml* dosyasını karşıya yükleyin ve ardından doğrulamayı geçirdiğinizden emin olun.
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>6\. Adım: Şimdi Çalıştır 'ı kullanarak özel ilkeyi test etme
 

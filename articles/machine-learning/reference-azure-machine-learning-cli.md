@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 355640a900411ccedffa587824694343067817be
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 5a2acb3a6bd7401de2a5b934f539adbb63c3f129
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536323"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930391"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning için CLı uzantısını kullanın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -262,6 +262,65 @@ Aşağıdaki komutlarda, çalışma alanınız için Azure Machine Learning [ort
     ```
 
     Daha fazla bilgi için bkz. [az ml Environment Download](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download).
+
+### <a name="environment-configuration-schema"></a>Ortam yapılandırma şeması
+
+`az ml environment scaffold` komutunu kullandıysanız, CLı ile özel ortam yapılandırması oluşturmak için değiştirilebilen ve kullanılabilecek bir şablon `azureml_environment.json` dosyası oluşturur. En üst düzey nesne, Python SDK 'daki [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) sınıfıyla gevşek olarak eşlenir. 
+
+```json
+{
+    "name": "testenv",
+    "version": null,
+    "environmentVariables": {
+        "EXAMPLE_ENV_VAR": "EXAMPLE_VALUE"
+    },
+    "python": {
+        "userManagedDependencies": false,
+        "interpreterPath": "python",
+        "condaDependenciesFile": null,
+        "baseCondaEnvironment": null
+    },
+    "docker": {
+        "enabled": false,
+        "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+        "baseDockerfile": null,
+        "sharedVolumes": true,
+        "shmSize": "2g",
+        "arguments": [],
+        "baseImageRegistry": {
+            "address": null,
+            "username": null,
+            "password": null
+        }
+    },
+    "spark": {
+        "repositories": [],
+        "packages": [],
+        "precachePackages": true
+    },
+    "databricks": {
+        "mavenLibraries": [],
+        "pypiLibraries": [],
+        "rcranLibraries": [],
+        "jarLibraries": [],
+        "eggLibraries": []
+    },
+    "inferencingStackVersion": null
+}
+```
+
+Aşağıdaki tabloda JSON dosyasındaki her üst düzey alan, türü ve bir açıklama ayrıntıları verilmiştir. Bir nesne türü Python SDK 'dan bir sınıfa bağlanmışsa, Python sınıfında her bir JSON alanı ve genel değişken adı arasında gevşek bir 1:1 eşleşmesi vardır. Bazı durumlarda alan, sınıf değişkeni yerine bir Oluşturucu bağımsız değişkenine de eşlenir. Örneğin, `environmentVariables` alanı [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) sınıfındaki `environment_variables` değişkenine eşlenir.
+
+| JSON alanı | Tür | Açıklama |
+|---|---|---|
+| `name` | `string` | Ortamın adı. **Microsoft** veya **AzureML**ile ad başlatma. |
+| `version` | `string` | Ortamın sürümü. |
+| `environmentVariables` | `{string: string}` | Ortam değişkeni adlarının ve değerlerinin karma eşlemesi. |
+| `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py) | Hedef işlem kaynağında kullanılacak Python ortamını ve yorumlayıcı 'yı tanımlayan nesne. |
+| `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) | Ortamın belirtimlerine göre oluşturulan Docker görüntüsünü özelleştirmek için ayarları tanımlar. |
+| `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py) | Bölüm Spark ayarlarını yapılandırır. Yalnızca Framework, PySpark olarak ayarlandığında kullanılır. |
+| `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py) | Databricks kitaplığı bağımlılıklarını yapılandırır. |
+| `inferencingStackVersion` | `string` | Görüntüye eklenen ınırm yığın sürümünü belirtir. İkinci dereceden bir yığın eklemekten kaçınmak için, bu alanı `null`bırakın. Geçerli değer: "en son". |
 
 ## <a name="ml-pipeline-management"></a>ML işlem hattı yönetimi
 

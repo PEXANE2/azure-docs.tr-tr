@@ -2,24 +2,24 @@
 title: Azure Site Recovery ile Azure ile Azure olağanüstü durum kurtarma ile ilgili bağlantı sorunlarını giderme
 description: Olağanüstü durum kurtarma için Azure sanal makinelerini çoğalttığınızda oluşan hata ve sorunları giderme
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 08/05/2019
-ms.author: asgang
-ms.openlocfilehash: 4995a4086c471a06fe859febfd2d1af7fbb22a76
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: 41b5203c328243c9ef7cc74e6b9771c677a54c7c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622445"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933418"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure-Azure VM ağ bağlantısı sorunlarını giderme
 
 Bu makalede, Azure sanal makinelerini bir bölgeden başka bir bölgeye çoğalttığınızda ve kurtardığınızda ağ bağlantısıyla ilgili yaygın sorunlar açıklanmaktadır. Ağ gereksinimleri hakkında daha fazla bilgi için bkz. [Azure VM 'leri çoğaltmaya yönelik bağlantı gereksinimleri](azure-to-azure-about-networking.md).
 
-Site Recovery çoğaltmanın çalışması için, VM 'den belirli URL 'Lere veya IP aralıklarına giden bağlantı gerekir. VM 'niz bir güvenlik duvarının arkasındaysa veya giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kuralları kullanıyorsa, bu sorunlardan birini görebilirsiniz.
+Site Recovery çoğaltması için iş, giden bağlantı için özel URL veya IP aralıkları VM'den gerekli. Sanal makinenize bir güvenlik duvarının arkasındaysa ya da giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kuralları kullanıyorsa bu sorunlardan biri karşılaşıyor.
 
 **URL** | **Ayrıntılar**  
 --- | ---
@@ -28,30 +28,30 @@ login.microsoftonline.com | Site Recovery hizmeti URL 'Lerinde yetkilendirme ve 
 *.hypervrecoverymanager.windowsazure.com | Site Recovery hizmeti iletişiminin sanal makineden gerçekleşebilmesi için gereklidir. Güvenlik duvarı proxy 'si, IP 'Leri destekliyorsa, karşılık gelen ' Site Recovery IP ' kullanabilirsiniz.
 *.servicebus.windows.net | Site Recovery izleme ve tanılama verilerinin VM 'den yazılabilmesini sağlamak için gereklidir. Güvenlik duvarı proxy 'si, IP 'Leri destekliyorsa, karşılık gelen ' Site Recovery Izleme IP ' kullanabilirsiniz.
 
-## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL 'Ler veya IP aralıkları için giden bağlantı (hata kodu 151037 veya 151072)
+## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery hizmeti URL'lerine veya IP aralıkları (hata kodu 151037 veya 151072) için giden bağlantı
 
 ## <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Sorun 1: Azure sanal makinesi Site Recovery kaydedilemedi (151195) </br>
-- **Olası neden** </br>
+- **Olası nedeni** </br>
   - DNS çözümleme hatası nedeniyle Site Recovery uç noktalara bağlantı sağlanamadı.
   - Sanal makine yükünü devretmenize rağmen DNS sunucusuna DR bölgesinden erişilemediğinde yeniden koruma sırasında bu durum daha sık görülür.
 
-- **Çözünürlüğüne**
-   - Özel DNS kullanıyorsanız, olağanüstü durum kurtarma bölgesinden DNS sunucusuna erişilebildiğinden emin olun. Özel bir DNS olup olmadığınızı denetlemek için VM > olağanüstü durum kurtarma ağı > DNS sunucuları ' na gidin. DNS sunucusuna sanal makineden erişmeyi deneyin. Erişilebilir değilse, DNS sunucusu üzerinden yük devrederden veya DR ağı ile DNS arasında site satırı oluşturarak erişilebilir hale getirin.
+- **Çözümleme**
+   - Özel DNS kullanıyorsanız, olağanüstü durum kurtarma bölgesinden DNS sunucusuna erişilebildiğinden emin olun. Sanal Makineye gidin özel bir DNS olup olmadığını denetlemek için > olağanüstü durum kurtarma ağı > DNS sunucuları. DNS sunucusuna sanal makineden erişmeyi deneyin. Erişilebilir değilse, DNS sunucusu üzerinden yük devrederden veya DR ağı ile DNS arasında site satırı oluşturarak erişilebilir hale getirin.
 
-    ![com-hata](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
+    ![COM hatası](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
 
 
-## <a name="issue-2-site-recovery-configuration-failed-151196"></a>Sorun 2: Site Recovery yapılandırma başarısız oldu (151196)
+## <a name="issue-2-site-recovery-configuration-failed-151196"></a>Sorun 2: (151196) Site Recovery yapılandırması başarısız oldu
 
 > [!NOTE]
 > Sanal makineler **Standart** iç yük dengeleyicinin arkasındaysa, varsayılan olarak O365 IP 'lerine (yani, Login.microsoftonline.com) erişemez. **Temel** iç yük dengeleyici türüne değiştirin veya [makalede](https://aka.ms/lboutboundrulescli)belirtilen şekilde giden erişim oluşturun.
 
-- **Olası neden** </br>
-  - Office 365 kimlik doğrulaması ve kimlik ıP4 uç noktalarına bağlantı sağlanamadı.
+- **Olası nedeni** </br>
+  - Office 365 kimlik doğrulaması ve kimlik IP4 uç noktaları için bağlantı kurulamıyor.
 
-- **Çözünürlüğüne**
-  - Kimlik doğrulaması için Office 365 IP aralıklarına gereken Azure Site Recovery erişimi.
-    VM 'deki giden ağ bağlantısını denetlemek için Azure ağ güvenlik grubu (NSG) kuralları/güvenlik duvarı proxy 'si kullanıyorsanız O365 ıpranges iletişime izin verildiğinden emin olun. Azure AD 'ye karşılık gelen tüm IP adreslerine erişime izin vermek için [Azure Active Directory (Azure AD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun
+- **Çözümleme**
+  - Azure Site Recovery, Office 365 IP aralıkları erişimi kimlik doğrulaması için gereklidir.
+    VM üzerinde giden ağ bağlantısını denetlemek için Azure ağ güvenlik grubu (NSG) kuralları/güvenlik duvarı proxy'si kullanıyorsanız, O365 aralıkları için iletişime izin vermek emin olun. Azure AD 'ye karşılık gelen tüm IP adreslerine erişime izin vermek için [Azure Active Directory (Azure AD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun
       - Daha sonra Azure AD 'ye yeni adresler eklenirse, yeni NSG kuralları oluşturmanız gerekir.
 
 ### <a name="example-nsg-configuration"></a>Örnek NSG yapılandırması
@@ -90,31 +90,31 @@ Bu kurallar, çoğaltmanın hedef bölgeden kaynak bölgeye yük devretme sonras
    **Konum** | **Site Recovery IP adresi** |  **Site Recovery izleme IP adresi**
     --- | --- | ---
    Orta ABD | 13.82.88.226 | 104.45.147.24
-## <a name="issue-3-site-recovery-configuration-failed-151197"></a>Sorun 3: Site Recovery yapılandırma başarısız oldu (151197)
-- **Olası neden** </br>
-  - Hizmet uç noktalarına Azure Site Recovery bağlantı sağlanamadı.
+## <a name="issue-3-site-recovery-configuration-failed-151197"></a>Sorun 3: (151197) Site Recovery yapılandırması başarısız oldu
+- **Olası nedeni** </br>
+  - Azure Site Recovery Hizmeti uç noktalarına bağlantı kurulamıyor.
 
-- **Çözünürlüğüne**
-  - Bölgeye göre [SITE Recovery IP aralıklarına](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) gereken Azure Site Recovery erişimi. Gerekli IP aralıklarının sanal makineden erişilebilir olduğundan emin olun.
+- **Çözümleme**
+  - Azure Site Recovery bölgeye bağlı olarak [Site Recovery IP aralıklarına](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) erişim gerektiriyor. Gerekli IP aralıklarının sanal makineden erişilebildiğinden emin olun.
 
 
 ## <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Sorun 4: ağ trafiği şirket içi proxy sunucusu üzerinden geçtiğinde A2A çoğaltma başarısız oldu (151072)
-- **Olası neden** </br>
+- **Olası nedeni** </br>
   - Özel ara sunucu ayarları geçersiz ve Azure Site Recovery Mobility hizmeti Aracısı IE 'den proxy ayarlarını otomatik olarak algılamadı
 
 
-- **Çözünürlüğüne**
-  1. Mobility hizmeti Aracısı, Linux üzerinde Windows ve/etc/Environment üzerinde IE 'deki proxy ayarlarını algılar.
+- **Çözümleme**
+  1. Mobility hizmeti aracısı için proxy ayarlarını Windows üzerinde IE ve Linux'ta /etc/environment algılar.
   2. Proxy 'yi yalnızca Azure Site Recovery Mobility hizmeti için ayarlamayı tercih ediyorsanız, şu adreste bulunan ProxyInfo. conf dosyasında proxy ayrıntılarını sağlayabilirsiniz:</br>
-     - ***Linux*** üzerinde ``/usr/local/InMage/config/``
-     - ***Windows*** üzerinde ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
+     - ``/usr/local/InMage/config/`` üzerinde ***Linux***
+     - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` üzerinde ***Windows***
   3. ProxyInfo.conf dosyasında ara sunucu ayarları şu INI biçiminde bulunmalıdır.</br>
-                *Proxy*</br>
+                *[proxy]*</br>
                 *Adres =http://1.2.3.4*</br>
-                *Bağlantı noktası = 567*</br>
+                *Bağlantı noktası 567 =*</br>
   4. Azure Site Recovery Mobility hizmeti Aracısı yalnızca ***kimliği doğrulanmamış proxy 'leri***destekler.
 
-### <a name="fix-the-problem"></a>Sorunu çözme
+### <a name="fix-the-problem"></a>Sorunu
 [Gerekli URL 'lere](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) veya [gerekli IP aralıklarına](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)izin vermek için [Ağ Kılavuzu belgesindeki](site-recovery-azure-to-azure-networking-guidance.md)adımları izleyin.
 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 1354bd2895a8fe6e8aa1f12cd92295c77ca2d4b2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: ceb82bf729470f9996bc9ecc766329a0d1242ec4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564172"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930022"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Güvenlik denetimi: günlüğe kaydetme ve Izleme
 
@@ -67,7 +67,7 @@ Azure Izleyici ile platform günlükleri ve ölçümleri toplama:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings
 
-Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama:
+Azure 'da günlük ve farklı günlük türlerini anlayın:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
@@ -79,9 +79,13 @@ https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
 İşlem kaynağının Microsoft 'a ait olması durumunda, Microsoft bunu izlemekten sorumludur. İşlem kaynağı kuruluşunuza aitse, bunu izlemek sizin sorumluluğunuzdadır. İşletim sistemini izlemek için Azure Güvenlik Merkezi 'ni kullanabilirsiniz. İşletim sisteminden Güvenlik Merkezi tarafından toplanan veriler işletim sistemi türü ve sürümü, işletim sistemi (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açan kullanıcı içerir. Log Analytics Aracısı Ayrıca kilitlenme bilgi döküm dosyalarını da toplar.
 
-Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama: https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm
+Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama:
 
-Azure Güvenlik Merkezi veri toplamayı anlama: https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection
+https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm
+
+Azure Güvenlik Merkezi veri toplamayı anlama:
+
+https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection
 
 ## <a name="25-configure-security-log-storage-retention"></a>2,5: güvenlik günlüğü depolama bekletmesini yapılandırma
 
@@ -91,7 +95,9 @@ Azure Güvenlik Merkezi veri toplamayı anlama: https://docs.microsoft.com/azure
 
 Azure Izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics çalışma alanı saklama süresini ayarlayın. Uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
-Log Analytics çalışma alanları için günlük tutma parametrelerini ayarlama: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Log Analytics çalışma alanları için günlük bekletme parametreleri ayarlama:
+
+https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 ## <a name="26-monitor-and-review-logs"></a>2,6: günlükleri izleme ve gözden geçirme
 
@@ -107,7 +113,7 @@ Azure Sentinel 'i ekleme:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Log Analytics çalışma alanını anlama:
+Log Analytics çalışma alanını anlayın:
 
 https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 

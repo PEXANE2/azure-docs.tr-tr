@@ -1,19 +1,19 @@
 ---
 title: Market ölçüm hizmeti kullanılarak ölçülen faturalandırma | Azure Marketi
 description: Bu belge, esnek faturalama modelleriyle SaaS tekliflerini yayımlayan ISV 'Ler için bir kılavuzdur.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 54b59cfecbbba6b71cf301aa4872892825d4b675
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f1b60831e08383ee455cd3afbfbc21ed27445ffc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827923"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934180"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Market ölçüm hizmeti kullanılarak ölçülen faturalandırma
 

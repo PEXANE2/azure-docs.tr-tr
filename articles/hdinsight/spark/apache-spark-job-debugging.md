@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 110a8e86fc1916254ab914630ce10d2b7ae073b7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: bcf2f97e855126c86dbb1d74cd430704e2af3af1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775342"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932128"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight üzerinde çalışan hata ayıklama Apache Spark işleri
 
@@ -21,7 +21,7 @@ Bu makalede, HDInsight kümelerinde çalışan [Apache Spark](https://spark.apac
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
@@ -116,7 +116,7 @@ Bir iş tamamlandıktan sonra, işle ilgili bilgiler Spark geçmiş sunucusunda 
 * [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 'ta Apache Spark kullanarak Web sitesi günlüğü Analizi](apache-spark-custom-library-website-log-analysis.md)
 * [HDInsight 'ta Apache Spark kullanarak Application Insight telemetri veri analizi](apache-spark-analyze-application-insight-logs.md)
-* [Dağıtılmış derin öğrenme için Azure HDInsight Spark Caffe kullanma](apache-spark-deep-learning-caffe.md)
+
 
 ### <a name="for-spark-developers"></a>Spark geliştiricileri için
 

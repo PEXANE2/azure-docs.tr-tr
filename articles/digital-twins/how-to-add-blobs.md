@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6ab9d0ae07978e69bebb0fc24c8965cce971cfd5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c85db05e6feeea43023c2391998f837348caed4e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082324"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929708"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Azure dijital TWINS 'de nesnelere blob ekleme
 
@@ -36,7 +36,7 @@ Blob 'ları belirli uç noktalara ve ilgili işlevlere yüklemek için çok par�
 
 Dört adet ana JSON şemaları şunlardır:
 
-[![JSON şemaları](media/how-to-add-blobs/blob-models-img.png)](media/how-to-add-blobs/blob-models-img.png#lightbox)
+[![JSON şemaları](media/how-to-add-blobs/blob-models-swagger-img.png)](media/how-to-add-blobs/blob-models-swagger-img.png#lightbox)
 
 JSON blob meta verileri aşağıdaki modele uyar:
 
@@ -54,7 +54,7 @@ JSON blob meta verileri aşağıdaki modele uyar:
 | Öznitelik | Tür | Açıklama |
 | --- | --- | --- |
 | **parentId** | Dize | Blobun ile ilişkilendirilecek üst varlık (boşluklar, cihazlar veya kullanıcılar) |
-| **name** |Dize | Blob için insan dostu bir ad |
+| **Adı** |Dize | Blob için insan dostu bir ad |
 | **type** | Dize | Blob türü- *Type* ve *TypeId* kullanılamaz  |
 | **typeId** | Tamsayı | Blob türü KIMLIĞI- *Type* ve *TypeId* kullanılamaz |
 | **subtype** | Dize | Blob alt türü- *Subtype* ve *subtypeıd* kullanılamaz |
@@ -109,7 +109,7 @@ Ayrı olarak döndürülen blob 'lar aşağıdaki JSON şemasına uygundur:
 | Öznitelik | Tür | Açıklama |
 | --- | --- | --- |
 | **id** | Dize | Blob için benzersiz tanımlayıcı |
-| **name** |Dize | Blob için insan dostu bir ad |
+| **Adı** |Dize | Blob için insan dostu bir ad |
 | **parentId** | Dize | Blobun ile ilişkilendirilecek üst varlık (boşluklar, cihazlar veya kullanıcılar) |
 | **type** | Dize | Blob türü- *Type* ve *TypeId* kullanılamaz  |
 | **typeId** | Tamsayı | Blob türü KIMLIĞI- *Type* ve *TypeId* kullanılamaz |
@@ -196,7 +196,7 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
 | YOUR_SPACE_ID | Blobun ilişkilendirileceği alanın KIMLIĞI |
 | PATH_TO_FILE | Metin dosyanızın yolu |
 
-[![kıvrımlı örneği](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
+[![kıvrımlı örneği](media/how-to-add-blobs/http-blob-post-through-curl-img.png)](media/how-to-add-blobs/http-blob-post-through-curl-img.png#lightbox)
 
 Başarılı bir GÖNDERI, yeni Blobun KIMLIĞINI döndürür.
 
@@ -208,7 +208,7 @@ Aşağıdaki bölümlerde, blob ile ilgili temel API uç noktaları ve işlevler
 
 Blob 'ları cihazlara ekleyebilirsiniz. Aşağıdaki görüntüde, yönetim API 'leriniz için Swagger başvuru belgeleri gösterilmektedir. Blob tüketimi için cihazla ilgili API uç noktalarını ve bunlara geçirilecek gerekli yol parametrelerini belirtir.
 
-[Cihaz bloblarını ![](media/how-to-add-blobs/blobs-device-api-img.png)](media/how-to-add-blobs/blobs-device-api-img.png#lightbox)
+[Cihaz bloblarını ![](media/how-to-add-blobs/blobs-device-api-swagger-img.png)](media/how-to-add-blobs/blobs-device-api-swagger-img.png#lightbox)
 
 Örneğin, bir blobu güncelleştirmek veya oluşturmak ve blobu bir cihaza eklemek için, kimliği doğrulanmış bir HTTP PATCH isteği oluşturun:
 
@@ -226,7 +226,7 @@ Başarılı istekler, [daha önce açıklandığı](#blobs-response-data)gıbı 
 
 Ayrıca boşluklara blob 'lar ekleyebilirsiniz. Aşağıdaki görüntüde Blobların işlenmesinden sorumlu tüm alan API uç noktaları listelenmektedir. Ayrıca, bu uç noktalara geçirilecek tüm yol parametrelerini listeler.
 
-[![alanı blob 'ları](media/how-to-add-blobs/blobs-space-api-img.png)](media/how-to-add-blobs/blobs-space-api-img.png#lightbox)
+[![alanı blob 'ları](media/how-to-add-blobs/blobs-space-api-swagger-img.png)](media/how-to-add-blobs/blobs-space-api-swagger-img.png#lightbox)
 
 Örneğin, bir alana eklenmiş bir blob döndürmek için, kimliği doğrulanmış bir HTTP GET isteği oluşturun:
 
@@ -246,7 +246,7 @@ Aynı uç noktaya yönelik bir yama isteği meta veri açıklamalarını güncel
 
 Blob 'ları Kullanıcı modellerine ekleyebilirsiniz (örneğin, bir profil resmini ilişkilendirmek için). Aşağıdaki görüntüde, ilgili Kullanıcı API uç noktaları ve `id`gibi gerekli yol parametreleri gösterilmektedir:
 
-[![Kullanıcı blob 'ları](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
+[![Kullanıcı blob 'ları](media/how-to-add-blobs/blobs-users-api-swagger-img.png)](media/how-to-add-blobs/blobs-users-api-swagger-img.png#lightbox)
 
 Örneğin, bir kullanıcıya eklenmiş bir blobu getirmek için, gerekli form verileriyle birlikte kimliği doğrulanmış bir HTTP GET isteği oluşturun:
 
@@ -262,23 +262,41 @@ Başarılı istekler, [daha önce açıklandığı](#blobs-response-data)gıbı 
 
 ## <a name="common-errors"></a>Sık karşılaşılan hatalar
 
-Yaygın bir hata, doğru başlık bilgilerini sağlamayı içerir:
+* Yaygın bir hata, doğru başlık bilgilerini sağlamayı içerir:
 
-```JSON
-{
-    "error": {
-        "code": "400.600.000.000",
-        "message": "Invalid media type in first section."
-    }
-}
-```
+  ```JSON
+  {
+      "error": {
+          "code": "400.600.000.000",
+          "message": "Invalid media type in first section."
+      }
+  }
+  ```
 
-Bu hatayı çözmek için, genel isteğin uygun bir **Content-Type** üst bilgisine sahip olduğunu doğrulayın:
+  Bu hatayı çözmek için, genel isteğin uygun bir **Content-Type** üst bilgisine sahip olduğunu doğrulayın:
 
-* `multipart/mixed`
-* `multipart/form-data`
+     * `multipart/mixed`
+     * `multipart/form-data`
 
-Ayrıca, her bir çok parçalı öbekin gerektiği şekilde karşılık gelen bir **Içerik türüne** sahip olduğunu doğrulayın.
+  Ayrıca, her bir *çok parçalı öbekin* uygun bir **içerik türü**olduğunu doğrulayın.
+
+* [Uzamsal zeka](concepts-objectmodel-spatialgraph.md)grafiğinizde aynı kaynağa birden fazla BLOB atandığında ikinci bir yaygın hata ortaya çıkar:
+
+  ```JSON
+  {
+      "error": {
+          "code": "400.600.000.000",
+          "message": "SpaceBlobMetadata already exists."
+      }
+  }
+  ```
+
+  > [!NOTE]
+  > **İleti** özniteliği, kaynağa göre değişir. 
+
+  Uzamsal grafikinizdeki her bir kaynağa yalnızca bir blob (her türden) eklenmiş olabilir. 
+
+  Bu hatayı çözmek için, uygun API HTTP PATCH işlemini kullanarak mevcut blobu güncelleştirin. Bunu yaptığınızda, mevcut blob verileri istenen verilerle değiştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

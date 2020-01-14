@@ -2,18 +2,18 @@
 title: Go-to-market Hizmetleri-ticari Market avantajlarınız | Mavisi
 description: Go-to-market Services-yayımcıların kullanabileceği Microsoft kaynakları bu bölümde açıklanmıştır.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
-author: qianw211
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
-ms.author: v-qiwe
-ms.openlocfilehash: 7b563cd90ec3e46dfd2d4420b728cd6f69df40eb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: b8c1034b047e0c72db41bbbbff06feb0bdf06517
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818642"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933916"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -45,7 +45,7 @@ Kullanmaya başlamak için adımlarınız kolaydır:
 2. Ekip, Market teklifi başına "sahip" veya "birincil iletişim" na ulaşır. Düzenli olarak kontrol ettiğiniz bir bireyin ya da diğer adı girmek en iyi uygulamadır: info@company.com gibi diğer adlara gönderilen iletiler genellikle kaybediliyor.
 
 >[!Note]
->Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, lütfen Bulut İş Ortağı Portalı veya Iş Ortağı Merkezi ' nde arayarak söz konusu teklifin sahibi olan kuruluşunuz dahilinde kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa https://aka.ms/marketplacepublishersupportbir destek bileti yükseltebilirsiniz.
+>Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, lütfen Bulut İş Ortağı Portalı veya Iş Ortağı Merkezi ' nde arayarak söz konusu teklifin sahibi olan kuruluşunuz dahilinde kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa https://aka.ms/marketplacepublishersupport bir destek bileti yükseltebilirsiniz.
 
 Tekliflerinizi Market 'te büyürken genişleyebilmeniz için kullanabileceğiniz etkinliklerin kapsamı. Tüm dökümler, kaynakların ve en iyi yöntemlerin self servis e-postasıyla ilgili bir temel düzey iyileştirme önerisi ve promosyon alır.
 
@@ -103,7 +103,7 @@ Microsoft, Market 'in pazarlarını iptal etme ve bu avantajlardan sonlandırma 
 
 Bu teklif, Azure Marketi 'nde veya Microsoft AppSource canlı bir teklifiyle tüm iş ortakları için Ingilizce olarak yürütülür.
 
-Sahte olacak şekilde kanıtlanmış işlemler, [liste, deneme, danışmanlık](#list-trial-and-consulting-benefits) bölümünde, [Transact iş ortağı avantajları](#marketplace-rewards-for-transact-partners) bölümünde ve ayrıntılı program destesi bölümünde belirtildiği gibi bir yayımcının [faturalandırılan satış programı katmanına](https://aka.ms/marketplacepublisherrewards)doğru sayılmaz. [ ](https://aka.ms/marketplacepublisherrewards). Microsoft, sahtekarlık kaldırıldıktan sonra iş ortaklarını gerçek faturalandırılan satışlarına göre uygunluk katmanlarına ayırır. 
+Sahte olacak şekilde kanıtlanmış işlemler, [liste, deneme, danışmanlık](#list-trial-and-consulting-benefits) bölümünde, [Transact iş ortağı avantajları](#marketplace-rewards-for-transact-partners) bölümünde ve [ayrıntılı program destesi](https://aka.ms/marketplacepublisherrewards)bölümünde belirtildiği gibi bir yayımcının [faturalandırılan satış programı katmanına](https://aka.ms/marketplacepublisherrewards)doğru sayılmaz. Microsoft, sahtekarlık kaldırıldıktan sonra iş ortaklarını gerçek faturalandırılan satışlarına göre uygunluk katmanlarına ayırır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

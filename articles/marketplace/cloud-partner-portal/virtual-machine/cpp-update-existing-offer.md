@@ -2,18 +2,18 @@
 title: Azure Marketi 'nde var olan bir VM teklifini güncelleştirme
 description: Azure Marketi 'nde mevcut bir VM teklifinin nasıl güncelleştireceğinizi açıklar.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: ansud
-ms.openlocfilehash: 5cbee909b4bd6353ad8fbe9fcbc126dc4a245012
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 1ba2abb3fbeb1d08ed780669fb94a2ef83cbfb1b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823980"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934240"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Azure Marketi 'nde mevcut bir VM teklifini güncelleştirme
 
@@ -129,7 +129,7 @@ Kullandıkça Öde teklifiniz yayımlandıktan sonra, SKU fiyatlandırmasını d
 
 4.  1x1 GUI 'de fiyatlandırmayı ayarladıysanız, fiyatı kullanıcı arabiriminden doğrudan değiştirebilirsiniz. İçeri/dışarı aktarma elektronik tablosu aracılığıyla fiyatlandırma ayarlarsanız, fiyatları yalnızca içeri/dışarı aktarma özelliği aracılığıyla azaltabilirsiniz.
 
-3.  **Kaydet** düğmesine tıklayın.
+3.  **Save (Kaydet)** düğmesine tıklayın.
 
 4.  Değişikliklerinizi yayımlamak üzere iş akışını başlatmak için **Yayımla** ' ya tıklayın.
 

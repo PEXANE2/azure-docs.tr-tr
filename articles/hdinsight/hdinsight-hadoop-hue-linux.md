@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 8a644beede4089133f88b824fd8d34dddec3b15e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751121"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934574"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop kümelerinde ton 'u yükleyip kullanma
 
@@ -127,6 +127,4 @@ SSH tüneli, bir kez çalışmaya başladıktan sonra, kümedeki tona erişmenin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [HDInsight kümelerine Apache Giraph 'Yi yükler](hdinsight-hadoop-giraph-install-linux.md). HDInsight Hadoop kümelerine Giraph 'yi yüklemek için küme özelleştirmesi ' nı kullanın. Giraph, Hadoop kullanarak grafik işleme gerçekleştirmenize olanak tanır ve Azure HDInsight ile birlikte kullanılabilir.
-
-* [HDInsight kümelerine R 'Yi yükler](hdinsight-hadoop-r-scripts-linux.md). HDInsight Hadoop kümelerine R 'yi yüklemek için küme özelleştirmesi ' nı kullanın. R, istatistiksel bilgi işlem için açık kaynaklı bir dildir ve ortamıdır. İşlevsel ve nesne odaklı programlamanın yönlerini birleştiren yüzlerce yerleşik istatistiksel işlev ve kendi programlama dili sağlar. Ayrıca kapsamlı grafik özellikleri de sağlar.
+[HDInsight kümelerine R 'Yi yükler](hdinsight-hadoop-r-scripts-linux.md). HDInsight Hadoop kümelerine R 'yi yüklemek için küme özelleştirmesi ' nı kullanın. R, istatistiksel bilgi işlem için açık kaynaklı bir dildir ve ortamıdır. İşlevsel ve nesne odaklı programlamanın yönlerini birleştiren yüzlerce yerleşik istatistiksel işlev ve kendi programlama dili sağlar. Ayrıca kapsamlı grafik özellikleri de sağlar.

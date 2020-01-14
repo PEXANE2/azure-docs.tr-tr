@@ -1,23 +1,62 @@
 ---
 title: Kapsayıcılar için Azure Izleyicisini yapılandırma Prometheus tümleştirmesi | Microsoft Docs
-description: Bu makalede, Azure Kubernetes hizmet kümeniz ile Prometheus için Azure Monitor for Container Agent ' ı atık kullanım ölçümlerine nasıl yapılandırabileceğiniz açıklanmaktadır.
+description: Bu makalede, Kubernetes kümeniz ile Prometheus 'dan bir kapsayıcı için Azure Izleyicisini, Azure Izleyici ölçümleri için nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: f1da2142f287bde83be7cede282bd854ce822d23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: b774bf042778ca9118a7bc9f051655b200d87659
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403511"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931415"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Prometheus ölçümlerinin korumasını yapılandırın
 
-[Prometheus](https://prometheus.io/) , popüler bir açık kaynaklı ölçüm izleme çözümüdür ve [bulut Yerel işlem altyapısı](https://www.cncf.io/)'nın bir parçasıdır. Kapsayıcılar için Azure Izleyici, Prometheus ölçümlerini toplamak için sorunsuz bir ekleme deneyimi sağlar. Genellikle, Prometheus 'yi kullanmak için bir depolama ile bir Prometheus sunucusu oluşturmanız ve yönetmeniz gerekir. Azure Izleyici ile tümleştirerek bir Prometheus sunucusu gerekli değildir. Tek yapmanız gereken, dışarı aktardığınız veya yığınlarınızın (uygulamanızın) yanı sıra Azure Izleyici kapsayıcıları için Kapsayıcılı aracı sizin yerinize ıskartaya çıkarabilirsiniz. 
+[Prometheus](https://prometheus.io/) , popüler bir açık kaynaklı ölçüm izleme çözümüdür ve [bulut Yerel işlem altyapısı](https://www.cncf.io/)'nın bir parçasıdır. Kapsayıcılar için Azure Izleyici, Prometheus ölçümlerini toplamak için sorunsuz bir ekleme deneyimi sağlar. Genellikle, Prometheus 'yi kullanmak için bir depolama ile bir Prometheus sunucusu ayarlamanız ve yönetmeniz gerekir. Azure Izleyici ile tümleştirerek bir Prometheus sunucusu gerekli değildir. Tek yapmanız gereken, dışarı aktardığınız veya yığınlarınızın (uygulamanızın) yanı sıra Azure Izleyici kapsayıcıları için Kapsayıcılı aracı sizin yerinize ıskartaya çıkarabilirsiniz. 
 
 ![Prometheus için kapsayıcı izleme mimarisi](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
 >[!NOTE]
->Scraping Prometheus ölçümleri için desteklenen en düşük aracı sürümü ciprod07092019 veya üzeri ve `KubeMonAgentEvents` tablosundaki yapılandırma ve aracı hatalarını yazmak için desteklenen aracı sürümü ciprod10112019. Aracı sürümleri ve her sürüme nelerin dahil olduğu hakkında ek bilgi için bkz. [Aracı sürüm notları](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod). Aracı sürümünüzü doğrulamak için **düğüm** sekmesinde bir düğüm seçin ve Özellikler bölmesinde **Aracı görüntüsü etiketi** özelliğinin değeri.
+>Scraping Prometheus ölçümleri için desteklenen en düşük aracı sürümü ciprod07092019 veya üzeri ve `KubeMonAgentEvents` tablosundaki yapılandırma ve aracı hatalarını yazmak için desteklenen aracı sürümü ciprod10112019. Aracı sürümleri ve her sürüme dahil olanlar hakkında daha fazla bilgi için bkz. [Aracı sürüm notları](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod). Aracı sürümünüzü doğrulamak için **düğüm** sekmesinde bir düğüm seçin ve Özellikler bölmesinde **Aracı görüntüsü etiketi** özelliğinin değeri.
+
+Prometheus ölçümlerinin scraping değeri, üzerinde barındırılan Kubernetes kümeleriyle desteklenir:
+
+- Azure Kubernetes Service (AKS)
+- Azure Container Instances
+- Azure Stack veya şirket içi
+- Azure Red Hat OpenShift
+
+>[!NOTE]
+>Azure Red Hat OpenShift için, *OpenShift-Azure-Logging* ad alanında bir şablon configmap dosyası oluşturulur. Aracıdan etkin bir şekilde hurdaya, ölçüm veya veri koleksiyonu için yapılandırılmamış.
+>
+
+## <a name="azure-red-hat-openshift-prerequisites"></a>Azure Red Hat OpenShift önkoşulları
+
+Başlamadan önce Kapsayıcılı aracıyı ve Prometheus scraping ayarlarını yapılandırmak için Azure Red Hat Openshıft kümenizin müşteri kümesi Yöneticisi rolünün bir üyesi olduğunu doğrulayın. *OSA-müşteri-Yöneticiler* grubunun bir üyesi olduğunuzu doğrulamak için şu komutu çalıştırın:
+
+``` bash
+  oc get groups
+```
+
+Çıktı şuna benzer:
+
+``` bash
+NAME                  USERS
+osa-customer-admins   <your-user-account>@<your-tenant-name>.onmicrosoft.com
+```
+
+*OSA-müşteri-yönetici* grubu ' na sahipseniz, aşağıdaki komutu kullanarak `container-azm-ms-agentconfig` configmap ' i listeleyebilir:
+
+``` bash
+oc get configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
+
+Çıktı şuna benzer:
+
+``` bash
+NAME                           DATA      AGE
+container-azm-ms-agentconfig   4         56m
+```
 
 ### <a name="prometheus-scraping-settings"></a>Prometheus scraping ayarları
 
@@ -53,11 +92,22 @@ ConfigMaps genel bir liste ve aracıya yalnızca bir ConfigMap uygulanmış olab
 
 ## <a name="configure-and-deploy-configmaps"></a>ConfigMaps yapılandırma ve dağıtma
 
-ConfigMap yapılandırma dosyanızı yapılandırmak ve kümenize dağıtmak için aşağıdaki adımları gerçekleştirin.
+Kubernetes kümeleri için ConfigMap yapılandırma dosyanızı yapılandırmak üzere aşağıdaki adımları gerçekleştirin.
 
 1. ConfigMap YAML dosyasını şablon olarak [indirin](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) ve kapsayıcı-AZM-MS-agentconfig. YAML olarak kaydedin.
 
-2. ConfigMap YAML dosyasını, özelleştirmelerinizle birlikte bulunan ve bunları hurdaya, Prometheus ölçümleriyle düzenleyin.
+   >[!NOTE]
+   >ConfigMap şablonu kümede zaten mevcut olduğundan, bu adım Azure Red Hat OpenShift ile çalışırken gerekli değildir.
+
+2. ConfigMap YAML dosyasını, özelleştirmelerinizle birlikte bulunan ve bunları hurdaya, Prometheus ölçümleriyle düzenleyin. Azure Red Hat OpenShift için ConfigMap YAML dosyasını düzenliyorsanız, önce dosyayı bir metin düzenleyicisinde açmak için `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` komutunu çalıştırın.
+
+    >[!NOTE]
+    >Mutabakatın önlenmesi için- *AZM-MS-agentconfig* configmap meta verisinin altına aşağıdaki ek açıklama `openshift.io/reconcile-protect: "true"` eklenmelidir. 
+    >```
+    >metadata:
+    >   annotations:
+    >       openshift.io/reconcile-protect: "true"
+    >```
 
     - Kubernetes Services kümesini toplamak için aşağıdaki örneği kullanarak ConfigMap dosyasını yapılandırın.
 
@@ -121,21 +171,35 @@ ConfigMap yapılandırma dosyanızı yapılandırmak ve kümenize dağıtmak iç
     
           Ek açıklamaları olan Pod 'ler için izlemeyi kısıtlamak istiyorsanız, örneğin yalnızca üretim iş yükleri için ayrılmış Pod dahil olmak üzere, `monitor_kubernetes_pod` configmap içinde `true` olarak ayarlayın ve `monitor_kubernetes_pods_namespaces` ad alanı filtresini ekleyerek atık olan ad alanlarını belirtin. Örneğin, `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
 
-3. Aşağıdaki kubectl komutunu çalıştırarak ConfigMap oluşturun: `kubectl apply -f <configmap_yaml_file.yaml>`.
+3. Azure Red Hat OpenShift dışındaki kümeler için şu kubectl komutunu çalıştırın: `kubectl apply -f <configmap_yaml_file.yaml>`.
     
     Örnek: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
-    
-    Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için aynı anda yeniden başlatma işlemi için bir yeniden başlatma işlemi yapılır. Yeniden başlatmalar tamamlandığında aşağıdakine benzer bir ileti görüntülenir ve sonuç: `configmap "container-azm-ms-agentconfig" created`.
+
+    Azure Red Hat OpenShift için değişikliklerinizi düzenleyicide kaydedin.
+
+Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için aynı anda yeniden başlatma işlemi için bir yeniden başlatma işlemi yapılır. Yeniden başlatmalar tamamlandığında aşağıdakine benzer bir ileti görüntülenir ve sonuç: `configmap "container-azm-ms-agentconfig" created`.
+
+`oc describe configmaps container-azm-ms-agentconfig -n openshift-azure-logging`komutunu çalıştırarak Azure Red Hat OpenShift için güncelleştirilmiş ConfigMap 'i görüntüleyebilirsiniz. 
 
 ## <a name="applying-updated-configmap"></a>Güncelleştirilmiş ConfigMap uygulanıyor
 
-Kümenize zaten bir ConfigMap dağıttıysanız ve daha yeni bir yapılandırmayla güncelleştirmek istiyorsanız, daha önce kullandığınız ConfigMap dosyasını düzenleyebilir ve sonra, `kubectl apply -f <configmap_yaml_file.yaml`aynı komutu kullanarak uygulayabilirsiniz.
+Kümenize zaten bir ConfigMap dağıttıysanız ve daha yeni bir yapılandırmayla güncelleştirmek istiyorsanız, daha önce kullandığınız ConfigMap dosyasını düzenleyebilir ve daha sonra aynı komutları kullanarak uygulayabilirsiniz.
+
+Azure Red Hat OpenShift dışındaki Kubernetes kümeleri için `kubectl apply -f <configmap_yaml_file.yaml`komutunu çalıştırın. 
+
+Azure Red Hat OpenShift kümesi için, dosyayı değiştirmek ve kaydetmek üzere varsayılan Düzenleyicinizde açmak üzere `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` komutunu çalıştırın.
 
 Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için aynı anda yeniden başlatma işlemi için bir yeniden başlatma işlemi yapılır. Yeniden başlatmalar tamamlandığında aşağıdakine benzer bir ileti görüntülenir ve sonuç: `configmap "container-azm-ms-agentconfig" updated`.
 
-## <a name="verify-configuration"></a>Yapılandırmayı doğrulama 
+## <a name="verify-configuration"></a>Yapılandırmayı doğrulama
 
-Yapılandırmanın başarıyla uygulandığını doğrulamak için şu komutu kullanarak bir aracı Pod öğesinden günlükleri gözden geçirin: `kubectl logs omsagent-fdf58 -n=kube-system`. Omsagent pods 'den yapılandırma hataları varsa, çıktıda aşağıdakine benzer hatalar gösterilir:
+Yapılandırmanın bir kümeye başarıyla uygulandığını doğrulamak için şu komutu kullanarak bir aracı Pod öğesinden günlükleri gözden geçirin: `kubectl logs omsagent-fdf58 -n=kube-system`. 
+
+>[!NOTE]
+>Bu komut, Azure Red Hat OpenShift kümesi için geçerli değildir.
+> 
+
+Omsagent pods 'den yapılandırma hataları varsa, çıktıda aşağıdakine benzer hatalar gösterilir:
 
 ``` 
 ***************Start Config Processing******************** 
@@ -144,9 +208,12 @@ config::unsupported/missing config schema version - 'v21' , using defaults
 
 Yapılandırma değişikliklerini uygulamayla ilgili hatalar İnceleme için de kullanılabilir. Aşağıdaki seçenekler, yapılandırma değişiklikleri için ek sorun giderme ve Prometheus ölçümlerinin korlama işlemlerini gerçekleştirmek için kullanılabilir:
 
-- Aynı `kubectl logs` komutunu kullanarak bir aracı Pod günlüklerinden. 
+- Aynı `kubectl logs` komutunu kullanarak bir aracı Pod günlüklerinden 
+    >[!NOTE]
+    >Bu komut, Azure Red Hat OpenShift kümesi için geçerli değildir.
+    > 
 
-- Canlı Günlükler. Canlı günlüklerde aşağıdakine benzer hatalar gösterilir:
+- Canlı verilerden (Önizleme). Canlı veriler (Önizleme) günlüklerinde şuna benzer hatalar gösterilmektedir:
 
     ```
     2019-07-08T18:55:00Z E! [inputs.prometheus]: Error in plugin: error making HTTP request to http://invalidurl:1010/metrics: Get http://invalidurl:1010/metrics: dial tcp: lookup invalidurl on 10.0.0.10:53: no such host
@@ -154,7 +221,11 @@ Yapılandırma değişikliklerini uygulamayla ilgili hatalar İnceleme için de 
 
 - Log Analytics çalışma alanınızdaki **KubeMonAgentEvents** tablosundan. Veriler, atık hata ve yapılandırma hataları için *hata* önem derecesi ile her saat için *Uyarı* önem derecesine sahip olarak gönderilir. Herhangi bir hata yoksa, tablodaki *girişte, hiçbir hata raporlayan önem derecesine*sahip veriler olur. **Etiketler** özelliği, hatanın oluştuğu Pod ve kapsayıcı kimliği ve ayrıca ilk oluşum, son oluşum ve Son saatteki sayı hakkında daha fazla bilgi içerir.
 
-Hatalar omsagent 'ın dosyayı ayrıştırmasını önler, yeniden başlatılmasına ve varsayılan yapılandırmayı kullanmasına neden olur. ConfigMap 'teki hataları düzelttikten sonra, YAML dosyasını kaydedin ve şu komutu çalıştırarak güncelleştirilmiş ConfigMaps 'leri uygulayın: `kubectl apply -f <configmap_yaml_file.yaml`.
+- Azure Red Hat OpenShift için, OpenShift-Azure-Logging günlük koleksiyonunun etkinleştirilip etkinleştirilmediğini doğrulamak üzere **ContainerLog** tablosunu arayarak omsagent günlüklerini denetleyin.
+
+Hatalar omsagent 'ın dosyayı ayrıştırmasını önler, yeniden başlatılmasına ve varsayılan yapılandırmayı kullanmasına neden olur. Azure Red Hat OpenShift dışındaki kümelerdeki ConfigMap 'teki hataları düzelttikten sonra, YAML dosyasını kaydedin ve şu komutu çalıştırarak güncelleştirilmiş ConfigMaps 'leri uygulayın: `kubectl apply -f <configmap_yaml_file.yaml`. 
+
+Azure Red Hat OpenShift için, şu komutu çalıştırarak güncel ConfigMaps 'ı düzenleyin ve kaydedin: `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging`.
 
 ## <a name="query-prometheus-metrics-data"></a>Sorgu Prometheus ölçüm verileri
 

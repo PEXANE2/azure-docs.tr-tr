@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d1efd44614cc2384043b32da20f38c91f006459c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863113"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931115"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu sorunlarını giderme
 
@@ -30,7 +30,7 @@ Dizin oluşturucular, verileri Azure Bilişsel Arama 'da dizin oluştururken çe
 >
 > Tam etki alanı adını (örn., `<your-search-service-name>.search.windows.net`) ping yaparak, arama hizmetinizin IP adresini bulabilirsiniz.
 >
-> Azure Bilişsel Arama hizmetinizin, [INDIRILEBILIR JSON dosyalarını](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) veya [hizmet etiketi bulma API 'si](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)aracılığıyla bulunduğu belirli bölge IÇIN `AzureCognitiveSearch` [hizmet etiketinin](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP adres aralığını bulabilirsiniz. IP adresi aralığı haftalık olarak güncelleştirilir.
+> `AzureCognitiveSearch` [hizmeti ETIKETININ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP adresi aralığını [indirilebilir JSON dosyalarını](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) veya [hizmet etiketi bulma API 'si](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)aracılığıyla bulabilirsiniz. IP adresi aralığı haftalık olarak güncelleştirilir.
 
 ### <a name="configure-firewall-rules"></a>Güvenlik duvarı kurallarını yapılandırma
 

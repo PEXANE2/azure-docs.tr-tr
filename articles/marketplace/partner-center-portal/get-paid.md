@@ -1,20 +1,20 @@
 ---
 title: Ticari Market 'te ücretli olarak | Azure Marketi
 description: Ticari Market 'teki gelirinize yönelik ödemeleri alma hakkında bilgi edinin.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: a87c74c2c344670d2d305e472245c56946d658ad
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7f539d4165df04ddca198385f9eef4f90ed15189
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980354"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933594"
 ---
-# <a name="getting-paid"></a>Ücretli
+# <a name="getting-paid"></a>Ödeme alma
 Tekliflerinizin, eklentilerin ve reklam gelirlerine ilişkin ödeme alma hakkında bazı önemli bilgiler aşağıda verilmiştir.
 
 > [!IMPORTANT]

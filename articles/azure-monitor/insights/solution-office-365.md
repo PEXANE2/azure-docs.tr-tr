@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: c3251cb26f5ab6dc211c61bc0a6d02b283de6ae5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aaa083ef52dcf18fade3315f598b5f57e791cbe0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770348"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932969"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -30,7 +30,7 @@ ms.locfileid: "75770348"
 > Azure AD günlüğü koleksiyonu, Azure Izleyici fiyatlandırması tabi.  Daha fazla bilgi için bkz. [Azure izleyici fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/) .
 >
 > Azure Sentinel Office 365 çözümünü kullanmak için:
-> 1. Bu bağlayıcının kullanılması, çalışma alanınızın fiyatlandırmasını etkiler. Daha fazla bilgi için bkz. [Azure Sentinel fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-sentinel/).
+> 1. Azure Sentinel 'de Office 365 bağlayıcısını kullanmak çalışma alanınızın fiyatlandırmasını etkiler. Daha fazla bilgi için bkz. [Azure Sentinel fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-sentinel/).
 > 2. Azure Izleyici Office 365 çözümünü zaten kullanıyorsanız, önce [aşağıdaki kaldırma bölümünde](#uninstall)yer alarak betiği kullanarak kaldırmanız gerekir.
 > 3. Çalışma alanınızda [Azure Sentinel çözümünü etkinleştirin](../../sentinel/quickstart-onboard.md) .
 > 4. Azure Sentinel 'de **veri bağlayıcıları** sayfasına gidin ve **Office 365** bağlayıcısını etkinleştirin.

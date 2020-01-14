@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: baef54fc5c8fd03ea190da2023dcba2e96abb982
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e641340ac04415ee4a20cda2bc09bbdbef9802a6
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406272"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931412"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Önyükleme kullanarak HDInsight kümelerini özelleştirme
 
@@ -46,7 +46,7 @@ HDInsight kümeniz oluşturulurken yapılandırma dosyası ayarlarını ayarlama
 
 Oluşturma süresi boyunca HDInsight kümesine ek bileşenler yükleme hakkında bilgi için bkz. [betik eylemi kullanarak HDInsight kümelerini özelleştirme (Linux)](hdinsight-hadoop-customize-cluster-linux.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/overview)gerekecektir.
 
@@ -108,7 +108,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 
 ## <a name="use-net-sdk"></a>.NET SDK kullanma
 
-Bkz. [HDInsight 'ta .NET SDK kullanarak Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
+Bkz. [.net Için Azure HDıNSIGHT SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
 
 ## <a name="use-resource-manager-template"></a>Resource Manager şablonu kullanma
 

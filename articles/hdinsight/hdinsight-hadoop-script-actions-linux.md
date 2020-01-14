@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: 23d2c771c8918099c0db2b68c290e7d90077932a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687733"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931690"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight ile betik eylemi geliştirme
 
@@ -26,7 +26,7 @@ Betik eylemleri aşağıdaki yöntemlerle uygulanabilir:
 
 | Betik uygulamak için bu yöntemi kullanın... | Küme oluşturma sırasında... | Çalışan bir kümede... |
 | --- |:---:|:---:|
-| Azure portalı |✓ |✓ |
+| Azure Portal |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure Klasik CLI |&nbsp; |✓ |
 | HDInsight .NET SDK'sı |✓ |✓ |
@@ -161,13 +161,13 @@ HDInsight, STDOUT ve STDERR 'e yazılan betik çıkışını günlüğe kaydeder
 > [!NOTE]  
 > Apache ambarı yalnızca küme başarıyla oluşturulduysa kullanılabilir. Küme oluşturma sırasında bir betik eylemi kullanırsanız ve oluşturma başarısız olursa, günlüğe kaydedilen bilgilere erişmenin diğer yolları için [betik eylemini kullanarak HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) başlıklı sorun giderme bölümüne bakın.
 
-Çoğu yardımcı program ve yükleme paketi zaten STDOUT ve STDERR 'e bilgi yazar, ancak daha fazla günlük kaydı eklemek isteyebilirsiniz. STDOUT 'a metin göndermek için `echo`kullanın. Örnek:
+Çoğu yardımcı program ve yükleme paketi zaten STDOUT ve STDERR 'e bilgi yazar, ancak daha fazla günlük kaydı eklemek isteyebilirsiniz. STDOUT 'a metin göndermek için `echo`kullanın. Örneğin:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Varsayılan olarak, `echo` dizeyi STDOUT ' a gönderir. Bunu STDERR 'e yönlendirmek için `echo`önce `>&2` ekleyin. Örnek:
+Varsayılan olarak, `echo` dizeyi STDOUT ' a gönderir. Bunu STDERR 'e yönlendirmek için `echo`önce `>&2` ekleyin. Örneğin:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -313,7 +313,7 @@ Aşağıda, bir betiği dağıtmaya hazırlanırken yapılacak adımlar verilmi�
 
 Aşağıdaki yöntemleri kullanarak HDInsight kümelerini özelleştirmek için betik eylemleri kullanabilirsiniz:
 
-* Azure portalı
+* Azure Portal
 * Azure PowerShell
 * Azure Resource Manager şablonları
 * HDInsight .NET SDK 'Sı.
@@ -322,10 +322,7 @@ Her bir yöntemi kullanma hakkında daha fazla bilgi için bkz. [betik eylemini 
 
 ## <a name="sampleScripts"></a>Özel Betik örnekleri
 
-Microsoft, bir HDInsight kümesine bileşen yüklemek için örnek betikler sağlar. Daha fazla örnek betik eylemi için aşağıdaki bağlantılara bakın.
-
-* [HDInsight kümelerinde ton 'u yükleyip kullanma](hdinsight-hadoop-hue-linux.md)
-* [HDInsight kümelerine Apache Giraph 'yi yükleyip kullanma](hdinsight-hadoop-giraph-install-linux.md)
+Microsoft, bir HDInsight kümesine bileşen yüklemek için örnek betikler sağlar. Bkz. [HDInsight kümelerinde ton 'u](hdinsight-hadoop-hue-linux.md) örnek betik eylemi olarak yükleyip kullanma.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

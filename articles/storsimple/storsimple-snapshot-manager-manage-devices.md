@@ -1,9 +1,9 @@
 ---
-title: StorSimple Snapshot Manager ile cihazları yönetme | Microsoft Docs
-description: StorSimple Snapshot Manager MMC ek bileşenini kullanarak bağlanmak ve StorSimple cihazları yönetmek için nasıl kullanılacağını açıklar.
+title: StorSimple Snapshot Manager cihazları yönetme | Microsoft Docs
+description: StorSimple cihazlarını bağlamak ve yönetmek için StorSimple Snapshot Manager MMC ek bileşeninin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
@@ -13,202 +13,202 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: 51632b8b68640814fc113a94925b6d6deaca4c5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64682497"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931723"
 ---
-# <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Bağlanmak ve StorSimple cihazları yönetmek için StorSimple anlık görüntü Yöneticisi'ni kullanın
+# <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>StorSimple cihazlarını bağlamak ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
-StorSimple Snapshot Manager'da düğümlerini kullanabilirsiniz **kapsam** bölmesinde içeri aktarılan StorSimple cihaz verilerini doğrulamak ve bağlı depolama cihazları yenileyin. Ayrıca, tıkladığınızda **cihazları** düğümü, bağlı cihazlarınız ve ilgili durum bilgileri listesini görebilirsiniz **sonuçları** bölmesi.
+İçe aktarılmış StorSimple cihaz verilerini doğrulamak ve bağlı depolama cihazlarını yenilemek için StorSimple Snapshot Manager **kapsam** bölmesinde düğümleri kullanabilirsiniz. Ayrıca, **cihazlar** düğümüne tıkladığınızda, **sonuçlar** bölmesinde bağlı cihazların ve ilgili durum bilgilerinin bir listesini görebilirsiniz.
 
 ![Bağlı cihazlar](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
 
 **Şekil 1: StorSimple Snapshot Manager bağlı cihaz** 
 
-Yapılandırmanıza bağlı olarak, **görünümü** seçimleri **sonuçları** bölmesinde her bir cihaz hakkında aşağıdaki bilgileri gösterir. (Bir görünüm yapılandırma hakkında daha fazla bilgi için Git [Görünüm menüsü](storsimple-use-snapshot-manager.md#view-menu).
+**Görünüm** seçimlerinize bağlı olarak, **sonuçlar** bölmesi her bir cihazla ilgili olarak aşağıdaki bilgileri gösterir. (Görünüm yapılandırma hakkında daha fazla bilgi için [Görünüm menüsüne](storsimple-use-snapshot-manager.md#view-menu)gidin.
 
-| Sonuçları sütun | Açıklama |
+| Sonuç sütunu | Açıklama |
 |:--- |:--- |
-| Ad |Klasik Azure portalında yapılandırıldığı şekilde cihaz adı |
+| Ad |Klasik Azure portalında yapılandırılan cihazın adı |
 | Model |Cihazın model numarası |
-| Version |Cihazda yüklü yazılım sürümü |
+| Sürüm |Cihazda yüklü yazılımın sürümü |
 | Durum |Cihazın kullanılabilir olup olmadığı |
-| En son eşitleme yapıldı |Tarih ve cihazın en son ne zaman eşitlendiği zaman |
-| Seri No |Cihazın seri numarası |
+| Son eşitleme |Cihazın son eşitlenme tarihi ve saati |
+| Seri No. |Cihazın seri numarası |
 
-Sağ varsa **cihazları** düğümünde **kapsam** bölmesinde, aşağıdaki eylemlerden seçebilirsiniz:
+**Kapsam** bölmesinde **cihazlar** düğümüne sağ tıklarsanız aşağıdaki eylemlerden seçim yapabilirsiniz:
 
-* Ekleme veya bir cihazı Değiştir
-* Bir cihazı bağlayın ve içeri aktarmalar doğrulayın
-* Bağlı cihazlar Yenile
+* Bir cihaz ekleme veya değiştirme
+* Bir cihazı bağlama ve içeri aktarmaları doğrulama
+* Bağlı cihazları Yenile
 
-Tıklarsanız **cihazları** düğümünü ve ardından sağ cihaz ad içinde **sonuçları** bölmesinde, aşağıdaki eylemlerden seçebilirsiniz:
+**Cihazlar** düğümüne tıklayın ve ardından **sonuçlar** bölmesinde bir cihaz adına sağ tıkladığınızda, aşağıdaki eylemlerden seçim yapabilirsiniz:
 
-* Bir cihaz kimlik doğrulaması
+* Bir cihazın kimliğini doğrulayın
 * Cihaz ayrıntılarını görüntüleme
-* Bir cihaz yenileme
+* Bir cihazı yenileme
 * Cihaz yapılandırmasını silme
-* Cihaz parolasını değiştirme
+* Bir cihaz parolasını değiştirme
 
 > [!NOTE]
-> Tüm bu eylemler de kullanılabilir olan **eylemleri** bölmesi.
+> Bu eylemlerin tümü, **Eylemler** bölmesinde de mevcuttur.
 
 
-Bu öğreticide, bağlanma ve cihazları yönetmek ve aşağıdaki görevleri gerçekleştirmek için StorSimple Snapshot Manager kullanmayı açıklar:
+Bu öğreticide, StorSimple Snapshot Manager kullanarak cihazları bağlama ve yönetme ve aşağıdaki görevleri gerçekleştirme açıklanmaktadır:
 
-* Ekleme veya bir cihazı Değiştir
-* Bir cihazı bağlayın ve içeri aktarmalar doğrulayın
-* Bağlı cihazlar Yenile
-* Bir cihaz kimlik doğrulaması
+* Bir cihaz ekleme veya değiştirme
+* Bir cihazı bağlama ve içeri aktarmaları doğrulama
+* Bağlı cihazları Yenile
+* Bir cihazın kimliğini doğrulayın
 * Cihaz ayrıntılarını görüntüleme
-* Tek bir cihaza Yenile
+* Tek bir cihazı yenileme
 * Cihaz yapılandırmasını silme
-* Süresi dolan cihaz parolasını değiştirme
-* Başarısız bir cihazı Değiştir
+* Zaman aşımına uğradı bir cihaz parolasını değiştirme
+* Hatalı bir cihazı değiştirme
 
 > [!NOTE]
-> StorSimple Snapshot Manager arabirimi kullanma hakkında genel bilgi için Git [StorSimple Snapshot Manager kullanıcı arabirimini](storsimple-use-snapshot-manager.md).
+> StorSimple Snapshot Manager arabirimini kullanma hakkında genel bilgi için, [storsimple Snapshot Manager Kullanıcı arabirimine](storsimple-use-snapshot-manager.md)gidin.
 
 
-## <a name="add-or-replace-a-device"></a>Ekleme veya bir cihazı Değiştir
-Eklemek veya StorSimple cihazını değiştirmek için aşağıdaki yordamı kullanın.
+## <a name="add-or-replace-a-device"></a>Bir cihaz ekleme veya değiştirme
+StorSimple cihazını eklemek veya değiştirmek için aşağıdaki yordamı kullanın.
 
-#### <a name="to-add-or-replace-a-device"></a>Eklemek veya bir cihazı değiştirmek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde sağ **cihazları** düğümünü ve ardından **bir cihaz yapılandırma**. **Bir cihaz yapılandırma** iletişim kutusu görüntülenir.
+#### <a name="to-add-or-replace-a-device"></a>Bir cihaz eklemek veya değiştirmek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **cihazlar** düğümüne sağ tıklayın ve ardından **cihaz yapılandırma**' ya tıklayın. **Cihaz Yapılandır** iletişim kutusu görüntülenir.
    
-    ![Bir StorSimple cihazını Yapılandır](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
-3. İçinde **cihaz** açılan kutusunda, cihaz veya sanal cihazın IP adresini seçin. 
-4. İçinde **parola** metin kutusuna, Klasik Azure portalında cihaz için oluşturduğunuz StorSimple Snapshot Manager parolasını yazın. **Tamam**'ı tıklatın. Tanımladığınız cihaz için StorSimple Snapshot Manager arar. 
+    ![StorSimple cihazını yapılandırma](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
+3. **Cihaz** açılan kutusunda, cihazın veya sanal cihazın IP adresini seçin. 
+4. **Parola** metin kutusuna, klasik Azure portalında cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam**’a tıklayın. StorSimple Snapshot Manager, tanımladığınız cihazı arar. 
    
-   * Kullanılabilir cihazsa, StorSimple Snapshot Manager bağlantı ekler.
-   * Cihaz için herhangi bir nedenle kullanılamıyorsa, StorSimple Snapshot Manager bir hata iletisi döndürür. Tıklayın **Tamam** hata iletiyi kapatın ve ardından **iptal** kapatmak için **bir cihaz yapılandırma** iletişim kutusu.
+   * Cihaz kullanılabiliyorsa, StorSimple Snapshot Manager bir bağlantı ekler.
+   * Cihaz herhangi bir nedenle kullanılamıyorsa, StorSimple Snapshot Manager bir hata mesajı döndürür. **Tamam** ' a tıklayarak hata iletisini kapatın ve ardından **iptal** ' e tıklayarak **bir cihaz Yapılandır** iletişim kutusunu kapatın.
 
-## <a name="connect-a-device-and-verify-imports"></a>Bir cihazı bağlayın ve içeri aktarmalar doğrulayın
-Bir StorSimple cihazı bağlayın ve yedeklemeleri ilişkili olan mevcut tüm birim gruplarını içeri aktarıldığından emin doğrulamak için aşağıdaki yordamı kullanın.
+## <a name="connect-a-device-and-verify-imports"></a>Bir cihazı bağlama ve içeri aktarmaları doğrulama
+StorSimple cihazını bağlamak ve ilişkili yedekleri olan mevcut birim gruplarının içeri aktarıldığını doğrulamak için aşağıdaki yordamı kullanın.
 
-#### <a name="to-connect-a-device-and-verify-imports"></a>Bir cihazı bağlayın ve doğrulamak için içeri aktarır
-1. Bir cihaz için StorSimple Snapshot Manager bağlamak Ekle'ndaki yönergeleri izleyin veya bir cihazı değiştirin. StorSimple Snapshot Manager şu şekilde bir aygıta bağlandığında, yanıt verir:
+#### <a name="to-connect-a-device-and-verify-imports"></a>Bir cihazı bağlamak ve içeri aktarmaları doğrulamak için
+1. Bir cihazı StorSimple Snapshot Manager bağlamak için, bir cihaz ekleme veya değiştirme içindeki yönergeleri izleyin. Bir cihaza bağlandığı zaman StorSimple Snapshot Manager aşağıdaki gibi yanıt verir:
    
-   * Cihaz için herhangi bir nedenle kullanılamıyorsa, StorSimple Snapshot Manager bir hata iletisi döndürür. 
+   * Cihaz herhangi bir nedenle kullanılamıyorsa, StorSimple Snapshot Manager bir hata mesajı döndürür. 
    
-   * Kullanılabilir cihazsa, StorSimple Snapshot Manager bağlantı ekler. Cihaz seçtiğinizde görünür **sonuçları** bölmesi ve Durum alanını cihaz olduğunu gösterir **kullanılabilir**. StorSimple Snapshot Manager birim gruplarını yedeklemeleri ilişkili koşuluyla, aygıtın yapılandırılmış herhangi bir birim gruplarını içeri aktarır. Yedekleme ilkelerini içeri aktarılmaz. İlişkili yedekleme olmayan birim gruplarını içeri aktarılmaz.
-2. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-3. Sağ üst düğümü **kapsam** bölmesi ve ardından **içeri aktarmalar ekranını Değiştir**.
+   * Cihaz kullanılabiliyorsa, StorSimple Snapshot Manager bir bağlantı ekler. Cihazı seçtiğinizde, **sonuçlar** bölmesinde görünür ve durum alanı cihazın **kullanılabilir**olduğunu gösterir. StorSimple Snapshot Manager, birim gruplarının ilişkili yedeklemeleri olması şartıyla, cihaz için yapılandırılmış tüm birim gruplarını içeri aktarır. Yedekleme ilkeleri içeri aktarılmaz. İlişkili yedeklemeleri olmayan birim grupları içeri aktarılmaz.
+2. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+3. **Kapsam** bölmesinde en üst düğüme sağ tıklayın ve ardından **Içeri aktarmalar görüntüsünü aç**' a tıklayın.
    
-    ![İçeri aktarmalar ekranını Değiştir'i seçin](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
-4. **İçeri aktarmalar ekranını Değiştir** iletişim kutusu görüntülenirse, yedeklemeleri ve içeri aktarılan birim gruplarını durumunu gösteren. **Tamam**'ı tıklatın.
+    ![İçeri Aktarmalar Ekranını Değiştir'i seçin](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
+4. İçeri **aktarmalar görüntüsünü değiştirme** iletişim kutusu görünür ve içeri aktarılan birim gruplarının ve yedeklemelerin durumunu gösterir. **Tamam**’a tıklayın.
 
-Birim gruplarını ve Yedekleme başarıyla içeri aktarıldı olduktan sonra birim gruplarını ve oluşturduğunuz ve StorSimple Snapshot Manager ile yapılandırılmış yedeklemeler yalnızca yönetme gibi StorSimple Snapshot Manager bunları yönetmek için kullanabilirsiniz. 
+Birim grupları ve yedeklemeler başarıyla alındıktan sonra, bunları yönetmek için StorSimple Snapshot Manager kullanabilirsiniz, böylece, oluşturduğunuz ve StorSimple Snapshot Manager ile yapılandırdığınız yedeklemeleri yönetebilirsiniz. 
 
-## <a name="refresh-connected-devices"></a>Bağlı cihazlar Yenile
-StorSimple Snapshot Manager ile bağlı StorSimple cihazları eşitlemek için aşağıdaki yordamı kullanın.
+## <a name="refresh-connected-devices"></a>Bağlı cihazları Yenile
+Bağlı StorSimple cihazlarını StorSimple Snapshot Manager ile eşleştirmek için aşağıdaki yordamı kullanın.
 
-#### <a name="to-refresh-connected-devices"></a>Bağlı cihazlar yenilemek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde sağ tıklayın **cihazları**ve ardından **Yenile cihazları**. Birim gruplarını ve yedekleme, tüm son ekleri dahil olmak üzere görüntüleyebilmek bu StorSimple Snapshot Manager ile bağlı cihazlar eşitler. 
+#### <a name="to-refresh-connected-devices"></a>Bağlı cihazları yenilemek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **cihazlar**' a sağ tıklayın ve ardından **cihazları Yenile**' ye tıklayın. Bu, bağlı cihazları StorSimple Snapshot Manager ile eşitler, böylece son ekler de dahil olmak üzere birim gruplarını ve yedeklemeleri görüntüleyebilmenizi sağlayabilir. 
    
-    ![StorSimple cihazlarını Yenile](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Refresh_devices.png)
+    ![StorSimple cihazlarını yenile](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Refresh_devices.png)
 
-**Yenile cihazları** eylem bağlı cihazlardan tüm yeni birim gruplarını ve ilişkili tüm yedeklemeler alır. Farklı **birimleri yeniden tara** eylemi için kullanılabilir **birimleri** düğümünün **Yenile cihazları** yedekleme kayıt defterini geri yüklemez.
+**Cihazları Yenile** eylemi, bağlı cihazlardan tüm yeni birim gruplarını ve ilişkili yedekleri alır. **Birimler** düğümü için kullanılabilir **birimleri yeniden Tara** eyleminin aksine, **cihazları Yenile** , yedekleme kayıt defterini geri yüklemez.
 
-## <a name="authenticate-a-device"></a>Bir cihaz kimlik doğrulaması
-Bir StorSimple cihazı ile StorSimple Snapshot Manager kimliğini doğrulamak için aşağıdaki yordamı kullanın.
+## <a name="authenticate-a-device"></a>Bir cihazın kimliğini doğrulayın
+StorSimple Snapshot Manager ile StorSimple cihazının kimliğini doğrulamak için aşağıdaki yordamı kullanın.
 
 #### <a name="to-authenticate-a-device"></a>Bir cihazın kimliğini doğrulamak için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde tıklayın **cihazları**.
-3. İçinde **sonuçları** bölmesinde, cihaz adına sağ tıklayın ve ardından **doğrulaması**.
-4. **Doğrulaması** iletişim kutusu görüntülenir. Cihaz parolasını yazın ve ardından **Tamam**.
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **cihazlar**' a tıklayın.
+3. **Sonuçlar** bölmesinde, cihazın adına sağ tıklayın ve ardından **kimlik doğrula**' ya tıklayın.
+4. **Kimlik doğrula** iletişim kutusu görüntülenir. Cihaz parolasını yazın ve ardından **Tamam**' a tıklayın.
    
     ![Kimlik doğrulaması iletişim kutusu](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Authenticate.png) 
 
 ## <a name="view-device-details"></a>Cihaz ayrıntılarını görüntüleme
-StorSimple cihaz ayrıntılarını görüntüleyin ve gerekirse, cihaz StorSimple Snapshot Manager ile yeniden eşitlemek için aşağıdaki yordamı kullanın.
+StorSimple cihazının ayrıntılarını görüntülemek için aşağıdaki yordamı kullanın ve gerekirse, cihazı StorSimple Snapshot Manager yeniden eşitleyin.
 
-#### <a name="to-view-and-resynchronize-device-details"></a>Ayrıntıları görüntülemek ve cihaz yeniden eşitlemek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde tıklayın **cihazları**.
-3. İçinde **sonuçları** bölmesinde, cihaz adına sağ tıklayın ve ardından **ayrıntıları**.
+#### <a name="to-view-and-resynchronize-device-details"></a>Cihaz ayrıntılarını görüntülemek ve yeniden eşitlemek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **cihazlar**' a tıklayın.
+3. **Sonuçlar** bölmesinde, cihazın adına sağ tıklayın ve ardından **Ayrıntılar**' a tıklayın.
 
-4 **cihaz ayrıntıları** iletişim kutusu görüntülenir. Bu kutu gösterir adı, model, sürüm, seri numarası, durum, hedef iSCSI tam adı (IQN) ve son eşitleme tarih ve saat.
+4. **cihaz ayrıntıları** iletişim kutusu görüntülenir. Bu kutu ad, model, sürüm, seri numarası, durum, hedef Iscsı nitelenmiş adı (ıQN) ve son eşitleme tarih ve saatini gösterir.
 
-* Tıklayın **Resync** cihaza eşitlenecek.
-* Tıklayın **Tamam** veya **iptal** iletişim kutusunu kapatın.
+* Cihazı **eşitleme için yeniden Eşitle '** ye tıklayın.
+* **Tamam** ' a tıklayın veya iletişim kutusunu kapatmak için **iptal** ' e tıklayın.
   
   ![Cihaz ayrıntıları](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
 
-## <a name="refresh-an-individual-device"></a>Tek bir cihaza Yenile
-Tek bir StorSimple cihazı ile StorSimple Snapshot Manager'ı yeniden eşitlemek için aşağıdaki yordamı kullanın.
+## <a name="refresh-an-individual-device"></a>Tek bir cihazı yenileme
+Tek bir StorSimple cihazını StorSimple Snapshot Manager yeniden eşitlemek için aşağıdaki yordamı kullanın.
 
-#### <a name="to-refresh-a-device"></a>Bir cihaz yenilemek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın. 
-2. İçinde **kapsam** bölmesinde tıklayın **cihazları**. 
-3. İçinde **sonuçları** bölmesinde, cihaz adına sağ tıklayın ve ardından **Yenile cihaz**. Bu cihaz StorSimple Snapshot Manager ile eşitler.
+#### <a name="to-refresh-a-device"></a>Bir cihazı yenilemek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın. 
+2. **Kapsam** bölmesinde, **cihazlar**' a tıklayın. 
+3. **Sonuçlar** bölmesinde, cihazın adına sağ tıklayın ve ardından **cihazı Yenile**' ye tıklayın. Bu, cihazı StorSimple Snapshot Manager eşitler.
 
 ## <a name="delete-a-device-configuration"></a>Cihaz yapılandırmasını silme
-StorSimple anlık görüntü Yöneticisi'nden tek bir StorSimple cihaz yapılandırması silmek için aşağıdaki yordamı kullanın.
+StorSimple Snapshot Manager bireysel bir StorSimple cihaz yapılandırmasını silmek için aşağıdaki yordamı kullanın.
 
-#### <a name="to-delete-a-device-configuration"></a>Cihaz yapılandırması silinemedi
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde tıklayın **cihazları**. 
-3. İçinde **sonuçları** bölmesinde, cihaz adına sağ tıklayın ve ardından **Sil**. 
-4. Aşağıdaki ileti görüntülenir. Tıklayın **Evet** yapılandırmayı silmek veya **Hayır** silmeyi iptal etmek için.
+#### <a name="to-delete-a-device-configuration"></a>Bir cihaz yapılandırmasını silmek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **cihazlar**' a tıklayın. 
+3. **Sonuçlar** bölmesinde, cihazın adına sağ tıklayın ve ardından **Sil**' e tıklayın. 
+4. Aşağıdaki ileti görünür. Yapılandırmayı silmek için **Evet** ' e, silme işlemini iptal etmek için **Hayır** ' a tıklayın.
    
     ![Cihaz yapılandırmasını silme](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_DeleteDevice.png)
 
-## <a name="change-an-expired-device-password"></a>Süresi dolan cihaz parolasını değiştirme
-Bir StorSimple cihazı StorSimple Snapshot Manager ile kimlik doğrulaması için bir parola girmeniz gerekir. Cihazınızın kurulumunun yapılabilmesi için Windows PowerShell arabirimini kullandığınızda bu parola yapılandırın. Ancak, parola süresinin dolmasını sağlayabilir. Böyle bir durumda, parolasını değiştirmek için Klasik Azure Portalı'nı kullanabilirsiniz. Ardından, cihaz StorSimple Snapshot Manager'da yapılandırıldığından, parola süresi dolmadan önce cihaz StorSimple anlık görüntü Yöneticisi'nde yeniden doğrulaması gerekir.
+## <a name="change-an-expired-device-password"></a>Zaman aşımına uğradı bir cihaz parolasını değiştirme
+StorSimple Snapshot Manager bir StorSimple cihazının kimliğini doğrulamak için bir parola girmeniz gerekir. Bu parolayı, cihazı kurmak için Windows PowerShell arabirimini kullandığınızda yapılandırırsınız. Ancak parolanın kullanım süreleri dolacak. Bu durumda, parolayı değiştirmek için klasik Azure portalını kullanabilirsiniz. Daha sonra, cihazın StorSimple Snapshot Manager, parolanın geçerliliği dolmadan önce yapılandırıldığından, StorSimple Snapshot Manager cihaz kimliğini yeniden doğrulamanız gerekir.
 
-#### <a name="to-change-the-expired-password"></a>Süresi dolan parolasını değiştirme
-1. Klasik Azure portalında StorSimple Yöneticisi hizmeti başlatın.
-2. Tıklayın **cihazları** > **yapılandırma** aygıt için.
-3. StorSimple Snapshot Manager bölümüne inin. 14-15 karakter bir parola girin. Parola büyük harf, küçük harfler, sayısal ve özel karakterlerin bir karışımı içerdiğinden emin olun.
-4. Onaylamak için parolayı yeniden girin.
+#### <a name="to-change-the-expired-password"></a>Süre biten parolayı değiştirmek için
+1. Klasik Azure portalında, StorSimple Yöneticisi hizmetini başlatın.
+2. Cihaz için **yapılandırma** > **cihazlar** ' a tıklayın.
+3. StorSimple Snapshot Manager bölümüne gidin. 14-15 karakter olan bir parola girin. Parolanın büyük harf, küçük harf, sayısal ve özel karakterlerin bir karışımını içerdiğinden emin olun.
+4. Parolayı onaylamak için yeniden girin.
 5. Sayfanın alt kısmındaki **Kaydet**’e tıklayın.
 
-#### <a name="to-re-authenticate-the-device"></a>Cihazın yeniden kimlik doğrulaması
-1. StorSimple Snapshot Manager'ı başlatın.
-2. İçinde **kapsam** bölmesinde tıklayın **cihazları**. Yapılandırılan cihazların listesi görünür **sonuçları** bölmesi.
-3. Cihaz, sağ tıklayın ve ardından seçin **doğrulaması**.
-4. İçinde **doğrulaması** penceresinde, yeni bir parola girin.
-5. Cihaz, sağ tıklatın ve seçin seçin **yenileme cihaz**. Bu cihaz StorSimple Snapshot Manager ile eşitler.
+#### <a name="to-re-authenticate-the-device"></a>Cihazın yeniden doğrulanması için
+1. StorSimple Snapshot Manager başlatın.
+2. **Kapsam** bölmesinde, **cihazlar**' a tıklayın. Yapılandırılmış cihazların bir listesi **sonuçlar** bölmesinde görüntülenir.
+3. Cihazı seçin, sağ tıklayın ve ardından **kimlik doğrula**' ya tıklayın.
+4. **Kimlik doğrula** penceresinde yeni parolayı girin.
+5. Cihazı seçin, sağ tıklayın ve **cihazı Yenile**' yi seçin. Bu, cihazı StorSimple Snapshot Manager eşitler.
 
-## <a name="replace-a-failed-device"></a>Başarısız bir cihazı Değiştir
-Bir StorSimple cihazı başarısız olur ve bir bekleme (yük devretme) cihaz tarafından değiştirilmesi için yeni cihazı bağlayın ve ilişkili yedekleri görüntülemek için aşağıdaki adımları kullanın.
+## <a name="replace-a-failed-device"></a>Hatalı bir cihazı değiştirme
+Bir StorSimple cihazı başarısız olursa ve bekleme (yük devretme) cihazından değiştirilirse, yeni cihaza bağlanmak ve ilişkili yedeklemeleri görüntülemek için aşağıdaki adımları kullanın.
 
 #### <a name="to-connect-to-a-new-device-after-failover"></a>Yük devretmeden sonra yeni bir cihaza bağlanmak için
-1. Yeni cihaz için iSCSI bağlantısını yeniden yapılandırın. Yönergeler için Git "7. adım: Bağlayın, başlatın ve bir birimde"içinde [şirket içi StorSimple Cihazınızı dağıtma](storsimple-8000-deployment-walkthrough-u2.md).
+1. Iscsı bağlantısını yeni cihazla yeniden yapılandırın. Yönergeler için, [Şirket Içi StorSimple cihazınızı dağıtma](storsimple-8000-deployment-walkthrough-u2.md)bölümünde "adım 7: bir birimi bağlama, başlatma ve biçimlendirme" bölümüne gidin.
 
 > [!NOTE]
-> Yeni bir StorSimple cihazı eskisinin aynı IP adresi varsa, eski yapılandırmada bağlanmanız mümkün olabilir.
+> Yeni StorSimple cihazının eskisiyle aynı IP adresi varsa, eski yapılandırmayı bağlayabilirsiniz.
 
 
 1. Microsoft StorSimple Yönetim hizmetini durdurun:
    
    1. Sunucu Yöneticisi'ni başlatın.
-   2. Sunucu Yöneticisi panosunda üzerinde **Araçları** menüsünde **Hizmetleri**.
-   3. Üzerinde **Hizmetleri** penceresinde **Microsoft StorSimple Yöneticisi hizmeti**.
-   4. Sağ bölmede altında **Microsoft StorSimple Yöneticisi hizmeti**, tıklayın **Hizmeti Durdur**.
-2. Eski cihazla ilgili yapılandırma bilgilerini kaldırın:
+   2. Sunucu Yöneticisi panosunda, **Araçlar** menüsünde **Hizmetler**' i seçin.
+   3. **Hizmetler** penceresinde **Microsoft StorSimple yönetim hizmeti**' ni seçin.
+   4. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti**altında **hizmeti Durdur**' a tıklayın.
+2. Eski cihazla ilgili yapılandırma bilgilerini Kaldır:
    
-   1. Dosya Gezgini'nde C:\ProgramData\Microsoft\StorSimple\BACatalog için göz atın.
+   1. Dosya Gezgini 'nde C:\programdata\microsoft\storsimple\bacatalogdizinine göz atın.
    2. BACatalog klasöründeki dosyaları silin.
 3. Microsoft StorSimple Yönetim hizmetini yeniden başlatın:
    
-   1. Sunucu Yöneticisi panosunda üzerinde **Araçları** menüsünde **Hizmetleri**.
-   2. Üzerinde **Hizmetleri** penceresinde **Microsoft StorSimple Yöneticisi hizmeti**.
-   3. Sağ bölmede altında **Microsoft StorSimple Yöneticisi hizmeti**, tıklayın **hizmetini yeniden**.
-4. StorSimple Snapshot Manager'ı başlatın.
-5. Yeni bir StorSimple cihazı yapılandırmak için adım 2'ndaki adımları tamamlayın: Bir StorSimple cihazı bağlayın [StorSimple Snapshot Manager'ı Dağıtma](storsimple-snapshot-manager-deployment.md).
-6. Sağ üst düzey düğüm **kapsam** bölmesi (Bu örnekte StorSimple Snapshot Manager) ve ardından **içeri aktarmalar ekranını Değiştir**. 
-7. İçeri aktarılan birim gruplarını ve yedeklemeleri StorSimple Snapshot Manager'da görünür olduğunda, bir ileti görüntülenir. **Tamam** düğmesine tıklayın.
+   1. Sunucu Yöneticisi panosunda, **Araçlar** menüsünde **Hizmetler**' i seçin.
+   2. **Hizmetler** penceresinde **Microsoft StorSimple yönetim hizmeti**' ni seçin.
+   3. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti**altında **hizmeti yeniden Başlat**' a tıklayın.
+4. StorSimple Snapshot Manager başlatın.
+5. Yeni StorSimple cihazını yapılandırmak için adım 2: StorSimple cihazını [dağıtım storsimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)içindeki adımları izleyin.
+6. **Kapsam** bölmesinde en üst düzey düğüme sağ tıklayın (örnekteki storsimple Snapshot Manager) ve ardından **Içeri aktarmalar görünümünü aç**' a tıklayın. 
+7. İçeri aktarılan birim grupları ve yedeklemeler StorSimple Snapshot Manager görünür olduğunda bir ileti görüntülenir. **Tamam**’a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bilgi edinmek için nasıl [StorSimple çözümünüzü yönetmek için StorSimple Snapshot Manager kullanmak](storsimple-snapshot-manager-admin.md).
-* Bilgi edinmek için nasıl [görüntülemek ve birimler yönetmek için StorSimple Snapshot Manager kullanmak](storsimple-snapshot-manager-manage-volumes.md).
+* StorSimple [çözümünüzü yönetmek Için storsimple Snapshot Manager](storsimple-snapshot-manager-admin.md)nasıl kullanacağınızı öğrenin.
+* [Birimleri görüntülemek ve yönetmek Için StorSimple Snapshot Manager kullanmayı](storsimple-snapshot-manager-manage-volumes.md)öğrenin.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3bea04ba077aebe9a52400a1292c5cd27c15b72e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8bc6a9c8910c25f5fdb403e7f45c5f567f7c1224
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950927"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930653"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Kullanıcı girişinin doğrulanması sırasında Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin
 
@@ -57,7 +57,7 @@ Genel Bakış:
 * Bağlılık programı numarası geri gönder
 * Bağlılık programı numarasını bir JSON Web Token (JWT) ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Özel Ilkelerle Başlarken](active-directory-b2c-get-started-custom.md) makalesindeki adımları uygulayın.
 
@@ -337,7 +337,9 @@ Yeni talebi ekledikten sonra, bağlı olan taraf kodu şöyle görünür:
 
 ## <a name="step-7-upload-the-policy-to-your-tenant"></a>7\. Adım: ilkeyi kiracınıza yükleme
 
-1. [Azure Portal](https://portal.azure.com), [Azure AD B2C kiracınızın bağlamına](active-directory-b2c-navigate-to-b2c-context.md)geçin ve ardından **Azure AD B2C**' yı açın.
+1. [Azure Portal](https://portal.azure.com), Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+
+1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 
 1. **Kimlik deneyimi çerçevesini**seçin.
 

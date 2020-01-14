@@ -1,19 +1,19 @@
 ---
 title: SaaS teklifi oluşturma denetim listesi-Azure için ticari Market
 description: SaaS teklifi oluşturma sürecinde sağlayabilmeniz için ayrıntılar. -Azure için ticari Market
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 1643a1e309ecc2bcfc440e3553fcffef54cfb038
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8b01f15673f68bcc3fb0b205b9dd85a276c9b972
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824634"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930296"
 ---
 # <a name="saas-offer-creation-checklist"></a>SaaS teklifi oluşturma denetim listesi
 
@@ -111,7 +111,7 @@ Teknik yapılandırma sayfası, Microsoft tarafından teklifinizi bağlamak içi
 | :---------------- | :-----------| 
 | Giriş sayfası URL 'SI | Microsoft üzerinden satılırken gereklidir. |
 | Bağlantı Web kancası | Microsoft üzerinden satılırken gereklidir. |
-| Azure AD kiracı KIMLIĞI | Microsoft üzerinden satılırken gereklidir. |
+| Azure AD kiracı kimliği | Microsoft üzerinden satılırken gereklidir. |
 | Azure AD uygulama KIMLIĞI | Microsoft üzerinden satılırken gereklidir. |
 
 ## <a name="plan-identity-modal"></a>Kimlik planlaması kalıcı
@@ -129,7 +129,7 @@ Plan listeleme sayfası, müşterilerin planı Market 'te görüntülerken göre
 
 | **Alan adı**    | **Notlar**   |  
 | :---------------- | :-----------| 
-| Plan açıklaması   | Microsoft üzerinden satılırken gereklidir. En fazla 500 karakter. | |
+| Plan Açıklaması   | Microsoft üzerinden satılırken gereklidir. En fazla 500 karakter. | |
 
 ## <a name="plan-pricing--availability-page"></a>Fiyatlandırma & kullanılabilirliği sayfasını planlayın
 
@@ -163,4 +163,4 @@ Yalnızca teklifiniz için bir test sürücüsü sunmayı seçerseniz kullanıla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Yeni bir SaaS teklifi oluşturun](./create-new-saas-offer.md)
+- [Yeni bir SaaS teklifi oluşturma](./create-new-saas-offer.md)

@@ -1,6 +1,6 @@
 ---
-title: Tanımlama bilgisi tanımları - Azure Active Directory B2C | Microsoft Docs
-description: Azure Active Directory B2C'de kullanılan tanımlama bilgileri için tanımları sağlar.
+title: Tanımlama bilgisi tanımları-Azure Active Directory B2C | Microsoft Docs
+description: Azure Active Directory B2C ' de kullanılan tanımlama bilgileri için tanımlar sağlar.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,27 +10,26 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: af3244a32e9d02a1ba5053da85547bf614053127
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 66de4559ed006735f53ff993cce29370428b9998
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67587407"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930902"
 ---
-# <a name="cookies-definitions-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için tanımlama bilgileri tanımları
+# <a name="cookies-definitions-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için tanımlama bilgisi tanımları
 
-Aşağıdaki tablo, Azure Active Directory B2C'de kullanılan tanımlama bilgilerini listeler.
+Aşağıdaki tabloda Azure Active Directory B2C ' de kullanılan tanımlama bilgileri listelenmektedir.
 
-| Ad | Etki Alanı | süre sonu | Amaç |
+| Ad | Domain | Süre sonu | Amaç |
 | ----------- | ------ | -------------------------- | --------- |
-| x-ms-cpim-admin | main.b2cadmin.ext.azure.com | Bitiş [tarayıcı oturumu](active-directory-b2c-token-session-sso.md) | Kiracılar genelinde kullanıcı üyelik verileri tutar. Kiracılar bir kullanıcının üyesi olduğu ve düzey üyelik (yönetici veya kullanıcı). |
-| x-ms-cpım-dilim | Login.microsoftonline.com, b2clogin.com markalı bir etki alanı | Bitiş [tarayıcı oturumu](active-directory-b2c-token-session-sso.md) | İstekleri uygun üretim örneği kullanılır. |
-| x-ms-cpım-işlem | Login.microsoftonline.com, b2clogin.com markalı bir etki alanı | Bitiş [tarayıcı oturumu](active-directory-b2c-token-session-sso.md) | İşlemler (Azure AD B2C'ye kimlik doğrulama isteklerinin sayısı) ve geçerli işlem izlemek için kullanılır. |
-| x-ms-cpim-sso:{Id} | Login.microsoftonline.com, b2clogin.com markalı bir etki alanı | Bitiş [tarayıcı oturumu](active-directory-b2c-token-session-sso.md) | SSO oturum korumak için kullanılır. |
-| x-ms-cpim-cache:{id}_n | Login.microsoftonline.com, b2clogin.com markalı bir etki alanı | Bitiş [tarayıcı oturumu](active-directory-b2c-token-session-sso.md), başarılı kimlik doğrulaması | İstek durumu korumak için kullanılır. |
-| x-ms-cpım-csrf | Login.microsoftonline.com, b2clogin.com markalı bir etki alanı | Bitiş [tarayıcı oturumu](active-directory-b2c-token-session-sso.md) | Siteler arası istek sahteciliğini belirteci CRSF koruma için kullanılır. |
-| x-ms-cpim-dc | Login.microsoftonline.com, b2clogin.com markalı bir etki alanı | Bitiş [tarayıcı oturumu](active-directory-b2c-token-session-sso.md) | Azure AD B2C'yi ağ yönlendirme için kullanılır. |
-| x-ms-cpım-ctx | Login.microsoftonline.com, b2clogin.com markalı bir etki alanı | Bitiş [tarayıcı oturumu](active-directory-b2c-token-session-sso.md) | Bağlam |
-| x-ms-cpım-rp | Login.microsoftonline.com, b2clogin.com markalı bir etki alanı | Bitiş [tarayıcı oturumu](active-directory-b2c-token-session-sso.md) | Kaynak sağlayıcısı Kiracı için üyelik verilerinin depolanması için kullanılır. |
-| x-ms-cpım-rc | Login.microsoftonline.com, b2clogin.com markalı bir etki alanı | Bitiş [tarayıcı oturumu](active-directory-b2c-token-session-sso.md) | Geçiş tanımlama bilgisi depolamak için kullanılır. |
-
+| x-MS-cpım-yönetici | main.b2cadmin.ext.azure.com | [Tarayıcı oturumunun](session-behavior.md) sonu | Kiracılar genelinde Kullanıcı üyeliği verilerini tutar. Bir kullanıcının üyesi ve üyelik düzeyi (yönetici veya Kullanıcı) olan kiracılar. |
+| x-MS-cpım-dilim | login.microsoftonline.com, b2clogin.com, markalı etki alanı | [Tarayıcı oturumunun](session-behavior.md) sonu | İstekleri uygun üretim örneğine yönlendirmek için kullanılır. |
+| x-MS-cpım-Trans | login.microsoftonline.com, b2clogin.com, markalı etki alanı | [Tarayıcı oturumunun](session-behavior.md) sonu | İşlemleri (Azure AD B2C kimlik doğrulama isteklerinin sayısı) ve geçerli işlemi izlemek için kullanılır. |
+| x-MS-cpım-SSO: {ID} | login.microsoftonline.com, b2clogin.com, markalı etki alanı | [Tarayıcı oturumunun](session-behavior.md) sonu | SSO oturumunun sürdürülmesi için kullanılır. |
+| x-MS-cpim-önbellek: {id} _n | login.microsoftonline.com, b2clogin.com, markalı etki alanı | [Tarayıcı oturumu](session-behavior.md)sonu, başarılı kimlik doğrulama | İstek durumunu korumak için kullanılır. |
+| x-MS-cpım-CSRF | login.microsoftonline.com, b2clogin.com, markalı etki alanı | [Tarayıcı oturumunun](session-behavior.md) sonu | CRSF koruması için kullanılan siteler arası Istek forgery belirteci. |
+| x-MS-cpım-DC | login.microsoftonline.com, b2clogin.com, markalı etki alanı | [Tarayıcı oturumunun](session-behavior.md) sonu | Azure AD B2C ağ yönlendirme için kullanılır. |
+| x-MS-cpım-CTX | login.microsoftonline.com, b2clogin.com, markalı etki alanı | [Tarayıcı oturumunun](session-behavior.md) sonu | Bağlam |
+| x-MS-cpım-RP | login.microsoftonline.com, b2clogin.com, markalı etki alanı | [Tarayıcı oturumunun](session-behavior.md) sonu | Kaynak sağlayıcısı kiracının üyelik verilerini depolamak için kullanılır. |
+| x-MS-cpım-RC | login.microsoftonline.com, b2clogin.com, markalı etki alanı | [Tarayıcı oturumunun](session-behavior.md) sonu | Geçiş tanımlama bilgisini depolamak için kullanılır. |

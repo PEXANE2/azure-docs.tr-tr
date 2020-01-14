@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery ile Azure VM olağanüstü durum kurtarma hakkında sık sorulan sorular
 description: Bu makalede, Azure VM 'lerinin olağanüstü durum kurtarma ile ilgili yaygın sorular Azure Site Recovery kullanarak başka bir Azure bölgesine yanıt verir
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: 5ed501a9f11e790bcc2196d57c6479beb54f1a17
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: 2e1689a4f6d3a2271da868350263bef098562127
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621063"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929912"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Sık sorulan sorular: Azure 'dan Azure 'a olağanüstü durum kurtarma
 
@@ -163,7 +163,7 @@ Bir çoğaltma grubunda, 16 sanal makineyi birlikte çoğaltabilirsiniz.
 CPU yoğun olduğundan, çoklu VM tutarlılığı etkinleştirilmesi iş yükü performansını etkileyebilir. Yalnızca makineler aynı iş yükünü çalıştırıyorsa ve birden çok makine arasında tutarlılık gerekiyorsa kullanılmalıdır. Örneğin, bir uygulamada iki SQL Server örneğe ve iki Web sunucusuna sahipseniz, yalnızca SQL Server örnekleri için çoklu VM tutarlılığı olmalıdır.
 
 
-## <a name="failover"></a>Yük devretme
+## <a name="failover"></a>Yük Devretme
 
 ### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Azure VM 'Leri için hedef bölgede kapasite nasıl garanti edilir?
 Site Recovery ekibi, yük devretme işlemi başlatıldığında olağanüstü durum kurtarma için etkinleştirilen VM 'Lerin hedef bölgede başarılı bir şekilde dağıtılmasını sağlamaya yardımcı olmak amacıyla Azure kapasite yönetimi ekibi ile birlikte çalışır.
@@ -244,7 +244,7 @@ Yeniden koruma sonrasında, yeniden çalışma süresi genellikle birincil bölg
 Site Recovery ekibi, yük devretme işlemi başlatıldığında olağanüstü durum kurtarma için etkinleştirilen VM 'Lerin hedef bölgede başarılı bir şekilde dağıtılmasını sağlamaya yardımcı olmak amacıyla Azure kapasite yönetimi ekibi ile birlikte çalışır.
 
 ### <a name="does-site-recovery-work-with-reserved-instances"></a>Site Recovery ayrılmış örneklerle birlikte çalışır mı?
-Evet, olağanüstü durum kurtarma bölgesinde [ayrılmış örnekler](https://azure.microsoft.com/pricing/reserved-vm-instances/) satın alabilir ve Site Recovery yük devretme işlemleri bunları kullanır. </br> Ek yapılandırma gerekmez.
+Evet, olağanüstü durum kurtarma bölgesinde [ayrılmış örnekler](https://azure.microsoft.com/pricing/reserved-vm-instances/) satın alabilir ve Site Recovery yük devretme işlemleri bunları kullanır. </br> Ek bir yapılandırma gerekmez.
 
 
 ## <a name="security"></a>Güvenlik

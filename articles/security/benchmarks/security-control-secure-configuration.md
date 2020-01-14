@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 08458777d8a8c5c74ac20a63245135ffaf0a5c04
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 03564effeee36ddb3316d48329ccab8ccfce75b9
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564120"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934289"
 ---
 # <a name="security-control-secure-configuration"></a>Güvenlik denetimi: güvenli yapılandırma
 
@@ -27,7 +27,9 @@ Saldırganların güvenlik açığı bulunan hizmetler ve ayarlarla yararlanmas�
 
 Tüm Azure kaynakları için güvenlik yapılandırmalarının bakımını yapmak üzere Azure Ilkesi veya Azure Güvenlik Merkezi 'ni kullanın.
 
-Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme:
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ## <a name="72-establish-secure-operating-system-configurations"></a>7,2: güvenli işletim sistemi yapılandırması oluşturma
 
@@ -57,7 +59,7 @@ Azure Ilkesini yapılandırma ve yönetme:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Ilke efektlerini anlama:
+Azure Ilke efektlerini anlayın:
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
@@ -85,7 +87,7 @@ https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-overview
 |--|--|--|
 | 7.5 | 5.3 | Müşteri |
 
-Özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Azure DevOps veya Azure Repos kullanın.
+Özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure DevOps veya Azure Repos kullanın.
 
 Azure DevOps 'da kod depolama:
 
@@ -159,7 +161,7 @@ https://docs.microsoft.com/azure/security-center/security-center-remediate-recom
 
 Kapsayıcılar için işletim sistemi ve Docker ayarlarına yönelik temel taramalar gerçekleştirmek üzere Azure Güvenlik Merkezi 'ni kullanın.
 
-Azure Güvenlik Merkezi kapsayıcısı önerilerini anlama:
+Azure Güvenlik Merkezi kapsayıcısı önerilerini anlayın:
 
 https://docs.microsoft.com/azure/security-center/security-center-container-recommendations
 
@@ -171,11 +173,17 @@ https://docs.microsoft.com/azure/security-center/security-center-container-recom
 
 Bulut uygulamalarınız için gizli yönetimi basitleştirmek ve güvenli hale getirmek için Azure Key Vault ile birlikte Yönetilen Hizmet Kimliği kullanın.
 
-Azure yönetilen kimliklerle tümleştirme: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Azure yönetilen kimliklerle tümleştirme:
 
-Key Vault oluşturma: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Yönetilen bir kimlikle Key Vault kimlik doğrulaması sağlama: https://docs.microsoft.com/azure/key-vault/managed-identity
+Key Vault oluşturma:
+
+https://docs.microsoft.com/azure/key-vault/quick-create-portal
+
+Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama:
+
+https://docs.microsoft.com/azure/key-vault/managed-identity
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7,12: kimlikleri güvenli ve otomatik olarak yönetme
 
@@ -185,7 +193,9 @@ Yönetilen bir kimlikle Key Vault kimlik doğrulaması sağlama: https://docs.mi
 
 Azure AD 'de otomatik olarak yönetilen bir kimlik ile Azure hizmetleri sağlamak için Yönetilen kimlikler kullanın. Yönetilen kimlikler, kodunuzda kimlik bilgileri olmadan Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmanıza olanak sağlar.
 
-Yönetilen kimlikleri yapılandırma: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+Yönetilen kimlikleri yapılandırma:
+
+https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
 ## <a name="713-eliminate-unintended-credential-exposure"></a>7,13: istenmeyen kimlik bilgisi pozlamasını ortadan kaldırın
 
@@ -195,7 +205,9 @@ Yönetilen kimlikleri yapılandırma: https://docs.microsoft.com/azure/active-di
 
 Kod içinde kimlik bilgilerini tanımlamak için kimlik bilgisi tarayıcısı uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerini Azure Key Vault gibi daha güvenli konumlara taşımayı de teşvik eder. 
 
-Kimlik bilgileri tarayıcısını ayarlama: https://secdevtools.azurewebsites.net/helpcredscan.html
+Kimlik bilgisi tarayıcısını ayarlama:
+
+https://secdevtools.azurewebsites.net/helpcredscan.html
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

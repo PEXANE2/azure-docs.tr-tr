@@ -11,19 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/08/2020
+ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9582881626f58ebbbae5648fe5d4b46e14fd5850
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6117f22b24887e913ed2f8d3a43e80335121636d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763342"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934489"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC ve Azure portal kullanarak rol atamalarını listeleyin
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] Bu makalede, Azure portal kullanılarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
+
+> [!NOTE]
+> Kuruluşunuzun, [Azure tarafından yetkilendirilen kaynak yönetimi](../lighthouse/concepts/azure-delegated-resource-management.md)kullanan bir hizmet sağlayıcısına dış kaynaklı yönetim işlevleri varsa, bu hizmet sağlayıcısı tarafından yetkilendirilen rol atamaları burada gösterilmez.
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>Bir kullanıcı veya grup için rol atamalarını listeleme
 

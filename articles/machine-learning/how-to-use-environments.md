@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: af6848e85db5d2a557835b063a499e3439557eb6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 93a70bf0d9189368135b8007e95627fc64064c51
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690427"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932194"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Azure Machine Learning ile eğitim & dağıtımı için ortamları yeniden kullanın.
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -344,6 +344,34 @@ service = Model.deploy(
 ## <a name="example-notebooks"></a>Örnek Not Defterleri
 
 Bu [örnek Not defteri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) , bu makalede gösterilen kavramların ve yöntemlerin üzerine genişletilir.
+
+## <a name="create-and-manage-environments-with-the-cli"></a>CLı ile ortam oluşturma ve yönetme
+
+[Azure MACHINE LEARNING CLI](reference-azure-machine-learning-cli.md) , Python SDK işlevselliğinin çoğunu yansıtır ve ortam oluşturma ve yönetimi için kullanılabilir. Aşağıdaki komutlar temel işlevleri gösterir.
+
+Aşağıdaki komut, belirtilen dizinde varsayılan bir ortam tanımı için dosyaları tanılar. Bu dosyalar, işlevindeki karşılık gelen sınıfa benzer JSON dosyalarıdır ve özel ayarlarla yeni ortamlar oluşturmak için kullanılabilir. 
+
+```azurecli-interactive
+az ml environment scaffold -n myenv -d myenvdir
+```
+
+Belirtilen dizinden bir ortamı kaydetmek için aşağıdaki komutu çalıştırın.
+
+```azurecli-interactive
+az ml environment register -d myenvdir
+```
+
+Aşağıdaki komutu çalıştırmak, tüm kayıtlı ortamları listeler.
+
+```azurecli-interactive
+az ml environment list
+```
+
+Aşağıdaki komutla kayıtlı bir ortam indirin.
+
+```azurecli-interactive
+az ml environment download -n myenv -d downloaddir
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

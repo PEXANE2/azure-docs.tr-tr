@@ -2,19 +2,23 @@
 title: Kapsayıcılar için Azure Izleyici aracı veri toplamayı yapılandırma | Microsoft Docs
 description: Bu makalede stdout/stderr ve ortam değişkenleri günlük toplamayı denetlemek için kapsayıcılar aracısının Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 0bde696f39af22f864500e0c79b5e03ca66cc7f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: 28b93190298ae61732ff7d2e297899af4ba0e5f2
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405673"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933017"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici için aracı veri toplamayı yapılandırma
 
-Kapsayıcılar için Azure Izleyici, Kapsayıcılı aracıdan Azure Kubernetes Service (AKS) üzerinde barındırılan yönetilen Kubernetes kümelerine dağıtılan kapsayıcı iş yüklerinden stdout, stderr ve ortam değişkenlerini toplar. Bu deneyimi denetlemek için özel bir Kubernetes ConfigMaps oluşturarak, aracı veri toplama ayarlarını yapılandırabilirsiniz. 
+Kapsayıcılar için Azure Izleyici, Kapsayıcılı aracıdan yönetilen Kubernetes kümelerine dağıtılan kapsayıcı iş yüklerinden stdout, stderr ve ortam değişkenlerini toplar. Bu deneyimi denetlemek için özel bir Kubernetes ConfigMaps oluşturarak, aracı veri toplama ayarlarını yapılandırabilirsiniz. 
 
 Bu makalede, gereksinimlerinize göre ConfigMap oluşturmayı ve veri toplamayı yapılandırmayı gösterir.
+
+>[!NOTE]
+>Azure Red Hat OpenShift için, *OpenShift-Azure-Logging* ad alanında bir şablon configmap dosyası oluşturulur. 
+>
 
 ## <a name="configmap-file-settings-overview"></a>ConfigMap dosya ayarlarına genel bakış
 
@@ -44,9 +48,12 @@ ConfigMaps genel bir liste ve aracıya yalnızca bir ConfigMap uygulanmış olab
 
 ConfigMap yapılandırma dosyanızı yapılandırmak ve kümenize dağıtmak için aşağıdaki adımları gerçekleştirin.
 
-1. ConfigMap YAML dosyasını şablon olarak [indirin](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) ve kapsayıcı-AZM-MS-agentconfig. YAML olarak kaydedin.  
+1. ConfigMap YAML dosyasını şablon olarak [indirin](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) ve kapsayıcı-AZM-MS-agentconfig. YAML olarak kaydedin. 
 
-2. Stdout, stderr ve/veya ortam değişkenlerini toplamak için, özelleştirmelerinizle ConfigMap YAML dosyasını düzenleyin.
+   >[!NOTE]
+   >ConfigMap şablonu kümede zaten mevcut olduğundan, bu adım Azure Red Hat OpenShift ile çalışırken gerekli değildir.
+
+2. Stdout, stderr ve/veya ortam değişkenlerini toplamak için, özelleştirmelerinizle ConfigMap YAML dosyasını düzenleyin. Azure Red Hat OpenShift için ConfigMap YAML dosyasını düzenliyorsanız, önce dosyayı bir metin düzenleyicisinde açmak için `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` komutunu çalıştırın.
 
     - Stdout günlük toplama için belirli ad alanlarını dışlamak üzere anahtarı/değeri aşağıdaki örneği kullanarak yapılandırırsınız: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`.
     
@@ -54,15 +61,17 @@ ConfigMap yapılandırma dosyanızı yapılandırmak ve kümenize dağıtmak iç
     
     - Stderr günlük toplama kümesi genelinde devre dışı bırakmak için anahtar/değer aşağıdaki örneği kullanarak yapılandırılır: `[log_collection_settings.stderr] enabled = false`.
 
-3. Aşağıdaki kubectl komutunu çalıştırarak ConfigMap oluşturun: `kubectl apply -f <configmap_yaml_file.yaml>`.
+3. Azure Red Hat OpenShift dışındaki kümeler için aşağıdaki kubectl komutunu çalıştırarak ConfigMap oluşturun: Azure Red Hat OpenShift dışındaki kümeler üzerinde `kubectl apply -f <configmap_yaml_file.yaml>`. 
     
     Örnek: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
-    
-    Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için aynı anda yeniden başlatma işlemi için bir yeniden başlatma işlemi yapılır. Yeniden başlatmalar tamamlandığında aşağıdakine benzer bir ileti görüntülenir ve sonuç: `configmap "container-azm-ms-agentconfig" created`.
 
-## <a name="verify-configuration"></a>Yapılandırmayı doğrulama 
+    Azure Red Hat OpenShift için değişikliklerinizi düzenleyicide kaydedin.
 
-Yapılandırmanın başarıyla uygulandığını doğrulamak için şu komutu kullanarak bir aracı Pod öğesinden günlükleri gözden geçirin: `kubectl logs omsagent-fdf58 -n=kube-system`. Omsagent pods 'den yapılandırma hataları varsa, çıktıda aşağıdakine benzer hatalar gösterilir:
+Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için aynı anda yeniden başlatma işlemi için bir yeniden başlatma işlemi yapılır. Yeniden başlatmalar tamamlandığında aşağıdakine benzer bir ileti görüntülenir ve sonuç: `configmap "container-azm-ms-agentconfig" created`.
+
+## <a name="verify-configuration"></a>Yapılandırmayı doğrulama
+
+Yapılandırmanın Azure Red Hat OpenShift dışında bir kümeye başarıyla uygulandığını doğrulamak için şu komutu kullanarak bir aracı Pod 'dan günlükleri gözden geçirin: `kubectl logs omsagent-fdf58 -n=kube-system`. Omsagent pods 'den yapılandırma hataları varsa, çıktıda aşağıdakine benzer hatalar gösterilir:
 
 ``` 
 ***************Start Config Processing******************** 
@@ -73,6 +82,10 @@ Yapılandırma değişikliklerini uygulamayla ilgili hatalar İnceleme için de 
 
 - Aynı `kubectl logs` komutunu kullanarak bir aracı Pod günlüklerinden. 
 
+    >[!NOTE]
+    >Bu komut, Azure Red Hat OpenShift kümesi için geçerli değildir.
+    > 
+
 - Canlı Günlükler. Canlı günlüklerde aşağıdakine benzer hatalar gösterilir:
 
     ```
@@ -81,11 +94,21 @@ Yapılandırma değişikliklerini uygulamayla ilgili hatalar İnceleme için de 
 
 - Log Analytics çalışma alanınızdaki **KubeMonAgentEvents** tablosundan. Veriler, yapılandırma hataları için *hata* önem derecesine sahip saatte bir gönderilir. Herhangi bir hata yoksa, tablodaki *girişte, hiçbir hata raporlayan önem derecesine*sahip veriler olur. **Etiketler** özelliği, hatanın oluştuğu Pod ve kapsayıcı kimliği ve ayrıca ilk oluşum, son oluşum ve Son saatteki sayı hakkında daha fazla bilgi içerir.
 
-Hatalar omsagent 'ın dosyayı ayrıştırmasını önler, yeniden başlatılmasına ve varsayılan yapılandırmayı kullanmasına neden olur. ConfigMap 'teki hataları düzelttikten sonra, YAML dosyasını kaydedin ve şu komutu çalıştırarak güncelleştirilmiş ConfigMaps 'leri uygulayın: `kubectl apply -f <configmap_yaml_file.yaml`.
+- Azure Red Hat OpenShift ile, OpenShift-Azure-Logging günlük koleksiyonunun etkinleştirilip etkinleştirilmediğini doğrulamak üzere **ContainerLog** tablosunu arayarak omsagent günlüklerini kontrol edin.
+
+Azure Red Hat OpenShift dışındaki kümelerdeki ConfigMap 'teki hataları düzelttikten sonra, YAML dosyasını kaydedin ve şu komutu çalıştırarak güncelleştirilmiş ConfigMaps 'leri uygulayın: `kubectl apply -f <configmap_yaml_file.yaml`. Azure Red Hat OpenShift için komutunu çalıştırarak güncelleştirilmiş ConfigMaps 'leri düzenleyin ve kaydedin:
+
+``` bash
+oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
 
 ## <a name="applying-updated-configmap"></a>Güncelleştirilmiş ConfigMap uygulanıyor
 
-Kümenize zaten bir ConfigMap dağıttıysanız ve daha yeni bir yapılandırmayla güncelleştirmek istiyorsanız, daha önce kullandığınız ConfigMap dosyasını düzenleyebilir ve sonra, `kubectl apply -f <configmap_yaml_file.yaml`aynı komutu kullanarak uygulayabilirsiniz.
+Azure Red Hat OpenShift dışındaki kümeler üzerinde zaten bir ConfigMap dağıttıysanız ve daha yeni bir yapılandırmayla güncelleştirmek istiyorsanız, daha önce kullandığınız ConfigMap dosyasını düzenleyebilir ve ardından, daha önce kullandığınız komutu kullanarak bu `kubectl apply -f <configmap_yaml_file.yaml`uygulayabilirsiniz. Azure Red Hat OpenShift için komutunu çalıştırarak güncelleştirilmiş ConfigMaps 'leri düzenleyin ve kaydedin:
+
+``` bash
+oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
 
 Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için aynı anda yeniden başlatma işlemi için bir yeniden başlatma işlemi yapılır. Yeniden başlatmalar tamamlandığında aşağıdakine benzer bir ileti görüntülenir ve sonuç: `configmap "container-azm-ms-agentconfig" updated`.
 

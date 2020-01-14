@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery ile SAP NetWeaver olağanüstü durum kurtarmayı ayarlama
 description: Bu makalede, Azure Site Recovery kullanarak SAP NetWeaver uygulama dağıtımları için olağanüstü durum kurtarmanın nasıl ayarlanacağı açıklanır.
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 29b3e4af33702c75e92b5e36c5521d9af12b1013
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.author: carmonm
+ms.openlocfilehash: 3ae9a92a27da1b736bf9db6dff88660f7d40143b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533843"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934455"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Çok katmanlı SAP NetWeaver uygulama dağıtımı için olağanüstü durum kurtarmayı ayarlama
 
@@ -26,7 +26,7 @@ Site Recovery, şunları yapabilirsiniz:
 
 Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak SAP NetWeaver uygulama dağıtımlarını nasıl koruyabileceğiniz açıklanır. Makale, Site Recovery kullanarak başka bir Azure veri merkezine çoğaltarak Azure 'da üç katmanlı SAP NetWeaver dağıtımını korumaya yönelik en iyi yöntemleri içerir. Desteklenen senaryoları ve konfigürasyonları ve test yük devretmeleri (olağanüstü durum kurtarma detayları) ve gerçek yük devretme işlemleri gerçekleştirmeyi açıklar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce, aşağıdaki görevleri nasıl yapabileceğinizi öğrendiğinizden emin olun:
 
 * [Bir sanal makineyi Azure 'a çoğaltma](azure-to-azure-walkthrough-enable-replication.md)
@@ -59,24 +59,24 @@ Bu başvuru mimarisi, Azure 'da yüksek kullanılabilirliğe sahip bir Windows o
 
 ## <a name="disaster-recovery-considerations"></a>Olağanüstü durum kurtarma konuları
 
-Olağanüstü durum kurtarma (DR) için, ikincil bir bölgeye yük devredebilmeniz gerekir. Olağanüstü durum kurtarma (DR) koruması sağlamak için her katman farklı bir strateji kullanır.
+Olağanüstü Durum Kurtarma (DR), ikincil bir bölgeye yük devretme mümkün olması gerekir. Olağanüstü durum kurtarma (DR) koruması sağlamak için her katman farklı bir strateji kullanır.
 
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>SAP web Dağıtıcı havuzu çalıştıran VM 'Ler 
-Web dağıtıcısı bileşeni, SAP uygulama sunucuları arasında SAP trafiği için yük dengeleyici olarak kullanılır. Web dağıtıcısı bileşeni için yüksek kullanılabilirlik elde etmek üzere Azure Load Balancer, paralel Web dağıtıcısı kurulumunu, dengeleyici havuzundaki kullanılabilir Web dengeleyicileri 'ler arasında HTTP (S) trafik dağıtımı için hepsini bir kez deneme yapılandırmasında uygulamak üzere kullanılır. Bu, Azure Site Recovery (ASR) kullanılarak çoğaltılır ve otomasyon betikleri, olağanüstü durum kurtarma bölgesinde yük dengeleyiciyi yapılandırmak için kullanılacaktır. 
+Web Dispatcher bileşen SAP trafiği SAP uygulama sunucuları arasında bir yük dengeleyici olarak kullanılır. Web dağıtıcısı bileşeni için yüksek kullanılabilirlik elde etmek üzere Azure Load Balancer, paralel Web dağıtıcısı kurulumunu, dengeleyici havuzundaki kullanılabilir Web dengeleyicileri 'ler arasında HTTP (S) trafik dağıtımı için hepsini bir kez deneme yapılandırmasında uygulamak üzere kullanılır. Bu, Azure Site Recovery (ASR) kullanılarak çoğaltılır ve otomasyon betikleri, olağanüstü durum kurtarma bölgesinde yük dengeleyiciyi yapılandırmak için kullanılacaktır. 
 
 #### <a name="vms-running-application-servers-pool"></a>Uygulama sunucuları havuzunu çalıştıran VM 'Ler
-ABAP uygulama sunucularının oturum açma gruplarını yönetmek için SMLG işlemi kullanılır. Sapgua ve RFC trafiği için SAP uygulama sunucuları havuzu arasında iş yükünü dağıtmak için merkezi hizmetlerin ileti sunucusu içinde Yük Dengeleme işlevini kullanır. Bu, Azure Site Recovery kullanılarak çoğaltılır 
+SMLG işlem ABAP uygulama sunucuları için oturum açma grupları yönetmek için kullanılır. Yük Dengeleme ileti sunucusu merkezi Hizmetleri işlevindeki SAPGUIs ve RFC için SAP uygulama sunucuları havuzu arasındaki iş yükünü dağıtmak için kullandığı trafiği. Bu, Azure Site Recovery kullanılarak çoğaltılır 
 
 #### <a name="vms-running-sap-central-services-cluster"></a>SAP merkezi hizmetler kümesi çalıştıran VM 'Ler
-Bu başvuru mimarisi, uygulama katmanındaki VM 'lerde Merkezi Hizmetler çalıştırır. Merkezi Hizmetler tek bir VM 'ye dağıtıldığında olası bir tek hata noktasıdır (SPOF) ve yüksek kullanılabilirlik bir gereksinim olmadığında tipik dağıtım olur.<br>
+Bu başvuru mimarisi, uygulama katmanında Vm'lerde merkezi hizmetleri çalıştırır. Merkezi Hizmetleri için tek bir VM dağıtılırken hata (SPOF) bir olası tek noktası olan — yüksek kullanılabilirlik gereksinimi olmadığı durumlarda tipik dağıtım.<br>
 
 Yüksek oranda kullanılabilir bir çözüm uygulamak için, paylaşılan bir disk kümesi veya bir dosya paylaşım kümesi kullanılabilir. VM 'Leri paylaşılan bir disk kümesi için yapılandırmak için Windows Server yük devretme kümesi ' ni kullanın. Bulut tanığı çekirdek tanığı olarak önerilir. 
  > [!NOTE]
  > Azure Site Recovery bulut tanığını çoğaltmadığından, bulut tanığını olağanüstü durum kurtarma bölgesinde dağıtmanız önerilir.
 
-Bir yük devretme kümesi ortamını desteklemek için, [SIOS Dataman küme sürümü](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) küme düğümlerine ait bağımsız diskleri çoğaltarak küme paylaşılan birimi işlevini gerçekleştirir. Azure, Paylaşılan diskleri yerel olarak desteklemez ve bu nedenle, SIOS tarafından sunulan çözümleri gerektirir. 
+Yük devretme küme ortamında desteklemek için [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) küme düğümlerinin sahip olduğu bağımsız diskleri çoğaltarak Küme Paylaşılan Birimi işlevi gerçekleştirir. Azure Paylaşılan diskleri yerel olarak desteklemez ve bu nedenle SIOS tarafından sağlanan çözümleri gerektirir. 
 
-Kümeleme işlemenin başka bir yolu da dosya paylaşma kümesi uygulamaktır. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) kısa süre önce,/sapmnt genel DIZINLERINE bir UNC yolu aracılığıyla erişmek Için Merkezi Hizmetler dağıtım modelini değiştirdi. Ancak,/sapmnt UNC paylaşımının yüksek oranda kullanılabilir olduğundan emin olmak yine de önerilir. Bu işlem, Windows Server 2016 ' deki genişleme dosya sunucusu (SOFS) ve Depolama Alanları Doğrudan (S2D) özelliği ile Windows Server yük devretme kümesi kullanılarak Merkezi Hizmetler örneğinde yapılabilir. 
+Kümeleme işlemenin başka bir yolu da dosya paylaşma kümesi uygulamaktır. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) /sapmnt genel dizinleri UNC yolu üzerinden erişmek için Yönetim Hizmetleri dağıtım modeli yakın zamanda değiştirilmiş. Ancak,/sapmnt UNC paylaşımının yüksek oranda kullanılabilir olduğundan emin olmak yine de önerilir. Bu işlem, Windows Server 2016 ' deki genişleme dosya sunucusu (SOFS) ve Depolama Alanları Doğrudan (S2D) özelliği ile Windows Server yük devretme kümesi kullanılarak Merkezi Hizmetler örneğinde yapılabilir. 
  > [!NOTE]
  > Şu anda Azure Site Recovery, yalnızca depolama alanları doğrudan ve yalnızca SIOS veri Man 'ın pasif düğümü kullanılarak sanal makinelerin kilitlenme tutarlı noktası çoğaltmasını destekler
 
@@ -95,7 +95,7 @@ Olağanüstü durum kurtarmayı ayarlamaya yönelik adımlar aşağıda verilmi�
 
 Bu örnekte kullanılan her bir katmanın olağanüstü durum kurtarma önerisi aşağıda verilmiştir. 
 
- **SAP katmanları** | **Önerilen**
+ **SAP katmanları** | **Öneri**
  --- | ---
 **SAP web Dağıtıcı havuzu** |  Site Recovery kullanarak çoğaltma 
 **SAP uygulama sunucusu havuzu** |  Site Recovery kullanarak çoğaltma 

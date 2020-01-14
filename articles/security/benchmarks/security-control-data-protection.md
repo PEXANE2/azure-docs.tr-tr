@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 914d1af9793107031af9797cb965420443e80c4a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5482495f87e87e5d05d8adca6b053810a62dcb4e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564341"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934514"
 ---
 # <a name="security-control-data-protection"></a>Güvenlik denetimi: veri koruma
 
@@ -85,7 +85,7 @@ Yoldaki tüm hassas bilgileri şifreleyin. Azure kaynaklarınıza bağlanan tüm
 
 Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme için kullanın.
 
-Azure ile iletim sırasında şifrelemeyi anlama:
+Azure ile iletim sırasında şifrelemeyi anlayın:
 
 https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit
 
@@ -164,4 +164,3 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Sonraki güvenlik denetimine bakın: [güvenlik açığı yönetimi](security-control-vulnerability-management.md)
-

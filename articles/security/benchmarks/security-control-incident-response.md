@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: b027a668403f47e9ffb824179ae54b89cded7a0c
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: fb3560aa2d3fbf48ab63c4da4d3a8d69cb677209
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564237"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934411"
 ---
 # <a name="security-control-incident-response"></a>Güvenlik denetimi: olay yanıtı
 
@@ -65,7 +65,7 @@ NıST 'nin yayını: BT planları ve özellikleri için test, eğitim ve alışt
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-## <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10,4: güvenlik olayları için güvenlik olayı iletişim ayrıntılarını sağlayın ve uyarı bildirimlerini yapılandırın &nbsp;
+## <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: güvenlik olaylarına ilişkin iletişim ayrıntılarını sağlayın ve güvenlik olayları için uyarı bildirimleri yapılandırın
 
 | Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
 |--|--|--|

@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery ile çok katmanlı Dynamics AX dağıtımı için olağanüstü durum kurtarma | Microsoft Docs
 description: Bu makalede, Dynamics AX için Azure Site Recovery olağanüstü durum kurtarmanın nasıl ayarlanacağı açıklanır
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 5b8aaff3a3418177f92c3b54fb3bb3e99f93810e
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: 089edd1f408494f59c8f0042b57d2d79c7faffae
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620747"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930180"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Çok katmanlı Dynamics AX uygulaması için olağanüstü durum kurtarmayı ayarlama   
 
@@ -79,7 +79,7 @@ Sanal makinelerin [Hyper-V](site-recovery-hyper-v-site-to-azure.md) veya [VMware
 
 Aşağıdaki anlık görüntüde, bir VMware siteden Azure koruma senaryosunda Dynamics-Component VM 'lerinin koruma durumu gösterilmektedir.
 
-![Korumalı öğeler](./media/site-recovery-dynamics-ax/protecteditems.png)
+![Korunan öğeler](./media/site-recovery-dynamics-ax/protecteditems.png)
 
 ### <a name="4-configure-networking"></a>4. ağı yapılandırma
 **VM işlem ve ağ ayarlarını yapılandırma**
@@ -109,7 +109,7 @@ Yük devretme işlemini otomatikleştirmek için Site Recovery ' de bir kurtarma
 
 4. Kurtarma planı için uygulama nesne sunucusunu ve istemci VM 'lerini seçin ve ✓ seçin.
 
-    ![Öğeleri seç](./media/site-recovery-dynamics-ax/selectvms.png)
+    ![Öğe seçin](./media/site-recovery-dynamics-ax/selectvms.png)
 
     Kurtarma planı örneği:
 

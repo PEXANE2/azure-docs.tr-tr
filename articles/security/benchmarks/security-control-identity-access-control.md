@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 9081f74aee7ff503c7fe29cef6ca76e6d6b46a4f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 543573610c2ea3ab0bcd89e1b8f4ee5f5a34dbc0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564276"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934425"
 ---
 # <a name="security-control-identity-and-access-control"></a>Güvenlik denetimi: kimlik ve Access Control
 
@@ -63,9 +63,11 @@ Daha fazla bilgi: https://docs.microsoft.com/azure/active-directory/privileged-i
 
 Mümkün olan yerlerde, tek başına bağımsız kimlik bilgilerini hizmet başına yapılandırmak yerine Azure Active Directory SSO kullanın. Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini kullanın.
 
-Azure AD ile SSO 'yu anlama: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Azure AD ile SSO 'yu anlayın:
 
-## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: tüm Azure Active Directory tabanlı erişim için Multi-Factor Authentication kullanın.
+https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+
+## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: tüm Azure Active Directory tabanlı erişim için Multi-Factor Authentication kullanın
 
 | Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
 |--|--|--|
@@ -89,9 +91,13 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 Azure kaynaklarını açmak ve yapılandırmak için MFA ile Paw 'lar (ayrıcalıklı erişim iş istasyonları) kullanın.
 
-Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin:
 
-Azure 'da MFA 'yı etkinleştirme: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+
+Azure 'da MFA 'yı etkinleştirme:
+
+https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 ## <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: yönetim hesaplarından şüpheli etkinlikte günlüğe kaydet ve uyar
@@ -130,19 +136,25 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-
 
 Merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory (AAD) kullanın. AAD, bekleyen ve aktarım sırasında veriler için güçlü şifrelemeyi kullanarak verileri korur. AAD Ayrıca, karma ve Kullanıcı kimlik bilgilerini güvenli bir şekilde depolar.
 
-AAD örneği oluşturma ve yapılandırma: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+AAD örneği oluşturma ve yapılandırma:
+
+https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: Kullanıcı erişimini düzenli olarak gözden geçirin ve karşılaştırın
 
 | Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
 |--|--|--|
-| 3.1 | 16,9, 16,10 | Müşteri |
+| 3,10 | 16,9, 16,10 | Müşteri |
 
 Azure AD, eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi Incelemelerini kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir. 
 
-Azure AD raporlama https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Azure AD raporlama:
 
-Azure kimlik erişimi Incelemelerini kullanma: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+
+Azure kimlik erişimi Incelemelerini kullanma:
+
+https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 ## <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: devre dışı bırakılmış hesaplara erişme girişimlerini izleme
 
@@ -186,7 +198,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 Microsoft 'un müşteri verilerine erişmesi gereken destek senaryolarında, Müşteri Kasası müşteri verileri erişim isteklerini gözden geçirmeniz ve onaylayabilmeniz ya da reddetmeniz için bir arabirim sağlar.
 
-Müşteri Kasası anlama:
+Müşteri Kasası anlayın:
 
 https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 

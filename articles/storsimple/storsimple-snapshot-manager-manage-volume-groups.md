@@ -1,9 +1,9 @@
 ---
-title: StorSimple Snapshot Manager birim gruplarını | Microsoft Docs
-description: StorSimple Snapshot Manager MMC ek bileşeninde birim grupları oluşturmak ve yönetmek için nasıl kullanılacağını açıklar.
+title: StorSimple Snapshot Manager birim grupları | Microsoft Docs
+description: Toplu grupları oluşturmak ve yönetmek için StorSimple Snapshot Manager MMC ek bileşeninin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
@@ -13,119 +13,119 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: e84bc790ac577796e91be010deecc8c5cea1b010
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 5198729cf96fb48c5dcd05096c04ea4d77c26de5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699706"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931487"
 ---
-# <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Birim grupları oluşturmak ve yönetmek için StorSimple Snapshot Manager'ı kullanın
+# <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Toplu grupları oluşturmak ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
-Kullanabileceğiniz **birim gruplarını** düğümde **kapsam** bölmesinde birim gruplarını, bir birim grubu hakkındaki bilgileri görüntüleme birimler atamak için Yedeklemeler zamanlamak ve birim gruplarını düzenleyin.
+Birim gruplarına birimler atamak, birim grubu hakkındaki bilgileri görüntülemek, yedeklemeleri zamanlamak ve birim gruplarını düzenlemek için **kapsam** bölmesindeki **Birim grupları** düğümünü kullanabilirsiniz.
 
-Birim, yedeklemeler uygulama ile tutarlı olmasını sağlamak için kullanılan ilişkili birimleri havuzları gruplarıdır. Daha fazla bilgi için [birim ve birim gruplarını](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups) ve [Windows birim gölge kopyası hizmeti ile tümleştirme](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
+Birim grupları, yedeklemelerin uygulamayla tutarlı olmasını sağlamak için kullanılan ilgili birimlerin havuzlarıdır. Daha fazla bilgi için bkz. [birimler ve birim grupları](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups) ve [Windows birim gölge kopyası hizmeti ile tümleştirme](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
 
 > [!IMPORTANT]
-> * Bir birim grubu tüm birimleri, bir tek bulut hizmeti sağlayıcısından gelmelidir.
-> * Birim grupları yapılandırdığınızda, Küme Paylaşılan birimleri (CSV) ve Csv'ler aynı birim grubunda olmayan karıştırmayın. StorSimple Snapshot Manager, aynı anlık Csv'leri ve CSV olmayan bir karışımını desteklemez.
+> * Bir birim grubundaki tüm birimlerin tek bir bulut hizmeti sağlayıcısından gelmesi gerekir.
+> * Birim gruplarını yapılandırırken, Küme Paylaşılan birimlerini (CSV) ve CSV 'leri aynı birim grubunda karıştırmayın. StorSimple Snapshot Manager, aynı anlık görüntüde CSVs ve CSV olmayan bir karışımı desteklemez.
 
 ![Birim grupları düğümü](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Volume_groups.png)
 
 **Şekil 1: StorSimple Snapshot Manager birim grupları düğümü** 
 
-Bu öğretici için StorSimple anlık görüntü yöneticisini nasıl kullanabileceğinizi açıklar:
+Bu öğreticide, StorSimple Snapshot Manager kullanarak şunları yapabilirsiniz:
 
-* Birim grupları hakkındaki bilgileri görüntüleme
+* Birim gruplarınız hakkındaki bilgileri görüntüleme
 * Bir birim grubu oluşturun
-* Bir birim grubunu yedekleme
-* Bir birim grubu Düzenle
-* Bir birim grubu Sil
+* Birim grubunu yedekleme
+* Birim grubunu düzenleme
+* Birim grubunu silme
 
-Tüm bu eylemler de kullanılabilir olan **eylemleri** bölmesi.
+Bu eylemlerin tümü, **Eylemler** bölmesinde de kullanılabilir.
 
-## <a name="view-volume-groups"></a>Birim grupları görüntüleyin
-Tıklarsanız **birim gruplarını** düğümünün **sonuçları** sütun seçimlere bağlı olarak, bölmesinde her bir birim grubu hakkında aşağıdaki bilgileri gösterir. (Sütunları **sonuçları** bölmesinde yapılandırılabilir. Sağ **birimleri** düğümünü **görünümü**ve ardından **sütunları Ekle/Kaldır**.)
+## <a name="view-volume-groups"></a>Birim gruplarını görüntüle
+**Birim grupları** düğümüne tıklarsanız, **sonuçlar** bölmesi yaptığınız sütun seçimlerine bağlı olarak her bir birim grubuyla ilgili aşağıdaki bilgileri gösterir. ( **Sonuçlar** bölmesindeki sütunlar yapılandırılabilir. **Birimler** düğümüne sağ tıklayın, **Görünüm**' ü seçin ve ardından **sütun Ekle/Kaldır**' ı seçin.)
 
-| Sonuçları sütun | Açıklama |
+| Sonuç sütunu | Açıklama |
 |:--- |:--- |
-| Ad |**Adı** sütun birim grubu adını içerir. |
-| Uygulama |**Uygulamaları** sütun Windows konağında VSS yazıcılarının yüklü ve çalışır durumda sayısını gösterir. |
-| Seçildi |**Seçili** sütun birim grubunda bulunan birimleri sayısını gösterir. Sıfır (0), uygulama birim grubu birimlerin ile ilişkili olduğunu gösterir. |
-| İçeri aktarılan |**İçeri aktarılan** sütun alınan birimlerin sayısını gösterir. Ayarlandığında **True**, bu sütun bir birim grubu Azure portalından alınan ve StorSimple Snapshot Manager'da oluşturulmamış gösterir. |
+| Ad |**Ad** sütunu, birim grubunun adını içerir. |
+| Uygulama |**Uygulamalar** sütununda, Windows konakta yüklü olan ve ÇALıŞMAKTA olan VSS yazıcılarının sayısı gösterilir. |
+| Seçildi |**Seçili** sütun, birim grubunda bulunan birim sayısını gösterir. Sıfır (0), birim grubundaki birimlerle hiçbir uygulamanın ilişkilendirilmediğini belirtir. |
+| İçe Aktarıldı |**Içeri aktarılan** sütun, içeri aktarılan birim sayısını gösterir. **True**olarak ayarlandığında, bu sütun bir birim grubunun Azure Portal içeri aktarıldığını ve storsimple Snapshot Manager içinde oluşturulmadığını gösterir. |
 
 > [!NOTE]
-> StorSimple Snapshot Manager birim gruplarını da görüntülenir **yedekleme ilkeleri** Azure portalında sekmesi.
+> StorSimple Snapshot Manager birim grupları ayrıca Azure portal **yedekleme ilkeleri** sekmesinde görüntülenir.
 > 
 > 
 
 ## <a name="create-a-volume-group"></a>Bir birim grubu oluşturun
 Bir birim grubu oluşturmak için aşağıdaki yordamı kullanın.
 
-#### <a name="to-create-a-volume-group"></a>Bir birim grubu oluşturmak için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde sağ **birim gruplarını**ve ardından **birim grubu oluştur**.
+#### <a name="to-create-a-volume-group"></a>Birim grubu oluşturmak için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **Birim grupları**' na sağ tıklayın ve ardından **birim grubu oluştur**' a tıklayın.
    
     ![Birim grubu oluştur](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Create_volume_group.png)
    
-    **Bir birim grubu oluştur** iletişim kutusu görüntülenir.
+    **Birim grubu oluştur** iletişim kutusu görüntülenir.
    
-    ![Bir birim grubu iletişim kutusu oluşturma](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png)
+    ![Birim grubu oluştur iletişim kutusu](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png)
 3. Aşağıdaki bilgileri girin:
    
-   1. İçinde **adı** yeni birim grubu için benzersiz bir ad yazın.
-   2. İçinde **uygulamaları** kutusunda birim grubuna ekleyerek birimleri ile ilişkili uygulama.
+   1. **Ad** kutusuna yeni birim grubu için benzersiz bir ad yazın.
+   2. **Uygulamalar** kutusunda, birim grubuna ekleyeceğiniz birimlerle ilişkili uygulamalar ' ı seçin.
       
-       **Uygulamaları** kutusu listeleri yalnızca StorSimple birimlerini kullanır ve VSS yazıcılarının sahip uygulamalar için etkin. Yalnızca StorSimple birimlerini yazıcı farkında olan tüm birimleri, bir VSS yazıcının etkin olduğu. Ardından uygulamaları kutusu boş olduğunda, Azure StorSimple birimlerini kullanan ve VSS yazıcılarının desteklenen uygulama yüklenmez. (Şu anda Azure StorSimple Microsoft Exchange ve SQL Server destekler.) VSS yazıcılarının hakkında daha fazla bilgi için bkz: [Windows birim gölge kopyası hizmeti ile tümleştirme](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
+       **Uygulamalar** kutusu yalnızca StorSimple birimlerini kullanan ve VSS yazıcılarının kendileri için etkinleştirildiği uygulamaları listeler. Bir VSS yazıcısı yalnızca yazıcının farkında olduğu tüm birimler StorSimple birimleridir etkindir. Uygulamalar kutusu boşsa, Azure StorSimple birimlerini kullanan ve desteklenen VSS yazıcılarını içeren hiçbir uygulama yüklenir. (Şu anda Azure StorSimple, Microsoft Exchange ve SQL Server destekler.) VSS yazıcıları hakkında daha fazla bilgi için bkz. [Windows birim gölge kopyası hizmeti Ile tümleştirme](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
       
-       Bir uygulama seçtiğinizde, ilişkili tüm birimleri otomatik olarak seçilir. Belirli bir uygulamayla ilişkili birimler seçerseniz, buna karşılık, uygulamayı otomatik olarak seçilir **uygulamaları** kutusu. 
-   3. İçinde **birimleri** kutusunda, birim grubuna eklemek için StorSimple birimlerini seçin. 
+       Bir uygulama seçerseniz, onunla ilişkili tüm birimler otomatik olarak seçilir. Buna karşılık, belirli bir uygulamayla ilişkili birimleri seçerseniz uygulama, **uygulamalar** kutusunda otomatik olarak seçilir. 
+   3. **Birimler** kutusunda, birim grubuna eklemek Için StorSimple birimleri ' ni seçin. 
       
-      * Tek veya birden çok bölüme sahip birimler dahil edebilirsiniz. (Birden çok bölüm birim dinamik diskleri veya temel diskleri ile birden çok bölüm olabilir.) Birden fazla bölüm içeren bir birime tek bir birim olarak kabul edilir. Yalnızca bir bölüm için bir birim grubu eklerseniz, sonuç olarak, diğer tüm bölümleri otomatik olarak bu birim gruba aynı anda eklenir. Bir birim grubu için birden çok bölüm birim ekledikten sonra tek bir birim olarak kabul edilmesi birden çok bölüm birim devam eder.
-      * Herhangi bir birimi atayarak değil, boş birim gruplarını oluşturabilirsiniz. 
-      * Küme Paylaşılan birimleri (CSV) ve Csv'ler aynı birim grubunda olmayan karıştırmayın. StorSimple Snapshot Manager CSV birimleri ve CSV olmayan birimlerin bir karışımı, aynı anlık desteklemez.
-4. Tıklayın **Tamam** birim grubunu kaydetmek için.
+      * Tek veya birden çok bölüm içeren birimler dahil edebilirsiniz. (Birden çok bölüm birimi dinamik diskler veya birden çok bölümlü temel diskler olabilir.) Birden çok bölüm içeren bir birim tek bir birim olarak değerlendirilir. Sonuç olarak, bölümlerden yalnızca birini bir birim grubuna eklerseniz, diğer tüm bölümler aynı anda o birim grubuna otomatik olarak eklenir. Bir birim grubuna birden çok bölüm birimi ekledikten sonra, birden çok bölüm birimi tek bir birim olarak değerlendirilmeye devam eder.
+      * Bunlara herhangi bir birim atamaktan, boş birim grupları oluşturabilirsiniz. 
+      * Küme Paylaşılan birimlerini (CSV) ve CSV 'yi, aynı birim grubunda karıştırmayın. StorSimple Snapshot Manager, aynı anlık görüntüde CSV birimlerinin ve CSV olmayan birimlerin bir karışımını desteklemez.
+4. Birim grubunu kaydetmek için **Tamam** ' ı tıklatın.
 
-## <a name="back-up-a-volume-group"></a>Bir birim grubunu yedekleme
+## <a name="back-up-a-volume-group"></a>Birim grubunu yedekleme
 Bir birim grubunu yedeklemek için aşağıdaki yordamı kullanın.
 
 #### <a name="to-back-up-a-volume-group"></a>Bir birim grubunu yedeklemek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesinde genişletin **birim gruplarını** düğümü, bir birim grubu adına sağ tıklayın ve ardından **ele yedekleme**.
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **Birim grupları** düğümünü genişletin, bir birim grubu adına sağ tıklayın ve ardından **yedeklemeyi al**' a tıklayın.
    
     ![Birim grubunu hemen yedekleyin](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Take_backup.png)
-3. İçinde **ele yedekleme** iletişim kutusunda **yerel anlık görüntü** veya **bulut anlık görüntüsü**ve ardından **Oluştur**.
+3. **Yedeği al** Iletişim kutusunda **Yerel anlık görüntü** veya **bulut anlık görüntüsü**' nü seçin ve ardından **Oluştur**' a tıklayın.
    
-    ![Yedekleme iletişim Al](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_TakeBackup_dialog.png)
-4. Backup'ın çalışır durumda olduğunu doğrulamak için genişletin **işleri** düğümünü ve ardından **çalıştıran**. Yedekleme listelenmelidir.
-5. Tamamlanan anlık görüntü görüntülemek için genişletin **yedekleme kataloğu** düğümü, birim grup adı'nı genişletin ve ardından **yerel anlık görüntü** veya **bulut anlık görüntüsü**. Yedekleme başarıyla tamamlandıysa listelenir.
+    ![Yedekleme Al iletişim kutusu](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_TakeBackup_dialog.png)
+4. Yedeğin çalıştığını doğrulamak için **işler** düğümünü genişletin ve ardından **çalışıyor**' a tıklayın. Yedeklemenin listelenmesi gerekir.
+5. Tamamlanan anlık görüntüyü görüntülemek için, **Yedekleme kataloğu** düğümünü genişletin, birim grubu adını genişletin ve ardından **Yerel anlık görüntü** veya **bulut anlık görüntüsü**' ne tıklayın. Yedekleme başarıyla tamamlandıysa listelenecektir.
 
-## <a name="edit-a-volume-group"></a>Bir birim grubu Düzenle
-Bir birim grubu düzenlemek için aşağıdaki yordamı kullanın.
+## <a name="edit-a-volume-group"></a>Birim grubunu düzenleme
+Bir birim grubunu düzenlemek için aşağıdaki yordamı kullanın.
 
-#### <a name="to-edit-a-volume-group"></a>Bir birim grubu düzenlemek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesini genişletin **birim gruplarını** düğümü, bir birim grubu adına sağ tıklayın ve ardından **Düzenle**.
-3. ** Bir birim grubu oluşturun ** iletişim kutusu görüntülenir. Değiştirebileceğiniz **adı**, **uygulamaları**, ve **birimleri** girdileri.
+#### <a name="to-edit-a-volume-group"></a>Bir birim grubunu düzenlemek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **Birim grupları** düğümünü genişletin, bir birim grubu adına sağ tıklayın ve ardından **Düzenle**' ye tıklayın.
+3. \* * Birim grubu oluştur * * iletişim kutusu görüntülenir. **Ad**, **uygulama**ve **birim** girdilerini değiştirebilirsiniz.
 4. Değişikliklerinizi kaydetmek için **Tamam**’a tıklayın.
 
-## <a name="delete-a-volume-group"></a>Bir birim grubu Sil
-Bir birim grubu silmek için aşağıdaki yordamı kullanın. 
+## <a name="delete-a-volume-group"></a>Birim grubunu silme
+Bir birim grubunu silmek için aşağıdaki yordamı kullanın. 
 
 > [!WARNING]
-> Bu, birim grubuyla ilişkili olan tüm yedeklemeler de siler.
+> Bu, birim grubuyla ilişkili tüm yedeklemeleri de siler.
 > 
 > 
 
-#### <a name="to-delete-a-volume-group"></a>Bir birim grubu silmek için
-1. StorSimple Snapshot Manager'ı başlatmak için Masaüstü simgesine tıklayın.
-2. İçinde **kapsam** bölmesini genişletin **birim gruplarını** düğümü, bir birim grubu adına sağ tıklayın ve ardından **Sil**.
-3. **Birim grubunu Sil** iletişim kutusu görüntülenir. Tür **Onayla** metin kutusuna ve ardından **Tamam**.
+#### <a name="to-delete-a-volume-group"></a>Bir birim grubunu silmek için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **Birim grupları** düğümünü genişletin, bir birim grubu adına sağ tıklayın ve ardından **Sil**' e tıklayın.
+3. **Birim grubunu sil** iletişim kutusu görüntülenir. Metin kutusuna **onaylayın** yazın ve ardından **Tamam**' a tıklayın.
    
-    Silinen bir birim grubu listesinden kaybolduktan **sonuçları** bölmesi ve o birimi grubuyla ilişkili olan tüm yedeklemeler yedekleme Kataloğu'ndan silinir.
+    Silinen birim grubu, **sonuçlar** bölmesindeki listeden ve bu birim grubuyla ilişkili tüm yedeklemeler yedekleme kataloğundan silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bilgi edinmek için nasıl [StorSimple çözümünüzü yönetmek için StorSimple Snapshot Manager kullanmak](storsimple-snapshot-manager-admin.md).
-* Bilgi edinmek için nasıl [oluşturmak ve yedekleme ilkelerini yönetmek için StorSimple Snapshot Manager kullanmak](storsimple-snapshot-manager-manage-backup-policies.md).
+* StorSimple [çözümünüzü yönetmek Için storsimple Snapshot Manager](storsimple-snapshot-manager-admin.md)nasıl kullanacağınızı öğrenin.
+* [StorSimple Snapshot Manager kullanarak yedekleme ilkeleri oluşturma ve yönetme](storsimple-snapshot-manager-manage-backup-policies.md)hakkında bilgi edinin.
 

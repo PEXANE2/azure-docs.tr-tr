@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 1cd3e39fd504b5095a83192a4a6314c71d3ca980
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c585ebd903d4070f6247456e06efffbc6ec45270
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564302"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934503"
 ---
 # <a name="security-control-data-recovery"></a>Güvenlik denetimi: veri kurtarma
 
@@ -27,7 +27,9 @@ Tüm sistem verilerinin, yapılandırmaların ve parolaların düzenli olarak ot
 
 Yedekleme kaynağını (Azure VM 'Leri, SQL Server veya dosya paylaşımları) ve istediğiniz sıklık ve bekletme süresini Azure Backup etkinleştirin ve yapılandırın.
 
-Azure Backup etkinleştirme: https://docs.microsoft.com/azure/backup/
+Azure Backup nasıl etkinleştirilir:
+
+https://docs.microsoft.com/azure/backup/
 
 ## <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: tüm sistem yedeklemelerini gerçekleştirin ve müşterinin yönettiği tüm anahtarları yedekleyin
 
@@ -37,9 +39,13 @@ Azure Backup etkinleştirme: https://docs.microsoft.com/azure/backup/
 
 Azure Backup ve hedef VM 'leri, ayrıca istediğiniz sıklığı ve bekletme dönemlerini etkinleştirin. Müşteri tarafından yönetilen anahtarları Azure Key Vault içinde yedekleyin.
 
-Azure Backup etkinleştirme: https://docs.microsoft.com/azure/backup/
+Azure Backup nasıl etkinleştirilir:
 
-Azure 'da Anahtar Kasası anahtarları nasıl yedekleirsiniz: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/azure/backup/
+
+Azure 'da Anahtar Kasası anahtarları nasıl yedekleirsiniz:
+
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
 ## <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: müşterinin yönettiği anahtarlar dahil tüm yedeklemeleri doğrulama
 

@@ -1,19 +1,19 @@
 ---
 title: Ticari Market 'te Azure uygulamaları teklifi için gözden geçirme geri bildirimini işleme
 description: Azure uygulamaları için, Microsoft Iş Ortağı Merkezi 'nde ticari Market portalı 'nı kullanarak Azure Market, AppSource veya bulut çözümü sağlayıcısı (CSP) aracılığıyla listeleme veya satma için gözden geçirme ile ilgili geri bildirimleri ele alma.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 7406a6e35929e3df5d342affbcb4b740efa0cab8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5dd74a7be95ecf92289f2a144c9c509c71ce935b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281226"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933657"
 ---
 # <a name="handling-review-feedback"></a>Gözden geçirme geri bildirimini işleme
 

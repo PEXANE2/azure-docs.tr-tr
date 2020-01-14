@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: a96a3de7c8ad309986417e21a13d5e18f56cbd24
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814848"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934121"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -77,9 +77,9 @@ Y: izlemeyi devre dışı bırakmak **için bir dağıtım**oluşturduğunuzda b
 
 Y **: REST API**, istekleri 5 saniyede 25 ' e sınırlandırır. Ayrıntılar, [konuşma](speech-to-text.md)için sayfalarımızda bulunabilir.
 
-**S: çift kanallı ses için nasıl ücretlendirilirim?**
+**S: çift kanallı ses için nasıl ücret ödersiniz?**
 
-Y **: her**kanalı ayrı ayrı gönderirseniz (her kanal kendi dosyasında), dosya süresi başına ücretlendirilirsiniz. Her bir kanalla çoğullanmış tek bir dosya gönderirseniz, tek dosya süresince ücretlendirilirsiniz.
+Y: her **bir**kanalı ayrı ayrı gönderirseniz (her kanal kendi dosyasında), her bir dosyanın süresi üzerinden ücretlendirilirsiniz. Her bir kanalla çoğullanmış tek bir dosya gönderirseniz, tek dosya süresince ücretlendirilirsiniz. Fiyatlandırma hakkında ayrıntılı bilgi için lütfen Azure bilişsel [Hizmetler fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)bakın.
 
 > [!IMPORTANT]
 > Özel konuşma hizmetini kullanmanızı engelleyen başka gizlilik endişeleriniz varsa, destek kanallarından birine başvurun.
@@ -110,7 +110,7 @@ ya da
 
 - aboneliğiniz için bir erişim belirteci ( [buraya](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)bakın),
 
-or
+veya
 
 - aboneliğinizin kaynak KIMLIĞI:
   - [Azure Portal](https://portal.azure.com)gidin,

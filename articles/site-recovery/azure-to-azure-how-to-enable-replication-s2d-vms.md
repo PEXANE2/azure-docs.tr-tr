@@ -2,18 +2,18 @@
 title: Azure Site Recovery kullanarak Depolama Alanları Doğrudan çalıştıran Azure VM 'lerini çoğaltma
 description: Bu makalede Azure Site Recovery kullanarak Depolama Alanları Doğrudan çalıştıran Azure VM 'lerinin nasıl çoğaltılacağı açıklanır.
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: asgang
-ms.openlocfilehash: 25ac7fa577aa33eda036c0f8544cc5ab03b12cd7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.author: carmonm
+ms.openlocfilehash: 49a4f59e68a409696480f89ee4b606fbed2b77ed
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954457"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929836"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Depolama Alanları Doğrudan çalıştıran Azure VM 'lerini başka bir bölgeye çoğaltma
 
@@ -23,7 +23,7 @@ Bu makalede, depolama alanları doğrudan çalıştıran Azure VM 'lerinin olağ
 >Yalnızca çökme ile tutarlı kurtarma noktaları, depolama alanları doğrudan kümeleri için desteklenir.
 >
 
-## <a name="introduction"></a>Giriş 
+## <a name="introduction"></a>Tanıtım 
 [Depolama alanları doğrudan (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) , Azure üzerinde [Konuk kümeler](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) oluşturmak için bir yol sağlayan, yazılım tanımlı bir depodır.  Microsoft Azure Konuk küme, IaaS VM 'lerinden oluşan bir yük devretme kümesidir. Barındırılan VM iş yüklerinin Konuk kümeler genelinde yük devredebilmeleri için, tek bir Azure VM 'nin sağlayabileceğinden uygulamalar için daha yüksek kullanılabilirlik SLA 'Sı sağlar. VM 'nin SQL veya genişleme dosya sunucusu gibi kritik bir uygulamayı barındırmakta olduğu senaryolarda faydalıdır.
 
 ## <a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>Depolama alanları doğrudan kullanarak Azure sanal makinelerini olağanüstü durumdan kurtarma

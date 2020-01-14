@@ -1,19 +1,19 @@
 ---
 title: Market ölçüm hizmeti API 'Leri | Azure Marketi
 description: Azure Marketi 'nde SaaS teklifleri için kullanım olayı.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 36ca95191e0e6422bd93360b98243393acad8147
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dea950ff72eff2372fc10f989d4ce77fa746c4bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825485"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933582"
 ---
 # <a name="marketplace-metering-service-apis"></a>Market ölçüm hizmeti API’leri
 
@@ -31,7 +31,7 @@ Kullanım olayı API 'SI, satın alınan belirli bir varlık için kullanım ola
 
 *İstek üst bilgileri:*
 
-| içerik türü       | `application/json`    |
+| İçerik türü       | `application/json`    |
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
@@ -52,7 +52,7 @@ Kullanım olayı API 'SI, satın alınan belirli bir varlık için kullanım ola
 ### <a name="responses"></a>Yanıtlar
 
 Kod: 200<br>
-Tamam 
+TAMAM 
 
 ```json
 {
@@ -131,7 +131,7 @@ Toplu kullanım olayı API 'SI, bir kerede birden fazla satın alınan varlık i
 
 *İstek üst bilgileri:*
 
-| içerik türü       | `application/json`       |
+| İçerik türü       | `application/json`       |
 | ------------------ | ------ |
 | `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanmış olur. |
@@ -161,7 +161,7 @@ Toplu kullanım olayı API 'SI, bir kerede birden fazla satın alınan varlık i
 ### <a name="responses"></a>Yanıtlar
 
 Kod: 200<br>
-Tamam
+TAMAM
 
 ```json
 {

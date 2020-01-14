@@ -1,19 +1,19 @@
 ---
 title: AppSource 'ta yazılım satın alma | Azure Marketi
 description: AppSource 'ta yazılım satın alma adımları | Azure Marketi.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.openlocfilehash: 3ca07f060aebcea82895f0463cac693c66f0c629
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 70e51d7c05e93e7d5f4451fa383023605a02af99
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827744"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933491"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Microsoft AppSource yazılım satın alma
 
@@ -23,7 +23,7 @@ Microsoft [Appsource](https://appsource.microsoft.com/) artık müşterilerin Mi
 
 SaaS tekliflerini satın almak için şunlar gerekir:
 
-- Bir iş veya okul hesabı.
+- İş veya okul hesabı.
 
     > [!Note]
     > Bir iş veya okul hesabınız yoksa, bir iş veya okul hesabının eklenebileceği bir Azure Active Directory kiracı oluşturmanız gerekir. Daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure Active Directory yeni kiracı oluşturma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
@@ -41,7 +41,7 @@ SaaS tekliflerini satın almak için şunlar gerekir:
     > [!Note]
     > AppSource, ücretsiz, denemeler ve ücretli abonelikler dahil olmak üzere, aralarından seçim yapabileceğiniz bir uygulama seçimi sağlar. Bu makalede, ücretli aboneliklerin AppSource aracılığıyla nasıl satın alınacağı açıklanmaktadır.
 
-1. **Şimdi al**' ı seçin.
+1. **Şimdi al**’ı seçin.
 1. Planı seçin:
 
     1. Koltuk sayısını ayarlama

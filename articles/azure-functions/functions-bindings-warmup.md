@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: a947ff11fbbe418af84ff49033cba3857bb8447f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925176"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933328"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Işlevleri ısınma tetikleyicisi
 
@@ -30,11 +30,11 @@ Bu makalede, Azure işlevlerinde ısınma tetikleyicisiyle nasıl çalışılaca
 
 ## <a name="trigger"></a>Tetikleyici
 
-Isınma tetikleyicisi, çalışan uygulamanıza eklendiğinde bir örnek üzerinde çalıştırılacak bir işlev tanımlamanızı sağlar. Uygulamanız trafiği almaya başlamadan önce bağlantıları açmak, bağımlılıkları yüklemek veya başka bir özel mantığı çalıştırmak için ısınma işlevini kullanabilirsiniz. 
+Isınma tetikleyicisi, çalışan uygulamanıza eklendiğinde yeni bir örnek üzerinde çalıştırılacak bir işlev tanımlamanızı sağlar. Uygulamanız trafiği almaya başlamadan önce bağlantıları açmak, bağımlılıkları yüklemek veya başka bir özel mantığı çalıştırmak için ısınma işlevini kullanabilirsiniz. 
 
 Isınma tetikleyicisi, uygulamanızdaki diğer işlevler tarafından kullanılacak paylaşılan bağımlılıklar oluşturmak için tasarlanmıştır. [Burada paylaşılan bağımlılıkların örneklerine bakın](./manage-connections.md#client-code-examples).
 
-Isınma tetikleyicisinin yalnızca ölçeklendirme işlemleri sırasında değil, yeniden başlatmalar sırasında veya diğer ölçek olmayan başlangıçlar olarak çağrıldığını unutmayın. Mantığınızın ısınma tetikleyicisini kullanmadan tüm gerekli bağımlılıkları yükleyebilmesi gerekir. Yavaş yükleme bunu elde etmek için iyi bir modeldir.
+Isınma tetikleyicisinin yalnızca genişleme işlemleri sırasında, yeniden başlatmalar veya ölçeklendirilmemiş olmayan başlatmalar sırasında çağrıldığına göz atın. Mantığınızın ısınma tetikleyicisini kullanmadan tüm gerekli bağımlılıkları yükleyebilmesi gerekir. Yavaş yükleme bunu elde etmek için iyi bir modeldir.
 
 ## <a name="trigger---example"></a>Tetikleyici - örnek
 

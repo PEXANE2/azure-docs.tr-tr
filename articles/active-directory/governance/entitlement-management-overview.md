@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/24/2019
+ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422568"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932470"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi nedir?
 
@@ -134,17 +134,32 @@ Yetkilendirme yönetimini ve belgelerini daha iyi anlamak için, aşağıdaki te
 
 Azure Kamu, Azure Almanya ve Azure Çin 21Vianet gibi özel bulutlar Şu anda kullanım için kullanılamaz.
 
-### <a name="which-users-must-have-licenses"></a>Hangi kullanıcıların Lisansı olmalıdır?
+### <a name="how-many-licenses-must-you-have"></a>Kaç lisansa sahip olmanız gerekir?
 
-Yetkilendirme yönetiminde etkin üye kullanıcıları olduğundan kiracınız en az sayıda Azure AD Premium P2 lisansa sahip olmalıdır. Yetkilendirme yönetiminde etkin üye kullanıcıları şunları içerir:
+Aşağıdaki görevleri yerine getirmek istediğiniz çalışanlara sahip olduğunuz için, dizininizde en az sayıda Azure AD Premium P2 lisansa sahip olduğundan emin olun:
 
-- Bir erişim paketi için isteği başlatan veya onaylayan bir kullanıcı.
-- Erişim paketi atanan bir kullanıcı.
-- Erişim paketlerini yöneten bir kullanıcı.
+- Erişim paketi **isteyebilen** üye kullanıcıları.
+- Erişim paketi isteyen üye ve Konuk kullanıcılar.
+- Bir erişim paketi için istekleri onaylayan üye ve Konuk kullanıcılar.
 
-Üye kullanıcılara yönelik lisansların bir parçası olarak, bir dizi Konuk kullanıcının yetkilendirme yönetimiyle etkileşime girmesine de izin verebilirsiniz. Dahil edebilirsiniz konuk kullanıcıların sayısını hesaplama hakkında daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B işbirliği Lisanslama Kılavuzu](../b2b/licensing-guidance.md).
+Aşağıdaki görevler için Azure AD Premium P2 lisansları gerekli **değildir** :
 
-Kullanıcılarınıza lisansları atama hakkında daha fazla bilgi için, bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md). Yetkilendirme yönetiminin Şu anda kullanıcılar için lisans atamasını zorlayamadığını unutmayın.
+- İlk katalogları kuran, paketlere ve ilkelere erişen ve diğer kullanıcılara yönetim görevleri atayan genel yönetici rolüne sahip kullanıcılar için lisans gerekmez.
+- Katalog Oluşturucu, Katalog sahibi ve erişim paketi Yöneticisi gibi yönetim görevlerinin yetkilendirilmiş olduğu kullanıcılar için lisans gerekmez.
+- Erişim paketleri talep edebilen ancak erişim paketi **istemeyen** konukları için lisans gerekmez.
+
+Üye kullanıcılarınız (çalışanlar) için satın aldığınız her ücretli Azure AD Premium P2 lisansı için, Azure AD B2B kullanarak 5 adede kadar Konuk kullanıcıya davet edebilirsiniz. Bu Konuk kullanıcılar Azure AD Premium P2 özelliklerini de kullanabilir. Daha fazla bilgi için bkz. [Azure AD B2B işbirliği Lisanslama Kılavuzu](../b2b/licensing-guidance.md).
+
+Lisanslar hakkında daha fazla bilgi için bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md).
+
+### <a name="example-license-scenarios"></a>Örnek lisans senaryoları
+
+Sahip olmanız gereken lisans sayısını belirlemenize yardımcı olacak bazı örnek lisans senaryoları aşağıda verilmiştir.
+
+| Senaryo | Hesaplama | Lisans sayısı |
+| --- | --- | --- |
+| Woodgrove Bank 'ta genel yönetici, ilk katalogları oluşturur ve yönetim görevlerini 6 diğer kullanıcılara devreder. İlkelerden biri **tüm çalışanların** (2.000 çalışan) belirli bir erişim paketleri kümesi isteyeerişebileceğini belirtir. 150 çalışan, erişim paketlerini ister. | erişim paketleri **isteyebilen** 2.000 çalışan | 2,000 |
+| Woodgrove Bank 'ta genel yönetici, ilk katalogları oluşturur ve yönetim görevlerini 6 diğer kullanıcılara devreder. İlkelerden biri **tüm çalışanların** (2.000 çalışan) belirli bir erişim paketleri kümesi isteyeerişebileceğini belirtir. Başka bir ilke, **iş ortağı contoso** (konuklar) kullanıcılarından gelen bazı kullanıcıların aynı erişim paketlerini onaya tabi isteyebildiği bir şekilde belirtir. Contoso 30.000 kullanıcıya sahiptir. 150 çalışan, contoso istek erişiminizden erişim paketlerini ve 10.500 kullanıcılarını ister. | 2\.000 500 çalışan ve 1:5 oranını aşan contoso 'dan gelen Konuk kullanıcıları (10.500-(2.000 * 5)) | 2,500 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

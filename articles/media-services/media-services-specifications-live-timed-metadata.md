@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: df2a86dd1292f58511765e842ee97daddcff4e3e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fd8533ff310e307604e5ce25a4285cc90f3ea4ab
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102931"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933997"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Canlı akışta zamanlanmış meta verileri sinyal alma 
 
-Son Güncelleme Tarihi: 2019-08-22
+Son güncelleme tarihi: 2019-08-22
 
 ### <a name="conformance-notation"></a>Uygunluk gösterimi
 
@@ -42,23 +42,23 @@ Bu belirtim, canlı akış sinyalleri içindeki zaman aşımına uğramış meta
 
 ## <a name="11-terms-used"></a>1,1 terim kullanıldı
 
-| Terim              | Tanım |
-|-------------------|------------|
-| Ad kesmesi          | Bir veya daha fazla reklamın teslim edilmek üzere zamanlanabileceği bir konum veya zaman noktası; kullanılabilir ve yerleştirme fırsatına benzer. |
-| Ad karar hizmeti| kullanıcıya hangi ad (ler) ve süreler gösterildiğine karar veren dış hizmet. Hizmetler genellikle bir iş ortağı tarafından sağlanır ve bu belgenin kapsamı dışındadır.|
-| 'Yu               | Yaklaşan ad kesmenin zaman ve parametrelerinin göstergesi. İpuçlarının bir ad kesmesi için bekleyen bir anahtarı belirtebileceğini, bir ad kesmesi içindeki bir sonraki ad için bekleyen geçiş ve bir ad sonundan Ana içeriğe bekleyen bir geçiş olduğunu unutmayın. |
-| Paketleyici          | "Akış uç noktası" Azure Media Services, DASH ve HLS için dinamik paketleme özellikleri sağlar ve medya sektöründe "paketleyicisi" olarak adlandırılır. 
-| Sunum süresi | Bir olaya bir görüntüleyiciye sunulan zaman. Bu süre, medya zaman çizelgesinde bir izleyicinin olayı göreceği süreyi temsil eder. Örneğin, bir SCTE-35 splice_info () komut iletisinin sunum süresi splice_time () ' dır. |
-| Varış saati      | Bir olay iletisinin ulaştığı zaman. Olay iletileri etkinliğin sunum zamanından önce gönderildiğinden, saat genellikle olayın sunum zamanından farklıdır.                                     |
-| Seyrek parça      | sürekli olmayan ve zaman bir üst veya denetim izlemeli eşitlenmiş medya izi.                                                                                                                                    |
-| Kaynak            | Azure Medya akışı hizmeti                                                                                                                                                                                                |
-| Kanal havuzu      | Azure Medya canlı akış hizmeti                                                                                                                                                                                           |
-| HLS               | Apple HTTP Canlı Akışı Protokolü                                                                                                                                                                                               |
-| TILDE              | HTTP üzerinden dinamik uyarlamalı akış                                                                                                                                                                                             |
-| Kesintisiz            | Kesintisiz Akış Protokolü                                                                                                                                                                                                        |
-| MPEG2-TS          | MPEG 2 aktarım akışları                                                                                                                                                                                                         |
-| RTMP              | Gerçek zamanlı multimedya Protokolü                                                                                                                                                                                                    |
-| uıısbf            | İşaretsiz tamsayı, önce en önemli bit.                                                                                                                                                                                    |
+| Sözleşme Dönemi                | Tanım                                                                                                                                                                                                                                    |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ad kesmesi            | Bir veya daha fazla reklamın teslim edilmek üzere zamanlanabileceği bir konum veya zaman noktası; kullanılabilir ve yerleştirme fırsatına benzer.                                                                                                                     |
+| Ad karar hizmeti | kullanıcıya hangi ad (ler) ve süreler gösterildiğine karar veren dış hizmet. Hizmetler genellikle bir iş ortağı tarafından sağlanır ve bu belgenin kapsamı dışındadır.                                                                    |
+| 'Yu                 | Yaklaşan ad kesmenin zaman ve parametrelerinin göstergesi. İpuçlarının bir ad kesmesi için bekleyen bir anahtarı belirtebileceğini, bir ad kesmesi içindeki bir sonraki ad için bekleyen geçiş ve bir ad sonundan Ana içeriğe bekleyen bir geçiş olduğunu unutmayın.           |
+| Paketleyici            | "Akış uç noktası" Azure Media Services, DASH ve HLS için dinamik paketleme özellikleri sağlar ve medya sektöründe "paketleyicisi" olarak adlandırılır.                                                                              |
+| Sunum süresi   | Bir olaya bir görüntüleyiciye sunulan zaman. Bu süre, medya zaman çizelgesinde bir izleyicinin olayı göreceği süreyi temsil eder. Örneğin, bir SCTE-35 splice_info () komut iletisinin sunum süresi splice_time (). |
+| Varış saati        | Bir olay iletisinin ulaştığı zaman. Olay iletileri etkinliğin sunum zamanından önce gönderildiğinden, saat genellikle olayın sunum zamanından farklıdır.                                                    |
+| Seyrek parça        | sürekli olmayan ve zaman bir üst veya denetim izlemeli eşitlenmiş medya izi.                                                                                                                                                  |
+| Kaynak              | Azure Medya akışı hizmeti                                                                                                                                                                                                             |
+| Kanal havuzu        | Azure Medya canlı akış hizmeti                                                                                                                                                                                                        |
+| HLS                 | Apple HTTP Canlı Akışı Protokolü                                                                                                                                                                                                            |
+| TILDE                | HTTP üzerinden dinamik uyarlamalı akış                                                                                                                                                                                                          |
+| Kesintisiz              | Kesintisiz Akış Protokolü                                                                                                                                                                                                                     |
+| MPEG2-TS            | MPEG 2 aktarım akışları                                                                                                                                                                                                                      |
+| RTMP                | Gerçek zamanlı multimedya Protokolü                                                                                                                                                                                                                 |
+| uıısbf              | İşaretsiz tamsayı, önce en önemli bit.                                                                                                                                                                                                 |
 
 ---
 
@@ -67,34 +67,34 @@ Bu belirtim, canlı akış sinyalleri içindeki zaman aşımına uğramış meta
 Aşağıdaki belgeler, bu metinde başvuru aracılığıyla bu belgenin sağlamasını oluşturan sağlama sağlar. Tüm belgeler standartlar gövdelerinin düzeltmesine tabidir ve okuyucular aşağıda listelenen belgelerin en son sürümlerini uygulama olasılığını araştırmaya teşvik edilir. Okuyucular Ayrıca, başvurulan belgelerin yeni sürümlerinin Azure Media Services için zaman aşımına uğramış meta veri belirtiminin bu sürümü ile uyumlu olabileceğini de anımsatılır.
 
 
-|Standart  |Tanım  |
-|---------|---------|
-|[Adobe-Primetime] | [Primetime dijital program ekleme sinyal belirtimi 1,2](https://www.adobe.com/content/dam/acom/en/devnet/primetime/PrimetimeDigitalProgramInsertionSignalingSpecification.pdf) |
-|[Adobe-Flash-AS] | [FLASH ActionScript dil başvurusu](https://help.adobe.com/archive/en_US/as2/flashlite_2.x_3.x_aslr.pdf) |
-| [AMF0]            | ["Eylem Iletisi biçimi AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf) |
-| [DASH-IF-IOP]     | DASH sektör Forumu birlikte çalışma kılavuzu v 4,2[https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html) |
-| [HLS-TMD]         | HTTP Canlı Akışı için zamanlanmış meta veriler-[https://developer.apple.com/streaming](https://developer.apple.com/streaming) |
-| [CMAF-ID3]         | [Ortak medya uygulaması biçiminde zamanlanmış meta veriler (CMAF)](https://aomediacodec.github.io/av1-id3/)
-| [ID3v2]           | ID3 etiket sürümü 2.4.0[http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure) |
-| [ISO-14496-12]    | ISO/IEC 14496-12: Bölüm 12 ISO temel medya dosyası biçimi, Onthedition 2012-07-15  |
-| [MPEGDASH]        | Bilgi teknolojisi-HTTP üzerinden dinamik uyarlamalı akış (DASH)--1. Bölüm: Medya sunusu açıklaması ve kesim biçimleri. 2014 Mayıs. Yayımladığı. 'DEKI https://www.iso.org/standard/65274.html |
-| [MPEGCMAF]        | Bilgi teknolojisi--multimedya uygulama biçimi (MPEG-A)--Bölüm 19: Bölünmüş medya için ortak medya uygulaması biçimi (CMAF). Ocak 2018. Yayımladığı. 'DEKI https://www.iso.org/standard/71975.html |
-| [MPEGCENC]        | Bilgi teknolojisi--MPEG Sistemleri Teknolojileri--Bölüm 7: ISO tabanlı medya dosyası biçim dosyalarında ortak şifreleme. 2016 Şubat. Yayımladığı. 'DEKI https://www.iso.org/standard/68042.html |
-| [MS-SSTR]         | ["Microsoft Kesintisiz Akış Protokolü", 15 Mayıs 2014](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) |
-| [MS-SSTR-ınest]  | [Azure Media Services parçalanmış MP4 canlı alma belirtimi](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview) |
-| [RFC8216]         | R. Pantos, Ed.; W. Mayıs. HTTP Canlı Akışı. Ağustos 2017. Amaçlı. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216) |
-| [RFC4648]         |Base16, Base32 ve Base64 veri kodlamaları-[https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648) |
-| RTMP            |["Adobe 'un gerçek zamanlı mesajlaşma Protokolü", 21 Aralık 2012](https://www.adobe.com/devnet/rtmp.html)  |
-| [SCTE-35-2019]    | SCTE 35: 2019-kablolu için dijital program ekleme Cueiletisi- https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf  |
-| [SCTE-214-1]      | SCTE 214-1 2016 – IP tabanlı kablo hizmetleri için MPEG DASH Bölüm 1: MPD kısıtlamaları ve uzantıları |
-| [SCTE-214-3]      | IP tabanlı kablo hizmetleri için SCTE 214-3 2015 MPEG DASH Bölüm 3: TIRE/FF profili |
-| [SCTE-224]        | SCTE 224 2018r1 – olay zamanlama ve bildirim arabirimi |
-| [SCTE-250]        | Olay ve sinyal yönetimi API 'SI (ESAM) |
+| Standart          | Tanım                                                                                                                                                                                                     |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Adobe-Primetime] | [Primetime dijital program ekleme sinyal belirtimi 1,2](https://www.adobe.com/content/dam/acom/en/devnet/primetime/PrimetimeDigitalProgramInsertionSignalingSpecification.pdf)                       |
+| [Adobe-Flash-AS]  | [FLASH ActionScript dil başvurusu](https://help.adobe.com/archive/en_US/as2/flashlite_2.x_3.x_aslr.pdf)                                                                                                   |
+| [AMF0]            | ["Eylem Iletisi biçimi AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)                                                                                                              |
+| [DASH-IF-ıOP]     | DASH sektör Forumu birlikte çalışma kılavuzu v 4,2 [https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html)    |
+| [HLS-TMD]         | HTTP Canlı Akışı için zamanlanmış meta veriler [https://developer.apple.com/streaming](https://developer.apple.com/streaming)                                                                                        |
+| [CMAF-ıD3]        | [Ortak medya uygulaması biçiminde zamanlanmış meta veriler (CMAF)](https://aomediacodec.github.io/av1-id3/)                                                                                                        |
+| [ID3v2]           | ID3 etiket sürümü 2.4.0 [http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure)                                                                                                                |
+| [ISO-14496-12]    | ISO/ıEC 14496-12: Bölüm 12 ISO taban medya dosyası biçimi, Onthedition 2012-07-15                                                                                                                                 |
+| [MPEGDASH]        | Bilgi teknolojisi-HTTP üzerinden dinamik uyarlamalı akış (DASH)--1. Bölüm: medya sunusu açıklaması ve kesim biçimleri. 2014 Mayıs. Yayımladığı. URL: https://www.iso.org/standard/65274.html         |
+| [MPEGCMAF]        | Bilgi teknolojisi--multimedya uygulama biçimi (MPEG-A)--Bölüm 19: kesimli medya için ortak medya uygulaması biçimi (CMAF). Ocak 2018. Yayımladığı. URL: https://www.iso.org/standard/71975.html |
+| [MPEGCENC]        | Bilgi teknolojisi--MPEG sistemleri teknolojileri--6. Bölüm: ISO tabanlı medya dosyası biçim dosyalarında ortak şifreleme. 2016 Şubat. Yayımladığı. URL: https://www.iso.org/standard/68042.html                   |
+| [MS-SSTR]         | ["Microsoft Kesintisiz Akış Protokolü", 15 Mayıs 2014](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
+| [MS-SSTR-ınest]  | [Azure Media Services parçalanmış MP4 canlı alma belirtimi](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)                                                      |
+| [RFC8216]         | R. Pantos, Ed.; W. Mayıs. HTTP Canlı Akışı. Ağustos 2017. Amaçlı. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
+| [RFC4648]         | Base16, Base32 ve Base64 veri kodlamaları- [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
+| RTMP            | ["Adobe 'un gerçek zamanlı mesajlaşma Protokolü", 21 Aralık 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
+| [SCTE-35-2019]    | SCTE 35:2019-kablo https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf için dijital program ekleme Cueiletisi                                                                       |
+| [SCTE-214-1]      | SCTE 214-1 2016 – IP tabanlı kablo hizmetleri için MPEG DASH 1. Bölüm: MPD kısıtlamaları ve uzantıları                                                                                                                 |
+| [SCTE-214-3]      | IP tabanlı kablo hizmetleri için SCTE 214-3 2015 MPEG DASH 3. Bölüm: DASH/FF profili                                                                                                                                  |
+| [SCTE-224]        | SCTE 224 2018r1 – olay zamanlama ve bildirim arabirimi                                                                                                                                                  |
+| [SCTE-250]        | Olay ve sinyal yönetimi API 'SI (ESAM)                                                                                                                                                                      |
 
 ---
 
 
-## <a name="2-timed-metadata-ingest"></a>2. Zamanlanmış meta veri alma
+## <a name="2-timed-metadata-ingest"></a>2. zamanlanmış meta veri alma
 
 Azure Media Services hem [RTMP] Kesintisiz Akış hem de [MS-SSTR-Ingest] protokolleri için gerçek zamanlı bant içi meta verileri destekler. Gerçek zamanlı meta veriler, özel olayları tanımlamak için kullanılabilir (JSON, Ikili, XML), Ayrıca, bir yayın akışındaki ad sinyali için ıD3 veya SCTE-35 gibi endüstri tanımlı biçimler kullanabilirsiniz. 
 
@@ -115,7 +115,7 @@ Zaman aşımına uğramış meta veriler için genel kullanım örneği senaryol
  - Tarayıcıda videonun yanında görüntülenecek etkileşimli reklam paketleri
  - Testler veya yoklamalar
   
-Azure Media Services canlı olaylar ve Paketleyici, bu zaman aşımına uğramış meta veri sinyallerini alabilir ve bunları, HLS ve DASH gibi standartlara dayalı protokoller kullanarak istemci uygulamalarına ulaşan meta veri akışına dönüştürür.
+Canlı etkinlikler ve Paketleyici Azure Media Services, bu zaman aşımına uğramış meta veri sinyallerini alabilir ve bunları, HLS ve DASH gibi standartlara dayalı protokoller kullanarak istemci uygulamalarına ulaşan meta veri akışına dönüştürebilirsiniz.
 
 
 ## <a name="21-rtmp-timed-metadata"></a>2,1 RTMP zamanlı meta veriler
@@ -131,7 +131,7 @@ Aşağıdaki [AMF0] komutları, RTMP alma için Azure Media Services tarafından
 - **onCuePoint** -Live Encoder gibi belirli şirket içi donanım kodlayıcıları tarafından [SCTE35] ileti sinyali için desteklenir. 
   
 
-Aşağıdaki tablolarda, Media Services hem "basit" hem de [SCTE35] ileti modlarını alacak olan AMF ileti yükünün biçimi açıklanmaktadır.
+Aşağıdaki tabloda, Media Services hem "basit" hem de [SCTE35] ileti modlarını alacak olan AMF ileti yükünün biçimi açıklanmaktadır.
 
 [AMF0] iletisinin adı aynı türden birden çok olay akışını ayırt etmek için kullanılabilir.  Hem [SCTE-35] iletileri hem de "basit" modu için, AMF iletisinin adı [Adobe-Primetime] belirtiminde gerekli olduğu gibi "onAdCue" olmalıdır.  Aşağıda listelenmeyen tüm alanlar alma sırasında Azure Media Services yok sayılır.
 
@@ -142,7 +142,7 @@ Yukarı akış kodlayıcısından, IP kameranıza, drone 'dan veya RTMP protokol
 **"Onuserdataevent"** veri iletisi komutu, Media Services tarafından yakalanıp bant içi dosya biçiminde paketlenmesi ve HLS, DASH ve kesintisiz akış için bildirim almak üzere aşağıdaki tanım ile bir ileti yükü taşımalıdır.
 Her 0,5 saniye (500ms) veya canlı akışla ilgili kararlılık sorunlarından daha sık, zaman aşımına uğramamış veri iletileri göndermeniz önerilir. Çerçeve düzeyinde meta veriler sağlamanız gerekiyorsa, her ileti birden çok kareden meta verileri toplayabilir. Çoklu bit hızı akışları gönderiyorsanız, meta verileri tek bir bit hızında sağlamanız önerilir, bu da yalnızca bant genişliğini azaltmak ve video/ses işlemeyle ilgili girişimlerden kaçınmak için gerekir. 
 
-**"Onuserdataevent"** için yük BIR [MPEGDASH] EVENTSTREAM xml biçim iletisi olmalıdır. Bu, HLS veya DASH protokolleri üzerinden sunulan CMAF [MPEGCMAF] içeriği için bantta ' EMSG ' yükleri içinde taşınılabilen özel tanımlı şemaları kolayca geçirmeye olanak sağlar. Her DASH olay akışı iletisi, URN ileti düzeni tanımlayıcısı olarak işlev gören ve iletinin yükünü tanımlayan bir IBir tek düzen içerir. [Scte-35 https://aomedia.org/emsg/ID3 ] için "" [ID3v2] veya **urn: scte: scte35:2013: bin** gibi bazı şemalar, birlikte çalışabilirlik için sektör yarışma göre standartlaştırılmıştır. Herhangi bir uygulama sağlayıcısı, denetleyedikleri URL 'YI (sahip etki alanı) kullanarak kendi özel düzenlerini tanımlayabilir ve tercih ettikleri URL 'de bir belirtim sağlayabilir. Bir oyuncunun tanımlı düzen için bir işleyicisi varsa, bu, yükü ve Protokolü anlaması gereken tek bileşendir.
+**"Onuserdataevent"** için yük BIR [MPEGDASH] EVENTSTREAM xml biçim iletisi olmalıdır. Bu, HLS veya DASH protokolleri üzerinden sunulan CMAF [MPEGCMAF] içeriği için bantta ' EMSG ' yükleri içinde taşınılabilen özel tanımlı şemaları kolayca geçirmeye olanak sağlar. Her DASH olay akışı iletisi, URN ileti düzeni tanımlayıcısı olarak işlev gören ve iletinin yükünü tanımlayan bir IBir tek düzen içerir. [SCTE-35] için "https://aomedia.org/emsg/ID3" veya urn: **scte: scte35:2013: bin** gibi bazı şemalar, birlikte çalışabilirlik için sektör yarışma göre standartlaştırılmıştır. Herhangi bir uygulama sağlayıcısı, denetleyedikleri URL 'YI (sahip etki alanı) kullanarak kendi özel düzenlerini tanımlayabilir ve tercih ettikleri URL 'de bir belirtim sağlayabilir. Bir oyuncunun tanımlı düzen için bir işleyicisi varsa, bu, yükü ve Protokolü anlaması gereken tek bileşendir.
 
 [MPEG-DASH] EventStream XML yükünün şeması olarak tanımlanır (DASH ISO-ıEC-23009-1-3. sürüm). Şu anda yalnızca "EventStream" başına bir "EventType" değeri desteklendiğini unutmayın. **Eventstream**'de birden fazla olay sağlanıyorsa yalnızca ilk **olay** öğesi işlenir.
 
@@ -208,13 +208,13 @@ Her 0,5 saniye (500ms) veya canlı akışla ilgili kararlılık sorunlarından d
 ```
 
 ### <a name="built-in-supported-scheme-id-uris"></a>Yerleşik desteklenen şema KIMLIĞI URI 'Leri
-| Şema KIMLIĞI URI 'SI                 |  Açıklama                                             |
-|-------------------------------|----------------------------------------------------------|
-| https:\//aomedia.org/EMSG/ID3   | [ID3v2] meta verilerinin CMAF ile uyumlu [MPEGCMAF] parçalanmış MP4 içinde zaman aşımına uğramış bir meta veriler olarak nasıl taşınabilir açıklar. Daha fazla bilgi için bkz [. ortak medya uygulaması biçimindeki (CMAF) zaman aşımına uğrayan meta veriler](https://aomediacodec.github.io/av1-id3/) |
+| Şema KIMLIĞI URI 'SI                 | Açıklama                                                                                                                                                                                                                                          |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| https:\//aomedia.org/emsg/ID3 | [ID3v2] meta verilerinin CMAF ile uyumlu [MPEGCMAF] parçalanmış MP4 içinde zaman aşımına uğramış bir meta veriler olarak nasıl taşınabilir açıklar. Daha fazla bilgi için bkz [. ortak medya uygulaması biçimindeki (CMAF) zaman aşımına uğrayan meta veriler](https://aomediacodec.github.io/av1-id3/) |
 
 ### <a name="event-processing-and-manifest-signaling"></a>Olay işleme ve bildirim sinyali verme
 
-Geçerli bir **"Onuserdataevent"** olayının alınması sırasında, Azure Media Services EventStreamType ([MPEGDASH] içinde tanımlanmıştır) ile eşleşen GEÇERLI bir XML yükünü ARAYACAKTıR, XML yükünü ayrıştırır ve bır [MPEGCMAF] mp4 Fragment ' EMSG ' sürüm 1 kutusuna dönüştürür Canlı arşivdeki depolama ve Media Services Paketleyiciyi aktarma.   Paketleyici, canlı akıştaki ' EMSG ' kutusunu algılar ve şu şekilde görünür:
+Geçerli bir **"Onuserdataevent"** olayının alınması sırasında, Azure Media Services EventStreamType ([MPEGDASH] içinde tanımlanmıştır) ile eşleşen GEÇERLI bir XML yükünü ARAYACAKTıR, XML yükünü ayrıştırır ve canlı arşiv ve Media Services paketleyicisi ile iletiminde depolama için BIR [MPEGCMAF] mp4 Fragment ' EMSG ' sürüm 1 kutusuna dönüştürür.   Paketleyici, canlı akıştaki ' EMSG ' kutusunu algılar ve şu şekilde görünür:
 
 - (a) "dinamik olarak paketleyin" HLS istemcilerinin HLS için zaman uyumsuz meta veri belirtimi [HLS-TMD] veya
 - (b) hmaf parçaları içinde HLS veya DASH aracılığıyla teslim etmek için ile geçiş yapın veya 
@@ -229,25 +229,35 @@ Bireysel olaylar veya veri yükleri doğrudan HLS, kesik çizgi veya düzgün bi
 - EventStream öğesinde zaman ölçeği ayarlanmamışsa, varsayılan olarak RTMP 1 kHz zaman ölçeği kullanılır
 - OnUserDataEvent iletisinin teslimi her 500 MS Max ile sınırlıdır. Olayları daha sık gönderirseniz, bant genişliğini ve canlı akışın kararlılığını etkileyebilir
 
-## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>"onCuePoint" ile 2.1.2 'yi RTMP ad ipucu sinyali
+## <a name="212-rtmp-ad-cue-signaling-with-onadcue"></a>"onAdCue" ile 2.1.2 'yi RTMP ad ipucu sinyali
 
 Azure Media Services, canlı akıştaki çeşitli gerçek zamanlı eşitlenmiş meta verileri göstermek için kullanılabilecek çeşitli [AMF0] ileti türlerini dinleyebilir ve yanıtlayabilir.  [Adobe-Primetime] belirtimi, "Simple" ve "SCTE-35" modu olarak adlandırılan iki işaret türünü tanımlar. "Basit" modu için Media Services, "basit mod" sinyali için tanımlanan tabloyla eşleşen bir yük kullanarak "onAdCue" adlı tek bir AMF ipucu iletisini destekler.  
 
-Aşağıdaki bölümde, HLS, DASH ve Microsoft Kesintisiz Akış istemci bildirimine yapılacak temel bir "spliceOut" ad sinyalini işaret etmek için kullanılabilen RTMP "basit" mod "yükü gösterilmektedir. Bu, müşterinin karmaşık bir SCTE-35 tabanlı ad sinyal dağıtımı veya ekleme sistemine sahip olmadığı ve bir API aracılığıyla işaret iletisinde göndermek için temel bir şirket içi kodlayıcı kullandığı senaryolarda çok yararlı olur. Genellikle şirket içi kodlayıcı, bu sinyali tetiklemek için REST tabanlı bir API 'yi destekleyecektir. Bu, videoya bir ıDR çerçevesi ekleyerek ve yeni bir GOP başlatarak video akışını da "splice-Condition" olarak destekler.
+Aşağıdaki bölümde, HLS, DASH ve Microsoft Kesintisiz Akış istemci bildirimine yapılacak temel bir "spliceOut" ad sinyalini işaret etmek için kullanılabilen RTMP "basit" mod "yükü gösterilmektedir. Bu, müşterinin karmaşık bir SCTE-35 tabanlı ad sinyal dağıtımı veya ekleme sistemine sahip olmadığı ve bir API aracılığıyla işaret iletisinde göndermek için temel bir şirket içi kodlayıcı kullandığı senaryolarda çok yararlı olur. Genellikle şirket içi kodlayıcı, bu sinyalin tetiklenmesi için REST tabanlı bir API 'yi destekleyecektir. Bu, videoya bir ıDR çerçevesi ekleyerek ve yeni bir GOP başlatarak video akışını da "splice-Condition" olarak destekler.
 
-## <a name="213--rtmp-ad-cue-signaling-with-oncuepoint---simple-mode"></a>"onCuePoint"-basit mod ile 2.1.3 RTMP ad ipucu sinyali
+## <a name="213--rtmp-ad-cue-signaling-with-onadcue---simple-mode"></a>"onAdCue" ile 2.1.3 RTMP ad ipucu sinyali-basit mod
 
-| Alan Adı | Alan türü | Gerekli mi? | Açıklamaları                                                                                                             |
-|------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| 'yu        | Dize     | Gerekli | Olay iletisi.  Basit bir mod splice belirlemek için "SpliceOut" olacaktır.                                              |
-| id         | Dize     | Gerekli | Splice veya segment tanımlayan benzersiz bir tanımlayıcı. İletinin bu örneğini tanımlar                            |
-| duration   | Number     | Gerekli | Splice 'ın süresi. Birimler kesirli saniyedir.                                                                |
-| elapsed    | Number     | İsteğe Bağlı | Sinyal, içindeki ayarlamayı desteklemek için yinelendiğinde, bu alan, splice başladıktan sonra geçen sunum süresinin miktarı olacaktır. Birimler kesirli saniyedir. Basit mod kullanılırken bu değer, splice 'ın orijinal süresini aşmamalıdır.                                                  |
-| time       | Number     | Gerekli | , Sunum süresi içinde, splice 'ın saati olacaktır. Birimler kesirli saniyedir.                                     |
+| Alan Adı | Alan türü | Gerekli mi? | Açıklamalar                                                                                                                                                                                                                                                                        |
+| ---------- | ---------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type       | Dize     | Gereklidir  | Olay iletisi.  Basit bir mod splice belirlemek için "SpliceOut" olacaktır.                                                                                                                                                                                                         |
+| id         | Dize     | Gereklidir  | Splice veya segment tanımlayan benzersiz bir tanımlayıcı. İletinin bu örneğini tanımlar                                                                                                                                                                                       |
+| duration   | Sayı     | Gereklidir  | Splice 'ın süresi. Birimler kesirli saniyedir.                                                                                                                                                                                                                           |
+| elapsed    | Sayı     | İsteğe Bağlı  | Sinyal, içindeki ayarlamayı desteklemek için yinelendiğinde, bu alan, splice başladıktan sonra geçen sunum süresinin miktarı olacaktır. Birimler kesirli saniyedir. Basit mod kullanılırken bu değer, splice 'ın orijinal süresini aşmamalıdır. |
+| time       | Sayı     | Gereklidir  | , Sunum süresi içinde, splice 'ın saati olacaktır. Birimler kesirli saniyedir.                                                                                                                                                                                                |
 
 ---
  
-## <a name="214-rtmp-ad-cue-signaling-with-oncuepoint---scte-35-mode"></a>"onCuePoint"-SCTE-35 modu ile 2.1.4 RTMP ad ipucu sinyali
+#### <a name="example-mpeg-dash-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Adobe RTMP basit modu kullanılırken örnek MPEG DASH bildirim çıkışı
+
+[Adobe Simple modunu kullanarak MPEG Dash. mpd EventStream için bkz. örnek 3.3.2.1](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
+
+Bkz. [tek dönem ve Adobe Simple modundaki örnek 3.3.3.1 Dash bildirimi](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)
+
+#### <a name="example-hls-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Adobe RTMP basit modu kullanılırken örnek HLS bildirim çıkışı
+
+Bkz. [Adobe Simple Mode ve ext-X-Cue etiketini kullanarak örnek 3.2.2 HLS bildirimi](#322-apple-hls-with-adobe-primetime-ext-x-cue-legacy)
+
+## <a name="214-rtmp-ad-cue-signaling-with-onadcue---scte-35-mode"></a>"onAdCue"-SCTE-35 modu ile 2.1.4 RTMP ad ipucu sinyali
 
 Tam SCTE-35 yük iletisinin HLS veya DASH bildirimine taşınmasını gerektiren daha gelişmiş bir yayın üretim iş akışıyla çalışırken, [Adobe-Primetime] belirtiminin "SCTE-35 modunu" kullanmak en iyisidir.  Bu mod, şirket içi bir Live Encoder 'a doğrudan gönderilen bant içi SCTE-35 sinyallerini destekler ve daha sonra [Adobe-Primetime] belirtiminde belirtilen "SCTE-35 modunu" kullanarak, bu sinyalleri RTMP akışına kodluyor. 
 
@@ -255,16 +265,23 @@ Genellikle SCTE-35 iletileri yalnızca şirket içi Kodlayıcıdaki MPEG-2 aktar
 
 Bu senaryoda, **"Onadcue"** [AMF0] ileti türü kullanılarak şirket içi kodlayıcıdan aşağıdaki yükün gönderilmesi gerekir.
 
-| Alan Adı | Alan türü | Gerekli mi? | Açıklamaları                                                                                                             |
-|------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| 'yu        | Dize     | Gerekli | Olay iletisi.  [SCTE-35] iletileri için, iletilerin HLS, kesintisiz ve Dash istemcilerine gönderilmesi için Base64 kodlamalı [RFC4648] ikili splice_info_section () olması gerekır.                                              |
-| type       | Dize     | Gerekli | İleti düzenini tanımlayan bir URN veya URL. [SCTE-35] iletilerinde, iletilerin HLS, sorunsuz ve Dash istemcilerine gönderilmesi için [Adobe-Primetime] ile uyumlu olması **gerekir** . Bu, **"scte35"** olmalıdır. İsteğe bağlı olarak, [SCTE-35] iletisini bildirmek için URN "urn: scte: scte35:2013: bin" de kullanılabilir. |
-| id         | Dize     | Gerekli | Splice veya segment tanımlayan benzersiz bir tanımlayıcı. İletinin bu örneğini tanımlar.  Denk semantiklere sahip iletiler aynı değere sahip olacaktır.|
-| duration   | Number     | Gerekli | Biliniyorsa olay veya ad splice-segment süresi. Bilinmiyorsa, değer 0 olmalıdır .                                                                 |
-| elapsed    | Number     | İsteğe Bağlı | ' İ ayarlamak için [SCTE-35] ad sinyali yinelendiğinde, bu alan, splice başladıktan sonra geçen sunum süresi kadar olacaktır. Birimler kesirli saniyedir. [SCTE-35] modunda, bu değer, splice veya segment için belirtilen özgün süreyi aşabilirler.                                                  |
-| time       | Number     | Gerekli | Etkinliğin veya ad splice 'ın sunum süresi.  Sunum süresi ve süresi, [ISO-14496-12] Ek I içinde tanımlandığı şekilde, 1 veya 2 türündeki akış erişim noktalarıyla (SAP) hizalı **olmalıdır** . HLS çıkışı için saat ve süre, kesim sınırlarıyla hizalı **olmalıdır** . Aynı olay akışı içindeki farklı olay iletilerinin sunum süresi ve süresi çakışmamalıdır. Birimler kesirli saniyedir.
+| Alan Adı | Alan türü | Gerekli mi? | Açıklamalar                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ---------- | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 'yu        | Dize     | Gereklidir  | Olay iletisi.  [SCTE-35] iletileri için, iletilerin HLS, kesintisiz ve Dash istemcilerine gönderilmesi için Base64 kodlamalı [RFC4648] ikili splice_info_section () olması gerekır.                                                                                                                                                                                                                               |
+| type       | Dize     | Gereklidir  | İleti düzenini tanımlayan bir URN veya URL. [SCTE-35] iletilerinde, iletilerin HLS, sorunsuz ve Dash istemcilerine gönderilmesi için [Adobe-Primetime] ile uyumlu olması **gerekir** . Bu, **"scte35"** olmalıdır. İsteğe bağlı olarak, [SCTE-35] iletisini bildirmek için URN "urn: scte: scte35:2013: bin" de kullanılabilir.                                                                                                        |
+| id         | Dize     | Gereklidir  | Splice veya segment tanımlayan benzersiz bir tanımlayıcı. İletinin bu örneğini tanımlar.  Denk semantiklere sahip iletiler aynı değere sahip olacaktır.                                                                                                                                                                                                                                                       |
+| duration   | Sayı     | Gereklidir  | Biliniyorsa olay veya ad splice-segment süresi. Bilinmiyorsa **, değer 0 olmalıdır.**                                                                                                                                                                                                                                                                                                                    |
+| elapsed    | Sayı     | İsteğe Bağlı  | ' İ ayarlamak için [SCTE-35] ad sinyali yinelendiğinde, bu alan, splice başladıktan sonra geçen sunum süresi kadar olacaktır. Birimler kesirli saniyedir. [SCTE-35] modunda, bu değer, splice veya segment için belirtilen özgün süreyi aşabilirler.                                                                                                                   |
+| time       | Sayı     | Gereklidir  | Etkinliğin veya ad splice 'ın sunum süresi.  Sunum süresi ve süresi, [ISO-14496-12] Ek I içinde tanımlandığı şekilde, 1 veya 2 türündeki akış erişim noktalarıyla (SAP) hizalı **olmalıdır** . HLS çıkışı için saat ve süre, kesim sınırlarıyla hizalı **olmalıdır** . Aynı olay akışı içindeki farklı olay iletilerinin sunum süresi ve süresi çakışmamalıdır. Birimler kesirli saniyedir. |
 
 ---
+
+#### <a name="example-mpeg-dash-mpd-manifest-with-scte-35-mode"></a>SCTE-35 modundaki örnek MPEG DASH. mpd bildirimi
+Bkz. [SCTE-35 ile örnek çizgi bildirimi bölümü 3.3.3.2](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
+
+#### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>SCTE-35 mod sinyaliyle örnek HLS manifest. M3U8
+Bkz. [SCTE-35 ile örnek 3.3.1.1 örnek HLS bildirimi](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
+
 ## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>On Live için 2.1.5 RTMP ad sinyali "onCuePoint" ile
 
 Dinamik şirket içi kodlayıcı, RTMP sinyalinde ad işaretçilerini destekler. Azure Media Services Şu anda yalnızca RTMP için "onCuePoint" ad Işaret türünü destekliyor.  Bu, "**ad_markers**" öğesini "onCuePoint" olarak ayarlayarak, elete Media Live Encoder ayarları veya API 'SINDEKI Adobe RTMP grup ayarlarından etkinleştirilebilir.  Ayrıntılar için lütfen bkz. canlı belgelere bakın. RTMP grubunda bu özelliğin etkinleştirilmesi, Azure Media Services tarafından işlenecek olan Adobe RTMP çıktılarına SCTE-35 sinyallerini geçirecek.
@@ -272,15 +289,115 @@ Dinamik şirket içi kodlayıcı, RTMP sinyalinde ad işaretçilerini destekler.
 "OnCuePoint" ileti türü, [Adobe-Flash-AS] içinde tanımlanmıştır ve, Elelılive RTMP çıktısından gönderildiğinde aşağıdaki yük yapısına sahiptir.
 
 
-| Özellik  |Açıklama  |
-|---------|---------|
-|  name     | Ad, elete Live tarafından '**scte35**' olmalıdır. |
-|time     |  Zaman çizelgesi sırasında, bir video dosyasında işaret noktasının gerçekleştiği saniye cinsinden süre |
-| type     | İşaret noktası türü "**Event**" olarak ayarlanmalıdır. |
-| parameters | Kimliği ve süresi de dahil olmak üzere SCTE-35 iletisindeki bilgileri içeren, ilişkilendirilebilir ad/değer çifti dizeleri dizisi. Bu değerler Azure Media Services tarafından ayrıştırılır ve bildirim dekorasyonu etiketine dahildir.  |
+| Özellik   | Açıklama                                                                                                                                                                                                                     |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ad       | Ad, elete Live tarafından '**scte35**' olmalıdır.                                                                                                                                                                              |
+| time       | Zaman çizelgesi sırasında, bir video dosyasında işaret noktasının gerçekleştiği saniye cinsinden süre                                                                                                                                           |
+| type       | İşaret noktası türü "**Event**" olarak ayarlanmalıdır.                                                                                                                                                                             |
+| parametreler | Kimliği ve süresi de dahil olmak üzere SCTE-35 iletisindeki bilgileri içeren ad/değer çifti dizelerinin ilişkilendirilebilir dizisi. Bu değerler Azure Media Services tarafından ayrıştırılır ve bildirim dekorasyonu etiketine dahildir. |
 
 
-Bu ad işaretçisi modu kullanıldığında, HLS bildirim çıktısı Adobe "Simple" moduna benzerdir. 
+Bu ad işaretçisi modu kullanıldığında, HLS bildirim çıktısı Adobe "Simple" moduna benzerdir.
+
+
+#### <a name="example-mpeg-dash-mpd-single-period-adobe-simple-mode-signals"></a>Örnek MPEG DASH MPD, tek dönem, Adobe basit mod sinyalleri
+
+~~~ xml
+<?xml version="1.0" encoding="utf-8"?>
+<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" profiles="urn:mpeg:dash:profile:isoff-live:2011" type="dynamic" publishTime="2020-01-07T18:58:03Z" minimumUpdatePeriod="PT0S" timeShiftBufferDepth="PT58M56S" availabilityStartTime="2020-01-07T17:44:47Z" minBufferTime="PT7S">
+    <Period start="PT0S">
+        <EventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="scte35" timescale="10000000">
+            <Event presentationTime="1583497601000000" duration="300000000" id="1085900"/>
+            <Event presentationTime="1583500901666666" duration="300000000" id="1415966"/>
+            <Event presentationTime="1583504202333333" duration="300000000" id="1746033"/>
+            <Event presentationTime="1583507502666666" duration="300000000" id="2076066"/>
+            <Event presentationTime="1583510803333333" duration="300000000" id="2406133"/>
+            <Event presentationTime="1583514104000000" duration="300000000" id="2736200"/>
+            <Event presentationTime="1583517404666666" duration="300000000" id="3066266"/>
+            <Event presentationTime="1583520705333333" duration="300000000" id="3396333"/>
+            <Event presentationTime="1583524006000000" duration="300000000" id="3726400"/>
+            <Event presentationTime="1583527306666666" duration="300000000" id="4056466"/>
+            <Event presentationTime="1583530607333333" duration="300000000" id="4386533"/>
+        </EventStream>
+        <AdaptationSet id="1" group="1" profiles="ccff" bitstreamSwitching="false" segmentAlignment="true" contentType="video" mimeType="video/mp4" codecs="avc1.4D400C" maxWidth="256" maxHeight="144" startWithSAP="1">
+            <InbandEventStream schemeIdUri="urn:mpeg:dash:event:2012" value="1"/>
+            <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="scte35"/>
+            <SegmentTemplate timescale="10000000" presentationTimeOffset="1583486678426666" media="QualityLevels($Bandwidth$)/Fragments(video=$Time$,format=mpd-time-csf)" initialization="QualityLevels($Bandwidth$)/Fragments(video=i,format=mpd-time-csf)">
+                <SegmentTimeline>
+                    <S t="1583495318000000" d="64000000" r="34"/>
+                    <S d="43000000"/>
+                    <S d="21000000"/>
+                    <!-- ... Truncated for brevity of sample-->
+
+                </SegmentTimeline>
+            </SegmentTemplate>
+            <ProducerReferenceTime id="1583495318000000" type="0" wallClockTime="2020-01-07T17:59:10.957Z" presentationTime="1583495318000000"/>
+            <Representation id="1_V_video_3750956353252827751" bandwidth="149952" width="256" height="144"/>
+        </AdaptationSet>
+        <AdaptationSet id="2" group="5" profiles="ccff" bitstreamSwitching="false" segmentAlignment="true" contentType="audio" mimeType="audio/mp4" codecs="mp4a.40.2" lang="en">
+            <InbandEventStream schemeIdUri="urn:mpeg:dash:event:2012" value="1"/>
+            <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="scte35"/>
+            <Label>ambient</Label>
+            <SegmentTemplate timescale="10000000" presentationTimeOffset="1583486678426666" media="QualityLevels($Bandwidth$)/Fragments(ambient=$Time$,format=mpd-time-csf)" initialization="QualityLevels($Bandwidth$)/Fragments(ambient=i,format=mpd-time-csf)">
+                <SegmentTimeline>
+                    <S t="1583495254426666" d="64000000" r="35"/>
+                    <S d="43093334"/>
+                    <S d="20906666"/>
+                    <!-- ... Truncated for brevity of sample-->
+
+                </SegmentTimeline>
+            </SegmentTemplate>
+            <ProducerReferenceTime id="1583495254426666" type="0" wallClockTime="2020-01-07T17:59:04.600Z" presentationTime="1583495254426666"/>
+            <Representation id="5_A_ambient_9125670592623055209" bandwidth="96000" audioSamplingRate="48000"/>
+        </AdaptationSet>
+    </Period>
+</MPD>
+~~~
+
+#### <a name="example-hls-playlist-adobe-simple-mode-signals-using-ext-x-cue-tag-truncated--for-brevity"></a>Örnek HLS çalma listesi, Adobe basit mod, EXT-X-CUE etiketini (kesilen "...") kullanarak bildirir breçekimi için)
+
+Aşağıdaki örnek, Adobe "Simple" mod sinyallerini ve eski [Adobe Primetime] EXT-X-CUE etiketini kullanarak bir RTMP alma akışı için Media Services dinamik paketleyicisi çıktısını gösterir.  
+
+~~~
+#EXTM3U
+#EXT-X-VERSION:8
+#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-TARGETDURATION:7
+#EXT-X-INDEPENDENT-SEGMENTS
+#EXT-X-PROGRAM-DATE-TIME:2020-01-07T17:44:47Z
+#EXTINF:6.400000,no-desc
+Fragments(video=1583486742000000,format=m3u8-aapl-v8)
+#EXTINF:6.400000,no-desc
+Fragments(video=1583486806000000,format=m3u8-aapl-v8)
+...
+#EXTINF:6.166667,no-desc
+Fragments(video=1583487638000000,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID=95766,TYPE="SpliceOut",DURATION=30.000000,TIME=158348769.966667
+#EXTINF:0.233333,no-desc
+Fragments(video=1583487699666666,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID=95766,TYPE="SpliceOut",DURATION=30.000000,TIME=158348769.966667,ELAPSED=0.233333
+#EXTINF:6.400000,no-desc
+Fragments(video=1583487702000000,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID=95766,TYPE="SpliceOut",DURATION=30.000000,TIME=158348769.966667,ELAPSED=6.633333
+#EXTINF:6.400000,no-desc
+Fragments(video=1583487766000000,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID=95766,TYPE="SpliceOut",DURATION=30.000000,TIME=158348769.966667,ELAPSED=13.033333
+#EXTINF:6.400000,no-desc
+Fragments(video=1583487830000000,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID=95766,TYPE="SpliceOut",DURATION=30.000000,TIME=158348769.966667,ELAPSED=19.433333
+#EXTINF:6.400000,no-desc
+Fragments(video=1583487894000000,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID=95766,TYPE="SpliceOut",DURATION=30.000000,TIME=158348769.966667,ELAPSED=25.833333
+#EXTINF:4.166667,no-desc
+Fragments(video=1583487958000000,format=m3u8-aapl-v8)
+#EXTINF:2.233333,no-desc
+Fragments(video=1583487999666666,format=m3u8-aapl-v8)
+#EXTINF:6.400000,no-desc
+Fragments(video=1583488022000000,format=m3u8-aapl-v8)
+...
+
+~~~
 
 ### <a name="216-cancellation-and-updates"></a>2.1.6 iptali ve güncelleştirmeleri
 
@@ -296,17 +413,17 @@ Reklamların çerçeveye doğru eklenmesini sağlamak için, kodlayıcının, bu
 
 ### <a name="221-live-server-manifest-box"></a>2.2.1 canlı sunucu bildirim kutusu
 
-Seyrek parça, canlı sunucu bildirim kutusunda bir  **\<\> TextStream** girişi ile bildirilmelidir ve aşağıdaki özniteliklerin ayarlanmış olması **gerekir** :
+Seyrek izleme, canlı sunucu bildirim kutusunda **\<TextStream\>** girdisiyle bildirilmelidir ve aşağıdaki özniteliklerin **ayarlanmış olması** **gerekir** :
 
-| **Öznitelik adı** | **Alan türü** | **Gerekli?** | **Açıklama**                                                                                                                                                                                                                                                 |
-|--------------------|----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| systemBitrate      | Number         | Gerekli      | Bilinmeyen, değişken bit hızına sahip bir izleme belirten "0" olmalıdır.                                                                                                                                                                                                 |
-| parentTrackName    | Dize         | Gerekli      | Seyrek izleme zaman kodlarının zaman ölçeği hizalı olduğu üst izlemenin adı olmalıdır. Üst izleme seyrek bir izleme olamaz.                                                                                                                    |
-| Bildirimli Estoutput     | Boole değeri        | Gerekli      | Seyrek izlemenin sorunsuz istemci bildiriminde gömüleceğini göstermek için "true" olmalıdır.                                                                                                                                                               |
-| Alt tür            | Dize         | Gerekli      | "DATA" dört karakter kodu **olmalıdır** .                                                                                                                                                                                                                        |
-| Şemadaki             | Dize         | Gerekli      | İleti düzenini tanımlayan bir URN veya URL **olmalıdır** . [SCTE-35] iletileri için, iletilerin HLS 'ye gönderilmesi, sorunsuz ve Dash istemcilerine [SCTE-35] ile uyum sağlamak için bu "urn: scte: scte35:2013: bin" olması **gerekir** . |
-| trackName          | Dize         | Gerekli      | Seyrek izlemenin adı **olmalıdır** . TrackName birden çok olay akışını aynı şemayla ayırt etmek için kullanılabilir. Her benzersiz olay akışı benzersiz bir izleme adına sahip **olmalıdır** .                                                                           |
-| timescale          | Number         | İsteğe Bağlı      | Üst izlemenin zaman ölçeği olması **gerekir** .                                                                                                                                                                                                                      |
+| **Öznitelik adı** | **Alan türü** | **Gerekli?** | **Açıklama**                                                                                                                                                                                                              |
+| ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| systemBitrate      | Sayı         | Gereklidir      | Bilinmeyen, değişken bit hızına sahip bir izleme belirten "0 **" olmalıdır.**                                                                                                                                                          |
+| parentTrackName    | Dize         | Gereklidir      | Seyrek izleme zaman kodlarının zaman ölçeği hizalı olduğu üst izlemenin **adı olmalıdır.** Üst izleme seyrek bir izleme olamaz.                                                                             |
+| Bildirimli Estoutput     | Boole        | Gereklidir      | Seyrek izlemenin sorunsuz istemci bildiriminde gömüleceğini göstermek için "true **" olmalıdır.**                                                                                                                        |
+| Alt tür            | Dize         | Gereklidir      | "DATA" dört karakter kodu **olmalıdır** .                                                                                                                                                                                  |
+| Düzen             | Dize         | Gereklidir      | İleti düzenini tanımlayan bir URN veya URL **olmalıdır** . [SCTE-35] iletileri için, iletilerin HLS 'ye gönderilmesi, sorunsuz ve Dash istemcilerine [SCTE-35] ile uyum sağlamak için bu "urn: scte: scte35:2013: bin" olması **gerekir** . |
+| trackName          | Dize         | Gereklidir      | Seyrek izlemenin adı **olmalıdır** . TrackName birden çok olay akışını aynı şemayla ayırt etmek için kullanılabilir. Her benzersiz olay akışı benzersiz bir izleme adına sahip **olmalıdır** .                                |
+| timescale          | Sayı         | İsteğe Bağlı      | Üst izlemenin zaman ölçeği olması **gerekir** .                                                                                                                                                                               |
 
 ---
 
@@ -314,23 +431,23 @@ Seyrek parça, canlı sunucu bildirim kutusunda bir  **\<\> TextStream** girişi
 
 Film kutusu (' Moov '), canlı sunucu bildirim kutusunu, seyrek bir izleme için akış üstbilgisinin bir parçası olarak izler.
 
-' Moov ' kutusu, şu kısıtlamalara sahıp [ıso-14496-12] içinde tanımlanan bir **trackheaderbox (' tkhd ')** kutusu içermelidir:
+' Moov **' kutusu,** şu kısıtlamalara sahıp [ıso-14496-12] içinde tanımlanan bir **trackheaderbox (' tkhd ')** kutusu içermelidir:
 
-| **Alan adı** | **Alan türü**          | **Gerekli?** | **Açıklama**                                                                                                |
-|----------------|-------------------------|---------------|----------------------------------------------------------------------------------------------------------------|
-| duration       | 64-bit işaretsiz tamsayı | Gerekli      | , İzleme kutusunda sıfır örnek olduğundan ve izleme kutusundaki örneklerin toplam süresi 0 olduğundan 0 olmalıdır. |
-
----
-
-' Moov ' kutusu, şu kısıtlamalara sahıp [ıso-14496-12] içinde tanımlanan bir **handlerbox (' hdlr ')** içermelidir:
-
-| **Alan adı** | **Alan türü**          | **Gerekli?** | **Açıklama**   |
-|----------------|-------------------------|---------------|-------------------|
-| handler_type   | 32-bit işaretsiz tamsayı | Gerekli      | ' Meta ' olmalıdır. |
+| **Alan Adı** | **Alan türü**          | **Gerekli?** | **Açıklama**                                                                                                    |
+| -------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
+| duration       | 64-bit işaretsiz tamsayı | Gereklidir      | , İzleme kutusunda sıfır örnek olduğundan ve izleme kutusundaki örneklerin toplam süresi 0 olduğundan **0 olmalıdır.** |
 
 ---
 
-' Stsd ' kutusu, [ıso-14496-12] içinde tanımlanan kodlama adına sahip bir MetaDataSampleEntry kutusu içermelidir.  Örneğin, SCTE-35 iletileri için kodlama adı ' scte ' olmalıdır.
+' Moov **' kutusu,** şu kısıtlamalara sahıp [ıso-14496-12] içinde tanımlanan bir **handlerbox (' hdlr ')** içermelidir:
+
+| **Alan Adı** | **Alan türü**          | **Gerekli?** | **Açıklama**       |
+| -------------- | ----------------------- | ------------- | --------------------- |
+| handler_type   | 32-bit işaretsiz tamsayı | Gereklidir      | ' Meta **' olmalıdır.** |
+
+---
+
+' Stsd ' kutusu, [ISO-14496-12] içinde tanımlanan kodlama adına sahip bir MetaDataSampleEntry **kutusu içermelidir.**  Örneğin, SCTE-35 iletileri için kodlama adı ' scte **' olmalıdır.**
 
 ### <a name="223-movie-fragment-box-and-media-data-box"></a>2.2.3 film parçası kutusu ve medya Data Box
 
@@ -340,24 +457,24 @@ Seyrek parça parçaları bir film parçası kutusundan (' Moof ') ve medya Data
 > Reklamların çerçeveye doğru eklenmesini sağlamak için, kodlayıcının, bu parçayı, destesi 'nin eklenmesi gereken sunum sırasında bölünmesi gerekır.  Yeni oluşturulan bir ıDR çerçevesiyle başlayan yeni bir parça oluşturulmalıdır veya [ISO-14496-12] Ek I içinde tanımlandığı gibi 1 veya 2 türünde akış erişim noktaları (SAP) ile başlar
 > 
 
-MovieFragmentBox (' Moof ') kutusu, Şu alanlarla [MS-SSTR] içinde tanımlanan bir **TrackFragmentExtendedHeaderBox (' UUID ')** kutusu içermelidir:
+MovieFragmentBox (' Moof ') kutusu, Şu alanlarla [MS-SSTR] içinde tanımlanan bir **TrackFragmentExtendedHeaderBox (' UUID ')** **kutusu içermelidir:**
 
-| **Alan adı**         | **Alan türü**          | **Gerekli?** | **Açıklama**                                                                               |
-|------------------------|-------------------------|---------------|-----------------------------------------------------------------------------------------------|
-| fragment_absolute_time | 64-bit işaretsiz tamsayı | Gerekli      | Olayın varış zamanı olmalıdır. Bu değer, iletiyi üst izleme ile hizalar.   |
-| fragment_duration      | 64-bit işaretsiz tamsayı | Gerekli      | Olayın süresi **olmalıdır** . Sürenin bilinmiyor olduğunu göstermek için süre sıfır olabilir. |
+| **Alan Adı**         | **Alan türü**          | **Gerekli?** | **Açıklama**                                                                                           |
+| ---------------------- | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
+| fragment_absolute_time | 64-bit işaretsiz tamsayı | Gereklidir      | Olayın varış **zamanı olmalıdır.** Bu değer, iletiyi üst izleme ile hizalar.           |
+| fragment_duration      | 64-bit işaretsiz tamsayı | Gereklidir      | Olayın süresi **olmalıdır** . Sürenin bilinmiyor olduğunu göstermek için süre sıfır olabilir. |
 
 ---
 
 
 MediaDataBox (' mdat ') kutusu aşağıdaki biçimde **olmalıdır** :
 
-| **Alan adı**          | **Alan türü**                   | **Gerekli?** | **Açıklama**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-|-------------------------|----------------------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| version                 | 32-bit işaretsiz tamsayı (uıısbf) | Gerekli      | ' Mdat ' kutusunun içindekilerin biçimini belirler. Tanınmayan sürümler yoksayılacak. Şu anda desteklenen tek sürüm 1 ' dir.                                                                                                                                                                                                                                                                                                                                                      |
-| id                      | 32-bit işaretsiz tamsayı (uıısbf) | Gerekli      | İletinin bu örneğini tanımlar. Denk semantiklere sahip iletiler aynı değere sahip olacaktır; diğer bir deyişle, aynı kimliğe sahip herhangi bir olay iletisi kutusunu işlemek yeterlidir.                                                                                                                                                                                                                                                                                                            |
-| presentation_time_delta | 32-bit işaretsiz tamsayı (uıısbf) | Gerekli      | TrackFragmentExtendedHeaderBox içinde belirtilen fragment_absolute_time toplamı ve presentation_time_delta, etkinliğin sunum süresi olmalıdır. Sunum süresi ve süresi, [ISO-14496-12] Ek I içinde tanımlandığı şekilde, 1 veya 2 türündeki akış erişim noktalarıyla (SAP) hizalı **olmalıdır** . HLS çıkışı için saat ve süre, kesim sınırlarıyla hizalı **olmalıdır** . Aynı olay akışı içindeki farklı olay iletilerinin sunum süresi ve süresi çakışmamalıdır. |
-| message                 | bayt dizisi                       | Gerekli      | Olay iletisi. [SCTE-35] iletileri için, ileti ikili splice_info_section (). [SCTE-35] iletileri için, iletilerin HLS, kesintisiz ve Dash istemcilerine [scte-35] ile uyumlu olarak gönderilmesi için bu splice_info_section () olmalıdır. [SCTE-35] iletileri için, ikili splice_info_section () ' mdat ' kutusunun yüküyle, Base64 kodlamalı **değildir** .                                                            |
+| **Alan Adı**          | **Alan türü**                   | **Gerekli?** | **Açıklama**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----------------------- | -------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| version                 | 32-bit işaretsiz tamsayı (uıısbf) | Gereklidir      | ' Mdat ' kutusunun içindekilerin biçimini belirler. Tanınmayan sürümler yoksayılacak. Şu anda desteklenen tek sürüm 1 ' dir.                                                                                                                                                                                                                                                                                                                                                                      |
+| id                      | 32-bit işaretsiz tamsayı (uıısbf) | Gereklidir      | İletinin bu örneğini tanımlar. Denk semantiklere sahip iletiler aynı değere sahip olacaktır; diğer bir deyişle, aynı kimliğe sahip herhangi bir olay iletisi kutusunu işlemek yeterlidir.                                                                                                                                                                                                                                                                                                                            |
+| presentation_time_delta | 32-bit işaretsiz tamsayı (uıısbf) | Gereklidir      | TrackFragmentExtendedHeaderBox içinde belirtilen fragment_absolute_time toplamı ve presentation_time_delta, etkinliğin sunum süresi **olmalıdır** . Sunum süresi ve süresi, [ISO-14496-12] Ek I içinde tanımlandığı şekilde, 1 veya 2 türündeki akış erişim noktalarıyla (SAP) hizalı **olmalıdır** . HLS çıkışı için saat ve süre, kesim sınırlarıyla hizalı **olmalıdır** . Aynı olay akışı içindeki farklı olay iletilerinin sunum süresi ve süresi **çakışmamalıdır.** |
+| message                 | bayt dizisi                       | Gereklidir      | Olay iletisi. [SCTE-35] iletileri için, ileti ikili splice_info_section (). [SCTE-35] iletileri için, iletilerin HLS, kesintisiz ve Dash istemcilerine [SCTE-35] ile uyumlu olarak gönderilmesi için splice_info_section () olması **gerekir** . [SCTE-35] iletileri için, ikili splice_info_section () ' mdat ' kutusunun yüküyle ve Base64 kodlamalı **değildir** .                                                                                                                     |
 
 ---
 
@@ -379,8 +496,8 @@ Olay akışı verileri Media Services opaktır. Media Services yalnızca içe u�
 
 ## <a name="31-microsoft-smooth-streaming-manifest"></a>3,1 Microsoft Kesintisiz Akış bildirimi  
 
-Seyrek ileti izlemeyi biçimlendirme hakkında ayrıntılı bilgi için bkz. seyrek parça işleme [MS-SSTR]. [SCTE35] iletileri için Kesintisiz Akış Base64 kodlamalı splice_info_section () bir seyrek parçaya çıktı.
-StreamIndex bir "DATA" alt türüne sahip **olmalıdır** ve CustomAttributes Name = " Schema" ve value = "urn: scte: scte35:2013: bin" olan bir özniteliği içermelidir.
+Seyrek ileti izlemeyi biçimlendirme hakkında ayrıntılı bilgi için bkz. seyrek parça işleme [MS-SSTR]. [SCTE35] iletileri için Kesintisiz Akış Base64 kodlamalı splice_info_section () bir seyrek parçaya çıkış olur.
+StreamIndex bir "DATA" alt türüne sahip **olmalıdır** ve CustomAttributes Name = "Schema" ve value = "urn: scte: scte35:2013: bin" olan bir **özniteliği içermelidir.**
 
 #### <a name="smooth-client-manifest-example-showing-base64-encoded-scte35-splice_info_section"></a>Base64 kodlamalı [SCTE35] splice_info_section () gösteren kesintisiz Istemci bildirimi örneği
 ~~~ xml
@@ -430,11 +547,214 @@ Azure Media Services, canlı veya isteğe bağlı bir olay sırasında ad kullan
 
 Her etikete yönelik veri çıktısı, kullanılan sinyal moduna göre değişir. Örneğin, Adobe Simple modundaki RTMP alma, tam SCTE-35 base64 kodlu yükü içermez.
 
-## <a name="321-apple-hls-with-adobe-primetime-ext-x-daterange-recommended"></a>3.2.1 Apple HLS with Adobe Primetime EXT-X-DATERANGE (önerilir)
+## <a name="321-apple-hls-with-ext-x-daterange-recommended"></a>3.2.1-X-DATERANGE ile Apple HLS (önerilir)
 
 Apple HTTP Canlı Akışı [RFC8216] belirtimi [SCTE-35] ileti sinyaline izin verir. İletiler, "SCTE-35 ' i n-X-DATERANGE 'a" Mapping "başlıklı bir EXT-X-DATERANGE etiketi başına [RFC8216] bölümü içine eklenir  İstemci uygulama katmanı, M3U çalma listesini ayrıştırabilirler ve M3U etiketlerini işleyebilir ya da Apple Player Çerçevesi aracılığıyla olayları alabilir.  
 
-Azure Media Services (sürüm 3 API) ' de **Önerilen** YAKLAŞıM [RFC8216] öğesini izlemek ve bildirimde bulunan [SCTE35] ad kullanımı için ext-X_DATERANGE etiketini kullanmaktır.
+Azure Media Services (sürüm 3 API) ' de **Önerilen** YAKLAŞıM [RFC8216] öğesini izlemek ve bildirimde bulunan [SCTE35] ad dekorasyonu için EXT-X_DATERANGE etiketini kullanmaktır.
+
+## <a name="3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35"></a>3.2.1.1 örnek HLS manifest. M3U8 EXT-X-DATERANGE sinyallerini (SCTE-35) gösterir
+
+Media Services dinamik Paketleyiciyi izleyen aşağıdaki örnek HLS bildirim çıktısı, [RFC8216] öğesinden EXT-X-DATERANGE etiketinin kullanımını, akıştaki SCTE-35 olaylarını gösterir. Ayrıca, bu akış [Adobe Primetime] için "eski" EXT-X-CUE etiketini içerir.
+
+~~~
+#EXTM3U
+#EXT-X-VERSION:8
+#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-TARGETDURATION:2
+#EXT-X-INDEPENDENT-SEGMENTS
+#EXT-X-PROGRAM-DATE-TIME:2020-01-07T19:40:50Z
+#EXTINF:1.501500,no-desc
+Fragments(video=22567545,format=m3u8-aapl-v8)
+#EXTINF:1.501500,no-desc
+Fragments(video=22702680,format=m3u8-aapl-v8)
+#EXTINF:1.501500,no-desc
+Fragments(video=22837815,format=m3u8-aapl-v8)
+#EXTINF:1.501500,no-desc
+Fragments(video=22972950,format=m3u8-aapl-v8)
+#EXTINF:1.501500,no-desc
+Fragments(video=23108085,format=m3u8-aapl-v8)
+#EXTINF:1.234567,no-desc
+Fragments(video=23243220,format=m3u8-aapl-v8)
+#EXTINF:0.016689,no-desc
+Fragments(video=23354331,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=0.000022
+#EXTINF:0.250244,no-desc
+Fragments(video=23355833,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=0.250267
+#EXTINF:0.850856,no-desc
+Fragments(video=23378355,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=1.101122
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:10.610Z",SCTE35-IN=0xFC30200000000005DD00FFF00F05000003EA7F4FFE0165E4D3000101010000607CE85A
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=0.000000,TIME=260.610344,CUE="/DAgAAAAAAXdAP/wDwUAAAPqf0/+AWXk0wABAQEAAGB86Fo="
+#EXTINF:0.650644,no-desc
+Fragments(video=23454932,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=1.751767
+#EXTINF:0.050044,no-desc
+Fragments(video=23513490,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=1.801811
+#EXTINF:1.451456,no-desc
+Fragments(video=23517994,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=3.253267
+#EXTINF:1.501500,no-desc
+Fragments(video=23648625,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=4.754767
+#EXTINF:1.501500,no-desc
+Fragments(video=23783760,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=6.256267
+#EXTINF:1.501500,no-desc
+Fragments(video=23918895,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=7.757767
+#EXTINF:1.501500,no-desc
+Fragments(video=24054030,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=9.259267
+#EXTINF:1.501500,no-desc
+Fragments(video=24189165,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=10.760767
+#EXTINF:1.501500,no-desc
+Fragments(video=24324300,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=12.262267
+#EXTINF:1.501500,no-desc
+Fragments(video=24459435,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=13.763767
+#EXTINF:1.501500,no-desc
+Fragments(video=24594570,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=15.265267
+#EXTINF:1.501500,no-desc
+Fragments(video=24729705,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=16.766767
+#EXTINF:1.501500,no-desc
+Fragments(video=24864840,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=18.268267
+#EXTINF:1.501500,no-desc
+Fragments(video=24999975,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=19.769767
+#EXTINF:1.501500,no-desc
+Fragments(video=25135110,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=21.271267
+#EXTINF:1.501500,no-desc
+Fragments(video=25270245,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=22.772767
+#EXTINF:1.501500,no-desc
+Fragments(video=25405380,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=24.274267
+#EXTINF:1.501500,no-desc
+Fragments(video=25540515,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=25.775767
+#EXTINF:1.501500,no-desc
+Fragments(video=25675650,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=27.277267
+#EXTINF:1.501500,no-desc
+Fragments(video=25810785,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=28.778767
+#EXTINF:1.501500,no-desc
+Fragments(video=25945920,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=30.280267
+#EXTINF:1.501500,no-desc
+Fragments(video=26081055,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=31.781767
+#EXTINF:1.501500,no-desc
+Fragments(video=26216190,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=33.283267
+#EXTINF:1.501500,no-desc
+Fragments(video=26351325,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=34.784767
+#EXTINF:1.501500,no-desc
+Fragments(video=26486460,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=36.286267
+#EXTINF:1.501500,no-desc
+Fragments(video=26621595,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=37.787767
+#EXTINF:1.501500,no-desc
+Fragments(video=26756730,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=39.289267
+#EXTINF:1.501500,no-desc
+Fragments(video=26891865,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=40.790767
+#EXTINF:1.501500,no-desc
+Fragments(video=27027000,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=42.292267
+#EXTINF:1.501500,no-desc
+Fragments(video=27162135,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=43.793767
+#EXTINF:1.501500,no-desc
+Fragments(video=27297270,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=45.295267
+#EXTINF:1.501500,no-desc
+Fragments(video=27432405,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=46.796767
+#EXTINF:1.501500,no-desc
+Fragments(video=27567540,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=48.298267
+#EXTINF:1.501500,no-desc
+Fragments(video=27702675,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=49.799767
+#EXTINF:1.501500,no-desc
+Fragments(video=27837810,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=51.301267
+#EXTINF:1.501500,no-desc
+Fragments(video=27972945,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=52.802767
+#EXTINF:1.501500,no-desc
+Fragments(video=28108080,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=54.304267
+#EXTINF:1.501500,no-desc
+Fragments(video=28243215,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=55.805767
+#EXTINF:1.501500,no-desc
+Fragments(video=28378350,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=57.307267
+#EXTINF:1.501500,no-desc
+Fragments(video=28513485,format=m3u8-aapl-v8)
+#EXT-X-DATERANGE:ID="1002",START-DATE="2020-01-07T19:45:09.509Z",SCTE35-OUT=0xFC30250000000005DD00FFF01405000003EA7FEFFE016461B8FE00526363000101010000F20D5E37
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=58.808767
+#EXTINF:1.501500,no-desc
+Fragments(video=28648620,format=m3u8-aapl-v8)
+
+~~~
+
 
 ## <a name="322-apple-hls-with-adobe-primetime-ext-x-cue-legacy"></a>3.2.2 Apple HLS with Adobe Primetime EXT-X-CUE (eski)
 
@@ -442,44 +762,88 @@ Ayrıca, [Adobe-Primetime] "SCTE-35 modu" içinde tanımlanan şekilde EXT-X-CUE
 
 "Eski" EXT-X-Cue etiketi aşağıda belirtildiği gibi tanımlanmıştır ve ayrıca [Adobe-Primetime] belirtiminde başvurulan 1.5 olabilir. Bu, yalnızca gerektiğinde eski SCTE35 sinyali için kullanılmalıdır, aksi takdirde önerilen etiket [RFC8216] içinde EXT-X-DATERANGE olarak tanımlanır. 
 
-| **Öznitelik adı** | **Tür**                      | **Gerekli?**                             | **Açıklama**                                                                                                                                                                                                                                                                      |
-|--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 'YU                | alıntılanmış dize                 | Gerekli                                  | [RFC4648] bölümünde açıklandığı gibi Base64 kodlamalı dize olarak kodlanmış ileti. [SCTE-35] iletileri için bu, Base64 kodlamalı splice_info_section ().                                                                                                |
-| TÜR               | alıntılanmış dize                 | Gerekli                                  | İleti düzenini tanımlayan bir URN veya URL. [SCTE-35] iletileri için, tür "scte35" özel değerini alır.                                                                                                                                |
-| id                 | alıntılanmış dize                 | Gerekli                                  | Olay için benzersiz bir tanımlayıcı. İleti yapıldığında KIMLIK belirtilmezse Azure Media Services benzersiz bir kimlik oluşturulur.                                                                                                                                          |
-| SÜRENIN           | ondalık kayan nokta sayısı | Gerekli                                  | Etkinliğin süresi. Bilinmiyorsa, değer 0 olmalıdır . Birimler, saniyeler içinde yapılır.                                                                                                                                                                                           |
-| GEÇEN SÜRE            | ondalık kayan nokta sayısı | İsteğe bağlı, ancak kayan pencere için gerekli | Bir kayan sunu penceresini desteklemek için sinyal tekrarlandığında, bu alan, olayın başlamasından bu yana geçen sunum süresinin miktarı **olmalıdır** . Birimler kesirli saniyedir. Bu değer, splice veya segment için belirtilen özgün süreyi aşabilirler. |
-| TIME               | ondalık kayan nokta sayısı | Gerekli                                  | Etkinliğin sunum süresi. Birimler kesirli saniyedir.                                                                                                                                                                                                                    |
+| **Öznitelik adı** | **Tür**                      | **Gerekli?**                             | **Açıklama**                                                                                                                                                                                                                                                                          |
+| ------------------ | ----------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 'YU                | alıntılanmış dize                 | Gereklidir                                  | [RFC4648] bölümünde açıklandığı gibi Base64 kodlamalı dize olarak kodlanmış ileti. [SCTE-35] iletileri için bu, Base64 kodlamalı splice_info_section ().                                                                                                                                      |
+| TÜR               | alıntılanmış dize                 | Gereklidir                                  | İleti düzenini tanımlayan bir URN veya URL. [SCTE-35] iletileri için, tür "scte35" özel değerini alır.                                                                                                                                                                          |
+| Kimlik                 | alıntılanmış dize                 | Gereklidir                                  | Olay için benzersiz bir tanımlayıcı. İleti yapıldığında KIMLIK belirtilmezse Azure Media Services benzersiz bir kimlik oluşturulur.                                                                                                                                              |
+| SÜRE           | ondalık kayan nokta sayısı | Gereklidir                                  | Etkinliğin süresi. Bilinmiyorsa **, değer 0 olmalıdır.** Birimler, saniyeler içinde yapılır.                                                                                                                                                                                           |
+| GEÇECEK            | ondalık kayan nokta sayısı | İsteğe bağlı, ancak kayan pencere için gerekli | Bir kayan sunu penceresini desteklemek için sinyal tekrarlandığında, bu alan, olayın başlamasından bu yana geçen sunum süresinin miktarı **olmalıdır** . Birimler kesirli saniyedir. Bu değer, splice veya segment için belirtilen özgün süreyi aşabilirler. |
+| TIME               | ondalık kayan nokta sayısı | Gereklidir                                  | Etkinliğin sunum süresi. Birimler kesirli saniyedir.                                                                                                                                                                                                                        |
 
 
 HLS Player uygulama katmanı, türü ileti biçimini tanımlamak, iletinin kodunu çözmek, gerekli zaman dönüşümlerini uygulamak ve olayı işlemek için kullanır.  Olaylar, olay zaman damgasına göre üst izlemenin kesim çalma listesinde zaman içinde eşitlenir.  Bunlar, en yakın kesim (#EXTINF etiketi) öncesine eklenir.
 
-### <a name="323-hls-segment-playlist-example-using-legacy-adobe-primetime-ext-x-cue"></a>"eski" Adobe Primetime EXT-X-CUE kullanarak 3.2.3 HLS segment çalma listesi örneği
+### <a name="323-hls-m3u8-manifest-example-using-legacy-adobe-primetime-ext-x-cue"></a>"eski" Adobe Primetime EXT-X-CUE kullanarak 3.2.3 HLS. M3U8 manifest örneği
 
-Aşağıdaki örnekte, Adobe Primetime EXT-X-CUE etiketini kullanarak HLS bildirim dekorasyonu gösterilmektedir.  "CUE" parametresi, bu sinyalin Adobe SCTE-35 sinyal modunda RTMP 'yi kullanarak geldiğini veya Kesintisiz Akış SCTE-35 sinyal modu aracılığıyla geldiğini gösteren tam base64 kodlu SCTE-35 splice_info yükünü içerir. 
+Aşağıdaki örnekte, Adobe Primetime EXT-X-CUE etiketini kullanarak HLS bildirim dekorasyonu gösterilmektedir.  "CUE" parametresi yalnızca tür ve Duration özelliklerini içerir. Bu, bu, Adobe "basit" mod sinyali kullanan bir RTMP kaynağı olduğu anlamına gelir.  Bu bir SCTE-35 modu sinyaliydi, etiket [3.2.1.1 örneğinde](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)görüldüğü gibi Base64 kodlamalı ikili scte-35 yükünü içerir.
 
 ~~~
 #EXTM3U
 #EXT-X-VERSION:4
+#EXT-X-PLAYLIST-TYPE:VOD
 #EXT-X-ALLOW-CACHE:NO
-#EXT-X-MEDIA-SEQUENCE:346
-#EXT-X-TARGETDURATION:6
-#EXT-X-I-FRAMES-ONLY
-#EXT-X-PROGRAM-DATE-TIME:2018-12-13T15:54:19.462Z
-#EXTINF:4.000000,no-desc
-KeyFrames(video_track=15447164594627600,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-KeyFrames(video_track=15447164634627600,format=m3u8-aapl)
-#EXT-X-CUE:ID="1026",TYPE="scte35",DURATION=30.000000,TIME=1544716520.022760,CUE="/DAlAAAAAAAAAP/wFAUAAAQCf+//KRjAfP4AKTLgAAAAAAAAVYsh2w=="
-#EXTINF:6.000000,no-desc
-KeyFrames(video_track=15447165474627600,format=m3u8-aapl)
+#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-TARGETDURATION:11
+#EXT-X-PROGRAM-DATE-TIME:2019-12-10T09:18:14Z
+#EXTINF:10.010000,no-desc
+Fragments(video=4011540820,format=m3u8-aapl)
+#EXTINF:10.010000,no-desc
+Fragments(video=4011550830,format=m3u8-aapl)
+#EXTINF:10.010000,no-desc
+Fragments(video=4011560840,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000
+#EXTINF:8.008000,no-desc
+Fragments(video=4011570850,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=0.593000
+#EXTINF:4.170000,no-desc
+Fragments(video=4011578858,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=4.763000
+#EXTINF:9.844000,no-desc
+Fragments(video=4011583028,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=14.607000
+#EXTINF:10.010000,no-desc
+Fragments(video=4011592872,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=24.617000
+#EXTINF:10.010000,no-desc
+Fragments(video=4011602882,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=34.627000
+#EXTINF:10.010000,no-desc
+Fragments(video=4011612892,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=44.637000
+#EXTINF:10.010000,no-desc
+Fragments(video=4011622902,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=54.647000
+#EXTINF:10.010000,no-desc
+Fragments(video=4011632912,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=64.657000
+#EXTINF:10.010000,no-desc
+Fragments(video=4011642922,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=74.667000
+#EXTINF:10.010000,no-desc
+Fragments(video=4011652932,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=84.677000
+#EXTINF:10.010000,no-desc
+Fragments(video=4011662942,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=94.687000
+#EXTINF:10.010000,no-desc
+Fragments(video=4011672952,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=104.697000
+#EXTINF:10.010000,no-desc
+Fragments(video=4011682962,format=m3u8-aapl)
+#EXT-X-CUE:ID=4011578265,TYPE="SpliceOut",DURATION=119.987000,TIME=4011578.265000,ELAPSED=114.707000
+#EXTINF:10.010000,no-desc
+Fragments(video=4011692972,format=m3u8-aapl)
+#EXTINF:8.008000,no-desc
+Fragments(video=4011702982,format=m3u8-aapl)
+
 ~~~
 
 ### <a name="324-hls-message-handling-for-legacy-adobe-primetime-ext-x-cue"></a>"eski" Adobe Primetime EXT-X-CUE için 3.2.4 HLS Ileti Işleme
 
-Olaylar, her video ve ses parçasının kesim çalma listesinde sinyal edilir. EXT-X-CUE etiketinin konumu, her zaman ilk HLS segmentinden (bir ayırma veya kesim başlangıcı için) ya da zaman ve süre özniteliklerinin başvurduğu son HLS segmentinden (bir splice veya segment ucunda) hemen sonra olmalıdır [Adobe Primetime] tarafından gerektirilir.
+Olaylar, her video ve ses parçasının kesim çalma listesinde sinyal edilir. EXT-X-CUE etiketinin konumu, her zaman ilk HLS segmentinden (bir ayırma veya kesim başlangıcı için) ya da zaman ve süre özniteliklerinin başvurduğu en son HLS segmentinden (Splice ın veya segment bitişi için) hemen hemen sonra ([Adobe-Primetime] için gereklidir **) olmalıdır.**
 
-Bir kayan sunu penceresi etkinleştirildiğinde, bir X-CUE etiketinin, her zaman segment çalma listesinde her zaman tam olarak açıklanabileceği kadar çok tekrarlanması **gerekir** ve geçen öznitelik, [Adobe Primetime] tarafından istenen şekilde, splice veya segment etkin.
+Bir kayan sunu penceresi etkinleştirildiğinde, bir X-CUE etiketinin, her zaman segment çalma listesinde her zaman tam olarak açıklanabileceği kadar çok tekrarlanması **gerekir** ve [Adobe-Primetime] tarafından istenen şekilde, splice veya segment 'in etkin olduğu süre miktarını göstermek için **geçen öznitelik kullanılmalıdır** .
 
 Bir kayan sunu penceresi etkinleştirildiğinde, başvurduğu medya süresi kayan sunu penceresinden çıkarıldığında, EXT-X-CUE etiketleri kesim listesinden kaldırılır.
 
@@ -515,76 +879,290 @@ Olaylardaki bildirim (MPD) dekorasyonu, Period öğesinde görünen EventStream 
 
 EventStream öğesi aşağıdaki özniteliklere sahiptir:
 
-| **Öznitelik adı** | **Tür**                | **Gerekli?** | **Açıklama**                                                                                                                                                                                                                                                                                   |
-|--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri      | dize                  | Gerekli      | İleti düzenini tanımlar. Düzen, canlı sunucu bildirim kutusundaki Scheme özniteliğinin değerine ayarlanır. Değer, ileti düzenini TANıMLAYAN bir urn veya URL olmalıdır; Hizmetin, MPD 'de kısaltma için şu anda yalnızca "XML + bin" desteklediği için desteklenen çıkış dosyası sayısı "urn: scte: scte35:2014: XML + bin" ([SCTE-214-1] sec 6.7.4 (MPD) olmalıdır.  |
-| value              | dize                  | İsteğe Bağlı      | İletinin semantiğini özelleştirmek için düzenin sahipleri tarafından kullanılan ek bir dize değeri. Birden çok olay akışını aynı şemayla ayırt etmek için, değerin olay akışı adı ([MS-SSTR-Ingest] için trackName veya [RTMP] ınest için AMF ileti adı) olarak ayarlanması **gerekir** . |
-| Timescale          | 32-bit işaretsiz tamsayı | Gerekli      | Zaman ölçeği, saniye başına saat cinsinden.                                                                                                                                                                                                       |
+| **Öznitelik adı** | **Tür**                | **Gerekli?** | **Açıklama**                                                                                                                                                                                                                                                                                                                                                                         |
+| ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| scheme_id_uri      | string                  | Gereklidir      | İleti düzenini tanımlar. Düzen, canlı sunucu bildirim kutusundaki Scheme özniteliğinin değerine ayarlanır. Değer, ileti düzenini tanımlayan bir URN veya **URL olmalıdır;** Hizmetin, MPD 'de kısaltma için şu anda yalnızca "XML + bin" desteklediği için desteklenen çıkış dosyası sayısı "urn: scte: scte35:2014: XML + bin" ([SCTE-214-1] sec 6.7.4 (MPD) olmalıdır. |
+| değer              | string                  | İsteğe Bağlı      | İletinin semantiğini özelleştirmek için düzenin sahipleri tarafından kullanılan ek bir dize değeri. Birden çok olay akışını aynı şemayla ayırt etmek için, değerin olay akışı adı ([MS-SSTR-Ingest] için trackName veya [RTMP] ınest için AMF ileti adı) olarak ayarlanması **gerekir** .                                                                         |
+| Timescale          | 32-bit işaretsiz tamsayı | Gereklidir      | Zaman ölçeği, saniye başına saat cinsinden.                                                                                                                                                                                                                                                                                                                                                     |
 
 
-### <a name="332-example-mpeg-dash-manifest-mpd-signaling-of-scte-35-using-eventstream"></a>3.3.2 örnek MPEG DASH bildirimi (MPD) EventStream kullanarak SCTE-35 sinyali
+### <a name="332-example-event-streams-for-mpeg-dash"></a>MPEG DASH için 3.3.2 örnek olay akışları
+
+#### <a name="3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode"></a>3.3.2.1 örnek MPEG DASH. mpd bildirim, Adobe Simple modunu kullanarak RTMP akışı sinyali
+
+Aşağıdaki örnek, Adobe "basit" mod sinyalli bir RTMP akışı için Media Services dinamik Paketleyiciyi kullanarak bir alıntı EventStream gösterir.
 
 ~~~ xml
-<!-- Example MPD using xml+bin style signaling per [SCTE-214-1] -->
-  <EventStream schemeIdUri="urn:scte:scte35:2014:xml+bin" value="scte35_track_001_000" timescale="10000000">
-        <Event presentationTime="15447165200227600" duration="300000000" id="1026">
-            <scte35:Signal>
-                <scte35:Binary>
-                    /DAlAAAAAAAAAP/wFAUAAAQDf+//KaeGwP4AKTLgAAAAAAAAn75a3g==
-                </scte35:Binary>
-            </scte35:Signal>
-        </Event>
-        <Event presentationTime="15447166250227600" duration="300000000" id="1027">
-           <scte35:Signal>
-                <scte35:Binary>
-                    /DAlAAAAAAAAAP/wFAUAAAQDf+//KaeGwP4AKTLgAAAAAAAAn75a3g==
-                </scte35:Binary>
-            </scte35:Signal>
-        </Event>
+<!-- Example EventStream element using "urn:com:adobe:dpi:simple:2015" Adobe simple signaling per [Adobe-Primetime] -->
+    <EventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="simplesignal" timescale="10000000">
+        <Event presentationTime="1583497601000000" duration="300000000" id="1085900"/>
+        <Event presentationTime="1583500901666666" duration="300000000" id="1415966"/>
+        <Event presentationTime="1583504202333333" duration="300000000" id="1746033"/>
+        <Event presentationTime="1583507502666666" duration="300000000" id="2076066"/>
+        <Event presentationTime="1583510803333333" duration="300000000" id="2406133"/>
+        <Event presentationTime="1583514104000000" duration="300000000" id="2736200"/>
+        <Event presentationTime="1583517404666666" duration="300000000" id="3066266"/>
+        <Event presentationTime="1583520705333333" duration="300000000" id="3396333"/>
+        <Event presentationTime="1583524006000000" duration="300000000" id="3726400"/>
+        <Event presentationTime="1583527306666666" duration="300000000" id="4056466"/>
+        <Event presentationTime="1583530607333333" duration="300000000" id="4386533"/>
     </EventStream>
+~~~
+
+#### <a name="3322-example-mpeg-dash-mpd-manifest-signaling-of-an-rtmp-stream-using-adobe-scte-35-mode"></a>3.3.2.2 örnek MPEG DASH. mpd bildirim sinyali Adobe SCTE-35 modunu kullanarak bir RTMP akışı
+
+Aşağıdaki örnek, Adobe SCTE-35 modu sinyali kullanan bir RTMP akışı için Media Services dinamik paketlemesiyle bir alıntı EventStream gösterir.
+
+~~~ xml
+<!-- Example EventStream element using xml+bin style signaling per [SCTE-214-1] -->
+
+      <EventStream schemeIdUri="urn:scte:scte35:2014:xml+bin" value="scte35" timescale="10000000">
+        <Event presentationTime="2595092444" duration="11011000" id="1002">
+            <Signal xmlns="http://www.scte.org/schemas/35/2016">
+                <Binary>/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==</Binary>
+            </Signal>
+        </Event>
+        <Event presentationTime="2606103444" id="1002">
+            <Signal xmlns="http://www.scte.org/schemas/35/2016">
+                <Binary>/DAgAAAAAAXdAP/wDwUAAAPqf0/+AWXk0wABAQEAAGB86Fo=</Binary>
+            </Signal>
+        </Event>
+      </EventStream>
 ~~~
 
 > [!IMPORTANT]
 > PresentationTime 'ın, iletinin varış süresi değil, dönem başlangıç zamanına göre değil, [SCTE-35] olayının sunum zamanı olduğunu unutmayın.
-> [MPEGDASH], Event@presentationTime "dönemin başlangıcına göre etkinliğin sunum süresini belirtir.
-> Sunum süresinin saniye cinsinden değeri, bu özniteliğin değerinin ve EventStream@timescale öznitelik değerinin bölümüdür.
+> [MPEGDASH], "dönemin başlangıcına göre etkinliğin sunum süresini belirten Event@presentationTime tanımlar.
+> Sunum süresinin saniye cinsinden değeri, bu özniteliğin değerinin ve EventStream@timescale özniteliğinin değerinin bölümüdür.
 > Yoksa, sunum zamanının değeri 0 ' dır.
 
+#### <a name="3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals"></a>3.3.3.1 örnek MPEG DASH bildirimi (MPD), tek dönem, EventStream, Adobe Simple mod sinyalleri kullanılarak
 
-### <a name="333-mpeg-dash-in-band-event-message-box-signaling"></a>3.3.3 MPEG DASH bant Içi olay Ileti kutusu sinyali
+Aşağıdaki örnek, Adobe "basit" mod ad sinyal yöntemi kullanılarak bir kaynak RTMP akışı için Media Services dinamik Paketleyiciyi gösteren çıktıyı gösterir. Çıktı, "urn: com: Adobe: DPI: Simple: 2015" olarak ayarlanmış ve değer özelliği "simplesignal" olarak ayarlanmış bir EventStream 'i gösteren tek bir nokta bildirimidir.
+Her basit sinyal, gelen basit sinyallere göre doldurulan @presentationTime, @durationve @id özellikleriyle bir olay öğesinde sağlanır.
 
-Bant içi olay akışı, MPD 'ın uyarlama kümesi düzeyinde bir InbandEventStream öğesi olmasını gerektirir.  Bu öğe, olay Ileti kutusunda (' EMSG ') da görüntülenen zorunlu bir ıiduri özniteliği ve isteğe bağlı zaman ölçeği özniteliği vardır.  MPD 'da tanımlanmayan düzen tanımlayıcılarına sahip olay iletisi kutuları bulunmamalıdır.
+~~~ xml
+<?xml version="1.0" encoding="utf-8"?>
+<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" profiles="urn:mpeg:dash:profile:isoff-live:2011" type="static" mediaPresentationDuration="PT28M1.680S" minBufferTime="PT3S">
+    <Period>
+        <EventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="simplesignal" timescale="1000">
+            <Event presentationTime="4011578265" duration="119987" id="4011578265"/>
+        </EventStream>
+        <AdaptationSet id="1" group="1" profiles="ccff" bitstreamSwitching="false" segmentAlignment="true" contentType="video" mimeType="video/mp4" codecs="avc1.4D4028" maxWidth="1920" maxHeight="1080" startWithSAP="1">
+            <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="simplesignal"/>
+            <ProducerReferenceTime id="4011460740" type="0" wallClockTime="2020-01-25T19:35:54.740Z" presentationTime="4011460740"/>
+            <SegmentTemplate timescale="1000" presentationTimeOffset="4011460740" media="QualityLevels($Bandwidth$)/Fragments(video=$Time$,format=mpd-time-csf)" initialization="QualityLevels($Bandwidth$)/Fragments(video=i,format=mpd-time-csf)">
+                <SegmentTimeline>
+                    <S t="4011460740" d="2002" r="57"/>
+                    <S d="1401"/>
+                    <S d="601"/>
+                    <S d="2002"/>
 
-Bant içi [SCTE-35] satıral için, sinyaller , ' ' urn: scte: scte35:2013: bin "olarak kullanılmalıdır.
+                     <!--> ... video segments truncated for sample brevity </-->
+
+                </SegmentTimeline>
+            </SegmentTemplate>
+            <Representation id="1_V_video_14759481473095519504" bandwidth="6000000" width="1920" height="1080"/>
+            <Representation id="1_V_video_1516803357996956148" bandwidth="4000000" codecs="avc1.4D401F" width="1280" height="720"/>
+            <Representation id="1_V_video_5430608182379669372" bandwidth="2600000" codecs="avc1.4D401F" width="960" height="540"/>
+            <Representation id="1_V_video_3780180650986497347" bandwidth="1000000" codecs="avc1.4D401E" width="640" height="360"/>
+            <Representation id="1_V_video_13759117363700265707" bandwidth="699000" codecs="avc1.4D4015" width="480" height="270"/>
+            <Representation id="1_V_video_6140004908920393176" bandwidth="400000" codecs="avc1.4D4015" width="480" height="270"/>
+            <Representation id="1_V_video_10673801877453424365" bandwidth="200000" codecs="avc1.4D400D" width="320" height="180"/>
+        </AdaptationSet>
+        <AdaptationSet id="2" group="5" profiles="ccff" bitstreamSwitching="false" segmentAlignment="true" contentType="audio" mimeType="audio/mp4" codecs="mp4a.40.2">
+            <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="simplesignal"/>
+            <ProducerReferenceTime id="4011460761" type="0" wallClockTime="2020-01-25T19:35:54.761Z" presentationTime="4011460761"/>
+            <Label>audio</Label>
+            <SegmentTemplate timescale="1000" presentationTimeOffset="4011460740" media="QualityLevels($Bandwidth$)/Fragments(audio=$Time$,format=mpd-time-csf)" initialization="QualityLevels($Bandwidth$)/Fragments(audio=i,format=mpd-time-csf)">
+                <SegmentTimeline>
+                    <S t="4011460761" d="1984"/>
+                    <S d="2005" r="1"/>
+                    <S d="2006"/>
+
+                    <!--> ... audio segments truncated for example brevity </-->
+
+                </SegmentTimeline>
+            </SegmentTemplate>
+            <Representation id="5_A_audio_17504386117102112482" bandwidth="128000" audioSamplingRate="48000"/>
+        </AdaptationSet>
+    </Period>
+</MPD>
+
+~~~
+
+#### <a name="3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling"></a>3.3.3.2 örnek MPEG DASH manifest (MPD), çok dönemli, EventStream, Adobe SCTE35 Mode sinyal kullanımı
+
+Aşağıdaki örnek, Adobe SCTE35 modu sinyali kullanan bir kaynak RTMP akışı için Media Services dinamik Paketleyiciyi gösteren çıktıyı gösterir.
+Bu durumda, çıkış bildirimi EventStream öğesiyle çok dönemli bir DASH. mpd ve @schemeIdUri özelliği "urn: scte: scte35:2014: XML + bin" olarak ayarlanmış ve bir @value özelliği "scte35" olarak ayarlanmış. EventStream içindeki her olay öğesi, tam Base64 kodlamalı ikili SCTE35 sinyalini içerir 
+
+~~~ xml
+<?xml version="1.0" encoding="utf-8"?>
+<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" profiles="urn:mpeg:dash:profile:isoff-live:2011" type="dynamic" publishTime="2020-01-07T19:42:44Z" minimumUpdatePeriod="PT0S" timeShiftBufferDepth="PT58M56S" availabilityStartTime="2020-01-07T19:40:50Z" minBufferTime="PT4S">
+    <Period start="PT2M48.168S" id="main-content_0">
+        <AdaptationSet id="1" group="1" profiles="ccff" bitstreamSwitching="false" segmentAlignment="true" contentType="video" mimeType="video/mp4" codecs="avc1.640020" maxWidth="1280" maxHeight="720" startWithSAP="1">
+            <InbandEventStream schemeIdUri="urn:mpeg:dash:event:2012" value="1"/>
+            <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
+            <SegmentTemplate timescale="90000" presentationTimeOffset="15135120" media="QualityLevels($Bandwidth$)/Fragments(video=$Time$,format=mpd-time-csf)" initialization="QualityLevels($Bandwidth$)/Fragments(video=i,format=mpd-time-csf)">
+                <SegmentTimeline>
+                    <S t="15135120" d="135135" r="59"/>
+                    <S d="111111"/>
+                    <S d="1502"/>
+                </SegmentTimeline>
+            </SegmentTemplate>
+            <ProducerReferenceTime id="15135120" type="0" wallClockTime="2020-01-07T19:40:50Z" presentationTime="15135120"/>
+            <Representation id="1_V_video_5322324134428436312" bandwidth="3500000" width="1280" height="720"/>
+            <Representation id="1_V_video_16981495139092747609" bandwidth="2200000" width="960" height="540"/>
+            <Representation id="1_V_video_1384718563016940751" bandwidth="1350000" codecs="avc1.64001F" width="704" height="396"/>
+            <Representation id="1_V_video_4425970933904124207" bandwidth="850000" codecs="avc1.64001E" width="512" height="288"/>
+            <Representation id="1_V_video_11952982975776937431" bandwidth="550000" codecs="avc1.640016" width="384" height="216"/>
+            <Representation id="1_V_video_10673801877453424365" bandwidth="200000" codecs="avc1.640015" width="340" height="192"/>
+        </AdaptationSet>
+        <AdaptationSet id="2" group="5" profiles="ccff" bitstreamSwitching="false" segmentAlignment="true" contentType="audio" mimeType="audio/mp4" codecs="mp4a.40.5" lang="en">
+            <InbandEventStream schemeIdUri="urn:mpeg:dash:event:2012" value="1"/>
+            <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
+            <Label>audio</Label>
+            <SegmentTemplate timescale="44100" presentationTimeOffset="7416208" media="QualityLevels($Bandwidth$)/Fragments(audio=$Time$,format=mpd-time-csf)" initialization="QualityLevels($Bandwidth$)/Fragments(audio=i,format=mpd-time-csf)">
+                <SegmentTimeline>
+                    <S t="7417856" d="133120"/>
+                    <S d="132096" r="1"/>
+                    
+                    <!--> ... aduio segments truncated for sample brevity </-->
+
+                </SegmentTimeline>
+            </SegmentTemplate>
+            <ProducerReferenceTime id="7417856" type="0" wallClockTime="2020-01-07T19:40:50.037Z" presentationTime="7417856"/>
+            <Representation id="5_A_audio_17504386117102112482" bandwidth="128000" audioSamplingRate="44100"/>
+        </AdaptationSet>
+    </Period>
+    <Period start="PT4M19.509S" id="scte-35_0">
+        <EventStream schemeIdUri="urn:scte:scte35:2014:xml+bin" value="scte35" timescale="10000000">
+            <Event presentationTime="2595092444" duration="11011000" id="1002">
+                <Signal xmlns="http://www.scte.org/schemas/35/2016">
+                    <Binary>/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==</Binary>
+                </Signal>
+            </Event>
+            <Event presentationTime="2606103444" id="1002">
+                <Signal xmlns="http://www.scte.org/schemas/35/2016">
+                    <Binary>/DAgAAAAAAXdAP/wDwUAAAPqf0/+AWXk0wABAQEAAGB86Fo=</Binary>
+                </Signal>
+            </Event>
+        </EventStream>
+        <AdaptationSet id="1" group="1" profiles="ccff" bitstreamSwitching="false" segmentAlignment="true" contentType="video" mimeType="video/mp4" codecs="avc1.640020" maxWidth="1280" maxHeight="720" startWithSAP="1">
+            <InbandEventStream schemeIdUri="urn:mpeg:dash:event:2012" value="1"/>
+            <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
+            <SegmentTemplate timescale="90000" presentationTimeOffset="23355832" media="QualityLevels($Bandwidth$)/Fragments(video=$Time$,format=mpd-time-csf)" initialization="QualityLevels($Bandwidth$)/Fragments(video=i,format=mpd-time-csf)">
+                <SegmentTimeline>
+                    <S t="23355833" d="22522"/>
+                    <S d="76577"/>
+                </SegmentTimeline>
+            </SegmentTemplate>
+            <ProducerReferenceTime id="23355833" type="0" wallClockTime="2020-01-07T19:42:21.341Z" presentationTime="23355833"/>
+            <Representation id="1_V_video_5322324134428436312" bandwidth="3500000" width="1280" height="720"/>
+            <Representation id="1_V_video_16981495139092747609" bandwidth="2200000" width="960" height="540"/>
+            <Representation id="1_V_video_1384718563016940751" bandwidth="1350000" codecs="avc1.64001F" width="704" height="396"/>
+            <Representation id="1_V_video_4425970933904124207" bandwidth="850000" codecs="avc1.64001E" width="512" height="288"/>
+            <Representation id="1_V_video_11952982975776937431" bandwidth="550000" codecs="avc1.640016" width="384" height="216"/>
+            <Representation id="1_V_video_10673801877453424365" bandwidth="200000" codecs="avc1.640015" width="340" height="192"/>
+        </AdaptationSet>
+        <AdaptationSet id="2" group="5" profiles="ccff" bitstreamSwitching="false" segmentAlignment="true" contentType="audio" mimeType="audio/mp4" codecs="mp4a.40.5" lang="en">
+            <InbandEventStream schemeIdUri="urn:mpeg:dash:event:2012" value="1"/>
+            <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
+            <Label>audio</Label>
+            <SegmentTemplate timescale="44100" presentationTimeOffset="11444358" media="QualityLevels($Bandwidth$)/Fragments(audio=$Time$,format=mpd-time-csf)" initialization="QualityLevels($Bandwidth$)/Fragments(audio=i,format=mpd-time-csf)">
+                <SegmentTimeline>
+                    <S t="11446272" d="49152"/>
+                </SegmentTimeline>
+            </SegmentTemplate>
+            <ProducerReferenceTime id="11446272" type="0" wallClockTime="2020-01-07T19:42:21.384Z" presentationTime="11446272"/>
+            <Representation id="5_A_audio_17504386117102112482" bandwidth="128000" audioSamplingRate="44100"/>
+        </AdaptationSet>
+    </Period>
+    <Period start="PT4M20.610S" id="main-content_1">
+        <AdaptationSet id="1" group="1" profiles="ccff" bitstreamSwitching="false" segmentAlignment="true" contentType="video" mimeType="video/mp4" codecs="avc1.640020" maxWidth="1280" maxHeight="720" startWithSAP="1">
+            <InbandEventStream schemeIdUri="urn:mpeg:dash:event:2012" value="1"/>
+            <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
+            <SegmentTemplate timescale="90000" presentationTimeOffset="23454931" media="QualityLevels($Bandwidth$)/Fragments(video=$Time$,format=mpd-time-csf)" initialization="QualityLevels($Bandwidth$)/Fragments(video=i,format=mpd-time-csf)">
+                <SegmentTimeline>
+                    <S t="23454932" d="58558"/>
+                    <S d="4504"/>
+                    <S d="130631"/>
+                    <S d="135135" r="12"/>
+                </SegmentTimeline>
+            </SegmentTemplate>
+            <ProducerReferenceTime id="23454932" type="0" wallClockTime="2020-01-07T19:42:22.442Z" presentationTime="23454932"/>
+            <Representation id="1_V_video_5322324134428436312" bandwidth="3500000" width="1280" height="720"/>
+            <Representation id="1_V_video_16981495139092747609" bandwidth="2200000" width="960" height="540"/>
+            <Representation id="1_V_video_1384718563016940751" bandwidth="1350000" codecs="avc1.64001F" width="704" height="396"/>
+            <Representation id="1_V_video_4425970933904124207" bandwidth="850000" codecs="avc1.64001E" width="512" height="288"/>
+            <Representation id="1_V_video_11952982975776937431" bandwidth="550000" codecs="avc1.640016" width="384" height="216"/>
+            <Representation id="1_V_video_10673801877453424365" bandwidth="200000" codecs="avc1.640015" width="340" height="192"/>
+        </AdaptationSet>
+        <AdaptationSet id="2" group="5" profiles="ccff" bitstreamSwitching="false" segmentAlignment="true" contentType="audio" mimeType="audio/mp4" codecs="mp4a.40.5" lang="en">
+            <InbandEventStream schemeIdUri="urn:mpeg:dash:event:2012" value="1"/>
+            <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
+            <Label>audio</Label>
+            <SegmentTemplate timescale="44100" presentationTimeOffset="11492916" media="QualityLevels($Bandwidth$)/Fragments(audio=$Time$,format=mpd-time-csf)" initialization="QualityLevels($Bandwidth$)/Fragments(audio=i,format=mpd-time-csf)">
+                <SegmentTimeline>
+                    <S t="11495424" d="28672"/>
+                    <S d="1024"/>
+                    <S d="131072"/>
+                    <S d="132096"/>
+                    <S d="133120"/>
+                    <S d="132096" r="1"/>
+                    <S d="133120"/>
+                </SegmentTimeline>
+            </SegmentTemplate>
+            <ProducerReferenceTime id="11495424" type="0" wallClockTime="2020-01-07T19:42:22.499Z" presentationTime="11495424"/>
+            <Representation id="5_A_audio_17504386117102112482" bandwidth="128000" audioSamplingRate="44100"/>
+        </AdaptationSet>
+    </Period>
+</MPD>
+
+~~~
+### <a name="334-mpeg-dash-in-band-event-message-box-signaling"></a>3.3.4 MPEG DASH bant Içi olay Ileti kutusu sinyali
+
+Bant içi olay akışı, MPD 'ın uyarlama kümesi düzeyinde bir InbandEventStream öğesi olmasını gerektirir.  Bu öğe, olay Ileti kutusunda (' EMSG ') da görüntülenen zorunlu bir ıiduri özniteliği ve isteğe bağlı zaman ölçeği özniteliği vardır.  MPD 'da tanımlanmayan düzen tanımlayıcılarına sahip olay iletisi **kutuları bulunmamalıdır.**
+
+Bant içi [SCTE-35] satıral için, sinyaller, ' ' urn: scte: scte35:2013: bin " **olarak kullanılmalıdır.**
 [SCTE-35]-bant içi iletilerin normative tanımları, [SCTE-214-3] sec 7.3.2 (SCTE 35 Cue iletilerinin satır sayısı) içinde tanımlanmıştır.
 
 Aşağıdaki ayrıntılar, istemcinin [SCTE-214-3] ile uyumlu olması için ' EMSG ' içinde beklediği belirli değerleri özetler.
 
-| **Alan adı**          | **Alan türü**          | **Gerekli?** | **Açıklama**                                                                                                                                                                                                                                                                                                                                                    |
-|-------------------------|-------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri           | dize                  | Gerekli      | İleti düzenini tanımlar. Düzen, canlı sunucu bildirim kutusundaki Scheme özniteliğinin değerine ayarlanır. Değer, ileti düzenini tanımlayan bir URN **olmalıdır** . [SCTE-35] iletileri için bu, [scte-214-3] ile uyumlu olması için "urn: scte: scte35:2013: bin" olmalıdır |
-| Value                   | dize                  | Gerekli      | İletinin semantiğini özelleştirmek için düzenin sahipleri tarafından kullanılan ek bir dize değeri. Birden çok olay akışını aynı şemayla ayırt etmek için, bu değer olay akışının adına ayarlanır (düz alma için trackName veya RTMP alma için AMF ileti adı).                                                                  |
-| Timescale               | 32-bit işaretsiz tamsayı | Gerekli      | ' EMSG ' kutusu içindeki süreler ve süre alanlarının saniye başına düşen zaman ölçeği.                                                                                                                                                                                                                                                                        |
-| Presentation_time_delta | 32-bit işaretsiz tamsayı | Gerekli      | Bu kesimdeki, etkinliğin sunum süresinin ve en erken sunum zamanının medya sunumu zaman aralığı. Sunum süresi ve süresi, [ISO-14496-12] Ek I içinde tanımlandığı şekilde, 1 veya 2 türündeki akış erişim noktalarıyla (SAP) hizalı **olmalıdır** .                                                                                            |
-| event_duration          | 32-bit işaretsiz tamsayı | Gerekli      | Olayın süresi veya 0xFFFFFFFF bilinmeyen bir süreyi belirtecek şekilde.                                                                                                                                                                                                                                                                                          |
-| Id                      | 32-bit işaretsiz tamsayı | Gerekli      | İletinin bu örneğini tanımlar. Denk semantiklere sahip iletiler aynı değere sahip olacaktır. İleti yapıldığında KIMLIK belirtilmezse Azure Media Services benzersiz bir kimlik oluşturulur.                                                                                                                                                    |
-| Message_data            | bayt dizisi              | Gerekli      | Olay iletisi. [SCTE-35] iletileri için ileti verisi, [SCTE-214-3] ile uyumlu ikili splice_info_section () olur |
+| **Alan Adı**          | **Alan türü**          | **Gerekli?** | **Açıklama**                                                                                                                                                                                                                                                                                        |
+| ----------------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| scheme_id_uri           | string                  | Gereklidir      | İleti düzenini tanımlar. Düzen, canlı sunucu bildirim kutusundaki Scheme özniteliğinin değerine ayarlanır. Değer, ileti düzenini tanımlayan bir URN **olmalıdır** . [SCTE-35] iletileri için bu, [SCTE-214-3] ile **uyumlu olması için** "urn: scte: scte35:2013: bin" olmalıdır          |
+| Değer                   | string                  | Gereklidir      | İletinin semantiğini özelleştirmek için düzenin sahipleri tarafından kullanılan ek bir dize değeri. Birden çok olay akışını aynı şemayla ayırt etmek için, bu değer olay akışının adına ayarlanır (düz alma için trackName veya RTMP alma için AMF ileti adı). |
+| Timescale               | 32-bit işaretsiz tamsayı | Gereklidir      | ' EMSG ' kutusu içindeki süreler ve süre alanlarının saniye başına düşen zaman ölçeği.                                                                                                                                                                                                            |
+| Presentation_time_delta | 32-bit işaretsiz tamsayı | Gereklidir      | Bu kesimdeki, etkinliğin sunum süresinin ve en erken sunum zamanının medya sunumu zaman aralığı. Sunum süresi ve süresi, [ISO-14496-12] Ek I içinde tanımlandığı şekilde, 1 veya 2 türündeki akış erişim noktalarıyla (SAP) hizalı **olmalıdır** .                                  |
+| event_duration          | 32-bit işaretsiz tamsayı | Gereklidir      | Olayın süresi veya 0xFFFFFFFF bilinmeyen bir süreyi belirtecek şekilde.                                                                                                                                                                                                                              |
+| Kimlik                      | 32-bit işaretsiz tamsayı | Gereklidir      | İletinin bu örneğini tanımlar. Denk semantiklere sahip iletiler aynı değere sahip olacaktır. İleti yapıldığında KIMLIK belirtilmezse Azure Media Services benzersiz bir kimlik oluşturulur.                                                                                        |
+| Message_data            | bayt dizisi              | Gereklidir      | Olay iletisi. [SCTE-35] iletileri için ileti verisi, [SCTE-214-3] ile uyumlu olan ikili splice_info_section ()                                                                                                                                                                        |
 
-### <a name="334-dash-message-handling"></a>3.3.4 DASH Ileti Işleme
+
+#### <a name="example-inbandevenstream-entity-for-adobe-simple-mode"></a>Adobe Simple modu için örnek InBandEvenStream varlığı
+~~~ xml
+
+      <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
+~~~
+
+### <a name="335-dash-message-handling"></a>3.3.5 DASH Ileti Işleme
 
 Olaylar, hem video hem de ses parçaları için ' EMSG ' kutusu içinde bant içinde sinyal alınır.  Sinyal, presentation_time_delta 15 saniye veya daha az olan tüm kesim istekleri için oluşur. 
 
 Bir kayan sunu penceresi etkinleştirildiğinde, olay iletisinin süresi ve süresinin toplamı, bildirimdeki medya verilerinin süresinden daha az olduğunda, MPD 'den olay iletileri kaldırılır.  Diğer bir deyişle, başvurdukları medya zamanı, kayan sunu penceresinden alındığında olay iletileri bildirimden kaldırılır.
 
-## <a name="4-scte-35-ingest-implementation-guidance-for-encoder-vendors"></a>4. Çözücü satıcıları için SCTE-35 alma Uygulama Kılavuzu
+## <a name="4-scte-35-ingest-implementation-guidance-for-encoder-vendors"></a>4. SCTE-35 kodlayıcı için uygulama kılavuzlarından yararlanın
 
 Aşağıdaki kılavuzlar, bir kodlayıcı satıcısının bu belirtim uygulamasını etkileyebilecek yaygın sorunlardır.  Aşağıdaki yönergeler, bu şartın başkaları için uygulanmasını kolaylaştırmak amacıyla gerçek dünya ortağı geri bildirimlerine göre toplanmıştı. 
 
-[SCTE-35] iletiler, [MS-SSTR-Ingest] için " **urn: scte: scte35:2013: bin"** düzenini ve [RTMP] alma için **"scte35"** türünü kullanarak ikili biçimde alınır. MPEG-2 aktarım akışı sunum zaman damgalarını (PTS) temel alan [SCTE-35] zamanlamalarının dönüştürülmesini kolaylaştırmak için, olay sunumu süresi (pts_time + pts_adjustment) ve medya zaman çizelgesi arasında bir eşleme sağlanır ( Düz alma için fragment_absolute_time alanı ve RTMP alma için saat alanı. 33 bit PTS değeri yaklaşık her 26,5 saatte bir yapıldığından eşleme gereklidir.
+[SCTE-35] iletiler, [MS-SSTR-Ingest] için " **urn: scte: scte35:2013: bin"** düzenini ve [RTMP] alma için **"scte35"** türünü kullanarak ikili biçimde alınır. MPEG-2 aktarım akışı sunum zaman damgalarını (PTS) temel alan [SCTE-35] zamanlamalarının dönüştürülmesini kolaylaştırmak için, (splice_time ()) PTS (pts_time + pts_adjustment) ve medya zaman çizelgesi arasında bir eşleme, olay sunumu süresi ( Düz alma için fragment_absolute_time alanı ve RTMP alma için saat alanı. 33 bit PTS değeri yaklaşık her 26,5 saatte bir yapıldığından eşleme gereklidir.
 
 Kesintisiz Akış alma [MS-SSTR-alma], medya Data Box (' mdat ') [scte-35] içinde tanımlanan **splice_info_section ()** içermesi **gerekir** . 
 
-RTMP alma için AMF iletisinin Cue özniteliği [SCTE-35] içinde tanımlanan Base64 kodlamalı **splice_info_section ()** olarak ayarlanır.  
+RTMP alma için AMF iletisinin Cue özniteliği, [SCTE-35] içinde tanımlanan Base64 kodlamalı **splice_info_section ()** olarak ayarlanır.  
 
 İletiler yukarıda açıklanan biçimde olduğunda, yukarıda tanımlanan şekilde HLS, kesintisiz ve DASH istemcilerine gönderilir.  
 
@@ -592,17 +1170,18 @@ Uygulamanızı Azure Media Services platformu ile sınarken, bir kodlama LiveEve
 
 ---
 
-## <a name="change-history"></a>Değişiklik geçmişi
+## <a name="change-history"></a>Değişiklik Geçmişi
 
-| Date     | Değişiklikler                                                                            |
-|----------|------------------------------------------------------------------------------------|
-| 07/2/19  | SCTE35 desteği için RTMP alma düzenlendi, elete Live için RTMP "onCuePoint" eklendi | 
-| 08/22/19 | Özel meta veriler için RTMP 'ye OnUserDataEvent eklemek üzere güncelleştirildi                         |
+| Tarih     | Değişiklikler                                                                                                             |
+| -------- | ------------------------------------------------------------------------------------------------------------------- |
+| 07/2/19  | SCTE35 desteği için RTMP alma düzenlendi, elete Live için RTMP "onCuePoint" eklendi                                  |
+| 08/22/19 | Özel meta veriler için RTMP 'ye OnUserDataEvent eklemek üzere güncelleştirildi                                                          |
+| 1/08/20  | RTMP Simple ve RTMP SCTE35 modunda hata düzeltildi. "OnCuePoint" iken "onAdCue" olarak değiştirildi. Basit mod tablosu güncelleştirildi. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Media Services öğrenme yollarını görüntüleyin.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]

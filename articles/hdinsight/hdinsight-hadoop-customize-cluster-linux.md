@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: df5dbfc9c86294c7ec046d3a02832192bf67b4ce
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 555596ba1040fcbd5c9131869fd275d749e0d734
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747080"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934015"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 
@@ -148,7 +148,6 @@ HDInsight, HDInsight kümelerine aşağıdaki bileşenleri yüklemek için komut
 | --- | --- |
 | Azure depolama hesabı ekleme |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Bkz. [HDInsight 'a ek depolama hesapları ekleme](hdinsight-hadoop-add-storage.md). |
 | Hue yükleme |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Bkz. [HDInsight Hadoop kümelerinde ton 'U yükleyip kullanma](hdinsight-hadoop-hue-linux.md). |
-| Giraph 'yi yükler |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Bkz. [HDInsight Hadoop kümelerine Apache Giraph 'Yi Install](hdinsight-hadoop-giraph-install-linux.md). |
 | Hive kitaplıklarını Önyükle |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Bkz. [HDInsight kümenizi oluştururken özel Apache Hive kitaplıkları ekleme](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Küme oluşturma sırasında betik eylemi kullanma
@@ -221,7 +220,7 @@ Kümenin oluşturulması birkaç dakika sürebilir.
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-hdinsight-net-sdk"></a>HDInsight .NET SDK 'dan küme oluşturma sırasında betik eylemi kullanma
 
-HDInsight .NET SDK 'Sı, bir .NET uygulamasından HDInsight ile çalışmayı kolaylaştıran istemci kitaplıkları sağlar. Kod örneği için bkz. [HDInsight 'ta .NET SDK kullanarak Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action).
+HDInsight .NET SDK 'Sı, bir .NET uygulamasından HDInsight ile çalışmayı kolaylaştıran istemci kitaplıkları sağlar. Kod örneği için bkz. [betik eylemleri](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#script-actions).
 
 ## <a name="apply-a-script-action-to-a-running-cluster"></a>Çalışan bir kümeye betik eylemi uygulama
 
@@ -507,7 +506,6 @@ Kümeniz 15 Mart 2016 ' den önce oluşturulduysa, betik eylemi geçmişinde bir
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [HDInsight için betik eylem betikleri geliştirme](hdinsight-hadoop-script-actions-linux.md)
-* [HDInsight kümelerine Apache Giraph 'yi yükleyip kullanma](hdinsight-hadoop-giraph-install-linux.md)
 * [HDInsight kümesine ek depolama ekleme](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Küme oluşturma sırasında aşamalar"

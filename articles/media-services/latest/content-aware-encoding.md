@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692764"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933476"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>İçerik algılayan kodlama için deneysel önayar
 
@@ -29,7 +29,9 @@ Tek bir önceden ayarlanmış-tüm videolar yaklaşımının ötesine geçilmesi
 
 Erken 2017 ' de, Microsoft, kaynak videoların kalite ve çözünürlüğündeki değişkenlik sorununu çözmek için [uyarlamalı akış](autogen-bitrate-ladder.md) ön ayarını yayımlamıştır. Müşterilerimiz, bazı Kullanıcı adına, bazı 1080p, 720p ve daha az sayıda SD ve daha düşük çözünürlükte içerik karması içeriyordu. Ayrıca, tüm kaynak içerikleri film veya TV Studios 'den yüksek kaliteli mezzanines. Uyarlamalı akış önceden ayarı, bit hızı el merdivenine, giriş Mezzanine 'nin çözünürlüğü veya Ortalama bit hızını aşmamasını sağlayarak bu sorunları giderir.
 
-Deneysel içeriğe duyarlı kodlama önceden ayarı, bu mekanizmayı genişleterek, kodlayıcının belirli bir çözüm için en iyi bit hızı değerini, ancak kapsamlı hesaplama analizine gerek kalmadan araymasına olanak tanır. Net sonuç, bu yeni önayar, uyarlamalı akış önayarı 'ndan daha düşük bit hızına sahip bir çıkış üretir, ancak daha yüksek bir kalitede olur. [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) ve [vmaf](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion)gibi kalite ölçümlerini kullanarak karşılaştırmayı gösteren aşağıdaki örnek grafiklere bakın. Kaynak, kodlayıcılarını stres amacıyla tasarlanan filmlerden ve TV gösterlerinden gelen yüksek karmaşıklık görüntüleriyle kısa küçük resimleri birleştirerek oluşturulmuştur. Tanım olarak, bu ön ayar içerikten içeriğe farklılık gösteren sonuçlar üretir. Ayrıca, bazı içerikler için bit hızı veya kalite açısından önemli bir azalma olmadığı anlamına gelir.
+Yeni içeriğe duyarlı kodlama önceden ayarı, bu mekanizmayı genişleterek, kodlayıcının belirli bir çözüm için en iyi bit hızı değerini (ancak kapsamlı hesaplama Analizi gerekmeden) araymasına olanak tanır. Bu önayar bir GOP hizalanmış MP4 'leri kümesi oluşturur. Herhangi bir giriş içeriği verildiğinde, hizmet, giriş içeriğinin ilk hafif analizini yapar ve en iyi katman sayısını, uyarlamalı akışa göre teslim etmek için uygun bit hızını ve çözüm ayarlarını belirlemede sonuçları kullanır. Bu ön ayar özellikle düşük ve orta ölçekli karmaşıklık videoları için geçerlidir. burada, çıkış dosyalarının uyarlamalı akış önayarıyla, ancak yine de görüntüleyicilere iyi bir deneyim sunan bir kaliteden daha düşük bitoranlarda olması gerekir. Çıktı, video ve ses Aralanmış ile MP4 dosyaları içerir
+
+[PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) ve [vmaf](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion)gibi kalite ölçümlerini kullanarak karşılaştırmayı gösteren aşağıdaki örnek grafiklere bakın. Kaynak, kodlayıcılarını stres amacıyla tasarlanan filmlerden ve TV gösterlerinden gelen yüksek karmaşıklık görüntüleriyle kısa küçük resimleri birleştirerek oluşturulmuştur. Tanım olarak, bu ön ayar içerikten içeriğe farklılık gösteren sonuçlar üretir. Ayrıca, bazı içerikler için bit hızı veya kalite açısından önemli bir azalma olmadığı anlamına gelir.
 
 ![PSNR kullanan hız deformasyonu (RD) eğrisi](media/cae-experimental/msrv1.png)
 
@@ -39,7 +41,7 @@ Deneysel içeriğe duyarlı kodlama önceden ayarı, bu mekanizmayı genişleter
 
 **Şekil 2: yüksek karmaşıklık kaynağı için VMAF ölçümünü kullanarak oran deformasyonu (RD) eğrisi**
 
-Ön ayar şu anda yüksek karmaşıklık, yüksek kaliteli kaynak videoları (Filmler, TV programları) için ayarlanmıştır. İş, düşük karmaşıklık içeriğine (örneğin, PowerPoint sunuları) ve poorer kaliteli videoların uyarlanmasını sağlayacak şekilde devam etmektedir. Bu önayar Ayrıca, uyarlamalı akış ön ayarıyla aynı çözüm kümesini kullanır. Microsoft, içeriğe göre en düşük çözüm kümesini seçmek için yöntemler üzerinde çalışmaktadır. Aşağıdaki gibi, kodlayıcının girişin düşük kaliteli olduğunu belirleyebildiği (düşük bit hızı nedeniyle birçok sıkıştırma yapıtı), başka bir kaynak içeriği kategorisinin sonuçları vardır. Deneysel ön ayarda, kodlayıcının yalnızca bir çıkış katmanı üretmesine karar verdiğine ve çoğu istemcinin, bu akışı etkilemeden oynatacağından emin olun.
+Aşağıda, bir kaynak içeriği kategorisinin sonuçları verilmiştir ve bu, kodlayıcının girişin düşük kaliteli olduğunu (düşük bit hızı nedeniyle birçok sıkıştırma yapıtı) belirleyebilmesini sağlar. İçerik algılayan ön ayarda, kodlayıcının, çok düşük bir bit hızında yalnızca bir çıkış katmanı üretmesine karar ettiğini unutmayın. bu sayede, çoğu istemci, akışı etkilemeden oynatabilir.
 
 ![PSNR kullanan RD eğrisi](media/cae-experimental/msrv3.png)
 
@@ -62,16 +64,16 @@ TransformOutput[] output = new TransformOutput[]
       // You can customize the encoding settings by changing this to use "StandardEncoderPreset" class.
       Preset = new BuiltInStandardEncoderPreset()
       {
-         // This sample uses the new experimental preset for content-aware encoding
-         PresetName = EncoderNamedPreset.ContentAwareEncodingExperimental
+         // This sample uses the new preset for content-aware encoding
+         PresetName = EncoderNamedPreset.ContentAwareEncoding
       }
    }
 };
 ```
 
 > [!NOTE]
-> Temel algoritmaların hala gelişmekte olduğunu bildirmek için burada "deneysel" ön eki kullanılır. Zamana göre zaman içindeki değişiklikler, güçlü bir algoritmaya uyum sağlamak ve çok çeşitli giriş koşullarına uyum sağlamak amacıyla bit hızı merdiveni oluşturmak için kullanılan mantığa göre yapılır. Bu önceden belirlenmiş ayarı kullanan kodlama işleri, çıkış dakikaları temel alınarak faturalandırılır ve çıkış varlığı, DASH ve HLS gibi protokollerde akış uç noktalarımızdan teslim edilebilir.
+> Temel algoritmalar daha fazla geliştirmelere tabidir. Zamana göre zaman içindeki değişiklikler, güçlü bir algoritma sağlamaya ve çok çeşitli giriş koşullarına uyum sağlayacak şekilde bit hızı merdiveni oluşturmak için kullanılan mantığa göre değişir. Bu önceden belirlenmiş ayarı kullanan kodlama işleri, çıkış dakikaları temel alınarak faturalandırılır ve çıkış varlığı, DASH ve HLS gibi protokollerde akış uç noktalarımızdan teslim edilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Videolarınızı en iyi duruma getirmeye yönelik bu yeni seçenek hakkında bilgi edindiğinize göre, sizi denemeye davet ediyoruz. Bu makalenin sonundaki bağlantıları kullanarak bize geri bildirim gönderebilir veya <amsved@microsoft.com>doğrudan daha fazla iletişim sağlayabilirsiniz.
+Videolarınızı en iyi duruma getirmeye yönelik bu yeni seçenek hakkında bilgi edindiğinize göre, sizi denemeye davet ediyoruz. Bu makalenin sonundaki bağlantıları kullanarak bize geri bildirim gönderebilirsiniz.
