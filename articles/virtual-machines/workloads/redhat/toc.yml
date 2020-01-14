@@ -1,5 +1,5 @@
 - name: Genel Bakış
-  href: redhat-overview.md
+  href: overview.md
 - name: Red Hat Enterprise Linux Görüntüleri
   items:
     - name: Red Hat Enterprise Linux Görüntülerine Genel Bakış
@@ -9,4 +9,4 @@
 - name: Azure'da Red Hat Güncelleştirme Altyapısı
   href: redhat-rhui.md
 - name: Red Hat Enterprise Linux BYOS Görüntü Teklifi
-  href: redhat-byos.md
+  href: byos.md

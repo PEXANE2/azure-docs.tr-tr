@@ -73,8 +73,6 @@
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md
             - name: REST API kullanarak küme oluşturma
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
-            - name: .NET kullanarak küme oluşturma
-              href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
             - name: Küme oluşturma hataları
               href: ./create-cluster-error-dictionary.md
               title: null
@@ -102,8 +100,6 @@
               href: hdinsight-hadoop-script-actions-linux.md
             - name: Apache Hive kitaplıkları ekleme
               href: hdinsight-hadoop-add-hive-libraries.md
-            - name: Apache Giraph kullanma
-              href: hdinsight-hadoop-giraph-install-linux.md
             - name: Hue kullanma
               href: hdinsight-hadoop-hue-linux.md
             - name: HDInsight uygulamalarını derleme
@@ -330,8 +326,6 @@
                   href: ./spark/apache-spark-machine-learning-mllib-ipython.md
                 - name: Web sitesi günlüklerini çözümleme
                   href: ./spark/apache-spark-custom-library-website-log-analysis.md
-                - name: Derin öğrenme için Caffe kullanma
-                  href: ./spark/apache-spark-deep-learning-caffe.md
                 - name: Microsoft Bilişsel Araç Seti ile kullanma
                   href: ./spark/apache-spark-microsoft-cognitive-toolkit.md
                 - name: Apache Spark makine öğrenimi işlem hattı oluşturma

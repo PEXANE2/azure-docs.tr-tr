@@ -7,7 +7,17 @@
 - name: VM Uzantıları Belgeleri
   href: ./extensions/overview.md
 - name: İş yükleri
-  href: ./workloads/workloads.md
+  items:
+    - name: Red Hat
+      href: /redhat/redhat-overview.md
+    - name: Yüksek performanslı bilgi işlem
+      href: /hpc/overview.md
+    - name: SAP
+      href: /sap/get-started.md
+    - name: Oracle
+      href: /oracle/oracle-considerations.md
+    - name: Ana bilgisayar yeniden barındırma
+      href: /mainframe-rehosting/overview.md
 - name: Klasik dağıtımlar
   items:
     - name: Klasik dağıtım kullanan Linux sanal makineleri
