@@ -6,21 +6,20 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/10/2020
-ms.openlocfilehash: 10af869a631b620c2c75aa69722dc03df15f8539
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 01c64a6880d671289d02dd36f9e4a9dda2f91131
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903853"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922822"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-server-using-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı sunucusu için veri şifreleme
 
-Bu makalede, MySQL için Azure veritabanı için veri şifrelemeyi kurmak üzere Azure portal kullanmak üzere nasıl ayarlanacağını ve yönetileceğini öğreneceksiniz.
+Bu makalede, MySQL için Azure veritabanı için veri şifrelemeyi ayarlamak üzere Azure portal kullanmak üzere ayarlama ve yönetme hakkında bilgi edineceksiniz.
 
-## <a name="prerequisites-for-powershell"></a>PowerShell önkoşulları
+## <a name="prerequisites-for-cli"></a>CLı önkoşulları
 
 * Bu abonelikte bir Azure aboneliğiniz olması ve bir yönetici olmanız gerekir.
-* Azure PowerShell yüklü ve çalışıyor olmanız gerekir.
 * Müşteri tarafından yönetilen anahtar için kullanmak üzere bir Azure Key Vault ve anahtar oluşturun.
 * Key Vault, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özelliğe sahip olmalıdır
     * [Geçici Silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
@@ -45,7 +44,7 @@ Bu makalede, MySQL için Azure veritabanı için veri şifrelemeyi kurmak üzere
 
    ![Erişim ilkesine genel bakış](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. **Anahtar izinlerini** seçin **Al**, **sarmalama**, **Unwrap** ve MySQL sunucusunun adı olan **sorumluyu** seçin.
+2. **Anahtar izinlerini** seçin **Al**, **sarmalama**, **Unwrap** ve MySQL sunucusunun adı olan **sorumluyu**seçin. Sunucu sorumlunuz var olan sorumlular listesinde bulunamazsa, ilk kez veri şifrelemeyi ayarlamaya çalışırken kaydolmanız gerekir, bu da başarısız olur.
 
    ![Erişim ilkesine genel bakış](media/concepts-data-access-and-security-data-encryption/access-policy-warp-unwrap.png)
 
@@ -63,7 +62,7 @@ Bu makalede, MySQL için Azure veritabanı için veri şifrelemeyi kurmak üzere
 
 3. Ayarları **kaydedin** .
 
-4. Tüm dosyaların (geçici dosyalar dahil) tam şifrelendiğinden emin olmak için sunucu yeniden başlatması gerekir.
+4. Tüm dosyaların ( **geçici dosyalar**dahil) tam şifrelendiğinden emin olmak için sunucu **yeniden başlatması** **gerekir**.
 
 ## <a name="restoring-or-creating-replica-of-the-server-which-has-data-encryption-enabled"></a>Veri şifrelemesi etkin olan sunucunun çoğaltmasını geri yükleme veya oluşturma
 
@@ -81,16 +80,18 @@ MySQL için Azure veritabanı, Key Vault depolanan müşterinin yönetilen anaht
 
    ![Sunucuyu erişilemez olarak işaretle](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. Erişilemeyen durumu onarmak için, geri yüklenen sunucuda anahtarı yeniden doğrulamanız gerekir.
+3. Erişilemeyen durumu onarmak için, geri yüklenen sunucuda anahtarı yeniden doğrulamanız gerekir. **Veri şifreleme** dikey penceresine ve sonra **anahtarı yeniden doğrula** düğmesine tıklayın.
+
+   > [!NOTE]
+   > Yeni sunucunun hizmet sorumlusunun anahtar kasasına erişim izni verilmesi gerektiğinden, ilk yeniden doğrulama denemesi başarısız olur. Hizmet sorumlusu oluşturmak için, **yeniden doğrula anahtarına**tıklayın ve bu, hataya izin verir, ancak hizmet sorumlusu oluşturur. Bundan sonra yukarıdaki 2. [bölümde bulunan](https://docs.microsoft.com/azure/mysql/howto-data-encryption-portal#setting-the-right-permissions-for-key-operations) adımlara bakın.
 
    ![sunucuyu yeniden doğrula](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
    Key Vault yeni sunucuya erişim sağlamanız gerekir. 
 
-4. Anahtarı yeniden doğruladıktan sonra sunucu normal işlevini sürdürür.
+4. Hizmet sorumlusu kaydedildikten sonra anahtarı yeniden doğrulamanız gerekir ve sunucu normal işlevselliğini sürdürür.
 
    ![Normal sunucu geri yüklendi](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

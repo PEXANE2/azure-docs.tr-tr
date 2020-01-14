@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 3569c6a066b09daa0c24975b9de840a844b6ba2c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28bd45b0e9bdaf87c29b0118c47595db9179edc5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670218"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921167"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Bir ZIP veya WAR dosyası ile Azure App Service uygulamanızı dağıtma
 
@@ -30,7 +30,7 @@ WAR dosya dağıtımı, Java Web uygulamanızı çalıştırmak için [War](http
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları gerçekleştirmek için:
 
@@ -88,6 +88,8 @@ Daha fazla bilgi için bkz. [kudu belgeleri](https://github.com/projectkudu/kudu
 ## <a name="deploy-war-file"></a>WAR dosyası dağıtma
 
 App Service bir WAR dosyasını dağıtmak için `https://<app_name>.scm.azurewebsites.net/api/wardeploy`bir POST isteği gönderin. POST isteğinin ileti gövdesinde .war dosyası bulunmalıdır. Uygulamanızın dağıtım kimlik bilgileri, HTTP BASIC kimlik doğrulaması kullanılarak istekte belirtilir.
+
+WAR dosyalarını dağıtmanın her zaman `/api/wardeploy` kullanın. Bu API, WAR dosyanızı genişlettikten sonra paylaşılan dosya sürücüsüne yerleştirmeyecektir. diğer dağıtım API 'Lerinin kullanılması tutarsız davranışa neden olabilir. 
 
 HTTP temel kimlik doğrulaması için App Service dağıtım kimlik bilgilerinizin olması gerekir. Dağıtım kimlik bilgilerinizi ayarlama hakkında bilgi için bkz. [Kullanıcı düzeyi kimlik bilgilerini ayarlama ve sıfırlama](deploy-configure-credentials.md#userscope).
 

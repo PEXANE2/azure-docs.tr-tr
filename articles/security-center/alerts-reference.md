@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: bd21d55583489ead3ce82d0df685806ce63fad98
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 696bba195ac3902a3a90a82bcc7665591eba643f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780037"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922330"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları-bir başvuru kılavuzu
 
@@ -48,13 +48,21 @@ Uyarılar tablosunun altında, bu uyarıların amaçlarını kategorilere ayırm
 |**Dış IP adresine yönelik olası bağlantı noktası iletme**|Ana bilgisayar veri analizi, bir dış IP adresine bağlantı noktası iletmeyi başlatma işlemini algıladı.|Exfiltration/CommandAndControl|
 ||<a name="alerts-azureappserv"></a><h3>Azure App Service</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-compute.md#azure-app-service-)||
 |**Şüpheli WordPress teması çağırma algılandı**|App Service etkinlik günlüğü, App Service kaynağınızın olası bir kod ekleme etkinliğini gösterir.<br>Bu şüpheli etkinlik, kodun sunucu tarafında yürütülmesini desteklemek için bir WordPress temasını ve ardından doğrudan bir Web isteği ile, istenen tema dosyasını çağırma etkinliğine benzer. Bu tür bir etkinlik WordPress üzerinden bir saldırı kampanyasının parçası olabilir.|-|
-|**Tehdit zekasından Azure App Service FTP arayüzüne bağlı bir IP bulundu**|App Service FTP günlükleri analizi, tehdit bilgileri akışında bulunan bir kaynak adresten bağlantı algıladı. Bu bağlantı sırasında, bir Kullanıcı listelenen sayfalara erişti.|-|
-|**Web parmak baskısı algılandı**|App Service etkinlik günlüğü, App Service kaynağınızın olası bir Web parmak izi etkinliğini gösterir.<br>Bu şüpheli etkinlik, görünmeyen Elephant adlı bir araçla ilişkilendirilir. Araç parmak izi Web sunucularını yazdırır ve yüklü uygulamaları ve bunların sürümlerini algılamaya çalışır. Saldırganlar genellikle bu aracı, Web uygulamalarının güvenlik açıklarını bulmasını yoklayıp kullanır. |-|
+|**Web parmak baskısı algılandı**<br>(NMAP/Blind Elephant)|App Service etkinlik günlüğü, App Service kaynağınızın olası bir Web parmak izi etkinliğini gösterir.<br>Bu şüpheli etkinlik, görünmeyen Elephant adlı bir araçla ilişkilendirilir. Araç parmak izi Web sunucularını yazdırır ve yüklü uygulamaları ve bunların sürümlerini algılamaya çalışır. Saldırganlar genellikle bu aracı, Web uygulamalarının güvenlik açıklarını bulmasını yoklayıp kullanır. |-|
 |**Olası savunmasız Web sayfasına şüpheli erişim algılandı**|App Service etkinlik günlüğü, gizli olarak görünen bir Web sayfasına erişildiğini belirtir.<br>Bu şüpheli etkinlik, erişim deseninin bir Web tarayıcısı ile aynı olduğu bir kaynak adresinden kaynaklıır. Bu tür bir etkinlik genellikle, bir saldırganın hassas veya güvenlik açığı bulunan Web sayfalarına erişim kazanmaya çalışacak şekilde ağınızı taraymasıyla ilişkilendirilir. |-|
+|**Tehdit zekasından Azure App Service FTP arayüzüne bağlı bir IP bulundu**|App Service FTP günlükleri analizi, tehdit bilgileri akışında bulunan bir kaynak adresten bağlantı algıladı. Bu bağlantı sırasında, bir Kullanıcı listelenen sayfalara erişti.|-|
 |**Windows App Service Linux komutlarını çalıştırma girişimi**|App Service işlemlerin çözümlenmesi bir Windows App Service üzerinde Linux komutu çalıştırma girişimi algıladı. Bu eylem Web uygulaması tarafından çalıştırılıyor. Bu davranış genellikle ortak bir Web uygulamasındaki bir güvenlik açığından yararlanan kampanyalar sırasında görülür.|-|
 |**Şüpheli PHP yürütmesi algılandı**|Makine günlükleri şüpheli bir PHP işleminin çalıştığını gösterir. Eylem, PHP işlemini kullanarak komut satırından işletim sistemi komutlarını veya PHP kodunu çalıştırma girişiminde bulunur. Bu davranış meşru olsa da Web uygulamalarında bu davranış, Web kabuklarını Web sitelerine bulaştıkları gibi kötü amaçlı etkinlikleri gösteriyor olabilir.|Yürütme|
 |**Geçici klasörden işlem yürütme**|App Service işlemler analizi, uygulamanın geçici klasöründen bir işlemin yürütülmesini algıladı. Bu davranış meşru olsa da, Web uygulamalarında bu davranış kötü amaçlı etkinlikleri gösterebilir.|-|
 |**Yüksek ayrıcalık komutu çalıştırma denemesi algılandı**|App Service işlemlerin çözümlenmesi, yüksek ayrıcalık gerektiren bir komutu çalıştırma girişimi algıladı. Komut, Web uygulaması bağlamında çalıştırıldı. Bu davranış meşru olsa da, Web uygulamalarında bu davranış kötü amaçlı etkinlikleri gösterebilir.|-|
+|**Kıvrımlı çıktıyı diske kaydetme algılandı**|App Service işlemlerin çözümlenmesi, çıktının diske kaydedildiği bir kıvrımlı komutun çalıştırılmasını algıladı. Bu davranış meşru olsa da, Web uygulamalarında bu davranış Web kabuklarını etkileyen Web sitelerine yönelik girişimler gibi kötü amaçlı etkinliklerde de gözlemlenmiştir.|-|
+|**Ham verilerin indirilmesi algılandı**|App Service işlemlerin çözümlenmesi, pastebin gibi ham veri Web sitelerinden kod indirme girişimi algıladı. Bu eylem bir PHP işlemi tarafından çalıştırıldı. Bu davranış, App Service Web kabukları veya diğer kötü amaçlı bileşenleri indirmeye yönelik girişimlerle ilişkilendirilir.|-|
+|**Güvenlik açığı tarayıcısı algılandı**<br>(Joomla/WordPress/CMS)|Azure App Service etkinlik günlüğü, App Service kaynağında olası bir güvenlik açığı tarayıcısının kullanıldığını gösterir. Şüpheli etkinlik, Joomla uygulamalarının/WordPress uygulamalarının/bir içerik yönetim sisteminin (CMS) hedeflediği araçların benzer olduğunu tespit etti.|-|
+|**İstenmeyen posta klasörü başvuran algılandı**|Azure App Service etkinlik günlüğü, istenmeyen posta etkinliğiyle ilişkili bir Web sitesinden kaynak olarak tanımlanan Web etkinliğini gösterir. Bu durum Web siteniz tehlikeye atılırsa ve istenmeyen posta etkinliği için kullanıldığında ortaya çıkabilir.|-|
+|**Anormal IP adresinden Web sayfasına bağlantı algılandı**|Azure App Service etkinlik günlüğü, daha önce hiçbir şekilde bağlanamadığını bir kaynak IP adresinden (% {kaynak IP adresi}) hassas bir Web sayfasına bağlantı olduğunu gösterir. Bu durum, birisinin web uygulaması yönetim sayfalarınıza bir deneme yanılma saldırısı girişiminde bulunduğunu gösterebilir. Ayrıca, meşru bir kullanıcı tarafından kullanılan yeni bir IP adresinin sonucu da olabilir.|-|
+|**Şüpheli Kullanıcı Aracısı algılandı**|Azure App Service etkinlik günlüğü şüpheli kullanıcı aracısına sahip istekleri gösterir. Bu davranış, App Service uygulamanızdaki bir güvenlik açığından yararlanmaya yönelik denemelere işaret edebilir.|-|
+|**Karşıya yükleme klasöründeki PHP dosyası**|Azure App Service etkinlik günlüğü, karşıya yükleme klasöründe bulunan şüpheli bir PHP sayfasına erişimi gösterir. Bu klasör türü genellikle PHP dosyalarını içermez. Bu tür bir dosyanın varlığı, rastgele dosya karşıya yükleme güvenlik açıklarından faydalanması anlamına gelebilir.|-|
+|**Anormal istekler deseninin algılanması**|Azure App Service etkinlik günlüğü,% {Source IP} öğesinden gelen App Service anomus HTTP etkinliğini gösterir. Bu etkinlik, bir belirsizlik, \ deneme yanılma etkinliğinin bir düzenine benzer.|-|
 ||<a name="alerts-akscluster"></a><h3>AKS küme düzeyi</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-compute.md#azure-containers-)||
 |**Küme Yöneticisi rolüne ÖNIZLEME-rol bağlama algılandı**|Kubernetes denetim günlüğü analizi, Küme Yöneticisi rolüne yeni bir bağlama algıladı ve bu da yönetici ayrıcalıklarına neden oldu. Yönetici ayrıcalıklarını gereksiz şekilde sağlamak, kümede ayrıcalık yükseltme sorunları oluşmasına neden olabilirler.|Kalıcılık|
 |**ÖNIZLEME-açığa çıkarılan Kubernetes panosu algılandı**|Kubernetes denetim günlüğü analizi, Kubernetes panosunun bir LoadBalancer hizmeti tarafından açığa çıkmasını algıladı. Sunulan panolar küme yönetimine kimliği doğrulanmamış erişime izin verir ve güvenlik tehdidi oluşturabilir.|Kalıcılık|

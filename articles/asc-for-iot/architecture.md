@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: a013d4cfcfddc709e60e91adf57bc27c98934a96
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 2e55f98f8c7b6ddbc21f7ea8633467461ea5be29
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596563"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922174"
 ---
-# <a name="azure-security-center-for-iot-architecture"></a>IoT mimarisi için Azure Güvenlik Merkezi
+# <a name="azure-security-center-for-iot-architecture"></a>IoT için Azure Güvenlik Merkezi mimarisi
 
 Bu makalede IoT çözümü için Azure Güvenlik Merkezi 'nin işlevsel sistem mimarisi açıklanmaktadır. 
 
@@ -36,15 +36,15 @@ IoT için Azure Güvenlik Merkezi aşağıdaki bileşenlerden oluşur:
  
 ### <a name="azure-security-center-for-iot-workflows"></a>IoT iş akışları için Azure Güvenlik Merkezi
 
-IoT için Azure Güvenlik Merkezi, iki özellik iş akışının birinde çalışmaktadır: Yerleşik ve geliştirilmiş  
+IoT için Azure Güvenlik Merkezi, iki özellik iş akışlarından birinde çalışmaktadır: yerleşik ve geliştirilmiş  
 
 ### <a name="built-in"></a>Yerleşik
-**Yerleşik** modda, IoT Hub **güvenlik** seçeneğini etkinleştirmek Istediğinizde IoT için Azure Güvenlik Merkezi etkinleştirilir. Gerçek zamanlı izleme, öneriler ve uyarılar sunma, yerleşik mod, singe-adımlı cihaz görünürlüğü ve eşleşmeyen güvenlik sunar. Derleme modu, hiçbir cihazda aracı yüklemesi gerektirmez ve alan cihazınızı çözümlemek ve korumak için günlüğe kaydedilen etkinliklerde gelişmiş çözümlemeler kullanır. 
+**Yerleşik** modda, IoT Hub **güvenlik** seçeneğini etkinleştirmek Istediğinizde IoT için Azure Güvenlik Merkezi etkinleştirilir. Gerçek zamanlı izleme, öneriler ve uyarılar sunma, yerleşik mod, tek adımlı cihaz görünürlüğü ve eşleşmeyen güvenlik sunar. Derleme modu, hiçbir cihazda aracı yüklemesi gerektirmez ve alan cihazınızı çözümlemek ve korumak için günlüğe kaydedilen etkinliklerde gelişmiş çözümlemeler kullanır. 
 
 ### <a name="enhanced"></a>Gelişmiş 
 **Gelişmiş** modda, IoT Hub **güvenlik** seçeneğini açtıktan ve cihazlarınızda IoT cihaz aracıları için Azure Güvenlik Merkezi 'ni yükledikten sonra, aracılar cihazlarınızdan ham güvenlik olaylarını toplar, toplar ve analiz eder. Ham güvenlik olayları, IP bağlantıları, işlem oluşturma, Kullanıcı oturum açmaları ve güvenlikle ilgili diğer bilgileri içerebilir. IoT cihaz aracıları için Azure Güvenlik Merkezi, yüksek ağ aktarım hızını önlemeye yardımcı olmak için olay toplamayı da işler. Aracılar yüksek düzeyde özelleştirilebilir ve en hızlı SLA 'da yalnızca önemli bilgileri göndermek ya da kapsamlı güvenlik bilgilerini ve bağlamı daha büyük kesimlerde toplamak, daha yüksek hizmet maliyetlerine izin vermek gibi belirli görevler için bunları kullanmanıza olanak sağlar.
 
-![IoT mimarisi için Azure Güvenlik Merkezi](./media/architecture/azure-iot-security-architecture.png)
+![IoT için Azure Güvenlik Merkezi mimarisi](./media/architecture/azure-iot-security-architecture.png)
  
 Cihaz aracıları ve diğer uygulamalar, güvenlik bilgilerini Azure IoT Hub 'a göndermek için **Azure güvenlik iletisi gönder SDK 'sını** kullanır. IoT Hub, bu bilgileri alır ve IoT hizmeti için Azure Güvenlik Merkezi 'ne iletir.
 
@@ -65,4 +65,4 @@ Bu makalede IoT çözümü için Azure Güvenlik Merkezi 'nin temel mimarisi ve 
 - [Çözümünüzü yapılandırın](quickstart-configure-your-solution.md)
 - [IoT Hub güvenliği etkinleştir](quickstart-onboard-iot-hub.md)
 - [IoT için Azure Güvenlik Merkezi SSS](resources-frequently-asked-questions.md)
-- [IoT güvenlik uyarıları için Azure Güvenlik Merkezi](concept-security-alerts.md)
+- [IoT için Azure Güvenlik Merkezi güvenlik uyarıları](concept-security-alerts.md)

@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 paylaşılan hizmetleri şema örnek denetimleri
 description: ISO 27001 paylaşılan hizmetleri şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: b484bdc2fdaa346e5137b31e3225dc913f43ed0c
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 6c03da7d5d4caada9ef47a828163a79a003bea93
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546723"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922533"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 paylaşılan hizmetleri şema örneğinin denetim eşlemesi
 
@@ -53,7 +53,7 @@ Bu şema, sahip ve/veya yazma izinleri ve çok faktörlü kimlik doğrulaması e
 - \[Preview\]: bir abonelikte MFA etkinleştirilmemiş olan yazma izinleri olan hesapları denetleme
 - \[Preview\]: bir abonelikte sahip izinleri olan dış hesapları denetleme
 - \[Preview\]: bir abonelikte yazma izinleri olan dış hesapları denetleme
-- SQL Server için Azure Active Directory yöneticisinin sağlamasını denetleme
+- SQL sunucuları için bir Azure Active Directory Yöneticisi denetimi sağlanmalıdır
 - Service Fabric istemci kimlik doğrulaması için Azure Active Directory kullanımını denetleme
 - Özel RBAC kurallarının kullanımını denetleme
 

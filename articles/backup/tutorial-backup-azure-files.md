@@ -3,12 +3,12 @@ title: Öğretici-Azure dosyaları dosya paylaşımlarını yedekleme
 description: Bu öğreticide, bir kurtarma hizmetleri Kasası yapılandırmak ve Azure dosya paylaşımlarını yedeklemek için Azure portal nasıl kullanacağınızı öğrenin.
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: f3c1956a0344d300fff9a745a4733b7bef45a367
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171862"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921641"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Azure portal Azure dosya paylaşımlarını yedekleme
 
@@ -20,7 +20,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 > * Azure Dosyalarını yedeklemek için Kurtarma Hizmetleri kasasını yapılandırma
 > * Geri yükleme noktası oluşturmak için isteğe bağlı yedekleme işini çalıştırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure dosya paylaşımını yedekleyebilmeniz için önce [desteklenen Depolama Hesabı türlerinden](tutorial-backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview) birinde yer aldığından emin olmalısınız. Bunu doğruladıktan sonra dosya paylaşımlarınızı koruyabilirsiniz.
 
@@ -28,7 +28,6 @@ Azure dosya paylaşımını yedekleyebilmeniz için önce [desteklenen Depolama 
 
 Azure dosya paylaşımları için yedekleme önizlemede sunulmaktadır. Hem genel amaçlı v1 hem de genel amaçlı v2 depolama hesaplarında Azure dosya paylaşımları desteklenir. Aşağıdaki yedekleme senaryoları, Azure dosya paylaşımları için desteklenmemektedir:
 
-* Sanal Ağların veya Güvenlik Duvarının etkin olduğu depolama hesaplarında Azure dosya paylaşımlarını koruyamazsınız.
 * Azure Backup kullanarak Azure dosyalarını korumak için kullanılabilir CLı yoktur.
 * Günlük zamanlanan maksimum yedekleme sayısı birdir.
 * Günlük zamanlanan maksimum istek üzerine yedekleme sayısı dörttür.

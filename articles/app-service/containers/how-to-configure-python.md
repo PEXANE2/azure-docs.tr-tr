@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b8de6df5761baef79310062614f578a92f17b826
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670472"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922270"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
@@ -50,7 +50,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="container-characteristics"></a>Kapsayıcı özellikleri
 
-Linux üzerinde App Service dağıtılan Python uygulamaları GitHub deposunda, [python 3,6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) veya [Python 3,7](https://github.com/Azure-App-Service/python/tree/master/3.7.0)' de tanımlanan bir Docker kapsayıcısı içinde çalışır.
+Linux üzerinde App Service dağıtılan Python uygulamaları, [App Service Python GitHub deposunda](https://github.com/Azure-App-Service/python)tanımlanan bir Docker kapsayıcısı içinde çalışır. Görüntü yapılandırmasını sürüme özgü dizinler içinde bulabilirsiniz.
 
 Bu kapsayıcı aşağıdaki özelliklere sahiptir:
 
@@ -132,7 +132,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 > [!Note]
 > App Service, özel komut dosyasının işlenmesi sırasında oluşan hataları yoksayar ve başlatma işlemine Django ve Flask uygulamalarını arayarak devam eder. Beklediğiniz davranışı görmüyorsanız başlangıç dosyanızın App Service'e dağıtıldığından ve dosyada hata bulunmadığından emin olun.
 
-## <a name="access-environment-variables"></a>Ortam değişkenlerine erişin
+## <a name="access-environment-variables"></a>Ortam değişkenlerine erişim
 
 App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) . Ardından, standart [OS. Environ](https://docs.python.org/3/library/os.html#os.environ) modelini kullanarak bunlara erişebilirsiniz. Örneğin, `WEBSITE_SITE_NAME`adlı bir uygulama ayarına erişmek için aşağıdaki kodu kullanın:
 

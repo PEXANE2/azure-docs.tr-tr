@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2dfe17b99c1a9b1130695c8e5cd9c65ca7681d35
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7d6b23aa3f35c99cf03f855152b2b231a60a965
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472453"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921632"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Öğretici: Azure Pipelines Azure Resource Manager şablonlarının sürekli tümleştirilmesi
 
@@ -194,7 +194,7 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 
     Aşağıdaki değişiklikleri yapın:
 
-    * **Deloymentscope**: seçeneklerden dağıtım kapsamını seçin: `Management Group`, `Subscription` ve `Resource Group`. Bu öğreticide **kaynak grubunu** kullanın. Kapsamlar hakkında daha fazla bilgi edinmek için bkz. [dağıtım kapsamları](deploy-rest.md#deployment-scope).
+    * **Deploymentscope**: seçeneklerden dağıtım kapsamını seçin: `Management Group`, `Subscription` ve `Resource Group`. Bu öğreticide **kaynak grubunu** kullanın. Kapsamlar hakkında daha fazla bilgi edinmek için bkz. [dağıtım kapsamları](deploy-rest.md#deployment-scope).
     * **ConnectedServiceName**: daha önce oluşturduğunuz hizmet bağlantı adını belirtin.
     * **SubscriptionName**: hedef abonelik kimliğini belirtin.
     * **eylem**: **kaynak grubunu oluştur veya Güncelleştir** eylemi 2 eylem-1 yapar. Yeni bir kaynak grubu adı sağlanmışsa, bir kaynak grubu oluşturun; iki. belirtilen şablonu dağıtın.

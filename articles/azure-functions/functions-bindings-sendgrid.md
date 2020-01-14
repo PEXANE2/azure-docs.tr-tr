@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: a0731a66af32b45215145c1d4f4404eb008cf897
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d70b05842fc7f251af6aefd743f064c037f63b7b
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410037"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922349"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Işlevleri SendGrid bağlamaları
 
@@ -27,9 +27,6 @@ SendGrid bağlamaları [Microsoft. Azure. WebJobs. Extensions. SendGrid](https:/
 ## <a name="packages---functions-2x-and-higher"></a>Paketler-Işlevler 2. x ve üzeri
 
 SendGrid bağlamaları [Microsoft. Azure. WebJobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet paketi, sürüm 3. x içinde verilmiştir. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub deposunda bulunur.
-
-> [!NOTE]
-> Sürüm 2. x ve üzeri, `ServiceBusTrigger` örneğinde yapılandırılmış konuyu veya aboneliği oluşturmaz. Bu sürümler, kuyruk yönetimini işlemeyen [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) ' a dayalıdır.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -351,10 +348,10 @@ Aşağıdaki tabloda, *function. JSON* dosyasında bulunan bağlama yapılandır
 
 | *function. JSON* özelliği | Öznitelik/ek açıklama özelliği | Açıklama | İsteğe Bağlı |
 |--------------------------|-------------------------------|-------------|----------|
-| type || Ayarlanmalıdır `sendGrid`.| Hayır |
-| yön || Ayarlanmalıdır `out`.| Hayır |
-| ad || İstek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Yalnızca bir dönüş değeri olduğunda bu değer `$return`. | Hayır |
-| apiKey | ApiKey | API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı *AzureWebJobsSendGridApiKey*olur.| Hayır |
+| type |Yok| Ayarlanmalıdır `sendGrid`.| Hayır |
+| yön |Yok| Ayarlanmalıdır `out`.| Hayır |
+| ad |Yok| İstek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Yalnızca bir dönüş değeri olduğunda bu değer `$return`. | Hayır |
+| apiKey | apiKey | API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı *AzureWebJobsSendGridApiKey*olur.| Hayır |
 | -| Bitiş | Alıcının e-posta adresi. | Evet |
 | başlangıç| Başlangıç fiyatı | Gönderenin e-posta adresi. |  Evet |
 | subject| Konu | E-postanın konusu. | Evet |

@@ -3,12 +3,12 @@ title: Azure Kaynak durumu uyarılarını oluşturma-Kaynak Yöneticisi şablonl
 description: Azure kaynaklarınızın kullanım dışı olmasına göre size bildirimde bulunan uyarıları programlı bir şekilde oluşturun.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: c14e3c327d83e75b08f3b52b59970557ec87f5b5
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: d42dfdc5806fa6340cf4bb7051b53764e98c26e3
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912826"
+ms.locfileid: "75922764"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak kaynak sistem durumu uyarılarını yapılandırma
 
@@ -16,6 +16,8 @@ Bu makalede, Azure Resource Manager şablonlarını ve Azure PowerShell kullanar
 
 Azure Kaynak Durumu, Azure kaynaklarınızın geçerli ve geçmiş sistem durumu hakkında bilgi sahibi olmanızı önler. Azure Kaynak Durumu uyarılar, bu kaynakların sistem durumunda bir değişiklik olduğunda sizi neredeyse gerçek zamanlı olarak uyarabilirler. Kaynak Durumu uyarılar oluşturma, kullanıcıların uyarıları toplu olarak oluşturmalarına ve özelleştirmesine izin verir.
 
+> [!NOTE]
+> Kaynak Durumu uyarılar Şu anda önizlemededir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

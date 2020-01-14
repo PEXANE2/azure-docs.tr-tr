@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b08a124ade6e2db8ca27ef61c7f5a6b3fe839885
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4a99bfe8d8235400f9122423aa4592fc6898abc1
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442773"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922281"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services desteklenen veri kaynakları
 
@@ -120,7 +120,9 @@ Bulut veri kaynakları için:
 
 ## <a name="oauth-credentials"></a>OAuth kimlik bilgileri
 
-1400 ve üzeri uyumluluk düzeyindeki tablo modelleriyle ilgili olarak, Azure SQL veritabanı, Azure SQL veri ambarı, Dynamics 365 ve SharePoint listesi OAuth kimlik bilgilerini destekler. Azure Analysis Services uzun süre çalışan yenileme işlemleri için zaman aşımlarını önlemek üzere OAuth veri kaynakları için belirteç yenilemeyi yönetir. Geçerli belirteçler oluşturmak için SSMS kullanarak kimlik bilgilerini ayarlayın.
+Bellek içi modu, Azure SQL veritabanı, Azure SQL veri ambarı, Dynamics 365 ve SharePoint listesi ile 1400 ve daha yüksek uyumluluk düzeyinde tablo modelleri için OAuth kimlik bilgilerini destekler. Azure Analysis Services uzun süre çalışan yenileme işlemleri için zaman aşımlarını önlemek üzere OAuth veri kaynakları için belirteç yenilemeyi yönetir. Geçerli belirteçler oluşturmak için SSMS kullanarak kimlik bilgilerini ayarlayın.
+
+OAuth kimlik bilgileriyle doğrudan sorgu modu desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi ağ geçidi](analysis-services-gateway.md)   

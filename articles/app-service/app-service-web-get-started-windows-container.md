@@ -4,12 +4,12 @@ description: Azure App Service için ilk özel Windows kapsayıcınızı dağıt
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b618c4f1a24e4089cac2ddf34e61bab156aefdd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671341"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922304"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Azure'da özel Windows kapsayıcısı çalıştırma (Önizleme)
 
@@ -17,7 +17,7 @@ ms.locfileid: "74671341"
 
 Bu hızlı başlangıçta, bir Windows görüntüsünde ASP.NET uygulamasının Visual Studio 'dan [Docker Hub](https://hub.docker.com/) 'a nasıl dağıtılacağı gösterilmektedir. Uygulamayı Azure App Service bir özel kapsayıcıda çalıştırırsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -43,7 +43,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 1. Azure’a herhangi bir türde ASP.NET web uygulaması dağıtabilirsiniz. Bu hızlı başlangıç için **MVC** şablonunu seçin.
 
-1. **Docker desteği**' ni seçin ve kimlik doğrulamasının **kimlik doğrulaması yok**olarak ayarlandığından emin olun. **Oluştur**'u seçin.
+1. **Docker desteği**' ni seçin ve kimlik doğrulamasının **kimlik doğrulaması yok**olarak ayarlandığından emin olun. **Oluştur**’u seçin.
 
    ![ASP.NET Web uygulaması oluşturma](./media/app-service-web-get-started-windows-container/select-mvc-template-for-container.png)
 
@@ -103,7 +103,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 Azure işlemi tamamlandığında bir bildirim kutusu görüntülenir.
 
-![Dağıtım başarılı oldu](media/app-service-web-get-started-windows-container/portal-create-finished.png)
+![Dağıtım başarılı](media/app-service-web-get-started-windows-container/portal-create-finished.png)
 
 1. **Kaynağa git**'e tıklayın.
 
@@ -163,7 +163,7 @@ Yeniden [Kapsayıcı uygulamasına göz atın](#browse-to-the-container-app). We
 
 ## <a name="use-a-different-parent-image"></a>Farklı bir üst görüntü kullanma
 
-Uygulamanızı çalıştırmak için farklı bir özel Docker görüntüsü kullanabilirsiniz. Ancak istediğiniz çerçeve için doğru [üst görüntüyü](https://docs.docker.com/develop/develop-images/baseimages/) seçmeniz gerekir:
+Uygulamanızı çalıştırmak için farklı bir özel Docker görüntüsü kullanabilirsiniz. Ancak, istediğiniz çerçevenin sağ [üst görüntüsünü (temel görüntü)](https://docs.docker.com/develop/develop-images/baseimages/) seçmeniz gerekir:
 
 - .NET Framework uygulamaları dağıtmak için Windows Server Core 2019 [uzun süreli bakım kanalı (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) sürümüne göre bir üst görüntü kullanın. 
 - .NET Core uygulamaları dağıtmak için Windows Server nano 1809 [yarı yıllık bakım kanalı (sac)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) sürümüne göre bir üst görüntü kullanın. 
@@ -171,7 +171,7 @@ Uygulamanızı çalıştırmak için farklı bir özel Docker görüntüsü kull
 Uygulama başlatılırken üst görüntünün indirilmesi zaman alabilir. Ancak Azure App Service önbelleğinde bulunan aşağıdaki üst görüntülerden birini kullanarak başlangıç süresini kısaltabilirsiniz:
 
 - [MCR.Microsoft.com/DotNet/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4.7.2-windowsservercore-ltsc2019
-- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809-bu görüntü, Microsoft [ASP.NET Core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) Microsoft Windows nano Server görüntüleri genelinde kullanılan temel kapsayıcıdır.
+- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809-bu görüntü, Microsoft [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) Microsoft Windows nano Server görüntüleri genelinde kullanılan temel kapsayıcıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

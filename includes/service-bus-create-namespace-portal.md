@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188600"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75927851"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Azure portalında bir ad alanı oluşturma
 Azure'da Service Bus mesajlaşma varlıklarını kullanmaya başlamak için öncelikle Azure'da benzersiz olan bir ad alanı oluşturmanız gerekir. Ad alanı, uygulamanızda bulunan Service Bus kaynaklarını adreslemek için içeriğin kapsamını belirleyen bir kapsayıcı sunar.
@@ -21,40 +21,40 @@ Azure'da Service Bus mesajlaşma varlıklarını kullanmaya başlamak için önc
 Ad alanı oluşturmak için:
 
 1. [Azure portalda](https://portal.azure.com) oturum açma
-2. Portalın sol gezinti bölmesinde seçin **+ kaynak Oluştur**seçin **tümleştirme**ve ardından **Service Bus**.
+2. Portalın sol gezinti bölmesinde **+ kaynak oluştur**' u seçin, **tümleştirme**' i seçin ve ardından **Service Bus**' yi seçin.
 
-    ![Kaynak Oluştur tümleştirme -> Service Bus ->](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
-3. İçinde **ad alanı oluşturma** iletişim kutusunda, aşağıdaki adımları uygulayın: 
-    1. Girin bir **ad alanı adı**. Adın kullanılabilirliği sistem tarafından hemen denetlenir. Namespaces adlandırma kurallarının bir listesi için bkz. [Namespace REST API oluşturma](/rest/api/servicebus/create-namespace).
-    2. Ad alanı için fiyatlandırma katmanını (temel, standart veya Premium) seçin. Kullanmak istiyorsanız [konuları ve abonelikleri](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions), standart veya Premium seçin. Konular/abonelikler, Temel fiyatlandırma katmanında desteklenmez.
-    3. Seçtiyseniz **Premium** fiyatlandırma katmanında, şu adımları izleyin: 
-        1. Sayısını **Mesajlaşma birimleri**. Premium katmanı, her iş yükü yalıtımlı şekilde çalışır. böylece CPU ve bellek düzeyinde kaynak yalıtımına sunar. Bu kaynak kapsayıcısı Mesajlaşma birimi olarak adlandırılır. Bir premium ad alanı en az bir Mesajlaşma birimi var. 1, 2 veya 4 Mesajlaşma birimi her Service Bus Premium ad alanı için seçebilirsiniz. Daha fazla bilgi için [Service Bus Premium Mesajlaşma](../articles/service-bus-messaging/service-bus-premium-messaging.md).
-        2. Ad alanı yapmak isteyip istemediğinizi belirtin **bölgesel olarak yedekli**. Bölge artıklığı kullanılabilirlik bölgelerindeki ek maliyet olmadan tek bir bölgede kopyaların yayılmasını sağlayarak gelişmiş kullanılabilirlik sağlar. Daha fazla bilgi için [Azure kullanılabilirlik alanlarında](../articles/availability-zones/az-overview.md).
-    4. İçin **abonelik**, ad alanı oluşturulacağı bir Azure aboneliği seçersiniz.
-    5. İçin **kaynak grubu**, hangi ad alanı canlı, veya yeni bir kaynak grubu seçin.      
-    6. İçin **konumu**, bölgeyi hangi ad alanınızın barındırılması seçin.
-    7. **Oluştur**’u seçin. Artık sistem ad alanınızı oluşturur ve kullanıma açar. Sistem, hesabınıza yönelik kaynakları sağlarken birkaç dakika beklemeniz gerekebilir.
+    ![Kaynak > tümleştirme oluşturma-> Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
+3. **Ad alanı oluştur** iletişim kutusunda aşağıdaki adımları uygulayın: 
+    1. **Ad alanı için bir ad**girin. Adın kullanılabilirliği sistem tarafından hemen denetlenir. Ad alanlarını adlandırma kurallarının bir listesi için bkz. [Create Namespace REST API](/rest/api/servicebus/create-namespace).
+    2. Ad alanı için fiyatlandırma katmanını (temel, standart veya Premium) seçin. [Konuları ve abonelikleri](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)kullanmak Istiyorsanız, standart veya Premium ' u seçin. Konular/abonelikler, Temel fiyatlandırma katmanında desteklenmez.
+    3. **Premium** fiyatlandırma katmanını seçtiyseniz şu adımları izleyin: 
+        1. **Mesajlaşma birimi**sayısını belirtin. Premium katmanı, her iş yükünün yalıtımda çalışması için CPU ve bellek düzeyinde kaynak yalıtımı sağlar. Bu kaynak kapsayıcısına mesajlaşma birimi denir. Premium ad alanında en az bir mesajlaşma birimi vardır. Her Service Bus Premium ad alanı için 1, 2 veya 4 mesajlaşma birimi seçebilirsiniz. Daha fazla bilgi için bkz. [Service Bus Premium mesajlaşma](../articles/service-bus-messaging/service-bus-premium-messaging.md).
+        2. Ad alanı **bölgesini gereksiz**yapmak isteyip istemediğinizi belirtin. Bölge artıklığı, çoğaltmaları hiçbir ek ücret ödemeden bir bölgedeki kullanılabilirlik bölgelerine dağıtarak gelişmiş kullanılabilirlik sağlar. Daha fazla bilgi için bkz. [Azure 'Da kullanılabilirlik alanları](../articles/availability-zones/az-overview.md).
+    4. **Abonelik**için, ad alanını oluşturmak Için bir Azure aboneliği seçin.
+    5. **Kaynak grubu**için, ad alanının etkin olacağı mevcut bir kaynak grubunu seçin veya yeni bir tane oluşturun.      
+    6. **Konum**için, ad alanınızı barındırılacak bölgeyi seçin.
+    7. **Oluştur**’u seçin. Ardından sistem, ad alanınızı oluşturur ve kullanıma açar. Sistem, hesabınıza yönelik kaynakları sağlarken birkaç dakika bekleyebilirsiniz.
    
         ![ad alanı oluşturma](./media/service-bus-create-namespace-portal/create-namespace.png)
-4. Service bus ad alanı başarıyla dağıtıldığından emin olun. Bildirimleri görmek için seçin **zil simgesini (Uyarılar)** araç. Seçin **kaynak grubunun adı** görüntüde gösterildiği gibi bildirim. Service bus ad alanı içeren kaynak grubunu görürsünüz.
+4. Service Bus ad alanının başarıyla dağıtıldığını doğrulayın. Bildirimleri görmek için araç çubuğundaki **zil simgesini (Uyarılar)** seçin. Görüntüde gösterildiği gibi bildirimde **kaynak grubunun adını** seçin. Service Bus ad alanını içeren kaynak grubunu görürsünüz.
 
-    ![Dağıtım Uyarısı](./media/service-bus-create-namespace-portal/deployment-alert.png)
-5. Üzerinde **kaynak grubu** seçin, kaynak grubunuzun sayfasında, **service bus ad alanı**. 
+    ![Dağıtım uyarısı](./media/service-bus-create-namespace-portal/deployment-alert.png)
+5. Kaynak grubunuzun **kaynak grubu** sayfasında, **Service Bus ad**alanınızı seçin. 
 
-    ![Kaynak grubu sayfası - service bus ad alanınızı seçin](./media/service-bus-create-namespace-portal/resource-group-select-service-bus.png)
-6. Service bus ad alanı için giriş sayfasını görürsünüz. 
+    ![Kaynak grubu sayfası-Service Bus ad alanınızı seçin](./media/service-bus-create-namespace-portal/resource-group-select-service-bus.png)
+6. Service Bus ad alanınız için ana sayfayı görürsünüz. 
 
-    ![Service bus ad alanınız için giriş sayfası](./media/service-bus-create-namespace-portal/service-bus-namespace-home-page.png)
+    ![Service Bus ad alanınız için ana sayfa](./media/service-bus-create-namespace-portal/service-bus-namespace-home-page.png)
 
 ## <a name="get-the-connection-string"></a>Bağlantı dizesini alma 
-Yeni bir ad alanı oluşturulduğunda, her biri ad alanının tüm yönleri üzerinde tam denetim veren ilişkili bir çift birincil ve ikincil anahtara sahip bir ilk Paylaşılan Erişim İmzası (SAS) kuralı otomatik olarak oluşturulur. Bkz: [Service Bus kimlik doğrulama ve yetkilendirme](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) ile daha fazla kuralları oluşturma hakkında daha fazla bilgi için kısıtlı haklar sıradan göndericiler ve alıcılar için. Ad alanınız için birincil ve ikincil anahtarları kopyalamak için aşağıdaki adımları izleyin: 
+Yeni bir ad alanı oluşturulduğunda, her biri ad alanının tüm yönleri üzerinde tam denetim veren ilişkili bir çift birincil ve ikincil anahtara sahip bir ilk Paylaşılan Erişim İmzası (SAS) kuralı otomatik olarak oluşturulur. Düzenli Gönderenler ve alıcılar için daha kısıtlanmış haklara sahip kurallar oluşturma hakkında bilgi için bkz. [Service Bus kimlik doğrulaması ve yetkilendirme](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) . Ad alanınız için birincil ve ikincil anahtarları kopyalamak için aşağıdaki adımları izleyin: 
 
 1. **Tüm kaynaklar**’a ve sonra yeni oluşturulan ad alanı adına tıklayın.
 2. Ad alanı penceresinde **Paylaşılan erişim ilkeleri**'ne tıklayın.
 3. **Paylaşılan erişim ilkeleri** ekranında **RootManageSharedAccessKey** seçeneğine tıklayın.
    
     ![bağlantı bilgisi](./media/service-bus-create-namespace-portal/connection-info.png)
-4. İçinde **İlkesi: RootManageSharedAccessKey** penceresi, yanındaki Kopyala düğmesine tıklatarak **PRIMARY CONNECTION Strıng'i**, bağlantı dizesini Panonuza daha sonra kullanmak üzere kopyalayın. Bu değeri Not Defteri veya başka bir geçici konuma yapıştırın.
+4. **İlke: RootManageSharedAccessKey** penceresinde **Birincil Bağlantı Dizesi**'nin yanındaki kopyala düğmesine tıklayın ve bağlantı dizesini daha sonra kullanmak üzere panonuza kopyalayın. Bu değeri Not Defteri veya başka bir geçici konuma yapıştırın.
    
     ![bağlantı dizesi](./media/service-bus-create-namespace-portal/connection-string.png)
 5. **Birincil anahtar** değerini daha sonra kullanmak üzere geçici bir konuma kopyalayarak önceki adımı tamamlayın.

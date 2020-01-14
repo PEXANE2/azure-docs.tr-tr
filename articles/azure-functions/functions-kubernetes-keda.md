@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: ab851f3156f09a808833c0b31f8c5ce2b7dd5138
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9978bd567b1b07e8dd0e22e1f02834626281a5dd
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230494"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920673"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA ile Kubernetes üzerinde Azure Işlevleri
 
@@ -83,7 +83,7 @@ func kubernetes remove --namespace keda
 
 KEDA, aşağıdaki Azure Işlev Tetikleyicileri için destek içerir:
 
-* [Azure depolama kuyrukları](functions-bindings-storage-queue.md)
+* [Azure Depolama Kuyrukları](functions-bindings-storage-queue.md)
 * [Azure Service Bus kuyrukları](functions-bindings-service-bus.md)
 * [Azure olay/IoT Hub 'Ları](functions-bindings-event-hubs.md)
 * [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)

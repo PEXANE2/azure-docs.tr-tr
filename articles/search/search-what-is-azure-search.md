@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 17cefdd5976efdd86d9f171f4eb1518f63fe043b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0d2fca7b46cd0392fe8e94c1371443e7fcebc2fd
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754287"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922493"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
@@ -68,7 +68,7 @@ Azure Bilişsel Arama aşağıdaki uygulama senaryoları için uygundur:
 |-------------------|----------|
 | Prototip oluşturma ve inceleme araçları | Portalda, dizin oluşturucuları yapılandırmak için [**Veri içeri aktarma sihirbazını**](search-import-data-portal.md), dizini öne çıkarmak için dizin tasarımcısını ve sorguları test edip puanlama profillerini daraltmak için [**Arama gezgini**](search-explorer.md)’ni kullanabilirsiniz. Şemasını görüntülemek için herhangi bir dizini de açabilirsiniz. |
 | İzleme ve tanılama | Her zaman portalda görünür olan ölçümleri bir bakışta görmek için [**izleme özelliklerini etkinleştirin**](search-monitor-usage.md) . Ek bir yapılandırma gerekmeden saniye başına sorgu sayısı, gecikme süresi ve azaltma ölçümleri toplanıp portal sayfalarında raporlanır.|
-| Sunucu tarafı şifrelemesi | [**Bekleyen Microsoft tarafından yönetilen şifreleme**](search-security-overview.md#encrypted-transmission-and-storage) , iç depolama katmanında yerleşik olarak bulunur ve geri alınamaz. İsteğe bağlı olarak, [**müşteri tarafından yönetilen şifreleme anahtarları (Önizleme)** ](search-security-manage-encryption-keys.md)ile varsayılan şifrelemeyi destekleyebilirsiniz. Azure Key Vault içinde oluşturduğunuz ve yönettiğiniz anahtarlar, Azure Bilişsel Arama dizinleri ve eş anlamlı haritaları şifrelemek için kullanılır. |
+| Sunucu tarafı şifrelemesi | [**Bekleyen Microsoft tarafından yönetilen şifreleme**](search-security-overview.md#encrypted-transmission-and-storage) , iç depolama katmanında yerleşik olarak bulunur ve geri alınamaz. İsteğe bağlı olarak, [**müşteri tarafından yönetilen şifreleme anahtarlarıyla**](search-security-manage-encryption-keys.md)varsayılan şifrelemeyi de destekleyebilirsiniz. Azure Key Vault içinde oluşturduğunuz ve yönettiğiniz anahtarlar, Azure Bilişsel Arama dizinleri ve eş anlamlı haritaları şifrelemek için kullanılır. |
 | Altyapı | **Yüksek oranda kullanılabilir platform**, son derece güvenilir arama hizmeti deneyimi sağlar. Azure Bilişsel Arama düzgün şekilde ölçeklendirildiğinde [% 99,9 SLA sağlar](https://azure.microsoft.com/support/legal/sla/search/v1_0/).<br/><br/> Uçtan uca bir çözüm olarak **tam olarak yönetilen ve ölçeklenebilir** , Azure bilişsel arama kesinlikle altyapı yönetimi gerektirmez. Hizmetiniz daha fazla belge depolamayı, daha yüksek sorgu yüklerini veya her ikisini birden işlemek için iki boyutta ölçeklendirilerek ihtiyaçlarınıza göre uyarlanabilir.<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Azure Bilişsel Arama kullanma

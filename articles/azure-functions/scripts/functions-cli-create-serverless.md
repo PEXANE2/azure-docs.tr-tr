@@ -6,16 +6,16 @@ ms.topic: sample
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 4bf0e43132662f6f5322485a59f356f872559092
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0fe4cb6e75a74f58b4c3b312f923935053ea4756
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532514"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922603"
 ---
 # <a name="create-a-function-app-for-serverless-code-execution"></a>Sunucusuz kod yürütme için bir işlev uygulaması oluşturma 
 
-Bu Azure İşlevleri örnek betiği, işlevleriniz için kapsayıcı olan bir işlev uygulaması oluşturur. Bu işlev uygulaması, olay denetimli sunucusuz iş yükleri için ideal olan [tüketim planı](../functions-scale.md#consumption-plan) kullanılarak oluşturuldu.
+Bu Azure İşlevleri örnek betiği, işlevleriniz için kapsayıcı olan bir işlev uygulaması oluşturur. İşlev uygulaması, olay odaklı sunucusuz iş yükleri için ideal olan [Tüketim planı](../functions-scale.md#consumption-plan)kullanılarak oluşturulur.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -25,9 +25,9 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure
 
 ## <a name="sample-script"></a>Örnek betik
 
-Bu betik, [tüketim planını](../functions-scale.md#consumption-plan) kullanarak bir Azure İşlev uygulaması oluşturur.
+Bu betik, [Tüketim planını](../functions-scale.md#consumption-plan)kullanarak bir Azure işlev uygulaması oluşturur.
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption/create-function-app-consumption.sh "Create an Azure Function on a consumption plan")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption/create-function-app-consumption.sh "Create an Azure Function on a Consumption plan")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 6a0e24ce7fa11c6373fbaada40cd9f1b1e7f55a2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 78498f06a1ec921813d886b426d62452f850f5e5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325469"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922739"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Event Grid ile CloudEvents v 1.0 şeması kullanma
 
@@ -60,7 +60,7 @@ CloudEvents biçiminde Azure Blob depolama olayına bir örnek aşağıda verilm
 }
 ```
 
-Kullanılabilir alanlar, bunların türleri ve CloudEvents v 0.1 içindeki tanımlarda ayrıntılı bir açıklama [burada bulunabilir](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
+Kullanılabilir alanlar, bunların türleri ve CloudEvents v 1.0 içindeki tanımlara ilişkin ayrıntılı bir açıklama [burada bulunabilir](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
 
 CloudEvents şeması ve Event Grid şeması 'nda teslim edilen olaylar için üst bilgi değerleri, `content-type`hariç aynıdır. CloudEvents şeması için, bu üst bilgi değeri `"content-type":"application/cloudevents+json; charset=utf-8"`. Event Grid şeması için, bu üst bilgi değeri `"content-type":"application/json; charset=utf-8"`.
 
@@ -76,7 +76,7 @@ CloudEvents şemasında olay girişi ve çıktısı için Event Grid kullanabili
 | CloudEvents biçimi | Event Grid biçimi
 | Event Grid biçimi  | Event Grid biçimi
 
-Tüm olay şemaları için Event Grid, bir olay kılavuzu konusuna yayımlarken ve olay aboneliği oluştururken doğrulama gerektirir. Daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması Event Grid](security-authentication.md).
+Tüm olay şemaları için Event Grid, bir olay kılavuzu konusuna yayımlarken ve olay aboneliği oluştururken doğrulama gerektirir. Daha fazla bilgi için [Event Grid güvenliğini ve kimlik doğrulaması](security-authentication.md).
 
 ### <a name="input-schema"></a>Giriş şeması
 

@@ -1,26 +1,25 @@
 ---
 title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma C# , (Unity)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Daha sonra belirlenecek
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 10/28/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: b0a9eddf147eedfa972e0574e62c9e7c2eace84f
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 149ec84732171cd57b3f8a9590d5340107536eac
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818871"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75927978"
 ---
 > [!NOTE]
 > Unity için konuşma SDK 'Sı, Windows Masaüstü (x86 ve x64) veya Evrensel Windows Platformu (x86, x64, ARM/ARM64), Android (x86, ARM32/64) ve iOS (x64 simülatör, ARM32 ve ARM64) destekler
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
@@ -43,7 +42,7 @@ Bunu zaten yaptıysanız harika. Şimdi devam edelim.
 1. **Proje adı**' nda, **CSharp-Unity**girin.
 1. **Şablonlar**' da, **3B** zaten seçili değilse, bunu seçin.
 1. **Konum**' da, projenin kaydedileceği klasörü seçin veya oluşturun.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Bir süre sonra Unity Düzenleyicisi penceresi görüntülenir.
 

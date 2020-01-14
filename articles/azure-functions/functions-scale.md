@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2eba0c7ae546b5f5ab7525cc8c84e6b6de431085
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6a07d019893e69308b35b4a941fe50d2736efe01
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768954"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921907"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Işlevleri ölçeklendirme ve barındırma
 
@@ -68,7 +68,7 @@ Premium planı kullanırken, Azure Işlevleri ana bilgisayarının örnekleri, t
 * Daha öngörülebilir fiyatlandırma
 * Birden çok işlev uygulaması olan planlar için yüksek yoğunluklu uygulama ayırma
 
-Bu seçenekleri nasıl yapılandırabileceğiniz hakkında bilgiler, [Azure işlevleri Premium plan belgesinde](functions-premium-plan.md)bulunabilir.
+Bu seçenekleri nasıl yapılandırabileceğiniz hakkında bilgiler, [Azure Işlevleri Premium plan belgesinde](functions-premium-plan.md)bulunabilir.
 
 Yürütme başına faturalandırılması ve tüketilen bellek yerine, Premium plan için faturalandırma, gerekli ve önceden çarpımış örneklerde kullanılan çekirdek saniyelik ve belleğin sayısını temel alır. Plan başına en az bir örnek her zaman sıcak olmalıdır. Bu, yürütmelerin sayısından bağımsız olarak etkin plan başına en az aylık maliyet olduğu anlamına gelir. Premium planındaki tüm işlev uygulamalarının, önceden çarpımış ve etkin örnekleri paylaştığı göz önünde bulundurun.
 

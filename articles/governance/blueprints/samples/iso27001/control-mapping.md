@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 şema örnek denetimleri
 description: ISO 27001 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-ms.date: 07/22/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: effc68f3b7daa576b855fb61b39c1e47929a614e
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 501884491dbef85cdf8a29cb5fdcef44a68235a9
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546668"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920564"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 şema örneğinin denetim eşlemesi
 
@@ -30,7 +30,7 @@ Yalnızca bir Azure aboneliğinin sahibi, yönetici artıklığına izin vermez.
 
 Azure 'un [SQL güvenlik açığı değerlendirme hizmeti](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) , veritabanlarınızda depolanan hassas verileri bulmanıza yardımcı olabilir ve bu verileri sınıflandırmaya yönelik öneriler içerir. Bu şema, SQL güvenlik açığı değerlendirme taraması sırasında tanımlanan güvenlik açıklarını denetlemek için bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
-- \[Preview\]: Azure Güvenlik Merkezi 'nde SQL güvenlik açığı değerlendirmesi sonuçlarını Izleme
+- \[Preview\]: Monitor SQL vulnerability assessment results in Azure Security Center
 
 ## <a name="a912-access-to-networks-and-network-services"></a>A. 9.1.2, ağlara ve ağ hizmetlerine erişim
 
@@ -53,7 +53,7 @@ Bu şema, sahip ve/veya yazma izinleri ve çok faktörlü kimlik doğrulaması e
 - \[Preview\]: bir abonelikte MFA etkinleştirilmemiş olan yazma izinleri olan hesapları denetleme
 - \[Preview\]: bir abonelikte sahip izinleri olan dış hesapları denetleme
 - \[Preview\]: bir abonelikte yazma izinleri olan dış hesapları denetleme
-- SQL Server için Azure Active Directory yöneticisinin sağlamasını denetleme
+- SQL sunucuları için bir Azure Active Directory Yöneticisi denetimi sağlanmalıdır
 - Service Fabric istemci kimlik doğrulaması için Azure Active Directory kullanımını denetleme
 - Özel RBAC kurallarının kullanımını denetleme
 
@@ -119,8 +119,8 @@ Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmaların�
 - \[önizleme\]: Windows VM 'nin parolaları, ters çevrilebilir şifreleme kullanarak depolamamalıdır
 - \[Preview\]: Azure Güvenlik Merkezi 'nde şifrelenmemiş VM disklerini Izleme
 - Otomasyon hesabı değişkenlerinin şifrelenme kullanımını denetleme
-- Redis Cache yalnızca güvenli bağlantıları etkinleştirme denetimi
-- Depolama hesaplarına Güvenli aktarım denetimi
+- Audit enabling of only secure connections to your Redis Cache
+- Audit secure transfer to storage accounts
 - ClusterProtectionLevel özelliğinin ayarını EncryptAndSign olarak denetleyin Service Fabric
 - Saydam veri şifreleme durumunu denetle
 - SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
@@ -132,11 +132,11 @@ Tanılama günlükleri, Azure kaynakları içinde gerçekleştirilen işlemlere 
 
 - \[Preview\]: denetim Dependency Agent dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Dependency Agent dağıtımı listelenmemiş
-- \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
+- \[Preview\]: Audit Log Analytics Agent Deployment - VM Image (OS) unlisted
+- \[Preview\]: Audit Log Analytics Agent Deployment in VMSS - VM Image (OS) unlisted
 - Tanılama ayarını denetle
-- SQL Server Level denetim ayarlarını denetleme
-- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
+- Audit SQL server level Auditing settings
+- Auditing should be enabled on advanced data security settings on SQL Server
 
 ## <a name="a1243-administrator-and-operator-logs"></a>A. 12.4.3 Yöneticisi ve işleç günlükleri
 
@@ -144,11 +144,11 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen yedi Azure ilke 
 
 - \[Preview\]: denetim Dependency Agent dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Dependency Agent dağıtımı listelenmemiş
-- \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
+- \[Preview\]: Audit Log Analytics Agent Deployment - VM Image (OS) unlisted
+- \[Preview\]: Audit Log Analytics Agent Deployment in VMSS - VM Image (OS) unlisted
 - Tanılama ayarını denetle
-- SQL Server Level denetim ayarlarını denetleme
-- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
+- Audit SQL server level Auditing settings
+- Auditing should be enabled on advanced data security settings on SQL Server
 
 ## <a name="a1244-clock-synchronization"></a>A. 12.4.4 saat eşitleme
 
@@ -156,49 +156,49 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen yedi Azure ilke 
 
 - \[Preview\]: denetim Dependency Agent dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Dependency Agent dağıtımı listelenmemiş
-- \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
-- \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
+- \[Preview\]: Audit Log Analytics Agent Deployment - VM Image (OS) unlisted
+- \[Preview\]: Audit Log Analytics Agent Deployment in VMSS - VM Image (OS) unlisted
 - Tanılama ayarını denetle
-- SQL Server Level denetim ayarlarını denetleme
-- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
+- Audit SQL server level Auditing settings
+- Auditing should be enabled on advanced data security settings on SQL Server
 
-## <a name="a1251-installation-of-software-on-operational-systems"></a>A. 12.5.1 işletimsel sistemlere yazılım yüklemesi
+## <a name="a1251-installation-of-software-on-operational-systems"></a>A.12.5.1 Installation of software on operational systems
 
-Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nin Azure 'da bulunan sanal makinelerinizde hangi uygulamaların çalıştırılacağını denetlemenize yardımcı olan bir çözümdür. Bu şema, izin verilen uygulamalar kümesinde yapılan değişiklikleri izleyen bir Azure ilke tanımı atar. Bu özellik, Azure VM 'lerinde yazılım ve uygulama yüklemelerini denetlemenize yardımcı olur.
+Adaptive application control is solution from Azure Security Center that helps you control which applications can run on your VMs located in Azure. This blueprint assigns an Azure Policy definition that monitors changes to the set of allowed applications. This capability helps you control installation of software and applications on Azure VMs.
 
-- \[Preview\]: Azure Güvenlik Merkezi 'nde olası uygulama beyaz listesini Izleme
+- \[Preview\]: Monitor possible app Whitelisting in Azure Security Center
 
-## <a name="a1261-management-of-technical-vulnerabilities"></a>A. 12.6.1 teknik güvenlik açıklarının yönetimi
+## <a name="a1261-management-of-technical-vulnerabilities"></a>A.12.6.1 Management of technical vulnerabilities
 
-Bu şema, Azure Güvenlik Merkezi 'nde eksik sistem güncelleştirmelerini, işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen beş [Azure ilke](../../../policy/overview.md) tanımı atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar.
+This blueprint helps you manage information system vulnerabilities by assigning five [Azure Policy](../../../policy/overview.md) definitions that monitor missing system updates, operating system vulnerabilities, SQL vulnerabilities, and virtual machine vulnerabilities in Azure Security Center. Azure Security Center provides reporting capabilities that enable you to have real-time insight into the security state of deployed Azure resources.
 
-- \[Preview\]: Azure Güvenlik Merkezi 'nde eksik Endpoint Protection Izleme
-- \[Preview\]: Azure Güvenlik Merkezi 'nde eksik sistem güncelleştirmelerini Izleme
-- \[Preview\]: Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını Izleme
-- \[Preview\]: Azure Güvenlik Merkezi 'nde SQL güvenlik açığı değerlendirmesi sonuçlarını Izleme
-- \[Preview\]: Azure Güvenlik Merkezi 'nde VM güvenlik açıklarını Izleme
+- \[Preview\]: Monitor missing Endpoint Protection in Azure Security Center
+- \[Preview\]: Monitor missing system updates in Azure Security Center
+- \[Preview\]: Monitor OS vulnerabilities in Azure Security Center
+- \[Preview\]: Monitor SQL vulnerability assessment results in Azure Security Center
+- \[Preview\]: Monitor VM Vulnerabilities in Azure Security Center
 
-## <a name="a1262-restrictions-on-software-installation"></a>Yazılım yüklemesinde bir. 12.6.2 kısıtlamaları
+## <a name="a1262-restrictions-on-software-installation"></a>A.12.6.2 Restrictions on software installation
 
-Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nin Azure 'da bulunan sanal makinelerinizde hangi uygulamaların çalıştırılacağını denetlemenize yardımcı olan bir çözümdür. Bu şema, izin verilen uygulamalar kümesinde yapılan değişiklikleri izleyen bir Azure ilke tanımı atar. Yazılım yükleme kısıtlamaları, yazılım güvenlik açıklarına giriş olasılığını azaltmanıza yardımcı olabilir.
+Adaptive application control is solution from Azure Security Center that helps you control which applications can run on your VMs located in Azure. This blueprint assigns an Azure Policy definition that monitors changes to the set of allowed applications. Restrictions on software installation can help you reduce the likelihood of introduction of software vulnerabilities.
 
-- \[Preview\]: Azure Güvenlik Merkezi 'nde olası uygulama beyaz listesini Izleme
+- \[Preview\]: Monitor possible app Whitelisting in Azure Security Center
 
-## <a name="a1311-network-controls"></a>A. 13.1.1 ağ denetimleri
+## <a name="a1311-network-controls"></a>A.13.1.1 Network controls
 
-Bu şema, ağ güvenlik gruplarını, izin veren kurallarla izleyen bir [Azure ilke](../../../policy/overview.md) tanımı atayarak ağları yönetmenize ve denetlemenize yardımcı olur. Çok izin verilen kurallar istenmeyen ağ erişimine izin verebilir ve incelenmelidir. Bu şema Ayrıca korumasız uç noktaları, uygulamalar ve depolama hesaplarını izleyen üç Azure ilke tanımı da atar. Bir güvenlik duvarı tarafından korunmayan uç noktalar ve uygulamalar ve Kısıtlanmamış erişimi olan depolama hesapları, bilgi sisteminde bulunan bilgilere istenmeden erişime izin verebilir.
+This blueprint helps you manage and control networks by assigning an [Azure Policy](../../../policy/overview.md) definition that monitors network security groups with permissive rules. Rules that are too permissive may allow unintended network access and should be reviewed. This blueprint also assigns three Azure Policy definitions that monitor unprotected endpoints, applications, and storage accounts. Endpoints and applications that aren't protected by a firewall, and storage accounts with unrestricted access can allow unintended access to information contained within the information system.
 
-- \[Preview\]: Azure Güvenlik Merkezi 'nde izin veren ağ erişimini Izleme
-- \[Preview\]: Azure Güvenlik Merkezi 'nde korumasız ağ uç noktalarını Izleme
-- \[Preview\]: Azure Güvenlik Merkezi 'nde korumasız Web uygulamasını Izleme
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
+- \[Preview\]: Monitor permissive network access in Azure Security Center
+- \[Preview\]: Monitor unprotected network endpoints in Azure Security Center
+- \[Preview\]: Monitor unprotected web application in Azure Security Center
+- Audit unrestricted network access to storage accounts
 
-## <a name="a1321-information-transfer-policies-and-procedures"></a>A. 13.2.1 Information transfer ilkeleri ve yordamları
+## <a name="a1321-information-transfer-policies-and-procedures"></a>A.13.2.1 Information transfer policies and procedures
 
-Şema, depolama hesaplarına Güvenli olmayan bağlantıları denetlemek için iki [Azure ilke](../../../policy/overview.md) tanımı atayarak ve Redis Cache Azure hizmetleri ile bilgi aktarımını güvence altına almanıza yardımcı olur.
+The blueprint helps you ensure information transfer with Azure services is secure by assigning two [Azure Policy](../../../policy/overview.md) definitions to audit insecure connections to storage accounts and Redis Cache.
 
-- Redis Cache yalnızca güvenli bağlantıları etkinleştirme denetimi
-- Depolama hesaplarına Güvenli aktarım denetimi
+- Audit enabling of only secure connections to your Redis Cache
+- Audit secure transfer to storage accounts
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

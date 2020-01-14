@@ -6,12 +6,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: jehollan
-ms.openlocfilehash: db072d90c39b3856127925306cb1407c5837a0bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bdeff0194bda620250481a215c145b1ec3b2207e
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226968"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920787"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Işlevleri coğrafi olağanüstü durum kurtarma
 
@@ -34,7 +34,7 @@ Azure Işlevleri belirli bir bölgede çalışır.  Daha yüksek kullanılabilir
 
 ## <a name="activeactive-for-non-https-functions"></a>HTTPS olmayan işlevler için etkin/etkin
 
-HTTPS olmayan işlevler için hala etkin/etkin dağıtımlar elde edebilirsiniz.  Bununla birlikte, iki bölgenin birbirleriyle nasıl etkileşime gireceğini veya nasıl koordine olacağını dikkate almanız gerekir.  Aynı işlev uygulamasını, her biri aynı Service Bus kuyruğu üzerinde tetiklenirken iki bölgeye dağıttıysanız, bu kuyruğu sıraya alma sırasında rekabet eden tüketiciler olarak hareket ederler.  Bu, her iletinin yalnızca örneklerden biri tarafından işlendiği anlamına geliyor olsa da, tek hizmet veri yolu üzerinde hala tek bir hata noktası olduğu anlamına gelir.  İki hizmet veri yolu kuyruğu (bir birincil bölgede, biri ikincil bölgede olmak üzere) ve kendi bölge kuyruğuna işaret eden iki işlev uygulaması dağıtırsanız, sınama artık sıra iletilerinin iki bölge arasında nasıl dağıtıldığına gelir.  Genellikle bu, her yayımcının her *iki* bölgeye bir ileti yayımlamayı denediği ve her ileti hem etkin işlev uygulamaları tarafından işlendiği anlamına gelir.  Bu bir etkin/etkin model oluştururken, işlem yinelemesi ve verilerin ne zaman ya da nasıl birleştirilecektir konularında daha fazla zorluk oluşturur.  Bu nedenlerden dolayı, HTTPS olmayan tetikleyicilerinin etkin/Pasif model kullanması önerilir.
+HTTPS olmayan işlevler için hala etkin/etkin dağıtımlar elde edebilirsiniz.  Bununla birlikte, iki bölgenin birbirleriyle nasıl etkileşime gireceğini veya nasıl koordine olacağını dikkate almanız gerekir.  Aynı işlev uygulamasını, her biri aynı Service Bus kuyruğu üzerinde tetiklenirken iki bölgeye dağıttıysanız, bu kuyruğu sıraya alma sırasında rekabet eden tüketiciler olarak hareket ederler.  Bu, her iletinin yalnızca örneklerden biri tarafından işlendiği anlamına gelir, aynı zamanda tek Service Bus bir hata noktası olduğu anlamına gelir.  İki Service Bus kuyruğu (bir birincil bölgede, biri ikincil bölgede olmak üzere) ve kendi bölge kuyruğuna işaret eden iki işlev uygulaması dağıtırsanız, sınama artık sıra iletilerinin iki bölge arasında nasıl dağıtıldığına gelir.  Genellikle bu, her yayımcının her *iki* bölgeye bir ileti yayımlamayı denediği ve her ileti hem etkin işlev uygulamaları tarafından işlendiği anlamına gelir.  Bu bir etkin/etkin model oluştururken, işlem yinelemesi ve verilerin ne zaman ya da nasıl birleştirilecektir konularında daha fazla zorluk oluşturur.  Bu nedenlerden dolayı, HTTPS olmayan tetikleyicilerinin etkin/Pasif model kullanması önerilir.
 
 ## <a name="activepassive-for-non-https-functions"></a>HTTPS olmayan işlevler için etkin/Pasif
 
@@ -52,7 +52,7 @@ Azure Event Hubs tetiklerini örnek olarak kullanarak, etkin/Pasif düzende aşa
 
 Yük devretmeden önce, paylaşılan diğer ada gönderen yayımcılar birincil olay hub 'ına yol edecektir.  Birincil işlev uygulaması yalnızca birincil olay hub 'ına dinliyor.  İkincil işlev uygulaması pasif ve boşta olacaktır.  Yük devretme işlemi başlatıldıktan hemen sonra, paylaşılan diğer ada gönderilen yayımcılar artık ikincil Olay Hub 'ına yol açmaz.  İkincil işlev uygulaması artık etkin hale gelecek ve otomatik olarak tetikleniyor.  Bir ikincil bölgeye yönelik etkin yük devretme, yalnızca ilgili olay hub 'ı etkin olduğunda işlevler etkin hale gelmeyle, tamamen Olay Hub 'ından çalıştırılabilir.
 
-[Service Bus](../service-bus-messaging/service-bus-geo-dr.md) ve [Event hub 'ları](../event-hubs/event-hubs-geo-dr.md)ile yük devretme hakkında daha fazla bilgi ve dikkat edilecek noktalar okuyun.
+[Service Bus](../service-bus-messaging/service-bus-geo-dr.md) ve [Olay Hub 'ları](../event-hubs/event-hubs-geo-dr.md)ile yük devretme hakkında daha fazla bilgi ve önemli noktalar okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

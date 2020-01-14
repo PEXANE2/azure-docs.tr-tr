@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 473f1d12188a8686748d19c8c35d4421f9477ae9
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: a8c19a8e88ec7fe2002a327c7e4a57874a753b9f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912790"
+ms.locfileid: "75921230"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Sabit depolamayla iş açısından kritik blob verilerini depolayın
 
@@ -76,7 +76,7 @@ Aşağıdaki sınırlar bekletme ilkeleri için geçerlidir:
 
 Ekleme Blobları, veri bloklarından oluşur ve denetim ve günlük senaryoları için gereken veri ekleme işlemleri için iyileştirilmiştir. Tasarım, ekleme Blobları yalnızca Blobun sonuna yeni blokların eklenmesine izin verir. Değişiklik yapılarından bağımsız olarak, bir ekleme blobu içindeki mevcut blokların değiştirilmesine veya silinmesine göre temelde izin verilmez. Blob ekleme hakkında daha fazla bilgi için bkz. [BLOB ekleme blobu hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs).
 
-Yalnızca zaman tabanlı bekletme ilkelerine, daha fazla koruma ve uyumluluk sağlarken, ekleme blobuna yeni bloklar yazmaya olanak tanıyan `allowProtectedAppendWrites` ayarı vardır. Etkinleştirilirse, ilkeyle korunan kapsayıcıda doğrudan bir ekleme blobu oluşturabilir ve *Appendblock* API 'sini kullanarak var olan ekleme bloblarının sonuna yeni veri blokları eklemeye devam edebilirsiniz. Yalnızca yeni bloklar eklenebilir ve var olan tüm bloklar değiştirilemez veya silinemez. Zaman bekletme güvenilirlik koruması hala geçerlidir, etkin saklama süresi geçene kadar ekleme blobu silmeyi önler.  
+Yalnızca zaman tabanlı bekletme ilkelerine, daha fazla koruma ve uyumluluk sağlarken, ekleme blobuna yeni bloklar yazmaya olanak tanıyan `allowProtectedAppendWrites` ayarı vardır. Etkinleştirilirse, ilkeyle korunan kapsayıcıda doğrudan bir ekleme blobu oluşturabilir ve *Appendblock* API 'sini kullanarak var olan ekleme bloblarının sonuna yeni veri blokları eklemeye devam edebilirsiniz. Yalnızca yeni bloklar eklenebilir ve var olan tüm bloklar değiştirilemez veya silinemez. Zaman bekletme güvenilirlik koruması hala geçerlidir, etkin saklama süresi geçene kadar ekleme blobu silmeyi önler. Bu ayarın etkinleştirilmesi, blok Blobları veya sayfa Blobları için dengesterlebilirlik davranışını etkilemez.
 
 Bu ayar, zaman tabanlı bekletme ilkesinin bir parçası olduğundan, ekleme Blobları, *etkin* saklama dönemi süresince hala sabit durumda kalır. Yeni veriler ekleme Blobun ilk oluşturulduktan sonra eklenebileceği için, bekletme döneminin nasıl belirlendiği küçük bir farklılık vardır. Etkin saklama, ekleme blobunun **son değiştirilme zamanı** ve Kullanıcı tarafından belirtilen bekletme aralığı arasındaki farktır. Benzer şekilde, saklama aralığı genişletildiğinde, sabit depolama, etkin saklama süresini hesaplamak için Kullanıcı tarafından belirtilen bekletme aralığının en son değerini kullanır.
 
@@ -92,7 +92,7 @@ Yasal saklama ilkeleri `allowProtectedAppendWrites` etkinleştiremez ve yeni blo
 > - Güney Orta ABD
 > - Batı ABD 2
 >
-> Şu anda, belirtilen diğer bölgelerde `allowProtectedAppendWrites`, zaman aralıklı hatalara neden olabileceğinden ve ekleme Blobları için uyumluluğu etkileyebilecek şekilde etkinleştirememenizi kesinlikle tavsiye ederiz. Zamana dayalı saklama ilkelerini ayarlama ve kilitleme hakkında daha fazla bilgi için bkz. [korumalı ekleme bloblarına izin vermeyi etkinleştirme](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes).
+> Şu anda, belirtilen diğer bölgelerde `allowProtectedAppendWrites` etkinleştirmemenizi kesinlikle tavsiye ederiz, çünkü aralıklı hatalara neden olabilir ve ekleme Blobları için uyumluluğu etkiler. Zamana dayalı saklama ilkelerini ayarlama ve kilitleme hakkında daha fazla bilgi için bkz. [korumalı ekleme bloblarına izin vermeyi etkinleştirme](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes).
 
 ## <a name="legal-holds"></a>Yasal tutma
 

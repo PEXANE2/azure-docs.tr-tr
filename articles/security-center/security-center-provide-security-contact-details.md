@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
-ms.openlocfilehash: fabccb7a3f49442a009fd69ee6d3b831760751d2
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1a66ea200082f60a3a763c6a4e2bdea62ec473d8
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201013"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920996"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik iletişim bilgilerini sağlama
-Azure Güvenlik Merkezi, henüz yapmadıysanız Azure aboneliğiniz için güvenlik iletişim bilgilerini sağlamanızı önerir. Bu bilgiler, Microsoft Güvenlik Yanıt Merkezi (MSRC) müşteri verilerinize yasadışı veya yetkisiz bir tarafın eriştiğini belirlerse Microsoft tarafından sizinle iletişim kurmak için kullanılır. MSRC, Azure ağ ve altyapısının güvenlik izlemesini seçme ve üçüncü taraflardan tehdit bilgilerini ve uygunsuz kullanım şikayetini alma işlemini gerçekleştirir.
+Azure Güvenlik Merkezi, henüz yapmadıysanız Azure aboneliğiniz için güvenlik iletişim bilgilerini sağlamanızı önerir. Bu bilgiler, Microsoft Güvenlik Yanıt Merkezi (MSRC) müşteri verilerinize yasadışı veya yetkisiz bir tarafın eriştiğini belirlerse Microsoft tarafından sizinle iletişim kurmak için kullanılır. MSRC Azure ağı ve altyapısında seçmeli güvenlik izlemesi gerçekleştirir ve üçüncü taraflardan tehdit bilgilerini ve uygunsuz kullanım şikayetlerini alır.
 
-Bir uyarının gün içinde ilk kez oluşması durumunda ve yalnızca yüksek önem düzeyindeki uyarılar için bir e-posta bildirimi gönderilir. E-posta tercihleri yalnızca abonelik ilkeleri için yapılandırılabilir. Bir aboneliğin altındaki kaynak grupları bu ayarları devralır. 
+Bir uyarının gün içinde ilk kez oluşması durumunda ve yalnızca yüksek önem düzeyindeki uyarılar için bir e-posta bildirimi gönderilir. E-posta tercihleri yalnızca abonelik ilkeleri için yapılandırılabilir. Bir aboneliğin altındaki kaynak grupları bu ayarları devralır. Uyarılar yalnızca Azure Güvenlik Merkezi 'nin standart katmanında kullanılabilir.
 
 Uyarı e-posta bildirimleri şu durumlarda gönderilir:
 - Yalnızca yüksek önem derecesindeki uyarılar için
@@ -40,17 +40,17 @@ Uyarı e-posta bildirimleri şu durumlarda gönderilir:
 
 1. Portalda **fiyatlandırma & ayarları**' nı seçin.
 1. Aboneliğe tıklayın.
-1. **E-posta bildirimleri**öğesine tıklayın.
+1. **E-posta bildirimleri**'ne tıklayın.
 
 > [!NOTE]
 > Öneri uygulamadıysanız, **öneriler**altında **güvenlik iletişim bilgileri sağla**' yı seçin, Iletişim bilgilerini sağlamak için Azure aboneliğini seçin. Bu, **e-posta bildirimlerini**açar.
 
-   ![Güvenlik ilgili kişisinin bilgilerini sağlayın][2]
+   ![Güvenlik ilgili kişi bilgilerini belirtin][2]
 
    * Güvenlik ilgili kişisinin e-posta adresini veya adreslerini virgülle ayırarak girin. Girebilmeniz gereken e-posta adresi sayısı için bir sınır yoktur.
    * Bir güvenlik kişası uluslararası telefon numarası girin.
    * Yüksek önem derecesine sahip uyarılar hakkında e-posta almak için **bana uyarılar hakkında e-posta gönder**seçeneğini açın.
-   * Gelecekte, abonelik sahiplerine e-posta bildirimleri gönderme seçeneğine sahip olursunuz. Bu seçenek şu anda gri renkte.
+   * Abonelik sahiplerine e-posta bildirimleri gönderme seçeneğiniz vardır (klasik hizmet yöneticisi ve ortak yöneticiler ve ayrıca abonelik kapsamındaki RBAC sahibi rolü).
    * Güvenlik iletişim bilgilerini aboneliğinize uygulamak için **Kaydet** ' i seçin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
