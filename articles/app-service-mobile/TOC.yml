@@ -172,7 +172,7 @@
         - name: Azure Sanal Ağ
           href: ../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
         - name: Kaynak grupları
-          href: '../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations'
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations'
           items:
             - name: WebJobs ile arka plan görevleri çalıştırma
               href: ../app-service/webjobs-create.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json

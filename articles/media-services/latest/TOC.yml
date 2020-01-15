@@ -77,7 +77,7 @@
         - name: Autogen uyarlamalı bit hızı merdiveni
           href: autogen-bitrate-ladder.md
         - name: İçeriğe duyarlı kodlama
-          href: cae-experimental.md
+          href: content-aware-encoding.md
     - name: İçerik çözümleme (Video Indexer)
       items:
         - name: Genel Bakış
@@ -180,7 +180,7 @@
       displayName: naming
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Başlarken
+    - name: başlarken
       items:
         - name: Hesap oluşturma - CLI
           href: create-account-cli-how-to.md

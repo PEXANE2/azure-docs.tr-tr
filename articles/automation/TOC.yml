@@ -244,7 +244,7 @@
     - name: Kavramlar
       items:
         - name: PowerShell DSC
-          href: /powershell/dsc/overview/overview
+          href: /powershell/scripting/dsc/overview/overview
     - name: Hızlı Başlangıçlar
       items:
         - name: Başlarken
@@ -315,7 +315,7 @@
     - name: PowerShell modülleri
       items:
         - name: Modüller
-          href: automation-integration-modules.md
+          href: shared-resources/modules.md
         - name: Azure Otomasyonu'nda Az modüllerini kullanma
           href: az-modules.md
         - name: Azure PowerShell modüllerini güncelleştirme

@@ -10,12 +10,12 @@ metadata:
   author: rayne-wiselman
   ms.author: raynew
   ms.date: 11/19/2019
-  ms.openlocfilehash: e49bfdefe08b3a8f4598e809fd44b57f3f93de67
-  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+  ms.openlocfilehash: 1bf915e1e49ca4633d64575086f17038018c24c0
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/19/2019
-  ms.locfileid: "74185843"
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75973985"
 landingContent:
 - title: Azure Geçişi Hakkında
   linkLists:
@@ -27,7 +27,7 @@ landingContent:
       url: ./whats-new.md
     - text: Sık sorulan sorular
       url: ./resources-faq.md
-- title: Başlarken
+- title: başlarken
   linkLists:
   - linkListType: tutorial
     links:
@@ -76,8 +76,8 @@ landingContent:
     - text: Geçici otomatik hale getirme ve ölçeklendirme
       url: ./how-to-migrate-at-scale.md
     - text: Değerlendirme ve geçiş sorunlarını giderme
-      url: ./troubleshooting-general.md
-- title: Daha fazla bilgi edinin
+      url: ./troubleshoot-general.md
+- title: Daha fazlasını öğrenin
   linkLists:
   - linkListType: learn
     links:
