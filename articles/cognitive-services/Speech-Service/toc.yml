@@ -7,7 +7,7 @@
       href: overview.md
     - name: Dil ve bölge desteği
       href: language-support.md
-      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code'
+      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice,standard voice'
 - name: Konuşmayı metne dönüştürme
   expanded: false
   items:
@@ -27,6 +27,8 @@
       items:
         - name: Konuşmayı tanıma için kaynak dili değiştirme
           href: how-to-specify-source-language.md
+        - name: Konuşma tanıma modunu seçme
+          href: how-to-choose-recognition-mode.md
         - name: Özel Konuşma ile doğruluğu geliştirme
           href: how-to-custom-speech.md
         - name: Tümcecik listeleriyle doğruluğu geliştirme
@@ -102,6 +104,7 @@
           href: speech-synthesis-markup.md
         - name: Özel Seslerle çıkışı geliştirme
           href: how-to-custom-voice.md
+          displayName: custom voice
         - name: Uzun Ses API'siyle konuşmayı sentezleme
           href: long-audio-api.md
         - name: Docker kapsayıcılarıyla konuşma sentezi özelliğini kullanma
@@ -363,6 +366,7 @@
           items:
             - name: Özel Ses’i kullanmaya başlama
               href: how-to-custom-voice.md
+              displayName: 'custom voice, neural voice'
             - name: Verileri hazırlama
               href: how-to-custom-voice-prepare-data.md
             - name: Özel Ses modelleri oluşturma ve kullanma

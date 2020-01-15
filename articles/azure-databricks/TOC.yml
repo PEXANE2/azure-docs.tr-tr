@@ -730,6 +730,9 @@
                 - name: HorovodRunner ile Hyperopt
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-distributed-ml
                   maintainContext: true
+                - name: En iyi Hyperopt deneyimleri
+                  href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-best-practices
+                  maintainContext: true
                 - name: Dağıtılmış Hyperopt kullanarak Model Araması
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-model-selection
                   maintainContext: true
@@ -993,6 +996,12 @@
             - name: Gizli dizi iş akışı örneği
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
+        - name: Küme çalışan düğümleri arasındaki trafiği şifreleme
+          href: /azure/databricks/security/encrypt-otw
+        - name: Not defterleri için müşteri tarafından yönetilen anahtarları etkinleştirme
+          href: /azure/databricks/security/customer-managed-key-notebook
+        - name: DBFS için müşteri tarafından yönetilen anahtarları etkinleştirme
+          href: /azure/databricks/security/customer-managed-keys-dbfs
     - name: Yönetim
       items:
         - name: Yönetime genel bakış

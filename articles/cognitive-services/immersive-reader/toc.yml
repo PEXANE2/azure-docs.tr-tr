@@ -9,26 +9,32 @@
   items:
     - name: 'C# kullanma'
       href: Quickstart.md
+    - name: Node.js'yi kullanma
+      href: quickstart-nodejs.md
     - name: Swift kullanma (iOS)
       href: ios-quickstart.md
 - name: Öğreticiler
   items:
-    - name: Tam Ekran Okuyucu’yu Başlatma (Node.js)
-      href: tutorial-nodejs.md
     - name: Tam Ekran Okuyucu’yu Başlatma (Python)
       href: tutorial-python.md
-    - name: Tam Ekran Okuyucu’ya görüntü aktarma (Swift)
-      href: tutorial-ios-picture-immersive-reader.md
 - name: Nasıl Yapılır
   items:
-    - name: Azure Active Directory kimlik doğrulaması
-      href: azure-active-directory-authentication.md
+    - name: Tam Ekran Okuyucu kaynağı oluşturma
+      href: how-to-create-immersive-reader.md
+    - name: Tanımlama bilgisi ilkesini ayarlama
+      href: how-to/set-cookie-policy.md
+    - name: Matematiksel ifadeleri görüntüleme
+      href: how-to/display-math.md
+    - name: Tam Ekran Okuyucu’yu HTML içeriğiyle başlatma
+      href: how-to-launch-with-html.md
+    - name: Tam Ekran Okuyucu’yu Özelleştir düğmesi
+      href: how-to-customize-launch-button.md
+    - name: Kimlik doğrulaması belirtecini önbelleğe alma
+      href: how-to-cache-token.md
 - name: Başvuru
   items:
     - name: SDK Başvurusu
       href: reference.md
-    - name: iOS SDK Başvurusu
-      href: ios-reference.md
 - name: Kaynaklar
   items:
     - name: Azure yol haritası
