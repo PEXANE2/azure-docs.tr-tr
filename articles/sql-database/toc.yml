@@ -630,8 +630,6 @@
           href: sql-database-advisor-portal.md
         - name: Uyarı oluşturma
           href: sql-database-insights-alerts-portal.md
-        - name: Bağlantı sorunlarını giderme
-          href: sql-database-troubleshoot-common-connection-issues.md
         - name: Dosya alanını yönetme
           href: sql-database-file-space-management.md
         - name: Bağlantı sorunları için Kaynak Durumu kullanma
