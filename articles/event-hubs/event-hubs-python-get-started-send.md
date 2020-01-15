@@ -7,20 +7,24 @@ manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: shvija
-ms.openlocfilehash: 9b6c3fb03f696f4142721284a14001eb51153a77
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c4fa9e6038f4007246552610f537825f9def92a8
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720556"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939964"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python"></a>Hızlı başlangıç: Python kullanarak Event Hubs olay gönderme ve alma
 
-Azure Event Hubs, saniye başına milyonlarca olayı alabilen ve işleyesağlayan büyük bir veri akışı platformu ve olay alma hizmetidir. Event Hubs, dağıtılmış yazılım ve cihazlardan olayları, verileri veya Telemetriyi işleyebilir ve saklayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Event Hubs hakkında daha fazla bilgi için Azure Event Hubs 'de [azure Event Hubs](event-hubs-about.md) ve [özellikleri ve terimleri](event-hubs-features.md)bölümüne bakın.
+Azure Event Hubs, saniye başına milyonlarca olayı alabilen ve işleyesağlayan büyük bir veri akışı platformu ve olay alma hizmetidir. Event Hubs, dağıtılmış yazılım ve cihazlardan olayları, verileri veya Telemetriyi işleyebilir ve saklayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı veya işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Event Hubs hakkında daha fazla bilgi için Azure Event Hubs 'de [azure Event Hubs](event-hubs-about.md) ve [özellikleri ve terimleri](event-hubs-features.md)bölümüne bakın.
 
 Bu hızlı başlangıçta, Olay Hub 'ından olayları gönderen ve olayları alan Python uygulamalarının nasıl oluşturulacağı gösterilmektedir. 
+
+> [!IMPORTANT]
+> Bu hızlı başlangıçta Azure Event Hubs Python SDK 'sının 1. sürümü kullanılmaktadır. Azure Event Hubs 'yi yeni kullanıyorsanız, Python SDK 'sının 5. sürümünü kullanın. Python SDK 'sının 5 sürümünü kullanan bir hızlı başlangıç için, [Bu makaleye](get-started-python-send-v2.md)bakın. Mevcut kodu sürüm 1 ' den sürüm 5 ' e geçirmek için, [geçiş kılavuzuna](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)bakın.
+
 
 > [!NOTE]
 > Hızlı başlangıç üzerinden çalışmak yerine, GitHub 'dan [örnek uygulamaları](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) indirebilir ve çalıştırabilirsiniz. `EventHubConnectionString` ve `EventHubName` dizelerini Olay Hub değerlerinizle değiştirin. 
@@ -47,7 +51,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahi
 Olayları bir olay hub 'ına gönderen bir Python uygulaması oluşturmak için:
 
 1. [Visual Studio Code](https://code.visualstudio.com/) gibi en sevdiğiniz Python düzenleyicisini açın
-2. *Send.py*adlı yeni bir dosya oluşturun. Bu betik, 100 olaylarını Olay Hub 'ınıza gönderir.
+2. *Send.py*adlı yeni bir dosya oluşturun. Bu betik, 100 olayları olay hub'ınıza gönderir.
 3. Aşağıdaki *kodu, Event Hubs*\<ad alanı >, \<eventhub >, \<accesskeyname > ve \<birincil anahtar değeri > değerlerinizle değiştirin: 
    
    ```python

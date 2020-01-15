@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/30/2019
+ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2563ea4ab498c11c846cfe79f0e668f7d491c2e7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692345"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940591"
 ---
 # <a name="what-is-workload-management"></a>İş yükü yönetimi nedir?
 
@@ -54,3 +54,4 @@ SQL Data Warehouse üzerinde iş yükü yönetimi üç üst düzey kavramdan olu
 - İş yükü sınıflandırması hakkında daha fazla bilgi için bkz. [Iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md).  
 - İş yükü yalıtımı hakkında daha fazla bilgi için bkz. [Iş yükü yalıtımı](sql-data-warehouse-workload-isolation.md).  
 - İş yükü önemi hakkında daha fazla bilgi için bkz. [Iş yükü önemi](sql-data-warehouse-workload-importance.md).  
+- İş yükü yönetimi izleme hakkında daha fazla bilgi için bkz. [Iş yükü yönetim portalı izleme](sql-data-warehouse-workload-management-portal-monitor.md).  

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Fotoğrafı alıp tam ekran okuyucu (Swift) ile Başlatan bir iOS uygulaması oluşturma'
+title: 'Öğretici: fotoğrafı alıp tam ekran okuyucu (Swift) ile Başlatan bir iOS uygulaması oluşturma'
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, sıfırdan bir iOS uygulaması oluşturacaksınız ve resmi tam ekran okuyucu işlevselliğine ekleyeceksiniz.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: bdaee97c8c5d7e19076847c5f1f7c07c528c1747
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: defa49bd5ca6be6862412e3caf40295ef1d639cf
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899386"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945292"
 ---
-# <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Öğretici: Bir fotoğraftan içerik (Swift) ile modern okuyucu Başlatan bir iOS uygulaması oluşturma
+# <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Öğretici: bir fotoğraftan içerikle modern okuyucu Başlatan bir iOS uygulaması oluşturma (Swift)
 
 [Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
 
@@ -26,10 +26,10 @@ Bu öğreticide, sıfırdan bir iOS uygulaması oluşturacaksınız ve okuma API
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* Azure Active Directory (Azure AD) kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./azure-active-directory-authentication.md) izleyin. Örnek proje özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
+* Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Örnek proje özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
 * Bu örneğin kullanımı, Görüntü İşleme bilişsel hizmet hizmetine bir Azure aboneliği gerektirir. [Azure Portal bir görüntü işleme bilişsel hizmet kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision).
 
 ## <a name="create-an-xcode-project"></a>Xcode projesi oluşturma
@@ -45,8 +45,8 @@ Xcode 'da yeni bir proje oluşturun.
 ## <a name="get-the-sdk-cocoapod"></a>SDK CocoaPod edinme
 Tam ekran okuyucu SDK 'sını kullanmanın en kolay yolu CocoaPods aracılığıyla yapılır. Cocoapods aracılığıyla yüklemek için:
 1. [Install Cocoapods](http://guides.cocoapods.org/using/getting-started.html) -Cocoapods yüklemek için Başlarken Kılavuzunu izleyin.
-2. Xcode projenizin kök dizininde çalıştırarak `pod init` bir pod dosyası oluşturun.
-3.  CocoaPod öğesini ekleyerek `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'`Pod dosyanıza ekleyin. Pod dosyanız, hedefin adı ile tam ekran-------Swift arasında değişmeli şekilde aşağıdaki gibi görünmelidir:
+2. Xcode projenizin kök dizininde `pod init` çalıştırarak bir pod dosyası oluşturun.
+3.  `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'`ekleyerek Pod dosyanıza CocoaPod ekleyin. Pod dosyanız, hedefin adı ile tam ekran-------Swift arasında değişmeli şekilde aşağıdaki gibi görünmelidir:
  ```ruby
   platform :ios, '9.0'
 
@@ -56,9 +56,9 @@ Tam ekran okuyucu SDK 'sını kullanmanın en kolay yolu CocoaPods aracılığı
   pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'
   end
 ```
-4. Terminalde, Xcode projenizin dizininde, modern Okuyucu SDK Pod 'u yüklemek için komutunu `pod install` çalıştırın.
-5. SDK `import immersive_reader_sdk` 'ya başvurması gereken tüm dosyalara ekleyin.
-6. `.xcworkspace` Dosya`.xcodeproj` değil, dosyayı açarak projeyi açmanız emin olun.
+4. Terminalde, Xcode projenizin dizininde, derinlikli Okuyucu SDK Pod ' ı yüklemek için `pod install` komutunu çalıştırın.
+5. SDK 'ya başvurması gereken tüm dosyalara `import immersive_reader_sdk` ekleyin.
+6. `.xcodeproj` dosyasını değil `.xcworkspace` dosyasını açarak projeyi açmanız emin olun.
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Azure AD kimlik doğrulaması belirteci alma
 
@@ -90,8 +90,8 @@ ViewController. Swift ' i PictureLaunchViewController. Swift olarak yeniden adla
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
 Bir simülatör veya cihaz hedefi seçerek Xcode 'da arşiv şemasını ayarlayın.
-![Arşiv şeması](./media/ios/xcode-archive-scheme.png)<br/>
-![Hedef seçin](./media/ios/xcode-select-target.png)
+Arşiv şeması ![](./media/ios/xcode-archive-scheme.png)<br/>
+Hedef ![seçin](./media/ios/xcode-select-target.png)
 
 Xcode 'da, CTRL + R tuşlarına basın veya projeyi çalıştırmak için Yürüt düğmesine tıklayın ve uygulamanın belirtilen simülatör veya cihazda başlatılması gerekir.
 
@@ -105,4 +105,4 @@ Uygulamanın içinde, "fotoğrafı al" düğmesine veya ' kitaplıktan fotoğraf
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Modern okuyucu IOS SDK 'sını](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) ve [tam ekran okuyucu iOS SDK başvurusunu](./ios-reference.md) keşfet
+* [Tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet

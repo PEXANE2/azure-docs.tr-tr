@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 09244b634fa2603a7dc92af3c78d171f8d6bd9df
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903104"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945272"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Modern Okuyucu SDK 'Sı başvuru kılavuzu
 
@@ -43,16 +43,16 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 | Ad | Tür | Açıklama |
 | ---- | ---- |------------ |
-| `token` | string | Azure AD kimlik doğrulama belirteci. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
-| `subdomain` | string | Azure 'daki tam ekran okuyucu kaynağınızın özel alt etki alanı. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
+| `token` | string | Azure AD kimlik doğrulama belirteci. |
+| `subdomain` | string | Azure 'daki tam ekran okuyucu kaynağınızın özel alt etki alanı. |
 | `content` | [İçerik](#content) | Tam ekran okuyucu 'da gösterilecek içeriği içeren nesne. |
 | `options` | [Seçenekler](#options) | Modern okuyucunun belirli davranışlarını yapılandırmaya yönelik seçenekler. İsteğe bağlı. |
 
-### <a name="returns"></a>Döndürdüğü
+### <a name="returns"></a>Döndürür
 
 Derinlikli okuyucu yüklendiğinde çözümlenen bir `Promise<HTMLDivElement>`döndürür. `Promise`, yalnızca alt öğesi, tam ekran okuyucu sayfasını içeren bir `iframe` öğesi olan bir `div` öğesine çözümlenir.
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
 Tam ekran okuyucu yüklenemezse, döndürülen `Promise` bir [`Error`](#error) nesnesiyle reddedilir. Daha fazla bilgi için bkz. [hata kodları](#error-codes).
 
@@ -109,13 +109,21 @@ Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
 }
 ```
 
+### <a name="cookiepolicy-enum"></a>Tanımlama listesi ıepolicy Enum
+
+Derinlikli okuyucunun tanımlama bilgisi kullanımı için ilkeyi ayarlamak üzere kullanılan bir sabit listesi. Bkz. [Seçenekler](#options).
+
+```typescript
+enum CookiePolicy { Disable, Enable }
+```
+
 #### <a name="supported-mime-types"></a>Desteklenen MIME türleri
 
-| MIME türü | Açıklama |
+| MIME Türü | Açıklama |
 | --------- | ----------- |
 | metin/düz | Düz metin. |
-| metin/html | HTML içeriği. [Daha fazla bilgi edinin](#html-support)|
-| Application/MathML + XML | Matematik biçimlendirme dili (MathML). [Daha fazla bilgi edinin](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| text/html | HTML içeriği. [Daha fazla bilgi](#html-support)|
+| Application/MathML + XML | Matematik biçimlendirme dili (MathML). [Daha fazla bilgi edinin](./how-to/display-math.md).
 | application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx biçim belgesi.
 
 ### <a name="html-support"></a>HTML desteği
@@ -124,7 +132,7 @@ Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
 | Yazı tipi stilleri | Kalın, Italik, altı çizili, kod, üstü çizili, üst simge, alt simge |
 | Sırasız listeler | Disk, daire, kare |
 | Sıralı listeler | Ondalık, büyük Alfa, alt Alfa, büyük Latin, alt roman |
-| Lerinin | Çok Yakında |
+| Köprüleri | Yakında |
 
 Desteklenmeyen Etiketler comparably işlenecek. Görüntüler ve tablolar şu anda desteklenmiyor.
 
@@ -142,6 +150,7 @@ Modern okuyucunun belirli davranışlarını yapılandıran özellikler içerir.
     customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
     allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
     hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
+    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
 }
 ```
 
@@ -168,11 +177,11 @@ Hata hakkındaki bilgileri içerir.
 
 #### <a name="error-codes"></a>Hata kodları
 
-| Kod | Açıklama |
+| Kodlayın | Açıklama |
 | ---- | ----------- |
 | BadArgument | Sağlanan bağımsız değişken geçersiz, Ayrıntılar için bkz. `message`. |
-| Aş | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
-| Tokenaşımına uğradı | Sağlanan belirtecin geçerliliği zaman aşımına uğradı. |
+| zaman aşımı | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
+| TokenExpired | Sağlanan belirtecin geçerliliği zaman aşımına uğradı. |
 | Sürecek | Çağrı hızı sınırı aşıldı. |
 
 ## <a name="launching-the-immersive-reader"></a>Modern okuyucu başlatılıyor
@@ -189,7 +198,7 @@ Düğmenin genel görünümünü yapılandırmak için aşağıdaki öznitelikle
 
 | Öznitelik | Açıklama |
 | --------- | ----------- |
-| `data-button-style` | Düğmenin stilini ayarlar. `icon`, `text`veya `iconAndText`olabilir. Varsayılan olarak `icon`olur. |
+| `data-button-style` | Düğmenin stilini ayarlar. `icon`, `text`veya `iconAndText`olabilir. Varsayılan olarak `icon`. |
 | `data-locale` | Yerel ayarı ayarlar. Örneğin, `en-US` veya `fr-FR`. Varsayılan olarak Ingilizce `en`. |
 | `data-icon-px-size` | Simgenin boyutunu piksel cinsinden ayarlar. Varsayılan değer 20 px olur. |
 

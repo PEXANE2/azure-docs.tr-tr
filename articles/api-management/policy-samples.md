@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: f8bd768dc7c01310874cd484f59869fbafcf3fe7
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9bdcf9ea247adb8d5941c75f90f7db3915af20bc
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074205"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940937"
 ---
 # <a name="api-management-policy-samples"></a>API Management ilke örnekleri
 
@@ -33,6 +33,7 @@ ms.locfileid: "70074205"
 | [JWT talepleri temelinde erişim yetkisi verme](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json)                                              | JWT talepleri temelinde bir API'deki belirli HTTP yöntemlerine erişim yetkisi verme işlemini gösterir.                                                                                                                                       |
 | [Dış yetkilendirici kullanarak istekleri yetkilendirme](./policies/authorize-request-using-external-authorizer.md)                                                   | API erişiminin güvenliğini sağlamak için dış yetkilendiricinin nasıl kullanılacağını gösterir.                                                                                                                                                               |
 | [Google OAuth belirtecini kullanarak erişim yetkisi verme](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json)                                            | OAuth belirteç sağlayıcısı olarak Google'ı kullanıp uç noktalarınıza erişim yetkisi verme işlemini gösterir.                                                                                                                                    |
+| [Application Gateway kullanırken IP adreslerini filtrele](./policies/filter-ip-addresses-when-using-appgw.md) | API Management örneğine Application Gateway aracılığıyla erişildiğinde, ilkelerde IP filtreleme işlemlerinin nasıl yapılacağını gösterir
 | [Paylaşılan Erişim İmzası oluşturma ve Azure depolamaya isteği iletme](./policies/generate-shared-access-signature.md?toc=api-management/toc.json)                  | İfadeleri kullanarak [Paylaşılan Erişim İmzası](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) oluşturma ve rewrite-uri ilkesiyle Azure depolamaya isteği iletme işlemlerini gösterir. |
 | [AAD'den OAuth2 erişim belirtecini alma ve bunu arka uca iletme](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json)                             | Ağ geçidiyle arka uç arasındaki yetkilendirme için OAuth2 kullanma örneği sağlar. AAD'den erişim belirtecini alma ve bunu arka uca iletme işlemini de gösterir.                                                    |
 | [İstek gönderme ilkesini kullanarak SAP ağ geçidinden X-CSRF belirtecini alma](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json)                           | Birçok API tarafından kullanılan X-CSRF deseninin nasıl uygulandığını gösterir. Bu örnek SAP Ağ Geçidi'ne özgüdür.                                                                                                                           |

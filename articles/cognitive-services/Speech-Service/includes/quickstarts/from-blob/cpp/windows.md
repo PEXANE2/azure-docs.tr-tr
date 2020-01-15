@@ -1,32 +1,25 @@
 ---
-title: 'Hızlı başlangıç: blob depolamada depolanan konuşmayı tanıma, C++ konuşma hizmeti'
-titleSuffix: Azure Cognitive Services
-description: Daha sonra belirlenecek
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b7ce80baa090ed87722397384b8e75c134eb26da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 731248c88855e2c23d2d7e94a01a9681d30259ce
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469518"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942720"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
+> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
+> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?pivots=programmming-language-cpp)
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
 > * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio'da açın.
 
@@ -53,7 +46,8 @@ vcpkg install nlohmann-json
 Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-32,187-190,300-309)]
-(`YourSubscriptionKey`, `YourServiceRegion`ve `YourFileUrl` değerlerini kendi değerlerinizle değiştirmeniz gerekir.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="json-wrappers"></a>JSON sarmalayıcıları
 

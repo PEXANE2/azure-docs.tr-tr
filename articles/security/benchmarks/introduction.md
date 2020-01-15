@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 3169959250eb45346456c64e606f25efb0ea44f0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8f65eb008d5df6ea3f2f85778d538023e6ce98eb
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934220"
+ms.locfileid: "75945328"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure Güvenlik kıyaslaması tanıtımı
 
@@ -27,7 +27,7 @@ Azure Güvenlik kıyaslaması, Azure 'da kullandığınız hizmetlerin çoğunu 
 
 Azure Güvenlik kıyaslama belgeleri, güvenlik denetimlerini ve hizmet önerilerini belirler.
 
-- **Güvenlik denetimleri**: Azure Güvenlik kıyaslama önerileri güvenlik denetimlerine göre kategorize edilir. Güvenlik denetimleri, ağ güvenliği ve veri koruması gibi yüksek düzeyde satıcıya özgü güvenlik gereksinimlerini temsil eder. Her güvenlik denetiminin, bu önerileri gidermenize yardımcı olacak bir dizi güvenlik önerisi ve yönergeleri vardır. 
+- **Güvenlik denetimleri**: Azure Güvenlik kıyaslama önerileri güvenlik denetimlerine göre kategorize edilir. Güvenlik denetimleri, ağ güvenliği ve veri koruması gibi yüksek düzeyde satıcıya özgü güvenlik gereksinimlerini temsil eder. Her güvenlik denetiminin, bu önerileri uygulamanıza yardımcı olan bir dizi güvenlik önerisi ve yönergeleri vardır. 
 - **Hizmet önerileri**: kullanılabilir olduğunda, Azure hizmetlerine yönelik kıyaslama önerileri, bu hizmet için özel olarak uyarlanmış Azure Güvenlik kıyaslama önerilerini içerecektir. 
 
 "Denetim", "kıyaslama" ve "taban çizgisi" terimleri genellikle Azure Güvenlik kıyaslama belgelerinde kullanılır ve Azure 'un bu koşulları nasıl kullandığını anlamak önemlidir. 

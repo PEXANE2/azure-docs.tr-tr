@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 01/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 6dd0734d39237545b7a9bc2553fcd9dea75b8ee0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3d3a1704b75de53bf65012329fba5f8522adff3a
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892814"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941761"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory kullanarak DB2 'den veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -46,11 +46,6 @@ DB2 veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayab
 * LUW 10,5 için IBM DB2
 * LUW 10,1 için IBM DB2
 
-> [!TIP]
-> "SQL deyimindeki bir yürütme isteğine karşılık gelen paket bulunamadı" iletisini alırsanız bir hata mesajı alırsanız. SQLSTATE = 51002 SQLCODE =-805 ", bu nedenle söz konusu IŞLETIM sisteminde normal kullanıcı için gerekli bir paket oluşturulmaz. Bu yönergeleri DB2 sunucunuzun türüne göre izleyin:
-> - I için DB2 (AS400): kopyalama etkinliğini kullanmadan önce, Power User 'ın oturum açma kullanıcısı için koleksiyon oluşturmasına izin verin. Komut: `create collection <username>`
-> - Z/OS veya LUW için DB2: paket yetkilileri ve bağlama, BINERDD ve BIND, BINERDD ile yüksek ayrıcalıklı bir hesap-Power User veya admin kullanın-kopyalama etkinliğini bir kez çalıştırmak için, gerekli paket kopyalama sırasında otomatik olarak oluşturulur. Daha sonra, sonraki kopya çalışmalarınız için normal kullanıcıya dönebilirsiniz.
-
 ## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
@@ -75,9 +70,12 @@ Aşağıdaki özellikler DB2 bağlı hizmeti için desteklenir:
 | authenticationType |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değer: **temel**. |Evet |
 | kullanıcı adı |DB2 veritabanına bağlanmak için Kullanıcı adını belirtin. |Evet |
 | parola |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
-| packageCollection | Veritabanı sorgulanırken, gerekli paketlerin ADF tarafından otomatik olarak oluşturulduğu yeri belirtin | Hayır |
+| packageCollection | Veritabanı sorgulanırken, gerekli paketlerin ADF tarafından otomatik olarak oluşturulduğu yeri belirtin. | Hayır |
 | Certificatecommonadı | Güvenli Yuva Katmanı (SSL) veya Aktarım Katmanı Güvenliği (TLS) şifrelemesini kullandığınızda, sertifika ortak adı için bir değer girmeniz gerekir. | Hayır |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+
+> [!TIP]
+> `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`bildiren bir hata iletisi alırsanız, bu nedenle Kullanıcı için gerekli bir paket oluşturulmaz. Varsayılan olarak, ADF, DB2 'ye bağlanmak için kullandığınız kullanıcı olarak adlı koleksiyonda bir paket oluşturmaya çalışır. ADF 'nin veritabanını sorgularken gereken paketleri oluşturmasını istediğiniz yeri belirtmek için paket koleksiyonu özelliğini belirtin.
 
 **Örnek:**
 

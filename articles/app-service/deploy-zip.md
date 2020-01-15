@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 28bd45b0e9bdaf87c29b0118c47595db9179edc5
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 716f6813e37aec086a7d496e001fe2ca0f4aab57
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921167"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945168"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Bir ZIP veya WAR dosyası ile Azure App Service uygulamanızı dağıtma
 
@@ -20,7 +20,7 @@ Bu ZIP dosya dağıtımı, sürekli tümleştirme tabanlı dağıtımları deste
 
 - Önceki bir dağıtımdan kalan dosyaların silinmesi.
 - Paket geri yüklemeyi içeren varsayılan derleme işlemini açma seçeneği.
-- Dağıtım komut dosyalarını çalıştırma dahil [dağıtım özelleştirmesi](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings).  
+- Dağıtım komut dosyalarını çalıştırma dahil dağıtım özelleştirmesi.  
 - Dağıtım günlükleri. 
 - 2048 MB 'lık bir dosya boyutu sınırı.
 
@@ -28,47 +28,25 @@ Daha fazla bilgi için bkz. [kudu belgeleri](https://github.com/projectkudu/kudu
 
 WAR dosya dağıtımı, Java Web uygulamanızı çalıştırmak için [War](https://wikipedia.org/wiki/WAR_(file_format)) dosyanızı App Service olarak dağıtır. Bkz. [WAR dosyasını dağıtma](#deploy-war-file).
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki adımları gerçekleştirmek için:
+Bu makaledeki adımları tamamlayabilmeniz için [bir App Service uygulaması oluşturun](/azure/app-service/)veya başka bir öğretici için oluşturduğunuz uygulamayı kullanın.
 
-* [Bir App Service uygulaması oluşturun](/azure/app-service/) veya başka bir öğretici için oluşturduğunuz bir uygulamayı kullanın.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-project-zip-file"></a>Proje ZIP dosyası oluşturma
-
->[!NOTE]
-> Dosyaları bir ZIP dosyasına indirdiyseniz, önce dosyaları ayıklayın. Örneğin, GitHub 'dan bir ZIP dosyası indirdiyseniz, bu dosyayı olduğu gibi dağıtamazsınız. GitHub, App Service çalışmayan ek iç içe dizinler ekler. 
->
-
-Yerel bir Terminal penceresinde, uygulama projenizin kök dizinine gidin. 
-
-Bu dizin, Web uygulamanıza, _Dizin. html_, _index. php_ve _app. js_gibi giriş dosyasını içermelidir. Ayrıca, _Project. JSON_, _besteci. JSON_, _Package. JSON_, _Bower. JSON_ve _requirements. txt_gibi paket yönetim dosyalarını da içerebilir.
-
-Projenizdeki tüm öğeleri içeren bir ZIP arşivi oluşturun. Aşağıdaki komut terminalinizdeki varsayılan aracı kullanmaktadır:
-
-```
-# Bash
-zip -r <file-name>.zip .
-
-# PowerShell
-Compress-Archive -Path * -DestinationPath <file-name>.zip
-``` 
+[!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
 Yukarıdaki uç nokta Linux uygulama hizmetleri için şu anda çalışmıyor. Bunun yerine FTP veya [ZIP dağıtım API 'sini](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) kullanmayı düşünün.
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>Azure CLı ile ZIP dosyası dağıtma
 
-Azure CLı sürümünüzün 2.0.21 veya üzeri olduğundan emin olun. Hangi sürüme sahip olduğunu görmek için, Terminal pencerenizde `az --version` komutunu çalıştırın.
-
 [Az WebApp Deployment Source config-ZIP](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) komutunu kullanarak KARŞıYA yüklenen ZIP dosyasını Web uygulamanıza dağıtın.  
 
 Aşağıdaki örnek, karşıya yüklediğiniz ZIP dosyasını dağıtır. Yerel bir Azure CLı yüklemesi kullanırken, `--src`için yerel posta dosyanızın yolunu belirtin.
 
 ```azurecli-interactive
-az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
+az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src clouddrive/<filename>.zip
 ```
 
 Bu komut ZIP içindeki dosyaları ve dizinleri App Service uygulama klasörünüze (`\home\site\wwwroot`) dağıtır ve uygulamayı yeniden başlatır.
@@ -76,10 +54,8 @@ Bu komut ZIP içindeki dosyaları ve dizinleri App Service uygulama klasörünü
 Varsayılan olarak, dağıtım altyapısı bir ZIP dosyasının olduğu gibi çalıştırılmaya hazır olduğunu varsayar ve herhangi bir derleme Otomasyonu çalıştırmaz. Bir [Git dağıtımında](deploy-local-git.md)olduğu gibi aynı derleme Otomasyonu 'nu etkinleştirmek için, [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırarak `SCM_DO_BUILD_DURING_DEPLOYMENT` uygulama ayarını ayarlayın:
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
 ```
-
-
 
 Daha fazla bilgi için bkz. [kudu belgeleri](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
@@ -87,7 +63,7 @@ Daha fazla bilgi için bkz. [kudu belgeleri](https://github.com/projectkudu/kudu
 
 ## <a name="deploy-war-file"></a>WAR dosyası dağıtma
 
-App Service bir WAR dosyasını dağıtmak için `https://<app_name>.scm.azurewebsites.net/api/wardeploy`bir POST isteği gönderin. POST isteğinin ileti gövdesinde .war dosyası bulunmalıdır. Uygulamanızın dağıtım kimlik bilgileri, HTTP BASIC kimlik doğrulaması kullanılarak istekte belirtilir.
+App Service bir WAR dosyasını dağıtmak için `https://<app-name>.scm.azurewebsites.net/api/wardeploy`bir POST isteği gönderin. POST isteğinin ileti gövdesinde .war dosyası bulunmalıdır. Uygulamanızın dağıtım kimlik bilgileri, HTTP BASIC kimlik doğrulaması kullanılarak istekte belirtilir.
 
 WAR dosyalarını dağıtmanın her zaman `/api/wardeploy` kullanın. Bu API, WAR dosyanızı genişlettikten sonra paylaşılan dosya sürücüsüne yerleştirmeyecektir. diğer dağıtım API 'Lerinin kullanılması tutarsız davranışa neden olabilir. 
 
@@ -98,7 +74,7 @@ HTTP temel kimlik doğrulaması için App Service dağıtım kimlik bilgileriniz
 Aşağıdaki örnek, bir. war dosyasını dağıtmak için kıvrımlı aracı kullanır. `<username>`, `<war-file-path>`ve `<app-name>`yer tutucularını değiştirin. Kıvrımlı tarafından istendiğinde, parolayı yazın.
 
 ```bash
-curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
+curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app-name>.scm.azurewebsites.net/api/wardeploy
 ```
 
 ### <a name="with-powershell"></a>PowerShell ile

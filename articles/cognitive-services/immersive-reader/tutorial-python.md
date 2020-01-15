@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Python kullanarak tam ekran okuyucu başlatma'
+title: 'Öğretici: Python kullanarak modern okuyucu başlatma'
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, tam ekran okuyucuyu Başlatan bir Python uygulaması oluşturacaksınız.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 3293c4ea76010e5f39c793a1faee14d9a74226a0
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326430"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945222"
 ---
-# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Öğretici: Python örnek projesini kullanarak tam ekran okuyucu başlatma
+# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Öğretici: Python örnek projesini kullanarak modern okuyucu başlatma
 
 [Genel bakışta](./overview.md), derinlikli okuyucu ne olduğunu ve dil öğrenimi, gelişmekte olan okuyucular ve öğrenme farklılığı olan öğrenciler için okuma kavraışını geliştirmek üzere kendini kanıtlamış tekniklerin nasıl uyguladığını öğrendiniz. Bu öğreticide, tam ekran okuyucuyu Başlatan bir Python web uygulamasının nasıl oluşturulacağı ele alınmaktadır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -28,9 +28,9 @@ ms.locfileid: "71326430"
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Active Directory (Azure AD) kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./azure-active-directory-authentication.md) izleyin. Ortam özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
+* Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Ortam özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
 * [Git](https://git-scm.com/)
 * [Modern Okuyucu SDK 'Sı](https://github.com/microsoft/immersive-reader-sdk)
 * [Python](https://www.python.org/downloads/) ve [PIP](https://docs.python.org/3/installing/index.html). Python 3,4 ' den başlayarak, PIP Python ikili yükleyicilerine göre varsayılan olarak dahil edilir.
@@ -40,20 +40,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 * [istekler modülü](https://pypi.org/project/requests/2.7.0/)
 * [Visual Studio Code](https://code.visualstudio.com/) gıbı bir IDE
 
-## <a name="acquire-an-azure-ad-authentication-token"></a>Azure AD kimlik doğrulaması belirteci alma
+## <a name="configure-authentication-credentials"></a>Kimlik doğrulama kimlik bilgilerini yapılandırma
 
-Azure AD kimlik doğrulama belirtecini almak için bir arka uç API 'SI yazın.
-
-Bu bölüm için yukarıdaki Azure AD auth yapılandırması önkoşul adımından bazı değerlere ihtiyacınız vardır. Bu oturumu kaydettiğiniz metin dosyasına geri bakın.
-
-````text
-TenantId     => Azure subscription TenantId
-ClientId     => Azure AD ApplicationId
-ClientSecret => Azure AD Application Service Principal password
-Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
-````
-
-Bu değerleri aldıktan sonra, _. env_adlı yeni bir dosya oluşturun ve yukarıdaki özel özellik değerlerinizi sağlayarak aşağıdaki kodu içine yapıştırın. _. Env_ 'yi değiştirin. Yeni oluşturulan dosyayla örnek uygulamadaki dosyası.
+_. Env_adlı yeni bir dosya oluşturun ve bu dosyaya aşağıdaki kodu yapıştırarak, derinlikli okuyucu kaynağını oluştururken verilen değerleri sağlayabilirsiniz.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -88,11 +77,11 @@ Kutuları işaretleyerek Isteğe bağlı özellikler ekleyin ve ardından ' Iler
 
 ![Python Windows yüklemesi Iletişim kutusu 2. adım](./media/pythoninstalltwo.jpg)
 
-' Özel yükleme ' öğesini seçin ve yükleme yolunu kök klasörünüz olarak ayarlayın Örneğin, `C:\Python37-32\`, sonra ' yükleme ' düğmesine tıklayın.
+' Özel yükleme ' öğesini seçin ve yükleme yolunu kök klasörünüz olarak ayarlayın, örneğin, `C:\Python37-32\` ' yükleme ' düğmesine tıklayın.
 
 ![Python Windows yüklemesi Iletişim kutusu 3. adım](./media/pythoninstallthree.jpg)
 
-Python yüklemesi tamamlandıktan sonra, bir komut Istemi açın ve Python betikleri klasörüne `cd` yazın.
+Python yüklemesi tamamlandıktan sonra, bir komut Istemi açın ve Python betikleri klasörüne `cd`.
 
 ```cmd
 cd C:\Python37-32\Scripts
@@ -166,9 +155,9 @@ Ortamı devre dışı bırakın.
 deactivate
 ```
 
-Artık ortamın devre dışı bırakılmakta olduğu için `(advanced-python)` ön eki şimdi gitmemelidir.
+Artık ortamın devre dışı bırakılmakta olduğu için `(advanced-python)` ön eki ilerlemelidir.
 
-Örnek proje kök klasöründen `workon advanced-python` ortamını yeniden etkinleştirmek için.
+`workon advanced-python` ortamı yeniden etkinleştirmek için örnek proje kök klasöründen çalıştırın.
 
 ```cmd
 workon advanced-python
@@ -176,13 +165,13 @@ workon advanced-python
 
 ### <a name="launch-the-immersive-reader-with-sample-content"></a>Örnek içerikle modern okuyucu başlatma
 
-Ortam etkin olduğunda örnek proje kök klasöründen `flask run` girerek örnek projeyi çalıştırın.
+Ortam etkin olduğunda, örnek proje kök klasöründen `flask run` girerek örnek projeyi çalıştırın.
 
 ```cmd
 flask run
 ```
 
-Tarayıcınızı açın ve adresine _http://localhost:5000_ gidin.
+Tarayıcınızı açın ve _http://localhost:5000_ gidin.
 
 ## <a name="create-a-python-web-app-on-osx"></a>OSX üzerinde bir Python web uygulaması oluşturma
 
@@ -198,9 +187,9 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 [Python](https://www.python.org/downloads/)'ı yükleyin.
 
-Python kök klasörü örn. `Python37-32` artık uygulamalar klasöründe olmalıdır.
+Python kök klasörü gibi `Python37-32`, şimdi uygulamalar klasöründe olmalıdır.
 
-Python yüklemesi tamamlandıktan sonra, ve Python betikleri klasörüne `cd` ' ı açın.
+Python yüklemesi tamamlandıktan sonra, Terminal ve `cd` Python betikleri klasörüne açın.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -224,7 +213,7 @@ sudo nano /etc/paths
 
 - İstendiğinde parolanızı girin.
 - PIP yüklemenizin yolunu PATH değişkenine ekleyin.
-- Dosyanın sonuna gidin ve listenin son öğesi olarak eklemek istediğiniz yolu girin örn. `PATH=$PATH:/usr/local/bin`.
+- Dosyanın sonuna gidin ve listenin son öğesi olarak eklemek istediğiniz yolu girin, örneğin `PATH=$PATH:/usr/local/bin`.
 - Çıkmak için Control-x ' i vurun.
 - Değiştirilen arabelleği kaydetmek için `Y` girin.
 - İşte bu kadar! Test etmek için yeni Terminal penceresinde şunu yazın: `echo $PATH`.
@@ -271,7 +260,7 @@ Sanal ortamlarınızı tutmak istediğiniz klasörü seçin ve bu komutu çalı�
 mkdir ~/.virtualenvs
 ```
 
-`cd` ' dan tam ekran SDK 'Sı Python örnek uygulama klasörü.
+Tam ekran okuyucu SDK 'Sı Python örnek uygulama klasörü `cd`.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -303,9 +292,9 @@ Ortamı devre dışı bırakın.
 deactivate
 ```
 
-Artık ortamın devre dışı bırakılmakta olduğu için `(advanced-python)` ön eki şimdi gitmemelidir.
+Artık ortamın devre dışı bırakılmakta olduğu için `(advanced-python)` ön eki ilerlemelidir.
 
-Örnek proje kök klasöründen `workon advanced-python` ortamını yeniden etkinleştirmek için.
+`workon advanced-python` ortamı yeniden etkinleştirmek için örnek proje kök klasöründen çalıştırın.
 
 ```bash
 workon advanced-python
@@ -313,13 +302,13 @@ workon advanced-python
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>Örnek içerikle modern okuyucu başlatma
 
-Ortam etkin olduğunda örnek proje kök klasöründen `flask run` girerek örnek projeyi çalıştırın.
+Ortam etkin olduğunda, örnek proje kök klasöründen `flask run` girerek örnek projeyi çalıştırın.
 
 ```bash
 flask run
 ```
 
-Tarayıcınızı açın ve adresine _http://localhost:5000_ gidin.
+Tarayıcınızı açın ve _http://localhost:5000_ gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

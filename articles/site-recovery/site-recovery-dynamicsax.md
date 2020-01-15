@@ -1,18 +1,16 @@
 ---
-title: Azure Site Recovery ile çok katmanlı Dynamics AX dağıtımı için olağanüstü durum kurtarma | Microsoft Docs
-description: Bu makalede, Dynamics AX için Azure Site Recovery olağanüstü durum kurtarmanın nasıl ayarlanacağı açıklanır
-author: carmonmills
+title: Azure Site Recovery ile Dynamics AX olağanüstü durum kurtarma
+description: Azure Site Recovery ile Dynamics AX için olağanüstü durum kurtarmayı ayarlamayı öğrenin
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 089edd1f408494f59c8f0042b57d2d79c7faffae
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930180"
+ms.locfileid: "75941584"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Çok katmanlı Dynamics AX uygulaması için olağanüstü durum kurtarmayı ayarlama   
 
@@ -39,7 +37,7 @@ Site Recovery kullanarak Dynamics AX uygulaması için olağanüstü durum kurta
 
 ## <a name="site-recovery-support"></a>Site Recovery desteği
 
-Bu makaleyi oluşturmak amacıyla, Windows Server 2012 R2 Enterprise üzerinde Dynamics AX 2012 R3 ile VMware sanal makinelerini kullandık. Site Recovery çoğaltması uygulamanın belirsiz olduğu için, burada aşağıdaki senaryolar için de sunulan önerilerin beklendiğini kabul ediyoruz.
+Bu makaleyi oluşturmak amacıyla, Windows Server 2012 R2 Enterprise üzerinde Dynamics AX 2012 R3 ile VMware sanal makinelerini kullandık. Site Recovery çoğaltma uygulama belirsiz olduğundan, aşağıdaki senaryolar için aşağıda belirtilen önerileri bekletireceğiz.
 
 ### <a name="source-and-target"></a>Kaynak ve hedef
 

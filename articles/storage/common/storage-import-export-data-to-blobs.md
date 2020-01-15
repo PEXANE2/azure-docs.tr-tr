@@ -8,30 +8,30 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: bd15e406cdbee57112ff8ecba158d503e908b73f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cab9d309d052acca493e112965c8477a325d8c88
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178021"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944748"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Blob depolama alanına veri aktarmak için Azure Içeri/dışarı aktarma hizmetini kullanma
 
 Bu makalede, Azure Içeri/dışarı aktarma hizmeti 'ni kullanarak büyük miktarlarda verileri Azure Blob depolamaya güvenli bir şekilde aktarmak için adım adım yönergeler sağlanmaktadır. Azure Bloblarına veri aktarmak için hizmet, verilerinizi içeren şifrelenmiş disk sürücülerinin bir Azure veri merkezine sevk etmeniz gerekir.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Verileri Azure Blob depolamaya aktarmak üzere bir içeri aktarma işi oluşturmadan önce, bu hizmet için aşağıdaki önkoşul listesini dikkatle gözden geçirin ve doldurun. Şunları yapmanız gerekir:
 
 - Içeri/dışarı aktarma hizmeti için kullanılabilen etkin bir Azure aboneliğine sahip olun.
 - Depolama kapsayıcısı olan en az bir Azure depolama hesabınız olmalıdır. [İçeri/dışarı aktarma hizmeti Için desteklenen depolama hesapları ve depolama türleri](storage-import-export-requirements.md)listesine bakın. 
-    - Yeni bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-quickstart-create-account.md). 
+    - Yeni bir depolama hesabı oluşturma hakkında daha fazla bilgi için bkz. [bir depolama hesabının nasıl oluşturulacağını](storage-quickstart-create-account.md). 
     - Depolama kapsayıcısı hakkında daha fazla bilgi için, [depolama kapsayıcısı oluşturma](../blobs/storage-quickstart-blobs-portal.md#create-a-container)bölümüne gidin.
 - [Desteklenen türlerde](storage-import-export-requirements.md#supported-disks)yeterli sayıda disk vardır. 
 - [Desteklenen BIR işletim sistemi sürümünü](storage-import-export-requirements.md#supported-operating-systems)çalıştıran bir Windows sistemine sahiptir. 
 - Windows sisteminde BitLocker 'ı etkinleştirin. Bkz. [BitLocker 'ı etkinleştirme](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 - Windows sisteminde [Waımportexport sürüm 1 ' i indirin](https://www.microsoft.com/download/details.aspx?id=42659) . `waimportexportv1`varsayılan klasöre ayıklayın. Örneğin, `C:\WaImportExportV1`.
-- FedEx/DHL hesabınız olmalıdır. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, `adbops@microsoft.com` ' da Azure Data Box Işlemler ekibine başvurun.  
+- FedEx/DHL hesabınız olmalıdır. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, `adbops@microsoft.com`Azure Data Box Işlemler ekibine başvurun.  
     - Hesap geçerli olmalıdır, bakiyesi olmalıdır ve dönüş teslim özelliklerine sahip olmalıdır.
     - Dışarı aktarma işi için bir izleme numarası oluştur.
     - Her işin ayrı bir izleme numarası olmalıdır. Aynı izleme numarasına sahip birden çok iş desteklenmez.
@@ -66,13 +66,13 @@ Sürücüleri hazırlamak için aşağıdaki adımları gerçekleştirin.
 
     |Seçenek  |Açıklama  |
     |---------|---------|
-    |/j     |. Jrn uzantılı günlük dosyasının adı. Her sürücü için bir günlük dosyası oluşturulur. Günlük dosyası adı olarak disk seri numarasını kullanmanızı öneririz.         |
+    |/j:     |. Jrn uzantılı günlük dosyasının adı. Her sürücü için bir günlük dosyası oluşturulur. Günlük dosyası adı olarak disk seri numarasını kullanmanızı öneririz.         |
     |/id     |Oturum KIMLIĞI. Komutun her örneği için benzersiz bir oturum numarası kullanın.      |
-    |/t     |Sevk edilecek diskin sürücü harfi. Örneğin, `D`sürücü.         |
-    |/BK:     |Sürücünün BitLocker anahtarı. `manage-bde -protectors -get D:` çıktısından sayısal parola      |
+    |/t:     |Sevk edilecek diskin sürücü harfi. Örneğin, `D`sürücü.         |
+    |/bk:     |Sürücünün BitLocker anahtarı. `manage-bde -protectors -get D:` çıktısından sayısal parola      |
     |/srcdir:     |Sevk edilecek diskin sürücü harfi ve `:\`. Örneğin, `D:\`.         |
     |/dstdir:     |Azure depolama 'daki Hedef kapsayıcının adı.         |
-    |/blobtype:     |Bu seçenek, verileri içe aktarmak istediğiniz Blobların türünü belirtir. Blok Blobları için, bu `BlockBlob` ve sayfa Blobları için `PagaBlob`.         |
+    |/blobtype:     |Bu seçenek, verileri içe aktarmak istediğiniz Blobların türünü belirtir. Blok Blobları için, bu `BlockBlob` ve sayfa Blobları için `PageBlob`.         |
     |/skipwrite:     |Kopyalamak için gereken yeni verilerin olmadığını ve diskteki mevcut verilerin hazırlandığını belirten seçenek.          |
     |/enablecontentmd5:     |Etkinleştirildiğinde, MD5 'nin hesaplanmasını sağlar ve her Blobun `Content-md5` özellik olarak ayarlanır. Bu seçeneği yalnızca, veriler Azure 'a yüklendikten sonra `Content-md5` alanını kullanmak istiyorsanız kullanın. <br> Bu seçenek, veri bütünlüğü denetimini etkilemez (varsayılan olarak gerçekleşir). Ayar, buluta veri yükleme süresini artırır.          |
 7. Yüklenmesi gereken her disk için önceki adımı tekrarlayın. Komut satırının her çalışması için, belirtilen ada sahip bir günlük dosyası oluşturulur.

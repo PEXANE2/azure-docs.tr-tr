@@ -1,17 +1,17 @@
 ---
 title: Portalı kullanarak PostgreSQL için Azure veritabanı için veri şifreleme tek sunucu
-description: Azure portal kullanarak PostgreSQL için Azure veritabanı için veri şifrelemeyi ayarlama ve yönetme hakkında bilgi edinin
+description: Azure portal kullanarak PostgreSQL için Azure veritabanı için veri şifrelemeyi ayarlamayı ve yönetmeyi öğrenin.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: e579866b1df6d32dc2b90a19ac001c381da625a6
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.date: 01/13/2020
+ms.openlocfilehash: c836139047b83220e571842b6f365ab568f81e93
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922792"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941686"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-using-portal"></a>Portalı kullanarak PostgreSQL için Azure veritabanı için veri şifreleme tek sunucu
 
@@ -21,33 +21,33 @@ Bu makalede, PostgreSQL için Azure veritabanı tek sunucu için veri şifreleme
 
 * Bu abonelikte bir Azure aboneliğiniz olması ve bir yönetici olmanız gerekir.
 * Müşteri tarafından yönetilen anahtar için kullanmak üzere bir Azure Key Vault ve anahtar oluşturun.
-* Anahtar Kasası, müşteri tarafından yönetilen anahtar olarak kullanmak için şu özelliğe sahip olmalıdır
-    * [Geçici Silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+* Anahtar Kasası, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özelliğe sahip olmalıdır:
+  * [Geçici Silme](../key-vault/key-vault-ovw-soft-delete.md)
 
-        ```azurecli-interactive
-        az resource update --id $(az keyvault show --name \ <key_valut_name> -test -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
-        ```
-    
-    * [Korumalı Temizleme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)
+    ```azurecli-interactive
+    az resource update --id $(az keyvault show --name \ <key_vault_name> -test -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
+    ```
 
-        ```azurecli-interactive
-        az keyvault update --name <key_valut_name> --resource-group <resource_group_name>  --enable-purge-protection true
-        ```
+  * [Korumalı Temizleme](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)
+
+    ```azurecli-interactive
+    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
+    ```
 
 * Anahtar, müşteri tarafından yönetilen anahtar için kullanılacak aşağıdaki özniteliklere sahip olmalıdır.
-    * Sona erme tarihi yok
-    * Devre dışı değil
-    * Al, sarmalama tuşu, anahtar sarmalama işlemini geri alabilir
+  * Sona erme tarihi yok
+  * Devre dışı değil
+  * _Al_, _sarmalama tuşu_ve _sarmalama anahtar_ işlemlerini gerçekleştirebiliyor
 
 ## <a name="setting-the-right-permissions-for-key-operations"></a>Anahtar işlemleri için doğru izinleri ayarlama
 
-1. Azure Key Vault, **erişim ilkelerini** seçin ve **erişim ilkesi ekleyin** 
+1. Azure Key Vault, **erişim ilkelerini**seçin ve **erişim ilkesi ekleyin**.
 
    ![Erişim ilkesine genel bakış](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. **Anahtar izinleri** altında, PostgreSQL sunucusunun adı olan **Al**, **sarmalama**, **Unwrap** ve **sorumluyu**seçin. Sunucu sorumlunuz var olan sorumlular listesinde bulunamazsa, ilk kez veri şifrelemeyi ayarlamaya çalışırken kaydolmanız gerekir, bu da başarısız olur.  
+2. **Anahtar izinleri**altında, PostgreSQL sunucusunun adı olan Al, **sarmalama**, **geri** **Al**ve **asıl**' ı seçin. Sunucu sorumlunuz var olan sorumlular listesinde bulunamazsa, ilk kez veri şifrelemeyi ayarlamaya çalışırken kaydolmanız gerekir, bu da başarısız olur.  
 
-   ![Erişim ilkesine genel bakış](media/concepts-data-access-and-security-data-encryption/access-policy-warp-unwrap.png)
+   ![Erişim ilkesine genel bakış](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
 3. Ayarları **kaydedin** .
 
@@ -73,23 +73,22 @@ PostgreSQL için Azure veritabanı tek sunucu, Key Vault depolanan müşterinin 
 
    ![Başlat-geri yükle](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
-   Ya da bir çoğaltma etkin sunucu için, **Ayarlar** başlığı altında **çoğaltma** ' yı seçin.
+   Ya da çoğaltma özellikli bir sunucu için, **Ayarlar** başlığı altında aşağıda gösterildiği gibi **çoğaltma**' yı seçin:
 
    ![Başlatma-çoğaltma](media/concepts-data-access-and-security-data-encryption/postgresql-replica.png)
 
-2. Geri yükleme işlemi tamamlandıktan sonra oluşturulan yeni sunucu, birincil sunucunun anahtarıyla şifrelenmiş veriler olur. Ancak, sunucudaki Özellikler ve seçenekler devre dışı bırakılır ve sunucu **erişilemeyen** bir durumda işaretlenir. Bu, yeni sunucunun kimliğine Key Vault erişim izni verilmediğinden bu yana yapılan tüm veri düzenlemesini önlemektir.
+2. Geri yükleme işlemi tamamlandıktan sonra oluşturulan yeni sunucu, birincil sunucunun anahtarıyla şifrelenmiş veriler olur. Ancak, sunucudaki Özellikler ve seçenekler devre dışı bırakılır ve sunucu **erişilemeyen** bir durumda işaretlenir. Bu davranış, yeni sunucunun kimliğine Key Vault erişim izni verilmediğinden, herhangi bir veri işlemesini engellemek için tasarlanmıştır.
 
    ![Sunucuyu erişilemez olarak işaretle](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-
-3. Erişilemeyen durumu onarmak için, geri yüklenen sunucuda anahtarı yeniden doğrulamanız gerekir. **Veri şifreleme** dikey penceresine ve sonra **anahtarı yeniden doğrula** düğmesine tıklayın.
+3. Erişilemeyen durumu onarmak için, geri yüklenen sunucuda anahtarı yeniden doğrulamanız gerekir. **Veri şifreleme** bölmesini ve sonra **anahtarı yeniden doğrula** düğmesini seçin.
 
    > [!NOTE]
-   > Yeni sunucunun hizmet sorumlusunun anahtar kasasına erişim izni verilmesi gerektiğinden, ilk yeniden doğrulama denemesi başarısız olur. Hizmet sorumlusu oluşturmak için, **yeniden doğrula anahtarına**tıklayın ve bu, hataya izin verir, ancak hizmet sorumlusu oluşturur. Bundan sonra yukarıdaki 2. [bölümde bulunan](https://docs.microsoft.com/azure/postgresql/howto-data-encryption-portal#setting-the-right-permissions-for-key-operations) adımlara bakın.
+   > Yeni sunucunun hizmet sorumlusunun anahtar kasasına erişim izni verilmesi gerektiğinden, ilk yeniden doğrulama denemesi başarısız olur. Hizmet sorumlusu oluşturmak için, bir hata veren ancak hizmet sorumlusu üreten **anahtarı yeniden doğrula**' yı seçin. Bundan sonra yukarıdaki 2. [bölümde bulunan](#setting-the-right-permissions-for-key-operations) adımlara bakın.
 
    ![sunucuyu yeniden doğrula](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
-   Key Vault yeni sunucuya erişim sağlamanız gerekir. 
+   Key Vault yeni sunucuya erişim sağlamanız gerekir.
 
 4. Hizmet sorumlusu kaydedildikten sonra anahtarı yeniden doğrulamanız gerekir ve sunucu normal işlevselliğini sürdürür.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007272"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945579"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory ile parolalar olmadan bir dünya
 
@@ -242,7 +242,7 @@ Donanım belirtecini varsayılan Multi-Factor Authentication yöntemi olarak se�
 
 #### <a name="user-using-fido2-security-key-for-sign-in"></a>Oturum açma için FIDO2 güvenlik anahtarını kullanan Kullanıcı
 
-FIDO2, özel anahtara ve ortak anahtar sunmaya yönelik Windows Hello ve güvenlik anahtarları gibi yerleşik platform kimlik doğrulamasını etkinleştirmek için kimlik doğrulayıcı ve ortak/özel anahtar şifrelemesi olarak kullanılan form faktörü arasında bir soyutlama katmanı sağlar Bu, dış kaynaklara erişmek için bir tanımlayıcı olarak kullanılabilir. FIDO2 güvenlik anahtarları, özel anahtarı depolayan ve Biyometri veya PIN 'in kilidini açmak için kendi yerleşik güvenli şifrelemesinin bulunduğu bir şekilde donatılmıştır. Kimlik bilgileri, hizmetler arasında yeniden kullanılamaz, yeniden yürütülemez veya paylaşılamaz ve kimlik avına ve Mitı saldırılarına veya sunucu ihlallerine tabi değildir.
+FIDO2, özel anahtara çözülmesi için Windows Hello ve güvenlik anahtarları gibi yerleşik platform kimlik doğrulamasını etkinleştirmek ve dış kaynaklara erişmek için tanımlayıcı olarak kullanılabilecek bir ortak anahtar sağlamak üzere kimlik doğrulayıcı ve ortak/özel anahtar şifrelemesi olarak kullanılan form faktörü arasında bir soyutlama katmanı sağlar. FIDO2 güvenlik anahtarları, özel anahtarı depolayan ve Biyometri veya PIN 'in kilidini açmak için kendi yerleşik güvenli şifrelemesinin bulunduğu bir şekilde donatılmıştır. Kimlik bilgileri, hizmetler arasında yeniden kullanılamaz, yeniden yürütülemez veya paylaşılamaz ve kimlik avına ve Mitı saldırılarına veya sunucu ihlallerine tabi değildir.
 
 ![FIDO2 oturum açma](./media/ad-passwordless/azure-ad-pwdless-image6.png)
 
@@ -284,7 +284,7 @@ Microsoft parola-Less teknolojisini seçerken göz önünde bulundurmanız gerek
 ||**İş İçin Windows Hello**|**Microsoft Authenticator uygulamayla passwordless oturum açma**|**FIDO2 güvenlik anahtarları**|
 |:-|:-|:-|:-|
 |**Önkoşul**| Windows 10, sürüm 1809 veya üzeri<br>Azure Active Directory| Microsoft Authenticator uygulaması<br>Telefon (Android 6,0 veya üzeri çalıştıran iOS ve Android cihazları.)|Windows 10, sürüm 1809 veya üzeri<br>Azure Active Directory|
-|**Modundaysa**|Platform|Yazılım|Donanım|
+|**Mode**|Platform|Yazılım|Donanım|
 |**Sistemler ve cihazlar**|Yerleşik Güvenilir Platform Modülü bılgısayar (TPM)<br>PIN ve Biyometri tanıma |Telefonda PIN ve Biyometri tanıma|Microsoft uyumlu FIDO2 güvenlik cihazları|
 |**Kullanıcı deneyimi**|Windows cihazlarıyla bir PIN veya biyometrik tanıma (yüz, Iris veya parmak izi) kullanarak oturum açın.<br>Windows Hello kimlik doğrulaması cihaza bağlıdır; kullanıcının şirket kaynaklarına erişmek için hem cihaza hem de PIN veya biyometri faktörü gibi bir oturum açma bileşenine ihtiyacı vardır.|Parmak izi taraması, yüz veya Iris tanıma veya PIN ile cep telefonu kullanarak oturum açın.<br>Kullanıcılar, PC veya cep telefonlarından iş veya kişisel hesap için oturum açabilirler.|FIDO2 güvenlik cihazını (biyometri, PIN ve NFC) kullanarak oturum açın<br>Kullanıcı, cihaza, USB güvenlik anahtarları ve NFC 'nin etkinleştirildiği akıllı kartlar, anahtarlar veya wearables gibi cihazları kullanarak kuruluş denetimlerini ve kimlik doğrulamasını temel alarak cihaz erişimi sağlayabilir.|
 |**Etkin senaryolar**| Windows cihazındaki parola-daha az deneyim.<br>Cihaz ve uygulamalarda çoklu oturum açma yeteneğine sahip adanmış iş BILGISAYARı için geçerlidir.|Cep telefonu kullanan parola-daha az her yerde çözüm.<br>Herhangi bir cihazdan Web üzerinde iş veya kişisel uygulamalara erişmek için geçerlidir.|Biyometri, PIN ve NFC kullanan çalışanlar için parola açısından daha az deneyim.<br>Paylaşılan bilgisayarlar ve cep telefonunun uygun bir seçenek olmaması (örneğin, yardım masası personeli, genel bilgi noktası veya hastane ekibi gibi) için geçerlidir|
@@ -299,7 +299,7 @@ Gereksinimlerinizi ve kullanıcılarınızı hangi yöntemin destekleyeceği bel
 |**Bilgi çalışanı**|Üretkenlik çalışmaları| Mobil veya Windows dışı cihaz|Microsoft Authenticator uygulamayla passwordless oturum açma|
 |**Frontline Worker**|Bir fabrika, Tesis, perakende veya veri girişinde kiosks|Paylaşılan Windows 10 cihazları|FIDO2 güvenlik anahtarları|
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
 Parolasız kimlik doğrulaması, gelecekteki ve daha güvenli bir ortam yolunun yoludur. Kuruluşların bu değişikliği planlamaya ve parolalarla ilgili bağımlılıklarını azaltmasına başlaması önerilir. Başlamak için aşağıdaki hedefleri göz önünde bulundurun:
 
@@ -311,7 +311,7 @@ Parolasız kimlik doğrulaması, gelecekteki ve daha güvenli bir ortam yolunun 
 
 * Mobility için Microsoft Authenticator uygulaması dağıtın.
 
-* Iş için Windows Hello 'Yu dağıtın (1903: güncel kalın).
+* Iş için Windows Hello 'Yu dağıtın (1909: güncel kalın).
 
 * Telefonlarını kullanmayan kullanıcılar için FIDO2 cihazlarını dağıtın.
 

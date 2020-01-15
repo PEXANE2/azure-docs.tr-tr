@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 696bba195ac3902a3a90a82bcc7665591eba643f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4ef2987ee72348fb4353ba735d6da76fb218f01e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922330"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942150"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları-bir başvuru kılavuzu
 
@@ -97,6 +97,7 @@ Uyarılar tablosunun altında, bu uyarıların amaçlarını kategorilere ayırm
 |**Depolama hesabından ayıklanan olağan dışı miktarda veri**|Bu depolama kapsayıcısındaki en son etkinliğe kıyasla alışılmadık büyük miktarda verilerin ayıklandığını gösterir. Olası bir neden, bir saldırganın blob depolamayı tutan bir kapsayıcıdan büyük miktarda veri ayıklamasıdır.|Sızdırma|
 |**Depolama hesabında olağan dışı silme**|Bir depolama hesabında bir veya daha fazla beklenmeyen silme işlemi gerçekleştiğini, bu hesaptaki en son etkinliğe kıyasla olduğunu gösterir. Olası bir neden, saldırganın depolama hesabınızdan veri sildiği bir nedendir.|Sızdırma|
 |**Bir depolama hesabına olağan dışı. cspkg yüklemesi**|Azure Cloud Services paketinin (. cspkg dosyası), bu hesaptaki en son etkinlikle karşılaştırıldığında, alışılmadık bir şekilde bir depolama hesabına yüklendiğini belirtir. Olası bir neden, bir saldırganın depolama hesabınızdan bir Azure bulut hizmetine kötü amaçlı kod dağıtmaya hazırlanmasıyla ilgili bir nedendir.|Yan yana Altaşıma/yürütme|
+|**Bir depolama hesabına olağan dışı. exe yüklemesi**|Bir. exe dosyasının, bu hesaptaki en son etkinlikle karşılaştırıldığında, alışılmadık bir şekilde bir depolama hesabına yüklendiğini belirtir. Olası bir neden, bir saldırganın depolama hesabınıza kötü amaçlı bir yürütülebilir dosya yüklediğini veya yasal bir kullanıcının yürütülebilir bir dosyayı karşıya yüklemiş olması olabilir.|Yan yana Altaşıma/yürütme|
 |**Bir depolama hesabında olağan dışı erişim izinleri değişikliği**|Bu depolama kapsayıcısının erişim izinlerinin olağan dışı bir şekilde değiştirildiğini belirtir. Olası bir neden, saldırganın güvenlik duruşunu yumuşatmak veya kalıcılık kazanmak için kapsayıcı izinlerini değiştirleridir.|Kalıcılık|
 |**Depolama hesabında olağan dışı erişim incelemesi**|Bir depolama hesabının erişim izinlerinin, bu hesaptaki en son etkinlikle karşılaştırıldığında olağan dışı bir şekilde incelenebileceğini belirtir. Olası bir neden, saldırganın gelecekteki bir saldırıya karşı keşif gerçekleştirmesinden dolayı gerçekleşir.|Koleksiyon|
 |**Depolama hesabındaki olağan dışı veri araştırması**|Bir depolama hesabındaki Blobların veya kapsayıcıların, bu hesaptaki en son etkinlikle karşılaştırıldığında anormal bir şekilde numaralandırıldığını gösterir. Olası bir neden, saldırganın gelecekteki bir saldırıya karşı keşif gerçekleştirmesinden dolayı gerçekleşir.|Koleksiyon|

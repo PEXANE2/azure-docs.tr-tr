@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 87faea5385f5b0fd2c481c6aa7c45a9867b34163
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185519"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942178"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure 'da iç içe sanallaştırmayı kullanarak sorun giderme Azure VM
 
@@ -29,8 +29,6 @@ Bu makalede, Microsoft Azure içinde iç içe bir sanallaştırma ortamının na
 Sorun sanal makinesini bağlamak için, kurtarma VM 'sinin aşağıdaki önkoşulları karşılaması gerekir:
 
 -   Kurtarma sanal makinesi, sorunlu VM ile aynı konumda olmalıdır.
-
--   Kurtarma sanal makinesi, sorunlu VM ile aynı kaynak grubunda olmalıdır.
 
 -   Kurtarma VM 'si, sorun sanal makinesi ile aynı depolama hesabı türünü (Standart veya Premium) kullanmalıdır.
 

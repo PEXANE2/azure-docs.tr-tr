@@ -1,32 +1,25 @@
 ---
-title: 'Hızlı başlangıç: blob depolamada depolanan konuşmayı tanıma, C# konuşma hizmeti'
-titleSuffix: Azure Cognitive Services
-description: Daha sonra belirlenecek
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b8b650920c03b14c7d55aafd6ecdb43dafaafafe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 1022a744564ed61a90973f7bba3eb32e9a632b46
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468674"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942744"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
+> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-csharp)
+> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?pivots=programmming-language-csharp)
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
 > * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio'da açın.
 
@@ -35,7 +28,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 1. Visual Studio 2019 ' i başlatın.
 2. Projenizi yükleyin ve `Program.cs`açın.
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>NewtonSoftJSon öğesine bir başvuru ekleyin
+## <a name="add-a-reference-to-newtonsoftjson"></a>Newtonsoft. JSON öğesine bir başvuru ekleyin
 
 1. Çözüm Gezgini, **HelloWorld** projesine sağ tıklayın ve ardından NuGet Paket Yöneticisi ' ni görüntülemek Için **NuGet Paketlerini Yönet** ' i seçin.
 
@@ -45,7 +38,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Arama kutusuna *Newtonsoft. JSON* yazın ve **ENTER**' u seçin.
 
-1. Arama sonuçlarından **Newtonsoft. JSON** paketini seçin ve ardından en son kararlı sürümü yüklemek için **yükler** ' i seçin.
+1. Arama sonuçlarından [**Newtonsoft. JSON**](https://www.nuget.org/packages/Newtonsoft.Json) paketini seçin ve ardından en son kararlı sürümü yüklemek için **yükler** ' i seçin.
 
 1. Yüklemeyi başlatmak için tüm anlaşmaları ve lisansları kabul edin.
 
@@ -56,7 +49,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=6-43,138,277)]
-(`YourSubscriptionKey`, `YourServiceRegion`ve `YourFileUrl` değerlerini kendi değerlerinizle değiştirmeniz gerekir.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
+
 ## <a name="json-wrappers"></a>JSON sarmalayıcıları
 
 REST API JSON biçiminde istek alma ve ayrıca JSON 'daki sonuçları geri döndürme gibi yalnızca dizeleri kullanarak etkileşime girebiliriz ancak bu önerilmez.

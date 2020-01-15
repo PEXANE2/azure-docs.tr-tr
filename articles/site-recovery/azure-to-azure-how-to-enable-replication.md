@@ -1,19 +1,16 @@
 ---
-title: Azure Site Recovery | Azure VM 'Leri için çoğaltmayı yapılandırma | Microsoft Docs
-description: Bu makalede, Azure VM 'Leri için Site Recovery kullanarak bir Azure bölgesinden diğerine çoğaltma yapılandırma açıklanmaktadır.
-services: site-recovery
-author: carmonmills
+title: Azure Site Recovery Azure VM 'Leri için çoğaltmayı yapılandırma
+description: Site Recovery kullanarak Azure VM 'Leri için çoğaltmayı başka bir bölgeye nasıl yapılandıracağınızı öğrenin.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2018
-ms.author: carmonm
-ms.openlocfilehash: 4dbac05ddf747ccaf483e547a2070505487a3706
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 471a7f288cec980e73ab10c8233ea38511acdd8b
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75929854"
+ms.locfileid: "75942313"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure VM 'lerini başka bir Azure bölgesine çoğaltma
 

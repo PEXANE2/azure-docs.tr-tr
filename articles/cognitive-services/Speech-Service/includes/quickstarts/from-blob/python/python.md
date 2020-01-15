@@ -1,32 +1,25 @@
 ---
-title: 'Hızlı başlangıç: blob depolamada depolanan konuşmayı tanıma, C# konuşma hizmeti'
-titleSuffix: Azure Cognitive Services
-description: Daha sonra belirlenecek
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2f06d0015bd80b37407df28045d4ced4a128e47e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: bfecfa1918d2e9199971b2f9738530dc1b4e3c4c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469884"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942753"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md)
+> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="download-and-install-the-api-client-library"></a>API istemci kitaplığını indirme ve yükleme
 
@@ -43,7 +36,8 @@ Yükleme için aşağıdaki adımları izleyin:
 1. PIP: `pip install path/to/package/python-client`kullanarak Python ortamınıza ayıklanan Python-Client modülünü yükler.
 1. Yüklü paketin adı `swagger_client`. Yüklemenin `python -c "import swagger_client"`komutu kullanılarak çalıştığını kontrol edebilirsiniz.
 
-> **Note:** [Swagger yeniden oluşturmada bilinen bir hata](https://github.com/swagger-api/swagger-codegen/issues/7541)nedeniyle `swagger_client` paketini içeri aktarırken hatalarla karşılaşabilirsiniz.
+> [!NOTE]
+> [Swagger yeniden oluşturmada bilinen bir hata](https://github.com/swagger-api/swagger-codegen/issues/7541)nedeniyle `swagger_client` paketini içeri aktarırken hatalarla karşılaşabilirsiniz.
 > Bu, satırı içerikle silerek düzeltilebilir
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
@@ -67,7 +61,8 @@ pip install requests
 Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-2,7-34,115-119)]
-(`YourSubscriptionKey`, `YourServiceRegion`ve `YourFileUrl` değerlerini kendi değerlerinizle değiştirmeniz gerekir.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="create-and-configure-an-http-client"></a>Http Istemcisi oluşturma ve yapılandırma
 İhtiyaç duyduğumuz ilk şey, doğru temel URL ve kimlik doğrulama kümesine sahip bir http Istemcidir.

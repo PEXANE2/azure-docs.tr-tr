@@ -103,6 +103,8 @@
       items:
         - name: Uygulamayı dağıtma
           items:
+            - name: Paketten çalıştırma
+              href: ../deploy-run-package.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
             - name: FTP aracılığıyla dağıtma
               href: ../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
             - name: Bulut eşitleme aracılığıyla dağıtma

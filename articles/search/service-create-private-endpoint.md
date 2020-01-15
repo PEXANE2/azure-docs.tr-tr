@@ -8,22 +8,26 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: cfa8db0d00f351f5ab2bda96744305ca83cccb19
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 2664b1abd4131cf1dca186c7b044e338bf1efa84
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922463"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945816"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search-preview"></a>Azure Bilişsel Arama güvenli bağlantısı için özel bir uç nokta oluşturma (Önizleme)
 
-Azure Bilişsel Arama [Özel uç noktaları](../private-link/private-endpoint-overview.md) , bir sanal ağdaki bir Istemcinin bir [özel bağlantı](../private-link/private-link-overview.md)üzerinden arama dizinindeki verilere güvenli bir şekilde erişmesini sağlar. Özel uç nokta, arama hizmetiniz için [sanal ağ adres alanından](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) bir IP adresi kullanır. İstemci ile arama hizmeti arasındaki ağ trafiği, sanal ağın ve Microsoft omurga ağındaki özel bir bağlantının üzerinde geçiş yaparken, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır. Özel bağlantıyı destekleyen diğer PaaS hizmetlerinin bir listesi için ürün belgelerindeki [kullanılabilirlik bölümüne](../private-link/private-link-overview.md#availability) bakın.
+Bu makalede, genel bir IP adresi üzerinden erişilemeyen yeni bir Azure Bilişsel Arama hizmet örneği oluşturmak için portalını kullanın. Ardından, bir Azure sanal makinesini aynı sanal ağda yapılandırın ve özel bir uç nokta aracılığıyla arama hizmetine erişmek için kullanın.
 
 > [!Important]
-> Azure Bilişsel Arama için özel uç nokta desteği, sınırlı erişim önizlemesi olarak kullanılabilir ve şu anda üretim kullanımı için tasarlanmamıştır. Önizlemeye erişmek istiyorsanız lütfen [erişim isteği formunu](https://aka.ms/SearchPrivateLinkRequestAccess) doldurun ve iletin. Form, siz, şirketiniz ve genel uygulama mimariniz hakkında bilgi ister. İsteğinizi gözden geçirdikten sonra ek yönergeler içeren bir onay e-postası alacaksınız.
+> Azure Bilişsel Arama için özel uç nokta desteği, [istek üzerine](https://aka.ms/SearchPrivateLinkRequestAccess) sınırlı erişim önizlemesi olarak sağlanır. Önizleme özellikleri bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 >
-> Önizlemeye erişim izni verdikten sonra, Azure portal ve sürüm [2019-10-06-önizleme](search-api-preview.md)REST API kullanarak hizmetinize yönelik özel uç noktaları yapılandırabileceksiniz.
+> Önizlemeye erişim verdikten sonra, Azure portal veya [yönetim REST API 2019-10-06-Preview sürümünü](https://docs.microsoft.com/rest/api/searchmanagement/)kullanarak hizmetinize yönelik özel uç noktaları yapılandırabileceksiniz.
 >   
+
+## <a name="why-use-private-endpoint-for-secure-access"></a>Güvenli erişim için özel uç nokta neden kullanılmalıdır?
+
+Azure Bilişsel Arama [Özel uç noktaları](../private-link/private-endpoint-overview.md) , bir sanal ağdaki bir Istemcinin bir [özel bağlantı](../private-link/private-link-overview.md)üzerinden arama dizinindeki verilere güvenli bir şekilde erişmesini sağlar. Özel uç nokta, arama hizmetiniz için [sanal ağ adres alanından](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) bir IP adresi kullanır. İstemci ile arama hizmeti arasındaki ağ trafiği, sanal ağın ve Microsoft omurga ağındaki özel bir bağlantının üzerinde geçiş yaparken, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır. Özel bağlantıyı destekleyen diğer PaaS hizmetlerinin bir listesi için ürün belgelerindeki [kullanılabilirlik bölümüne](../private-link/private-link-overview.md#availability) bakın.
 
 Arama hizmetiniz için özel uç noktalar şunları yapmanızı sağlar:
 
@@ -36,16 +40,18 @@ Arama hizmetiniz için özel uç noktalar şunları yapmanızı sağlar:
 > * Yalnızca **temel** katmandaki arama hizmetleri için kullanılabilir. 
 > * Batı ABD 2, Orta Batı ABD, Doğu ABD, Orta Güney ABD, Avustralya Doğu ve Avustralya Güneydoğu bölgelerinde kullanılabilir.
 > * Hizmet uç noktası özel olduğunda, bazı Portal özellikleri devre dışı bırakılır. Hizmet düzeyi bilgilerini görüntüleyebilir ve yönetebileceksiniz, ancak dizin verilerine ve hizmette Dizin, Dizin Oluşturucu ve beceri tanımları gibi çeşitli bileşenlere erişim sağlamak için Portal erişimi güvenlik nedenleriyle kısıtlıdır.
-> * Hizmet uç noktası özel olduğunda, dizine belge yüklemek için Search API 'sini kullanmanız gerekir.
+> * Hizmet uç noktası özel olduğunda, dizine belge yüklemek için [arama REST API](https://docs.microsoft.com/rest/api/searchservice/) kullanmanız gerekir.
 > * Azure portal özel uç nokta desteği seçeneğini görmek için aşağıdaki bağlantıyı kullanmanız gerekir: https://portal.azure.com/?feature.enablePrivateEndpoints=true
 
-Bu makalede, bir genel IP adresi aracılığıyla erişilemeyen yeni bir Azure Bilişsel Arama hizmet örneği oluşturmak, aynı sanal ağ içinde bir Azure sanal makinesini yapılandırmak ve bunu özel bir işlem aracılığıyla arama hizmetine erişmek için kullanmak üzere portalını nasıl kullanacağınızı öğreneceksiniz. bkz.
 
 
-## <a name="create-a-vm"></a>VM oluşturma
+## <a name="request-access"></a>Erişim izni isteme 
+
+Bu önizleme özelliği için kaydolmak üzere [erişim iste](https://aka.ms/SearchPrivateLinkRequestAccess) ' ye tıklayın. Form, siz, şirketiniz ve genel ağ topolojiniz hakkında bilgi ister. İsteğinizi gözden geçirdikten sonra ek yönergeler içeren bir onay e-postası alacaksınız.
+
+## <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
+
 Bu bölümde, arama hizmetinizin özel uç noktasına erişmek için kullanılacak VM 'yi barındırmak için bir sanal ağ ve alt ağ oluşturacaksınız.
-
-### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
 
 1. Azure portal giriş sekmesinde, > **ağ** > **sanal ağ**' **a kaynak oluştur** ' u seçin.
 
@@ -65,7 +71,7 @@ Bu bölümde, arama hizmetinizin özel uç noktasına erişmek için kullanılac
 1. Rest 'i varsayılan olarak bırakın ve **Oluştur**' u seçin.
 
 
-## <a name="create-your-search-service-with-a-private-endpoint"></a>Özel bir uç nokta ile arama hizmetinizi oluşturma
+## <a name="create-a-search-service-with-a-private-endpoint"></a>Özel bir uç nokta ile arama hizmeti oluşturma
 
 Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti oluşturacaksınız. 
 
@@ -119,9 +125,9 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
 
 1. Sol içerik menüsünde **anahtarlar** ' ı seçin.
 
-1. **Birincil yönetici anahtarını** daha sonra kopyalayın.
+1. Hizmete bağlanırken, daha sonra **birincil yönetici anahtarını** kopyalayın.
 
-### <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
 
 1. Azure portal ekranın sol üst kısmında, **sanal makine** > **Işlem** > **kaynak oluştur** ' u seçin.
 
@@ -170,9 +176,9 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
 1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 
 
 
-## <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
+## <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
-Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
+VM *myvm* ' yi indirip şu şekilde bağlayın:
 
 1. Portalın arama çubuğunda *Myvm*' i girin.
 
@@ -196,9 +202,11 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.  
 
 
-## <a name="access-the-search-service-privately-from-the-vm"></a>Arama hizmetine özel olarak VM 'den erişin
+## <a name="test-connections"></a>Sınama bağlantıları
 
 Bu bölümde, arama hizmetine özel ağ erişimini doğrulayacaksınız ve özel uç noktayı kullanarak özel olarak bağlanılacak şekilde bağlanıyorsunuz.
+
+Arama hizmeti ile tüm etkileşimlerin [arama REST API](https://docs.microsoft.com/rest/api/searchservice/)gerektirdiğini giriş noktasından geri çekin. Portal ve .NET SDK bu önizlemede desteklenmez.
 
 1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
 
@@ -213,14 +221,14 @@ Bu bölümde, arama hizmetine özel ağ erişimini doğrulayacaksınız ve özel
     Address:  10.0.0.5
     Aliases:  [search service name].search.windows.net
     ```
-1. REST API kullanarak Postman 'da hizmetinize yeni bir arama dizini oluşturmak için VM 'deki bu [hızlı](search-get-started-postman.md) başlangıcı izleyin.  Hizmette kimlik doğrulaması yapmak için önceki bir adımda kopyaladığınız anahtarı kullanın.
 
-1. Yerel iş istasyonunuzda Postman ile aynı isteklerin birkaçını deneyin.
+1. VM 'den arama hizmetine bağlanın ve bir dizin oluşturun. REST API kullanarak Postman 'da hizmetinize yeni bir arama dizini oluşturmak için bu [hızlı](search-get-started-postman.md) başlangıcı izleyebilirsiniz. İstekleri Postman 'dan ayarlamak için arama hizmeti uç noktası (https://[arama hizmeti adı]. Search. Windows. net) ve önceki adımda kopyaladığınız yönetici API anahtarı gerekir.
 
-1. Sanal makineyi VM 'den tamamlayabiliyor, ancak yerel iş istasyonunuzda uzak sunucunun mevcut olmadığı bir hata alırsanız, arama hizmetiniz için bir özel uç noktayı başarıyla yapılandırdınız.
+1. VM 'den hızlı başlangıç işlemini tamamlamak, hizmetin tam olarak çalışır durumda olduğunu onaylamadır.
 
 1.  *Myvm*ile uzak masaüstü bağlantısını kapatın. 
 
+1. Hizmetinizin genel bir uç noktada erişilebilir olmadığından emin olmak için, yerel iş istasyonunuzda Postman ' ı açın ve hızlı başlangıçta ilk birkaç görevi deneyin. Uzak sunucunun mevcut olmadığı bir hata alırsanız, arama hizmetiniz için bir özel uç nokta başarıyla yapılandırdınız.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 Özel uç nokta, arama hizmeti ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:

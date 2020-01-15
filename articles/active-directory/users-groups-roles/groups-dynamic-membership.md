@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5be34a58d8f0416a31cd575ef0fea614b3d43e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768732"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940986"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -99,8 +99,8 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | ülke |Herhangi bir dize değeri veya *null* |(User. Country-EQ "değer") |
 | Tadı | Herhangi bir dize değeri veya *null* | (User. companyName-EQ "değer") |
 | Bölüm |Herhangi bir dize değeri veya *null* |(User. Department-EQ "değer") |
-| displayName |Herhangi bir dize değeri |(User. displayName-EQ "değer") |
-| Çalışan |Herhangi bir dize değeri |(User. EmployeeID-EQ "Value")<br>(User. EmployeeID-ne *null*) |
+| displayName |herhangi bir dize değeri |(User. displayName-EQ "değer") |
+| Çalışan |herhangi bir dize değeri |(User. EmployeeID-EQ "Value")<br>(User. EmployeeID-ne *null*) |
 | facsimileTelephoneNumber |Herhangi bir dize değeri veya *null* |(User. facsimileTelephoneNumber-EQ "değer") |
 | givenName |Herhangi bir dize değeri veya *null* |(User.,-EQ "Value") |
 | İş Unvanı |Herhangi bir dize değeri veya *null* |(User. jobTitle-EQ "değer") |
@@ -119,14 +119,14 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | Soyadı |Herhangi bir dize değeri veya *null* |(User. soyad-EQ "Value") |
 | telephoneNumber 'dır |Herhangi bir dize değeri veya *null* |(User. telephoneNumber-EQ "değer") |
 | usageLocation |İki kodlu ülke kodu |(User. usageLocation-EQ "US") |
-| userPrincipalName |Herhangi bir dize değeri |(User. userPrincipalName-EQ "alias@domain") |
+| userPrincipalName |herhangi bir dize değeri |(User. userPrincipalName-EQ "alias@domain") |
 | userType |üye Konuk *null* |(User. userType-EQ "üye") |
 
 ### <a name="properties-of-type-string-collection"></a>Dize koleksiyonu türü özellikleri
 
 | Özellikler | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
-| Diğer postalar |Herhangi bir dize değeri |(User. Otherpostalarını-"alias@domain" içerir) |
+| Diğer postalar |herhangi bir dize değeri |(User. Otherpostalarını-"alias@domain" içerir) |
 | proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-"SMTP: alias@domain" içerir) |
 
 Cihaz kuralları için kullanılan özellikler için bkz. [Cihazlar Için kurallar](#rules-for-devices).
@@ -321,7 +321,12 @@ Bir üyelik kuralı kullanarak bir kiracının içindeki tüm kullanıcıları i
 "Tüm kullanıcılar" kuralı-ne işleci ve null değeri kullanılarak tek bir ifade kullanılarak oluşturulur. Bu kural, B2B Konuk kullanıcılarını ve üye kullanıcıları gruba ekler.
 
 ```
-user.objectid -ne null
+user.objectId -ne null
+```
+Grubunuzun Konuk kullanıcıları dışlanmasını ve yalnızca kiracınızın üyelerini içermesini istiyorsanız, aşağıdaki sözdizimini kullanabilirsiniz:
+
+```
+(user.objectId -ne null) -and (user.userType -eq “Member”)
 ```
 
 ### <a name="create-an-all-devices-rule"></a>"Tüm cihazlar" kuralı oluşturma
@@ -331,7 +336,7 @@ Bir üyelik kuralı kullanarak bir kiracının içindeki tüm cihazları içeren
 "Tüm cihazlar" kuralı-ne işleci ve null değeri kullanılarak tek bir ifade kullanılarak oluşturulur:
 
 ```
-device.objectid -ne null
+device.objectId -ne null
 ```
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Uzantı özellikleri ve özel uzantı özellikleri

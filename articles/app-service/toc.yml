@@ -117,6 +117,8 @@
       items:
         - name: Uygulamayı dağıtma
           items:
+            - name: Paketten çalıştırma
+              href: deploy-run-package.md
             - name: ZIP veya WAR dağıtma
               href: deploy-zip.md
             - name: FTP aracılığıyla dağıtma

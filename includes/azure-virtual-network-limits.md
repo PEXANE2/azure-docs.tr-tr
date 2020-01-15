@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: cf79911c24998c3d00937937cce5c68bbb564f1e
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 97ee10e0b286f1b007f2e807351301f2037d1754
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751990"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942677"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları-Azure Resource Manager aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Resource Manager** üzerinden yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
 
@@ -65,12 +65,11 @@ Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resourc
 | Yük dengeleyiciler                          | 1000                         |
 | Kaynak başına kurallar                      | 1,500                         |
 | NIC başına kural (bir NIC 'deki tüm IP 'lerde) | 300                           |
-| Ön uç IP yapılandırması             | 600                           |
-| Arka uç havuzu boyutu                          | 1\.000 örnek, tek sanal ağ |
-| Yük dengeleyici başına arka uç kaynakları<sup>1<sup>   | 150                 |
-| Yüksek kullanılabilirlik bağlantı noktaları                 | iç ön uç başına 1      |
+| Ön uç IP yapılandırması              | 600                           |
+| Arka uç havuzu boyutu                       | 1\.000 IP yapılandırması, tek bir sanal ağ |
+| Yüksek kullanılabilirlik bağlantı noktaları                 | iç ön uç başına 1       |
+| Load Balancer başına giden kuralları         | 20                            |
 
-<sup>1</sup> Sınır, tek başına sanal makine kaynaklarının, kullanılabilirlik kümesi kaynaklarının ve sanal makine ölçek kümesi kaynaklarının herhangi bir kombinasyonuna göre 150 kaynağa kadar olur.
 
 **Temel Load Balancer**
 
@@ -79,8 +78,9 @@ Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resourc
 | Yük dengeleyiciler                          | 1000                        |
 | Kaynak başına kurallar                      | 250                          |
 | NIC başına kural (bir NIC 'deki tüm IP 'lerde) | 300                          |
-| Ön uç IP yapılandırması             | 200                          |
-| Arka uç havuzu boyutu                           | 100 örnek, tek kullanılabilirlik kümesi |
+| Ön uç IP yapılandırması              | 200                          |
+| Arka uç havuzu boyutu                       | 300 IP yapılandırması, tek kullanılabilirlik kümesi |
+| Load Balancer başına kullanılabilirlik kümeleri     | 150                          |
 
 #### <a name="virtual-networking-limits-classic"></a>Aşağıdaki sınırlar yalnızca abonelik başına **Klasik** dağıtım modeliyle yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
 

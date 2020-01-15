@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895332"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945444"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Okuma Erişimli Coğrafi olarak yedekli depolamayı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama
 
@@ -99,7 +99,7 @@ Salt okuma modunda çalışırken güncelleştirme isteklerini işlemenin birço
 
 ## <a name="handling-retries"></a>Yeniden denemeleri işleme
 
-Azure Storage istemci kitaplığı, hangi hataların yeniden deneneceği tespit etmenize yardımcı olur. Örneğin, bir 404 hatası (kaynak bulunamadı) yeniden denenebilecek ve bu durum başarılı bir şekilde sonuçlandığı için yeniden denenebilir. Diğer taraftan, bir 500 hatası bir sunucu hatası olduğundan yeniden denenemez ve yalnızca geçici bir sorun olabilir. Daha fazla ayrıntı için .NET depolama istemci kitaplığındaki [üs Alretry sınıfına yönelik açık kaynak kodunu](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) inceleyin. (ShouldRetry yöntemini arayın.)
+Azure Storage istemci kitaplığı, hangi hataların yeniden deneneceği tespit etmenize yardımcı olur. Örneğin, bir 404 hatası (kaynak bulunamadı) yeniden denenmeyecek ve bu durum başarılı bir şekilde sonuçlandığı için yeniden denenmez. Diğer taraftan, bir 500 hatası sunucu hatası olduğundan yeniden denenebilir ve sorun yalnızca geçici bir sorun olabilir. Daha fazla ayrıntı için .NET depolama istemci kitaplığındaki [üs Alretry sınıfına yönelik açık kaynak kodunu](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) inceleyin. (ShouldRetry yöntemini arayın.)
 
 ### <a name="read-requests"></a>Okuma istekleri
 
@@ -204,8 +204,8 @@ Aşağıdaki tabloda, bir çalışanın ayrıntılarını *Yöneticiler* rolün�
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | İşlem A: <br> Çalışan Ekle <br> birincil varlıktaki varlık |                                   |                    | Birincil öğesine ekli işlem<br> henüz çoğaltılmamıştır. |
 | T1       |                                                            | İşlem A <br> çoğaltma<br> İK | T1 | İşlem ikinciye çoğaltılır. <br>Son eşitleme zamanı güncelleştirildi.    |
-| T2       | İşlem B:<br>Güncelleştir<br> Çalışan varlığı<br> birincil  |                                | T1                 | Birincil diske yazılan işlem B<br> henüz çoğaltılmamıştır.  |
-| T3       | İşlem C:<br> Güncelleştir <br>yönetici<br>içindeki rol varlığı<br>birincil |                    | T1                 | Birincil öğesine yazılan işlem C,<br> henüz çoğaltılmamıştır.  |
+| T2       | İşlem B:<br>Güncelleştirme<br> çalışan varlığı<br> birincil  |                                | T1                 | Birincil diske yazılan işlem B<br> henüz çoğaltılmamıştır.  |
+| T3       | İşlem C:<br> Güncelleştirme <br>yönetici<br>içindeki rol varlığı<br>birincil |                    | T1                 | Birincil öğesine yazılan işlem C,<br> henüz çoğaltılmamıştır.  |
 | *T4*     |                                                       | İşlem C <br>çoğaltma<br> İK | T1         | İşlem C, ikinciye çoğaltıldı.<br>LastSyncTime güncelleştirilmedi, çünkü <br>işlem B henüz çoğaltılmamıştır.|
 | *T5*     | Varlıkları oku <br>ikincili                           |                                  | T1                 | Çalışan için eski değeri alırsınız <br> işlem B işlemi olmadığı için varlık <br> henüz çoğaltıldı. İçin yeni bir değer alırsınız<br> Yönetici rolü varlığı çünkü C<br> çoğaltılamaz. Son eşitleme saati hala değil<br> işlem B nedeniyle güncelleştirildi<br> çoğaltılmadı. Şunu yapabilirsiniz<br>Yönetici rolü varlığı tutarsız <br>varlık tarih/saat sonra olduğu için <br>Son eşitleme zamanı. |
 | *T6*     |                                                      | İşlem B<br> çoğaltma<br> İK | T6                 | *T6* – C ile tüm işlemler <br>çoğaltılan, son eşitleme zamanı<br> güncelleştirildi. |

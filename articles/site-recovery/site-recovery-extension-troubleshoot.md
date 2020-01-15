@@ -1,20 +1,18 @@
 ---
-title: Azure Site Recovery aracılarıyla ilgili sorunları giderme | Microsoft Docs '
-description: Azure Site Recovery Aracısı hatalarının belirtileri, nedenleri ve çözümleri hakkında bilgi sağlar.
-author: carmonmills
+title: Azure Site Recovery ile olağanüstü durum kurtarma için Azure VM Uzantısı sorunlarını giderme
+description: Azure Site Recovery ile olağanüstü durum kurtarma için Azure VM uzantısıyla ilgili sorunları giderin.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 0de5a9843b8029c1e1926ae296f43fc95b48106c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 7f9ae32b95d629ef79f085ed590d9057b0414911
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930123"
+ms.locfileid: "75941531"
 ---
-# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Azure Site Recovery aracısında sorun giderme
+# <a name="troubleshoot-azure-vm-extension-issues"></a>Azure VM Uzantısı sorunlarını giderme
 
 Bu makalede, VM Aracısı ve uzantısıyla ilgili Azure Site Recovery hatalarını çözmenize yardımcı olabilecek sorun giderme adımları sunulmaktadır.
 
@@ -30,7 +28,7 @@ Hata kodu: "151076"
 **Neden 2: [VM 'de yüklü olan aracı güncel değil (Linux VM 'ler için)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **Neden 3: [Site Recovery uzantısı güncelleştirilemiyor veya yüklenemiyor](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-Hata iletisi: "önceki Site Recovery uzantısı işlemi beklenenden uzun sürüyor."<br>
+Hata iletisi: "önceki Site Recovery uzantısı işlemi beklenenden daha uzun sürüyor."<br>
 Hata kodu: "150066"<br>
 
 **Neden 1: [Aracı VM 'ye yüklendi, ancak yanıt vermiyor (Windows VM 'leri için)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     

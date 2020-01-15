@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 0190b94cc6195163de4d428c2cae0de3620bdb01
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e84a6c93ad8757b302670af202f9d4b407f3ef57
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422691"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945310"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API ve meta verileri ile bir yanıt alın
 
@@ -41,7 +41,7 @@ Soru ve yanıt kümelerinden en iyi eşleşmeyi elde etmek için, bot veya uygul
 
 <a name="generateanswer-endpoint"></a>
 
-## <a name="publish-to-get-generateanswer-endpoint"></a>GenerateAnswer uç noktasını almak için Yayımla 
+## <a name="publish-to-get-generateanswer-endpoint"></a>GenerateAnswer uç noktasını almak için Yayımla
 
 Bilgi bankanızı [soru-cevap oluşturma portalından](https://www.qnamaker.ai)yayımladığınızda veya [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)'Yi kullanarak, generateanswer uç noktanızın ayrıntılarını alabilirsiniz.
 
@@ -59,15 +59,15 @@ Ayrıca, bilgi Bankalarınızın **Ayarlar** sekmesinden uç nokta ayrıntılar�
 
 ## <a name="generateanswer-request-configuration"></a>GenerateAnswer istek yapılandırması
 
-HTTP POST isteğiyle GenerateAnswer öğesini çağırın. GenerateAnswer çağrısının nasıl çağrılacağını gösteren örnek kod için bkz. [hızlı](../quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base)başlangıçlara bakın. 
+HTTP POST isteğiyle GenerateAnswer öğesini çağırın. GenerateAnswer çağrısının nasıl çağrılacağını gösteren örnek kod için bkz. [hızlı](../quickstarts/quickstart-sdk.md#generate-an-answer-from-the-knowledge-base)başlangıçlara bakın.
 
 POST isteği şunu kullanır:
 
 * Gerekli [URI parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
 * Güvenlik için gerekli [üst bilgi özelliği](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer)`Authorization`
-* Gerekli [gövde özellikleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto). 
+* Gerekli [gövde özellikleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
-GenerateAnswer URL 'SI aşağıdaki biçime sahiptir: 
+GenerateAnswer URL 'SI aşağıdaki biçime sahiptir:
 
 ```
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
@@ -95,7 +95,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 
 [Rankertype](../concepts/best-practices.md#choosing-ranker-type)hakkında daha fazla bilgi edinin.
 
-Önceki JSON yalnızca %30 ' da veya eşik puanı üzerinde olan yanıtları istedi. 
+Önceki JSON yalnızca %30 ' da veya eşik puanı üzerinde olan yanıtları istedi.
 
 <a name="generateanswer-response"></a>
 
@@ -125,7 +125,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 }
 ```
 
-Önceki JSON% 38,5 puanı ile yanıt verdi. 
+Önceki JSON% 38,5 puanı ile yanıt verdi.
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>İçindeki bir bot ile Soru-Cevap Oluşturma kullanmaC#
 
@@ -144,7 +144,7 @@ qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
 ```
 
-Önceki JSON yalnızca %30 ' da veya eşik puanı üzerinde olan yanıtları istedi. 
+Önceki JSON yalnızca %30 ' da veya eşik puanı üzerinde olan yanıtları istedi.
 
 Destek bot, bu koda [bir örnek](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418) içerir.
 
@@ -164,7 +164,7 @@ var qnaMakerOptions = {
 var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
 ```
 
-Önceki JSON yalnızca %30 ' da veya eşik puanı üzerinde olan yanıtları istedi. 
+Önceki JSON yalnızca %30 ' da veya eşik puanı üzerinde olan yanıtları istedi.
 
 Destek bot, bu koda [bir örnek](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36) içerir.
 
@@ -200,7 +200,7 @@ Sonuçlar yalnızca Restoran "PARADISE" için gerekli olduğundan, "restoran ad�
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Konuşma bağlamını tutmak için soru ve yanıt sonuçlarını kullanın
 
-GenerateAnswer yanıtı, eşleşen soru ve yanıt kümesi için karşılık gelen meta veri bilgilerini içerir. Bu bilgileri, daha sonraki konuşmalarda kullanılmak üzere önceki görüşmenin bağlamını depolamak için istemci uygulamanızda kullanabilirsiniz. 
+GenerateAnswer yanıtı, eşleşen soru ve yanıt kümesi için karşılık gelen meta veri bilgilerini içerir. Bu bilgileri, daha sonraki konuşmalarda kullanılmak üzere önceki görüşmenin bağlamını depolamak için istemci uygulamanızda kullanabilirsiniz.
 
 ```json
 {
@@ -245,7 +245,7 @@ Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama y
 
 ## <a name="common-http-errors"></a>Ortak HTTP hataları
 
-|Kod|Açıklama|
+|Kodlayın|Açıklama|
 |:--|--|
 |2xx|Başarılı|
 |400|isteğin parametreleri yanlış gerekli parametreler eksik, hatalı biçimlendirilmiş ya da çok büyük olduğu anlamına gelir|

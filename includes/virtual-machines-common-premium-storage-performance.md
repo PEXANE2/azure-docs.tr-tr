@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 32c1ca95c01edec74f22fc051e453f2ac0dbd03f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564756"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942819"
 ---
 ## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
 
@@ -126,7 +126,7 @@ VM boyutları hakkında daha fazla bilgi ve her bir sanal makine türü için ı
 | **GÇ boyutu** |Daha küçük GÇ boyutu, ıOPS 'yi verir. |Daha yüksek performans elde etmek için daha büyük GÇ boyutu. | &nbsp;|
 | **VM boyutu** |Uygulama gereksiniminden daha büyük ıOPS sağlayan bir VM boyutu kullanın. |Uygulama gereksiniminden daha büyük aktarım hızı sınırı ile bir VM boyutu kullanın. |Uygulama gereksiniminden daha büyük ölçek sınırları sunan bir VM boyutu kullanın. |
 | **Disk boyutu** |Uygulama gereksiniminden daha büyük ıOPS sağlayan bir disk boyutu kullanın. |Uygulama gereksiniminden daha büyük aktarım hızı sınırı ile disk boyutu kullanın. |Uygulama gereksiniminden daha büyük ölçek sınırları sunan bir disk boyutu kullanın. |
-| **VM ve disk ölçek sınırları** |Seçilen VM boyutunun ıOPS sınırı, kendisine bağlı Premium Depolama disklerinin kullanıldığı toplam ıOPS 'den büyük olmalıdır. |Seçilen VM boyutunun aktarım hızı sınırı, kendisine bağlı olan Premium Depolama disklerinin toplam aktarım hızına eşit olmalıdır. |Seçilen VM boyutunun ölçek sınırları, ekli Premium Depolama disklerinin toplam ölçek limitinden büyük olmalıdır. |
+| **VM ve disk ölçek sınırları** |Seçilen VM boyutunun ıOPS sınırı, kendisine bağlı depolama disklerinin yönettiği toplam ıOPS 'den büyük olmalıdır. |Seçilen VM boyutunun aktarım hızı sınırı, kendisine bağlı olan Premium Depolama disklerinin toplam aktarım hızına eşit olmalıdır. |Seçilen VM boyutunun ölçek sınırları, ekli Premium Depolama disklerinin toplam ölçek limitinden büyük olmalıdır. |
 | **Disk önbelleğe alma** |Daha yüksek okuma ıOPS sağlamak için Premium Depolama disklerinde, okuma ağır işlemleri olan salt okunur önbelleği etkinleştirin. | &nbsp; |Çok düşük okuma gecikmeleri sağlamak için, Premium Depolama disklerinde, Premium Depolama disklerinde salt okunur önbelleği etkinleştirin. |
 | **Disk şeridi** |Daha yüksek bir ıOPS ve aktarım hızı sınırı almak için birden çok disk kullanın ve bunları birlikte toplayın. VM başına Birleşik Sınır, ekli Premium disklerin birleştirilmiş limitlerinden daha yüksek olmalıdır. | &nbsp; | &nbsp; |
 | **Şerit boyutu** |OLTP uygulamalarında görülen rastgele küçük GÇ deseninin daha küçük şerit boyutu. Örneğin, SQL Server OLTP uygulaması için 64 KB 'lık Stripe boyutunu kullanın. |Veri ambarı uygulamalarında görülen sıralı büyük GÇ deseninin daha büyük şerit boyutu. Örneğin, SQL Server veri ambarı uygulaması için 256 KB 'lık dizili boyut kullanın. | &nbsp; |

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 10/10/2019
+ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: 957acc25c3218069a20e90fe83e00e441b6303d6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839553"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941549"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Hızlı başlangıç: nasıl kaydolun ve ilk videonuzu karşıya yükleyebilirsiniz
 
@@ -32,6 +32,12 @@ Video Indexer ile geliştirmeye başlamak için [Video Indexer](https://www.vide
 > [!NOTE]
 > Videonun bir adı 80 karakterden büyük olmamalıdır.
 
+### <a name="supported-file-formats-for-video-indexer"></a>Video Indexer için desteklenen dosya biçimleri
+
+Video Indexer ile kullanabileceğiniz dosya biçimlerinin bir listesi için bkz. [Giriş kapsayıcı/dosya biçimleri](../latest/media-encoder-standard-formats.md#input-containerfile-formats) makalesi.
+
+### <a name="upload-a-video"></a>Videoyu karşıya yükleme
+
 1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın.
 2. Karşıya video yüklemek için **Karşıya Yükle** düğme veya bağlantısına basın.
 
@@ -45,7 +51,9 @@ Video Indexer ile geliştirmeye başlamak için [Video Indexer](https://www.vide
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık videonun öngörülerini görmek için [video Indexer](video-indexer-view-edit.md) Web sitesini veya [video Indexer geliştirici portalını](video-indexer-use-apis.md) kullanabilirsiniz. 
+Daha fazla ayrıntı için bkz. [videoları karşıya yükleme ve Dizin](upload-index-videos.md) .
+
+Bir videoyu karşıya yükleyip dizinledikten sonra, videonun öngörülerini görmek için [video Indexer](video-indexer-view-edit.md) Web sitesini veya [video Indexer geliştirici portalını](video-indexer-use-apis.md) kullanmaya başlayabilirsiniz. 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

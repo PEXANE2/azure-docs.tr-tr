@@ -1,6 +1,6 @@
 ---
-title: Azure 'da bir Windows sanal makinesini yeniden boyutlandırmak için PowerShell 'i kullanma
-description: Azure PowerShell kullanarak Kaynak Yöneticisi dağıtım modelinde oluşturulan bir Windows sanal makinesini yeniden boyutlandırın.
+title: Azure 'da Windows VM 'yi yeniden boyutlandırma
+description: Bir Azure sanal makinesi için kullanılan VM boyutunu değiştirin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -12,26 +12,34 @@ ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 4b30f2fd8e095b00898e083e33c23c7c9a915b99
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6718804d4635edb2628b53017ab9d377928afad8
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073361"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941734"
 ---
 # <a name="resize-a-windows-vm"></a>Windows VM 'yi yeniden boyutlandırma
 
-Bu makalede, Azure PowerShell kullanarak bir VM 'yi farklı bir [VM boyutuna](sizes.md) nasıl taşıyacağınız gösterilmektedir.
+Bu makalede, bir sanal makineyi farklı bir [VM boyutuna](sizes.md)nasıl taşıyacağınız gösterilmektedir.
 
 Bir sanal makine (VM) oluşturduktan sonra VM boyutunu değiştirerek VM 'yi yukarı veya aşağı ölçeklendirebilirsiniz. Bazı durumlarda, önce VM 'yi serbest bırakın. Yeni boyut, şu anda VM 'yi barındıran donanım kümesinde yoksa bu durum oluşabilir.
 
 VM 'niz Premium Depolama kullanıyorsa, Premium Depolama desteğini almak için boyutun bir **s** sürümünü seçtiğinizden emin olun. Örneğin, Standard_E4_v3 yerine Standard_E4**s**_v3 seçin.
 
- 
+## <a name="use-the-portal"></a>Portalı kullanma
 
-## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Bir kullanılabilirlik kümesinde değil Windows VM 'yi yeniden boyutlandırma
+1. [Azure portalı](https://portal.azure.com) açın.
+1. Sanal makine için sayfayı açın.
+1. Sol taraftaki menüde **Boyut**' u seçin.
+1. Kullanılabilir boyutlar listesinden yeni bir boyut seçip **yeniden boyutlandır**' ı seçin.
+
+
+Sanal makine şu anda çalışıyorsa boyutunu değiştirmek, yeniden başlatılmasına neden olur. Sanal makineyi durdurmak ek boyutları açığa çıkabilir.
+
+## <a name="use-powershell-to-resize-a-vm-not-in-an-availability-set"></a>Kullanılabilirlik kümesinde bulunmayan bir VM 'yi yeniden boyutlandırmak için PowerShell 'i kullanma
 
 Bazı değişkenleri ayarlayın. Değerleri kendi bilgileriniz ile değiştirin.
 
@@ -69,7 +77,7 @@ Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 > 
 > 
 
-## <a name="resize-a-windows-vm-in-an-availability-set"></a>Bir kullanılabilirlik kümesindeki Windows VM 'yi yeniden boyutlandırma
+## <a name="use-powershell-to-resize-a-vm-in-an-availability-set"></a>Kullanılabilirlik kümesindeki bir VM 'yi yeniden boyutlandırmak için PowerShell 'i kullanma
 
 Bir kullanılabilirlik kümesindeki bir VM için yeni boyut, şu anda VM 'yi barındıran donanım kümesinde yoksa, VM 'nin yeniden boyutlandırılması için kullanılabilirlik kümesindeki tüm VM 'Lerin serbest bırakılmasıyla sonuçlanır. Ayrıca, bir VM yeniden boyutlandırılırken kullanılabilirlik kümesindeki diğer VM 'lerin boyutunu güncelleştirmeniz gerekebilir. Bir kullanılabilirlik kümesindeki bir VM 'yi yeniden boyutlandırmak için aşağıdaki adımları gerçekleştirin.
 

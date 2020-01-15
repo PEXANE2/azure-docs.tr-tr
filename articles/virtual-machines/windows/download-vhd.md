@@ -12,50 +12,51 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: c5891d7ea2b53ab3524cfff267e71b4f05779cfc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d1c98fa4f3572c40279978d787b1719746478a06
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033601"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940446"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Azure 'dan bir Windows VHD indirin
 
 Bu makalede, Azure 'dan Azure portal kullanarak bir Windows sanal sabit disk (VHD) dosyası indirmeyi öğreneceksiniz.
 
+## <a name="optional-generalize-the-vm"></a>İsteğe bağlı: VM 'yi Genelleştirme
+
+VHD 'YI başka VM 'Ler oluşturmak için [görüntü](tutorial-custom-images.md) olarak kullanmak istiyorsanız, işletim sistemini genelleştirmek Için [Sysprep 'i](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) kullanmanız gerekir. 
+
+VHD 'yi başka VM 'Ler oluşturmak için görüntü olarak kullanmak için VM 'yi genelleştirin.
+
+1. Önceden yapmadıysanız, [Azure portal](https://portal.azure.com/)da oturum açın
+2. [VM 'ye bağlanın](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+3. VM 'de yönetici olarak komut Istemi penceresini açın.
+4. Dizini *%windir%\system32\sysprep* olarak değiştirin ve Sysprep. exe ' yi çalıştırın.
+5. Sistem Hazırlama Aracı iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **genelleştirilemedi** ' ın seçili olduğundan emin olun.
+6. Kapalı Seçenekler ' de, **kapatın**' i seçin ve ardından **Tamam**' a tıklayın. 
+
+
 ## <a name="stop-the-vm"></a>VM’yi durdurma
 
-Bir VHD, çalışan bir VM 'ye eklenmişse Azure 'dan indirilemiyor. Bir VHD 'YI indirmek için VM 'yi durdurmanız gerekir. Yeni disklerle diğer VM 'Ler oluşturmak için bir VHD 'YI [görüntü](tutorial-custom-images.md) olarak kullanmak istiyorsanız, dosyadaki işletim sistemini genelleştirmek Için [Sysprep 'i](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) kullanın ve ardından VM 'yi durdurun. VHD 'yi, var olan bir VM 'nin veya veri diskinin yeni bir örneği için disk olarak kullanmak üzere yalnızca VM 'yi durdurup serbest bırakma yeterlidir.
+Bir VHD, çalışan bir VM 'ye eklenmişse Azure 'dan indirilemiyor. Bir VHD 'YI indirmek için VM 'yi durdurmanız gerekir. 
 
-VHD 'YI başka VM 'Ler oluşturmak üzere bir görüntü olarak kullanmak için şu adımları izleyin:
+1. Azure portal hub menüsünde **sanal makineler**' e tıklayın.
+1. Listeden VM 'yi seçin.
+1. VM 'nin dikey penceresinde **Durdur**' a tıklayın.
 
-1.  Önceden yapmadıysanız, [Azure portal](https://portal.azure.com/)da oturum açın
-2.  [VM 'ye bağlanın](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
-3.  VM 'de yönetici olarak komut Istemi penceresini açın.
-4.  Dizini *%windir%\system32\sysprep* olarak değiştirin ve Sysprep. exe ' yi çalıştırın.
-5.  Sistem Hazırlama Aracı iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **genelleştirilemedi** ' ın seçili olduğundan emin olun.
-6.  Kapalı Seçenekler ' de, **kapatın**' i seçin ve ardından **Tamam**' a tıklayın. 
 
-VHD 'YI, var olan bir VM veya veri diskinin yeni bir örneği için disk olarak kullanmak üzere aşağıdaki adımları izleyin:
-
-1.  Azure portal hub menüsünde **sanal makineler**' e tıklayın.
-2.  Listeden VM 'yi seçin.
-3.  VM 'nin dikey penceresinde **Durdur**' a tıklayın.
-
-    ![VM 'yi durdur](./media/download-vhd/export-stop.png)
-
-## <a name="generate-sas-url"></a>SAS URL 'SI oluştur
+## <a name="generate-download-url"></a>İndirme URL 'SI oluştur
 
 VHD dosyasını indirmek için, [paylaşılan erişim imzası (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL 'si oluşturmanız gerekir. URL oluşturulduğunda, URL 'ye bir sona erme saati atanır.
 
-1.  VM 'nin dikey penceresinin menüsünde **diskler**' e tıklayın.
-2.  VM 'nin işletim sistemi diskini seçin ve ardından **disk dışarı aktar**' a tıklayın.
-3.  URL 'nin süre sonu saatini *36000*olarak ayarlayın.
-4.  **URL Oluştur**' a tıklayın.
-
-    ![URL Oluştur](./media/download-vhd/export-generate-new.png)
+1. VM 'nin sayfasında, sol taraftaki menüde **diskler** ' e tıklayın.
+1. VM için işletim sistemi diskini seçin.
+1. Disk sayfasında, sol menüden **disk dışarı aktar** ' ı seçin.
+1. URL 'nin varsayılan sona erme saati *3600* saniyedir. Windows işletim sistemi diskleri için bunu **36000** artırın.
+1. **URL Oluştur**' a tıklayın.
 
 > [!NOTE]
 > Son kullanma süresi, Windows Server işletim sistemi için büyük VHD dosyasını indirmek üzere yeterli zaman sağlamak üzere varsayılan değer olarak artar. Windows Server işletim sistemini içeren bir VHD dosyasının, bağlantınıza bağlı olarak birkaç saat sürer. Bir veri diski için VHD 'yi İndiriyor olmanız durumunda varsayılan süre yeterlidir. 
@@ -64,13 +65,8 @@ VHD dosyasını indirmek için, [paylaşılan erişim imzası (SAS)](../../stora
 
 ## <a name="download-vhd"></a>VHD 'YI indir
 
-1.  Oluşturulan URL altında, VHD dosyasını Indir ' e tıklayın.
-
-    ![VHD 'YI indir](./media/download-vhd/export-download.png)
-
-2.  İndirmeyi başlatmak için tarayıcıda **Kaydet** ' e tıklamanız gerekebilir. VHD dosyasının varsayılan adı *abcd*' dir.
-
-    ![Tarayıcıda Kaydet ' e tıklayın](./media/download-vhd/export-save.png)
+1. Oluşturulan URL altında, VHD dosyasını Indir ' e tıklayın.
+1. İndirmeyi başlatmak için tarayıcınızda **Kaydet** ' e tıklamanız gerekebilir. VHD dosyasının varsayılan adı *abcd*' dir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
