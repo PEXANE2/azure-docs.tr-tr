@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b30e260b2eeb0d8af0c347996cdb51685dedd046
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 77bc092c7d44e559562699d9177c2bd168f7dea0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133325"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981602"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Azure Event Grid ile Anahtar Kasası bildirimlerini alma ve yanıtlama (Önizleme)
 
@@ -22,7 +22,7 @@ Azure Event Grid ile Azure Key Vault Tümleştirme (Şu anda önizlemede), bir a
 
 Bu kılavuzda, Event Grid aracılığıyla Key Vault bildirimlerinin nasıl alınacağı ve Azure Otomasyonu aracılığıyla durum değişikliklerine nasıl yanıt verileceği açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Azure aboneliğinizdeki bir Anahtar Kasası. [Azure CLI kullanarak Azure Key Vault bir gizli anahtarı ayarlama ve alma](quick-create-cli.md)bölümündeki adımları izleyerek hızlı bir şekilde yeni bir Anahtar Kasası oluşturabilirsiniz.
@@ -142,7 +142,7 @@ Yeni oluşturduğunuz runbook 'u tetiklemek için bir Web kancası oluşturun.
 
 1.  Bağlam bölmesinde **Seçimi Onayla** ' yı seçin.
 
-1.  **Oluştur**'u seçin.
+1.  **Oluştur**’u seçin.
 
     ![Olay aboneliği oluştur](media/image8.png)
 
@@ -184,7 +184,7 @@ Event Grid aboneliğinizin düzgün yapılandırıldığını doğrulayın. Bu t
 
 ### <a name="you-cant-create-an-event-subscription"></a>Olay aboneliği oluşturamazsınız
 
-Azure abonelik kaynak sağlayıcılarınızda Event Grid ve Anahtar Kasası sağlayıcısını yeniden kaydettirin. Bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/resource-manager-supported-services.md).
+Azure abonelik kaynak sağlayıcılarınızda Event Grid ve Anahtar Kasası sağlayıcısını yeniden kaydettirin. Bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

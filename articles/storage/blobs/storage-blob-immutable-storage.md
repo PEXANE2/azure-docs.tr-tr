@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: a8c19a8e88ec7fe2002a327c7e4a57874a753b9f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921230"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981835"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Sabit depolamayla iş açısından kritik blob verilerini depolayın
 
@@ -156,7 +156,7 @@ Kapsayıcıda en az bir blob varsa, kilitli veya kilitlenmemiş bir zaman tabanl
 
 **Zaman tabanlı bekletme ilkesine veya yasal tutmaya sahip bir kapsayıcıya sahip bir depolama hesabını silmeye çalışırsam ne olur?**
 
-Geçerli bir saklama kümesi veya **kilitli** zaman tabanlı bir ilke olan en az bir kapsayıcı varsa, depolama hesabı silme işlemi başarısız olur. Kilidi açılmış zaman tabanlı ilkeye sahip bir kapsayıcı, depolama hesabı silinmeye karşı koruma sağlamaz. Depolama hesabını silebilmeniz için tüm yasal tutmaları kaldırmanız ve tüm **kilitli** kapsayıcıları silmeniz gerekir. Kapsayıcı silme hakkında daha fazla bilgi için önceki soruya bakın. Ayrıca, [Azure Resource Manager kilitleri](../../azure-resource-manager/resource-group-lock-resources.md)olan depolama hesabınıza yönelik daha fazla silme koruması da uygulayabilirsiniz.
+Geçerli bir saklama kümesi veya **kilitli** zaman tabanlı bir ilke olan en az bir kapsayıcı varsa, depolama hesabı silme işlemi başarısız olur. Kilidi açılmış zaman tabanlı ilkeye sahip bir kapsayıcı, depolama hesabı silinmeye karşı koruma sağlamaz. Depolama hesabını silebilmeniz için tüm yasal tutmaları kaldırmanız ve tüm **kilitli** kapsayıcıları silmeniz gerekir. Kapsayıcı silme hakkında daha fazla bilgi için önceki soruya bakın. Ayrıca, [Azure Resource Manager kilitleri](../../azure-resource-manager/management/lock-resources.md)olan depolama hesabınıza yönelik daha fazla silme koruması da uygulayabilirsiniz.
 
 **Blob sabit durumundayken verileri farklı blob katmanlarında (sık erişimli, seyrek erişimli Arşiv) taşıyabilir miyim?**
 
@@ -179,4 +179,4 @@ Evet, uyumluluk gereksinimleriniz geçici silmenin etkinleştirilmesini sağlar.
 - [BLOB depolama için dengesde kullanılabilirlik ilkelerini ayarlama ve yönetme](storage-blob-immutability-policies-manage.md)
 - [Yaşam döngüsü yönetimi ile blob verilerini otomatik olarak katmana ve silmeye yönelik kurallar ayarlama](storage-lifecycle-management-concepts.md)
 - [Azure Depolama blobları için geçici silme](../blobs/storage-blob-soft-delete.md)
-- [Abonelikleri, kaynak gruplarını ve kaynakları Azure Resource Manager kilitlerle koruyun](../../azure-resource-manager/resource-group-lock-resources.md).
+- [Abonelikleri, kaynak gruplarını ve kaynakları Azure Resource Manager kilitlerle koruyun](../../azure-resource-manager/management/lock-resources.md).

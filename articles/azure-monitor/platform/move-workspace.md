@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4baa65ca5dda6b266cd6c739225ebd01d011268c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278804"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980095"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics çalışma alanını farklı bir aboneliğe veya kaynak grubuna taşıyın
 
-Bu makalede, Log Analytics çalışma alanını aynı bölgedeki başka bir kaynak grubuna veya aboneliğe taşıma adımlarını öğreneceksiniz. Azure kaynaklarını Azure portal, PowerShell, Azure CLı veya REST API aracılığıyla taşıma hakkında daha fazla bilgi edinebilirsiniz. konumundaki [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıyın](../../azure-resource-manager/resource-group-move-resources.md). 
+Bu makalede, Log Analytics çalışma alanını aynı bölgedeki başka bir kaynak grubuna veya aboneliğe taşıma adımlarını öğreneceksiniz. Azure kaynaklarını Azure portal, PowerShell, Azure CLı veya REST API aracılığıyla taşıma hakkında daha fazla bilgi edinebilirsiniz. konumundaki [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıyın](../../azure-resource-manager/management/move-resource-group-and-subscription.md). 
 
 > [!IMPORTANT]
 > Çalışma alanını farklı bir bölgeye taşıyamazsınız.
@@ -82,7 +82,7 @@ Azure portal kullanarak Otomasyon hesabının çalışma alanından bağlantıs�
 
 ## <a name="move-your-workspace"></a>Çalışma alanınızı taşıyın
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure Portal
 Azure portal kullanarak çalışma alanınızı taşımak için aşağıdaki yordamı kullanın:
 
 1. **Log Analytics çalışma alanları** menüsünü açın ve ardından çalışma alanınızı seçin.
@@ -107,4 +107,4 @@ Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Hangi kaynakların taşınmasını desteklediğini bir liste için bkz. [kaynaklar Için taşıma işlemi desteği](../../azure-resource-manager/move-support-resources.md).
+- Hangi kaynakların taşınmasını desteklediğini bir liste için bkz. [kaynaklar Için taşıma işlemi desteği](../../azure-resource-manager/management/move-support-resources.md).

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 4132dacbb628051e674952806cb6b606ee915525
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c6ea57ac30a1b4d228a19c3be6a794b3d2175171
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644623"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973023"
 ---
 # <a name="virtual-network-traffic-routing"></a>Sanal ağ trafiğini yönlendirme
 
@@ -69,7 +69,7 @@ Azure, farklı Azure özellikleri için ek olarak varsayılan sistem yolları ek
 * **VirtualNetworkServiceEndpoint**: Bazı hizmetlerde, bir hizmet uç noktasını etkinleştirdiğinizde ortak IP adresleri Azure tarafından yol tablosuna eklenir. Hizmet uç noktaları bir sanal ağdaki belirli alt ağlar için etkinleştirildiğinden, yol yalnızca bir hizmet uç noktasının etkinleştirildiği alt ağın yol tablosuna eklenir. Azure hizmetlerinin genel IP adresleri düzenli olarak değişir. Adresler değiştiğinde Azure, yol tablosundaki adresleri otomatik olarak yönetir. [Sanal ağ hizmet uç noktaları](virtual-network-service-endpoints-overview.md) ve hizmet uç noktaları oluşturabileceğiniz hizmetler hakkında daha fazla bilgi edinin.<br>
 
     > [!NOTE]
-    > **Sanal ağ eşlemesi** ve **VirtualNetworkServiceEndpoint** türündeki sonraki atlamalar yalnızca Azure Resource Manager dağıtım modeli ile oluşturulmuş sanal ağlardaki alt ağların yol tablolarına eklenir. Sonraki atlama türleri, klasik dağıtım modeli ile oluşturulmuş sanal ağ alt ağlarıyla ilişkili yol tablolarına eklenmez. Azure [dağıtım modelleri](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) hakkında daha fazla bilgi edinin.
+    > **Sanal ağ eşlemesi** ve **VirtualNetworkServiceEndpoint** türündeki sonraki atlamalar yalnızca Azure Resource Manager dağıtım modeli ile oluşturulmuş sanal ağlardaki alt ağların yol tablolarına eklenir. Sonraki atlama türleri, klasik dağıtım modeli ile oluşturulmuş sanal ağ alt ağlarıyla ilişkili yol tablolarına eklenmez. Azure [dağıtım modelleri](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) hakkında daha fazla bilgi edinin.
 
 ## <a name="custom-routes"></a>Özel yollar
 
@@ -101,7 +101,7 @@ Kullanıcı tanımlı yollarda sonraki atlama türü olarak **VNet eşlemesi** v
 
 ## <a name="next-hop-types-across-azure-tools"></a>Azure Araçları genelinde sonraki atlama türleri
 
-Sonraki atlama türleri için gösterilen ve başvurulan ad, Azure portalı ile komut satırı araçları ve Azure Resource Manager ile klasik dağıtım modelleri arasında farklıdır. Aşağıdaki tabloda farklı araçlar ve [dağıtım modelleri](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ile her bir sonraki atlama türüne başvurmak için kullanılan adlar listelenir:
+Sonraki atlama türleri için gösterilen ve başvurulan ad, Azure portalı ile komut satırı araçları ve Azure Resource Manager ile klasik dağıtım modelleri arasında farklıdır. Aşağıdaki tabloda farklı araçlar ve [dağıtım modelleri](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ile her bir sonraki atlama türüne başvurmak için kullanılan adlar listelenir:
 
 |Sonraki atlama türü                   |Azure CLI ve PowerShell (Resource Manager) |Azure klasik CLI ve PowerShell (klasik)|
 |-------------                   |---------                                       |-----|

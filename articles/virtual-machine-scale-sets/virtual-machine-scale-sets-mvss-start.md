@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: e3d8ada67b0a592df9c2dba145626836f27da631
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 52fb7c770e9f9e2570cad92a8c0dd9bc4374e708
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459381"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980185"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Sanal Makine Ölçek Kümesi şablonları hakkında bilgi edinin
 [Azure Resource Manager şablonları](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process), ilgili kaynak gruplarını dağıtmanın harika bir yoludur. Bu öğretici serisinde, temel bir ölçek kümesi şablonunun nasıl oluşturulduğu ve bu şablonun çeşitli senaryolara uyacak şekilde nasıl değiştirileceği gösterilmektedir. Tüm örnekler bu [GitHub deposundan](https://github.com/gatneil/mvss)gelir.
@@ -75,7 +75,7 @@ Tüm kaynaklar `type`, `name`, `apiVersion`ve `location` özellikleri gerektirir
 ```
 
 ## <a name="specify-location"></a>Konum belirt
-Sanal ağın konumunu belirtmek için bir [Kaynak Yöneticisi Şablon işlevi](../azure-resource-manager/resource-group-template-functions.md)kullanın. Bu işlev tırnak içine alınmış ve köşeli ayraçlar şöyle olmalıdır: `"[<template-function>]"`. Bu durumda `resourceGroup` işlevini kullanın. Bağımsız değişken içermez ve bu dağıtımın dağıtıldığı kaynak grubu hakkında meta veriler içeren bir JSON nesnesi döndürür. Kaynak grubu, dağıtım sırasında Kullanıcı tarafından ayarlanır. Bu değer daha sonra JSON nesnesinden konumu almak için `.location` ile bu JSON nesnesine dizinlenir.
+Sanal ağın konumunu belirtmek için bir [Kaynak Yöneticisi Şablon işlevi](../azure-resource-manager/templates/template-functions.md)kullanın. Bu işlev tırnak içine alınmış ve köşeli ayraçlar şöyle olmalıdır: `"[<template-function>]"`. Bu durumda `resourceGroup` işlevini kullanın. Bağımsız değişken içermez ve bu dağıtımın dağıtıldığı kaynak grubu hakkında meta veriler içeren bir JSON nesnesi döndürür. Kaynak grubu, dağıtım sırasında Kullanıcı tarafından ayarlanır. Bu değer daha sonra JSON nesnesinden konumu almak için `.location` ile bu JSON nesnesine dizinlenir.
 
 ```json
        "location": "[resourceGroup().location]",

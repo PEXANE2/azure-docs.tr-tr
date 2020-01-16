@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b80c29788bd2f8d5172795aa2c92a80e460ff81f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460464"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978520"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Azure Storage ile Azure CLI kullanma
 
@@ -23,7 +23,7 @@ Açık kaynaklı, platformlar arası Azure CLı, Azure platformuyla çalışmaya
 
 Bu kılavuzda, Azure Depolama hesabınızdaki kaynaklarla çalışan çeşitli görevleri gerçekleştirmek için [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) 'yı nasıl kullanacağınızı göstereceğiz. Bu kılavuzu kullanmadan önce CLı 'nın en son sürümünü indirip yüklemenizi veya yükseltmenizi öneririz.
 
-Kılavuzdaki örnekler Ubuntu üzerinde bash kabuğu kullanımını varsayar, ancak diğer platformların benzer şekilde gerçekleştirmesi gerekir. 
+Kılavuzdaki örnekler Ubuntu üzerinde bash kabuğu kullanımını varsayar, ancak diğer platformların benzer şekilde gerçekleştirmesi gerekir.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -34,7 +34,7 @@ Bu kılavuzda, Azure depolama 'nın temel kavramlarını anladığınızı varsa
 
 ### <a name="accounts"></a>Hesaplar
 * **Azure hesabı**: henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/).
-* **Storage hesabı**: Bkz. [Azure Storage hesapları hakkında](storage-create-storage-account.md) sayfası, [Storage hesabı oluşturma](storage-quickstart-create-account.md) bölümü.
+* **Storage hesabı**: Bkz. [Azure Storage hesapları hakkında](storage-account-overview.md) sayfası, [Storage hesabı oluşturma](storage-account-create.md) bölümü.
 
 ### <a name="install-the-azure-cli"></a>Azure CLI'yı yükleme
 
@@ -335,7 +335,7 @@ Aynı zamanda MIME türü olarak da bilinen içerik türü, blob verilerinin bi�
 
 ```azurecli
 az storage blob update
-    --container-name <container_name> 
+    --container-name <container_name>
     --name <blob_name>
     --content-type <content_type>
 ```
@@ -390,7 +390,7 @@ az storage file list --share-name myshare --path myDir/mySubDir/MySubDir2 --outp
 
 ### <a name="copy-files"></a>Dosyaları kopyalama      
 Bir dosyayı başka bir dosyaya, bir blob 'a veya bir dosyaya blob 'a kopyalayabilirsiniz. Örneğin, bir dosyayı farklı bir paylaşımdaki dizine kopyalamak için:        
-        
+
 ```azurecli
 az storage file copy start \
 --source-share share1 --source-path dir1/file.txt \
@@ -524,7 +524,7 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 Paylaşılan anlık görüntü zaman damgasıyla `--snapshot` parametresi sağlayarak `az storage share delete` komutunu kullanarak bir paylaşma anlık görüntüsünü silebilirsiniz:
 
 ```cli
-az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
+az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z'
 ```
 
 Örnek Çıkış
@@ -535,7 +535,7 @@ az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure CLı ile çalışma hakkında daha fazla bilgi edinmek için bazı ek kaynaklar aşağıda verilmiştir. 
+Azure CLı ile çalışma hakkında daha fazla bilgi edinmek için bazı ek kaynaklar aşağıda verilmiştir.
 
 * [Azure CLı ile çalışmaya başlama](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Azure CLI komut başvurusu](/cli/azure)

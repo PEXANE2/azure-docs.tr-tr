@@ -4,12 +4,12 @@ description: Azure blok zinciri hizmeti veri erişimi ve güvenlik kavramları
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: e1a40acfec6b0dc5cdf21fb84b341b6b4987797a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455719"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982238"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure blok zinciri hizmeti güvenliği
 
@@ -23,9 +23,9 @@ Azure blok zinciri hizmeti kaynakları özel bir sanal ağda yalıtılmıştır.
 
 ## <a name="encryption"></a>Şifreleme
 
-Kullanıcı verileri Azure depolama 'da depolanır. Kullanıcı verileri, güvenlik ve gizlilik için hareket halindeyken ve geri kalanında şifrelenir. Daha fazla bilgi için bkz. [Azure depolama Güvenlik Kılavuzu](../../storage/common/storage-security-guide.md).
+Kullanıcı verileri Azure depolama 'da depolanır. Kullanıcı verileri, güvenlik ve gizlilik için hareket halindeyken ve geri kalanında şifrelenir. Daha fazla bilgi için bkz. [Azure depolama Güvenlik Kılavuzu](../../storage/blobs/security-recommendations.md).
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 İşlemler, blok zinciri düğümlerine bir RPC uç noktası aracılığıyla gönderilebilir. İstemciler, Kullanıcı kimlik doğrulamasını işleyen ve SSL üzerinden verileri şifreleyen bir ters ara sunucu kullanarak bir işlem düğümüyle iletişim kurar.
 
@@ -33,11 +33,11 @@ Kullanıcı verileri Azure depolama 'da depolanır. Kullanıcı verileri, güven
 
 RPC erişimi için üç kimlik doğrulama modu vardır.
 
-### <a name="basic-authentication"></a>Temel kimlik doğrulaması
+### <a name="basic-authentication"></a>Temel kimlik doğrulama
 
 Temel kimlik doğrulaması, Kullanıcı adını ve parolasını içeren bir HTTP kimlik doğrulama üstbilgisi kullanır. Kullanıcı adı, blok zinciri düğümünün adıdır. Parola, bir üye veya düğümün sağlanması sırasında ayarlanır. Parola Azure portal veya CLı kullanılarak değiştirilebilir.
 
-### <a name="access-keys"></a>Erişim anahtarları
+### <a name="access-keys"></a>Erişim tuşları
 
 Erişim anahtarları, uç nokta URL 'sinde bulunan rastgele oluşturulmuş bir dize kullanır. İki erişim anahtarı, anahtar döndürmeyi etkinleştirmeye yardımcı olur. Anahtarlar Azure portal ve CLı 'dan yeniden oluşturulabilir.
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: b58aa97dbb97bade87a38456c58df8f93a29946f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 9d213c8fa03ad2ca5e5fd7e620e52aa502749be2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901695"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969333"
 ---
 # <a name="authoring-and-runtime-keys"></a>Yazma ve çalışma zamanı anahtarları
 
@@ -46,7 +46,7 @@ LUSıS üç tür Azure kaynağına izin verir:
  
 |Anahtar|Amaç|Bilişsel hizmet `kind`|Bilişsel hizmet `type`|
 |--|--|--|--|
-|[Yazma anahtarı](#programmatic-key)|Yazma, eğitim, yayımlama ve test etme ile uygulama verilerine erişin ve bunları yönetin. LUSıS uygulamalarını programlı olarak yazmak istiyorsanız bir LUSıS yazma anahtarı oluşturun.<br><br>`LUIS.Authoring` anahtarının amacı şunları yapmanıza izin versağlamaktır:<br>* Eğitim ve yayımlama dahil Language Understanding uygulamaları ve modelleri program aracılığıyla yönetme<br> * [katkıda bulunan rolüne](#contributions-from-other-authors)kişi atayarak yazma kaynağına yönelik izinleri denetleyin.|`LUIS.Authoring`|`Cognitive Services`|
+|[Anahtar yazma](#programmatic-key)|Yazma, eğitim, yayımlama ve test etme ile uygulama verilerine erişin ve bunları yönetin. LUSıS uygulamalarını programlı olarak yazmak istiyorsanız bir LUSıS yazma anahtarı oluşturun.<br><br>`LUIS.Authoring` anahtarının amacı şunları yapmanıza izin versağlamaktır:<br>* Eğitim ve yayımlama dahil Language Understanding uygulamaları ve modelleri program aracılığıyla yönetme<br> * [katkıda bulunan rolüne](#contributions-from-other-authors)kişi atayarak yazma kaynağına yönelik izinleri denetleyin.|`LUIS.Authoring`|`Cognitive Services`|
 |[Tahmin anahtarı](#prediction-endpoint-runtime-key)| Sorgu tahmini uç noktası istekleri. İstemci uygulamanızın, başlatıcı kaynak tarafından belirtilen 1.000 isteklerin ötesinde tahmin etmek için bir LUSıS tahmin anahtarı oluşturun. |`LUIS`|`Cognitive Services`|
 |[Bilişsel hizmet hizmeti çoklu hizmet kaynak anahtarı](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|LUVE diğer desteklenen bilişsel hizmetler ile paylaşılan sorgu tahmini uç noktası istekleri.|`CognitiveServices`|`Cognitive Services`|
 
@@ -77,7 +77,7 @@ Her abonelik için bölge başına en fazla 10 yazma anahtarı oluşturabilirsin
 
 Bkz. [anahtar sınırları](luis-boundaries.md#key-limits) ve [Azure bölgeleri](luis-reference-regions.md). 
 
-Yayımlama bölgeleri, yazma bölgelerinden farklıdır. İstemci uygulamanızın bulunmasını istediğiniz yayımlama bölgesine karşılık gelen yazma bölgesinde bir uygulama oluşturduğunuzdan emin olun.
+Yayımlama bölgeler bölge geliştirme farklıdır. İstemci uygulamanızın bulunmasını istediğiniz yayımlama bölgesine karşılık gelen yazma bölgesinde bir uygulama oluşturduğunuzdan emin olun.
 
 ## <a name="key-limit-errors"></a>Anahtar sınırı hataları
 İşlem/saniye (TPS) kotasını aşarsanız bir HTTP 429 hatası alırsınız. İşlem/saat (TPS) kotasını aşarsanız bir HTTP 403 hatası alırsınız. 
@@ -95,10 +95,10 @@ Bir uygulama, Azure kaynakları tarafından tanımlanır ve bu, sahibin aboneli�
 LUSıS uygulamanızı taşıyabilirsiniz. Azure portal veya Azure CLı 'de aşağıdaki belge kaynaklarını kullanın:
 
 * [Uygulamayı LUSıS yazma kaynakları arasında taşıma](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-move-app-to-another-luis-authoring-azure-resource)
-* [Kaynağı yeni kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/resource-group-move-resources.md)
-* [Kaynağı aynı abonelik içinde veya abonelikler arasında taşıma](../../azure-resource-manager/move-limitations/app-service-move-limitations.md)
+* [Kaynağı yeni kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+* [Kaynağı aynı abonelik içinde veya abonelikler arasında taşıma](../../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)
 
-Aboneliğinizin [sahipliğini](../../billing/billing-subscription-transfer.md) aktarmak için: 
+Aboneliğinizin [sahipliğini](../../cost-management-billing/manage/billing-subscription-transfer.md) aktarmak için: 
 
 **Geçirilen [kaynak geçişi](luis-migration-authoring.md) olan uygulamalar için**: kaynak sahibi olarak, `contributor`ekleyebilirsiniz.
 
@@ -115,17 +115,17 @@ Aboneliğinizin [sahipliğini](../../billing/billing-subscription-transfer.md) a
 
 Sahibi ve tüm katkıda bulunanlar, uygulamayı yazmak için erişime sahiptir. 
 
-|Yazma erişimi şunları içerir|Notlar|
+|Yazma erişimi içerir|Notlar|
 |--|--|
-|Uç nokta anahtarları ekleme veya kaldırma||
-|Sürüm dışarı aktarılıyor||
-|Uç nokta günlüklerini dışarı aktar||
-|Sürüm içeri aktarılıyor||
-|Uygulamayı genel yap|Bir uygulama genel olduğunda, yazma veya bitiş noktası anahtarına sahip herkes uygulamayı sorgulayabilir.|
-|Modeli değiştir|
+|Uç nokta anahtarları Ekle Kaldır||
+|Sürüm dışarı aktarma||
+|Uç nokta günlükleri Dışarı Aktar||
+|Sürümü içeri aktarılıyor||
+|Uygulama genel yap|Uygulama genel olduğunda, herhangi bir yazma ya da uç noktası anahtarı ile uygulama sorgulayabilirsiniz.|
+|Modeli Değiştir|
 |Yayımlama|
-|[Etkin öğrenme](luis-how-to-review-endpoint-utterances.md) için uç nokta utslerini gözden geçirme|
-|Eğitim|
+|Gözden geçirme için uç nokta konuşma [etkin öğrenme](luis-how-to-review-endpoint-utterances.md)|
+|Eğitin|
 
 <a name="prediction-endpoint-runtime-key"></a>
 
@@ -133,39 +133,39 @@ Sahibi ve tüm katkıda bulunanlar, uygulamayı yazmak için erişime sahiptir.
 
 Tahmin uç noktası sorgulama erişimi, **Yönet** bölümündeki **uygulama bilgileri** sayfasında bir ayarla denetlenir. 
 
-|[Özel uç nokta](#runtime-security-for-private-apps)|[Ortak uç nokta](#runtime-security-for-public-apps)|
+|[Özel uç nokta](#runtime-security-for-private-apps)|[Genel bir uç nokta](#runtime-security-for-public-apps)|
 |:--|:--|
 |Sahip ve katkıda bulunanlar için kullanılabilir|Uygulama KIMLIĞINI bilen sahip, katkıda bulunanlar ve diğer kişiler için kullanılabilir|
 
-Bir sunucudan sunucuya bir ortama çağırarak, LUSıS çalışma zamanı anahtarınızı kimlerin göreceğini denetleyebilirsiniz. Bir bot 'tan LUSıS kullanıyorsanız, bot ve LUYA arasındaki bağlantı zaten güvenlidir. LUU uç noktasını doğrudan arıyorsanız, denetimli erişime ( [AAD](https://azure.microsoft.com/services/active-directory/)gibi) sahip bir sunucu tarafı API (Azure [işlevi](https://azure.microsoft.com/services/functions/)gibi) oluşturmanız gerekir. Sunucu tarafı API 'SI çağrıldığında ve kimlik doğrulaması yapıldığında ve yetkilendirme doğrulandığında, çağrısı HALSıS 'e geçirin. Bu strateji, ortadaki adam saldırıları engellemez, ancak kullanıcılarınızın anahtar ve uç nokta URL 'nizi, kullanıcılarınızı izlemenizi sağlar ve uç nokta yanıt günlüğü (örneğin, [Application Insights](https://azure.microsoft.com/services/application-insights/)) eklemenize olanak tanır.
+Bir sunucudan sunucuya bir ortama çağırarak, LUSıS çalışma zamanı anahtarınızı kimlerin göreceğini denetleyebilirsiniz. LUIS ile bot arasındaki bağlantı zaten bir robotun LUIS kullanıyorsanız, güvenlidir. LUIS uç noktası doğrudan çağırıyorsanız, sunucu tarafı API oluşturmanız gerekir (bir Azure gibi [işlevi](https://azure.microsoft.com/services/functions/)) denetimli erişim (gibi [AAD](https://azure.microsoft.com/services/active-directory/)). Sunucu tarafı API 'SI çağrıldığında ve kimlik doğrulaması yapıldığında ve yetkilendirme doğrulandığında, çağrısı HALSıS 'e geçirin. Bu strateji, ortadaki adam saldırıları engellemez, ancak kullanıcılarınızın anahtar ve uç nokta URL 'nizi, kullanıcılarınızı izlemenizi sağlar ve uç nokta yanıt günlüğü (örneğin, [Application Insights](https://azure.microsoft.com/services/application-insights/)) eklemenize olanak tanır.
 
 #### <a name="runtime-security-for-private-apps"></a>Özel uygulamalar için çalışma zamanı güvenliği
 
 Özel bir uygulamanın çalışma zamanı yalnızca şunlar için kullanılabilir:
 
-|Anahtar ve Kullanıcı|Açıklama|
+|Anahtar ve kullanıcı|Açıklama|
 |--|--|
-|Sahibin yazma anahtarı| En fazla 1000 uç nokta okuması|
-|Ortak çalışan/katkıda bulunan yazma anahtarları| En fazla 1000 uç nokta okuması|
-|LUŞUNA atanan herhangi bir anahtar, bir yazar veya ortak çalışan/katkıda bulunan|Anahtar kullanımı katmanına göre|
+|Sahibin yazma anahtarı| En fazla 1000 uç noktası İsabeti|
+|Ortak çalışan/katkıda bulunan yazma anahtarları| En fazla 1000 uç noktası İsabeti|
+|LUŞUNA atanan herhangi bir anahtar, bir yazar veya ortak çalışan/katkıda bulunan|Anahtar kullanımı katmanını temel alan|
 
 #### <a name="runtime-security-for-public-apps"></a>Ortak uygulamalar için çalışma zamanı güvenliği
 
-Bir uygulama ortak olarak yapılandırıldıktan sonra, anahtarın _tüm uç_ nokta kotasını kullanmadığı sürece, GEÇERLI bir luya yazma anahtarı veya Luo uç nokta anahtarı uygulamanızı sorgulayabilir.
+Genel, bir uygulama yapılandırıldıktan sonra _herhangi_ anahtarı tüm uç nokta kota kullanmamış sürece yazma anahtarı veya LUIS uç noktası anahtarı geçerli LUIS uygulamanızı sorgulayabilir.
 
-Sahibi veya katkıda bulunan olmayan bir Kullanıcı, uygulama KIMLIĞI verildiğinde yalnızca ortak uygulamanın çalışma zamanına erişebilir. LUYA genel bir uygulama aramak için genel bir _Pazar_ veya başka bir yol yoktur.  
+Sahibi veya katkıda bulunan olmayan bir Kullanıcı, uygulama KIMLIĞI verildiğinde yalnızca ortak uygulamanın çalışma zamanına erişebilir. Genel LUIS yoksa _Pazar_ veya diğer yolu genel bir uygulamayı arayın.  
 
-Ortak bir uygulama tüm bölgelerde yayımlanır, böylece bölge tabanlı bir LUTO kaynak anahtarı olan bir Kullanıcı, kaynak anahtarıyla ilişkili bölgede bulunan uygulamaya erişebilir.
+LUIS kaynak bölge tabanlı anahtarı bir kullanıcıyla uygulama hangi bölge kaynak anahtarla ilişkilendirilen erişebilmesi için tüm bölgelerde genel bir uygulama yayımlanır.
 
-## <a name="transfer-of-ownership"></a>Sahiplik aktarımı
+## <a name="transfer-of-ownership"></a>Sahipliğin aktarılması
 
 LUSıS 'in bir kaynağın sahipliğini aktarma kavramı yoktur. 
 
 ## <a name="securing-the-endpoint"></a>Uç noktanın güvenliğini sağlama 
 
-Bir sunucudan sunucuya bir ortama çağırarak, LUSıS tahmin çalışma zamanı uç noktası anahtarınızı kimlerin görebileceğini denetleyebilirsiniz. Bir bot 'tan LUSıS kullanıyorsanız, bot ve LUYA arasındaki bağlantı zaten güvenlidir. LUU uç noktasını doğrudan arıyorsanız, denetimli erişime ( [AAD](https://azure.microsoft.com/services/active-directory/)gibi) sahip bir sunucu tarafı API (Azure [işlevi](https://azure.microsoft.com/services/functions/)gibi) oluşturmanız gerekir. Sunucu tarafı API 'SI çağrıldığında ve kimlik doğrulaması ve yetkilendirme doğrulandıktan sonra, çağrıyı HALSıS 'e geçirin. Bu strateji, ortadaki adam saldırıları engellemez, ancak uç noktanızı kullanıcılarınıza göre gizleme, erişimi izlemenize ve uç nokta yanıt günlüğü (örneğin [Application Insights](https://azure.microsoft.com/services/application-insights/)) eklemenize olanak tanır.  
+Bir sunucudan sunucuya bir ortama çağırarak, LUSıS tahmin çalışma zamanı uç noktası anahtarınızı kimlerin görebileceğini denetleyebilirsiniz. LUIS ile bot arasındaki bağlantı zaten bir robotun LUIS kullanıyorsanız, güvenlidir. LUIS uç noktası doğrudan çağırıyorsanız, sunucu tarafı API oluşturmanız gerekir (bir Azure gibi [işlevi](https://azure.microsoft.com/services/functions/)) denetimli erişim (gibi [AAD](https://azure.microsoft.com/services/active-directory/)). Sunucu tarafı API olarak adlandırılır ve kimlik doğrulama ve yetkilendirme doğrulandıktan sonra LUIS açın çağrı geçirin. Bu strateji adam-de-adam saldırılarına engellemez, ancak erişimi izlemenize olanak tanır, kullanıcılarınızın uç noktanızı bilgisayardan farklı gösterir ve uç nokta yanıt günlük eklemenize izin verir (gibi [Application Insights](https://azure.microsoft.com/services/application-insights/)).  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Sürüm oluşturma](luis-concept-version.md) kavramlarını anlayın. 
+* Anlamak [sürüm](luis-concept-version.md) kavramları. 
 * [Anahtar oluşturmayı](luis-how-to-azure-subscription.md)öğrenin.

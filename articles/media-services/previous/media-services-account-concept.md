@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v2 hesaplarını yönetme | Microsoft Docs
-description: Yönetmek, şifreleme, kodlama, çözümleme ve azure'da medya içeriği akışı başlatmak için bir Media Services hesabı oluşturmanız gerekir. Bu makalede, Azure Media Services v2 hesapları yönetmek açıklanmaktadır.
+title: Azure Media Services V2 hesaplarını yönetme | Microsoft Docs
+description: Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız gerekir. Bu makalede Azure Media Services V2 hesaplarının nasıl yönetileceği açıklanmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,36 +11,36 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: b4c19b1f502d079d7dfcc1edef4674d21f78ac3a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 09a5f004570430fafe5c86f4f8ae048f2d1fe4c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67622049"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981941"
 ---
-# <a name="manage-azure-media-services-v2-accounts"></a>Azure Media Services v2 hesaplarını yönetme
+# <a name="manage-azure-media-services-v2-accounts"></a>Azure Media Services V2 hesaplarını yönetme
 
-Yönetmek, şifreleme, kodlama, çözümleme ve azure'da medya içeriği akışı başlatmak için bir Media Services hesabı oluşturmanız gerekir. Media Services hesabı oluştururken, bir Azure Depolama hesabı kaynağının adını sağlamanız gerekir. Belirtilen depolama hesabı, Media Services hesabınıza eklenir. Media Services hesabı ve onunla ilişkili tüm depolama hesaplarının aynı Azure aboneliğinde olması gerekir.  
+Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız gerekir. Media Services hesabı oluştururken, bir Azure Depolama hesabı kaynağının adını sağlamanız gerekir. Belirtilen depolama hesabı, Media Services hesabınıza eklenir. Media Services hesabı ve onunla ilişkili tüm depolama hesaplarının aynı Azure aboneliğinde olması gerekir.  
 
-## <a name="moving-a-media-services-account-between-subscriptions"></a>Media Services hesabı abonelikler arasında taşıma 
+## <a name="moving-a-media-services-account-between-subscriptions"></a>Media Services bir hesabı abonelikler arasında taşıma 
 
-Media Services hesabı için yeni bir aboneliği taşımak gerekiyorsa, önce yeni abonelik için Media Services hesabını içeren kaynak grubunun tamamını taşıyın gerekir. Tüm ekli kaynaklar taşımalısınız: Azure depolama hesapları, Azure CDN profili, vb. Daha fazla bilgi için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/resource-group-move-resources.md). Tüm kaynaklarla gibi Azure kaynak grubu taşıma tamamlanması biraz zaman alabilir.
+Bir Media Services hesabını yeni bir aboneliğe taşımanız gerekiyorsa, önce Media Services hesabını içeren kaynak grubunun tamamını yeni aboneliğe taşımanız gerekir. Tüm bağlı kaynakları taşımanız gerekir: Azure depolama hesapları, Azure CDN profilleri vb. Daha fazla bilgi için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Azure 'daki tüm kaynaklarda olduğu gibi, kaynak grubu hareketlerinin tamamlanması biraz zaman alabilir.
 
-Media Services v2, çok kiracılı model desteklemez. Bir abonelikte yeni bir kiracı için Media Services hesabı taşımanız gerekirse, yeni kiracıya yeni bir Azure Active Directory (Azure AD) uygulaması oluşturun. Ardından, yeni Kiracı aboneliği için hesabınızı taşıyın. Kiracı taşıma tamamlandıktan sonra v2 API'lerini kullanarak Media Services hesabına erişmesi için bir Azure AD uygulaması yeni kiracının kullanarak başlayabilirsiniz. 
+Media Services V2, çok kiracılı modeli desteklemez. Bir Media Services hesabını yeni bir Kiracıdaki bir aboneliğe taşımanız gerekiyorsa yeni kiracıda yeni bir Azure Active Directory (Azure AD) uygulaması oluşturun. Ardından, hesabınızı yeni Kiracıdaki aboneliğe taşıyın. Kiracı taşıma işlemi tamamlandıktan sonra, v2 API 'Lerini kullanarak Media Services hesaba erişmek için yeni kiracıdan bir Azure AD uygulaması kullanmaya başlayabilirsiniz. 
 
 > [!IMPORTANT]
-> Sıfırlamak gereken [Azure AD kimlik doğrulaması](media-services-portal-get-started-with-aad.md) Media Services v2 API'ye erişmek için bilgi.  
+> Media Services V2 API 'sine erişmek için [Azure AD kimlik doğrulaması](media-services-portal-get-started-with-aad.md) bilgilerini sıfırlamanız gerekir.  
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* Tüm verileri yedekler, farklı bir aboneliğe geçiş yapmadan önce hesabınızı oluşturun.
-* Tüm akış uç noktaları durdurun ve canlı akış kaynakları gerekir. Kullanıcılarınızın içeriğinizi kaynak grubu taşıma süresince erişmek mümkün olmayacaktır. 
+* Farklı bir aboneliğe geçmeden önce hesabınızdaki tüm verilerin yedeklerini oluşturun.
+* Tüm akış uç noktalarını ve canlı akış kaynaklarını durdurmanız gerekir. Kullanıcılarınız, kaynak grubu taşıma süresi boyunca içeriğinize erişemez. 
 
 > [!IMPORTANT]
-> Akış uç noktası taşıma başarıyla tamamlanana kadar başlatılmaz.
+> Taşıma başarılı bir şekilde tamamlanana kadar akış uç noktasını başlatmayın.
 
 ### <a name="troubleshoot"></a>Sorun giderme 
 
-Media Services hesabı veya ilişkili bir Azure depolama hesabı "kaynak grubu taşıma aşağıdaki kesilirse" depolama hesabı anahtarlarını döndürme işlemini deneyin. Depolama hesabı anahtarlarını döndürme Media Services hesabı "bağlantısız" durumunu çözmezse dan yeni bir destek talebi dosya "Destek + sorun giderme" menüsünde Media Services hesabı.  
+Kaynak grubu taşıma sonrasında bir Media Services hesabı ya da ilişkili bir Azure depolama hesabı "bağlantısı kesildi" ise, depolama hesabı anahtarlarını döndürmeyi deneyin. Depolama hesabı anahtarlarını döndürmek, Media Services hesabının "bağlantısı kesildi" durumunu çözümlemezse, Media Services hesabındaki "destek + sorun giderme" menüsünden Yeni bir destek isteği ister.  
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

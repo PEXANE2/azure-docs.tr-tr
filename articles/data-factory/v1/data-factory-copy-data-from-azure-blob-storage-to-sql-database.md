@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0255787ac90e63aff02ea65912ffa37c8ecc09fa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929742"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979737"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Öğretici: Data Factory kullanarak blob depolamadan SQL veritabanına veri kopyalama
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "74929742"
 > * [.NET API’si](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız bkz. [kopyalama etkinliği öğreticisi](../quickstart-create-data-factory-dot-net.md). 
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız bkz. [kopyalama etkinliği öğreticisi](../quickstart-create-data-factory-dot-net.md).
 
 Bu öğreticide, blob depolamadan SQL veritabanına veri kopyalamak için bir işlem hattı ile veri fabrikası oluşturacaksınız.
 
@@ -46,7 +46,7 @@ Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. 
 Bu öğreticiye başlamadan önce aşağıdaki önkoşullara sahip olmanız gerekir:
 
 * **Azure aboneliği**.  Bir aboneliğiniz yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılar için [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/) makalesine bakın.
-* **Azure depolama hesabı**. Bu öğreticide BLOB depolama alanını **kaynak** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md) makalesine bakın.
+* **Azure depolama hesabı**. Bu öğreticide BLOB depolama alanını **kaynak** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın.
 * **Azure SQL Veritabanı**. Bu öğreticide bir Azure SQL veritabanını **hedef** veri deposu olarak kullanırsınız. Öğreticide kullanabileceğiniz bir Azure SQL veritabanınız yoksa, bir [Azure SQL veritabanı oluşturma ve yapılandırma hakkında](../../sql-database/sql-database-get-started.md) bilgi almak için bkz.
 * **SQL Server 2012/2014 veya Visual Studio 2013**. Örnek veritabanı oluşturmak ve sonuç verilerini veritabanında görüntülemek için SQL Server Management Studio veya Visual Studio 'Yu kullanırsınız.  
 
@@ -107,7 +107,7 @@ Azure SQL Server için **Azure hizmetlerine erişime Izin ver** ayarının, Data
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Bilgisayarınızda SQL Server 2012/2014 yüklüyse:** Azure SQL sunucunuza bağlanmak ve SQL betiğini çalıştırmak için [SQL Server Management STUDIO kullanarak Azure SQL veritabanı 'nı yönetme](../../sql-database/sql-database-manage-azure-ssms.md) yönergelerini izleyin. 
+    **Bilgisayarınızda SQL Server 2012/2014 yüklüyse:** Azure SQL sunucunuza bağlanmak ve SQL betiğini çalıştırmak için [SQL Server Management STUDIO kullanarak Azure SQL veritabanı 'nı yönetme](../../sql-database/sql-database-manage-azure-ssms.md) yönergelerini izleyin.
 
     İstemcinizin Azure SQL sunucusuna erişim izni yoksa, makinenizden (IP adresi) erişim izni vermek için Azure SQL sunucunuzun güvenlik duvarını yapılandırmanız gerekir. Azure SQL sunucunuzun güvenlik duvarını yapılandırmaya yönelik adımlar için [bu makaleye](../../sql-database/sql-database-configure-firewall-settings.md) bakın.
 
@@ -123,5 +123,5 @@ Azure SQL Server için **Azure hizmetlerine erişime Izin ver** ayarının, Data
 
 > [!NOTE]
 > Bu öğreticideki veri işlem hattı, bir kaynak veri deposundaki verileri hedef veri deposuna kopyalar. Çıkış verileri üretmek için giriş verilerini dönüştürmez. Azure Data Factory kullanarak verileri dönüştürme hakkında bir öğretici için bkz. [Öğretici: Hadoop kümesi kullanarak verileri dönüştürmek için ilk işlem hattınızı oluşturma](data-factory-build-your-first-pipeline.md).
-> 
-> Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi olarak ayarlayarak iki etkinliği zincirleyebilir, yani bir etkinliği diğerinden sonra çalıştırılmasını sağlayabilirsiniz. Ayrıntılı bilgi için bkz. [Data Factory’de zamanlama ve yürütme](data-factory-scheduling-and-execution.md). 
+>
+> Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi olarak ayarlayarak iki etkinliği zincirleyebilir, yani bir etkinliği diğerinden sonra çalıştırılmasını sağlayabilirsiniz. Ayrıntılı bilgi için bkz. [Data Factory’de zamanlama ve yürütme](data-factory-scheduling-and-execution.md).

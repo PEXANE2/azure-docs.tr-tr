@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 7f471032d69213fc11ff748e3fa9093991ee23d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03e383e43cbe90ae2f59766a235f167cff623b6a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449810"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982707"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC çözümleri derlemek ve dağıtmak için Azure Pipelines kullanma
 
@@ -192,7 +192,7 @@ Sonraki şablonda bir Azure Batch Havuzu (uygulamalarımızı işlemek için ark
 
 Son olarak, bir Orchestrator ile benzer şekilde davranan bir şablonumuz vardır. Bu şablon, yetenek şablonlarının dağıtılmasından sorumludur.
 
-Ayrıca, [bağlı Azure Resource Manager şablonlarını](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md) ayrı bir makalede oluşturma hakkında daha fazla bilgi edinebilirsiniz.
+Ayrıca, [bağlı Azure Resource Manager şablonlarını](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md) ayrı bir makalede oluşturma hakkında daha fazla bilgi edinebilirsiniz.
 
 ```json
 {
@@ -368,7 +368,7 @@ Azure Pipelines Ayrıca uygulamanızı ve temel altyapıyı dağıtmak için de 
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Uygulamanızı ve temel altyapıyı dağıtma
 
-Altyapıyı dağıtmaya yönelik birkaç adım vardır. [Bağlantılı şablonlar](../azure-resource-manager/resource-group-linked-templates.md)kullandığımızda, Bu şablonların ortak bir uç noktadan (http veya https) erişilebilir olması gerekir. Bu bir GitHub veya bir Azure Blob depolama hesabı ya da başka bir depolama konumunda bir depo olabilir. Karşıya yüklenen şablon yapıtları, özel bir modda tutulacağından ve paylaşılan erişim imzası (SAS) belirteci kullanılarak erişilen için güvenli durumda kalabilir. Aşağıdaki örnek, bir Azure Storage blobundan şablonlar içeren bir altyapının nasıl dağıtılacağını göstermektedir.
+Altyapıyı dağıtmaya yönelik birkaç adım vardır. [Bağlantılı şablonlar](../azure-resource-manager/templates/linked-templates.md)kullandığımızda, Bu şablonların ortak bir uç noktadan (http veya https) erişilebilir olması gerekir. Bu bir GitHub veya bir Azure Blob depolama hesabı ya da başka bir depolama konumunda bir depo olabilir. Karşıya yüklenen şablon yapıtları, özel bir modda tutulacağından ve paylaşılan erişim imzası (SAS) belirteci kullanılarak erişilen için güvenli durumda kalabilir. Aşağıdaki örnek, bir Azure Storage blobundan şablonlar içeren bir altyapının nasıl dağıtılacağını göstermektedir.
 
 1. Yeni bir **yayın tanımı**oluşturun ve boş bir tanım seçin. Daha sonra yeni oluşturulan ortamı, işlem hatlarımıza uygun bir şekilde yeniden adlandırmamız gerekir.
 

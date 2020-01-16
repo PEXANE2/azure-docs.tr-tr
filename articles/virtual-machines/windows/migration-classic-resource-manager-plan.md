@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: bebfcedcd2944e2c6b05c3203e67df7658dd751a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d5245f73520a77648fc590520185a2cf66bffd02
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460059"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980879"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 Azure Resource Manager çok sayıda harika özellik sunurken, işlerin sorunsuz şekilde çalıştığından emin olmak için geçiş yolculuğunun planlanmaları önemlidir. Planlamada harcama süresi, geçiş etkinliklerini yürütürken sorunlarla karşılaşmamanız gerekir.
@@ -130,8 +130,8 @@ Daha büyük geçişlerde bulunan sorunlar aşağıda verilmiştir. Bu kapsamlı
   - Yönlendirme Tabloları
 
     Azure PowerShell en son sürümü ile aşağıdaki komutları kullanarak geçerli Azure Resource Manager kotalarınızı kontrol edebilirsiniz.
-    
-     
+
+
 
     **İşlem** *(çekirdek, kullanılabilirlik kümeleri)*
 
@@ -203,9 +203,9 @@ Göz önüne almanız gerekenler:
 Artık Azure Resource Manager hangi hizmetlerde etkinleştirmek istediğinizi bilerek yapın.  Birçok müşteri, Azure ortamları için aşağıda etkileyici bilgi bulur:
 
 - [Rol tabanlı Access Control](../../role-based-access-control/overview.md).
-- Daha [kolay ve daha denetimli dağıtıma yönelik şablonlar Azure Resource Manager](../../azure-resource-manager/template-deployment-overview.md).
-- [Etiketler](../../azure-resource-manager/resource-group-using-tags.md).
-- [Etkinlik denetimi](../../azure-resource-manager/resource-group-audit.md)
+- Daha [kolay ve daha denetimli dağıtıma yönelik şablonlar Azure Resource Manager](../../azure-resource-manager/templates/overview.md).
+- [Etiketler](../../azure-resource-manager/management/tag-resources.md).
+- [Etkinlik denetimi](../../azure-resource-manager/management/view-activity-logs.md)
 - [Azure Ilkeleri](../../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>Kaçınmak için

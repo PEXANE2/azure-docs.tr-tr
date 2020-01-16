@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 80e77e2caacfed7d662fdfa04aa9524bd7c2083a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36f6152e52d6cb45d0a30b385678596331232560
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445427"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980685"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) erişimi yapılandırma
 
@@ -52,7 +52,7 @@ Aşağıdaki bölümlerde, bir Azure Cosmos DB hesabı için sanal ağ hizmeti u
 > Sanal ağ hizmet uç noktalarını etkinleştirmek için aşağıdaki Abonelik izinlerine sahip olmanız gerekir:
 >   * Sanal ağı olan abonelik: ağ katılımcısı
 >   * Azure Cosmos DB hesabıyla abonelik: DocumentDB hesabı Katılımcısı
->   * Sanal ağınız ve Azure Cosmos DB hesabınız farklı aboneliklerdeyse, sanal ağa sahip aboneliğin da `Microsoft.DocumentDB` kaynak sağlayıcısı kayıtlı olduğundan emin olun. Bir kaynak sağlayıcısını kaydetmek için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/resource-manager-supported-services.md) makalesi.
+>   * Sanal ağınız ve Azure Cosmos DB hesabınız farklı aboneliklerdeyse, sanal ağa sahip aboneliğin da `Microsoft.DocumentDB` kaynak sağlayıcısı kayıtlı olduğundan emin olun. Bir kaynak sağlayıcısını kaydetmek için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md) makalesi.
 
 Aboneliği kaynak sağlayıcısına kaydetme yönergeleri aşağıda verilmiştir.
 

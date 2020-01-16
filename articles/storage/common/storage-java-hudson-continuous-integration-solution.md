@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 75b0ea106be04cd77b18bfed8487edb6a7b7f65b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f8cdd7b950a11045f795ac93d4a0904f2dc526fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839180"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970188"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson Sürekli Tümleştirme çözümüyle Azure Depolama'yı kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -53,7 +53,7 @@ Blob hizmetini Hudson CI çözümünüz ile kullanmak için aşağıdakiler gere
      
       Tipik bir Hudson CI çözümü bir hizmet olarak çalışacak şekilde ayarlanacağından, komut satırında Hudson War çalıştırılması Bu öğretici için yeterli olacaktır.
 * Bir Azure hesabı. <https://www.azure.com>bir Azure hesabı için kaydolabilirsiniz.
-* Bir Azure depolama hesabı. Henüz bir depolama hesabınız yoksa [depolama hesabı oluşturma](../common/storage-quickstart-create-account.md)kısmındaki adımları kullanarak bir tane oluşturabilirsiniz.
+* Bir Azure depolama hesabı. Henüz bir depolama hesabınız yoksa [depolama hesabı oluşturma](../common/storage-account-create.md)kısmındaki adımları kullanarak bir tane oluşturabilirsiniz.
 * Aşağıdaki içerik, Hudson CI derleme yapıtları için bir depo olarak blob hizmetini kullanırken gereken adımları göstermek üzere temel bir örnek kullanacağı için, Hudson CI çözümünün kullanılması önerilir, ancak gerekli değildir.
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>Hudson CI ile blob hizmetini kullanma
@@ -83,7 +83,7 @@ Blob hizmetini Hudson ile kullanmak için Azure Storage eklentisini yüklemeniz,
    
     e. Seçim Hudson CI 'niz için kullanılabilir hale getirdiğiniz ek depolama hesaplarınız varsa, **daha fazla depolama hesabı ekle**' ye tıklayın.
    
-    f. Ayarlarınızı kaydetmek için **Kaydet** ' e tıklayın.
+    f. Tıklayın **Kaydet** ayarlarınızı kaydetmek için.
 
 ## <a name="how-to-create-a-post-build-action-that-uploads-your-build-artifacts-to-your-storage-account"></a>Derleme yapılarınızı depolama hesabınıza yükleyen bir oluşturma sonrası eylem oluşturma
 Yönergeler için, ilk olarak birkaç dosya oluşturacak bir iş oluşturmalı ve sonra dosyaları depolama hesabınıza yüklemek için derleme sonrası eylemini ekleyeceğiz.
@@ -112,11 +112,11 @@ Yönergeler için, ilk olarak birkaç dosya oluşturacak bir iş oluşturmalı v
 9. Seçim Kapsayıcının, derleme yapıtları karşıya yüklenmeden önce içeriğin temizlenmesini istiyorsanız **karşıya yüklemeden önce kapsayıcıyı temizle** ' ye tıklayın (kapsayıcının içeriğini temizlemek istemiyorsanız işaretini işaretsiz bırakın).
 10. **Karşıya yüklenecek yapıtların listesi**için **metin/*. txt**yazın.
 11. **Karşıya yüklenen yapıtlar Için ortak sanal yol**için, **$ {BUILD\_ID}/$ {BUILD\_Number}** girin.
-12. Ayarlarınızı kaydetmek için **Kaydet** ' e tıklayın.
+12. Tıklayın **Kaydet** ayarlarınızı kaydetmek için.
 13. Hudson panosunda, **Myjob**'u çalıştırmak Için **Şimdi Oluştur** ' a tıklayın. Durum için konsol çıkışını inceleyin. Oluşturma sonrası eylemi, derleme yapılarını karşıya yüklemeye başladığında, Azure depolama için durum iletileri konsol çıktısına dahil edilir.
 14. İşi başarılı bir şekilde tamamladıktan sonra, genel blobu açarak derleme yapıtlarını inceleyebilirsiniz.
     
-    a. [Azure portalında](https://portal.azure.com) oturum açın.
+    a. [Azure Portal](https://portal.azure.com)’ında oturum açın.
     
     b. **Depolama**' ya tıklayın.
     

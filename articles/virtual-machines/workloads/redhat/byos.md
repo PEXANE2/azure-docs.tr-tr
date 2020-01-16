@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: alsin
-ms.openlocfilehash: e9cbd98afd5f9ed5561cba2236d85da331db7895
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 911d86dd7cb03479d9bde49d8fce0f7861e32e27
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944697"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980132"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux
 Red Hat Enterprise Linux (RHEL) görüntüleri Azure 'da Kullandıkça Öde (PAYG) veya kendi aboneliğinizi getir (Red Hat Gold görüntü) modeli aracılığıyla kullanılabilir. Bu belgede, Azure 'daki Red Hat Gold görüntülerine genel bakış sunulmaktadır.
@@ -189,5 +189,6 @@ Aşağıda örnek bir komut dosyası verilmiştir. Kaynak grubu, konum, VM adı,
 ## <a name="next-steps"></a>Sonraki adımlar
 * Bulut erişimi için adım adım kılavuzlar ve program ayrıntıları, [Red Hat bulut erişimi belgelerinde bulunabilir.](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)
 * [Azure Red Hat güncelleştirme altyapısı](./redhat-rhui.md)hakkında daha fazla bilgi edinin.
-* Azure 'daki Red Hat görüntüleri hakkında daha fazla bilgi edinmek için [Belgeler sayfasına](./redhat-images.md)gidin.
+* Azure 'daki tüm Red Hat görüntüleri hakkında daha fazla bilgi edinmek için [Belgeler sayfasına](./redhat-images.md)gidin.
 * Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.
+* [Red Hat belgelerinde](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)RHEL Gold görüntülerine ek belgeler bulabilirsiniz.

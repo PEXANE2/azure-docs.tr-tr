@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d31b046bf02893affff84069ee92b3bd7735b904
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243230"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974863"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Ölçüm grafiklerini sorunlarını giderme
 
@@ -29,7 +29,7 @@ Azure Ölçüm Gezgini 'nde grafik oluşturma, özelleştirme veya yorumlama ile
 
 1. Doğru kaynak grubunu seçtiğinizden emin olun.
     > [!WARNING]
-    > En iyi performansı elde etmek için, ölçüm gezginini ilk açtığınızda **Kaynak grubu** açılan listesinde önceden seçilmiş kaynak grubu yoktur. Herhangi bir kaynak görmek için önce en az bir grup seçmelisiniz.
+    > En iyi performans için, Ölçüm Gezgini 'ni ilk açışınızda **kaynak grubu** açılır listesinde önceden seçilmiş kaynak grupları yoktur. Herhangi bir kaynak görmek için önce en az bir grup seçmelisiniz.
 
 ## <a name="chart-shows-no-data"></a>Grafik veri göstermez
 
@@ -37,7 +37,7 @@ Bazı durumlarda, doğru kaynakları ve ölçümleri seçtikten sonra grafiklerd
 
 ### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>Aboneliğiniz için Microsoft. Insights kaynak sağlayıcısı kayıtlı değil
 
-Ölçümlerin incelenmesi için aboneliğinizde *Microsoft.Insights* kaynak sağlayıcısının kaydedilmesi gerekir. Çoğu durumda otomatik olarak kaydedilir (başka bir deyişle siz bir uyarı kuralını yapılandırdıktan, herhangi bir kaynak için tanılama ayarlarını özelleştirdikten veya otomatik ölçeklendirme kuralı yapılandırdıktan sonra). Microsoft. Insights kaynak sağlayıcısı kayıtlı değilse, [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/resource-manager-supported-services.md)bölümünde açıklanan adımları izleyerek el ile kaydetmeniz gerekir.
+Ölçümlerin incelenmesi için aboneliğinizde *Microsoft.Insights* kaynak sağlayıcısının kaydedilmesi gerekir. Çoğu durumda otomatik olarak kaydedilir (başka bir deyişle siz bir uyarı kuralını yapılandırdıktan, herhangi bir kaynak için tanılama ayarlarını özelleştirdikten veya otomatik ölçeklendirme kuralı yapılandırdıktan sonra). Microsoft. Insights kaynak sağlayıcısı kayıtlı değilse, [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/management/resource-providers-and-types.md)bölümünde açıklanan adımları izleyerek el ile kaydetmeniz gerekir.
 
 **Çözüm:** **Abonelikler**, **kaynak sağlayıcıları** sekmesini açın ve aboneliğiniz için *Microsoft. Insights* 'ın kaydedildiğini doğrulayın.
 
@@ -105,7 +105,7 @@ Varsayılan olarak Konuk İşletim Sistemi ölçümleri, kaynağınızın **Tan�
 
 1. [Azure Tanılama Uzantısı](diagnostics-extension-overview.md)'nın etkinleştirildiğini ve ölçümleri toplamak için yapılandırıldığını onaylayın.
     > [!WARNING]
-    > [Konuk İşletim Sistemi](agents-overview.md#log-analytics-agent)'ni depolama hesabına göndermek için **Log Analytics aracısını** (Microsoft İzleyici Aracısı veya "MMA" olarak da adlandırılır) kullanamazsınız.
+    > **Konuk İşletim Sistemi**'ni depolama hesabına göndermek için [Log Analytics aracısını](agents-overview.md#log-analytics-agent) (Microsoft İzleyici Aracısı veya "MMA" olarak da adlandırılır) kullanamazsınız.
 
 1. [Aboneliğiniz Için](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription) **Microsoft. Insights** kaynak sağlayıcısının kayıtlı olduğundan emin olun.
 

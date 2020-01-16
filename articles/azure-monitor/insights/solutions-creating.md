@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402039"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969692"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Azure 'da bir yönetim çözümü tasarlama ve oluşturma (Önizleme)
 > [!NOTE]
@@ -23,7 +23,7 @@ ms.locfileid: "75402039"
 
 ## <a name="what-is-a-management-solution"></a>Yönetim çözümü nedir?
 
-Yönetim çözümleri, belirli bir yönetim senaryosuna ulaşmak için birlikte çalışan Azure kaynaklarını içerir.  Çözüm yüklendiğinde içerdikleri kaynakların nasıl yükleneceğine ve yapılandırılacağına ilişkin ayrıntıları içeren [Kaynak Yönetim Şablonları](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) olarak uygulanır.
+Yönetim çözümleri, belirli bir yönetim senaryosuna ulaşmak için birlikte çalışan Azure kaynaklarını içerir.  Çözüm yüklendiğinde içerdikleri kaynakların nasıl yükleneceğine ve yapılandırılacağına ilişkin ayrıntıları içeren [Kaynak Yönetim Şablonları](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) olarak uygulanır.
 
 Temel strateji, Azure ortamınızda bireysel bileşenleri oluşturarak yönetim çözümünüzü başlatmaya başlamadır.  İşlevselliği düzgün şekilde çalışmaya başladıktan sonra bunları bir [yönetim çözümü dosyasına]( solutions-solution-file.md)paketlemeyi başlatabilirsiniz. 
 
@@ -64,7 +64,7 @@ Daha sonra çözüm dosyanıza eklenmek üzere dışarı aktarabilebilmeniz içi
 
 
 ## <a name="test-your-solution"></a>Çözümünüzü test etme
-Çözümünüzü geliştirirken, çalışma alanınıza yüklemeniz ve test etmeniz gerekir.  Bunu, [Kaynak Yöneticisi şablonları test etmek ve yüklemek](../../azure-resource-manager/resource-group-template-deploy.md)için kullanılabilir yöntemlerden herhangi birini kullanarak yapabilirsiniz.
+Çözümünüzü geliştirirken, çalışma alanınıza yüklemeniz ve test etmeniz gerekir.  Bunu, [Kaynak Yöneticisi şablonları test etmek ve yüklemek](../../azure-resource-manager/templates/deploy-powershell.md)için kullanılabilir yöntemlerden herhangi birini kullanarak yapabilirsiniz.
 
 ## <a name="publish-your-solution"></a>Çözümünüzü yayımlayın
 Çözümünüzü tamamladıktan ve test edildikten sonra, aşağıdaki kaynaklardan biri aracılığıyla müşteriler tarafından kullanılabilir hale getirebilirsiniz.

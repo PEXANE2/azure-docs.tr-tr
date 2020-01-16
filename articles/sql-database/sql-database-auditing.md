@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: aeca4499a41adf37ba78452f1cf76047dd8c6592
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0994ebe451bddea371f375e4d39172833df4d88a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931939"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028537"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimini kullanmaya başlayın
 
@@ -246,6 +246,14 @@ Coğrafi olarak çoğaltılan veritabanları ile birincil veritabanında denetim
 - AAD kimlik doğrulaması kullanılırken, başarısız oturum açma kayıtları SQL denetim *günlüğünde görünmez.* Başarısız oturum açma denetim kayıtlarını görüntülemek için, bu olayların ayrıntılarını günlüğe kaydeden [Azure Active Directory portalını]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)ziyaret etmeniz gerekir.
 
 - Azure SQL veritabanı denetimi, kullanılabilirlik & performansı için iyileştirilmiştir. Çok yüksek etkinlik sırasında Azure SQL veritabanı işlemlerin devam etmesine izin verir ve bazı denetlenen olayları kaydedemeyebilir.
+
+- Depolama hesabında sabit denetim yapılandırmak için bkz. [korumalı ekleme Blobları yazmaları verme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes). Denetimin kapsayıcı adının **sqldbauditlogs**olduğunu lütfen unutmayın.
+
+> [!IMPORTANT] 
+>  Zamana bağlı saklama için korumalı ekleme bloblarını yazma ayarı şu anda kullanılabilir ve yalnızca aşağıdaki bölgelerde görülebilir:
+> - Doğu ABD
+> - Güney Orta ABD
+> - Batı ABD 2
 
 
 ## <a id="subheading-7"></a>Azure PowerShell kullanarak Azure SQL Server ve veritabanı denetimini yönetme

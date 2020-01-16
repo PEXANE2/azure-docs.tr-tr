@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a5b12a426e52c3b80c58a30b320b2f746bbe990d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832187"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028519"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı zenginleştirme ve önbelleğe alma konusuna giriş
 
@@ -56,14 +56,16 @@ Mevcut bir dizin oluşturucuda bu özelliğin ayarlanması, Dizin oluşturucuyu 
 
 Artımlı zenginleştirme, sizin bölümleriniz üzerinde müdahale olmadan değişiklikleri tespit etmek ve bunlara yanıt vermek üzere tasarlanırken, varsayılan davranışları geçersiz kılmak için kullanabileceğiniz parametreler vardır:
 
-+ Önbelleğe almayı askıya al
++ Yeni belgelerin önceliğini belirleme
 + Beceri denetimlerini atla
 + Veri kaynağı denetimlerini atla
 + Beceri değerlendirmesini zorla
 
-### <a name="suspend-caching"></a>Önbelleğe almayı askıya al
+### <a name="prioritize-new-documents"></a>Yeni belgelerin önceliğini belirleme
 
-Önbellekteki `enableReprocessing` özelliğini `false`olarak ayarlayarak artımlı zenginleştirme işlemini geçici olarak askıya alabilir ve daha sonra artımlı zenginleştirme ve daha sonra `true`olarak ayarlayarak nihai tutarlılığı sağlayabilirsiniz. Bu denetim özellikle, belgelerin yapı 'larınız genelinde tutarlılık sağlamak için yeni belgelerin dizinlemesini belirlemek istediğinizde yararlıdır.
+`enableReprocessing` özelliğini, önbellekte zaten temsil edilen gelen belgelerde işlemeyi denetlemek için ayarlayın. `true` (varsayılan) olduğunda, Dizin oluşturucuyu yeniden çalıştırdığınızda zaten önbellekte bulunan belgeler yeniden işlenir, böylece beceri güncelleştirmeniz bu belgeyi etkiler. 
+
+`false`, mevcut belgeler yeniden işlenmediği zaman, yeni, gelen içeriğin var olan içerik üzerinde etkin bir şekilde önceliklerini. `enableReprocessing` yalnızca geçici olarak `false` ayarlamanız gerekir. Corpus genelinde tutarlılık sağlamak için, tüm belgelerin (hem yeni hem de mevcut) geçerli beceri tanımına göre geçerli olduğundan emin olmak için en fazla `true` `enableReprocessing` gerekir.
 
 ### <a name="bypass-skillset-evaluation"></a>Beceri değerlendirmesini atla
 
@@ -93,9 +95,9 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 ### <a name="force-skillset-evaluation"></a>Beceri değerlendirmesini zorla
 
-Önbelleğin amacı gereksiz işlemden kaçınmaktır, ancak dizin oluşturucunun algılamadığı bir yeteneğe veya beceri (örneğin, özel bir beceri gibi dış bileşenlerde değişiklikler) bir değişiklik yapmış olduğunuzu varsayalım. 
+Önbelleğin amacı gereksiz işlemden kaçınmaktır, ancak dizin oluşturucunun algılamadığı bir yeteneğe değişiklik yapmayı (örneğin, özel bir beceri gibi harici koddaki bir şeyi değiştirme) varsayalım.
 
-Bu durumda, bu yeteneğin çıktısına bağımlılığı olan tüm aşağı akış becerileri dahil olmak üzere belirli bir yeteneğin yeniden işlenmesini zorlamak için [becerileri sıfırlama](preview-api-resetskills.md) API 'sini kullanabilirsiniz. Bu API, geçersiz kılınmaları ve yeniden çalıştırılması gereken yeteneklerin listesini içeren bir POST isteğini kabul eder. Yeteneklerini sıfırladıktan sonra, işlemi yürütmek için Dizin oluşturucuyu çalıştırın.
+Bu durumda, bu yeteneğin çıktısına bağımlılığı olan tüm aşağı akış becerileri de dahil olmak üzere belirli bir yeteneğin yeniden işlenmesini zorlamak için [sıfırlama becerileri](preview-api-resetskills.md) kullanabilirsiniz. Bu API, yeniden işlenmek üzere geçersiz kılınmaları ve işaretlenmesi gereken yetenekler listesini içeren bir POST isteğini kabul eder. Yeteneklerini sıfırladıktan sonra, işlem hattını çağırmak için Dizin oluşturucuyu çalıştırın.
 
 ## <a name="change-detection"></a>Değişiklik algılama
 
@@ -158,7 +160,7 @@ Kullanım bilgileri ve örnekleri, artımlı bir zenginleştirme [için önbelle
 
 ### <a name="datasources"></a>Veri kaynakları
 
-+ Bazı Dizin oluşturucular verileri sorgular aracılığıyla alır. Veri alan sorgular için [güncelleştirme veri kaynağı](https://docs.microsoft.com/rest/api/searchservice/update-datasource) , güncelleştirme eyleminiz önbelleği geçersiz kılamadığında `true` olarak ayarlanması gereken `ignoreResetRequirement`bir istek üzerinde yeni bir parametreyi destekler.
++ Bazı Dizin oluşturucular verileri sorgular aracılığıyla alır. Veri alan sorgular için [güncelleştirme veri kaynağı](https://docs.microsoft.com/rest/api/searchservice/update-data-source) , güncelleştirme eyleminiz önbelleği geçersiz kılamadığında `true` olarak ayarlanması gereken `ignoreResetRequirement`bir istek üzerinde yeni bir parametreyi destekler.
 
 Verilerinize kolayca algılanmayacak, istenmeyen tutarsızlığa yol açacağından, `ignoreResetRequirement` gelişigüzel bir şekilde kullanın.
 

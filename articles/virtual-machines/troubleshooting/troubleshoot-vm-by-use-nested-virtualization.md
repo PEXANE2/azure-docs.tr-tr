@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 87faea5385f5b0fd2c481c6aa7c45a9867b34163
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942178"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028435"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure 'da iç içe sanallaştırmayı kullanarak sorun giderme Azure VM
 
@@ -26,11 +26,7 @@ Bu makalede, Microsoft Azure içinde iç içe bir sanallaştırma ortamının na
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Sorun sanal makinesini bağlamak için, kurtarma VM 'sinin aşağıdaki önkoşulları karşılaması gerekir:
-
--   Kurtarma sanal makinesi, sorunlu VM ile aynı konumda olmalıdır.
-
--   Kurtarma VM 'si, sorun sanal makinesi ile aynı depolama hesabı türünü (Standart veya Premium) kullanmalıdır.
+Sorun sanal makinesini bağlamak için, kurtarma VM 'si, sorunlu VM ile aynı depolama hesabı türünü (Standart veya Premium) kullanmalıdır.
 
 ## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>1\. Adım: bir kurtarma VM 'si oluşturun ve Hyper-V rolünü yükler
 

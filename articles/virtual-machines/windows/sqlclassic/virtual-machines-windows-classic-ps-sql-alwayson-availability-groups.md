@@ -14,23 +14,23 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: 89f731062ce46969c73f745d62b289b3b3483d8c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100366"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978152"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>PowerShell ile her zaman açık kullanılabilirlik grubunu bir Azure VM üzerinde yapılandırma
 > [!div class="op_single_selector"]
-> * [Klasik 'SINI](../classic/portal-sql-alwayson-availability-groups.md)
-> * [Klasik PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
+> * [Klasik: UI](../classic/portal-sql-alwayson-availability-groups.md)
+> * [Klasik: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 Başlamadan önce, artık bu görevi Azure Resource Manager modelinde tamamlayacağınızı düşünün. Yeni dağıtımlar için Azure Resource Manager modeli önerilir. Bkz. [Azure sanal makineler 'de Always on kullanılabilirlik grupları SQL Server](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT]
-> En yeni dağıtımların Kaynak Yöneticisi modelini kullanmasını öneririz. Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/resource-manager-deployment-model.md). Bu makale klasik dağıtım modelini incelemektedir.
+> En yeni dağıtımların Kaynak Yöneticisi modelini kullanmasını öneririz. Azure, kaynak oluşturmak ve bu kaynaklarla çalışmak için iki dağıtım modeli kullanır: [Resource Manager ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makale klasik dağıtım modelini incelemektedir.
 
 Azure sanal makineleri (VM 'Ler), veritabanı yöneticilerinin yüksek kullanılabilirliğe sahip bir SQL Server sisteminin maliyetini düşürmesine yardımcı olabilir. Bu öğreticide, Azure ortamında her zaman uçtan uca SQL Server kullanarak bir kullanılabilirlik grubunun nasıl uygulanacağı gösterilmektedir. Öğreticinin sonunda, her zaman Azure 'daki SQL Server çözümü aşağıdaki öğelerden oluşur:
 
@@ -158,7 +158,7 @@ Bu öğretici, her adımın ayrıntılarında elaborating olmadan yukarıda aç�
    * **Add-AzureDataDisk** , önbelleğe alma seçeneği None olarak ayarlanmış şekilde, Active Directory verilerini depolamak için kullanacağınız veri diskini ekler.
    * **New-AzureVM** yeni bir bulut hizmeti oluşturur ve yeni bulut hizmetinde yenı Azure VM oluşturur.
 
-7. Yeni VM 'nin tam olarak sağlanması için bekleyin ve uzak masaüstü dosyasını çalışma dizininize indirin. Yeni Azure VM 'nin sağlanması uzun zaman aldığı için, `while` döngü kullanıma hazırlanana kadar yeni VM 'yi yoklamaya devam eder.
+7. Yeni VM 'nin tam olarak sağlanması için bekleyin ve uzak masaüstü dosyasını çalışma dizininize indirin. Yeni Azure VM 'nin sağlanması uzun zaman aldığı için `while` döngüsü, kullanıma hazırlanana kadar yeni VM 'yi yoklamaya devam eder.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -238,7 +238,7 @@ Etki alanı denetleyicisi sunucusu artık başarıyla sağlandı. Ardından, bu 
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    Yukarıda belirtilen GUID, bilgisayar nesne türünün GUID 'sidir. **Corp\ınstall** hesabının, yük devretme kümesi Için etkin doğrudan nesneleri oluşturmak üzere **tüm özellikleri oku** ve **bilgisayar nesneleri oluşturma** iznine sahip olması gerekir. **Tüm özellikleri oku** izni zaten corp\ınstall için varsayılan olarak verilmiştir, bu nedenle açıkça vermeniz gerekmez. Yük devretme kümesini oluşturmak için gereken izinler hakkında daha fazla bilgi için bkz [. yük devretme kümesi adım adım Kılavuzu: Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)hesaplarını yapılandırma.
+    Yukarıda belirtilen GUID, bilgisayar nesne türünün GUID 'sidir. **Corp\ınstall** hesabının, yük devretme kümesi Için etkin doğrudan nesneleri oluşturmak üzere **tüm özellikleri oku** ve **bilgisayar nesneleri oluşturma** iznine sahip olması gerekir. **Tüm özellikleri oku** izni zaten corp\ınstall için varsayılan olarak verilmiştir, bu nedenle açıkça vermeniz gerekmez. Yük devretme kümesini oluşturmak için gereken izinler hakkında daha fazla bilgi için bkz. [Yük devretme kümesi adım adım Kılavuzu: Active Directory hesapları yapılandırma](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
 
     Active Directory ve kullanıcı nesnelerini yapılandırmayı tamamladığınıza göre, iki SQL Server sanal makine oluşturacak ve bu etki alanına katabileceksiniz.
 
@@ -354,7 +354,7 @@ Etki alanı denetleyicisi sunucusu artık başarıyla sağlandı. Ardından, bu 
    * **Set-Azuyeniden gönderme ağ** , VM 'yi arka alt ağa koyar.
    * **Add-AzureEndpoint** , Istemci uygulamaların Internet 'teki bu SQL Server Hizmetleri örneklerine erişebilmeleri için erişim uç noktaları ekler. ContosoSQL1 ve ContosoSQL2 için farklı bağlantı noktaları verilir.
    * **New-AzureVM** , contosoquorum ile aynı bulut hizmetindeki yeni SQL Server VM oluşturur. Aynı Kullanılabilirlik kümesinde olmasını istiyorsanız VM 'Leri aynı bulut hizmetine yerleştirmeniz gerekir.
-4. Her VM 'nin, uzak masaüstü dosyasını çalışma dizininize indirmesi için her bir sanal makinenin tam olarak sağlanması ve her VM için bekleyin. `for` Döngü üç yeni VM 'de döngü yapar ve komutları her biri için üst düzey küme ayraçları içinde yürütür.
+4. Her VM 'nin, uzak masaüstü dosyasını çalışma dizininize indirmesi için her bir sanal makinenin tam olarak sağlanması ve her VM için bekleyin. `for` döngüsü üç yeni VM 'de döngü yapar ve komutları her biri için üst düzey küme ayraçları içinde yürütür.
 
         Foreach ($VM in $VMs = Get-AzureVM -ServiceName $sqlServiceName)
         {
@@ -380,8 +380,8 @@ Etki alanı denetleyicisi sunucusu artık başarıyla sağlandı. Ardından, bu 
 Bu bölümde, yük devretme kümesinde kullanacağınız üç sunucuyu ve SQL Server yüklemesini değiştirmeniz gerekir. Bu avantajlar şunlardır:
 
 * Tüm sunucular: **Yük Devretme Kümelemesi** özelliğini yüklemeniz gerekir.
-* Tüm sunucular: Makine **Yöneticisi**olarak **corp\ınstall** eklemeniz gerekir.
-* Yalnızca ContosoSQL1 ve ContosoSQL2: Varsayılan veritabanına **Corp\ınstall** öğesini **sysadmin** rolü olarak eklemeniz gerekir.
+* Tüm sunucular: makine **Yöneticisi**olarak **corp\ınstall** eklemeniz gerekir.
+* Yalnızca ContosoSQL1 ve ContosoSQL2: **Corp\ınstall** öğesini varsayılan veritabanında **sysadmin** rolü olarak eklemeniz gerekir.
 * Yalnızca ContosoSQL1 ve ContosoSQL2: **NT AUTHORITY\SYSTEM** ' i aşağıdaki izinlerle bir oturum açma olarak eklemeniz gerekir:
 
   * Tüm kullanılabilirlik gruplarını Değiştir

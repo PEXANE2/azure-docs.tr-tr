@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: a3fcff9f895fba3574bbce976087295018ab51c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428737"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981158"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Visual Studio 'da Azure Logic Apps ve Azure Işlevleri 'ni kullanarak ilk sunucusuz uygulamanızı derleme
 
@@ -56,7 +56,7 @@ Visual Studio 'da sunucusuz bir uygulama oluşturmak için şunlar gerekir:
 
 ## <a name="create-a-resource-group-project"></a>Kaynak grubu projesi oluşturma
 
-Başlamak için sunucusuz uygulamanız için bir [Azure Kaynak grubu projesi](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) oluşturun. Azure 'da, tek bir varlık olarak bir uygulamanın tamamına yönelik kaynakları organize etmek, yönetmek ve dağıtmak için kullandığınız mantıksal bir koleksiyon olan *kaynak grubu*içinde kaynaklar oluşturursunuz. Azure 'da sunucusuz bir uygulama için kaynak grubunuz hem Azure Logic Apps hem de Azure Işlevleri için kaynaklar içerir. [Azure kaynak grupları ve kaynakları](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin.
+Başlamak için sunucusuz uygulamanız için bir [Azure Kaynak grubu projesi](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) oluşturun. Azure 'da, tek bir varlık olarak bir uygulamanın tamamına yönelik kaynakları organize etmek, yönetmek ve dağıtmak için kullandığınız mantıksal bir koleksiyon olan *kaynak grubu*içinde kaynaklar oluşturursunuz. Azure 'da sunucusuz bir uygulama için kaynak grubunuz hem Azure Logic Apps hem de Azure Işlevleri için kaynaklar içerir. [Azure kaynak grupları ve kaynakları](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin.
 
 1. Visual Studio 'Yu başlatın ve Azure hesabınızı kullanarak oturum açın.
 

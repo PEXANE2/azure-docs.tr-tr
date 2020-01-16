@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: 40da2016026c8a7e02d1b243a783d01559e8c197
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c550174bff0529e0fc619f1de79c41ab7cf62a36
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005520"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020947"
 ---
-Bu makalede, bir hizmet olarak altyapı (IaaS) kaynaklarını klasik ' ten Kaynak Yöneticisi dağıtım modelleriyle geçirme ve sanal ağ kullanarak aboneliğinizde bulunan iki dağıtım modelinden kaynakları bağlama ayrıntıları açıklanmaktadır siteden siteye ağ geçitleri. [Azure Resource Manager özellikleri ve avantajları](../articles/azure-resource-manager/resource-group-overview.md)hakkında daha fazla bilgi edinebilirsiniz. 
+Bu makalede, bir hizmet olarak altyapı (IaaS) kaynaklarını klasik ' ten Kaynak Yöneticisi dağıtım modelleriyle geçirme ve sanal ağ kullanarak aboneliğinizde bulunan iki dağıtım modelinden kaynakları bağlama ayrıntıları açıklanmaktadır siteden siteye ağ geçitleri. [Azure Resource Manager özellikleri ve avantajları](../articles/azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. 
 
 ## <a name="goal-for-migration"></a>Geçiş için hedef
 Kaynak Yöneticisi, şablonlar aracılığıyla karmaşık uygulamaların dağıtılmasını, sanal makineleri VM uzantıları kullanarak yapılandırmayı ve erişim yönetimi ve etiketleme özelliklerini içerir. Azure Resource Manager, sanal makineler için kullanılabilirlik kümelerine ölçeklenebilir, paralel dağıtım içerir. Yeni dağıtım modeli ayrıca işlem, ağ ve depolamanın yaşam döngüsü yönetimini bağımsız olarak sağlar. Son olarak, bir sanal ağ içindeki sanal makinelerin zorlanması ile varsayılan olarak güvenliği etkinleştirmeye odaklanılmıştır.
@@ -25,12 +25,12 @@ Klasik dağıtım modelinden neredeyse tüm özellikler Azure Resource Manager a
 ## <a name="supported-resources-for-migration"></a>Geçiş için desteklenen kaynaklar
 Bu klasik IaaS kaynakları geçiş sırasında desteklenir
 
-* Virtual Machines
+* Virtual Machines (Sanal Makineler)
 * Kullanılabilirlik Kümeleri
 * Bulut Hizmetleri ve Sanal Makineler
 * Depolama Hesapları
 * Sanal Ağlar
-* VPN Ağ Geçitleri
+* VPN Gateway’leri
 * Hızlı rota ağ geçitleri _(yalnızca sanal ağ ile aynı abonelikte)_
 * Ağ Güvenlik Grupları
 * Yönlendirme Tabloları
@@ -75,7 +75,7 @@ Depolama hesabınızda ilişkili disk veya sanal makine verisi yoksa ve yalnızc
 > Kaynak Yöneticisi dağıtım modelinde klasik görüntü ve disk kavramı yoktur. Depolama hesabı geçirildiğinde, klasik görüntüler ve diskler Kaynak Yöneticisi yığınında görünmez, ancak yedekleme VHD 'leri depolama hesabında kalır.
 
 Aşağıdaki ekran görüntüleri Azure portal kullanarak klasik bir depolama hesabını Azure Resource Manager depolama hesabına nasıl yükselteceğiniz göstermektedir:
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Depolama hesabınıza gidin.
 3. **Ayarlar** bölümünde **ARM 'ye geçir ' e**tıklayın.
 4. Geçiş olasılığı 'nı öğrenmek için **Doğrula** 'ya tıklayın.
@@ -103,8 +103,8 @@ Aşağıdaki özellikler Şu anda desteklenmemektedir. İsteğe bağlı olarak b
 
 | Kaynak sağlayıcısı | Özellik | Öneri |
 | --- | --- | --- |
-| İşlem | İlişkilendirilmemiş sanal makine diskleri. | Depolama hesabı geçirildiğinde bu disklerin arkasındaki VHD blob 'ları geçirilir |
-| İşlem | Sanal makine görüntüleri. | Depolama hesabı geçirildiğinde bu disklerin arkasındaki VHD blob 'ları geçirilir |
+| Bilgi İşlem | İlişkilendirilmemiş sanal makine diskleri. | Depolama hesabı geçirildiğinde bu disklerin arkasındaki VHD blob 'ları geçirilir |
+| Bilgi İşlem | Sanal makine görüntüleri. | Depolama hesabı geçirildiğinde bu disklerin arkasındaki VHD blob 'ları geçirilir |
 | Ağ | Uç nokta ACL 'Leri. | Uç nokta ACL 'Lerini kaldırın ve geçişi yeniden deneyin. |
 | Ağ | Application Gateway | Geçişe başlamadan önce Application Gateway kaldırın ve ardından geçiş tamamlandıktan sonra Application Gateway yeniden oluşturun. |
 | Ağ | VNet eşlemesi kullanan sanal ağlar. | Sanal ağı Kaynak Yöneticisi ve ardından eşe geçirin. [VNET eşlemesi](../articles/virtual-network/virtual-network-peering-overview.md)hakkında daha fazla bilgi edinin. |
@@ -114,20 +114,20 @@ Aşağıdaki yapılandırma Şu anda desteklenmiyor.
 
 | Hizmet | Yapılandırma | Öneri |
 | --- | --- | --- |
-| Resource Manager |Klasik kaynaklar için rol tabanlı Access Control (RBAC) |Kaynak URI 'SI geçişten sonra değiştirildiğinden, geçişten sonra gerçekleşmesi gereken RBAC ilke güncelleştirmelerini planlamanız önerilir. |
-| İşlem |Bir VM ile ilişkili birden çok alt ağ |Alt ağ yapılandırmasını yalnızca bir alt ağa başvuracak şekilde güncelleştirin. Bu, VM 'den bir ikincil NIC (başka bir alt ağa başvuran) kaldırmanızı ve geçiş tamamlandıktan sonra yeniden iliştirmesini gerektirebilir. |
-| İşlem |Bir sanal ağa ait olan ancak açık bir alt ağa sahip olmayan sanal makineler |İsteğe bağlı olarak VM 'yi silebilirsiniz. |
-| İşlem |Uyarıları olan sanal makineler, otomatik ölçeklendirme ilkeleri |Geçiş aşamasından geçer ve bu ayarlar bırakılır. Geçiş yapmadan önce ortamınızı değerlendirmeniz kesinlikle önerilir. Alternatif olarak, geçiş tamamlandıktan sonra uyarı ayarlarını yeniden yapılandırabilirsiniz. |
-| İşlem |XML VM uzantıları (BgInfo 1. *, Visual Studio hata ayıklayıcısı, Web Dağıtımı ve uzaktan hata ayıklama) |Bu desteklenmez. Geçişe devam etmek için bu uzantıları sanal makineden kaldırmanız önerilir veya geçiş işlemi sırasında otomatik olarak bırakılır. |
-| İşlem |Premium Depolama ile önyükleme tanılaması |Geçişe devam etmeden önce VM 'Ler için önyükleme Tanılama özelliğini devre dışı bırakın. Geçiş tamamlandıktan sonra Kaynak Yöneticisi yığınında önyükleme tanılamayı yeniden etkinleştirebilirsiniz. Ayrıca, bu Bloblar için artık ücretlendirilmemek üzere ekran görüntüsü ve seri günlükleri için kullanılan Blobların silinmesi gerekir. |
-| İşlem | Web/çalışan rollerini içeren bulut Hizmetleri | Bu şu anda desteklenmiyor. |
-| İşlem | Birden fazla kullanılabilirlik kümesi veya birden çok kullanılabilirlik kümesi içeren bulut hizmetleri. |Bu şu anda desteklenmiyor. Lütfen geçirmeden önce sanal makineleri aynı Kullanılabilirlik kümesine taşıyın. |
-| İşlem | Azure Güvenlik Merkezi uzantısı olan VM | Azure Güvenlik Merkezi, güvenliğini izlemek ve uyarıları yükseltmek için sanal makinelerinizdeki uzantıları otomatik olarak kurar. Bu uzantılar genellikle abonelikte Azure Güvenlik Merkezi ilkesi etkinse otomatik olarak yüklenir. Sanal makineleri geçirmek için, abonelikteki Güvenlik Merkezi ilkesini devre dışı bırakın ve bu, güvenlik merkezi izleme uzantısını sanal makinelerden kaldırır. |
-| İşlem | Yedekleme veya anlık görüntü uzantısına sahip VM | Bu uzantılar Azure Backup hizmetiyle yapılandırılmış bir sanal makineye yüklenir. Bu VM 'lerin geçişi desteklenirken, geçişten önce alınmış yedeklemeleri tutmak için [buradaki](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) yönergeleri izleyin.  |
+| Kaynak Yöneticisi |Klasik kaynaklar için rol tabanlı Access Control (RBAC) |Kaynak URI 'SI geçişten sonra değiştirildiğinden, geçişten sonra gerçekleşmesi gereken RBAC ilke güncelleştirmelerini planlamanız önerilir. |
+| Bilgi İşlem |Bir VM ile ilişkili birden çok alt ağ |Alt ağ yapılandırmasını yalnızca bir alt ağa başvuracak şekilde güncelleştirin. Bu, VM 'den bir ikincil NIC (başka bir alt ağa başvuran) kaldırmanızı ve geçiş tamamlandıktan sonra yeniden iliştirmesini gerektirebilir. |
+| Bilgi İşlem |Bir sanal ağa ait olan ancak açık bir alt ağa sahip olmayan sanal makineler |İsteğe bağlı olarak VM 'yi silebilirsiniz. |
+| Bilgi İşlem |Uyarıları olan sanal makineler, otomatik ölçeklendirme ilkeleri |Geçiş aşamasından geçer ve bu ayarlar bırakılır. Geçiş yapmadan önce ortamınızı değerlendirmeniz kesinlikle önerilir. Alternatif olarak, geçiş tamamlandıktan sonra uyarı ayarlarını yeniden yapılandırabilirsiniz. |
+| Bilgi İşlem |XML VM uzantıları (BgInfo 1. *, Visual Studio hata ayıklayıcısı, Web Dağıtımı ve uzaktan hata ayıklama) |Bu özellik desteklenmez. Geçişe devam etmek için bu uzantıları sanal makineden kaldırmanız önerilir veya geçiş işlemi sırasında otomatik olarak bırakılır. |
+| Bilgi İşlem |Premium Depolama ile önyükleme tanılaması |Geçişe devam etmeden önce VM 'Ler için önyükleme Tanılama özelliğini devre dışı bırakın. Geçiş tamamlandıktan sonra Kaynak Yöneticisi yığınında önyükleme tanılamayı yeniden etkinleştirebilirsiniz. Ayrıca, bu Bloblar için artık ücretlendirilmemek üzere ekran görüntüsü ve seri günlükleri için kullanılan Blobların silinmesi gerekir. |
+| Bilgi İşlem | Web/çalışan rollerini içeren bulut Hizmetleri | Bu şu anda desteklenmiyor. |
+| Bilgi İşlem | Birden fazla kullanılabilirlik kümesi veya birden çok kullanılabilirlik kümesi içeren bulut hizmetleri. |Bu şu anda desteklenmiyor. Lütfen geçirmeden önce sanal makineleri aynı Kullanılabilirlik kümesine taşıyın. |
+| Bilgi İşlem | Azure Güvenlik Merkezi uzantısı olan VM | Azure Güvenlik Merkezi, güvenliğini izlemek ve uyarıları yükseltmek için sanal makinelerinizdeki uzantıları otomatik olarak kurar. Bu uzantılar genellikle abonelikte Azure Güvenlik Merkezi ilkesi etkinse otomatik olarak yüklenir. Sanal makineleri geçirmek için, abonelikteki Güvenlik Merkezi ilkesini devre dışı bırakın ve bu, güvenlik merkezi izleme uzantısını sanal makinelerden kaldırır. |
+| Bilgi İşlem | Yedekleme veya anlık görüntü uzantısına sahip VM | Bu uzantılar Azure Backup hizmetiyle yapılandırılmış bir sanal makineye yüklenir. Bu VM 'lerin geçişi desteklenirken, geçişten önce alınmış yedeklemeleri tutmak için [buradaki](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) yönergeleri izleyin.  |
 | Ağ |Sanal makineler ve web/çalışan rolleri içeren sanal ağlar |Bu şu anda desteklenmiyor. Lütfen geçirmeden önce web/çalışan rollerini kendi sanal ağına taşıyın. Klasik sanal ağ geçirildikten sonra geçirilmiş Azure Resource Manager sanal ağı, daha önce olduğu gibi benzer yapılandırmalar elde etmek için klasik sanal ağla eşlenebilir.|
 | Ağ | Klasik Express Route devreleri |Bu şu anda desteklenmiyor. IaaS geçişine başlamadan önce bu devrelerin Azure Resource Manager geçirilmesi gerekir. Daha fazla bilgi edinmek için bkz. [ExpressRoute devreleri klasik 'dan Kaynak Yöneticisi dağıtım modeline taşıma](../articles/expressroute/expressroute-move.md).|
-| Azure uygulama hizmeti |App Service ortamları içeren sanal ağlar |Bu şu anda desteklenmiyor. |
+| Azure App Service |App Service ortamları içeren sanal ağlar |Bu şu anda desteklenmiyor. |
 | Azure HDInsight |HDInsight hizmetlerini içeren sanal ağlar |Bu şu anda desteklenmiyor. |
 | Microsoft Dynamics yaşam döngüsü Hizmetleri |Dynamics yaşam döngüsü Hizmetleri tarafından yönetilen sanal makineleri içeren sanal ağlar |Bu şu anda desteklenmiyor. |
-| Azure AD Domain Services |Azure AD etki alanı Hizmetleri 'ni içeren sanal ağlar |Bu şu anda desteklenmiyor. |
+| Azure AD Etki Alanı Hizmetleri |Azure AD etki alanı Hizmetleri 'ni içeren sanal ağlar |Bu şu anda desteklenmiyor. |
 | Azure API Management |Azure API Management dağıtımlarını içeren sanal ağlar |Bu şu anda desteklenmiyor. IaaS VNET 'i geçirmek için, kesinti süresi olmayan bir işlem olan API Management dağıtımının VNET 'i değiştirin. |

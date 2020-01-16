@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jgao
-ms.openlocfilehash: 4dc28b8254c312836b2767c2efef52137e101777
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 6308f7832a898d97c455dc90265adea345aeb0cc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75839445"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981207"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
@@ -57,7 +57,7 @@ Dağıtım betiğinin avantajları:
   $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
   ```
 
-- **Azure PowerShell Version 2.7.0, 2.8.0 veya 3.0.0**. Bu sürümlere şablon dağıtmak için ihtiyacınız yoktur. Ancak bu sürümler Dağıtım betiklerini yerel olarak test etmek için gereklidir. Bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps.md). Önceden yapılandırılmış bir Docker görüntüsü kullanabilirsiniz.  Bkz. [geliştirme ortamını yapılandırma](#configure-development-environment).
+- **Azure PowerShell Version 2.7.0, 2.8.0 veya 3.0.0**. Bu sürümlere şablon dağıtmak için ihtiyacınız yoktur. Ancak bu sürümler Dağıtım betiklerini yerel olarak test etmek için gereklidir. Bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps). Önceden yapılandırılmış bir Docker görüntüsü kullanabilirsiniz.  Bkz. [geliştirme ortamını yapılandırma](#configure-development-environment).
 
 ## <a name="resource-schema"></a>Kaynak şeması
 
@@ -233,7 +233,7 @@ Portalda deploymentScripts kaynağını görmek için **gizli türleri göster**
 
 ## <a name="clean-up-deployment-script-resources"></a>Dağıtım betiği kaynaklarını temizle
 
-Dağıtım betiği, dağıtım betikleri yürütmek ve hata ayıklama bilgilerini depolamak için kullanılan bir depolama hesabı ve kapsayıcı örneği oluşturur. Bu iki kaynak, sağlanan kaynaklarla aynı kaynak grubunda oluşturulur ve betiğin süresi dolarsa betik hizmeti tarafından silinir. Bu kaynakların yaşam döngüsünü kontrol edebilirsiniz.  Silinene kadar her iki kaynak için de faturalandırılırsınız. Fiyat bilgileri için bkz. [Container Instances fiyatlandırması](/pricing/details/container-instances/) ve [Azure Depolama fiyatlandırması](/pricing/details/storage/).
+Dağıtım betiği, dağıtım betikleri yürütmek ve hata ayıklama bilgilerini depolamak için kullanılan bir depolama hesabı ve kapsayıcı örneği oluşturur. Bu iki kaynak, sağlanan kaynaklarla aynı kaynak grubunda oluşturulur ve betiğin süresi dolarsa betik hizmeti tarafından silinir. Bu kaynakların yaşam döngüsünü kontrol edebilirsiniz.  Silinene kadar her iki kaynak için de faturalandırılırsınız. Fiyat bilgileri için bkz. [Container Instances fiyatlandırması](https://azure.microsoft.com/pricing/details/container-instances/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
 Bu kaynakların yaşam döngüsü, şablondaki aşağıdaki özelliklerle denetlenir:
 

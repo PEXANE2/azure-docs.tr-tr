@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: c1de86c1d12109853bb5d6d1aac4143caab9199f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5bcbb8c6845928cf21b5b6a1c04f609305bd7983
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638230"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979522"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Ayrılmış IP adresler (klasik dağıtım)
 
@@ -28,7 +28,7 @@ ms.locfileid: "75638230"
 IP adreslerinin değiştirilmesini engellemek için bir IP adresi ayırabilirsiniz. Ayrılmış IP 'Ler yalnızca VIP olarak kullanılabilir, ancak kaynaklar kapatılsa veya durdurulmuş (serbest bırakıldığında) bulut hizmeti için IP adresinin aynı kalmasını sağlar. Ayrıca, VIP olarak kullanılan mevcut dinamik IP 'Leri ayrılmış bir IP adresine de dönüştürebilirsiniz.
 
 > [!IMPORTANT]
-> Azure’da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır:  [Resource Manager ve klasik](../azure-resource-manager/resource-manager-deployment-model.md). Bu makale klasik dağıtım modelini incelemektedir. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. [Kaynak Yöneticisi dağıtım modelini](virtual-network-ip-addresses-overview-arm.md)kullanarak STATIK genel IP adresini nasıl ayıracağınızı öğrenin.
+> Azure’da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır:  [Resource Manager ve klasik](../azure-resource-manager/management/deployment-models.md). Bu makale klasik dağıtım modelini incelemektedir. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. [Kaynak Yöneticisi dağıtım modelini](virtual-network-ip-addresses-overview-arm.md)kullanarak STATIK genel IP adresini nasıl ayıracağınızı öğrenin.
 
 Azure 'daki IP adresleri hakkında daha fazla bilgi edinmek için [IP adresleri](virtual-network-ip-addresses-overview-classic.md) makalesini okuyun.
 

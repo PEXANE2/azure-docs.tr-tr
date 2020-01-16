@@ -3,12 +3,12 @@ title: SQL Server veritabanı yedeklemesi sorunlarını giderme
 description: Azure Backup ile Azure VM 'lerde çalışan SQL Server veritabanlarının yedeklenmesi için sorun giderme bilgileri.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d49843e8fd96df29a7359ec639e42d312ad584e2
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 57630749b53224032c763481d12e33366274f13f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659262"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978782"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -52,7 +52,7 @@ SQL VM 'nin yeni kasada kayıtlı olması gerekiyorsa, eski kasadaki kaydı kald
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
 | Bu SQL veritabanı, istenen yedekleme türünü desteklemiyor. | Veritabanı kurtarma modeli istenen yedekleme türüne izin vermediği zaman gerçekleşir. Hata aşağıdaki durumlarda oluşabilir: <br/><ul><li>Basit kurtarma modeli kullanan bir veritabanı, günlük yedeklemeye izin vermez.</li><li>Ana veritabanı için fark ve günlük yedeklerine izin verilmez.</li></ul>Daha ayrıntılı bilgi için bkz. [Kurtarma modellerini SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) belgeleri. | Basit kurtarma modelinde veritabanı için günlük yedeklemesi başarısız olursa, şu seçeneklerden birini deneyin:<ul><li>Veritabanı basit kurtarma modundaysa, günlük yedeklemelerini devre dışı bırakın.</li><li>Veritabanı kurtarma modelini tam veya toplu günlüğe kaydedilecek şekilde değiştirmek için [SQL Server belgelerini](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) kullanın. </li><li> Kurtarma modelini değiştirmek istemiyorsanız ve değiştirilemeyen birden çok veritabanını yedeklemek için standart bir ilkeniz varsa, hatayı yoksayın. Tam ve değişiklik yedeklemeleriniz zamanlama başına çalışacaktır. Bu durumda beklenen günlük yedeklemeleri atlanacak.</li></ul>Bu bir ana veritabanıdır ve değişiklik veya günlük yedeklemesi yapılandırdıysanız aşağıdaki adımlardan birini kullanın:<ul><li>Ana veritabanının yedekleme ilkesi zamanlamasını tam olarak değiştirmek için portalını kullanın.</li><li>Değiştirilemeyen birden çok veritabanını yedeklemek için standart bir ilkeniz varsa, hatayı yoksayın. Tam yedekleme, zamanlama başına çalışacaktır. Bu durumda beklenen değişiklik veya günlük yedeklemeleri gerçekleşmez.</li></ul> |
-| Aynı veritabanında çakışan bir işlem zaten çalışmakta olduğundan işlem iptal edildi. | Aynı anda çalışan [yedekleme ve geri yükleme sınırlamaları hakkında blog girişine](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database) bakın.| [Yedekleme işlerini izlemek için SQL Server Management Studio (SSMS) kullanın](manage-monitor-sql-database-backup.md). Çakışan işlem başarısız olduktan sonra işlemi yeniden başlatın.|
+| Aynı veritabanında çakışan bir işlem zaten çalışmakta olduğundan işlem iptal edildi. | Aynı anda çalışan [yedekleme ve geri yükleme sınırlamaları hakkında blog girişine](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/) bakın.| [Yedekleme işlerini izlemek için SQL Server Management Studio (SSMS) kullanın](manage-monitor-sql-database-backup.md). Çakışan işlem başarısız olduktan sonra işlemi yeniden başlatın.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 

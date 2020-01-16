@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039b514fe70da0e300e74bbc98a3a0f4e9ea342c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c6f7f59f7bcc93edafa3cbb47bd432b52bde985c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848604"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979453"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Self servis parola sıfırlama için Azure AD işlevselliğini özelleştirme
 
@@ -43,9 +43,9 @@ Self servis parola sıfırlama kullanıcıları, parola sıfırlama portalında 
 
 İletişim e-postası aşağıdaki alıcılara aşağıdaki sırayla gönderilir:
 
-1. **Parola yönetici** rolü atanmışsa, bu role sahip yöneticiler bilgilendirilir.
-2. Parola Yöneticisi atanmamışsa, **Kullanıcı Yöneticisi** rolüne sahip yöneticilere bildirilir.
-3. Önceki rollerden hiçbiri atanmadıysa, **Genel Yöneticiler** bilgilendirilir.
+1. **Yardım Masası yönetici** rolü veya **parola yönetici** rolü atanırsa, bu rollere sahip yöneticiler bilgilendirilir.
+1. Yardım Masası yöneticileri veya parola Yöneticisi atanmamışsa, **Kullanıcı Yöneticisi** rolüne sahip yöneticilere bildirilir.
+1. Önceki rollerden Hiçbiri atanmamışsa **Genel Yöneticiler** bilgilendirilir.
 
 Her durumda, en fazla 100 alıcı bilgilendirilir.
 

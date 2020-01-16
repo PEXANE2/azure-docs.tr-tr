@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e58b3f651a7a8f65d3450cf4b069d4e3f252d928
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b76ade40db1e85abc0fb42af2e6f4ab88cb092c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100275"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982276"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>SQL Server Agent uzantısı (klasik) ile Azure sanal makinelerinde yönetim görevlerini otomatikleştirme
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "70100275"
 SQL Server IaaS Aracısı uzantısı (SQLIaaSAgent), yönetim görevlerini otomatikleştirmek için Azure sanal makinelerinde çalışır. Bu konu, uzantının desteklediği hizmetlere ve yükleme, durum ve kaldırma yönergelerine ilişkin genel bir bakış sağlar.
 
 > [!IMPORTANT] 
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/resource-manager-deployment-model.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. Bu makalenin Kaynak Yöneticisi sürümünü görüntülemek için, bkz. [SQL Server VM 'ler için SQL Server Agent uzantısı Kaynak Yöneticisi](../sql/virtual-machines-windows-sql-server-agent-extension.md).
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. Bu makalenin Kaynak Yöneticisi sürümünü görüntülemek için, bkz. [SQL Server VM 'ler için SQL Server Agent uzantısı Kaynak Yöneticisi](../sql/virtual-machines-windows-sql-server-agent-extension.md).
 
 ## <a name="supported-services"></a>Desteklenen hizmetler
 SQL Server IaaS Aracısı uzantısı aşağıdaki yönetim görevlerini destekler:
@@ -43,7 +43,7 @@ SQL Server IaaS Aracısı uzantısı aşağıdaki yönetim görevlerini destekle
 | **SQL otomatik düzeltme eki uygulama** |VM 'niz için önemli Windows güncelleştirmelerinin gerçekleşmesi sırasında bir bakım penceresi yapılandırır, bu sayede iş yükünüz için yoğun zamanlarda güncelleştirmelerden kaçınabilirsiniz. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik düzeltme eki uygulama (klasik)](../classic/sql-automated-patching.md). |
 | **Azure Anahtar Kasası Tümleştirmesi** |SQL Server VM Azure Key Vault otomatik olarak yüklemenize ve yapılandırmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure VM 'lerde SQL Server için Azure Key Vault tümleştirmesini yapılandırma (klasik)](../classic/ps-sql-keyvault.md). |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 SANAL makinenizde SQL Server IaaS Aracısı uzantısını kullanma gereksinimleri:
 
 ### <a name="operating-system"></a>İşletim Sistemi:
@@ -93,7 +93,7 @@ Uzantının yüklendiğini doğrulamak için bir yol, Azure portalında aracı d
 
     Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
 
-## <a name="removal"></a>Çıkarma
+## <a name="removal"></a>Kaldırılmasını
 Azure portalında, sanal makine özelliklerinin **Uzantılar** dikey penceresinde üç nokta simgesine tıklayarak uzantıyı kaldırabilirsiniz. Ardından **Kaldır**' a tıklayın.
 
 ![Azure portalında SQL Server IaaS Aracısı uzantısını kaldırma](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-uninstall.png)

@@ -4,15 +4,15 @@ description: Model verilerinin zaman uyumsuz yenilemesini kodlemek için Azure A
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2281f9d493edf955881772ec174c82b527f1b6fa
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573389"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029867"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API ile zaman uyumsuz yenileme
 
@@ -22,7 +22,7 @@ Veri hacmi, bölümler kullanılarak en iyi duruma getirme düzeyi vb. gibi bir 
 
 Azure Analysis Services REST API, veri yenileme işlemlerinin zaman uyumsuz olarak gerçekleştirilmesini sağlar. REST API kullanarak, istemci uygulamalarından uzun süre çalışan HTTP bağlantıları gerekli değildir. Güvenilirlik için otomatik yeniden denemeler ve toplu işlemeler gibi diğer yerleşik özellikler de vardır.
 
-## <a name="base-url"></a>Taban URL 'SI
+## <a name="base-url"></a>Temel URL
 
 Temel URL şu biçimdedir:
 
@@ -30,7 +30,7 @@ Temel URL şu biçimdedir:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Örneğin, Batı ABD Azure bölgesinde bulunan sunucum adlı sunucuda AdventureWorks adlı bir model düşünün. Sunucu adı:
+Örneğin, Batı ABD Azure bölgesinde bulunan `myserver`adlı bir sunucuda AdventureWorks adlı bir model düşünün. Sunucu adı:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -99,7 +99,7 @@ Parametrelerin belirtilmesi gerekli değildir. Varsayılan değer uygulanır.
 
 | Ad             | Tür  | Açıklama  |Varsayılan  |
 |------------------|-------|--------------|---------|
-| `Type`           | Sabit Listesi  | Gerçekleştirilecek işleme türü. Türler TMSL [yenileme komut](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) türleriyle hizalanır: Full, clearvalues, Calculate, dataonly, Automatic ve birleştirme. Tür ekleme desteklenmiyor.      |   Otomatik      |
+| `Type`           | Sabit Listesi  | Gerçekleştirilecek işleme türü. Türler TMSL [yenileme komut](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) türleriyle hizalanır: Full, clearvalues, Calculate, dataonly, Automatic ve birleştirme. Tür ekleme desteklenmiyor.      |   otomatik      |
 | `CommitMode`     | Sabit Listesi  | Nesnelerin toplu işlemlere mi yoksa yalnızca tamamlandığında mi uygulanacağını belirler. Modlar şunlardır: Default, işlemsel, partialBatch.  |  işlem       |
 | `MaxParallelism` | Int   | Bu değer, işlem komutlarının paralel olarak çalıştırılacağı en fazla iş parçacığı sayısını belirler. Bu değer, TMSL [Sequence komutunda](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) veya diğer yöntemleri kullanarak ayarlanabir Maxparallelilik özelliği ile hizalanır.       | 10        |
 | `RetryCount`     | Int   | İşlemin başarısız olmadan önce kaç kez yeniden deneneceğini gösterir.      |     0    |
@@ -110,9 +110,20 @@ CommitMode, partialBatch 'e eşittir. Saat süretabilecek büyük veri kümeleri
 > [!NOTE]
 > Yazma sırasında, toplu iş boyutu Maxparalellik değeridir, ancak bu değer değişebilir.
 
+### <a name="status-values"></a>Durum değerleri
+
+|Durum değeri  |Açıklama  |
+|---------|---------|
+|`notStarted`    |   İşlem henüz başlatılmadı.      |
+|`inProgress`     |   İşlem sürüyor.      |
+|`timedOut`     |    İşlem, Kullanıcı tarafından belirlenen zaman aşımı temelinde zaman aşımına uğradı.     |
+|`cancelled`     |   İşlem Kullanıcı veya sistem tarafından iptal edildi.      |
+|`failed`     |   İşlem başarısız oldu.      |
+|`succeeded`      |   İşlem başarılı oldu.      |
+
 ## <a name="get-refreshesrefreshid"></a>/Refreshes/\<refreshId > Al
 
-Yenileme işleminin durumunu denetlemek için yenileme KIMLIĞI üzerinde GET fiilini kullanın. Yanıt gövdesine bir örnek aşağıda verilmiştir. İşlem devam ediyorsa, **sürüyor** durumu döndürülür.
+Yenileme işleminin durumunu denetlemek için yenileme KIMLIĞI üzerinde GET fiilini kullanın. Yanıt gövdesine bir örnek aşağıda verilmiştir. İşlem devam ediyorsa, `inProgress` durumunda döndürülür.
 
 ```
 {

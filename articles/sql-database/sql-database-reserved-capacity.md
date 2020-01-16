@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/29/2019
-ms.openlocfilehash: 52a3665da99ca9885c57db1a2779dc6ce4dbec21
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0713e1ed98cc87b95cad1f84672148cd062e0b58
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821172"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979984"
 ---
 # <a name="save-costs-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL veritabanı ayrılmış kapasitesi ile SQL veritabanı işlem kaynakları için maliyetleri kaydetme
 
@@ -25,13 +25,13 @@ Kullandıkça Öde fiyatlarına kıyasla işlem kaynakları için bir ayırmaya 
 
 Ayırmayı belirli SQL veritabanı örneklerine (tek veritabanları, elastik havuzlar veya yönetilen örnekler) atamanız gerekmez. Zaten çalışmakta olan veya yeni dağıtılmış olan eşleşen SQL veritabanı örnekleri, otomatik olarak avantajı alır. Bir rezervasyon satın alarak, bir veya üç yıllık bir dönem için işlem maliyetlerine yönelik kullanıma de kayıt yapılır. Bir ayırma satın alarak, rezervasyon öznitelikleriyle eşleşen SQL veritabanı işlem ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Bir ayırma, SQL veritabanı örneğiyle ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajı sona erer ve SQL veritabanları Kullandıkça Öde fiyatı üzerinden faturalandırılır. Ayırmalar otomatik olarak yenilemez. Fiyatlandırma bilgileri için bkz. [SQL veritabanı ayrılmış kapasitesi teklifi](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
-[Azure Portal](https://portal.azure.com)Azure SQL veritabanı ayrılmış kapasitesini satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../billing/billing-monthly-payments-reservations.md) rezervasyon ödemesi yapın. SQL veritabanı ayrılmış kapasitesini satın almak için:
+[Azure Portal](https://portal.azure.com)Azure SQL veritabanı ayrılmış kapasitesini satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../cost-management-billing/reservations/monthly-payments-reservations.md) rezervasyon ödemesi yapın. SQL veritabanı ayrılmış kapasitesini satın almak için:
 
 - Kullandıkça Öde tarifesine sahip en az bir kuruluş veya ayrı bir abonelik için sahip rolünde olmanız gerekir.
-- Kurumsal abonelikler için, **EA portal**’da [Ayrılmış Örnek Ekle](https://ea.azure.com) seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
+- Kurumsal abonelikler için, [EA portal](https://ea.azure.com)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
 - Bulut çözümü sağlayıcısı (CSP) programı için, yalnızca yönetici aracıları veya satış aracıları SQL veritabanı ayrılmış kapasitesi satın alabilir.
 
-Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](../billing/billing-understand-reserved-instance-usage-ea.md) ve [Kullandıkça Öde için Azure rezervasyon kullanımını anlama abonelik](../billing/billing-understand-reserved-instance-usage.md).
+Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
 ## <a name="determine-the-right-sql-size-before-purchase"></a>Satın almadan önce doğru SQL boyutunu belirleme
 
@@ -41,7 +41,7 @@ Ayırma boyutu, mevcut veya hemen dağıtılmış tek veritabanları, elastik ha
 
 ## <a name="buy-sql-database-reserved-capacity"></a>Ayrılmış SQL veritabanı kapasitesini satın alma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
 3. **Ekle** ' yi seçin ve ardından satın alma rezervasyonları **bölmesinde SQL veritabanı ' nı seçerek SQL** veritabanı için yeni bir ayırma satın alın.
 4. Gerekli alanları doldur. Mevcut veya yeni tek veritabanları, elastik havuzlar veya bir ayrılmış kapasite indirimi elde etmek üzere seçtiğiniz özniteliklerle eşleşen yönetilen örnekler. İndirimin alınacağı SQL veritabanı örneklerinizin gerçek sayısı, seçilen kapsama ve miktara bağlıdır.
@@ -65,7 +65,7 @@ Aşağıdaki tablo gerekli alanları açıklar.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="vcore-size-flexibility"></a>vCore boyutu esnekliği
 
@@ -75,7 +75,7 @@ vCore boyutu esnekliği, ayrılan kapasite avantajını kaybetmeden bir performa
 
 DTU tabanlı (temel, standart veya Premium) SQL veritabanlarını ayıramazsınız.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun
+## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bize ulaşın
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -83,13 +83,13 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 VCore ayırma indirimi, SQL veritabanı ayrılmış kapasite ayırma kapsamı ve öznitelikleriyle eşleşen SQL veritabanı örneklerinin sayısına otomatik olarak uygulanır. [Azure Portal](https://portal.azure.com), POWERSHELL, CLı veya API aracılığıyla SQL veritabanı ayrılmış kapasite ayırmasının kapsamını güncelleştirebilirsiniz.
 
-SQL veritabanı ayrılmış kapasite ayırmayı yönetme hakkında bilgi edinmek için bkz. [SQL veritabanı ayrılmış kapasitesini yönetme](../billing/billing-manage-reserved-vm-instance.md).
+SQL veritabanı ayrılmış kapasite ayırmayı yönetme hakkında bilgi edinmek için bkz. [SQL veritabanı ayrılmış kapasitesini yönetme](../cost-management-billing/reservations/manage-reserved-vm-instance.md).
 
 Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](../billing/billing-save-compute-costs-reservations.md)
-- [Azure Ayırmalarını yönetme](../billing/billing-manage-reserved-vm-instance.md)
-- [Azure Ayrılmış Sanal Makine Örnekleri indirimini anlama](../billing/billing-understand-reservation-charges.md)
-- [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../billing/billing-understand-reserved-instance-usage.md)
-- [Kurumsal kaydınız için rezervasyon kullanımını anlama](../billing/billing-understand-reserved-instance-usage-ea.md)
+- [Azure Rezervasyonlar nedir?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Azure Ayırmalarını yönetme](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+- [Azure Ayrılmış Sanal Makine Örnekleri indirimini anlama](../cost-management-billing/reservations/understand-reservation-charges.md)
+- [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+- [Kurumsal kaydınız için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 - [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](https://docs.microsoft.com/partner-center/azure-reservations)

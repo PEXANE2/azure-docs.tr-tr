@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414233"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966660"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Azure için avere vFXT için olağanüstü durum kurtarma Kılavuzu
 
@@ -60,7 +60,7 @@ Bu bölümde, seyrek bölge genelinde kesintiler veya yanlışlıkla silinmelerd
 Azure Blob depolamada verileri korumaya yönelik en iyi uygulamalar şunlardır:
 
 * Kritik verilerinizi başka bir bölgedeki başka bir depolama hesabına (genellikle olağanüstü durum kurtarma planınız tarafından belirlenen sıklıkta) kopyalayın.
-* Yanlışlıkla silme veya bozulmayı engellemek için tüm hedef sistemlerdeki verilere erişimi denetleyin. Veri depolamada [kaynak kilitleri](../azure-resource-manager/resource-group-lock-resources.md) kullanmayı göz önünde bulundurun.
+* Yanlışlıkla silme veya bozulmayı engellemek için tüm hedef sistemlerdeki verilere erişimi denetleyin. Veri depolamada [kaynak kilitleri](../azure-resource-manager/management/lock-resources.md) kullanmayı göz önünde bulundurun.
 * Blob Core filers için avere vFXT for Azure [Cloud Snapshot](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>) özelliğini etkinleştirin.
 
 ### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>Avere vfxt Core dosyalayıcı verilerini bir yedekleme hesabına Kopyala

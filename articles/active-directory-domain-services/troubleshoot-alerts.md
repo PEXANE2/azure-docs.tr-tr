@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 459aeaefc07e3f55b0829f0ad378992104982941
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 26ae70f9283ac7be847a59753130dd8ba8c11c18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703951"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979899"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services Genel uyarılar ve çözümler
 
@@ -92,7 +92,7 @@ Azure AD DS yönetilen etki alanının sistem durumu otomatik olarak iki saat i�
 
 Azure AD DS, etkin bir abonelik gerektirir ve farklı bir aboneliğe taşınamaz. Azure AD DS yönetilen etki alanının ilişkilendirildiği Azure aboneliği silinirse, bir Azure aboneliği ve Azure AD DS yönetilen etki alanı oluşturmanız gerekir.
 
-1. [Bir Azure aboneliği oluşturun](../billing/billing-create-subscription.md).
+1. [Bir Azure aboneliği oluşturun](../cost-management-billing/manage/create-subscription.md).
 1. [Azure AD DS yönetilen etki alanını](delete-aadds.md) mevcut Azure AD dizininden silin.
 1. [Yeni bir Azure AD DS yönetilen etki alanı oluşturun](tutorial-create-instance.md).
 

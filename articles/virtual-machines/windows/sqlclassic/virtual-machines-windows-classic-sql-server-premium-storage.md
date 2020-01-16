@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f40b479b66f2fa9a60e084fc0e29f40cef052e99
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162536"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965663"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Sanal Makineler’de SQL Server ile Azure Premium Depolama kullanma
 
@@ -29,7 +29,7 @@ ms.locfileid: "73162536"
 [Azure Premium SSD 'ler](../disks-types.md) , düşük gecikme süresi ve yüksek aktarım hızı GÇ sağlayan yeni nesil depodur. IaaS [sanal makinelerinde](https://azure.microsoft.com/services/virtual-machines/)SQL Server gibi, önemli GÇ yoğun iş yükleri için en iyi şekilde kullanılır.
 
 > [!IMPORTANT]
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/resource-manager-deployment-model.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir.
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir.
 
 Bu makalede, SQL Server çalıştıran bir sanal makineyi Premium Depolama kullanmak üzere geçirmeye yönelik planlama ve kılavuz sağlanmaktadır. Buna Azure altyapısı (ağ, depolama) ve Konuk Windows VM adımları dahildir. [Ek](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) içindeki örnekte, PowerShell ile IYILEŞTIRILMIŞ yerel SSD depolamadan yararlanmak üzere daha büyük VM 'lerin nasıl taşınacağı hakkında tam kapsamlı bir uçtan uca geçiş gösterilmektedir.
 
@@ -99,7 +99,7 @@ Bunu Batı Avrupa bir bölgesel VNET 'e taşımak için, yapılandırmayı aşa�
 
 Premium Depolama için yapılandırılmış yeni bir depolama hesabı oluşturmanız gerekir. Premium depolamanın kullanılması, tek tek VHD 'lerde değil, depolama hesabında ayarlanır, ancak DS * serisi VM kullanırken VHD 'leri Premium ve standart depolama hesaplarından iliştirebilirsiniz. İşletim sistemi VHD 'sini Premium depolama hesabına eklemek istemiyorsanız bunu düşünebilirsiniz.
 
-"Premium_LRS" **türüne** sahip aşağıdaki **New-Azurestokıgeaccountpowershell** komutu bir Premium depolama hesabı oluşturur:
+"Premium_LRS" **türü** Ile aşağıdaki **New-Azurestokıgeaccountpowershell** komutu bir Premium depolama hesabı oluşturur:
 
 ```powershell
 $newstorageaccountname = "danpremstor"
@@ -479,13 +479,13 @@ Her zaman yüksek kullanılabilirlik işlevlerinin beklendiğinden emin olmak i�
 13. Yeni düğümleri otomatik yük devretme ortakları yapın ve yük devretmeyi test edin.
 14. Özgün düğümleri kullanılabilirlik grubundan kaldırın.
 
-##### <a name="advantages"></a>Üstünlü
+##### <a name="advantages"></a>Yararları
 
 * Yeni SQL Server 'Lar, her zaman açık öğesine eklenmeden önce test edilebilir (SQL Server ve uygulama).
 * VM boyutunu değiştirebilir ve depolama alanını tam gereksinimlerinize göre özelleştirebilirsiniz. Ancak, tüm SQL dosya yollarını aynı tutmak yararlı olacaktır.
 * VERITABANı yedeklemelerinin Ikincil çoğaltmalara aktarımını ne zaman başlatıldığını denetleyebilirsiniz. Bu, zaman uyumsuz bir kopya olduğundan, VHD 'leri kopyalamak için Azure **Start-Azurestokgeblobcopy** komutunu kullanmaktan farklıdır.
 
-##### <a name="disadvantages"></a>Olumsuz
+##### <a name="disadvantages"></a>Olumsuz yönleri
 
 * Windows Storage havuzlarını kullanırken, yeni ek düğümlerin tam küme doğrulaması sırasında küme kapalı kalma süresi vardır.
 * SQL Server sürümüne ve var olan ikincil çoğaltmalara bağlı olarak, var olan ikincilleri kaldırmadan daha fazla ikincil çoğaltma ekleyemeyebilirsiniz.
@@ -503,14 +503,14 @@ Uygulamaları ve kullanıcıları yeni her zaman açık dinleyiciye aktardığı
 * Yeni sunuculardaki veritabanlarına son işlem günlüğü yedeklemelerini geri yüklemek için geçen süre.
 * İstemci uygulamalarının yeni Always on dinleyicisi kullanması için güncelleştirilmesi için geçen süre.
 
-##### <a name="advantages"></a>Üstünlü
+##### <a name="advantages"></a>Yararları
 
 * Gerçek üretim ortamını, SQL Server ve işletim sistemi yapı değişikliklerini test edebilirsiniz.
 * Depolama alanını özelleştirme ve VM boyutunu potansiyel olarak azaltma seçeneğiniz vardır. Bu, maliyet azalmasına neden olabilir.
 * Bu işlem sırasında SQL Server yapınızı veya sürümünüzü güncelleştirebilirsiniz. Işletim sistemini de yükseltebilirsiniz.
 * Önceki her zaman açık küme, bir katı geri alma hedefi işlevi görebilir.
 
-##### <a name="disadvantages"></a>Olumsuz
+##### <a name="disadvantages"></a>Olumsuz yönleri
 
 * Her ikisinin de her zaman aynı anda çalışmasını istiyorsanız, dinleyicinin DNS adını değiştirmeniz gerekir. Bu, geçiş sırasında yönetim yükünü ekleyerek istemci uygulama dizelerinin yeni dinleyici adını yansıtması gerekir.
 * Geçiş işleminden önce son eşitleme gereksinimlerini en aza indirmek için, iki ortam arasında bir eşitleme mekanizması uygulamanız gerekir.
@@ -536,14 +536,14 @@ En az kapalı kalma süresine yönelik bir strateji, var olan bir bulut ikincisi
 > [!NOTE]
 > Eklenen düğümün, her zaman açık yük devretme ortağı olarak içinde olmasını istediğinizde, yük dengeli kümeye yönelik bir başvuruya sahip bir Azure Uç Noktası eklemeniz gerekir. Bunu yapmak için **Add-AzureEndpoint** komutunu çalıştırdığınızda geçerli bağlantılar açık kalır, ancak yük dengeleyici güncelleştirilene kadar dinleyiciye yeni bağlantılar kurulayamaz. Bu test sırasında son 90-120saniyeye görüldü, bu test edilmelidir.
 
-##### <a name="advantages"></a>Üstünlü
+##### <a name="advantages"></a>Yararları
 
 * Geçiş sırasında hiçbir ek maliyet tahakkuk etilmedi.
 * Bire bir geçiş.
 * Azaltılan karmaşıklık.
 * Premium Depolama SKU 'larından daha fazla ıOPS sağlar. Diskler VM 'den ayrıldıktan ve yeni bulut hizmetine kopyalandıklarında, daha yüksek bir yük sağlayan VHD boyutunu artırmak için 3. taraf bir araç kullanılabilir. VHD boyutlarını artırmak için bu [Forum tartışmasına](https://social.msdn.microsoft.com/Forums/azure/4a9bcc9e-e5bf-4125-9994-7c154c9b0d52/resizing-azure-data-disk?forum=WAVirtualMachinesforWindows)bakın.
 
-##### <a name="disadvantages"></a>Olumsuz
+##### <a name="disadvantages"></a>Olumsuz yönleri
 
 * Geçiş sırasında bir HA ve DR geçici kaybı vardır.
 * Bu bir 1:1 geçişi olduğundan, sanal makinelerinizi destekleyen en az bir VM boyutu kullanmanız gerekir, bu nedenle VM 'lerinizi daha düşük bir boyuta geçiremeyebilirsiniz.
@@ -583,7 +583,7 @@ Hibrit her zaman açık yapılandırma örneğini göz önünde bulundurun:
 
 ![MultiSite1][9]
 
-##### <a name="advantages"></a>Üstünlü
+##### <a name="advantages"></a>Yararları
 
 * Mevcut altyapıya yararlanabilirsiniz.
 * Önce DR Azure DC 'de Azure Storage 'ı yükseltme seçeneğiniz vardır.
@@ -591,7 +591,7 @@ Hibrit her zaman açık yapılandırma örneğini göz önünde bulundurun:
 * Geçiş sırasında yük devretme testi hariç en az iki yük devretme işlemi vardır.
 * SQL Server verilerini yedekleme ve geri yükleme ile taşımanız gerekmez.
 
-##### <a name="disadvantages"></a>Olumsuz
+##### <a name="disadvantages"></a>Olumsuz yönleri
 
 * SQL Server yönelik istemci erişimine bağlı olarak, SQL Server uygulamaya alternatif bir DC 'de çalışırken daha fazla gecikme olabilir.
 * VHD 'lerin kopyalama süresi Premium depolamaya uzun olabilir. Bu, düğümün kullanılabilirlik grubunda tutulup tutulmayacağını etkileyebilecek kararlarınızı etkileyebilir. Birincil düğümün, çoğaltılan işlemleri işlem günlüğünde tutması gerektiğinden, geçiş sırasında oturum yoğunluğu yoğun iş yüklerinin ne zaman çalıştığını göz önünde bulundurun. Bu nedenle bu, önemli ölçüde büyüyebilir.

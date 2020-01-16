@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961404"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970493"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure Kamu ve ortak bölgeler arasında Azure VM 'lerini taşıma 
 
@@ -63,9 +63,9 @@ Hedef [Azure ağını](../virtual-network/quick-create-portal.md)ayarlayın.
 - Ağın, kurtarma hizmetleri kasasıyla aynı bölgede olması gerekir
 
 
-### <a name="set-up-an-azure-storage-account"></a>Azure depolama hesabı ayarlama
+### <a name="set-up-an-azure-storage-account"></a>Azure depolama hesabı oluşturma
 
-Bir [Azure depolama hesabı](../storage/common/storage-quickstart-create-account.md)ayarlayın.
+Bir [Azure depolama hesabı](../storage/common/storage-account-create.md)ayarlayın.
 
 - Site Recovery, şirket içi makineleri Azure Storage 'a çoğaltır. Yük devretme gerçekleştikten sonra Azure VM 'Leri depolamadan oluşturulur.
 - Depolama hesabının, Kurtarma Hizmetleri kasasıyla aynı bölgede olması gerekir.
@@ -107,7 +107,7 @@ Mobility hizmeti, çoğaltmak istediğiniz her bir sunucuda yüklü olmalıdır.
 ## <a name="copy-data-to-the-target-region"></a>Hedef bölgeye veri kopyalama
 Aşağıdaki adımlar, verileri hedef bölgeye kopyalamak için Azure Site Recovery nasıl kullanacağınızı yönlendirecektir.
 
-### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Kaynak bölgesi dışında herhangi bir bölgede kasayı oluşturun.
+### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Kasayı, kaynak bölgesi dışında herhangi bir bölgede oluşturun.
 
 1. [Azure Portal](https://portal.azure.com) > **Kurtarma Hizmetleri**’nde oturum açın.
 2. **Yedekleme ve Site Recovery** > **Yönetim Araçları** > **kaynak oluştur ' a** tıklayın.
@@ -163,7 +163,7 @@ Hedef kaynaklarını seçin ve doğrulayın.
 2. Hedef dağıtım modelini belirtin.
 3. Site Recovery, bir veya birden çok uyumlu Azure depolama hesabınızın ve ağınızın olup olmadığını denetler.
 
-   ![Hedef](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Hedefleyin](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ### <a name="create-a-replication-policy"></a>Çoğaltma ilkesi oluşturma
@@ -197,9 +197,9 @@ Hedef kaynaklarını seçin ve doğrulayın.
    > [!WARNING]
    > Taşımak istediğiniz Azure sanal makinesinin IP adresini girmeniz gerekir
 
-10. Özellikler ** > ** Özellikler **yapılandırma**' da, Mobility hizmetini makineye otomatik olarak yüklemek için işlem sunucusu tarafından kullanılacak hesabı seçin.
+10. **Özellikler** > **Özellikleri yapılandır** bölümünde, Mobility hizmetini makineye otomatik olarak yüklemek için işlem sunucusu tarafından kullanılacak hesabı seçin.
 11. **Çoğaltma ayarları** > **Çoğaltma ayarlarını yapılandırma** bölümünde doğru çoğaltma ilkesinin seçilip seçilmediğini doğrulayın. 
-12. **Çoğaltmayı Etkinleştir**’e tıklayın. **Ayarlar**İşler > Site Recovery İşleri >  bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretme için hazırdır.
+12. **Çoğaltmayı Etkinleştir**’e tıklayın. **Ayarlar** > **İşler** > **Site Recovery İşleri** bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretme için hazırdır.
 
 
 Eklediğiniz sunucuları izlemek için, **yapılandırma sunucularındaki** son keşfedilen zamanı, en **son iletişim** > kontrol edebilirsiniz. Zamanlanan bulma süresini beklemeden makineler eklemek için yapılandırma sunucusunu vurgulayın (tıklamayın) ve **Yenile**' ye tıklayın.
@@ -211,7 +211,7 @@ Eklediğiniz sunucuları izlemek için, **yapılandırma sunucularındaki** son 
 2. **Yük Devretme Testi** bölümünde, yük devretmede kullanılması için bir kurtarma noktası seçin:
 
    - **En son işlenen**: VM’nin yükünü, Site Recovery hizmeti tarafından işlenen en son kurtarma noktasına devreder. Zaman damgası gösterilir. Bu seçenekle veri işlemeye zaman harcanmadığından düşük RTO sağlanılır (Kurtarma Süresi Hedefi)
-   - **Uygulamayla tutarlı olan son**: Bu seçenek, tüm VM’lerin yükünü uygulamayla tutarlı olan en son kurtarma noktasına devreder. Zaman damgası gösterilir.
+   - **En son uygulamayla tutarlı**: Bu seçenekte tüm VM yükü, uygulamayla tutarlı en son kurtarma noktasına devredilir. Zaman damgası gösterilir.
    - **Özel**: Herhangi bir kurtarma noktası seçin.
 
 3. Yapılandırmayı sınamak için Azure VM 'lerini taşımak istediğiniz hedef Azure sanal ağını seçin. 
@@ -219,8 +219,8 @@ Eklediğiniz sunucuları izlemek için, **yapılandırma sunucularındaki** son 
    > [!IMPORTANT]
    > Yük devretme testi için ayrı bir Azure VM ağı kullanmanızı öneririz. bu sayede, sanal makinelerinizi, çoğaltmayı etkinleştirdiğinizde ayarlanmış olan VM 'lerinizi taşımak istediğiniz üretim ağına göre değil.
 
-4. Taşımayı test etmeye başlamak için **Tamam**' a tıklayın. İlerleme durumunu izlemek için, VM’ye tıklayarak özelliklerini açın. Ya da kasa adı > **Ayarlar**İşler > Site Recovery işleri >  bölümünde **Yük Devretme Testi** işine tıklayabilirsiniz.
-5. Yük devretme bittikten sonra, çoğaltma Azure VM, Azure portalı > **Sanal Makineler** bölümünde görünür. VM’nin çalıştığından, uygun şekilde boyutlandırıldığından ve uygun ağa bağlı olduğundan emin olun.
+4. Taşımayı test etmeye başlamak için **Tamam**' a tıklayın. İlerleme durumunu izlemek için, VM’ye tıklayarak özelliklerini açın. Ya da kasa adı > **Ayarlar** > **İşler** > **Site Recovery işleri** bölümünde **Yük Devretme Testi** işine tıklayabilirsiniz.
+5. Yük devretme işlemi tamamlandıktan sonra çoğaltma Azure sanal makinesi, Azure portalı > **Sanal Makineler** bölümünde görüntülenir. VM’nin çalıştığından, uygun şekilde boyutlandırıldığından ve uygun ağa bağlı olduğundan emin olun.
 6. Taşımayı test etme işleminin bir parçası olarak oluşturulan VM 'yi silmek istiyorsanız, çoğaltılan öğede **Yük devretme testini temizle** ' ye tıklayın. **Notlar**' da, testle ilişkili tüm gözlemlerinizi kaydedin ve kaydedin.
 
 ## <a name="perform-the-move-to-the-target-region-and-confirm"></a>Hedef bölgeye taşıma işlemini gerçekleştirin ve onaylayın.

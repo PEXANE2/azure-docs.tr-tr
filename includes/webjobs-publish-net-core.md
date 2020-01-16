@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 02/19/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 97387e24d5b55c1438a69da1a1fd0a9bc1720e47
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4860532e59227618ce819772887556719ecb53fc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188530"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020814"
 ---
 1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin.
 
-1. İçinde **Yayımla** iletişim kutusunda **Microsoft Azure App Service**, seçin **Yeni Oluştur**ve ardından **Yayımla**.
+1. **Yayımla** iletişim kutusunda **Microsoft Azure App Service**' ni seçin, **Yeni oluştur**' u seçin ve ardından **Yayımla**' yı seçin.
 
-   ![Yayımlama hedefi seçme](./media/webjobs-publish-netcore/pick-publish-target.png)
+   ![Yayımlama hedefi seçin](./media/webjobs-publish-netcore/pick-publish-target.png)
 
-1. İçinde **App Service Oluştur** iletişim kutusunda, görüntünün altındaki tabloda belirtilen barındırma ayarlarını kullanın:
+1. **App Service oluştur** iletişim kutusunda, görüntünün altındaki tabloda belirtilen barındırma ayarlarını kullanın:
 
     ![App Service iletişim kutusu oluşturma](./media/webjobs-publish-netcore/app-service-dialog.png)
 
@@ -29,7 +29,7 @@ ms.locfileid: "67188530"
     | ------------ |  ------- | -------------------------------------------------- |
     | **Uygulama Adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı benzersiz şekilde tanımlayan ad. |
     | **Abonelik** | Aboneliğinizi seçin | Kullanılacak Azure aboneliği. |
-    | **[Kaynak Grubu](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  İşlev uygulamanızın oluşturulacağı kaynak grubunun adı. Yeni kaynak grubu oluşturmak **Yeni**'yi seçin.|
-    | **[Barındırma planı](../articles/app-service/overview-hosting-plans.md)** | App Service planı | [App Service planı](../articles/app-service/overview-hosting-plans.md), uygulamanızı barındıran web sunucusu grubunun konumunu, boyutunu ve özelliklerini belirtir. Web uygulamalarında ortak bir App Service planının kullanılacağı şekilde yapılandırma gerçekleştirerek birden fazla uygulama barındırdığınızda maliyet tasarrufu elde edebilirsiniz. App Service planları, bölgeye, örnek boyutu, Ölçek sayısı ve SKU (ücretsiz, paylaşılan, temel, standart veya Premium) tanımlayın. Seçin **yeni** yeni bir App Service planı oluşturmak için. |
+    | **[Kaynak Grubu](../articles/azure-resource-manager/management/overview.md)** | myResourceGroup |  İşlev uygulamanızın oluşturulacağı kaynak grubunun adı. Yeni kaynak grubu oluşturmak **Yeni**'yi seçin.|
+    | **[Barındırma planı](../articles/app-service/overview-hosting-plans.md)** | App Service planı | [App Service planı](../articles/app-service/overview-hosting-plans.md), uygulamanızı barındıran web sunucusu grubunun konumunu, boyutunu ve özelliklerini belirtir. Web uygulamalarında ortak bir App Service planının kullanılacağı şekilde yapılandırma gerçekleştirerek birden fazla uygulama barındırdığınızda maliyet tasarrufu elde edebilirsiniz. App Service planlar bölgeyi, örnek boyutunu, ölçek sayısını ve SKU 'YU (ücretsiz, paylaşılan, temel, standart veya Premium) tanımlar. Yeni bir App Service planı oluşturmak için **Yeni** ' yi seçin. |
 
-1. Tıklayın **Oluştur** WebJob ve ilgili kaynakları şu ayarlarla oluşturacak ve proje kodunu dağıtın.
+1. Azure 'da bu ayarlarla bir WebJob ve ilgili kaynaklar oluşturmak ve proje kodunuzu dağıtmak için **Oluştur** ' a tıklayın.

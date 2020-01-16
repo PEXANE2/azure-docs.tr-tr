@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 13b0f7bd37956b51c6dce780d0709abfb3546336
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23e04bf651c199364f23bf36f327de94c709d643
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430313"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028584"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Azure özel bağlantısını kullanarak bir Azure Cosmos hesabına özel olarak bağlanma
 
@@ -141,7 +141,7 @@ Bu bölümde, Özel uç nokta kullanarak Azure Cosmos hesabına özel olarak ba�
    10.1.255.14 mycosmosaccount-eastus.documents.azure.com
 
 
-1.  *Myvm*uzak masaüstünde [Microsoft Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)' yi yükleyip.
+1. *Myvm*uzak masaüstünde [Microsoft Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)' yi yükleyip.
 
 1. Sağ tıklama ile **Cosmos DB hesapları (Önizleme)** öğesini seçin.
 
@@ -159,22 +159,22 @@ Bu bölümde, Özel uç nokta kullanarak Azure Cosmos hesabına özel olarak ba�
 
 1. (İsteğe bağlı olarak) *mycosmosaccount*öğesine yeni öğeler ekleyin.
 
-1.  *Myvm*ile uzak masaüstü bağlantısını kapatın.
+1. *Myvm*ile uzak masaüstü bağlantısını kapatın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Özel uç nokta, Azure Cosmos hesabı ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin: 
 
-1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* girin ve arama sonuçlarından *myresourcegroup* öğesini seçin.
+1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* yazın ve arama sonuçlarından *myresourcegroup* öğesini seçin.
 
 1. **Kaynak grubunu sil**'i seçin.
 
-1. **Kaynak grubu adını yazmak** Için *myresourcegroup* girin ve **Sil**' i seçin.
+1. **Kaynak grubu adını yazın** ve **Sil**' i seçmek için *myresourcegroup* girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede bir sanal ağ, bir Azure Cosmos hesabı ve özel uç nokta üzerinde bir VM oluşturdunuz. VM 'ye internet 'ten bağlı ve özel bağlantı kullanarak Azure Cosmos hesabına güvenli bir şekilde Iletilecaksınız.
 
-* Özel uç nokta hakkında daha fazla bilgi edinmek için bkz. [Azure özel uç noktası nedir?](private-endpoint-overview.md).
+* Özel uç nokta hakkında daha fazla bilgi edinmek için bkz. [Azure özel uç noktası nedir?](private-endpoint-overview.md).
 
 * Azure Cosmos DB ile kullanırken özel uç nokta sınırlaması hakkında daha fazla bilgi için, bkz. [Azure özel bağlantı Azure Cosmos DB](../cosmos-db/how-to-configure-private-endpoints.md) makalesi.

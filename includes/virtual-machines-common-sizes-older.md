@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: a4746a945f1a89c34308a3bd968f6341e0e25ac5
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 1867164954a3f9dff7a8a8c04e249a13edccb84a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541557"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020833"
 ---
 Bu bölüm, daha eski nesil sanal makine boyutları hakkında bilgi sağlar. Bu boyutlar hala desteklenir, ancak ek kapasite almaz. Genel olarak kullanılabilen daha yeni veya alternatif boyutlar vardır. Gereksinimlerinize en uygun VM boyutlarını seçmek için lütfen Azure 'daki [Windows sanal makinelerinin boyutlara](../articles/virtual-machines/windows/sizes.md) veya [Azure 'da Linux sanal makineleri](../articles/virtual-machines/linux/sizes.md) için boyutlara bakın.  
 
@@ -23,18 +23,18 @@ Linux VM 'yi yeniden boyutlandırma hakkında daha fazla bilgi için bkz. [Azure
 
 ### <a name="basic-a"></a>Temel A  
 
-**Daha yeni boyut önerisi**: [AV2 serisi](../articles/virtual-machines/windows/sizes-general.md#av2-series)
+**Daha yeni boyut önerisi**: [AV2-Series](../articles/virtual-machines/windows/sizes-general.md#av2-series)
 
-Premium Depolama:  Desteklenmiyor
+Premium Depolama: desteklenmiyor
 
-Premium depolama önbelleği:  Desteklenmiyor
+Premium depolama önbelleği: desteklenmiyor
 
 Temel katman boyutları genelde geliştirme iş yükleri ve yük dengeleme, otomatik ölçeklendirme veya bellek kullanımı yoğun sanal makineler gerektirmeyen diğer uygulamalar içindir.
 
-|Boyut – Boyut\Ad | Sanal işlemci |Bellek|NIC'ler (Maks.)|En fazla geçici disk boyutu |En çok, veri diskleri (1023 GB)|En çok, IOPS (disk başına 300)|
+|Boyut – Boyut\Ad | vCPU |Hafıza|NIC'ler (Maks.)|En fazla geçici disk boyutu |En çok, veri diskleri (1023 GB)|En çok, IOPS (disk başına 300)|
 |---|---|---|---|---|---|---|
-|A0\Basic_A0|1\.|768 MB|2| 20 GB|1\.|1x300|
-|A1\Basic_A1|1\.|1,75 GB|2| 40 GB |2|2x300|
+|A0\Basic_A0|1|768 MB|2| 20 GB|1|1x300|
+|A1\Basic_A1|1|1,75 GB|2| 40 GB |2|2x300|
 |A2\Basic_A2|2|3,5 GB|2| 60 GB|4|4x300|
 |A3\Basic_A3|4|7 GB|2| 120 GB |8|8x300|
 |A4\Basic_A4|8|14 GB|2| 240 GB |16|16x300|
@@ -53,18 +53,18 @@ Klasik dağıtım modelinde bazı VM boyutu adları CLI ve PowerShell'dekilerden
 
 ### <a name="a-series"></a>A Serisi  
 
-**Daha yeni boyut önerisi**: [AV2 serisi](../articles/virtual-machines/windows/sizes-general.md#av2-series)
+**Daha yeni boyut önerisi**: [AV2-Series](../articles/virtual-machines/windows/sizes-general.md#av2-series)
 
-ACU 50-100
+ACU: 50-100
 
-Premium Depolama:  Desteklenmiyor
+Premium Depolama: desteklenmiyor
 
-Premium depolama önbelleği:  Desteklenmiyor
+Premium depolama önbelleği: desteklenmiyor
 
-| Size | Sanal işlemci | Bellek: GiB | Geçici depolama (HDD): GiB | Maksimum veri diskleri | Maksimum veri diski performansı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps)  |
+| Boyut | vCPU | Bellek: GiB | Geçici depolama (HDD): GiB | En fazla veri diski | Maksimum veri diski aktarım hızı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps)  |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0&nbsp;<sup>1</sup> |1\. |0,768 |20 |1\. |1x500 |2 / 100 |
-| Standard_A1 |1\. |1,75 |70 |2 |2x500 |2 / 500  |
+| Standard_A0&nbsp;<sup>1</sup> |1 |0,768 |20 |1 |1x500 |2 / 100 |
+| Standard_A1 |1 |1,75 |70 |2 |2x500 |2 / 500  |
 | Standard_A2 |2 |3,5 |135 |4 |4x500 |2 / 500 |
 | Standard_A3 |4 |7 |285 |8 |8x500 |2 / 1000 |
 | Standard_A4 |8 |14 |605 |16 |16x500 |4 / 2000 |
@@ -78,101 +78,101 @@ Premium depolama önbelleği:  Desteklenmiyor
 
 ### <a name="a-series---compute-intensive-instances"></a>A Serisi - Yoğun işlem gücü kullanımlı örnekler  
 
-**Daha yeni boyut önerisi**: [AV2 serisi](../articles/virtual-machines/windows/sizes-general.md#av2-series)
+**Daha yeni boyut önerisi**: [AV2-Series](../articles/virtual-machines/windows/sizes-general.md#av2-series)
 
-ACU 225
+ACU: 225
 
-Premium Depolama:  Desteklenmiyor
+Premium Depolama: desteklenmiyor
 
-Premium depolama önbelleği:  Desteklenmiyor
+Premium depolama önbelleği: desteklenmiyor
 
 A8-A11 ve H Serisi boyutlar *yoğun işlem gücü kullanımlı örnekler* olarak da bilinir. Bu boyutları çalıştıran donanım; yüksek performanslı bilgi işlem (HPC) kümesi uygulamaları, modellemeler ve simülasyonlar gibi yoğun işlem ve ağ kullanımlı uygulamalar için tasarlanmış ve iyileştirilmiştir. A8-A11 Serisinde, Intel Xeon E5-2670 @ 2,6 GHZ, H Serisinde ise Intel Xeon E5-2667 v3 @ 3,2 GHz işlemciler kullanılmaktadır.  
 
-| Size | Sanal işlemci | Bellek: GiB | Geçici depolama (HDD): GiB | Maksimum veri diskleri | Maksimum veri diski performansı: IOPS | En fazla NIC|
+| Boyut | vCPU | Bellek: GiB | Geçici depolama (HDD): GiB | En fazla veri diski | Maksimum veri diski aktarım hızı: IOPS | En fazla NIC|
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A8&nbsp;<sup>1</sup> |8 |56 |382 |32 |32x500 |2 |
 | Standard_A9&nbsp;<sup>1</sup> |16 |112 |382 |64 |64x500 |4 |
 | Standard_A10 |8 |56 |382 |32 |32x500 |2  |
 | Standard_A11 |16 |112 |382 |64 |64x500 |4 |
 
-<sup>1</sup> MPı uygulamaları için, adanmış RDMA arka uç ağı, son derece düşük gecikme süresi ve yüksek bant genişliği sunan FDR InfiniBand ağı tarafından etkinleştirilir.  
+<sup>1</sup> MPı uygulamaları için adanmış RDMA arka uç ağı, en düşük gecikme süresi ve yüksek bant genişliği sunan QDR InfiniBand ağı tarafından etkinleştirilir.  
 
 <br>
 
-### <a name="d-series"></a>D Serisi  
+### <a name="d-series"></a>D serisi  
 
-**Daha yeni boyut önerisi**: [Dv3 serisi](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1)
+**Daha yeni boyut önerisi**: [Dv3-Series](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1)
 
-ACU 160-250 <sup>1</sup>
+ACU: 160-250 <sup>1</sup>
 
-Premium Depolama:  Desteklenmiyor
+Premium Depolama: desteklenmiyor
 
-Premium depolama önbelleği:  Desteklenmiyor
+Premium depolama önbelleği: desteklenmiyor
 
-| Size         | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | En yüksek geçici depolama aktarım hızı: IOPS/okuma MBps/yazma MBps | Maksimum veri diski/aktarım hızı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut         | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1  | 1\.         | 3,5         | 50             | 3000/46/23                                           | 4/4x500                         | 2 / 500                 |
+| Standard_D1  | 1         | 3,5         | 50             | 3000/46/23                                           | 4/4x500                         | 2 / 500                 |
 | Standard_D2  | 2         | 7           | 100            | 6000/93/46                                           | 8/8x500                         | 2 / 1000                     |
 | Standard_D3  | 4         | 14          | 200            | 12000/187/93                                         | 16/16x500                         | 4 / 2000                     |
 | Standard_D4  | 8         | 28          | 400            | 24000/375/187                                        | 32/32x500                       | 8 / 4000                     |
 
-<sup>1</sup> VM AILESI aşağıdaki CPU 'dan birinde çalıştırılabilir: 2,2 GHz Intel Xeon® E5-2660 v2, 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) veya 2,3 GHz Intel XEON® E5-2673 v4 (çok Iyi)  
+<sup>1</sup> VM AILESI şu CPU 'dan birinde çalışabilir: 2,2 GHz ıntel Xeon® E5-2660 v2, 2,4 GHz ıntel Xeon® E5-2673 v3 (Haswell) veya 2,3 GHz ıntel Xeon® E5-2673 v4 (çok iyi)  
 
 <br>
 
 ### <a name="d-series---memory-optimized"></a>D serisi-bellek için iyileştirilmiş  
 
-**Daha yeni boyut önerisi**: [Dv3 serisi](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1)
+**Daha yeni boyut önerisi**: [Dv3-Series](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1)
 
-ACU 160-250 <sup>1</sup>
+ACU: 160-250 <sup>1</sup>
 
-Premium Depolama:  Desteklenmiyor
+Premium Depolama: desteklenmiyor
 
-Premium depolama önbelleği:  Desteklenmiyor
+Premium depolama önbelleği: desteklenmiyor
 
-| Size         | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | En yüksek geçici depolama aktarım hızı: IOPS/okuma MBps/yazma MBps | Maksimum veri diski/aktarım hızı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut         | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D11 | 2         | 14          | 100            | 6000/93/46                                           | 8/8x500                         | 2 / 1000                     |
 | Standard_D12 | 4         | 28          | 200            | 12000/187/93                                         | 16/16x500                         | 4 / 2000                     |
 | Standard_D13 | 8         | 56          | 400            | 24000/375/187                                        | 32/32x500                       | 8 / 4000                     |
 | Standard_D14 | 16        | 112         | 800            | 48000/750/375                                        | 64/64x500                       | 8 / 8000                |
 
-<sup>1</sup> VM AILESI aşağıdaki CPU 'dan birinde çalıştırılabilir: 2,2 GHz Intel Xeon® E5-2660 v2, 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) veya 2,3 GHz Intel XEON® E5-2673 v4 (çok Iyi)  
+<sup>1</sup> VM AILESI şu CPU 'dan birinde çalışabilir: 2,2 GHz ıntel Xeon® E5-2660 v2, 2,4 GHz ıntel Xeon® E5-2673 v3 (Haswell) veya 2,3 GHz ıntel Xeon® E5-2673 v4 (çok iyi)  
 
 <br>
 
 ### <a name="ds-series"></a>DS serisi  
 
-**Daha yeni boyut önerisi**: [DSv3 serisi](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
+**Daha yeni boyut önerisi**: [DSv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 
-ACU 160-250 <sup>1</sup>
+ACU: 160-250 <sup>1</sup>
 
-Premium Depolama:  Desteklenen
+Premium Depolama: desteklenir
 
-Premium depolama önbelleği:  Desteklenen
+Premium depolama önbelleği: desteklenir
 
-| Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS/MBps (GiB 'de önbellek boyutu) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1 |1\. |3,5 |7 |4 |4000/32 (43) |3200/32 |2 / 500 |
+| Standard_DS1 |1 |3,5 |7 |4 |4000/32 (43) |3200/32 |2 / 500 |
 | Standard_DS2 |2 |7 |14 |8 |8000/64 (86) |6400/64 |2 / 1000 |
 | Standard_DS3 |4 |14 |28 |16 |16.000/128 (172) |12.800/128 |4 / 2000 |
 | Standard_DS4 |8 |28 |56 |32 |32.000/256 (344) |25.600/256 |8 / 4000 |
 
-<sup>1</sup> VM AILESI aşağıdaki CPU 'dan birinde çalıştırılabilir: 2,2 GHz Intel Xeon® E5-2660 v2, 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) veya 2,3 GHz Intel XEON® E5-2673 v4 (çok Iyi)  
+<sup>1</sup> VM AILESI şu CPU 'dan birinde çalışabilir: 2,2 GHz ıntel Xeon® E5-2660 v2, 2,4 GHz ıntel Xeon® E5-2673 v3 (Haswell) veya 2,3 GHz ıntel Xeon® E5-2673 v4 (çok iyi)  
 
 <br>
 
 ### <a name="ds-series---memory-optimized"></a>DS serisi bellek için iyileştirilmiş  
 
-**Daha yeni boyut önerisi**: [DSv3 serisi](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
+**Daha yeni boyut önerisi**: [DSv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 
-ACU 160-250 <sup>1, 2</sup>
+ACU: 160-250 <sup>1, 2</sup>
 
-Premium Depolama:  Desteklenen
+Premium Depolama: desteklenir
 
-Premium depolama önbelleği:  Desteklenen
+Premium depolama önbelleği: desteklenir
 
-| Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS/MBps (GiB 'de önbellek boyutu) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11 |2 |14 |28 |8 |8000/64 (72) |6400/64 |2 / 1000 |
 | Standard_DS12 |4 |28 |56 |16 |16.000/128 (144) |12.800/128 |4 / 2000 |
@@ -180,7 +180,7 @@ Premium depolama önbelleği:  Desteklenen
 | Standard_DS14 |16 |112 |224 |64 |64.000/512 (576) |51.200/512 |8 / 8000 |
 
 <sup>1</sup> DS serisi VM ile olası maksimum disk aktarım hızı (IOPS veya MB/sn), eklenen disklerin sayısı, boyutu ve şeritle sınırlı olabilir.  Ayrıntılar için bkz. [yüksek performans Için tasarlama](../articles/virtual-machines/windows/premium-storage-performance.md).   
-<sup>2</sup> VM AILESI aşağıdaki CPU 'dan birinde çalıştırılabilir: 2,2 GHz Intel Xeon® E5-2660 v2, 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) veya 2,3 GHz Intel XEON® E5-2673 v4 (çok Iyi)  
+<sup>2</sup> VM AILESI şu CPU 'dan birinde çalışabilir: 2,2 GHz ıntel Xeon® E5-2660 v2, 2,4 GHz ıntel Xeon® E5-2673 v3 (Haswell) veya 2,3 GHz ıntel Xeon® E5-2673 v4 (geniş bir)  
 
 <br>
 
@@ -190,13 +190,13 @@ Ls serisi, [Intel® Xeon İşlemci E5 v3 ailesi](https://www.intel.com/content/w
 
 Ls serisi, dayanıklı veri diskleri tarafından ulaşılabilir ıOPS 'yi artırmak için yerel bir önbellek oluşturulmasını desteklemez. Yerel diskin yüksek işleme ve ıOPS değeri, tek bir VM 'nin arızası durumunda Kalıcılık sağlamak için verileri birden çok VM arasında çoğaltan Apache Cassandra ve MongoDB gibi NoSQL depoları için ideal olan LS Serisi VM 'Leri sağlar.
 
-ACU 180-240
+ACU: 180-240
 
-Premium Depolama:  Desteklenen
+Premium Depolama: desteklenir
 
-Premium depolama önbelleği:  Desteklenmiyor
+Premium depolama önbelleği: desteklenmiyor
  
-| Size          | Sanal işlemci | Bellek (GiB) | Geçici depolama (GiB) | Maksimum veri diskleri | En fazla geçici depolama aktarım hızı (ıOPS/MBps) | Önbelleğe alınmamış maksimum disk aktarım hızı (ıOPS/MBps) | En fazla NIC/beklenen ağ bant genişliği (Mbps) | 
+| Boyut          | vCPU | Bellek (GiB) | Geçici depolama (GiB) | En fazla veri diski | En fazla geçici depolama aktarım hızı (ıOPS/MBps) | Önbelleğe alınmamış maksimum disk aktarım hızı (ıOPS/MBps) | En fazla NIC/beklenen ağ bant genişliği (Mbps) | 
 |----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
 | Standart_L4s   | 4  | 32  | 678   | 16 | 20000/200 | 5000/125  | 2 / 4000  | 
 | Standart_L8s   | 8  | 64  | 1388 | 32 | 40000/400 | 10000/250 | 4 / 8000  | 
@@ -209,13 +209,13 @@ LS Serisi VM 'lerle mümkün olan en fazla disk aktarım hızı, ekli disklerin 
 
 ### <a name="gs-series"></a>GS serisi 
 
-ACU 180-240 <sup>1</sup>
+ACU: 180-240 <sup>1</sup>
 
-Premium Depolama:  Desteklenen
+Premium Depolama: desteklenir
 
-Premium depolama önbelleği:  Desteklenen
+Premium depolama önbelleği: desteklenir
 
-| Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS/MBps (GiB 'de önbellek boyutu) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_GS1 |2 |28 |56 |8 |10.000/100 (264) |5000/125 |2 / 2000 |
 | Standard_GS2 |4 |56 |112 |16 |20.000/200 (528) |10.000/250 |2 / 4000 |
@@ -231,15 +231,15 @@ Premium depolama önbelleği:  Desteklenen
 
 <br>
 
-### <a name="g-series"></a>G Serisi
+### <a name="g-series"></a>G serisi
 
-ACU 180-240
+ACU: 180 - 240
 
-Premium Depolama:  Desteklenmiyor
+Premium Depolama: desteklenmiyor
 
-Premium depolama önbelleği:  Desteklenmiyor
+Premium depolama önbelleği: desteklenmiyor
 
-| Size         | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | En yüksek geçici depolama aktarım hızı: IOPS/okuma MBps/yazma MBps | Maksimum veri diski/aktarım hızı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut         | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_G1  | 2         | 28          | 384            | 6000/93/46                                           | 8/8x500                       | 2 / 2000                     |
 | Standard_G2  | 4         | 56          | 768            | 12000/187/93                                         | 16/16x500                       | 2 / 4000                     |

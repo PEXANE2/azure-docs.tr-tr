@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d6b65b76138cb180ab105631ebc0f19b7d38f206
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358312bcbb23aee5a06eaa39898ff4e632cd8b4b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226529"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977609"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Izleyici 'de Günlükler için ölçüm uyarıları oluşturma
 
@@ -357,7 +357,7 @@ Yukarıdaki JSON 'un Metricfromlogsalcertstatic. JSON olarak kaydedildiğini var
 }
 ```
 
-Yukarıdaki parametre dosyasının Metricfromlogsalcertstatic. Parameters. JSON olarak kaydedildiği varsayıldığında daha sonra, [Azure Portal oluşturma Için kaynak şablonu](../../azure-resource-manager/resource-group-template-deploy-portal.md)kullanılarak Günlükler için ölçüm uyarısı oluşturabilir.
+Yukarıdaki parametre dosyasının Metricfromlogsalcertstatic. Parameters. JSON olarak kaydedildiği varsayıldığında daha sonra, [Azure Portal oluşturma Için kaynak şablonu](../../azure-resource-manager/templates/deploy-portal.md)kullanılarak Günlükler için ölçüm uyarısı oluşturabilir.
 
 Alternatif olarak, bir diğeri aşağıdaki Azure PowerShell komutunu da kullanabilir:
 
@@ -673,7 +673,7 @@ Yukarıdaki JSON 'un, Metricfromlogsalcertdynamic. JSON olarak kaydedildiğini v
 }
 ```
 
-Yukarıdaki parametre dosyasının Metricfromlogsalcertdynamic. Parameters. JSON olarak kaydedildiği varsayıldığında daha sonra, [Azure Portal oluşturma Için kaynak şablonu](../../azure-resource-manager/resource-group-template-deploy-portal.md)kullanılarak Günlükler için ölçüm uyarısı oluşturabilir.
+Yukarıdaki parametre dosyasının Metricfromlogsalcertdynamic. Parameters. JSON olarak kaydedildiği varsayıldığında daha sonra, [Azure Portal oluşturma Için kaynak şablonu](../../azure-resource-manager/templates/deploy-portal.md)kullanılarak Günlükler için ölçüm uyarısı oluşturabilir.
 
 Alternatif olarak, bir diğeri aşağıdaki Azure PowerShell komutunu da kullanabilir:
 

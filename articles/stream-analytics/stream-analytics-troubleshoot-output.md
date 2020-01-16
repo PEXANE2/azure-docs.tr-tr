@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 65d01c5c4dd852cb424c75f170ce52156f1633cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354102"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980253"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics çıkışları sorunlarını giderme
 
 Bu sayfada çıkış bağlantılarıyla ilgili yaygın sorunlar ve bunların nasıl giderileceği ve ele alınacağını açıklanmaktadır.
 
-## <a name="output-not-produced-by-job"></a>İş tarafından üretilmeyen çıkış 
+## <a name="output-not-produced-by-job"></a>İş tarafından üretilmeyen çıkış
 1.  Her çıkış için **Bağlantıyı Sına** düğmesini kullanarak çıkışlara bağlantıyı doğrulayın.
 
 2.  **İzleyici** sekmesinde [**izleme ölçümleri**](stream-analytics-monitoring.md) ' ne bakın. Değerler toplanmış olduğundan ölçümler birkaç dakika gecikiyor.
@@ -27,28 +27,28 @@ Bu sayfada çıkış bağlantılarıyla ilgili yaygın sorunlar ve bunların nas
       - Veri kaynağının geçerli verilere sahip olup olmadığını görmek için [Service Bus Gezginini](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)kullanarak denetleyin. Bu denetim, iş Olay Hub 'ını giriş olarak kullanıyorsa geçerlidir.
       - Veri serileştirme biçiminin ve veri kodlamasının beklenip beklenmediğini denetleyin.
       - İş bir olay hub 'ı kullanıyorsa, ileti gövdesinin *null*olup olmadığını kontrol edin.
-      
+
     - Veri dönüştürme hataları 0 > ve clienmbing ise, aşağıdakiler doğru olabilir:
-      - Çıkış olayı, hedef havuzun şemasına uymuyor. 
+      - Çıkış olayı, hedef havuzun şemasına uymuyor.
       - Olay şeması, sorgudaki olayların tanımlı veya beklenen şemasıyla eşleşmeyebilir.
       - Olaydaki bazı alanların veri türleri beklentileri eşleşmeyebilir.
-      
+
     - Çalışma zamanı hataları 0 >, işin verileri alabileceği ancak sorguyu işlerken hata üretebileceği anlamına gelir.
-      - Hataları bulmak için [Denetim günlüklerine](../azure-resource-manager/resource-group-audit.md) gidin ve *başarısız* durumu filtreleyin.
-      
+      - Hataları bulmak için [Denetim günlüklerine](../azure-resource-manager/management/view-activity-logs.md) gidin ve *başarısız* durumu filtreleyin.
+
     - Inputevents > 0 ve OutputEvents = 0 ise, aşağıdakilerden birinin doğru olduğu anlamına gelir:
       - Sorgu işleme sıfır çıkış olayıyla sonuçlandı.
       - Olaylar veya alanları hatalı biçimlendirilmiş olabilir ve sorgu işlemeden sonra sıfır çıkış elde edilir.
       - İş, bağlantı veya kimlik doğrulama nedenleriyle verileri çıkış havuzuna gönderemedi.
-      
+
     - Daha önce bahsedilen tüm hata durumlarında, işlem günlüğü iletilerinde sorgu mantığının tüm olayları süzdüğü durumlar dışında ek ayrıntılar (ne olur dahil) açıklanmaktadır. Birden çok olayın işlenmesi hata oluşturursa, Stream Analytics aynı türdeki ilk üç hata iletisini Işlem günlüklerine 10 dakika içinde günlüğe kaydeder. Daha sonra, "hataların çok hızlı bir şekilde çalıştığını, bunların gizlenmekte olduğunu" belirten bir iletiyle aynı hata hatalarını bastırır.
-    
+
 ## <a name="job-output-is-delayed"></a>İş çıkışı gecikti
 
 ### <a name="first-output-is-delayed"></a>İlk çıkış ertelendi
 Stream Analytics işi başlatıldığında, giriş olayları okunur ama bazı durumlarda çıkışın oluşturulmasında bir gecikme olabilir.
 
-Zamana bağlı sorgu öğeleri büyük saat değerleri için çıkış gecikmesi katkıda bulunabilir. Büyük zaman pencereleri doğru çıktı oluşturmak için iş akışında zaman penceresi doldurmak için en son zaman mümkün (en fazla yedi gün önce) verilerini okuyarak başlatılır. Bekleyen giriş olaylarını yakalama okuma işlemi tamamlanana kadar bu süre boyunca hiçbir çıktı üretilmiştir. Sistem, böylece iş yeniden başlatma akış işi, yükseltildiğinde bu sorun ortaya çıkabilir. Bu tür yükseltmeler, genellikle bir kez her birkaç ay oluşur. 
+Zamana bağlı sorgu öğeleri büyük saat değerleri için çıkış gecikmesi katkıda bulunabilir. Büyük zaman pencereleri doğru çıktı oluşturmak için iş akışında zaman penceresi doldurmak için en son zaman mümkün (en fazla yedi gün önce) verilerini okuyarak başlatılır. Bekleyen giriş olaylarını yakalama okuma işlemi tamamlanana kadar bu süre boyunca hiçbir çıktı üretilmiştir. Sistem, böylece iş yeniden başlatma akış işi, yükseltildiğinde bu sorun ortaya çıkabilir. Bu tür yükseltmeler, genellikle bir kez her birkaç ay oluşur.
 
 Bu nedenle, Stream Analytics sorgunuz tasarlarken dikkatli olun. Büyük bir zaman penceresinde'nı kullanıyorsanız (birden fazla birkaç saat ayarlama için yedi gün) iş başlatıldığında veya yeniden başlatıldığında işin sorgu söz dizimi, zamana bağlı öğeleri için bunu bir gecikme için ilk çıktı yol açabilir.  
 
@@ -57,8 +57,8 @@ Bu nedenle, Stream Analytics sorgunuz tasarlarken dikkatli olun. Büyük bir zam
 Bu etkenler oluşturulan ilk çıkışın dakikliğini etkiler:
 
 1. Pencereli toplamlar (grup tarafından atlaması ve windows kayan atlayan,) kullanımı
-   - Atlayan veya atlamalı pencere toplamlar için sonuçları penceresi süre sonunda oluşturulur. 
-   - Bir olay girer veya kayan pencere çıkar, kayan bir pencere için sonuçları üretilir. 
+   - Atlayan veya atlamalı pencere toplamlar için sonuçları penceresi süre sonunda oluşturulur.
+   - Bir olay girer veya kayan pencere çıkar, kayan bir pencere için sonuçları üretilir.
    - Büyük pencere boyutu (> 1 saat) kullanmayı planlıyorsanız, böylece çıkışı daha sık bakın atlamalı veya kayan bir pencere seçmek idealdir.
 
 2. Zamana bağlı birleşimler (DATEDIFF katılma) kullanımı
@@ -78,9 +78,9 @@ Azure portalında ayrıntılarını görmek için iş akışında seçip **iş d
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL veritabanı çıkışıyla anahtar ihlali uyarısı
 
-Azure SQL veritabanı için bir Stream Analytics işi çıktı olarak yapılandırdığınızda, yığın kayıtları hedef tabloya ekler. Genel olarak, Azure stream analytics garanti eder [en az bir kere teslim](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) bir çıkış havuzuna yine de [tam olarak elde-kez teslim]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) SQL tablosu, tanımlı bir kısıtlama olduğunda SQL çıktı. 
+Azure SQL veritabanı için bir Stream Analytics işi çıktı olarak yapılandırdığınızda, yığın kayıtları hedef tabloya ekler. Genel olarak, Azure stream analytics garanti eder [en az bir kere teslim](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) bir çıkış havuzuna yine de [tam olarak elde-kez teslim]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) SQL tablosu, tanımlı bir kısıtlama olduğunda SQL çıktı.
 
-Azure Stream Analytics, benzersiz anahtar kısıtlamaları SQL tablosunda ayarlanır ve SQL tablosuna eklenen yinelenen kayıt sonra yinelenen kayıt kaldırır. Toplu işleri ve yinelemeli olarak tek bir yinelenen kayıt bulunana kadar toplu ekleme verileri ayırır. Akış işi önemli sayıda yinelenen satır, bu bölme olduğundan ve işlem eklemek daha az verimli ve zaman alıcı olan tek, yinelenenleri yok saymak vardır. Etkinlik günlüğü'nde son bir saat içinde birden çok anahtar ihlali uyarı iletisi görürseniz, SQL çıkışınızı tüm işin yavaşlattığını olasıdır. 
+Azure Stream Analytics, benzersiz anahtar kısıtlamaları SQL tablosunda ayarlanır ve SQL tablosuna eklenen yinelenen kayıt sonra yinelenen kayıt kaldırır. Toplu işleri ve yinelemeli olarak tek bir yinelenen kayıt bulunana kadar toplu ekleme verileri ayırır. Akış işi önemli sayıda yinelenen satır, bu bölme olduğundan ve işlem eklemek daha az verimli ve zaman alıcı olan tek, yinelenenleri yok saymak vardır. Etkinlik günlüğü'nde son bir saat içinde birden çok anahtar ihlali uyarı iletisi görürseniz, SQL çıkışınızı tüm işin yavaşlattığını olasıdır.
 
 Bu sorunu gidermek için şunları yapmalısınız [dizini yapılandırma]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) , neden anahtar ihlali IGNORE_DUP_KEY seçeneğini etkinleştirerek. Bu seçeneğin etkinleştirilmesi, SQL toplu ekleme sırasında yoksayılacak yinelenen değerler sağlar ve SQL Azure, yalnızca bir uyarı iletisi yerine bir hata üretir. Azure Stream Analytics artık birincil anahtar ihlali hatalarını üretmez.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c1a800ceb12c2e7ad69329d0391478a8e2ae268b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945681"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978600"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure Bilişsel Arama güvenlik ve veri gizliliği
 
@@ -49,7 +49,7 @@ Standart uyumluluk, genel olarak kullanılabilen özellikler için geçerlidir. 
 
 Birkaç güvenlik mekanizması Azure genelinde kullanılabilir ve bu nedenle otomatik olarak oluşturduğunuz Azure Bilişsel Arama kaynaklarında kullanılabilir.
 
-+ [Silmeyi engellemek için abonelikte veya kaynak düzeyinde kilitler](../azure-resource-manager/resource-group-lock-resources.md)
++ [Silmeyi engellemek için abonelikte veya kaynak düzeyinde kilitler](../azure-resource-manager/management/lock-resources.md)
 + [Bilgilere ve yönetim işlemlerine erişimi denetlemek için rol tabanlı Access Control (RBAC)](../role-based-access-control/overview.md)
 
 Tüm Azure Hizmetleri, erişim düzeylerini her hizmet arasında tutarlı olarak ayarlamak için rol tabanlı erişim denetimlerini (RBAC) destekler. Örneğin, yönetici anahtarı gibi hassas verileri görüntüleme, sahip ve katkıda bulunan rolleriyle kısıtlıdır, ancak hizmet durumunu görüntülemek herhangi bir rolün üyeleri tarafından kullanılabilir. RBAC, sahip, katkıda bulunan ve okuyucu rolleri sağlar. Varsayılan olarak, tüm hizmet yöneticileri sahip rolünün üyeleridir.

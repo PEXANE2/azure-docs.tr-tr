@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5429ebb611f852f7672d89de190ddd68dbcb01cf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707773"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980983"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure kaynakları için RBAC sorunlarını giderme
 
@@ -41,13 +41,13 @@ Bu makalede, Azure kaynakları için rol tabanlı erişim denetimi (RBAC) hakkı
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Abonelikler kiracılar arasında taşınırken RBAC koşullarını kurtarma
 
-- Aboneliği farklı bir Azure AD kiracısına aktarmaya yönelik adımlara ihtiyacınız varsa, bkz. [Azure aboneliğinin sahipliğini başka bir hesaba aktarma](../billing/billing-subscription-transfer.md).
+- Aboneliği farklı bir Azure AD kiracısına aktarmaya yönelik adımlara ihtiyacınız varsa, bkz. [Azure aboneliğinin sahipliğini başka bir hesaba aktarma](../cost-management-billing/manage/billing-subscription-transfer.md).
 - Bir aboneliği farklı bir Azure AD kiracısına aktardığınızda tüm rol atamaları kaynak Azure AD kiracısından kalıcı olarak silinir ve hedef Azure AD kiracısına geçirilmez. Rol atamalarınızı hedef kiracıda yeniden oluşturmanız gerekir. Ayrıca, Azure kaynakları için yönetilen kimlikleri el ile yeniden oluşturmanız gerekir. Daha fazla bilgi için bkz. [SSS ve yönetilen kimliklerle ilgili bilinen sorunlar](../active-directory/managed-identities-azure-resources/known-issues.md).
 - Bir Azure AD Genel yöneticisiyseniz ve kiracılar arasında taşındıktan sonra bir aboneliğe erişiminiz yoksa, aboneliğe erişim sağlamak için erişiminizi geçici olarak [yükseltmek](elevate-access-global-admin.md) üzere **Azure kaynakları için erişim yönetimi** ' ni kullanın.
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Hizmet yöneticileri veya ortak yöneticilerle ilgili sorunlar
 
-- Hizmet Yöneticisi veya ortak yöneticilerle ilgili sorun yaşıyorsanız, bkz. [Azure abonelik yöneticileri](../billing/billing-add-change-azure-subscription-administrator.md) ve [Klasik abonelik Yöneticisi ROLLERI, Azure RBAC ROLLERI ve Azure AD yönetici rolleri](rbac-and-directory-admin-roles.md)ekleme veya değiştirme.
+- Hizmet Yöneticisi veya ortak yöneticilerle ilgili sorun yaşıyorsanız, bkz. [Azure abonelik yöneticileri](../cost-management-billing/manage/add-change-subscription-administrator.md) ve [Klasik abonelik Yöneticisi ROLLERI, Azure RBAC ROLLERI ve Azure AD yönetici rolleri](rbac-and-directory-admin-roles.md)ekleme veya değiştirme.
 
 ## <a name="access-denied-or-permission-errors"></a>Erişim engellendi veya izin hataları
 
@@ -56,7 +56,7 @@ Bu makalede, Azure kaynakları için rol tabanlı erişim denetimi (RBAC) hakkı
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Bilinmeyen güvenlik sorumlusu olan rol atamaları
 
-Bir güvenlik sorumlusu (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) için bir rol atarsanız ve daha sonra rol atamasını kaldırmadan bu güvenlik sorumlusunu silerseniz, rol atamasının güvenlik sorumlusu türü **bilinmiyor**olarak listelenir. Aşağıdaki ekran görüntüsünde Azure portal bir örnek gösterilmektedir. Güvenlik sorumlusu adı, **kimlik silindi** olarak listelenir ve **kimlik artık yok**. 
+Bir güvenlik sorumlusu (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) için bir rol atarsanız ve daha sonra rol atamasını kaldırmadan bu güvenlik sorumlusunu silerseniz, rol atamasının güvenlik sorumlusu türü **bilinmiyor**olarak listelenir. Aşağıdaki ekran görüntüsünde Azure portalında bir örnek gösterilir. Güvenlik sorumlusu adı, **kimlik silindi** olarak listelenir ve **kimlik artık yok**. 
 
 ![Web uygulaması kaynak grubu](./media/troubleshooting/unknown-security-principal.png)
 

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12391df7e3b8540b775d8c56b5d5c4e648722faf
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c5f36e82c2ff95800a058f56f9cc6b80ddf02dbf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889599"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967701"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı erişimin güvenliğini sağlama
 
@@ -362,7 +362,7 @@ Planınızı geliştirmek için, Microsoft planınızın beklendiği gibi çalı
 
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Azure 'a erişimi yöneten kuruluşlar için ek adımlar 
 
-[Bir Azure aboneliğinin sahipliğini başka bir hesaba aktarmanız](../../billing/billing-subscription-transfer.md)gerekip gerekmediğini belirleme.
+[Bir Azure aboneliğinin sahipliğini başka bir hesaba aktarmanız](../../cost-management-billing/manage/billing-subscription-transfer.md)gerekip gerekmediğini belirleme.
 ‎
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>"Cam kesmesi": acil durum

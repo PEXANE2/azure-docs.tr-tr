@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a80a54f3dc760d80f713db9857cbef0c580e66d6
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621378"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976241"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Azure DevTest Labs 'de hizmet olarak platform (PaaS) hizmetlerini kullanın
 PaaS, ortam özelliği aracılığıyla DevTest Labs 'de desteklenir. DevTest Labs içindeki ortamlar, bir git deposundaki önceden yapılandırılmış Azure Resource Manager şablonları tarafından desteklenir. Ortamlar PaaS ve IaaS kaynaklarını içerebilir. Bunlar, birlikte çalışmak üzere özelleştirilmiş sanal makineler, veritabanları, sanal ağlar ve Web uygulamaları gibi Azure kaynaklarını içerebilen karmaşık sistemler oluşturmanıza imkan tanır. Bu şablonlar, kaynak kodu denetimi kullanılarak ortamların tutarlı dağıtım ve gelişmiş yönetimine olanak tanır. 
@@ -39,10 +39,10 @@ Büyük kuruluşlarda, geliştirme ekipleri genellikle özelleştirilmiş/yalıt
 
 ## <a name="customizations"></a>Özelleştirmeler
 
-#### <a name="sandbox"></a>Alanda 
+#### <a name="sandbox"></a>Korumalı Alan 
 Laboratuvar sahibi, laboratuvar ortamlarını özelleştirerek kullanıcının rolünü **okuyucudan** kaynak grubu içinde **katkıda bulunan** olarak değiştirebilir. Bu özellik, laboratuvarın **yapılandırma ve ilkeleri** altındaki **Laboratuvar ayarları** sayfasıdır. Roldeki bu değişiklik, kullanıcının bu ortamda kaynak eklemesine veya kaldırmasına izin verir. Erişimi daha fazla kısıtlamak istiyorsanız Azure ilkeleri ' ni kullanın. Bu işlevsellik, abonelik düzeyinde erişim olmadan kaynakları veya yapılandırmayı özelleştirmenizi sağlar.
 
-#### <a name="custom-tokens"></a>Özel belirteçler
+#### <a name="custom-tokens"></a>{1&gt;Özel belirteçler&lt;1}
 Kaynak grubunun dışında olan ve şablonun erişebileceği ortamlara özel bazı özel laboratuvar bilgileri vardır. Bunlardan bazıları şunlardır: 
 
 - Laboratuvar ağı kimliği
@@ -53,9 +53,9 @@ Kaynak grubunun dışında olan ve şablonun erişebileceği ortamlara özel baz
 [Laboratuvarın sanal ağına bağlanan ortamlar](connect-environment-lab-virtual-network.md) , Kaynak Yöneticisi şablonunuzun `$(LabSubnetId)` belirtecini kullanacak şekilde nasıl değiştirileceğini açıklar. Bir ortam oluşturulduğunda, `$(LabSubnetId)` belirteci, **sanal makine oluşturma seçeneğinde kullanım** seçeneğinin **true**olarak ayarlandığı ilk alt ağ işaretiyle değiştirilmiştir. Ortamımızın daha önce oluşturulan ağları kullanmasına izin verir. Test, hazırlama ve üretim olarak aynı Kaynak Yöneticisi şablonlarını kullanmak istiyorsanız, bir Kaynak Yöneticisi Şablon parametresinde varsayılan değer olarak `$(LabSubnetId)` kullanın. 
 
 #### <a name="environment-storage-account"></a>Ortam depolama hesabı
-DevTest Labs [iç içe Kaynak Yöneticisi şablonlarının](../azure-resource-manager/resource-group-linked-templates.md)kullanımını destekler. [[Ortamları test etmek için iç içe Azure Resource Manager şablonları dağıtma](deploy-nested-template-environments.md) makalesi, `_artifactsLocation` ve `_artifactsLocationSasToken` belirteçlerinin, ana şablonun iç içe yerleştirilmiş bir klasöründe veya aynı klasörde bulunan bir kaynak yöneticisi ŞABLONUNA bir URI oluşturmak için nasıl kullanılacağını açıklar. Bu iki belirteç hakkında daha fazla bilgi için [Azure Resource Manager – En Iyi Yöntemler kılavuzunun](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md) **dağıtım yapıtları** bölümüne bakın.
+DevTest Labs [iç içe Kaynak Yöneticisi şablonlarının](../azure-resource-manager/templates/linked-templates.md)kullanımını destekler. [[Ortamları test etmek için iç içe Azure Resource Manager şablonları dağıtma](deploy-nested-template-environments.md) makalesi, `_artifactsLocation` ve `_artifactsLocationSasToken` belirteçlerinin, ana şablonun iç içe yerleştirilmiş bir klasöründe veya aynı klasörde bulunan bir kaynak yöneticisi ŞABLONUNA bir URI oluşturmak için nasıl kullanılacağını açıklar. Bu iki belirteç hakkında daha fazla bilgi için [Azure Resource Manager – En Iyi Yöntemler kılavuzunun](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md) **dağıtım yapıtları** bölümüne bakın.
 
-## <a name="user-experience"></a>Kullanıcı deneyimi
+## <a name="user-experience"></a>Kullanıcı Deneyimi
 
 ## <a name="developer"></a>Geliştirici
 Geliştiriciler, belirli bir ortamı oluşturmak için bir VM oluşturmak üzere aynı iş akışını kullanır. Ortam ve makine görüntüsünü seçip şablon için gerekli olan bilgileri girin. Bir ortama sahip her geliştirici, değişikliklerin dağıtımına ve geliştirilmiş iç döngü hata ayıklamasına olanak tanır. Ortam, en son şablon kullanılarak herhangi bir zamanda oluşturulabilir.  Bu özellik, sistemin el ile oluşturulmasını veya hata sınamadan kurtarmasını önlemek için ortamların yok edilmesine ve yeniden oluşturulmasına olanak sağlar.  
@@ -71,7 +71,7 @@ Maliyet izleme özelliği, genel maliyet eğilimi kapsamında farklı ortamlarda
 ### <a name="security"></a>Güvenlik
 DevTest Labs ile düzgün şekilde yapılandırılmış bir Azure aboneliği [, yalnızca laboratuvar aracılığıyla Azure kaynaklarına erişimi sınırlayabilir](devtest-lab-add-devtest-user.md). Ortamlar sayesinde, laboratuvar sahibi kullanıcıların diğer Azure kaynaklarına erişim izni vermeden, onaylı yapılandırmalara sahip PaaS kaynaklarına erişmelerine izin verebilir. Laboratuvar kullanıcılarının ortamları özelleştiren senaryoda, laboratuvar sahibi katılımcı erişimine izin verebilir. Katkıda bulunan erişimi, laboratuvar kullanıcısına yalnızca yönetilen kaynak grubu içinde Azure kaynağı ekleme veya kaldırma izni verir. Daha kolay izleme ve yönetim sağlamak için kullanıcının aboneliğe erişimine izin verir.
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Otomasyon
 Otomasyon, büyük ölçekli, etkili bir ekosistem için önemli bir bileşendir. Otomasyon, abonelikler ve laboratuvarlar genelinde birden çok ortamı yönetmeyi veya izlemeyi işlemek için gereklidir.
 
 ### <a name="cicd-pipeline"></a>CI/CD işlem hattı
