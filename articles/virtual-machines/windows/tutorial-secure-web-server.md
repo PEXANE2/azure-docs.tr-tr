@@ -15,14 +15,17 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c84bc3633ccd25fd2206c9e6912a6b8c8d46a5f4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2ccddfa9834b51885d827601d348e34698928930
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974198"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981241"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Öğretici: Azure’da Windows sanal makinesi üzerinde Key Vault’ta depolanan SSL sertifikalarını kullanarak bir web sunucusunun güvenliğini sağlama
+
+> [!NOTE]
+> Şu anda bu belge yalnızca Genelleştirilmiş görüntüler için çalışıyor. Bu öğreticiyi özel bir disk kullanarak gerçekleştirmeye çalışıyorsanız bir hata alırsınız. 
 
 Web sunucularının güvenliğini sağlamak için, web trafiğini şifrelemek üzere Güvenli Yuva Katmanı (SSL) sertifikası kullanılabilir. Bu SSL sertifikaları Azure Key Vault’ta depolanabilir ve sertifikaların Azure’daki Windows sanal makinelerine (VM’ler) güvenli bir şekilde dağıtılabilmesini sağlar. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 

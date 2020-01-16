@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 62faf33dc8b3690036407972e12633e741a85d78
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 880a85676ff7a0364431b33b90093298b12bffed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176743"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980456"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault ve Azure CLı ile depolama hesabı anahtarlarını yönetme
 
@@ -41,19 +41,19 @@ Bir Azure AD kiracısı, kayıtlı her uygulamayı bir [hizmet sorumlusu](/azure
 
 Key Vault, tüm Azure AD kiracılarında önceden kaydedilmiş bir Microsoft uygulamasıdır. Key Vault, her bir Azure bulutu 'nda aynı uygulama KIMLIĞI altına kaydedilir.
 
-| Kira | Bulut | Uygulama Kimliği |
+| Kiracılar | Bulut | Uygulama Kimliği |
 | --- | --- | --- |
-| Azure AD | Azure Kamu | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure Devlet Kurumları | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure genel | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Diğer  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Diğer  | Herhangi biri | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kılavuzu gerçekleştirmek için, önce aşağıdakileri yapmanız gerekir:
 
 - [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli).
 - [Anahtar Kasası oluşturma](quick-create-cli.md)
-- [Bir Azure depolama hesabı oluşturun](../storage/common/storage-quickstart-create-account.md?tabs=azure-cli). Depolama hesabı adı yalnızca küçük harfler ve rakamlar kullanmalıdır. Adın uzunluğu 3 ile 24 karakter arasında olmalıdır.
+- [Bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md?tabs=azure-cli). Depolama hesabı adı yalnızca küçük harfler ve rakamlar kullanmalıdır. Adın uzunluğu 3 ile 24 karakter arasında olmalıdır.
       
 ## <a name="manage-storage-account-keys"></a>Depolama hesabı anahtarlarını yönetme
 

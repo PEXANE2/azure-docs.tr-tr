@@ -1,14 +1,14 @@
 ---
 title: Hizmet sağlayıcılarını görüntüleme ve yönetme
 description: Müşteriler, hizmet sağlayıcıları, hizmet sağlayıcısı teklifleri ve Temsilcili kaynaklar hakkındaki bilgileri görüntülemek için Azure portal hizmet sağlayıcıları sayfasını kullanabilir.
-ms.date: 11/15/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 453f5d3ba4ed5c49b5e71c7530298bc0a03c73ee
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ff3c37c02c580a833008a65315009d1e42e49043
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463804"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046133"
 ---
 # <a name="view-and-manage-service-providers"></a>Hizmet sağlayıcılarını görüntüleme ve yönetme
 
@@ -60,6 +60,9 @@ Değişiklikleri gözden geçirdikten sonra müşteri yeni sürüme güncelleşt
 Temsilci atama, bir müşterinin Temsilcili kaynaklar için hizmet sağlayıcısına izin veren rol atamalarını temsil eder. Bu bilgileri görüntülemek için, **hizmet sağlayıcıları** sayfasının sol tarafındaki **Temsilciler** ' ı seçin.
 
 Sayfanın üst kısmındaki filtreler, temsilcilerinizi, belirli müşterilere, tekliflere veya anahtar sözcüklere göre filtrelemenize ve gruplandırmasına olanak tanır.
+
+> [!NOTE]
+> Müşteriler, Azure portal veya API 'Ler aracılığıyla [temsilci olan kapsamın rol atama bilgilerini görüntülerken](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) bu rol atamalarını veya hizmet sağlayıcı kiracısından gelen tüm kullanıcıları görmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

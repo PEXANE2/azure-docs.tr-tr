@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 226151d81319dc4e6f132e76ce2d310f88a484e8
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: e8e4bed052ec5b70c441a3ae76f3409c307299e5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087030"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981429"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM başlatması Windows Update 'te takıldı
 
 Bu makale, sanal makineniz (VM) başlangıç sırasında Windows Update aşamada takıldığında sorunu çözmeye yardımcı olur. 
 
 > [!NOTE] 
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../azure-resource-manager/resource-manager-deployment-model.md). Bu makalede Kaynak Yöneticisi dağıtım modelinin kullanımı ele alınmaktadır. Klasik dağıtım modelini kullanmak yerine bu modeli Yeni dağıtımlar için kullanmanızı öneririz.
+> Azure, kaynak oluşturmak ve bu kaynaklarla çalışmak için iki dağıtım modeli kullanır: [Resource Manager ve klasik](../../azure-resource-manager/management/deployment-models.md). Bu makalede Kaynak Yöneticisi dağıtım modelinin kullanımı ele alınmaktadır. Klasik dağıtım modelini kullanmak yerine bu modeli Yeni dağıtımlar için kullanmanızı öneririz.
 
 ## <a name="symptom"></a>Belirti
 
@@ -55,7 +55,7 @@ Yüklenen veya toplanan güncelleştirmelerin sayısına bağlı olarak güncell
     Örneğin, bağlı işletim sistemi diski F sürücüsündeyse aşağıdaki komutu çalıştırın:
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. C:\temp\Patch_level.txt dosyasını açın ve ardından aşağıdan yukarıya okuyun. **Yükleme beklemede** veya **kaldırma bekleme** durumunda olan güncelleştirmeyi bulun.  Aşağıda, güncelleştirme durumunun bir örneği verilmiştir:
+5. C:\Temp\ Patch_level. txt dosyasını açın ve sonra alt bölümden okuyun. **Yükleme beklemede** veya **kaldırma bekleme** durumunda olan güncelleştirmeyi bulun.  Aşağıda, güncelleştirme durumunun bir örneği verilmiştir:
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
