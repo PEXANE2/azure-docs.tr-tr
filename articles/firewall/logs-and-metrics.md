@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: f233b1a60202b440abf34edd1c56eebaecba18e2
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166993"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974516"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Güvenlik Duvarı günlükleri ve ölçümleri
 
@@ -20,7 +20,7 @@ Güvenlik duvarı günlüklerini kullanarak Azure Güvenlik Duvarı'nı izleyebi
 
 Bu günlüklerden bazılarına portaldan erişebilirsiniz. Günlükler [Azure izleyici](../azure-monitor/insights/azure-networking-analytics.md)günlüklerine, depolamaya ve Event Hubs gönderilebilir ve Azure izleyici günlüklerinde veya Excel ve Power BI gibi farklı araçlarla analiz edilebilir.
 
-Ölçümler hafif ve uyarı ve hızlı sorun algılama için yararlı hale getirmek üzere neredeyse gerçek zamanlı senaryolara destek sağlayabilir. 
+Ölçümler hafif ve uyarı ve hızlı sorun algılama için yararlı hale getirmek üzere neredeyse gerçek zamanlı senaryolara destek sağlayabilir.
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
 
@@ -33,7 +33,7 @@ Bu günlüklerden bazılarına portaldan erişebilirsiniz. Günlükler [Azure iz
    ```
    Category: application rule logs.
    Time: log timestamp.
-   Properties: currently contains the full message. 
+   Properties: currently contains the full message.
    note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
    ```
 
@@ -56,7 +56,7 @@ Bu günlüklerden bazılarına portaldan erişebilirsiniz. Günlükler [Azure iz
    ```
    Category: network rule logs.
    Time: log timestamp.
-   Properties: currently contains the full message. 
+   Properties: currently contains the full message.
    note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
    ```
 
@@ -83,7 +83,7 @@ Günlüklerinizi depolamak için kullanabileceğiniz üç seçenek vardır:
 
    Etkinlik günlüğü girişleri varsayılan olarak toplanır ve bunları Azure portalda görüntüleyebilirsiniz.
 
-   Azure aboneliğinize gönderilen tüm işlemleri görüntülemek için [Azure etkinlik günlüklerini](../azure-resource-manager/resource-group-audit.md) (eski adıyla işlemsel Günlükler ve denetim günlükleri olarak bilinir) kullanabilirsiniz.
+   Azure aboneliğinize gönderilen tüm işlemleri görüntülemek için [Azure etkinlik günlüklerini](../azure-resource-manager/management/view-activity-logs.md) (eski adıyla işlemsel Günlükler ve denetim günlükleri olarak bilinir) kullanabilirsiniz.
 
 ## <a name="metrics"></a>Ölçümler
 

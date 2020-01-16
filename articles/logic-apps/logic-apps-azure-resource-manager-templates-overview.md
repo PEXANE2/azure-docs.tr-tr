@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428814"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972691"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Genel Bakış: Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımı otomatikleştirin
 
 Mantıksal uygulamanızı oluşturma ve dağıtma işlemini otomatik hale getirmeye hazırsanız, mantıksal uygulamanızın temel alınan iş akışı tanımını bir [Azure Resource Manager şablonuna](../azure-resource-manager/management/overview.md)genişletebilirsiniz. Bu şablon, mantıksal uygulamanızı sağlamak ve dağıtmak için altyapıyı, kaynakları, parametreleri ve diğer bilgileri tanımlar. Aynı zamanda *parametrelendirme*olarak da bilinen dağıtımda farklılık gösteren değerler için parametreler tanımlayarak, farklı dağıtım ihtiyaçlarına göre mantıksal uygulamaları sürekli ve tutarlı bir şekilde dağıtabilirsiniz.
 
-Örneğin, geliştirme, test ve üretim için ortamlara dağıtırsanız, büyük olasılıkla her ortam için farklı bağlantı dizeleri kullanırsınız. Farklı bağlantı dizelerini kabul eden şablon parametreleri bildirebilir ve sonra bu dizeleri ayrı bir [parametre dosyasında](../azure-resource-manager/templates/parameter-files.md)depoaktarabilirsiniz. Bu şekilde, şablonu güncelleştirmek ve yeniden dağıtmak zorunda kalmadan bu değerleri değiştirebilirsiniz. Gizli olan veya güvenli hale getirilmesi gereken, parola ve gizli dizi gibi parametre değerlerine sahip olduğunuz senaryolarda, bu değerleri [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) saklayabilir ve parametreler dosyanızın bu değerleri almasına sahip olursunuz. Ancak, bu senaryolarda geçerli değerleri almak için yeniden dağıtmanız gerekir.
+Örneğin, geliştirme, test ve üretim için ortamlara dağıtırsanız, büyük olasılıkla her ortam için farklı bağlantı dizeleri kullanırsınız. Farklı bağlantı dizelerini kabul eden şablon parametreleri bildirebilir ve sonra bu dizeleri ayrı bir [parametre dosyasında](../azure-resource-manager/templates/parameter-files.md)depoaktarabilirsiniz. Bu şekilde, şablonu güncelleştirmek ve yeniden dağıtmak zorunda kalmadan bu değerleri değiştirebilirsiniz. Gizli olan veya güvenli hale getirilmesi gereken, parola ve gizli dizi gibi parametre değerlerine sahip olduğunuz senaryolarda, bu değerleri [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) saklayabilir ve parametreler dosyanızın bu değerleri almasına sahip olursunuz. Ancak, bu senaryolarda geçerli değerleri almak için yeniden dağıtmanız gerekir.
 
 Bu genel bakışta, bir mantıksal uygulama iş akışı tanımını içeren Kaynak Yöneticisi şablonundaki öznitelikler açıklanmaktadır. Hem şablon hem de iş akışı tanımınız JSON sözdizimini kullanır, ancak iş akışı tanımı aynı zamanda iş akışı [tanım dili şemasını](../logic-apps/logic-apps-workflow-definition-language.md)takip ettiğinden bazı farklılıklar vardır. Örneğin, şablon ifadeleri ve iş akışı tanımı ifadeleri, [parametrelere](#parameter-references) ve kabul edebileceği değerlere göre farklılık gösterir.
 
@@ -31,8 +31,8 @@ Bu konudaki örnek mantıksal uygulama, yeni bir e-posta geldiğinde tetiklenen 
 Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için şu konulara bakın:
 
 * [Azure Resource Manager şablon yapısı ve sözdizimi](../azure-resource-manager/templates/template-syntax.md)
-* [Resource Manager şablonu en iyi yöntemleri](../azure-resource-manager/template-best-practices.md)
-* [Bulut tutarlılığı için Azure Resource Manager şablonları geliştirme](../azure-resource-manager/templates-cloud-consistency.md)
+* [Resource Manager şablonu en iyi yöntemleri](../azure-resource-manager/templates/template-best-practices.md)
+* [Bulut tutarlılığı için Azure Resource Manager şablonları geliştirme](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 Örnek mantıksal uygulama şablonları için aşağıdaki örneklere bakın:
 
@@ -149,7 +149,7 @@ Gizli olan veya güvenli hale getirilmesi gereken (örneğin, Kullanıcı adlar�
 
 * [Şablon parametreleri için güvenlik önerileri](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [Güvenli şablon parametreleri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [Azure Key Vault ile güvenli parametre değerlerini geçirme](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [Azure Key Vault ile güvenli parametre değerlerini geçirme](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Diğer şablon nesneleri genellikle şablon parametrelerine başvurur, böylece şablon parametrelerinden geçen değerleri kullanabilirler. Örneğin:
 
@@ -173,7 +173,7 @@ Parametreleri tanımlamaya yönelik bazı en iyi uygulamalar şunlardır:
 
   * [Güvenli şablon parametreleri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [Azure Key Vault ile güvenli parametre değerlerini geçirme](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [Azure Key Vault ile güvenli parametre değerlerini geçirme](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * Şablon parametre adlarını iş akışı Tanım parametresi adlarından ayırt etmek için, açıklayıcı şablon parametre adlarını kullanabilirsiniz, örneğin: `TemplateFabrikamPassword`
 
@@ -188,7 +188,7 @@ Daha fazla şablon en iyi uygulamaları için bkz. [şablon parametreleri Için 
 * Mantıksal uygulama şablonu dosya adı: **<*Logic-app-name*>. JSON**
 * Parametreler dosya adı: **<*Logic-App-adı*>. Parameters. JSON**
 
-Aşağıda, [Azure Key Vault ile güvenli bir parametre değeri geçirmek](../azure-resource-manager/resource-manager-keyvault-parameter.md)için bir Anahtar Kasası başvurusu içeren parametreler dosyasının içindeki yapısı verilmiştir:
+Aşağıda, [Azure Key Vault ile güvenli bir parametre değeri geçirmek](../azure-resource-manager/templates/key-vault-parameter.md)için bir Anahtar Kasası başvurusu içeren parametreler dosyasının içindeki yapısı verilmiştir:
 
 ```json
 {
@@ -409,7 +409,7 @@ Bu söz dizimi, şablon ve iş akışı Tanım parametrelerine başvurarak bu pa
 
 Çalışma zamanında gizli bilgileri, parolaları, erişim anahtarlarını veya gizli dizileri işleyen bir iş akışı tanımı parametresi için `securestring` veya `secureobject` parametre türünü kullanmak üzere parametresini bildirin veya düzenleyin. Bu parametreye, iş akışı tanımınızın tamamında ve içinde başvurabilirsiniz. Şablonun en üst düzeyinde, bu bilgileri dağıtımda işlemek için aynı türe sahip bir parametre bildirin.
 
-İş akışı tanımı parametresinin değerini ayarlamak için, iş akışı tanımınızın *dışında* olan `parameters` nesnesini kullanın, ancak mantıksal uygulama kaynak *tanımınızda hala şablon* parametresine başvuru yapın. Son olarak, dağıtım sırasında değeri şablon parametrıza geçirmek için bu değeri [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) depolayın ve dağıtım sırasında şablonunuz tarafından kullanılan [Parametreler dosyasında](#template-parameter-files) anahtar kasasının başvurusunu yapın.
+İş akışı tanımı parametresinin değerini ayarlamak için, iş akışı tanımınızın *dışında* olan `parameters` nesnesini kullanın, ancak mantıksal uygulama kaynak *tanımınızda hala şablon* parametresine başvuru yapın. Son olarak, dağıtım sırasında değeri şablon parametrıza geçirmek için bu değeri [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) depolayın ve dağıtım sırasında şablonunuz tarafından kullanılan [Parametreler dosyasında](#template-parameter-files) anahtar kasasının başvurusunu yapın.
 
 Bu örnek şablon, değerlerini Azure Key Vault içinde depolayabilmeniz için gerektiğinde güvenli parametreleri tanımlayarak bu görevleri nasıl tamamlayakullanabileceğinizi gösterir:
 
@@ -558,7 +558,7 @@ Mantıksal uygulama Tasarımcısı 'nın iş akışı Tanım parametrelerini do�
 
   * [İş akışı tanımlarında parametreler için güvenlik önerileri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-workflow)
 
-  * [Azure Key Vault ile güvenli parametre değerlerini geçirme](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [Azure Key Vault ile güvenli parametre değerlerini geçirme](../azure-resource-manager/templates/key-vault-parameter.md)
 
 İş akışı tanımı parametreleri hakkında daha fazla bilgi için bkz. [Parametreler-Iş akışı Tanım Dili](../logic-apps/logic-apps-workflow-definition-language.md#parameters).
 
@@ -652,7 +652,7 @@ Mantıksal uygulamanızın kaynak tanımı ayrıca bağlantı kaynağı tanımla
 
 * İş akışı tanımınızın *dışında* , ancak mantıksal uygulamanızın kaynak tanımında hala *içinde* , başka bir `parameters` nesnesi, karşılık gelen şablon parametrelerine başvurarak `$connections` parametresi için çalışma zamanında kullanılacak değerleri ayarlar. Bu değerler, mantıksal uygulamanızdaki bağlantıların meta verilerini güvenli bir şekilde depolayan kaynaklara başvurmak için şablon ifadeleri kullanır.
 
-  Örneğin, meta veriler, [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)depolayabileceğiniz bağlantı dizelerini ve erişim belirteçlerini içerebilir. Bu değerleri şablon parametrelerinizle geçirmek için, dağıtım sırasında şablonunuz tarafından kullanılan [Parametreler dosyasında](#template-parameter-files) bu anahtar kasasına başvurarak başvurabilirsiniz. Başvuru parametrelerinin farklılıkları hakkında daha fazla bilgi için, bu konunun ilerleyen kısımlarında [parametrelere başvurular](#parameter-references) bölümüne bakın.
+  Örneğin, meta veriler, [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)depolayabileceğiniz bağlantı dizelerini ve erişim belirteçlerini içerebilir. Bu değerleri şablon parametrelerinizle geçirmek için, dağıtım sırasında şablonunuz tarafından kullanılan [Parametreler dosyasında](#template-parameter-files) bu anahtar kasasına başvurarak başvurabilirsiniz. Başvuru parametrelerinin farklılıkları hakkında daha fazla bilgi için, bu konunun ilerleyen kısımlarında [parametrelere başvurular](#parameter-references) bölümüne bakın.
 
   Mantıksal uygulamanızın iş akışı tanımını Azure portal veya Visual Studio aracılığıyla kod görünümünde açtığınızda, `$connections` nesnesi iş akışı tanımınızın dışında, ancak aynı düzeyde görüntülenir. Kod görünümündeki bu sıralama, iş akışı tanımını el ile güncelleştirdiğinizde bu parametreleri başvuruya daha kolay hale getirir:
 
@@ -744,7 +744,7 @@ Bu örnekte, mantıksal uygulamanızın kaynak tanımı ve Office 365 Outlook i�
 
 ### <a name="secure-connection-parameters"></a>Güvenli bağlantı parametreleri
 
-Gizli bilgileri, parolaları, erişim anahtarlarını veya gizli dizileri işleyen bir bağlantı parametresi için bağlantının kaynak tanımı, bu değerleri ad-değer çifti biçiminde belirten bir `parameterValues` nesnesi içerir. Bu bilgileri gizlemek için, `securestring` veya `secureobject` parametre türlerini kullanarak bu değerler için şablon parametreleri bildirebilir veya düzenleyebilirsiniz. Daha sonra bu bilgileri [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)kaydedebilirsiniz. Bu değerleri şablon parametrelerinizle geçirmek için, dağıtım sırasında şablonunuz tarafından kullanılan [Parametreler dosyasında](#template-parameter-files) bu anahtar kasasına başvurarak başvurabilirsiniz.
+Gizli bilgileri, parolaları, erişim anahtarlarını veya gizli dizileri işleyen bir bağlantı parametresi için bağlantının kaynak tanımı, bu değerleri ad-değer çifti biçiminde belirten bir `parameterValues` nesnesi içerir. Bu bilgileri gizlemek için, `securestring` veya `secureobject` parametre türlerini kullanarak bu değerler için şablon parametreleri bildirebilir veya düzenleyebilirsiniz. Daha sonra bu bilgileri [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)kaydedebilirsiniz. Bu değerleri şablon parametrelerinizle geçirmek için, dağıtım sırasında şablonunuz tarafından kullanılan [Parametreler dosyasında](#template-parameter-files) bu anahtar kasasına başvurarak başvurabilirsiniz.
 
 Bir Azure Blob depolama bağlantısı için hesap adı ve erişim anahtarı sağlayan bir örnek aşağıda verilmiştir:
 
@@ -1011,7 +1011,7 @@ Hizmet sorumluları ile çalışma hakkında daha fazla bilgi için şu konulara
 
 ## <a name="references-to-parameters"></a>Parametrelere başvurular
 
-Şablon parametrelerine başvurmak için, dağıtım sırasında değerlendirilen şablon [işlevleriyle](../azure-resource-manager/resource-group-template-functions.md)şablon ifadeleri kullanabilirsiniz. Şablon ifadeleri köşeli parantezler ( **[]** ) kullanır:
+Şablon parametrelerine başvurmak için, dağıtım sırasında değerlendirilen şablon [işlevleriyle](../azure-resource-manager/templates/template-functions.md)şablon ifadeleri kullanabilirsiniz. Şablon ifadeleri köşeli parantezler ( **[]** ) kullanır:
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 

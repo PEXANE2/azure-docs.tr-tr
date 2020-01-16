@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: afd6ded6dc027e118694078f8b8eeadfe8dd80e4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644928"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981488"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs SSS
 Azure DevTest Labs hakkındaki en yaygın soruların bazılarına yanıt alın.
@@ -46,13 +46,13 @@ Twitter tanıtıcımız: [@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>Sorum burada yanıtlanmazsa ne olacak?
 Sorunuz burada listelenmiyorsa bize bilgi verin. bu nedenle bir yanıt bulmanıza yardımcı olabiliriz.
 
-- Bu SSS sonunda bir soru gönderin. 
+- Bu SSS sonunda bir soru gönderin.
 - Daha geniş bir hedef kitleye ulaşmak için [Azure DEVTEST Labs MSDN forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)bir soru gönderin. Azure DevTest Labs ekiple ve topluluktaki diğer üyelerle birlikte katılın.
 - Özellik istekleri için isteklerinizi ve fikirlerinizi [Azure DevTest Labs Kullanıcı seslerine](https://feedback.azure.com/forums/320373-azure-devtest-labs)gönderebilirsiniz.
 
 ### <a name="what-is-a-microsoft-account"></a>Microsoft hesabı nedir?
 Microsoft hesabı, Microsoft cihazları ve hizmetleriyle yaptığınız neredeyse her şey için kullandığınız bir hesaptır. Skype, Outlook.com, OneDrive, Windows Phone, Azure ve Xbox Live 'da oturum açmak için kullandığınız bir e-posta adresi ve parolasıdır. Tek bir hesap, dosyalarınıza, fotoğraflarınızın, kişilerinizin ve ayarlarınızın size herhangi bir cihazda izleyebileceği anlamına gelir.
- 
+
 > [!NOTE]
 > Bir Windows Live ID olarak adlandırılabilmesi için kullanılan bir Microsoft hesabı.
 
@@ -145,18 +145,18 @@ Sonuç olarak, aynı tür kısıtlamaların kuruluş genelinde uygulanması gere
 ## <a name="lab-configuration"></a>Laboratuvar yapılandırması
 
 ### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Kaynak Yöneticisi şablonundan laboratuvar oluşturmak Nasıl yaparım??
-Farklı olarak dağıtabileceğiniz veya laboratuvarınız için özel şablonlar oluşturmak üzere değişiklik yaptığınız bir [laboratuvar Azure Resource Manager şablonlarının GitHub deposunu](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) sunuyoruz. Her şablonda, Laboratuvarı kendi Azure aboneliğinizde olduğu gibi dağıtmaya yönelik bir bağlantı bulunur. Ya da, [PowerShell veya Azure CLI kullanarak](../azure-resource-manager/resource-group-template-deploy.md)şablonu özelleştirebilir ve dağıtabilirsiniz.
+Farklı olarak dağıtabileceğiniz veya laboratuvarınız için özel şablonlar oluşturmak üzere değişiklik yaptığınız bir [laboratuvar Azure Resource Manager şablonlarının GitHub deposunu](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) sunuyoruz. Her şablonda, Laboratuvarı kendi Azure aboneliğinizde olduğu gibi dağıtmaya yönelik bir bağlantı bulunur. Ya da, [PowerShell veya Azure CLI kullanarak](../azure-resource-manager/templates/deploy-powershell.md)şablonu özelleştirebilir ve dağıtabilirsiniz.
 
 
-### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Her makinenin kendi kaynak grubunda olması yerine ortak bir kaynak grubunda oluşturulacak tüm sanal makinelerime sahip olabilir miyim? 
-Evet, bir laboratuar sahibi olarak, laboratuvarın kaynak grubu ayırmasını işlemesini ya da belirttiğiniz ortak bir kaynak grubunda tüm sanal makinelerin oluşturulmasını sağlayabilirsiniz. 
+### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Her makinenin kendi kaynak grubunda olması yerine ortak bir kaynak grubunda oluşturulacak tüm sanal makinelerime sahip olabilir miyim?
+Evet, bir laboratuar sahibi olarak, laboratuvarın kaynak grubu ayırmasını işlemesini ya da belirttiğiniz ortak bir kaynak grubunda tüm sanal makinelerin oluşturulmasını sağlayabilirsiniz.
 
 Ayrı kaynak grubu senaryosu:
 -   DevTest Labs, seçtiğiniz her ortak/özel IP sanal makinesi için yeni bir kaynak grubu oluşturur
 -   DevTest Labs, aynı boyuta ait olan paylaşılan IP makineleri için bir kaynak grubu oluşturur.
 
 Ortak kaynak grubu senaryosu:
--   Tüm sanal makineler, belirttiğiniz ortak kaynak grubunda sona erdirir. [Laboratuvar için daha fazla kaynak grubu ayırması](https://aka.ms/RGControl)öğrenin. 
+-   Tüm sanal makineler, belirttiğiniz ortak kaynak grubunda sona erdirir. [Laboratuvar için daha fazla kaynak grubu ayırması](https://aka.ms/RGControl)öğrenin.
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Nasıl yaparım? DevTest Labs ortamımı genelinde bir adlandırma kuralına sahip mi?
 Geçerli kurumsal adlandırma kurallarını Azure işlemlerine genişletmek ve bunları DevTest Labs ortamında tutarlı hale getirmek isteyebilirsiniz. DevTest Labs dağıtımı yaparken, belirli başlangıç ilkelerine sahip olmanız önerilir. Bu ilkeleri, tutarlılığı zorlamak için bir merkezi betik ve JSON şablonları ile dağıtırsınız. Adlandırma ilkeleri, abonelik düzeyinde uygulanan Azure ilkeleri aracılığıyla uygulanabilir. Azure Ilkesi için JSON örnekleri için bkz. [Azure ilke örnekleri](../governance/policy/samples/index.md).
@@ -196,7 +196,7 @@ DevTest Labs 'de bir VM oluşturduğunuzda, bu VM 'ye erişim izni verilir. VM '
 Aynı şablondan aynı anda birden çok VM oluşturmak için iki seçeneğiniz vardır:
 
 - [Azure DevOps görevleri uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)kullanabilirsiniz.
-- Bir VM oluştururken [Kaynak Yöneticisi şablonu](devtest-lab-add-vm.md#save-azure-resource-manager-template) oluşturabilir ve [Kaynak Yöneticisi şablonunu Windows PowerShell 'den dağıtabilirsiniz](../azure-resource-manager/resource-group-template-deploy.md).
+- Bir VM oluştururken [Kaynak Yöneticisi şablonu](devtest-lab-add-vm.md#save-azure-resource-manager-template) oluşturabilir ve [Kaynak Yöneticisi şablonunu Windows PowerShell 'den dağıtabilirsiniz](../azure-resource-manager/templates/deploy-powershell.md).
 - Ayrıca, sanal makine oluşturma sırasında oluşturulacak bir makinenin birden fazla örneğini belirtebilirsiniz. Birden çok sanal makine örneği oluşturma hakkında daha fazla bilgi edinmek için bkz. [Laboratuvar sanal makinesi oluşturma](devtest-lab-add-vm.md)hakkındaki belge.
 
 ### <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Mevcut Azure VM 'lerimi DevTest Labs laboratuvarma taşımak Nasıl yaparım? mı?
@@ -252,7 +252,7 @@ foreach($labVM in $labVMs)
 }
 ```
 
-## <a name="environments"></a>Ortamlar 
+## <a name="environments"></a>Ortamlar
 
 ### <a name="how-can-i-use-resource-manager-templates-in-my-devtest-labs-environment"></a>DevTest Labs Ortamumdaki Kaynak Yöneticisi şablonlarını nasıl kullanabilirim?
 Kaynak Yöneticisi şablonlarınızı [DevTest Labs makalesindeki ortamlar özelliğinde](devtest-lab-test-env.md) bahsedilen adımları kullanarak bir DevTest Labs ortamına dağıtırsınız. Temel olarak, Kaynak Yöneticisi şablonlarınızı bir git deposuna (Azure Repos veya GitHub) kontrol edersiniz ve [şablonlarınıza yönelik özel bir depoyu](devtest-lab-test-env.md) laboratuvara eklersiniz. Bu senaryo, geliştirme makinelerini barındırmak için DevTest Labs kullanıyorsanız ancak üretim temsilcisi olan bir hazırlama ortamı oluşturuyorsanız faydalı olabilir.
@@ -264,7 +264,7 @@ Ayrıca, laboratuvar başına veya Kullanıcı başına sanal makine sayısını
 ### <a name="how-can-i-set-up-an-easily-repeatable-process-to-bring-my-custom-organizational-images-into-a-devtest-labs-environment"></a>Özel kurumsal görüntülerimi DevTest Labs ortamına getirmek için kolayca tekrarlanabilir bir işlem ayarlayabilirim?
 Bu [videoya görüntü fabrikası düzenine](https://sec.ch9.ms/ch9/8e8a/9ea0b8d4-b803-4f23-bca4-4808d9368e8a/dtlimagefactory_mid.mp4)bakın. Bu senaryo gelişmiş bir senaryodur ve sunulan betikler yalnızca örnek betiklerdir. Herhangi bir değişiklik gerekliyse, ortamınızda kullanılan betikleri yönetmeniz ve korumanız gerekir.
 
-Görüntü fabrikası oluşturma hakkında ayrıntılı bilgi için, bkz. [Azure DevTest Labs özel görüntü fabrikası oluşturma](image-factory-create.md). 
+Görüntü fabrikası oluşturma hakkında ayrıntılı bilgi için, bkz. [Azure DevTest Labs özel görüntü fabrikası oluşturma](image-factory-create.md).
 
 ### <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Özel görüntü ve formül arasındaki fark nedir?
 Özel görüntü, yönetilen bir görüntüdür. Formül, ek ayarlarla yapılandırabileceğiniz bir görüntüdür ve sonra kaydedebilir ve yeniden üretebilir. Aynı temel, sabit görüntüyü kullanarak hızlı bir şekilde birkaç ortam oluşturmak istiyorsanız özel bir görüntü tercih edilebilir. Sanal ağ veya alt ağın parçası olarak veya belirli boyuttaki bir VM olarak VM 'nizin yapılandırmasını en son bitlerle yeniden oluşturmak istiyorsanız formül daha iyi olabilir. Daha ayrıntılı bir açıklama için bkz. [DevTest Labs 'de özel resimleri ve formülleri karşılaştırma](devtest-lab-comparing-vm-base-image-types.md).
@@ -343,19 +343,19 @@ Aşağıdaki blog gönderileri Azure DevOps Services uzantısını kullanma hakk
 - [Azure DevOps Services mevcut bir DevTest Labs laboratuvarında yeni bir sanal makine dağıtın](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 - [DevTest Labs 'e yönelik sürekli dağıtımlar için Azure DevOps Services Release Management 'ı kullanma](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-Diğer sürekli tümleştirme (CI)/sürekli teslim (CD) araç zincirleri için, [Azure PowerShell cmdlet 'lerini](../azure-resource-manager/resource-group-template-deploy.md) ve [.net sdk](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/)'larını kullanarak [Azure Resource Manager şablonlarını](https://azure.microsoft.com/resources/templates/) dağıtarak aynı senaryolara ulaşabilirsiniz. Ayrıca, toolzinciriniz ile tümleştirilecek [DevTest Labs Için REST API 'lerini](https://aka.ms/dtlrestapis) de kullanabilirsiniz.
+Diğer sürekli tümleştirme (CI)/sürekli teslim (CD) araç zincirleri için, [Azure PowerShell cmdlet 'lerini](../azure-resource-manager/templates/deploy-powershell.md) ve [.net sdk](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/)'larını kullanarak [Azure Resource Manager şablonlarını](https://azure.microsoft.com/resources/templates/) dağıtarak aynı senaryolara ulaşabilirsiniz. Ayrıca, toolzinciriniz ile tümleştirilecek [DevTest Labs Için REST API 'lerini](https://aka.ms/dtlrestapis) de kullanabilirsiniz.
 
 ## <a name="networking"></a>Networking (Ağ İletişimi)
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>DevTest Labs ortamım için yeni bir sanal ağ oluşturmalı ve var olan bir sanal ağı kullanıyor mıyım?
-Sanal makinelerinizin mevcut altyapıyla etkileşime ihtiyacı varsa, DevTest Labs ortamınızda var olan bir sanal ağı kullanmayı göz önünde bulundurun. ExpressRoute kullanırsanız, aboneliklerde kullanılmak üzere atanan IP adresi alanınızı parçalara atabilmeniz için sanal ağlar/alt ağların miktarını en aza indirmek isteyebilirsiniz. 
+Sanal makinelerinizin mevcut altyapıyla etkileşime ihtiyacı varsa, DevTest Labs ortamınızda var olan bir sanal ağı kullanmayı göz önünde bulundurun. ExpressRoute kullanırsanız, aboneliklerde kullanılmak üzere atanan IP adresi alanınızı parçalara atabilmeniz için sanal ağlar/alt ağların miktarını en aza indirmek isteyebilirsiniz.
 
-Burada VNet eşleme[modelini (hub-bağlı bileşen modeli](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) de kullanmayı göz önünde bulundurun. Bu yaklaşım, abonelikler arasında VNET/subnet iletişimini mümkün bir şekilde sunar. Aksi halde, her DevTest Labs ortamının kendi sanal ağı olabilir. 
+Burada VNet eşleme[modelini (hub-bağlı bileşen modeli](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) de kullanmayı göz önünde bulundurun. Bu yaklaşım, abonelikler arasında VNET/subnet iletişimini mümkün bir şekilde sunar. Aksi halde, her DevTest Labs ortamının kendi sanal ağı olabilir.
 
 Abonelik başına sanal ağ sayısında [sınırlar](../azure-resource-manager/management/azure-subscription-service-limits.md) vardır. Varsayılan miktar 50 ' dir, ancak bu sınır 100 olarak yükseltilebilir.
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Paylaşılan IP ile genel IP ve özel IP 'yi ne zaman kullanmalıyım?
- 
+
 Siteden siteye VPN veya Express Route kullanıyorsanız, makinelerinizin iç ağınız aracılığıyla erişilebilir olması ve genel İnternet üzerinden erişilemez olması için özel IP 'Ler kullanmayı düşünün.
 
 > [!NOTE]
@@ -383,15 +383,15 @@ Bunun bir nedeni, sanal ağ adınızın nokta içermeme olasılığı vardır. B
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>PowerShell 'den bir VM sağlamadığımda neden "üst kaynak bulunamadı" hatası alıyorum?
 Bir kaynak başka bir kaynağın üst öğesi olduğunda, alt kaynağı oluşturmadan önce üst kaynağın mevcut olması gerekir. Üst kaynak yoksa, bir **Parentresourcenotfound** iletisi görürsünüz. Üst kaynakta bir bağımlılık belirtmezseniz, alt kaynak üst öğeden önce dağıtılabilir.
 
-VM 'Ler bir kaynak grubundaki laboratuvar altında alt kaynaklardır. PowerShell kullanarak VM 'Leri dağıtmak için Kaynak Yöneticisi Şablonlar kullandığınızda, PowerShell betiğine girilen kaynak grubu adı laboratuvarın kaynak grubu adı olmalıdır. Daha fazla bilgi için bkz. [Genel Azure dağıtım hatalarıyla Ilgili sorunları giderme](../azure-resource-manager/resource-manager-common-deployment-errors.md).
+VM 'Ler bir kaynak grubundaki laboratuvar altında alt kaynaklardır. PowerShell kullanarak VM 'Leri dağıtmak için Kaynak Yöneticisi Şablonlar kullandığınızda, PowerShell betiğine girilen kaynak grubu adı laboratuvarın kaynak grubu adı olmalıdır. Daha fazla bilgi için bkz. [Genel Azure dağıtım hatalarıyla Ilgili sorunları giderme](../azure-resource-manager/templates/common-deployment-errors.md).
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Bir VM dağıtımı başarısız olursa nereden daha fazla hata bilgisi bulabilirim?
 VM dağıtım hataları, etkinlik günlüklerinde yakalanır. Laboratuvar VM 'si etkinlik günlüklerini, laboratuvar VM 'si sayfasındaki kaynak menüsündeki **Denetim günlükleri** veya **sanal makine tanılama** altında bulabilirsiniz (sanal MAKINELERIM listesinden VM 'yi seçtikten sonra sayfa görünür).
 
-Bazen, dağıtım hatası VM dağıtımı başlamadan önce oluşur. VM ile oluşturulan bir kaynak için abonelik sınırının aşıldığı bir örnektir. Bu durumda, hata ayrıntıları laboratuvar düzeyi etkinlik günlüklerinde yakalanır. Etkinlik günlükleri **yapılandırma ve ilke** ayarlarının altında bulunur. Azure 'da etkinlik günlüklerini kullanma hakkında daha fazla bilgi için bkz. [kaynaklardaki eylemleri denetlemek için etkinlik günlüklerini görüntüleme](../azure-resource-manager/resource-group-audit.md).
+Bazen, dağıtım hatası VM dağıtımı başlamadan önce oluşur. VM ile oluşturulan bir kaynak için abonelik sınırının aşıldığı bir örnektir. Bu durumda, hata ayrıntıları laboratuvar düzeyi etkinlik günlüklerinde yakalanır. Etkinlik günlükleri **yapılandırma ve ilke** ayarlarının altında bulunur. Azure 'da etkinlik günlüklerini kullanma hakkında daha fazla bilgi için bkz. [kaynaklardaki eylemleri denetlemek için etkinlik günlüklerini görüntüleme](../azure-resource-manager/management/view-activity-logs.md).
 
 ### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>Laboratuvar oluşturmaya çalışırken neden "kaynak türü için konum kullanılamıyor" hatası alıyorum?
-Laboratuvar oluşturmaya çalıştığınızda aşağıdakine benzer bir hata iletisi görebilirsiniz: 
+Laboratuvar oluşturmaya çalıştığınızda aşağıdakine benzer bir hata iletisi görebilirsiniz:
 
 ```
 The provided location 'australiacentral' is not available for resource type 'Microsoft.KeyVault/vaults'. List of available regions for the resource type is 'northcentralus,eastus,northeurope,westeurope,eastasia,southeastasia,eastus2,centralus,southcentralus,westus,japaneast,japanwest,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia,canadacentral,canadaeast,uksouth,ukwest,westcentralus,westus2,koreacentral,koreasouth,francecentral,southafricanorth
@@ -400,9 +400,7 @@ The provided location 'australiacentral' is not available for resource type 'Mic
 Aşağıdaki adımlardan birini gerçekleştirerek, bu hatayı çözebilirsiniz:
 
 #### <a name="option-1"></a>Seçenek 1
-[Bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/) sayfasında, Azure bölgelerindeki kaynak türünün kullanılabilirliğini kontrol edin. Kaynak türü belirli bir bölgede kullanılabilir değilse, DevTest Labs bu bölgede bir laboratuvar oluşturmayı desteklemez. Laboratuvarınızı oluştururken başka bir bölge seçin. 
+[Bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/) sayfasında, Azure bölgelerindeki kaynak türünün kullanılabilirliğini kontrol edin. Kaynak türü belirli bir bölgede kullanılabilir değilse, DevTest Labs bu bölgede bir laboratuvar oluşturmayı desteklemez. Laboratuvarınızı oluştururken başka bir bölge seçin.
 
 #### <a name="option-2"></a>Seçenek 2
-Bölgenizde kaynak türü kullanılabiliyorsa, aboneliğiniz ile kayıtlı olup olmadığını denetleyin. [Bu makalede](../azure-resource-manager/resource-manager-supported-services.md)gösterildiği gibi, abonelik sahibi düzeyinde yapılabilir. 
-
-
+Bölgenizde kaynak türü kullanılabiliyorsa, aboneliğiniz ile kayıtlı olup olmadığını denetleyin. [Bu makalede](../azure-resource-manager/management/resource-providers-and-types.md)gösterildiği gibi, abonelik sahibi düzeyinde yapılabilir.

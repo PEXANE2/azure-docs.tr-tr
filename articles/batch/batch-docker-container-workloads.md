@@ -2,20 +2,20 @@
 title: Kapsayıcı iş yükleri-Azure Batch | Microsoft Docs
 description: Azure Batch üzerindeki kapsayıcı görüntülerden uygulamaları çalıştırmayı öğrenin.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.workload: na
 ms.date: 08/09/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: c9e24924472e0bb8dbd0e529b739263469b631fb
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 097ab13ad64477274e756d8e8e93e3614dd1a4e8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090747"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029715"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch kapsayıcı uygulamaları çalıştırma
 
@@ -27,9 +27,9 @@ Kapsayıcı kavramları ve bir Batch havuzu ve işi oluşturma hakkında bilgi s
 
 Kapsayıcıları kullanmak, uygulamaları çalıştırmak için bir ortamı ve bağımlılıkları yönetmek zorunda kalmadan Batch görevleri çalıştırmanın kolay bir yolunu sunar. Kapsayıcılar, uygulamaları birçok farklı ortamda çalışabilen hafif, taşınabilir ve kendi kendine yeterli birimler olarak dağıtır. Örneğin, bir kapsayıcıyı yerel olarak derleyin ve test edin, sonra kapsayıcı görüntüsünü Azure 'da veya başka bir yerde bir kayıt defterine yükleyin. Kapsayıcı dağıtım modeli, uygulamanızın çalışma zamanı ortamının her zaman doğru şekilde yüklenmesini ve uygulamayı barındırdığınıza her yerde yapılandırılmasını sağlar. Toplu Işteki kapsayıcı tabanlı görevler Ayrıca, uygulama paketleri ve kaynak dosyalarının ve çıkış dosyalarının yönetimi dahil olmak üzere, kapsayıcı olmayan görevlerin özelliklerinden de yararlanabilir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **SDK sürümleri**: Batch SDK 'Ları aşağıdaki sürümlerden itibaren kapsayıcı görüntülerini destekler:
+* **SDK sürümleri**: Batch SDK 'ları, aşağıdaki sürümlerden itibaren kapsayıcı görüntülerini destekler:
     * Batch REST API sürüm 2017 -09-01.6.0
     * Batch .NET SDK sürümü 8.0.0
     * Batch Python SDK sürüm 4,0
@@ -38,7 +38,7 @@ Kapsayıcıları kullanmak, uygulamaları çalıştırmak için bir ortamı ve b
 
 * **Hesaplar**: Azure aboneliğinizde bir Batch hesabı ve isteğe bağlı olarak bir Azure depolama hesabı oluşturmanız gerekir.
 
-* **Desteklenen BIR VM görüntüsü**: Kapsayıcılar yalnızca, "desteklenen sanal makine görüntüleri" bölümünde açıklanan görüntülerden, sanal makine yapılandırmasıyla oluşturulan havuzlarda desteklenir. Özel bir görüntü sağlarsanız, bir [sanal makine havuzu oluşturmak için aşağıdaki bölümdeki noktalara ve yönetilen özel görüntü kullanma](batch-custom-images.md)' daki gereksinimlere bakın. 
+* **Desteklenen BIR VM görüntüsü**: kapsayıcılar, "desteklenen sanal makine görüntüleri" bölümünde açıklanan görüntülerden yalnızca sanal makine yapılandırmasıyla oluşturulan havuzlarda desteklenir. Özel bir görüntü sağlarsanız, bir [sanal makine havuzu oluşturmak için aşağıdaki bölümdeki noktalara ve yönetilen özel görüntü kullanma](batch-custom-images.md)' daki gereksinimlere bakın. 
 
 ### <a name="limitations"></a>Sınırlamalar
 
@@ -98,7 +98,7 @@ Kapsayıcı görüntülerinin önceden getirilirken faydalanması, görevlerin i
 
 ### <a name="pool-without-prefetched-container-images"></a>Önceden getirilen kapsayıcı görüntüleri olmadan havuz
 
-Kapsayıcı görüntüleri önceden getirilmeksizin kapsayıcı özellikli bir havuz yapılandırmak için aşağıdaki Python örneğinde `ContainerConfiguration` gösterildiği `VirtualMachineConfiguration` gibi, ve nesneleri tanımlayın. Bu örnek, marketten Azure Batch kapsayıcı havuzları görüntüsü için Ubuntu sunucusunu kullanır.
+Kapsayıcı görüntüleri önceden getirilmeksizin kapsayıcı özellikli bir havuz yapılandırmak için, aşağıdaki Python örneğinde gösterildiği gibi `ContainerConfiguration` ve `VirtualMachineConfiguration` nesneleri tanımlayın. Bu örnek, marketten Azure Batch kapsayıcı havuzları görüntüsü için Ubuntu sunucusunu kullanır.
 
 
 ```python
@@ -128,7 +128,7 @@ new_pool = batch.models.PoolAddParameter(
 
 ### <a name="prefetch-images-for-container-configuration"></a>Kapsayıcı yapılandırması için görüntüleri önceden getirme
 
-Havuzdaki kapsayıcı görüntülerini önceden almak için kapsayıcı görüntülerinin listesini (`container_image_names`Python 'da) `ContainerConfiguration`öğesine ekleyin. 
+Havuzdaki kapsayıcı görüntülerini önceden almak için, kapsayıcı görüntülerinin listesini (Python 'da`container_image_names`) `ContainerConfiguration`ekleyin. 
 
 Aşağıdaki temel Python örneği, [Docker Hub 'ından](https://hub.docker.com)standart bir Ubuntu kapsayıcı görüntüsünün nasıl önceden alınacağını gösterir.
 
@@ -193,7 +193,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 ### <a name="prefetch-images-from-a-private-container-registry"></a>Özel kapsayıcı kayıt defterinden görüntüleri önceden getirme
 
-Ayrıca, özel bir kapsayıcı kayıt defteri sunucusunda kimlik doğrulaması yaparak kapsayıcı görüntülerini önceden ayarlayabilirsiniz. Aşağıdaki örnekte `ContainerConfiguration` , ve `VirtualMachineConfiguration` nesneleri özel bir Azure Container Registry 'den özel bir TensorFlow görüntüsünü önceden getirme. Görüntü başvurusu, önceki örnekteki ile aynıdır.
+Ayrıca, özel bir kapsayıcı kayıt defteri sunucusunda kimlik doğrulaması yaparak kapsayıcı görüntülerini önceden ayarlayabilirsiniz. Aşağıdaki örnekte, `ContainerConfiguration` ve `VirtualMachineConfiguration` nesneleri özel bir Azure Container Registry 'den özel bir TensorFlow görüntüsünü önceden getirme. Görüntü başvurusu, önceki örnekteki ile aynıdır.
 
 ```csharp
 // Specify a container registry
@@ -227,7 +227,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 Kapsayıcı etkin bir havuzda bir kapsayıcı görevi çalıştırmak için kapsayıcıya özgü ayarları belirtin. Ayarlar, kullanılacak görüntü, kayıt defteri ve kapsayıcı çalıştırma seçeneklerini içerir.
 
-* Kapsayıcıya özgü ayarları yapılandırmak için görev sınıflarının özelliğinikullanın.`ContainerSettings` Bu ayarlar [Taskcontainersettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) sınıfı tarafından tanımlanır. `--rm` Kapsayıcı seçeneğinin toplu iş tarafından sunulduğundan bu yana `--runtime` ek bir seçenek gerektirmediğini unutmayın. 
+* Kapsayıcıya özgü ayarları yapılandırmak için görev sınıflarının `ContainerSettings` özelliğini kullanın. Bu ayarlar [Taskcontainersettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) sınıfı tarafından tanımlanır. `--rm` kapsayıcı seçeneğinin Batch tarafından sunulduğundan bu yana ek bir `--runtime` seçeneği gerektirmediğinden emin olunmadığını unutmayın. 
 
 * Görevleri kapsayıcı görüntülerinde çalıştırırsanız, [bulut görevi](/dotnet/api/microsoft.azure.batch.cloudtask) ve [İş Yöneticisi görevi](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) kapsayıcı ayarları gerektirir. Ancak, [Başlangıç görevi](/dotnet/api/microsoft.azure.batch.starttask), [iş hazırlama görevi](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)ve [iş bırakma görevi](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) , kapsayıcı ayarları gerektirmez (yani bir kapsayıcı bağlamı içinde veya doğrudan düğüm üzerinde çalışabilir).
 
@@ -239,21 +239,21 @@ Kapsayıcı olmayan Batch görevlerinde olduğu gibi, bir kapsayıcı görevi i�
 
 Bir Batch görevinin kapsayıcı görüntüsü bir [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example) betiği ile yapılandırıldıysa, Komut satırlarınızı varsayılan giriş noktasını kullanacak şekilde veya geçersiz kılmak üzere ayarlayabilirsiniz: 
 
-* Kapsayıcı görüntüsünün varsayılan GIRIŞ noktasını kullanmak için, görev komut satırını boş dizeye `""`ayarlayın.
+* Kapsayıcı görüntüsünün varsayılan GIRIŞ noktasını kullanmak için, görev komut satırını boş dize `""`olarak ayarlayın.
 
-* Varsayılan giriş noktasını geçersiz kılmak için ya da görüntüde bir EntryPoint yoksa, örneğin veya `/app/myapp` `/bin/sh -c python myscript.py`gibi bir komut satırını uygun olarak ayarlayın.
+* Varsayılan GIRIŞ noktasını geçersiz kılmak için veya görüntüde bir GIRIŞ noktası yoksa, kapsayıcı için uygun bir komut satırı ayarlayın, örneğin, `/app/myapp` veya `/bin/sh -c python myscript.py`.
 
-İsteğe bağlı [containerrunoptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) , kapsayıcıyı oluşturmak ve çalıştırmak için `docker create` Batch 'in kullandığı komuta sağladığınız ek bağımsız değişkenlerdir. Örneğin, kapsayıcı için çalışma dizini ayarlamak için `--workdir <directory>` seçeneğini ayarlayın. Ek seçenekler için [Docker oluşturma](https://docs.docker.com/engine/reference/commandline/create/) başvurusuna bakın.
+İsteğe bağlı [Containerrunoptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) , kapsayıcıyı oluşturmak ve çalıştırmak için Batch 'in kullandığı `docker create` komutuna sağladığınız ek bağımsız değişkenlerdir. Örneğin, kapsayıcı için çalışma dizini ayarlamak için `--workdir <directory>` seçeneğini ayarlayın. Ek seçenekler için [Docker oluşturma](https://docs.docker.com/engine/reference/commandline/create/) başvurusuna bakın.
 
 ### <a name="container-task-working-directory"></a>Kapsayıcı görevi çalışma dizini
 
-Bir Batch kapsayıcı görevi, kapsayıcıda düzenli (kapsayıcı olmayan) bir görevde Dizin toplu Iş kümelerine çok benzeyen bir çalışma dizininde yürütülür. Bu çalışma dizininin görüntüde yapılandırıldıysa [iş](https://docs.docker.com/engine/reference/builder/#workdir) dizininden farklı olduğunu veya varsayılan kapsayıcı çalışma dizinini (`C:\` bir Windows kapsayıcısında veya `/` bir Linux kapsayıcısında) farklı olduğunu unutmayın. 
+Bir Batch kapsayıcı görevi, kapsayıcıda düzenli (kapsayıcı olmayan) bir görevde Dizin toplu Iş kümelerine çok benzeyen bir çalışma dizininde yürütülür. Bu çalışma dizininin görüntüde yapılandırılıp yapılandırılmadığını veya varsayılan kapsayıcı [](https://docs.docker.com/engine/reference/builder/#workdir) çalışma dizinini (bir Windows kapsayıcısında`C:\` ya da bir Linux kapsayıcısında `/`) farklı olduğunu unutmayın. 
 
 Batch kapsayıcı görevi için:
 
-* Konak düğümündeki (Azure Batch dizinlerin `AZ_BATCH_NODE_ROOT_DIR` kökü) her yinelemeli olarak tüm dizinler kapsayıcı ile eşleştirilir
+* Konak düğümündeki `AZ_BATCH_NODE_ROOT_DIR` (Azure Batch dizinlerin kökü) her yinelemeli olarak tüm dizinler, kapsayıcınıza eşlenir
 * Tüm görev ortam değişkenleri, kapsayıcınıza eşlenir
-* Düğümdeki görev çalışma dizini `AZ_BATCH_TASK_WORKING_DIR` , düzenli bir görevle aynı şekilde ayarlanır ve kapsayıcıya eşlenir. 
+* Düğümdeki görev çalışma dizini `AZ_BATCH_TASK_WORKING_DIR`, düzenli bir görevle aynı şekilde ayarlanır ve kapsayıcıya eşlenir. 
 
 Bu eşlemeler kapsayıcı görevlerle, kapsayıcı olmayan görevlerle aynı şekilde çalışmanıza olanak sağlar. Örneğin, uygulama paketleri kullanarak uygulamaları, Azure depolama 'dan kaynak dosyalarına erişin, görev ortamı ayarlarını kullanın ve kapsayıcı durdurulduktan sonra Görev çıkış dosyalarını kalıcı hale getirin.
 
@@ -265,11 +265,11 @@ Gerekirse, görüntüye göre kapsayıcı görevinin ayarlarını ayarlayın:
 
 * Görev komut satırında mutlak bir yol belirtin. Görev komut satırı için görüntünün varsayılan GIRIŞ noktası kullanılırsa, mutlak bir yolun ayarlandığından emin olun.
 
-* Görevin kapsayıcı çalıştırma seçenekleri ' nde, çalışma dizinini görüntüdeki WORKDIR ile eşleşecek şekilde değiştirin. Örneğin, ayarlayın `--workdir /app`.
+* Görevin kapsayıcı çalıştırma seçenekleri ' nde, çalışma dizinini görüntüdeki WORKDIR ile eşleşecek şekilde değiştirin. Örneğin, `--workdir /app`ayarlayın.
 
 ## <a name="container-task-examples"></a>Kapsayıcı görevi örnekleri
 
-Aşağıdaki Python kod parçacığında, Docker Hub 'dan çekilen kurgusal bir görüntüden oluşturulan kapsayıcıda çalışan temel bir komut satırı gösterilmektedir. Burada kapsayıcı seçeneği, görev bittikten sonra kapsayıcıyı kaldırır `--workdir` ve seçeneği bir çalışma dizini ayarlar. `--rm` Komut satırı, küçük bir dosyayı konaktaki görev çalışma dizinine yazan basit bir kabuk komutuyla kapsayıcı GIRIŞ noktasını geçersiz kılar. 
+Aşağıdaki Python kod parçacığında, Docker Hub 'dan çekilen kurgusal bir görüntüden oluşturulan kapsayıcıda çalışan temel bir komut satırı gösterilmektedir. Burada, `--rm` kapsayıcı seçeneği, görev bittikten sonra kapsayıcıyı kaldırır ve `--workdir` seçeneği bir çalışma dizini ayarlar. Komut satırı, küçük bir dosyayı konaktaki görev çalışma dizinine yazan basit bir kabuk komutuyla kapsayıcı GIRIŞ noktasını geçersiz kılar. 
 
 ```python
 task_id = 'sampletask'

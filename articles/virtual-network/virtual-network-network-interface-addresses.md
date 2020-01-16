@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 1a6fb5d2b27996d67e0bf27eb57d16f4d2fb2797
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dc5b1f2f8e8b529149184ce173bcdd315311bad4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647263"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975322"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ağ arabirimi için IP adreslerini ekleme, değiştirme veya kaldırma
 
@@ -146,7 +146,7 @@ Sanal makinenin işletim sistemi içindeki bir ağ arabiriminin IP adresini el i
 4. Sanal makineyi başlatın.
 5. Azure 'da ayarlandıklarınızı eşleştirmek için işletim sistemi içindeki ikincil IP adreslerini (ve ayrıca Windows 'daki birincil IP adresini) [el ile yapılandırın](virtual-network-multiple-ip-addresses-portal.md#os-config) .
 
-Önceki adımları izleyerek, Azure 'daki ağ arabirimine ve bir sanal makinenin işletim sistemine atanan özel IP adresi aynı kalır. Aboneliğinizdeki bir işletim sistemi içinde IP adreslerini el ile belirlediğiniz sanal makineleri izlemek için, sanal makinelere bir Azure [etiketi](../azure-resource-manager/resource-group-using-tags.md) eklemeyi göz önünde bulundurun. Örneğin, "IP adresi ataması: statik" kullanabilirsiniz. Bu şekilde, işletim sistemi içinde için IP adresini el ile ayarladığınız sanal makineleri aboneliğinizde kolayca bulabilirsiniz.
+Önceki adımları izleyerek, Azure 'daki ağ arabirimine ve bir sanal makinenin işletim sistemine atanan özel IP adresi aynı kalır. Aboneliğinizdeki bir işletim sistemi içinde IP adreslerini el ile belirlediğiniz sanal makineleri izlemek için, sanal makinelere bir Azure [etiketi](../azure-resource-manager/management/tag-resources.md) eklemeyi göz önünde bulundurun. Örneğin, "IP adresi ataması: statik" kullanabilirsiniz. Bu şekilde, işletim sistemi içinde için IP adresini el ile ayarladığınız sanal makineleri aboneliğinizde kolayca bulabilirsiniz.
 
 Bir sanal makinenin aynı veya bağlı sanal ağlardaki diğer kaynaklarla iletişim kurmasına imkan tanıma ek olarak, bir özel IP adresi de bir sanal makinenin Internet 'e giden iletişim kurmasına olanak tanır. Giden bağlantılar, Azure tarafından öngörülemeyen bir genel IP adresine çevrilmiş kaynak ağ adresidir. Azure giden Internet bağlantısı hakkında daha fazla bilgi edinmek için, [Azure giden Internet bağlantısı](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) makalesini okuyun. Internet 'ten gelen bir sanal makinenin özel IP adresi ile iletişim kuramayamezsiniz. Giden bağlantılarınız tahmin edilebilir bir genel IP adresi gerektiriyorsa, genel IP adresi kaynağını bir ağ arabirimiyle ilişkilendirin.
 

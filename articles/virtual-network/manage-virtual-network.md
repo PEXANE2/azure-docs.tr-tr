@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 87cdd3d18fe0e6a3655c8bbc940cdc00fa211e74
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750583"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982242"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Sanal ağ oluşturma, değiştirme veya silme
 
@@ -79,7 +79,7 @@ Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıd
 
      ![Ağ arabirimine genel bakış](./media/manage-virtual-network/vnet-overview.png)
 
-     **Kaynak grubu** veya **abonelik adı**' nın yanındaki **Değiştir** ' i seçerek bir sanal ağı farklı bir aboneliğe veya kaynak grubuna taşıyabilirsiniz. Bir sanal ağı nasıl taşıyacağınızı öğrenmek için bkz. [kaynakları farklı bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Makalede önkoşulları ve Azure portal, PowerShell ve Azure CLı kullanarak kaynakların nasıl taşınacağı listelenmektedir. Sanal ağa bağlı tüm kaynaklar sanal ağla birlikte taşınmalıdır.
+     **Kaynak grubu** veya **abonelik adı**' nın yanındaki **Değiştir** ' i seçerek bir sanal ağı farklı bir aboneliğe veya kaynak grubuna taşıyabilirsiniz. Bir sanal ağı nasıl taşıyacağınızı öğrenmek için bkz. [kaynakları farklı bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Makalede önkoşulları ve Azure portal, PowerShell ve Azure CLı kullanarak kaynakların nasıl taşınacağı listelenmektedir. Sanal ağa bağlı tüm kaynaklar sanal ağla birlikte taşınmalıdır.
    - **Adres alanı**: sanal ağa atanan adres alanları listelenir. Adres alanına adres aralığı ekleme ve kaldırma hakkında bilgi edinmek için [adres aralığı ekleme veya kaldırma](#add-or-remove-an-address-range)bölümündeki adımları uygulayın.
    - **Bağlı cihazlar**: sanal ağa bağlı tüm kaynaklar listelenir. Önceki ekran görüntüsünde, sanal ağa üç ağ arabirimi ve bir yük dengeleyici bağlı. Oluşturduğunuz ve sanal ağa bağlandığınız tüm yeni kaynaklar listelenir. Sanal ağa bağlı bir kaynağı silerseniz, listede artık görünmez.
    - **Alt ağlar**: sanal ağ içinde bulunan alt ağların bir listesi gösterilir. Bir alt ağ ekleme ve kaldırma hakkında bilgi edinmek için bkz. [alt ağları yönetme](virtual-network-manage-subnet.md).
@@ -90,8 +90,8 @@ Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıd
    - **Ortak Azure ayarları**: Genel Azure ayarları hakkında daha fazla bilgi edinmek için aşağıdaki bilgilere bakın:
      - [Etkinlik Günlüğü](../azure-monitor/platform/platform-logs-overview.md)
      - [Erişim denetimi (ıAM)](../role-based-access-control/overview.md)
-     - [Etiketler](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Kaynaktaki](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Etiketler](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Kaynaktaki](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Otomasyon betiği](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **Komut**

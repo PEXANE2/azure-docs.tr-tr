@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/10/2020
+ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a799339f2780c2bc372c39120a6e20b34d907326
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 662b2792a2e09603425b1988138326799334f323
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912737"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973424"
 ---
 ### <a name="portal"></a>Portal
 
@@ -88,3 +88,27 @@ VM dağıtım işlemi standart dağıtım işlemine benzer, tek fark, VM 'yi di�
 1. Diğer seçimleri istediğiniz gibi yapın.
 
     ![SSE-Create-VM-Select-CMK-Encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
+
+#### <a name="enable-on-an-existing-disk"></a>Mevcut bir diskte etkinleştir
+
+Mevcut disklerinizde disk şifrelemesini yönetmek ve yapılandırmak için şu bağlantıyı kullanmanız gerekir: https://aka.ms/diskencryptionsets. Mevcut disklerde müşteri tarafından yönetilen anahtarların etkinleştirilmesi, genel Azure portal henüz kullanılamamaktadır.
+
+> [!CAUTION]
+> Bir VM 'ye bağlı herhangi bir diskte disk şifrelemeyi etkinleştirmek, VM 'yi durdurmanız gerekir.
+
+1. Disk şifreleme kümelerinizin biriyle aynı bölgedeki bir VM 'ye gidin.
+1. VM 'yi açın ve **Durdur**' u seçin.
+
+    ![sse-stop-VM-to-encrypt-disk. png](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)
+
+1. VM 'yi durdurmayı tamamladıktan sonra, **diskler** ' i seçin ve ardından şifrelemek istediğiniz diski seçin.
+
+    ![SSE-Existing-disk-Select. png](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
+
+1. **Şifreleme** ' yi seçin ve ardından **müşteri tarafından yönetilen bir anahtarla geri kalan şifrelemeyi** seçin ve ardından açılan listede disk şifreleme kümesini seçin.
+1. **Kaydet**’i seçin.
+
+    ![SSE-Encrypt-Existing-disk-Customer-Managed-Key. png](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
+
+1. Şifrelemek istediğiniz sanal makineye bağlı diğer diskler için bu işlemi tekrarlayın.
+1. Disklerinizde, müşteri tarafından yönetilen anahtarlara geçiş tamamlandığında, şifrelemek istediğiniz başka bir bağlı disk yoksa VM 'nizi başlatabilirsiniz.

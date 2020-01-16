@@ -3,12 +3,12 @@ title: Power BI raporlarını yapılandırma
 description: Kurtarma Hizmetleri kasasını kullanarak Azure Backup için Power BI raporlarını yapılandırın.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 9b6ef62a924761642ef3217ff8af64ac6847c766
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f8a2dd927f996ea09e40c7db2e43b46c17f6258
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450117"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978367"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -30,7 +30,7 @@ Bu sorundan kaçınmak için lütfen en son uygulamayı (sürüm 1,8) indirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Raporları yapılandırmak için bir [Azure depolama hesabı](../storage/common/storage-quickstart-create-account.md) oluşturun. Bu depolama hesabı, raporla ilgili verileri depolamak için kullanılır.
+- Raporları yapılandırmak için bir [Azure depolama hesabı](../storage/common/storage-account-create.md) oluşturun. Bu depolama hesabı, raporla ilgili verileri depolamak için kullanılır.
 - Power BI portalını kullanarak kendi raporlarınızı görüntülemek, özelleştirmek ve oluşturmak için [bir Power BI hesabı oluşturun](https://powerbi.microsoft.com/landing/signin/) .
 - Henüz kayıtlı değilse, **Microsoft. Insights**kaynak sağlayıcısını kaydedin. Raporlama verilerinin depolama hesabına akabilmesi için depolama hesabı ve kurtarma hizmetleri Kasası aboneliklerini kullanın. Bu adımı yapmak için Azure portal gidin, **abonelik** > **kaynak sağlayıcıları**' nı seçin ve bu sağlayıcıyı kaydetmek için denetleyin.
 

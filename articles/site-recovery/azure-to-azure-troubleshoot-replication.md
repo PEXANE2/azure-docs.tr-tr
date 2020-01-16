@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.openlocfilehash: fe300c1efc8f5802397a59296f8b127c321bd871
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: b8afdd0f2dd98260a628116fa7402e05cd39e06b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941572"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965850"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da çoğaltma sorunlarını giderme
 
@@ -35,7 +35,7 @@ Olayı seçerseniz, tam disk bilgilerini görmeniz gerekir:
 
 
 ### <a name="azure-site-recovery-limits"></a>Azure Site Recovery limitleri
-Aşağıdaki tablo, Azure Site Recovery sınırlarını sağlar. Bu sınırlar, testlerimize dayalıdır, ancak olası tüm uygulama g/ç birleşimlerini kapsayamazlar. Gerçek sonuçlar, uygulamanızın G/Ç karışımına göre değişebilir. 
+Aşağıdaki tablo, Azure Site Recovery sınırlarını sağlar. Bu sınırlar, testlerimize dayalıdır, ancak olası tüm uygulama g/ç birleşimlerini kapsayamazlar. Gerçek sonuçlar, uygulamanızın G/Ç karışımına göre değişebilir.
 
 Göz önünde bulundurulması gereken iki sınır vardır, sanal makine başına disk başına veri dalgalanması ve veri değişim sıklığı vardır. Örneğin, aşağıdaki tabloda Premium P20 diskine göz atalım. Site Recovery VM başına en fazla beş MB 'lık disk başına 5 MB/s değişim işleyebilir, sanal makine başına 25 MB/sn toplam dalgalanma sınırı vardır.
 
@@ -59,7 +59,7 @@ Azure Site Recovery'nin disk türüne bağlı olarak veri değişim oranı sın�
 
 Ani bir veri patlama ve veri değişim oranı 10 MB/sn 'den (Premium için) ve 2 MB/sn 'den (Standart için) daha büyükse, çoğaltma gerçekleştirilir. Ancak, karmaşıklığın çoğu zaman desteklenen sınırın ötesinde, mümkünse şu seçeneklerden birini göz önünde bulundurun:
 
-* **Yüksek veri değişim hızına neden olan diski hariç tutun**: [PowerShell](./azure-to-azure-exclude-disks.md)kullanarak diski dışlayabilirsiniz. Diski dışlamak için önce çoğaltmayı devre dışı bırakmanız gerekir. 
+* **Yüksek veri değişim hızına neden olan diski hariç tutun**: [PowerShell](./azure-to-azure-exclude-disks.md)kullanarak diski dışlayabilirsiniz. Diski dışlamak için önce çoğaltmayı devre dışı bırakmanız gerekir.
 * **Olağanüstü durum kurtarma depolama diskinin katmanını değiştirme**: Bu seçenek yalnızca disk verileri KARMAŞıKLıĞı 20 MB/sn 'den az olduğunda mümkündür. P10 diskine sahip bir VM 'nin, 8 MB/sn 'den büyük ancak 10 MB/sn 'tan küçük bir veri dalgalanmasına sahip olduğunu varsayalım. Müşteri, koruma sırasında hedef depolama için bir P30 disk kullanıyorsa, sorun çözülebilir. Bu çözümün yalnızca Premium yönetilen diskleri kullanan makineler için mümkün olduğunu unutmayın. Aşağıdaki adımları izleyin:
     - Etkilenen çoğaltılan makinenin diskler dikey penceresine gidin ve çoğaltma diski adını kopyalayın
     - Bu çoğaltma yönetilen diskine git
@@ -69,28 +69,28 @@ Ani bir veri patlama ve veri değişim oranı 10 MB/sn 'den (Premium için) ve 2
 ## <a name="Network-connectivity-problem"></a>Ağ bağlantısı sorunları
 
 ### <a name="network-latency-to-a-cache-storage-account"></a>Önbellek depolama hesabına yönelik ağ gecikmesi
-Site Recovery, çoğaltılan verileri önbellek depolama hesabına gönderir. Bir sanal makineden önbellek depolama hesabına veri yükleme işlemi 3 saniye içinde 4 MB 'den daha yavaşsa ağ gecikme süresi görebilirsiniz. 
+Site Recovery, çoğaltılan verileri önbellek depolama hesabına gönderir. Bir sanal makineden önbellek depolama hesabına veri yükleme işlemi 3 saniye içinde 4 MB 'den daha yavaşsa ağ gecikme süresi görebilirsiniz.
 
-Gecikmeyle ilgili bir sorun olup olmadığını denetlemek için [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) komutunu kullanarak sanal makineden önbellek depolama hesabına veri yükleyin. Gecikme süresi yüksekse, VM 'lerden giden ağ trafiğini denetlemek için bir ağ sanal gereci (NVA) kullanıp kullandığınızı kontrol edin. Tüm çoğaltma trafiği NVA üzerinden geçerse gereç azalmasıyla karşılaşabilirsiniz. 
+Gecikmeyle ilgili bir sorun olup olmadığını denetlemek için [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) komutunu kullanarak sanal makineden önbellek depolama hesabına veri yükleyin. Gecikme süresi yüksekse, VM 'lerden giden ağ trafiğini denetlemek için bir ağ sanal gereci (NVA) kullanıp kullandığınızı kontrol edin. Tüm çoğaltma trafiği NVA üzerinden geçerse gereç azalmasıyla karşılaşabilirsiniz.
 
 Çoğaltma trafiğinin NVA 'ya gitmemesi için, sanal ağınızda "depolama" için bir ağ hizmeti uç noktası oluşturmanız önerilir. Daha fazla bilgi için bkz. [ağ sanal gereç yapılandırması](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration).
 
 ### <a name="network-connectivity"></a>Ağ bağlantısı
-Site Recovery çoğaltması için iş, giden bağlantı için özel URL veya IP aralıkları VM'den gerekli. VM 'niz bir güvenlik duvarının arkasındaysa veya giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kuralları kullanıyorsa, bu sorunlardan biri yüz yüze gelebilir. Tüm URL 'Lerin bağlı olduğundan emin olmak için bkz. [Site Recovery URL 'ler Için giden bağlantı](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges). 
+Site Recovery çoğaltması için iş, giden bağlantı için özel URL veya IP aralıkları VM'den gerekli. VM 'niz bir güvenlik duvarının arkasındaysa veya giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kuralları kullanıyorsa, bu sorunlardan biri yüz yüze gelebilir. Tüm URL 'Lerin bağlı olduğundan emin olmak için bkz. [Site Recovery URL 'ler Için giden bağlantı](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges).
 
 ## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Hata KIMLIĞI 153006-son ' XXX ' dakika içinde VM için uygulamayla tutarlı bir kurtarma noktası yok
 
 En yaygın sorunlardan bazıları aşağıda listelenmiştir
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Neden 1: SQL Server 2008/2008 R2 'de bilinen sorun 
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Neden 1: SQL Server 2008/2008 R2 'de bilinen sorun
 **Nasıl düzeltileceğini öğrenin** : SQL Server 2008/2008 R2 ile ilgili bilinen bir sorun var. Lütfen bu KB makalesine bakın [Azure Site Recovery aracı veya bileşen olmayan DIĞER VSS yedeklemesi SQL Server 2008 R2 barındıran bir sunucu için başarısız oluyor](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>2\. neden: Azure Site Recovery işler, AUTO_CLOSE DBs ile SQL Server örneklerinin herhangi bir sürümünü barındıran sunucularda başarısız oluyor 
-**Nasıl düzeltilir** : KB [makalesine](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) başvurun 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>2\. neden: Azure Site Recovery işler, AUTO_CLOSE DBs ile SQL Server örneklerinin herhangi bir sürümünü barındıran sunucularda başarısız oluyor
+**Nasıl düzeltilir** : KB [makalesine](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) başvurun
 
 
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Neden 3: SQL Server 2016 ve 2017 ' de bilinen sorun
-**Nasıl düzeltilir** : KB [makalesine](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) başvurun 
+**Nasıl düzeltilir** : KB [makalesine](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) başvurun
 
 #### <a name="cause-4-you-are-using-storage-spaces-direct-configuration"></a>Neden 4: depolama alanları doğrudan yapılandırması kullanıyorsunuz
 **Nasıl düzeltileceğini öğrenin** : Azure Site Recovery depolama alanları doğrudan yapılandırması için uygulamayla tutarlı bir kurtarma noktası oluşturamıyor. [Çoğaltma ilkesini](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication-s2d-vms) doğru şekilde yapılandırmak için lütfen makaleye başvurun
@@ -98,17 +98,17 @@ En yaygın sorunlardan bazıları aşağıda listelenmiştir
 ### <a name="more-causes-due-to-vss-related-issues"></a>VSS ile ilgili sorunlardan kaynaklanan nedenler:
 
 Daha fazla sorun gidermek için, hata kodunu tam olarak almak için kaynak makinedeki dosyaları kontrol edin:
-    
+
     C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
 
 Dosyadaki hatalar nasıl konumlandırsın?
 Bir düzenleyicide boş olan bir dosyayı açarak "boş" dizesini arayın
-        
+
     Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
 
 Yukarıdaki örnekte **2147754994** , hatayı aşağıda gösterildiği gibi bildiren hata kodudur
 
-#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS yazıcısı yüklü değil-hata 2147221164 
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS yazıcısı yüklü değil-hata 2147221164
 
 *Nasıl düzeltilir*: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'NI (VSS) kullanır. Uygulama tutarlılığı anlık görüntülerini almak için işlemi için bir VSS sağlayıcısı yüklenir. Bu VSS sağlayıcısı bir hizmet olarak yüklendi. VSS sağlayıcısı hizmetinin yüklü olmaması durumunda, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi, 0x80040154 "sınıf kayıtlı değil" hata KIMLIĞIYLE başarısız olur. </br>
 [VSS yazıcı yükleme sorunlarını giderme makalesine](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) bakın 
@@ -126,12 +126,13 @@ Yukarıdaki örnekte **2147754994** , hatayı aşağıda gösterildiği gibi bil
 
 ####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS sağlayıcısı NOT_REGISTERED-hata 2147754756
 
-**Nasıl düzeltilir**: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'NI (VSS) kullanır. Azure Site Recovery VSS sağlayıcısı hizmeti 'nin yüklü olup olmadığını denetleyin. </br>
+**Nasıl düzeltilir**: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'NI (VSS) kullanır.
+Azure Site Recovery VSS sağlayıcısı hizmeti 'nin yüklü olup olmadığını denetleyin. </br>
 
 - Aşağıdaki komutları kullanarak sağlayıcı yüklemesini yeniden deneyin:
 - Mevcut sağlayıcıyı kaldır: C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\ InMageVSSProvider_Uninstall. cmd
 - Yeniden yükle: C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\ InMageVSSProvider_Install. cmd
- 
+
 VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik**olarak ayarlandığını doğrulayın.
     - Aşağıdaki hizmetleri yeniden başlatın:
         - VSS hizmeti

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 5f37971e9680468c29efd5733517cb900852431f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fc5afe3bbb4b2ccf2329432347b23fe9a69c5ea
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400749"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977670"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Azure PowerShell veya Kaynak Yöneticisi şablonları kullanarak VM'ler için Azure İzleyici (Önizleme) etkinleştirme
 
@@ -20,7 +20,7 @@ ms.locfileid: "75400749"
 
 Bu makalede, Azure PowerShell veya Azure Resource Manager şablonları kullanılarak Azure sanal makineler veya sanal makine ölçek kümeleri için VM'ler için Azure İzleyici (Önizleme) nasıl etkinleştirileceği açıklanır. Bu işlemin sonunda, tüm sanal makinelerinizi izlemeye başarıyla başlacaksınız ve herhangi bir performans veya kullanılabilirlik sorunu yaşadığını öğrenirsiniz.
 
-## <a name="set-up-a-log-analytics-workspace"></a>Bir Log Analytics çalışma alanını ayarlama 
+## <a name="set-up-a-log-analytics-workspace"></a>Bir Log Analytics çalışma alanını ayarlama
 
 Log Analytics çalışma alanınız yoksa bir tane oluşturmanız gerekir. Yapılandırma adımlarına devam etmeden önce [Önkoşullar](vminsights-enable-overview.md#log-analytics) bölümünde önerilen yöntemleri gözden geçirin. Daha sonra, Azure Resource Manager şablonu yöntemini kullanarak VM'ler için Azure İzleyici dağıtımını tamamlayaseçebilirsiniz.
 
@@ -35,8 +35,8 @@ Log Analytics çalışma alanınız yoksa bir tane oluşturmanız gerekir. Yapı
 Bu yöntem, Log Analytics çalışma alanınızda çözüm bileşenlerini etkinleştirmek için yapılandırmasını belirten bir JSON şablonu içerir.
 
 Bir şablon kullanarak kaynakların nasıl dağıtılacağını bilmiyorsanız, bkz:
-* [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
 
 Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLI Sürüm 2.0.27 çalıştırıyor olmanız gerekir veya üzeri. Sürümünüzü belirlemek için çalıştırma `az --version`. Azure CLı 'yı yüklemek veya yükseltmek için bkz. [Azure CLI 'Yi yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -91,7 +91,7 @@ Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kulla
 1. *Çalışmaadı*, *Resourcegroupname*ve *WorkspaceLocation*değerlerini yakalayın. *Çalışmaadı* değeri, Log Analytics çalışma alanınızın adıdır. Değeri *WorkspaceLocation* çalışma alanı içinde tanımlanan bölgedir.
 
 1. Bu şablonu dağıtmaya hazırsınız.
- 
+
     * Şablonu içeren klasörde aşağıdaki PowerShell komutlarını kullanın:
 
         ```powershell
@@ -105,7 +105,7 @@ Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kulla
         ```
 
     * Azure CLI kullanarak aşağıdaki komutu çalıştırmak için:
-    
+
         ```azurecli
         az login
         az account set --subscription "Subscription Name"
@@ -126,14 +126,14 @@ Sanal makinelerinizi ve sanal makine ölçek kümelerinizi eklemeye yönelik ör
 >Şablonun, panoda kullanılacak kaynakla aynı kaynak grubunda dağıtılması gerekir.
 
 Bir şablon kullanarak kaynakların nasıl dağıtılacağını bilmiyorsanız, bkz:
-* [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
 
 Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLI Sürüm 2.0.27 çalıştırıyor olmanız gerekir veya üzeri. Sürümünüzü belirlemek için çalıştırma `az --version`. Azure CLı 'yı yüklemek veya yükseltmek için bkz. [Azure CLI 'Yi yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="download-templates"></a>Şablonları indir
 
-Azure Resource Manager şablonları, GitHub deponuzdan [indirebileceğiniz](https://aka.ms/VmInsightsARMTemplates) bir arşiv dosyasında (. zip) verilmiştir. Dosya içeriği, bir şablon ve parametre dosyası ile her bir dağıtım senaryosunu temsil eden klasörleri içerir. Çalıştırmadan önce, parametreler dosyasını değiştirin ve gerekli değerleri belirtin. Şablon dosyasını, özel gereksinimlerinizi destekleyecek şekilde özelleştirmeniz gerekmedikçe değiştirmeyin. Parametre dosyasını değiştirdikten sonra, bu makalenin ilerleyen kısımlarında açıklanan aşağıdaki yöntemleri kullanarak dağıtabilirsiniz. 
+Azure Resource Manager şablonları, GitHub deponuzdan [indirebileceğiniz](https://aka.ms/VmInsightsARMTemplates) bir arşiv dosyasında (. zip) verilmiştir. Dosya içeriği, bir şablon ve parametre dosyası ile her bir dağıtım senaryosunu temsil eden klasörleri içerir. Çalıştırmadan önce, parametreler dosyasını değiştirin ve gerekli değerleri belirtin. Şablon dosyasını, özel gereksinimlerinizi destekleyecek şekilde özelleştirmeniz gerekmedikçe değiştirmeyin. Parametre dosyasını değiştirdikten sonra, bu makalenin ilerleyen kısımlarında açıklanan aşağıdaki yöntemleri kullanarak dağıtabilirsiniz.
 
 İndirme dosyası farklı senaryolar için aşağıdaki şablonları içerir:
 
@@ -180,7 +180,7 @@ provisioningState       : Succeeded
 Birden çok VM veya sanal makine ölçek kümesi için VM'ler için Azure İzleyici etkinleştirmek için, [Install-VMInsights. ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)PowerShell betiğini kullanın. Azure PowerShell Galerisi ' nden kullanılabilir. Bu betik şu şekilde yinelenir:
 
 - Aboneliğinizdeki her sanal makine ve sanal makine ölçek kümesi.
-- *ResourceGroup*tarafından belirtilen kapsamlı kaynak grubu. 
+- *ResourceGroup*tarafından belirtilen kapsamlı kaynak grubu.
 - *Ad*ile belirtilen tek bir VM veya sanal makine ölçek kümesi.
 
 Her sanal makine veya sanal makine ölçek kümesi için betik VM uzantısı zaten yüklü olup olmadığını doğrular. VM Uzantısı yüklüyse, betik yeniden yüklemeyi dener. VM uzantısı yüklü değilse, betik Log Analytics ve bağımlılık Aracısı VM uzantılarını yüklenir.
@@ -341,7 +341,7 @@ Failed: (0)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Artık sanal makineleriniz için izleme etkin olduğuna göre, bu bilgiler VM'ler için Azure İzleyici analiz için kullanılabilir.
- 
-- Bulunan Uygulama bağımlılıklarını görüntülemek için bkz: [Vm'leri harita görünümü Azure İzleyici](vminsights-maps.md). 
 
-- VM performanlarınızın performans sorunlarını ve genel kullanımını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md). 
+- Bulunan Uygulama bağımlılıklarını görüntülemek için bkz: [Vm'leri harita görünümü Azure İzleyici](vminsights-maps.md).
+
+- VM performanlarınızın performans sorunlarını ve genel kullanımını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md).

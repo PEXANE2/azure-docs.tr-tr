@@ -1,78 +1,80 @@
 ---
-title: Azure veri Gezgini'nde veritabanı izinlerini yönetme
-description: Bu makale, veritabanlarını ve tabloları Azure veri Gezgini'nde için rol tabanlı erişim denetimlerini açıklar.
+title: Azure Veri Gezgini veritabanı izinlerini yönetme
+description: Bu makalede, Azure Veri Gezgini veritabanları ve tabloları için rol tabanlı erişim denetimleri açıklanmaktadır.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 36e1bb77be1e825e42f0e5d25457214a8b5f882d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4d5e56e990c0353f44209c6b19ae2d1727de27a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758814"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030094"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Azure Veri Gezgini veritabanı izinlerini yönetme
 
-Azure Veri Gezgini sağlar, veritabanlarını ve tabloları, erişimi denetlemek kullanarak bir *rol tabanlı erişim denetimi* modeli. Bu modelde, *sorumluları* (kullanıcılar, gruplar ve uygulamalar) eşleştirilmiş *rolleri*. İlkeleri atanmış oldukları rollerine göre kaynaklara erişebilir.
+Azure Veri Gezgini, *rol tabanlı erişim denetimi* modeli kullanarak veritabanlarına ve tablolara erişimi denetlemenize olanak sağlar. Bu modelin altında, *sorumlular* (kullanıcılar, gruplar ve uygulamalar) *rollerle*eşlenir. Sorumlular, atandıkları rollere göre kaynaklara erişebilir.
 
-Bu makalede, kullanılabilir roller ve ilkeleri Azure portalı ve Azure Veri Gezgini yönetim komutları kullanarak roller atama açıklanmaktadır.
+Bu makalede, kullanılabilir roller ve Azure portal ve Azure Veri Gezgini yönetim komutları kullanılarak bu rollere asıl adlar atama açıklanmaktadır.
 
 ## <a name="roles-and-permissions"></a>Roller ve izinler
 
-Azure Veri Gezgini, aşağıdaki roller vardır:
+Azure Veri Gezgini aşağıdaki rollere sahiptir:
 
 |Rol                       |İzinler                                                                        |
 |---------------------------|-----------------------------------------------------------------------------------|
-|Veritabanı Yöneticisi             |Belirli bir veritabanı kapsamında her şeyi yapabilirsiniz.|
-|Veritabanı kullanıcısı              |Tüm verileri ve meta verileri veritabanı'nda okuyabilirsiniz. Veritabanında tablolar (Bu tablo için tablo yönetici olma) ve İşlevler ayrıca oluşturabilirler.|
-|Veritabanı Görüntüleyicisi            |Tüm verileri ve meta verileri veritabanı'nda okuyabilirsiniz.|
-|Veritabanı çıkışlara          |Tüm var olan veritabanı tabloları veri alma, ancak verileri sorgulamak değil.|
-|Veritabanı İzleyicisi           |Veritabanı ve onun alt varlıklar bağlamında '.show...' komutları yürütebilir.|
-|Tablo yönetici                |Belirli bir tablonun kapsamdaki herhangi bir şey yapabilirsiniz. |
-|Tablo çıkışlara             |Kapsamı belirli bir tablonun verileri alma, ancak verileri sorgulamak değil.|
+|Veritabanı Yöneticisi             |Belirli bir veritabanının kapsamında her şeyi gerçekleştirebilir.|
+|Veritabanı kullanıcısı              |, Veritabanındaki tüm verileri ve meta verileri okuyabilir. Bunlara ek olarak, tablolar (Bu tablo için tablo Yöneticisi haline geliyor) ve veritabanındaki işlevler oluşturabilirler.|
+|Veritabanı Görüntüleyicisi            |, Veritabanındaki tüm verileri ve meta verileri okuyabilir.|
+|Veritabanı alımı          |Verileri veritabanındaki tüm var olan tablolara alabilir, ancak verileri sorgulayamaz.|
+|Veritabanı izleyicisi           |'. Show... ' yürütebilir veritabanı ve onun alt varlıkları bağlamındaki komutlar.|
+|Tablo Yöneticisi                |Belirli bir tablonun kapsamında her şeyi gerçekleştirebilir. |
+|Tablo alımı             |Verileri belirli bir tablonun kapsamına alabilir, ancak verileri sorgulayamaz.|
 
-## <a name="manage-permissions-in-the-azure-portal"></a>Azure portalında izinleri Yönet
+## <a name="manage-permissions-in-the-azure-portal"></a>Azure portal izinleri yönetme
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. Azure Veri Gezgini kümenize gidin.
 
-1. İçinde **genel bakış** bölümünde, izinlerini yönetmek istediğiniz veritabanını seçin.
+1. **Genel bakış** bölümünde, izinleri yönetmek istediğiniz veritabanını seçin.
 
-    ![veritabanı seçin](media/manage-database-permissions/select-database.png)
+    ![Veritabanı seçin](media/manage-database-permissions/select-database.png)
 
-1. Seçin **izinleri** ardından **ekleme**.
+1. **İzinler** ' i seçin ve ardından **ekleyin**.
 
     ![Veritabanı izinleri](media/manage-database-permissions/database-permissions.png)
 
-1. Altında **veritabanı izinleri eklemek**, sorumlu, ardından atamak istediğiniz rolü seçin **seçin sorumluları**.
+1. **Veritabanı Izinleri Ekle**' nin altında, sorumluyu atamak istediğiniz rolü seçin ve ardından **sorumlular**' ı seçin.
 
     ![Veritabanı izinleri ekleme](media/manage-database-permissions/add-permission.png)
 
-1. Sorumlusu arayın, ardından, **seçin**.
+1. Sorumluyu bulun, seçin ve ardından öğesini **seçin**.
 
-    ![Azure portalında izinleri Yönet](media/manage-database-permissions/new-principals.png)
+    ![Azure portal izinleri yönetme](media/manage-database-permissions/new-principals.png)
 
 1. **Kaydet**’i seçin.
 
-    ![Azure portalında izinleri Yönet](media/manage-database-permissions/save-permission.png)
+    ![Azure portal izinleri yönetme](media/manage-database-permissions/save-permission.png)
 
-## <a name="manage-permissions-with-management-commands"></a>Yönetim komutları izinlerle yönetme
+## <a name="manage-permissions-with-management-commands"></a>Yönetim komutlarıyla izinleri yönetme
 
-1. Oturum açma için [ https://dataexplorer.azure.com ](https://dataexplorer.azure.com), zaten mevcut değilse, kümenize ekleyin.
+1. [https://dataexplorer.azure.com](https://dataexplorer.azure.com)için oturum açın ve henüz yoksa kümenizi ekleyin.
 
-1. Sol bölmede, uygun veritabanını seçin.
+1. Sol bölmede uygun veritabanını seçin.
 
-1. Kullanım `.add` sorumluları rollere atamak için komut: `.add database databasename rolename ('aaduser | aadgroup=user@domain.com')`. Veritabanı kullanıcı rolüne kullanıcı eklemek için veritabanı adı ve kullanıcı değiştirerek aşağıdaki komutu çalıştırın.
+1. Rollere asıl atamak için `.add` komutunu kullanın: `.add database databasename rolename ('aaduser | aadgroup=user@domain.com')`. Veritabanı kullanıcı rolüne bir kullanıcı eklemek için, veritabanı adınızı ve kullanıcısını değiştirerek aşağıdaki komutu çalıştırın.
 
     ```Kusto
     .add database <TestDatabase> users ('aaduser=<user@contoso.com>')
     ```
 
-    Komut çıktısı, veritabanında mevcut kullanıcıların listesini ve atandıkları rollerini gösterir.
+    Komutun çıktısı, var olan kullanıcıların ve veritabanında atandığı rollerin listesini gösterir.
+    
+    Azure Active Directory ve kusto yetkilendirme modeliyle ilgili örnekler için lütfen bkz. [ilkeler ve kimlik sağlayıcıları](https://docs.microsoft.com/azure/kusto/management/access-control/principals-and-identity-providers)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

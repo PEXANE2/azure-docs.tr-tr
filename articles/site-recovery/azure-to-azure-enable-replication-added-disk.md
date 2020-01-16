@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
-ms.openlocfilehash: fd020755ec579b2553bca42db5d050bd442bf6fc
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942296"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973806"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Azure VM 'ye eklenen bir disk için çoğaltmayı etkinleştirme
 
@@ -31,9 +31,9 @@ Başka bir Azure bölgesine çoğaltılan bir Azure VM 'ye yeni bir disk ekledi�
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Bu makalede, diski eklediğiniz VM için zaten olağanüstü durum kurtarmayı ayarlamış olduğunuz varsayılmaktadır. Yapmadıysanız, Azure 'dan [Azure 'a olağanüstü durum kurtarma öğreticisini](azure-to-azure-tutorial-enable-replication.md)takip edin. 
+Bu makalede, diski eklediğiniz VM için zaten olağanüstü durum kurtarmayı ayarlamış olduğunuz varsayılmaktadır. Yapmadıysanız, Azure 'dan [Azure 'a olağanüstü durum kurtarma öğreticisini](azure-to-azure-tutorial-enable-replication.md)takip edin.
 
-## <a name="enable-replication-for-an-added-disk"></a>Eklenen disk için çoğaltmayı etkinleştirme 
+## <a name="enable-replication-for-an-added-disk"></a>Eklenen disk için çoğaltmayı etkinleştirme
 
 Eklenen bir disk için çoğaltmayı etkinleştirmek üzere aşağıdakileri yapın:
 

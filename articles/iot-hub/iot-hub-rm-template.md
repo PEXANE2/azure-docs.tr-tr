@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 4d9fe58457f9a74466128273dcffee08e17aeb75
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457029"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976730"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Azure Resource Manager şablonu kullanarak IoT Hub 'ı oluşturma (.NET)
 
@@ -23,7 +23,7 @@ ms.locfileid: "75457029"
 Azure IoT Hub 'larını programlı bir şekilde oluşturmak ve yönetmek için Azure Resource Manager kullanabilirsiniz. Bu öğreticide, bir C# programdan IoT Hub 'ı oluşturmak için bir Azure Resource Manager şablonunun nasıl kullanılacağı gösterilmektedir.
 
 > [!NOTE]
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Azure Resource Manager ve klasik](../azure-resource-manager/resource-manager-deployment-model.md).  Bu makalede Azure Resource Manager dağıtım modelinin kullanımı ele alınmaktadır.
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Azure Resource Manager ve klasik](../azure-resource-manager/management/deployment-models.md).  Bu makalede Azure Resource Manager dağıtım modelinin kullanımı ele alınmaktadır.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

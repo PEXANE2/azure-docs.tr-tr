@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 471a7f288cec980e73ab10c8233ea38511acdd8b
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942313"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973702"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure VM 'lerini başka bir Azure bölgesine çoğaltma
 
@@ -62,7 +62,7 @@ Bu makalede, [Azure 'Dan Azure 'a olağanüstü durum kurtarma öğreticisinde](
      >[!NOTE]
      >Çoğaltmayı etkinleştirdikten sonra kullanılabilirlik türü-tek örnek, kullanılabilirlik kümesi veya kullanılabilirlik bölgesi değiştirilemez. Kullanılabilirlik türünü değiştirmek için çoğaltmayı devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
      >
-    
+
    - **Çoğaltma İlkesi**: kurtarma noktası bekletme geçmişi ve uygulamayla tutarlı anlık görüntü sıklığı ayarlarını tanımlar. Varsayılan olarak Azure Site Recovery, kurtarma noktası bekletmesi için ' 24 saat ' varsayılan ayarlarına sahip yeni bir çoğaltma ilkesi oluşturur ve uygulamayla tutarlı anlık görüntü sıklığı için ' 4 saat '.
 
      ![Çoğaltmayı etkinleştirme](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
@@ -74,7 +74,7 @@ Bu makalede, [Azure 'Dan Azure 'a olağanüstü durum kurtarma öğreticisinde](
 -   Eklenen diskler için korumayı etkinleştirirseniz, diskin ilk çoğaltmadan sonra uyarı kaybolacaktır.
 -   Disk için çoğaltmayı etkinleştiremeyebilir ' i seçerseniz, uyarıyı kapatmak için seçeneğini belirleyebilirsiniz.
 
-    
+
     ![Yeni disk eklendi](./media/azure-to-azure-how-to-enable-replication/newdisk.png)
 
 Eklenen bir disk için çoğaltmayı etkinleştirmek üzere aşağıdakileri yapın:
@@ -88,7 +88,7 @@ Eklenen bir disk için çoğaltmayı etkinleştirmek üzere aşağıdakileri yap
 Çoğaltma işini etkinleştirme işi çalıştıktan sonra ve ilk çoğaltma tamamlandıktan sonra, disk sorunu için çoğaltma sistem durumu uyarısı kaldırılır.
 
 
-  
+
 ## <a name="customize-target-resources"></a>Hedef kaynakları özelleştirme
 
 Site Recovery tarafından kullanılan varsayılan hedef ayarlarını değiştirebilirsiniz.
@@ -112,7 +112,7 @@ Site Recovery tarafından kullanılan varsayılan hedef ayarlarını değiştire
     - 20004 numaralı bağlantı noktası üzerinden VM 'Ler arasındaki iç iletişimi engelleyen bir güvenlik duvarı gereci bulunmadığından emin olun.
     - Linux VM 'lerinin bir çoğaltma grubunun parçası olmasını istiyorsanız, bağlantı noktası 20004 ' deki giden trafiğin, belirli bir Linux sürümüne yönelik kılavuza göre el ile açıldığından emin olun.
 ![Çoğaltmayı etkinleştirme](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
-    
+
 5. **Çoğaltmayı etkinleştirmek** > **hedef kaynak oluştur** ' a tıklayın.
 6. VM 'Ler çoğaltma için etkinleştirildikten sonra, **çoğaltılan öğeler** altında VM sistem durumunun durumunu kontrol edebilirsiniz
 

@@ -8,30 +8,30 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 09a6b158c4390f881754c90d52a476f0bc249a5a
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: bcb0e9551f4415b2aac9eb2d641c91df9f692437
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74947648"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979116"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight 'ta güvenli aktarım depolama hesapları ile Apache Hadoop kümesi oluşturma
 
 [Güvenli aktarım gereklidir](../storage/common/storage-require-secure-transfer.md) özelliği, güvenli bir bağlantı üzerinden tüm istekleri hesabınıza uygulayarak Azure Depolama hesabınızın güvenliğini artırır. Bu özellik ve wasbs şeması yalnızca HDInsight kümesi 3.6 veya sonraki sürümlerde desteklenir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleye başlamadan önce, şunları yapmanız gerekir:
 
 * Azure aboneliği: bir aylık ücretsiz deneme hesabı oluşturmak Için [Azure.Microsoft.com/Free](https://azure.microsoft.com/free)konumuna gidin.
-* Güvenli aktarım özellikli bir Azure depolama hesabı. Yönergeler için bkz. [Depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md) ve [Güvenli aktarım isteme](../storage/common/storage-require-secure-transfer.md). Bir küme oluşturduktan sonra güvenli depolama aktarımını etkinleştirmek, bu makalede kapsanmayan ek adımlar gerektirir.
+* Güvenli aktarım özellikli bir Azure depolama hesabı. Yönergeler için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) ve [Güvenli aktarım isteme](../storage/common/storage-require-secure-transfer.md). Bir küme oluşturduktan sonra güvenli depolama aktarımını etkinleştirmek, bu makalede kapsanmayan ek adımlar gerektirir.
 * Depolama hesabındaki bir blob kapsayıcısı.
 
 ## <a name="create-cluster"></a>Küme oluşturma
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Bu bölümde, [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-template-deploy.md) kullanarak HDInsight'ta Hadoop kümesi oluşturacaksınız. Şablon [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/)' da bulunur. Bu makalenin takip olması için Kaynak Yöneticisi şablonu deneyimi gerekli değildir. Diğer küme oluşturma yöntemleri ve bu makalede kullanılan özellikleri anlamak için bkz. [HDInsight kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md).
+Bu bölümde, [Azure Resource Manager şablonu](../azure-resource-manager/templates/deploy-powershell.md) kullanarak HDInsight'ta Hadoop kümesi oluşturacaksınız. Şablon [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/)' da bulunur. Bu makalenin takip olması için Kaynak Yöneticisi şablonu deneyimi gerekli değildir. Diğer küme oluşturma yöntemleri ve bu makalede kullanılan özellikleri anlamak için bkz. [HDInsight kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md).
 
 1. Aşağıdaki resme tıklayarak Azure'da oturum açın ve Azure portalında Resource Manager şablonunu açın.
 

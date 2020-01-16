@@ -2,7 +2,7 @@
 title: Tamamlanan işlerden ve görevlerden sonuçları veya günlükleri bir veri deposuna kalıcı yap-Azure Batch | Microsoft Docs
 description: Batch görevleri ve işlerinin kalıcı çıktı verilerine yönelik farklı seçenekler hakkında bilgi edinin. Verileri Azure Storage 'a veya başka bir veri deposuna kalıcı hale getirebilirsiniz.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d81f89d5e4c3fb797cfc935764bb80853660ee2c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c5063955fc6e04c9cfec2407f8b1cc91c5b24d10
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707537"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026246"
 ---
 # <a name="persist-job-and-task-output"></a>İş ve görev çıktılarını kalıcı hale getirme
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a4f85aeaf2fb263ba2df8f34a51f9e25c212aff
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 36dd80669c6a9495751f577748f48c02a782b920
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379313"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029863"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -30,7 +30,7 @@ Cihazlarınızı Azure AD'ye taşıyarak, çoklu oturum açma (SSO) özelliği s
 
 Şirket içi Active Directory (AD) ortamınız varsa ve AD alanına katılmış bilgisayarlarınızı Azure AD 'ye eklemek istiyorsanız, karma Azure AD katılımı yaparak bunu yapabilirsiniz. Bu makalede, ortamınızda karma Azure AD katılımı uygulamak için ilgili adımlar sağlanmaktadır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, [Azure Active Directory ' deki cihaz kimliği yönetimine giriş](../device-management-introduction.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
@@ -43,11 +43,11 @@ Hibrit Azure AD uygulamanızı planlamak için şunu öğrenmeniz gerekir:
 
 |   |   |
 | --- | --- |
-| ![Onay][1] | Desteklenen cihazları gözden geçir |
-| ![Onay][1] | Bilmeniz gereken işlemleri gözden geçirin |
-| ![Onay][1] | Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin |
-| ![Onay][1] | Kimlik altyapınıza göre senaryonuzu seçin |
-| ![Onay][1] | Karma Azure AD katılımı için şirket içi AD UPN desteğini gözden geçirin |
+| ![İşaretli][1] | Desteklenen cihazları gözden geçir |
+| ![İşaretli][1] | Bilmeniz gereken işlemleri gözden geçirin |
+| ![İşaretli][1] | Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin |
+| ![İşaretli][1] | Kimlik altyapınıza göre senaryonuzu seçin |
+| ![İşaretli][1] | Karma Azure AD katılımı için şirket içi AD UPN desteğini gözden geçirin |
 
 ## <a name="review-supported-devices"></a>Desteklenen cihazları gözden geçir
 
@@ -77,7 +77,7 @@ Ortamınız tek bir AD ormanından oluşuyorsa, kimlik verilerini birden çok Az
 
 Ortamınız sanal masaüstü altyapısı (VDı) kullanıyorsa, bkz. [cihaz kimliği ve Masaüstü Sanallaştırması](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
-Karma Azure AD katılımı, FIPS uyumlu TPM 2,0 için desteklenir ve TPM 1,2 için desteklenmez. Cihazlarınızda FIPS uyumlu TPM 1,2 varsa, hibrit Azure AD JOIN ile devam etmeden önce bunları devre dışı bırakmanız gerekir. Microsoft, TPM üreticisine bağlı olduğundan, TPMs için FIPS modunu devre dışı bırakmaya yönelik herhangi bir araç sağlamaz. Destek için lütfen donanımınızın OEM 'nize başvurun. WIndows 10 1903 sürümünden itibaren, TPMs 1,2 karma Azure AD katılımı için kullanılmaz ve bu TPMs 'Leri içeren cihazlar TPM 'ye sahip olmadıkları sürece kabul edilir.
+Karma Azure AD katılımı, FIPS uyumlu TPM 2,0 için desteklenir ve TPM 1,2 için desteklenmez. Cihazlarınızda FIPS uyumlu TPM 1,2 varsa, hibrit Azure AD JOIN ile devam etmeden önce bunları devre dışı bırakmanız gerekir. Microsoft, TPM üreticisine bağlı olduğundan, TPMs için FIPS modunu devre dışı bırakmaya yönelik herhangi bir araç sağlamaz. Destek için lütfen donanımınızın OEM 'nize başvurun. Windows 10 1903 sürümünden itibaren, TPMs 1,2 karma Azure AD katılımı için kullanılmaz ve bu TPMs 'Leri içeren cihazlar TPM 'ye sahip olmadıkları sürece kabul edilir.
 
 Karma Azure AD katılımı, etki alanı denetleyicisi (DC) rolünü çalıştıran Windows Server için desteklenmez.
 
@@ -148,10 +148,10 @@ Aşağıdaki tabloda, Windows 10 karma Azure AD 'ye yönelik bu şirket içi AD 
 
 | Şirket içi AD UPN türü | Etki alanı türü | Windows 10 sürümü | Açıklama |
 | ----- | ----- | ----- | ----- |
-| Lemez | Federasyon | 1703 sürümünden | Genel kullanıma sunuldu |
-| Yönlendirilemeyen | Federasyon | 1803 sürümünden | Genel kullanıma sunuldu |
+| Lemez | Federe | 1703 sürümünden | Genel kullanıma sunuldu |
+| Yönlendirilemeyen | Federe | 1803 sürümünden | Genel kullanıma sunuldu |
 | Lemez | Yönetilen | 1803 sürümünden | Genel olarak kullanılabilir, Windows kilit ekranı üzerinde Azure AD SSPR desteklenmez |
-| Yönlendirilemeyen | Yönetilen | Desteklenmez | |
+| Yönlendirilemeyen | Yönetilen | Desteklenmiyor | |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

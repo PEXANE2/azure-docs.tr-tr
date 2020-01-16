@@ -2,19 +2,19 @@
 title: Görevler ve düğümler için durum sayısı-Azure Batch | Microsoft Docs
 description: Toplu Iş çözümlerini yönetmeye ve izlemeye yardımcı olmak için Azure Batch görevlerinin ve işlem düğümlerinin durumunu say.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 09/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 7b41be8c325cd238592f33369499348885de1778
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5e90045b7863968e8c61c3cbc382434bc8be415a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323536"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029708"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Görevleri ve düğümleri duruma göre sayarak Batch çözümlerini izleme
 
@@ -34,11 +34,11 @@ Hizmetin görev sayısını veya düğüm sayısı işlemlerini desteklemeyen bi
 
 Görev sayılarını al işlemi görevleri aşağıdaki durumlara göre sayar:
 
-- **Etkin** -sıraya alınmış ve çalıştırılabilen, ancak şu anda bir işlem düğümüne atanmamış bir görevdir. Bir görev, henüz `active` tamamlanmamış [bir üst göreve bağımlıysa](batch-task-dependencies.md) de bir görevdir. 
-- **Çalışıyor** -bir işlem düğümüne atanan ancak henüz tamamlanmamış bir görev. Bir görev, [bir görev hakkında bilgi al][rest_get_task] işlemiyle gösterildiği `preparing` gibi `running`, durumu veya olduğu `running` zaman sayılır.
+- **Etkin** -sıraya alınmış ve çalıştırılabilen, ancak şu anda bir işlem düğümüne atanmamış bir görevdir. Bir görev, henüz tamamlanmamış [bir üst göreve bağımlıysa](batch-task-dependencies.md) de `active`. 
+- **Çalışıyor** -bir işlem düğümüne atanan ancak henüz tamamlanmamış bir görev. Bir görev, [görevi hakkında bilgi al][rest_get_task] işlemiyle gösterildiği gibi, durumu `preparing` veya `running`olduğunda `running` olarak sayılır.
 - **Tamamlandı** -başarıyla bittiği veya başarısız olduğu ve ayrıca yeniden deneme sınırını tükettiğinden, artık çalıştırılmasına uygun olmayan bir görev. 
-- **Başarılı** -görev yürütme `success`sonucu olan bir görev. Batch, `TaskExecutionResult` [ExecutionInfo][rest_get_exec_info] özelliğinin özelliğini denetleyerek bir görevin başarılı veya başarısız olup olmadığını belirler.
-- **Başarısız oldu** Görev yürütme `failure`sonucu olan bir görev.
+- **Başarılı** -görev yürütme sonucu `success`olan bir görev. Batch, [ExecutionInfo][rest_get_exec_info] özelliğinin `TaskExecutionResult` özelliğini denetleyerek bir görevin başarılı veya başarısız olup olmadığını belirler.
+- **Başarısız oldu** Görev yürütme sonucu `failure`olan bir görev.
 
 Aşağıdaki .NET kod örneği, görev sayılarının duruma göre nasıl alınacağını gösterir: 
 
@@ -55,7 +55,7 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 Bir iş için görev sayısını almak üzere REST ve diğer desteklenen diller için de benzer bir model kullanabilirsiniz. 
 
 > [!NOTE]
-> Batch hizmeti API sürümleri 2018 -08-01.7.0 Ayrıca görev sayısını Al `validationStatus` yanıtı içinde bir özellik döndürüyor. Bu özellik, toplu Işlemin durumunun liste görevleri API 'sinde raporlanan durumlarıyla tutarlı olup olmadığını kontrol edilip edilmeyeceğini belirtir. Değeri, yalnızca `validated` iş için en az bir kez tutarlılık denetimi yapıldığını gösterir. `validationStatus` Özelliğin değeri, görev saylarının döndürdüğü sayımların Şu anda güncel olup olmadığını göstermez.
+> Batch hizmeti API sürümleri 2018 -08-01.7.0 Ayrıca görev sayısını Al yanıtında bir `validationStatus` özelliği döndürmelidir. Bu özellik, toplu Işlemin durumunun liste görevleri API 'sinde raporlanan durumlarıyla tutarlı olup olmadığını kontrol edilip edilmeyeceğini belirtir. `validated` değeri yalnızca iş için en az bir kez tutarlılık denetimi yapıldığını gösterir. `validationStatus` özelliğinin değeri, görev saylarının döndürdüğü sayımların Şu anda güncel olup olmadığını göstermez.
 >
 
 ## <a name="node-state-counts"></a>Düğüm durumu sayıları
@@ -65,13 +65,13 @@ Liste havuzu düğüm sayısı işlemi, her havuzda aşağıdaki durumlara göre
 - **Oluşturma** -bir havuza katılmayı henüz başlatılmamış, Azure ile ayrılmış bir VM.
 - **Boşta** -Şu anda bir görevi çalıştırmayan kullanılabilir bir işlem düğümü.
 - **Leavingpool** -Kullanıcı açıkça kaldırıldığı veya havuz yeniden boyutlandırılırken ya da otomatik olarak ölçeklendirildiği için havuzdan çıkarılan bir düğüm.
-- **Çevrimdışı** -Batch 'in yeni görevleri zamanlamak Için kullandıı düğüm.
-- **Ön,** Azure VM 'yi geri karşılayan için havuzdan kaldırılan düşük öncelikli bir düğüm. Düşük `preempted` öncelikli VM kapasitesini değiştirme kullanılabilir olduğunda bir düğüm yeniden başlatılır.
+- Çevrimdışı-Batch 'in yeni görevleri zamanlamak için **kullandıı** düğüm.
+- **Ön,** Azure VM 'yi geri karşılayan için havuzdan kaldırılan düşük öncelikli bir düğüm. Düşük öncelikli VM kapasitesini değiştirme kullanılabilir olduğunda bir `preempted` düğümü yeniden başlatılır.
 - Yeniden **başlatılıyor** -yeniden başlatılan bir düğüm.
 - **Yeniden görüntüleme** -işletim sisteminin yeniden yüklendiği düğüm.
 - **Çalışıyor** -bir veya daha fazla görev (başlangıç görevi dışında) çalıştıran bir düğüm.
 - **Başlangıç** -Batch hizmetinin başladığı bir düğüm. 
-- **Starttaskfailed** - [Başlangıç görevinin][rest_start_task] başarısız olduğu ve tüm yeniden denemeler `waitForSuccess` tükendi ve başlangıç görevinde ayarlanan bir düğüm. Düğüm, görevleri çalıştırmak için kullanılamaz.
+- **Starttaskfailed** - [Başlangıç görevinin][rest_start_task] başarısız olduğu bir düğüm ve tüm yeniden denemeler tükendi ve başlangıç görevinde `waitForSuccess` ayarlanır. Düğüm, görevleri çalıştırmak için kullanılamaz.
 - **Bilinmiyor** -Batch hizmetiyle iletişim kurmayan ve durumu bilinmeyen bir düğüm.
 - **Kullanılamaz** -hatalar nedeniyle görev yürütmesi için kullanılamayan düğüm.
 - **Waitingforstarttask** -başlangıç görevinin çalışmaya başladığı, ancak `waitForSuccess` ayarlandığı ve başlangıç görevinin tamamlanmadığında oluşan bir düğümdür.

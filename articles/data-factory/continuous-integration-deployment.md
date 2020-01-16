@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 737cd9d306f01fa77dafa3d1a9a71495ff0a572e
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940766"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977516"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -145,7 +145,7 @@ Azure Resource Manager şablonunda geçiş yapmak için gizli dizileri varsa, Az
 
 Gizli dizileri ele almanın iki yolu vardır:
 
--  Gizli dizileri parametreler dosyasına ekleyin. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli bir parametre değeri geçirmek için Azure Key Vault kullanma](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+1.  Gizli dizileri parametreler dosyasına ekleyin. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](../azure-resource-manager/templates/key-vault-parameter.md).
 
     Yayımla dalına yüklenen parametreler dosyasının bir kopyasını oluşturun. Key Vault almak istediğiniz parametrelerin değerlerini şu biçimi kullanarak ayarlayın:
 

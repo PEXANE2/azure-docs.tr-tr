@@ -2,17 +2,17 @@
 title: Azure yönetilen disklerinin sunucu tarafı şifrelemesi-Azure CLı
 description: Azure depolama, verilerinizi depolama kümelerine kalıcı yapmadan önce Rest durumunda şifreleyerek korur. Yönetilen disklerinizin şifrelenebilmesi için Microsoft tarafından yönetilen anahtarları kullanabilir veya kendi anahtarınızla şifrelemeyi yönetmek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz.
 author: roygara
-ms.date: 01/10/2020
+ms.date: 01/13/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 61e45a5d13da7af42bbed273e5b39ce2af15d1ca
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: d8729e447aabfcb1c378919501ee48124e7ae27b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912769"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027811"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerinin sunucu tarafı şifrelemesi
 
@@ -54,21 +54,18 @@ Aşağıdaki listede diyagram daha da ayrıntılı şekilde açıklanmıştır:
 
 Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için bkz. [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) ve [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)Azure Key Vault. Erişimi iptal etmek, şifreleme anahtarına Azure depolama tarafından erişilemediğinden, depolama hesabındaki tüm verilere erişimi etkin bir şekilde engeller.
 
-### <a name="supported-scenarios-and-restrictions"></a>Desteklenen senaryolar ve kısıtlamalar
+### <a name="supported-regions"></a>Desteklenen bölgeler
 
-Şimdilik yalnızca aşağıdaki senaryolar desteklenir:
+Şu anda yalnızca şu bölgeler desteklenmektedir:
 
-- Azure Marketi görüntüsünden bir sanal makine (VM) oluşturun ve müşteri tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme ile işletim sistemi diskini şifreleyin.
-- Sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla şifrelenen özel bir görüntü oluşturun.
-- Özel görüntüden bir VM oluşturun ve sunucu tarafı şifrelemeyi ve müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi diskini şifreleyin.
-- Sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmiş veri diskleri oluşturun.
-- (Yalnızca CLı/PowerShell) Sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenen anlık görüntüler oluşturun.
-- Sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla şifrelenen sanal makine ölçek kümeleri oluşturun.
+- Doğu ABD, Batı ABD 2 ve Orta Güney ABD bölgelerinde bir GA teklifi olarak sunulmaktadır.
+- Orta Batı ABD, Doğu ABD 2, Kanada Orta ve Kuzey Avrupa bölgelerinde genel önizleme olarak kullanılabilir.
 
-Şimdilik aşağıdaki kısıtlamalara de ihtiyacımız vardır:
+### <a name="restrictions"></a>Kısıtlamalar
 
-- Doğu ABD, Batı ABD 2 ve Orta Güney ABD bir GA teklifi olarak mevcuttur.
-- Orta Batı ABD, Doğu ABD 2, Kanada Orta ve Kuzey Avrupa genel önizleme olarak kullanılabilir.
+Şimdilik, müşteri tarafından yönetilen anahtarlar aşağıdaki kısıtlamalara sahiptir:
+
+- 2080 boyutundaki yalnızca ["Soft" ve "Hard" RSA anahtarları](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) desteklenir, başka anahtarlar veya boyutlar desteklenmez.
 - Sunucu tarafı şifreleme ve müşterinin yönettiği anahtarlar kullanılarak şifrelenen özel görüntülerden oluşturulan diskler, müşteri tarafından yönetilen aynı anahtar kullanılarak şifrelenmelidir ve aynı abonelikte olmalıdır.
 - Sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla şifrelenen disklerden oluşturulan anlık görüntüler, müşteri tarafından yönetilen aynı anahtarlarla şifrelenmelidir.
 - Sunucu tarafı şifreleme kullanılarak şifrelenen özel görüntüler ve müşteri tarafından yönetilen anahtarlar paylaşılan görüntü galerisinde kullanılamaz.

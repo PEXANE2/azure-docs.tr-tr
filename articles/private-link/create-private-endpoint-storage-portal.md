@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357575"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028877"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure özel uç noktasını kullanarak bir depolama hesabına özel olarak bağlanma
 Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar.
@@ -127,11 +127,11 @@ Bu bölümde, için özel bir uç nokta kullanarak özel bir depolama hesabı ol
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     |Konum|**WestCentralUS**öğesini seçin.|
-    |Ad| *Myprivateendpoint*girin.  |
+    |Ad|*Myprivateendpoint*girin.  |
     |Depolama alt kaynağı|Varsayılan **blobu**bırakın. |
     | **IŞLEMLERI** |  |
-    | Sanal ağ  | *Myresourcegroup*kaynak grubundan *MyVirtualNetwork* öğesini seçin. |
-    | Alt ağ |  *Mysubnet*öğesini seçin. |
+    | Sanal ağ  | *Myresourcegroup*kaynak grubundan *MyVirtualNetwork* öğesini seçin. |
+    | Alt ağ | *Mysubnet*öğesini seçin. |
     | **ÖZEL DNS TÜMLEŞTIRMESI**|  |
     | Özel DNS bölgesiyle tümleştirin  | Varsayılan **Evet**' i bırakın. |
     | Özel DNS bölgesi  | Varsayılan **(yeni) Privatelink.blob.Core.Windows.net**bırakın. |
@@ -172,8 +172,8 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 Bu bölümde, Özel uç nokta kullanarak, depolama hesabına özel olarak bağlanacaksınız.
 
-1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
-2. Şuna benzer bir ileti alacağınız `nslookup mystorageaccount.blob.core.windows.net` girin:
+1. *Myvm*uzak masaüstünde PowerShell ' i açın.
+2. Şuna benzer bir ileti alacağınız `nslookup mystorageaccount.blob.core.windows.net` girin:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -192,7 +192,7 @@ Bu bölümde, Özel uç nokta kullanarak, depolama hesabına özel olarak bağla
 10. **Bağlan**’ı seçin.
 11. Mystorageaccount öğesinden blob kapsayıcılarına gözatam 
 12. I Klasörler oluşturun ve/veya dosyaları *mystorageaccount*konumuna yükleyin. 
-13.  *Myvm*ile uzak masaüstü bağlantısını kapatın. 
+13. *Myvm*ile uzak masaüstü bağlantısını kapatın. 
 
 Depolama hesabına erişmek için ek seçenekler:
 - Microsoft Azure Depolama Gezgini, Microsoft 'un Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmanıza olanak sağlayan tek başına ücretsiz bir uygulamadır. Uygulamayı, özel olarak depolama hesabı içeriğine gözatabilmeniz için yükleyebilirsiniz. 
@@ -202,9 +202,9 @@ Depolama hesabına erişmek için ek seçenekler:
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 Özel uç nokta, depolama hesabı ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin: 
-1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* girin ve arama sonuçlarından *myresourcegroup* öğesini seçin. 
+1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* yazın ve arama sonuçlarından *myresourcegroup* öğesini seçin. 
 2. **Kaynak grubunu sil**'i seçin. 
-3. **Kaynak grubu adını yazmak** Için *myresourcegroup* girin ve **Sil**' i seçin. 
+3. **Kaynak grubu adını yazın** ve **Sil**' i seçmek için *myresourcegroup* girin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, bir sanal ağ ve depolama hesabı ve özel uç nokta üzerinde bir VM oluşturdunuz. İnternet 'ten bir VM 'ye bağlanırsınız ve özel bağlantı kullanarak depolama hesabına güvenli bir şekilde iletilecaksınız. Özel uç nokta hakkında daha fazla bilgi edinmek için bkz. [Azure özel uç noktası nedir?](private-endpoint-overview.md).
+Bu hızlı başlangıçta, bir sanal ağ ve depolama hesabı ve özel uç nokta üzerinde bir VM oluşturdunuz. İnternet 'ten bir VM 'ye bağlanırsınız ve özel bağlantı kullanarak depolama hesabına güvenli bir şekilde iletilecaksınız. Özel uç nokta hakkında daha fazla bilgi edinmek için bkz. [Azure özel uç noktası nedir?](private-endpoint-overview.md).

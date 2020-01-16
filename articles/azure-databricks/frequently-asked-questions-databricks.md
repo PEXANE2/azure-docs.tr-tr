@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: f4164966d1a9662a72d41fefcb7cfbb1b444d614
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888993"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971507"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks hakkında sık sorulan sorular
 
@@ -107,7 +107,7 @@ Azure hata kodu: MissingSubscriptionRegistration Azure hata iletisi: abonelik ' 
 1. **Abonelikler**, kullandığınız abonelik ve ardından **kaynak sağlayıcıları**' nı seçin. 
 1. Kaynak sağlayıcıları listesinde, **Microsoft. COMPUTE**' de, **Kaydet**' i seçin. Kaynak sağlayıcısını kaydetmek için abonelikte katkıda bulunan veya sahip rolü olmalıdır.
 
-Daha ayrıntılı yönergeler için bkz. [kaynak sağlayıcıları ve türleri](../azure-resource-manager/resource-manager-supported-services.md).
+Daha ayrıntılı yönergeler için bkz. [kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md).
 
 ### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Sorun: Azure Databricks kuruluşunuzdaki kaynaklara erişmek için yalnızca bir yöneticinin izin vermesi gerekir.
 

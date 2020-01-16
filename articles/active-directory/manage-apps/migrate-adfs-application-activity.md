@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/22/2019
+ms.date: 01/14/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de64385e21604188a5c9002f2e007dad86b2674c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 333e440fdd5f5062dda45fb12a83543c63e66c04
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420441"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978027"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Uygulamaları Azure AD 'ye geçirmek için AD FS uygulama etkinliği raporunu (Önizleme) kullanın
 
@@ -32,7 +32,7 @@ Azure portal AD FS uygulama etkinliği raporu (Önizleme), uygulamalarınızın 
 
 AD FS uygulama etkinliği verileri şu yönetici rollerinden herhangi biri atanmış kullanıcılar tarafından kullanılabilir: genel yönetici, rapor okuyucu, güvenlik okuyucusu, uygulama Yöneticisi veya bulut uygulama Yöneticisi.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Kuruluşunuzun uygulamalara erişmek için şu anda AD FS kullanıyor olması gerekir.
 * Azure AD Connect Health Azure AD kiracınızda etkinleştirilmelidir.
@@ -90,7 +90,7 @@ Aşağıdaki tabloda AD FS uygulamalarda gerçekleştirilen tüm yapılandırma 
 |Test-ADFSRPRequestMFAFromClaimsProviders <br> Bağlı olan tarafın RequestMFAFromClaimsProviders değeri true olarak ayarlanmıştır.       | Geçiş/uyarı          | AD FS Bu ayar, Kullanıcı farklı bir talep sağlayıcısından geldiğinde MFA davranışını belirler. Azure AD 'de, Azure AD B2B kullanarak dış işbirliğini etkinleştirebilirsiniz. Daha sonra, konuk erişimini korumak için koşullu erişim ilkeleri uygulayabilirsiniz. [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b) ve [koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)hakkında daha fazla bilgi edinin.          |
 |Test-ADFSRPSignedSamlRequestsRequired <br> Bağlı olan taraf için SignedSamlRequestsRequired değeri true olarak ayarlandı       | Başarılı/başarısız          | Uygulama, SAML isteğindeki imzayı doğrulamak için AD FS ' de yapılandırılır. Azure AD, imzalı bir SAML isteğini kabul eder; Ancak, imzayı doğrulamaz. Azure AD kötü amaçlı çağrılara karşı korumak için farklı yöntemlere sahiptir. Örneğin, Azure AD, SAML isteğini doğrulamak için uygulamada yapılandırılan yanıt URL 'Lerini kullanır. Azure AD, yalnızca uygulama için yapılandırılmış yanıt URL 'Lerine belirteç gönderecek. Bu sonucun geçişi engellediği bir senaryonuz varsa [bize bilgi verin](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/13394589-saml-signature).          |
 |Test-ADFSRPTokenLifetime <br> TokenLifetimeCheckResult        | Geçiş/uyarı         | Uygulama, özel bir belirteç ömrü için yapılandırılmıştır. AD FS varsayılan değer bir saattir. Azure AD, koşullu erişimi kullanarak bu işlevselliği destekler. Daha fazla bilgi için bkz. [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).          |
-|Bağlı olan taraf talepleri şifrelemek üzere ayarlanır. Bu, Azure AD tarafından desteklenir       | Aktar          | Azure AD ile uygulamaya gönderilen belirteci şifreleyebilirsiniz. Daha fazla bilgi için bkz. [Azure AD SAML belirteci şifrelemesini yapılandırma](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption).          |
+|Bağlı olan taraf talepleri şifrelemek üzere ayarlanır. Bu, Azure AD tarafından desteklenir       | Geç          | Azure AD ile uygulamaya gönderilen belirteci şifreleyebilirsiniz. Daha fazla bilgi için bkz. [Azure AD SAML belirteci şifrelemesini yapılandırma](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption).          |
 |Encryptednameıdrequiredcheckresult      | Başarılı/başarısız          | Uygulama, SAML belirtecindeki NameID talebini şifrelemek üzere yapılandırılmıştır. Azure AD ile uygulamaya gönderilen belirtecin tamamını şifreleyebilirsiniz. Belirli taleplerin şifrelenmesi henüz desteklenmiyor. Daha fazla bilgi için bkz. [Azure AD SAML belirteci şifrelemesini yapılandırma](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption).         |
 
 ## <a name="check-the-results-of-claim-rule-tests"></a>Talep kuralı testlerinin sonuçlarını denetleyin
@@ -124,6 +124,7 @@ Aşağıdaki tabloda AD FS uygulamalarda gerçekleştirilen tüm talep kuralı s
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Video: uygulamayı geçirmek için AD FS Etkinlik raporunu kullanma](https://www.youtube.com/watch?v=OThlTA239lU)
 - [Uygulamaları Azure Active Directory ile yönetme](what-is-application-management.md)
 - [Uygulamalara erişimi yönetme](what-is-access-management.md)
 - [Azure AD Connect federasyonu](../hybrid/how-to-connect-fed-whatis.md)

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 96adcfa4bbfc4ed0066ccfbdbe57f9840e8b07f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438799"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972853"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Azure Data Factory varlıkları oluşturmak için şablonları kullanma
 > [!NOTE]
@@ -32,7 +32,7 @@ Bu durumda, bir görevin aynı ortamda tekrarlanması gerekir, ancak her bir ür
 Ayrıca, kuruluş bu 10 veri fabrikalarını farklı ortamlarda birden çok kez dağıtmak istediğinde, Şablonlar geliştirme, test ve üretim ortamları için ayrı parametre dosyalarından yararlanarak bu **yeniden kullanılabilirliği** kullanabilir.
 
 ## <a name="templating-with-azure-resource-manager"></a>Azure Resource Manager ile şablon oluşturma
-[Azure Resource Manager şablonlar](../../azure-resource-manager/template-deployment-overview.md) , Azure Data Factory şablon oluşturma elde etmenin harika bir yoludur. Kaynak Yöneticisi şablonları bir JSON dosyası aracılığıyla Azure çözümünüzün altyapısını ve yapılandırmasını tanımlar. Azure Resource Manager şablonlar tüm/Azure hizmetleriyle çalıştığı için, Azure varlıklarınızın tüm kaynaklarını kolayca yönetmek için yaygın olarak kullanılabilir. Genel olarak Kaynak Yöneticisi şablonları hakkında daha fazla bilgi edinmek için bkz. [Azure Resource Manager şablonları yazma](../../azure-resource-manager/templates/template-syntax.md) .
+[Azure Resource Manager şablonlar](../../azure-resource-manager/templates/overview.md) , Azure Data Factory şablon oluşturma elde etmenin harika bir yoludur. Kaynak Yöneticisi şablonları bir JSON dosyası aracılığıyla Azure çözümünüzün altyapısını ve yapılandırmasını tanımlar. Azure Resource Manager şablonlar tüm/Azure hizmetleriyle çalıştığı için, Azure varlıklarınızın tüm kaynaklarını kolayca yönetmek için yaygın olarak kullanılabilir. Genel olarak Kaynak Yöneticisi şablonları hakkında daha fazla bilgi edinmek için bkz. [Azure Resource Manager şablonları yazma](../../azure-resource-manager/templates/template-syntax.md) .
 
 ## <a name="tutorials"></a>Öğreticiler
 Kaynak Yöneticisi şablonları kullanarak Data Factory varlıkları oluşturmaya yönelik adım adım yönergeler için aşağıdaki öğreticilere bakın:

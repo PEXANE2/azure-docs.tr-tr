@@ -2,18 +2,18 @@
 title: Azure Batch havuzundaki düğüm uç noktalarını yapılandırma | Microsoft Docs
 description: Azure Batch havuzundaki işlem düğümlerinde SSH veya RDP bağlantı noktalarına erişimi yapılandırma veya devre dışı bırakma.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: lahugh
-ms.openlocfilehash: e6c7f2762a6742a1aff7a2c3aff977b5e3657349
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.author: jushiman
+ms.openlocfilehash: 1ac4c7647125cd6164235e98a4a828f6b072cbee
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322466"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029474"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch havuzundaki işlem düğümlerine uzaktan erişimi yapılandırma veya devre dışı bırakma
 
@@ -31,7 +31,7 @@ Her NAT havuzu yapılandırması bir veya daha fazla [ağ güvenlik grubu (NSG) 
 * Bir NAT havuzunu yapılandırırken birden çok NSG kuralı yapılandırabilirsiniz. Kurallar öncelik sırasına göre denetlenir. Bir kural uygulandığı zaman eşleştirme için başka hiçbir kural test edilmez.
 
 
-## <a name="example-deny-all-rdp-traffic"></a>Örnek: Tüm RDP trafiğini Reddet
+## <a name="example-deny-all-rdp-traffic"></a>Örnek: tüm RDP trafiğini Reddet
 
 Aşağıdaki C# kod parçacığında, bir Windows havuzundaki Işlem düğümlerinde RDP uç noktasının tüm ağ trafiğini reddedecek şekilde nasıl yapılandırılacağı gösterilmektedir. Uç noktası *60000-60099*aralığında bağlantı noktalarının ön uç havuzunu kullanır. 
 
@@ -48,7 +48,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Örnek: İnternet 'ten gelen tüm SSH trafiğini reddetme
+## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Örnek: internet 'ten gelen tüm SSH trafiğini reddetme
 
 Aşağıdaki Python kod parçacığında, tüm internet trafiğini reddetmek için bir Linux havuzundaki işlem düğümlerinde SSH uç noktasının nasıl yapılandırılacağı gösterilmektedir. Uç noktası *4000-4100*aralığında bağlantı noktalarının ön uç havuzunu kullanır. 
 
@@ -74,7 +74,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 )
 ```
 
-## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Örnek: Belirli bir IP adresinden gelen RDP trafiğine izin ver
+## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Örnek: belirli bir IP adresinden gelen RDP trafiğine Izin ver
 
 Aşağıdaki C# kod parçacığında, bir Windows havuzundaki Işlem düğümlerinde RDP uç noktasının yalnızca *198.51.100.7*IP adresinden RDP erişimine izin vermek üzere nasıl yapılandırılacağı gösterilmektedir. İkinci NSG kuralı, IP adresiyle eşleşmeyen trafiği reddeder.
 
@@ -92,7 +92,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Örnek: Belirli bir alt ağdan gelen SSH trafiğine izin ver
+## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Örnek: belirli bir alt ağdan gelen SSH trafiğine Izin ver
 
 Aşağıdaki Python kod parçacığı, bir Linux havuzundaki işlem düğümlerinde SSH uç noktasının yalnızca *192.168.1.0/24*alt ağından erişime izin verecek şekilde nasıl yapılandırılacağını gösterir. İkinci NSG kuralı, alt ağla eşleşmeyen trafiği reddeder.
 

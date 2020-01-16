@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 02655a3697139ae3a9c4c36b423b874b6e5d34f9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541874"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974102"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -54,7 +54,7 @@ Bu araçlar ve ortamlar, işlem örneğine yüklenir:
 |Intel MPı kitaplığı||
 |Azure CLI ||
 |Azure Machine Learning örnekleri ||
-|Azure Machine Learning EDAT altyapısı ||            
+|Azure Machine Learning EDAT altyapısı ||
 |Docker||
 |Nginx||
 |NCCL 2,0 ||
@@ -76,11 +76,26 @@ Bu araçlar ve ortamlar, işlem örneğine yüklenir:
 |Diğer Pypı paketleri|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda paketleri|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Derin öğrenme paketleri|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
-|ONNX paketleri|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|                           
+|ONNX paketleri|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Azure Machine Learning Python & R SDK örnekleri||
+
+Python paketlerinin hepsi **python 3,6-AzureML** ortamında yüklüdür.  
 
 İşlem örnekleri genellikle geliştirme ortamları olarak kullanılır.  Ayrıca, geliştirme ve test için bilgi işlem hedefi olarak da kullanılabilir.  Büyük görevler için çok düğümlü ölçekleme özelliklerine sahip bir [Azure Machine Learning işlem kümesi](how-to-set-up-training-targets.md#amlcompute) daha iyi bir işlem hedefi seçimleridir.
 
+### <a name="installing-packages"></a>Paketleri yükleme
+
+Paketleri doğrudan bir Jupyter Not defteri 'ne veya rstudio 'Ya yükleyebilirsiniz:
+
+* RStudio sağ alt köşedeki **paketler** sekmesini veya sol üstteki **konsol** sekmesini kullanın.  
+* Python: bir Jupyter Not defteri hücresinde Install Code ve Execute özelliğini ekleyin.
+
+Ya da bir Terminal penceresine şu yollarla erişebilirsiniz:
+
+* RStudio: sol üst taraftaki **Terminal** sekmesini seçin.
+* Jupyter Laboratuvarı: Başlatıcı sekmesinde **diğer** başlığın altında bulunan **Terminal** kutucuğunu seçin.
+* Jupyter: Dosyalar sekmesinde sağ üstteki **yeni > Terminal** ' i seçin.
+* Makineye SSH.  Ardından Python paketlerini **python 3,6-AzureML** ortamına yüklemeyin.  R paketlerini **r** ortamına yükler.
 
 ## <a name="accessing-files"></a>Dosyalara erişme
 

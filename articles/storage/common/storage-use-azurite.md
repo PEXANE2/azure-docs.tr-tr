@@ -7,12 +7,12 @@ ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0421f49b31eba688542adc0a5b62e1cf75028836
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269468"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029933"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Yerel Azure depolama geliştirme ve test (Önizleme) için Azurite öykünücüsünü kullanın
 
@@ -57,11 +57,11 @@ Aşağıdaki ayarlar desteklenir:
 
    * **Azurite: blob Konağı** -blob hizmeti dinleme uç noktası. Varsayılan ayar 127.0.0.1 ' dir.
    * **Azurite: blob bağlantı** noktası-blob hizmeti dinleme bağlantı noktası. Varsayılan bağlantı noktası 10000 ' dir.
-   * **Azurite: hata** ayıklama-hata ayıklama günlüğünü Azurite kanalına çıkar. Varsayılan değer **false**'dur.
+   * **Azurite: hata** ayıklama-hata ayıklama günlüğünü Azurite kanalına çıkar. Varsayılan değer **false**.
    * **Azurite: konum** -çalışma alanı konum yolu. Varsayılan değer Visual Studio Code çalışma klasörüdür.
    * **Azurite: kuyruk Konağı** -dinleme uç noktası kuyruk hizmeti. Varsayılan ayar 127.0.0.1 ' dir.
    * **Azurite: kuyruk bağlantı** noktası-dinleme bağlantı noktası kuyruk hizmeti. Varsayılan bağlantı noktası 10001 ' dir.
-   * **Azurite: sessiz** -sessiz mod, erişim günlüğünü devre dışı bırakır. Varsayılan değer **false**'dur.
+   * **Azurite: sessiz** -sessiz mod, erişim günlüğünü devre dışı bırakır. Varsayılan değer **false**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>NPM kullanarak Azurite 'i yükleyip çalıştırma
 
@@ -282,6 +282,20 @@ azurite --debug path/debug.log
 azurite -d path/debug.log
 ```
 
+### <a name="loose-mode"></a>Gevşek mod
+
+**Isteğe bağlı** Varsayılan olarak, Azurite, desteklenmeyen istek üst bilgilerini ve parametrelerini engellemek için katı mod uygular. **--Gevşek** anahtar kullanarak katı modu devre dışı bırakın.
+
+```console
+azurite --loose
+```
+
+Büyük ' L ' kısayol anahtarını aklınızda edin:
+
+```console
+azurite -L
+```
+
 ## <a name="authorization-for-tools-and-sdks"></a>Araçlar ve SDK 'lar için yetkilendirme
 
 Herhangi bir kimlik doğrulama stratejisi kullanarak Azure Storage SDK 'Ları veya [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)gibi araçlardan Azurıite 'e bağlanın. Kimlik doğrulaması gereklidir. Azurite, paylaşılan anahtar ve paylaşılan erişim imzaları (SAS) ile yetkilendirmeyi destekler. Azurite ayrıca ortak kapsayıcılara anonim erişimi destekler.
@@ -307,6 +321,33 @@ Uygulamanızdan Azurite 'ya bağlanmanın en kolay yolu, uygulamanızın yapıla
 ```
 
 Daha fazla bilgi için bkz. [Azure Storage bağlantı dizelerini yapılandırma](storage-configure-connection-string.md).
+
+### <a name="custom-storage-accounts-and-keys"></a>Özel depolama hesapları ve anahtarları
+
+Azurite, `AZURITE_ACCOUNTS` ortam değişkenini aşağıdaki biçimde ayarlayarak özel depolama hesabı adlarını ve anahtarlarını destekler: `account1:key1[:key2];account2:key1[:key2];...`.
+
+Örneğin, bir anahtara sahip özel bir depolama hesabı kullanın:
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1"
+```
+
+Ya da her biri 2 anahtarlı birden çok depolama hesabı kullanın:
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+Azurite, varsayılan olarak her dakikada ortam değişkeninden özel hesap adlarını ve anahtarlarını yeniler. Bu özellikle, hesap anahtarını dinamik olarak döndürebilir veya Azurite 'ı yeniden başlatmanıza gerek kalmadan yeni depolama hesapları ekleyebilirsiniz.
+
+> [!NOTE]
+> Varsayılan `devstoreaccount1` depolama hesabı, özel depolama hesapları ayarladığınızda devre dışıdır.
+
+> [!NOTE]
+> Özel hesap adlarını ve anahtarlarını kullanırken bağlantı dizesini uygun şekilde güncelleştirin.
+
+> [!NOTE]
+> Bir Linux ortamında ortam değişkenlerini ayarlamak için `export` anahtar sözcüğünü kullanın, Windows 'da `set` kullanın.
 
 ### <a name="storage-explorer"></a>Depolama Gezgini
 

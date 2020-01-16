@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e1789122079d5cbc6f5914a6fd6a69a38df04e45
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748266"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973373"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
@@ -51,7 +51,7 @@ Veriler GZRS veya RA-GZRS etkin bir depolama hesabına yazıldığında, bu veri
 > [!IMPORTANT]
 > Zaman uyumsuz çoğaltma, verilerin birincil bölgeye yazıldığı ve ikincil bölgeye çoğaltıldığı zaman arasında bir gecikme içerir. Bölgesel bir olağanüstü durum durumunda, bu veriler birincil bölgeden kurtarılamazsa, ikincil bölgeye henüz çoğaltılmamış değişiklikler kaybolabilir.
 
-Bir depolama hesabı oluşturduğunuzda, bu hesaptaki verilerin nasıl çoğaltılacağı ve ayrıca söz konusu hesabın birincil bölgesini belirtmeniz gerekir. Coğrafi olarak çoğaltılan bir hesabın eşleştirilmiş ikincil bölgesi, birincil bölgeye göre belirlenir ve değiştirilemez. Azure tarafından desteklenen bölgeler hakkında güncel bilgiler için bkz. [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşleştirilmiş bölgeleri](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). GZRS veya RA-GZRS kullanarak bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-quickstart-create-account.md).
+Bir depolama hesabı oluşturduğunuzda, bu hesaptaki verilerin nasıl çoğaltılacağı ve ayrıca söz konusu hesabın birincil bölgesini belirtmeniz gerekir. Coğrafi olarak çoğaltılan bir hesabın eşleştirilmiş ikincil bölgesi, birincil bölgeye göre belirlenir ve değiştirilemez. Azure tarafından desteklenen bölgeler hakkında güncel bilgiler için bkz. [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşleştirilmiş bölgeleri](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). GZRS veya RA-GZRS kullanarak bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-account-create.md).
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Yüksek kullanılabilirlik için RA-GZRS kullanma
 

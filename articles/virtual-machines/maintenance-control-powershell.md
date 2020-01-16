@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e7a5f9ba865ab555bde3125f40ee8675709bef40
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7ca98723511cc7297b462747d4e1e12ca9bd38c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932716"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979011"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Önizleme: bakım denetimi ve Azure PowerShell güncelleştirmelerini denetleme
 
@@ -36,7 +36,7 @@ Bakım denetimi ile şunları yapabilirsiniz:
 ## <a name="limitations"></a>Sınırlamalar
 
 - VM 'Lerin [ayrılmış bir konakta](./linux/dedicated-hosts.md)olması veya [yalıtılmış bir VM boyutu](./linux/isolation.md)kullanılarak oluşturulması gerekir.
-- 35 gün sonra, bir güncelleştirme otomatik olarak uygulanır ve kullanılabilirlik kısıtlamaları dikkate alınır.
+- 35 gün sonra, bir güncelleştirme otomatik olarak uygulanır.
 - Kullanıcının **kaynak sahibi** erişimi olmalıdır.
 
 
@@ -109,7 +109,7 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-### <a name="dedicate-host"></a>Ana bilgisayarı ayırabilirsiniz
+### <a name="dedicated-host"></a>Ayrılmış konak
 
 Bir yapılandırmayı adanmış bir konağa uygulamak için `-ResourceType hosts`, konak grubunun adı ile `-ResourceParentName` ve `-ResourceParentType hostGroups`de eklemeniz gerekir. 
 
@@ -129,7 +129,9 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>Bekleyen güncelleştirmeleri denetle
 
-Bekleyen güncelleştirmeler olup olmadığını görmek için [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) kullanın. Oturum açmış olduğunuz sunucudan farklıysa VM 'nin Azure aboneliğini belirtmek için `-subscription` kullanın. 
+Bekleyen güncelleştirmeler olup olmadığını görmek için [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) kullanın. Oturum açmış olduğunuz sunucudan farklıysa VM 'nin Azure aboneliğini belirtmek için `-subscription` kullanın.
+
+Güncelleştirme yoksa, komut şu hata iletisini döndürür: `Resource not found...StatusCode: 404`.
 
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
@@ -185,6 +187,39 @@ New-AzApplyUpdate `
    -ResourceParentName myHostGroup `
    -ResourceParentType hostGroups `
    -ProviderName Microsoft.Compute
+```
+
+## <a name="check-update-status"></a>Güncelleştirme durumunu denetle
+Bir güncelleştirmenin durumunu denetlemek için [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) kullanın. Aşağıda gösterilen komutlar, `-ApplyUpdateName` parametresi için `default` kullanarak en son güncelleştirmenin durumunu gösterir. Belirli bir güncelleştirmenin durumunu almak için, güncelleştirmenin adını ( [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) komutu tarafından döndürülen) kullanabilirsiniz.
+
+Gösterilecek güncelleştirme yoksa, komut şu hata iletisini döndürür: `Resource not found...StatusCode: 404`.
+
+### <a name="isolated-vm"></a>Yalıtılmış VM
+
+Belirli bir sanal makinede güncelleştirmeleri denetleyin.
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myVM `
+   -ResourceType VirtualMachines `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
+```
+
+### <a name="dedicated-host"></a>Ayrılmış konak
+
+Adanmış bir konaktaki güncelleştirmeleri denetleyin.
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myHost `
+   -ResourceType hosts `
+   -ResourceParentName myHostGroup `
+   -ResourceParentType hostGroups `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
 ```
 
 ## <a name="remove-a-maintenance-configuration"></a>Bakım yapılandırmasını kaldırma

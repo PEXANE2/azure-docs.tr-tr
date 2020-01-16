@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: c128f17a3d2c4f5461a04ae375e05336cc994b4b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4e15d1c6554fc567f668b2033bff5b5664db918
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552313"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972791"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure sanal ağı 'nda HDInsight 'ta Apache HBase kümeleri oluşturma
 
@@ -29,7 +29,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>Sanal ağa Apache HBase kümesi oluşturma
 
-Bu bölümde, bir Azure sanal ağında [Azure Resource Manager şablonu](../../azure-resource-manager/resource-group-template-deploy.md)kullanarak, bağımlı Azure depolama hesabı ile Linux tabanlı bir Apache HBase kümesi oluşturacaksınız. Diğer küme oluşturma yöntemleri ve ayarları anlamak için bkz. [HDInsight kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md). HDInsight 'ta Apache Hadoop kümeleri oluşturmak için şablon kullanma hakkında daha fazla bilgi için, bkz. [Azure Resource Manager şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+Bu bölümde, bir Azure sanal ağında [Azure Resource Manager şablonu](../../azure-resource-manager/templates/deploy-powershell.md)kullanarak, bağımlı Azure depolama hesabı ile Linux tabanlı bir Apache HBase kümesi oluşturacaksınız. Diğer küme oluşturma yöntemleri ve ayarları anlamak için bkz. [HDInsight kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md). HDInsight 'ta Apache Hadoop kümeleri oluşturmak için şablon kullanma hakkında daha fazla bilgi için, bkz. [Azure Resource Manager şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
 > [!NOTE]  
 > Bazı özellikler şablona sabit olarak kodlanmıştır. Örneğin:

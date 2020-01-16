@@ -3,7 +3,7 @@ title: Etkili liste sorguları tasarlama-Azure Batch | Microsoft Docs
 description: Havuzlar, işler, görevler ve işlem düğümleri gibi Batch kaynakları hakkında bilgi isteğinde bulunduğunuzu filtreleyerek performansı artırın.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 12/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 37d34267220cbb7ceabfc823f6facd651969fbd4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d853302ebb0961f9e5fda9f5ecc41f3a26351170
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095157"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027108"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Toplu Işlem kaynaklarını etkili bir şekilde listelemek için sorgular oluşturma
 
@@ -66,48 +66,48 @@ Bu örnek senaryoda, işte binlerce görev varsa, ikinci sorgudaki sonuçlar gen
 ## <a name="filter-select-and-expand"></a>Filtrele, seç ve Genişlet
 [Batch .net][api_net] ve [Batch Rest][api_rest] API 'leri, bir listede döndürülen öğelerin sayısını ve her biri için döndürülen bilgi miktarını azaltmaya olanak sağlar. Bunu, liste sorguları gerçekleştirirken **filtre**, **seçme**ve **dizeleri Genişlet** ' i belirterek yapabilirsiniz.
 
-### <a name="filter"></a>Filtre
+### <a name="filter"></a>Filtrele
 Filtre dizesi döndürülen öğelerin sayısını azaltan bir ifadedir. Örneğin, yalnızca bir iş için çalışan görevleri listeleyin veya yalnızca görevleri çalıştırmaya hazırlamış olan işlem düğümlerini listeleyin.
 
 * Filtre dizesi bir veya daha fazla ifadeden oluşur ve bir özellik adı, işleç ve değer içeren bir ifade içerir. Belirtime özellikler, her bir özellik için desteklenen işleçler gibi, Sorgulayabileceğiniz her bir varlık türüne özeldir.
-* Birden çok ifade mantıksal işleçler `and` ve `or`kullanılarak birleştirilebilir.
+* Birden çok ifade, mantıksal işleçler `and` ve `or`kullanılarak birleştirilebilir.
 * Bu örnek filtre dizesinde yalnızca çalışan "render" görevleri listelenir: `(state eq 'running') and startswith(id, 'renderTask')`.
 
-### <a name="select"></a>Seçim
+### <a name="select"></a>Seçin
 Select String her öğe için döndürülen özellik değerlerini sınırlandırır. Özellik adlarının bir listesini belirtirsiniz ve sorgu sonuçlarındaki öğeler için yalnızca bu özellik değerleri döndürülür.
 
 * Select dizesi, özellik adlarının virgülle ayrılmış bir listesinden oluşur. Sorgulamakta olduğunuz varlık türü için özelliklerden herhangi birini belirtebilirsiniz.
-* Bu örnek Select String, her görev için yalnızca üç özellik değerinin döndürülüp döndürülmeyeceğini belirtir: `id, state, stateTransitionTime`.
+* Bu örnek dize, her görev için yalnızca üç özellik değerinin döndürülüp döndürülmeyeceğini belirtir: `id, state, stateTransitionTime`.
 
-### <a name="expand"></a>Expand
+### <a name="expand"></a>Genişlet
 Expand dize, belirli bilgileri almak için gerekli olan API çağrılarının sayısını azaltır. Bir genişletme dizesi kullandığınızda her öğe hakkında daha fazla bilgi tek bir API çağrısıyla elde edilebilir. İlk olarak, varlıkların listesini almak ve sonra listedeki her öğe için bilgi istemek yerine, tek bir API çağrısında aynı bilgileri elde etmek için bir genişletme dizesi kullanırsınız. Daha az API çağrısı, daha iyi performans anlamına gelir.
 
 * Select dizesine benzer şekilde, genişletme dizesi belirli verilerin liste sorgu sonuçlarına dahil edilip edilmeyeceğini denetler.
 * Expand dize yalnızca liste işleri, iş zamanlamaları, görevler ve havuzlar üzerinde kullanıldığında desteklenir. Şu anda yalnızca istatistik bilgilerini destekler.
-* Tüm özellikler gerekli olduğunda ve Select String belirtilmediğinde, istatistik bilgilerini almak için genişletme dizesi kullanılmalıdır. Bir SELECT dizesi, özelliklerin bir alt kümesini almak için kullanılırsa, `stats` Select dizesinde belirtilebilir ve genişletme dizesinin belirtilmesi gerekmez.
+* Tüm özellikler gerekli olduğunda ve Select String belirtilmediğinde, istatistik bilgilerini almak için *genişletme dizesi kullanılmalıdır* . Bir SELECT dizesi, özelliklerin bir alt kümesini almak için kullanılırsa, `stats` Select dizesinde belirtilebilir ve genişletme dizesinin belirtilmesi gerekmez.
 * Bu örnek dize genişletme, listedeki her öğe için İstatistik bilgilerinin döndürülmesini belirtir: `stats`.
 
 > [!NOTE]
-> Üç sorgu dizesi türünden birini oluştururken (Filter, Select ve Expand), özellik adlarının ve durumunun REST API öğelerinin karşılıklarıyla eşleştiğinden emin olmanız gerekir. Örneğin, .NET [cloudtask](/dotnet/api/microsoft.azure.batch.cloudtask) sınıfıyla çalışırken, .NET özelliği [Cloudtask. State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State)olsa bile durum yerine **State** belirtmeniz gerekir. .NET ve REST API 'Ler arasındaki özellik eşlemeleri için aşağıdaki tablolara bakın.
+> Üç sorgu dizesi türünden birini oluştururken (Filter, Select ve Expand), özellik adlarının ve durumunun REST API öğelerinin karşılıklarıyla eşleştiğinden emin olmanız gerekir. Örneğin, .NET [cloudtask](/dotnet/api/microsoft.azure.batch.cloudtask) sınıfıyla çalışırken, .NET özelliği [Cloudtask. State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State)olsa **bile durum yerine** **State** belirtmeniz gerekir. .NET ve REST API 'Ler arasındaki özellik eşlemeleri için aşağıdaki tablolara bakın.
 > 
 > 
 
 ### <a name="rules-for-filter-select-and-expand-strings"></a>Filter, Select ve Expand dizeleri için kurallar
 * Filtre içindeki Özellikler adları, Select ve Genişlet dizeleri Batch [.net][api_net] veya diğer Batch SDK 'larından birini kullandığınızda bile, [toplu Rest][api_rest] API 'sinde olduğu gibi görünmelidir.
 * Tüm özellik adları büyük/küçük harfe duyarlıdır, ancak özellik değerleri büyük/küçük harfe duyarsızdır.
-* Tarih/saat dizeleri iki biçimden biri olabilir ve önünde `DateTime`olmalıdır.
+* Tarih/saat dizeleri iki biçimden biri olabilir ve önünde `DateTime`olması gerekir.
   
-  * W3C-DTF biçim örneği:`creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  * RFC 1123 biçim örneği:`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
-* Boolean dizeleri ya `false`da `true` .
-* Geçersiz bir özellik veya işleç belirtilirse, bir `400 (Bad Request)` hata ortaya kaydedilir.
+  * W3C-DTF biçim örneği: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  * RFC 1123 biçim örneği: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+* Boolean dizeler `true` ya da `false`.
+* Geçersiz bir özellik veya işleç belirtilirse, bir `400 (Bad Request)` hatası ortaya kalır.
 
 ## <a name="efficient-querying-in-batch-net"></a>Batch .NET 'te verimli sorgulama
 [Batch .net][api_net] API 'si Içinde, [Odatadetaillevel][odata] sınıfı filtre sağlamak için kullanılır, seçme ve dizeleri listelemek için dizeleri genişletme. ODataDetailLevel sınıfı, oluşturucuda belirtime üç genel dize özelliklerine sahiptir veya doğrudan nesne üzerinde ayarlanır. Ardından, ODataDetailLevel nesnesini [Listpools][net_list_pools], [ListJobs][net_list_jobs]ve [ListTasks][net_list_tasks]gibi çeşitli liste işlemlerine bir parametre olarak geçitirsiniz.
 
-* [Odatadetaillevel][odata]. [FilterClause][odata_filter]: Döndürülen öğelerin sayısını sınırlayın.
-* [Odatadetaillevel][odata]. [Selectclause][odata_select]: Hangi özellik değerlerinin her öğe ile döndürüleceğini belirtin.
-* [Odatadetaillevel][odata]. [Expandclause][odata_expand]: Her öğe için ayrı çağrılar yerine tek bir API çağrısındaki tüm öğeler için veri alın.
+* [Odatadetaillevel][odata]. [FilterClause][odata_filter]: döndürülen öğelerin sayısını sınırlayın.
+* [Odatadetaillevel][odata]. [Selectclause][odata_select]: her öğe ile hangi özellik değerlerinin döndürüleceğini belirtin.
+* [Odatadetaillevel][odata]. [Expandclause][odata_expand]: her öğe için ayrı çağrılar yerine tek bir API çağrısındaki tüm öğeler için veri al.
 
 Aşağıdaki kod parçacığı, Batch hizmetini belirli bir havuz kümesinin istatistikleri için etkin bir şekilde sorgulamak üzere Batch .NET API 'sini kullanır. Bu senaryoda Batch kullanıcısının hem test hem de üretim havuzları vardır. Test havuzu kimlikleri "test" önekini alır ve üretim havuzu kimlikleri "prod" önekini alır. Kod parçacığında, *Mybatchclient* , [batchclient](/dotnet/api/microsoft.azure.batch.batchclient) sınıfının düzgün başlatılmış bir örneğidir.
 
@@ -143,10 +143,10 @@ List<CloudPool> testPools =
 > 
 
 ## <a name="batch-rest-to-net-api-mappings"></a>Toplu iş geri kalanı .NET API eşlemeleri
-Filtre içindeki Özellik adları, Select ve Genişlet dizeleri, hem ad hem de durum ' da REST API karşılamalarını yansıtmalıdır. Aşağıdaki tablolar, .NET ve REST API karşılıkları arasında eşlemeler sağlar.
+Filtre içindeki Özellik adları, Select ve *Genişlet dizeleri,* hem ad hem de durum ' da REST API karşılamalarını yansıtmalıdır. Aşağıdaki tablolar, .NET ve REST API karşılıkları arasında eşlemeler sağlar.
 
 ### <a name="mappings-for-filter-strings"></a>Filtre dizeleri için eşlemeler
-* **.Net liste yöntemleri**: Bu sütundaki .NET API yöntemlerinin her biri, bir [Odatadetaillevel][odata] nesnesini parametre olarak kabul eder.
+* **.Net liste yöntemleri**: Bu SÜTUNDAKI .NET API yöntemlerinin her biri, bir [Odatadetaillevel][odata] nesnesini parametre olarak kabul eder.
 * **Rest liste istekleri**: Bu sütunda bağlantılı her bir REST API sayfası, *filtre* dizelerinde izin verilen özellikleri ve işlemleri belirten bir tablo içerir. Bu özellik adlarını ve işlemlerini bir [Odatadetaillevel. FilterClause][odata_filter] dizesi oluşturduğunuzda kullanacaksınız.
 
 | .NET liste yöntemleri | REST liste istekleri |
@@ -164,7 +164,7 @@ Filtre içindeki Özellik adları, Select ve Genişlet dizeleri, hem ad hem de d
 
 ### <a name="mappings-for-select-strings"></a>Seçme dizeleri için eşlemeler
 * **Batch .net türleri**: Batch .NET API türleri.
-* **REST API varlıkları**: Bu sütundaki her sayfa, türün REST API özellik adlarını listeeden bir veya daha fazla tablo içerir. Bu özellik adları, *Select* dizeleri oluşturduğunuzda kullanılır. [Odatadetaillevel. SelectClause][odata_select] dizesi oluştururken aynı özellik adlarını kullanacaksınız.
+* **REST API varlıklar**: Bu sütundaki her sayfa, türün REST API özellik adlarını listeeden bir veya daha fazla tablo içerir. Bu özellik adları, *Select* dizeleri oluşturduğunuzda kullanılır. [Odatadetaillevel. SelectClause][odata_select] dizesi oluştururken aynı özellik adlarını kullanacaksınız.
 
 | Batch .NET türleri | REST API varlıkları |
 | --- | --- |
@@ -178,7 +178,7 @@ Filtre içindeki Özellik adları, Select ve Genişlet dizeleri, hem ad hem de d
 ## <a name="example-construct-a-filter-string"></a>Örnek: bir filtre dizesi oluşturun
 [Odatadetaillevel. FilterClause][odata_filter]için bir filtre dizesi oluşturduğunuzda, gerçekleştirmek istediğiniz liste işlemine karşılık gelen REST API belge sayfasını bulmak için yukarıdaki "Filtre dizeleri için eşlemeler" altındaki tabloya başvurun. Filtrelenebilir özellikleri ve bu sayfadaki ilk multirow tablosunda desteklenen işleçlerini bulacaksınız. Çıkış kodu sıfır olmayan tüm görevleri almak isterseniz, örneğin, [bir işle ilişkili görevleri listede][rest_list_tasks] bu satır ilgili özellik dizesini ve izin verilen işleçleri belirler:
 
-| Özellik | İzin verilen işlemler | Type |
+| Özellik | İzin verilen işlemler | Tür |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
@@ -189,7 +189,7 @@ Bu nedenle, sıfır dışında çıkış koduna sahip tüm görevleri listelemek
 ## <a name="example-construct-a-select-string"></a>Örnek: Select String oluşturun
 [Odatadetaillevel. SelectClause][odata_select]oluşturmak için, "dizeleri seç için eşlemeler" altındaki tabloya bakın ve listelerken varlık türüne karşılık gelen REST API sayfasına gidin. Seçilebilir özellikleri ve bu sayfadaki ilk multirow tablosunda desteklenen işleçlerini bulacaksınız. Bir listedeki her bir görev için yalnızca KIMLIĞI ve komut satırını almak istiyorsanız, [bir görevle ilgili bilgi edinmek][rest_get_task]için bu satırları uygulanabilir tabloda bulabilirsiniz:
 
-| Özellik | Type | Notlar |
+| Özellik | Tür | Notlar |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |
@@ -228,7 +228,7 @@ Proje içindeki örnek uygulama aşağıdaki işlemleri gösterir:
 1. Yalnızca ihtiyacınız olan özellikleri indirmek için belirli öznitelikleri seçme
 2. Son sorgudan bu yana yalnızca değişiklikleri indirmek için durum geçiş süreleriyle filtreleme
 
-Örneğin, aşağıdaki yöntem Batchölçümlerini kitaplığında görüntülenir. Sorgulanan varlıklar için yalnızca `id` ve `state` özelliklerinin alınması gerektiğini belirten bir odatadetaillevel döndürür. Ayrıca, belirtilen `DateTime` parametrenin döndürülmesinden sonra yalnızca durumu değişmiş olan varlıkların de belirtir.
+Örneğin, aşağıdaki yöntem Batchölçümlerini kitaplığında görüntülenir. Sorgulanan varlıklar için yalnızca `id` ve `state` özelliklerinin alınması gerektiğini belirten bir ODATADetailLevel döndürür. Ayrıca yalnızca, belirtilen `DateTime` parametresi döndürüldüğünden durum değişmiş olan varlıkların de belirtir.
 
 ```csharp
 internal static ODATADetailLevel OnlyChangedAfter(DateTime time)

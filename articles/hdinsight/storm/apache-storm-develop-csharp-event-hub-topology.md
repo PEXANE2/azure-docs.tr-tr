@@ -2,18 +2,17 @@
 title: Azure HDInsight ile Event Hubs olayları işleme
 description: Visual Studio için HDInsight araçları 'nı kullanarak, Azure Event Hubs C# Visual Studio 'da oluşturulmuş bir fırtınası topolojisine sahip verileri nasıl işleyebileceğinizi öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/27/2017
-ms.author: hrasheed
-ROBOTS: NOINDEX
-ms.openlocfilehash: 62d65a4f004494ac4ce4ecd3df0f091460028d8f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.date: 01/14/2020
+ms.openlocfilehash: 85b7093df99127b690c51e8f2f28d18e3f5f3c95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800062"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981633"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 'ta Apache Storm ile Azure Event Hubs olayları işleme (C#)
 
@@ -26,19 +25,11 @@ HDInsight üzerinde [Apache Storm](https://storm.apache.org/) Azure Event Hubs i
 
 Bu belgedeki adımlarda, HDInsight üzerinde fırtınası ile kullanım için topolojiler ve bileşenler oluşturmayı C# kolaylaştıran bir NuGet paketi olan SCP.net kullanılır.
 
-> [!IMPORTANT]  
-> Bu belgedeki adımlar Visual Studio ile bir Windows geliştirme ortamı kullandığından, derlenen proje Linux kullanan HDInsight kümesinde bir fırtınası 'ya gönderilebilir. Yalnızca 28 Ekim 2016 ' den sonra oluşturulan Linux tabanlı kümeler, SCP.NET topolojilerini destekler.
-
 HDInsight 3,4 ve üzeri topoloji çalıştırmak C# için mono kullanın. Bu belgede kullanılan örnek HDInsight 3,6 ile birlikte çalışmaktadır. HDInsight için kendi .NET çözümlerinizi oluşturmayı planlıyorsanız olası uyumsuzluklar için [mono uyumluluk](https://www.mono-project.com/docs/about-mono/compatibility/) belgesini kontrol edin.
 
 ### <a name="cluster-versioning"></a>Küme sürümü oluşturma
 
 Projeniz için kullandığınız Microsoft. SCP. net. SDK NuGet paketi, HDInsight üzerinde yüklü olan birincil fırtınası sürümüyle aynı olmalıdır. HDInsight sürümleri 3,5 ve 3,6, fırtınası 1. x kullanır, bu nedenle SCP.NET Version 1.0. x. x 'i bu kümeleriyle kullanmanız gerekir.
-
-> [!IMPORTANT]  
-> Bu belgedeki örnek bir HDInsight 3,5 veya 3,6 kümesi bekliyor.
->
-> Linux, HDInsight sürüm 3.4 ve üzerinde kullanılan tek işletim sistemidir. 
 
 C#topolojiler ayrıca .NET 4,5 ' i de hedeflemelidir.
 
@@ -105,12 +96,9 @@ topologyBuilder.SetJavaBolt(
 
 Bu makalede oluşturulan projenin tüm sürümünü [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)'dan indirebilirsiniz. Ancak, bu makaledeki adımları izleyerek yapılandırma ayarlarını yine de sağlamanız gerekir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
-
-    > [!WARNING]  
-    > Bu belgede kullanılan örnek, HDInsight sürüm 3,5 veya 3,6 ' de fırtınası gerektirir. Bu, son sınıf adı değişiklikleri nedeniyle HDInsight 'ın eski sürümleriyle çalışmaz. Bu örneğin eski kümeler ile birlikte çalışarak bir sürümü için bkz. [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases).
 
 * [Azure Olay Hub 'ı](../../event-hubs/event-hubs-create.md).
 
@@ -133,12 +121,12 @@ Bu makalede oluşturulan projenin tüm sürümünü [GitHub](https://github.com/
 
 Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](../../event-hubs/event-hubs-create.md)konusunun "bir olay hub 'ı oluşturma" bölümündeki bilgileri kullanın.
 
-1. Olay Hub 'ı oluşturulduktan sonra, Azure portal **EventHub** ayarlarını görüntüleyin ve **paylaşılan erişim ilkeleri**' ni seçin. Aşağıdaki ilkeleri eklemek için **+ Ekle** ' yi seçin:
+1. Olay Hub 'ı oluşturulduktan sonra, Azure portal **EventHub** ayarlarını görüntüleyin ve **paylaşılan erişim ilkeleri**' ni seçin. Aşağıdaki ilkeleri oluşturmak için **+ Ekle** ' yi seçin:
 
-   | Adı | İzinler |
+   | Ad | İzinler |
    | --- | --- |
    | yazarı |Gönder |
-   | Okuyucu |Dinle |
+   | okuyucu |Dinle |
 
     ![Erişim ilkelerini paylaşma penceresinin ekran görüntüsü](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
@@ -150,7 +138,7 @@ Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](
 
 2. Çözümü [eventhub-fırtınası-karma](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)konumundan indirin.
 
-3. **Eventhubwriter** projesinde **app. config** dosyasını açın. Daha önce aşağıdaki anahtarlar için değeri dolduracak olan olay hub 'ında bulunan bilgileri kullanın:
+3. **Eventhubexample. sln**öğesini açın. **Eventhubwriter** projesinde **app. config** dosyasını açın. Daha önce aşağıdaki anahtarlar için değeri dolduracak olan olay hub 'ında bulunan bilgileri kullanın:
 
    | Anahtar | Değer |
    | --- | --- |
@@ -204,9 +192,11 @@ Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](
 
 9. **Yürüticileri** bölümünde **bağlantı noktası** sütunundaki bağlantılardan birini seçin. Bu, bileşen tarafından günlüğe kaydedilen bilgileri görüntüler. Günlüğe kaydedilen bilgiler aşağıdaki metne benzer:
 
-        2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
-        2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
-        2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
+    ```output
+    2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
+    2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
+    2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
+    ```
 
 ## <a name="stop-the-topologies"></a>Topolojileri durdurma
 

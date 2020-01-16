@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.author: juliako
-ms.openlocfilehash: beb44c469aa8a03430cd5cb5a162966855aad448
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: c4c39dc53e492fd295cf30a7b7d75c933ebc912f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815391"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972620"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -40,6 +40,7 @@ Videonuz karşıya yüklendikten sonra Video Indexer, isteğe bağlı olarak vid
 - `videoURL` param 'da belirtilen URL 'nin kodlanması gerekir.
 - Dizin oluşturma Media Services varlıkların, URL 'den dizin oluşturma ile aynı sınırlaması vardır.
 - Video Indexer, tek bir dosya için maksimum süre sınırı olan 4 saattir.
+- Dakikada en fazla 60 film yükleyebilirsiniz.
 
 > [!Tip]
 > .NET Framework 4.6.2 veya üzeri bir sürümünü kullanmanız önerilir. Eski .NET Framework sürümlerinde varsayılan olarak TLS 1.2 ayarı kullanılmaz.
@@ -61,7 +62,7 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 - Dizin oluşturma durum değişikliği: 
     - Özellikler:    
     
-        |Adı|Açıklama|
+        |Ad|Açıklama|
         |---|---|
         |id|Video KIMLIĞI|
         |durum|Video durumu|  
@@ -69,7 +70,7 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 - Videoda tanımlanan kişi:
   - Özellikler
     
-      |Adı|Açıklama|
+      |Ad|Açıklama|
       |---|---|
       |id| Video KIMLIĞI|
       |FaceID|Video dizininde görünen yüz KIMLIĞI|
@@ -313,7 +314,7 @@ Upload işlemi aşağıdaki tabloda listelenen durum kodlarını döndürebilir.
 
 |Durum kodu|ErrorType (yanıt gövdesinde)|Açıklama|
 |---|---|---|
-|400|VIDEO_ALREADY_IN_PROGRESS|Bu video zaten aynı hesapta işleniyor.|
+|409|VIDEO_INDEXING_IN_PROGRESS|Bu video zaten aynı hesapta işleniyor.|
 |400|VIDEO_ALREADY_FAILED|Bu videonun işlenmesi 2 saatten daha kısa bir süre önce aynı hesapta başarısız oldu. API istemcilerin videoyu yeniden yüklemek için en az 2 saat beklemesi gerekir.|
 
 ## <a name="next-steps"></a>Sonraki adımlar

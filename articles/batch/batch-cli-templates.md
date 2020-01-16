@@ -2,21 +2,21 @@
 title: Şablonları kullanarak işleri uçtan uca Çalıştır-Azure Batch | Microsoft Docs
 description: Şablon dosyaları ve Azure CLı ile Batch havuzları, işler ve Görevler oluşturun.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.workload: big-compute
 ms.date: 12/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 4733cf1a83bec472baae42f2ac29636bff5fc324
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2612986491268651222e51646e75cdecc95dc40c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095307"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029743"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLı şablonlarını ve dosya aktarımını kullanın
 
@@ -143,7 +143,7 @@ Aşağıda, FFmpeg yüklenmiş bir Linux VM havuzu oluşturan bir şablon örne�
 az batch pool create --template pool-ffmpeg.json
 ```
 
-CLI, `poolId` ve `nodeCount` parametreleri için değer vermenizi ister. Ayrıca, parametreleri bir JSON dosyasında da sağlayabilirsiniz. Örneğin:
+CLı `poolId` ve `nodeCount` parametrelerinin değerlerini sağlamanızı ister. Ayrıca, parametreleri bir JSON dosyasında da sağlayabilirsiniz. Örneğin:
 
 ```json
 {
@@ -260,7 +260,7 @@ Batch bir CLı şablonunu [Batch Explorer](https://github.com/Azure/BatchExplore
 
 Bir şablonu karşıya yüklemek için:
 
-1. Batch Explorer ' de, **Galeri** > **Yerel Şablonlar**' ı seçin.
+1. Batch Explorer, **galeri** > **Yerel Şablonlar**' ı seçin.
 
 2. Yerel bir havuz veya iş şablonu seçin veya sürükleyip bırakın.
 

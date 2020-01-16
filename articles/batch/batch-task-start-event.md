@@ -2,7 +2,7 @@
 title: Azure Batch görevi başlatma olayı | Microsoft Docs
 description: Batch görevi başlatma olayı için başvuru.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: ffad1696bc2c85a1a150ac87d90c2fb9c34e1519
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.author: jushiman
+ms.openlocfilehash: e8265286a5d33c9a8a118dafa66a83b5ed36f8a6
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258537"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029613"
 ---
 # <a name="task-start-event"></a>Görev başlangıç olayı
 
@@ -47,7 +47,7 @@ ms.locfileid: "70258537"
 }
 ```
 
-|Öğe adı|Type|Notlar|
+|Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
 |`jobId`|Dize|Görevi içeren işin KIMLIĞI.|
 |`id`|Dize|Görevin KIMLIĞI.|
@@ -60,25 +60,25 @@ ms.locfileid: "70258537"
 
 ###  <a name="nodeInfo"></a>NodeInfo
 
-|Öğe adı|Type|Notlar|
+|Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
 |`poolId`|Dize|Görevin çalıştırıldığı havuzun KIMLIĞI.|
 |`nodeId`|Dize|Görevin çalıştırıldığı düğümün KIMLIĞI.|
 
 ###  <a name="multiInstanceSettings"></a>Multiınstancesettings
 
-|Öğe adı|Type|Notlar|
+|Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
 |`numberOfInstances`|Int|Görevin gerektirdiği işlem düğümü sayısı.|
 
 ###  <a name="constraints"></a>kısıtlamaları
 
-|Öğe adı|Type|Notlar|
+|Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|Görevin en fazla yeniden denenme sayısı. Batch hizmeti, çıkış kodu sıfır değilse bir görevi yeniden dener.<br /><br /> Bu değerin özellikle yeniden deneme sayısını denetlediğine unutmayın. Batch hizmeti görevi bir kez dener ve daha sonra bu sınıra kadar yeniden deneyebilir. Örneğin, en fazla yeniden deneme sayısı 3 ise Batch, 4 kata kadar bir görevi dener (bir başlangıç denemesi ve 3 yeniden deneme).<br /><br /> En fazla yeniden deneme sayısı 0 ise, Batch hizmeti görevleri yeniden denemeyecek.<br /><br /> En fazla yeniden deneme sayısı-1 ise, Batch hizmeti görevleri sınırlı olmadan yeniden dener.<br /><br /> Varsayılan değer 0 ' dır (yeniden deneme yok).|
 
 ###  <a name="executionInfo"></a>ExecutionInfo
 
-|Öğe adı|Type|Notlar|
+|Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
 |`retryCount`|Int32|Görevin Batch hizmeti tarafından yeniden denenme sayısı. Bu görev, belirtilen MaxTaskRetryCount 'a kadar sıfır olmayan çıkış kodu ile çıktıktan sonra yeniden denenir|

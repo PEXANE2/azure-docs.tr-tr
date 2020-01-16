@@ -10,21 +10,24 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442540"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967358"
 ---
 # <a name="configure-a-custom-domain-name"></a>Özel bir etki alanı adı yapılandırma
 
-Azure API Management hizmet örneği oluşturduğunuzda Azure, azure-api.net 'in bir alt etki alanını (örneğin, `apim-service-name.azure-api.net`) atar. Ancak, **contoso.com**gibi kendi özel etki alanı adınızı kullanarak API Management uç noktalarınızı kullanıma sunabilirsiniz. Bu öğreticide, mevcut bir özel DNS adını API Management örneği tarafından sunulan uç noktalara nasıl eşleyebileceğiniz gösterilmektedir.
+Azure API Management hizmet örneği oluşturduğunuzda Azure, `azure-api.net` bir alt etki alanı (örneğin, `apim-service-name.azure-api.net`) atar. Ancak, **contoso.com**gibi kendi özel etki alanı adınızı kullanarak API Management uç noktalarınızı kullanıma sunabilirsiniz. Bu öğreticide, mevcut bir özel DNS adını API Management örneği tarafından sunulan uç noktalara nasıl eşleyebileceğiniz gösterilmektedir.
+
+> [!IMPORTANT]
+> API Management, yalnızca varsayılan etki alanı adı veya yapılandırılmış özel etki alanı adlarından eşleşen [ana bilgisayar üstbilgi](https://tools.ietf.org/html/rfc2616#section-14.23) değerlerine sahip istekleri kabul eder.
 
 > [!WARNING]
-> Uygulamalarının güvenliğini geliştirmek için sertifika sabitleme kullanmak isteyen müşterilerin, varsayılan sertifikayı değil, yönettikleri bir özel etki alanı > adı ve sertifika kullanması gerekir. Bunun yerine varsayılan sertifikayı sabitletirecek müşteriler, denetimi olmadıkları sertifikanın özelliklerine > ve bu önerilen bir uygulama değildir.
+> Uygulamalarının güvenliğini geliştirmek için sertifika sabitleme kullanmak isteyen müşterilerin, varsayılan sertifikayı değil, yönettikleri bir özel etki alanı > adı ve sertifika kullanması gerekir. Bunun yerine varsayılan sertifikayı sabitletirecek müşteriler, denetolmadıkları sertifikanın özelliklerine, bu önerilen bir uygulama değildir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

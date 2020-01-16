@@ -3,20 +3,20 @@ title: Bir havuza sanal dosya sistemi bağlama-Azure Batch | Microsoft Docs
 description: Bir Batch havuzunda sanal dosya sistemi bağlama hakkında bilgi edinin.
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: lahugh
-ms.openlocfilehash: d687f3f9039ca39440abab218d75e1d5c5db6df9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: jushiman
+ms.openlocfilehash: eab8e509e4978de50968bc1d960ee34d46bc73b0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770127"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029148"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Bir Batch havuzunda sanal dosya sistemi bağlama
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccdd234f951327aeb5baa6aabcac4314b9de7b34
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 0b938de0fec099b3f964eae60dc94d059e05a1c6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517098"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973483"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Sanal dizisi dağıtma-Azure portal hazırlama
 
@@ -37,7 +37,7 @@ Kurulum ve yapılandırma işlemini tamamlamak için yönetici ayrıcalıkları 
 
 Bu makalede yayımlanan bilgiler, Azure portal ve Microsoft Azure Kamu bulutta StorSimple Sanal dizilerinin dağıtımına yöneliktir.
 
-### <a name="get-started"></a>başlarken
+### <a name="get-started"></a>Kullanmaya Başlayın
 Dağıtım iş akışı, portalı hazırlamaya, sanallaştırılmış ortamınızda bir sanal dizi sağlamaya ve kurulumu tamamlamaktan oluşur. StorSimple Sanal dizi dağıtımını bir dosya sunucusu veya bir Iscsı sunucusu olarak kullanmaya başlamak için aşağıdaki tablo halinde bulunan kaynaklara başvurmanız gerekir.
 
 #### <a name="deployment-articles"></a>Dağıtım makaleleri
@@ -59,7 +59,7 @@ Yapılandırma denetim listesi, yazılımı StorSimple Sanal diziniz üzerinde y
 * [StorSimple Sanal dizisi dosya sunucusu yapılandırma denetim listesini](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)indirin.
 * [StorSimple Sanal dizisi Iscsı sunucusu yapılandırma denetim listesini](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)indirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Burada, StorSimple Aygıt Yöneticisi hizmetiniz, StorSimple Sanal diziniz ve veri merkezi ağı için yapılandırma önkoşullarını bulabilirsiniz.
 
@@ -94,9 +94,9 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 Portalınızın StorSimple Aygıt Yöneticisi hizmetine hazırlanması için aşağıdaki adım adım yönergeleri kullanın.
 
-## <a name="step-1-create-a-new-service"></a>1\. adım: Yeni hizmet oluşturma
+## <a name="step-1-create-a-new-service"></a>1\. Adım: Yeni bir hizmet oluşturun
 
-StorSimple Aygıt Yöneticisi hizmetinin tek bir örneği birden çok StorSimple Sanal dizilerini yönetebilir. StorSimple Cihaz Yöneticisi hizmetinin bir örneğini oluşturmak için aşağıdaki adımları gerçekleştirin. Sanal dizlerinizi yönetmek için mevcut bir StorSimple aygıt yöneticisi hizmetiniz varsa, bu adımı atlayın ve 2. [adıma gidin: Hizmet kayıt anahtarını](#step-2-get-the-service-registration-key)alın.
+StorSimple Aygıt Yöneticisi hizmetinin tek bir örneği birden çok StorSimple Sanal dizilerini yönetebilir. StorSimple Cihaz Yöneticisi hizmetinin bir örneğini oluşturmak için aşağıdaki adımları gerçekleştirin. Sanal dizlerinizi yönetmek için mevcut bir StorSimple Aygıt Yöneticisi hizmetiniz varsa, bu adımı atlayın ve [Adım 2: hizmet kayıt anahtarını alın](#step-2-get-the-service-registration-key)sayfasına gidin.
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -104,11 +104,11 @@ StorSimple Aygıt Yöneticisi hizmetinin tek bir örneği birden çok StorSimple
 > Hizmetinizle birlikte bir depolama hesabının otomatik olarak oluşturulmasını etkinleştirmediyseniz, bir hizmeti başarıyla oluşturduktan sonra en az bir depolama hesabı oluşturmanız gerekir.
 > 
 > * Otomatik olarak bir depolama hesabı oluşturmadıysanız, ayrıntılı yönergeler için [Hizmet için yeni bir depolama hesabı yapılandırma](#optional-step-configure-a-new-storage-account-for-the-service) bölümüne gidin.
-> * Bir depolama hesabının otomatik olarak oluşturulmasını etkinleştirdiyseniz 2. [adıma gidin: Hizmet kayıt anahtarını](#step-2-get-the-service-registration-key)alın.
+> * Bir depolama hesabının otomatik olarak oluşturulmasını etkinleştirdiyseniz, [2. Adım: Hizmet kayıt anahtarını alın](#step-2-get-the-service-registration-key) bölümüne gidin.
 > 
 > 
 
-## <a name="step-2-get-the-service-registration-key"></a>2\. adım: Hizmet kayıt anahtarı alma
+## <a name="step-2-get-the-service-registration-key"></a>2\. Adım: Hizmet kayıt anahtarını alın
 
 StorSimple Cihaz Yöneticisi hizmeti çalışır duruma geldikten sonra, hizmet kayıt anahtarını almanız gerekir. Bu anahtar StorSimple cihazınızı kaydetmek ve hizmete bağlamak için kullanılır.
 
@@ -121,7 +121,7 @@ StorSimple Cihaz Yöneticisi hizmeti çalışır duruma geldikten sonra, hizmet 
 > 
 > 
 
-## <a name="step-3-download-the-virtual-array-image"></a>3\. adım: Sanal dizi görüntüsünü indir
+## <a name="step-3-download-the-virtual-array-image"></a>3\. Adım: sanal dizi görüntüsünü Indirme
 
 Hizmet kayıt anahtarını aldıktan sonra, ana bilgisayar sisteminizde bir sanal dizi sağlamak için uygun sanal dizi görüntüsünü indirmeniz gerekir. Sanal dizi görüntüleri, işletim sistemine özeldir ve Azure portal hızlı başlangıç sayfasından indirilebilir.
 
@@ -144,11 +144,11 @@ Hizmet kayıt anahtarını aldıktan sonra, ana bilgisayar sisteminizde bir sana
    * VMWare ESXi 5,0, 5,5, 6,0 veya 6,5 için VMDK
 5. Dosyayı yerel sürücüye indirin ve sıkıştırmasını açın. Sıkıştırması açılan dosyanın konumunu not alın.
 
-## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>İsteğe bağlı adım: Hizmet için yeni bir depolama hesabı yapılandırın
+## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>İsteğe bağlı adım: hizmet için yeni bir depolama hesabı yapılandırın
 
 Bu adım isteğe bağlıdır ve yalnızca hizmetinizdeki bir depolama hesabının otomatik olarak oluşturulmasını etkinleştirmezseniz gerçekleştirilmelidir.
 
-Farklı bir bölgede bir Azure depolama hesabı oluşturmanız gerekiyorsa, adım adım yönergeler için bkz. [depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md) .
+Farklı bir bölgede bir Azure depolama hesabı oluşturmanız gerekiyorsa, adım adım yönergeler için bkz. [depolama hesabı oluşturma](../storage/common/storage-account-create.md) .
 
 Mevcut bir Microsoft Azure Storage hesabı eklemek için StorSimple Aygıt Yöneticisi Hizmeti sayfasındaki [Azure Portal](https://ms.portal.azure.com/) aşağıdaki adımları gerçekleştirin.
 
@@ -156,7 +156,7 @@ Mevcut bir Microsoft Azure Storage hesabı eklemek için StorSimple Aygıt Yöne
 
 1. Aygıt Yöneticisi hizmetinize gidin, seçin ve çift tıklayın. Bu, **genel bakış** dikey penceresini açar.
 2. **Yapılandırma** bölümünde **depolama hesabı kimlik bilgilerini** seçin.
-3.           **Ekle**'yi tıklatın.
+3. **Ekle**'ye tıklayın.
 4. **Depolama hesabı ekle** dikey penceresinde aşağıdakileri yapın:
    
    1. **Abonelik**için **geçerli**' i seçin.
@@ -165,7 +165,7 @@ Mevcut bir Microsoft Azure Storage hesabı eklemek için StorSimple Aygıt Yöne
    
    3. StorSimple cihazınız ve bulut arasında ağ iletişimi için güvenli bir kanal oluşturmak üzere **Etkinleştir** ' i seçin. Yalnızca özel bir bulutta çalışıyorsanız **devre dışı bırak** ' ı seçin.
    
-   4.           **Ekle**'yi tıklatın. Depolama hesabı başarıyla oluşturulduktan sonra bilgilendirilirsiniz.<br></br>
+   4. **Ekle**'ye tıklayın. Depolama hesabı başarıyla oluşturulduktan sonra bilgilendirilirsiniz.<br></br>
    
       ![Mevcut bir depolama hesabı kimlik bilgisi ekleyin](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

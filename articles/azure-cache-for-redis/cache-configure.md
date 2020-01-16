@@ -6,20 +6,20 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 62e0c9bbf8b1c7cef9b1cc239810cb554b5ffa45
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4d5716c8a31ceccbe23c1f77ad3b88030ff3065
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433545"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972138"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
 Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen yapılandırma açıklanmaktadır. Bu konu, Redsıs örnekleri için Azure önbelleği için varsayılan Redsıs sunucu yapılandırmasını da içerir.
 
 > [!NOTE]
 > Premium önbellek özelliklerini yapılandırma ve kullanma hakkında daha fazla bilgi için bkz. [kalıcılığı yapılandırma](cache-how-to-premium-persistence.md), [kümeleme yapılandırma](cache-how-to-premium-clustering.md)ve [sanal ağ desteğini yapılandırma](cache-how-to-premium-vnet.md).
-> 
-> 
+>
+>
 
 ## <a name="configure-azure-cache-for-redis-settings"></a>Redsıs ayarları için Azure önbelleğini yapılandırma
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
@@ -68,7 +68,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
 
 ### <a name="activity-log"></a>Etkinlik günlüğü
 
-Önbelleğiniz üzerinde gerçekleştirilen eylemleri görüntülemek için **etkinlik günlüğü** ' ne tıklayın. Bu görünümü diğer kaynakları içerecek şekilde genişletmek için filtrelemeyi de kullanabilirsiniz. Denetim günlükleriyle çalışma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](../azure-resource-manager/resource-group-audit.md). Redsıs olayları için Azure önbelleğini izleme hakkında daha fazla bilgi için bkz. [işlemler ve uyarılar](cache-how-to-monitor.md#operations-and-alerts).
+Önbelleğiniz üzerinde gerçekleştirilen eylemleri görüntülemek için **etkinlik günlüğü** ' ne tıklayın. Bu görünümü diğer kaynakları içerecek şekilde genişletmek için filtrelemeyi de kullanabilirsiniz. Denetim günlükleriyle çalışma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](../azure-resource-manager/management/view-activity-logs.md). Redsıs olayları için Azure önbelleğini izleme hakkında daha fazla bilgi için bkz. [işlemler ve uyarılar](cache-how-to-monitor.md#operations-and-alerts).
 
 ### <a name="access-control-iam"></a>Erişim denetimi (IAM)
 
@@ -76,7 +76,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
 
 ### <a name="tags"></a>Etiketler
 
-**Etiketler** bölümü, kaynaklarınızı düzenlemenize yardımcı olur. Daha fazla bilgi için bkz. [Etiketleri kullanarak Azure kaynaklarınızı düzenleme](../azure-resource-manager/resource-group-using-tags.md).
+**Etiketler** bölümü, kaynaklarınızı düzenlemenize yardımcı olur. Daha fazla bilgi için bkz. [Etiketleri kullanarak Azure kaynaklarınızı düzenleme](../azure-resource-manager/management/tag-resources.md).
 
 
 ### <a name="diagnose-and-solve-problems"></a>Sorunları tanılama ve çözme
@@ -149,8 +149,8 @@ Yeni bir bellek ayırma değeri seçerken göz önünde bulundurmanız gereken t
 
 > [!IMPORTANT]
 > **MaxMemory-ayrýlmýþ** ve **maxfragmentationmemory-ayrýlmýþ** ayarları yalnızca standart ve Premium önbellekler için kullanılabilir.
-> 
-> 
+>
+>
 
 #### <a name="keyspace-notifications-advanced-settings"></a>Keyspace bildirimleri (Gelişmiş ayarlar)
 Redsıs anahtar alanı bildirimleri, **Gelişmiş ayarlar** dikey penceresinde yapılandırılır. Anahtar alanı bildirimleri, bazı olaylar gerçekleştiğinde istemcilerin bildirim almasına izin verir.
@@ -159,15 +159,15 @@ Redsıs anahtar alanı bildirimleri, **Gelişmiş ayarlar** dikey penceresinde y
 
 > [!IMPORTANT]
 > Anahtar alanı bildirimleri ve **bildirim-keyspace-olaylar** ayarı yalnızca standart ve Premium önbellekler için kullanılabilir.
-> 
-> 
+>
+>
 
 Daha fazla bilgi için bkz. [Redsıs keyspace bildirimleri](https://redis.io/topics/notifications). Örnek kod için [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) örneğindeki [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) dosyasına bakın.
 
 
 <a name="recommendations"></a>
 ## <a name="azure-cache-for-redis-advisor"></a>Redsıs Danışmanı için Azure önbelleği
-**Redsıs Advisor dikey penceresinde Azure önbelleği** önbelleğiniz için öneriler görüntüler. Normal işlemler sırasında hiçbir öneri gösterilmez. 
+**Redsıs Advisor dikey penceresinde Azure önbelleği** önbelleğiniz için öneriler görüntüler. Normal işlemler sırasında hiçbir öneri gösterilmez.
 
 ![Öneriler](./media/cache-configure/redis-cache-no-recommendations.png)
 
@@ -205,8 +205,8 @@ Kümeleme etkin olan çalışan bir Premium önbelleğin küme boyutunu değişt
 
 > [!NOTE]
 > Redsıs Premium katmanının Azure önbelleğinin genel kullanıma sunulduğuna karşın, Redsıs küme boyutu özelliği şu anda önizlemededir.
-> 
-> 
+>
+>
 
 ![Redsıs kümesi boyutu](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
@@ -214,8 +214,8 @@ Küme boyutunu değiştirmek için kaydırıcıyı kullanın veya parça **sayı
 
 > [!IMPORTANT]
 > Redsıs Kümelemesi yalnızca Premium önbellekler için kullanılabilir. Daha fazla bilgi için bkz. [redsıs Için Premium Azure önbelleği için kümeleme yapılandırma](cache-how-to-premium-clustering.md).
-> 
-> 
+>
+>
 
 
 ### <a name="redis-data-persistence"></a>Redis veri kalıcılığı
@@ -226,16 +226,16 @@ Daha fazla bilgi için bkz. [redsıs Için Premium Azure önbelleği için kalı
 
 > [!IMPORTANT]
 > Redsıs veri kalıcılığı yalnızca Premium önbellekler için kullanılabilir.
-> 
-> 
+>
+>
 
 ### <a name="schedule-updates"></a>Güncelleştirmeleri zamanlama
-**Güncelleştirmeleri zamanla** dikey penceresi önbelleğiniz için redsıs sunucu güncelleştirmeleri için bir bakım penceresi atamanıza olanak tanır. 
+**Güncelleştirmeleri zamanla** dikey penceresi önbelleğiniz için redsıs sunucu güncelleştirmeleri için bir bakım penceresi atamanıza olanak tanır.
 
 > [!IMPORTANT]
 > Bakım penceresi yalnızca Redsıs sunucu güncelleştirmeleri için geçerlidir ve önbelleği barındıran VM 'lerin işletim sisteminde herhangi bir Azure güncelleştirmesi ya da güncelleştirmesi için geçerli değildir.
-> 
-> 
+>
+>
 
 ![Güncelleştirmeleri zamanlama](./media/cache-configure/redis-schedule-updates.png)
 
@@ -243,8 +243,8 @@ Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün i�
 
 > [!IMPORTANT]
 > **Güncelleştirmeleri zamanla** Işlevi yalnızca Premium katman önbellekleri için kullanılabilir. Daha fazla bilgi ve yönergeler için bkz. [redsıs yönetimi Için Azure önbelleği-zamanlama güncelleştirmeleri](cache-administration.md#schedule-updates).
-> 
-> 
+>
+>
 
 ### <a name="geo-replication"></a>Coğrafi çoğaltma
 
@@ -252,16 +252,16 @@ Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün i�
 
 > [!IMPORTANT]
 > **Coğrafi çoğaltma** yalnızca Premium katman önbellekler için kullanılabilir. Daha fazla bilgi ve yönergeler için bkz. [redsıs Için Azure önbelleği Için Coğrafi çoğaltmayı yapılandırma](cache-how-to-geo-replication.md).
-> 
-> 
+>
+>
 
 ### <a name="virtual-network"></a>Sanal Ağ
 **Sanal ağ** bölümü önbelleğiniz için sanal ağ ayarlarını yapılandırmanıza olanak tanır. VNET desteğiyle Premium önbellek oluşturma ve ayarlarını güncelleştirme hakkında daha fazla bilgi için bkz. [Premium Azure önbelleği Için sanal ağ desteğini redsıs için yapılandırma](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
-> Sanal ağ ayarları yalnızca önbellek oluşturma sırasında VNET desteğiyle yapılandırılmış olan Premium önbellekler için kullanılabilir. 
-> 
-> 
+> Sanal ağ ayarları yalnızca önbellek oluşturma sırasında VNET desteğiyle yapılandırılmış olan Premium önbellekler için kullanılabilir.
+>
+>
 
 ### <a name="firewall"></a>Güvenlik Duvarı
 
@@ -275,8 +275,8 @@ Bir başlangıç ve bitiş IP adresi aralığı ile güvenlik duvarı kuralları
 
 > [!IMPORTANT]
 > Güvenlik duvarı kuralları yapılandırılmış olsa bile, Redsıs izleme sistemlerine yönelik Azure önbelleğinden gelen bağlantılara her zaman izin verilir.
-> 
-> 
+>
+>
 
 ### <a name="properties"></a>Özellikler
 Önbellek uç noktası ve bağlantı noktaları da dahil olmak üzere önbelleğiniz hakkındaki bilgileri görüntülemek için **Özellikler** ' e tıklayın.
@@ -284,14 +284,14 @@ Bir başlangıç ve bitiş IP adresi aralığı ile güvenlik duvarı kuralları
 ![Redsıs özellikleri için Azure önbelleği](./media/cache-configure/redis-cache-properties.png)
 
 ### <a name="locks"></a>Kilitler
-**Kilitler** bölümü, kuruluşunuzdaki diğer kullanıcıların yanlışlıkla önemli kaynakları silmesini veya değiştirmesini engellemek için bir aboneliği, kaynak grubunu veya kaynağı kilitlemenizi sağlar. Daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](../azure-resource-manager/resource-group-lock-resources.md).
+**Kilitler** bölümü, kuruluşunuzdaki diğer kullanıcıların yanlışlıkla önemli kaynakları silmesini veya değiştirmesini engellemek için bir aboneliği, kaynak grubunu veya kaynağı kilitlemenizi sağlar. Daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="automation-script"></a>Otomasyon betiği
 
-Gelecekteki dağıtımlar için dağıtılan kaynaklarınızın bir şablonunu derlemek ve dışarı aktarmak için **Otomasyon betiği** ' ne tıklayın. Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonlarıyla kaynak dağıtma](../azure-resource-manager/resource-group-template-deploy.md).
+Gelecekteki dağıtımlar için dağıtılan kaynaklarınızın bir şablonunu derlemek ve dışarı aktarmak için **Otomasyon betiği** ' ne tıklayın. Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonlarıyla kaynak dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="administration-settings"></a>Yönetim ayarları
-**Yönetim** bölümündeki ayarlar önbelleğiniz için aşağıdaki yönetim görevlerini gerçekleştirmenize olanak tanır. 
+**Yönetim** bölümündeki ayarlar önbelleğiniz için aşağıdaki yönetim görevlerini gerçekleştirmenize olanak tanır.
 
 ![Yönetim](./media/cache-configure/redis-cache-administration.png)
 
@@ -309,8 +309,8 @@ Dışarı aktarma işlemi, redin için Azure önbelleğinde depolanan verileri R
 
 > [!IMPORTANT]
 > İçeri/dışarı aktarma yalnızca Premium katman önbellekler için kullanılabilir. Daha fazla bilgi ve yönergeler için bkz. [redsıs Için Azure önbelleğinde verileri içeri ve dışarı aktarma](cache-how-to-import-export-data.md).
-> 
-> 
+>
+>
 
 ### <a name="reboot"></a>Yeniden başlatma
 **Yeniden başlatma** dikey penceresi önbelleğiniz düğümlerini yeniden başlatmanızı sağlar. Bu yeniden başlatma özelliği, bir önbellek düğümünde hata oluşursa uygulamanızı dayanıklılık açısından test etmenizi sağlar.
@@ -325,13 +325,14 @@ Kümelemenin etkinleştirildiği Premium bir önbelleğiniz varsa, önbelleğin 
 
 > [!IMPORTANT]
 > Yeniden başlatma artık tüm fiyatlandırma katmanlarında kullanılabilir. Daha fazla bilgi ve yönergeler için bkz. [redsıs yönetimi Için Azure önbelleği-yeniden başlatma](cache-administration.md#reboot).
-> 
-> 
+>
+>
 
 
 ## <a name="monitoring"></a>İzleme
 
-**İzleme** bölümü Redsıs Için Azure önbelleğiniz için tanılamayı ve izlemeyi yapılandırmanıza olanak tanır. Redsıs izleme ve Tanılama için Azure önbelleği hakkında daha fazla bilgi için bkz. [redsıs Için Azure önbelleğini izleme](cache-how-to-monitor.md).
+**İzleme** bölümü Redsıs Için Azure önbelleğiniz için tanılamayı ve izlemeyi yapılandırmanıza olanak tanır.
+Redsıs izleme ve Tanılama için Azure önbelleği hakkında daha fazla bilgi için bkz. [redsıs Için Azure önbelleğini izleme](cache-how-to-monitor.md).
 
 ![Tanılama](./media/cache-configure/redis-cache-diagnostics.png)
 
@@ -368,8 +369,8 @@ Varsayılan olarak, Azure Izleyici 'deki önbellek ölçümleri [30 gün boyunca
 
 > [!NOTE]
 > Kaynak sistem durumu şu anda bir sanal ağda barındırılan Redsıs örnekleri için Azure önbelleğinin sistem durumunu bildiremedi. Daha fazla bilgi için bkz. [BIR VNET 'te önbellek barındırırken tüm önbellek özelliklerini çalışma](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
-> 
-> 
+>
+>
 
 ### <a name="new-support-request"></a>Yeni destek isteği
 Önbelleğiniz için destek isteği açmak üzere **Yeni destek isteği** ' ne tıklayın.
@@ -383,12 +384,12 @@ Redsıs örnekleri için yeni Azure önbelleği, aşağıdaki varsayılan Redsı
 
 > [!NOTE]
 > Bu bölümdeki ayarlar `StackExchange.Redis.IServer.ConfigSet` yöntemi kullanılarak değiştirilemez. Bu yöntem, bu bölümdeki komutlardan biriyle çağrılırsa, aşağıdaki örneğe benzer bir özel durum oluşur:  
-> 
+>
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
-> 
+>
 > **Maksimum bellek ilkesi**gibi yapılandırılabilir değerler, Azure CLI veya PowerShell gibi Azure Portal veya komut satırı yönetim araçları aracılığıyla yapılandırılabilir.
-> 
-> 
+>
+>
 
 | Ayar | Varsayılan değer | Açıklama |
 | --- | --- | --- |
@@ -422,8 +423,8 @@ Veritabanları hakkında daha fazla bilgi için bkz. [redsıs veritabanları nel
 
 > [!NOTE]
 > `databases` ayarı yalnızca önbellek oluşturma sırasında ve yalnızca PowerShell, CLı veya diğer yönetim istemcileri kullanılarak yapılandırılabilir. PowerShell kullanarak önbellek oluşturma sırasında `databases` yapılandırma örneği için, bkz. [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases).
-> 
-> 
+>
+>
 
 <a name="maxclients"></a>
 <sup>2</sup>`maxclients`, redsıs fiyatlandırma katmanının her bir Azure önbelleği için farklıdır.
@@ -444,15 +445,15 @@ Veritabanları hakkında daha fazla bilgi için bkz. [redsıs veritabanları nel
 
 > [!NOTE]
 > Her önbellek boyutu belirli sayıda bağlantıya *izin verdiğinden,* redde her bağlantı ile ilişkili ek yük vardır. Bu ek yükün bir örneği, TLS/SSL şifreleme sonucu olarak CPU ve bellek kullanımı olabilir. Belirli bir önbellek boyutu için en fazla bağlantı sınırı, hafif bir şekilde yüklenmiş önbelleği varsayar. Bağlantı yüklerinden yükleme, istemci *işlemlerinden yükleme,* sistem kapasitesini aşarsa, geçerli önbellek boyutu için bağlantı sınırını aşmasanız bile önbellek, kapasite sorunları yaşayabilir.
-> 
-> 
+>
+>
 
 
 
 ## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>Redsıs için Azure önbelleğinde redsıs komutları desteklenmez
 > [!IMPORTANT]
 > Redsıs örnekleri için Azure önbelleğinin yapılandırması ve yönetimi Microsoft tarafından yönetildiğinden, aşağıdaki komutlar devre dışı bırakılmıştır. Bunları çağırmaya çalışırsanız, `"(error) ERR unknown command"`benzer bir hata iletisi alırsınız.
-> 
+>
 > * BGREWRITEAOF
 > * BGSAVE
 > * KURULUMUNUN
@@ -462,8 +463,8 @@ Veritabanları hakkında daha fazla bilgi için bkz. [redsıs veritabanları nel
 > * Event
 > * SLA 'lar
 > * KÜME kümesi yazma komutları devre dışı bırakıldı, ancak salt okunurdur küme komutlarına izin verilir.
-> 
-> 
+>
+>
 
 Redsıs komutları hakkında daha fazla bilgi için bkz. [https://redis.io/commands](https://redis.io/commands).
 
@@ -473,8 +474,8 @@ Redsıs örnekleri için Azure önbelleğiniz için, tüm önbellek katmanların
 > [!IMPORTANT]
 > - Redin Konsolu [VNET](cache-how-to-premium-vnet.md)ile çalışmaz. Önbelleğiniz bir sanal ağın parçası olduğunda, yalnızca VNET 'teki istemciler önbelleğe erişebilir. Redsıs konsolu, sanal ağ dışında bir yerel tarayıcınızda çalıştığından, önbelleğinize bağlanamaz.
 > - Redsıs için Azure önbelleğinde tüm Redın komutları desteklenmez. Redin için Azure önbelleği için devre dışı bırakılan Redsıs komutlarının bir listesi için, [redsıs Için Azure önbelleğinde desteklenmeyen önceki redin komutlarına](#redis-commands-not-supported-in-azure-cache-for-redis) bakın. Redsıs komutları hakkında daha fazla bilgi için bkz. [https://redis.io/commands](https://redis.io/commands).
-> 
-> 
+>
+>
 
 Redsıs konsoluna erişmek için, **redsıs** dikey penceresinde **konsol** ' a tıklayın.
 
@@ -506,8 +507,7 @@ shard1>get myKey
 
 ![Redsıs için Azure önbelleğini taşıma](./media/cache-configure/redis-cache-move.png)
 
-Kaynakları bir kaynak grubundan diğerine ve bir abonelikten diğerine taşıma hakkında daha fazla bilgi için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/resource-group-move-resources.md).
+Kaynakları bir kaynak grubundan diğerine ve bir abonelikten diğerine taşıma hakkında daha fazla bilgi için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Redsıs komutlarıyla çalışma hakkında daha fazla bilgi için bkz. [redsıs komutlarını nasıl çalıştırabilirim?](cache-faq.md#how-can-i-run-redis-commands)
-

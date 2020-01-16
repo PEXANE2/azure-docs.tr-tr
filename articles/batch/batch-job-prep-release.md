@@ -3,7 +3,7 @@ title: İşlem düğümlerinde işleri hazırlamak ve işleri gerçekleştirmek 
 description: İşlem düğümlerine Azure Batch veri aktarımını en aza indirmek ve iş tamamlandığında düğüm Temizleme için görevleri serbest bırakmak için iş düzeyinde hazırlık görevlerini kullanın.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 2dbdbc8b13a75b72ca09a319c6925d0835a52e13
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c5c9dfcaa88b35e14cf5d56b01b4e364c856600
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095127"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027124"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Toplu işlem düğümlerinde iş hazırlama ve iş bırakma görevlerini çalıştırma
 
@@ -67,7 +67,7 @@ Bir işin görevlerinin yürütülmesinden önce Batch, görevi çalıştırmak 
 > 
 > 
 
-## <a name="job-release-task"></a>İş bırakma görevi
+## <a name="job-release-task"></a>İş serbest bırakma görevi
 Bir iş tamamlandı olarak işaretlendikten sonra, havuzda en az bir görevi yürüten her düğüm üzerinde iş bırakma görevi yürütülür. Bir işi sonlandırma isteği vererek tamamlandı olarak işaretlersiniz. Batch hizmeti daha sonra iş durumunu *sonlandırılıyor*, işle ilgili etkin veya çalışan görevleri sonlandırır ve iş serbest bırakma görevini çalıştırır. Sonra iş *tamamlandı* durumuna gider.
 
 > [!NOTE]
@@ -80,7 +80,7 @@ Iş sürümü görevleri, Batch hizmeti tarafından sonlandırılmadan önce en 
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>Batch .NET ile iş PREP ve sürüm görevleri
 İş hazırlama görevini kullanmak için, işinizin [Cloudjob. JobPreparationTask][net_job_prep_cloudjob] özelliğine bir [JobPreparationTask][net_job_prep] nesnesi atayın. Benzer şekilde, bir [jobreleasetask][net_job_release] başlatın ve işin yayın görevini ayarlamak için Iş 'Nin [Cloudjob. jobreleasetask][net_job_prep_cloudjob] özelliğine atayın.
 
-Bu kod parçacığında, `myBatchClient` bir [batchclient][net_batch_client]örneğidir ve `myPool` Batch hesabı içindeki mevcut bir havuzudur.
+Bu kod parçacığında, `myBatchClient` [Batchclient][net_batch_client]'ın bir örneğidir ve `myPool` Batch hesabı içindeki mevcut bir havuzudur.
 
 ```csharp
 // Create the CloudJob for CloudPool "myPool"

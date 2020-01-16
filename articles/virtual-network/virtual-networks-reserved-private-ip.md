@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c37c49d8f7e09334014af290bf3a8c8e6d35f04b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a13a0a54e9ded48cc5848843f4c329b2dea90f65
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058361"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975226"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>PowerShell kullanarak statik bir iç özel IP adresi ayarlama (klasik)
 Çoğu durumda, sanal makineniz için statik bir iç IP adresi belirtmeniz gerekmez. Bir sanal ağdaki VM 'Ler, belirttiğiniz bir aralıktan otomatik olarak bir iç IP adresi alır. Ancak belirli durumlarda, belirli bir sanal makine için statik IP adresi belirtmek mantıklı olur. Örneğin, VM 'niz DNS çalıştıracaksanız veya bir etki alanı denetleyicisi olur. Statik bir iç IP adresi, bir durdurma/sağlamayı kaldırma durumunda bile VM ile kalır. 
 
 > [!IMPORTANT]
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır:  [Kaynak Yöneticisi ve klasik](../azure-resource-manager/resource-manager-deployment-model.md). Bu makale klasik dağıtım modelini incelemektedir. Microsoft, en yeni dağıtımların [Kaynak Yöneticisi dağıtım modelini](virtual-networks-static-private-ip-arm-ps.md)kullanmasını önerir.
+> Azure’da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır:  [Resource Manager ve klasik](../azure-resource-manager/management/deployment-models.md). Bu makale klasik dağıtım modelini incelemektedir. Microsoft, en yeni dağıtımların [Kaynak Yöneticisi dağıtım modelini](virtual-networks-static-private-ip-arm-ps.md)kullanmasını önerir.
 > 
 > 
 > ## <a name="install-the-azure-powershell-service-management-module"></a>Azure PowerShell Service Management modülünü yükler
@@ -51,7 +51,7 @@ Aşağıdaki komutları çalıştırmadan önce, [Azure PowerShell hizmet yönet
 > 
 
 ## <a name="how-to-specify-a-static-internal-ip-when-creating-a-vm"></a>VM oluştururken statik bir iç IP belirtme
-Aşağıdaki PowerShell betiği *TestService*adlı yeni bir bulut hizmeti oluşturur, ardından Azure 'dan bir görüntü alır ve ardından alınan görüntüyü kullanarak yeni bulut hizmetinde *TESTVM* adlı BIR VM oluşturur, VM 'yi *alt ağ-1*adlı bir alt ağda olacak şekilde ayarlar, ve VM için *kısmına 10.0.0.7* bir STATIK iç IP olarak ayarlar:
+Aşağıdaki PowerShell betiği, *TestService*adlı yeni bir bulut hizmeti oluşturur, sonra da Azure 'dan bir görüntü alır, ardından alınan görüntüyü kullanarak yeni bulut hizmetinde *TESTVM* adlı BIR VM oluşturur, VM 'yi *alt ağ-1*adlı bir alt ağda olacak şekilde ayarlar ve sanal makine IÇIN *kısmına 10.0.0.7* 'i statik bir iç IP olarak ayarlar:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}

@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6dbe4c1533aecfab4a62ce3ad90b694c0c00f4b6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103481"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981398"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure 'da yeni bir Windows VM oluştururken dağıtım sorunlarını giderme
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -35,7 +35,7 @@ Diğer VM dağıtım sorunları ve soruları için bkz. [Azure 'Da Windows sanal
 ## <a name="collect-activity-logs"></a>Etkinlik günlüklerini topla
 Sorun gidermeye başlamak için, sorunla ilişkili hatayı belirlemek üzere etkinlik günlüklerini toplayın. Aşağıdaki bağlantılar, izlenecek işlemle ilgili ayrıntılı bilgiler içerir.
 
-[Dağıtım işlemlerini görüntüleme](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Dağıtım işlemlerini görüntüleme](../../azure-resource-manager/templates/deployment-history.md)
 
 [Azure kaynaklarını yönetmek için etkinlik günlüklerini görüntüleme](../../resource-group-audit.md)
 
@@ -43,7 +43,7 @@ Sorun gidermeye başlamak için, sorunla ilişkili hatayı belirlemek üzere etk
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**IZ** İşletim sistemi Windows genelleştirilemez ve bu, yüklenip/veya Genelleştirilmiş ayarla yakalandıysa, herhangi bir hata olmayacaktır. Benzer şekilde, işletim sistemi Windows özelleştirilmiştir ve bu, yüklenip/veya özel ayar ile yakalandıysa, herhangi bir hata olmayacaktır.
+**Y:** İşletim sistemi Windows genelleştirilemez ve bu, yüklenip/veya Genelleştirilmiş ayarla yakalandıysa, herhangi bir hata olmayacaktır. Benzer şekilde, işletim sistemi Windows özelleştirilmiştir ve bu, yüklenip/veya özel ayar ile yakalandıysa, herhangi bir hata olmayacaktır.
 
 **Karşıya yükleme hataları:**
 
@@ -65,7 +65,7 @@ Bu hataları çözmek için, şirket içinde kullanılabilir olan özgün VHD 'y
 
 Bu hataları gidermek için, portaldan geçerli görüntüyü silin ve [geçerli VHD 'lerden](../windows/create-vm-specialized.md) , işletim sistemi (Genelleştirilmiş/özelleştirilmiş) ile aynı ayarı kullanarak yeniden yakalayın.
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Sorun: Özel/Galeri/Market görüntüsü; ayırma hatası
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Sorun: özel/galeri/Market görüntüsü; ayırma hatası
 Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitlendiğinde veya isteğe uygun boş alana sahip olmadığında ortaya çıkar.
 
 **Neden 1:** Küme, istenen VM boyutunu desteklemez.
@@ -75,7 +75,7 @@ Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitle
 * Daha küçük bir VM boyutu kullanarak isteği yeniden deneyin.
 * İstenen VM 'nin boyutu değiştirilenemez:
   * Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun.
-    Kaynak **grupları kaynak grupları** >  > 'na > tıklayın kullanılabilirlik kümesisanal > **makineleriniz sanal makineniz** > *Durdur.*  > 
+    Kaynak **grupları** > *kaynak*grupları > 'natıklayın*kullanılabilirlik kümesi* **sanal makineleriniz**sanal makineniz >  >  > *Durdur.*  > 
   * Tüm VM 'Ler durduktan sonra, istenen boyutta yeni VM 'yi oluşturun.
   * Önce yeni VM 'yi başlatın ve sonra durdurulan sanal makinelerin her birini seçip **Başlat**' a tıklayın.
 

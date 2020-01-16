@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d1c747a52a1e8dedd0b5ba411b673eee463a2b6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1aa759a2984764169eb28935e095d0f7c0f90c08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849590"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969841"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Otomasyonu hesabınızı başka bir aboneliğe taşıma
 
-Azure, bazı kaynakları yeni bir kaynak grubuna veya aboneliğe taşıyabilme olanağı sağlar. Kaynakları Azure portal, PowerShell, Azure CLı veya REST API üzerinden taşıyabilirsiniz. İşlem hakkında daha fazla bilgi edinmek için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/resource-group-move-resources.md).
+Azure, bazı kaynakları yeni bir kaynak grubuna veya aboneliğe taşıyabilme olanağı sağlar. Kaynakları Azure portal, PowerShell, Azure CLı veya REST API üzerinden taşıyabilirsiniz. İşlem hakkında daha fazla bilgi edinmek için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Azure Otomasyonu hesapları, taşınabilecek kaynaklardan biridir. Bu makalede, Otomasyon hesaplarını başka bir kaynağa veya aboneliğe taşıma adımlarını öğreneceksiniz.
 
@@ -147,4 +147,4 @@ Taşıma işlemi tamamlandığında, doğrulanması gereken görevler listesini 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure 'da kaynakları taşıma hakkında daha fazla bilgi için bkz. [Azure 'da kaynakları taşıma](../../azure-resource-manager/move-support-resources.md).
+Azure 'da kaynakları taşıma hakkında daha fazla bilgi için bkz. [Azure 'da kaynakları taşıma](../../azure-resource-manager/management/move-support-resources.md).

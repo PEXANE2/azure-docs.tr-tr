@@ -14,13 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mathoma
 ms.reviewer: jroth
+experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 60c5af609cea876370c74684362e9b44db40c1ee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1c2d5ae5d85624ea172eb9a95d4086dd71287c4f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101964"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978223"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Azure’daki bir SQL Server Sanal Makinesi’ne Bağlanma (Klasik Dağıtım)
 > [!div class="op_single_selector"]
@@ -33,7 +34,7 @@ ms.locfileid: "70101964"
 Bu konu, bir Azure sanal makinesinde çalışan SQL Server örneğine nasıl bağlanabileceğinizi açıklamaktadır. Bazı [genel bağlantı senaryolarını](#connection-scenarios) ele alır ve [Azure VM 'de SQL Server bağlantısını yapılandırmaya yönelik ayrıntılı adımlar](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)sağlar.
 
 > [!IMPORTANT] 
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/resource-manager-deployment-model.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. Kaynak Yöneticisi VM 'Leri kullanıyorsanız, bkz. [Kaynak Yöneticisi kullanarak Azure 'da SQL Server sanal makinesine bağlanma](../sql/virtual-machines-windows-sql-connect.md).
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. Kaynak Yöneticisi VM 'Leri kullanıyorsanız, bkz. [Kaynak Yöneticisi kullanarak Azure 'da SQL Server sanal makinesine bağlanma](../sql/virtual-machines-windows-sql-connect.md).
 
 ## <a name="connection-scenarios"></a>Bağlantı senaryoları
 Bir istemcinin sanal makinede çalışan SQL Server bağlandığı şekilde, istemcinin konumuna ve makine/ağ yapılandırmasına bağlı olarak farklılık gösterir. Bu senaryolar şunlardır:
@@ -66,7 +67,7 @@ Internet üzerinden bağlanmak için, sanal makinenin DNS adını ve VM uç nokt
 Bu bağlantı dizesi Internet üzerinden istemciler için bağlantıya izin verse de, bu, herkesin SQL Server bağlanabileceği anlamına gelmez. Dış istemciler, doğru Kullanıcı adı ve parolaya sahiptir. Ek güvenlik için, ortak sanal makine uç noktası için iyi bilinen 1433 numaralı bağlantı noktasını kullanmayın. Mümkünse, trafiği yalnızca izin veren istemcilerle kısıtlamak için uç noktanıza bir ACL eklemeyi düşünün. ACL 'Leri uç noktalarla kullanma hakkında yönergeler için bkz. [bir uç noktada ACL 'Yi yönetme](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
 
 > [!NOTE]
-> SQL Server ile iletişim kurmak için bu tekniği kullandığınızda, Azure veri merkezindeki tüm giden veriler [giden veri aktarımları](https://azure.microsoft.com/pricing/details/data-transfers/)için normal fiyatlandırmaya tabidir.
+> SQL Server ile iletişim kurmak için bu tekniği kullandığınızda, Azure veri merkezindeki tüm giden veriler [giden veri aktarımları için normal fiyatlandırmaya](https://azure.microsoft.com/pricing/details/data-transfers/)tabidir.
 > 
 > 
 

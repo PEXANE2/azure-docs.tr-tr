@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 19614570369e3814658f9ca6e50635507f094712
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 35236a95e691d6f7d0444a038e62116a684965a7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977327"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978457"
 ---
-# <a name="using-the-azure-importexport-tool"></a>Azure Içeri/dışarı aktarma aracı 'nı kullanma 
+# <a name="using-the-azure-importexport-tool"></a>Azure Içeri/dışarı aktarma aracı 'nı kullanma
 
 Azure içeri/dışarı aktarma aracı (Waımportexport. exe), Azure Içeri/dışarı aktarma hizmeti için iş oluşturmak ve yönetmek üzere kullanılır ve bu sayede büyük miktarlardaki verileri Azure Blob depolama alanına veya dışına aktarmanıza olanak tanır.
 
@@ -25,10 +25,10 @@ Aşağıdaki makalelerde nasıl yapılacağı gösterilmektedir:
 
 - Azure Içeri/dışarı aktarma aracı 'nı yükleyip kurun.
 - Sürücülerinizdeki verileri Azure Blob depolama alanına aktardığınız bir iş için sabit sürücülerinizi hazırlayın.
-- Günlük dosyalarını Kopyala ile bir işin durumunu gözden geçirin. 
-- Bir içeri aktarma işini onarın. 
-- Bir dışarı aktarma işini onarın. 
-- Azure Içeri/dışarı aktarma aracı sorunlarını giderin. 
+- Günlük dosyalarını Kopyala ile bir işin durumunu gözden geçirin.
+- Bir içeri aktarma işini onarın.
+- Bir dışarı aktarma işini onarın.
+- Azure Içeri/dışarı aktarma aracı sorunlarını giderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

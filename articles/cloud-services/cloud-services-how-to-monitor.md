@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
-ms.openlocfilehash: 096077550a426d7eb77ed0d71e720149dd103a55
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386077"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972954"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Bulut hizmeti Izlemeye giriş
 
@@ -52,7 +52,7 @@ Her bir rol oluşturulduğunda, Visual Studio buna Azure Tanılama uzantısını
 
 ## <a name="setup-diagnostics-extension"></a>Tanılama uzantısını ayarla
 
-İlk olarak, **Klasik** bir depolama hesabınız yoksa [bir tane oluşturun](../storage/common/storage-quickstart-create-account.md). Depolama hesabının belirtilen **klasik dağıtım modeliyle** oluşturulduğundan emin olun.
+İlk olarak, **Klasik** bir depolama hesabınız yoksa [bir tane oluşturun](../storage/common/storage-account-create.md). Depolama hesabının belirtilen **klasik dağıtım modeliyle** oluşturulduğundan emin olun.
 
 Ardından, **depolama hesabı (klasik)** kaynağına gidin. **Ayarlar** > **erişim anahtarları** ' nı seçin ve **birincil bağlantı dizesi** değerini kopyalayın. Bulut hizmeti için bu değere ihtiyacınız vardır. 
 

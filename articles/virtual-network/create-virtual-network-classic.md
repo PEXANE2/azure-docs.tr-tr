@@ -16,49 +16,49 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: d934386a47c339cd3abdf72578736b44d40e7952
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 50054379a3032a368a10932e15396373a3817cff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059003"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978923"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Birden çok alt ağ içeren bir sanal ağ (klasik) oluşturma
 
 > [!IMPORTANT]
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki [farklı dağıtım modeli](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vardır: Kaynak Yöneticisi ve klasik. Bu makale klasik dağıtım modelini incelemektedir. Microsoft, [Kaynak Yöneticisi](quick-create-portal.md) dağıtım modeli aracılığıyla birçok yeni sanal ağın oluşturulmasını önerir.
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki [farklı dağıtım modeli](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vardır: Kaynak Yöneticisi ve klasik. Bu makale klasik dağıtım modelini incelemektedir. Microsoft, [Kaynak Yöneticisi](quick-create-portal.md) dağıtım modeli aracılığıyla birçok yeni sanal ağın oluşturulmasını önerir.
 
 Bu öğreticide, ayrı genel ve özel alt ağlara sahip olan temel bir Azure sanal ağı (klasik) oluşturmayı öğrenin. Sanal makineler ve bulut hizmetleri gibi bir alt ağda Azure kaynakları oluşturabilirsiniz. Sanal ağlarda oluşturulan kaynaklar (klasik) birbirleriyle ve bir sanal ağa bağlı diğer ağlardaki kaynaklarla iletişim kurabilir.
 
 Tüm [sanal ağ](manage-virtual-network.md) ve [alt ağ](virtual-network-manage-subnet.md) ayarları hakkında daha fazla bilgi edinin.
 
 > [!WARNING]
-> Bir [abonelik devre dışı bırakıldığında,](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit)sanal ağlar (klasik) Azure tarafından hemen silinir. Sanal ağlar (klasik), kaynakların sanal ağda mevcut olup olmamasına bakılmaksızın silinir. Daha sonra aboneliği yeniden etkinleştirirseniz, sanal ağda var olan kaynakların yeniden oluşturulması gerekir.
+> Bir [abonelik devre dışı bırakıldığında,](../cost-management-billing/manage/subscription-disabled.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit)sanal ağlar (klasik) Azure tarafından hemen silinir. Sanal ağlar (klasik), kaynakların sanal ağda mevcut olup olmamasına bakılmaksızın silinir. Daha sonra aboneliği yeniden etkinleştirirseniz, sanal ağda var olan kaynakların yeniden oluşturulması gerekir.
 
 [Azure Portal](#portal), [Azure komut SATıRı arabirimi (CLI) 1,0](#azure-cli)veya [PowerShell](#powershell)kullanarak bir sanal ağ (klasik) oluşturabilirsiniz.
 
 ## <a name="portal"></a>Portal
 
-1. Bir Internet tarayıcısında [Azure Portal](https://portal.azure.com)gidin. [Azure hesabınızı](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)kullanarak oturum açın. Azure hesabınız yoksa, oturum açabileceğiniz bir [ücretsiz deneme sürümü](https://azure.microsoft.com/offers/ms-azr-0044p).
+1. Bir Internet tarayıcısında [Azure Portal](https://portal.azure.com)gidin. [Azure hesabınızı](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)kullanarak oturum açın. Azure hesabınız yoksa [ücretsiz denemeye](https://azure.microsoft.com/offers/ms-azr-0044p) kaydolabilirsiniz.
 2. Portalda **kaynak oluştur ' a** tıklayın.
 3. Görüntülenen **Yeni** bölmenin en üstündeki **Market** 'te bulunan *sanal ağı* girin. Arama sonuçlarında göründüğünde **sanal ağ ' a** tıklayın.
 4. Görüntülenen **sanal ağ** bölmesindeki **bir dağıtım modeli seçin** kutusunda **Klasik** ' i seçin ve ardından **Oluştur**' a tıklayın. 
 5. **Sanal ağ oluştur (klasik)** bölmesinde aşağıdaki değerleri girin ve **Oluştur**' a tıklayın:
 
-    |Ayar|Value|
+    |Ayar|Değer|
     |---|---|
-    |Name|myVnet|
+    |Ad|myVnet|
     |Adres alanı|10.0.0.0/16|
     |Alt ağ adı|Genel|
     |Alt ağ adres aralığı|10.0.0.0/24|
-    |Resource group|**Yeni oluştur** ' u seçili bırakın ve **myresourcegroup**girin.|
+    |Kaynak grubu|**Yeni oluştur** ' u seçili bırakın ve **myresourcegroup**girin.|
     |Abonelik ve konum|Aboneliğinizi ve konumunuzu seçin.
 
     Azure 'u yeni kullanıyorsanız [kaynak grupları](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [abonelikler](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)ve [konumlar](https://azure.microsoft.com/regions) ( *bölge*olarak da bilinir) hakkında daha fazla bilgi edinin.
 4. Portalda, bir sanal ağ oluşturduğunuzda yalnızca bir alt ağ oluşturabilirsiniz. Bu öğreticide, sanal ağı oluşturduktan sonra ikinci bir alt ağ oluşturursunuz. Daha sonra **genel** alt ağda Internet erişimli kaynaklar oluşturabilirsiniz. Ayrıca, **özel** alt ağda Internet 'ten erişilemeyen kaynaklar da oluşturabilirsiniz. İkinci alt ağı oluşturmak için, sayfanın üst kısmındaki **kaynakları ara** kutusuna **myvnet** girin. Arama sonuçlarında göründüğünde **Myvnet** ' e tıklayın.
 5. Görüntülenen **sanal ağ oluştur (klasik)** bölmesindeki **alt ağlar** ( **Ayarlar** bölümünde) seçeneğine tıklayın.
 6. Açılan **Myvnet-alt ağları** bölmesinde **+ Ekle** ' ye tıklayın.
-7. **Alt ağ ekle** bölmesine **ad** için **özel** ' i girin. **Adres aralığı**için **10.0.1.0/24** girin.  **Tamam**'ı tıklatın.
+7. **Alt ağ ekle** bölmesine **ad** için **özel** ' i girin. **Adres aralığı**için **10.0.1.0/24** girin.  **Tamam**’a tıklayın.
 8. **Myvnet-alt ağları** bölmesinde, oluşturduğunuz **ortak** ve **özel** alt ağları görebilirsiniz.
 9. **Isteğe bağlı**: Bu öğreticiyi tamamladığınızda, kullanım ücretleri ödemeniz için oluşturduğunuz kaynakları silmek isteyebilirsiniz:
     - **Myvnet** bölmesinde **Genel Bakış ' a** tıklayın.
@@ -67,7 +67,7 @@ Tüm [sanal ağ](manage-virtual-network.md) ve [alt ağ](virtual-network-manage-
 
 ## <a name="azure-cli"></a>Azure CLI
 
-1. [Azure CLI 'yı yükleyebilir ve yapılandırabilir](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ya da Azure Cloud Shell içinde CLI kullanabilirsiniz. Azure Cloud Shell doğrudan Azure portalının içinde çalıştırabileceğiniz ücretsiz bir Bash kabuğudur. Azure CLI, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. CLı komutları hakkında yardım almak için, yazın `azure <command> --help`. 
+1. [Azure CLI 'yı yükleyebilir ve yapılandırabilir](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ya da Azure Cloud Shell içinde CLI kullanabilirsiniz. Azure Cloud Shell doğrudan Azure portalının içinde çalıştırabileceğiniz ücretsiz bir Bash kabuğudur. Azure CLI, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. CLı komutları hakkında yardım almak için `azure <command> --help`yazın. 
 2. Bir CLı oturumunda, aşağıdaki komutla Azure 'da oturum açın. Aşağıdaki kutudan **dene** ' ye tıklarsanız bir Cloud Shell açılır. Aşağıdaki komutu girmeden Azure aboneliğinizde oturum açabilirsiniz:
 
     ```azurecli-interactive

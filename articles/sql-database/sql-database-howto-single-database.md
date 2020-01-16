@@ -10,19 +10,19 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/08/2019
-ms.openlocfilehash: 3c03797c97a354eb06b6c3b1d76ba5c39d512c18
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/14/2020
+ms.openlocfilehash: 4283e1a2c92b7fe738fb57a8103cea1deb0015a0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811215"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027708"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek bir veritabanı kullanma
 
 Bu bölümde, Azure SQL veritabanı 'nda tek veritabanınızı yönetmenize ve yapılandırmanıza yardımcı olabilecek çeşitli kılavuzlar, betikler ve açıklamalar bulabilirsiniz
 
-## <a name="migrate"></a>Geçiş
+## <a name="migrate"></a>Geçiş yapın
 
 - [SQL veritabanına](sql-database-single-database-migrate.md) geçiş – yönetilen bir örneğe geçiş için önerilen geçiş işlemi ve araçları hakkında bilgi edinin.
 - [Geçişten sonra SQL veritabanını yönetmeyi](sql-database-manage-after-migration.md)öğrenin.
@@ -42,7 +42,7 @@ Bu bölümde, Azure SQL veritabanı 'nda tek veritabanınızı yönetmenize ve y
 - Ayarlama önerileri hakkında bilgi almak için [otomatik ayarlama için e-posta bildirimlerini etkinleştirin](sql-database-automatic-tuning-email-notifications.md) .
 - [Performans önerilerini uygulayın](sql-database-advisor-portal.md) ve veritabanınızı iyileştirin.
 - Azure SQL veritabanından bildirimleri almak için [uyarılar oluşturun](sql-database-insights-alerts-portal.md) .
-- Uygulamalar ve veritabanı arasında bazı bağlantı sorunlarıyla karşılaşırsanız [bağlantı sorunlarını giderin](sql-database-troubleshoot-common-connection-issues.md) . [Bağlantı sorunları için kaynak durumu](sql-database-resource-health.md)de kullanabilirsiniz.
+- Uygulamalar ve veritabanı arasında bazı bağlantı sorunlarıyla karşılaşırsanız [bağlantı sorunlarını giderin](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md) . [Bağlantı sorunları için kaynak durumu](sql-database-resource-health.md)de kullanabilirsiniz.
 - Veritabanınızdaki depolama kullanımını izlemek için [Dosya alanını yönetin](sql-database-file-space-management.md) .
 
 ## <a name="query-distributed-data"></a>Sorgu dağıtılmış verileri

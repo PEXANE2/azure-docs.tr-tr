@@ -2,20 +2,20 @@
 title: Maliyet Analizi ve bütçe-Azure Batch
 description: Maliyet analizini alma ve Batch iş yükünüz için bir bütçe ayarlama hakkında bilgi edinin.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
-ms.author: lahugh
-ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.author: jushiman
+ms.openlocfilehash: 7707d966049e9eced1add1104441af8fee356ef0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70094213"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029575"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch için maliyet analizi ve bütçeler
 
@@ -23,7 +23,7 @@ Azure Batch kendisi için ücret alınmaz, yalnızca toplu iş yüklerini çalı
 
 ## <a name="batch-resources"></a>Batch kaynakları
 
-Sanal makineler toplu işleme için kullanılan en önemli kaynaktır. Batch için VM kullanmanın maliyeti, tür, miktar ve kullanım süresi temel alınarak hesaplanır. VM faturalandırma seçenekleri [, Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [rezervasyon](../billing/billing-save-compute-costs-reservations.md) (önceden ödeme) içerir. Her iki ödeme seçeneğinin da işlem iş yükünüze bağlı olarak farklı avantajları vardır ve her iki ödeme modeli de faturanızı farklı şekilde etkiler.
+Sanal makineler toplu işleme için kullanılan en önemli kaynaktır. Batch için VM kullanmanın maliyeti, tür, miktar ve kullanım süresi temel alınarak hesaplanır. VM faturalandırma seçenekleri [, Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [rezervasyon](../cost-management-billing/reservations/save-compute-costs-reservations.md) (önceden ödeme) içerir. Her iki ödeme seçeneğinin da işlem iş yükünüze bağlı olarak farklı avantajları vardır ve her iki ödeme modeli de faturanızı farklı şekilde etkiler.
 
 Uygulamalar, [uygulama paketleri](batch-application-packages.md)kullanılarak toplu iş düğümlerine (VM 'ler) dağıtıldığında, uygulama paketlerinizin kullanacağı Azure depolama kaynakları için faturalandırılırsınız. Ayrıca, kaynak dosyaları ve diğer günlük verileri gibi herhangi bir giriş veya çıkış dosyası depolaması için faturalandırılırsınız. Genel olarak, Batch ile ilişkili depolama verilerinin maliyeti, işlem kaynakları maliyetinden çok daha düşüktür. **Virtualmachineconfiguration** ile oluşturulan HAVUZDAKI her VM 'Nin, Azure tarafından yönetilen diskleri kullanan ilişkili bir işletim sistemi diski vardır. Azure tarafından yönetilen disklerin ek bir maliyeti vardır ve diğer disk performansı katmanlarında de farklı maliyetler de vardır.
 
@@ -50,15 +50,15 @@ Azure portal aracılığıyla, toplu Iş havuzlarınız veya Batch hesabınız i
 1. Azure portal, sol gezinti çubuğundan **maliyet yönetimi + faturalandırma** ' i seçin.
 1. **Aboneliklerim** bölümünde aboneliğinizi seçin
 1. Sol gezinti çubuğunun **maliyet yönetimi** bölümünde **Maliyet Analizi** ' ne giderek şöyle bir görünüm gösterir:
-1. **Filtre Ekle**' yi seçin. İlk açılan kutuda kaynak filtresi ![Select **kaynak** ' ı seçin ](./media/batch-budget/resource-filter.png)
+1. **Filtre Ekle**' yi seçin. İlk açılan kutuda **kaynak** ' ı seçin ![kaynak filtresini seçin](./media/batch-budget/resource-filter.png)
 1. İkinci açılan kutuda Batch havuzunu seçin. Havuz seçildiğinde, maliyet analizi aşağıdaki Analize benzer şekilde görünür.
-    Havuzun ![Cost analizini ](./media/batch-budget/pool-cost-analysis.png)
+    Havuzun ![](./media/batch-budget/pool-cost-analysis.png) maliyeti Analizi
 
 Elde edilen maliyet analizi, havuzun maliyetini ve bu maliyete katkıda bulunan kaynakları gösterir. Bu örnekte, havuzda kullanılan VM 'Ler en pahalı kaynaktır.
 
 Havuzun bütçesini oluşturmak için **Bütçe: yok**' u seçin ve ardından **Yeni bütçe > Oluştur**' u seçin. Şimdi havuzunuzun özel bir bütçesini yapılandırmak için pencereyi kullanın.
 
-Bir bütçeyi yapılandırma hakkında daha fazla bilgi için bkz. [Azure bütçeleri oluşturma ve yönetme](../cost-management/tutorial-acm-create-budgets.md).
+Bir bütçeyi yapılandırma hakkında daha fazla bilgi için bkz. [Azure bütçeleri oluşturma ve yönetme](../cost-management-billing/costs/tutorial-acm-create-budgets.md).
 
 > [!NOTE]
 > Azure Batch Azure Cloud Services ve Azure sanal makineler teknolojisinden oluşturulmuştur. **Cloud Services yapılandırma**' yı seçtiğinizde, Cloud Services fiyatlandırma yapısına göre ücretlendirilirsiniz. **Sanal makine yapılandırması**' nı seçtiğinizde, sanal makinelerin fiyatlandırma yapısına göre ücretlendirilirsiniz. Bu sayfadaki örnek, **sanal makine yapılandırmasını**kullanır.
@@ -75,13 +75,13 @@ Düşük öncelikli VM 'Ler, Azure 'daki daha fazla bilgi işlem kapasitesinden 
 
 ### <a name="virtual-machine-os-disk-type"></a>Sanal makine işletim sistemi disk türü
 
-Birden çok [VM işletim sistemi disk türü](../virtual-machines/windows/disks-types.md)var. Çoğu VM Serisi hem Premium hem de standart depolamayı destekleyen boyutlarda. Bir havuz için bir ' VM boyutu seçildiğinde Batch, Premium SSD işletim sistemi disklerini yapılandırır. ' S ' olmayan VM boyutu seçildiğinde, standart HDD Disk türü kullanılır. Örneğin, Premium SSD işletim sistemi diskleri `Standard_D2s_v3` için kullanılır ve standart HDD işletim sistemi diskleri `Standard_D2_v3` için kullanılır.
+Birden çok [VM işletim sistemi disk türü](../virtual-machines/windows/disks-types.md)var. Çoğu VM Serisi hem Premium hem de standart depolamayı destekleyen boyutlarda. Bir havuz için bir ' VM boyutu seçildiğinde Batch, Premium SSD işletim sistemi disklerini yapılandırır. ' S ' olmayan VM boyutu seçildiğinde, standart HDD Disk türü kullanılır. Örneğin, Premium SSD işletim sistemi diskleri `Standard_D2s_v3` için kullanılır ve standart HDD işletim sistemi diskleri `Standard_D2_v3`için kullanılır.
 
 Premium SSD işletim sistemi diskleri daha pahalıdır, ancak Premium diskler içeren daha yüksek performansa ve VM 'lere standart HDD işletim sistemi disklerine sahip VM 'lerden biraz daha hızlı başlayabilirler. Batch ile, işletim sistemi diski genellikle uygulamalar ve görev dosyaları VM 'lerde geçici SSD disk yer aldığı sürece çoğu zaman kullanılmaz. Bu nedenle, çoğu durumda, bir ' VM boyutu belirtildiğinde, Premium SSD için artan maliyeti ödemenizi gerektirmez.
 
 ### <a name="reserved-virtual-machine-instances"></a>Ayrılmış sanal makine örnekleri
 
-Toplu Işi uzun bir süre kullanmak istiyorsanız, iş yükleriniz için [Azure ayırmaları](../billing/billing-save-compute-costs-reservations.md) kullanarak sanal makinelerin maliyetine tasarruf edebilirsiniz. Rezervasyon oranı, Kullandıkça Öde tarifesine göre önemli ölçüde düşüktür. Rezervasyon olmadan kullanılan sanal makine örnekleri, Kullandıkça Öde fiyatı üzerinden ücretlendirilir. Bir rezervasyon satın alırsanız, rezervasyon iskontosu uygulanır ve artık Kullandıkça Öde tarifesine göre ücretlendirilmezsiniz.
+Toplu Işi uzun bir süre kullanmak istiyorsanız, iş yükleriniz için [Azure ayırmaları](../cost-management-billing/reservations/save-compute-costs-reservations.md) kullanarak sanal makinelerin maliyetine tasarruf edebilirsiniz. Rezervasyon oranı, Kullandıkça Öde tarifesine göre önemli ölçüde düşüktür. Rezervasyon olmadan kullanılan sanal makine örnekleri, Kullandıkça Öde fiyatı üzerinden ücretlendirilir. Bir rezervasyon satın alırsanız, rezervasyon iskontosu uygulanır ve artık Kullandıkça Öde tarifesine göre ücretlendirilmezsiniz.
 
 ### <a name="automatic-scaling"></a>Otomatik ölçeklendirme
 

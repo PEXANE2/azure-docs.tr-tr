@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d632de0a6274ebb2ede950ca610dfd5e94310d28
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613882"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972358"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Yönetim kaynaklarına erişmek için Azure depolama kaynak sağlayıcısını kullanma
 
@@ -72,7 +72,7 @@ Azure depolama yönetim kitaplıklarından yönetim işlemlerini yetkilendirme v
 
 Resource Manager ve klasik dağıtım modelleri, Azure çözümlerinizi dağıtmanın ve yönetmenin iki farklı yolunu temsil eder. Yeni bir depolama hesabı oluşturduğunuzda, Microsoft Azure Resource Manager dağıtım modelinin kullanılmasını önerir. Mümkünse, Microsoft, Kaynak Yöneticisi modeliyle mevcut klasik depolama hesaplarını yeniden oluşturmanızı da önerir. Klasik dağıtım modelini kullanarak bir depolama hesabı oluşturabilseniz de, klasik model daha az esnektir ve sonunda kullanım dışı kalır.
 
-Azure dağıtım modelleri hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi ve klasik dağıtım](../../azure-resource-manager/resource-manager-deployment-model.md).
+Azure dağıtım modelleri hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi ve klasik dağıtım](../../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

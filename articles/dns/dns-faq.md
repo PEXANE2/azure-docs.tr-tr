@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: allensu
-ms.openlocfilehash: c194d47842c927d3f8049a424dc08a34424a8a31
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 743715da51f2e8c77b81faba1bd8d6979e4f2aab
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212021"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974544"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS SSS
 
@@ -167,7 +167,7 @@ Evet. DNS bölgeleri, kaynak grupları veya abonelikler arasında taşınabilir.
 
 DNS bölgesini taşırken DNS sorguları üzerinde hiçbir etkisi yoktur. Bölgeye atanan ad sunucuları aynı kalır. DNS sorguları, boyunca normal olarak işlenir.
 
-DNS bölgelerini taşıma hakkında daha fazla bilgi ve yönergeler için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/resource-group-move-resources.md).
+DNS bölgelerini taşıma hakkında daha fazla bilgi ve yönergeler için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>DNS değişikliklerinin etkili olması için ne kadar sürer?
 

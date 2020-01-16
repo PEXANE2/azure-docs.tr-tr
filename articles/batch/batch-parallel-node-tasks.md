@@ -3,7 +3,7 @@ title: İşlem kaynaklarını verimli bir şekilde kullanmak için görevleri pa
 description: Daha az işlem düğümü kullanarak ve bir Azure Batch havuzundaki her düğümde eşzamanlı görevleri çalıştırarak verimliliği ve daha düşük maliyetleri artırın
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/17/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f45c35e6d9fb611ebf73c4eab8b517d8575b8e82
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2a47cbbf11117197d6d00d532fb0321d284c56b7
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094940"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026817"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Toplu işlem düğümlerinin kullanımını en üst düzeye çıkarmak için görevleri eşzamanlı olarak çalıştırın 
 
@@ -33,17 +33,17 @@ Bazı senaryolar, tüm düğümün kaynaklarını tek bir göreve eklemek avanta
 * Bir bilgi işlem ortamını Azure 'a taşırken olduğu gibi, **Şirket içi bir hesaplama kümesini çoğaltma**. Mevcut şirket içi çözümünüz işlem düğümü başına birden çok görev çalıştırırsa, bu yapılandırmayı daha yakından yansıtmak için en fazla düğüm görevi sayısını artırabilirsiniz.
 
 ## <a name="example-scenario"></a>Örnek senaryo
-Paralel görev yürütmesinin avantajlarını gösteren bir örnek olarak, görev uygulamanızın [Standart\_D1](../cloud-services/cloud-services-sizes-specs.md) düğümlerinin yeterli olması gibi CPU ve bellek gereksinimleri olduğunu varsayalım. Ancak, işin gerekli zamanda tamamlanabilmesi için, bu düğümlerin 1.000 ' i gereklidir.
+Paralel görev yürütmesinin avantajlarını gösteren bir örnek olarak, görev uygulamanızın [standart\_D1](../cloud-services/cloud-services-sizes-specs.md) düğümlerinin yeterli olması için CPU ve bellek gereksinimleri olduğunu varsayalım. Ancak, işin gerekli zamanda tamamlanabilmesi için, bu düğümlerin 1.000 ' i gereklidir.
 
-1 CPU çekirdeği olan\_standart D1 düğümlerini kullanmak yerine, her biri 16 çekirdeğe sahip [Standart\_D14](../cloud-services/cloud-services-sizes-specs.md) düğümlerini kullanabilir ve paralel görev yürütmeyi etkinleştirebilirsiniz. Bu nedenle, 1.000 düğüm yerine *16 kez daha az düğüm* kullanılabilir, ancak yalnızca 63 gereklidir. Ayrıca, her düğüm için büyük uygulama dosyaları veya başvuru verileri gerekliyse, veriler yalnızca 63 düğümlere kopyalandığından iş süresi ve verimlilik yeniden geliştirilmiştir.
+1 CPU çekirdeğine sahip standart\_D1 düğümleri kullanmak yerine, her biri 16 çekirdeğe sahip [standart\_D14](../cloud-services/cloud-services-sizes-specs.md) düğümlerini kullanabilir ve paralel görev yürütmeyi etkinleştirebilirsiniz. Bu nedenle, 1.000 düğüm yerine *16 kez daha az düğüm* kullanılabilir, ancak yalnızca 63 gereklidir. Ayrıca, her düğüm için büyük uygulama dosyaları veya başvuru verileri gerekliyse, veriler yalnızca 63 düğümlere kopyalandığından iş süresi ve verimlilik yeniden geliştirilmiştir.
 
 ## <a name="enable-parallel-task-execution"></a>Paralel görev yürütmeyi etkinleştir
 Paralel görev yürütme için işlem düğümlerini havuz düzeyinde yapılandırırsınız. Batch .NET kitaplığı ile, bir havuz oluştururken [Cloudpool. MaxTasksPerComputeNode][maxtasks_net] özelliğini ayarlayın. Batch REST API kullanıyorsanız, havuz oluşturma sırasında istek gövdesinde [Maxtaskspernode][rest_addpool] öğesini ayarlayın.
 
-Azure Batch, düğüm başına görevleri (4X) çekirdek düğüm sayısına kadar ayarlamanıza olanak sağlar. Örneğin, havuz "büyük" (dört çekirdek) boyutundaki düğümlerle yapılandırıldıysa, `maxTasksPerNode` 16 olarak ayarlanabilir. Ancak, düğümde kaç çekirdeğin olduğuna bakılmaksızın, düğüm başına 256 ' den fazla görev kullanamazsınız. Düğüm boyutlarının her biri için çekirdek sayısı hakkında daha fazla bilgi için bkz. [Cloud Services boyutları](../cloud-services/cloud-services-sizes-specs.md). Hizmet limitleri hakkında daha fazla bilgi için bkz. [Azure Batch hizmet Için kotalar ve sınırlar](batch-quota-limit.md).
+Azure Batch, düğüm başına görevleri (4X) çekirdek düğüm sayısına kadar ayarlamanıza olanak sağlar. Örneğin, havuz "büyük" (dört çekirdek) boyutundaki düğümlerle yapılandırılmışsa `maxTasksPerNode` 16 olarak ayarlanabilir. Ancak, düğümde kaç çekirdeğin olduğuna bakılmaksızın, düğüm başına 256 ' den fazla görev kullanamazsınız. Düğüm boyutlarının her biri için çekirdek sayısı hakkında daha fazla bilgi için bkz. [Cloud Services boyutları](../cloud-services/cloud-services-sizes-specs.md). Hizmet limitleri hakkında daha fazla bilgi için bkz. [Azure Batch hizmet Için kotalar ve sınırlar](batch-quota-limit.md).
 
 > [!TIP]
-> Havuzunuz için bir `maxTasksPerNode` [Otomatik ölçeklendirme formülü][enable_autoscaling] oluştururken değeri hesaba aldığınızdan emin olun. Örneğin, değerlendirilen `$RunningTasks` bir formül, düğüm başına görevlerin artışına göre önemli ölçüde etkilenebilir. Daha fazla bilgi için bkz. [bir Azure Batch havuzundaki işlem düğümlerini otomatik olarak ölçeklendirme](batch-automatic-scaling.md) .
+> Havuzunuz için bir [Otomatik ölçeklendirme formülü][enable_autoscaling] oluştururken `maxTasksPerNode` değerini dikkate aldığınızdan emin olun. Örneğin, `$RunningTasks` değerlendiren bir formül, düğüm başına görevlerin artışına göre önemli ölçüde etkilenebilir. Daha fazla bilgi için bkz. [bir Azure Batch havuzundaki işlem düğümlerini otomatik olarak ölçeklendirme](batch-automatic-scaling.md) .
 >
 >
 
@@ -52,7 +52,7 @@ Bir havuzdaki işlem düğümleri görevleri eşzamanlı olarak yürütemediğin
 
 [Cloudpool. TaskSchedulingPolicy][task_schedule] özelliğini kullanarak, bu görevlerin havuzdaki tüm düğümlerde eşit olarak atanmasını belirtebilirsiniz ("yayma"). Ya da görevler havuzdaki başka bir düğüme atanmadan önce her düğüme olabildiğince fazla görevin atanması gerektiğini belirtebilirsiniz ("paketleme").
 
-Bu özelliğin nasıl değerli olduğunu gösteren bir örnek olarak, [\_standart D14](../cloud-services/cloud-services-sizes-specs.md) düğümlerinin havuzunu (Yukarıdaki örnekte) bir [cloudpool. MaxTasksPerComputeNode][maxtasks_net] değeri 16 ile yapılandırılmış şekilde düşünün. [Cloudpool. TaskSchedulingPolicy][task_schedule] , bir [Computenodefilltype][fill_type] *paketi*ile yapılandırıldıysa, her düğümün 16 çekirdeğin tüm kullanımlarını en üst düzeye çıkarabilir ve bir [Otomatik ölçeklendirme havuzunun](batch-automatic-scaling.md) kullanılmayan düğümleri havuzdan (düğümler olmadan) ayıklayabilmesini sağlar. atanan tüm görevler). Bu, kaynak kullanımını en aza indirir ve para tasarrufu sağlar.
+Bu özelliğin nasıl değerli olduğunu gösteren bir örnek olarak, [standart\_D14](../cloud-services/cloud-services-sizes-specs.md) düğümlerinin havuzunu (Yukarıdaki örnekte) bir [Cloudpool. MaxTasksPerComputeNode][maxtasks_net] değeri 16 ile yapılandırılmış şekilde değerlendirin. [Cloudpool. TaskSchedulingPolicy][task_schedule] , bir [Computenodefilltype][fill_type] *paketi*ile yapılandırıldıysa, her bir düğümün tüm 16 çekirdeğin kullanımını en üst düzeye çıkarabilir ve bir [Otomatik ölçeklendirme havuzunun](batch-automatic-scaling.md) kullanılmayan düğümleri havuzdan (atanmış herhangi bir görev olmadan) ayıklayabilmesini sağlar. Bu, kaynak kullanımını en aza indirir ve para tasarrufu sağlar.
 
 ## <a name="batch-net-example"></a>Batch .NET örneği
 Bu [Batch .net][api_net] API kod parçacığı, düğüm başına en fazla dört adet görev içeren dört düğüm içeren bir havuz oluşturma isteğini gösterir. Bu işlem, havuzdaki başka bir düğüme görev atamadan önce her bir düğümü görevlerle dolduracak bir görev zamanlama İlkesi belirtir. Batch .NET API 'sini kullanarak havuz ekleme hakkında daha fazla bilgi için bkz. [Batchclient. PoolOperations. CreatePool][poolcreate_net].
@@ -89,7 +89,7 @@ Bu [toplu Iş Rest][api_rest] API parçacığı, düğüm başına en fazla dör
 ```
 
 > [!NOTE]
-> `maxTasksPerNode` Öğesi ve [MaxTasksPerComputeNode][maxtasks_net] özelliğini yalnızca havuz oluşturma zamanında ayarlayabilirsiniz. Havuz zaten oluşturulduktan sonra değiştirilemez.
+> `maxTasksPerNode` öğesi ve [MaxTasksPerComputeNode][maxtasks_net] özelliğini yalnızca havuz oluşturma zamanında ayarlayabilirsiniz. Havuz zaten oluşturulduktan sonra değiştirilemez.
 >
 >
 

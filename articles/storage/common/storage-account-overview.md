@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 30f39fc72d6a96b83f57d6553db3f348c8486ee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460621"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975701"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
 Azure depolama hesabı; Bloblar, dosyalar, kuyruklar, tablolar ve diskler içeren tüm Azure depolama veri nesnelerinizi içerir. Depolama hesabı, Azure depolama verileriniz için HTTP veya HTTPS üzerinden dünyanın herhangi bir yerinden erişilebilen benzersiz bir ad alanı sağlar. Azure Depolama hesabınızdaki veriler dayanıklı ve yüksek oranda kullanılabilir, güvenli ve yüksek düzeyde ölçeklenebilir.
 
-Azure depolama hesabı oluşturma hakkında bilgi edinmek için bkz. [depolama hesabı oluşturma](storage-quickstart-create-account.md).
+Azure depolama hesabı oluşturma hakkında bilgi edinmek için bkz. [depolama hesabı oluşturma](storage-account-create.md).
 
 ## <a name="types-of-storage-accounts"></a>Depolama hesabı türleri
 
@@ -72,7 +72,7 @@ BlockBlobStorage hesapları Şu anda sık erişimli, seyrek erişimli veya arşi
 
 ### <a name="filestorage-accounts"></a>Dosya depolama hesapları
 
-Dosya depolama hesabı, Premium dosya paylaşımlarını depolamak ve oluşturmak için kullanılan özel bir depolama hesabıdır. Bu depolama hesabı türü dosyaları destekler ancak blok Blobları, ekleme Blobları, sayfa Blobları, tablolar veya kuyruklar değildir. 
+Dosya depolama hesabı, Premium dosya paylaşımlarını depolamak ve oluşturmak için kullanılan özel bir depolama hesabıdır. Bu depolama hesabı türü dosyaları destekler ancak blok Blobları, ekleme Blobları, sayfa Blobları, tablolar veya kuyruklar değildir.
 
 FileStorage hesapları, ıOPS patlaması gibi benzersiz performansa özel özellikler sunar. Bu özellikler hakkında daha fazla bilgi için dosyalar planlama kılavuzunun [dosya paylaşma performans katmanları](../files/storage-files-planning.md#file-share-performance-tiers) bölümüne bakın.
 
@@ -150,15 +150,15 @@ Aşağıdaki yaklaşımlardan herhangi birini kullanarak Depolama hesabınızdak
 - **Paylaşılan erişim imzası:** Azure AD yetkilendirmesi kullanmıyorsanız, Depolama hesabınızdaki kaynaklara erişim yetkisi vermek için paylaşılan erişim imzası kullanın. Paylaşılan erişim imzası, URL 'de Azure depolama 'ya bir istek yetkilendirmek için gereken tüm bilgileri kapsülleyen bir belirteçtir. Depolama kaynağını, verilen izinleri ve izinlerin, paylaşılan erişim imzasının bir parçası olarak geçerli olduğu zaman aralığını belirtebilirsiniz. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](storage-sas-overview.md).
 
 > [!NOTE]
-> Azure AD kimlik bilgilerini kullanarak kullanıcıların veya uygulamaların kimliğini doğrulamak, diğer yetkilendirme yolları üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Uygulamalarınızla paylaşılan anahtar yetkilendirmesi kullanmaya devam edebilirsiniz, ancak Azure AD atlama 'yi kullanarak hesap erişim anahtarınızı kodunuzla depolama gereksinimini ortadan kaldırabilirsiniz. Ayrıca, Depolama hesabınızdaki kaynaklara ayrıntılı erişim sağlamak için paylaşılan erişim imzaları (SAS) kullanmaya devam edebilirsiniz, ancak Azure AD SAS belirteçlerini yönetmeye gerek kalmadan veya güvenliği aşılmış bir SAS iptal etme gereksinimi olmadan benzer yetenekler sunmaktadır. 
+> Azure AD kimlik bilgilerini kullanarak kullanıcıların veya uygulamaların kimliğini doğrulamak, diğer yetkilendirme yolları üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Uygulamalarınızla paylaşılan anahtar yetkilendirmesi kullanmaya devam edebilirsiniz, ancak Azure AD atlama 'yi kullanarak hesap erişim anahtarınızı kodunuzla depolama gereksinimini ortadan kaldırabilirsiniz. Ayrıca, Depolama hesabınızdaki kaynaklara ayrıntılı erişim sağlamak için paylaşılan erişim imzaları (SAS) kullanmaya devam edebilirsiniz, ancak Azure AD SAS belirteçlerini yönetmeye gerek kalmadan veya güvenliği aşılmış bir SAS iptal etme gereksinimi olmadan benzer yetenekler sunmaktadır.
 >
 > Microsoft, mümkün olduğunda Azure Depolama Blobu ve kuyruk uygulamaları için Azure AD yetkilendirmesi kullanılmasını önerir.
 
 ## <a name="copying-data-into-a-storage-account"></a>Bir depolama hesabına veri kopyalama
 
-Microsoft, verilerinizi şirket içi depolama cihazlarından veya üçüncü taraf bulut depolama sağlayıcılardan içeri aktarmaya yönelik yardımcı programlar ve kitaplıklar sağlar. Kullandığınız çözüm, aktardığınız veri miktarına bağlıdır. 
+Microsoft, verilerinizi şirket içi depolama cihazlarından veya üçüncü taraf bulut depolama sağlayıcılardan içeri aktarmaya yönelik yardımcı programlar ve kitaplıklar sağlar. Kullandığınız çözüm, aktardığınız veri miktarına bağlıdır.
 
-Genel amaçlı v1 veya blob depolama hesabından genel amaçlı bir v2 hesabına yükselttiğinizde, verileriniz otomatik olarak geçirilir. Microsoft, hesabınızı yükseltmek için bu patika önerir. Ancak, verileri genel amaçlı v1 hesabından bir BLOB depolama hesabına taşımaya karar verirseniz, aşağıda açıklanan araçları ve kitaplıkları kullanarak verilerinizi el ile geçirebilirsiniz. 
+Genel amaçlı v1 veya blob depolama hesabından genel amaçlı bir v2 hesabına yükselttiğinizde, verileriniz otomatik olarak geçirilir. Microsoft, hesabınızı yükseltmek için bu patika önerir. Ancak, verileri genel amaçlı v1 hesabından bir BLOB depolama hesabına taşımaya karar verirseniz, aşağıda açıklanan araçları ve kitaplıkları kullanarak verilerinizi el ile geçirebilirsiniz.
 
 ### <a name="azcopy"></a>AzCopy
 
@@ -183,5 +183,5 @@ Azure depolama REST API hakkında daha fazla bilgi için bkz. [Azure Storage Ser
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Depolama hesabı oluşturma](storage-quickstart-create-account.md)
+- [Depolama hesabı oluşturma](storage-account-create.md)
 - [Blok blobu depolama hesabı oluşturma](../blobs/storage-blob-create-account-block-blob.md)

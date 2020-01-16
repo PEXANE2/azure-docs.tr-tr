@@ -3,7 +3,7 @@ title: Azure Batch hizmeti çözümlerinin kimlik doğrulaması için Azure Acti
 description: Batch, Batch hizmetinden kimlik doğrulaması için Azure AD 'yi destekler.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/15/2019
-ms.author: lahugh
-ms.openlocfilehash: 4ec85078e6664a43dd31cd04c132d87681bda225
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: jushiman
+ms.openlocfilehash: 56fcd5a8a02e292fdf43f9d22f3987813bce0743
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095615"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029817"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Active Directory ile Batch hizmeti çözümlerini kimlik doğrulama
 
@@ -80,7 +80,7 @@ Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz. [Azu
 Kiracı KIMLIĞI, uygulamanıza kimlik doğrulama hizmetleri sağlayan Azure AD kiracısını tanımlar. Kiracı Kimliğini almak için şu adımları izleyin:
 
 1. Azure portalında Active Directory'nizi seçin.
-1. Seçin **özellikleri**.
+1. **Özellikler**’i seçin.
 1. Sağlanan GUID değeri kopyalayın **dizin kimliği**. Bu değer Kiracı kimliği olarak da adlandırılır
 
 ![Dizin KIMLIĞINI Kopyala](./media/batch-aad-auth/aad-directory-id.png)
@@ -119,7 +119,7 @@ Katılımsız çalışan bir uygulamanın kimliğini doğrulamak için bir hizme
 
 Uygulamanız bir hizmet sorumlusu ile kimlik doğrulaması gerçekleştiriyorsa, hem uygulama KIMLIĞINI hem de gizli anahtarı Azure AD 'ye gönderir. Kodunuzda kullanmak için gizli anahtar oluşturmanız ve kopyalamanız gerekir.
 
-Azure portal şu adımları uygulayın:
+Azure portalında şu adımları izleyin:
 
 1. Azure portal sol taraftaki Gezinti bölmesinde **tüm hizmetler**' i seçin. **Uygulama kayıtları**' nı seçin.
 1. Uygulama kayıtları listesinden uygulamanızı seçin.
@@ -149,7 +149,7 @@ Uygulamanız artık erişim denetimi ayarlarınızda bir RBAC rolü atanmış ol
 Kiracı KIMLIĞI, uygulamanıza kimlik doğrulama hizmetleri sağlayan Azure AD kiracısını tanımlar. Kiracı Kimliğini almak için şu adımları izleyin:
 
 1. Azure portalında Active Directory'nizi seçin.
-1. Seçin **özellikleri**.
+1. **Özellikler**’i seçin.
 1. Sağlanan GUID değeri kopyalayın **dizin kimliği**. Bu değer Kiracı kimliği olarak da adlandırılır
 
 ![Dizin KIMLIĞINI Kopyala](./media/batch-aad-auth/aad-directory-id.png)
@@ -170,7 +170,7 @@ Bu bölümdeki kod örnekleri, tümleşik kimlik doğrulaması ve hizmet sorumlu
 
 Batch .NET 'ten tümleşik kimlik doğrulaması ile kimlik doğrulamak için [Azure Batch .net](https://www.nuget.org/packages/Microsoft.Azure.Batch/) paketine ve [adal](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) paketine başvurun.
 
-Kodunuza aşağıdaki `using` deyimleri ekleyin:
+Kodunuza aşağıdaki `using` deyimlerini ekleyin:
 
 ```csharp
 using Microsoft.Azure.Batch;
@@ -243,7 +243,7 @@ public static async Task PerformBatchOperations()
 
 Batch .NET 'ten bir hizmet sorumlusu ile kimlik doğrulaması yapmak için [Azure Batch .net](https://www.nuget.org/packages/Azure.Batch/) paketine ve [adal](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) paketine başvurun.
 
-Kodunuza aşağıdaki `using` deyimleri ekleyin:
+Kodunuza aşağıdaki `using` deyimlerini ekleyin:
 
 ```csharp
 using Microsoft.Azure.Batch;

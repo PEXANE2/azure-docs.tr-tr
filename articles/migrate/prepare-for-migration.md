@@ -1,19 +1,15 @@
 ---
 title: Azure geçişi ile makineleri geçişe hazırlama
 description: Azure geçişi ile geçiş için şirket içi makineleri nasıl hazırlayacağınızı öğrenin.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 12/10/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3c10321e8d49ac6ecfe80024d23f24711298651
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974793"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028760"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
@@ -44,9 +40,9 @@ Bu makalede şunları yapacaksınız:
 
 ## <a name="check-whats-supported"></a>Nelerin desteklendiğini denetleyin
 
-- VMware VM 'Leri için Azure geçişi sunucu geçişi [aracısız veya aracı tabanlı geçişi](server-migrate-overview.md)destekler. VMware VM gereksinimlerini/ [aracısız](migrate-support-matrix-vmware.md#migration---limitations) ve [aracı tabanlı](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) geçişler için desteği doğrulayın.
-- Hyper-V VM 'Leri için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) doğrulayın.
-- Şirket içi fiziksel makineler veya diğer sanallaştırılmış sunucular için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-physical.md) doğrulayın. 
+- VMware VM 'Leri için Azure geçişi sunucu geçişi [aracısız veya aracı tabanlı geçişi](server-migrate-overview.md)destekler. VMware VM [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-vmware-migration.md)doğrulayın.
+- Hyper-V için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-hyper-v-migration.md) doğrulayın.
+- Şirket içi fiziksel makineler veya diğer sanallaştırılmış sunucular için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-physical-migration.md) doğrulayın. 
 
 
 
@@ -55,10 +51,11 @@ Bu makalede şunları yapacaksınız:
 
 Makinelerin geçiş sırasında internet erişimi olması gerekebilir.
 
-- VMware VM 'Lerinin [aracısız](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) veya [aracı tabanlı](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements) geçişler sırasında erişmesi gereken URL 'leri gözden geçirin.
-- Hyper-V konaklarının geçiş sırasında erişmesi gereken URL 'Leri gözden geçirin. Hyper-V VM 'lerine internet erişimi gerekmez.
-- Fiziksel makinelerin veya diğer sanallaştırılmış sunucuların geçiş sırasında erişmesi gereken [URL 'Leri gözden geçirin](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements) .
-- VMware VM 'lerinin/fiziksel sunucularının aracı tabanlı geçişinde, makinelerde çalışan Mobility hizmetinin Azure geçiş bileşenlerine erişmesi gerekir. Çoğaltma yönetimi için makinede çalışan hizmet, HTTPS 443 gelen bağlantı noktasında şirket içi Azure geçişi çoğaltma gereci ile iletişim kurar. Makineler, HTTPS 9443 gelen bağlantı noktasında Azure geçişi işlem sunucusuna çoğaltma verileri gönderir. Bu bağlantı noktası değiştirilebilir.
+- Azure geçişi gerecinin aracısız geçiş sırasında erişmesi gereken [URL 'Leri gözden geçirin](migrate-appliance.md#url-access) . [Bağlantı noktası erişim gereksinimlerini gözden geçirin](migrate-support-matrix-vmware-migration.md#agentless-ports) .
+- Çoğaltma gerecinin VMware VM Aracısı tabanlı geçiş sırasında kullandığı [URL 'leri](migrate-replication-appliance.md#url-access) ve [bağlantı noktalarını] (geçiş-çoğaltma-gereç. md # bağlantı noktası-erişim) gözden geçirin. 
+- [İnceleme](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Hyper-V konaklarının geçiş sırasında erişmesi gereken URL 'Ler ve bağlantı noktaları. 
+- Çoğaltma gerecinin fiziksel sunucu geçişi sırasında kullandığı [URL 'leri](migrate-replication-appliance.md#url-access) ve [bağlantı noktalarını] (geçiş-çoğaltma-gereci. MD # Port-Access) gözden geçirin.
+
 
 
 ## <a name="verify-required-changes-before-migration"></a>Geçişten önce gerekli değişiklikleri doğrula
@@ -105,7 +102,7 @@ Bir Windows makinesini geçiriyorsanız geçişten önce bu değişiklikleri yap
 
 ## <a name="check-azure-vm-requirements"></a>Azure VM gereksinimlerini denetleme
 
-Azure 'a çoğaltılan şirket içi makineler, işletim sistemi ve mimari, diskler, ağ ayarları ve VM adlandırması için Azure VM gereksinimleriyle uyumlu olmalıdır. Geçişten önce [VMware VM 'leri/fiziksel sunucular](migrate-support-matrix-vmware.md#azure-vm-requirements)ve [Hyper-V VM](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) 'lerinin gereksinimlerini doğrulayın.
+Azure 'a çoğaltılan şirket içi makineler, işletim sistemi ve mimari, diskler, ağ ayarları ve VM adlandırması için Azure VM gereksinimleriyle uyumlu olmalıdır. Geçişten önce [VMware VM 'leri/fiziksel sunucular](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)ve [Hyper-V VM](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements) 'lerinin gereksinimlerini doğrulayın.
 
 
 ## <a name="prepare-to-connect-after-migration"></a>Geçişten sonra bağlanmaya hazırlanma

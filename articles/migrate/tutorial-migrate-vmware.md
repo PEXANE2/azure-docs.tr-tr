@@ -1,18 +1,15 @@
 ---
 title: VMware VM 'lerini geçirme aracısız Azure geçiş sunucusu geçişi
 description: Azure geçişi ile VMware VM 'lerinin aracısız geçişini nasıl çalıştıracağınızı öğrenin.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2b4aad83abc92170df5a7e7cfa7f7751b49b3424
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: fa77b9d730c28c21569064d05ca3a600dfb71071
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196413"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028700"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -44,7 +41,7 @@ Aracısız veya aracı tabanlı geçiş kullanmak isteyip istemediğinize karar 
 - Aracısız geçişin [nasıl çalıştığını öğrenin](server-migrate-overview.md) ve [geçiş yöntemlerini karşılaştırın](server-migrate-overview.md#compare-migration-methods).
 - Aracı tabanlı yöntemi kullanmak istiyorsanız [Bu makaleyi okuyun](tutorial-migrate-vmware-agent.md) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
@@ -92,7 +89,7 @@ Gereci ayarlamak için [Bu makaledeki](how-to-set-up-appliance-vmware.md) yöner
 
 Azure geçişi, VM 'Lerin Azure 'a geçirilmesini sağlamak için bazı VM değişiklikleri gerektirir.
 
-- Bazı işletim sistemleri için Azure geçişi bu değişiklikleri otomatik olarak yapar. [Daha fazla bilgi edinin](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)
+- Bazı işletim sistemleri için Azure geçişi bu değişiklikleri otomatik olarak yapar. [Daha fazla bilgi](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms)
 - Bu işletim sistemlerinden birine sahip olmayan bir VM 'yi geçiriyorsanız, sanal makineyi hazırlamak için yönergeleri izleyin.
 - Geçişe başlamadan önce bu değişiklikleri yapmak önemlidir. Değişikliği yapmadan önce VM 'yi geçirirseniz, VM Azure 'da önyüklenemeyebilir.
 - VM için çoğaltma etkinleştirildikten sonra şirket içi VM 'lerde yaptığınız yapılandırma değişiklikleri Azure 'a çoğaltılır. Değişikliklerin çoğaltılmasını sağlamak için, geçiş yaptığınız kurtarma noktasının şirket içinde yapılandırma değişikliklerinin gerçekleştirildiği zamandan daha geç olduğundan emin olun.
@@ -100,7 +97,7 @@ Azure geçişi, VM 'Lerin Azure 'a geçirilmesini sağlamak için bazı VM deği
 
 ### <a name="prepare-windows-server-vms"></a>Windows Server VM 'lerini hazırlama
 
-**Eylem** | **Ayrıntılar** | **Yönergelerin**
+**Eylem** | **Ayrıntılar** | **Yönergeler**
 --- | --- | ---
 Azure VM 'deki Windows birimlerinin, şirket içi VM ile aynı sürücü harfi atamalarını kullandığından emin olun. | SAN ilkesini çevrimiçi olarak yapılandırın. | 1. VM 'de bir yönetici hesabıyla oturum açın ve bir komut penceresi açın.<br/> 2. DiskPart yardımcı programını çalıştırmak için **DiskPart** yazın.<br/> 3. **San ilkesi = OnlineAll** yazın<br/> 4. DiskPart 'Tan çıkmak için exit yazın ve komut istemi 'ni kapatın.
 Azure VM için Azure seri erişim konsolunu etkinleştirme | Bu sorun gidermeye yardımcı olur. VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir ve bu, yeni VM için bir yeniden başlatmaya eşdeğerdir. | ' İ etkinleştirmek için [Bu yönergeleri](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console) izleyin.
@@ -151,7 +148,7 @@ Bulma işlemi tamamlandığında VMware VM’lerini Azure’a çoğaltabilirsini
 
 5. VM’leri **Sanal makineler** bölümünde gerektiği şekilde arayın ve geçirmek istediğiniz her bir VM’yi seçin. Ardından Ileri ' ye tıklayın **: hedef ayarlar**.
 
-    ![VM 'Leri seçin](./media/tutorial-migrate-vmware/select-vms.png)
+    ![VM’leri seçin](./media/tutorial-migrate-vmware/select-vms.png)
 
 6. **Hedef ayarları**’nda aboneliği ve geçiş yapacağınız hedef bölgeyi seçin. Daha sonra Azure VM’lerinin geçişten sonra bulunacağı kaynak grubunu belirtin. **Sanal Ağ**’da Azure VM’lerinin geçişten sonra katılacağı Azure sanal ağını/alt ağını seçin.
 7. **Azure Hibrit Avantajı**’nda:
@@ -161,7 +158,7 @@ Bulma işlemi tamamlandığında VMware VM’lerini Azure’a çoğaltabilirsini
 
     ![Hedef ayarları](./media/tutorial-migrate-vmware/target-settings.png)
 
-8. **İşlem** bölümünde VM adını, boyutunu, İşletim Sistemi disk türünü ve kullanılabilirlik kümesini gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)uyumlu olmalıdır.
+8. **İşlem** bölümünde VM adını, boyutunu, İşletim Sistemi disk türünü ve kullanılabilirlik kümesini gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)uyumlu olmalıdır.
 
     - **VM boyutu**: değerlendirme önerilerini KULLANıYORSANıZ, VM boyutu açılan listesi önerilen boyutu içerir. Aksi takdirde Azure Geçişi, Azure aboneliğindeki en yakın eşleşmeye göre bir boyut seçer. Alternatif olarak **Azure VM boyutu** ’nda el ile bir boyut seçin. 
     - **Işletim sistemi diski**: VM için işletim sistemi (önyükleme) diskini belirtin. İşletim Sistemi diski, işletim sistemi önyükleyiciye ve yükleyiciye sahip disktir. 

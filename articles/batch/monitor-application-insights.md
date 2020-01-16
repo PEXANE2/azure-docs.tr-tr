@@ -2,7 +2,7 @@
 title: Azure Application Insights Batch 'i izleme | Microsoft Docs
 description: Azure Application Insights kitaplığı kullanarak Azure Batch .NET uygulamasını nasıl ayarlayacağınızı öğrenin.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.devlang: .NET
 ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
-ms.author: lahugh
-ms.openlocfilehash: 8d896785a2f000a22f68611d5b3b1162c2021236
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.author: jushiman
+ms.openlocfilehash: c69ef0bf20e2ade15d2278d0fc2fabd75f39153b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322575"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029508"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights ile Azure Batch .NET uygulamasında izleme ve hata ayıklama
 
@@ -30,7 +30,7 @@ Bu makaleye C# eşlik eden kod içeren örnek bir çözüm [GitHub](https://gith
 > Alternatif olarak, Batch çözümünüzü Batch Explorer VM performans sayaçları gibi Application Insights verileri görüntüleyecek şekilde yapılandırın. [Batch Explorer](https://github.com/Azure/BatchExplorer) , Azure Batch uygulamaları oluşturmaya, hata ayıklamanıza ve izlemenize yardımcı olan ücretsiz, zengin özellikli, tek başına bir istemci aracıdır. Mac, Linux veya Windows için [yükleme paketi](https://azure.github.io/BatchExplorer/) indirebilirsiniz. Batch Explorer Application Insights verileri etkinleştirmeye yönelik hızlı adımlar için [Batch-Insights](https://github.com/Azure/batch-insights) deposuna bakın. 
 >
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/vs)
 
 * [Batch hesabı ve bağlı depolama hesabı](batch-account-create-portal.md)
@@ -47,7 +47,7 @@ Bu makaleye C# eşlik eden kod içeren örnek bir çözüm [GitHub](https://gith
 
 ## <a name="add-application-insights-to-your-project"></a>Projenize Application Insights ekleyin
 
-Projeniz için **Microsoft. ApplicationInsights. WindowsServer** NuGet paketi ve bağımlılıkları gereklidir. Bunları uygulamanızın projesine ekleyin veya geri yükleyin. Paketi yüklemek için `Install-Package` komutunu veya NuGet Paket Yöneticisi 'ni kullanın.
+Projeniz için **Microsoft. ApplicationInsights. WindowsServer** NuGet paketi ve bağımlılıkları gereklidir. Bunları uygulamanızın projesine ekleyin veya geri yükleyin. Paketi yüklemek için `Install-Package` komutunu veya NuGet Paket Yöneticisi 'Ni kullanın.
 
 ```powershell
 Install-Package Microsoft.ApplicationInsights.WindowsServer
@@ -64,9 +64,9 @@ Kodunuzu işaretlemek için çözümünüzün bir Application Insights [Telemetr
 Ayrıca TopNWords.cs dosyasına izleme anahtarını da ekleyin.
 
 TopNWords.cs ' deki örnek, Application Insights API 'sinden aşağıdaki [izleme çağrılarını](../azure-monitor/app/api-custom-events-metrics.md) kullanır:
-* `TrackMetric()`-Bir işlem düğümünün gerekli metin dosyasını indirmek için ne kadar süreyle sürdüğünü izler.
-* `TrackTrace()`-Kodunuza hata ayıklama çağrıları ekler.
-* `TrackEvent()`-Yakalanacak ilginç olayları izler.
+* `TrackMetric()`-bir işlem düğümünün gerekli metin dosyasını indirmek için ne kadar süreyle sürdüğünü Izler.
+* `TrackTrace()`-kodunuza hata ayıklama çağrıları ekler.
+* `TrackEvent()`-yakalanacak ilginç olayları Izler.
 
 Bu örnek, özellikle özel durum işlemenin dışında bırakır. Bunun yerine Application Insights, hata ayıklama deneyimini önemli ölçüde geliştiren işlenmemiş özel durumları otomatik olarak raporlar. 
 
@@ -223,7 +223,7 @@ foreach (string aiFile in AIFilesToUpload)
 ...
 ```
 
-`FileToStage` Yöntemi, bir dosyayı yerel diskten bir Azure Storage blobuna kolayca yüklemenize olanak tanıyan kod örneğindeki bir yardımcı işlevdir. Her dosya daha sonra bir işlem düğümüne indirilir ve bir görev tarafından başvurulur.
+`FileToStage` yöntemi, bir dosyayı yerel diskten bir Azure Storage blobuna kolayca yüklemenize olanak tanıyan kod örneğindeki bir yardımcı işlevdir. Her dosya daha sonra bir işlem düğümüne indirilir ve bir görev tarafından başvurulur.
 
 Son olarak, görevleri işe ekleyin ve gerekli Application Insights ikililerini dahil edin.
 ```csharp
@@ -294,7 +294,7 @@ Aşağıdaki ekran görüntülerinde Application Insights, uygulamanızdan oluş
    * **Grafik türünü** **Grid**olarak ayarlayın.
    * **Toplamayı** **Ortalama**olarak ayarlayın.
    * **Group By** - **NodeId**olarak ayarlanır.
-   * **Ölçümler**' de,  > **Saniyeler içinde özel blob indirme**' yı seçin.
+   * **Ölçümler**' de, saniye cinsinden **özel** > **BLOB indirme**' yi seçin.
    * Görüntü **renk paletini** tercih ettiğiniz şekilde ayarlayın. 
 
 ![Düğüm başına blob indirme süresi](./media/monitor-application-insights/blobdownloadtime.png)
