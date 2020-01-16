@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 10/25/2019
 ms.author: jehollan, glenga
 ms.custom: include file
-ms.openlocfilehash: 911db285d1ca885142e8a80345926ce76379e3bc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fca8c3b0b1bd4d22720a6d15313e297d05b7fac9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958819"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021254"
 ---
 1. Azure portal [https://portal.azure.com](https://portal.azure.com) açın
 
 1. **Kaynak oluştur** düğmesini seçin
 
-    ![Kaynak oluştur](./media/functions-create-function-app-portal/function-app-create-resource.png)
+    ![Kaynak Oluştur](./media/functions-create-function-app-portal/function-app-create-resource.png)
 
 1. **İşlem** > **işlev uygulaması**seçin.
 
@@ -32,9 +32,9 @@ ms.locfileid: "72958819"
     | Ayar      | Önerilen değer  | Açıklama |
     | ------------ | ---------------- | ----------- |
     | **Abonelik** | Aboneliğiniz | Bu yeni işlev uygulamasının oluşturulduğu abonelik. |
-    | **[Kaynak Grubu](../articles/azure-resource-manager/resource-group-overview.md)** |  *myResourceGroup* | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
-    | **İşlev Uygulaması adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı tanımlayan ad. Geçerli karakterler `a-z` (büyük/küçük harf duyarsız), `0-9`ve `-`.  |
-    |**Yayımlama**| Kodlayın | Kod dosyalarını veya Docker kapsayıcısını yayımlama seçeneği. |
+    | **[Kaynak Grubu](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
+    | **İşlev Uygulamasının adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı tanımlayan ad. Geçerli karakterler `a-z` (büyük/küçük harf duyarsız), `0-9`ve `-`.  |
+    |**Yayımla**| Kodlayın | Kod dosyalarını veya Docker kapsayıcısını yayımlama seçeneği. |
     | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. C# ve F# için **.NET** işlevlerini seçin. |
     |**Bölge**| Tercih edilen bölge | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
 
@@ -46,7 +46,7 @@ ms.locfileid: "72958819"
 
     | Ayar      | Önerilen değer  | Açıklama |
     | ------------ | ---------------- | ----------- |
-    | **[Depolama hesabı](../articles/storage/common/storage-quickstart-create-account.md)** |  Genel olarak benzersiz bir ad |  İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ile 24 karakter arasında olmalı ve yalnızca sayıyla küçük harf içermelidir. Ayrıca, [depolama hesabı gereksinimlerini](../articles/azure-functions/functions-scale.md#storage-account-requirements)karşılaması gereken mevcut bir hesabı da kullanabilirsiniz. |
+    | **[Depolama hesabı](../articles/storage/common/storage-account-create.md)** |  Genel olarak benzersiz bir ad |  İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ile 24 karakter arasında olmalı ve yalnızca sayıyla küçük harf içermelidir. Ayrıca, [depolama hesabı gereksinimlerini](../articles/azure-functions/functions-scale.md#storage-account-requirements)karşılaması gereken mevcut bir hesabı da kullanabilirsiniz. |
     |**İşletim sistemi**| Tercih edilen işletim sistemi | Çalışma zamanı yığını seçiminize göre sizin için bir işletim sistemi önceden seçilmiştir, ancak gerekirse ayarı değiştirebilirsiniz. |
     | **[Planınızın](../articles/azure-functions/functions-scale.md)** | Premium | Plan türü için **Premium (Önizleme)** öğesini seçin ve *Windows planı* ve *SKU ve boyut* seçimleri için Varsayılanlar ' ı seçin. |
 

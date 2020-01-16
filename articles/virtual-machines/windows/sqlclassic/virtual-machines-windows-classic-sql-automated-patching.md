@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9fabccd477883750c1aecb5493fdb64ddf5ab2c3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: efc6d0c25c5186b391deb08ee0e41dcb8ae6edf0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100287"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978078"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Azure sanal makinelerinde SQL Server için otomatik düzeltme eki uygulama (klasik)
 > [!div class="op_single_selector"]
@@ -37,9 +37,9 @@ Otomatik düzeltme eki uygulama SQL Server çalıştıran bir Azure sanal makine
 Otomatik Yama Uygulama [SQL Server IaaS Aracı Uzantısı](../classic/sql-server-agent-extension.md)'na bağımlıdır.
 
 > [!IMPORTANT] 
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/resource-manager-deployment-model.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. Bu makalenin Kaynak Yöneticisi sürümünü görüntülemek için bkz. [Azure sanal makineler 'de SQL Server Için otomatik düzeltme eki uygulama kaynak yöneticisi](../sql/virtual-machines-windows-sql-automated-patching.md).
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. Bu makalenin Kaynak Yöneticisi sürümünü görüntülemek için bkz. [Azure sanal makineler 'de SQL Server Için otomatik düzeltme eki uygulama kaynak yöneticisi](../sql/virtual-machines-windows-sql-automated-patching.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Otomatik düzeltme eki kullanmak için aşağıdaki önkoşulları göz önünde bulundurun:
 
 **Işletim sistemi**:

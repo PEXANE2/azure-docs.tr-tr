@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 1/13/2020
+ms.date: 1/14/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 9f8ed6be825470504b5e7b45a15c4faa9cf5ccfc
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: bfa5d240ba4905f79274941568933daf1425bf8b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932890"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969423"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
@@ -29,7 +29,7 @@ Temel adımlar aşağıdaki gibidir:
 1. Aşağıdaki şablonlardan birini, uyarının nasıl oluşturulacağını açıklayan bir JSON dosyası olarak kullanın.
 2. Uyarıyı özelleştirmek için ilgili parametreler dosyasını bir JSON olarak düzenleyin ve kullanın.
 3. `metricName` parametresi için, [Azure izleyici desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)' de kullanılabilir ölçümler bölümüne bakın.
-4. [Herhangi bir dağıtım yöntemini](../../azure-resource-manager/resource-group-template-deploy.md)kullanarak şablonu dağıtın.
+4. [Herhangi bir dağıtım yöntemini](../../azure-resource-manager/templates/deploy-powershell.md)kullanarak şablonu dağıtın.
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Basit bir statik eşik ölçümü için şablon uyarısı
 
@@ -378,6 +378,13 @@ Bu izlenecek yolun amacına uygun olarak JSON öğesini simpledynamicmetricalert
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
+    "ignoreDataBefore": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format, e.g. '2019-12-31T22:00:00Z')."
+            }
+        },
         "timeAggregation": {
             "type": "string",
             "defaultValue": "Average",
@@ -455,6 +462,7 @@ Bu izlenecek yolun amacına uygun olarak JSON öğesini simpledynamicmetricalert
                                 "numberOfEvaluationPeriods": "[parameters('numberOfEvaluationPeriods')]",
                                 "minFailingPeriodsToAlert": "[parameters('minFailingPeriodsToAlert')]"
                             },
+                "ignoreDataBefore": "[parameters('ignoreDataBefore')]",
                             "timeAggregation": "[parameters('timeAggregation')]"
                         }
                     ]
@@ -511,6 +519,9 @@ Aşağıdaki JSON öğesini simpledynamicmetricalert. Parameters. JSON olarak ka
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
+    "ignoreDataBefore": {
+            "value": ""
+        },
         "timeAggregation": {
             "value": "Average"
         },
@@ -559,7 +570,7 @@ Bu şekilde, birden çok ölçüt içeren bir uyarı kuralında boyutlar kullan�
 - Her ölçüt içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - Bir boyut değeri olarak "\*" kullanamazsınız.
 - Farklı criterions ' de yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılan bir boyut değeri, bu ölçümler için (ilgili criterions) aynı şekilde açıkça ayarlanmalıdır.
-    - Aşağıdaki örnekte, hem **işlemler** hem de **SuccessE2ELatency** ölçümleri bir **API adı** boyutuna sahip olduğundan ve *Criterion1* **API adı** boyutu için *"GetBlob"* değerini belirttiğinden, bu durumda *criterion2* Ayrıca **API adı** boyutu için bir *"GetBlob"* değeri ayarlamış olmalıdır.
+    - Aşağıdaki örnekte, hem **işlemler** hem de **SuccessE2ELatency** ölçümleri bir **apiname** boyutuna sahip olduğundan ve *Criterion1* **apiname** boyutu için *"GetBlob"* değerini belirttiğinden, Ayrıca, *criterion2* de **apiname** boyutu için bir *"GetBlob"* değeri ayarlamış olmalıdır.
 
 
 Bu izlenecek yolun amacına uygun olarak JSON 'u advancedstaticmetricalert. JSON olarak kaydedin.

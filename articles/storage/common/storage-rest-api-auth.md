@@ -10,26 +10,26 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 13e9abb2a7b79ad9355261832145766e424c3df6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895169"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965712"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Paylaşılan anahtar yetkilendirmesi ile REST API işlemlerini çağırma
 
 Bu makalede, yetkilendirme üstbilgisinin nasıl ayarlanacağı dahil olmak üzere Azure depolama REST API 'Lerinin nasıl çağrılacağını gösterilmektedir. REST hakkında hiçbir şey bilen bir geliştiricinin görünüm noktasından yazılmıştır ve bir REST çağrısının nasıl yapılacağını fikir vermez. Bir REST işleminin nasıl çağrılacağını öğrendikten sonra, diğer Azure depolama REST işlemlerini kullanmak için bu bilgilerden yararlanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Örnek uygulama, bir depolama hesabı için blob kapsayıcıları listeler. Bu makaledeki kodu denemek için aşağıdaki öğeler gereklidir: 
+Örnek uygulama, bir depolama hesabı için blob kapsayıcıları listeler. Bu makaledeki kodu denemek için aşağıdaki öğeler gereklidir:
 
 - **Azure geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) ' ü yükler.
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-- Genel amaçlı depolama hesabı. Henüz bir depolama hesabınız yoksa, bkz. [depolama hesabı oluşturma](storage-quickstart-create-account.md).
+- Genel amaçlı depolama hesabı. Henüz bir depolama hesabınız yoksa, bkz. [depolama hesabı oluşturma](storage-account-create.md).
 
 - Bu makaledeki örnekte, bir depolama hesabındaki kapsayıcıların nasıl listeyapılacağı gösterilmektedir. Çıktıyı görmek için, başlamadan önce depolama hesabındaki blob depolamaya bazı kapsayıcılar ekleyin.
 
@@ -43,7 +43,7 @@ Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 ```
 
-Bu komut, depoyu yerel Git klasörünüze kopyalar. Visual Studio çözümünü açmak için, Storage-DotNet-REST-API-with-auth klasörünü arayın, açın ve StorageRestApiAuth. sln ' ye çift tıklayın. 
+Bu komut, depoyu yerel Git klasörünüze kopyalar. Visual Studio çözümünü açmak için, Storage-DotNet-REST-API-with-auth klasörünü arayın, açın ve StorageRestApiAuth. sln ' ye çift tıklayın.
 
 ## <a name="about-rest"></a>REST hakkında
 
@@ -93,16 +93,16 @@ Ek parametreleri kullanmak için, bu örneğe benzer şekilde, değeri kaynak di
 
 Örnek projemizdeki yetkilendirme üstbilgisini oluşturma kodu ayrı bir sınıfta bulunur. Fikir, tüm sınıfı alıp kendi çözümünüze ekleyebilir ve "olduğu gibi" kullanabilirsiniz. Yetkilendirme üst bilgisi kodu, Azure depolama 'ya birçok REST API çağrısı için geçerlidir.
 
-Bir HttpRequestMessage nesnesi olan isteği oluşturmak için Program.cs içindeki ListContainersAsyncREST sayfasına gidin. İstek oluşturma adımları şunlardır: 
+Bir HttpRequestMessage nesnesi olan isteği oluşturmak için Program.cs içindeki ListContainersAsyncREST sayfasına gidin. İstek oluşturma adımları şunlardır:
 
-- Hizmeti çağırmak için kullanılacak URI 'yi oluşturun. 
+- Hizmeti çağırmak için kullanılacak URI 'yi oluşturun.
 - HttpRequestMessage nesnesini oluşturun ve yükü ayarlayın. ' De bir şeyi geçirdiğimiz için yük ListContainersAsyncREST için null.
 - X-MS-Date ve x-MS-Version için istek üst bilgilerini ekleyin.
 - Yetkilendirme üst bilgisini alın ve ekleyin.
 
-İhtiyaç duyduğunuz bazı temel bilgiler: 
+İhtiyaç duyduğunuz bazı temel bilgiler:
 
-- ListContainers için **yöntem** `GET`. Bu değer, istek örneği oluşturulurken ayarlanır. 
+- ListContainers için **yöntem** `GET`. Bu değer, istek örneği oluşturulurken ayarlanır.
 - **Kaynak** , hangi API 'nin ÇAĞRıLDıĞıNı belirten URI 'nin sorgu bölümüdür, bu yüzden değer `/?comp=list`. Daha önce belirtildiği gibi, kaynak, [Listcontainers API 'si](/rest/api/storageservices/List-Containers2)hakkındaki bilgileri gösteren başvuru belgeleri sayfasında bulunur.
 - URI, bu depolama hesabı için blob hizmeti uç noktası oluşturularak ve kaynağı birleştirerek oluşturulur. **İstek URI 'si** değeri `http://contosorest.blob.core.windows.net/?comp=list`bitiyor.
 - ListContainers için **Requestbody** null ve ek **üst bilgi**yok.
@@ -160,7 +160,7 @@ Artık isteği oluşturduğunuza göre, Azure depolama 'ya göndermek için Send
     using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))
     {
-        // If successful (status code = 200), 
+        // If successful (status code = 200),
         //   parse the XML response for the container names.
         if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
         {
@@ -209,7 +209,7 @@ Content-Length: 1511
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
-<EnumerationResults 
+<EnumerationResults
   ServiceEndpoint="http://contosorest.blob.core.windows.net/">
   <Containers>
     <Container>
@@ -308,7 +308,7 @@ Yetkilendirme üst bilgisini oluşturmak için gerektiğinden, bu iki kurallı a
 
 ### <a name="canonicalized-headers"></a>Kurallı üst bilgileri
 
-Bu değeri oluşturmak için "x-MS-" ile başlayan üst bilgileri alın ve bunları sıralayın, sonra bunları tek bir dizede birleştirilmiş bir `[key:value\n]` örnekleri dizesine biçimlendirin. Bu örnekte, kurallı üstbilgileri şöyle görünür: 
+Bu değeri oluşturmak için "x-MS-" ile başlayan üst bilgileri alın ve bunları sıralayın, sonra bunları tek bir dizede birleştirilmiş bir `[key:value\n]` örnekleri dizesine biçimlendirin. Bu örnekte, kurallı üstbilgileri şöyle görünür:
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -316,7 +316,7 @@ x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 
 Bu çıktıyı oluşturmak için kullanılan kod aşağıda verilmiştir:
 
-```csharp 
+```csharp
 private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMessage)
 {
     var headers = from kvp in httpRequestMessage.Headers
@@ -444,7 +444,7 @@ https://myaccount.blob.core.windows.net/container-1?restype=container&comp=list
 ListContainersAsyncREST içinde, URL 'yi Listbloblar için API olarak ayarlayan kodu değiştirin. Kapsayıcı adı **Container-1**' dir.
 
 ```csharp
-String uri = 
+String uri =
     string.Format("http://{0}.blob.core.windows.net/container-1?restype=container&comp=list",
       storageAccountName);
 
@@ -516,7 +516,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Yanıt gövdesi (XML):** Bu XML yanıtı, Blobların ve bunların özelliklerinin listesini gösterir. 
+**Yanıt gövdesi (XML):** Bu XML yanıtı, Blobların ve bunların özelliklerinin listesini gösterir.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

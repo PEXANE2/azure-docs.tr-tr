@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: allensu
-ms.openlocfilehash: e80de4a3102f9fec8ad06c0facd110b51558d338
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 37e5f5ed1d877900d8ef967f83de95f056fcca0c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210985"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980522"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS bölgelerine ve kayıtlarına genel bakış
 
@@ -115,7 +115,7 @@ Bir DNS kaydındaki birden çok dize, bir TXT kayıt kümesindeki birden çok TX
 
 ### <a name="tags"></a>Etiketler
 
-Etiketler, ad-değer çiftleri listesidir ve kaynakları etiketlemek için Azure Resource Manager tarafından kullanılır.  Azure Resource Manager, Azure faturanızda Filtrelenmiş görünümleri etkinleştirmek için Etiketler kullanır ve ayrıca etiketlerin gerekli olduğu bir ilke ayarlamanıza olanak sağlar. Etiketler hakkında daha fazla bilgi için bkz. [Etiketleri kullanarak Azure kaynaklarınızı düzenleme](../azure-resource-manager/resource-group-using-tags.md).
+Etiketler, ad-değer çiftleri listesidir ve kaynakları etiketlemek için Azure Resource Manager tarafından kullanılır.  Azure Resource Manager, Azure faturanızda Filtrelenmiş görünümleri etkinleştirmek için Etiketler kullanır ve ayrıca etiketlerin gerekli olduğu bir ilke ayarlamanıza olanak sağlar. Etiketler hakkında daha fazla bilgi için bkz. [Etiketleri kullanarak Azure kaynaklarınızı düzenleme](../azure-resource-manager/management/tag-resources.md).
 
 Azure DNS, DNS bölge kaynaklarında Azure Resource Manager etiketlerin kullanılmasını destekler.  DNS kayıt kümelerinde etiketleri desteklemez, ancak aşağıda açıklandığı gibi DNS kayıt kümelerinde alternatif bir ' Metadata ' desteklenir.
 

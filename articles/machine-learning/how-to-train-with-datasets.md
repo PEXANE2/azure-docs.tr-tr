@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: f10de425bf83720b06f3ea7772343edfefc8d952
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: b6ea5c9ef5e128116ef389675a09e6ab4b230b75
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834820"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982450"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning veri kümeleriyle eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -61,7 +61,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
 
 TabularDataset nesneleri, tanıdık veri hazırlama ve eğitim kitaplıklarıyla çalışabilmeniz için verileri bir Pandas veya Spark veri çerçevesine yükleme yeteneği sağlar. Bu özellikten yararlanmak için, bir TabularDataset 'i eğitim yapılandırmanızda giriş olarak geçirebilir ve sonra betiğinizde alabilirsiniz.
 
-Bunu yapmak için, eğitim betiğinizdeki [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) nesnesi aracılığıyla giriş veri kümesine erişin ve [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe--) metodunu kullanın. 
+Bunu yapmak için, eğitim betiğinizdeki [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) nesnesi aracılığıyla giriş veri kümesine erişin ve [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metodunu kullanın. 
 
 ```Python
 %%writefile $script_folder/train_titanic.py

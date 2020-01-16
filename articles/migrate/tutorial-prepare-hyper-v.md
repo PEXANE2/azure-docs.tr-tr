@@ -4,12 +4,12 @@ description: Azure geçişi ile Hyper-V VM 'lerinin değerlendirmesi/geçirilmes
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: a76c249f3d179a34fbb14e6c8bfb3666816fa160
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 6140d9689dafe8a97ae77346ea2212846e964cdc
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720217"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028929"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM 'lerinin Azure 'a değerlendirmesi ve geçirilmesi için hazırlanma
 
@@ -91,9 +91,9 @@ Kiracı/Genel yönetici, uygulama geliştirici rolünü bir hesaba atayabilir. [
 
 ## <a name="prepare-hyper-v-for-assessment"></a>Hyper-V ' i değerlendirme için hazırlama
 
-VM değerlendirmesi için Hyper-V ' y i el ile veya bir yapılandırma betiği kullanarak hazırlayabilirsiniz. Hazırlanması gerekenler şunlardır:
+VM değerlendirmesi için Hyper-V ' y i el ile veya bir yapılandırma betiği kullanarak hazırlayabilirsiniz. Komut dosyasıyla veya [el ile](#prepare-hyper-v-manually)hazırlanması gerekenler aşağıda verilmiştir.
 
-- Hyper-V konak ayarlarını doğrulayın ve gerekli bağlantı noktalarının Hyper-V konaklarında açık olduğundan emin olun.
+- [Doğrula](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) Hyper-V konak ayarları ve [gerekli bağlantı noktalarının](migrate-support-matrix-hyper-v.md#port-access) Hyper-v konaklarında açık olduğundan emin olun.
 - Her konakta PowerShell uzaktan iletişimini ayarlayın, böylece Azure geçişi gereci konakta PowerShell komutlarını bir WinRM bağlantısı üzerinden çalıştırabilir.
 - VM diskleri uzak SMB paylaşımlarında bulunuyorsa kimlik bilgilerini devretmek.
 - Gerecin Hyper-V konaklarındaki VM 'Leri bulması için kullanacağı bir hesap ayarlayın.
@@ -171,8 +171,8 @@ Azure geçişi 'nin şirket içi VM 'Leri bulması için izinleri olması gereki
 
 ### <a name="verify-hyper-v-host-settings"></a>Hyper-V konak ayarlarını doğrulama
 
-1. Sunucu değerlendirmesi için [Hyper-V konağı gereksinimlerini](migrate-support-matrix-hyper-v.md#assessment-hyper-v-host-requirements) doğrulayın.
-2. Hyper-V konaklarında [gerekli bağlantı noktalarının](migrate-support-matrix-hyper-v.md#assessment-port-requirements) açık olduğundan emin olun.
+1. Sunucu değerlendirmesi için [Hyper-V konağı gereksinimlerini](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) doğrulayın.
+2. Hyper-V konaklarında [gerekli bağlantı noktalarının](migrate-support-matrix-hyper-v.md#port-access) açık olduğundan emin olun.
 
 ### <a name="enable-powershell-remoting-on-hosts"></a>Konaklarda PowerShell uzaktan iletişimini etkinleştir
 
@@ -214,17 +214,17 @@ Gereci ayarlarken, [Bu uygulamayı gereç üzerinde etkinleştirerek](tutorial-a
 
 Sonraki öğreticide Azure geçişi gerecini ve değerlendirmeyi ayarlamadan önce, Gereç dağıtımına hazırlanın.
 
-1. Gereç gereksinimlerini [doğrulayın](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) .
-2. Gerecin erişmesi gereken Azure URL 'Lerini [gözden geçirin](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) .
+1. Gereç gereksinimlerini [doğrulayın](migrate-appliance.md#appliance---hyper-v) .
+2. Gerecin erişmesi gereken Azure URL 'Lerini [gözden geçirin](migrate-appliance.md#url-access) .
 3. Bulma ve değerlendirme sırasında gereç tarafından toplanacak verileri gözden geçirin.
-4. Gereç [için bağlantı noktası](migrate-support-matrix-hyper-v.md#assessment-port-requirements) erişim gereksinimleri.
+4. Gereç [için bağlantı noktası](migrate-appliance.md#collected-data---hyper-v) erişim gereksinimleri.
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>Hyper-V geçişine hazırlanma
 
-1. [İnceleme](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-requirements) Geçiş için Hyper-V ana bilgisayar gereksinimleri.
-2. Azure 'a geçirmek istediğiniz Hyper-V VM 'lerinin gereksinimlerini [gözden geçirin](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) .
-3. Hyper-V konaklarının ve kümelerinin VM geçişi için erişmesi gereken Azure URL 'Lerine [göz önünde](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access) kalmaz.
+1. [İnceleme](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Geçiş için Hyper-V konak gereksinimleri ve Hyper-V konaklarının ve kümelerinin VM geçişi için erişmesi gereken Azure URL 'Leri.
+2. Azure 'a geçirmek istediğiniz Hyper-V VM 'lerinin gereksinimlerini [gözden geçirin](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) .
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
