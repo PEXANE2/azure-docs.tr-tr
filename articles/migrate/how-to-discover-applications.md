@@ -1,17 +1,14 @@
 ---
-title: Azure geçişi sunucu değerlendirmesini kullanarak şirket içi sunucularda yüklü olan uygulamaları, rolleri ve özellikleri bulma
-description: Azure geçişi sunucu değerlendirmesi kullanılarak şirket içi sunucularda uygulamalar, roller ve özelliklerin nasıl keşfedileceğini açıklar.
-author: snehaamicrosoft
-ms.service: azure-migrate
+title: Azure geçişi ile şirket içi sunuculardaki uygulamaları, rolleri ve özellikleri bulma
+description: Azure geçişi sunucu değerlendirmesi ile şirket içi sunuculardaki uygulamaları, rolleri ve özellikleri bulmayı öğrenin.
 ms.topic: article
 ms.date: 11/20/2019
-ms.author: snehaa
-ms.openlocfilehash: 279e326ace308b354d7bcb8366d3286980e7b8c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278468"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029081"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Makine uygulamalarını, rolleri ve özellikleri bul
 
@@ -30,14 +27,14 @@ Azure geçişi kullanarak uygulama bulma: Sunucu değerlendirmesi aracısız. Ma
 1. Uygulama düzeyinde bulma için [destek sınırlamalarını](migrate-support-matrix-vmware.md#application-discovery) gözden geçirin.
 2. Bir Azure geçişi projesi [oluşturduğunuzdan](how-to-add-tool-first-time.md) emin olun.
 3. Zaten bir proje oluşturduysanız Azure geçişi: Sunucu değerlendirmesi [aracını eklediğinizden emin](how-to-assess.md) olun.
-4. Azure geçişi gereci ile VMware VM 'lerini bulmak ve değerlendirmek için [VMware gereksinimlerini](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) denetleyin.
-4. Azure geçişi gerecini dağıtmaya yönelik [gereksinimleri](migrate-support-matrix-vmware.md#assessment-appliance-requirements) kontrol edin.
+4. Azure geçişi gereci ile VMware VM 'lerini bulmak ve değerlendirmek için [VMware gereksinimlerini](migrate-support-matrix-vmware.md#vmware-requirements) denetleyin.
+4. Azure geçişi gerecini dağıtmaya yönelik [gereksinimleri](migrate-appliance.md) kontrol edin.
 
 ## <a name="prepare-for-app-discovery"></a>Uygulama bulma için hazırlanma
 
-1. [Gereç dağıtımına hazırlanın](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware). Hazırlık, Gereç ayarlarını doğrulamayı ve gerecin vCenter Server erişmek için kullanacağı bir hesap ayarlamayı içerir.
+1. [Gereç dağıtımına hazırlanın](tutorial-prepare-vmware.md). Hazırlık, Gereç ayarlarını doğrulamayı ve gerecin vCenter Server erişmek için kullanacağı bir hesap ayarlamayı içerir.
 2. Uygulamaları, rolleri ve özellikleri öğrenmek istediğiniz makineler için yönetici izinlerine sahip bir kullanıcı hesabına (Windows ve Linux sunucuları için birer tane) sahip olduğunuzdan emin olun.
-3. Bulmayı başlatmak için VMware gerecini [dağıtın](how-to-set-up-appliance-vmware.md) . Gereci dağıtmak için bir OVA şablonunu indirip bir VMware VM 'si olarak oluşturmak üzere VMware 'ye içeri aktarabilirsiniz. Gereci yapılandırıp Azure geçişi ile kaydedersiniz.
+3. Bulmayı başlatmak için [Azure geçişi gereci dağıtın](how-to-set-up-appliance-vmware.md) . Gereci dağıtmak için bir OVA şablonunu indirip bir VMware VM 'si olarak oluşturmak üzere VMware 'ye içeri aktarabilirsiniz. Gereci yapılandırıp Azure geçişi ile kaydedersiniz.
 2. Gereci dağıtırken, sürekli bulmayı başlatmak için aşağıdakileri belirtirsiniz:
     - Bağlanmak istediğiniz vCenter Server adı.
     - VCenter Server Bağlanılacak gereç için oluşturduğunuz kimlik bilgileri.

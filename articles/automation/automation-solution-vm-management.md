@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e37b6b800cbe0b4272df227e1411257b33a3e0cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37fee7f96a27942a1295cb8c2315fedffc5bdefe
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420802"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030165"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Otomasyonu 'nda VM'leri çalışma saatleri dışında başlat/durdur çözümü
 
@@ -33,7 +33,7 @@ Geçerli çözümle ilgili sınırlamalar aşağıda verilmiştir:
 > [!NOTE]
 > Klasik VM 'Ler için çözüm kullanıyorsanız, tüm VM 'niz bulut hizmeti başına sırayla işlenir. Sanal makineler, farklı bulut hizmetlerinde paralel olarak hala işlenir. Bulut hizmeti başına 20 ' den fazla VM varsa, üst runbook **ScheduledStartStop_Parent** birden çok zamanlama oluşturmanızı ve zamanlama başına 20 VM 'yi belirtmenizi öneririz. Zamanlama özelliklerinde, **Vmlist** parametresinde, virgülle ayrılmış bir LISTE, VM adı olarak belirtin. Aksi takdirde, bu çözüm için Otomasyon işi üçten fazla saatten fazla çalışırsa, bu, [dengeli](automation-runbook-execution.md#fair-share) olmayan bir şekilde kaldırılır veya durdurulur.
 >
-> Azure bulut çözümü sağlayıcısı (Azure CSP) abonelikleri yalnızca Azure Resource Manager modelini destekler, Azure Resource Manager olmayan hizmetler programda kullanılamaz. Başlat/Durdur çözümü çalıştırıldığında, klasik kaynakları yönetmek için cmdlet 'ler olduğu için hatalar alabilirsiniz. CSP hakkında daha fazla bilgi edinmek için bkz. [CSP aboneliklerinde kullanılabilir hizmetler](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). CSP aboneliği kullanıyorsanız, dağıtımdan sonra [**External_EnableClassicVMs**](#variables) değişkenini **false** olarak değiştirmelisiniz.
+> Azure bulut çözümü sağlayıcısı (Azure CSP) abonelikleri yalnızca Azure Resource Manager modelini destekler, Azure Resource Manager olmayan hizmetler programda kullanılamaz. Başlat/Durdur çözümü çalıştırıldığında, klasik kaynakları yönetmek için cmdlet 'ler olduğu için hatalar alabilirsiniz. CSP hakkında daha fazla bilgi edinmek için bkz. [CSP aboneliklerinde kullanılabilir hizmetler](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services). CSP aboneliği kullanıyorsanız, dağıtımdan sonra [**External_EnableClassicVMs**](#variables) değişkenini **false** olarak değiştirmelisiniz.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

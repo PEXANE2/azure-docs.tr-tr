@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 34dd15ee638335048c983fbb752bd812291456ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1761eebe51c5ccb4d30b93ad4122dfc185d216e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418048"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028253"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Otomasyonu farklı çalıştır hesaplarını yönetme
 
@@ -20,19 +20,19 @@ Farklı Çalıştır hesabı oluşturduğunuzda, Azure Active Directory yeni bir
 
 İki farklı çalıştır hesabı türü vardır:
 
-* **Azure farklı çalıştır hesabı** -bu hesap, [Kaynak Yöneticisi dağıtım modeli](../azure-resource-manager/resource-manager-deployment-model.md) kaynaklarını yönetmek için kullanılır.
+* **Azure farklı çalıştır hesabı** -bu hesap, [Kaynak Yöneticisi dağıtım modeli](../azure-resource-manager/management/deployment-models.md) kaynaklarını yönetmek için kullanılır.
   * Otomatik olarak imzalanan bir sertifika ile Azure AD uygulaması oluşturur, Azure AD’de bu uygulama için bir hizmet sorumlusu hesabı oluşturur ve geçerli aboneliğinizde hesap için Katkıda Bulunan rolünü atar. Bu ayarı Sahip veya başka bir rolle değiştirebilirsiniz. Daha fazla bilgi için bkz. [Azure Otomasyonu’nda rol tabanlı erişim denetimi](automation-role-based-access-control.md).
   * Belirtilen Otomasyon hesabında *AzureRunAsCertificate* adlı bir Otomasyon sertifikası varlığı oluşturur. Sertifika varlıkları, Azure AD uygulaması tarafından kullanılan sertifika özel anahtarını içerir.
   * Belirtilen Otomasyon hesabında *AzureRunAsConnection* adlı bir Otomasyon bağlantı varlığı oluşturur. Bağlantı varlığı applicationId, tenantId, subscriptionId ve sertifika parmak izini içerir.
 
-* **Azure klasik farklı çalıştır hesabı** -bu hesap [klasik dağıtım modeli](../azure-resource-manager/resource-manager-deployment-model.md) kaynaklarını yönetmek için kullanılır.
+* **Azure klasik farklı çalıştır hesabı** -bu hesap [klasik dağıtım modeli](../azure-resource-manager/management/deployment-models.md) kaynaklarını yönetmek için kullanılır.
   * Abonelikte bir yönetim sertifikası oluşturur
   * Belirtilen Otomasyon hesabında *AzureClassicRunAsCertificate* adlı bir Otomasyon sertifikası varlığı oluşturur. Sertifika varlığı, yönetim sertifikası tarafından kullanılan sertifika özel anahtarını içerir.
   * Belirtilen Otomasyon hesabında *AzureClassicRunAsConnection* adlı bir Otomasyon bağlantı varlığı oluşturur. Bağlantı varlığı; abonelik adı, subscriptionId ve sertifika varlık adını içerir.
   * Oluşturmak veya yenilemek için abonelikte ortak yönetici olması gerekir
 
   > [!NOTE]
-  > Azure bulut çözümü sağlayıcısı (Azure CSP) abonelikleri yalnızca Azure Resource Manager modelini destekler, Azure Resource Manager olmayan hizmetler programda kullanılamaz. CSP aboneliği kullanılırken, Azure klasik farklı çalıştır hesabı oluşturulmaz. Azure farklı çalıştır hesabı hala oluşturulmuştur. CSP abonelikleri hakkında daha fazla bilgi edinmek için bkz. [CSP aboneliklerinde kullanılabilir hizmetler](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
+  > Azure bulut çözümü sağlayıcısı (Azure CSP) abonelikleri yalnızca Azure Resource Manager modelini destekler, Azure Resource Manager olmayan hizmetler programda kullanılamaz. CSP aboneliği kullanılırken, Azure klasik farklı çalıştır hesabı oluşturulmaz. Azure farklı çalıştır hesabı hala oluşturulmuştur. CSP abonelikleri hakkında daha fazla bilgi edinmek için bkz. [CSP aboneliklerinde kullanılabilir hizmetler](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 
   > [!NOTE]
   > Farklı Çalıştır hesabı için hizmet sorumlusu, varsayılan olarak Azure Active Directory okuma iznine sahip değildir. Azure Active Directory 'yi okuma veya yönetme izinleri eklemek istiyorsanız, **API izinleri**altında hizmet sorumlusu üzerinde bu izni vermeniz gerekir. Daha fazla bilgi için bkz. [Web API 'lerine erişim Izinleri ekleme](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).

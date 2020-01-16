@@ -1,17 +1,14 @@
 ---
 title: Hyper-V için Azure geçişi gereci ayarlama
 description: Hyper-V VM 'lerini değerlendirmek ve geçirmek için bir Azure geçiş gereci ayarlamayı öğrenin.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: a94d11d48728b03dd978af85db4b6c2af4887938
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0704adda314b94736b01fe114c3643ef8bd83753
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534498"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029095"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM 'Leri için gereç ayarlama
 
@@ -65,7 +62,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 İndirilen dosyayı içeri aktarın ve VM 'yi oluşturun.
 
 1. Sıkıştırılmış VHD dosyasını Hyper-V konağında gereç sanal makinesini barındıracak bir klasöre ayıklayın. Üç klasör ayıklanır.
-2. Hyper-V Yöneticisi 'Ni açın. **Eylemler**' de **sanal makineyi içeri aktar**' a tıklayın.
+2. Hyper-V Yöneticisi'ni açın. **Eylemler**' de **sanal makineyi içeri aktar**' a tıklayın.
 
     ![VHD dağıtma](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
@@ -76,13 +73,13 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 3. **Hedef Seç**bölümünde varsayılan ayarı bırakın. **İleri**’ye tıklayın.
 4. **Depolama klasörlerinde**varsayılan ayarı bırakın. **İleri**’ye tıklayın.
 5. **Ağ seçin**bölümünde, VM 'nin kullanacağı sanal anahtarı belirtin. Anahtar, verileri Azure 'a göndermek için internet bağlantısı gerektirir.
-6. **Özet**bölümünde ayarları gözden geçirin. Ardından **son**' a tıklayın.
+6. **Özet**bölümünde ayarları gözden geçirin. Ardından, **Son**'a tıklayın.
 7. Hyper-V Yöneticisi 'nde **sanal makineler**>, VM 'yi başlatın.
 
 
 ### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
-Gereç VM 'sinin [Azure URL 'lerine](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access)bağlanabildiğinizden emin olun.
+Gereç VM 'sinin [Azure URL 'lerine](migrate-appliance.md#url-access)bağlanabildiğinizden emin olun.
 
 ## <a name="configure-the-appliance"></a>Gereci yapılandırma
 
