@@ -85,6 +85,8 @@
   items:
     - name: Tam metin arama
       href: search-lucene-query-architecture.md
+    - name: Dizin Oluşturucular
+      href: search-indexer-overview.md
     - name: Yapay zeka zenginleştirme
       href: cognitive-search-concept-intro.md
     - name: Beceri kümeleri
@@ -147,7 +149,7 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: REST API’yi yükseltme
           href: search-api-migration.md
-    - name: Dizinleri oluşturma
+    - name: Dizinler oluşturuluyor
       items:
         - name: Temel bir dizin oluşturma
           href: search-what-is-an-index.md
@@ -179,7 +181,7 @@
           href: search-howto-complex-data-types.md
         - name: İlişkisel verileri modelleme
           href: index-sql-relational-data.md
-    - name: Tüm verileri dizinleme
+    - name: İçeri aktarma (dizin oluşturma)
       items:
         - name: Verileri içeri aktarmaya genel bakış
           href: search-what-is-data-import.md
@@ -273,12 +275,16 @@
           href: search-query-lucene-examples.md
         - name: Arama Gezgini'ni kullanma (portal)
           href: search-explorer.md
-        - name: Basit sorgu söz dizimi
-          href: query-simple-syntax.md
-        - name: Tam Lucene sorgu söz dizimi
-          href: query-lucene-syntax.md
-        - name: moreLikeThis sorgu parametresi
-          href: search-more-like-this.md
+        - name: Özel karakterler ve kısmi terimler
+          href: search-query-partial-matching.md
+        - name: Söz dizimi başvurusu
+          items:
+            - name: Basit sorgu söz dizimi
+              href: query-simple-syntax.md
+            - name: Tam Lucene sorgu söz dizimi
+              href: query-lucene-syntax.md
+            - name: moreLikeThis (önizleme)
+              href: search-more-like-this.md
     - name: Filtreleri uygulama
       items:
         - name: Filtrelere genel bakış

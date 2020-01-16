@@ -54,22 +54,28 @@
   items:
     - name: Destek matrisleri
       items:
-        - name: Azure Geçişi için destek matrisi
+        - name: Genel destek
           href: migrate-support-matrix.md
-        - name: VMware değerlendirmesi ve geçiş için destek matrisi
+        - name: VMware değerlendirme desteği
           href: migrate-support-matrix-vmware.md
-        - name: Hyper-V değerlendirmesi ve geçiş için destek matrisi
+        - name: VMware geçiş desteği
+          href: migrate-support-matrix-vmware-migration.md
+        - name: Hyper-V değerlendirme desteği
           href: migrate-support-matrix-hyper-v.md
-        - name: Fiziksel sunucu değerlendirmesi ve geçişi için destek matrisi
+        - name: Hyper-V geçiş desteği
+          href: migrate-support-matrix-hyper-v-migration.md
+        - name: Fiziksel sunucu değerlendirme desteği
           href: migrate-support-matrix-physical.md
-        - name: Azure Geçişi aleti için destek matrisi
+        - name: Fiziksel sunucu geçiş desteği
+          href: migrate-support-matrix-physical-migration.md
+        - name: Azure Geçişi aleti gereksinimleri
           href: migrate-appliance.md
+        - name: Çoğaltma aleti gereksinimleri
+          href: migrate-replication-appliance.md
     - name: Hyper-V geçiş mimarisi
       href: hyper-v-migration-architecture.md
     - name: Aracı tabanlı geçiş mimarisi
       href: agent-based-migration-architecture.md
-    - name: Azure Geçişi çoğaltma gereci
-      href: migrate-replication-appliance.md
     - name: Değerlendirmeler için en iyi yöntemler
       href: best-practices-assessment.md
     - name: Değerlendirmelere genel bakış
@@ -112,16 +118,16 @@
       href: prepare-for-migration.md
     - name: Azure Geçişi projesini silme
       href: how-to-delete-project.md
-- name: Ölçek değerlendirmesi ve geçiş
-  items:
-    - name: Çok sayıda VMware VM’sini değerlendirme
-      href: scale-vmware-assessment.md
-    - name: Çok sayıda Hyper-V VM’sini değerlendirme
-      href: scale-hyper-v-assessment.md
-    - name: Çok büyük sayıda VM'nin geçişini otomatikleştirme
-      href: how-to-migrate-at-scale.md
-    - name: Geçiş örnekleri (Contoso serisi)
-      href: contoso-migration-overview.md
+    - name: Ölçek değerlendirmesi ve geçiş
+      items:
+        - name: Çok sayıda VMware VM’sini değerlendirme
+          href: scale-vmware-assessment.md
+        - name: Çok sayıda Hyper-V VM’sini değerlendirme
+          href: scale-hyper-v-assessment.md
+        - name: Çok büyük sayıda VM'nin geçişini otomatikleştirme
+          href: how-to-migrate-at-scale.md
+        - name: Geçiş örnekleri (Contoso serisi)
+          href: contoso-migration-overview.md
 - name: Sorun giderme
   items:
     - name: Azure Geçişi sorunlarını giderme

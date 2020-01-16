@@ -54,8 +54,12 @@
                   href: supportability/classic-deployment-model-quota-increase-requests.md
             - name: Ağ sınırını artırma
               href: supportability/networking-quota-requests.md
+    - name: Azure portalı sorunlarını giderme
+      items:
         - name: Bölge veya SKU abonelik sorunlarını giderme
           href: supportability/sku-series-unavailable.md
+        - name: Sorun giderme için bir tarayıcı izlemesi yakalama
+          href: capture-browser-trace.md
 - name: Başvuru
   items:
     - name: Klavye kısayolları

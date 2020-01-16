@@ -1,0 +1,150 @@
+### YamlMime:Hub
+title: Azure Maliyet Yönetimi ve Faturalandırma belgeleri
+summary: Azure Maliyet Yönetimi ve Faturalandırma, Azure faturalandırmasını anlayıp hesaplarınız ile aboneliklerinizi yönetmenize, Azure harcamanızı izleyip denetlemenize ve kaynak kullanımını iyileştirmenize yardımcı olur. Maliyet analizi yapmayı, bütçe oluşturup yönetmeyi, verileri dışarı aktarmayı ve önerileri gözden geçirip gerekli eylemleri gerçekleştirmeyi öğrenin.
+metadata:
+  ms.service: cost-management-billing
+  description: Azure Maliyet Yönetimi ve Faturalandırma, Azure faturalandırmasını anlayıp hesaplarınız ile aboneliklerinizi yönetmenize, Azure harcamanızı izleyip denetlemenize ve kaynak kullanımını iyileştirmenize yardımcı olur. Maliyet analizi yapmayı, bütçe oluşturup yönetmeyi, verileri dışarı aktarmayı ve önerileri gözden geçirip gerekli eylemleri gerçekleştirmeyi öğrenin.
+  ms.topic: hub-page
+  author: bandersmsft
+  ms.author: banders
+  manager: dougeby
+  ms.date: 12/17/2019
+  ms.openlocfilehash: 83e05501b256848f5fd7d4f42723a64b3fc3b1fb
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983367"
+highlightedContent:
+  items:
+  - title: Maliyet Yönetimi + Faturalandırma nedir?
+    itemType: overview
+    url: cost-management-billing-overview.md
+  - title: Maliyetleri analiz etme ve bütçe oluşturma
+    itemType: learn
+    url: https://docs.microsoft.com/learn/modules/analyze-costs-create-budgets-azure-cost-management/
+  - title: Maliyet Yönetimi en iyi deneyimleri
+    itemType: concept
+    url: ./costs/cost-mgt-best-practices.md
+conceptualContent:
+  items:
+  - title: Azure Faturalama’yı kullanmaya başlama
+    links:
+    - url: ./understand/review-individual-bill.md
+      itemType: tutorial
+      text: Bireysel faturanızı gözden geçirme
+    - url: ./understand/review-customer-agreement-bill.md
+      itemType: tutorial
+      text: Müşteri Sözleşmesi faturanızı gözden geçirme
+    - url: ./understand/review-partner-agreement-bill.md
+      itemType: tutorial
+      text: İş Ortağı Sözleşmesi faturanızı gözden geçirme
+    - url: ./understand/review-enterprise-agreement-bill.md
+      itemType: tutorial
+      text: Kurumsal Sözleşme faturanızı gözden geçirme
+    footerLink:
+      text: Daha fazla göster
+      url: ./understand/index.yml
+  - title: Ücretsiz hesap
+    links:
+    - url: ./manage/create-free-services.md
+      itemType: concept
+      text: Ücretsiz hizmetler oluşturma
+    - url: ./manage/avoid-charges-free-account.md
+      itemType: concept
+      text: Ücretlerden kaçınma
+    - url: ./manage/check-free-service-usage.md
+      itemType: concept
+      text: Kullanımı denetleme
+    - url: ./manage/upgrade-azure-subscription.md
+      itemType: concept
+      text: Aboneliği yükseltme
+  - title: Azure maliyetlerini ve kullanımını yönetme
+    links:
+    - url: ./costs/quick-acm-cost-analysis.md
+      itemType: quickstart
+      text: Maliyet analizini başlatın
+    - url: ./costs/tutorial-acm-create-budgets.md
+      itemType: tutorial
+      text: Bütçe oluşturma ve yönetme
+    - url: ./costs/tutorial-export-acm-data.md
+      itemType: tutorial
+      text: Maliyet ve kullanım verilerini dışarı aktarma
+    - url: ./costs/tutorial-acm-opt-recommendations.md
+      itemType: tutorial
+      text: Maliyet tasarrufu önerilerine göre işlem yapma
+    - url: ./costs/cost-analysis-common-uses.md
+      itemType: how-to-guide
+      text: Yaygın görevlerde maliyet analizini kullanma
+    footerLink:
+      text: Daha fazla göster
+      url: ./costs/index.yml
+  - title: Azure hesaplarını ve aboneliklerini yönetme
+    links:
+    - url: ./manage/manage-billing-access.md
+      itemType: how-to-guide
+      text: Faturalandırmaya erişim izni verme
+    - url: ./manage/change-azure-account-profile.md
+      itemType: how-to-guide
+      text: Profili düzenleme
+    - url: ./manage/resolve-past-due-balance.md
+      itemType: how-to-guide
+      text: Vadesi geçmiş bakiye sorunlarını çözme
+    - url: ./manage/subscription-disabled.md
+      itemType: how-to-guide
+      text: Aboneliği yeniden etkinleştirme
+    - url: ./manage/billing-subscription-transfer.md
+      itemType: how-to-guide
+      text: Sahipliği devretme
+    - url: ./manage/cancel-azure-subscription.md
+      itemType: how-to-guide
+      text: Aboneliği iptal etme
+    - url: ./manage/change-credit-card.md
+      itemType: how-to-guide
+      text: Kredi kartını değiştirme
+    - url: ./manage/add-change-subscription-administrator.md
+      itemType: how-to-guide
+      text: Yöneticiyi değiştirme
+    - url: ./manage/create-subscription.md
+      itemType: how-to-guide
+      text: Ek abonelikler oluşturma
+    footerLink:
+      text: Daha fazla göster
+      url: ./manage/index.yml
+  - title: Azure ayırmaları ile kaydetme
+    links:
+    - url: ./reservations/save-compute-costs-reservations.md
+      itemType: concept
+      text: Azure ayırmaları nedir?
+    - url: ./reservations/manage-reserved-vm-instance.md
+      itemType: how-to-guide
+      text: Azure ayırmalarını yönetme
+    - url: ./reservations/monthly-payments-reservations.md
+      itemType: how-to-guide
+      text: Aylık ödemeler içeren bir rezervasyon satın alma
+    - url: ./reservations/reservation-renew.md
+      itemType: how-to-guide
+      text: Rezervasyonları yenileme
+    - url: ./reservations/exchange-and-refund-azure-reservations.md
+      itemType: how-to-guide
+      text: Rezervasyon değişiklikleri ve para iadeleri
+    footerLink:
+      text: Daha fazla göster
+      url: ./reservations/index.yml
+  - title: Dahil olun
+    links:
+    - url: https://feedback.azure.com/forums/906772-cost-management
+      itemType: how-to-guide
+      text: Maliyet Yönetimi hizmeti özelliği isteme
+    - url: https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=%22cost%20management%22&location=category:Azure&collapse_discussion=true
+      itemType: how-to-guide
+      text: Azure Maliyet Yönetimi Teknoloji Topluluğu
+    - url: https://feedback.azure.com/forums/170030-signup-and-billing
+      itemType: how-to-guide
+      text: Faturalandırma hizmeti özelliği isteme
+    - url: https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=%22billing%22&noSynonym=false&location=category:Azure&collapse_discussion=true
+      itemType: how-to-guide
+      text: Azure Faturalandırma Teknoloji Topluluğu
+    - url: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureCostManagement&filter=alltypes&sort=relevancedesc&searchTerm=Azure%20Cost%20Management
+      itemType: how-to-guide
+      text: Maliyet Yönetimi ve Faturalandırma forumuna bir soru sorma

@@ -82,6 +82,8 @@
               href: tutorial-v2-windows-uwp.md
             - name: Windows Masaüstü .NET
               href: tutorial-v2-windows-desktop.md
+            - name: Android uygulamanızda paylaşılan cihaz modunu kullanma
+              href: tutorial-v2-shared-device-mode.md
         - name: Daemon uygulamaları
           items:
             - name: ASP.NET daemon web uygulaması
@@ -208,6 +210,8 @@
                   href: scenario-mobile-app-configuration.md
                 - name: Mobil platformlara özgü yapılandırma
                   items:
+                    - name: Android cihazlar için paylaşılan cihaz modu
+                      href: shared-device-mode.md
                     - name: Xamarin Android
                       href: msal-net-xamarin-android-considerations.md
                     - name: Android üzerinde sistem tarayıcısı

@@ -29,6 +29,8 @@
   items:
     - name: Azure PowerShell kullanarak yönetilen etki alanı oluşturma
       href: powershell-create-instance.md
+    - name: Bir şablon kullanarak yönetilen etki alanı oluşturma
+      href: template-create-instance.md
 - name: Kavramlar
   items:
     - name: Yönetim temel bilgileri
