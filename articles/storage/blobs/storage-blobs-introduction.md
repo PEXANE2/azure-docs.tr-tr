@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8071fe12b925384465c1e570465ebaa0100c53e9
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8c2bbd3aff8c2c10864fb2fa8937c9159ecd3606
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749799"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972447"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob depolamaya giriş
 
@@ -41,7 +41,7 @@ Depolama hesabı, Azure 'da verileriniz için benzersiz bir ad alanı sağlar. A
 http://mystorageaccount.blob.core.windows.net 
 ```
 
-Depolama hesabı oluşturmak için bkz. [depolama hesabı oluşturma](../common/storage-quickstart-create-account.md). Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Depolama hesabı oluşturmak için bkz. [depolama hesabı oluşturma](../common/storage-account-create.md). Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="containers"></a>Kapsayıcılar
 

@@ -2,29 +2,29 @@
 title: Azure Hızlı Başlangıç - Batch işi çalıştırma - Portal
 description: Azure portalı ile bir Batch işi çalıştırmayı hızlı bir şekilde öğrenin.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 92f8499a10c07e7d5ea74e49c374cef192b8a47f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 294d1658559dd426245cf66a47a8791f8b370533
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094116"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029420"
 ---
-# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portal ilk Batch işinizi çalıştırma
+# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalda ilk Batch işinizi çalıştırma
 
 Bu hızlı başlangıçta, Azure portalını kullanarak bir Batch hesabı, bir işlem düğümleri (sanal makine) *havuzu* ve havuz üzerinde temel *görevler* çalıştıran bir *iş* oluşturma işlemi gösterilmektedir. Bu hızlı başlangıcı tamamladıktan sonra, Batch hizmetinin temel kavramlarını anlayacak ve Batch’i daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma 
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın 
 
-[https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
+https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-batch-account"></a>Batch hesabı oluşturma
 
@@ -56,7 +56,7 @@ Bir Batch hesabı edindikten sonra, test amacıyla örnek bir Windows işlem dü
 
 3. **İşletim Sistemi** menüsünde aşağıdaki ayarları seçin (diğer seçenekleri araştırabilirsiniz).
   
-   |Ayar  |Value  |
+   |Ayar  |Değer  |
    |---------|---------|
    |**Görüntü Türü**|Market (Linux/Windows)|
    |**Yayımcı**     |MicrosoftWindowsServer|
@@ -67,7 +67,7 @@ Bir Batch hesabı edindikten sonra, test amacıyla örnek bir Windows işlem dü
 
 4. Aşağıya kaydırarak **Düğüm Boyutu** ve **Ölçek** ayarlarına girin. Önerilen düğüm boyutu, bu hızlı örnek için performans ile maliyetin iyi bir dengesini sunar.
   
-   |Ayar  |Value  |
+   |Ayar  |Değer  |
    |---------|---------|
    |**Düğüm fiyatlandırma katmanı**     |Standard_A1|
    |**Hedef adanmış düğümler**     |2|
@@ -82,7 +82,7 @@ Batch, havuzu hemen oluşturur ancak işlem düğümlerinin ayrılması ve başl
 
 Birkaç dakika sonra havuzun durumu **Sabit** olur ve düğümler başlar. Düğümlerin durumunu denetlemek için **Düğümler**'i seçin. Bir düğümün durumu **Boşta** olduğunda görevleri çalıştırmaya hazırdır. 
 
-## <a name="create-a-job"></a>İş oluştur
+## <a name="create-a-job"></a>Bir iş oluşturma
 
 Bir havuza sahip olduktan sonra üzerinde çalıştıracak bir iş oluşturun. Batch işi bir veya daha fazla görevin mantıksal grubudur. Bir iş, öncelik gibi görevler arasında ortak olan ayarları ve görevlerin çalıştırılacağı havuzu içerir. Başlangıçta iş hiçbir görev içermez. 
 
@@ -90,7 +90,7 @@ Bir havuza sahip olduktan sonra üzerinde çalıştıracak bir iş oluşturun. B
 
 2. *myjob* adlı bir **İş Kimliği** girin. **Havuz** menüsünde *mypool*’u seçin. Diğer ayarlar için varsayılan değerleri kabul edin ve **Tamam**'ı seçin.
 
-   ![İş oluştur][job_create]
+   ![Bir iş oluşturma][job_create]
 
 İş oluşturulduktan sonra **Görevler** sayfası açılır.
 
@@ -108,7 +108,7 @@ Batch kullandığınızda komut satırı, uygulamanızı veya betiğinizi belirt
 
 3. **Komut satırı**’na `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"` girin. Diğer ayarlar için varsayılan değerleri kabul edin ve **Tamam**'ı seçin.
 
-   ![Bir görev oluşturun][task_create]
+   ![Görev oluşturma][task_create]
 
 Bir görev oluşturduktan sonra Batch, görevi havuzda çalışmak üzere kuyruğa alır. Görevi çalıştıracak bir düğüm kullanılabilir olduğunda, görev çalışır.
 

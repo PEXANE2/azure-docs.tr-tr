@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 6c174faaad5d7d33a837d6399be27444ab0556c6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a3122a3ae1687369b87d193efc693b3b7c659aac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771981"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974129"
 ---
 # <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Azure Machine Learning Machine Learning Studio 'den farklı (klasik)
 
@@ -29,7 +29,7 @@ Bu makalede, Azure Machine Learning özellikleri, özellikleri ve arabirimi Mach
 Azure Machine Learning tasarımcı, Studio 'ya (klasik) benzer bir sürükle ve bırak deneyimi sağlar. Ancak, Studio 'nun özel işlem platformunun (klasik) aksine, tasarımcı kendi işlem kaynaklarınızı kullanır, ölçeklenebilir ve Azure Machine Learning tamamen tümleşiktir.  
 
 > [!TIP]
-> Şu anda Machine Learning Studio (klasik) kullanan veya değerlendiren müşterilerin, sürükle ve bırak __ml modülleri ve__ ölçeklenebilirlik, sürüm denetimi ve kurumsal güvenlik sağlayan [Azure Machine Learning tasarımcı](https://docs.microsoft.com/azure/machine-learning/ui-concept-visual-interface) 'yı (Önizleme) denemesini sağlamak önerilir.
+> Şu anda Machine Learning Studio (klasik) kullanan veya değerlendiren müşterilerin, sürükle ve bırak __ml modülleri ve__ ölçeklenebilirlik, sürüm denetimi ve kurumsal güvenlik sağlayan [Azure Machine Learning tasarımcı](https://docs.microsoft.com/azure/machine-learning/concept-designer) 'yı (Önizleme) denemesini sağlamak önerilir.
 
 ## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>Karşılaştırma: Azure Machine Learning ile Machine Learning Studio (klasik)
 

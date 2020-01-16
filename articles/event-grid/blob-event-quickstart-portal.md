@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Web uç noktasına BLOB depolama olayları gönderme-Portal'
-description: 'Hızlı başlangıç: BLOB depolama hesabı oluşturmak ve olaylarını abone olmak için Azure Event Grid ve Azure portal kullanın. Olayları bir Web kancasına gönderin.'
+description: "Hızlı başlangıç: BLOB depolama hesabı oluşturmak ve olaylarını abone olmak için Azure Event Grid ve Azure portal kullanın. Olayları, Web kancası'na gönderin."
 services: event-grid
 keywords: ''
 author: spelluru
@@ -9,14 +9,14 @@ ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 9ecffc25461a909d47329d536d1c19724b3c22ac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 1aa8c9ff26b85f5af8095ad1cff062b224abff83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718063"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982173"
 ---
-# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Hızlı başlangıç: Blob Depolama olaylarını Azure portal web uç noktasına yönlendirme
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Hızlı Başlangıç: Azure portalı ile web uç noktasına rota Blob Depolama olaylarına
 
 Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede Azure portalını kullanarak bir Blob depolama hesabı oluşturur, bu blob depolama hesabının olaylarına abone olur ve sonucu görmek için bir olayı tetiklersiniz. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
 
@@ -38,7 +38,7 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede Azure 
 
    ![Depolama’yı seçme](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Olaylara abone olmak için, genel amaçlı v2 depolama hesabı veya bir Blob depolama hesabı oluşturun. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md).
+1. Olaylara abone olmak için, genel amaçlı v2 depolama hesabı veya bir Blob depolama hesabı oluşturun. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 
    ![Başlangıç adımları](./media/blob-event-quickstart-portal/provide-blob-values.png)
 

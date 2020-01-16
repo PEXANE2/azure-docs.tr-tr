@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 491ba986c6ca71be0bc5b13e2f9f0717ffec99a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459941"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028888"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel uç nokta oluşturma
 
@@ -162,7 +162,7 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
     | ------- | ----- |
     |**IŞLEMLERI**| |
     | Sanal ağ| *MyVirtualNetwork*öğesini seçin. |
-    | Alt ağ |  *Mysubnet*öğesini seçin. |
+    | Alt ağ | *Mysubnet*öğesini seçin. |
     |**ÖZEL DNS TÜMLEŞTIRMESI**||
     |Özel DNS bölgesiyle tümleştirin |**Evet**’i seçin. |
     |Özel DNS bölgesi |Seçin *(yeni) Privatelink. Database. Windows. net* |
@@ -199,9 +199,9 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
 
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>SQL veritabanı sunucusuna VM 'den özel olarak erişme
 
-1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
+1. *Myvm*uzak masaüstünde PowerShell ' i açın.
 
-2.  `nslookup myserver.database.windows.net`girin. 
+2. `nslookup myserver.database.windows.net` yazın. 
 
     Şuna benzer bir ileti alacaksınız:
     ```azurepowershell
@@ -227,11 +227,11 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
 1. **Bağlan**’ı seçin.
 2. Sol menüden veritabanlarına gözatamazsınız.
 3. I MyDatabase 'ten bilgi oluşturun veya sorgulayın.
-4.  *Myvm*ile uzak masaüstü bağlantısını kapatın. 
+4. *Myvm*ile uzak masaüstü bağlantısını kapatın. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 Özel uç nokta, SQL Server ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin: 
-1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* girin ve arama sonuçlarından *myresourcegroup* öğesini seçin. 
+1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* yazın ve arama sonuçlarından *myresourcegroup* öğesini seçin. 
 2. **Kaynak grubunu sil**'i seçin. 
 3. **Kaynak grubu adını yazın** ve **Sil**' i seçmek için myresourcegroup girin.
 

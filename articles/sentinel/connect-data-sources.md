@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: a76f149b8ab9ca8515a7475cd7954b6d4862a92d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: cbd452fcf4056c1bcf4d5b8d6debb9d8f4a6f11c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746886"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976116"
 ---
 # <a name="connect-data-sources"></a>Veri kaynaklarını bağlama
 
@@ -105,7 +105,7 @@ Alternatif olarak, aracıyı mevcut bir Azure VM 'de, başka bir buluttaki VM 'd
 | AzureNetworkAnalytics_CL  | [Trafik analitik şeması](../network-watcher/traffic-analytics.md) [Trafik Analizi](../network-watcher/traffic-analytics.md)  | | |
 | CommonSecurityLog  | [CEF 'yi bağlama](connect-common-event-format.md)  | V | |
 | OfficeActivity | [Office 365’i bağlama](connect-office-365.md) | V | |
-| SecurityEvents | [Windows Güvenlik olaylarını bağlama](connect-windows-security-events.md)  | V | Güvenli olmayan protokoller çalışma kitapları için bkz. [güvenli olmayan protokoller çalışma kitabı kurulumu](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/)  |
+| SecurityEvents | [Windows Güvenlik olaylarını bağlama](connect-windows-security-events.md)  | V | Güvenli olmayan protokoller çalışma kitapları için bkz. [güvenli olmayan protokoller çalışma kitabı kurulumu](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks)  |
 | Syslog | [Syslog 'ı bağla](connect-syslog.md) | V | |
 | Microsoft Web uygulaması güvenlik duvarı (WAF)-(AzureDiagnostics) |[Microsoft Web uygulaması güvenlik duvarını bağlama](connect-microsoft-waf.md) | V | |
 | SymantecICDx_CL | [Symantec 'e bağlanma](connect-symantec.md) | V | |
