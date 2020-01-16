@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c13b2a24147c542e36b78e8ae17af8e85414cd74
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533464"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982430"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -138,9 +138,9 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
         Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>çapraz doğrulama&nbsp;&nbsp;k katlama <br> <br> Doğrulama sayısı: 2
         Eşzamanlılık| Yürütülen en fazla paralel yineleme sayısı ve yineleme başına kullanılan çekirdekler| En fazla&nbsp;eşzamanlı&nbsp;yineleme: 5<br> &nbsp;yineleme başına en fazla&nbsp;çekirdek&nbsp;: yok
         
-        **Tamam**’ı seçin.
+        **Kaydet**’i seçin.
 
-1. Denemeyi çalıştırmak için **Oluştur** ' u seçin. Deneme hazırlığı başladığında, çalışma **durumu** Ile birlikte **çalıştırma** ekranı açılır.
+1. Denemeyi çalıştırmak için **son** ' u seçin. Deneme hazırlığı başladığında, çalışma **durumu** Ile birlikte **çalıştırma** ekranı açılır.
 
 >[!IMPORTANT]
 > Hazırlık, deneme çalıştırmasının hazırlanmasına **10-15 dakika** sürer.
@@ -155,7 +155,7 @@ Test edilen algoritmaları (modeller) görmek için **modeller** sekmesine gidin
 
 Deneme modellerinin tümünün bitmesini beklerken, performans ayrıntılarını araştırmak için tamamlanmış bir modelin **algoritma adını** seçin. 
 
-Aşağıdaki model ayrıntıları, ölçüm ve performans grafiklerini görüntülemek için **model ayrıntıları** ve **görselleştirmeler** sekmelerinde gezinir. 
+Aşağıdaki model ayrıntıları, ölçümleri ve performans grafiklerini görüntülemek için **model ayrıntıları** ve **görselleştirmeler** sekmelerinde gezinir. 
 
 ![Yineleme ayrıntısı Çalıştır](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 

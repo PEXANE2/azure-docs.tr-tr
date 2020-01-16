@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: fcb89cbcadb5e101ab2b4bfd18d0b7b91c63c92a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821301"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045631"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Azure SQL veritabanı ve veri ambarı için özel bağlantı (Önizleme)
 
@@ -57,7 +57,7 @@ Müşteriler şirket içi makinelerden ortak uç noktaya bağlandıklarında, IP
 ### <a name="approval-process"></a>Onay Işlemi
 Ağ Yöneticisi özel uç noktayı (PE) oluşturduktan sonra, SQL Yöneticisi özel uç nokta bağlantısını (PEC) SQL veritabanı 'na yönetebilir.
 
-1. Azure portal SQL Server kaynağına gidin.
+1. Aşağıdaki ekran görüntüsünde gösterilen adımlara göre Azure portal SQL Server kaynağına gidin
 
     - (1) sol bölmedeki özel uç nokta bağlantılarını seçin
     - (2) tüm özel uç nokta bağlantılarının (lar) bir listesini gösterir
@@ -129,7 +129,7 @@ Connecting to 10.6.1.4:1433: from 10.6.0.4:49958: 2.28ms
 
 ### <a name="check-connectivity-using-nmap"></a>Nmap kullanarak bağlantıyı denetle
 
-Nmap (ağ Eşleyici), ağ bulma ve güvenlik denetimi için kullanılan ücretsiz ve açık kaynaklı bir araçtır. Daha fazla bilgi ve indirme bağlantısı için https://nmap.orgziyaret edin. Özel uç noktanın 1433 numaralı bağlantı noktasında bağlantıları dinlediğinden emin olmak için bu aracı kullanabilirsiniz.
+Nmap (ağ Eşleyici), ağ bulma ve güvenlik denetimi için kullanılan ücretsiz ve açık kaynaklı bir araçtır. Daha fazla bilgi ve indirme bağlantısı için https://nmap.org ziyaret edin. Özel uç noktanın 1433 numaralı bağlantı noktasında bağlantıları dinlediğinden emin olmak için bu aracı kullanabilirsiniz.
 
 Özel uç noktayı barındıran alt ağın adres aralığını sağlayarak Nmap 'i aşağıdaki şekilde çalıştırın.
 
@@ -146,8 +146,10 @@ Sonuç bir IP adresinin yukarı olduğunu gösterir; Özel uç nokta için IP ad
 
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) kullanarak bağlantıyı denetleme
+> [!NOTE]
+>İstemcilerinizin bağlantı dizelerinde sunucunun **tam etki alanı adını (FQDN)** kullanın. Doğrudan IP adresine yapılan oturum açma girişimleri tasarım tarafından başarısız olur.
 
-Son adım [SQL veritabanına bağlanmak Için SSMS](sql-database-connect-query-ssms.md)'yi kullanmaktır. SSMS kullanarak SQL veritabanına bağlandıktan sonra, aşağıdaki sorguyu çalıştırarak Azure VM 'nin özel IP adresinden bağlandığınızı doğrulayın:
+[SQL veritabanına bağlanmak Için SSMS](sql-database-connect-query-ssms.md)'yi kullanmak için buradaki adımları izleyin. SSMS kullanarak SQL veritabanına bağlandıktan sonra, aşağıdaki sorguyu çalıştırarak Azure VM 'nin özel IP adresinden bağlandığınızı doğrulayın:
 
 ````
 select client_net_address from sys.dm_exec_connections 

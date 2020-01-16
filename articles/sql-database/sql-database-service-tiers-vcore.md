@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: c01e5c508644214c078dfc42ae8c77964933a277
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896003"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045187"
 ---
 # <a name="vcore-model-overview"></a>Sanal çekirdek modeline genel bakış
 
@@ -142,6 +142,16 @@ Ayrıntılı bilgi için bkz. [yönetilen örnek oluşturma](sql-database-manage
   
 **Mevcut bir yönetilen örneğin donanım üretimini değiştirmek için**
 
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+Yönetilen örnek sayfasında, Ayarlar bölümünün altına yerleştirilmiş **fiyatlandırma katmanı** bağlantısı ' nı seçin.
+
+![Yönetilen örnek donanımını değiştirme](media/sql-database-service-tiers-vcore/change-managed-instance-hardware.png)
+
+**Fiyatlandırma katmanı** sayfasında, önceki adımlarda açıklandığı gibi donanım oluşturmayı değiştirebilirsiniz.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Aşağıdaki PowerShell komut dosyasını kullanın:
 
 ```powershell-interactive
@@ -176,7 +186,9 @@ $properties = New-Object System.Object
 Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
 ```
 
-Yönetilen örneğin abonelik kimliğinizi, adınızı ve kaynak grubunuzu girdiğinizden emin olun.
+Yönetilen örneğin abonelik KIMLIĞINIZI, adınızı ve kaynak grubunuzu girdiğinizden emin olun.
+
+---
 
 ### <a name="hardware-availability"></a>Donanım kullanılabilirliği
 
@@ -213,9 +225,9 @@ Bir abonelikte d serisi kullanılabilirliği etkinleştirmek için [Yeni bir des
 
 **Ayrıntılar** sayfasında, aşağıdakileri sağlayın:
 
-5. **Sorun ayrıntıları** bölümünde, **ayrıntıları sağla** bağlantısını seçin. 
-6. **SQL veritabanı kota türü** Için, **ı serisi**seçin.
-7. **Bölge**Için, e serisi etkinleştirmek üzere bölgeyi seçin.
+1. **Sorun ayrıntıları** bölümünde, **ayrıntıları sağla** bağlantısını seçin. 
+2. **SQL veritabanı kota türü** Için, **ı serisi**seçin.
+3. **Bölge**Için, e serisi etkinleştirmek üzere bölgeyi seçin.
     D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series).
 
 Onaylanan destek istekleri genellikle 5 iş günü içinde yerine getirilir.

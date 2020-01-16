@@ -7,12 +7,12 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 38717ae103ac72d35042ced9bf662d295ed8a29b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931811"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979689"
 ---
 # <a name="payout-reporting"></a>Ödeme raporlaması
 
@@ -52,7 +52,7 @@ Azure Market 'te teklifler satmanız durumunda, **ödeme özetinde başarılı �
 | İşlem ödeme için hazır değil | Faturalama devam ediyor | Sonraki tahmini ödeme: ödeme durumu işlenmemiş durumundadır.  |
 | Ödeme durumu |  | İşlenmemiş <br> Kazanç ödeme için uygun. Bu durum, bir soğutma dönemi için, ister program kılavuzunda, ister program kılavuzumuza göre tanımlanan bu durumda kalır. <br> <br> İlerideki <br> Ödeme siparişi tarafından oluşturulan, ödeme işlenmeden önce bekleyen dahili incelemeler. <br> <br> Gönderilip <br> Ödeme, bankanızla gönderilmiştir. |
 
-## <a name="customer-types"></a>Müşteri türleri 
+## <a name="customer-types"></a>Müşteri türleri
 
 ### <a name="enterprise-agreement"></a>Kurumsal Anlaşma
 
@@ -66,7 +66,7 @@ Müşteriler, kredi kartı ve aylık fatura kullanarak da ödeme yapabilir. Bu d
 
 Örneğin, müşteri kredi kartı kullanarak satın alıyorsa.
 
-## <a name="corelation-between-payout-and-usage"></a>Ödeme ve kullanım arasındaki ortak ilişki 
+## <a name="corelation-between-payout-and-usage"></a>Ödeme ve kullanım arasındaki ortak ilişki
 
 |Açıklama    |    Tarih  | Siparişler/kullanım  | Ödeme |
 |----------|----------|-----------|-------------|
@@ -97,33 +97,33 @@ Müşteriler, kredi kartı ve aylık fatura kullanarak da ödeme yapabilir. Bu d
 
 ## <a name="transaction-history-download-export"></a>İşlem geçmişi indirme dışarı aktarma
 
-Bu seçenek, teşvikleri programı için geçerli olan Işlem geçmişi sayfasında gördüğünüz her bir atma satırı öğesinin bir indirisini, tür, tarih, ilişkili işlem miktarı, müşteri, ürün ve diğer işlem ayrıntılarını sağlar. 
+Bu seçenek, teşvikleri programı için geçerli olan Işlem geçmişi sayfasında gördüğünüz her bir atma satırı öğesinin bir indirisini, tür, tarih, ilişkili işlem miktarı, müşteri, ürün ve diğer işlem ayrıntılarını sağlar.
 
-| Sütun adı     | Açıklama    | 
+| Sütun adı     | Açıklama    |
 |-------------|-------------------------------|
 | Eardokgıd                      | Her bir atma için benzersiz tanımlayıcı                                                                                                       |
-| participantId                  | İş ortağının birincil kimliği program altında                                                                            | 
-| participantIdType              | Programları ve satıcı, mağaza programları ve Azure Marketi için genellikle program KIMLIĞI                                          | 
-| participantName                | Kazanç ortağının adı                                                                                                              | 
+| participantId                  | İş ortağının birincil kimliği program altında                                                                            |
+| participantIdType              | Programları ve satıcı, mağaza programları ve Azure Marketi için genellikle program KIMLIĞI                                          |
+| participantName                | Kazanç ortağının adı                                                                                                              |
 | partnerCountryCode             | Kazanç ortağının konumu/ülkesi                                                                                                  |
-| Programadı                    | Program adını teşvik edin/depolayın                                                                                                             | 
-| transactionId                  | İşlem için benzersiz tanımlayıcı                                                                                                    | 
-| Işlem para birimi            | Orijinal müşteri işleminin gerçekleştiği para birimi (iş ortağı konum para birimi değil)                                     | 
-| transactionDate                | İşlemin tarihi. Birçok işlemin tek bir işleme katkıda bulunduğu programlar için yararlıdır                                           | 
-| transactionExchangeRate        | Karşılık gelen işlem USD tutarını göstermek için kullanılan döviz kuru                                                                 | 
-| Işlem miktarı              | Orijinal işlem para biriminde, kazanıştan oluşan işleme göre işlem miktarı                                              | 
-| transactionAmountUSD           | USD cinsinden işlem miktarı                                                                                                                | 
-| düzeyi                          | Kazanç için iş kuralını gösterir                                                                                                  | 
-| Eardokgrate                    | Bir kazanç oluşturmak için işlem tutarına uygulanan teşvik oranı                                                                      | 
-| miktar                       | Programa göre farklılık gösterir. İşlem programlarının faturalandırılan miktarını gösterir                                                            | 
+| Programadı                    | Program adını teşvik edin/depolayın                                                                                                             |
+| transactionId                  | İşlem için benzersiz tanımlayıcı                                                                                                    |
+| Işlem para birimi            | Orijinal müşteri işleminin gerçekleştiği para birimi (iş ortağı konum para birimi değil)                                     |
+| transactionDate                | İşlemin tarihi. Birçok işlemin tek bir işleme katkıda bulunduğu programlar için yararlıdır                                           |
+| transactionExchangeRate        | Karşılık gelen işlem USD tutarını göstermek için kullanılan döviz kuru                                                                 |
+| Işlem miktarı              | Orijinal işlem para biriminde, kazanıştan oluşan işleme göre işlem miktarı                                              |
+| transactionAmountUSD           | USD cinsinden işlem miktarı                                                                                                                |
+| düzeyi                          | Kazanç için iş kuralını gösterir                                                                                                  |
+| Eardokgrate                    | Bir kazanç oluşturmak için işlem tutarına uygulanan teşvik oranı                                                                      |
+| miktar                       | Programa göre farklılık gösterir. İşlem programlarının faturalandırılan miktarını gösterir                                                            |
 | quantityType                   | Miktarın türünü gösterir, örneğin: faturalandırılan miktar, MAU                                                                                     |
-| earningType                    | Ücret ödemesinin, indirimin, Coop, satış vb. olduğunu gösterir.                                                                                          | 
+| earningType                    | Ücret ödemesinin, indirimin, Coop, satış vb. olduğunu gösterir.                                                                                          |
 | earningAmount                  | Orijinal işlem para birimindeki miktarı atma                                                                                      |
 | earningAmountUSD               | USD cinsinden miktar atma                                                                                                                    |
 | earningDate                    | Kazanlama tarihi                                                                                                                      |
 | calculationDate                | Sistemin sistemde hesaplandığı Tarih                                                                                            |
 | earningExchangeRate            | Karşılık gelen USD tutarını göstermek için kullanılan döviz kuru                                                                                  |
-| exchangeRateDate               | EarningAmount USD 'yi hesaplamak için kullanılan döviz kuru tarihi                                                                                   | 
+| exchangeRateDate               | EarningAmount USD 'yi hesaplamak için kullanılan döviz kuru tarihi                                                                                   |
 | paymentAmountWOTax             | Yalnızca "gönderilen" ödemeler için para birimi ödeyerek miktar (vergi olmadan)                                                                 |
 | paymentCurrency                | Ödeme profilinde iş ortağı tarafından seçilen para birimine öde. Yalnızca gönderilen ödemeler için gösteriliyor                                                   |
 | paymentExchangeRate            | ExchangeRateDate kullanarak ödeme para birimindeki paymentAmountWOTax hesaplamak için kullanılan döviz kuru                                            |

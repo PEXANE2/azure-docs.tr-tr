@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0b54ca89511063e1a76753793846deaf8e8b9b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c8f6e36997939be90d74eabad9a4145d2e503521
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466783"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045033"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzenine özel bir yetenek ekleme
 
@@ -122,7 +122,7 @@ Bu belirli örnek yalnızca bir çıkışa sahiptir, ancak birden fazla özelli�
 
 ## <a name="consuming-custom-skills-from-skillset"></a>Beceri 'ten özel beceriler kullanma
 
-Bir Web API 'SI oluşturduğunuzda, isteğin bir parçası olarak HTTP üst bilgilerini ve parametrelerini tanımlayabilirsiniz. Aşağıdaki kod parçacığında, istek parametrelerinin ve HTTP üstbilgilerinin beceri tanımının bir parçası olarak nasıl açıklanabilir gösterilmektedir.
+Bir Web API 'SI oluşturduğunuzda, isteğin bir parçası olarak HTTP üst bilgilerini ve parametrelerini tanımlayabilirsiniz. Aşağıdaki kod parçacığında, istek parametrelerinin ve *isteğe bağlı* http üstbilgilerinin beceri tanımının bir parçası olarak nasıl açıklandığı gösterilmektedir. HTTP üstbilgileri bir gereksinim değildir, ancak becerinize ek yapılandırma özellikleri eklemenize ve bunları beceri tanımından ayarlamanıza imkan tanır.
 
 ```json
 {

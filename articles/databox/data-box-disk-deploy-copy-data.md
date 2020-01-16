@@ -10,12 +10,12 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: be2bda4e1bfd6a679076f79969e4829aa1a847c9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70231381"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895958"
 ---
 ::: zone target="docs"
 
@@ -46,7 +46,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Başlamadan önce aşağıdakilerden emin olun:
 - [Öğretici: Azure Data Box Disk’i yükleme ve yapılandırma](data-box-disk-deploy-set-up.md)’yı tamamladınız.
 - Disklerinizin kilitleri açılır ve diskler bir istemci bilgisayara bağlanır.
-- Disklere veri kopyalamak için kullanılan istemci bilgisayar [Desteklenen işletim sistemi](data-box-disk-system-requirements.md##supported-operating-systems-for-clients) çalıştırmalıdır.
+- Disklere veri kopyalamak için kullanılan istemci bilgisayar [Desteklenen işletim sistemi](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) çalıştırmalıdır.
 - Verileriniz için hedeflenen depolama türünün [Desteklenen depolama türleri](data-box-disk-system-requirements.md#supported-storage-types-for-upload) ile eşleştiğinden emin olun.
 - [Azure nesne boyutu limitlerinde yönetilen disk limitleri](data-box-disk-limits.md#azure-object-size-limits) konusunu gözden geçirin.
 

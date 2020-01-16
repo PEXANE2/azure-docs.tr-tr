@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
-ms.openlocfilehash: db1c6e8e4f1e98db08d5f7ff0ef218fa42d25860
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103293"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045366"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API azaltma hatalarında sorun giderme 
 
@@ -26,19 +26,19 @@ Azure Işlem istekleri, hizmetin genel performansı konusunda yardımcı olmak i
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Azure Resource Manager vs kaynak sağlayıcılarına göre daraltma  
 
-Azure 'un ön kapısı olarak Azure Resource Manager, tüm gelen API isteklerinin kimlik doğrulaması ve ilk sıra doğrulaması ve azaltmasından oluşur. Azure Resource Manager çağrı hızı sınırları ve ilgili tanılama yanıtı HTTP üstbilgileri [burada](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits)açıklanmıştır.
+Azure 'un ön kapısı olarak Azure Resource Manager, tüm gelen API isteklerinin kimlik doğrulaması ve ilk sıra doğrulaması ve azaltmasından oluşur. Azure Resource Manager çağrı hızı sınırları ve ilgili tanılama yanıtı HTTP üstbilgileri [burada](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)açıklanmıştır.
  
-Bir Azure API istemcisi bir azaltma hatası aldığında, HTTP durumu çok fazla Istek 429 ' dir. İstek azaltma 'nın Azure Resource Manager veya CRP gibi temel bir kaynak sağlayıcısı tarafından gerçekleştirilip yapılmlamadığını anlamak için get istekleri `x-ms-ratelimit-remaining-subscription-reads` ve `x-ms-ratelimit-remaining-subscription-writes` yanıt üst bilgilerini get istekleri için inceleyin. Kalan çağrı sayısı 0 ' a yaklaşıyorsa, aboneliğin Azure Resource Manager tarafından tanımlanan genel çağrı sınırına ulaşıldı. Tüm abonelik istemcilerine göre etkinlikler birlikte sayılır. Aksi takdirde, daraltma hedef kaynak sağlayıcısından (istek URL 'sinin `/providers/<RP>` segmenti tarafından adreslenmiş olan) geliyor. 
+Bir Azure API istemcisi bir azaltma hatası aldığında, HTTP durumu çok fazla Istek 429 ' dir. İstek azaltma 'nın Azure Resource Manager veya CRP gibi temel bir kaynak sağlayıcısı tarafından gerçekleştirilip yapılmlamadığını anlamak için get istekleri için `x-ms-ratelimit-remaining-subscription-reads` ve GET olmayan istekler için `x-ms-ratelimit-remaining-subscription-writes` yanıt üst bilgilerini inceleyin. Kalan çağrı sayısı 0 ' a yaklaşıyorsa, aboneliğin Azure Resource Manager tarafından tanımlanan genel çağrı sınırına ulaşıldı. Tüm abonelik istemcilerine göre etkinlikler birlikte sayılır. Aksi takdirde, daraltma hedef kaynak sağlayıcısından geliyor (istek URL 'sinin `/providers/<RP>` segmenti tarafından adreslenmiş). 
 
 ## <a name="call-rate-informational-response-headers"></a>Çağrı hızı bilgilendirici yanıt üstbilgileri 
 
-| Üstbilgi                            | Değer biçimi                           | Örnek                               | Açıklama                                                                                                                                                                                               |
+| Üst bilgi                            | Değer biçimi                           | Örnek                               | Açıklama                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-MS-ratelimit-kalan-kaynak |```<source RP>/<policy or bucket>;<count>```| Microsoft. COMPUTE/HighCostGet3Min; 159 | Bu isteğin hedefi dahil olmak üzere kaynak demeti veya işlem grubunu kapsayan Azaltma ilkesi için kalan API çağrısı sayısı                                                                   |
-| x-MS-istek ücreti               | ```<count>```                             | 1\.                                     | Bu HTTP isteğinin geçerli ilke sınırına doğru "ücretlendirilen" çağrı sayısı. Bu en genellikle 1 ' dir. Bir sanal makine ölçek kümesinin ölçeklendirilmesi gibi Batch istekleri birden fazla sayı ücretlendirilmesine sahip olabilir. |
+| x-MS-istek ücreti               | ```<count>```                             | 1                                     | Bu HTTP isteğinin geçerli ilke sınırına doğru "ücretlendirilen" çağrı sayısı. Bu en genellikle 1 ' dir. Bir sanal makine ölçek kümesinin ölçeklendirilmesi gibi Batch istekleri birden fazla sayı ücretlendirilmesine sahip olabilir. |
 
 
-Bir API isteğinin birden fazla daraltma ilkesine tabi olabileceğini unutmayın. Her ilke için ayrı `x-ms-ratelimit-remaining-resource` bir üst bilgi olacaktır. 
+Bir API isteğinin birden fazla daraltma ilkesine tabi olabileceğini unutmayın. Her ilke için ayrı bir `x-ms-ratelimit-remaining-resource` üst bilgisi olacaktır. 
 
 Sanal makine ölçek kümesi isteğini silmenin örnek bir yanıtı aşağıda verilmiştir.
 
@@ -73,9 +73,9 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-0 kalan çağrı sayısına sahip ilke, azaltma hatasının döndürüldüğü bir hata nedeniyle belirlenir. Bu durumda, `HighCostGet30Min`. Yanıt gövdesinin genel biçimi Genel Azure Resource Manager API hata biçimidir (OData ile uyumlu). Ana hata kodu `OperationNotAllowed`, bir hesaplama kaynak sağlayıcısının, azaltma hatalarını (diğer istemci hatalarının türleri arasında) raporlamak için kullandığı bir işlem kaynağı sağlayıcısıdır. İç hata (ler) i özelliği,azaltmaihlalininayrıntılarınasahipserileştirilmişbirJSONyapısıiçerir.`message`
+0 kalan çağrı sayısına sahip ilke, azaltma hatasının döndürüldüğü bir hata nedeniyle belirlenir. Bu durumda `HighCostGet30Min`. Yanıt gövdesinin genel biçimi Genel Azure Resource Manager API hata biçimidir (OData ile uyumlu). `OperationNotAllowed`ana hata kodu, bir Işlem Kaynak sağlayıcısının, azaltma hatalarını (diğer istemci hatalarının türleri arasında) raporlamak için kullandığı bir Işlem kaynağı sağlayıcısıdır. İç hata (ler) in `message` özelliği, azaltma ihlalinin ayrıntılarına sahip serileştirilmiş bir JSON yapısı içerir.
 
-Yukarıda gösterildiği gibi, her azaltma hatası, istemcinin `Retry-After` isteği yeniden denemeden önce bekleyeceği en az saniye sayısını sağlayan üstbilgiyi içerir. 
+Yukarıda gösterildiği gibi, her azaltma hatası, istemcinin isteği yeniden denemeden önce bekleyeceği en az saniye sayısını sağlayan `Retry-After` üstbilgisini içerir. 
 
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>API çağrı hızı ve azaltma hatası Çözümleyicisi
 Işlem Kaynak sağlayıcısının API 'SI için bir sorun giderme özelliğinin önizleme sürümü kullanılabilir. Bu PowerShell cmdlet 'leri, işlem grubu (ilke) başına işlem ve kısıtlama ihlalleri başına API isteği hızı hakkında istatistikler sağlar:
@@ -95,8 +95,8 @@ PowerShell cmdlet 'leri, doğrudan istemciler tarafından kolayca çağrılabile
 - Yüksek hacimli API Otomasyonu durumlarında, bir hedef işlem grubu için kullanılabilir çağrı sayısı düşük eşiğin altına düşerse, öngörülebilir istemci tarafı kendi kendine kısıtlama uygulamayı düşünün. 
 - Zaman uyumsuz işlemleri izlerken, yeniden deneme üst bilgisi ipuçlarına uyar. 
 - İstemci kodunda belirli bir sanal makine hakkında bilgi gerekiyorsa, bu VM 'yi, kapsayan kaynak grubundaki tüm VM 'Leri veya tüm aboneliğin listesini, sonra da istemci tarafında gerekli VM 'yi seçerek doğrudan sorgulayın. 
-- İstemci kodu belirli bir Azure konumundan sanal makinelere, disklere ve anlık görüntülere ihtiyaç duyuyorsa, tüm abonelik sanal makinelerini sorgulamak ve sonra istemci tarafında konuma göre filtrelemek yerine sorgunun konum tabanlı biçimini kullanın: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` işlem kaynak sağlayıcısı bölgesel olarak sorgulama noktalarının. 
--   Belirli VM 'Lerde ve sanal makine ölçek kümelerinde API kaynaklarını oluştururken veya güncelleştirirken, döndürülen zaman uyumsuz işlemi kaynak URL 'sinin kendisi üzerinde yoklama gerçekleştirenden (öğesine göre `provisioningState`) izlemek çok daha etkilidir.
+- İstemci kodunun belirli bir Azure konumundan VM 'Ler, diskler ve anlık görüntüler olması gerekiyorsa, tüm abonelik sanal makinelerini sorgulamak ve sonra istemci tarafında konuma göre filtrelemek yerine sorgunun konum tabanlı formunu kullanın: kaynak sağlayıcısı bölgesel uç noktalarını hesaplamak için sorgu `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30`. 
+-   Belirli VM 'Lerde ve sanal makine ölçek kümelerinde API kaynaklarını oluştururken veya güncelleştirirken, döndürülen zaman uyumsuz işlemi kaynak URL 'sinin kendisi üzerinde yoklama gerçekleştirenden (`provisioningState`göre) izlemek çok daha etkilidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

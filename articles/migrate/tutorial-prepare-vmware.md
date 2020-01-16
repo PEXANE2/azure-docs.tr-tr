@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454546"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028897"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware VM 'lerini değerlendirme ve Azure 'a geçiş için hazırlama
 
@@ -104,8 +104,9 @@ VMware VM değerlendirmesi için hazırlanmak üzere şunları yapmanız gerekir
 
 ### <a name="verify-vmware-settings"></a>VMware ayarlarını doğrulama
 
-1. [Denetle](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) Değerlendirme için VMware sunucusu gereksinimleri.
-2. İhtiyacınız olan bağlantı noktalarının vCenter Server açık [olduğundan emin olun](migrate-support-matrix-vmware.md#assessment-port-requirements) .
+1. [Denetle](migrate-support-matrix-vmware.md#vmware-requirements) Değerlendirme için VMware sunucusu gereksinimleri.
+2. İhtiyacınız olan bağlantı noktalarının vCenter Server açık [olduğundan emin olun](migrate-support-matrix-vmware.md#port-access) .
+3. VCenter Server, hesabınızın bir OVA dosyası kullanarak VM oluşturma izinlerine sahip olduğundan emin olun. Azure geçişi gereci bir OVA dosyası kullanarak bir VMware VM 'si olarak dağıtırsınız.
 
 
 ### <a name="set-up-an-account-for-assessment"></a>Değerlendirme için bir hesap ayarlayın
@@ -120,15 +121,12 @@ Azure geçişi 'nin değerlendirme ve aracısız geçiş için VM 'Leri bulması
 
 ### <a name="verify-appliance-settings-for-assessment"></a>Değerlendirme için gereç ayarlarını doğrulama
 
-Gereci dağıtmadan önce gereç gereksinimlerini denetleyin.
+Sonraki öğreticide Azure geçişi gerecini ve değerlendirmeyi ayarlamadan önce, Gereç dağıtımına hazırlanın.
 
-1. Gereç gereksinimlerini ve sınırlamalarını [doğrulayın](migrate-support-matrix-vmware.md#assessment-appliance-requirements) .
-2. URL tabanlı bir güvenlik duvarı proxy 'SI kullanıyorsanız, gerecin erişmesi gereken Azure URL 'Lerini [gözden geçirin](migrate-support-matrix-vmware.md#assessment-url-access-requirements) . Proxy 'nin, URL 'Leri ararken alınan CNAME kayıtlarını çözümlediği emin olun.
-3. Bulma ve değerlendirme sırasında gereç tarafından toplanan [performans verilerini](migrate-appliance.md#collected-performance-data-vmware) ve [meta verileri](migrate-appliance.md#collected-metadata-vmware) gözden geçirin.
-4. Gereç tarafından erişilen bağlantı noktalarını [aklınızda edin](migrate-support-matrix-vmware.md#assessment-port-requirements) .
-5. VCenter Server, hesabınızın bir OVA dosyası kullanarak VM oluşturma izinlerine sahip olduğundan emin olun. Azure geçişi gereci bir OVA dosyası kullanarak bir VMware VM 'si olarak dağıtırsınız.
-
-URL tabanlı bir güvenlik duvarı. Proxy kullanıyorsanız, gerekli [Azure URL 'lerine](migrate-support-matrix-vmware.md#assessment-url-access-requirements)erişime izin verin.
+1. VMware VM 'Leri için gereç gereksinimlerini [doğrulayın](migrate-appliance.md#appliance---vmware) .
+2. Gerecin erişmesi gereken Azure URL 'Lerini [gözden geçirin](migrate-appliance.md#url-access) . URL tabanlı bir güvenlik duvarı veya proxy kullanıyorsanız, gereken URL 'lere erişim izni verdiğinden emin olun.
+3. Gerecin bulma ve değerlendirme sırasında toplanacağını [gözden geçirin](migrate-appliance.md#collected-data---vmware) .
+4. Gereç [için bağlantı noktası](migrate-support-matrix-vmware.md#port-access) erişim gereksinimleri.
 
 
 
@@ -137,23 +135,22 @@ URL tabanlı bir güvenlik duvarı. Proxy kullanıyorsanız, gerekli [Azure URL 
 
 VMware VM 'lerinin aracısız geçişi için gereksinimleri gözden geçirin.
 
-1. [İnceleme](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) VMware sunucusu gereksinimleri.
-2. Azure geçişi 'nin Azure geçişi sunucu geçişini kullanarak aracısız geçiş için vCenter Server erişebilmesi için [gerekli izinlere](migrate-support-matrix-vmware.md#agentless-migration-vcenter-server-permissions)sahip bir hesap ayarlayın.
-3. Aracısız geçiş kullanarak Azure 'a geçirmek istediğiniz VMware VM 'lerinin gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements) .
-4. Aracısız geçiş için Azure geçişi gereci kullanma gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware.md#agentless-migration-appliance-requirements) .
-5. Azure geçişi gerecinin aracısız geçiş için ihtiyaç duyacağı [URL erişimi](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) ve [bağlantı noktası erişimini](migrate-support-matrix-vmware.md#agentless-migration-port-requirements) unutmayın.
+1. [İnceleme](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) VMware sunucusu gereksinimleri ve Azure geçişi ['Nin Azure](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) geçişi sunucu geçişini kullanarak aracısız geçiş için vCenter Server erişmesi gerekir.
+2. Aracısız geçiş kullanarak Azure 'a geçirmek istediğiniz VMware VM 'lerinin gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) .
+4. Aracısız geçiş için Azure geçişi gereci kullanma gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) .
+5. Aracısız geçiş için gereken [URL erişimi](migrate-appliance.md#url-access) ve [bağlantı noktası erişimini](migrate-support-matrix-vmware-migration.md#agentless-ports) aklınızda yapın.
 
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>Aracı tabanlı VMware geçişine hazırlanma
 
 VMware VM 'lerinin [aracı tabanlı geçişi](server-migrate-overview.md) için gereksinimleri gözden geçirin.
 
-1. [İnceleme](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) VMware sunucusu gereksinimleri.
-2. [Gerekli izinlere](migrate-support-matrix-vmware.md#agent-based-migration-vcenter-server-permissions)sahip bir hesap ayarlayın. Azure geçişi, Azure geçişi sunucu geçişini kullanarak aracı tabanlı geçiş için vCenter Server erişebilir.
-3. Geçirmek istediğiniz her sanal makineye Mobility hizmeti yüklemesi de dahil olmak üzere, Azure 'a geçiş yapmak istediğiniz VMware VM 'lerinin gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) .
-4. [URL erişimi](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements).
-5. Azure geçişi bileşenlerinin aracı tabanlı erişim için ihtiyacı olan [bağlantı noktası erişimini](migrate-support-matrix-vmware.md#agent-based-migration-port-requirements) gözden geçirin.
-
+1. [İnceleme](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) VMware sunucusu gereksinimleri ve Azure geçişi 'nin Azure geçişi sunucu geçişini kullanarak aracı tabanlı geçiş için vCenter Server erişmesi gerekir.
+2. Geçirmek istediğiniz her sanal makineye Mobility hizmeti yüklemesi de dahil olmak üzere, Azure 'a geçiş yapmak istediğiniz VMware VM 'lerinin gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms) .
+3. Aracı tabanlı geçişler bir çoğaltma gereci kullanır:
+    - Çoğaltma gereci için dağıtım gereksinimlerini ve gereçte MySQL yükleme [seçeneklerini](migrate-replication-appliance.md#mysql-installation) [gözden geçirin](migrate-replication-appliance.md#appliance-requirements) .
+    - Çoğaltma gereci için [URL](migrate-replication-appliance.md#url-access) ve [bağlantı noktası](migrate-replication-appliance.md#port-access) erişim gereksinimlerini gözden geçirin.
+    
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide şunları yaptınız:

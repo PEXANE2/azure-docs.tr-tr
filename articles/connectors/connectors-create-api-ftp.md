@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 71f768506d7cec575c6bd765447397d8d0406859
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0314dceb23f02b723854dfc406e9440bbc14ccf6
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446041"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044293"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak FTP dosyaları oluşturun, izleyin ve yönetin
 
@@ -25,7 +25,7 @@ Azure Logic Apps ve FTP Bağlayıcısı sayesinde, FTP sunucusundaki hesabınız
 
 FTP sunucusundan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı diğer eylemler için kullanılabilir hale getirebilirsiniz. FTP sunucunuzdaki dosyaları yönetmek için mantıksal uygulamalarınızda çalıştırma eylemlerini kullanabilirsiniz. Ayrıca, diğer eylemlerdeki çıktıyı FTP eylemleriyle kullanmasını sağlayabilirsiniz. Örneğin, FTP sunucusundan düzenli olarak dosya alırsanız, Office 365 Outlook bağlayıcısını veya Outlook.com bağlayıcısını kullanarak bu dosyalar ve bunların içerikleri hakkında e-posta gönderebilirsiniz. Logic Apps 'e yeni başladıysanız [Azure Logic Apps ne olduğunu](../logic-apps/logic-apps-overview.md)gözden geçirin.
 
-## <a name="limits"></a>Sınırlar
+## <a name="limitations"></a>Sınırlamalar
 
 * FTP Bağlayıcısı SSL üzerinden yalnızca açık FTP (FTPS) destekler ve örtük FTPS ile uyumlu değildir.
 
@@ -36,6 +36,8 @@ FTP sunucusundan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı diğer 
   * Dosya **ekleme veya değiştirme (yalnızca Özellikler)** gibi dosya özelliklerini döndüren bir FTP tetikleyicisi kullanın.
 
   * Tam dosyayı okuyan ve örtük olarak parçalama kullanan FTP **Dosya Içeriğini al** eylemiyle tetikleyiciyi izleyin.
+
+* Şirket içi bir FTP sunucunuz varsa, bir [tümleştirme hizmeti ortamı (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) oluşturmayı veya [karma bağlantı Azure App Service](../app-service/app-service-hybrid-connections.md)kullanmayı düşünün. Bu, her ikisi de şirket içi veri ağ geçidi kullanmadan şirket içi veri kaynaklarına erişmenize olanak tanır.
 
 ## <a name="how-ftp-triggers-work"></a>FTP Tetikleyicileri nasıl çalışır?
 

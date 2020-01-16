@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: d39fd95f8704650db16c1dc1553efaba2f727052
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889418"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045128"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT cihaz SDK 'Ları platform desteği
 
@@ -47,22 +47,23 @@ Listelenen her SDK 'nın her biri için Microsoft:
 | İşletim Sistemi                  | TLS kitaplığı                  | Ek gereksinimler                                                                     |
 |---------------------|------------------------------|---------------------------------------------------------------------------------------------|
 | Linux               | OpenSSL, WolfSSL veya Yatassl | Berkeley Yuvaları</br></br>Taşınabilir Işletim sistemi arabirimi (POSIX)                       |
-| iOS 12,2            | OpenSSL veya yerel OSX        | OSX 10.13.4 'te öykünülmüş XCode                                                               |
+| iOS 12,2            | OpenSSL                      | OSX 10.13.4 'te öykünülmüş XCode                                                               |
 | Windows 10 ailesi   | SChannel                     |                                                                                             |
 | Mbed OS 5,4         | Mbed TLS 2                   | [Mxyongaıot geliştirme seti](https://microsoft.github.io/azure-iot-developer-kit/)                  |
 | Azure Sphere İşletim Sistemi     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/services/azure-sphere/get-started/) |
+| Arduino             | Yataya SSL                      | [ESP32 veya ESP8266](https://github.com/Azure/azure-iot-arduino#simple-sample-instructions) 
 
-### <a name="python-sdk"></a>Python SDK'sı
+### <a name="python-sdk"></a>Python SDK
 
 [Azure IoT Hub Python cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-python) ile test edilmiştir ve aşağıdaki konfigürasyonları destekler.
 
 | İşletim Sistemi                  | Derleyici                          |
 |---------------------|-----------------------------------|
-| Linux               | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
-| MacOS High Sierra   | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
-| Windows 10 ailesi   | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
+| Linux               | Python 2,7. *, 3,5 veya üzeri |
+| MacOS High Sierra   | Python 2,7. *, 3,5 veya üzeri |
+| Windows 10 ailesi   | Python 2,7. *, 3,5 veya üzeri |
 
-\* Yalnızca Python sürüm 3.5.3 veya üzeri zaman uyumsuz API 'Leri destekliyorsa, 3,7 veya sonraki bir sürümünü kullanmanızı öneririz.
+Yalnızca Python sürüm 3.5.3 veya üzeri zaman uyumsuz API 'Leri destekliyorsa, 3,7 veya sonraki bir sürümü kullanmanızı öneririz.
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -75,7 +76,7 @@ Listelenen her SDK 'nın her biri için Microsoft:
 
 .NET SDK, [Azure cihaz Aracısı](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) veya [UWP uygulamalarıyla ILETIŞIM kurmak için RPC kullanan özel bir NTService](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/)ile Windows IoT Core ile de kullanılabilir.
 
-### <a name="nodejs-sdk"></a>Node.js SDK'sı
+### <a name="nodejs-sdk"></a>Node.js SDK
 
 [Azure IoT Hub Node. js cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-node) ile test edilmiştir ve aşağıdaki konfigürasyonları destekler.
 
@@ -98,7 +99,7 @@ Listelenen her SDK 'nın her biri için Microsoft:
 
 Microsoft, birkaç mikro işlemci mimarisi için geliştirme setleri sağlamak üzere çeşitli iş ortaklarıyla çalışır. Bu iş ortakları, platformlarındaki Azure IoT C SDK 'sını geçiyor. İş ortakları SDK 'nın platform soyutlama katmanını (PAL) oluşturur ve korur. Microsoft, genişletilmiş destek sağlamak için bu iş ortaklarıyla birlikte çalışır.
 
-| Partner             | Cihazlar                            | Bağlantı                     | Destek |
+| İş ortağı             | Cihazlar                            | Bağlantı                     | Destek |
 |---------------------|------------------------------------|--------------------------|---------|
 | Espressıo           | ESP32 <br/> ESP8266                              | [ESP-Azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT modem     | [IoT SDK için Qualcomm LTE](https://developer.qualcomm.com/software/lte-iot-sdk) | [Forum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
@@ -115,7 +116,7 @@ Microsoft, Azure IoT test ve sertifikalı cihazlarla Azure IoT Universe 'ı sür
 
 * Azure IoT Sertifikalı cihazlara gitmek için bkz. [cihaz kataloğu IoT için Microsoft Azure Sertifikalı](https://catalog.azureiotsolutions.com/).
 
-* Microsoft güvenilir iş ortakları hakkında daha fazla bilgi edinmek veya Microsoft 'un güvenilir iş ortağı olma hakkında bilgi edinmek için bkz. [Microsoft Azure sertifikalı nesnelerin interneti güvenilir Iş ortakları](https://azure.microsoft.com/marketplace/certified-iot-partners/).
+* IoT ekosistemi için Azure Sertifikalı hakkında daha fazla bilgi edinmek için bkz. [IoT ekosistemi Için sertifikalı ekleme](https://catalog.azureiotsolutions.com/register).
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>SDK olmadan IoT Hub bağlanma
 
@@ -125,7 +126,7 @@ IoT Hub cihaz SDK 'Lardan birini kullanabiletirseniz, HTTPS istekleri ve yanıtl
 
 Azure IoT cihaz SDK 'larını kullanırken sorunlarla karşılaşırsanız, destek almak için çeşitli yollar vardır. Aşağıdaki kanallardan birini deneyebilirsiniz:
 
-**Hataları raporlama** – cihaz SDK 'lerinde hatalar ilgili GitHub projesinin sorunlar sayfasında bildirilebilir. Düzeltmeler, ' deki projeden ürün güncelleştirmelerinde hızlı bir şekilde yapılır.
+**Hataları raporlama** – cihaz SDK 'lerinde hatalar ilgili GitHub projesinin sorunlar sayfasında bildirilebilir. Düzeltmeleri projesi ile aşamalarından geçerek ürün güncelleştirmelerini hızlı bir şekilde yapın.
 
 * [Azure IoT Hub C SDK sorunları](https://github.com/Azure/azure-iot-sdk-c/issues)
 

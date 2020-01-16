@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 8301dc779799ff67a348403e661fc7e66b9e721f
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750137"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045869"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 ## <a name="overview"></a>Genel Bakış
@@ -69,7 +69,7 @@ Bu bölümde güvenlik işlemlerinde temel özelliklerle ilgili ek bilgiler ve b
 Ayrıca, belirli bir olay algılandığında [otomatik olarak belirli eylemleri yürütmek](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) için güvenlik ve uyumluluk yapılandırabilirsiniz.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manager](../../azure-resource-manager/resource-manager-deployment-model.md) çözümünüzdeki kaynaklarla bir grup olarak çalışmanıza olanak sağlar. Çözümünüzdeki tüm kaynakları tek ve eşgüdümlü bir işlemle dağıtabilir, güncelleştirebilir veya silebilirsiniz. Dağıtım için bir [Azure Resource Manager şablonu](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) kullanırsınız ve bu şablon test, hazırlık ve üretim gibi farklı ortamlarda çalışabilir. Resource Manager kaynaklarınızı dağıttıktan sonra yönetmenize yardımcı olmak için güvenlik, denetleme ve etiketleme özellikleri sunar.
+[Azure Resource Manager](../../azure-resource-manager/management/deployment-models.md) çözümünüzdeki kaynaklarla bir grup olarak çalışmanıza olanak sağlar. Çözümünüzdeki tüm kaynakları tek ve eşgüdümlü bir işlemle dağıtabilir, güncelleştirebilir veya silebilirsiniz. Dağıtım için bir [Azure Resource Manager şablonu](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) kullanırsınız ve bu şablon test, hazırlık ve üretim gibi farklı ortamlarda çalışabilir. Resource Manager kaynaklarınızı dağıttıktan sonra yönetmenize yardımcı olmak için güvenlik, denetleme ve etiketleme özellikleri sunar.
 
 Azure Resource Manager şablon tabanlı dağıtımlar, standart güvenlik denetimi ayarları ve standartlaştırılmış şablon tabanlı dağıtımlarla tümleştirilebilen Azure 'da dağıtılan çözümlerin güvenliğini artırmaya yardımcı olur. Bu, el ile dağıtım sırasında gerçekleşebilecek güvenlik yapılandırma hatalarının riskini azaltır.
 
@@ -142,16 +142,16 @@ Uygulama Tanılamada, bu şekilde gruplandırılmış olayları görebilirsiniz:
 Bu bölümde, Azure Storage Security 'deki temel özelliklerle ilgili ek bilgiler ve bu yetenekler hakkında özet bilgiler sağlanmaktadır.
 
 ### <a name="role-based-access-control-rbac"></a>Rol Tabanlı Erişim Denetimi (RBAC)
-Depolama hesabınızı rol tabanlı Access Control (RBAC) ile güvenli hale getirebilirsiniz. Erişimi, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için [bilmelidir](https://en.wikipedia.org/wiki/Need_to_know) ve [en az ayrıcalık](https://en.wikipedia.org/wiki/Principle_of_least_privilege) güvenlik ilkelerine göre kısıtlamak zorunludur. Bu erişim hakları, belirli bir kapsamdaki gruplara ve uygulamalara uygun RBAC rolü atanarak verilir. Kullanıcılara ayrıcalık atamak için, depolama hesabı katılımcısı gibi [YERLEŞIK RBAC rollerini](../../role-based-access-control/built-in-roles.md)kullanabilirsiniz. [Azure Resource Manager](../../storage/common/storage-security-guide.md) modelini kullanarak bir depolama hesabı için depolama anahtarlarına erişim, rol tabanlı Access Control (RBAC) aracılığıyla denetlenebilir.
+Depolama hesabınızı rol tabanlı Access Control (RBAC) ile güvenli hale getirebilirsiniz. Erişimi, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için [bilmelidir](https://en.wikipedia.org/wiki/Need_to_know) ve [en az ayrıcalık](https://en.wikipedia.org/wiki/Principle_of_least_privilege) güvenlik ilkelerine göre kısıtlamak zorunludur. Bu erişim hakları, belirli bir kapsamdaki gruplara ve uygulamalara uygun RBAC rolü atanarak verilir. Kullanıcılara ayrıcalık atamak için, depolama hesabı katılımcısı gibi [YERLEŞIK RBAC rollerini](../../role-based-access-control/built-in-roles.md)kullanabilirsiniz. [Azure Resource Manager](../../storage/blobs/security-recommendations.md) modelini kullanarak bir depolama hesabı için depolama anahtarlarına erişim, rol tabanlı Access Control (RBAC) aracılığıyla denetlenebilir.
 
 ### <a name="shared-access-signature"></a>Paylaşılan erişim Imzası
 [Paylaşılan erişim imzası (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md), depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. SAS, belirli bir süre ve belirli bir izin kümesi için Depolama hesabınızdaki nesnelere sınırlı bir istemci izinleri vermeyeceğiniz anlamına gelir. Hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan bu sınırlı izinleri verebilirsiniz.
 
 ### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
 Aktarım sırasında şifreleme, ağlar arasında iletilirken verilerin korunmasında bir mekanizmadır. Azure depolama ile, aşağıdakileri kullanarak verileri güvenli hale getirebilirsiniz:
--   Azure depolama içine veya dışına veri aktarırken HTTPS gibi [Aktarım düzeyi şifreleme](../../storage/common/storage-security-guide.md).
+-   Azure depolama içine veya dışına veri aktarırken HTTPS gibi [Aktarım düzeyi şifreleme](../../storage/blobs/security-recommendations.md).
 
--   [Azure dosya paylaşımları](../../storage/files/storage-dotnet-how-to-use-files.md)için [SMB 3,0 şifrelemesi](../../storage/common/storage-security-guide.md) gibi bir [hat şifreleme](../../storage/common/storage-security-guide.md).
+-   [Azure dosya paylaşımları](../../storage/files/storage-dotnet-how-to-use-files.md)için [SMB 3,0 şifrelemesi](../../storage/blobs/security-recommendations.md) gibi bir [hat şifreleme](../../storage/blobs/security-recommendations.md).
 
 -   Depolama alanına aktarılmadan önce verileri şifrelemek ve depolama alanı dışına aktarıldıktan sonra verilerin şifresini çözmek için istemci tarafı şifreleme.
 
@@ -266,9 +266,9 @@ Traffic Manager, farklı uygulama ihtiyaçlarına, uç nokta durumuna [izlemeye]
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md), uygulamalarınıza yüksek düzeyde kullanılabilirlik ve ağ performansı sağlar. Bu, gelen trafiği yük dengeli bir küme içinde tanımlanan sağlıklı hizmet örnekleri arasında dağıtan bir katman 4 (TCP, UDP) yük dengeleyicidir. Azure Load Balancer, şu şekilde yapılandırılabilir:
 
--   Sanal makinelere gelen Internet trafiğinin yükünü dengeleyin. Bu yapılandırma [Internet 'e yönelik yük dengeleme](../../load-balancer/load-balancer-overview.md#publicloadbalancer)olarak bilinir.
+-   Sanal makinelere gelen Internet trafiğinin yükünü dengeleyin. Bu yapılandırma [Internet 'e yönelik yük dengeleme](../../load-balancer/concepts-limitations.md#publicloadbalancer)olarak bilinir.
 
--   Bir sanal ağ içindeki sanal makineler arasında, bulut hizmetlerindeki sanal makineler arasında veya şirket içi bilgisayarlar ile şirketler arası bir sanal ağdaki sanal makineler arasında yük dengeleme trafiği. Bu yapılandırma, [İç Yük Dengeleme](../../load-balancer/load-balancer-overview.md#internalloadbalancer)olarak bilinir.
+-   Bir sanal ağ içindeki sanal makineler arasında, bulut hizmetlerindeki sanal makineler arasında veya şirket içi bilgisayarlar ile şirketler arası bir sanal ağdaki sanal makineler arasında yük dengeleme trafiği. Bu yapılandırma, [İç Yük Dengeleme](../../load-balancer/concepts-limitations.md#internalloadbalancer)olarak bilinir.
 
 - Dış trafiği belirli bir sanal makineye ilet
 

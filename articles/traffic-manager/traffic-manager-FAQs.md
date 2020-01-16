@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d7feb0f7c32ab544df2b9de08daaf8cd007318b5
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784824"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045318"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager sık sorulan sorular (SSS)
 
@@ -29,7 +29,7 @@ ms.locfileid: "72784824"
 Bu nedenle Traffic Manager, istemcilerin bağlanması için bir uç nokta veya IP adresi sağlamaz. Hizmetiniz için statik IP adresi istiyorsanız, bu, Traffic Manager değil, hizmette yapılandırılması gerekir.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Traffic Manager kullanılarak hangi türde trafik yönlendirilebilir?
-[Traffic Manager nasıl çalıştığı konusunda](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, bir Traffic Manager uç noktası, Azure içinde veya dışında barındırılan internet 'e yönelik herhangi bir hizmet olabilir. Bu nedenle Traffic Manager, genel İnternet 'ten gelen trafiği de internet 'e yönelik bir uç nokta kümesine yönlendirebilir. Özel bir ağ içinde (örneğin, [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)iç sürümü) veya kullanıcıların bu Iç ağlardan DNS istekleri yapmasını istiyorsanız, bu trafiği yönlendirmek için Traffic Manager kullanamazsınız.
+[Traffic Manager nasıl çalıştığı konusunda](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, bir Traffic Manager uç noktası, Azure içinde veya dışında barındırılan internet 'e yönelik herhangi bir hizmet olabilir. Bu nedenle Traffic Manager, genel İnternet 'ten gelen trafiği de internet 'e yönelik bir uç nokta kümesine yönlendirebilir. Özel bir ağ içinde (örneğin, [Azure Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer)iç sürümü) veya kullanıcıların bu Iç ağlardan DNS istekleri yapmasını istiyorsanız, bu trafiği yönlendirmek için Traffic Manager kullanamazsınız.
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>"Sticky" oturumlarını Traffic Manager destekler mi?
 
@@ -406,7 +406,7 @@ Yönlendirme yöntemi olan profillerin çoklu değer olarak ayarlandığı profi
 
 Evet, birden çok değer türündeki bir profilin iç içe geçmiş bir profil kümesindeki bir üst profil olması özel durumla birlikte olabilirsiniz.
 
-### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Traffic Manager profilimde bir Web uygulaması uç noktasını durdurdum, ancak yeniden başlattıktan sonra bile hiç trafik almadım. Bunu nasıl giderebilirim?
+### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Traffic Manager profilimde bir Web uygulaması uç noktasını durdurdum, ancak yeniden başlattıktan sonra bile hiç trafik almadım. Bunu nasıl düzeltebilirim?
 
 Bir Azure Web uygulaması uç noktası durdurulduğunda Traffic Manager sistem durumunu denetlemeyi durduruyor ve sistem durumu denetimlerini yalnızca uç noktanın yeniden başlatıldığını algıladıktan sonra yeniden başlatır. Bu gecikmeyi engellemek için, uç noktayı yeniden başlattıktan sonra bu uç noktayı Traffic Manager profilinde devre dışı bırakın ve yeniden etkinleştirin.
 
@@ -501,7 +501,7 @@ Aşağıdaki tabloda, iç içe geçmiş bir uç nokta için Traffic Manager sist
 | --- | --- | --- |
 | Devre dışı. Alt profil devre dışı bırakıldı. |Durdurulan |Üst uç nokta durumu durduruldu, devre dışı değil. Devre dışı durumu, üst profildeki uç noktayı devre dışı bırakmış olduğunu belirtecek şekilde ayrılmıştır. |
 | Düzey. En az bir alt profil uç noktası düşürülmüş bir durumda. |Çevrimiçi: alt profildeki çevrimiçi uç noktaların sayısı en az MinChildEndpoints değeridir.<BR>CheckingEndpoint: alt profildeki çevrimiçi ve CheckingEndpoint uç noktalarının sayısı en az MinChildEndpoints değeridir.<BR>Düşürülmüş: Aksi durumda. |Trafik, bir durum CheckingEndpoint uç noktasına yönlendirilir. MinChildEndpoints çok yüksek ayarlandıysa, uç nokta her zaman düşürülmüş olur. |
-| Çevrimiç. En az bir alt profil uç noktası çevrimiçi bir durumdur. Düşürülmüş durumunda uç nokta yok. |Yukarıdaki bölümüne bakın. | |
+| Çevrimiçi. En az bir alt profil uç noktası çevrimiçi bir durumdur. Düşürülmüş durumunda uç nokta yok. |Yukarıdaki bölümüne bakın. | |
 | CheckingEndpoints. En az bir alt profil uç noktası ' CheckingEndpoint '. Uç nokta ' çevrimiçi ' veya ' düşürülmüş ' yok |Yukarıdaki gibi. | |
 | Olmadan. Tüm alt profil uç noktaları devre dışı veya durdurulmuş ya da bu profilde uç nokta yok. |Durdurulan | |
 

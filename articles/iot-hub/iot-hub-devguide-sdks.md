@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 22734d29973f0d7102307aa9038b6ebe7cc2521b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 01/14/2020
+ms.openlocfilehash: 419a71acbca59c00bd0ffecf39d5d1ff38833b08
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903322"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045138"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK 'larını anlama ve kullanma
 
@@ -111,8 +111,8 @@ Node. js için Azure IoT Hub hizmeti SDK 'Sı:
 
 Python için Azure IoT Hub Service SDK: 
 
-* [PIP](https://pypi.python.org/pypi/azure-iothub-service-client/) 'den indir
-* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated)
+* [PIP](https://pypi.python.org/pypi/azure-iot-hub/) 'den indir
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-python/tree/master)
 
 C için Azure IoT Hub hizmeti SDK 'Sı: 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: c97c8231265cf87f52333a56d21d6fb13180c554
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 5680bd1c3fadab8edcde1634c708ca8683c0e99c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808863"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021121"
 ---
 ## <a name="create-base-resources"></a>Temel kaynaklar oluşturma
 
@@ -23,7 +23,7 @@ Tüm kaynaklar için aynı kaynak grubunu ve konumunu kullanın. Sonunda, kaynak
 
 Aşağıdaki bölümlerde gerçekleştirilecek adımların özeti aşağıda verilmiştir: 
 
-1. Bir [kaynak grubu](../articles/azure-resource-manager/resource-group-overview.md) oluşturun.
+1. Bir [kaynak grubu](../articles/azure-resource-manager/management/overview.md) oluşturun.
 
 2. S1 katmanında IoT hub'ı oluşturun. IOT hub'ınızı bir tüketici grubu ekleyin. Tüketici grubu Azure Stream Analytics tarafından veriler alınırken kullanılır.
 

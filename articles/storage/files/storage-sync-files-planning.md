@@ -4,15 +4,15 @@ description: Azure dosyaları dağıtımı için planlama yaparken göz önünde
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c81f06d924a0ba871115e0ae0164d61449855263
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: d2dbe29c5a348363172f57da86483ccf3fd787f0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665256"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046091"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -347,13 +347,13 @@ Aşağıdaki tabloda, ad alanının boyutunu ve tipik genel amaçlı dosya payla
 | Ad alanı boyutu-dosyalar & dizinler (milyonlarca)  | Tipik kapasite (TiB)  | CPU Çekirdekleri  | Önerilen bellek (GiB) |
 |---------|---------|---------|---------|
 | 3        | 1.4     | 2        | 8 (ilk eşitleme)/2 (tipik dalgalanma)      |
-| 5        | 2.3     | 2        | 16 (ilk eşitleme)/4 (tipik dalgalanma)    |
-| 10       | 4.7     | 4        | 32 (ilk eşitleme)/8 (tipik dalgalanma)   |
-| 30       | 14,0    | 8        | 48 (ilk eşitleme)/16 (tipik dalgalanma)   |
-| 50       | 23,3    | 16       | 64 (ilk eşitleme)/32 (tipik dalgalanma)  |
-| 100 *     | 46,6    | 32       | 128 (ilk eşitleme)/32 (tipik dalgalanma)  |
+| 5        | 2.4     | 2        | 16 (ilk eşitleme)/4 (tipik dalgalanma)    |
+| 10       | 4.8     | 4        | 32 (ilk eşitleme)/8 (tipik dalgalanma)   |
+| 30       | 14,3    | 8        | 48 (ilk eşitleme)/16 (tipik dalgalanma)   |
+| 50       | 23,8    | 16       | 64 (ilk eşitleme)/32 (tipik dalgalanma)  |
+| 100 *     | 47,7   | 32       | 128 (ilk eşitleme)/32 (tipik dalgalanma)  |
 
-\*100.000.000 'den fazla dosya & Dizin şu anda desteklenmiyor. Bu bir hafif sınır.
+\*100.000.000 'den fazla dosya & Dizin sınanmamıştır. Bu bir hafif sınır.
 
 > [!TIP]
 > Bir ad alanının ilk eşitlemesi yoğun bir işlemdir ve ilk eşitleme tamamlanana kadar daha fazla bellek ayırmayı öneririz. Bu gerekli değildir, ancak ilk eşitlemeyi hızlandırabilir. 

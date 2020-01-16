@@ -16,20 +16,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc92fb7bc5ddf451279e6c157f9e93aa7fe9a12a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9cf660cbf981079ca20111e34fcd34504d8dcbfb
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423615"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044125"
 ---
-# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API 'Lerini çağıran Web API 'SI-uygulama için bir belirteç alın
+# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API 'Lerini çağıran bir Web API 'SI: uygulama için belirteç alma
 
 Bir istemci uygulama nesnesi oluşturduktan sonra, bir Web API 'sini çağırmak için kullanabileceğiniz bir belirteç almak için bu uygulamayı kullanın.
 
 ## <a name="code-in-the-controller"></a>Denetleyicideki kod
 
-Aşağıda, bir aşağı akış API 'SI (ToDoList adlı) çağıran API denetleyicilerinin eylemlerinde çağrılacak kod örneği verilmiştir.
+API denetleyicilerinin eylemlerinde çağrılan kod örneği aşağıda verilmiştir. *ToDoList*adlı bir aşağı akış API 'si çağırır.
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -50,9 +50,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()`, [Web API 'lerini çağıran Web API 'si-uygulama yapılandırması](scenario-web-api-call-api-app-configuration.md)' nda gördüğünüze benzer. `BuildConfidentialClient()`, yalnızca bir hesabın bilgilerini içeren bir önbellekle `IConfidentialClientApplication` başlatır. Hesap `GetAccountIdentifier` yöntemi tarafından sağlanır.
+`BuildConfidentialClient()`, Web API ['lerini çağıran bir Web API 'sindeki senaryoya benzer: uygulama yapılandırması](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()`, yalnızca bir hesap için bilgi içeren bir önbellekle `IConfidentialClientApplication` başlatır. Hesap `GetAccountIdentifier` yöntemi tarafından sağlanır.
 
-`GetAccountIdentifier` yöntemi, Web API 'sinin JWT aldığı kullanıcı kimliğiyle ilişkili talepleri kullanır:
+`GetAccountIdentifier` yöntemi, Web API 'sinin JSON Web Token (JWT) aldığı kullanıcı kimliğiyle ilişkili talepleri kullanır:
 
 ```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -73,4 +73,4 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Web API 'SI çağırma](scenario-web-api-call-api-call-api.md)
+> [Web API 'Leri çağıran bir Web API 'si: API çağırma](scenario-web-api-call-api-call-api.md)

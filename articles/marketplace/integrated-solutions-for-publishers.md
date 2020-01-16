@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/16/2019
 ms.author: evansma
-ms.openlocfilehash: 22d1f2d39a1ef3825d7d6c7eb0724e108b9b78e6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 6f09df7c4ccdfa8a339b9d7f2655128c7ead5184
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933773"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978637"
 ---
 # <a name="publish-an-integrated-solution"></a>Tümleşik bir çözüm yayımlama
 
@@ -28,13 +28,13 @@ Tümleşik çözümler programına genel bir bakış için [Bu videoyu](https://
 * Müşteriler Market aracılığıyla uçtan uca iş sorunlarını çözebilecek paketlenmiş çözümleri bulabilir. Teknoloji ön tümleştirildiği için hızlandırılmış zaman değeri alırlar. Müşteriler parçalanmış bir şekilde dağıtılan birden çok uygulama ile ayrı olarak çalışmak zorunda kalmaktan kaçınır.
 * IP, uzman Hizmetleri iş ortakları tarafından sunulan teknolojinin değerini geliştiren diğer çözüm ve hizmetlerle birlikte paketlenir.
 * Hizmet iş ortakları, daha fazla müşteri hesabını ölçeklendirmek, Land yapmak ve genişletmek için en iyi yerleşik ve önceden tümleştirilmiş çözümler oluşturur.
-* Microsoft, müşterilere daha kolay satış sağlamak için bu ön tümleşik, sektöre hizalanmış çözümleri kullanabilir. Fiyatlandırma ve şartlar önceden sıralanır. 
+* Microsoft, müşterilere daha kolay satış sağlamak için bu ön tümleşik, sektöre hizalanmış çözümleri kullanabilir. Fiyatlandırma ve şartlar önceden sıralanır.
 
 ## <a name="eligibility-criteria"></a>Uygunluk ölçütleri
 
 * Katılımcı iş ortakları bir MPN KIMLIĞINE sahip olmalıdır.
 * Katılım Hizmetleri sağlayıcılarının ortak satış için hazırlanma olması gerekir.
-* Katılan yazılım satıcıları, IP ortak satışı hazırlanmalıdır. 
+* Katılan yazılım satıcıları, IP ortak satışı hazırlanmalıdır.
 * En az bir katılım ortağının aşağıdaki alanlardan birinde altın uzmanlık olması gerekir:
 
     * Uygulama Geliştirme
@@ -53,13 +53,13 @@ Tümleşik çözümler programına genel bir bakış için [Bu videoyu](https://
 
 ## <a name="submit-a-nomination"></a>Aday gönder
 
-Programa katılmak isteyen iş ortakları, birlikte çalışmak istedikleri diğer iş ortaklarını tanımmalıdır. [Tümleşik çözümler aday formunu](https://aka.ms/AA5qicu)tamamlamalıdır. Tümleşik çözümler program ekibi, aday 'yı gözden geçirir ve 10 iş günü içinde aşağıdaki işlemleri izler. Ekip onay ve sonraki adımları sağlar. 
+Programa katılmak isteyen iş ortakları, birlikte çalışmak istedikleri diğer iş ortaklarını tanımmalıdır. [Tümleşik çözümler aday formunu](https://aka.ms/AA5qicu)tamamlamalıdır. Tümleşik çözümler program ekibi, aday 'yı gözden geçirir ve 10 iş günü içinde aşağıdaki işlemleri izler. Ekip onay ve sonraki adımları sağlar.
 
-## <a name="develop-an-integrated-solution"></a>Tümleşik bir çözüm geliştirin 
+## <a name="develop-an-integrated-solution"></a>Tümleşik bir çözüm geliştirin
 
-Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek için bağlantılı program kaynaklarını kullanın. Şu adımları uygulayın: 
+Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek için bağlantılı program kaynaklarını kullanın. Şu adımları uygulayın:
 
-1. Çözüm ve tümleştirme yaklaşımını tanımlamak için bir Workshop formatında önemli iş ve teknik tartışmalar yapın. 
+1. Çözüm ve tümleştirme yaklaşımını tanımlamak için bir Workshop formatında önemli iş ve teknik tartışmalar yapın.
 
     Çözümle ilgili tartışmanızın aşağıdaki noktaları içeren noktaları olması gerekir:
     * Kapsam
@@ -73,7 +73,7 @@ Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek iç
     * Satış süreci
     * Olaylar
 
-    Tümleştirme yaklaşımına ilişkin tartışmanızın aşağıdaki noktaları olması gerekir: 
+    Tümleştirme yaklaşımına ilişkin tartışmanızın aşağıdaki noktaları olması gerekir:
     * Tümleştirme noktaları
     * Çözüm mimarisi
     * Kimlik Doğrulaması
@@ -101,15 +101,15 @@ Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek iç
     * Tümleşik çözümün listeleme açıklaması. [Teklif listesi en iyi uygulamalarını](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)izleyin.
     * Müşteriler için tek sayfalı bir Aralık. [Tek sayfalayıcı şablonunu](https://aka.ms/AA5s08a)kullanın.
     * Bir müşteri sunumu. [Sunum şablonunu](https://aka.ms/AA5s7ql)kullanın.
-    * Birleşik çözüm için bir logo. 
+    * Birleşik çözüm için bir logo.
 
-## <a name="publish-your-integrated-solution"></a>Tümleşik çözümünüzü yayımlayın 
+## <a name="publish-your-integrated-solution"></a>Tümleşik çözümünüzü yayımlayın
 
 Teknik tümleştirmeyi ve pazarlama yardımcı malzemeleri tamamladıktan sonra, [Microsoft AppSource ve Azure Marketi Için danışmanlık hizmetleri](https://docs.microsoft.com/azure/marketplace/consulting-services)yayımcısı Kılavuzu ' na bakın. Çözümünüzün Microsoft AppSource veya Azure Marketi 'nde yayımlanıp yayımlanmayacağını öğrenmek için bu kaynağı kullanın. Ayrıca, yayımlama yapıtlarınızı hazırlama ve Yayımlama sürecini tamamlamaya yönelik kılavuzu kullanın.
 
 Danışmanlık hizmeti teklifleri için beş hizmet türü kullanılabilir olsa da, tümleşik bir çözüm kavram kanıtı ya da tam bir uygulama olmalıdır.
 
-## <a name="go-to-market-with-your-integrated-solution"></a>Tümleşik çözümünüz ile pazara gitme 
+## <a name="go-to-market-with-your-integrated-solution"></a>Tümleşik çözümünüz ile pazara gitme
 
 Çözümünüz Microsoft AppSource veya Azure Marketi 'nde etkin olduğunda, pazarlama etkinlikleriyle tanıma ve talep etmek isteyeceksiniz. [Proje planı ve zaman çizelgesinde](https://aka.ms/AA5qiuc)listelenen etkinlikleri gözden geçirin. Bu kaynak, iş ortaklarının kendi ekiplerinde ve bir diğeri içinde sürücü kullanabildiği etkinlikleri içerir. Daha sonra Market 'te yayımlayan iş ortakları için [pazara karşı avantajlarına](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) erişin. Tüm Tümleşik çözüm teklifleri, deneme düzeyi avantajlarına uygun.
 

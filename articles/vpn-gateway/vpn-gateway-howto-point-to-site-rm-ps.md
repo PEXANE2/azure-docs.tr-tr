@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: b67c77f25b14263abe7207359c00660df635df13
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 49fbdf4a4090350cc0a6a5a1b938621b3cb08632
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863817"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045094"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Yerel Azure sertifikası kimlik doğrulaması kullanarak bir VNet 'e Noktadan siteye VPN bağlantısı yapılandırma: PowerShell
 
@@ -32,13 +32,15 @@ Noktadan Siteye yerel Azure sertifika kimlik doğrulaması bağlantıları, bu a
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MSDN abonelik avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial) için kaydolabilirsiniz.
+
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-Bu makaledeki adımların çoğu Cloud Shell kullanabilir. Ancak, kök sertifika ortak anahtarını karşıya yüklemek için PowerShell 'i yerel olarak veya Azure portal kullanmanız gerekir.
+>[!NOTE]
+> Bu makaledeki adımların çoğu Azure Cloud Shell kullanabilir. Ancak, kök sertifika ortak anahtarını karşıya yüklemek için PowerShell 'i yerel olarak veya Azure portal kullanmanız gerekir.
+>
 
 ### <a name="example"></a>Örnek değerler
 
@@ -170,7 +172,9 @@ Otomatik olarak imzalanan sertifikalar kullanıyorsanız bu sertifikaların beli
 
 VPN ağ geçidini oluşturma işleminin tamamlandığını doğrulayın. İşlem tamamlandıktan sonra, güvenilen kök sertifikanın .cer dosyasını (ortak anahtar bilgilerini içerir) Azure’a yükleyebilirsiniz. Bir .cer dosyası karşıya yüklendikten sonra Azure, güvenilir kök sertifikadan oluşturulmuş bir istemci sertifikasının yüklü olduğu istemcilerin kimliklerini doğrulamak için bu dosyayı kullanabilir. Daha sonra gerekirse, toplam 20 adede kadar güvenilir kök sertifika dosyasını karşıya yükleyebilirsiniz.
 
-Azure Cloud Shell kullanarak bu bilgileri karşıya yükleyemezsiniz. PowerShell 'i bilgisayarınızda yerel olarak kullanabilirsiniz [Azure Portal adımları](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile).
+>[!NOTE]
+> Azure Cloud Shell kullanarak. cer dosyasını karşıya yükleyemezsiniz. PowerShell 'i bilgisayarınızda yerel olarak kullanabilir veya [Azure Portal adımları](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)kullanabilirsiniz.
+>
 
 1. Sertifika adınızın değişkenini tanımlamak için değeri kendi değerinizle değiştirin.
 
@@ -185,7 +189,7 @@ Azure Cloud Shell kullanarak bu bilgileri karşıya yükleyemezsiniz. PowerShell
    $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
    $p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
    ```
-3. Ortak anahtar bilgilerini Azure'a yükleyin. Sertifika bilgileri karşıya yüklendikten sonra, Azure bunu güvenilen bir kök sertifika olarak kabul eder.
+3. Ortak anahtar bilgilerini Azure'a yükleyin. Sertifika bilgileri karşıya yüklendikten sonra, Azure bunu güvenilen bir kök sertifika olarak kabul eder. Karşıya yüklerken, PowerShell 'i bilgisayarınızda yerel olarak çalıştırdığınızdan emin olun veya bunun yerine [Azure Portal adımları](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)kullanabilirsiniz. Azure Cloud Shell kullanarak karşıya yükleyemezsiniz.
 
    ```azurepowershell
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64

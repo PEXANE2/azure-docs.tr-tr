@@ -15,20 +15,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5829ca41aaa4bd61f8878657e5eedbf6351b5df4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 701f1f7c26731f3e9653955907f5f16d2688cdb2
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423572"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043444"
 ---
-# <a name="web-api-that-calls-web-apis---call-an-api"></a>Web API 'Lerini çağıran Web API 'si-API çağrısı
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API 'Leri çağıran bir Web API 'si: API çağırma
 
-Belirteciniz olduktan sonra korumalı bir Web API 'SI çağırabilirsiniz. Bu, ASP.NET/ASP.NET Core Web API 'nizin denetleyicisinden yapılır.
+Belirteciniz olduktan sonra korumalı bir Web API 'SI çağırabilirsiniz. Bunu ASP.NET veya ASP.NET Core Web API 'nizin denetleyicisinden yapabilirsiniz.
 
 ## <a name="controller-code"></a>Denetleyici kodu
 
-Aşağıda, [korumalı Web API 'si çağrıları Web API 'lerinde](scenario-web-api-call-api-acquire-token.md)gösterilen örnek kodun devamı vardır. API denetleyicilerinin eylemlerde çağrılan, bir aşağı akış API 'si (ToDoList adlı) çağıran bir belirteç alınıyor.
+Aşağıdaki kod, [Web API 'lerini çağıran bir Web API](scenario-web-api-call-api-acquire-token.md)'sinde gösterilen örnek kodu devam ettirir: uygulama Için belirteç alma. Kod, API denetleyicilerinin eylemleri içinde çağrılır. *ToDoList*adlı bir aşağı akış API 'si çağırır.
 
 Belirteci aldıktan sonra, aşağı akış API 'sini çağırmak için bunu bir taşıyıcı belirteç olarak kullanın.
 
@@ -49,7 +49,7 @@ private async Task GetTodoList(bool isAppStarting)
  }
 ...
 
-// Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
+// After the token has been returned by Microsoft Authentication Library (MSAL), add it to the HTTP authorization header before making the call to access the To Do list service.
 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
 // Call the To Do list service.
@@ -61,4 +61,4 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretime taşı](scenario-web-api-call-api-production.md)
+> [Web API 'Lerini çağıran bir Web API 'SI: üretime taşı](scenario-web-api-call-api-production.md)

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 2d09484fcb5211003aeec0ec10bfc9892b4e6f31
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6250238edd15126e7a56bd821fbd1c736ebda07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456547"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965884"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Mantıksal uygulama kaynaklarını diğer Azure aboneliklerine, kaynak gruplarına veya bölgelere taşıyın
 
@@ -33,7 +33,7 @@ Mantıksal uygulamanızı veya ilgili kaynaklarınızı başka bir Azure aboneli
 
 ## <a name="move-resources-between-subscriptions"></a>Kaynakları abonelikler arasında taşıma
 
-Mantıksal uygulama veya tümleştirme hesabı gibi bir kaynağı başka bir Azure aboneliğine taşımak için Azure portal, Azure PowerShell, Azure CLı veya REST API kullanabilirsiniz. Bu adımlar, kaynak bölgesi aynı kaldığında kullanabileceğiniz Azure portal kapsar. Diğer adımlar ve genel hazırlık için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/resource-group-move-resources.md).
+Mantıksal uygulama veya tümleştirme hesabı gibi bir kaynağı başka bir Azure aboneliğine taşımak için Azure portal, Azure PowerShell, Azure CLı veya REST API kullanabilirsiniz. Bu adımlar, kaynak bölgesi aynı kaldığında kullanabileceğiniz Azure portal kapsar. Diğer adımlar ve genel hazırlık için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 1. [Azure Portal](https://portal.azure.com), taşımak istediğiniz mantıksal uygulama kaynağını bulup seçin.
 
@@ -51,7 +51,7 @@ Mantıksal uygulama veya tümleştirme hesabı gibi bir kaynağı başka bir Azu
 
 ## <a name="move-resources-between-resource-groups"></a>Kaynakları kaynak grupları arasında taşıma
 
-Mantıksal uygulama veya tümleştirme hesabı gibi bir kaynağı başka bir Azure Kaynak grubuna taşımak için Azure portal, Azure PowerShell, Azure CLı veya REST API kullanabilirsiniz. Bu adımlar, kaynak bölgesi aynı kaldığında kullanabileceğiniz Azure portal kapsar. Diğer adımlar ve genel hazırlık için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/resource-group-move-resources.md).
+Mantıksal uygulama veya tümleştirme hesabı gibi bir kaynağı başka bir Azure Kaynak grubuna taşımak için Azure portal, Azure PowerShell, Azure CLı veya REST API kullanabilirsiniz. Bu adımlar, kaynak bölgesi aynı kaldığında kullanabileceğiniz Azure portal kapsar. Diğer adımlar ve genel hazırlık için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Kaynakları gruplar arasında gerçekten taşımadan önce, kaynağı başka bir gruba başarıyla taşıyıp taşıyamayacağını test edebilirsiniz. Daha fazla bilgi için bkz. [taşımanızı doğrulama](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move).
 
@@ -106,4 +106,4 @@ Visual Studio 'dan alacağınız şablon yalnızca mantıksal uygulamanız ve ba
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure kaynaklarını yeni kaynak gruplarına veya aboneliklerine taşıma](../azure-resource-manager/resource-group-move-resources.md)
+[Azure kaynaklarını yeni kaynak gruplarına veya aboneliklerine taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md)
