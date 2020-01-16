@@ -12,25 +12,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: f038e56fe4b1e6ad2737217674706eef77a39fd6
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 590505d954d52ebec9f8a5c344d6e750f11ef677
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058049"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981358"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows, bir Azure VM 'yi önyüklerken mavi ekranda "KRITIK HIZMET başarısız oldu" olarak gösterilir
 Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) önyüklediğinizde karşılaşabileceğiniz "KRITIK HIZMET başarısız oldu" hatası açıklanır. Sorunları gidermeye yardımcı olmak için sorun giderme adımları sağlar. 
 
 > [!NOTE] 
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../azure-resource-manager/resource-manager-deployment-model.md). Bu makalede, klasik dağıtım modeli yerine yeni dağıtımlar için kullanmanızı önerdiğimiz Kaynak Yöneticisi dağıtım modelinin kullanımı açıklanmaktadır.
+> Azure, kaynak oluşturmak ve bu kaynaklarla çalışmak için iki dağıtım modeli kullanır: [Resource Manager ve klasik](../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modeli yerine yeni dağıtımlar için kullanmanızı önerdiğimiz Kaynak Yöneticisi dağıtım modelinin kullanımı açıklanmaktadır.
 
 ## <a name="symptom"></a>Belirti 
 
 Bir Windows VM 'si başlamıyor. Önyükleme [tanılamalarında](./boot-diagnostics.md)önyükleme ekran görüntülerini denetlediğinizde, mavi ekranda aşağıdaki hata iletilerinden birini görürsünüz:
 
-- "Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yeniden başlatabilirsiniz. Bu sorun ve olası düzeltmeler hakkında daha fazla bilgi için, https://windows.com/stopcode adresini ziyaret edin. Bir destek kişisi çağırırsanız, bu bilgileri verin: Kodu durdur: KRITIK HIZMET BAŞARISIZ OLDU " 
-- "Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yalnızca bazı hata bilgilerini topluyoruz ve sonra yeniden başlatacağız. Daha fazla bilgi edinmek istiyorsanız, daha sonra bu hata için çevrimiçi arama yapabilirsiniz: CRITICAL_SERVICE_FAILED"
+- "Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yeniden başlatabilirsiniz. Bu sorun ve olası düzeltmeler hakkında daha fazla bilgi için https://windows.com/stopcode ziyaret edin. Bir destek kişisi çağırırsanız, bu bilgileri verin: durdurma kodu: KRITIK HIZMET başarısız oldu " 
+- "Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yalnızca bazı hata bilgilerini topluyoruz ve sonra yeniden başlatacağız. Daha fazla bilgi edinmek istiyorsanız, daha sonra bu hata için çevrimiçi arama yapabilirsiniz: CRITICAL_SERVICE_FAILED "
 
 ## <a name="cause"></a>Nedeni
 
@@ -103,21 +103,21 @@ Döküm günlüklerini ve seri konsolunu etkinleştirmek için aşağıdaki beti
         bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
 8.  VM’yi yeniden başlatın. 
 
-### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>İsteğe bağlı: Döküm kilitlenme modunda döküm günlüklerini çözümleyin
+### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>İsteğe bağlı: döküm kilitlenme modunda döküm günlüklerini çözümleyin
 
 Döküm günlüklerini kendiniz çözümlemek için aşağıdaki adımları izleyin:
 
 1. İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin.
 2. Eklediğiniz işletim sistemi diskinde **\Windows\System32\Config**dosyasına gidin. Geri almanın gerekli olması durumunda tüm dosyaları yedekleme olarak kopyalayın.
 3. **Kayıt defteri Düzenleyicisi 'ni** (Regedit. exe) başlatın.
-4. **HKEY_LOCAL_MACHINE** anahtarını seçin. Menüde **Dosya** > **yükleme Hive**' yi seçin.
-5. Eklediğiniz işletim sistemi diskinde **\Windows\system32\config\system** klasörüne gidin. Hive adı için **brokensystem**girin. Yeni kayıt defteri kovanı, **HKEY_LOCAL_MACHINE** anahtarının altında görüntülenir.
-6. **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** ' e gidin ve aşağıdaki değişiklikleri yapın:
+4. **HKEY_LOCAL_MACHINE** anahtarını seçin. Menüsünde **dosya** > **Hive yükle**' yi seçin.
+5. Eklediğiniz işletim sistemi diskinde **\Windows\system32\config\system** klasörüne gidin. Hive adı için **brokensystem**girin. Yeni kayıt defteri kovanı **HKEY_LOCAL_MACHINE** anahtarı altında görüntülenir.
+6. **\ Brokensystem\controlset00x\control\crashcontrol HKEY_LOCAL_MACHINE** göz atın ve aşağıdaki değişiklikleri yapın:
 
     Oto yeniden başlatma = 0
 
     CrashDumpEnabled = 2
-7.  **Brokensistem**' i seçin. Menüden **Dosya** > **Kaldır Hive**' yi seçin.
+7.  **Brokensistem**' i seçin. Menüden **dosya** > **Hive 'yi kaldır**' ı seçin.
 8.  BCD kurulumunu hata ayıklama modunda önyüklenecek şekilde değiştirin. Yükseltilmiş bir komut isteminden aşağıdaki komutları çalıştırın:
 
     ```cmd
@@ -137,7 +137,7 @@ Döküm günlüklerini kendiniz çözümlemek için aşağıdaki adımları izle
 9. [İşletim sistemi diskini ayırın ve ardından işletim sistemi diskini ETKILENEN VM 'ye yeniden ekleyin](troubleshoot-recovery-disks-portal-windows.md).
 10. Döküm analizini gösterir olup olmadığını görmek için VM 'yi önyükleyin. Yükleme başarısız olan dosyayı bulun. Bu dosyayı çalışan VM 'deki bir dosyayla değiştirmeniz gerekir. 
 
-    Aşağıda, döküm analizinin örneği verilmiştir. **Hatanın** filecrypt. sys dosyasında olduğunu görebilirsiniz: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt. sys ".
+    Aşağıda, döküm analizinin örneği verilmiştir. **Hatanın** filecrypt. sys dosyasında olduğunu görebilirsiniz: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt. sys".
 
     ```
     kd> !analyze -v 

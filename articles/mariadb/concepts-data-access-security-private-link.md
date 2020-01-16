@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 40aa35e9f9d40a8a021797a0a2a4af9216d90618
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 92d7522c8382ded182c5f482df3f3d917b4b3a14
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898176"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982376"
 ---
 # <a name="private-link-for-azure-database-for-mariadb-preview"></a>MariaDB için Azure veritabanı için özel bağlantı (Önizleme)
 
@@ -28,7 +28,7 @@ MariaDB için Azure veritabanı 'nda veri değişim-bir veritabanı yöneticisi 
 
 MariaDB için Azure veritabanı örneğine bağlanan bir Azure VM içinde MariaDB çalışma ekranı çalıştıran bir senaryoya göz önünde bulundurun. Bu MariaDB örneği Batı ABD veri merkezinde bulunur. Aşağıdaki örnekte, ağ erişim denetimleri kullanılarak MariaDB için Azure veritabanı 'nda genel uç noktalarla erişimin nasıl sınırlandırılcağı gösterilmektedir.
 
-* Azure hizmetlerinin kapalı çalışmasına Izin ver ' i ayarlayarak, genel uç nokta aracılığıyla Azure veritabanı için Azure veritabanı trafiğini devre dışı bırakın. Bir IP adresinin veya aralıklarının sunucuya [güvenlik duvarı kuralları](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) veya [sanal ağ hizmeti uç noktaları](https://docs.microsoft.com/azure/mariadb/concepts-data-access-and-security-vnet)aracılığıyla erişmesine izin verilmediğinden emin olun.
+* Azure hizmetlerinin kapalı çalışmasına Izin ver ' i ayarlayarak, genel uç nokta aracılığıyla Azure veritabanı için Azure veritabanı trafiğini devre dışı bırakın. Bir IP adresinin veya aralıklarının sunucuya [güvenlik duvarı kuralları](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) veya [sanal ağ hizmeti uç noktaları](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)aracılığıyla erişmesine izin verilmediğinden emin olun.
 
 * Yalnızca, VM 'nin özel IP adresini kullanarak MariaDB için Azure veritabanı 'na giden trafiğe izin verin. Daha fazla bilgi için [hizmet uç noktası](concepts-data-access-security-vnet.md) ve [VNET güvenlik duvarı kuralları](howto-manage-vnet-portal.md)makalesine bakın.
 

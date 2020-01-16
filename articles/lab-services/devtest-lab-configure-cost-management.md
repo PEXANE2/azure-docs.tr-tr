@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 9180c29b807ef26c6426aab75fe74870fef9669a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 247327d001342fd0e2943ae7cf010e648761cdaa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318158"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976353"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvarda ilişkili maliyetleri izleyin
 Bu makalede, laboratuvarınızın maliyetinin nasıl izleneceği hakkında bilgi verilmektedir. Bu, laboratuvarın geçerli takvim ayının tahmini maliyetinin nasıl görüntüleneceğini gösterir. Makalede ayrıca laboratuvarda kaynak başına aylık maliyet görüntüleme gösterilmektedir.
@@ -29,7 +29,7 @@ Bu bölümde, **aylık tahmini maliyet eğilimi** grafiğinin geçerli takvim ay
 
 Aylık tahmini maliyet eğilimi grafiğini görüntülemek için aşağıdaki adımları izleyin: 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden laboratuvarınızı seçin.  
 4. Sol taraftaki menüden **yapılandırma ve ilkeler** ' i seçin.  
@@ -49,7 +49,7 @@ Aylık tahmini maliyet eğilimi grafiğini görüntülemek için aşağıdaki ad
 
      Maliyet hesaplamasına aşağıdaki maliyetler dahil *değildir* :
 
-   * CSP ve DreamSpark abonelikleri, CSP veya DreamSpark aboneliklerini desteklemeyen laboratuvar maliyetini hesaplamak için [Azure Faturalandırma API 'lerini](../billing/billing-usage-rate-card-overview.md) kullandığından Azure DevTest Labs Şu anda desteklenmemektedir.
+   * CSP ve DreamSpark abonelikleri, CSP veya DreamSpark aboneliklerini desteklemeyen laboratuvar maliyetini hesaplamak için [Azure Faturalandırma API 'lerini](../cost-management-billing/manage/usage-rate-card-overview.md) kullandığından Azure DevTest Labs Şu anda desteklenmemektedir.
    * Teklif ücretleri. Şu anda Microsoft veya Microsoft iş ortakları ile anlaştığınız teklif fiyatlarını (aboneliğiniz altında gösterilen) kullanamazsınız. Yalnızca Kullandıkça Öde ücretleri kullanılır.
    * Vergiler
    * İndirimleriniz
@@ -69,15 +69,15 @@ DevTest Labs, aylık tahmini maliyet eğilimi grafiğinde görüntüleyebilmeniz
       - **Aylık**: maliyet hedefleri her ay izlenir.
       - **Düzeltildi**: maliyet hedefleri, başlangıç ve bitiş tarihlerinde belirttiğiniz tarih aralığı için izlenir. Genellikle, bu değerler projenizin ne kadar süreyle çalıştırılacağını temsil eder.
    - **Hedef maliyet**belirtin. Örneğin, bu laboratuvarda tanımladığınız zaman diliminde ne kadar harcamayı planlıyorsunuz.
-   - Belirtilen **hedef maliyetinizi**% 125 25 oranında, raporlanmasını istediğiniz eşiği etkinleştirmek veya devre dışı bırakmak için seçin.
-      - **Bildir**: Bu eşik karşılandığında, belirttiğiniz bir Web kancası URL 'SI ile bilgilendirilirsiniz.
-      - **Grafik üzerinde çiz**: Bu eşik karşılandığında, sonuçlar, aylık tahmini maliyet eğilimi grafiğini görüntüleme bölümünde açıklandığı gibi, görüntüleyebileceğiniz maliyet eğilimi grafiğinde çizilir.
+   - Belirtilen **hedef maliyetinizi**%125 25 oranında, raporlanmasını istediğiniz eşiği etkinleştirmek veya devre dışı bırakmak için seçin.
+      - **Bildir**: Bu eşik karşılandığında, belirttiğiniz bir Web kancası URL 'si ile bilgilendirilirsiniz.
+      - **Grafik üzerinde çizim**: Bu eşik karşılandığında sonuçlar, aylık tahmini maliyet eğilimi grafiğini görüntüleme bölümünde açıklandığı gibi, görüntüleyebileceğiniz maliyet eğilimi grafiğinde çizilir.
    - Eşiğin karşılandığı zaman **bildirim** ' ı seçerseniz, bir Web kancası URL 'si belirtmeniz gerekir. Maliyet tümleştirmeleri alanında, **bir tümleştirme eklemek için buraya tıklayın ' ı**seçin. Bildirimi Yapılandır bölmesine bir **Web kancası URL 'si** girin ve ardından **Tamam**' ı seçin.
 
        ![Bildirim bölmesini yapılandırma](./media/devtest-lab-configure-cost-management/configure-notification.png)
 
      - **Bildir**' i belirtirseniz bir Web kancası URL 'si tanımlamanız gerekir.
-     - Benzer şekilde, bir Web kancası URL 'SI tanımlarsanız, maliyet eşiği  bölmesinde bildirimini **Açık** olarak ayarlamanız gerekir.
+     - Benzer şekilde, bir Web kancası URL 'SI tanımlarsanız, maliyet eşiği bölmesinde bildirimini **Açık** olarak ayarlamanız gerekir.
      - Buraya girmeden önce bir Web kancası oluşturmanız gerekir.  
 
        Web kancaları hakkında daha fazla bilgi için bkz. [Web kancası veya API Azure Işlevi oluşturma](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
@@ -85,7 +85,7 @@ DevTest Labs, aylık tahmini maliyet eğilimi grafiğinde görüntüleyebilmeniz
 ## <a name="view-cost-by-resource"></a>Kaynağa göre maliyeti görüntüle 
 Laboratuvardaki aylık maliyet eğilimi özelliği, geçerli takvim ayında ne kadar harcandığını görmenizi sağlar. Ayrıca, son yedi gün içinde harcamalarınızı temel alarak, ayın sonuna kadar harcama projeksiyonunu gösterir. Laboratuvardaki harcamanın neden erken bir şekilde toplantı yaptığını anlamanıza yardımcı olmak için, tablodaki **kaynak başına** aylık maliyeti gösteren **kaynak maliyeti** özelliğini kullanabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 4. Sol taraftaki menüden **yapılandırma ve ilkeler** ' i seçin.

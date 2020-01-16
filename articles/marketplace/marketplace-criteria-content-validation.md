@@ -9,18 +9,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/31/2019
 ms.author: evansma
-ms.openlocfilehash: f4cd5083d694cb7c463596b7b45c384e0dc8b28d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 8c0af3f059d1beb0e1d07d3494b31c674f15438d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779748"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980866"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketi listeleme yönergeleri
 
 Bu belge, gereksinim kılavuzlarını ve Azure Market 'Te listelenen yeni teklifler ve hizmetler için gözden geçirenler için bir denetim listesi içerir.
 
-Tüm tekliflerin aşağıda belirtilen [Tüm liste gereksinimlerini](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) karşılaması gerekir. Ek gereksinimler ve denetim listeleri, eklenen [denemeler](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [SaaS uygulamaları](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-apps-requirements), [kapsayıcılar](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)ve [danışmanlık teklifleri](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements)dahil olmak üzere belirli liste türleri için verilmiştir.
+Tüm tekliflerin aşağıda belirtilen [Tüm liste gereksinimlerini](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) karşılaması gerekir. Ek gereksinimler ve denetim listeleri, eklenen [denemeler](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [SaaS uygulamaları](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-app-requirements), [kapsayıcılar](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)ve [danışmanlık teklifleri](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements)dahil olmak üzere belirli liste türleri için verilmiştir.
 
 
 ## <a name="all-listing-requirements"></a>Tüm listeleme gereksinimleri

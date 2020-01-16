@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: f02e1f73460140c9fe9f2cf6d7ffda26533d570d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 98c3a6b14230e30ccbb103be741595696a20c236
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090018"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981414"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Azure 'da yeni bir Linux sanal makinesi oluşturma konusunda Kaynak Yöneticisi dağıtım sorunlarını giderme
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -34,7 +34,7 @@ Diğer VM dağıtım sorunları ve soruları için bkz. [Azure'da Linux sanal ma
 ## <a name="collect-activity-logs"></a>Etkinlik günlüklerini topla
 Sorun gidermeye başlamak için, sorunla ilişkili hatayı belirlemek üzere etkinlik günlüklerini toplayın. Aşağıdaki bağlantılar, izlenecek işlemle ilgili ayrıntılı bilgiler içerir.
 
-[Dağıtım işlemlerini görüntüleme](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Dağıtım işlemlerini görüntüleme](../../azure-resource-manager/templates/deployment-history.md)
 
 [Azure kaynaklarını yönetmek için etkinlik günlüklerini görüntüleme](../../resource-group-audit.md)
 
@@ -42,7 +42,7 @@ Sorun gidermeye başlamak için, sorunla ilişkili hatayı belirlemek üzere etk
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**IZ** İşletim sistemi Linux genelleştirilir ve yüklenmiş ve/veya Genelleştirilmiş ayarıyla yakalandıysa, herhangi bir hata olmayacaktır. Benzer şekilde, işletim sistemi Linux özelleşmiş ise ve yüklenmiş ve/veya özel ayarıyla yakalandıysa, herhangi bir hata olmayacaktır.
+**Y:** İşletim sistemi Linux genelleştirilir ve yüklenmiş ve/veya Genelleştirilmiş ayarıyla yakalandıysa, herhangi bir hata olmayacaktır. Benzer şekilde, işletim sistemi Linux özelleşmiş ise ve yüklenmiş ve/veya özel ayarıyla yakalandıysa, herhangi bir hata olmayacaktır.
 
 **Karşıya yükleme hataları:**
 
@@ -64,7 +64,7 @@ Bu hataları gidermek için, şirket içinde bulunan özgün VHD 'yi, işletim s
 
 Bu hataları gidermek için, portaldan geçerli görüntüyü silin ve [geçerli VHD 'lerden](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , işletim sistemi (Genelleştirilmiş/özelleştirilmiş) ile aynı ayarı kullanarak yeniden yakalayın.
 
-## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Sorun: Özel/Galeri/Market görüntüsü; ayırma hatası
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Sorun: özel/galeri/Market görüntüsü; ayırma hatası
 Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitlendiğinde veya isteğe uygun boş alana sahip olmadığında ortaya çıkar.
 
 **Neden 1:** Küme, istenen VM boyutunu desteklemez.
@@ -74,7 +74,7 @@ Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitle
 * Daha küçük bir VM boyutu kullanarak isteği yeniden deneyin.
 * İstenen VM 'nin boyutu değiştirilenemez:
   * Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun.
-    Kaynak **grupları kaynak grupları** >  > 'na > tıklayın kullanılabilirlik kümesisanal > **makineleriniz sanal makineniz** > *Durdur.*  > 
+    Kaynak **grupları** > *kaynak*grupları > 'natıklayın*kullanılabilirlik kümesi* **sanal makineleriniz**sanal makineniz >  >  > *Durdur.*  > 
   * Tüm VM 'Ler durduktan sonra, istenen boyutta yeni VM 'yi oluşturun.
   * Önce yeni VM 'yi başlatın ve sonra durdurulan sanal makinelerin her birini seçip **Başlat**' a tıklayın.
 

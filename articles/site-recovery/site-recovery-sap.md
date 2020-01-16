@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: eeb85e97d653b0faac171e2986cb933fc41e6606
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 0cef6332a169b71d7812efdc41247443fbc194f2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940675"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982372"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Çok katmanlı SAP NetWeaver uygulama dağıtımı için olağanüstü durum kurtarmayı ayarlama
 
@@ -68,13 +68,13 @@ SMLG işlem ABAP uygulama sunucuları için oturum açma grupları yönetmek iç
 #### <a name="vms-running-sap-central-services-cluster"></a>SAP merkezi hizmetler kümesi çalıştıran VM 'Ler
 Bu başvuru mimarisi, uygulama katmanında Vm'lerde merkezi hizmetleri çalıştırır. Merkezi Hizmetleri için tek bir VM dağıtılırken hata (SPOF) bir olası tek noktası olan — yüksek kullanılabilirlik gereksinimi olmadığı durumlarda tipik dağıtım.<br>
 
-Yüksek oranda kullanılabilir bir çözüm uygulamak için, paylaşılan bir disk kümesi veya bir dosya paylaşım kümesi kullanılabilir. VM 'Leri paylaşılan bir disk kümesi için yapılandırmak için Windows Server yük devretme kümesi ' ni kullanın. Bulut tanığı çekirdek tanığı olarak önerilir. 
+Yüksek oranda kullanılabilir bir çözüm uygulamak için, paylaşılan bir disk kümesi veya bir dosya paylaşım kümesi kullanılabilir. VM 'Leri paylaşılan bir disk kümesi için yapılandırmak için Windows Server yük devretme kümesi ' ni kullanın. Bulut tanığı çekirdek tanığı olarak önerilir.
  > [!NOTE]
  > Site Recovery bulut tanığını çoğaltmadığından, bulut tanığını olağanüstü durum kurtarma bölgesinde dağıtmanız önerilir.
 
-Yük devretme küme ortamında desteklemek için [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) küme düğümlerinin sahip olduğu bağımsız diskleri çoğaltarak Küme Paylaşılan Birimi işlevi gerçekleştirir. Azure Paylaşılan diskleri yerel olarak desteklemez ve bu nedenle SIOS tarafından sağlanan çözümleri gerektirir. 
+Yük devretme küme ortamında desteklemek için [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) küme düğümlerinin sahip olduğu bağımsız diskleri çoğaltarak Küme Paylaşılan Birimi işlevi gerçekleştirir. Azure Paylaşılan diskleri yerel olarak desteklemez ve bu nedenle SIOS tarafından sağlanan çözümleri gerektirir.
 
-Kümeleme işlemenin başka bir yolu da dosya paylaşma kümesi uygulamaktır. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) /sapmnt genel dizinleri UNC yolu üzerinden erişmek için Yönetim Hizmetleri dağıtım modeli yakın zamanda değiştirilmiş. Ancak,/sapmnt UNC paylaşımının yüksek oranda kullanılabilir olduğundan emin olmak yine de önerilir. Bu işlem, Windows Server 2016 ' deki genişleme dosya sunucusu (SOFS) ve Depolama Alanları Doğrudan (S2D) özelliği ile Windows Server yük devretme kümesi kullanılarak Merkezi Hizmetler örneğinde yapılabilir. 
+Kümeleme işlemenin başka bir yolu da dosya paylaşma kümesi uygulamaktır. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) /sapmnt genel dizinleri UNC yolu üzerinden erişmek için Yönetim Hizmetleri dağıtım modeli yakın zamanda değiştirilmiş. Ancak,/sapmnt UNC paylaşımının yüksek oranda kullanılabilir olduğundan emin olmak yine de önerilir. Bu işlem, Windows Server 2016 ' deki genişleme dosya sunucusu (SOFS) ve Depolama Alanları Doğrudan (S2D) özelliği ile Windows Server yük devretme kümesi kullanılarak Merkezi Hizmetler örneğinde yapılabilir.
  > [!NOTE]
  > Şu anda Site Recovery, yalnızca depolama alanları doğrudan ve yalnızca SIOS veri Man 'ın pasif düğümü kullanılarak sanal makinelerin kilitlenme tutarlı noktası çoğaltmasını destekler
 
@@ -84,14 +84,14 @@ Kümeleme işlemenin başka bir yolu da dosya paylaşma kümesi uygulamaktır. [
 Azure bölgelerinde tam SAP dağıtımı yükünü yönetmek için Site Recovery kullanabilirsiniz.
 Olağanüstü durum kurtarmayı ayarlamaya yönelik adımlar aşağıda verilmiştir 
 
-1. Sanal makineleri çoğaltma 
+1. Sanal makineleri çoğaltma
 2. Kurtarma ağını tasarlama
 3.  Bir etki alanı denetleyicisini çoğaltma
-4.  Veri tabanı katmanını Çoğalt 
-5.  Yük devretme testi gerçekleştirin 
-6.  Yük devretme gerçekleştirin 
+4.  Veri tabanı katmanını Çoğalt
+5.  Yük devretme testi gerçekleştirin
+6.  Yük devretme gerçekleştirin
 
-Bu örnekte kullanılan her bir katmanın olağanüstü durum kurtarma önerisi aşağıda verilmiştir. 
+Bu örnekte kullanılan her bir katmanın olağanüstü durum kurtarma önerisi aşağıda verilmiştir.
 
  **SAP katmanları** | **Öneri**
  --- | ---

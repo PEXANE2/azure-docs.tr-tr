@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: d19b3d59c48cfc8fc91d4678c2f979b110575b1a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 102433b88ffb140cae46433be1c0edef90857e6d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359162"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969945"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux için DSC Uzantısı (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -371,7 +371,7 @@ Aşağıdakileri çalıştırarak Azure hesabınızda Azure Resource Manager mod
 Login-AzAccount
 ```
 
-Azure PowerShell Azure Resource Manager ile birlikte kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure PowerShell kullanarak Azure kaynaklarını yönetme](../../azure-resource-manager/manage-resources-powershell.md).
+Azure PowerShell Azure Resource Manager ile birlikte kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure PowerShell kullanarak Azure kaynaklarını yönetme](../../azure-resource-manager/management/manage-resources-powershell.md).
 
 Şu işlemi çalıştırarak DSCForLinux uzantısını dağıtabilirsiniz:
 

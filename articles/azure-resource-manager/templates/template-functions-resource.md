@@ -3,12 +3,12 @@ title: Şablon işlevleri-kaynaklar
 description: Kaynaklarla ilgili değerleri almak için bir Azure Resource Manager şablonunda kullanmak için işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 2dd55be9f9daa25662903fbb1bd0c2c6666974b3
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 85e421d4d4e53d275613ff8848abd405fdf175c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708574"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979438"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için kaynak işlevleri
 
@@ -233,7 +233,7 @@ Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
 | Microsoft. Web/apimanagementaccounts/API/bağlantı | listgizlilikler |
 | Microsoft. Web/siteler/yedeklemeler | [list](/rest/api/appservice/webapps/listbackups) |
 | Microsoft. Web/Sites/config | [list](/rest/api/appservice/webapps/listconfigurations) |
-| Microsoft. Web/Sites/işlevleri | [ListKeys 'i al]()
+| Microsoft. Web/Sites/işlevleri | [ListKeys 'i al](/rest/api/appservice/webapps/listfunctionkeys)
 | Microsoft. Web/Sites/işlevleri | [listgizlilikler](/rest/api/appservice/webapps/listfunctionsecrets) |
 | Microsoft. Web/Sites/hybridconnectionnamespaces/geçişler | [ListKeys 'i al](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
 | Microsoft. Web/siteler | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |

@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 7101cef6acd7c7b321fbd31c614063a1fa8fe17a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 339ab811969a3de6ce87d529e1bf77f325be4071
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771879"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968495"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning model yorumlenebilirliği
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,7 +77,7 @@ Bu paket, eğitim yorumlartablosu modellerine yönelik açık kaynaklı bir Pyth
 * **Benzeme açıklama**: benzeme açıklama, [genel yedek modelleriyle](https://christophm.github.io/interpretable-ml-book/global.html) ilgili eğitimin modellerini taklit etmek için eğitim fikrini temel alır. Genel yedek modeli, siyah bir kutu modelinin tahmin edilebilmesini mümkün olduğunca doğru şekilde tahmin etmek için eğitilen bir doğası gereği ınterbox modelidir. Veri bilimconu, & kara kutu modeli hakkında ekibinizle çizmek için yedek modeli yorumlayabilir. Aşağıdaki yorumlu modellerden birini yedek modeliniz olarak kullanabilirsiniz: LightGBM (LGBMExplainableModel), doğrusal regresyon (LinearExplainableModel), Stochastic gradyan Descent explainable model (SGDExplainableModel) ve karar ağacı ( DecisionTreeExplainableModel).
 
 
-* **Permütasyon özelliği önem açıklama**: permütasyon özelliği önem derecesi, [Breiman 'nın rastgele ormanlar kağıdına](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) göre önemli olan sınıflandırma ve regresyon modellerini açıklamak için kullanılan bir tekniktir (bkz. Bölüm 10). Yüksek düzeyde, çalışma şekli, veri kümesinin tamamı için bir seferde bir özelliği rastgele karıştırarak ve ilgilendiğiniz performans ölçüsünün ne kadarını değiştirdiğine göre belirlenir. Değişiklik ne kadar büyükse, bu özellik o kadar önemli olur.
+* **Permütasyon özelliği önem açıklama**: permütasyon özelliği önem derecesi, [Breiman 'nın rastgele ormanlar kağıdına](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) göre önemli olan sınıflandırma ve regresyon modellerini açıklamak için kullanılan bir tekniktir (bkz. Bölüm 10). Yüksek düzeyde, çalışma şekli, veri kümesinin tamamı için bir seferde bir özelliği rastgele karıştırarak ve ilgilendiğiniz performans ölçüsünün ne kadarını değiştirdiğine göre belirlenir. Değişiklik ne kadar büyükse, bu özellik o kadar önemli olur.
 
 * **Lime açıklama** (`contrib`) [: limon yeşili tabanlı, lime](https://github.com/marcotcr/lime)açıklama yerel yedek modeller oluşturmak Için, son teknoloji yerel yorumlanmış açıklamaları (Lime) algoritmasını kullanır. Genel yedek modellerinden farklı olarak, açık bir şekilde öngörülere yönelik olarak yerel yedek modellerine yönelik olarak, açık bir şekilde
 * **Han metin açıklama** (`contrib`): Han Text açıklama, belirli bir siyah kutu metin modelinin metin verilerinden model açıklamaları almak için hiyerarşik bir dikkat ağı kullanır. Belirli bir siyah kutu modelinin öngörülen çıktılarında HAN yedek modelini alır. Corpus metin genelinde eğitimin üzerinde küresel bir şekilde eğitim ettikten sonra, açıklamaları doğruluğunu artırmak için belirli bir belge için ince ayar adımı ekler. HAN, tümce ve sözcük ilgilenilmesi için iki dikkat katmanıyla birlikte çift yönlü bir RNN kullanır. DNN, siyah kutu modeli üzerinde eğitilirken ve belirli bir belgede ince ayar yaptıktan sonra, Kullanıcı dikkat çekici katmanlardan önemli sözcükleri ayıklayabilir. HAN, metin verileri için LIME veya SHAP 'den daha doğru bir şekilde gösterilir, ancak eğitim süresi bakımından daha fazla maliyetli olur. Kullanıcılara eğitim süresini azaltmak için GloVe Word katıştırmasına sahip ağı başlatma seçeneğini sunmak için geliştirmeler yapılmıştır. Eğitim süresi, uzak bir Azure GPU VM 'sinde HAN çalıştırılarak önemli ölçüde artırılabilir. HAN 'in uygulanması, [' belge sınıflandırması Için hiyerarşik dikkat ağları (Yang et al., 2016) '](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification)bölümünde açıklanmaktadır.

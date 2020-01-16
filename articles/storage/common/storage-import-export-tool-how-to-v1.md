@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 1/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 4cd5fde2f47cca1b03efbc217d7764ac429d15fb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: aaceee65ae91a22dc658d185a874e2040b1e0f04
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973943"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975662"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Azure Içeri/dışarı aktarma aracı 'nı (klasik dağıtım modeli) kullanma
 
@@ -25,10 +25,10 @@ Aşağıdaki makalelerde nasıl yapılacağı gösterilmektedir:
 
 - Içeri/dışarı aktarma aracını yükleyip kurun.
 - Sürücülerinizdeki verileri Azure Blob depolama alanına aktardığınız bir iş için sabit sürücülerinizi hazırlayın.
-- Günlük dosyalarını Kopyala ile bir işin durumunu gözden geçirin. 
-- Bir içeri aktarma işini onarın. 
-- Bir dışarı aktarma işini onarın. 
-- İşlem sırasında bir sorun olması durumunda Azure Içeri/dışarı aktarma aracı sorunlarını giderin. 
+- Günlük dosyalarını Kopyala ile bir işin durumunu gözden geçirin.
+- Bir içeri aktarma işini onarın.
+- Bir dışarı aktarma işini onarın.
+- İşlem sırasında bir sorun olması durumunda Azure Içeri/dışarı aktarma aracı sorunlarını giderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

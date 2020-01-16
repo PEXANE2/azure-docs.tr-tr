@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 059ca2a26e50128d6bc4313dad9f995e97c06378
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9e4c6577f0b8b18aff343ac54b31ff292632f5d0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686395"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979236"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Azure Güvenlik Merkezi araştırmada bulunan Kullanıcı verilerini yönetme
 Bu makalede, Azure Güvenlik Merkezi 'nin araştırma özelliğinde bulunan Kullanıcı verilerinin nasıl yönetileceği hakkında bilgi verilmektedir. Araştırma verileri [Azure izleyici günlüklerinde](../log-analytics/log-analytics-overview.md) depolanır ve Güvenlik Merkezi 'nde gösterilir. Kullanıcı verilerini yönetmek, verileri silme veya dışa aktarma olanağını içerir.
@@ -33,7 +33,7 @@ Araştırma özelliği, **varlıklar** sekmesinde tüm varlıkları, Kullanıcı
 ## <a name="securing-and-controlling-access-to-personal-information"></a>Kişisel bilgilere erişimi güvenli hale getirme ve denetleme
 Okuyucu, sahip, katkıda bulunan veya hesap yöneticisinin rolünü atayan bir güvenlik merkezi kullanıcısına araç içindeki müşteri verilerine erişim sağlayabilir.
 
-Okuyucu, sahip ve katkıda bulunan rolleri hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi Için yerleşik roller](../role-based-access-control/built-in-roles.md) . Hesap Yöneticisi rolü hakkında daha fazla bilgi edinmek için bkz. [Azure abonelik yöneticileri](../billing/billing-add-change-azure-subscription-administrator.md) .
+Okuyucu, sahip ve katkıda bulunan rolleri hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi Için yerleşik roller](../role-based-access-control/built-in-roles.md) . Hesap Yöneticisi rolü hakkında daha fazla bilgi edinmek için bkz. [Azure abonelik yöneticileri](../cost-management-billing/manage/add-change-subscription-administrator.md) .
 
 ## <a name="deleting-personal-data"></a>Kişisel verileri silme
 Sahip, katkıda bulunan veya hesap yöneticisinin rolünü atayan bir güvenlik merkezi kullanıcısına araştırma bilgileri silinebilir.

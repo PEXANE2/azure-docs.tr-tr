@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d30b2001889a2555f736de0685fe23de1ea0e055
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ce5fb014c7d954b3e8430a86430c6a666adff204
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438832"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969241"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory işlem hatlarından Spark programları çağırma
 
@@ -36,23 +36,23 @@ ms.locfileid: "75438832"
 > Bu makale, Azure Data Factory’nin genel kullanıma açık olan 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory Apache Spark etkinliğini kullanarak verileri dönüştürme](../transform-data-using-spark.md).
 
 ## <a name="introduction"></a>Tanıtım
-Spark etkinliği Data Factory tarafından desteklenen [veri dönüştürme etkinliklerinden](data-factory-data-transformation-activities.md) biridir. Bu etkinlik, Azure HDInsight 'ta Spark kümenizde belirtilen Spark programını çalıştırır. 
+Spark etkinliği Data Factory tarafından desteklenen [veri dönüştürme etkinliklerinden](data-factory-data-transformation-activities.md) biridir. Bu etkinlik, Azure HDInsight 'ta Spark kümenizde belirtilen Spark programını çalıştırır.
 
 > [!IMPORTANT]
 > - Spark etkinliği, birincil depolama olarak Azure Data Lake Store kullanan HDInsight Spark kümelerini desteklemez.
 > - Spark etkinliği yalnızca var olan HDInsight Spark kümelerinizi destekler. İsteğe bağlı HDInsight bağlı hizmetini desteklemez.
 
 ## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>İzlenecek yol: Spark etkinliği ile işlem hattı oluşturma
-Spark etkinliğiyle Veri Fabrikası işlem hattı oluşturmak için tipik adımlar aşağıda verilmiştir: 
+Spark etkinliğiyle Veri Fabrikası işlem hattı oluşturmak için tipik adımlar aşağıda verilmiştir:
 
 * Veri fabrikası oluşturma.
 * HDInsight Spark kümeniz ile ilişkilendirilen depolama alanınızı Data Factory 'ye bağlamak için bir Azure depolama bağlı hizmeti oluşturun.
 * HDInsight 'ta Spark kümenizi veri fabrikasına bağlamak için bir HDInsight bağlı hizmeti oluşturun.
-* Depolama bağlı hizmetine başvuran bir veri kümesi oluşturun. Şu anda, üretilmekte olan bir çıktı olmasa bile bir etkinlik için çıkış veri kümesi belirtmeniz gerekir. 
+* Depolama bağlı hizmetine başvuran bir veri kümesi oluşturun. Şu anda, üretilmekte olan bir çıktı olmasa bile bir etkinlik için çıkış veri kümesi belirtmeniz gerekir.
 * Oluşturduğunuz HDInsight bağlı hizmetine başvuran Spark etkinliğine sahip bir işlem hattı oluşturun. Etkinlik, önceki adımda oluşturduğunuz veri kümesiyle çıkış veri kümesi olarak yapılandırılır. Çıktı veri kümesi, zamanlamayı (saatlik, günlük) değil. Bu nedenle, etkinlik gerçekten bir çıkış üretmese de çıkış veri kümesini belirtmeniz gerekir.
 
 ### <a name="prerequisites"></a>Ön koşullar
-1. [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md)bölümündeki yönergeleri izleyerek genel amaçlı bir depolama hesabı oluşturun.
+1. [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md)bölümündeki yönergeleri izleyerek genel amaçlı bir depolama hesabı oluşturun.
 
 1. HDInsight 'ta [Spark kümesi oluşturma](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)öğreticisindeki talimatları izleyerek HDInsight 'ta Spark kümesi oluşturma. Adım 1 ' de oluşturduğunuz depolama hesabını bu kümeyle ilişkilendirin.
 
@@ -90,10 +90,10 @@ Veri fabrikası oluşturmak için bu adımları izleyin:
     ![Data Factory dikey penceresi](./media/data-factory-spark/data-factory-blade.png)
 
 ### <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
-Bu adımda, iki bağlı hizmet oluşturursunuz. Bir hizmet, Spark kümenizi veri fabrikanıza bağlar ve diğer hizmet, depolama alanınızı veri fabrikasına bağlar. 
+Bu adımda, iki bağlı hizmet oluşturursunuz. Bir hizmet, Spark kümenizi veri fabrikanıza bağlar ve diğer hizmet, depolama alanınızı veri fabrikasına bağlar.
 
 #### <a name="create-a-storage-linked-service"></a>Depolama bağlı hizmeti oluşturma
-Bu adımda, depolama hesabınızı veri fabrikanıza bağlarsınız. Bu izlenecek yolda daha sonra oluşturduğunuz bir veri kümesi, bu bağlı hizmeti ifade eder. Sonraki adımda tanımladığınız HDInsight bağlı hizmeti bu bağlı hizmete de başvurur. 
+Bu adımda, depolama hesabınızı veri fabrikanıza bağlarsınız. Bu izlenecek yolda daha sonra oluşturduğunuz bir veri kümesi, bu bağlı hizmeti ifade eder. Sonraki adımda tanımladığınız HDInsight bağlı hizmeti bu bağlı hizmete de başvurur.
 
 1. **Data Factory** dikey penceresinde **Yazar ve dağıt**' ı seçin. Data Factory Düzenleyicisi görüntülenir.
 
@@ -110,7 +110,7 @@ Bu adımda, depolama hesabınızı veri fabrikanıza bağlarsınız. Bu izlenece
 1. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt** ' ı seçin. Bağlı hizmet başarıyla dağıtıldıktan sonra Draft-1 penceresi kaybolur. Soldaki ağaç görünümünde **AzureStorageLinkedService** öğesini görürsünüz.
 
 #### <a name="create-an-hdinsight-linked-service"></a>HDInsight bağlı hizmeti oluşturma
-Bu adımda, HDInsight Spark kümenizi Data Factory 'ye bağlamak için bir HDInsight bağlı hizmeti oluşturursunuz. HDInsight kümesi, bu örnekteki işlem hattının Spark etkinliğinde belirtilen Spark programını çalıştırmak için kullanılır. 
+Bu adımda, HDInsight Spark kümenizi Data Factory 'ye bağlamak için bir HDInsight bağlı hizmeti oluşturursunuz. HDInsight kümesi, bu örnekteki işlem hattının Spark etkinliğinde belirtilen Spark programını çalıştırmak için kullanılır.
 
 1. Data Factory düzenleyicisinde **daha fazla** > **Yeni işlem** > **HDInsight kümesi**seçin.
 
@@ -147,14 +147,14 @@ Bu adımda, HDInsight Spark kümenizi Data Factory 'ye bağlamak için bir HDIns
 
     HDInsight bağlı hizmeti hakkında daha fazla bilgi için bkz. [HDInsight bağlı hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
 
-1. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt** ' ı seçin. 
+1. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt** ' ı seçin.
 
 ### <a name="create-the-output-dataset"></a>Çıktı veri kümesini oluşturma
 Çıktı veri kümesi, zamanlamayı (saatlik, günlük) değil. Bu nedenle, etkinlik herhangi bir çıkış üretmese de, işlem hattındaki Spark etkinliğinin çıkış veri kümesini belirtmeniz gerekir. Etkinlik için bir giriş veri kümesi belirtilmesi isteğe bağlıdır.
 
 1. Data Factory Düzenleyicisi’nde **Diğer** > **Yeni veri kümesi** > **Azure Blob depolama**’yı seçin.
 
-1. Aşağıdaki kod parçacığını kopyalayıp Taslak-1 penceresine yapıştırın. JSON kod parçacığı, **outputdataset**adlı bir veri kümesini tanımlar. Ayrıca, sonuçların **adfspark** adlı blob kapsayıcısında ve **pyfiles/output**adlı klasörde depolandığını belirtirsiniz. Daha önce belirtildiği gibi, bu veri kümesi bir kukla veri kümesidir. Bu örnekteki Spark programı herhangi bir çıktı oluşturmaz. **Kullanılabilirlik** bölümü, çıktı veri kümesinin günlük olarak üretildiğini belirtir. 
+1. Aşağıdaki kod parçacığını kopyalayıp Taslak-1 penceresine yapıştırın. JSON kod parçacığı, **outputdataset**adlı bir veri kümesini tanımlar. Ayrıca, sonuçların **adfspark** adlı blob kapsayıcısında ve **pyfiles/output**adlı klasörde depolandığını belirtirsiniz. Daha önce belirtildiği gibi, bu veri kümesi bir kukla veri kümesidir. Bu örnekteki Spark programı herhangi bir çıktı oluşturmaz. **Kullanılabilirlik** bölümü, çıktı veri kümesinin günlük olarak üretildiğini belirtir.
 
     ```json
     {
@@ -226,7 +226,7 @@ Bu adımda, bir HDInsightSpark etkinliği ile işlem hattı oluşturacaksınız.
     > [!IMPORTANT]
     > Bir sorun gidermediğiniz takdirde bu özelliği üretim ortamında `Always` olarak ayarlamanıza önerilir.
 
-    e. **Çıktılar** bölümünde bir çıkış veri kümesi vardır. Spark programı herhangi bir çıkış üretmese bile bir çıkış veri kümesi belirtmeniz gerekir. Çıktı veri kümesi, işlem hattı için zamanlamayı (saatlik, günlük) yürütür. 
+    e. **Çıktılar** bölümünde bir çıkış veri kümesi vardır. Spark programı herhangi bir çıkış üretmese bile bir çıkış veri kümesi belirtmeniz gerekir. Çıktı veri kümesi, işlem hattı için zamanlamayı (saatlik, günlük) yürütür.
 
     Spark etkinliğinin desteklediği özellikler hakkında daha fazla bilgi için, [Spark etkinlik özellikleri](#spark-activity-properties)bölümüne bakın.
 
@@ -260,12 +260,12 @@ Bu adımda, bir HDInsightSpark etkinliği ile işlem hattı oluşturacaksınız.
 
     SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
     ```
-1. HVAC tablosundan verileri görtığınızdan emin olun. 
+1. HVAC tablosundan verileri görtığınızdan emin olun.
 
     ![Jupyıter sorgu sonuçları](media/data-factory-spark/jupyter-notebook-results.png)
 
 <!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
-Ayrıntılı yönergeler için [Spark SQL sorgusu çalıştırma](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)bölümüne bakın. 
+Ayrıntılı yönergeler için [Spark SQL sorgusu çalıştırma](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)bölümüne bakın.
 
 ### <a name="troubleshooting"></a>Sorun giderme
 GetDebugInfo 'Yu **her zaman**ayarladığınız için, blob kabınızda pyfiles klasöründe bir günlük alt klasörü görürsünüz. Günlük klasöründeki günlük dosyası ek bilgi sağlar. Bu günlük dosyası özellikle bir hata olduğunda yararlıdır. Bir üretim ortamında, bunu **hata**olarak ayarlamak isteyebilirsiniz.
@@ -288,7 +288,7 @@ Daha fazla sorun giderme için aşağıdaki adımları uygulayın:
 Aşağıdaki bölümler, Data Factory 'de Spark kümesi ve Spark etkinliğini kullanmak için Data Factory varlıkları hakkında bilgi sağlar.
 
 ## <a name="spark-activity-properties"></a>Spark etkinlik özellikleri
-İşte bir iş hattının örnek JSON tanımı, Spark etkinliğine sahiptir: 
+İşte bir iş hattının örnek JSON tanımı, Spark etkinliğine sahiptir:
 
 ```json
 {
@@ -342,7 +342,7 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 ## <a name="folder-structure"></a>Klasör yapısı
 Spark etkinliği, Pig olarak bir satır içi betiği desteklemez ve Hive etkinlikleri bunu yapmaz. Spark işleri, Pig/Hive işlerinin daha da genişletilebilir. Spark işleri için, jar paketleri (Java SıNıFYOLUNA yerleştirilmiş), Python dosyaları (PYTHONPATH üzerine yerleştirilmiş) ve diğer tüm dosyalar gibi birden çok bağımlılığı sağlayabilirsiniz.
 
-HDInsight bağlı hizmeti tarafından başvurulan blob depolamada aşağıdaki klasör yapısını oluşturun. Ardından, bağımlı dosyaları **Entryfilepath**tarafından temsil edilen kök klasördeki uygun alt klasörlere yükleyin. Örneğin, Python dosyalarını pyfiles alt klasörüne ve jar dosyalarını kök klasörün jar dosyaları dışındaki alt klasörüne yükleyin. Çalışma zamanında, Data Factory hizmeti blob depolamada aşağıdaki klasör yapısını bekler: 
+HDInsight bağlı hizmeti tarafından başvurulan blob depolamada aşağıdaki klasör yapısını oluşturun. Ardından, bağımlı dosyaları **Entryfilepath**tarafından temsil edilen kök klasördeki uygun alt klasörlere yükleyin. Örneğin, Python dosyalarını pyfiles alt klasörüne ve jar dosyalarını kök klasörün jar dosyaları dışındaki alt klasörüne yükleyin. Çalışma zamanında, Data Factory hizmeti blob depolamada aşağıdaki klasör yapısını bekler:
 
 | Yol | Açıklama | Gereklidir | Tür |
 | ---- | ----------- | -------- | ---- |

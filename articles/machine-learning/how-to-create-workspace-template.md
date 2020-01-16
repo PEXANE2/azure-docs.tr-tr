@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 275eb545b431085627658eb5d8ac0a065d0cb00e
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6cd450ac18007e31d9d8144fdb0e8554dd31c363
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867025"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968654"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -92,7 +92,7 @@ new-azresourcegroupdeployment -name exampledeployment `
   -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
 ```
 
-Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ile kaynak dağıtma ve Azure POWERSHELL](../azure-resource-manager/resource-group-template-deploy.md) [SAS belirteci ve Azure PowerShell ile özel kaynak yöneticisi şablonu dağıtma](../azure-resource-manager/secure-template-with-sas-token.md).
+Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ile kaynak dağıtma ve Azure POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md) [SAS belirteci ve Azure PowerShell ile özel kaynak yöneticisi şablonu dağıtma](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
 ## <a name="use-azure-cli"></a>Azure CLI kullanma
 
@@ -107,7 +107,7 @@ az group deployment create \
   --parameters workspaceName=exampleworkspace location=eastus sku=basic
 ```
 
-Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynakları dağıtma](../azure-resource-manager/resource-group-template-deploy-cli.md) ve [SAS BELIRTECI ve Azure clı ile özel kaynak yöneticisi şablonu dağıtma](../azure-resource-manager/secure-template-with-sas-token.md).
+Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynakları dağıtma](../azure-resource-manager/templates/deploy-cli.md) ve [SAS BELIRTECI ve Azure clı ile özel kaynak yöneticisi şablonu dağıtma](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -124,7 +124,7 @@ Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile ka
 Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
 
 * Aynı parametreler için şablonu birden çok kez dağıtmayın. Ya da yeniden oluşturmak için şablonu kullanmadan önce mevcut kaynakları silin.
-  
+
 * Key Vault erişim ilkelerini inceleyin ve sonra şablonun `accessPolicies` özelliğini ayarlamak için bu ilkeleri kullanın. Erişim ilkelerini görüntülemek için aşağıdaki Azure CLı komutunu kullanın:
 
     ```azurecli-interactive
@@ -165,7 +165,7 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
           }
         },
         ```
-    
+
     * `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` satırını, çalışma alanının `dependsOn` bölümünden **kaldırın** . Ayrıca, `keyVaultId` parametresine başvurmak için çalışma alanının `properties` bölümündeki `keyVault` girişini de **değiştirin** :
 
         ```json
@@ -193,7 +193,7 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
           }
         }
         ```
-      
+
     Bu değişikliklerden sonra, şablonu çalıştırırken mevcut Key Vault kaynağının KIMLIĞINI belirtebilirsiniz. Şablon, çalışma alanının `keyVault` özelliğini KIMLIĞINE ayarlayarak Key Vault yeniden kullanır.
 
     Key Vault KIMLIĞINI almak için özgün şablon çalıştırmasının çıkışına başvurabilirsiniz veya Azure CLı 'yi kullanabilirsiniz. Aşağıdaki komut, Key Vault kaynak KIMLIĞINI almak için Azure CLı kullanma örneğidir:
@@ -210,5 +210,5 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kaynak Yöneticisi şablonları ve Kaynak Yöneticisi REST API ile kaynakları dağıtın](../azure-resource-manager/resource-group-template-deploy-rest.md).
-* [Visual Studio aracılığıyla Azure Kaynak grupları oluşturma ve dağıtma](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+* [Kaynak Yöneticisi şablonları ve Kaynak Yöneticisi REST API ile kaynakları dağıtın](../azure-resource-manager/templates/deploy-rest.md).
+* [Visual Studio aracılığıyla Azure Kaynak grupları oluşturma ve dağıtma](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

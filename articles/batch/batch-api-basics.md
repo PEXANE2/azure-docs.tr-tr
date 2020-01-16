@@ -3,7 +3,7 @@ title: Geliştiricilere genel bakış-Azure Batch | Microsoft Docs
 description: Batch hizmeti özelliklerini ve API’lerini geliştirme açısından öğrenin.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 08/29/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 364861e57f37192a3ae454e27fedf732ee8d513e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 6ea5ce71622e98b60d68c1680382dc63c767999d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350174"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029764"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch içe büyük ölçekli paralel işlem çözümleri geliştirme
 
@@ -77,7 +77,7 @@ Tek bir Batch hesabında birden fazla Batch iş yükü çalıştırabilir ya da 
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-## <a name="azure-storage-account"></a>Azure Storage hesabı
+## <a name="azure-storage-account"></a>Azure Storage hesabınız
 
 Batch çözümlerinin çoğu, kaynak dosyalarını ve çıkış dosyalarını depolamak için Azure Depolama kullanır. Örneğin, Batch görevleriniz (standart görevler, başlangıç görevleri, iş hazırlama görevleri ve iş bırakma görevleri dahil) genellikle depolama hesabında yer alan kaynak dosyalarını belirtir.
 
@@ -87,15 +87,15 @@ Batch, aşağıdaki Azure Depolama hesap türlerini destekler:
 * Genel amaçlı v1 (GPv1) hesapları
 * Blob depolama hesapları (şu anda Sanal Makine yapılandırmasındaki havuzlar için desteklenmektedir)
 
-Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../storage/common/storage-account-overview.md).
+Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure Depolama hesabına genel bakış](../storage/common/storage-account-overview.md).
 
-Batch hesabını oluşturduğunuzda veya daha sonra Batch hesabınızla bir depolama hesabını ilişkilendirebilirsiniz. Bir depolama hesabı seçerken, maliyet ve performans gereksinimlerinizi göz önünde bulundurun. Örneğin, GPv2 ve blob depolama hesabı seçenekleri, GPv1’e kıyasla daha büyük [kapasite ve ölçeklenebilirlik sınırlarını](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) destekler. (Depolama sınırında artış istemek için Azure Desteğine başvurun.) Bu hesap seçenekleri, depolama hesabından okuma veya depolama hesabına yazma işlemi gerçekleştiren çok sayıda paralel görev içeren Batch çözümlerinin performansını artırabilir.
+Batch hesabını oluşturduğunuzda veya daha sonra Batch hesabınızla bir depolama hesabını ilişkilendirebilirsiniz. Bir depolama hesabı seçerken, maliyet ve performans gereksinimlerinizi göz önünde bulundurun. Örneğin, GPv2 ve blob depolama hesabı seçenekleri, GPv1’e kıyasla daha büyük [kapasite ve ölçeklenebilirlik sınırlarını](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) destekler. (Depolama limitinin artışını istemek için Azure desteğine başvurun.) Bu hesap seçenekleri, depolama hesabından okuyan veya depolama hesabından yazan çok sayıda paralel görev içeren Batch çözümlerinin performansını iyileştirebilir.
 
 ## <a name="compute-node"></a>İşlem düğümü
 
 İşlem düğümü, uygulama iş yükünüzün bir kısmını işlemeye ayrılmış bir Azure sanal makinesi (VM) veya bulut hizmeti sanal makinesidir. Bir düğümün boyutu CPU çekirdeklerinin sayısını, bellek kapasitesini ve düğüme ayrılan yerel dosya sistemi boyutunu belirler. Azure Cloud Services, [Azure sanal makineler marketi][vm_marketplace]'ndeki görüntüleri veya hazırladığınız özel görüntüleri kullanarak Windows veya Linux düğümleri için havuzlar oluşturabilirsiniz. Bu seçenekler hakkında daha fazla bilgi için aşağıdaki [Havuz](#pool) bölümüne bakın.
 
-Düğümler, düğümün işletim sistemi ortamı tarafından desteklenen herhangi bir yürütülebilir dosyayı ya da komut dosyasını çalıştırabilir. Yürütülebilir dosyalar veya betikler \*; Windows için \*. exe, \*. cmd,. bat ve PowerShell betikleri ve Linux için ikili dosyalar, Shell ve Python betikleri içerir.
+Düğümler, düğümün işletim sistemi ortamı tarafından desteklenen herhangi bir yürütülebilir dosyayı ya da komut dosyasını çalıştırabilir. Yürütülebilir dosyalar veya betikler \*. exe, \*. cmd, \*. bat, Windows için PowerShell betikleri ve Linux için ikili dosyalar, Shell ve Python betikleri içerir.
 
 Batch içindeki tüm işlem düğümleri ayrıca şunları içerir:
 
@@ -287,7 +287,7 @@ Başlangıç görevinin birincil avantajı, bir işlem düğümünü yapılandı
 
 Herhangi bir Azure Batch görevinde olduğu gibi, [Azure Storage][azure_storage]'da **kaynak dosyalarının** bir listesini de yürütülecek bir **komut satırına** belirtebilirsiniz. Batch hizmeti ilk olarak kaynak dosyaları düğümden Azure Depolama’ya kopyalar ve ardından komut satırını çalıştırır. Bir havuz başlangıç görevinde dosya listesi genellikle görev uygulamasını ve onun bağımlılıklarını içerir.
 
-Ancak başlangıç görevi, işlem düğümü üzerinde çalışan tüm görevler tarafından kullanılacak başvuru verilerini de içerebilir. Örneğin, bir başlangıç görevinin komut satırı, uygulama dosyalarını (kaynak dosya olarak belirtilir ve düğüme indirilir) başlangıç görevinin [çalışma dizininden](#files-and-directories) [paylaşılan klasöre](#files-and-directories) kopyalamak üzere bir `robocopy` işlemi gerçekleştirebilir ve ardından bir MSI ya da `setup.exe` çalıştırabilir.
+Ancak başlangıç görevi, işlem düğümü üzerinde çalışan tüm görevler tarafından kullanılacak başvuru verilerini de içerebilir. Örneğin, bir başlangıç görevinin komut satırı, uygulama dosyalarını (kaynak dosya olarak belirtilir ve düğüme indirilir) başlangıç görevinin [çalışma dizininden](#files-and-directories)[paylaşılan klasöre](#files-and-directories) kopyalamak üzere bir `robocopy` işlemi gerçekleştirebilir ve ardından bir MSI ya da `setup.exe` çalıştırabilir.
 
 Bu, düğümün görevlere atanmak üzere hazır olduğunu düşünmeden önce başlangıç görevinin tamamlanmasını beklemek amacıyla Batch hizmeti için genelde istenen bir durumdur, ancak bunu yapılandırabilirsiniz.
 
@@ -323,7 +323,7 @@ Bir iş yöneticisi görevi diğer tüm görevlerden önce başlatılır. Aşağ
 Batch, iş öncesi yürütme kurulumu için iş hazırlama görevleri sağlar. İş bırakma görevleri iş sonrası bakım ve temizlemeye yöneliktir.
 
 * **İş hazırlama görevi**: İş hazırlama görevi, diğer iş görevlerinden herhangi biri yürütülmeden önce, görevleri çalıştırmak için zamanlanan tüm işlem düğümlerinde çalışır. Örneğin, tüm görevler tarafından paylaşılan ancak işe özel olan verileri kopyalamak için iş hazırlama görevini kullanabilirsiniz.
-* **İş bırakma görevi**: Bir iş tamamlandığında, havuzda en az bir görevi yürüten her düğüm üzerinde bir iş bırakma görevi çalışır. Örneğin, iş hazırlama görevi tarafından kopyalanan verileri silmek ya da tanılama günlük verilerini sıkıştırmak veya karşıya yüklemek için iş bırakma görevini kullanabilirsiniz.
+* **İş bırakma görevi**: Bir iş tamamlandığında iş bırakma görevi, havuzun en az bir görev yürütmüş her düğümünde çalıştırılır. Örneğin, iş hazırlama görevi tarafından kopyalanan verileri silmek ya da tanılama günlük verilerini sıkıştırmak veya karşıya yüklemek için iş bırakma görevini kullanabilirsiniz.
 
 Hem iş hazırlama hem de bırakma görevleri, görev çağrıldığında çalıştırılacak bir komut satırı belirtmenize imkan tanır. Bunlar dosya indirme, yükseltilmiş yürütme, özel ortam değişkenleri, en uzun yürütme süresi, yeniden deneme sayısı ve dosyayı elde tutma süresi gibi özellikler sağlar.
 
@@ -353,7 +353,7 @@ Batch hizmeti tarafından yürütülen her görevin, işlem düğümleri üzerin
 
 Bu varlıkların *ortam ayarları* özelliğini doldurarak görev ya da iş düzeyinde özel ortam değişkenleri ayarlayabilirsiniz. Örneğin, Batch .NET içindeki [bir iş işlemine görev ekleme][rest_add_task] (Batch REST API) veya [Cloudtask. EnvironmentSettings][net_cloudtask_env] ve [Cloudjob. commonenvironmentsettings][net_job_env] özelliklerine bakın.
 
-İstemci uygulamanız veya hizmetiniz [bir görevin ortam][rest_get_task_info] değişkenlerini (toplu REST) veya [Cloudtask. EnvironmentSettings][net_cloudtask_env] özelliğine erişerek bir görevin hem hizmet tanımlı hem de özel olarak elde edebilir ( Batch .NET). Bir işlem düğümünde yürütülen işlemler bu ve düğümdeki diğer ortam değişkenlerine erişebilir, örneğin bilinen bir `%VARIABLE_NAME%` (Windows) veya `$VARIABLE_NAME` (Linux) söz dizimini kullanarak.
+İstemci uygulamanız veya hizmetiniz [bir görevin ortam][rest_get_task_info] değişkenlerini (toplu REST) veya [Cloudtask. EnvironmentSettings][net_cloudtask_env] özelliğine (Batch .net) erişerek, hem hizmet tanımlı hem de özel olarak elde edebilir. Bir işlem düğümünde yürütülen işlemler bu ve düğümdeki diğer ortam değişkenlerine erişebilir, örneğin bilinen bir `%VARIABLE_NAME%` (Windows) veya `$VARIABLE_NAME` (Linux) söz dizimini kullanarak.
 
 [İşlem düğümü ortam değişkenlerinde][msdn_env_vars], hizmet tarafından tanımlanan tüm ortam değişkenlerinin tam listesini bulabilirsiniz.
 
@@ -367,23 +367,23 @@ Kök dizin aşağıdaki dizin yapısını içerir:
 
 ![İşlem düğümü dizin yapısı][1]
 
-* **uygulamalar**: İşlem düğümünde yüklü olan uygulama paketlerinin ayrıntıları hakkındaki bilgileri içerir. Görevler `AZ_BATCH_APP_PACKAGE` ortam değişkenine başvurarak bu dizine erişebilir.
+* **uygulamalar**: işlem düğümünde yüklü olan uygulama paketlerinin ayrıntıları hakkında bilgiler içerir. Görevler `AZ_BATCH_APP_PACKAGE` ortam değişkenine başvurarak bu dizine erişebilir.
 
 * **fstakal**: Dizin, bir işlem düğümüne bağlı herhangi bir dosya sistemini içerir. Görevler `AZ_BATCH_NODE_MOUNTS_DIR` ortam değişkenine başvurarak bu dizine erişebilir. Daha fazla bilgi için bkz. bir [Batch havuzunda sanal dosya sistemi bağlama](virtual-file-mount.md).
 
-* **paylaşılan**: Bu dizin, bir düğümde çalışan *Tüm* görevlere okuma/yazma erişimi sağlar. Düğüm üzerinde çalışan herhangi bir görev bu dizinde dosya oluşturabilir, okuyabilir, güncelleştirebilir ve silebilir. Görevler `AZ_BATCH_NODE_SHARED_DIR` ortam değişkenine başvurarak bu dizine erişebilir.
+* **paylaşılan**: Bu dizin, düğüm üzerinde çalışan *tüm* görevler için okuma/yazma erişimi sağlar. Düğüm üzerinde çalışan herhangi bir görev bu dizinde dosya oluşturabilir, okuyabilir, güncelleştirebilir ve silebilir. Görevler `AZ_BATCH_NODE_SHARED_DIR` ortam değişkenine başvurarak bu dizine erişebilir.
 
-* **Başlangıç**: Bu dizin, bir başlangıç görevi tarafından çalışma dizini olarak kullanılır. Başlangıç görevi tarafından düğüme indirilen tüm dosyalar buraya depolanır. Başlangıç görevleri bu dizin altında dosya oluşturabilir, okuyabilir, güncelleştirebilir ve silebilir. Görevler `AZ_BATCH_NODE_STARTUP_DIR` ortam değişkenine başvurarak bu dizine erişebilir.
+* **başlangıç**: Bu dizin, bir başlangıç görevi tarafından çalışma dizini olarak kullanılır. Başlangıç görevi tarafından düğüme indirilen tüm dosyalar buraya depolanır. Başlangıç görevleri bu dizin altında dosya oluşturabilir, okuyabilir, güncelleştirebilir ve silebilir. Görevler `AZ_BATCH_NODE_STARTUP_DIR` ortam değişkenine başvurarak bu dizine erişebilir.
 
 * **geçici**: Bu dizin iç amaçlar içindir. Bu dizindeki dosyaların veya dizinin kendisinin gelecekte mevcut olacağı garanti yoktur.
 
 * **WORKITEMS**: Bu dizin, işlem düğümündeki işlerin ve görevlerinin dizinlerini içerir.
 
-* **Görevler**: **Workitems** dizininde, düğüm üzerinde çalışan her görev için bir dizin oluşturulur. `AZ_BATCH_TASK_DIR` Ortam değişkenine başvurarak erişilir.
+* **Görevler**: **workitems** dizininde, düğüm üzerinde çalışan her görev için bir dizin oluşturulur. `AZ_BATCH_TASK_DIR` ortam değişkenine başvurarak erişilir.
 
     Her bir görev dizininde Batch hizmeti, bir çalışma dizini (`wd`) oluşturur. Dizinin benzersiz yolu `AZ_BATCH_TASK_WORKING_DIR` ortam değişkeni tarafından belirtilir. Bu dizin göreve okuma/yazma erişimi sağlar. Görev bu dizin altında dosya oluşturabilir, okuyabilir, güncelleştirebilir ve silebilir. Bu dizin, görev için belirtilen *RetentionTime* kısıtlamasına göre tutulur.
 
-    `stdout.txt`ve `stderr.txt`: Bu dosyalar, görevin yürütülmesi sırasında görev klasörüne yazılır.
+    `stdout.txt` ve `stderr.txt`: Bu dosyalar görevin yürütülmesi sırasında görev klasörüne yazılır.
 
 > [!IMPORTANT]
 > Bir düğüm havuzdan kaldırıldığında düğümde depolanan dosyaların *tümü* kaldırılır.
@@ -509,7 +509,7 @@ Bir görevin yanıt vermemesine veya yürütülmesi çok uzun sürmesine neden o
 Bir işlem düğümünde uzaktan oturum açarak ek hata ayıklama ve sorun giderme işlemlerini gerçekleştirebilirsiniz. Windows düğümleri için bir Uzak Masaüstü Protokolü (RDP) dosyası indirmek ve Linux düğümleri için Güvenli Kabuk (SSH) bağlantı bilgilerini elde etmek üzere Azure portalını kullanabilirsiniz. Bu Işlemi Batch API 'Lerini kullanarak da yapabilirsiniz; Örneğin, [Batch .net][net_rdpfile] veya [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh)ile.
 
 > [!IMPORTANT]
-> RDP veya SSH aracılığıyla bir düğüme bağlanmak için düğümde bir kullanıcı oluşturmanız gerekir. Bunu yapmak için Azure portal kullanabilir, Batch REST API kullanarak [bir düğüme bir kullanıcı hesabı ekleyebilir][rest_create_user] , Batch .NET içinde [ComputeNode. CreateComputeNodeUser][net_create_user] metodunu çağırabilir veya Batch Python modülünde [add_user][py_add_user] metodunu çağırabilirsiniz.
+> RDP veya SSH aracılığıyla bir düğüme bağlanmak için düğümde bir kullanıcı oluşturmanız gerekir. Bunu yapmak için Azure portal kullanabilir, Batch REST API kullanarak [bir düğüme bir kullanıcı hesabı ekleyebilir][rest_create_user] , Batch .net 'te [ComputeNode. CreateComputeNodeUser][net_create_user] metodunu çağırabilir veya Batch Python modülündeki [add_user][py_add_user] yöntemini çağırabilirsiniz.
 >
 >
 
@@ -533,7 +533,7 @@ Bazı görevlerinizin başarısız olduğu durumlarda, Batch istemci uygulamanı
     Bu, başka görev atanmayacak şekilde düğümü çevrimdışı durumuna alır, ancak düğümün çalışır durumda ve havuzda kalmasına izin verir. Bu, başarısız olan görevin verilerini kaybetmeden ve düğüm, başka görev hatalarına neden olmadan hatalara ilişkin ayrıntılı araştırma gerçekleştirmenizi sağlar. Örneğin düğümde görev zamanlamayı devre dışı bırakabilir, sonra düğümün olay günlüklerini incelemek üzere [uzaktan oturum açabilir](#connecting-to-compute-nodes) ya da başka sorun giderme işlemleri uygulayabilirsiniz. Araştırmanızı bitirdikten sonra görev zamanlamayı ([REST][rest_online] | [.net][net_online]) etkinleştirerek düğümü yeniden çevrimiçi duruma getirebilir veya daha önce ele alınan diğer eylemlerden birini gerçekleştirebilirsiniz.
 
 > [!IMPORTANT]
-> Bu bölümde açıklanan her bir eylemde (yeniden başlatma, yeniden görüntü oluşturma, görev zamanlamayı kaldırma ve devre dışı bırakma), eylemi gerçekleştirdiğinizde düğümde çalışmakta olan görevlerin nasıl işleneceğini belirtebilirsiniz. Örneğin, Batch .NET istemci kitaplığını kullanarak bir düğümde görev zamanlamayı devre dışı bıraktığınızda, çalışan görevlerin **sonlanıp sonlandırılmayacağını** belirtmek Için bir [DisableComputeNodeSchedulingOption][net_offline_option] Enum değeri belirtebilirsiniz. diğer düğümlerde zamanlama yapın veya eylemi gerçekleştirmeden önce çalıştırma görevlerinin tamamlanmasına izin verin (**Taskcompletion**).
+> Bu bölümde açıklanan her bir eylemde (yeniden başlatma, yeniden görüntü oluşturma, görev zamanlamayı kaldırma ve devre dışı bırakma), eylemi gerçekleştirdiğinizde düğümde çalışmakta olan görevlerin nasıl işleneceğini belirtebilirsiniz. Örneğin, Batch .NET istemci kitaplığını kullanarak bir düğümde görev zamanlamayı devre dışı bıraktığınızda, çalışan görevleri **sonlandırmayı** , diğer düğümlerde zamanlamaya göre mi **yeniden kuyruğa alma** yoksa eylemi gerçekleştirmeden önce çalışan görevlerin tamamlanmasına Izin vermeyi (**Taskcompletion**) belirtmek için bir [DisableComputeNodeSchedulingOption][net_offline_option] Enum değeri belirtebilirsiniz.
 >
 >
 

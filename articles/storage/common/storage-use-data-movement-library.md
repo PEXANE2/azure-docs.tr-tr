@@ -10,14 +10,14 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 22dae518a45d5c4af20044d5f3eb88e764e92c8b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895124"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978386"
 ---
-# <a name="transfer-data-with-the-data-movement-library"></a>Veri taşıma kitaplığıyla veri aktarma
+# <a name="transfer-data-with-the-data-movement-library"></a>Veri Taşıma kitaplığıyla veri aktarma
 
 Azure depolama veri taşıma kitaplığı, Blobları ve dosyaları karşıya yüklemek, indirmek ve kopyalamak için tasarlanan platformlar arası açık kaynaklı bir kitaplıktır. Bu kitaplık [AzCopy](../storage-use-azcopy.md)'i destekleyen temel veri taşıma çerçevesidir. Veri taşıma kitaplığı, .NET için Azure Storage istemci kitaplığı 'nda kullanılamayan kullanışlı yöntemler sunar. Bu yöntemler paralel işlemlerin sayısını ayarlamanıza, aktarım ilerlemesini izlemenize, iptal edilen bir aktarımı kolayca sürdürmeye ve çok daha fazlasına olanak sağlar.
 
@@ -32,10 +32,10 @@ Bu belgede, Windows, Linux ve macOS 'ta çalışan bir .NET Core konsol uygulama
 - Dosyayı URL 'den blob depolamaya kopyalayın.
 - Blob depolamadan blob depolamaya kopyalama.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio Code](https://code.visualstudio.com/)
-- Bir [Azure Storage hesabı](storage-quickstart-create-account.md)
+- Bir [Azure Storage hesabı](storage-account-create.md)
 
 ## <a name="setup"></a>Kurulum
 

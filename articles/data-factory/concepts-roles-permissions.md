@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 00d84a7f3b4a15c9278caac8c2715380dd330482
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d143992317c77c6fc3137527bea485a98c046daa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930491"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969215"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory roller ve izinler
 
@@ -29,7 +29,7 @@ Data Factory için veri kümeleri, bağlı hizmetler, işlem hatları, tetikleyi
 - Azure portalda alt öğe oluşturup yönetebilmek için kaynak grubu düzeyinde **Data Factory Katılımcısı** rolüne veya daha üst düzey bir role sahip olmanız gerekir.
 - PowerShell veya SDK ile alt öğe oluşturup yönetebilmek için kaynak düzeyinde **katkıda bulunan** rolü veya daha üst düzey bir rol yeterli olacaktır.
 
-Kullanıcı rolü eklemeye ilişkin örnek yönergeler için [Rol ekleme](../billing/billing-add-change-azure-subscription-administrator.md) makalesine bakın.
+Kullanıcı rolü eklemeye ilişkin örnek yönergeler için [Rol ekleme](../cost-management-billing/manage/add-change-subscription-administrator.md) makalesine bakın.
 
 ## <a name="set-up-permissions"></a>İzinleri ayarla
 
@@ -56,7 +56,7 @@ Azure Repos ve GitHub üzerindeki izinler Data Factory izinlerinden bağımsızd
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Özel senaryolar ve özel roller
 
-Bazen farklı veri fabrikası kullanıcıları için farklı erişim düzeyleri vermeniz gerekebilir. Örnek:
+Bazen farklı veri fabrikası kullanıcıları için farklı erişim düzeyleri vermeniz gerekebilir. Örneğin:
 - Kullanıcıların yalnızca belirli bir veri fabrikası üzerinde izinlere sahip olduğu bir gruba ihtiyacınız olabilir.
 - Veya kullanıcıların yalnızca bir veri fabrikasını (veya fabrikaları) izleyebileceği ancak değiştiremeyeceğiniz bir gruba ihtiyacınız olabilir.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: f5e0344cb1da86661ae87b5e45bd93dd181e7bb0
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659568"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978770"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure sözlüğü: Azure platformunda bulut terminolojisi sözlüğü
 
@@ -31,7 +31,7 @@ Microsoft Azure sözlüğü, Azure platformunun bulut terminolojisi için kısa 
 
 ## <a name="account"></a>account
 Bir Azure aboneliğine erişmek ve bunları yönetmek için kullanılan bir hesap. Genellikle bir hesap şu şekilde olabilir: mevcut bir iş, okul veya kişisel Microsoft hesabı ya da Office 365 Kullanıcı adı ve parolası. [Ücretsiz denemeye](https://azure.microsoft.com)kaydolduğunuzda bir Azure aboneliğini yönetmek için de bir hesap oluşturabilirsiniz.  
-[Oturum açmak için kullanabileceğiniz](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) [Office 365 hesabınız ve hesaplarınız ile bir Azure aboneliğine kaydolma](billing/billing-use-existing-office-365-account-azure-subscription.md) konusuna bakın.
+[Oturum açmak için kullanabileceğiniz](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) [Office 365 hesabınız ve hesaplarınız ile bir Azure aboneliğine kaydolma](cost-management-billing/manage/office-365-account-for-azure-subscription.md) konusuna bakın.
 
 ## <a name="api-app"></a>API uygulaması
 [App Service uygulama](#app-service-app)için başka bir ad.
@@ -96,11 +96,11 @@ Bkz. [Azure bölgeleri](best-practices-availability-paired-regions.md)
 
 ## <a name="resource"></a>resource
 Azure çözümünüzün bir parçası olan bir öğe. Her Azure hizmeti, veritabanları veya sanal makineler gibi farklı türlerde kaynakları dağıtmanıza olanak sağlar.   
-Bkz. [Azure Resource Manager genel bakış](azure-resource-manager/resource-group-overview.md)
+Bkz. [Azure Resource Manager genel bakış](azure-resource-manager/management/overview.md)
 
 ## <a name="resource-group"></a>kaynak grubu
 Bir uygulama için ilgili kaynakları tutan Kaynak Yöneticisi bir kapsayıcı. Kaynak grubu bir uygulamanın tüm kaynaklarını veya yalnızca mantıksal olarak birlikte gruplanmış kaynakları içerebilir. Kuruluş için önemli olan faktörleri temel alarak kaynakları kaynak gruplarına nasıl ayıracağınızı belirleyebilirsiniz.  
-Bkz. [Azure Resource Manager genel bakış](azure-resource-manager/resource-group-overview.md)
+Bkz. [Azure Resource Manager genel bakış](azure-resource-manager/management/overview.md)
 
 ## <a name="arm-template"></a>Resource Manager şablonu
 Bir veya daha fazla Azure kaynağını bildirimli olarak tanımlayan ve dağıtılan kaynaklar arasındaki bağımlılıkları tanımlayan bir JSON dosyası. Şablon, kaynakları tutarlı ve sürekli olarak dağıtmak için kullanılabilir.  
@@ -108,7 +108,7 @@ Bkz. [yazma Azure Resource Manager şablonları](resource-group-authoring-templa
 
 ## <a name="resource-provider"></a>kaynak sağlayıcısı
 Kaynak Yöneticisi aracılığıyla dağıtabileceğiniz ve yönetebileceğiniz kaynakları sağlayan bir hizmet. Her kaynak sağlayıcısı dağıtılan kaynaklarla çalışmaya yönelik işlemler sunar. Kaynak sağlayıcılarına Azure portal, Azure PowerShell ve birkaç programlama SDK 'Ları aracılığıyla erişilebilir.  
-Bkz. [Azure Resource Manager genel bakış](azure-resource-manager/resource-group-overview.md)
+Bkz. [Azure Resource Manager genel bakış](azure-resource-manager/management/overview.md)
 
 ## <a name="role"></a>role
 Kullanıcılara, gruplara ve hizmetlere atanabilen erişimi denetlemek için bir yol. Roller, Azure kaynakları üzerinde oluşturma, yönetme ve okuma gibi eylemleri gerçekleştirebilir.  

@@ -8,26 +8,26 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 517b9768c1df928012c34a4dcdd2dfa6b0c94d0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401593"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977688"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure 'da bir yönetim çözümü dosyası oluşturma (Önizleme)
 > [!NOTE]
 > Bu, şu anda önizleme aşamasında olan Azure 'da yönetim çözümleri oluşturmaya yönelik bir belgedir. Aşağıda açıklanan tüm şemalarla değişiklik yapılır.  
 
-Azure 'daki yönetim çözümleri [Kaynak Yöneticisi şablonlar](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)olarak uygulanır.  Yönetim çözümlerinin nasıl yazıldığını öğrenirken ana görev, [bir şablonu](../../azure-resource-manager/templates/template-syntax.md)nasıl yazacağınızı öğreniyor.  Bu makalede, çözümler için kullanılan şablonların ve tipik çözüm kaynaklarının nasıl yapılandırılacağı hakkında benzersiz ayrıntılar verilmektedir.
+Azure 'daki yönetim çözümleri [Kaynak Yöneticisi şablonlar](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)olarak uygulanır.  Yönetim çözümlerinin nasıl yazıldığını öğrenirken ana görev, [bir şablonu](../../azure-resource-manager/templates/template-syntax.md)nasıl yazacağınızı öğreniyor.  Bu makalede, çözümler için kullanılan şablonların ve tipik çözüm kaynaklarının nasıl yapılandırılacağı hakkında benzersiz ayrıntılar verilmektedir.
 
 
 ## <a name="tools"></a>Araçlar
 
 Çözüm dosyaları ile çalışmak için herhangi bir metin düzenleyicisini kullanabilirsiniz, ancak Visual Studio 'da belirtilen özelliklerden veya Visual Studio Code aşağıdaki makalelerde açıklandığı gibi önerilir.
 
-- [Visual Studio aracılığıyla Azure Kaynak grupları oluşturma ve dağıtma](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [Visual Studio Code Azure Resource Manager şablonlarıyla çalışma](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Visual Studio aracılığıyla Azure Kaynak grupları oluşturma ve dağıtma](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)
+- [Visual Studio Code Azure Resource Manager şablonlarıyla çalışma](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 
 
 
@@ -159,7 +159,7 @@ Bu durumda, sözdizimi **değişkenleri (' değişken adı '). özelliği**ile �
 
 
 ### <a name="dependencies"></a>Bağımlılıklar
-**Bağımlıdson** öğesi, başka bir kaynağa [bağımlılığı](../../azure-resource-manager/resource-group-define-dependencies.md) belirtir.  Çözüm yüklendiğinde, tüm bağımlılıkları oluşturuluncaya kadar bir kaynak oluşturulmaz.  Örneğin, çözümünüz bir [iş kaynağı](solutions-resources-automation.md#automation-jobs)kullanılarak yüklendiğinde [bir runbook başlatabilir](solutions-resources-automation.md#runbooks) .  İş kaynağı, runbook 'un iş oluşturulmadan önce oluşturulduğundan emin olmak için Runbook kaynağına bağımlıdır.
+**Bağımlıdson** öğesi, başka bir kaynağa [bağımlılığı](../../azure-resource-manager/templates/define-resource-dependency.md) belirtir.  Çözüm yüklendiğinde, tüm bağımlılıkları oluşturuluncaya kadar bir kaynak oluşturulmaz.  Örneğin, çözümünüz bir [iş kaynağı](solutions-resources-automation.md#automation-jobs)kullanılarak yüklendiğinde [bir runbook başlatabilir](solutions-resources-automation.md#runbooks) .  İş kaynağı, runbook 'un iş oluşturulmadan önce oluşturulduğundan emin olmak için Runbook kaynağına bağımlıdır.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics çalışma alanı ve Otomasyon hesabı
 Yönetim çözümleri, runbook 'ları ve ilgili kaynakları içeren görünümler ve bir [Otomasyon hesabı](../../automation/automation-security-overview.md#automation-account-overview) içermesi için bir [Log Analytics çalışma alanı](../../azure-monitor/platform/manage-access.md) gerektirir.  Bunlar, çözümdeki kaynaklar oluşturulmadan önce kullanılabilir olmalıdır ve çözümün kendisinde tanımlanmamalıdır.  Kullanıcı çözümünüzü dağıtırken [bir çalışma alanı ve hesap belirtir](solutions.md#log-analytics-workspace-and-automation-account) , ancak yazar olarak aşağıdaki noktaları dikkate almalısınız.
@@ -200,7 +200,7 @@ Her çözüm, çözümün kendisini tanımlayan **Resources** öğesinde bir kay
 
 
 ### <a name="dependencies"></a>Bağımlılıklar
-Çözüm oluşturulmadan önce mevcut olmaları gerektiğinden çözüm kaynağının çözümdeki her bir kaynağa [bağımlılığı](../../azure-resource-manager/resource-group-define-dependencies.md) olmalıdır.  Bunu, **Bağımlıdson** öğesindeki her kaynak için bir giriş ekleyerek yapabilirsiniz.
+Çözüm oluşturulmadan önce mevcut olmaları gerektiğinden çözüm kaynağının çözümdeki her bir kaynağa [bağımlılığı](../../azure-resource-manager/templates/define-resource-dependency.md) olmalıdır.  Bunu, **Bağımlıdson** öğesindeki her kaynak için bir giriş ekleyerek yapabilirsiniz.
 
 ### <a name="properties"></a>Özellikler
 Çözüm kaynağı aşağıdaki tablodaki özelliklere sahiptir.  Bu, başvurulan kaynakları içerir ve çözüm yüklendikten sonra kaynağın nasıl yönetildiğini tanımlayan çözüm tarafından içerilir.  Çözümdeki her bir kaynağın **Referencedresources** veya **containedresources** özelliğinde listelenmesi gerekir.

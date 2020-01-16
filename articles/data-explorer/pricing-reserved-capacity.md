@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: c728f3b9a4c10d52d7361ca76e9b40198a6a0dba
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: bbb2108967353b851a0fa0ee610ec30380e3fc50
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769107"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969279"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Azure Veri Gezgini ayrılmış kapasitesi ile Azure Veri Gezgini işaretleme birimleri için ön ödeme
 
@@ -27,8 +27,8 @@ Azure Veri Gezgini ayrılmış kapasitesini [Azure Portal](https://portal.azure.
 * Bulut çözümü sağlayıcısı (CSP) programı için, yalnızca yönetici aracıları veya satış aracıları Azure Veri Gezgini ayrılmış kapasitesi satın alabilir.
 
 Kurumsal müşterilerin ve kullandıkça öde müşterilerinin rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkında daha fazla bilgi için bkz.:
-* [Kurumsal kaydınız için Azure ayırma kullanımını anlayın](../billing/billing-understand-reserved-instance-usage-ea.md) 
-* [Kullandıkça Öde aboneliğiniz Için Azure rezervasyon kullanımını anlayın](../billing/billing-understand-reserved-instance-usage.md).
+* [Kurumsal kaydınız için Azure ayırma kullanımını anlayın](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 
+* [Kullandıkça Öde aboneliğiniz Için Azure rezervasyon kullanımını anlayın](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
 ## <a name="determine-the-right-markup-usage-before-purchase"></a>Satın almadan önce doğru biçimlendirme kullanımını belirleme
 
@@ -54,7 +54,7 @@ Azure Veri Gezgini ayrılmış kapasite ayırmayı iptal etmeniz gerekirse, %12 
 
 Azure Veri Gezgini ayrılmış kapasite ayırmayı başka bir terime değiştirmeniz gerekiyorsa, bu değeri eşit veya daha büyük bir değer olan başka bir rezervasyon için değiş tokuş edebilirsiniz. Yeni rezervasyonun başlangıç tarihi, değiştirilen rezervasyonun başlangıç tarihiyle aynı olmaz. 1 veya 3 yıllık dönem, yeni ayırmayı oluştururken ' den başlar. Bir Exchange istemek için Azure portal ayırma bölümüne gidin ve bir destek isteği oluşturmak için **Exchange** ' i seçin.
 
-Rezervasyonları Exchange veya para iadesi hakkında daha fazla bilgi için bkz. [rezervasyon alışverişi ve para](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)iadesi.
+Rezervasyonları Exchange veya para iadesi hakkında daha fazla bilgi için bkz. [rezervasyon alışverişi ve para](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)iadesi.
 
 ## <a name="manage-your-reserved-capacity-reservation"></a>Ayrılmış kapasite ayırmayı yönetme
 
@@ -63,17 +63,17 @@ Azure Veri Gezgini biçimlendirme birimleri ayırma indirimi, Azure Veri Gezgini
 
 > [!NOTE]
 > * Azure Veri Gezgini ayrılmış kapasite ayırmasının kapsamını [Azure Portal](https://portal.azure.com), POWERSHELL, CLı veya API aracılığıyla güncelleştirebilirsiniz.
-> * Azure Veri Gezgini ayrılmış kapasite ayırmayı yönetme hakkında bilgi edinmek için bkz. [azure Veri Gezgini ayrılmış kapasitesini yönetme](../billing/billing-understand-kusto-azuredataexplorer-reservation-charges.md).
+> * Azure Veri Gezgini ayrılmış kapasite ayırmayı yönetme hakkında bilgi edinmek için bkz. [azure Veri Gezgini ayrılmış kapasitesini yönetme](../cost-management-billing/reservations/understand-azure-data-explorer-reservation-charges.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-* [Azure Ayrılmış Sanal Makine Örnekleri nedir?](../billing/billing-save-compute-costs-reservations.md)
-* [Azure Ayırmalarını yönetme](../billing/billing-manage-reserved-vm-instance.md)
-* [Azure Ayrılmış Sanal Makine Örnekleri indirimini anlama](../billing/billing-understand-reservation-charges.md)
-* [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../billing/billing-understand-reserved-instance-usage.md)
-* [Kurumsal kaydınız için rezervasyon kullanımını anlama](../billing/billing-understand-reserved-instance-usage-ea.md)
+* [Azure Rezervasyonlar nedir?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+* [Azure Ayırmalarını yönetme](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Azure Ayrılmış Sanal Makine Örnekleri indirimini anlama](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+* [Kurumsal kaydınız için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 * [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bize ulaşın

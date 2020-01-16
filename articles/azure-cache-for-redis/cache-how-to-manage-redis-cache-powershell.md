@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530927"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978837"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Redsıs için Azure önbelleğini Azure PowerShell ile yönetme
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Bu konu başlığı altında, Redsıs örnekleri için Azure önbelleğinizi olu
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-Klasik dağıtım modeli hakkında daha fazla bilgi için bkz [. Azure Resource Manager ile klasik dağıtım: dağıtım modellerini ve kaynaklarınızın durumunu anlayın](../azure-resource-manager/resource-manager-deployment-model.md).
+Klasik dağıtım modeli hakkında daha fazla bilgi için bkz [. Azure Resource Manager ile klasik dağıtım: dağıtım modellerini ve kaynaklarınızın durumunu anlayın](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 Azure PowerShell zaten yüklediyseniz, Azure PowerShell sürüm 1.0.0 veya daha yeni bir sürüme sahip olmanız gerekir. Bu komutla yüklediğiniz Azure PowerShell sürümünü Azure PowerShell komut isteminde kontrol edebilirsiniz.
@@ -776,7 +776,7 @@ Azure ile Windows PowerShell kullanma hakkında daha fazla bilgi edinmek için a
 
 * [MSDN 'de Redsıs cmdlet belgeleri için Azure önbelleği](https://docs.microsoft.com/powershell/module/az.rediscache)
 * [Azure Resource Manager cmdlet 'leri](https://go.microsoft.com/fwlink/?LinkID=394765): Azure Resource Manager modülündeki cmdlet 'leri kullanmayı öğrenin.
-* [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/resource-group-template-deploy-portal.md): Azure Portal kaynak grupları oluşturma ve yönetme hakkında bilgi edinin.
+* [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/templates/deploy-portal.md): Azure Portal kaynak grupları oluşturma ve yönetme hakkında bilgi edinin.
 * [Azure blogu](https://azure.microsoft.com/blog/): Azure 'daki yeni özellikler hakkında bilgi edinin.
 * [Windows PowerShell blogu](https://blogs.msdn.com/powershell): Windows PowerShell 'de yeni özellikler hakkında bilgi edinin.
 * ["Hey, betik Guy!" Blog](https://blogs.technet.com/b/heyscriptingguy/): Windows PowerShell Community 'den gerçek dünya ipuçları ve püf noktaları alın.

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b6d9a394971e59abaeb48e058b05cd52da69626
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 84296631e35de759fbb971f5de2d918afa5d17f0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529737"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967567"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -425,12 +425,6 @@ Bu role sahip olan kullanıcılar, hizmet mevcut olduğunda, Microsoft Skype Kur
 > [!NOTE]
 > Microsoft Graph API, Azure AD Graph API ve Azure AD PowerShell 'de, bu rol "Lync Hizmet Yöneticisi" olarak tanımlanır. Bu, [Azure Portal](https://portal.azure.com/)"Skype Kurumsal Yöneticisi" dir.
 
-### <a name="teams-administratorteams-service-administrator-permissions"></a>[Takımlar Yöneticisi](#teams-service-administrator-permissions)
-
-Bu roldeki kullanıcılar Microsoft ekipleri & Skype Kurumsal Yönetici Merkezi ve ilgili PowerShell modülleri aracılığıyla Microsoft ekipleri iş yükünün tüm yönlerini yönetebilir. Bu, diğer alanların yanı sıra telefon, mesajlaşma, toplantılar ve takımların kendileri ile ilgili tüm yönetim araçlarını içerir. Bu rol Ayrıca tüm Office 365 gruplarını oluşturma ve yönetme, destek biletlerini yönetme ve hizmet durumunu izleme özelliğini verir.
-> [!NOTE]
-> Microsoft Graph API, Azure AD Graph API ve Azure AD PowerShell 'de, bu rol "takımlar Hizmet Yöneticisi" olarak tanımlanır. Bu, [Azure Portal](https://portal.azure.com)"takımlar Yöneticisi" dir.
-
 ### <a name="teams-communications-administratorteams-communications-administrator-permissions"></a>[Takımlar Iletişim Yöneticisi](#teams-communications-administrator-permissions)
 
 Bu roldeki kullanıcılar, Voice & telefonlarıyla ilgili Microsoft ekipleri iş yükünün yönlerini yönetebilir. Buna telefon numarası atama, sesli ve toplantı ilkelerinin yönetim araçları ve çağrı Analizi araç takımını tam erişim dahildir.
@@ -442,6 +436,10 @@ Bu roldeki kullanıcılar, Microsoft ekiplerinde Skype Kurumsal Yönetim Merkezi
 ### <a name="teams-communications-support-specialistteams-communications-support-specialist-permissions"></a>[Takımlar Iletişimleri destek uzmanı](#teams-communications-support-specialist-permissions)
 
 Bu roldeki kullanıcılar, Microsoft ekiplerinde Skype Kurumsal Yönetim Merkezi & Kullanıcı çağrısı sorun giderme araçlarını kullanarak Microsoft & ekiplerinde bulunan iletişim sorunlarını giderebilir. Bu roldeki kullanıcılar, yalnızca baktıkları belirli kullanıcı için yapılan çağrıda Kullanıcı ayrıntılarını görüntüleyebilir. Bu rolün destek biletlerini görüntüleme, oluşturma veya yönetme erişimi yok.
+
+### <a name="teams-service-administratorteams-service-administrator-permissions"></a>[Takımlar Hizmet Yöneticisi](#teams-service-administrator-permissions)
+
+Bu roldeki kullanıcılar Microsoft ekipleri & Skype Kurumsal Yönetici Merkezi ve ilgili PowerShell modülleri aracılığıyla Microsoft ekipleri iş yükünün tüm yönlerini yönetebilir. Bu, diğer alanların yanı sıra telefon, mesajlaşma, toplantılar ve takımların kendileri ile ilgili tüm yönetim araçlarını içerir. Bu rol Ayrıca tüm Office 365 gruplarını oluşturma ve yönetme, destek biletlerini yönetme ve hizmet durumunu izleme özelliğini verir.
 
 ### <a name="user-administratoruser-administrator-permissions"></a>[Kullanıcı Yöneticisi](#user-administrator-permissions)
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 01/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422852"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978897"
 ---
 # <a name="what-are-security-defaults"></a>Güvenlik Varsayılanları nelerdir?
 
@@ -28,7 +28,10 @@ Microsoft, güvenlik varsayılanlarını herkes için kullanılabilir hale yapı
 
 ![Güvenlik varsayılanlarını etkinleştirmek için geçiş ile birlikte Azure portal ekran görüntüsü](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
-Kiracınızda aşağıdaki güvenlik yapılandırması açılır. 
+> [!TIP]
+> Kiracınız 22nd, 2019 Ekim 'de veya sonrasında oluşturulduysa, yeni, varsayılan olarak güvenli olan davranışı ve kiracınızda zaten güvenlik Varsayılanları etkinleştirilmiş olması mümkündür. Tüm kullanıcılarınızı korumak için, güvenlik Varsayılanları oluşturulan tüm yeni kiracılar için kullanıma alınıyor.
+
+Güvenlik varsayılanlarını neden kullanılabilir hale getirdiğinizle ilgili daha fazla ayrıntı, [güvenlik varsayılanlarını sunarak](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414)Alex Weinert 'ın blog gönderisine bulunabilir.
 
 ## <a name="unified-multi-factor-authentication-registration"></a>Birleşik Multi-Factor Authentication kaydı
 

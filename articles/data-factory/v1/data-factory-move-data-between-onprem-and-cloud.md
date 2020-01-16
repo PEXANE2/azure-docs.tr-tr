@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931897"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982193"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Veri Yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma
 > [!NOTE]
@@ -29,15 +29,15 @@ Bu makalede, Data Factory kullanarak şirket içi veri depoları ile bulut veri 
 Şirket içi bir veri deposundan veri taşımayı etkinleştirmek için şirket içi makinenize Veri Yönetimi ağ geçidi yüklemelisiniz. Ağ Geçidi, veri deposuna bağlanabildiği sürece veri deposuyla aynı makineye veya farklı bir makineye yüklenebilir.
 
 > [!IMPORTANT]
-> Veri Yönetimi ağ geçidi hakkındaki ayrıntılar için bkz. [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) makalesi. 
+> Veri Yönetimi ağ geçidi hakkındaki ayrıntılar için bkz. [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) makalesi.
 
 Aşağıdaki kılavuzda, verileri şirket içi **SQL Server** veritabanından bir Azure Blob depolama alanına taşıyan bir işlem hattı ile veri fabrikası oluşturma adımları gösterilmektedir. Adım adım kılavuzun bir parçası olarak makinenize Veri Yönetimi Ağ Geçidi yükleyip bunu yapılandıracaksınız.
 
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>İzlenecek yol: şirket içi verileri buluta kopyalama
-Bu kılavuzda, aşağıdaki adımları uygulayın: 
+Bu kılavuzda, aşağıdaki adımları uygulayın:
 
 1. Veri fabrikası oluşturma.
-2. Veri Yönetimi Ağ Geçidi oluşturun. 
+2. Veri Yönetimi Ağ Geçidi oluşturun.
 3. Kaynak ve havuz veri depoları için bağlı hizmetler oluşturun.
 4. Girdi ve çıktı verilerini temsil edecek veri kümeleri oluşturun.
 5. Verileri taşımak için kopyalama etkinliği ile işlem hattı oluşturma.
@@ -46,8 +46,8 @@ Bu kılavuzda, aşağıdaki adımları uygulayın:
 Bu yönergeyi başlamadan önce, aşağıdaki önkoşullara sahip olmanız gerekir:
 
 * **Azure aboneliği**.  Bir aboneliğiniz yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılar için [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/) makalesine bakın.
-* **Azure depolama hesabı**. Blob depolamayı Bu öğreticide **hedef/havuz** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md) makalesine bakın.
-* **SQL Server**. Bu öğreticide şirket içi SQL Server veritabanını bir **kaynak** veri deposu olarak kullanırsınız. 
+* **Azure depolama hesabı**. Blob depolamayı Bu öğreticide **hedef/havuz** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın.
+* **SQL Server**. Bu öğreticide şirket içi SQL Server veritabanını bir **kaynak** veri deposu olarak kullanırsınız.
 
 ## <a name="create-data-factory"></a>Veri fabrikası oluşturma
 Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluşturmak için Azure Portal kullanırsınız.

@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2239387ffff4c30e1183721a528e666199316bed
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695086"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979173"
 ---
-# <a name="patternany-entity"></a>Model. any varlığı 
+# <a name="patternany-entity"></a>Pattern.any varlığı
 
 Desen. Any, varlığın nerede başladığını ve bittiğini işaretlemek için yalnızca bir desen şablonunda kullanılan değişken uzunluklu bir yer tutucudur.  
 
@@ -25,13 +25,13 @@ Model. tüm varlıkların, amaç Kullanıcı örnekleri değil, [model](luis-how
 
 **Varlık, şu durumlarda iyi bir uyum:**
 
-* Varlığın sonunda, utterance 'in kalan metniyle karışıyor olabilir. 
+* Varlığın sonunda, utterance 'in kalan metniyle karışıyor olabilir.
 
 ## <a name="usage"></a>Kullanım
 
-Başlığa göre kitap arayan bir istemci uygulaması verilirken, model. any tüm başlığı ayıklar. Bu kitap araması için desen. any kullanarak bir şablon söylenişi `Was {BookTitle} written by an American this year[?]` ' dır. 
+Başlığa göre kitap arayan bir istemci uygulaması verilirken, model. any tüm başlığı ayıklar. Bu kitap araması için desen. any kullanarak bir şablon söylenişi `Was {BookTitle} written by an American this year[?]`.
 
-Aşağıdaki tabloda, her satırda utterance 'in iki sürümü vardır. En üstteki söylenişi, luın ilk olarak söylenişi 'yi nasıl göreceğini görecektir. Kitap başlığının başladığı ve bittiği yerde net değildir. En alt, bir desen kullanır. varlığın başlangıcını ve bitişini işaretlemek için herhangi bir varlık. 
+Aşağıdaki tabloda, her satırda utterance 'in iki sürümü vardır. En üstteki söylenişi, luın ilk olarak söylenişi 'yi nasıl göreceğini görecektir. Kitap başlığının başladığı ve bittiği yerde net değildir. En alt, bir desen kullanır. varlığın başlangıcını ve bitişini işaretlemek için herhangi bir varlık.
 
 |Kalın olan varlık ile utterance|
 |--|
@@ -45,7 +45,7 @@ Aşağıdaki tabloda, her satırda utterance 'in iki sürümü vardır. En üstt
 
 ## <a name="example-json"></a>Örnek JSON
 
-Aşağıdaki sorguyu göz önünde bulundurun:
+Şu sorguyu inceleyin:
 
 `where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
@@ -69,7 +69,7 @@ Katıştırılmış form adı ile bir model olarak ayıklanacak. Any:
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Sorgu dizesinde `verbose=false` ayarlanmışsa bu JSON olur:
+Bu, sorgu dizesinde `verbose=false` ayarlandıysa JSON olur:
 
 ```json
 "entities": {
@@ -79,7 +79,7 @@ Sorgu dizesinde `verbose=false` ayarlanmışsa bu JSON olur:
 }
 ```
 
-Sorgu dizesinde `verbose=true` ayarlanmışsa bu JSON olur:
+Bu, sorgu dizesinde `verbose=true` ayarlandıysa JSON olur:
 
 ```json
 "entities": {
@@ -104,8 +104,8 @@ Sorgu dizesinde `verbose=true` ayarlanmışsa bu JSON olur:
 }
 ```
 
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu [öğreticide](luis-tutorial-pattern-any.md), **bir desen. her türlü** varlığı kullanarak, utülerin iyi biçimlendirildiğinden ve verilerin sonunun, utterlik 'in kalan sözcükleriyle kolayca karıştırılabileceği bir veri çıkartır.
+Bu [öğreticide](luis-tutorial-pattern.md), **bir desen. her türlü** varlığı kullanarak, utülerin iyi biçimlendirildiğinden ve verilerin sonunun, utterlik 'in kalan sözcükleriyle kolayca karıştırılabileceği bir veri çıkartır.

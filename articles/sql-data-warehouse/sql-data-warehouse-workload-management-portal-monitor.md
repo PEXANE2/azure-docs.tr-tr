@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/14/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3baaab59031c4cfad036a7181318502d1969715
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942431"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029936"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure SYNAPSE Analytics – Iş yükü Yönetim Portalı Izleme (Önizleme)
 Bu makalede [iş yükü grubu](sql-data-warehouse-workload-isolation.md#workload-groups) kaynak kullanımı ve sorgu etkinliğinin nasıl izleneceği açıklanır. Azure Ölçüm Gezgini yapılandırma hakkında ayrıntılı bilgi için bkz. [Azure ile çalışmaya başlama Ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) makalesi.  Sistem kaynak tüketiminin nasıl izleneceği hakkında ayrıntılı bilgi edinmek için Azure SQL veri ambarı Izleme belgelerindeki [kaynak kullanımı](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) bölümüne bakın.
@@ -49,8 +49,11 @@ CREATE WORKLOAD CLASSIFIER wcCEOPriority
 WITH ( WORKLOAD_GROUP = 'wgPriority'
       ,MEMBERNAME = 'TheCEO');
 ```
-Aşağıdaki grafik şu şekilde yapılandırılmıştır: ölçüm 1: *geçerli en düşük kaynak yüzdesi* (ortalama toplama, `blue line`) ölçüm 2: *sistem iş yükü grubu ayırması yüzdesi* (ortalama toplama, `purple line`) filtresi: [iş yükü grubu] = `wgPriority`
-![Underutilized-WG. png](media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) grafik, yalnızca %10 ' un ortalama üzerinde kullanıldığını gösterir.  Bu durumda, `MIN_PERCENTAGE_RESOURCE` parametresi değeri 10 veya 15 arasında düşürülemez ve sistemdeki diğer iş yüklerinin kaynakları kullanmasına izin verebilir.
+Aşağıdaki grafik aşağıdaki şekilde yapılandırılır:<br>
+Ölçüm 1: *geçerli Min kaynak yüzdesi* (ortalama toplama, `blue line`)<br>
+Ölçüm 2: sistem yüzdesi (ortalama toplama, `purple line`) *tarafından Iş yükü grubu ayırma*<br>
+Filtre: [Iş yükü grubu] = `wgPriority`<br>
+Underutilized-WG. png ![grafik](media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) %25 iş yükü yalıtımına sahip olduğunu gösteriyorsa, ortalama olarak yalnızca %10 kullanılır.  Bu durumda, `MIN_PERCENTAGE_RESOURCE` parametresi değeri 10 veya 15 arasında düşürülemez ve sistemdeki diğer iş yüklerinin kaynakları kullanmasına izin verebilir.
 
 ### <a name="workload-group-bottleneck"></a>İş yükü grubu performans sorunu
 `wgDataAnalyst` adlı bir iş yükü grubunun oluşturulduğu ve *veri analistinin* `wcDataAnalyst` iş yükü Sınıflandırıcısı kullanılarak `membername` eşlendiği, aşağıdaki iş yükü grubunu ve sınıflandırıcı yapılandırmasını göz önünde bulundurun.  `wgDataAnalyst` iş yükü grubu için %6 iş yükü yalıtımı yapılandırıldı (`MIN_PERCENTAGE_RESOURCE` = 6) ve %9 (`CAP_PERCENTAGE_RESOURCE` = 9) kaynak sınırı vardır.  *Veri analisti* tarafından gönderilen her sorguya sistem kaynaklarının %3 ' i (`REQUEST_MIN_RESOURCE_GRANT_PERCENT` = 3) verilir.
@@ -65,8 +68,12 @@ CREATE WORKLOAD CLASSIFIER wcDataAnalyst
 WITH ( WORKLOAD_GROUP = 'wgDataAnalyst'
       ,MEMBERNAME = 'DataAnalyst');
 ```
-Aşağıdaki grafik şu şekilde yapılandırılır: ölçüm 1: *etkin uç kaynak yüzdesi* (ort toplama, `blue line`) ölçüm 2: *en fazla kaynak yüzdesi tarafından iş yükü grubu ayırması* (ortalama toplama, `purple line`) ölçüm 3: *iş yükü grubu sıraya alınmış sorgular* (Sum toplama, `turquoise line`) filtresi: [iş yükü grubu] = `wgDataAnalyst`
-![şişe-nectes-WG](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) grafik, iş yükü grubunun %9 ' luk bir *üst sınırı Kaynak yüzdesi ölçümü*).  *Sıraya alınmış sorgular ölçümünün Iş yükü grubundan*gösterildiği gibi düzenli bir sorgu sırası vardır.  Bu durumda, `CAP_PERCENTAGE_RESOURCE` %9 ' dan büyük bir değere yükseltmek daha fazla sorgunun eşzamanlı olarak yürütülmesine izin verir.  `CAP_PERCENTAGE_RESOURCE` artırılması, kullanılabilir kaynakların ve diğer iş yükü gruplarının yalıtılmasının yeterli olduğunu varsayar.  *Etkin uç kaynak yüzdesi ölçümünü*denetleyerek, Cap 'in arttığını doğrulayın.  Daha fazla işleme isteniyorsa, `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 3 ' ten büyük bir değere artırmayı de göz önünde bulundurun.  `REQUEST_MIN_RESOURCE_GRANT_PERCENT` artırılması sorguların daha hızlı çalışmasına izin verebilir.
+Aşağıdaki grafik aşağıdaki şekilde yapılandırılır:<br>
+Ölçüm 1: *etkin uç kaynak yüzdesi* (ortalama toplama, `blue line`)<br>
+Ölçüm 2: *en fazla kaynak yüzdesi tarafından Iş yükü grubu ayırması* (ortalama toplama, `purple line`)<br>
+Ölçüm 3: *Iş yükü grubu sıraya alınmış sorgular* (Toplam toplama, `turquoise line`)<br>
+Filtre: [Iş yükü grubu] = `wgDataAnalyst`<br>
+![şişesi-WG](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) grafik, kaynak üzerinde %9 üst sınır olduğunu gösteriyor, iş yükü grubu %90 ' dır ( *Iş yükü grubu ayırmayı en fazla kaynak yüzdesi ölçüsüne göre*).  *Sıraya alınmış sorgular ölçümünün Iş yükü grubundan*gösterildiği gibi düzenli bir sorgu sırası vardır.  Bu durumda, `CAP_PERCENTAGE_RESOURCE` %9 ' dan büyük bir değere yükseltmek daha fazla sorgunun eşzamanlı olarak yürütülmesine izin verir.  `CAP_PERCENTAGE_RESOURCE` artırılması, kullanılabilir kaynakların ve diğer iş yükü gruplarının yalıtılmasının yeterli olduğunu varsayar.  *Etkin uç kaynak yüzdesi ölçümünü*denetleyerek, Cap 'in arttığını doğrulayın.  Daha fazla işleme isteniyorsa, `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 3 ' ten büyük bir değere artırmayı de göz önünde bulundurun.  `REQUEST_MIN_RESOURCE_GRANT_PERCENT` artırılması sorguların daha hızlı çalışmasına izin verebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Hızlı başlangıç: T-SQL kullanarak iş yükü yalıtımını yapılandırma](quickstart-configure-workload-isolation-tsql.md)<br>

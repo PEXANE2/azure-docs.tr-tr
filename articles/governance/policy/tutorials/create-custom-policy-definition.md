@@ -3,12 +3,12 @@ title: 'Öğretici: özel bir ilke tanımı oluşturma'
 description: Bu öğreticide, Azure kaynaklarınız için özel iş kurallarını zorlamak üzere Azure Ilkesi için özel bir ilke tanımı oluşturursunuz.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: 51899491d7a75dc41bdab94d17769393ab4a6659
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885458"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966032"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Öğretici: özel bir ilke tanımı oluşturma
 
@@ -31,7 +31,7 @@ ms.locfileid: "74885458"
 > - Hangi etkiyi kullanacağınızı belirleme
 > - İlke tanımını oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -66,7 +66,7 @@ Bir Azure kaynağı için özellikleri belirlemenin birçok yolu vardır. Bu ö�
 
 ### <a name="resource-manager-templates"></a>Resource Manager şablonları
 
-Yönetmek istediğiniz özelliği içeren [Kaynak Yöneticisi şablona](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) bakmak için birkaç yol vardır.
+Yönetmek istediğiniz özelliği içeren [Kaynak Yöneticisi şablona](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) bakmak için birkaç yol vardır.
 
 #### <a name="existing-resource-in-the-portal"></a>Portalda mevcut kaynak
 

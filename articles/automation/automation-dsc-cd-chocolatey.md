@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: ad42d7c2257519c2622ba17f74f97b9521233850
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4445f6e9b72380b66f3282d50871b4283f7fc7fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366439"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966735"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Kullanım örneği: Automation durum yapılandırması ve Chocolatey kullanarak sanal makinelere sürekli dağıtım
 
@@ -40,7 +40,7 @@ Azure Otomasyonu durum yapılandırması, bu Otomasyon özelliğini PowerShell D
 DSC kaynağı, ağ, Active Directory veya SQL Server yönetimi gibi belirli özellikleri olan bir kod modüldür. Chocolatey DSC kaynağı bir NuGet sunucusuna erişmeyi (diğerleri arasında), paketleri indirmeyi, paketleri yüklemeyi vb. bilir. [PowerShell Galerisi](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)DIĞER birçok DSC kaynağı vardır.
 Bu modüller, Azure Otomasyonu durum yapılandırması çekme sunucunuza (sizin tarafınızdan) yüklenir ve bu sayede yapılandırmalar tarafından kullanılabilirler.
 
-Kaynak Yöneticisi şablonlar; ağlar, alt ağlar, ağ güvenliği ve yönlendirme, yük dengeleyiciler, NIC 'Ler, VM 'Ler vb. gibi altyapınızı oluşturmak için bildirim temelli bir yol sağlar. Azure hizmet yönetimi (ASM veya klasik) dağıtım modeli (zorunlu) ile Kaynak Yöneticisi dağıtım modelini (beyan) karşılaştıran ve çekirdek kaynak sağlayıcıları, işlem, depolama ve ağ ile ilgili bir [Makale](../azure-resource-manager/resource-manager-deployment-model.md) aşağıda açıklanmaktadır.
+Kaynak Yöneticisi şablonlar; ağlar, alt ağlar, ağ güvenliği ve yönlendirme, yük dengeleyiciler, NIC 'Ler, VM 'Ler vb. gibi altyapınızı oluşturmak için bildirim temelli bir yol sağlar. Azure hizmet yönetimi (ASM veya klasik) dağıtım modeli (zorunlu) ile Kaynak Yöneticisi dağıtım modelini (beyan) karşılaştıran ve çekirdek kaynak sağlayıcıları, işlem, depolama ve ağ ile ilgili bir [Makale](../azure-resource-manager/management/deployment-models.md) aşağıda açıklanmaktadır.
 
 Kaynak Yöneticisi şablonun bir anahtar özelliği, sağlanan VM 'ye bir VM Uzantısı yükleyebilmesidir. Bir VM uzantısının özel bir komut dosyası çalıştırma, virüsten koruma yazılımı yükleme veya bir DSC yapılandırma betiği çalıştırma gibi belirli yetenekleri vardır. Birçok farklı VM uzantısı türü vardır.
 

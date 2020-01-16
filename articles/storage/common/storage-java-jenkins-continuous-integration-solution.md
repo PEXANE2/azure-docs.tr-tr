@@ -9,12 +9,12 @@ ms.service: storage
 custom: jenkins
 ms.date: 08/13/2019
 ms.subservice: common
-ms.openlocfilehash: 72756bd3eb12ca80f419a0d53db76e6637d884fc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0e426dcead5d1f315717fbc19cf7f7bdac62d563
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839125"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970181"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Jenkins sürekli tümleştirme çözümüyle Azure depolama kullanma
 
@@ -49,7 +49,7 @@ Jenkins hakkında daha fazla bilgi için [Jenkins](https://wiki.jenkins-ci.org/d
      
       Tipik bir Jenkins CI çözümü bir hizmet olarak çalışacak şekilde ayarlanacağından, bu öğretici için Jenkins War, komut satırında çalıştırıldığında yeterli olacaktır.
 * Bir Azure hesabı. <https://www.azure.com>bir Azure hesabı için kaydolabilirsiniz.
-* Bir Azure depolama hesabı. Henüz bir depolama hesabınız yoksa [depolama hesabı oluşturma](../common/storage-quickstart-create-account.md)kısmındaki adımları kullanarak bir tane oluşturabilirsiniz.
+* Bir Azure depolama hesabı. Henüz bir depolama hesabınız yoksa [depolama hesabı oluşturma](../common/storage-account-create.md)kısmındaki adımları kullanarak bir tane oluşturabilirsiniz.
 * Jenkins CI çözümüyle benzerlik yapmanız önerilir, ancak aşağıdaki içerik, blob hizmetini Jenkins CI derleme yapıtları için bir depo olarak kullanırken gereken adımları göstermek üzere temel bir örnek kullanacaktır.
 
 ## <a name="how-to-use-the-blob-service-with-jenkins-ci"></a>Jenkins CI ile blob hizmetini kullanma
@@ -104,7 +104,7 @@ Eğitici bir amaç için, önce birkaç dosya oluşturacak bir iş oluşturmanı
 12. Ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
 13. Jenkins panosunda, **Myjob**'u çalıştırmak Için **Şimdi Oluştur** ' u seçin. Durum için konsol çıkışını inceleyin. Oluşturma sonrası eylemi, derleme yapılarını karşıya yüklemeye başladığında, Azure depolama için durum iletileri konsol çıktısına dahil edilir.
 14. İşi başarılı bir şekilde tamamladıktan sonra, genel blobu açarak derleme yapıtlarını inceleyebilirsiniz.
-    1. [Azure portalında](https://portal.azure.com) oturum açın.
+    1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
     2. **Depolama**’yı seçin.
     3. Jenkins için kullandığınız depolama hesabı adını seçin.
     4. **Kapsayıcıları**seçin.
@@ -141,7 +141,7 @@ Bu bölüm, blob hizmeti bileşenlerine genel bir bakış sağlar.
   
     `http://example.blob.core.windows.net/myjob/2014-04-14_23-57-00/1/hello.txt`
 
-## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins eklentisiyle ilgili sorunları giderme
+## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins eklentisiyle ilgili sorunlarını giderme
 
 Jenkins eklentileriyle ilgili hatalarla karşılaşırsanız [Jenkins JIRA](https://issues.jenkins-ci.org/) sayfasında söz konusu bileşenle ilgili sorun bildirebilirsiniz.
 

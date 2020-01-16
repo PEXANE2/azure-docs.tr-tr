@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d2dce6875ec39810a81bb5ae454d953a7b7ab0a9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ca13d5e8369d007188a17352913519172ed8744e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032714"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978190"
 ---
 # <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Azure SQL Server VM 'lerinde kullanılabilirlik grupları için dış dinleyici yapılandırma
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "74032714"
 Bu konu başlığı altında, internet üzerinden dışarıdan erişilebilen her zaman açık kullanılabilirlik grubu için bir dinleyicinin nasıl yapılandırılacağı gösterilmektedir. Bu, bulut hizmetinin **ortak sanal IP (VIP)** adresi ile dinleyiciyle ilişkilendirerek mümkün hale getirilir.
 
 > [!IMPORTANT] 
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/resource-manager-deployment-model.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir.
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir.
 
 Kullanılabilirlik grubunuz yalnızca şirket içi veya Azure 'da bulunan çoğaltmalar içerebilir veya hem şirket içi hem de karma yapılandırmalara yönelik olarak Azure 'a yayılabilir. Azure çoğaltmaları, birden fazla sanal ağ (VNet) kullanılarak aynı bölgede veya birden çok bölgede bulunabilir. Aşağıdaki adımlarda, zaten bir [kullanılabilirlik grubu yapılandırdığınız](../classic/portal-sql-alwayson-availability-groups.md) ancak bir dinleyici yapılandırmış olduğunuz varsayılır.
 

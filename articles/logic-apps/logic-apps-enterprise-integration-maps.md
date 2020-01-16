@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: 3e510cc4073a4b0075cdaeb80091657dbee93fcb
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792495"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979402"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps Maps ile XML dönüştürme
 
@@ -23,7 +23,7 @@ Azure Logic Apps içindeki kurumsal tümleştirme senaryolarının biçimleri ar
 
 Haritalar gibi tümleştirme hesapları ve yapıtlarla ilgili sınırlar için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma bilgileri](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -38,7 +38,7 @@ Haritalar gibi tümleştirme hesapları ve yapıtlarla ilgili sınırlar için b
 
     | Öğe | Açıklama |
     |------|-------------|
-    | [Azure depolama hesabı](../storage/common/storage-account-overview.md) | Bu hesapta, derlemeniz için bir Azure Blob kapsayıcısı oluşturun. [Depolama hesabı oluşturmayı](../storage/common/storage-quickstart-create-account.md)öğrenin. |
+    | [Azure depolama hesabı](../storage/common/storage-account-overview.md) | Bu hesapta, derlemeniz için bir Azure Blob kapsayıcısı oluşturun. [Depolama hesabı oluşturmayı](../storage/common/storage-account-create.md)öğrenin. |
     | Blob kapsayıcı | Bu kapsayıcıda, derlemenizi karşıya yükleyebilirsiniz. Ayrıca, derlemeyi tümleştirme hesabınıza eklediğinizde bu kapsayıcının konumu da gerekir. [BLOB kapsayıcısı oluşturmayı](../storage/blobs/storage-quickstart-blobs-portal.md)öğrenin. |
     | [Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Bu araç, depolama hesaplarını ve BLOB kapsayıcılarını daha kolay yönetmenize yardımcı olur. Depolama Gezgini kullanmak için [Azure Depolama Gezgini indirin ve yükleyin](https://www.storageexplorer.com/). Ardından, [Depolama Gezgini kullanmaya başlama](../vs-azure-tools-storage-manage-with-storage-explorer.md)bölümündeki adımları izleyerek Depolama Gezgini depolama hesabınıza bağlanın. Daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure Depolama Gezgini ile nesne depolamada blob oluşturma](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Ya da Azure portal, depolama hesabınızı bulun ve seçin. Depolama hesabı menüsünden **Depolama Gezgini**' yi seçin. |
     |||

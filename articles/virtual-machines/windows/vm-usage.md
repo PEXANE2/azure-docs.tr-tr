@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: d574c5eef15c21d3d490bcfe682b87bae2856f1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2aa175d97787d82aae062a95ed519f35ff65816b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353713"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982271"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure sanal makine kullanımını anlama
-Azure kullanım verilerinizi analiz ederek, güçlü tüketim öngörüleri, kuruluşunuzun tamamında daha iyi maliyet yönetimi ve ayırmayı olanaklı hale getirebilirler. Bu belge, Azure Işlem tüketimi ayrıntılarınız hakkında ayrıntılı bilgi sağlar. Genel Azure kullanımı hakkında daha fazla bilgi için [Faturanızı Anlama](../../billing/billing-understand-your-bill.md)bölümüne gidin.
+Azure kullanım verilerinizi analiz ederek, güçlü tüketim öngörüleri, kuruluşunuzun tamamında daha iyi maliyet yönetimi ve ayırmayı olanaklı hale getirebilirler. Bu belge, Azure Işlem tüketimi ayrıntılarınız hakkında ayrıntılı bilgi sağlar. Genel Azure kullanımı hakkında daha fazla bilgi için [Faturanızı Anlama](../../cost-management-billing/understand/review-individual-bill.md)bölümüne gidin.
 
 ## <a name="download-your-usage-details"></a>Kullanım ayrıntılarınızı indirin
-Başlamak için [kullanım ayrıntılarınızı indirin](../../billing/billing-download-azure-invoice-daily-usage-date.md). Aşağıdaki tabloda, Azure Resource Manager aracılığıyla dağıtılan sanal makineler için kullanım tanımı ve örnek değerleri verilmiştir. Bu belge, klasik modelimiz aracılığıyla dağıtılan VM 'Ler için ayrıntılı bilgiler içermez.
+Başlamak için [kullanım ayrıntılarınızı indirin](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Aşağıdaki tabloda, Azure Resource Manager aracılığıyla dağıtılan sanal makineler için kullanım tanımı ve örnek değerleri verilmiştir. Bu belge, klasik modelimiz aracılığıyla dağıtılan VM 'Ler için ayrıntılı bilgiler içermez.
 
 
 | Alanlar             | Anlamı                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Örnek değerler                                                                                                                                                                                                                                                                                                                                                   |
@@ -132,7 +132,7 @@ Hesaplama saati, temel alınan altyapı maliyeti için kullanım olayını temsi
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Nasıl yaparım? Premium yazılım için ücretlendirildiğimde emin misiniz?
 Gereksinimlerinize en uygun VM görüntüsünü araştırırken [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute)' ni kullanıma aldığınızdan emin olun. Görüntü, yazılım planı oranına sahiptir. Ücret için "ücretsiz" görürseniz, yazılım için ek maliyet yoktur. 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>Tüketilen hizmette Microsoft. ClassicCompute ve Microsoft. COMPUTE arasındaki fark nedir?
-Microsoft. ClassicCompute, Azure Service Manager aracılığıyla dağıtılan klasik kaynakları temsil eder. Kaynak Yöneticisi aracılığıyla dağıtıyorsanız, Microsoft. COMPUTE tüketilen hizmette doldurulur. [Azure dağıtım modelleri](../../azure-resource-manager/resource-manager-deployment-model.md)hakkında daha fazla bilgi edinin.
+Microsoft. ClassicCompute, Azure Service Manager aracılığıyla dağıtılan klasik kaynakları temsil eder. Kaynak Yöneticisi aracılığıyla dağıtıyorsanız, Microsoft. COMPUTE tüketilen hizmette doldurulur. [Azure dağıtım modelleri](../../azure-resource-manager/management/deployment-models.md)hakkında daha fazla bilgi edinin.
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>Sanal makine kullanımım için InstanceId alanı neden boş?
 Klasik dağıtım modeli aracılığıyla dağıtıyorsanız InstanceId dizesi kullanılamaz.
 ### <a name="why-are-the-tags-for-my-vms-not-flowing-to-the-usage-details"></a>Sanal makinelerimin etiketleri neden kullanım ayrıntılarına akmıyor?
@@ -143,5 +143,5 @@ Klasik modelde, kaynaklar için faturalandırma, bulut hizmeti düzeyinde toplan
 Premium depolama özellikli VM 'Ler, Premium olmayan depolama özellikli VM 'Lerle aynı hızda faturalandırılır. Yalnızca depolama maliyetleriniz farklılık gösterir. Daha fazla bilgi için [Depolama fiyatlandırması sayfasını](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kullanım ayrıntılarınız hakkında daha fazla bilgi edinmek için bkz [. Microsoft Azure Faturanızı Anlama.](../../billing/billing-understand-your-bill.md)
+Kullanım ayrıntılarınız hakkında daha fazla bilgi edinmek için bkz [. Microsoft Azure Faturanızı Anlama.](../../cost-management-billing/understand/review-individual-bill.md)
 

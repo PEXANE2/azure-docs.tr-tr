@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: fe38e74d30f7eb4f0c025f14268f7d6ac7b7d88a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d34a0905973a8080ee53eeac878432db0c51128
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428682"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979065"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -62,13 +62,13 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
 1. [Azure portalına](https://portal.azure.com) gidin. Portal arama kutusunda **Logic Apps**' i bulun ve seçin.
 
-1. Mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı seçin ve açın. 
+1. Mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı seçin ve açın.
 
 1. Mantıksal uygulamanın menüsünde, **Iş akışı ayarları**' nı seçin.
 
 1. **Çalışma zamanı seçenekleri**altında, **gün cinsinden çalışma geçmişi saklama** listesinden **özel**' i seçin.
 
-1. Kaydırıcıyı istediğiniz gün sayısı için girin veya sürükleyin. 
+1. Kaydırıcıyı istediğiniz gün sayısı için girin veya sürükleyin.
 
    > [!NOTE]
    > Çok kiracılı Azure 'da mantıksal uygulamalar için, 90 günlük varsayılan sınır, üst limitle aynıdır. Bu değeri yalnızca azaltabilirsiniz.
@@ -84,7 +84,7 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 | ---- | ----- | ----- |
 | Eşzamanlılık tetikleme | * Eşzamanlılık denetimi kapalıyken sınırsız <p><p>* 25 eşzamanlılık denetimi açık olduğunda varsayılan limit olan, denetimi etkinleştirdikten sonra geri alınamaz. Varsayılan değeri 1 ile 50 (dahil) arasında bir değer olarak değiştirebilirsiniz. | Bu sınır, aynı anda veya paralel olarak çalışabilen en yüksek mantıksal uygulama örneği sayısını açıklar. <p><p>**Note**: eşzamanlılık açık olduğunda, ayırma sınırı, [toplu işleme dizileri](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)için 100 öğeye düşürülür. <p><p>Varsayılan sınırı 1 ile 50 (dahil) arasında bir değere değiştirmek için, bkz. [tetikleyici eşzamanlılık sınırını değiştirme](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) veya [örnekleri sıralı olarak tetikleme](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | En fazla bekleyen çalışma | Eşzamanlılık denetimi açık olduğunda, bekleyen en az çalışma sayısı 10 ' un yanı sıra eşzamanlı çalıştırma sayısıdır (eşzamanlılık tetikleme). En büyük sayıyı, ikisi de dahil olmak üzere 100 olarak değiştirebilirsiniz. | Bu sınır, mantıksal uygulamanız zaten maksimum eşzamanlı örnekleri çalıştırıyorsa çalışmayı bekleyebilecekleri en yüksek mantıksal uygulama örneği sayısını açıklar. <p><p>Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
-| Foreach dizi öğeleri | 100.000 | Bu sınır, "for each" döngüsünün işleyebilecekleri en yüksek dizi öğesi sayısını tanımlar. <p><p>Daha büyük dizileri filtrelemek için [sorgu eylemini](../connectors/connectors-native-query.md)kullanabilirsiniz. |
+| Foreach dizi öğeleri | 100.000 | Bu sınır, "for each" döngüsünün işleyebilecekleri en yüksek dizi öğesi sayısını tanımlar. <p><p>Daha büyük dizileri filtrelemek için [sorgu eylemini](logic-apps-perform-data-operations.md#filter-array-action)kullanabilirsiniz. |
 | Foreach eşzamanlılık | Eşzamanlılık denetimi kapalıyken 20 varsayılan limit olur. Varsayılan değeri 1 ile 50 (dahil) arasında bir değer olarak değiştirebilirsiniz. | Bu sınır, aynı anda veya paralel olarak çalışabilen en yüksek "for each" döngüsü yinelemesi sayısıdır. <p><p>Varsayılan sınırı 1 ile 50 (dahil) arasında bir değere değiştirmek için, bkz. ["her bir eşzamanlılık sınırı" değiştirme](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) veya ["for each" döngülerini sırayla çalıştırma](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
 | SplitOn öğeleri | * Eşzamanlılık tetikleyicisi olmadan * 100.000 <p><p>* Eşzamanlılık tetikleme ile 100 | Bir dizi döndüren Tetikleyiciler için, dizi öğelerini bir "foreach" döngüsü kullanmak yerine [birden çok iş akışı örneğine ayıran veya](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) içermeyen bir ' spton ' özelliği kullanan bir ifade belirtebilirsiniz. Bu ifade, her dizi öğesi için bir iş akışı örneği oluşturmak ve çalıştırmak için kullanılacak diziye başvurur. <p><p>**Note**: eşzamanlılık açık olduğunda, spton limiti 100 öğeye düşürülür. |
 | Yinelemelere kadar | 5\.000 | |
@@ -122,7 +122,8 @@ Premium SKU için üretilen iş sınırları aşağıda verilmiştir:
 Normal işlemede Bu limitlerin üzerine gitmek veya bu limitlerin üzerine gidebilecek yük testi çalıştırmak için, gereksinimlerle ilgili yardım için [Logic Apps ekibine başvurun](mailto://logicappsemail@microsoft.com) .
 
 > [!NOTE]
-> Bu SKU 'nun ölçeklendirme için herhangi bir hizmet düzeyi sözleşmesi (SLA) veya özelliği olmadığı için, [Geliştirici SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) yayımlanmış sınırlara sahip değildir. Bu SKU 'YU yalnızca deneme, geliştirme ve test için kullanın, üretim veya performans testi yapın.
+> Bu SKU 'nun ölçeklendirme için herhangi bir hizmet düzeyi sözleşmesi (SLA) veya özelliği olmadığı için, [Geliştirici SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) yayımlanmış sınırlara sahip değildir.
+> Bu SKU 'YU yalnızca deneme, geliştirme ve test için kullanın, üretim veya performans testi yapın.
 
 <a name="gateway-limits"></a>
 
@@ -209,7 +210,8 @@ Ek maliyetler, bir ıSE 'ye dahil olan tümleştirme hesaplarının ötesine ekl
 
 ### <a name="artifact-limits-per-integration-account"></a>Tümleştirme hesabı başına yapıt sınırları
 
-Her bir tümleştirme hesabı katmanının yapıt sayısına ilişkin sınırlar aşağıda verilmiştir. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/). Fiyatlandırma ve faturalandırma çalışma hesapları için nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#integration-accounts)bakın.
+Her bir tümleştirme hesabı katmanının yapıt sayısına ilişkin sınırlar aşağıda verilmiştir.
+Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/). Fiyatlandırma ve faturalandırma çalışma hesapları için nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#integration-accounts)bakın.
 
 > [!NOTE]
 > Ücretsiz katmanı yalnızca araştırmacı senaryolar için kullanın, üretim senaryolarından değil. Bu katman, aktarım hızını ve kullanımı kısıtlar ve hizmet düzeyi anlaşması (SLA) içermez.
@@ -261,9 +263,12 @@ B2B protokolleri için uygulanan ileti boyutu sınırları aşağıda verilmişt
 
 ## <a name="disabling-or-deleting-logic-apps"></a>Mantıksal uygulamaları devre dışı bırakma veya silme
 
-Bir mantıksal uygulamayı devre dışı bıraktığınızda, yeni çalıştırmalar örneği oluşturulur. Tüm devam eden ve bekleyen çalıştırmalar tamamlanana kadar devam eder, bu da tamamlanması zaman alabilir.
+Bir mantıksal uygulamayı devre dışı bıraktığınızda, yeni çalıştırmalar örneği oluşturulur.
+Tüm devam eden ve bekleyen çalıştırmalar tamamlanana kadar devam eder, bu da tamamlanması zaman alabilir.
 
-Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam eden ve bekleme durumunda olan tüm çalıştırmalar iptal edilir. Binlerce çalıştırma varsa iptal işleminin tamamlanması zaman alabilir.
+Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz.
+Devam eden ve bekleme durumunda olan tüm çalıştırmalar iptal edilir.
+Binlerce çalıştırma varsa iptal işleminin tamamlanması zaman alabilir.
 
 <a name="configuration"></a>
 
@@ -276,7 +281,7 @@ Azure Logic Apps gelen ve giden çağrılar için kullandığı IP adresleri, ma
 
 * Mantıksal uygulamalarınızın doğrudan [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)ve diğer http istekleriyle yaptığı çağrıları desteklemek için, mantıksal uygulamalarınızın bulunduğu bölgelere göre Logic Apps hizmeti tarafından kullanılan *Tüm* [gelen](#inbound) *ve* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın. Bu adresler, bu bölümdeki **gelen** ve **giden** başlıkların altında görüntülenir ve bölgeye göre sıralanır.
 
-* [Microsoft tarafından yönetilen bağlayıcıların](../connectors/apis-list.md) yaptığı çağrıları desteklemek için, mantıksal uygulamalarınızın bulunduğu bölgelere göre bu bağlayıcılar tarafından kullanılan *Tüm* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın. Bu adresler, bu bölümdeki **giden** başlık altında görüntülenir ve bölgeye göre sıralanır. 
+* [Microsoft tarafından yönetilen bağlayıcıların](../connectors/apis-list.md) yaptığı çağrıları desteklemek için, mantıksal uygulamalarınızın bulunduğu bölgelere göre bu bağlayıcılar tarafından kullanılan *Tüm* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın. Bu adresler, bu bölümdeki **giden** başlık altında görüntülenir ve bölgeye göre sıralanır.
 
 * Bir tümleştirme hizmeti ortamında (ıSE) çalışan Logic Apps iletişimini etkinleştirmek için, [Bu bağlantı noktalarını açtığınızdan](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)emin olun.
 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: ed48082c52a5b4f79fd2030303dbe2bb7bedafe6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456593"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982529"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio ile mantıksal uygulamaları yönetme
 
@@ -90,13 +90,13 @@ Visual Studio 'da, doğrudan Azure portal ya da Visual Studio ile Azure Kaynak g
 
    ![Dağıtılan mantıksal uygulamayı Azure portal açın](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   Mantıksal uygulama Logic Apps tasarımcısında açıldıktan sonra, tasarımcı 'nın en altında, temel alınan mantıksal uygulama tanımı yapısını gözden geçirebilmeniz için **kod görünümü** ' nü seçebilirsiniz. Mantıksal uygulama için bir dağıtım şablonu oluşturmak istiyorsanız, bu mantıksal uygulama için [bir Azure Resource Manager şablonu indirmeyi](#download-logic-app) öğrenin. [Kaynak Yöneticisi şablonları](../azure-resource-manager/template-deployment-overview.md)hakkında daha fazla bilgi edinin.
+   Mantıksal uygulama Logic Apps tasarımcısında açıldıktan sonra, tasarımcı 'nın en altında, temel alınan mantıksal uygulama tanımı yapısını gözden geçirebilmeniz için **kod görünümü** ' nü seçebilirsiniz. Mantıksal uygulama için bir dağıtım şablonu oluşturmak istiyorsanız, bu mantıksal uygulama için [bir Azure Resource Manager şablonu indirmeyi](#download-logic-app) öğrenin. [Kaynak Yöneticisi şablonları](../azure-resource-manager/templates/overview.md)hakkında daha fazla bilgi edinin.
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Azure 'dan indir
 
-[Azure Portal](https://portal.azure.com) Logic Apps 'i indirebilir ve [Azure Resource Manager](../azure-resource-manager/management/overview.md) şablon olarak kaydedebilirsiniz. Daha sonra şablonları Visual Studio ile yerel olarak düzenleyebilir ve farklı dağıtım ortamları için mantıksal uygulamaları özelleştirebilirsiniz.  Logic Apps 'in indirilmesi, JavaScript Nesne Gösterimi (JSON) de kullanan [Kaynak Yöneticisi şablonlarının](../azure-resource-manager/template-deployment-overview.md)tanımlarını otomatik olarak *parametreleştirir* .
+[Azure Portal](https://portal.azure.com) Logic Apps 'i indirebilir ve [Azure Resource Manager](../azure-resource-manager/management/overview.md) şablon olarak kaydedebilirsiniz. Daha sonra şablonları Visual Studio ile yerel olarak düzenleyebilir ve farklı dağıtım ortamları için mantıksal uygulamaları özelleştirebilirsiniz.  Logic Apps 'in indirilmesi, JavaScript Nesne Gösterimi (JSON) de kullanan [Kaynak Yöneticisi şablonlarının](../azure-resource-manager/templates/overview.md)tanımlarını otomatik olarak *parametreleştirir* .
 
 1. Visual Studio 'da Cloud Explorer ' ı açın. Azure 'dan indirmek istediğiniz mantıksal uygulamayı bulun ve seçin.
 
@@ -113,13 +113,13 @@ Visual Studio 'da, doğrudan Azure portal ya da Visual Studio ile Azure Kaynak g
 
 1. Bir konum istendiğinde, bu konuma gidin ve mantıksal uygulama tanımının Kaynak Yöneticisi şablonunu JSON (. JSON) dosya biçiminde kaydedin.
 
-   Mantıksal uygulama tanımınız, Kaynak Yöneticisi şablonunun içindeki `resources` alt bölümünde görüntülenir. Artık mantıksal uygulama tanımını ve Kaynak Yöneticisi şablonu Visual Studio ile düzenleyebilirsiniz. Ayrıca, şablonu bir [Azure Kaynak grubu projesi](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) olarak bir Visual Studio çözümüne ekleyebilirsiniz. [Visual Studio 'da mantıksal uygulamalar Için Azure Kaynak grubu projeleri](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)hakkında bilgi edinin.
+   Mantıksal uygulama tanımınız, Kaynak Yöneticisi şablonunun içindeki `resources` alt bölümünde görüntülenir. Artık mantıksal uygulama tanımını ve Kaynak Yöneticisi şablonu Visual Studio ile düzenleyebilirsiniz. Ayrıca, şablonu bir [Azure Kaynak grubu projesi](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) olarak bir Visual Studio çözümüne ekleyebilirsiniz. [Visual Studio 'da mantıksal uygulamalar Için Azure Kaynak grubu projeleri](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)hakkında bilgi edinin.
 
 <a name="link-integration-account"></a>
 
 ## <a name="link-to-integration-account"></a>Tümleştirme hesabı bağlantısı
 
-İşletmeden işletmeye (B2B) kurumsal tümleştirme senaryolarına yönelik mantıksal uygulamalar oluşturmak için mantıksal uygulamanızı mantıksal uygulamanızla aynı bölgede bulunan daha önce oluşturulmuş bir [tümleştirme hesabına](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) bağlayabilirsiniz. Tümleştirme hesabı, ticari iş ortakları, sözleşmeler, şemalar ve haritalar gibi B2B yapıtları içerir ve mantıksal uygulamanızın XML doğrulaması ve düz dosya kodlama veya kod çözme için B2B bağlayıcıları kullanmasına olanak sağlar. [Bu bağlantıyı Azure Portal kullanarak oluşturabilseniz](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)de, [önkoşulları](#requirements)yükselttikten sonra Visual Studio 'yu da kullanabilirsiniz ve mantıksal uygulamanız bir [Azure Kaynak grubu projesinde](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)JSON (. JSON) dosyası olarak mevcuttur. [Visual Studio 'da mantıksal uygulamalar Için Azure Kaynak grubu projeleri](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project)hakkında bilgi edinin.
+İşletmeden işletmeye (B2B) kurumsal tümleştirme senaryolarına yönelik mantıksal uygulamalar oluşturmak için mantıksal uygulamanızı mantıksal uygulamanızla aynı bölgede bulunan daha önce oluşturulmuş bir [tümleştirme hesabına](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) bağlayabilirsiniz. Tümleştirme hesabı, ticari iş ortakları, sözleşmeler, şemalar ve haritalar gibi B2B yapıtları içerir ve mantıksal uygulamanızın XML doğrulaması ve düz dosya kodlama veya kod çözme için B2B bağlayıcıları kullanmasına olanak sağlar. [Bu bağlantıyı Azure Portal kullanarak oluşturabilseniz](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)de, [önkoşulları](#requirements)yükselttikten sonra Visual Studio 'yu da kullanabilirsiniz ve mantıksal uygulamanız bir [Azure Kaynak grubu projesinde](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)JSON (. JSON) dosyası olarak mevcuttur. [Visual Studio 'da mantıksal uygulamalar Için Azure Kaynak grubu projeleri](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project)hakkında bilgi edinin.
 
 1. Visual Studio 'da mantıksal uygulamanızı içeren Azure Kaynak grubu projesini açın.
 
@@ -149,7 +149,7 @@ Visual Studio 'da **Integration Account** özelliğini ayarlayıp mantıksal uyg
 
 ## <a name="change-deployment-location"></a>Dağıtım konumunu değiştir
 
-Visual Studio 'da, mantıksal uygulamanız dağıtımı otomatikleştirmek için kullandığınız bir [Azure Kaynak grubu PROJESINDE](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) JSON (. JSON) dosyası olarak mevcutsa, bu mantıksal uygulama bir konum türüne ve belirli bir konuma ayarlanır. Bu konum bir Azure bölgesi veya mevcut bir [tümleştirme hizmeti ortamıdır (ISE)](connect-virtual-network-vnet-isolated-environment.md).
+Visual Studio 'da, mantıksal uygulamanız dağıtımı otomatikleştirmek için kullandığınız bir [Azure Kaynak grubu PROJESINDE](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) JSON (. JSON) dosyası olarak mevcutsa, bu mantıksal uygulama bir konum türüne ve belirli bir konuma ayarlanır. Bu konum bir Azure bölgesi veya mevcut bir [tümleştirme hizmeti ortamıdır (ISE)](connect-virtual-network-vnet-isolated-environment.md).
 
 Mantıksal uygulamanızın konum türünü veya konumunu değiştirmek için mantıksal uygulama Tasarımcısı ' nı kullanarak mantıksal uygulamanızın iş akışı Tanım (. JSON) dosyasını Çözüm Gezgini ' den açmanız gerekir. Bulut Gezgini 'ni kullanarak bu özellikleri değiştiremezsiniz.
 

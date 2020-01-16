@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a491f923d7755513d84adfe765d595a3a7a80715
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 979652a467ea91c05884d2f7a24781f82035e505
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399355"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982039"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Bir Hadoop kümesinde Hive sorgularını kullanarak verilerin özelliklerini oluşturma
 Bu belge, Hive sorgularını kullanarak bir Azure HDInsight Hadoop kümesinde depolanan verilerin özelliklerini oluşturma işlemi gösterilmektedir. Bu Hive sorguları katıştırılmış Hive User-Defined betikleri, sağlanan işlevler (UDF'ler) kullanın.
@@ -27,10 +27,10 @@ Sunulan sorgularının örnekleri için belirli [NYC taksi seyahat verilerini](h
 
 Bu görev bir adımdır [Team Data Science işlem (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede, olduğunu varsayar:
 
-* Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz [bir Azure depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md)
+* Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz [bir Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md)
 * HDInsight hizmeti ile özelleştirilmiş bir Hadoop kümesi hazırlandı.  Yönergelere ihtiyacınız varsa bkz [Gelişmiş analiz için Azure HDInsight Hadoop kümelerini özelleştirin](customize-hadoop-cluster.md).
 * Azure HDInsight Hadoop kümeleri Hive tablolarında için verileri karşıya yüklendi. Henüz yoksa izleyin [Hive tabloları oluşturma ve yük verileri](move-hive-tables.md) verileri ilk Hive tablolarına yükleme.
 * Kümeye uzaktan erişim etkin. Yönergelere ihtiyacınız varsa bkz [Hadoop küme baş düğümüne erişmek](customize-hadoop-cluster.md).
@@ -89,14 +89,14 @@ Hive, datetime alanları işleme için bir UDF'ler kümesi ile birlikte gelir. H
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-Bu Hive sorgusu olduğunu varsayar  *\<datetime alanı >* varsayılan tarih/saat biçimi.
+Bu Hive sorgusu, *\<DateTime alanının >* varsayılan tarih saat biçiminde olduğunu varsayar.
 
 Bir datetime alanı varsayılan biçiminde değilse, datetime alanı Unix zaman damgası dönüştürmeniz ve varsayılan biçiminde olan bir tarih saat dizesi Unix zaman damgası dönüştürmek gerekir. Varsayılan tarih ve saat biçim olduğunda, kullanıcılar katıştırılmış tarih ve saat özellikleri ayıklanacak UDF'ler uygulayabilir.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-Bu sorgu,  *\<datetime alanı >* desen gibi sahip *26/03/2015 12:04:39*,  *\<datetime alanı desenini >'* olmalıdır `'MM/dd/yyyy HH:mm:ss'`. Kullanıcılar, test etmek için çalıştırabilirsiniz
+Bu sorguda, *\<DateTime alanı >* *03/26/2015 12:04:39*gibi bir düzene sahipse, *DateTime alanı > '\<deseninin* `'MM/dd/yyyy HH:mm:ss'`olması gerekir. Kullanıcılar, test etmek için çalıştırabilirsiniz
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -130,32 +130,32 @@ Bu sorguda kullanılan adlı, toplama ve dropoff konumları GPS koordinatların�
         and dropoff_latitude between 30 and 90
         limit 10;
 
-İki GPS koordinatlarını arasındaki uzaklık hesaplayın matematik denklemlerini bulunabilir <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">taşınabilir tür betikleri</a> site, Peter Lapisu tarafından yazıldı. Bu Javascript işlevi olarak `toRad()` tıpkı *lat_or_lon*Dereceyi radyana dönüştürür pi/180,. Burada, *lat_or_lon* enlem veya boylam. Hive işlevi sağlamadığından `atan2`, ancak işlev sağlar `atan`, `atan2` işlevi tarafından gerçekleştirilir `atan` sağlanan tanımı kullanarak yukarıdaki Hive sorgusu işlevinde <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
+İki GPS koordinatlarını arasındaki uzaklık hesaplayın matematik denklemlerini bulunabilir <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">taşınabilir tür betikleri</a> site, Peter Lapisu tarafından yazıldı. Bu JavaScript 'te işlev `toRad()`, Dereceyi radyana dönüştüren yalnızca Pi/180 *lat_or_lon*. Burada, *lat_or_lon* enlem veya boylam. Hive işlevi sağlamadığından `atan2`, ancak işlev sağlar `atan`, `atan2` işlevi tarafından gerçekleştirilir `atan` sağlanan tanımı kullanarak yukarıdaki Hive sorgusu işlevinde <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
 
 ![Çalışma alanı oluşturma](./media/create-features-hive/atan2new.png)
 
 Katıştırılmış UDF'ler bulunabilir Hive tam listesini **yerleşik işlevler** bölümünde <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>).  
 
-## <a name="tuning"></a> Gelişmiş konular: Sorgu hızını artırmak için Hive parametrelerini ayarlama
+## <a name="tuning"></a> Gelişmiş konular: Sorgu hızını artırmak için ayar Hive parametreleri
 Hive kümesinin varsayılan parametre ayarları Hive sorguları ve sorgular işlenirken veri için uygun olmayabilir. Bu bölümde, kullanıcılar Hive sorgularının performansını geliştirmek için dinleyebilirsiniz bazı parametreler açıklanmaktadır. Veri işleme sorgular önce sorguları ayarlama parametre eklemek kullanıcıların gerekir.
 
-1. **Java yığın alanı**: Büyük veri kümelerini katılma veya uzun kayıtları işleme içeren sorgular için **yığın alanı kalmadı çalıştıran** sık karşılaşılan biridir. Bu hata, parametreleri ayarlayarak önlenebilir *mapreduce.map.java.opts* ve *mapreduce.task.io.sort.mb* için istenen değerleri. Örnek aşağıda verilmiştir:
+1. **Java yığın alanı**: büyük veri kümelerini katılma veya uzun kayıtları işleme içeren sorgular için **yığın alanı kalmadı çalıştıran** sık karşılaşılan biridir. Bu hata, parametreleri ayarlayarak önlenebilir *mapreduce.map.java.opts* ve *mapreduce.task.io.sort.mb* için istenen değerleri. Örnek aşağıda verilmiştir:
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
     Bu parametre, Java yığın alanı için 4 GB bellek ayırır ve ayrıca sıralama daha verimli daha fazla bellek ayırarak yapar. Yığın alanı ilgili bir başarısızlık hatalarını herhangi bir iş varsa bu ayırmaları ile yürütmek için iyi bir fikirdir.
 
-1. **DFS bloğu boyutunu**: Bu parametre, en küçük birim dosya sistemi depolar veri ayarlar. DFS blok boyutu düşük ve en fazla 128 MB, ardından boyuttaki veriyi olursa örnek olarak, 128 MB tek bir blok içinde depolanır. 128 MB'den büyük veri, ek blokları atanır. 
+1. **DFS bloğu boyutunu**: Bu parametre en küçük birim dosya sistemi depolar veri ayarlar. DFS blok boyutu düşük ve en fazla 128 MB, ardından boyuttaki veriyi olursa örnek olarak, 128 MB tek bir blok içinde depolanır. 128 MB'den büyük veri, ek blokları atanır. 
 2. Ad düğümü dosyasıyla ilgili blok bulmak için çok daha fazla isteklerini işlemek olduğundan küçük blok boyutu seçme büyük ek yüklerini Hadoop neden olur. Bir önerilen ilgilenme gigabayt ile (veya daha büyük olduğunda) ayarı veriler:
 
         set dfs.block.size=128m;
 
-2. **Hive katılma işleminde en iyi duruma getirme**: Birleştirme işlemleri map/reduce Framework azaltın aşamasında, bazen bir yerde genellikle alırken çok büyük bir kazanç birleşimler ("mapjoins" olarak da bilinir) map aşamasında zamanlama tarafından gerçekleştirilebilir. Mümkün olduğunda bunu yapmak için Hive yönlendirmek için aşağıdakileri ayarlayın:
+2. **Hive katılma işleminde en iyi duruma getirme**: birleştirme işlemleri map/reduce Framework azaltın aşamasında, bazen bir yerde genellikle alırken çok büyük bir kazanç birleşimler ("mapjoins" olarak da bilinir) map aşamasında zamanlama tarafından gerçekleştirilebilir. Mümkün olduğunda bunu yapmak için Hive yönlendirmek için aşağıdakileri ayarlayın:
    
        set hive.auto.convert.join=true;
 
-3. **Hive için azaltıcının sayısını belirten**: Hadoop genişletin sayısını ayarlamasına olanak sağlar, ancak genellikle azaltıcının sayısı olan kullanıcı tarafından ayarlanamaz. Bu sayı denetimde bir ölçüde veren el Hadoop değişkenleri seçmektir *mapred.min.split.size* ve *mapred.max.split.size* her eşleme boyutu görev tarafından belirlenir:
+3. **Hive için azaltıcının sayısını belirten**: sırada Hadoop genişletin sayısını ayarlamak kullanıcının sağlar, azaltıcının sayısı genellikle kullanıcı tarafından ayarlanamaz. Bu sayı denetimde bir ölçüde veren el Hadoop değişkenleri seçmektir *mapred.min.split.size* ve *mapred.max.split.size* her eşleme boyutu görev tarafından belirlenir:
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    

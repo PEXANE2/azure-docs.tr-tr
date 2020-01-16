@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 866a7fdabaf51738333d8583bea5d0fa9fabf6f2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139847"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969284"
 ---
 # <a name="use-case---customer-profiling"></a>Kullanım Örneği - Müşteri Profili Oluşturma
 Azure Data Factory, çözüm Hızlandırıcıların Cortana Intelligence Suite uygulamak için kullanılan birçok hizmetlerden biridir.  Cortana Intelligence hakkında daha fazla bilgi için [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics)ziyaret edin. Bu belgede, Azure Data Factory ortak analiz sorunlarını nasıl çözebileceğini anlamak için basit bir kullanım durumu açıklıyoruz.
@@ -29,7 +29,7 @@ Contoso 'nun hedefi, oynatıcıların oyun geçmişine bağlı olarak, satış v
 Bu çözümde, contoso yakın zamanda başlatıldığı bir pazarlama kampanyasının verimliliğini değerlendirmek istiyor. Ham oyun günlükleri ile başlıyoruz, coğrafi konum verileri ile onları işleyebilir ve zenginleştirin, reklam başvuru verileriyle birleştirin ve son olarak, kampanyanın etkisini analiz etmek için bunları bir Azure SQL veritabanına kopyalayın.
 
 ## <a name="deploy-solution"></a>Çözümü dağıt
-Bu basit kullanım örneğini erişmeniz ve denemeniz, bir Azure [aboneliği](https://azure.microsoft.com/pricing/free-trial/), bir [Azure Blob depolama hesabı](../../storage/common/storage-quickstart-create-account.md)ve bir [Azure SQL veritabanı](../../sql-database/sql-database-get-started.md)olmalıdır. Müşteri profili oluşturma işlem hattını, veri fabrikanızın giriş sayfasındaki **örnek ardışık düzen** kutucuğundan dağıtırsınız.
+Bu basit kullanım örneğini erişmeniz ve denemeniz, bir Azure [aboneliği](https://azure.microsoft.com/pricing/free-trial/), bir [Azure Blob depolama hesabı](../../storage/common/storage-account-create.md)ve bir [Azure SQL veritabanı](../../sql-database/sql-database-get-started.md)olmalıdır. Müşteri profili oluşturma işlem hattını, veri fabrikanızın giriş sayfasındaki **örnek ardışık düzen** kutucuğundan dağıtırsınız.
 
 1. Bir veri fabrikası oluşturun veya var olan bir veri fabrikasını açın. Veri Fabrikası oluşturma adımları için [Data Factory kullanarak blob DEPOLAMADAN SQL veritabanına veri kopyalama](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) konusuna bakın.
 2. Data Factory için **Data Factory** dikey penceresinde **örnek işlem hatları** kutucuğuna tıklayın.

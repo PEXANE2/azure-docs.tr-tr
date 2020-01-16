@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.subservice: metrics
-ms.openlocfilehash: dd02fe17d5225a63f352069b3c6c5a47b7cbcb73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c1cdf912f9a1e4e8ae92baa4381e9705702136f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397286"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977582"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu ile klasik ölçüm uyarısı oluşturma
 Bu makalede, Azure ölçüm uyarılarını yapılandırmak için bir [Azure Resource Manager şablonunu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Bu, tüm kaynakların doğru şekilde izlendiğinden emin olmak için kaynaklardaki uyarıları otomatik olarak ayarlamanıza olanak sağlar.
@@ -27,7 +27,7 @@ Bu makalede, Azure ölçüm uyarılarını yapılandırmak için bir [Azure Reso
 Temel adımlar aşağıdaki gibidir:
 
 1. Uyarının nasıl oluşturulacağını açıklayan bir JSON dosyası olarak şablon oluşturun.
-2. [Herhangi bir dağıtım yöntemini kullanarak şablonu dağıtın](../../azure-resource-manager/resource-group-template-deploy.md).
+2. [Herhangi bir dağıtım yöntemini kullanarak şablonu dağıtın](../../azure-resource-manager/templates/deploy-powershell.md).
 
 Aşağıda, tek başına bir uyarı için önce bir Kaynak Yöneticisi şablonu oluşturmayı ve sonra başka bir kaynağın oluşturulması sırasında bir uyarının nasıl oluşturulacağını anladık.
 

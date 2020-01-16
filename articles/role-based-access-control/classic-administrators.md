@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554234"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979334"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure klasik abonelik yöneticileri
 
-Microsoft, rol tabanlı erişim denetimi (RBAC) kullanarak Azure kaynaklarına erişimi yönetmenizi önerir. Ancak yine de klasik dağıtım modelini kullanıyorsanız, klasik bir abonelik yönetici rolü kullanmanız gerekir: Hizmet Yöneticisi ve ortak yönetici. Daha fazla bilgi için bkz. [Azure Resource Manager ile klasik dağıtım](../azure-resource-manager/resource-manager-deployment-model.md).
+Microsoft, rol tabanlı erişim denetimi (RBAC) kullanarak Azure kaynaklarına erişimi yönetmenizi önerir. Ancak yine de klasik dağıtım modelini kullanıyorsanız, klasik bir abonelik yönetici rolü kullanmanız gerekir: Hizmet Yöneticisi ve ortak yönetici. Daha fazla bilgi için bkz. [Azure Resource Manager ile klasik dağıtım](../azure-resource-manager/management/deployment-models.md).
 
 Bu makalede, ortak yönetici ve hizmet yöneticisi rollerinin nasıl ekleneceği ve değiştirileceği ve hesap yöneticisinin nasıl görüntüleneceği açıklanır.
 
@@ -62,7 +62,7 @@ Dizininize Konuk Kullanıcı ekleme hakkında daha fazla bilgi için, bkz. [Azur
 
 ### <a name="differences-for-guest-users"></a>Konuk kullanıcılar için farklılıklar
 
-Ortak yönetici rolüne atanan Konuk kullanıcılar, ortak yönetici rolüne sahip üye kullanıcılarla karşılaştırıldığında bazı farklılıklar görebilirler. Aşağıdaki senaryoyu göz önünde bulundurun:
+Ortak yönetici rolüne atanan Konuk kullanıcılar, ortak yönetici rolüne sahip üye kullanıcılarla karşılaştırıldığında bazı farklılıklar görebilirler. Aşağıdaki senaryoyu ele alalım:
 
 - Bir Azure AD hesabı (iş veya okul hesabı) olan A kullanıcısı, bir Azure aboneliği için hizmet yöneticisidir.
 - B kullanıcısının bir Microsoft hesabı vardır.
@@ -89,7 +89,7 @@ Konuk kullanıcının bu görevleri gerçekleştirebilmesi gerekiyorsa, Konuk ku
 
 1. Kaldırmak istediğiniz ortak yöneticinin yanına onay işareti ekleyin.
 
-1. **Kaldır**' a tıklayın.
+1. **Kaldır**’a tıklayın.
 
 1. Görüntülenen ileti kutusunda **Evet**' e tıklayın.
 
@@ -101,7 +101,7 @@ Yalnızca hesap yöneticisi bir abonelik için hizmet yöneticisini değiştireb
 
 Hizmet Yöneticisi’ni değiştirmenin iki yolu vardır. **Azure Portal** veya **Hesap Merkezi**' nde değişiklik yapabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure Portal
 
 1. Service Administrators 'ı değiştirme sınırlamalarını denetleyerek senaryonuzun desteklendiğinden emin olun.
 
@@ -143,8 +143,8 @@ Azure aboneliği başına yalnızca bir hizmet yöneticisi olabilir. Hizmet yön
 
 | Hesap yönetici hesabı | Hizmet Yöneticisi farklı bir Microsoft hesabı değiştirilebilir mi? | Hizmet yöneticisini aynı dizindeki bir Azure AD hesabına değiştirebilir mi? | Hizmet Yöneticisi 'ni farklı bir dizinde Azure AD hesabı olarak değiştirebilir miyim? |
 | --- | --- | --- | --- |
-| Microsoft hesabı | Yes | Hayır | Hayır |
-| Azure AD hesabı | Yes | Yes | Hayır |
+| Microsoft hesabı | Evet | Hayır | Hayır |
+| Azure AD hesabı | Evet | Evet | Hayır |
 
 Hesap Yöneticisi bir Azure AD hesabı ise, hizmet yöneticisini aynı dizinde bir Azure AD hesabı olarak değiştirebilirsiniz, ancak farklı bir dizinde kullanamazsınız. Örneğin abby@contoso.com, hizmet yöneticisini bob@contoso.comolarak değiştirebilir, ancak john@notcontoso.com contoso.com dizininde bir varlık olmadığı müddetçe hizmet yöneticisini john@notcontoso.com olarak değiştiremezler.
 
@@ -152,7 +152,7 @@ Microsoft hesapları ve Azure AD hesapları hakkında daha fazla bilgi için bkz
 
 ## <a name="view-the-account-administrator"></a>Hesap yöneticisini görüntüle
 
-Hesap Yöneticisi, başlangıçta Azure aboneliğine kaydolan ve aboneliğin fatura sahibi olarak sorumlu olan Kullanıcı olur. Bir aboneliğin hesap yöneticisini değiştirmek için bkz. bir [Azure aboneliğinin sahipliğini başka bir hesaba aktarma](../billing/billing-subscription-transfer.md).
+Hesap Yöneticisi, başlangıçta Azure aboneliğine kaydolan ve aboneliğin fatura sahibi olarak sorumlu olan Kullanıcı olur. Bir aboneliğin hesap yöneticisini değiştirmek için bkz. bir [Azure aboneliğinin sahipliğini başka bir hesaba aktarma](../cost-management-billing/manage/billing-subscription-transfer.md).
 
 Hesap yöneticisini görüntülemek için aşağıdaki adımları izleyin.
 
@@ -170,4 +170,4 @@ Hesap yöneticisini görüntülemek için aşağıdaki adımları izleyin.
 
 * [Azure'daki farklı rolleri anlama](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [RBAC ve Azure portalını kullanarak Azure kaynaklarına erişimi yönetme](../role-based-access-control/role-assignments-portal.md)
-* [Azure aboneliği yöneticileri ekleme veya değiştirme](../billing/billing-add-change-azure-subscription-administrator.md)
+* [Azure aboneliği yöneticileri ekleme veya değiştirme](../cost-management-billing/manage/add-change-subscription-administrator.md)

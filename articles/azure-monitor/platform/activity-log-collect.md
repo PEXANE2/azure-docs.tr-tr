@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: f4612232acfe6099c56d365e482cbc82c8436dee
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2bf2f012e553e08a1eb829f93d9af0f0e74f638b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745617"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977651"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplayın ve çözümleyin
 
 > [!WARNING]
-> Artık, kaynak günlüklerini topladığınıza benzer bir tanılama ayarı kullanarak, etkinlik günlüğünü bir Log Analytics çalışma alanında toplayabilirsiniz. Bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplayın ve çözümleyin](diagnostic-settings-subscription.md).
+> Artık, kaynak günlüklerini topladığınıza benzer bir tanılama ayarı kullanarak, etkinlik günlüğünü bir Log Analytics çalışma alanında toplayabilirsiniz. Bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplayın ve çözümleyin](diagnostic-settings-legacy.md).
 
 [Azure etkinlik günlüğü](platform-logs-overview.md) , Azure aboneliğinizde oluşan abonelik düzeyi olaylar hakkında öngörüler sağlar. Bu makalede, Etkinlik günlüğünün bir Log Analytics çalışma alanında nasıl toplanacağı ve bu verileri çözümlemek için günlük sorguları ve görünümler sağlayan Etkinlik Günlüğü Analizi [izleme çözümünün](../insights/solutions.md)nasıl kullanılacağı açıklanır. 
 
@@ -32,7 +32,7 @@ Etkinlik günlüğünü bir Log Analytics çalışma alanına bağlamak aşağı
 Aynı Azure kiracısındaki birden çok abonelik için etkinlik günlüğüne tek bir çalışma alanı bağlanabilir. Birden çok kiracının genelinde koleksiyon için bkz. [Azure etkinlik günlüklerini farklı Azure Active Directory kiracılardaki abonelikler arasında Log Analytics çalışma alanında toplama](activity-log-collect-tenants.md).
 
 > [!IMPORTANT]
-> Microsoft. Operationalınsights ve Microsoft. OperationsManagement kaynak sağlayıcılarının aboneliğiniz için kayıtlı olmadığı durumlarda aşağıdaki yordamla bir hata alabilirsiniz. Bu sağlayıcıları kaydetmek için bkz. [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/resource-manager-supported-services.md) .
+> Microsoft. Operationalınsights ve Microsoft. OperationsManagement kaynak sağlayıcılarının aboneliğiniz için kayıtlı olmadığı durumlarda aşağıdaki yordamla bir hata alabilirsiniz. Bu sağlayıcıları kaydetmek için bkz. [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/management/resource-providers-and-types.md) .
 
 Etkinlik günlüğünü Log Analytics çalışma alanınıza bağlamak için aşağıdaki yordamı kullanın:
 

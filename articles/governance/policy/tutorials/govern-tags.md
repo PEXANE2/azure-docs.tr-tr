@@ -3,16 +3,16 @@ title: 'Öğretici: etiket yönetimini yönetme'
 description: Bu öğreticide, yeni ve mevcut kaynaklarda bir etiket idare modeli oluşturmak ve zorlamak için Azure Ilkesinin değiştirme efektini kullanırsınız.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: e3d6e279b293ea8063c690f9fb69a6f183b2838d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482259"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965994"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Öğretici: Azure Ilkesiyle etiket yönetimini yönetme
 
-[Etiketler](../../../azure-resource-manager/resource-group-using-tags.md) , Azure kaynaklarınızı bir taksonomi halinde düzenlemenin önemli bir parçasıdır. [Etiket yönetimi için en iyi yöntemleri](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)takip eden Etiketler, Azure ilkesi ile iş ilkelerinizi uygulamak veya [maliyet yönetimi ile maliyetleri izlemek](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources)için temel olabilir.
+[Etiketler](../../../azure-resource-manager/management/tag-resources.md) , Azure kaynaklarınızı bir taksonomi halinde düzenlemenin önemli bir parçasıdır. [Etiket yönetimi için en iyi yöntemleri](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)takip eden Etiketler, Azure ilkesi ile iş ilkelerinizi uygulamak veya [maliyet yönetimi ile maliyetleri izlemek](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources)için temel olabilir.
 Etiketlerin nasıl veya neden kullanıldığı önemli değildir. bu etiketleri Azure kaynaklarınıza hızlıca ekleyebilir, değiştirebilir ve kaldırabilirsiniz.
 
 Azure Ilkesinin [değişiklik](../concepts/effects.md#modify) etkisi, hangi kaynak İdaresi aşamasına bakılmaksızın etiketlerin tasarlanmasına yardımcı olmak için tasarlanmıştır. **Değiştirme** şu durumlarda yardımcı olur:
@@ -28,7 +28,7 @@ Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
 > - Her gereksinimi bir ilke tanımına eşleyin
 > - Etiket ilkelerini bir girişim olarak gruplayın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -198,13 +198,13 @@ Yukarıdaki etiket ilkeleri oluşturulduktan sonra, etiket yönetimi için tek b
 
 İşiniz bittiğinde, bu öğreticiden kaynaklarla çalışmak, atamaları veya tanımları yukarıda oluşturulan silmek için aşağıdaki adımları kullanın:
 
-1. Azure Ilkesi sayfasının sol tarafında **yazma** ' nın altında **tanımlar** (veya atamayı silmeye çalışıyorsanız **atamalar** ) ' ı seçin.
+1. Seçin **tanımları** (veya **atamaları** atamayı silmeye çalışıyorsanız) altında **yazma** Azure İlkesi sayfasının sol tarafında.
 
 1. Kaldırmak istediğiniz yeni girişim veya tanımını (ya da atamayı) arayın.
 
 1. Satıra sağ tıklayın ya da tanımın (veya atamanın) sonundaki üç noktayı seçip **Tanımı sil** (veya **Atamayı sil**) öğesini seçin.
 
-## <a name="review"></a>Gözden geçirme
+## <a name="review"></a>Gözden Geçir
 
 Bu öğreticide, aşağıdaki görevler hakkında bilgi edindiniz:
 

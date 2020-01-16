@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 0002e61827817af958007e1f789219e9291990d8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5e410dc4e7f47223430497825dc2a26e41c6af67
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647773"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979561"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Uç nokta erişim denetim listesi nedir?
 
 > [!IMPORTANT]
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı [dağıtım modeli](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vardır: Kaynak Yöneticisi ve klasik. Bu makale klasik dağıtım modelini incelemektedir. Microsoft, en yeni dağıtımların Kaynak Yöneticisi dağıtım modelini kullanmasını önerir. 
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı [dağıtım modeli](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vardır: Kaynak Yöneticisi ve klasik. Bu makale klasik dağıtım modelini incelemektedir. Microsoft, en yeni dağıtımların Kaynak Yöneticisi dağıtım modelini kullanmasını önerir. 
 
 Bir uç nokta erişim denetim listesi (ACL), Azure dağıtımınız için kullanılabilen bir güvenlik geliştirmedir. ACL, bir sanal makine uç noktası için isteğe bağlı olarak izin verme veya reddetme yeteneği sağlar. Bu paket filtreleme özelliği, ek bir güvenlik katmanı sağlar. Yalnızca uç noktalar için ağ ACL 'Leri belirtebilirsiniz. Bir sanal ağ veya bir sanal ağda yer alan belirli bir alt ağ için bir ACL belirtemezsiniz. Mümkün olduğunda, ACL 'Ler yerine ağ güvenlik grupları (NSG) kullanılması önerilir. NSG 'leri kullanırken, uç nokta erişim denetim listesi değiştirilirler ve artık uygulanmaz. NSG 'ler hakkında daha fazla bilgi için bkz. [ağ güvenlik grubuna genel bakış](security-overview.md)
 

@@ -3,7 +3,7 @@ title: Görevleri diğer görevlerin tamamlanmasına göre çalıştırmak için
 description: Azure Batch, MapReduce stilini ve benzer büyük veri iş yüklerini işlemeye yönelik diğer görevlerin tamamlanmasına bağlı görevler oluşturun.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a1378a5c00acbbce5e7ec73a75902ec55140575
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 875e0314c41a6bb277769361b6faa0345312db2b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094614"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026239"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Diğer görevlere bağımlı görevleri çalıştırmak için görev bağımlılıkları oluşturma
 
@@ -37,10 +37,10 @@ Varsayılan olarak, bağımlı görevler yalnızca üst görev başarıyla tamam
 Bire bir veya bire çok ilişkisinde diğer görevlere bağımlı görevler oluşturabilirsiniz. Ayrıca, bir görevin belirli bir görev kimliği aralığı içindeki bir görev grubunun tamamlanmasına bağlı olduğu bir Aralık bağımlılığı da oluşturabilirsiniz. Çoktan çoğa ilişkiler oluşturmak için bu üç temel senaryoyu birleştirebilirsiniz.
 
 ## <a name="task-dependencies-with-batch-net"></a>Batch .NET ile görev bağımlılıkları
-Bu makalede, [Batch .net][net_msdn] kitaplığı 'nı kullanarak görev bağımlılıklarını yapılandırmayı tartıştık. Önce, işlerinizde [görev bağımlılığını](#enable-task-dependencies) nasıl etkinleştireceğinizi ve ardından [bağımlılıklara sahip bir görevin nasıl yapılandırılacağını](#create-dependent-tasks)gösterir. Ayrıca, üst öğe başarısız olursa bağımlı görevleri çalıştırmak için bir bağımlılık eyleminin nasıl belirtildüğüne de açıklıyoruz. Son olarak, Batch 'nin desteklediği [bağımlılık senaryolarını](#dependency-scenarios) tartıştık.
+Bu makalede, [Batch .net][net_msdn] kitaplığı 'nı kullanarak görev bağımlılıklarını yapılandırmayı tartıştık. Önce, işlerinizde [görev bağımlılığını nasıl etkinleştireceğinizi](#enable-task-dependencies) ve ardından [bağımlılıklara sahip bir görevin nasıl yapılandırılacağını](#create-dependent-tasks)gösterir. Ayrıca, üst öğe başarısız olursa bağımlı görevleri çalıştırmak için bir bağımlılık eyleminin nasıl belirtildüğüne de açıklıyoruz. Son olarak, Batch 'nin desteklediği [bağımlılık senaryolarını](#dependency-scenarios) tartıştık.
 
 ## <a name="enable-task-dependencies"></a>Görev bağımlılıklarını etkinleştir
-Batch uygulamanızda görev bağımlılıklarını kullanmak için, önce görevi görev bağımlılıklarını kullanacak şekilde yapılandırmanız gerekir. Batch .NET sürümünde, [Usestaskdependencies][net_usestaskdependencies] özelliğini olarak `true`ayarlayarak [cloudişiniz][net_cloudjob] üzerinde etkinleştirin:
+Batch uygulamanızda görev bağımlılıklarını kullanmak için, önce görevi görev bağımlılıklarını kullanacak şekilde yapılandırmanız gerekir. Batch .NET sürümünde, [Usestaskdependencies][net_usestaskdependencies] özelliğini `true`olarak ayarlayarak [cloudişiniz][net_cloudjob] üzerinde etkinleştirin:
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -67,25 +67,25 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Bu kod parçacığı, görev KIMLIĞI "çiçekler" olan bağımlı bir görev oluşturur. "Çiçekler" görevi "yağmur" ve "Sun" görevlerine bağlıdır. Görev "çiçekler", yalnızca "yağmur" ve "Sun" görevleri başarıyla tamamlandıktan sonra bir işlem düğümünde çalışacak şekilde zamanlanır.
 
 > [!NOTE]
-> Varsayılan olarak, bir görevin **tamamlandı** durumunda olduğu ve **Çıkış kodu** olduğu `0`zaman başarıyla tamamlandı olarak kabul edilir. Batch .NET sürümünde bu, [Cloudtask][net_cloudtask]anlamına gelir. [Durum][net_taskstate] özelliği değeri `Completed` ve cloudtask 'ın [taskexecutionınformation][net_taskexecutioninformation].[ ExitCode][net_exitcode] Özellik değeri `0`. Bunun nasıl değiştirileceği için [bağımlılık eylemleri](#dependency-actions) bölümüne bakın.
+> Varsayılan olarak, bir görevin **tamamlandı** durumunda olduğu kabul edilir ve **Çıkış kodu** `0`. Batch .NET sürümünde bu, [Cloudtask][net_cloudtask]anlamına gelir. `Completed` ve CloudTask 'ın [Taskexecutionınformation][net_taskexecutioninformation]özelliğinin [durum][net_taskstate] özelliği değeri. [ExitCode][net_exitcode] özellik değeri `0`. Bunun nasıl değiştirileceği için [bağımlılık eylemleri](#dependency-actions) bölümüne bakın.
 > 
 > 
 
 ## <a name="dependency-scenarios"></a>Bağımlılık senaryoları
 Azure Batch kullanabileceğiniz üç temel görev bağımlılığı senaryosu vardır: bire bir, bire çok ve görev KIMLIĞI aralığı bağımlılığı. Bunlar, çok-çok dördüncü bir senaryoyu sağlamak için birleştirilebilir.
 
-| Senaryon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Örnek |  |
+| Senaryo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Örnek |  |
 |:---:| --- | --- |
-|  [Bire bir](#one-to-one) |*Taskb* , *Taska* 'a bağımlıdır <p/> *Taskb* , tasü başarıyla tamamlanana kadar yürütülmek üzere zamanlanmayacak |![Diyagram: bire bir görev bağımlılığı][1] |
+|  [Bire bir](#one-to-one) |*Taskb* , *Taska* 'a bağımlıdır <p/> *Taskb* , *tasü* başarıyla tamamlanana kadar yürütülmek üzere zamanlanmayacak |![Diyagram: bire bir görev bağımlılığı][1] |
 |  [Bire çok](#one-to-many) |*görevC* hem *görevA* hem de *görevB*’ye bağlıdır <p/> *Taskc* , hem *Taska* hem de *taskb* başarıyla tamamlanana kadar yürütülmek üzere zamanlanmayacak |![Diyagram: bire çok görev bağımlılığı][2] |
-|  [Görev KIMLIĞI aralığı](#task-id-range) |*Taskd* , bir dizi göreve bağlıdır <p/> *1* ile *10* arasındaki görevler başarıyla tamamlanana kadar *taskd* yürütme için zamanlanmayacak |![Çizimindeki Görev kimliği aralığı bağımlılığı][3] |
+|  [Görev KIMLIĞI aralığı](#task-id-range) |*Taskd* , bir dizi göreve bağlıdır <p/> *1* ile *10* arasındaki görevler başarıyla tamamlanana kadar *taskd* yürütme için zamanlanmayacak |![Diyagram: görev kimliği aralığı bağımlılığı][3] |
 
 > [!TIP]
 > C, D, E ve F görevlerinin A ve B görevlerine bağlı olduğu durumlar gibi **çoktan çoğa** ilişkiler de oluşturabilirsiniz. Bu, örneğin, aşağı akış görevlerinizin birden çok yukarı akış görevinin çıktısına bağlı olduğu paralel ön işleme senaryolarında yararlıdır.
 > 
 > Bu bölümdeki örneklerde, bağımlı bir görev yalnızca üst görevler başarıyla tamamlandıktan sonra çalışır. Bu davranış, bağımlı bir görev için varsayılan davranıştır. Bir üst görev başarısız olduktan sonra, varsayılan davranışı geçersiz kılmak için bir bağımlılık eylemi belirterek, bağımlı bir görevi çalıştırabilirsiniz. Ayrıntılar için [bağımlılık eylemleri](#dependency-actions) bölümüne bakın.
 
-### <a name="one-to-one"></a>Bire bir
+### <a name="one-to-one"></a>Bir-bir
 Bire bir ilişkide, bir görev bir üst görevin başarıyla tamamlanmasına bağlıdır. Bağımlılığı oluşturmak için, [Taskdependencies][net_taskdependencies]'e tek BIR görev kimliği sağlayın. [Cloudtask][net_cloudtask]'ın [bağımlıdson][net_dependson] özelliğini doldurduğunuzda [onıd][net_onid] static yöntemi.
 
 ```csharp
@@ -120,9 +120,9 @@ Bir üst görev aralığına bir bağımlılık içinde, bir görev, kimlikleri 
 Bağımlılığı oluşturmak için, [Taskdependencies][net_taskdependencies]aralığındaki ilk ve son görev kimliklerini sağlayın. [Cloudtask][net_cloudtask]'ın [bağımlıdson][net_dependson] özelliğini doldurduğunuzda [onıdrange][net_onidrange] statik yöntemi.
 
 > [!IMPORTANT]
-> Bağımlılıklarınız için görev KIMLIĞI aralıklarını kullandığınızda, yalnızca tamsayı değerlerini temsil eden kimlikleri olan görevler Aralık tarafından seçilir. Bu nedenle, `1..10` Aralık `3` `7`görevleri seçer, ancak değil `5flamingoes`. 
+> Bağımlılıklarınız için görev KIMLIĞI aralıklarını kullandığınızda, yalnızca tamsayı değerlerini temsil eden kimlikleri olan görevler Aralık tarafından seçilir. Bu nedenle `1..10` Aralık, görevleri `3` ve `7`, ancak `5flamingoes`değil. 
 > 
-> Aralık bağımlılıkları değerlendirilirken öndeki sıfırlar önemli değildir, bu nedenle `4`dize tanımlayıcıları `04` olan görevler, ve `004` hepsi Aralık *dahilinde* olur ve hepsi görev `4`olarak değerlendirilir ve bu nedenle ilki tamamlamak için bağımlılığı karşılar.
+> Aralık bağımlılıklarını değerlendirirken öndeki sıfırlar önemli değildir, bu nedenle `004` `04` `4`dize tanımlayıcıları olan görevlerin tümü Aralık *dahilinde* olur ve bunların hepsi görev `4`olarak kabul edilir; bu nedenle, tamamlamak için ilki bağımlılığı karşılar.
 > 
 > Aralıktaki her görevin, başarıyla tamamlanarak ya da **karşılamak**üzere ayarlanmış bir bağımlılık eylemine eşlenmiş bir hata ile tamamlayarak bağımlılığı karşılaması gerekir. Ayrıntılar için [bağımlılık eylemleri](#dependency-actions) bölümüne bakın.
 >
@@ -158,14 +158,14 @@ Bağımlılık eylemi, üst görevin çıkış koşulunu temel alır. Aşağıda
 - Bir dosya karşıya yükleme hatası oluştuğunda. Görev, **ExitCodes** veya **Exitcoderanges**ile belirtilen bir çıkış koduyla karşılaşıyorsa ve karşıya dosya yükleme hatasıyla karşılaşırsa, çıkış kodu tarafından belirtilen eylem önceliklidir.
 - Görev, **ExitCodes** özelliği tarafından tanımlanan bir çıkış kodu ile çıktığında.
 - Görev, **Exitcoderanges** özelliği tarafından belirtilen bir aralık dahilinde çıkış kodu ile çıktığında.
-- Varsayılan durum, görev **ExitCodes** veya **Exitcoderanges**tarafından tanımlanmayan bir çıkış kodu ile çıkış yaptığında veya görev bir ön Işleme hatasıyla çıkarsa ve **PreProcessingError** özelliği ayarlanmamışsa veya görev bir dosya yükleme hatasıyla başarısız olursa ve **Fileuploaderror** özelliği ayarlanmadı. 
+- Varsayılan durum, görev **ExitCodes** veya **Exitcoderanges**tarafından tanımlanmayan bir çıkış kodu ile çıkış yaptığında veya görev bir ön Işleme hatasıyla çıkarsa ve **PreProcessingError** özelliği ayarlanmamışsa ya da görev bir dosya yükleme hatasıyla başarısız olursa ve **fileuploaderror** özelliği ayarlanmamışsa. 
 
 .NET ' te bir bağımlılık eylemi belirtmek için [Exitoptions][net_exitoptions]' ı ayarlayın. Çıkış koşulunun [DependencyAction][net_dependencyaction] özelliği. **DependencyAction** özelliği iki değerden birini alır:
 
-- **DependencyAction** özelliğinin uygun olarak ayarlanması , üst görev belirtilen bir hatayla sonlandırılmadığı takdirde bağımlı görevlerin çalışmaya uygun olduğunu gösterir.
+- **DependencyAction** özelliğinin uygun olarak ayarlanması, üst görev belirtilen bir hatayla sonlandırılmadığı takdirde bağımlı görevlerin çalışmaya uygun **olduğunu gösterir.**
 - **DependencyAction** özelliğinin **blok** olarak ayarlanması bağımlı görevlerin çalıştırmaya uygun olmadığını gösterir.
 
-**DependencyAction** özelliği için varsayılan ayar, çıkış kodu 0 ve diğer tüm çıkış koşulları için **engellenir** .
+**DependencyAction** özelliği için varsayılan ayar, çıkış kodu 0 ve diğer tüm çıkış **Koşulları için** **engellenir** .
 
 Aşağıdaki kod parçacığı, bir üst görev için **DependencyAction** özelliğini ayarlar. Üst görev bir ön işleme hatasıyla veya belirtilen hata kodlarıyla çıkış içeriyorsa, bağımlı görev engellenir. Üst görev sıfır olmayan başka bir hatayla sonlandıysanız, bağımlı görev çalışmaya uygundur.
 
@@ -211,7 +211,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 ### <a name="application-deployment"></a>Uygulama dağıtımı
-Batch 'in [uygulama paketleri](batch-application-packages.md) özelliği, görevlerinizin işlem düğümlerinde yürüteceği uygulamaların dağıtılması ve sürümü için kolay bir yol sağlar.
+Batch 'in uygulama paketleri özelliği, görevlerinizin işlem düğümlerinde [yürüteceği](batch-application-packages.md) uygulamaların dağıtılması ve sürümü için kolay bir yol sağlar.
 
 ### <a name="installing-applications-and-staging-data"></a>Uygulamaları yükleme ve verileri hazırlama
 Düğümlerinizi görevleri çalıştıracak şekilde hazırlama yöntemlerine genel bakış için, bkz. Azure Batch forumundaki [Batch işlem düğümlerinde uygulamalar yükleme ve veri hazırlama][forum_post] . Azure Batch takım üyelerinden biri tarafından yazılan bu gönderi, uygulamaları, görev girişi verilerini ve diğer dosyaları işlem düğümleriniz üzerine kopyalamanın farklı yollarına bir örnektir.

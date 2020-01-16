@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 488130fbd2939fa4d98e379126ba3353a417fd72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5ff9c45ffb636f53951a763f617c25a2e8c09088
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401758"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977731"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Yönetim çözümüne Log Analytics kaydedilmiş aramalar ve uyarılar ekleme (Önizleme)
 
@@ -23,7 +23,7 @@ ms.locfileid: "75401758"
 > [!NOTE]
 > Bu, şu anda önizleme aşamasında olan yönetim çözümlerini oluşturmaya yönelik bir belgedir. Aşağıda açıklanan tüm şemalarla değişiklik yapılır.
 
-[Yönetim çözümleri](solutions.md) , çözüm tarafından toplanan verileri çözümlemek için genellikle Log Analytics ' a [kaydedilmiş aramaları](../../azure-monitor/log-query/log-query-overview.md) içerir. Ayrıca, kullanıcıya bildirimde bulunan [uyarıları](../../azure-monitor/platform/alerts-overview.md) tanımlayabilir veya kritik bir soruna yanıt olarak otomatik olarak işlem yapması gerekebilir. Bu makalede, [yönetim çözümlerine](solutions-creating.md)eklenmek üzere bir [kaynak yönetimi şablonunda](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) Log Analytics kayıtlı aramaların ve uyarıların nasıl tanımlanacağı açıklanmaktadır.
+[Yönetim çözümleri](solutions.md) , çözüm tarafından toplanan verileri çözümlemek için genellikle Log Analytics ' a [kaydedilmiş aramaları](../../azure-monitor/log-query/log-query-overview.md) içerir. Ayrıca, kullanıcıya bildirimde bulunan [uyarıları](../../azure-monitor/platform/alerts-overview.md) tanımlayabilir veya kritik bir soruna yanıt olarak otomatik olarak işlem yapması gerekebilir. Bu makalede, [yönetim çözümlerine](solutions-creating.md)eklenmek üzere bir [kaynak yönetimi şablonunda](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) Log Analytics kayıtlı aramaların ve uyarıların nasıl tanımlanacağı açıklanmaktadır.
 
 > [!NOTE]
 > Bu makaledeki örneklerde, yönetim çözümlerinde gerekli veya ortak olan ve [Azure 'da bir yönetim çözümü tasarlama ve derleme](solutions-creating.md) konularında açıklanan parametreleri ve değişkenleri kullanır

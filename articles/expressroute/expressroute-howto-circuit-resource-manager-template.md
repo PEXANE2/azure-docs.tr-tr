@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
-ms.openlocfilehash: 25ed38e72f5a21622a87e36ad811ffd66f6a4c90
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083522"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981147"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak bir ExpressRoute devresi oluşturma
 
@@ -80,9 +80,9 @@ Bir olay hub 'ı oluşturmak birkaç dakika sürer.
 
 Azure PowerShell, bu öğreticide şablonu dağıtmak için kullanılır. Diğer şablon dağıtım yöntemleri için bkz.:
 
-* [Azure Portal kullanarak](../azure-resource-manager/resource-group-template-deploy-portal.md).
-* [Azure CLI kullanarak](../azure-resource-manager/resource-group-template-deploy-cli.md).
-* [REST API kullanarak](../azure-resource-manager/resource-group-template-deploy-rest.md).
+* [Azure Portal kullanarak](../azure-resource-manager/templates/deploy-portal.md).
+* [Azure CLI kullanarak](../azure-resource-manager/templates/deploy-cli.md).
+* [REST API kullanarak](../azure-resource-manager/templates/deploy-rest.md).
 
 ## <a name="delete"></a>Sağlama kaldırmayı ve bir ExpressRoute bağlantı hattı siliniyor
 

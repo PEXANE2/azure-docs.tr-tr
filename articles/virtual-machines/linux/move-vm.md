@@ -15,22 +15,22 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 8fc04b4689ea8707ac2c605e3e4242a117773151
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2ba8a8cdc324f46e25f9665cfce0aa07fc948e88
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035641"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979034"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Linux VM 'yi başka bir aboneliğe veya kaynak grubuna taşıma
 Bu makalede, bir Linux sanal makinesini (VM) kaynak grupları veya abonelikler arasında taşıma işlemi adım adım gösterilmektedir. Bir VM 'yi abonelikler arasında taşımak, kişisel abonelikte bir VM oluşturduysanız ve şimdi bunu şirketinizin aboneliğine taşımak istiyorsanız yararlı olabilir.
 
 > [!IMPORTANT]
->Şu anda Azure yönetilen disklerini taşıyamazsınız. 
+>Şu anda Azure yönetilen disklerini taşıyamazsınız.
 >
->Yeni kaynak kimlikleri taşımanın bir parçası olarak oluşturulur. VM taşındıktan sonra, yeni kaynak kimliklerini kullanmak için araçlarınızı ve betikleri güncelleştirmeniz gerekecektir. 
-> 
-> 
+>Yeni kaynak kimlikleri taşımanın bir parçası olarak oluşturulur. VM taşındıktan sonra, yeni kaynak kimliklerini kullanmak için araçlarınızı ve betikleri güncelleştirmeniz gerekecektir.
+>
+>
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Azure CLı kullanarak bir VM 'yi taşıma
 
@@ -72,5 +72,4 @@ Belirtilen kaynakları taşımak istediğinizi onaylamanız istendiğinde, onayl
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kaynak grupları ve abonelikler arasında birçok farklı kaynak türünü taşıyabilirsiniz. Daha fazla bilgi için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../../resource-group-move-resources.md).    
-
+Kaynak grupları ve abonelikler arasında birçok farklı kaynak türünü taşıyabilirsiniz. Daha fazla bilgi için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md).    

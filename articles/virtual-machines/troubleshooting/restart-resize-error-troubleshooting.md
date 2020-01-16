@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd05f9f7db0db22759c5e19dbfb59cc377e63f4d
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155460"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965617"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Azure 'da mevcut bir Windows VM 'yi yeniden başlatma veya yeniden boyutlandırma ile ilgili dağıtım sorunlarını giderme
 Durdurulmuş bir Azure sanal makinesini (VM) başlatmaya veya mevcut bir Azure VM 'yi yeniden boyutlandırmaya çalıştığınızda, karşılaştığınız ortak hata bir ayırma hatasıdır. Bu hata, küme veya bölgenin kullanılabilir kaynakları yoksa veya istenen VM boyutunu destekleyemezse oluşur.
@@ -28,30 +28,30 @@ Durdurulmuş bir Azure sanal makinesini (VM) başlatmaya veya mevcut bir Azure V
 ## <a name="collect-activity-logs"></a>Etkinlik günlüklerini topla
 Sorun gidermeye başlamak için, sorunla ilişkili hatayı belirlemek üzere etkinlik günlüklerini toplayın. Aşağıdaki bağlantılar işlemle ilgili ayrıntılı bilgiler içerir:
 
-[Dağıtım işlemlerini görüntüleme](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Dağıtım işlemlerini görüntüleme](../../azure-resource-manager/templates/deployment-history.md)
 
 [Azure kaynaklarını yönetmek için etkinlik günlüklerini görüntüleme](../../resource-group-audit.md)
 
-## <a name="issue-error-when-starting-a-stopped-vm"></a>Sorun: Durdurulmuş bir VM başlatılırken hata oluştu
+## <a name="issue-error-when-starting-a-stopped-vm"></a>Sorun: durdurulmuş bir VM başlatılırken hata oluştu
 Durdurulmuş bir VM başlatmaya ve bir ayırma hatası almaya çalışırsınız.
 
 ### <a name="cause"></a>Nedeni
 Durdurulan VM 'yi başlatma isteği, bulut hizmetini barındıran orijinal kümede denenmelidir. Ancak, kümede isteği yerine getirmek için kullanılabilir boş alan yok.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 * Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun ve ardından her VM 'yi yeniden başlatın.
   
   1. Kaynak **grupları** > *kaynak*grupları > 'natıklayın*kullanılabilirlik kümesi* **sanal makineleriniz**sanal makineniz >  >  > *Durdur.*  > 
   2. Tüm VM 'Ler durduktan sonra, durdurulan sanal makinelerin her birini seçin ve Başlat ' a tıklayın.
 * Yeniden başlatma isteğini daha sonra yeniden deneyin.
 
-## <a name="issue-error-when-resizing-an-existing-vm"></a>Sorun: Var olan bir VM 'yi yeniden boyutlandırırken hata
+## <a name="issue-error-when-resizing-an-existing-vm"></a>Sorun: var olan bir VM yeniden boyutlandırılırken hata
 Mevcut bir VM 'yi yeniden boyutlandırmaya ve bir ayırma hatası almaya çalışırsınız.
 
 ### <a name="cause"></a>Nedeni
 VM 'yi yeniden boyutlandırma isteği, bulut hizmetini barındıran orijinal kümede denenmelidir. Ancak, küme istenen VM boyutunu desteklemiyor.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 * Daha küçük bir VM boyutu kullanarak isteği yeniden deneyin.
 * İstenen VM 'nin boyutu değiştirilenemez:
   

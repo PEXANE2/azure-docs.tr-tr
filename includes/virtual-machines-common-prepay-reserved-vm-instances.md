@@ -4,14 +4,14 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11/21/2019
-ms.openlocfilehash: 9bed0a47c6c13b3c209f593509b71aa697c6eb4a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 119ef52bd801f66cd25a844d3a87b1906881c484
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901729"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021187"
 ---
-Bir Azure ayrılmış VM örneğine kaydetme yaptığınızda para tasarrufu yapabilirsiniz. Ayırma indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen çalışan sanal makine sayısına otomatik olarak uygulanır. İndirimleri almak için bir sanal makineye bir ayırma atamanız gerekmez. Ayrılmış örnek satın alma yalnızca VM kullanımınızın işlem parçasını içerir. Windows VM 'Leri için kullanım ölçümü iki ayrı ölçü olarak bölünür. Linux ölçümü ve Windows IP ölçümü ile aynı olan bir işlem ölçümü vardır. Satın almayı yaparken gördüğünüz ücretler yalnızca işlem maliyetlerine yöneliktir. Ücretler Windows Yazılım maliyetlerini içermez. Yazılım maliyetleri hakkında daha fazla bilgi için bkz. [Azure ayrılmış VM örneklerine yazılım maliyetleri dahil değildir](../articles/billing/billing-reserved-instance-windows-software-costs.md).
+Bir Azure ayrılmış VM örneğine kaydetme yaptığınızda para tasarrufu yapabilirsiniz. Ayırma indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen çalışan sanal makine sayısına otomatik olarak uygulanır. İndirimleri almak için bir sanal makineye bir ayırma atamanız gerekmez. Ayrılmış örnek satın alma yalnızca VM kullanımınızın işlem parçasını içerir. Windows VM 'Leri için kullanım ölçümü iki ayrı ölçü olarak bölünür. Linux ölçümü ve Windows IP ölçümü ile aynı olan bir işlem ölçümü vardır. Satın almayı yaparken gördüğünüz ücretler yalnızca işlem maliyetlerine yöneliktir. Ücretler Windows Yazılım maliyetlerini içermez. Yazılım maliyetleri hakkında daha fazla bilgi için bkz. [Azure ayrılmış VM örneklerine yazılım maliyetleri dahil değildir](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md).
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>Satın almadan önce doğru VM boyutunu belirleme
 
@@ -78,7 +78,7 @@ Ayrılmış VM örnekleri, bazı özel durumlarla birçok VM boyutu için kullan
 
 ## <a name="buy-a-reserved-vm-instance"></a>Ayrılmış bir sanal makine örneği satın alma
 
-[Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)ayrılmış bir sanal makine örneği satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../articles/billing/billing-monthly-payments-reservations.md) rezervasyon ödemesi yapın.
+[Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)ayrılmış bir sanal makine örneği satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../articles/cost-management-billing/reservations/monthly-payments-reservations.md) rezervasyon ödemesi yapın.
 Bu gereksinimler ayrılmış bir sanal makine örneği satın almak için geçerlidir:
 
 - En az bir EA aboneliği veya Kullandıkça Öde tarifesine sahip bir abonelik için sahip rolünde olmanız gerekir.
@@ -111,7 +111,7 @@ EA sözleşmeniz varsa, daha fazla örnek eklemek için **daha fazla ek ekle se�
 
 Kullanım verileriniz, kullanım için sıfır geçerli fiyata sahip olup rezervasyon indirimi alır. Her rezervasyon için rezervasyon iskontosunu hangi VM örneğinin aldığını görebilirsiniz.
 
-Kullanım verilerinde rezervasyon iskontolarının nasıl göründüğü hakkında daha fazla bilgi için bkz. EA müşterisiyseniz [Kurumsal kaydınız Için Azure ayırma kullanımını anlayın](../articles/billing/billing-understand-reserved-instance-usage-ea.md) . Tek bir aboneliğiniz varsa, bkz. [Kullandıkça Öde aboneliğiniz Için Azure ayırma kullanımını anlayın](../articles/billing/billing-understand-reserved-instance-usage.md).
+Kullanım verilerinde rezervasyon iskontolarının nasıl göründüğü hakkında daha fazla bilgi için bkz. EA müşterisiyseniz [Kurumsal kaydınız Için Azure ayırma kullanımını anlayın](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) . Tek bir aboneliğiniz varsa, bkz. [Kullandıkça Öde aboneliğiniz Için Azure ayırma kullanımını anlayın](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
 ## <a name="change-a-reservation-after-purchase"></a>Satın alma işleminden sonra rezervasyonu değiştirme
 
@@ -134,7 +134,7 @@ Ancak, değişiklik yapmak istiyorsanız bir rezervasyon *alışverişi* yapabil
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
 
@@ -142,12 +142,12 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Rezervasyonu yönetme hakkında bilgi edinmek için bkz. [Azure Ayrılmış Sanal Makine Örnekleri’ni Yönetme](../articles/billing/billing-manage-reserved-vm-instance.md).
+- Rezervasyonu yönetme hakkında bilgi edinmek için bkz. [Azure Ayrılmış Sanal Makine Örnekleri’ni Yönetme](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md).
 - Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-    - [Azure Rezervasyonlar nedir?](../articles/billing/billing-save-compute-costs-reservations.md)
-    - [Azure’da Rezervasyonları Yönetme](../articles/billing/billing-manage-reserved-vm-instance.md)
-    - [Rezervasyon indiriminin nasıl uygulandığını anlama](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [Kullandıkça öde fiyatlarına tabi bir abonelik için rezervasyon kullanımını anlama](../articles/billing/billing-understand-reserved-instance-usage.md)
-    - [Kurumsal kaydınız için rezervasyon kullanımını anlama](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
-    - [Rezervasyonlara dahil olmayan Windows yazılımı maliyetleri](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+    - [Azure Rezervasyonlar nedir?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+    - [Azure’da Rezervasyonları Yönetme](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)
+    - [Rezervasyon indiriminin nasıl uygulandığını anlama](../articles/cost-management-billing/manage/understand-vm-reservation-charges.md)
+    - [Kullandıkça öde fiyatlarına tabi bir abonelik için rezervasyon kullanımını anlama](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)
+    - [Kurumsal kaydınız için rezervasyon kullanımını anlama](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+    - [Rezervasyonlara dahil olmayan Windows yazılımı maliyetleri](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
     - [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](https://docs.microsoft.com/partner-center/azure-reservations)

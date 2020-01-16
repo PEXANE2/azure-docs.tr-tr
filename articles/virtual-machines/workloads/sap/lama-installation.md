@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 6521c139463bb0de1e24783bbbdd6a2d3996be6f
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430098"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978066"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure için SAP LaMa bağlayıcısı
 
@@ -69,18 +69,25 @@ Ayrıca, [SAP 'Yi almak Için SAP yardım portalını](https://help.sap.com/view
 * Yönetilen konaklarda oturum açarsanız, dosya sistemlerinin çıkarılmasını engellemediğinizden emin olun  
   Bir Linux sanal makinelerinde oturum açıp çalışma dizinini bağlama noktasındaki bir dizin olarak değiştirirseniz (örneğin,/usr/sap/AH1/ASCS00/exe), birim kaldırılamaz ve bir yeniden konumlandırma ya da hazırlama başarısız olur.
 
+* SUSE SLES Linux sanal makinelerinde CLOUD_NETCONFIG_MANAGE devre dışı bıraktığınızdan emin olun. Daha ayrıntılı bilgi için bkz. [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633).
+
 ## <a name="set-up-azure-connector-for-sap-lama"></a>SAP için Azure bağlayıcısını ayarlama
 
-Azure Bağlayıcısı, SAP 'yi 3,0 SP05 olarak sevk edilir. SAP 'yi 3,0 için en son destek paketini ve düzeltme ekini yüklemenizi öneririz. Azure Bağlayıcısı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlusu kullanır. SAP yatay yönetimi (bir hizmet sorumlusu) oluşturmak için bu adımları izleyin.
+Azure Bağlayıcısı, SAP 'yi 3,0 SP05 olarak sevk edilir. SAP 'yi 3,0 için en son destek paketini ve düzeltme ekini yüklemenizi öneririz.
+
+Azure Bağlayıcısı, Azure kaynaklarınızı yönetmek için Azure Resource Manager API 'sini kullanır. SAP, bu API 'de kimlik doğrulamak için bir hizmet sorumlusu veya yönetilen kimlik kullanabilir. SAP 'nin bir Azure VM üzerinde çalışıyor olması halinde, [Azure API 'sine erişim sağlamak Için yönetilen kimlik kullanma](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)bölümünde açıklandığı gibi yönetilen bir kimlik kullanmanızı öneririz. Hizmet sorumlusu kullanmak istiyorsanız, [Azure API 'sine erişim sağlamak Için hizmet sorumlusu kullanma](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e)bölümündeki adımları izleyin.
+
+### <a name="913c222a-3754-487f-9c89-983c82da641e"></a>Azure API 'sine erişim sağlamak için hizmet sorumlusu kullanma
+
+Azure Bağlayıcısı Microsoft Azure bir hizmet sorumlusu kullanarak yetkilendirme gerçekleştirebilir. SAP yatay yönetimi (bir hizmet sorumlusu) oluşturmak için bu adımları izleyin.
 
 1. Şuraya gidin: https://portal.azure.com
 1. Azure Active Directory dikey penceresini açın
 1. Uygulama kayıtları tıklayın
-1. Ekle 'ye tıklayın
-1. Bir ad girin, uygulama türü "Web uygulaması/API" yi seçin, bir oturum açma URL 'SI girin (örneğin, http:\//localhost) ve Oluştur ' a tıklayın.
-1. Oturum açma URL'si kullanılmaz ve geçerli bir URL olabilir
-1. Yeni uygulamayı seçin ve Ayarlar sekmesinde anahtarlar ' a tıklayın.
-1. Yeni anahtar için bir açıklama girin, "süresiz Expires" seçeneğini belirleyin ve Kaydet ' e tıklayın.
+1. Yeni kayda tıklayın
+1. Bir ad girin ve Kaydet ' e tıklayın
+1. Yeni uygulamayı seçin ve Ayarlar sekmesinde sertifikalar & gizli dizileri ' ne tıklayın.
+1. Yeni bir istemci parolası oluşturun, yeni bir anahtar için bir açıklama girin, gizli dizi ne zaman ayıklanmalı ve Kaydet ' e tıklayın.
 1. Değeri yazın. Hizmet sorumlusu için parola olarak kullanılır
 1. Uygulama Kimliği yazma Hizmet sorumlusunun Kullanıcı adı olarak kullanılır
 
@@ -93,20 +100,43 @@ Hizmet sorumlusu kullanarak Azure kaynaklarınızı varsayılan olarak erişim i
 1. Rol ataması Ekle ' ye tıklayın
 1. Rol katılımcısı seçin
 1. Yukarıda oluşturduğunuz uygulamanın adını girin
-1. Kaydet’e tıklayın.
+1. Kaydet’e tıklayın
 1. SAP 'de kullanmak istediğiniz tüm kaynak grupları için 3 ile 8 arasındaki adımları yineleyin
+
+### <a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>Azure API 'sine erişim sağlamak için yönetilen bir kimlik kullanma
+
+Yönetilen bir kimlik kullanabilmeniz için, SAP 'nin örneği, sistem veya Kullanıcı tarafından atanan kimliğe sahip bir Azure VM 'de çalıştırılmalıdır. Yönetilen kimlikler hakkında daha fazla bilgi için [Azure kaynakları için yönetilen kimlikleri](../../../active-directory/managed-identities-azure-resources/overview.md) okuyun ve [Azure Portal kullanarak bir VM 'de Azure kaynakları Için yönetilen kimlikleri yapılandırın](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md).
+
+Yönetilen kimliğin varsayılan olarak Azure kaynaklarınıza erişim izinleri yoktur. Bunlara erişim izni vermeniz gerekir.
+
+1. Şuraya gidin: https://portal.azure.com
+1. Kaynak grupları dikey penceresini açın
+1. Kullanmak istediğiniz kaynak grubunu seçin
+1. Erişim denetimi (IAM)'ye tıklayın.
+1. Add-> rol ataması Ekle ' ye tıklayın
+1. Rol katılımcısı seçin
+1. ' Erişim ata ' için ' sanal makine ' seçeneğini belirleyin
+1. SAP 'nin örneğinin çalıştığı sanal makineyi seçin
+1. Kaydet’e tıklayın
+1. SAP 'de kullanmak istediğiniz tüm kaynak grupları için adımları yineleyin
+
+Azure Bağlayıcısı yapılandırmasında SAP 'yi, yönetilen kimliğin kullanımını etkinleştirmek için ' yönetilen kimliği kullan ' ı seçin. Sistem tarafından atanan bir kimlik kullanmak istiyorsanız, Kullanıcı adı alanını boş bırakın. Kullanıcı tarafından atanan bir kimlik kullanmak isterseniz Kullanıcı adı alanına kullanıcı tarafından atanan kimlik kimliğini girin.
+
+### <a name="create-a-new-connector-in-sap-lama"></a>SAP 'de yeni bir bağlayıcı oluşturma
 
 SAP bir Web sitesini açın ve altyapıya gidin. Sekme bulut yöneticileri ' ne gidin ve Ekle ' ye tıklayın. Microsoft Azure Bulut Bağdaştırıcısı seçin ve Ileri ' ye tıklayın. Aşağıdaki bilgileri girin:
 
 * Etiket: bağlayıcı örneği için bir ad seçin
-* Kullanıcı adı: hizmet sorumlusu uygulama KIMLIĞI
-* Parola: hizmet sorumlusu anahtarı/parolası
+* Kullanıcı adı: hizmet sorumlusu uygulama KIMLIĞI veya sanal makinenin Kullanıcı tarafından atanan kimliğinin KIMLIĞI. Daha fazla bilgi için bkz. [sistem veya Kullanıcı tarafından atanan kimlik kullanma]
+* Parola: hizmet sorumlusu anahtarı/parolası. Sistem veya Kullanıcı tarafından atanan bir kimlik kullanıyorsanız bu alanı boş bırakabilirsiniz.
 * URL: varsayılan https://management.azure.com/ tut
 * İzleme aralığı (saniye): en az 300 olmalıdır
+* Yönetilen kimlik kullan: SAP, Azure API 'sinde kimlik doğrulaması yapmak için sistem veya Kullanıcı tarafından atanan bir kimlik kullanabilir. Bkz. bu kılavuzda [Azure API 'sine erişim sağlamak Için yönetilen kimlik kullanma](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) bölümüne bakın.
 * Abonelik KIMLIĞI: Azure abonelik KIMLIĞI
 * Azure Active Directory kiracı KIMLIĞI: Active Directory kiracının KIMLIĞI
 * Proxy Konağı: SAP 'nin internet 'e bağlanması için bir proxy olması gerekiyorsa, proxy 'nin ana bilgisayar adı
 * Proxy bağlantı noktası: proxy 'nin TCP bağlantı noktası
+* Depolama türünü maliyetleri kaydedilecek şekilde değiştirin: Azure bağdaştırıcısının, diskler kullanımda olmadığında maliyetleri kazanmak için yönetilen disklerin depolama türünü değiştirmesi gerekiyorsa bu ayarı etkinleştirin. Bir SAP örnek yapılandırmasında başvurulan veri disklerinde, bir örnek hazırlama sırasında hazırlama ve özgün depolama türüne geri dönme sırasında bağdaştırıcı, disk türünü standart depolama olarak değiştirir. SAP 'de bir sanal makineyi durdurursanız bağdaştırıcı, işletim sistemi diski de dahil olmak üzere, tüm bağlı disklerin depolama türünü standart depolamaya değiştirir. Bir sanal makineyi SAP 'de başlatırsanız, bağdaştırıcı depolama türünü yeniden özgün depolama türü olarak değiştirir.
 
 Girişinizi doğrulamak için test yapılandırması ' na tıklayın. Şunu görmeniz gerekir:
 
@@ -125,7 +155,7 @@ SAP 'yi kullanarak yönetmek istediğiniz tüm sanal makineler için ayrı bir a
 
 Kullanıcı \<hanasıd > adm, \<sapsıd > adm ve grup sapsys 'nin aynı KIMLIĞE ve GID 'ye sahip hedef makinede bulunduğundan emin olun veya LDAP kullanın. SAP NetWeaver (A) SCS 'yi çalıştırmak için kullanılması gereken sanal makinelerde NFS Sunucusunu etkinleştirin ve başlatın.
 
-### <a name="manual-deployment"></a>El ile dağıtım
+### <a name="manual-deployment"></a>El ile dağıtma
 
 SAP, SAP ana bilgisayar Aracısı kullanılarak sanal makine ile iletişim kurar. Sanal makineleri el ile dağıtır veya hızlı başlangıç deposundan Azure Resource Manager şablonunu kullanmıyorsanız, en son SAP konak aracısını ve SAP Uyarlamalı uzantılarını yüklediğinizden emin olun. Azure için gereken düzeltme eki düzeyleri hakkında daha fazla bilgi için bkz. SAP Note [2343511].
 
@@ -264,7 +294,7 @@ ANF, Azure için NFS sağlar. SAP 'nin bu bağlamda, ABAP Merkezi Hizmetleri (AS
 
 Avustralya Doğu, Orta ABD, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Batı Avrupa ve Batı ABD 2.
 
-#### <a name="network-requirements"></a>Ağ gereksinimleri
+#### <a name="network-requirements"></a>Ağ Gereksinimleri
 
 ANF, SAP sunucularıyla aynı VNET 'in bir parçası olması gereken Temsilcili bir alt ağ gerektirir. Bu tür bir yapılandırma için örnek verilmiştir.
 Bu ekranda VNET 'in ve ilk alt ağın oluşturulması gösterilmektedir:
@@ -408,7 +438,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-as
 
 SPM 'yi çalıştırın ve *ascs örnek ana bilgisayar adı*için *AS1-ascs* kullanın.
 
-#### <a name="install-sql-server"></a>SQL Server yüklensin
+#### <a name="install-sql-server"></a>SQL Server’ı yükleme
 
 Veritabanının sanal ana bilgisayar adının IP adresini bir ağ arabirimine eklemeniz gerekir. Önerilen yol, sapacext kullanmaktır. IP adresini sapacext kullanarak bağlarsanız, yeniden başlatmadan sonra IP adresini kaldırdığınızdan emin olun.
 

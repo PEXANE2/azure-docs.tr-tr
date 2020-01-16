@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 999b932cc12b945c3bf6bb0a4b56c3da19bb3ca6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 895d82eb79e4674ca95b9052d2384a257b296bf5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472411"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980670"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Öğretici: Azure Resource Manager şablonlarında koşulları kullanma
 
@@ -155,7 +155,7 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > **newOrExisting** değeri **new** olduğunda ancak belirtilen depolama hesabı adına sahip olan bir depolama hesabı mevcut olduğunda dağıtım başarısız olur.
 
-**Neworexıting** ile "var" olarak ayarlanmış başka bir dağıtım yapmayı deneyin ve var olan bir depolama hesabı belirtin. Depolama hesabını önceden oluşturmak için bkz. [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md).
+**Neworexıting** ile "var" olarak ayarlanmış başka bir dağıtım yapmayı deneyin ve var olan bir depolama hesabı belirtin. Depolama hesabını önceden oluşturmak için bkz. [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

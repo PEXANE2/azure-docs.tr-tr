@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4a5ab0b0ae76f3c646df42953c1602c63a274824
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a466601bb68e9cec72408a590f2aec3d3dbfbf93
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457398"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968269"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows 'da Azure dosyaları sorunlarını giderme
 
@@ -185,7 +185,7 @@ Azure dosya hizmetine dosya aktarmaya çalıştığınızda yavaş performans g�
 -   Yazmalar ile genişletilen bir dosyanın son boyutunu biliyorsanız ve bu dosyada, yazılı olmayan kuyruk sıfır içerdiğinde yazılım uyumluluk sorunlarıyla karşılaşırsanız, her yazma için bir genişletme yazma yapmak yerine dosya boyutunu önceden ayarlayın.
 -   Doğru kopyalama yöntemini kullanın:
     -   İki dosya paylaşımı arasındaki herhangi bir aktarım için [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) kullanın.
-    -   Şirket içi bilgisayardaki dosya paylaşımları arasında [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) kullanın.
+    -   Şirket içi bilgisayardaki dosya paylaşımları arasında [Robocopy](/azure/storage/files/storage-files-deployment-guide#robocopy) kullanın.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 veya Windows Server 2012 R2 ile ilgili konular
 

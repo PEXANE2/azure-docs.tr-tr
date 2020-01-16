@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: b9a5e388ce6749023cff223de2376d1360ca7574
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 5e4a8afdb9bea4f528e57c914149f611b0578c63
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895692"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973467"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -224,7 +224,7 @@ Azure portalı, PowerShell veya CLIv2 aracılığıyla depolama hesapları için
 
     > [!TIP]
     > Başka bir Azure AD kiracısına ait olan bir sanal ağa yönelik bir kural eklemek için, "/Subscriptions/\<abonelik-KIMLIĞI\>/resourceGroups/\<resourceGroup-Name\>/providers/Microsoft.Network/virtualNetworks/\<vNet-adı\>/Subnets/\<alt ağ-adı\>" biçiminde tam olarak nitelenmiş bir alt ağ KIMLIĞI kullanın.
-    > 
+    >
     > Başka bir Azure AD kiracısına ait olan bir sanal ağın alt ağ KIMLIĞINI almak için **abonelik** parametresini kullanabilirsiniz.
 
 1. Bir sanal ağ ve alt ağ için bir ağ kuralı kaldırın.
@@ -391,7 +391,7 @@ Bazı Microsoft Hizmetleri, ağ kurallarınıza dahil olmayan ağlardan çalış
 | Azure Container Registry Görevleri | Microsoft. ContainerRegistry/kayıt defterleri | ACR görevleri, kapsayıcı görüntüleri oluştururken depolama hesaplarına erişebilir. |
 | Azure Data Factory             | Microsoft. DataFactory/Factory        | ADF çalışma zamanı aracılığıyla depolama hesaplarına erişime izin verir. |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | Mantıksal uygulamaların depolama hesaplarına erişmesini sağlar. [Daha fazla bilgi edinin](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
-| Azure Machine Learning | Microsoft.MachineLearningServices      | Yetkili Azure Machine Learning çalışma alanları BLOB depolama alanına deneme çıkış, model ve Günlükler yazar. [Daha fazla bilgi edinin](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
+| Azure Machine Learning | Microsoft.MachineLearningServices      | Yetkili Azure Machine Learning çalışma alanları BLOB depolama alanına deneme çıkış, model ve Günlükler yazar. [Daha fazla bilgi edinin](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). |
 | Azure SQL Veri Ambarı       | Microsoft.Sql                          | PolyBase kullanarak belirli SQL veritabanı örneklerinden verilerin içeri ve dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | Akış işindeki verilerin blob depolamaya yazılmasına izin verir. Bu özellik şu anda önizleme sürümündedir. [Daha fazla bilgi edinin](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Microsoft. SYNAPSE/çalışma alanları          | SYNAPSE Analytics 'ten Azure Storage 'daki verilere erişimi sağlar. |
@@ -471,4 +471,4 @@ Ağ kuralı özel durumlarını Azure portal, PowerShell veya Azure CLI aracıl�
 
 Azure ağ hizmet uç noktalarına hakkında daha fazla bilgi [hizmet uç noktalarını](/azure/virtual-network/virtual-network-service-endpoints-overview).
 
-Azure depolama güvenlik ile daha derine inin [Azure depolama Güvenlik Kılavuzu](storage-security-guide.md).
+Azure depolama güvenlik ile daha derine inin [Azure depolama Güvenlik Kılavuzu](../blobs/security-recommendations.md).

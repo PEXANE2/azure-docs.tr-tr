@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5217c4c7b68c487d7285ec03700266ad2768606d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 325c68e5e4531e5519596bea00c370c26460a8ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571518"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981905"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki önerileri düzeltin
 
-Öneriler, kaynaklarınızın daha iyi güvenliğini sağlamaya yönelik öneriler sağlar. Öneri bölümünde belirtilen düzeltme adımlarını izleyerek bir öneri uygulıyordu. 
+Öneriler, kaynaklarınızın daha iyi güvenliğini sağlamaya yönelik öneriler sağlar. Öneri bölümünde belirtilen düzeltme adımlarını izleyerek bir öneri uygulıyordu.
 
 ## Düzeltme adımları<a name="remediation-steps"></a>
 
@@ -46,12 +46,12 @@ Hızlı düzeltme düzeltmesini uygulamak için:
 
     [Hızlı düzelme ![seçin!](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
 
-1. **Sağlıksız kaynaklar** sekmesinden, öneriyi uygulamak istediğiniz kaynakları seçin ve **Düzelt**' e tıklayın. 
+1. **Sağlıksız kaynaklar** sekmesinden, öneriyi uygulamak istediğiniz kaynakları seçin ve **Düzelt**' e tıklayın.
 
     > [!NOTE]
     > Listelenen bazı kaynaklar devre dışı bırakılabilir, çünkü bunları değiştirmek için uygun izinlere sahip değilsiniz.
 
-1. Onay kutusunda düzeltme ayrıntılarını ve etkilerini okuyun. 
+1. Onay kutusunda düzeltme ayrıntılarını ve etkilerini okuyun.
 
     ![Hızlı çözüm](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
 
@@ -67,7 +67,7 @@ Hızlı düzeltme düzeltmesini uygulamak için:
 
 ## Etkinlik günlüğünde düzeltme günlüğü hızlı düzeltme<a name="activity-log"></a>
 
-Düzeltme işlemi, kaynak üzerinde yapılandırmayı uygulamak için bir şablon dağıtımı veya REST PATCH API çağrısı kullanır. Bu işlemler [Azure etkinlik günlüğünde](../azure-resource-manager/resource-group-audit.md)günlüğe kaydedilir.
+Düzeltme işlemi, kaynak üzerinde yapılandırmayı uygulamak için bir şablon dağıtımı veya REST PATCH API çağrısı kullanır. Bu işlemler [Azure etkinlik günlüğünde](../azure-resource-manager/management/view-activity-logs.md)günlüğe kaydedilir.
 
 
 ## <a name="recommendations-with-quick-fix-remediation"></a>Hızlı düzeltme düzeltme ile öneriler
@@ -79,16 +79,16 @@ Düzeltme işlemi, kaynak üzerinde yapılandırmayı uygulamak için bir şablo
 |SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir|Bu eylem, seçili SQL yönetilen örneklerinde SQL güvenlik açığı değerlendirmesini etkinleştirir. <br>**Not**:<ul><li>SQL güvenlik açığı değerlendirmesi, SQL gelişmiş veri güvenliği (ADS) paketinin bir parçasıdır. REKLAMLARı zaten etkinleştirilmemişse, yönetilen örnekte otomatik olarak etkinleştirilir.</li><li>Seçilen SQL yönetilen örneklerinin her bir bölgesi ve kaynak grubu için, tarama sonuçlarını depolamak için bir depolama hesabı bu bölgedeki tüm örnekler tarafından oluşturulur ve paylaşılır.</li><li>REKLAMLARı SQL Server başına $15 üzerinden ücretlendirilir.</li></ul>||
 |Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir|Bu eylem, bu seçili sunucularda ve veritabanlarında gelişmiş veri güvenliği (ADS) sağlar. <br>**Not**:<ul><li>Seçili SQL sunucularının her bir bölgesi ve kaynak grubu için, tarama sonuçlarını depolamak için bir depolama hesabı bu bölgedeki tüm sunucular tarafından oluşturulur ve paylaşılır. <</li><li>REKLAMLARı SQL Server başına $15 üzerinden ücretlendirilir.</li></ul>||
 |Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir|Bu eylem, bu seçili sunucularda ve veritabanlarında SQL güvenlik açığı değerlendirmesini etkinleştirir. <br>**Not**:<ul><li>SQL güvenlik açığı değerlendirmesi, SQL gelişmiş veri güvenliği (ADS) paketinin bir parçasıdır. REKLAMLAR zaten etkin değilse, SQL Server 'da otomatik olarak etkinleştirilir.</li><li>Seçili SQL sunucularının her bir bölgesi ve kaynak grubu için, tarama sonuçlarını depolamak için bir depolama hesabı bu bölgedeki tüm örnekler tarafından oluşturulur ve paylaşılır.</li><li>REKLAMLARı SQL Server başına $15 üzerinden ücretlendirilir.</li></ul>||
-|SQL veritabanlarında saydam veri şifrelemesi etkinleştirilmelidir|Bu eylem, seçili veritabanlarında SQL veritabanı Saydam Veri Şifrelemesi (TDE) etkinleştirilir. <br>**Note**: varsayılan olarak, hizmet tarafından yönetilen TDE anahtarları kullanılacaktır. 
-|Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir|Bu eylem, depolama hesabı güveninizi yalnızca güvenli bağlantılar tarafından isteklere izin verecek şekilde güncelleştirir. (HTTPS). <br>**Not**:<ul><li>HTTP kullanan istekler reddedilir.</li><li>Azure dosyaları hizmetini kullanırken, SMB 2,1, şifreleme olmadan SMB 3,0 ve Linux SMB istemcisinin bazı türleri dahil olmak üzere şifreleme olmadan bağlantı başarısız olur. Daha fazla bilgi edinin.</li></ul>|
+|SQL veritabanlarında saydam veri şifrelemesi etkinleştirilmelidir|Bu eylem, seçili veritabanlarında SQL veritabanı Saydam Veri Şifrelemesi (TDE) etkinleştirilir. <br>**Note**: varsayılan olarak, hizmet tarafından yönetilen TDE anahtarları kullanılacaktır.
+|Depolama hesaplarına güvenli aktarım etkinleştirilmelidir|Bu eylem, depolama hesabı güveninizi yalnızca güvenli bağlantılar tarafından isteklere izin verecek şekilde güncelleştirir. (HTTPS). <br>**Not**:<ul><li>HTTP kullanan istekler reddedilir.</li><li>Azure dosyaları hizmetini kullanırken, SMB 2,1, şifreleme olmadan SMB 3,0 ve Linux SMB istemcisinin bazı türleri dahil olmak üzere şifreleme olmadan bağlantı başarısız olur. Daha fazla bilgi.</li></ul>|
 |Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır|Bu eylem, tüm trafiği seçili kaynaklarda HTTP 'den HTTPS 'ye yönlendirir. <br>**Not**:<ul><li>SSL sertifikası olmayan bir HTTPS uç noktası tarayıcıda ' Gizlilik hatası ' ile görünür. Bu nedenle, özel bir etki alanı olan kullanıcıların bir SSL sertifikası ayarladıklarından emin olması gerekir.</li><li>Uygulama hizmetini koruyan paket ve Web uygulaması güvenlik duvarlarının HTTPS oturumlarının iletilmesine izin ver ' i doğrulayın.</li></ul>|
-|İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır|Bu eylem, tüm trafiği seçili kaynaklarda HTTP 'den HTTPS 'ye yönlendirir. <br>**Not**:<ul><li>SSL sertifikası olmayan bir HTTPS uç noktası tarayıcıda ' Gizlilik hatası ' ile görünür. Bu nedenle, özel bir etki alanı olan kullanıcıların bir SSL sertifikası ayarladıklarından emin olması gerekir.</li><li>Uygulama hizmetini koruyan paket ve Web uygulaması güvenlik duvarlarının HTTPS oturumlarının iletilmesine izin ver ' i doğrulayın.</li></ul>|
+|İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır|Bu eylem, tüm trafiği seçili kaynaklarda HTTP 'den HTTPS 'ye yönlendirir. <br>**Not**:<ul><li>SSL sertifikası olmayan bir HTTPS uç noktası tarayıcıda ' Gizlilik hatası ' ile görünür. Bu nedenle, özel bir etki alanı olan kullanıcıların bir SSL sertifikası ayarladıklarından emin olması gerekir.</li><li>Uygulama hizmetini koruyan paket ve Web uygulaması güvenlik duvarlarının HTTPS oturumlarının iletilmesine izin ver ' i doğrulayın.</li></ul>|
 |API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır|Bu eylem, tüm trafiği seçili kaynaklarda HTTP 'den HTTPS 'ye yönlendirir. <br>**Not**:<ul><li>SSL sertifikası olmayan bir HTTPS uç noktası tarayıcıda ' Gizlilik hatası ' ile görünür. Bu nedenle, özel bir etki alanı olan kullanıcıların bir SSL sertifikası ayarladıklarından emin olması gerekir.</li><li>Uygulama hizmetini koruyan paket ve Web uygulaması güvenlik duvarlarının HTTPS oturumlarının iletilmesine izin ver ' i doğrulayın.</li></ul>|
-|Web uygulaması için uzaktan hata ayıklama kapatılmalıdır|Bu eylem, uzaktan hata ayıklamayı devre dışı bırakır.|
+|Uzaktan hata ayıklama için Web uygulaması kapalı olmaları|Bu eylem, uzaktan hata ayıklamayı devre dışı bırakır.|
 |İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır|Bu eylem, uzaktan hata ayıklamayı devre dışı bırakır.|
 |API uygulaması için uzaktan hata ayıklama kapatılmalıdır|Bu eylem, uzaktan hata ayıklamayı devre dışı bırakır.|
 |CORS, her kaynağın Web uygulamanıza erişmesine izin vermemelidir|Bu eylem, diğer etki alanlarının Web uygulamanıza erişmesini engeller. Belirli etki alanlarına izin vermek için, bu kaynakları Izin verilen Kaynaklar alanına (virgülle ayırarak) girin. <br>**Note**: alanı boş bırakmak, tüm çapraz kaynak çağrılarını engeller. ' param alan başlığı: ' izin verilen çıkış '|
-|CORS, her kaynağın İşlev Uygulaması erişmesine izin vermemelidir|Bu eylem, diğer etki alanlarının Işlev uygulamanıza erişmesini engeller. Belirli etki alanlarına izin vermek için, bu kaynakları Izin verilen Kaynaklar alanına (virgülle ayırarak) girin. <br>**Note**: alanı boş bırakmak, tüm çapraz kaynak çağrılarını engeller. ' param alan başlığı: ' izin verilen çıkış '|
+|CORS her kaynağın işlev uygulamanıza erişmek izin vermemelidir|Bu eylem, diğer etki alanlarının Işlev uygulamanıza erişmesini engeller. Belirli etki alanlarına izin vermek için, bu kaynakları Izin verilen Kaynaklar alanına (virgülle ayırarak) girin. <br>**Note**: alanı boş bırakmak, tüm çapraz kaynak çağrılarını engeller. ' param alan başlığı: ' izin verilen çıkış '|
 |CORS, her kaynağın API uygulamanıza erişmesine izin vermemelidir|Bu eylem, diğer etki alanlarının API uygulamanıza erişmesini engeller. Belirli etki alanlarına izin vermek için, bu kaynakları Izin verilen Kaynaklar alanına (virgülle ayırarak) girin. <br>**Note**: alanı boş bırakmak, tüm çapraz kaynak çağrılarını engeller. ' param alan başlığı: ' izin verilen çıkış '|
 |İzleme Aracısı sanal makinelerinizde etkinleştirilmelidir|Bu eylem, seçili sanal makinelere bir izleme Aracısı kurar. Aracının raporlamak için bir çalışma alanı seçin.<ul><li>Güncelleştirme ilkeniz otomatik olarak ayarlandıysa, yeni mevcut örneklere dağıtılır.</li><li>Güncelleştirme ilkeniz el ile olarak ayarlandıysa ve aracıyı mevcut örneklere yüklemek isterseniz onay kutusu seçeneğini belirleyin. [Daha fazla bilgi](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set)</li></ul>|
 |Key Vault tanılama günlükleri etkinleştirilmelidir|Bu eylem, anahtar kasalarında tanılama günlüklerini sunar. Tanılama günlükleri ve ölçümleri seçili çalışma alanına kaydedilir.|

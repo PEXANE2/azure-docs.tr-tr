@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 0a956a1372ba1535b9d918333bd7411a4ca6abe4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83ecb0ad85a02c8c05b9d7e504e578afd98ed7b6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441941"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969365"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB ' de ayrılmış kapasiteyle maliyeti iyileştirin
 
@@ -20,9 +20,9 @@ Azure Cosmos DB ayrılmış kapasite, bir yıl veya üç yıl boyunca Azure Cosm
 
 Azure Cosmos DB ayrılmış kapasite, tek yıllık veya üç yıllık ön taahhüt ile normal fiyatlarla yüzde 65 ' a kadar Cosmos DB&mdash;maliyetlerinizi önemli ölçüde azaltabilir. Ayrılmış kapasite bir faturalandırma indirimi sağlar ve Azure Cosmos DB kaynaklarınızın çalışma zamanı durumunu etkilemez.
 
-Azure Cosmos DB ayrılmış kapasite, kaynaklarınız için sağlanan aktarım hızını içerir. Depolama ve ağ ücretlerini kapsamaz. Bir rezervasyon satın alarak, rezervasyon öznitelikleriyle eşleşen aktarım hızı ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Ayırmalar hakkında daha fazla bilgi için bkz. [Azure ayırmaları](../billing/billing-save-compute-costs-reservations.md) makalesi.
+Azure Cosmos DB ayrılmış kapasite, kaynaklarınız için sağlanan aktarım hızını içerir. Depolama ve ağ ücretlerini kapsamaz. Bir rezervasyon satın alarak, rezervasyon öznitelikleriyle eşleşen aktarım hızı ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Ayırmalar hakkında daha fazla bilgi için bkz. [Azure ayırmaları](../cost-management-billing/reservations/save-compute-costs-reservations.md) makalesi.
 
-[Azure portal](https://portal.azure.com)Azure Cosmos DB ayrılmış kapasiteyi satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../billing/billing-monthly-payments-reservations.md) rezervasyon ödemesi yapın. Ayrılmış kapasite satın almak için:
+[Azure portal](https://portal.azure.com)Azure Cosmos DB ayrılmış kapasiteyi satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../cost-management-billing/reservations/monthly-payments-reservations.md) rezervasyon ödemesi yapın. Ayrılmış kapasite satın almak için:
 
 * Kullandıkça Öde tarifesine sahip en az bir kuruluş veya ayrı bir abonelik için sahip rolünde olmanız gerekir.  
 * Kurumsal abonelikler için, [EA portal](https://ea.azure.com)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
@@ -74,22 +74,22 @@ Rezervasyonunuzun süresi dolmuşsa Azure Cosmos DB örneklerinizin çalıştır
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Doğru ayrılmış kapasiteyi tanımlamaya yönelik yardım için bkz. [rezervasyon iskontosunun Azure Cosmos DB nasıl uygulanacağını anlayın](../billing/billing-understand-cosmosdb-reservation-charges.md).
+Doğru ayrılmış kapasiteyi tanımlamaya yönelik yardım için bkz. [rezervasyon iskontosunun Azure Cosmos DB nasıl uygulanacağını anlayın](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md).
 
-Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Rezervasyon indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen Azure Cosmos DB kaynaklarına otomatik olarak uygulanır. Azure portal, PowerShell, Azure CLı veya API aracılığıyla rezervasyon kapsamını güncelleştirebilirsiniz.
 
-*  Ayrılmış kapasite iskontolarının Azure Cosmos DB nasıl uygulanacağını öğrenmek için bkz. [Azure rezervasyon ıskontosunu anlama](../billing/billing-understand-cosmosdb-reservation-charges.md).
+*  Ayrılmış kapasite iskontolarının Azure Cosmos DB nasıl uygulanacağını öğrenmek için bkz. [Azure rezervasyon ıskontosunu anlama](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md).
 
 * Azure rezervasyonları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-   * [Azure ayırmaları nelerdir?](../billing/billing-save-compute-costs-reservations.md)  
-   * [Azure ayırmalarını yönetme](../billing/billing-manage-reserved-vm-instance.md)  
-   * [Kurumsal kaydınız için rezervasyon kullanımını anlama](../billing/billing-understand-reserved-instance-usage-ea.md)  
-   * [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../billing/billing-understand-reserved-instance-usage.md)
+   * [Azure ayırmaları nelerdir?](../cost-management-billing/reservations/save-compute-costs-reservations.md)  
+   * [Azure ayırmalarını yönetme](../cost-management-billing/reservations/manage-reserved-vm-instance.md)  
+   * [Kurumsal kaydınız için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)  
+   * [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
    * [Iş Ortağı Merkezi CSP programında Azure ayırmaları](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.

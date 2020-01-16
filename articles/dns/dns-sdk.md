@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: allensu
-ms.openlocfilehash: 0dd57bb30a993baadac41552669a629aaaaff6df
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4c682749de0be6329a254bda25a32954dd44e6db
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210949"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978712"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>.NET SDK kullanarak DNS bölgeleri ve kayıt kümeleri oluşturma
 
@@ -30,7 +30,7 @@ ms.locfileid: "74210949"
 Genellikle, Azure kaynaklarına programlı erişim, kendi Kullanıcı kimlik bilgileriniz yerine adanmış bir hesap aracılığıyla verilir. Bu adanmış hesaplara ' hizmet sorumlusu ' hesapları denir. Azure DNS SDK örnek projesini kullanmak için, önce bir hizmet sorumlusu hesabı oluşturmanız ve doğru izinleri atamanız gerekir.
 
 1. Bir hizmet sorumlusu hesabı oluşturmak için [Bu yönergeleri](../active-directory/develop/howto-authenticate-service-principal-powershell.md) izleyin (Azure DNS SDK örnek projesi parola tabanlı kimlik doğrulamasını varsayar.)
-2. Bir kaynak grubu oluşturun ([burada](../azure-resource-manager/resource-group-template-deploy-portal.md)).
+2. Bir kaynak grubu oluşturun ([burada](../azure-resource-manager/templates/deploy-portal.md)).
 3. Kaynak grubuna hizmet sorumlusu hesabına ' DNS bölgesi katılımcısı ' izinleri vermek için Azure RBAC kullanın ([nasıl yapılır](../role-based-access-control/role-assignments-portal.md).)
 4. Azure DNS SDK örnek projesi kullanıyorsanız, ' program. cs ' dosyasını aşağıdaki gibi düzenleyin:
 

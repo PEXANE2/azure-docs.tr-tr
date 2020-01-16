@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: e0ff9bc66c7d185f8fe07b4b4574833fcd7e2604
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4eb203915c8fedbef6af0e5a3bc14eff1835a92b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582075"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982168"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Bölgesel yük devretme kurtarması için birden çok önbellek kullanma
 
@@ -37,7 +37,7 @@ Olası yük devretme için hazırlanan bir önbellek ayarlamak için şu adımla
    1. Önbellek istemcileri tarafından kullanılmak üzere bağlama komutu
 
    > [!NOTE]
-   > Azure HPC önbelleği, bir [Azure Resource Manager şablonu](../azure-resource-manager/template-deployment-overview.md) aracılığıyla veya doğrudan API 'sine erişerek programlı bir şekilde oluşturulabilir. Ayrıntılar için Azure HPC önbellek ekibine başvurun.
+   > Azure HPC önbelleği, bir [Azure Resource Manager şablonu](../azure-resource-manager/templates/overview.md) aracılığıyla veya doğrudan API 'sine erişerek programlı bir şekilde oluşturulabilir. Ayrıntılar için Azure HPC önbellek ekibine başvurun.
 
 ## <a name="failover-example"></a>Yük devretme örneği
 
@@ -55,7 +55,7 @@ Doğu ABD bölge genelinde hata durumunda Batı ABD 2 bölgesinde hazırladığ�
 
 İstemcilerin bölge kesintisinden etkilenmemesi durumunda bile, tüm istemcilerin yeni önbelleği takmasına gerek olacaktır. Yeni önbelleğin eskileri 'den farklı bağlama adresleri vardır.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazla bilgi
 
 Azure Uygulama Mimarisi Kılavuzu, [bölge genelinde hizmet kesintisini nasıl kurtarabileceğiniz](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>)hakkında daha fazla bilgi içerir.
 <!-- this should be an internal link instead of a URL but I can't find the tree  -->

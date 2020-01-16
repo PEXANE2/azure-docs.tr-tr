@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake depolama Gen1 Güvenliğe genel bakış | Microsoft Docs
-description: Azure Data Lake depolama Gen1 daha güvenli bir büyük veri deposuna nasıl olduğunu anlama
+title: Azure Data Lake Storage 1. 'de güvenliğe genel bakış | Microsoft Docs
+description: Azure Data Lake Storage 1. daha güvenli bir büyük veri deposu olduğunu anlayın
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,105 +12,104 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4e640aa1cb02174c935c0f7c1d61ab2fca5ea046
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195325"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974572"
 ---
-# <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake depolama Gen1 güvenliği
-Çoğu kurum akıllı kararlar yapmalarına yardımcı olmak iş öngörüleri için büyük veri analizi avantajlarından sürüyor. Bir kuruluş, artan sayıda farklı kullanıcılar ile karmaşık ve denetimli bir ortam olabilir. Kritik iş verilerini doğru bireysel kullanıcılara verilen erişim düzeyini ile daha güvenli bir şekilde saklandığından emin olmak bir kuruluş için önemlidir. Azure Data Lake depolama Gen1 bu güvenlik gereksinimlerini karşılamanıza yardımcı olmak üzere tasarlanmıştır. Bu makalede, dahil olmak üzere güvenlik özelliklerinin Data Lake depolama Gen1, hakkında bilgi edinin:
+# <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. güvenlik
+Birçok kuruluş, iş öngörüleri için büyük veri analizinden yararlanarak akıllı kararlar almasına yardımcı olur. Bir kuruluş karmaşık ve düzenlenmiş bir ortama sahip olabilir ve birçok farklı kullanıcı sayısını artırır. Bir kuruluş için kritik iş verilerinin bireysel kullanıcılara verilen doğru erişim düzeyiyle daha güvenli bir şekilde saklandığından emin olması çok önemlidir. Azure Data Lake Storage 1., bu güvenlik gereksinimlerinin karşılamasına yardımcı olmak için tasarlanmıştır. Bu makalede, aşağıdakiler de dahil olmak üzere Data Lake Storage 1. güvenlik özellikleri hakkında bilgi edinin:
 
 * Kimlik Doğrulaması
 * Yetkilendirme
 * Ağ yalıtımı
-* Veri koruma
+* Veri koruması
 * Denetim
 
-## <a name="authentication-and-identity-management"></a>Kimlik doğrulaması ve Kimlik Yönetimi
-Kimlik doğrulaması, kullanıcı için Data Lake depolama Gen1 bağlanan herhangi bir hizmeti veya Data Lake depolama Gen1 ile etkileşim kurduğunda, bir kullanıcının kimliği doğrulanır işlemidir. Data Lake depolama Gen1 kimlik yönetimi ve kimlik doğrulaması için kullandığı [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), kullanıcıların ve grupların yönetimini kolaylaştıran kapsamlı bir kimlik ve erişim yönetimi bulut çözümüdür.
+## <a name="authentication-and-identity-management"></a>Kimlik doğrulama ve kimlik yönetimi
+Kimlik doğrulaması, Kullanıcı Data Lake Storage 1. veya Data Lake Storage 1. bağlanan herhangi bir hizmetle etkileşime geçtiğinde bir kullanıcının kimliğinin doğrulanması işlemidir. Kimlik yönetimi ve kimlik doğrulaması için Data Lake Storage 1., kullanıcıların ve grupların yönetimini kolaylaştıran kapsamlı bir kimlik ve erişim yönetimi bulut çözümü olan [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)kullanır.
 
-Her Azure aboneliğinin Azure Active Directory örneği ile ilişkili olabilir. Yalnızca kullanıcı ve hizmet kimlikleri, Azure Active Directory hizmetinizdeki tanımlanan Data Lake depolama Gen1 hesabınıza komut satırı araçları, Azure portalı kullanarak erişebilir veya istemci uygulamaları veri Gölü kullanarak kuruluşunuzun oluşturur. Depolama Gen1 SDK. Bir merkezi erişim denetimi mekanizması Azure Active Directory kullanmanın başlıca avantajları şunlardır:
+Her Azure aboneliği, bir Azure Active Directory örneğiyle ilişkilendirilebilir. Yalnızca Azure Active Directory hizmetinizde tanımlanan kullanıcılar ve hizmet kimlikleri Data Lake Storage 1. hesabınıza Azure portal, komut satırı araçlarını kullanarak veya kuruluşunuzun oluşturduğu istemci uygulamaları aracılığıyla Data Lake Storage Gen1 SDK. Merkezi erişim denetimi mekanizması olarak Azure Active Directory kullanmanın temel avantajları şunlardır:
 
-* Basitleştirilmiş kimlik yaşam döngüsü yönetimi. Bir kullanıcı veya hizmet (hizmet sorumlusu kimliği) kimliğini hızlı bir şekilde oluşturulabilir ve yalnızca silme veya dizinde hesabı devre dışı bırakarak hızlı bir şekilde iptal edildi.
-* Çok faktörlü kimlik doğrulaması. [Çok faktörlü kimlik doğrulaması](../active-directory/authentication/multi-factor-authentication.md) kullanıcı oturum açma ve işlemleri için ek bir güvenlik katmanı sağlar.
-* OAuth veya Openıd gibi standart bir açık protokol üzerinden herhangi bir istemciden kimlik doğrulaması.
-* Federasyon ile Kurumsal Dizin Hizmetleri ve bulut kimlik sağlayıcıları.
+* Basitleştirilmiş kimlik yaşam döngüsü yönetimi. Bir kullanıcının veya hizmetin kimliği (hizmet sorumlusu kimliği), dizindeki hesabı silerek veya devre dışı bırakarak hızlı bir şekilde oluşturulabilir ve hızlı bir şekilde iptal edilebilir.
+* Çok faktörlü kimlik doğrulaması. [Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , Kullanıcı oturum açma işlemleri ve işlemler için ek bir güvenlik katmanı sağlar.
+* OAuth veya OpenID gibi standart bir açık protokol aracılığıyla herhangi bir istemciden kimlik doğrulaması.
+* Kurumsal Dizin Hizmetleri ve bulut kimlik sağlayıcılarıyla Federasyon.
 
 ## <a name="authorization-and-access-control"></a>Yetkilendirme ve erişim denetimi
-Azure Active Directory, Data Lake depolama Gen1 erişebilmesi için bir kullanıcı kimlik doğrulaması yaptıktan sonra Data Lake depolama Gen1 izinlerini erişimi yetkilendirme kontrol eder. Data Lake depolama Gen1 yetkilendirme hesabı ve veri ilgili etkinlikler için aşağıdaki şekilde ayırır:
+Azure Active Directory bir kullanıcının kimliğini doğruladıktan sonra, kullanıcının Data Lake Storage 1. erişebilmeleri için yetkilendirme denetimleri erişim izinleri Data Lake Storage 1. Data Lake Storage 1. hesapla ilgili ve verilerle ilgili etkinliklere yönelik yetkilendirmeyi aşağıdaki şekilde ayırır:
 
 * [Rol tabanlı erişim denetimi](../role-based-access-control/overview.md) (RBAC), hesap yönetimi için Azure tarafından sağlanan
-* Veri deposundaki erişmek için POSIX ACL'si
+* Depodaki verilere erişmek için POSIX ACL 'SI
 
 ### <a name="rbac-for-account-management"></a>Hesap yönetimi için RBAC
-Dört temel rol, varsayılan Data Lake depolama Gen1 için tanımlanır. Rolleri, bir Data Lake depolama Gen1 hesabı Azure portalı, PowerShell cmdlet'leri ve REST API'leri aracılığıyla farklı işlemlerin izin verir. Sahibi ve katkıda bulunan rollerine hesapta çeşitli yönetim işlevleri gerçekleştirebilirsiniz. Okuyucu rolü yalnızca hesap yönetimi verileri görüntüleyen kullanıcılara atayabilirsiniz.
+Dört temel rol, varsayılan olarak Data Lake Storage 1. için tanımlanmıştır. Roller, Azure portal, PowerShell cmdlet 'leri ve REST API 'Leri aracılığıyla Data Lake Storage 1. hesapta farklı işlemlere izin verir. Sahip ve katkıda bulunan rolleri, hesapta çeşitli yönetim işlevleri gerçekleştirebilir. Okuyucu rolünü yalnızca hesap yönetimi verilerini görüntüleyen kullanıcılara atayabilirsiniz.
 
-![RBAC rollerini](./media/data-lake-store-security-overview/rbac-roles.png "RBAC rolleri")
+![RBAC rolleri](./media/data-lake-store-security-overview/rbac-roles.png "RBAC rolleri")
 
-Hesap yönetimi için rolleri atanmış olsa da, bazı roller verilere erişim etkileyeceğini unutmayın. Dosya sisteminde bir kullanıcının gerçekleştirebileceği işlemleri erişimi denetlemek için ACL'leri kullanmanız gerekir. Aşağıdaki tabloda, yönetim haklarını ve varsayılan rolleri için veri erişim haklarını özetini gösterir.
+Roller hesap yönetimi için atanmış olsa da, bazı rollerin verilere erişimi etkilediği unutulmamalıdır. Bir kullanıcının dosya sisteminde gerçekleştirebileceği işlemlere erişimi denetlemek için ACL 'Leri kullanmanız gerekir. Aşağıdaki tabloda, varsayılan roller için yönetim haklarının ve veri erişim haklarının bir özeti gösterilmektedir.
 
 | Roller | Yönetim hakları | Veri erişim hakları | Açıklama |
 | --- | --- | --- | --- |
-| Atanmış bir rol yok |None |ACL tarafından yönetilir |Kullanıcı, Data Lake depolama Gen1 göz atmak için Azure portal veya Azure PowerShell cmdlet'lerini kullanamazsınız. Kullanıcı, yalnızca komut satırı araçlarını kullanabilirsiniz. |
-| Sahip |Tümü |Tümü |Bir süper kullanıcı sahibi rolüdür. Bu rol, her şeyi yönetebilir ve veri tam erişime sahip olur. |
-| Okuyucu |Salt okunur |ACL tarafından yönetilir |Okuyucu rolü, hangi role atanmış kullanıcı gibi hesap yönetimi ile ilgili her şeyi görüntüleyebilir. Okuyucu rolü, değişiklik yapamazsınız. |
-| Katılımcı |Ekle ve Kaldır rolleri dışında tümü |ACL tarafından yönetilir |Katkıda bulunan rolü dağıtımları oluşturma ve Uyarıları yönetme gibi bir hesap, bazı özelliklerini yönetebilir. Katkıda bulunan rolü ekleme veya rolleri kaldırın. |
-| Kullanıcı Erişimi Yöneticisi |Rol Ekleme ve kaldırma |ACL tarafından yönetilir |Kullanıcı erişimi yöneticisi rolü hesaplarına kullanıcı erişimini yönetebilir. |
+| Atanan rol yok |Hiçbiri |ACL 'ye tabidir |Kullanıcı Data Lake Storage 1. taramak için Azure portal veya Azure PowerShell cmdlet 'lerini kullanamaz. Kullanıcı yalnızca komut satırı araçlarını kullanabilir. |
+| Sahip |Tümü |Tümü |Sahip rolü bir süper kullanıcı. Bu rol her şeyi yönetebilir ve verilere tam erişim sağlayabilir. |
+| Okuyucu |Salt okunur |ACL 'ye tabidir |Okuyucu rolü, hesap yönetimiyle ilgili her şeyi görüntüleyebilir, örneğin hangi rolün atandığı kullanıcı. Okuyucu rolü herhangi bir değişiklik yapamaz. |
+| Katılımcı |Rol Ekle ve Kaldır dışında tümü |ACL 'ye tabidir |Katkıda bulunan rolü, bir hesabın dağıtım ve uyarı oluşturma ve yönetme gibi bazı yönlerini yönetebilir. Katkıda bulunan rolü rol ekleyemez veya kaldıramaz. |
+| Kullanıcı Erişimi Yöneticisi |Rol Ekleme ve kaldırma |ACL 'ye tabidir |Kullanıcı erişimi Yöneticisi rolü, hesaplara Kullanıcı erişimini yönetebilir. |
 
-Yönergeler için [Data Lake depolama Gen1 hesaplarına kullanıcıları veya güvenlik gruplarına atamak](data-lake-store-secure-data.md#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts).
+Yönergeler için bkz. [Data Lake Storage 1. hesaplara Kullanıcı veya güvenlik grupları atama](data-lake-store-secure-data.md#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts).
 
-### <a name="using-acls-for-operations-on-file-systems"></a>Dosya sistemi işlemleri için ACL'leri kullanarak
-Data Lake depolama Gen1 olduğu hiyerarşik dosya sistemi gibi Hadoop dağıtılmış dosya sistemi (HDFS) ve destekler [POSIX ACL](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Okuma (r) denetimleri, yazma (w) ve yürütme (x) kaynaklara sahip rolü, sahipleri grup ve diğer kullanıcılar ve gruplar için izinleri. Data Lake depolama Gen1 ACL'ler Kök klasörde, alt klasörler ve dosyaları tek tek etkinleştirilebilir. ACL'ler Data Lake depolama Gen1 bağlamında nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Data Lake depolama Gen1'deki erişim denetimi](data-lake-store-access-control.md).
+### <a name="using-acls-for-operations-on-file-systems"></a>Dosya sistemlerindeki işlemler için ACL 'Leri kullanma
+Data Lake Storage 1., Hadoop Dağıtılmış Dosya Sistemi (bir) gibi hiyerarşik bir dosya sistemidir ve [POSIX ACL 'lerini](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists)destekler. Sahip rolü, sahipler grubu ve diğer kullanıcılar ve gruplar için kaynak için okuma (r), yazma (w) ve yürütme (x) izinlerini denetler. Data Lake Storage 1., ACL 'Ler kök klasörde, alt klasörlerde ve tek tek dosyalarda etkinleştirilebilir. ACL 'Lerin Data Lake Storage 1. bağlamında nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [Data Lake Storage 1. Access Control](data-lake-store-access-control.md).
 
-ACL'leri kullanarak birden çok kullanıcı için tanımladığınız öneririz [güvenlik grupları](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Kullanıcılar bir güvenlik grubuna ekleyin ve bir dosyanın veya klasörün ACL'lerini bu güvenlik grubuna atayın. 28 girişleri atanmış izinler için en fazla sınırlı olduğundan, atanmış izinler sağlamak istediğinizde bu kullanışlıdır. Daha iyi Azure Active Directory güvenlik gruplarını kullanarak Data Lake depolama Gen1 içinde depolanan verilerin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [ACL olarak kullanıcıları veya güvenlik grubunu Data Lake depolama Gen1 dosya sistemine atama](data-lake-store-secure-data.md#filepermissions).
+[Güvenlik gruplarını](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)kullanarak birden çok kullanıcı için ACL tanımlamanızı öneririz. Bir güvenlik grubuna kullanıcı ekleyin ve ardından bir dosya veya klasörün ACL 'Lerini bu güvenlik grubuna atayın. Atanan izinler için en fazla 28 girişe sınırlı olduğunuzdan, atanan izinler sağlamak istediğinizde bu kullanışlıdır. Azure Active Directory güvenlik grupları kullanarak Data Lake Storage 1. depolanan verilerin daha iyi bir şekilde güvenliğini sağlama hakkında daha fazla bilgi için, bkz. [Data Lake Storage 1. dosya sistemine Kullanıcı veya güvenlik grubu ACL olarak atama](data-lake-store-secure-data.md#filepermissions).
 
-![Liste erişim izinleri](./media/data-lake-store-security-overview/adl.acl.2.png "erişim izinleri Listele")
+![Erişim izinlerini listeleme](./media/data-lake-store-security-overview/adl.acl.2.png "Erişim izinlerini listeleme")
 
 ## <a name="network-isolation"></a>Ağ yalıtımı
-Data Lake depolama Gen1 veri deponuz ağ düzeyinde erişimi denetlemeye yardımcı olmak için kullanın. Güvenlik duvarları oluşturmak ve güvenilen istemcileriniz için bir IP adresi aralığı tanımlayın. Bir IP adresi aralığı ile yalnızca bir IP adresi tanımlı aralığın içinde olan istemciler için Data Lake depolama Gen1 bağlanabilirsiniz.
+Ağ düzeyinde veri deponuza erişimi denetlemeye yardımcı olması için Data Lake Storage 1. kullanın. Güvenlik duvarları oluşturabilir ve güvenilen istemcileriniz için bir IP adresi aralığı tanımlayabilirsiniz. Bir IP adresi aralığı ile yalnızca tanımlı aralıkta bir IP adresi olan istemciler Data Lake Storage 1. bağlanabilir.
 
-![Güvenlik Duvarı ayarları ve IP erişim](./media/data-lake-store-security-overview/firewall-ip-access.png "Güvenlik Duvarı ayarları ve IP adresi")
+![Güvenlik Duvarı ayarları ve IP erişimi](./media/data-lake-store-security-overview/firewall-ip-access.png "Güvenlik Duvarı ayarları ve IP adresi")
 
-## <a name="data-protection"></a>Veri koruma
-Data Lake depolama Gen1 yaşam döngüsü boyunca verilerinizi korur. Data Lake depolama Gen1, Taşınmakta olan veriler için ağ üzerinden veri güvenliğini sağlamak için sektör standardı Aktarım Katmanı Güvenliği (TLS 1.2) protokolünü kullanır.
+## <a name="data-protection"></a>Veri koruması
+Data Lake Storage 1. verilerinizi yaşam döngüsü boyunca korur. Data Lake Storage 1. veriler için, ağ üzerinden verileri güvenli hale getirmek üzere sektör standardı Aktarım Katmanı Güvenliği (TLS 1,2) protokolünü kullanır.
 
-![Data Lake depolama Gen1 şifreleme](./media/data-lake-store-security-overview/adls-encryption.png "Data Lake depolama Gen1 şifreleme")
+![Data Lake Storage 1. şifreleme](./media/data-lake-store-security-overview/adls-encryption.png "Data Lake Storage 1. şifreleme")
 
-Data Lake depolama Gen1 ayrıca hesapta depolanan veriler için şifreleme sağlar. Verilerinizin şifrelenmesini tercih edebilir ya da şifrelemeyi kabul etmeyebilirsiniz. Şifreleme için kabul ederseniz, Data Lake depolama Gen1 içinde depolanan verileri kalıcı medyada depolanmadan önce şifrelenir. Böyle bir durumda, Data Lake depolama Gen1 otomatik olarak kaydetmeden önce verileri şifreler ve veriye erişen istemci için tamamen saydam olacak şekilde, almadan öncesinde verilerin şifresini çözer. İstemci tarafında veri şifreleme/şifre çözme için gereken kod değişikliği vardır.
+Data Lake Storage 1., hesapta depolanan veriler için de şifreleme sağlar. Verilerinizin şifrelenmesini tercih edebilir ya da şifrelemeyi kabul etmeyebilirsiniz. Şifrelemeyi tercih ediyorsanız, Data Lake Storage 1. depolanan veriler kalıcı medyada depolanmadan önce şifrelenir. Böyle bir durumda Data Lake Storage 1., verileri kalıcı hale getirmeyi ve verileri çözmeden önce otomatik olarak şifreler, bu nedenle verilere erişen istemciye tamamen saydamdır. İstemci tarafında verileri şifrelemek/şifrelerini çözmek için gereken kod değişikliği yoktur.
 
-Anahtar Yönetimi için Data Lake depolama Gen1, Data Lake depolama Gen1 içinde depolanan tüm verilerin şifresini çözmek için gerekli olan, ana şifreleme anahtarlarının (Mek'ler) yönetimi için iki mod sağlar. Data Lake depolama Mek'leri yönettiğiniz veya Azure anahtar kasası hesabınızı kullanarak Mek'ler sahipliğini tutmayı seçmeniz Gen1 ya da sağlayabilirsiniz. Anahtar Yönetimi modunda, bir Data Lake depolama Gen1 hesabı oluşturulurken bir hata belirtin. Şifreleme tabanlı yapılandırma sağlama konusunda daha fazla bilgi için bkz. [Azure Data Lake depolama Gen1 ile çalışmaya başlama Azure portalını kullanarak](data-lake-store-get-started-portal.md).
+Anahtar yönetimi için Data Lake Storage 1., ana şifreleme anahtarlarınızı (MEKs) yönetmek için, Data Lake Storage 1. depolanan verilerin şifresini çözmek için gereken iki mod sağlar. Sizin için, MEKs 'leri Data Lake Storage 1. yönetebilir veya Azure Key Vault hesabınızı kullanarak MEKs 'in sahipliğini tutmayı seçebilirsiniz. Data Lake Storage 1. bir hesap oluştururken anahtar yönetiminin modunu belirtirsiniz. Şifreleme ile ilgili yapılandırma sağlama hakkında daha fazla bilgi için bkz. [Azure portalını kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md).
 
 ## <a name="activity-and-diagnostic-logs"></a>Etkinlik ve tanılama günlükleri
-Etkinlik veya hesap yönetimi ile ilgili etkinlikler ve verilerle ilgili etkinlikler için mi aradığınız bağlı olarak tanılama günlükleri, kullanabilirsiniz.
+Hesap yönetimiyle ilgili etkinliklere veya verilerle ilgili etkinliklere yönelik günlükleri arayıp aradığınıza bağlı olarak etkinlik veya tanılama günlüklerini kullanabilirsiniz.
 
-* Hesap Yönetimi ile ilgili etkinlikleri, Azure Resource Manager API'lerini kullanın ve Azure portalda etkinlik günlükleri çıkarılır.
-* Verilerle ilgili etkinlikler, WebHDFS REST API'lerini kullanma ve Azure portalında, tanılama günlükleri çıkarılır.
+* Hesap yönetimi ile ilgili etkinlikler Azure Resource Manager API 'Leri kullanır ve Azure portal etkinlik günlükleri aracılığıyla ortaya çıkmış.
+* Verilerle ilgili etkinlikler weblerrest API 'Lerini kullanır ve tanılama günlükleri aracılığıyla Azure portal ortaya çıkmış.
 
 ### <a name="activity-log"></a>Etkinlik günlüğü
-Yönetmeliklerine uyum sağlamak için bir kuruluşun belirli olaylar halinde sorgulaması gerekiyorsa hesap yönetimi etkinlikleri, yeterli denetim izleri gerektirebilir. Data Lake depolama Gen1 yerleşik izleme ve tüm hesap yönetimi etkinliklerini kaydeder.
+Yönetmeliklerle uyum sağlamak için, bir kuruluş belirli olaylara uyaması gerekiyorsa hesap yönetimi etkinliklerinin yeterli denetim izlerini gerektirebilir. Data Lake Storage 1. yerleşik izlemeye sahiptir ve tüm hesap yönetimi etkinliklerini günlüğe kaydeder.
 
-Hesap Yönetimi denetim kayıtları, görüntülemek ve günlüğe kaydetmek istediğiniz sütunları seçin. Ayrıca, Azure depolama etkinlik günlüklerini dışarı aktarabilirsiniz.
+Hesap yönetimi denetim izleri için, günlüğe kaydetmek istediğiniz sütunları görüntüleyin ve seçin. Etkinlik günlüklerini Azure depolama 'ya de aktarabilirsiniz.
 
-![Etkinlik günlüğü](./media/data-lake-store-security-overview/activity-logs.png "etkinlik günlüğü")
+![Etkinlik Günlüğü](./media/data-lake-store-security-overview/activity-logs.png "Etkinlik günlüğü")
 
-Etkinlik günlükleri ile çalışma hakkında daha fazla bilgi için bkz. [kaynaklara uygulanan eylemleri denetlemek için etkinlik günlüklerini görüntüleme](../azure-resource-manager/resource-group-audit.md).
+Etkinlik günlükleriyle çalışma hakkında daha fazla bilgi için bkz. [kaynaklardaki eylemleri denetlemek için etkinlik günlüklerini görüntüleme](../azure-resource-manager/management/view-activity-logs.md).
 
 ### <a name="diagnostics-logs"></a>Tanılama günlükleri
-Veri erişim denetim ve tanılama Azure portalında günlük kaydını etkinleştirmek ve bir Azure Blob Depolama hesabına, bir olay hub'ı günlükleri gönderme veya Azure İzleyici günlüğe kaydeder.
+Azure portal veri erişimi denetimi ve tanılama günlüğünü etkinleştirebilir ve günlükleri bir Azure Blob depolama hesabına, bir olay hub 'ına veya Azure Izleyici günlüklerine gönderebilirsiniz.
 
-![Tanılama günlükleri](./media/data-lake-store-security-overview/diagnostic-logs.png "tanılama günlükleri")
+![Tanılama günlükleri](./media/data-lake-store-security-overview/diagnostic-logs.png "Tanılama günlükleri")
 
-Data Lake depolama Gen1 ile tanılama günlükleri ile çalışma hakkında daha fazla bilgi için bkz. [Data Lake depolama Gen1 için tanılama günlüklerine erişme](data-lake-store-diagnostic-logs.md).
+Data Lake Storage 1. ile tanılama günlükleri ile çalışma hakkında daha fazla bilgi için bkz. [Data Lake Storage 1. için tanılama günlüklerine erişme](data-lake-store-diagnostic-logs.md).
 
 ## <a name="summary"></a>Özet
-Kurumsal müşteriler, güvenli ve kullanımı kolay bir veri analizi bulut platformunun isteğe bağlı. Data Lake depolama Gen1 kimlik yönetimi ve Azure Active Directory Tümleştirmesi, ACL tabanlı yetkilendirme, ağ yalıtımı, aktarım ve bekleme sırasında veri şifrelemesi ile kimlik doğrulaması aracılığıyla bu gereksinimleri karşılamasını yardımcı olmak için tasarlanmıştır ve denetim.
+Kurumsal müşteriler, güvenli ve kullanımı kolay bir veri analizi bulut platformu talep talebinde bulunur. Data Lake Storage 1., bu gereksinimlerin kimlik yönetimi ve kimlik doğrulaması aracılığıyla Azure Active Directory tümleştirme, ACL tabanlı yetkilendirme, ağ yalıtımı, aktarım sırasında veri şifrelemesi ve denetim aracılığıyla ele alınmasına yardımcı olmak için tasarlanmıştır.
 
-Data Lake depolama Gen1 yenilikleri görmek istiyorsanız, bize geri bildirim gönder [Data Lake depolama Gen1 UserVoice forumumuzu](https://feedback.azure.com/forums/327234-data-lake).
+Data Lake Storage 1. yeni özellikleri görmek isterseniz, görüşlerinizi [Data Lake Storage 1. UserVoice forumundaki](https://feedback.azure.com/forums/327234-data-lake)bize gönderin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure Data Lake depolama Gen1 genel bakış](data-lake-store-overview.md)
-* [Data Lake depolama Gen1 ile çalışmaya başlama](data-lake-store-get-started-portal.md)
+* [Data Lake Storage 1. kullanmaya başlayın](data-lake-store-get-started-portal.md)
 * [Data Lake Storage Gen1'de verilerin güvenliğini sağlama](data-lake-store-secure-data.md)
-

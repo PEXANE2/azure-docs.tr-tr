@@ -11,16 +11,16 @@ ms.topic: conceptual
 author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
-ms.reviewer: carlrab
-ms.date: 11/14/2019
-ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.reviewer: carlrab, vanto
+ms.date: 01/14/2020
+ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082489"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027803"
 ---
-# <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL veritabanı bağlantı sorunlarıyla ve geçici hatalarla çalışma
+# <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>SQL veritabanı 'nda geçici bağlantı hatalarıyla ilgili sorunları giderme
 
 Bu makalede, bağlantı hatalarının ve istemci uygulamanızın Azure SQL veritabanı ile etkileşime geçtiğinde karşılaştığı geçici hataların nasıl engelleneceği, giderileceği, tanılanacağı ve azaltılacağını açıklanmaktadır. Yeniden deneme mantığını yapılandırmayı, bağlantı dizesini derlemeyi ve diğer bağlantı ayarlarını ayarlamayı öğrenin.
 
@@ -187,7 +187,7 @@ Genellikle, istemci programınızı barındıran bilgisayardaki giden iletişim 
 
 Örneğin, istemci programınız bir Windows bilgisayarında barındırılıyorsa, 1433 numaralı bağlantı noktasını açmak için konakta Windows Güvenlik Duvarı 'nı kullanabilirsiniz.
 
-1. Denetim Masası 'Nı açın.
+1. Denetim Masası'nı açın.
 2. **Tüm Denetim Masası öğeleri** > **Windows Güvenlik Duvarı** > **gelişmiş ayarlar** > **giden kuralları** > **Eylemler** > **Yeni kural**' ı seçin.
 
 İstemci programınız bir Azure sanal makinesinde (VM) barındırılıyorsa, [ADO.NET 4,5 ve SQL veritabanı için 1433 ' den sonraki bağlantı noktalarını](sql-database-develop-direct-route-ports-adonet-v12.md)okuyun.
@@ -444,7 +444,6 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Diğer yaygın SQL veritabanı bağlantı sorunlarını giderme hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı bağlantı sorunlarını giderme](sql-database-troubleshoot-common-connection-issues.md).
 - [SQL veritabanı ve SQL Server için bağlantı kitaplıkları](sql-database-libraries.md)
 - [SQL Server bağlantı havuzu (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
 - Yeniden deneme, yalnızca bir şey için yeniden deneme davranışı ekleme görevini basitleştirmek için [ Python 'Da yazılmış bir Apache 2,0 lisanslı genel amaçlı yeniden deneme kitaplığıdır](https://pypi.python.org/pypi/retrying) .

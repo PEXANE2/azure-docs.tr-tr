@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 1ee238e833569bac73bc95932a8d9f044640a59b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b9b84cb2c442e7da65da332da1a78b28c32c4de9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770331"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979658"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 
@@ -51,7 +51,7 @@ Bir sanal ağ kuralı, MySQL için Azure veritabanı sunucunuzun alt ağdaki her
 
 İşlem yapana kadar, alt ağlardaki VM 'Ler MySQL sunucusu için Azure veritabanı ile iletişim kuramaz. İletişim kuran bir eylem, bir sanal ağ kuralı oluşturma işlemi olur. VNet kuralı yaklaşımını seçmeye yönelik korvaale, güvenlik duvarı tarafından sunulan rekabet güvenlik seçeneklerini içeren bir karşılaştırma ve kontrast tartışması gerektirir.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Azure hizmetlerine erişime izin ver
+### <a name="a-allow-access-to-azure-services"></a>A. Azure hizmetlerine erişim izni verme
 
 Bağlantı güvenlik bölmesinde, **Azure hizmetlerine erişime Izin ver**etiketli bir **açık/kapalı** düğmesi vardır. **Açık** ayarı tüm Azure IP adreslerinden ve tüm Azure alt ağlarının iletişimlerine izin verir. Bu Azure IP 'Leri veya alt ağları size ait olmayabilir. Bu ayar, MySQL veritabanınızın Azure veritabanınızın olmasını istediğiniz büyük olasılıkla **daha açıktır.** Sanal ağ kuralı özelliği, daha ayrıntılı bir denetim sağlar.
 
@@ -118,7 +118,7 @@ MySQL için Azure veritabanı 'nda, sanal ağ kuralları özelliği aşağıdaki
 
 - **Microsoft. SQL** Service etiketi kullanılarak MySQL Için Azure veritabanı 'nda sanal ağ hizmet uç noktalarını açmak, tüm Azure veritabanı hizmetleri için uç noktaları da sağlar: MySQL Için Azure veritabanı, PostgreSQL Için Azure veritabanı, Azure SQL veritabanı ve Azure SQL veri ambarı.
 
-- VNet hizmet uç noktaları için destek yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucular içindir.
+- Yalnızca genel amaçlı ve bellek için iyileştirilmiş sunucuları için sanal ağ hizmet uç noktaları desteğidir.
 
 - Güvenlik duvarında, IP adresi aralıkları aşağıdaki ağ öğelerine uygulanır, ancak sanal ağ kuralları şunları içermez:
     - [Siteden siteye (S2S) sanal özel ağ (VPN)][vpn-gateway-indexmd-608y]
@@ -146,7 +146,7 @@ VNet kuralları oluşturma hakkında makaleler için bkz.:
 - [Azure CLı kullanarak MySQL için Azure veritabanı kuralları oluşturma ve yönetme](howto-manage-vnet-using-cli.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
+[arm-deployment-model-568f]: ../azure-resource-manager/management/deployment-models.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md
 
@@ -160,4 +160,4 @@ VNet kuralları oluşturma hakkında makaleler için bkz.:
 
 [expressroute-indexmd-744v]: ../expressroute/index.yml
 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

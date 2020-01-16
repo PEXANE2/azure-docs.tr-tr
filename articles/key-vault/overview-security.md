@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 728398aeec4715d15ebe44ae6d4e4bfa5f295df8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 74dac926ea67b9f6a31993a72dc6331aa48155b7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884779"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981564"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault güvenliği
 
@@ -45,16 +45,16 @@ Her iki düzlemde kimlik doğrulama için tek bir mekanizmanın çeşitli avanta
 
 ### <a name="managing-administrative-access-to-key-vault"></a>Key Vault için yönetici erişimini yönetme
 
-Bir kaynak grubunda bir Anahtar Kasası oluşturduğunuzda, Azure AD 'yi kullanarak erişimi yönetirsiniz. Kullanıcılara veya gruplara bir kaynak grubundaki anahtar kasalarını yönetme yeteneği vermiş olursunuz. Uygun RBAC rollerini atayarak belirli bir kapsam düzeyinde erişim izni verebilirsiniz. Anahtar kasalarını yönetmek üzere bir kullanıcıya erişim izni vermek için, belirli bir kapsamdaki kullanıcıya `key vault Contributor` önceden tanımlanmış bir rol atarsınız. Aşağıdaki kapsamlar düzeyleri RBAC rolüne atanabilir:
+Bir kaynak grubunda bir Anahtar Kasası oluşturduğunuzda, Azure AD 'yi kullanarak erişimi yönetirsiniz. Kullanıcılara veya gruplara bir kaynak grubundaki anahtar kasalarını yönetme yeteneği vermiş olursunuz. Uygun RBAC rollerini atayarak belirli bir kapsam düzeyinde erişim izni verebilirsiniz. Anahtar kasalarını yönetmek üzere bir kullanıcıya erişim izni vermek için, belirli bir kapsamdaki kullanıcıya önceden tanımlanmış bir `key vault Contributor` rolü atarsınız. Aşağıdaki kapsamlar düzeyleri RBAC rolüne atanabilir:
 
-- **Abonelik**: Abonelik düzeyinde atanan bir RBAC rolü, bu aboneliğin içindeki tüm kaynak grupları ve kaynaklar için geçerlidir.
-- **Kaynak grubu**: Kaynak grubu düzeyinde atanan bir RBAC rolü, kaynak grubundaki tüm kaynaklar için geçerlidir.
-- **Belirli kaynak**: Belirli bir kaynak için atanan RBAC rolü bu kaynak için geçerlidir. Bu durumda, kaynak belirli bir Anahtar Kasası olur.
+- **Abonelik**: abonelik düzeyinde atanan bir RBAC rolü, bu aboneliğin içindeki tüm kaynak grupları ve kaynaklar için geçerlidir.
+- **Kaynak grubu**: kaynak grubu düzeyinde atanan bir RBAC rolü, kaynak grubundaki tüm kaynaklar için geçerlidir.
+- **Belirli kaynak**: belirli bir kaynak IÇIN atanan RBAC rolü bu kaynak için geçerlidir. Bu durumda, kaynak belirli bir Anahtar Kasası olur.
 
-Önceden tanımlanmış birkaç rol vardır. Önceden tanımlanmış bir rol gereksinimlerinize uygun değilse, kendi rolünüzü tanımlayabilirsiniz. Daha fazla bilgi için bkz [. RBAC: Yerleşik roller](../role-based-access-control/built-in-roles.md).
+Önceden tanımlanmış birkaç rol vardır. Önceden tanımlanmış bir rol gereksinimlerinize uygun değilse, kendi rolünüzü tanımlayabilirsiniz. Daha fazla bilgi için bkz. [RBAC: yerleşik roller](../role-based-access-control/built-in-roles.md).
 
 > [!IMPORTANT]
-> Bir kullanıcının `Contributor` bir Anahtar Kasası yönetim düzlemine izinleri varsa, Kullanıcı Key Vault erişim ilkesi ayarlayarak kendilerine veri düzlemine erişim izni verebilir. Anahtar kasalarınıza kimin rol erişimi `Contributor` olduğunu sıkı bir şekilde denetleyebilirsiniz. Anahtar kasalarınızı, anahtarlarınızı, sırları ve sertifikalarınızı yalnızca yetkili kişilerin erişebildiğinden ve yönetebilmesi için emin olun.
+> Bir kullanıcının bir Anahtar Kasası yönetim düzlemine `Contributor` izinleri varsa, Kullanıcı bir Key Vault erişim ilkesi ayarlayarak kendilerine veri düzlemine erişim izni verebilir. Anahtar kasalarınıza `Contributor` rol erişimi olduğunu sıkı bir şekilde denetleyebilirsiniz. Anahtar kasalarınızı, anahtarlarınızı, sırları ve sertifikalarınızı yalnızca yetkili kişilerin erişebildiğinden ve yönetebilmesi için emin olun.
 
 <a id="data-plane-access-control"></a>
 ### <a name="controlling-access-to-key-vault-data"></a>Key Vault verilerine erişimi denetleme
@@ -87,15 +87,15 @@ Key Vault günlük kaydı, kasanızda gerçekleştirilen etkinliklerle ilgili bi
     - Anahtarları imzalama, doğrulama, şifreleme, şifre çözme, sarmalama ve kaldırma, gizli dizileri alma ve anahtarları ve gizli dizileri (ve bunların sürümlerini) listeleme.
 - Bir 401 yanıtına neden olan kimliği doğrulanmamış istekler. Örnek olarak, hatalı biçimlendirilmiş veya geçerliliği olmayan ya da geçersiz bir belirtece sahip bir taşıyıcı belirteci olmayan isteklerdir.
 
-Anahtar Kasası işleminden sonraki 10 dakika içinde günlüğe kaydetme bilgilerine erişilebilir. Bu, depolama hesabınızda günlüklerinizi yönetmek için kullanabileceğiniz bir hesaptır. 
+Anahtar Kasası işleminden sonraki 10 dakika içinde günlüğe kaydetme bilgilerine erişilebilir. Bu, depolama hesabınızda günlüklerinizi yönetmek için kullanabileceğiniz bir hesaptır.
 
 - Günlüklerinize erişebilecek kişileri kısıtlayarak güvenliklerini sağlamak için standart Azure erişim denetimi yöntemlerini kullanın.
 - Artık depolama hesabınızda tutmak istemediğiniz günlükleri silin.
 
-Depolama hesaplarını güvenle yönetme önerisi için [Azure depolama Güvenlik Kılavuzu ' nu](../storage/common/storage-security-guide.md) gözden geçirin
+Depolama hesaplarını güvenle yönetme önerisi için [Azure depolama Güvenlik Kılavuzu ' nu](../storage/blobs/security-recommendations.md) gözden geçirin
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 - [Azure Key Vault için sanal ağ hizmeti uç noktaları](key-vault-overview-vnet-service-endpoints.md)
-- [RAPORDAKI Yerleşik roller](../role-based-access-control/built-in-roles.md)
+- [RBAC: yerleşik roller](../role-based-access-control/built-in-roles.md)
 - [Azure Key Vault için sanal ağ hizmeti uç noktaları](key-vault-overview-vnet-service-endpoints.md)

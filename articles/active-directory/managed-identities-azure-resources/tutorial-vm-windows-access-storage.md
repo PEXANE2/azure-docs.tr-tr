@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4da78fbb15aea2bd0f54ffec1b0851466c799584
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888592"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971955"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Öğretici: Azure Depolama’ya erişmek için Windows VM sistem tarafından atanan yönetilen kimlik kullanma
 
@@ -40,7 +40,18 @@ Bu öğreticide, Azure Depolama'ya erişmek amacıyla, Windows sanal makinesi (V
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-account"></a>Hesap oluşturma
+
+
+## <a name="enable"></a>Etkinleştirme
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>Erişim verme
+
+
+### <a name="create-storage-account"></a>Depolama hesabı oluştur
 
 Bu bölümde bir depolama hesabı oluşturursunuz.
 
@@ -53,7 +64,7 @@ Bu bölümde bir depolama hesabı oluşturursunuz.
 
     ![Yeni depolama hesabı oluşturma](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Bir blob kapsayıcı oluşturma ve depolama hesabına dosya yükleme
+### <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Bir blob kapsayıcı oluşturma ve depolama hesabına dosya yükleme
 
 Dosyalar blob depolama alanı gerektirdiğinden dosyasının depolanacağı bir blob kapsayıcısı oluşturmanız gerekir. Ardından yeni depolama hesabındaki blob kapsayıcısına bir dosya yükleyin.
 
@@ -69,7 +80,7 @@ Dosyalar blob depolama alanı gerektirdiğinden dosyasının depolanacağı bir 
 7. **Blobu karşıya yükle** bölmesinde **Dosyalar**’ın altında, klasör simgesine tıklayıp yerel makinenizde **hello_world.txt** dosyasına göz atın, dosyayı seçin ve ardından **Karşıya yükle**’ye tıklayın.
     ![Metin dosyasını karşıya yükleme](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-access"></a>Erişim verme
+### <a name="grant-access"></a>Erişim verme
 
 Bu bölümde, VM 'nizin bir Azure depolama kapsayıcısına nasıl verilmesi gösterilmektedir. Azure depolama blobundaki verileri almak için VM’nin sistem tarafından atanan yönetilen kimliğini kullanabilirsiniz.
 
@@ -83,7 +94,7 @@ Bu bölümde, VM 'nizin bir Azure depolama kapsayıcısına nasıl verilmesi gö
 
     ![İzin atama](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token"></a>Bir erişim belirteci alma 
+## <a name="access-data"></a>Verilere erişme 
 
 Azure Depolama, Azure AD kimlik doğrulamasını yerel olarak desteklediğinden yönetilen kimlik kullanılarak alınan erişim belirteçlerini doğrudan kabul eder. Bu, Azure Depolama’nın Azure AD tümleştirmesi kapsamındadır ve bağlantı dizesinde kimlik bilgileri sağlama işleminden farklıdır.
 
@@ -160,6 +171,13 @@ namespace StorageOAuthToken
 Yanıt, dosyanın içeriklerini kapsar:
 
 `Hello world! :)`
+
+
+## <a name="disable"></a>Devre dışı bırakma
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,22 +7,22 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/12/2019
-ms.openlocfilehash: 0fda04bbfa632f429539ddc0ad90941cb645226b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a483f143b70a4969114c078b3b0a6f960c4b6b41
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934631"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976073"
 ---
-# <a name="commercial-marketplace-billing"></a>Ticari Market faturalandırması 
+# <a name="commercial-marketplace-billing"></a>Ticari Market faturalandırması
 
 Bu makalede ticari Market 'e yönelik ticaret ile ilgili konular ele alınmaktadır:
 
-- [Market Yayımlama seçenekleri](#marketplace-publishing-options) 
+- [Market Yayımlama seçenekleri](#marketplace-publishing-options)
 - [Transact genel bakış](#transact-general-overview)
 - [Transact faturalandırma modelleri](#transact-billing-models)
 
-## <a name="marketplace-publishing-options"></a>Market Yayımlama seçenekleri 
+## <a name="marketplace-publishing-options"></a>Market Yayımlama seçenekleri
 
 Ticari Market, yayımcılar için birkaç yayımlama seçeneği sunar.
 
@@ -36,9 +36,9 @@ Liste ve deneme yayımlama seçeneklerine ek olarak, Transact yayımlama seçene
 
 ## <a name="transact-general-overview"></a>Transact genel bakış
 
-Transact yayımlama seçeneği kullanılırken, Microsoft üçüncü taraf yazılımlarının satışı ve bazı teklif türlerinin müşterinin Azure aboneliğine dağıtılması için bir satış sağlar. Yayımcı, bir faturalandırma modeli ve teklif türü seçerken, altyapı ücretlerinin ve yayımcının kendi yazılım lisanslama ücretlerine ilişkin faturalandırmayı göz önünde bulundurmalıdır. 
+Transact yayımlama seçeneği kullanılırken, Microsoft üçüncü taraf yazılımlarının satışı ve bazı teklif türlerinin müşterinin Azure aboneliğine dağıtılması için bir satış sağlar. Yayımcı, bir faturalandırma modeli ve teklif türü seçerken, altyapı ücretlerinin ve yayımcının kendi yazılım lisanslama ücretlerine ilişkin faturalandırmayı göz önünde bulundurmalıdır.
 
-Aşağıdaki teklif türleri için Transact Publishing seçeneği şu anda destekleniyor: sanal makineler, Azure uygulamaları ve SaaS uygulamaları. 
+Aşağıdaki teklif türleri için Transact Publishing seçeneği şu anda destekleniyor: sanal makineler, Azure uygulamaları ve SaaS uygulamaları.
 
 ![Azure Marketi 'nde Transact](./media/transact-amp.png)
 

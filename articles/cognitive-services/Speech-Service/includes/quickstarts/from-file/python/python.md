@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 01/14/2020
 ms.author: chlandsi
-ms.openlocfilehash: 541fa3984eb5680a93be7ddef8f56f37922586e5
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 587a0e83eb6b8c96b44589f7f5701526c23e2aae
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75927900"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037640"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -53,8 +53,7 @@ Ya da bu hızlı başlangıç öğreticisini [konuşma SDK 'sı örnek deposunda
 > [!NOTE]
 > Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
-````Python
-
+```python
 import azure.cognitiveservices.speech as speechsdk
 
 # Creates an instance of a speech config with specified subscription key and service region.
@@ -71,7 +70,6 @@ audio_input = speechsdk.AudioConfig(filename=audio_filename)
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
 
 print("Recognizing first result...")
-
 
 # Starts speech recognition, and returns after a single utterance is recognized. The end of a
 # single utterance is determined by listening for silence at the end or until a maximum of 15
@@ -91,8 +89,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
     print("Speech Recognition canceled: {}".format(cancellation_details.reason))
     if cancellation_details.reason == speechsdk.CancellationReason.Error:
         print("Error details: {}".format(cancellation_details.error_details))
-
-````
+```
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Konuşma SDK 'sını Visual Studio Code ile yükleyip kullanma
 
@@ -114,14 +111,14 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. [Python kodunu](#sample-code) kopyalayın, yapıştırın ve yeni oluşturulan dosyaya kaydedin.
 1. Konuşma hizmeti abonelik bilgilerinizi ekleyin.
 1. Seçilirse, pencerenin alt kısmındaki durum çubuğunun sol tarafında bir Python yorumlayıcı görüntülenir.
-   Aksi takdirde, kullanılabilir Python yorumlayıcılarını bir listesini alın. Komut paletini açın (Ctrl + Shift + P) ve **Python: yorumlayıcı Seç**' i girin. Uygun olanı seçin.
+   Aksi takdirde, kullanılabilir Python yorumlayıcılarını bir listesini alın. <kbd>CTRL + SHIFT + P</kbd> komut paletini açın ve **Python: yorumlayıcı Seç**' i girin. Uygun olanı seçin.
 1. Konuşma SDK 'Sı Python paketini Visual Studio Code içinden yükleyebilirsiniz. Seçtiğiniz Python yorumlayıcı için henüz yüklenmemişse bunu yapın.
-   Konuşma SDK 'Sı paketini yüklemek için bir Terminal açın. Komut paletini tekrar açın (Ctrl + Shift + P) ve **Terminal: yeni tümleşik Terminal oluştur**' a girin.
+   Konuşma SDK 'Sı paketini yüklemek için bir Terminal açın. Komut paletini bir kez daha açın <kbd>CTRL + SHIFT + P</kbd> , **Terminal: yeni tümleşik Terminal oluştur**.
    Açılan terminalde, komut `python -m pip install azure-cognitiveservices-speech` veya sisteminiz için uygun komutu girin.
 1. Örnek kodu çalıştırmak için, düzenleyicinin içinde herhangi bir yere sağ tıklayın. **Terminalde Python dosyasını çalıştır '** ı seçin.
    Ses dosyanızdaki konuşma girişi ilk 15 saniye, konsol penceresinde tanınacaktır ve günlüğe kaydedilir.
 
-   ```text
+   ```console
    Recognizing first result...
    We recognized: What's the weather like?
    ```

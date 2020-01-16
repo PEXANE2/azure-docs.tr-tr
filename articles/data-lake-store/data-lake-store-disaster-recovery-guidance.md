@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake depolama Gen1 için olağanüstü durum kurtarma Kılavuzu | Microsoft Docs
-description: Azure Data Lake depolama Gen1 için olağanüstü durum kurtarma Kılavuzu
+title: Azure Data Lake Storage 1. için olağanüstü durum kurtarma Kılavuzu | Microsoft Docs
+description: Azure Data Lake Storage 1. için olağanüstü durum kurtarma Kılavuzu
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: b3f1888a73baf2b7f9efa9f5e7cdb3305aa9f90d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b33977ca5184ea07b5651be18e3a132d30ce4b39
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878299"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966066"
 ---
-# <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake depolama Gen1 veriler için olağanüstü durum kurtarma Kılavuzu
+# <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. veri için olağanüstü durum kurtarma Kılavuzu
 
-Azure Data Lake depolama Gen1 yerel olarak yedekli depolama (LRS) sağlar. Bu nedenle, Data Lake depolama Gen1 hesabınızda otomatik çoğaltmalar sayesinde bir veri merkezinde geçici donanım hatalarına dayanıklı verilerdir. Bu, dayanıklılık ve yüksek kullanılabilirlik, Data Lake depolama Gen1 SLA'sı toplantı sağlar. Bu makalede, verilerinizi nadir bölge çapında kesintilerden ya da yanlışlıkla silinmekten daha iyi korumak nasıl hakkında yönergeler sağlanır.
+Azure Data Lake Storage 1. yerel olarak yedekli depolama (LRS) sağlar. Bu nedenle, Data Lake Storage 1. hesabınızdaki veriler otomatik çoğaltmalar aracılığıyla bir veri merkezindeki geçici donanım arızalarına dayanıklı olur. Bu, dayanıklılık ve yüksek kullanılabilirlik sağlar ve Data Lake Storage 1. SLA 'yı ister. Bu makalede, verilerinizi nadir bölge genelinde kesintiler veya yanlışlıkla silinmelerden daha fazla korumaya yönelik yönergeler sunulmaktadır.
 
 ## <a name="disaster-recovery-guidance"></a>Olağanüstü durum kurtarma kılavuzu
 Her müşterinin kendi olağanüstü durum kurtarma planını hazırlaması kritik öneme sahiptir. Olağanüstü durum kurtarma planınızı oluşturmak için bu makaledeki bilgileri okuyun. Kendi planınızı oluşturmanıza yardımcı olabilecek bazı kaynaklar aşağıda verilmiştir.
@@ -29,19 +29,19 @@ Her müşterinin kendi olağanüstü durum kurtarma planını hazırlaması krit
 * [Azure dayanıklılık teknik kılavuzu](../resiliency/resiliency-technical-guidance.md)
 
 ### <a name="best-practices"></a>En iyi uygulamalar
-Kritik verilerinizi başka bir bölgede başka bir Data Lake depolama Gen1 hesabına ile olağanüstü durum kurtarma planınızın gereksinimlerine uygun bir sıklıkta kopyalamanız önerilir. Verileri kopyalamak için [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) veya [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) dahil olmak üzere çeşitli yöntemler mevcuttur. Azure Data Factory, yinelenen bir düzende veri taşıma işlem hatları oluşturmak ve dağıtmak için kullanışlı bir hizmettir.
+Kritik verilerinizi başka bir bölgedeki başka bir Data Lake Storage 1. hesabına, olağanüstü durum kurtarma planınızın ihtiyaçlarına göre hizalı bir sıklık ile kopyalamanızı öneririz. Verileri kopyalamak için [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) veya [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) dahil olmak üzere çeşitli yöntemler mevcuttur. Azure Data Factory, yinelenen bir düzende veri taşıma işlem hatları oluşturmak ve dağıtmak için kullanışlı bir hizmettir.
 
-Bölgesel bir kesinti oluşursa verilerin kopyalandığı bölgede daha sonra erişebilirsiniz. İzleyeceğiniz [Azure hizmet durumu Panosu](https://azure.microsoft.com/status/) dünyanın dört bir yanındaki Azure hizmet durumunu belirlemek için.
+Bölgesel bir kesinti oluşursa, verilerin kopyalandığı bölgedeki verilerinize erişebilirsiniz. Azure hizmet durumu [panosunu](https://azure.microsoft.com/status/) , dünya genelinde Azure hizmet durumunu tespit etmek için izleyebilirsiniz.
 
 ## <a name="data-corruption-or-accidental-deletion-recovery-guidance"></a>Verilerin bozulması veya yanlışlıkla silinmesi durumunda kurtarma kılavuzu
-Data Lake depolama Gen1 otomatik çoğaltmalar aracılığıyla veri dayanıklılığı sağlasa da bu, uygulama (veya geliştiricilerin/kullanıcıların) verileri bozmasına ya da yanlışlıkla silmesine engel olmaz.
+Data Lake Storage 1. otomatikleştirilmiş çoğaltmalar aracılığıyla veri dayanıklılığı sağlarken, bu, uygulamanızın (veya geliştiricilerin/kullanıcıların) verileri bozmasını veya yanlışlıkla silmesini engellemez.
 
 ### <a name="best-practices"></a>En iyi uygulamalar
-VHD'nin yanlışlıkla silinmesini engellemek için Data Lake depolama Gen1 hesabınız için bir doğru erişim ilkelerini ayarlamanızı öneririz.  Bu, uygulama içerir [Azure kaynak kilitlerinin](../azure-resource-manager/resource-group-lock-resources.md) kullanılabilir kullanarak olarak uygulanan hesap ve dosya düzeyinde erişim denetimini de önemli kaynakları kilitlemek için [Data Lake depolama Gen1 güvenlik özellikleri](data-lake-store-security-overview.md). Ayrıca kopyalarını kullanarak önemli verileri düzenli olarak oluşturmanızı öneririz [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) veya [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) başka bir Data Lake depolama Gen1 içinde Hesap, klasör veya Azure aboneliği.  Bu yöntem, verilerin bozulması veya silinmesi durumunda kurtarılması için de kullanılabilir. Azure Data Factory, yinelenen bir düzende veri taşıma işlem hatları oluşturmak ve dağıtmak için kullanışlı bir hizmettir.
+Yanlışlıkla silinmeye engel olmak için, Data Lake Storage 1. hesabınız için ilk olarak doğru erişim ilkelerini ayarlamanızı öneririz.  Bu, önemli kaynakları kilitlemek ve kullanılabilir [Data Lake Storage 1. güvenlik özelliklerini](data-lake-store-security-overview.md)kullanarak hesap ve dosya düzeyi erişim denetimi uygulamak için [Azure kaynak kilitlerini](../azure-resource-manager/management/lock-resources.md) uygulamayı içerir. Ayrıca, başka bir Data Lake Storage 1. hesabı, klasörü veya Azure aboneliğine [AdlCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) veya [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) kullanarak kritik verilerinizin kopyalarını düzenli olarak oluşturmanızı öneririz.  Bu yöntem, verilerin bozulması veya silinmesi durumunda kurtarılması için de kullanılabilir. Azure Data Factory, yinelenen bir düzende veri taşıma işlem hatları oluşturmak ve dağıtmak için kullanışlı bir hizmettir.
 
-Kuruluşlar da etkinleştirebilir [tanılama günlüğüne kaydetme](data-lake-store-diagnostic-logs.md) kimin silinmiş veya güncelleştirilmiş bir dosya hakkında bilgi sağlayan veri erişimi denetim izleri toplamak Data Lake depolama Gen1 hesabı.
+Kuruluşlar, bir dosyayı kimin sildiği veya güncelleştirmiş olabileceği hakkında bilgi sağlayan veri erişim denetimi izlerini toplamak üzere Data Lake Storage 1. hesabının [Tanılama günlüğünü](data-lake-store-diagnostic-logs.md) de etkinleştirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Data Lake depolama Gen1 ile çalışmaya başlama](data-lake-store-get-started-portal.md)
+* [Azure Data Lake Storage 1. kullanmaya başlayın](data-lake-store-get-started-portal.md)
 * [Data Lake Storage Gen1'de verilerin güvenliğini sağlama](data-lake-store-secure-data.md)
 

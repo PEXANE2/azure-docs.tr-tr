@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: akjosh
-ms.openlocfilehash: a021c76eb973eba11e1dc1ee89f3d7f829a53f70
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e0214208212cd4526b64ccd762a7fc00d06853a6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073053"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969967"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Linux için Azure Izleyici sanal makine uzantısı
 
@@ -32,7 +32,7 @@ Azure Izleyici günlükleri, bulut ve şirket içi varlıklar arasında izleme, 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -117,7 +117,7 @@ Log Analytics aracısını Uzantı Şeması aşağıdaki JSON'u göstermektedir.
 
 Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Azure Izleyici günlüklerine ekleme gibi dağıtım sonrası yapılandırma gerektiren bir veya daha fazla sanal makine dağıtımında şablonlar idealdir. Log Analytics Aracısı VM uzantısını içeren örnek bir Kaynak Yöneticisi şablonu [Azure hızlı başlangıç galerisinde](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)bulunabilir. 
 
-Sanal makine uzantısı için JSON yapılandırma içinde sanal makine kaynağı iç içe geçmiş veya kök veya bir Resource Manager JSON şablonunu üst düzey yerleştirilir. Kaynak adı ve türü değeri JSON yapılandırma yerleşimini etkiler. Daha fazla bilgi için [ayarlamak için alt kaynakları ad ve tür](../../azure-resource-manager/child-resource-name-type.md). 
+Sanal makine uzantısı için JSON yapılandırma içinde sanal makine kaynağı iç içe geçmiş veya kök veya bir Resource Manager JSON şablonunu üst düzey yerleştirilir. Kaynak adı ve türü değeri JSON yapılandırma yerleşimini etkiler. Daha fazla bilgi için [ayarlamak için alt kaynakları ad ve tür](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
 Aşağıdaki örnekte, VM uzantısını sanal makine kaynağı içinde iç içe varsayılır. İç içe uzantısı kaynak, JSON yerleştirildi `"resources": []` sanal makinenin nesne.
 

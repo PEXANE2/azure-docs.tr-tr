@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 12/20/2019
-ms.openlocfilehash: e3a8048d8bcb8bb737c511a8b8bb6b57f9e81403
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750985"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977578"
 ---
 # <a name="collect-azure-activity-log-with-legacy-settings"></a>Eski ayarlarla Azure etkinlik günlüğü toplayın
 [Azure etkinlik günlüğü](platform-logs-overview.md) , Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform günlüğliğidir](platform-logs-overview.md) . Son olarak, etkinlik günlüğü girdilerini bir [Olay Hub 'ına veya depolama hesabına](activity-log-export.md) göndermek için bir günlük profili oluşturdunuz ve bir [Log Analytics çalışma alanına](activity-log-collect.md)toplamak için bağlayıcı kullandınız. Bu makalede, Yöntemler arasındaki fark, var olan eski ayarlarla çalışma ve tanılama ayarlarına hazırlık için eski ayarların nasıl temizleneceğini açıklanmaktadır.
@@ -28,7 +28,7 @@ Tanılama ayarlarının kullanılması geçerli yöntemlere göre aşağıdaki a
 - Koleksiyonu yalnızca belirli kategoriler için günlükleri toplayacak şekilde filtreleyin.
 - Tüm etkinlik günlüğü kategorilerini toplayın. Bazı kategoriler eski yöntem kullanılarak toplanmaz.
 - Günlük alımı için daha hızlı gecikme. Tanılama ayarları yalnızca yaklaşık 1 dakika eklediğinde önceki yöntemde yaklaşık 15 dakikalık gecikme vardır.
-  
+
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
 Bu özelliği etkinleştirmeden önce tanılama ayarlarını kullanarak etkinlik günlüğü koleksiyonunun aşağıdaki ayrıntılarını göz önünde bulundurun.
 
@@ -44,7 +44,7 @@ Aşağıdaki özellikler kaldırılmıştır:
 - ActivityStatus
 - Etkinlik alt durumu
 - ThrottledRequests
-- ResourceProvider 
+- ResourceProvider
 
 Aşağıdaki özellikler eklendi:
 
@@ -57,10 +57,10 @@ Etkinlik günlüğünü toplamaya yönelik eski ayarlar, bir tanılama ayarıyla
 
 1. Azure portal **Azure izleyici** menüsünde **etkinlik günlüğü**' nü seçin.
 3. **Tanılama ayarları**'na tıklayın.
-   
+
    ![Tanılama ayarları](media/diagnostic-settings-subscription/diagnostic-settings.png)
-   
-4. Eski deneyimin mor başlığına tıklayın. 
+
+4. Eski deneyimin mor başlığına tıklayın.
 
     ![Eski deneyim](media/diagnostic-settings-subscription/legacy-experience.png)
 
@@ -84,7 +84,7 @@ Tanılama ayarlarını kullanarak etkinleştirilmeden önce var olan etkinlik ko
 ### <a name="disable-log-profile"></a>Günlük profilini devre dışı bırak
 
 1. Eski ayarları açmak için [eski ayarlarla çalışma](#work-with-legacy-settings) bölümünde açıklanan yordamı kullanın.
-2. Depolama veya Olay Hub 'ları için geçerli koleksiyonu devre dışı bırakın. 
+2. Depolama veya Olay Hub 'ları için geçerli koleksiyonu devre dışı bırakın.
 
 
 
@@ -93,5 +93,5 @@ Azure Log Analytics izleme çözümü, Log Analytics çalışma alanınızdaki e
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Etkinlik günlüğü hakkında daha fazla bilgi edinin](../../azure-resource-manager/resource-group-audit.md)
+* [Etkinlik günlüğü hakkında daha fazla bilgi edinin](../../azure-resource-manager/management/view-activity-logs.md)
 * [Tanılama ayarları hakkında daha fazla bilgi edinin](diagnostic-settings.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs içinde iç içe geçmiş Resource Manager şablonu ortamlarını dağıtma | Microsoft Docs
-description: Azure DevTest Labs ile ortamları sağlamak için Azure Resource Manager şablonları iç içe geçmiş dağıtmayı öğrenin.
+title: Azure DevTest Labs içinde iç içe Kaynak Yöneticisi şablonu ortamlarını dağıtma | Microsoft Docs
+description: Azure DevTest Labs sahip ortamlar sağlamak üzere iç içe Azure Resource Manager şablonlarını dağıtmayı öğrenin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: spelluru
-ms.openlocfilehash: eec0cde4a36449f85998bfb04d16f1d52c68bb19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 675d2c670f5bc11c1d8b61bc96313e408f788dc3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65835293"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976546"
 ---
-# <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Test ortamları için iç içe geçmiş Azure Resource Manager şablonlarını dağıtma
-İç içe geçmiş dağıtım ana Resource Manager şablonu içindeki diğer Azure Resource Manager şablonları yürütmek sağlar. Hedeflenen ve amaca özel şablonları kümesine dağıtımınızı ayırmak sağlar. Bu test, yeniden ve Okunabilirlik açısından avantajları sağlar. Makaleyi [Azure kaynakları dağıtılırken bağlı şablonları kullanma](../azure-resource-manager/resource-group-linked-templates.md) bu çözümün iyi bir genel bakış ile birkaç kod örneği sağlanmıştır. Bu makalede, Azure DevTest Labs kullanarak belirli bir örnek sağlar. 
+# <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Ortamları test etmek için iç içe Azure Resource Manager şablonları dağıtma
+İç içe dağıtım, diğer Azure Resource Manager şablonlarını Ana Kaynak Yöneticisi şablonu içinden yürütmelerine olanak tanır. Bu, dağıtımınızı hedeflenen ve amaca özgü bir dizi şekilde parçalara ayırmayı sağlar. Test, yeniden kullanım ve okunabilirlik açısından avantajlar sağlar. [Azure kaynaklarını dağıtmaya yönelik bağlı şablonları kullanma](../azure-resource-manager/templates/linked-templates.md) makalesinde, bu çözüme birçok kod örneği ile ilgili iyi bir genel bakış sağlanır. Bu makale, Azure DevTest Labs özgü bir örnek sağlar. 
 
 ## <a name="key-parameters"></a>Anahtar parametreleri
-Sıfırdan kendi Resource Manager şablonu oluşturmanız mümkün olsa da kullanmanızı öneririz [Azure kaynak grubu projesi](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) Visual Studio'da, geliştirme ve hata ayıklama şablonları yapmayı kolaylaştırır. İç içe geçmiş dağıtım kaynağı için azuredeploy.json eklediğinizde, Visual Studio şablon daha esnek hale getirmek için birden fazla öğe ekler. Bu öğeler, ikincil bir şablon ve parametreleri dosyası, ana şablon dosyası içinde değişken adlarını ve yeni dosyalar için depolama konumu için iki parametre ile bir alt klasör içerir. **_ArtifactsLocation** ve **_artifactsLocationSasToken** DevTest Labs kullanan anahtar parametreleri. 
+Sıfırdan kendi Kaynak Yöneticisi şablonunuzu oluşturabileceğiniz gibi, Visual Studio 'da [Azure Kaynak grubu projesi](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) kullanmanızı öneririz, bu da şablonları geliştirmeyi ve hata ayıklamanızı kolaylaştırır. İç içe geçmiş dağıtım kaynağını azuredeploy. json ' a eklediğinizde, Visual Studio, şablonu daha esnek hale getirmek için birkaç öğe ekler. Bu öğeler ikincil şablon ve parametreler dosyasının bulunduğu alt klasörü, ana şablon dosyası içindeki değişken adlarını ve yeni dosyalar için depolama konumu için iki parametreyi içerir. **_ArtifactsLocation** ve **_ArtifactsLocationSasToken** , DevTest Labs tarafından kullanılan anahtar parametrelerdir. 
 
-DevTest Labs'ın ortamlar ile nasıl çalıştığı hakkında bilgi sahibi değilseniz, bkz. [Azure Resource Manager şablonları ile çoklu VM ortamları ve PaaS kaynakları oluşturma](devtest-lab-create-environment-from-arm.md). Şablonlarınızı DevTest labs'deki bir laboratuvara bağlı deposunda depolanır. Bu şablonları ile yeni bir ortam oluşturduğunuzda, dosyaların Laboratuvardaki bir Azure depolama kapsayıcısına taşınır. Tanımlamak ve iç içe geçmiş dosyaları kopyalamak için DevTest Labs _artifactsLocation ve _artifactsLocationSasToken parametreleri tanımlar ve alt klasörleri depolama kapsayıcısını kadar kopyalar. Ardından, bu otomatik olarak konumunu ve paylaşılan erişim imzası (SaS) belirteci parametreleri ekler. 
+DevTest Labs 'nin ortamlarla nasıl çalıştığı konusunda bilgi sahibi değilseniz, bkz. [Azure Resource Manager şablonlarıyla çoklu VM ortamları ve PaaS kaynakları oluşturma](devtest-lab-create-environment-from-arm.md). Şablonlarınız DevTest Labs içindeki laboratuvarla bağlantılı depoda depolanır. Bu şablonlar ile yeni bir ortam oluşturduğunuzda, dosyalar laboratuvardaki bir Azure depolama kapsayıcısına taşınır. İç içe geçmiş dosyaları tanımlayabilmek ve kopyalayabilmek için DevTest Labs _artifactsLocation ve _artifactsLocationSasToken parametrelerini tanımlar ve alt klasörleri depolama kapsayıcısına kopyalar. Ardından, konum ve paylaşılan erişim Imzası (SaS) belirtecini parametrelere otomatik olarak ekler. 
 
-## <a name="nested-deployment-example"></a>İç içe geçmiş dağıtım örneği
-Bir iç içe dağıtımın basit bir örnek aşağıda verilmiştir:
+## <a name="nested-deployment-example"></a>İç içe dağıtım örneği
+İç içe dağıtımın basit bir örneği aşağıda verilmiştir:
 
 ```json
 
@@ -66,17 +66,17 @@ Bir iç içe dağıtımın basit bir örnek aşağıda verilmiştir:
 "outputs": {}
 ```
 
-Bu şablon içeren depoyu klasöründe bir alt sahip `nestedtemplates` dosyalarla **NestOne.json** ve **NestOne.parameters.json**. İçinde **azuredeploy.json**, URI şablonu yapıtları konumu, iç içe geçmiş şablon klasörü kullanılarak derlendi için şablon dosyası adı iç içe geçmiş. Benzer şekilde, parametrelerini URI'sini yapıtları konumu, iç içe geçmiş şablon klasörü ve parametre dosyası için iç içe geçmiş şablon kullanarak oluşturulmuştur. 
+Bu şablonu içeren depodaki klasörde, **Nestone. JSON** ve **nestone. Parameters. JSON**dosyalarıyla `nestedtemplates` bir alt klasör vardır. **Azuredeploy. JSON**içinde, şablon URI 'si yapıt konumu, iç içe şablon klasörü, iç içe şablon dosya adı kullanılarak oluşturulmuştur. Benzer şekilde, parametreler için URI, iç içe geçmiş şablon için yapıt konumu, iç içe şablon klasörü ve parametre dosyası kullanılarak oluşturulmuştur. 
 
-Visual Studio'da aynı proje yapısını görüntüsü aşağıda verilmiştir: 
+Visual Studio 'da aynı proje yapısının görüntüsü aşağıda verilmiştir: 
 
-![Visual Studio'da proje yapısı](./media/deploy-nested-template-environments/visual-studio-project-structure.png)
+![Visual Studio 'da proje yapısı](./media/deploy-nested-template-environments/visual-studio-project-structure.png)
 
-Birincil klasöründe ancak herhangi bir tek düzey daha derin ek klasörler ekleyebilirsiniz. 
+Birincil klasöre başka klasörler ekleyebilirsiniz, ancak tek bir düzeyden daha derin olamaz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ortamlar hakkında ayrıntılı bilgi için aşağıdaki makalelere bakın: 
+Ortamlar hakkındaki ayrıntılar için aşağıdaki makalelere bakın: 
 
 - [Azure Resource Manager şablonları ile çoklu VM ortamları ve PaaS kaynakları oluşturma](devtest-lab-create-environment-from-arm.md)
-- [Yapılandırma ve Azure DevTest Labs'de ortak ortamlardaki kullanma](devtest-lab-configure-use-public-environments.md)
-- [Azure DevTest Labs'de sanal ağ, Laboratuvar için bir ortama bağlanın](connect-environment-lab-virtual-network.md)
+- [Azure DevTest Labs ortak ortamları yapılandırma ve kullanma](devtest-lab-configure-use-public-environments.md)
+- [Azure DevTest Labs ortamında bir ortamı laboratuvarınızın sanal ağına bağlama](connect-environment-lab-virtual-network.md)

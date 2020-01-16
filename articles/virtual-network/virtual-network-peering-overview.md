@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646753"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980099"
 ---
 # <a name="virtual-network-peering"></a>Sanal ağ eşlemesi
 
@@ -34,7 +34,7 @@ Yerel veya genel sanal ağ eşlemesini kullanmanın avantajları şunlardır:
 * Bir sanal ağdaki kaynakların farklı bir sanal ağdaki kaynaklarla iletişim kurmasına olanak tanır.
 * Azure abonelikleri, Azure Active Directory kiracılar, dağıtım modelleri ve Azure bölgeleri arasında sanal ağlar arasında veri aktarma özelliği.
 * Azure Resource Manager aracılığıyla oluşturulmuş sanal ağları eşleyebilme özelliği.
-* Kaynak Yöneticisi aracılığıyla oluşturulan bir sanal ağı, klasik dağıtım modeliyle oluşturulan bir ağa eşleyebilme özelliği. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için bkz. [Azure dağıtım modellerini kavrama](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Kaynak Yöneticisi aracılığıyla oluşturulan bir sanal ağı, klasik dağıtım modeliyle oluşturulan bir ağa eşleyebilme özelliği. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için bkz. [Azure dağıtım modellerini kavrama](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Eşleme oluştururken veya eşleme oluşturulduktan sonra iki sanal ağdaki kaynaklarda da kesinti süresi yaşanmaz.
 
 Eşlenen sanal ağlar arasındaki ağ trafiği gizlidir. Sanal ağlar arasındaki trafik Microsoft omurga ağı üzerinde tutulur. Sanal ağlar arasındaki iletişimde genel İnternet, ağ geçidi veya şifreleme gerekli değildir.

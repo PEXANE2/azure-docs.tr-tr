@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f935e8fc1e5d6d64bffaeb582e8b248317f49687
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660605"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980639"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için dağıtım sorunları: sık sorulan sorular (SSS)
 
@@ -56,7 +56,7 @@ Ayrılan kaynaklar bölge/veri merkezi düzeyinde hizmetiniz için izin verilen 
 
 Ayrıca, portalda aboneliğiniz için geçerli kullanım/kotayı da izleyebilirsiniz: Azure portal = > abonelikler = \<> uygun abonelik > = > "kullanım + kota".
 
-Kaynak kullanımı/tüketim ile ilgili bilgiler de Azure Faturalama API'leri aracılığıyla alınabilir. Bkz. [Azure Kaynak kullanımı API 'si (Önizleme)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Kaynak kullanımı/tüketim ile ilgili bilgiler de Azure Faturalama API'leri aracılığıyla alınabilir. Bkz. [Azure Kaynak kullanımı API 'si (Önizleme)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Dağıtılmış bir bulut hizmeti VM 'sinin boyutunu yeniden dağıtmaya gerek kalmadan nasıl değiştirebilirim?
 Dağıtılmış bir bulut hizmetinin VM boyutunu yeniden dağıtmaya gerek kalmadan değiştiremezsiniz. VM boyutu, yalnızca yeniden dağıtım ile güncelleştirilebilen CSDEF içinde yerleşiktir.
@@ -66,17 +66,17 @@ Daha fazla bilgi için bkz. [bulut hizmetini güncelleştirme](cloud-services-up
 ## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Azure Resource Manager depolama hesabı kullanırken hizmet yönetimi API 'Leri veya PowerShell aracılığıyla Cloud Services neden dağımdayım? 
 
 Bulut hizmeti Azure Resource Manager modeliyle doğrudan uyumlu olmayan klasik bir kaynak olduğundan, bunu Azure Resource Manager depolama hesaplarıyla ilişkilendiremezsiniz. Birkaç seçenek aşağıda verilmiştir: 
- 
+
 - REST API üzerinden dağıtma.
 
     Service Management REST API aracılığıyla dağıtırken, blob depolamaya yönelik bir SAS URL 'SI belirterek, hem klasik hem de Azure Resource Manager depolama hesabıyla çalışacak şekilde sınırlamayı aşabilirsiniz. [Burada](/previous-versions/azure/reference/ee460813(v=azure.100))' packageurl ' özelliği hakkında daha fazla bilgi edinin.
-  
+
 - [Azure Portal](https://portal.azure.com)üzerinden dağıtma.
 
     Bu, arama Azure Resource Manager ve klasik kaynaklar arasında iletişime izin veren bir ara sunucu/dolgusunda gezinilerek [Azure Portal](https://portal.azure.com) çalışacaktır. 
- 
-## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Neden Azure portal dağıtım için bir depolama hesabı sağlamamızı gerektiriyor mu? 
 
-Klasik portalda, paket doğrudan yönetim API 'sine yüklendi ve ardından API katmanı, paketi geçici olarak dahili bir depolama hesabına yerleştirdi.  Bu işlem, API katmanı bir dosya karşıya yükleme hizmeti olarak tasarlanmadığı için performans ve ölçeklenebilirlik sorunlarına neden olur.  Azure portal (Kaynak Yöneticisi dağıtım modelinde), API katmanına ilk kez yükleme sırasında, daha hızlı ve daha güvenilir dağıtımlar elde eden geçici adım atlandık. 
+## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Neden Azure portal dağıtım için bir depolama hesabı sağlamamızı gerektiriyor mu?
 
-Maliyetten itibaren bu çok küçüktür ve tüm dağıtımlarda aynı depolama hesabını yeniden kullanabilirsiniz. Hizmet paketini (CSPKG) karşıya yükleme maliyetini öğrenmek için [depolama maliyeti Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/#storage1) ' ı kullanabilir, cspkg 'yı indirebilir ve ardından cspkg 'yi silebilirsiniz. 
+Klasik portalda, paket doğrudan yönetim API 'sine yüklendi ve ardından API katmanı, paketi geçici olarak dahili bir depolama hesabına yerleştirdi.  Bu işlem, API katmanı bir dosya karşıya yükleme hizmeti olarak tasarlanmadığı için performans ve ölçeklenebilirlik sorunlarına neden olur.  Azure portal (Kaynak Yöneticisi dağıtım modelinde), API katmanına ilk kez yükleme sırasında, daha hızlı ve daha güvenilir dağıtımlar elde eden geçici adım atlandık.
+
+Maliyetten itibaren bu çok küçüktür ve tüm dağıtımlarda aynı depolama hesabını yeniden kullanabilirsiniz. Hizmet paketini (CSPKG) karşıya yükleme maliyetini öğrenmek için [depolama maliyeti Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/#storage1) ' ı kullanabilir, cspkg 'yı indirebilir ve ardından cspkg 'yi silebilirsiniz.
