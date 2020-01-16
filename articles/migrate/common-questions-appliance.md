@@ -3,12 +3,12 @@ title: Azure geçişi gereci hakkında sık sorulan sorular
 description: Azure geçişi gereci hakkında sık sorulan soruların yanıtlarını alın
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 29cb390f509a2a4ebf44c1f9aacef99b507aebb8
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: c8bcebeee58401cb3d2b65ae82e51d31ab4dad0b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720336"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029134"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure geçişi gereci: genel sorular
 
@@ -40,9 +40,9 @@ Azure, sanal makine performans verilerini ölçmek için şirket içi makineleri
 ## <a name="what-network-connectivity-is-needed"></a>Hangi ağ bağlantısı gerekir?
 
 Aşağıdakileri gözden geçirin:
-- Gereç VMware değerlendirmesi: [URL](migrate-support-matrix-vmware.md#assessment-url-access-requirements) ve [bağlantı noktası](migrate-support-matrix-vmware.md#assessment-port-requirements) erişim gereksinimleri.
-- Gereç aracısız VMware geçişi: [URL](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) ve [bağlantı noktası](migrate-support-matrix-vmware.md#agentless-migration-port-requirements) erişim gereksinimleri.
-- Gereç Hyper-V değerlendirmesi: [URL](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) ve [bağlantı noktası](migrate-support-matrix-hyper-v.md#assessment-port-requirements) erişim gereksinimleri.
+- Azure geçişi gereci kullanarak VMware değerlendirmesi: [URL](migrate-appliance.md#url-access) ve [bağlantı noktası](migrate-support-matrix-vmware.md#port-access) erişim gereksinimleri.
+- Azure geçişi gereci kullanarak VMware aracısız geçişi: [URL](migrate-appliance.md#url-access) ve [bağlantı noktası](migrate-support-matrix-vmware-migration.md#agentless-ports) erişim gereksinimleri.
+- Azure geçişi gereci kullanan Hyper-V değerlendirmesi: [URL](migrate-appliance.md#url-access) ve [bağlantı noktası](migrate-support-matrix-hyper-v.md#port-access) erişim gereksinimleri.
 
 
 ## <a name="what-data-does-the-appliance-collect"></a>Gereç hangi verileri toplar?

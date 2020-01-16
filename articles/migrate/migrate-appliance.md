@@ -3,30 +3,26 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: c3ac39759cc096bb27535877084e14f4ed50cea9
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: efad1c48dd2c92c0fd5f268013b4a59f34b3a766
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719588"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028815"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
-Bu makalede, Azure geçişi gereci açıklanmaktadır. Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmek, değerlendirmek ve geçirmek üzere Azure geçişi değerlendirmesi ve geçiş araçlarını kullandığınızda gereci dağıtırsınız. 
-
-[Azure geçişi](migrate-services-overview.md) , şirket içi uygulamalarınızı, iş yüklerinizi ve özel/genel bulut VM 'lerini Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için bir merkezi Merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve ayrıca üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
-
-
+Bu makalede, Azure geçişi gereci açıklanmaktadır. Microsoft Azure 'e geçiş için uygulamaları, altyapıyı ve iş yüklerini bulup değerlendirmek üzere [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracı 'nı kullandığınızda gereci dağıtırsınız. Bu gereç Ayrıca, Azure geçişi kullanarak VMware VM 'lerini Azure 'a geçirdiğinizde de kullanılır: [aracısız geçiş](server-migrate-overview.md)Ile [Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-migration-tool) .
 
 ## <a name="appliance-overview"></a>Gereç genel bakışı
 
-Azure geçiş gereç türleri ve kullanımı aşağıdaki gibidir.
+Azure geçişi gereci aşağıdaki senaryolarda kullanılır.
 
 **Senaryo** | **Araç** | **İçin kullanılan** 
---- | --- 
-VMware VM | Azure geçişi: Sunucu değerlendirmesi; Azure geçişi: sunucu geçişi | VMware VM 'lerini bulma<br/><br/> Uygulamaları ve bağımlılıkları bulma<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.<br/><br/> VMware VM 'lerini aracısız geçişle çoğaltın.
+--- | --- | ---
+VMware VM | Azure geçişi: Sunucu değerlendirmesi<br/><br/> Azure geçişi: sunucu geçişi | VMware VM 'lerini bulma<br/><br/> Makine uygulamalarını ve bağımlılıklarını bulma<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.<br/><br/> VMware VM 'lerini aracısız geçişle çoğaltın.
 Hyper-V VM | Azure geçişi: Sunucu değerlendirmesi | Hyper-V VM 'lerini bulma<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.
-Fiziksel makine |  Azure geçişi: değerlendirme aracı |  Fiziksel sunucuları bulma<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.
+Fiziksel makine |  Azure geçişi: Sunucu değerlendirmesi |  Fiziksel sunucuları bulma<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.
 
 ## <a name="appliance---vmware"></a>Gereç-VMware 
 
@@ -36,12 +32,14 @@ Fiziksel makine |  Azure geçişi: değerlendirme aracı |  Fiziksel sunucuları
 **İndirme bağlantısı** | https://aka.ms/migrate/appliance/vmware 
 **İndirme boyutu** | 11,2 GB
 **Lisans** | İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
+**Dağıtım** | Gereci bir VMware VM 'si olarak dağıtırsınız. VCenter Server, 32 GB RAM, 8 vCPU, 80 GB disk depolama ve harici bir sanal anahtar içeren bir VM ayırmak için yeterli kaynağa ihtiyacınız vardır.<br/><br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/> Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır.<br/><br/> Gereç tek bir vCenter Server bağlanabilir.
 **Donanım** | VCenter 'daki kaynaklar, 32 GB RAM 8 vCPU ile, 80 GB disk depolaması ve harici bir sanal anahtarla bir VM ayırır. 
 **Karma değeri** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256:4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 **vCenter sunucusu/ana bilgisayar** | Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır.<br/><br/> 5,5, 6,0, 6,5 veya 6,7 vCenter Server çalışıyor.
 **Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
 **Bulma** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
 **Gereç bileşenleri** | Yönetim uygulaması: dağıtım sırasında Kullanıcı girişi için gereç 'de Web uygulaması.<br/> Keşif Aracısı: makine yapılandırma verilerini toplar.<br/> Değerlendirme Aracısı: performans verilerini toplayın.<br/> DRA: VM çoğaltmasını düzenleyin ve makineler/Azure arasındaki iletişimi koordine edin.<br/> Ağ geçidi: çoğaltılan verileri Azure 'a gönderir.<br/> Otomatik güncelleştirme hizmeti: güncelleştirme bileşenleri (24 saatte bir çalışır).
+**VDDK (aracısız geçiş)** | Azure geçişi sunucu geçişi ile aracısız bir geçiş çalıştırıyorsanız, VMware vSphere VDDK gereci sanal makinesinde yüklü olmalıdır).
 
 
 ## <a name="appliance---hyper-v"></a>Gereç-Hyper-V
@@ -52,12 +50,13 @@ Fiziksel makine |  Azure geçişi: değerlendirme aracı |  Fiziksel sunucuları
 **İndirme bağlantısı** | https://aka.ms/migrate/appliance/hyperv 
 **İndirme boyutu** | 10 GB
 **Lisans** | İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
+**Gereç dağıtımı**   |  Gereci bir Hyper-V VM 'si olarak dağıtırsınız.<br/> Azure geçişi tarafından belirtilen gereç sanal makinesi, Hyper-V VM sürüm 5,0 ' dir.<br/> Hyper-V konağı Windows Server 2012 R2 veya üstünü çalıştırmalıdır.<br/> Ana bilgisayar, 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir dış anahtar ayırmak üzere yeterli alana sahip olmalıdır.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
 **Donanım** | Hyper-V konağındaki kaynaklar, 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir dış anahtar ayırır.
 **Karma değeri** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hyper-V konağı** | Windows Server 2012 R2 veya üstünü çalıştırın.
 **Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
 **Bulma** | Bir gereç, vCenter Server en fazla 5000 VMware VM 'yi bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
-**Gereç bileşenleri** | Yönetim uygulaması: dağıtım sırasında Kullanıcı girişi için gereç 'de Web uygulaması.<br/> Keşif Aracısı: makine yapılandırma verilerini toplar.<br/> Değerlendirme Aracısı: performans verilerini toplayın.<br/>  Otomatik güncelleştirme hizmeti: güncelleştirme bileşenleri (24 saatte bir çalışır)
+**Gereç bileşenleri** | Yönetim uygulaması: dağıtım sırasında Kullanıcı girişi için gereç 'de Web uygulaması.<br/> Keşif Aracısı: makine yapılandırma verilerini toplar.<br/> Değerlendirme Aracısı: performans verilerini toplayın.<br/>  Otomatik güncelleştirme hizmeti: güncelleştirme bileşenleri (24 saatte bir çalışır).
 
 
 ## <a name="appliance---physical"></a>Gereç-fiziksel
@@ -67,13 +66,15 @@ Fiziksel makine |  Azure geçişi: değerlendirme aracı |  Fiziksel sunucuları
 **İndirme biçimi** | Daraltılmış klasör (PowerShell yükleyici betiği ile)
 **İndirme bağlantısı** | [İndirme bağlantısı](https://go.microsoft.com/fwlink/?linkid=2105112)
 **İndirme boyutu** | 59,7 MB
-**Donanım** | Çalışan makine, 80 GB depolama alanı etrafında 16 GB RAM, 8 vCPU gerektirir.
+**Donanım** | Ayrılmış fiziksel makine veya VM. Gereci çalıştıran makinenin 16 GB RAM, 8 vCPU, 80 GB depolama alanı ve harici bir anahtar olması gerekir.<br/><br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
 **Karma değeri** | MD5:96fd99581072c400aa605ab036a0a7c0<br/><br/> SHA256: f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
-**Yazılım** | Gereç makinesi Windows Server 2016 çalıştırmalıdır. Sunucu ayrılmış bir fiziksel sunucu veya VM olmalıdır.
-**Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
+**Yazılım** | Gereç makinesi Windows Server 2016 çalıştırmalıdır. 
+**Gereç dağıtımı**   |  Gereç yükleyicisi betiği portaldan (daraltılmış bir klasörde) indirilir. <br/> Klasörü sıkıştırmasını açın ve PowerShell betiğini (AzureMigrateInstaller. ps1) çalıştırın.
 **Bulma** | Bir gereç, en fazla 250 fiziksel sunucu bulabilir.
 **Gereç bileşenleri** | Yönetim uygulaması: dağıtım sırasında Kullanıcı girişi için gereç 'de Web uygulaması.<br/> Keşif Aracısı: makine yapılandırma verilerini toplar.<br/> Değerlendirme Aracısı: performans verilerini toplayın.<br/>  Otomatik güncelleştirme hizmeti: güncelleştirme bileşenleri (24 saatte bir çalışır).
-**Erişim/bağlantı noktaları** | Gereci yapılandırdıktan sonra, Gereç ile Uzak Masaüstü bağlantılarına izin vermek için 3389 numaralı TCP bağlantı noktası üzerinden gelen bağlantılar.<br/><br/> Bağlantı noktası 44368 ' de, ' https://< gereç-IP-veya-adı >: 44368 ' nı kullanarak gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar:<br/><br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 numaralı bağlantı noktası üzerinden giden bağlantılar.
+**Bağlantı noktası erişimi** | Gereci yapılandırdıktan sonra, Gereç ile Uzak Masaüstü bağlantılarına izin vermek için 3389 numaralı TCP bağlantı noktası üzerinden gelen bağlantılar.<br/><br/> Bağlantı noktası 44368 ' de, ' https://< gereç-IP-veya-adı >: 44368 ' nı kullanarak gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar:<br/><br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 numaralı bağlantı noktası üzerinden giden bağlantılar.
+
+
 
 ## <a name="url-access"></a>URL erişimi
 
@@ -90,11 +91,13 @@ Azure geçişi gereci internet bağlantısı gerektirir.
 management.azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Active Directory uygulamalar oluşturun.
 dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
 *.vault.azure.net | Azure Key Vault gizli dizileri yönetin.
-aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver.
+aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver. Azure geçiş gereci güncellemeleri için kullanılır.
 download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
-*.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Azure geçişi hizmeti URL 'Lerine bağlanın.
-*.blob.core.windows.net | Verileri depolama hesaplarına yükleyin.
+*.servicebus.windows.net | VMware aracısız geçişi için kullanılır.<br/><br/> Gereç ve Azure geçişi hizmeti arasındaki iletişim.
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | VMware aracısız geçişi için kullanılır.<br/><br/> Azure geçişi hizmeti URL 'Lerine bağlanın.
+*.blob.core.windows.net |  VMware aracısız geçişi için kullanılır.<br/><br/>Verileri depolamaya yükleyin.
+
+
 
 
 ## <a name="collected-data---vmware"></a>Toplanan veriler-VMware

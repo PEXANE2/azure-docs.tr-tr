@@ -1,17 +1,14 @@
 ---
 title: Azure geçişi sunucu geçişine sahip bir VMware geçiş seçeneği seçin | Microsoft Docs
 description: Azure geçişi sunucu geçişi ile VMware VM 'lerini Azure 'a geçirme seçeneklerine genel bakış sağlar
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: raynew
-ms.openlocfilehash: 68026af5b96728ea66fd9e584e67e5e596e690fb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 52e7103ea3ebcd83369a866cc3f75b0bf0e889a2
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974674"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028723"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware geçiş seçeneği seçin
 
@@ -25,7 +22,7 @@ Azure geçişi sunucu geçiş aracını kullanarak VMware VM 'lerini Azure 'a ge
 
 ## <a name="compare-migration-methods"></a>Geçiş yöntemlerini karşılaştırma
 
-Hangi yöntemin kullanılacağına karar vermenize yardımcı olması için bu seçili karşılaştırmaları kullanın. Ayrıca, [aracısız](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) ve [aracı tabanlı](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) geçiş için tam destek gereksinimlerini inceleyebilirsiniz.
+Hangi yöntemin kullanılacağına karar vermenize yardımcı olması için bu seçili karşılaştırmaları kullanın. Ayrıca, [aracısız](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) ve [aracı tabanlı](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) geçiş için tam destek gereksinimlerini inceleyebilirsiniz.
 
 **Ayar** | **Aracısız** | **Aracı tabanlı**
 --- | --- | ---

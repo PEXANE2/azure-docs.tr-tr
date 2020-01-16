@@ -1,64 +1,39 @@
 ---
-title: Azure geçişi ile fiziksel sunucu değerlendirmesi/geçiş desteği
-description: Azure geçişi ile fiziksel sunucu değerlendirmesi/geçiş desteğini özetler.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Azure geçişi ile fiziksel sunucu değerlendirmesi desteği
+description: Azure geçişi ile fiziksel sunucu değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 32080605217cde78bd648ca6192f73d1025dea4c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454627"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028767"
 ---
-# <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Fiziksel sunucu değerlendirmesi ve geçişi için destek matrisi
+# <a name="support-matrix-for-physical-server-assessment"></a>Fiziksel sunucu değerlendirmesi için destek matrisi 
 
 Makineleri değerlendirmek ve Microsoft Azure buluta geçirmek için [Azure geçişi hizmetini](migrate-overview.md) kullanabilirsiniz. Bu makalede, şirket içi fiziksel sunucuları değerlendirmek ve geçirmek için destek ayarları ve sınırlamaları özetlenmektedir.
 
 
+## <a name="overview"></a>Genel Bakış
 
-## <a name="physical-server-scenarios"></a>Fiziksel sunucu senaryoları
+Bu makaleyle Azure 'a geçiş için şirket içi makineleri değerlendirmek üzere Azure geçişi: Sunucu değerlendirmesi aracını bir Azure geçiş projesine ekleyin. [Azure geçişi](migrate-appliance.md)gereci dağıtırsınız. Gereç, şirket içi makineleri sürekli olarak bulur ve Azure 'a yapılandırma ve performans verilerini gönderir. Makine bulma işleminden sonra keşfedilen makineleri gruplar halinde toplar ve grup için bir değerlendirme çalıştırırsınız
 
-Tablo, fiziksel sunucular için desteklenen senaryoları özetler.
-
-**Dağıtım** | **Ayrıntılar***
---- | ---
-**Şirket içi fiziksel sunucuları değerlendirme** | İlk değerlendirmenizi [ayarlayın](tutorial-prepare-physical.md) .<br/><br/> Bir değerlendirme [çalıştırın](tutorial-assess-physical.md) .
-**Fiziksel sunucuları Azure’a geçirme** | Azure 'a geçiş [yapmayı deneyin](tutorial-migrate-physical-virtual-machines.md) .
-
-
-## <a name="azure-migrate-projects"></a>Azure geçişi projeleri
+## <a name="limitations"></a>Sınırlamalar
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**Azure izinleri** | Azure geçişi projesi oluşturmak için abonelikte katkıda bulunan veya sahip izinlerinizin olması gerekir.
-**Fiziksel sunucular** | Tek bir projede en fazla 35.000 fiziksel sunucuyu değerlendirin. Bir Azure aboneliğinde birden çok projeniz olabilir. Bir proje, değerlendirme sınırlarına kadar fiziksel sunucular, VMware VM 'Leri ve Hyper-V VM 'Leri içerebilir.
-**Coğrafya** | Azure geçişi projelerini çeşitli coğrafi bölgelerde oluşturabilirsiniz. Belirli coğrafi bölgelerde projeler oluşturabilseniz de, diğer hedef konumlar için makineleri değerlendirebilir veya geçirebilirsiniz. Proje Coğrafya yalnızca keşfedilen meta verileri depolamak için kullanılır.
+**Değerlendirme limitleri**| Tek bir [projede](migrate-support-matrix.md#azure-migrate-projects)en fazla 35.000 fiziksel sunucuyu bulur ve değerlendirin.
+**Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Bir proje, VMware VM 'leri, Hyper-V VM 'Leri ve fiziksel sunucuları, değerlendirme sınırlarına kadar içerebilir.
+**Bulma** | Azure geçişi gereci en fazla 250 fiziksel sunucu bulabilir.
+**Değerlendirme** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede en fazla 35.000 makine değerlendirebilirsiniz.
 
-  **Coğrafya** | **Meta veri depolama konumu**
-  --- | ---
-  Azure Devlet Kurumları | ABD Hükümeti Virginia
-  Asya Pasifik | Doğu Asya veya Güneydoğu Asya
-  Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
-  Brezilya | Brezilya Güney
-  Kanada | Kanada Orta veya Kanada Doğu
-  Avrupa | Kuzey Avrupa veya Batı Avrupa
-  Fransa | Fransa Orta
-  Hindistan | Orta Hindistan veya Güney Hindistan
-  Japonya |  Japonya Doğu veya Japonya Batı
-  Güney Kore | Kore Orta veya Kore Güney
-  Birleşik Krallık | UK Güney veya UK Batı
-  Birleşik Devletler | Orta ABD veya Batı ABD 2
+Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
 
 
- > [!NOTE]
- > Azure Kamu desteği şu anda yalnızca Azure geçişi 'nin [eski sürümünde](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) sunulmaktadır.
 
 
-## <a name="assessment-physical-server-requirements"></a>Değerlendirme-fiziksel sunucu gereksinimleri
+## <a name="physical-server-requirements"></a>Fiziksel sunucu gereksinimleri
 
 | **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
@@ -67,42 +42,14 @@ Tablo, fiziksel sunucular için desteklenen senaryoları özetler.
 | **İşletim sistemi** | Aşağıdakiler dışında tüm [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) işletim sistemleri desteklenir:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 
-## <a name="assessment-appliance-requirements"></a>Değerlendirme-gereç gereksinimleri
+## <a name="azure-migrate-appliance-requirements"></a>Azure geçiş gereç gereksinimleri
 
-Değerlendirme için Azure geçişi, fiziksel sunucuları bulmaya ve Azure geçişi 'ne sunucu meta verilerini ve performans verilerini göndermenizi sağlamak için basit bir gereç çalıştırır. Gereç bir fiziksel sunucu veya sanal makine üzerinde çalışabilir ve bu ayarı, Azure portal indirtiğiniz bir PowerShell betiği kullanarak ayarlayabilirsiniz. Aşağıdaki tablo gereç gereksinimlerini özetler.
+Azure geçişi, bulma ve değerlendirme için [Azure geçişi](migrate-appliance.md) gereci kullanır. Fiziksel sunucular için gereç, bir VM 'de veya fiziksel bir makinede çalıştırılabilir. Bu ayarı, Azure portal indirtiğiniz bir PowerShell betiği kullanarak ayarlarsınız.
 
-| **Destek**                | **Ayrıntılar**               
-| :-------------------       | :------------------- |
-| **Gereç dağıtımı**   |  Gereç yükleyicisi betiği portaldan (daraltılmış bir klasörde) indirilebilir. <br/> Gereci ayarlamak için klasörü açabilir ve adanmış bir fiziksel sunucuda veya bir sanal makinede PowerShell betiğini (AzureMigrateInstaller. ps1) çalıştırabilirsiniz.<br/>  Gereci yüklemek için seçilen makinenin Windows Server 2016 çalıştırması gerekir.<br/> Makinenin 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir dış anahtar ayırmak için yeterli alan olması gerekir.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
-| **Azure geçişi projesi**  |  Bir gereç, tek bir projeyle ilişkilendirilebilir.<br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> Bir projede en fazla 35.000 makine değerlendirebilirsiniz.
-| **Bulma**              | Tek bir gereç, en fazla 250 sunucuyu bulabilir.
-| **Değerlendirme grubu**       | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.
-| **Değerlendirme**             | Tek bir değerlendirmede en fazla 35.000 makine değerlendirebilirsiniz.
+- Fiziksel sunucular için [gereç gereksinimleri](migrate-appliance.md#appliance---physical) hakkında bilgi edinin.
+- Gerecin erişmesi gereken [URL 'ler](migrate-appliance.md#url-access) hakkında bilgi edinin.
 
-
-## <a name="assessment-appliance-url-access"></a>Değerlendirme-gereç URL 'SI erişimi
-
-VM 'Leri değerlendirmek için, Azure geçişi gereci internet bağlantısı gerektirir.
-
-- Gereci dağıttığınızda Azure geçişi, aşağıdaki tabloda özetlenen URL 'lere bir bağlantı denetimi yapar.
-- URL tabanlı bir ara sunucu kullanıyorsanız, tablodaki URL 'lere erişime izin verin ve proxy 'nin URL 'Leri ararken alınan CNAME kayıtlarını çözümlediği emin olun.
-- Bir kesintiye uğratan ara sunucu varsa, sunucu sertifikasını proxy sunucusundan gereç 'ya aktarmanız gerekebilir.
-
-
-**URL** | **Ayrıntılar**  
---- | ---
-*.portal.azure.com | Azure portal gezinti
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Azure aboneliğinizde oturum açın
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
-management.azure.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
-dc.services.visualstudio.com | Günlüğe kaydetme ve izleme
-*.vault.azure.net | Gereç ve hizmet arasında iletişim kurarken Azure Key Vault gizli dizileri yönetin.
-aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver.
-https://download.microsoft.com/download/* | Microsoft Download sitesinden indirmelere izin verir.
-
-
-
-## <a name="assessment-port-requirements"></a>Değerlendirme-bağlantı noktası gereksinimleri
+## <a name="port-access"></a>Bağlantı noktası erişimi
 
 Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri özetlenmektedir.
 
@@ -114,4 +61,4 @@ Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri ö
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Fiziksel sunucu değerlendirmesi ve geçişi için [fiziksel sunucu değerlendirmesi hazırlayın](tutorial-prepare-physical.md) .
+[Fiziksel sunucu değerlendirmesi Için hazırlanma](tutorial-prepare-physical.md).

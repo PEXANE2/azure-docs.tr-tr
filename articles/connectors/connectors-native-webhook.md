@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 14daa37a414e814ed6de036bbb625933ce2532e0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 24746b7bbbbf3985a9801139b301a829c51a14da
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888133"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030073"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps 'de HTTP Web kancalarını kullanarak otomatik olay tabanlı iş akışları oluşturun ve çalıştırın
 
@@ -36,7 +36,16 @@ Bir HTTP Web kancası eylemi ayrıca olay tabanlıdır ve bu hizmet veya uç nok
 Örneğin, Office 365 Outlook bağlayıcısının [**onay e-postası gönder**](connectors-create-api-office365-outlook.md) eylemi, bu kalıbı izleyen bir Web kancası eyleminin örneğidir. Web kancası eylemini kullanarak bu kalıbı herhangi bir hizmete genişletebilirsiniz.
 
 > [!NOTE]
-> Logic Apps, geri çağrıyı HTTP Web kancası tetikleyicisine veya eylemine geri alırken Aktarım Katmanı Güvenliği (TLS) 1,2 ' i zorlar. SSL el sıkışma hataları görürseniz, TLS 1,2 kullandığınızdan emin olun.
+> Logic Apps, geri çağrıyı HTTP Web kancası tetikleyicisine veya eylemine geri alırken Aktarım Katmanı Güvenliği (TLS) 1,2 ' i zorlar. SSL el sıkışma hataları görürseniz, TLS 1,2 kullandığınızdan emin olun. Gelen çağrılar için desteklenen şifre paketleri şunlardır:
+>
+> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 Daha fazla bilgi için şu konulara bakın:
 

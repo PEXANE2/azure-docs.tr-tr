@@ -3,12 +3,12 @@ title: Programlı olarak ilkeler oluşturma
 description: Bu makalede Azure CLı, Azure PowerShell ve REST API ile Azure Ilkesi için ilkeler oluşturma ve yönetme işlemi adım adım açıklanmaktadır.
 ms.date: 01/31/2019
 ms.topic: how-to
-ms.openlocfilehash: e81f0ca43788d8f36dde0a58d2ecd4b1604fd77e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873072"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982463"
 ---
 # <a name="programmatically-create-policies"></a>Programlı olarak ilkeler oluşturma
 
@@ -16,7 +16,7 @@ Bu makalede, program aracılığıyla oluşturma ve ilkeleri yönetme gösterilm
 
 Uyumluluk hakkında daha fazla bilgi için bkz. [uyumluluk verilerini alma](get-compliance-data.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -30,7 +30,7 @@ Başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
-   Kaynak sağlayıcıları kaydetme ve görüntülemeyle ilgili daha fazla bilgi için bkz. [Kaynak Sağlayıcıları ve Türleri](../../../azure-resource-manager/resource-manager-supported-services.md).
+   Kaynak sağlayıcıları kaydetme ve görüntülemeyle ilgili daha fazla bilgi için bkz. [Kaynak Sağlayıcıları ve Türleri](../../../azure-resource-manager/management/resource-providers-and-types.md).
 
 1. Henüz yapmadıysanız, Azure CLI'yı yükleyin. En son sürümünü edinebilirsiniz [Windows üzerinde Azure CLI yükleme](/cli/azure/install-azure-cli-windows).
 

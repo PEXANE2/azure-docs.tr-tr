@@ -1,44 +1,38 @@
 ---
-title: Azure geçişi 'nde Hyper-V değerlendirmesi/geçişi desteği
-description: Azure geçişi ile Hyper-V değerlendirmesi/geçişi için destek hakkında bilgi edinin.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Azure geçiş 'de Hyper-V değerlendirmesi desteği
+description: Azure geçişi ile Hyper-V değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 6562d3f15d080a3bbc54a9985c12eae5908a9980
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 01/08/2020
+ms.openlocfilehash: 20bdbb16d2f0610f6519424141b09190eae3cc42
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186651"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028794"
 ---
-# <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V değerlendirmesi ve geçiş için destek matrisi
+# <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V değerlendirmesi için destek matrisi
 
-Makineleri değerlendirmek ve Microsoft Azure buluta geçirmek için [Azure geçişi hizmetini](migrate-overview.md) kullanabilirsiniz. Bu makalede, şirket içi Hyper-V VM 'lerini değerlendirmek ve geçirmek için destek ayarları ve sınırlamaları özetlenmektedir.
+Bu makalede, Hyper-V VM 'lerini [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) ile değerlendirmek için destek ayarları ve sınırlamaları özetlenmektedir. Hyper-V VM 'lerini Azure 'a geçirme hakkında bilgi arıyorsanız, [geçiş desteği matrisini](migrate-support-matrix-hyper-v-migration.md)gözden geçirin.
+
+## <a name="overview"></a>Genel Bakış
+
+Bu makaleyle Azure 'a geçiş için şirket içi makineleri değerlendirmek üzere Azure geçişi: Sunucu değerlendirmesi aracını bir Azure geçiş projesine ekleyin. [Azure geçişi](migrate-appliance.md)gereci dağıtırsınız. Gereç, şirket içi makineleri sürekli olarak bulur ve Azure 'a yapılandırma ve performans verilerini gönderir. Makine bulma işleminden sonra keşfedilen makineleri gruplar halinde toplar ve bir grup için değerlendirme çalıştırırsınız.
 
 
-
-## <a name="hyper-v-scenarios"></a>Hyper-V senaryoları
-
-Tablo, Hyper-V VM 'Leri için desteklenen senaryoları özetler.
-
-**Dağıtım** | **Ayrıntılar***
---- | ---
-**Şirket içi Hyper-V VM 'lerini değerlendirme** | İlk değerlendirmenizi [ayarlayın](tutorial-prepare-hyper-v.md) .<br/><br/> Büyük ölçekli bir değerlendirme [çalıştırın](scale-hyper-v-assessment.md) .
-**Hyper-V VM’lerini Azure’a geçirme** | Azure 'a geçiş [yapmayı deneyin](tutorial-migrate-hyper-v.md) .
-
-## <a name="azure-migrate-projects"></a>Azure geçişi projeleri
+## <a name="limitations"></a>Sınırlamalar
 
 **Destek** | **Ayrıntılar**
 --- | ---
-Azure izinleri | Azure geçişi projesi oluşturmak için abonelikte katkıda bulunan veya sahip izinlerinizin olması gerekir.
-Hyper-V Sanal Makineleri | Tek bir projede 35.000 adede kadar Hyper-V VM 'yi değerlendirin. Bir Azure aboneliğinde birden çok projeniz olabilir. Bir proje, değerlendirme sınırlarına kadar hem VMware VM 'lerini hem de Hyper-V sanal makinelerini içerebilir.
-Coğrafya | Desteklenen coğrafi lıkları [gözden geçirin](migrate-support-matrix.md#supported-geographies) .
+**Değerlendirme limitleri**| Tek bir [projedeki](migrate-support-matrix.md#azure-migrate-projects)35.000 adede kadar Hyper-V VM 'yi bulur ve değerlendirin.
+**Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Bir proje, VMware VM 'leri, Hyper-V VM 'Leri ve fiziksel sunucuları, değerlendirme sınırlarına kadar içerebilir.
+**Bulma** | Azure geçişi gereci en fazla 5000 Hyper-V VM 'yi bulabilir.<br/><br/> Gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
+**Değerlendirme** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
+
+Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
 
 
-## <a name="assessment-hyper-v-host-requirements"></a>Değerlendirme-Hyper-V ana bilgisayar gereksinimleri
+
+## <a name="hyper-v-host-requirements"></a>Hyper-V konağı gereksinimleri
 
 | **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
@@ -49,7 +43,7 @@ Coğrafya | Desteklenen coğrafi lıkları [gözden geçirin](migrate-support-ma
 | **Hyper-V çoğaltma**       | Hyper-V çoğaltması kullanıyorsanız (veya aynı VM tanımlayıcılarına sahip birden fazla sanal makine varsa) Azure geçişi 'ni kullanarak hem özgün hem de çoğaltılan VM 'Leri keşfetiyorsanız, Azure geçişi tarafından oluşturulan değerlendirme doğru olmayabilir. |
 
 
-## <a name="assessment-hyper-v-vm-requirements"></a>Değerlendirme-Hyper-V VM gereksinimleri
+## <a name="hyper-v-vm-requirements"></a>Hyper-V VM gereksinimleri
 
 | **Destek**                  | **Ayrıntılar**               
 | :----------------------------- | :------------------- |
@@ -57,115 +51,24 @@ Coğrafya | Desteklenen coğrafi lıkları [gözden geçirin](migrate-support-ma
 | **Tümleştirme Hizmetleri**       | [Hyper-V tümleştirme hizmetlerinin](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) , işletim sistemi bilgilerini yakalamak için değerlendirmekte olduğunuz VM 'lerde çalışıyor olması gerekir. |
 
 
+## <a name="azure-migrate-appliance-requirements"></a>Azure geçiş gereç gereksinimleri
 
-## <a name="assessment-appliance-requirements"></a>Değerlendirme-gereç gereksinimleri
+Azure geçişi, bulma ve değerlendirme için [Azure geçişi](migrate-appliance.md) gereci kullanır. Hyper-V için gereç bir Hyper-V VM üzerinde çalışır ve Azure portal indirdiğinizde, sıkıştırılmış bir Hyper-V VHD kullanılarak dağıtılır. 
 
-Değerlendirme için Azure geçişi, Hyper-V VM 'lerini bulmaya ve VM meta verilerini ve performans verilerini Azure geçişi 'ne göndermenizi sağlamak için basit bir gereç çalıştırır. Gereç bir Hyper-V VM 'sinde çalışır ve Azure portal indirdiğinizde, sıkıştırılmış bir Hyper-V VHD 'SI kullanarak ayarlanır. Aşağıdaki tablo gereç gereksinimlerini özetler.
+- Hyper-V için [gereç gereksinimleri](migrate-appliance.md#appliance---hyper-v) hakkında bilgi edinin.
+- Gerecin erişmesi gereken [URL 'ler](migrate-appliance.md#url-access) hakkında bilgi edinin.
 
-| **Destek**                | **Ayrıntılar**               
-| :-------------------       | :------------------- |
-| **Gereç dağıtımı**   |  Gereci bir Hyper-V VM 'si olarak dağıtırsınız.<br/> Azure geçişi tarafından belirtilen gereç sanal makinesi, Hyper-V VM sürüm 5,0 ' dir.<br/> Hyper-V konağı Windows Server 2012 R2 veya üstünü çalıştırmalıdır.<br/> Ana bilgisayar, 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir dış anahtar ayırmak üzere yeterli alana sahip olmalıdır.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
-| **Azure geçişi projesi**  |  Bir gereç, tek bir projeyle ilişkilendirilebilir.<br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> Bir projede en fazla 35.000 sanal makineyi değerlendirebilirsiniz.
-| **Hyper-V konakları**          | Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
-| **Keşfini**              | Tek bir gereç, en fazla 5000 VM bulabilir.
-| **Değerlendirme grubu**       | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.
-| **Değerlendirme**             | Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
-
-
-
-## <a name="assessment-appliance-url-access"></a>Değerlendirme-gereç URL 'SI erişimi
-
-VM 'Leri değerlendirmek için, Azure geçişi gereci internet bağlantısı gerektirir.
-
-- Gereci dağıttığınızda Azure geçişi, aşağıdaki tabloda özetlenen URL 'lere bir bağlantı denetimi yapar.
-- URL tabanlı bir ara sunucu kullanıyorsanız, tablodaki URL 'lere erişime izin verin ve proxy 'nin URL 'Leri ararken alınan CNAME kayıtlarını çözümlediği emin olun.
-- Bir kesintiye uğratan ara sunucu varsa, sunucu sertifikasını proxy sunucusundan gereç 'ya aktarmanız gerekebilir.
-
-
-**URL** | **Ayrıntılar**  
---- | ---
-*.portal.azure.com | Azure portal gezinti
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Azure aboneliğinizde oturum açın
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
-Management.Azure.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
-dc.services.visualstudio.com | Günlüğe kaydetme ve izleme
-*.vault.azure.net | Gereç ve hizmet arasında iletişim kurarken Azure Key Vault gizli dizileri yönetin.
-aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver.
-https://download.microsoft.com/download/* | Microsoft Download sitesinden indirmelere izin verir.
-
-
-
-## <a name="assessment-port-requirements"></a>Değerlendirme-bağlantı noktası gereksinimleri
+## <a name="port-access"></a>Bağlantı noktası erişimi
 
 Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri özetlenmektedir.
 
-**Aygıtların** | **Bağlanma**
+**cihaz** | **bağlantı**
 --- | ---
 **Elektrikli** | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/> 44368 numaralı bağlantı noktası ile gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ``` https://<appliance-ip-or-name>:44368 ```<br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 bağlantı noktalarında giden bağlantılar.
 **Hyper-V konağı/kümesi** | Genel Bilgi Modeli (CıM) oturumu kullanarak Hyper-V VM 'lerinin yapılandırma ve performans meta verilerini çekmek için WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerinde gelen bağlantılar.
-
-## <a name="migration-limitations"></a>Geçiş-sınırlamalar
-Çoğaltma için aynı anda en fazla 10 VM seçebilirsiniz. Daha fazla makine geçirmek istiyorsanız, 10 grup içinde çoğaltın.
-
-## <a name="migration-hyper-v-host-requirements"></a>Geçiş-Hyper-V ana bilgisayar gereksinimleri
-
-| **Destek**                | **Ayrıntılar**               
-| :-------------------       | :------------------- |
-| **Konak dağıtımı**       | Hyper-V konağı tek başına olabilir veya bir kümede dağıtılabilir. |
-| **İzinler**           | Hyper-V konağında yönetici izinlerine sahip olmanız gerekir. |
-| **Konak işletim sistemi** | Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2. |
-
-## <a name="migration-hyper-v-vm-requirements"></a>Geçiş-Hyper-V VM gereksinimleri
-
-| **Destek**                  | **Ayrıntılar**               
-| :----------------------------- | :------------------- |
-| **İşletim sistemi** | Azure tarafından desteklenen tüm [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) işletim sistemleri. |
-| **İzinler**           | Değerlendirmek istediğiniz her Hyper-V VM üzerinde yönetici izinlerine sahip olmanız gerekir. |
-| **Tümleştirme Hizmetleri**       | [Hyper-V tümleştirme hizmetlerinin](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) , işletim sistemi bilgilerini yakalamak için değerlendirmekte olduğunuz VM 'lerde çalışıyor olması gerekir. |
-| **Azure için gereken değişiklikler** | Bazı VM 'Ler, Azure 'da çalışabilecek şekilde değişiklik gerektirebilir. Azure geçişi, bu değişiklikleri aşağıdaki işletim sistemleri için otomatik olarak yapar:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Detem 7, 8<br/><br/> Diğer işletim sistemleri için geçişten önce el ile ayarlamalar yapmanız gerekir. İlgili makaleler, bunun nasıl yapılacağı hakkında yönergeler içerir. |
-| **Linux önyüklemesi**                 | /Boot ayrılmış bir bölümse, işletim sistemi diskinde bulunmalı ve birden çok diske yayılmamalıdır.<br/> /Boot kök (/) bölümünün parçasıysa, '/' bölümünün işletim sistemi diskinde olması ve diğer disklere yayılmamamakta olması gerekir. |
-| **UEFı önyüklemesi**                  | Azure 'daki geçirilmiş VM otomatik olarak bir BIOS önyükleme VM 'sine dönüştürülür. VM yalnızca Windows Server 2012 ve üstünü çalıştırmalıdır. İşletim sistemi diski en fazla beş bölüm veya daha az olmalıdır ve işletim sistemi diskinin boyutu 300 GB 'tan az olmalıdır.
-  |
-| **Disk boyutu**                  | işletim sistemi diski için 2 TB, veri diskleri için 4 TB.
-| **Disk numarası** | VM başına en fazla 16 disk.
-| **Şifrelenmiş diskler/birimler**    | Geçiş için desteklenmez. |
-| **RDM/geçiş diskleri**      | Geçiş için desteklenmez. |
-| **Paylaşılan disk** | Paylaşılan diskler kullanan VM 'Ler geçiş için desteklenmez.
-| **ALACAĞıNı**                        | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz. |
-| **ISCSı**                      | Iscsı hedefleri olan VM 'Ler geçiş için desteklenmez.
-| **Hedef disk**                | Azure VM 'lerine yalnızca yönetilen disklerle geçiş yapabilirsiniz. |
-| **IPv6** | Desteklenmez.
-| **NIC ekibi oluşturma** | Desteklenmez.
-| **Azure Site Recovery** | VM, Azure Site Recovery ile çoğaltma için etkinleştirilmişse Azure geçişi geçiş sunucusu geçişini çoğaltamaz.
-
-
-
-
-
-## <a name="migration-hyper-v-host-url-access"></a>Geçiş-Hyper-V konağı URL 'SI erişimi
-
-Aşağıdaki tabloda, Hyper-V konakları için URL erişim gereksinimleri özetlenmektedir.
-
-**URL** | **Ayrıntılar**  
---- | ---
-login.microsoftonline.com | Active Directory kullanarak erişim denetimi ve kimlik yönetimi.
-*.backup.windowsazure.com | Çoğaltma veri aktarımı ve düzenlemesi.
-*.hypervrecoverymanager.windowsazure.com | Azure geçişi hizmeti URL 'Lerine bağlanın.
-*.blob.core.windows.net | Verileri depolama hesaplarına yükleyin.
-dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
-time.windows.com | Sistem ve genel saat arasındaki saat eşitlemesini doğrular.
-
-## <a name="migration-port-access"></a>Geçiş-bağlantı noktası erişimi
-
-Aşağıdaki tabloda, VM geçişi için Hyper-V konaklarında ve VM 'lerde bağlantı noktası gereksinimleri özetlenmektedir.
-
-**Aygıtların** | **Bağlanma**
---- | ---
-Hyper-V konakları/VM 'Ler | HTTPS bağlantı noktası 443 ' deki giden bağlantılar, VM çoğaltma verilerini Azure geçişi 'ne gönderir.
-
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Geçiş için [Hyper-V VM değerlendirmesi Için hazırlanma](tutorial-prepare-hyper-v.md) .
+[Hyper-V VM değerlendirmesi için hazırlanma](tutorial-prepare-hyper-v.md)

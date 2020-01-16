@@ -4,16 +4,19 @@ description: Azure 'da Hyperledger Fabric Consortium ağ çözüm şablonunu da�
 ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: caleteet
-ms.openlocfilehash: be35cfa26204b36ad65da91252144b9167cb9e54
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3e7dcd3cdcfa636c0b23ac6643bd7732e7f8ada0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325128"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029152"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hiper muhasebe doku Consortium ağı
 
 Azure 'da bir hiper muhasebe doku Consortium ağı dağıtmak ve yapılandırmak için Hyperledger Fabric Consortium çözüm şablonunu kullanabilirsiniz.
+
+> [!IMPORTANT]
+> [Azure şablonundaki hiper muhasebe dokusunu](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-azure-blockchain.azure-blockchain-hyperledger-fabric) kullanım dışı olacaktır. Bunun yerine [Azure Kubernetes hizmetinde Hyperledger dokusunu](hyperledger-fabric-consortium-azure-kubernetes-service.md) kullanın.  
 
 Bu makaleyi okuduktan sonra şunları yapabilir olacaksınız:
 
@@ -50,7 +53,7 @@ Birden çok sanal makine, genişleme mimarisi, çekirdek üzerinde her bir bile�
 
 ![Birden çok sanal makine mimarisi](./media/hyperledger-fabric-consortium-blockchain/hlf-multi-arch.png)
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
 Başlamak için birkaç sanal makine ve standart depolama hesabı dağıtımı destekleyebilen bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı oluşturabilirsiniz](https://azure.microsoft.com/free/).
 
@@ -58,7 +61,7 @@ Bir aboneliğiniz olduğunda [Azure Portal](https://portal.azure.com)gidin. **Hy
 
 ![Hiper muhasebe yapısı tek üye blok zinciri Market şablonu](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deployment"></a>Kurulum
 
 **Hiper muhasebe doku Consortium** şablonunda **Oluştur**' u seçin.
 
@@ -94,7 +97,7 @@ Bir aboneliğiniz olduğunda [Azure Portal](https://portal.azure.com)gidin. **Hy
 **Ağ yapılandırması** |Yeni bir ağ oluşturmayı veya var olan bir ağa katılmayı seçebilirsiniz. *Varolanı Birleştir*' i seçerseniz ek değerler sağlamanız gerekir. |Yeni ağ <br/> Mevcut olanı birleştirin |
 **HLF CA parolası** |Dağıtım kapsamında oluşturulan sertifika yetkilileri tarafından oluşturulan sertifikalar için kullanılan parola. Parola şu karakter türlerinden üçünü içermelidir: 1 büyük harf, 1 küçük harf, 1 sayı ve 1 özel karakter.<br /><br />Tüm sanal makineler başlangıçta aynı parolaya sahip olsa da, sağlama sonrasında parolayı değiştirebilirsiniz.|1-25 karakter |
 **Kuruluş kurulumu** |Kuruluşunuzun adını ve sertifikasını özelleştirebilir veya kullanılacak varsayılan değerlere sahip olabilirsiniz.|Varsayılan <br/> Gelişmiş |
-**VPN ağ ayarları** | VM 'Lere erişmek için bir VPN tüneli ağ geçidi sağlama | Yes <br/> Hayır |
+**VPN ağ ayarları** | VM 'Lere erişmek için bir VPN tüneli ağ geçidi sağlama | Evet <br/> Hayır |
 
 **Tamam**’ı seçin.
 
@@ -129,7 +132,7 @@ Bu şablon, eş düğüm başına kalıcı altyapıyı seçmenizi sağlar. Örne
 
 **Tamam**’ı seçin.
 
-### <a name="deploy"></a>Dağıt
+### <a name="deploy"></a>Kurulum
 
 **Özet**' de, temel dağıtım öncesi doğrulamayı çalıştırmak için ve belirtilen girişleri gözden geçirin.
 

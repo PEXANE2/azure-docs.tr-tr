@@ -1,17 +1,14 @@
 ---
 title: VMware için Azure geçişi gereci ayarlama
 description: VMware VM 'lerini değerlendirmek ve geçirmek için bir Azure geçiş gereci ayarlamayı öğrenin.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: adb78682e80d78aa4fa6b48507f1fcce789a3fe1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: da451149d0420bc71a355fdf4f4fb122b196d5a0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360183"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029052"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM 'Leri için bir gereç ayarlama
 
@@ -72,7 +69,7 @@ Dağıtmadan önce OVA dosyasının güvenli olduğundan emin olun.
 
 ### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
-Gereç VM 'sinin [Azure URL 'lerine](migrate-support-matrix-vmware.md#assessment-url-access-requirements)bağlanabildiğinizden emin olun.
+Gereç VM 'sinin [Azure URL 'lerine](migrate-appliance.md#url-access)bağlanabildiğinizden emin olun.
 
 
 ## <a name="configure-the-appliance"></a>Gereci yapılandırma
@@ -114,7 +111,7 @@ Gerecin, VM 'lerin yapılandırma ve performans verilerini bulması için vCente
 
 ### <a name="specify-vcenter-server-details"></a>vCenter Server ayrıntılarını belirtin
 1. **VCenter Server ayrıntılarını belirtin**bölümünde vCenter Server adı (FQDN) veya IP adresini belirtin. Varsayılan bağlantı noktasını bırakabilir veya vCenter Server dinlediği özel bir bağlantı noktası belirtebilirsiniz.
-2. **Kullanıcı adı** ve **parola**' da, gerecin vCenter sunucusundaki VM 'leri bulması için kullanacağı salt okuma hesabı kimlik bilgilerini belirtin. Hesabın [bulma için gerekli izinlere](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)sahip olduğundan emin olun. VCenter hesabına erişimi uygun şekilde sınırlayarak bulma kapsamını belirleyebilirsiniz; kapsam [bulma hakkında](tutorial-assess-vmware.md#set-the-scope-of-discovery)daha fazla bilgi edinin.
+2. **Kullanıcı adı** ve **parola**' da, gerecin vCenter sunucusundaki VM 'leri bulması için kullanacağı salt okuma hesabı kimlik bilgilerini belirtin. VCenter hesabına erişimi uygun şekilde sınırlayarak bulma kapsamını belirleyebilirsiniz; kapsam [bulma hakkında](tutorial-assess-vmware.md#set-the-scope-of-discovery)daha fazla bilgi edinin.
 3. Gerecin vCenter Server bağlanabildiğini sağlamak için **bağlantıyı doğrula** ' ya tıklayın.
 
 ### <a name="specify-vm-credentials"></a>VM kimlik bilgilerini belirtin

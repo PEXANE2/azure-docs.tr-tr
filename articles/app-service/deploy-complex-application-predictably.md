@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1168faa1f39546dc75af28b885c9095cfffa1135
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422128"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967392"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure 'da mikro hizmetleri öngörülebilir bir şekilde sağlayın ve dağıtın
 Bu öğreticide, tek bir birim olarak [Azure App Service](https://azure.microsoft.com/services/app-service/) [mikro hizmetlerden](https://en.wikipedia.org/wiki/Microservices) oluşan bir uygulamanın nasıl SAĞLANACAĞı ve dağıtılacağı ve JSON kaynak grubu şablonlarının ve PowerShell betiği kullanılarak öngörülebilir bir şekilde dağıtılması gösterilmektedir. 
@@ -252,10 +252,10 @@ DevOps 'da, yinelenebilirlik ve öngörülebilirlik, mikro hizmetlerden oluşan 
 ## <a name="more-resources"></a>Daha fazla kaynak
 * [Azure Resource Manager şablonu dili](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager şablonları yazma](../azure-resource-manager/templates/template-syntax.md)
-* [Azure Resource Manager şablon Işlevleri](../azure-resource-manager/resource-group-template-functions.md)
-* [Azure Resource Manager şablonuyla uygulama dağıtma](../azure-resource-manager/resource-group-template-deploy.md)
+* [Azure Resource Manager şablon Işlevleri](../azure-resource-manager/templates/template-functions.md)
+* [Azure Resource Manager şablonuyla uygulama dağıtma](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure PowerShell’i Azure Resource Manager ile kullanma](../azure-resource-manager/powershell-azure-resource-manager.md)
-* [Azure 'da kaynak grubu dağıtımlarının sorunlarını giderme](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+* [Azure 'da kaynak grubu dağıtımlarının sorunlarını giderme](../azure-resource-manager/templates/common-deployment-errors.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

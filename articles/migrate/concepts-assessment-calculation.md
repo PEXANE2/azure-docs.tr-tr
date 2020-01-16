@@ -3,12 +3,12 @@ title: Azure geçişi 'nde değerlendirmeler
 description: Azure geçişi 'nde değerlendirmeler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6950050be3c6fb812a6ade47e98f2d1ed479e61f
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720251"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029109"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>Azure geçişi 'nde değerlendirmeler hakkında
 
@@ -23,7 +23,7 @@ Azure geçişi: Sunucu değerlendirmesi veya başka bir Azure ya da üçüncü t
 
 1. [Azure geçişi](migrate-appliance.md) gereci gerçek zamanlı bir örnek noktası toplar:
 
-    - *VMware VM 'leri**: VMware VM 'Leri Için Azure geçişi gereci her 20 saniyelik aralığa göre gerçek zamanlı bir örnek noktası toplar.
+    - **VMware VM 'leri**: VMware VM 'Leri Için Azure geçişi gereci her 20 saniyelik aralığa göre gerçek zamanlı bir örnek noktası toplar.
     - **Hyper-v VM 'leri**: Hyper-v VM 'leri için, gerçek zamanlı örnek noktası her 30 saniyelik aralığa göre toplanır.
     - **Fiziksel sunucular**: fiziksel sunucular için gerçek zamanlı örnek noktası her beş dakikalık aralıkta toplanır. 
     
@@ -58,7 +58,7 @@ Performans verileri aşağıdaki gibi toplanır:
 
 1. [Azure geçişi](migrate-appliance.md) gereci gerçek zamanlı bir örnek noktası toplar:
 
-    - *VMware VM 'leri**: VMware VM 'Leri Için Azure geçişi gereci her 20 saniyelik aralığa göre gerçek zamanlı bir örnek noktası toplar.
+    - **VMware VM 'leri**: VMware VM 'Leri Için Azure geçişi gereci her 20 saniyelik aralığa göre gerçek zamanlı bir örnek noktası toplar.
     - **Hyper-v VM 'leri**: Hyper-v VM 'leri için, gerçek zamanlı örnek noktası her 30 saniyelik aralığa göre toplanır.
     - **Fiziksel sunucular**: fiziksel sunucular için gerçek zamanlı örnek noktası her beş dakikalık aralıkta toplanır. 
     
@@ -73,25 +73,24 @@ Performans verileri aşağıdaki gibi toplanır:
 5. Bu değer, her ölçüm için etkili performans kullanım verilerini (CPU kullanımı, bellek kullanımı, disk ıOPS (okuma ve yazma), disk aktarım hızı (okuma ve yazma) ve ağ aktarım hızını (ın ve out) almak için rahatlık faktörüyle çarpılır. Gereç toplar.
 ## <a name="whats-in-an-assessment"></a>Bir değerlendirme neleri içerir?
 
-Azure geçişi: Sunucu değerlendirmesi ' nde bir değerlendirmeye dahil olanlar aşağıda verilmiştir
+Azure geçişi: Sunucu değerlendirmesi ' nde bir değerlendirmeye dahil olanlar aşağıda verilmiştir.
 
 **Özellik** | **Ayrıntılar**
 --- | ---
-**Hedef konum** | Geçirmek istediğiniz konum.<br/><br/>Sunucu değerlendirmesi Şu anda bu hedef Azure bölgelerini destekliyor: Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Orta Hindistan, Orta ABD, Çin Doğu, Çin Kuzey, Doğu Asya, Doğu ABD, Doğu ABD2, Almanya Orta, Almanya Kuzeydoğu, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, Güney Hindistan, UK Güney, UK Batı, US Gov Arizona, US Gov Teksas, US Gov Virginia, Orta Batı ABD, Batı Avrupa, Batı Hindistan, Batı ABD ve Batı ABD2.
-**Hedef depolama diski: olduğu gibi Boyutlandırılıyor** | Azure 'da depolama için kullanılacak disk türü. <br/><br/> Hedef depolama diskini Premium yönetilen, standart SSD yönetimli veya standart HDD yönetimli olarak belirtin.<br/><br/> 
-**Hedef depolama diski: performans tabanlı boyutlandırma** | Hedef depolama diskinin türünü otomatik, Premium yönetilen, standart HDD yönetimli veya standart SSD yönetimli olarak belirtin.<br/><br/> **Otomatik**: disk önerisi, disklerin performans verilerine (saniye başına giriş/çıkış IŞLEMI (IOPS) ve aktarım hızı) göre belirlenir. <br/><br/>**Premium/standart**: değerlendirme, seçilen depolama türü içinde bir disk SKU 'su önerir.<br/><br/> % 99,9 ' un tek örnekli VM SLA 'Sı elde etmek istiyorsanız, Premium yönetilen diskler kullanmayı düşünün. Bu, değerlendirmede tüm disklerin Premium tarafından yönetilen diskler olarak önerilmesini sağlar.<br/><br/> Azure Geçişi yalnızca yönetilen disklerin geçiş değerlendirmesini destekler.
+**Hedef konum** | Geçirmek istediğiniz konum. Sunucu değerlendirmesi Şu anda bu hedef Azure bölgelerini destekliyor:<br/><br/> Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Orta Hindistan, Orta ABD, Çin Doğu, Çin Kuzey, Doğu Asya, Doğu ABD, Doğu ABD2, Almanya Orta, Almanya Kuzeydoğu, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Kuzey Orta ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, Güney Hindistan, UK Güney, UK Batı, US Gov Arizona, US Gov Teksas, US Gov Virginia, Orta Batı ABD, Batı Avrupa, Batı Hindistan, Batı ABD ve Batı ABD2.
+*Hedef depolama diski (örneğin, boyutlandırma)* * | Azure 'da depolama için kullanılacak disk türü. <br/><br/> Hedef depolama diskini Premium yönetilen, standart SSD yönetimli veya standart HDD yönetimli olarak belirtin.
+**Hedef depolama diski (performans tabanlı boyutlandırma)** | Hedef depolama diskinin türünü otomatik, Premium yönetilen, standart HDD yönetimli veya standart SSD yönetimli olarak belirtin.<br/><br/> **Otomatik**: disk önerisi, disklerin performans verilerine (saniye başına giriş/çıkış IŞLEMI (IOPS) ve aktarım hızı) göre belirlenir.<br/><br/>**Premium/standart**: değerlendirme, seçilen depolama türü içinde bir disk SKU 'su önerir.<br/><br/> % 99,9 ' un tek örnekli VM SLA 'Sı elde etmek istiyorsanız, Premium yönetilen diskler kullanmayı düşünün. Bu, değerlendirmede tüm disklerin Premium tarafından yönetilen diskler olarak önerilmesini sağlar.<br/><br/> Azure Geçişi yalnızca yönetilen disklerin geçiş değerlendirmesini destekler.
 **Ayrılmış örnekler (RIS)** | Değerlendirmede uygulanan maliyet tahminleri hesap halinde RI indirimleri alacak şekilde Azure 'da [ayrılmış örnekler](https://azure.microsoft.com/pricing/reserved-vm-instances/) belirtin.<br/><br/> Şu anda yalnızca Azure geçişi 'ndeki Kullandıkça Öde teklifleri için yapılandırılmış olan RIS desteği sunulmaktadır.
 **Boyutlandırma ölçütü** | Azure 'da VM 'yi sağ boyuta eklemek için kullanılır.<br/><br/> As, boyutlandırma veya performans tabanlı boyutlandırma kullanın.
 **Performans geçmişi** | Performans tabanlı boyutlandırma ile kullanılır. Performans verilerini değerlendirirken kullanılan süreyi belirtin.
 **Yüzdebirlik kullanımı** | Performans tabanlı boyutlandırma ile kullanılır. Sağ boyutlandırmanın kullanılacağı performans örneğinin yüzdebirlik değerini belirtir. 
 **VM serisi** | Doğru boyutlandırma için göz önünde bulundurmanız istediğiniz Azure VM serisini belirtin. Örneğin, Azure 'da A serisi VM 'Ler gerektiren bir üretim ortamınız yoksa, bir serisi listeden veya seriden hariç bırakabilirsiniz.
-**Konfor katsayısı** | Değerlendirme sırasında kullanılan arabellek. VM 'Ler için makine kullanım verilerinin üzerine uygulanır (CPU, bellek, disk ve ağ). 
-Dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlar için BT hesapları.<br/><br/> Örneğin, %20 kullanımındaki bir 10 çekirdekli VM normalde iki çekirdekli bir VM ile sonuçlanır. 2\.0 x ile ilgili bir etken olan sonuç, bunun yerine dört çekirdekli bir VM 'dir.
+**Konfor katsayısı** | Değerlendirme sırasında kullanılan arabellek. VM 'Ler için makine kullanım verilerinin üzerine uygulanır (CPU, bellek, disk ve ağ). Dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlar için BT hesapları.<br/><br/> Örneğin, %20 kullanımındaki bir 10 çekirdekli VM normalde iki çekirdekli bir VM ile sonuçlanır. 2\.0 x ile ilgili bir etken olan sonuç, bunun yerine dört çekirdekli bir VM 'dir.
 **Teklif** | Kayıtlı olduğunuz [Azure teklifini](https://azure.microsoft.com/support/legal/offer-details/) görüntüler. Sunucu değerlendirmesi maliyeti uygun şekilde tahmin eder.
-**Para birimi** | Hesabınız için faturalama para birimi.
+**Para Birimi** | Hesabınız için faturalama para birimi.
 **İndirim (%)** | Azure teklifinin üzerine aldığınız aboneliğe özgü indirimleri listeler. Varsayılan ayar, %0’dır.
 **VM çalışma süresi** | Azure VM 'Leri günde 24 saat, haftanın 7 günü ise, çalıştırılacak süreyi (günde gün ve saat başına gün) belirtebilirsiniz. Maliyet tahminleri buna göre işlenir.<br/><br/> Varsayılan değer ayda 31 gün ve günde 24 saat olur.
-**Azure hibrit avantajı** | Yazılım Güvencesi olup olmadığını ve [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-use-benefit/)uygun olduğunu belirtir. Evet (varsayılan ayar) olarak ayarlanırsa Windows VM 'Leri için Windows dışı Azure fiyatları kabul edilir.
+**Azure Hibrit Avantajı** | Yazılım Güvencesi olup olmadığını ve [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-use-benefit/)uygun olduğunu belirtir. Evet (varsayılan ayar) olarak ayarlanırsa Windows VM 'Leri için Windows dışı Azure fiyatları kabul edilir.
 
 Sunucu değerlendirmesi ile değerlendirme oluşturmak için [en iyi uygulamaları gözden geçirin](best-practices-assessment.md) .
 
