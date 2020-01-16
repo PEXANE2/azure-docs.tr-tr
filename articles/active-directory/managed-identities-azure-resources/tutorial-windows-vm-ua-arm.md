@@ -5,22 +5,22 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: daveba
+editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee331435cbc7d0cb580b3ad5865030aba6d372ea
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888490"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977848"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Öğretici: Azure Resource Manager erişmek için Windows VM üzerinde kullanıcı tarafından atanan yönetilen kimlik kullanma
 
@@ -54,7 +54,16 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 - `Install-Module -Name PowerShellGet -AllowPrerelease` komutunu çalıştırarak `PowerShellGet` modülünün yayın öncesi sürümünü alın (`Az.ManagedServiceIdentity` modülünü yüklemek için bu komutu çalıştırdıktan sonra geçerli PowerShell oturumundan `Exit` ile çıkmanız gerekebilir).
 - Bu makaledeki kullanıcı tarafından atanan kimlik işlemlerini gerçekleştirmek için `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` komutunu çalıştırarak `Az.ManagedServiceIdentity` modülünün yayın öncesi sürümünü yükleyin.
 
-## <a name="create-identity"></a>Kimlik oluştur
+
+## <a name="enable"></a>Etkinleştirme
+
+Kullanıcı tarafından atanan bir kimliğe dayalı bir senaryo için aşağıdaki adımları gerçekleştirmeniz gerekir:
+
+- Kimlik oluşturma
+ 
+- Yeni oluşturulan kimliği ata
+
+### <a name="create-identity"></a>Kimlik oluştur
 
 Bu bölümde, Kullanıcı tarafından atanan bir kimliğin nasıl oluşturulacağı gösterilmektedir. Kullanıcı tarafından atanan kimlik, tek başına bir Azure kaynağı olarak oluşturulur. [New-Azuseratandıdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity)kullanılarak Azure, Azure AD kiracınızda bir veya daha fazla Azure hizmet örneğine atanabilecek bir kimlik oluşturur.
 
@@ -80,7 +89,7 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 }
 ```
 
-## <a name="assign-identity"></a>Kimlik ata
+### <a name="assign-identity"></a>Kimlik ata
 
 Bu bölümde, Kullanıcı tarafından atanan kimliğin bir Windows sanal makinesine nasıl atanacağı gösterilmektedir. Kullanıcı tarafından atanan kimlik, istemciler tarafından birden çok Azure kaynağında kullanılabilir. Aşağıdaki komutları kullanarak kullanıcı tarafından atanan kimliği tek bir VM'ye atayın. `-IdentityID` parametresi için önceki adımda döndürülen `Id` özelliğini kullanın.
 
@@ -114,7 +123,9 @@ ObjectType: ServicePrincipal
 CanDelegate: False
 ```
 
-## <a name="get-an-access-token"></a>Bir erişim belirteci alma 
+## <a name="access-data"></a>Verilere erişme
+
+### <a name="get-an-access-token"></a>Bir erişim belirteci alma 
 
 Bu öğreticinin kalan bölümünde, daha önce oluşturmuş olduğumuz VM'den çalışacaksınız.
 
@@ -134,7 +145,7 @@ Bu öğreticinin kalan bölümünde, daha önce oluşturmuş olduğumuz VM'den �
     $ArmToken = $content.access_token
     ```
 
-## <a name="read-properties"></a>Okuma özellikleri
+### <a name="read-properties"></a>Okuma özellikleri
 
 Azure Resource Manager’a erişmek için önceki adımda alınan erişim belirtecini kullanın ve kullanıcı tarafından atanan kimliğiniz için erişim verdiğiniz Kaynak Grubunun özelliklerini okuyun. `<SUBSCRIPTION ID>` öğesini ortamınızın abonelik kimliğiyle değiştirin.
 

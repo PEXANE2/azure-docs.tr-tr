@@ -7,12 +7,12 @@ ms.reviewers: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: b3723ccc247b8a9451b9a5fdc628bff58da361a0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 822a6d1cd812ead8e677a66a9b1e47ebdbcf8aea
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787004"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030151"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak gelen HTTPS çağrılarını alma ve yanıtlama
 
@@ -23,9 +23,18 @@ ms.locfileid: "74787004"
 * Başka bir mantıksal uygulamadan bir HTTPS çağrısını alın ve yanıtlayın.
 
 > [!NOTE]
-> Istek tetikleyicisi, gelen çağrılar için *yalnızca* aktarım katmanı GÜVENLIĞI (TLS) 1,2 ' i destekler. Giden çağrılar TLS 1,0, 1,1 ve 1,2 desteğini desteklemeye devam eder. SSL el sıkışma hataları görürseniz, TLS 1,2 kullandığınızdan emin olun.
+> Istek tetikleyicisi, gelen çağrılar için *yalnızca* aktarım katmanı GÜVENLIĞI (TLS) 1,2 ' i destekler. Giden çağrılar TLS 1,0, 1,1 ve 1,2 desteğini desteklemeye devam eder. SSL el sıkışma hataları görürseniz, TLS 1,2 kullandığınızdan emin olun. Gelen çağrılar için desteklenen şifre paketleri şunlardır:
+>
+> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
@@ -49,7 +58,7 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
 
    | Özellik adı | JSON Özellik adı | Gereklidir | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **HTTP POST URL 'SI** | seçim | Yes | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
+   | **HTTP POST URL 'SI** | seçim | Evet | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
    | **İstek gövdesi JSON şeması** | `schema` | Hayır | Gelen istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
    |||||
 
@@ -222,7 +231,7 @@ Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar.
 
    | Özellik adı | JSON Özellik adı | Gereklidir | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **Durum Kodu** | `statusCode` | Yes | Yanıtta döndürülecek durum kodu |
+   | **Durum Kodu** | `statusCode` | Evet | Yanıtta döndürülecek durum kodu |
    | **Üst Bilgiler** | `headers` | Hayır | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
    | **Gövde** | `body` | Hayır | Yanıt gövdesi |
    |||||

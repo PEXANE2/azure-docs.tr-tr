@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ad6c63ee15bc97ddd0ca6432f0b0f7b25a859804
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aeb4bfbc40196575e2cb812738a9ab5de991d2aa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462199"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981031"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Azure RBAC ve Azure Resource Manager şablonlarını kullanarak rol atamaları ekleme
 
@@ -361,7 +361,7 @@ Aşağıda, şablonu dağıttıktan sonra yeni bir yönetilen kimlik hizmeti sor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı başlangıç: Azure portalı kullanarak Azure Resource Manager şablonu oluşturma ve dağıtma](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Hızlı başlangıç: Azure portalı kullanarak Azure Resource Manager şablonu oluşturma ve dağıtma](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [Azure Resource Manager şablonlarının yapısını ve söz dizimini anlama](../azure-resource-manager/templates/template-syntax.md)
-- [Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](../azure-resource-manager/deploy-to-subscription.md)
+- [Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure Hızlı Başlangıç Şablonları](https://azure.microsoft.com/resources/templates/?term=rbac)

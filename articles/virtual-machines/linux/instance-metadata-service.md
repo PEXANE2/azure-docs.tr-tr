@@ -1,10 +1,10 @@
 ---
 title: Azure Instance Metadata Service
-description: Linux VM 'nin işlem, ağ ve yaklaşan bakım olayları hakkında bilgi almak için yeniden oluşturma arabirimi.
+description: Linux VM 'Leri işlem, ağ ve yaklaşan bakım olayları hakkında bilgi almak için yeniden oluşturma arabirimi.
 services: virtual-machines-linux
 documentationcenter: ''
 author: KumariSupriya
-manager: harijayms
+manager: paulmey
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 6ca8dd08f3b6c1a7bc9a0b8c7ba853adb46fd30c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ad3f9329ce79812e908fd15037e2054ca5a8906e
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355972"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045165"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
-Azure Instance Metadata Service, sanal makinelerinizi yönetmek ve yapılandırmak için kullanılabilecek çalışan sanal makine örnekleri hakkında bilgi sağlar.
-Bu, SKU, ağ yapılandırması ve yaklaşan bakım olayları gibi bilgileri içerir. Hangi tür bilgilerin kullanılabildiği hakkında daha fazla bilgi için bkz. [metadata API 'leri](#metadata-apis).
+Azure Instance Metadata Service (IMDS), çalışmakta olan sanal makine örnekleri hakkında bilgi sağlar ve sanal makinelerinizi yönetmek ve yapılandırmak için kullanılabilir.
+Girilen bilgiler SKU, ağ yapılandırması ve yaklaşan bakım olaylarını içerir. Kullanılabilir verilerin tüm listesi için bkz. [metadata API 'leri](#metadata-apis).
 
 Azure Instance Metadata Service, [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/)kullanılarak oluşturulan tüm IaaS VM 'lerine ERIŞILEBILEN bir REST uç noktasıdır.
 Uç nokta, yalnızca VM içinden erişilebilen, iyi bilinen yönlendirilebilir olmayan IP adresinde (`169.254.169.254`) kullanılabilir.
@@ -38,14 +38,15 @@ Hizmet genel kullanıma sunulan Azure bölgelerinde kullanılabilir. Tüm API s�
 
 Bölgeler                                        | Sonrası?                                 | Desteklenen Sürümler
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04
-[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
-[Azure Çin](https://www.azure.cn/)                                                     | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
-[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Azure Çin 21Vianet](https://www.azure.cn/)                                            | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
 
-Bu tablo, hizmet güncelleştirmeleri olduğunda ve veya desteklenen yeni sürümler varsa güncelleştirilir.
+Bu tablo, hizmet güncelleştirmeleri olduğunda ve/veya yeni desteklenen sürümler varsa güncelleştirilir.
 
 Instance Metadata Service denemek için yukarıdaki bölgelerde [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) veya [Azure Portal](https://portal.azure.com) bir VM oluşturun ve aşağıdaki örnekleri izleyin.
+[Azure örnek meta verileri örneklerinde](https://github.com/microsoft/azureimds) , imds 'nin sorgulanme hakkında daha fazla örnek bulabilirsiniz
 
 ## <a name="usage"></a>Kullanım
 
@@ -130,7 +131,7 @@ HTTP Durum Kodu | Neden
 200 OK |
 400 Hatalı Istek | `Metadata: true` üstbilgisi eksik veya bir yaprak düğüm sorgulanırken biçim eksik
 404 Bulunamadı | İstenen öğe yok
-405 yöntemine Izin verilmiyor | Yalnızca `GET` ve `POST` istekleri destekleniyor
+405 yöntemine Izin verilmiyor | Yalnızca `GET` istekleri destekleniyor
 429 çok fazla Istek | API Şu anda saniyede en çok 5 sorgu destekliyor
 500 hizmet hatası     | Bir süre sonra yeniden dene
 
@@ -191,7 +192,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 **İstek**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-03-11"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
 ```
 
 **Yanıt**
@@ -222,6 +223,59 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
     "resourceGroupName": "myrg",
     "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
     "sku": "5-6",
+    "storageProfile": {
+        "dataDisks": [
+          {
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+              "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+              "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+          }
+        ],
+        "imageReference": {
+          "id": "",
+          "offer": "UbuntuServer",
+          "publisher": "Canonical",
+          "sku": "16.04.0-LTS",
+          "version": "latest"
+        },
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "diskSizeGB": "30",
+          "diffDiskSettings": {
+            "option": "Local"
+          },
+          "encryptionSettings": {
+            "enabled": "false"
+          },
+          "image": {
+            "uri": ""
+          },
+          "managedDisk": {
+            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+            "storageAccountType": "Standard_LRS"
+          },
+          "name": "exampleosdiskname",
+          "osType": "Linux",
+          "vhd": {
+            "uri": ""
+          },
+          "writeAcceleratorEnabled": "false"
+        }
+    },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
     "version": "7.1.1902271506",
@@ -264,14 +318,14 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 Örnek meta verileri, Windows 'da PowerShell yardımcı programı aracılığıyla alınabilir `curl`: 
 
 ```bash
-curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-03-11 | select -ExpandProperty Content
+curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-06-01 | select -ExpandProperty Content
 ```
 
 Veya `Invoke-RestMethod` cmdlet 'i aracılığıyla:
 
 ```powershell
 
-Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2019-03-11 -Method get 
+Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2019-06-01 -Method get 
 ```
 
 **Yanıt**
@@ -302,6 +356,59 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
     "resourceGroupName": "myrg",
     "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
     "sku": "5-6",
+    "storageProfile": {
+        "dataDisks": [
+          {
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+              "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+              "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+          }
+        ],
+        "imageReference": {
+          "id": "",
+          "offer": "UbuntuServer",
+          "publisher": "Canonical",
+          "sku": "16.04.0-LTS",
+          "version": "latest"
+        },
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "diskSizeGB": "30",
+          "diffDiskSettings": {
+            "option": "Local"
+          },
+          "encryptionSettings": {
+            "enabled": "false"
+          },
+          "image": {
+            "uri": ""
+          },
+          "managedDisk": {
+            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+            "storageAccountType": "Standard_LRS"
+          },
+          "name": "exampleosdiskname",
+          "osType": "Linux",
+          "vhd": {
+            "uri": ""
+          },
+          "writeAcceleratorEnabled": "false"
+        }
+    },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     "tags": "Department:IT;Environment:Test;Role:WebRole",
     "version": "7.1.1902271506",
@@ -339,7 +446,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 ## <a name="metadata-apis"></a>Meta veri API 'Leri
 
-#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>Meta veri uç noktası aracılığıyla aşağıdaki API 'Ler mevcuttur:
+Meta veri uç noktası aracılığıyla aşağıdaki API 'Ler mevcuttur:
 
 Veriler | Açıklama | Sunulan sürüm
 -----|-------------|-----------------------
@@ -349,7 +456,8 @@ instance | Bkz. [örnek API 'si](#instance-api) | 2017-04-02
 scheduledevents | Bkz. [zamanlanan olaylar](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Örnek API 'SI
-##### <a name="the-following-compute-categories-are-available-through-the-instance-api"></a>Aşağıdaki Işlem kategorileri örnek API aracılığıyla kullanılabilir:
+
+Aşağıdaki Işlem kategorileri örnek API aracılığıyla kullanılabilir:
 
 > [!NOTE]
 > Meta veri uç noktası aracılığıyla, örnek/işlem aracılığıyla aşağıdaki kategorilere erişilir
@@ -357,13 +465,13 @@ scheduledevents | Bkz. [zamanlanan olaylar](scheduled-events.md) | 2017-08-01
 Veriler | Açıklama | Sunulan sürüm
 -----|-------------|-----------------------
 azEnvironment | VM 'nin çalıştığı Azure ortamı | 2018-10-01
-customData | [Özel verileri](#custom-data) gör | 2019-02-01
+customData | Bu özellik şu anda devre dışı. Bu belge kullanılabilir hale geldiğinde güncelleştirilecek | 2019-02-01
 location | VM 'nin çalıştığı Azure bölgesi | 2017-04-02
 ad | VM adı | 2017-04-02
 teklif | VM görüntüsü için teklif bilgileri ve yalnızca Azure görüntü Galerisi 'nden dağıtılan görüntülerde bulunur | 2017-04-02
 osType | Linux veya Windows | 2017-04-02
 placementGroupId | Sanal makine ölçek kümesinin [yerleştirme grubu](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-plan | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren bir [plan planlayın](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
+plan | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren [plan planlayın](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
 platformUpdateDomain |  VM 'nin çalıştığı [etki alanını güncelleştirme](manage-availability.md) | 2017-04-02
 platformFaultDomain | VM 'nin çalıştığı [hata etki alanı](manage-availability.md) | 2017-04-02
 sağlayıcısı | VM sağlayıcısı | 2018-10-01
@@ -372,8 +480,9 @@ publisher | VM görüntüsünün yayımcısı | 2017-04-02
 resourceGroupName | Sanal makineniz için [kaynak grubu](../../azure-resource-manager/management/overview.md) | 2017-08-01
 resourceId | Kaynağın [tam](https://docs.microsoft.com/rest/api/resources/resources/getbyid) kimliği | 2019-03-11
 sku | VM görüntüsü için belirli SKU | 2017-04-02
+storageProfile | [Depolama profilini](#storage-profile) gör | 2019-06-01
 subscriptionId | Sanal makine için Azure aboneliği | 2017-08-01
-etiketler | Sanal makineniz için [Etiketler](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
+etiketler | Sanal makineniz için [Etiketler](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 tagsList | Daha kolay programlı ayrıştırma için JSON dizisi olarak biçimlendirilen Etiketler  | 2019-06-04
 version | VM görüntüsünün sürümü | 2017-04-02
 vmId | VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
@@ -381,7 +490,7 @@ vmScaleSetName | Sanal makine ölçek kümesinin [sanal makine ölçek kümesi a
 vmSize | [VM boyutu](sizes.md) | 2017-04-02
 bölge | Sanal makinenizin [kullanılabilirlik bölgesi](../../availability-zones/az-overview.md) | 2017-12-01
 
-##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>Aşağıdaki ağ kategorileri örnek API 'SI aracılığıyla kullanılabilir:
+Aşağıdaki ağ kategorileri örnek API 'SI aracılığıyla kullanılabilir:
 
 > [!NOTE]
 > Meta veri uç noktası aracılığıyla, örnek/ağ/arabirim aracılığıyla aşağıdaki kategorilere erişilir
@@ -397,7 +506,7 @@ macAddress | VM MAC adresi | 2017-04-02
 
 ## <a name="attested-data"></a>Atsınanan veriler
 
-Örnek meta verileri 169.254.169.254 üzerinde http uç noktasında yanıt verir. Instance Metadata Service tarafından sunulan senaryonun bir kısmı, yanıt veren verilerin Azure 'dan geldiği garantisi sağlamaktır. Market görüntülerinin Azure 'da çalıştığından emin olmak için bu bilgilerin bir parçasını imzalıyoruz.
+Instance Metadata Service tarafından sunulan senaryonun bir kısmı, belirtilen verilerin Azure 'dan geldiğini garanti etmek sağlamaktır. Market görüntülerinin Azure 'da çalıştığından emin olmak için bu bilgilerin bir parçasını imzalıyoruz.
 
 ### <a name="example-attested-data"></a>Örnek Atsınanan veriler
 
@@ -412,7 +521,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-ver
 ```
 
 Api sürümü zorunlu bir alandır. Desteklenen API sürümleri için [hizmet kullanılabilirliği bölümüne](#service-availability) bakın.
-Nonce, belirtilen isteğe bağlı 10 basamaklı bir dizedir. Nonce, isteği izlemek için kullanılabilir ve sağlanmazsa, yanıt kodlamalı dize ' de geçerli UTC zaman damgası döndürülür.
+Nonce, isteğe bağlı 10 basamaklı bir dizedir. Sağlanmazsa, ıDS geçerli UTC zaman damgasını yerinde döndürür. IDS 'nin önbelleğe alma mekanizması nedeniyle, önceden önbelleğe alınmış bir nonce değeri döndürülebilir.
 
  **Yanıt**
 
@@ -425,7 +534,7 @@ Nonce, belirtilen isteğe bağlı 10 basamaklı bir dizedir. Nonce, isteği izle
 }
 ```
 
-> İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Oturum açmak için kullanılan sertifikayı ve VMID, nonce, SubscriptionID, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarını içerir. Plan bilgileri yalnızca Azure Market Place görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
+İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Bu, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarıyla birlikte oturum açmak için kullanılan sertifikayı içerir. Plan bilgileri yalnızca Azure Market Place görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Windows sanal makinesinde atsınanan meta veriler alınıyor
 
@@ -444,7 +553,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI "http://169.254.169.254/met
 ```
 
 Api sürümü zorunlu bir alandır. Desteklenen API sürümleri için hizmet kullanılabilirliği bölümüne bakın.
-Nonce, belirtilen isteğe bağlı 10 basamaklı bir dizedir. Nonce, isteği izlemek için kullanılabilir ve sağlanmazsa, yanıt kodlamalı dize ' de geçerli UTC zaman damgası döndürülür.
+Nonce, isteğe bağlı 10 basamaklı bir dizedir. Sağlanmazsa, ıDS geçerli UTC zaman damgasını yerinde döndürür. IDS 'nin önbelleğe alma mekanizması nedeniyle, önceden önbelleğe alınmış bir nonce değeri döndürülebilir.
 
  **Yanıt**
 
@@ -457,7 +566,7 @@ Nonce, belirtilen isteğe bağlı 10 basamaklı bir dizedir. Nonce, isteği izle
 }
 ```
 
-> İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Oturum açmak için kullanılan sertifikayı ve VMID, nonce, SubscriptionID, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarını içerir. Plan bilgileri yalnızca Azure Market Place görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
+İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Bu, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarıyla birlikte oturum açmak için kullanılan sertifikayı içerir. Plan bilgileri yalnızca Azure Market Place görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
 
 
 ## <a name="example-scenarios-for-usage"></a>Kullanım için örnek senaryolar  
@@ -503,7 +612,7 @@ Hizmet sağlayıcı olarak, VM hakkında daha fazla bilgi edinmek istediğiniz b
 **İstek**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2017-08-01"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
 ```
 
 **Yanıt**
@@ -513,19 +622,86 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 ```json
 {
-  "compute": {
-    "location": "CentralUS",
-    "name": "IMDSCanary",
-    "offer": "RHEL",
+    "azEnvironment": "AzurePublicCloud",
+    "customData": "",
+    "location": "centralus",
+    "name": "negasonic",
+    "offer": "lampstack",
     "osType": "Linux",
+    "placementGroupId": "",
+    "plan": {
+        "name": "5-6",
+        "product": "lampstack",
+        "publisher": "bitnami"
+    },
     "platformFaultDomain": "0",
     "platformUpdateDomain": "0",
-    "publisher": "RedHat",
-    "sku": "7.2",
-    "version": "7.2.20161026",
-    "vmId": "5c08b38e-4d57-4c23-ac45-aca61037f084",
-    "vmSize": "Standard_DS2"
-  }
+    "provider": "Microsoft.Compute",
+    "publicKeys": [],
+    "publisher": "bitnami",
+    "resourceGroupName": "myrg",
+    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
+    "sku": "5-6",
+    "storageProfile": {
+        "dataDisks": [
+          {
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+              "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+              "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+          }
+        ],
+        "imageReference": {
+          "id": "",
+          "offer": "UbuntuServer",
+          "publisher": "Canonical",
+          "sku": "16.04.0-LTS",
+          "version": "latest"
+        },
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "diskSizeGB": "30",
+          "diffDiskSettings": {
+            "option": "Local"
+          },
+          "encryptionSettings": {
+            "enabled": "false"
+          },
+          "image": {
+            "uri": ""
+          },
+          "managedDisk": {
+            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+            "storageAccountType": "Standard_LRS"
+          },
+          "name": "exampleosdiskname",
+          "osType": "Linux",
+          "vhd": {
+            "uri": ""
+          },
+          "writeAcceleratorEnabled": "false"
+        }
+    },
+    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
+    "version": "7.1.1902271506",
+    "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
+    "vmScaleSetName": "",
+    "vmSize": "Standard_A1_v2",
+    "zone": "1"
 }
 ```
 
@@ -548,7 +724,7 @@ Azure ortamının bulutu ve değerleri aşağıda listelenmiştir.
 ---------|-----------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure Çin](https://azure.microsoft.com/global-infrastructure/china/)                  | AzureChinaCloud
+[Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
 [Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>VM için Etiketler alınıyor
@@ -636,7 +812,8 @@ Verification successful
     "expiresOn":"11/28/18 06:16:17 -0000"
   },
 "vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34",
-"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+"sku": "RS3-Pro"
 }
 ```
 
@@ -644,10 +821,11 @@ Veriler | Açıklama
 -----|------------
 nonce | Kullanıcı istek ile isteğe bağlı dize sağladı. İstekte hiçbir nonce sağlanmazsa, geçerli UTC zaman damgası döndürülür
 plan | Azure Market görüntüsündeki bir VM için [plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) yapın, ad, ürün ve yayımcı içerir
-zaman damgası/createdOn | İlk imzalı belgenin oluşturulduğu zaman damgası
-zaman damgası/expiresOn | İmzalanan belgenin süresi dolan zaman damgası
+zaman damgası/createdOn | İlk imzalı belgenin oluşturulduğu UTC zaman damgası
+zaman damgası/expiresOn | İmzalanan belgenin süresi dolan UTC zaman damgası
 vmId |  VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
 subscriptionId | `2019-04-30` tanıtılan Sanal makine için Azure aboneliği
+sku | `2019-11-01` tanıtılan VM görüntüsü için belirli SKU
 
 #### <a name="verifying-the-signature"></a>İmza doğrulanıyor
 
@@ -660,7 +838,7 @@ Yukarıdaki imzayı aldıktan sonra, imzanın Microsoft 'tan olduğunu doğrulay
 ---------|-----------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure Çin](https://azure.microsoft.com/global-infrastructure/china/)                  | metadata.azure.cn
+[Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
 [Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
 
 ```bash
@@ -724,35 +902,120 @@ Network Destination        Netmask          Gateway       Interface  Metric
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
-### <a name="custom-data"></a>Özel veriler
-Instance Metadata Service, VM 'nin kendi özel verilerine erişimine sahip olmasını sağlar. İkili veriler 64 KB 'tan az olmalıdır ve Base64 kodlamalı biçimde VM 'ye sağlanmalıdır.
+### <a name="storage-profile"></a>Depolama profili
 
-Azure özel verileri REST API 'Ler, PowerShell cmdlet 'Leri, Azure komut satırı arabirimi (CLı) veya ARM şablonu aracılığıyla sanal makineye eklenebilir.
+Instance Metadata Service, VM ile ilişkili depolama diskleri hakkında ayrıntılı bilgi sağlayabilir. Bu veriler, örnek/işlem/storageProfile uç noktasında bulunabilir.
 
-Azure komut satırı arabirimi örneği için, bkz. [Microsoft Azure özel veriler ve Cloud-Init](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/).
+Bir sanal makinenin depolama profili üç kategoriye ayrılmıştır-görüntü başvurusu, işletim sistemi diski ve veri diskleri.
 
-ARM şablon örneği için bkz. [CustomData Ile sanal makine dağıtma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağıdaki bilgileri içerir:
 
-Özel veriler, VM 'de çalışan tüm işlemlerde kullanılabilir. Müşterilerin özel verilere gizli bilgiler eklemediğinden önerilir.
+Veriler    | Açıklama
+--------|-----------------
+id      | Kaynak kimliği
+teklif   | Platform veya Market görüntüsü teklifi
+publisher | Görüntü yayımcısı
+sku     | Görüntü SKU 'su
+version | Platform veya Market görüntüsünün sürümü
 
-Şu anda, bir VM 'nin önyüklemesi sırasında özel verilerin kullanılabilir olduğu garanti edilir. VM 'de disk ekleme veya VM 'yi yeniden boyutlandırma gibi güncelleştirmeler yapılırsa Instance Metadata Service özel verileri sağlamacaktır. Instance Metadata Service üzerinden kalıcı olarak özel veri sağlama işlemi şu anda devam ediyor.
+İşletim sistemi diski nesnesi, VM tarafından kullanılan işletim sistemi diski hakkında aşağıdaki bilgileri içerir:
 
-#### <a name="retrieving-custom-data-in-virtual-machine"></a>Sanal makinede özel veriler alınıyor
-Instance Metadata Service, sanal makineye Base64 kodlamalı biçimde özel veriler sağlar. Aşağıdaki örnek Base64 kodlamalı dizesinin kodunu çözer.
+Veriler    | Açıklama
+--------|-----------------
+önbelleğe alma | Önbelleğe alma gereksinimleri
+createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
+diffDiskSettings | Kısa ömürlü disk ayarları
+diskSizeGB | Diskin GB cinsinden boyutu
+image   | Kaynak Kullanıcı görüntüsü sanal sabit diski
+'yi     | Diskin mantıksal birim numarası
+managedDisk | Yönetilen disk parametreleri
+ad    | Disk adı
+sahip     | Sanal sabit disk
+Writeivatorenabled | Diskte writeAccelerator etkin olup olmadığı
 
-> [!NOTE]
-> Bu örnekteki özel veriler, "özel verilerimi" okuyan bir ASCII dizesi olarak yorumlanır.
+Veri diskleri dizisi, VM 'ye bağlı veri disklerinin bir listesini içerir. Her veri diski nesnesi şu bilgileri içerir:
+
+Veriler    | Açıklama
+--------|-----------------
+önbelleğe alma | Önbelleğe alma gereksinimleri
+createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
+diffDiskSettings | Kısa ömürlü disk ayarları
+diskSizeGB | Diskin GB cinsinden boyutu
+encryptionSettings | Disk için şifreleme ayarları
+image   | Kaynak Kullanıcı görüntüsü sanal sabit diski
+managedDisk | Yönetilen disk parametreleri
+ad    | Disk adı
+osType  | Diske dahil edilen işletim sisteminin türü
+sahip     | Sanal sabit disk
+Writeivatorenabled | Diskte writeAccelerator etkin olup olmadığı
+
+Aşağıda, VM 'nin depolama bilgilerinin nasıl sorgulanalınacağını gösteren bir örnek verilmiştir.
 
 **İstek**
 
 ```bash
-curl -H "Metadata:true" "http://169.254.169.254/metadata/instance/compute/customData?api-version=2019-02-01&&format=text" | base64 --decode
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
 ```
 
 **Yanıt**
 
-```text
-My custom data.
+> [!NOTE]
+> Yanıt bir JSON dizesidir. Aşağıdaki örnek yanıt, okunabilirlik için oldukça yazdırılır.
+
+```json
+{
+    "dataDisks": [
+      {
+        "caching": "None",
+        "createOption": "Empty",
+        "diskSizeGB": "1024",
+        "image": {
+          "uri": ""
+        },
+        "lun": "0",
+        "managedDisk": {
+          "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+          "storageAccountType": "Standard_LRS"
+        },
+        "name": "exampledatadiskname",
+        "vhd": {
+          "uri": ""
+        },
+        "writeAcceleratorEnabled": "false"
+      }
+    ],
+    "imageReference": {
+      "id": "",
+      "offer": "UbuntuServer",
+      "publisher": "Canonical",
+      "sku": "16.04.0-LTS",
+      "version": "latest"
+    },
+    "osDisk": {
+      "caching": "ReadWrite",
+      "createOption": "FromImage",
+      "diskSizeGB": "30",
+      "diffDiskSettings": {
+        "option": "Local"
+      },
+      "encryptionSettings": {
+        "enabled": "false"
+      },
+      "image": {
+        "uri": ""
+      },
+      "managedDisk": {
+        "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+        "storageAccountType": "Standard_LRS"
+      },
+      "name": "exampleosdiskname",
+      "osType": "Linux",
+      "vhd": {
+        "uri": ""
+      },
+      "writeAcceleratorEnabled": "false"
+    }
+}
 ```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>VM içinde farklı diller kullanarak meta veri hizmeti çağırma örnekleri
@@ -779,9 +1042,9 @@ Puppet | https://github.com/keirans/azuremetadata
 2. Neden Sanal makinem için işlem bilgilerini alamıyorum?
    * Şu anda Instance Metadata Service yalnızca Azure Resource Manager oluşturulan örnekleri destekliyor. Gelecekte, bulut hizmeti VM 'Leri için destek eklenebilir.
 3. Sanal makinmi Azure Resource Manager bir sırada oluşturdum. İşlem meta veri bilgilerini neden göremiyorum?
-   * Sep 2016 ' den sonra oluşturulan tüm VM 'Ler için, işlem meta verilerini görmeye başlamak üzere bir [etiket](../../azure-resource-manager/resource-group-using-tags.md) ekleyin. Eski VM 'Ler için (2016. sürümden önce oluşturulan) meta verileri yenilemek için VM 'lere uzantıları veya veri diskleri ekleyin/kaldırın.
+   * Sep 2016 ' den sonra oluşturulan tüm VM 'Ler için, işlem meta verilerini görmeye başlamak üzere bir [etiket](../../azure-resource-manager/management/tag-resources.md) ekleyin. Eski VM 'Ler için (2016. sürümden önce oluşturulan) meta verileri yenilemek için VM 'lere uzantıları veya veri diskleri ekleyin/kaldırın.
 4. Yeni sürüm için doldurulmuş tüm verileri görmüyorum
-   * Sep 2016 ' den sonra oluşturulan tüm VM 'Ler için, işlem meta verilerini görmeye başlamak üzere bir [etiket](../../azure-resource-manager/resource-group-using-tags.md) ekleyin. Eski VM 'Ler için (2016. sürümden önce oluşturulan) meta verileri yenilemek için VM 'lere uzantıları veya veri diskleri ekleyin/kaldırın.
+   * Sep 2016 ' den sonra oluşturulan tüm VM 'Ler için, işlem meta verilerini görmeye başlamak üzere bir [etiket](../../azure-resource-manager/management/tag-resources.md) ekleyin. Eski VM 'Ler için (2016. sürümden önce oluşturulan) meta verileri yenilemek için VM 'lere uzantıları veya veri diskleri ekleyin/kaldırın.
 5. Hata `500 Internal Server Error`neden alıyorum?
    * İsteğinizi üstel geri dönüş sistemine göre yeniden deneyin. Sorun devam ederse Azure desteği ile iletişime geçin.
 6. Ek soruları/açıklamaları nerede paylaşabilirim?

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 363549662a17a87513c8426347909142ee405cae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: f81f47349610cd72489df305ccf544c8346cb9b3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196391"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028661"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Fiziksel sunucuların değerlendirmesi ve Azure 'a geçirilmesi için hazırlanma
 
@@ -95,18 +95,18 @@ Fiziksel sunucu değerlendirmesi için hazırlanmak üzere, fiziksel sunucu ayar
 
 ### <a name="verify-physical-server-settings"></a>Fiziksel sunucu ayarlarını doğrulama
 
-1. Sunucu değerlendirmesi için [fiziksel sunucu gereksinimlerini](migrate-support-matrix-physical.md#assessment-physical-server-requirements) doğrulayın.
-2. Fiziksel sunucularda [gerekli bağlantı noktalarının](migrate-support-matrix-physical.md#assessment-port-requirements) açık olduğundan emin olun.
+1. Sunucu değerlendirmesi için [fiziksel sunucu gereksinimlerini](migrate-support-matrix-physical.md#physical-server-requirements) doğrulayın.
+2. Fiziksel sunucularda [gerekli bağlantı noktalarının](migrate-support-matrix-physical.md#port-access) açık olduğundan emin olun.
 
 
 ### <a name="verify-appliance-settings"></a>Gereç ayarlarını doğrulama
 
 Sonraki öğreticide Azure geçişi gerecini ve değerlendirmeyi ayarlamadan önce, Gereç dağıtımına hazırlanın.
 
-1. Gereç gereksinimlerini [doğrulayın](migrate-support-matrix-physical.md#assessment-appliance-requirements) .
-2. Gerecin erişmesi gereken Azure URL 'Lerini [gözden geçirin](migrate-support-matrix-physical.md#assessment-appliance-url-access) .
-3. Bulma ve değerlendirme sırasında gereç tarafından toplanacak verileri gözden geçirin.
-4. Gereç [için bağlantı noktası](migrate-support-matrix-physical.md#assessment-port-requirements) erişim gereksinimleri.
+1. Fiziksel sunucular için gereç gereksinimlerini [doğrulayın](migrate-appliance.md#appliance---physical) .
+2. Gerecin erişmesi gereken Azure URL 'Lerini [gözden geçirin](migrate-appliance.md#url-access) .
+3. Gerecin bulma ve değerlendirme sırasında toplanacağını [gözden geçirin](migrate-appliance.md#collected-data---vmware) .
+4. [Note](migrate-support-matrix-physical.md#port-access) bağlantı noktası erişim gereksinimleri fiziksel sunucu değerlendirmesi.
 
 
 ### <a name="set-up-an-account-for-physical-server-discovery"></a>Fiziksel sunucu keşfi için bir hesap ayarlayın
@@ -115,6 +115,15 @@ Azure geçişi 'nin şirket içi sunucuları bulması için izinleri olması ger
 
 - **Windows:** Bulmaya dahil etmek istediğiniz tüm Windows sunucularında yerel bir kullanıcı hesabı ayarlayın. Kullanıcı hesabının aşağıdaki gruplara eklenmesi gerekir:-uzaktan yönetim kullanıcıları-performans Izleyicisi kullanıcıları-performans günlüğü kullanıcıları
 - **Linux:** Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir.
+
+## <a name="prepare-for-physical-server-migration"></a>Fiziksel sunucu geçişine hazırlanma
+
+Fiziksel sunucuların geçirilmesi için gereksinimleri gözden geçirin.
+
+- Geçiş için fiziksel sunucu gereksinimlerini [gözden geçirin](migrate-support-matrix-physical-migration.md#physical-server-requirements) .
+- Azure geçişi: sunucu geçişi fiziksel sunucu geçişi için bir çoğaltma sunucusu kullanır:
+    - Çoğaltma gereci için dağıtım gereksinimlerini ve gereçte MySQL yükleme [seçeneklerini](migrate-replication-appliance.md#mysql-installation) [gözden geçirin](migrate-replication-appliance.md#appliance-requirements) .
+    - Çoğaltma gereci için [URL 'yi](migrate-replication-appliance.md#url-access) ve [bağlantı noktası] (geçiş-çoğaltma-gereç. md # bağlantı noktası erişimi) erişim gereksinimlerini gözden geçirin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

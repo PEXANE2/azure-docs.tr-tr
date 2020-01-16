@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 775c6016acbcd0f87f368852a68eaea706c79898
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: d55dc2a1311d66eae01ae12a3dae798fbab20677
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945700"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045622"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -196,16 +196,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 SDK 'da Azure açık veri kümeleri ile veri kümeleri oluşturmak için paketi `pip install azureml-opendatasets`yüklediğinizden emin olun. Her ayrık veri kümesi SDK 'daki kendi sınıfıyla temsil edilir ve belirli sınıflar `TabularDataset`, `FileDataset`veya her ikisi olarak sunulur. Sınıfların tam listesi için [başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py) bakın.
 
-Çoğu sınıf öğesinden devralınır ve bir `TabularDataset`örneğinden döndürülür. Bu sınıfların örneklerine `PublicHolidays`, `BostonSafety`ve `UsPopulationZip`dahildir. Bu sınıf türlerinden bir `TabularDataset` oluşturmak için oluşturucuyu bağımsız değişken olmadan kullanın. Açık veri kümelerinden oluşturulan bir veri kümesini kaydettiğinizde, hiçbir veri hemen indirilir, ancak istendiğinde (eğitim sırasında, örneğin, merkezi bir depolama konumundan), verilere daha sonra erişilir. 
-
-```python
-from azureml.opendatasets import UsPopulationZip
-
-tabular_dataset = UsPopulationZip()
-tabular_dataset = tabular_dataset.register(workspace=workspace, name="pop data", description="US population data by zip code")
-```
-
-Dosyaları doğrudan yönetmenize ve/veya indirmenizi sağlayan bir `TabularDataset` veya `FileDataset`olarak belirli sınıfları alabilirsiniz. Diğer sınıflar yalnızca `get_tabular_dataset()` ya da `get_file_dataset()` işlevlerini kullanarak bir veri kümesi alabilir. Aşağıdaki kod örneği, bu sınıf türleri için birkaç örnek gösterir:
+Dosyaları doğrudan yönetmenize ve/veya indirmenizi sağlayan bir `TabularDataset` veya `FileDataset`olarak belirli sınıfları alabilirsiniz. Diğer sınıflar **yalnızca** `get_tabular_dataset()` veya `get_file_dataset()` işlevlerinden birini kullanarak bir veri kümesi alabilir. Aşağıdaki kod örneği, bu sınıf türleri için birkaç örnek gösterir.
 
 ```python
 from azureml.opendatasets import MNIST
@@ -219,6 +210,8 @@ from azureml.opendatasets import Diabetes
 # Diabetes class can return ONLY return TabularDataset and must be called from the static function
 diabetes_tabular = Diabetes.get_tabular_dataset()
 ```
+
+Açık veri kümelerinden oluşturulan bir veri kümesini kaydettiğinizde, hiçbir veri hemen indirilir, ancak istendiğinde (eğitim sırasında, örneğin, merkezi bir depolama konumundan), verilere daha sonra erişilir.
 
 ### <a name="use-the-ui"></a>Kullanıcı arabirimini kullanma
 

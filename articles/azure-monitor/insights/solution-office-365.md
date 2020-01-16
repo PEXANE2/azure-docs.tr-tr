@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: aaa083ef52dcf18fade3315f598b5f57e791cbe0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b026ef7dbbe850f0d2d1cb67ec8ca93b14ef879a
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932969"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044899"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -106,7 +106,7 @@ ms.locfileid: "75932969"
 > 
 > ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>S: 30 Mart 'ta ne olur? Önceden Pano yapmam gerekir mi?
 > 
-> - **Office365** çözümünden veri alamazsınız ve bu, yüklendiği her çalışma alanından kaldırılır. Bu çözüm Market 'te artık kullanılamayacak
+> - **Office365** çözümünden veri alamazsınız. Bu çözüm Market 'te artık kullanılamayacak
 > - Azure Sentinel müşterileri için, Azure Sentinel **Securityınsights** çözümüne Log Analytics çalışma alanı çözümü **Office365** eklenecektir.
 > - Çözümünüzü el ile boşaltmıyorsanız, verilerinizin 30 Mart 'ta otomatik olarak bağlantısı kesilir.
 > 

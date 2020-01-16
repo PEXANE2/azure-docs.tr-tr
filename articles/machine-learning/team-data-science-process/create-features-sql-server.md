@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7bc44d8e755af3d212d616425c6a1fd925172298
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602928"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982067"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>SQL ve Python kullanarak SQL Server’daki verilerin özelliklerini oluşturma
 Bu belge, daha verimli bir şekilde verilerden bilgi algoritmaları yardımcı olan bir SQL Server VM'si, azure'da depolanan verilerin özelliklerini oluşturma adımları anlatılmaktadır. Bu görevi gerçekleştirmek için SQL veya Python gibi bir programlama dili kullanabilirsiniz. Her iki yaklaşım burada gösterilmiştir.
@@ -28,10 +28,10 @@ Bu görev bir adımdır [Team Data Science işlem (TDSP)](https://docs.microsoft
 > 
 > 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede, olduğunu varsayar:
 
-* Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz [bir Azure depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md)
+* Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz [bir Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md)
 * Verilerinizi SQL Server'da depolanan. Yüklemediyseniz, bkz. [veri taşıma için bir Azure SQL veritabanı için Azure Machine Learning](move-sql-azure.md) var. veri taşıma konusunda yönergeler için.
 
 ## <a name="sql-featuregen"></a>SQL ile özellik oluşturma
@@ -68,7 +68,7 @@ Enlem/boylam konumu veri kısa öncü İşte (stackoverflow kaynak var `https://
 * Oturum, biz Kuzey olup veya Güney, Doğu veya Batı dünya üzerindeki gösterir.
 * Sıfır olmayan bir yüz basamağı belirtir boylam, enlem değil kullanılıyor.
 * Onlarca basamaklı bir konuma yaklaşık 1.000 kilometre sağlar. Bu, hangi Kıta veya üzerinde duyuyoruz Okyanusu hakkında yararlı bilgiler verir.
-* Birimleri basamak (bir ondalık derece) 111 kilometre (60 Deniz mili, yaklaşık 69 mil) bir konum sağlar. Bu, kabaca, hangi büyük eyalet veya ülke/bölge duyuyoruz gösterir.
+* Birimleri basamak (bir ondalık derece) 111 kilometre (60 Deniz mili, yaklaşık 69 mil) bir konum sağlar. Kabaca, hangi büyük eyalet veya ülke/bölge olduğunu gösterir.
 * En fazla 11.1 km ilk ondalık yerdir: komşu büyük Şehir'dan büyük bir şehir konumunu ayırt edebilir.
 * En fazla 1.1 km ikinci ondalık yerdir: sonraki bir village ayırabilirsiniz.
 * Üçüncü ondalık en fazla 110 m: büyük Tarım alan veya Kurumsal kampüs tanımlayabilirsiniz yerdir.

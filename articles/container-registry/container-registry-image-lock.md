@@ -3,12 +3,12 @@ title: Görüntüleri kilitleme
 description: Bir Azure Container Registry 'de silinememesi veya üzerine yazılmaması için bir kapsayıcı görüntüsü veya deposunun özniteliklerini ayarlayın.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 8eb2a549e9d9f3a7ed4a482ac6a9ea4ba61ea4f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93a99f65d5bb21d696ce24365e7c819d2c34a8b0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442229"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972928"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure Container Registry 'de kapsayıcı görüntüsünü kilitleme
 
@@ -17,7 +17,7 @@ Bir Azure Container Registry 'de, bir görüntü sürümünü veya depoyu, silin
 Bu makale, Azure CLı 'yı Azure Cloud Shell veya yerel olarak çalıştırmanızı gerektirir (sürüm 2.0.55 veya üzeri önerilir). Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
 
 > [!IMPORTANT]
-> Bu makale, bir kayıt defterinin tamamını kilitlemek için (örneğin, Azure portal **ayarları >** veya Azure clı içindeki `az lock` komutları kullanılarak) uygulanmaz. Kayıt defteri kaynağını kilitlemek, depolarda veri oluşturmanızı, güncelleştirmenizi veya silmenizi önler. Kayıt defterinin kilitlenmesi, yalnızca çoğaltmaları ekleme veya silme veya kayıt defterinin kendisini silme gibi yönetim işlemlerini etkiler. [Beklenmedik değişiklikleri engellemek için kaynakları kilitle ' ye](../azure-resource-manager/resource-group-lock-resources.md)daha fazla bilgi.
+> Bu makale, bir kayıt defterinin tamamını kilitlemek için (örneğin, Azure portal **ayarları >** veya Azure clı içindeki `az lock` komutları kullanılarak) uygulanmaz. Kayıt defteri kaynağını kilitlemek, depolarda veri oluşturmanızı, güncelleştirmenizi veya silmenizi önler. Kayıt defterinin kilitlenmesi, yalnızca çoğaltmaları ekleme veya silme veya kayıt defterinin kendisini silme gibi yönetim işlemlerini etkiler. [Beklenmedik değişiklikleri engellemek için kaynakları kilitle ' ye](../azure-resource-manager/management/lock-resources.md)daha fazla bilgi.
 
 ## <a name="scenarios"></a>Senaryolar
 

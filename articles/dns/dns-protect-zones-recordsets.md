@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: allensu
-ms.openlocfilehash: b84ba055dd8214ae18e76004671e3922e6f3b878
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c87f9d51c69c4f4d330862e83e5cc8e8e849a988
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211455"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969016"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS bölgelerini ve kayıtlarını koruma
 
@@ -20,7 +20,7 @@ ms.locfileid: "74211455"
 
 DNS bölgeleri ve kayıtları kritik kaynaklardır. Bir DNS bölgesinin silinmesi, hatta yalnızca tek bir DNS kaydının toplam hizmet kesintisi oluşmasına neden olabilir.  Bu nedenle, kritik DNS bölgelerinin ve kayıtlarının yetkisiz veya yanlışlıkla yapılan değişikliklere karşı korunması önemlidir.
 
-Bu makalede Azure DNS, DNS bölgelerinizi ve kayıtlarınızı bu değişikliklere karşı korumanıza nasıl olanak sağladığını açıklamaktadır.  Azure Resource Manager tarafından sunulan iki güçlü güvenlik özelliği uyguladık: [rol tabanlı erişim denetimi](../role-based-access-control/overview.md) ve [kaynak kilitleri](../azure-resource-manager/resource-group-lock-resources.md).
+Bu makalede Azure DNS, DNS bölgelerinizi ve kayıtlarınızı bu değişikliklere karşı korumanıza nasıl olanak sağladığını açıklamaktadır.  Azure Resource Manager tarafından sunulan iki güçlü güvenlik özelliği uyguladık: [rol tabanlı erişim denetimi](../role-based-access-control/overview.md) ve [kaynak kilitleri](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
@@ -158,7 +158,7 @@ Daha sonra bu makalede açıklandığı gibi, rol yerleşik rollerle aynı şeki
 
 ## <a name="resource-locks"></a>Kaynak kilitleri
 
-RBAC 'in yanı sıra, kaynakları kilitleme özelliği olan Azure Resource Manager başka türde güvenlik denetimini destekler. RBAC kuralları belirli kullanıcı ve grupların eylemlerini denetlemenize izin verince, kaynak kilitleri kaynağa uygulanır ve tüm kullanıcılar ve roller arasında etkilidir. Daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](../azure-resource-manager/resource-group-lock-resources.md).
+RBAC 'in yanı sıra, kaynakları kilitleme özelliği olan Azure Resource Manager başka türde güvenlik denetimini destekler. RBAC kuralları belirli kullanıcı ve grupların eylemlerini denetlemenize izin verince, kaynak kilitleri kaynağa uygulanır ve tüm kullanıcılar ve roller arasında etkilidir. Daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](../azure-resource-manager/management/lock-resources.md).
 
 İki tür kaynak kilidi vardır: **Cannotdelete** ve **ReadOnly**. Bunlar bir DNS bölgesine ya da tek bir kayıt kümesine uygulanabilir.  Aşağıdaki bölümlerde bazı yaygın senaryolar ve kaynak kilitleri kullanılarak bunların nasıl destekleyeceği açıklanır.
 
@@ -217,4 +217,4 @@ Aynı anda, DNS bölgesi korumasına yönelik derinlemesine savunma yaklaşımı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * RBAC ile çalışma hakkında daha fazla bilgi için, [Azure Portal erişim yönetimiyle çalışmaya başlama](../role-based-access-control/overview.md)bölümüne bakın.
-* Kaynak kilitleri ile çalışma hakkında daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](../azure-resource-manager/resource-group-lock-resources.md).
+* Kaynak kilitleri ile çalışma hakkında daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](../azure-resource-manager/management/lock-resources.md).

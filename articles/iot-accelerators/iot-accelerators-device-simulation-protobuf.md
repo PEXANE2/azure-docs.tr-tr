@@ -1,6 +1,6 @@
 ---
-title: Protokol arabellekleri cihaz benzetimi - Azure ile kullanma | Microsoft Docs
-description: Bu nasıl yapılır kılavuzunda protokol arabellekleri cihaz benzetimi çözüm hızlandırıcıdan gönderilen telemetri seri hale getirmek için nasıl kullanılacağını öğrenin.
+title: Cihaz benzetimi ile protokol arabellekleri kullanma-Azure | Microsoft Docs
+description: Bu nasıl yapılır kılavuzunda, cihaz benzetimi çözüm hızlandırıcısında gönderilen Telemetriyi seri hale getirmek için protokol arabelleklerini nasıl kullanacağınızı öğreneceksiniz.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,83 +9,83 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 74bb2d181533f802e1428eaa8a855f60fb855193
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79517ffd68c501203ea9c02f3a3276973d4a8a56
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447990"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982137"
 ---
-# <a name="serialize-telemetry-using-protocol-buffers"></a>Telemetri protokol arabellekleri kullanarak seri hale getirme
+# <a name="serialize-telemetry-using-protocol-buffers"></a>Protokol arabellekleri kullanarak telemetri serileştirme
 
-Protokol arabellekleri (Protobuf), yapılandırılmış veriler için bir ikili serileştirme biçimi olur. Protobuf kolaylık ve daha küçük ve daha hızlı bir şekilde XML olma atış performans vurgulamak için tasarlanmıştır.
+Protokol arabellekleri (Protobellek), yapılandırılmış veriler için ikili bir serileştirme biçimidir. Prototip, XML 'den daha küçük ve daha hızlı bir amaç ile basitliği ve performansı vurgulamak için tasarlanmıştır.
 
-Cihaz benzetimi destekler **proto3** protokolün dil arabelleğe alır.
+Cihaz benzetimi, protokol arabellekleri dilinin **proto3** sürümünü destekler.
 
-Protobuf verilerini seri hale getirmek için derlenmiş kod gerektirdiğinden, cihaz benzetimi, özel bir sürümünü oluşturmanız gerekir.
+Protoarabellek verileri seri hale getirmek için derlenmiş kod gerektirdiğinden, cihaz benzetiminin özel bir sürümünü derlemeniz gerekir.
 
-Nasıl, bu kılavuzdaki adımları Yardım-How-to-göstermek için:
+Bu nasıl yapılır kılavuzundaki adımlarda şu adımları nasıl kullanabileceğiniz gösterilmektedir:
 
-1. Geliştirme ortamınızı hazırlama
-1. Bir cihaz modelinde Protobuf biçimini kullanarak belirtin
-1. Protobuf biçiminiz tanımlayın
-1. Protobuf sınıflar oluşturun
+1. Geliştirme ortamı hazırlama
+1. Bir cihaz modelinde prototip biçiminin kullanımını belirtme
+1. Prototip biçiminizi tanımlayın
+1. Prototip sınıfları oluşturma
 1. Yerel olarak test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu nasıl yapılır Kılavuzu'ndaki adımları takip etmek için ihtiyacınız vardır:
+Bu nasıl yapılır kılavuzundaki adımları izlemek için şunlar gerekir:
 
-* Visual Studio Code. İndirebileceğiniz [Mac, Linux ve Windows için Visual Studio Code](https://code.visualstudio.com/download).
-* .NET core. İndirebileceğiniz [Mac, Linux ve Windows için .NET Core](https://www.microsoft.com/net/download).
-* Postman. İndirebileceğiniz [Mac, windows veya Linux için Postman](https://www.getpostman.com/apps).
-* Bir [IOT hub'ı Azure aboneliğinize dağıtılır](../iot-hub/iot-hub-create-through-portal.md). Bu kılavuzdaki adımları tamamlamak için IOT hub'ınızın bağlantı dizesi gerekir. Bağlantı dizesini Azure portalından alabilirsiniz.
-* A [Azure aboneliğinize dağıtılır Cosmos DB veritabanı](../cosmos-db/create-sql-api-dotnet.md#create-account) SQL API'si kullanan ve için yapılandırılmış [güçlü tutarlılık](../cosmos-db/manage-account.md). Bu kılavuzdaki adımları tamamlamak için Cosmos DB veritabanı bağlantı dizesi gerekir. Bağlantı dizesini Azure portalından alabilirsiniz.
-* Bir [Azure depolama hesabını Azure aboneliğinize dağıtılır](../storage/common/storage-quickstart-create-account.md). Bu kılavuzdaki adımları tamamlamak için depolama hesabının bağlantı dizesi gerekir. Bağlantı dizesini Azure portalından alabilirsiniz.
+* Visual Studio Code. [Mac, Linux ve Windows için Visual Studio Code](https://code.visualstudio.com/download)indirebilirsiniz.
+* .NET Core. [Mac, Linux ve Windows için .NET Core 'u](https://www.microsoft.com/net/download)indirebilirsiniz.
+* Postman. [Mac, Windows veya Linux Için Postman](https://www.getpostman.com/apps)indirebilirsiniz.
+* [Azure aboneliğinize dağıtılan bir IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md). Bu kılavuzdaki adımları tamamlayabilmeniz için IoT Hub 'ın bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.
+* SQL API 'sini kullanan ve [güçlü tutarlılık](../cosmos-db/manage-account.md)Için yapılandırılmış [Azure aboneliğinize dağıtılan bir Cosmos DB veritabanı](../cosmos-db/create-sql-api-dotnet.md#create-account) . Bu kılavuzdaki adımları tamamlayabilmeniz için Cosmos DB veritabanının bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.
+* [Azure aboneliğinize dağıtılan bir Azure depolama hesabı](../storage/common/storage-account-create.md). Bu kılavuzdaki adımları tamamlayabilmeniz için depolama hesabının bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.
 
 ## <a name="prepare-your-development-environment"></a>Geliştirme ortamınızı hazırlama
 
-Geliştirme ortamınızı hazırlamak üzere aşağıdaki görevleri tamamlayın:
+Geliştirme ortamınızı hazırlamak için aşağıdaki görevleri doldurun:
 
-* Cihaz benzetimi mikro Hizmet kaynağı indirin.
-* Depolama bağdaştırıcısı mikro Hizmet kaynağı indirin.
-* Depolama bağdaştırıcısı mikro hizmet yerel olarak çalıştırın.
+* Cihaz benzetimi mikro hizmeti için kaynağı indirin.
+* Depolama bağdaştırıcısı mikro hizmeti için kaynağı indirin.
+* Depolama bağdaştırıcısı mikro hizmetini yerel olarak çalıştırın.
 
-Bu makaledeki yönergeler, Windows kullanmakta olduğunuz varsayılır. Başka bir işletim sistemi kullanıyorsanız, bazı dosya yolları ve komutları ortamınıza uyacak şekilde ayarlamanız gerekebilir.
+Bu makaledeki yönergeler Windows kullandığınızı varsayar. Başka bir işletim sistemi kullanıyorsanız, ortamınıza uyacak şekilde bazı dosya yollarını ve komutları ayarlamanız gerekebilir.
 
-### <a name="download-the-microservices"></a>Mikro hizmetler indirin
+### <a name="download-the-microservices"></a>Mikro hizmetleri indirin
 
-İndirip sıkıştırmasını [Uzaktan izleme mikro Hizmetler](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) yerel makinenizde uygun bir konuma github'dan. Bu depo, bu yöntem için gereken depolama bağdaştırıcısı mikro hizmet içerir.
+GitHub 'dan [Uzaktan Izleme mikro hizmetlerini](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) indirin ve yerel makinenizde uygun bir konuma ayıklayın. Bu depo, bu nasıl yapılır için ihtiyacınız olan depolama bağdaştırıcısı mikro hizmetini içerir.
 
-İndirip sıkıştırmasını [cihaz benzetimi mikro hizmet](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) yerel makinenizde uygun bir konuma github'dan.
+[Cihaz benzetimi mikro hizmetini](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) GitHub 'dan yerel makinenizde uygun bir konuma indirip sıkıştırmasını açın.
 
-### <a name="run-the-storage-adapter-microservice"></a>Depolama bağdaştırıcısı mikro hizmet çalıştırma
+### <a name="run-the-storage-adapter-microservice"></a>Depolama bağdaştırıcısı mikro hizmetini çalıştırma
 
-Visual Studio Code'da açmak **remote-monitoring-services-dotnet-master\storage-adapter** klasör. Tıklatın **geri** çözümlenmemiş bağımlılıklar düzeltmek için düğmeler.
+Visual Studio Code, **Remote-Monitoring-Services-DotNet-master\storage-Adapter** klasörünü açın. Çözümlenmemiş bağımlılıkları onarmak için **geri yükleme** düğmelerine tıklayın.
 
-Açık **.vscode/launch.json** dosya ve Cosmos DB bağlantı dizenizi atama **bilgisayarları\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** ortamı değişken.
+**. Vscode/Launch. JSON** dosyasını açın ve Cosmos DB bağlantı DIZENIZI **STORAGEADAPTER\_DOCUMENTDB\_connString ortam değişkeni\_bilgisayarlara** atayın.
 
 > [!NOTE]
-> Mikro hizmet makinenizde yerel olarak çalıştırdığınızda, yine de düzgün çalışması için Azure Cosmos DB örneğine gerektirir.
+> Mikro hizmeti makinenizde yerel olarak çalıştırdığınızda yine de Azure 'da bir Cosmos DB örneğinin düzgün şekilde çalışmasını gerektirir.
 
-Depolama bağdaştırıcısı mikro hizmet yerel olarak çalıştırmak için tıklayın **hata ayıklama \> hata ayıklamayı Başlat**.
+Storage bağdaştırıcısı mikro hizmetini yerel olarak çalıştırmak için hata ayıklama **\> hata ayıklamayı Başlat**' a tıklayın.
 
-**Terminal** penceresi Visual Studio code'da web hizmetinin sistem durumu denetimi için bir URL dahil olmak üzere çalışan mikro hizmet çıktısını gösterir: <http://127.0.0.1:9022/v1/status>. Bu adrese gidin, durumu olmalıdır "Tamam: Canlı ve iyi".
+Visual Studio Code **Terminal** penceresinde, çalışan mikro hizmetin Web hizmeti sistem durumu denetimi URL 'si de dahil olmak üzere bir çıktı gösterilmektedir: <http://127.0.0.1:9022/v1/status>. Bu adrese gittiğinizde, durumun "Tamam: canlı ve iyi" olması gerekir.
 
-Aşağıdaki adımları tamamlarken Visual Studio Code'nın bu örneğinde çalışan depolama bağdaştırıcısı mikro hizmet bırakın.
+Aşağıdaki adımları tamamladıktan sonra, depolama bağdaştırıcısı mikro hizmetini bu Visual Studio Code örneğinde çalışır durumda bırakın.
 
-## <a name="define-your-device-model"></a>Cihazınızın modeline tanımlayın
+## <a name="define-your-device-model"></a>Cihaz modelinizi tanımlama
 
-Açık **cihaz-simülasyon-dotnet-master** Visual Studio Code yeni bir örneğini github'dan indirdiğiniz klasörü. Tıklatın **geri** herhangi düzeltmek için düğmeler çözümlenmemiş bağımlılıklar.
+Yeni bir Visual Studio Code örneğinde GitHub 'dan indirdiğiniz **cihaz benzetimi-DotNet-ana** klasörünü açın. Çözümlenmemiş bağımlılıkları onarmak için **geri yükleme** düğmelerine tıklayın.
 
-Bu Yardım-How-to-Kılavuzu'nda, bir varlık İzleyicisi için yeni bir cihaz modeli oluşturun:
+Bu nasıl yapılır kılavuzunda, bir varlık İzleyicisi için yeni bir cihaz modeli oluşturursunuz:
 
-1. Adlı yeni bir cihaz modeli dosya oluşturma **assettracker 01.json** içinde **Services\data\devicemodels** klasör.
+1. **Services\data\devicemodeller** klasöründe **assettracker-01. JSON** adlı yeni bir cihaz modeli dosyası oluşturun.
 
-1. Cihaz modeli cihazın işlevselliğini tanımlamak **assettracker 01.json** dosya. Protobuf cihaz modeli telemetri bölümünü gerekir:
+1. Cihaz işlevselliğini, **assettracker-01. JSON** dosyasındaki cihaz modelini tanımlayın. Prototipli cihaz modelinin telemetri bölümü şu şekilde olmalıdır:
 
-   * Cihazınız için oluşturduğunuz Protobuf sınıfın adını içerir. Aşağıdaki bölümde bu sınıfı oluşturmayı gösterir.
-   * Protobuf ileti biçimi belirtin.
+   * Cihazınız için oluşturduğunuz Protoarabellek sınıfının adını ekleyin. Aşağıdaki bölümde bu sınıfın nasıl oluşturulacağı gösterilmektedir.
+   * İleti biçimi olarak Protoarabellek belirtin.
 
      ```json
      {
@@ -137,21 +137,21 @@ Bu Yardım-How-to-Kılavuzu'nda, bir varlık İzleyicisi için yeni bir cihaz mo
      }
      ```
 
-### <a name="create-device-behaviors-script"></a>Cihaz davranışlarını betiği oluşturma
+### <a name="create-device-behaviors-script"></a>Cihaz davranışları betiği oluştur
 
-Cihazınızı nasıl davranacağını tanımlayan davranışı betik yazın. Daha fazla bilgi için [Gelişmiş bir sanal cihaz oluşturma](iot-accelerators-device-simulation-advanced-device.md).
+Cihazınızın nasıl davranacağını tanımlayan davranış betiğini yazın. Daha fazla bilgi için bkz. [Gelişmiş sanal cihaz oluşturma](iot-accelerators-device-simulation-advanced-device.md).
 
-## <a name="define-your-protobuf-format"></a>Protobuf biçiminiz tanımlayın
+## <a name="define-your-protobuf-format"></a>Prototip biçiminizi tanımlayın
 
-Cihaz modeli ve ileti biçimi belirledikten oluşturabileceğiniz bir **proto** dosya. İçinde **proto** eklediğiniz dosya:
+Bir cihaz modeliniz varsa ve ileti biçiminizi belirledikten sonra bir **proto** dosyası oluşturabilirsiniz. **Proto** dosyasında şunu ekleyin:
 
-* A `csharp_namespace` eşleşen **ClassName** özelliği, cihaz modeli.
-* Seri hale getirmek her veri yapısı için bir ileti.
-* Bir ad ve tür iletinin her bir alan için.
+* Cihaz modelinizdeki **ClassName** özelliği ile eşleşen bir `csharp_namespace`.
+* Seri hale getirilecek her veri yapısına yönelik bir ileti.
+* İletideki her alan için bir ad ve tür.
 
-1. Adlı yeni bir dosya oluşturun **assettracker.proto** içinde **Services\Models\Protobuf\proto** klasör.
+1. **Services\models\protobuf\proto** klasöründe **assettracker. proto** adlı yeni bir dosya oluşturun.
 
-1. Sözdizimi, ad alanı ve ileti şemasında tanımlamak **proto** aşağıdaki gibi:
+1. **Proto** dosyasında sözdizimi, ad alanı ve ileti şemasını aşağıdaki gibi tanımlayın:
 
     ```proto
     syntax = "proto3";
@@ -166,47 +166,47 @@ Cihaz modeli ve ileti biçimi belirledikten oluşturabileceğiniz bir **proto** 
     }
     ```
 
-`=1`, `=2` İşaretçileri her öğe üzerinde ikili kodlama alanı kullanan benzersiz bir etiket belirtin. 1-15 numaraları büyük sayılar kodlamak için daha az bir bayt gerektirir.
+Her öğe üzerindeki `=1``=2` işaretçileri, alanın ikili kodlamada kullandığı benzersiz bir etiket belirtir. 1-15 numaraları, daha fazla sayıdan kodlamak için bir daha az bayt gerektirir.
 
-## <a name="generate-the-protobuf-class"></a>Protobuf sınıfı oluşturun
+## <a name="generate-the-protobuf-class"></a>Prototiparabelleği oluşturma
 
-olduğunda bir **proto** dosyası, sonraki adım ise ileti okumak ve yazmak için gerekli sınıfların. Bu adımı tamamlamak için ihtiyacınız **Protoc** Protobuf derleyici.
+bir **proto** dosyanız olduğunda, sonraki adım iletileri okumak ve yazmak için gereken sınıfları oluşturmak için kullanılır. Bu adımı gerçekleştirmek için **Protoc** prototipsiz derleyicisine ihtiyacınız vardır.
 
-1. [Protobuf derleyici Github'dan indirin.](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
+1. [GitHub 'dan Protoarabellek derleyicisini indirin](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. Derleyicinin, kaynak dizin, hedef dizin ve adını belirterek çalıştırın, **proto** dosya. Örneğin:
+1. Kaynak dizinini, hedef dizini ve **proto** dosyanızın adını belirterek derleyiciyi çalıştırın. Örneğin:
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
     ```
 
-    Bu komut oluşturur. bir **Assettracker.cs** dosyası **Services\Models\Protobuf** klasör.
+    Bu komut, **Services\models\protoarabellek** klasöründe bir **Assettracker.cs** dosyası oluşturur.
 
-## <a name="test-protobuf-locally"></a>Yerel olarak test Protobuf
+## <a name="test-protobuf-locally"></a>Yerel olarak test proto
 
-Bu bölümde, yerel olarak önceki bölümlerinde oluşturduğunuz varlık İzleyicisi cihaz test edin.
+Bu bölümde, önceki bölümlerde oluşturduğunuz varlık izleyici cihazını yerel olarak test edersiniz.
 
-### <a name="run-the-device-simulation-microservice"></a>Cihaz benzetimi mikro hizmet çalıştırma
+### <a name="run-the-device-simulation-microservice"></a>Cihaz benzetimi mikro hizmetini çalıştırma
 
-Açık **.vscode/launch.json** dosya ve ata kullanarak:
+**. Vscode/Launch. JSON** dosyasını açın ve aşağıdakileri atayın:
 
-* IOT Hub bağlantı dizesine **bilgisayarları\_IOTHUB\_CONNSTRING** ortam değişkeni.
-* Depolama hesabı bağlantı dizesi için **bilgisayarları\_AZURE\_depolama\_hesabı** ortam değişkeni.
-* Cosmos DB bağlantı dizesi **bilgisayarları\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** ortam değişkeni.
+* IoT Hub **\_\_CONNSTRING** ortam değişkeni olan bilgisayarlara bağlantı dizesi.
+* **AZURE\_storage\_hesap ortamı değişkeni\_bilgisayarlara** depolama hesabı bağlantı dizesi.
+* **\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** ortam değişkeni Cosmos DB, bağlantı dizesini bilgisayarlara.
 
-Açık **WebService/Properties/launchSettings.json** dosya ve ata kullanarak:
+**WebService/Properties/launchSettings. JSON** dosyasını açın ve aşağıdakileri atayın:
 
-* IOT Hub bağlantı dizesine **bilgisayarları\_IOTHUB\_CONNSTRING** ortam değişkeni.
-* Depolama hesabı bağlantı dizesi için **bilgisayarları\_AZURE\_depolama\_hesabı** ortam değişkeni.
-* Cosmos DB bağlantı dizesi **bilgisayarları\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** ortam değişkeni.
+* IoT Hub **\_\_CONNSTRING** ortam değişkeni olan bilgisayarlara bağlantı dizesi.
+* **AZURE\_storage\_hesap ortamı değişkeni\_bilgisayarlara** depolama hesabı bağlantı dizesi.
+* **\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** ortam değişkeni Cosmos DB, bağlantı dizesini bilgisayarlara.
 
-Açık **WebService\appsettings.ini** dosya ve ayarları aşağıdaki gibi değiştirin:
+**Webservice\appsettings.ini** dosyasını açın ve ayarları aşağıdaki gibi değiştirin:
 
-#### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>Yeni cihaz model dosyalarınızı eklemek için çözüm yapılandırma
+#### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>Çözümü yeni cihaz modeli dosyalarınızı içerecek şekilde yapılandırın
 
-Varsayılan olarak, yeni cihaz modeli JSON ve JS dosyaları içinde oluşturulan çözüm kopyalanmaz. Açıkça bunları eklemeniz gerekir.
+Varsayılan olarak, yeni cihaz modeliniz JSON ve JS dosyalarınız, yerleşik çözüme kopyalanmaz. Bunları açıkça dahil etmeniz gerekir.
 
-Bir girdiyi **services\services.csproj** dahil istediğiniz her bir dosya için dosya. Örneğin:
+Dahil etmek istediğiniz her dosya için **services\services.csproj** dosyasına bir giriş ekleyin. Örneğin:
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">
@@ -217,17 +217,17 @@ Bir girdiyi **services\services.csproj** dahil istediğiniz her bir dosya için 
 </None>
 ```
 
-Mikro hizmet yerel olarak çalıştırmak için tıklayın **hata ayıklama \> hata ayıklamayı Başlat**.
+Mikro hizmeti yerel olarak çalıştırmak için hata ayıklama **\> hata ayıklamayı Başlat**' a tıklayın.
 
-**Terminal** penceresi Visual Studio code'da çalışan mikro hizmet çıktısını gösterir.
+Visual Studio Code **Terminal** penceresinde, çalışan mikro hizmetten alınan çıkış gösterilmektedir.
 
-Sonraki adımları tamamlarken Visual Studio Code'nın bu örneğinde çalışan cihaz benzetimi mikro hizmet bırakın.
+Sonraki adımları tamamladıktan sonra cihaz benzetimi mikro hizmetini bu Visual Studio Code örneğinde çalışır durumda bırakın.
 
-### <a name="set-up-a-monitor-for-device-events"></a>Bir izleyici cihaz olayları için ayarlama
+### <a name="set-up-a-monitor-for-device-events"></a>Cihaz olayları için izleyici ayarlama
 
-Bu bölümde, IOT hub'ınıza bağlı cihazlardan gönderilen telemetri verilerini görüntülemek için bir Olay İzleyicisi ayarlamak için Azure CLI'yı kullanın.
+Bu bölümde, IoT Hub 'ınıza bağlı cihazlardan gönderilen telemetrinin görüntüleneceği bir olay izleyicisi ayarlamak için Azure CLı 'yi kullanırsınız.
 
-Aşağıdaki betik, IOT hub'ınızın adı olduğunu varsayar **cihaz benzetimi test**.
+Aşağıdaki betik, IoT Hub 'ınızın adının **cihaz benzetimi-test**olduğunu varsayar.
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
@@ -237,44 +237,44 @@ az extension add --name azure-cli-iot-ext
 az iot hub monitor-events --hub-name device-simulation-test
 ```
 
-Sanal cihazlar test ederken çalıştıran Olay İzleyici bırakın.
+Sanal cihazları test ederken olay izleyicisini çalışır durumda bırakın.
 
-### <a name="create-a-simulation-with-the-asset-tracker-device-type"></a>Varlık İzleyicisi cihaz türü ile bir simülasyon oluşturma
+### <a name="create-a-simulation-with-the-asset-tracker-device-type"></a>Varlık izleyici cihaz türüyle simülasyon oluşturma
 
-Bu bölümde, varlık İzleyicisi cihaz türünü kullanarak bir simülasyon çalıştırma için cihaz benzetimi mikro hizmet istemek için Postman Aracı'nı kullanın. Postman, REST istekleri göndermek için bir web hizmeti sağlayan bir araçtır.
+Bu bölümde, bir benzetim çalıştırmak için, varlık izleyici cihaz türünü kullanarak cihaz benzetimi mikro hizmetini istemek üzere Postman aracını kullanacaksınız. Postman, bir Web hizmetine REST istekleri göndermenize olanak sağlayan bir araçtır.
 
-Postman'ı ayarlamak için:
+Postman 'yi ayarlamak için:
 
-1. Yerel makinenizde Postman'i açın.
+1. Yerel makinenizde Postman 'yi açın.
 
-1. Tıklayın **dosya \> alma**. Ardından **dosya seçin**.
+1. **Dosya \> Içeri aktar**' a tıklayın. Ardından **dosyaları seç**' e tıklayın.
 
-1. Seçin **Azure IOT cihaz benzetimi çözüm accelerator.postman\_koleksiyon** ve **Azure IOT cihaz benzetimi çözüm accelerator.postman\_ortam** ve tıklayın **açık**.
+1. **Azure IoT cihaz simülasyonu Çözüm Hızlandırıcısı. postman\_koleksiyonu** ve **Azure IoT cihaz benzetimi Çözüm Hızlandırıcısı. Postman\_ortamı** ' nı seçin ve **Aç**' a tıklayın.
 
-1. Genişletin **Azure IOT cihaz benzetimi Çözüm Hızlandırıcısı** gönderebilirsiniz isteklerini görmek için.
+1. Gönderebileceğiniz istekleri görüntülemek için **Azure IoT cihaz benzetimi çözüm Hızlandırıcısını** genişletin.
 
-1. Tıklayın **yok ortam** seçip **Azure IOT cihaz benzetimi Çözüm Hızlandırıcısı**.
+1. **Ortam yok** ' a tıklayın ve **Azure IoT cihaz benzetimi Çözüm Hızlandırıcısı**' nı seçin.
 
-Artık bir koleksiyon ve cihaz benzetimi mikro hizmet ile etkileşim kurmak için kullanabileceğiniz Postman çalışma alanınızda yüklenen ortam vardır.
+Artık Postman çalışma alanınızda yüklü olan ve cihaz benzetimi mikro hizmeti ile etkileşim kurmak için kullanabileceğiniz bir koleksiyon ve ortamınız vardır.
 
-Yapılandırma ve benzetim çalıştırmak için:
+Benzetimi yapılandırmak ve çalıştırmak için:
 
-1. Postman koleksiyonuna seçin **varlık İzleyicisi benzetimi oluşturmak** tıklatıp **Gönder**. Bu istek, dört sanal varlık İzleyicisi cihaz türü örneklerini oluşturur.
+1. Postman koleksiyonunda, **varlık izleyici simülasyonu oluştur** ' u seçin ve **Gönder**' e tıklayın. Bu istek, benzetimli varlık izleyici cihaz türünün dört örneğini oluşturur.
 
-1. Olay İzleme çıktısı Azure CLI penceresinde, sanal cihazlardan telemetri gösterir.
+1. Azure CLı penceresindeki olay izleyici çıktısı, sanal cihazlardan telemetri gösterir.
 
-Benzetimi durdurmak için seçin **benzetimi Durdur** isteği Postman tıklayıp **Gönder**.
+Benzetimi durdurmak için Postman 'daki **Benzetim Isteğini durdur** ' u seçin ve **Gönder**' e tıklayın.
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İki yerel olarak çalışan mikro hizmetler, Visual Studio kod örneklerindeki durdurabilirsiniz (**hata ayıklama \> hata ayıklamayı Durdur**).
+Visual Studio Code örneklerinde yerel olarak çalışan iki mikro hizmeti durdurabilirsiniz (**hata ayıklama \> hata ayıklamayı durdurabilirsiniz**).
 
-Artık IOT Hub ve Cosmos DB örnekleri gerektiriyorsa, gereksiz ücretlerden kaçınmak için Azure aboneliğinizden silebilirsiniz.
+Artık IoT Hub ve Cosmos DB örneklerine ihtiyacınız yoksa, gereksiz ücretlerden kaçınmak için Azure aboneliğinizden silin.
 
-## <a name="iot-hub-support"></a>IOT hub'ı desteği
+## <a name="iot-hub-support"></a>IoT Hub desteği
 
-IOT hub'ı özelliklerinin Protobuf ya da diğer ikili biçimler yerel olarak desteklemez. Örneğin, IOT Hub ileti yükü işleyemiyor olacağından ileti yükünü tabanlı yönlendirme yapamazsınız. Ancak, ileti üst bilgilere göre yönlendirebilirsiniz.
+Birçok IoT Hub özellik, prototip veya diğer ikili biçimleri yerel olarak desteklemez. Örneğin, IoT Hub ileti yükünü işleyemediği için ileti yüküne göre yönlendirilemez. Ancak, ileti üst bilgilerine göre yönlendirme yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Protobuf telemetri göndermek için kullanılacak cihaz benzetimi özelleştirmek öğrendiniz artık artık öğrenmek için sonraki adım olan [bulutta özel bir görüntü dağıtmak](iot-accelerators-device-simulation-deploy-image.md).
+Telemetri göndermek için cihaz benzetiminin prototip kullanmak üzere nasıl özelleştirileceğini öğrendiniz bir sonraki adım, [buluta özel bir görüntü dağıtmak](iot-accelerators-device-simulation-deploy-image.md)için şimdi öğrenmektir.

@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 1df30b25d2029ba31525eaea232d258bbb134366
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/13/2020
+ms.openlocfilehash: c39f41af8ed2f1e25064324c0e1da4a6603face8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863814"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045508"
 ---
 # <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturun
 
@@ -167,7 +167,7 @@ Bu alanları tamamladıktan sonra **Kaydet** ' i seçin.
 
 ### <a name="category"></a>Kategori
 
-Teklifinizi uygun Market arama alanlarında gruplandırmak için en az bir (1) ve en fazla üç (3) kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini lütfen unutmayın. 
+Teklifinizi uygun Market arama alanlarında gruplandırmak için en az bir (1) ve en fazla üç (3) kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini çağırın.
 
 ### <a name="industry"></a>Sektör
 
@@ -175,7 +175,7 @@ Teklifinizi uygun Market arama alanlarında gruplandırmak için en az bir (1) v
 
 ### <a name="app-version"></a>Uygulama sürümü
 
-Bu, teklifinizin sürüm numarasını belirlemek için AppSource marketi 'nde kullanılan isteğe bağlı bir alandır.
+Bu alan isteğe bağlıdır ve teklifinizin sürüm numarasını belirlemek için AppSource Market 'te kullanılır.
 
 ### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market için standart sözleşme
 
@@ -204,12 +204,12 @@ Ticari Market yayımcıları için iki çeşit değişiklik bulunur:
 >[!NOTE]
 > Bu iki tür değişiklik yığını birbirlerinin üzerine. Özel değişiklik ile hedeflenen müşteriler, satın alma sırasında standart sözleşmeye evrensel değişiklik de alır.
 
-**Evrensel değişiklik Microsoft 'un ticari Market 'e yönelik standart sözleşme**: bu kutuya evrensel düzeltme koşullarını girin. Teklif başına tek bir evrensel düzeltme sağlayabilirsiniz. Bu kutuya sınırsız sayıda karakter girebilirsiniz. Bunlar, bulma ve satın alma akışı sırasında AppSource, Azure Marketi 'nde müşterilere ve/veya Azure portal görüntülenir.
+**Evrensel değişiklik Microsoft 'un ticari Market 'e yönelik standart sözleşme**: bu kutuya evrensel düzeltme koşullarını girin. Teklif başına tek bir evrensel düzeltme sağlayabilirsiniz. Bu kutuya sınırsız sayıda karakter girebilirsiniz. Bu terimler, bulma ve satın alma akışında AppSource, Azure Marketi 'nde müşterilere ve/veya Azure portal görüntülenir.
 
 **Microsoft 'un ticari marketi Için standart sözleşmeye yönelik özel değişiklik koşulları**: **özel değişiklik koşulları Ekle**seçeneğini belirleyerek başlayın. Teklif başına en fazla 10 özel düzeltme terimi sağlayabilirsiniz.
 
 - **Özel değişiklik koşulları**: özel değişiklik koşulları kutusunda özel değişiklik koşullarınızı girin. Bu kutuya sınırsız sayıda karakter girebilirsiniz. Yalnızca bu özel şartlar için belirttiğiniz kiracı kimliklerinin müşterileri, Azure portal teklifin satın alma akışındaki özel değişiklik hükümleriyle birlikte sunulacaktır.  
-- **Kiracı kimlikleri** (gerekli): her özel değişiklik, en fazla 20 Kiracı kimliğini hedefleyebilir. Özel bir düzeltme eklerseniz, en az bir kiracı KIMLIĞI sağlamanız gerekir. Kiracı kimliği, Azure 'da müşterinizin kimliğini tanımlar. Müşterinizden bu KIMLIĞI sorabilir ve portal.azure.com > Azure Active Directory > özelliklerine giderek bulabilecekleri. Dizin KIMLIĞI değeri kiracı KIMLIĞIDIR (ör. 50c464d3-4930-494c-963c-1e951d15360e). Ayrıca, [Microsoft Azure ve Office 365 KIRACı kimliği olan](https://www.whatismytenantid.com)etki alanı adı URL 'sini kullanarak KURULUŞUNUZUN Kiracı kimliğini de arayabilirsiniz.
+- **Kiracı kimlikleri** (gerekli): her özel değişiklik, en fazla 20 Kiracı kimliğini hedefleyebilir. Özel bir değişiklik eklerseniz, en az bir kiracı KIMLIĞI sağlamanız gerekir. Kiracı kimliği, Azure 'da müşterinizin kimliğini tanımlar. Müşterinizden bu KIMLIĞI sorabilir ve portal.azure.com > Azure Active Directory > özelliklerine giderek bulabilecekleri. Dizin KIMLIĞI değeri kiracı KIMLIĞIDIR (örneğin, 50c464d3-4930-494c-963c-1e951d15360e). Ayrıca, [Microsoft Azure ve Office 365 KIRACı kimliği olan](https://www.whatismytenantid.com)etki alanı adı URL 'sini kullanarak KURULUŞUNUZUN Kiracı kimliğini de arayabilirsiniz.
 - **Açıklama** (isteğe bağlı): Isteğe bağlı olarak, Kiracı kimliği için, değişiklik yaparken hedeflediğiniz müşteriyi belirlemenize yardımcı olan kolay bir açıklama sağlayın.
 
 #### <a name="terms-and-conditions"></a>Hüküm ve koşullar
@@ -231,7 +231,7 @@ Teklif listesi sekmesinde teklifinizin kullanılabildiği diller (ve pazarlar) g
 
 Teklif ve pazarlama varlıklarınızın açıklamaları dahil olmak üzere Market 'te görüntülenecek ayrıntıları sağlayın.
 
-- **Ad** (gerekli): burada tanımlanan ad, seçtiğiniz Market (ler) de teklif listelerinizin başlığı olarak görünür. Ad, önceki **yeni teklif** girişinizin temel alınarak önceden doldurulur.  Bu, trademarked olabilir.  Bu, emojıs (ticari marka ve telif hakkı sembolleri olmadıkları müddetçe) içermemelidir ve 50 karakterle sınırlı olmalıdır.
+- **Ad** (gerekli): burada tanımlanan ad, seçtiğiniz Market (ler) de teklif listelerinizin başlığı olarak görünür. Ad, önceki **yeni teklif** girişinizin temel alınarak önceden doldurulur. Ad trademarked olabilir. Bu, emojıs (ticari marka ve telif hakkı sembolleri olmadıkları müddetçe) içeremez ve 50 karakterle sınırlı olmalıdır.
 - **Özet** (gerekli): market listeleme arama sonuçlarında kullanılacak teklifinizin kısa bir açıklamasını sağlayın. Bu alana en fazla 100 karakter metin girilebilir.
 - **Açıklama** (gerekli): market dökümüne genel bakış bölümünde gösterilecek teklifin açıklamasını sağlayın. Bir değer teklifi, önemli avantajlar, herhangi bir kategori veya sektör ilişkilendirmesi, uygulama içi satın alma fırsatları, gerekli ön kapanışlar ve daha fazla bilgi edinmek için bir bağlantı dahil etmeyi göz önünde bulundurun.
 Bu alana en fazla 3.000 karakter metin girilebilir. Ek ipuçları için [harika uygulama açıklaması yazma](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)makalesine bakın.
@@ -240,7 +240,7 @@ Bu alana en fazla 3.000 karakter metin girilebilir. Ek ipuçları için [harika 
 
 #### <a name="description"></a>**Açıklama**
 
-Bu doldurulması zorunlu bir alandır. Açıklamaya eklenecek öğeler:
+Bu alan gereklidir. **Açıklamaya**eklenecek öğeler:
 
 * Tanımınızın ilk birkaç cümlede teklifinizin değer teklifini açık bir şekilde açıklamalıdır.  
 * İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini aklınızda bulundurun.  
@@ -253,76 +253,28 @@ Değer önerinizdeki çekirdek bileşenleri aşağıdaki bilgileri içermelidir:
 * Üründen faydalanan Kullanıcı türü.
 * Müşterinin ürün adresi olması veya bir sorun olması.
 
-Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı biçimlendirmek için HTML etiketlerini kullanabilirsiniz.
+Teklif **açıklamanızı** daha ilgi çekici hale getirmek için, tanımlarınızı biçimlendirmek için zengin metin düzenleyicisini kullanın.
 
-1. Paragraf oluşturmak istiyorsanız, metnin başına `<p>` ekleyin ve sonuna `</p>` ekleyin.
+![Zengin metin düzenleyicisini kullanma](./media/text-editor2.png)
 
-    **Örnek**:
+Zengin metin düzenleyicisini kullanmak için aşağıdaki yönergeleri kullanın:
 
-    ilk paragrafım `<p>`. `</p>` <br>
-    `<p>` ikinci paragrafım. `</p>` <br>
+- İçeriğinizin biçimini değiştirmek için, biçimlendirmek istediğiniz metni vurgulayın ve aşağıda gösterildiği gibi bir metin stili seçin:
 
-    Yukarıdaki şöyle görünür:
+     ![Metin biçimini değiştirmek için zengin metin düzenleyicisini kullanma](./media/text-editor3.png)
 
-    <p> İlk paragrafım. </p>
-    <p> Bu, ikinci paragrafım. </p>
+- Metne bir madde işaretli veya numaralı liste eklemek için aşağıdaki seçenekleri kullanın:
 
-1. **Madde işaretli bir öğe listesi**eklemek istiyorsanız, metninizi aşağıdaki `<li>` etiketlere yerleştirin. `<ul>` ve `</ul>` etiketleri içinde daha fazla madde işaretli öğe (`<li>` ve `</li>` etiketleri arasında öğeler) kopyalayabilir ve yapıştırabilirsiniz. `<ul></ul>`eklediğinizden emin olun.
+     ![Liste eklemek için zengin metin düzenleyicisini kullanma](./media/text-editor4.png)
 
-    **Örnek**:
+- Metne girintileme eklemek veya kaldırmak için aşağıdaki seçenekleri kullanın:
 
-    ```
-    <ul> 
-        <li>add text here</li>
-        <li> add text here </li>
-        <li> add text here </li>
-    </ul>
-    ```
-
-    Yukarıdaki şöyle görünür:
-    <ul> 
-        <li>Buraya metin ekleyin</li>
-        <li> Buraya metin ekleyin </li>
-        <li> Buraya metin ekleyin </li>
-    </ul> 
-
-1. **Kalın** içerik için, kalın yapmak istediğiniz metnin başına `<b>` ekleyin ve kalın olmasını istediğiniz metnin sonuna `</b>` ekleyin.
-
-    **Örnek**: `<b>` ücretsiz deneme `</b>`
-    
-    Yukarıdaki, ÜCRETSIZ deneme kelimesinin storefront içinde teklifin açıklamasına göre kalın olmasına neden olur.
-
-    **ÜCRETSIZ DENEME**
-
-1. İçeriğiniz arasına **satır sonları** eklemek için, yeni bir satırda başlamasını istediğiniz içerikten önce `<br>` ekleyin. Bir boşluk bırakmak ve içeriğin yeni bir satırda başlamasını sağlamak istiyorsanız, içerikten önce `<br><br>` ekleyin.
-
-    **Örnek**:
-
-    Bu bir metin çizgisi. `<br>` yeni bir satırda başlatılacak bir metin çizgisi. `<br><br>` aşağıda iki satırı başlatacak bir satırdır.
-
-    Yukarıdaki şöyle görünür:
-
-    Bu bir metin çizgisi. <br> Bu, yeni bir satırda başlatılacak bir metin çizgisi. <br><br> Bu, aşağıdaki iki satırı başlatacak bir satırdır.
-
-1. **Metnin boyutunu artırmak**istiyorsanız, önce metnin ne kadar büyük olmasını istediğinizi seçin. Aşağıdaki örnekleri kullanın. Metnin boyutunu seçtikten sonra, metnin başına ve sonuna karşılık gelen `<H*></H*>` etiketlerini ekleyin.
-
-    **Örnek**:
-
-    `<h1>`başlık 1`</h1>` <br>
-    `<h2>`başlık 2 ' dir`</h2>` <br>
-    `<h3>`başlık 3 '`</h3>` <br>
-    `<h4>`başlık 4 '`</h4>` <br>
-    `<h5>`başlık 5 ' tir`</h5>` <br>
-    `<h6>`başlık 6 ' dır`</h6>` 
-
-    Yukarıdaki şöyle görünür:
-
-    ![Örnek başlıklar](./media/heading.png)
+     ![Girintilemek için zengin metin düzenleyicisini kullanma](./media/text-editor5.png)
 
 #### <a name="links"></a>Bağlantılar
 
 - **Gizlilik ilkesi** (gerekli): kuruluşunuzun gizlilik ilkesine bağlayın. Uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan ve geçerli bir gizlilik ilkesi sağlamaya yönelik siz sorumlusunuz.
-- **CSP program pazarlama malzemeleri** (isteğe bağlı): teklifinizi [bulut çözümü sağlayıcısı (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) programına genişletmeyi seçerseniz, pazarlama malzemeleri için bir bağlantı sağlamanız gerekir. CSP, CSP iş ortaklarının teklifinizi paketlemelerine, pazarlamaya ve satmasına olanak tanıyarak, teklifinizi daha geniş bir yelpazede nitelikli müşterilere genişletir. Bu satıcıların, teklifinizi pazarlama malzemelerinden sorumlu olması gerekir. Daha fazla bilgi için bkz. [Go-to-market Services](https://partner.microsoft.com/reach-customers/gtm).
+- **CSP program pazarlama malzemeleri** (isteğe bağlı): teklifinizi [bulut çözümü sağlayıcısı (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) programına genişletmeyi seçerseniz, pazarlama malzemeleri için bir bağlantı sağlayın. CSP, CSP iş ortaklarının teklifinizi paketlemelerine, pazarlamaya ve satmasına olanak tanıyarak, teklifinizi daha geniş bir yelpazede nitelikli müşterilere genişletir. Bu satıcıların, teklifinizi pazarlama malzemelerinden sorumlu olması gerekir. Daha fazla bilgi için bkz. [Go-to-market Services](https://partner.microsoft.com/reach-customers/gtm).
 - **Faydalı bağlantılar** (isteğe bağlı): uygulamanız veya bir **başlık** ve **URL**sağlayarak listelenen ilgili hizmetlerinize ilişkin isteğe bağlı ek çevrimiçi belgeler. **+ URL Ekle**' ye tıklayarak ek yararlı bağlantılar ekleyin.
 
 #### <a name="contact-information"></a>İletişim bilgileri
@@ -353,7 +305,7 @@ Bir sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın.
 **Önizleme** sekmesi, teklifinizi daha geniş Market hedef kitlelerine yayımlamadan önce teklifinizi serbest bırakmak için sınırlı bir **Önizleme hedef kitlesi** tanımlamanızı sağlar.
 
 > [!IMPORTANT]
-> Teklifinizi önizlemede denetledikten sonra Market ortak hedef kitlesi için canlı **çalış** ' ı seçmeniz gerekir.
+> Teklifinizi önizlemede denetledikten sonra, teklifinizin Market ortak hedef kitlesi için canlı olarak yayınlanabilmesi için **canlı git** ' i seçin.
 
 - **Bir önizleme hedef kitlesi tanımlayın: isteğe bağlı bir açıklama ile birlikte her satır için tek bir AAD/MSA hesap e-postası ekleyin.**
 
@@ -368,11 +320,11 @@ Canlı yayımlamadan önce teklifinizi doğrulamaya yardımcı olmak üzere mevc
 
 - **Giriş sayfası URL 'si** (gerekli): müşterilerinizin teklifinizi marketten aldıktan sonra hangi site URL 'sini tanımlayın. Bu URL, bir müşteri sayfaya yönlendirildiğini belirteç alan uç nokta olur. Bu belirteç, karşılama API 'Lerinde çözümle kullanılarak sağlama ayrıntıları için takas edilebilir. Bu ayrıntılar ve topladığınız tüm diğerleri, kaydınızı tamamlayıp satın almasını etkinleştirmek için deneyiminizin yerleşik olduğu müşteri etkileşimli Web sayfasının bir parçası olarak kullanılabilir.
 
-- **Bağlantı Web kancası** (gerekli): Microsoft 'un müşteri adına size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örnek: SaaS aboneliği geçersiz oldu), bağlantı Web kancası sağlamanız gerekir. Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde (ör. https:\//prod-1westus.logic.azure.com:443/work) işleymelidir. Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Bağlantı Web kancası** (gerekli): Microsoft 'un müşteri adına size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örnek: SaaS aboneliği geçersiz oldu), bağlantı Web kancası sağlamanız gerekir. Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde işleymelidir (örneğin, https:\//prod-1westus.logic.azure.com:443/work). Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
-- **Azure AD KIRACı kimliği** (gerekli): Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) gerekir. [KIRACı kimliğini](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)bulmak için Azure Active Directory gidin ve **Özellikler**' i seçin, ardından listelenen **dizin kimliği** numarasını (ör. 50c464d3-4930-494c-963c-1e951d15360e) arayın.
+- **Azure AD KIRACı kimliği** (gerekli): Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) gerekir. [KIRACı kimliğini](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)bulmak için Azure Active Directory gidin ve **Özellikler**' i seçin, ardından listelenen **dizin kimliği** numarasını arayın (örneğin, 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD uygulama kimliği** (gerekli): Ayrıca, [Uygulama Kimliğiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) ve bir kimlik doğrulama anahtarınız olması gerekir. Bu değerleri almak için Azure Active Directory gidin ve **uygulama kayıtları**' i seçin, ardından LISTELENEN **uygulama kimliği** numarasını (ör. 50c464d3-4930-494c-963c-1e951d15360e) arayın. Kimlik doğrulama anahtarını bulmak için **Ayarlar** ' a gidin ve **anahtarlar**' ı seçin. Bir açıklama ve süre sağlamanız gerekir ve ardından bir sayı değeri sağlanacaktır.
+- **Azure AD uygulama kimliği** (gerekli): Ayrıca, [Uygulama Kimliğiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) ve bir kimlik doğrulama anahtarınız olması gerekir. Bu değerleri almak için Azure Active Directory gidin ve **uygulama kayıtları**' i seçin, ardından LISTELENEN **uygulama kimliği** numarasını arayın (örneğin, 50c464d3-4930-494c-963c-1e951d15360e). Kimlik doğrulama anahtarını bulmak için **Ayarlar** ' a gidin ve **anahtarlar**' ı seçin. Bir açıklama ve süre sağlamanız gerekir ve ardından bir sayı değeri sağlanacaktır.
 
 >[!Note]
 >Azure uygulama KIMLIĞI, yayımcı KIMLIĞINIZLE ilişkilendirilir, bu nedenle tüm tekliflerinizi aynı uygulama KIMLIĞININ kullanıldığından emin olun.
@@ -390,8 +342,8 @@ Oluşturulduktan sonra plan adlarınızı, kimlikleri, fiyatlandırma modellerin
 
 **Yeni plan oluştur** (Microsoft üzerinden satış için seçim yapan kişiler için en az bir plan)
 
-- **Plan kimliği:** Bu teklifteki her plan için benzersiz bir plan KIMLIĞI oluşturun. Bu KIMLIK, ürün URL 'sindeki ve Azure Resource Manager şablonlarındaki (varsa) müşterilere görünür olacaktır. Yalnızca küçük harf, alfasayısal karakter, çizgi veya alt çizgi kullanın. Bu plan KIMLIĞI için en fazla 50 karakter kullanılabilir. Oluştur seçildikten sonra KIMLIğIN değiştirilemeyeceğini unutmayın.
-- **Plan adı:** Tekliflerinizi hangi plana seçeceğinize karar verirken, müşteriler bu adı görür. Bu teklifteki her plan için benzersiz bir teklif adı oluşturun. Plan adı, aynı teklifin bir parçası olabilecek yazılım planlarını ayırt etmek için kullanılır (ör. Teklif adı: Windows Server; planlar: Windows Server 2016, Windows Server 2019).
+- **Plan kimliği:** Bu teklifteki her plan için benzersiz bir plan KIMLIĞI oluşturun. Bu KIMLIK, ürün URL 'sindeki ve Azure Resource Manager şablonlarındaki (varsa) müşterilere görünür olacaktır. Yalnızca küçük harf, alfasayısal karakter, kısa çizgi veya alt çizgi kullanın. Bu plan KIMLIĞI için en fazla 50 karakter kullanılabilir. Oluştur seçildikten sonra KIMLIK değiştirilemez.
+- **Plan adı:** Tekliflerinizi hangi plana seçeceğinize karar verirken, müşteriler bu adı görür. Bu teklifteki her plan için benzersiz bir teklif adı oluşturun. Plan adı, aynı teklifin bir parçası olabilecek yazılım planlarını ayırt etmek için kullanılır (örneğin, teklif adı: Windows Server; planlar: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-listing"></a>Planı listeleme
 
@@ -424,7 +376,7 @@ Ticari Market aracılığıyla sunulan SaaS teklifleri, Microsoft üzerinden sat
 >[!Note]
 >Transactable teklifiniz ücretsiz bir deneme ile yayımlandıktan sonra bu plan için devre dışı bırakılamaz. Planı yeniden oluşturmak zorunda kalmamak için bu ayarın ilk yayımlama için doğru olduğundan emin olun.
 
-Ücretsiz bir denemeye katılmış olan müşteri abonelikleri hakkında bilgi edinmek için, true veya false olarak işaretlenecek `isFreeTrial`yeni API özelliğini kullanın. Daha fazla bilgi için [SaaS Get abonelik API 'sine](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) bakın.
+Ücretsiz bir denemeye katılmış olan müşteri abonelikleri hakkında bilgi edinmek için, true veya false olarak işaretlenecek `isFreeTrial`yeni API özelliğini kullanın. Daha fazla bilgi için [SaaS Get abonelik API 'sine](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)bakın.
 
 >[!Note]
 >Market ölçüm hizmetinden yararlanan planlar için ücretsiz denemeler desteklenmez.

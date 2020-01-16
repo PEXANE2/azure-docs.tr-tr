@@ -8,77 +8,77 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: f523d1ebf5c96596142c6897af2be5f760b3d4b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f65220a04a709bae5a6892bfd4105195cee35741
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978960"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978429"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Azure Içeri/dışarı aktarma aracı 'nı ayarlama
 Microsoft Azure İçeri/Dışarı Aktarma Aracı, Microsoft Azure İçeri/Dışarı Aktarma hizmeti ile kullanabileceğiniz sürücü hazırlama ve onarma aracıdır. Aracı aşağıdaki işlevler için kullanabilirsiniz:  
-  
+
 -   Bir içeri aktarma işi oluşturmadan önce, verileri bir Windows Azure veri merkezine alacağınız sabit sürücülere kopyalamak için bu aracı kullanabilirsiniz.  
-  
+
 -   Bir içeri aktarma işi tamamlandıktan sonra, bozuk olan, eksik olan veya diğer bloblarla çakışan Blobları onarmak için bu aracı kullanabilirsiniz.  
-  
+
 -   Tamamlanmış bir dışarı aktarma işinden sürücüleri aldıktan sonra, sürücülerde bozuk veya eksik olan dosyaları onarmak için bu aracı kullanabilirsiniz.  
-  
-## <a name="prerequisites"></a>Önkoşullar  
+
+## <a name="prerequisites"></a>Ön koşullar  
 Sürücüleri bir içeri aktarma işi için hazırlıyorsanız, aşağıdaki önkoşulları karşılamanız gerekir:  
-  
+
 -   Etkin bir Azure aboneliğiniz olmalıdır.  
-  
+
 -   Aboneliğiniz, içeri aktaralacağınız dosyaları depolamak için yeterli kullanılabilir alana sahip bir depolama hesabı içermelidir.  
-  
+
 -   Depolama hesabı için en az bir hesap anahtarı gereklidir.  
-  
+
 -   Windows 7, Windows Server 2008 R2 veya daha yeni bir Windows işletim sistemi yüklü olan bir bilgisayara ("kopya makinesi") ihtiyacınız vardır.  
-  
+
 -   .NET Framework 4 ' ün kopya makinede yüklü olması gerekir.  
-  
+
 -   Kopyalama makinesinde BitLocker etkin olmalıdır.  
-  
+
 -   İçeri aktarılacak verileri içeren bir veya daha fazla sürücüye veya kopyalama makinesine bağlı 3,5-inç SATA sabit sürücülere sahip olmanız gerekir.  
-  
--   İçeri aktarmayı planladığınız dosyalara, ağ paylaşımında veya yerel bir sabit sürücüde olup olmadıkları, kopyalama makinesinden erişilebilir olması gerekir. 
-  
+
+-   İçeri aktarmayı planladığınız dosyalara, ağ paylaşımında veya yerel bir sabit sürücüde olup olmadıkları, kopyalama makinesinden erişilebilir olması gerekir.
+
 Kısmen başarısız olan bir içeri aktarmayı onarmaya çalışıyorsanız şunlar gerekir:  
-  
+
 - Kopyalama günlük dosyaları  
-  
+
 - Depolama hesabı anahtarı  
-  
+
   Kısmen başarısız olan bir dışarı aktarmayı onarmaya çalışıyorsanız şunlar gerekir:  
-  
+
 - Kopyalama günlük dosyaları  
-  
+
 - Bildirim dosyaları (isteğe bağlı)  
-  
+
 - Depolama hesabı anahtarı  
-  
+
 ## <a name="installing-the-azure-importexport-tool"></a>Azure Içeri/dışarı aktarma aracını yükleme  
  Azure Içeri/dışarı aktarma aracı aşağıdaki dosyalardan oluşur:  
-  
+
 - Waımportexport. exe  
-  
+
 - Waımportexport. exe. config  
-  
+
 - Waımportexportcore. dll  
-  
+
 - Waımportexportrepair. dll  
-  
+
 - Microsoft. WindowsAzure. Storage. dll  
-  
-- hddıd. dll  
-  
+
+- Hddıd. dll  
+
   Bu dosyaları, örneğin `c:\WAImportExport`bir çalışma dizinine kopyalayın. Ardından, yönetici modunda bir komut satırı penceresi açın ve yukarıdaki dizini geçerli dizin olarak ayarlayın.  
-  
+
   Komut için yardım almak üzere aracı parametresiz çalıştırın:  
-  
+
 ```  
 WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  
-  
+
 Copy a Directory:  
     WAImportExport.exe PrepImport  
         /j:<JournalFile> [/logdir:<LogDirectory>] [/id:<SessionId>] [/resumesession]  
@@ -87,7 +87,7 @@ Copy a Directory:
         [/bk:<BitLockerKey>] [/Disposition:<Disposition>] [/BlobType:<BlobType>]  
         [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]  
         /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory>  
-  
+
 Copy a File:  
     WAImportExport.exe PrepImport  
         /j:<JournalFile> [/logdir:<LogDirectory>] [/id:<SessionId>] [/resumesession]  
@@ -96,7 +96,7 @@ Copy a File:
         [/bk:<BitLockerKey>] [/Disposition:<Disposition>] [/BlobType:<BlobType>]  
         [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]  
         /srcfile:<SourceFilePath> /dstblob:<DestinationBlobPath>  
-  
+
 Repair a Drive:  
     WAImportExport.exe RepairImport | RepairExport  
         /r:<RepairFile> [/logdir:<LogDirectory>]  
@@ -104,15 +104,15 @@ Repair a Drive:
         /sn:<StorageAccountName> [/sk:<StorageAccountKey> | /csas:<ContainerSas>]  
         [/CopyLogFile:<DriveCopyLogFile>] [/ManifestFile:<DriveManifestFile>]  
         [/PathMapFile:<DrivePathMapFile>]  
-  
+
 Preview an Export Job:  
     WAImportExport.exe PreviewExport  
         [/logdir:<LogDirectory>]  
         /sn:<StorageAccountName> [/sk:<StorageAccountKey> | /csas:<ContainerSas>]  
         /ExportBlobListFile:<ExportBlobListFile> /DriveSize:<DriveSize>  
-  
+
 Parameters:  
-  
+
     /j:<JournalFile>  
         - Required. Path to the journal file. Each drive must have one and only one  
           journal file. The journal file corresponding to the target drive must always  
@@ -213,32 +213,32 @@ Parameters:
         - Optional. To skip write process. Used for inplace data drive preparation.
           Be sure to reserve enough space (3 GB per 7TB) for drive manifest file!
 Examples:  
-  
+
     Copy a source directory to a drive:  
     WAImportExport.exe PrepImport  
         /j:9WM35C2V.jrn /id:session#1 /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GEL  
         xmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /t:x /format /encrypt /srcdir:d:\movi  
         es\drama /dstdir:movies/drama/  
-  
+
     Copy another directory to the same drive following the above command:  
     WAImportExport.exe PrepImport  
         /j:9WM35C2V.jrn /id:session#2 /srcdir:d:\movies\action /dstdir:movies/action/  
-  
+
     Copy another file to the same drive following the above commands:  
     WAImportExport.exe PrepImport  
         /j:9WM35C2V.jrn /id:session#3 /srcfile:d:\movies\dvd.vhd /dstblob:movies/dvd.vhd /BlobType:PageBlob  
-  
+
     Preview how many 1.5 TB drives are needed for an export job:  
     WAImportExport.exe PreviewExport  
         /sn:mytestaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7K  
         ysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\temp\myexportbloblist.xml  
         /DriveSize:1.5TB  
-  
+
     Repair an finished import job:  
     WAImportExport.exe RepairImport  
         /r:9WM35C2V.rep /d:X:\ /bk:442926-020713-108086-436744-137335-435358-242242-2795  
         98 /sn:mytestaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94  
-        f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\temp\9WM35C2V_error.log 
+        f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\temp\9WM35C2V_error.log
 
     Skip write process, inplace data drive preparation:
     WAImportExport.exe PrepImport
@@ -246,7 +246,7 @@ Examples:
         xmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /t:d /encrypt /srcdir:d:\movi
         es\drama /dstdir:movies/drama/ /skipwrite
 ```  
-  
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Sabit sürücüleri içeri aktarma işine hazırlama](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 31af4ad9c6985202555dbcbe86c52e45d5c4154a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453292"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028734"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesini kullanarak VMware VM 'lerini değerlendirin
 
@@ -41,11 +41,11 @@ Bu serideki [ilk öğreticiyi doldurun](tutorial-prepare-vmware.md) . Bunu yapma
 
 - Azure geçişi için [Azure Izinleri ayarlayın](tutorial-prepare-vmware.md#prepare-azure) .
 - [VMware](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) 'i değerlendirme için hazırla:
-   - VMware ayarlarını doğrulayın.
-   - OVA şablonuyla bir VMware VM oluşturmak için izinleri ayarlayın.
-   - VM bulma için bir hesap ayarlayın. 
-   - Gerekli bağlantı noktalarını kullanılabilir hale getirin.
-   - Azure 'a erişmek için gereken URL 'Lerden haberdar olun.
+   - [Doğrula](migrate-support-matrix-vmware.md#vmware-requirements) VMware ayarları.
+   - Bir OVA şablonuyla VMware VM oluşturmak için VMware 'de izinleri ayarlayın.
+   - [VM bulma için bir hesap](migrate-support-matrix-vmware.md#vmware-requirements)ayarlayın. 
+   - [Gerekli bağlantı noktalarını](migrate-support-matrix-vmware.md#port-access) kullanılabilir hale getirin.
+   - Azure 'a erişmek için [gereken URL 'lerden](migrate-replication-appliance.md#url-access) haberdar olun.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure geçişi projesi ayarlama
 
@@ -130,7 +130,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 ### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
-Gereç VM 'sinin [Azure URL 'lerine](migrate-support-matrix-vmware.md#assessment-url-access-requirements)bağlanabildiğinizden emin olun.
+Gereç VM 'sinin [Azure URL 'lerine](migrate-appliance.md#url-access)bağlanabildiğinizden emin olun.
 
 ### <a name="configure-the-appliance"></a>Gereci yapılandırma
 
@@ -172,7 +172,7 @@ Gerecin, VM 'lerin yapılandırma ve performans verilerini bulması için vCente
 1. **VCenter Server ayrıntılarını belirtin**bölümünde vCenter Server örneğinin adını (FQDN) veya IP adresini belirtin. Varsayılan bağlantı noktasını bırakabilir veya vCenter Server dinlediği özel bir bağlantı noktası belirtebilirsiniz.
 1. **Kullanıcı adı** ve **parola**' da, gerecin vCenter Server örneğindeki VM 'leri bulması için kullanacağı vCenter Server hesabı kimlik bilgilerini belirtin. 
 
-   Hesabın [bulma için gerekli izinlere](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)sahip olduğundan emin olun. VCenter hesabına erişimi sınırlayarak [bulma kapsamını](tutorial-assess-vmware.md#set-the-scope-of-discovery) belirleyebilirsiniz.
+   Hesabın [bulma için gerekli izinlere](migrate-support-matrix-vmware.md#vmware-requirements)sahip olduğundan emin olun. VCenter hesabına erişimi sınırlayarak [bulma kapsamını](tutorial-assess-vmware.md#set-the-scope-of-discovery) belirleyebilirsiniz.
 1. Gerecin vCenter Server bağlanabildiğini sağlamak için **bağlantıyı doğrula** ' yı seçin.
 
 ### <a name="specify-vm-credentials"></a>VM kimlik bilgilerini belirtin

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 104fc212dc590c1366b8dd2cd276f70bdadee5db
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614545"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980201"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Tanılama kullanarak olay toplama ve toplama
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Kaynak Yöneticisi kullanarak bir küme oluşturmak için, tanılama yapılandı
 
 Kaynak Yöneticisi şablonunda tanılama ayarını görmek için azuredeploy. json dosyasını açın ve **ıaasdiagnostics**' i arayın. Bu şablonu kullanarak bir küme oluşturmak için önceki bağlantıda bulunan **Azure 'A dağıt** düğmesini seçin.
 
-Alternatif olarak, Kaynak Yöneticisi örneğini indirebilir, üzerinde değişiklik yapabilir ve bir Azure PowerShell penceresinde `New-AzResourceGroupDeployment` komutunu kullanarak değiştirilmiş şablonla bir küme oluşturabilirsiniz. Komutuna geçirdiğiniz parametreler için aşağıdaki koda bakın. PowerShell kullanarak bir kaynak grubu dağıtma hakkında ayrıntılı bilgi için, [Azure Resource Manager şablonuyla kaynak grubu dağıtma](../azure-resource-manager/resource-group-template-deploy.md)makalesine bakın.
+Alternatif olarak, Kaynak Yöneticisi örneğini indirebilir, üzerinde değişiklik yapabilir ve bir Azure PowerShell penceresinde `New-AzResourceGroupDeployment` komutunu kullanarak değiştirilmiş şablonla bir küme oluşturabilirsiniz. Komutuna geçirdiğiniz parametreler için aşağıdaki koda bakın. PowerShell kullanarak bir kaynak grubu dağıtma hakkında ayrıntılı bilgi için, [Azure Resource Manager şablonuyla kaynak grubu dağıtma](../azure-resource-manager/templates/deploy-powershell.md)makalesine bakın.
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>Tanılama uzantısını var olan bir kümeye ekle
 Tanılamayı dağıtmayan mevcut bir kümeniz varsa, küme şablonu aracılığıyla ekleyebilir veya güncelleştirebilirsiniz. Mevcut kümeyi oluşturmak için kullanılan Kaynak Yöneticisi şablonunu değiştirin ya da daha önce açıklandığı gibi portaldan şablonu indirin. Aşağıdaki görevleri gerçekleştirerek Template. json dosyasını değiştirin:

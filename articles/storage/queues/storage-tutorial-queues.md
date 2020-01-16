@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: cbrooks
-ms.openlocfilehash: c8e1d5c1c11c4fdf902c7be7bc03be298e93a8b9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 9cbdc5231fdc9f836f300b1a3a81a237a9efc123
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721137"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968207"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>Öğretici: Azure depolama kuyrukları ile çalışma
 
@@ -26,14 +26,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Azure Storage hesabı oluşturma
 > - Uygulama oluşturma
 > - Zaman uyumsuz kod desteği ekle
-> - Kuyruk oluştur
+> - Kuyruk oluşturma
 > - Bir kuyruğa ileti ekleme
 > - İletileri sıradan çıkarma
 > - Boş bir kuyruğu silme
 > - Komut satırı bağımsız değişkenlerini denetle
 > - Uygulamayı derleme ve çalıştırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Platformlar arası [Visual Studio Code](https://code.visualstudio.com/download) düzenleyicisinin ücretsiz kopyasını alın.
 - [.NET Core SDK](https://dotnet.microsoft.com/download)indirin ve yükleyin.
@@ -41,13 +41,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
 
-İlk olarak, bir Azure depolama hesabı oluşturun. Depolama hesabı oluşturmaya yönelik adım adım kılavuz için bkz. [depolama hesabı oluşturma](../common/storage-quickstart-create-account.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) hızlı başlangıcı.
+İlk olarak, bir Azure depolama hesabı oluşturun. Depolama hesabı oluşturmaya yönelik adım adım kılavuz için bkz. [depolama hesabı oluşturma](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) hızlı başlangıcı.
 
 ## <a name="create-the-app"></a>Uygulama oluşturma
 
 **Queueapp**adlı bir .NET Core uygulaması oluşturun. Kolaylık olması için, bu uygulama sıra aracılığıyla ileti gönderir ve alır.
 
-1. Konsol penceresinde (cmd, PowerShell veya Azure CLI gibi), **queueapp**adlı yeni bir konsol `dotnet new` uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur: **Program.cs**.
+1. Konsol penceresinde (CMD, PowerShell veya Azure CLı gibi), **Queueapp**adlı yeni bir konsol uygulaması oluşturmak için `dotnet new` komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur: **program.cs**.
 
    ```console
    dotnet new console -n QueueApp
@@ -99,9 +99,9 @@ Uygulama bulut kaynaklarını kullandığından, kod zaman uyumsuz olarak çalı
 
 1. Proje dizinindeki komut satırından, geçerli dizinde Visual Studio Code açmak için `code .` yazın. Komut satırı penceresini açık tutun. Daha sonra yürütülecek daha fazla komut olacaktır. Derleme ve hata ayıklama için gereken C# varlıkları eklemeniz Istenirse, **Evet** düğmesine tıklayın.
 
-2. Düzenleyicide **Queueapp. csproj** dosyasını açın.
+2. **QueueApp.csproj** dosyasını düzenleyicide açın.
 
-3. Derleme `<LangVersion>7.1</LangVersion>` dosyasındaki ilk **PropertyGroup** 'a ekleyin. **TargetFramework** sizin yüklediğiniz .NET sürümüne bağlı olarak farklı olabileceğinden, yalnızca **langversion** etiketini eklediğinizden emin olun.
+3. Derleme dosyasındaki ilk **PropertyGroup** 'a `<LangVersion>7.1</LangVersion>` ekleyin. **TargetFramework** sizin yüklediğiniz .NET sürümüne bağlı olarak farklı olabileceğinden, yalnızca **langversion** etiketini eklediğinizden emin olun.
 
    ```xml
    <Project Sdk="Microsoft.NET.Sdk">
@@ -126,9 +126,9 @@ Uygulama bulut kaynaklarını kullandığından, kod zaman uyumsuz olarak çalı
 
 6. **Program.cs** dosyasını kaydedin.
 
-## <a name="create-a-queue"></a>Kuyruk oluştur
+## <a name="create-a-queue"></a>Kuyruk oluşturma
 
-1. Komutuyla Microsoft **. Azure. Storage. Common** ve **Microsoft. Azure. Storage. Queue** paketlerini projeye yükler. `dotnet add package` Konsol penceresindeki proje klasöründen aşağıdaki DotNet komutlarını yürütün.
+1. `dotnet add package` komutuyla **Microsoft. Azure. Storage. Common** ve **Microsoft. Azure. Storage. Queue** paketlerini projeye yükler. Konsol penceresindeki proje klasöründen aşağıdaki DotNet komutlarını yürütün.
 
    ```console
    dotnet add package Microsoft.Azure.Storage.Common
@@ -171,7 +171,7 @@ Depolama hesabına erişebilmeleri için bağlantı dizesini uygulamaya ekleyin.
 
 1. Visual Studio Code 'e geri dönün.
 
-2. **Program** sınıfında, bağlantı dizesini tutacak bir `private const string connectionString =` üye ekleyin.
+2. **Program** sınıfında bağlantı dizesini tutmak için bir `private const string connectionString =` üyesi ekleyin.
 
 3. Eşittir işaretinden sonra, Azure portal daha önce kopyaladığınız dize değerini yapıştırın. **ConnectionString** değeri hesabınıza benzersiz olacaktır.
 
@@ -229,7 +229,7 @@ Kuyruğa ileti göndermek için yeni bir yöntem oluşturun. **Program** Sınıf
 
 Bir ileti UTF-8 kodlaması ile bir XML isteğine dahil edilebilir bir biçimde olmalıdır ve boyutu 64 KB 'ye kadar olabilir. Bir ileti ikili veriler içeriyorsa iletiyi Base64 kodlamanızı öneririz.
 
-Varsayılan olarak, bir ileti için en uzun yaşam süresi 7 güne ayarlanır. İletinin yaşam süresi için herhangi bir pozitif sayı belirtebilirsiniz. Kullanım süreleri dolan bir ileti eklemek için `Timespan.FromSeconds(-1)` **addmessageasync**çağrısında kullanın.
+Varsayılan olarak, bir ileti için en uzun yaşam süresi 7 güne ayarlanır. İletinin yaşam süresi için herhangi bir pozitif sayı belirtebilirsiniz. Süre sonu olmayan bir ileti eklemek için **Addmessageasync**çağrısında `Timespan.FromSeconds(-1)` kullanın.
 
 ```csharp
 await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
@@ -264,7 +264,7 @@ await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, nu
 
 ## <a name="delete-an-empty-queue"></a>Boş bir kuyruğu silme
 
-Projenin sonunda oluşturduğunuz kaynaklara ihtiyacınız olup olmadığını belirlemek için en iyi uygulamadır. Çalışan kaynaklar sizin için ücret verebilir. Sıra varsa ancak boşsa, kullanıcıyı silmek isteyip istemediğini sorar.
+Projenin sonunda oluşturduğunuz kaynaklara ihtiyacınız olup olmadığını belirlemek için en iyi uygulamadır. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Sıra varsa ancak boşsa, kullanıcıyı silmek isteyip istemediğini sorar.
 
 1. Boş kuyruğu silmek için bir istem eklemek üzere **Receivemessageasync** yöntemini genişletin.
 
@@ -344,7 +344,7 @@ Son olarak, **Console. ReadLine**'u çağırarak çıkmadan önce Kullanıcı gi
 
 2. Dosyayı kaydedin.
 
-## <a name="complete-code"></a>Tam kod
+## <a name="complete-code"></a>Kodu tamamla
 
 Bu proje için kod listesinin tamamı aşağıda verilmiştir.
 
@@ -452,7 +452,7 @@ Bu proje için kod listesinin tamamı aşağıda verilmiştir.
    dotnet run First queue message
    ```
 
-Şu çıktıyı görmeniz gerekir:
+Bu çıkışı görmelisiniz:
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message
@@ -507,7 +507,7 @@ Bu proje için kod listesinin tamamı aşağıda verilmiştir.
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
-1. Kuyruk oluştur
+1. Kuyruk oluşturma
 2. Kuyruktaki iletileri ekleme ve kaldırma
 3. Azure depolama kuyruğunu silme
 

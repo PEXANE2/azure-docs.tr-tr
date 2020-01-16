@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9bb324c3863a13e1f47e1b31f7656ab8c77a6f1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763156"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043520"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -177,7 +178,7 @@ Kiracınız SAML onayları yayınlamadığına göre, SAML bağlı olan taraf il
     PublicPolicyUri="http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml">
     ```
 
-1. Aşağıdaki XML kod parçacığını `<RelyingParty>` öğesinden hemen önce ekleyin. Bu XML, _Signuporsignın_ Kullanıcı yolculuğunun 7 düzenleme adımı numarasını geçersiz kılar. Düzenleme adımlarını ekleyerek veya kaldırarak Kullanıcı yolculuğunun özelleştirildiğini belirlerseniz, sayının (`order` öğesinde), belirtecin veren adımının Kullanıcı yolculuğu 'nda belirtilen bir şekilde hizalandığından emin olun.
+1. Aşağıdaki XML kod parçacığını `<RelyingParty>` öğesinden hemen önce ekleyin. Bu XML, _Signuporsignın_ Kullanıcı yolculuğunun 7 düzenleme adımı numarasını geçersiz kılar. Başlangıç paketindeki farklı bir klasörden başladıysanız veya düzenleme adımlarını ekleyerek veya kaldırarak Kullanıcı yolculuğunun özelleştirildiğini belirlerseniz, sayının (`order` öğesinde), belirteç veren adımının Kullanıcı yolculuğu 'nda belirtilen bir şekilde hizalandığından emin olun (örneğin, diğer başlangıç paketi klasörlerinde, `LocalAccounts`için 6. adım için `SocialAccounts` 6 ve `SocialAndLocalAccountsWithMfa`için 9).
 
     ```XML
     <UserJourneys>

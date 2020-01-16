@@ -1,6 +1,6 @@
 ---
-title: Uzaktan izleme - Azure toplu olarak bağlı cihazları yönetme | Microsoft Docs
-description: Bu öğreticide, bir uzaktan izleme çözümünde toplu bağlı cihazların nasıl yönetileceğini öğrenin.
+title: Toplu-Azure 'da uzaktan Izlemeye bağlı cihazları yönetme | Microsoft Docs
+description: Bu öğreticide, uzaktan Izleme çözümüne bağlı cihazların toplu olarak nasıl yönetileceğini öğreneceksiniz.
 author: aditidugar
 manager: philmea
 ms.service: iot-accelerators
@@ -8,27 +8,27 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: adugar
-ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448927"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980542"
 ---
-# <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Öğretici: Bağlı cihazlarınızın toplu yönetme
+# <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Öğretici: bağlı cihazlarınızı toplu olarak yönetme
 
-Bu öğreticide, Uzaktan izleme çözüm Hızlandırıcısını bağlı cihazlarınızın toplu yapılandırmasını yönetmek için kullanabilirsiniz.
+Bu öğreticide, bağlı cihazlarınızın yapılandırmasını toplu olarak yönetmek için uzaktan Izleme çözüm Hızlandırıcısını kullanırsınız.
 
-Contoso'da bir operatör olarak, yeni bir üretici yazılımı sürümü ile grubunu yapılandırmanız gerekir. Tek tek her cihazdaki üretici yazılımını güncelleştirmek olmasını istemezsiniz. Bir grubu cihaz üretici yazılımını güncelleştirmek için Uzaktan izleme çözüm hızlandırıcısının cihaz grupları ve otomatik cihaz yönetimi kullanabilirsiniz. Cihaz çevrimiçi duruma hemen sonra cihaz gruba eklediğiniz herhangi bir CİHAZDAN en son üretici yazılımına alır.
+Contoso 'da bir operatör olarak, yeni bir bellenim sürümü olan bir cihaz grubu yapılandırmanız gerekir. Her cihazdaki bellenimini tek tek güncellemek istemezsiniz. Bir cihaz grubundaki bellenimi güncelleştirmek için, uzaktan Izleme çözüm hızlandırıcısında cihaz gruplarını ve otomatik cihaz yönetimini kullanabilirsiniz. Cihaz grubuna eklediğiniz herhangi bir cihaz, cihaz çevrimiçi duruma geldiğinde en son bellenim yazılımını alır.
 
 Bu öğreticide şunları yaptınız:
 
 >[!div class="checklist"]
-> * Bir cihaz grubu oluşturma
-> * Hazırlama ve üretici yazılımı barındırın
-> * Azure portalında cihaz yapılandırmasını oluşturma
-> * Uzaktan izleme çözümünüze cihaz Yapılandırması Al
-> * Cihazları cihaz grubu yapılandırmasını dağıtmak
+> * Cihaz grubu oluşturma
+> * Bellenimi hazırlayın ve barındırın
+> * Azure portal cihaz yapılandırması oluşturma
+> * Bir cihaz yapılandırmasını uzaktan Izleme çözümünüze aktarma
+> * Yapılandırmayı cihaz grubundaki cihazlara dağıtın
 > * Dağıtımı izleme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
@@ -39,27 +39,27 @@ If this is going to be a tutorial - we need to split this include into two so th
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 -->
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi takip etmek için Azure aboneliğinizde Uzaktan İzleme çözümü hızlandırıcısının dağıtılmış örneğine sahip olmanız gerekir.
 
 Uzaktan İzleme çözümü hızlandırıcısını henüz dağıtmadıysanız [Bulut tabanlı uzaktan izleme çözümü dağıtma](quickstart-remote-monitoring-deploy.md) hızlı başlangıcını tamamlamanız gerekir.
 
-Üretici yazılımı dosyalarınızı barındırmak için bir Azure depolama hesabı gerekir. Mevcut bir depolama hesabı kullanabilir veya [yeni depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md) aboneliğinizdeki.
+Üretici yazılımı dosyalarınızı barındırmak için bir Azure depolama hesabınızın olması gerekir. Aboneliğinizde var olan bir depolama hesabı kullanabilir veya [Yeni bir depolama hesabı oluşturabilirsiniz](../storage/common/storage-account-create.md) .
 
-Öğreticide bir [IOT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) örnek cihaz olarak cihaz.
+Öğretici bir [IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) cihazını örnek bir cihaz olarak kullanır.
 
-Yerel makinenizde aşağıdaki yazılımlar ihtiyacınız vardır:
+Yerel makinenizde aşağıdaki yazılımların yüklü olması gerekir:
 
-* [Visual Studio Code'u (VS Code)](https://code.visualstudio.com/).
-* [Azure IOT Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) VS Code uzantısı.
+* [Visual Studio Code (vs Code)](https://code.visualstudio.com/).
+* [Azure IoT çalışma ekranı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) vs Code uzantısı.
 
 Başlamadan önce:
 
-* Emin olun [IOT DevKit Cihazınızda şifresizdir olan sürüm 1.4.0 veya daha yüksek](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/).
-* IOT DevKit SDK'sı şifresizdir olarak aynı sürümde olduğundan emin olun. VS Code'da Azure IOT Workbench kullanarak IOT DevKit SDK'sı güncelleştirebilirsiniz. Komut paletini açın ve girin **Arduino: Pano Yöneticisi'ni**. Daha fazla bilgi için [geliştirme ortamınızı hazırlama](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
+* [IoT DevKit cihazındaki önyükleme yükleyicinin sürüm 1.4.0 veya daha yüksek](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)olduğundan emin olun.
+* IoT DevKit SDK 'sının önyükleme yükleyicisinden aynı sürümde olduğundan emin olun. IoT DevKit SDK 'sını, VS Code Azure IoT çalışma ekranı kullanarak güncelleştirebilirsiniz. Komut paletini açın ve **Arduino: Board Manager**girin. Daha fazla bilgi için bkz. [geliştirme ortamını hazırlama](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
 
-Ayrıca, en az bir IOT DevKit cihaz, Uzaktan izleme çözüm hızlandırıcısına bağlamayı gerekir. Bir IOT DevKit cihaz bağlamadıysanız bkz [MXChip IOT DevKit AZ3166 bağlanmak için IOT Uzaktan izleme çözüm Hızlandırıcısını](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md).
+Ayrıca, en az bir IoT DevKit cihazını uzaktan Izleme çözüm hızlandırıcısına bağlamanız gerekir. IoT DevKit cihazı bağlanamadıysanız, bkz. [Mxyongaıot DEVKIT AZ3166 'ı IoT uzaktan izleme çözüm hızlandırıcısına bağlama](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md).
 
 ## <a name="navigate-to-the-dashboard"></a>Panoya gidin
 
@@ -67,93 +67,93 @@ Uzaktan İzleme çözümü panosunu tarayıcınızda görüntülemek için önce
 
 Ardından [Hızlı başlangıç](quickstart-remote-monitoring-deploy.md) ile dağıttığınız Uzaktan İzleme çözümü hızlandırıcısına ait kutucukta bulunan **Başlat** öğesine tıklayın.
 
-## <a name="create-a-device-group"></a>Bir cihaz grubu oluşturma
+## <a name="create-a-device-group"></a>Cihaz grubu oluşturma
 
-Otomatik olarak grubunu bellenimini güncelleştirmek için cihazlar, Uzaktan izleme çözümündeki cihaz grubunun üyeleri olmalıdır:
+Bir cihaz grubundaki bellenimi otomatik olarak güncelleştirmek için, cihazların uzaktan Izleme çözümünüzdeki bir cihaz grubunun üyesi olması gerekir:
 
-1. Üzerinde **cihazları** sayfasında, tüm **IOT DevKit** çözüm hızlandırıcısına bağlantılı cihazlar. Ardından **Jobs** (İşler) öğesine tıklayın.
+1. **Cihazlar** sayfasında, çözüm hızlandırıcısına bağladığınız tüm **IoT devkit** cihazlarını seçin. Ardından **Jobs** (İşler) öğesine tıklayın.
 
-1. İçinde **işleri** paneli, select **etiketleri**, iş adı kümesine **AddDevKitTag**ve ardından adlı bir metin etiketi ekleyin **IsDevKitDevice** bir değerle **Y**. Ardından **Uygula**.
+1. **İşler** panelinde, **Etiketler**' i seçin, Iş adını **adddevkittag**olarak ayarlayın ve ardından **Y**değeri olan **isdevkitcihazı** adlı bir metin etiketi ekleyin. Sonra **Uygula**' ya tıklayın.
 
-1. Artık bir cihaz grubu oluşturmak için etiket değerlerini kullanabilirsiniz. Üzerinde **cihazları** sayfasında **cihaz gruplarını yönetme**.
+1. Artık bir cihaz grubu oluşturmak için etiket değerlerini kullanabilirsiniz. **Cihazlar** sayfasında, **cihaz gruplarını yönet**' e tıklayın.
 
-1. Etiket adı kullanan bir metin filtresi oluşturma **IsDevKitDevice** ve değer **Y** koşulunda. Cihaz grubu olarak Kaydet **IOT DevKit cihazları**.
+1. **Idevkitdevice** adını ve koşulundaki **Y** değerini kullanan bir metin filtresi oluşturun. Cihaz grubunu **IoT DevKit cihazları**olarak kaydedin.
 
-Bu öğreticide daha sonra tüm üyelerin Bellenim güncelleştirmeleri bir aygıt yapılandırmasını uygulamak için bu cihaz grubu kullanın.
+Bu öğreticide daha sonra, tüm üyelerin bellenimini güncelleştiren bir cihaz yapılandırması uygulamak için bu cihaz grubunu kullanırsınız.
 
-## <a name="prepare-and-host-the-firmware"></a>Hazırlama ve üretici yazılımı barındırın
+## <a name="prepare-and-host-the-firmware"></a>Bellenimi hazırlayın ve barındırın
 
-[Azure IOT Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) VS Code uzantısı üretici yazılımı güncelleştirmesi örnek cihaz kodunu içerir.
+[Azure IoT çalışma ekranı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) vs Code uzantısı, üretici yazılımı güncelleştirmesi için örnek cihaz kodunu içerir.
 
-### <a name="open-the-firmware-ota-sample-in-vs-code"></a>Üretici yazılımı OTA örnek VS Code'da açın
+### <a name="open-the-firmware-ota-sample-in-vs-code"></a>Bellenim OTA örneğini VS Code ' de açın
 
-1. Kendi IOT DevKit bilgisayarınıza bağlı olmadığından emin olun. VS Code'u başlatın ve ardından DevKit bilgisayarınıza bağlayın.
+1. IoT DevKit 'in bilgisayarınıza bağlı olmadığından emin olun. VS Code başlatın ve ardından DevKit 'i bilgisayarınıza bağlayın.
 
-1. Tuşuna **F1** komut paletini açın için girin ve seçin **IOT Workbench: Örnekler**. Ardından **IOT DevKit** panonun olarak.
+1. **F1** tuşuna basarak komut paletini açın, yazıp **IoT çalışma ekranı: örnekler**' i seçin. Ardından, pano olarak **IoT DevKit** ' i seçin.
 
-1. Bulma **bellenim OTA** tıklatıp **açık örnek**. Yeni bir VS Code penceresinin açılır ve gösterir **firmware_ota** proje klasörü:
+1. **Bellenim OTA** ' yı bulun ve **örnek aç**' a tıklayın. Yeni bir VS Code penceresi açılır ve **firmware_ota** proje klasörünü gösterir:
 
-    ![IOT Workbench, üretici yazılımı OTA örnek seçin](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-firmware-example.png)
+    ![IoT çalışma ekranı, bellenim OTA örneğini seçin](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-firmware-example.png)
 
-### <a name="build-the-new-firmware"></a>Yeni bellenim oluşturun
+### <a name="build-the-new-firmware"></a>Yeni üretici yazılımını oluşturun
 
-İlk cihaz üretici yazılımını 1.0.0 sürümüdür. Yeni bellenim daha yüksek bir sürüm numarası olmalıdır.
+Cihaz belleniminin ilk sürümü 1.0.0 'dir. Yeni üretici yazılımının daha yüksek bir sürüm numarası olmalıdır.
 
-1. VS Code'da açın **FirmwareOTA.ino** dosya ve değiştirme `currentFirmwareVersion` gelen `1.0.0` için `1.0.1`:
+1. VS Code **Firmwareota. ino** dosyasını açın ve `currentFirmwareVersion` `1.0.0` ' den `1.0.1`' e değiştirin:
 
-    ![Üretici yazılımı sürümünü Değiştir](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
+    ![Bellenim sürümünü değiştir](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. Komut paletini açın seçin ve ardından yazın **IOT Workbench: Cihaz**. Ardından **cihaz derleme** Kodu derlemek için:
+1. Komut paletini açın, yazıp **IoT çalışma ekranı: cihaz**' ı seçin. Kodu derlemek için **cihaz derle** 'yi seçin:
 
     ![Cihaz derleme](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-compile.png)
 
-    VS Code kaydeder derlenmiş dosyasında `.build` proje klasöründe. Ayarlarınıza bağlı olarak, VS Code Gizle `.build` Gezgini görünümünde klasörü.
+    VS Code derlenen dosyayı projedeki `.build` klasörüne kaydeder. Ayarlarınıza bağlı olarak, VS Code gezgin görünümündeki `.build` klasörü gizleyebilir.
 
-### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>CRC değeri üretmek ve üretici yazılımı dosya boyutu hesaplanamadı
+### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>CRC değeri oluştur ve üretici yazılımı dosya boyutunu hesapla
 
-1. Komut paletini açın seçin ve ardından yazın **IOT Workbench: Cihaz**. Ardından **oluşturmak CRC**:
+1. Komut paletini açın, yazıp **IoT çalışma ekranı: cihaz**' ı seçin. Sonra **CRC oluştur**' u seçin:
 
     ![CRC oluştur](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-crc.png)
 
-1. VS Code oluşturur ve CRC değeri, üretici yazılımı dosya adı ve yolu ve dosya boyutu çıktı penceresinde yazdırır. Bu değerler daha sonra kullanmak üzere not edin:
+1. VS Code, CRC değeri, bellenim dosya adı ve yolu ve çıkış penceresinde dosya boyutunu oluşturur ve yazdırır. Daha sonra bu değerleri bir yere göz önünde oluşturun:
 
-    ![CRC bilgileri](media/iot-accelerators-remote-monitoring-bulk-configuration-update/crc-info.png)
+    ![CRC bilgisi](media/iot-accelerators-remote-monitoring-bulk-configuration-update/crc-info.png)
 
-### <a name="upload-the-firmware-to-the-cloud"></a>Buluta üretici yazılımı yükleyin
+### <a name="upload-the-firmware-to-the-cloud"></a>Üretici yazılımını buluta yükleyin
 
 Yeni bellenim dosyanızı bulutta barındırmak için Azure depolama hesabınızı kullanın.
 
-1. Azure portalda depolama hesabınıza gidin. Hizmetler bölümünde **Blobları**. Adlı bir ortak kapsayıcı oluşturma **bellenim** bellenim dosyalarınızı depolamak için:
+1. Azure portalda depolama hesabınıza gidin. Hizmetler bölümünde **Bloblar**' ı seçin. Bellenim dosyalarınızı depolamak için **bellenim** adlı ortak bir kapsayıcı oluşturun:
 
     ![Klasör Oluştur](media/iot-accelerators-remote-monitoring-bulk-configuration-update/blob-folder.png)
 
-1. Üretici yazılımı dosyanızı kapsayıcıya yüklemek için seçin **bellenim** kapsayıcı ve tıklatın **karşıya**.
+1. Üretici yazılımı dosyanızı kapsayıcıya yüklemek için **bellenim** kapsayıcısını seçin ve **karşıya yükle**' ye tıklayın.
 
-1. Seçin **FirmwareOTA.ino.bin**. Tam yolunu not edin, önceki bölümde bu dosyaya yapılan.
+1. **Firmwareota. ino. bin**' i seçin. Önceki bölümde bu dosyanın tam yolunu bir yere görürsünüz.
 
-1. Sonra bellenim dosyayı karşıya yükleme tamamlandı, dosyasının URL'sini not edin.
+1. Üretici yazılımı dosyasının karşıya yüklenmesi tamamlandıktan sonra, dosya URL 'sini bir yere getirin.
 
-### <a name="build-and-upload-the-original-firmware-to-the-iot-devkit-device"></a>Derleme ve özgün üretici yazılımı IOT DevKit cihaza yükle
+### <a name="build-and-upload-the-original-firmware-to-the-iot-devkit-device"></a>Özgün üretici yazılımını IoT DevKit cihazına derleyin ve karşıya yükleyin
 
-1. VS Code'da açın **FirmwareOTA.ino** dosya ve değiştirme `currentFirmwareVersion` geri `1.0.0`:
+1. VS Code **Firmwareota. ino** dosyasını açın ve `currentFirmwareVersion` geri `1.0.0`olarak değiştirin:
 
     ![Sürüm 1.0.0](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. Komut paletini açın seçin ve ardından yazın **IOT Workbench: Cihaz**. Ardından **cihaz yükleme**:
+1. Komut paletini açın, yazıp **IoT çalışma ekranı: cihaz**' ı seçin. Sonra **cihaz karşıya yükleme**' yi seçin:
 
-    ![Cihaz yükleme](media/iot-accelerators-remote-monitoring-bulk-configuration-update/device-upload.png)
+    ![Cihaz karşıya yükleme](media/iot-accelerators-remote-monitoring-bulk-configuration-update/device-upload.png)
 
-1. VS Code doğrular ve kod IOT DevKit cihazınıza yükler.
+1. VS Code, IoT DevKit cihazınıza kodu doğrular ve yükler.
 
-1. Karşıya yükleme tamamlandığında, IOT DevKit cihazı yeniden başlatır. Yeniden başlatma tamamlandıktan sonra IOT DevKit ekranını gösterir **FW sürümü: 1.0.0**, ve yeni bellenim için denetlediği:
+1. Karşıya yükleme tamamlandığında IoT DevKit cihazı yeniden başlatılır. Yeniden başlatma tamamlandığında IoT DevKit ekranı, **fw sürümü: 1.0.0**gösterir ve yeni üretici yazılımı olup olmadığını denetler:
 
     ![OTA-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>Cihaz yapılandırması oluşturma
 
-Cihaz yapılandırması cihazlarınızı istenen durumunu belirtir. Genellikle, bir geliştirici [yapılandırması oluşturur](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration) üzerinde **IOT cihaz Yapılandırması** Azure portalında sayfası. Cihaz yapılandırması cihazlarınızı istenen durumunu ve bir ölçüm kümesini belirten bir JSON belgesidir.
+Cihaz yapılandırması, cihazlarınızın istenen durumunu belirtir. Genellikle, geliştirici Azure portal, yapılandırmayı **IoT cihaz yapılandırma** sayfasında [oluşturur](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration) . Cihaz yapılandırması, cihazlarınızın istenen durumunu ve bir dizi ölçümü belirten bir JSON belgesidir.
 
-Aşağıdaki yapılandırmayı adlı dosya olarak kaydetmek **bellenim update.json** yerel makinenizde. Değiştirin `YOURSTRORAGEACCOUNTNAME`, `YOURCHECKSUM`, ve `YOURPACKAGESIZE` yer tutucuları daha önce Not yapılan değerleriyle:
+Aşağıdaki yapılandırmayı yerel makinenizde **bellenim-Update. JSON** adlı dosya olarak kaydedin. `YOURSTRORAGEACCOUNTNAME`, `YOURCHECKSUM`ve `YOURPACKAGESIZE` yer tutucuları, daha önce bir nota yaptığınız değerlerle değiştirin:
 
 ```json
 {
@@ -200,73 +200,73 @@ Aşağıdaki yapılandırmayı adlı dosya olarak kaydetmek **bellenim update.js
 }
 ```
 
-Aşağıdaki bölümde bu yapılandırma dosyasını kullanırsınız.
+Bu yapılandırma dosyasını aşağıdaki bölümde kullanın.
 
-## <a name="import-a-configuration"></a>Yapılandırma içeri aktarma
+## <a name="import-a-configuration"></a>Yapılandırma içeri aktar
 
-Bu bölümde, cihaz yapılandırması Uzaktan izleme çözüm Hızlandırıcısını bir paket olarak alın. Genellikle, bu görev bir işleç tamamlar.
+Bu bölümde, cihaz yapılandırmasını uzaktan Izleme çözüm hızlandırıcısına bir paket olarak içeri aktarırsınız. Genellikle, bir operatör bu görevi tamamlar.
 
-1. Uzaktan izleme web kullanıcı Arabiriminde, gitmek **paketleri** sayfasında ve tıklayın **+ yeni paketi**:
+1. Uzaktan Izleme Web Kullanıcı arabiriminde, **paketler** sayfasına gidin ve **+ yeni paket**' e tıklayın:
 
     ![Yeni paket](media/iot-accelerators-remote-monitoring-bulk-configuration-update/packagepage.png)
 
-1. İçinde **yeni paket** panelinde öğesini **cihaz Yapılandırması** paket türü olarak ve **bellenim** yapılandırma türü olarak. Tıklayın **Gözat** bulunacak **bellenim update.json** dosya yerel makinenizde ve ardından **karşıya**:
+1. **Yeni paket** panelinde, yapılandırma türü olarak paket türü ve **üretici yazılımı** olarak **cihaz yapılandırması** ' nı seçin. Yerel makinenizde **bellenim-Update. JSON** dosyasını bulmak Için, **Araştır** ' a tıklayın ve ardından **karşıya yükle**' ye tıklayın:
 
-    ![Paket karşıya yükleme](media/iot-accelerators-remote-monitoring-bulk-configuration-update/uploadpackage.png)
+    ![Paketi karşıya yükle](media/iot-accelerators-remote-monitoring-bulk-configuration-update/uploadpackage.png)
 
-1. Artık paketler listesini içeren **üretici yazılımı güncelleştirmesi** paket.
+1. Paket listesi artık **bellenim-güncelleştirme** paketini içerir.
 
-## <a name="deploy-the-configuration-to-your-devices"></a>Yapılandırma cihazlarınıza dağıtın
+## <a name="deploy-the-configuration-to-your-devices"></a>Yapılandırmayı cihazlarınıza dağıtın
 
-Bu bölümde, oluşturun ve IOT DevKit cihazlarınıza cihaz yapılandırması uygulayan bir dağıtım yürütün.
+Bu bölümde, IoT DevKit cihazlarınıza cihaz yapılandırmasını uygulayan bir dağıtım oluşturup yürütmeniz gerekir.
 
-1. Uzaktan izleme web kullanıcı Arabiriminde, gitmek **dağıtımları** sayfasında ve tıklayın **+ yeni dağıtım**:
+1. Uzaktan Izleme Web Kullanıcı arabiriminde **dağıtımlar** sayfasına gidin ve **+ yeni dağıtım**' ye tıklayın:
 
     ![Yeni dağıtım](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentpage.png)
 
-1. İçinde **yeni dağıtım** panelinde, aşağıdaki ayarlara sahip bir dağıtım oluşturun:
+1. **Yeni dağıtım** panelinde, aşağıdaki ayarlarla bir dağıtım oluşturun:
 
     |Seçenek|Değer|
     |---|---|
-    |Ad|Üretici yazılımı güncelleştirmesi dağıtma|
+    |Ad|Üretici yazılımı güncelleştirmesini dağıtma|
     |Paket türü|Cihaz Yapılandırması|
     |Yapılandırma türü|Üretici yazılımı|
-    |Paket|üretici yazılımı update.json|
-    |Cihaz grubu|Cihazları IOT DevKit|
+    |Paket|bellenim-Update. JSON|
+    |Cihaz grubu|IoT DevKit cihazları|
     |Öncelik|10|
 
     ![Dağıtım oluşturma](media/iot-accelerators-remote-monitoring-bulk-configuration-update/newdeployment.png)
 
-    **Uygula**'ya tıklayın. Yeni bir dağıtımda gördüğünüz **dağıtımları** sayfasını aşağıdaki ölçümlerini gösterir:
+    **Uygula**'ya tıklayın. **Dağıtımlar** sayfasında, aşağıdaki ölçümleri gösteren yeni bir dağıtım görürsünüz:
 
     * **Hedeflenen** cihaz grubundaki cihazların sayısını gösterir.
-    * **Uygulanan** yapılandırma içeriklerle güncelleştirildi cihazların sayısını gösterir.
-    * **Başarılı** cihaz sayısını dağıtımında söz konusu raporu başarılı gösterir.
-    * **Başarısız** cihaz sayısını dağıtımında söz konusu raporu hatası gösterir.
+    * **Uygulanan** , yapılandırma içeriğiyle güncelleştirilmiş cihazların sayısını gösterir.
+    * **Başarılı** , dağıtımda başarılı rapor veren cihazların sayısını gösterir.
+    * **Başarısız** olan dağıtımda, dağıtımdaki cihazların sayısını gösterir.
 
 ## <a name="monitor-the-deployment"></a>Dağıtımı izleme
 
-Birkaç dakika sonra IOT DevKit yeni bellenim bilgilerini alır ve cihaza indirilmeye başlar:
+Birkaç dakika sonra IoT DevKit yeni bellenim bilgilerini alır ve cihaza indirmeye başlar:
 
-![OTA 2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
+![OTA-2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
 
-Ağınızın hızına bağlı olarak, yükleme birkaç dakika sürebilir. Cihaz, üretici yazılımı yüklendikten sonra dosya boyutu ve CRC değeri doğrular. MXChip ekranında görüntülenen **geçirilen** doğrulama başarılı olursa.
+Ağınızın hızına bağlı olarak, indirme birkaç dakika sürebilir. Üretici yazılımı indirildikten sonra cihaz dosya boyutunu ve CRC değerini doğrular. Doğrulama başarılı olursa, Mxyongasındaki ekran **geçti** görüntülenir.
 
-![OTA 3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
+![OTA-3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
 
-Onay başarılı olursa, cihazı yeniden başlatır. Geri sayım gelen gördüğünüz **5** için **0** önce yeniden başlatma gerçekleşir.
+Denetim başarılı olursa cihaz yeniden başlatılır. Yeniden başlatma işlemi yapılmadan önce **5** ile **0** arasında bir geri sayım görürsünüz.
 
 ![OTA-4](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
 
-Yeniden başlatıldıktan sonra IOT DevKit şifresizdir üretici yazılımı yeni sürüme yükseltir. Yükseltme, birkaç saniye sürebilir. Bu aşamasında, cihaz RGB LED'i kırmızı ve boş bir ekrandır.
+Yeniden başlatmanın ardından IoT DevKit önyükleme yükleyicisi, bellenimi yeni sürüme yükseltir. Yükseltme birkaç saniye sürebilir. Bu aşamada, cihazdaki RGB Kırmızı ve ekran boştur.
 
-![OTA 5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
+![OTA-5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
 
-Yeniden başlatma tamamlandıktan sonra IOT DevKit cihazınızın üretici yazılımı 1.0.1 sürümü artık çalışıyor.
+Yeniden başlatma tamamlandığında, IoT DevKit cihazınız artık bellenimin 1.0.1 sürümünü çalıştırıyor.
 
 ![OTA-6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
-Üzerinde **dağıtımları** sayfasında, bunlar güncelleştirirken cihazlarınızın durumunu görmek için bir dağıtım'a tıklayın. Cihaz grubunuz ve tanımladığınız özel ölçümler, her cihazın durumunu görebilirsiniz.
+**Dağıtımlar** sayfasında, güncelleştirdikleri şekilde cihazların durumunu görmek için bir dağıtıma tıklayın. Cihaz grubunuzda her bir cihazın durumunu ve tanımladığınız özel ölçümleri görebilirsiniz.
 
 ![Dağıtım ayrıntıları](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentstatus.png)
 
@@ -274,4 +274,4 @@ Yeniden başlatma tamamlandıktan sonra IOT DevKit cihazınızın üretici yazı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir grubun çözümünüze bağlı cihazların üretici yazılımını güncelleştirmek nasıl gösterilmiştir. Cihazları güncelleştirmek için otomatik cihaz Yönetimi çözümünüzü kullanır. Çözümünüzün temel IOT hub otomatik cihaz yönetimi özelliği hakkında daha fazla bilgi için bkz: [yapılandırma ve IOT cihazlarını uygun ölçekte Azure portalını kullanarak izleme](../iot-hub/iot-hub-auto-device-config.md).
+Bu öğreticide, çözümünüze bağlı bir cihaz grubunun bellenimini güncelleştirme konusu gösterilmektedir. Cihazları güncelleştirmek için çözümünüz otomatik cihaz yönetimini kullanır. Çözümünüzün temel alınan IoT Hub 'ında otomatik cihaz yönetimi özelliği hakkında daha fazla bilgi edinmek için bkz. [Azure Portal kullanarak IoT cihazlarını ölçeklendirerek yapılandırma ve izleme](../iot-hub/iot-hub-auto-device-config.md).

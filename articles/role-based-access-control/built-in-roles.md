@@ -15,12 +15,12 @@ ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 00d4487abed97084976d81ee1ec78316fc688193
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 17a1f2c245e19afbf4d8c5092a0ddf0562a7cb0e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851392"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979315"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure kaynakları için yerleşik roller
 
@@ -3153,6 +3153,6 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kaynak sağlayıcısını hizmetle Eşleştir](../azure-resource-manager/azure-services-resource-providers.md)
+- [Kaynak sağlayıcısını hizmetle Eşleştir](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Azure kaynakları için özel roller](custom-roles.md)
 - [Azure Güvenlik Merkezi'nde İzinler](../security-center/security-center-permissions.md)

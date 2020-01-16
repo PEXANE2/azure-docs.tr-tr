@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b5fec342cf9f228edce80e3f0e8fb5243196973d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 68afc782e13f967bc1b455434c3ae952baff81b9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924164"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980915"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB 'yi, 15 dakikadan kısa bir süre içinde Azure SQL veri ambarı 'na yükleyin Data Factory
 > [!NOTE]
@@ -44,8 +44,8 @@ Bu makalede, kopyalama Sihirbazı 'nı kullanarak verileri Azure SQL veri ambar�
 >
 >
 
-## <a name="prerequisites"></a>Önkoşullar
-* Azure Blob depolama: Bu deneme TPC-H test veri kümesini depolamak için Azure Blob depolama (GRS) kullanır.  Azure depolama hesabınız yoksa [depolama hesabı oluşturma hakkında](../../storage/common/storage-quickstart-create-account.md)bilgi edinin.
+## <a name="prerequisites"></a>Ön koşullar
+* Azure Blob depolama: Bu deneme TPC-H test veri kümesini depolamak için Azure Blob depolama (GRS) kullanır.  Azure depolama hesabınız yoksa [depolama hesabı oluşturma hakkında](../../storage/common/storage-account-create.md)bilgi edinin.
 * [TPC-h](http://www.tpc.org/tpch/) verileri: test veri kümesi olarak TPC-h kullanacağız.  Bunu yapmak için, veri kümesini oluşturmanıza yardımcı olan TPC-H araç seti `dbgen` kullanmanız gerekir.  [TPC araçlarından](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) `dbgen` kaynak kodu indirebilir ve kendiniz derleyebilir ya da derlenmiş Ikiliyi [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools)'dan indirebilirsiniz.  10 dosya genelindeki `lineitem` tablo için 1 TB düz dosya oluşturmak üzere aşağıdaki komutlarla dbgen. exe ' yi çalıştırın:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
@@ -123,7 +123,7 @@ Bu makalede, kopyalama Sihirbazı 'nı kullanarak verileri Azure SQL veri ambar�
       2. Bir kaynak grubunun adını girmek için **Yeni oluştur**’u seçin.
    4. Veri fabrikası için bir **konum** seçin.
    5. Dikey pencerenin alt kısmındaki **Panoya sabitle** onay kutusunu seçin.  
-   6. **Oluştur**’a tıklayın.
+   6. **Oluştur**'a tıklayın.
 4. Oluşturma işlemi tamamlandıktan sonra, aşağıdaki görüntüde gösterildiği gibi **Data Factory** dikey penceresini görürsünüz:
 
    ![Data factory giriş sayfası](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)

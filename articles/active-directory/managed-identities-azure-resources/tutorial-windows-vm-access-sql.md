@@ -5,22 +5,21 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: bryanla
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cdbc4e155ec1a41ee5e35226b5beda7639c151e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 2fc5596c6914b77b09db10528af891d7e6bd0159
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888371"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977853"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Öğretici: Azure SQL hizmetine erişmek için Windows VM sistem tarafından atanan yönetilen kimlik kullanma
 
@@ -38,6 +37,12 @@ Bu öğreticide, Azure SQL Server'a erişmek amacıyla, Windows sanal makinesi (
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
+
+## <a name="enable"></a>Etkinleştirme
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
 ## <a name="grant-access"></a>Erişim verme
 
 VM’nize Azure SQL Server’daki bir veritabanına erişim vermek için var olan SQL sunucusunu kullanabilir veya yeni bir sunucu oluşturabilirsiniz. Azure portalını kullanarak yeni sunucu ve veritabanı oluşturmak için bu [Azure SQL hızlı başlangıcını](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) izleyin. [Azure SQL belgeleri](https://docs.microsoft.com/azure/sql-database/) arasında Azure CLI'nin ve Azure PowerShell'in kullanıldığı hızlı başlangıçlar da vardır.
@@ -47,9 +52,9 @@ VM'nize veritabanı erişimi verme işleminin iki adımı vardır:
 1. SQL sunucusu için Azure AD kimlik doğrulamasını etkinleştirme.
 2. VM’nin sistem tarafından atanan kimliğini temsil eden veritabanında bir **içerilen kullanıcı** oluşturun.
 
-## <a name="enable-azure-ad-authentication"></a>Azure AD kimlik doğrulamasını etkinleştirme
+### <a name="enable-azure-ad-authentication"></a>Azure AD kimlik doğrulamasını etkinleştirme
 
-Aşağıdaki adımları kullanarak [SQL sunucusu için Azure AD kimlik doğrulamasını yapılandırın](/azure/sql-database/sql-database-aad-authentication-configure):
+**[SQL Server Için Azure AD kimlik doğrulamasını yapılandırmak](/azure/sql-database/sql-database-aad-authentication-configure)için:**
 
 1.  Azure portalında, sol gezintiden **SQL sunucuları**'nı seçin.
 2.  Azure AD kimlik doğrulaması için etkinleştirilecek SQL sunucusuna tıklayın.
@@ -58,7 +63,7 @@ Aşağıdaki adımları kullanarak [SQL sunucusu için Azure AD kimlik doğrulam
 5.  Sunucunun yöneticisi olacak bir Azure AD kullanıcı hesabı seçin ve **Seç**'e tıklayın.
 6.  Komut çubuğunda **Kaydet**'e tıklayın.
 
-## <a name="create-user"></a>Kullanıcı oluştur
+### <a name="create-contained-user"></a>Kapsanan kullanıcı oluştur
 
 Bu bölümde, veritabanında VM 'nin sistem tarafından atanan kimliğini temsil eden kapsanan bir kullanıcının nasıl oluşturulacağı gösterilmektedir. Bu adım için [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) gerekir. Başlamadan önce, Azure Ad tümleştirmesiyle ilgili arka plan bilgileri için aşağıdaki makaleleri gözden geçirmeniz yararlı olabilir:
 
@@ -66,6 +71,8 @@ Bu bölümde, veritabanında VM 'nin sistem tarafından atanan kimliğini temsil
 - [SQL Veritabanı veya SQL Veri Ambarı ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](/azure/sql-database/sql-database-aad-authentication-configure)
 
 SQL DB, benzersiz AAD görünen adları gerektirir. Bu şekilde, yönetilen kimlik için etkinleştirilen kullanıcılar, gruplar ve hizmet sorumluları (uygulamalar) ve VM adları gibi AAD hesaplarının, görünen adlarıyla ilgili AAD 'de benzersiz olarak tanımlanması gerekir. SQL DB, bu tür kullanıcıların T-SQL oluşturma işlemi sırasında AAD görünen adını denetler ve benzersiz değilse, komut belirli bir hesap için benzersiz bir AAD görünen adı sağlaması isteğinde bulunur.
+
+**Kapsanan kullanıcı oluşturmak için:**
 
 1. SQL Server Management Studio’yu başlatın.
 2. **Sunucuya Bağlan** iletişim kutusunda, **Sunucu adı** alanına SQL sunucu adınızı girin.
@@ -99,7 +106,7 @@ SQL DB, benzersiz AAD görünen adları gerektirir. Bu şekilde, yönetilen kiml
 
 VM'de çalıştırılan kod şimdi sistem tarafından atanan yönetilen kimliğinden belirteç alabilir ve belirteci kullanarak SQL Server'da kimlik doğrulaması yapabilir.
 
-## <a name="get-an-access-token"></a>Bir erişim belirteci alma
+## <a name="access-data"></a>Verilere erişme
 
 Bu bölümde, VM 'nin sistem tarafından atanan yönetilen kimliğini kullanarak bir erişim belirtecinin nasıl alınacağı ve Azure SQL çağrısı için nasıl kullanılacağı gösterilmektedir. Azure SQL, Azure AD kimlik doğrulamasını yerel olarak desteklediğinden Azure kaynakları için yönetilen kimlikler kullanılarak alınan erişim belirteçlerini doğrudan kabul eder. SQL bağlantısı oluştururken **erişim belirteci** yöntemini kullanırsınız. Bu, Azure SQL’in Azure AD tümleştirmesi kapsamındadır ve bağlantı dizesinde kimlik bilgileri sağlama işleminden farklıdır.
 
@@ -192,6 +199,12 @@ Alternatif olarak, uygulama yazmak ve VM'de dağıtmak zorunda kalmadan uçtan u
     ```
 
 Sorgunun sonuçlarını görüntülemek için `$DataSet.Tables[0]` değerini inceleyin.
+
+
+## <a name="disable"></a>Devre dışı bırakma
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

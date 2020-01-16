@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 60a3392474d11c306d28b9d95668a1e783cdfbb0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930702"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046036"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -48,7 +48,7 @@ Tüm Azure uygulamaları `.zip` arşivi kök klasöründe en az iki dosya içeri
 
 * [Createuıdefinition. JSON](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview)adlı Azure uygulama oluşturma deneyimi için bir kullanıcı arabirimi tanımı.  Kullanıcı arayüzünde tüketicilerin parametre değerleri sağlamasına olanak tanıyan öğeleri belirlersiniz.
 
-Tüm yeni Azure Uygulama teklifleri bir [Azure iş ortağı müşteri kullanımı attributıon GUID 'i](??)içermelidir.
+Tüm yeni Azure Uygulama teklifleri bir [Azure iş ortağı müşteri kullanımı attributıon GUID 'i](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)içermelidir.
 
 ### <a name="before-you-begin"></a>Başlamadan önce
 
@@ -189,88 +189,88 @@ Sunabileceğiniz (en fazla 100 karakter) kısa bir açıklama sağlayın ve bu i
 
 ### <a name="long-summary"></a>Uzun Özet
 
-Provide a longer description of your offer (up to 256 characters). The description may be used in marketplace search results.
+Teklifiniz için daha uzun bir açıklama sağlayın (en fazla 256 karakter). Açıklama Market arama sonuçlarında kullanılıyor olabilir.
 
 ### <a name="description"></a>Açıklama
 
-Provide a longer description of your offer (up to 3,000 characters). This description will be displayed to customers in the marketplace listing overview. Include your offer's value proposition, key benefits, category and/or industry associations, in-app purchase opportunities, and any required disclosures. 
+Teklifiniz için daha uzun bir açıklama sağlayın (en fazla 3.000 karakter). Bu açıklama Market dökümüne Genel Bakış bölümündeki müşterilere görüntülenecektir. Teklifinizin değer teklifini, anahtar avantajlarını, kategori ve/veya sektör ilişkilendirmelerini, uygulama içi satın alma fırsatlarını ve gerekli tüm teklifleri dahil edin. 
 
-Some tips for writing your description:  
+Tanımlarınızı yazmak için bazı ipuçları:  
 
-- Clearly describe your offer's value proposition in the first few sentences of your description. Include the following items in your value proposition:
-  - Description of the product
-  - The type of user that benefits from the product
-  - Customer needs or pain that the product addresses
-- Keep in mind that the first few sentences might be displayed in search engine results.  
-- Do not rely on features and functionality to sell your product. Instead, focus on the value you deliver.  
-- Use industry-specific vocabulary or benefit-based wording as much as possible. 
-- Consider using HTML tags to format your description and make it more engaging.
+- Tanımınızın ilk birkaç cümlede teklifinizin değer teklifini açık bir şekilde açıklamalıdır. Değer teklifinde aşağıdaki öğeleri ekleyin:
+  - Ürünün açıklaması
+  - Üründen faydalanan Kullanıcı türü
+  - Müşteri ihtiyaçları veya ürün adresleriyle ilgili bir sorun
+- İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini aklınızda bulundurun.  
+- Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teslim ettiğiniz değere odaklanın.  
+- Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın. 
+- Açıklamanızı biçimlendirmek ve daha ilgi çekici hale getirmek için HTML etiketleri kullanmayı düşünün.
 
 ### <a name="search-keywords"></a>Anahtar sözcüklerde ara
 
-You can optionally enter up to three search keywords to help customers find your offer in the marketplace. For best results, try to use these keywords in your description as well.
+Müşterilerin teklifinizi Market 'te bulmasına yardımcı olmak için isteğe bağlı en fazla üç arama anahtar sözcüğü girebilirsiniz. En iyi sonuçlar için, tanımlarınızda bu anahtar sözcükleri de kullanmayı deneyin.
 
-### <a name="support-urls"></a>Support URLs
+### <a name="support-urls"></a>Destek URL 'Leri
 
-This section lets you provide links to help customers understand more about your offer.
+Bu bölüm, müşterilerinizin teklifiniz hakkında daha fazla bilgi sağlamasına yardımcı olacak bağlantılar sağlamanıza olanak tanır.
 
-#### <a name="privacy-policy-url"></a>Privacy policy URL
+#### <a name="privacy-policy-url"></a>Gizlilik ilkesi URL 'SI
 
-Enter the URL to your organization's privacy policy. You are responsible for ensuring your app complies with privacy laws and regulations, and for providing a valid privacy policy.
+Kuruluşunuzun gizlilik ilkesinin URL 'sini girin. Uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan ve geçerli bir gizlilik ilkesi sağlamaya yönelik siz sorumlusunuz.
 
 #### <a name="useful-links"></a>Faydalı bağlantılar
 
-Provide optional supplemental online documents about your solution.  Add additional useful links by clicking **+ Add a link**.
+Çözümünüz hakkında isteğe bağlı ek çevrimiçi belgeler sağlayın.  **+ Bağlantı ekle**' ye tıklayarak ek yararlı bağlantılar ekleyin.
 
 ### <a name="contacts"></a>Kişiler
 
-In this section, you must provide the name, email, and phone number for a **Support contact** and an **Engineering contact**. This info is not shown to customers, but will be available to Microsoft, and may be provided to CSP partners.
+Bu bölümde, bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad, e-posta ve telefon numarası sağlamanız gerekir. Bu bilgiler müşterilere gösterilmez, ancak Microsoft tarafından kullanılabilir ve CSP iş ortakları için de sağlanıyor olabilir.
 
-In the **Support contact** section, you must also provide the **Support URL** where CSP partners can find support for your offer.
+**Destek kişisi** bölümünde, CSP iş ortaklarının teklifiniz için destek BULABILECEĞI **Destek URL** 'sini de sağlamanız gerekir.
 
-### <a name="marketplace-images"></a>Marketplace images
+### <a name="marketplace-images"></a>Market görüntüleri
 
-In this section, you can provide logos and images that will be used when showing your offer to customer. All images must be in .png format.
+Bu bölümde, müşteri teklifinizi gösterirken kullanılacak logo ve görüntüler sağlayabilirsiniz. Tüm görüntülerin. png biçiminde olması gerekir.
 
-#### <a name="store-logos"></a>Store logos
+#### <a name="store-logos"></a>Mağaza logoları
 
-Provide your offer's logo in three sizes: **Small (48 x 48)** , **Medium (90 X 90)** , and **Large (216 x 216)** .
+Teklifinizin logosunu üç boyutta sağlayın: **küçük (48 x 48)** , **Orta (90 x 90)** ve **büyük (216 x 216)** .
 
 #### <a name="hero"></a>Hero
 
-The hero image is optional. If you provide one, it must measure 815 x 290 pixels.
+Hero görüntüsü isteğe bağlıdır. Bir tane sağlarsanız, 815 x 290 pikseli ölçmelidir.
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 
-Add screenshots that show how your offer works. You can add up to five screenshots. All screenshots must be 1280 x 720 pixels.
+Teklifinizin nasıl çalıştığını gösteren ekran görüntüleri ekleyin. En fazla beş ekran görüntüsü ekleyebilirsiniz. Tüm ekran görüntüleri 1280 x 720 piksel olmalıdır.
 
 #### <a name="videos"></a>Videolar
 
-You can optionally add up to five videos that demonstrate your offer. These videos should be hosted on YouTube and/or Vimeo. For each one, enter the video's name, its URL, and a thumbnail image of the video (1280 x 720 pixels).
+İsteğe bağlı olarak, teklifinizi gösteren en fazla beş video ekleyebilirsiniz. Bu videoların YouTube ve/veya Vimeo 'da barındırılması gerekir. Her biri için videonun adını, URL 'sini ve videonun küçük bir görüntüsünü (1280 x 720 piksel) girin.
 
-#### <a name="additional-marketplace-listing-resources"></a>Additional marketplace listing resources
+#### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
 
-- [Best practices for marketplace offer listings](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Market teklif listeleri için en iyi uygulamalar](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 ## <a name="preview"></a>Önizleme
 
-The **Preview** tab enables you to define a limited **Preview Audience** for validating your offer prior to publishing your offer live to the broader marketplace audience.
+**Önizleme** sekmesi, teklifinizi daha geniş Market hedef kitlelerine yayımlamadan önce teklifinizi doğrulamak için sınırlı bir **Önizleme hedef kitlesi** tanımlamanızı sağlar.
 
 > [!IMPORTANT]
-> You must select **Go live** before your offer will be published live to the marketplace public audience after checking your offer in Preview.
+> Teklifinizi önizlemede denetledikten sonra Market ortak hedef kitlesi için canlı **çalış** ' ı seçmeniz gerekir.
 
-Your preview audience is identified by Azure subscription ID GUIDs, paired with an optional description for each.  Neither of these fields are visible to customers.
+Önizleme hedef kitlesi, Azure abonelik KIMLIĞI GUID 'Leri tarafından tanımlanır ve her biri için isteğe bağlı bir açıklama ile eşleştirilir.  Bu alanlardan hiçbiri müşteriler tarafından görülemez.
 
-Add up to 10 Azure subscription IDs manually, or up to 100 if uploading a CSV file.  By adding these subscriptions, you are defining an audience that will be allowed preview access to your offer before it is fully published.  If your offer is already live, you may still define a preview audience for testing any changes or updates to your offer.
+10 adede kadar Azure abonelik kimliğini el ile veya bir CSV dosyası karşıya yüklerken 100 'e kadar ekleyin.  Bu abonelikleri ekleyerek, tam olarak yayımlanmadan önce teklifiniz için önizlemeye erişim izni verilecek bir hedef kitle tanımlamanız gerekir.  Teklifiniz zaten canlı ise, teklifiniz için herhangi bir değişikliği veya güncelleştirmeyi test etmek üzere bir önizleme hedef kitlesi de tanımlayabilirsiniz.
 
 >[!Note]
->The preview audience differs from a private audience. A preview audience is allowed access to your offer *prior* to being published live in the marketplaces. You may also choose to create a plan and make it available only to a private audience (using the plan Availability tab).  Your preview audience will be able to see and validate all plans, including plans which will be available only to a private audience once your offer is fully published to the marketplace.
+>Önizleme hedef kitlesi, özel bir hedef kitleye göre farklılık gösterir. Bir önizleme hedef kitlesi, Market 'te canlı olarak yayımlanmadan *önce* teklifinizin erişimine izin verilir. Ayrıca, bir plan oluşturmayı ve bunu yalnızca özel bir hedef kitle için kullanılabilir hale getirebilirsiniz (plan kullanılabilirliği sekmesini kullanarak).  Önizleme izleyicileriniz, teklifinizin Market 'e tamamen yayımlandıktan sonra yalnızca özel bir hedef kitle tarafından kullanılabilecek planlar dahil olmak üzere tüm planları görebilir ve doğrulayabilecektir.
 
-## <a name="plan-overview"></a>Plan overview
+## <a name="plan-overview"></a>Plana genel bakış
 
-The **Plan overview** tab enables you to provide different plan options within the same offer. These plans (referred to as SKUs in the Cloud Partner Portal) can differ in terms of plan type (solution template vs. managed application), monetization, or audience.  Configure at least one plan in order to list your offer in the marketplace.
+**Plana genel bakış** sekmesi, aynı teklif içinde farklı plan seçenekleri sağlamanıza olanak sağlar. Bu planlar (Bulut İş Ortağı Portalı SKU 'Lar olarak adlandırılır), plan türü (çözüm şablonu ve yönetilen uygulama), paraya getirme veya hedef kitle bakımından farklı olabilir.  Teklifinizi Market 'te listelemek için en az bir plan yapılandırın.
 
-Once created, you will see your plan names, IDs, plan type, availability (Public or Private), current publishing status, and any available actions on this tab.
+Oluşturulduktan sonra, plan adları, kimlikleri, plan türü, kullanılabilirliği (genel veya özel), geçerli yayımlama durumu ve bu sekmede kullanılabilir tüm eylemler görüntülenir.
 
 **Plana genel bakış** bakımından sunulan **Eylemler** planınızın geçerli durumuna bağlı olarak farklılık gösterir ve şunlar olabilir:
 
@@ -335,54 +335,54 @@ Bu alanları tamamladıktan sonra **Kaydet** ' i seçin.
 
 ## <a name="availability"></a>Erişilebilirlik
 
-**Kullanılabilirlik** sekmesi yalnızca çözüm şablonu planları için görülebilir.  You can make the plan visible to everyone, only to specific customers (a private audience), and whether to make the plan hidden for use by other solution template or managed applications only.
+**Kullanılabilirlik** sekmesi yalnızca çözüm şablonu planları için görülebilir.  Planı herkese, yalnızca belirli müşterilere (özel bir hedef kitleye) görünür hale getirebilirsiniz ve planın yalnızca diğer çözüm şablonu veya yönetilen uygulamalar tarafından kullanılması için gizli hale getirme yapıp yapmayacağı.
 
-### <a name="plan-audience"></a>Plan Audience
+### <a name="plan-audience"></a>Hedef kitle planlayın
 
-You have the option to configure each plan to be visible to everyone or to only a specific audience of your choosing. You can assign membership in this restricted audience using Azure subscription IDs.
+Her planı herkese görünür olarak veya yalnızca seçtiğiniz belirli bir kitlele yapılandırma seçeneğiniz vardır. Azure abonelik kimliklerini kullanarak bu kısıtlanmış hedef kitleye üyelik atayabilirsiniz.
 
-**Privacy / This is a private plan** (Optional checkbox) - Check this box to make your plan private and visible only to the restricted audience of your choosing. Once published as a private plan, you can update the audience or choose to make the plan available to everyone. Once a plan is published as visible to everyone, it must remain visible to everyone. (The plan cannot be configured as a private plan again).
+**Gizlilik/bu özel bir plandır** (isteğe bağlı onay kutusu)-planınızı özel ve yalnızca seçtiğiniz kısıtlanmış kitlele görünür hale getirmek için bu kutuyu işaretleyin. Özel bir plan olarak yayımlandıktan sonra izleyiciyi güncelleştirebilir veya planı herkes için kullanılabilir hale getirebilirsiniz. Bir plan herkese görünür olarak yayımlandıktan sonra herkese görünür kalması gerekir. (Plan bir özel plan olarak yeniden yapılandırılamaz).
 
-**Restricted Audience (Azure subscription IDs)** - Assign the audience that will have access to this private plan. Access is assigned using Azure subscription IDs with the option to include a description of each Azure subscription ID assigned. A maximum of 10 subscription IDs can be added, or 20,000 customers subscription IDs if importing a .csv spreadsheet file.  Azure subscription IDs are represented as GUIDs, and letters must be lower-cased.
+**Kısıtlanmış hedef kitle (Azure abonelik kimlikleri)** -bu özel plana erişimi olacak hedef kitleyi atayın. Atanan her bir Azure abonelik KIMLIĞININ açıklamasını ekleme seçeneğiyle Azure abonelik kimlikleri kullanılarak erişim atanır. Bir. csv elektronik tablo dosyası içeri aktarıldıysanız, en fazla 10 abonelik kimliği eklenebilir veya 20.000 müşteri abonelik kimliği olabilir.  Azure abonelik kimlikleri, GUID 'Ler olarak temsil edilir ve harflerin küçük harfle oluşturulması gerekir.
 
 >[!Note]
 >Özel hedef kitle (veya kısıtlı kitleci) [**Önizleme**](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#preview) sekmesinde tanımladığınız önizleme izleyicilerinden farklıdır.  Bir önizleme hedef kitlesi, Market 'te canlı olarak yayımlanmadan *önce* teklifinizin erişimine izin verilir. Özel izleyici ataması yalnızca belirli bir plana uygulansa da, önizleme hedef kitlesi doğrulama amacıyla tüm planları (özel veya değil) görüntüleyebilir.
 
-### <a name="hide-plan"></a>Hide plan
+### <a name="hide-plan"></a>Planı gizle
 
-If your solution template is intended to be deployed only indirectly when referenced though another solution template or managed application, check this box to publish your solution template but hide it from customers searching and browsing for it directly.
+Çözüm şablonunuz, başka bir çözüm şablonu veya yönetilen uygulama başvurulduğu sırada yalnızca dolaylı olarak dağıtılmak üzere tasarlanıyorsa, çözüm şablonunuzu yayımlamak için bu kutuyu işaretleyin, ancak doğrudan arama yaparak ve göz atarak bu kutuyu gizleyin.
 
-## <a name="pricing-and-availability"></a>Pricing and availability
+## <a name="pricing-and-availability"></a>Fiyatlandırma ve kullanılabilirlik
 
-The **Pricing and availability** tab is visible to managed application plans only.  You can configure the markets that this plan will be available in, the price per month of the management of the solution, and whether to make the plan visible to everyone or only to specific customers (a private audience).
+**Fiyatlandırma ve kullanılabilirlik** sekmesi yalnızca yönetilen uygulama planları tarafından görülebilir.  Bu planın kullanılabileceği pazarları, çözümün yönetimi için aylık fiyat ve planı herkese veya yalnızca belirli müşterilere (özel bir hedef kitle) görünür hale getirmek isteyip istemediğinizi yapılandırabilirsiniz.
 
-### <a name="markets"></a>Markets
+### <a name="markets"></a>Pazar
 
-Every plan must be available in at least one market. Select the checkbox for any market location where you would like to make this plan available. A search box and button for selecting "Tax Remitted" countries, in which Microsoft remits sales and use tax on your behalf, are included to help.
+Her plan en az bir pazarda kullanılabilir olmalıdır. Bu planı kullanılabilir yapmak istediğiniz tüm pazar konumları için onay kutusunu seçin. Microsoft remits Sales ve kullanım vergisinin sizin adınıza yardımına dahil olduğu "vergi havalesi" ülkelerinden oluşan bir arama kutusu ve düğmesi.
 
-If you have already set prices for your plan in United States Dollars (USD) and add another market location, the price for the new market will be calculated according to the current exchange rates. Always review the price for each market before publishing. Pricing can be reviewed by using the "Export prices (xlsx)" link after saving your changes.
+Planınız için Birleşik Devletler dolar (USD) cinsinden zaten fiyatlar ayarladıysanız ve başka bir pazar konumu eklerseniz, yeni pazar fiyatı geçerli döviz kurlarına göre hesaplanır. Yayımlamadan önce her bir pazar için fiyatı her zaman gözden geçirin. Fiyatlandırma, değişiklikleriniz kaydedildikten sonra "fiyatları dışarı aktar (xlsx)" bağlantısı kullanılarak incelenebilir.
 
 ### <a name="pricing"></a>Fiyatlandırma
 
-Provide the per-month price for this plan.  This price is in addition to any Azure infrastructure or pay-as-you-go software costs incurred by the resources deployed by this solution.
+Bu plan için aylık fiyat fiyatını belirtin.  Bu fiyat, bu çözüm tarafından dağıtılan kaynaklar tarafından tahakkuk eden tüm Azure altyapısına veya kullandıkça öde yazılım maliyetlerine ek olarak yapılır.
 
-Prices set in local currency (USD = United States Dollar) are converted into the local currency of all selected markets using the current exchange rates available during setup. Validate these prices before publishing by exporting the pricing spreadsheet and reviewing the price in each market. If you would like to set custom prices in an individual market, modify and import the pricing spreadsheet. 
-
->[!Note]
->You must first save your pricing changes to enable export of pricing data.
-
-Review your prices carefully before publishing, as there are some restrictions on what can change after a plan is published.  
+Yerel para birimi cinsinden ayarlanan fiyatlar (USD = Birleşik Devletler dolar), kurulum sırasında kullanılabilir olan geçerli döviz kurlarını kullanarak tüm seçili piyasaların yerel para birimine dönüştürülür. Fiyatlandırma elektronik tablosunu dışarı aktarıp her bir pazardaki fiyatı inceleyerek yayımlamadan önce bu fiyatları doğrulayın. Tek bir pazarda özel fiyatlar ayarlamak isterseniz, fiyatlandırma elektronik tablosunu değiştirin ve içeri aktarın. 
 
 >[!Note]
->Once a price for a market in your plan is published, it can't be changed later.
+>Fiyatlandırma verilerinin dışarı aktarılmasını sağlamak için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir.
 
-### <a name="plan-audience"></a>Plan Audience
+Bir plan yayımlandıktan sonra nelerin değiştirebilecekleri hakkında bazı kısıtlamalar olduğundan, yayımlamadan önce fiyatlarınızı dikkatlice gözden geçirin.  
 
-You have the option to configure each plan to be visible to everyone or to only a specific audience of your choosing. You can assign membership in this restricted audience using Azure subscription IDs.
+>[!Note]
+>Planınızdaki bir pazar bedeli yayımlandığında, daha sonra değiştirilemez.
 
-**Privacy / This is a private plan** (Optional checkbox) - Check this box to make your plan private and visible only to the restricted audience of your choosing. Once published as a private plan, you can update the audience or choose to make the plan available to everyone. Once a plan is published as visible to everyone, it must remain visible to everyone. (The plan cannot be configured as a private plan again).
+### <a name="plan-audience"></a>Hedef kitle planlayın
 
-**Restricted Audience (Azure subscription IDs)** - Assign the audience that will have access to this private plan. Access is assigned using Azure subscription IDs with the option to include a description of each Azure subscription ID assigned. A maximum of 10 subscription IDs can be added, or 20,000 customers subscription IDs if importing a .csv spreadsheet file.  Azure subscription IDs are represented as GUIDs, and letters must be lower-cased.
+Her planı herkese görünür olarak veya yalnızca seçtiğiniz belirli bir kitlele yapılandırma seçeneğiniz vardır. Azure abonelik kimliklerini kullanarak bu kısıtlanmış hedef kitleye üyelik atayabilirsiniz.
+
+**Gizlilik/bu özel bir plandır** (isteğe bağlı onay kutusu)-planınızı özel ve yalnızca seçtiğiniz kısıtlanmış kitlele görünür hale getirmek için bu kutuyu işaretleyin. Özel bir plan olarak yayımlandıktan sonra izleyiciyi güncelleştirebilir veya planı herkes için kullanılabilir hale getirebilirsiniz. Bir plan herkese görünür olarak yayımlandıktan sonra herkese görünür kalması gerekir. (Plan bir özel plan olarak yeniden yapılandırılamaz).
+
+**Kısıtlanmış hedef kitle (Azure abonelik kimlikleri)** -bu özel plana erişimi olacak hedef kitleyi atayın. Atanan her bir Azure abonelik KIMLIĞININ açıklamasını ekleme seçeneğiyle Azure abonelik kimlikleri kullanılarak erişim atanır. Bir. csv elektronik tablo dosyası içeri aktarıldıysanız, en fazla 10 abonelik kimliği eklenebilir veya 20.000 müşteri abonelik kimliği olabilir.  Azure abonelik kimlikleri, GUID 'Ler olarak temsil edilir ve harflerin küçük harfle oluşturulması gerekir.
 
 >[!Note]
 >Özel hedef kitle (veya kısıtlı kitleci) [**Önizleme**](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#preview) sekmesinde tanımladığınız önizleme izleyicilerinden farklıdır.  Bir önizleme hedef kitlesi, Market 'te canlı olarak yayımlanmadan *önce* teklifinizin erişimine izin verilir. Özel izleyici ataması yalnızca belirli bir plana uygulansa da, önizleme hedef kitlesi doğrulama amacıyla tüm planları (özel veya değil) görüntüleyebilir.

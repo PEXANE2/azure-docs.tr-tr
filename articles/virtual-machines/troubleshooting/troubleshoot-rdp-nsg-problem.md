@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 5f95b42fd17aec4e3ec6b7b8fac1965772fefa67
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: aedb9c8d178cb210efedf8ff4bcbbeca39f89e60
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162601"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981798"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>NSG 'de RDP bağlantı noktası etkinleştirilmediği için bir VM 'ye uzaktan bağlanılamıyor
 
@@ -25,7 +25,7 @@ Bu makalede, ağ güvenlik grubunda (NSG) Uzak Masaüstü Protokolü (RDP) bağl
 
 
 > [!NOTE] 
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../azure-resource-manager/resource-manager-deployment-model.md). Yeni dağıtımlar için klasik dağıtım modeli yerine Kaynak Yöneticisi dağıtım modelini kullanmanızı öneririz. 
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../azure-resource-manager/management/deployment-models.md). Yeni dağıtımlar için klasik dağıtım modeli yerine Kaynak Yöneticisi dağıtım modelini kullanmanızı öneririz. 
 
 ## <a name="symptom"></a>Belirti
 
@@ -45,9 +45,9 @@ Bir NSG 'de RDP bağlantı noktasını etkinleştirmek için şu adımları izle
     **Ad**: Port_3389 </br>
     **Bağlantı noktası (hedef)** : 3389 </br>
     **Protokol**: TCP </br>
-    **Kaynak**: Any </br>
-    **Hedefler**: Any </br>
-    **Eylem**: Allow </br>
+    **Kaynak**: any </br>
+    **Hedefler**: any </br>
+    **Eylem**: izin ver </br>
 
 Kaynak IP adresini belirtirseniz, bu ayar VM 'ye bağlanmak için yalnızca belirli bir IP adresinden veya IP adresi aralığından gelen trafiğe izin verir. RDP oturumunu başlatmak için kullandığınız bilgisayarın aralığın içinde olduğundan emin olun.
 

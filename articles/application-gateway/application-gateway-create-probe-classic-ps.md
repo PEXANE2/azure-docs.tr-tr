@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 5f05c6d82a00e78a4237019128db541eb63f20ba
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e01a1cad98ded9d7ce8683b6adf38b5d53959774
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012247"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966810"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell kullanarak Azure Application Gateway (klasik) için özel bir araştırma oluşturma
 
@@ -24,11 +24,11 @@ ms.locfileid: "74012247"
 Bu makalede, var olan bir Application Gateway 'e PowerShell ile özel bir araştırma eklersiniz. Özel yoklamalar, belirli bir sistem durumu denetimi sayfası veya varsayılan Web uygulamasında başarılı bir yanıt sağlamayan uygulamalar için yararlıdır.
 
 > [!IMPORTANT]
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../azure-resource-manager/resource-manager-deployment-model.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. [Bu adımları Resource Manager modeli kullanarak gerçekleştirmeyi](application-gateway-create-probe-ps.md) öğrenin.
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. [Bu adımları Resource Manager modeli kullanarak gerçekleştirmeyi](application-gateway-create-probe-ps.md) öğrenin.
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
+## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturun
 
 Bir uygulama ağ geçidi oluşturmak için:
 
@@ -143,10 +143,10 @@ Yapılandırma parametreleri şunlardır:
 |Parametre|Açıklama|
 |---|---|
 |**Adı** |Özel araştırma için başvuru adı. |
-| **Protokolü** | Protokol kullanıldı (olası değerler HTTP veya HTTPS 'DIR).|
+| **Protokol** | Protokol kullanıldı (olası değerler HTTP veya HTTPS 'DIR).|
 | **Ana bilgisayar** ve **yol** | Örnek sistem durumunu öğrenmek için uygulama ağ geçidi tarafından çağrılan URL yolunu doldurun. Örneğin, http:\//contoso.com/Web siteniz varsa, araştırma denetimleri için "http:\//contoso.com/path/custompath.htm" özel araştırması, başarılı bir HTTP yanıtına sahip olacak şekilde yapılandırılabilir.|
 | **Aralık** | Yoklama aralığı denetimlerini saniye cinsinden yapılandırır.|
-| **Aş** | Bir HTTP yanıt denetimi için araştırma zaman aşımını tanımlar.|
+| **Zaman Aşımı** | Bir HTTP yanıt denetimi için araştırma zaman aşımını tanımlar.|
 | **Unhealthyıthreshold** | Arka uç örneğini *sağlıksız*olarak işaretlemek için gereken başarısız http yanıtlarının sayısı.|
 
 Hangi arka uç havuzunun özel araştırma ayarlarını kullanacağını atamak için, araştırma adına \<BackendHttpSettings\> yapılandırmasında başvurulur.

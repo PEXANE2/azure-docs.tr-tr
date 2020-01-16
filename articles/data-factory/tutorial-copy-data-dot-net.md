@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f3fdf1b723158db873bc2635de34d878c464201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93c4f71c762cff3e3f5a01f0e2595f3498f9d38d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439432"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977323"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob’dan Azure SQL Veritabanına veri kopyalama
 
@@ -38,7 +38,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* *Azure Depolama hesabı*. Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, bkz. [genel amaçlı depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md).
+* *Azure Depolama hesabı*. Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, bkz. [genel amaçlı depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 * *Azure SQL Veritabanı*. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanınız yoksa bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-single-database-get-started.md).
 * *Visual Studio*. Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır.
 * *[.Net Için Azure SDK](/dotnet/azure/dotnet-tools)* .
@@ -84,7 +84,7 @@ Ardından, bir havuz SQL tablosu oluşturun:
     1. SQL Server 'nizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **SQL Server 'lar**için arama yapın ve seçin.
 
     2. Sunucunuzu seçin.
-    
+
     3. SQL Server menüsünün **güvenlik** başlığı altında Güvenlik **duvarları ve sanal ağlar**' ı seçin.
 
     4. **Güvenlik duvarı ve sanal ağlar** sayfasında, **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver**altında **Açık**' ı seçin.
@@ -154,7 +154,7 @@ Data Factory istemcisi oluşturmak için bu adımları izleyin.
     string inputBlobName = "inputEmp.txt";
 
     // Specify the sink Azure SQL Database information
-    string azureSqlConnString = 
+    string azureSqlConnString =
         "Server=tcp:<your server name>.database.windows.net,1433;" +
         "Database=<your database name>;" +
         "User ID=<your username>@<your server name>;" +
@@ -265,7 +265,7 @@ Console.WriteLine(
 
 ## <a name="create-datasets"></a>Veri kümeleri oluşturun
 
-Bu bölümde, kaynak için diğeri havuz için olmak üzere iki veri kümesi oluşturursunuz. 
+Bu bölümde, kaynak için diğeri havuz için olmak üzere iki veri kümesi oluşturursunuz.
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Kaynak Azure Blob için veri kümesi oluşturma
 
@@ -283,8 +283,8 @@ Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
     {
-        LinkedServiceName = new LinkedServiceReference { 
-            ReferenceName = storageLinkedServiceName 
+        LinkedServiceName = new LinkedServiceReference {
+            ReferenceName = storageLinkedServiceName
         },
         FolderPath = inputBlobPath,
         FileName = inputBlobName,
@@ -309,7 +309,7 @@ Console.WriteLine(
 
 Aşağıdaki kodu bir *Azure SQL veritabanı veri kümesi*oluşturan `Main` yöntemine ekleyin. Desteklenen özellikler ve ayrıntılar hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı veri kümesi özellikleri](connector-azure-sql-database.md#dataset-properties).
 
-Azure SQL Veritabanı’nda havuz verilerini temsil eden bir veri kümesi tanımlayın. Bu veri kümesi, önceki adımda oluşturduğunuz Azure SQL veritabanı bağlı hizmetini ifade eder. Ayrıca, kopyalanan verileri tutan SQL tablosunu belirtir. 
+Azure SQL Veritabanı’nda havuz verilerini temsil eden bir veri kümesi tanımlayın. Bu veri kümesi, önceki adımda oluşturduğunuz Azure SQL veritabanı bağlı hizmetini ifade eder. Ayrıca, kopyalanan verileri tutan SQL tablosunu belirtir.
 
 ```csharp
 // Create an Azure SQL Database dataset
@@ -416,14 +416,14 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     ActivityRunsQueryResponse queryResponse = client.ActivityRuns.QueryByPipelineRun(
         resourceGroup, dataFactoryName, runResponse.RunId, filterParams
     );
- 
+
     if (pipelineRun.Status == "Succeeded")
     {
         Console.WriteLine(queryResponse.Value.First().Output);
     }
     else
         Console.WriteLine(queryResponse.Value.First().Error);
-    
+
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
@@ -564,7 +564,7 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu örnekteki işlem hattı, verileri bir konumdan Azure blob depolama alanındaki başka bir konuma kopyalar. Şunları öğrendiniz: 
+Bu örnekteki işlem hattı, verileri bir konumdan Azure blob depolama alanındaki başka bir konuma kopyalar. Şunları öğrendiniz:
 
 > [!div class="checklist"]
 > * Veri fabrikası oluşturma.
@@ -574,7 +574,7 @@ Bu örnekteki işlem hattı, verileri bir konumdan Azure blob depolama alanında
 > * Bir işlem hattı çalıştırması başlatma.
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme.
 
-Şirket içinden buluta veri kopyalama hakkında bilgi edinmek için aşağıdaki öğreticiye geçin: 
+Şirket içinden buluta veri kopyalama hakkında bilgi edinmek için aşağıdaki öğreticiye geçin:
 
 > [!div class="nextstepaction"]
 >[Buluttan şirket içine veri kopyalama](tutorial-hybrid-copy-powershell.md)

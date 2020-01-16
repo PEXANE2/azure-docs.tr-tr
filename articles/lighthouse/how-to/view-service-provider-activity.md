@@ -1,14 +1,14 @@
 ---
 title: Hizmet sağlayıcısı etkinliğini görüntüleme
 description: Müşteriler, Azure tarafından atanan kaynak yönetimi aracılığıyla hizmet sağlayıcıları tarafından gerçekleştirilen eylemleri görmek için günlüğe kaydedilen etkinliği görüntüleyebilir.
-ms.date: 12/6/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31a9e7ff80623cc59b0a2db5951dff95d3088b05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: de149bddb6917a63d91b1890c0430f64465cb40c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749185"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046101"
 ---
 # <a name="view-service-provider-activity"></a>Hizmet sağlayıcısı etkinliğini görüntüleme
 
@@ -24,6 +24,9 @@ Azure 'un Temsilcili kaynak yönetimi için abonelik temsilcileri olan müşteri
 Etkinlik günlüğünde işlemin adını ve durumunu, gerçekleştirildiği tarih ve saat ile birlikte görürsünüz. Sütunu **tarafından başlatılan olay** , bir hizmet sağlayıcının kiracısında Azure tarafından atanan kaynak yönetimi veya müşterinin kendi kiracısındaki bir kullanıcı olup olmadığını gösteren, hangi kullanıcının işlemi gerçekleştirdiği anlamına gelir. Kullanıcı adının, kiracı veya kullanıcının bu abonelik için atandığı rol yerine gösterildiğini unutmayın.
 
 Günlüğe kaydedilen etkinlik, son 90 gün için Azure portal kullanılabilir. Bu verileri 90 günden daha uzun bir süre için nasıl depolayacağınızı öğrenmek için bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme](../../azure-monitor/platform/activity-log-collect.md)
+
+> [!NOTE]
+> Hizmet sağlayıcısından kullanıcılar etkinlik günlüğünde görünür, ancak bu kullanıcılar ve rol atamaları **Access Control (IAM)** veya API 'ler aracılığıyla rol atama bilgileri alınırken gösterilmez.
 
 ## <a name="set-alerts-for-critical-operations"></a>Kritik işlemler için uyarı ayarlama
 

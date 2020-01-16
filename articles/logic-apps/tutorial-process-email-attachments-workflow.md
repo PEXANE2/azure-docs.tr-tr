@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: ef0445727c100b7262ebffc69be5e00a7956520a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f25486aba9549855939b06ea5b8dfc14db0af95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428785"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969115"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Öğretici: Azure Logic Apps, Azure Işlevleri ve Azure Storage kullanarak e-postaları işlemek için görevleri otomatikleştirme
 
@@ -52,7 +52,7 @@ Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azur
 
 Gelen e-postaları ve ekleri, [Azure depolama kapsayıcısında](../storage/common/storage-introduction.md) bloblar olarak kaydedebilirsiniz.
 
-1. Bir depolama kapsayıcısı oluşturabilmeniz için, Azure portal **temel bilgiler** sekmesinde bu ayarlarla [bir depolama hesabı oluşturun](../storage/common/storage-quickstart-create-account.md) :
+1. Bir depolama kapsayıcısı oluşturabilmeniz için, Azure portal **temel bilgiler** sekmesinde bu ayarlarla [bir depolama hesabı oluşturun](../storage/common/storage-account-create.md) :
 
    | Ayar | Değer | Açıklama |
    |---------|-------|-------------|
@@ -159,7 +159,7 @@ Sonra, gelen e-postadan HTML’yi kaldıran bir [Azure işlevi](../azure-functio
 
    ![Oluşturulan işlev uygulaması](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   Bir işlev uygulaması oluşturmak için [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md)veya [PowerShell ve Kaynak Yöneticisi şablonlarını](../azure-resource-manager/resource-group-template-deploy.md)da kullanabilirsiniz.
+   Bir işlev uygulaması oluşturmak için [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md)veya [PowerShell ve Kaynak Yöneticisi şablonlarını](../azure-resource-manager/templates/deploy-powershell.md)da kullanabilirsiniz.
 
 1. **Işlev uygulamaları** listesinde, henüz genişletilmemişse, işlev uygulamanızı genişletin. İşlev uygulamanız altında **işlevler**' i seçin. İşlevler araç çubuğunda **Yeni işlev**’i seçin.
 
@@ -282,7 +282,7 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
       | **Aralık** | 1 | Denetimler arasında beklenecek aralık sayısı |
       | **Sıklık** | Dakika | Denetimler arası her aralık için zaman birimi |
       ||||
-  
+
    1. **Yeni parametre Ekle** listesinden **Konu filtresi**' ni seçin.
 
    1. Eylemde **Konu filtresi** kutusu göründükten sonra, konuyu burada listelenen şekilde belirtin:
@@ -377,7 +377,8 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
 Sonra, **True ise** dalı için uygulanacak eylemleri tanımlayın. E-postayı eklerle birlikte kaydetmek için e-posta gövdesinden HTML’yi kaldırın, sonra e-posta ve ekler için depolama kapsayıcısında bloblar oluşturun.
 
 > [!NOTE]
-> E-posta ek içermediğinde mantıksal uygulamanızın **False ise** dalı için yapacağı bir şey yoktur. Bu öğreticiyi tamamladıktan sonra ek alıştırma olarak, **False ise** dalı için uygulamak istediğiniz uygun eylemi ekleyebilirsiniz.
+> E-posta ek içermediğinde mantıksal uygulamanızın **False ise** dalı için yapacağı bir şey yoktur.
+> Bu öğreticiyi tamamladıktan sonra ek alıştırma olarak, **False ise** dalı için uygulamak istediğiniz uygun eylemi ekleyebilirsiniz.
 
 ## <a name="call-removehtmlfunction"></a>RemoveHTMLFunction işlevini çağırma
 
@@ -605,7 +606,9 @@ Sonra mantıksal uygulamanızın ekleri gözden geçirmek üzere e-posta gönder
    ||||
 
    > [!NOTE]
-   > **İçerik** alanı gibi eklerin yer aldığı bir diziyi içeren alan seçerseniz tasarımcı eyleme otomatik olarak ilgili alana başvuran bir "For each" döngüsü ekler. Bu şekilde mantıksal uygulamanız ilgili eylemi dizideki tüm öğeler için gerçekleştirebilir. Döngüyü kaldırmak için, dizinin alanını kaldırın, başvuru eylemini döngünün dışına taşıyın, döngünün başlık çubuğundaki üç nokta ( **...** ) simgesini seçin ve **Sil**' i seçin.
+   > **İçerik** alanı gibi eklerin yer aldığı bir diziyi içeren alan seçerseniz tasarımcı eyleme otomatik olarak ilgili alana başvuran bir "For each" döngüsü ekler.
+   > Bu şekilde mantıksal uygulamanız ilgili eylemi dizideki tüm öğeler için gerçekleştirebilir.
+   > Döngüyü kaldırmak için, dizinin alanını kaldırın, başvuru eylemini döngünün dışına taşıyın, döngünün başlık çubuğundaki üç nokta ( **...** ) simgesini seçin ve **Sil**' i seçin.
 
 1. Mantıksal uygulamanızı kaydedin.
 

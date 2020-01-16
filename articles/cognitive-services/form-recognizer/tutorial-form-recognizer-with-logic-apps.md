@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446467"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981255"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Öğretici: faturaları çözümlemek için Azure Logic Apps ile form tanıyıcı kullanma
 
@@ -52,7 +52,7 @@ Bu öğreticide, Azure Logic Apps ve form tanıyıcı kullanılarak oluşturulan
 
 Bu kapsayıcıyı kullanarak modeli eğitebilmeniz için gereken örnek verileri karşıya yükleyebilirsiniz.
 
-1. Depolama hesabı oluşturmak için [Azure depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md) bölümündeki yönergeleri izleyin. Depolama hesabı adı olarak **formdepostorage** kullanın.
+1. Depolama hesabı oluşturmak için [Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md) bölümündeki yönergeleri izleyin. Depolama hesabı adı olarak **formdepostorage** kullanın.
 1. Azure depolama hesabı içinde kapsayıcı oluşturmak için [Azure Blob kapsayıcısı oluşturma](../../storage/blobs/storage-quickstart-blobs-portal.md) bölümündeki yönergeleri izleyin. Kapsayıcı adı olarak **formncontainer** kullanın. Ortak erişim düzeyini kapsayıcı olarak ayarladığınızdan emin olun **(kapsayıcılar ve Bloblar için anonim okuma erişimi)** .
 
     > [!div class="mx-imgBorder"]
@@ -83,7 +83,7 @@ Haydi başlayalım! İş akışınızı ayarlamak için bu adımları izleyin.
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Ad** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
+   | **Adı** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
    | **Abonelik** | <*Azure-subscription-name*> | Azure abonelik adınız |
    | **Kaynak grubu** | <*Azure-Resource-Group-name*> | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](./../../azure-resource-manager/management/overview.md) adı. Bu örnek "My-First-LA-RG" kullanır. |
    | **Konum** | *Azure-region*> < | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |

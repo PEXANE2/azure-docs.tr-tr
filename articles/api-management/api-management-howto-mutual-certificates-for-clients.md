@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 85eeaaa052604c3198ca2ab8988f9e7a77e2a63d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3680473209b3d65d616879dfbb9080dfbb9c80f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430643"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967410"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management 'de istemci sertifikası kimlik doğrulaması kullanarak API 'Leri güvenli hale getirme
 
@@ -27,7 +27,12 @@ API Management, istemci sertifikaları kullanarak API 'lere (yani API Management
 İstemci sertifikaları kullanarak bir API 'nin arka uç hizmetine erişimin güvenliğini sağlama hakkında bilgi için (örneğin, arka uca API Management), bkz. [istemci sertifikası kimlik doğrulaması kullanarak arka uç hizmetlerini güvenli hale](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates) getirme
 
 > [!IMPORTANT]
-> Tüketim katmanında istemci sertifikalarını almak ve doğrulamak için, önce aşağıda gösterildiği gibi "özel etki alanları" dikey penceresinde "istemci sertifikası ıste" ayarını açmanız gerekir.
+> Geliştirici, temel, standart veya Premium katmanlarda HTTP/2 üzerinden istemci sertifikaları almak ve doğrulamak için aşağıda gösterildiği gibi "özel etki alanları" dikey penceresinde "istemci sertifikası anlaş" ayarını açmanız gerekir.
+
+![İstemci sertifikası ile anlaş](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+
+> [!IMPORTANT]
+> Tüketim katmanında istemci sertifikalarını almak ve doğrulamak için aşağıda gösterildiği gibi "özel etki alanları" dikey penceresinde "istemci sertifikası ıste" ayarını açmanız gerekir.
 
 ![İstemci sertifikası isteme](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 

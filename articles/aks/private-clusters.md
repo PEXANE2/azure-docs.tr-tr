@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: d7b1d82f88afd8ac3d94cbdd2d117834c12d0b96
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e01579272878a2436abca2ee50f0f6ea6cf78cbf
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867145"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045600"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma (Önizleme)
 
@@ -131,7 +131,7 @@ API sunucusu uç noktasının genel IP adresi yok. Sonuç olarak, bir sanal ağd
 
 ## <a name="limitations"></a>Sınırlamalar 
 * [Azure özel bağlantı hizmeti sınırlamaları][private-link-service] , özel kümeler, Azure özel uç noktaları ve sanal ağ hizmeti uç noktaları için geçerlidir; bu, şu anda aynı sanal ağda desteklenmemektedir.
-* Özel bir kümede özel bir Azure sanal ağındaki özel Cisco uygulama merkezli altyapı (acı) örneklerini almak için bir özel kümedeki sanal düğümler desteklenmez.
+* Özel bir kümedeki sanal düğümler için özel bir Azure sanal ağındaki özel Cisco uygulama merkezli altyapı (Cisco acı) örneklerini döndürme desteği yoktur.
 * Özel kümeler ile kutudan Azure DevOps tümleştirmesi desteklenmez.
 * Azure Container Registry özel AKS ile çalışmak üzere etkinleştirmesi gereken müşteriler için, Container Registry sanal ağı aracı kümesi sanal ağıyla eşlenmelidir.
 * Azure Dev Spaces için geçerli destek yok.

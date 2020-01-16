@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4df22108591fe3f80078bce050081c4953443847
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 9342a70e539c4a2717fe45426c26595285172681
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902991"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045791"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Yerel Azure sertifikası kimlik doğrulaması P2S yapılandırmaları için VPN istemcisi yapılandırma dosyalarını oluşturma ve yapılandırma
 
@@ -99,9 +99,14 @@ Mac 'te sertifika kimlik doğrulaması için yerel VPN istemcisini yapılandırm
 4. **Genel** klasöründe, **vpnsettings. xml** dosyasından **VPNServer** etiket değerini kopyalayın. Bu değeri, profilin **sunucu adresine** ve **uzak kimlik** alanlarına yapıştırın.
 
    ![sunucu bilgileri](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. **Kimlik doğrulama ayarları** ' na tıklayıp **sertifika**' yı seçin. 
+5. **Kimlik doğrulama ayarları** ' na tıklayıp **sertifika**' yı seçin. **Catalina**için **hiçbiri** ve ardından **sertifika** öğesine tıklayın
 
    ![kimlik doğrulama ayarları](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
+
+   * Catalina için **hiçbiri** ' ni ve ardından **sertifika**' ı seçin. Doğru sertifikayı **seçin** :
+   
+   ![Catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+
 6. **Seç...** öğesine tıklayın kimlik doğrulaması için kullanmak istediğiniz istemci sertifikasını seçmek için. Bu, adım 2 ' de yüklediğiniz sertifikadır.
 
    ![sertifika](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)

@@ -1,19 +1,19 @@
 ---
 title: Ticari Market 'te yeni bir Dynamics 365 for Operations teklifi oluşturun
 description: Azure Market, AppSource veya Microsoft Iş Ortağı Merkezi 'ndeki ticari Market portalını kullanan bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleme veya satma için yeni bir Dynamics 365 Işlem teklifi oluşturma.
-author: JnHs
+author: ChJenk
 manager: evansma
-ms.author: jenhayes
+ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 0318f851f547aed7c7682c9e6841f71d56c98be1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/13/2020
+ms.openlocfilehash: 1ba7fca7576c6f015ad7bbcb47909b90c3065d58
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750921"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045949"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Yeni bir Dynamics 365 for Operations teklifi oluşturma
 
@@ -24,7 +24,7 @@ Operations tekliflerini Dynamics 365 oluşturmaya başlamak için, ilk olarak [b
 ![Iş Ortağı Merkezi 'nde ticari Market panosu](./media/new-offer-overview.png)
 
 >[!Note]
-> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan teklifle ilgili düzenlemeler yalnızca sistem sırasında ve yeniden yayımlamadan sonra mağazaların ön yüzlerinin güncelleştirilmesini sağlar. Lütfen değişiklikleri yaptıktan sonra teklifi yayın için gönderdiğinizden emin olun.
+> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan teklifle ilgili düzenlemeler yalnızca sistem sırasında ve yeniden yayımlamadan sonra mağazaların ön yüzlerinin güncelleştirilmesini sağlar. Değişiklikleri yaptıktan sonra teklifi yayın için gönderdiğinizden emin olun.
 
 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
@@ -33,7 +33,7 @@ Operations tekliflerini Dynamics 365 oluşturmaya başlamak için, ilk olarak [b
 
 ### <a name="offer-id-and-alias"></a>Teklif KIMLIĞI ve diğer ad
 
-- **TEKLIF kimliği**: hesabınızdaki her teklif için benzersiz tanımlayıcı. Bu KIMLIK, Market teklifi ve Azure Resource Manager şablonları (varsa) için URL adresindeki müşterilere görünür olacaktır. Teklif KIMLIĞI küçük harf alfasayısal karakterler (tireler ve alt çizgiler dahil ancak boşluk yok) olmalıdır. Bu 50 karakterle sınırlıdır ve **Oluştur**' u seçtikten sonra değiştirilemez.  Örneğin, burada *Test-teklif-1* girerseniz, teklif URL 'si `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`olur.
+- **TEKLIF kimliği**: hesabınızdaki her teklif için benzersiz tanımlayıcı. Bu KIMLIK, Market teklifi ve Azure Resource Manager şablonları (varsa) için URL adresindeki müşterilere görünür olacaktır. Teklif KIMLIĞI küçük harf alfasayısal karakterler (tireler ve alt çizgiler dahil ancak boşluk yok) olmalıdır. Bu KIMLIK 50 karakterle sınırlıdır ve **Oluştur**' u seçtikten sonra değiştirilemez.  Örneğin, burada *Test-teklif-1* girerseniz, teklif URL 'si `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`olur.
 
 - **Teklif diğer adı**: Iş Ortağı Merkezi içindeki teklifine başvurmak için kullanılan ad. Bu ad Market 'te kullanılmayacak ve teklif adından ve müşterilere gösterilecek diğer değerlerden farklı. Bu değer, **Oluştur**' u seçtikten sonra değiştirilemez.
 
@@ -66,7 +66,7 @@ Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişi
 
 Test sürücüsü, bu kullanıcılara teklifinizi "satın almadan önce dene" seçeneği sunarak, daha fazla dönüştürmeye ve yüksek oranda nitelikli müşteri adaylarının oluşturulmasına neden olacak şekilde sergilemenin harika bir yoludur. [Sınama sürücüleri hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-Bir sınama sürücüsünü etkinleştirmek için, **sınama sürücüsünü etkinleştir** kutusunu işaretleyin. Daha sonra, müşterilerin teklifinizi sabit bir süre için denemesini sağlamak üzere [test sürücüsü teknik yapılandırma](#test-drive-technical-configuration) yapılandırması ' nda bir tanıtım ortamı yapılandırmanız gerekir. 
+Bir sınama sürücüsünü etkinleştirmek için, **sınama sürücüsünü etkinleştir** kutusunu işaretleyin. Daha sonra, müşterilerin teklifinizi sabit bir süre için denemesini sağlamak üzere teknik yapılandırma Yapılandır ' da [Test sürücüsünde](#test-drive-technical-configuration) bir tanıtım ortamı yapılandırmanız gerekir.
 
 #### <a name="type-of-test-drive"></a>Test sürücüsünün türü
 
@@ -89,9 +89,9 @@ Aşağıdaki seçeneklerden seçim yapın:
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-Daha fazla bilgi için bkz. [lider yönetimine genel bakış](./commercial-marketplace-get-customer-leads.md) .
+Daha fazla bilgi için bkz. [müşteri adayı yönetimine genel bakış](./commercial-marketplace-get-customer-leads.md).
 
-Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
+Bir sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın.
 
 ## <a name="properties"></a>Özellikler
 
@@ -99,11 +99,11 @@ Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 ### <a name="category"></a>Kategori
 
-Birincil ve ikincil kategori dahil olmak üzere en fazla iki (2) kategori seçin (isteğe bağlı). Her birincil ve/veya ikincil kategori için en fazla iki (2) alt kategori seçin. Alt kategori seçilmezse, teklif seçili kategoride bulunabilir olmaya devam eder.
+En az bir ve en fazla üç kategori seçin. Bu kategoriler, teklifinizi uygun Market arama alanına yerleştirmek için kullanılacaktır. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğine dikkat edin.
 
 ### <a name="industry"></a>Sektör
 
-İsteğe bağlı olarak her bir sektör altında en fazla iki sektör ve iki ifade seçebilirsiniz. Bu kategoriler, arama filtrelerinde sektör ve verticileri kullanıldığında ve storefront içinde uygulandığında teklifinizi görüntülemek için kullanılır.  Teklifiniz belirli bir sektör ve/veya dikey hedefleniyorsa, teklifinizin teklif açıklamasında seçili endüstrileri veya açıklamaları nasıl desteklediğini açıkladığınızdan emin olun.  Aksi takdirde, teklifiniz sektöre özgü değilse, bir seçim yapmayın ve bu bölümü boş bırakın.
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Uygulama sürümü
 
@@ -125,7 +125,7 @@ Standart sözleşmeyi kullanmak için **Standart sözleşmeyi kullan?** kutusunu
 
 ## <a name="offer-listing"></a>Teklif listesi
 
-Teklif listesi sayfası, teklifinizin listelenecek dilleri görüntüler. Şu anda **İngilizce (Birleşik Devletler)** seçeneğinin kullanılabilir tek seçenek olduğunu unutmayın.
+Teklif listesi sayfası, teklifinizin listelenecek dilleri görüntüler. Şu anda **İngilizce (Birleşik Devletler)** kullanılabilir tek seçenektir.
 
 Her dil/Pazar için Market ayrıntılarını (teklif adı, açıklama, görüntüler vb.) tanımlamanız gerekir. Bu bilgileri sağlamak için dil/Pazar adını seçin.
 
@@ -138,22 +138,40 @@ Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığ�
 
 ### <a name="short-description"></a>Kısa açıklama
 
-Teklifinizin kısa bir açıklamasını sağlayın (en fazla 100 karakter). Bu, Market arama sonuçlarında kullanılabilir.
+Teklifinizin kısa bir açıklamasını sağlayın (en fazla 100 karakter). Bu açıklama Market arama sonuçlarında kullanılabilir.
 
 ### <a name="description"></a>Açıklama
 
-Teklifiniz için daha uzun bir açıklama sağlayın (en fazla 3.000 karakter). Bu açıklama Market dökümüne Genel Bakış bölümündeki müşterilere görüntülenecektir. Teklifinizin değer teklifini, anahtar avantajlarını, kategori ve/veya sektör ilişkilendirmelerini, uygulama içi satın alma fırsatlarını ve gerekli tüm teklifleri dahil edin. 
+Teklifiniz için daha uzun bir açıklama sağlayın (en fazla 3.000 karakter). Bu açıklama Market dökümüne Genel Bakış bölümündeki müşterilere görüntülenecektir. Teklifinizin değer teklifini, anahtar avantajlarını, kategori ve/veya sektör ilişkilendirmelerini, uygulama içi satın alma fırsatlarını ve gerekli tüm teklifleri dahil edin.
 
 Tanımlarınızı yazmak için bazı ipuçları:  
 
-- Tanımınızın ilk birkaç cümlede teklifinizin değer teklifini açık bir şekilde açıklamalıdır. Değer teklifinde aşağıdakileri ekleyin:
+- Tanımınızın ilk birkaç cümlede teklifinizin değer teklifini açık bir şekilde açıklamalıdır. Değer teklifinde aşağıdaki bilgileri ekleyin:
   - Ürünün açıklaması
   - Üründen faydalanan Kullanıcı türü
   - Müşteri ihtiyaçları veya ürün adresleriyle ilgili bir sorun
 - İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini aklınızda bulundurun.  
 - Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teslim ettiğiniz değere odaklanın.  
-- Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın. 
+- Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın.
 - Açıklamanızı biçimlendirmek ve daha ilgi çekici hale getirmek için HTML etiketleri kullanmayı düşünün.
+
+Teklif açıklamanızı daha ilgi çekici hale getirmek için, tanımlarınızı biçimlendirmek için zengin metin düzenleyicisini kullanın.
+
+![Zengin metin düzenleyicisini kullanma](./media/text-editor2.png)
+
+Zengin metin düzenleyicisini kullanmak için aşağıdaki yönergeleri kullanın:
+
+- İçeriğinizin biçimini değiştirmek için, biçimlendirmek istediğiniz metni vurgulayın ve aşağıda gösterildiği gibi bir metin stili seçin:
+
+     ![Metin biçimini değiştirmek için zengin metin düzenleyicisini kullanma](./media/text-editor3.png)
+
+- Metne bir madde işaretli veya numaralı liste eklemek için aşağıdaki seçenekleri kullanın:
+
+     ![Liste eklemek için zengin metin düzenleyicisini kullanma](./media/text-editor4.png)
+
+- Metne girintileme eklemek veya kaldırmak için aşağıdaki seçenekleri kullanın:
+
+     ![Girintilemek için zengin metin düzenleyicisini kullanma](./media/text-editor5.png)
 
 ### <a name="search-keywords"></a>Anahtar sözcüklerde ara
 
@@ -177,13 +195,13 @@ Kuruluşunuzun gizlilik ilkesinin URL 'sini girin. Uygulamanızın gizlilik yasa
 
 ### <a name="contacts"></a>Kişiler
 
-Bu bölümde, bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad, e-posta ve telefon numarası sağlamanız gerekir. Bu bilgiler müşterilere gösterilmez, ancak Microsoft tarafından kullanılabilir ve CSP iş ortakları için de sağlanıyor olabilir.
+Bu bölümde, bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad, e-posta ve telefon numarası girin. Bu bilgiler müşterilere gösterilmez, ancak Microsoft tarafından kullanılabilir ve CSP iş ortakları için de sağlanıyor olabilir.
 
-**Destek kişisi** bölümünde, CSP iş ortaklarının teklifiniz için destek BULABILECEĞI **Destek URL** 'sini de sağlamanız gerekir.
+**Destek kişisi** bölümünde, CSP iş ortaklarının teklifiniz için destek BULABILECEĞI **Destek URL** 'sini sağlayın.
 
 ### <a name="supporting-documents"></a>Destekleyici belgeler
 
-Burada, teknik incelemeler, broşürler, denetim listeleri veya sunular gibi en az bir (en fazla üç) ilgili pazarlama belgesi sağlamanız gerekir. Bu belgeler. PDF biçiminde olmalıdır.
+Burada, teknik incelemeler, broşürler, denetim listeleri veya sunular gibi en az bir (en fazla üç) ilgili pazarlama belgesi sağlayın. Bu belgeler. PDF biçiminde olmalıdır.
 
 ### <a name="marketplace-images"></a>Market görüntüleri
 
@@ -191,7 +209,7 @@ Bu bölümde, müşteri teklifinizi gösterirken kullanılacak logo ve görünt�
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-Teklifinizin logosunu iki boyutta sağlamanız gerekir: **küçük (48 x 48)** ve **büyük (216 x 216)** .
+Teklifinizin logosunu iki boyutta sağlayın: **küçük (48 x 48)** ve **büyük (216 x 216)** .
 
 #### <a name="hero"></a>Hero
 
@@ -215,11 +233,11 @@ Teklifinizin nasıl çalıştığını gösteren ekran görüntüleri ekleyin. E
 
 ### <a name="markets"></a>Pazar
 
-Bu bölüm, teklifinizin kullanılabilir olması gereken pazarları belirtmenize olanak tanır. Bunu yapmak için **pazarları Düzenle** ' yi seçin. Bu, **Pazar seçimi** açılır penceresini görüntüler.
+Bu bölüm, teklifinizin kullanılabilir olması gereken pazarları belirtmenize olanak tanır. Bunu yapmak için **Pazar seçimi** açılır penceresini görüntüleyen **pazarları Düzenle '** yi seçin.
 
-Varsayılan olarak, bir pazar seçili değildir, ancak teklifinizi yayımlamak için en az bir pazar seçmeniz gerekir. Teklifinizin her olası pazarda kullanılabilmesini sağlamak için **Tümünü Seç** ' e tıklayın veya eklemek istediğiniz belirli pazarları seçin. İşiniz bittiğinde **Kaydet**' i seçin.
+Varsayılan olarak, bir piyasa seçili değildir. Teklifinizi yayımlamak için en az bir pazar seçin. Teklifinizin her olası pazarda kullanılabilmesini sağlamak için **Tümünü Seç** ' e tıklayın veya eklemek istediğiniz belirli pazarları seçin. İşiniz bittiğinde **Kaydet**' i seçin.
 
-Burada yaptığınız seçimlerin yalnızca yeni alımlar için uygulanacağını unutmayın; zaten belirli bir pazar ortamında uygulamanız varsa ve daha sonra bu pazarı kaldırırsanız, bu pazarda zaten sunulan bir pazara sahip kişiler bunu kullanmaya devam edebilir, ancak bu pazardaki yeni müşteriler teklifinizi alabilir.
+Burada yaptığınız seçimler yalnızca yeni alımlar için geçerlidir; zaten belirli bir pazar ortamında uygulamanız varsa ve daha sonra bu pazarı kaldırırsanız, bu pazarda zaten sunulan bir pazara sahip kişiler bunu kullanmaya devam edebilir, ancak bu pazardaki yeni müşteriler teklifinizi alabilir.
 
 > [!IMPORTANT]
 > Bu gereksinimler burada veya Iş Ortağı Merkezi 'nde listelenmese de, yerel yasal gereksinimleri karşılamak sizin sorumluluğunuzdadır.
@@ -275,7 +293,7 @@ Aşağıdaki test sürücüsü türleri, her biri kendi teknik yapılandırma ge
 
 - **Test sürücüsü Azure Resource Manager şablonu**: Azure Resource Manager şablonunuzu içeren. zip ' i yükleyin.  Hızlı başlangıç makalesinde Azure Resource Manager şablonu oluşturma hakkında daha fazla bilgi edinin [Azure Portal kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-- **Sınama sürücüsü süresi** (zorunlu): test sürücüsünün etkin kalacağı sürenin uzunluğunu saat cinsinden belirtin. Bu süre sona erdikten sonra Test Sürüşü otomatik olarak sona erer. Bu süre yalnızca birkaç saat (örn. "2" saat, "1,5" geçerli değildir) ile ayarlanabilir.
+- **Sınama sürücüsü süresi** (zorunlu): test sürücüsünün etkin kalacağı sürenin uzunluğunu saat cinsinden belirtin. Bu süre sona erdikten sonra Test Sürüşü otomatik olarak sona erer. Bu süre yalnızca birkaç saat (örneğin, "2" saat) ile ayarlanabilir. "1,5" geçerli değil).
 
 ### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Dynamics 365 test sürücüsü için teknik yapılandırma
 
@@ -283,19 +301,19 @@ Microsoft, bu test sürücüsü türünü kullanarak hizmet sağlamayı ve dağ�
 
 - **En fazla eşzamanlı test sürücüsü** (gerekli): test sürücünüzü tek seferde kullanabilen en fazla müşteri sayısını ayarlayın. Her eşzamanlı kullanıcı, test sürücüsü etkinken bir Dynamics 365 lisansını kullanır, bu nedenle maksimum sınır kümesini destekleyecek yeterli lisansa sahip olduğunuzdan emin olmanız gerekir. Önerilen 3-5 değeri.
 
-- **Sınama sürücüsü süresi** (zorunlu): saat sayısını tanımlayarak test sürücüsünün etkin kalacağı sürenin uzunluğunu girin. Bu süre dolduktan sonra, oturum sona erdir ve artık lisanslarınızdan birini tüketmez. Teklifinizin karmaşıklığına bağlı olarak 2-24 saat arasında bir değer öneririz. Bu süre yalnızca birkaç saat (örn. "2" saat, "1,5" geçerli değildir) ile ayarlanabilir.  Kullanıcı zaman aşımına uğrar ve test sürücüsüne yeniden erişmek istediğinizde yeni bir oturum isteyebilir.
+- **Sınama sürücüsü süresi** (zorunlu): saat sayısını tanımlayarak test sürücüsünün etkin kalacağı sürenin uzunluğunu girin. Bu süre dolduktan sonra, oturum sona erdir ve artık lisanslarınızdan birini tüketmez. Teklifinizin karmaşıklığına bağlı olarak 2-24 saat arasında bir değer öneririz. Bu süre yalnızca birkaç saat (örneğin, "2" saat) ile ayarlanabilir. "1,5" geçerli değil).  Kullanıcı zaman aşımına uğrar ve test sürücüsüne yeniden erişmek istediğinizde yeni bir oturum isteyebilir.
 
-- **Örnek URL** (gerekli): müşterinin test sürücüsüne başlayacağı URL. Genellikle uygulamanızı örnek verilerle çalıştıran Dynamics 365 örneğinizin URL 'SI (ör. https://testdrive.crm.dynamics.com).
+- **Örnek URL** (gerekli): müşterinin test sürücüsüne başlayacağı URL. Genellikle uygulamanızı örnek verilerle çalıştıran Dynamics 365 örneğinizin URL 'SI (örneğin, https://testdrive.crm.dynamics.com).
 
-- **Örnek Web API URL 'si** (gerekli): Microsoft 365 hesabınızda oturum açarak ve **Ayarlar** ' a giderek, Dynamics 365 ÖRNEĞINIZ IÇIN Web apı URL 'sini alın \&gt; **Özelleştirme** \&gt; **Geliştirici kaynakları** \&gt; **Örnek Web API 'si (hizmet kök URL 'si)** , burada bulunan URL 'yi kopyalayın (ör. https://testdrive.crm.dynamics.com/api/data/v9.0).
+- **Örnek Web API URL 'si** (gerekli): Microsoft 365 hesabınızda oturum açarak ve **Ayarlar** ' a giderek, Dynamics 365 ÖRNEĞINIZ IÇIN Web apı URL 'sini alın \&gt; **Özelleştirme** \&gt; **Geliştirici kaynakları** \&gt; **Örnek Web API 'si (hizmet kök URL 'si)** , burada bulunan URL 'yi kopyalayın (örneğin, https://testdrive.crm.dynamics.com/api/data/v9.0).
 
-- **Rol adı** (gerekli): özel Dynamics 365 test sürücünüzde tanımladığınız güvenlik rolü adını sağlayın. Bu, kullanıcıya test sürücüleri sırasında atanır (örn. Test-Drive-Role).
+- **Rol adı** (gerekli): özel Dynamics 365 test sürücünüzde tanımladığınız güvenlik rolü adını sağlayın. Bu, kullanıcıya test sürücüleri sırasında atanır (örneğin, Test-Drive-Role).
 
 ### <a name="technical-configuration-for-logic-app-test-drive"></a>Mantıksal uygulama sınama sürücüsü için teknik yapılandırma
 
 Herhangi bir özel ürün, çeşitli karmaşık çözüm mimarilerini kapsayan bu tür test sürücüsü Dağıtım şablonunu kullanmalıdır. Mantıksal uygulama test sürücüleri ayarlama hakkında daha fazla bilgi için bkz. GitHub üzerinde [işlemler](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) ve [müşteri katılımı](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) .
 
-- **Bölge** (gerekli, tek seçimli açılan liste): Şu anda, test sürücünüzün kullanılabilir hale getirilbileceği 26 Azure tarafından desteklenen bölge vardır. Mantıksal uygulamanızın kaynakları seçtiğiniz bölgede dağıtılır. Mantıksal uygulamanızda belirli bir bölgede depolanan özel kaynaklar varsa bölgenin burada seçildiğinden emin olun. Bunu yapmanın en iyi yolu, mantıksal uygulamanızı portalda Azure aboneliğinizde yerel olarak dağıtmaktır ve bu seçimi yapmadan önce doğru çalıştığını doğrular.
+- **Bölge** (gerekli, tek seçimli açılan liste): Şu anda, test sürücünüzün kullanılabilir hale getirilbileceği 26 Azure tarafından desteklenen bölge vardır. Mantıksal uygulamanızın kaynakları seçtiğiniz bölgede dağıtılır. Mantıksal uygulamanızda belirli bir bölgede depolanan özel kaynaklar varsa bölgenin burada seçildiğinden emin olun. Bölgeniz için özel kaynaklarınızın mevcut olduğundan emin olmanın en iyi yolu, mantıksal uygulamanızı portalda Azure aboneliğinizde yerel olarak dağıtmaktır ve bu seçimi yapmadan önce doğru çalıştığını doğrular.
 
 - **En fazla eşzamanlı test sürücüsü** (gerekli): test sürücünüzü tek seferde kullanabilen en fazla müşteri sayısını ayarlayın. Bu test sürücüleri zaten dağıtılır ve müşterilerin bir dağıtımı beklemeden bunlara anında erişmelerini sağlar.
 
@@ -313,31 +331,31 @@ Etkileşimli bir Power BI görseli göstermek isteyen ürünler, özel olarak ol
 
 ### <a name="deployment-subscription-details"></a>Dağıtım aboneliği ayrıntıları
 
-Test sürücüsünü sizin adınıza dağıtmak için lütfen benzersiz ve benzersiz bir Azure aboneliği oluşturun ve sağlayın. (Power BI test sürücüleri için gerekli değildir).
+Test sürücüsünü sizin adınıza dağıtmak için, ayrı ve benzersiz bir Azure aboneliği oluşturun ve sağlayın. (Power BI test sürücüleri için gerekli değildir).
 
 - **Azure ABONELIK kimliği** (Azure Resource Manager ve Logic Apps için gereklidir): Azure hesap hizmetlerinizi kaynak kullanımı raporlama ve faturalama için erişim izni vermek üzere abonelik kimliğini girin. Henüz bir tane yoksa, test sürücüleri için kullanmak üzere [ayrı bir Azure aboneliği oluşturmayı](https://docs.microsoft.com/azure/billing/billing-create-subscription) düşünmeniz önerilir. [Azure Portal](https://portal.azure.com/) oturum açarak ve sol taraftaki menüdeki **abonelikler** SEKMESINE giderek Azure abonelik kimliğinizi bulabilirsiniz. Sekmeyi seçtiğinizde, abonelik KIMLIĞINIZ görüntülenir (örneğin, "a83645ac-1234-5AB6-345-1h234g764ghty").
 
-- **Azure AD KIRACı kimliği** (gerekli): Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **Özellikler** ' i seçin, sonra listelenen **dizin kimliği** numarasını (ör. 50c464d3-4930-494c-963c-1e951d15360e) arayın. Kuruluşunuzun kiracı KIMLIĞINI Ayrıca, etki alanı adı URL 'nizi kullanarak da arayabilirsiniz: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+- **Azure AD KIRACı kimliği** (gerekli): Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **Özellikler**' i seçin, sonra listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın. Kuruluşunuzun kiracı KIMLIĞINI Ayrıca, etki alanı adı URL 'nizi kullanarak da arayabilirsiniz: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
 - **Azure AD kiracı adı** (dinamik 365 için gereklidir): Azure ACTIVE DIRECTORY (ad) adınızı girin. Bu adı bulmak için sağ üst köşedeki [Azure Portal](https://portal.azure.com/)oturum açın, kiracı adınız hesap adınızın altında listelenecektir.
 
-- **Azure AD uygulama kimliği** (gerekli): Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol menüden Active Directory sekmesini seçin, **uygulama kayıtları**' yı seçin, ardından listelenen **uygulama kimliği** numarasını (ör. 50c464d3-4930-494c-963c-1e951d15360e) arayın.
+- **Azure AD uygulama kimliği** (gerekli): Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol menüden Active Directory sekmesini seçin, **uygulama kayıtları**' yı seçin, ardından listelenen **uygulama kimliği** numarasını arayın (örneğin, 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD uygulama istemci parolası** (gerekli): Azure AD uygulama [Istemci gizli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)anahtarını girin. Bu değeri bulmak için [Azure Portal](https://portal.azure.com/)oturum açın. Sol menüdeki **Azure Active Directory** sekmesini seçin, **uygulama kayıtları**' i seçin ve ardından test sürücüsü uygulamanızı seçin. Sonra **Sertifikalar ve gizlilikler**' ı seçin, **yeni istemci parolası**' nı seçin, bir açıklama girin, **süresi dolmasın**' ı seçin ve ardından **Ekle**' yi Değeri kopyalamadığınızdan emin olun. (Bunu yapmadan önce sayfadan uzaklaşmayın, aksi takdirde değere erişemezsiniz.)
+- **Azure AD uygulama istemci parolası** (gerekli): Azure AD uygulama [Istemci gizli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)anahtarını girin. Bu değeri bulmak için [Azure Portal](https://portal.azure.com/)oturum açın. Sol menüdeki **Azure Active Directory** sekmesini seçin, **uygulama kayıtları**' i seçin ve ardından test sürücüsü uygulamanızı seçin. Sonra **Sertifikalar ve gizlilikler**' ı seçin, **yeni istemci parolası**' nı seçin, bir açıklama girin, **süresi dolmasın**' ı seçin ve ardından **Ekle**' yi Değeri kopyalamadığınızdan emin olun. (Değeri bir yere göz önünde yapmadan önce sayfadan uzaklaşmayın veya değere erişemezsiniz.)
 
 Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 ### <a name="test-drive-marketplace-listings"></a>Sınama sürücüsü Market listeleri
 
-**Test sürücüsü** sekmesinde bulunan **Market listeleme** seçeneği, test sürücünüzün kullanılabildiği dilleri görüntüler. Şu anda **İngilizce (Birleşik Devletler)** kullanılabilir tek konum olduğunu unutmayın. Sınama sürücüsü deneyimini açıklayan bilgileri girmek için dil adını seçin.
+**Test sürücüsü** sekmesinde bulunan **Market listeleme** seçeneği, test sürücünüzün kullanılabildiği dilleri görüntüler. Şu anda **İngilizce (Birleşik Devletler)** kullanılabilir tek konumdur. Sınama sürücüsü deneyimini açıklayan bilgileri girmek için dil adını seçin.
 
-- **Açıklama** (gerekli): test sürücünüzü, neyi gösterdiklerinizi, kullanıcının deneme amaçlarını, araştırılacak özellikleri ve kullanıcının teklifinizi elde edip etmeyeceğinizi belirlemesine yardımcı olmak için Ilgili bilgileri tanıtın. Bu alana en fazla 3.000 karakter metin girilebilir. 
+- **Açıklama** (gerekli): test sürücünüzü, neyi gösterdiklerinizi, kullanıcının deneme amaçlarını, araştırılacak özellikleri ve kullanıcının teklifinizi elde edip etmeyeceğinizi belirlemesine yardımcı olmak için Ilgili bilgileri tanıtın. Bu alana en fazla 3.000 karakter metin girilebilir.
 
 - **Erişim bilgileri** (Azure Resource Manager ve mantıksal test sürücüleri için gereklidir): Bu test sürücüsüne erişmek ve kullanmak için müşterinin neleri bilmesi gerektiğini açıklayın. Teklifinizi kullanmaya yönelik bir senaryoya ve müşterinin test sürüşü genelinde özelliklere erişmek için bilmeleri gereken tam olarak ne olduğunu öğrenin. Bu alana en fazla 10.000 karakter metin girilebilir.
 
-- **Kullanıcı el ile** (gerekli): test sürücünüzün deneyiminizin derinlemesine bir yolu. Kullanıcı el kitabı, müşterinin test sürücüsüyle karşılaşmasını istediğiniz şekilde tam olarak kapsamalıdır ve sahip olabileceği sorulara başvuru olarak görev yapar. Dosya, karşıya yüklendikten sonra PDF biçiminde ve adlandırılmalıdır (en fazla 255 karakter) olmalıdır.
+- **Kullanıcı el ile** (gerekli): test sürücünüzün deneyiminizdeki derinlemesine bir adım adım. Kullanıcı el kitabı, müşterinin test sürücüsüyle karşılaşmasını istediğiniz şekilde tam olarak kapsamalıdır ve sahip olabileceği sorulara başvuru olarak görev yapar. Dosya, karşıya yüklendikten sonra PDF biçiminde ve adlandırılmalıdır (en fazla 255 karakter) olmalıdır.
 
-- **Videolar: video ekleme** (isteğe bağlı): videolar, YouTube veya Vimeo 'a yüklenebilir ve burada bir bağlantı ve küçük resim görüntüsü (533 x 324 piksel) ile birlikte başvuruda bulunabilir. böylece, bir müşterinin test sürücüsünü daha iyi anlamasına yardımcı olmak için, teklif özelliklerinin nasıl kullanılacağına ve avantajlarının vurgulanmasını sağlayan senaryolar hakkında bilgi edinmek
+- **Videolar: video ekleme** (isteğe bağlı): videolar, YouTube veya Vimeo 'a yüklenebilir ve burada bir bağlantı ve küçük resim görüntüsü (533 x 324 piksel) ile birlikte başvuruda bulunabilir. böylece, bir müşterinin test sürücüsünü daha iyi anlamasına yardımcı olmak için, teklifin özelliklerini nasıl kullanacağınızla ilgili bilgi ve avantajları vurgulayan senaryolar hakkında bilgi
   - **Ad** (gerekli)
   - **URL (yalnızca YouTube veya Vimeo)** (gerekli)
   - **Küçük resim (533 x 324px)** : görüntü dosyası png biçiminde olmalıdır.
@@ -348,7 +366,7 @@ Bu sayfa teklifinizi doğrulamamıza yardımcı olmak için teklifiniz hakkında
 
 ### <a name="validation-assets"></a>Doğrulama varlıkları
 
-Bu bölüme bir [Özelleştirme analizi raporu (otomobil)](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/dev-tools/customization-analysis-report) yüklemeniz gerekir. Bu rapor, özelleştirme ve uzantı modelleriniz analiz edilirken, önceden tanımlanmış en iyi yöntem kuralları kümesine göre oluşturulur.
+Bu bölüme bir [Özelleştirme analizi raporu (otomobil)](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/dev-tools/customization-analysis-report) yükleyin. Bu rapor, özelleştirme ve uzantı modelleriniz analiz edilirken, önceden tanımlanmış en iyi yöntem kuralları kümesine göre oluşturulur.
 
 Bu dosya. xls veya. xlsx biçiminde olmalıdır. Birden fazla raporunuz varsa, tüm raporları içeren bir. zip dosyasını karşıya yükleyebilirsiniz.
 
@@ -364,16 +382,16 @@ Bu dosya. xls veya. xlsx biçiminde olmalıdır. Birden fazla raporunuz varsa, t
 
 ### <a name="submit-offer-to-preview"></a>Önizlemeye teklif Gönder
 
-Teklifin tüm gerekli bölümlerini tamamladıktan sonra portalın sağ üst köşesinde **Yayımla** ' yı seçin. **İnceleme ve yayımlama** sayfasına yeniden yönlendirilirsiniz. 
+Teklifin tüm gerekli bölümlerini tamamladıktan sonra portalın sağ üst köşesinde **Yayımla** ' yı seçin. **İnceleme ve yayımlama** sayfasına yönlendirilirsiniz.
 
-Bu teklifi ilk kez yayınlıyorsanız, şunları yapabilirsiniz:
+Bu teklifi ilk kez yayımladıysanız şunları yapabilirsiniz:
 
 - Teklifin her bölümü için tamamlanma durumuna bakın.
-    - *Başlatılmamış* -bölüm dokunulmamış ve tamamlanması gereken anlamına gelir.
-    - *Tamamlanmamış* -bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Lütfen bölüm (ler) e geri dönün ve güncelleştirin.
+    - *Başlatılmamış* -bölümün dokunulmamış olduğu ve tamamlanması gereken anlamına gelir.
+    - *Tamamlanmamış* -bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Bölüm (ler) e geri dönün ve güncelleştirin.
     - *Tam* -bölümün tamamlandığı, tüm gerekli verilerin sağlandığı ve hata olmadığı anlamına gelir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
 - **Sertifika notları** bölümünde, uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın.
-- **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Size, gözden geçirmeniz ve onaylamanız için teklifin bir önizleme sürümünün ne zaman kullanılabileceğini bilmenizi sağlayacak bir e-posta göndereceğiz. Teklifinizi ortak (veya özel bir teklif, özel hedef kitleye) yayımlamak için Iş Ortağı Merkezi 'ne dönmeniz ve teklif için **Go-Live** ' ı seçmeniz gerekir.
+- **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Size, gözden geçirmeniz ve onaylamanız için teklifin bir önizleme sürümünün ne zaman kullanılabileceğini bilmenizi sağlayacak bir e-posta göndereceğiz. Iş Ortağı Merkezi 'ne dönün ve teklifinizi herkese açık bir şekilde (veya özel bir teklif olarak özel hedef kitleye) yayımlama teklifi için **Go-Live** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

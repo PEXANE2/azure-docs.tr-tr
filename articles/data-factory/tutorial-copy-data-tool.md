@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 09/11/2018
-ms.openlocfilehash: 537f57249065a6b47c2ce4d679205ac21a75fe4c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6335fce717772e268f711c2e6e5050fa8c17d573
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439419"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977328"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak Azure Blob depolama alanında SQL veritabanına veri kopyalama
 
@@ -39,7 +39,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 ## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* **Azure depolama hesabı**: Blob depolama alanını _kaynak_ veri deposu olarak kullanın. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md) bölümündeki yönergelere bakın.
+* **Azure depolama hesabı**: Blob depolama alanını _kaynak_ veri deposu olarak kullanın. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) bölümündeki yönergelere bakın.
 * **Azure SQL Veritabanı**: Bir SQL veritabanını _havuz_ veri deposu olarak kullanın. SQL veritabanınız yoksa [SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md) konusundaki yönergelere bakın.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Bir blob ve SQL tablosu oluşturma
@@ -78,18 +78,18 @@ Bu adımları uygulayarak Blob depolama alanınızı ve SQL veritabanınızı ö
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. Sol menüde **kaynak oluştur** > **analiz** > **Data Factory**' yı seçin:
-    
+
     ![Yeni veri fabrikası oluşturma](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. **Yeni veri fabrikası** sayfasında **Ad** bölümüne **ADFTutorialDataFactory** girin.
 
     Veri fabrikanızın adı _genel olarak benzersiz_ olmalıdır. Aşağıdaki hata iletisini alabilirsiniz:
-    
+
     ![Yeni veri fabrikası hata iletisi](./media/doc-common-process/name-not-available-error.png)
 
     Ad değeriyle ilgili bir hata iletisi alırsanız, veri fabrikası için farklı bir ad girin. Örneğin, _**adınız**_ **ADFTutorialDataFactory** adını kullanın. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
 1. Yeni veri fabrikasının oluşturulacağı Azure **aboneliğini** seçin.
 1. **Kaynak Grubu** için aşağıdaki adımlardan birini uygulayın:
-    
+
     a. **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
 
     b. **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.
@@ -101,7 +101,7 @@ Bu adımları uygulayarak Blob depolama alanınızı ve SQL veritabanınızı ö
 1. **Oluştur**’u seçin.
 
 1. Oluşturma işlemi tamamlandıktan sonra **Data Factory** giriş sayfası görüntülenir.
-    
+
     ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
 1. Azure Data Factory kullanıcı arabirimini (UI) ayrı bir sekmede açmak için **Yazar ve İzleyici** kutucuğunu seçin.
 
@@ -125,7 +125,7 @@ Bu adımları uygulayarak Blob depolama alanınızı ve SQL veritabanınızı ö
     ![Kaynak olarak bağlantılı hizmeti seçin](./media/tutorial-copy-data-tool/select-source-linked-service.png)
 
 1. **Girdi dosyasını veya klasörünü seçin** sayfasında aşağıdaki adımları uygulayın:
-    
+
     a. **Göz at**'a tıklayarak **adfv2tutorial/input** klasörüne gidin, **inputEmp.txt** dosyasını seçin ve **Seç**'e tıklayın.
 
     b. Sonraki adıma geçmek için **İleri**'ye tıklayın.

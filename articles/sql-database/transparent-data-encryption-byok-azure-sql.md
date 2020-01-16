@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/19/2019
-ms.openlocfilehash: c8a1e2a19fa3c8691cdb381669dc3d4db189c42d
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 4f1fe1ea031cd7831ffb24ee4302d6834a8d9976
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995856"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981898"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 
@@ -24,7 +24,7 @@ Müşteri tarafından yönetilen anahtarla Azure SQL [Saydam veri şifrelemesi (
 
 Bu senaryoda, TDE koruyucusu olarak adlandırılan veritabanı şifreleme anahtarı (DEK) şifrelemesi için kullanılan anahtar, bulut tabanlı bir dış anahtar yönetim sistemi olan müşterinin sahip olduğu ve müşteri tarafından yönetilen [Azure Key Vault (AKV)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)içinde depolanan, müşteri tarafından yönetilen bir asimetrik anahtardır. Key Vault, isteğe bağlı olarak FIPS 140-2 düzey 2 tarafından doğrulanan donanım güvenlik modülleri (HSM 'ler) tarafından desteklenen, RSA şifreleme anahtarları için yüksek düzeyde kullanılabilir ve ölçeklenebilir güvenli depolama alanı. Depolanan bir anahtara doğrudan erişime izin vermez, ancak yetkili varlıkların anahtarını kullanarak şifreleme/şifre çözme hizmetleri sağlar. Anahtar, Anahtar Kasası tarafından oluşturulabilir, içeri aktarılabilir veya [bir şirket ıçı HSM cihazından anahtar kasasına aktarılabilir](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
-Azure SQL veritabanı ve Azure SQL veri ambarı için, TDE koruyucusu mantıksal sunucu düzeyinde ayarlanır ve bu sunucuyla ilişkili olan tüm şifreli veritabanları tarafından devralınır. Azure SQL yönetilen örneği için, TDE koruyucusu örnek düzeyinde ayarlanır ve bu örnekteki tüm şifreli veritabanları tarafından devralınır. *Sunucu* terimi, farklı belirtilmedikçe bu belge boyunca hem SQL veritabanı mantıksal sunucusu hem de yönetilen örnek anlamına gelir. 
+Azure SQL veritabanı ve Azure SQL veri ambarı için, TDE koruyucusu mantıksal sunucu düzeyinde ayarlanır ve bu sunucuyla ilişkili olan tüm şifreli veritabanları tarafından devralınır. Azure SQL yönetilen örneği için, TDE koruyucusu örnek düzeyinde ayarlanır ve bu örnekteki tüm şifreli veritabanları tarafından devralınır. *Sunucu* terimi, farklı belirtilmedikçe bu belge boyunca hem SQL veritabanı mantıksal sunucusu hem de yönetilen örnek anlamına gelir.
 
 > [!IMPORTANT]
 > Müşteri tarafından yönetilen TDE kullanmaya başlamak isteyen hizmet tarafından yönetilen TDE kullanan bu işlemler için veriler, geçiş işlemi sırasında şifrelenmiş olarak kalır ve veritabanı dosyalarının kapalı kalması veya yeniden şifrelenmesi gerekmez. Hizmet tarafından yönetilen anahtardan müşterinin yönettiği bir anahtara geçiş yapmak, hızlı ve çevrimiçi bir işlem olan DEK ' ın yeniden şifrelenmesini gerektirir.
@@ -92,7 +92,7 @@ Denetçiler, günlük etkinleştirildiyse Anahtar Kasası AuditEvent günlükler
 
 ### <a name="recommendations-when-configuring-akv"></a>AKV yapılandırılırken öneriler
 
-- Sunucu, anahtar kasasındaki TDE koruyucuya eriştiğinde yüksek kullanılabilirlik sağlamak için, tek bir abonelikteki en fazla 500 Genel Amaçlı veya 200 İş Açısından Kritik veritabanlarını toplam bir anahtar kasası ile ilişkilendirin. Bu rakamlar deneyimi temel alır ve [Anahtar Kasası hizmeti sınırları](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)bölümünde belgelenmiştir. Buradaki amaç, sunucuda veritabanları olduğundan kasada çok sayıda anahtar işlem tetikleyeceği için sunucu yük devretmesinin ardından oluşan sorunları önlemektir. 
+- Sunucu, anahtar kasasındaki TDE koruyucuya eriştiğinde yüksek kullanılabilirlik sağlamak için, tek bir abonelikteki en fazla 500 Genel Amaçlı veya 200 İş Açısından Kritik veritabanlarını toplam bir anahtar kasası ile ilişkilendirin. Bu rakamlar deneyimi temel alır ve [Anahtar Kasası hizmeti sınırları](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)bölümünde belgelenmiştir. Buradaki amaç, sunucuda veritabanları olduğundan kasada çok sayıda anahtar işlem tetikleyeceği için sunucu yük devretmesinin ardından oluşan sorunları önlemektir.
 
 - Bu kritik kaynağı kimlerin silebilen ve yanlışlıkla veya yetkisiz silme işleminin önlenmesi için anahtar kasasında bir kaynak kilidi ayarlayın. [Kaynak kilitleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)hakkında daha fazla bilgi edinin.
 
@@ -101,7 +101,7 @@ Denetçiler, günlük etkinleştirildiyse Anahtar Kasası AuditEvent günlükler
 - Her bir sunucuyu farklı bölgelerde bulunan iki anahtar kasası ile bağlayın ve şifrelenmiş veritabanlarının yüksek oranda kullanılabilirliğini sağlamak için aynı anahtar malzemesini tutun. Yalnızca aynı bölgedeki anahtar kasasındaki anahtarı TDE koruyucusu ile işaretleyin. Sistem kullanacak
 
 ### <a name="recommendations-when-configuring-tde-protector"></a>TDE koruyucusunu yapılandırırken öneriler
-- TDE koruyucunun bir kopyasını güvenli bir yerde tutun veya Emanet hizmetine sağlayın. 
+- TDE koruyucunun bir kopyasını güvenli bir yerde tutun veya Emanet hizmetine sağlayın.
 
 - Anahtar, Anahtar Kasası 'nda oluşturulduysa, ilk kez AKV 'de anahtarı kullanmadan önce anahtar yedeklemesi oluşturun. Yedekleme, yalnızca bir Azure Key Vault geri yüklenebilir. [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) komutu hakkında daha fazla bilgi edinin.
 
@@ -153,7 +153,7 @@ Veritabanı durumunu izlemek ve TDE koruyucu erişimi kaybı nedeniyle uyarı et
 
 Bir veritabanı TDE Key Vault 'ten anahtar kullanılarak şifrelendikten sonra, yeni oluşturulan tüm yedeklemeler aynı TDE koruyucusuyla de şifrelenir. TDE koruyucusu değiştirildiğinde, veritabanının eski yedekleri en son TDE koruyucuyu kullanacak şekilde **güncellenmez** .
 
-Key Vault bir TDE koruyucusu ile şifrelenmiş bir yedeklemeyi geri yüklemek için, anahtar malzemenin hedef sunucu için kullanılabilir olduğundan emin olun. Bu nedenle, temel kasadaki TDE koruyucunun tüm eski sürümlerini tutmanız önerilir, böylelikle veritabanı yedeklemeleri geri yüklenebilir. 
+Key Vault bir TDE koruyucusu ile şifrelenmiş bir yedeklemeyi geri yüklemek için, anahtar malzemenin hedef sunucu için kullanılabilir olduğundan emin olun. Bu nedenle, temel kasadaki TDE koruyucunun tüm eski sürümlerini tutmanız önerilir, böylelikle veritabanı yedeklemeleri geri yüklenebilir.
 
 > [!IMPORTANT]
 > Herhangi bir anda, bir sunucu için birden fazla TDE koruyucu kümesi olamaz. Bu, Azure portal dikey penceresindeki "anahtarı varsayılan TDE koruyucuyu yap" ile işaretlenen anahtardır. Ancak, birden fazla ek anahtar, bir TDE koruyucusu olarak işaretlenmeksizin bir sunucuya bağlanabilir. Bu anahtarlar DEK koruma için kullanılmaz, ancak yedekleme dosyası karşılık gelen parmak izine sahip anahtarla şifrelendiyse, yedekten geri yükleme sırasında kullanılabilir.
@@ -162,13 +162,13 @@ Bir yedeklemeyi geri yüklemek için gerekli olan anahtar artık hedef sunucuda 
 
 Bunu azaltmak için, hedef SQL veritabanı mantıksal sunucusu için [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 'ini veya hedef yönetilen örnek için [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) ' i çalıştırarak kullanılabilir anahtarların listesini döndürün ve eksik olanları tespit edin. Tüm yedeklemelerin geri yüklenebildiğinden emin olmak için, geri yükleme için hedef sunucunun gerekli tüm anahtarlara erişebildiğinden emin olun. Bu anahtarların TDE koruyucusu olarak işaretlenmesi gerekmez.
 
-SQL veritabanı için yedekleme kurtarması hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veritabanını kurtarma](sql-database-recovery-using-backups.md). SQL veri ambarı için yedekleme kurtarması hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veri ambarını kurtarma](../sql-data-warehouse/backup-and-restore.md). Yönetilen örnekle SQL Server yerel yedekleme/geri yükleme için bkz [. hızlı başlangıç: veritabanını yönetilen örneğe geri yükleme](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) 
+SQL veritabanı için yedekleme kurtarması hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veritabanını kurtarma](sql-database-recovery-using-backups.md). SQL veri ambarı için yedekleme kurtarması hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veri ambarını kurtarma](../sql-data-warehouse/backup-and-restore.md). Yönetilen örnekle SQL Server yerel yedekleme/geri yükleme için bkz [. hızlı başlangıç: veritabanını yönetilen örneğe geri yükleme](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore)
 
 Günlük dosyaları için ek dikkat: yedeklenen günlük dosyaları, döndürülse bile özgün TDE koruyucusu ile şifrelenmeye devam eder ve veritabanı şimdi yeni bir TDE koruyucu kullanıyor.  Geri yükleme sırasında, veritabanını geri yüklemek için her iki anahtar de gerekecektir.  Günlük dosyası Azure Key Vault depolanan bir TDE koruyucu kullanıyorsa, veritabanı hizmet tarafından yönetilen TDE kullanacak şekilde değiştirilse bile, bu anahtar geri yükleme zamanında gerekecektir.
 
 ## <a name="high-availability-with-customer-managed-tde"></a>Müşteri tarafından yönetilen TDE ile yüksek kullanılabilirlik
 
-Sunucu için yapılandırılmış coğrafi yedeklilik olmadığında bile, sunucuyu aynı anahtar malzemesine sahip iki farklı bölgede iki farklı Anahtar Kasası kullanacak şekilde yapılandırmak kesinlikle önerilir. Sunucu ile aynı bölgede yer alan birincil anahtar kasası kullanılarak bir TDE koruyucu oluşturularak ve anahtarı farklı bir Azure bölgesindeki bir anahtar kasasında kopyalayarak, sunucunun birincil anahtar kasası ile ilgili olması gereken ikinci bir anahtar kasasına erişimi olması için Veritabanı çalışır duruma ience bir kesinti olur. 
+Sunucu için yapılandırılmış coğrafi yedeklilik olmadığında bile, sunucuyu aynı anahtar malzemesine sahip iki farklı bölgede iki farklı Anahtar Kasası kullanacak şekilde yapılandırmak kesinlikle önerilir. Sunucu ile aynı bölgede yer alan birincil anahtar kasası kullanılarak bir TDE koruyucu oluşturularak ve anahtarı farklı bir Azure bölgesindeki bir anahtar kasasında kopyalayarak, sunucunun birincil anahtar kasası ile ilgili olması gereken ikinci bir anahtar kasasına erişimi olması için Veritabanı çalışır duruma ience bir kesinti olur.
 
 Anahtarı birincil anahtar kasasından şifrelenmiş biçimde almak için Backup-AzKeyVaultKey cmdlet 'ini kullanın ve ardından restore-AzKeyVaultKey cmdlet 'ini kullanın ve anahtarı klonlamak için ikinci bölgede bir Anahtar Kasası belirtin. Alternatif olarak, anahtarı yedeklemek ve geri yüklemek için Azure portal kullanın. Diğer bölgedeki ikincil anahtar kasasındaki anahtar, TDE koruyucusu olarak işaretlenmemelidir ve buna izin verilmez.
 

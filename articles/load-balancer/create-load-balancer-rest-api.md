@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: b8acf1faff17f657999769216f71cfb5fa6e3181
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b52c554617bdcbe88b65639473044eb9c5eb7fa8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077088"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045436"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Bir Azure temel REST API kullanarak yük dengeleyici oluşturma
 
-Azure Load Balancer arka uç havuzu örneklerine, kurallar ve sistem durumu araştırmaları göre load balancer'ın ön uç üzerinde geldiğinde yeni gelen akışlar dağıtır. Load Balancer iki SKU olarak sunulur: temel ve standart. İki SKU sürümü arasındaki farkı anlamak için [yük dengeleyici SKU karşılaştırmalar](load-balancer-overview.md#skus).
+Azure Load Balancer arka uç havuzu örneklerine, kurallar ve sistem durumu araştırmaları göre load balancer'ın ön uç üzerinde geldiğinde yeni gelen akışlar dağıtır. Load Balancer iki SKU olarak sunulur: temel ve standart. İki SKU sürümü arasındaki farkı anlamak için [yük dengeleyici SKU karşılaştırmalar](concepts-limitations.md#skus).
  
 Bu nasıl yapılır kullanarak bir temel Azure Load Balancer oluşturulacağı gösterilmektedir [Azure REST API'si](/rest/api/azure/) bir Azure sanal ağ içindeki birden çok VM arasında dengeleme gelen istek yükünü dengeleyebilmek için. Eksiksiz başvuru belgeleri ve ek örnekleri kullanılabilir [Azure yük dengeleyici REST başvurusu](/rest/api/load-balancer/).
  
@@ -33,12 +33,12 @@ Yeni Azure temel yük dengeleyici oluşturmak için aşağıdaki HTTP PUT İste�
   ```
 ### <a name="uri-parameters"></a>URI parametreleri
 
-|Ad  |İçinde  |Gerekli |Tür |Açıklama |
+|Ad  |İçinde  |Gereklidir |Tür |Açıklama |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  path       |  True       |   string      |  Microsoft Azure aboneliği benzersiz olarak tanımlanabilmesi abonelik kimlik bilgileri. Abonelik kimliği, her hizmet çağrısı için URI parçası oluşturur.      |
-|resourceGroupName     |     path    | True        |  string       |   Kaynak grubunun adı.     |
-|loadBalancerName     |  path       |      True   |    string     |    Yük dengeleyicinin adı.    |
-|api-version    |   sorgu     |  True       |     string    |  İstemci API sürümü.      |
+|subscriptionId   |  yol       |  Doğru       |   string      |  Microsoft Azure aboneliği benzersiz olarak tanımlanabilmesi abonelik kimlik bilgileri. Abonelik kimliği, her hizmet çağrısı için URI parçası oluşturur.      |
+|resourceGroupName     |     yol    | Doğru        |  string       |   Kaynak grubunun adı.     |
+|loadBalancerName     |  yol       |      Doğru   |    string     |    Yük dengeleyicinin adı.    |
+|api-version    |   sorgu     |  Doğru       |     string    |  İstemci API sürümü.      |
 
 
 

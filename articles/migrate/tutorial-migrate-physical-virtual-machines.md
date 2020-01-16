@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 28705ea8a552f4d2e6653857c69ebb8d5f87b962
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907118"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028811"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Fiziksel veya sanallaştırılmış sunucuları Azure 'a geçirme 
 
@@ -46,7 +46,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
@@ -123,9 +123,8 @@ Makinelerin Azure 'a geçiş gereksinimleriyle uyumlu olduğundan emin olun.
 > [!NOTE]
 > Azure geçişi sunucu geçişi ile aracı tabanlı geçiş, Azure Site Recovery hizmetinin özelliklerine dayalıdır. Bazı gereksinimler Site Recovery belgelerine bağlantı verebilir.
 
-1. Sunucu gereksinimlerini [doğrulayın](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) .
-2. [Doğrula](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) Geçiş için VM desteği gereksinimleri.
-3. VM ayarlarını doğrulayın. Azure 'a çoğaltılan şirket içi VM 'Ler, [Azure VM gereksinimleriyle](migrate-support-matrix-vmware.md#azure-vm-requirements)uyumlu olmalıdır.
+1. Fiziksel sunucu gereksinimlerini [doğrulayın](migrate-support-matrix-physical-migration.md#physical-server-requirements) .
+2. VM ayarlarını doğrulayın. Azure 'a çoğaltılan şirket içi makineler, [Azure VM gereksinimleriyle](migrate-support-matrix-physical-migration.md#azure-vm-requirements)uyumlu olmalıdır.
 
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>Çoğaltma gereci için bir makine hazırlama
@@ -135,7 +134,7 @@ Azure geçişi sunucu geçişi, makineleri Azure 'a çoğaltmak için bir çoğa
 - **Yapılandırma sunucusu**: yapılandırma sunucusu, şirket Içi ve Azure arasındaki iletişimleri koordine eder ve veri çoğaltmasını yönetir.
 - **İşlem sunucusu**: işlem sunucusu bir çoğaltma ağ geçidi olarak davranır. Çoğaltma verilerini alır; önbelleğe alma, sıkıştırma ve şifreleme ile en iyi duruma getirir ve Azure 'da bir önbellek depolama hesabına gönderir. 
 
-Başlamadan önce, çoğaltma gerecini barındırmak için bir Windows Server 2016 makinesi hazırlamanız gerekir. Makine [Bu gereksinimlere](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements)uymalıdır. Gereç, korumak istediğiniz bir kaynak makineye yüklenmelidir.
+Başlamadan önce, çoğaltma gerecini barındırmak için bir Windows Server 2016 makinesi hazırlamanız gerekir. Makine [Bu gereksinimlere](migrate-replication-appliance.md)uymalıdır. Gereç, korumak istediğiniz bir kaynak makineye yüklenmelidir.
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure geçiş sunucusu geçiş aracını ekleme
@@ -161,7 +160,7 @@ Bir Azure geçişi projesi ayarlayın ve ardından Azure geçiş sunucusu geçi�
     --- | ---
     Asya | Güneydoğu Asya
     Avrupa | Kuzey Avrupa veya Batı Avrupa
-    Amerika Birleşik Devletleri | Doğu ABD veya Orta Batı ABD
+    Birleşik Devletler | Doğu ABD veya Orta Batı ABD
 
     Proje için belirtilen coğrafya yalnızca şirket içi VM’lerden toplanan meta verileri depolamak için kullanılır. Gerçek geçiş için herhangi bir hedef bölge seçebilirsiniz.
 8. **Değerlendirme Seç aracında**, şimdi > **için değerlendirme aracı eklemeyi atla** ' yı seçin.
@@ -206,7 +205,7 @@ Kayıt tamamlandıktan sonra, bulunan makineler Azure geçişi sunucu geçişi '
 
 ## <a name="install-the-mobility-service"></a>Mobility hizmetini yükleme
 
-Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz gerekir. Aracı yükleyicileri, çoğaltma aracısında kullanılabilir. Doğru yükleyiciyi bulur ve geçirmek istediğiniz her makineye aracıyı yüklersiniz. Bunu aşağıdaki gibi yapın:
+Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz gerekir. Aracı yükleyicileri, çoğaltma aracısında kullanılabilir. Doğru yükleyiciyi bulur ve geçirmek istediğiniz her makineye aracıyı yüklersiniz. Bunu şu şekilde yapabilirsiniz:
 
 1. Çoğaltma gereci 'nda oturum açın.
 2. **%ProgramData%\asr\home\svsystems\pushınstallsvc\repository dizinine**gidin.
@@ -276,7 +275,7 @@ Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz ge
 7. **Sanal makinelerde** **geçiş ayarlarını bir değerlendirmede içeri aktar**bölümünde, varsayılan ayar Hayır olarak kalsın **, geçiş ayarlarını el ile belirteceğiz**.
 8. Geçirmek istediğiniz her VM 'yi denetleyin. Ardından Ileri ' ye tıklayın **: hedef ayarlar**.
 
-    ![VM 'Leri seçin](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
+    ![VM’leri seçin](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
 
 9. **Hedef ayarları**’nda aboneliği ve geçiş yapacağınız hedef bölgeyi seçin. Daha sonra Azure VM’lerinin geçişten sonra bulunacağı kaynak grubunu belirtin.
@@ -288,7 +287,7 @@ Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz ge
 
     ![Hedef ayarları](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
-12. **İşlem** bölümünde VM adını, boyutunu, İşletim Sistemi disk türünü ve kullanılabilirlik kümesini gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-vmware.md#azure-vm-requirements)uyumlu olmalıdır.
+12. **İşlem** bölümünde VM adını, boyutunu, İşletim Sistemi disk türünü ve kullanılabilirlik kümesini gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-physical-migration.md#azure-vm-requirements)uyumlu olmalıdır.
 
     - **VM boyutu**: Azure geçişi sunucu geçişi, varsayılan olarak Azure aboneliğindeki en yakın eşleşmeye göre bir boyut seçer. Alternatif olarak **Azure VM boyutu** ’nda el ile bir boyut seçin. 
     - **Işletim sistemi diski**: VM için işletim sistemi (önyükleme) diskini belirtin. İşletim Sistemi diski, işletim sistemi önyükleyiciye ve yükleyiciye sahip disktir. 

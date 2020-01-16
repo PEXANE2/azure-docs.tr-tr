@@ -9,19 +9,19 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 86f042a451583759aa15e886b3261700335a5285
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748556"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979810"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure Depolama’yı kullanarak Azure ölçümlerini ve günlük verilerini arşivleme
 
-Azure ortamınızın birkaç katmanında, bir Azure Depolama hesabında arşivlenebilen günlük ve ölçüm verileri oluşturulur. Geçmiş izleme verilerini bunların saklanma dönemi bittikten sonra uzun süre düşük maliyetli, aranabilir olmayan bir depoda tutmak için bu arşivlemeyi kullanmanız iyi olur. 
+Azure ortamınızın birkaç katmanında, bir Azure Depolama hesabında arşivlenebilen günlük ve ölçüm verileri oluşturulur. Geçmiş izleme verilerini bunların saklanma dönemi bittikten sonra uzun süre düşük maliyetli, aranabilir olmayan bir depoda tutmak için bu arşivlemeyi kullanmanız iyi olur.
 
-- Azure Monitor platform ölçümleri 93 gün boyunca tutulur. 
-- Kaynak tanılama günlükleri yalnızca en az 30 günlük yapılandırılabilir bir saklama sürelerinin olduğu Log Analytics'e yönlendirilmişse görünür. 
+- Azure Monitor platform ölçümleri 93 gün boyunca tutulur.
+- Kaynak tanılama günlükleri yalnızca en az 30 günlük yapılandırılabilir bir saklama sürelerinin olduğu Log Analytics'e yönlendirilmişse görünür.
 - Etkinlik günlüğü girişleri 90 gün boyunca tutulur.  
 
 Bu öğreticide, verileri bir depolama hesabında arşivlemek üzere Azure ortamınızı yapılandırma işlemi adım adım gösterilmektedir.
@@ -42,7 +42,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-İlk olarak izleme verilerinin arşivleneceği bir depolama hesabı ayarlamanız gerekir. Bunu yapmak için [buradaki adımları izleyin](../../storage/common/storage-quickstart-create-account.md).
+İlk olarak izleme verilerinin arşivleneceği bir depolama hesabı ayarlamanız gerekir. Bunu yapmak için [buradaki adımları izleyin](../../storage/common/storage-account-create.md).
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Abonelik günlüklerini depolama hesabına yönlendirme
 
@@ -144,9 +144,9 @@ Sanal makinelerinizdeki izleme verileri artık depolama hesabına akar.
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>Depolama hesabındaki izleme verilerini görüntüleme
 
 > [!WARNING]
-> Depolama hesabındaki günlük verilerinin biçimi, 1 Kasım 2018 tarihinde JSON Satırları olarak değişecektir. [Etkinin açıklaması ve yeni biçimi işlemek üzere araçlarınızı güncelleştirme için bu makaleye bakın.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
+> Depolama hesabındaki günlük verilerinin biçimi, 1 Kasım 2018 tarihinde JSON Satırları olarak değişecektir. [Etkinin açıklaması ve yeni biçimi işlemek üzere araçlarınızı güncelleştirme için bu makaleye bakın.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
 >
-> 
+>
 
 Yukarıdaki adımları izlediyseniz, veriler depolama hesabınıza akmaya başlamıştır.
 
@@ -199,4 +199,3 @@ Verilerinizden daha iyi şekilde yararlanmak ve ek bilgiler edinmek için verile
 
 > [!div class="nextstepaction"]
 > [Log Analytics'i kullanmaya başlama](../../azure-monitor/log-query/log-query-overview.md)
-

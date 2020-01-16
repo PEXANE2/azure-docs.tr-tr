@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 9fe0875f34745b0b5b8b1b7e8b352116b6cbf997
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: ff84b085b7d40bcb6c5a0aa87416e5814f67814b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941917"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979582"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için özel Betik uzantısı
 
@@ -189,7 +189,7 @@ Kullanıcı tarafından atanan kimliği hedef VM/VMSS 'de kullanmak için, "mana
 
 Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Önceki bölümde ayrıntılı olan JSON şeması, dağıtım sırasında özel betik uzantısını çalıştırmak için bir Azure Resource Manager şablonunda kullanılabilir. Aşağıdaki örnekler özel betik uzantısının nasıl kullanılacağını göstermektedir:
 
-* [Öğretici: Azure Resource Manager şablonlarıyla sanal makine uzantılarını dağıtma](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [Öğretici: Azure Resource Manager şablonlarıyla sanal makine uzantılarını dağıtma](../../azure-resource-manager/templates/template-tutorial-deploy-vm-extensions.md)
 * [Windows ve Azure SQL DB 'de Iki katmanlı uygulama dağıtma](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı

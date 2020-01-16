@@ -2,21 +2,21 @@
 title: Azure Batch ile paralel R simülasyonu
 description: Öğretici - Azure Batch’te R doAzureParallel paketi kullanılarak bir Monte Carlo finansal simülasyonu çalıştırmaya yönelik adım adım yönergeler
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 7fad37af268d3dcd3d4d974d8e839ac47f171b50
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a5422b3b3dfee548e24e989654f8cc219700e712
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321901"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029216"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Öğretici: Azure Batch ile paralel R simülasyonu çalıştırma 
 
@@ -30,7 +30,7 @@ Bu öğreticide bir Batch havuzu dağıtma ve doğrudan RStudio içinde Azure Ba
 > * R oturumunuz için bir paralel arka uç olarak Batch havuzu oluşturma
 > * Havuz üzerinde örnek bir paralel simülasyon çalıştırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Microsoft R Open](https://mran.microsoft.com/open) gibi yüklü bir [R](https://www.r-project.org/) dağıtımı. R 3.3.1 veya sonraki bir sürümü kullanın.
 
@@ -38,7 +38,7 @@ Bu öğreticide bir Batch havuzu dağıtma ve doğrudan RStudio içinde Azure Ba
 
 * Bir Azure Batch hesabı ve bir Azure Depolama hesabı. Bu hesapları oluşturmak için [Azure portalı](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md) kullanan Batch hızlı başlangıçlarına bakın. 
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 

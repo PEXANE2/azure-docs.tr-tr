@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 23607b52f866bb7b0be760e49be7d62d1732d43c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954746"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977294"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Kapı Izleyicisi--Azure Işlevleri ve SendGrid kullanarak bir kapı açıldığında e-posta gönderin           
 
@@ -65,7 +65,7 @@ Zaten Azure hesabınızda oturum açmadıysanız, şimdi oturum açın.
 
 Kaydolma formunu doldurun:
 
-   * **Kaynak grubu**: SendGrid hizmetini barındırmak için bir kaynak grubu oluşturun veya mevcut bir tane kullanın. Bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Kaynak grubu**: SendGrid hizmetini barındırmak için bir kaynak grubu oluşturun veya mevcut bir tane kullanın. Bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    * **Ad**: SendGrid hizmetinizin adı. Sahip olduğunuz diğer hizmetlerden farklı olarak benzersiz bir ad seçin.
 
@@ -105,7 +105,7 @@ Kaydolma formu görüntülenir.
 
 Kaydolma formundaki alanları girin.
 
-   * **Kaynak grubu**: SendGrid hizmetini barındırmak için bir kaynak grubu oluşturun veya mevcut bir tane kullanın. Bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Kaynak grubu**: SendGrid hizmetini barındırmak için bir kaynak grubu oluşturun veya mevcut bir tane kullanın. Bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    * **IoT Hub adı**: IoT Hub 'ınızın adı. Sahip olduğunuz diğer hizmetlerden farklı olarak benzersiz bir ad seçin.
 
@@ -122,7 +122,7 @@ Sonra, örnek kodu VS Code yükleyin ve gerekli Azure hizmetlerini sağlayın.
 ### <a name="start-vs-code"></a>VS Code Başlat
 
 - DevKit 'in **bilgisayarınıza bağlı olmadığından** emin olun.
-- VS Code başlatın.
+- VS Code’u başlatın.
 - DevKit 'i bilgisayarınıza bağlayın.
 
 > [!NOTE]

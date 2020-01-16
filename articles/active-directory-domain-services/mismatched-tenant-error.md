@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 0d96fd4c435251fb4dd604351e6efeea8bde8353
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 601574cc2a478dc53a261cfcb074e43a556dd4c0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704539"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979508"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Mevcut Azure AD Domain Services yönetilen etki alanları için eşleşmeyen Dizin hatalarını çözümle
 
@@ -56,7 +56,7 @@ Bu örnek dağıtım senaryosunda contoso Azure AD DS yönetilen etki alanı, co
 Aşağıdaki iki seçenek eşleşmeyen Dizin hatasını çözer:
 
 * [Azure AD DS yönetilen etki alanını](delete-aadds.md) mevcut Azure AD dizininden silin. Kullanmak istediğiniz sanal ağ ile aynı Azure AD dizininde [azure AD DS yönetilen bir etki alanı oluşturun](tutorial-create-instance.md) . Hazırlandığınızda, daha önce silinmiş etki alanına katılmış tüm makinelere yeniden oluşturulmuş yönetilen etki alanına katın.
-* Sanal ağı içeren [Azure aboneliğini](../billing/billing-subscription-transfer.md) Azure AD DS yönetilen etki alanı Ile aynı Azure AD dizinine taşıyın.
+* Sanal ağı içeren [Azure aboneliğini](../cost-management-billing/manage/billing-subscription-transfer.md) Azure AD DS yönetilen etki alanı Ile aynı Azure AD dizinine taşıyın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 732f4b460a3a97f84dd79a37715aff972e8482ed
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: eb8f0204771b204af740c4ddc8e359499520a012
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934541"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045938"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>VPN Gateway tanılama günlüğü olayları üzerinde uyarı ayarlama
 
@@ -56,10 +56,9 @@ Aşağıdaki örnek adımlar, siteden siteye VPN tünelini içeren bir bağlant�
 6. Ayrıntıları girin ve Log Analytics ve **Tunneldiagnosticlog** ' a **Gönder** ' in seçildiğinden emin olun. Adım 3 ' te oluşturduğunuz Log Analytics çalışma alanını seçin.
 
    ![Seçili onay kutuları](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Seçin")
-   
-> [!NOTE]
-> Verilerin başlangıçta gösterilmesi birkaç saat sürebilir.
->
+
+   > [!NOTE]
+   > Verilerin başlangıçta gösterilmesi birkaç saat sürebilir.
 
 7. Sanal ağ geçidi kaynağına genel bakış ' a gidin ve **izleme** sekmesinden **Uyarılar** ' ı seçin. Sonra yeni bir uyarı kuralı oluşturun veya var olan bir uyarı kuralını düzenleyin.
 

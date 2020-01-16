@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459147"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979268"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
 Azure, paylaşılan fiziksel altyapıda uygulama ve sanal makine (VM) çalıştırmanızı sağlar. Uygulamaları bir bulut ortamında çalıştırmaya yönelik başlıca ekonobilirlerden biri, paylaşılan kaynakların maliyetini birden çok müşteri arasında dağıtabilme yeteneğidir. Çok kiracılı bu uygulama, düşük maliyetlerde farklı müşteriler arasında kaynakları çoğullama açısından verimliliği artırır. Ne yazık ki, önemli uygulamalarınızı ve diğer altyapı kaynaklarını, rastgele ve potansiyel olarak kötü amaçlı bir kullanıcıya ait olabilecek duyarlı uygulamalarınızı ve VM 'Leri çalıştırmak üzere paylaşma riskini de beraberinde getirir.
@@ -190,7 +190,7 @@ Bu nedenle, Azure Storage mantıksal dışında Azure Işlem ile ağ bağlantıs
 SAS, belirli bir süre boyunca ve belirli bir izin kümesiyle, bir istemci sınırlı izinleri, depolama hesabımızda bulunan nesnelere sağlayabilmemiz anlamına gelir. Hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan bu sınırlı izinleri sağlayabiliriz.
 
 ### <a name="ip-level-storage-isolation"></a>IP düzeyi depolama yalıtımı
-Güvenlik duvarları oluşturabilir ve güvenilen istemcileriniz için bir IP adresi aralığı tanımlayabilirsiniz. Bir IP adresi aralığı ile yalnızca tanımlı aralıkta bir IP adresi olan istemciler [Azure depolama](../../storage/common/storage-security-guide.md)'ya bağlanabilir.
+Güvenlik duvarları oluşturabilir ve güvenilen istemcileriniz için bir IP adresi aralığı tanımlayabilirsiniz. Bir IP adresi aralığı ile yalnızca tanımlı aralıkta bir IP adresi olan istemciler [Azure depolama](../../storage/blobs/security-recommendations.md)'ya bağlanabilir.
 
 IP depolama verileri yetkisiz kullanıcılardan, IP depolama alanına adanmış veya adanmış bir trafik tüneli ayırmak için kullanılan bir ağ mekanizması aracılığıyla korunabilir.
 
@@ -203,18 +203,18 @@ Azure, verileri korumak için aşağıdaki şifreleme türlerini sunar:
 #### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
 Aktarım sırasında şifreleme, ağlar arasında iletilirken verilerin korunmasında bir mekanizmadır. Azure depolama ile, aşağıdakileri kullanarak verileri güvenli hale getirebilirsiniz:
 
--   Azure depolama içine veya dışına veri aktarırken HTTPS gibi [Aktarım düzeyi şifreleme](../../storage/common/storage-security-guide.md).
+-   Azure depolama içine veya dışına veri aktarırken HTTPS gibi [Aktarım düzeyi şifreleme](../../storage/blobs/security-recommendations.md).
 
--   Azure dosya paylaşımları için SMB 3,0 Şifrelemesi gibi bir [hat şifreleme](../../storage/common/storage-security-guide.md).
+-   Azure dosya paylaşımları için SMB 3,0 Şifrelemesi gibi bir [hat şifreleme](../../storage/blobs/security-recommendations.md).
 
--   Depolama alanına aktarılmadan önce verileri şifrelemek ve depolama alanı dışına aktarıldıktan sonra verilerin şifresini çözmek için [istemci tarafı şifreleme](../../storage/common/storage-security-guide.md).
+-   Depolama alanına aktarılmadan önce verileri şifrelemek ve depolama alanı dışına aktarıldıktan sonra verilerin şifresini çözmek için [istemci tarafı şifreleme](../../storage/blobs/security-recommendations.md).
 
 #### <a name="encryption-at-rest"></a>Bekleyen şifreleme
 Birçok kuruluş için, [bekleyen veri şifreleme](isolation-choices.md) , veri gizliliği, uyumluluk ve veri egemenlik 'e yönelik zorunlu bir adımdır. "Bekleyen" veri şifrelemesini sağlayan üç Azure özelliği vardır:
 
--   [Depolama hizmeti şifrelemesi](../../storage/common/storage-security-guide.md) , depolama hizmetinin verileri Azure depolama 'ya yazarken otomatik olarak şifrelemesine olanak tanır.
+-   [Depolama hizmeti şifrelemesi](../../storage/blobs/security-recommendations.md) , depolama hizmetinin verileri Azure depolama 'ya yazarken otomatik olarak şifrelemesine olanak tanır.
 
--   [İstemci tarafı şifreleme](../../storage/common/storage-security-guide.md) , bekleyen şifreleme özelliğini de sağlar.
+-   [İstemci tarafı şifreleme](../../storage/blobs/security-recommendations.md) , bekleyen şifreleme özelliğini de sağlar.
 
 -   [Azure disk şifrelemesi](../azure-security-disk-encryption-overview.md) , bir IaaS sanal makinesi tarafından kullanılan işletim sistemi disklerini ve veri disklerini şifrelemenizi sağlar.
 

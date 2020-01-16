@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cb21291d4beb9fbba27a56089f13bd0363604eab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686709"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981823"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip blob depolaması için maliyetleri iyileştirin
 
@@ -21,7 +21,7 @@ Azure Depolama ayrılmış kapasitesine sahip blob verileri için depolama maliy
 
 Azure Depolama ayrılmış kapasitesi, blok Blobları ve Azure Data Lake Storage 2. verileri için kapasite maliyetlerinizi önemli ölçüde azaltabilir. Elde edilen maliyet tasarrufları, rezervasyonunuzun süresine, ayırmak için seçtiğiniz toplam kapasiteye ve depolama hesabınız için seçtiğiniz yedekliliğe ve erişim katmanına ve bu erişimin türüne bağlıdır. Ayrılmış kapasite bir faturalandırma indirimi sağlar ve Azure depolama kaynaklarınızın durumunu etkilemez.
 
-Azure depolama rezervasyonu fiyatlandırması hakkında daha fazla bilgi için bkz. [Blok Blobu fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/) ve [Azure Data Lake Storage Gen 2 fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/data-lake/).
+Azure Depolama ayrılmış kapasitesi fiyatları hakkında daha fazla bilgi için bkz. [Blok blobu fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/) ve [Azure Data Lake Storage 2. Nesil fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/data-lake/).
 
 ## <a name="reservation-terms-for-azure-storage"></a>Azure depolama için rezervasyon koşulları
 
@@ -66,7 +66,7 @@ Ayırmalar, 100 TB veya 1 PB blok için bugün, 1 PB blok için daha yüksek ind
 
 Azure Depolama ayrılmış kapasitesini [Azure Portal](https://portal.azure.com)aracılığıyla satın alabilirsiniz. Rezervasyon için veya aylık ödemeler için ödeme yapın. Aylık ödemeler ile satın alma hakkında daha fazla bilgi için bkz. [ön veya aylık ödemeler Ile Azure ayırmaları satın alma](/azure/billing/billing-monthly-payments-reservations).
 
-Senaryonuz için uygun olan rezervasyon koşullarını belirlemeye yönelik yardım için bkz. [Azure Storage ayrılmış kapasite ıskontosunu anlama](../../billing/billing-understand-storage-charges.md).
+Senaryonuz için uygun olan rezervasyon koşullarını belirlemeye yönelik yardım için bkz. [Azure Storage ayrılmış kapasite ıskontosunu anlama](../../cost-management-billing/reservations/understand-storage-charges.md).
 
 Ayrılmış kapasiteyi satın almak için aşağıdaki adımları izleyin:
 
@@ -85,7 +85,7 @@ Ayrılmış kapasiteyi satın almak için aşağıdaki adımları izleyin:
    | **Yedeklilik** | Ayırma için artıklık seçeneği. Seçenekler *LRS*, *ZRS*, *GRS*ve *ra-GZRS*' i içerir. Artıklık seçenekleri hakkında daha fazla bilgi için bkz. [Azure depolama artıklığı](../common/storage-redundancy.md). |
    | **Faturalandırma sıklığı** | Hesabın rezervasyon için ne sıklıkta faturalandırıldığını gösterir. Seçenekler *ayda* veya *önünde*bulunur. |
    | **Boyut** | Ayırmanın etkin olduğu bölge. |
-   |**Terimli**  | Bir yıl veya üç yıl.   |
+   |**Terim**  | Bir yıl veya üç yıl.   |
 
 1. Rezervasyonunuzun parametrelerini seçtikten sonra Azure portal maliyeti görüntüler. Portal Ayrıca Kullandıkça Öde faturalandırmasına göre indirim yüzdesini gösterir.
 
@@ -101,7 +101,7 @@ Belirli sınırlamalara sahip bir ayırmayı Exchange veya para iadesi yapabilir
 
 Bir ayırmayı Exchange veya para iadesi için Azure portal rezervasyon ayrıntılarına gidin. **Exchange** veya **para iadesi**' ni seçin ve destek isteği göndermek için yönergeleri izleyin. İstek işlendiğinde, Microsoft isteğin tamamlandığını onaylamak için size bir e-posta gönderir.
 
-Azure ayırmaları ilkeleri hakkında daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](../../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Azure ayırmaları ilkeleri hakkında daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ### <a name="exchange-a-reservation"></a>Bir ayırma Exchange
 
@@ -121,11 +121,11 @@ Bir rezervasyon süresi dolmuşsa, bu rezervasyon altında kullandığınız tü
 
 Ayırmanın süresinin dolması için 30 gün önce ve sona erme tarihi üzerinden bir e-posta bildirimi alacaksınız. Bir rezervasyonun sağladığı maliyet tasarruflarından yararlanmaya devam etmek için süreyi, sona erme tarihinden sonra değil, yenileyin.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun
+## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bize ulaşın
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](../../billing/billing-save-compute-costs-reservations.md)
-- [Rezervasyon iskontosunun Azure depolama 'ya nasıl uygulanacağını anlayın](../../billing/billing-understand-storage-charges.md)
+- [Azure Rezervasyonlar nedir?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Rezervasyon iskontosunun Azure depolama 'ya nasıl uygulanacağını anlayın](../../cost-management-billing/reservations/understand-storage-charges.md)

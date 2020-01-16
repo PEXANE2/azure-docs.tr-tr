@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: ebc1d449cdb8702a984304e92697d4b7c778daaa
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792893"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980433"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps ve Azure Işlevleri ile akış müşteri öngörüleri panosu oluşturma
 
@@ -104,7 +104,7 @@ Visual Studio 'da veya Azure portal önceki çalıştırma geçmişlerini görü
 
 ## <a name="create-automated-deployment-templates"></a>Otomatik dağıtım şablonları oluşturma
 
-Bir mantıksal uygulama çözümü oluşturduktan sonra, uygulamanızı, dünyanın herhangi bir Azure bölgesine [Azure Resource Manager şablonu](../azure-resource-manager/template-deployment-overview.md) olarak yakalayabilir ve dağıtabilirsiniz. Bu özelliği, uygulamanızın farklı sürümlerini oluşturmak ve çözümünüzü Azure Pipelines tümleştirmek için parametreleri değiştirmek üzere kullanabilirsiniz. Tüm çözümü tek bir şablon olarak tüm bağımlılıklarla yönetebilmeniz için dağıtım şablonunuza Azure Işlevleri de ekleyebilirsiniz. [Mantıksal uygulama dağıtımını otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md)hakkında bilgi edinin.
+Bir mantıksal uygulama çözümü oluşturduktan sonra, uygulamanızı, dünyanın herhangi bir Azure bölgesine [Azure Resource Manager şablonu](../azure-resource-manager/templates/overview.md) olarak yakalayabilir ve dağıtabilirsiniz. Bu özelliği, uygulamanızın farklı sürümlerini oluşturmak ve çözümünüzü Azure Pipelines tümleştirmek için parametreleri değiştirmek üzere kullanabilirsiniz. Tüm çözümü tek bir şablon olarak tüm bağımlılıklarla yönetebilmeniz için dağıtım şablonunuza Azure Işlevleri de ekleyebilirsiniz. [Mantıksal uygulama dağıtımını otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md)hakkında bilgi edinin.
 
 Azure işlevi içeren örnek bir dağıtım şablonu için [Azure hızlı başlangıç şablonu deposuna](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)bakın.
 

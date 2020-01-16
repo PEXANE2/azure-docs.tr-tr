@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 188306ca02cee05f17514826ae6d973a17e6bb97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421853"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979483"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Birden çok VM 'de Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümlerini etkinleştirme
 
@@ -41,7 +41,7 @@ Sanal makinelerin listesi, yalnızca aynı abonelikte ve konumda bulunan sanal m
 
 ### <a name="resource-group-limit"></a>Ekleme sınırlamaları
 
-Ekleme için kullanabileceğiniz kaynak gruplarının sayısı [Kaynak Yöneticisi dağıtım limitleriyle](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md)sınırlıdır. Güncelleştirme dağıtımlarıyla karıştırılmamalıdır Kaynak Yöneticisi dağıtımlar, dağıtım başına 5 kaynak grubu ile sınırlıdır. Ekleme bütünlüğünden emin olmak için bu kaynak gruplarının 2 ' nin, Log Analytics çalışma alanını, Otomasyon hesabını ve ilgili kaynakları yapılandırmak üzere ayrılmıştır. Bu, dağıtım için seçilecek 3 kaynak grubu ile aynı kalır. Bu sınır, bir otomasyon çözümü tarafından yönetilebilen kaynak gruplarının sayısını değil, yalnızca eşzamanlı ekleme için geçerlidir.
+Ekleme için kullanabileceğiniz kaynak gruplarının sayısı [Kaynak Yöneticisi dağıtım limitleriyle](../azure-resource-manager/templates/cross-resource-group-deployment.md)sınırlıdır. Güncelleştirme dağıtımlarıyla karıştırılmamalıdır Kaynak Yöneticisi dağıtımlar, dağıtım başına 5 kaynak grubu ile sınırlıdır. Ekleme bütünlüğünden emin olmak için bu kaynak gruplarının 2 ' nin, Log Analytics çalışma alanını, Otomasyon hesabını ve ilgili kaynakları yapılandırmak üzere ayrılmıştır. Bu, dağıtım için seçilecek 3 kaynak grubu ile aynı kalır. Bu sınır, bir otomasyon çözümü tarafından yönetilebilen kaynak gruplarının sayısını değil, yalnızca eşzamanlı ekleme için geçerlidir.
 
 Bir runbook 'u ekleme için de kullanabilirsiniz. daha fazla bilgi için bkz. [Azure Otomasyonu 'nda güncelleştirme ve değişiklik izleme çözümlerini](automation-onboard-solutions.md)ekleme.
 

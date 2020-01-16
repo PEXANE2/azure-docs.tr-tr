@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e3ec9ea9cfbae314297c5b59f6a07bcebaef6a5c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8439788c63ec1b9feaea148ab52aba498791dc12
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791951"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045026"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Dil algılama Bilişsel Beceri
 
@@ -33,7 +33,7 @@ Dil algılama, Bing 'in doğal dil işleme kitaplıklarını kullanır ve bu, Me
 Microsoft. yetenekler. Text. LanguageDetectionSkill
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın en büyük boyutu, [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Bu verileri yaklaşım Çözümleyicisi 'ne göndermeden önce bölmeniz gerekirse, [metin bölme becerisine](cognitive-search-skill-textsplit.md)sahip olabilirsiniz.
+Bir kaydın en büyük boyutu, [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Verileri dil algılama beceriye göndermeden önce bölmeniz gerekirse, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanabilirsiniz.
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
@@ -49,7 +49,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 |--------------------|-------------|
 | languageCode | Tanımlanan dilin ISO 6391 dil kodu. Örneğin, "en". |
 | languageName | Dilin adı. Örneğin, "Ingilizce". |
-| ınızı | 0 ile 1 arasında bir değer. Dilin doğru şekilde tanımlanması olasılığı. Tümcede karışık diller varsa puan 1 ' den düşük olabilir.  |
+| puan | 0 ile 1 arasında bir değer. Dilin doğru şekilde tanımlanması olasılığı. Tümcede karışık diller varsa puan 1 ' den düşük olabilir.  |
 
 ##  <a name="sample-definition"></a>Örnek tanım
 
