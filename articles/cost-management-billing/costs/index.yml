@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Azure maliyetlerini ve kullanımını yönetme
+summary: Azure Maliyet Yönetimi, Azure harcamalarınızı izleyip kontrol altına almanıza ve kaynak kullanımını iyileştirmenize yardımcı olan bir maliyet yönetimi çözümüdür. Hızlı başlangıçlarımıza ve öğreticilerimize göz atarak maliyet analizi yapmayı, bütçe oluşturup yönetmeyi, verileri dışarı aktarmayı ve önerileri gözden geçirip gerekli eylemleri gerçekleştirmeyi öğrenin.
+metadata:
+  title: Azure Maliyet Yönetimi + Faturalandırma
+  description: Azure Maliyet Yönetimi, Azure harcamalarınızı izleyip kontrol altına almanıza ve kaynak kullanımını iyileştirmenize yardımcı olan bir maliyet yönetimi çözümüdür. Hızlı başlangıçlarımıza ve öğreticilerimize göz atarak maliyet analizi yapmayı, bütçe oluşturup yönetmeyi, verileri dışarı aktarmayı ve önerileri gözden geçirip gerekli eylemleri gerçekleştirmeyi öğrenin.
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 33821c027d242da1a9361a796280213b5265dcde
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983231"
+landingContent:
+- title: Maliyet Yönetimi hakkında bilgi edinin
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Maliyet Yönetimi ve Faturalandırma nedir?
+      url: ../cost-management-billing-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Maliyet Yönetimi en iyi yöntemleri
+      url: cost-mgt-best-practices.md
+    - text: Maliyet Yönetimi verilerini anlama
+      url: understand-cost-mgt-data.md
+    - text: Kapsamları anlama ve bunlarla çalışma
+      url: understand-work-scopes.md
+- title: Azure maliyetlerini analiz etme ve yönetme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Maliyet analizini başlatın
+      url: quick-acm-cost-analysis.md
+  - linkListType: tutorial
+    links:
+    - text: Bütçe oluşturma ve yönetme
+      url: tutorial-acm-create-budgets.md
+    - text: Maliyet ve kullanım verilerini dışarı aktarma
+      url: tutorial-export-acm-data.md
+    - text: Önerilere göre hareket etme
+      url: tutorial-acm-opt-recommendations.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verilere erişim atama
+      url: assign-access-acm-data.md
+    - text: Yaygın görevlerde maliyet analizini kullanma
+      url: cost-analysis-common-uses.md
+    - text: Maliyet uyarılarını kullanma
+      url: cost-mgt-alerts-monitor-usage-spending.md
+    - text: İş ortakları için Maliyet Yönetimi
+      url: get-started-partners.md
+    - text: Power BI Desktop’a bağlanma
+      url: /power-bi/desktop-connect-azure-cost-management
+- title: AWS maliyetlerini analiz etme ve yönetme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: AWS tümleştirmesini ayarlama ve yapılandırma
+      url: aws-integration-set-up-configure.md
+    - text: AWS maliyetlerini ve kullanımını yönetme
+      url: aws-integration-manage.md
+- title: Maliyet Yönetimi API’leri
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: EA'dan MCA API'lerine geçiş
+      url: migrate-cost-management-api.md
+  - linkListType: reference
+    links:
+    - text: Azure Maliyet Yönetimi REST API
+      url: https://docs.microsoft.com/rest/api/cost-management
+    - text: Azure Tüketim REST API’si
+      url: https://docs.microsoft.com/rest/api/consumption
+    - text: Resource Manager şablonu
+      url: /azure/templates/microsoft.consumption/budgets
+    - text: Maliyet Yönetimi REST API Örnekleri
+      url: https://github.com/Azure-Samples/Cost-Management-Samples

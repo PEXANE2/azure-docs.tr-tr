@@ -1,0 +1,96 @@
+### YamlMime:Landing
+title: Azure ayırmaları ile kaydetme
+summary: Azure Ayrılmış Sanal Makine Örnekleri sayesinde sanal makine, Azure Blob depolama veya Azure Data Lake Storage 2. Nesil, SQL Veritabanı işlem kapasitesi, Azure Cosmos DB aktarım hızı veya diğer Azure kaynakları için bir yıldan üç yıla kadar taahhütte bulunarak indirimlerden nasıl faydalanabileceğinizi öğrenin. 
+metadata:
+  title: Azure ayırmaları ile kaydetme
+  description: Azure Ayrılmış Sanal Makine Örnekleri sayesinde sanal makine, Azure Blob depolama veya Azure Data Lake Storage 2. Nesil, SQL Veritabanı işlem kapasitesi, Azure Cosmos DB aktarım hızı veya diğer Azure kaynakları için bir yıldan üç yıla kadar taahhütte bulunarak indirimlerden nasıl faydalanabileceğinizi öğrenin. 
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 4a215795df7d96f0516d4ecca691843994342f46
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983435"
+landingContent:
+- title: Rezervasyon satın alın
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure ayırmaları nedir?
+      url: save-compute-costs-reservations.md
+    - text: Rezervasyon değişiklikleri ve para iadeleri
+      url: exchange-and-refund-azure-reservations.md
+    - text: Aylık ödemeler içeren bir rezervasyon satın alma
+      url: monthly-payments-reservations.md
+  - linkListType: how-to-guide
+    links:
+    - text: Rezervasyonları yenileme
+      url: reservation-renew.md
+    - text: SQL Veri Ambarı
+      url: prepay-sql-data-warehouse-charges.md
+    - text: Sanal makine
+      url: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - text: Azure Storage
+      url: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - text: Cosmos DB
+      url: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+    - text: SQL Veritabanı
+      url: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+    - text: Azure Veri Gezgini
+      url: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+    - text: Azure Databricks
+      url: prepay-databricks-reserved-capacity.md
+    - text: App Service
+      url: prepay-app-service-isolated-stamp.md
+    - text: Azure yazılım planları
+      url: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/toc.json
+- title: İndirimlerin nasıl uygulanacağını öğrenin
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Ayrılmış VM örnekleri
+      url: ../manage/understand-vm-reservation-charges.md
+    - text: Azure Depolama ayrılmış kapasitesi
+      url: understand-storage-charges.md
+    - text: Cosmos DB ayrılmış kapasitesi
+      url: understand-cosmosdb-reservation-charges.md
+    - text: SQL Veritabanı ayrılmış kapasitesi
+      url: understand-reservation-charges.md
+    - text: SQL Veri Ambarı
+      url: reservation-discount-azure-sql-dw.md
+    - text: Azure Veri Gezgini
+      url: understand-azure-data-explorer-reservation-charges.md
+    - text: Azure Databricks
+      url: reservation-discount-databricks.md
+    - text: App Service
+      url: reservation-discount-app-service-isolated-stamp.md
+    - text: Azure yazılım ücretleri
+      url: understand-suse-reservation-charges.md
+- title: Azure Veritabanı’nda indirimler nasıl uygulanır?
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: MySQL için Azure Veritabanı
+      url: understand-reservation-charges-mysql.md
+    - text: PostgreSQL için Azure Veritabanı
+      url: understand-reservation-charges-postgresql.md
+    - text: MariaDB için Azure Veritabanı
+      url: understand-reservation-charges-mariadb.md
+- title: Rezervasyonları yönetme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Rezervasyonları yönetme
+      url: manage-reserved-vm-instance.md
+    - text: Rezervasyonları görüntüleme
+      url: view-reservations.md
+  - linkListType: reference
+    links:
+    - text: Rezervasyon API'leri
+      url: reservation-apis.md

@@ -40,7 +40,7 @@
       href: cdn-china-delivery.md
     - name: HTTP/2 desteği
       href: cdn-http2.md
-    - name: Verizon POP listesi alma
+    - name: POP IP’lerini alma
       href: cdn-pop-list-api.md
     - name: Standart Verizon’dan Premium Verizon’a geçirme
       href: cdn-migrate.md

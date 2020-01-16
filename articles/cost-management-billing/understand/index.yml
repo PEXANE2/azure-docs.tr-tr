@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Azure Faturalama’yı kullanmaya başlama
+summary: Faturanızı gözden geçirip maliyet ile kullanım verilerinizi görüntüleyerek Azure Faturalandırma’yı kullanmayı öğrenin.
+metadata:
+  title: Azure Faturalama’yı kullanmaya başlama
+  description: Azure Faturalama’yı kullanmaya başlama
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: bc472c68ea2a414fce81fe39e3282a43be3db829
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983299"
+landingContent:
+- title: Bireysel hesapları gözden geçirme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Bireysel hesap faturanızı gözden geçirme
+      url: review-individual-bill.md
+  - linkListType: concept
+    links:
+    - text: Kullanım koşulları açıklandı
+      url: understand-usage.md
+    - text: Fatura koşulları açıklandı
+      url: understand-invoice.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure faturanızı görüntüleme ve indirme
+      url: download-azure-invoice.md
+    - text: Azure kullanımınızı ve ücretlerinizi görüntüleme ve indirme
+      url: download-azure-daily-usage.md
+    - text: Dış hizmet ücretlerini görüntüleme
+      url: understand-azure-marketplace-charges.md
+- title: Microsoft Müşteri Sözleşmesi hesaplarını gözden geçirme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Microsoft Müşteri Sözleşmesi faturanızı gözden geçirme
+      url: review-customer-agreement-bill.md
+  - linkListType: concept
+    links:
+    - text: Microsoft Müşteri Sözleşmesi için ödeme hesapları
+      url: mca-overview.md
+    - text: Microsoft Müşteri Sözleşmesi kullanım koşulları
+      url: mca-understand-your-usage.md
+    - text: Microsoft Müşteri Sözleşmesi fatura koşulları
+      url: mca-understand-your-invoice.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure faturasını görüntüleme ve indirme
+      url: download-azure-invoice.md
+    - text: Azure kullanımını ve ücretlerini görüntüleme ve İndirme
+      url: download-azure-daily-usage.md
+    - text: Vergi belgelerini görüntüleme ve indirme
+      url: mca-download-tax-document.md
+    - text: Dış hizmet ücretlerini görüntüleme
+      url: understand-azure-marketplace-charges.md
+    - text: Microsoft Müşteri Sözleşmesi faturanızı ödeme
+      url: pay-bill.md
+- title: Microsoft İş Ortağı hesaplarını gözden geçirme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Microsoft İş Ortağı Sözleşmesi faturanızı gözden geçirme
+      url: review-partner-agreement-bill.md
+  - linkListType: concept
+    links:
+    - text: Microsoft İş Ortağı Sözleşmesi için ödeme hesapları
+      url: mpa-overview.md
+    - text: Microsoft Müşteri Sözleşmesi fatura koşulları
+      url: mpa-invoice-terms.md
+- title: Kurumsal Sözleşme hesaplarını gözden geçirme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Kurumsal Sözleşme faturanızı gözden geçirme
+      url: review-enterprise-agreement-bill.md
+  - linkListType: concept
+    links:
+    - text: Azure EA portalını kullanmaya başlama
+      url: ../manage/ea-portal-get-started.md

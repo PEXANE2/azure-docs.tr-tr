@@ -1,0 +1,53 @@
+- name: Azure Faturalandırma’yı kullanmaya başlama
+  href: index.yml
+  items:
+    - name: Öğreticiler
+      items:
+        - name: Bireysel hesap faturanızı gözden geçirme
+          href: review-individual-bill.md
+        - name: Microsoft Müşteri Sözleşmesi faturanızı gözden geçirme
+          href: review-customer-agreement-bill.md
+        - name: Microsoft İş Ortağı Sözleşmesi faturanızı gözden geçirme
+          href: review-partner-agreement-bill.md
+    - name: Kavramlar
+      items:
+        - name: Bireysel abonelik kullanım koşulları
+          href: understand-usage.md
+        - name: Bireysel abonelik fatura koşulları
+          href: understand-invoice.md
+        - name: Microsoft Müşteri Sözleşmesi kullanım koşulları
+          href: mca-understand-your-usage.md
+        - name: Microsoft Müşteri Sözleşmesi fatura koşulları
+          href: mca-understand-your-invoice.md
+        - name: Microsoft Müşteri Sözleşmesi fiyat listesi koşulları
+          href: ../manage/mca-understand-pricesheet.md
+        - name: Microsoft Müşteri Sözleşmesi için ödeme hesapları
+          href: mca-overview.md
+        - name: Microsoft İş Ortağı Sözleşmesi faturası koşulları
+          href: mpa-invoice-terms.md
+        - name: Microsoft İş Ortağı Sözleşmesi için ödeme hesapları
+          href: mpa-overview.md
+    - name: Nasıl yapılır kılavuzları
+      items:
+        - name: Beklenmeyen maliyetleri engelleme
+          href: ../manage/getting-started.md
+        - name: Azure faturanızı görüntüleme ve indirme
+          href: download-azure-invoice.md
+        - name: Azure kullanımınızı ve ücretlerinizi görüntüleme ve indirme
+          href: download-azure-daily-usage.md
+        - name: Faturanızı ve günlük kullanım verilerinizi indirme
+          href: ../manage/download-azure-invoice-daily-usage-date.md
+        - name: Vergi belgelerini görüntüleme ve indirme
+          href: mca-download-tax-document.md
+        - name: Azure dış hizmet ücretlerini görüntüleme
+          href: understand-azure-marketplace-charges.md
+        - name: Faturanızı ödeme
+          href: pay-bill.md
+        - name: Kuruluşunuzun fiyatlandırmasını görüntüleme ve indirme
+          href: ../manage/ea-pricing.md
+        - name: Microsoft Müşteri Sözleşmesi için kredileri izleme
+          href: ../manage/mca-check-azure-credits-balance.md
+        - name: Fiyatlandırmayı hesaplama
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: Harcama limitini anlama
+          href: ../manage/spending-limit.md
