@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 059fd1eb5df09cd0f24763f18cbb02b34017793c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f079071a88d034dfd279da8656da517b934275a3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647909"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982111"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Kuruluşlar için Azure DevTest Labs başvuru mimarisi
 Bu makalede, bir kuruluştaki Azure DevTest Labs göre bir çözüm dağıtmanıza yardımcı olacak başvuru mimarisi sunulmaktadır. Şunları içerir:
@@ -56,7 +56,7 @@ DevTest Labs yerleşik kotalar veya sınırlara sahip olmasa da, bir laboratuvar
 - Kaynak türü başına kaynak **grubu**başına kaynak sayısı: kaynak [türü başına kaynak grubu başına kaynaklar](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)için varsayılan sınır 800 ' dir.  *Tüm VM 'leri kullandığınızda, aynı kaynak grubu yapılandırmasına git* , özellikle de VM 'lerde çok fazla disk varsa, kullanıcılar bu abonelik sınırına çok daha erken gider.
 - **Depolama hesapları**: DevTest Labs 'deki bir laboratuvar bir depolama hesabıyla birlikte gelir. [Abonelik başına bölge başına depolama hesabı sayısı](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)için Azure kotası 250 ' dir. Aynı bölgedeki en fazla DevTest Labs sayısı da 250 ' dir.
 - **Rol atamaları**: bir rol ataması, bir kaynağa (sahip, kaynak, izin düzeyi) bir kullanıcı veya sorumlu erişimi verme işlemi. Azure 'da, [abonelik başına 2.000 rol ataması sınırlaması](../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits)vardır. Varsayılan olarak, DevTest Labs hizmeti her VM için bir kaynak grubu oluşturur. Sahibe, kaynak grubuna DevTest Labs sanal makinesi ve *okuyucu* izni *için sahip izni verilir.* Bu şekilde, oluşturduğunuz her yeni VM, kullanıcıya laboratuvar izni verdiğinizde kullanılan atamalara ek olarak iki rol ataması kullanır.
-- **API okuma/yazma**: REST API 'Ler, PowerShell, Azure CLI ve Azure SDK dahil olmak üzere Azure ve DevTest Labs 'i otomatikleştirmek için çeşitli yollar vardır. Otomasyon sayesinde API istekleri için başka bir sınıra ulaşırsınız: her abonelik, [saat başına 12.000 okuma isteği ve 1.200 yazma isteği](../azure-resource-manager/resource-manager-request-limits.md)sağlar. DevTest Labs 'i otomatikleştirdiğiniz zaman bu sınırı unutmayın.
+- **API okuma/yazma**: REST API 'Ler, PowerShell, Azure CLI ve Azure SDK dahil olmak üzere Azure ve DevTest Labs 'i otomatikleştirmek için çeşitli yollar vardır. Otomasyon sayesinde API istekleri için başka bir sınıra ulaşırsınız: her abonelik, [saat başına 12.000 okuma isteği ve 1.200 yazma isteği](../azure-resource-manager/management/request-limits-and-throttling.md)sağlar. DevTest Labs 'i otomatikleştirdiğiniz zaman bu sınırı unutmayın.
 
 ## <a name="manageability-considerations"></a>Yönetilebilirlik konusunda dikkat edilmesi gerekenler
 DevTest Labs, tek bir laboratuvarda çalışmak için harika bir yönetim kullanıcı arabirimine sahiptir. Ancak bir kuruluşta, büyük olasılıkla birden çok Azure aboneliğiniz ve birçok laboratuvarı vardır. Tüm laboratuvarlarınızın sürekli olarak değişiklik yapma betiği/Otomasyonu gerektirir. Aşağıda, bir DevTest Labs dağıtımı için bazı örnekler ve en iyi yönetim uygulamaları verilmiştir:

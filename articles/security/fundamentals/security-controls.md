@@ -10,12 +10,12 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4ae75df89ef5ab45dd241b38f904b6645e3978aa
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 570cc8457e69b7056b2865af9c1feb5d62a395eb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910210"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981445"
 ---
 # <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Azure hizmetleri için "yerleşik güvenlik denetimleri" makaleleri dizini
 
@@ -24,8 +24,8 @@ Bu dizin, "yerleşik güvenlik denetimleri" makalelerine bağlantılar sağlar. 
 Yerleşik güvenlik denetimi makaleleri aşağıdaki hizmetler için kullanılabilir:
 
 - [API Management](../../api-management/api-management-security-controls.md)
-- [Azure uygulama hizmeti](../../app-service/app-service-security-controls.md)
-- [Azure Resource Manager](../../azure-resource-manager/azure-resource-manager-security-controls.md)
+- [Azure App Service](../../app-service/app-service-security-controls.md)
+- [Azure Resource Manager](../../azure-resource-manager/management/azure-resource-manager-security-controls.md)
 - [Azure Backup](../../backup/backup-security-controls.md)
 - [Azure Cosmos DB](../../cosmos-db/cosmos-db-security-controls.md)
 - [Azure Event Hubs](../../event-hubs/event-hubs-security-controls.md)
@@ -36,8 +36,8 @@ Yerleşik güvenlik denetimi makaleleri aşağıdaki hizmetler için kullanılab
 - [Azure Service Bus geçişi](../../service-bus-relay/service-bus-relay-security-controls.md)
 - [Azure Service Fabric](../../service-fabric/service-fabric-security-controls.md)
 - [Azure SQL Veritabanı](../../sql-database/sql-database-security-controls.md)
-- [Azure Depolama](../../storage/common/storage-security-controls.md)
-- [Azure sanal makine ölçek kümeleri](../../virtual-machine-scale-sets/virtual-machine-scale-sets-security-controls.md)
+- [Azure depolama alanı](../../storage/common/storage-security-controls.md)
+- [Azure Sanal Makine Ölçek Kümeleri](../../virtual-machine-scale-sets/virtual-machine-scale-sets-security-controls.md)
 - [Linux Sanal Makineleri](../../virtual-machines/linux/virtual-machines-linux-security-controls.md)
 - [Windows Sanal Makineleri](../../virtual-machines/windows/virtual-machines-windows-security-controls.md)
-- [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-security-controls.md)
+- [Azure VPN Ağ Geçidi](../../vpn-gateway/vpn-gateway-security-controls.md)
