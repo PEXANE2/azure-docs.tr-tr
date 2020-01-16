@@ -310,15 +310,9 @@
         - name: Gerçek zamanlı kullanma
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Toplu tahminleri çalıştırma
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-run-batch-predictions.md
         - name: Tasarımcı toplu iş tahminleri
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
-        - name: Toplu tahminlerde hata ayıklama ve sorun giderme
-          displayName: debug_batch consume pipeline parallelrunstep inference
-          href: how-to-debug-batch-predictions.md
     - name: Modelleri izleme
       items:
         - name: Model verilerini toplama ve değerlendirme
@@ -343,6 +337,12 @@
         - name: 'Tasarımcı: Yayımlanmış işlem hatlarını kullanarak yeniden eğitme'
           displayName: 'retrain, designer, published pipeline'
           href: how-to-retrain-designer.md
+        - name: Paralel çalıştırma adımını kullanma
+          displayName: score scoring batch consume pipeline parallelrunstep inference
+          href: how-to-use-parallel-run-step.md
+        - name: Paralel çalıştırma adımında hata ayıklama ve sorun giderme
+          displayName: debug_batch consume pipeline parallelrunstep inference
+          href: how-to-debug-parallel-run-step.md
     - name: Kaynak kotalarını yönetme
       displayName: limits
       href: how-to-manage-quotas.md

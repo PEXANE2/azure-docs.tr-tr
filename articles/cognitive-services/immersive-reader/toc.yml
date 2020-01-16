@@ -17,6 +17,8 @@
   items:
     - name: Tam Ekran Okuyucu’yu Başlatma (Python)
       href: tutorial-python.md
+    - name: Birden çok Tam Ekran Okuyucu kaynağı kullanma
+      href: tutorial-multiple-resources.md
 - name: Nasıl Yapılır
   items:
     - name: Tam Ekran Okuyucu kaynağı oluşturma

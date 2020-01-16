@@ -50,6 +50,8 @@
       href: powershell-samples.md
 - name: Kavramlar
   items:
+    - name: Bileşenler ve sınırlamalar
+      href: concepts-limitations.md
     - name: Sistem durumunu izleme
       items:
         - name: Sistem durumu araştırmaları

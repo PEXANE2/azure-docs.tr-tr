@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 6d2edb7674a82a0388a0e028bee1b222e0e55004
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: be1697038674a177eaced03732536c0df5b16983
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754719"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046137"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB faturanızı anlayın
 
@@ -22,7 +22,8 @@ Azure Cosmos DB, sağlanan verimlilik ve tüketilen depolama alanı temelinde sa
 
 Bu makalede, aylık faturada gördüğünüz ayrıntıları anlamanıza yardımcı olacak bazı örnekler kullanılmaktadır. Azure Cosmos kapsayıcılarınız, birden fazla bölgeye yayılacaklarsa veya bir ayda bir dönem için farklı şekilde çalıştırıldığında sağlanan farklı aktarım hızına sahip olduğunda örneklerde gösterilen sayılar farklı olabilir.
 
->! Not: Faturalandırma, 60 dakikalık bir süre değil, bir duvar saati saatinin herhangi bir bölümü için tasarlanmıştır.
+> [!NOTE]
+> Faturalandırma, 60 dakikalık bir süre değil, bir duvar saati saatinin herhangi bir bölümü için tasarlanmıştır.
 
 ## <a name="billing-examples"></a>Faturalandırma örnekleri
 
@@ -76,11 +77,11 @@ Bir kapsayıcı için sağlanan aktarım hızını veya 9:30:100-K RU/sn ile 200
 
 ### <a name="billing-example-containers-with-shared-throughput-mode"></a>Faturalandırma örneği: paylaşılan işleme modundaki kapsayıcılar
 
-* İki Azure Cosmos veritabanı ile Doğu ABD 2 içinde bir Azure Cosmos hesabı oluşturursanız (veritabanı düzeyinde üretilen işi paylaşan bir kapsayıcı kümesi ile), sırasıyla 50-K RU/sn ve 70-K RU/sn için sağlanan verimlilik ile, sağlanan toplam 120 K RU/sn aktarım hızı.  
+* İki Azure Cosmos veritabanı ile Doğu ABD 2 içinde bir Azure Cosmos hesabı oluşturursanız (veritabanı düzeyinde üretilen işi paylaşan bir kapsayıcı kümesi ile), sırasıyla 50-K RU/sn ve 70-K RU/sn için sağlanan aktarım hızı ile, 120 en fazla K RU/sn için sağlanan toplam işlem hızına sahip olursunuz.  
 
 * 1200 x $0,008 = $9.60/saat ücretlendirilirsiniz. 
 
-* İşleme Gereksinimleriniz değişirse ve her bir veritabanı için her bir veritabanının sağlanan aktarım hızını 10.000 RU/sn olarak artırdıysanız ve paylaşılan aktarım hızı veritabanınıza 15-K RU/sn adanmış aktarım hızı moduna sahip ilk veritabanına yeni bir kapsayıcı eklerseniz, Toplam sağlanan kapasite 155-K RU/sn (60 K ru/sn + 80 K RU/sn + 15 K RU/sn) olacaktır.  
+* Aktarım gereksinimleriniz değiştiyse ve her bir veritabanı için her bir veritabanının sağlanan verimini 10.000 RU/sn olarak artırdıysanız, paylaşılan aktarım hızı veritabanınıza 15-K RU/sn adanmış aktarım hızı moduna sahip ilk veritabanına yeni bir kapsayıcı eklerseniz, genel olarak sağlanan kapasiteniz 155-K RU/sn (60 K RU/sn + 80 K RU/sn + 15 K RU/sn) olacaktır.  
 
 * Faturanız daha sonra şu şekilde değişir: 1.550 * $0,008 = $12.40/Hour.  
 
@@ -90,19 +91,19 @@ Bir kapsayıcı için sağlanan aktarım hızını veya 9:30:100-K RU/sn ile 200
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Coğrafi çoğaltma ve çoklu yönetici ile faturalandırma örnekleri  
 
-Dünyanın her yerindeki Azure bölgelerini Azure Cosmos veritabanı hesabınıza dilediğiniz zaman ekleyebilir/kaldırabilirsiniz. Çeşitli Azure Cosmos veritabanları ve kapsayıcıları için yapılandırdığınız aktarım hızı, Azure Cosmos veritabanı hesabınızla ilişkili Azure bölgelerinin her birine ayrılır. Azure Cosmos veritabanı hesabınızdaki (saat başına sağlanan) tüm veritabanları ve kapsayıcılar üzerinde yapılandırılan üretilen iş hacmi (RU/sn) toplamı T ise ve veritabanı hesabınızla ilişkili Azure bölgelerinin sayısı N ise toplam tek bir yazma bölgesiyle yapılandırılan (a) Azure Cosmos veritabanı hesabınız için sağlanan aktarım hızı T x N RU/sn 'ye eşittir ve (b) yazma işlemi yapabilen tüm bölgeler T x 'e eşit (N + 1) RU/sn 'ye eşittir anı. Sağlanan aktarım hızı (tek yazma bölgesi) maliyetleri $0.008/saat başına 100 RU/sn ve birden çok yazılabilir bölge (çok yöneticili yapılandırma) maliyetleriyle sağlanan aktarım hızı, 100 RU/sn başına (bkz. [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/)bakın). Tek bir yazma bölgesinin veya birden fazla yazma bölgesinin Azure Cosmos DB, herhangi bir bölgeden veri okumanızı sağlar.
+Dünyanın her yerindeki Azure bölgelerini Azure Cosmos veritabanı hesabınıza dilediğiniz zaman ekleyebilir/kaldırabilirsiniz. Çeşitli Azure Cosmos veritabanları ve kapsayıcıları için yapılandırdığınız aktarım hızı, Azure Cosmos veritabanı hesabınızla ilişkili Azure bölgelerinin her birine ayrılır. Azure Cosmos veritabanı hesabınızdaki (saat başına sağlanan) tüm veritabanları ve kapsayıcılar üzerinde yapılandırılan üretilen iş hacmi (RU/sn) toplamı T ise ve veritabanı hesabınızla ilişkili Azure bölgelerinin sayısı N ise, daha sonra, tek bir yazma bölgesi ile yapılandırılan Azure Cosmos veritabanı hesabınız (a) için verilen toplam sağlanan aktarım hızı T x N RU/sn 'ye eşittir ve (b) yazmaları işleme yeteneğine sahip tüm bölgeler sırasıyla T x (N + 1) RU/sn 'ye eşittir. Sağlanan aktarım hızı (tek yazma bölgesi) maliyetleri $0.008/saat başına 100 RU/sn ve birden çok yazılabilir bölge (çok yöneticili yapılandırma) maliyetleriyle sağlanan aktarım hızı, 100 RU/sn başına (bkz. [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/)bakın). Tek bir yazma bölgesinin veya birden fazla yazma bölgesinin Azure Cosmos DB, herhangi bir bölgeden veri okumanızı sağlar.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Faturalandırma örneği: çok bölgeli Azure Cosmos hesabı, tek bölgede yazma işlemleri
 
 Batı ABD ' de bir Azure Cosmos Kapsayıcınız olduğunu varsayalım. Kapsayıcı 10.000 RU/sn aktarım hızı ile oluşturulur ve bu ay 1 TB veri depoladığınızda. Azure Cosmos hesabınıza her biri aynı depolama ve aktarım hızı ile üç bölge (Doğu ABD, Kuzey Avrupa ve Doğu Asya) eklediğinizi varsayalım. Toplam aylık faturanız olacaktır (bir ayda 30 gün varsayılır). Faturanız aşağıdaki gibi olacaktır: 
 
-|**Öğe** |**Kullanım (ay)** |**Derecelendir** |**Aylık maliyet** |
+|**Öğe** |**Kullanım (ay)** |**Hız** |**Aylık maliyet** |
 |---------|---------|---------|-------|
 |Batı ABD’deki kapsayıcı için aktarım hızı faturası      | 10.000 RU/sn * 24 * 30    |$0,008/saat başına 100 RU/sn   |$576|
 |3 ek bölge (Doğu ABD, Kuzey Avrupa ve Doğu Asya) için aktarım hızı faturası       | 3 * 10.000 RU/sn * 24 * 30    |$0,008/saat başına 100 RU/sn  |$1.728|
 |Batı ABD’deki kapsayıcı için depolama faturası      | 250 GB    |$0,25/GB  |$62,50|
 |3 ek bölge (Doğu ABD, Kuzey Avrupa ve Doğu Asya) için depolama faturası      | 3 * 250 GB    |$0,25/GB  |$187,50|
-|**Toplamda**     |     |  |**$2.554**|
+|**Toplam**     |     |  |**$2.554**|
 
 *Ayrıca, verileri Doğu ABD, Kuzey Avrupa ve Doğu Asya çoğaltmak için Batı ABD kapsayıcıdaki her ay 100 GB veri çıkışı olduğunu da varsayalım. Veri aktarımı ücretleri itibariyle çıkış için faturalandırılırsınız.*
 
@@ -110,13 +111,13 @@ Batı ABD ' de bir Azure Cosmos Kapsayıcınız olduğunu varsayalım. Kapsayıc
 
 Batı ABD içinde bir Azure Cosmos kapsayıcısı oluşturduğunuzu varsayalım. Kapsayıcı 10.000 RU/sn aktarım hızı ile oluşturulur ve bu ay 1 TB veri depoladığınızda. Her biri aynı depolama ve aktarım hızı ve Azure Cosmos hesabınızla ilişkili tüm bölgelerdeki kapsayıcılara yazmak istediğiniz üç bölge (Doğu ABD, Kuzey Avrupa ve Doğu Asya) eklediğinizi varsayalım. Toplam aylık faturanız şu şekilde olacaktır: (bir ayda 30 gün varsayılır):
 
-|**Öğe** |**Kullanım (ay)**|**Derecelendir** |**Aylık maliyet** |
+|**Öğe** |**Kullanım (ay)**|**Hız** |**Aylık maliyet** |
 |---------|---------|---------|-------|
 |Batı ABD kapsayıcı için üretilen iş faturası (tüm bölgeler yazılabilir)       | 10.000 RU/sn * 24 * 30    |$0,016/saat başına 100 RU/sn    |$1.152 |
 |3 ek bölge için üretilen iş faturası Doğu ABD, Kuzey Avrupa ve Doğu Asya (tüm bölgeler yazılabilir)        | (3 + 1) * 10.000 RU/sn * 24 * 30    |$0,016/saat başına 100 RU/sn   |$4.608 |
 |Batı ABD’deki kapsayıcı için depolama faturası      | 250 GB    |$0,25/GB  |$62,50|
 |3 ek bölge (Doğu ABD, Kuzey Avrupa ve Doğu Asya) için depolama faturası      | 3 * 250 GB    |$0,25/GB  |$187,50|
-|**Toplamda**     |     |  |**$6.010**|
+|**Toplam**     |     |  |**$6.010**|
 
 *Ayrıca, verileri Doğu ABD, Kuzey Avrupa ve Doğu Asya çoğaltmak için Batı ABD kapsayıcıdaki her ay 100 GB veri çıkışı olduğunu da varsayalım. Veri aktarımı ücretleri itibariyle çıkış için faturalandırılırsınız.*
 
@@ -180,7 +181,7 @@ Ayda 720 saat boyunca toplam sağlanan aktarım hızı içindeki değişiklikler
 
 Toplam aylık fatura şöyle olacaktır (bir ayda 30 gün/720 saat varsayılır), aşağıdaki şekilde hesaplanır:
 
-|**Saatlerinin**  |**RU/s** |**Öğe** |**Kullanım (saatlik)** |**Maliyet** |
+|**Hours**  |**RU/s** |**Öğe** |**Kullanım (saatlik)** |**Maliyet** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10.000 <br/>D2:30K <br/>C1:20K |Batı ABD kapsayıcı için üretilen iş faturası (tüm bölgeler yazılabilir)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |2 ek bölge için üretilen iş faturası: Doğu ABD, Kuzey Avrupa (tüm bölgeler yazılabilir)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2.880  |
