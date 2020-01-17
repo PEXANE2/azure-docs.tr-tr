@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 01/16/2020
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d6fe6744c2af22f8891d2f3b3a6eb30ec9d3904
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: dc68b34ce10957d8c025d4767cc4f8d04c6a72c3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045276"
+ms.locfileid: "76155868"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -52,6 +52,7 @@ Microsoft Authenticator uygulama Azure Authenticator uygulamasını değiştirdi
 | Uygulama kilidi özelliği nedir ve daha güvenli bir şekilde güvende olmaya nasıl yardımcı olur? | Tek seferlik geçiş kodlarınızın, uygulama bilgilerinizin ve uygulama ayarlarının daha güvenli olmasını sağlamak için Microsoft Authenticator uygulamasındaki uygulama kilidi özelliğini açabilirsiniz. Microsoft Authenticator uygulamasının **Ayarlar** ekranından uygulama kilidini açmak, Microsoft Authenticator uygulamasını her açışınızda PIN 'inizi veya biyometri kullanarak kimlik doğrulaması yapmanız istenecektir. Bu özellik, Microsoft Authenticator uygulamasındaki bildirimlerinizi onaylamanız için ek koruma sağlar.<br><br>**Not**<br>Cihaz kaydı, Şirket Portalı uygulamasında veya Android hesap ayarları içinde olduğu gibi Microsoft Authenticator uygulamasının dışındaki diğer konumlarda gerçekleşebildiğinden, uygulama kilidinin bir kullanıcının Microsoft 'a erişmesini durdurabileceğini garanti etmez. Authenticator uygulaması. |
 | Neden Hesabım etkinliklerim hakkında bildirimler alıyorum? | Kişisel Microsoft hesabı neler hakkında daha fazla bilgi sahibi olmaya devam etmek için, Microsoft Authenticator uygulamanıza etkinlik bildirimleri gönderiyoruz. Bu bildirimler bir değişiklik yaptıktan sonra, daha güvenli tutmaya yardımcı olmaya devam eden bir şekilde görünür. Daha önce bu bildirimleri e-posta ve SMS aracılığıyla gönderdik ve artık uygulamayı kapsayacak şekilde genişlettik. Bu etkinlik bildirimleri hakkında daha fazla bilgi için bkz. [hesabınızda olağan dışı oturum açma durumunda ne olur?](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in) Bildirimlerinizi nereden alacağınızı değiştirmek için hesabınızdaki [kritik olmayan hesap uyarıları ile sizinle iletişim kurduğumuz yerde](https://account.live.com/SecurityNotifications/Update) oturum açın. |
 | İOS ile gelen varsayılan posta uygulamasını kullanarak iş veya okul hesabınızda oturum açarken, güvenlik doğrulama bilgilerim için Microsoft Authenticator uygulaması tarafından SORULDUM. Bu bilgileri girdikten ve posta uygulamasına geri döndüğünüzde bir hata alıyorum. Ne yapabilirim? | Bu en büyük olasılıkla, oturum açma ve posta uygulamanız iki farklı uygulama arasında gerçekleştiğinden, ilk arka planda oturum açma işleminin çalışmayı durdurmasına ve başarısız olmasına neden olur. Bu hatayı gidermeyi denemek için, posta uygulamanızda oturum açarken ekranın sağ alt tarafındaki **Safari** simgesini seçmenizi öneririz. Safari 'ye geçerek, tüm oturum açma süreci tek bir uygulamada gerçekleşir ve uygulamada başarıyla oturum açmanızı sağlar. |
+| Tek seferlik parola (OTP) kodları çalışmıyor. Ne yapmam gerekir? | Cihazınızdaki tarih ve saatin doğru olduğundan ve otomatik olarak eşitlendiğinden emin olun. Tarih ve saat yanlış ya da eşitlenmemiş ise, kod çalışmaz. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

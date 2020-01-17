@@ -12,29 +12,30 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b8a5a8ac4132c998567f956f3171db06a9ca53
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1ab01f5427401bd129fa84f9a5dd1a4d3f8dc77d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231856"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156208"
 ---
-# <a name="manage-organizations-connected-to-your-work-or-school-account-from-the-organizations-page"></a>Kuruluşlar sayfasından iş veya okul hesabınıza bağlı kuruluşları yönetin
+# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Kuruluşlar sayfasından bağlı kuruluşları yönetin
 
-Kuruluşlarınızı **Hesabım** portalının **kuruluşlar** sayfasından yönetebilirsiniz.
-
-**Kuruluşlar** sayfasında gösterilen iki tür kuruluş vardır:
+**Hesabım** portalının **kuruluşlar** sayfası, iş veya okul hesabınıza bağlı kuruluşları (genellikle kuruluşunuzun adı) yönetmenize yardımcı olur. **Kuruluşlar** sayfasında gösterilen iki tür kuruluş vardır:
 
 - **Ana kuruluş.** Ev kuruluşunuz, iş veya okul hesabınızın sahibi olan kuruluştur. Ana kuruluşunuzu bırakamazsınız.
-
-- **Diğer kuruluşlar.** Diğer kuruluşlar, daha önce iş veya okul hesabınızı kullanarak oturum açtığınız herhangi bir gruptur. Bu kuruluşlardan herhangi birini dilediğiniz zaman bırakabilirsiniz.
 
     >[!NOTE]
     > Atanmış bir ana kuruluşunuz yoksa, yalnızca ilişkili kuruluşlarınızın listesini içeren kuruluşlar belirten tek bir başlık görürsünüz.
 
+- **Diğer kuruluşlar.** Diğer kuruluşlar, daha önce iş veya okul hesabınızı kullanarak oturum açtığınız herhangi bir gruptur. Bu kuruluşlardan herhangi birini dilediğiniz zaman bırakabilirsiniz.
+
+>[!Important]
+>Bu makale, bir iş veya okul hesabına bağlı kuruluş bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlar için Grup ve Kullanıcı yönetimi hakkında bilgi arayan bir yöneticiyseniz, bkz. [Kurumsal Kullanıcı yönetimi belgeleri](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+
 ## <a name="view-your-organizations"></a>Kuruluşlarınızı görüntüleme
 
-1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
+1. İş veya okul hesabınızda oturum açın ve sonra **Hesabım** (https://myprofile.microsoft.com/) sayfasına gidin.
 
 2. Sol gezinti bölmesinden **kuruluşlar** ' ı seçin veya **kuruluşlar bloğundan kuruluşları** **Yönet** bağlantısını seçin.
 
@@ -53,7 +54,7 @@ Ana kuruluşunuz olmayan herhangi bir kuruluştan ayrılırsanız.
 >[!Important]
 >Bir kuruluştan yanlışlıkla ayrılırsanız geri alma yöntemi yoktur. Bu kuruluşun yöneticisinin sizi tekrar davet etmesini beklemeniz gerekir.
 
-1. Bırakmak istediğiniz kuruluşun yanındaki **kuruluşu bırak** ' ı seçin ve sonra çıkmak istediğinizi onaylamak için **bırak** ' ı seçin.
+- Bırakmak istediğiniz kuruluşun yanındaki **kuruluşu bırak** ' ı seçin ve sonra çıkmak istediğinizi onaylamak için **bırak** ' ı seçin.
 
     ![Vurgulanan kuruluşu bırak bağlantısına sahip kuruluşlar sayfası](media/my-account-portal/my-account-portal-organizations-leave.png)
 

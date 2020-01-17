@@ -10,16 +10,20 @@ ms.author: daperlov
 author: djpmsft
 manager: anandsub
 ms.date: 10/10/2019
-ms.openlocfilehash: ef630486860def2781634926f4e9385cd030c171
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b54504cf8ca7b32bf14bd4b7e0c561ffd56d4098
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913236"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155172"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Data Factory Azure Machine Learning işlem hatlarını yürütme
 
 Azure Machine Learning işlem hatlarınızı, Azure Data Factory işlem hatlarında bir adım olarak çalıştırın. Machine Learning yürütme işlem hattı etkinliği, olası kredi varsayılanlarını tanımlama, yaklaşımı belirleme ve müşteri davranış düzenlerini çözümleme gibi toplu tahmin senaryolarına olanak tanır.
+
+Aşağıdaki videoda, bu özelliğin altı dakikalık bir girişi ve gösterimi sunulmaktadır.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -46,10 +50,10 @@ Azure Machine Learning işlem hatlarınızı, Azure Data Factory işlem hatları
 
 Özellik | Açıklama | İzin verilen değerler | Gereklidir
 -------- | ----------- | -------------- | --------
-ad | İşlem hattındaki etkinliğin adı | Dize | Yes
-type | Etkinliğin türü ' AzureMLExecutePipeline ' | Dize | Yes
-linkedServiceName | Azure Machine Learning bağlı hizmet | Bağlı hizmet başvurusu | Yes
-Mlpipelineıd | Yayınlanan Azure Machine Learning işlem hattının KIMLIĞI | Dize (veya dize resultType 'ı olan ifade) | Yes
+ad | İşlem hattındaki etkinliğin adı | Dize | Evet
+type | Etkinliğin türü ' AzureMLExecutePipeline ' | Dize | Evet
+linkedServiceName | Azure Machine Learning bağlı hizmet | Bağlı hizmet başvurusu | Evet
+Mlpipelineıd | Yayınlanan Azure Machine Learning işlem hattının KIMLIĞI | Dize (veya dize resultType 'ı olan ifade) | Evet
 ExperimentName | Machine Learning işlem hattı çalıştırmasının çalışma geçmişi deneme adı | Dize (veya dize resultType 'ı olan ifade) | Hayır
 mlPipelineParameters | Yayımlanan Azure Machine Learning ardışık düzen uç noktasına geçirilecek anahtar, değer çiftleri. Anahtarların yayımlanan Machine Learning işlem hattında tanımlanan işlem hattı parametrelerinin adlarıyla eşleşmesi gerekir | Anahtar değer çiftlerine sahip nesne (veya resultType nesnesi olan Ifade) | Hayır
 mlParentRunId | Ana Azure Machine Learning işlem hattı çalıştırma KIMLIĞI | Dize (veya dize resultType 'ı olan ifade) | Hayır

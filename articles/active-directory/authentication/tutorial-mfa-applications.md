@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc721f4521c9ac9b8ed8fed2d6b41f6a1b8bd72
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 68474738aabde1b14752aa33789d7e40c3831908
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846411"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154848"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Öğretici: Azure Multi-Factor Authentication pilotu dağıtımını tamamlama
 
@@ -26,7 +26,7 @@ Bu öğreticide, Azure portal oturum açarken Azure Multi-Factor Authentication 
 > * Azure Multi-Factor Authentication’ı etkinleştirme
 > * Azure Multi-Factor Authentication'ı test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * En az deneme sürümü lisansı etkinleştirilmiş çalışan bir Azure AD kiracısına erişim.
 * Genel Yönetici ayrıcalıklarına sahip olan bir hesap.
@@ -36,10 +36,10 @@ Bu öğreticide, Azure portal oturum açarken Azure Multi-Factor Authentication 
 ## <a name="enable-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication’ı etkinleştirme
 
 1. Genel Yönetici hesabını kullanarak [Azure portal](https://portal.azure.com) oturumu açın.
-1. **Azure Active Directory**, **koşullu erişim** 'e gidin
+1. **Koşullu erişim** > **Azure Active Directory** > **güvenlik** 'e gidin
 1. **Yeni ilke**'yi seçin
 1. İlkenize **MFA Pilot** adını verin
-1. **Kullanıcılar ve gruplar** bölümünde **Kullanıcı ve grupları seçin** radyo düğmesini seçin
+1. **Kullanıcılar ve gruplar**' ın altında **Kullanıcılar ve gruplar seçin** radyo düğmesini seçin.
     * Bu makalenin ön koşullar bölümünde oluşturduğunuz pilot grubunuzu seçin
     * **Bitti**’ye tıklayın
 1. **Bulut uygulamaları** bölümünde **Uygulama seç** radyo düğmesini seçin
@@ -70,7 +70,7 @@ Koşullu erişim ilkenizin çalışıp çalışmadığını kanıtlamak için, b
 Bu öğreticide yapılandırdığınız işlevi kullanmak istemediğinize karar verirseniz aşağıdaki değişikliği yapın.
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. **Azure Active Directory**, **koşullu erişim**' e gidin.
+1. **Koşullu erişim** > **Azure Active Directory** > **Güvenliğe** gidin.
 1. Oluşturduğunuz koşullu erişim ilkesini seçin.
 1. **Sil**'e tıklayın.
 

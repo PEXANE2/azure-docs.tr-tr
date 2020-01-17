@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Kallidus | Microsoft Docs'
-description: Azure Active Directory ve Kallidus arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Kallizleştirilebilir tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Kallıya 'lar arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,120 +16,120 @@ ms.topic: tutorial
 ms.date: 07/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 734df138bc58deb0c96916ba5178c84a63f3c53a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e3caa48e1461552f2999aa2fd91447a41d146379
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712030"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120326"
 ---
-# <a name="tutorial-integrate-kallidus-with-azure-active-directory"></a>Öğretici: Kallidus Azure Active Directory ile tümleştirme
+# <a name="tutorial-integrate-kallidus-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Kallilıya tümleştirin
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Kallidus tümleştirme öğreneceksiniz. Kallidus Azure AD ile tümleştirdiğinizde, şunları yapabilirsiniz:
+Bu öğreticide, Kallilıya Azure Active Directory (Azure AD) ile birlikte nasıl tümleştirileceğini öğreneceksiniz. Azure AD ile Kallilıya tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Kallidus erişimi, Azure AD'de denetler.
-* Otomatik olarak Kallidus için kendi Azure AD hesapları ile oturum açmış olmasını sağlayın.
-* Bir merkezi konumda - Azure portalı hesaplarınızı yönetin.
+* Azure AD 'de Kallilıya erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla kalıp için otomatik olarak oturum açma olanağı sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gerekir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliğiniz. Bir aboneliğiniz yoksa, alabileceğiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/free/).
-* Kallidus çoklu oturum açma (SSO) abonelik etkin.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Kallı, çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD SSO bir test ortamında test edin. Kallidus destekler **IDP** SSO başlattı.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Kalli, **IDP** tarafından başlatılan SSO 'yu destekler.
 
-## <a name="adding-kallidus-from-the-gallery"></a>Galeriden Kallidus ekleme
+## <a name="adding-kallidus-from-the-gallery"></a>Galeriden Kalliya ekleme
 
-Azure AD'de Kallidus tümleştirmesini yapılandırmak için Kallidus Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Kallilıya, Azure AD ile tümleşmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Kalliya da eklemeniz gerekir.
 
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde seçin **Azure Active Directory** hizmeti.
-1. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları**.
-1. Yeni bir uygulama eklemek için seçin **yeni uygulama**.
-1. İçinde **Galeriden Ekle** bölümüne şunu yazın **Kallidus** arama kutusuna.
-1. Seçin **Kallidus** gelen sonuçlar panelinde ve uygulama ekleyin. Uygulama, kiracınıza eklendiği sırada birkaç saniye bekleyin.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **kallilıve** yazın.
+1. Sonuçlar panelinden **Kallilıya** 'lar ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
 
-Yapılandırma ve Azure AD SSO kullanarak adlı bir test kullanıcı Kallidus ile test etme **B.Simon**. Çalışmak SSO için Kallidus içinde bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişki oluşturmanız gerekir.
+**B. Simon**adlı bir test kullanıcısını kullanarak Azure AD SSO 'Yu, kalli, ile birlikte yapılandırın ve test edin. SSO 'nun çalışması için, zaman içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Yapılandırma ve Azure AD SSO ile Kallidus sınamak için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu, Kallilıya 'lar ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. **[Azure AD SSO'yu yapılandırma](#configure-azure-ad-sso)**  kullanıcılarınız bu özelliği kullanmak etkinleştirmek için.
-2. **[Kallidus yapılandırma](#configure-kallidus)**  uygulama tarafında SSO ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  Azure AD çoklu oturum açma B.Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  B.Simon Azure AD çoklu oturum açma kullanmak üzere etkinleştirmek için.
-5. **[Kallidus test kullanıcısı oluşturma](#create-kallidus-test-user)**  kullanıcı Azure AD gösterimini bağlı Kallidus B.Simon bir karşılığı sağlamak için.
-6. **[Test SSO](#test-sso)**  yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
+2. Uygulama tarafında SSO ayarlarını yapılandırmak için **[Kallilıya 'ı yapılandırın](#configure-kallidus)** .
+3. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+4. Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
+5. Kullanıcının Azure AD gösterimine bağlı olan Kallitıs 'de B. Simon 'ya karşılık gelen, **[kallibir test kullanıcısı oluşturun](#create-kallidus-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO'yu yapılandırma
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek üzere aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Kallidus** uygulama tümleştirme sayfası, bulma **Yönet** bölümünde ve seçin **çoklu oturum açma**.
-1. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** sayfasında **SAML**.
-1. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında, düzenleme/kalem simgesine tıklayıp **temel SAML yapılandırma** ayarlarını düzenlemek için.
+1. [Azure Portal](https://portal.azure.com/), **kallileştirilebilir** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımı uygulayın:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları uygulayın:
 
-    İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın:  `https://login.kallidus-suite.com/core/<ID>/Acs`
+    **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://login.kallidus-suite.com/core/<ID>/Acs`
 
     > [!NOTE]
-    > Değer, gerçek değil. Değerini gerçek yanıt URL'si ile güncelleştirin. İlgili kişi [Kallidus istemci Destek ekibine](https://kallidus.zendesk.com) değeri alınamıyor. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Değer gerçek değil. Değeri gerçek yanıt URL 'siyle güncelleştirin. Değeri almak için [kalli, istemci desteği ekibine](https://kallidus.zendesk.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında **SAML imzalama sertifikası** bölümünde, kopyalamak için Kopyala düğmesine **uygulama Federasyon meta verileri URL'sini** ve üzerinde kaydedin, bilgisayar.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
    ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-kallidus"></a>Kallidus yapılandırın
+### <a name="configure-kallidus"></a>Kallilıya yapılandırma
 
-Çoklu oturum açmayı yapılandırma **Kallidus** tarafını göndermek için ihtiyacınız **uygulama Federasyon meta verileri URL'sini** için [Kallidus Destek ekibine](https://kallidus.zendesk.com). Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+Bu arada **Çoklu oturum açmayı** yapılandırmak Için, **uygulama Federasyon meta verileri URL 'Sini** ve **imzalama sertifikasının (genel)** bir kopyasını [kalli, destek ekibine](https://kallidus.zendesk.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, bir test kullanıcısı B.Simon adlı Azure portalında oluşturacaksınız.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portalı'ndaki sol bölmeden seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. İçinde **kullanıcı** özellikleri, aşağıdaki adımları izleyin:
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. İçinde **kullanıcı adı** alanına username@companydomain.extension. Örneğin, `B.Simon@contoso.com`.
-   1. Seçin **Show parola** onay kutusunu işaretleyin ve ardından görüntülenen değeri yazın **parola** kutusu.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için Kallidus erişim vererek B.Simon tıklatmalarını sağlarsınız.
+Bu bölümde, Kallilıya erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **kurumsal uygulamalar**ve ardından **tüm uygulamaları**.
-1. Uygulamalar listesinde **Kallidus**.
-1. Uygulamanın genel bakış sayfasında bulma **Yönet** seçin ve bölüm **kullanıcılar ve gruplar**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Kallide**' yi seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. Seçin **Kullanıcı Ekle**, ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı ekleme bağlantısı](common/add-assign-user.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **B.Simon** kullanıcılar listesinden ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. SAML onaylama işlemi herhangi bir rolü değer de beklediğiniz varsa **rolü Seç** iletişim kutusunda, listeden bir kullanıcı için uygun rolü seçin ve ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. İçinde **atama Ekle** iletişim kutusunda, tıklayın **atama** düğmesi.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-kallidus-test-user"></a>Kallidus test kullanıcısı oluşturma
+### <a name="create-kallidus-test-user"></a>Kallibir test kullanıcısı oluşturma
 
-Bu bölümde, Britta Simon Kallidus içinde adlı bir kullanıcı oluşturun. Çalışmak [Kallidus Destek ekibine](https://kallidus.zendesk.com) Kallidus platform kullanıcıları eklemek için. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, Kallilıya 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kallimahkeme platformunda kullanıcıları eklemek için [kalli, destek ekibi](https://kallidus.zendesk.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>Test SSO 'SU
 
-Erişim Paneli'nde Kallidus kutucuğu seçtiğinizde, otomatik olarak SSO'yu ayarlama Kallidus için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Kallitıo kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız kalda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

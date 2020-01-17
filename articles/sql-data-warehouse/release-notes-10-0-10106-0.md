@@ -5,18 +5,18 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 11/12/2019
+ms.date: 1/14/2020
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 468a61c83948033905b3727add528520611b8bd4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092228"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122466"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL veri ambarı sürüm notları
 
@@ -31,6 +31,13 @@ Yeni özellikler tüm bölgelere alındığı için, örneğinize dağıtılan s
 ![SQL veri ambarı sürümü](./media/release-notes/t47-1-version.png)
 
 Azure SQL DW 'nize hangi yayının uygulandığını onaylamak için tanımlanan sürümü kullanın.
+
+## <a name="january-2020"></a>Ocak 2020
+
+| Hizmet geliştirmeleri | Ayrıntılar |
+| --- | --- |
+|**İş yükü Yönetim Portalı ölçümleri (Önizleme)**|Bu sürümden Itibaren önizleme için [Iş yükü yalıtımı](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation) sürümü sayesinde kullanıcılar, sistem kaynaklarını verimli bir şekilde yönetmek için kendi [iş yükü gruplarını](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) oluşturabilir ve iş SLA 'larını karşılamalarını sağlayabilirsiniz.  Azure SYNAPSE Analytics için genel [iş yükü yönetimi](/azure/sql-data-warehouse/sql-data-warehouse-workload-management) geliştirmelerinin bir parçası olarak, yeni [iş yükü yönetimi izleme ölçümleri](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor) artık kullanılabilir.</br> </br> İş yükünüzü izlemek aşağıdaki ölçümler hakkında daha fazla öngörülere sahiptir: </br> -Etkin uç kaynak yüzdesi  </br> -Geçerli en düşük kaynak yüzdesi </br> -İş yükü grubu etkin sorguları </br> -İş yükü grubu ayırması en fazla kaynak yüzdesi </br> -Sistem iş yükü grubuna göre ayırma yüzdesi </br> -İş yükü grubu sorgu zaman aşımları </br> -İş yükü grubu sıraya alınmış sorgular </br></br> Bu ölçümleri, daha [az kullanılan iş yükü yalıtımı](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation)ile yapılandırılan iş yükü [grubu sorunlarını](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck) veya iş yükü gruplarını belirlemek için kullanın.  Bu ölçümler, Azure portalında iş yükü grubuna göre bölünme izin veren bir şekilde kullanılabilir.  En sevdiğiniz grafiklerinizi filtreleyin ve öngörülere hızlı erişim sağlamak için bir panoya sabitleyin.|
+|**Portal Izleme ölçümleri**| Genel sorgu etkinliğini izlemek için portala aşağıdaki ölçümler eklenmiştir: </br> -Etkin sorgular </br> -Sıraya alınmış sorgular </br> </br>Bu ölçümler, [izleme kaynak kullanımı ve sorgu etkinliği belgelerindeki](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity)mevcut ölçümler ile birlikte açıklanmıştır.|
 
 ## <a name="october-2019"></a>Ekim 2019
 

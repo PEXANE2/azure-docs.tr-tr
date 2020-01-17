@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: a64f680adbfca08e334f51697a305c93a408e1e4
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ca19aefdd213331214938b2af6c9a77501333fb0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922368"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121225"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure işlevleri için Azure Service Bus bağlamaları
 
@@ -206,9 +206,9 @@ module.exports = function(context, myQueueItem) {
 
 ### <a name="trigger---python-example"></a>Trigger-Python örneği
 
-Aşağıdaki örnek, bir hizmet veri yolu kuyruğu iletisinin bir tetikleyici aracılığıyla nasıl okunacağını gösterir.
+Aşağıdaki örnek, bir tetikleyici aracılığıyla Service Bus kuyruğu iletisinin nasıl okunacağını gösterir.
 
-ServiceBus bağlaması, *type* `serviceBusTrigger`olarak ayarlandığı *function. JSON* içinde tanımlanır.
+Service Bus bağlama, *Type* 'ın `serviceBusTrigger`olarak ayarlandığı *function. JSON* içinde tanımlanır.
 
 ```json
 {
@@ -274,7 +274,7 @@ def main(msg: func.ServiceBusMessage):
   }
   ```
 
-  Ayarlayabileceğiniz `Connection` özelliğini kullanmak için Service Bus hesabı aşağıdaki örnekte gösterildiği gibi belirtin:
+  Aşağıdaki örnekte gösterildiği gibi, kullanılacak Service Bus bağlantı dizesini içeren bir uygulama ayarının adını belirtmek için `Connection` özelliğini ayarlayabilirsiniz:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -322,12 +322,13 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 |---------|---------|----------------------|
 |**type** | Yok | "ServiceBusTrigger için" olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**direction** | Yok | "İçin" ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**Adı** | Yok | İşlev kodu, kuyruk veya konuda ileti temsil eden değişken adı. İşlev dönüş değeri başvurmak için "$return için" ayarlayın. |
+|**Adı** | Yok | İşlev kodu, kuyruk veya konuda ileti temsil eden değişken adı. |
 |**queueName**|**queueName**|İzlemek için Kuyruğun adı.  Yalnızca bir konu için bir kuyruk izleme ayarlayın.
 |**topicName**|**topicName**|İzlemek için konunun adı. Bir kuyruk için bir konu, yalnızca izleme ayarlayın.|
 |**subscriptionName**|**subscriptionName**|İzlemek için Abonelik adı. Bir kuyruk için bir konu, yalnızca izleme ayarlayın.|
 |**bağlantı**|**bağlantı**|Bu bağlama için kullanılacak hizmet veri yolu bağlantı dizesi içeren bir uygulama ayarı adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, yalnızca kalanı adını belirtebilirsiniz. Örneğin, ayarlarsanız `connection` "AzureWebJobsMyServiceBus." adlı bir uygulama ayarı için "MyServiceBus", İşlevler çalışma zamanı arar. Bırakırsanız `connection` boş, İşlevler çalışma zamanı varsayılan Service Bus bağlantı dizesi "AzureWebJobsServiceBus" adlı uygulama ayarı kullanır.<br><br>Bir bağlantı dizesi almak için [Yönetim kimlik bilgilerini alma](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)konusunda gösterilen adımları izleyin. Service Bus ad alanı bir belirli bir kuyruğa veya konuya sınırlı olmayan bir bağlantı dizesi olmalıdır. |
-|**erişimHakları**|**Erişim**|Bağlantı dizesi için erişim hakları. Kullanılabilir değerler `manage` ve `listen`. Varsayılan değer `manage`, belirten `connection` sahip **Yönet** izni. Sahip olmayan bir bağlantı dizesi kullanıyorsanız **Yönet** izin kümesi `accessRights` "dinlemek için". Aksi takdirde, İşlevler çalışma zamanı gerektiren işlemler yapmaya başarısız olabilir, hakları yönetin. Azure Işlevleri sürüm 2. x ve üzeri sürümlerde, depolama SDK 'sının en son sürümü yönetme işlemlerini desteklemediğinden bu özellik kullanılamaz.|
+|**erişimHakları**|**Erişim**|Bağlantı dizesi için erişim hakları. Kullanılabilir değerler `manage` ve `listen`. Varsayılan değer `manage`, belirten `connection` sahip **Yönet** izni. Sahip olmayan bir bağlantı dizesi kullanıyorsanız **Yönet** izin kümesi `accessRights` "dinlemek için". Aksi takdirde, İşlevler çalışma zamanı gerektiren işlemler yapmaya başarısız olabilir, hakları yönetin. Azure Işlevleri sürüm 2. x ve üzeri sürümlerde, bu özellik kullanılamaz çünkü Service Bus SDK 'nın en son sürümü yönetim işlemlerini desteklemez.|
+|**isSessionsEnabled**|**IsSessionsEnabled**|[oturum kullanan](../service-bus-messaging/message-sessions.md) bir kuyruğa veya aboneliğe bağlanılıyorsa `true`. Aksi takdirde, varsayılan değer olan `false`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -340,7 +341,7 @@ C# ve C# betiği aşağıdaki parametre türleri için kuyruk veya konuda ileti 
 * İleti, JSON içeriyorsa bir özel tür - Azure işlevleri JSON verileri seri durumdan çalışır.
 * `BrokeredMessage`-' de, [aracılı edmessage. GetBody\<t > ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
 
-Bu parametreler Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için `BrokeredMessage`yerine [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) kullanın.
+Bu parametre türleri Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için `BrokeredMessage`yerine [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) kullanın.
 
 JavaScript'te, kuyruk veya konuda ileti kullanarak erişim `context.bindings.<name from function.json>`. Service Bus iletiyi bir dize veya bir JSON nesnesi olarak işleve geçirilir.
 
@@ -510,7 +511,7 @@ public String pushToQueue(
  }
 ```
 
- İçinde [Java Çalışma Zamanı Kitaplığı işlevleri](/java/api/overview/azure/functions/runtime), kullanın `@QueueOutput` değeri bir Service Bus kuyruğuna yazılmış işlevi parametre üzerindeki ek açıklama.  Parametre türü olmalıdır `OutputBinding<T>`, burada T bir POJO'ya herhangi bir yerel Java türü.
+ İçinde [Java Çalışma Zamanı Kitaplığı işlevleri](/java/api/overview/azure/functions/runtime), kullanın `@ServiceBusQueueOutput` değeri bir Service Bus kuyruğuna yazılmış işlevi parametre üzerindeki ek açıklama.  Parametre türü olmalıdır `OutputBinding<T>`, burada T bir POJO'ya herhangi bir yerel Java türü.
 
 Java işlevleri, bir Service Bus konusuna da yazabilir. Aşağıdaki örnek, çıkış bağlamasının yapılandırmasını anlatmak için `@ServiceBusTopicOutput` ek açıklamasını kullanır. 
 
@@ -583,9 +584,9 @@ module.exports = function (context, myTimer) {
 
 ### <a name="output---python-example"></a>Output-Python örneği
 
-Aşağıdaki örnek, Python 'da ServiceBus kuyruğuna nasıl yazılacağını gösterir.
+Aşağıdaki örnek, Python 'da Service Bus kuyruğuna nasıl yazılacağını gösterir.
 
-Bir ServiceBue bağlama tanımı, *Type* 'ın `serviceBus`olarak ayarlandığı *function. JSON* içinde tanımlanmıştır.
+Service Bus bağlama tanımı, *Type* 'ın `serviceBus`olarak ayarlandığı *function. JSON* içinde tanımlanır.
 
 ```json
 {
@@ -646,7 +647,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-Ayarlayabileceğiniz `Connection` özelliğini kullanmak için Service Bus hesabı aşağıdaki örnekte gösterildiği gibi belirtin:
+Aşağıdaki örnekte gösterildiği gibi, kullanılacak Service Bus bağlantı dizesini içeren bir uygulama ayarının adını belirtmek için `Connection` özelliğini ayarlayabilirsiniz:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -659,7 +660,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 Tam bir örnek için bkz. [çıkış - C# örneği](#output---c-example).
 
-Kullanabileceğiniz `ServiceBusAccount` sınıf, yöntem ya da parametre düzeyinde kullanılacak hizmet veri yolu hesabı belirtmek için özniteliği.  Daha fazla bilgi için [tetikleyici - öznitelikleri](#trigger---attributes).
+Sınıf, yöntem veya parametre düzeyinde kullanılacak Service Bus hesabını belirtmek için `ServiceBusAccount` özniteliğini kullanabilirsiniz.  Daha fazla bilgi için [tetikleyici - öznitelikleri](#trigger---attributes).
 
 ## <a name="output---configuration"></a>Çıkış - yapılandırma
 
@@ -669,11 +670,11 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 |---------|---------|----------------------|
 |**type** | Yok | "Service Bus" için ayarlanmış olması gerekir. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**direction** | Yok | "Out" ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**Adı** | Yok | Kuyruk veya konuda işlev kodunu temsil eden değişken adı. İşlev dönüş değeri başvurmak için "$return için" ayarlayın. |
+|**Adı** | Yok | İşlev kodu, kuyruk veya konuda ileti temsil eden değişken adı. İşlev dönüş değeri başvurmak için "$return için" ayarlayın. |
 |**queueName**|**queueName**|Kuyruğun adı.  Yalnızca bir konu için kuyruk iletileri gönderme ayarlayın.
-|**topicName**|**topicName**|İzlemek için konunun adı. Yalnızca bir kuyruk için konu iletileri gönderme ayarlayın.|
+|**topicName**|**topicName**|Konunun adı. Yalnızca bir kuyruk için konu iletileri gönderme ayarlayın.|
 |**bağlantı**|**bağlantı**|Bu bağlama için kullanılacak hizmet veri yolu bağlantı dizesi içeren bir uygulama ayarı adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, yalnızca kalanı adını belirtebilirsiniz. Örneğin, ayarlarsanız `connection` "AzureWebJobsMyServiceBus." adlı bir uygulama ayarı için "MyServiceBus", İşlevler çalışma zamanı arar. Bırakırsanız `connection` boş, İşlevler çalışma zamanı varsayılan Service Bus bağlantı dizesi "AzureWebJobsServiceBus" adlı uygulama ayarı kullanır.<br><br>Bir bağlantı dizesi almak için [Yönetim kimlik bilgilerini alma](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)konusunda gösterilen adımları izleyin. Service Bus ad alanı bir belirli bir kuyruğa veya konuya sınırlı olmayan bir bağlantı dizesi olmalıdır.|
-|**erişimHakları**|**Erişim**|Bağlantı dizesi için erişim hakları. Kullanılabilir değerler `manage` ve `listen`. Varsayılan değer `manage`, belirten `connection` sahip **Yönet** izni. Sahip olmayan bir bağlantı dizesi kullanıyorsanız **Yönet** izin kümesi `accessRights` "dinlemek için". Aksi takdirde, İşlevler çalışma zamanı gerektiren işlemler yapmaya başarısız olabilir, hakları yönetin. Azure Işlevleri sürüm 2. x ve üzeri sürümlerde, depolama SDK 'sının en son sürümü yönetme işlemlerini desteklemediğinden bu özellik kullanılamaz.|
+|**erişimHakları**|**Erişim**|Bağlantı dizesi için erişim hakları. Kullanılabilir değerler `manage` ve `listen`. Varsayılan değer `manage`, belirten `connection` sahip **Yönet** izni. Sahip olmayan bir bağlantı dizesi kullanıyorsanız **Yönet** izin kümesi `accessRights` "dinlemek için". Aksi takdirde, İşlevler çalışma zamanı gerektiren işlemler yapmaya başarısız olabilir, hakları yönetin. Azure Işlevleri sürüm 2. x ve üzeri sürümlerde, bu özellik kullanılamaz çünkü Service Bus SDK 'nın en son sürümü yönetim işlemlerini desteklemez.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -726,6 +727,12 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
                 "autoComplete": false,
                 "maxConcurrentCalls": 32,
                 "maxAutoRenewDuration": "00:55:00"
+            },
+            "sessionHandlerOptions": {
+                "autoComplete": false,
+                "messageWaitTimeout": "00:00:30",
+                "maxAutoRenewDuration": "00:55:00",
+                "maxConcurrentSessions": 16
             }
         }
     }
@@ -735,10 +742,8 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |maxAutoRenewDuration|00:05:00|En uzun süre içinde otomatik olarak ileti kilidi yenilenir.|
-|Otomatik Tamamlama|doğru|Tetikleyici hemen tam (Otomatik Tamamlama) işaretlemek olup tam çağrı işlemenin tamamlanmasını bekleyin.|
+|Otomatik Tamamlama|doğru|Tetikleyicinin iletiyi hemen tamamlandı olarak işaretleyip işaret etmesi (otomatik tamamlama) veya işlemin tamamlanmasını beklemek için işlevin başarıyla çıkış beklemesi.|
 |maxConcurrentCalls|16|İleti pompası başlatmalıdır geri çağırma eş zamanlı çağrı sayısı. Varsayılan olarak, İşlevler çalışma zamanı aynı anda birden çok ileti işler. Bir kerede yalnızca tek bir kuyruk veya konuda ileti işleme için çalışma zamanının ayarlayın `maxConcurrentCalls` 1. |
-|prefetchCount|Yok|Varsayılan temel alınan MessageReceiver tarafından kullanılacak PrefetchCount.|
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

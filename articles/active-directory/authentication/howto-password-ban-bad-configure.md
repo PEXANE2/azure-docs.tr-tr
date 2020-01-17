@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c58371edffa4400c2c2b3efd37c3ce6d7c3cad95
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: eb47b9df51803c76662b5fb4ca1fe23740e7af9a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847924"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155069"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>Özel yasaklanmış parola listesini yapılandırma
 
@@ -26,7 +26,7 @@ Birçok kuruluş, kullanıcılarını bir okul, spor ekibi veya çok büyük ki�
 
 Özel yasaklanmış parola listesini yapılandırmak için Azure Active Directory Premium P1 veya P2 lisansı gerekir. Azure Active Directory lisanslama hakkında daha ayrıntılı bilgi için [Azure Active Directory fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/active-directory/)bakın.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory**, **kimlik doğrulama yöntemleri**ve **parola koruması**' na gidin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** > **güvenlik** > **kimlik doğrulama yöntemlerine** > **parola korumasını**inceleyin.
 1. **Özel liste Uygula**seçeneğini **Evet**olarak ayarlayın.
 1. **Özel yasaklanmış parola listesine**dizeler ekleme, satır başına bir dize
    * Özel yasaklanmış parola listesi, en fazla 1000 terim içerebilir.

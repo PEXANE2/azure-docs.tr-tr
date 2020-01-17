@@ -1,20 +1,20 @@
 ---
 title: Windows kapsayıcıları ile etkileşim kurma
 services: azure-dev-spaces
-ms.date: 07/25/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 description: Windows kapsayıcıları ile mevcut bir kümede Azure Dev Spaces çalıştırmayı öğrenin
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Windows kapsayıcıları
-ms.openlocfilehash: 855b877653d4cf60c8165af3094fe0e68ca5e6dd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867305"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157007"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces kullanarak Windows kapsayıcılarıyla etkileşim kurma
 
-Hem yeni hem de mevcut Kubernetes ad alanlarında Azure Dev Spaces etkinleştirebilirsiniz. Azure Dev Spaces, Linux kapsayıcıları üzerinde çalışan hizmetleri çalıştıracak ve araç çalıştıracaktır. Bu hizmetler ayrıca aynı ad alanındaki Windows kapsayıcıları üzerinde çalışan uygulamalarla etkileşime geçebilir. Bu makalede, mevcut Windows kapsayıcılarıyla bir ad alanında hizmetleri çalıştırmak için geliştirme alanlarının nasıl kullanılacağı gösterilir.
+Hem yeni hem de mevcut Kubernetes ad alanlarında Azure Dev Spaces etkinleştirebilirsiniz. Azure Dev Spaces, Linux kapsayıcıları üzerinde çalışan hizmetleri çalıştıracak ve araç çalıştıracaktır. Bu hizmetler ayrıca aynı ad alanındaki Windows kapsayıcıları üzerinde çalışan uygulamalarla etkileşime geçebilir. Bu makalede, mevcut Windows kapsayıcılarıyla bir ad alanında hizmetleri çalıştırmak için geliştirme alanlarının nasıl kullanılacağı gösterilir. Şu anda Azure Dev Spaces ile hata ayıklamanıza veya Windows kapsayıcılarına iliştiremezsiniz.
 
 ## <a name="set-up-your-cluster"></a>Kümenizi ayarlama
 
@@ -36,8 +36,9 @@ Aşağıdaki örnek çıktıda, hem Windows hem de Linux düğümü içeren bir 
 
 ```console
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
-aksnpwin987654                      Ready    agent   108s   v1.14.1
+aks-nodepool1-12345678-vmss000000   Ready    agent   13m    v1.14.8
+aks-nodepool1-12345678-vmss000001   Ready    agent   13m    v1.14.8
+aksnpwin000000                      Ready    agent   108s   v1.14.8
 ```
 
 Windows düğümleriniz için bir [Taint][using-taints] uygulayın. Windows düğümlerinizin Taint 'i, geliştirme alanlarının Windows düğümleriniz üzerinde çalışması için Linux kapsayıcıları planlamasını önler. Aşağıdaki komut örnek komutu, önceki örnekteki *aksnpwin987654* Windows düğümüne bir taınt uygular.
@@ -60,20 +61,12 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-Örnek uygulama, Windows hizmetini kümenizde çalıştırmak için [Held 2][helm-installed] kullanır. Kümenize Held 'yi yükleyip doğru izinleri verin:
-
-```console
-helm init --wait
-kubectl create serviceaccount --namespace kube-system tiller
-kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
-``` 
-
-`charts` dizinine gidin ve Windows hizmetini çalıştırın:
+Örnek uygulama, Windows hizmetini kümenizde çalıştırmak için [Held][helm-installed] kullanır. `charts` dizinine gidin ve Held 'yi kullanarak Windows hizmetini çalıştırın:
 
 ```console
 cd charts/
-helm install . --namespace dev
+kubectl create ns dev
+helm install windows-service . --namespace dev
 ```
 
 Yukarıdaki komut, Windows hizmetinizi *geliştirme* ad alanında çalıştırmak Için Held kullanır. *Dev*adlı bir ad alanı yoksa, oluşturulur.
@@ -122,16 +115,15 @@ spec:
 Windows hizmetinizin dağıtımını listelemek için `helm list` kullanın:
 
 ```cmd
-$ helm list
-NAME            REVISION    UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
-gilded-jackal   1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
+$ helm list --namespace dev
+NAME              REVISION  UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
+windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-Yukarıdaki örnekte, dağıtımınızın adı, *Gilded-jackal*' dır. `helm upgrade`kullanarak Windows hizmetinizi yeni yapılandırmayla güncelleştirin:
+Yukarıdaki örnekte, dağıtımınızın adı *Windows-Service*' dir. `helm upgrade`kullanarak Windows hizmetinizi yeni yapılandırmayla güncelleştirin:
 
 ```cmd
-$ helm upgrade gilded-jackal . --namespace dev
-Release "gilded-jackal" has been upgraded.
+helm upgrade windows-service . --namespace dev
 ```
 
 `deployment.yaml`güncelleştirmenizden sonra, dev Spaces hizmetinizi denemeyecek ve bunları işaretlemecektir.
@@ -182,7 +174,7 @@ Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar g
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://helm.sh/docs/intro/install/
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md

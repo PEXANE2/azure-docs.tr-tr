@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mimckitt
-ms.openlocfilehash: d98efd46e3c2fbc11be2cde6a0c4f2b37acc8d7c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: ffa99c6ba0157eca133dc36ecbbb159b076b8bc0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934010"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155562"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Onaylı olmayan dağıtımlar için bilgi
 
@@ -43,7 +43,7 @@ Bu makalede, Azure 'da Linux dağıtımınızı çalıştırmaya yönelik genel 
 
 ## <a name="general-linux-installation-notes"></a>Genel Linux yükleme notları
 * Hyper-V sanal sabit disk (VHDX) biçimi Azure 'da desteklenmiyor, yalnızca *sabıt VHD*.  Hyper-V Yöneticisi 'Ni veya [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) cmdlet 'ini kullanarak diski vhd biçimine dönüştürebilirsiniz. VirtualBox kullanıyorsanız, disk oluştururken varsayılan (dinamik olarak ayrılan) yerine **sabit boyut** ' u seçin.
-* Azure yalnızca 1. nesil sanal makineleri destekler. 1\. nesil bir sanal makineyi VHDX 'ten VHD dosya biçimine dönüştürebilir ve dinamik olarak genişleyen sabit boyutlu bir diske dönüştürebilirsiniz. Bir sanal makinenin neslini değiştiremezsiniz. Daha fazla bilgi için bkz. [Hyper-V ' d a 1. nesil veya 2 sanal makine oluşturmalıyım?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
+* Azure, Gen1 (BIOS önyükleme) & Gen2 (UEFı önyüklemesi) sanal makinelerini destekler.
 * VHD için izin verilen en büyük boyut 1.023 GB 'dir.
 * Linux sistemini yüklerken, çoğu yükleme için varsayılan olan mantıksal birim Yöneticisi (LVM) yerine standart bölümleri kullanmanızı öneririz. Standart bölümlerin kullanılması, özellikle de sorun giderme için bir işletim sistemi diski başka bir özdeş VM 'ye iliştirilmişse, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veri disklerinde kullanılıyor olabilir.
 * UDF dosya sistemlerini bağlamak için çekirdek desteği gereklidir. Azure 'da ilk önyüklemede sağlama yapılandırması, konuğa bağlı olan UDF biçimli medya kullanılarak Linux VM 'ye geçirilir. Azure Linux Aracısı, yapılandırmasını okumak ve VM 'yi sağlamak için UDF dosya sistemini takmalıdır.

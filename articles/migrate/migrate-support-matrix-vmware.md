@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi 'nde VMware değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 2a9c5504d99f439723a250b619b9f9b660ea9c59
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 74dae71404fe827c9e19d5e3042afd2f98a7a5dd
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029009"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154695"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -37,11 +37,14 @@ Azure geçişi: Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra mak
 
 **Destek** | **Ayrıntılar**
 --- | ---
-Keşif | Bulgu aracısız, makine konuk kimlik bilgileri kullanılarak ve WMI ve SSH çağrıları kullanılarak makinelere uzaktan erişim.
-Desteklenen makineler | Şirket içi VMware VM 'Leri.
-Makine işletim sistemi | Tüm Windows ve Linux sürümleri
-Kimlik bilgileri | Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir.<br/><br/> Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
-Sınırlar | Uygulama bulma için, her gereç için 10000 'e kadar keşfedebilirsiniz. 
+**Bulma** | Bulgu aracısız, makine konuk kimlik bilgileri kullanılarak ve WMI ve SSH çağrıları kullanılarak makinelere uzaktan erişim.
+**Desteklenen makineler** | Şirket içi VMware VM 'Leri.
+**Makine işletim sistemi** | Tüm Windows ve Linux sürümleri.
+**vCenter kimlik bilgileri** | Salt okuma erişimi olan ve konuk Işlemleri > sanal makineler için etkinleştirilen ayrıcalıkların vCenter Server bir hesabı.
+**VM kimlik bilgileri** | Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir.<br/><br/> Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
+**VMware araçları** | Keşif yapmak istediğiniz VM 'lerde VMware araçları yüklü ve çalışır olmalıdır.
+**Bağlantı noktası erişimi** | Bulmayı istediğiniz VM 'Leri çalıştıran ESXi konağında, Azure geçiş gereci 443 numaralı TCP bağlantı noktasına bağlanabilmelidir.
+**Limitler** | Uygulama bulma için, her gereç için 10000 'e kadar keşfedebilirsiniz. 
 
 ## <a name="vmware-requirements"></a>VMware gereksinimleri
 
@@ -67,21 +70,38 @@ Azure geçişi, bulma ve değerlendirme için [Azure geçişi](migrate-appliance
 Elektrikli | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> 44368 numaralı bağlantı noktası ile gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 numaralı bağlantı noktası üzerinden giden bağlantılar.
 vCenter server | TCP bağlantı noktası 443 ' deki gelen bağlantılar, gerecin değerlendirmeler için yapılandırma ve performans meta verilerini toplamasına izin verir. <br/><br/> Gereç, bağlantı noktası 443 ' de varsayılan olarak vCenter 'a bağlanır. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bulmayı ayarlarken bağlantı noktasını değiştirebilirsiniz.
 
-## <a name="dependency-visualization"></a>Bağımlılık görselleştirme
+## <a name="agent-based-dependency-visualization"></a>Aracı tabanlı bağımlılık görselleştirmesi
 
-Bağımlılık görselleştirme, değerlendirmek ve geçirmek istediğiniz makineler arasında bağımlılıkları görselleştirmenize yardımcı olur. Daha yüksek düzeyde güvenle makineler değerlendirmek istediğinizde genellikle bağımlılık eşlemesini kullanırsınız. VMware VM 'Leri için, bağımlılık görselleştirmesi aşağıdaki gibi desteklenir:
+[Bağımlılık görselleştirme](concepts-dependency-visualization.md) , değerlendirmek ve geçirmek istediğiniz makineler arasında bağımlılıkları görselleştirmenize yardımcı olur. Aracı tabanlı görselleştirme için, gereksinimler ve sınırlamalar aşağıdaki tabloda özetlenmiştir
 
-- **Aracısız bağımlılık görselleştirmesi**: Bu seçenek şu anda önizleme aşamasındadır. Makinelere herhangi bir aracı yüklemenizi gerektirmez.
-    - Etkin olduğu makinelerden gelen TCP bağlantısı verilerini yakalayıp işe yarar. Bağımlılık keşfi başlatıldıktan sonra, Gereç, beş dakikalık yoklama aralığındaki makinelerden veri toplar.
-    - Aşağıdaki veriler toplanır:
-        - TCP bağlantıları
-        - Etkin bağlantıları olan işlemlerin adları
-        - Yukarıdaki işlemlerin çalıştırıldığı yüklü uygulamaların adları
-        - Hayır. her yoklama aralığında algılanan bağlantıların sayısı
-- **Aracı tabanlı bağımlılık görselleştirmesi**: aracı tabanlı bağımlılık görselleştirmesini kullanmak için, çözümlemek istediğiniz her şirket içi makineye aşağıdaki aracıları indirmeniz ve yüklemeniz gerekir.
-    - Her makineye Microsoft Monitoring Agent 'ı (MMA) yükler. MMA aracısının nasıl yükleneceği hakkında [daha fazla bilgi edinin](how-to-create-group-machine-dependencies.md#install-the-mma) .
-    - Her makineye bağımlılık aracısını yükler. Bağımlılık aracısının nasıl yükleneceği hakkında [daha fazla bilgi edinin](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) .
-    - Ayrıca, İnternet bağlantısı olmayan makineleriniz varsa, bu makinelere Log Analytics ağ geçidini indirip yüklemeniz gerekir.
+
+**Gereksinim** | **Ayrıntılar**
+--- | ---
+**Dağıtım** | Bağımlılık görselleştirmesini dağıtmadan önce, Azure geçişi: Sunucu değerlendirmesi aracı projeye eklenmiş bir Azure geçişi projesine sahip olmanız gerekir. Şirket içi makinelerinizi bulmaya yönelik bir Azure geçiş gereci ayarladıktan sonra bağımlılık görselleştirmesini dağıtırsınız.<br/><br/> Bağımlılık görselleştirmesi Azure Kamu 'da kullanılamaz.
+**Hizmet Eşlemesi** | Aracı tabanlı bağımlılık görselleştirmesi [Azure izleyici günlüklerinde](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) [hizmet eşlemesi](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) çözümünü kullanır.<br/><br/> Dağıtımı yapmak için, yeni veya mevcut bir Log Analytics çalışma alanını Azure geçişi projesiyle ilişkilendirirsiniz.
+**Log Analytics çalışma alanı** | Çalışma alanı, Azure geçişi projesiyle aynı abonelikte olmalıdır.<br/><br/> Azure geçişi Doğu ABD, Güneydoğu Asya ve Batı Avrupa bölgelerinde bulunan çalışma alanlarını destekler.<br/><br/>  Çalışma alanının [hizmet eşlemesi desteklendiği](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites)bir bölgede olması gerekir.<br/><br/> Bir Azure geçişi projesi çalışma alanı eklendikten sonra değiştirilemez.
+**Charges** | Hizmet Eşlemesi çözümü, ilk 180 gün boyunca ücret almaz (Log Analytics çalışma alanını Azure geçişi projesi ile ilişkilendirmenizin bulunduğu günden).<br/><br/> 180 gün sonra standart Log Analytics ücretleri uygulanır.<br/><br/> İlişkili Log Analytics çalışma alanında Hizmet Eşlemesi dışında herhangi bir çözümün kullanılması standart Log Analytics ücretlendirmeye tabi olacaktır.<br/><br/> Azure geçişi projesini silerseniz, çalışma alanı onunla silinmez. Projeyi sildikten sonra Hizmet Eşlemesi ücretsizdir ve her düğüm, Log Analytics çalışma alanının ücretli katmanına göre ücretlendirilir.
+**Aracısını** | Aracı tabanlı bağımlılık görselleştirmesi, çözümlemek istediğiniz her makineye iki aracı yüklenmesini gerektirir.<br/><br/> - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [bağımlılık Aracısı](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
+**İnternet bağlantısı** | Makineler Internet 'e bağlı değilse, bunlara Log Analytics ağ geçidini yüklemeniz gerekir.
+
+
+## <a name="agentless-dependency-visualization"></a>Aracısız bağımlılık görselleştirme
+
+Bu seçenek şu anda önizleme aşamasındadır. [Daha fazla bilgi edinin](how-to-create-group-machine-dependencies-agentless.md). Gereksinimler aşağıdaki tabloda özetlenmiştir.
+
+**Gereksinim** | **Ayrıntılar**
+--- | ---
+**Dağıtım** | Bağımlılık görselleştirmesini dağıtmadan önce, Azure geçişi: Sunucu değerlendirmesi aracı projeye eklenmiş bir Azure geçişi projesine sahip olmanız gerekir. Şirket içi makinelerinizi bulmaya yönelik bir Azure geçiş gereci ayarladıktan sonra bağımlılık görselleştirmesini dağıtırsınız.
+**VM desteği** | Şu anda yalnızca VMware VM 'Leri için destekleniyor.
+**Windows VM’leri** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bit)
+**Linux VM'leri** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Desek6, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
+**Windows hesabı** |  Görselleştirmenin konuk erişimi olan bir kullanıcı hesabı olması gerekir.
+**Linux hesabı** | Görselleştirmenin kök ayrıcalığına sahip bir kullanıcı hesabı olması gerekir.<br/><br/> Alternatif olarak, Kullanıcı hesabının/bin/netstat ve/bin/ls dosyalarında bu izinlere ihtiyacı vardır: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.
+**VM aracıları** | VM 'lerde gerekli bir aracı yok.
+**VMware araçları** | VMware araçlarının, çözümlemek istediğiniz VM 'lerde yüklü ve çalışıyor olması gerekir.
+**vCenter kimlik bilgileri** | Salt okuma erişimi olan ve konuk Işlemleri > sanal makineler için etkinleştirilen ayrıcalıkların vCenter Server bir hesabı.
+**Bağlantı noktası erişimi** | Çözümlemek istediğiniz VM 'Leri çalıştıran ESXi konağında, Azure geçiş gereci 443 numaralı TCP bağlantı noktasına bağlanabilmelidir.
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 0994ebe451bddea371f375e4d39172833df4d88a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 3d6f9f7d09664f9a5bd968ca5c0441b0846ceca3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028537"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122704"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimini kullanmaya başlayın
 
@@ -249,11 +249,11 @@ Coğrafi olarak çoğaltılan veritabanları ile birincil veritabanında denetim
 
 - Depolama hesabında sabit denetim yapılandırmak için bkz. [korumalı ekleme Blobları yazmaları verme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes). Denetimin kapsayıcı adının **sqldbauditlogs**olduğunu lütfen unutmayın.
 
-> [!IMPORTANT] 
->  Zamana bağlı saklama için korumalı ekleme bloblarını yazma ayarı şu anda kullanılabilir ve yalnızca aşağıdaki bölgelerde görülebilir:
-> - Doğu ABD
-> - Güney Orta ABD
-> - Batı ABD 2
+    > [!IMPORTANT]
+    > Zamana bağlı saklama için korumalı ekleme bloblarını yazma ayarı şu anda kullanılabilir ve yalnızca aşağıdaki bölgelerde görülebilir:
+    > - Doğu ABD
+    > - Güney Orta ABD
+    > - Batı ABD 2
 
 
 ## <a id="subheading-7"></a>Azure PowerShell kullanarak Azure SQL Server ve veritabanı denetimini yönetme

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979268"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121956"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
 Azure, paylaşılan fiziksel altyapıda uygulama ve sanal makine (VM) çalıştırmanızı sağlar. Uygulamaları bir bulut ortamında çalıştırmaya yönelik başlıca ekonobilirlerden biri, paylaşılan kaynakların maliyetini birden çok müşteri arasında dağıtabilme yeteneğidir. Çok kiracılı bu uygulama, düşük maliyetlerde farklı müşteriler arasında kaynakları çoğullama açısından verimliliği artırır. Ne yazık ki, önemli uygulamalarınızı ve diğer altyapı kaynaklarını, rastgele ve potansiyel olarak kötü amaçlı bir kullanıcıya ait olabilecek duyarlı uygulamalarınızı ve VM 'Leri çalıştırmak üzere paylaşma riskini de beraberinde getirir.
@@ -179,7 +179,7 @@ FC VLAN ile ana VLAN arasında iletişime izin verilir, ancak ana VLAN 'dan FC V
 ### <a name="logical-isolation-between-compute-and-storage"></a>Işlem ve depolama arasındaki mantıksal yalıtım
 Temel tasarımının bir parçası olarak Microsoft Azure VM tabanlı hesaplamayı depolamadan ayırır. Bu ayrım, hesaplamanın ve depolamanın bağımsız olarak ölçeklendirilmesine olanak sağlayarak çok kiracılı ve yalıtımın sağlanması kolaylaşır.
 
-Bu nedenle, Azure Storage mantıksal dışında Azure Işlem ile ağ bağlantısı olmayan ayrı donanımlar üzerinde çalışır. [Bu](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf) , bir sanal disk oluşturulduğunda, tüm kapasiteye yönelik disk alanının ayrılmadığı anlamına gelir. Bunun yerine, sanal disk üzerindeki adresleri fiziksel diskteki alanlarla eşleyen bir tablo oluşturulur ve bu tablo başlangıçta boştur. **Bir müşteri sanal diske veri yazdığında, fiziksel diskteki alan ayrılır ve tabloya bir işaretçi yerleştirilir.**
+Bu nedenle, Azure Storage mantıksal dışında Azure Işlem ile ağ bağlantısı olmayan ayrı donanımlar üzerinde çalışır. Bu, bir sanal disk oluşturulduğunda, tüm kapasiteye yönelik disk alanının ayrılmadığı anlamına gelir. Bunun yerine, sanal disk üzerindeki adresleri fiziksel diskteki alanlarla eşleyen bir tablo oluşturulur ve bu tablo başlangıçta boştur. **Bir müşteri sanal diske veri yazdığında, fiziksel diskteki alan ayrılır ve tabloya bir işaretçi yerleştirilir.**
 ### <a name="isolation-using-storage-access-control"></a>Depolama erişim denetimi kullanarak yalıtım
 **Azure depolamada Access Control** basit bir erişim denetimi modeline sahiptir. Her Azure aboneliği, bir veya daha fazla depolama hesabı oluşturabilir. Her depolama hesabının, bu depolama hesabındaki tüm verilere erişimi denetlemek için kullanılan tek bir gizli anahtarı vardır.
 
@@ -320,14 +320,6 @@ Azure dağıtımında birden çok ağ yalıtımı katmanı vardır. Aşağıdaki
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Windows Azure sanal ağlarında makineler için ağ yalıtımı seçenekleri](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
+- [Windows Azure sanal ağlarında makineler Için ağ yalıtımı seçenekleri](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)hakkında bilgi edinin. Bu, belirli bir arka uç ağı veya alt ağı içindeki makinelerin yalnızca belirli bir uç noktaya izin verilen IP adresleri listesine bağlı olarak belirli bir uç noktaya bağlanmasına izin veren klasik ön uç ve arka uç senaryosunu içerir.
 
-Bu, belirli bir arka uç ağı veya alt ağı içindeki makinelerin yalnızca belirli bir uç noktaya izin verilen IP adresleri listesine bağlı olarak belirli bir uç noktaya bağlanmasına izin veren klasik ön uç ve arka uç senaryosunu içerir.
-
-- [İşlem yalıtımı](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure, uygulamanızın veya kuruluşunuzun ihtiyaçlarını karşılayacak şekilde otomatik olarak ölçeklenebilen ve en düşük düzeyde işlem örnekleri & hizmetleri içeren çeşitli bulut tabanlı bilgi işlem hizmetleri sağlar.
-
-- [Depolama yalıtımı](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure, müşteri VM tabanlı hesaplamayı depolamadan ayırır. Bu ayrım, hesaplamanın ve depolamanın bağımsız olarak ölçeklendirilmesine olanak sağlayarak çok kiracılı ve yalıtımın sağlanması kolaylaşır. Bu nedenle, Azure Storage mantıksal dışında Azure Işlem ile ağ bağlantısı olmayan ayrı donanımlar üzerinde çalışır. Tüm istekler, müşterinin seçimine bağlı olarak HTTP veya HTTPS üzerinden çalışır.
+- [Azure 'da sanal makine yalıtımı](../../virtual-machines/windows/isolation.md)hakkında bilgi edinin. Azure Işlem, belirli bir donanım türüne yalıtılmış ve tek bir müşteriye adanmış sanal makine boyutları sunar.

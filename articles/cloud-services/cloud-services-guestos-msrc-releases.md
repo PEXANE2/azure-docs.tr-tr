@@ -10,17 +10,65 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: raiye
-ms.openlocfilehash: 97f4283e02dd3b67df5381f78e87c3ee5b23b74e
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 85029b5f819a59ffc4934d245778044a94a18d5e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779595"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122143"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
+
+## <a name="january-2020-guest-os"></a>Ocak 2020 Konuk işletim sistemi
+
+>[!NOTE]
+>Ocak Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri, Ocak Konuk işletim sistemine dahildir. Bu liste değişikliğe tabidir.
+
+| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| --- | --- | --- | --- | --- |
+|  Rel 20-01  |  [4532960]  |  Windows Güvenliği  | 2,94 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 2,94 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4534314]  |  Windows Güvenliği  | 2,94 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4532958]  |  Windows Güvenliği  | 3,81 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4532963]  |  Windows Güvenliği  | 3,81 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 3,81 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4534288]  |  Windows Güvenliği  | 3,81 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4532961]  |  Windows Güvenliği  | 4,74 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4532962]  |  Windows Güvenliği  | 4,74 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 4,74 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4534309]  |  Windows Güvenliği  | 4,74 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4494175]  |  Mikro kod v3  | 5,39 | 29 Ağu 2019 |
+|  Rel 20-01  |  [4534271]  |  LCU  | 5,39 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4494174]  |  Mikro kod v4  | 6,15 | 29 Ağu 2019 |
+|  Rel 20-01  |  [4532947]  |  Windows Güvenliği  | 6,15 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4534273]  |  LCU  | 6,15 | 14 Ocak 2020 |
+|  Rel 20-01  |  [4530734]  |  Güvenlik dışı  | 2,94 | 10. ara, 2019 |
+|  Rel 20-01  |  [4530691]  |  Güvenlik dışı   | 3,81 | 10. ara, 2019 |
+|  Rel 20-01  |  [4530702]  |  Güvenlik dışı  | 4,74 | 10. ara, 2019 |
+
+[4532960]: https://support.microsoft.com/kb/4532960
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534314]: https://support.microsoft.com/kb/4534314
+[4532958]: https://support.microsoft.com/kb/4532958
+[4532963]: https://support.microsoft.com/kb/4532963
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534288]: https://support.microsoft.com/kb/4534288
+[4532961]: https://support.microsoft.com/kb/4532961
+[4532962]: https://support.microsoft.com/kb/4532962
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534309]: https://support.microsoft.com/kb/4534309
+[4494175]: https://support.microsoft.com/kb/4494175
+[4534271]: https://support.microsoft.com/kb/4534271
+[4494174]: https://support.microsoft.com/kb/4494174
+[4532947]: https://support.microsoft.com/kb/4532947
+[4534273]: https://support.microsoft.com/kb/4534273
+[4530734]: https://support.microsoft.com/kb/4530734
+[4530691]: https://support.microsoft.com/kb/4530691
+[4530702]: https://support.microsoft.com/kb/4530702
+
 
 ## <a name="december-2019-guest-os"></a>Aralık 2019 Konuk işletim sistemi
 

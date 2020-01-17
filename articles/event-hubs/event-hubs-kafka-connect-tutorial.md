@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka Connect ile tümleştirme-Azure Event Hubs | Microsoft Docs
-description: Bu makalede, Kafka için Azure Event Hubs ile Apache Spark kullanma hakkında bilgi sağlanır.
+title: Apache Kafka bağlama-Azure Event Hubs ile tümleştirme | Microsoft Docs
+description: Bu makalede, Apache Spark, Kafka için Azure Event Hubs ile kullanma hakkında bilgi sağlar.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 84220d5dda26c25f40138629e2be1f10d57fe3c4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: df7198b68a083abf9be4ffe88e7a5dd848b2c535
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555118"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119525"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Azure Event Hubs'a Apache Kafka Connect desteğiyle tümleştirme (Önizleme)
 İş gereksinimleri için alma işlemleri arttıkça, çeşitli dış kaynaklar ve havuzlar için alma gereksinimi de artıyor. [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect), Kafka kümesi aracılığıyla MySQL, HDFS ve dosya sistemi gibi herhangi bir dış sistemden/sisteme bağlanmak ve verileri içeri/dışarı aktarmak için böyle bir çerçeve sağlar. Bu öğretici Kafka özellikli Event Hubs ile Kafka Connect çerçevesini kullanırken size yol gösterir.
@@ -34,7 +34,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Kafka Connect'i çalıştırma
 > * Bağlayıcıları oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu yol gösterici adımları tamamlamak için aşağıdaki önkoşulların karşılandığından emin olun:
 
 - Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
@@ -107,7 +107,9 @@ Bu adımda, bir Kafka Connect çalışanı dağıtılmış modda yerel olarak ba
 4. `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties` öğesini çalıştırın.  `'INFO Finished starting connectors and tasks'` iletisini gördüğünüzde Connect çalışanı REST API etkileşime hazır demektir. 
 
 > [!NOTE]
-> Event Hubs Kafka istemcilerinin otomatik olarak konu oluşturmasını destekler. Azure portalında ad alanına hızla göz attığınızda, Connect çalışanı iç konusunun otomatik olarak oluşturulduğu ortaya çıkar.
+> Kafka Connect, Kafka AdminClient API 'sini kullanarak, sıkıştırma de dahil olmak üzere önerilen yapılandırmalara sahip konuları otomatik olarak oluşturur. Azure portalında ad alanına hızla göz attığınızda, Connect çalışanı iç konusunun otomatik olarak oluşturulduğu ortaya çıkar.
+>
+>Kafka Connect iç konuları **sıkıştırmayı kullanmalıdır**.  Event Hubs ekibi, iç bağlantı konuları yanlış yapılandırılmışsa yanlış yapılandırmaların düzeltilmesinden sorumludur.
 
 ### <a name="create-connectors"></a>Bağlayıcıları oluşturma
 Bu bölümde FileStreamSource ve FileStreamSink bağlayıcılarını çalıştırma işleminde yol gösterilir. 

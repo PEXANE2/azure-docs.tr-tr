@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c097c1f08bd72ed5795e4274c41e4eb48dbe34ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 736cca668057f38431f91e36ff8fa97840274a38
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152953"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120743"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Öğretici: & Frankly ile tümleştirme Azure Active Directory
 
@@ -30,12 +30,12 @@ Bu öğreticide, & Frankly 'yi Azure Active Directory (Azure AD) ile tümleştir
 
 * Azure AD 'de & Frankly 'e erişimi olan denetim yapabilirsiniz.
 * Kullanıcılarınızın Azure AD hesaplarıyla & Frankly (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini & Frankly ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -54,7 +54,7 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 **Galeriden & Frankly eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
@@ -62,29 +62,29 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+    ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
 4. Arama kutusuna **& Frankly**yazın, sonuç panelinden **& Frankly** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![Sonuç listesinde Frankly &](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
 
 Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre & Frankly ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve & Frankly içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 & Frankly ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
 2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[& Frankly çoklu oturum açmayı yapılandırın](#configure-frankly-single-sign-on)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
+4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
 5. Kullanıcının Azure AD gösterimine bağlı & Frankly 'de Britta Simon 'a sahip olmak için **[& Frankly test kullanıcısı oluşturun](#create-frankly-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
 
 Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
@@ -92,13 +92,13 @@ Azure AD çoklu oturum açmayı & Frankly ile yapılandırmak için aşağıdaki
 
 1. [Azure Portal](https://portal.azure.com/), **& Frankly** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
 
 2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -123,33 +123,29 @@ Azure AD çoklu oturum açmayı & Frankly ile yapılandırmak için aşağıdaki
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-7. **& ayarla Frankly** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
-
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
-
-    a. Oturum açma URL 'SI
-
-    b. Azure AD tanımlayıcısı
-
-    c. Oturum kapatma URL 'SI
 
 ### <a name="configure-frankly-single-sign-on"></a>& Frankly çoklu oturum açmayı yapılandırma
 
-**& Frankly** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve Azure portal kopyalanmış URL 'leri [& Frankly destek ekibine](mailto:help@andfrankly.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+& Frankly 'de çoklu oturum açmayı etkinleştirmek için:
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+1. & Frankly ' de oturum açın. **Hesap** > **Kullanıcı yönetimi**' ne gidin.
+1. Kimlik doğrulama mekanizmasını varsayılan olarak **Kurumsal oturum açma (SAML)** olarak değiştirin.
+1. Önceki bölümde 6. adımda indirdiğiniz **Federasyon meta VERI XML** 'sini karşıya yükleyin.
+1. **Kaydet**’i seçin.
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
 
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
+1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+
+2. Seçin **yeni kullanıcı** ekranın üstünde.
 
     ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
@@ -162,7 +158,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     d. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
 Bu bölümde, & Frankly 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
@@ -176,13 +172,13 @@ Bu bölümde, & Frankly 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
 4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
 
 6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
@@ -190,17 +186,17 @@ Bu bölümde, & Frankly 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 ### <a name="create-frankly-test-user"></a>& Frankly test kullanıcısı oluşturma
 
-Bu bölümde, & Frankly ' de Britta Simon adlı bir Kullanıcı oluşturacaksınız. & Frankly platformunda kullanıcıları eklemek için [& Frankly destek ekibi](mailto:help@andfrankly.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, & Frankly ' de Britta Simon adlı bir Kullanıcı oluşturacaksınız. & Frankly platformunda kullanıcıları eklemek için [& Frankly destek ekibi](mailto:help@andfrankly.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
 Erişim panelinde & Frankly kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız & Frankly ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

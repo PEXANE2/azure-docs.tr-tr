@@ -12,20 +12,34 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c32e2e2a7b609f999c7b804494188e2c6820171
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a6fb6153c2dc5794fce0e74d1981e98ad1f37fc1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278999"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156106"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>Doğrulama yönteminiz olarak güvenlik sorularını ayarlama
 
 Parola sıfırlama yönteminizi eklemek için bu adımları takip edebilirsiniz. İlk kez ayarladıktan sonra güvenlik bilgilerini eklemek, güncelleştirmek veya silmek için **güvenlik** bilgileri sayfasına dönebilirsiniz.
 
-Parola sıfırlama yönteminizi ayarladıktan sonra, bir [doğrulayıcı uygulaması](security-info-setup-auth-app.md), [SMS mesajı](security-info-setup-text-msg.md)veya [telefon araması](security-info-setup-phone-number.md)kullanarak iki öğeli doğrulama yönteminizi de ayarlamanız gerekir.
-
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+>[!Note]
+>Güvenlik soruları seçeneğini görmüyorsanız, kuruluşunuz parola sıfırlama yönteminiz için bu seçeneği kullanmanıza izin vermiyor olabilir. Bu durumda, daha fazla yardım için başka bir yöntem seçmeniz veya kuruluşunuzun yardım masasına başvurmanız gerekir.
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Güvenlik doğrulaması ve parola sıfırlama kimlik doğrulaması
+
+Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de parola sıfırlama için kullanılır. Ancak, her ikisi için tüm yöntemler kullanılamaz.
+
+| Yöntem | Kullanıldığı yerler |
+| ------ | -------- |
+| Authenticator uygulaması | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| SMS mesajları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Telefon aramaları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Güvenlik anahtarı | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| E-posta hesabı | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
+| Güvenlik soruları | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
 
 ## <a name="set-up-your-security-questions-from-the-security-info-page"></a>Güvenlik bilgileri sayfasından güvenlik sorularınızı ayarlayın
 

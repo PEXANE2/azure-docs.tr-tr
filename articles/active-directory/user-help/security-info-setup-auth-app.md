@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e3c237f47e889b6af1b49254af9039dc8789006
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 223dc6c340beb1b584ffbf90adc12667ed2feb23
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279077"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156191"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Doğrulama yönteminiz olarak Microsoft Authenticator uygulamasını ayarlama
 
@@ -28,7 +28,20 @@ Bunu iş veya okul hesabınızda oturum açtıktan hemen sonra ayarlamanız iste
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->Bir Authenticator uygulama seçeneği görmüyorsanız, kuruluşunuz doğrulama için bir kimlik doğrulama uygulaması kullanmanıza izin vermiyor olabilir. Bu durumda, daha fazla yardım için başka bir yöntem seçmeniz veya yöneticinize başvurmanız gerekir.
+> Doğrulayıcı uygulama seçeneğini görmüyorsanız, kuruluşunuz doğrulama için bu seçeneği kullanmanıza izin vermiyor olabilir. Bu durumda, daha fazla yardım almak için başka bir yöntem seçmeniz veya kuruluşunuzun yardım masasına başvurmanız gerekir.
+
+## <a name="security-vs-password-reset-verification"></a>Güvenlik vs parola sıfırlama doğrulaması
+
+Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de parola sıfırlama için kullanılır. Ancak, her ikisi için tüm yöntemler kullanılamaz.
+
+| Yöntem | Kullanıldığı yerler |
+| ------ | -------- |
+| Authenticator uygulaması | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| SMS mesajları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Telefon aramaları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Güvenlik anahtarı | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| E-posta hesabı | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
+| Güvenlik soruları | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
 
 ## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>Güvenlik bilgileri sayfasından Microsoft Authenticator uygulamasını ayarlama
 

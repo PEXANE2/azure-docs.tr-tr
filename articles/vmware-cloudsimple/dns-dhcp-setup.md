@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ce2394805bfc302179da807c798445c30ce9daff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619553"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121871"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>CloudSimple özel bulutunuzda DNS ve DHCP uygulamalarını ve iş yüklerini ayarlama
 
 Özel bir bulut ortamında çalışan uygulamalar ve iş yükleri, arama ve IP adresi ataması için ad çözümlemesi ve DHCP hizmetleri gerektirir.  Bu hizmetleri sağlamak için uygun bir DHCP ve DNS altyapısı gereklidir.  Bu hizmetleri özel bulut ortamınızda sağlamak için bir sanal makine yapılandırabilirsiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * VLAN yapılandırılmış bir dağıtılmış bağlantı noktası grubu
 * Kurulumu şirket içi veya Internet tabanlı DNS sunucularına yönlendirin
@@ -27,7 +27,7 @@ ms.locfileid: "69619553"
 
 ## <a name="linux-based-dns-server-setup"></a>Linux tabanlı DNS sunucusu kurulumu
 
-Linux, DNS sunucularını ayarlamak için çeşitli paketler sunar.  Aşağıda, bir açık kaynak bağlama DNS sunucusu ayarlamaya yönelik yönergelerden oluşan [Digitalocea 'dan örnek bir kurulum](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7) verilmiştir.
+Linux, DNS sunucularını ayarlamak için çeşitli paketler sunar.  Aşağıda, bir açık kaynak bağlama DNS sunucusu ayarlamaya yönelik yönergelerden oluşan [Digitalocea 'dan örnek bir kurulum](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) verilmiştir.
 
 ## <a name="windows-based-setup"></a>Windows tabanlı kurulum
 

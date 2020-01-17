@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608763"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155239"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu’nu kullanmaya başlama
 
@@ -96,8 +96,8 @@ Olay Onayı özelliğini kullanmıyorsanız ve kullanıcılarınız şirket ağ�
 Azure portalından Azure Multi-Factor Authentication Sunucusu'nu indirmek için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. Arama yapın ve *Azure Active Directory*seçin. **MFA sunucusu**' nu seçin.
-3. **Sunucu ayarları**'nı seçin.
+2. *Azure Active Directory*'yi bulun ve seçin. **MFA** > **güvenlik** ' i seçin.
+3. **Yönetıcı MFA sunucusu**altında **sunucu ayarları**' nı seçin.
 4. **İndir**'i seçin ve indirme sayfasındaki talimatları izleyerek yükleyiciyi kaydedin. 
 
    ![MFA sunucusunu Azure portal indirin](./media/howto-mfaserver-deploy/downloadportal.png)

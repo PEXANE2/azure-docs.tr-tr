@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 2a15ad41850fdf574262c396bf70e43b3b08399c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 13ac51fc4cefa4d66cf9d8310dce80704454bd93
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989689"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122160"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft İş Ortağı Sözleşmesi ödeme hesabınızı kullanmaya başlama
 
@@ -71,7 +71,7 @@ Müşterilerin kuruluşlarındaki kullanıcıların, Azure tüketimine yönelik 
 
 ## <a name="resellers"></a>Kurumsal bayiler
 
-CSP [iki katmanlı modelindeki](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview#azure-csp-direct-and-azure-csp-indirect) dolaylı sağlayıcılar Azure portalında müşteriler için abonelik oluştururken bir kurumsal bayi seçebilir. Oluşturma sonrasında, kurumsal bayiye göre filtrelenmiş abonelik listesini görüntüleyebilir ve Azure maliyet analizinde kurumsal bayiye göre müşterinin maliyetini analiz edebilir.
+CSP [iki katmanlı modelindeki](https://docs.microsoft.com/partner-center) dolaylı sağlayıcılar Azure portalında müşteriler için abonelik oluştururken bir kurumsal bayi seçebilir. Oluşturma sonrasında, kurumsal bayiye göre filtrelenmiş abonelik listesini görüntüleyebilir ve Azure maliyet analizinde kurumsal bayiye göre müşterinin maliyetini analiz edebilir.
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft İş Ortağı Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]

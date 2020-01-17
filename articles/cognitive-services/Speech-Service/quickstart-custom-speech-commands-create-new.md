@@ -3,19 +3,19 @@ title: 'Hızlı başlangıç: özel bir komut (Önizleme) oluşturma-konuşma hi
 titleSuffix: Azure Cognitive Services
 description: Bu makalede barındırılan özel komutlar uygulaması oluşturup test edersiniz.
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ae8f13b4887bbc41b17defa3f9a20c07ed0cb45
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446867"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155596"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Hızlı başlangıç: özel komut oluşturma (Önizleme)
 
@@ -24,7 +24,7 @@ Uygulama "TV 'yi aç" gibi bir söylik algılar ve "Tamam, TV 'yi açarak" daha 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Bir konuşma aboneliği. 
+- Bir konuşma aboneliği.
 
 Konuşma aboneliğiniz yoksa, [konuşma Studio](https://speech.microsoft.com/) 'ya giderek ve **konuşma kaynağı oluştur**' u seçerek bir tane oluşturabilirsiniz.
 
@@ -73,7 +73,7 @@ Artık görünümlerinizin özel komutlar uygulamanıza genel bir bakış olmas�
 
 ## <a name="update-luis-resources-optional"></a>LUSıS kaynaklarını güncelleştirme (Isteğe bağlı)
 
-Yeni proje penceresinde yazma kaynak kümesini güncelleştirebilir ve çalışma zamanı sırasında girişleri tanımak için kullanılan bir tahmin kaynağı ayarlayabilirsiniz. 
+Yeni proje penceresinde yazma kaynak kümesini güncelleştirebilir ve çalışma zamanı sırasında girişleri tanımak için kullanılan bir tahmin kaynağı ayarlayabilirsiniz.
 
 > [!NOTE]
 > Uygulamanız, yazma kaynağı tarafından belirtilen 1.000 isteklerinin ötesinde tahmin isteğinde bulunan bir tahmin kaynağı ayarlamanız gerekecektir.

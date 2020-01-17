@@ -12,24 +12,27 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9cd2d712dfcc6d3f01cbdb1f4886dd64a6d299d4
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233211"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156225"
 ---
-# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Cihazlar sayfasından iş veya okul hesabınıza bağlı cihazları yönetme
+# <a name="manage-your-connected-devices-from-the-devices-page"></a>Cihazlar sayfasından bağlı cihazlarınızı yönetin
 
-**Hesabım** portalının **cihazlar** sayfasında şunları yapabilirsiniz:
+**Hesabım** portalının **cihazlar** sayfası iş veya okul hesabınıza bağlı olan cihazları yönetmenize yardımcı olur. **Cihazlar** sayfasında şunları yapabilirsiniz:
 
 - İş veya okul hesabınıza bağlı cihazlarınızı görüntüleyin.
 
 - Artık sahip olmadığınız, kaybedilmiş veya çalınmış olan cihazları devre dışı bırakın.
 
+>[!Important]
+>Bu makale, bir iş veya okul hesabına bağlı cihaz bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlarınızla ilgili cihaz yönetimi hakkında bilgi arayan bir yöneticiyseniz, [cihaz kimlikleri belgelerine](https://docs.microsoft.com/azure/active-directory/devices/index)bakın.
+
 ## <a name="view-your-connected-devices"></a>Bağlı cihazlarınızı görüntüleme
 
-1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
+1. İş veya okul hesabınızda oturum açın ve sonra **Hesabım** (https://myprofile.microsoft.com/) sayfasına gidin.
 
 2. Sol gezinti bölmesinden **cihazlar** ' ı seçin veya **cihazlar bloğundan cihazları** **Yönet** bağlantısını seçin.
 
@@ -73,3 +76,13 @@ Bağlı cihazlarınızı görüntüledikten sonra şunları yapabilirsiniz:
 - [Oturum açma etkinliğinizi](my-account-portal-sign-ins-page.md)görüntüleyin.
 
 - Kuruluşunuzun [gizlilikle ilgili verilerinizi nasıl kullandığını](my-account-portal-privacy-page.md)görüntüleyin.
+
+## <a name="related-office-content"></a>İlgili Office içeriği
+
+- [Office ürününüzü yönetmek için oturum açın](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
+
+- [Office **Hesabım** sayfasına gidin](https://portal.office.com/account/#home)
+
+- [Office **Yüklemelerim** sayfasına gidin](https://portal.office.com/account/#installs)
+
+- [Office **abonelikleri** sayfasına gidin](https://portal.office.com/account/#subscriptions)

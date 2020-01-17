@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: mimckitt
-ms.openlocfilehash: 6adb800b0c56866aa76f98fc078fdc3d8f1ffbff
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 75b06145ce5328f02cf384753745ef4866c63c64
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941436"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155409"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure için Red Hat tabanlı bir sanal makine hazırlama
 Bu makalede, Azure 'da kullanmak üzere bir Red Hat Enterprise Linux (RHEL) sanal makinesinin nasıl hazırlanacağını öğreneceksiniz. Bu makalede ele alınan RHEL 'nin sürümleri 6.7 + ve 7.1 + ' dir. Bu makalede ele alınan hazırlıklar için hiper yönetici, Hyper-V, çekirdek tabanlı sanal makine (KVM) ve VMware ' dir. Red Hat 'in bulut erişim programına katılma uygunluk gereksinimleri hakkında daha fazla bilgi için bkz. [Red Hat 'In bulut erişimi Web sitesi](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) ve [Azure 'da RHEL çalıştırma](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). RHEL görüntülerini oluşturmayı otomatikleştirebileceğiniz yollar için bkz. [Azure görüntü Oluşturucu](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
@@ -32,7 +32,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 **RHEL yükleme notları**
 
 * Azure, VHDX biçimini desteklemez. Azure yalnızca sabit VHD 'YI destekler. Hyper-V Yöneticisi 'Ni kullanarak diski VHD biçimine dönüştürebilir veya Convert-VHD cmdlet 'ini kullanabilirsiniz. VirtualBox kullanırsanız, diski oluştururken varsayılan dinamik olarak ayrılan seçeneğe karşılık olarak **sabit boyut** ' u seçin.
-* Azure yalnızca 1. nesil sanal makineleri destekler. 1\. nesil bir sanal makineyi VHDX 'ten VHD dosya biçimine dönüştürebilir ve dinamik olarak genişleterek sabit boyutlu bir diske taşıyabilirsiniz. Bir sanal makinenin neslini değiştiremezsiniz. Daha fazla bilgi için bkz. [Hyper-V ' d a 1. nesil veya 2 sanal makine oluşturmalıyım?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+* Azure, Gen1 (BIOS önyükleme) & Gen2 (UEFı önyüklemesi) sanal makinelerini destekler.
 * VHD için izin verilen en büyük boyut 1.023 GB 'dir.
 * Mantıksal birim Yöneticisi (LVM) desteklenir ve Azure sanal makinelerde işletim sistemi diskinde veya veri disklerinde kullanılabilir. Ancak genel olarak, LVM yerine işletim sistemi diskinde standart bölümlerin kullanılması önerilir. Bu uygulama, özellikle de sorun giderme için bir işletim sistemi diskini başka bir özdeş sanal makineye iliştirmeniz gerekiyorsa, kopyalanmış sanal makinelerle LVM adı çakışmalarını önler. Ayrıca bkz. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ve [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) belgeleri.
 * Evrensel Disk Biçimi (UDF) dosya sistemlerini bağlamak için çekirdek desteği gereklidir. Azure 'da ilk önyüklemede, konuğa bağlı olan UDF biçimli medya, sağlama yapılandırmasını Linux sanal makinesine geçirir. Azure Linux Aracısı, yapılandırmasını okumak ve sanal makineyi sağlamak için UDF dosya sistemini bağlayabilmelidir.

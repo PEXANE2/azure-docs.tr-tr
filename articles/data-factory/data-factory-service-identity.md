@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: ede1e56384c75c64765962b7db196973a30c605b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 45699680ad2003c034bce588857f8b102a0b6d26
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928441"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121803"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory için yönetilen kimlik
 
@@ -155,17 +155,19 @@ Yönetilen kimliği Azure portal veya programlı bir şekilde alabilirsiniz. Aş
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Azure portal kullanarak yönetilen kimlik alma
 
-Data Factory-> özelliklerinizi > Azure portal yönetilen kimlik bilgilerini bulabilirsiniz:
+Data Factory-> özelliklerinizi Azure portal > yönetilen kimlik bilgilerini bulabilirsiniz.
 
 - Yönetilen kimlik nesnesi KIMLIĞI
 - Yönetilen kimlik kiracısı
-- **Yönetilen kimlik uygulama kimliği** > Bu değeri kopyalayın
+- Yönetilen kimlik uygulama KIMLIĞI
 
-![Yönetilen kimliği al](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+Yönetilen kimlik bilgileri, Azure blob, Azure Data Lake Storage, Azure Key Vault vb. gibi yönetilen kimlik doğrulamasını destekleyen bağlı hizmet oluşturduğunuzda da görüntülenir.
+
+İzin verirken, bu kimliği bulmak için nesne KIMLIĞINI veya Veri Fabrikası adını (yönetilen kimlik adı olarak) kullanın.
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>PowerShell kullanarak yönetilen kimlik alma
 
-Yönetilen kimlik sorumlusu KIMLIĞI ve kiracı KIMLIĞI, belirli bir veri fabrikasını aşağıdaki şekilde aldığınızda döndürülür:
+Yönetilen kimlik sorumlusu KIMLIĞI ve kiracı KIMLIĞI, belirli bir veri fabrikasını aşağıdaki şekilde aldığınızda döndürülür. Erişim vermek için **PrincipalId** kullanın:
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -175,7 +177,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-Sorumlu KIMLIĞINI kopyalayın ve ardından, erişim izni vermek için kullandığınız **ApplicationId**'yi almak için aşağıdaki Azure Active Directory komutunu parametresi olarak Principal ID ile çalıştırın:
+Uygulama KIMLIĞI ' ni yukarıdaki asıl KIMLIĞI kopyalayarak, ardından aşağıdaki Azure Active Directory komutu bir parametre olarak asıl KIMLIK ile çalıştırabilirsiniz.
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc

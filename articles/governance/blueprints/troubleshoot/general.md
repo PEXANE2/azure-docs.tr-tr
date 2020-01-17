@@ -1,18 +1,18 @@
 ---
 title: Sık karşılaşılan hataları giderme
 description: İlke ihlalleri ve şema parametre işlevleri gibi şemaları oluşturma, atama ve kaldırma ile ilgili sorunların nasıl giderileceği hakkında bilgi edinin.
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 5b8a20b0757934bbd356ab037a22521a248a7eb2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982485"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157092"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure şemaları 'nı kullanarak hatalarda sorun giderme
 
-Şemaları oluştururken veya atarken hatalarla karşılaşabilirsiniz. Bu makalede, oluşabilecek çeşitli hatalar ve bunların nasıl çözümleneceği açıklanmaktadır.
+Şemaları oluştururken, atarken veya kaldırırken hatalarla karşılaşabilirsiniz. Bu makalede, oluşabilecek çeşitli hatalar ve bunların nasıl çözümleneceği açıklanmaktadır.
 
 ## <a name="finding-error-details"></a>Hata ayrıntılarını bulma
 
@@ -60,6 +60,22 @@ Bir yapıya `[resourceGroup().tags.myTag]`gibi bir işlevi kullanan bir şema pa
 #### <a name="resolution"></a>Çözünürlük
 
 Bir işlevi parametre olarak kullanarak geçirmek için, `[` tüm dizeyi, şema parametresinin `[[resourceGroup().tags.myTag]`gibi görünmesini sağlar. Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar, işlevin beklenen şekilde dinamik olmasını sağlayan yapıtı üzerine koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/templates/template-expressions.md).
+
+## <a name="delete-errors"></a>Hataları Sil
+
+### <a name="assign-delete-timeout"></a>Senaryo: atama silme zaman aşımı
+
+#### <a name="issue"></a>Sorun
+
+Şema atamasının silinmesi tamamlanmaz.
+
+#### <a name="cause"></a>Nedeni
+
+Şema ataması silindiğinde, terminal dışı bir durumda kalabilir. Bu durum, şema atama tarafından oluşturulan kaynaklar hala silinmeyi bekliyor veya Azure şemaları 'na bir durum kodu döndürmediğinde oluşur.
+
+#### <a name="resolution"></a>Çözünürlük
+
+Terminal olmayan bir durumdaki şema atamaları, _6 saatlik_ bir zaman aşımından sonra **başarısız** olarak otomatik olarak işaretlenir. Zaman aşımı şeması şema atamasının durumunu ayarladığında, silme yeniden denenebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

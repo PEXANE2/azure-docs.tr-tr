@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: effd0593384190eb1a1cf261305dd61818c3d0b0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768376"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120885"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Öğretici: HackerOne ile tümleştirme Azure Active Directory
 
@@ -107,7 +107,7 @@ Azure AD çoklu oturum açmayı HackerOne ile yapılandırmak için aşağıdaki
 
     ![HackerOne etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdakileri girin: `https://hackerone.com/users/saml/auth`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdakileri girin: `https://hackerone.com/users/saml/sign_in?email=<configured domain>`
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna şunu girin: `hackerone.com`
 
@@ -155,7 +155,13 @@ Azure AD çoklu oturum açmayı HackerOne ile yapılandırmak için aşağıdaki
 
     a. **Test Çalıştır**öğesine tıklayın.
 
-    b. **Durum** alanının değeri **en son test durumu: oluşturulduysa**, yapılandırmanızın gözden geçirilmesini Istemek için [HackerOne destek ekibinize](mailto:support@hackerone.com) başvurun.
+6. Sınama başarıyla tamamlandığında ve **durum** alanı **son test durumu: başarılı**' i gösteriyorsa, bir onay için HackerOne 'A göndermek üzere **doğrulama iste** düğmesini seçin.
+
+    ![Bir onay için HackerOne 'a gönderme](./media/hackerone-tutorial/tutorial-hackerone-006.png)
+
+7. HackerOne ayarları onayladıktan sonra, tüm kullanıcılar için SSO kimlik doğrulaması gerektirmek için **kullanıcıları geçir** düğmesini seçebilirsiniz.
+
+    ![SAML'yi Etkinleştir](./media/hackerone-tutorial/tutorial-hackerone-007.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
@@ -174,13 +180,13 @@ Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcıs
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
     a. **Ad** alanına **Brittasıon**girin.
-  
+
     b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 

@@ -4,22 +4,22 @@ description: Azure için avere vFXT önkoşulları
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 0dafef7cf262153ccdb3b490aa0c7bd039b4a89b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7f89ea553bc7198c1faee5ba3549f88da5ec2b2c
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889181"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152995"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Avere vFXT oluşturmaya hazırlanma
 
-Bu makalede, avere vFXT kümesi oluşturmak için önkoşul görevleri açıklanmaktadır.
+Bu makalede bir avere vFXT kümesi oluşturmak için önkoşul görevleri açıklanmaktadır.
 
 ## <a name="create-a-new-subscription"></a>Yeni abonelik oluştur
 
-Yeni bir Azure aboneliği oluşturarak başlayın. Tüm proje kaynaklarını ve giderlerini kolayca izlemenize, diğer projeleri sağlama sırasında olası kaynak azaltmasından korumaya ve temizlemeyi basitleştirmeye olanak sağlamak için her bir avere vFXT projesi için ayrı bir abonelik kullanın.
+Yeni bir Azure aboneliği oluşturarak başlayın. Her bir avere vFXT projesi için ayrı bir abonelik kullanarak gider izlemeyi ve temizlemeyi kolaylaştırın ve küme iş akışını sağlarken diğer projelerin kotalardan veya kaynak azaltmasından etkilenmemesini sağlayın.
 
 Azure portal yeni bir Azure aboneliği oluşturmak için:
 
@@ -30,37 +30,41 @@ Azure portal yeni bir Azure aboneliği oluşturmak için:
 
 ## <a name="configure-subscription-owner-permissions"></a>Abonelik sahibi izinlerini yapılandırma
 
-Abonelik için sahip izinlerine sahip bir kullanıcının vFXT kümesini oluşturması gerekir. Yazılım hizmet koşullarını kabul etmek ve diğer işlemleri gerçekleştirmek için abonelik sahibi izinleri gereklidir.
+Abonelik için sahip izinlerine sahip bir kullanıcının vFXT kümesini oluşturması gerekir. Küme oluşturma, bir sahibin yazılım hizmet koşullarını kabul etmesini ve değişiklikleri ağ ve depolama kaynaklarına yetkilendirmesine gerek duyar.
 
-Sahip olmayan bir Azure kümesi için avere vFTX oluşturmasına izin veren bazı geçici çözüm senaryoları vardır. Bu senaryolar, kaynakların kısıtlanması ve oluşturucuya ek roller atanması ile ilgilidir. Her iki durumda da bir abonelik sahibi, [avere vFXT yazılım koşullarını](#accept-software-terms) zaman önüne kabul etmelidir.
+Sahip olmayan bir Azure kümesi için avere vFXT oluşturma izni veren bazı geçici çözümler vardır. Bu senaryolar kaynakları kısıtlamayı ve oluşturucuya ek rol tabanlı erişim denetimi (RBAC) rolü atamayı içerir. Bu durumların tümünde, bir abonelik sahibi ayrıca [avere vFXT yazılım koşullarını](#accept-software-terms) zaman önüne kabul etmelidir.
 
 | Senaryo | Kısıtlamalar | Avere vFXT kümesini oluşturmak için gereken erişim rolleri |
 |----------|--------|-------|
-| Kaynak Grubu Yöneticisi | Sanal ağ, küme denetleyicisi ve küme düğümlerinin kaynak grubu içinde oluşturulması gerekir | Hedef kaynak grubu kapsamındaki [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator) ve [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor) rolleri |
-| Dış sanal ağ | Küme denetleyicisi ve küme düğümleri kaynak grubu içinde oluşturulur, ancak farklı bir kaynak grubundaki mevcut bir sanal ağ kullanılır | (1) vFXT kaynak grubu kapsamındaki [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator) ve [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor) rolleri; ve (2) sanal [makine katılımcısı](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator)ve [avere katkıda](../role-based-access-control/built-in-roles.md#avere-contributor) bulunan rolleri sanal ağın kaynak grubu kapsamında. |
-
-Diğer bir seçenek de, [Bu makalede](avere-vfxt-non-owner.md)açıklandığı gibi zaman içinde özel bir rol tabanlı erişim denetımı (RBAC) rolü oluşturmak ve kullanıcıya ayrıcalık atamanız. Bu yöntem, bu kullanıcılara önemli izinler verir.
+| Kaynak Grubu Yöneticisi vFXT 'yi oluşturuyor | Sanal ağ, küme denetleyicisi ve küme düğümlerinin kaynak grubu içinde oluşturulması gerekir. | Hedef kaynak grubu kapsamındaki [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator) ve [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor) rolleri. |
+| Mevcut, dış sanal ağı kullan | Küme denetleyicisi ve küme düğümleri vFXT 'nin kaynak grubu içinde oluşturulur, ancak farklı bir kaynak grubunda var olan bir sanal ağı kullanır. | (1) vFXT kaynak grubu kapsamındaki [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator) ve [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor) rolleri; ve (2) sanal [makine katılımcısı](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator)ve [avere katkıda](../role-based-access-control/built-in-roles.md#avere-contributor) bulunan rolleri sanal ağın kaynak grubu kapsamında. |
+| Küme oluşturucuları için özel rol | Kaynak yerleştirme kısıtlaması yok. Bu yöntem, sahip olmayan önemli ayrıcalıklar sağlar. | Abonelik sahibi, [Bu makalede](avere-vfxt-non-owner.md)açıklandığı gibi özel bir RBAC rolü oluşturur. |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>VFXT kümesi için kota
 
-Aşağıdaki Azure bileşenleri için yeterli kotanın olması gerekir. Gerekirse, [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+Aşağıdaki Azure bileşenleri için yeterli kotayı sahip olup olmadığınızı denetleyin. Gerekirse, [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 > [!NOTE]
-> Burada listelenen sanal makineler ve SSD bileşenleri, vFXT kümesinin kendisi içindir. İşlem grubunuz için kullanmayı düşündüğünüz VM 'Ler ve SSD için ek kota gerekir.  Kotayı, iş akışını çalıştırmayı planladığınız bölge için etkinleştirildiğinden emin olun.
+> Burada listelenen sanal makineler ve SSD bileşenleri, vFXT kümesinin kendisi içindir. İşlem grubunuz için kullanacağınız VM 'Ler ve SSD 'Ler için de kota gerekeceğini unutmayın.
+>
+> Kotayı, iş akışını çalıştırmayı planladığınız bölge için etkinleştirildiğinden emin olun.
 
 |Azure bileşeni|Kota|
 |----------|-----------|
-|Sanal makineler|3 veya daha fazla E32s_v3|
+|Sanal makineler|3 veya daha fazla E32s_v3 (küme düğümü başına bir tane) |
 |Premium SSD depolama alanı|200 GB işletim sistemi alanına ek olarak düğüm başına 1 TB-4 TB önbellek alanı |
 |Depolama hesabı (isteğe bağlı) |v2|
 |Veri arka uç depolama alanı (isteğe bağlı) |Bir yeni LRS blob kapsayıcısı |
+<!-- this table also appears in the overview - update it there if updating here -->
 
 ## <a name="accept-software-terms"></a>Yazılım koşullarını kabul et
 
-> [!NOTE]
-> Bir abonelik sahibi avere vFXT kümesini oluşturursa Bu adım gerekli değildir.
+> [!TIP]
+> Bir abonelik sahibi avere vFXT kümesi oluşturacaktır bu adımı atlayın.
 
-Küme oluşturma sırasında, avere vFXT yazılımının hizmet koşullarını kabul etmelisiniz. Abonelik sahibi değilseniz, abonelik sahibi bir süre önce kabul edin. Bu adımın her abonelik için yalnızca bir kez yapılması gerekir.
+Küme oluşturma sırasında, avere vFXT yazılımının hizmet koşullarını kabul etmelisiniz. Abonelik sahibi değilseniz, abonelik sahibi bir süre önce kabul edin.
+
+Bu adımın her abonelik için yalnızca bir kez yapılması gerekir.
 
 Yazılım koşullarını önceden kabul etmek için:
 
@@ -68,7 +72,7 @@ Yazılım koşullarını önceden kabul etmek için:
 
    ```azurecli
     az login
-    az account set --subscription abc123de-f456-abc7-89de-f01234567890
+    az account set --subscription <subscription ID>
    ```
 
 1. Hizmet koşullarını kabul etmek ve Azure yazılım görüntüsü için avere vFXT için programlı erişimi etkinleştirmek üzere bu komutu verin:
@@ -81,14 +85,12 @@ Yazılım koşullarını önceden kabul etmek için:
 
 [Hizmet uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md) , Azure Blob trafiğini sanal ağ dışında yönlendirme yerine yerel olarak tutar. Arka uç veri depolama için Azure Blob kullanan Azure kümesi için avere vFXT 'nin kullanılması önerilir.
 
-Var olan bir sanal ağ sağlıyorsanız ve arka uç depolama alanı için küme oluşturmanın bir parçası olarak yeni bir Azure Blob kapsayıcısı oluşturuyorsanız, Microsoft Storage için ağda bir hizmet uç noktası olması gerekir. Kümeyi oluşturmadan önce bu uç noktanın mevcut olması gerekir, ya da oluşturma başarısız olur.
-
-Depolama hizmeti uç noktası, depolamayı daha sonra eklemeseniz bile Azure Blob depolama kullanan Azure kümesi için avere vFXT için önerilir.
+Kümeyi oluştururken yeni bir sanal ağ oluşturursanız, otomatik olarak bir uç nokta oluşturulur. Var olan bir sanal ağı sağlarsanız, küme oluşturma sırasında yeni bir BLOB depolama kapsayıcısı oluşturmak istiyorsanız Microsoft Storage hizmet uç noktası olması gerekir.<!-- if there is no endpoint in that situation, the cluster creation will fail -->
 
 > [!TIP]
 >
 >* Küme oluşturmanın bir parçası olarak yeni bir sanal ağ oluşturuyorsanız bu adımı atlayın.
->* Küme oluşturma sırasında blob depolaması oluşturmadıysanız bu adım isteğe bağlıdır. Bu durumda, Azure Blob kullanmaya karar verirseniz hizmet uç noktasını daha sonra oluşturabilirsiniz.
+>* Küme oluşturma sırasında BLOB depolama alanı oluşturmadıysanız, bir uç nokta isteğe bağlıdır. Bu durumda, Azure Blob kullanmaya karar verirseniz hizmet uç noktasını daha sonra oluşturabilirsiniz.
 
 Azure portal depolama hizmeti uç noktası oluşturun.
 
@@ -104,4 +106,4 @@ Azure portal depolama hizmeti uç noktası oluşturun.
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Sonraki adım: vFXT kümesini oluşturma
 
-Bu önkoşulları tamamladıktan sonra kümenin kendisini oluşturmaya geçebilirsiniz. Yönergeler için [vFXT kümesini dağıtma](avere-vfxt-deploy.md) makalesini okuyun.
+Bu önkoşulları tamamladıktan sonra kümeyi oluşturabilirsiniz. Yönergeler için [vFXT kümesini dağıtma](avere-vfxt-deploy.md) makalesini okuyun.

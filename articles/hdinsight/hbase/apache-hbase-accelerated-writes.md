@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: bcc9736280b144a77bca57b4f4df1303f4b54796
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: ebcc91bb374183a3f2fe000f37c66230459befa3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179096"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156939"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Apache HBase için Azure HDInsight hızlandırılmış yazma Işlemleri
 
@@ -37,11 +37,11 @@ Hızlandırılmış yazma özelliği, bulut depolamadaki ön yazma günlüklerin
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>HDInsight 'ta HBase için hızlandırılmış yazma Işlemleri nasıl etkinleştirilir
 
-Hızlandırılmış yazma özelliği ile yeni bir HBase kümesi oluşturmak için, **3. adıma**ulaşana kadar [HDInsight 'ta kümeleri ayarlama](../hdinsight-hadoop-provision-linux-clusters.md) bölümündeki adımları izleyin. **Meta veri deposu ayarları**altında, **hızlandırılmış yazma işlemlerini etkinleştir (Önizleme)** seçeneğinin yanındaki onay kutusuna tıklayın. Ardından, küme oluşturma için kalan adımlara devam edin.
+Hızlandırılmış yazma özelliği ile yeni bir HBase kümesi oluşturmak için, **3. adıma**ulaşana kadar [HDInsight 'ta kümeleri ayarlama](../hdinsight-hadoop-provision-linux-clusters.md) bölümündeki adımları izleyin. **Meta veri deposu ayarları**altında, **hızlandırılmış yazmaları etkinleştir**' in yanındaki onay kutusuna tıklayın. Ardından, küme oluşturma için kalan adımlara devam edin.
 
 ![HDInsight Apache HBase için hızlandırılmış yazma seçeneğini etkinleştirme](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
 
-## <a name="other-considerations"></a>Dikkat edilecek diğer noktalar
+## <a name="other-considerations"></a>Diğer konular
 
 Veri dayanıklılığını korumak için en az üç çalışan düğümü olan bir küme oluşturun. Oluşturulduktan sonra, kümeyi üçten az çalışan düğümden ölçeklendirdirebilirsiniz.
 

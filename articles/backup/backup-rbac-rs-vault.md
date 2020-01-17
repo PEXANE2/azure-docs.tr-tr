@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasındaki yedekleme yönetimi işlemlerine e
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: afb8067f2547e3a26a505bb5ec8063dd340e8500
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e2e32ac6981635e3b9885119fdf397783ac32cc9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172203"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156395"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Azure Backup kurtarma noktalarını yönetmek için rol tabanlı Access Control kullanma
 
@@ -33,27 +33,27 @@ Aşağıdaki tabloda, bu işlemi gerçekleştirmek için gereken yedekleme yöne
 | Yönetim Işlemi | Minimum RBAC rolü gerekli | Kapsam gerekli |
 | --- | --- | --- |
 | Kurtarma Hizmetleri kasası oluşturma | Yedek Katılımcısı | Kasayı içeren kaynak grubu |
-| Azure VM 'lerinin yedeklenmesini etkinleştirme | Yedekleme Işletmeni | Kasayı içeren kaynak grubu |
-| | Sanal makine Katılımcısı | VM kaynağı |
-| VM 'nin isteğe bağlı yedeklemesi | Yedekleme Işletmeni | Kurtarma Kasası kaynağı |
-| VM 'yi geri yükleme | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
+| Azure VM 'lerinin yedeklenmesini etkinleştirme | Yedekleme İşleci | Kasayı içeren kaynak grubu |
+| | Sanal Makine Katkıda Bulunanı | VM kaynağı |
+| VM 'nin isteğe bağlı yedeklemesi | Yedekleme İşleci | Kurtarma Hizmetleri kasası |
+| VM’yi geri yükleme | Yedekleme İşleci | Kurtarma Hizmetleri kasası |
 | | Katılımcı | VM 'nin dağıtılacağı kaynak grubu |
-| | Sanal makine Katılımcısı | Yedeklenen kaynak VM |
-| Yönetilmeyen diskleri geri yükleme VM yedeklemesi | Yedekleme Işletmeni | Kurtarma Kasası kaynağı |
-| | Sanal makine Katılımcısı | Yedeklenen kaynak VM |
+| | Sanal Makine Katkıda Bulunanı | Yedeklenen kaynak VM |
+| Yönetilmeyen diskleri geri yükleme VM yedeklemesi | Yedekleme İşleci | Kurtarma Hizmetleri kasası |
+| | Sanal Makine Katkıda Bulunanı | Yedeklenen kaynak VM |
 | | Depolama hesabı Katılımcısı | Disklerin geri yükleneceği depolama hesabı kaynağı |
-| Yönetilen diskleri VM yedeklemesinden geri yükleme | Yedekleme Işletmeni | Kurtarma Kasası kaynağı |
-| | Sanal makine Katılımcısı | Yedeklenen kaynak VM |
+| Yönetilen diskleri VM yedeklemesinden geri yükleme | Yedekleme İşleci | Kurtarma Hizmetleri kasası |
+| | Sanal Makine Katkıda Bulunanı | Yedeklenen kaynak VM |
 | | Depolama hesabı Katılımcısı | Geri yükleme 'nin bir parçası olarak seçilen geçici depolama hesabı, verileri yönetilen disklere dönüştürmeden önce kasadan bekletme |
 | | Katılımcı | Yönetilen disklerin geri yükleneceği kaynak grubu |
-| Tek tek dosyaları VM yedeklemesinden geri yükleme | Yedekleme Işletmeni | Kurtarma Kasası kaynağı |
-| | Sanal makine Katılımcısı | Yedeklenen kaynak VM |
-| Azure VM yedeklemesi için yedekleme ilkesi oluşturma | Yedek Katılımcısı | Kurtarma Kasası kaynağı |
-| Azure VM yedeklemesi 'nin yedekleme ilkesini değiştirme | Yedek Katılımcısı | Kurtarma Kasası kaynağı |
-| Azure VM yedeklemesi 'nin yedekleme ilkesini silme | Yedek Katılımcısı | Kurtarma Kasası kaynağı |
-| VM yedeklemede Yedeklemeyi Durdur (verileri sakla veya verileri Sil) | Yedek Katılımcısı | Kurtarma Kasası kaynağı |
-| Şirket içi Windows Server/Client/SCDPM veya Azure Backup Sunucusu Kaydet | Yedekleme Işletmeni | Kurtarma Kasası kaynağı |
-| Kayıtlı şirket içi Windows Server/Client/SCDPM veya Azure Backup Sunucusu Sil | Yedek Katılımcısı | Kurtarma Kasası kaynağı |
+| Tek tek dosyaları VM yedeklemesinden geri yükleme | Yedekleme İşleci | Kurtarma Hizmetleri kasası |
+| | Sanal Makine Katkıda Bulunanı | Yedeklenen kaynak VM |
+| Azure VM yedeklemesi için yedekleme ilkesi oluşturma | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
+| Azure VM yedeklemesi 'nin yedekleme ilkesini değiştirme | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
+| Azure VM yedeklemesi 'nin yedekleme ilkesini silme | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
+| VM yedeklemede Yedeklemeyi Durdur (verileri sakla veya verileri Sil) | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
+| Şirket içi Windows Server/Client/SCDPM veya Azure Backup Sunucusu Kaydet | Yedekleme İşleci | Kurtarma Hizmetleri kasası |
+| Kayıtlı şirket içi Windows Server/Client/SCDPM veya Azure Backup Sunucusu Sil | Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
 
 > [!IMPORTANT]
 > Sanal makine kaynak kapsamında VM katılımcısı belirtirseniz ve VM ayarlarının bir parçası olarak yedekle ' ye tıklarsanız, yedekleme durumunu doğrulama çağrısı yalnızca abonelik düzeyinde çalışır durumda olsa da VM zaten yedeklense bile ' yedeklemeyi etkinleştir ' ekranını açar. Bunu önlemek için kasa 'ya gidin ve VM 'nin yedekleme öğesi görünümünü açın ya da bir abonelik düzeyinde VM katılımcısı rolünü belirtin.
@@ -66,12 +66,12 @@ Aşağıdaki tabloda, yedekleme yönetim eylemleri ve Azure dosya paylaşma işl
 | --- | --- | --- |
 | Azure dosya paylaşımlarının yedeklenmesini etkinleştir | Yedek Katılımcısı |Kurtarma Hizmetleri kasası |
 | |Depolama Hesabı | Katkıda bulunan depolama hesabı kaynağı |
-| VM 'nin isteğe bağlı yedeklemesi | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
-| Dosya payını geri yükle | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
+| VM 'nin isteğe bağlı yedeklemesi | Yedekleme İşleci | Kurtarma Hizmetleri kasası |
+| Dosya payını geri yükle | Yedekleme İşleci | Kurtarma Hizmetleri kasası |
 | | Depolama hesabı Katılımcısı | Geri yükleme kaynağı ve hedef dosya paylaşımlarının mevcut olduğu depolama hesabı kaynakları |
-| Tek tek dosyaları geri yükle | Yedekleme Işletmeni | Kurtarma Hizmetleri kasası |
+| Tek tek dosyaları geri yükle | Yedekleme İşleci | Kurtarma Hizmetleri kasası |
 | |Depolama hesabı Katılımcısı|Geri yükleme kaynağı ve hedef dosya paylaşımlarının mevcut olduğu depolama hesabı kaynakları |
-| Korumayı Durdur |Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
+| Korumayı durdurma |Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
 | Depolama hesabının kasadan kaydını sil |Yedek Katılımcısı | Kurtarma Hizmetleri kasası |
 | |Depolama hesabı Katılımcısı | Depolama hesabı kaynağı|
 

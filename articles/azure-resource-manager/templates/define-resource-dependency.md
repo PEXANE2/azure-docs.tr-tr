@@ -3,12 +3,12 @@ title: Kaynaklar için dağıtım sırasını ayarla
 description: Kaynakların doğru sırada dağıtılmasını sağlamak için dağıtım sırasında bir kaynağı başka bir kaynağa bağımlı olarak nasıl ayarlayabileceğinizi açıklar.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: bdd988670b5fa6a0e602b50d9c25dd6dad6b3b84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 44cf793859d2817695a58bd1159e2f4465c1f9c2
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485097"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121973"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda kaynak dağıtma sırasını tanımlayın
 
@@ -25,9 +25,9 @@ Aşağıdaki örnek, bir yük dengeleyiciye, sanal ağa ve birden çok depolama 
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",
+  "apiVersion": "2016-03-30",
   "name": "[variables('namingInfix')]",
   "location": "[variables('location')]",
-  "apiVersion": "2016-03-30",
   "tags": {
     "displayName": "VMScaleSet"
   },
@@ -65,12 +65,12 @@ Aşağıdaki örnekte bir SQL Server ve SQL veritabanı gösterilmektedir. Verit
 "resources": [
   {
     "name": "[variables('sqlserverName')]",
+    "apiVersion": "2014-04-01-preview",
     "type": "Microsoft.Sql/servers",
     "location": "[resourceGroup().location]",
     "tags": {
       "displayName": "SqlServer"
     },
-    "apiVersion": "2014-04-01-preview",
     "properties": {
       "administratorLogin": "[parameters('administratorLogin')]",
       "administratorLoginPassword": "[parameters('administratorLoginPassword')]"
@@ -78,15 +78,15 @@ Aşağıdaki örnekte bir SQL Server ve SQL veritabanı gösterilmektedir. Verit
     "resources": [
       {
         "name": "[parameters('databaseName')]",
+        "apiVersion": "2014-04-01-preview",
         "type": "databases",
         "location": "[resourceGroup().location]",
-        "tags": {
-          "displayName": "Database"
-        },
-        "apiVersion": "2014-04-01-preview",
         "dependsOn": [
           "[variables('sqlserverName')]"
         ],
+        "tags": {
+          "displayName": "Database"
+        },
         "properties": {
           "edition": "[parameters('edition')]",
           "collation": "[parameters('collation')]",
@@ -120,15 +120,15 @@ Aşağıdaki örnekte, bir CDN uç noktası açıkça CDN profiline bağımlıd�
 ```json
 {
     "name": "[variables('endpointName')]",
+    "apiVersion": "2016-04-02",
     "type": "endpoints",
     "location": "[resourceGroup().location]",
-    "apiVersion": "2016-04-02",
     "dependsOn": [
-            "[variables('profileName')]"
+      "[variables('profileName')]"
     ],
     "properties": {
-        "originHostHeader": "[reference(variables('webAppName')).hostNames[0]]",
-        ...
+      "originHostHeader": "[reference(variables('webAppName')).hostNames[0]]",
+      ...
     }
 ```
 
@@ -152,6 +152,6 @@ Dağıtım sırasını değerlendirme ve bağımlılık hatalarını çözme hak
 * Öğreticiye gitmek için bkz. [öğretici: bağımlı kaynaklarla Azure Resource Manager şablonları oluşturma](template-tutorial-create-templates-with-dependent-resources.md).
 * Bağımlılıkları ayarlarken öneriler için bkz. [Azure Resource Manager şablonu en iyi yöntemleri](template-best-practices.md).
 * Dağıtım sırasında bağımlılıklar sorunlarını giderme hakkında bilgi edinmek için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları giderme](common-deployment-errors.md).
-* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md). 
+* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md).
 * Bir şablondaki kullanılabilir işlevlerin listesi için bkz. [Şablon işlevleri](template-functions.md).
 

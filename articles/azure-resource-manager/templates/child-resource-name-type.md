@@ -3,12 +3,12 @@ title: Şablonlarda alt kaynaklar
 description: Bir Azure Resource Manager şablonunda alt kaynaklar için ad ve tür ayarlamayı açıklar.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 058c28329942a1bd2e5d0e12321022fb022ef74f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7d8a7a39bab3340b6f5c9e66d54b7398fa70ee3e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479611"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122024"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Alt kaynaklar için ad ve tür ayarla
 
@@ -56,8 +56,8 @@ Aşağıdaki örnekte bir sanal ağ ve bir alt ağ gösterilmektedir. Alt ağın
 ```json
 "resources": [
   {
-    "apiVersion": "2018-10-01",
     "type": "Microsoft.Network/virtualNetworks",
+    "apiVersion": "2018-10-01",
     "name": "VNet1",
     "location": "[parameters('location')]",
     "properties": {
@@ -69,10 +69,10 @@ Aşağıdaki örnekte bir sanal ağ ve bir alt ağ gösterilmektedir. Alt ağın
     },
     "resources": [
       {
-        "apiVersion": "2018-10-01",
         "type": "subnets",
-        "location": "[parameters('location')]",
+        "apiVersion": "2018-10-01",
         "name": "Subnet1",
+        "location": "[parameters('location')]",
         "dependsOn": [
           "VNet1"
         ],
@@ -103,8 +103,8 @@ Aşağıdaki örnekte, kök düzeyinde tanımlanan bir sanal ağ ve alt ağ gös
 ```json
 "resources": [
   {
-    "apiVersion": "2018-10-01",
     "type": "Microsoft.Network/virtualNetworks",
+    "apiVersion": "2018-10-01",
     "name": "VNet1",
     "location": "[parameters('location')]",
     "properties": {
@@ -116,8 +116,8 @@ Aşağıdaki örnekte, kök düzeyinde tanımlanan bir sanal ağ ve alt ağ gös
     }
   },
   {
-    "apiVersion": "2018-10-01",
     "type": "Microsoft.Network/virtualNetworks/subnets",
+    "apiVersion": "2018-10-01",
     "location": "[parameters('location')]",
     "name": "VNet1/Subnet1",
     "dependsOn": [
@@ -132,6 +132,6 @@ Aşağıdaki örnekte, kök düzeyinde tanımlanan bir sanal ağ ve alt ağ gös
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md). 
+* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md).
 
 * Kaynağa başvururken kaynak adının biçimi hakkında bilgi edinmek için [başvuru işlevine](template-functions-resource.md#reference)bakın.

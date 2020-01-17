@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 description: Bu makalede, VMware vCenter/ESXi sunucusunda çalışan VMware VM 'lerini yedeklemek için Azure Backup Sunucusu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: d1c8ec249e010d75bbe96f5c70072f41b9738370
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173370"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152876"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 
@@ -24,7 +24,7 @@ Bu makalede nasıl yapılacağı açıklanmaktadır:
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Yedekleme-sürüm 6,5, 6,0 ve 5,5 için desteklenen vCenter/ESXi 'nin bir sürümünü çalıştırdığınızı doğrulayın.
+- Yedekleme için desteklenen vCenter/ESXi 'nin bir sürümünü çalıştırdığınızı doğrulayın. [Buradaki](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)destek matrisine bakın.
 - Azure Backup Sunucusu ayarladığınızdan emin olun. Yapmadıysanız, başlamadan önce [bunu yapın](backup-azure-microsoft-azure-backup.md) . En son güncelleştirmelerle Azure Backup Sunucusu çalıştırıyor olmanız gerekir.
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>vCenter Server güvenli bir bağlantı oluşturun
@@ -96,9 +96,11 @@ Kuruluşunuz dahilinde güvenli sınırlarınız varsa ve VMware sunucuları ile
 
 1. Aşağıdaki metni kopyalayıp bir. txt dosyasına yapıştırın.
 
-       ```text
-      Windows kayıt defteri Düzenleyicisi sürüm 5,00 [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare] "IgnoreCertificateValidation" = DWORD: 00000001
-       ```
+```text
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+"IgnoreCertificateValidation"=dword:00000001
+```
 
 2. Dosyayı Azure Backup Sunucusu makinesinde **Disablesecuyeniden doğrulama. reg**adıyla kaydedin.
 
@@ -128,26 +130,41 @@ Azure Backup Sunucusu, v-Center Server/ESXi konağına erişim izinleri olan bir
 
 ### <a name="role-permissions"></a>Rol izinleri
 
-**6.5/6.0** | **5,5**
---- | ---
-DataStore. AllocateSpace | DataStore. AllocateSpace
-Global. ManageCustomFields | Global. ManageCustomFields
-Global. SetCustomField |
-Host. Local. CreateVM | Network. assign
-Network. assign |
-Resource. Atamavmtopool |
-VirtualMachine. config. AddNewDisk  | VirtualMachine. config. AddNewDisk
-VirtualMachine. config. AdvancedConfig| VirtualMachine. config. AdvancedConfig
-VirtualMachine. config. ChangeTracking| VirtualMachine. config. ChangeTracking
-VirtualMachine. config. HostUSBDevice |
-VirtualMachine. config. QueryUnownedFiles |
-VirtualMachine. config. Swapyerleştirmesini| VirtualMachine. config. Swapyerleştirmesini
-VirtualMachine. etkileşim. PowerOff| VirtualMachine. etkileşim. PowerOff
-VirtualMachine. Inventory. Create| VirtualMachine. Inventory. Create
-VirtualMachine. sağlama. DiskRandomAccess |
-VirtualMachine. sağlama. DiskRandomRead | VirtualMachine. sağlama. DiskRandomRead
-VirtualMachine. State. CreateSnapshot | VirtualMachine. State. CreateSnapshot
-VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
+| **VCenter 6,5 ve üzeri Kullanıcı hesabı için ayrıcalıklar**        | **VCenter 6,0 Kullanıcı hesabı ayrıcalıkları**               | **VCenter 5,5 Kullanıcı hesabı ayrıcalıkları** |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
+| DataStore. AllocateSpace                                      |                                                           |                                             |
+| Veri deposu. veri deposuna gözatamazsınız                                   | DataStore. AllocateSpace                                   | Network. assign                              |
+| Veri deposu. alt düzey dosya işlemleri                          | Global. Manage özel öznitelikler                           | DataStore. AllocateSpace                     |
+| Veri deposu kümesi. Datatstore kümesi yapılandırma             | Global. set özel özniteliği                               | VirtualMachine. config. ChangeTracking        |
+| Global. Disable yöntemleri                                       | Ana bilgisayar. yerel işlemler. Sanal makine oluştur              | VirtualMachine. State. RemoveSnapshot         |
+| Global. Enable yöntemleri                                        | Ağ. Ağ ata                                   | VirtualMachine. State. CreateSnapshot         |
+| Küresel. lisanslar                                              | Kaynak. Sanal makineyi kaynak havuzuna ata         | VirtualMachine. sağlama. DiskRandomRead  |
+| Global. log olayı                                             | Sanal makine. Yapılandırma. yeni disk Ekle                | VirtualMachine. etkileşim. PowerOff            |
+| Global. Manage özel öznitelikler                              | Sanal makine. Yapılandırma. Gelişmiş                    | VirtualMachine. Inventory. Create             |
+| Global. set özel özniteliği                                  | Sanal makine. Yapılandırma. disk değişiklik izleme        | VirtualMachine. config. AddNewDisk            |
+| Network. assign ağı                                       | Sanal makine. Configuration. Host USB cihazı             | VirtualMachine. config. HostUSBDevice         |
+| Kaynak. Sanal makineyi kaynak havuzuna ata            | Sanal makine. Configuration. sahip olmayan dosyaları sorgula         | VirtualMachine. config. AdvancedConfig        |
+| Sanal makine. Yapılandırma. yeni disk Ekle                   | Sanal makine. Configuration. Swapfile yerleşimi          | VirtualMachine. config. Swapyerleştirmesini         |
+| Sanal makine. Yapılandırma. Gelişmiş                       | Sanal makine. Etkileşim. güç kapalı                     | Global. ManageCustomFields                   |
+| Sanal makine. Yapılandırma. disk değişiklik izleme           | Sanal makine. Envanteri. Yeni oluştur                     |                                             |
+| Sanal makine. Yapılandırma. disk kirası                     | Sanal makine. Sağlama. disk erişimine Izin ver            |                                             |
+| Sanal makine. Yapılandırma. sanal diski Genişlet            | Sanal makine. Alınıyor. Salt okuma disk erişimine izin ver |                                             |
+| Sanal makine. Konuk Işlemleri. Konuk Işlemi değişiklikleri | Sanal makine. Anlık görüntü yönetimi. Anlık görüntü oluştur       |                                             |
+| Sanal makine. Konuk Işlemleri. Konuk Işlemi program yürütme | Sanal makine. Anlık görüntü yönetimi. Anlık görüntüyü kaldır       |                                             |
+| Sanal makine. Konuk Işlemleri. Konuk Işlemi sorguları     |                                                           |                                             |
+| Sanal makine. Uyor. Cihaz bağlantısı              |                                                           |                                             |
+| Sanal makine. Uyor. VIX API tarafından Konuk işletim sistemi yönetimi |                                                           |                                             |
+| Sanal makine. Inventory. Register                          |                                                           |                                             |
+| Sanal makine. Inventory. Remove                            |                                                           |                                             |
+| Sanal makine. Sağlama. disk erişimine Izin ver              |                                                           |                                             |
+| Sanal makine. Sağlama. salt okuma disk erişimine Izin ver    |                                                           |                                             |
+| Sanal makine. Sağlama. sanal makine indirmeye Izin ver |                                                           |                                             |
+| Sanal makine. Anlık görüntü yönetimi. Anlık görüntü oluşturma        |                                                           |                                             |
+| Sanal makine. Anlık görüntü yönetimi. Anlık görüntüyü kaldır         |                                                           |                                             |
+| Sanal makine. Anlık görüntü yönetimi. Anlık görüntüye dön      |                                                           |                                             |
+| vApp. sanal makine Ekle                                     |                                                           |                                             |
+| vApp. assign kaynak havuzu                                    |                                                           |                                             |
+| vApp. Unregister                                              |                                                           |                                             |
 
 ## <a name="create-a-vmware-account"></a>VMware hesabı oluşturma
 
@@ -264,7 +281,7 @@ Yedekleme için VMware VM 'Leri ekleyin. Koruma grupları birden çok VM toplar 
 
 1. **Veri koruma yöntemini seçin** sayfasında, koruma grubu için bir ad ve koruma ayarları girin. Azure 'a yedeklemek için, kısa vadeli korumayı **diske** ayarlayın ve çevrimiçi korumayı etkinleştirin. Ardından **İleri**'ye tıklayın.
 
-    ![Veri koruma yöntemini seçin](./media/backup-azure-backup-server-vmware/name-protection-group.png)
+    ![Veri koruma yöntemini seçme](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
 1. **Kısa vadeli hedefleri belirtin**bölümünde, verileri diske ne kadar süreyle yedeklenediğinizi belirtin.
    - **Bekletme aralığı**' nda, disk kurtarma noktalarının kaç gün tutulması gerektiğini belirtin.
@@ -324,31 +341,31 @@ Yedekleme için VMware VM 'Leri ekleyin. Koruma grupları birden çok VM toplar 
 VSphere 6,7 'yi yedeklemek için aşağıdakileri yapın:
 
 - DPM sunucusunda TLS 1,2 'yi etkinleştirme
-  >[!Note]
-  >VMWare 6,7 ve üzeri, iletişim kuralı olarak TLS 'yi etkinleştirdi.
+
+>[!NOTE]
+>VMWare 6,7 üzerinde, iletişim kuralı olarak etkinleştirilmiş TLS var.
 
 - Kayıt defteri anahtarlarını aşağıdaki şekilde ayarlayın:
 
-       ```text
+```text
+Windows Registry Editor Version 5.00
 
-        Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-       ```
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

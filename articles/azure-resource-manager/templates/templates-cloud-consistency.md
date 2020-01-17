@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 7065d5e9cae9e0a06eab82bd982693a1ad1d8fba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c69c90410aab7fa37ab87e82314c53e4459ca25
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483784"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155664"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Azure Resource Manager şablon bulut tutarlılık için geliştirme
 
@@ -22,7 +22,7 @@ Azure'nın önemli bir avantajı, tutarlılık olur. Bir konum için geliştirme
 Microsoft, dahil olmak üzere farklı konumlarda akıllı, Kurumsal kullanıma hazır bir bulut hizmetleri sunar:
 
 * Bölgeleri dünyanın dört bir yanındaki Microsoft tarafından yönetilen veri merkezlerinde, gittikçe büyüyen bir ağı tarafından desteklenen genel Azure platformu.
-* Azure Almanya, Azure kamu ve Azure Çin (21Vianet tarafından işletilen Azure) gibi yalıtılmış bağımsız bulutlarda. Bağımsız bulutlarda genel Azure müşteri erişimi harika özelliklerin çoğu ile tutarlı bir platform sağlar.
+* Azure Almanya, Azure Kamu ve Azure Çin 21Vianet gibi yalıtılmış sogeign bulutları. Bağımsız bulutlarda genel Azure müşteri erişimi harika özelliklerin çoğu ile tutarlı bir platform sağlar.
 * Azure Stack, olanak tanıyan bir karma bulut platformu, kuruluşunuzun veri merkezinden Azure Hizmetleri sunun. Kuruluşların kendi veri merkezlerini Azure yığını ayarlamak veya Azure Stack (barındırılan bölgeleri olarak da bilinir) kendi tesislerinde çalışan hizmet sağlayıcılarından Azure hizmetlerini kullanma.
 
 Tüm bulutlar setinin Azure Resource Manager, çok çeşitli kullanıcı arabirimleri, Azure platformuyla iletişim kurmasına izin veren bir API sağlar. Bu API, güçlü kod olarak altyapı özellikleri sunar. Azure bulut platformunda kullanılabilir kaynak herhangi bir türde dağıtılabilir ve Azure Resource Manager ile yapılandırılmış. Basit bir şablonla dağıtma ve tam bir işlem bitiş durumuna uygulamanıza yapılandırın.
@@ -47,9 +47,9 @@ Azure Resource Manager şablonları bir giriş için bkz [şablon dağıtımı](
 
 Temel söz dizimi bir Resource Manager şablonu JSON ' dir. JSON, ifadeler ve İşlevler sözdizimiyle genişletme üst şablonlarını kullanın. Şablon dil işlemci ek şablon işlevleri desteklemek için sık sık güncelleştirilir. Kullanılabilir şablon işlevlerini ayrıntılı bir açıklaması için bkz. [Azure Resource Manager şablonu işlevleri](template-functions.md).
 
-Azure Resource Manager'a sunulan yeni şablon işlevleri, bağımsız bulutlarda veya Azure Stack'te hemen kullanılabilir değildir. Şablon başarıyla dağıtmak için şablonda başvurulan tüm işlevler hedef bulutta kullanılabilir olmalıdır. 
+Azure Resource Manager'a sunulan yeni şablon işlevleri, bağımsız bulutlarda veya Azure Stack'te hemen kullanılabilir değildir. Şablon başarıyla dağıtmak için şablonda başvurulan tüm işlevler hedef bulutta kullanılabilir olmalıdır.
 
-Azure Resource Manager özellikleri her zaman genel Azure'a ilk sunulacaktır. Yeni çıkan şablon işlevleri de Azure Stack'te kullanılabilir olup olmadığını doğrulamak için aşağıdaki PowerShell betiğini kullanabilirsiniz: 
+Azure Resource Manager özellikleri her zaman genel Azure'a ilk sunulacaktır. Yeni çıkan şablon işlevleri de Azure Stack'te kullanılabilir olup olmadığını doğrulamak için aşağıdaki PowerShell betiğini kullanabilirsiniz:
 
 1. GitHub deposunun bir kopya yapmak: [ https://github.com/marcvaneijk/arm-template-functions ](https://github.com/marcvaneijk/arm-template-functions).
 
@@ -69,7 +69,7 @@ Birden çok betik dağıtır şablonları, her biri yalnızca benzersiz şablon 
 
 ## <a name="working-with-linked-artifacts"></a>Bağlantılı yapıtlar ile çalışma
 
-Şablon, bağlı yapıtlar için başvurular içerir ve başka bir şablona bağlanan bir dağıtım kaynağı içeriyor. (İç içe geçmiş şablon olarak da bilinir) bağlı şablonların, çalışma zamanında Resource Manager tarafından alınır. Bir şablon yapıtlar sanal makine (VM) uzantıları için başvurular da içerebilir. Bu yapılar, şablon dağıtımı sırasında yapılandırması VM uzantısı için bir VM içinde çalışan VM uzantısı tarafından alınır. 
+Şablon, bağlı yapıtlar için başvurular içerir ve başka bir şablona bağlanan bir dağıtım kaynağı içeriyor. (İç içe geçmiş şablon olarak da bilinir) bağlı şablonların, çalışma zamanında Resource Manager tarafından alınır. Bir şablon yapıtlar sanal makine (VM) uzantıları için başvurular da içerebilir. Bu yapılar, şablon dağıtımı sırasında yapılandırması VM uzantısı için bir VM içinde çalışan VM uzantısı tarafından alınır.
 
 Aşağıdaki bölümlerde, ana dağıtım şablonu için dış yapıtları dahil şablonlarınızı geliştirirken bulut tutarlılık için ilgili önemli noktalar açıklanmaktadır.
 
@@ -82,9 +82,9 @@ Aşağıdaki kod nasıl templateLink parametresi için bir iç içe geçmiş şa
 ```json
 "resources": [
   {
+     "type": "Microsoft.Resources/deployments",
      "apiVersion": "2017-05-10",
      "name": "linkedTemplate",
-     "type": "Microsoft.Resources/deployments",
      "properties": {
        "mode": "incremental",
        "templateLink": {
@@ -100,9 +100,9 @@ Azure Resource Manager, çalışma zamanında ana şablon değerlendirir ve alı
 
 ### <a name="make-linked-templates-accessible-across-clouds"></a>Bağlı şablonların Bulutlar arasında erişilebilir olun
 
-Nerede ve nasıl göz önünde bulundurun herhangi depolamak için kullandığınız şablonları bağlı. Azure Resource Manager çalışma zamanında getirir; ve bu nedenle doğrudan erişim gerektirir — herhangi bir bağlantılı şablonları. İç içe geçmiş şablonlar depolamak için GitHub'ı kullanmak yaygın bir uygulamadır. Bir GitHub deposuna genel bir URL ile erişilebilir olan dosyalar içerebilir. Bu teknik genel Bulut ve bağımsız bulutlarda için iyi çalışır, ancak bir Azure Stack ortamınıza tüm giden Internet erişimi olmayan bağlantısı kesilmiş bir uzak konuma veya kurumsal ağ üzerinde yer olabilir. Bu gibi durumlarda, iç içe geçmiş şablonlarını almak üzere Azure Resource Manager başarısız olur. 
+Nerede ve nasıl göz önünde bulundurun herhangi depolamak için kullandığınız şablonları bağlı. Azure Resource Manager çalışma zamanında getirir; ve bu nedenle doğrudan erişim gerektirir — herhangi bir bağlantılı şablonları. İç içe geçmiş şablonlar depolamak için GitHub'ı kullanmak yaygın bir uygulamadır. Bir GitHub deposuna genel bir URL ile erişilebilir olan dosyalar içerebilir. Bu teknik genel Bulut ve bağımsız bulutlarda için iyi çalışır, ancak bir Azure Stack ortamınıza tüm giden Internet erişimi olmayan bağlantısı kesilmiş bir uzak konuma veya kurumsal ağ üzerinde yer olabilir. Bu gibi durumlarda, iç içe geçmiş şablonlarını almak üzere Azure Resource Manager başarısız olur.
 
-Bulutlar arası dağıtımlar için daha iyi bir uygulama için hedef Bulutu erişebileceği bir konuma bağlı şablonlarınızı depolamaktır. İdeal olarak tüm dağıtım yapıtları saklanır ve bir sürekli tümleştirme/sürekli geliştirme (CI/CD) işlem hattını dağıtılabilir. Alternatif olarak, Azure Resource Manager alabileceğini bir blob depolama kapsayıcısında, iç içe geçmiş şablonlar depolayabilir. 
+Bulutlar arası dağıtımlar için daha iyi bir uygulama için hedef Bulutu erişebileceği bir konuma bağlı şablonlarınızı depolamaktır. İdeal olarak tüm dağıtım yapıtları saklanır ve bir sürekli tümleştirme/sürekli geliştirme (CI/CD) işlem hattını dağıtılabilir. Alternatif olarak, Azure Resource Manager alabileceğini bir blob depolama kapsayıcısında, iç içe geçmiş şablonlar depolayabilir.
 
 Her bulut blob depolama farklı uç noktası bir tam etki alanı adı (FQDN) kullandığından, şablon iki parametre ile bağlı Şablonları konumu ile yapılandırın. Parametreleri, dağıtım sırasında kullanıcı girişi kabul edebilir. Şablonları genellikle yazılan ve birden çok kişi tarafından paylaşılabilir, böylece bu parametreler için standart bir ad kullanmak için en iyi uygulamadır. Adlandırma kuralları şablonları daha yeniden kullanılabilir bölgeler, Bulutlar ve yazarlar yardımcı olur.
 
@@ -132,9 +132,9 @@ Taban URI birleştirerek bağlantıları oluşturulan şablonun tamamında (gele
 ```json
 "resources": [
   {
-    "name": "shared",
     "type": "Microsoft.Resources/deployments",
     "apiVersion": "2015-01-01",
+    "name": "shared",
     "properties": {
       "mode": "Incremental",
       "templateLink": {
@@ -150,7 +150,7 @@ Varsayılan değer için bu yaklaşımı kullanarak `_artifactsLocation` paramet
 
 ### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>_ArtifactsLocation yerine runbook'a kod bağlantıları kullanın.
 
-İç içe geçmiş şablonlar, URL'de kullanılan yanı sıra `_artifactsLocation` parametresi, ilgili tüm yapıtlar bir dağıtım şablonu için bir temel olarak kullanılır. Bazı VM uzantıları, şablonun dışında depolanan bir komut dosyası için bir bağlantı içerir. Bu uzantılar için şimdilik bağlantıları gerekir. Örneğin, özel betik ve PowerShell DSC uzantı bir dış betik gösterildiği github'da bağlamak: 
+İç içe geçmiş şablonlar, URL'de kullanılan yanı sıra `_artifactsLocation` parametresi, ilgili tüm yapıtlar bir dağıtım şablonu için bir temel olarak kullanılır. Bazı VM uzantıları, şablonun dışında depolanan bir komut dosyası için bir bağlantı içerir. Bu uzantılar için şimdilik bağlantıları gerekir. Örneğin, özel betik ve PowerShell DSC uzantı bir dış betik gösterildiği github'da bağlamak:
 
 ```json
 "properties": {
@@ -215,7 +215,7 @@ Azure bölgeleri ve bulut de kullanılabilir hizmetlerini değişebilir bilerek,
 
 Bir şablon dağıtır ve kaynakları yapılandırır. Bir kaynak türü, bir kaynak sağlayıcısı tarafından sağlanır. Örneğin, işlem kaynak Sağlayıcısı'nı (Microsoft.Compute) virtualMachines ve availabilitySets gibi birden çok kaynak türü sağlar. Her kaynak sağlayıcısı, Azure Resource ortak bir anlaşma tarafından tanımlanan tüm kaynak sağlayıcıları arasında tutarlı ve birleştirilmiş bir yazma deneyimi etkinleştirme Manager'a bir API sağlar. Ancak, genel Azure'da kullanılabilir bir kaynak sağlayıcısı bağımsız bir bulut ya da bir Azure Stack bölgenizde kullanılamıyor olabilir.
 
-![Kaynak sağlayıcıları](./media/templates-cloud-consistency/resource-providers.png) 
+![Kaynak sağlayıcıları](./media/templates-cloud-consistency/resource-providers.png)
 
 Belirli bir bulut kullanılabilir kaynak sağlayıcıları doğrulamak için Azure komut satırı arabirimi aşağıdaki betiği çalıştırın ([CLI](/cli/azure/install-azure-cli)):
 
@@ -253,7 +253,7 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 
 Kaynak özelliklerini belirtmek için bir şablonunda sabit kodlamayın bölge adları olabilir olsa da, bölge adı büyük olasılıkla var olmadığından bu yaklaşım şablon diğer Azure Stack ortamlara dağıtılabilir garanti etmez.
 
-Farklı bölgelerdeki uyum sağlamak için varsayılan bir değerle şablona bir giriş parametresi konumuna ekleyin. Dağıtım sırasında hiçbir değer belirtilmemişse, varsayılan değer kullanılır. 
+Farklı bölgelerdeki uyum sağlamak için varsayılan bir değerle şablona bir giriş parametresi konumuna ekleyin. Dağıtım sırasında hiçbir değer belirtilmemişse, varsayılan değer kullanılır.
 
 Şablon işlevi `[resourceGroup()]` aşağıdaki anahtar/değer çiftleri içeren bir nesne döndürür:
 
@@ -284,9 +284,9 @@ Giriş parametresi defaultValue nesnenin konumu anahtarı başvurarak Azure Reso
 },
 "resources": [
   {
-    "name": "storageaccount1",
     "type": "Microsoft.Storage/storageAccounts",
     "apiVersion": "2015-06-15",
+    "name": "storageaccount1",
     "location": "[parameters('location')]",
     ...
 ```
@@ -301,40 +301,40 @@ Bu nedenle, Resource Manager şablonları için API profillerini kavramını sun
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "metadata": {
-                "description": "Location the resources will be deployed to."
-            },
-            "defaultValue": "[resourceGroup().location]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "metadata": {
+          "description": "Location the resources will be deployed to."
+      },
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
+      "name": "mystorageaccount",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
     },
-    "variables": {},
-    "resources": [
-        {
-            "name": "mystorageaccount",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2016-01-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "accountType": "Standard_LRS"
-            }
-        },
-        {
-            "name": "myavailabilityset",
-            "type": "Microsoft.Compute/availabilitySets",
-            "apiVersion": "2016-03-30",
-            "location": "[parameters('location')]",
-            "properties": {
-                "platformFaultDomainCount": 2,
-                "platformUpdateDomainCount": 2
-            }
-        }
-    ],
-    "outputs": {}
+    {
+      "type": "Microsoft.Compute/availabilitySets",
+      "apiVersion": "2016-03-30",
+      "name": "myavailabilityset",
+      "location": "[parameters('location')]",
+      "properties": {
+        "platformFaultDomainCount": 2,
+        "platformUpdateDomainCount": 2
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -357,16 +357,16 @@ Bir API profili sürümü, Azure ve Azure Stack için ortak kaynak türü başı
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -399,17 +399,17 @@ API profili şablonunda gerekli bir öğe değil. Öğe ekleseniz bile yalnızca
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2016-01-01",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -423,7 +423,7 @@ API profili şablonunda gerekli bir öğe değil. Öğe ekleseniz bile yalnızca
 
 ## <a name="check-endpoint-references"></a>Onay uç noktası başvuruları
 
-Kaynaklar diğer hizmetlere yönelik başvuruları platformunda olabilir. Örneğin, bir genel IP, kendisine atanmış bir genel DNS adı olabilir. Genel bulut, bağımsız bulutlarda ve Azure Stack çözümleri, kendi ayrı bir uç nokta ad alanları vardır. Çoğu durumda, bir kaynak şablonundaki giriş olarak yalnızca bir önek gerektirir. Çalışma zamanı sırasında Azure Resource Manager uç nokta değeri için ekler. Bazı uç nokta değerleri şablonda açıkça belirtilmesi gerekir. 
+Kaynaklar diğer hizmetlere yönelik başvuruları platformunda olabilir. Örneğin, bir genel IP, kendisine atanmış bir genel DNS adı olabilir. Genel bulut, bağımsız bulutlarda ve Azure Stack çözümleri, kendi ayrı bir uç nokta ad alanları vardır. Çoğu durumda, bir kaynak şablonundaki giriş olarak yalnızca bir önek gerektirir. Çalışma zamanı sırasında Azure Resource Manager uç nokta değeri için ekler. Bazı uç nokta değerleri şablonda açıkça belirtilmesi gerekir.
 
 > [!NOTE]
 > Bulut tutarlılık için şablonları geliştirmek için sabit kodlamayın uç nokta ad alanları yok.
@@ -444,7 +444,7 @@ Dağıtım tamamlandığında uç nokta ad alanları da şablon çıktısında b
 Genel olarak, bir şablonu sabit kodlanmış uç noktaların kaçının. En iyi uç noktalarını dinamik olarak almak için başvuru şablon işlevi kullanmaktır. Depolama hesapları için uç nokta ad alanı sabit kodlanmış olan örnek için en yaygın olarak uç nokta. Her Depolama hesabı uç nokta ad alanıyla depolama hesabının adını birleştirerek oluşturulan benzersiz bir FQDN'ye sahip. Buluta bağlı olarak farklı FQDN'leri mystorageaccount1 sonuçlarında adlı bir blob depolama hesabı:
 
 * **mystorageaccount1.BLOB.Core.Windows.NET** genel Azure Bulutu üzerinde oluşturduğunuzda.
-* **mystorageaccount1.BLOB.Core.chinacloudapi.CN** Azure Çin oluşturduğunuzda.
+* **mystorageaccount1.blob.Core.chinacloudapi.cn** , Azure Çin 21Vianet bulutu 'nda oluşturulduğunda.
 
 Aşağıdaki başvuru şablon işlevi uç nokta ad alanı, depolama kaynak Sağlayıcısı'ndan alır:
 
@@ -456,7 +456,7 @@ Depolama hesabı uç noktası ile kodlanmış değerini değiştirerek `referenc
 
 ### <a name="refer-to-existing-resources-by-unique-id"></a>Benzersiz Kimliğine göre mevcut kaynaklara bakın
 
-Mevcut bir kaynak için aynı veya başka bir başvurabilir kaynak grubunu ve aynı abonelik veya aynı bulutta aynı kiracıda başka bir abonelik. Kaynak özelliklerini almak için kaynak için benzersiz tanımlayıcı kullanmanız gerekir. `resourceId` Şablon işlevi aşağıdaki kodun gösterdiği olarak SQL Server gibi bir kaynağın benzersiz kimliği alır: 
+Mevcut bir kaynak için aynı veya başka bir başvurabilir kaynak grubunu ve aynı abonelik veya aynı bulutta aynı kiracıda başka bir abonelik. Kaynak özelliklerini almak için kaynak için benzersiz tanımlayıcı kullanmanız gerekir. `resourceId` Şablon işlevi aşağıdaki kodun gösterdiği olarak SQL Server gibi bir kaynağın benzersiz kimliği alır:
 
 ```json
 "outputs": {
@@ -602,8 +602,8 @@ VM uzantıları birinci taraf Resource Manager kaynaklarını olduğundan, kendi
 
 ```json
 {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Compute/virtualMachines/extensions",
+    "apiVersion": "2015-06-15",
     "name": "myExtension",
     "location": "[parameters('location')]",
     ...
@@ -627,9 +627,9 @@ Her özel de tutulan uzantısıdır. Bu sürüm gösterilen `typeHandlerVersion`
 
 ```json
 {
-    "name": "MyCustomScriptExtension",
     "type": "extensions",
     "apiVersion": "2016-03-30",
+    "name": "MyCustomScriptExtension",
     "location": "[parameters('location')]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/myVM', copyindex())]"
@@ -638,7 +638,7 @@ Her özel de tutulan uzantısıdır. Bu sürüm gösterilen `typeHandlerVersion`
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
         "typeHandlerVersion": "1.7",
-        ...   
+        ...
 ```
 
 Belirli bir VM uzantısı için kullanılabilir sürümlerin listesini almak için kullanın [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) cmdlet'i. Aşağıdaki örnek, kullanılabilir sürümler için PowerShell DSC (Desired State Configuration) sanal makine uzantısını alır. **double**:
@@ -655,12 +655,12 @@ Bu, tüm ilgili ayarları, özelliklerini ve sınırlamalarını şablon yazarke
 
 Aşağıdaki resimde, bir geliştirme süreci bir tümleşik geliştirme ortamı (IDE) kullanarak bir takım için tipik bir örneği gösterilmektedir. Farklı test türleri zaman çizelgesinde farklı aşamalarında yürütülür. Burada iki geliştiricilerin aynı çözüm üzerinde çalışıyoruz, ancak bu senaryo tek bir geliştirici ya da büyük bir takım için eşit oranda geçerlidir. Her geliştirici genellikle aynı dosyaları üzerinde çalışan diğer etkilemeden yerel kopyasında çalışmak her bir etkinleştirme merkezi bir depo yerel bir kopyasını oluşturur.
 
-![İş Akışı](./media/templates-cloud-consistency/workflow.png) 
+![İş Akışı](./media/templates-cloud-consistency/workflow.png)
 
 Test ve Otomasyon için aşağıdaki ipuçlarını göz önünde bulundurun:
 
 * Olun test araçları kullanın. Örneğin, Visual Studio Code ve Visual Studio IntelliSense içerir ve şablonlarınızı yardımcı olabilecek diğer özelliklerini doğrulayın.
-* Yerel IDE üzerinde geliştirme sırasında kod kalitesini artırmak için statik Kod Analizi ile birim testleri ve tümleştirme testleri gerçekleştirin. 
+* Yerel IDE üzerinde geliştirme sırasında kod kalitesini artırmak için statik Kod Analizi ile birim testleri ve tümleştirme testleri gerçekleştirin.
 * Bir sorun bulunduğunda için daha da iyi bir deneyim ilk geliştirme sırasında birim testleri ve tümleştirme testleri yalnızca bildirmelisiniz ve testlerle devam edin. Bu şekilde, giderilen sorunları belirleyebilir ve teste dayalı dağıtım (TDD) da adlandırılan bu değişiklikleri sırasını öncelik verin.
 * Bazı testler Azure Resource Manager'a bağlı olmadan gerçekleştirilebilir dikkat edin. Diğerleri ise, şablon dağıtımı test etme gibi Resource Manager'ın çevrimdışı gerçekleştirilemiyor belirli eylemleri gerçekleştirmek için gerektirir.
 * Bir dağıtım şablonu API doğrulama karşı test etmek için gerçek bir dağıtım eşit değildir. Ayrıca, yerel bir dosyaya bir şablonu dağıtmayı bile şablondaki iç içe şablonlara yönelik tüm başvuruları doğrudan kaynak yöneticisi tarafından alınır ve VM uzantıları tarafından başvurulan yapıtları dağıtılan sanal makine içinde çalışan VM aracısı tarafından alınır.

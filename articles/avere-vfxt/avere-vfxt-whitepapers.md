@@ -1,21 +1,21 @@
 ---
-title: Teknik incelemeler ve olay incelemeleri-Azure için avere vFTX
+title: Teknik incelemeler ve olay incelemeleri-Azure için avere vFXT
 description: İndirilebilir teknik incelemeler, örnek olay incelemeleri ve Azure için avere vFXT 'yi gösteren diğer makalelere bağlantılar ve nasıl kullanılabileceğinizi gösterir.
 ms.service: avere-vfxt
 author: ekpgh
 ms.author: rohogue
 ms.topic: conceptual
-ms.date: 02/13/2019
-ms.openlocfilehash: a85b939eb222fa459d33ba4eb79b4937baf9056f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/06/2020
+ms.openlocfilehash: 66df6a2018960d83c4aaa9129dad067732a8b3cf
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414273"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152978"
 ---
-# <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Azure için Azure vFTX teknik incelemeler ve diğer kaynaklar
+# <a name="azure-vfxt-for-azure-whitepapers-and-other-resources"></a>Azure 'da teknik incelemeler ve diğer kaynaklar için Azure vFXT
 
-Bu tablodaki kaynaklar, Azure için avere vFXT 'nin iş akışınıza nasıl uyduğunu anlamanıza yardımcı olabilecek örnek olay incelemeleri, teknoloji teknik incelemeleri, bilgi grafikleri ve diğer makaleleri içerir.
+Bu makalede, Azure için avere vFXT 'nin iş akışınıza nasıl uyduğunu anlamanıza yardımcı olabilecek örnek olay incelemeleri, teknoloji teknik incelemeleri, bilgi grafikleri ve diğer kaynaklar listelenmektedir.
 
 ## <a name="deploy-agisoft-photoscan-on-azure"></a>Azure 'da Agisoft PhotoScan dağıtma
 
@@ -34,12 +34,6 @@ Bu iki sayfa için, çeşitli kullanım örneği senaryolarında Azure için ave
 **Bağlantı:** [Infographic: dosya tabanlı iş yükleri Için karma bulut oluşturma](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/)
 
 Bu grafik, mevcut sisteminize bulut altyapısı eklemek üzere Azure için avere vFXT kullanmaya yönelik bileşenleri ve düzenleri gösterir. Mevcut şirket içi altyapınızla bilgi işlem kapasitesini artırmak için Azure için avere vFXT kullanın veya verileri ve bilgi işlem güvenliğini geçici veya kalıcı bir şekilde buluta taşıyın.
-
-## <a name="cloud-bursting"></a>Bulut patlaması
-
-**Bağlantı:** [yüksek performans, ölçeklenebilir NAS için bulut geri ödeme](https://microsoft.sharepoint.com/sites/Infopedia_G01KC/KCDOCs2/Avere%20customer%20resources/Solution%20Brief%20Cloud%20Bursting.pdf)
-
- Bu bulut tekrar alma çözümü kısaca, Azure için avere vFXT kullanarak verileri bulut işlem kaynakları için nasıl hızlı bir şekilde kullanılabilir hale getirebileceğinizi gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

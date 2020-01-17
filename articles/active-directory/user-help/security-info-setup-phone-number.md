@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bb7d811b1d622fb14935b4d5ddf0cb60e44daa8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c120c9092d9cf0e4029cadea1b412a73e858fa75
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278975"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156157"
 ---
 # <a name="set-up-a-phone-number-as-your-verification-method"></a>Doğrulama yönteminiz olarak bir telefon numarası ayarlama
 
@@ -30,7 +30,20 @@ Bunu iş veya okul hesabınızda oturum açtıktan hemen sonra ayarlamanız iste
 > [!Note]
 > Güvenlik bilgileri telefon uzantılarının kullanımını desteklemiyor. Doğru biçimi ekseniz bile, + 1 4255551234X12345, çağrı yerleştirilmadan önce uzantılar kaldırılır.
 >
-> Telefon seçeneği görmüyorsanız, kuruluşunuz doğrulama için bir telefon numarası kullanmanıza izin vermiyor olabilir. Bu durumda, daha fazla yardım için başka bir yöntem seçmeniz veya yöneticinize başvurmanız gerekir.
+> Telefon seçeneği görmüyorsanız, kuruluşunuz bu seçeneği doğrulama için kullanmanıza izin vermiyor olabilir. Bu durumda, daha fazla yardım almak için başka bir yöntem seçmeniz veya kuruluşunuzun yardım masasına başvurmanız gerekir.
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Güvenlik doğrulaması ve parola sıfırlama kimlik doğrulaması
+
+Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de parola sıfırlama için kullanılır. Ancak, her ikisi için tüm yöntemler kullanılamaz.
+
+| Yöntem | Kullanıldığı yerler |
+| ------ | -------- |
+| Authenticator uygulaması | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| SMS mesajları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Telefon aramaları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Güvenlik anahtarı | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| E-posta hesabı | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
+| Güvenlik soruları | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
 
 ## <a name="set-up-phone-calls-from-the-security-info-page"></a>Güvenlik bilgileri sayfasından telefon çağrılarını ayarlama
 

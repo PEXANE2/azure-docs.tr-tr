@@ -1,48 +1,48 @@
 ---
-title: HDInsight .NET SDK - Azure kullanarak MapReduce işlerini gönderme
-description: HDInsight .NET SDK kullanarak Azure HDInsight Apache hadoop MapReduce işlerini gönderme hakkında bilgi edinin.
-ms.reviewer: jasonh
+title: HDInsight .NET SDK-Azure kullanarak MapReduce işlerini gönderme
+description: HDInsight .NET SDK kullanarak MapReduce işlerini Azure HDInsight Apache Hadoop gönderme hakkında bilgi edinin.
 author: hrasheed-msft
-ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1ac2dda20ba1219c9f62e834b5cd2cfba8a50086
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: conceptual
+ms.custom: hdinsightactive
+ms.date: 01/15/2020
+ms.openlocfilehash: e50510f2420d69be37af584a2648a794e1561ee3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718961"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157064"
 ---
-# <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK kullanarak MapReduce işleri çalıştırma
+# <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK kullanarak MapReduce işlerini çalıştırma
+
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-HDInsight .NET SDK kullanarak MapReduce işleri göndermeyi öğrenin. HDInsight kümeleri bazı MapReduce örnekleri içeren bir jar dosyası ile birlikte geldiğinden. Jar dosyası */example/jars/hadoop-mapreduce-examples.jar*.  Örneklerden biridir *wordcount*. Wordcount işi göndermek için bir C# konsol uygulaması geliştirme.  İş okur */example/data/gutenberg/davinci.txt* dosya ve sonuçları çıkarır */example/data/davinciwordcount*.  Uygulamayı yeniden çalıştırmak isterseniz, çıktı klasörü temizlemek gerekir.
+HDInsight .NET SDK kullanarak MapReduce işlerini göndermeyi öğrenin. HDInsight kümeleri, bazı MapReduce örneklerine sahip bir jar dosyası ile gelir. Jar dosyası `/example/jars/hadoop-mapreduce-examples.jar`.  Örneklerden biri **WORDCOUNT**. Bir WORDCOUNT C# işi göndermek için bir konsol uygulaması geliştirirsiniz.  İş `/example/data/gutenberg/davinci.txt` dosyasını okur ve sonuçları `/example/data/davinciwordcount`çıktı.  Uygulamayı yeniden çalıştırmak istiyorsanız, çıkış klasörünü temizlemeniz gerekir.
 
 > [!NOTE]  
-> Bu makaledeki adımlarda, bir Windows istemcisinden gerçekleştirilmelidir. Hive ile çalışmak için Linux, OS X veya UNIX istemcisi kullanma hakkında daha fazla bilgi için gösterilen makalenin üst kısmındaki sekme seçicisini kullanın.
-> 
-> 
+> Bu makaledeki adımların bir Windows istemcisinden gerçekleştirilmesi gerekir. Bir Linux, OS X veya UNIX istemcisini Hive ile çalışmak üzere kullanma hakkında bilgi için, makalenin üst kısmında gösterilen sekme seçiciyi kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu makaleye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
+## <a name="prerequisites"></a>Ön koşullar
 
-* **Bir HDInsight Hadoop kümesinde**. Bkz: [Linux tabanlı Apache Hadoop HDInsight kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md).
-* **Visual Studio 2013/2015/2017**.
+* HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md).
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/community/).
 
 ## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK kullanarak MapReduce işlerini gönderme
-HDInsight .NET SDK'sı .NET istemci kitaplıkları, .NET HDInsight kümeleriyle çalışmak daha kolay hale getiren sağlar. 
 
-**İşleri göndermek için**
+HDInsight .NET SDK 'Sı .NET istemci kitaplıklarını sağlar ve bu sayede .NET 'teki HDInsight kümeleri ile çalışmayı kolaylaştırmaktadır.
 
-1. Visual Studio'da C# konsol uygulaması oluşturun.
-2. NuGet Paket Yöneticisi konsolundan aşağıdaki komutu çalıştırın:
+1. Visual Studio 'Yu başlatın ve bir C# konsol uygulaması oluşturun.
+
+1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu** ' na gidin ve şu komutu girin:
 
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
-3. Aşağıdaki kodu kullanın:
+
+1. Aşağıdaki kodu **program.cs**'e kopyalayın. Sonra şu değerleri ayarlayarak kodu düzenleyin: `existingClusterName`, `existingClusterPassword`, `defaultStorageAccountName`, `defaultStorageAccountKey`ve `defaultStorageContainerName`.
 
     ```csharp
     using System.Collections.Generic;
@@ -54,57 +54,56 @@ HDInsight .NET SDK'sı .NET istemci kitaplıkları, .NET HDInsight kümeleriyle 
     using Hyak.Common;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
-
+    
     namespace SubmitHDInsightJobDotNet
     {
         class Program
         {
             private static HDInsightJobManagementClient _hdiJobManagementClient;
-
+    
             private const string existingClusterName = "<Your HDInsight Cluster Name>";
-            private const string existingClusterUri = existingClusterName + ".azurehdinsight.net";
-            private const string existingClusterUsername = "<Cluster Username>";
             private const string existingClusterPassword = "<Cluster User Password>";
-
-            private const string defaultStorageAccountName = "<Default Storage Account Name>"; //<StorageAccountName>.blob.core.windows.net
+            private const string defaultStorageAccountName = "<Default Storage Account Name>"; 
             private const string defaultStorageAccountKey = "<Default Storage Account Key>";
             private const string defaultStorageContainerName = "<Default Blob Container Name>";
-
-            private const string sourceFile = "/example/data/gutenberg/davinci.txt";  
+    
+            private const string existingClusterUsername = "admin";
+            private const string existingClusterUri = existingClusterName + ".azurehdinsight.net";
+            private const string sourceFile = "/example/data/gutenberg/davinci.txt";
             private const string outputFolder = "/example/data/davinciwordcount";
-
+    
             static void Main(string[] args)
             {
                 System.Console.WriteLine("The application is running ...");
-
+    
                 var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = existingClusterUsername, Password = existingClusterPassword };
                 _hdiJobManagementClient = new HDInsightJobManagementClient(existingClusterUri, clusterCredentials);
-
+    
                 SubmitMRJob();
-
+    
                 System.Console.WriteLine("Press ENTER to continue ...");
                 System.Console.ReadLine();
             }
-
+    
             private static void SubmitMRJob()
             {
                 List<string> args = new List<string> { { "/example/data/gutenberg/davinci.txt" }, { "/example/data/davinciwordcount" } };
-
+    
                 var paras = new MapReduceJobSubmissionParameters
                 {
                     JarFile = @"/example/jars/hadoop-mapreduce-examples.jar",
                     JarClass = "wordcount",
                     Arguments = args
                 };
-
+    
                 System.Console.WriteLine("Submitting the MR job to the cluster...");
                 var jobResponse = _hdiJobManagementClient.JobManagement.SubmitMapReduceJob(paras);
                 var jobId = jobResponse.JobSubmissionJsonResponse.Id;
                 System.Console.WriteLine("Response status code is " + jobResponse.StatusCode);
                 System.Console.WriteLine("JobId is " + jobId);
-
+    
                 System.Console.WriteLine("Waiting for the job completion ...");
-
+    
                 // Wait for job completion
                 var jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
                 while (!jobDetail.Status.JobComplete)
@@ -112,7 +111,7 @@ HDInsight .NET SDK'sı .NET istemci kitaplıkları, .NET HDInsight kümeleriyle 
                     Thread.Sleep(1000);
                     jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
                 }
-
+    
                 // Get job output
                 System.Console.WriteLine("Job output is: ");
                 var storageAccess = new AzureStorageAccess(defaultStorageAccountName, defaultStorageAccountKey,
@@ -121,8 +120,8 @@ HDInsight .NET SDK'sı .NET istemci kitaplıkları, .NET HDInsight kümeleriyle 
                 if (jobDetail.ExitValue == 0)
                 {
                     // Create the storage account object
-                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" + 
-                        defaultStorageAccountName + 
+                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" +
+                        defaultStorageAccountName +
                         ";AccountKey=" + defaultStorageAccountKey);
     
                     // Create the blob client.
@@ -147,7 +146,7 @@ HDInsight .NET SDK'sı .NET istemci kitaplıkları, .NET HDInsight kümeleriyle 
                 else
                 {
                     // fetch stderr output in case of failure
-                    var output = _hdiJobManagementClient.JobManagement.GetJobErrorLogs(jobId, storageAccess); 
+                    var output = _hdiJobManagementClient.JobManagement.GetJobErrorLogs(jobId, storageAccess);
     
                     using (var reader = new StreamReader(output, Encoding.UTF8))
                     {
@@ -159,20 +158,21 @@ HDInsight .NET SDK'sı .NET istemci kitaplıkları, .NET HDInsight kümeleriyle 
             }
         }
     }
+
     ```
 
-4. Uygulamayı çalıştırmak için **F5**'e basın.
+1. Uygulamayı çalıştırmak için **F5**'e basın.
 
-İşi yeniden çalıştırmak için iş çıktısı klasörü adı değiştirme olduğu aşağıdaki örnekte, "/ data/örnek/davinciwordcount".
+İşi yeniden çalıştırmak için, örnek `/example/data/davinciwordcount`iş çıkış klasörü adını değiştirmeniz gerekir.
 
-İş başarıyla tamamlandığında uygulamanın "bölümü-r-00000" çıkış dosyasının içeriğini yazdırır.
+İş başarıyla tamamlandığında, uygulama çıkış dosyasının içeriğini yazdırır `part-r-00000`.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, bir HDInsight kümesi oluşturmanın birkaç yolu öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* Bir Hive işi göndermek için bkz: [HDInsight .NET SDK kullanarak Apache Hive sorgularını çalıştırma](apache-hadoop-use-hive-dotnet-sdk.md).
-* HDInsight kümeleri oluşturmak için bkz: [oluşturma Linux tabanlı Apache Hadoop HDInsight kümeleri](../hdinsight-hadoop-provision-linux-clusters.md).
-* HDInsight kümelerini yönetmek için bkz: [yönetme Apache Hadoop HDInsight kümeleri](../hdinsight-administer-use-portal-linux.md).
-* HDInsight .NET SDK'sı öğrenmek için bkz: [HDInsight .NET SDK başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
-* İçin etkileşimli olmayan Azure'a kimliğini doğrulamak için bkz: [etkileşimli olmayan kimlik doğrulaması .NET HDInsight uygulamaları oluşturma](../hdinsight-create-non-interactive-authentication-dotnet-applications.md).
+Bu makalede, bir HDInsight kümesi oluşturmanın çeşitli yollarını öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
+* Hive işi göndermek için bkz. [HDInsight .NET SDK kullanarak Apache Hive sorguları çalıştırma](apache-hadoop-use-hive-dotnet-sdk.md).
+* HDInsight kümeleri oluşturmak için bkz. [HDInsight 'Ta Linux tabanlı Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md).
+* HDInsight kümelerini yönetmek için bkz. [HDInsight 'ta Apache Hadoop kümelerini yönetme](../hdinsight-administer-use-portal-linux.md).
+* HDInsight .NET SDK 'sını öğrenmek için bkz. [HDInsight .NET SDK başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
+* Azure 'da etkileşimli olmayan kimlik doğrulaması için bkz. [etkileşimli olmayan kimlik doğrulaması .net HDInsight uygulamaları oluşturma](../hdinsight-create-non-interactive-authentication-dotnet-applications.md).

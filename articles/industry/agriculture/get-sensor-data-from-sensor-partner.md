@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d9e20c8e5859efc8f1f8a5214e6837ad46d2980d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 7c40cfc8fbc6a9957281be842f6714fa9289a3c8
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777793"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122228"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
 
@@ -46,7 +46,7 @@ Alternatif olarak, Azure Cloud Shell ' den bu betiği çalıştırarak kimlik bi
 
 3. Farmtts dağıtımınızın bir parçası olarak oluşturulan uygulama kaydına tıklayın. Bu, Farmtts veri hub 'ınızla aynı ada sahip olacaktır.
 
-4. "Bir API 'yi kullanıma sunma" seçeneğine tıklayın-> "istemci uygulaması Ekle" ye tıklayın ve **04b07795-8ddb-461A-bbee-02f9e1bf7b46** girin ve "yetkilendirmeyi Yetkilendir" seçeneğini işaretleyin. Bu işlem, aşağıdaki adımları gerçekleştirmek için Azure CLI 'ya (Cloud Shell) erişim sağlar.
+4. "Bir API 'yi kullanıma sunma" seçeneğine tıklayın-> "istemci uygulaması Ekle" ye tıklayın ve **04b07795-8ddb-461A-bbee-02f9e1bf7b46** girin ve "yetkilendirmeyi Yetkilendir" seçeneğini işaretleyin. Bu, aşağıdaki adımları gerçekleştirmek için Azure CLı (Cloud Shell) erişimi sağlar.
 
 5. Cloud Shell'i açın. Bu seçenek, Azure portal sağ üst köşesindeki araç çubuğunda bulunur.
 

@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0738e56cf6760a356b6e2b6db76f2dc3f6f157ee
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 74d209adf745d1a3c319ef6567b2a7818a5fd514
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763173"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152265"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -171,6 +171,18 @@ Tüm bu durumlarda, Dizin şemasını doğru bir şekilde oluşturup uygun [Dizi
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Hata: Dizin Oluşturucu en fazla çalışma süresi içinde belge işlenemedi
 
 Dizin Oluşturucu, izin verilen yürütme süresi içinde veri kaynağından tek bir belgeyi işlemeyi tamamlayamediğinde bu hata oluşur. Becerileri kullanıldığında [en fazla çalışma süresi](search-limits-quotas-capacity.md#indexer-limits) daha kısadır. Bu hata oluştuğunda, maxFailedItems 0 dışında bir değere ayarladıysanız Dizin Oluşturucu, dizin oluşturmanın ilerlemesinin devam edebilmesi için gelecekteki çalışmadaki belgeyi atlar. Herhangi bir belgeyi atlamak için kabul ediyorsanız veya bu hatayı sürekli olarak görüyorsanız, tek bir Dizin Oluşturucu yürütmesi içinde kısmi ilerleme yapılabilmesi için belgeleri daha küçük belgelere bozmayı düşünün.
+
+<a name="could-not-project-document"/>
+
+## <a name="error-could-not-project-document"></a>Hata: Proje belgesi oluşturulamadı
+
+Bu hata, Dizin Oluşturucu [verileri bir bilgi deposuna proje](knowledge-store-projection-overview.md) yapmaya çalıştığında ve bunu yapmaya çalışımızda bir hata oluştuğu zaman oluşur.  Bu hata tutarlı ve düzeltilebilir olabilir ya da yansıtma çıkış havuzunda, çözmeniz için beklemeniz ve yeniden denemeniz gerekebilecek geçici bir hata olabilir.  Bilinen hata durumları ve olası çözümler kümesi aşağıda verilmiştir.
+
+| Neden | Ayrıntılar/örnek | Çözünürlük |
+| --- | --- | --- |
+| Kapsayıcı blobu `'blobUri'` kapsayıcıda güncelleştirilemedi `'containerName'` |Belirtilen kapsayıcı yok. | Dizin Oluşturucu, belirtilen kapsayıcının önceden oluşturulup oluşturulmadıysa denetler ve gerekirse onu oluşturur, ancak bu denetimi dizin oluşturucunun her yerine yalnızca bir kez çalıştırır. Bu hata, bu adımdan sonra kapsayıcının silindiği anlamına gelir.  Bu hatayı çözmek için şunu deneyin: depolama hesabı bilgilerinizi tek tek bırakın, dizin oluşturucunun bitmesini bekleyin ve ardından dizin oluşturucuyu yeniden çalıştırın. |
+| Kapsayıcı blobu `'blobUri'` kapsayıcıda güncelleştirilemedi `'containerName'` |Aktarım bağlantısına veri yazılamıyor: mevcut bir bağlantı uzak ana bilgisayar tarafından zorla kapatıldı. | Bu, Azure depolama ile ilgili geçici bir hata olması beklenir ve bu nedenle dizin oluşturucunun yeniden çalıştırılarak çözülmesi gerekir. Bu hatayla sürekli karşılaşırsanız, daha fazla araştırılması için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) dosyası sağlayın.  |
+| Tablo `'tableName'` satır `'projectionRow'` güncelleştirilemedi | Sunucu meşgul. | Bu, Azure depolama ile ilgili geçici bir hata olması beklenir ve bu nedenle dizin oluşturucunun yeniden çalıştırılarak çözülmesi gerekir. Bu hatayla sürekli karşılaşırsanız, daha fazla araştırılması için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) dosyası sağlayın.  |
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 

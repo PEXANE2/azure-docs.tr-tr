@@ -4,18 +4,18 @@ description: Azure için avere vFXT hakkında Destek biletleri açma açıklamas
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 27f32a922a1b063096b0ccf28a01a78d442e0271
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889276"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153349"
 ---
 # <a name="get-help-with-your-system"></a>Sisteminizle ilgili yardım alın
 
-Azure için avere vFXT 'niz ile ilgili yardıma ihtiyacınız varsa, destek almak için çeşitli yollar şunlardır:
+Azure sistem için avere vFXT 'niz hakkında yardım almak için şu adımları uygulayın:
 
 * **Avere vfxt sorunu** - [aşağıda](#open-a-support-ticket-for-your-avere-vfxt)açıklanan şekilde avere vfxt 'niz için bir destek bileti açmak üzere Azure Portal kullanın.
 * **Kota** -kotayla ilgili bir sorununuz varsa, [Kota artışı isteyin](#request-a-quota-increase)
@@ -27,27 +27,33 @@ Avere vFXT dağıtma veya kullanma sırasında sorunlarla karşılaşırsanız A
 
 Destek biletinin kümenizdeki bir kaynakla etiketlendiğinden emin olmak için aşağıdaki adımları izleyin. Bilet etiketleme, doğru destek kaynağına yönlendirmemize yardımcı olur.
 
-1. [https://portal.azure.com](https://portal.azure.com), **kaynak grupları**' nı seçin.
-
-   !["kaynak grupları" daire içinde Azure portal sol menünün ekran görüntüsü](media/avere-vfxt-ticket-rg.png)
-
-1. Sorunun gerçekleştiği vFXT kümesini içeren kaynak grubuna gidin ve avere sanal makinelerinden birine tıklayın.
+1. [https://portal.azure.com](https://portal.azure.com), **kaynak grupları**' nı seçin. Sorunun gerçekleştiği vFXT kümesini içeren kaynak grubuna gidin ve avere kümesi sanal makinelerinden birine tıklayın.
 
     ![belirli bir VM 'ye sahip Azure portal kaynak grubu "genel bakış" panelinin ekran görüntüsü](media/avere-vfxt-ticket-vm.png)
 
 1. VM sayfasında, sol bölmenin alt kısmına gidin ve **Yeni destek isteği**' ne tıklayın.
 
-    ![Önceki ekran görüntüsünden VM için Azure portal VM sayfasının ekran görüntüsü. Sol menü, en alta kaydırıldı ve "yeni destek isteği" bir daire içinde.](media/avere-vfxt-ticket-request.png)
+    ![Önceki ekran görüntüsünden VM için Azure portal VM sayfasının ekran görüntüsü. Sol menü, en alta kaydırıldı ve ' yeni destek isteği ' bir daire içinde.](media/avere-vfxt-ticket-request.png)
 
-1. Destek isteğinden biri sayfasında, **tüm hizmetler** ' e tıklayın ve **depolama alanının** altına bakarak **avere vfxt**' yi seçin.
+1. Destek isteğinin ilk sayfasında, sorun türünü seçin ve doğru aboneliğin seçildiğinden emin olun.
 
-    !["temel bilgiler" üst bilgisi ve "hizmet" öğesinin etrafında bir daire olan Azure portal yeni destek isteği ekranının ekran görüntüsü. "Tüm hizmetler" düğmesi seçilidir ve açılan menü alanında "avere vFXT" değeri bulunur](media/avere-vfxt-ticket-service.png)
+   **Hizmet**altında, **tüm hizmetler** ' e tıklayın ve **depolama alanına** bakarak **avere vfxt**' yi seçin.
 
-1. İki sayfa üzerinde, sorun türünü ve sorununuzla en yakından eşleşen kategoriyi seçin. Sorunun oluştuğu saati içeren kısa bir başlık ve açıklama ekleyin.
+   Kısa bir Özet ekleyin ve sorun türünü seçin.
 
-   ![Yeni destek isteği ekranının, tamamlanması gereken çok sayıda alan içeren "sorun" üst bilgisi ile ekran görüntüsü](media/avere-vfxt-ticket-problem.png)
+    ![Azure portal yeni bir destek isteği ekranının ekran görüntüsü. Temel bilgiler sekmesi seçilidir. Ekran öğeleri, sorun türünü, aboneliği, hizmeti, Özeti ve sorun türünü içerir.](media/ticket-basics.png)
 
-1. Üçüncü Sayfa sayfasında, iletişim bilgilerinizi girin ve **Oluştur**' a tıklayın. E-posta adresinize bir onaylama ve bilet numarası gönderilir ve bir destek personeli üyesi sizinle iletişim kuracaktır.
+   Devam etmek için **İleri**'ye tıklayın.
+
+1. Destek formunun ikinci sayfası, Özet açıklamasına göre sorunu düzeltmeye yönelik öneriler içerir. Hala bir destek bileti oluşturmanız gerekiyorsa alt kısımdaki **İleri** düğmesine tıklayın.
+
+   ![Yeni destek isteği ekranının, çözümler sekmesi seçiliyken ekran görüntüsü. Ortadaki bir metin alanı ' önerilen çözüm ' başlığına sahiptir ve olası düzeltmeleri açıklar.](media/ticket-solutions.png)
+
+1. Üçüncü sayfada ayrıntılar sağlayın. Bu, kümeniz hakkında bilgi, sorunun oluştuğu zaman, önem derecesi ve sizinle iletişim kurma bilgilerini içerir. Bilgileri girin ve alttaki **İleri** düğmesine tıklayın.
+
+   ![Ayrıntılar sekmesi seçili olan yeni destek isteği ekranının ekran görüntüsü. Bilgi alanları, ' sorun ayrıntıları ', ' destek yöntemi ' ve "kişi bilgileri" kategorilerine düzenlenir.](media/ticket-details.png)
+
+1. Son sayfadaki bilgileri gözden geçirin ve **Oluştur**' a tıklayın. E-posta adresinize bir onaylama ve bilet numarası gönderilir ve bir destek personeli üyesi sizinle iletişim kuracaktır.
 
 ## <a name="request-a-quota-increase"></a>Kota artışı iste
 

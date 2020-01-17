@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750946"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120154"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure Kaynak günlükleri için desteklenen hizmetler, şemalar ve Kategoriler
 
@@ -71,7 +71,7 @@ Kaynak tanılama günlükleri şeması, kaynak ve günlük kategorisine göre de
 | IoT Hub | [IoT Hub Işlemler](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Azure Anahtar Kasası Günlüğü](../../key-vault/key-vault-logging.md) |
 | Kubernetes Service |[Azure Kubernetes günlüğü](../../aks/view-master-logs.md#log-event-schema) |
-| Yük Dengeleyici |[Azure Load Balancer için Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
+| Load Balancer |[Azure Load Balancer için Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B özel izleme şeması](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Ağ Güvenlik Grupları |[Ağ güvenlik grupları (NSG’ler) için Log Analytics](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS Koruması | [Azure DDoS koruması standardını yönetme](../../virtual-network/manage-ddos-protection.md) |
@@ -86,6 +86,9 @@ Kaynak tanılama günlükleri şeması, kaynak ve günlük kategorisine göre de
 | Sanal Ağ Geçitleri | Şema kullanılamıyor. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Kaynak türü başına desteklenen günlük kategorileri
+
+Bazı kategoriler yalnızca belirli kaynak türleri için desteklenir. Bu, bazı biçimde kullanılabilen tümünün listesidir.  Örneğin, Microsoft. SQL/Servers/veritabanları kategorileri tüm veritabanı türleri için kullanılamaz. Daha fazla bilgi için bkz. [SQL veritabanı tanılama günlüğü bilgileri](../../sql-database/sql-database-metrics-diag-logging.md). 
+
 |Kaynak Türü|Kategori|Kategori görünen adı|
 |---|---|---|
 |Microsoft. AAD/domainServices|SystemSecurity|SystemSecurity|

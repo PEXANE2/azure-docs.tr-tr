@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 10/16/2019
+ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b78c04d6e0ba2f87a5ff99098f689949cf7aa5e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c9ed7ddc6287239c90cc074f1c171f2d28206732
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771964"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154611"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -46,8 +46,8 @@ Bu araçları Azure Machine Learning için kullanın:
 
 +  [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
 + [R için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)ile herhangi bir r ortamındaki hizmetle etkileşime geçin.
-+ [Azure MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)ile makine öğrenimi etkinliklerinizi otomatikleştirin.
-+ [Azure Machine Learning vs Code uzantılı](how-to-vscode-tools.md) Visual Studio Code kod yazma
++ [Azure MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)ile makine öğrenimi etkinliklerinizi otomatikleştirin.
++ [Azure Machine Learning vs Code uzantılı](tutorial-setup-vscode-extension.md) Visual Studio Code kod yazma
 + Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcı (Önizleme)](concept-designer.md) kullanın.
 
 
@@ -93,7 +93,7 @@ Bir **Azure Machine Learning işlem örneği** (eski adıyla Not defteri VM), ma
 
 [İşlem örnekleri](concept-compute-instance.md)hakkında daha fazla bilgi edinin.
 
-### <a name="compute-targets"></a>Hedef işlem
+### <a name="compute-targets"></a>İşlem hedefleri
 
 [İşlem hedefi](concept-compute-target.md) , eğitim betiğinizi çalıştırdığınız veya hizmet dağıtımınızı barındıran işlem kaynağını belirtmenize olanak tanır. Bu konum, yerel makineniz veya bulut tabanlı bir işlem kaynağıdır.
 

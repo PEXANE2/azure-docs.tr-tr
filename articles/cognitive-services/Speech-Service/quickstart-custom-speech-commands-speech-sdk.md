@@ -3,19 +3,19 @@ title: "Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasın
 titleSuffix: Azure Cognitive Services
 description: Bu makalede, özel komutlarla bir konuşma SDK 'Sı istemci uygulaması oluşturacaksınız.
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 69a03ce5a8da7c8af6c17d122be3744e7b79e246
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381112"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156786"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma (Önizleme)
 
@@ -46,7 +46,7 @@ Bu hızlı başlangıçta, bir istemci uygulamasını özel komutlar uygulamanı
 
 1. [Önceden oluşturulmuş özel komutlar uygulamanızı](./quickstart-custom-speech-commands-create-new.md) açın ve **Yayımla** ' yı seçin.
 
-   > [!div class="mx-imgBorder"] 
+   > [!div class="mx-imgBorder"]
    > ![uygulama](media/custom-speech-commands/fulfill-sdk-publish-application.png) Yayımla
 
 1. Uygulama KIMLIĞINI daha sonra kullanmak üzere yayımlama bildiriminden Kopyala

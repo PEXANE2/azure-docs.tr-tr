@@ -1,7 +1,7 @@
 ---
 title: CSV Blobları üzerinde arama
 titleSuffix: Azure Cognitive Search
-description: Şu anda genel önizleme aşamasında olan Delimitedmetin ayrıştırma modunu kullanarak Azure Blob depolamadan CSV 'yi ayıklayın ve içeri aktarın.
+description: DelimitedText ayrıştırma modunu kullanarak CSV 'yi Azure Blob depolamadan ayıklayın ve içeri aktarın.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,17 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2166e100f03f21c218618d19dc37ee70c6ab29ef
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: bf600890bfed570e712a159005b8ef5267298cc0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113035"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122330"
 ---
-# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama ile aynı Demitedmetin ayrıştırma modunu ve BLOB Dizin oluşturucularını kullanarak CSV bloblarını dizin oluşturma 
-
-> [!IMPORTANT] 
-> Delimitedmetin ayrıştırma modu şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama ile aynı Demitedmetin ayrıştırma modunu ve BLOB Dizin oluşturucularını kullanarak CSV bloblarını dizin oluşturma
 
 Varsayılan olarak, [Azure bilişsel arama blob Indexer](search-howto-indexing-azure-blob-storage.md) , ayrılmış metin bloblarını tek bir metin öbeği olarak ayrıştırır. Ancak, CSV verileri içeren bloblarla, genellikle blobdaki her satırı ayrı bir belge olarak değerlendirmek istersiniz. Örneğin, aşağıdaki sınırlandırılmış metin verildiğinde, her biri "ID", "Dateyayınlanan" ve "Tags" alanlarını içeren iki belgeye ayrıştırın: 
 
@@ -63,7 +60,7 @@ Tümünü bir araya getirmek, tüm yük örnekleri aşağıda verilmiştir.
 
 DataSource 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06-Preview
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -76,7 +73,7 @@ DataSource
 
 Dizinleyic
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 

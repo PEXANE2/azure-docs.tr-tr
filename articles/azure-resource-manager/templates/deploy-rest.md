@@ -3,16 +3,16 @@ title: REST API ve şablonla kaynakları dağıtma
 description: Kaynakları Azure 'a dağıtmak için Azure Resource Manager ve Kaynak Yöneticisi REST API kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: 3a3447746b3e7cbdfeeddd296ce78068e120a134
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc386f51073c256fd083a04bbed39316784827b1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484967"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152519"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Kaynakları Resource Manager şablonları ve Resource Manager REST API’si ile dağıtma
 
-Bu makalede, kaynaklarınızı Azure 'a dağıtmak için Kaynak Yöneticisi şablonlarla birlikte Kaynak Yöneticisi REST API nasıl kullanılacağı açıklanmaktadır.  
+Bu makalede, kaynaklarınızı Azure 'a dağıtmak için Kaynak Yöneticisi şablonlarla birlikte Kaynak Yöneticisi REST API nasıl kullanılacağı açıklanmaktadır.
 
 Şablonunuzu istek gövdesine ekleyebilir veya bir dosyaya bağlayabilirsiniz. Bir dosya kullanılırken, yerel bir dosya veya bir URI aracılığıyla kullanılabilen bir dış dosya olabilir. Şablonunuz bir depolama hesabsunsa, şablona erişimi kısıtlayabilir ve dağıtım sırasında bir paylaşılan erişim imzası (SAS) belirtebilirsiniz.
 
@@ -67,7 +67,7 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
 
 1. [Bir şablon dağıtımını doğrulama](/rest/api/resources/deployments/validate) işlemini çalıştırarak yürütmeden önce dağıtımınızı doğrulayın. Dağıtımı sınarken, dağıtımı yürütürken yaptığınız gibi parametreleri tam olarak sağlayın (bir sonraki adımda gösterilmektedir).
 
-1. Bir şablonu dağıtmak için, abonelik KIMLIĞINIZI, kaynak grubunun adını, istek URI 'sindeki dağıtımın adını belirtin. 
+1. Bir şablonu dağıtmak için, abonelik KIMLIĞINIZI, kaynak grubunun adını, istek URI 'sindeki dağıtımın adını belirtin.
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
@@ -116,7 +116,7 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
 
     Depolama hesabınızı, paylaşılan erişim imzası (SAS) belirtecini kullanacak şekilde ayarlayabilirsiniz. Daha fazla bilgi için bkz. [paylaşılan erişim Imzasıyla erişim yetkisi verme](/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
 
-    Bir parametre (örneğin, parola) için hassas bir değer sağlamanız gerekiyorsa, bu değeri bir anahtar kasasına ekleyin. Önceki örnekte gösterildiği gibi dağıtım sırasında anahtar kasasını alın. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli değerleri geçirme](key-vault-parameter.md). 
+    Bir parametre (örneğin, parola) için hassas bir değer sağlamanız gerekiyorsa, bu değeri bir anahtar kasasına ekleyin. Önceki örnekte gösterildiği gibi dağıtım sırasında anahtar kasasını alın. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli değerleri geçirme](key-vault-parameter.md).
 
 1. Şablon ve parametreler için dosyalara bağlantı yapmak yerine, bunları istek gövdesine dahil edebilirsiniz. Aşağıdaki örnek, şablon ve parametre satır içi olan istek gövdesini gösterir:
 
@@ -155,8 +155,8 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageAccountName')]",
             "apiVersion": "2018-02-01",
+            "name": "[variables('storageAccountName')]",
             "location": "[parameters('location')]",
             "sku": {
               "name": "[parameters('storageAccountType')]"

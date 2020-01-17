@@ -8,12 +8,12 @@ ms.date: 05/20/2019
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 1bab6a990ba38bc32c2b7350bb1d4eac15a7b95e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d38786d3c7b852d3a9b65cd366eed68ebbb01e3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479039"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152961"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Izleyici platformu ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir
 
@@ -689,10 +689,10 @@ Evet | Microsoft.Devices/ıothubs | D2C. endpoints. Latency. eventHubs | Yönlen
 Evet | Microsoft.Devices/ıothubs | d2c.endpoints.latency.serviceBusQueues | Yönlendirme: Service Bus Kuyruğu için ileti gecikme süresi | Milisaniye | Ortalama
 Evet | Microsoft.Devices/ıothubs | d2c.endpoints.latency.serviceBusTopics | Yönlendirme: Service Bus konusu için ileti gecikmesi | Milisaniye | Ortalama
 Evet | Microsoft.Devices/ıothubs | D2C. endpoints. Latency. Storage | Yönlendirme: depolama için ileti gecikmesi | Milisaniye | Ortalama
-Evet | Microsoft.Devices/ıothubs | D2C. telemetri. çıkış. bırakıldı | Yönlendirme: telemetri iletileri bırakıldı | Sayı | Toplam
+Evet | Microsoft.Devices/ıothubs | D2C. telemetri. çıkış. bırakıldı | Yönlendirme: telemetri iletileri bırakıldı  | Sayı | Toplam
 Evet | Microsoft.Devices/ıothubs | d2c.telemetry.egress.fallback | Yönlendirme: geri dönüşe teslim edilen iletiler | Sayı | Toplam
 Evet | Microsoft.Devices/ıothubs | D2C. telemetri. çıkış. geçersiz | Yönlendirme: telemetri iletileri uyumsuz | Sayı | Toplam
-Evet | Microsoft.Devices/ıothubs | d2c.telemetry.egress.orphaned | Yönlendirme: telemetri iletileri yalnız bırakılmış | Sayı | Toplam
+Evet | Microsoft.Devices/ıothubs | d2c.telemetry.egress.orphaned | Yönlendirme: telemetri iletileri yalnız bırakılmış  | Sayı | Toplam
 Evet | Microsoft.Devices/ıothubs | D2C. telemetri. çıkış. başarılı | Yönlendirme: teslim edilen telemetri iletileri | Sayı | Toplam
 Evet | Microsoft.Devices/ıothubs | d2c.telemetry.ingress.allProtocol | Telemetri iletisi gönderme denemeleri | Sayı | Toplam
 Evet | Microsoft.Devices/ıothubs | d2c.telemetry.ingress.sendThrottle | Azaltma hatalarının sayısı | Sayı | Toplam

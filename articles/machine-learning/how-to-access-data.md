@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: f8bad8be3c02228fee9dded729e22c5a406da178
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ae04bf5268bb9973098735183842f7393e9d679b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76025047"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121769"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure Storage hizmetlerindeki verilere erişme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -261,7 +261,7 @@ Azure Machine Learning, modellerinizi Puanlama için kullanmanın birkaç yolunu
 
 | Yöntem | Veri deposu erişimi | Açıklama |
 | ----- | :-----: | ----- |
-| [Toplu tahmin](how-to-run-batch-predictions.md) | ✔ | Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin. |
+| [Toplu tahmin](how-to-use-parallel-run-step.md) | ✔ | Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin. |
 | [Web hizmeti](how-to-deploy-and-where.md) | &nbsp; | Modelleri bir Web hizmeti olarak dağıtın. |
 | [Azure IoT Edge modülü](how-to-deploy-and-where.md) | &nbsp; | Modelleri IoT Edge cihazlara dağıtın. |
 

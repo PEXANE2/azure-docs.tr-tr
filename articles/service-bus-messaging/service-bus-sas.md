@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 15b7dab7de2affb67fa080d69b4895a31bf9ba3b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462083"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121752"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Paylaşılan erişim Imzaları ile erişim denetimi Service Bus
 
@@ -82,7 +82,7 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
 * **`sr`** -erişilmekte olan kaynağın URI 'si.
 * **`sig`** -imza.
 
-`signature-string`, kaynak URI üzerinden (önceki bölümde açıklandığı gibi**kapsam** ) ve CRLF ile ayrılmış olarak belirteç süre sonu anlık öğesinin dize gösterimine göre hesaplanan SHA-256 karmasıdır.
+`signature-string`, kaynak URI üzerinden (önceki bölümde açıklandığı gibi**kapsam** ) ve LF ile ayrılmış olarak belirteç süre sonu anlık öğesinin dize gösterimine göre hesaplanan SHA-256 karmasıdır.
 
 Karma hesaplama aşağıdaki sözde koda benzer ve 256 bit/32 baytlık karma değer döndürür.
 

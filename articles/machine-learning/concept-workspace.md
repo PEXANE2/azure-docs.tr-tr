@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: 3d8a1b965724c0fcb9f07b382ed446d41fe23dac
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 12/27/2019
+ms.openlocfilehash: b2fb165dfdcc97116b60075a5c3071171fa46cd7
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772576"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157211"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
@@ -91,7 +91,7 @@ Bir çalışma alanı oluşturduğunuzda, [temel veya Enterprise sürümü](over
 * Her adımda size yol göstermek için bir nokta ve tıklama arabirimi için [Azure Portal](how-to-manage-workspace.md) kullanın.
 * Python betikleri veya Jupiter not defterlerinden anında çalışma alanı oluşturmak için [Python için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) kullanın
 * Şirket güvenlik standartları ile oluşturma işlemini otomatik hale getirmeniz veya özelleştirmeniz gerektiğinde bir [Azure Resource Manager şablonu](how-to-create-workspace-template.md) veya [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) kullanın.
-* Visual Studio Code ' de çalışıyorsanız [vs Code uzantısını](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code)kullanın.
+* Visual Studio Code ' de çalışıyorsanız [vs Code uzantısını](tutorial-setup-vscode-extension.md)kullanın.
 
 ## <a name="upgrade"></a>Enterprise Edition 'a yükseltme
 

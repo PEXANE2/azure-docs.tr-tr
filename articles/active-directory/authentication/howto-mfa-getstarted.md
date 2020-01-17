@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848400"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155155"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımı planlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "74848400"
 
 [Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) , verilere ve uygulamalara erişimi korumaya yardımcı olur. İkinci bir kimlik doğrulama biçimi kullanarak ek bir güvenlik katmanı sağlar. Kuruluşlar, çözümün belirli ihtiyaçlarını karşılayacak şekilde [koşullu erişimi](../conditional-access/overview.md) kullanabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Multi-Factor Authentication dağıtımına başlamadan önce göz önünde bulundurmanız gereken önkoşul öğeleri vardır.
 
@@ -85,18 +85,18 @@ Kuruluşların, [adlandırılmış konumları](../conditional-access/location-co
 ### <a name="configuring-a-named-location"></a>Adlandırılmış bir konum yapılandırma
 
 1. Azure portal **Azure Active Directory** açın
-2. **Koşullu erişim** ' e tıklayın
-3. **Adlandırılmış konumlar** ' a tıklayın
-4. **Yeni konum** ' a tıklayın
+2. **Güvenlik** seçin
+3. **Yönet**altında, **adlandırılmış konumlar** ' ı seçin.
+4. **Yeni konum** Seç
 5. **Ad** alanında anlamlı bir ad sağlayın
-6. IP aralıklarını veya ülkeleri/bölgeleri kullanarak konum tanımlamayı seçin
-   1. IP aralıklarını kullanıyorsanız
-      1. Konumun güvenilir olarak işaretlenip işaretlenmeyeceğine karar verin. Güvenilir bir konumdan oturum açılması, kullanıcının oturum açma riskini azaltır. Bu konumu yalnızca, girilen IP aralıklarının kuruluşunuzda kurulu olduğunu ve güvenilir olduğunu biliyorsanız güvenilir olarak işaretleyin.
+6. *IP aralıklarını* veya *ülkeleri/bölgeleri* kullanarak konum tanımlamayı seçin
+   1. *IP aralıklarını* kullanıyorsanız
+      1. *Güvenilen konum olarak işaretistemediğinize*karar verin. Güvenilir bir konumdan oturum açılması, kullanıcının oturum açma riskini azaltır. Bu konumu yalnızca, girilen IP aralıklarının kuruluşunuzda kurulu olduğunu ve güvenilir olduğunu biliyorsanız güvenilir olarak işaretleyin.
       2. IP aralıklarını belirtin
-   2. Ülke/bölge kullanılıyorsa
+   2. *Ülke/bölge* kullanılıyorsa
       1. Açılan menüyü genişletin ve bu adlandırılmış konum için tanımlamak istediğiniz ülkeleri veya bölgeleri seçin.
-      2. Bilinmeyen alanların eklenip eklenmeyeceğini belirleyin. Bilinmeyen alan, bir ülkeye/bölgeye eşlenemeyen IP adresleridir.
-7. **Oluştur**'a tıklayın
+      2. *Bilinmeyen alanların*eklenip eklenmeyeceğini belirleyin. Bilinmeyen alan, bir ülkeye/bölgeye eşlenemeyen IP adresleridir.
+7. **Oluştur**’u seçin
 
 ## <a name="plan-authentication-methods"></a>Kimlik doğrulama yöntemlerini planlayın
 
@@ -221,7 +221,7 @@ Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [
 ### <a name="create-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
 1. [Azure Portal](https://portal.azure.com) bir genel yönetici hesabı kullanarak oturum açın.
-1. **Azure Active Directory**, **koşullu erişim**' e gidin.
+1. **Koşullu erişim** > **Azure Active Directory** > **Güvenliğe** gidin.
 1. **Yeni ilke**' yi seçin.
    ![, pilot grubundaki Azure portal kullanıcılar için MFA 'yı etkinleştirmek üzere bir koşullu erişim ilkesi oluşturun](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. İlkeniz için anlamlı bir ad girin.

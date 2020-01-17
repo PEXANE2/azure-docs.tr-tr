@@ -1,14 +1,14 @@
 ---
 title: Azure Market 'Te yönetilen hizmet teklifi yayımlama
 description: Onpanolar müşterilerinin Azure tarafından yetkilendirilen kaynak yönetimine yönelik bir yönetilen hizmet teklifini yayımlamayı öğrenin.
-ms.date: 01/09/2020
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6a1720a3bcfd0b08f8d9c8147b5e47ed42af6fda
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 841cb52791709be5649d66b72f5c18ef35b740ef
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834103"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155256"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
@@ -40,7 +40,7 @@ Müşteri teklifinizi eklediğinde bir veya daha fazla belirli abonelik veya kay
 |---------|---------|
 |**Teklif KIMLIĞI**     | Teklifiniz için benzersiz bir tanımlayıcı (yayımcı profiliniz dahilinde). Bu KIMLIK yalnızca küçük harfli alfasayısal karakterler, tireler ve alt çizgiler içerebilir. en fazla 50 karakter olabilir. Teklif KIMLIĞININ, ürün URL 'Leri ve faturalandırma raporlarında olduğu yerlerde müşterilere görünür olabileceğini aklınızda bulundurun. Teklifi yayımladıktan sonra bu değeri değiştiremezsiniz.        |
 |**Yayımcı KIMLIĞI**     | Teklifle ilişkilendirilecek Yayımcı Kımlığı. Birden fazla yayımcı KIMLIĞINIZ varsa, bu teklif için kullanmak istediğiniz birini seçebilirsiniz.       |
-|**Adı**     | Müşterilerin Azure Marketi 'nde ve Azure portal Teklifinizle ilgili olarak göreceği ad (en fazla 50 karakter). Müşterilerin anlayabileceği tanınabilir bir marka adı kullanın — bu teklifi kendi web siteniz aracılığıyla yükseltiyorsanız, burada tam olarak aynı adı kullandığınızdan emin olun.        |
+|**Ad**     | Müşterilerin Azure Marketi 'nde ve Azure portal Teklifinizle ilgili olarak göreceği ad (en fazla 50 karakter). Müşterilerin anlayabileceği tanınabilir bir marka adı kullanın — bu teklifi kendi web siteniz aracılığıyla yükseltiyorsanız, burada tam olarak aynı adı kullandığınızdan emin olun.        |
 
 İşiniz bittiğinde **Kaydet**' i seçin. Artık **planlar** bölümüne taşımaya hazırsınız.
 
@@ -86,6 +86,8 @@ Her **Yetkilendirme**için aşağıdakileri sağlamanız gerekir. Daha sonra, da
 - **Azure AD nesne kimliği**: bir kullanıcının, Kullanıcı grubunun veya UYGULAMANıN Azure AD tanımlayıcısı (rol tanımında açıklandığı gibi) müşterilerinizin kaynaklarına verilecektir.
 - **Azure AD nesne görünen adı**: müşterinin bu yetkilendirmenin amacını anlamasına yardımcı olacak kolay bir ad. Müşteri, kaynakları yetkilendirirken bu adı görür.
 - **Rol tanımı**: listeden mevcut Azure AD yerleşik rollerinden birini seçin. Bu rol, **Azure AD nesne kimliği** alanındaki kullanıcının kaynaklarınızın kaynaklarına sahip olacağı izinleri tespit eder. Bu rollerin açıklamaları için bkz. [Azure tarafından yetkilendirilen kaynak yönetimi Için](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management) [yerleşik roller](../../role-based-access-control/built-in-roles.md) ve rol desteği.
+  > [!NOTE]
+  > Uygun yeni yerleşik roller Azure 'a eklendikçe, bunlar görüntülenmeden önce biraz gecikme olabileceğinden burada kullanılabilir hale gelir.
 - **Atanabilir roller**: Bu, yalnızca bu yetkilendirme Için **rol tanımında** Kullanıcı erişimi Yöneticisi ' ni seçtiyseniz gereklidir. Bu durumda, buraya bir veya daha fazla atanabilir rol eklemeniz gerekir. **Azure AD nesne kimliği** alanındaki Kullanıcı, bu **atanabilir rolleri** , [düzeltilebilir ilkeleri dağıtmak](deploy-policy-remediation.md)için gereken [yönetilen kimliklere](../../active-directory/managed-identities-azure-resources/overview.md)atayabilecektir. Normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izin bu kullanıcı için uygulanmayacak şekilde unutmayın. Burada bir veya daha fazla rol seçmezseniz gönderiminiz sertifikayı geçirmez. (Bu kullanıcının rol tanımı için Kullanıcı erişimi Yöneticisi ' ni seçmediyseniz, bu alanın bir etkisi yoktur.)
 
 > [!TIP]

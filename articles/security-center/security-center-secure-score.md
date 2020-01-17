@@ -13,15 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: 0a39fd1870ae803f2cf694e01c67d125fc96cac9
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bd896cbee98bd61518c9a093f86e088f0b018d73
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200962"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156667"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenli puanınızı geliştirme
 
+> [!NOTE]
+> Önizlemede kullanılabilen gelişmiş bir güvenli puan vardır. Gelişmiş güvenli puan sonunda, son olarak var olan güvenli puanı değiştirilir, ancak geçiş kolaylığı için yan yana çalışmaya devam ederler.
+>
+> Gelişmiş güvenli puanların avantajları hakkında ayrıntılı bilgi için [buraya](secure-score-security-controls.md)bakın.
+>
+> Önizlemede bir bölüm almak için Azure portalını açın, Azure Güvenlik Merkezi 'ni başlatın ve güvenli puan ' i seçin. Buradan, sayfanın en üstünde yeni güvenli puan deneyimini sunan bir başlık görürsünüz. Alternatif olarak, [buraya](https://aka.ms/ascnewscore)tıklayın.
 
 Bu sayede birçok hizmetin güvenlik avantajları sunarak, iş yükünüzü güvenli hale getirmek ve bu avantajlardan yararlanmak için öncelikle ne yapmanız gereken adımları bilmek zordur. Azure güvenli puanı, güvenlik önerilerinizi gözden geçirir ve bunları sizin için önceliklendirir. bu sayede öncelikle hangi önerilerin gerçekleştirileceğini bilirsiniz. Bu, araştırmanın önceliklerini belirleyebilmeniz için en önemli güvenlik açıklarını bulmanıza yardımcı olur. Güvenlik puanı, iş yükü güvenlik duruşunuzu değerlendirmenize yardımcı olan bir araçtır.
 
@@ -34,19 +40,18 @@ Ayrıca Güvenlik Merkezi, size genel olarak **güvenli bir puan**sağlar.
 
 **Genel güvenli puan** , tüm öneri Puanlarınızın birikmesi olur. Seçtiğiniz seçeneğe bağlı olarak abonelikleriniz veya yönetim gruplarınız genelinde genel güvenli puanınızı görüntüleyebilirsiniz. Puan, seçilen aboneliğe ve bu aboneliklerdeki etkin önerilere göre değişir.
 
- 
-En çok güvenli puanınızı hangi önerilerin etkilediğini denetlemek için, güvenlik merkezi panosunda en iyi üç önemli öneriyi görüntüleyebilir veya öneriler listesi dikey penceresinde önerileri, **güvenli puan etkisini** kullanarak sıralayabilirsiniz. sütunuyla.
-
+En çok güvenli puanınızı hangi önerilerin etkilediğini denetlemek için, güvenlik merkezi panosunda en iyi üç önemli öneriyi görüntüleyebilir veya öneriler listesi dikey penceresinde önerileri, **güvenli puan etkisi** sütununu kullanarak sıralayabilirsiniz.
 
 Genel güvenli puanınızı görüntülemek için:
 
 1. Azure panosunda **Güvenlik Merkezi** ' ne ve ardından **güvenli skor**' e tıklayın.
+
 2. En üstte, güvenli puanı vurgular ' a bakabilirsiniz:
    - **Genel güvenlik puanı**, seçilen aboneliğin ilkelere göre belirlenen puanını gösterir
    - **Kategoriye göre güvenli puan** , en çok dikkat gerektiren kaynakları gösterir
    - **Güvenli puan etkisinden en önemli öneriler** , uygulamanızı uygularsanız en çok güvenli puanı iyileştirecek önerilerin bir listesini sağlar.
  
-   ![Güvenli puan](./media/security-center-secure-score/secure-score-dashboard.png)
+   ![güvenli puan](./media/security-center-secure-score/secure-score-dashboard.png)
 
 3. Aşağıdaki tabloda, aboneliklerinizin her birini ve her biri için genel güvenli puanı görebilirsiniz.
 
@@ -56,7 +61,7 @@ Genel güvenli puanınızı görüntülemek için:
 4. Güvenli puanınızı iyileştirmek için düzeltebileceğiniz bu aboneliğe yönelik önerileri görmek için **öneriyi görüntüle** ' ye tıklayın.
 4. Öneriler listesinde, her öneri için, **güvenli puan etkisini**temsil eden bir sütun olduğunu görebilirsiniz. Bu sayı, önerileri izlerseniz genel güvenli puanınızın ne kadar iyileştirebileceğini temsil eder. Örneğin, aşağıdaki ekranda, **kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltmeniz**durumunda, güvenli puanınız 35 noktayla artacaktır.
 
-   ![Güvenli puan](./media/security-center-secure-score/security-center-secure-score1.png)
+   ![güvenli puan](./media/security-center-secure-score/security-center-secure-score1.png)
 
 
 

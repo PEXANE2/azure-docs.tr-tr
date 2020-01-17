@@ -3,12 +3,12 @@ title: Şablon yapısı ve sözdizimi
 description: Bildirim temelli JSON sözdizimi kullanan Azure Resource Manager şablonlarının yapısını ve özelliklerini açıklar.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 4cebe017793bc167f0a78c0be2f24154dc27b3c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7f9b964212d7b8056895aa1c6826766315af2ec2
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483901"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122075"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın
 
@@ -185,33 +185,17 @@ Kaynakları aşağıdaki yapıyla tanımlarsınız:
 "resources": [
   {
       "condition": "<true-to-deploy-this-resource>",
-      "apiVersion": "<api-version-of-resource>",
       "type": "<resource-provider-namespace/resource-type-name>",
+      "apiVersion": "<api-version-of-resource>",
       "name": "<name-of-the-resource>",
-      "location": "<location-of-resource>",
-      "tags": {
-          "<tag-name1>": "<tag-value1>",
-          "<tag-name2>": "<tag-value2>"
-      },
       "comments": "<your-reference-notes>",
-      "copy": {
-          "name": "<name-of-copy-loop>",
-          "count": <number-of-iterations>,
-          "mode": "<serial-or-parallel>",
-          "batchSize": <number-to-deploy-serially>
-      },
+      "location": "<location-of-resource>",
       "dependsOn": [
           "<array-of-related-resource-names>"
       ],
-      "properties": {
-          "<settings-for-the-resource>",
-          "copy": [
-              {
-                  "name": ,
-                  "count": ,
-                  "input": {}
-              }
-          ]
+      "tags": {
+          "<tag-name1>": "<tag-value1>",
+          "<tag-name2>": "<tag-value2>"
       },
       "sku": {
           "name": "<sku-name>",
@@ -221,12 +205,28 @@ Kaynakları aşağıdaki yapıyla tanımlarsınız:
           "capacity": <sku-capacity>
       },
       "kind": "<type-of-resource>",
+      "copy": {
+          "name": "<name-of-copy-loop>",
+          "count": <number-of-iterations>,
+          "mode": "<serial-or-parallel>",
+          "batchSize": <number-to-deploy-serially>
+      },
       "plan": {
           "name": "<plan-name>",
           "promotionCode": "<plan-promotion-code>",
           "publisher": "<plan-publisher>",
           "product": "<plan-product>",
           "version": "<plan-version>"
+      },
+      "properties": {
+          "<settings-for-the-resource>",
+          "copy": [
+              {
+                  "name": ,
+                  "count": ,
+                  "input": {}
+              }
+          ]
       },
       "resources": [
           "<array-of-child-resources>"
@@ -238,18 +238,18 @@ Kaynakları aşağıdaki yapıyla tanımlarsınız:
 | Öğe adı | Gereklidir | Açıklama |
 |:--- |:--- |:--- |
 | condition | Hayır | Bu dağıtım sırasında kaynağın sağlanıp sağlanmayacağını belirten Boole değeri. `true`, kaynak dağıtım sırasında oluşturulur. `false`, bu dağıtım için kaynak atlanır. [Koşula](conditional-resource-deployment.md)bakın. |
-| apiVersion |Evet |Kaynağı oluşturmak için kullanılacak REST API sürümü. Kullanılabilir değerleri anlamak için bkz. [şablon başvurusu](/azure/templates/). |
 | type |Evet |Kaynağın türü. Bu değer, kaynak sağlayıcının ve kaynak türünün ( **Microsoft. Storage/storageAccounts**gibi) ad alanının bir birleşimidir. Kullanılabilir değerleri anlamak için bkz. [şablon başvurusu](/azure/templates/). Bir alt kaynak için, türün biçimi üst kaynak içinde iç içe veya üst kaynak dışında tanımlanmış olmasına bağlıdır. Bkz. [alt kaynaklar için ad ve tür ayarlama](child-resource-name-type.md). |
+| apiVersion |Evet |Kaynağı oluşturmak için kullanılacak REST API sürümü. Kullanılabilir değerleri anlamak için bkz. [şablon başvurusu](/azure/templates/). |
 | ad |Evet |Kaynağın adı. Ad, RFC3986 içinde tanımlanan URI bileşen kısıtlamalarına uymalıdır. Kaynak adını dış taraflar üzerinde kullanıma sunan Azure Hizmetleri, başka bir kimliği sızma girişimi olmadığından emin olmak için adı doğrular. Bir alt kaynak için, adın biçimi üst kaynak içinde iç içe veya üst kaynak dışında tanımlanmış olmasına bağlıdır. Bkz. [alt kaynaklar için ad ve tür ayarlama](child-resource-name-type.md). |
-| location |Değişir |Belirtilen kaynağın desteklenen coğrafi konumları. Kullanılabilir konumlardan herhangi birini seçebilirsiniz, ancak genellikle kullanıcılarınıza yakın olan bir seçim yapmak mantıklı olur. Genellikle, aynı bölgedeki birbirleriyle etkileşim kuran kaynakları yerleştirmek de anlamlı hale gelir. Çoğu kaynak türü bir konum gerektirir, ancak bazı türler (örneğin, rol ataması) bir konum gerektirmez. Bkz. [kaynak konumunu ayarlama](resource-location.md). |
-| etiketler |Hayır |Kaynakla ilişkili Etiketler. Aboneliğiniz genelinde kaynakları mantıksal olarak düzenlemek için etiketleri uygulayın. |
 | comments |Hayır |Şablonunuzda kaynakları belgelemek için notlarınız. Daha fazla bilgi için bkz. [şablonlarda açıklamalar](template-syntax.md#comments). |
-| copy |Hayır |Birden fazla örnek gerekliyse, oluşturulacak kaynak sayısı. Varsayılan mod paraleldir. Tüm veya kaynakların aynı anda dağıtılmasını istemiyorsanız seri modunu belirtin. Daha fazla bilgi için bkz. [Azure Resource Manager çeşitli kaynak örnekleri oluşturma](create-multiple-instances.md). |
+| location |Değişir |Belirtilen kaynağın desteklenen coğrafi konumları. Kullanılabilir konumlardan herhangi birini seçebilirsiniz, ancak genellikle kullanıcılarınıza yakın olan bir seçim yapmak mantıklı olur. Genellikle, aynı bölgedeki birbirleriyle etkileşim kuran kaynakları yerleştirmek de anlamlı hale gelir. Çoğu kaynak türü bir konum gerektirir, ancak bazı türler (örneğin, rol ataması) bir konum gerektirmez. Bkz. [kaynak konumunu ayarlama](resource-location.md). |
 | dependsOn |Hayır |Bu kaynak dağıtılmadan önce dağıtılması gereken kaynaklar. Kaynak Yöneticisi, kaynaklar arasındaki bağımlılıkları değerlendirir ve doğru sırayla dağıtır. Kaynaklar birbirine bağımlı olmadığında, paralel olarak dağıtılır. Değer, kaynak adlarının veya kaynak benzersiz tanımlayıcılarının virgülle ayrılmış bir listesi olabilir. Yalnızca bu şablonda dağıtılan kaynakları listeleyin. Bu şablonda tanımlı olmayan kaynaklar zaten var olmalıdır. Dağıtımınızı yavaşlatabilir ve dairesel bağımlılıklar oluşturduklarında gereksiz bağımlılıkları eklemekten kaçının. Bağımlılıkları ayarlama hakkında yönergeler için bkz. [Azure Resource Manager şablonlarda bağımlılıkları tanımlama](define-resource-dependency.md). |
-| properties |Hayır |Kaynağa özgü yapılandırma ayarları. Özelliklerin değerleri, kaynağı oluşturmak için REST API işlem (PUT yöntemi) için istek gövdesinde sağladığınız değerlerle aynıdır. Ayrıca, bir özelliğin birkaç örneğini oluşturmak için bir kopya dizisi belirtebilirsiniz. Kullanılabilir değerleri anlamak için bkz. [şablon başvurusu](/azure/templates/). |
+| etiketler |Hayır |Kaynakla ilişkili Etiketler. Aboneliğiniz genelinde kaynakları mantıksal olarak düzenlemek için etiketleri uygulayın. |
 | sku | Hayır | Bazı kaynaklar, dağıtılacak SKU 'YU tanımlayan değerlere izin verir. Örneğin, bir depolama hesabı için artıklık türünü belirtebilirsiniz. |
 | kind | Hayır | Bazı kaynaklar, dağıttığınız kaynak türünü tanımlayan bir değere izin verir. Örneğin, oluşturulacak Cosmos DB türünü belirtebilirsiniz. |
+| copy |Hayır |Birden fazla örnek gerekliyse, oluşturulacak kaynak sayısı. Varsayılan mod paraleldir. Tüm veya kaynakların aynı anda dağıtılmasını istemiyorsanız seri modunu belirtin. Daha fazla bilgi için bkz. [Azure Resource Manager çeşitli kaynak örnekleri oluşturma](create-multiple-instances.md). |
 | plan | Hayır | Bazı kaynaklar, dağıtılacak planı tanımlayan değerlere izin verir. Örneğin, bir sanal makine için Market görüntüsünü belirtebilirsiniz. |
+| properties |Hayır |Kaynağa özgü yapılandırma ayarları. Özelliklerin değerleri, kaynağı oluşturmak için REST API işlem (PUT yöntemi) için istek gövdesinde sağladığınız değerlerle aynıdır. Ayrıca, bir özelliğin birkaç örneğini oluşturmak için bir kopya dizisi belirtebilirsiniz. Kullanılabilir değerleri anlamak için bkz. [şablon başvurusu](/azure/templates/). |
 | resources |Hayır |Tanımlanmakta olan kaynağa bağlı olan alt kaynaklar. Yalnızca üst kaynağın şemasına izin verilen kaynak türlerini sağlayın. Üst kaynağın bağımlılığı örtük değildir. Bu bağımlılığı açıkça tanımlamanız gerekir. Bkz. [alt kaynaklar için ad ve tür ayarlama](child-resource-name-type.md). |
 
 ## <a name="outputs"></a>Çıkışlar
@@ -293,9 +293,9 @@ Satır içi açıklamalar için `//` ya da `/* ... */` kullanabilirsiniz, ancak 
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2018-10-01",
   "name": "[variables('vmName')]", // to customize name, change it in variables
   "location": "[parameters('location')]", //defaults to resource group location
-  "apiVersion": "2018-10-01",
   "dependsOn": [ /* storage account and network interface must be deployed first */
     "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
@@ -341,10 +341,10 @@ Visual Studio Code, [Azure Resource Manager araçları uzantısı](use-vs-code-t
 ```json
 "resources": [
   {
-    "comments": "Storage account used to store VM disks",
-    "apiVersion": "2018-07-01",
     "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2018-07-01",
     "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+    "comments": "Storage account used to store VM disks",
     "location": "[parameters('location')]",
     "metadata": {
       "comments": "These tags are needed for policy compliance."
@@ -384,11 +384,11 @@ Bir dizeyi birden çok satıra kesebilirsiniz. Örneğin, Location özelliği ve
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2018-10-01",
   "name": "[variables('vmName')]", // to customize name, change it in variables
   "location": "[
     parameters('location')
     ]", //defaults to resource group location
-  "apiVersion": "2018-10-01",
   /*
     storage account and network interface
     must be deployed first

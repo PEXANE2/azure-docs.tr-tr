@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1a749570fe2320be18c98bb6267656cf2687aa1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3c0ff63a360d96d0e9db18d430e755e567197de1
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533268"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122092"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Öğretici: Azure Container Instances bir görüntü sınıflandırma modeli dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -389,6 +389,6 @@ service.delete()
 
 + [Azure Machine Learning için dağıtım seçenekleri](how-to-deploy-and-where.md)hakkında bilgi edinin.
 + [Web hizmeti için istemci oluşturma](how-to-consume-web-service.md)hakkında bilgi edinin.
-+  [Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin](how-to-run-batch-predictions.md) .
++  [Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin](how-to-use-parallel-run-step.md) .
 + Azure Machine Learning modellerinizi [Application Insights](how-to-enable-app-insights.md)izleyin.
 + [Otomatik algoritma seçim](tutorial-auto-train-models.md) öğreticisini deneyin. 

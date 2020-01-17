@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 03855b7596f45fcdde0bebe018d2157ad33a617b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278957"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156089"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Doğrulama yönteminiz olarak bir güvenlik anahtarı ayarlayın
 
@@ -25,8 +25,21 @@ Güvenlik anahtarlarını, kuruluşunuzda bir passwordless oturum açma yöntemi
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
->[!Important]
->Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, Azure Active Directory (Azure AD) ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi için [Azure Active Directory Belgelerine](https://docs.microsoft.com/azure/active-directory) bakabilirsiniz.
+>[!Note]
+> Güvenlik anahtarı seçeneğini görmüyorsanız, kuruluşunuz doğrulama için bu seçeneği kullanmanıza izin vermiyor olabilir. Bu durumda, daha fazla yardım almak için başka bir yöntem seçmeniz veya kuruluşunuzun yardım masasına başvurmanız gerekir.
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Güvenlik doğrulaması ve parola sıfırlama kimlik doğrulaması
+
+Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de parola sıfırlama için kullanılır. Ancak, her ikisi için tüm yöntemler kullanılamaz.
+
+| Yöntem | Kullanıldığı yerler |
+| ------ | -------- |
+| Authenticator uygulaması | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| SMS mesajları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Telefon aramaları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Güvenlik anahtarı | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| E-posta hesabı | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
+| Güvenlik soruları | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
 
 ## <a name="what-is-a-security-key"></a>Güvenlik anahtarı nedir?
 

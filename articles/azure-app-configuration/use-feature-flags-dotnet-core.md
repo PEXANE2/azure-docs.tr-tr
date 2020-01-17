@@ -1,6 +1,6 @@
 ---
-title: Özellik bayraklarını kullanarak bir .NET Core uygulaması için öğretici | Microsoft Docs
-description: Bu öğreticide, .NET Core uygulamalarında özellik bayraklarını uygulama konusunda bilgi edinin.
+title: .NET Core uygulamasında Özellik bayraklarını kullanma öğreticisi | Microsoft Docs
+description: Bu öğreticide, .NET Core uygulamalarında Özellik bayraklarını nasıl uygulayacağınızı öğreneceksiniz.
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,30 +14,30 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 4fe49c25ad71c48103f044915d187099b75b3d04
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798369"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121259"
 ---
-# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Öğretici: Özellik bayrakları ASP.NET Core uygulaması kullanın.
+# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında Özellik bayraklarını kullanma
 
-.NET Core özellik yönetim kitaplıkları, .NET veya ASP.NET Core uygulamasında özellik bayraklarını uygulamak için kullanılan deyimsel desteği sağlar. Bu kitaplıklar, tüm yazmak zorunda kalmazsınız bildirimli olarak özellik bayraklarını kodunuza eklemenize izin `if` deyimleri için bunları el ile.
+.NET Core Özellik Yönetimi kitaplıkları, .NET veya ASP.NET Core uygulamasında Özellik bayraklarını uygulamak için ıdimatik destek sağlar. Bu kitaplıklar, kodlarınıza bildirimli olarak özellik bayrakları eklemenize olanak tanır, böylece tüm `if` deyimlerini el ile yazmak zorunda kalmazsınız.
 
-Özellik Yönetim kitaplıkları da özellik bayrağı yaşam döngüleri arka planda yönetin. Örneğin, kitaplıkları, yenileme ve bayrağı durumları önbelleğe veya bir bayrak durumunu bir talep çağrısı sırasında sabit olmasını garanti. Ayrıca, ASP.NET Core kitaplığı MVC denetleyici eylemleri, görünümler, yollar ve ara yazılım içeren, kullanıma hazır Tümleştirmelerin sunar.
+Özellik Yönetimi kitaplıkları Ayrıca arka planda özellik bayrakları yaşam döngülerini yönetir. Örneğin, kitaplıklar yenileme ve önbellek bayrak durumlarını veya bir istek çağrısı sırasında bayrak durumunun sabit olmasını garanti eder. Ayrıca, ASP.NET Core kitaplığı MVC denetleyici eylemleri, görünümler, rotalar ve ara yazılım gibi kullanıma hazır tümleştirmeler sunmaktadır.
 
-[ASP.NET Core uygulaması Hızlı Başlangıç için özellik bayraklarını ekleme](./quickstart-feature-flag-aspnet-core.md) özellik bayrakları bir ASP.NET Core uygulaması eklemek için birçok yol gösterir. Bu öğreticide bu yöntemleri ayrıntılı olarak açıklanmaktadır. Tam başvuru için bkz: [ASP.NET Core özellik yönetim belgelerine](https://go.microsoft.com/fwlink/?linkid=2091410).
+[ASP.NET Core uygulama hızlı başlangıçlarına özellik ekleme bayrakları](./quickstart-feature-flag-aspnet-core.md) , bir ASP.NET Core uygulamasına özellik bayrakları eklemenin birkaç yolunu gösterir. Bu öğreticide bu yöntemler daha ayrıntılı olarak açıklanmaktadır. Tüm başvurular için [ASP.NET Core Özellik Yönetimi belgelerine](https://go.microsoft.com/fwlink/?linkid=2091410)bakın.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Özellik bayrakları, anahtar Özellik kullanılabilirliği kontrol etmek için uygulamanızın parçalarını içinde ekleyin.
-> * Özellik bayraklarını yönetmek için kullanıyorsanız, uygulama yapılandırması ile tümleştirin.
+> * Özellik kullanılabilirliğini denetlemek için uygulamanızın önemli bölümlerine özellik bayrakları ekleyin.
+> * Özellik bayraklarını yönetmek için kullandığınızda uygulama yapılandırmasıyla tümleştirin.
 
 ## <a name="set-up-feature-management"></a>Özellik yönetimini ayarlama
 
-.NET Core özellik Yöneticisi `IFeatureManager` framework'ün yerel yapılandırma sistemden özellik bayraklarını alır. .NET Core destekler, yerel dahil olmak üzere herhangi bir yapılandırma kaynağını kullanarak, uygulamanızın özellik bayraklarını sonuç olarak, tanımlayabilirsiniz *appsettings.json* dosya veya ortam değişkenleri. `IFeatureManager` .NET Core üzerinde bağımlılık ekleme kullanır. Özellik Yönetimi Hizmetleri, standart kurallarını kullanarak kaydedebilirsiniz:
+.NET Core Feature Manager `IFeatureManager` Framework 'ün yerel yapılandırma sisteminden Özellik bayraklarını alır. Sonuç olarak, yerel *appSettings. JSON* dosyası veya ortam değişkenleri dahil olmak üzere .NET Core tarafından desteklenen herhangi bir yapılandırma kaynağını kullanarak uygulamanızın Özellik bayraklarını tanımlayabilirsiniz. `IFeatureManager` .NET Core bağımlılığı ekleme ' ye bağımlıdır. Özellik yönetimi hizmetlerini standart kuralları kullanarak kaydedebilirsiniz:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -51,7 +51,7 @@ public class Startup
 }
 ```
 
-Varsayılan olarak, özellik Yöneticisi özellik bayraklarını alır `"FeatureManagement"` .NET Core yapılandırma verilerini bölümü. Aşağıdaki örnekte adlı farklı bir bölümünden okumak için özellik Yöneticisi bildiren `"MyFeatureFlags"` bunun yerine:
+Varsayılan olarak, Özellik Yöneticisi .NET Core yapılandırma verilerinin `"FeatureManagement"` bölümünden Özellik bayraklarını alır. Aşağıdaki örnek, özellik yöneticisinin bunun yerine `"MyFeatureFlags"` adlı farklı bir bölümden okumasını söyler:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -68,7 +68,7 @@ public class Startup
 }
 ```
 
-Filtreler, özellik bayrakları kullanıyorsanız, ek bir kitaplık içerir ve kaydetmek gerekir. Aşağıdaki örnekte adlı bir yerleşik özellik filtresini kullanma işlemi gösterilmektedir `PercentageFilter`:
+Özellik bayraklarınız içinde filtreler kullanırsanız, ek bir kitaplık eklemeniz ve kaydetmeniz gerekir. Aşağıdaki örnek, `PercentageFilter`adlı yerleşik bir özellik filtresinin nasıl kullanılacağını gösterir:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -84,11 +84,11 @@ public class Startup
 }
 ```
 
-Özellik bayrakları uygulama dışında tutun ve ayrı olarak yönetme öneririz. Bunun yapılması, dilediğiniz zaman bayrağı durumları değiştirebilir ve bu değişiklikleri uygulamaya hemen etkili sahip olanak tanır. Uygulama yapılandırması, düzenleme ve adanmış bir portal kullanıcı Arabirimi üzerinden tüm özellik bayraklarını denetleme için merkezi bir yerde sağlar. Uygulama yapılandırması da bayrakları uygulamanıza doğrudan aracılığıyla, .NET Core istemci kitaplıkları sunar.
+Özellik bayraklarını uygulamanın dışında tutmanızı ve ayrı olarak yönetmenizi öneririz. Bunun yapılması, bayrak durumlarını dilediğiniz zaman değiştirmenize ve bu değişikliklerin uygulamada hemen etkili olmasını sağlar. Uygulama yapılandırması, özel bir Portal Kullanıcı arabirimi aracılığıyla tüm özellik Bayraklarınızı düzenlemek ve denetlemek için merkezi bir yer sağlar. Uygulama yapılandırması Ayrıca, bayrakları uygulamanıza doğrudan .NET Core istemci kitaplıkları aracılığıyla da sunar.
 
-Yapılandırma sağlayıcısı uygulama yapılandırması için ASP.NET Core uygulamanızı bağlamak için en kolay yolu olan `Microsoft.Azure.AppConfiguration.AspNetCore`. Bu NuGet paketi kullanmak için aşağıdaki adımları izleyin.
+ASP.NET Core uygulamanızı uygulama yapılandırmasına bağlanmanın en kolay yolu yapılandırma sağlayıcısı `Microsoft.Azure.AppConfiguration.AspNetCore`kullanmaktır. Bu NuGet paketini kullanmak için aşağıdaki adımları izleyin.
 
-1. Açık *Program.cs* dosyasını açıp aşağıdaki kodu ekleyin.
+1. *Program.cs* dosyasını açın ve aşağıdaki kodu ekleyin.
 
    ```csharp
    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -105,7 +105,7 @@ Yapılandırma sağlayıcısı uygulama yapılandırması için ASP.NET Core uyg
               .UseStartup<Startup>();
    ```
 
-2. Açık *Startup.cs* ve güncelleştirme `Configure` web uygulamasına ASP.NET Core sırasında yinelenen aralıklarla yenilenmesi için özellik bayrağı değerleri izin vermek için bir ara yazılım ekleme yöntemi devam isteklerini almak.
+2. ASP.NET Core Web uygulaması istekleri almaya devam ederken, özellik bayrağı değerlerinin yinelenen bir aralıkta yenilenmesini sağlamak üzere bir ara yazılım eklemek için *Startup.cs* 'i açın ve `Configure` yöntemi güncelleştirin.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -115,7 +115,7 @@ Yapılandırma sağlayıcısı uygulama yapılandırması için ASP.NET Core uyg
    }
    ```
 
-Özellik bayrağı değerleri, Zamanla değişen beklenir. Varsayılan olarak, ara yazılım bir istek aldığında tetiklenen bir yenileme işlemi değeri güncelleştiririz, bu önbelleğe alınan değeri süresi dolana kadar olmayan şekilde özellik bayrağı değerleri 30 saniyelik bir süre için önbelleğe alınır. Aşağıdaki kod önbellek sona erme zamanı veya yoklama aralığı için 5 dakika içinde nasıl değiştirileceğini gösterir `options.UseFeatureFlags()` çağırın.
+Özellik bayrağı değerlerinin zaman içinde değiştirilmesi beklenmektedir. Varsayılan olarak, özellik bayrağı değerleri 30 saniyelik bir süre için önbelleğe alınır, bu nedenle, ara yazılım bir istek aldığında tetiklenen yenileme işlemi, önbelleğe alınan değerin süresi dolana kadar değeri güncelleştirmez. Aşağıdaki kod, `options.UseFeatureFlags()` çağrısında önbelleğin süre sonu zamanının veya yoklama aralığının 5 dakikaya nasıl değiştirileceğini gösterir.
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
@@ -128,11 +128,11 @@ config.AddAzureAppConfiguration(options => {
 
 ## <a name="feature-flag-declaration"></a>Özellik bayrağı bildirimi
 
-Her bir özellik bayrağını iki bölümden oluşur: bir ad ve bir özelliğin durumunu olup olmadığını değerlendirmek için kullanılan bir veya daha fazla filtrelerinin listesi *üzerinde* (diğer bir deyişle, değeri olduğunda `True`). Bir özellik açık olmalıdır, bir kullanım örneği için bir filtre tanımlar.
+Her özellik bayrağının iki bölümü vardır: bir özelliğin durumunun *Açık* olup olmadığını değerlendirmek için kullanılan bir veya daha fazla filtrenin adı ve listesi (yani, değeri `True`). Bir filtre, bir özelliğin açılması gerektiğinde kullanım durumunu tanımlar.
 
-Bir özellik bayrağını birden çok filtre varsa, filtrenin özelliği etkinleştirilmiş filtrelerden birini belirler kadar sırayla geçiş yapılır. Bu noktada, özellik bayrağı olduğu *üzerinde*, ve kalan herhangi bir filtre sonuç atlanır. Filtre özelliği etkinleştirilmelidir gösteriyorsa, özellik bayrağı olduğu *kapalı*.
+Bir özellik bayrağının birden çok filtresi olduğunda, filtrenin etkin olması gerektiğini belirlerken filtre listesine bir düzen eklenir. Bu noktada, özellik bayrağı *Açık*ve kalan filtre sonuçları atlanır. Filtre yoksa, özelliğin etkinleştirilmesi gerektiğini gösteriyorsa, özellik bayrağı *kapalıdır*.
 
-Özellik Yöneticisi destekler *appsettings.json* özellik bayrakları için bir yapılandırma kaynağı olarak. Aşağıdaki örnek, bir JSON dosyasında özellik bayraklarını ayarlayın gösterilmektedir:
+Özellik Yöneticisi, özellik bayrakları için bir yapılandırma kaynağı olarak *appSettings. JSON* ' i destekler. Aşağıdaki örnekte, bir JSON dosyasında özellik bayraklarının nasıl ayarlanacağı gösterilmektedir:
 
 ```JSON
 "FeatureManagement": {
@@ -151,15 +151,15 @@ Bir özellik bayrağını birden çok filtre varsa, filtrenin özelliği etkinle
 }
 ```
 
-Kural olarak, `FeatureManagement` bu JSON belgesinin bölümü için özellik bayrağı ayarları kullanılır. Önceki örnekte tanımlanan kendi filtrelerle üç özellik bayraklarını gösterir `EnabledFor` özelliği:
+Kurala göre, bu JSON belgesinin `FeatureManagement` bölümü Özellik bayrağı ayarları için kullanılır. Önceki örnekte, `EnabledFor` özelliğinde tanımlanan filtreleriyle üç özellik bayrağı gösterilmektedir:
 
-* `FeatureA` olan *üzerinde*.
-* `FeatureB` olan *kapalı*.
-* `FeatureC` adlı bir filtre belirtir `Percentage` ile bir `Parameters` özelliği. `Percentage` yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` için yüzde 50 olasılığını belirtir `FeatureC` bayrağı olmasını *üzerinde*.
+* `FeatureA` *Açık*.
+* `FeatureB` *kapalı*.
+* `FeatureC`, `Parameters` özelliği ile `Percentage` adlı bir filtre belirtir. `Percentage` yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` `FeatureC` bayrağının *Açık*olması için %50 oranında bir olasılık belirtir.
 
 ## <a name="feature-flag-references"></a>Özellik bayrağı başvuruları
 
-Özellik bayraklarını kodda kolayca başvurabilir, böylece bunları olarak tanımlamalıdır `enum` değişkenleri:
+Kodda Özellik bayraklarını kolayca başvurabilmeniz için bunları `enum` değişkenleri olarak tanımlamanız gerekir:
 
 ```csharp
 public enum MyFeatureFlags
@@ -170,14 +170,14 @@ public enum MyFeatureFlags
 }
 ```
 
-## <a name="feature-flag-checks"></a>Özellik bayrağı denetler
+## <a name="feature-flag-checks"></a>Özellik bayrağı denetimleri
 
-Özellik Yönetim temel düzeni özellik bayrağı ayarlandıysa ilk Denetlenecek olan *üzerinde*. Bu nedenle, özellik Yöneticisi ardından eylemleri çalıştıran özelliği içerir. Örneğin:
+Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık*olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örneğin:
 
 ```csharp
 IFeatureManager featureManager;
 ...
-if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
+if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 {
     // Run the following code
 }
@@ -185,7 +185,7 @@ if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
 
 ## <a name="dependency-injection"></a>Bağımlılık ekleme
 
-ASP.NET Core MVC, özellik Yöneticisi erişebileceğiniz `IFeatureManager` aracılığıyla bağımlılık ekleme:
+ASP.NET Core MVC 'de, bağımlılık ekleme aracılığıyla Feature Manager `IFeatureManager` erişebilirsiniz:
 
 ```csharp
 public class HomeController : Controller
@@ -201,7 +201,7 @@ public class HomeController : Controller
 
 ## <a name="controller-actions"></a>Denetleyici eylemleri
 
-MVC denetleyicileri kullandığınız `FeatureGate` tüm denetleyici sınıfı veya belirli bir eylem etkin olup olmadığını denetlemek için özniteliği. Aşağıdaki `HomeController` denetleyici gerektirir `FeatureA` olmasını *üzerinde* denetleyicisi sınıfını içeren herhangi bir eylem yürütülmeden önce:
+MVC denetleyicileri ' nde, tüm denetleyici sınıfının veya belirli bir eylemin etkinleştirilip etkinleştirilmediğini denetlemek için `FeatureGate` özniteliğini kullanırsınız. Aşağıdaki `HomeController` denetleyicisi, denetleyici sınıfı içeren herhangi bir eylemden önce `FeatureA` *Açık* olmasını gerektirir:
 
 ```csharp
 [FeatureGate(MyFeatureFlags.FeatureA)]
@@ -211,7 +211,7 @@ public class HomeController : Controller
 }
 ```
 
-Aşağıdaki `Index` eylem gerektiren `FeatureA` olmasını *üzerinde* çalıştırılmadan önce:
+Aşağıdaki `Index` eylemi, çalıştırılmadan önce `FeatureA` *Açık* olmasını gerektirir:
 
 ```csharp
 [FeatureGate(MyFeatureFlags.FeatureA)]
@@ -221,11 +221,11 @@ public IActionResult Index()
 }
 ```
 
-Ne zaman bir MVC denetleyici veya eylemin denetleme özelliği bayrağı olduğu için engellendi *kapalı*, kayıtlı bir `IDisabledFeaturesHandler` arabirimi çağrılır. Varsayılan `IDisabledFeaturesHandler` arabirimi istemciye hiçbir yanıt gövdesi ile bir 404 durum kodu döndürür.
+Denetim özelliği bayrağı *kapalı*olduğu IÇIN bir MVC denetleyicisi veya eylemi engellendiğinde, kayıtlı bir `IDisabledFeaturesHandler` arabirimi çağırılır. Varsayılan `IDisabledFeaturesHandler` arabirimi, yanıt gövdesi olmayan istemciye 404 durum kodu döndürür.
 
 ## <a name="mvc-views"></a>MVC görünümleri
 
-MVC görünümleri, kullandığınız bir `<feature>` etiket içeriğini işlemek için temel bir özellik bayrağını etkinleştirilip etkinleştirilmediği üzerinde:
+MVC görünümlerinde, bir özellik bayrağının etkin olup olmadığına bağlı olarak içerik işlemek için bir `<feature>` etiketi kullanabilirsiniz:
 
 ```html
 <feature name="FeatureA">
@@ -233,7 +233,7 @@ MVC görünümleri, kullandığınız bir `<feature>` etiket içeriğini işleme
 </feature>
 ```
 
-Gereksinimler karşılanmadı alternatif içerik görüntülemek için `negate` özniteliği kullanılabilir.
+Gereksinimler karşılanmazsa, diğer içerikleri göstermek için `negate` özniteliği kullanılabilir.
 
 ```html
 <feature name="FeatureA" negate="true">
@@ -241,7 +241,7 @@ Gereksinimler karşılanmadı alternatif içerik görüntülemek için `negate` 
 </feature>
 ```
 
-Özellik `<feature>` etiketi de kullanılabilir varsa içeriğini göstermek için veya bir listedeki tüm özellikler etkinleştirildi.
+Özellik `<feature>` etiketi, bir listedeki herhangi bir özelliğin veya tüm özelliklerin etkinleştirilmesi halinde içerik göstermek için de kullanılabilir.
 
 ```html
 <feature name="FeatureA, FeatureB" requirement="All">
@@ -254,7 +254,7 @@ Gereksinimler karşılanmadı alternatif içerik görüntülemek için `negate` 
 
 ## <a name="mvc-filters"></a>MVC filtreleri
 
-Bir özellik bayrağını durumuna göre etkin MVC filtreleri ayarlayabilirsiniz. Aşağıdaki kod, adlandırılmış bir MVC filtre ekler `SomeMvcFilter`. Bu filtre, MVC işlem hattı yalnızca Eğer içinde tetiklenir `FeatureA` etkinleştirilir.
+MVC filtrelerini bir özellik bayrağının durumuna göre etkinleştirilecek şekilde ayarlayabilirsiniz. Aşağıdaki kod, `SomeMvcFilter`adlı bir MVC filtresi ekler. Bu filtre, yalnızca `FeatureA` etkinse MVC işlem hattı içinde tetiklenir. Bu yetenek `IAsyncActionFilter`sınırlıdır. 
 
 ```csharp
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -269,25 +269,15 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="routes"></a>Yollar
+## <a name="middleware"></a>Ara Yazılım
 
-Özellik bayraklarını rotaları dinamik olarak kullanıma sunmak için kullanabilirsiniz. Aşağıdaki kod, ayarlar bir rota ekler `Beta` varsayılan denetleyici olarak yalnızca `FeatureA` etkinleştirilir:
-
-```csharp
-app.UseMvc(routes => {
-    routes.MapRouteForFeature(nameof(MyFeatureFlags.FeatureA), "betaDefault", "{controller=Beta}/{action=Index}/{id?}");
-});
-```
-
-## <a name="middleware"></a>Ara yazılım
-
-Özellik bayrakları, uygulama dalları ve ara yazılım koşullu olarak eklemek için de kullanabilirsiniz. Bir ara yazılım bileşeni istek işlem hattı yalnızca aşağıdaki kodu ekler `FeatureA` etkinleştirilir:
+Özellik bayraklarını, uygulama dallarını ve ara yazılımı koşullu olarak eklemek için de kullanabilirsiniz. Aşağıdaki kod yalnızca `FeatureA` etkinleştirildiğinde istek ardışık düzenine bir ara yazılım bileşeni ekler:
 
 ```csharp
 app.UseMiddlewareForFeature<ThirdPartyMiddleware>(nameof(MyFeatureFlags.FeatureA));
 ```
 
-Bu kod, daha genel bir özellik bayrağını dayalı tüm uygulama dallanma yeteneği devre dışı oluşturur:
+Bu kod, bir özellik bayrağını temel alarak tüm uygulamayı dallandırmak için daha genel özelliği devre dışı bırakır:
 
 ```csharp
 app.UseForFeature(featureName, appBuilder => {
@@ -297,8 +287,8 @@ app.UseForFeature(featureName, appBuilder => {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, özellik bayraklarını kullanarak ASP.NET Core uygulamanızı uygulama öğrendiniz `Microsoft.FeatureManagement` kitaplıkları. ASP.NET Core ve uygulama yapılandırma özelliği yönetimi desteği hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
+Bu öğreticide, `Microsoft.FeatureManagement` kitaplıklarını kullanarak ASP.NET Core uygulamanızda Özellik bayraklarını nasıl uygulayacağınızı öğrendiniz. ASP.NET Core ve uygulama yapılandırmasındaki özellik yönetimi desteği hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-* [ASP.NET Core özellik bayrağını örnek kod](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
-* [Microsoft.FeatureManagement belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
+* [ASP.NET Core Özellik bayrağı örnek kodu](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
+* [Microsoft. FeatureManagement belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
 * [Özellik bayraklarını yönetme](./manage-feature-flags.md)

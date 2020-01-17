@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/17/2019
+ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 48ecaea82e8874ff521abafaa075b41367f8fbf1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1560b5d60ae3c6de3ecb6d50859e24ebb7bc2d28
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754007"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156922"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Dağıtım iş akışında yer alan kavramlar hakkında daha fazla bilgi için b
 
 - Bir model. Eğitilen bir modeliniz yoksa, [Bu öğreticide](https://aka.ms/azml-deploy-cloud)verilen model ve bağımlılık dosyalarını kullanabilirsiniz.
 
-- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Python için Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)veya [Azure Machine Learning Visual Studio Code uzantısı](how-to-vscode-tools.md).
+- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Python için Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
 
 ## <a name="connect-to-your-workspace"></a>Çalışma alanınıza bağlanma
 
@@ -59,7 +59,7 @@ Aşağıdaki kod, yerel geliştirme ortamında önbelleğe alınan bilgileri kul
 
 + **VS Code kullanma**
 
-   VS Code kullandığınızda, bir grafik arabirim kullanarak çalışma alanını seçersiniz. Daha fazla bilgi için bkz. VS Code uzantısı belgelerindeki [modelleri dağıtma ve yönetme](how-to-vscode-tools.md#deploy-and-manage-models) .
+   VS Code kullandığınızda, bir grafik arabirim kullanarak çalışma alanını seçersiniz. Daha fazla bilgi için bkz. VS Code uzantısı belgelerindeki [modelleri dağıtma ve yönetme](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) .
 
 ## <a id="registermodel"></a>Modelinizi kaydetme
 
@@ -115,7 +115,7 @@ Bu bölümdeki kod parçacıkları, bir eğitim çalıştırmasının nasıl bir
 
 + **VS Code kullanma**
 
-  [Vs Code](how-to-vscode-tools.md#deploy-and-manage-models) uzantısını kullanarak model dosyalarını veya klasörleri kullanarak modelleri kaydedin.
+  [Vs Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) uzantısını kullanarak model dosyalarını veya klasörleri kullanarak modelleri kaydedin.
 
 ### <a name="register-a-model-from-a-local-file"></a>Yerel dosyadan model kaydetme
 
@@ -185,7 +185,7 @@ Modeli dağıtmak için aşağıdaki öğelere ihtiyacınız olacaktır:
     >
     > * Azure Machine Learning SDK, Web Hizmetleri veya IoT Edge dağıtımlarının veri deponuza veya veri kümelerine erişmesi için bir yol sağlamaz. Dağıtılmış modelinizin, bir Azure depolama hesabındaki veriler gibi dağıtım dışında depolanan verilere erişmesi gerekiyorsa, ilgili SDK 'yı kullanarak özel bir kod çözümü geliştirmeniz gerekir. Örneğin, [Python Için Azure depolama SDK 'sı](https://github.com/Azure/azure-storage-python).
     >
-    >   Senaryonuz için işe yönelik bir alternatif, Puanlama sırasında veri depolarına erişim sağlayan [toplu tahmindir](how-to-run-batch-predictions.md).
+    >   Senaryonuz için işe yönelik bir alternatif, Puanlama sırasında veri depolarına erişim sağlayan [toplu tahmindir](how-to-use-parallel-run-step.md).
 
 * Giriş betiğini veya modeli çalıştırmak için gerekli olan yardımcı betikler veya Python/Conda paketleri gibi **bağımlılıklar**.
 

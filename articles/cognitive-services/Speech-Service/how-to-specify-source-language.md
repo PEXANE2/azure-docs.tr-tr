@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 01/07/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 94b8fb026b61b52e8096cf54e1db30a6c260c04b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e4f4dd3c1e23855a8a1a69dac72c232779206f1d
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109962"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121718"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>Konuşmadan metne yönelik kaynak dilini belirtin
 
@@ -26,23 +26,28 @@ Bu makalede, konuşma tanıma için konuşma SDK 'sına geçilen bir ses girişi
 
 ## <a name="how-to-specify-source-language-in-c"></a>İçinde kaynak dilini belirtmeC#
 
-İlk adım `SpeechConfig`oluşturmaktır:
+Bu örnekte, kaynak dili açıkça `SpeechRecognizer` yapısı kullanan bir parametre olarak sağlanır.
 
 ```csharp
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-Sonra, `SpeechRecognitionLanguage`ile sesinizin kaynak dilini belirtin:
+Bu örnekte, kaynak dili `SourceLanguageConfig`kullanılarak sunulmaktadır. Sonra, `sourceLanguageConfig` `SpeechRecognizer` yapısına parametre olarak geçirilir.
 
 ```csharp
-speechConfig.SpeechRecognitionLanguage = "de-DE";
+var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
+var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-Tanıma için özel bir model kullanıyorsanız, uç noktayı `EndpointId`belirtebilirsiniz:
+Bu örnekte, kaynak dili ve özel uç nokta `SourceLanguageConfig`kullanılarak sağlanır. Sonra, `sourceLanguageConfig` `SpeechRecognizer` yapısına parametre olarak geçirilir.
 
 ```csharp
-speechConfig.EndpointId = "The Endpoint ID for your custom model.";
+var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
+var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
+
+>[!Note]
+> `SpeechRecognitionLanguage` ve `EndpointId` set yöntemleri, içindeki C#`SpeechConfig` sınıfından kullanım dışıdır. Bu yöntemlerin kullanımı önerilmez ve bir `SpeechRecognizer`oluşturulurken kullanılmamalıdır.
 
 ::: zone-end
 

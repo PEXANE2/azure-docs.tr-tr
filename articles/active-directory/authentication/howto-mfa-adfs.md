@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cc696e6351281ec9bd84cc6611d81d9148cda1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 00200436784eca970f736c4a7f2afebd652c9577
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848434"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155222"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication ve AD FS ile bulut kaynaklarını güvenli hale getirme
 
@@ -44,7 +44,7 @@ Bulut kaynağınızın güvenliğini sağlamak için, kullanıcı iki adımlı d
 7. Gelen talep türü olarak **Kimlik Doğrulama Yöntemleri Başvuruları**’nı seçin.
 8. **Tüm talep değerlerini geçir**’i seçin.
     ![Dönüşüm Talep Kuralı Ekleme Sihirbazı](./media/howto-mfa-adfs/configurewizard.png)
-9. **Son**'a tıklayın. AD FS Yönetim Konsolu'nu kapatın.
+9. **Finish (Son)** düğmesine tıklayın. AD FS Yönetim Konsolu'nu kapatın.
 
 ## <a name="trusted-ips-for-federated-users"></a>Federasyon kullanıcıları için Güvenilen IP'ler
 
@@ -67,7 +67,7 @@ Yapmamız gereken ilk şey, AD FS taleplerini yapılandırmaktır. Biri Kurumsal
 6. Talep kuralı adının yanındaki kutuda kuralınıza bir ad verin. Örneğin: InsideCorpNet.
 7. Gelen talep türü’nün yanındaki açılır menüde, **Kurumsal Ağ İçinde** seçeneğini belirleyin.
    ![kurumsal ağ talebi Içinde ekleme](./media/howto-mfa-adfs/trustedip4.png)
-8. **Son**'a tıklayın.
+8. **Finish (Son)** düğmesine tıklayın.
 9. Verme Dönüştürme Kuralları’nda **Kural Ekle**’ye tıklayın.
 10. Dönüştürme Kuralı Ekleme Sihirbazı’nda, açılır menüden **Talepleri Özel Bir Kural Kullanarak Gönder**’i seçin ve **İleri**’ye tıklayın.
 11. Talep kuralı adı: altındaki kutuya *Kullanıcıların Oturumlarını Açık Tut* ifadesini girin.
@@ -76,8 +76,8 @@ Yapmamız gereken ilk şey, AD FS taleplerini yapılandırmaktır. Biri Kurumsal
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
     ![Kullanıcıları oturum açmaya devam etmek için özel talep oluşturma](./media/howto-mfa-adfs/trustedip5.png)
-13. **Son**'a tıklayın.
-14. **Apply (Uygula)** düğmesine tıklayın.
+13. **Finish (Son)** düğmesine tıklayın.
+14. **Uygula**'ya tıklayın.
 15. **Tamam**’a tıklayın.
 16. AD FS Yönetimi'ni kapatın.
 
@@ -86,7 +86,7 @@ Yapmamız gereken ilk şey, AD FS taleplerini yapılandırmaktır. Biri Kurumsal
 Talepler yapıldığına göre, artık güvenilen IP’leri yapılandırabiliriz.
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. **Adlandırılmış konumlar** > **Azure Active Directory** > **koşullu erişimi** seçin.
+2. **Azure Active Directory** > **güvenlik** > **koşullu erişim** ' i, **adlandırılmış konumlar** > seçin.
 3. **Koşullu erişim-adlandırılmış konumlar** DIKEY penceresinde **MFA güvenilir IP 'lerini Yapılandır** ' ı seçin.
 
    ![Azure AD koşullu erişim adlandırılmış konumlar MFA güvenilir IP 'Leri yapılandırma](./media/howto-mfa-adfs/trustedip6.png)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: 93f0117096a5601632ccced6b698e84a0714bbd4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: ea4ce07a813d338c2342de7dea554e11b146c27f
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805816"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122398"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Gerçek zamanlı konuşma dökümü (Önizleme)
 
@@ -35,7 +35,7 @@ Konuşma cihaz SDK 'Sı, 8 kanal kullanan gerçek zamanlı ses yakalama için Ja
 - [ROOBO cihazı örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/Conversation.java)
 - [Azure Kinect Dev Kit örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir konuşma hizmeti aboneliği. Bir [konuşma deneme aboneliği yoksa bir konuşma deneme aboneliği edinebilirsiniz](https://azure.microsoft.com/try/cognitive-services/) .
 
@@ -71,7 +71,7 @@ class Program
         // Edit with your desired region for `{region}`
         var response = await client.PostAsync($"https://signature.{region}.cts.speech.microsoft.com/api/v1/Signature/GenerateVoiceSignatureFromFormData", form);
         // A voice signature contains Version, Tag and Data key values from the Signature json structure from the Response body.
-        // Voice signature format example: { "Version": <Numeric value>, "Tag": "string", "Data": "string" }
+        // Voice signature format example: { "Version": <Numeric string or integer value>, "Tag": "string", "Data": "string" }
         var jsonData = await response.Content.ReadAsStringAsync();
     }
 
@@ -90,7 +90,7 @@ class Program
         // Edit with your desired region for `{region}`
         var response = await client.PostAsync($"https://signature.{region}.cts.speech.microsoft.com/api/v1/Signature/GenerateVoiceSignatureFromByteArray", content);
         // A voice signature contains Version, Tag and Data key values from the Signature json structure from the Response body.
-        // Voice signature format example: { "Version": <Numeric value>, "Tag": "string", "Data": "string" }
+        // Voice signature format example: { "Version": <Numeric string or integer value>, "Tag": "string", "Data": "string" }
         var jsonData = await response.Content.ReadAsStringAsync();
     }
 
@@ -113,6 +113,7 @@ Aşağıdaki örnek kod, üç hoparlör için konuşmaları gerçek zamanlı ola
 - İlgilendiğiniz olayları kaydetme
 - Konuşma nesnesini kullanarak konuşmaya katılımcı ekleme veya konuşmayı kaldırma
 - Ses akışı
+- Konuşma SDK 'Sı sürüm 1.9.0 ve her ikisi de `int` ve `string` değer türlerinin her ikisi de ses imza sürümü alanında desteklenir.
 
 Döküm ve konuşmacı tanımlayıcı, kayıtlı olaylara geri dönmeyecektir.
 
@@ -189,7 +190,7 @@ public class MyConversationTranscriber
                     // Add participants to the conversation.
                     // Create voice signatures using REST API described in the earlier section in this document.
                     // Voice signature needs to be in the following format:
-                    // { "Version": <Numeric value>, "Tag": "string", "Data": "string" }
+                    // { "Version": <Numeric string or integer value>, "Tag": "string", "Data": "string" }
 
                     var speakerA = Participant.From("Speaker_A", "en-us", signatureA);
                     var speakerB = Participant.From("Speaker_B", "en-us", signatureB);

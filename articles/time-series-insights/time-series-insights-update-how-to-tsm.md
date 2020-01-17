@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 268973f27336e97fe85e493da18714df46171f8a
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 591233154ab79b9493d77030727462bae68ea7d5
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497732"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152366"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri modelleme
 
@@ -64,9 +64,9 @@ Başlamak için, Time Series Insights Explorer **Çözümle** görünümünden *
 
 ### <a name="delete-an-instance"></a>Örnek silme
 
-1. Türü seçin ve **Sil** veya **çöp kutusu simgesini**seçin.
+1. Örneği seçin ve **Sil** veya **çöp kutusu simgesini**seçin.
 
-   [![Sil ' i seçerek bir türü silin.](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
+   [Sil ' i seçerek bir örneği silin ![.](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
 
 1. **Sil**' i seçerek silmeyi onaylayın.
 

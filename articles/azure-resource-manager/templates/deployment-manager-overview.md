@@ -4,12 +4,12 @@ description: Azure Deployment Manager ile pek çok bölge üzerinde bir hizmet d
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5aac5806246faa9431780eda462de2a2f6fb09aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 424cd79a6c63200e1f101cf178b1fd2c9083161e
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477804"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152536"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Dağıtım Yöneticisi ile güvenli dağıtım uygulamalarını etkinleştirme (Genel Önizleme)
 
@@ -66,20 +66,20 @@ Aşağıdaki örnek, genel yapıt kaynağı biçimini gösterir.
 
 ```json
 {
-    "type": "Microsoft.DeploymentManager/artifactSources",
-    "name": "<artifact-source-name>",
-    "location": "<artifact-source-location>",
-    "apiVersion": "2018-09-01-preview",
-    "properties": {
-        "sourceType": "AzureStorage",
-        "artifactRoot": "<root-folder-for-templates>",
-        "authentication": {
-            "type": "SAS",
-            "properties": {
-                "sasUri": "<SAS-URI-for-storage-container>"
-            }
-        }
+  "type": "Microsoft.DeploymentManager/artifactSources",
+  "apiVersion": "2018-09-01-preview",
+  "name": "<artifact-source-name>",
+  "location": "<artifact-source-location>",
+  "properties": {
+    "sourceType": "AzureStorage",
+    "artifactRoot": "<root-folder-for-templates>",
+    "authentication": {
+      "type": "SAS",
+      "properties": {
+        "sasUri": "<SAS-URI-for-storage-container>"
+      }
     }
+  }
 }
 ```
 
@@ -91,20 +91,20 @@ Aşağıdaki örnek, service topolojisi kaynak genel biçimini gösterir. Şablo
 
 ```json
 {
-    "type": "Microsoft.DeploymentManager/serviceTopologies",
-    "name": "<topology-name>",
-    "location": "<topology-location>",
-    "apiVersion": "2018-09-01-preview",
-    "properties": {
-        "artifactSourceId": "<resource-ID-artifact-source>"
-    },
-    "dependsOn": [
-        "<artifact-source>"
-    ],
-    "resources": [
-        {
-            "type": "services",
-            ...
+  "type": "Microsoft.DeploymentManager/serviceTopologies",
+  "apiVersion": "2018-09-01-preview",
+  "name": "<topology-name>",
+  "location": "<topology-location>",
+  "dependsOn": [
+    "<artifact-source>"
+  ],
+  "properties": {
+    "artifactSourceId": "<resource-ID-artifact-source>"
+  },
+  "resources": [
+    {
+      "type": "services",
+        ...
         }
     ]
 }
@@ -118,20 +118,20 @@ Aşağıdaki örnek, hizmetler kaynağın genel biçimini gösterir. Her hizmet 
 
 ```json
 {
-    "type": "services",
-    "name": "<service-name>",
-    "location": "<service-location>",
-    "apiVersion": "2018-09-01-preview",
-    "dependsOn": [
-        "<service-topology>"
-    ],
-    "properties": {
-        "targetSubscriptionId": "<subscription-ID>",
-        "targetLocation": "<location-of-deployed-service>"
-    },
-    "resources": [
-        {
-            "type": "serviceUnits",
+  "type": "services",
+  "apiVersion": "2018-09-01-preview",
+  "name": "<service-name>",
+  "location": "<service-location>",
+  "dependsOn": [
+      "<service-topology>"
+  ],
+  "properties": {
+    "targetSubscriptionId": "<subscription-ID>",
+    "targetLocation": "<location-of-deployed-service>"
+  },
+  "resources": [
+    {
+      "type": "serviceUnits",
             ...
         }
     ]
@@ -146,24 +146,24 @@ Aşağıdaki örnek, hizmet birimi kaynağı genel biçimini gösterir. Kaynak g
 
 ```json
 {
-    "type": "serviceUnits",
-    "name": "<service-unit-name>",
-    "location": "<service-unit-location>",
-    "apiVersion": "2018-09-01-preview",
-    "dependsOn": [
-        "<service>"
-    ],
-    "tags": {
-        "serviceType": "Service West US Web App"
-    },
-    "properties": {
-        "targetResourceGroup": "<resource-group-name>",
-        "deploymentMode": "Incremental",
-        "artifacts": {
-            "templateArtifactSourceRelativePath": "<relative-path-to-template>",
-            "parametersArtifactSourceRelativePath": "<relative-path-to-parameter-file>"
-        }
+  "type": "serviceUnits",
+  "apiVersion": "2018-09-01-preview",
+  "name": "<service-unit-name>",
+  "location": "<service-unit-location>",
+  "dependsOn": [
+    "<service>"
+  ],
+  "tags": {
+    "serviceType": "Service West US Web App"
+  },
+  "properties": {
+    "targetResourceGroup": "<resource-group-name>",
+    "deploymentMode": "Incremental",
+    "artifacts": {
+      "templateArtifactSourceRelativePath": "<relative-path-to-template>",
+      "parametersArtifactSourceRelativePath": "<relative-path-to-parameter-file>"
     }
+  }
 }
 ```
 
@@ -199,10 +199,10 @@ Devam etmeden önce dağıtım bekleme adım duraklatır. Hizmetiniz bir sonraki
 
 ```json
 {
-    "apiVersion": "2018-09-01-preview",
     "type": "Microsoft.DeploymentManager/steps",
+    "apiVersion": "2018-09-01-preview",
     "name": "waitStep",
-        "location": "<step-location>",
+    "location": "<step-location>",
     "properties": {
         "stepType": "wait",
         "attributes": {
@@ -228,32 +228,32 @@ Aşağıdaki örnek, genel biçim dağıtımı gösterir.
 
 ```json
 {
-    "type": "Microsoft.DeploymentManager/rollouts",
-    "name": "<rollout-name>",
-    "location": "<rollout-location>",
-    "apiVersion": "2018-09-01-preview",
-    "Identity": {
-        "type": "userAssigned",
-        "identityIds": [
-            "<managed-identity-ID>"
-        ]
-    },
-    "dependsOn": [
-        "<artifact-source>"
-    ],
-    "properties": {
-        "buildVersion": "1.0.0.0",
-        "artifactSourceId": "<artifact-source-ID>",
-        "targetServiceTopologyId": "<service-topology-ID>",
-        "stepGroups": [
-            {
-                "name": "stepGroup1",
-                "dependsOnStepGroups": ["<step-group-name>"],
-                "preDeploymentSteps": ["<step-ID>"],
-                "deploymentTargetId":
-                    "<service-unit-ID>",
-                "postDeploymentSteps": ["<step-ID>"]
-            },
+  "type": "Microsoft.DeploymentManager/rollouts",
+  "apiVersion": "2018-09-01-preview",
+  "name": "<rollout-name>",
+  "location": "<rollout-location>",
+  "Identity": {
+    "type": "userAssigned",
+    "identityIds": [
+      "<managed-identity-ID>"
+    ]
+  },
+  "dependsOn": [
+    "<artifact-source>"
+  ],
+  "properties": {
+    "buildVersion": "1.0.0.0",
+    "artifactSourceId": "<artifact-source-ID>",
+    "targetServiceTopologyId": "<service-topology-ID>",
+    "stepGroups": [
+      {
+        "name": "stepGroup1",
+        "dependsOnStepGroups": ["<step-group-name>"],
+        "preDeploymentSteps": ["<step-ID>"],
+        "deploymentTargetId":
+          "<service-unit-ID>",
+        "postDeploymentSteps": ["<step-ID>"]
+      },
             ...
         ]
     }
@@ -276,21 +276,21 @@ Kullanım `$containerRoot` Azure kaynakları dağıtmak şablonu parametre dosya
 
 ```json
 {
-    "type": "Microsoft.DeploymentManager/artifactSources",
-    "name": "[variables('rolloutArtifactSource').name]",
-    "location": "[parameters('azureResourceLocation')]",
-    "apiVersion": "2018-09-01-preview",
-    "properties": {
-        "sourceType": "AzureStorage",
-        "artifactRoot": "[parameters('binaryArtifactRoot')]",
-        "authentication" :
+  "type": "Microsoft.DeploymentManager/artifactSources",
+  "apiVersion": "2018-09-01-preview",
+  "name": "[variables('rolloutArtifactSource').name]",
+  "location": "[parameters('azureResourceLocation')]",
+  "properties": {
+    "sourceType": "AzureStorage",
+      "artifactRoot": "[parameters('binaryArtifactRoot')]",
+      "authentication" :
         {
-            "type": "SAS",
-            "properties": {
-                "sasUri": "[parameters('artifactSourceSASLocation')]"
-            }
+          "type": "SAS",
+          "properties": {
+            "sasUri": "[parameters('artifactSourceSASLocation')]"
+          }
         }
-    }
+  }
 },
 ```
 
@@ -300,13 +300,13 @@ Bildirim `artifactRoot` ve `sasUri` özellikleri. Yapıt kök gibi bir değere a
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "deployPackageUri": {
-            "value": "$containerRoot\\helloWorldWebAppWUS.zip"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "deployPackageUri": {
+      "value": "$containerRoot\\helloWorldWebAppWUS.zip"
     }
+  }
 }
 ```
 
@@ -314,19 +314,19 @@ Ardından, bu parametre, şablonunuzda kullanın:
 
 ```json
 {
-    "name": "MSDeploy",
-    "type": "extensions",
-    "location": "[parameters('location')]",
-    "apiVersion": "2015-08-01",
-    "dependsOn": [
-        "[concat('Microsoft.Web/sites/', parameters('WebAppName'))]"
-    ],
-    "tags": {
-        "displayName": "WebAppMSDeploy"
-    },
-    "properties": {
-        "packageUri": "[parameters('deployPackageURI')]"
-    }
+  "name": "MSDeploy",
+  "apiVersion": "2015-08-01",
+  "type": "extensions",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[concat('Microsoft.Web/sites/', parameters('WebAppName'))]"
+  ],
+  "tags": {
+    "displayName": "WebAppMSDeploy"
+  },
+  "properties": {
+    "packageUri": "[parameters('deployPackageURI')]"
+  }
 }
 ```
 

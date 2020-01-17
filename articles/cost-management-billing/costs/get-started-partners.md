@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: a320a446bf6a2ff5d5d923961b2614970ffa70f9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b337c1d57d253f55f3171e1de78a81b6de13ba31
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75988415"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157191"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure maliyet yönetimi 'ni kullanmaya başlama
 
@@ -213,7 +213,7 @@ Kullanım ayrıntı dosyaları ve maliyet yönetimi API 'Lerinde aşağıdaki ve
 | Konum | Kaynağın normalleştirilmiş konumu. | Yok |
 | effectivePrice | Hizmetin fiyatlandırma para birimi cinsinden geçerli birim fiyatı. Ürün, hizmet ailesi, ölçüm ve teklif için benzersiz. Faturalandırma hesabı için fiyat listesi 'nde fiyatlandırma ile kullanılır. Katmanlı fiyatlandırma veya dahil edilen bir miktar olduğunda, tüketim için karıştırılan fiyatı gösterir. | Ayarlamaların ardından birim fiyatı. |
 | Miktar | Satın alınan veya tüketilen ölçülen miktar. Faturalandırma döneminde kullanılan ölçüm miktarı. | Birim sayısı. Mutabakat sırasında faturalandırma sisteminizdeki bilgilerle eşleştiğinden emin olun. |
-| unitOfMeasure | Hizmetin ücretlendirildiği birimi tanımlar. Örneğin, GB ve saat. | Hizmetin ücretlendirildiği birimi tanımlar. Örneğin, GB, saat ve 10, 000s. |
+| unitOfMeasure | Hizmetin ücretlendirildiği birimi tanımlar. Örneğin, GB ve saat. | Hizmetin ücretlendirildiği birimi tanımlar. Örneğin, GB, saat ve 10.000 s. |
 | pricingCurrency | Birim fiyatını tanımlayan para birimi. | Fiyat listesindeki para birimi.|
 | billingCurrency | Faturalandırılan maliyeti tanımlayan para birimi. | Müşterinin coğrafi bölgesinin para birimi. |
 | chargeType | Maliyetin, satın alma ve geri ödeme gibi Azure maliyet yönetiminde gösterdiği ücret türünü tanımlar. | Ücret veya ayarlamanın türü. Geçerli etkinlik için kullanılamaz. |
@@ -265,7 +265,11 @@ Aboneliğe RBAC erişimi olan kullanıcılar ayrıca maliyet verilerini müşter
 
 Azure portal, iş ortağı kiracısında veya müşteri kiracısında oturum açın ve **maliyet yönetimi + faturalandırma**' i seçin. Uygun bir kapsam seçin (örneğin, bir faturalandırma hesabı) ve ardından **Maliyet Analizi**' ni seçin. Sayfa yüklendiğinde, **dışarı aktar**' ı seçin. Dışarı aktarma zamanlaması altındaki **tüm dışarı aktarmaları görüntüle** ' yi seçin.
 
+![Dışarı Aktar ' ı seçin ve tüm dışarı aktarmaları görüntüleyin](./media/get-started-partners/export01.png)
+
 Sonra **Ekle** ' yi seçin ve adı yazın ve bir dışarı aktarma türü seçin. **depolama** sekmesini seçin ve gerekli bilgileri girin.
+
+![Yeni dışarı aktarma ekleme ve depolama alanı seçme sekmesi](./media/get-started-partners/export02.png)
 
 İş ortağı kiracısında bir dışarı aktarma oluşturduğunuzda, iş ortağı kiracısında Kullandıkça Öde aboneliğini seçin. Bu aboneliği kullanarak bir Azure depolama hesabı oluşturun.
 
@@ -274,6 +278,8 @@ Müşteri kiracısında RBAC kullanıcıları için müşteri kiracısında bir 
 İçeriği gözden geçirin ve ardından bir dışarı aktarma zamanlamak için **Oluştur** ' u seçin.
 
 Dışarı aktarma listesindeki verileri doğrulamak için depolama hesabı adını seçin. Depolama hesabı sayfasında **kapsayıcılar** ' ı seçin ve kapsayıcıyı seçin. Karşılık gelen klasöre gidin ve CSV dosyasını seçin. CSV dosyasını almak ve açmak için **İndir** ' i seçin. İçe aktarılmış veriler, Azure portal kullanım ayrıntılarına benzer maliyet verilerine benzer.
+
+![Aktarılmış veri örneği](./media/get-started-partners/example-export-data.png)
 
 ## <a name="cost-management-rest-apis"></a>Maliyet yönetimi REST API 'Leri
 

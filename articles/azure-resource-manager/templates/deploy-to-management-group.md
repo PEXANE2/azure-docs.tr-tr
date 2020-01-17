@@ -3,12 +3,12 @@ title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: e3661225dd69721ab223da0b44d69a592abb59bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ba4f4d2e95c0b878e9f402fa84139ac5b351e3c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477791"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121922"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Yönetim grubu düzeyinde kaynaklar oluşturma
 
@@ -63,7 +63,7 @@ Yönetim grubu dağıtımları için, Şablon işlevleri kullanılırken bazı �
 
 * [ResourceGroup ()](template-functions-resource.md#resourcegroup) **işlevi desteklenmiyor.**
 * [Subscription ()](template-functions-resource.md#subscription) **işlevi desteklenmiyor.**
-* [RESOURCEID ()](template-functions-resource.md#resourceid) işlevi desteklenir. Yönetim grubu düzeyi dağıtımlarında kullanılan kaynakların kaynak KIMLIĞINI almak için kullanın. Örneğin, `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`bir ilke tanımının kaynak KIMLIĞINI alın. `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`biçimindeki kaynak KIMLIĞINI döndürür.
+* [RESOURCEID ()](template-functions-resource.md#resourceid) işlevi desteklenir. Yönetim grubu düzeyi dağıtımlarında kullanılan kaynakların kaynak KIMLIĞINI almak için kullanın. Örneğin, `resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))`bir ilke tanımının kaynak KIMLIĞINI alın. `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`biçimindeki kaynak KIMLIĞINI döndürür.
 * [Reference ()](template-functions-resource.md#reference) ve [List ()](template-functions-resource.md#list) işlevleri desteklenir.
 
 ## <a name="create-policies"></a>İlkeleri oluşturma
@@ -74,30 +74,30 @@ Aşağıdaki örnekte, yönetim grubu düzeyinde bir ilkenin nasıl [tanımlanac
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyDefinitions",
-            "name": "locationpolicy",
-            "apiVersion": "2018-05-01",
-            "properties": {
-                "policyType": "Custom",
-                "parameters": {},
-                "policyRule": {
-                    "if": {
-                        "field": "location",
-                        "equals": "northeurope"
-                    },
-                    "then": {
-                        "effect": "deny"
-                    }
-                }
-            }
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyDefinitions",
+      "apiVersion": "2018-05-01",
+      "name": "locationpolicy",
+      "properties": {
+        "policyType": "Custom",
+        "parameters": {},
+        "policyRule": {
+          "if": {
+            "field": "location",
+            "equals": "northeurope"
+          },
+          "then": {
+            "effect": "deny"
+          }
         }
-    ]
+      }
+    }
+  ]
 }
 ```
 
@@ -107,36 +107,34 @@ Aşağıdaki örnek, var olan bir ilke tanımını yönetim grubuna atar. İlke 
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "policyDefinitionID": {
-            "type": "string"
-        },
-        "policyName": {
-            "type": "string"
-        },
-        "policyParameters": {
-            "type": "object",
-            "defaultValue": {}
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "policyDefinitionID": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyAssignments",
-            "name": "[parameters('policyName')]",
-            "apiVersion": "2018-03-01",
-            "properties": {
-                "policyDefinitionId": "[parameters('policyDefinitionID')]",
-                "parameters": "[parameters('policyParameters')]"
-            }
-        }
-    ]
+    "policyName": {
+      "type": "string"
+    },
+    "policyParameters": {
+      "type": "object",
+      "defaultValue": {}
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "apiVersion": "2018-03-01",
+      "name": "[parameters('policyName')]",
+      "properties": {
+        "policyDefinitionId": "[parameters('policyDefinitionID')]",
+        "parameters": "[parameters('policyParameters')]"
+      }
+    }
+  ]
 }
 ```
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

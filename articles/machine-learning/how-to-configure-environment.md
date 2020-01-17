@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 096a880dc1553bec4c9d4dce36e14af7a917fc2a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b70fcb1d63636984e1d014723b50170651a553d9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540860"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156888"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -259,7 +259,7 @@ Geliştirme için Visual Studio Code kullanmak için:
 
 1. Visual Studio Code için Azure Machine Learning uzantısını yükleyip bkz. [Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
 
-    Daha fazla bilgi için bkz. [Visual Studio Code için Azure Machine Learning kullanma](how-to-vscode-tools.md).
+    Daha fazla bilgi için bkz. [Visual Studio Code için Azure Machine Learning kullanma](tutorial-setup-vscode-extension.md).
 
 1. Visual Studio Code herhangi bir Python geliştirme türü için nasıl kullanacağınızı öğrenin. bkz. [VSCode 'Da Python ile çalışmaya başlama](https://code.visualstudio.com/docs/python/python-tutorial).
 
@@ -373,7 +373,7 @@ Yapılandırma dosyasını üç şekilde oluşturabilirsiniz:
 
 * **Dosyayı indirin**: [Azure Portal](https://ms.portal.azure.com), çalışma alanınızın **genel bakış** bölümünde **config. json dosyasını indir** ' i seçin.
 
-     ![Azure Portal](./media/how-to-configure-environment/configure.png)
+     ![Azure portalında](./media/how-to-configure-environment/configure.png)
 
 * **Dosyayı program aracılığıyla oluşturun**: Aşağıdaki kod parçacığında, abonelik kimliği, kaynak grubu ve çalışma alanı adı sağlayarak bir çalışma alanına bağlanırsınız. Daha sonra çalışma alanı yapılandırmasını dosyaya kaydeder:
 

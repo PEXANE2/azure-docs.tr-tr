@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: f5e36095c506918298404758523642073dfd19c7
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864729"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156735"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory ve Azure veri paylaşma kullanarak veri tümleştirme
 
@@ -99,7 +99,7 @@ Hata ayıklamayı açmak için, fabrika üst çubuğunda **veri akışı hata ay
 
 ![Portal](media/lab-data-flow-data-share/configure10.png)
 
-## <a name="ingest-data-from-azure-sql-db-into-adls-gen2-using-the-copy-activity"></a>Kopyalama etkinliğini kullanarak Azure SQL DB 'den ADLS Gen2 'e veri alma
+## <a name="ingest-data-using-the-copy-activity"></a>Kopyalama etkinliğini kullanarak verileri alma
 
 Bu bölümde, bir Azure SQL DB 'deki bir tabloyu ADLS Gen2 depolama hesabına veren bir kopyalama etkinliğine sahip bir işlem hattı oluşturacaksınız. Bir işlem hattı eklemeyi, bir veri kümesini yapılandırmayı ve bir işlem hattından ADF UX aracılığıyla hata ayıklamanızı öğreneceksiniz. Bu bölümde kullanılan yapılandırma deseninin, ilişkisel bir veri deposundan dosya tabanlı veri deposuna kopyalanması için geçerli olabilir.
 

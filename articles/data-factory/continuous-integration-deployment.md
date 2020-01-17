@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fb049b5af5c700cdb72f0319019cfd6eee952d9f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977516"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156973"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -330,7 +330,7 @@ GIT modundaysanız, şablonda parametreli olan özellikleri ve sabit kodlanmış
 * Otomatik CI/CD kullanıyorsunuz ve Kaynak Yöneticisi dağıtımı sırasında bazı özellikleri değiştirmek istiyorsunuz, ancak özellikler varsayılan olarak parametreleştirimez.
 * Fabrikanızın izin verilen en fazla sayıda parametreye (256) sahip olduğu için varsayılan Kaynak Yöneticisi şablonunun geçersiz olması çok büyük.
 
-Bu koşullar altında, varsayılan parameterleştirme şablonunu geçersiz kılmak için, deponun kök klasöründe ARM-Template-Parameters-Definition. JSON adlı bir dosya oluşturun. Bu tam dosya adını kullanmanız gerekir. Data Factory, bu dosyayı, yalnızca işbirliği dalından değil Azure Data Factory portalında yaptığınız daldan okur. Bir özel daldan dosya oluşturabilir veya düzenleyebilirsiniz, burada, Kullanıcı arabiriminde **ARM şablonunu dışarı aktar** ' ı seçerek yaptığınız değişiklikleri test edebilirsiniz. Daha sonra dosyayı işbirliği dalında birleştirebilirsiniz. Dosya bulunamazsa, varsayılan şablon kullanılır.
+Bu koşullar altında, varsayılan parameterleştirme şablonunu geçersiz kılmak için, Data Factory git tümleştirmesi için kök klasör olarak belirtilen klasörde ARM-Template-Parameters-Definition. JSON adlı bir dosya oluşturun. Bu tam dosya adını kullanmanız gerekir. Data Factory, bu dosyayı, yalnızca işbirliği dalından değil Azure Data Factory portalında yaptığınız daldan okur. Bir özel daldan dosya oluşturabilir veya düzenleyebilirsiniz, burada, Kullanıcı arabiriminde **ARM şablonunu dışarı aktar** ' ı seçerek yaptığınız değişiklikleri test edebilirsiniz. Daha sonra dosyayı işbirliği dalında birleştirebilirsiniz. Dosya bulunamazsa, varsayılan şablon kullanılır.
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Özel parametre dosyasının sözdizimi
 

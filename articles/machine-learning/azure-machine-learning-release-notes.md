@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b413fd7efe865f1dc2062a8f2dcfae983ec2f27a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0e613dd1c47a9942d95bd668f1e9f85e42649b5c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771930"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122381"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -125,7 +125,7 @@ Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların 
     + Göreli yollardan RunConfigurations yükleme için çözüm.
     + Bir zaman serisi sütunu bırakılmakta olan `keep_columns` veya `drop_columns` çağrılırken, ilgili yetenekler veri kümesi için de bırakılır.
   + **azureml-yorumlama**
-    + yorumlama-Community 'nin güncelleştirilmiş sürümü 0.2.0 olarak
+    + Yorumlama-Community 'nin güncelleştirilmiş sürümü 0.2.0 olarak
   + **azureml-işlem hattı-adımlar**
     + Azure Machine Learning işlem hattı adımları için `runconfig_pipeline_params` desteklenen değerler belgelenmiştir.
   + **azureml-işlem hattı-çekirdek**
@@ -220,7 +220,7 @@ R için Azure Machine Learning SDK, Python SDK 'sına bağlamak için `reticulat
 
 SDK 'nın ana özellikleri şunlardır:
 
-+   Machine Learning denemeleri izleme, günlüğe kaydetme ve düzenleme için bulut kaynaklarını yönetin.
++   Makine öğrenmesi denemelerinizi izlemek, günlüğe kaydetmek ve düzenlemek için bulut kaynaklarını yönetme.
 +   GPU hızlandırılmış model eğitimi de dahil olmak üzere bulut kaynaklarını kullanarak modelleri eğitme.
 +   Modellerinizi Azure Container Instances (ACI) ve Azure Kubernetes hizmeti (AKS) üzerinde WebServices olarak dağıtın.
 
@@ -733,7 +733,7 @@ Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, 
   + `read_parquet` performansı Spark 'ta çalışırken önemli ölçüde iyileştirilmiştir.
   + Belirsiz tarih biçimlerine sahip tek bir sütun olması durumunda `column_type_builder` başarısız olduğu bir sorun düzeltildi.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
 + **Önizleme özelliği**
   + Günlük ve çıkış dosyası akışı artık çalışma ayrıntıları sayfaları için kullanılabilir. Dosyalar, önizleme geçişi açık olduğunda güncelleştirmeleri gerçek zamanlı olarak akışa alır.
   + Çalışma alanı düzeyinde kota ayarlama özelliği önizleme aşamasında serbest bırakılır. AmlCompute kotaları abonelik düzeyinde ayrılır, ancak artık bu kotayı çalışma alanları arasında dağıtmanıza ve bunları dengeli paylaşım ve idare için ayırmaya izin veririz. Çalışma alanınızın sol gezinti çubuğunda bulunan **kullanımlar + kotalar** dikey penceresine ve **kotaları Yapılandır** sekmesini seçmeniz yeterlidir. Bu bir çoklu çalışma alanı işlemi olduğundan, çalışma alanı düzeyinde kotalar ayarlayabilmek için bir abonelik yöneticisi olmanız gerektiğini unutmayın.
@@ -1104,7 +1104,7 @@ Azure Databricks kullanan bazı müşterilerle ilgili sorunlara neden olduğunda
 
 ## <a name="2019-05-06"></a>2019-05-06
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
 
 Azure portal, şimdi şunları yapabilirsiniz:
 + Otomatik ML denemeleri oluşturma ve çalıştırma
@@ -1223,7 +1223,7 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
   + Artık var olan bir uzak işlem kümesinde çalışan bir betiği yeniden gönderebilirsiniz.
   + Artık, işlem hatları sekmesinde yeni parametrelerle yayınlanmış bir işlem hattı çalıştırabilirsiniz.
   + Çalışma ayrıntıları artık yeni bir Snapshot dosya görüntüleyicisini destekliyor. Belirli bir çalıştırma gönderdiğinizde dizinin anlık görüntüsünü görüntüleyebilirsiniz. Çalıştırmaya başlamak için gönderilen Not defterini de indirebilirsiniz.
@@ -1318,7 +1318,7 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 + **Hata düzeltmeleri ve geliştirmeleri**
   + Source_directory_data_store özelliğini, [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)Için sağlanan [runconfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) 'lar üzerinde istenen veri deposuna (BLOB depolama gibi) ayarlamaya yönelik Azure Machine Learning işlem hatlarında destek ekledik. Varsayılan olarak, çok sayıda adım eşzamanlı olarak yürütüldüğünde sorunları azaltma sorunlarını ortadan kaldırarak Azure dosya deposunu, yedekleme veri deposu olarak kullanır.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
 
 + **Yeni Özellikler**
   + Raporlar için yeni Sürükle ve bırak tablosu Düzenleyicisi deneyimi. Kullanıcılar bir sütunu, tablonun önizlemesinin görüntüleneceği tablo alanına kadar iyi sürükleyebilirsiniz. Sütunlar yeniden düzenlenebilir.
@@ -1488,7 +1488,7 @@ Azure Machine Learning işlem, Azure portal veya CLI kullanarak Python'da oluşt
 + ML işlem hatları
   + İşlem hatları, batch kapsamlar ve stil ile çalışmaya başlama için yeni ve güncelleştirilmiş not defterlerini örnekler aktarın: https://aka.ms/aml-pipeline-notebooks
   + Bilgi edinmek için nasıl [ilk işlem hattınızı oluşturun](how-to-create-your-first-pipeline.md)
-  + Bilgi edinmek için nasıl [komut zincirlerini kullanarak batch Öngörüler çalıştırın](how-to-run-batch-predictions.md)
+  + Bilgi edinmek için nasıl [komut zincirlerini kullanarak batch Öngörüler çalıştırın](how-to-use-parallel-run-step.md)
 + Azure Machine Learning işlem hedefi
   + [Örnek Not defterleri](https://aka.ms/aml-notebooks) artık yeni yönetilen işlem kullanacak şekilde güncelleştirilir.
   + [Bu işlem hakkında bilgi edinin](how-to-set-up-training-targets.md#amlcompute)
@@ -1543,7 +1543,7 @@ Veri hazırlığı SDK'sı hakkında daha fazla bilgi edinmek [başvuru belgeler
 
 ## <a name="2018-11-05"></a>2018-11-05
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
 Azure Machine Learning için Azure portal aşağıdaki güncelleştirmelere sahiptir:
   * Yeni bir **işlem hatları** yayımlanan işlem hatları için sekmesinde.
   * İşlem hedefi olarak var olan bir HDInsight kümesine ekleme desteği eklendi.

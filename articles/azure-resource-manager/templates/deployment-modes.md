@@ -3,12 +3,12 @@ title: Dağıtım modları
 description: Azure Resource Manager ile tamamlanmış veya artımlı dağıtım modunun kullanılıp kullanılmayacağını nasıl belirleyeceğiniz açıklanır.
 ms.topic: conceptual
 ms.date: 12/23/2019
-ms.openlocfilehash: f5a6f6416240ce512167e779c086d2665771c3f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dc5446c56c92b61016563995ebc4c884d48e2419
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484759"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152400"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager Dağıtım modları
 
@@ -26,16 +26,16 @@ Tüm modda Kaynak Yöneticisi kaynak grubunda var olan ancak şablonda belirtilm
 
 [Bir şablonda birden fazla kaynak grubuna](cross-resource-group-deployment.md)dağıtırsanız, dağıtım işleminde belirtilen kaynak grubundaki kaynaklar silinebilir. İkincil kaynak gruplarındaki kaynaklar silinmez.
 
-Kaynak türlerinin tamamlanma modu silme işlemlerinin nasıl ele aldığı bazı farklılıklar vardır. Üst kaynaklar, tamamlanmış modda dağıtılan bir şablonda olmadığında otomatik olarak silinir. Bazı alt kaynaklar şablonda olmadığında otomatik olarak silinmez. Ancak, üst kaynak silinirse bu alt kaynaklar silinir. 
+Kaynak türlerinin tamamlanma modu silme işlemlerinin nasıl ele aldığı bazı farklılıklar vardır. Üst kaynaklar, tamamlanmış modda dağıtılan bir şablonda olmadığında otomatik olarak silinir. Bazı alt kaynaklar şablonda olmadığında otomatik olarak silinmez. Ancak, üst kaynak silinirse bu alt kaynaklar silinir.
 
-Örneğin, kaynak grubunuz bir DNS bölgesi (Microsoft. Network/dnsZones kaynak türü) ve CNAME kaydı (Microsoft. Network/dnsZones/CNAME kaynak türü) içeriyorsa DNS bölgesi CNAME kaydı için üst kaynaktır. ' İ tüm moduyla dağıtıp DNS bölgesini şablonunuza eklemezseniz, DNS bölgesinin ve CNAME kaydının ikisi de silinir. Şablonunuzda DNS bölgesini dahil ederseniz ancak CNAME kaydını eklemezseniz CNAME silinmez. 
+Örneğin, kaynak grubunuz bir DNS bölgesi (Microsoft. Network/dnsZones kaynak türü) ve CNAME kaydı (Microsoft. Network/dnsZones/CNAME kaynak türü) içeriyorsa DNS bölgesi CNAME kaydı için üst kaynaktır. ' İ tüm moduyla dağıtıp DNS bölgesini şablonunuza eklemezseniz, DNS bölgesinin ve CNAME kaydının ikisi de silinir. Şablonunuzda DNS bölgesini dahil ederseniz ancak CNAME kaydını eklemezseniz CNAME silinmez.
 
 Kaynak türlerinin silinme işleminin nasıl yapıldığını gösteren bir liste için, bkz. [tüm mod dağıtımları Için Azure kaynaklarını silme](complete-mode-deletion.md).
 
 Kaynak grubu [kilitliyse](../management/lock-resources.md), tamamlanmış mod kaynakları silmez.
 
 > [!NOTE]
-> Yalnızca kök düzeyindeki şablonlar, tam Dağıtım modunu destekler. [Bağlantılı veya iç içe şablonlar](linked-templates.md)için artımlı Mod kullanmanız gerekir. 
+> Yalnızca kök düzeyindeki şablonlar, tam Dağıtım modunu destekler. [Bağlantılı veya iç içe şablonlar](linked-templates.md)için artımlı Mod kullanmanız gerekir.
 >
 > [Abonelik düzeyindeki dağıtımlar](deploy-to-subscription.md) , tamamlanma modunu desteklemez.
 >
@@ -105,9 +105,9 @@ Aşağıdaki örnek, artımlı dağıtım moduna ayarlanmış bir bağlı şablo
 ```json
 "resources": [
   {
+      "type": "Microsoft.Resources/deployments",
       "apiVersion": "2017-05-10",
       "name": "linkedTemplate",
-      "type": "Microsoft.Resources/deployments",
       "properties": {
           "mode": "Incremental",
           <nested-template-or-external-template>

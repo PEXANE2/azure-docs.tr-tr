@@ -3,12 +3,12 @@ title: Kaynak bulunamadı hataları
 description: Bir Azure Resource Manager şablonuyla dağıtıldığında bir kaynak bulunamadığında hataların nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 06/06/2018
-ms.openlocfilehash: 832dc15f81c0fd815072b9e95920a4388a94cb0b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81a2541be4f0a99aa28186eb6b7289bdb595e678
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477765"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152434"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Azure kaynakları için bulunamadı hatalarını çözümleme
 
@@ -41,8 +41,8 @@ Kaynak Yöneticisi bir kaynağın özelliklerini alması gerekiyor, ancak abonel
 
 ```json
 {
-  "apiVersion": "2015-08-01",
   "type": "Microsoft.Web/sites",
+  "apiVersion": "2015-08-01",
   "dependsOn": [
     "[variables('hostingPlanName')]"
   ],
@@ -76,8 +76,8 @@ Kaynak, dağıtılmasından farklı bir kaynak grubunda mevcut olduğunda, kayna
 
 ```json
 "properties": {
-    "name": "[parameters('siteName')]",
-    "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+  "name": "[parameters('siteName')]",
+  "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
 }
 ```
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6f2db91a35573bc2cbdd0df2cb1ac09914cc956b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927469"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122653"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Amazon S3 'ten Azure Storage 'a veri geçirmek için Azure Data Factory kullanma 
 
@@ -47,7 +47,7 @@ Yukarıdaki resimde, farklı paralellik seviyeleri aracılığıyla harika veri 
 
 Tek bir kopyalama etkinliği çalıştırmasında, ADF 'nin, veri depolarında veya temel ağdaki belirli bir geçici başarısızlık düzeyini işleyebilmesi için yerleşik yeniden deneme mekanizması vardır. 
 
-S3 'den blob 'a ve S3 'ten ADLS 2. arasında ikili kopyalama yaparken, ADF otomatik olarak checkişaret gerçekleştirir.  Bir kopyalama etkinliği çalıştırması başarısız olduysa veya zaman aşımına uğramışsa, sonraki yeniden denemelerde (> 1 sayısını yeniden denediğinizden emin olun), kopya baştan başlamak yerine son hata noktasından devam eder. 
+S3 'den blob 'a ve S3 'ten ADLS 2. arasında ikili kopyalama yaparken, ADF otomatik olarak checkişaret gerçekleştirir.  Bir kopyalama etkinliği çalıştırması başarısız olduysa veya zaman aşımına uğramışsa, sonraki yeniden denemelerde, kopya baştan başlamak yerine son hata noktasından devam eder. 
 
 ## <a name="network-security"></a>Ağ güvenliği 
 
@@ -86,7 +86,7 @@ Verileri özel bağlantı üzerinden geçir:
 
 ### <a name="initial-snapshot-data-migration"></a>İlk anlık görüntü verilerini geçirme 
 
-Veri bölümü, özellikle 10 TB 'den fazla veri geçirirken önerilir.  Verileri bölümlemek için, Amazon S3 adlı klasörleri ve dosyaları ada göre filtrelemek için ' önek ' ayarından yararlanın ve sonra ADF kopyalama işi her seferinde bir bölüm kopyalayabilir.  Daha iyi üretilen iş için birden çok ADF kopyalama işini eşzamanlı olarak çalıştırabilirsiniz. 
+Veri bölümü, özellikle 100 TB 'den fazla veri geçirirken önerilir.  Verileri bölümlemek için, Amazon S3 adlı klasörleri ve dosyaları ada göre filtrelemek için ' önek ' ayarından yararlanın ve sonra ADF kopyalama işi her seferinde bir bölüm kopyalayabilir.  Daha iyi üretilen iş için birden çok ADF kopyalama işini eşzamanlı olarak çalıştırabilirsiniz. 
 
 Ağ veya veri deposu geçici sorunu nedeniyle kopyalama işlerinin herhangi biri başarısız olursa, ilgili bölümü AWS S3 ' dan yeniden yüklemek için başarısız kopyalama işini yeniden çalıştırabilirsiniz.  Diğer bölümleri yükleyen diğer tüm kopyalama işleri etkilenmeyecektir. 
 

@@ -1,20 +1,20 @@
 ---
 title: 'Öğretici: harita üzerinde yakındaki konumları arama | Microsoft Azure haritaları'
-description: Bu öğreticide, Microsoft Azure haritaları kullanarak bir harita üzerindeki yakın konumları (ilgi çekici noktaları) nasıl arayalabileceğinizi öğreneceksiniz.
+description: Bu öğreticide, Microsoft Azure haritaları kullanarak bir haritada ilgi çekici noktaların nasıl aranacağını öğreneceksiniz.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 974a60bafb3e9be56618824d6205d21c364d6601
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910820"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153029"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak yakındaki ilgi noktalarını arama
 
@@ -63,13 +63,13 @@ Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API’lerini
 
 ![Azure portal birincil anahtarı al](./media/tutorial-search-location/get-key.png)
 
-Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
+Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
 <a id="createmap"></a>
 
 ## <a name="create-a-new-map"></a>Yeni harita oluşturma
 
-Harita Denetimi API’si, Haritalar’ı web uygulamanızla kolayca tümleştirmenize olanak tanıyan kullanışlı bir istemci kitaplığıdır. Açık REST hizmet çağrılarının karmaşıklığını gizlemesinin yanı sıra, stili değiştirilebilen ve özelleştirilebilen bileşenlerle üretkenliğinizi arttırır. Aşağıdaki adımlarda, Harita Denetimi API’sinin tümleşik olduğu statik bir HTML sayfasının nasıl oluşturulacağı gösterilmektedir.
+Harita Denetimi API 'SI uygun bir istemci kitaplığı. Bu API, haritaları Web uygulamanızla kolayca tümleştirmenizi sağlar. Çıplak hizmet çağrılarının karmaşıklığını gizler ve özelleştirilebilir bileşenlerle üretkenliğinizi artırır. Aşağıdaki adımlarda, Harita Denetimi API’sinin tümleşik olduğu statik bir HTML sayfasının nasıl oluşturulacağı gösterilmektedir.
 
 1. Yerel makinenizde yeni bir dosya oluşturun ve bu dosyayı **MapSearch.html** olarak adlandırın.
 2. Aşağıdaki HTML bileşenlerini dosyaya ekleyin:
@@ -133,7 +133,7 @@ Harita Denetimi API’si, Haritalar’ı web uygulamanızla kolayca tümleştirm
 
    Bu segment, Azure Haritalar hesap anahtarınız için Harita Denetimi API’sini başlatır. `atlas`, API ve ilgili görsel bileşenleri içeren ad alanıdır. `atlas.Map`, görsel ve etkileşimli bir Web haritası için denetim sağlar.
 
-4. Değişikliklerinizi dosyaya kaydedin ve HTML sayfasını bir tarayıcıda açın. Bu, hesap anahtarınızı kullanarak `atlas.Map` çağırarak yapabileceğiniz en temel eşlemedir.
+4. Değişikliklerinizi dosyaya kaydedin ve HTML sayfasını bir tarayıcıda açın. Gösterilen eşleme, hesap anahtarınızı kullanarak `atlas.Map` çağırarak, yapabileceğiniz en temel eşlemedir.
 
    ![Haritayı görüntüleme](./media/tutorial-search-location/basic-map.png)
 
@@ -163,7 +163,7 @@ Harita Denetimi API’si, Haritalar’ı web uygulamanızla kolayca tümleştirm
     });
     ```
 
-   Bu kod segmentinde haritaya bir `ready` olayı eklenir, bu, harita kaynakları yüklendiğinde ve eşleme erişilmeye hazırsanız harekete geçilir. Map `ready` olay işleyicisinde, sonuç verilerini depolamak için bir veri kaynağı oluşturulur. Bir simge katmanı oluşturulur ve veri kaynağına eklenir. Bu katman, veri kaynağındaki sonuç verilerin nasıl işleneceğini belirtir. Bu örnekte sonuç koordinatlarının üzerinde ortalanmış olan ve diğer simgelerin çakışmasına izin verilen koyu mavi yuvarlak raptiye simgesi şeklindedir. Sonuç katmanı harita katmanlarına eklenir.
+   Bu kod segmentinde haritaya bir `ready` olayı eklenir, bu, harita kaynakları yüklendiğinde ve eşleme erişilmeye hazırsanız harekete geçilir. Map `ready` olay işleyicisinde, sonuç verilerini depolamak için bir veri kaynağı oluşturulur. Bir simge katmanı oluşturulur ve veri kaynağına eklenir. Bu katman, veri kaynağındaki sonuç verilerinin nasıl işleneceğini belirtir. Bu durumda, sonuç, sonuç koordinatı üzerinde ortalanan ve diğer simgelerin çakışmasına izin veren koyu mavi yuvarlak pin simgesiyle işlenir. Sonuç katmanı harita katmanlarına eklenir.
 
 <a id="usesearch"></a>
 
@@ -215,7 +215,7 @@ Bu bölümde, haritalarınızın bir ilgi noktasını bulmak için haritalar [Ar
     });
     ```
 
-3. **MapSearch.html** dosyasını kaydedin ve tarayıcınızı yenileyin. Artık haritanın, alanda akarine istasyonların konumlarını işaretleyen yuvarlak mavi PIN 'ler ile Seattle üzerinde ortalanmasını görmeniz gerekir.
+3. **MapSearch.html** dosyasını kaydedin ve tarayıcınızı yenileyin. Alandaki yakıt istasyonların konumları için yuvarlak mavi PIN 'ler ile Seattle üzerinde ortalanmış Haritayı görmeniz gerekir.
 
    ![Arama sonuçlarıyla haritayı görüntüleme](./media/tutorial-search-location/pins-map.png)
 
@@ -229,9 +229,9 @@ Bu noktada MapSearch sayfası, belirsiz arama sorgusundan döndürülen ilgi çe
 
 ## <a name="add-interactive-data"></a>Etkileşimli veri ekleme
 
-Şu ana kadar oluşturduğumuz harita, arama sonuçları için yalnızca boylam/enlem verilerine bakar. Ancak Haritalar Arama hizmetinin döndürdüğü işlenmemiş JSON’a bakarsanız, bunun ad ve açık adres de dahil olmak üzere her bir benzin istasyonuyla ilgili ek bilgiler içerdiğini görürsünüz. Etkileşimli açılır kutularla haritada bu verilere yer verebilirsiniz.
+Şu ana kadar oluşturduğumuz harita, arama sonuçları için yalnızca boylam/enlem verilerine bakar. Ancak, Haritalar arama hizmetinin döndürdüğü ham JSON, her bir gaz istasyonuyla ilgili ek bilgiler içerir. Ad ve sokak adresi dahil. Etkileşimli açılır kutularla haritada bu verilere yer verebilirsiniz.
 
-1. Benzer arama hizmetini sorgulamak için koddan sonra Map `ready` olay işleyicisine aşağıdaki kod satırlarını ekleyin. Bu kod bir açılır pencere örneği oluşturur ve simge katmanına fare ile üzerine gelindiğinde gerçekleştirilecek bir olay ekler.
+1. Benzer arama hizmetini sorgulamak için koddan sonra Map `ready` olay işleyicisine aşağıdaki kod satırlarını ekleyin. Bu kod, bir açılan pencere örneği oluşturur ve sembol katmanına bir gelme olayından olayı ekler.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.

@@ -4,14 +4,14 @@ description: Azure için avere vFXT ile istemcileri bağlama
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 39c4d6a77121e0b52a1da827ebb9e1976f609b30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415276"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153420"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Avere vFXT kümesini takma
 
@@ -47,7 +47,7 @@ function mount_round_robin() {
 
     # no need to write again if it is already there
     if ! grep --quiet "${DEFAULT_MOUNT_POINT}" /etc/fstab; then
-        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,nointr,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
+        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
         mkdir -p "${DEFAULT_MOUNT_POINT}"
         chown nfsnobody:nfsnobody "${DEFAULT_MOUNT_POINT}"
     fi
@@ -62,27 +62,27 @@ Yukarıdaki işlev, [avere vFXT örnekleri](https://github.com/Azure/Avere#tutor
 ## <a name="create-the-mount-command"></a>Bağlama komutunu oluşturma
 
 > [!NOTE]
-> Avere vFXT kümenizi oluştururken yeni bir blob kapsayıcısı oluşturmadıysanız, istemcileri bağlamaya çalışmadan önce [depolamayı yapılandırma](avere-vfxt-add-storage.md) bölümündeki adımları izleyin.
+> Avere vFXT kümenizi oluştururken yeni bir blob kapsayıcısı oluşturmadıysanız, istemcileri bağlamaya çalışmadan önce depolama birimi [yapılandırma](avere-vfxt-add-storage.md) bölümünde açıklandığı gibi depolama sistemleri ekleyin.
 
 ``mount`` komutu, istemcinizden vFXT kümesindeki sanal sunucuyu (vServer) yerel dosya sisteminde bir yola eşler. Biçim ``mount <vFXT path> <local path> {options}``
 
-Bağlama komutunda üç öğe vardır:
+Mount komutunun üç öğesi vardır:
 
-* vFXT yolu-(aşağıda açıklanan IP adresi ve ad alanı birleşim yolu birleşimi)
+* vFXT yolu-aşağıda açıklanan küme 9 ' da bir IP adresi ve ad alanı birleşim yolu birleşimi)
 * Yerel yol-istemcideki yol
-* bağlama komutu seçenekleri-( [Mount komut bağımsız değişkenlerinde](#mount-command-arguments)listelenir)
+* bağlama komutu seçenekleri- [bağlama komutu bağımsız değişkenlerinde](#mount-command-arguments) listelenen
 
 ### <a name="junction-and-ip"></a>Kavşak ve IP
 
 VServer yolu, *IP adresinin* bir birleşimidir ve bir *ad alanı birleşiminin*yoludur. Ad alanı birleşimi, depolama sistemi eklendiğinde tanımlanan bir sanal yoldur.
 
-Kümeniz BLOB depolama ile oluşturulduysa, ad alanı yolu `/msazure`
+Kümeniz BLOB depolama ile oluşturulduysa, bu kapsayıcının ad alanı yolu `/msazure`
 
 Örnek: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-Kümeyi oluşturduktan sonra depolama eklediyseniz, ad alanı birleşim yolu, birleşim oluştururken **ad alanı yolunda** ayarladığınız değere karşılık gelir. Örneğin, ad alanı yolu olarak ``/avere/files`` kullandıysanız, istemcileriniz *IP_address*:/avere/Files ' ı yerel bağlama noktasına bağlayabilir.
+Kümeyi oluşturduktan sonra depolama eklediyseniz, ad alanı birleşim yolu, birleşim oluştururken **ad alanı yolunda** ayarladığınız değerdir. Örneğin, ad alanı yolu olarak ``/avere/files`` kullandıysanız, istemcileriniz *IP_address*:/avere/Files ' ı yerel bağlama noktasına bağlayabilir.
 
-![Ad alanı yolu alanındaki/avere/Files ile "yeni birleşim Ekle" iletişim kutusu](media/avere-vfxt-create-junction-example.png)
+![Ad alanı yolu alanındaki/avere/Files ile "yeni birleşim Ekle" iletişim kutusu](media/avere-vfxt-create-junction-example.png) <!-- to do - change example and screenshot to vfxt/files instead of avere -->
 
 IP adresi, vServer için tanımlanan istemciye yönelik IP adreslerinden biridir. İstemci ile karşılıklı IP aralığını avere Denetim Masası 'nda iki yerde bulabilirsiniz:
 
@@ -100,7 +100,7 @@ Yollara ek olarak, her bir istemciyi bağlamak için aşağıda açıklanan [ba�
 
 Sorunsuz bir istemci bağlama sağlamak için, bu ayarları ve bağımsız değişkenleri bağlama komutunuz geçirin:
 
-``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
+``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
 | Gerekli ayarlar | |
 --- | ---
@@ -109,14 +109,10 @@ Sorunsuz bir istemci bağlama sağlamak için, bu ayarları ve bağımsız deği
 ``mountproto=netid`` | Bu seçenek, bağlama işlemleri için ağ hatalarının uygun işlenmesini destekler.
 ``retry=n`` | Geçici bağlama hatalarından kaçınmak için ``retry=30`` ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)
 
-| Tercih edilen ayarlar  | |
---- | ---
-``nointr``            | "Nointr" seçeneği, bu seçeneği destekleyen eski çekirdekler (2008 Nisan 'dan önce) olan istemciler için tercih edilir. "INTR" seçeneğinin varsayılan olduğunu unutmayın.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İstemcileri bağladıktan sonra, arka uç veri depolama alanını (çekirdek Filer) doldurmak için bunları kullanabilirsiniz. Ek kurulum görevleri hakkında daha fazla bilgi edinmek için bu belgelere başvurun:
+İstemcileri bağlandıktan sonra, verileri kümenizdeki yeni bir BLOB depolama kapsayıcısına kopyalamak için kullanabilirsiniz. Yeni depolama alanını doldurmanız gerekmiyorsa, ek kurulum görevleri hakkında bilgi edinmek için diğer bağlantıları okuyun:
 
-* [Verileri küme çekirdeği Içine taşıma](avere-vfxt-data-ingest.md) -verilerinizi verimli bir şekilde yüklemek için birden çok istemci ve iş parçacığı kullanma
+* [Verileri bir küme çekirdeği Içine taşıma](avere-vfxt-data-ingest.md) -birden çok istemci ve iş parçacığını kullanarak verilerinizi verimli bir şekilde yeni bir çekirdek filme 'ya yükleme
 * [Küme ayarlamayı özelleştirme](avere-vfxt-tuning.md) -küme ayarlarını iş yükünüze uyacak şekilde uyarlayın
 * [Kümeyi yönetme](avere-vfxt-manage-cluster.md) -kümeyi başlatma veya durdurma ve düğümleri yönetme

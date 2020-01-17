@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cde171f1c031b4b02a71fe0dac1a689e3ec0722
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772593"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122347"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
@@ -48,7 +48,7 @@ Model kaydı, modellerinizi Azure bulutu 'nda çalışma alanınızda depolaman�
 > [!TIP]
 > Kayıtlı bir model, modelinizi oluşturan bir veya daha fazla dosya için mantıksal bir kapsayıcıdır. Örneğin, birden çok dosyada depolanan bir modeliniz varsa, bunları Azure Machine Learning çalışma alanınızda tek bir model olarak kaydedebilirsiniz. Kayıttan sonra, kayıtlı modeli indirebilir veya dağıtabilir ve kayıtlı tüm dosyaları alabilirsiniz.
 
-Kayıtlı modeller ad ve sürüm ile tanımlanır. Mevcut bir aynı ada sahip bir model her kaydettirdiğinizde, kayıt defteri sürüm artırır. Kayıt sırasında ek meta veri etiketleri sağlayabilirsiniz. Bu Etiketler daha sonra bir model ararken kullanılır. Azure Machine Learning, Python 3.5.2 veya üzeri kullanılarak yüklenebilecek tüm modelleri destekler.
+Kayıtlı modeller ad ve sürümle tanımlanır. Modeli var olan bir adla her kaydettiğinizde, kayıt defteri sürümü bir artırır. Kayıt sırasında ek meta veri etiketleri sağlayabilirsiniz. Bu Etiketler daha sonra bir model ararken kullanılır. Azure Machine Learning, Python 3.5.2 veya üzeri kullanılarak yüklenebilecek tüm modelleri destekler.
 
 > [!TIP]
 > Azure Machine Learning dışında eğitilen modelleri de kaydedebilirsiniz.
@@ -90,7 +90,7 @@ Ayrıca, hedef dağıtım platformunun yapılandırmasını da sağlarsınız. �
 Görüntü oluşturulduğunda, Azure Machine Learning için gereken bileşenler de eklenir. Örneğin, Web hizmetini çalıştırmak ve IoT Edge etkileşimde bulunmak için gereken varlıklar.
 
 #### <a name="batch-scoring"></a>Toplu İşlem puanlama
-Batch Puanlama, ML işlem hatları aracılığıyla desteklenir. Daha fazla bilgi için bkz. [büyük veriler üzerinde Batch tahminleri](how-to-run-batch-predictions.md).
+Batch Puanlama, ML işlem hatları aracılığıyla desteklenir. Daha fazla bilgi için bkz. [büyük veriler üzerinde Batch tahminleri](how-to-use-parallel-run-step.md).
 
 #### <a name="real-time-web-services"></a>Gerçek zamanlı Web Hizmetleri
 

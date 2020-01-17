@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: baf3d0e0e40cb9089ac91c51dd40c079232a973b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 766cfa38108faa0dbaa16a3d2596a4b34689553c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989767"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121106"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure kullanımınıza ilişkin program aracılığıyla içgörü elde etmek için Azure Faturalama API’lerini kullanın
 Kullanım ve kaynak verilerini tercih ettiğiniz veri analizi aracına almak için Azure Faturalama API'lerini kullanın. Azure Kaynak Kullanımı ve RateCard API'leri maliyetlerinizi doğru tahmin etmenize ve yönetmenize yardımcı olabilir. API’ler Kaynak Sağlayıcısı olarak ve Azure Resource Manager tarafından kullanıma sunulan API ailesi kapsamında uygulanır.  
@@ -42,13 +42,13 @@ Azure [Kaynak Kullanım API’si](/previous-versions/azure/reference/mt219003(v=
 * **Saatlik veya Günlük Toplamalar**: Çağıranlar, Azure kullanım verilerinin saatlik demetler halinde mi yoksa günlük demetler halinde mi istediğini belirtebilir. Varsayılan değer günlük değeridir.
 * **Örnek meta verileri (kaynak etiketlerini içerir)** : Tam kaynak URI’si (/subscriptions/{subscription-id}/..), kaynak grubu bilgileri ve kaynak etiketleri gibi örnek düzeyinde ayrıntıları alın. Bu meta veriler, belirlenimci şekilde ve program aracılığıyla çapraz ücretlendirme gibi kullanım senaryoları için etiketlere göre kullanımı ayırmanıza yardımcı olur.
 * **Kaynak meta verileri**: Ölçüm adı, ölçüm kategorisi, ölçüm alt kategorisi, birim ve bölge gibi kaynak ayrıntıları, çağıranın nelerin kullanıldığını daha iyi anlamasını sağlar. Ayrıca deneyimler genelinde verilerin bağıntısını oluşturmanıza yardımcı olması için Azure portalı, Azure kullanım CSV’si, EA faturalama CSV’si ve diğer kamuya açık deneyimler arasında kaynak meta verileri terminolojisini hizalamak için de çalışıyoruz.
-* **Farklı teklif türleri için kullanım**: [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription) dışında, Kullandıkça öde, MSDN, Parasal taahhüt, kredi ve EA gibi teklif türleri için kullanım verileri mevcuttur.
+* **Farklı teklif türleri için kullanım**: [CSP](https://docs.microsoft.com/partner-center) dışında, Kullandıkça öde, MSDN, Parasal taahhüt, kredi ve EA gibi teklif türleri için kullanım verileri mevcuttur.
 
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure Kaynak RateCard API’si (Önizleme)
 [Azure Kaynak RateCard API’sini](/previous-versions/azure/reference/mt219005(v=azure.100)) kullanarak mevcut Azure kaynaklarının listesine ve her biri için tahmini fiyat bilgisine ulaşabilirsiniz. API şunları içerir:
 
 * **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların RateCard verilerine erişim elde edebileceğini belirtmek için [Azure portalından](https://portal.azure.com) veya [Azure PowerShell cmdlet’leri](/powershell/azure/overview) aracılığıyla erişim ilkelerinizi yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
-* **Kullandıkça öde, MSDN, Parasal taahhüt ve Kredi teklifleri desteği (EA ve [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) desteklenmez)** : Bu API, Azure teklif düzeyinde fiyat bilgilerini sağlar.  Bu API’nin çağıranı, kaynak ayrıntılarını ve fiyatlarını almak için teklif bilgilerini iletmelidir. EA teklifleri, kayıt başına özelleştirilmiş fiyatlar içerdiğinden şu anda EA fiyatları sağlayamıyoruz.
+* **Kullandıkça öde, MSDN, Parasal taahhüt ve Kredi teklifleri desteği (EA ve [CSP](https://docs.microsoft.com/partner-center) desteklenmez)** : Bu API, Azure teklif düzeyinde fiyat bilgilerini sağlar.  Bu API’nin çağıranı, kaynak ayrıntılarını ve fiyatlarını almak için teklif bilgilerini iletmelidir. EA teklifleri, kayıt başına özelleştirilmiş fiyatlar içerdiğinden şu anda EA fiyatları sağlayamıyoruz.
 
 ## <a name="scenarios"></a>Senaryolar
 Kullanım ve RateCard API’lerinin birleşimiyle mümkün olan bazı senaryolar aşağıda verilmiştir:

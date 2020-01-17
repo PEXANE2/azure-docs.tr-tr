@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: a97490bffa16a32d17d41d3a3386b3d363f818d8
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 478a7ae8d6938ee4d4ef5c30c8126c3e95f35305
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921095"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121293"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Işlevleri için Azure Cosmos DB bağlamaları 2. x
 
@@ -255,9 +255,9 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** || Ayarlanmalıdır `cosmosDBTrigger`. |
-|**direction** || Ayarlanmalıdır `in`. Azure portalında tetikleyicisi oluşturduğunuzda bu parametre otomatik olarak ayarlanır. |
-|**Adı** || Değişken adı değişikliklerle belgelerin listesini temsil eden bir işlev kodunu kullanılır. |
+|**type** | Yok | Ayarlanmalıdır `cosmosDBTrigger`. |
+|**direction** | Yok | Ayarlanmalıdır `in`. Azure portalında tetikleyicisi oluşturduğunuzda bu parametre otomatik olarak ayarlanır. |
+|**Adı** | Yok | Değişken adı değişikliklerle belgelerin listesini temsil eden bir işlev kodunu kullanılır. |
 |**connectionStringSetting**|**connectionStringSetting** | İzlenmekte olan Azure Cosmos DB hesabına bağlanmak için kullanılan bağlantı dizesi içeren bir uygulama ayarı adı. |
 |**databaseName**|**databaseName**  | İzlenmekte olan toplama ile Azure Cosmos DB veritabanının adı. |
 |**collectionName** |**collectionName** | İzlenmekte olan koleksiyonun adı. |
@@ -1737,9 +1737,9 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type**     || Ayarlanmalıdır `cosmosDB`.        |
-|**direction**     || Ayarlanmalıdır `in`.         |
-|**Adı**     || İşlevinde belgeyi temsil eden bağlama parametresinin adı.  |
+|**type**     | Yok | Ayarlanmalıdır `cosmosDB`.        |
+|**direction**     | Yok | Ayarlanmalıdır `in`.         |
+|**Adı**     | Yok | İşlevinde belgeyi temsil eden bağlama parametresinin adı.  |
 |**databaseName** |**databaseName** |Belge içeren veritabanı.        |
 |**collectionName** |**collectionName** | Belgeyi içeren koleksiyon adı. |
 |**id**    | **Kimlik** | Alınacak belgenin kimliği. Bu özelliği destekleyen [ifadeleri bağlama](./functions-bindings-expressions-patterns.md). Her ikisi de ayarlamamanız **kimliği** ve **sqlQuery** özellikleri. Tek ayarlamazsanız, tüm koleksiyon alınır. |
@@ -2366,9 +2366,9 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type**     || Ayarlanmalıdır `cosmosDB`.        |
-|**direction**     || Ayarlanmalıdır `out`.         |
-|**Adı**     || İşlevinde belgeyi temsil eden bağlama parametresinin adı.  |
+|**type**     | Yok | Ayarlanmalıdır `cosmosDB`.        |
+|**direction**     | Yok | Ayarlanmalıdır `out`.         |
+|**Adı**     | Yok | İşlevinde belgeyi temsil eden bağlama parametresinin adı.  |
 |**databaseName** | **databaseName**|Belge oluşturulduğu koleksiyonu içeren veritabanı.     |
 |**collectionName** |**collectionName**  | Belge oluşturulduğu koleksiyonun adı. |
 |**createıfnotexists**  |**Createıfnotexists**    | Mevcut değilse, koleksiyonun oluşturulup oluşturulmayacağını belirten bir Boole değeri. Varsayılan değer *false* etkileri maliyet ayrılmış işleme ile yeni Koleksiyonlar oluşturulduğundan. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cosmos-db/).  |

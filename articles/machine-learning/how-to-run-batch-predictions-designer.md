@@ -11,19 +11,19 @@ ms.author: trbye
 author: trevorbye
 ms.date: 11/19/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 8d80282044adfa723940aa6f68efc1e719e713c0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1e346d2542193ec1880ad0a56bd6afa1b0a46890
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533170"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122636"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak toplu tahminleri Çalıştır
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu nasıl yapılır, bir modeli eğitme ve Batch tahmin işlem hattı ve Web hizmeti ayarlama hakkında tasarımcı 'yı nasıl kullanacağınızı öğrenirsiniz. Toplu tahmin, isteğe bağlı olarak, herhangi bir HTTP kitaplığından tetiklenebilecek bir Web hizmeti olarak yapılandırılmış, büyük veri kümelerinde sürekli ve isteğe bağlı eğitilen modellerin kullanımını sağlar. 
 
-SDK 'Yı kullanarak Batch Puanlama hizmetlerini ayarlamak için, bkz. [nasıl yapılır](how-to-run-batch-predictions.md).
+SDK 'Yı kullanarak Batch Puanlama hizmetlerini ayarlamak için, bkz. [nasıl yapılır](how-to-use-parallel-run-step.md).
 
 Bu nasıl yapılır bölümünde aşağıdaki görevleri öğrenirsiniz:
 

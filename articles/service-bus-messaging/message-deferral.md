@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus ileti erteleme | Microsoft Docs
-description: Service Bus iletileri teslim ertele
+description: Service Bus iletilerinin teslimini erteleyin
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,37 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 11ea10f1deba5a21b98dea875a1b7dc94998aa00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fc7e40661ae345412eb0336322599616dc89d6c4
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402743"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122194"
 ---
 # <a name="message-deferral"></a>İleti erteleme
 
-Ne zaman bir kuyruk veya abonelik istemci işlenecek istekli olup, ancak hangi işleme uygulama içinde özel durumlar nedeniyle şu anda mümkün olmayan için "daha ilerideki bir noktaya iletiye alınmasını ertelemek" seçeneğine sahip bir ileti alır. İleti sıra veya abonelikte kalır ancak bir kenara ayrılır.
+Bir kuyruk veya abonelik istemcisi işlemek isteyen bir ileti aldığında, ancak uygulamanın içindeki özel koşullar nedeniyle şu anda mümkün olmadığı için, iletinin daha sonra "erteleme" seçeneği vardır. İleti sıra veya abonelikte kalır ancak bir kenara ayrılır.
 
-Erteleme senaryoları işleme iş akışı için özel olarak oluşturulmuş bir özelliktir. İş akışı çerçeveler, belirli bir sırayla işlenmesi için belirli işlemleri gerektirebilir ve diğer iletiler tarafından verilmediği için önceden belirlenmiş bir önceki iş tamamlanana kadar bazı alınan iletilerin işlenmesini erteleme gerekebilir.
+Deferral, iş akışı işleme senaryoları için özel olarak oluşturulan bir özelliktir. İş akışı çerçeveleri belirli işlemler için belirli bir sırada işlenmesini gerektirebilir ve diğer iletiler tarafından bilgilendirilmiş önceki çalışmalarla birlikte, bazı alınan iletilerin işlenmesini erteleyebilir.
 
-Basit bir görsel eşleşen satınalma sırası yayılmadan önce bir dış ödeme sağlayıcısından ödeme bildirim sistem deposu önünden yerine getirme sistemine göründüğü sırası işleme bir sırayı örnektir. Bu durumda, bir sıra ile ilişkilendirmek istediğiniz kadar ödeme bildirim işleme yerine getirme sistem erteleyebilirsiniz. Burada farklı kaynaklardaki iletilerin bir iş akışı gelişmesini, randevu senaryolarda gerçek zamanlı yürütme sırası gerçekten doğru olabilir, ancak sonuçlarını yansıtma iletileri sıralamaya gelebilir.
+Basit bir tanım örneği, eşleşen satın alma siparişi mağazadan öne çıkan sisteme yayılmadan önce bir sistemde, bir dış ödeme sağlayıcısından ödeme bildiriminin bir sistemde göründüğü bir sipariş işleme sırasıdır. Bu durumda, karşılama sistemi, ilişkilendirilecek bir sipariş olana kadar ödeme bildirimini işlemeye erteleyebilirsiniz. Farklı kaynaklardaki iletilerin bir iş akışını ileriye doğru bir şekilde iletmekte olduğu buluşma senaryolarında gerçek zamanlı yürütme sırası gerçekten doğru olabilir, ancak sonuçları yansıtan iletiler sıra dışına çıkabilir.
 
-Sonuç olarak, bunlar, bu iletileri güvenli bir şekilde izin hangi işleme ihtiyaçları için ileti deposundaki bırakarak işlenebilir siparişe varış sırasındaki iletilere sipariş erteleme kolaylaştırır.
+Sonuç olarak, alma sırasındaki iletileri, işleme için bir ileti deposunda güvenli durumda bırakarak, bu iletileri işlenmek üzere yeniden sıralama konusunda yardımcı olur.
 
-## <a name="message-deferral-apis"></a>İleti erteleme API'leri
+## <a name="message-deferral-apis"></a>İleti erteleme API 'Leri
 
-API [BrokeredMessage.Defer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) veya [BrokeredMessage.DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) .NET Framework istemci [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) .NET Standard istemci ve **mesageReceiver.defer** veya **messageReceiver.deferSync** Java istemci. 
+API, .NET Standard istemcisinde .NET Framework istemcisi, [MessageReceiver.](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) Defsilinsync ve Java istemcisinde [IMessageReceiver. ertele](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable) ya da [IMessageReceiver. Defsilinsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable) olan [brokeredmessage.](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) erteleme veya [brokeredmessage. defsilinebilir](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) Sync. 
 
-Ertelenmiş ileti ana kuyruk diğer etkin iletileriniz (farklı bir alt kuyruk Canlı teslim edilemeyen iletiler) ile birlikte kalır, ancak bunlar artık normal alma/ReceiveAsync işlevleri kullanılarak alınabilir. Ertelenmiş ileti aracılığıyla bulunması [iletilere gözatma](message-browsing.md) uygulama bunları izini kaybederse.
+Ertelenmiş iletiler, diğer tüm etkin iletilerle birlikte ana sırada kalır (bir alt sırada bulunan atılacak ileti iletilerinin aksine), ancak artık normal alma/ReceiveAsync işlevleri kullanılarak alınamazlar. Ertelenmiş iletiler, bir uygulama tarafından izlenmeleri kaybolursa [ileti göz atma](message-browsing.md) aracılığıyla bulunabilir.
 
-Ertelenmiş ileti almak için sahibi hatırlamak için sorumlu [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) olarak bunu erteler. Ertelenmiş ileti sıra numarası bilir herhangi bir alıcıya daha sonra açıkça sahip ileti alabilir `Receive(sequenceNumber)`. Kuyruklar için kullanabileceğiniz [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient), konu abonelikleri kullanan [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient).
+Ertelenmiş bir ileti almak için, [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) onu erteler. Ertelenmiş bir iletinin sıra numarasını bilen herhangi bir alıcı daha sonra `Receive(sequenceNumber)`ile iletiyi açıkça alabilir. Kuyruklar için [Queueclient](/dotnet/api/microsoft.servicebus.messaging.queueclient)' ı kullanabilirsiniz, konu abonelikleri [subscriptionclient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient)'ı kullanır.
 
-Bir ileti işlenemiyor, çünkü bu iletiyi işlemek için belirli bir kaynağa geçici olarak kullanılamıyor, ancak ileti işleme değil summarily askıya alınır, bu iletiyi tarafında birkaç dakikalığına koymak için bir unutmayın yöntemdir  **SequenceNumber** içinde bir [zamanlanmış iletileri](message-sequencing.md) birkaç dakika içinde yayınlanabilir ve zamanlanmış ileti geldiğinde, ertelenmiş ileti yeniden almak için. Tüm işlemler için bir veritabanı bir ileti işleyicisi bağlıdır ve bu veritabanı geçici olarak devre dışı ise, bu erteleme kullanmaz, bunun yerine iletileri alma askıya veritabanı yeniden kullanılabilir olana kadar toptan.
+Bu iletiyi işlemeye yönelik belirli bir kaynak geçici olarak kullanılamadığından bir ileti işlenemezse, ileti işleme summarily askıya alınmamalıdır, bu iletiyi birkaç dakika için tarafa koymak için bir yol, [Zamanlanmış bir Iletideki](message-sequencing.md) **SequenceNumber** 'i birkaç dakika içinde yeniden almak ve zamanlanan ileti geldiğinde ertelenmiş iletiyi yeniden almak olacaktır. Bir ileti işleyicisi tüm işlemler için bir veritabanına bağımlıysa ve bu veritabanı geçici olarak kullanılamıyorsa, ertelemeal kullanmamalıdır, ancak veritabanı yeniden kullanılabilir olana kadar iletileri almayı askıya almamalıdır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus mesajlaşması hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
 * [Service Bus kuyrukları, konu başlıkları ve abonelikleri](service-bus-queues-topics-subscriptions.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)

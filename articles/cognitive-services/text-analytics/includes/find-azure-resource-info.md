@@ -7,18 +7,16 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/07/2019
+ms.date: 01/14/2019
 ms.author: aahi
-ms.openlocfilehash: bce751da0e6f03d197951d2f207ac5c54d72c7ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b56bb8dfdce58de60f82693b511f7923b80fc37a
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378781"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159025"
 ---
 > [!IMPORTANT]
-> Azure portal anahtarınızı ve uç noktayı bulmak için:
-> 1. https://portal.azure.com/ adresinden Azure kaynağına gidin.
-> 2. **Kaynak yönetimi**altında bulunan **hızlı başlangıç**' a tıklayın.
+> Anahtarınızı ve uç noktanızı bulmak için oluşturduğunuz kaynağa gidin. Kaynak **yönetimi**altında kaynağın **hızlı başlangıç** sayfasında yer alır.
 >
-> İşiniz bittiğinde kodunuzun kimlik bilgilerinizi kaldırmayı ve hiçbir zaman herkese açık bir şekilde göndermemeyi unutmayın. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Örneğin, [Azure Anahtar Kasası](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Örneğin, [Azure Anahtar Kasası](https://docs.microsoft.com/azure/key-vault/key-vault-overview).

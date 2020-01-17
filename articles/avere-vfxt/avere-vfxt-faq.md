@@ -4,14 +4,14 @@ description: Azure için avere vFXT hakkında sık sorulan sorular
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 11/06/2019
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 5340952d6d30ae80d53234530a7e2ca6c067cf1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 186b2c048a9de42318e4af287393d731a4eb16f1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415351"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153471"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Azure için Avere vFXT hakkında SSS
 
@@ -25,11 +25,11 @@ Azure için avere vFXT, kritik iş yüklerini verimli bir şekilde işlemek içi
 
 ### <a name="is-avere-vfxt-a-storage-solution"></a>Avere vFXT bir depolama çözümüdür mi?
 
-Hayır. Avere vFXT, EMC veya NetApp NAS veya bir Azure Blob kapsayıcısı gibi depolama ortamlarına bağlanan bir dosya sistemi *önbelleğidir* . Avere vFXT istemcilerden gelen veri isteklerini kolaylaştırır ve ölçek ve zaman içinde performansı artırmak için hizmet verdiği verileri önbelleğe alır. Avere vFXT, verileri depolamaz. Bu, arkasında depolanan veri miktarı hakkında bilgi içermez.
+Hayır. Azure için avere vFXT, EMC veya NetApp NAS veya bir Azure Blob kapsayıcısı gibi depolama ortamlarına bağlanan bir dosya sistemi *önbelleğidir* . Avere vFXT istemcilerden gelen veri isteklerini kolaylaştırır ve ölçek ve zaman içinde performansı artırmak için hizmet verdiği verileri önbelleğe alır. Avere vFXT, verileri depolamaz. Bu, arkasında depolanan veri miktarı hakkında bilgi içermez.
 
 ### <a name="is-avere-vfxt-a-tiering-solution"></a>Avere vFXT bir çözüm mi?
 
-Avere vFXT, sık erişimli ve seyrek katmanlar arasında verileri otomatik olarak katmanlamaz.  
+Azure için avere vFXT, sık erişimli ve seyrek erişimli katmanlar arasında verileri otomatik olarak katmanlamaz.  
 
 ### <a name="how-do-i-know-if-an-environment-is-right-for-avere-vfxt"></a>Nasıl yaparım? avere vFXT için bir ortamın doğru olup olmadığını öğrenin.
 
@@ -47,9 +47,9 @@ Bu soruyu düşünmenin en iyi yolu, "iş yükü önbelleklenebilir mi?" sorusun
 
 * HPC uygulamanız NFSv3 istemcilerini temel alır. (Bazı durumlarda, SMB 2,1 istemcilerini kullanabilir, ancak performans sınırlıdır.)
 
-Aşağıdaki diyagram, bu sorunun yanıtını basitleştirir. İş akışınız sağ üst köşede, avere önbellek çözümünün ortamınız için doğru olması olasıdır.
+Aşağıdaki diyagram bu soruya yanıt almanıza yardımcı olabilir. İş akışınız, sağ üst köşede yer alan Azure önbellek çözümü için avere vFXT 'nin ortamınız için doğru olması olasıdır.
 
-![Avere vFXT için binlerce istemci içeren okuma ağır yükün daha uygun olduğunu gösteren diyagram](media/avere-vfxt-fit-assessment.png)
+![Avere vFXT için binlerce istemci içeren okuma ağır yükün daha uygun olduğunu gösteren grafik Diyagramı](media/avere-vfxt-fit-assessment.png)
 
 ### <a name="at-what-scale-of-clients-does-the-avere-vfxt-solution-make-the-most-sense"></a>İstemci ölçeğinde avere vFXT çözümü en mantıklı midir?
 
@@ -59,7 +59,7 @@ Tipik avere vFXT müşterileri, yaklaşık 1.000 CPU çekirdekleri ile başlayan
 
 ### <a name="how-much-data-can-an-avere-vfxt-environment-store"></a>Avere vFXT ortam deposu ne kadar veri olabilir?
 
-Avere vFXT bir önbelleğidir. Verileri özel olarak depolamaz. Önbelleğe alınmış verileri depolamak için RAM ve SSD 'lerin bir birleşimini kullanır. Veriler, arka uç depolama sisteminde (örneğin, bir NetApp NAS sistemi veya bir blob kapsayıcısı) kalıcı olarak depolanır. Avere vFXT sisteminde, arkasında depolanan veri miktarı hakkında bilgi yok. Avere vFXT yalnızca istemcilerin talep aldığı verilerin alt kümesini önbelleğe alır.  
+Azure için avere vFXT bir önbelleğidir. Verileri özel olarak depolamaz. Önbelleğe alınmış verileri depolamak için RAM ve SSD 'lerin bir birleşimini kullanır. Veriler, arka uç depolama sisteminde (örneğin, bir NetApp NAS sistemi veya bir blob kapsayıcısı) kalıcı olarak depolanır. Avere vFXT sisteminde, arkasında depolanan veri miktarı hakkında bilgi yok. Avere vFXT yalnızca istemcilerin talep aldığı verilerin alt kümesini önbelleğe alır.  
 
 ### <a name="what-regions-are-supported"></a>Hangi bölgeler destekleniyor?
 
@@ -67,7 +67,7 @@ Azure için avere vfxt, bağımsız bölgeleri hariç tüm bölgelerde desteklen
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>Avere vFXT ile ilgili yardım almak Nasıl yaparım??
 
-Özelleştirilmiş bir destek grubu, Azure için avere vFXT ile yardım sağlar. Azure portal bir destek bileti açmak için [sisteminizle ilgili yardım alın](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) bölümündeki yönergeleri izleyin.
+Özelleştirilmiş bir destek personeli grubu, Azure için avere vFXT ile yardım sağlar. Azure portal bir destek bileti açmak için [sisteminizle ilgili yardım alın](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) bölümündeki yönergeleri izleyin.
 
 ### <a name="is-avere-vfxt-highly-available"></a>Avere vFXT yüksek oranda kullanılabilir mi?
 
@@ -78,7 +78,7 @@ Evet, avere vFXT özel olarak bir HA çözümü olarak çalışır.
 Evet, müşteriler avere vFXT kümesi ile birden fazla bulut sağlayıcısı kullanabilir. AWS S3 standart demetlerini, Google Cloud Services standart demetlerini ve Azure Blob kapsayıcıları destekler.
 
 > [!NOTE]
-> Yazılım ücreti, AWS veya Google bulutu 'nda avere vFXT kullanımı için geçerlidir, ancak Azure ile kullanılamaz.
+> Yazılım ücreti, AWS veya Google Cloud Storage ile avere vFXT kullanımı için geçerlidir. Azure Blob depolamayı kullanmak için ek yazılım ücreti yoktur.
 
 ## <a name="technical-compute"></a>Teknik: Işlem
 
@@ -165,10 +165,10 @@ Veriler, diskler arasında şeritlenir ancak şifrelenmez. Ancak, disklerin kend
 
 ### <a name="what-network-is-recommended"></a>Hangi ağ önerilir?
 
-Avere vFXT ile şirket içi depolama kullanıyorsanız, 1 GB/sn veya daha iyi bir ağ bağlantısına sahip olmanız gerekir. Az miktarda veriniz varsa ve işleri çalıştırmadan önce verileri buluta kopyalamak istiyorsanız VPN bağlantısı yeterince olabilir. 
+Avere vFXT ile şirket içi depolamayı kullanıyorsanız, depolama ve küme arasında 1 Gbps veya daha iyi bir ağ bağlantısına sahip olmanız gerekir. Az miktarda veriniz varsa ve işleri çalıştırmadan önce verileri buluta kopyalamak istiyorsanız VPN bağlantısı yeterli olabilir.
 
 > [!TIP]
-> Ağ bağlantısı ne kadar yavaşsa, başlangıçtaki soğuk okuma sayısı daha yavaş olur. Yavaş okumalar iş işlem hattının gecikmesini arttırır.
+> Ağ bağlantısı ne kadar yavaşsa, ilk "soğuk" okumaları daha yavaş olur. Yavaş okumalar iş işlem hattının gecikmesini arttırır.
 
 ### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>Avere vFXT 'yi işlem kümemdeki farklı bir sanal ağda çalıştırabilir miyim?
 
@@ -176,7 +176,7 @@ Evet, avere vFXT sisteminizi farklı bir sanal ağda oluşturabilirsiniz. Ayrın
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>Avere vFXT kendi alt ağını gerektiriyor mu?
 
-Evet. Avere vFXT tamamen yüksek kullanılabilirlik (HA) kümesi olarak çalışır ve çalışması için birden çok IP adresi gerekir. Küme kendi alt ağdaysa, IP adresi çakışmaları riskinden kaçınabilirsiniz, bu da yükleme ve normal işlem sorunlarına neden olabilir. Kümenin alt ağı, hiçbir IP adresi çakıştığına sahip olan sanal ağ içinde olabilir.
+Evet. Avere vFXT tamamen yüksek kullanılabilirlik (HA) kümesi olarak çalışır ve çalışması için birden çok IP adresi gerekir. Küme kendi alt ağdaysa, IP adresi çakışmaları riskinden kaçınabilirsiniz, bu da yükleme ve normal işlem sorunlarına neden olabilir. Kümenin alt ağı, hiçbir IP adresi çakışmazsa diğer kaynaklar tarafından kullanılan bir sanal ağ içinde olabilir.
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Avere vFXT 'yi InfiniBand üzerinde çalıştırabilir miyim?
 
@@ -224,9 +224,6 @@ Genel koşullarda, Azure için avere vFXT, çekirdek filers olarak aşağıdaki 
 * Dell EMC Isilon (OneFS 7,1, 7,2, 8,0 ve 8,1) 
 * NetApp ONTAP (kümelenmiş Mod 9,4, 9,3, 9,2, 9.1 P1, 8.0-8.3) ve (7-Mod 7. *, 8.0-8.3)
 
-  > [!NOTE]
-  > Azure NetApp Files Şu anda desteklenmiyor.
-
 * Azure Blob kapsayıcıları (yalnızca yerel olarak yedekli depolama)
 * AWS S3 demetleri
 * Google bulut demetleri
@@ -245,11 +242,13 @@ Destek, alanındaki talep miktarına göre belirlenir. Bir NAS çözümünü des
 
 ### <a name="can-i-use-azure-blob-storage-as-a-core-filer"></a>Azure Blob depolamayı bir çekirdek filmi olarak kullanabilir miyim?
 
-Evet, Azure için avere vFXT, bir Blok Blobu kapsayıcısını bulut çekirdeği filsi olarak kullanabilir.  
+Evet, Azure için avere vFXT, bir Blok Blobu kapsayıcısını bulut çekirdeği filsi olarak kullanabilir.
 
 ### <a name="what-are-the-storage-account-requirements-for-a-blob-core-filer"></a>Blob çekirdeği filmidir için depolama hesabı gereksinimleri nelerdir?
 
 Depolama hesabınızın bir genel amaçlı v2 (GPv2) hesabı olması ve yalnızca yerel olarak yedekli depolama için yapılandırılmış olması gerekir. Coğrafi olarak yedekli depolama ve bölge yedekli depolama desteklenmez.
+
+Depolama hesabı gereksinimleriyle ilgili daha fazla bilgi için [Azure Blob depolama bulut çekirdeği](avere-vfxt-add-storage.md#azure-blob-storage-cloud-core-filer) bölümünü okuyun.
 
 ### <a name="can-i-use-archive-blob-storage"></a>Arşiv BLOB depolama alanını kullanabilir miyim?
 
