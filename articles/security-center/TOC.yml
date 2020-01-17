@@ -1,4 +1,4 @@
-- name: Güvenlik Merkezi Belgeleri
+- name: Güvenlik Merkezi belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
@@ -29,6 +29,10 @@
       href: security-center-compliance-dashboard.md
 - name: Kavramlar
   items:
+    - name: Güvenlik Merkezi'nde Güvenlik Puanı
+      href: security-center-secure-score.md
+    - name: Gelişmiş Güvenlik Puanı
+      href: secure-score-security-controls.md
     - name: İzinler
       href: security-center-permissions.md
     - name: Veri güvenliği
@@ -73,8 +77,6 @@
           href: security-center-alert-validation.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Secure score’unuzu iyileştirme
-      href: security-center-secure-score.md
     - name: Gelişmiş güvenliğe yükseltme
       href: security-center-onboarding.md
     - name: VM'lerinizi güvenlik açıkları için tarama

@@ -507,8 +507,6 @@
               href: ./hdinsight-troubleshoot-hdfs.md
             - name: Apache Hadoop YARN sorunlarını giderme
               href: ./hdinsight-troubleshoot-yarn.md
-            - name: Apache Hadoop günlüklerini analiz etme
-              href: ./hadoop/apache-hadoop-debug-jobs.md
             - name: Data Lake Store dosyalarında sorun giderme
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
 - name: Apache Kafka
@@ -782,6 +780,8 @@
           href: ./storm/apache-storm-write-data-lake-store.md
     - name: Nasıl yapılır
       items:
+        - name: Storm’u Spark’a geçirme
+          href: ./storm/migrate-storm-to-spark.md
         - name: Geliştirme
           items:
             - name: Topolojiler

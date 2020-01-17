@@ -54,7 +54,7 @@
       href: spring-cloud-service-registration.md
     - name: Uygulama günlüklerini ve Ölçümleri analiz etme
       href: diagnostic-services.md
-    - name: Anında kullanılabilirlik için Azure Spring Cloud günlük akışı
+    - name: Azure Spring Cloud uygulama günlüklerini gerçek zamanlı olarak akışla aktarma
       href: spring-cloud-howto-log-streaming.md
     - name: Azure Spring Cloud'da CI/CD işlem hattınızı otomatikleştirme
       href: spring-cloud-howto-cicd.md

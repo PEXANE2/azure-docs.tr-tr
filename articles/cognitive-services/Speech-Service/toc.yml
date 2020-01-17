@@ -525,6 +525,9 @@
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: Bölgeler
       href: regions.md
+    - name: Bağımsız Bulutlar
+      href: sovereign-clouds.md
+      displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
     - name: Fiyatlandırma ve limitler
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Uyumluluk

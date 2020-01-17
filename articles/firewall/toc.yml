@@ -35,6 +35,8 @@
       href: rule-processing.md
     - name: Hizmet etiketleri
       href: service-tags.md
+    - name: Uyumluluk sertifikasyonları
+      href: compliance-certifications.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure PowerShell’i kullanarak dağıtma

@@ -8,6 +8,8 @@
   items:
     - name: Abonelik ve hizmet sınırlamaları
       href: azure-subscription-service-limits.md
+    - name: Kaynak adı kuralları
+      href: resource-name-rules.md
     - name: Resource Manager ve klasik dağıtım
       href: deployment-models.md
     - name: Azure ortak güvenlik öznitelikleri

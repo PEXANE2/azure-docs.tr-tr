@@ -249,6 +249,8 @@
           items:
             - name: Özel becerileri tümleştirme
               href: cognitive-search-custom-skill-interface.md
+            - name: Örnek - Azure İşlevleri (Python)
+              href: cognitive-search-custom-skill-python.md
             - name: Örnek - Azure İşlevleri
               href: cognitive-search-create-custom-skill-example.md
             - name: Örnek - Kapsayıcılar

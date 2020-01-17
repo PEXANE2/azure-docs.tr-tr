@@ -12,12 +12,12 @@ metadata:
   author: eross-msft
   ms.author: lizross
   ms.date: 08/26/2019
-  ms.openlocfilehash: c60b536c43b8a82a46ef9176eb077b212da529c0
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 461cebd5a7bbb5a3483c2b08670317a31b71484a
+  ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73574219"
+  ms.lasthandoff: 01/16/2020
+  ms.locfileid: "76156276"
 landingContent:
 - title: Microsoft Authenticator uygulamasını ayarlama ve kullanma
   linkLists:
@@ -35,44 +35,6 @@ landingContent:
       url: user-help-auth-app-backup-recovery.md
     - text: Uygulamayı kullanarak oturum açma
       url: user-help-auth-app-sign-in.md
-- title: İki adımlı doğrulama yöntemlerinizi seçin
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: İki aşamalı doğrulama nedir?
-      url: user-help-two-step-verification-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: Doğrulama yöntemlerinizi ayarlama
-      url: multi-factor-authentication-end-user-first-time.md
-    - text: Ayarları yönetme
-      url: multi-factor-authentication-end-user-manage-settings.md
-    - text: Yardım alın
-      url: multi-factor-authentication-end-user-troubleshoot.md
-- title: Uygulamalarım portalındaki bilgilerinizi güncelleştirme
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Uygulamalarım portalı nedir?
-      url: my-apps-portal-end-user-access.md
-  - linkListType: how-to-guide
-    links:
-    - text: Bilgilerinizi güncelleştirme
-      url: my-apps-portal-end-user-update-profile.md
-    - text: Yardım alın
-      url: my-apps-portal-end-user-troubleshoot.md
-- title: Güvenlik bilgilerinizi ayarlama ve yönetme (önizleme)
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Güvenlik bilgileri (önizleme) nedir?
-      url: user-help-security-info-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: Güvenlik bilgileri yöntemlerinizi ayarlama
-      url: security-info-add-update-methods-overview.md
-    - text: Oturum açma istemi sırasında bilgi ekleme
-      url: security-info-setup-signin.md
 - title: Hesabım portalında bilgilerinizi yönetme
   linkLists:
   - linkListType: overview
@@ -87,12 +49,44 @@ landingContent:
       url: my-account-portal-organizations-page.md
     - text: Son oturum açma etkinliğinizi görüntüleme
       url: my-account-portal-sign-ins-page.md
-- title: Kendi parolanızı sıfırlama
+- title: Güvenlik bilgilerinizi ayarlama ve yönetme (önizleme)
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Güvenlik doğrulaması için bir doğrulayıcı uygulama ayarlama
+      url: security-info-setup-auth-app.md
+    - text: Güvenlik doğrulaması için metin mesajı ayarlama
+      url: security-info-setup-text-msg.md
+    - text: Güvenlik doğrulaması için telefon araması ayarlama
+      url: security-info-setup-phone-number.md
+    - text: Oturum açma istemi sırasında bilgi ekleme
+      url: security-info-setup-signin.md
+- title: Uygulamalarım (Önizleme) portalından uygulamalara erişme ve başlatma
   linkLists:
   - linkListType: overview
     links:
-    - text: Parola sıfırlaması nedir?
-      url: user-help-password-reset-overview.md
+    - text: Uygulamalarım portalına erişme
+      url: my-applications-portal-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: Çalışma alanlarına erişme ve bunları kullanma
+      url: my-applications-portal-workspaces.md
+- title: İki adımlı doğrulama yöntemlerinizi seçin
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ek doğrulama sayfası nedir?
+      url: user-help-two-step-verification-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Doğrulama yöntemlerinizi ayarlama
+      url: multi-factor-authentication-end-user-first-time.md
+    - text: Ayarları yönetme
+      url: multi-factor-authentication-end-user-manage-settings.md
+    - text: Yardım alın
+      url: multi-factor-authentication-end-user-troubleshoot.md
+- title: Kendi parolanızı sıfırlama
+  linkLists:
   - linkListType: how-to-guide
     links:
     - text: Parola sıfırlama için kaydolma

@@ -2,44 +2,36 @@
   href: index.yml
 - name: İki aşamalı doğrulama yardımı
   items:
-    - name: Genel Bakış
-      href: user-help-two-step-verification-overview.md
-    - name: İki öğeli doğrulama yöntemlerinizi ayarlama
-      items:
-        - name: Genel Bakış
-          href: multi-factor-authentication-end-user-first-time.md
-        - name: Authenticator uygulamasını ayarlama
-          href: multi-factor-authentication-setup-auth-app.md
-        - name: Mobil cihaz ayarlama
-          href: multi-factor-authentication-setup-phone-number.md
-        - name: Ofis telefonu ayarlama
-          href: multi-factor-authentication-setup-office-phone.md
+    - name: Ek doğrulama sayfası nedir?
+      href: multi-factor-authentication-end-user-first-time.md
+    - name: Authenticator uygulamasını ayarlama
+      href: multi-factor-authentication-setup-auth-app.md
+    - name: Mobil cihaz ayarlama
+      href: multi-factor-authentication-setup-phone-number.md
+    - name: Ofis telefonu ayarlama
+      href: multi-factor-authentication-setup-office-phone.md
     - name: Ayarlarınızı yönetme
       href: multi-factor-authentication-end-user-manage-settings.md
-    - name: Yardım alın
-      href: multi-factor-authentication-end-user-troubleshoot.md
     - name: Uygulama parolalarını yönetme
       href: multi-factor-authentication-end-user-app-passwords.md
     - name: Oturum açma
       href: user-help-sign-in.md?toc=./toc.json
+    - name: Yardım alın
+      href: multi-factor-authentication-end-user-troubleshoot.md
 - name: Parola sıfırlama yardımı
   items:
-    - name: Genel Bakış
-      href: user-help-password-reset-overview.md
     - name: Parola sıfırlama için kaydolma
       href: active-directory-passwords-reset-register.md
     - name: Parolanızı sıfırlama
       href: active-directory-passwords-update-your-own-password.md
 - name: Microsoft Authenticator uygulaması yardımı
   items:
-    - name: Genel Bakış
+    - name: Microsoft Authenticator uygulaması nedir?
       href: user-help-auth-app-overview.md
     - name: Uygulamayı indirme ve yükleme
       href: user-help-auth-app-download-install.md
     - name: Hesap ekleme
       items:
-        - name: Genel Bakış
-          href: user-help-auth-app-add-account-overview.md
         - name: İş veya okul hesabı ekleme
           href: user-help-auth-app-add-work-school-account.md
         - name: Kişisel Microsoft hesabı ekleme
@@ -56,10 +48,10 @@
       href: user-help-auth-app-faq.md
 - name: Hesabım portalı yardımı
   items:
-    - name: Genel Bakış
+    - name: Hesabım portalı nedir?
       href: my-account-portal-overview.md
     - name: Güvenlik bilgilerinizi yönetme
-      href: user-help-security-info-overview.md
+      href: security-info-setup-signin.md
     - name: Bağlı cihazlarınızı yönetme
       href: my-account-portal-devices-page.md
     - name: Parolanızı değiştirme
@@ -72,14 +64,10 @@
       href: my-account-portal-sign-ins-page.md
 - name: Güvenlik bilgileri (önizleme) yardımı
   items:
-    - name: Genel Bakış
-      href: user-help-security-info-overview.md
     - name: Oturum açma sırasında güvenlik bilgileri ekleme
       href: security-info-setup-signin.md
     - name: Güvenlik bilgisi yöntemlerini ekleme veya güncelleştirme
       items:
-        - name: Genel Bakış
-          href: security-info-add-update-methods-overview.md
         - name: Authenticator uygulamasını ayarlama
           href: security-info-setup-auth-app.md
         - name: SMS mesajlaşmasını ayarlama
@@ -98,8 +86,6 @@
       href: user-help-sign-in.md?toc=./toc.json
 - name: Cihazları yönetme yardımı
   items:
-    - name: Genel Bakış
-      href: user-help-device-mgmt-overview.md
     - name: İş cihazınızı ekleme
       href: user-help-join-device-on-network.md
     - name: Kişisel cihazınızı iş için kaydetme
@@ -108,8 +94,6 @@
       href: user-help-device-remediation.md
 - name: Uygulamalarım portalı yardımı
   items:
-    - name: Genel Bakış
-      href: my-apps-portal-end-user-overview.md
     - name: Uygulamalarım portalına erişme ve portalı kullanma
       href: my-apps-portal-end-user-access.md
     - name: Profil ve hesap bilgilerinizi güncelleştirme
@@ -122,8 +106,6 @@
       href: my-apps-portal-end-user-troubleshoot.md
 - name: Uygulamalarım (önizleme) portalı yardımı
   items:
-    - name: Genel Bakış
-      href: my-applications-portal-overview.md
     - name: Uygulamalarım portalına erişme ve portalı kullanma
       href: my-applications-portal-access.md
     - name: Çalışma alanlarına erişme ve bunları kullanma
