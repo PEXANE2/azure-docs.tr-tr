@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 0b70a475d841c3649ba9e2bcc63187fc4484a23d
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561159"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119984"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -48,6 +48,9 @@ Aşağıdaki Windows dağıtımları Şu anda bu özelliğin önizlemesi sıras�
 
 - Windows Server 2019 Datacenter
 - Windows 10 1809 ve üzeri
+
+> [!IMPORTANT]
+> Azure AD 'ye katılmış olan sanal makinelere uzak bağlantıya yalnızca Azure AD 'ye katılmış veya karma Azure AD olan Windows 10 bilgisayarlardan VM ile **aynı** dizine katılmış izin verilir. 
 
 Şu Azure bölgeleri Şu anda bu özelliğin önizlemesi sırasında desteklenmektedir:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 0aecf2284e448f879bc20391c8528f8efde42d94
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: bdb00bfbadec68fa110f747858d264a2c34f8bd1
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184966"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120878"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Hızlı başlangıç: .NET Framework uygulamasına özellik bayrakları ekleme
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 .NET Özellik Yönetimi kitaplıkları Framework 'ü kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -43,7 +43,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)** . **İleri**’ye tıklayın.
 
-1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**’ tıklayın.
+1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**’a tıklayın.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
@@ -67,22 +67,32 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 1. Özellik bayraklarının alınabilmesi için `UseFeatureFlags` seçeneğini belirterek uygulama yapılandırmasına bağlanmak üzere `Main` yöntemini güncelleştirin. Sonra `Beta` Özellik bayrağı etkinse bir ileti görüntülenir.
 
     ```csharp
-        static void Main(string[] args)
+        public static void Main(string[] args)
+        {
+            AsyncMain().Wait();
+        }
+
+        private static async Task AsyncMain()
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddAzureAppConfiguration(options => 
-                { 
+                .AddAzureAppConfiguration(options =>
+                {
                     options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
-                           .UseFeatureFlags(); 
+                           .UseFeatureFlags();
                 }).Build();
-            
-            IServiceCollection services = new ServiceCollection(); 
-            services.AddSingleton<IConfiguration>(configuration).AddFeatureManagement(); 
-            IFeatureManager featureManager = services.BuildServiceProvider().GetRequiredService<IFeatureManager>(); 
-            
-            if (featureManager.IsEnabled("Beta")) 
-            { 
-                Console.WriteLine("Welcome to the beta"); 
+
+            IServiceCollection services = new ServiceCollection();
+
+            services.AddSingleton<IConfiguration>(configuration).AddFeatureManagement();
+
+            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            {
+                IFeatureManager featureManager = serviceProvider.GetRequiredService<IFeatureManager>();
+
+                if (await featureManager.IsEnabledAsync("Beta"))
+                {
+                    Console.WriteLine("Welcome to the beta!");
+                }
             }
 
             Console.WriteLine("Hello World!");

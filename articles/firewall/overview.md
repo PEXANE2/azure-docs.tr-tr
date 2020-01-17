@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/13/2020
+ms.date: 01/15/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: c78ac615d2a93865721152442461d40925dc088d
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: def954395c0f4f83afe28443ba63c89c41e07eba
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922596"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156752"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -90,11 +90,10 @@ Bu, aşağıdaki senaryolara izin vermez:
 
 Tüm olaylar Azure Izleyici ile tümleşiktir ve günlükleri bir depolama hesabında arşivlemenize, Olay Hub 'ınıza olayları akışlarınıza veya Azure Izleyici günlüklerine gönderebilmenizi sağlar.
 
-## <a name="pci-soc-and-iso-compliant"></a>PCI, SOC ve ISO uyumlu
+## <a name="compliance-certifications"></a>Uyumluluk sertifikaları
 
-Azure Güvenlik Duvarı, ödeme kartı sektör (PCI), hizmet kuruluşu denetimleri (SOC) ve Uluslararası Standardizasyon Teşkilatı (ISO) ile uyumludur. Şu anda SOC 1 tür 2, SOC 2 tür 2, SOC 3, PCI DSS ve ISO 27001, 27018, 20000-1, 22301, 9001, 27017 desteklemektedir.
+Azure Güvenlik Duvarı, ödeme kartı sektör (PCI), hizmet kuruluşu denetimleri (SOC) ve Uluslararası Standardizasyon Teşkilatı (ISO) ile uyumludur. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı uyumluluk sertifikaları](compliance-certifications.md).
 
-Daha fazla bilgi için bkz. [Microsoft Uyumluluk Kılavuzu](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide).
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 

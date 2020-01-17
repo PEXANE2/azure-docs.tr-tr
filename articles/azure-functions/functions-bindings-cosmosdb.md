@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: bae027fc5a3b6ce7b4246c403841fa529b8884cb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e30b256d9fa43402c3b2c444aa1a0e0dc16cfdcf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925954"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120584"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure işlevleri için Azure Cosmos DB bağlamaları 1.x
 
@@ -180,16 +180,16 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** || Ayarlanmalıdır `cosmosDBTrigger`. |
-|**direction** || Ayarlanmalıdır `in`. Azure portalında tetikleyicisi oluşturduğunuzda bu parametre otomatik olarak ayarlanır. |
-|**Adı** || Değişken adı değişikliklerle belgelerin listesini temsil eden bir işlev kodunu kullanılır. |
+|**type** | Yok | Ayarlanmalıdır `cosmosDBTrigger`. |
+|**direction** | Yok | Ayarlanmalıdır `in`. Azure portalında tetikleyicisi oluşturduğunuzda bu parametre otomatik olarak ayarlanır. |
+|**Adı** | Yok | Değişken adı değişikliklerle belgelerin listesini temsil eden bir işlev kodunu kullanılır. |
 |**connectionStringSetting**|**connectionStringSetting** | İzlenmekte olan Azure Cosmos DB hesabına bağlanmak için kullanılan bağlantı dizesi içeren bir uygulama ayarı adı. |
 |**databaseName**|**databaseName**  | İzlenmekte olan toplama ile Azure Cosmos DB veritabanının adı. |
 |**collectionName** |**collectionName** | İzlenmekte olan koleksiyonun adı. |
 |**leaseConnectionStringSetting** | **leaseConnectionStringSetting** | (İsteğe bağlı) Kira koleksiyonu içeren hizmete yönelik bağlantı dizesini içeren bir uygulama ayarı adı. Ne zaman ayarlanmadı, `connectionStringSetting` değeri kullanılır. Bu parametre, portalda bağlama oluşturulduğunda otomatik olarak ayarlanır. Bağlantı dizesini kiralarını koleksiyonuna yazma izinlerine sahip olmalıdır.|
 |**leaseDatabaseName** |**leaseDatabaseName** | (İsteğe bağlı) Kiraları depolamak için kullanılan koleksiyonu içeren veritabanının adı. Ne zaman ayarlı değil, değerini `databaseName` ayarı kullanılır. Bu parametre, portalda bağlama oluşturulduğunda otomatik olarak ayarlanır. |
 |**leaseCollectionName** | **leaseCollectionName** | (İsteğe bağlı) Kiraları depolamak için kullanılan koleksiyonun adı. Ne zaman ayarlı değil, değer `leases` kullanılır. |
-|**createLeaseCollectionIfNotExists** | **createLeaseCollectionIfNotExists** | (İsteğe bağlı) Ayarlandığında `true`, kiralarını koleksiyonuna zaten mevcut değilse otomatik olarak oluşturulur. Varsayılan değer `false`. |
+|**createLeaseCollectionIfNotExists** | **createLeaseCollectionIfNotExists** | (İsteğe bağlı) Ayarlandığında `true`, kiralarını koleksiyonuna zaten mevcut değilse otomatik olarak oluşturulur. Varsayılan değer: `false`. |
 |**leasesCollectionThroughput**| **leasesCollectionThroughput**| (İsteğe bağlı) Kiralarını koleksiyonuna oluşturulduğunda atamak için istek birimi miktarı tanımlar. Bu ayar yalnızca kullanılan yaparken önemlidir `createLeaseCollectionIfNotExists` ayarlanır `true`. Bu parametre, bağlama Portal kullanılarak oluşturulduğunda otomatik olarak ayarlanır.
 |**leaseCollectionPrefix**| **leaseCollectionPrefix**| (İsteğe bağlı) Ayarlandığında, bir önek etkili bir şekilde iki ayrı Azure aynı kira koleksiyonu farklı önekler kullanarak paylaşmak işlevlere izin verme, bu işlev için kira koleksiyonu oluşturulan kiraları ekler.
 |**feedPollDelay**| **feedPollDelay**| (İsteğe bağlı) Kümesi, milisaniye cinsinden gecikme bir bölüm akışın yeni değişiklikleri için yoklama arasında tanımlar, tüm geçerli değişiklikleri boşaltılır. 5000 (5 saniye) varsayılandır.
@@ -1115,9 +1115,9 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type**     || Ayarlanmalıdır `documentdb`.        |
-|**direction**     || Ayarlanmalıdır `in`.         |
-|**Adı**     || İşlevinde belgeyi temsil eden bağlama parametresinin adı.  |
+|**type**     | Yok | Ayarlanmalıdır `documentdb`.        |
+|**direction**     | Yok | Ayarlanmalıdır `in`.         |
+|**Adı**     | Yok | İşlevinde belgeyi temsil eden bağlama parametresinin adı.  |
 |**databaseName** |**databaseName** |Belge içeren veritabanı.        |
 |**collectionName** |**collectionName** | Belgeyi içeren koleksiyon adı. |
 |**id**    | **Kimlik** | Alınacak belgenin kimliği. Bu özelliği destekleyen [ifadeleri bağlama](./functions-bindings-expressions-patterns.md). Her ikisi de ayarlamamanız **kimliği** ve **sqlQuery** özellikleri. Tek ayarlamazsanız, tüm koleksiyon alınır. |
@@ -1454,9 +1454,9 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type**     || Ayarlanmalıdır `documentdb`.        |
-|**direction**     || Ayarlanmalıdır `out`.         |
-|**Adı**     || İşlevinde belgeyi temsil eden bağlama parametresinin adı.  |
+|**type**     | Yok | Ayarlanmalıdır `documentdb`.        |
+|**direction**     | Yok | Ayarlanmalıdır `out`.         |
+|**Adı**     | Yok | İşlevinde belgeyi temsil eden bağlama parametresinin adı.  |
 |**databaseName** | **databaseName**|Belge oluşturulduğu koleksiyonu içeren veritabanı.     |
 |**collectionName** |**collectionName**  | Belge oluşturulduğu koleksiyonun adı. |
 |**createıfnotexists**  |**Createıfnotexists**    | Mevcut değilse, koleksiyonun oluşturulup oluşturulmayacağını belirten bir Boole değeri. Varsayılan değer *false* etkileri maliyet ayrılmış işleme ile yeni Koleksiyonlar oluşturulduğundan. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/documentdb/).  |

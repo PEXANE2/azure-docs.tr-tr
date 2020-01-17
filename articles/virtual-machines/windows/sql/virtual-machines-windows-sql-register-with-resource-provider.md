@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b59470a187fe060bd5e9a2c1bd84e63f598770df
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: f16cb95a42bf201aa7d75a3393917c58f51fbb07
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690795"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122449"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 'da SQL Server sanal makinesini SQL VM kaynak sağlayıcısıyla kaydetme
 
@@ -91,7 +91,7 @@ PowerShell kullanarak SQL Server IaaS aracınızın geçerli modunu görüntüle
 
 SQL Server VM SQL VM kaynak sağlayıcısına kaydetmek için öncelikle aboneliğinizi kaynak sağlayıcısına kaydetmeniz gerekir. Bu, SQL VM kaynak sağlayıcısına aboneliğinizdeki kaynakları oluşturma olanağı sağlar.  Azure portal, Azure CLı veya PowerShell kullanarak bunu yapabilirsiniz.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
 
 1. Azure portal açın ve **tüm hizmetlere**gidin. 
 1. **Abonelikler** ' e gidin ve ilgilendiğiniz aboneliği seçin.  
@@ -221,7 +221,7 @@ PowerShell kullanarak SQL Server IaaS aracınızın geçerli modunu görüntüle
 Aracı modunu tam olarak yükseltmek için: 
 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. [SQL sanal makineler](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) kaynağına gidin. 
@@ -263,7 +263,7 @@ Aşağıdaki PowerShell kod parçacığını çalıştırın:
 ## <a name="verify-registration-status"></a>Kayıt durumunu doğrula
 SQL Server VM Azure portal, Azure CLı veya PowerShell kullanarak SQL VM kaynak sağlayıcısı ile zaten kaydedilmiş olup olmadığını doğrulayabilirsiniz. 
 
-### <a name="azure-portal"></a>Azure Portal 
+### <a name="azure-portal"></a>Azure portalında 
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 1. [SQL Server sanal makinelerinize](virtual-machines-windows-sql-manage-portal.md)gidin.
@@ -300,7 +300,7 @@ SQL Server VM SQL VM kaynak sağlayıcısı ile kaydını silmek için, Azure po
 
 Yönetim modunun tam olarak indirgenmesini sağlamak için SQL VM kaynak sağlayıcısı ile SQL VM kaydının kaydı gereklidir. 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
 
 Azure portal kullanarak SQL Server VM kaynak sağlayıcıyla kaydını silmek için şu adımları izleyin:
 
@@ -419,11 +419,11 @@ Hayır. SQL VM kaynak sağlayıcısına kaydolma Azure portal kullanılamıyor. 
 
 **SQL Server yüklenmeden önce SQL VM kaynak sağlayıcısı ile bir VM 'yi kaydedebilir miyim?**
 
-Hayır. VM, SQL VM kaynak sağlayıcısına başarıyla kaydolmak için en az bir SQL Server örneğine sahip olmalıdır. VM üzerinde SQL Server örneği yoksa, yeni Microsoft. SqlVirtualMachine kaynağı başarısız durumda olur.
+Hayır. VM, SQL VM kaynak sağlayıcısına başarıyla kaydolmak için en az bir SQL Server (veritabanı altyapısı) örneğine sahip olmalıdır. VM üzerinde SQL Server örneği yoksa, yeni Microsoft. SqlVirtualMachine kaynağı başarısız durumda olur.
 
 **Birden çok SQL Server örneği varsa SQL VM kaynak sağlayıcısı ile bir VM 'yi kaydedebilir miyim?**
 
-Evet. SQL VM kaynak sağlayıcısı yalnızca bir SQL Server örneğini kaydeder. SQL VM kaynak sağlayıcısı, birden çok örnek olması durumunda varsayılan SQL Server örneğini kaydeder. Varsayılan örnek yoksa, yalnızca hafif modda kaydolma desteklenir. Hafif ve tam yönetilebilirlik moduna yükseltmek için, varsayılan SQL Server örneği var olmalıdır veya VM yalnızca bir adlandırılmış SQL Server örneğine sahip olmalıdır.
+Evet. SQL VM kaynak sağlayıcısı yalnızca bir SQL Server (veritabanı altyapısı) örneğini kaydeder. SQL VM kaynak sağlayıcısı, birden çok örnek olması durumunda varsayılan SQL Server örneğini kaydeder. Varsayılan örnek yoksa, yalnızca hafif modda kaydolma desteklenir. Hafif ve tam yönetilebilirlik moduna yükseltmek için, varsayılan SQL Server örneği var olmalıdır veya VM yalnızca bir adlandırılmış SQL Server örneğine sahip olmalıdır.
 
 **SQL Server yük devretme kümesi örneğini SQL VM kaynak sağlayıcısı ile kaydedebilir miyim?**
 

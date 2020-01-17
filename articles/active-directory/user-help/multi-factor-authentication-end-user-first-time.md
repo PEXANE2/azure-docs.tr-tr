@@ -1,6 +1,6 @@
 ---
-title: İki öğeli doğrulama yöntemlerinizi genel bakış-Azure Active Directory | Microsoft Docs
-description: İki Factor Authentication için iki öğeli doğrulama yöntemlerinizi ayarlama hakkında genel bakış.
+title: Ek doğrulama sayfası nedir? -Azure AD
+description: İki öğeli doğrulama için ek güvenlik doğrulama sayfasına nasıl ulaşırsanız.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -8,22 +8,24 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/12/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83bba343ac73fd0df575ae1e8a83c589a0bc15ac
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7dfcc02928cc92aedd0eb0f966bea9804be5fdcc
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616162"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156259"
 ---
-# <a name="set-up-your-two-factor-verification-methods-overview"></a>İki öğeli doğrulama yöntemlerinizi genel bakışına ayarlayın
+# <a name="what-is-the-additional-verification-page"></a>Ek doğrulama sayfası nedir?
 
-Kuruluşunuz iki öğeli doğrulamayı açık bıraktı, yani iş veya okul hesabınızın oturum açma işlemi artık Kullanıcı adınızla, parolanıza ve bir mobil cihaz ya da telefonun birleşimini gerektirir. İki kimlik doğrulama biçimini (bildiğiniz bir şeyi ve sizinle bir şeyi) bağlı olarak yalnızca bir paroladan daha güvenli olduğundan, kuruluşunuz bu ek doğrulamaya açıktır. İki öğeli doğrulama kötü amaçlı korsanların sizin için hazır olmasını önlemeye yardımcı olabilir, çünkü parolankenizin olsa da, gürültü, cihazınıza sahip olmalardır.
+BT ekibinizden veya patronunuzdan kuruluşunuzun hesabınıza ek bir güvenlik doğrulaması eklediğine dair bir e-posta aldınız. Bu ne anlama geliyor? Bu durum kuruluşunuzun oturum açma sırasında gerçekten söylediğiniz kişi olduğunuzdan emin olmak için ek adımları uygulamaya aldığını göstermektedir. İki öğeli doğrulama olarak da bilinen bu ek doğrulama, Kullanıcı adınızın, parolanızın ve bir mobil cihazın veya telefonunuzun bir birleşimi aracılığıyla yapılır.
+
+İki öğeli doğrulama iki farklı kimlik doğrulama biçimini temel aldığından yalnızca bir paroladan daha güvenlidir: bildiğiniz bir şey ve sizinle bir şeyler. Bildiğiniz şey parolanızdır. Sahip olduğunuz şey ise genelde yanınızda olan telefonunuz veya başka bir cihazdır. İki öğeli doğrulama kötü amaçlı korsanların sizin için hazır olmasını durdurmaya yardımcı olabilir, çünkü parolankenizin olsa da, gürültü, cihazınıza sahip olmalardır.
 
 >[!Important]
->Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, Azure Active Directory (Azure AD) ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi için [Azure Active Directory Belgelerine](https://docs.microsoft.com/azure/active-directory) bakabilirsiniz.
+>Bu makale, bir iş veya okul hesabıyla iki öğeli doğrulama kullanmaya çalışan kullanıcılara yöneliktir (örneğin, alain@contoso.com). Çalışanlarınız veya diğer kullanıcılar için iki öğeli doğrulamanın nasıl kullanılacağına ilişkin bilgi arayan bir yöneticiyseniz, [Azure Active Directory kimlik doğrulama belgelerine](https://docs.microsoft.com/azure/active-directory/authentication/)bakın.
 
 ## <a name="who-decides-if-you-use-this-feature"></a>Bu özelliği kullanıp kullanmayacağına karar veriyor musunuz?
 
@@ -32,6 +34,9 @@ Kuruluşunuz, hesap türüne bağlı olarak iki öğeli doğrulama kullanmanız 
 - **İş veya Okul hesabı.** Bir iş veya okul hesabı kullanıyorsanız (örneğin, alain@contoso.com), bu, belirli doğrulama yöntemleriyle birlikte iki öğeli doğrulama kullanmanız gerekip gerekmediğini kuruluşunuza göre yapılır. Kuruluşunuz bu özelliği kullanmanız gerektiğine karar verdiği için, tek yapmanız gereken bir yöntem yoktur.
 
 - **Kişisel Microsoft hesabı.** Kişisel Microsoft hesaplarınız için iki öğeli doğrulama ayarlamayı seçebilirsiniz (örneğin, alain@outlook.com). İki öğeli doğrulamayla ve kişisel Microsoft hesabı ilgili sorun yaşıyorsanız, [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)bölümüne bakın. Bu özelliği kullanmak isteyip istemediğinizi seçerken dilediğiniz zaman açıp kapatabilirsiniz.
+
+    >[!Note]
+    >İki öğeli doğrulamayla ve kişisel Microsoft hesaplarınızdan biriyle ilgili sorun yaşıyorsanız (örneğin, danielle@outlook.com), [Microsoft hesabı iki aşamalı doğrulamayı kullanma](https://support.microsoft.com/help/12408/microsoft-account-how-to-use-two-step-verification)önerilerini deneyebilirsiniz.
 
 ## <a name="access-the-additional-security-verification-page"></a>Ek güvenlik doğrulama sayfasına erişin
 

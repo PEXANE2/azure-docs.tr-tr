@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerinde Azure Backup SQL Server veri
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 52a7e98702299e790ee097cca871332ebb6a52c5
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: fc0c3127594fe3ca90b0a66ce548f471c55f4e5f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611398"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156480"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
 
@@ -29,7 +29,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 Bir SQL Server veritabanını yedeklemek için aşağıdaki ölçütleri kontrol edin:
 
-1. SQL Server örneğini barındıran VM ile aynı bölgede veya yerel ayarda bir [Kurtarma Hizmetleri Kasası](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) belirler veya oluşturun.
+1. SQL Server örneğini barındıran VM ile aynı bölgede ve abonelikte bir [Kurtarma Hizmetleri Kasası](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) oluşturun veya oluşturun.
 2. VM 'nin [ağ bağlantısı](backup-sql-server-database-azure-vms.md#establish-network-connectivity)olduğunu doğrulayın.
 3. SQL Server veritabanlarının [Azure Backup için veritabanı adlandırma yönergelerini](#database-naming-guidelines-for-azure-backup)izlediğinden emin olun.
 4. Veritabanı için etkinleştirilmiş başka bir yedekleme çözümünden emin olup olmadığınızı denetleyin. Veritabanını kapatmadan önce diğer tüm SQL Server yedeklemelerini devre dışı bırakın.

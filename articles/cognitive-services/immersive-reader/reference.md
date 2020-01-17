@@ -1,7 +1,7 @@
 ---
 title: Modern Okuyucu SDK başvurusu
 titleSuffix: Azure Cognitive Services
-description: Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu Web uygulamanızla tümleştirmenize olanak tanıyan bir JavaScript kitaplığıdır.
+description: Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu uygulamanızla tümleştirmenize olanak tanıyan bir JavaScript kitaplığı içerir.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945272"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156412"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Modern Okuyucu SDK 'Sı başvuru kılavuzu
 
-Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu Web uygulamanızla tümleştirmenize olanak tanıyan bir JavaScript kitaplığıdır.
+Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu uygulamanızla tümleştirmenize olanak tanıyan bir JavaScript kitaplığı içerir.
 
 ## <a name="functions"></a>İşlevler
 
@@ -36,7 +36,7 @@ SDK işlevleri kullanıma sunar:
 Web uygulamanızdaki bir `iframe` içinde tam ekran okuyucu başlatır.
 
 ```typescript
-launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
+launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
 ```
 
 ### <a name="parameters"></a>Parametreler
@@ -50,7 +50,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="returns"></a>Döndürür
 
-Derinlikli okuyucu yüklendiğinde çözümlenen bir `Promise<HTMLDivElement>`döndürür. `Promise`, yalnızca alt öğesi, tam ekran okuyucu sayfasını içeren bir `iframe` öğesi olan bir `div` öğesine çözümlenir.
+Derinlikli okuyucu yüklendiğinde çözümlenen bir `Promise<LaunchResponse>`döndürür. `Promise`, bir [`LaunchResponse`](#launchresponse) nesnesine çözümlenir.
 
 ### <a name="exceptions"></a>Özel durumlar
 
@@ -109,6 +109,17 @@ Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
 }
 ```
 
+### <a name="launchresponse"></a>LaunchResponse
+
+`ImmersiveReader.launchAsync`çağrısının yanıtını içerir.
+
+```typescript
+{
+    container: HTMLDivElement;    // HTML element which contains the Immersive Reader iframe
+    sessionId: string;            // Globally unique identifier for this session, used for debugging
+}
+```
+
 ### <a name="cookiepolicy-enum"></a>Tanımlama listesi ıepolicy Enum
 
 Derinlikli okuyucunun tanımlama bilgisi kullanımı için ilkeyi ayarlamak üzere kullanılan bir sabit listesi. Bkz. [Seçenekler](#options).
@@ -127,6 +138,7 @@ enum CookiePolicy { Disable, Enable }
 | application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx biçim belgesi.
 
 ### <a name="html-support"></a>HTML desteği
+
 | HTML | Desteklenen Içerik |
 | --------- | ----------- |
 | Yazı tipi stilleri | Kalın, Italik, altı çizili, kod, üstü çizili, üst simge, alt simge |
@@ -186,7 +198,7 @@ Hata hakkındaki bilgileri içerir.
 
 ## <a name="launching-the-immersive-reader"></a>Modern okuyucu başlatılıyor
 
-SDK, tam ekran okuyucuyu başlatmaya yönelik düğme için varsayılan stil sağlar. Bu stillendirme özelliğini etkinleştirmek için `immersive-reader-button` Class özniteliğini kullanın.
+SDK, tam ekran okuyucuyu başlatmaya yönelik düğme için varsayılan stil sağlar. Bu stillendirme özelliğini etkinleştirmek için `immersive-reader-button` Class özniteliğini kullanın. Daha fazla bilgi için [Bu makaleye](./how-to-customize-launch-button.md) bakın.
 
 ```html
 <div class='immersive-reader-button'></div>

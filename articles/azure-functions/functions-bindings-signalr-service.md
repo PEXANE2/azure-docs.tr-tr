@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: cbc45036497547b78514b1d175d67c6ed437ee2d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: d5ded7200c438fc734e1af0a42ca6071196bd41c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769498"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120346"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure İşlevleri için SignalR Service bağlamaları
 
@@ -1011,9 +1011,9 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type**|| Ayarlanmalıdır `signalRConnectionInfo`.|
-|**direction**|| Ayarlanmalıdır `in`.|
-|**Adı**|| Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
+|**type**| Yok | Ayarlanmalıdır `signalRConnectionInfo`.|
+|**direction**| Yok | Ayarlanmalıdır `in`.|
+|**Adı**| Yok | Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
 |**hubName**|**HubName**| Bu değer, bağlantı bilgilerinin oluşturulduğu SignalR hub 'ının adına ayarlanmalıdır.|
 |**userId**|**UserID**| İsteğe bağlı: erişim anahtarı belirtecinde ayarlanacak Kullanıcı tanımlayıcı talebinin değeri. |
 |**connectionStringSetting**|**connectionStringSetting**| SignalR hizmeti bağlantı dizesini içeren uygulama ayarının adı (varsayılan olarak "AzureSignalRConnectionString" olarak belirlenmiştir) |
@@ -1024,9 +1024,9 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type**|| Ayarlanmalıdır `signalR`.|
-|**direction**|| Ayarlanmalıdır `out`.|
-|**Adı**|| Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
+|**type**| Yok | Ayarlanmalıdır `signalR`.|
+|**direction**| Yok | Ayarlanmalıdır `out`.|
+|**Adı**| Yok | Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
 |**hubName**|**HubName**| Bu değer, bağlantı bilgilerinin oluşturulduğu SignalR hub 'ının adına ayarlanmalıdır.|
 |**connectionStringSetting**|**connectionStringSetting**| SignalR hizmeti bağlantı dizesini içeren uygulama ayarının adı (varsayılan olarak "AzureSignalRConnectionString" olarak belirlenmiştir) |
 

@@ -4,14 +4,14 @@ description: Azure için avere vFXT hakkında ek bilgilere bağlantılar
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: fbd763827383c5ded2bb4ef0047ea3c5f650d78e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416342"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153777"
 ---
 # <a name="additional-documentation"></a>Diğer belgeler
 
@@ -25,7 +25,7 @@ Ek avere kümesi belgeleri <https://azure.github.io/Avere/>adresindeki Web sites
   * [Destek ve Izleme ayarlarını](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) özelleştirmek, destek yükleme ayarlarını özelleştirmeyi ve uzaktan izlemeyi etkinleştirmeyi açıklar.
   * [VServers ve Global ad alanı yapılandırması](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>) , istemciye yönelik bir ad alanı oluşturma hakkında bilgi içerir.
   * [Avere kümesi IÇIN DNS yapılandırması,](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) hepsini bir kez deneme DNS 'nin nasıl yapılandırılacağını açıklar.
-  * [Arka uç depolama belgeleri ekleme](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) temel filers ekleme.
+  * [Arka uç depolama alanı ekleme](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) temel filers ekleme.
 
 * [Küme yapılandırma kılavuzu](<https://azure.github.io/Avere/#operations>) , bir avere kümesi için ayarların ve seçeneklerin tamamı başvurusudur. VFXT kümesi bu seçeneklerin bir alt kümesini kullanır, ancak aynı yapılandırma sayfalarının çoğu geçerlidir.
 
@@ -33,4 +33,4 @@ Ek avere kümesi belgeleri <https://azure.github.io/Avere/>adresindeki Web sites
 
 ## <a name="vfxt-creation-and-management-documentation"></a>vFXT oluşturma ve yönetimi belgeleri
 
-Bulut kümesi oluşturma ve yönetim yardımcı programı vfxt.py kullanmaya yönelik bir tam kılavuz GitHub: [vfxt.py Ile bulut kümesi Yönetimi](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)için verilmiştir.
+Betik tabanlı bir bulut kümesi oluşturma ve yönetim yardımcı programı olan vfxt.py kullanmaya yönelik bir tam kılavuz GitHub: [vfxt.py Ile bulut kümesi Yönetimi](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)için verilmiştir.

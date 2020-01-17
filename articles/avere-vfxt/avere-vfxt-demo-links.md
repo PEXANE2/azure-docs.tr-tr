@@ -4,14 +4,14 @@ description: avere vFXT için Code demo öğreticilerine bağlantılar
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 406262be5f70ed891f657d184acff98331b6b7a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415406"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153709"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Avere vFXT demo projeleri
 
@@ -19,13 +19,13 @@ ms.locfileid: "75415406"
 
 ## <a name="video-rendering"></a>Video işleme
 
-* [Azure Batch ve avere vfxt kullanarak işleme](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) -animasyonlu bir filmi oluşturmak için Azure Batch ve avere vfxt kümesiyle Autodesk Maya kullanmayı gösteren 60 dakikalık bir demo
+* [Azure Batch ve avere vfxt kullanarak işleme](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) -animasyonlu bir filmi oluşturmak için Azure Batch ve avere vfxt kümesiyle Autodesk Maya kullanmayı gösteren 60 dakikalık bir proje
 
-* [Avere vFXT neden işleme için kullanılmalıdır?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -Bir avere vFXT kümesi olmadan ve ile NAS arasındaki işleme sürelerini karşılaştıran bir gösterim
+* [Avere vFXT neden işleme için kullanılmalıdır?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -Avere vFXT kümesi olmayan ve ile ağ bağlantılı depolamadan işleme sürelerini karşılaştıran bir gösterim
 
 ## <a name="high-performance-computing"></a>Yüksek performanslı bilgi işlem
 
-* [Azure sanal makinesi (VM) önyükleme süresini iyileştirmeye yönelik En Iyi Yöntemler](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) -binlerce işlem istemcisini hızla yüklerken önyükleme sürelerini Iyileştirmek için Azure Için avere vFXT kullanma tekrarlanabilir bir test
+* [Azure sanal makinesi (VM) önyükleme süresini iyileştirmeye yönelik en iyi yöntemler](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) -binlerce işlem istemcisini hızla yüklerken önyükleme sürelerini Iyileştirmek için Azure Için avere vFXT kullanan bir tekrarlanabilir test
 
 ## <a name="vfxt-performance"></a>vFXT performansı
 

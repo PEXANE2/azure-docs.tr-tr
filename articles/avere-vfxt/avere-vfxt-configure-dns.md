@@ -4,14 +4,14 @@ description: Azure için avere vFXT ile hepsini bir kez deneme yük dengelemesi 
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 11ff310dae3c4733283d965a518df42a0711ce01
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81b53904f85e2ac936195b1e39d7586fd1d47524
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416052"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153794"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere kümesi DNS yapılandırması
 

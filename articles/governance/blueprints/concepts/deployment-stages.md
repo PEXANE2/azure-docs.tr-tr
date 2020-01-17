@@ -1,14 +1,14 @@
 ---
 title: Şema dağıtımının aşamaları
-description: Şema atama oluştururken Azure Blueprint Hizmetleri ile ilgili güvenlik ve yapıt ile ilgili adımları öğrenin.
+description: Şema atama oluştururken Azure şemaları hizmetlerinin üzerinden geçen güvenlik ve yapıt ile ilgili adımları öğrenin.
 ms.date: 11/13/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4c1d0cd47e0f43b73e3178e18a4ba5d705048a72
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: daa7722fa37547929aa21b76b870f70143ae71ab
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463560"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156633"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Şema dağıtımının aşamaları
 
@@ -27,7 +27,7 @@ Bir şema dağıtıldığında, şema içinde tanımlanan kaynakları dağıtmak
 
 Azure planları hizmet sorumlusu, atanan abonelik veya aboneliklerde, [sistem tarafından atanan yönetilen kimlik](../../../active-directory/managed-identities-azure-resources/overview.md) yönetimli bir kimlik kullanıldığında sahip hakları verilir. Verilen rol, **sistem tarafından atanan** yönetilen kimliği, planların oluşturulmasına ve daha sonra iptal etmesine olanak tanır. **Kullanıcı tarafından atanan** yönetilen kimlik kullanılıyorsa Azure planları hizmet sorumlusu, abonelik üzerinde sahip haklarına sahip değildir ve bu haklara gerek kalmaz.
 
-Atama Portal üzerinden yapıldığında haklar otomatik olarak verilir. Ancak, atama REST API aracılığıyla yapılabiliyorsanız, hakların ayrı bir API çağrısıyla yapılması gerekir. Azure Blueprint AppID `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ancak hizmet sorumlusu kiracıya göre değişir. Hizmet sorumlusunu almak için [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) ve REST uç nokta [servicesorumlularını](/graph/api/resources/serviceprincipal) kullanın. Daha sonra Azure 'a [Portal](../../../role-based-access-control/role-assignments-portal.md), [azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md)veya [Kaynak Yöneticisi şablonu](../../../role-based-access-control/role-assignments-template.md)aracılığıyla _sahip_ rolünü verin.
+Atama Portal üzerinden yapıldığında haklar otomatik olarak verilir. Ancak, atama REST API aracılığıyla yapılabiliyorsanız, hakların ayrı bir API çağrısıyla yapılması gerekir. Azure şemaları uygulama kimliği `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ancak hizmet sorumlusu kiracıya göre değişir. Hizmet sorumlusunu almak için [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) ve REST uç nokta [servicesorumlularını](/graph/api/resources/serviceprincipal) kullanın. Daha sonra Azure 'a [Portal](../../../role-based-access-control/role-assignments-portal.md), [azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md)veya [Kaynak Yöneticisi şablonu](../../../role-based-access-control/role-assignments-template.md)aracılığıyla _sahip_ rolünü verin.
 
 Planlar hizmeti kaynakları doğrudan dağıtmaz.
 

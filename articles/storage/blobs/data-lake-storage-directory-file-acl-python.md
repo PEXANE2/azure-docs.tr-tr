@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: dbfee5d897d54d68ea6471f0001793a905c95e62
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cb2e1c16c1419d9925bd837bb4e12119f08d56c4
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835064"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119542"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage 2. (Önizleme) içinde dizinleri, dosyaları ve ACL 'Leri yönetmek için Python kullanma
 
@@ -64,7 +64,7 @@ except Exception as e:
  
 - `storage_account_name` yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
-- `storage-account-key` yer tutucu değerini depolama hesabı erişim anahtarınızla değiştirin.
+- `storage_account_key` yer tutucu değerini depolama hesabı erişim anahtarınızla değiştirin.
 
 ## <a name="create-a-file-system"></a>Dosya sistemi oluşturma
 

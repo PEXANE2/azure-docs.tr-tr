@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: ''
-ms.openlocfilehash: 938d93b1df077914323c7b5f4ee1d42276aeff04
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c102e7ffde7faab5d864c1d9acaafe141664ebf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434924"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119559"
 ---
 # <a name="stay-connected-with-azure-iot-central-preview-features"></a>Azure IoT Central bağlı kalın (Önizleme özellikleri)
 
@@ -21,7 +21,7 @@ ms.locfileid: "75434924"
 
 Bu makalede, Azure IoT Central cihazlarınızın bağlı ve sağlıklı kalmasına nasıl yardımcı olduğu hakkında genel bir bakış sunulmaktadır.
 
-Ölçek düzeyinde çalışacak şekilde tasarlanan tüm IoT çözümlerinin yanı sıra, cihaz yönetimi için iyi yapılandırılmış bir yaklaşım önemlidir. Cihazları "bağlı" duruma getirmek yeterli değildir, ancak çözümünüz geliştikçe, büyürken ve yaşışdıkça cihazları bağlı ve sağlıklı bir şekilde tutmaya yönelik bir yaklaşıma ihtiyacınız vardır. Azure IoT Central, IoT çözümünüzdeki cihazların uygulama yaşam döngüsü boyunca iyi bir şekilde gezildiğinden emin olmak için gerekli özellikleri sağlar.
+Ölçek düzeyinde çalışacak şekilde tasarlanan tüm IoT çözümlerinin yanı sıra, cihaz yönetimi için iyi yapılandırılmış bir yaklaşım önemlidir. Buluta "bağlı" cihazları almak yeterli değildir; çözümünüz geliştikçe, büyürken ve yaşışdıkça cihazları bağlı ve sağlıklı bir şekilde tutmaya yönelik bir yaklaşım gerekir. Azure IoT Central, IoT çözümünüzdeki cihazların uygulama yaşam döngüsü boyunca iyi bir şekilde gezildiğinden emin olmak için gerekli özellikleri sağlar.
 
 ## <a name="dashboards"></a>Panolar 
 Yerleşik [panolar](howto-manage-devices.md#import-devices) cihaz sistem durumunu ve telemetrisini izlemek için özelleştirilebilir bir yüzey alanı sağlar. [Uygulama şablonundan](howto-use-app-templates.md) önceden oluşturulmuş bir panoyla başlayın veya uygulamanızın gereksinimlerine uyarlanmış kendi panolarınızı oluşturun. Panolar uygulamanızdaki tüm kullanıcılarla paylaşılabilir veya özel olarak saklanır.

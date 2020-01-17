@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8602a9c5b69c47c2f663dab461394ef5e1a9bed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2440d373b726b4f97cd5d9ba162daaa0714f79e0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762867"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155063"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD parola koruması işlem yordamları
 
@@ -28,7 +28,7 @@ Kuruluşunuzun yasaklanmış parola listesini özelleştirme adımları için [�
 
 ## <a name="enable-password-protection"></a>Parola korumasını etkinleştir
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory**, **güvenlik**,**kimlik doğrulama yöntemleri**ve **parola koruması**' na gidin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** > **güvenlik** > **kimlik doğrulama yöntemlerine** > **parola korumasını**inceleyin.
 1. **Windows Server 'Da parola korumasını etkinleştir Active Directory** **Evet** olarak ayarlayın
 1. [Dağıtım kılavuzunda](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)bahsedildiği gibi, başlangıçta **modunun** **Denetim** olarak ayarlanması önerilir
    * Özelliği rahatladıktan sonra, **modu** **Zorlanmış** olarak değiştirebilirsiniz

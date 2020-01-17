@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: cd94001cfe795e7aa78a1332325052afce6b8ec6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762816"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155460"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -46,7 +46,7 @@ Azure Machine Learning, aşağıdakiler dahil olmak üzere makine öğrenimi iş
 
 + Kendi kodunuzu yazmak için <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">r Için SDK 'yı</a> kullandığınız r betikleri veya Not defterleri veya tasarımcıda r modüllerini kullanın.
 
-+ [Visual Studio Code uzantısı](how-to-vscode-tools.md)
++ [Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md)
 
 + [Machine Learning CLı](reference-azure-machine-learning-cli.md)
 
@@ -85,7 +85,7 @@ Doğru modele sahip olduğunuzda, bir Web hizmetinde, IoT cihazında veya Power 
 
 Daha sonra Python, [Azure Machine Learning Studio](https://ml.azure.com)veya [Machine Learning CLI](reference-azure-machine-learning-cli.md) [için Azure Machine Learning SDK 'sını](https://aka.ms/aml-sdk)kullanarak dağıtılan modellerinizi yönetebilirsiniz.
 
-Bu modeller tüketilebilir ve [gerçek zamanlı](how-to-consume-web-service.md) veya [zaman uyumsuz](how-to-run-batch-predictions.md) olarak büyük miktarlarda veri alabilir.
+Bu modeller tüketilebilir ve [gerçek zamanlı](how-to-consume-web-service.md) veya [zaman uyumsuz](how-to-use-parallel-run-step.md) olarak büyük miktarlarda veri alabilir.
 
 Gelişmiş [makine öğrenimi ardışık düzenleri](concept-ml-pipelines.md)sayesinde, dağıtım aracılığıyla veri hazırlama, model eğitimi ve değerlendirmede her bir adımla işbirliği yapabilirsiniz. İşlem hatları şunları yapmanıza olanak sağlar:
 

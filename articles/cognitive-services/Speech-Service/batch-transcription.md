@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 6b23ae21366699162b900ae420afae640aa20613
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4c2985f35621ff3120217cbe38705ad2c228d6f7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921469"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122109"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
@@ -88,18 +88,13 @@ Yapılandırma parametreleri JSON olarak sağlanır:
 Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
 
 | Parametre | Açıklama |
-|-----------|------------|
-|`ProfanityFilterMode`|Tanıma sonuçlarında küfür nasıl işleneceğini belirtir
-||**`Masked`** varsayılan. Küfür yıldız işaretiyle değiştirir<br>`None`-küfür filtrelemeyi devre dışı bırakır<br>`Removed`-tüm küfür sonuçtan kaldırır<br>`Tags`-uygunsuz Etiketler ekler
-|`PunctuationMode`|Tanıma sonuçlarında noktalama işaretlerinin işleneceğini belirtir
-||`Automatic`-hizmet noktalama ekler<br>`Dictated` dikte edilen (konuşulan) noktalama<br>**`DictatedAndAutomatic`** varsayılan. Dikte edilen ve otomatik noktalama<br>`None`-noktalama işaretlerini devre dışı bırakır
-|`AddWordLevelTimestamps`|Sözcük düzeyi zaman damgalarının çıktıya eklenip eklenmesinin gerekip gerekmediğini belirtir
-||`True`-sözcük düzeyi zaman damgalarını etkinleştirilir<br>**`False`** varsayılan. Sözcük düzeyi zaman damgalarını devre dışı bırak
-|`AddSentiment`|Yaklaşım analizinin söylenişi 'e eklenip eklenne olduğunu belirtir
-||`True`-söylenişi başına yaklaşımı mümkün hale getirme<br>**`False`** varsayılan. Yaklaşımı devre dışı bırak
-|`AddDiarization`|Seçme analizinin mi gerçekleştirileceğini belirtir. `true`, girişin en fazla iki ses içeren mono kanal sesi olması beklenir. `AddWordLevelTimestamps` `true` olarak ayarlanması gerekiyor
-||`True`-seçme etkinleştirilir<br>**`False`** varsayılan. Seçimi devre dışı bırak
-|`TranscriptionResultsContainerUrl`|Azure 'da yazılabilir bir kapsayıcıya isteğe bağlı SAS belirteci. Sonuç bu kapsayıcıda depolanacak
+|-----------|-------------|
+| `ProfanityFilterMode` | Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler `None` , devre dışı bırakır küfür filtresi `Masked` yıldız işareti ile küfür değiştirir `Removed` sonuç, tüm küfür kaldırır veya `Tags` "küfür" etiketleri ekler. Varsayılan ayar `Masked`. |
+| `PunctuationMode` | Noktalama işaretleri tanıma sonuçları nasıl ele alınacağını belirtir. Değerler kabul `None` , devre dışı bırakır, noktalama `Dictated` açık noktalama gelir `Automatic` noktalama işaretleri ile uğraşmak kod çözücü olanak tanıyan veya `DictatedAndAutomatic` dikte noktalama işaretleri veya otomatik olduğu anlamına gelir. |
+| `AddWordLevelTimestamps` | Sözcük düzeyi tarih damgalarının çıktıya eklenip eklenmesinin gerekip gerekmediğini belirtir. Kabul edilen değerler, Word düzeyi zaman damgalarını ve `false` (varsayılan değer) devre dışı bırakmak için `true`. |
+| `AddSentiment` | Yaklaşım 'ın utterance 'e eklenmesi gerektiğini belirtir. Kabul edilen değerler, her ay için yaklaşım ve `false` (varsayılan değer) tarafından devre dışı bırakılacak `true`. |
+| `AddDiarization` | İki ses içeren mono kanalı olması beklenen girişte, seçme analizinin gerçekleştirilmesi gerektiğini belirtir. Kabul edilen değerler, devre dışı bırakmak için `true` ve `false` (varsayılan değer) sağlar. Ayrıca, `AddWordLevelTimestamps` true olarak ayarlanmasını gerektirir.|
+|`TranscriptionResultsContainerUrl`|Azure 'da yazılabilir bir kapsayıcıya isteğe bağlı SAS belirteci. Sonuç bu kapsayıcıda depolanacak.
 
 ### <a name="storage"></a>Depolama
 

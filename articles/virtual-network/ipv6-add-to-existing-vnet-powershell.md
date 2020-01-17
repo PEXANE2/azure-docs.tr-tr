@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2019
 ms.author: kumud
-ms.openlocfilehash: 907a6de2ff89ddd3c2cb5bdab67e1deb984141dc
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: d08ce1c382d173ac98a0e61e6117ed50b958ba44
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965246"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119848"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>Azure sanal ağ 'da IPv4 uygulamasını IPv6 'ya yükseltme-PowerShell (Önizleme)
 
@@ -26,7 +26,7 @@ Bu makalede, bir Azure sanal ağında Standart Load Balancer ve genel IP 'ye sah
 - Sanal ağ ve alt ağ için IPv6 adres alanı
 - hem IPv4 hem de ıPV6 ön uç yapılandırmalarına sahip bir Standart Load Balancer
 - IPv4 + IPv6 yapılandırmasına sahip NIC 'leri olan VM 'Ler
-- Yük dengeleyicinin Internet 'e yönelik IPv6 bağlantısı olması için IPV genel IP 'si
+- Yük dengeleyicinin Internet 'e yönelik IPv6 bağlantısı olması için IPv6 genel IP 'si
 
 > [!Important]
 > Azure sanal ağ için IPv6 desteği şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -35,7 +35,7 @@ Bu makalede, bir Azure sanal ağında Standart Load Balancer ve genel IP 'ye sah
 
 PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell modülü sürümü 6.9.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="register-the-service"></a>Hizmeti kaydetme
 

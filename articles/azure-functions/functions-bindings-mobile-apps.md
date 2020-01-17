@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 051b8780a102a8a1ec4d3979cc53b686e2823dc8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 952a94797e01a3931fdd151461250af0c2590c11
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928605"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120550"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Işlevleri için Mobile Apps bağlamaları 
 
@@ -136,9 +136,9 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-| **type**|| "MobileTable" olarak ayarlanmalıdır|
-| **direction**||"In" olarak ayarlanmalıdır|
-| **Adı**|| İşlev imzasında giriş parametresinin adı.|
+| **type**| Yok | "MobileTable" olarak ayarlanmalıdır|
+| **direction**| Yok |"In" olarak ayarlanmalıdır|
+| **Adı**| Yok | İşlev imzasında giriş parametresinin adı.|
 |**tableName** |**TableName**|Mobil uygulamanın veri tablosunun adı|
 | **id**| **Kimlik** | Alınacak kaydın tanımlayıcısı. İşlevi çağıran tetikleyicisine statik veya bağlı olabilir. Örneğin, işleviniz için bir kuyruk tetikleyicisi kullanıyorsanız, `"id": "{queueTrigger}"` alınacak kayıt KIMLIĞI olarak Kuyruk iletisinin dize değerini kullanır.|
 |**bağlantı**|**bağlantı**|Mobil uygulamanın URL 'sini içeren bir uygulama ayarının adı. İşlevi, mobil uygulamanıza yönelik gerekli REST işlemlerini oluşturmak için bu URL 'YI kullanır. İşlev uygulamanızda, mobil uygulamanın URL 'sini içeren bir uygulama ayarı oluşturun ve ardından giriş Bağlamalarınızın `connection` özelliğindeki uygulama ayarının adını belirtin. URL, `http://<appname>.azurewebsites.net`benzer şekilde görünür.
@@ -294,9 +294,9 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-| **type**|| "MobileTable" olarak ayarlanmalıdır|
-| **direction**||"Out" olarak ayarlanmalıdır|
-| **Adı**|| İşlev imzasında çıkış parametresinin adı.|
+| **type**| Yok | "MobileTable" olarak ayarlanmalıdır|
+| **direction**| Yok |"Out" olarak ayarlanmalıdır|
+| **Adı**| Yok | İşlev imzasında çıkış parametresinin adı.|
 |**tableName** |**TableName**|Mobil uygulamanın veri tablosunun adı|
 |**bağlantı**|**MobileAppUriSetting**|Mobil uygulamanın URL 'sini içeren bir uygulama ayarının adı. İşlevi, mobil uygulamanıza yönelik gerekli REST işlemlerini oluşturmak için bu URL 'YI kullanır. İşlev uygulamanızda, mobil uygulamanın URL 'sini içeren bir uygulama ayarı oluşturun ve ardından giriş Bağlamalarınızın `connection` özelliğindeki uygulama ayarının adını belirtin. URL, `http://<appname>.azurewebsites.net`benzer şekilde görünür.
 |**apiKey**|**ApiKeySetting**|Mobil uygulamanızın API anahtarına sahip bir uygulama ayarının adı. [Node. js mobil uygulama arka ucunuza BIR API anahtarı uygularsanız](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)veya [.NET mobil uygulamanızın arka UCUNUZA bir API anahtarı uygularsanız](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)API anahtarını sağlayın. Anahtarı sağlamak için, işlev uygulamanızda API anahtarını içeren bir uygulama ayarı oluşturun ve ardından giriş bağlamaınıza `apiKey` özelliğini uygulama ayarı adı ile ekleyin. |

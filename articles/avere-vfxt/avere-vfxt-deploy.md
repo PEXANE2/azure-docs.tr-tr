@@ -4,14 +4,14 @@ description: Azure 'da avere vFXT kümesini dağıtma adımları
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: ad5b0ecd9e7e6326c5b91844b6f7b557972b4852
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d1058125d5bb3912b9561027bbe0a977637d3379
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415613"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153617"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT kümesini dağıtma
 
@@ -22,7 +22,7 @@ Bu yordam, Azure Marketi 'nden sunulan Dağıtım Sihirbazı 'nı kullanarak siz
 * Küme düğümü sanal makinelerini oluşturur ve avere kümesi olarak yapılandırır.
 * İsteniyorsa, yeni bir Azure Blob kapsayıcısı oluşturur ve bunu bir küme çekirdeği fili olarak yapılandırır.
 
-Bu belgedeki yönergeleri uyguladıktan sonra, aşağıdaki diyagramda gösterildiği gibi bir sanal ağ, bir alt ağ, denetleyici ve bir vFXT kümesi olacaktır. Bu diyagramda yeni bir BLOB depolama kapsayıcısı (yeni bir depolama hesabında, gösterilmez) ve alt ağ içinde Microsoft Storage için bir hizmet uç noktası içeren isteğe bağlı Azure Blob çekirdek filleyicisi gösterilmektedir.
+Bu belgedeki yönergeleri uyguladıktan sonra, aşağıdaki diyagramda gösterildiği gibi bir sanal ağ, bir alt ağ, bir küme denetleyicisi ve bir vFXT kümesi olacaktır. Bu diyagramda yeni bir BLOB depolama kapsayıcısı (yeni bir depolama hesabında, gösterilmez) ve alt ağ içinde Microsoft Storage için bir hizmet uç noktası içeren isteğe bağlı Azure Blob çekirdek filleyicisi gösterilmektedir.
 
 ![avere küme bileşenleriyle üç eşmerkezli dikdörtgeni gösteren diyagram. Dış dikdörtgen ' Resource Group ' olarak etiketlidir ve bir altıon etiketli ' Blob depolama alanı (isteğe bağlı) ' içeriyor. ' Deki sonraki dikdörtgen ' sanal ağ: 10.0.0.0/16 ' etiketlidir ve hiçbir benzersiz bileşen içermez. En içteki dikdörtgen ' subnet: 10.0.0.0/24 ' olarak etiketlidir ve ' küme denetleyicisi ' etiketli bir VM, ' vFXT düğümleri (vFXT kümesi) ' etiketli üç VM 'nin bir yığını ve ' hizmet uç noktası ' etiketli bir altıon ' ı içerir. Hizmet uç noktasını (alt ağ içinde olan) ve BLOB depolama alanını (kaynak grubunda alt ağ ve VNET dışında) bağlayan bir ok vardır. Ok, alt ağ ve sanal ağ sınırları üzerinden geçer.](media/avere-vfxt-deployment.png)
 
@@ -31,7 +31,7 @@ Oluşturma şablonunu kullanmadan önce, şu önkoşullara değindiğinizden emi
 1. [Yeni abonelik](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [Abonelik sahibi izinleri](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [VFXT kümesi için kota](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Depolama hizmeti uç noktası (gerekirse)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) -var olan bir sanal ağ kullanılarak dağıtımlar için gereklidir ve BLOB depolama alanı oluşturuluyor
+1. [Depolama hizmeti uç noktası (gerekirse)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) -var olan bir sanal ağı kullanan ve BLOB depolama alanı oluşturan dağıtımlar için gereklidir
 
 Küme dağıtım adımları ve planlaması hakkında daha fazla bilgi için [avere vFXT sisteminizin](avere-vfxt-deploy-plan.md) ve [dağıtıma genel bakış](avere-vfxt-deploy-overview.md)konusunu okuyun.
 
@@ -41,7 +41,7 @@ Avere araması yaparak Azure portal oluşturma şablonuna erişin ve "Azure ARM 
 
 ![Crumbs "Yeni > Market > her şeyi Azure portal gösteren tarayıcı penceresi. Her şey sayfasında, arama alanı "avere" terimini ve ikinci sonuç olarak "avere vFXT for Azure ARM şablonu", vurgulamak için kırmızı renkle özetlenmektedir.](media/avere-vfxt-template-choose.png)
 
-Azure ARM şablonu için avere vFXT ' deki ayrıntıları okuduktan sonra başlamak için **Oluştur** ' a tıklayın.
+Azure ARM şablonu için avere vFXT sayfasında ayrıntıları okuduktan sonra başlamak için **Oluştur** düğmesine tıklayın.
 
 ![Dağıtım şablonunun ilk sayfasıyla Azure Marketi](media/avere-vfxt-deploy-first.png)
 
@@ -149,11 +149,11 @@ Bilgileri bulmak için:
 
 1. Sol tarafta **dağıtımlar**' a ve ardından **Microsoft-avere. vfxt-Template**' e tıklayın.
 
-   ![Solda ve Microsoft-avere. vfxt-Template seçili dağıtımlar içeren kaynak grubu portalı sayfası dağıtım adı altındaki bir tabloda gösteriliyor](media/avere-vfxt-outputs-deployments.png) <!-- update image for new portal GUI -->
+   ![Solda ve Microsoft-avere. vfxt-Template seçili dağıtımlar içeren kaynak grubu portalı sayfası dağıtım adı altındaki bir tabloda gösteriliyor](media/avere-vfxt-outputs-deployments.png)
 
 1. Sol tarafta, **çıktılar**' e tıklayın. Her alandaki değerleri kopyalayın.
 
-   ![başlıkların sağ tarafındaki alanlarda SSHSTRING, RESOURCE_GROUP, konum, NETWORK_RESOURCE_GROUP, ağ, alt ağ, SUBNET_ID, VSERVER_IPs ve MGMT_IP değerlerini gösteren sayfa çıkışları](media/avere-vfxt-outputs-values.png)<!-- update image for new portal GUI -->
+   ![başlıkların sağ tarafındaki alanlarda SSHSTRING, RESOURCE_GROUP, konum, NETWORK_RESOURCE_GROUP, ağ, alt ağ, SUBNET_ID, VSERVER_IPs ve MGMT_IP değerlerini gösteren sayfa çıkışları](media/avere-vfxt-outputs-values.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

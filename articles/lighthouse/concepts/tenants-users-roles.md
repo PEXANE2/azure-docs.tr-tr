@@ -1,14 +1,14 @@
 ---
 title: Azure açık senaryolarındaki kiracılar, roller ve kullanıcılar
 description: Azure Active Directory kiracılar, kullanıcılar ve roller kavramlarını ve bunların Azure Use senaryolarında nasıl kullanılabileceğini anlayın.
-ms.date: 11/05/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 77a247c86765f25539833a6ba70f80e737c6846d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 344e104201a83b3589dae6dbd3b02e49e4575e00
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453565"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156344"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure açık senaryolarındaki kiracılar, roller ve kullanıcılar
 
@@ -29,6 +29,9 @@ Aşağıdaki özel durumlarla birlikte, tüm [yerleşik roller](../../role-based
 - [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolü desteklenmiyor.
 - [Dataactions](../../role-based-access-control/role-definitions.md#dataactions) iznine sahip yerleşik roller desteklenmez.
 - [Kullanıcı erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) yerleşik rolü desteklenir, ancak yalnızca [Müşteri kiracısında yönetilen bir kimliğe rol atamanın](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)sınırlı amacı için geçerlidir. Genellikle bu rol tarafından verilen başka hiçbir izin uygulanmaz. Bu rolle bir Kullanıcı tanımlarsanız, bu kullanıcının yönetilen kimliklere atayabileceği yerleşik rolleri de belirtmeniz gerekir.
+
+> [!NOTE]
+> Uygun yeni bir yerleşik rol Azure 'a eklendikten sonra, [Azure Resource Manager şablonları kullanarak bir müşteriyi](../how-to/onboard-customer.md)eklerken atanabilir. [Yönetilen bir hizmet teklifi yayımlanırken](../how-to/publish-managed-services-offers.md)bulut iş ortağı portalı yeni eklenen rol kullanılabilir hale gelmeden önce bir gecikme olabilir.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Kullanıcıları ve rolleri tanımlamaya yönelik en iyi uygulamalar
 

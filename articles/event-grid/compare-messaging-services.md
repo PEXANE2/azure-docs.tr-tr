@@ -1,6 +1,6 @@
 ---
 title: Azure mesajlaşma hizmetlerini karşılaştırma
-description: Azure Event Grid, Event Hubs ve Service Bus olmak üzere üç Azure Mesajlaşma hizmetini açıklar. Farklı senaryolar için kullanılacak hizmeti önerir.
+description: Üç Azure Mesajlaşma Hizmetleri - Azure Event Grid, Event Hubs ve Service Bus açıklar. Farklı senaryolar için kullanılacak hizmeti önerir.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 77497d709d7106bf7c13d1fafcc4e64ee0ed1d39
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6122f17637e76f42cc4fbcc87ac9f48da3cdca36
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790315"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122211"
 ---
-# <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Azure mesajlaşma hizmetleri (Event Grid, Event Hubs ve Service Bus arasında seçim yapın
+# <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Azure Mesajlaşma hizmetleri arasında - Event Grid, Event Hubs ve Service Bus'ı seçin
 
 Azure bir çözüm genelinde olay iletilerini teslim etmeye yardımcı olan üç hizmet sunar. Bu hizmetler şunlardır:
 
@@ -56,7 +56,7 @@ Event Grid, olay temelli duyarlı programlamayı sağlayan bir olay devre kartı
 
 Event Grid, Azure hizmetleriyle tümleşiktir ve üçüncü taraf hizmetlerle tümleştirilebilir. Olay tüketimini kolaylaştırır ve sürekli yoklama gereksinimini ortadan kaldırarak maliyetleri düşürür. Event Grid, olayları Azure’dan Azure dışı kaynaklara verimli ve güvenilir bir biçimde yönlendirir. Olayları kayıtlı abone uç noktalarına dağıtır. Olay iletisi, hizmet ve uygulamalardaki değişikliklere yanıt vermeniz için gereken bilgileri içerir. Event Grid bir veri işlem hattı değildir ve güncelleştirilmiş gerçek nesneyi teslim etmez.
 
-Event Grid, bir uç noktaya teslim edilmemiş olaylar için atılacak noktaları destekler.
+Event Grid, bir uç noktaya teslim olmayan olaylar için ulaşmayan destekler.
 
 Aşağıdaki özelliklere sahiptir:
 
@@ -90,7 +90,7 @@ Aşağıdaki özelliklere sahiptir:
 
 ## <a name="use-the-services-together"></a>Hizmetleri birlikte kullanma
 
-Bazı durumlarda, farklı rolleri yerine getirmek için hizmetleri yan yana kullanırsınız. Örneğin, bir e-ticaret sitesi sipariş işlemek için Service Bus, site telemetrisini yakalamak için Event Hubs ve bir ürünün gönderilmesi gibi olaylara yanıt vermek için Event Grid kullanabilir.
+Bazı durumlarda, farklı rolleri yerine getirmek için hizmetleri yan yana kullanırsınız. Örneğin, bir e-ticaret sitesi sırayı işlemek için Service Bus, site telemetrisini yakalamak Event Hubs ve bir öğe sevk edilen olaylara yanıt vermek için Event Grid kullanabilir.
 
 Bazı durumlarda ise bir olay ve veri işlem hattı oluşturmak üzere hizmetleri birbirine bağlarsınız. Diğer hizmetlerdeki olaylara yanıt vermek için Event Grid kullanabilirsiniz. Verileri bir veri ambarına geçirmek amacıyla Event Grid’i Event Hubs ile birlikte kullanma örneği için bkz. [Veri ambarına veri akışı yapma](event-grid-event-hubs-integration.md). Aşağıdaki görüntüde veri akışı yapma iş akışı gösterilmektedir.
 

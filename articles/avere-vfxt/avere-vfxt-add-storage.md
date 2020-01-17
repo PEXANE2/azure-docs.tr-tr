@@ -4,14 +4,14 @@ description: Azure için avere vFXT 'nize arka uç depolama sistemi ekleme
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 3f7d7b5091b6439f17455b5ea66a3a23ebf79811
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416472"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153998"
 ---
 # <a name="configure-storage"></a>Depolama alanını yapılandırma
 
@@ -32,7 +32,7 @@ Bu adımlar avere denetim masasını kullanır. Nasıl kullanacağınızı öğr
 
 ## <a name="create-a-core-filer"></a>Çekirdek filme oluşturma
 
-"Core filme", arka uç depolama sistemi için bir vFXT terimidir. Depolama, NetApp veya ıınon gibi bir donanım NAS gereci olabilir veya bir bulut nesne deposu olabilir. Çekirdek filtrelerin hakkında daha fazla bilgi için [avere küme ayarları kılavuzunda](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers)bulabilirsiniz.
+"Core filme", bir arka uç depolama sistemi için bir vFXT terimidir. Depolama, NetApp veya ıınon gibi bir donanım NAS gereci olabilir veya bir bulut nesne deposu olabilir. Çekirdek filtrelerin hakkında daha fazla bilgi için [avere küme ayarları kılavuzunda](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers)bulabilirsiniz.
 
 Bir çekirdek fili eklemek için, iki temel tür çekirdek dosyasıcıdan birini seçin:
 
@@ -49,7 +49,7 @@ Bir NAS Core fili eklemek için aşağıdaki adımları izleyin:
 
 1. Sol taraftaki çekirdek **filers 'Yi yönetmek** > **çekirdek filme** ' ye tıklayın.
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
    ![Oluştur düğmesinin üzerinde bir imlece yeni çekirdek dosyalayıcı ekleme sayfasının ekran görüntüsü](media/avere-vfxt-add-core-filer-start.png)
 

@@ -3,14 +3,14 @@ title: Web kancası ile Azure Otomasyonu runbook 'u başlatma
 description: Bir istemcinin Azure Automation 'da bir runbook 'u HTTP çağrısından başlatmasını sağlayan bir Web kancası.  Bu makalede bir Web kancası oluşturma ve bir runbook 'u başlatmak için bir nasıl çağrılacağını açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbf3a48d1e7cb3dd80b6c418d7c916184756b6fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f86193e818a91132f9bbca447acadd7e81747522
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418966"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155834"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Web kancası ile Azure Otomasyonu runbook 'u başlatma
 
@@ -126,7 +126,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 ## <a name="renew-webhook"></a>Web kancasını yenileme
 
-Bir Web kancası oluşturulduğunda, bir yıllık geçerlilik süresi vardır. Bu yıldan sonra, Web kancası otomatik olarak sona erer. Bir Web kancası süre dolduktan sonra yeniden etkinleştirilemez, kaldırılması ve yeniden oluşturulması gerekir. Bir Web kancası süre sonu zamanına ulaşmazsa genişletilebilir.
+Bir Web kancası oluşturulduğunda, geçerlilik süresi on yıl olur. Bu zaman süresinden sonra, Web kancası otomatik olarak sona erer. Bir Web kancası süre dolduktan sonra yeniden etkinleştirilemez, kaldırılması ve yeniden oluşturulması gerekir. Bir Web kancası süre sonu zamanına ulaşmazsa genişletilebilir.
 
 Web kancasını genişletmek için Web kancasını içeren runbook 'a gidin. **Kaynaklar**altında **Web kancaları** ' nı seçin. Genişletmek istediğiniz Web kancasına tıklayın, bu eylem **Web kancası** sayfasını açar.  Yeni bir sona erme tarihi ve saati seçip **Kaydet**' e tıklayın.
 

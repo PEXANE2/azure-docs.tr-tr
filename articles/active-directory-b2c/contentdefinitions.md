@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8acf499d4d82c49096e4e5beff8209d0970b421
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1ce564767fe9664604687d8cbaced58507e6b8b3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064327"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119661"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -37,13 +37,13 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
   <Metadata>
     <Item Key="DisplayName">Local account sign up page</Item>
   </Metadata>
-  <LoalizedResourcesReferences MergeBehavior="Prepend">
+  <LocalizedResourcesReferences MergeBehavior="Prepend">
     <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
     <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
     ...
 ```
 
-**Localaccountsignupwithlogonemail** kendi kendini onaylanan teknik profilinin meta verileri, şu şekilde ayarlanan içerik tanımı tanımlayıcı **Contentdefinitionreferenceıd** değerini içerir`api.localaccountsignup`
+**Localaccountsignupwithlogonemail** kendi kendini onaylanan teknik profilinin meta verileri, `api.localaccountsignup` olarak ayarlanan içerik tanımı tanımlayıcı **Contentdefinitionreferenceıd** değerini içerir
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -61,13 +61,13 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 
 **ContentDefinition** öğesi aşağıdaki özniteliği içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| Id | Evet | Bir içerik tanımı için tanımlayıcı. Değer, bu sayfanın ilerleyen kısımlarında bulunan **İçerik tanımı kimlikleri** bölümünde belirtilmiştir. |
+| Kimlik | Evet | Bir içerik tanımı için tanımlayıcı. Değer, bu sayfanın ilerleyen kısımlarında bulunan **İçerik tanımı kimlikleri** bölümünde belirtilmiştir. |
 
 **ContentDefinition** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Oluşumlar | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | İçerik tanımının HTML5 sayfasının URL 'sini içeren bir dize. |
 | RecoveryUri | 0:1 | İçerik tanımıyla ilgili bir hata görüntülemek için HTML sayfasının URL 'sini içeren bir dize. |
@@ -77,9 +77,9 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 
 ### <a name="datauri"></a>dataUri
 
-**Datauri** öğesi, sayfa tanımlayıcısını belirtmek için kullanılır. Azure AD B2C, Kullanıcı arabirimi öğelerini ve istemci tarafı JavaScript 'i yüklemek ve başlatmak için sayfa tanımlayıcısını kullanır. Değerin `urn:com:microsoft:aad:b2c:elements:page-name:version`biçimi.  Aşağıdaki tabloda kullanabileceğiniz sayfa tanımlayıcılarının listesi yer almaktadır.
+**Datauri** öğesi, sayfa tanımlayıcısını belirtmek için kullanılır. Azure AD B2C, Kullanıcı arabirimi öğelerini ve istemci tarafı JavaScript 'i yüklemek ve başlatmak için sayfa tanımlayıcısını kullanır. Değerin biçimi `urn:com:microsoft:aad:b2c:elements:page-name:version`.  Aşağıdaki tabloda kullanabileceğiniz sayfa tanımlayıcılarının listesi yer almaktadır.
 
-| Value |   Açıklama |
+| Değer |   Açıklama |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | Bir özel durum veya hata ile karşılaşıldığında bir hata sayfası görüntüler. |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | Kullanıcıların oturum açma sırasında aralarından seçim yapabileceğiniz kimlik sağlayıcılarını listeler. |
@@ -93,13 +93,13 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 
 **Localizedresourcesreferences** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Oluşumlar | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | İçerik tanımı için yerelleştirilmiş kaynak başvurularının listesi. |
 
 **Localizedresourcesreferences** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
 | Dil | Evet | Dilleri tanımlamak için RFC 5646-etiketleri başına ilke için desteklenen bir dil içeren bir dize. |
 | Localizedresourcesreferenceıd | Evet | **Localizedresources** öğesinin tanımlayıcısı. |
@@ -141,7 +141,7 @@ Aşağıdaki örnekte, Ingilizce, Fransızca ve Ispanyolca için yerelleştirmey
 
 **ContentDefinition** öğesinin ID özniteliği, içerik tanımıyla ilgili sayfa türünü belirtir. Öğesi, özel bir HTML5/CSS şablonunun uygulanacağı bağlamı tanımlar. Aşağıdaki tabloda, kimlik deneyimi çerçevesi tarafından tanınan içerik tanımı kimlikleri ve bunlarla ilgili sayfa türleri açıklanmaktadır. Rastgele bir KIMLIK ile kendi içerik tanımlarınızı oluşturabilirsiniz.
 
-| ID | Varsayılan şablon | Açıklama |
+| Kimlik | Varsayılan şablon | Açıklama |
 | -- | ---------------- | ----------- |
 | **api.error** | [Exception. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hata sayfası** -bir özel durum veya hata ile karşılaşıldığında hata sayfası görüntüler. |
 | **api. ıdpseçimlerin** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Kimlik sağlayıcısı seçim sayfası** -kullanıcıların oturum açma sırasında seçebileceği kimlik sağlayıcılarını listeler. Seçenekler genellikle kurumsal kimlik sağlayıcılardır, Facebook ve Google + gibi sosyal kimlik sağlayıcılarıdır veya yerel hesaplardır. |

@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045631"
+ms.locfileid: "76121089"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Azure SQL veritabanı ve veri ambarı için özel bağlantı (Önizleme)
 
@@ -43,8 +43,6 @@ Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki SQL veritabanla
 Müşteriler şirket içi makinelerden ortak uç noktaya bağlandıklarında, IP adreslerinin [sunucu düzeyinde bir güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)kullanılarak IP tabanlı güvenlik duvarına eklenmesi gerekir. Bu model geliştirme veya test iş yükleri için bireysel makinelere erişim sağlamak için iyi bir şekilde çalıştığından, bir üretim ortamında yönetilmesi zordur.
 
 Özel bağlantıyla, müşteriler [ExpressRoute](../expressroute/expressroute-introduction.md), özel eşleme veya VPN tüneli kullanarak özel uç noktaya şirket içi erişimi etkinleştirebilir. Müşteriler daha sonra genel uç nokta aracılığıyla tüm erişimi devre dışı bırakabilir ve IP adreslerine izin vermek için IP tabanlı güvenlik duvarını kullanmaz.
-
-Özel bağlantıyla, müşteriler Express Route (ER) özel eşleme veya VPN tüneli kullanarak özel uç noktaya şirket içi erişimi etkinleştirebilir. Daha sonra, genel uç nokta aracılığıyla tüm erişimi devre dışı bırakabilir ve IP tabanlı güvenlik duvarını kullanmaz.
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Azure SQL veritabanı için özel bağlantı ayarlama 
 

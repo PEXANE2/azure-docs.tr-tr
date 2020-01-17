@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: ff84b085b7d40bcb6c5a0aa87416e5814f67814b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 058099ceca886f375e6add07033174bf80d5b647
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979582"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156548"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için özel Betik uzantısı
 
@@ -147,7 +147,7 @@ Ortak ayarlar, betiğin yürütüleceği sanal makineye şifresiz metin olarak g
 
 ####  <a name="property-managedidentity"></a>Özellik: Managedıdentity
 
-CustomScript (Version 1.10.4 onler), "fileUris" ayarında belirtilen URL 'lerden dosya indirmek için [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) tabanlı RBAC 'yi destekler. Kullanıcı, SAS belirteçleri veya depolama hesabı anahtarları gibi gizli dizileri geçmesi gerekmeden, CustomScript 'in Azure Storage özel blob 'larına/kapsayıcılarına erişmesini sağlar.
+CustomScript (sürüm 1,10 ve üzeri), "fileUris" ayarında belirtilen URL 'lerden dosya indirmek için [yönetilen kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) destekler. Kullanıcı, SAS belirteçleri veya depolama hesabı anahtarları gibi gizli dizileri geçmesi gerekmeden, CustomScript 'in Azure Storage özel bloblarına veya kapsayıcılarına erişmesini sağlar.
 
 Bu özelliği kullanmak için kullanıcının, CustomScript 'in çalıştırılması beklenen VM 'ye veya VMSS 'ye [sistem tarafından atanan](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) veya [Kullanıcı tarafından atanan](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) bir kimlik eklemesi ve [yönetilen kimlik erişimini Azure depolama kapsayıcısına veya blobuna vermesi](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)gerekir.
 
@@ -273,7 +273,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 Özel Betik uzantısını klasik VM 'lerde dağıtmak için Azure portal veya klasik Azure PowerShell cmdlet 'lerini kullanabilirsiniz.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
 
 Klasik VM kaynağına gidin. **Ayarlar**altındaki **Uzantılar** ' ı seçin.
 

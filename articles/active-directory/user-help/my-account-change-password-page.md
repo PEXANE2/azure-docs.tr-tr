@@ -12,25 +12,23 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510f1ca441ef9645cff7f577bbad39991cebc285
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3981c152ba836a01daca16cd486623a9a26d86f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231864"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156242"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Hesabım portalından iş veya okul hesabı parolanızı değiştirme
+# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Parola değiştirme sayfasında iş veya okul hesabınızın parolasını değiştirme
 
-**Hesabım** portalının **parola değiştirme** sayfasında iş veya okul hesabınızın parolasını güncelleştirebilirsiniz. Bu, yalnızca var olan parolanızı biliyorsanız ve hesabınızı kilitlediyseniz çalışır.
+**Hesabım portalının** **parola değiştirme** sayfası, iş veya okul hesabınız için mevcut bir parolayı güncelleştirmenize yardımcı olur, bu da parolayı hatırladığınızı ve hesabınızı kilitsiz olmadığınız varsayılır. Parolanızı anımsamıyorsanız, hesabınızı kilitlediyseniz veya kuruluşunuzda hiç parola alınmadıysa, parolanızı sıfırlamak için güvenlik bilgilerinizi ve mobil cihazınızı kullanabilirsiniz.
 
-Parolanızı anımsamıyorsanız, hesabınızı kilitlediyseniz veya Şirket destek ekibinizden hiç parola yoksa, parolanızı sıfırlamak için güvenlik bilgilerinizi ve mobil cihazınızı kullanabilirsiniz. Daha fazla bilgi için bkz. [iş veya okul parolanızı sıfırlama](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password).
+>[!Important]
+>Bu makale, mevcut bir iş veya okul hesabı için bilinen bir parolayı güncelleştirmeye çalışan kullanıcılara yöneliktir. Xbox, hotmail veya Outlook.com gibi kişisel bir hesaba ulaşmaya çalışan bir kullanıcı varsa, [Microsoft hesabı makalesinde oturum açabilmeniz](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) için içindeki önerileri deneyin. Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı test etme hakkında daha fazla bilgi bulmaya çalışan bir yöneticisiyseniz, bkz. [self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr).
 
->[!Note]
->Xbox, hotmail.com veya outlook.com gibi bir kişisel hesaba geri dönmek istiyorsanız, [Microsoft hesabı makalesinde oturum](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) açarken önerilerini deneyin.
+## <a name="update-a-password-from-the-change-password-page"></a>Parolayı Değiştir sayfasından bir parolayı güncelleştirin
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>Hesabım portalından parolanızı değiştirmek için
-
-1. Mevcut parolanızı kullanarak iş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
+1. Mevcut parolanızı kullanarak iş veya okul hesabınızda oturum açın ve sonra **Hesabım** (https://myprofile.microsoft.com/) sayfasına gidin.
 
 2. Sol gezinti bölmesinden **parolayı** seçin veya **parola bloğundan parolayı** **Değiştir** bağlantısını seçin.
 
@@ -40,7 +38,7 @@ Parolanızı anımsamıyorsanız, hesabınızı kilitlediyseniz veya Şirket des
 
     ![Parola değiştirme sayfası, parola alanları gösteriliyor](media/my-account-portal/my-account-portal-change-password-page.png)
 
-4. **Gönder**' i seçin.
+4. Seçin **gönderme**.
 
     Parolanız değiştirilir ve iş veya okul hesabınızda yeniden oturum açmanız istenir.
 

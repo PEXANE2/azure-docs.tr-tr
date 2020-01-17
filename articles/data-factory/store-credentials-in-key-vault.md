@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: 32c4b9b8e6268aa648e3414b337e8b2b908589e8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928716"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122619"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Kimlik bilgilerini Azure Key Vault içinde depola
 
@@ -23,7 +23,7 @@ Veri depoları için kimlik bilgilerini saklayabilir ve bir [Azure Key Vault](..
 
 Şu anda, özel etkinlik dışındaki tüm etkinlik türleri bu özelliği destekler. Özellikle bağlayıcı yapılandırması için, Ayrıntılar için [her bağlayıcı konusunun](copy-activity-overview.md#supported-data-stores-and-formats) "bağlı hizmet özellikleri" bölümüne bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu özellik, Data Factory tarafından yönetilen kimliği kullanır. [Data Factory Için yönetilen kimliğin](data-factory-service-identity.md) nasıl çalıştığını öğrenin ve Data Factory 'nizin ilişkili bir tane olduğundan emin olun.
 
@@ -31,8 +31,8 @@ Bu özellik, Data Factory tarafından yönetilen kimliği kullanır. [Data Facto
 
 Azure Key Vault depolanan bir kimlik bilgisine başvurmak için şunları yapmanız gerekir:
 
-1. Fabrikalarınızla birlikte oluşturulan "yönetilen kimlik uygulama KIMLIĞI" değerini kopyalayarak **Veri Fabrikası tarafından yönetilen kimliği alın** . ADF yazma Kullanıcı arabirimini kullanıyorsanız, yönetilen kimlik uygulama KIMLIĞI Azure Key Vault bağlı hizmet oluşturma penceresinde gösterilir; Ayrıca, Azure portal [Veri Fabrikası tarafından yönetilen kimliği alma](data-factory-service-identity.md#retrieve-managed-identity)bölümüne başvurabilirsiniz.
-2. **Azure Key Vault yönetilen kimlik erişimine izin verin.** Anahtar Kasanızda > erişim ilkeleri-> Yeni > Ekle-Bu yönetilen kimlik uygulama KIMLIĞI ' ni, gizli izinler açılan menüsünde **Al** izni vermek için arayın. Bu belirlenen fabrikasının anahtar kasasında gizli erişimine izin verir.
+1. Fabrikalarınızla birlikte üretilen "yönetilen kimlik nesnesi KIMLIĞI" değerini kopyalayarak **Veri Fabrikası tarafından yönetilen kimliği alın** . ADF yazma Kullanıcı arabirimini kullanıyorsanız, yönetilen kimlik nesnesi KIMLIĞI Azure Key Vault bağlı hizmet oluşturma penceresinde gösterilir; Ayrıca, Azure portal [Veri Fabrikası tarafından yönetilen kimliği alma](data-factory-service-identity.md#retrieve-managed-identity)bölümüne başvurabilirsiniz.
+2. **Azure Key Vault yönetilen kimlik erişimine izin verin.** Anahtar Kasanızda > erişim ilkeleri-> Yeni Ekle-> Bu yönetilen kimliği, gizli izinler açılan menüsünde **Al** izni vermek için arayın. Bu belirlenen fabrikasının anahtar kasasında gizli erişimine izin verir.
 3. **Azure Key Vault işaret eden bir bağlı hizmet oluşturun.** [Azure Key Vault bağlı hizmeti](#azure-key-vault-linked-service)' ne bakın.
 4. **İçinde, Anahtar Kasası 'nda depolanan karşılık gelen gizli dizi ile bağlantılı veri deposu bağlı hizmeti oluşturun.** [Anahtar Kasası 'nda depolanan başvuru gizli](#reference-secret-stored-in-key-vault)dizisi bölümüne bakın.
 
@@ -42,8 +42,8 @@ Azure Key Vault bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği: **AzureKeyVault**olarak ayarlanmalıdır. | Yes |
-| baseUrl | Azure Key Vault URL 'sini belirtin. | Yes |
+| type | Type özelliği: **AzureKeyVault**olarak ayarlanmalıdır. | Evet |
+| BaseUrl | Azure Key Vault URL 'sini belirtin. | Evet |
 
 **Yazma Kullanıcı arabirimini kullanma:**
 
@@ -75,10 +75,10 @@ Aşağıdaki özellikler, bağlantılı hizmette bir Anahtar Kasası gizliliğin
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Alanın Type özelliği: **AzureKeyVaultSecret**olarak ayarlanmalıdır. | Yes |
-| secretName | Azure Key Vault ' deki gizli dizi adı. | Yes |
+| type | Alanın Type özelliği: **AzureKeyVaultSecret**olarak ayarlanmalıdır. | Evet |
+| SecretName | Azure Key Vault ' deki gizli dizi adı. | Evet |
 | Gizlidizisürümü | Azure Key Vault ' deki gizli dizi sürümü.<br/>Belirtilmemişse, her zaman gizli dizinin en son sürümünü kullanır.<br/>Belirtilmişse, belirtilen sürüme de sahiptir.| Hayır |
-| store | Kimlik bilgisini depolamak için kullandığınız Azure Key Vault bağlı bir hizmete başvurur. | Yes |
+| store | Kimlik bilgisini depolamak için kullandığınız Azure Key Vault bağlı bir hizmete başvurur. | Evet |
 
 **Yazma Kullanıcı arabirimini kullanma:**
 

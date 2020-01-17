@@ -1,5 +1,5 @@
 ---
-title: Microsoft Authenticator uygulamasına genel bakış - Azure Active Directory | Microsoft Docs
+title: Microsoft Authenticator uygulaması nedir? -Azure Active Directory | Microsoft Docs
 description: Ne olduğu, nasıl çalıştığı ve içeriğin bu bölümüne hangi bilgilerin dahil olduğu dahil olmak üzere Microsoft Authenticator uygulaması hakkında bilgi edinin.
 services: active-directory
 author: eross-msft
@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3766436851cb2f31fa7bb070402191e03ad9ad1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 468005094ab8a9c42d7eacdfefa990565a3297f3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382339"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155817"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması nedir?
-
->[!Important]
->Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, Azure Active Directory (Azure AD) ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi için [Azure Active Directory Belgelerine](https://docs.microsoft.com/azure/active-directory) bakabilirsiniz.
 
 Microsoft Authenticator uygulaması, iki öğeli doğrulama kullanırsanız hesaplarınızda oturum açmanıza yardımcı olur. İki öğeli doğrulama, özellikle de hassas bilgileri görüntülerken hesaplarınıza güvenli bir şekilde erişmenize yardımcı olur. Parolaların unutulabileceği, çalındığı veya güvenliği aşılmış olabileceğinden, iki öğeli doğrulama, diğer kişilerin kesintiye uğraması için hesabınızı korumanıza yardımcı olan ek bir güvenlik adımıdır.
 
@@ -37,18 +34,16 @@ Microsoft Authenticator uygulamasını, aşağıdakiler dahil olmak üzere birde
 > [!Important]
 > Microsoft Authenticator uygulama, iki öğeli doğrulama kullanan herhangi bir hesapla birlikte çalışarak, zaman tabanlı bir kerelik parola (TOTP) standartlarını destekler.
 >
-> Kuruluşunuz, oturum açmak ve kurumsal verilerinize ve belgelerinize erişmek için bir doğrulayıcı uygulaması kullanmanızı gerektirebilir. Kullanıcı adınız uygulamada görünebilse de, kayıt işlemini tamamlayana kadar hesap aslında doğrulama yöntemi olarak davranacak şekilde ayarlanamaz. Daha fazla bilgi için bkz. [iş veya okul hesabınızı ekleme](user-help-auth-app-add-work-school-account.md).
-> 
-> Hesabınızda oturum açarken sorun yaşıyorsanız, yardım için [Microsoft hesabı oturum açma](https://support.microsoft.com/help/12429) konusunda bilgi için bkz. Microsoft hesabı oturum açmaya çalıştığınızda ["bu Microsoft hesabı yok"](https://support.microsoft.com/help/13811) iletisini aldığınızda yapılacaklar hakkında daha fazla bilgi alın.
+>Bu makale, Microsoft Authenticator uygulamasını bir güvenlik doğrulama yöntemi olarak indirmeye ve kullanmaya çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlar için kimlik doğrulayıcı uygulamasını kullanarak parolasız oturum açma 'yı nasıl etkinleştireceğinizi öğrenmek için bir yöneticiyseniz, [Microsoft Authenticator App (Önizleme) ile parolasız oturum açmayı etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone)makalesine bakın.
 
 ## <a name="terminology"></a>Terminoloji
 
-| Terim|Açıklama|
+| Sözleşme Dönemi|Açıklama|
 | ----|-----------|
 | İki öğeli doğrulama | Bir parola ve PIN gibi özellikle yalnızca iki doğrulama bilgisi parçasını kullanmanızı gerektiren bir doğrulama işlemi. Microsoft Authenticator uygulaması hem standart iki öğeli doğrulamayı hem de passwordless oturum açmayı destekler. |
-| Multi-factor authentication (MFA) | İki öğeli kimlik doğrulama işlemi, kuruluşunuzun gereksinimlerine bağlı olarak, *en az* iki adet doğrulama bilgileri kullanmanızı gerektiren Multi-Factor Authentication ' dır. |
+| Çok faktörlü kimlik doğrulaması (MFA) | İki öğeli kimlik doğrulama işlemi, kuruluşunuzun gereksinimlerine bağlı olarak, *en az* iki adet doğrulama bilgileri kullanmanızı gerektiren Multi-Factor Authentication ' dır. |
 | Microsoft hesabı (olarak da bilinen MSA) | Müşteri odaklı Microsoft ürünlerine ve Outlook, OneDrive, Xbox LIVE veya Office 365 gibi bulut hizmetlerine erişim sağlamak için kendi kişisel hesaplarınızı oluşturursunuz. Microsoft hesabınızı oluşturulur ve Microsoft tarafından çalıştırılan Microsoft tüketici kimlik hesap sistemi depolanır. |
-| İş veya okul hesabı | Kuruluşunuz, Microsoft Azure, Windows Intune ve Office 365 gibi iç alain@contoso.comve potansiyel olarak kısıtlanmış kaynaklara erişmenizi sağlamak için iş veya okul hesabınızı (gibi) oluşturur. |
+| İş veya okul hesabı | Kuruluşunuz, Microsoft Azure, Windows Intune ve Office 365 gibi iç ve potansiyel olarak kısıtlanmış kaynaklara erişmenizi sağlamak için iş veya okul hesabınızı (alain@contoso.comgibi) oluşturur. |
 | Doğrulama kodu | Her eklenen hesap altında kimlik doğrulayıcı uygulamasında görünen altı basamaklı kod. Doğrulama kodu, birinin bir kodu birden çok kez kullanmasını önlemek için 30 saniyede bir değişir. Bu, tek seferlik geçiş kodu (OTP) olarak da bilinir. |
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>İki öğeli doğrulamanın uygulamayla nasıl çalıştığı

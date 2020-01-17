@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/11/2020
-ms.openlocfilehash: 0354abf6a5450a1116423e3a35c3a7e2ae7b9057
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ef70c211c395556a4c15ff06e65098e8aaac32ba
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971099"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120273"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Izleyici müşteri tarafından yönetilen anahtar yapılandırması 
 
@@ -378,8 +378,6 @@ Anahtarınızı Key Vault ' de güncelleştirir ve *küme* kaynağında yeni *an
 
 - CMK şifrelemesi, CMK yapılandırmasından sonra yeni alınan veriler için geçerlidir. CMK yapılandırmasından önce gelen veriler, Microsoft anahtarıyla şifrelenmeden kaldı. Yapılandırmanın öncesinde ve sonrasında verileri sorunsuz bir şekilde sorgulayabilirsiniz.
 
-- CMK özelliği bölgesel--Azure Key Vault, *küme* kaynağı ve ilişkili çalışma alanlarınızın aynı bölgede olması gerekir, ancak farklı aboneliklerde olabilir.
-
 - Çalışma alanı bir *küme* kaynağıyla ilişkilendirildiğinde, veriler anahtarınızla şifrelendiğinden ve Azure Key Vault ' de kek olmadan erişilebilir olmadığından, *küme* kaynağı ile ilişkili olamaz.
 
 - Azure Key Vault kurtarılabilir olarak yapılandırılmalıdır. Bu özellikler varsayılan olarak etkinleştirilmemiştir ve CLı ve PowerShell kullanılarak yapılandırılmalıdır:
@@ -391,9 +389,9 @@ Anahtarınızı Key Vault ' de güncelleştirir ve *küme* kaynağında yeni *an
 
 - *Küme* kaynağı başka bir kaynak grubuna veya aboneliğe taşıma Şu anda desteklenmiyor.
 
-- *Küme* kaynağı farklı bir kiracıda olduğunda, *küme* kaynağıyla çalışma alanı ilişkilendirmesi başarısız olur.
+- Azure Key Vault, *küme* kaynağı ve ilişkili çalışma alanlarınız aynı bölgede ve aynı Azure Active Directory (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir.
 
--   *Küme* kaynağıyla çalışma alanı ilişkilendirmesi, başka bir *küme* kaynağıyla ilişkiliyse başarısız olur
+- *Küme* kaynağıyla çalışma alanı ilişkilendirmesi, başka bir *küme* kaynağıyla ilişkiliyse başarısız olur
 
 ## <a name="troubleshooting-and-management"></a>Sorun giderme ve yönetim
 
@@ -557,7 +555,7 @@ Content-type: application/json
 
 ```json
 {
-  "id": "/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.insights/components/{component-name}",
+  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.insights/components/component-name",
   "name": "component-name",
   "type": "Microsoft.Insights/components",
   "location": "region-name",

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e7a4389c192dde8d086a69a35114f3b8b33e96
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 15ccbc568a2986fbb2a547eb958b5e853c8c9f77
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562183"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154831"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Şirket içi kaynaklara yönelik SSO, Azure AD 'ye katılmış cihazlarda nasıl çalışacaktır?
 
@@ -24,12 +24,17 @@ Azure Active Directory (Azure AD) katılmış bir cihazın, kiracının bulut uy
 
 Bu makalede bunun nasıl çalıştığı açıklanır.
 
-## <a name="how-it-works"></a>Nasıl çalışır? 
+## <a name="prerequisites"></a>Ön koşullar
+
+ Azure AD 'ye katılmış makineler kuruluşunuzun ağına bağlı değilse, bir VPN veya başka bir ağ altyapısı gerekir. Şirket içi SSO, şirket içi AD DS etki alanı denetleyicileriniz ile görüş satırı iletişimi gerektirir.
+
+## <a name="how-it-works"></a>Nasıl çalışır 
 
 Yalnızca tek bir kullanıcı adını ve parolayı hatırlamanız gerektiğinden, SSO kaynaklarınızın erişimini basitleştirir ve ortamınızın güvenliğini geliştirir. Azure AD 'ye katılmış bir cihazla, kullanıcılarınız ortamınızdaki bulut uygulamalarına yönelik SSO deneyimine sahiptir. Ortamınızda bir Azure AD ve şirket içi AD varsa, muhtemelen, SSO deneyiminizin kapsamını şirket içi Iş kolu (LOB) Uygulamalarınız, dosya paylaşımlarınız ve yazıcılar için genişletebilirsiniz.  
 
 Azure AD 'ye katılmış cihazlarda, şirket içi AD ortamınız hakkında hiçbir bilgi bulunmamaktadır. Ancak, Azure AD Connect ile şirket içi AD 'niz hakkında bu cihazlara ek bilgiler sağlayabilirsiniz.
-Hem Azure AD hem de şirket içi AD olan bir ortamda karma ortam de vardır. Karma bir ortamınız varsa, şirket içi kimlik bilgilerinizi buluta eşitlemeye yönelik Azure AD Connect zaten dağıtılmış olması olasıdır. Eşitleme sürecinin bir parçası olarak, şirket içi etki alanı bilgilerini Azure AD 'ye eşitler Azure AD Connect. Bir Kullanıcı Karma ortamda Azure AD 'ye katılmış bir cihazda oturum açtığında:
+
+Hem Azure AD hem de şirket içi AD olan bir ortamda karma ortam de vardır. Karma bir ortamınız varsa, şirket içi kimlik bilgilerinizi buluta eşitlemeye yönelik Azure AD Connect zaten dağıtılmış olması olasıdır. Eşitleme sürecinin bir parçası olarak, şirket içi kullanıcı bilgilerini Azure AD 'ye eşitler Azure AD Connect. Bir Kullanıcı Karma ortamda Azure AD 'ye katılmış bir cihazda oturum açtığında:
 
 1. Azure AD, kullanıcının cihaza geri üye olduğu şirket içi etki alanının adını gönderir. 
 1. Yerel güvenlik yetkilisi (LSA) hizmeti cihazda Kerberos kimlik doğrulamasına izin vermez.
@@ -44,7 +49,7 @@ Kullanıcının şirket içi etki alanındaki bir kaynağa erişim denemesi sır
 
 Iş için Windows Hello, Azure AD 'ye katılmış bir cihazdan şirket içi SSO 'yu etkinleştirmek üzere ek yapılandırma gerektirir. Daha fazla bilgi için bkz. [iş Için Windows Hello 'yu kullanarak şirket Içi çoklu oturum açma Için Azure AD 'ye katılmış cihazları yapılandırma](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
-## <a name="what-you-get"></a>Ne alacaksınız
+## <a name="what-you-get"></a>Elde edecekleriniz
 
 SSO ile, bir Azure AD 'ye katılmış cihazda şunları yapabilirsiniz: 
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3680de5d8e0e761047e1263c2679da87b1fa2d0b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 70254e42b5964c7c7a3bf15c396f4c118f68a5ed
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769464"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121242"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama bağlamaları
 
@@ -249,7 +249,7 @@ def main(msg: func.QueueMessage):
   }
   ```
 
-  Aşağıdaki örnekte gösterildiği gibi, kullanılacak depolama hesabını belirtmek için `Connection` özelliğini ayarlayabilirsiniz:
+  Aşağıdaki örnekte gösterildiği gibi, kullanılacak depolama hesabı bağlantı dizesini içeren uygulama ayarını belirtmek için `Connection` özelliğini ayarlayabilirsiniz:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -312,7 +312,7 @@ C# Ve C# komut dosyasında, `string paramName`gibi bir yöntem parametresi kulla
 
 `CloudQueueMessage` bağlamaya ve bir hata mesajı almaya çalışırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
-JavaScript 'te, kuyruk öğesi yüküne erişmek için `context.bindings.<name>` kullanın. Yük JSON ise, bir nesne için seri hale gelir.
+JavaScript 'te, kuyruk öğesi yüküne erişmek için `context.bindings.<name>` kullanın. Yük JSON ise, bir nesne için seri hale gelir. Bu yük aynı zamanda işleve ikinci parametre olarak geçirilir.
 
 ## <a name="trigger---message-metadata"></a>Tetikleyici - ileti meta verileri
 
@@ -320,7 +320,7 @@ Sıra tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expr
 
 |Özellik|Tür|Açıklama|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Kuyruk yükü (geçerli bir dize varsa). İletiyi bir dize olarak sıraya alıyorsa `QueueTrigger`, *function. JSON*içindeki `name` özelliği tarafından adlandırılan değişkenle aynı değere sahiptir.|
+|`QueueTrigger`|`string`|Kuyruk yükü (geçerli bir dize varsa). Kuyruk iletisi yükü bir dizeyse `QueueTrigger`, *function. JSON*içindeki `name` özelliği tarafından adlandırılan değişkenle aynı değere sahiptir.|
 |`DequeueCount`|`int`|Bu iletinin sıraya alınma sayısı.|
 |`ExpirationTime`|`DateTimeOffset`|İletinin süre sonu.|
 |`Id`|`string`|Kuyruk ileti KIMLIĞI.|
@@ -411,7 +411,7 @@ Aşağıdaki örnek, bağlamayı kullanan bir *function. JSON* dosyası ve [ C# 
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -472,7 +472,7 @@ Aşağıdaki örnek, bir *function. JSON* DOSYASıNDAKI bir http tetikleyicisi b
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -506,7 +506,7 @@ module.exports = function(context) {
 
 ### <a name="output---java-example"></a>Çıkış - Java örnek
 
- Aşağıdaki örnek, bir HTTP isteği tarafından tetiklendikleri sırada bir kuyruk iletisi oluşturan Java işlevini gösterir.
+ Aşağıdaki örnekte, bir HTTP isteği tarafından tetiklendiğinde kuyruk iletisi oluşturan bir Java işlevi gösterilmektedir.
 
 ```java
 @FunctionName("httpToQueue")
@@ -514,7 +514,7 @@ module.exports = function(context) {
  public String pushToQueue(
      @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
      final String message,
-     @HttpOutput(name = "response") final OutputBinding&lt;String&gt; result) {
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
        result.setValue(message + " has been added.");
        return message;
  }

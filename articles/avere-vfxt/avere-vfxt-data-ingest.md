@@ -4,20 +4,20 @@ description: Azure için avere vFXT ile kullanılmak üzere yeni bir depolama bi
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 183ed719eb5396fe0e442e6b774d962d1ba48386
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c2a38b20fff789faf370e3161a92a31ed5f04c57
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480585"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153727"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Verileri vFXT kümesine taşıma-Parallel Data ınest
 
-Yeni bir vFXT kümesi oluşturduktan sonra ilk göreviniz verileri yeni depolama birimine taşımak olabilir. Ancak, veri taşıma yöntemi bir istemciden basit bir kopyalama komutu yayınlıyorsa, büyük olasılıkla bir kopya performansı görürsünüz. Tek iş parçacıklı kopyalama, verileri avere vFXT kümesinin arka uç depolamasına kopyalamak için iyi bir seçenek değildir.
+Yeni bir vFXT kümesi oluşturduktan sonra ilk göreviniz, verileri Azure 'daki yeni bir depolama birimine taşımak olabilir. Ancak, veri taşıma yöntemi bir istemciden basit bir kopyalama komutu yayınlıyorsa, büyük olasılıkla bir kopya performansı görürsünüz. Tek iş parçacıklı kopyalama, verileri avere vFXT kümesinin arka uç depolamasına kopyalamak için iyi bir seçenek değildir.
 
-Avere vFXT kümesi ölçeklenebilir bir çoklu istemci önbelleği olduğundan, verileri buna kopyalamanın en hızlı ve en verimli yolu birden çok istemcidir. Bu teknik, dosyaların ve nesnelerin giriş alımını paralelleştirme.
+Azure kümesi için avere vFXT, ölçeklenebilir bir çoklu istemci önbelleğiyle, verileri kopyalamak için en hızlı ve en verimli yol birden çok istemcidir. Bu teknik, dosyaların ve nesnelerin giriş alımını paralelleştirme.
 
 ![Çoklu istemci, çok iş parçacıklı veri hareketini gösteren diyagram: sol üst tarafta, şirket içi donanım depolamada bir simgenin bundan sonra gelen birden çok oku vardır. Oklar dört istemci makineye işaret noktasıdır. Her bir istemci makineden üç ok avere vFXT 'ye doğru işaret. Avere vFXT 'den birden çok ok, blob Storage ' a işaret noktasıdır.](media/avere-vfxt-parallel-ingest.png)
 
@@ -44,12 +44,12 @@ Veri alma sanal makinesi, yeni oluşturulan VM 'nin avere vFXT kümesini takar v
 
 ## <a name="strategic-planning"></a>Stratejik planlama
 
-Verileri paralel olarak kopyalamak için bir strateji oluştururken dosya boyutu, dosya sayısı ve Dizin derinliği içindeki avantajları anlamanız gerekir.
+Verileri paralel olarak kopyalamak için bir strateji tasarlarken dosya boyutu, dosya sayısı ve Dizin derinliği içindeki avantajları anlamanız gerekir.
 
 * Dosyalar küçük olduğunda, ilgilendiğiniz ölçüm, saniye başına dosya olur.
 * Dosyalar büyükse (10 MIBI veya üzeri), ilgilendiğiniz ölçüm bayt/saniye olur.
 
-Her kopyalama işleminin bir işleme hızı ve dosya-aktarım hızı vardır ve bu, kopyalama komutunun uzunluğu ve dosya boyutu ile dosya sayısı düzenleme ile ölçülebilir. Hızların nasıl ölçülmesi, bu belgenin kapsamı dışındadır, ancak küçük veya büyük dosyalarla ilgilenip işlenmeyeceğinizi anlamak için önemlidir.
+Her kopyalama işleminin bir işleme hızı ve dosya-aktarım hızı vardır ve bu, kopyalama komutunun uzunluğu ve dosya boyutu ile dosya sayısı düzenleme ile ölçülebilir. Hızların nasıl ölçülmesi, bu belgenin kapsamı dışındadır, ancak küçük veya büyük dosyalarla ilgilenip işlenmeyeceğinizi anlamak önemlidir.
 
 ## <a name="manual-copy-example"></a>El ile kopyalama örneği
 
@@ -278,7 +278,7 @@ Bu yöntem, iç dizin yöneticisinin işleyebileceği dosya sayısına kadar ver
 
 ## <a name="use-the-msrsync-utility"></a>Msrsync yardımcı programını kullanma
 
-``msrsync`` Aracı, verileri avere kümesi için bir arka uç çekirdeği altına taşımak üzere de kullanılabilir. Bu araç birden çok paralel ``rsync`` işlemi çalıştırarak bant genişliği kullanımını iyileştirmek için tasarlanmıştır. <https://github.com/jbd/msrsync>'de GitHub 'dan kullanılabilir.
+``msrsync`` Aracı, verileri avere kümesi için bir arka uç çekirdek filine taşımak için de kullanılabilir. Bu araç birden çok paralel ``rsync`` işlemi çalıştırarak bant genişliği kullanımını iyileştirmek için tasarlanmıştır. <https://github.com/jbd/msrsync>'de GitHub 'dan kullanılabilir.
 
 ``msrsync``, kaynak dizinini ayrı "demetlere" ayırır ve sonra her bir Bucket üzerinde bireysel ``rsync`` süreçlerini çalıştırır.
 

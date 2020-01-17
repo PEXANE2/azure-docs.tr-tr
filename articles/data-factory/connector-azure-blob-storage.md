@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 9001a7837e6106df4e052277168388064e65e7ee
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/16/2020
+ms.openlocfilehash: f245254c85cbf9223ab5dda60799c6b7ce72f11c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893316"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120222"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamada verileri kopyalama ve dönüştürme
 
@@ -270,7 +270,7 @@ Veri Fabrikası ile ilişkilendirilebilen bir [yönetilen Azure kaynakları içi
 
 Azure Storage kimlik doğrulaması için [Azure Active Directory kullanarak genel olarak Azure depolama 'ya erişim kimlik doğrulaması](../storage/common/storage-auth-aad.md) konusuna bakın. Azure kaynakları ile kimlik doğrulaması için yönetilen kimlikleri kullanmak için bu adımları izleyin:
 
-1. Fabrikalarınızla birlikte üretilen "HIZMET KIMLIĞI uygulama KIMLIĞI" değerini kopyalayarak [Veri Fabrikası tarafından yönetilen kimlik bilgilerini alın](data-factory-service-identity.md#retrieve-managed-identity) .
+1. Fabrikalarınızla birlikte oluşturulan **yönetilen kimlik nesne kimliği** değerini kopyalayarak [Veri Fabrikası tarafından yönetilen kimlik bilgilerini alın](data-factory-service-identity.md#retrieve-managed-identity) .
 
 2. Azure Blob Depolama alanında yönetilen kimlik uygun izni verin. Başvurmak [RBAC Azure depolama verileriyle Yönet erişim hakları](../storage/common/storage-auth-aad-rbac.md) rolleri hakkında daha fazla ayrıntı içeren.
 

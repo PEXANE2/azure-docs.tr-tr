@@ -3,12 +3,12 @@ title: Geçersiz şablon hataları
 description: Azure Resource Manager şablonları dağıtılırken geçersiz şablon hatalarının nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 03/08/2018
-ms.openlocfilehash: 9337812152dac7948afc7471760f3dc14443f549
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484577"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154066"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Geçersiz şablon hatalarını çözme
 
@@ -86,18 +86,18 @@ Alt kaynaklar için tür ve ad aynı sayıda kesimde sahiptir. Alt öğenin tam 
 
 ```json
 "resources": [
-    {
-        "type": "Microsoft.KeyVault/vaults",
-        "name": "contosokeyvault",
+  {
+    "type": "Microsoft.KeyVault/vaults",
+    "name": "contosokeyvault",
+    ...
+    "resources": [
+      {
+        "type": "secrets",
+        "name": "appPassword",
         ...
-        "resources": [
-            {
-                "type": "secrets",
-                "name": "appPassword",
-                ...
-            }
-        ]
-    }
+      }
+    ]
+  }
 ]
 ```
 
@@ -105,9 +105,9 @@ Segmentlerin alınması, kaynak sağlayıcıları genelinde uygulanan Kaynak Yö
 
 ```json
 {
-    "type": "Microsoft.Web/sites/providers/locks",
-    "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
-    ...
+  "type": "Microsoft.Web/sites/providers/locks",
+  "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
+  ...
 }
 ```
 
@@ -140,13 +140,13 @@ Kaynakların, dağıtımın başlamasını engelleyecek şekilde birbirlerine ba
 
 Döngüsel bağımlılığı çözümlemek için:
 
-1. Şablonunuzda, döngüsel bağımlılığa göre tanımlanan kaynağı bulun. 
-2. Bu kaynak için, bağımlı olduğu kaynakları görmek için **Bağımlıdson** özelliğini ve **başvuru** işlevinin tüm kullanımlarını inceleyin. 
+1. Şablonunuzda, döngüsel bağımlılığa göre tanımlanan kaynağı bulun.
+2. Bu kaynak için, bağımlı olduğu kaynakları görmek için **Bağımlıdson** özelliğini ve **başvuru** işlevinin tüm kullanımlarını inceleyin.
 3. Bağımlı oldukları kaynakları görmek için bu kaynakları inceleyin. Özgün kaynağa bağlı bir kaynak fark edinceye kadar bağımlılıkları izleyin.
-5. Döngüsel bağımlılığa dahil olan kaynaklar için, gerekli olmayan bağımlılıkları belirlemek üzere **Bağımlıdson** özelliğinin tüm kullanımlarını dikkatle inceleyin. Bu bağımlılıkları kaldırın. Bağımlılığın gerekli olduğundan emin değilseniz kaldırmayı deneyin. 
+5. Döngüsel bağımlılığa dahil olan kaynaklar için, gerekli olmayan bağımlılıkları belirlemek üzere **Bağımlıdson** özelliğinin tüm kullanımlarını dikkatle inceleyin. Bu bağımlılıkları kaldırın. Bağımlılığın gerekli olduğundan emin değilseniz kaldırmayı deneyin.
 6. Şablonu yeniden dağıtın.
 
-**Bağımlıdson** özelliğinden değer kaldırma, şablonu dağıtırken hatalara neden olabilir. Bir hata alırsanız, bağımlılığı şablona geri ekleyin. 
+**Bağımlıdson** özelliğinden değer kaldırma, şablonu dağıtırken hatalara neden olabilir. Bir hata alırsanız, bağımlılığı şablona geri ekleyin.
 
 Bu yaklaşım dairesel bağımlılığı çözmezse, dağıtım mantığınızın bir kısmını alt kaynaklara (uzantılar veya yapılandırma ayarları gibi) taşımayı göz önünde bulundurun. Bu alt kaynakları, döngüsel bağımlılığa dahil edilen kaynaklardan sonra dağıtılacak şekilde yapılandırın. Örneğin, iki sanal makine dağıttığını, ancak birbirlerine başvuran her bir üzerinde Özellikler ayarlamanız gerektiğini varsayalım. Bunları aşağıdaki sırayla dağıtabilirsiniz:
 

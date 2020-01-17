@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 9dad936e2e6cc7a9b0cdde78a9557a51d3074e71
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 277b22498066542deaa080845cb816df493d7e13
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930872"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122364"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -335,7 +335,7 @@ Ayrıntılar aşağıda verilmiştir:
 
 * [Azure Machine Learning web hizmetleri SSL ile güvenli hale getirme](how-to-secure-web-service.md)
 * [Web hizmeti olarak dağıtılan bir Machine Learning modeli kullanma](how-to-consume-web-service.md)
-* [Batch Öngörüler çalıştırma](how-to-run-batch-predictions.md)
+* [Batch Öngörüler çalıştırma](how-to-use-parallel-run-step.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

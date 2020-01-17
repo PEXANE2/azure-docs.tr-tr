@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 606c7d1fd012052a22afeef906bbe9df4c63a76b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3e1adc9220dd9b49c49ff3fe5e798dfcc9d5c928
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825291"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122687"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Hızlı başlangıç: Python için Azure Blob depolama istemci kitaplığı v 2.1
 
@@ -67,7 +67,7 @@ Uygulamada, `BlockBlobService` nesnesi oluşturmak için depolama hesabı adın�
 1. Bağımlılıkları yükler:
 
     ```console
-    pip install azure-storage-blob
+    pip install azure-storage-blob==2.1.0
     ```
 
 1. Örnek uygulamaya gidin:
@@ -141,7 +141,7 @@ Bulut Blobu kapsayıcınız olduktan sonra, ilgilendiğiniz bloba işaret eden *
 
 ### <a name="upload-blobs-to-the-container"></a>Blobları kapsayıcıya yükleme
 
-Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekler. Blok bloblarının boyutu 4,7 TB'yi bulabilir ve bu bloblar Excel elektronik tablolarından büyük video dosyalarına kadar birçok türde olabilir. Bir dosyaya yazmak ve daha sonra daha fazla bilgi eklemeye devam etmek istediğinizde, günlüğe kaydetme için ekleme bloblarını kullanabilirsiniz. Sayfa Blobları birincil olarak hizmet sanal makineleri (IaaS VM 'Ler) olan sanal sabit disk (VHD) dosyaları için kullanılır. Blok blobları, en sık kullanılan bloblardır. Bu hızlı başlangıç blok bloblarını kullanır.
+Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekler. Blok bloblarının boyutu 4,7 TB’yi bulabilir ve bu bloblar Excel elektronik tablolarından büyük video dosyalarına kadar birçok türde olabilir. Bir dosyaya yazmak ve daha sonra daha fazla bilgi eklemeye devam etmek istediğinizde, günlüğe kaydetme için ekleme bloblarını kullanabilirsiniz. Sayfa Blobları birincil olarak hizmet sanal makineleri (IaaS VM 'Ler) olan sanal sabit disk (VHD) dosyaları için kullanılır. Blok blobları, en sık kullanılan bloblardır. Bu hızlı başlangıç blok bloblarını kullanır.
 
 Bir dosyayı bloba yüklemek için, yerel diskinizdeki dizin adıyla dosya adını birleştirerek dosyanın tam yolunu alın. Sonra, dosyayı belirtilen yola `create_blob_from_path` yöntemiyle yükleyebilirsiniz. 
 
@@ -166,7 +166,7 @@ block_blob_service.create_blob_from_path(
     container_name, local_file_name, full_path_to_file)
 ```
 
-Blob depolamayla kullanabileceğiniz çeşitli karşıya yükleme yöntemleri vardır. Örneğin, bir bellek akışınız varsa `create_blob_from_stream` yerine `create_blob_from_path` yöntemini kullanabilirsiniz. 
+Blob depolamayla kullanabileceğiniz çeşitli karşıya yükleme yöntemleri vardır. Örneğin, bir bellek akışınız varsa `create_blob_from_path` yerine `create_blob_from_stream` yöntemini kullanabilirsiniz. 
 
 ### <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
 

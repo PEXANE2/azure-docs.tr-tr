@@ -1,5 +1,5 @@
 ---
-title: Azure 'da iç içe sanallaştırmayı kullanarak sorun giderme Azure VM | Microsoft Docs
+title: Azure 'da iç içe sanallaştırma kullanarak hatalı bir Azure VM sorunlarını giderme | Microsoft Docs
 description: Azure 'da iç içe sanallaştırmayı kullanarak sorun giderme Azure VM
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028435"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119627"
 ---
-# <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure 'da iç içe sanallaştırmayı kullanarak sorun giderme Azure VM
+# <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure 'da iç içe sanallaştırmayı kullanarak hatalı bir Azure VM sorunlarını giderme
 
-Bu makalede, Microsoft Azure içinde iç içe bir sanallaştırma ortamının nasıl oluşturulacağı gösterilmektedir. böylece, sorun giderme amacıyla Hyper-V konağında (kurtarma VM) sorun sanal makinesinin diski bağlayabilirsiniz.
+Bu makalede, Microsoft Azure içinde iç içe bir sanallaştırma ortamının nasıl oluşturulacağı gösterilmektedir. böylece, sorun giderme amacıyla Hyper-V konağında (kurtarma VM) hatalı VM 'nin diskini bağlayabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Sorun sanal makinesini bağlamak için, kurtarma VM 'si, sorunlu VM ile aynı depolama hesabı türünü (Standart veya Premium) kullanmalıdır.
+Hatalı VM 'yi bağlamak için, kurtarma VM 'sinin hatalı VM ile aynı depolama hesabı türünü (Standart veya Premium) kullanması gerekir.
 
 ## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>1\. Adım: bir kurtarma VM 'si oluşturun ve Hyper-V rolünü yükler
 
@@ -36,9 +36,9 @@ Sorun sanal makinesini bağlamak için, kurtarma VM 'si, sorunlu VM ile aynı de
 
     -  Boyut: iç içe sanallaştırmayı destekleyen en az iki çekirdeğe sahip tüm v3 serileri. Daha fazla bilgi için bkz. [Yeni Dv3 ve EV3 VM boyutlarını tanıtma](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
 
-    -  Sorun VM 'si olarak aynı konum, depolama hesabı ve kaynak grubu.
+    -  Hatalı VM olarak aynı konum, depolama hesabı ve kaynak grubu.
 
-    -  Sorunlu VM ile aynı depolama türünü seçin (Standart veya Premium).
+    -  Hatalı VM ile aynı depolama türünü seçin (Standart veya Premium).
 
 2.  Kurtarma VM 'si oluşturulduktan sonra, Uzak Masaüstü ' ni kurtarma VM 'sine.
 
@@ -64,13 +64,13 @@ Sorun sanal makinesini bağlamak için, kurtarma VM 'si, sorunlu VM ile aynı de
 
 13. Sunucunun Hyper-V rolünü yüklemesine izin verin. Bu işlem birkaç dakika sürer ve sunucu otomatik olarak yeniden başlatılır.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>2\. Adım: kurtarma VM 'sinin Hyper-V sunucusunda sorun sanal makinesini oluşturma
+## <a name="step-2-create-the-faulty-vm-on-the-rescue-vms-hyper-v-server"></a>2\. Adım: kurtarma sanal makinesinin Hyper-V sunucusunda hatalı VM oluşturma
 
 1.  Sanal makinenin işletim sistemi diski için sorunlu [bir anlık görüntü diski oluşturun](troubleshoot-recovery-disks-portal-windows.md#take-a-snapshot-of-the-os-disk) ve ardından anlık görüntü diskini YENIDEN kullanım VM 'sine bağlayın.
 
 2.  Kurtarma sanal makinesine uzak masaüstü.
 
-3.  Disk Yönetimi 'ni (Diskmgmt. msc) açın. Sorun sanal makinesinin diskinin **çevrimdışı**olarak ayarlandığından emin olun.
+3.  Disk Yönetimi 'ni (Diskmgmt. msc) açın. Hatalı VM diskinin **çevrimdışı**olarak ayarlandığından emin olun.
 
 4.  Hyper-V Yöneticisi 'Ni açın: **Sunucu Yöneticisi**Içinde, **Hyper-v rolünü**seçin. Sunucuya sağ tıklayın ve ardından **Hyper-V Yöneticisi**' ni seçin.
 
@@ -96,7 +96,7 @@ Sorun sanal makinesini bağlamak için, kurtarma VM 'si, sorunlu VM ile aynı de
 
     ![Yeni sabit sürücü ekleyen resim](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-14. **Fiziksel sabit disk**' te, Azure VM 'ye eklediğiniz sorun sanal makinesinin diskini seçin. Listelenen diskleri görmüyorsanız, diskin disk yönetimi kullanılarak çevrimdışı olarak ayarlandığından emin olun.
+14. **Fiziksel sabit disk**' te, Azure VM 'ye EKLEDIĞINIZ hatalı VM 'nin diskini seçin. Listelenen diskleri görmüyorsanız, diskin disk yönetimi kullanılarak çevrimdışı olarak ayarlandığından emin olun.
 
     ![diski bağlama hakkındaki görüntü](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
@@ -107,7 +107,7 @@ Sorun sanal makinesini bağlamak için, kurtarma VM 'si, sorunlu VM ile aynı de
 
 17. Artık VM 'de şirket içi VM olarak çalışabilirsiniz. İhtiyacınız olan herhangi bir sorun giderme adımını izleyebilirsiniz.
 
-## <a name="step-3-replace-the-os-disk-used-by-the-problem-vm"></a>3\. Adım: sorun sanal makinesi tarafından kullanılan işletim sistemi diskini değiştirme
+## <a name="step-3-replace-the-os-disk-used-by-the-faulty-vm"></a>3\. Adım: Hatalı VM tarafından kullanılan işletim sistemi diskini değiştirme
 
 1.  VM 'yi yeniden çevrimiçi olduktan sonra, Hyper-V Yöneticisi 'nde VM 'yi kapatın.
 

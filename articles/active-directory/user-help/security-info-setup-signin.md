@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710e43aec82c5d154b2e17a20abb2ce4dd481129
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f75cea566a09a1f4e147b999ad7d2c2d7ea80f29
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278993"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156123"
 ---
 # <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>Güvenlik bilgilerinizi (Önizleme) bir oturum açma isteminden ayarlama
 
@@ -26,6 +26,19 @@ ms.locfileid: "74278993"
 Bu istemi yalnızca kuruluşunuz için gereken güvenlik bilgilerini ayarlamadıysanız görürsünüz. Daha önce güvenlik bilgilerinizi ayarladıysanız ancak değişiklik yapmak istiyorsanız, çeşitli Yöntem tabanlı nasıl yapılır makalelerindeki adımları izleyebilirsiniz. Daha fazla bilgi için bkz. [güvenlik bilgilerine genel bakış ekleme veya güncelleştirme](security-info-add-update-methods-overview.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Güvenlik doğrulaması ve parola sıfırlama kimlik doğrulaması
+
+Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de parola sıfırlama için kullanılır. Ancak, her ikisi için tüm yöntemler kullanılamaz.
+
+| Yöntem | Kullanıldığı yerler |
+| ------ | -------- |
+| Authenticator uygulaması | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| SMS mesajları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Telefon aramaları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Güvenlik anahtarı | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| E-posta hesabı | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
+| Güvenlik soruları | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
 
 ## <a name="sign-in-to-your-work-or-school-account"></a>İş veya okul hesabınızda oturum açın
 

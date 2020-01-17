@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 1b36bc1b1f28c687450acad4cc61fa5442cff082
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e91de93c34189cf5506ebf93689a5a9b5c567394
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184993"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121405"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 .NET Core Özellik Yönetimi kitaplıkları Framework 'ü kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET Core yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET Core yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download).
@@ -38,7 +38,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 6. Aşağıdaki özellik bayraklarını eklemek için **özellik yöneticisi** >  **+ Ekle** ' yi seçin:
 
-    | Anahtar | State |
+    | Anahtar | Eyalet |
     |---|---|
     | Beta | Kapalı |
 
@@ -84,8 +84,8 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
 1. Aşağıdaki komutları çalıştırarak `Microsoft.Azure.AppConfiguration.AspNetCore` ve `Microsoft.FeatureManagement.AspNetCore` NuGet paketlerine başvuru ekleyin:
 
     ```
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
-    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 2.0.0-preview-010610001-1263
     ```
 
 1. Projenizin paketlerini geri yüklemek için aşağıdaki komutu çalıştırın:
@@ -107,12 +107,6 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     Gizli dizi Yöneticisi yalnızca Web uygulamasını yerel olarak test etmek için kullanılır. Uygulamayı [Azure App Service](https://azure.microsoft.com/services/app-service)dağıtırken, örneğin, bağlantı dizesini depolamak Için gizli yönetici kullanmak yerine App Service **bağlantı dizeleri** adlı bir uygulama ayarı kullanırsınız.
 
     Bu gizli dizi ile App Configuration API 'sini kullanabilirsiniz. İki nokta (:) yapılandırma adında, desteklenen tüm platformlarda uygulama yapılandırma API 'SI ile birlikte kullanılır. Bkz. [ortama göre yapılandırma](https://docs.microsoft.com/aspnet/core/fundamentals/configuration).
-
-1. *Program.cs*'i açın ve .NET Core uygulama yapılandırma sağlayıcısına bir başvuru ekleyin:
-
-    ```csharp
-    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
-    ```
 
 1. `config.AddAzureAppConfiguration()` metodunu çağırarak uygulama yapılandırmasını kullanmak için `CreateWebHostBuilder` yöntemini güncelleştirin.
     
@@ -223,7 +217,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. *Görünümler*\\*paylaşılan* dizinde *_Layout. cshtml* dosyasını açın ve `<body>` > altındaki `<nav>` barkodunu aşağıdaki kodla değiştirin:`<header>`
+1. *Görünümler*\\*paylaşılan* dizinde *_Layout. cshtml* dosyasını açın ve `<body>` > altındaki `<nav>` barkodunu aşağıdaki kodla değiştirin:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -282,11 +276,11 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
 
     ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin:
 
-    | Anahtar | State |
+    | Anahtar | Eyalet |
     |---|---|
     | Beta | Açık |
 

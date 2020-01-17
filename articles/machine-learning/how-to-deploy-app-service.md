@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 562dd900bb3d64731e5467058e2718b081c675b6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2a3e1f1997857ab9812fe87d5ec68b71e280e6ce
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968538"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122551"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -65,7 +65,7 @@ Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerek
     > [!IMPORTANT]
     > Azure Machine Learning SDK, Web hizmeti için veri deposuna veya veri kümelerine erişim için bir yol sağlamaz. Dağıtım dışında depolanan verilere (örneğin, bir Azure depolama hesabında) erişmek için dağıtılan modele ihtiyacınız varsa, ilgili SDK 'yı kullanarak özel bir kod çözümü geliştirmeniz gerekir. Örneğin, [Python Için Azure depolama SDK 'sı](https://github.com/Azure/azure-storage-python).
     >
-    > Senaryonuza yönelik olabilecek başka bir alternatif de [toplu tahmindir](how-to-run-batch-predictions.md). Bu, Puanlama sırasında veri depolarına erişim sağlar.
+    > Senaryonuza yönelik olabilecek başka bir alternatif de [toplu tahmindir](how-to-use-parallel-run-step.md). Bu, Puanlama sırasında veri depolarına erişim sağlar.
 
     Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
