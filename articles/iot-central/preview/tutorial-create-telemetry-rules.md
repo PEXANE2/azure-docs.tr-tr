@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 793bb46e14725b14c766569e8b0fc2aa0246858e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3889378f34d66f54ea408da4aa43b12f86e7c586
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979062"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262687"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Öğretici: Azure IoT Central uygulamanızda bir kural oluşturma ve bildirim ayarlama (Önizleme özellikleri)
 
@@ -25,21 +25,22 @@ Bağlı cihazlarınızı uzaktan izlemek için Azure IoT Central kullanabilirsin
 
 Cihazlar, cihazdan sayısal veri göndermek için telemetri kullanır. Seçilen cihaz telemetrisi belirtilen eşiği aştığında bir kural tetiklenir.
 
-Bu öğreticide, bir ortam algılayıcısı cihazındaki sıcaklık 80&deg; F 'yi aştığında e-posta göndermek için bir kural oluşturacaksınız.
+Bu öğreticide, bir ortam algılayıcısı cihazındaki sıcaklık 70&deg; F 'yi aştığında e-posta göndermek için bir kural oluşturacaksınız.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Kural oluşturma
 > * E-posta eylemi ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, [Azure IoT Central oluşturma uygulamasını](./quick-deploy-iot-central.md) tamamlayıp [IoT Central uygulamanıza sanal bir cihaz ekleyerek](./quick-create-pnp-device.md) , birlikte çalışmak üzere **ortam algılayıcı** cihaz şablonu oluşturmanız gerekir.
 
 ## <a name="create-a-rule"></a>Kural oluşturma
 
-Bir telemetri kuralı oluşturmak için, cihaz şablonunda en az bir telemetri ölçümü tanımlanmış olmalıdır. Bu öğretici, sıcaklık ve nem telemetrisi gönderen bir ortam algılayıcı cihazı kullanır. Bu cihaz şablonunu eklediniz ve sanal cihaz oluşturma [IoT Central uygulama](./quick-create-pnp-device.md) hızlı başlangıç bölümünde sanal cihaz oluşturdunuz. Kural, cihaz tarafından bildirilen sıcaklığın izler ve 80 derecenin üzerinde kaldığında bir e-posta gönderir.
+Bir telemetri kuralı oluşturmak için, cihaz şablonunda en az bir telemetri ölçümü tanımlanmış olmalıdır. Bu öğretici, sıcaklık ve nem telemetrisi gönderen bir ortam algılayıcı cihazı kullanır. Bu cihaz şablonunu eklediniz ve sanal cihaz oluşturma [IoT Central uygulama](./quick-create-pnp-device.md) hızlı başlangıç bölümünde sanal cihaz oluşturdunuz. Kural, cihaz tarafından bildirilen sıcaklığın izler ve 70 derecenin üzerinde kaldığında bir e-posta gönderir.
 
 1. Sol bölmede **kurallar**' ı seçin.
 
@@ -57,18 +58,18 @@ Bir telemetri kuralı oluşturmak için, cihaz şablonunda en az bir telemetri �
 
 ### <a name="configure-the-rule-conditions"></a>Kural koşullarını yapılandırma
 
-Koşullar kuralın izlediği kriterleri tanımlar. Bu öğreticide, sıcaklık 80&deg; F 'yi aştığında kullanılacak kuralı yapılandırırsınız.
+Koşullar kuralın izlediği kriterleri tanımlar. Bu öğreticide, sıcaklık 70&deg; F 'yi aştığında kullanılacak kuralı yapılandırırsınız.
 
 1. **Telemetri** açılan menüsünde **sıcaklık** ' ı seçin.
 
-1. Sonra, **işleç** **olarak büyüktür ' i seçin ve** **değer**olarak _80_ girin.
+1. Sonra, **işleç** **olarak büyüktür ' i seçin ve** **değer**olarak _70_ girin.
 
     ![Koşul](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
 1. İsteğe bağlı olarak, bir **zaman toplama**ayarlayabilirsiniz. Bir zaman toplamayı seçtiğinizde, toplama açılan listesinden ortalama veya toplam gibi bir toplama türü de seçmeniz gerekir.
 
-    * Toplama olmadan kural, koşulu karşılayan her telemetri veri noktası için tetikler. Örneğin, kural sıcaklık 80 üzerinde olduğunda kural tetiklenecek şekilde yapılandırıldıysa, cihaz sıcaklık > 80 ' i raporladığında kural neredeyse anında tetiklenir.
-    * Toplama ile kural, zaman penceresinde telemetri veri noktalarının toplam değeri koşulu karşılıyorsa tetiklenir. Örneğin, kural, sıcaklık 80 üzerinde olduğunda, zaman toplama 10 dakikaya ayarlandığında ve toplama türü ortalama olduğunda kural, cihaz bir ortalama sıcaklık > 80, 10 dakikalık bir süre içinde hesaplandığında tetiklenir aralığında.
+    * Toplama olmadan kural, koşulu karşılayan her telemetri veri noktası için tetikler. Örneğin, kural sıcaklık 70 üzerinde olduğunda kural tetiklenecek şekilde yapılandırıldıysa, cihaz sıcaklık > 70 ' i raporladığında kural neredeyse anında tetiklenir.
+    * Toplama ile kural, zaman penceresinde telemetri veri noktalarının toplam değeri koşulu karşılıyorsa tetiklenir. Örneğin, kural, sıcaklık 70 üzerinde olduğunda, zaman toplama 10 dakikaya ayarlandığında ve toplama türü ortalama olduğunda kural, cihaz bir ortalama sıcaklık > 70, 10 dakikalık bir süre içinde hesaplandığında tetiklenir aralığında.
 
      ![Toplama koşulu](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 

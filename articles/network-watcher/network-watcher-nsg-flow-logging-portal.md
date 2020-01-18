@@ -18,12 +18,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: f6740076600854f612cfdd6324d93325f0cd5c05
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: 0b71566b802076f437fd23c08dfd6b23d4fd2fba
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667506"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170267"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal makineye gelen ve sanal makineden giden ağ trafiğini günlüğe kaydetme
 
@@ -93,7 +93,7 @@ NSG akış günlüğü kaydı için **Microsoft.Insights** sağlayıcısı gerek
     | Konum       | **Doğu ABD**’yi seçin                                           |
     | Kaynak grubu | **Var olanı kullan**’ı seçin ve sonra **myResourceGroup** seçeneğini belirleyin |
 
-    Depolama hesabının oluşturulması yaklaşık bir dakika sürebilir. Depolama hesabı oluşturulmadan kalan adımlara devam etmeyin. Yenisini oluşturmak yerine mevcut bir depolama hesabını kullanırsanız, depolama hesabı için **AYARLAR** bölümünde **Güvenlik duvarları ve sanal ağlar** için **Tüm ağlar** (varsayılan) seçeneği belirlenmiş bir depolama hesabı seçtiğinizden emin olun. Her durumda, depolama hesabının NSG ile aynı bölgede olması gerekir.     
+    Depolama hesabının NSG ile aynı bölgede olması gerekir. Depolama hesabının oluşturulması yaklaşık bir dakika sürebilir. Depolama hesabı oluşturulmadan kalan adımlara devam etmeyin.     
 4. Portalın sol üst köşesinde **Tüm hizmetler**’i seçin. **Filtre** kutusuna *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde onu seçin.
 5. **GÜNLÜKLER** bölümünde, aşağıdaki resimde gösterildiği gibi **NSG akış günlükleri**’ni seçin:
 

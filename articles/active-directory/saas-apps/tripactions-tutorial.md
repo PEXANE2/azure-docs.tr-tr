@@ -1,0 +1,151 @@
+---
+title: 'Öğretici: TripActions ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve önceliklendirme arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+services: active-directory
+documentationCenter: na
+author: jeevansd
+manager: mtillman
+ms.reviewer: barbkess
+ms.assetid: 233af4cf-7f73-4e6c-905e-5c631d87e34a
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.topic: tutorial
+ms.date: 01/08/2020
+ms.author: jeedes
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ccd0ee4beb40a670c0e05cb3cc1c4379de372ff6
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76268142"
+---
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tripactions"></a>Öğretici: TripActions ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+
+Bu öğreticide, Azure Active Directory (Azure AD) ile deneme ve tümleştirme hakkında bilgi edineceksiniz. Azure AD ile önceliklendirme tümleştirdiğinizde şunları yapabilirsiniz:
+
+* Azure AD 'de TripActions erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açmalarına izin vermek için bu seçenekleri etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
+## <a name="prerequisites"></a>Ön koşullar
+
+Başlamak için aşağıdaki öğeler gereklidir:
+
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Çoklu oturum açma (SSO) aboneliği etkin.
+
+## <a name="scenario-description"></a>Senaryo açıklaması
+
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+
+* TripActions **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* Önceliklendirme **, tam zamanında** Kullanıcı sağlamayı destekliyor
+
+## <a name="adding-tripactions-from-the-gallery"></a>Galeriden önceliklendirme ekleme
+
+Üç aylık dönem tümleştirmesini Azure AD ile yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize üç aylık dönem eklemeniz gerekir.
+
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **tripactions** yazın.
+1. Sonuçlar panelinden **önceliklendirme** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+
+## <a name="configure-and-test-azure-ad-single-sign-on-for-tripactions"></a>Deneme için Azure AD çoklu oturum açma yapılandırma ve test etme
+
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu üç aylık yapılandırma ve test etme. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+
+Azure AD SSO 'yu yapılandırmak ve deneme ile test etmek için aşağıdaki yapı taşlarını doldurun:
+
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[TripActions SSO 'Yu yapılandırın](#configure-tripactions-sso)** .
+    * Kullanıcı Azure AD gösterimi ile bağlantılı üç aylık bir B. Simon 'a sahip olmak için **[tripactions test kullanıcısı oluşturun](#create-tripactions-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+
+1. [Azure Portal](https://portal.azure.com/), **önceliklendirme** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+
+1. **Temel SAML yapılandırması** bölümünde, uygulama zaten Azure ile önceden tümleştirildiği için kullanıcının herhangi bir adım yapması gerekmez.
+
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
+
+    **Oturum açma URL** 'si metin kutusuna URL 'yi yazın: `https://app.tripactions.com`
+
+1. **Save (Kaydet)** düğmesine tıklayın.
+
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+
+    ![Sertifika indirme bağlantısı](common/metadataxml.png)
+
+1. **Üç aylık dönemi ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+
+Bu bölümde, üç aylık dönem için erişim izni vererek B. Simon 'u Azure çoklu oturum açma özelliğini etkinleştirecek şekilde etkinleştireceksiniz.
+
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **üç aylık**dönem ' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+## <a name="configure-tripactions-sso"></a>TripActions SSO 'yu yapılandırma
+
+**Üç aylık** oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' dan [tripactions destek ekibine](mailto:launches@tripactions.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+
+### <a name="create-tripactions-test-user"></a>TripActions test kullanıcısı oluşturma
+
+Bu bölümde, üç aylık olarak B. Simon adlı bir Kullanıcı oluşturulur. Üç aylık Kullanıcı sağlama, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı zaten deneme sürümünde yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+
+## <a name="test-sso"></a>Test SSO 'SU
+
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+
+Erişim panelinde TripActions kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız üç aylık dönemin otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="additional-resources"></a>Ek kaynaklar
+
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile deneme ve deneme](https://aad.portal.azure.com/)

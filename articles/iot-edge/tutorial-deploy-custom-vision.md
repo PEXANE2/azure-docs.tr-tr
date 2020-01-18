@@ -1,20 +1,20 @@
 ---
 title: Öğretici-Azure IoT Edge kullanarak bir cihaza Özel Görüntü İşleme Sınıflandırıcısı dağıtma
-description: Bu öğreticide, Özel Görüntü İşleme ve IoT Edge kullanarak bir bilgisayar vizyonu modelinin kapsayıcı olarak nasıl çalıştırılacağını öğrenin.
+description: Bu öğreticide, bir görüntü işleme modelinizle özel görüntü işleme ve IOT Edge kullanarak bir kapsayıcı çalışmasını sağlamak öğrenin.
 services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41a2fac48980cf376c833b022b833cfcf1e99821
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701868"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167007"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Öğretici: Özel Görüntü İşleme Hizmeti ile uçta görüntü sınıflandırması gerçekleştirme
 
@@ -37,12 +37,12 @@ sınıflandırmaya ve dağıtıma </center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 >[!TIP]
 >Bu öğretici, [bir Raspberry PI 3 örnek projesinde özel görüntü işleme ve Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) basitleştirilmiş bir sürümüdür. Bu öğretici bir bulut VM 'de çalışacak şekilde tasarlandı ve görüntü sınıflandırıcısını eğitme ve test etmek için statik görüntüler kullanır. Bu, IoT Edge Özel Görüntü İşleme değerlendirmek için yalnızca bir kullanıcı için faydalıdır. Örnek proje fiziksel donanım kullanır ve görüntü sınıflandırıcısını eğitmek ve test etmek için, daha ayrıntılı, gerçek yaşam senaryosu denemek isteyen bir kişi için kullanışlıdır.
 
-Bu öğreticiye başlamadan önce, ortamınızı Linux kapsayıcı geliştirmeye yönelik olarak ayarlamak için önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri geliştirme](tutorial-develop-for-linux.md). Bu öğreticiyi tamamlayarak aşağıdaki önkoşulların yerine gelmelidir: 
+Bu öğreticiye başlamadan önce, ortamınızı Linux kapsayıcı geliştirmeye yönelik olarak ayarlamak için önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri geliştirme](tutorial-develop-for-linux.md). Bu öğreticiyi tamamlayarak aşağıdaki önkoşulların yerine gelmelidir:
 
 * Azure'da ücretsiz veya standart katman [IoT Hub'ı](../iot-hub/iot-hub-create-through-portal.md).
 * [Azure IoT Edge çalıştıran bir Linux cihazı](quickstart-linux.md)
@@ -50,23 +50,23 @@ Bu öğreticiye başlamadan önce, ortamınızı Linux kapsayıcı geliştirmeye
 * [Azure IoT araçlarıyla](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)yapılandırılmış [Visual Studio Code](https://code.visualstudio.com/) .
 * Linux kapsayıcılarını çalıştırmak için yapılandırılmış [Docker CE](https://docs.docker.com/install/) .
 
-Özel Görüntü İşleme hizmetiyle IoT Edge bir modül geliştirmek için aşağıdaki ek önkoşulları geliştirme makinenize yüklersiniz: 
+Özel Görüntü İşleme hizmetiyle IoT Edge bir modül geliştirmek için aşağıdaki ek önkoşulları geliştirme makinenize yüklersiniz:
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* [Visual Studio Code için Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
+* [Visual Studio Code için Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Özel Görüntü İşleme Hizmeti ile bir görüntü sınıflandırıcı derleme
 
 Görüntü sınıflandırıcı derlemek için bir Özel Görüntü İşleme Hizmeti projesi oluşturmanız ve eğitim amaçlı görüntü sağlamanız gerekir. Bu bölümde gerçekleştireceğiniz adımlar hakkında daha fazla bilgi için bkz. [Özel Görüntü İşleme Hizmeti ile sınıflandırıcı derleme](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md).
 
-Görüntü sınıflandırıcıyı derleyip eğittikten sonra Docker kapsayıcısı olarak dışarı aktarabilir ve bir IoT Edge cihazına dağıtabilirsiniz. 
+Görüntü sınıflandırıcıyı derleyip eğittikten sonra Docker kapsayıcısı olarak dışarı aktarabilir ve bir IoT Edge cihazına dağıtabilirsiniz.
 
 ### <a name="create-a-new-project"></a>Yeni bir proje oluşturma
 
 1. Web tarayıcınızda [Özel Görüntü İşleme Hizmeti web sayfasına](https://customvision.ai/) gidin.
 
-2. **Sign in** (Oturum aç) öğesini seçin ve Azure kaynaklarına erişmek için kullandığınız hesapla oturum açın. 
+2. **Sign in** (Oturum aç) öğesini seçin ve Azure kaynaklarına erişmek için kullandığınız hesapla oturum açın.
 
 3. **New project** (Yeni proje) öğesini seçin.
 
@@ -74,7 +74,7 @@ Görüntü sınıflandırıcıyı derleyip eğittikten sonra Docker kapsayıcıs
 
    | Alan | Değer |
    | ----- | ----- |
-   | Adı | Projeniz için bir ad belirleyin, örneğin: **EdgeTreeClassifier**. |
+   | Ad | Projeniz için bir ad belirleyin, örneğin: **EdgeTreeClassifier**. |
    | Açıklama | İsteğe bağlı proje açıklaması. |
    | Kaynak | Özel Görüntü İşleme Hizmeti kaynağı içeren Azure Kaynak gruplarınızdan birini seçin veya henüz bir tane eklemediyseniz yeni bir tane **oluşturun** . |
    | Proje Türleri | **Classification** (Sınıflandırma) |
@@ -86,41 +86,41 @@ Görüntü sınıflandırıcıyı derleyip eğittikten sonra Docker kapsayıcıs
 
 ### <a name="upload-images-and-train-your-classifier"></a>Görüntüleri karşıya yükleme ve sınıflandırıcınızı eğitme
 
-Görüntü sınıflandırıcı oluşturmak için eğitim görüntülerine ve test görüntülerine ihtiyacınız vardır. 
+Görüntü sınıflandırıcı oluşturmak için eğitim görüntülerine ve test görüntülerine ihtiyacınız vardır.
 
-1. [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) deposundaki örnek görüntüleri yerel geliştirme makinenize kopyalayın veya indirin. 
+1. [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) deposundaki örnek görüntüleri yerel geliştirme makinenize kopyalayın veya indirin.
 
    ```cmd/sh
    git clone https://github.com/Microsoft/Cognitive-CustomVision-Windows.git
    ```
 
-2. Özel Görüntü İşleme Hizmeti projenize dönün ve **Add images** (Görüntü ekle) öğesini seçin. 
+2. Özel Görüntü İşleme Hizmeti projenize dönün ve **Add images** (Görüntü ekle) öğesini seçin.
 
-3. Kopyaladığınız yerel git deposuna gidin ve ilk görüntü klasörünü açın: **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**. Klasördeki 10 görüntüyü ve ardından **Open** (Aç) öğesini seçin. 
+3. Kopyaladığınız yerel git deposuna gidin ve ilk görüntü klasörünü açın: **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**. Klasördeki 10 görüntüyü ve ardından **Open** (Aç) öğesini seçin.
 
-4. Bu görüntü grubuna **hemlock** etiketini ekleyin ve **Enter** tuşuna basarak etiketi uygulayın. 
+4. Bu görüntü grubuna **hemlock** etiketini ekleyin ve **Enter** tuşuna basarak etiketi uygulayın.
 
-5. **Upload 10 files** (10 dosyayı karşıya yükle) öğesini seçin. 
+5. **Upload 10 files** (10 dosyayı karşıya yükle) öğesini seçin.
 
-   ![Hemlock etiketli dosyaları karşıya yükleme Özel Görüntü İşleme](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
+   ![Köknar etiketlenmiş dosyalar için özel görüntü karşıya yükleme](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
 6. Görüntüler başarıyla karşıya yüklendikten sonra **Done** (Bitti) öğesini seçin.
 
 7. Yeniden **Add images** (Görüntü ekle) öğesini seçin.
 
-8. İkinci görüntü klasörüne göz atın: **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry**. Klasördeki 10 görüntüyü ve ardından **Open** (Aç) öğesini seçin. 
+8. İkinci görüntü klasörüne göz atın: **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry**. Klasördeki 10 görüntüyü ve ardından **Open** (Aç) öğesini seçin.
 
-9. Bu görüntü grubuna **japanese cherry** etiketini ekleyin ve **Enter** tuşuna basarak etiketi uygulayın. 
+9. Bu görüntü grubuna **japanese cherry** etiketini ekleyin ve **Enter** tuşuna basarak etiketi uygulayın.
 
-10. **Upload 10 files** (10 dosyayı karşıya yükle) öğesini seçin. Görüntüler başarıyla karşıya yüklendikten sonra **Done** (Bitti) öğesini seçin. 
+10. **Upload 10 files** (10 dosyayı karşıya yükle) öğesini seçin. Görüntüler başarıyla karşıya yüklendikten sonra **Done** (Bitti) öğesini seçin.
 
-11. İki görüntü kümesini de etiketleyip yükledikten sonra sınıflandırıcıyı eğitmek için **Train** (Eğit) öğesini seçin. 
+11. İki görüntü kümesini de etiketleyip yükledikten sonra sınıflandırıcıyı eğitmek için **Train** (Eğit) öğesini seçin.
 
 ### <a name="export-your-classifier"></a>Sınıflandırıcınızı dışarı aktarma
 
-1. Sınıflandırıcınızı eğittikten sonra sınıflandırıcının Performance (Performans) sayfasında **Export** (Dışarı aktar) öğesini seçin. 
+1. Sınıflandırıcınızı eğittikten sonra sınıflandırıcının Performance (Performans) sayfasında **Export** (Dışarı aktar) öğesini seçin.
 
-   ![Eğitilen görüntü sınıflandırıcınızı dışa aktarma](./media/tutorial-deploy-custom-vision/export.png)
+   ![Eğitilen bir görüntü sınıflandırıcınızı dışarı aktarma](./media/tutorial-deploy-custom-vision/export.png)
 
 2. Platform için **DockerFile** girişini seçin. 
 
@@ -263,7 +263,8 @@ Bu bölümde aynı CustomVisionSolution öğesine yeni bir modül ekleyecek ve s
                 print("Response from classification service: (" + str(response.status_code) + ") " + json.dumps(response.json()) + "\n")
             except Exception as e:
                 print(e)
-                print("Response from classification service: (" + str(response.status_code))
+                print("No response from classification service")
+                return None
 
         return json.dumps(response.json())
 
@@ -282,7 +283,8 @@ Bu bölümde aynı CustomVisionSolution öğesine yeni bir modül ekleyecek ve s
 
             while True:
                 classification = sendFrameForProcessing(imagePath, imageProcessingEndpoint)
-                send_to_hub(classification)
+                if classification:
+                    send_to_hub(classification)
                 time.sleep(10)
 
         except KeyboardInterrupt:
@@ -326,15 +328,15 @@ Bu senaryoda görüntü beslemesi sağlamak için gerçek bir kamera kullanmak y
 
 3. IoT Edge çözümünüzün dizinine gidin ve test görüntüsünü **modules** / **cameraCapture** klasörüne yapıştırın. Görüntü önceki bölümde düzenlediğiniz main.py dosyasıyla aynı klasörde olmalıdır. 
 
-3. Visual Studio Code'da cameraCapture modülünün **Dockerfile.amd64** dosyasını açın. 
+4. Visual Studio Code'da cameraCapture modülünün **Dockerfile.amd64** dosyasını açın.
 
-4. Çalışma dizinini belirleyen `WORKDIR /app` satırından sonra şu kod satırını ekleyin: 
+5. Çalışma dizinini belirleyen `WORKDIR /app` satırından sonra şu kod satırını ekleyin:
 
    ```Dockerfile
    ADD ./test_image.jpg .
    ```
 
-5. Dockerfile dosyasını kaydedin. 
+6. Dockerfile dosyasını kaydedin.
 
 ### <a name="prepare-a-deployment-manifest"></a>Dağıtım bildirimi hazırlama
 
@@ -358,7 +360,7 @@ Visual Studio Code için IoT Edge uzantısı dağıtım bildirimi oluşturmanız
 
     Özel Görüntü İşleme Hizmeti modülünüzün adını *classifier* dışında bir değer olarak belirlediyseniz görüntü işleme uç nokta değerini uygun şekilde güncelleştirin. 
 
-5. Dosyanın en altındaki $edgeHub modülünün **routes** parametresini güncelleştirin. Tahmin sonuçlarının cameraCapture kaynağından IoT Hub'a yönlendirilmesini istersiniz. 
+6. Dosyanın en altındaki $edgeHub modülünün **routes** parametresini güncelleştirin. Tahmin sonuçlarının cameraCapture kaynağından IoT Hub'a yönlendirilmesini istersiniz.
 
     ```json
         "routes": {
@@ -410,7 +412,6 @@ Visual Studio Code, IoT Edge cihazınızın adına sağ tıklayın ve **Izlemeyi
 
 cameraCapture modülünden iletiler olarak gönderilen Özel Görüntü İşleme Hizmeti modülü sonuçları, görüntünün köknar veya kiraz ağacı olma ihtimalini içerir. Görüntü köknar ağacına ait olduğundan olasılık değeri 1.0 olmalıdır. 
 
-
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir sonraki önerilen makaleye geçmeyi planlıyorsanız, oluşturduğunuz kaynaklarla yapılandırmaları tutabilir ve yeniden kullanabilirsiniz. Aynı IoT Edge cihazını test cihazı olarak kullanmaya devam edebilirsiniz. 
@@ -418,7 +419,6 @@ Bir sonraki önerilen makaleye geçmeyi planlıyorsanız, oluşturduğunuz kayna
 Aksi takdirde, ücretlerden kaçınmak için bu makalede kullandığınız yerel konfigürasyonları ve Azure kaynaklarını silebilirsiniz. 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

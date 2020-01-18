@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2019
+ms.date: 01/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc55130bd840de3960a44ddc1bd0617af185148
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3252b7b257fda96b3d711c5f47ec7c6eb7ee36cb
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969743"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262239"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Öğretici: Facebook tarafından çalışma alanı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +32,7 @@ Bu öğreticide, çalışma alanını Azure Active Directory (Azure AD) ile Face
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -48,8 +47,8 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Facebook tarafından çalışma alanı **SP** tarafından başlatılan SSO 'yu destekler
-* Facebook tarafından çalışma alanı  **[Otomatik Kullanıcı sağlamayı ve sağlamayı kaldırmayı destekler (önerilir)](workplacebyfacebook-provisioning-tutorial.md)**
 * Facebook tarafından çalışma alanı **tam zamanında sağlamayı** destekler
+* Facebook tarafından çalışma alanı  **[Otomatik Kullanıcı sağlamayı](workplacebyfacebook-provisioning-tutorial.md) destekler**
 * Facebook mobil uygulaması 'nın çalışma alanı artık SSO 'yu etkinleştirmek için Azure AD ile yapılandırılabilir. Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>Galeriden Facebook tarafından çalışma alanı ekleme
@@ -92,8 +91,10 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://www.facebook.com/company/<instanceID>`
 
-    > [!NOTE] 
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Çalışma alanı topluluğlarınızın doğru değerleri için çalışma alanı şirket panosunun kimlik doğrulama sayfasına bakın.
+    c. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://www.facebook.com/company/<instanceID>`
+
+    > [!NOTE]
+    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Çalışma alanı Community 'nizin kimlik doğrulama sayfasına bakın. Bu, bu öğreticide daha sonra açıklanmaktadır.
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -172,13 +173,15 @@ Bu bölümde, Facebook tarafından çalışma alanına erişim izni vererek Azur
 
     f. Örneğiniz için **alıcı URL** 'sini kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümündeki **URL 'yi oturum aç** metin kutusuna yapıştırın.
 
-    g. Bölümün altına kaydırın ve **test SSO** düğmesine tıklayın. Bu, Azure AD oturum açma sayfası sunulan bir açılan pencerenin görünmesine neden olur. Kimlik doğrulaması için kimlik bilgilerinizi normal olarak girin.
+    g. Örneğiniz için **ACS (onaylama tüketici hizmeti) URL 'sini** kopyalayıp Azure Portal **temel SAML YAPıLANDıRMASı** bölümünde **yanıt URL** metin kutusuna yapıştırın.
+
+    h. Bölümün altına kaydırın ve **test SSO** düğmesine tıklayın. Bu, Azure AD oturum açma sayfası sunulan bir açılan pencerenin görünmesine neden olur. Kimlik doğrulaması için kimlik bilgilerinizi normal olarak girin.
 
     **Sorun giderme:** Azure AD 'den geri döndürülmekte olan e-posta adresinin, oturum açtığınız çalışma alanı hesabıyla aynı olduğundan emin olun.
 
-    h. Test başarıyla tamamlandıktan sonra sayfanın alt kısmına gidin ve **Kaydet** düğmesine tıklayın.
+    i. Test başarıyla tamamlandıktan sonra sayfanın alt kısmına gidin ve **Kaydet** düğmesine tıklayın.
 
-    i. Artık çalışma alanı kullanan tüm kullanıcılar, kimlik doğrulaması için Azure AD oturum açma sayfasıyla sunulacaktır.
+    j. Artık çalışma alanı kullanan tüm kullanıcılar, kimlik doğrulaması için Azure AD oturum açma sayfasıyla sunulacaktır.
 
 1. **SAML Logout Redirect (isteğe bağlı)**  -
 

@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 787900918035dc8b14d3a173496ab1a23b0f93bb
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 2768dedf80ab567582322bba4b4190b31400284f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813082"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167489"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Öğretici: Yönetilen etki alanları için karma Azure Active Directory birleştirmesini yapılandırma
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Öğretici: Yönetilen etki alanları için hibrit Azure Active Directory'ye katılımı yapılandırma
 
 Kuruluşunuzdaki bir kullanıcı gibi, bir cihaz da korumak istediğiniz çekirdek kimliktir. Kaynaklarınızı istediğiniz zaman ve herhangi bir konumdan korumak için bir cihazın kimliğini kullanabilirsiniz. Aşağıdaki yöntemlerden birini kullanarak cihaz kimliklerini Azure Active Directory (Azure AD) içinde yöneterek, bu hedefi gerçekleştirebilirsiniz:
 
@@ -40,7 +40,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Katılmış cihazları doğrulama
 > * Sorun giderme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, bu makalelerle ilgili bilgi sahibi olduğunuz varsayılır:
 
@@ -64,7 +64,7 @@ Karma Azure AD katılımı, cihazların kuruluşunuzun ağının içinden aşağ
 - `https://enterpriseregistration.windows.net`
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
-- `https://autologon.microsoftazuread-sso.com`(Sorunsuz SSO kullanmayı planlıyorsanız veya kullanıyorsanız)
+- `https://autologon.microsoftazuread-sso.com` (veya sorunsuz SSO kullanmayı planlıyorsanız)
 
 Kuruluşunuz, bir giden proxy üzerinden internet erişimi gerektiriyorsa, Microsoft, Windows 10 bilgisayarlarını Azure AD 'ye cihaz kaydı için etkinleştirmek üzere [Web proxy otomatik bulma (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) uygulamasını önerir. WPAD yapılandırma ve yönetme sorunlarıyla karşılaşırsanız bkz. [otomatik algılama sorunlarını giderme](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)). 
 
@@ -100,7 +100,7 @@ Azure AD Connect kullanarak bir hibrit Azure AD'ye katılımı yapılandırmak i
 
 1. **Azure AD'ye Bağlanma** sayfasında Azure AD kiracınızın genel yöneticisinin kimlik bilgilerini girin.  
 
-   ![Azure AD'ye bağlan](./media/hybrid-azuread-join-managed-domains/14.png)
+   ![Azure AD'ye Bağlanma](./media/hybrid-azuread-join-managed-domains/14.png)
 
 1. **Cihaz seçenekleri** sayfasında, **karma Azure AD birleştirmesini Yapılandır**' ı seçin ve ardından **İleri**' yi seçin.
 
@@ -133,6 +133,9 @@ Etki alanına katılmış cihazlarınızdan bazıları Windows alt düzey aygıt
 - Cihaz kaydı için yerel intranet ayarlarını yapılandırma
 - Sorunsuz SSO yapılandırma
 - Windows alt düzey bilgisayarlar için Microsoft Workplace Join 'yi yükler
+
+> [!NOTE]
+> Windows 7 desteği 14 Ocak 2020 tarihinde sona erdi. Daha fazla bilgi için [Windows 7 desteği sona erdi](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020).
 
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>Cihaz kaydı için yerel intranet ayarlarını yapılandırma
 
@@ -167,8 +170,8 @@ Hizmet ayrıntılarını denetlemek için **Get-MSolDevice** cmdlet 'ini kulland
 
 **Hizmet ayrıntılarını denetlemek için**:
 
-1. Windows PowerShell 'i yönetici olarak açın.
-1. Azure `Connect-MsolService` kiracınıza bağlanmak için girin.  
+1. Windows PowerShell'i yönetici olarak açın.
+1. Azure kiracınıza bağlanmak için `Connect-MsolService` girin.  
 1. `get-msoldevice -deviceId <deviceId>` yazın.
 1. **Enabled** değerinin **True** olarak ayarlandığını doğrulayın.
 

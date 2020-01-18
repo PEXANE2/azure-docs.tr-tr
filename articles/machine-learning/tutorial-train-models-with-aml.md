@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ab407ffbc0e22a2f65436741ce5c7019ac7fc540
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533457"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261373"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Öğretici: veri ve scikit ile görüntü sınıflandırma modellerini eğitme-Azure Machine Learning kullanmayı öğrenin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,7 +105,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-or-attach-an-existing-compute-target"></a>Mevcut bir işlem hedefi oluşturun veya ekleyin
 
-Yönetilen bir hizmet olan Azure Machine Learning Işlem kullanarak, veri bilimcileri, Azure sanal makinelerinin kümelerinde makine öğrenimi modellerini eğitebilir. Örnek olarak GPU desteği olan VM 'Ler sayılabilir. Bu öğreticide eğitim ortamınız olarak Azure Machine Learning Işlem oluşturursunuz. Aşağıdaki kod, çalışma alanınızda zaten mevcut değilse sizin için işlem kümelerini oluşturur.
+Yönetilen bir hizmet olan Azure Machine Learning Işlem kullanarak, veri bilimcileri, Azure sanal makinelerinin kümelerinde makine öğrenimi modellerini eğitebilir. Örnek olarak GPU desteği olan VM 'Ler sayılabilir. Bu öğreticide eğitim ortamınız olarak Azure Machine Learning Işlem oluşturursunuz. Bu VM 'de daha sonra öğreticide çalıştırılacak Python kodunu gönderebilirsiniz. 
+
+Aşağıdaki kod, çalışma alanınızda zaten mevcut değilse sizin için işlem kümelerini oluşturur.
 
  **İşlem hedefinin oluşturulması yaklaşık beş dakika sürer.** İşlem kaynağı zaten çalışma alanında ise, kod onu kullanır ve oluşturma işlemini atlar.
 
@@ -146,7 +148,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-Artık bulutta bir modeli eğitmek için gerekli paketleriniz ve işlem kaynaklarınız vardır.
+Artık bulutta bir modeli eğitmek için gerekli paketleriniz ve işlem kaynaklarınız vardır. 
 
 ## <a name="explore-data"></a>Verileri inceleme
 
@@ -215,7 +217,7 @@ Artık bu görüntülerin nasıl göründüğü ve beklenen tahmin sonucu hakkı
 
 ## <a name="train-on-a-remote-cluster"></a>Uzak kümede eğitme
 
-Bu görev için, işi daha önce ayarlamış olduğunuz uzak eğitim kümesine gönderin.  İş göndermek için şunları yaparsınız:
+Bu görev için, işi daha önce ayarladığınız uzak Eğitim kümesinde çalışacak şekilde gönderebilirsiniz.  İş göndermek için şunları yaparsınız:
 * Dizin oluşturma
 * Eğitim betiği oluşturma
 * Tahmin nesne oluşturma

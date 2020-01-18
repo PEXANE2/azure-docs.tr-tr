@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/02/2019
+ms.date: 01/18/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0847cda78c2e6d1df87eeaedc35850103840151
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468473"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264738"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Azure Güvenlik duvarını karma ağda dağıtma ve yapılandırma
 
@@ -45,15 +45,17 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu yordamı gerçekleştirmek için Azure PowerShell kullanmak istiyorsanız, bkz. [Azure PowerShell kullanarak Azure Güvenlik duvarını karma ağda dağıtma ve yapılandırma](tutorial-hybrid-ps.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu senaryonun doğru çalışması için üç önemli gereksinimi vardır:
+Karma ağ, Azure sanal ağları ile şirket içi ağlar arasında trafiği yönlendirmek için hub ve bağlı bileşen mimarisi modelini kullanır. Hub ve bağlı bileşen mimarisi aşağıdaki gereksinimlere sahiptir:
 
-- Alt ağda, varsayılan ağ geçidi olarak Azure Güvenlik Duvarı IP adresini işaret eden bir Kullanıcı tanımlı yol (UDR). Bu yol tablosunda BGP yol yaymanın **Devre Dışı** olması gerekir.
-- Hub ağ geçidi alt ağındaki UDR, bağlı olan ağların sonraki atlaması olarak güvenlik duvarı IP adresini göstermelidir.
+- VNet-hub ' ı VNet 'e eşlemeden **Allowgatewaytransit** ayarlayın. Hub ve bağlı bileşen ağ mimarisinde, bir ağ geçidi geçişi, bağlı olan sanal ağların her bağlı olan sanal ağda VPN ağ geçitleri dağıtmak yerine hub 'da VPN ağ geçidini paylaşmasına izin verir. 
 
-   Azure Güvenlik Duvarı alt ağında BGP 'deki yolları öğrendiğinden dolayı UDR gerekmez.
-- VNet-Hub'ı VNet-Spoke'a eşlerken **AllowGatewayTransit** ayarladığınızdan ve VNet-Spoke'u VNet-Hub'a eşlerken de **UseRemoteGateways** ayarladığınızdan emin olun.
+   Ayrıca, ağ geçidi ile bağlantılı sanal ağlara veya şirket içi ağlara yapılan yollar, ağ geçidi geçişi kullanılarak eşlenen sanal ağlar için otomatik olarak yönlendirme tablolarına yayılır. Daha fazla bilgi için bkz. [sanal ağ eşlemesi IÇIN VPN ağ geçidi geçişi yapılandırma](../vpn-gateway/vpn-gateway-peering-gateway-transit.md).
+
+- Sanal ağ hub 'ına sanal ağa bağlı olarak, **Useremotegateway** 'leri ayarlayın. **Useremotegateway** 'ler ayarlandıysa ve uzaktan eşleme üzerinde **allowgatewaytransit** da ayarlandıysa, bağlı olan sanal ağ, aktarım için uzak sanal ağın ağ geçitlerini kullanır.
+- Alt ağ trafiğini Merkez güvenlik duvarı üzerinden yönlendirmek için **BGP yol yaymayı devre dışı bırak** seçenek kümesiyle güvenlik duvarını Işaret eden Kullanıcı tanımlı bir yol (UDR) gerekir. **BGP yolu yaymayı devre dışı bırak** seçeneği, bağlı olan alt ağlara yönlendirme dağıtımını önler. Bu, öğrenilen yolların UDR 'niz ile çakışmasını önler.
+- Hub ağ geçidi alt ağında, bağlı olan ağların sonraki atlaması olarak güvenlik duvarı IP adresini işaret eden bir UDR yapılandırın. Azure Güvenlik Duvarı alt ağında BGP 'deki yolları öğrendiğinden dolayı UDR gerekmez.
 
 Bu yolların nasıl oluşturulduğunu görmek için [Yolları Oluşturma](#create-the-routes) bölümüne bakın.
 
@@ -77,7 +79,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 4. **Abonelik** bölümünde aboneliğinizi seçin.
 5. **Bölge**için **Doğu ABD**' yi seçin. Daha sonra oluşturduğunuz tüm kaynakların aynı konumda olması gerekir.
 6. **Gözden geçir + oluştur**' u seçin.
-7. **Oluştur**'u seçin.
+7. **Oluştur**’u seçin.
 
 Şimdi VNet 'i oluşturun:
 
@@ -261,7 +263,7 @@ Bu adımda, hub sanal ağından şirket içi sanal ağa bağlantı oluşturursun
 
 Yaklaşık beş dakika sonra, her iki bağlantının da durumu **bağlanmalıdır**.
 
-![Ağ Geçidi bağlantıları](media/tutorial-hybrid-portal/gateway-connections.png)
+![Ağ geçidi bağlantıları](media/tutorial-hybrid-portal/gateway-connections.png)
 
 ## <a name="peer-the-hub-and-spoke-virtual-networks"></a>Hub ve bağlı bileşen sanal ağlarını eşler
 
@@ -296,11 +298,11 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. Arama metin kutusuna **yol tablosu** yazın ve **ENTER**tuşuna basın.
 3. **Yol tablosu**' nu seçin.
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 5. Ad için **UDR-hub-kol**yazın.
 6. Kaynak grubu için **FW-karma-test** ' i seçin.
 8. **Konum** alanında önceden kullandığınız konumu seçin.
-9. **Oluştur**'u seçin.
+9. **Oluştur**’u seçin.
 10. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
 11. Sol sütundaki **rotalar** ' ı seçin.
 12. **Add (Ekle)** seçeneğini belirleyin.
@@ -324,12 +326,12 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. Arama metin kutusuna **yol tablosu** yazın ve **ENTER**tuşuna basın.
 3. **Yol tablosu**' nu seçin.
-5. **Oluştur**'u seçin.
+5. **Oluştur**’u seçin.
 6. Ad için **UDR-DG**yazın.
 7. Kaynak grubu için **FW-karma-test** ' i seçin.
 8. **Konum** alanında önceden kullandığınız konumu seçin.
 4. **Sanal ağ geçidi yol yayma**Için **devre dışı**' yı seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 2. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
 3. Sol sütundaki **rotalar** ' ı seçin.
 4. **Add (Ekle)** seçeneğini belirleyin.

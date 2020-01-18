@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 0fd25863d26c38608b6f64f22782422b844fdec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2cb9f7824f0dab583ffe5ca770e175c071930cb9
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420653"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168065"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
 
@@ -156,6 +156,10 @@ Yeni bir VM güncelleştirme dağıtımı zamanlamak için **Güncelleştirme y�
 
 > [!NOTE]
 > Dışlamaları geçersiz kılmanın dahil olduğunu bildirmek önemlidir. Örneğin, `*`hariç tutma kuralı tanımlarsanız, hepsi hariç tutulduklarında hiçbir düzeltme eki veya paket yüklenmez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için bir paket dahil, ancak dışlanan bağımlı bir paket varsa, paket yüklenmez.
+
+> [!NOTE]
+> Güncelleştirme dağıtımına dahil edilmek üzere yenisiyle değiştirilen güncelleştirmeleri belirtemezsiniz.
+>
 
 * **Zamanlama ayarları**: **Zamanlama Ayarları** bölmesi açılır. Varsayılan başlangıç zamanı, geçerli zamandan 30 dakika sonradır. Başlangıç zamanını en düşük 10 dakika olmak üzere istediğiniz değere ayarlayabilirsiniz.
 

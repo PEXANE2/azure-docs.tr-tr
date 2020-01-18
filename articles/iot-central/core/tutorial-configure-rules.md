@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9c2c8c1bacf4abfa775747a03d2a4a6121b67714
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9140114e7d31f24770bdcce9aae849b01aae9996
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106584"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263684"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Öğretici: Azure IoT Central’da cihazınız için kurallar ve eylemler yapılandırma
 
@@ -22,15 +22,16 @@ ms.locfileid: "74106584"
 
 [!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-Bu öğreticide, bağlı bir klima cihazı 90&deg; F sıcaklığı aştığında e-posta gönderen bir kural oluşturacaksınız.
+Bu öğreticide, bağlı bir AIR klimaları cihazındaki sıcaklık 70&deg; F 'yi aştığında bir e-posta gönderen bir kural oluşturacaksınız.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Telemetri tabanlı kural oluşturma
 > * Eylem ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, [Uygulamanızda yeni bir cihaz türü tanımlama](tutorial-define-device-type.md) öğreticisini tamamlayarak birlikte çalışacağınız **Bağlı Klima** cihaz şablonunu oluşturmanız gerekir.
 
@@ -48,14 +49,14 @@ Başlamadan önce, [Uygulamanızda yeni bir cihaz türü tanımlama](tutorial-de
 
     ![Kurallar görünümü](media/tutorial-configure-rules/newrule.png)
 
-5. Kuralınızı tanımlamak için aşağıdaki tabloda yer alan bilgileri kullanın:
+4. Kuralınızı tanımlamak için aşağıdaki tabloda yer alan bilgileri kullanın:
 
     | Ayar                                      | Değer                             |
     | -------------------------------------------- | ------------------------------    |
     | Ad                                         | Klima sıcaklığı uyarısı |
     | Bu şablonun tüm cihazları için kuralı etkinleştir | Açık                                |
-    | Koşul                                    | Sıcaklık 90’dan fazla    |
-    | Toplama                                  | None                              |
+    | Koşul                                    | Sıcaklık 70 'den büyük    |
+    | Toplama                                  | Hiçbiri                              |
 
     ![Sıcaklık kural koşulu](media/tutorial-configure-rules/temperaturerule.png)
 
@@ -71,17 +72,18 @@ Bir kural tanımladığınızda, kural koşulları yerine getirildiği zaman ça
 
 2. Eyleminizi tanımlamak için aşağıdaki tabloda yer alan bilgileri kullanın:
 
-    | Ayar   | Değer                          |
-    | --------- | ------------------------------ |
-    | Alıcı        | E-posta adresiniz             |
-    | Notlar     | Klima sıcaklığı eşiği aştı. |
+    | Ayar      | Değer                                               |
+    | ------------ | --------------------------------------------------- |
+    | Görünen ad | E-posta sıcaklık uyarısı                             |
+    | Bitiş           | E-posta adresiniz                                  |
+    | Notlar        | Klima sıcaklığı eşiği aştı. |
 
     > [!NOTE]
     > Bir e-posta bildirimi almak için e-posta adresinin [uygulamadaki bir kullanıcı kimliği](howto-administer.md) olması ve bu kullanıcının uygulamada en az bir kez oturum açmış olması gerekir.
 
     ![Sıcaklık eylemi](media/tutorial-configure-rules/temperatureaction.png)
 
-3. **Kaydet**’i seçin. Kuralınız **kurallar** sayfasında listelenir.
+3. **Kaydet**’i seçin. Kuralınız **Kurallar** sayfasında listelenir.
 
 ## <a name="test-the-rule"></a>Kuralı test etme
 
@@ -96,12 +98,14 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 <!-- Repeat task list from intro -->
 > [!div class="nextstepaction"]
+>
 > * Telemetri tabanlı kural oluşturma
 > * Eylem ekleme
 
 Eşik tabanlı bir kural tanımladığınıza göre, bir sonraki adım, [işlecin görünümlerini özelleştirecek](tutorial-customize-operator.md).
 
 Azure IoT Central’daki farklı kural türleri ve kural tanımının nasıl parametre haline getirileceği hakkında daha fazla bilgi için bkz.:
+
 * [Bir telemetri kuralı oluşturun ve bildirimleri ayarlayın](howto-create-telemetry-rules.md).
 * [Bir olay kuralı oluşturun ve bildirimleri ayarlayın](howto-create-event-rules.md).
 

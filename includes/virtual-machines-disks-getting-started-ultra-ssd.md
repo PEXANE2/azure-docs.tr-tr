@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5751ed33673ca859ba1aed54cfc7c2e7ecc8e495
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: ff3409fad12e54be5ac00ead3ca44c1f24bb0af8
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74124134"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76268263"
 ---
-Azure Ultra diskler, Azure IaaS sanal makineleri (VM 'Ler) için yüksek aktarım hızı, yüksek ıOPS ve tutarlı düşük gecikme süreli disk depolama alanı sunar. Bu yeni teklif, var olan diskler tekliflerimiz ile aynı Kullanılabilirlik düzeylerinde satır performansının üst kısmında yer sağlar. Ultra disklerin büyük bir avantajı, sanal makinelerinizi yeniden başlatmanıza gerek kalmadan SSD 'nin performansını ve iş yüklerinizde dinamik olarak değiştirme yeteneğidir. Ultra diskler SAP HANA, üst katman veritabanları ve işlem açısından ağır iş yükleri gibi veri kullanımı yoğun iş yükleri için uygundur.
+Azure Ultra diskler, Azure IaaS sanal makineleri (VM 'Ler) için yüksek aktarım hızı, yüksek ıOPS ve tutarlı düşük gecikme süreli disk depolama alanı sunar. Bu yeni teklif, var olan diskler tekliflerimiz ile aynı Kullanılabilirlik düzeylerinde satır performansının üst kısmında yer sağlar. Ultra disklerin büyük bir avantajı, sanal makinelerinizi yeniden başlatmanıza gerek kalmadan SSD 'nin performansını ve iş yüklerinizde dinamik olarak değiştirme yeteneğidir. Ultra diskler SAP HANA, en üst katman veritabanları ve ağır işlem içeren iş yükleri gibi yoğun veri kullanan iş yüklerine uygundur.
 
 ## <a name="ga-scope-and-limitations"></a>GA kapsamı ve sınırlamaları
 
@@ -29,8 +29,10 @@ CLı
 
 ```bash
 $subscription = "<yourSubID>"
-$region = "<yourLocation>, example value is southeastasia"
-$vmSize = "<yourVMSize>, example value is Standard_E64s_v3"
+# example value is southeastasia
+$region = "<yourLocation>"
+# example value is Standard_E64s_v3
+$vmSize = "<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
@@ -49,7 +51,7 @@ Bölge değerini koru, kullanılabilirlik **bölgenizi** temsil eder ve bir ultr
 
 |ResourceType  |Ad  |Konum  |Bölgeler  |Kısıtlama  |Özellik  |Değer  |
 |---------|---------|---------|---------|---------|---------|---------|
-|disklerinden     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|diskler     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 > [!NOTE]
 > Komuttan yanıt yoksa, seçilen VM boyutu seçili bölgedeki Ultra disklerle desteklenmez.
@@ -77,7 +79,7 @@ Bu bölümde, bir veri diski olarak bir ultra disk ile donatılmış bir sanal m
 - [Desteklenen BIR VM boyutu ve bölgesi](#ga-scope-and-limitations)seçtiğinizden emin olun.
 - Kullanılabilirlik **seçenekleri**' nde **kullanılabilirlik alanı** ' nı seçin.
 - Kalan girdileri tercih ettiğiniz seçimlere göre girin.
-- **Diskleri**seçin.
+- **Diskler**'i seçin.
 
 ![Create-Ultra-disk-Enabled-VM. png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
 

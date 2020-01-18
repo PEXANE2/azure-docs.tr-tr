@@ -16,29 +16,29 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eb369047574ef76dd31996fd16399380ea027c8
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f26af813fcd4032aabce2305ac8845307d1fca65
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74823308"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262138"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Öğretici: uniFLOW Online ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, Azure Active Directory (Azure AD) ile Ifkılow online 'ı tümleştirmeyi öğreneceksiniz. Azure AD ile Ifkılow online 'ı tümleştirdiğinizde şunları yapabilirsiniz:
 
 * Azure AD 'de, hiçbir Unkılow online 'a erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla çevrimiçi olmadan çevrimiçi olarak oturum açmalarına olanak sağlar.
+* Kullanıcılarınızın Azure AD hesaplarıyla çevrimiçi olmadan oturum açmasını sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* En düşük çevrimiçi çoklu oturum açma (SSO) aboneliği etkin.
+* En düşük çevrimiçi Kiracı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -64,11 +64,10 @@ Ikılow online 'ın tümleştirmesini Azure AD 'ye göre yapılandırmak için, 
 Azure AD SSO 'yu yapılandırmak ve test etmek için şu yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+   1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+   1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Unkılow ONLINE SSO 'Yu yapılandırın](#configure-uniflow-online-sso)** .
-    * Kullanıcının Azure AD gösterimi ile bağlantılı olmayan, Unkılow online 'da B. Simon 'ın bir karşılığı olacak şekilde, en **[düşük çevrimiçi test kullanıcısı oluşturun](#create-uniflow-online-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+    * Uygulama tarafında Kullanıcı oturumunu test etmek için **[oluşturulan test kullanıcısı ' nı kullanarak hiç bir çevrimiçi ortamda oturum açın](#sign-in-to-uniflow-online-using-the-created-test-user)** .
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
@@ -86,24 +85,24 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, en [düşük çevrimiçi istemci desteği ekibine](mailto:support@nt-ware.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, en [düşük çevrimiçi istemci desteği ekibine](mailto:support@nt-ware.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz veya diğer bir çevrimiçi kiracınızda GÖSTERILEN yanıt URL 'sine başvurabilirsiniz.
 
 1. En düşük çevrimiçi uygulama, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -111,10 +110,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdakilerin yanı sıra, en düşük çevrimiçi uygulama aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Ad |  Kaynak özniteliği|
     | -----------| --------------- |
     | displayName | user.displayname |
     | takma ad | User. onpremisessamaccountname |
+
+   > [!NOTE]
+   > `user.onpremisessamaccountname` özniteliği yalnızca Azure AD kullanıcılarınız yerel bir Windows Active Directory eşitlendiğinde bir değer içerir.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
@@ -138,17 +140,20 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Ifkılow online
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **çevrimiçi değil**' i seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümüne gidin ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+   ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+> [!NOTE]
+> Tüm kullanıcıların elle atama olmadan uygulamaya erişmesine izin vermek için, **Yönet** bölümüne gidin ve **Özellikler**' i seçin. Ardından, **Kullanıcı Ataması gerekli** parametresini **Hayır**olarak değiştirin.
 
 ## <a name="configure-uniflow-online-sso"></a>Unkılow online SSO yapılandırma
 
@@ -177,7 +182,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Ifkılow online
 
     c. **WS-bestype**için açılan listeden **Azure Active Directory** seçeneğini belirleyin.
 
-    d. **Kaydet** düğmesine tıklayın.
+    d. **Save (Kaydet)** düğmesine tıklayın.
 
 1. **Genel** sekmesinde, aşağıdaki adımları uygulayın:
 
@@ -185,7 +190,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Ifkılow online
 
     a. Ex: *Azuread SSO*görünen adını girin.
 
-    b. **Adgs Federasyon meta verileri**Için **URL 'yi** seçin seçeneği.
+    b. **ADFS Federasyon meta verileri**için **Kimden URL 'si** seçeneğini belirleyin.
 
     c. **Federasyon meta veri URl 'si** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın.
 
@@ -193,33 +198,15 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Ifkılow online
 
     e. **Otomatik Kullanıcı kaydını** **etkinleştirildi**olarak seçin.
 
-    f. **Kaydet** düğmesine tıklayın.
+    f. **Save (Kaydet)** düğmesine tıklayın.
 
-### <a name="create-uniflow-online-test-user"></a>Unkılow online test kullanıcısı oluşturma
+### <a name="sign-in-to-uniflow-online-using-the-created-test-user"></a>Oluşturulan test kullanıcısını kullanarak Kaldırılow online 'da oturum açın
 
-1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak olmayan çevrimiçi Web sitesinde oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, kiracınız için Unkılow online URL 'sine gidin.
 
-1. Sol Gezinti panelinden **Kullanıcı** sekmesi ' ni seçin.
+1. Azure AD örneğiniz aracılığıyla oturum açmak için önceden oluşturulmuş kimlik sağlayıcısını seçin.
 
-    ![En düşük çevrimiçi yapılandırma](./media/uniflow-online-tutorial/configure1.png)
-
-1. **Kullanıcı Ekle**' ye tıklayın.
-
-    ![En düşük çevrimiçi yapılandırma](./media/uniflow-online-tutorial/user1.png)
-
-1. **Kullanıcı için el Ile oluştur**' a tıklayın.
-
-    ![En düşük çevrimiçi yapılandırma](./media/uniflow-online-tutorial/user2.png)
-
-1. **Kullanıcı El Ile oluştur** sekmesinde, gerekli değerleri kuruluşunuzun gereksinimlerine göre sağlayın.
-
-    ![En düşük çevrimiçi yapılandırma](./media/uniflow-online-tutorial/user3.png)
-
-## <a name="test-sso"></a>Test SSO 'SU
-
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
-
-Erişim panelinde olmayan çevrimiçi Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız en düşük çevrimiçi kutucuğa otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+1. Test kullanıcısını kullanarak oturum açın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

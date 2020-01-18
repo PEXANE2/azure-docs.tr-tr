@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: edaa3f7c17ff5fb6bc79f67b7028a7ba72347367
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5350ecdd3b73894e43db3b9f342fc657cf73f224
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468099"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76268220"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM Yeniden Başlatma İşlemlerini Anlama - bakım ve kapalı kalma süresi
 Azure 'da sanal makineye etkilenmesine neden olan üç senaryo vardır: planlanmamış donanım bakımı, beklenmedik kapalı kalma süresi ve planlı bakım.
@@ -69,9 +69,15 @@ Hata etki alanları ortak bir güç kaynağı ve ağ anahtarını paylaşan sana
 ![yönetilen diskler FDs](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]
-> Yönetilen kullanılabilirlik kümelerine yönelik arıza etki alanlarının sayısı bölgeye göre farklılık gösterir (bölge başına iki veya üç). Aşağıdaki tabloda bölge başına sayı gösterilmektedir
+> Yönetilen kullanılabilirlik kümelerine yönelik arıza etki alanlarının sayısı bölgeye göre farklılık gösterir (bölge başına iki veya üç). Aşağıdaki komut dosyalarını çalıştırarak her bölge için hata etki alanını görebilirsiniz.
 
-[!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
+```azurepowershell-interactive
+Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.Name -eq 'Aligned'}
+```
+
+```azurecli-interactive 
+az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Location:locationInfo[0].location, MaximumFaultDomainCount:capabilities[0].value}' -o Table
+```
 
 > Note: belirli koşullar altında, aynı Kullanılabilirlik alanının 2 VM 'nin bir parçası aynı FaultDomain ' ı paylaşmasından kaynaklanabilir. Bu, kullanılabilirlik kümesine gidip "hata etki alanı" sütununu denetleyerek onaylanır.
 > Bu davranış, VM 'Ler dağıtıldığında aşağıdaki sıra meydana geldiğinde gözlemlenebilir:
