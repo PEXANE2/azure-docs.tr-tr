@@ -1,7 +1,7 @@
 ---
-title: "Örnek: bir kişilik grubuna yüz ekleme-Yüz Tanıma API'si"
+title: 'Örnek: bir kişilik grubuna yüz ekleme-yüz'
 titleSuffix: Azure Cognitive Services
-description: Bu kılavuzda, Azure bilişsel Hizmetler Yüz Tanıma API'si bir PersonGroup nesnesine çok sayıda kişi ve yüz ekleme gösterilmektedir.
+description: Bu kılavuzda, Azure bilişsel hizmetler yüz hizmeti ile bir PersonGroup nesnesine çok sayıda kişi ve yüz ekleme gösterilmektedir.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 891614caddf729acb58bc363df977031ad62fb07
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156718"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169822"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Bir kişilik grubuna yüz ekleme
 
-Bu kılavuzda, bir PersonGroup nesnesine çok sayıda kişi ve yüz ekleme gösterilmektedir. Aynı strateji LargePersonGroup, çok yönlü liste ve Largecelist nesneleri için de geçerlidir. Bu örnek, Azure bilişsel Hizmetler Yüz Tanıma API'si .NET istemci kitaplığı kullanılarak dilinde yazılmıştır C# .
+Bu kılavuzda, bir PersonGroup nesnesine çok sayıda kişi ve yüz ekleme gösterilmektedir. Aynı strateji LargePersonGroup, çok yönlü liste ve Largecelist nesneleri için de geçerlidir. Bu örnek, Azure bilişsel Hizmetler C# 'in .NET istemci kitaplığı kullanılarak yazılmıştır.
 
 ## <a name="step-1-initialization"></a>1\. Adım: Başlatma
 

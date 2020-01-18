@@ -1,5 +1,5 @@
 ---
-title: Java ile Notification Hubs kullanma
+title: Java ile Azure Notification Hubs kullanma
 description: Azure Notification Hubs 'yi bir Java arka ucundan nasıl kullanacağınızı öğrenin.
 services: notification-hubs
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 532ffc7a7393f016f27264b67b4ee5d3e6e5888f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213215"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263872"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Java 'dan Notification Hubs kullanma
 
@@ -41,11 +41,11 @@ SDK Şu anda şunları destekler:
 * Normal gönderir
 * Zamanlanan gönderimler
 * Java NGÇ aracılığıyla zaman uyumsuz işlemler
-* Desteklenen platformlar: APNS (iOS), FCM (Android), WNS (Windows Mağazası uygulamaları), MPNS (Windows Phone), ADM (Amazon MPR Le Fire), Baidu (Google hizmetleri olmadan Android)
+* Desteklenen platformlar: APNS (iOS), FCM (Android), WNS (Windows Mağazası uygulamaları), MPNS (Windows Phone), ADM (Amazon Ille Fire), Baidu (Google hizmetleri olmadan Android)
 
 ## <a name="sdk-usage"></a>SDK kullanımı
 
-### <a name="compile-and-build"></a>Derle ve derle
+### <a name="compile-and-build"></a>Derleme ve oluşturma
 
 [Maven] kullanma
 
@@ -53,7 +53,7 @@ Oluşturmak için:
 
     mvn package
 
-## <a name="code"></a>Kod
+## <a name="code"></a>Kodlayın
 
 ### <a name="notification-hub-cruds"></a>Notification Hub 'ı CRUDs
 
@@ -71,7 +71,7 @@ Oluşturmak için:
     hub = namespaceManager.createNotificationHub(hub);
     ```
 
- OR
+ VEYA
 
     ```java
     hub = new NotificationHub("connection string", "hubname");
@@ -188,7 +188,7 @@ Yükleme API 'SI, kayıt yönetimi için alternatif bir mekanizmadır. Çok say�
 
 Yükleme, ihtiyacınız olan her şeyi içerir: gönderim kanalı (cihaz belirteci), Etiketler, şablonlar, ikincil kutucuklar (WNS ve APNS için). KIMLIĞI artık almak için hizmeti çağırmanız gerekmez. yalnızca GUID veya başka bir tanımlayıcı oluşturun, cihazı cihazda tutun ve anında iletme kanalı (cihaz belirteci) ile birlikte arka uca gönderin.
 
-Arka uçta yalnızca tek bir çağrı `CreateOrUpdateInstallation`yapmanız gerekir; tamamen ıdempotent, bu nedenle gerekirse yeniden deneyin.
+Arka uçta yalnızca `CreateOrUpdateInstallation`; için tek bir çağrı yapmanız gerekir. tam ıdempotent, bu nedenle gerekirse yeniden deneyin.
 
 Amazon Ille Fire için örnek olarak:
 
@@ -221,7 +221,7 @@ Yüklemeyi Sil:
     hub.deleteInstallation(installation.getInstallationId());
     ```
 
-`CreateOrUpdate`, `Patch`ve `Delete` ile`Get`en sonunda tutarlıdır. İsteğiniz işlem, çağrı sırasında yalnızca sistem kuyruğuna gider ve arka planda yürütülür. Get, ana çalışma zamanı senaryosu için tasarlanmamıştır, ancak hata ayıklama ve sorun giderme amacıyla, hizmet tarafından sıkı bir şekilde kısıtlanmıştır.
+`CreateOrUpdate`, `Patch`ve `Delete` sonunda `Get`ile tutarlıdır. İsteğiniz işlem, çağrı sırasında yalnızca sistem kuyruğuna gider ve arka planda yürütülür. Get, ana çalışma zamanı senaryosu için tasarlanmamıştır, ancak hata ayıklama ve sorun giderme amacıyla, hizmet tarafından sıkı bir şekilde kısıtlanmıştır.
 
 Yüklemeler için gönderme akışı, kayıtlar için ile aynıdır. Belirli bir yüklemeye yönelik bildirimi hedeflemek için-yalnızca "ınstalstıd: {istenen-id}" etiketini kullanın. Bu durumda, kod şu şekilde olur:
 
@@ -294,7 +294,7 @@ Kayıtlara karşı toplu işlem yapmanız gerekebilir. Genellikle, etiketleri g�
 
 **SAS imzası olan URI:**
 
- Bu URL, bir blob dosyasının veya blob kapsayıcısının URL 'si artı izin ve sona erme saati ile hesabın SAS anahtarı kullanılarak yapılan tüm bu işlerin imzası gibi bir dizi parametrenin URL 'sidir. Azure Storage Java SDK 'Sı, bu URI 'lerin oluşturulması dahil zengin özelliklere sahiptir. Basit alternatif olarak, imzalama algoritmasının temel ve kompakt `ImportExportE2E` uygulamasına sahip olan test sınıfına (GitHub konumundan) göz atın.
+ Bu URL, bir blob dosyasının veya blob kapsayıcısının URL 'si artı izin ve sona erme saati ile hesabın SAS anahtarı kullanılarak yapılan tüm bu işlerin imzası gibi bir dizi parametrenin URL 'sidir. Azure Storage Java SDK 'Sı, bu URI 'lerin oluşturulması dahil zengin özelliklere sahiptir. Basit alternatif olarak, imzalama algoritmasının temel ve kompakt uygulamasına sahip `ImportExportE2E` test sınıfına (GitHub konumundan) göz atın.
 
 ### <a name="send-notifications"></a>Bildirim gönder
 
@@ -374,7 +374,7 @@ Java kodunuzun çalıştırılması artık hedef cihazınızda bir bildirim olu�
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Bu konu, Notification Hubs için basit bir Java REST istemcisi oluşturmayı göstermiştir. Buradan şunları yapabilirsiniz:
+Bu konu, Notification Hubs için basit bir Java REST istemcisi oluşturmayı göstermiştir. Burada yapabilecekleriniz:
 
 * Tüm SDK kodunu içeren tam [Java SDK]indirin.
 * Örneklerle yürütün:

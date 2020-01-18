@@ -1,5 +1,5 @@
 ---
-title: Kapsayıcılar-yüz tanıma API 'sini yükleyip çalıştırın
+title: Kapsayıcıları yükleyip çalıştırma-yüz
 titleSuffix: Azure Cognitive Services
 description: Bu makalede, bu adım adım öğreticide, yüzleri için kapsayıcıları indirme, yükleme ve çalıştırma işlemlerinin nasıl yapılacağı gösterilir.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 574f6bead9cac384c72d2d0cd35353eb571a9490
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e467b195ab1e2124286bfef74d7d1b71a4d99dd6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327048"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165987"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Yüz kapsayıcıları (Önizleme) yükleyip çalıştırma
 
@@ -26,11 +26,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Yüz Tanıma API'si kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir.
+Yüz hizmeti kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir.
 
-|Gerekli|Amaç|
+|Gereklidir|Amaç|
 |--|--|
-|Docker altyapısı| Docker altyapısının bir [ana bilgisayara](#the-host-computer)yüklenmesi gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz. [Docker genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> Windows 'da Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
+|Docker altyapısı| Docker altyapısının bir [ana bilgisayara](#the-host-computer)yüklenmesi gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz: [Docker'a genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> Windows 'da Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
 |Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının temel olarak anlaşılmasına ihtiyacınız vardır. Ayrıca temel `docker` komutları bilgisine de ihtiyacınız vardır.| 
 |Yüz kaynağı |Kapsayıcıyı kullanmak için şunları yapmanız gerekir:<br><br>Bir Azure **yüz** kaynağı ve ilgili API anahtarı ve uç nokta URI 'si. Her iki değer de kaynak için **genel bakış** ve **anahtarlar** sayfalarında kullanılabilir. Kapsayıcının başlatılması gerekir.<br><br>**{API_KEY}** : **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **genel bakış** sayfasında belirtilen bitiş noktası
 
@@ -46,11 +46,11 @@ Yüz Tanıma API'si kapsayıcılarını kullanmadan önce aşağıdaki önkoşul
 
 ### <a name="container-requirements-and-recommendations"></a>Kapsayıcı gereksinimleri ve önerileri
 
-Aşağıdaki tabloda, her bir Yüz Tanıma API'si kapsayıcısı için ayrılacak minimum ve önerilen CPU çekirdekleri ve bellek açıklanmaktadır.
+Aşağıdaki tabloda, her yüz hizmeti kapsayıcısı için ayrılacak minimum ve önerilen CPU çekirdekleri ve bellek açıklanmaktadır.
 
 | Kapsayıcı | Minimum | Önerilen | Saniye başına işlem<br>(En düşük, en yüksek)|
 |-----------|---------|-------------|--|
-|Yüz | 1 çekirdek, 2 GB bellek | 1 çekirdek, 4 GB bellek |10, 20|
+|Yüz Tanıma | 1 çekirdek, 2 GB bellek | 1 çekirdek, 4 GB bellek |10, 20|
 
 * Her çekirdek en az 2,6 GHz veya daha hızlı olmalıdır.
 * Saniyedeki işlem sayısı (TPS).
@@ -59,11 +59,11 @@ Aşağıdaki tabloda, her bir Yüz Tanıma API'si kapsayıcısı için ayrılaca
 
 ## <a name="get-the-container-image-with-docker-pull"></a>docker pull kapsayıcı görüntüsünü al
 
-Yüz Tanıma API'si için kapsayıcı görüntüleri kullanılabilir. 
+Yüz hizmeti için kapsayıcı görüntüleri kullanılabilir. 
 
 | Kapsayıcı | Havuz |
 |-----------|------------|
-| Yüz | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
+| Yüz Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -82,9 +82,9 @@ Kapsayıcı [ana bilgisayar](#the-host-computer)üzerinde olduktan sonra, kapsay
 
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı Docker Run ile çalıştırma
 
-Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{ENDPOINT_URI}` ve `{API_KEY}` değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın.
+Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{ENDPOINT_URI}` Ve`{API_KEY}` değerlerini alma hakkında ayrıntılar için gerekli [parametreleri](#gathering-required-parameters) toplama bölümüne bakın.
 
-`docker run` komut [örnekleri](face-resource-container-config.md#example-docker-run-commands) mevcuttur.
+Komut [örnekleri](face-resource-container-config.md#example-docker-run-commands) mevcuttur. `docker run`
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -94,7 +94,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Bu komut:
+Şu komut:
 
 * Kapsayıcı görüntüsünden bir yüz kapsayıcısı çalıştırır.
 * Bir CPU çekirdeği ve 4 GB bellek ayırır.
@@ -104,7 +104,7 @@ Bu komut:
 `docker run` komutuna daha fazla [örnek](./face-resource-container-config.md#example-docker-run-commands) kullanılabilir. 
 
 > [!IMPORTANT]
-> Kapsayıcıyı çalıştırmak için `Eula`, `Billing`ve `ApiKey` seçenekleri belirtilmelidir ya da kapsayıcı başlamamalıdır. Daha fazla bilgi için bkz. [faturalandırma](#billing).
+> Kapsayıcıyı çalıştırmak için `Eula`, `Billing`ve `ApiKey` seçenekleri belirtilmelidir ya da kapsayıcı başlamamalıdır. Daha fazla bilgi için [faturalama](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -120,7 +120,7 @@ Kapsayıcı API 'Leri için `http://localhost:5000`konak kullanın.
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Kapsayıcıyı durdur
+## <a name="stop-the-container"></a>Kapsayıcıyı durdurma
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
@@ -130,9 +130,9 @@ Kapsayıcıyı bir çıkış [bağlaması](./face-resource-container-config.md#m
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
-Yüz Tanıma API'si kapsayıcıları Azure hesabınızdaki bir Yüz Tanıma API'si kaynağını kullanarak faturalandırma bilgilerini Azure 'a gönderir. 
+Yüz hizmet kapsayıcıları, Azure hesabınızdaki bir yüz kaynağı kullanarak faturalama bilgilerini Azure 'a gönderir. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -144,11 +144,11 @@ Bu seçenekler hakkında daha fazla bilgi için bkz. [kapsayıcıları yapıland
 
 ## <a name="summary"></a>Özet
 
-Bu makalede, Yüz Tanıma API'si kapsayıcıları indirme, yükleme ve çalıştırma ile ilgili kavramları ve iş akışını öğrendiniz. Özet:
+Bu makalede, yüz hizmet kapsayıcılarını indirme, yükleme ve çalıştırma ile ilgili kavramları ve iş akışını öğrendiniz. Özet:
 
 * Kapsayıcı görüntüleri Azure Container Registry indirilir.
 * Docker kapsayıcı görüntüleri çalıştırın.
-* Kapsayıcının ana bilgisayar URI 'sini belirterek Yüz Tanıma API'si kapsayıcılarındaki işlemleri çağırmak için REST API ya da SDK kullanabilirsiniz.
+* Kapsayıcının ana bilgisayar URI 'sini belirterek yüz hizmeti kapsayıcılarındaki işlemleri çağırmak için REST API veya SDK kullanabilirsiniz.
 * Bir kapsayıcıyı örneklediğinizde faturalandırma bilgilerini belirtmeniz gerekir.
 
 > [!IMPORTANT]

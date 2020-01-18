@@ -33,7 +33,7 @@
         - name: Load Balancer
           items:
             - name: Yük Dengeleyici nedir?
-              href: ../load-balancer/load-balancer-standard-overview.md
+              href: ../load-balancer/load-balancer-overview.md
             - name: Load Balancer Standart ve Kullanılabilirlik Bölgeleri
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: 'Bölgesel olarak yedekli, genel bir Standard Load Balancer oluşturma'

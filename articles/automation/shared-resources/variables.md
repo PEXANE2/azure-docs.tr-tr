@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e56a1c9a158974266b810d31a0e9bb898262761a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ac2c276f051155d7ba18ee91e4ca27acb0b35192
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849437"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167998"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure Otomasyonu 'nda değişken varlıklar
 
@@ -51,7 +51,7 @@ Otomasyon 'da kullanılabilen değişken türlerinin bir listesi aşağıda veri
 
 Azurerd için aşağıdaki tablodaki cmdlet 'ler Windows PowerShell ile otomasyon kimlik bilgisi varlıkları oluşturmak ve yönetmek için kullanılır. Bunlar, Automation runbook 'larda ve DSC yapılandırmalarında kullanıma sunulan [Azurerd. Automation modülünün](/powershell/azure/overview)bir parçası olarak gelir.
 
-| Cmdlet'ler | Açıklama |
+| Cmdlet’ler | Açıklama |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|Mevcut bir değişkenin değerini alır.|
 |[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|Yeni bir değişken oluşturur ve değerini ayarlar.|

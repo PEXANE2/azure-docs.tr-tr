@@ -1,5 +1,5 @@
 ---
-title: Azure Lab Services sınıf laboratuvarlarında kullanım ayarlarını yapılandırma | Microsoft Docs
+title: Azure Lab Services sınıf laboratuvarlarında kullanım ayarlarını yapılandırma
 description: Laboratuvar için Kullanıcı sayısını yapılandırmayı, laboratuvara kaydolmalarını ve VM 'yi kullanbilecekleri saat sayısını denetlemeyi ve daha fazlasını öğrenin.
 services: lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584087"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169217"
 ---
 # <a name="add-and-manage-lab-users"></a>Laboratuvar kullanıcılarını ekleme ve yönetme
 Bu makalede, laboratuvara Kullanıcı ekleme, laboratuvarda nasıl kayıt yapılacağı, VM 'nin kullanabileceği saat sayısını denetleme ve daha fazla bilgi edinebilirsiniz. 
@@ -125,7 +125,7 @@ Aşağıdaki adımları kullanarak, Kullanıcı başına kota ayarlayabilirsiniz
 ## <a name="set-additional-quota-for-a-specific-user"></a>Belirli bir kullanıcı için ek kota ayarlama
 Bir kullanıcı için ek kota belirtebilirsiniz. Bu kota, önceki bölümde yer aldığı tüm kullanıcılar için genel kota kümesine ek olarak yapılır. Örneğin, (bir eğitmen olarak) tüm kullanıcılar için kotayı 10 saate ayarlarsanız ve belirli bir kullanıcı için 5 saatlik ek kota ayarlarsanız, kullanıcılar 15 (10 + 5) saatlik kotayı alır. Ortak kotayı daha sonra olarak değiştirirseniz, 15, daha sonra Kullanıcı 20 (15 + 5) saatlik kotayı alır. Bu genel kotanın zamanlanan sürenin dışında olduğunu unutmayın. Zamanlama sırasında öğrencinin bir laboratuvar VM 'sinde harcadığı süre bu kotaya göre sayılmaz. 
 
-Bunu yapmak için şu adımları izleyin:
+Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. **Kullanıcılar** sayfasındaki kullanıcılar listesinden bir Kullanıcı (öğrenci) seçin.
 2. Ardından araç çubuğundan **kotayı ayarla** ' yı seçin. 

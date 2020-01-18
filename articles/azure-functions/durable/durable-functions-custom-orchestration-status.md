@@ -4,27 +4,27 @@ description: Dayanıklı İşlevler için özel düzenleme durumunu yapılandır
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 22242a40a29a1a014a7ab88ed705c7ca3e5ba288
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2b8b78f58570186a0b17eb47f8445d2ba9aa47e8
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232962"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261662"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler özel düzenleme durumu (Azure Işlevleri)
 
-Özel düzenleme durumu, Orchestrator işleviniz için özel bir durum değeri ayarlamanıza olanak sağlar. Bu durum HTTP GetStatus API 'SI veya `DurableOrchestrationClient.GetStatusAsync` API 'SI aracılığıyla sağlanır.
+Özel düzenleme durumu, Orchestrator işleviniz için özel bir durum değeri ayarlamanıza olanak sağlar. Bu durum, Orchestration istemcisinde [http GetStatus API 'si](durable-functions-http-api.md#get-instance-status) veya [`GetStatusAsync` API 'si](durable-functions-instance-management.md#query-instances) aracılığıyla sağlanır.
 
 ## <a name="sample-use-cases"></a>Örnek kullanım örnekleri
 
 > [!NOTE]
 > Aşağıdaki örnekler, ve JavaScript içinde C# özel durum özelliğinin nasıl kullanılacağını göstermektedir. Örnekler C# , dayanıklı işlevler 2. x için yazılmıştır ve dayanıklı işlevler 1. x ile uyumlu değildir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="visualize-progress"></a>İlerlemeyi görselleştirin
+### <a name="visualize-progress"></a>İlerlemeyi görselleştirme
 
 İstemciler, durum bitiş noktasını yoklayabilirler ve geçerli yürütme aşamasını görselleştirtiren bir ilerleme Kullanıcı arabirimi görüntüleyebilir. Aşağıdaki örnek ilerleme paylaşımını gösterir:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -51,7 +51,9 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+`E1_HelloSequence` Orchestrator işlevi:
 
 ```javascript
 const df = require("durable-functions");
@@ -71,15 +73,19 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
+`E1_SayHello` etkinlik işlevi:
+
 ```javascript
 module.exports = async function(context, name) {
     return `Hello ${name}!`;
 };
 ```
 
+---
+
 Daha sonra istemci, düzenleme çıktısını yalnızca `CustomStatus` alan "Londra" olarak ayarlandığında alır:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -112,7 +118,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -144,11 +150,13 @@ module.exports = async function(context, req) {
 > [!NOTE]
 > JavaScript 'te, `customStatus` alanı bir sonraki `yield` veya `return` eylemi zamanlandığında ayarlanır.
 
+---
+
 ### <a name="output-customization"></a>Çıkış özelleştirmesi
 
 Farklı bir ilginç senaryo, benzersiz özelliklere veya etkileşimlere göre özelleştirilmiş çıktı döndürerek kullanıcıları bölümleyerek. Özel düzenleme durumunun yardımıyla, istemci tarafı kodu genel kalır. Aşağıdaki örnekte gösterildiği gibi, tüm ana değişiklikler sunucu tarafında gerçekleşir:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -186,7 +194,7 @@ public static void Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -219,11 +227,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 ### <a name="instruction-specification"></a>Yönerge belirtimi
 
 Orchestrator, istemcilere özel durum aracılığıyla benzersiz yönergeler verebilir. Özel durum yönergeleri Orchestration kodundaki adımlara eşlenir:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -251,7 +261,7 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -278,11 +288,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 ## <a name="sample"></a>Örnek
 
 Aşağıdaki örnekte, önce özel durum ayarlanır;
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
@@ -297,7 +309,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -312,6 +324,8 @@ module.exports = df.orchestrator(function*(context) {
     // ...do more work...
 });
 ```
+
+---
 
 Düzenleme çalışırken, dış istemciler şu özel durumu getirebilir:
 

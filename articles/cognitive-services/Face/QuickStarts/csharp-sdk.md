@@ -9,16 +9,16 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 269f2c9a2cf8578438971e8ad75fec1379a21c19
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e305a5634aa0c065342e1873c413039eb734b972
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448196"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165879"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Hızlı başlangıç: .NET için yüz istemci kitaplığı
 
-.NET için yüz istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz Tanıma API'si hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
+.NET için yüz istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
 
 .NET için yüz istemci kitaplığı 'nı kullanarak şunları yapın:
 
@@ -317,5 +317,5 @@ Bu hızlı başlangıçta, .NET için yüz kitaplığı 'nı kullanarak temel g�
 > [!div class="nextstepaction"]
 > [Yüz Tanıma API'si Başvurusu (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
 
-* [Yüz Tanıma API'si nedir?](../overview.md)
+* [Yüz hizmeti nedir?](../overview.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs)' da bulunabilir.

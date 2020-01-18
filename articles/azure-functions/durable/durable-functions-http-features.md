@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1c8f56810edb39db66cbb83750e5cff02e22662a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a7d8891c6f925cfac326685f01ba5f6149a1b233
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433279"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262869"
 ---
 # <a name="http-features"></a>HTTP özellikleri
 
@@ -41,21 +41,21 @@ Dayanıklı İşlevler uzantısı tarafından kullanıma sunulan tüm yerleşik 
 
 [Orchestration istemci bağlaması](durable-functions-bindings.md#orchestration-client) , uygun http yanıt yükleri oluşturabilen API 'leri kullanıma sunar. Örneğin, belirli bir düzenleme örneği için yönetim API 'Lerinin bağlantılarını içeren bir yanıt oluşturabilir. Aşağıdaki örneklerde, bu API 'nin yeni bir Orchestration örneği için nasıl kullanılacağını gösteren bir HTTP tetikleyici işlevi gösterilmektedir:
 
-#### <a name="precompiled-c"></a>DerlemesiC#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-#### <a name="c-script"></a>C# betiği
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
-
-#### <a name="javascript-with-functions-20-or-later-only"></a>Yalnızca 2,0 veya üzeri IŞLEVLERE sahip JavaScript
+**index. js**
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-#### <a name="functionjson"></a>Function. JSON
+**function. JSON**
 
-[!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+
+---
 
 Daha önce gösterilen HTTP-Trigger işlevlerini kullanarak bir Orchestrator işlevinin başlatılması, herhangi bir HTTP istemcisi kullanılarak yapılabilir. Aşağıdaki kıvrımlı komutu `DoWork`adlı bir Orchestrator işlevi başlatır:
 
@@ -112,10 +112,9 @@ Orchestrator [işlevi kod kısıtlamalarında](durable-functions-code-constraint
 
 Dayanıklı İşlevler 2,0 ' den başlayarak, [düzenleme, Orchestration tetikleyicisi bağlamasını](durable-functions-bindings.md#orchestration-trigger)kullanarak HTTP API 'lerini yerel olarak kullanabilir.
 
-> [!NOTE]
-> HTTP uç noktalarını doğrudan Orchestrator işlevlerinden çağırma özelliği JavaScript 'te henüz kullanılamıyor.
+Aşağıdaki örnek kod, giden HTTP isteği yapan bir Orchestrator işlevini göstermektedir:
 
-Aşağıdaki örnek kodda, **CallHttpAsync** .net C# API 'sini kullanarak giden http isteği oluşturan bir Orchestrator işlevi gösterilmektedir:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,6 +133,23 @@ public static async Task CheckSiteAvailable(
     }
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const url = context.df.getInput();
+    const response = context.df.callHttp("GET", url)
+
+    if (response.statusCode >= 400) {
+        // handling of error codes goes here
+    }
+});
+```
+
+---
 
 "HTTP çağrısı" eylemini kullanarak Orchestrator işlevleriniz içinde aşağıdaki işlemleri yapabilirsiniz:
 
@@ -156,6 +172,8 @@ Dayanıklı İşlevler, yetkilendirme için Azure Active Directory (Azure AD) be
 
 Aşağıdaki kod .NET Orchestrator işlevine bir örnektir. İşlevi, Azure Resource Manager [sanal makineler REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines)kullanarak bir sanal makineyi yeniden başlatmak için kimliği doğrulanmış çağrılar yapar.
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ```csharp
 [FunctionName("RestartVm")]
 public static async Task RunOrchestrator(
@@ -164,6 +182,7 @@ public static async Task RunOrchestrator(
     string subscriptionId = "mySubId";
     string resourceGroup = "myRG";
     string vmName = "myVM";
+    string apiVersion = "2019-03-01";
     
     // Automatically fetches an Azure AD token for resource = https://management.core.windows.net
     // and attaches it to the outgoing Azure Resource Manager API call.
@@ -178,6 +197,32 @@ public static async Task RunOrchestrator(
     }
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const subscriptionId = "mySubId";
+    const resourceGroup = "myRG";
+    const vmName = "myVM";
+    const apiVersion = "2019-03-01";
+    const tokenSource = new df.ManagedIdentityTokenSource("https://management.core.windows.net");
+
+    // get a list of the Azure subscriptions that I have access to
+    const restartResponse = yield context.df.callHttp(
+        "POST",
+        `https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroup}/providers/Microsoft.Compute/virtualMachines/${vmName}/restart?api-version=${apiVersion}`,
+        undefined, // no request content
+        undefined, // no request headers (besides auth which is handled by the token source)
+        tokenSource);
+
+    return restartResponse;
+});
+```
+
+---
 
 Önceki örnekte `tokenSource` parametresi, [Azure Resource Manager](../../azure-resource-manager/management/overview.md)IÇIN Azure AD belirteçlerini almak üzere yapılandırılmıştır. Belirteçler `https://management.core.windows.net`Kaynak URI 'SI tarafından tanımlanır. Örnek, geçerli işlev uygulamasının yerel olarak çalıştığını ya da yönetilen kimliğe sahip bir işlev uygulaması olarak dağıtıldığını varsayar. Yerel kimliğin veya yönetilen kimliğin, belirtilen kaynak grubundaki VM 'Leri yönetme iznine sahip olduğu varsayılır `myRG`.
 

@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB yerleşik Not defteri komutlarını ve özelliklerini kullanın
+title: Azure Cosmos DB 'daki yerleşik Not defteri komutlarını ve özelliklerini kullanma (Önizleme)
 description: Azure Cosmos DB yerleşik not defterlerini kullanarak genel işlemleri yapmak için yerleşik komutları ve özellikleri nasıl kullanacağınızı öğrenin.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: dech
-ms.openlocfilehash: f5ab1491c8561c90b06374a0a58f160cbcdd1cad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2066701a88e03feb29bd1689f36460765f1c638d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444643"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264721"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Azure Cosmos DB yerleşik Not defteri komutlarını ve özelliklerini kullanın
 

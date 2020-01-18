@@ -1,6 +1,6 @@
 ---
-title: Müşterilere içerik teslim | Microsoft Docs
-description: Bu konu ne içeriğinizi Azure Media Services ile ilgili genel bir bakış sağlar.
+title: Müşterilere içerik sunma | Microsoft Docs
+description: Bu konu, Azure Media Services ile içeriğinizi sunmaya nelerin ilgili olduğuna ilişkin genel bir bakış sunar.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,148 +14,148 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5db2cb983c0c3cd0e2194f7686964d9ec3828d6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61232284"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264687"
 ---
-# <a name="deliver-content-to-customers"></a>Müşterilere içerik teslim edin
-Müşterilere, akış ve isteğe bağlı video içerik teslim, amacınız farklı ağ koşulları altındaki çeşitli cihazlara yüksek kaliteli video teslim andır.
+# <a name="deliver-content-to-customers"></a>Müşterilere içerik sunma
+Akışa veya isteğe bağlı video içeriğinizi müşterilere sunarken, amacınız farklı ağ koşulları altında çeşitli cihazlara yüksek kaliteli video sunmaktır.
 
-Bu hedefe ulaşmak için aşağıdakileri yapabilirsiniz:
+Bu hedefe ulaşmak için şunları yapabilirsiniz:
 
-* Akışınızı Çoklu bit hızlı (bit hızı Uyarlamalı) video akışına kodlayın. Bu kalite ve ağ koşullarını ilgileniriz.
-* Microsoft Azure Media Services'i kullanma [dinamik paketleme](media-services-dynamic-packaging-overview.md) dinamik olarak akışınız farklı protokollere yeniden paketler. Bu farklı cihazlarda akış ilgileniriz. Media Services teslim aşağıdaki hızı Uyarlamalı akış teknolojilerini destekler: <br/>
-    * **HTTP canlı akış** (HLS) - ekleme "(biçim = m3u8-aapl)" "/ MANIFEST" bölümüne geri HLS içerik tüketimi için döndürülecek akış kaynağı sunucusu bildirmek için URL'nin yol **Apple iOS** (Ayrıntılar için yerel cihazlar bkz: [bulucular](#locators) ve [URL'leri](#URLs)),
-    * **MPEG-DASH** -ekleme "(biçim mpd-time-CSF)" yolu için döndürülecek akış kaynağı sunucusu bildirmek için URL "/ bildirimi" bölümünü geri MPEG-DASH (Ayrıntılar için bkz [bulucular](#locators) ve [URL'leri](#URLs)),
+* Akışınızı çoklu bit hızında (Uyarlamalı bit hızı) bir video akışına kodlayın. Bu işlem kalite ve ağ koşullarından faydalandı.
+* Akışınızı farklı protokollere dinamik olarak yeniden paketlemek için Microsoft Azure Media Services [dinamik paketleme](media-services-dynamic-packaging-overview.md) kullanın. Bu işlem, farklı cihazlarda akışa alınır. Media Services, aşağıdaki Uyarlamalı bit hızı akış teknolojilerinin teslimini destekler: <br/>
+    * **Http canlı akışı** (HLS)-"(format = M3U8-AAPL)" yolunu, akış kaynak sunucusuna **Apple iOS** Native cihazlarda tüketim için içerik GERI dönmesini söylemek için URL 'nin "/manifest" bölümüne ekleyin (Ayrıntılar için bkz. [Konum Belirleyicisi](#locators) ve [URL 'ler](#URLs)),
+    * **MPEG-Dash** -"(format = MPD-Time-CSF)" yolunu, akış kaynak sunucusuna MPEG-Dash geri döndürmesini söylemek için URL 'nin "/manifest" bölümüne ekleyin (Ayrıntılar için bkz: [Konumlandırıcı](#locators) ve [URL 'ler](#URLs)),
     * **Kesintisiz akış**.
 
 >[!NOTE]
 >AMS hesabınız oluşturulduğunda hesabınıza **Durdurulmuş** durumda bir **varsayılan** akış uç noktası eklenir. İçerik akışını başlatmak ve dinamik paketleme ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumda olması gerekir. 
 
-Bu makalede, önemli bir içerik teslim kavramlarına genel bakış sağlar.
+Bu makale, önemli içerik teslim kavramlarına genel bir bakış sunar.
 
-Bilinen sorunlar denetlemek için bkz: [bilinen sorunlar](media-services-deliver-content-overview.md#known-issues).
+Bilinen sorunları denetlemek için bkz. [bilinen sorunlar](media-services-deliver-content-overview.md#known-issues).
 
 ## <a name="dynamic-packaging"></a>Dinamik paketleme
-Dinamik paketleme ile Media Services, bit hızı Uyarlamalı MP4 veya kesintisiz akış kodlanmış içeriğinizi Media Services (MPEG-DASH, HLS, kesintisiz akış) tarafından desteklenen akış biçimlerinde sunabilirsiniz yeniden paketlemenize gerek kalmadan sağlar Akış biçimlerinde. Dinamik paketleme ile içeriğinizi teslim etmek öneririz.
+Media Services sağladığı dinamik paketleme sayesinde, uyarlamalı bit hızı MP4 veya Kesintisiz Akış kodlanmış içeriğinizi Media Services (MPEG-DASH, HLS, Kesintisiz Akış,) tarafından desteklenen akış biçimlerinde, bunlara yeniden paketlemeye gerek kalmadan teslim edebilirsiniz. akış biçimleri. Dinamik paketleme ile içeriğinizi teslim etmenizi öneririz.
 
-Dinamik paketlemeden yararlanmak için Ara (kaynak) dosyanızı bit hızı Uyarlamalı MP4 dosyası ya da Uyarlamalı bit hızlı kesintisiz akış dosyaları kümesine kodlamanız gerekir.
+Dinamik paketlemeden yararlanmak için, Mezzanine (kaynak) dosyanızı bir uyarlamalı bit hızı MP4 dosyası ya da Uyarlamalı bit hızı Kesintisiz Akış dosyalarına kodlamanız gerekir.
 
-Dinamik paketleme ile depolayın ve tek bir depolama biçimindeki dosyaları için ödeme yaparsınız. Media Services isteklerinizi üzerinde göre uygun yanıtı derler ve.
+Dinamik paketleme ile dosyaları tek depolama biçiminde depolayıp ödeyin. Media Services, isteklerinizi temel alarak uygun yanıtı derler ve sunar.
 
-Dinamik paketleme, standart ve premium akış uç noktaları için kullanılabilir. 
+Dinamik paketleme standart ve Premium akış uç noktaları için kullanılabilir. 
 
-Daha fazla bilgi için [dinamik paketleme](media-services-dynamic-packaging-overview.md).
+Daha fazla bilgi için bkz. [dinamik paketleme](media-services-dynamic-packaging-overview.md).
 
-## <a name="filters-and-dynamic-manifests"></a>Filtreler ve dinamik bildirimlere
-Media Services ile varlıklarınız için filtreleri tanımlayabilirsiniz. Bu filtreler, müşterilerinizin müşterinizin cihaz (yerine, varlıkla ilişkili olan tüm önayarda) işleyebilir ses ve video yorumlama kümesini belirtin ya da belirli bir bölümünde bir video yürütme gibi şeyler yardımcı sunucu tarafı kurallardır. Bu filtreleme yoluyla elde edilir *olan dinamik bildirimler* müşteri isteklerini temel alan bir video akışını sağlamak veya daha fazla filtre belirtilen oluşturulur.
+## <a name="filters-and-dynamic-manifests"></a>Filtreler ve dinamik bildirimler
+Media Services olan varlıklarınız için filtreler tanımlayabilirsiniz. Bu filtreler, müşterilerinizin bir videonun belirli bir bölümünü oynamasını veya müşterinizin cihazının işleyebileceği ses ve video çevirilerinin bir alt kümesini (varlıkla ilişkili tüm yorumlamaları yerine) belirtmesini sağlayan sunucu tarafı kurallarıdır. Bu filtreleme, müşteriniz bir veya daha fazla belirtilen filtreye göre video akışı istediğinde oluşturulan *dinamik bildirimler* aracılığıyla gerçekleştirilir.
 
 Daha fazla bilgi için [filtreleri ve dinamik bildirimlere](media-services-dynamic-manifest-overview.md).
 
-## <a name="a-idlocatorslocators"></a><a id="locators"/>Bulucular
-Kullanıcı akışı veya içerik indirmek için kullanılabilecek bir URL sağlamak için önce Bulucu oluşturarak Varlığınızı yayımlamanız gerekir. Bir Bulucu bir varlıkta bulunan dosyalara erişmek için bir giriş noktası sağlar. Media Services iki tür bulucuyu destekler:
+## <a name="a-idlocatorslocators"></a><a id="locators"/>Konumlandırıcı
+İçeriğinizi içeriğinizi akışa almak veya indirmek için kullanılabilecek bir URL 'yi sağlamak için, önce bir bulucu oluşturarak varlığınızı yayımlamanız gerekir. Bir bulucu, bir varlık içinde bulunan dosyalara erişmek için bir giriş noktası sağlar. Media Services iki tür bulucuyu destekler:
 
-* OnDemandOrigin bulucuları. Bu akış medya (örneğin, MPEG-DASH, HLS veya kesintisiz akış) için kullanılan veya dosyalarını aşamalı indirmek.
-* Paylaşılan erişim imzası (SAS) URL'si bulucular. Bunlar, yerel bilgisayarınıza medya dosyalarını indirmek için kullanılır.
+* OnDemandOrigin Konumlandırıcı. Bunlar, medyayı (örneğin, MPEG-DASH, HLS veya Kesintisiz Akış) veya aşamalı olarak indirme dosyalarını akışa almak için kullanılır.
+* Paylaşılan erişim imzası (SAS) URL Konumlandırıcı. Bunlar, medya dosyalarını yerel bilgisayarınıza indirmek için kullanılır.
 
-Bir *erişim ilkesi* izinleri (örneğin, okuma, yazma ve liste) tanımlamak için kullanılır ve süresi bir istemci belirli bir varlık için erişimine sahiptir. İzin (AccessPermissions.List) OnDemandOrigin bir Bulucu oluşturma kullanılmamalıdır unutmayın.
+*Erişim ilkesi* , izinleri (okuma, yazma ve listeleme gibi) ve istemcinin belirli bir varlık için erişimi olan süresini tanımlamak için kullanılır. Liste izninin (AccessPermissions. List) bir OnDemandOrigin Bulucu oluşturma bölümünde kullanılmamalıdır.
 
-Bulucuların sona erme tarihi vardır. Azure portalında bir sona erme tarihi 100 yıl sonra bulucular için ayarlar.
+Konum belirleyicilerinin süre sonu tarihleri vardır. Azure portal, gelecekte bir süre sonu tarihi 100 yıl sonra konum belirleyicilerde ayarlanır.
 
 > [!NOTE]
-> Azure portalında Mart 2015 öncesinde bulucular oluşturmak için kullanılan, bu bulucuların iki yıl sonra süresi dolacak şekilde ayarlandı.
+> 2015 Mart ' den önceki Konumlandırıcı oluşturmak için Azure portal kullandıysanız, bu belirleyicileri iki yıl sonra sona ermek üzere ayarlanmıştı.
 > 
 > 
 
 Bir bulucunun sona erme tarihini güncelleştirmek için [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) ya da [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API’lerini kullanın. SAS bulucunun sona erme tarihini güncelleştirdiğinizde URL’nin değiştiğini unutmayın.
 
-Bulucular kullanıcı başına erişim denetimini yönetmek için tasarlanmamıştır. Digital Rights Management (DRM) çözümleri kullanarak, ayrı kullanıcılara farklı erişim hakkı verebilirsiniz. Daha fazla bilgi için [güvenli hale getirme medya](https://msdn.microsoft.com/library/azure/dn282272.aspx).
+Konumlandırıcı, Kullanıcı başına erişim denetimini yönetmek için tasarlanmamıştır. Dijital Rights Management (DRM) çözümlerini kullanarak, bireysel kullanıcılara farklı erişim hakları verebilirsiniz. Daha fazla bilgi için bkz. [medyayı güvenli hale getirme](https://msdn.microsoft.com/library/azure/dn282272.aspx).
 
-Bir Bulucu oluşturduğunuzda, gerekli depolama ve Azure depolama yayma işlemi nedeniyle 30 saniyelik gecikme olabilir.
+Bir bulucu oluşturduğunuzda, Azure depolama 'daki gerekli depolama ve yayma işlemlerine bağlı olarak 30 saniyelik bir gecikme olabilir.
 
-## <a name="adaptive-streaming"></a>Akış Bağdaşık
-Bit hızı Uyarlamalı teknolojileri birkaç bit hızlarına dönüştürme ağ koşulları belirlemek ve video oynatıcı uygulamaları sağlar. Ağ iletişimi değerlerinde düşme olduğunda düşük video kalitesi ile kayıttan yürütme devam edebilmesi istemci daha düşük bir bit hızı seçebilirsiniz. Ağ koşulları arttıkça, istemci bir daha yüksek hızı ile geliştirilmiş video kalitesi geçiş yapabilirsiniz. Azure Media Services şu bit hızı Uyarlamalı teknolojilerini destekler: HTTP canlı akış (HLS), kesintisiz akış ve MPEG-DASH.
+## <a name="adaptive-streaming"></a>Uyarlamalı akış
+Uyarlamalı bit hızı teknolojileri, video oynatıcı uygulamalarının ağ koşullarını belirlemesine ve çeşitli bitoranlar arasından seçim yapmasına imkan tanır. Ağ iletişimi düştüğünde, istemci daha düşük bir bit hızı seçerek kayıttan yürütmenin daha düşük video kalitesiyle devam etmesini sağlayabilirsiniz. Ağ koşulları arttıkça, istemci geliştirilmiş video kalitesiyle daha yüksek bir bit hızına geçiş yapabilir. Azure Media Services, aşağıdaki Uyarlamalı bit hızı teknolojilerini destekler: HTTP Canlı Akışı (HLS), Kesintisiz Akış ve MPEG-DASH.
 
-Akış URL'lerini kullanıcılara sağlamak için önce bir OnDemandOrigin Bulucu oluşturmanız gerekir. Bulucu oluşturarak, içerik akışı yapmak istediğiniz içeren bir varlık için temel yol sunar. Ancak, bu içerik akışı yapmak için bu yolu daha da değiştirmeniz gerekir. Akış bildirim dosyasına tam bir URL oluşturmak için konum yol değeri ve ' % s'bildirimi (filename.ism) birleştirme dosya adı. Ardından Ekle **/MANIFEST** ve (gerekirse) uygun bir biçimde Bulucu yolu.
+Kullanıcılara akış URL 'Leri sağlamak için önce bir OnDemandOrigin Bulucu oluşturmanız gerekir. Bulucunun oluşturulması, akışa almak istediğiniz içeriği içeren varlığın temel yolunu sağlar. Ancak, bu içeriği akıyabilmek için bu yolu daha fazla değiştirmeniz gerekir. Akış bildirim dosyasına tam URL oluşturmak için, Konumlandırıcı 'nın yol değerini ve bildirim (filename. ISM) dosya adını birleştirmeniz gerekir. Ardından, konum belirleyici yoluna **/manifest** ve uygun bir biçim (gerekliyse) ekleyin.
 
 > [!NOTE]
-> Ayrıca, bir SSL bağlantısı üzerinden içeriğinizin akışını yapabilirsiniz. Bunu yapmak için akış URL'leri HTTPS ile Başlat emin olun. Şu anda AMS SSL ile özel etki alanları, desteklemez.  
+> İçeriğinizi bir SSL bağlantısı üzerinden de akışla aktarabilirsiniz. Bunu yapmak için, akış URL 'Lerinin HTTPS ile başlayıp başlamadığınızdan emin olun. Şu anda AMS 'nin özel etki alanları ile SSL 'yi desteklemediğine unutmayın.  
 > 
 
-İçeriğinizi teslim etmek istediğiniz akış uç noktası 10 Eylül 2014'ten sonra oluşturduysanız yalnızca SSL üzerinden akışını yapabilirsiniz. 10 Eylül 2014'ten sonra oluşturulan akış uç noktaları, akış URL'leri dayalı URL "streaming.mediaservices.windows.net." içerir "Origin.mediaservices.windows.net" (eski biçimde) içeren akış URL'leri SSL'yi desteklemez. URL'NİZİN biçimi eski olduğundan ve SSL üzerinden akışını yapmak istiyorsanız, yeni bir akış uç noktası oluşturun. Yeni akış uç noktasına göre URL'ler, SSL üzerinden içeriğinizin akışını yapmak amacıyla kullanın.
+Yalnızca içeriğinizi teslim ettiğiniz akış uç noktası 10 Eylül 2014 ' den sonra oluşturulduysa SSL üzerinden akış yapabilirsiniz. Akış URL 'larınız 10 Eylül 2014 ' den sonra oluşturulan akış uç noktalarına dayıyorsa, URL "streaming.mediaservices.windows.net" içerir. "Origin.mediaservices.windows.net" (eski biçim) içeren akış URL 'Leri SSL 'yi desteklemez. URL 'niz eski biçimindeyse ve SSL üzerinden akış oluşturabilmek istiyorsanız yeni bir akış uç noktası oluşturun. İçeriğinizi SSL üzerinden akışa almak için yeni akış uç noktasına göre URL 'Leri kullanın.
 
-## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>Akış URL biçimleri
+## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>akışı URL biçimleri
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH biçimi
-{Akış uç noktası adı-media services hesabı name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+{Akış uç noktası adı-Media Services hesap adı}. Stream. mediaservices. Windows. net/{Locator ID}/{filename}.exe (format = MPD-Time-CSF)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = MPD-Time-CSF)
 
-### <a name="apple-http-live-streaming-hls-v4-format"></a>Apple HTTP canlı akış (HLS) V4 biçimi
-{Akış uç noktası adı-media services hesabı name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+### <a name="apple-http-live-streaming-hls-v4-format"></a>Apple HTTP Canlı Akışı (HLS) V4 biçimi
+{Akış uç noktası adı-Media Services hesap adı}. Stream. mediaservices. Windows. net/{Locator ID}/{filename}.exe (format = M3U8-AAPL)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = M3U8-AAPL)
 
-### <a name="apple-http-live-streaming-hls-v3-format"></a>Apple HTTP canlı akış (HLS) V3 biçimi
-{Akış uç noktası adı-media services hesabı name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
+### <a name="apple-http-live-streaming-hls-v3-format"></a>Apple HTTP Canlı Akışı (HLS) v3 biçimi
+{Akış uç noktası adı-Media Services hesap adı}. Stream. mediaservices. Windows. net/{Locator ID}/{filename}.exe (format = M3U8-AAPL-v3)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = M3U8-AAPL-v3)
 
-### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Apple HTTP canlı akış (HLS) biçimi yalnızca ses filtresi
-Varsayılan olarak, HLS yalnızca ses parçaları dahil bildirimi. Bu, cep telefonu şebekeleri için Apple Store sertifika için gereklidir. Bu durumda, bir istemci yeterli bant genişliğine sahip değil ya da 2 G bağlantısı üzerinden bağlandığından, kayıttan yürütme yalnızca ses olarak geçer. Bu içerik akışı arabelleğe alma olmadan tutmaya yardımcı olur, ancak video yoktur. Bazı senaryolarda, arabelleğe alma player yalnızca ses üzerinden tercih edilen olabilir. Yalnızca ses izleme kaldırmak istiyorsanız, ekleme **yalnızca ses = false** URL'si.
+### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Yalnızca ses filtresiyle Apple HTTP Canlı Akışı (HLS) biçimi
+Varsayılan olarak, HLS bildiriminde yalnızca ses parçaları bulunur. Bu, hücresel ağlarda Apple Store sertifikası için gereklidir. Bu durumda, bir istemcinin yeterli bant genişliği yoksa veya bir 2G bağlantısı üzerinden bağlanmazsa, kayıttan yürütme geçişleri salt ses 'a geçirir. Bu, içerik akışını arabelleğe almadan tutmaya yardımcı olur, ancak video yoktur. Bazı senaryolarda, Player arabelleğe alma yalnızca ses üzerinden tercih edilebilir. Yalnızca ses parçasını kaldırmak istiyorsanız, URL 'ye **yalnızca ses = false** ekleyin.
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = M3U8-AAPL-v3, yalnızca ses = false)
 
-Daha fazla bilgi için [dinamik bildirim oluşturma desteği ve HLS çıktı ek özellikler](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
+Daha fazla bilgi için bkz. [dinamik bildirim oluşturma desteği ve HLS çıkış ek özellikleri](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
-### <a name="smooth-streaming-format"></a>Kesintisiz akış biçimi
+### <a name="smooth-streaming-format"></a>Kesintisiz Akış biçimi
 {akış uç noktası adı-media services hesabı adı}.streaming.mediaservices.windows.net/{konum kimliği}/{dosya adı}.ism/Manifest
 
 Örnek:
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-### <a id="fmp4_v20"></a>Kesintisiz akış 2.0 bildirimi (eski bildirimi)
-Varsayılan olarak, kesintisiz akış bildirim biçimi yineleme etiketi (r-etiketi) içerir. Ancak, bazı oyuncuların r-tag desteklemez. İstemciler bu yürütücüler ile r etiketi devre dışı bırakan bir biçim kullanabilirsiniz:
+### <a id="fmp4_v20"></a>Kesintisiz Akış 2,0 bildirimi (eski bildirim)
+Varsayılan olarak, Kesintisiz Akış bildirim biçimi Yinele etiketini (r-Tag) içerir. Ancak, bazı oyuncular r-Tag ' i desteklemez. Bu oyunculara sahip istemciler, r-Tag ' i devre dışı bırakan bir biçim kullanabilir:
 
-{Akış uç noktası adı-media services hesabı name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=fmp4-v20)
+{Akış uç noktası adı-Media Services hesap adı}. Stream. mediaservices. Windows. net/{Locator ID}/{filename}.exe (format = fmp4-V20)
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
 ## <a name="progressive-download"></a>Aşamalı indirme
-Aşamalı indirme ile tüm dosya indirilmeden önce ortam yürütmeyi başlatabilirsiniz. Aşamalı olarak (.ism * ismv, ISMA, ismt veya ismc) dosyalarını karşıdan yükleyemiyor.
+Aşamalı indirme sayesinde, dosyanın tamamı indirilmeden önce medyayı yürütmeye başlayabilirsiniz. . ISM * (ISMV, ISMT veya ısmc) dosyalarını aşamalı olarak indirebilirsiniz.
 
-Aşamalı olarak içerik indirmek için Bulucu OnDemandOrigin türünü kullanın. Aşağıdaki örnek, Bulucu OnDemandOrigin türüne göre URL'yi gösterir:
+İçeriği aşamalı olarak indirmek için, Konumlandırıcı 'nın OnDemandOrigin türünü kullanın. Aşağıdaki örnek, Konumlandırıcı 'nın OnDemandOrigin türünü temel alan URL 'YI göstermektedir:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-Aşamalı indirme için kaynak hizmetinden akışı gerçekleştirmek istediğiniz depolama şifrelenmiş varlıklar dosyanın şifresini çözmelisiniz.
+Aşamalı indirme için kaynak hizmetten akışa almak istediğiniz depolama ile şifrelenmiş tüm varlıkların şifresini çözmeniz gerekir.
 
-## <a name="download"></a>İndirme
-Bir istemci cihaza içerik indirmek için bir SAS Bulucu oluşturmanız gerekir. SAS Bulucu, dosyanızın bulunduğu Azure depolama kapsayıcısına erişmenizi sağlar. İndirme URL'sini oluşturmak için SAS imzası ve ana bilgisayar arasında dosya adı eklemek zorunda.
+## <a name="download"></a>İndirin
+İçeriğinizi bir istemci cihazına indirmek için bir SAS Bulucu oluşturmanız gerekir. SAS bulucu, dosyanızın bulunduğu Azure depolama kapsayıcısına erişmenizi sağlar. İndirme URL 'sini oluşturmak için, konak ve SAS imzası arasına dosya adını eklemeniz gerekir.
 
-Aşağıdaki örnek, SAS Bulucu üzerinde temel URL'yi gösterir:
+Aşağıdaki örnek SAS Konumlandırıcı 'sını temel alan URL 'YI gösterir:
 
     https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D
 
-Aşağıdaki maddeler geçerlidir:
+Aşağıdaki noktalara dikkat edilmelidir:
 
-* Aşamalı indirme için kaynak hizmetinden akışı gerçekleştirmek istediğiniz depolama şifrelenmiş varlıklar dosyanın şifresini çözmelisiniz.
-* 12 saat içinde tamamlamadı bir yükleme başarısız olur.
+* Aşamalı indirme için kaynak hizmetten akışa almak istediğiniz depolama ile şifrelenmiş tüm varlıkların şifresini çözmeniz gerekir.
+* 12 saat içinde bitmedi bir indirme başarısız olur.
 
 ## <a name="streaming-endpoints"></a>Akış uç noktaları
 
-Bir akış uç noktası, içeriği doğrudan bir istemci Yürütücü uygulamasına veya başkalarına dağıtım için bir içerik teslim ağı (CDN) teslim eden bir akış hizmetini temsil eder. Bir akış uç noktası hizmetinize giden akıştan, canlı akış veya Media Services hesabınızı bir isteğe bağlı video varlığı olabilir. Akış uç noktaları, iki tür vardır **standart** ve **premium**. Daha fazla bilgi için bkz. [Akış uç noktalarına genel bakış](media-services-streaming-endpoints-overview.md).
+Akış uç noktası, daha fazla dağıtım için doğrudan bir istemci oynatıcı uygulamasına veya bir içerik teslim ağına (CDN) içerik teslim edebilen bir akış hizmetini temsil eder. Akış uç noktası hizmetinden giden akış, Media Services hesabınızda canlı bir akış veya bir isteğe bağlı video varlığı olabilir. İki tür akış uç noktası vardır, **Standart** ve **Premium**. Daha fazla bilgi için bkz. [Akış uç noktalarına genel bakış](media-services-streaming-endpoints-overview.md).
 
 >[!NOTE]
 >AMS hesabınız oluşturulduğunda hesabınıza **Durdurulmuş** durumda bir **varsayılan** akış uç noktası eklenir. İçerik akışını başlatmak ve dinamik paketleme ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumda olması gerekir. 
 
 ## <a name="known-issues"></a>Bilinen sorunlar
-### <a name="changes-to-smooth-streaming-manifest-version"></a>Kesintisiz akış değişiklikleri bildirim sürümü
-Temmuz 2016 hizmet sürümünden önce--varlıklar Media Encoder Standard tarafından üretilen, Media Encoder Premium iş akışı ya da eski Azure Medya Kodlayıcısı'dan akış dinamik paketleme--kesintisiz akış kullanarak iade bildirimde sürümüne uygun 2.0. Sürüm 2.0, parça süreleri sözde yineleme ('r') etiketler kullanmayın. Örneğin:
+### <a name="changes-to-smooth-streaming-manifest-version"></a>Kesintisiz Akış manifest sürümündeki değişiklikler
+Temmuz 2016 hizmet sürümünden önce--Media Encoder Standard, Media Encoder Premium Workflow veya daha önceki Azure Medya Kodlayıcısı tarafından oluşturulan varlıklar dinamik paketleme kullanılarak akışa alındı--döndürülen Kesintisiz Akış bildirimi sürüme uygundur 2,0. Sürüm 2,0 ' de, parça süreleri so-çağrılan yineleme (' r ') etiketlerini kullanmaz. Örneğin:
 
 
     <?xml version="1.0" encoding="UTF-8"?>
@@ -169,7 +169,7 @@ Temmuz 2016 hizmet sürümünden önce--varlıklar Media Encoder Standard taraf�
         </StreamIndex>
     </SmoothStreamingMedia>
 
-Temmuz 2016 hizmet sürümü, kesintisiz akış oluşturulan bildirim sürüm 2.2, yineleme etiketleri kullanarak parça süreleri ile uyumludur. Örneğin:
+Temmuz 2016 hizmet sürümünde, üretilen Kesintisiz Akış bildirimi sürüm 2,2 ' ye uygundur. Bu, yineleme etiketlerini kullanarak parça sürelerle uyumludur. Örneğin:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
@@ -179,14 +179,14 @@ Temmuz 2016 hizmet sürümü, kesintisiz akış oluşturulan bildirim sürüm 2.
         </StreamIndex>
     </SmoothStreamingMedia>
 
-Bazı eski kesintisiz akış istemcilerini yineleme etiketleri desteklemeyebilir ve bildirim yüklenmesi başarısız olur. Bu sorunu gidermek için eski bildirim biçimi parametresini kullanabilirsiniz **(biçim fmp4 v20 =)** veya istemci yineleme etiketlerini destekleyen en son sürüme güncelleştirin. Daha fazla bilgi için [Smooth Streaming 2.0](media-services-deliver-content-overview.md#fmp4_v20).
+Eski Kesintisiz Akış istemcilerinden bazıları yineleme etiketlerini desteklemeyebilir ve bildirimi yükleyemeyecektir. Bu sorunu azaltmak için eski bildirim biçimi parametresini **(format = fmp4-V20)** kullanabilir veya istemcinizi, yineleme etiketlerini destekleyen en son sürüme güncelleştirebilirsiniz. Daha fazla bilgi için bkz. [Kesintisiz Akış 2,0](media-services-deliver-content-overview.md#fmp4_v20).
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>İlgili konular
-[Depolama anahtarlarını değiştirdikten sonra Media Services bulucular güncelleştir](media-services-roll-storage-access-keys.md)
+[Depolama anahtarları alındıktan sonra Media Services bulıcıları Güncelleştir](media-services-roll-storage-access-keys.md)
 

@@ -2,19 +2,21 @@
 title: Dağıtım modları
 description: Azure Resource Manager ile tamamlanmış veya artımlı dağıtım modunun kullanılıp kullanılmayacağını nasıl belirleyeceğiniz açıklanır.
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: dc5446c56c92b61016563995ebc4c884d48e2419
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/17/2020
+ms.openlocfilehash: e53b8c58bf0919e64079e62c687b76ada1db7ff0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152400"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261033"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager Dağıtım modları
 
-Kaynaklarınızı dağıttığınızda, dağıtımın bir artımlı güncelleştirme ya da tamamen güncelleştirme olduğunu belirtirsiniz.  Bu iki mod arasındaki fark, Kaynak Yöneticisi şablonda olmayan kaynak grubunda var olan kaynakları nasıl işleyeceğinden yapılır. Varsayılan mod artımlı ' dır.
+Kaynaklarınızı dağıttığınızda, dağıtımın bir artımlı güncelleştirme ya da tamamen güncelleştirme olduğunu belirtirsiniz. Bu iki mod arasındaki fark, Kaynak Yöneticisi şablonda olmayan kaynak grubunda var olan kaynakları nasıl işleyeceğinden yapılır.
 
 Her iki mod için Kaynak Yöneticisi şablonda belirtilen tüm kaynakları oluşturmaya çalışır. Kaynak, kaynak grubunda zaten varsa ve ayarları değişmezse, bu kaynak için hiçbir işlem yapılmaz. Bir kaynağın özellik değerlerini değiştirirseniz, kaynak bu yeni değerlerle güncelleştirilir. Mevcut bir kaynağın konumunu veya türünü güncelleştirmeye çalışırsanız, dağıtım bir hata ile başarısız olur. Bunun yerine, gereken konuma veya türe sahip yeni bir kaynak dağıtın.
+
+Varsayılan mod artımlı ' dır.
 
 ## <a name="complete-mode"></a>Mod Tamam
 
@@ -46,7 +48,8 @@ Kaynak grubu [kilitliyse](../management/lock-resources.md), tamamlanmış mod ka
 
 Artımlı modda Kaynak Yöneticisi, kaynak grubunda var olan ancak şablonda belirtilmeyen, **değiştirilmemiş kaynakları bırakır** . Şablondaki kaynaklar kaynak grubuna **eklenir** .
 
-Artımlı modun, mevcut bir kaynaktaki tek tek özelliklerde değil, tüm kaynak için geçerli olduğunu unutmayın. Var olan bir kaynağı artımlı modda yeniden dağıttığınızda tüm özellikler yeniden uygulanır. **Özellikler artımlı olarak eklenmez**. Yaygın bir yanlış anlama, şablonda belirtilmeyen özellikleri düşünmek için kullanılır. Belirli özellikleri belirtmezseniz, Kaynak Yöneticisi bu değerlerin üzerine yazarak dağıtımı yorumlar. Şablonda bulunmayan özellikler, kaynak sağlayıcısı tarafından ayarlanan varsayılan değerlere sıfırlanır. Yalnızca güncelleştirdiklerinizle değil, kaynağın varsayılan olmayan tüm değerlerini belirtin. Şablondaki kaynak tanımı her zaman kaynağın son durumunu içerir. Mevcut bir kaynağa yönelik kısmi bir güncelleştirmeyi temsil etmez.
+> [!NOTE]
+> Var olan bir kaynağı artımlı modda yeniden dağıttığınızda tüm özellikler yeniden uygulanır. **Özellikler artımlı olarak eklenmez**. Yaygın bir yanlış anlama, şablonda belirtilmeyen özellikleri düşünmek için kullanılır. Belirli özellikleri belirtmezseniz, Kaynak Yöneticisi bu değerlerin üzerine yazarak dağıtımı yorumlar. Şablonda bulunmayan özellikler varsayılan değerlere sıfırlanır. Yalnızca güncelleştirdiklerinizle değil, kaynağın varsayılan olmayan tüm değerlerini belirtin. Şablondaki kaynak tanımı her zaman kaynağın son durumunu içerir. Mevcut bir kaynağa yönelik kısmi bir güncelleştirmeyi temsil etmez.
 
 ## <a name="example-result"></a>Örnek sonuç
 

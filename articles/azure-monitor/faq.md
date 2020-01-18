@@ -1,0 +1,732 @@
+---
+title: Azure Izleyici hakkında SSS | Microsoft Docs
+description: Azure Izleyici hakkında sık sorulan soruların yanıtları.
+services: azure-monitor
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
+ms.date: 12/30/2019
+ms.openlocfilehash: 1002a19506ad0a59cb24ae4edb1f7c9726d68cb2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170868"
+---
+# <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
+
+Bu Microsoft SSS, Azure Izleyici hakkında sık sorulan sorulardan oluşan bir listesidir.
+
+## <a name="general"></a>Genel
+
+### <a name="what-is-azure-monitor"></a>Azure İzleyici nedir?
+Azure [izleyici](overview.md) , Azure 'da, diğer bulut ortamlarında veya şirket içinde bulunan uygulamalar ve hizmetler için performans ve kullanılabilirlik izlemeyi sağlayan bir Azure hizmetidir. Azure Izleyici, birden çok kaynaktan alınan verileri, eğilimleri ve anormaller için çözümlenebileceği ortak bir veri platformuna toplar. Azure Izleyici 'de zengin özellikler, uygulamanızı etkileyebilecek kritik durumları hızla tanımanıza ve yanıt vermeye yardımcı olur.
+
+### <a name="whats-the-difference-between-azure-monitor-log-analytics-and-application-insights"></a>Azure Izleyici, Log Analytics ve Application Insights arasındaki fark nedir?
+Eylül 2018 ' de, Microsoft birleştirilmiş Azure Izleyici, Log Analytics ve Application Insights uygulamalarınızın ve bağlı oldukları bileşenlerin güçlü bir uçtan uca izlenmesini sağlamak için tek bir hizmete. Log Analytics ve Application Insights özellikleri değişmemiştir, ancak bazı özellikler yeni kapsamını daha iyi yansıtacak şekilde Azure Izleyici 'ye yeniden eklenmiştir. Log Analytics günlük veri altyapısı ve sorgu dili artık Azure Izleyici günlükleri olarak adlandırılır. Bkz. [Azure izleyici terminolojisi güncelleştirmeleri](terminology.md).
+
+### <a name="what-does-azure-monitor-cost"></a>Azure Izleyici maliyeti nedir?
+Ölçüm ve etkinlik günlüklerinin toplanması gibi otomatik olarak etkinleştirilen Azure Izleyici özellikleri ücretsiz olarak sunulmaktadır. Günlük sorguları ve uyarı gibi diğer özelliklerle ilişkili bir maliyet vardır. Ayrıntılı fiyatlandırma bilgileri için bkz. [Azure izleyici fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/monitor/) .
+
+### <a name="how-do-i-enable-azure-monitor"></a>Azure Izleyiciyi etkinleştirmek Nasıl yaparım? mı?
+Azure Izleyici, yeni bir Azure aboneliği oluşturduğunuz anda ve [etkinlik günlüğü](platform/activity-logs-overview.md) ile Platform [ölçümleri](platform/data-platform-metrics.md) otomatik olarak toplandığında etkindir. Azure kaynaklarınızın çalışması hakkında daha ayrıntılı bilgi toplamak için [Tanılama ayarları](platform/diagnostic-settings.md) oluşturun ve belirli hizmetler için toplanan veriler hakkında ek analizler sağlamak üzere [izleme çözümleri](insights/solutions.md) ve [Öngörüler](insights/insights-overview.md) ekleyin. 
+
+### <a name="how-do-i-access-azure-monitor"></a>Azure Izleyici erişimi mi Nasıl yaparım??
+Tüm Azure Izleyici özelliklerine ve verilerine, Azure portal 'daki **izleyici** menüsünden erişin. Farklı Azure hizmetleri menüsünün **izleme** bölümü, belirli bir kaynağa filtrelenen verilerle aynı araçlara erişim sağlar. Azure Izleyici verilerine, CLı, PowerShell ve bir REST API kullanan çeşitli senaryolar için de erişilebilir.
+
+### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>Azure Izleyici 'nin şirket içi bir sürümü var mı?
+Hayır. Azure izleyici, şirket içinde ve diğer bulutlardaki kaynakları izleyebilse de büyük miktarlarda veriyi işleyen ve depolayan ölçeklenebilir bir bulut hizmetidir.
+
+### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Azure Izleyici, şirket içi kaynakları izleyebilir mi?
+Evet, Azure Izleyici, Azure kaynaklarından izleme verilerinin toplanmasına ek olarak, diğer bulutlardaki ve Şirket içindeki sanal makinelerden ve uygulamalardan veri toplayabilir. Bkz. [Azure izleyici için izleme verileri kaynakları](platform/data-sources.md).
+
+### <a name="does-azure-monitor-integrate-with-system-center-operations-manager"></a>Azure Izleyici System Center Operations Manager tümleştirsin mi?
+Aracılardan Azure Izleyici günlüklerine veri toplamak için mevcut System Center Operations Manager yönetim grubunuzu Azure Izleyici 'ye bağlayabilirsiniz. Bu, aracılardan toplanan verileri analiz etmek için günlük sorgularını ve çözümü kullanmanıza olanak sağlar. Ayrıca, mevcut System Center Operations Manager aracılarını doğrudan Azure Izleyici 'ye veri gönderecek şekilde yapılandırabilirsiniz. Bkz. [Azure izleyici 'ye Operations Manager bağlama](platform/om-agents.md).
+
+### <a name="what-ip-addresses-does-azure-monitor-use"></a>Azure Izleyici hangi IP adreslerini kullanır?
+Aracıların ve diğer dış kaynakların Azure Izleyici 'ye erişmesi için gereken IP adresleri ve bağlantı noktalarının listesi için [, Application Insights tarafından kullanılan IP adresleri ve Log Analytics](app/ip-addresses.md) bakın. 
+
+## <a name="monitoring-data"></a>Verileri izleme
+
+### <a name="where-does-azure-monitor-get-its-data"></a>Azure Izleyici verilerini nereden alır?
+Azure Izleyici, Azure platformu ve kaynakları, özel uygulamalar ve sanal makinelerde çalışan aracılardan Günlükler ve ölçümler de dahil olmak üzere çeşitli kaynaklardan veri toplar. Azure Güvenlik Merkezi ve ağ Izleyicisi gibi diğer hizmetler, Azure Izleyici verileriyle çözümlenebilmesi için bir Log Analytics çalışma alanına veri toplar. Günlükler veya ölçümler için REST API kullanarak Azure Izleyici 'ye özel veriler de gönderebilirsiniz. Bkz. [Azure izleyici için izleme verileri kaynakları](platform/data-sources.md).
+
+### <a name="what-data-is-collected-by-azure-monitor"></a>Azure Izleyici hangi verileri toplamıştır? 
+Azure Izleyici çeşitli kaynaklardaki verileri [Günlükler](platform/data-platform-logs.md) veya [ölçümler](platform/data-platform-metrics.md)halinde toplar. Her bir veri türü kendi göreli avantajlarına sahiptir ve her biri Azure Izleyici 'de belirli bir özellik kümesini destekler. Her bir Azure aboneliği için tek bir ölçüm veritabanı bulunur, ancak gereksinimlerinize bağlı olarak günlükleri toplamak için birden çok Log Analytics çalışma alanı oluşturabilirsiniz. Bkz. [Azure izleyici veri platformu](platform/data-platform.md).
+
+### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Azure Izleyici 'de toplayadığım maksimum veri miktarı var mı?
+Toplayacağınız Ölçüm verisi miktarına yönelik bir sınır yoktur, ancak bu veriler en fazla 93 gün boyunca depolanır. [Ölçüm bekletme](platform/data-platform-metrics.md#retention-of-metrics)konusuna bakın. Toplanabilecek günlük verisi miktarı için bir sınır yoktur, ancak Log Analytics çalışma alanı için seçtiğiniz fiyatlandırma katmanından etkilenebilir. [Fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/monitor/)bakın.
+
+### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Azure Izleyici tarafından toplanan Nasıl yaparım? erişim verileri?
+Öngörüler ve çözümler, Azure Izleyici 'de depolanan verilerle çalışmaya yönelik özel bir deneyim sağlar. Kusto sorgu dilinde (KQL) yazılmış bir günlük sorgusunu kullanarak doğrudan günlük verileriyle çalışabilirsiniz. Azure portal sorguları yazabilir ve çalıştırabilir ve Log Analytics kullanarak verileri etkileşimli bir şekilde çözümleyebilirsiniz. Azure portal ölçümleri Ölçüm Gezgini ile çözümleyin. Bkz. [Azure izleyici 'de günlük verilerini çözümleme](log-query/log-query-overview.md) ve [Azure Ölçüm Gezgini kullanmaya](platform/metrics-getting-started.md)başlama.
+
+
+
+
+
+## <a name="solutions-and-insights"></a>Çözümler ve Öngörüler
+
+### <a name="what-is-an-insight-in-azure-monitor"></a>Azure Izleyici 'de öngörü nedir?
+Öngörüler, belirli Azure hizmetleri için özelleştirilmiş bir izleme deneyimi sağlar. Bunlar, Azure Izleyici 'deki diğer özelliklerle aynı ölçümleri ve günlükleri kullanır, ancak ek veri toplayabilir ve Azure portal benzersiz bir deneyim sağlayabilir. Bkz. [Azure izleyici 'de Öngörüler](insights/insights-overview.md).
+
+Azure portal içgörüleri görüntülemek için, **izleme** menüsündeki **Öngörüler** bölümüne veya hizmet menüsünün **izleme** bölümüne bakın.
+
+### <a name="what-is-a-solution-in-azure-monitor"></a>Azure Izleyici 'de çözüm nedir?
+İzleme çözümleri, belirli bir uygulamayı veya hizmeti Azure Izleyici özelliklerine göre izlemek için paketlenmiş mantık kümeleridir. Azure Izleyici 'de günlük verilerini toplar ve Azure portal ortak bir deneyim kullanarak analizine yönelik günlük sorguları ve görünümleri sağlar. Bkz. [Azure izleyici 'de çözümleri izleme](insights/solutions.md).
+
+Azure portal çözümleri görüntülemek için **izleyici** menüsünün **Öngörüler** bölümünde **daha fazla** ' ya tıklayın. Çalışma alanına ek çözümler eklemek için **Ekle** ' ye tıklayın.
+
+
+
+
+
+
+## <a name="logs"></a>Günlükler
+
+### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Azure Izleyici günlükleri ve Azure Veri Gezgini arasındaki fark nedir?
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Izleyici günlükleri Azure Veri Gezgini üzerine kurulmuştur ve bazı küçük farklılıklar ile aynı kusto sorgu dilini (KQL) kullanır. Bkz. [Azure izleyici günlük sorgusu dil farkları](log-query/data-explorer-difference.md).
+
+### <a name="how-do-i-retrieve-log-data"></a>Günlük verilerini almak Nasıl yaparım??
+Tüm veriler, kusto sorgu dili (KQL) kullanılarak yazılmış bir günlük sorgusu kullanarak bir Log Analytics çalışma alanından alınır. Kendi sorgularınızı yazabilir veya belirli bir uygulama veya hizmete ait günlük sorgularını içeren çözüm ve Öngörüler kullanabilirsiniz. Bkz. [Azure izleyici 'de günlük sorgularına genel bakış](log-query/log-query-overview.md).
+
+### <a name="what-is-a-log-analytics-workspace"></a>Log Analytics çalışma alanı nedir?
+Azure Izleyici tarafından toplanan tüm günlük verileri Log Analytics çalışma alanında depolanır. Çalışma alanı aslında çeşitli kaynaklardan günlük verilerinin toplandığı bir kapsayıcıdır. Tüm izleme verileriniz için tek bir Log Analytics çalışma alanınız olabilir veya birden çok çalışma alanı için gereksinimlere sahip olabilirsiniz. Bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](platform/design-logs-deployment.md).
+
+### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Mevcut bir Log Analytics çalışma alanını başka bir Azure aboneliğine taşıyabilir miyim?
+Çalışma alanını kaynak grupları veya abonelikler arasında, farklı bir bölgeye taşıyabilirsiniz. Bkz. [Log Analytics çalışma alanını farklı bir aboneliğe veya kaynak grubuna taşıma](/platform/move-workspace.md).
+
+
+## <a name="alerts"></a>Uyarılar
+
+### <a name="what-is-an-alert-in-azure-monitor"></a>Azure Izleyici 'de uyarı nedir?
+Uyarılar, izleme verilerinizde önemli koşullar bulunduğunda size bir bildirim gönderir. Bunlar, sisteminizin kullanıcıları tarafından bildirilmeksizin sorunları tanımlamanızı ve adreslerinizi belirlemenizi sağlar. Birden çok uyarı türü vardır:
+
+- Ölçüm-Ölçüm değeri bir eşiği aşıyor.
+- Günlük sorgusu-günlük sorgusunun sonuçları tanımlanan ölçütlerle eşleşiyor.
+- Etkinlik günlüğü-etkinlik günlüğü olayı tanımlı ölçütlerle eşleşiyor.
+- Web testi-kullanılabilirlik testi eşleşme tanımlı ölçütlere ilişkin sonuçlar.
+
+
+Bkz. [Microsoft Azure uyarılara genel bakış](platform/alerts-overview.md).
+
+
+### <a name="what-is-an-action-group"></a>Eylem grubu nedir?
+Eylem grubu, bir uyarı tarafından tetiklenebilecek bildirimlerin ve eylemlerin bir koleksiyonudur. Birden çok uyarı tek bir eylem grubu kullanarak, ortak bildirim ve eylem kümelerinden yararlanmanızı sağlar. Bkz. [Azure Portal eylem grupları oluşturma ve yönetme](platform/action-groups.md).
+
+
+### <a name="what-is-an-action-rule"></a>Eylem kuralı nedir?
+Eylem kuralı, belirli ölçütlerle eşleşen bir uyarı kümesinin davranışını değiştirmenize olanak sağlar. Bu, bakım penceresi sırasında uyarı eylemlerini devre dışı bırak gibi gereksinimleri gerçekleştirmenize olanak tanır. Bir eylem grubunu doğrudan uyarı kurallarına uygulamak yerine bir uyarı kümesine de uygulayabilirsiniz. [Eylem kurallarına](platform/alerts-action-rules.md)bakın.
+
+
+## <a name="agents"></a>Aracılar
+
+### <a name="does-azure-monitor-require-an-agent"></a>Azure Izleyici bir aracı gerektiriyor mu?
+Bir aracı yalnızca işletim sisteminden ve sanal makinelerdeki iş yüklerinden veri toplamak için gereklidir. Sanal makineler, Azure 'da, başka bir bulut ortamında veya şirket içinde bulunabilir. Bkz. [Azure izleyici aracılarına genel bakış](platform/agents-overview.md).
+
+
+### <a name="whats-the-difference-between-the-azure-monitor-agents"></a>Azure Izleyici aracıları arasındaki fark nedir?
+Azure tanılama uzantısı, Azure sanal makinelerine yöneliktir ve Azure Izleyici ölçümleri, Azure depolama ve Azure Event Hubs verilerini toplar. Log Analytics Aracısı, Azure 'daki sanal makinelere, başka bir bulut ortamına veya şirket içinde yer alır ve Azure Izleyici günlüklerine veri toplar. Bağımlılık Aracısı Log Analytics aracısına ve toplanan işlem ayrıntılarını ve bağımlılıklarını gerektirir. Bkz. [Azure izleyici aracılarına genel bakış](platform/agents-overview.md).
+
+
+### <a name="does-my-agent-traffic-use-my-expressroute-connection"></a>Aracı Trafiğim ExpressRoute bağlantısını kullanıyor mu?
+Azure Izleyici trafiği Microsoft eşlemesi ExpressRoute devresini kullanır. Farklı ExpressRoute trafiği türlerinin açıklaması için bkz. [ExpressRoute belgeleri](../expressroute/expressroute-faqs.md#supported-services) . 
+
+### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Log Analytics aracısının Azure Izleyici ile iletişim kurabildiğini nasıl doğrulayabilirim?
+Aracı bilgisayardaki Denetim masasından, **güvenlik & ayarları**' nı seçin **Microsoft Monitoring Agent** . **Azure Log Analytics (OMS)** sekmesinde, yeşil onay işareti simgesi aracının Azure izleyici ile iletişim kurabildiğini onaylar. Sarı bir uyarı simgesi, aracının sorun yaşadığını gösterir. **Microsoft Monitoring Agent** hizmetin durdurulduğu bir yaygın neden olur. Hizmeti yeniden başlatmak için Hizmet Denetimi Yöneticisi'ni kullanın.
+
+### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Log Analytics aracısının Azure Izleyici ile iletişim kurmasını Nasıl yaparım? mı?
+Doğrudan Log Analytics bağlı aracılar için, Denetim Masası 'nı açın ve **güvenlik & ayarları** **Microsoft Monitoring Agent**' nı seçin. **Azure Log Analytics (OMS)** sekmesinde, listelenen tüm çalışma alanlarını kaldırın. System Center Operations Manager, bilgisayarı Log Analytics yönetilen bilgisayarlar listesinden kaldırın. Operations Manager artık rapor Log analytics'e aracının yapılandırmasını güncelleştirir. 
+
+### <a name="how-much-data-is-sent-per-agent"></a>Aracı ne kadar veri gönderiliyor?
+Her aracı gönderilen veri miktarını bağlıdır:
+
+* Etkinleştirdiğiniz çözümleri
+* Toplanmakta olan günlükleri ve performans sayaçları
+* Günlüklerde veri hacmi
+
+Ayrıntılar için bkz. [Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme](platform/manage-cost-storage.md) .
+
+İletilen veriler aracı çalışacak şekilde bilgisayarlar için ne kadar veri gönderildiğini görmek için aşağıdaki sorguyu kullanın:
+
+```Kusto
+WireData
+| where ProcessName == "C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost.exe" 
+| where Direction == "Outbound" 
+| summarize sum(TotalBytes) by Computer 
+```
+
+### <a name="how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-azure-monitor"></a>Azure Izleyici 'ye veri gönderilirken Microsoft Yönetim Aracısı (MMA) tarafından ne kadar ağ bant genişliği kullanılıyor?
+Bant genişliği, gönderilen veri miktarı için kullanılan bir işlevdir. Ağ üzerinden gönderilen verilerin sıkıştırılır.
+
+
+### <a name="how-can-i-be-notified-when-data-collection-from-the-log-analytics-agent-stops"></a>Log Analytics aracıdan veri toplama durdurulduğunda nasıl bildirim alabilirim?
+
+Veri toplama durdurulduğunda bildirim almak için [Yeni bir günlük uyarısı oluşturma](platform/alerts-metric.md) bölümünde açıklanan adımları kullanın. Uyarı kuralı için aşağıdaki ayarları kullanın:
+
+- **Uyarı koşulunu tanımlayın**: Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
+- **Uyarı ölçütleri** 
+   - **Sinyal adı**: *özel günlük araması*
+   - **Arama sorgusu**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **Uyarı mantığı**: *sonuç sayısına*ve *şundan büyük*bir **koşula** göre **eşik değeri** *0*
+   - **Temelinde değerlendirilen**: **süresi (dakika)** *30*, **Sıklık (dakika)** *10*
+- **Uyarı ayrıntılarını tanımlayın** 
+   - **Ad**: *veri koleksiyonu durduruldu*
+   - **Önem derecesi**: *Uyarı*
+
+Mevcut veya yeni bir [eylem grubu](platform/action-groups.md) belirtin, böylece günlük uyarısı ölçütlerle eşleştiğinde, 15 dakikadan uzun bir sinyal eksik olduğunda size bildirilir.
+
+
+### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure Izleyici aracıları için güvenlik duvarı gereksinimleri nelerdir?
+Güvenlik Duvarı gereksinimleriyle ilgili ayrıntılar için bkz. [ağ güvenlik duvarı gereksinimleri](platform/log-analytics-agent.md#network-firewall-requirements).
+
+
+
+## <a name="application-insights"></a>Application Insights
+
+### <a name="configuration-problems"></a>Yapılandırma sorunları
+*Şunları ayarlarken sorun yaşıyorum:*
+
+* [.NET uygulaması](app/asp-net-troubleshoot-no-data.md)
+* [Zaten çalışan bir uygulamayı izleme](app/monitor-performance-live-website-now.md#troubleshoot)
+* [Azure tanılama](platform/diagnostics-extension-to-application-insights.md)
+* [Java web uygulaması](app/java-troubleshoot.md)
+
+*Sunucuma veri aldım*
+
+* [Güvenlik Duvarı özel durumlarını ayarlama](app/ip-addresses.md)
+* [ASP.NET sunucusu kurma](app/monitor-performance-live-website-now.md)
+* [Java sunucusu kurma](app/java-agent.md)
+
+### <a name="can-i-use-application-insights-with-"></a>Application Insights,... ile birlikte kullanabilir miyim?
+
+* [Azure VM 'de veya Azure sanal makine ölçek kümesindeki bir IIS sunucusundaki Web uygulamaları](app/azure-vm-vmss-apps.md)
+* [Bir IIS sunucusundaki Web Apps-şirket içi veya bir VM](app/asp-net.md)
+* [Java Web uygulamaları](app/java-get-started.md)
+* [Node.js uygulamaları](app/nodejs.md)
+* [Azure 'da Web Apps](app/azure-web-apps.md)
+* [Azure üzerinde Cloud Services](app/cloudservices.md)
+* [Docker 'da çalışan uygulama sunucuları](app/docker.md)
+* [Tek sayfalı web uygulamaları](app/javascript.md)
+* [SharePoint](app/sharepoint.md)
+* [Windows masaüstü uygulaması](app/windows-desktop.md)
+* [Diğer platformlar](app/platforms.md)
+
+### <a name="is-it-free"></a>Ücretsizdir mi?
+
+Evet, deneysel kullanım için. Temel fiyatlandırma planında, uygulamanız her ay ücretsiz olarak belirli bir veri indirimi gönderebilir. Ücretsiz kullanım, geliştirme ve az sayıda kullanıcı için bir uygulama yayımlama açısından yeterince büyük. Belirtilen miktarda verinin işlenmesini engellemek için bir Cap ayarlayabilirsiniz.
+
+Daha büyük olan telemetri birimleri GB ile ücretlendirilir. [Ücretlerinizi nasıl sınırlayacağıyla](app/pricing.md)ilgili bazı ipuçları sunuyoruz.
+
+Kurumsal plan her bir gün için her bir Web sunucusu düğümünün telemetri gönderdiği bir ücret doğurur. Büyük bir ölçekte sürekli dışarı aktarmayı kullanmak istiyorsanız uygundur.
+
+[Fiyatlandırma planını okuyun](https://azure.microsoft.com/pricing/details/application-insights/).
+
+### <a name="how-much-does-it-cost"></a>Ücreti ne kadardır?
+
+* Bir Application Insights kaynağındaki **kullanım ve tahmini maliyetler sayfasını** açın. Son kullanılan kullanım grafiği. İsterseniz bir veri hacmi üst sınırı belirleyebilirsiniz.
+* Tüm kaynaklarda [faturanızı görmek Için Azure faturalama dikey penceresini](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) açın.
+
+### <a name="q14"></a>Projem 'de ne Application Insights Değiştir?
+Ayrıntılar proje türüne bağlıdır. Bir Web uygulaması için:
+
+* Bu dosyaları projenize ekler:
+  * ApplicationInsights.config
+  * AI. js
+* Şu NuGet paketlerini yükleme:
+  * *APPLICATION INSIGHTS API* -çekirdek API 'si
+  * *Web uygulamaları için APPLICATION INSIGHTS API* -sunucudan telemetri göndermek için kullanılır
+  * *JavaScript uygulamaları için APPLICATION INSIGHTS API* -istemciden telemetri göndermek için kullanılır
+* Paketler şu derlemeleri içerir:
+  * Microsoft.ApplicationInsights
+  * Microsoft.ApplicationInsights.Platform
+* İçine öğe ekler:
+  * Web.config
+  * packages.config
+* (Yalnızca yeni projeler- [var olan bir projeye Application Insights eklerseniz][start]bunu el ile yapmanız gerekir.) , Application Insights kaynak KIMLIĞI ile başlatmak için istemci ve sunucu koduna kod parçacıkları ekler. Örneğin, bir MVC uygulamasında kod ana sayfa görünümleri/paylaşılan/\_düzeni. cshtml 'ye eklenir
+
+### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Nasıl yaparım? eski SDK sürümlerinden yükseltme yapılsın mı?
+Uygulama türüne uygun SDK için [sürüm notlarına](app/release-notes.md) bakın.
+
+### <a name="update"></a>Projem hangi Azure kaynağını veri gönderdiğini nasıl değiştirebilirim?
+Çözüm Gezgini ' de, `ApplicationInsights.config` ' a sağ tıklayın ve **güncelleştirme Application Insights**' yı seçin. Verileri Azure 'da var olan veya yeni bir kaynağa gönderebilirsiniz. Güncelleştirme Sihirbazı, ApplicationInsights. config dosyasında, sunucu SDK 'sının verilerinizi nereye göndereceğini belirleyen izleme anahtarını değiştirir. "Tümünü Güncelleştir" seçeneğinin işaretini kaldırmadığınız takdirde, Web sayfalarınızda göründüğü anahtarı da değiştirecek.
+
+### <a name="what-is-status-monitor"></a>Durum İzleyicisi nedir?
+
+Web Apps 'te Application Insights yapılandırmaya yardımcı olması için IIS Web sunucunuzda kullanabileceğiniz bir masaüstü uygulamasıdır. Telemetri toplamaz: bir uygulamayı yapılandırmadığınızda bunu durdurabilirsiniz. 
+
+[Daha fazla bilgi edinin](app/monitor-performance-live-website-now.md#questions).
+
+### <a name="what-telemetry-is-collected-by-application-insights"></a>Application Insights tarafından hangi telemetri toplanır?
+
+Sunucu Web Apps 'ten:
+
+* HTTP istekleri
+* [Bağımlılıklar](app/asp-net-dependencies.md). Çağrıları: SQL veritabanları; Dış hizmetlere HTTP çağrıları; Azure Cosmos DB, tablo, BLOB depolama ve kuyruk. 
+* [Özel durumlar](app/asp-net-exceptions.md) ve yığın izlemeleri.
+* [Performans sayaçları](app/performance-counters.md) - [durum İzleyicisi](app/monitor-performance-live-website-now.md)kullanıyorsanız, [uygulama hizmetleri için Azure izleme](app/azure-web-apps.md), [VM veya sanal makine ölçek kümesi için Azure izleme](app/azure-vm-vmss-apps.md)veya [toplanan yazıcı Application Insights](app/java-collectd.md).
+* Kodlarınızın [özel olayları ve ölçümleri](app/api-custom-events-metrics.md) .
+* Uygun toplayıcıyı yapılandırırsanız [izleme günlükleri](app/asp-net-trace-logs.md) .
+
+[İstemci Web sayfalarından](app/javascript.md):
+
+* [Sayfa görüntüleme sayısı](app/usage-overview.md)
+* [Ajax çağrıları](app/asp-net-dependencies.md) Çalışan bir betikten yapılan istekler.
+* Sayfa görünümü yükleme verileri
+* Kullanıcı ve oturum sayıları
+* [Kimliği doğrulanmış kullanıcı kimlikleri](app/api-custom-events-metrics.md#authenticated-users)
+
+Diğer kaynaklardan yapılandırırsanız:
+
+* [Azure tanılama](platform/diagnostics-extension-to-application-insights.md)
+* [Analiz 'e aktar](platform/data-collector-api.md)
+* [Log Analytics](platform/data-collector-api.md)
+* [Logstash](platform/data-collector-api.md)
+
+### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Bir Telemetriyi filtreleyebilir veya değiştirebilir miyim?
+
+Evet, şu sunucuda yazabilirsiniz:
+
+* Uygulamanıza gönderilmeden önce seçili telemetri öğelerine filtre uygulamak veya özellikleri eklemek için telemetri Işlemcisi.
+* Telemetri başlatıcısı tüm telemetri öğelerine özellik eklemek için.
+
+[ASP.net](app/api-filtering-sampling.md) veya [Java](app/java-filter-telemetry.md)hakkında daha fazla bilgi edinin.
+
+### <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>Şehir, ülke/bölge ve diğer coğrafi konum verileri nasıl hesaplanır?
+
+[GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)kullanarak web istemcisinin IP adresini (IPv4 veya IPv6) arar.
+
+* Tarayıcı telemetrisi: gönderenin IP adresini topladık.
+* Sunucu telemetrisi: Application Insights modülü istemci IP adresini toplar. `X-Forwarded-For` ayarlandıysa toplanmaz.
+* IP adresi ve coğrafi konum verilerinin nasıl toplandığı hakkında daha fazla bilgi edinmek için Application Insights bu [makaleye](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)bakın.
+
+
+`ClientIpHeaderTelemetryInitializer`, IP adresini farklı bir üst bilgiden alacak şekilde yapılandırabilirsiniz. Bazı sistemlerde, örneğin, `X-Originating-IP`için bir proxy, yük dengeleyici veya CDN tarafından taşınır. [Daha fazla bilgi edinin](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+
+İstek telemetrinizi bir haritada göstermek için [Power BI kullanabilirsiniz](app/export-power-bi.md ) .
+
+
+### <a name="data"></a>Veriler portalda ne kadar süreyle tutulur? Güvenli mi?
+[Veri saklama ve gizliliğe][data]göz atın.
+
+### <a name="could-personal-data-be-sent-in-the-telemetry"></a>Kişisel veriler telemetriye gönderilebilir mi?
+
+Bu, kodunuzun bu verileri göndermesi durumunda mümkündür. Yığın izlemelerindeki değişkenler kişisel verileri içeriyorsa de bu durum oluşabilir. Geliştirme ekibiniz, kişisel verilerin düzgün şekilde işlenmesini sağlamak için risk değerlendirmeleri yürütmelidir. [Veri saklama ve gizlilik hakkında daha fazla bilgi edinin](app/data-retention-privacy.md).
+
+Coğrafi konum öznitelikleri arandığında, istemci Web adresinin **Tüm** sekizliklerin her zaman 0 olarak ayarlanmış olması.
+
+### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Izleme anahtarım, Web sayfası kaynağı 'nda görünür. 
+
+* Bu, izleme çözümlerinde yaygın bir uygulamadır.
+* Verilerinizi çalmak için kullanılamaz.
+* Verilerinizi eğmek veya uyarıları tetiklemek için kullanılabilir.
+* Herhangi bir müşterinin bu soruna sahip olduğunu duymadı.
+
+Şunları yapabilirsiniz:
+
+* İstemci ve sunucu verileri için iki ayrı Izleme anahtarı (ayrı Application Insights kaynakları) kullanın. Veya
+* Sunucunuzda çalışan bir ara sunucu yazın ve web istemcisinin bu proxy üzerinden veri göndermesini sağlayabilirsiniz.
+
+### <a name="post"></a>Nasıl yaparım? bkz. tanılama aramasında veri gönderme?
+POST verilerini otomatik olarak günlüğe kaydetme, ancak bir TrackTrace çağrısını kullanabilirsiniz: verileri ileti parametresine koy. Bu, dize özelliklerindeki sınırlardan daha uzun bir boyut sınırına sahiptir, ancak bunu filtreleyememiş olursunuz.
+
+### <a name="should-i-use-single-or-multiple-application-insights-resources"></a>Tek veya birden çok Application Insights kaynak kullanmalı mıyım?
+
+Tek bir iş sistemindeki tüm bileşenler veya roller için tek bir kaynak kullanın. Geliştirme, test ve sürüm sürümleri için ve bağımsız uygulamalar için ayrı kaynaklar kullanın.
+
+* [Tartışmaya buraya bakın](app/separate-resources.md)
+* [Örnek-çalışan ve Web rollerine sahip bulut hizmeti](app/cloudservices.md)
+
+### <a name="how-do-i-dynamically-change-the-instrumentation-key"></a>İzleme anahtarı dinamik olarak değiştirilsin mi Nasıl yaparım??
+
+* [Burada tartışma](app/separate-resources.md)
+* [Örnek-çalışan ve Web rollerine sahip bulut hizmeti](app/cloudservices.md)
+
+### <a name="what-are-the-user-and-session-counts"></a>Kullanıcı ve oturum sayıları nelerdir?
+
+* JavaScript SDK 'Sı, Web istemcisinde Kullanıcı tanımlama bilgisini, döndürülen kullanıcıları ve etkinlikleri gruplandırmak için bir oturum tanımlama bilgisini belirler.
+* İstemci tarafı komut dosyası yoksa, [sunucuda tanımlama bilgilerini ayarlayabilirsiniz](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-app/).
+* Bir gerçek Kullanıcı, sitenizi farklı tarayıcılarda kullanıyorsa ya da özel/veya farklı makinelere göz atmak veya farklı makineler kullanmak için birden çok kez sayılır.
+* Makineler ve tarayıcılar arasında oturum açmış bir kullanıcıyı tanımlamak için, [Setadoğrulayıcısının Catedusercontext ()](app/api-custom-events-metrics.md#authenticated-users)çağrısı ekleyin.
+
+### <a name="q17"></a>Application Insights her şeyi etkinleştirmem gerekir mi?
+| Görmeniz gereken | Nasıl alınır? | Neden istediğiniz |
+| --- | --- | --- |
+| Kullanılabilirlik grafikleri |[Web testleri](app/monitor-web-app-availability.md) |Web uygulamanızın çalışıyor olduğunu öğrenin |
+| Sunucu uygulaması performans: yanıt süreleri,... |[Projenize Application Insights ekleyin](app/asp-net.md) veya [AI durum İzleyicisi sunucuya](app/monitor-performance-live-website-now.md) (veya [bağımlılıklarını izlemek](app/api-custom-events-metrics.md#trackdependency)için kendi kodunuzu yazın) |Performans sorunlarını Algıla |
+| Bağımlılık telemetrisi |[AI Durum İzleyicisi sunucuya yükler](app/monitor-performance-live-website-now.md) |Veritabanları veya diğer dış bileşenlerle ilgili sorunları tanılayın |
+| Özel durumların yığın izlemelerini al |[Kodunuzda TrackException çağrıları ekleyin](app/asp-net-exceptions.md) (ancak bazıları otomatik olarak bildirilir) |Özel durumları Algıla ve Tanıla |
+| Arama günlüğü izlemeleri |[Günlüğe kaydetme bağdaştırıcısı ekleme](app/asp-net-trace-logs.md) |Özel durumları ve performans sorunlarını tanılayın |
+| İstemci kullanımı temelleri: sayfa görünümleri, oturumlar,... |[Web sayfalarındaki JavaScript başlatıcısı](app/javascript.md) |Kullanım analizi |
+| İstemci özel ölçümleri |[Web sayfalarındaki çağrıları izleme](app/api-custom-events-metrics.md) |Kullanıcı deneyimini geliştirme |
+| Sunucu özel ölçümleri |[Sunucudaki aramalar izleniyor](app/api-custom-events-metrics.md) |İş zekası |
+
+### <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Arama ve ölçüm grafiklerindeki sayımlar neden eşit değildir?
+
+[Örnekleme](app/sampling.md) , gerçekten uygulamanızdan portala gönderilen telemetri öğelerinin (istek, özel olay vb.) sayısını azaltır. Arama bölümünde, gerçekten alınan öğe sayısını görürsünüz. Olayların sayısını görüntüleyen ölçüm grafiklerinde, gerçekleşen özgün olay sayısını görürsünüz. 
+
+Aktarılan her öğe, öğenin kaç tane özgün olay temsil ettiğini gösteren bir `itemCount` özelliği taşır. Örneklemede örnekleme gözlemlemek için bu sorguyu Analytics 'te çalıştırabilirsiniz:
+
+```
+    requests | summarize original_events = sum(itemCount), transmitted_events = count()
+```
+
+
+### <a name="automation"></a>Automation
+
+#### <a name="configuring-application-insights"></a>Application Insights yapılandırma
+
+Azure Kaynak İzleyicisi kullanarak [PowerShell betikleri yazabilirsiniz](app/powershell.md) :
+
+* Application Insights kaynaklarını oluşturun ve güncelleştirin.
+* Fiyatlandırma planını ayarlayın.
+* İzleme anahtarını alın.
+* Ölçüm uyarısı ekleyin.
+* Bir kullanılabilirlik testi ekleyin.
+
+Ölçüm Gezgini raporu ayarlayamazsınız veya sürekli dışarı aktarmayı ayarlayabilirsiniz.
+
+#### <a name="querying-the-telemetry"></a>Telemetriyi sorgulama
+
+[Analiz](app/analytics.md) sorguları çalıştırmak için [REST API](https://dev.applicationinsights.io/) kullanın.
+
+### <a name="how-can-i-set-an-alert-on-an-event"></a>Bir olayda nasıl uyarı ayarlayabilirim?
+
+Azure uyarıları yalnızca ölçümlerde bulunur. Olaylarınız gerçekleştiğinde bir değer eşiğine geçen özel bir ölçüm oluşturun. Ardından, ölçüm üzerinde bir uyarı ayarlayın. Her iki yönde de ölçüm eşiğin her kesişilişinde bir bildirim alırsınız. ilk kesişene kadar, ilk değerin yüksek veya düşük olmasından bağımsız olarak bildirim almazsınız; birkaç dakika içinde her zaman bir gecikme vardır.
+
+### <a name="are-there-data-transfer-charges-between-an-azure-web-app-and-application-insights"></a>Bir Azure Web uygulaması ve Application Insights arasında veri aktarımı ücretleri var mı?
+
+* Azure Web uygulamanız Application Insights koleksiyon uç noktasının bulunduğu bir veri merkezinde barındırılıyorsa, ücret alınmaz. 
+* Ana bilgisayar veri merkezinizde koleksiyon uç noktası yoksa, uygulamanızın telemetrisi [Azure giden ücretlerine](https://azure.microsoft.com/pricing/details/bandwidth/)tabi olur.
+
+Bu, Application Insights kaynağınızın barındırıldığı yere bağlı değildir. Yalnızca uç noktalarımızın dağıtımına bağlıdır.
+
+### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Application Insights portalına telemetri gönderebilir miyim?
+
+SDK 'larımızı kullanmanızı ve [SDK API](app/api-custom-events-metrics.md)'sini kullanmanızı öneririz. Çeşitli [platformlar](app/platforms.md)için SDK 'nın çeşitleri vardır. Bu SDK 'lar, arabelleğe alma, sıkıştırma, azaltma, yeniden deneme gibi işlemleri gerçekleştirir. Ancak, alma [şeması](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) ve [uç nokta Protokolü](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) geneldir.
+
+### <a name="can-i-monitor-an-intranet-web-server"></a>Bir intranet Web sunucusunu izleyebilir miyim?
+
+Evet, ancak güvenlik duvarı özel durumları ya da ara sunucu yeniden yönlendirmeleri ile hizmetlerimize giden trafiğe izin vermeniz gerekir.
+- QuickPulse `https://rt.services.visualstudio.com:443` 
+- Applicationıdprovider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
+
+
+Hizmetlerin ve IP adreslerinin tam listesini [burada](app/ip-addresses.md)gözden geçirin.
+
+#### <a name="firewall-exception"></a>Güvenlik Duvarı özel durumu
+
+Web sunucunuzun, uç noktalarımıza telemetri göndermesini sağlar. 
+
+#### <a name="gateway-redirect"></a>Ağ Geçidi yönlendirmesi
+
+Yapılandırmanızda bulunan uç noktaların üzerine yazarak intranetteki trafiği intranetinizdeki bir ağ geçidine yönlendirin. Bu "uç nokta" özellikleri, config uygulamanızda yoksa, bu sınıflar örnek ApplicationInsights. config örneğinde aşağıda gösterilen varsayılan değerleri kullanır. 
+
+Ağ geçidinizin trafiği bitiş noktasının temel adresine yönlendirmelidir. Yapılandırmanızda, varsayılan değerleri `http://<your.gateway.address>/<relative path>`değiştirin.
+
+
+##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Varsayılan bitiş noktaları ile örnek ApplicationInsights. config:
+```xml
+<ApplicationInsights>
+  ...
+  <TelemetryModules>
+    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
+      <QuickPulseServiceEndpoint>https://rt.services.visualstudio.com/QuickPulseService.svc</QuickPulseServiceEndpoint>
+    </Add>
+  </TelemetryModules>
+    ...
+  <TelemetryChannel>
+     <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
+  </TelemetryChannel>
+  ...
+  <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+    <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+  </ApplicationIdProvider>
+  ...
+</ApplicationInsights>
+```
+
+> [!NOTE]
+> Applicationıdprovider, v 2.6.0 'dan başlayarak kullanılabilir.
+
+
+
+#### <a name="proxy-passthrough"></a>Proxy geçişi
+
+Proxy geçişi, bir makine düzeyi veya uygulama düzeyi proxy yapılandırılarak elde edilebilir.
+Daha fazla bilgi için bkz. [defaultProxy](https://docs.microsoft.com/dotnet/framework/configure-app/file-schema/network/defaultproxy-element-network-settings)üzerinde DotNet makalesi.
+ 
+ Örnek Web. config:
+ ```xml
+<system.net>
+    <defaultProxy>
+      <proxy proxyaddress="http://xx.xx.xx.xx:yyyy" bypassonlocal="true"/>
+    </defaultProxy>
+</system.net>
+```
+ 
+
+### <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Bir intranet sunucusunda kullanılabilirlik Web testlerini çalıştırabilir miyim?
+
+[Web testleriniz](app/monitor-web-app-availability.md) , dünyanın dört bir yanında dağıtılan varlık noktalarında çalışır. İki çözüm vardır:
+
+* Güvenlik Duvarı kapısı-sunucunuza, [Web testi aracılarının uzun ve değiştirilebilir listesinden](app/ip-addresses.md)Istek yapmasına izin verin.
+* İntranetinizin içinden sunucunuza düzenli istek göndermek için kendi kodunuzu yazın. Bu amaçla Visual Studio Web testlerini çalıştırabilirsiniz. Sınayıcı, sonuçları TrackAvailability () API 'sini kullanarak Application Insights gönderebilir.
+
+### <a name="how-long-does-it-take-for-telemetry-to-be-collected"></a>Telemetri toplanması ne kadar sürer?
+
+Çoğu Application Insights veri, 5 dakikalık bir gecikme süresine sahiptir. Bazı veriler daha uzun sürebilir; genellikle daha büyük günlük dosyaları. Daha fazla bilgi için bkz. [SLA Application Insights](https://azure.microsoft.com/support/legal/sla/application-insights/v1_2/).
+
+
+
+<!--Link references-->
+
+[data]: app/data-retention-privacy.md
+[platforms]: app/platforms.md
+[start]: app/app-insights-overview.md
+[windows]: app/app-insights-windows-get-started.md
+
+
+
+## <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
+
+Bu Microsoft SSS, kapsayıcılar için Azure Izleyici hakkında sık sorulan sorulardan oluşan bir listesidir. Çözümle ilgili başka sorularınız varsa, [tartışma forumuna](https://feedback.azure.com/forums/34192--general-feedback) gidin ve sorularınızı gönderin. Sık sorulan bir soru, böylece hızla ve kolayca bulunabilir, bu makaleye ekleriz.
+
+### <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>ContainerLog tablosunu sorgulıyorum, resim ve ad özelliği değerlerini doldurdum.
+
+Aracı sürümü ciprod12042019 ve üzeri için, varsayılan olarak bu iki özellik her günlük satırı için doldurulmaz ve toplanan günlük verilerinde maliyeti en aza indirir. Bu özellikleri içeren tabloyu, değerlerini sorgulamak için iki seçenek vardır:
+
+#### <a name="option-1"></a>Seçenek 1 
+
+Sonuçlara bu özellik değerlerini dahil etmek için diğer tabloları birleştirin.
+
+Containerıd özelliğine katılarak ```ContainerInventory``` tablosundan Image ve ImageTag özelliklerini içerecek şekilde sorgularınızı değiştirin. Name özelliğini (daha önce ```ContainerLog``` tablosunda göründüğü gibi) KubepodInventory tablosunun ContaineName alanındaki Containerıd özelliğine katılarak dahil edebilirsiniz. Önerilen seçenek budur.
+
+Aşağıdaki örnek, bu alan değerlerinin birleşimlerle nasıl alınacağını anlatan örnek bir ayrıntılı sorgudur.
+
+```
+//lets say we are querying an hour worth of logs
+let startTime = ago(1h);
+let endTime = now();
+//below gets the latest Image & ImageTag for every containerID, during the time window
+let ContainerInv = ContainerInventory | where TimeGenerated >= startTime and TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID, Image, ImageTag | project-away TimeGenerated | project ContainerID1=ContainerID, Image1=Image ,ImageTag1=ImageTag;
+//below gets the latest Name for every containerID, during the time window
+let KubePodInv  = KubePodInventory | where ContainerID != "" | where TimeGenerated >= startTime | where TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID2 = ContainerID, Name1=ContainerName | project ContainerID2 , Name1;
+//now join the above 2 to get a 'jointed table' that has name, image & imagetag. Outer left is safer in-case there are no kubepod records are if they are latent
+let ContainerData = ContainerInv | join kind=leftouter (KubePodInv) on $left.ContainerID1 == $right.ContainerID2;
+//now join ContainerLog table with the 'jointed table' above and project-away redundant fields/columns and rename columns that were re-written
+//Outer left is safer so you dont lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
+ContainerLog
+| where TimeGenerated >= startTime and TimeGenerated < endTime 
+| join kind= leftouter (
+   ContainerData
+) on $left.ContainerID == $right.ContainerID2 | project-away ContainerID1, ContainerID2, Name, Image, ImageTag | project-rename Name = Name1, Image=Image1, ImageTag=ImageTag1 
+
+```
+
+#### <a name="option-2"></a>Seçenek 2
+
+Her kapsayıcı günlük satırı için bu özellikler için koleksiyonu yeniden etkinleştirin.
+
+İlk seçenek, söz konusu sorgu değişiklikleri nedeniyle uygun değilse, [veri toplama yapılandırma ayarlarında](insights/container-insights-agent-config.md)açıklandığı gibi aracı yapılandırma eşlemesindeki ```log_collection_settings.enrich_container_logs``` ayarını etkinleştirerek bu alanları toplamayı yeniden etkinleştirebilirsiniz.
+
+> [!NOTE]
+> Bu zenginleştirme işlemini gerçekleştirmek için kümedeki her düğümden API sunucusu çağrıları oluşturduğundan, ikinci seçenek 50 taneden fazla düğümü olan büyük kümeler için önerilmez. Bu seçenek ayrıca, toplanan her günlük satırı için veri boyutunu artırır.
+
+### <a name="can-i-view-metrics-collected-in-grafana"></a>Grafana ' de toplanan ölçümleri görüntüleyebilir miyim?
+
+Kapsayıcılar için Azure Izleyici, Grafana panolar içinde Log Analytics çalışma alanınızda depolanan ölçümlerin görüntülenmesini destekler. Grafana 'in [Pano deposundan](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) indirebileceğiniz bir şablon sağladık ve özel Grafana panolarında görselleştirmek üzere izlenen kümelerinizdeki ek verileri sorgulama hakkında bilgi edinmenize yardımcı olur. 
+
+### <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>AKS-Engine kümenizi kapsayıcılar için Azure Izleyici ile izleyebilir miyim?
+
+Kapsayıcılar için Azure Izleyici, Azure 'da barındırılan AKS-Engine (eski adıyla ACS-Engine) kümeleri için dağıtılan kapsayıcı iş yüklerini izlemeyi destekler. Bu senaryoya yönelik izlemeyi etkinleştirmek için gereken adımlara ilişkin daha fazla bilgi ve bir genel bakış için bkz. [AKS-Engine için kapsayıcılar Için Azure Izleyicisini kullanma](https://github.com/microsoft/OMS-docker/tree/aks-engine).
+
+### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Neden Log Analytics çalışma alanım 'da veri görmüyorum?
+
+Log Analytics çalışma alanında belirli bir zamanda herhangi bir veri göremiyorsanız, günlük toplanacak veri miktarını denetlemek için varsayılan 500 MB sınırına veya belirtilen günlük ucuna ulaşmış olabilirsiniz. Gün için sınır karşılandığında, veri toplama işlemi yalnızca bir sonraki günde duraklar ve sürdürülür. Veri kullanımınızı gözden geçirmek ve tahmin edilen kullanım desenlerinize göre farklı bir fiyatlandırma katmanına güncelleştirmek için bkz. [günlük verisi kullanımı ve maliyeti](platform/manage-cost-storage.md). 
+
+### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>Containerınventory tablosunda belirtilen kapsayıcı durumları nelerdir?
+
+Containerınventory tablosu, hem durdurulan hem de çalışan kapsayıcılar hakkında bilgiler içerir. Tablo, tüm kapsayıcılar için Docker 'ı sorgulayan (çalışıyor ve durdurulmuş) ve bu verileri Log Analytics çalışma alanına ileten aracının içindeki bir iş akışı tarafından doldurulur.
+ 
+### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Nasıl yaparım? *eksik abonelik kayıt* hatası.
+
+**Microsoft. operationsmanagement Için eksik abonelik kaydı**hatası alırsanız, çalışma alanının tanımlandığı abonelikte **Microsoft. operationsmanagement** kaynak sağlayıcısını kaydederek bu sorunu çözebilirsiniz. Bunun nasıl yapılacağını gösteren belgeler [burada](../azure-resource-manager/templates/error-register-resource-provider.md)bulunabilir.
+
+### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>RBAC etkin AKS kümeleri için destek var mı?
+
+Kapsayıcı Izleme çözümü RBAC 'yi desteklemez, ancak kapsayıcılar için Azure Izleyici ile desteklenir. Çözüm ayrıntıları sayfası, bu kümelerin verilerini gösteren dikey pencerelerde doğru bilgileri göstermez.
+
+### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Nasıl yaparım?, KUIN-System ad alanındaki kapsayıcılar için günlük toplamayı Held aracılığıyla etkinleştirmek istiyor musunuz?
+
+Kuto-System ad alanındaki kapsayıcılardan günlük koleksiyonu varsayılan olarak devre dışıdır. Omsagent üzerinde bir ortam değişkeni ayarlanarak günlük toplama etkinleştirilebilir. Daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyici](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers) GitHub sayfası. 
+
+### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Omsagent 'ı yayınlanan en son sürüme güncelleştirmek Nasıl yaparım? mı?
+
+Aracıyı yükseltmeyi öğrenmek için bkz. [Aracı yönetimi](insights/container-insights-manage-agent.md).
+
+### <a name="how-do-i-enable-multi-line-logging"></a>Çok satırlı günlüğe kaydetme etkinleştirilsin mi Nasıl yaparım??
+
+Şu anda kapsayıcılar için Azure Izleyici çok satırlı günlüğe kaydetmeyi desteklemez, ancak kullanılabilir geçici çözümler vardır. Tüm hizmetleri JSON biçiminde yazacak şekilde yapılandırabilir ve ardından Docker/Moby, bunları tek bir satır olarak yazar.
+
+Örneğin, bir örnek Node. js uygulaması için aşağıdaki örnekte gösterildiği gibi, günlüğünüz bir JSON nesnesi olarak sardırabilirsiniz:
+
+```
+console.log(json.stringify({ 
+      "Hello": "This example has multiple lines:",
+      "Docker/Moby": "will not break this into multiple lines",
+      "and you will receive":"all of them in log analytics",
+      "as one": "log entry"
+      }));
+```
+
+Bu veriler, sorgulama yaptığınızda Günlükler için Azure Izleyici 'de aşağıdaki örnekteki gibi görünür:
+
+```
+LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
+
+```
+
+Soruna ilişkin ayrıntılı bir bakış için aşağıdaki [GitHub bağlantısını](https://github.com/moby/moby/issues/22920)inceleyin.
+
+### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Canlı günlükleri etkinleştirdiğimde Azure AD hatalarını Nasıl yaparım? çözün misiniz? 
+
+Şu hatayı görebilirsiniz: **istekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: ' < Uygulama kimliği\>'** . Çözümü çözecek çözüm, [kapsayıcılar Için Azure izleyici ile kapsayıcı verilerinin gerçek zamanlı olarak nasıl görüntüleneceği](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)makalesinde bulunabilir. 
+
+### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Ekleme işleminden sonra kümeyi neden yükseltemiyorum?
+
+Bir AKS kümesi için Azure Izleyicisini etkinleştirdikten sonra, kümenin verilerini gönderdiği Log Analytics çalışma alanını sildiğinizde, kümeyi yükseltmeye çalışırken başarısız olur. Bu sorunu geçici olarak çözmek için, izlemeyi devre dışı bırakmanız ve ardından aboneliğinizdeki farklı bir geçerli çalışma alanına başvuruda bulunan yeniden etkinleştirmeniz gerekir. Küme yükseltmesini yeniden gerçekleştirmeye çalıştığınızda, başarıyla işlemeli ve tamamlanmalıdır.  
+
+### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Aracı için hangi bağlantı noktalarına ve etki alanlarına açık/beyaz listeye ihtiyacım var?
+
+Azure, Azure ABD kamu ve Azure Çin 21Vianet bulutları ile Kapsayıcılı aracı için gereken ara sunucu ve güvenlik duvarı yapılandırma bilgileri için [ağ güvenlik duvarı gereksinimlerine](insights/container-insights-onboard.md#network-firewall-requirements) bakın.
+
+## <a name="azure-monitor-for-vms-preview"></a>VM'ler için Azure İzleyici (Önizleme)
+Bu Microsoft SSS, VM'ler için Azure İzleyici hakkında sık sorulan soruların bir listesidir. Çözümle ilgili başka sorularınız varsa, [tartışma forumuna](https://feedback.azure.com/forums/34192--general-feedback) gidin ve sorularınızı gönderin. Sık sorulan bir soru, böylece hızla ve kolayca bulunabilir, bu makaleye ekleriz.
+
+### <a name="can-i-onboard-to-an-existing-workspace"></a>Mevcut bir çalışma alanına ekleyebilir miyim?
+Sanal makineleriniz zaten bir Log Analytics çalışma alanına bağlıysa, [burada](insights/vminsights-enable-overview.md#prerequisites)listelenen desteklenen bölgelerden birinde olması kaydıyla, VM'ler için Azure izleyici ekleme sırasında bu çalışma alanını kullanmaya devam edebilirsiniz.
+
+Ekleme sırasında, çalışma alanı için performans sayaçlarını yapılandıracağız, bu bilgileri VM'ler için Azure İzleyici ' de görüntüleme ve analize yönelik tüm VM 'Ler raporlama verilerinin toplamaya başlamasına neden olacak.  Sonuç olarak, seçili çalışma alanına bağlı tüm VM 'lerden performans verilerini görürsünüz.  Sistem durumu ve eşleme özellikleri yalnızca eklemek üzere belirttiğiniz VM 'Ler için etkinleştirilir.
+
+Hangi performans sayaçlarının etkinleştirildiği hakkında daha fazla bilgi için, [etkinleştirme genel bakış](insights/vminsights-enable-overview.md#performance-counters-enabled) makalemize bakın.
+
+### <a name="can-i-onboard-to-a-new-workspace"></a>Yeni bir çalışma alanına ekleyebilir miyim? 
+VM 'niz Şu anda mevcut bir Log Analytics çalışma alanına bağlı değilse, verilerinizi depolamak için yeni bir çalışma alanı oluşturmanız gerekir. Azure portal üzerinden VM'ler için Azure İzleyici için tek bir Azure VM yapılandırırsanız, yeni bir varsayılan çalışma alanı oluşturma otomatik olarak yapılır.
+
+Betik tabanlı yöntemi kullanmayı seçerseniz, bu adımlar [Azure PowerShell veya Kaynak Yöneticisi şablonu kullanarak etkinleştirme VM'ler için Azure izleyici (Önizleme)](insights/vminsights-enable-at-scale-powershell.md) içinde ele alınmıştır. 
+
+### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>VM 'im mevcut bir çalışma alanına zaten bildirildiğimde ne yapmam gerekiyor?
+Sanal makinelerinizden zaten veri topluyorsanız, mevcut bir Log Analytics çalışma alanına verileri raporlamak için onu zaten yapılandırmış olabilirsiniz.  Çalışma alanı desteklenen bölgelerden birinde olduğu sürece, VM'ler için Azure İzleyici önceden var olan çalışma alanına etkinleştirebilirsiniz.  Zaten kullanmakta olduğunuz çalışma alanı desteklenen bölgelerden birinde değilse, şu anda VM'ler için Azure İzleyici içine yükleyemezsiniz.  Etkin bir şekilde ek bölgeler desteklemek için çalışıyoruz.
+
+>[!NOTE]
+>Çalışma alanına rapor veren tüm VM 'Leri etkileyen çalışma alanı için performans sayaçlarını yapılandıracağız, bunlara VM'ler için Azure İzleyici eklemek isteyip istemediğinizi seçmiş olursunuz. Çalışma alanı için performans sayaçlarının nasıl yapılandırıldığı hakkında daha fazla bilgi için lütfen [belgelerimize](platform/data-sources-performance-counters.md)bakın. VM'ler için Azure İzleyici için yapılandırılan sayaçlar hakkında daha fazla bilgi için lütfen [etkinleştirme VM'ler için Azure izleyici](insights/vminsights-enable-overview.md#performance-counters-enabled) makalemize bakın.  
+
+### <a name="why-did-my-vm-fail-to-onboard"></a>Sanal makinem neden eklenemedi?
+Azure portal bir Azure VM 'si eklenirken aşağıdaki adımlar oluşur:
+
+* Varsayılan Log Analytics çalışma alanı, seçenek seçilen oluşturulur.
+* Performans sayaçları seçili çalışma alanı için yapılandırıldı. Bu adım başarısız olursa, bazı performans grafiklerinin ve tablolarının eklendi olduğunuz VM için verileri göstermediğini fark edersiniz. [Burada](insights/vminsights-enable-at-scale-powershell.md#enable-performance-counters)belgelenen PowerShell betiğini çalıştırarak bu hatayı çözebilirsiniz.
+* Log Analytics Aracısı, gerekli olduğunu tespit ederseniz bir VM uzantısı kullanılarak Azure VM 'lerine yüklenir.  
+* VM'ler için Azure İzleyici Map bağımlılık Aracısı, gerekli olduğunu tespit ederseniz bir uzantı kullanılarak Azure VM 'lerine yüklenir.  
+* Sistem durumu özelliğini destekleyen Azure Izleyici bileşenleri, gerekirse yapılandırılır ve VM, sistem durumu verilerini raporlamak üzere yapılandırılır.
+
+Ekleme işlemi sırasında, portalda size bir bildirim durumu döndürmek için yukarıdaki her bir durumu denetliyoruz. Çalışma alanını ve aracı yüklemesini yapılandırmasını, genellikle 5-10 dakika sürer. Portalda izleme ve sistem durumu verilerinin görüntülenmesi 10 dakikaya kadar 5 dakika sürer.  
+
+Ekleme işlemini başlattınız ve VM 'nin eklendi olması gerektiğini belirten iletiler görürseniz, VM 'nin işlemi tamamlaması için 30 dakikaya kadar bekleyin. 
+
+### <a name="i-only-enabled-azure-monitor-for-vms-why-do-i-see-all-my-vms-monitored-by-the-health-feature"></a>Yalnızca VM'ler için Azure İzleyici etkinleştirdim, neden tüm sanal makinelerimin sistem durumu özelliği tarafından izlendiğini görüyorum?
+Durum özelliği, tek bir VM için işlem başlatıldığında bile Log Analytics çalışma alanına bağlı tüm VM 'Ler için etkinleştirilir.
+
+### <a name="can-i-modify-the-schedule-for-when-health-criteria-evaluates-a-condition"></a>Durum ölçütlerinin bir koşulu değerlendirirken Zamanlamayı değiştirebilir miyim?
+Hayır, durum ölçütlerinin zaman dilimi ve sıklığı bu sürümle değiştirilemez. 
+
+### <a name="can-i-disable-health-criteria-for-a-condition-i-dont-need-to-monitor"></a>İzleme gerektirmeyen bir koşul için sistem durumu ölçütlerini devre dışı bırakabilir miyim?
+Bu sürümde durum ölçütleri devre dışı bırakılamaz.
+
+### <a name="are-the-health-alert-severities-configurable"></a>Sistem sağlığı uyarısı önem dereceleri yapılandırılabilir mi?  
+Sağlık uyarısı önem derecesi değiştirilemez, yalnızca etkinleştirilebilir veya devre dışı bırakılabilir. Ayrıca, bazı uyarı önem dereceleri durum ölçütlerine göre güncelleştirme yapılır. 
+
+### <a name="if-i-reconfigure-the-settings-of-a-particular-health-criteria-can-it-be-scoped-to-a-specific-instance"></a>Belirli bir sistem durumu ölçütlerinin ayarlarını yeniden yapılandırdığımda, belirli bir örneğe kapsam eklenebilir mi?  
+Bir sistem durumu ölçüt örneğinin herhangi bir ayarını değiştirirseniz, Azure VM 'de aynı türdeki tüm durum ölçütleri örnekleri değiştirilir. Örneğin, mantıksal disk C: karşılık gelen disk boş alan sistem durumu ölçütü örneğinin eşiği değiştirilirse Bu eşik bulunan ve aynı sanal makine için izlenen tüm diğer mantıksal diskleri geçerlidir.
+
+### <a name="does-the-health-feature-monitor-logical-processors-and-cores"></a>Sistem durumu özelliği mantıksal işlemcileri ve çekirdekleri izler mi?
+Hayır, tek tek işlemci ve mantıksal işlemci düzeyi durum ölçütleri bir Windows için dahil değildir, Azure VM 'nin kullanabildiği toplam mantıksal CPU sayısına göre CPU basıncını etkin bir şekilde değerlendirmek için varsayılan olarak yalnızca toplam CPU kullanımı izlenir. 
+
+### <a name="are-all-health-criteria-thresholds-configurable"></a>Tüm durum ölçütleri eşikleri yapılandırılabilir mi?  
+Sistem durumlarına ayarlanır çünkü hedef bir Windows VM durumu ölçütlerini eşikleri değiştirilebilir, olmayan *çalıştıran* veya *kullanılabilir*. Sistem sağlığı durumunu sorgulanırken [iş yükü İzleyicisi API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), görüntülediği *comparisonOperator* değerini **LessThan** veya **GreaterThan** ile bir *eşiği* değerini **4** hizmet veya varlık varsa:
+   - DNS istemcisi hizmet durumu-hizmet çalışmıyor. 
+   - DHCP istemci hizmeti sistem durumu-hizmet çalışmıyor. 
+   - RPC hizmet durumu-hizmet çalışmıyor. 
+   - Windows Güvenlik Duvarı Hizmet durumu-hizmet çalışmıyor.
+   - Windows olay günlüğü hizmet durumu-hizmet çalışmıyor. 
+   - Sunucu hizmet durumu-hizmet çalışmıyor. 
+   - Windows Uzaktan Yönetimi hizmetinin sistem durumu – hizmet çalışmıyor. 
+   - Mantıksal Disk, dosya sistemi hatası veya bozulma – kullanılamıyor.
+
+Sistem durumu zaten ayarlandığından aşağıdaki Linux durumu ölçütlerini eşikleri değiştirilebilir, olmayan *true*. Sistem durumunu görüntüler *comparisonOperator* bir değerle **LessThan** ve *eşiği* değerini **1** gelen sorgulandığında İş yükü izleme API bağlama bağlı olarak varlığı için:
+   - Mantıksal Disk durumu – mantıksal disk değil çevrimiçi / kullanılabilir
+   - Disk durumu – Disk değil çevrimiçi / kullanılabilir
+   - Ağ bağdaştırıcısı durumu - ağ bağdaştırıcısı devre dışı bırakıldı
+
+### <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Sistem durumu özelliğine dahil olan uyarıları değiştirmek Nasıl yaparım??
+Her sistem durumu ölçütü için tanımlanan uyarı kuralları, Azure portalında görüntülenmez. Etkinleştirebilir veya sistem durumu uyarısı devre dışı yalnızca kural [iş yükü İzleyicisi API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Ayrıca, Azure portal sistem durumu uyarıları için bir [Azure izleyici eylem grubu](platform/action-groups.md) atayamazsınız. Bir sistem durumu uyarısı tetiklendiğinde tetiklenecek bir eylem grubunu yapılandırmak için yalnızca bildirim ayarı API 'sini kullanabilirsiniz. Şu anda, bir VM'ye karşı Eylem grupları atayabilirsiniz böylece tüm *sistem durumu uyarılarını* aynı Eylem grupları karşı VM tetikleyici tetiklendi. Geleneksel Azure uyarıları ayrı bir eylem grubu her sistem durumu uyarı kuralının kavramı yoktur. Ayrıca, sistem durumu uyarı tetiklendiğinde e-posta veya SMS bildirimleri sağlamak için yapılandırılmış olan eylem grupları desteklenir. 
+
+### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Sanal Makinem için performans grafikleri bazı veya tüm veriler göremiyorum
+Disk tablosunda veya bazı performans grafiklerinde performans verilerini görmüyorsanız, performans sayaçlarınız çalışma alanında yapılandırılmamış olabilir. Çözümlemek için aşağıdaki [PowerShell betiğini](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)çalıştırın.
+
+### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>VM'ler için Azure İzleyici eşleme özelliği Hizmet Eşlemesi nasıl farklıdır?
+VM'ler için Azure İzleyici Map özelliği Hizmet Eşlemesi tabanlıdır, ancak aşağıdaki farklılıklara sahiptir:
+
+* Harita görünümüne VM dikey penceresinden ve Azure Izleyici altındaki VM'ler için Azure İzleyici erişilebilir.
+* Haritadaki bağlantılar artık tıklatılabilir ve seçili bağlantı için yan bölmede bağlantı ölçüm verilerinin bir görünümünü görüntüler.
+* Daha karmaşık haritaları daha iyi destekleyecek şekilde eşlemeler oluşturmak için kullanılan yeni bir API vardır.
+* İzlenen VM 'Ler artık istemci grubu düğümüne dahildir ve halka grafik gruptaki izlenen ve izlenmeyen sanal makinelerin oranını gösterir.  Grup genişletildiğinde makine listesini filtrelemek için de kullanılabilir.
+* İzlenen sanal makineler artık sunucu bağlantı noktası grubu düğümlerine dahildir ve halka grafik gruptaki izlenen ve izlenmeyen makinelerin oranını gösterir.  Grup genişletildiğinde makine listesini filtrelemek için de kullanılabilir.
+* Harita stili, Application Insights 'tan uygulama haritası ile daha tutarlı olacak şekilde güncelleştirilmiştir.
+* Yan paneller güncelleştirilmiştir ve Hizmet Eşlemesi-Güncelleştirme Yönetimi, Değişiklik İzleme, güvenlik ve hizmet masası 'nda desteklenen tam tümleştirme kümesine sahip değildir. 
+* Eşlenecek grupları ve makineleri seçme seçeneği güncelleştirildi ve artık abonelikleri, kaynak gruplarını, Azure sanal makine ölçek kümelerini ve bulut hizmetlerini desteklemektedir.
+* VM'ler için Azure İzleyici Map özelliğinde yeni Hizmet Eşlemesi makine grupları oluşturamazsınız.  
+
+### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Neden benim performans grafiklerini noktalı satırları göster?
+Bu, birkaç nedenden dolayı oluşabilir.  Veri koleksiyonunda bir boşluk olduğu durumlarda, satırları noktalı olarak belirledik.  Performans sayaçları etkin olan veri örnekleme sıklığını değiştirdiyseniz (varsayılan ayar, her 60 saniyede bir veri toplamaktır), grafik için dar bir zaman aralığı seçerseniz ve örnekleme sıklığınızdan daha küçükse, grafikte noktalı çizgileri görebilirsiniz. grafikte kullanılan demet boyutu (örneğin, örnekleme sıklığı 10 dakikadır ve grafikteki her demet 5 dakikadır).  Görüntülenecek daha geniş bir zaman aralığı seçilmesi, grafik çizgilerinin bu durumda nokta yerine düz çizgiler olarak görünmesine neden olmalıdır.
+
+### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Grupları, sanal makineleri için Azure İzleyici ile desteklenir?
+Evet, bağımlılık aracısını yükledikten sonra abonelikleri, kaynak grubunu, sanal makine ölçek kümelerini ve bulut hizmetlerini temel alan grupları göstermek için VM 'lerden bilgi topladık.  Hizmet Eşlemesi kullanıyorsanız ve makine grupları oluşturduysanız, bunlar da görüntülenir.  Siz görüntülemekte olduğunuz çalışma alanı için oluşturduysanız, bilgisayar grupları gruplar filtresinde da görünür. 
+
+### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Nasıl yaparım? toplam Performans grafiklerinde 95. yüzdebirlik satırını neyin yönlendirdiğini görmek için ayrıntılara bakın.
+Varsayılan olarak, liste, en düşük 5 ' lik değere sahip makineleri gösteren kullanılabilir bellek grafiği dışında, seçili ölçüm için en yüksek 95. yüzdebirlik değerini içeren VM 'Leri gösterecek şekilde sıralanır.  Grafiğe tıklandığında, uygun ölçüm seçili olan **Ilk N liste** görünümü açılır.
+
+### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Harita özelliği farklı VNET 'lerde ve alt ağlarda yinelenen IP 'Leri nasıl işler?
+IP aralıklarını VM 'Ler veya alt ağlar ve sanal makine ölçek kümeleri arasında çoğaltdıysanız, VM'ler için Azure İzleyici eşlemenin yanlış bilgileri görüntülemesine neden olabilir. Bu bilinen bir sorundur ve bu deneyimi geliştirme seçeneklerini araştırıyoruz.
+
+### <a name="does-map-feature-support-ipv6"></a>Harita özelliği IPv6 'Yı destekliyor mu?
+Map özelliği şu anda yalnızca IPv4 'Ü destekliyor ve IPv6 desteğini araştırıyoruz. IPv6 içinde tünel oluşturulan IPv4 de destekliyoruz.
+
+### <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Bir kaynak grubu veya başka bir büyük grup için bir harita yüklediğimde haritanın görüntülemesi zordur
+Büyük ve karmaşık yapılandırmaların işlenmesi amacıyla haritada geliştirmeler yaptığımız için, bir haritanın çok fazla düğüm, bağlantı ve düğüm kümesi olarak çalışan bir düğüm olabileceğini fark ettik.  Ölçeklenebilirliği artırmak için destek geliştirmek devam etmek için kararlıyız.   
+
+### <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Performans sekmesindeki ağ grafiği neden Azure VM 'ye Genel Bakış sayfasındaki ağ grafiğinden farklı görünüyor?
+
+Bir Azure VM 'ye ilişkin genel bakış sayfası, konağın Konuk VM 'deki etkinlik ölçüsünün bulunduğu grafikleri görüntüler.  Azure VM 'de ağ grafiğine genel bakış için yalnızca faturalandırılacak ağ trafiği görüntülenir.  Bu, sanal ağlar arası trafiği içermez.  VM'ler için Azure İzleyici için gösterilen veriler ve grafikler, Konuk VM 'deki verileri temel alır ve ağ grafiği, sanal ağlar dahil olmak üzere bu VM 'ye gelen ve giden tüm TCP/IP trafiğini görüntüler.
+
+### <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Yanıt süresi, VMConnection 'da depolanan ve bağlantı panelinde ve çalışma kitaplarında görüntülenmekte olan veriler için nasıl ölçülür?
+
+Yanıt süresi yaklaşık bir değer. Uygulamanın kodunu işaretlemediğimiz için, bir isteğin ne zaman başladığını ve yanıtın ne zaman ulaştığında gerçekten haberdar ettik. Bunun yerine, bir bağlantı üzerinden gönderilen verileri gözlemliyoruz ve sonra bu bağlantıya geri dönüş yaptık. Aracımız, bu gönderme ve alma girişimlerini takip eder ve bunları eşleştirmeye çalışır: bir dizi Gönderen, sonrasında bir alma dizisi, istek/yanıt çifti olarak yorumlanır. Bu işlemler arasındaki zamanlama yanıt süresi olur. Ağ gecikmesi ve sunucu işleme süresi de dahil olur.
+
+Bu yaklaşık, istek/yanıt tabanlı protokollerde iyi sonuç verir: tek bir istek bağlantı üzerinde geçer ve tek bir yanıt ulaşır. Bu, HTTP (S) için (ardışık düzen olmadan), ancak diğer protokollerin karşılanmadığı durumdur.
+
+### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Log Analytics ücretsiz fiyatlandırma planıyla karşılaştığım kısıtlamalardır.
+*Ücretsiz* fiyatlandırma katmanını kullanarak Azure izleyici 'yi bir Log Analytics çalışma alanıyla yapılandırdıysanız, VM'ler için Azure izleyici eşleme özelliği yalnızca çalışma alanına bağlı beş bağlı makineyi destekler. Ücretsiz bir çalışma alanına bağlı beş VM varsa, VM 'lerden birinin bağlantısını kesip daha sonra yeni bir VM 'yi bağladığınızda yeni VM izlenmiyor ve harita sayfasında yansıtılmaz.  
+
+Bu koşulun altında, VM 'yi açıp daha önce sanal makineye yüklendikten sonra bile sağ bölmedeki **öngörüleri (Önizleme)** seçtiğinizde **Şimdi dene** seçeneği istenir.  Ancak, bu VM VM'ler için Azure İzleyici için eklendi değilse, genellikle bu sanal makine için bir seçenek istenmez. 
+
+
+## <a name="next-steps"></a>Sonraki adımlar
+Sorunuz burada yanıtlanmazsa, ek sorular ve yanıtlar için aşağıdaki forumlara başvurabilirsiniz.
+
+- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
+- [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+
+Azure Izleyici hakkında genel geri bildirimde bulunmak için lütfen [geri bildirim forumunu](https://feedback.azure.com/forums/34192--general-feedback)ziyaret edin.

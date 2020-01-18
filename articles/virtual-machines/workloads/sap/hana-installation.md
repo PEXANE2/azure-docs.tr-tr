@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 516f61775060b3e4073ed9d623545d4f227563ed
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c08036f16cd30a1c10963accd8d486d77c9683ee
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750352"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264178"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Azure 'da SAP HANA (büyük örnekler) yüklemek ve yapılandırmak
 
@@ -29,10 +29,7 @@ SAP HANA yüklemesi sizin sorumluluğunuzdadır. Azure sanal ağlarınız ve HAN
 > [!Note]
 > SAP ilkesi başına, SAP HANA yüklemesi, sertifikalı SAP teknolojisinin sınavına, yükleme sertifika sınavına SAP HANA veya SAP sertifikalı Sistem Tümleştirici (sı) olan kim olduğunu düzenleyen bir kişi tarafından gerçekleştirilmelidir.
 
-HANA 2,0 yüklemeyi planladığınızda, bkz. [sap destek notunun #2235581-SAP HANA: desteklenen işletim sistemleri](https://launchpad.support.sap.com/#/notes/2235581/E) , işletim sistemlerinin yüklemekte olduğunuz SAP HANA sürümü ile desteklendiğinden emin olun. HANA 2,0 için desteklenen işletim sistemi, HANA 1,0 için desteklenen işletim sisteminden daha kısıtlayıcıdır. 
-
-> [!IMPORTANT] 
-> Tür II birimleri için şu anda yalnızca SLES 12 SP2 işletim sistemi sürümü destekleniyor. 
+HANA 2,0 yüklemeyi planladığınızda, bkz. [sap destek notunun #2235581-SAP HANA: desteklenen işletim sistemleri](https://launchpad.support.sap.com/#/notes/2235581/E) , işletim sistemlerinin yüklemekte olduğunuz SAP HANA sürümü ile desteklendiğinden emin olun. HANA 2,0 için desteklenen işletim sistemi, HANA 1,0 için desteklenen işletim sisteminden daha kısıtlayıcıdır. Ayrıca, ilgilendiğiniz işletim sistemi sürümünün bu yayımlanmış [listedeki](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)belirli hLi birimi için desteklenip desteklenmediğini denetlemeniz gerekir. Bu birimin desteklenen işletim sistemi listesi ile ilgili tüm ayrıntıları almak için birime tıklayın. 
 
 HANA yüklemesine başlamadan önce aşağıdakileri doğrulayın:
 - [HLI birim](#validate-the-hana-large-instance-units)
@@ -61,18 +58,18 @@ Bu nedenle, tam Linux sürümü için SAP HANA ilgili SAP notlarını okumak iç
 
 Özellikle, aşağıdaki parametreleri kontrol edin ve şu şekilde ayarlayın:
 
-- net. Core. rmem_max = 16777216
-- net. Core. wmem_max = 16777216
+- net.core.rmem_max = 16777216
+- net.core.wmem_max = 16777216
 - net. Core. rmem_default = 16777216
 - net. Core. wmem_default = 16777216
-- net. Core. optmem_max = 16777216
-- net. IPv4. TCP _rmem = 65536 16777216 16777216
-- net. IPv4. TCP _wmem = 65536 16777216 16777216
+- net.core.optmem_max = 16777216
+- net. IPv4. tcp_rmem = 65536 16777216 16777216
+- net. IPv4. tcp_wmem = 65536 16777216 16777216
 
 SLES12 SP1 ve RHEL 7,2 ile başlayarak, bu parametrelerin/etc/sysctl.exe dizinindeki bir yapılandırma dosyasında ayarlanması gerekir. Örneğin, 91-NetApp-HANA. conf adına sahip bir yapılandırma dosyası oluşturulmalıdır. Daha eski SLES ve RHEL yayınları için bu parametrelerin ayarlandığı/vs/sysctl. conf olması gerekir.
 
 RHEL 6,3 ile başlayan tüm RHEL yayınları için şunları göz önünde bulundurun: 
-- Sunrpc. TCP _slot_table_entries = 128 parametresi/vs/modaraştırması. d/sunrpc-Local. conf olarak ayarlanmalıdır. Dosya yoksa, önce girdiyi ekleyerek oluşturmanız gerekir: 
+- Sunrpc. tcp_slot_table_entries = 128 parametresi,/vs/modaraştırması. d/sunrpc-Local. conf içinde ayarlanmalıdır. Dosya yoksa, önce girdiyi ekleyerek oluşturmanız gerekir: 
     - Seçenekler sunrpc tcp_max_slot_table_entries = 128
 
 **Beşinci adım** , Hana büyük örnek biriminizdeki sistem saatini denetünündir. Örnekler bir sistem saat dilimiyle dağıtılır. Bu saat dilimi, HANA büyük örnek damgasının bulunduğu Azure bölgesinin konumunu temsil eder. Sahip olduğunuz örneklerin sistem saatini veya saat dilimini değiştirebilirsiniz. 
@@ -84,14 +81,11 @@ Kiracınıza daha fazla örnek sipariş ederseniz, yeni teslim edilen örnekleri
 
 ## <a name="operating-system"></a>İşletim sistemi
 
-> [!IMPORTANT] 
-> Tür II birimleri için şu anda yalnızca SLES 12 SP2 işletim sistemi sürümü desteklenmektedir. 
-
 Teslim edilen işletim sistemi görüntüsünün takas alanı, [sap destek notuna #1999997-SSS: SAP HANA bellek](https://launchpad.support.sap.com/#/notes/1999997/E)' e göre 2 GB olarak ayarlanır. Bir müşteri olarak, farklı bir ayar istiyorsanız kendiniz ayarlamanız gerekir.
 
 [SAP uygulamaları için SUSE Linux Enterprise Server 12 SP1](https://www.suse.com/products/sles-for-sap/download/) , Azure 'da SAP HANA Için yüklenen Linux 'un (büyük örnekler) dağıtımı olur. Bu dağıtım, SAP 'ye özgü "kullanıma hazır" özellikleri (SLES 'de SAP çalıştırmaya yönelik önceden ayarlanmış parametreler dahil) sağlar.
 
-SLES 'de SAP HANA dağıtımıyla ilgili çok sayıda faydalı kaynak (yüksek kullanılabilirlik ve güvenlik sağlamlaştırma dahil) için bkz. SUSE Web sitesinde [Kaynak Kitaplığı/teknik incelemeler](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) ve SAP Community ağı 'NDA (SCN) [SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) belirli SAP işlemlerine ve daha fazlasına).
+SLES 'de SAP HANA dağıtımıyla ilgili çok sayıda faydalı kaynak (yüksek oranda kullanılabilirlik, SAP işlemlerine özgü güvenlik sağlamlaştırma ve daha fazlası dahil) için bkz. SUSE Web sitesinde [Kaynak Kitaplığı/teknik incelemeler](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) ve SAP Community ağı 'NDA (SCN) [SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) .
 
 Aşağıda SUSE ile ilgili bağlantılarda ek ve yararlı SAP verilmiştir:
 
@@ -107,7 +101,7 @@ Aşağıda, SLES 12 ' de SAP HANA uygulamak için geçerli olan SAP destek notla
 - [SAP destek notunun #171356 – Linux 'ta SAP Software: genel bilgiler](https://launchpad.support.sap.com/#/notes/1984787)
 - [SAP destek notunun #1391070 – Linux UUID çözümleri](https://launchpad.support.sap.com/#/notes/1391070)
 
-[SAP HANA için Red Hat Enterprise Linux](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) , Hana büyük örneklerde SAP HANA çalıştırmaya yönelik başka bir tekliftir. RHEL 6,7 ve 7,2 sürümleri mevcuttur. Yalnızca RHEL 7,2 ve daha yeni sürümlerin desteklendiği yerel Azure VM 'lerinin tersidir, HANA büyük örnekleri de RHEL 6,7 ' i destekler. Ancak, bir RHEL 7. x sürümü kullanmanızı öneririz.
+[SAP HANA için Red Hat Enterprise Linux](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) , Hana büyük örneklerde SAP HANA çalıştırmaya yönelik başka bir tekliftir. RHEL 7,2 ve 7,3 sürümleri mevcuttur ve desteklenir. 
 
 Aşağıda, Red Hat ile ilgili bağlantılar üzerinde ek faydalı SAP verilmiştir:
 - [Red Hat Linux sitesinde SAP HANA](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat).
@@ -116,11 +110,9 @@ Aşağıda, Red hat üzerinde SAP HANA uygulamak için geçerli olan SAP destek 
 
 - [SAP destek notunun #2009879-Red Hat Enterprise Linux (RHEL) işletim sistemi için SAP HANA yönergeleri](https://launchpad.support.sap.com/#/notes/2009879/E)
 - [SAP destek notunun #2292690-SAP HANA DB: RHEL 7 için önerilen işletim sistemi ayarları](https://launchpad.support.sap.com/#/notes/2292690)
-- [SAP destek notunun #2247020-SAP HANA DB: RHEL 6,7 için önerilen işletim sistemi ayarları](https://launchpad.support.sap.com/#/notes/2247020)
 - [SAP destek notunun #1391070 – Linux UUID çözümleri](https://launchpad.support.sap.com/#/notes/1391070)
 - [SAP destek notunun #2228351-Linux: SAP HANA veritabanı SPS 11 Düzeltme 110 (veya üzeri) RHEL 6 veya SLES 11](https://launchpad.support.sap.com/#/notes/2228351)
 - [SAP destek notunun #2397039-SSS: RHEL üzerinde SAP](https://launchpad.support.sap.com/#/notes/2397039)
-- [SAP destek notunun #1496410-Red Hat Enterprise Linux 6. x: yükleme ve yükseltme](https://launchpad.support.sap.com/#/notes/1496410)
 - [SAP destek notunun #2002167-Red Hat Enterprise Linux 7. x: yükleme ve yükseltme](https://launchpad.support.sap.com/#/notes/2002167)
 
 ### <a name="time-synchronization"></a>Zaman eşitleme
@@ -144,7 +136,7 @@ Mimarinizin Ethernet ayrıntıları hakkında daha fazla bilgi için bkz. [HLI d
 
 ## <a name="storage"></a>Depolama
 
-Azure 'da SAP HANA için depolama düzeni (büyük örnekler), SAP tarafından önerilen yönergeler aracılığıyla SAP HANA Azure `service management` ile yapılandırılır. Bu yönergeler [SAP HANA depolama gereksinimleri](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) teknik incelemesi bölümünde belgelenmiştir. 
+Azure 'da SAP HANA için depolama düzeni (büyük örnekler), SAP tarafından önerilen yönergeler aracılığıyla Azure `service management` SAP HANA tarafından yapılandırılır. Bu yönergeler [SAP HANA depolama gereksinimleri](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) teknik incelemesi bölümünde belgelenmiştir. 
 
 Farklı HANA büyük örnekler SKU 'Larının bulunduğu farklı birimlerin kaba boyutları, [Azure 'daki SAP HANA (büyük örnekler) genel bakış ve mimaride](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)açıklanmaktadır.
 
@@ -152,11 +144,11 @@ Depolama birimlerinin adlandırma kuralları aşağıdaki tabloda listelenmişti
 
 | Depolama alanı kullanımı | Bağlama adı | Birim adı | 
 | --- | --- | ---|
-| HANA verileri | /Hana/Data/SID/mnt0000\<a > | Depolama IP 'si:/hana_data_SID_mnt00001_tenant_vol |
-| HANA günlüğü | /Hana/log/SID/mnt0000\<a > | Depolama IP 'si:/hana_log_SID_mnt00001_tenant_vol |
-| HANA günlük yedeklemesi | /Hana/log/Backups | Depolama IP 'si:/hana_log_backups_SID_mnt00001_tenant_vol |
-| HANA paylaşılan | /hana/shared/SID | Depolama IP 'si:/hana_shared_SID_mnt00001_tenant_vol/Shared |
-| usr/SAP | /Usr/SAP/SID | Depolama IP 'si:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
+| HANA verileri | /Hana/Data/SID/mnt0000\<a > | Depolama IP:/hana_data_SID_mnt00001_tenant_vol |
+| HANA günlüğü | /Hana/log/SID/mnt0000\<a > | Depolama IP:/hana_log_SID_mnt00001_tenant_vol |
+| HANA günlük yedeklemesi | /Hana/log/Backups | Depolama IP:/hana_log_backups_SID_mnt00001_tenant_vol |
+| HANA paylaşılan | /hana/shared/SID | Depolama IP:/hana_shared_SID_mnt00001_tenant_vol/Shared |
+| usr/SAP | /Usr/SAP/SID | Depolama IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
 
 *SID* , Hana örnek sistem kimliğidir. 
 
@@ -195,9 +187,9 @@ Depolama denetleyicisi ve büyük örnek damgalarının düğümleri NTP sunucul
 SAP HANA aşağıda kullanılan depolama alanına iyileştirmek için aşağıdaki SAP HANA yapılandırma parametrelerini ayarlayın:
 
 - max_parallel_io_requests 128
-- async_read_submit
-- async_write_submit_active
-- async_write_submit_blocks
+- üzerinde async_read_submit
+- üzerinde async_write_submit_active
+- async_write_submit_blocks tümü
  
 SPS12 SAP HANA 1,0 sürümleri için, bu parametreler SAP HANA veritabanının yüklemesi sırasında, [SAP note #2267798-SAP HANA veritabanının yapılandırması](https://launchpad.support.sap.com/#/notes/2267798)bölümünde açıklandığı gibi ayarlanabilir.
 

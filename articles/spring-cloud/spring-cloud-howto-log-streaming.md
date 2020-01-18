@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
-ms.openlocfilehash: fa2e7af51ff681da0bfdac928cc08bf75126a3b8
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 27978d367ded7a31d73949cd675ae9e6f8cb887c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156429"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264008"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure yay bulutu uygulama günlüklerini gerçek zamanlı olarak akışla
 Azure yay bulutu, sorun giderme amacıyla gerçek zamanlı uygulama konsolu günlüklerini almak için Azure CLı 'de günlük akışı sağlar. Ayrıca, [günlükleri ve ölçümleri tanılama ayarlarıyla çözümleyebilirsiniz](./diagnostic-services.md).
@@ -47,16 +47,29 @@ Bu işlem günlükleri döndürür:
 ```
 
 ### <a name="tail-log-for-app-with-multiple-instances"></a>Birden çok örneğe sahip uygulama için kuyruk günlüğü
-`auth-service`adlı uygulama için birden çok örnek varsa, `-i/--instance` seçeneğini kullanarak örnek günlüğünü görüntüleyebilirsiniz. Örneğin, uygulama adını ve örnek adını belirterek bir uygulamanın bir örneğinin günlüğünü akışla aktarabilirsiniz:
+`auth-service`adlı uygulama için birden çok örnek varsa, `-i/--instance` seçeneğini kullanarak örnek günlüğünü görüntüleyebilirsiniz. 
+
+İlk olarak, aşağıdaki komutla uygulama örneği adlarını alabilirsiniz.
+
+```
+az spring-cloud app show -n auth-service --query properties.activeDeployment.properties.instances -o table
+```
+Sonuçlarla:
+
+```
+Name                                         Status    DiscoveryStatus
+-------------------------------------------  --------  -----------------
+auth-service-default-12-75cc4577fc-pw7hb  Running   UP
+auth-service-default-12-75cc4577fc-8nt4m  Running   UP
+auth-service-default-12-75cc4577fc-n25mh  Running   UP
+``` 
+Ardından, bir uygulama örneğinin günlüklerini seçenek `-i/--instance` seçeneği ile akışla aktarabilirsiniz:
 
 ```
 az spring-cloud app log tail -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
-Uygulama örneklerini Azure portal da alabilirsiniz. 
-1. Kaynak grubunuza gidin ve Azure Spring Cloud örneğinizi seçin.
-1. Azure Spring Cloud Instance 'ta genel bakış sol gezinti bölmesindeki **uygulamalar** ' ı seçin.
-1. Uygulamanızı seçin ve ardından sol gezinti bölmesindeki **uygulama örnekleri** ' ne tıklayın. 
-1. Uygulama örnekleri görüntülenecektir.
+
+Ayrıca Azure portal uygulama örneklerinin ayrıntılarını alabilirsiniz.  Azure Spring Cloud Service 'in sol gezinti bölmesinde **uygulamalar** ' ı seçtikten sonra **uygulama örnekleri**' ni seçin.
 
 ### <a name="continuously-stream-new-logs"></a>Yeni günlükleri sürekli olarak akışla
 Varsayılan olarak, `az spring-cloud ap log tail` yalnızca uygulama konsoluna akan mevcut günlükleri yazdırır ve sonra çıkar. Yeni Günlükler akışı yapmak istiyorsanız, Add-f (--izleyin):  

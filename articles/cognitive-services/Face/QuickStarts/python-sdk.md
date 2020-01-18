@@ -9,16 +9,16 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: badfec71ad44fd9eebc748f716301ad6731883cf
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 7ac1b85ee44627990931cfc7b3a65f6f7a661b3f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770365"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165812"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Hızlı başlangıç: Python için yüz istemci kitaplığı
 
-Python için yüz istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz Tanıma API'si hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
+Python için yüz istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
 
 Python için yüz istemci kitaplığını kullanarak şunları yapın:
 
@@ -290,5 +290,5 @@ Bu hızlı başlangıçta, Python için yüz kitaplığı 'nı kullanarak temel 
 > [!div class="nextstepaction"]
 > [Yüz Tanıma API'si Başvurusu (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)
 
-* [Yüz Tanıma API'si nedir?](../overview.md)
+* [Yüz hizmeti nedir?](../overview.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py)' da bulunabilir.

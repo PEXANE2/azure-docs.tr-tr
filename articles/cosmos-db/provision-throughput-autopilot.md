@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a744ac2574f54b0c2934d440ddf5c48e54304595
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89af30788fe5129cddc6a3607b8c722549b610d1
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445106"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264059"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Autopilot modunda Azure Cosmos kapsayıcıları ve veritabanları oluşturma (Önizleme)
 
@@ -20,13 +20,11 @@ Azure Cosmos DB kapsayıcılarınızda el ile veya otomatik pilot modunda aktar�
 > [!NOTE]
 > Autopilot modu şu anda genel önizlemede kullanılabilir. Yalnızca [yeni veritabanları ve kapsayıcılar için Autopilot etkinleştirebilirsiniz](#create-a-database-or-a-container-with-autopilot-mode) . Mevcut kapsayıcılar ve veritabanları için kullanılamaz.
 
-Aktarım hızının el ile sağlanmasına ek olarak, şimdi Azure Cosmos kapsayıcılarını otomatik pilot modunda da yapılandırabilirsiniz. Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları ve veritabanları, **SLA 'lara ödün vermeden uygulama gereksinimlerinize göre sağlanan üretilen işi otomatik olarak ve anında ölçeklendirecektir.**
+Aktarım hızını el ile sağlamaya ek olarak, artık Autopilot modundaki Azure Cosmos kapsayıcıları ' nı yapılandırabilirsiniz. Autopilot modunda yapılandırılan kapsayıcılar ve veritabanları, **iş yükünün kullanılabilirliğini, gecikmesini, verimini veya küresel olarak performansını etkilemeden uygulamanızın gereksinimlerine göre sağlanan aktarım hızını otomatik olarak ve anında ölçeklendirecektir.**
 
-Artık sağlanan üretilen işi el ile yönetmeniz veya hız sınırlandırma sorunlarını ele almanız gerekmez. Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları, iş yükünün kullanılabilirliğini, gecikmesini, verimini veya küresel olarak performansını etkilemeden iş yüküne anında ölçeklendirilebilir. Yüksek kullanım altında, Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları, devam eden işlemleri etkilemeden ölçeği artırılabilecek veya azaltılabilir.
+Autopilot modunda kapsayıcılar ve veritabanları yapılandırılırken, aşılmayacak `Tmax` en yüksek aktarım hızını belirtmeniz gerekir. Kapsayıcılar daha sonra `0.1*Tmax < T < Tmax`aktarım hızını ölçeklendirebilir. Diğer bir deyişle, kapsayıcılar ve veritabanları, en yüksek aktarım hızı değeri olarak yapılandırdığınız maksimum üretilen iş değeri en fazla %10 ' dan düşük olan iş yükü ihtiyaçlarına göre anında ölçeklendirilir. Bir Autopilot veritabanı veya kapsayıcısındaki en fazla üretilen iş (`Tmax`) ayarını dilediğiniz zaman değiştirebilirsiniz. Autopilot seçeneğiyle, kapsayıcı veya veritabanı başına 400 RU/sn en düşük aktarım hızı artık geçerli değildir.
 
-Autopilot modunda kapsayıcılar ve veritabanları yapılandırılırken, aşılmayacak `Tmax` en yüksek aktarım hızını belirtmeniz gerekir. Kapsayıcılar daha sonra `0.1*Tmax < T < Tmax` aralığında iş yükü ihtiyaçlarına göre anında ölçeklendirebilir. Diğer bir deyişle, kapsayıcılar ve veritabanları, yapılandırılan en yüksek aktarım hızı değerinin %10 ' u kadar ve yapılandırılan maksimum üretilen iş değerine kadar, iş yükü ihtiyaçlarına göre anında ölçeklenir. Autopilot veritabanı veya kapsayıcısındaki en fazla üretilen iş (Tmax) ayarını dilediğiniz zaman değiştirebilirsiniz. Autopilot seçeneğiyle, kapsayıcı veya veritabanı başına 400 RU/sn en düşük aktarım hızı artık geçerli değildir.
-
-Autopilot önizlemesi sırasında, kapsayıcıda veya veritabanında bulunan belirtilen en yüksek aktarım hızı için sistem, hesaplanan depolama sınırı içinde çalışmasına izin verir. Depolama sınırı aşılırsa, en yüksek aktarım hızı otomatik olarak daha yüksek bir değere ayarlanır. Autopilot modu ile veritabanı düzeyinde aktarım hızı kullanılırken, bir veritabanı içinde izin verilen kapsayıcıların sayısı şu şekilde hesaplanır: (0,001 * en fazla aktarım hızı). Örneğin, 20.000 Autopilot RU/s temin ediyorsanız, veritabanında 20 kapsayıcı olabilir.
+Autopilot önizlemesi sırasında, kapsayıcıda veya veritabanında bulunan belirtilen en yüksek aktarım hızı için sistem, hesaplanan depolama sınırı içinde çalışmasına izin verir. Depolama sınırı aşılırsa, en yüksek aktarım hızı otomatik olarak daha yüksek bir değere ayarlanır. Autopilot modu ile veritabanı düzeyinde aktarım hızı kullanılırken, bir veritabanı içinde izin verilen kapsayıcıların sayısı şu şekilde hesaplanır: `0.001*TMax`. Örneğin, 20.000 Autopilot RU/s temin ediyorsanız, veritabanında 20 kapsayıcı olabilir.
 
 ## <a name="benefits-of-autopilot-mode"></a>Autopilot modunun avantajları
 
@@ -36,15 +34,15 @@ Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları aşağıdaki a
 
 * **Ölçeklenebilir:** Autopilot modundaki kapsayıcılar, sağlanan verimlilik kapasitesini gerektiği şekilde sorunsuz bir şekilde ölçeklendirin. İstemci bağlantıları, uygulamalar ve mevcut SLA 'Ları etkilemez.
 
-* Uygun **maliyetli:** Autopilot modunda yapılandırılmış Azure Cosmos kapsayıcıları kullandığınızda, yalnızca iş yüklerinizin saat başına ihtiyaç duyduğu kaynaklar için ödeme yaparsınız.
+* Uygun **maliyetli:** Autopilot modunda yapılandırılmış kapsayıcıları kullandığınızda, yalnızca iş yüklerinizin saat başına ihtiyaç duyduğu kaynaklar için ödeme yaparsınız.
 
-* **Yüksek oranda kullanılabilir:** Autopilot modundaki Azure Cosmos kapsayıcıları, veri dayanıklılığı ve her zaman yüksek kullanılabilirlik sağlamak için aynı küresel olarak dağıtılmış, hataya dayanıklı, yüksek oranda kullanılabilir arka uca sahiptir.
+* **Yüksek oranda kullanılabilir:** Autopilot modundaki kapsayıcılar, veri dayanıklılığı ve yüksek kullanılabilirlik sağlamak için aynı küresel olarak dağıtılmış, hataya dayanıklı, yüksek oranda kullanılabilir arka uca kullanır.
 
 ## <a name="use-cases-of-autopilot-mode"></a>Autopilot modunun kullanım durumları
 
 Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları için kullanım örnekleri şunları içerir:
 
-* **Değişken iş yükleri:** En yüksek kullanımı 1 saat ile her gün birkaç saat arasında veya yılda birkaç kez kullanıldığında, hafif olarak kullanılan bir uygulama çalıştırırken. Örnek olarak insan kaynakları, bütçeleme ve operasyonel raporlama için uygulamalar sayılabilir. Bu tür senaryolar için Autopilot modunda yapılandırılan kapsayıcılar kullanılabilir, artık yoğun veya ortalama kapasite için el ile sağlamanız gerekmez.
+* **Değişken iş yükleri:** En yüksek düzeyde kullanılan bir uygulamayı, her gün ya da yılda birkaç kez bir kez 1 saat boyunca birkaç saat olacak şekilde çalıştırıyorsanız. Örnek olarak insan kaynakları, bütçeleme ve operasyonel raporlama için uygulamalar sayılabilir. Bu tür senaryolar için Autopilot modunda yapılandırılan kapsayıcılar kullanılabilir ve artık tepe ya da ortalama kapasite için el ile sağlamanız gerekmez.
 
 * **Öngörülemeyen iş yükleri:** Gün boyunca veritabanı kullanımı olan iş yüklerini çalıştırırken, aynı zamanda tahmin edilmesi zor olan etkinlik de çok fazla olur. Örnek, hava durumu tahmini değiştiğinde etkinliğin ani bir durumunu gösteren bir trafik sitesi içerir. Autopilot modunda yapılandırılan kapsayıcılar, uygulamanın en yoğun yük ihtiyaçlarını karşılamak için kapasiteyi ayarlayın ve etkinliğin aşırı dönmesi üzerindeyken ölçeği yeniden azaltın.
 
@@ -52,7 +50,7 @@ Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları için kullanı
 
 * **Sık kullanılmayan uygulamalar:** Yalnızca birkaç saat için günde bir veya haftada bir veya ayda birkaç kez kullanılan bir uygulamanız varsa (düşük hacimli bir uygulama/web/blog sitesi gibi).
 
-* **Geliştirme ve test veritabanları:** Geliştiriciler iş saatlerinde Azure Cosmos hesaplarını kullanır, ancak bunları gece veya hafta sonları üzerinde gerektirmez. Autopilot modunda yapılandırılmış kapsayıcılar ile, kullanımda olmadığında en düşük olarak ölçeklenir.
+* **Geliştirme ve test veritabanları:** İş saatlerinde kapsayıcılar kullanan geliştiriciler varsa, ancak onlara gece veya hafta sonları üzerinde gerek yoktur. Autopilot modunda yapılandırılmış kapsayıcılar, kullanımda olmadığında en az bir alt sınır olacak şekilde ölçeklendirilir.
 
 * **Zamanlanan üretim iş yükleri/sorguları:** Tek bir kapsayıcıda bir dizi zamanlanmış istek/işlem/sorgu varsa ve mutlak düşük bir verimlilik üzerinde çalıştırmak istediğiniz boşta dönemler varsa, artık bu işlemi kolayca yapabilirsiniz. Zamanlanan bir sorgu/istek Autopilot modunda yapılandırılmış bir kapsayıcıya gönderildiğinde, otomatik olarak gerektiği kadar ölçeklendirecektir ve işlemi çalıştırır.
 
@@ -62,7 +60,7 @@ Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları için kullanı
 
 |  | El ile modda yapılandırılmış kapsayıcılar  | Autopilot modunda yapılandırılmış kapsayıcılar |
 |---------|---------|---------|
-| **Sağlanan aktarım hızı** | El ile sağlanmış | Otomatik olarak ve anında iş yükü kullanım desenlerine göre ölçeklendirildi. |
+| **Sağlanan aktarım hızı** | El ile sağlandı. | Otomatik olarak ve anında iş yükü kullanım desenlerine göre ölçeklendirildi. |
 | **İsteklerin/işlemlerin hız sınırlaması (429)**  | Tüketim sağlanan kapasiteyi aşarsa meydana gelebilir. | Tüketilen verimlilik, Autopilot modu ile seçtiğiniz en fazla aktarım hızı içindeyse gerçekleşmeyecektir.   |
 | **Kapasite planlaması** |  Bir ilk kapasite planlaması ve ihtiyacınız olan aktarım hızını temin etmeniz gerekir. |    Kapasite planlaması konusunda endişelenmeniz gerekmez. Sistem, kapasite planlama ve kapasite yönetimini otomatik olarak gerçekleştirir. |
 | **Fiyatlandırma** | Saat başına el ile sağlanan RU/s. | Tek bir yazma bölgesi hesabında, saat başına Autopilot RU/s 'yi kullanarak saatlik olarak kullanılan aktarım hızı için ödeme yaparsınız. <br/><br/>Birden fazla yazma bölgesi olan hesaplar için Autopilot için ek ücret alınmaz. Saat başına aynı çok yöneticili RU/sn 'yi kullanarak saatlik olarak kullanılan aktarım hızı için ödeme yaparsınız. |
@@ -72,13 +70,13 @@ Autopilot modunda yapılandırılan Azure Cosmos kapsayıcıları için kullanı
 
 Azure portal aracılığıyla oluştururken yeni veritabanları veya kapsayıcılar için Autopilot yapılandırabilirsiniz. Yeni bir veritabanı veya kapsayıcı oluşturmak, Autopilot etkinleştirmek ve en yüksek aktarım hızını (RU/s) belirtmek için aşağıdaki adımları kullanın.
 
-1. [Azure Portal](https://portal.azure.com) veya [Azure Cosmos Gezgini](https://cosmos.azure.com/) ' nde oturum açın.
+1. [Azure Portal](https://portal.azure.com) veya [Azure Cosmos DB Gezgininde](https://cosmos.azure.com/) oturum açın.
 
-1. Azure Cosmos hesabınıza gidin ve **Veri Gezgini** sekmesini açın.
+1. Azure Cosmos DB hesabınıza gidin ve **Veri Gezgini** sekmesini açın.
 
-1. **Yeni kapsayıcı** ' yı seçin. Veritabanınız, Kapsayıcınız ve bölüm anahtarınız için bir ad girin. **Autopilot** seçeneğini belirleyin ve Autopilot seçeneği kullanılırken veritabanının veya kapsayıcının aşmadığı en yüksek aktarım HıZıNı (ru/sn) seçin.
+1. **Yeni kapsayıcı** ' yı seçin. Veritabanınız, Kapsayıcınız ve bölüm anahtarınız için bir ad girin. **Verimlilik**altında **Autopilot** seçeneğini belirleyin ve Autopilot seçeneğini kullanırken veritabanının veya kapsayıcının aşmadığı en yüksek aktarım hızını (ru/sn) seçin.
 
-   ![Autopilot modunda kapsayıcı oluşturma](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
+   ![Kapsayıcı oluşturma ve Autopilot verimini yapılandırma](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. **Tamam**’ı seçin.
 

@@ -1,24 +1,65 @@
 ---
 title: Sürüm notları-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma hizmeti için çalışan bir dizi özellik sürümü, geliştirmeler, hata düzeltmeleri ve bilinen sorunlar hakkında bilgi bulabilirsiniz.
+description: Konuşma hizmeti Özellik sürümlerinin, geliştirmelerin, hata düzeltmelerinin ve bilinen sorunların çalışan bir günlüğü.
 services: cognitive-services
-author: BrianMouncer
+author: oscholz
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: brianem
+ms.date: 01/15/2020
+ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 73f1739b09111052abd985920efe3ef944a89ca9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b421e7acd7f94654ea80e41340022c8ef7a130e
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380363"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264229"
 ---
 # <a name="release-notes"></a>Sürüm notları
+
+## <a name="speech-sdk-190-2020-january-release"></a>Konuşma SDK 1.9.0:2020-Ocak sürümü
+
+**Yeni Özellikler**
+
+- Çoklu cihaz konuşması: bir konuşma veya metin tabanlı konuşmadaki birden çok cihazı bağlayın ve isteğe bağlı olarak bunlar arasında gönderilen iletileri çevirin. [Bu makalede](multi-device-conversation.md)daha fazla bilgi edinin. 
+- Android. AAR paketi için anahtar sözcük tanıma desteği eklendi ve x86 ve x64 türleri için destek eklendi. 
+- `SendMessage` ve `SetMessageProperty` yöntemleri, amaç-C içindeki `Connection` nesnesine eklendi. [Belgelere bakın](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
+- TTS C++ API 'si artık `std::wstring` birleştirilmiş metin girişi olarak destekler, bu da bir WSTRING 'i SDK 'ya geçirmeden önce dizeye dönüştürme gereksinimini ortadan kaldırır. [Ayrıntılara bakın](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync). 
+- [Dil kimliği](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) ve [kaynak dil yapılandırması](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) artık ' de C#kullanılabilir.
+
+
+**Bozucu değişiklikler**
+
+- `OpenSSL`, 1.1.1 b sürümüne güncelleştirilmiştir ve Linux için konuşma SDK 'Sı temel kitaplığına statik olarak bağlanır. Bu, gelen kutusu `OpenSSL` sistemdeki `/usr/lib/ssl` dizinine yüklenmemişse kesintiye neden olabilir. Bu sorunu geçici olarak çözmek için lütfen konuşma SDK 'Sı belgeleri altındaki [belgelerimizi](how-to-configure-openssl-linux.md) kontrol edin.
+- `long` `int` `WordLevelTimingResult.Offset` için C# döndürülen veri türünü, konuşma verileri 2 dakikadan uzun olduğunda `WordLevelTimingResults` erişime izin verecek şekilde değiştirdik.
+
+
+**Hata düzeltmeleri**
+
+- Yukarıdaki son değişiklikler altında `OpenSSL` güncelleştirmesine bakın. Linux ve Java 'da aralıklı bir kilitlenmeyi ve bir performans sorununu (yüksek yük altında kilit çakışması) düzelttik. 
+- Yüksek eşzamanlılık senaryolarında Java nesne kapanışına yönelik iyileştirmeler yapıldı.
+- NuGet paketimize yeniden yapılandırılmış. `Microsoft.CognitiveServices.Speech.core.dll` ve `Microsoft.CognitiveServices.Speech.extension.kws.dll` lib klasörlerinin altındaki üç kopyasını kaldırdık, NuGet paketini indirmek için daha küçük ve daha hızlı hale getirerek, bazı C++ yerel uygulamaları derlemek için gereken üst bilgileri ekledik.
+- [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)sabit hızlı başlangıç örnekleri. Linux, MacOS, Windows 'ta "mikrofon bulunamadı" özel durumu görüntülenmeden çıkılıyor.
+- Uzun konuşma tanıma özelliği, [Bu örnek](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp)gibi belirli kod yollarında sonuçları elde eden sabit SDK kilitlenmesi.
+- [Bu müşteri sorununa](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396)yönelik olarak Azure Web App ORTAMıNDA düzeltilen SDK dağıtım hatası.
+- [Bu müşteri sorununa](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/433)yönelik olarak çoklu `<voice>` etiketi veya `<audio>` etiketi KULLANıLıRKEN bir TTS hatası düzeltildi. 
+- SDK askıya alındı durumundan kurtarıldığı zaman TTS 401 hatası düzeltildi.
+
+
+**Örnekler**
+
+- Android için anahtar sözcük tanıma örneği [buraya](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo)eklendi.
+- Sunucu senaryosu için TTS örneği [buraya](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp)eklendi. 
+- Bu ve C++ C# .NET içinde çok cihazlı görüşme hızlı başlangıçlarını [burada](multi-device-conversation.md)eklediniz.
+
+
+**Diğer değişiklikler**
+
+- Android 'de iyileştirilmiş SDK temel kitaplığı boyutu.
+- 1\.9.0 ve sonraki sürümlerde SDK, konuşma dökümü için ses imza sürümü alanındaki `int` ve `string` türlerini destekler.
 
 ## <a name="speech-sdk-180-2019-november-release"></a>Konuşma SDK 1.8.0:2019-Kasım sürümü
 

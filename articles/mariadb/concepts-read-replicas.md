@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 7e63afee87d69a80a656ba7c5923b6f313268e2f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/16/2020
+ms.openlocfilehash: 41b5d7519776ca84cf002d463048eb7a8dec2410
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790433"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169143"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -137,7 +137,7 @@ Bir ana sunucu ve bir okuma çoğaltması arasında çoğaltmayı durdurursanız
 
 ### <a name="deleted-master-and-standalone-servers"></a>Ana ve tek başına sunucular silindi
 
-Bir ana sunucu silindiğinde, çoğaltma tüm okuma çoğaltmalarına durdurulur. Bu çoğaltmalar tek başına sunucular haline gelir. Ana sunucunun kendisi silinir.
+Bir ana sunucu silindiğinde, çoğaltma tüm okuma çoğaltmalarına durdurulur. Bu çoğaltmalar otomatik olarak tek başına sunucular olur ve hem okuma hem de yazma işlemlerini kabul edebilir. Ana sunucunun kendisi silinir.
 
 ### <a name="user-accounts"></a>Kullanıcı hesapları
 

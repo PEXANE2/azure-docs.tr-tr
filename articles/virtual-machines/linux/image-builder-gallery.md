@@ -7,16 +7,16 @@ ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 09dceb84a20ef49b3e9d5264b94bb5e74180cd2b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 08441a98d9104109b4cfc130ab6adb31dc4fce45
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976137"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260523"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: bir Linux görüntüsü oluşturun ve paylaşılan bir görüntü galerisine dağıtın 
 
-Bu makalede, [paylaşılan bir görüntü galerisinde](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)bir görüntü sürümü oluşturmak Için Azure Image Builder 'ı nasıl kullanabileceğinizi ve daha sonra görüntüyü küresel olarak nasıl dağıtabileceğiniz gösterilmektedir.
+Bu makalede, [paylaşılan bir görüntü galerisinde](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)bir görüntü sürümü oluşturmak Için Azure Image Builder 'ı ve Azure CLI 'yi nasıl kullanabileceğinizi ve görüntüyü küresel olarak nasıl dağıtabileceğiniz gösterilmektedir. Bunu [Azure PowerShell](../windows/image-builder-gallery.md)kullanarak da yapabilirsiniz.
 
 
 Görüntüyü yapılandırmak için bir Sample. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şurada: [Helloımagetemplateforsıg. JSON](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 

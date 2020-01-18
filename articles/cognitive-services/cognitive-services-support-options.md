@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 2dc5bfb7459e28a4d118c5d1629133bae3a5637f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 2cdf34bb7df121665548be98f9f2098cc5cfe99b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533688"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169074"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure bilişsel Hizmetler desteği ve yardım seçenekleri
 
@@ -36,7 +36,7 @@ Azure bilişsel hizmetler 'in işlevlerini keşfetmeye başladınız mı? Uygula
 
 [Azure destek seçeneklerini bulun ve en uygun planı seçin](https://azure.microsoft.com/support/plans) , böylece yalnızca bulut yolculuğuna veya iş açısından kritik ve stratejik uygulamalar dağıtan büyük bir kuruluşa sahip bir geliştirici olursunuz. Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure portalda](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
 
 ## <a name="post-a-question-on-stack-overflow"></a>Stack Overflow soru gönderin
@@ -73,7 +73,7 @@ Yeni özellikler istemek için UserVoice 'a gönderin. Bilişsel hizmetler sağl
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Özel Görüntü İşleme                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Yüz Tanıma                          | https://cognitive.uservoice.com/forums/430315-face |
-| Biçim                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
+| Form                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | Kapsamlı                     | https://feedback.azure.com/forums/34192--general-feedback |
 | Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Kişiselleştirme                  | https://cognitive.uservoice.com/forums/921562-personalizer |
@@ -81,7 +81,7 @@ Yeni özellikler istemek için UserVoice 'a gönderin. Bilişsel hizmetler sağl
 | Konuşma Hizmetleri               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | Metin Analizi                | https://cognitive.uservoice.com/forums/555922-text-analytics |
 | Translator Metni               | https://cognitive.uservoice.com/forums/558796-translator |
-| Video Dizinleyici                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
+| Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="release-notes"></a>Sürüm notları
 
@@ -91,8 +91,8 @@ Yeni özellikler istemek için UserVoice 'a gönderin. Bilişsel hizmetler sağl
 
 Sürüm notları, yeni sürümler kullanılabilir hale getirildiğinden güncelleştirilir. Notlar yeni özellikler, geliştirmeler ve hata düzeltmeleri hakkında bilgiler içerir.
 
- - [Özel Görüntü İşleme Hizmeti](custom-vision-service/release-notes.md)
- - [Yüz Tanıma API’si](face/releasenotes.md)
+ - [Özel Görüntü İşleme](custom-vision-service/release-notes.md)
+ - [Yüz tanıma](face/releasenotes.md)
  - [Language Understanding (LUIS)](luis/whats-new.md)
  - [Konuşma Hizmetleri](speech-service/releasenotes.md)
  - [Konuşma Hizmetleri SDK 'Sı](speech-service/devices-sdk-release-notes.md)

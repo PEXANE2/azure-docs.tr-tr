@@ -1,5 +1,5 @@
 ---
-title: VM ve ortam oluşturma hatalarında sorun giderme Azure DevTest Labs | Microsoft Docs
+title: VM ve ortam hatalarında sorun giderme Azure DevTest Labs
 description: Azure DevTest Labs ' de sanal makine (VM) ve ortam oluşturma hatalarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,20 +10,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 945afd4f0a5049985955bbc71bbf6b2250f68d2a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 155a359608cf6d846578306545f5ce0b4003949c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129048"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166340"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Azure DevTest Labs 'de sanal makine (VM) ve ortam oluşturma hatalarıyla ilgili sorunları giderme
-DevTest Labs, bir makine adı geçersizse veya bir laboratuvar ilkesini ihlal etmek üzere olduğunuzda size uyarı verir. Bazen, laboratuvar sanal makinenizin `X` veya ortam durumunun bir yanındaki kırmızı olduğunu bildiren bir sorun olduğunu bildiren bir hata olduğunu görürsünüz.  Bu makalede, temeldeki sorunu bulmak ve ileride sorunu önlemek için kullanabileceğiniz birkaç el yer almaktadır.
+DevTest Labs, bir makine adı geçersizse veya bir laboratuvar ilkesini ihlal etmek üzere olduğunuzda size uyarı verir. Bazen, laboratuvar sanal makinenizin veya ortam durumunun yanında, bir şeyin yanlış olduğunu bildiren kırmızı `X` görürsünüz.  Bu makalede, temeldeki sorunu bulmak ve ileride sorunu önlemek için kullanabileceğiniz birkaç el yer almaktadır.
 
 ## <a name="portal-notifications"></a>Portal bildirimleri
-Azure portal kullanıyorsanız, **bildirim paneli**' ne ilk baktığımız olur.  Bildirimler panelinde, tıklayarak ana komut çubuğunda kullanılabilir **zil simgesine**, VM veya ortam oluşturma Laboratuvar veya başarılı olup size bildirir.  Bir hata oluşursa, oluşturma hatasıyla ilişkili hata iletisini görürsünüz. Ayrıntılar genellikle sorunu çözmenize yardımcı olacak daha fazla bilgi verir. Aşağıdaki örnekte, sanal makine oluşturma, çekirdekler tükentiğinden başarısız oldu. Ayrıntılı ileti, sorunu nasıl düzelteceğinizi ve çekirdek kota artışı isteyeceğini size bildirir.
+Azure portal kullanıyorsanız, **bildirim paneli**' ne ilk baktığımız olur.  Bildirimler panelinde, tıklayarak ana komut çubuğunda kullanılabilir **zil simgesine** , VM veya ortam oluşturma Laboratuvar veya başarılı olup size bildirir.  Bir hata oluşursa, oluşturma hatasıyla ilişkili hata iletisini görürsünüz. Ayrıntılar genellikle sorunu çözmenize yardımcı olacak daha fazla bilgi verir. Aşağıdaki örnekte, sanal makine oluşturma, çekirdekler tükentiğinden başarısız oldu. Ayrıntılı ileti, sorunu nasıl düzelteceğinizi ve çekirdek kota artışı isteyeceğini size bildirir.
 
 ![Azure portal bildirimi](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
 
@@ -41,11 +41,11 @@ VM 'niz veya ortamınızın oluşturulması denendikten sonra bir hata araştır
 
 1. Laboratuvarınızın giriş sayfasında, **sanal makine** sayfasını başlatmak için VM 'yi seçin.
 2. **Sanal makine** sayfasında, sol menünün **Izleme** bölümünde, VM ile ilişkili tüm günlükleri görmek için **etkinlik günlüğü** ' nü seçin.
-3. Etkinlik günlüğü öğeleri ' nde, başarısız olan işlemi seçin. Genellikle, başarısız olan işlem çağrılır `Write Virtualmachines`.
+3. Etkinlik günlüğü öğeleri ' nde, başarısız olan işlemi seçin. Genellikle, başarısız olan işlem `Write Virtualmachines`olarak adlandırılır.
 4. Sağ bölmede JSON sekmesine geçin. Günlüğün JSON görünümünde ayrıntıları görürsünüz.
 
     ![Bir VM için etkinlik günlüğü](./media/troubleshoot-vm-environment-creation-failures/vm-activity-log.png)
-5. `statusMessage` Özelliği buluncaya kadar JSON günlüğüne bakın. Bu, size ana hata iletisi ve varsa daha ayrıntılı bilgiler verir. Aşağıdaki JSON, bu makalede daha önce görülen çekirdek alıntılanmış hata hatası için bir örnektir.
+5. `statusMessage` özelliğini bulana kadar JSON günlüğüne bakın. Bu, size ana hata iletisi ve varsa daha ayrıntılı bilgiler verir. Aşağıdaki JSON, bu makalede daha önce görülen çekirdek alıntılanmış hata hatası için bir örnektir.
 
     ```json
     "properties": {
@@ -66,7 +66,7 @@ Bir ortam oluşturma etkinlik günlüğünü görmek için şu adımları izleyi
     ![Ortam etkinlik günlüğü](./media/troubleshoot-vm-environment-creation-failures/envirionment-activity-log.png)
 
 ## <a name="resource-manager-template-deployment-logs"></a>Kaynak Yöneticisi şablonu dağıtım günlükleri
-Ortamınız veya sanal makineniz Otomasyon aracılığıyla oluşturulduysa, hata bilgilerini aramak için bir son yer vardır. Azure Resource Manager şablonu dağıtım günlüğü bu. Laboratuvar kaynağı Otomasyon aracılığıyla oluşturulduğunda, genellikle Azure Resource Manager şablon dağıtımı aracılığıyla yapılır. DevTest Labs kaynaklarını oluşturan örnek Azure Resource Manager şablonları için bkz[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) .
+Ortamınız veya sanal makineniz Otomasyon aracılığıyla oluşturulduysa, hata bilgilerini aramak için bir son yer vardır. Azure Resource Manager şablonu dağıtım günlüğü bu. Laboratuvar kaynağı Otomasyon aracılığıyla oluşturulduğunda, genellikle Azure Resource Manager şablon dağıtımı aracılığıyla yapılır. DevTest Labs kaynaklarını oluşturan örnek Azure Resource Manager şablonları için bkz.[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) .
 
 Laboratuvar şablonu dağıtım günlüklerini görmek için şu adımları izleyin:
 

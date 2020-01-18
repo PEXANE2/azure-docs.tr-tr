@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 7017c3065e41befab6b5d7cdea47e2e3e6720173
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d35c02386b7bcb18781dcbd8c209da43d590868c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928653"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169522"
 ---
 # <a name="support-and-help-options"></a>Destek ve yardım seçenekleri
 
@@ -55,19 +55,8 @@ Burada *{arama koşullarınız}* arama anahtar sözcüklerdir.
 
 Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure portalda](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
-
-## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow bir soru gönderin
-
-Stack Overflow, geliştirmeyle ilgili sorular için tercih edilen kanaldır. Bu, topluluk ve Microsoft ekip üyelerinin üyelerinin, sorunlarınızı çözmenize yardımcı olmak için doğrudan dahil olduğu yerdir.
-
-Arama yoluyla sorununuz için bir yanıt bulamazsanız, Microsoft-bilişsel [\]\[konuşma\]\[](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)etiketleri kullanarak Stack Overflow yeni bir soru gönderin.
-
-> [!TIP]
-> Stack Overflow 'den aşağıdaki gönderiler, soruların nasıl ayarlanacağını ve kaynak kodu nasıl ekleneceğini gösteren ipuçları içerir. Bu yönergelerin ardından, topluluk üyelerinin sorunuzu hızla değerlendirmesi ve yanıtlaması ihtimalini artırmaya yardımcı olabilirsiniz:  
-> * [Nasıl yaparım? iyi bir soru soruyor musunuz?](https://stackoverflow.com/help/how-to-ask)
-> * [En az, tamamlanmış ve doğrulanabilir örnek oluşturma](https://stackoverflow.com/help/mcve)
 
 ## <a name="create-a-github-issue"></a>GitHub sorunu oluştur
 
@@ -108,6 +97,16 @@ Hangi SDK sürümünün kullanıyorsunuz.
  - Belirli bir hizmet etkileşimi için bir hata raporlayabilir, bildirilen olayların SessionID ve saatini (saat dilimi dahil) bildirin. SessionID, aldığınız tüm geri göndermeler/etkinliklerde raporlanır.
  - Diğer ek bilgiler
 
+## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow bir soru gönderin
+
+Stack Overflow, geliştirmeyle ilgili sorular için tercih edilen kanaldır. Bu, topluluk ve Microsoft ekip üyelerinin üyelerinin, sorunlarınızı çözmenize yardımcı olmak için doğrudan dahil olduğu yerdir.
+
+Arama yoluyla sorununuz için bir yanıt bulamazsanız, Microsoft-bilişsel [\]\[konuşma\]\[](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)etiketleri kullanarak Stack Overflow yeni bir soru gönderin.
+
+> [!TIP]
+> Stack Overflow 'den aşağıdaki gönderiler, soruların nasıl ayarlanacağını ve kaynak kodu nasıl ekleneceğini gösteren ipuçları içerir. Bu yönergelerin ardından, topluluk üyelerinin sorunuzu hızla değerlendirmesi ve yanıtlaması ihtimalini artırmaya yardımcı olabilirsiniz:  
+> * [Nasıl yaparım? iyi bir soru soruyor musunuz?](https://stackoverflow.com/help/how-to-ask)
+> * [En az, tamamlanmış ve doğrulanabilir örnek oluşturma](https://stackoverflow.com/help/mcve)
 
 ## <a name="uservoice-forum"></a>UserVoice forumu
 

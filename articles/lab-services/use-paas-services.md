@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs için hizmet olarak platform (PaaS) hizmetlerini kullanın | Microsoft Docs
+title: Azure DevTest Labs 'de hizmet olarak platform (PaaS) hizmetlerini kullanın
 description: Azure DevTest Labs ' de hizmet olarak platform (pass) hizmetlerini nasıl kullanacağınızı öğrenin.
 services: devtest-lab,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 88bbf921fedae4bcdba2b6386ce6e08105206cd2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976241"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169200"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Azure DevTest Labs 'de hizmet olarak platform (PaaS) hizmetlerini kullanın
 PaaS, ortam özelliği aracılığıyla DevTest Labs 'de desteklenir. DevTest Labs içindeki ortamlar, bir git deposundaki önceden yapılandırılmış Azure Resource Manager şablonları tarafından desteklenir. Ortamlar PaaS ve IaaS kaynaklarını içerebilir. Bunlar, birlikte çalışmak üzere özelleştirilmiş sanal makineler, veritabanları, sanal ağlar ve Web uygulamaları gibi Azure kaynaklarını içerebilen karmaşık sistemler oluşturmanıza imkan tanır. Bu şablonlar, kaynak kodu denetimi kullanılarak ortamların tutarlı dağıtım ve gelişmiş yönetimine olanak tanır. 
@@ -71,7 +71,7 @@ Maliyet izleme özelliği, genel maliyet eğilimi kapsamında farklı ortamlarda
 ### <a name="security"></a>Güvenlik
 DevTest Labs ile düzgün şekilde yapılandırılmış bir Azure aboneliği [, yalnızca laboratuvar aracılığıyla Azure kaynaklarına erişimi sınırlayabilir](devtest-lab-add-devtest-user.md). Ortamlar sayesinde, laboratuvar sahibi kullanıcıların diğer Azure kaynaklarına erişim izni vermeden, onaylı yapılandırmalara sahip PaaS kaynaklarına erişmelerine izin verebilir. Laboratuvar kullanıcılarının ortamları özelleştiren senaryoda, laboratuvar sahibi katılımcı erişimine izin verebilir. Katkıda bulunan erişimi, laboratuvar kullanıcısına yalnızca yönetilen kaynak grubu içinde Azure kaynağı ekleme veya kaldırma izni verir. Daha kolay izleme ve yönetim sağlamak için kullanıcının aboneliğe erişimine izin verir.
 
-### <a name="automation"></a>Otomasyon
+### <a name="automation"></a>Automation
 Otomasyon, büyük ölçekli, etkili bir ekosistem için önemli bir bileşendir. Otomasyon, abonelikler ve laboratuvarlar genelinde birden çok ortamı yönetmeyi veya izlemeyi işlemek için gereklidir.
 
 ### <a name="cicd-pipeline"></a>CI/CD işlem hattı

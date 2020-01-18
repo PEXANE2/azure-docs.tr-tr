@@ -4,12 +4,12 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'ndaki gen
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 379f2cb238aef08faba8dd3c8e5d9da4542a1867
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231286"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261526"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler alt düzenlemeler (Azure Işlevleri)
 
@@ -22,7 +22,7 @@ Alt Orchestrator işlevleri, çağıranın perspektifinden yalnızca etkinlik i�
 
 Aşağıdaki örnekte, sağlanması gereken birden çok cihaz olduğu IoT ("Nesnelerin İnterneti") senaryosu gösterilmektedir. Aşağıdaki işlev her bir cihaz için yürütülmesi gereken sağlama iş akışını temsil eder:
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -43,7 +43,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -64,11 +64,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 Bu Orchestrator işlevi, tek seferlik cihaz sağlama için olduğu gibi kullanılabilir veya daha büyük bir düzenleme parçası olabilir. İkinci durumda, üst Orchestrator işlevi `CallSubOrchestratorAsync` (.NET) veya `callSubOrchestrator` (JavaScript) API 'sini kullanarak `DeviceProvisioningOrchestration` örneklerini zamanlayabilir.
 
 Birden çok Orchestrator işlevinin paralel olarak nasıl çalıştırılacağını gösteren bir örnek aşağıda verilmiştir.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -94,7 +96,7 @@ public static async Task ProvisionNewDevices(
 > [!NOTE]
 > Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -117,6 +119,8 @@ module.exports = df.orchestrator(function*(context) {
     // ...
 });
 ```
+
+---
 
 > [!NOTE]
 > Alt düzenlemeler, üst düzenleme ile aynı işlev uygulamasında tanımlanmalıdır. Başka bir işlev uygulamasındaki düzenlemeleri çağırmanız ve beklemeniz gerekiyorsa, HTTP API 'Leri için yerleşik desteği ve HTTP 202 yoklaması tüketici modelini kullanmayı göz önünde bulundurun. Daha fazla bilgi için bkz. [http özellikleri](durable-functions-http-features.md) konusu.

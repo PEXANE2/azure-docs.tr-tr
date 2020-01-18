@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.service: azure-powershell
 ms.author: sttramer
-ms.openlocfilehash: 5cfb93c51ae1f3aff9250601410e4808ed865a32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 85a78200fa5c2b90908de6ac0de8723b20ffe56b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059031"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263990"
 ---
-Bu örnek Azure PowerShell 1.0 veya üzeri Az gerektirir. Çalıştırma `Get-Module -ListAvailable Az` hangi sürümlerinin yüklü olduğunu görmek için. Yüklemeniz gerekiyorsa bkz [Azure PowerShell modülü yükleme](/powershell/azure/install-az-ps). 
+Bu örnek Azure PowerShell az 1,0 veya üzeri bir sürüm gerektirir. Hangi sürümlerin yüklü olduğunu görmek için `Get-Module -ListAvailable Az` çalıştırın. Yüklemeniz gerekiyorsa bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-az-ps). 
 
-Çalıştırma [Connect AzAccount](/powershell/module/az.accounts/connect-azaccount) için Azure'da oturum açın.
+Azure 'da oturum açmak için [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) komutunu çalıştırın.

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 01/14/2020
+ms.date: 01/16/2020
 ms.author: ramkris
-ms.openlocfilehash: b5d4f490f7710824b8382091a1e814f6847766fa
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 1a8040fc397b526b540ce9343baa985cab49e2b4
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945548"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169408"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET toplu yürütücü kitaplığı: Indirme bilgileri 
 
@@ -37,7 +37,7 @@ ms.locfileid: "75945548"
 |**SDK'sını indirme**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **GitHub 'da toplu yürütücü kitaplığı**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API belgeleri**|[.NET API başvuru belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
-|**Kullanmaya Başlama**|[Toplu yürütücü kitaplığı .NET SDK ile çalışmaya başlama](bulk-executor-dot-net.md)|
+|**Kullanmaya başlama**|[Toplu yürütücü kitaplığı .NET SDK ile çalışmaya başlama](bulk-executor-dot-net.md)|
 | **Geçerli desteklenen çerçevesi**| Microsoft .NET Framework 4.5.2, 4.6.1 ve .NET Standard 2,0 |
 
 > [!NOTE]
@@ -72,6 +72,10 @@ ms.locfileid: "75945548"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
 
 * Toplu yürütücü kitaplığı 'nın .NET Core uygulamalarıyla çalışmasını sağlamak için desteklenen hedef çerçevelerinden biri olarak 2,0 .NET Standard eklendi.
+
+### <a name="a-name188188"></a><a name="1.8.8"/>1.8.8
+
+* Mongobulkyürütücü üzerinde, doldurma ekleyerek ve bazı durumlarda belge boyutu sınırının üzerine giderek belge boyutunu beklenmedik bir şekilde artıran bir sorun düzeltildi.
 
 ### <a name="a-name187187"></a><a name="1.8.7"/>1.8.7
 

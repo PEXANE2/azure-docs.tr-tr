@@ -1,6 +1,6 @@
 ---
-title: 'Azure Notification Hubs: sık sorulan sorular (SSS) | Microsoft Docs'
-description: Notification Hubs çözümleri tasarlama/uygulama hakkında SSS
+title: Azure Notification Hubs sık sorulan sorular (SSS) | Microsoft Docs
+description: Azure Notification Hubs çözümleri tasarlama ve uygulama hakkında SSS.
 services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066870"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263838"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs ile anında iletme bildirimleri: sık sorulan sorular
 
@@ -153,7 +153,7 @@ Gönderenin Azure Notification Hubs 'den PNS 'ye kadar olan tüm bağlantılar H
 
 Gizli yükleri göndermek için güvenli bir gönderme deseninin kullanılması önerilir. Gönderen, hassas yük olmadan cihaza ileti tanımlayıcısı ile bir ping bildirimi sunar. Cihazdaki uygulama yükü aldığında, uygulama ileti ayrıntılarını getirmek için doğrudan güvenli bir API çağırır. Bu düzenin nasıl uygulanacağı hakkında bir kılavuz için, [Notification Hubs güvenli anında iletme öğreticisi] sayfasına gidin.
 
-## <a name="operations"></a>İşlemler
+## <a name="operations"></a>Operations
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Olağanüstü durum kurtarma için hangi destek sağlanır?
 

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4855451136edfe86baaace48e2582fc7080a9b12
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 18b158b7a4881619b93ab404de67f7bb25f92b6a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770382"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166822"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Videoları neredeyse gerçek zamanlı olarak analiz edin
 
@@ -148,7 +148,7 @@ Kitaplığı, bir Web kamerasından video çerçevelerini işlemek için daha ö
 
 Bazı olasılıkları göstermek için, kitaplığı kullanan iki örnek uygulama sunuyoruz. 
 
-İlk örnek uygulama, varsayılan Web kamerasından çerçeveler oluşturan ve ardından bunları yüz algılama için Yüz Tanıma API'si gönderen basit bir konsol uygulamasıdır. Uygulamanın basitleştirilmiş bir sürümü aşağıdaki kodda yeniden oluşturulur:
+İlk örnek uygulama, varsayılan Web kamerasından çerçeveler oluşturan basit bir konsol uygulamasıdır ve ardından bunları yüz tanıma algılaması için yüz hizmetine gönderir. Uygulamanın basitleştirilmiş bir sürümü aşağıdaki kodda yeniden oluşturulur:
 
 ```csharp
 using System;
@@ -169,7 +169,7 @@ namespace BasicConsoleSample
             // Create grabber.
             FrameGrabber<DetectedFace[]> grabber = new FrameGrabber<DetectedFace[]>();
 
-            // Create Face API Client.
+            // Create Face Client.
             FaceClient faceClient = new FaceClient(new ApiKeyServiceClientCredentials(ApiKey))
             {
                 Endpoint = Endpoint
@@ -185,7 +185,7 @@ namespace BasicConsoleSample
             grabber.AnalysisFunction = async frame =>
             {
                 Console.WriteLine($"Submitting frame acquired at {frame.Metadata.Timestamp}");
-                // Encode image and submit to Face API.
+                // Encode image and submit to Face service.
                 return (await faceClient.Face.DetectWithStreamAsync(frame.Image.ToMemoryStream(".jpg"))).ToArray();
             };
 
@@ -230,13 +230,13 @@ Bu yaklaşımı kullanarak, algılanan yüzü hemen görselleştirebilirsiniz. D
 
 Bu örneğe başlamak için aşağıdakileri yapın:
 
-1. [Abonelikler](https://azure.microsoft.com/try/cognitive-services/)’den Görüntü İşleme API’leri için API anahtarlarını alın. Video karesi analizi için geçerli API’ler şunlardır:
-    - [Görüntü İşleme API'si](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Yüz Tanıma API'si](https://docs.microsoft.com/azure/cognitive-services/face/overview)
+1. [Abonelikler](https://azure.microsoft.com/try/cognitive-services/)’den Görüntü İşleme API’leri için API anahtarlarını alın. Video çerçeve analizi için ilgili hizmetler şunlardır:
+    - [Görüntü İşleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
+    - [Yüz tanıma](https://docs.microsoft.com/azure/cognitive-services/face/overview)
 2. Bilişsel [örnekler-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub deposunun klonlayın.
 
 3. Visual Studio 2015 veya sonraki sürümlerde örneği açın ve örnek uygulamaları derleyin ve çalıştırın:
-    - BasicConsoleSample için Yüz Tanıma API’si doğrudan [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) dizininde sabit kodlanmıştır.
+    - BasicConsoleSample için yüz tuşu, doğrudan [basicconsolesample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs)içinde sabit olarak kodlanmıştır.
     - LiveCameraSample için, uygulamanın **Ayarlar** bölmesine anahtarları girin. Anahtarlar, oturum boyunca Kullanıcı verileri olarak kalıcıdır.
 
 Örnekleri tümleştirmeye hazırsanız, kendi projelerinizden VideoFrameAnalyzer kitaplığı 'na başvurun.
@@ -245,7 +245,7 @@ VideoFrameAnalyzer 'ın görüntü, ses, video ve metin anlama özellikleri, Azu
 
 ## <a name="summary"></a>Özet
 
-Bu makalede, Yüz Tanıma API'si ve Görüntü İşleme API'si kullanarak canlı video akışları üzerinde neredeyse gerçek zamanlı analizler çalıştırmayı öğrendiniz. Ayrıca, kullanmaya başlamak için örnek kodumuzu nasıl kullanabileceğinizi öğrenirsiniz. Uygulamanızı ücretsiz API anahtarları kullanarak oluşturmaya başlamak için Azure bilişsel [Hizmetler kaydolma sayfasına](https://azure.microsoft.com/try/cognitive-services/)gidin.
+Bu makalede, yüz ve Görüntü İşleme hizmetlerini kullanarak canlı video akışları üzerinde neredeyse gerçek zamanlı analizler çalıştırmayı öğrendiniz. Ayrıca, kullanmaya başlamak için örnek kodumuzu nasıl kullanabileceğinizi öğrenirsiniz. Uygulamanızı ücretsiz API anahtarları kullanarak oluşturmaya başlamak için Azure bilişsel [Hizmetler kaydolma sayfasına](https://azure.microsoft.com/try/cognitive-services/)gidin.
 
 [GitHub deposunda](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)geri bildirim ve öneriler sağlamayı ücretsiz olarak hissetmekten çekinmeyin. Daha geniş bir API geri bildirimi sağlamak için [UserVoice sitemiz](https://cognitive.uservoice.com/)sayfasına gidin.
 

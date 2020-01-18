@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d469d52a6db6c3640d07b46422ffe669a898dde8
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433315"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263005"
 ---
 # <a name="entity-functions"></a>Varlık işlevleri
 
@@ -53,7 +53,9 @@ Bir varlık işlemi varlık durumunu da oluşturabilir, okuyabilir, güncelleşt
 
 **İşlev tabanlı sözdizimi**, varlıkların işlevler olarak temsil edildiği ve uygulamalar tarafından açıkça dağıtılan işlev. Bu söz dizimi basit durum, birkaç işlem veya uygulama çerçeveleri gibi dinamik bir işlem kümesi olan varlıklar için iyi sonuç verir. Bu söz dizimi, derleme zamanında tür hatalarını yakalayamadığından sürdürmek sıkıcı olabilir.
 
-Varlıkların ve işlemlerin sınıflar ve yöntemlerle temsil edildiği **sınıf tabanlı sözdizimi**. Bu sözdizimi daha kolay okunabilir kod üretir ve işlemlerin tür açısından güvenli bir şekilde çağrılmasına izin verir. Sınıf tabanlı sözdizimi, işlev tabanlı sözdiziminin üzerinde ince bir katmandır, bu nedenle her iki çeşit de aynı uygulamadaki birbirlerinin yerine kullanılabilir.
+**Sınıf tabanlı sözdizimi (yalnızca .net)** , varlıklar ve işlemler sınıflar ve yöntemlerle temsil edilir. Bu sözdizimi daha kolay okunabilir kod üretir ve işlemlerin tür açısından güvenli bir şekilde çağrılmasına izin verir. Sınıf tabanlı sözdizimi, işlev tabanlı sözdiziminin üzerinde ince bir katmandır, bu nedenle her iki çeşit de aynı uygulamadaki birbirlerinin yerine kullanılabilir.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>Örnek: Işlev tabanlı sözdizimi-C#
 
@@ -107,11 +109,13 @@ Bu varlığın durumu, sayacın geçerli değerini depolayan bir alan içeren `C
 
 Sınıf tabanlı sözdizimi ve nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [varlık sınıfları tanımlama](durable-functions-dotnet-entities.md#defining-entity-classes).
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ### <a name="example-javascript-entity"></a>Örnek: JavaScript varlığı
 
 Dayanıklı varlıklar, `durable-functions` NPM paketinin sürüm **1.3.0** Ile başlayan JavaScript 'te kullanılabilir. Aşağıdaki kod, JavaScript 'te yazılmış dayanıklı bir işlev olarak uygulanan `Counter` varlıktır.
 
-**function. JSON**
+**Counter/function. JSON**
 ```json
 {
   "bindings": [
@@ -125,7 +129,7 @@ Dayanıklı varlıklar, `durable-functions` NPM paketinin sürüm **1.3.0** Ile 
 }
 ```
 
-**index. js**
+**Counter/index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -146,6 +150,8 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+---
+
 ## <a name="access-entities"></a>Erişim varlıkları
 
 Varlıklara, tek yönlü veya çift yönlü iletişim kullanılarak erişilebilir. Aşağıdaki terminoloji iki iletişim formunu ayırır: 
@@ -161,12 +167,14 @@ Varlıklar, Orchestrator işlevleri içinden veya varlık işlevleri içinden is
 
 Aşağıdaki örneklerde varlıklara erişmenin çeşitli yolları gösterilmektedir.
 
-> [!NOTE]
-> Basitlik için aşağıdaki örneklerde varlıklara erişim için gevşek yazılmış sözdizimi gösterilmektedir. Genel olarak, varlıklara daha fazla tür denetimi sağladığından, [arabirimlere erişmenizi](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) öneririz.
-
 ### <a name="example-client-signals-an-entity"></a>Örnek: Istemci bir varlığa işaret eder
 
 İstemci işlevi olarak da bilinen sıradan bir Azure Işlevinden varlıklara erişmek için [varlık istemci bağlamasını](durable-functions-bindings.md#entity-client)kullanın. Aşağıdaki örnek, bu bağlamayı kullanarak bir varlığı işaret eden kuyruk tarafından tetiklenen bir işlev gösterir.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+> [!NOTE]
+> Basitlik için aşağıdaki örneklerde varlıklara erişim için gevşek yazılmış sözdizimi gösterilmektedir. Genel olarak, varlıklara daha fazla tür denetimi sağladığından, [arabirimlere erişmenizi](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) öneririz.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -181,6 +189,8 @@ public static Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -191,11 +201,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 *Sinyal* terimi, varlık API çağrısı tek yönlü ve zaman uyumsuz olduğu anlamına gelir. Bir istemci işlevinin, varlığın işlemi ne zaman işlediğini bilmesi mümkün değildir. Ayrıca, istemci işlevi sonuç değerlerini veya özel durumları gözlemleyemiyorum. 
 
 ### <a name="example-client-reads-an-entity-state"></a>Örnek: Istemci bir varlık durumunu okur
 
 İstemci işlevleri, aşağıdaki örnekte gösterildiği gibi bir varlığın durumunu da sorgulayabilir:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -209,6 +223,8 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -220,11 +236,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 Varlık durumu sorguları, dayanıklı izleme deposuna gönderilir ve varlığın en son kalıcı durumunu döndürür. Bu durum her zaman bir "taahhüt" durumudur, yani bir işlemin yürütüldüğü ortasında hiçbir zaman geçici bir ara durum kabul edilir. Bununla birlikte, bu durum varlığın bellek içi durumuna kıyasla eski olabilir. Aşağıdaki bölümde açıklandığı gibi, yalnızca düzenlemeler bir varlığın bellek içi durumunu okuyabilir.
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Örnek: Orchestration sinyalleri ve bir varlığı çağırır
 
 Orchestrator işlevleri, [düzenleme tetikleyicisi bağlamasında](durable-functions-bindings.md#orchestration-trigger)API 'leri kullanarak varlıklara erişebilir. Aşağıdaki örnek kod, bir `Counter` varlığı çağıran ve sinyal eden bir Orchestrator işlevi gösterir.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -243,6 +263,8 @@ public static async Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -257,6 +279,8 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > JavaScript Şu anda bir Orchestrator 'dan varlık sinyali verme desteği sağlamaz. Bunun yerine `callEntity` kullanın.
 
+---
+
 Yalnızca düzenlemeler, varlık çağırma ve bir dönüş değeri ya da özel durum olabilen bir yanıt alma yeteneğine sahiptir. [İstemci bağlamasını](durable-functions-bindings.md#entity-client) kullanan istemci işlevleri yalnızca varlıkları işaret edebilir.
 
 > [!NOTE]
@@ -266,6 +290,8 @@ Yalnızca düzenlemeler, varlık çağırma ve bir dönüş değeri ya da özel 
 
 Bir varlık işlevi, bir işlemi yürütürken diğer varlıklara veya hatta kendisine sinyal gönderebilir.
 Örneğin, önceki `Counter` varlık örneğini, sayaç 100 değerine ulaştığında, bazı izleyici varlığına "kilometre taşı" sinyali gönderecek şekilde değiştirebiliriz.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -280,6 +306,8 @@ Bir varlık işlevi, bir işlemi yürütürken diğer varlıklara veya hatta ken
         break;
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
     case "add":
         const amount = context.df.getInput();
@@ -291,7 +319,9 @@ Bir varlık işlevi, bir işlemi yürütürken diğer varlıklara veya hatta ken
         break;
 ```
 
-## <a name="entity-coordination"></a>Varlık düzenlemesi
+---
+
+## <a name="entity-coordination"></a>Varlık düzenlemesi (Şu anda yalnızca .NET)
 
 Birden çok varlık arasında işlem koordine etmeniz gerektiğinde zaman alabilir. Örneğin, bir bankacılık uygulamasında, tek tek banka hesaplarını temsil eden varlıklara sahip olabilirsiniz. Fonları bir hesaptan diğerine aktardığınızda, kaynak hesapta yeterli fon bulunduğundan emin olmanız gerekir. Ayrıca, kaynak ve hedef hesaplara yönelik güncelleştirmelerin işlem temelli olarak tutarlı bir şekilde yapıldığından emin olmanız gerekir.
 

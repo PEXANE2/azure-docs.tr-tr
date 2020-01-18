@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus kullanarak performansı iyileştirmeye yönelik en iyi uygulamalar | Microsoft Docs
+title: Azure Service Bus kullanarak performansı iyileştirmeye yönelik en iyi uygulamalar
 description: Aracılı iletileri değiş tokuşu yaparken performansı iyileştirmek için Service Bus nasıl kullanılacağını açıklar.
 services: service-bus-messaging
 documentationcenter: na
@@ -8,14 +8,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: 3d2d26e8cb8a3b1ee7720424aea701ca063ecc9f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 683a28ca3cdabd5a7ffbf6e9ffdc3ed0c58d3247
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596452"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264704"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus mesajlaşma kullanarak performans iyileştirmeleri için en iyi uygulamalar
 
@@ -41,7 +41,7 @@ AMQP ve SBMP daha verimlidir çünkü ileti fabrikası, mevcut olduğu sürece S
 
 ## <a name="concurrent-operations"></a>Eş zamanlı işlemler
 
-Bir işlem (gönderme, alma, silme, vb.) gerçekleştirmek biraz zaman alır. Bu süre, isteğin ve yanıtın gecikme süresinin yanı sıra Service Bus hizmeti tarafından işlemin işlenmesini içerir. Zaman başına işlem sayısını artırmak için, işlemlerin eşzamanlı olarak yürütülmesi gerekir. 
+Bir işlem (gönderme, alma, silme, vb.) gerçekleştirmek biraz zaman alır. Bu süre, istek ve yanıt gecikmeye ek olarak Service Bus hizmeti tarafından işlemi işlenmesini içerir. İşlem Saati başına sayıyı artırmak için işlemler aynı anda yürütmeniz gerekir. 
 
 İstemci zaman uyumsuz işlemler gerçekleştirerek eşzamanlı işlemleri zamanlar. Sonraki istek, önceki istek tamamlanmadan önce başlatılır. Aşağıdaki kod parçacığı, zaman uyumsuz gönderme işlemine bir örnektir:
   
@@ -84,7 +84,7 @@ Service Bus, alma ve silme işlemlerine yönelik işlemleri desteklemez. Buna ek
 
 Varsayılan olarak, bir istemci 20 MS toplu iş aralığı kullanır. İleti fabrikası oluşturmadan önce [Batchflushınterval][BatchFlushInterval] özelliğini ayarlayarak Batch aralığını değiştirebilirsiniz. Bu ayar, bu fabrika tarafından oluşturulan tüm istemcileri etkiler.
 
-Toplu işlemeyi devre dışı bırakmak için [Batchflushınterval][BatchFlushInterval] özelliğini **TimeSpan. Zero**olarak ayarlayın. Örnek:
+Toplu işlemeyi devre dışı bırakmak için [Batchflushınterval][BatchFlushInterval] özelliğini **TimeSpan. Zero**olarak ayarlayın. Örneğin:
 
 ```csharp
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -113,7 +113,7 @@ Bir kuyruğun, konunun veya aboneliğin aktarım hızını artırmak için Servi
 
 Bu Aralık süresince gerçekleşen ek mağaza işlemleri toplu işe eklenir. Toplu depolama erişimi yalnızca **gönderme** ve **tamamlanma** işlemlerini etkiler; alma işlemleri etkilenmez. Toplu depo erişimi, bir varlık üzerindeki bir özelliktir. Toplu işleme, toplu depo erişimini etkinleştiren tüm varlıklarda oluşur.
 
-Yeni bir kuyruk, konu veya abonelik oluştururken, toplu mağaza erişimi varsayılan olarak etkindir. Toplu depo erişimini devre dışı bırakmak için, varlığı oluşturmadan önce [Enablebatchedoperations][EnableBatchedOperations] özelliğini **false** olarak ayarlayın. Örnek:
+Yeni bir kuyruk, konu veya abonelik oluştururken, toplu mağaza erişimi varsayılan olarak etkindir. Toplu depo erişimini devre dışı bırakmak için, varlığı oluşturmadan önce [Enablebatchedoperations][EnableBatchedOperations] özelliğini **false** olarak ayarlayın. Örneğin:
 
 ```csharp
 QueueDescription qd = new QueueDescription();

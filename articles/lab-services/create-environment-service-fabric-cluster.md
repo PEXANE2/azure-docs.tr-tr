@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs bir Service Fabric kümesiyle ortam oluşturma | Microsoft Docs
+title: Azure DevTest Labs Service Fabric küme ortamı oluşturma
 description: Kendi içinde Service Fabric kümeyle ortam oluşturmayı ve zamanlamaları kullanarak kümeyi başlatıp durdurmayı öğrenin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 01/16/2020
 ms.author: enewman
-ms.openlocfilehash: 1e192a2b27c9d617e43a56766431a0f40e87a752
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 71793b81d8735c80881fc25a9b7ec31bc4fc6762
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325247"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170332"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Azure DevTest Labs içinde kendi içinde Service Fabric kümeyle bir ortam oluşturun
 Bu makalede, Azure DevTest Labs içinde kendi içinde Service Fabric kümeyle ortam oluşturma hakkında bilgi sağlanır. 
@@ -30,7 +30,7 @@ DevTest Labs, Azure Kaynak Yönetimi şablonları tarafından tanımlanan, kendi
 ## <a name="create-a-service-fabric-cluster"></a>Service Fabric kümesi oluşturma
 Service Fabric kümeler, DevTest Labs içindeki ortamlar kullanılarak oluşturulur. Her ortam, bir git deposundaki bir Azure Resource Manager şablonu tarafından tanımlanır. DevTest Labs için [genel git deposu](https://github.com/Azure/azure-devtestlab/tree/master/Environments/) , [Servicefabric-cluster](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) klasöründe bir Service Fabric kümesi oluşturmak için Kaynak Yöneticisi şablonunu içerir. 
 
-1. İlk olarak, aşağıdaki makaledeki yönergeleri kullanarak Azure DevTest Labs bir laboratuvar oluşturun: [Laboratuvar oluşturun](devtest-lab-create-lab.md). **Genel ortamlar** seçeneğinin varsayılan olarak **Açık** olduğunu unutmayın. 
+1. İlk olarak, aşağıdaki makaledeki yönergeleri kullanarak Azure DevTest Labs bir laboratuvar oluşturun: [Laboratuvar oluşturma](devtest-lab-create-lab.md). **Genel ortamlar** seçeneğinin varsayılan olarak **Açık** olduğunu unutmayın. 
 2. Aşağıdaki adımları izleyerek Service Fabric sağlayıcının aboneliğiniz için kayıtlı olduğunu doğrulayın:
     1. Sol gezinti menüsünde **abonelikler** ' i seçin ve **aboneliğinizi** seçin
     2. **Abonelik** sayfasında, Sol menüdeki **Ayarlar** bölümünde **kaynak sağlayıcıları** ' nı seçin. 
@@ -49,7 +49,7 @@ Service Fabric kümeler, DevTest Labs içindeki ortamlar kullanılarak oluşturu
     5. **Sertifika**için sertifika bilgilerinizi Base64 olarak kodlanmış bir dize olarak girin. Bir sertifika oluşturmak için aşağıdaki adımları uygulayın:
         1. **Create-ClusterCertificate. ps1** dosyasını [Git deposundan](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster)indirin. Alternatif olarak, depoyu makinenizde klonlayın. 
         2. **PowerShell**’i başlatın. 
-        3. Komutunu`.\Create-ClusterCertificate.ps1`kullanarak **ps1** dosyasını çalıştırın. Not defteri 'nde açılan bir metin dosyası, bu sayfadaki sertifikayla ilgili alanları doldurmanız için gereken bilgileri görürsünüz. . 
+        3. Komut `.\Create-ClusterCertificate.ps1`kullanarak **ps1** dosyasını çalıştırın. Not defteri 'nde açılan bir metin dosyası, bu sayfadaki sertifikayla ilgili alanları doldurmanız için gereken bilgileri görürsünüz. . 
     6. **Sertifika için parolayı**girin.
     7. Sertifikanızın **parmak izini** belirtin.
     8. **Ayarları Yapılandır** sayfasında **Ekle** ' yi seçin. 

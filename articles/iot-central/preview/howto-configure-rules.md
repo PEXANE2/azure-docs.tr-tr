@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 987e8d9e667339d7526e8acbc3164e58abcd3e4d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f528135445824a17a8d8c95913adf6934cc87eb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895739"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260152"
 ---
 # <a name="configure-rules-preview-features"></a>Kuralları yapılandırma (Önizleme özellikleri)
 
@@ -33,7 +33,7 @@ Bu kuralın ne tür cihazlarda uygulanacağını seçmek için hedef cihazlar b�
 
 Koşullar, üzerinde hangi kuralların tetikleyeceğini de tetikler. Şu anda, bir kurala birden çok koşul eklediğinizde bunlar mantıksal olarak ve Ile birlikte yapılır. Diğer bir deyişle kuralın doğru olarak değerlendirilmesi için tüm koşulların karşılanması gerekir.  
 
-Aşağıdaki ekran görüntüsünde, sıcaklık 90 ' den büyük olduğunda ve nem 10 ' dan küçük olduğunda koşullar denetlenir. Bu deyimlerden her ikisi de doğru olduğunda, kural true olarak değerlendirilir ve bir eylemi tetikler.
+Aşağıdaki ekran görüntüsünde koşullar, sıcaklığın 70&deg; F 'den büyük olduğunu ve nem 10 ' dan küçük olduğunu denetler. Bu deyimlerden her ikisi de doğru olduğunda, kural true olarak değerlendirilir ve bir eylemi tetikler.
 
 ![Koşullar](media/howto-configure-rules/conditions.png)
 

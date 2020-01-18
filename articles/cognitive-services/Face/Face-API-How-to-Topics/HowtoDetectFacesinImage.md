@@ -1,5 +1,5 @@
 ---
-title: Görüntüdeki yüzeyleri algılama-Yüz Tanıma API'si
+title: Görüntüde yüzleri algılayın
 titleSuffix: Azure Cognitive Services
 description: Bu kılavuzda, belirli bir görüntüden cinsiyet, Age veya poz gibi öznitelikleri ayıklamak için yüz algılamanın nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744287"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169887"
 ---
 # <a name="get-face-detection-data"></a>Yüz algılama verilerini al
 
-Bu kılavuzda, belirli bir görüntüden cinsiyet, Age veya poz gibi öznitelikleri ayıklamak için yüz algılamanın nasıl kullanılacağı gösterilmektedir. Bu kılavuzdaki kod parçacıkları, Azure bilişsel C# Hizmetler Yüz Tanıma API'si istemci kitaplığı kullanılarak içine yazılır. Aynı işlevsellik [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)ile kullanılabilir.
+Bu kılavuzda, belirli bir görüntüden cinsiyet, Age veya poz gibi öznitelikleri ayıklamak için yüz algılamanın nasıl kullanılacağı gösterilmektedir. Bu kılavuzdaki kod parçacıkları, Azure bilişsel C# hizmetler istemci kitaplığı kullanılarak dilinde yazılmıştır. Aynı işlevsellik [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)ile kullanılabilir.
 
 Bu kılavuzda nasıl yapılacağı gösterilmektedir:
 

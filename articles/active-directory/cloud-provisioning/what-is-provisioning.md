@@ -1,5 +1,5 @@
 ---
-title: Azure AD ile kimlik sağlama nedir? | Microsoft Docs
+title: Azure AD ile kimlik sağlama nedir? | Microsoft Belgeleri
 description: Kimlik sağlamaya genel bakış açıklanmaktadır.
 services: active-directory
 author: billmath
@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 166fb9320672e63b8c53717133dc61aa93f57a62
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868652"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167621"
 ---
 # <a name="what-is-identity-provisioning"></a>Kimlik sağlama nedir?
 
@@ -50,9 +50,7 @@ En yaygın senaryo, yeni bir çalışan şirketinize katıldığında bu durumda
 
 ![bulut sağlama](media/what-is-provisioning/cloud3.png)
 
-Uygulama sağlama, kullanıcının erişmesi gereken uygulamalardaki kullanıcı ve rolleri sağlamayı içerir.  
-
-En yaygın senaryo, Azure AD 'deki bir Kullanıcı O365 veya Salesforce 'a sağlandığında olur.
+Azure Active Directory (Azure AD) ' de, **[uygulama sağlama](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** terimi, kullanıcıların erişmesi gereken bulut uygulamalarında kullanıcı kimliklerinin ve rollerinin otomatik olarak oluşturulmasını ifade eder. Otomatik sağlama, kullanıcı kimliklerinin oluşturulmasına ek olarak, durum veya rol değişikliği olarak Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir. Yaygın senaryolar, bir Azure AD kullanıcısını [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)gibi uygulamalarda sağlamayı içerir.
 
 ## <a name="directory-provisioning"></a>Dizin sağlama
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8d2e0b4683261a06c39b9a5f335d7f4f22a2fd05
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4a076f9e6ae67b9a4dc27fcd058945716dfebe75
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912336"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264619"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma
 
@@ -58,7 +58,7 @@ IoT Edge cihazı:
 * IoT Edge cihazınız olacak bir Linux cihazı veya sanal makinesi. [Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) sanal makinesinde Microsoft tarafından sağlanmış Azure IoT Edge kullanmanız gerekir ve bu, bir cihazda IoT Edge çalıştırmak için ihtiyaç duyduğunuz her şeyi önceden kurar. Kullanım koşullarını kabul edin ve aşağıdaki komutları kullanarak bu sanal makineyi oluşturun:
 
    ```azurecli-interactive
-   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
+   az vm image terms accept --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 

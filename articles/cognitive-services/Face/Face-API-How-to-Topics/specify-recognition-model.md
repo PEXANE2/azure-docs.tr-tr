@@ -1,7 +1,7 @@
 ---
-title: Bir tanıma modeli belirtme-Yüz Tanıma API'si
+title: Bir tanıma modeli belirtme-yüz
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Azure Yüz Tanıma API'si uygulamanızla hangi tanıma modelinin kullanılacağını nasıl seçeceğiniz gösterilmektedir.
+description: Bu makalede, Azure yüz uygulamanızla birlikte kullanılacak tanınma modelini nasıl seçeceğiniz gösterilmektedir.
 services: cognitive-services
 author: longli0
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: 5b84e078e3b674a539b61c07c4bb4370719e4799
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 44392b807659ff8f13511b48d0afd33db080e4f6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771028"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166468"
 ---
 # <a name="specify-a-face-recognition-model"></a>Yüz tanıma modeli belirtme
 
-Bu kılavuzda, Azure Yüz Tanıma API'si kullanarak yüz algılama, tanımlama ve benzerlik araması için bir yüz tanıma modeli belirtme konusu gösterilmektedir.
+Bu kılavuzda, Azure yüz hizmetini kullanarak yüz algılama, tanımlama ve benzerlik arama için bir yüz tanıma modeli belirtme konusu gösterilmektedir.
 
-Yüz Tanıma API'si, görüntülerde insan yüzeyleri üzerinde işlem gerçekleştirmek için makine öğrenimi modellerini kullanır. Müşteri geri bildirimlerine ve araştırmada ilerlemeleri temel alan modellerimizin doğruluğunu geliştirmeye devam ediyoruz ve bu geliştirmeleri model güncelleştirmeleri olarak sunduk. Geliştiriciler, yüz tanıma modeli 'nin hangi sürümünü kullanmak istediğinizi belirtme seçeneğine sahiptir; Kullanım durumlarına en uygun modeli seçebilirler.
+Yüz hizmeti, görüntülerde insan yüzeyleri üzerinde işlem gerçekleştirmek için makine öğrenimi modellerini kullanır. Müşteri geri bildirimlerine ve araştırmada ilerlemeleri temel alan modellerimizin doğruluğunu geliştirmeye devam ediyoruz ve bu geliştirmeleri model güncelleştirmeleri olarak sunduk. Geliştiriciler, yüz tanıma modeli 'nin hangi sürümünü kullanmak istediğinizi belirtme seçeneğine sahiptir; Kullanım durumlarına en uygun modeli seçebilirler.
 
 Yeni bir Kullanıcı kullanıyorsanız en son modeli kullanmanızı öneririz. Model çakışmalarını önlarken farklı yüz işlemlerinde nasıl belirteceğinizi öğrenmek için okumaya devam edin. İleri düzey bir kullanıcıysanız ve en son modele geçiş yapmanız gerekip gerekmediğine emin değilseniz, yeni modeli değerlendirmek ve sonuçları geçerli veri kümesi kullanarak karşılaştırmak için [farklı modelleri değerlendir](#evaluate-different-models) bölümüne atlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 AI yüz tanıma ve tanımlama kavramlarını tanımanız gerekir. Değilseniz, önce bu nasıl yapılır kılavuzlarını inceleyin:
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>Belirtilen modelle yüzeyleri tanımla
 
-Yüz Tanıma API'si bir görüntüden yüz verileri çıkarabilir ve bir **kişi** nesnesiyle (örneğin, [yüz tanıma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API çağrısı aracılığıyla) Ilişkilendirebilir ve birden çok **kişi** nesnesi bir **persongroup**'ta birlikte depolanabilir. Daha sonra **Yeni bir yüz** , bir Person ( [Yüz - Belirleme] tanıma çağrısıyla) ile karşılaştırılabilir ve bu gruptaki eşleşen kişi belirlenebilir.
+Yüz tanıma hizmeti bir görüntüden yüz verileri çıkarabilir ve bunu bir **kişi** nesnesiyle (örneğin, [yüz tanıma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API çağrısı aracılığıyla) Ilişkilendirebilir ve birden çok **kişi** nesnesi bir **persongroup**'ta birlikte depolanabilir. Daha sonra **Yeni bir yüz** , bir Person ( [Yüz - Belirleme] tanıma çağrısıyla) ile karşılaştırılabilir ve bu gruptaki eşleşen kişi belirlenebilir.
 
 Bir **persongroup** 'un tüm **kişiler**için benzersiz bir tanıma modeli olması gerekir ve bunu grubu oluştururken `recognitionModel` parametresini kullanarak belirtebilirsiniz ([PersonGroup - Oluşturma] veya [LargePersonGroup - Oluşturma]). Bu parametreyi belirtmezseniz, özgün `recognition_01` modeli kullanılır. Bir grup her zaman ile oluşturulduğu tanıma modelini kullanır ve bu modele eklendiğinde yeni yüzler bu modelle ilişkilendirilir; Bu, bir grubun oluşturulduktan sonra değiştirilemez. Bir **persongroup** 'un hangi modele yapılandırıldığını görmek Için, _Returnrecognıtionmodel_ parametresi **true**olarak ayarlanmış olan [Kişilik grubu-al] API 'sini kullanın.
 

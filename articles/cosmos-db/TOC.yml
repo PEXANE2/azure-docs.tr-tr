@@ -851,8 +851,6 @@
         - name: Tutarlılık düzeylerini yönetme
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: how-to-manage-consistency.md
-        - name: Özel eşitlemeyi uygulama
-          href: how-to-custom-synchronization.md
         - name: Çakışma çözme ilkelerini yapılandırma
           href: how-to-manage-conflicts.md
     - name: Sağlanan aktarım hızı

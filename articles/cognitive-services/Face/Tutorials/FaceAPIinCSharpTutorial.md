@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: .NET SDK kullanarak görüntüdeki yüz verileri algılama ve görüntüleme'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, bir görüntüdeki yüzeyleri algılamak ve çerçeveye eklemek için Yüz Tanıma API'si kullanan bir Windows uygulaması oluşturacaksınız.
+description: Bu öğreticide, bir görüntüdeki yüzeyleri algılamak ve çerçeveye eklemek için yüz hizmetini kullanan bir Windows uygulaması oluşturacaksınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a444294497b82f316e7407999f5203cd13878928
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab0ed56b953cf2c0d96fd2d91d9a3b09fddace72
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977973"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165911"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Öğretici: bir görüntüde yüz verileri göstermek için bir Windows Presentation Framework (WPF) uygulaması oluşturma
 
-Bu öğreticide, bir görüntüdeki yüzeyleri tespit etmek ve ardından bu verileri Kullanıcı arabiriminde sunmak için .NET istemci SDK 'Sı aracılığıyla Azure Yüz Tanıma API'si kullanmayı öğreneceksiniz. Yüzleri algılayan, her yüz etrafında bir çerçeve çizen ve durum çubuğunda yüzün açıklamasını görüntüleyen bir WPF uygulaması oluşturacaksınız. 
+Bu öğreticide, bir görüntüdeki yüzeyleri tespit etmek ve ardından bu verileri Kullanıcı arabiriminde sunmak için .NET istemci SDK 'Sı aracılığıyla Azure yüz hizmeti 'ni kullanmayı öğreneceksiniz. Yüzleri algılayan, her yüz etrafında bir çerçeve çizen ve durum çubuğunda yüzün açıklamasını görüntüleyen bir WPF uygulaması oluşturacaksınız. 
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
 > [!div class="checklist"]
 > - WPF uygulaması oluşturma
-> - Yüz Tanıma API'si istemci kitaplığını yükler
+> - Yüz istemci kitaplığını yükler
 > - İstemci kitaplığını kullanarak resimdeki yüzleri algılama
 > - Algılanan her yüzün çevresine bir çerçeve çizme
 > - Durum çubuğunda vurgulanan yüzün açıklamasını görüntüle
@@ -37,9 +37,9 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz tanıma API'si abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yüz tanıma API'si hizmete abone ve anahtarınızı alın. Ardından, sırasıyla `FACE_SUBSCRIPTION_KEY` ve `FACE_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- Yüz abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `FACE_SUBSCRIPTION_KEY` ve `FACE_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 - [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/)'nin herhangi bir sürümü.
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio projesini oluşturma

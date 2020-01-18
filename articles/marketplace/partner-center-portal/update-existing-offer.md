@@ -7,19 +7,19 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f2cb1907557c2440a5a94c0f4799eac95a8cf507
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/16/2020
+ms.openlocfilehash: feeebc9446ccb1f651d8f3968feccdf9e577501e
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827853"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169016"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Ticari Market 'te mevcut bir teklifi güncelleştirme
 
 Mevcut tekliflerinizi, Iş Ortağı Merkezi ' nde [ticari Market portalının](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) **genel bakış** sekmesinde görebilirsiniz.
 
-Market 'te Şu anda etkin olan mevcut bir teklifi güncelleştirmek için: 
+Market 'te Şu anda etkin olan mevcut bir teklifi güncelleştirmek için:
 
 1. Güncelleştirmek istediğiniz teklifin adını seçin. Teklifin durumu **canlı**, **Yayımla devam ediyor**, **taslak**, **ilgilenmeniz gerekiyor**veya **Market 'te satılmamış** olabilir (daha önce teklifi satmayı durdurmayı seçtiyseniz). Seçildiğinde, bu teklif için **teklif genel bakış** sayfası açılır.
 2. Güncelleştirmek istediğiniz alan için genel bakış kartından veya sol gezinmede bulunan menü öğesinden **Güncelleştir** ' i seçin. **Teklif kurulumu**, **Özellikler**, **teklif listesi**, **Önizleme**, **Teknik yapılandırma**, **plana genel bakış**veya **test sürüşü**güncelleştirmek isteyebilirsiniz. 
@@ -29,14 +29,14 @@ Market 'te Şu anda etkin olan mevcut bir teklifi güncelleştirmek için:
 
 Güncelleştirilmiş teklifinizi yayımlamaya hazırsanız herhangi bir sayfadan **Yayımla** ' yı seçin. **İnceleme ve yayımlama** sayfası açılır. Bu sayfada şunları yapabilirsiniz:
 
-
 - Seçtiğiniz teklifin bölümlerinin tamamlanma durumunu görün: 
     - **Yayımlanmamış değişiklikler**: Bölüm güncelleştirildi ve tamamlandı. Tüm gerekli veriler sağlandı ve güncelleştirmelerde hiçbir hata alınmadı.
     - **Tamamlanmamış**: bölümde yapılan güncelleştirmeler düzeltilmekte olan veya daha fazla bilgi sağlanması gereken hatalar getirdi.
 - Testin sorunsuz bir şekilde çalışmasını sağlamak için sertifika sınama ekibine ek bilgi sağlayın.
-- **Gönder**' i seçerek yayımlama için güncelleştirilmiş teklifi gönder.  Gözden geçirmeniz ve oturum açmanız için güncelleştirilmiş teklifin önizleme sürümü kullanılabilir olduğunda size e-posta göndereceğiz.
+- **Gönder**' i seçerek yayımlama için güncelleştirilmiş teklifi gönder.  Güncelleştirilmiş teklifin önizleme sürümü incelenmek ve oturumu kapatmak için kullanılabilir olduğunda size e-posta göndereceğiz.
 
-**Önemli**: sunulan hedef kitlenize (ortak veya özel) sunulan teklifinizi yayımlamak için, teklif önizlemeyi gözden geçirmeniz ve **canlı çalış** ' ı seçmeniz gerekir.
+> [!IMPORTANT]
+> Sunulan hedef kitlenize (ortak veya özel) güncelleştirilmiş teklifinizi yayımlamak için, mevcut olduğunda teklif önizlemeyi gözden geçirmeniz ve **canlı çalış** ' ı seçmeniz gerekir.
 
 ## <a name="update-a-plan-within-an-existing-offer"></a>Mevcut bir teklif içindeki bir planı güncelleştirme
 
@@ -45,7 +45,67 @@ Zaten yayımladığınız mevcut bir teklifin içindeki bir planda değişiklik 
 - Mevcut teklifiniz için **teklif genel bakış** sayfası açıkken, değiştirmek istediğiniz planı seçin. Plana **genel bakış** listesinden erişilemezse, **tüm planları göster**' i seçin.
 - Plan **adını**, **fiyatlandırma modelini**veya **kullanılabilirliği**seçebilirsiniz. *Şu anda planlar yalnızca İngilizce (Birleşik Devletler) olarak kullanılabilir*.
 - Plan adı, açıklama, fiyatlandırma veya hedef kitle kullanılabilirliğine gereken değişiklikleri yaptıktan sonra **Kaydet** ' i seçin. 
-- Güncelleştirmelerinizi yayımlamaya hazırsanız **Yayımla** ' yı seçin. **[İnceleme ve yayımlama](#review-and-publish-an-updated-offer)** sayfası açılır ve güncelleştirmelerinizin tamamlanma durumunu sağlar. 
+- Güncelleştirmelerinizi yayımlamaya hazırsanız **Yayımla** ' yı seçin. **[İnceleme ve yayımlama](#review-and-publish-an-updated-offer)** sayfası açılır ve güncelleştirmelerinizin tamamlanma durumunu sağlar.
+
+## <a name="compare-changes-to-marketplace-offers"></a>Market teklifleriyle yapılan değişiklikleri karşılaştırın
+
+Bir [yayınlanmış](#compare-changes-to-published-offer) veya [Önizleme](#compare-changes-to-a-preview-offer) teklifinde yaptığınız değişiklikleri **Compare**kullanarak canlı hale getirmeden önce denetleyebilirsiniz.
+
+>[!NOTE]
+> Yayımlanmış bir teklif, önizleme veya canlı duruma başarıyla yayınlanan bir tekliftir.
+
+Genel denetim bilgileri için aşağıya bakın:
+
+- Herhangi bir noktada, düzen işlemi sırasında **Compare** kullanabilirsiniz.
+- Değiştirmek istediğiniz değere gitmek için **karşılaştırma** sayfasında bir alan seçin.
+- Güncelleştirmelerinizi yayımlamaya hazırsanız, **gözden geçir ve Yayımla**' yı seçin.
+- Tüm alanlar için değerleri, hatta güncelleştirilmemiş alanları görmek için **tüm alanlar** filtresini seçin. **Değiştirilen alanlar**' ı seçip aşağıdaki filtrelerden birini seçerek bu alanlar içindeki filtreleri değiştirebilirsiniz:
+    - **Kaldırılan değerler** filtresi, yayımladığınız alanları görüntüler ve şimdi tamamen kaldırıyorsunuz.
+    - **Eklenen değerler** filtresi, ilk olarak yayımlamayan ve şimdi ekleyen alanları görüntüler.
+    - **Düzenlenmiş değerler** filtresi yayımlanmış alanları görüntüler, ancak artık içeriği güncelleştirdiniz.
+
+      >[!NOTE]
+      > Bu filtrelerden biri kullanılamıyorsa, bu türden bir güncelleştirme oluşturmadığınız anlamına gelir.
+
+- Yalnızca güncelleştirilmemiş değerleri görmek için, **değiştirilmemiş alanlar** filtresini seçin. Yayımlanan ve taslak sürümü için gösterilen alan değerleri aynı olacaktır.
+
+  ![Güncelleştirmeleri yayınlanmış veya önizleme teklifinizle karşılaştırmak için filtreler](./media/compare-changes-marketplace.png)
+
+>[!NOTE]
+> Aşağıdaki sayfalar şu anda **karşılaştırmayı**desteklemiyor:
+>- CSP satıcı hedef kitlesi
+>- Sınama sürücüsü teknik yapılandırma
+>- Sınama sürücüsü market listesi
+>- Ortak satış
+>- Ek dosyalar
+
+### <a name="compare-changes-to-published-offer"></a>Yayımlanan teklifle yapılan değişiklikleri karşılaştırın
+
+Yayımlanmış tekliften yaptığınız değişiklikleri karşılaştırmak için aşağıdaki yönergeleri izleyin:
+
+1. Sayfanın komut çubuğunda **Karşılaştır** ' ı seçin. **Compare** sayfası, bu teklifin kaydedilen değişikliklerinin ve yayımlanan Market teklifinin yan yana sürümlerini sağlar.
+2. Teklifin belirli bir sayfasından **karşılaştırmaya** eriştiğinizde, varsayılan olarak yalnızca ilgili sayfada yapılan değişiklikleri görüntüler.
+    - Tüm sayfalardaki değişiklikleri karşılaştırmak istiyorsanız, sayfayı **Karşılaştırılacak bir sayfa seçin**seçeneğini değiştirin.  
+    - Teklifle yapılan değişiklikleri tüm sayfalarda karşılaştırmak istiyorsanız **tüm sayfalar**' ı seçin.
+
+Varsayılan olarak, yeni değişikliklerinizi canlı Market teklifiyle **karşılaştırın** .
+
+Değişikliklerin etkili olması için güncelleştirmeleri yaptıktan sonra teklifinizi yeniden yayımlamayı unutmayın.
+
+### <a name="compare-changes-to-a-preview-offer"></a>Değişiklikleri Önizleme teklifiyle karşılaştırın
+
+Önizlemede canlı olmayan değişiklikler varsa, yeni değişiklikleri Önizleme Market teklifiyle karşılaştırabilirsiniz.
+
+Yeni değişiklikleri Önizleme marketi teklifinizle karşılaştırmak için aşağıdaki yönergeleri izleyin:
+
+1. Sayfanın komut çubuğunda **Karşılaştır** ' ı seçin.
+2. Açılan menü **ile** öğesini seçin ve **canlı tekliften** **Önizleme teklifini**değiştirin.
+3. **Compare** sayfası, değişiklikleri gösteren yan yana sürümler sağlar.
+
+>[!NOTE]
+>Teklifiniz henüz canlı hale gelmemişse ancak önizleme aşamasında yayımladıysanız canlı bir teklifle karşılaştırma seçeneğiniz yoktur.
+
+Değişikliklerin etkili olması için güncelleştirmeleri yaptıktan sonra teklifinizi yeniden yayımlamayı unutmayın.
 
 ## <a name="delete-a-draft-offer"></a>Taslak teklifini silme
 
@@ -63,20 +123,20 @@ Taslak planını silmek istediğinizi doğruladıktan sonra, plan artık Iş Ort
 
 **Yayımlama sürüyor** durumunda olan bir teklifi iptal etmek için:
 
-- Teklif **genel bakış** sayfasını açmak için teklif adını seçin. 
+- Teklif **genel bakış** sayfasını açmak için teklif adını seçin.
 - Sayfanın sağ üst köşesinden **yayımlamayı Iptal et** ' i seçin.
-- Teklifin yayımlanmasını durdurmak istediğinizi onaylayın. 
+- Teklifin yayımlanmasını durdurmak istediğinizi onaylayın.
 
 Teklifi daha sonra yayınlamak istiyorsanız, Yayımlama sürecini üzerinde başlatmanız gerekir.
 
 > [!NOTE]
-> Bir teklifin yayımlanmasını, yalnızca teklifin yayımcı oturumu açma adımına henüz ilerlemedi. **Canlı git** ' i seçtikten sonra, yayımlamayı daha fazla iptal etme seçeneğiniz olmayacaktır.
+> Bir teklifin yayımlanmasını, yalnızca teklif yayımcı oturumu kapatma adımına ilerlemedi. **Canlı git** ' i seçtikten sonra, yayımlamayı daha fazla iptal etme seçeneğiniz olmayacaktır.
 
 ## <a name="stop-selling-an-offer-or-plan"></a>Teklif veya plan satmaya
 
 Zaten yayımladıktan sonra teklif satımı bırakmak için **teklif genel bakış** sayfasından **satışı durdur** ' u seçin. Bir planı satmaya durdurmak için **plana genel bakış** sayfasından **satışı durdur** ' u seçin. (Bir planı satmaya durdurma seçeneği yalnızca teklifte birden fazla plana sahipseniz kullanılabilir. Teklifinizdeki diğer planları etkilemeden bir plan satmaya izin vermeyi seçebilirsiniz.)
 
-Teklif veya planı satmayı durdurmak istediğinizi tamamladıktan sonra, birkaç saat içinde artık Market 'te görünmez ve yeni müşteriler bunu indiremez. 
+Teklif veya planı satmayı durdurmak istediğinizi tamamladıktan sonra, birkaç saat içinde artık Market 'te görünmez ve yeni müşteriler bunu indiremez.
 
 Teklifi veya planı önceden almış olan müşteriler onu kullanmaya devam edebilir. Bu kişiler yeniden indirebilir, ancak teklifi veya planı daha sonra güncelleştirip yeniden yayımladığınızda güncelleştirmeleri almaz. 
 

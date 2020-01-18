@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: d715252f16a34f2261c108ebd3ff5d1f6f3424d8
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5d3aba2f6010ba16656be96433c521d2adae4c58
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887925"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169173"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure komut satırı arabirimi 'ni (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -76,7 +76,7 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 
 ### <a name="multi-service"></a>Çoklu hizmet
 
-| Hizmet                    | denetlenmesi                      |
+| Hizmet                    | tür                      |
 |----------------------------|---------------------------|
 | Birden çok hizmet. Daha fazla bilgi için [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/) sayfasına bakın.            | `CognitiveServices`     |
 
@@ -84,20 +84,20 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 > [!NOTE]
 > Aşağıdaki bilişsel hizmetler 'in çoğunda hizmeti denemek için kullanabileceğiniz ücretsiz bir katman vardır. Ücretsiz katmanı kullanmak için, kaynağınız için SKU olarak `F0` kullanın.
 
-### <a name="vision"></a>Görsel
+### <a name="vision"></a>Görüntü
 
-| Hizmet                    | denetlenmesi                      |
+| Hizmet                    | tür                      |
 |----------------------------|---------------------------|
 | Görüntü İşleme            | `ComputerVision`          |
 | Özel Görüntü İşleme tahmin | `CustomVision.Prediction` |
 | Özel Görüntü İşleme-eğitim   | `CustomVision.Training`   |
-| Yüz Tanıma API'si                   | `Face`                    |
+| Yüz Tanıma                       | `Face`                    |
 | Form Tanıma            | `FormRecognizer`          |
 | Mürekkep Tanıma             | `InkRecognizer`           |
 
 ### <a name="search"></a>Arama
 
-| Hizmet            | denetlenmesi                  |
+| Hizmet            | tür                  |
 |--------------------|-----------------------|
 | Bing Otomatik Öneri   | `Bing.Autosuggest.v7` |
 | Bing Özel Arama | `Bing.CustomSearch`   |
@@ -105,26 +105,26 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 | Bing Arama        | `Bing.Search.v7`      |
 | Bing Yazım Denetimi   | `Bing.SpellCheck.v7`  |
 
-### <a name="speech"></a>Konuşma
+### <a name="speech"></a>Konuşma Tanıma
 
-| Hizmet            | denetlenmesi                 |
+| Hizmet            | tür                 |
 |--------------------|----------------------|
 | Konuşma Hizmetleri    | `SpeechServices`     |
 | Konuşma Tanıma | `SpeakerRecognition` |
 
 ### <a name="language"></a>Dil
 
-| Hizmet            | denetlenmesi                |
+| Hizmet            | tür                |
 |--------------------|---------------------|
 | Form anlama | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
-| Soru-Cevap Oluşturucu          | `QnAMaker`          |
+| Soru-Cevap Oluşturma          | `QnAMaker`          |
 | Metin Analizi     | `TextAnalytics`     |
 | Metin Çevirisi   | `TextTranslation`   |
 
 ### <a name="decision"></a>Karar
 
-| Hizmet           | denetlenmesi               |
+| Hizmet           | tür               |
 |-------------------|--------------------|
 | Anomali Algılayıcısı  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |

@@ -4,15 +4,15 @@ description: Genişleme Azure Analysis Services sunucularını çoğaltın. Daha
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1b40238dfc579e42d0389ae14fdea4b5692ede06
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 56a3d4f172cde70bdd1a875c76213c43184cbbc3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572633"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167932"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services ölçeğini genişletme
 
@@ -20,7 +20,7 @@ Genişleme ile, istemci sorguları bir *sorgu havuzundaki*birden çok *sorgu ço
 
 Standart fiyatlandırma katmanındaki sunucular için ölçek genişletme kullanılabilir. Her sorgu çoğaltması, sunucunuz ile aynı hızda faturalandırılır. Tüm sorgu çoğaltmaları, sunucunuz ile aynı bölgede oluşturulur. Yapılandırabileceğiniz sorgu çoğaltmalarının sayısı sunucunuzun bulunduğu bölge tarafından sınırlandırılır. Daha fazla bilgi için bkz. [bölgeye göre kullanılabilirlik](analysis-services-overview.md#availability-by-region). Genişleme, sunucunuz için kullanılabilir bellek miktarını artırmaz. Belleği artırmak için planınızı yükseltmeniz gerekir. 
 
-## <a name="why-scale-out"></a>Neden ölçeklendirin?
+## <a name="why-scale-out"></a>Neden ölçeklendirmeliyim?
 
 Tipik bir sunucu dağıtımında, bir sunucu hem işlem sunucusu hem de sorgu sunucusu olarak görev yapar. Sunucunuzdaki modellerdeki istemci sorgularının sayısı, sunucunuzun planı için sorgu Işleme birimlerini (QPU) aşarsa veya model işleme, yüksek sorgu iş yükleri ile aynı zamanda gerçekleşirse performans düşebilir. 
 
@@ -30,13 +30,13 @@ Bir sorgu havuzunda sahip olduğunuz sorgu çoğaltmalarının sayısından bağ
 
 Ölçeği ölçeklendirirken, yeni sorgu çoğaltmalarının sorgu havuzuna artımlı olarak eklenmesi beş dakikaya kadar sürebilir. Tüm yeni sorgu çoğaltmaları çalışır duruma geldiğinde, yeni istemci bağlantıları sorgu havuzundaki kaynaklar arasında yük dengelemesi yapılır. Mevcut istemci bağlantıları, o anda bağlı oldukları kaynaktan değiştirilmez. ' De ölçeklendirilirken, sorgu havuzundan kaldırılmakta olan bir sorgu havuzu kaynağına yönelik mevcut istemci bağlantıları sonlandırılır. İstemciler kalan bir sorgu havuzu kaynağına yeniden bağlanabilir.
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
 Ölçeği ilk kez yapılandırırken, birincil sunucunuzdaki model veritabanları yeni bir sorgu havuzundaki yeni yinelemelerle *otomatik olarak* eşitlenir. Otomatik eşitleme yalnızca bir kez gerçekleşir. Otomatik eşitleme sırasında, birincil sunucunun veri dosyaları (blob depolamada Rest 'te şifrelenir), blob depolamada bekleyen bir ikinci konuma kopyalanır. Sorgu havuzundaki çoğaltmalar daha sonra ikinci dosya *kümesindeki verilerle birlikte* gösterilir. 
 
 Otomatik eşitleme yalnızca bir sunucuyu ilk kez ölçeklendirirken gerçekleştirilir, ayrıca el ile eşitleme gerçekleştirebilirsiniz. Sorgu havuzundaki çoğaltmalarda verilerin eşitlenmesi, birincil sunucuyla eşleşir. Birincil sunucudaki modelleri işlerken (yenileme), işleme işlemleri *tamamlandıktan sonra* bir eşitleme gerçekleştirilmelidir. Bu eşitleme, güncelleştirilmiş verileri, BLOB depolama alanındaki birincil sunucunun dosyalarından ikinci dosya kümesine kopyalar. Sorgu havuzundaki çoğaltmalar daha sonra blob depolamada bulunan ikinci dosya kümesinden güncelleştirilmiş verilerle birlikte gösterilir. 
 
-Daha sonraki bir genişleme işlemi gerçekleştirirken, örneğin, sorgu havuzundaki çoğaltmaların sayısını iki ila beş arasında artırarak, yeni çoğaltmalar blob depolamada bulunan ikinci dosya kümesindeki verilerle birlikte gösterilir. Eşitleme yok. Ölçeği ölçeklendirdikten sonra bir eşitleme gerçekleştirirseniz, sorgu havuzundaki yeni çoğaltmalar, fazladan bir hidrasyon olmak üzere iki katına çıkar. Sonraki bir genişleme işlemi gerçekleştirirken göz önünde bulundurmanız önemlidir:
+Daha sonraki bir genişleme işlemi gerçekleştirirken, örneğin, sorgu havuzundaki çoğaltmaların sayısını iki ila beş arasında artırarak, yeni çoğaltmalar blob depolamada bulunan ikinci dosya kümesindeki verilerle birlikte gösterilir. Eşitleme yok. Daha sonra ölçeği ölçeklendirdikten sonra bir eşitleme gerçekleştirirseniz, sorgu havuzundaki yeni çoğaltmalar, fazladan bir hidrasyon olmak üzere iki kez yeniden görüntülenir. Sonraki bir genişleme işlemi gerçekleştirirken göz önünde bulundurmanız önemlidir:
 
 * Eklenen çoğaltmaların gereksiz bir şekilde hidramasını önlemek için *genişleme işleminden önce* bir eşitleme gerçekleştirin. Aynı anda çalışan eşzamanlı eşitlemeye ve genişleme işlemlerine izin verilmez.
 
@@ -44,9 +44,29 @@ Daha sonraki bir genişleme işlemi gerçekleştirirken, örneğin, sorgu havuzu
 
 * Sorgu havuzunda çoğaltma olmadığında bile eşitlemeye izin verilir. Birincil sunucudaki bir işleme işlemindeki yeni verilerle bir veya daha fazla kopyaya ölçeklendirirseniz, eşitleme işlemini sorgu havuzunda çoğaltma olmadan gerçekleştirin ve ardından ölçeği ölçeklendirin. Ölçeklendirmeden önce eşitleme, yeni eklenen çoğaltmaların gereksiz bir şekilde yeniden alımını önler.
 
-* Birincil sunucudan bir model veritabanını silerken, sorgu havuzundaki çoğaltmalardan otomatik olarak silinmez. Çoğaltmanın paylaşılan BLOB depolama konumundan söz konusu veritabanına ait dosya/öğeleri kaldıran ve çoğaltmalarda model veritabanını silen [Sync-Azanalysisservicesınstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell komutunu kullanarak bir eşitleme işlemi gerçekleştirmeniz gerekir sorgu havuzunda. Bir model veritabanının, birincil sunucuda değil, sorgu havuzunda çoğaltmalar üzerinde olup olmadığını anlamak için, **işlem sunucusunun havuzu sorgulama** ayarını **Evet**olarak doğrulayın. Ardından, veritabanının mevcut olup olmadığını görmek için `:rw` niteleyicisi kullanarak birincil sunucuya bağlanmak üzere SSMS kullanın. Ardından, aynı veritabanının de mevcut olup olmadığını görmek için `:rw` niteleyicisi olmadan bağlanarak sorgu havuzundaki çoğaltmalara bağlanın. Veritabanı, birincil sunucuda değil, sorgu havuzunda çoğaltmalar üzerinde bulunuyorsa bir eşitleme işlemi çalıştırın.   
+* Birincil sunucudan bir model veritabanını silerken, sorgu havuzundaki çoğaltmalardan otomatik olarak silinmez. Bu veritabanının dosya/s dosyasını çoğaltmanın paylaşılan BLOB depolama konumundan kaldıran [Sync-Azanalysisservicesınstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell komutunu kullanarak bir eşitleme işlemi gerçekleştirmeniz gerekir ve ardından sorgu havuzundaki çoğaltmalarda model veritabanını siler. Bir model veritabanının, birincil sunucuda değil, sorgu havuzunda çoğaltmalar üzerinde olup olmadığını anlamak için, **işlem sunucusunun havuzu sorgulama** ayarını **Evet**olarak doğrulayın. Ardından, veritabanının mevcut olup olmadığını görmek için `:rw` niteleyicisi kullanarak birincil sunucuya bağlanmak üzere SSMS kullanın. Ardından, aynı veritabanının de mevcut olup olmadığını görmek için `:rw` niteleyicisi olmadan bağlanarak sorgu havuzundaki çoğaltmalara bağlanın. Veritabanı, birincil sunucuda değil, sorgu havuzunda çoğaltmalar üzerinde bulunuyorsa bir eşitleme işlemi çalıştırın.   
 
 * Birincil sunucudaki bir veritabanını yeniden adlandırırken, veritabanının herhangi bir çoğaltmayla düzgün şekilde eşitlendiğinden emin olmak için ek bir adım gereklidir. Yeniden adlandırdıktan sonra, eski veritabanı adıyla `-Database` parametresini belirten [Sync-Azanalysisservicesınstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) komutunu kullanarak bir eşitleme gerçekleştirin. Bu eşitleme, tüm çoğaltmalardan veritabanını ve eski adı taşıyan dosyaları kaldırır. Ardından, yeni veritabanı adıyla `-Database` parametresini belirten başka bir eşitleme gerçekleştirin. İkinci eşitleme, yeni adlandırılmış veritabanını ikinci dosya kümesine kopyalar ve tüm çoğaltmaları yeniden kapatır. Bu eşitlemeler portalda modeli eşitleme komutu kullanılarak gerçekleştirilemez.
+
+### <a name="synchronization-mode"></a>Eşitleme modu
+
+Varsayılan olarak, sorgu çoğaltmaları artımlı değil tam olarak yeniden boyanır. Yeniden doldurma aşamalarda gerçekleşir. Bunlar, belirli bir zamanda sorgular için en az bir çoğaltmanın çevrimiçi tutulduğundan emin olmak için bir kerede ayrılırlar ve iki kez eklenir (en az üç çoğaltma olduğu varsayılarak). Bazı durumlarda, bu işlem gerçekleşirken istemcilerin çevrimiçi çoğaltmalardan birine yeniden bağlanmasına gerek olabilir. **Replicasyncmode** ayarını kullanarak artık sorgu çoğaltma eşitlemesini paralel olarak belirtebilirsiniz. Paralel eşitleme aşağıdaki avantajları sağlar: 
+
+- Eşitleme zamanında önemli bir düşüş. 
+- Eşitleme işlemi sırasında çoğaltmalar genelinde verilerin tutarlı olma olasılığı yüksektir. 
+- Veritabanları eşitleme işlemi boyunca tüm çoğaltmalarda çevrimiçi tutulduğundan, istemcilerin yeniden bağlanmasına gerek yoktur. 
+- Bellek içi önbellek, modeli tamamen yeniden doldurma özelliğinden daha hızlı olabilen yalnızca değiştirilen verilerle artımlı olarak güncelleştirilir. 
+
+#### <a name="setting-replicasyncmode"></a>ReplicaSyncMode ayarlanıyor
+
+Gelişmiş özelliklerde ReplicaSyncMode ayarlamak için SSMS 'yi kullanın. Olası değerler şunlardır: 
+
+- `1` (varsayılan): aşamalar halinde tam çoğaltma veritabanı yeniden doldurma (artımlı). 
+- `2`: en Iyileştirilmiş eşitleme paralel olarak. 
+
+![RelicaSyncMode ayarı](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)
+
+**Replicasyncmode = 2**ayarlanırken, önbelleğin ne kadarının güncelleştirilmesi gerektiğine bağlı olarak, sorgu çoğaltmaları tarafından ek bellek tüketilebilir. Verilerin ne kadarının değiştirildiğine bağlı olarak veritabanını çevrimiçi ve sorgular için kullanılabilir durumda tutmak için, hem eski hem de yeni segmentler aynı anda bellekte tutulduğundan, işlem çoğaltma üzerinde en fazla *bellek* gerektirebilir. Çoğaltma düğümleri birincil düğümle aynı bellek ayrılmasına sahiptir ve yenileme işlemleri için birincil düğümde normal olarak ek bellek vardır; bu nedenle çoğaltmalarda belleğin tükenme olasılığı düşüktür. Ayrıca, yaygın senaryo, veritabanının birincil düğümde artımlı olarak güncelleştirilmesini ve bu nedenle, çift bellek gereksinimi çok seyrek olmalıdır. Eşitleme işleminde bellek yetersiz hatası varsa, varsayılan tekniği (her seferinde iki kez Ekle/ayır) kullanarak yeniden dener. 
 
 ### <a name="separate-processing-from-query-pool"></a>İşlemi sorgu havuzundan ayır
 
@@ -56,7 +76,7 @@ Hem işleme hem de sorgu işlemleri için en yüksek performans için, işlem su
 
 Sunucunuz için ölçek genişletme gerekip gerekmediğini öğrenmek için, ölçümleri kullanarak sunucunuzu Azure portal izleyin. QPU 'niz düzenli olarak kullanılıyorsa, modellerinize yönelik sorguların sayısı, planınız için QPU sınırını aşmasıdır. Sorgu havuzu iş kuyruğu uzunluğu ölçümü, sorgu iş parçacığı havuzu sırasındaki sorguların sayısı kullanılabilir QPU 'ları aştığında de artar. 
 
-İzleme için başka bir iyi ölçüm, ServerResourceType tarafından ortalama QPU 'dir. Bu ölçüm, birincil sunucu için, sorgu havuzunun ortalama QPU değerini karşılaştırır. 
+İzleme için başka bir iyi ölçüm, ServerResourceType tarafından ortalama QPU 'dir. Bu ölçüm, birincil sunucu için Ortalama QPU 'ları sorgu havuzu ile karşılaştırır. 
 
 ![Sorgu ölçeği genişletme ölçümleri](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
@@ -82,7 +102,7 @@ Daha fazla bilgi için bkz. [Sunucu ölçümlerini izleme](analysis-services-mon
 
 Bir sunucu için ölçeği ilk kez yapılandırırken, birincil sunucunuzdaki modeller otomatik olarak sorgu havuzundaki yinelemelerle eşitlenir. Otomatik eşitleme yalnızca bir kez, ölçeği bir veya daha fazla çoğaltma için ilk yapılandırdığınızda oluşur. Aynı sunucudaki çoğaltmalar sayısında yapılan sonraki değişiklikler, *başka bir otomatik eşitleme tetiklemez*. Sunucuyu sıfır çoğaltmalar olarak ayarlayıp daha sonra istediğiniz sayıda çoğaltmaya ölçeklendirseniz bile otomatik eşitleme yeniden gerçekleşmez. 
 
-## <a name="synchronize"></a>Yapacak 
+## <a name="synchronize"></a>Eşitle 
 
 Eşitleme işlemlerinin el ile veya REST API kullanılarak gerçekleştirilmesi gerekir.
 
@@ -107,7 +127,7 @@ Eşitleme işlemlerinin el ile veya REST API kullanılarak gerçekleştirilmesi 
 Dönüş durum kodları:
 
 
-|Kod  |Açıklama  |
+|Kodlayın  |Açıklama  |
 |---------|---------|
 |-1     |  Geçersiz       |
 |0     | Yapan        |

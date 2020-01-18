@@ -1,5 +1,5 @@
 ---
-title: "Örnek: büyük ölçekli özelliği kullanın-Yüz Tanıma API'si"
+title: 'Örnek: büyük ölçekli özelliği kullanma-yüz'
 titleSuffix: Azure Cognitive Services
 description: Bu kılavuz, var olan kişi grubundan ve çok yönlü nesnelerden LargePersonGroup ve Largeçok yönlü liste nesnelerine nasıl ölçekleneceye ilişkin bir makaledir.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: 976baaef11251715218ecea71986f08ec5f72996
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743735"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169777"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Örnek: büyük ölçekli özelliği kullanın
 
@@ -23,14 +23,14 @@ Bu kılavuz, var olan kişi grubundan ve çok yönlü nesneleri sırasıyla Larg
 
 LargePersonGroup ve Largecelist, toplu olarak büyük ölçekli işlemler olarak adlandırılır. LargePersonGroup, her biri en fazla 248 yüzü olan en fazla 1.000.000 kişi içerebilir. Largecelıst, en fazla 1.000.000 yüz içerebilir. Büyük ölçekli işlemler geleneksel kişiler ve çok yönlü listesine benzerdir ancak yeni mimari nedeniyle bazı farklılıklar vardır. 
 
-Örnekler, Azure bilişsel Hizmetler Yüz Tanıma API'si istemci kitaplığı kullanılarak yazılır C# .
+Örnekler, Azure bilişsel hizmetler istemci kitaplığı kullanılarak dilinde C# yazılır.
 
 > [!NOTE]
 > Büyük ölçekte kimlik ve bulgulara benzeyen yüz arama performansını etkinleştirmek için, Largecelist ve LargePersonGroup 'u önceden işlemek üzere bir eğitme işlemi tanıtın. Eğitim süresi, gerçek kapasiteye göre saniyeler arasında bir saat kadar farklılık gösterir. Eğitim döneminde, daha önce başarılı bir eğitim işlemi yapıldıktan sonra kimlik ve Bulgubenzeri bir şekilde gerçekleştirilmesi mümkündür. Büyük ölçekli eğitimlere yeni bir post geçişi tamamlanana kadar, yeni eklenen kişilerin ve yüzlerin sonuç içinde görünmesidir.
 
 ## <a name="step-1-initialize-the-client-object"></a>1\. Adım: istemci nesnesini başlatma
 
-Yüz Tanıma API'si istemci kitaplığını kullandığınızda, abonelik anahtarı ve abonelik uç noktası FaceClient sınıfının Oluşturucusu aracılığıyla geçirilir. Örneğin:
+Yüz istemci kitaplığını kullandığınızda, abonelik anahtarı ve abonelik uç noktası FaceClient sınıfının Oluşturucusu aracılığıyla geçirilir. Örneğin:
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";
@@ -63,12 +63,12 @@ Tüm yüzleri ve kişileri PersonGroup 'tan yeni LargePersonGroup 'a ekleyin. Da
 
 | FaceList API’leri | LargeFaceList API’leri |
 |:---:|:---:|
-| Oluşturma | Oluşturma |
+| Create | Create |
 | Sil | Sil |
-| Al | Al |
-| Liste | Liste |
+| Alın | Alın |
+| Listeleme | Listeleme |
 | Güncelleştirme | Güncelleştirme |
-| - | Eğitim |
+| - | Eğitin |
 | - | Eğitim Durumunu Alma |
 
 Yukarıdaki tabloda, FaceList ile LargeFaceList arasındaki liste düzeyinde işlemlerin karşılaştırması yer almaktadır. Gösterildiği gibi Largecelist, çok yönlü liste ile karşılaştırıldığında yeni işlemler, eğitme ve eğitim durumunu alır. Largeçok yönlü listesi eğitimi, [Findbenzer](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) işlemin bir önkoşuludur. Çok yönlü liste için eğitim gerekli değildir. Aşağıdaki kod parçacığı, Largeçok yönlü listesinin eğitiminin bekleneceği bir yardımcı işlevdir:

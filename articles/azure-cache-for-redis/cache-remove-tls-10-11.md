@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 2f6203deb5e06ba69a3b4d06297d5e702992c79d
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708065"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260165"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>TLS 1,0 ve 1,1 ' i Redsıs için Azure Cache ile birlikte kullanarak kaldırma
 
@@ -19,8 +19,8 @@ Aktarım Katmanı Güvenliği (TLS) sürüm 1,2 veya üzeri için özel kullanı
 
 Bu çaba kapsamında, Redsıs için Azure önbelleğinde aşağıdaki değişiklikleri yapacağız:
 
-* 13 Ocak 2020 tarihinden itibaren, yeni oluşturulan önbellek örnekleri için varsayılan en düşük TLS sürümünü 1,2 olacak şekilde yapılandıracağız.  Mevcut önbellek örnekleri bu noktada güncelleştirilmeyecek.  Gerekirse, geriye doğru uyumluluk için [En düşük TLS sürümünü](cache-configure.md#access-ports) yeniden 1,0 veya 1,1 olarak değiştirebilirsiniz.  Bu değişiklik Azure portal veya diğer yönetim API 'Leri aracılığıyla yapılabilir.
-* 31 Mart 2020 ' den itibaren, 1,0 ve 1,1 TLS sürümlerini desteklemeye başlayacağız. Bu değişiklikten sonra, uygulamanız önbelleğiyle iletişim kurmak için TLS 1,2 veya sonraki bir sürümü kullanmanız gerekecektir.
+* **1. Aşama:** Yeni oluşturulan önbellek örnekleri için varsayılan en düşük TLS sürümünü 1,2 olarak yapılandıracağız.  Mevcut önbellek örnekleri bu noktada güncelleştirilmeyecek.  Gerekirse, geriye doğru uyumluluk için [En düşük TLS sürümünü](cache-configure.md#access-ports) yeniden 1,0 veya 1,1 olarak değiştirebilirsiniz.  Bu değişiklik Azure portal veya diğer yönetim API 'Leri aracılığıyla yapılabilir.
+* **2. Aşama:** 1,0 ve 1,1 TLS sürümlerini desteklemeye başlayacağız. Bu değişiklikten sonra, uygulamanız önbelleğiyle iletişim kurmak için TLS 1,2 veya sonraki bir sürümü kullanmanız gerekecektir.
 
 Ayrıca, bu değişikliğin bir parçası olarak, eski, güvenli olmayan şifresi üzerinde anlaşılamadı paketleri desteğini kaldıracağız.  Önbellek en düşük TLS sürümü 1,2 ile yapılandırıldığında desteklenen şifresi üzerinde anlaşılamadı paketlerimiz aşağıdakiler ile kısıtlanır.
 
@@ -28,6 +28,15 @@ Ayrıca, bu değişikliğin bir parçası olarak, eski, güvenli olmayan şifres
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
 Bu makalede, bu önceki TLS sürümlerindeki bağımlılıkların nasıl algılanacağı ve uygulamanızdan kaldırılacağı hakkında genel yönergeler sunulmaktadır.
+
+Bu değişikliklerin etkili olması için tarihler şunlardır:
+
+| Bulut               | Aşama 1 başlangıç tarihi | 2\. aşama başlangıç tarihi |
+|---------------------|--------------------|--------------------|
+| Azure (genel)      |  13 Ocak 2020  | 31 Mart 2020     |
+| Azure Devlet Kurumları    |  13 Mart 2020    | 11 Mayıs 2020       |
+| Azure Almanya       |  13 Mart 2020    | 11 Mayıs 2020       |
+| Azure Çin         |  13 Mart 2020    | 11 Mayıs 2020       |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Uygulamanızın zaten uyumlu olup olmadığını denetleyin
 

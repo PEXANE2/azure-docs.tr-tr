@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs, Azure işlem hatları sürekli tümleştirme ve teslim komut zinciriyle tümleştirmeyi | Microsoft Docs
+title: Azure DevTest Labs Azure Pipelines tümleştirin
 description: Azure DevTest Labs, Azure işlem hatları sürekli tümleştirme ve teslim işlem hattı tümleştirme hakkında bilgi edinin
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 20ba297d22e26aa8c7e20db300173f12582d257e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 54b4e6e6a283f46e03f7b94ce96ba79a03f75523
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224478"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170388"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs Azure Pipelines CI/CD işlem hattınızla tümleştirin
 
 Azure Pipelines sürekli tümleştirme ve sürekli teslim (CI/CD) derleme ve yayın işlem hatlarınızı Azure DevTest Labs tümleştirmek için *Azure DevTest Labs görevleri* uzantısını kullanabilirsiniz. Uzantı aşağıdakiler de dahil olmak üzere çeşitli görevleri yüklüyor: 
 
 - Sanal makine (VM) oluşturma
-- VM'den özel görüntü oluşturma
+- VM’den özel görüntü oluşturma
 - VM silme 
 
 Bu görevler, örneğin belirli bir test görevi için bir *altın görüntü* VM 'sini hızlı bir şekilde dağıtmayı ve test tamamlandığında VM 'yi silmeyi kolaylaştırır.
@@ -35,7 +35,7 @@ Bu makalede, bir VM oluşturup dağıtmak, özel bir görüntü oluşturmak ve a
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Azure DevOps](https://dev.azure.com) kuruluşunuza kaydolun veya oturum açın ve kuruluşta [bir proje oluşturun](/vsts/organizations/projects/create-project) . 
   
@@ -106,7 +106,7 @@ Betik dosyasını oluşturmak için:
 
 Yeni bir yayın işlem hattı oluşturmak için:
 
-1. Azure DevOps proje sayfasından sol gezinmede işlem **hattı** > **yayınları** ' nı seçin.
+1. Azure DevOps proje sayfasından sol gezinmede işlem **hatları** > **sürümler** ' i seçin.
 1. **Yeni Işlem hattı**' nı seçin.
 1. **Şablon seçin**altında aşağı kaydırın ve **boş iş**' ı seçin ve ardından **Uygula**' yı seçin.
 
@@ -120,7 +120,7 @@ Değerler için değişken eklemek için:
    
 1. Her değişken için, **Ekle** ' yi seçin ve adı ve değeri girin:
    
-   |Name|Value|
+   |Ad|Değer|
    |---|---|
    |*vmName*|Kaynak Yöneticisi şablonunda atadığınız VM adı|
    |*Nitelen*|VM 'ye erişim için Kullanıcı adı|
@@ -130,7 +130,7 @@ Değerler için değişken eklemek için:
 
 Sonraki adımda, gelecekteki dağıtımlar için kullanılacak altın görüntü sanal makinesi oluşturulur. VM 'yi, *Azure DEVTEST Labs VM oluştur* görevi kullanarak Azure DevTest Labs örneğiniz içinde oluşturursunuz.
 
-1. Yayın ardışık düzen işlem **hattı** sekmesinde, aşama **görevleri**' ni görüntülemek için **1. aşamada** köprü metni seçin ve ardından **Aracı işi**' nin **+** yanındaki artı işaretini seçin. 
+1. Yayın ardışık düzen işlem **hattı** sekmesinde, aşama görevleri ' ni **görüntülemek**için **1. aşamada** köprü metni seçin ve ardından **aracı işi**' nin yanındaki artı işareti **+** seçin. 
    
 1. **Görev Ekle**altında **VM oluştur Azure DevTest Labs**seçin ve **Ekle**' yi seçin. 
    
@@ -138,27 +138,27 @@ Sonraki adımda, gelecekteki dağıtımlar için kullanılacak altın görüntü
 
 1. Sağ bölmede, formu aşağıdaki gibi doldurun:
    
-   |Alan|Value|
+   |Alan|Değer|
    |---|---|
-   |**Azure RM aboneliği**|**Kullanılabilir Azure hizmeti bağlantılarından** veya açılan menüdeki **kullanılabilir Azure aboneliklerinden** bir hizmet bağlantısı veya abonelik seçin ve gerekirse **Yetkilendir** ' i seçin.<br /><br />**Not:** Azure aboneliğinize daha kısıtlı bir izin bağlantısı oluşturma hakkında bilgi için bkz. [Azure Resource Manager hizmet uç noktası](/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).|
+   |**Azure RM aboneliği**|**Kullanılabilir Azure hizmeti bağlantılarından** veya açılan menüdeki **kullanılabilir Azure aboneliklerinden** bir hizmet bağlantısı veya abonelik seçin ve gerekirse **Yetkilendir** ' i seçin.<br /><br />**Note:** Azure aboneliğinize daha kısıtlı bir izin bağlantısı oluşturma hakkında bilgi için bkz. [Azure Resource Manager hizmet uç noktası](/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).|
    |**Laboratuvar adı**|Laboratuvar VM 'sinin oluşturulacağı mevcut bir laboratuvarın adını seçin.|
    |**Şablon adı**|Kaynak kodu deponuza kaydettiğiniz şablon dosyasının tam yolunu ve adını girin. Yolu basitleştirmek için yerleşik özellikleri kullanabilirsiniz, örneğin:<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
-   |**Şablon parametreleri**|Daha önce tanımladığınız değişkenlerin parametrelerini girin:<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|
+   |**Şablon Parametreleri**|Daha önce tanımladığınız değişkenlerin parametrelerini girin:<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|
    |**Çıkış değişkenleri** > **Laboratuvar VM kimliği**|Oluşturulan laboratuvar VM KIMLIĞI için değişkeni girin. Varsayılan **Labvmıd**kullanırsanız, sonraki görevlerdeki değişkenine *$ (labvmıd)* olarak başvurabilirsiniz.<br /><br />Varsayılan dışında bir ad oluşturabilirsiniz, ancak sonraki görevlerde doğru adı kullanmayı unutmayın. Laboratuvar VM KIMLIĞINI aşağıdaki biçimde yazabilirsiniz:<br /><br />`/subscriptions/{subscription Id}/resourceGroups/{resource group Name}/providers/Microsoft.DevTestLab/labs/{lab name}/virtualMachines/{vmName}`|
 
 ### <a name="collect-the-details-of-the-devtest-labs-vm"></a>DevTest Labs VM 'sinin ayrıntılarını toplayın
 
 DevTest Labs sanal makinenin ayrıntıları toplamak için daha önce oluşturduğunuz komut dosyasını çalıştırın. 
 
-1. Yayın ardışık düzen işlem **hattı** sekmesinde, aşama **görevleri**' ni görüntülemek için **1. aşamada** köprü metni seçin ve ardından **Aracı işi**' nin **+** yanındaki artı işaretini seçin. 
+1. Yayın ardışık düzen işlem **hattı** sekmesinde, aşama görevleri ' ni **görüntülemek**için **1. aşamada** köprü metni seçin ve ardından **aracı işi**' nin yanındaki artı işareti **+** seçin. 
    
 1. **Görev Ekle**' nin altında **Azure PowerShell**' ı seçin ve **Ekle**' yi seçin. 
    
-1. Azure PowerShell **betiği seçin: Sol** bölmedeki FilePath. 
+1. Sol bölmedeki **Azure PowerShell betiği: filepath** öğesini seçin. 
    
 1. Sağ bölmede, formu aşağıdaki gibi doldurun:
    
-   |Alan|Value|
+   |Alan|Değer|
    |---|---|
    |**Azure bağlantı türü**|**Azure Resource Manager**seçin.|
    |**Azure Aboneliği**|Hizmet bağlantınızı veya aboneliğinizi seçin.| 
@@ -172,20 +172,20 @@ Komut dosyası gerekli değerleri toplar ve bunları yayın işlem hattının i�
 
 Sonraki görev, Azure DevTest Labs Örneğinizde yeni dağıtılan VM 'nin bir görüntüsünü oluşturmaktır. Ardından, bir geliştirme görevi yürütme veya bazı testler çalıştırmak istediğiniz zaman isteğe bağlı olarak VM kopyaları oluşturmak için görüntüyü kullanabilirsiniz. 
 
-1. Yayın ardışık düzen işlem **hattı** sekmesinde, aşama **görevleri**' ni görüntülemek için **1. aşamada** köprü metni seçin ve ardından **Aracı işi**' nin **+** yanındaki artı işaretini seçin. 
+1. Yayın ardışık düzen işlem **hattı** sekmesinde, aşama görevleri ' ni **görüntülemek**için **1. aşamada** köprü metni seçin ve ardından **aracı işi**' nin yanındaki artı işareti **+** seçin. 
    
 1. **Görev Ekle**' nin altında **Azure DevTest Labs özel görüntü oluştur**' u seçin ve **Ekle**' yi seçin. 
    
 1. Görev aşağıdaki gibi yapılandırın:
    
-   |Alan|Value|
+   |Alan|Değer|
    |---|---|
    |**Azure RM aboneliği**|Hizmet bağlantınızı veya aboneliğinizi seçin.|
    |**Laboratuvar adı**|Görüntünün oluşturulacağı mevcut bir laboratuvarın adını seçin.|
    |**Özel görüntü adı**|Özel görüntü için bir ad girin.|
-   |**Açıklama** seçim|Doğru görüntüyü daha sonra seçmenizi kolaylaştırmak için bir açıklama girin.|
-   |**Kaynak laboratuvar VM** > **kaynağı Laboratuvarı VM kimliği**|Labvmıd değişkeninin varsayılan adını değiştirdiyseniz buraya girin. Varsayılan değer **$(labVMId)** .|
-   |**Çıkış değişkenleri** > **özel görüntü kimliği**|Gerekirse değişkenin varsayılan adını düzenleyebilirsiniz.|
+   |**Açıklama** (isteğe bağlı)|Doğru görüntüyü daha sonra seçmenizi kolaylaştırmak için bir açıklama girin.|
+   |Kaynak **Laboratuvar vm** > **kaynak laboratuvar VM kimliği**|Labvmıd değişkeninin varsayılan adını değiştirdiyseniz buraya girin. Varsayılan değer **$(labVMId)** .|
+   |**Özel görüntü kimliği** > **Çıkış değişkenleri**|Gerekirse değişkenin varsayılan adını düzenleyebilirsiniz.|
    
 ### <a name="deploy-your-app-to-the-devtest-labs-vm-optional"></a>Uygulamanızı DevTest Labs sanal makinesine dağıtma (isteğe bağlı)
 
@@ -197,7 +197,7 @@ Bu görevlerin parametreleri için ihtiyaç duyduğunuz VM bilgileri, yayın ard
 
 Son görev, Azure DevTest Labs örneğinize dağıttığınız sanal makineyi silmektir. Geliştirme görevleri yürütmek ya da gereken dağıtılmış VM üzerinde testler sonra normalde VM siler. 
 
-1. Yayın ardışık düzen işlem **hattı** sekmesinde, aşama **görevleri**' ni görüntülemek için **1. aşamada** köprü metni seçin ve ardından **Aracı işi**' nin **+** yanındaki artı işaretini seçin. 
+1. Yayın ardışık düzen işlem **hattı** sekmesinde, aşama görevleri ' ni **görüntülemek**için **1. aşamada** köprü metni seçin ve ardından **aracı işi**' nin yanındaki artı işareti **+** seçin. 
    
 1. **Görev Ekle**' nin altında, **VM 'yi Sil Azure DevTest Labs**seçin ve **Ekle**' yi seçin. 
    

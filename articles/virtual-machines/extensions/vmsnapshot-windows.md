@@ -3,31 +3,27 @@ title: Azure Backup için VM anlık görüntüsü Windows uzantısı
 description: VM anlık görüntü uzantısı kullanarak Azure Backup sanal makinenin uygulamayla tutarlı yedeklemesini gerçekleştirin
 services: backup, virtual-machines-windows
 documentationcenter: ''
-author: trinadhk
+author: trinadhkotturu
 manager: gwallace
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: 32e8b0099ef464312b6f2b9c0eb989154815af77
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4f5650e333c209d3b5f342c1f1c61ec1ca5cf47
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072898"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264297"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Azure Backup için VM anlık görüntüsü Windows uzantısı
 
 Azure Backup, iş yüklerini Şirket içinden buluta yedeklemeye ve bulut kaynaklarını kurtarma hizmetleri kasasına yedeklemeye yönelik destek sağlar. Azure Backup VM 'yi kapatmaya gerek kalmadan Azure sanal makinesinin uygulamayla tutarlı bir yedeklemesini yapmak için VM anlık görüntü uzantısı 'nı kullanır. VM anlık görüntüsü uzantısı, Azure Backup hizmeti kapsamında Microsoft tarafından yayımlanır ve desteklenir. Azure Backup, uzantıyı ilk zamanlanan yedeklemenin bir parçası olarak yükleyecek ve yedeklemeyi etkinleştirmeyecektir. Bu belgede VM anlık görüntüsü uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 Desteklenen işletim sistemlerinin listesi için, [Azure Backup tarafından desteklenen Işletim sistemlerine](../../backup/backup-azure-arm-vms-prepare.md#before-you-start) bakın
-
-### <a name="internet-connectivity"></a>İnternet bağlantısı
-
-VM anlık görüntüsü uzantısı, sanal makinenin bir yedeğini alırken hedef sanal makinenin internet 'e bağlanmasını gerektirir.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
@@ -66,7 +62,7 @@ Aşağıdaki JSON, VM Snapshot uzantısı için şemayı gösterir. Uzantı, gö
 | apiVersion | 2015-06-15 | date |
 | TaskID | e07354cf-041e-4370-929f-25a319ce8933_1 | string |
 | commandStartTimeUTCTicks | 6.36458 e + 17 | string |
-| ayarlar | tr-tr | string |
+| locale | tr-tr | string |
 | objectStr | SAS URI dizisi kodlaması-"blobSASUri": ["https:\/\/sopattna5365.blob.core.windows.net\/VHD 'leri\/vmwin1404ltsc201652903941. vhd? ZF = 2014-02-14 & SR = b & Sig = TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA% 3D & St = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & SP = RW", "https:\/\/sopattna8461.blob.core.windows.net\/VHD 'ler\/vmwin1404ltsc-20160629-122418. vhd? ZF = 2014-02-14 & SR = b & SIG = 5S0a6ydwvemqpakzwxvy% 2BS% 2FqMwzFMbamT5upwx05v8Q% 3B & St = 2017-11-09T14% 3A23% 3A28Z & b = 2017-11-09T17% 3A38% 3A28Z & SP = RW "," https:\/\/sopattna8461.blob.core.windows.net\/bootdiagnostics-vmwintu1-deb58392-ed5e-48in-9228-ff681b0cd3ee\/vmubuntu1404ltsc-20160629-122541. vhd? ZF = 2014-02-14 & SR = b & SIG = X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4% 3D & St = 2017-11-09T14% 3A23% 3A28Z & b = 2017-11-09T17% 3A38% 3A28Z & SP = RW "," https:\/\/sopattna5365.blob.core.windows.net\/VHD 'leri\/vmwin1404ltsc-20160701-163922. vhd? ZF = 2014-02-14 & SR = b & Sig = oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r% 2BC% 2BNIAork% 3B & St = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & SP = RW "," https:\/\/sopattna5365.blob.core.windows.net\/VHD 'ler\/vmwin1404ltsc-20170705-124311. vhd? ZF = 2014-02-14 & SR = b & SIG = ZUM9d28Mvvm% 2FfrhJ71TFZh0Ni90m38bBs3zMl% 2FQ9rs0% 3B & St = 2017-11-09T14% 3A23% 3A28Z & b = 2017-11-09T17% 3A38% 3A28Z & SP = RW "] | string |
 | logsBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | string |
 | statusBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | string |

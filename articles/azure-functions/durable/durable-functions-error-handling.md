@@ -4,12 +4,12 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'ndaki hat
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0900e3f3b76f4a82e06fe3c0e6d9bbe63b545f56
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 905b71ab1e9a054eaeb6087489d14565933c8a46
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231415"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261645"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler hataları işleme (Azure Işlevleri)
 
@@ -21,7 +21,7 @@ Bir etkinlik işlevinde oluşturulan herhangi bir özel durum Orchestrator işle
 
 Örneğin, bir hesaptan diğerine fonları aktaran aşağıdaki Orchestrator işlevini göz önünde bulundurun:
 
-### <a name="precompiled-c"></a>DerlemesiC#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TransferFunds")]
@@ -59,49 +59,10 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 }
 ```
 
-### <a name="c-script"></a>C#SCRIPT
-
-```csharp
-#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
-
-public static async Task Run(IDurableOrchestrationContext context)
-{
-    var transferDetails = ctx.GetInput<TransferOperation>();
-
-    await context.CallActivityAsync("DebitAccount",
-        new
-        {
-            Account = transferDetails.SourceAccount,
-            Amount = transferDetails.Amount
-        });
-
-    try
-    {
-        await context.CallActivityAsync("CreditAccount",
-            new
-            {
-                Account = transferDetails.DestinationAccount,
-                Amount = transferDetails.Amount
-            });
-    }
-    catch (Exception)
-    {
-        // Refund the source account.
-        // Another try/catch could be used here based on the needs of the application.
-        await context.CallActivityAsync("CreditAccount",
-            new
-            {
-                Account = transferDetails.SourceAccount,
-                Amount = transferDetails.Amount
-            });
-    }
-}
-```
-
 > [!NOTE]
 > Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -137,13 +98,15 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 İlk **alacaklı Taccount** işlev çağrısı başarısız olursa, Orchestrator işlevi fontları kaynak hesaba geri alacak şekilde dengeler.
 
 ## <a name="automatic-retry-on-failure"></a>Hata durumunda otomatik yeniden deneme
 
 Etkinlik işlevlerini veya alt düzenleme işlevlerini çağırdığınızda otomatik yeniden deneme ilkesi belirtebilirsiniz. Aşağıdaki örnek, bir işlevi üç kez çağırmaya çalışır ve her yeniden deneme arasında 5 saniye bekler:
 
-### <a name="precompiled-c"></a>DerlemesiC#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
@@ -159,31 +122,20 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 }
 ```
 
-### <a name="c-script"></a>C#SCRIPT
-
-```csharp
-public static async Task Run(IDurableOrchestrationContext context)
-{
-    var retryOptions = new RetryOptions(
-        firstRetryInterval: TimeSpan.FromSeconds(5),
-        maxNumberOfAttempts: 3);
-
-    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
-
-    // ...
-}
-```
-
 > [!NOTE]
 > Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
-    const retryOptions = new df.RetryOptions(5000, 3);
+    const firstRetryIntervalInMilliseconds = 5000;
+    const maxNumberOfAttempts = 3;
+
+    const retryOptions = 
+        new df.RetryOptions(firstRetryIntervalInMilliseconds, maxNumberOfAttempts);
 
     yield context.df.callActivityWithRetry("FlakyFunction", retryOptions);
 
@@ -191,9 +143,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-`CallActivityWithRetryAsync` (.NET) veya `callActivityWithRetry` (JavaScript) API 'SI bir `RetryOptions` parametresi alır. `CallSubOrchestratorWithRetryAsync` (.NET) veya `callSubOrchestratorWithRetry` (JavaScript) API 'sini kullanan alt düzenleme çağrıları aynı yeniden deneme ilkelerini kullanabilir.
+---
 
-Otomatik yeniden deneme ilkesini özelleştirmek için çeşitli seçenekler vardır:
+Önceki örnekteki etkinlik işlevi çağrısı otomatik yeniden deneme ilkesini yapılandırmak için bir parametre alır. Otomatik yeniden deneme ilkesini özelleştirmek için çeşitli seçenekler vardır:
 
 * **Deneme sayısı**üst sınırı: en fazla yeniden deneme denemesi sayısı.
 * **İlk yeniden deneme aralığı**: ilk yeniden deneme girişiminden önce beklenecek süre.
@@ -206,7 +158,7 @@ Otomatik yeniden deneme ilkesini özelleştirmek için çeşitli seçenekler var
 
 Bir Orchestrator işlevi içindeki bir işlev çağrısını, tamamlanamayacak kadar uzun sürerse iptal etmek isteyebilirsiniz. Bunu bugün yapmanın doğru yolu, aşağıdaki örnekte olduğu gibi `Task.WhenAny` (.NET) veya `context.df.Task.any` (JavaScript) ile birlikte `context.CreateTimer` (.NET) veya `context.df.createTimer` (JavaScript) kullanarak [dayanıklı bir Zamanlayıcı](durable-functions-timers.md) oluşturmaktır:
 
-### <a name="precompiled-c"></a>DerlemesiC#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
@@ -236,39 +188,10 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 }
 ```
 
-### <a name="c-script"></a>C#SCRIPT
-
-```csharp
-public static async Task<bool> Run(IDurableOrchestrationContext context)
-{
-    TimeSpan timeout = TimeSpan.FromSeconds(30);
-    DateTime deadline = context.CurrentUtcDateTime.Add(timeout);
-
-    using (var cts = new CancellationTokenSource())
-    {
-        Task activityTask = context.CallActivityAsync("FlakyFunction");
-        Task timeoutTask = context.CreateTimer(deadline, cts.Token);
-
-        Task winner = await Task.WhenAny(activityTask, timeoutTask);
-        if (winner == activityTask)
-        {
-            // success case
-            cts.Cancel();
-            return true;
-        }
-        else
-        {
-            // timeout case
-            return false;
-        }
-    }
-}
-```
-
 > [!NOTE]
 > Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -291,6 +214,8 @@ module.exports = df.orchestrator(function*(context) {
     }
 });
 ```
+
+---
 
 > [!NOTE]
 > Bu mekanizma, devam eden etkinlik işlevi yürütmeyi gerçekten sonlandırır. Bunun yerine, Orchestrator işlevinin sonucu yok saymasına ve üzerinde hareket etmesine izin verir. Daha fazla bilgi için bkz. [zamanlayıcılar](durable-functions-timers.md#usage-for-timeout) belgeleri.

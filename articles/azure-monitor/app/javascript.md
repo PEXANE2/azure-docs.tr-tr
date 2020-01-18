@@ -4,15 +4,15 @@ description: Sayfa görüntüleme ve oturum sayıları, Web istemcisi verileri, 
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: Dawgfan
+ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 38f9872fb73f2c680264c2c0b84445db858cf203
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 83b167baa29a54e53f7fe8bdb7b7e5c88bc3eddf
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045842"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264093"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -29,7 +29,10 @@ Application Insights tüm web sayfalarıyla kullanılabilir; kısa bir JavaScrip
     * [JavaScript kod parçacığı](#snippet-based-setup)
 
 > [!IMPORTANT]
-> Uygulamanıza Application Insights JavaScript SDK 'Sı eklemek için aşağıdaki yöntemlerden birini kullanmanız yeterlidir. NPM tabanlı kurulumu kullanırsanız, kod parçacığı tabanlı kurulumu kullanmayın. Aynı zamanda, kod parçacığı tabanlı yaklaşımı kullanırken ters senaryo için de, NPM tabanlı kurulum 'u kullanmayın. 
+> > Uygulamanıza JavaScript SDK 'Sı eklemek için yalnızca bir yöntem kullanın. NPM kurulumunu kullanırsanız, kod parçacığını kullanmayın ve tam tersi de geçerlidir.
+
+> [!NOTE]
+> NPM kurulumu, JavaScript SDK 'sını projenize bir bağımlılık olarak yükleyerek IntelliSense 'i etkinleştirir, ancak kod parçacığı, çalışma zamanında SDK 'Yı getirir. Her ikisi de aynı özellikleri destekler. Ancak, daha fazla özel olay ve yapılandırma isteyen geliştiriciler genellikle NPM kurulumu için kabul etirken, kod parçacığı için hazır web analizi kabul etme işlemini arayan kullanıcılar.
 
 ### <a name="npm-based-setup"></a>NPM tabanlı kurulum
 
@@ -261,4 +264,3 @@ Application Insights JavaScript SDK 'Sı, kaynak kodu görüntülemek veya proje
 * [Kullanımı izleme](usage-overview.md)
 * [Özel etkinlikler ve ölçümler](api-custom-events-metrics.md)
 * [Build-measure-learn](usage-overview.md)
-

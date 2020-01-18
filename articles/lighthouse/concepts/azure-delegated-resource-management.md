@@ -1,14 +1,14 @@
 ---
 title: Azure tarafından atanan temsilcinin kaynak yönetimi
 description: Yönetilen hizmetler, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
-ms.date: 07/11/2019
+ms.date: 01/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2baa66acb4abc250ff69a1560f1bc6fe9a531ba8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fc3d95b1becccc014afeb4621d17770a03e38a4
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453636"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263923"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure tarafından atanan temsilcinin kaynak yönetimi
 
@@ -38,6 +38,9 @@ Yüksek düzeyde, Azure tarafından atanan kaynak yönetiminin nasıl çalışt�
    - Müşterinin kabul edeceği [bir Azure Market yönetilen hizmet teklifi](../how-to/publish-managed-services-offers.md) (özel veya ortak) yayımlayın
    - Bir veya daha fazla belirli abonelik veya kaynak grubu için [Azure Resource Manager şablonunu müşterinin kiracısına dağıtma](../how-to/onboard-customer.md)
 3. Müşteri eklendi olduktan sonra yetkili kullanıcılar, hizmet sağlayıcı kiracınızda oturum açabilir ve tanımladığınız erişime göre belirtilen müşteri kapsamında yönetim görevleri gerçekleştirebilir.
+
+> [!NOTE]
+> Ayrı bulutlar genelinde iki kiracı arasında bir aboneliğin temsili desteklenmez.
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Azure tarafından yetkilendirilen kaynak yönetimi desteği
 

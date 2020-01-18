@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8c12e0ab854bb2b5764dd326e3f1649202f6f16b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232814"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262818"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler içindeki tekil düzenleyiciler (Azure Işlevleri)
 
@@ -20,7 +20,7 @@ Arka plan işleri için, genellikle belirli bir Orchestrator örneğinin aynı a
 
 Aşağıdaki örnek, tek bir arka plan işi düzenlemesi oluşturan bir HTTP tetikleyici işlevini gösterir. Kod, belirtilen örnek KIMLIĞI için yalnızca bir örneğin mevcut olmasını sağlar.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -54,9 +54,10 @@ public static async Task<HttpResponseMessage> RunSingle(
 > [!NOTE]
 > Önceki C# kod dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `DurableClient` özniteliği yerine `OrchestrationClient` özniteliğini kullanmanız gerekir ve `IDurableOrchestrationClient`yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Function.json dosyası aşağıda verilmiştir:
+**function. JSON**
+
 ```json
 {
   "bindings": [
@@ -82,7 +83,8 @@ Function.json dosyası aşağıda verilmiştir:
 }
 ```
 
-JavaScript kod aşağıdaki gibidir:
+**index. js**
+
 ```javascript
 const df = require("durable-functions");
 
@@ -109,6 +111,8 @@ module.exports = async function(context, req) {
     }
 };
 ```
+
+---
 
 Varsayılan olarak, örnek kimlikleri rastgele oluşturulan GUID 'lerdir. Bununla birlikte, önceki örnekte, örnek KIMLIĞI URL 'den rota verilerinde geçirilir. Kod, belirtilen KIMLIĞE sahipC#bir örneğin zaten çalışır durumda olup olmadığını denetlemek için `GetStatusAsync`() veya `getStatus` (JavaScript) öğesini çağırır. Böyle bir örnek çalışmıyorsa, bu KIMLIKLE yeni bir örnek oluşturulur.
 

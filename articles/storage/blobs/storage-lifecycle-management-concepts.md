@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351331"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260962"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -32,7 +32,7 @@ Yaşam döngüsünün erken aşamaları sırasında, ancak iki hafta sonra zaman
 
 ## <a name="storage-account-support"></a>Depolama hesabı desteği
 
-Yaşam döngüsü yönetimi ilkesi Genel Amaçlı v2 (GPv2) hesapları, BLOB depolama hesapları ve Premium Blok Blob depolama hesapları ile kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure Depolama hesabına genel bakış](../common/storage-account-overview.md).  
+Yaşam döngüsü yönetimi ilkesi Genel Amaçlı v2 (GPv2) hesapları, BLOB depolama hesapları ve Premium Blok Blob depolama hesapları ile kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).  
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -246,6 +246,9 @@ Her kural tanımı bir filtre kümesi ve bir eylem kümesi içerir. [Filtre küm
 ### <a name="sample-rule"></a>Örnek kural
 
 Aşağıdaki örnek kural, `container1` içinde bulunan nesneler üzerinde eylemleri çalıştırmak ve `foo`başlamak için hesabı filtreler.  
+
+>[!NOTE]
+>Yaşam döngüsü yönetimi yalnızca Blok Blobu türünü destekler.  
 
 - Katman blobu son değişiklikten sonra 30 gün sonra seyrek erişimli katmana
 - Son değişiklikten sonra katman blobu 90 gün sonra arşiv katmanı

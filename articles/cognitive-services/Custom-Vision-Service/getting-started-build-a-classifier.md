@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: e7aa4a557821ee49867a8ea82f92ef04dfbef689
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b664a586398e297a00ea9cd8fe68dc65e6ade5c8
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978688"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170023"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Hızlı başlangıç: Özel Görüntü İşleme Sınıflandırıcısı oluşturma
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesi aracılığıyla
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Sınıflandırıcınızı eğiten bir görüntü kümesi. Görüntüleri seçme hakkında ipuçları için aşağıya bakın.
 
@@ -110,6 +110,8 @@ Eğitim tamamlandıktan sonra, modelin performansı tahmini ve görüntülenir. 
 ## <a name="manage-training-iterations"></a>Eğitim yinelemelerini yönetme
 
 Sınıflandırıcınızı her eğişinizde, kendi güncelleştirilmiş performans ölçümleriyle yeni bir _yineleme_ oluşturursunuz. Tüm yinelemelerinizi **performans** sekmesinin sol bölmesinde görüntüleyebilirsiniz. Ayrıca, bir yinelemeyi artık kullanımdan kaldırmak için kullanabileceğiniz **Sil** düğmesini de bulabilirsiniz. Bir yinelemeyi sildiğinizde, onunla benzersiz olarak ilişkili olan tüm görüntüleri silersiniz.
+
+Eğitilen modellerinize programlı bir şekilde erişme hakkında bilgi edinmek için bkz. [modelinizi tahmın API 'Siyle kullanma](./use-prediction-api.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

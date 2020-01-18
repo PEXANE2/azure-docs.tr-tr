@@ -1,7 +1,7 @@
 ---
-title: Yüz verilerinizi abonelikler arasında geçirme-Yüz Tanıma API'si
+title: Yüz verilerinizi abonelikler arasında geçirme-yüz
 titleSuffix: Azure Cognitive Services
-description: Bu kılavuzda, depolanan yüz verilerinizi bir Yüz Tanıma API'si aboneliğinden diğerine nasıl geçirebileceğiniz gösterilmektedir.
+description: Bu kılavuzda, depolanan yüz verilerinizi bir yüz aboneliğinden diğerine nasıl geçirebileceğiniz gösterilmektedir.
 services: cognitive-services
 author: lewlu
 manager: nitinme
@@ -10,30 +10,30 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: lewlu
-ms.openlocfilehash: 49b92037fed6436d28f777761b18cf5f66e03025
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859169"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169806"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Yüz verilerinizi farklı bir yüz aboneliğine geçirin
 
-Bu kılavuzda, kayıtlı bir PersonGroup nesnesi gibi yüz verileri farklı bir Azure bilişsel Hizmetler Yüz Tanıma API'si aboneliğine nasıl taşıyacağınız gösterilmektedir. Verileri taşımak için anlık görüntü özelliğini kullanın. Bu şekilde, işlemlerinizi taşırken veya genişlettiğinizde bir PersonGroup veya çok yönlü liste nesnesi oluşturup eğmenize gerek kalmadan kaçınabilirsiniz. Örneğin, ücretsiz bir deneme aboneliği kullanarak bir PersonGroup nesnesi oluşturdunuz ve şimdi bunu ücretli aboneliğinize geçirmek istiyorsunuz. Ya da büyük bir kurumsal işlem için farklı bölgelerdeki abonelikler arasında yüz verileri eşitlemeniz gerekebilir.
+Bu kılavuzda, farklı bir Azure bilişsel hizmetler aboneliğine sahip kayıtlı bir PersonGroup nesnesi gibi yüz verilerinin, yüzlü bir Azure bilişsel hizmet aboneliğine nasıl taşınacağı gösterilmektedir. Verileri taşımak için anlık görüntü özelliğini kullanın. Bu şekilde, işlemlerinizi taşırken veya genişlettiğinizde bir PersonGroup veya çok yönlü liste nesnesi oluşturup eğmenize gerek kalmadan kaçınabilirsiniz. Örneğin, ücretsiz bir deneme aboneliği kullanarak bir PersonGroup nesnesi oluşturdunuz ve şimdi bunu ücretli aboneliğinize geçirmek istiyorsunuz. Ya da büyük bir kurumsal işlem için farklı bölgelerdeki abonelikler arasında yüz verileri eşitlemeniz gerekebilir.
 
-Aynı geçiş stratejisi LargePersonGroup ve Largecelist nesneleri için de geçerlidir. Bu kılavuzdaki kavramlarla ilgili bilgi sahibi değilseniz, [yüz tanıma kavramları](../concepts/face-recognition.md) kılavuzundaki tanımları bölümüne bakın. Bu kılavuzda ile C#yüz tanıma API'si .NET istemci kitaplığı kullanılmaktadır.
+Aynı geçiş stratejisi LargePersonGroup ve Largecelist nesneleri için de geçerlidir. Bu kılavuzdaki kavramlarla ilgili bilgi sahibi değilseniz, [yüz tanıma kavramları](../concepts/face-recognition.md) kılavuzundaki tanımları bölümüne bakın. Bu kılavuzda, ile C#yüz .NET istemci kitaplığı kullanılmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki öğeler gereklidir:
 
-- İki Yüz Tanıma API'si abonelik anahtarı, biri mevcut verilerle ve diğeri öğesine geçirilecek. Yüz Tanıma API'si hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)' daki yönergeleri izleyin.
-- Hedef aboneliğe karşılık gelen Yüz Tanıma API'si abonelik KIMLIĞI dizesi. Bunu bulmak için Azure portal **genel bakış** ' ı seçin. 
+- Biri mevcut verileri ve diğeri geçirilecek iki yüz abonelik anahtarı. Yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)' daki yönergeleri izleyin.
+- Hedef aboneliğe karşılık gelen yüz abonelik KIMLIĞI dizesi. Bunu bulmak için Azure portal **genel bakış** ' ı seçin. 
 - [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/)'nin herhangi bir sürümü.
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio projesini oluşturma
 
-Bu kılavuz, yüz veri geçişini çalıştırmak için basit bir konsol uygulaması kullanır. Tam bir uygulama için GitHub 'daki [Yüz Tanıma API'si anlık görüntü örneğine](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) bakın.
+Bu kılavuz, yüz veri geçişini çalıştırmak için basit bir konsol uygulaması kullanır. Tam bir uygulama için GitHub 'daki [yüz anlık görüntü örneğine](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) bakın.
 
 1. Visual Studio 'da yeni bir konsol uygulaması .NET Framework projesi oluşturun. Bunu çok **yönlü Apisnapshotsample**olarak adlandırın.
 1. Gereken NuGet paketlerini alın. Çözüm Gezgini projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Tarayıcı** sekmesini seçin ve **ön sürümü dahil et**' i seçin. Aşağıdaki paketi bulup yükler:
@@ -62,7 +62,7 @@ Kaynak ve hedef abonelikleriniz için abonelik anahtarı değerlerini ve uç nok
 
 ## <a name="prepare-a-persongroup-for-migration"></a>Bir kişilik grubunu geçiş için hazırlama
 
-Hedef aboneliğe geçirmek için kaynak aboneliğinizdeki PersonGroup 'un KIMLIĞINE sahip olmanız gerekir. [Persongroupoperationsextensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) yöntemini kullanarak, persongroup nesnelerinizin bir listesini alın. Ardından, [Persongroup. Persongroupıd](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) özelliğini alın. Bu işlem, sahip olduğunuz PersonGroup nesnelerine göre farklılık yapar. Bu kılavuzda, kaynak kişinin KIMLIĞI ' nde `personGroupId`depolanır.
+Hedef aboneliğe geçirmek için kaynak aboneliğinizdeki PersonGroup 'un KIMLIĞINE sahip olmanız gerekir. [Persongroupoperationsextensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) yöntemini kullanarak, persongroup nesnelerinizin bir listesini alın. Ardından, [Persongroup. Persongroupıd](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) özelliğini alın. Bu işlem, sahip olduğunuz PersonGroup nesnelerine göre farklılık yapar. Bu kılavuzda, kaynak kişilik grubu KIMLIĞI `personGroupId`depolanır.
 
 > [!NOTE]
 > [Örnek kod](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) , geçirilecek yeni bir persongroup oluşturur ve bunları ister. Çoğu durumda, kullanmak için zaten bir PersonGroup grubunuz olmalıdır.
@@ -85,20 +85,20 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 
 ## <a name="retrieve-the-snapshot-id"></a>Anlık görüntü KIMLIĞINI alma
 
-Anlık görüntü almak için kullanılan yöntem zaman uyumsuzdur, bu yüzden tamamlanmasını beklemeniz gerekir. Anlık görüntü işlemleri iptal edilemez. Bu kodda, `WaitForOperation` yöntemi zaman uyumsuz çağrıyı izler. Her 100 ms durumunu denetler. İşlem bittikten sonra, `OperationLocation` alanı ayrıştırarak bir işlem kimliği alın. 
+Anlık görüntü almak için kullanılan yöntem zaman uyumsuzdur, bu yüzden tamamlanmasını beklemeniz gerekir. Anlık görüntü işlemleri iptal edilemez. Bu kodda `WaitForOperation` yöntemi zaman uyumsuz çağrıyı izler. Her 100 ms durumunu denetler. İşlem bittikten sonra, `OperationLocation` alanını ayrıştırarak bir işlem KIMLIĞI alın. 
 
 ```csharp
 var takeOperationId = Guid.Parse(takeSnapshotResult.OperationLocation.Split('/')[2]);
 var operationStatus = await WaitForOperation(FaceClientEastAsia, takeOperationId);
 ```
 
-Tipik `OperationLocation` bir değer şöyle görünür:
+Tipik bir `OperationLocation` değeri şöyle görünür:
 
 ```csharp
 "/operations/a63a3bdd-a1db-4d05-87b8-dbad6850062a"
 ```
 
-`WaitForOperation` Yardımcı yöntemi şöyledir:
+`WaitForOperation` yardımcı yöntemi şöyledir:
 
 ```csharp
 /// <summary>
@@ -127,13 +127,13 @@ private static async Task<OperationStatus> WaitForOperation(IFaceClient client, 
 }
 ```
 
-İşlem durumu `Succeeded`görüntülendikten sonra, döndürülen OperationStatus örneğinin `ResourceLocation` alanını ayrıştırarak anlık görüntü kimliğini alın.
+İşlem durumu `Succeeded`görüntülendikten sonra, döndürülen OperationStatus örneğinin `ResourceLocation` alanını ayrıştırarak anlık görüntü KIMLIĞINI alın.
 
 ```csharp
 var snapshotId = Guid.Parse(operationStatus.ResourceLocation.Split('/')[2]);
 ```
 
-Tipik `resourceLocation` bir değer şöyle görünür:
+Tipik bir `resourceLocation` değeri şöyle görünür:
 
 ```csharp
 "/snapshots/e58b3f08-1e8b-4165-81df-aa9858f233dc"
@@ -152,13 +152,13 @@ var applySnapshotResult = await FaceClientWestUS.Snapshot.ApplyAsync(snapshotId,
 > [!NOTE]
 > Anlık görüntü nesnesi yalnızca 48 saat için geçerlidir. Yalnızca kısa bir süre sonra veri geçişi için kullanmak istiyorsanız bir anlık görüntü alın.
 
-Anlık görüntü uygulama isteği başka bir işlem KIMLIĞI döndürüyor. Bu kimliği almak için döndürülen applysnapshotresult örneğinin `OperationLocation` alanını ayrıştırın. 
+Anlık görüntü uygulama isteği başka bir işlem KIMLIĞI döndürüyor. Bu KIMLIĞI almak için döndürülen applySnapshotResult örneğinin `OperationLocation` alanını ayrıştırın. 
 
 ```csharp
 var applyOperationId = Guid.Parse(applySnapshotResult.OperationLocation.Split('/')[2]);
 ```
 
-Anlık görüntü uygulama işlemi de zaman uyumsuzdur, bu nedenle daha `WaitForOperation` sonra işlemin bitmesini beklemek için kullanın.
+Anlık görüntü uygulama işlemi aynı zamanda zaman uyumsuzdur, bu nedenle, `WaitForOperation` bitmesini beklemek için yeniden kullanın.
 
 ```csharp
 operationStatus = await WaitForOperation(FaceClientWestUS, applyOperationId);
@@ -233,7 +233,7 @@ await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 Ardından, ilgili API başvuru belgelerine bakın, anlık görüntü özelliğini kullanan örnek bir uygulamayı keşfedebilir veya burada bahsedilen diğer API işlemlerini kullanmaya başlamak için nasıl yapılır kılavuzunu izleyin:
 
 - [Anlık görüntü başvuru belgeleri (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
-- [Yüz Tanıma API'si Snapshot örneği](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
+- [Yüz anlık görüntü örneği](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [Yüz Ekle](how-to-add-faces.md)
 - [Görüntüdeki yüzeyleri algılama](HowtoDetectFacesinImage.md)
 - [Görüntüdeki yüzeyleri tanımla](HowtoIdentifyFacesinImage.md)

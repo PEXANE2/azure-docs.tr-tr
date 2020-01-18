@@ -4,8 +4,6 @@
   items:
     - name: Yük Dengeleyici nedir?
       href: load-balancer-overview.md
-    - name: Standart Load Balancer nedir?
-      href: load-balancer-standard-overview.md
 - name: Hızlı Başlangıç
   items:
     - name: Standart Load Balancer oluşturma

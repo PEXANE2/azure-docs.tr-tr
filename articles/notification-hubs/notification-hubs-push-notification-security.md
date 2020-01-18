@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs güvenliği
-description: Bu konuda Azure Notification Hubs için güvenlik açıklanmaktadır.
+title: Notification Hubs güvenlik modeli
+description: Azure Notification Hubs için güvenlik modeli hakkında bilgi edinin.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: a9598f6a01e5536351fb20b7c352a5eaf5746042
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273627"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263770"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs güvenliği
 
@@ -46,13 +46,13 @@ Uygulamalar anahtar değerini Windows Mağazası istemci uygulamalarına katış
 
 ## <a name="security-claims"></a>Güvenlik talepleri
 
-Diğer varlıklara benzer şekilde, üç güvenlik talebi için Bildirim Hub 'ı işlemlerine izin verilir: **Dinleyin**, **gönderin**ve **yönetin**.
+Diğer varlıklara benzer şekilde, Bildirim Hub 'ı işlemlerine üç güvenlik talebi için izin verilir: **dinle**, **Gönder**ve **Yönet**.
 
-| Talep   | Açıklama                                          | İzin verilen işlemler |
+| İste   | Açıklama                                          | İzin verilen işlemler |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Dinle  | Tek kayıt oluşturma/güncelleştirme, okuma ve silme | Kayıt oluştur/güncelleştir<br><br>Kaydı oku<br><br>Bir tanıtıcı için tüm kayıtları okuma<br><br>Kaydı Sil |
 | Gönder    | Bildirim Hub 'ına ileti gönderme                | İleti gönder |
-| Yönet  | Notification Hubs CRUDs (PNS kimlik bilgilerini güncelleştirme ve güvenlik anahtarları dahil) ve etiketlere göre kayıtları okuma |Hub oluşturma/güncelleştirme/okuma/silme<br><br>Kayıtları etikete göre oku |
+| Yönetin  | Notification Hubs CRUDs (PNS kimlik bilgilerini güncelleştirme ve güvenlik anahtarları dahil) ve etiketlere göre kayıtları okuma |Hub oluşturma/güncelleştirme/okuma/silme<br><br>Kayıtları etikete göre oku |
 
 Notification Hubs, doğrudan Hub üzerinde yapılandırılmış paylaşılan anahtarlarla oluşturulan SAS belirteçlerini kabul eder.
 

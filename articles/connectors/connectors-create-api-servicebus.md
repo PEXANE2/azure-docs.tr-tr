@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 26609bc95bf6fd49ded23d8f117911a02577405a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445889"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261628"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -154,7 +154,9 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Service Bus Bağlayıcısı, bir hizmet veri yolundan bağlayıcı önbelleğine en çok 1.500 benzersiz oturum kaydedebilir. Oturum sayısı bu sınırı aşarsa, eski oturumlar önbellekten kaldırılır. Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili diğer teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/servicebus/)gözden geçirin.
+Service Bus Bağlayıcısı, bir hizmet veri yolundan bağlayıcı önbelleğine en çok 1.500 benzersiz oturum kaydedebilir. Oturum sayısı bu sınırı aşarsa, eski oturumlar önbellekten kaldırılır. Daha fazla bilgi için bkz. [ileti oturumları](../service-bus-messaging/message-sessions.md).
+
+Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili diğer teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/servicebus/)gözden geçirin. Azure Service Bus mesajlaşma hakkında daha fazla bilgi için bkz. [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)nedir?
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

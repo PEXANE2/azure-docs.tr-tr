@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/09/2020
-ms.openlocfilehash: 21ad0c38b8901c1e33e05ab162552cb074a392a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/17/2020
+ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969590"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263430"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Izleyici ile neler izlenir?
 Bu makalede, Azure Izleyici tarafından izlenen farklı uygulama ve hizmetler açıklanır. 
@@ -69,7 +69,7 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |AppConfig | Hayır | Hayır | Hayır |  |
 |Application Gateway | Evet | Evet | Hayır |  |
 |Kanıtlama hizmeti | Hayır | Hayır | Hayır |  |
-|Otomasyon | Evet | Evet | Hayır |  |
+|Automation | Evet | Evet | Hayır |  |
 |Azure Hizmet Yöneticisi (RDFE) | Hayır | Hayır | Hayır |  |
 |Backup | Hayır | Evet | Hayır |  |
 |Bastion | Hayır | Hayır | Hayır |  |
@@ -118,7 +118,7 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |IoT Hub | Evet | Evet | Hayır |  |
 |Key Vault | Evet | Evet | Hayır |  |
 |Kubernetes Hizmeti (AKS) | Hayır | Hayır | [Evet](insights/container-insights-overview.md)  |  |
-|Yük Dengeleyici | Evet | Evet | Hayır |  |
+|Load Balancer | Evet | Evet | Hayır |  |
 |Logic Apps | Evet | Evet | Hayır |  |
 |Machine Learning Hizmeti | Hayır | Hayır | Hayır |  |
 |Yönetilen Uygulamalar  | Hayır | Hayır | Hayır |  |
@@ -153,7 +153,7 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |SQL Veri Ambarı | Evet | Evet | Hayır |  |
 |SQL Veritabanı | Evet | Evet | Hayır |  |
 |SQL Server Stretch Database | Evet | Evet | Hayır |  |
-|Yığın | Hayır | Hayır | Hayır |  |
+|Toplu İş | Hayır | Hayır | Hayır |  |
 |Depolama | Evet | Hayır | [Evet](insights/storage-insights-overview.md) |  |
 |Depolama önbelleği | Hayır | Hayır | Hayır |  |
 |Depolama Eşitleme Hizmetleri | Hayır | Hayır | Hayır |  |
@@ -181,7 +181,7 @@ Aşağıdaki tabloda yer alan hizmetler ve çözümler, Azure Izleyici tarafınd
 | [Azure Sentinel](/azure/sentinel/) | Office 365 ve Amazon Web Services bulut Izi gibi farklı kaynaklara bağlanır. Bkz. [veri kaynaklarını bağlama](/azure/sentinel/connect-data-sources). |
 | [Anahtar Kasası Analizi](insights/azure-key-vault.md) | Azure Key Vault AuditEvent günlüklerini çözümleyin. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Günlükleri Azure Izleyici 'ye göndermek için bir tanılama ayarı oluşturun. Bkz. [Intune 'da günlük verilerini depolama, Olay Hub 'ları veya Log Analytics 'e gönderme (Önizleme)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Ağ  | [DNS Analizi](insights/dns-analytics.md) -Windows DNS analitik ve denetim GÜNLÜKLERINI ve DNS sunucularınızdaki diğer ilgili verileri toplar, analiz eder ve ilişkilendirir.<br>[Ağ performansı İzleyicisi](insights/network-performance-monitor.md) -hizmet ve uygulama uç noktalarına ağ bağlantısını ve performansını izleyin.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) -Azure Application Gateway günlükleri ve ölçümleri analiz edin.<br>[Trafik Analizi](/azure/network-watcher/traffic-analytics) -Azure bulutunuzda trafik akışına ilişkin Öngörüler sağlamak Için Ağ İzleyicisi ağ güvenlik grubu (NSG) akış günlüklerini analiz eder. |
+| Ağ  | [Ağ performansı İzleyicisi](insights/network-performance-monitor.md) -hizmet ve uygulama uç noktalarına ağ bağlantısını ve performansını izleyin.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) -Azure Application Gateway günlükleri ve ölçümleri analiz edin.<br>[Trafik Analizi](/azure/network-watcher/traffic-analytics) -Azure bulutunuzda trafik akışına ilişkin Öngörüler sağlamak Için Ağ İzleyicisi ağ güvenlik grubu (NSG) akış günlüklerini analiz eder. |
 | [Office 365](insights/solution-office-365.md) | Office 365 ortamınızı izleyin. Azure Sentinel ile sunulan geliştirilmiş ekleme ile güncelleştirilmiş sürüm. |
 | [SQL Analytics](insights/azure-sql.md) | Azure SQL veritabanlarının, elastik havuzların ve yönetilen örneklerin performansını ölçeklendirerek ve birden çok aboneliğe göre izleyin. |
 | [Surface Hub](insights/surface-hubs.md) | Surface Hub cihazların sistem durumunu ve kullanımını izleyin. |
@@ -200,6 +200,7 @@ Farklı uygulama ve hizmetleri izlemek için diğer çözümler mevcuttur, ancak
 | [Active Directory değerlendirmesi](insights/ad-assessment.md) | Active Directory ortamlarınızın riskini ve sistem durumunu değerlendirin. |
 | [Active Directory çoğaltma durumu](insights/ad-replication-status.md) | Active Directory ortamınızı tüm çoğaltma hatalarıyla düzenli olarak izler. |
 | [Etkinlik günlüğü Analizi](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Önceden tanımlanmış günlük sorgularını ve görünümlerini kullanarak etkinlik günlüğü girdilerini çözümleyin. |
+| [DNS Analizi (Önizleme)](insights/dns-analytics.md) | Windows DNS analitik ve denetim günlüklerini ve DNS sunucularınızdaki diğer ilgili verileri toplar, analiz eder ve ilişkilendirir. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Cloud Foundry sistem durumu ve performans ölçümlerinizi birden çok dağıtımda toplayın, görüntüleyin ve çözümleyin. |
 | [Kapsayıcılar](insights/containers.md) | Docker ve Windows kapsayıcı ana bilgisayarlarını görüntüleyin ve yönetin. |
 | [Isteğe bağlı değerlendirmeler](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Şirket içi, karma ve bulut Microsoft teknoloji ortamlarınızın kullanılabilirliğini, güvenliğini ve performansını değerlendirin ve iyileştirin. |

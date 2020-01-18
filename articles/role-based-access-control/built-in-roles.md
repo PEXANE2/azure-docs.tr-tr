@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 01/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 17a1f2c245e19afbf4d8c5092a0ddf0562a7cb0e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b2a49528ca3c2b55c02f3bda89b3722ee8fef535
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979315"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264263"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure kaynakları için yerleşik roller
 
@@ -48,6 +48,8 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | [API Management hizmet Katılımcısı](#api-management-service-contributor) | Hizmeti ve API 'Leri yönetebilir | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | [Hizmet Işletmeni rolü API Management](#api-management-service-operator-role) | Hizmeti yönetebilir, ancak API 'Leri yönetemez | e022efe7-F5BA-4159-bbe4-b44f577e9b61 |
 > | [API Management hizmeti okuyucu rolü](#api-management-service-reader-role) | Hizmet ve API 'lere salt okuma erişimi | 71522526-b88f-4d52-b57f-d31fc3546d0d |
+> | [Uygulama yapılandırma veri sahibi](#app-configuration-data-owner) | Uygulama yapılandırma verilerine tam erişim sağlar. | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
+> | [Uygulama yapılandırma veri okuyucusu](#app-configuration-data-reader) | Uygulama yapılandırma verilerine okuma erişimi sağlar. | 516239f1-63e1-4d78-a4de-a74fb236a071 |
 > | [Application Insights bileşeni Katılımcısı](#application-insights-component-contributor) | Application Insights bileşenlerini yönetebilir | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights Snapshot Debugger ile toplanan hata ayıklama anlık görüntülerini görüntülemek ve indirmek için kullanıcıya izin verir. Bu izinlerin [sahip](#owner) veya [katkıda](#contributor) bulunan rollerine dahil edilmediğini unutmayın. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [Automation Iş Işleci](#automation-job-operator) | Otomasyon Runbook 'Larını kullanarak Iş oluşturun ve yönetin. | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
@@ -55,6 +57,8 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | [Otomasyon Runbook Işleci](#automation-runbook-operator) | Runbook 'un Işlerini oluşturabilmek için Runbook özelliklerini okuyun. | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
 > | [Avere Katılımcısı](#avere-contributor) | , Bir avere vFXT kümesi oluşturabilir ve yönetebilir. | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Avere Işleci](#avere-operator) | Kümeyi yönetmek için avere vFXT kümesi tarafından kullanılır | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
+> | [Azure bağlı makine ekleme](#azure-connected-machine-onboarding) | , Azure bağlantılı makineler ekleyebilir. | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
+> | [Azure bağlı makine kaynak yöneticisi](#azure-connected-machine-resource-administrator) | Azure bağlı makinelerini okuyabilir, yazabilir, silebilir ve yeniden ekleyebilir. | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | [Azure Event Hubs veri sahibi](#azure-event-hubs-data-owner) | Azure Event Hubs kaynaklarına tam erişim sağlar. | f526a384-b230-433a-b45c-95f59c4a2dec |
 > | [Azure Event Hubs veri alıcısı](#azure-event-hubs-data-receiver) | Azure Event Hubs kaynaklarına erişim izni verir. | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
 > | [Azure Event Hubs veri gönderici](#azure-event-hubs-data-sender) | Azure Event Hubs kaynaklarına erişim gönderilmesine izin verir. | 2b629674-e913-4c01-ae53-ef4638d8f975 |
@@ -378,6 +382,38 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
+## <a name="app-configuration-data-owner"></a>Uygulama yapılandırma veri sahibi
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Açıklama** | Uygulama yapılandırma verilerine tam erişim sağlar. |
+> | **Kimlik** | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
+> | **Eylemler** |  |
+> | *seçim* |  |
+> | **NotActions** |  |
+> | *seçim* |  |
+> | **Veri eylemleri** |  |
+> | Microsoft. AppConfiguration/Configurationmağazaları/*/Read |  |
+> | Microsoft. AppConfiguration/Configurationmağazaları/*/Write |  |
+> | Microsoft. AppConfiguration/Configurationmağazaların/*/Delete |  |
+> | **NotDataActions** |  |
+> | *seçim* |  |
+
+## <a name="app-configuration-data-reader"></a>Uygulama yapılandırma veri okuyucusu
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Açıklama** | Uygulama yapılandırma verilerine okuma erişimi sağlar. |
+> | **Kimlik** | 516239f1-63e1-4d78-a4de-a74fb236a071 |
+> | **Eylemler** |  |
+> | *seçim* |  |
+> | **NotActions** |  |
+> | *seçim* |  |
+> | **Veri eylemleri** |  |
+> | Microsoft. AppConfiguration/Configurationmağazaları/*/Read |  |
+> | **NotDataActions** |  |
+> | *seçim* |  |
+
 ## <a name="application-insights-component-contributor"></a>Application Insights bileşeni Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
@@ -561,6 +597,42 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil | Bir blobu silmenin sonucunu döndürür |
 > | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/okuma | Blob veya Blobların listesini döndürür |
 > | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/yazma | Blob yazma sonucunu döndürür |
+> | **NotDataActions** |  |
+> | *seçim* |  |
+
+## <a name="azure-connected-machine-onboarding"></a>Azure bağlı makine ekleme
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Açıklama** | , Azure bağlantılı makineler ekleyebilir. |
+> | **Kimlik** | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
+> | **Eylemler** |  |
+> | Microsoft. HybridCompute/makineler/okuma | Tüm Azure Arc makinelerini okuyun |
+> | Microsoft. HybridCompute/makineler/yazma | Azure yay makineleri yazma |
+> | Microsoft. GuestConfiguration/Guestconfigurationatamaları/okuma | Konuk yapılandırma atamasını al. |
+> | **NotActions** |  |
+> | *seçim* |  |
+> | **Veri eylemleri** |  |
+> | *seçim* |  |
+> | **NotDataActions** |  |
+> | *seçim* |  |
+
+## <a name="azure-connected-machine-resource-administrator"></a>Azure bağlı makine kaynak yöneticisi
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Açıklama** | Azure bağlı makinelerini okuyabilir, yazabilir, silebilir ve yeniden ekleyebilir. |
+> | **Kimlik** | cd570a14-e51a-42ad-bac8-bafd67325302 |
+> | **Eylemler** |  |
+> | Microsoft. HybridCompute/makineler/okuma | Tüm Azure Arc makinelerini okuyun |
+> | Microsoft. HybridCompute/makineler/yazma | Azure yay makineleri yazma |
+> | Microsoft. HybridCompute/makineler/Sil | Azure yay makinelerini silme |
+> | Microsoft. HybridCompute/makineler/yeniden bağlan/eylem | Azure Arc makinelerini yeniden bağlama |
+> | Microsoft. HybridCompute/*/Read |  |
+> | **NotActions** |  |
+> | *seçim* |  |
+> | **Veri eylemleri** |  |
+> | *seçim* |  |
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
@@ -821,7 +893,6 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. RecoveryServices/Vaults/Backupdokuları/refreshContainers/eylem | Kapsayıcı listesini yeniler |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Yedekleme işleri oluşturma ve yönetme |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Işleri dışarı aktar |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Yedekleme yönetimiyle ilgili meta verileri oluşturma ve yönetme |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Yedekleme yönetimi işlemlerinin sonuçlarını oluşturma ve yönetme |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Yedekleme ilkeleri oluşturma ve yönetme |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Yedeklenebilir öğeleri oluşturma ve yönetme |
@@ -886,7 +957,6 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. RecoveryServices/Vaults/Backupdokuları/refreshContainers/eylem | Kapsayıcı listesini yeniler |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Yedekleme işleri oluşturma ve yönetme |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Işleri dışarı aktar |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Yedekleme yönetimi işlemlerinin sonuçlarını oluşturma ve yönetme |
 > | Microsoft. RecoveryServices/Vaults/backupPolicies/operationResults/Read | Ilke Işleminin sonuçlarını alın. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Tüm koruma Ilkelerini döndürür |
@@ -952,7 +1022,6 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Iş Işleminin sonucunu döndürür. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | Tüm Iş nesnelerini döndürür |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Işleri dışarı aktar |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi sonucunu döndürür. |
 > | Microsoft. RecoveryServices/Vaults/backupPolicies/operationResults/Read | Ilke Işleminin sonuçlarını alın. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Tüm koruma Ilkelerini döndürür |

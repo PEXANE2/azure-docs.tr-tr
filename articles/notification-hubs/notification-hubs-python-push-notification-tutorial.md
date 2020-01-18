@@ -1,6 +1,6 @@
 ---
 title: Python ile Notification Hubs kullanma
-description: Azure Notification Hubs 'yi bir Python arka ucundan nasıl kullanacağınızı öğrenin.
+description: Azure Notification Hubs bir Python arka ucundan nasıl kullanacağınızı öğrenin.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5321802023d57bedc135e2d19b2289f1d66deb72
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: db5174ed6f008be0fed1fdf3c2c83d33277c3b4e
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213071"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263804"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python 'dan Notification Hubs kullanma
 
@@ -32,7 +32,7 @@ Bir Java/PHP/Python/Ruby arka ucundan tüm Notification Hubs özelliklerine, MSD
 > [!NOTE]
 > Bu, Python 'da bildirim gönderilmesini uygulamaya yönelik bir örnek başvuru uygulamasıdır ve resmi olarak desteklenen bildirimler hub 'ı Python SDK 'Sı değildir. Örnek, Python 3,4 kullanılarak oluşturulmuştur.
 
-Bu makalede nasıl yapılacağı gösterilmektedir:
+Bu makale, şunları nasıl yapacağınızı gösterir:
 
 - Python 'da Notification Hubs özellikleri için bir REST istemcisi oluşturun.
 - Bildirim Hub 'ı REST API 'Lerine Python arabirimini kullanarak bildirimler gönderin.
@@ -103,7 +103,7 @@ class NotificationHub:
 ### <a name="create-security-token"></a>Güvenlik belirteci oluştur
 
 Güvenlik belirteci oluşturma ayrıntılarına [buradan](https://msdn.microsoft.com/library/dn495627.aspx)ulaşabilirsiniz.
-Geçerli isteğin URI 'sini ve `NotificationHub` bağlantı dizesinden ayıklanan kimlik bilgilerini temel alan belirteci oluşturmak için aşağıdaki yöntemleri sınıfına ekleyin.
+Geçerli isteğin URI 'sini ve bağlantı dizesinden ayıklanan kimlik bilgilerini temel alan belirteci oluşturmak için `NotificationHub` sınıfına aşağıdaki yöntemleri ekleyin.
 
 ```python
 @staticmethod
@@ -311,7 +311,7 @@ Notification Hubs istemcinizi başlatın (bağlantı dizesini ve hub adını, [B
 hub = NotificationHub("myConnectionString", "myNotificationHubName")
 ```
 
-Ardından, hedef mobil platformunuza bağlı olarak gönderme kodunu ekleyin. Bu örnek, platformu temel alarak bildirim göndermeye olanak tanımak için daha yüksek düzey yöntemler de ekler. Örneğin, Windows için send_windows_notification; send_apple_notification (Apple için) vb.
+Ardından, hedef mobil platformunuza bağlı olarak gönderme kodunu ekleyin. Bu örnek, platformu temel alarak bildirim göndermeye olanak tanımak için daha yüksek düzey yöntemler de ekler; örneğin, Windows için send_windows_notification; send_apple_notification (Apple için) vb.
 
 ### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Mağazası ve Windows Phone 8,1 (Silverlight olmayan)
 
@@ -378,7 +378,7 @@ Python kodunuzu çalıştırmak, hedef cihazınızda bir bildirim göstermelidir
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="enabling-the-debug-property"></a>`debug` Özelliği etkinleştirme
+### <a name="enabling-the-debug-property"></a>`debug` özelliğini etkinleştirme
 
 NotificationHub 'ı başlatırken hata ayıklama bayrağını etkinleştirdiğinizde, ayrıntılı HTTP isteği ve yanıt dökümünü ve aşağıdaki gibi NotificationOutcome görürsünüz. Bu, istekte hangi HTTP üstbilgilerinin geçtiğini ve HTTP yanıtının ne olduğunu anlayabileceğiniz yerdir. Bildirim Hub 'ından alındı:
 
@@ -447,7 +447,7 @@ hub.send_template_notification(template_payload)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Bu makalede, Notification Hubs için bir Python REST istemcisinin nasıl oluşturulacağı gösterildi. Buradan şunları yapabilirsiniz:
+Bu makalede, Notification Hubs için bir Python REST istemcisinin nasıl oluşturulacağı gösterildi. Burada yapabilecekleriniz:
 
 - Bu makaledeki tüm kodu içeren tam [Python REST sarmalayıcı örneği]indirin.
 - [Son Haberler öğreticisi] Notification Hubs etiketleme özelliğini öğrenmeye devam edin

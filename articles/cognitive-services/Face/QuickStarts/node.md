@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 2a3deff1d6220d21c3796b22dc7c39ea284cb36b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7897c1602a8b9ed6a1fea68e80d57cd5bae1c004
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977956"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165959"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Hızlı başlangıç: yüz REST API ve Node. js kullanarak görüntüdeki yüzeyleri algılama
 
@@ -23,9 +23,9 @@ Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz tanıma API'si abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yüz tanıma API'si hizmete abone ve anahtarınızı alın.
+- Yüz abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 - [Visual Studio Code](https://code.visualstudio.com/download) gibi bir kod Düzenleyicisi
 
 ## <a name="set-up-the-node-environment"></a>Düğüm ortamını ayarlama
@@ -100,7 +100,7 @@ Değişikliklerinizi yaptıktan sonra, bir komut istemi açın ve dosyayı `node
 node facedetection.js
 ```
 
-Konsol penceresinde JSON verileri olarak görünen yüz bilgilerini görmeniz gerekir. Örnek:
+Konsol penceresinde JSON verileri olarak görünen yüz bilgilerini görmeniz gerekir. Örneğin:
 
 ```json
 [
@@ -283,7 +283,7 @@ Konsol penceresinde JSON verileri olarak görünen yüz bilgilerini görmeniz ge
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri tespit etmek ve özniteliklerini döndürmek için Azure Yüz Tanıma API'si çağıran bir Node. js betiği yazdı. Daha fazla bilgi edinmek için Yüz Tanıma API'si başvuru belgelerini inceleyin.
+Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri tespit etmek ve özniteliklerini döndürmek için Azure yüz hizmeti 'ni çağıran bir Node. js betiği yazdı. Daha fazla bilgi edinmek için Yüz Tanıma API'si başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
 > [Yüz Tanıma API’si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

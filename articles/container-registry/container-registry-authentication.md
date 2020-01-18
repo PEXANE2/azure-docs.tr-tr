@@ -4,12 +4,12 @@ description: Bir Azure Active Directory kimlikle oturum açma, hizmet sorumlular
 ms.topic: article
 ms.date: 12/21/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29e23f6a983ccc2197e609511aee2ce13726ed0f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: fbe77dee4104e3c654aad58db82765733b2c3e1d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455379"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264518"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Özel bir Docker kapsayıcı kayıt defteri ile kimlik doğrulama
 
@@ -27,7 +27,7 @@ az acr login --name <acrName>
 
 `az acr login`ile oturum açtığınızda CLı, kayıt defterinizle oturumunuzu sorunsuz bir şekilde doğrulamak için [az Login](/cli/azure/reference-index#az-login) çalıştırdığınızda oluşturulan belirteci kullanır. Bu şekilde oturum açtıktan sonra, kimlik bilgileriniz önbelleğe alınır ve oturuminizdeki sonraki `docker` komutları bir Kullanıcı adı veya parola gerektirmez. 
 
-Kayıt defteri erişimi için `az acr login` tarafından kullanılan belirteç 1 saat için geçerlidir, bu nedenle `docker` komutunu çalıştırmadan önce her zaman kayıt defterinde oturum açmanız önerilir. Belirtecin süresi dolarsa, yeniden kimlik doğrulaması yapmak için `az acr login` komutunu tekrar kullanarak yenileyebilirsiniz. 
+Kayıt defteri erişimi için `az acr login` tarafından kullanılan belirteç **3 saat**için geçerlidir, bu nedenle `docker` komutunu çalıştırmadan önce her zaman kayıt defterinde oturum açmanız önerilir. Belirtecin süresi dolarsa, yeniden kimlik doğrulaması yapmak için `az acr login` komutunu tekrar kullanarak yenileyebilirsiniz. 
 
 Azure kimlikleri ile `az acr login` kullanmak, [rol tabanlı erişim](../role-based-access-control/role-assignments-portal.md)sağlar. Bazı senaryolarda, Azure AD 'de kendi bireysel kimliklerinizi kullanarak bir kayıt defterinde oturum açmak isteyebilirsiniz. Şirketler arası senaryolar için veya bireysel erişimi yönetmek istemediğiniz bir çalışma grubunun ihtiyaçlarını işlemek üzere [Azure kaynakları için yönetilen bir kimlikle](container-registry-authentication-managed-identity.md)da oturum açabilirsiniz.
 

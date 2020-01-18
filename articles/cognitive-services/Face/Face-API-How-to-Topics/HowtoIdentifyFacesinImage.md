@@ -1,5 +1,5 @@
 ---
-title: 'Örnek: Görüntülerdeki yüzleri belirleme - Yüz Tanıma API’si'
+title: 'Örnek: görüntülerde yüzeyleri tanımla-yüz'
 titleSuffix: Azure Cognitive Services
 description: Bu kılavuzda, bilinen kişilerden önceden oluşturulan PersonGroup nesneleri kullanılarak bilinmeyen yüzlerin nasıl tanımlandığı gösterilmektedir.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: ec209eb2c60efcb1363c177aad0fe5a72ad2a239
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977191"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169908"
 ---
 # <a name="example-identify-faces-in-images"></a>Örnek: görüntülerdeki yüzeyleri tanımla
 
-Bu kılavuzda, bilinen kişilerden önceden oluşturulan PersonGroup nesneleri kullanılarak bilinmeyen yüzlerin nasıl tanımlandığı gösterilmektedir. Örnekler, Azure bilişsel Hizmetler Yüz Tanıma API'si istemci kitaplığı kullanılarak yazılır C# .
+Bu kılavuzda, bilinen kişilerden önceden oluşturulan PersonGroup nesneleri kullanılarak bilinmeyen yüzlerin nasıl tanımlandığı gösterilmektedir. Örnekler, Azure bilişsel hizmetler istemci kitaplığı kullanılarak dilinde C# yazılır.
 
 ## <a name="preparation"></a>Hazırlık
 
@@ -42,7 +42,7 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 ```
 
 Alternatif olarak, HTTP istek üst bilgisi **OCP-apim-Subscription-Key: &lt;abonelik anahtarı&gt;** abonelik anahtarını belirtin.
-Bir istemci kitaplığı kullandığınızda, abonelik anahtarı FaceClient sınıfının Oluşturucusu aracılığıyla geçirilir. Örnek:
+Bir istemci kitaplığı kullandığınızda, abonelik anahtarı FaceClient sınıfının Oluşturucusu aracılığıyla geçirilir. Örneğin:
  
 ```csharp 
 private readonly IFaceClient faceClient = new FaceClient(
@@ -131,7 +131,7 @@ while(true)
 
 ## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>4\. Adım: Tanımlı bir PersonGroup öğesine karşı yüzü belirleme
 
-Yüz Tanıma API'si tanımlamaları gerçekleştirdiğinde, bir grup içindeki tüm yüzler arasında bir test yüzünün benzerliğini hesaplar. Test yüzü için en çok karşılaştırılabilen kişileri döndürür. Bu işlem, istemci kitaplığının [yüz](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) tanıma API 'Si veya ıdentıyasync yöntemi aracılığıyla yapılır.
+Yüz hizmeti tanımlamaları yaptığında, bir grup içindeki tüm yüzler arasında bir test yüzünün benzerliğini hesaplar. Test yüzü için en çok karşılaştırılabilen kişileri döndürür. Bu işlem, istemci kitaplığının [yüz](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) tanıma API 'Si veya ıdentıyasync yöntemi aracılığıyla yapılır.
 
 Önceki adımlar kullanılarak test yüzü algılanmalıdır. Ardından, yüz KIMLIĞI kimlik API 'sine ikinci bir bağımsız değişken olarak geçirilir. Birden çok yüz kimliği, bir kerede tanımlanabilir. Sonuç, tüm tanımlanan sonuçları içerir. Varsayılan olarak, kimlik işlemi en iyi test yüzüyle eşleşen bir kişi döndürür. İsterseniz, kimlik işleminin daha fazla aday döndürmesini sağlamak için isteğe bağlı maxNumOfCandidatesReturned parametresini belirtin.
 

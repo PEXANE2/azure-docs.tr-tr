@@ -3,14 +3,14 @@ title: Birden fazla Azure sanal makinesi için güncelleştirmeleri yönetme
 description: Bu makalede, Azure ve Azure olmayan sanal makineler için güncelleştirmelerin nasıl yönetileceği açıklanır.
 services: automation
 ms.subservice: update-management
-ms.date: 11/20/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9a5a4330a90bd376114f836250e290944f03860
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de7171d3807540ae7d5f09c3a877031631248e49
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75417836"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168043"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Birden çok makine için güncelleştirmeleri yönetme
 
@@ -100,7 +100,7 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 | Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
 | Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
 | Operations Manager yönetim grubu |Evet |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar. |
-| Azure Storage hesabınız |Hayır |Azure depolama, sistem güncelleştirmeleriyle ilgili bilgiler içermez. |
+| Azure Depolama hesabınızın |Hayır |Azure depolama, sistem güncelleştirmeleriyle ilgili bilgiler içermez. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 
@@ -147,6 +147,13 @@ Bir veya daha fazla sanal makine için yeni bir güncelleştirme dağıtımı za
   - Güncellemeler
 
 - **Dahil edilecek/dışlanacak güncelleştirmeler** - Böylece **Dahil Et / Dışla** sayfası açılır. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir. Ekleme hakkında daha fazla bilgi için bkz. [güncelleştirme dağıtımı zamanlama](automation-tutorial-update-management.md#schedule-an-update-deployment).
+
+> [!NOTE]
+> Dışlamaları geçersiz kılmanın dahil olduğunu bildirmek önemlidir. Örneğin, `*`hariç tutma kuralı tanımlarsanız, hepsi hariç tutulduklarında hiçbir düzeltme eki veya paket yüklenmez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için bir paket dahil, ancak dışlanan bağımlı bir paket varsa, paket yüklenmez.
+
+> [!NOTE]
+> Güncelleştirme dağıtımına dahil edilmek üzere yenisiyle değiştirilen güncelleştirmeleri belirtemezsiniz.
+>
 
 - **Zamanlama ayarları** - Geçerli saatten 30 dakika sonrası olan varsayılan tarih ve saati kabul edebilirsiniz. Ayrıca, farklı bir saat belirtebilirsiniz.
 

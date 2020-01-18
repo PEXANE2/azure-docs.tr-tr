@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs-kurumsal gönderim mimarisi
-description: Kurumsal ortamda Azure Notification Hubs kullanma kılavuzu
+title: Notification Hubs kurumsal gönderim mimarisi
+description: Kurumsal ortamda Azure Notification Hubs kullanma hakkında bilgi edinin
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5b65fe6acb1fdf7ba79b106c876527c9b6736c5f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211914"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264042"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Kurumsal gönderim mimari kılavuzu
 
@@ -29,7 +29,7 @@ Günümüzde kuruluşlar, son kullanıcıları (harici) veya çalışanlar (iç)
 
 Sık kullanılan bir gereksinim, arka uç sistemlerinde ilgi çekici bir olay gerçekleştiğinde kullanıcılara mobil uygulamaları aracılığıyla anında iletme bildirimi göndermeye yöneliktir. Örneğin, bir iPhone 'da bankanın bankacılık uygulamasına sahip olan bir banka müşterisi, hesap veya bir intranet senaryosuyla, Windows Phone bir bütçe onayı uygulamasına sahip olan Finans departmanından çalışanların belirli bir miktarın üzerinde yapılmadığı zaman bildirim almak istiyor.  onay isteği alındığında bildirilmesi için.
 
-Banka hesabı veya onay işlemenin, kullanıcıya bir gönderim başlatması gereken bazı arka uç sistemlerinde yapılması olasıdır. Bir olay bir bildirim tetiklendiğinde, bu tür bir mantığın aynı tür mantığı oluşturması gereken birden fazla arka uç sistemi olabilir. Buradaki karmaşıklık, bazı arka uç sistemlerini, son kullanıcıların farklı bildirimlere abone olabileceği ve hatta birden çok mobil uygulama bile olabilecek tek bir gönderim sistemiyle tümleştirilmesine yer alıyor. Örneğin, bir mobil uygulamanın birden fazla arka uç sisteminden bildirim almak istedikleri intranet mobil uygulamaları. Burada yaygın olarak kullanılan bir çözümün, bir bileşeni tanıtmak için, arka uç sistemleri, her türlü olay için arka uç sistemlerini yoklayıp ve anında iletme iletilerinin şuraya gönderilmesi hakkında istemcilerinin.
+Banka hesabı veya onay işlemenin, kullanıcıya bir gönderim başlatması gereken bazı arka uç sistemlerinde yapılması olasıdır. Bir olay bir bildirim tetiklendiğinde, bu tür bir mantığın aynı tür mantığı oluşturması gereken birden fazla arka uç sistemi olabilir. Buradaki karmaşıklık, bazı arka uç sistemlerini, son kullanıcıların farklı bildirimlere abone olabileceği ve hatta birden çok mobil uygulama bile olabilecek tek bir gönderim sistemiyle tümleştirilmesine yer alıyor. Örneğin, bir mobil uygulamanın birden fazla arka uç sisteminden bildirim almak istedikleri intranet mobil uygulamaları. Burada yaygın olarak kullanılan bir çözümün, bir bileşeni tanıtmak üzere, arka uç sistemleri bir bileşen tanıtmak veya bilmesi gerekmez; bu sayede, her türlü olay için arka uç sistemlerini yoklayan ve istemciye gönderim iletileri göndermekten sorumludur.
 
 Daha iyi bir çözüm Azure Service Bus konu/abonelik modelini kullanmaktır, bu da çözümü ölçeklenebilir yaparken karmaşıklığı azaltır.
 
@@ -39,7 +39,7 @@ Daha iyi bir çözüm Azure Service Bus konu/abonelik modelini kullanmaktır, bu
 
 ![][1]
 
-Bu mimari diyagramdaki anahtar parçası Azure Service Bus konular/abonelikler programlama modeli (daha fazla [Service Bus pub/Sub programlama]) sağlar. Bu durumda, mobil arka uç (mobil uygulamalara gönderim başlatan [Azure Mobil Hizmeti]), doğrudan arka uç sistemlerinden ileti almaz, bunun yerine tarafından [Azure Service Bus], mobil arka ucun bir veya daha fazla arka uç sisteminden ileti almasına olanak sağlar. Bir Service Bus konunun her bir arka uç sistemi için oluşturulması gerekir; örneğin, bir hesap, ık ve finans, bu, temel olarak ilgi çekici bir "konu başlığı" olan ve anında iletme bildirimi olarak gönderilecek iletileri başlatır. Arka uç sistemleri bu konulara iletiler gönderir. Mobil arka uç, Service Bus bir abonelik oluşturarak bir veya daha fazla konuya abone olabilir. Bu, ilgili arka uç sisteminden bildirim almak için mobil arka uca sahibine. Mobil arka uç, aboneliklerindeki iletileri dinlemeye devam eder ve bir ileti ulaştığında, geri döner ve Bildirim Hub 'ına bildirim olarak gönderir. Bildirim Hub 'ları, sonunda iletiyi mobil uygulamaya teslim edebilir. Anahtar bileşenlerinin listesi aşağıdadır:
+Bu mimari diyagramdaki anahtar parçası Azure Service Bus konular/abonelikler programlama modeli (daha fazla [Service Bus pub/Sub programlama]) sağlar. Bu durumda, mobil arka uç (mobil uygulamalara gönderim başlatan [Azure Mobil Hizmeti]), doğrudan arka uç sistemlerinden ileti almaz, bunun yerine, mobil arka ucun bir veya daha fazla arka uç sisteminden ileti almasına olanak sağlayan, [Azure Service Bus]tarafından sunulan bir ara soyutlama katmanı. Bir Service Bus konunun her bir arka uç sistemi için oluşturulması gerekir; örneğin, bir hesap, ık ve finans, bu, temel olarak ilgi çekici bir "konu başlığı" olan ve anında iletme bildirimi olarak gönderilecek iletileri başlatır. Arka uç sistemleri bu konulara iletiler gönderir. Mobil arka uç, Service Bus bir abonelik oluşturarak bir veya daha fazla konuya abone olabilir. Bu, ilgili arka uç sisteminden bildirim almak için mobil arka uca sahibine. Mobil arka uç, aboneliklerindeki iletileri dinlemeye devam eder ve bir ileti ulaştığında, geri döner ve Bildirim Hub 'ına bildirim olarak gönderir. Bildirim Hub 'ları, sonunda iletiyi mobil uygulamaya teslim edebilir. Anahtar bileşenlerinin listesi aşağıdadır:
 
 1. Arka uç sistemleri (LoB/eski sistemler)
    * Service Bus konu oluşturur
@@ -48,7 +48,7 @@ Bu mimari diyagramdaki anahtar parçası Azure Service Bus konular/abonelikler p
    * Hizmet aboneliği oluşturur
    * Iletiyi alır (arka uç sisteminden)
    * İstemcilere bildirim gönderir (Azure Notification Hub 'ı aracılığıyla)
-1. Mobil uygulama
+1. Mobile Uygulama
    * Bildirim alır ve görüntüler
 
 ### <a name="benefits"></a>Avantajlar
@@ -58,7 +58,7 @@ Bu mimari diyagramdaki anahtar parçası Azure Service Bus konular/abonelikler p
 
 ## <a name="sample"></a>Örnek
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Kavramların yanı sıra ortak oluşturma & yapılandırma adımları hakkında bilgi edinmek için aşağıdaki öğreticilerini doldurun:
 
@@ -89,7 +89,7 @@ Tam örnek kod, [Bildirim Hub 'ı örnekleri]kullanılabilir. Üç bileşene ayr
     }
     ```
 
-    c. `CreateTopic`Service Bus konusunu oluşturmak için kullanılır.
+    c. `CreateTopic`, Service Bus konusunu oluşturmak için kullanılır.
 
     ```csharp
     public static void CreateTopic(string connectionString)
@@ -106,7 +106,7 @@ Tam örnek kod, [Bildirim Hub 'ı örnekleri]kullanılabilir. Üç bileşene ayr
     }
     ```
 
-    d. `SendMessage`iletileri bu Service Bus konusuna göndermek için kullanılır. Bu kod, örnek amacına uygun olarak konuya düzenli olarak bir rastgele ileti kümesi gönderir. Normalde bir olay gerçekleştiğinde ileti gönderen bir arka uç sistemi vardır.
+    d. `SendMessage`, bu Service Bus konusuna iletileri göndermek için kullanılır. Bu kod, örnek amacına uygun olarak konuya düzenli olarak bir rastgele ileti kümesi gönderir. Normalde bir olay gerçekleştiğinde ileti gönderen bir arka uç sistemi vardır.
 
     ```csharp
     public static void SendMessage(string connectionString)
@@ -158,7 +158,7 @@ Tam örnek kod, [Bildirim Hub 'ı örnekleri]kullanılabilir. Üç bileşene ayr
     }
     ```
 
-    c. `CreateSubscription`arka uç sisteminin ileti gönderdiği konu için Service Bus bir abonelik oluşturmak için kullanılır. İş senaryosuna bağlı olarak, bu bileşen ilgili konulara bir veya daha fazla abonelik oluşturur (örneğin, bazı bir HR sisteminden, bazıları finans sisteminden ve bu şekilde devam edebilir)
+    c. `CreateSubscription`, arka uç sisteminin ileti gönderdiği konuya yönelik bir Service Bus aboneliği oluşturmak için kullanılır. İş senaryosuna bağlı olarak, bu bileşen ilgili konulara bir veya daha fazla abonelik oluşturur (örneğin, bazı bir HR sisteminden, bazıları finans sisteminden ve bu şekilde devam edebilir)
 
     ```csharp
     static void CreateSubscription(string connectionString)
@@ -174,7 +174,7 @@ Tam örnek kod, [Bildirim Hub 'ı örnekleri]kullanılabilir. Üç bileşene ayr
     }
     ```
 
-    d. `ReceiveMessageAndSendNotification`, aboneliğini kullanarak konudan iletiyi okumak için kullanılır ve okuma başarılı olursa Azure Notification Hubs kullanılarak mobil uygulamaya gönderilmek üzere bir bildirim (örneğin, bir Windows yerel bildirim bildirimi) oluşturun.
+    d. `ReceiveMessageAndSendNotification`, aboneliğini kullanarak konudan iletiyi okumak için kullanılır ve okuma başarılı olursa Azure Notification Hubs kullanılarak mobil uygulamaya gönderilmek üzere bir bildirim (örneğin, bir Windows yerel bildirim bildirimi) oluşturabilir.
 
     ```csharp
     static void ReceiveMessageAndSendNotification(string connectionString)
@@ -244,7 +244,7 @@ Tam örnek kod, [Bildirim Hub 'ı örnekleri]kullanılabilir. Üç bileşene ayr
 
     b. Uygulamanızın bildirim almak için etkinleştirildiğinden emin olun.
 
-    c. Uygulamanın başlangıcında aşağıdaki Notification Hubs kayıt kodunun çağrıldığından emin olun ( `HubName` ve `DefaultListenSharedAccessSignature` değerlerini değiştirdikten sonra:
+    c. Uygulamanın başlangıcında aşağıdaki Notification Hubs kayıt kodunun çağrıldığından emin olun (`HubName` ve `DefaultListenSharedAccessSignature` değerleri değiştirildikten sonra:
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -291,4 +291,4 @@ Tam örnek kod, [Bildirim Hub 'ı örnekleri]kullanılabilir. Üç bileşene ayr
 [Service Bus pub/Sub programlama]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure WebJob]: ../app-service/webjobs-create.md
 [Notification Hubs-Windows Universal öğreticisi]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Azure portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

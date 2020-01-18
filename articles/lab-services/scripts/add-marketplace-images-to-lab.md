@@ -1,6 +1,6 @@
 ---
-title: "PowerShell Betiği: Azure DevTest labs'deki bir laboratuvara Market görüntüsü ekleme | Microsoft Docs"
-description: Bu PowerShell Betiği, Azure DevTest labs'deki bir laboratuvara Market görüntüsü ekler.
+title: PowerShell-Azure DevTest Labs bir laboratuvarda Market görüntüsü ekleme
+description: Bu PowerShell betiği, Azure DevTest Labs bir laboratuvara Market görüntüsü ekler.
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,25 +10,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: e099a29a198d43bf8d00487ab45e2648479aedbe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d699a22ed06022c6d9df12ade7f202fb304648c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160592"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166441"
 ---
-# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest labs'deki bir laboratuvara Market görüntüsü eklemek için PowerShell'i kullanma
+# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'de laboratuvara Market görüntüsü eklemek için PowerShell 'i kullanma
 
-Bu örnek PowerShell Betiği, Azure DevTest labs'deki bir laboratuvara Market görüntüsü ekler. 
+Bu örnek PowerShell betiği, Azure DevTest Labs bir laboratuvara Market görüntüsü ekler. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
-* **Bir laboratuvar**. Komut dosyası var olan bir laboratuvar olmasını gerektirir. 
+## <a name="prerequisites"></a>Ön koşullar
+* **Laboratuvar**. Betik, mevcut bir laboratuvarınızın olmasını gerektirir. 
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -40,13 +40,13 @@ Bu betik şu komutları kullanır:
 
 | Komut | Notlar |
 |---|---|
-| AzResource Bul | Belirtilen parametrelere bağlı kaynakları arar. |
+| Find-AzResource | Belirtilen parametrelere göre kaynak arar. |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Kaynakları alır. |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | Bir kaynağı değiştirir. |
-| [Yeni AzResource](/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturun. |
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | Kaynak oluşturma. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
 
-Ek Azure Lab Services PowerShell Betiği örnekleri, içinde bulunabilir [Azure Lab Services PowerShell örnekleri](../samples-powershell.md).
+Ek Azure Lab Services PowerShell betiği örnekleri [Azure Lab Services PowerShell örneklerinde](../samples-powershell.md)bulunabilir.

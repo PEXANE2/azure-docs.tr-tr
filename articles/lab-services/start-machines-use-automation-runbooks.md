@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs'de Otomasyon runbook'ları kullanarak makineleri başlangıç | Microsoft Docs
-description: Azure Otomasyonu runbook'larını kullanarak sanal makineleri Azure DevTest labs'deki bir laboratuvara başlatmak öğrenin.
+title: Azure DevTest Labs 'de Automation runbook 'ları kullanarak makineler başlatma
+description: Azure Otomasyonu runbook 'ları kullanarak Azure DevTest Labs laboratuvarda sanal makineleri başlatmayı öğrenin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,29 +10,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d3885ba25e479316f97ecbb0681a1680650fc09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61083630"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166303"
 ---
-# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Azure Otomasyonu runbook'ları kullanarak sırasıyla bir laboratuvarda sanal makinelerini başlatma
-[Autostart](devtest-lab-set-lab-policy.md#set-autostart) özelliği DevTest Labs, Vm'leri belirli bir zamanda otomatik olarak başlayacak şekilde yapılandırmanıza olanak tanır. Ancak, bu özellik, belirli bir sırayla başlatmak için makineleri desteklemez. İse, bu tür bir Otomasyon yararlı olacağı birkaç senaryo mevcuttur.  Sıçrama kutusu diğer vm'lere erişim noktası olarak kullanılmak üzere bir Sıçrama kutusu VM bir laboratuvar içindeki diğer Vm'lere önce ilk olarak başlatılması gereken yere bir senaryodur.  Bu makalede, bir betik yürütür bir PowerShell runbook'u ile bir Azure Otomasyonu hesabını ayarlama işlemini göstermektedir. Komut dosyası etiketleri betik değiştirmek zorunda kalmadan başlama sırasını denetlemesine olanak tanımak için laboratuvar Vm'lerde kullanır.
+# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Azure Otomasyonu runbook 'larını kullanarak bir laboratuvarda sanal makine başlatma
+DevTest Labs 'in [autostart](devtest-lab-set-lab-policy.md#set-autostart) özelliği, VM 'leri belirli bir zamanda otomatik olarak başlayacak şekilde yapılandırmanıza olanak tanır. Ancak, bu özellik makineleri belirli bir sırada başlatılacak şekilde desteklemez. Bu tür bir Otomasyon yararlı olacağı birçok senaryo vardır.  Bir senaryo, diğer VM 'lere erişim noktası olarak, diğer VM 'lerden önce, bir laboratuar içindeki bir sıçrama kutusu VM 'sinin ilk başlatılmalıdır.  Bu makalede, bir betiği yürüten PowerShell runbook 'u ile bir Azure Otomasyonu hesabının nasıl ayarlanacağı gösterilmektedir. Betiği, betiği değiştirmek zorunda kalmadan başlangıç sırasını denetlemenize olanak tanımak için laboratuvardaki VM 'lerde Etiketler kullanır.
 
 ## <a name="setup"></a>Kurulum
-Bu örnekte, Vm'leri Laboratuvardaki etiket gerek **StartupOrder** uygun değeriyle eklendi (0,1,2, vs.). -1 başlatılması gerekmez herhangi bir makineye atayın.
+Bu örnekte, laboratuvardaki VM 'Lerin, uygun değer (0, 1, 2, vb.) **ile eklenmesi gerekir** . 1 olarak başlatılması gerekmeyen herhangi bir makineyi belirleyin.
 
 ## <a name="create-an-azure-automation-account"></a>Azure Otomasyonu hesabı oluşturma
-Konusundaki yönergeleri izleyerek bir Azure Otomasyonu hesabını oluşturmak [bu makalede](../automation/automation-create-standalone-account.md). Seçin **farklı çalıştır hesapları** hesabı oluştururken seçeneği. Otomasyon hesabı oluşturulduktan sonra açmak **modülleri** sayfasında ve seçin **Azure modüllerini güncelleştirme** menü çubuğundaki. Eski ve güncelleştirme komut dosyası olmadan çeşitli sürümlerinden çalışmayan varsayılan modüllerdir.
+[Bu makaledeki](../automation/automation-create-standalone-account.md)yönergeleri Izleyerek bir Azure Otomasyonu hesabı oluşturun. Hesabı oluştururken **Farklı Çalıştır hesapları** seçeneğini belirleyin. Otomasyon hesabı oluşturulduktan sonra, **modüller** sayfasını açın ve menü çubuğunda **Azure modüllerini Güncelleştir** ' i seçin. Varsayılan modüller, bazı sürümlerdir ve güncelleştirme olmadan betiği çalışmayabilir.
 
-## <a name="add-a-runbook"></a>Runbook Ekle
-Şimdi bir runbook Otomasyon hesabına eklemek için seçin **runbook'ları** sol menüsünde. Seçin **runbook Ekle** menü ve aşağıdaki talimatlarda [PowerShell runbook'u oluşturma](../automation/automation-first-runbook-textual-powershell.md).
+## <a name="add-a-runbook"></a>Runbook ekleme
+Şimdi Otomasyon hesabına bir runbook eklemek için soldaki menüden **runbook 'lar** ' ı seçin. Menüdeki **runbook Ekle** ' yi seçin ve [PowerShell runbook 'u oluşturmak](../automation/automation-first-runbook-textual-powershell.md)için yönergeleri izleyin.
 
 ## <a name="powershell-script"></a>PowerShell betiği
-Aşağıdaki komut dosyası, abonelik adı, parametre olarak Laboratuvar adı alır. Komut akışını, tüm Vm'leri Laboratuvardaki alın ve ardından sanal makine adları ve bunların başlatma sırası listesini oluşturmak için etiket bilgileri ayrıştırılamıyor sağlamaktır. Betik, sanal makineleri sırasına göre kılavuzluk ve Vm'leri başlatır. Belirli bir numarasının içinde birden fazla VM varsa, zaman uyumsuz olarak PowerShell işleri kullanılarak başlatılır. Bir etiketi (10), son olarak başlangıç değer kümesi yoksa bu sanal makineler için bunlar varsayılan olarak son olarak, başlatılacak.  Laboratuvar otomatik olarak olmasını VM istememektedir, etiket değeri 11'e ayarlayın ve göz ardı edilir.
+Aşağıdaki betik, abonelik adını, laboratuvar adını parametreler olarak alır. Betiğin akışı, laboratuvardaki tüm VM 'Leri almak ve ardından, VM adlarının ve başlangıç sırasının bir listesini oluşturmak için etiket bilgilerini ayrıştırmaktır. Betik VM 'leri sırayla gösterir ve VM 'Leri başlatır. Belirli bir sıra numarasında birden fazla VM varsa, PowerShell işleri kullanılarak zaman uyumsuz olarak başlatılır. Etiketi olmayan bu VM 'Ler için, başlangıç değerini en son (10) olarak ayarlayın, varsayılan olarak en son başlatılır.  Laboratuvar, VM 'nin otomatik olarak başlatılmasını istemiyorsanız, etiket değerini 11 olarak ayarlayın ve yok sayılır.
 
 ```powershell
 #Requires -Version 3.0
@@ -133,9 +133,9 @@ While ($current -le 10) {
 ```
 
 ## <a name="create-a-schedule"></a>Bir zamanlama oluşturun
-Bu betiği, günlük, yürütme için [bir zamanlama oluşturmak](../automation/shared-resources/schedules.md#creating-a-schedule) Otomasyon hesabında. Zamanlama oluşturulduktan sonra [runbook'a Bağla](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
+Bu betiğin günlük olarak yürütülmesi için Otomasyon hesabında [bir zamanlama oluşturun](../automation/shared-resources/schedules.md#creating-a-schedule) . Zamanlama oluşturulduktan sonra [runbook 'a bağlayın](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
 
-Büyük ölçekli bir durumda birden çok labs ile birden fazla aboneliğiniz olduğunda, parametre bilgilerini farklı labs dosyasına depolayabilir ve dosyanın komut dosyası bağımsız parametreleri yerine. Betik değiştirilmesi gerekebilir ancak çekirdek yürütme aynı olacaktır. Bu örnek PowerShell betiğini çalıştırmak için Azure Automation'ı kullanırken bir derleme/yayın işlem hattı, bir görev kullanma gibi diğer seçenekleri vardır.
+Birden çok laboratuvarı olan birden çok aboneliğin olduğu büyük ölçekli bir durumda, parametre bilgilerini farklı laboratuvarlara yönelik bir dosyada depolayın ve tek tek parametreler yerine dosyayı betiğe geçirin. Betiğin değiştirilmesi gerekir, ancak çekirdek yürütme aynı olacaktır. Bu örnek, PowerShell betiğini yürütmek için Azure Otomasyonu 'nu kullanırken, bir yapı/yayın işlem hattında görev kullanma gibi başka seçenekler de vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Otomasyonu hakkında daha fazla bilgi edinmek için şu makaleye bakın: [Azure Otomasyonu giriş](../automation/automation-intro.md).
+Azure Otomasyonu hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın: [Azure Otomasyonu 'na giriş](../automation/automation-intro.md).

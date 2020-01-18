@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: f1cedd9851e425de1e4b6392d42a11dbf9f92644
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b647af11e47952656011a06268d4b0f384126ae9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934375"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263719"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -80,6 +80,22 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak i
 > Varsayılan depolama hesabı, bir çalışma alanı oluşturduğunuzda otomatik olarak sağlanır.
 >
 > Varsayılan olmayan depolama hesapları için, [`Workspace.create()` işlevindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) `storage_account` parametresi Azure kaynak kimliği 'ne göre özel bir depolama hesabı belirtmenizi sağlar.
+
+## <a name="use-azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2 kullanın
+
+Azure Data Lake Storage Gen 2, Azure Blob depolama üzerinde oluşturulmuş, büyük veri analizi için bir dizi yetenektir. Modelleri Azure Machine Learning ile eğitmek için kullanılan verileri depolamak için kullanılabilir. 
+
+Azure Machine Learning çalışma alanınızın sanal ağı içinde Data Lake Storage Gen 2 ' yi kullanmak için aşağıdaki adımları kullanın:
+
+1. Azure Data Lake Storage Gen 2 hesabı oluşturun. Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Storage hesabı oluşturma](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+
+1. Hesabı sanal ağa yerleştirmek için önceki bölümde bulunan 2-4 adımlarını kullanın, [çalışma alanınız için bir depolama hesabı kullanın](#use-a-storage-account-for-your-workspace).
+
+Bir sanal ağ içinde Data Lake Storage Gen 2 ile Azure Machine Learning kullanırken aşağıdaki kılavuzu kullanın:
+
+* __Bir veri kümesi oluşturmak Için SDK__'yı kullanırsanız ve kodu çalıştıran sistem __Sanal ağda değilse__, `validate=False` parametresini kullanın. Bu parametre, sistem depolama hesabı ile aynı sanal ağda değilse başarısız olan doğrulamayı atlar. Daha fazla bilgi için [from_files ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) yöntemine bakın.
+
+* Veri kümesini kullanarak bir modeli eğitmek için Azure Machine Learning Işlem örneği veya işlem kümesi kullanırken, depolama hesabı ile aynı sanal ağda olması gerekir.
 
 ## <a name="use-a-key-vault-instance-with-your-workspace"></a>Çalışma alanınız ile bir Anahtar Kasası örneği kullanın
 

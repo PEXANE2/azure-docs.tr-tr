@@ -1,6 +1,6 @@
 ---
-title: Şablonlar
-description: Bu konuda, Azure Notification Hub 'ları için şablonlar açıklanmaktadır.
+title: Azure Notification Hubs şablonları
+description: Azure Notification Hubs için şablonları kullanma hakkında bilgi edinin.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 54c53fee260062960d6bce9c1822971c935d88d1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212995"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263753"
 ---
 # <a name="templates"></a>Şablonlar
 
@@ -133,19 +133,19 @@ Yükleme modelini (tercih edilen) veya kayıt modelini kullanarak şablonlara ka
 
 Aşağıdaki tabloda şablonlarda izin verilen dil gösterilmektedir:
 
-| İfade       | Açıklama |
+| Expression       | Açıklama |
 | ---------------- | --- |
 | $ (Prop)          | Verilen ada sahip bir olay özelliğine başvuru. Özellik adları büyük/küçük harfe duyarlı değildir. Bu ifade özelliğin metin değerine veya özelliği yoksa boş bir dizeye çözümleniyor. |
 | $ (prop, n)       | Yukarıdaki gibi, ancak metin n karakter olarak açıkça kırpıldı, örneğin $ (başlık, 20), title özelliğinin içeriğini 20 karakter olarak kırpar. |
 | . (prop, n)       | Yukarıdaki gibi, ancak metin, kırpıldığı için üç noktayla sondakini sabitlenmiştir. Kırpılan dizenin ve sonekin toplam boyutu n karakteri aşamaz. . (başlık, 20) bir giriş özelliği olan "This başlık çizgisi", **Bu durum başlıktır...** |
 | % (Prop)          | Çıktının URI kodlamalı olması dışında $ (Name) ile benzerdir. |
-| # (Prop)          | JSON şablonlarında kullanılır (örneğin, iOS ve Android şablonları için).<br><br>Bu işlev, JSON şablonlarında kullanılması dışında (örneğin, Apple şablonları), daha önce belirtilen $ (Prop) ile aynı şekilde çalışır. Bu durumda, bu işlev "{', '}" (örneğin, ' myJsonProperty ': ' # (Name) ') ile çevreleniyorsa ve JavaScript biçiminde bir sayı olarak değerlendirilir, örneğin, RegExp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;e) (+&#124;-)? &#91;0-9&#93;+)?, ardından JSON çıktısı bir sayıdır.<br><br>Örneğin, ' # (Name) ', ' rozet ' olur: 40 (' 40 ' değil). |
+| # (Prop)          | JSON şablonlarında kullanılır (örneğin, iOS ve Android şablonları için).<br><br>Bu işlev, JSON şablonlarında kullanılması dışında (örneğin, Apple şablonları), daha önce belirtilen $ (Prop) ile aynı şekilde çalışır. Bu durumda, bu işlev "{', '}" (örneğin, ' myjsonproperty ': ' # (Name) ') ile çevreleniyorsa ve JavaScript biçiminde bir sayı olarak değerlendirilir&#124;(örneğin, RegExp: (0 (&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;e) (+&#124;-)? &#91;0-9&#93;+)?, ardından JSON çıktısı bir sayıdır.<br><br>Örneğin, ' # (Name) ', ' rozet ': 40 (' 40 ' değil) olur. |
 | ' text ' veya "Text" | Değişmez değer. Değişmez değerler, tek veya çift tırnak içine alınmış rastgele metni içerir. |
 | expr1 + expr2    | Birleştirme işleci iki ifadeye tek bir dizeye katılıyor. |
 
 İfadeler, önceki formlardan herhangi biri olabilir.
 
-Birleştirme kullanılırken, tüm ifadenin birlikte `{}`kullanılması gerekir. Örneğin, `{$(prop) + ‘ - ’ + $(prop2)}`.
+Birleştirme kullanılırken, tüm ifadenin `{}`çevrelenmiş olması gerekir. Örneğin, `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 Örneğin, şu şablon geçerli bir XML şablonu değildir:
 
@@ -170,3 +170,7 @@ Daha önce açıklandığı gibi, birleştirme kullanılırken ifadeler süslü 
   </visual>
 </tile>
 ```
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Azure Notification Hubs hakkında bilgi edinin](notification-hubs-push-notification-overview.md)

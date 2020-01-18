@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs sanal makinesindeki yapıt başarısızlıklarını tanılama | Microsoft Docs
+title: Azure DevTest Labs bir sanal makinede yapıt başarısızlıklarını tanılama
 description: Azure DevTest Labs 'de yapıt hatalarının nasıl giderileceği hakkında bilgi edinin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8b7a72c03d41d54aa80505e781b6f6d32cd2a2c0
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 50cb3138b8d79c4d60c94513d931996d667d9c01
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991358"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170324"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Laboratuvardaki yapıt başarısızlıklarını tanılama 
 Bir yapıt oluşturduktan sonra, başarılı veya başarısız olup olmadığını kontrol edebilirsiniz. Azure DevTest Labs yapıt kayıtları, bir yapıt hatasını tanılamak için kullanabileceğiniz bilgiler sağlar. Bir Windows VM için yapıt günlük bilgilerini görüntülemek için kullanabileceğiniz birkaç seçenek vardır:
 
-* Azure portal
+* Azure portalında
 * VM 'de
 
 > [!NOTE]
@@ -46,13 +46,13 @@ Bir yapıt oluşturduktan sonra, başarılı veya başarısız olup olmadığın
 ## <a name="troubleshoot-artifact-failures-from-within-the-virtual-machine"></a>Sanal makinenin içinden yapıt hatalarında sorun giderme
 
 1. Tanılama yapmak istediğiniz yapıtı içeren VM 'de oturum açın.
-2. C:\Packages\Plugins\Microsoft.COMPUTE.CustomScriptExtension\\*1,9*\ durumuna gidin; burada *1,9* , Azure Özel Betik uzantısı sürüm numarasıdır.
+2. C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\*1,9*\ durumuna gidin; burada *1,9* , Azure Özel Betik uzantısı sürüm numarasıdır.
 
    ![Durum dosyası](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error-vm-status.png)
 
 3. **Durum** dosyasını açın.
 
-Bir **Linux** sanal makinesinde günlük dosyalarını bulmaya ilişkin yönergeler için aşağıdaki makaleye bakın: [Linux sanal makineleri ile Azure Özel Betik uzantısı sürüm 2 kullanın](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
+Bir **Linux** sanal makinesinde günlük dosyalarını bulmaya ilişkin yönergeler için aşağıdaki makaleye bakın: [Linux sanal makinelerle Azure Özel Betik uzantısı sürüm 2](../virtual-machines/extensions/custom-script-linux.md#troubleshooting) ' yi kullanma
 
 
 ## <a name="related-blog-posts"></a>İlgili blog gönderileri

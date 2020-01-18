@@ -4,19 +4,21 @@ description: Azure 'daki Analysis Services sunucunuz şirket içi veri kaynaklar
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a896c98040773179f9a0911162bbfdc5689b1a2e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f1fc00ced0d933884ca0fe6dce91fed4602eb825
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768563"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263447"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Şirket içi veri ağ geçidi ile şirket içi veri kaynaklarına bağlanma
 
-Şirket içi veri ağ geçidi, bulutta şirket içi veri kaynakları ve Azure Analysis Services sunucularınız arasında güvenli veri aktarımı sağlar. Aynı bölgedeki birden çok Azure Analysis Services sunucusu ile çalışmanın yanı sıra, ağ geçidinin en son sürümü de Azure Logic Apps, Power BI, güç uygulamaları ve güç otomatikleştir ile de çalışır. Aynı abonelikte ve aynı bölgede birden çok hizmeti tek bir ağ geçidiyle ilişkilendirebilirsiniz. Yüklediğiniz ağ geçidi bu hizmetlerin tümünde aynı olduğundan, Azure Analysis Services ve Logic Apps bazı ek adımlara sahiptir.
+Şirket içi veri ağ geçidi, bulutta şirket içi veri kaynakları ve Azure Analysis Services sunucularınız arasında güvenli veri aktarımı sağlar. Aynı bölgedeki birden çok Azure Analysis Services sunucusu ile çalışmanın yanı sıra, ağ geçidinin en son sürümü de Azure Logic Apps, Power BI, güç uygulamaları ve güç otomatikleştir ile de çalışır. Yüklediğiniz ağ geçidi bu hizmetlerin tümünde aynı olduğundan, Azure Analysis Services ve Logic Apps bazı ek adımlara sahiptir.
+
+Burada sunulan bilgiler, Azure Analysis Services şirket içi veri ağ geçidiyle nasıl çalıştığına özgüdür. Genel olarak ağ geçidi ve diğer hizmetlerle nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. [Şirket içi veri ağ geçidi nedir?](/data-integration/gateway/service-gateway-onprem).
 
 Azure Analysis Services için, ilk kez ağ geçidi ile kurulum almak dört bölümden oluşan bir işlemdir:
 
@@ -24,9 +26,11 @@ Azure Analysis Services için, ilk kez ağ geçidi ile kurulum almak dört böl�
 
 - **Ağ geçidinizin kaydetme** -Bu adımda, ağ geçidiniz için bir ad ve kurtarma anahtarı belirtip ağ geçidinizi ağ geçidi bulut hizmetine kaydederek bir bölge seçin. Ağ Geçidi kaynağınız herhangi bir bölgeye kaydedilebilir, ancak Analysis Services sunucularınız ile aynı bölgede olmasını öneririz. 
 
-- **Azure 'da ağ geçidi kaynağı oluşturma** -Bu adımda, Azure aboneliğinizde bir ağ geçidi kaynağı oluşturursunuz.
+- **Azure 'da ağ geçidi kaynağı oluşturma** -Bu adımda, bir Azure 'da ağ geçidi kaynağı oluşturursunuz.
 
-- **Sunucularınızı ağ geçidinize bağlama** -aboneliğinizde bir ağ geçidi kaynağınız varsa, sunucularınızı bu kaynaklara bağlamaya başlayabilirsiniz. Aynı abonelikte ve aynı bölgede olmaları şartıyla, birden çok sunucuyu ve diğer kaynakları bağlayabilirsiniz.
+- **Sunucularınızı ağ geçidinize bağlama** -bir ağ geçidi kaynağına sahip olduktan sonra sunucularınızı bu kaynağa bağlamaya başlayabilirsiniz. Birden çok sunucuyu ve diğer kaynakları, aynı bölgede olmaları şartıyla bağlayabilirsiniz.
+
+
 
 ## <a name="how-it-works"> </a>Nasıl çalıştığı
 Kuruluşunuzdaki bir bilgisayara yüklediğiniz ağ geçidi, bir Windows hizmeti, Şirket **içi veri ağ geçidi**olarak çalışır. Bu yerel hizmet, Azure Service Bus aracılığıyla Ağ Geçidi Bulut Hizmeti’ne kaydedilir. Daha sonra Azure aboneliğiniz için bir şirket içi veri ağ geçidi kaynağı oluşturursunuz. Azure Analysis Services sunucularınız Azure Gateway kaynağına bağlanır. Sunucunuzdaki modellerin sorgular veya işleme için şirket içi veri kaynaklarınıza bağlanması gerektiğinde, bir sorgu ve veri akışı, ağ geçidi kaynağı, Azure Service Bus, yerel şirket içi veri ağ geçidi hizmeti ve veri kaynaklarınızı ele alır. 
@@ -58,7 +62,7 @@ Ağ Geçidi tarafından kullanılan tam etki alanı adları aşağıda verilmiş
 | --- | --- | --- |
 | *.powerbi.com |80 |Yükleyiciyi indirmek için kullanılan HTTP. |
 | *.powerbi.com |443 |HTTPS |
-| *. analysis.windows.net |443 |HTTPS |
+| *.analysis.windows.net |443 |HTTPS |
 | *. login.windows.net, login.live.com, aadcdn.msauth.net |443 |HTTPS |
 | *.servicebus.windows.net |5671-5672 |Gelişmiş İleti Sıraya Alma Protokolü (AMQP) |
 | *.servicebus.windows.net |443, 9350-9354 |TCP üzerinden Service Bus Geçişi'ndeki dinleyiciler (Erişim Denetimi belirtecinin alınması için 443 gerekir) |

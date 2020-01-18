@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: b7dd11c3a71c46bbc06b205c6b4300337683305a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 8d118170de01c7685ac9dba65c7e22cefb6d4829
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889005"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263188"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Hızlı başlangıç: kendi sanal ağınızda Azure Databricks çalışma alanı oluşturma
 
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 
-1. Azure portal menüsünde **kaynak oluştur**' u seçin. Sonra **ağ > sanal ağ**' ı seçin.
+1. Azure portalı menüsünden **Kaynak oluştur**'u seçin. Sonra **ağ > sanal ağ**' ı seçin.
 
     ![Azure portal üzerinde sanal ağ oluşturma](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-portal.png)
 
@@ -41,23 +41,30 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
 
     |Ayar|Önerilen değer|Açıklama|
     |-------|---------------|-----------|
-    |Ad|databricks-hızlı başlangıç|Sanal ağınız için bir ad seçin.|
-    |Adres alanı|10.1.0.0/16|CıDR gösteriminde sanal ağın adres aralığı. CıDR aralığı/16 ile/24 arasında olmalıdır|
     |Abonelik|\<Aboneliğiniz\>|Kullanmak istediğiniz Azure aboneliğini seçin.|
     |Kaynak grubu|databricks-hızlı başlangıç|**Yeni oluştur** ' u seçin ve hesabınız için yeni bir kaynak grubu adı girin.|
-    |Konum|\<Kullanıcılarınıza en yakın bölgeyi seçin\>|Sanal ağınızı barındırabileceğiniz bir coğrafi konum seçin. Kullanıcılarınıza en yakın konumu kullanın.|
+    |Ad|databricks-hızlı başlangıç|Sanal ağınız için bir ad seçin.|
+    |Bölge|\<Kullanıcılarınıza en yakın bölgeyi seçin\>|Sanal ağınızı barındırabileceğiniz bir coğrafi konum seçin. Kullanıcılarınıza en yakın konumu kullanın.|
+
+    ![Azure portal üzerindeki bir sanal ağın temelleri](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
+
+3. **İleri ' yi seçin: IP adresleri >** ve aşağıdaki ayarları uygulayın. Ardından **gözden geçir + oluştur**' u seçin.
+    
+    |Ayar|Önerilen değer|Açıklama|
+    |-------|---------------|-----------|
+    |IPv4 adres alanı|10.2.0.0/16|CıDR gösteriminde sanal ağın adres aralığı. CıDR aralığı/16 ile/24 arasında olmalıdır|
     |Alt ağ adı|default|Sanal ağınızdaki varsayılan alt ağ için bir ad seçin.|
-    |Alt Ağ Adresi aralığı|10.1.0.0/24|CIDR gösteriminde alt ağın adres aralığı. Sanal ağın adres alanı tarafından içerilmelidir. Kullanımda olan bir alt ağın adres aralığı düzenlenemiyor.|
+    |Alt Ağ Adresi aralığı|10.2.0.0/24|CIDR gösteriminde alt ağın adres aralığı. Sanal ağın adres alanı tarafından içerilmelidir. Kullanımda olan bir alt ağın adres aralığı düzenlenemiyor.|
 
-    ![Azure portal üzerinde sanal ağ oluşturma](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
+    ![Azure portal bir sanal ağ için IP yapılandırması ayarla](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-ip-config.png)
 
-3. Dağıtım tamamlandıktan sonra sanal ağınıza gidin ve **Ayarlar**altında **Adres alanı** ' nı seçin. *Ek adres aralığı Ekle*' nin kutusunda `10.179.0.0/16` ekleyin ve **Kaydet**' i seçin.
+4. **Gözden geçir + oluştur** sekmesinde, sanal ağı dağıtmak için **Oluştur** ' u seçin. Dağıtım tamamlandıktan sonra sanal ağınıza gidin ve **Ayarlar**altında **Adres alanı** ' nı seçin. *Ek adres aralığı Ekle*' nin kutusunda `10.179.0.0/16` ekleyin ve **Kaydet**' i seçin.
 
     ![Azure sanal ağ adres alanı](./media/quickstart-create-databricks-workspace-vnet-injection/add-address-space.png)
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks çalışma alanı oluşturma
 
-1. Azure portal menüsünde **kaynak oluştur**' u seçin. Ardından **> Databricks Analytics**' i seçin.
+1. Azure portalı menüsünden **Kaynak oluştur**'u seçin. Ardından **> Databricks Analytics**' i seçin.
 
     ![Azure portal Azure Databricks çalışma alanı oluşturma](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-portal.png)
 
@@ -70,6 +77,13 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
     |Kaynak grubu|databricks-hızlı başlangıç|Sanal ağ için kullandığınız kaynak grubunu seçin.|
     |Konum|\<Kullanıcılarınıza en yakın bölgeyi seçin\>|Sanal ağınızla aynı konumu seçin.|
     |Fiyatlandırma Katmanı|Standart veya Premium arasından seçim yapın.|Fiyatlandırma katmanları hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).|
+
+    ![Azure Databricks çalışma alanı temelleri oluşturma](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
+
+3. **Temel bilgiler** sayfasında ayarları girmeyi tamamladıktan sonra, ileri ' yi seçin **: Ağ >** ve aşağıdaki ayarları uygula:
+
+    |Ayar|Önerilen değer|Açıklama|
+    |-------|---------------|-----------|
     |Sanal ağınızda Azure Databricks çalışma alanı dağıtma (VNet)|Evet|Bu ayar, sanal ağınıza bir Azure Databricks çalışma alanı dağıtmanıza olanak tanır.|
     |Sanal Ağ|databricks-hızlı başlangıç|Önceki bölümde oluşturduğunuz sanal ağı seçin.|
     |Ortak alt ağ adı|Genel-alt ağ|Varsayılan genel alt ağ adını kullanın.|
@@ -77,7 +91,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
     |Özel alt ağ adı|Özel-alt ağ|Varsayılan özel alt ağ adını kullanın.|
     |Özel alt ağ CıDR aralığı|10.179.0.0/18|/26 dahil olmak üzere bir CıDR aralığı kullanın.|
 
-    ![Azure portal Azure Databricks çalışma alanı oluşturma](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
+    ![VNet bilgilerini Azure portal Azure Databricks çalışma alanına ekleme](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-vnet-config.png)
 
 3. Dağıtım tamamlandıktan sonra Azure Databricks kaynağına gidin. Sanal ağ eşlemesinin devre dışı olduğuna dikkat edin. Ayrıca, Genel Bakış sayfasındaki kaynak grubu ve yönetilen kaynak grubu ' na de dikkat edin. 
 

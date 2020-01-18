@@ -1,5 +1,5 @@
 ---
-title: Azure CLı ile DevTest Labs 'de sanal makineler oluşturma ve yönetme | Microsoft Docs
+title: Azure CLı ile DevTest Labs 'de sanal makineler oluşturma ve yönetme
 description: Azure CLı ile sanal makineler oluşturmak ve yönetmek için Azure DevTest Labs kullanmayı öğrenin
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a089eae935fe5ecbf3dd2836d86912d0c63ef84
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d3cd104e36cb407e9b1b833335869cac2c69d0ec
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773112"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167065"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Azure CLı kullanarak DevTest Labs ile sanal makineler oluşturma ve yönetme
 Bu hızlı başlangıç, laboratuvarınızda bir geliştirme makinesi oluşturma, başlatma, bağlama, güncelleştirme ve Temizleme sürecinde size kılavuzluk eder. 
@@ -61,7 +61,7 @@ az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGrou
 Ayrıca, **resim türü** parametresini **Formül**olarak ayarlayarak, formülleri temel alan sanal makineler de oluşturabilirsiniz. Sanal makineniz için belirli bir sanal ağ seçmeniz gerekiyorsa, **VNET-adı** ve **alt ağ** parametrelerini kullanın. Daha fazla bilgi için bkz. [az Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
 
 ## <a name="verify-that-the-vm-is-available"></a>VM 'nin kullanılabilir olduğunu doğrulayın.
-Başlamadan önce VM 'nin kullanılabilir olduğunu doğrulamak için komutunukullanın.`az lab vm show` 
+Başlamadan önce VM 'nin kullanılabilir olduğunu doğrulamak için `az lab vm show` komutunu kullanın. 
 
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand 'properties($expand=ComputeVm,NetworkInterface)' --query '{status: computeVm.statuses[0].displayStatus, fqdn: fqdn, ipAddress: networkInterface.publicIpAddress}'
@@ -127,13 +127,13 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 
 Laboratuvardaki bir sanal makinede bulunan yapıtları listelemek için aşağıdaki komutları çalıştırın.
 
-**Cloud Shell-PowerShell**: $ in $Expand önce backtick (\`) kullanımına dikkat edin (örn. ' $Expand):
+**Cloud Shell-PowerShell**: $ in $Expand önce backtick (\`) kullanımına (yani, ' $Expand) dikkat edin:
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(`$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
 ```
 
-**Cloud Shell-Bash**: komutta $ 'ın önünde eğik çizgi (\\) karakterinin kullanılmasına dikkat edin. 
+**Cloud Shell-Bash**: komutta $ öğesinin önünde eğik çizgi (\\) karakterinin kullanılmasına dikkat edin. 
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(\$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"

@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Depolama Gezgini'ni kullanarak Azure DevTest Labs kullanarak karşıya VHD dosyası yükleme | Microsoft Docs
-description: Laboratuvar depolama hesabı için Microsoft Azure Depolama Gezgini'ni kullanarak karşıya VHD dosyası yükleme
+title: Depolama Gezgini kullanarak Azure DevTest Labs VHD dosyasını karşıya yükleme
+description: Microsoft Azure Depolama Gezgini kullanarak VHD dosyasını laboratuvar depolama hesabına yükleyin
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,70 +12,70 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 3c187d104334fe75ec9e0ce41a3fdc14b508dfb2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: defafdd5809b7e537b3b9abb78f8cb63d0033c16
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60623432"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170365"
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Laboratuvar depolama hesabı için Microsoft Azure Depolama Gezgini'ni kullanarak karşıya VHD dosyası yükleme
+# <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure Depolama Gezgini kullanarak VHD dosyasını laboratuvar depolama hesabına yükleyin
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Azure DevTest Labs'de sanal makineler sağlamak için kullanılan özel görüntüler oluşturmak için VHD dosyaları kullanılabilir. Bu makalede nasıl kullanılacağı gösterilmektedir [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md) bir laboratuvar depolama hesabına VHD dosyası yüklemek için. VHD dosyasını yükledikten sonra [Bölümü'sonraki adımlar](#next-steps) karşıya yüklenen VHD dosyasından bir özel görüntü oluşturma işlemini göstermektedir bazı makaleler listeler. Diskler ve VHD'ler Azure hakkında daha fazla bilgi için bkz: [yönetilen disklere giriş](../virtual-machines/linux/managed-disks-overview.md)
+Azure DevTest Labs, VHD dosyaları, sanal makineleri sağlamak için kullanılan özel görüntüler oluşturmak için kullanılabilir. Bu makalede, bir laboratuvarın depolama hesabına VHD dosyası yüklemek için [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md) nasıl kullanılacağı gösterilmektedir. VHD dosyanızı karşıya yükledikten sonra, [sonraki adımlar bölümünde](#next-steps) KARŞıYA yüklenen VHD dosyasından nasıl özel bir görüntü oluşturulacağını gösteren bazı makaleler listelenmektedir. Azure 'daki diskler ve VHD 'ler hakkında daha fazla bilgi için bkz. [yönetilen disklere giriş](../virtual-machines/linux/managed-disks-overview.md)
 
 ## <a name="step-by-step-instructions"></a>Adım adım yönergeler
 
-Aşağıdaki adımlarda DevTest Labs kullanarak bir VHD dosyasını karşıya aracılığıyla yol [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+Aşağıdaki adımlar, [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md)kullanarak DevTest Labs 'e bir VHD dosyası yükleme işleminde size rehberlik sağlar.
 
-1. [Microsoft Azure Depolama Gezgini en son sürümünü indirip](https://www.storageexplorer.com).
+1. [Microsoft Azure Depolama Gezgini en son sürümünü indirip yükleyin](https://www.storageexplorer.com).
 
-1. Azure portalını kullanarak Laboratuvar depolama hesabının adını alın:
+1. Azure portal kullanarak laboratuvarın depolama hesabının adını alın:
 
-    1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+    1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
     
-    1. Seçin **tüm hizmetleri**ve ardından **DevTest Labs** listeden.
+    1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
     
-    1. İstenen Laboratuvar labs listesinden seçin.  
+    1. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
     
-    1. Laboratuvar dikey penceresinde seçin **yapılandırma**. 
+    1. Laboratuvarın dikey penceresinde **yapılandırma**' yı seçin. 
     
-    1. Laboratuvar **yapılandırma** dikey penceresinde **özel görüntülerin (VHD)** .
+    1. Laboratuvar **yapılandırması** dikey penceresinde **özel görüntüler (VHD)** seçeneğini belirleyin.
     
-    1. Üzerinde **özel görüntüleri** dikey penceresinde seçin **+ Ekle**. 
+    1. **Özel görüntüler** dikey penceresinde **+ Ekle**' yi seçin. 
     
-    1. Üzerinde **özel görüntü** dikey penceresinde **VHD**.
+    1. **Özel görüntü** dikey penceresinde, **VHD**' yi seçin.
     
-    1. Üzerinde **VHD** dikey penceresinde **PowerShell kullanarak bir VHD'yi karşıya yükleme**.
+    1. **VHD** dikey penceresinde **PowerShell kullanarak bir VHD 'yi karşıya yükle**' yi seçin.
     
-        ![PowerShell kullanarak bir VHD'yi karşıya yükleme][0]
+        ![PowerShell kullanarak VHD 'YI karşıya yükleme][0]
     
-    1. **PowerShell kullanarak bir görüntüyü karşıya yükleme** dikey bir çağrı görüntüler **Add-AzureVhd** cmdlet'i. İlk parametre (*hedef*) depolama hesabı adı şu biçimde Laboratuvar için içerir:
+    1. **PowerShell kullanarak görüntü yükleme** dikey penceresi, **Add-AzureVhd** cmdlet 'ine bir çağrı görüntüler. İlk parametre (*hedef*), laboratuvar için depolama hesabı adını aşağıdaki biçimde içerir:
     
         `https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...`
 
-    1. Sonraki adımlarda kullanılan depolama hesabı adını not edin.
+    1. Daha sonraki adımlarda kullanılan depolama hesabı adını unutmayın.
     
-1. Depolama Gezgini'ni kullanarak bir Azure aboneliği hesabınıza bağlanın.
+1. Depolama Gezgini kullanarak bir Azure abonelik hesabına bağlanın.
 
     > [!TIP] 
     > 
-    > Depolama Gezgini, çeşitli bağlantı seçenekleri destekler. Bu bölümde, Azure aboneliğinizle ilişkili bir depolama hesabına bağlanmayı gösterir. Depolama Gezgini tarafından desteklenen diğer bağlantı seçenekleri görmek için makaleye bakın [Depolama Gezgini ile çalışmaya başlama](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+    > Depolama Gezgini çeşitli bağlantı seçeneklerini destekler. Bu bölümde, Azure aboneliğinizle ilişkili bir depolama hesabına bağlanma gösterilmektedir. Depolama Gezgini tarafından desteklenen diğer bağlantı seçeneklerini görmek için, [Depolama Gezgini kullanmaya](../vs-azure-tools-storage-manage-with-storage-explorer.md)Başlarken makalesine başvurun.
  
     1. Depolama Gezgini'ni açın.
     
-    1. Depolama Gezgini'nde seçin **Azure hesap ayarları**. 
+    1. Depolama Gezgini ' de **Azure hesap ayarları**' nı seçin. 
     
         ![Azure hesap ayarları][1]
     
-    1. Sol bölmede oturum açtığınız Microsoft hesapları gösterilir. Başka bir hesaba bağlanmak için **Hesap ekle**’yi seçin ve en az bir etkin Azure aboneliği ile ilişkilendirilen bir Microsoft hesabı ile oturum açmak için iletişim kutularını izleyin.
+    1. Sol bölmede, oturum açtığınız Microsoft hesapları görüntülenir. Başka bir hesaba bağlanmak için **Hesap ekle**’yi seçin ve en az bir etkin Azure aboneliği ile ilişkilendirilen bir Microsoft hesabı ile oturum açmak için iletişim kutularını izleyin.
     
         ![Hesap ekleme][2]
     
-    1. Bir Microsoft hesabı ile başarıyla oturum açtıktan sonra sol bölme ilgili hesapla ilişkili Azure abonelikleriyle doldurulur. Birlikte çalışmak istediğiniz Azure aboneliklerini seçin ve ardından **Uygula**’yı seçin. (Seçerek **tüm abonelikleri** veya listelenen Azure aboneliklerinin hiçbirinin seçimini yapar.)
+    1. Bir Microsoft hesabı ile başarıyla oturum açtıktan sonra sol bölme ilgili hesapla ilişkili Azure abonelikleriyle doldurulur. Birlikte çalışmak istediğiniz Azure aboneliklerini seçin ve ardından **Uygula**’yı seçin. ( **Tüm abonelikler** seçildiğinde, listelenen Azure aboneliklerinin tümünün veya hiçbirinin seçimi geçer.)
     
         ![Azure aboneliklerini seçme][3]
     
@@ -83,48 +83,48 @@ Aşağıdaki adımlarda DevTest Labs kullanarak bir VHD dosyasını karşıya ar
     
         ![Seçili Azure abonelikleri][4]
 
-1. Laboratuvar depolama hesabını bulun:
+1. Laboratuvarın depolama hesabını bulun:
 
-    1. Depolama Gezgini sol bölmede, bulun ve Laboratuvar sahibi olan Azure aboneliğini düğümünü genişletin.
+    1. Depolama Gezgini sol bölmede, laboratuvarın sahibi olan Azure aboneliğinin düğümünü bulun ve genişletin.
     
-    1. Aboneliğin düğümünde genişletin **depolama hesapları**.
+    1. Aboneliğin düğümü altında, **depolama hesapları**' nı genişletin.
 
-    1. Laboratuvar depolama hesabı düğümü için düğümleri göstermek için genişletin **Blob kapsayıcıları**, **dosya paylaşımları**, **kuyrukları**, ve **tabloları**.
+    1. **BLOB kapsayıcıları**, **dosya paylaşımları**, **Kuyruklar**ve **Tablolar**için düğümleri göstermek üzere laboratuvarın depolama hesabı düğümünü genişletin.
     
-    1. Genişletin **Blob kapsayıcıları** düğümü.
+    1. **BLOB kapsayıcıları** düğümünü genişletin.
     
-    1. Sağ bölmede içeriği görüntülemek için karşıya blob kapsayıcıyı seçin.
+    1. Sağ bölmedeki içeriğini göstermek için blob kapsayıcısını karşıya yükleme ' yi seçin.
         
-        ![Dizin karşıya yükleme][5]
+        ![Dizini karşıya yükle][5]
 
-1. Depolama Gezgini'ni kullanarak karşıya VHD dosyası yükleme:
+1. Depolama Gezgini kullanarak VHD dosyasını karşıya yükleyin:
 
-    1. Depolama Gezgini sağ bölmede, BLOB'ları listesini görmelisiniz **yükler** Laboratuvar depolama hesabının blob kapsayıcısı. Blob Düzenleyici araç çubuğunda **karşıya yükleme** 
+    1. Depolama Gezgini sağ bölmede, laboratuvarın depolama **hesabının blob kapsayıcısındaki blob 'ların** bir listesini görmeniz gerekir. Blob Düzenleyicisi araç çubuğunda **karşıya yükle** ' yi seçin. 
         
         ![Karşıya yükle düğmesi][6]
     
-    1. Gelen **karşıya** açılan menüsünde, select **dosyaları karşıya yükle...** .
+    1. **Karşıya yükle** açılan menüsünde **dosyaları karşıya yükle...** öğesini seçin.
     
-    1. Üzerinde **dosyaları karşıya yükleme** iletişim kutusunda üç nokta simgesini seçin.
+    1. **Dosyaları karşıya yükle** iletişim kutusunda üç nokta simgesini seçin.
         
         ![Dosya seç][8]  
 
-    1. Üzerinde **karşıya yüklenecek dosyaları seçin** iletişim kutusunda, istediğiniz VHD dosyasına göz atın, onu seçin ve ardından **açık**.
+    1. **Karşıya yüklenecek dosyaları seçin** iletişim kutusunda, istenen VHD dosyasına gidin, seçin ve sonra **Aç**' ı seçin.
     
-    1. İçin döndürülen **dosyaları karşıya yükleme** iletişim kutusunda değişiklik **Blob türü** için **sayfa blobu**.
+    1. **Dosyaları karşıya yükle** iletişim kutusuna döndürülen **BLOB türünü** **Sayfa Blobu**olarak değiştirin.
     
     1. **Karşıya Yükle**’yi seçin.
 
         ![Dosya seç][9]  
     
-    1. Depolama Gezgini **etkinlik günlüğü** bölmesi (birlikte karşıya yüklemeyi iptal etmek için bağlantılar) yükleme durumunu gösterir. Bir VHD dosyasını karşıya yükleme işlemi, VHD dosyasının ve bağlantı hızınızı boyutuna bağlı olarak uzun olabilir. 
+    1. Depolama Gezgini **etkinlik günlüğü** bölmesi, indirme durumunu gösterir (karşıya yüklemeyi iptal etmek için bağlantılarla birlikte). Bir VHD dosyasını karşıya yükleme işlemi, VHD dosyasının boyutuna ve bağlantı hızına bağlı olarak uzun olabilir. 
 
-        ![Dosya karşıya yükleme durumu][10]  
+        ![Karşıya yükleme dosyası durumu][10]  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure DevTest Labs Azure portalını kullanarak bir VHD dosyasından bir özel görüntü oluşturma](devtest-lab-create-template.md)
-- [Azure DevTest labs'teki PowerShell kullanarak bir VHD dosyasından özel bir görüntü oluşturma](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+- [Azure portal kullanarak bir VHD dosyasından Azure DevTest Labs özel görüntü oluşturma](devtest-lab-create-template.md)
+- [PowerShell kullanarak bir VHD dosyasından Azure DevTest Labs özel görüntü oluşturma](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 
 [0]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-image-using-psh.png
 [1]: ./media/devtest-lab-upload-vhd-using-storage-explorer/settings-icon.png

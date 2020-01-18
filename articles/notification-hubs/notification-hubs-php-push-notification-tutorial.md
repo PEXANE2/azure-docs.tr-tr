@@ -1,5 +1,5 @@
 ---
-title: PHP ile Notification Hubs kullanma
+title: PHP ile Azure Notification Hubs kullanma
 description: Azure Notification Hubs bir PHP arka ucundan nasıl kullanacağınızı öğrenin.
 services: notification-hubs
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4df48475af4b140e4446dde9069eafcc95d9d3b2
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213180"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263855"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>PHP 'den Notification Hubs kullanma
 
@@ -36,7 +36,7 @@ Bu konuda nasıl yapılacağını göstereceğiz:
 
 ## <a name="client-interface"></a>İstemci arabirimi
 
-Ana istemci arabirimi, bu sitede mevcut olan tüm öğreticileri ve örnekleri doğrudan çevirebilmeniz ve şu anda topluluk tarafından katkıda bulunmakurmanıza olanak sağlayan [.net Notification Hubs SDK 'sında](https://msdn.microsoft.com/library/jj933431.aspx)kullanılabilen yöntemlerin aynısını sağlayabilir. İnternet.
+Ana istemci arabirimi, bu sitede mevcut olan tüm öğreticileri ve örnekleri doğrudan çevirebilmeniz ve Internet 'teki topluluk tarafından katkıda bulungirmenize olanak sağlayan [.net Notification Hubs SDK 'sında](https://msdn.microsoft.com/library/jj933431.aspx)kullanılabilen yöntemlerin aynısını sağlayabilir.
 
 [PHP REST sarmalayıcı örneği]bulunan tüm kodu bulabilirsiniz.
 
@@ -106,7 +106,7 @@ Aşağıda, bağlantı dizesini çözümleyen Oluşturucu olan istemciyi uygulay
 
 [SAS güvenlik belirteci oluşturma](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token)hakkında bilgi için Azure belgelerine bakın.
 
-Geçerli isteğin URI 'sini ve `NotificationHub` bağlantı dizesinden ayıklanan kimlik bilgilerini temel alarak belirteci oluşturmak için yönteminisınıfınaekleyin.`generateSasToken`
+Geçerli isteğin URI 'sini ve bağlantı dizesinden ayıklanan kimlik bilgilerini temel alan belirteci oluşturmak için `NotificationHub` sınıfına `generateSasToken` yöntemi ekleyin.
 
     ```php
     private function generateSasToken($uri) {
@@ -155,7 +155,7 @@ Bu sınıf, yerel bir bildirim gövdesi için bir kapsayıcıdır veya bir şabl
 
 Kullanılabilir tüm seçenekler için [NOTIFICATION HUBS REST API belgelerine](https://msdn.microsoft.com/library/dn495827.aspx) ve belirli bildirim platformlarına yönelik biçimlere bakın.
 
-Bu sınıfla birlikte, artık `NotificationHub` sınıfın içine gönder bildirim yöntemlerini yazabiliriz:
+Bu sınıfla birlikte, artık `NotificationHub` sınıfının içine gönder bildirim yöntemlerini yazabiliriz:
 
     ```php
     public function sendNotification($notification, $tagsOrTagExpression="") {
@@ -216,7 +216,7 @@ Bu sınıfla birlikte, artık `NotificationHub` sınıfın içine gönder bildir
     } 
     ```
 
-Yukarıdaki yöntemler, bildirimi göndermek için doğru gövde ve üstbilgilere `/messages` sahip olan Notification Hub 'ının uç noktasına bir http post isteği gönderir.
+Yukarıdaki yöntemler Bildirim Hub 'ınızın `/messages` uç noktasına bir HTTP POST isteği gönderir ve bildirimin gönderilmesi için doğru gövde ve üst bilgiler vardır.
 
 ## <a name="complete-tutorial"></a>Öğreticiyi doldurun
 
@@ -282,7 +282,7 @@ PHP kodunuzun çalıştırılması artık hedef cihazınızda bir bildirim gör�
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Bu konu başlığında, Notification Hubs için basit bir Java REST istemcisi oluşturmayı gösterdik. Buradan şunları yapabilirsiniz:
+Bu konu başlığında, Notification Hubs için basit bir Java REST istemcisi oluşturmayı gösterdik. Burada yapabilecekleriniz:
 
 * Yukarıdaki tüm kodu içeren tam [PHP REST sarmalayıcı örneği]indirin.
 * [Son Haberler öğreticisinde Notification Hubs etiketleme özelliğini öğrenmeye devam edin

@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/20/2019
+ms.date: 01/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 493056037637ffb2afa9570e1287620869ee8fc7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 94cf30d2d3650212707cf92db83236882fe5e49f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479312"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169347"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SAP NetWeaver için SUSE Linux Enterprise Server Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu
 
@@ -52,7 +52,7 @@ ms.locfileid: "75479312"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Bu makalede, SAP uygulamaları için SUSE Linux Enterprise Server ile Azure VM 'lerinde birden fazla SAP NetWeaver yüksek kullanılabilir sisteminin (yani çoklu SID) nasıl dağıtılacağı açıklanır.  
+Bu makalede, SAP uygulamaları için SUSE Linux Enterprise Server ile Azure VM 'lerinde birden çok SAP NetWeaver veya S4HANA yüksek oranda kullanılabilir sistemlerin (yani çoklu SID) nasıl dağıtılacağı açıklanır.  
 
 Örnek yapılandırmalarda, yükleme komutları vb. üç SAP NetWeaver 7,50 sistemi tek ve iki düğümlü yüksek kullanılabilirlik kümesine dağıtılır. SAP sistemleri SID 'Leri şunlardır:
 * **NW1**: ascs örnek numarası **00** ve sanal ana bilgisayar adı **msnw1ascs**; ERS örnek numarası **02** ve sanal ana bilgisayar adı **msnw1ers**.  
@@ -426,7 +426,7 @@ Bu belgede şu şekilde varsayılmaktadır:
 
 8. **[1]** yenı yüklenen SAP SISTEMI için SAP küme kaynaklarını oluşturun. 
 
-   Burada gösterilen örnek, SAP Systems **NW2** ve **NW3**' nin, sıraya alma sunucusu 1 mimarisini (ENSA1) kullandığını varsayarak yöneliktir:
+   Sıraya alma sunucusu 1 mimarisini (ENSA1) kullanıyorsanız, SAP Systems **NW2** ve **NW3** için kaynakları aşağıdaki gibi tanımlayın:
 
     ```
      sudo crm configure property maintenance-mode="true"
@@ -472,6 +472,52 @@ Bu belgede şu şekilde varsayılmaktadır:
      sudo crm configure order ord_sap_NW3_first_start_ascs Optional: rsc_sap_NW3_ASCS20:start rsc_sap_NW3_ERS22:stop symmetrical=false
      sudo crm configure property maintenance-mode="false"
     ```
+
+   SAP, SAP NW 7,52 itibariyle çoğaltma dahil olmak üzere sıraya alma sunucusu 2 için destek sunmuştur. ABAP platform 1809 ' den başlayarak, sıraya alma sunucusu 2 varsayılan olarak yüklenir. Sıraya alma sunucusu 2 desteği için bkz. SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) .
+   Sıraya alma sunucusu 2 mimarisini ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) KULLANıYORSANıZ, SAP Systems **NW2** ve **NW3** için kaynakları aşağıdaki gibi tanımlayın:
+
+    ```
+     sudo crm configure property maintenance-mode="true"
+    
+     sudo crm configure primitive rsc_sap_NW2_ASCS10 SAPInstance \
+      operations \$id=rsc_sap_NW2_ASCS10-operations \
+      op monitor interval=11 timeout=60 on_fail=restart \
+      params InstanceName=NW2_ASCS10_msnw2ascs START_PROFILE="/sapmnt/NW2/profile/NW2_ASCS10_msnw2ascs" \
+      AUTOMATIC_RECOVER=false \
+      meta resource-stickiness=5000 
+    
+     sudo crm configure primitive rsc_sap_NW2_ERS12 SAPInstance \
+      operations \$id=rsc_sap_NW2_ERS12-operations \
+      op monitor interval=11 timeout=60 on_fail=restart \
+      params InstanceName=NW2_ERS12_msnw2ers START_PROFILE="/sapmnt/NW2/profile/NW2_ERS12_msnw2ers" AUTOMATIC_RECOVER=false IS_ERS=true 
+    
+     sudo crm configure modgroup g-NW2_ASCS add rsc_sap_NW2_ASCS10
+     sudo crm configure modgroup g-NW2_ERS add rsc_sap_NW2_ERS12
+    
+     sudo crm configure colocation col_sap_NW2_no_both -5000: g-NW2_ERS g-NW2_ASCS
+     sudo crm configure order ord_sap_NW2_first_start_ascs Optional: rsc_sap_NW2_ASCS10:start rsc_sap_NW2_ERS12:stop symmetrical=false
+   
+     sudo crm configure primitive rsc_sap_NW3_ASCS20 SAPInstance \
+      operations \$id=rsc_sap_NW3_ASCS20-operations \
+      op monitor interval=11 timeout=60 on_fail=restart \
+      params InstanceName=NW3_ASCS10_msnw3ascs START_PROFILE="/sapmnt/NW3/profile/NW3_ASCS20_msnw3ascs" \
+      AUTOMATIC_RECOVER=false \
+      meta resource-stickiness=5000
+    
+     sudo crm configure primitive rsc_sap_NW3_ERS22 SAPInstance \
+      operations \$id=rsc_sap_NW3_ERS22-operations \
+      op monitor interval=11 timeout=60 on_fail=restart \
+      params InstanceName=NW3_ERS22_msnw3ers START_PROFILE="/sapmnt/NW3/profile/NW3_ERS22_msnw2ers" AUTOMATIC_RECOVER=false IS_ERS=true
+    
+     sudo crm configure modgroup g-NW3_ASCS add rsc_sap_NW3_ASCS20
+     sudo crm configure modgroup g-NW3_ERS add rsc_sap_NW3_ERS22
+    
+     sudo crm configure colocation col_sap_NW3_no_both -5000: g-NW3_ERS g-NW3_ASCS
+     sudo crm configure order ord_sap_NW3_first_start_ascs Optional: rsc_sap_NW3_ASCS20:start rsc_sap_NW3_ERS22:stop symmetrical=false
+     sudo crm configure property maintenance-mode="false"
+    ```
+
+   Daha eski bir sürümden yükseltiyorsanız ve sıraya alma sunucusu 2 ' ye geçiş yapıyorsanız bkz. SAP Note [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
    Küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emin olun. Kaynakların hangi düğümde çalıştığı önemli değildir.
    Aşağıdaki örnekte, SAP Systems **NW2** ve **NW3** 'ın kümeye eklendikten sonra küme kaynakları durumu gösterilmektedir. 

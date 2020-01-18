@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8d28ae18c44c434dba053b23a60eb78728f8d8e0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 572fec4d6e47efd734bc84a40dc974c79bd619fb
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232902"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262988"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler 'de Eternal düzenlemeleri (Azure Işlevleri)
 
@@ -33,7 +33,7 @@ Sonsuz döngüleri kullanmak yerine, [düzenleme tetikleyicisi bağlamasının](
 
 Dış düzenlemeleri için bir kullanım örneği, düzenli olarak sürekli çalışması gereken koddur.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -53,7 +53,7 @@ public static async Task Run(
 > [!NOTE]
 > Önceki C# örnek dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -70,6 +70,8 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 Bu örnek ve Zamanlayıcı tarafından tetiklenen bir işlev arasındaki fark, temizleme tetikleme sürelerinin bir zamanlamaya göre değil, burada yer alır. Örneğin, bir işlevi her saat yürüten bir CRON zamanlaması, bunu 1:00, 2:00, 3:00 vb. ve büyük olasılıkla çakışma sorunları halinde çalıştıracaktır. Bu örnekte, temizleme işlemi 30 dakika sürüyorsa, 1:00, 2:30, 4:00, vb. olarak zamanlanır.
 
 ## <a name="starting-an-eternal-orchestration"></a>Dış düzenleme başlatılıyor
@@ -78,6 +80,8 @@ Diğer düzenleme işlevlerine benzer şekilde, bir dış Düzenleme başlatmak 
 
 > [!NOTE]
 > Tek bir dış Orchestration 'un çalıştığından emin olmanız gerekiyorsa, düzenleme başlatılırken aynı örneğin `id` saklanması önemlidir. Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -94,6 +98,25 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 
 > [!NOTE]
 > Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için `DurableClient` özniteliği yerine `OrchestrationClient` özniteliğini kullanmanız gerekir ve `IDurableOrchestrationClient`yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context, req) {
+    const client = df.getClient(context);
+    const instanceId = "StaticId";
+    
+    // null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
+    await client.startNew("Periodic_Cleanup_Loop", instanceId, null);
+
+    context.log(`Started orchestration with ID = '${instanceId}'.`);
+    return client.createCheckStatusResponse(context.bindingData.req, instanceId);
+};
+```
+
+---
 
 ## <a name="exit-from-an-eternal-orchestration"></a>Bir dış Orchestration 'tan çıkma
 

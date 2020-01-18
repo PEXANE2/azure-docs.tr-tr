@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757427"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169582"
 ---
 # <a name="configure-the-review-tool"></a>Gözden Geçirme aracını yapılandırma
 
@@ -25,7 +25,7 @@ ms.locfileid: "72757427"
 
 ## <a name="manage-team-and-subteams"></a>Ekip ve alt takımları yönetme
 
-**Takım** sekmesi, takımınızın ve alt takımlarınızın &mdash;groups, bazı [insan İncelemeleri](../review-api.md#reviews) başlatıldığında bilgilendirilecek kullanıcıların yönetmenizi sağlar. Yalnızca bir ekibiniz olabilir (gözden geçirme aracıyla kaydolduğunuzda oluşturursunuz), ancak birden çok alt takım oluşturabilirsiniz. Ekip Yöneticisi üyeleri davet edebilir, izinlerini ayarlayabilir ve bunları farklı alt takımlara atayabilir.
+**Takım** sekmesi, takımınızın ve alt takımlarınızın&mdash;, bazı [insan İncelemeleri](../review-api.md#reviews) başlatıldığında bildirimde bulunulerişebilecek Kullanıcı gruplarını yönetmenizi sağlar. Yalnızca bir ekibiniz olabilir (gözden geçirme aracıyla kaydolduğunuzda oluşturursunuz), ancak birden çok alt takım oluşturabilirsiniz. Ekip Yöneticisi üyeleri davet edebilir, izinlerini ayarlayabilir ve bunları farklı alt takımlara atayabilir.
 
 ![Araç takımı ayarlarını gözden geçirme](images/settings-2-team.png)
 
@@ -66,7 +66,7 @@ Birden fazla alt ekibin üyesiyseniz, sizin için görüntülenen içerik incele
 
 ## <a name="tags"></a>Etiketler
 
-**Etiketler** sekmesi,**ıyetişkin** (**a**) ve **isracy** (**r**) &mdash; iki varsayılan denetleme etiketine ek olarak özel denetleme etiketleri tanımlamanıza olanak sağlar. Özel bir etiket oluşturduğunuzda, bu, varsayılan etiketlerin yanı sıra incelemelerde kullanılabilir hale gelir. Görünürlük ayarlarını değiştirerek, gözden geçirmeler halinde hangi etiketlerin gösterileceğini değiştirebilirsiniz.
+**Etiketler** sekmesi, **ıyetişkin** (**a**) ve **isracy** (**r**)&mdash;iki varsayılan denetleme etiketine ek olarak özel denetleme etiketleri tanımlamanıza olanak sağlar. Özel bir etiket oluşturduğunuzda, bu, varsayılan etiketlerin yanı sıra incelemelerde kullanılabilir hale gelir. Görünürlük ayarlarını değiştirerek, gözden geçirmeler halinde hangi etiketlerin gösterileceğini değiştirebilirsiniz.
 
 !["Görünür" onay kutuları dahil olmak üzere etiket görünümü](images/tags-4-disable.png)
 
@@ -90,14 +90,14 @@ Etiketler listesindeki girişlerinin yanındaki çöp kutusu simgesini seçerek 
 
 **Bağlayıcılar** sekmesi, içerik [iş akışlarının](../review-api.md#workflows)bir parçası olarak farklı yollarla içeriği işleyebilen, hizmete özgü eklentiler olan bağlayıcılarınızı yönetmenizi sağlar.
 
-Bir iş akışı oluşturduğunuzda varsayılan bağlayıcı Content Moderator bağlayıcıdır. Bu, içeriği **yetişkin** veya **korklık**olarak işaretleyebilir, küfür bulun vb. Bununla birlikte, burada listelenen diğer bağlayıcıları, ilgili hizmetlerinin kimlik bilgileriniz olduğu sürece (örneğin, Yüz Tanıma API'si bağlayıcısını kullanmak için) kullanabilirsiniz. bu şekilde, [Yüz Tanıma API'si](https://docs.microsoft.com/azure/cognitive-services/face/overview) bir abonelik anahtarı almanız gerekir.
+Bir iş akışı oluşturduğunuzda varsayılan bağlayıcı Content Moderator bağlayıcıdır. Bu, içeriği **yetişkin** veya **korklık**olarak işaretleyebilir, küfür bulun vb. Ancak, burada listelenen diğer bağlayıcıları, ilgili hizmetlerinin kimlik bilgileriniz olduğu sürece (örneğin, yüz bağlayıcısını kullanmak için bir [yüz](https://docs.microsoft.com/azure/cognitive-services/face/overview) abonelik anahtarı almanız gerekir) kullanabilirsiniz.
 
 [İnceleme aracında](./human-in-the-loop.md) aşağıdaki bağlayıcılar bulunur:
 
-- Duygu Tanıma API'si
-- Yüz API'si
+- Duygu Tanıma
+- Yüz Tanıma
 - PhotoDNA bulut hizmeti
-- Metin Analizi API’si
+- Metin Analizi
 
 ### <a name="add-a-connector"></a>Bağlayıcı ekleme
 

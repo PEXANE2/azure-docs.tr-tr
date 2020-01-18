@@ -4,12 +4,12 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'nda dış
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7d7fcc725d78b24a93b09cb9c76cf7dc0231cac2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232891"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262971"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler dış olayları işleme (Azure Işlevleri)
 
@@ -22,7 +22,7 @@ Orchestrator işlevlerinin dış olayları bekleme ve dinleme yeteneği vardır.
 
 [Orchestration tetikleyicisi bağlamasının](durable-functions-bindings.md#orchestration-trigger) `WaitForExternalEvent` (.net) ve `waitForExternalEvent` (JavaScript) yöntemleri bir Orchestrator işlevinin bir dış olayı zaman uyumsuz olarak bekleyip dinlemesine olanak tanır. Dinleme Orchestrator işlevi, olayın *adını* ve almayı beklediği *verilerin şeklini* bildirir.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BudgetApproval")]
@@ -44,7 +44,7 @@ public static async Task Run(
 > [!NOTE]
 > Önceki C# kod dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -59,11 +59,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 Yukarıdaki örnek, belirli bir olayı dinler ve alındığında işlem gerçekleştirir.
 
 Aşağıdaki örnekte olduğu gibi birden çok olayı aynı anda dinleyebilir. Bu, olası üç olay bildiriminin birini bekler.
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Select")]
@@ -93,7 +95,7 @@ public static async Task Run(
 > [!NOTE]
 > Önceki C# kod dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -114,9 +116,11 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 Önceki örnek, birden çok olayı dinler. *Tüm* olayları beklemek da mümkündür.
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("NewBuildingPermit")]
@@ -139,7 +143,9 @@ public static async Task Run(
 > [!NOTE]
 > Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+.NET sürümünde, olay yükü beklenen tür `T`dönüştürülemiyorsa, bir özel durum oluşturulur.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -158,12 +164,12 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 `WaitForExternalEvent` bazı girişler için süresiz olarak bekler.  İşlev uygulaması beklerken güvenli bir şekilde kaldırılabilir. Bu düzenleme örneğine bir olay ulaştığında, başlatılabilmesi uyandırılır otomatik olarak oluşturulur ve olayı anında işler.
 
 > [!NOTE]
 > İşlev uygulamanız tüketim planını kullanıyorsa, bir Orchestrator işlevi `WaitForExternalEvent` (.NET) veya `waitForExternalEvent` (JavaScript) 'den bir görevi beklerken, ne kadar bekleyeceğini bağımsız olarak hiçbir faturalandırma ücreti tahakkuk etmez.
-
-.NET sürümünde, olay yükü beklenen tür `T`dönüştürülemiyorsa, bir özel durum oluşturulur.
 
 ## <a name="send-events"></a>Olayları gönderme
 
@@ -171,7 +177,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Aşağıda, bir Orchestrator işlev örneğine "onay" olayı gönderen örnek bir Queue-tetiklenen işlev verilmiştir. Orchestration örnek KIMLIĞI kuyruk iletisinin gövdesinden gelir.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalQueueProcessor")]
@@ -186,7 +192,7 @@ public static async Task Run(
 > [!NOTE]
 > Önceki C# kod dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `DurableClient` özniteliği yerine `OrchestrationClient` özniteliğini kullanmanız gerekir ve `IDurableOrchestrationClient`yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -196,6 +202,8 @@ module.exports = async function(context, instanceId) {
     await client.raiseEvent(instanceId, "Approval", true);
 };
 ```
+
+---
 
 Dahili olarak, `RaiseEventAsync` (.NET) veya `raiseEvent` (JavaScript), bekleyen Orchestrator işlevi tarafından çekilen bir iletiyi sıraya alır. Örnek, belirtilen *olay adında* beklemmediyse, olay iletisi bir bellek içi kuyruğa eklenir. Düzenleme örneği daha sonra bu *olay adını* dinlemeye başlarsa, olay iletileri için sırayı denetler.
 

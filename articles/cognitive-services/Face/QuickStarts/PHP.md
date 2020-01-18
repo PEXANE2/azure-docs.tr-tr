@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı Başlangıç: REST API ve PHP kullanarak bir görüntüdeki yüzleri algılama'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, PHP ile Yüz Tanıma API’sini kullanarak bir görüntüdeki yüzleri algılayacaksınız.
+description: Bu hızlı başlangıçta, PHP ile yüz REST API kullanarak bir görüntüden yüzleri algılayın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: fb9539c8aa0477cbfbf11ce08635e4e9ccebb2ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0f76ec4ce1072b247be7f46610d37190cd282a22
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977939"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169750"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Hızlı Başlangıç: REST API ve PHP kullanarak bir görüntüdeki yüzleri algılama
 
 Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Azure yüz REST API PHP ile kullanacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz tanıma API'si abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yüz tanıma API'si hizmete abone ve anahtarınızı alın.
+- Yüz abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 - [Visual Studio Code](https://code.visualstudio.com/download)gibi bir kod Düzenleyicisi.
 - PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) paketi.
 - PHP özellikli bir Web tarayıcısı. Bu ayarı yaptıysanız, makinenizde [XAMPP](https://www.apachefriends.org/) 'yi yükleyip kurarak bunu yapabilirsiniz.
@@ -288,7 +288,7 @@ Dosyayı PHP özellikli bir Web tarayıcısında açın. Aşağıdaki gibi yüz 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir görüntüdeki insan yüzlerini algılamak, yüzleri dikdörtgenlerle ayırmak ve yaş ve cinsiyet gibi öznitelikleri döndürmek için kullanılan Yüz Tanıma API'sini keşfedin.
+Görüntüde insan yüzlerini algılamak için kullanılan Yüz Tanıma API'si bulun, yüzleri dikdörtgenlerle kaldırır ve yaş ve cinsiyet gibi öznitelikleri döndürün.
 
 > [!div class="nextstepaction"]
 > [Yüz Tanıma API’leri](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

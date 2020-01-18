@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs bir VM için oto kapatma ayarlarını yapılandırma | Microsoft Docs
+title: Azure DevTest Labs bir VM için oto kapatma ayarlarını yapılandırma
 description: Sanal makine (VM) için otomatik kapatma ayarlarını yapılandırarak VM 'nin kullanımda olmadığında otomatik olarak kapatılmasını sağlayabilirsiniz.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 934e8fd71c901c89f328c777103a8cb39bf21ac4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4cca4fd4bc9cd880c5b7a75e54e8cfd8192bae1e
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361576"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170204"
 ---
 # <a name="configure-autoshutdown-settings-for-a-vm-in-azure-devtest-labs"></a>Azure DevTest Labs bir VM için oto kapatma ayarlarını yapılandırma
 Azure DevTest Labs, her bir laboratuvarın ilkelerini (ayarlarını) yöneterek laboratuvarlarınızdaki, maliyetleri denetlemenizi ve en aza indirmenizi sağlar. Bu makalede, laboratuvar hesabı için oto kapatma ilkesini yapılandırma ve laboratuvar hesabındaki bir laboratuvar için oto kapatma ayarlarını yapılandırma gösterilmektedir. Her laboratuvar ilkesini ayarlama hakkında bilgi için bkz. [Azure DevTest Labs laboratuvar Ilkelerini tanımlama](devtest-lab-set-lab-policy.md).  
@@ -29,7 +29,7 @@ Laboratuvar sahibi olarak, laboratuvarınızda tüm VM 'Ler için bir kapalı za
 
 1. Laboratuvarınızın giriş sayfasında **yapılandırma ve ilkeler**' i seçin.
 2. Sol menünün **zamanlamalar** bölümünde **otomatik kapatılma ilkesi** ' ni seçin.
-3. Seçeneklerden birini belirleyin. Aşağıdaki bölümlerde bu seçenekler hakkında daha fazla ayrıntı verilmektedir: Küme ilkesi yalnızca laboratuvarda oluşturulan yeni VM 'ler için geçerlidir; zaten var olan VM 'lere uygulanmaz. 
+3. Seçeneklerden birini belirleyin. Aşağıdaki bölümlerde bu seçenekler hakkında daha fazla ayrıntı verilmektedir: Set Policy yalnızca laboratuvarda oluşturulan yeni VM 'lere uygulanır ve mevcut VM 'lere uygulanmaz. 
 
     ![İlke seçeneklerini otomatik olarak kapat](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
@@ -38,7 +38,7 @@ Oto kapatma ilkesi, bu laboratuvarın VM 'lerinin kapanması için gereken süre
 
 Bir laboratuvarın ilkelerini görüntülemek (ve değiştirmek) için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.   
 4. **Yapılandırma ve ilkeler '** i seçin.
@@ -47,7 +47,7 @@ Bir laboratuvarın ilkelerini görüntülemek (ve değiştirmek) için şu adım
 5. Laboratuvarın **yapılandırma ve ilkeler** bölmesinde, **zamanlamalar**altında **otomatik olarak kapanıyor** ' ı seçin.
    
     ![Otomatik kapatma](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
-6. Bu ilkeyi **etkinleştirmek ve devre** dışı bırakmak için **Açık** seçeneğini belirleyin.
+6. Bu ilkeyi **etkinleştirmek ve devre dışı bırakmak Için** **Açık** seçeneğini belirleyin.
 7. Bu ilkeyi etkinleştirirseniz, geçerli laboratuvardaki tüm VM 'Leri kapatmak için saati (ve saat dilimini) belirtin.
 8. Belirtilen oto kapatma saatinden 15 dakika önce bildirim gönderme seçeneği için Evet veya **Hayır** **değerini** belirtin. **Evet**' i seçerseniz, bildirimin nakledilmesini veya gönderilmesini istediğiniz yeri belirten bir Web kancası URL uç noktası veya e-posta adresi girin. Kullanıcı bildirimi alır ve kapatmaya gecikme seçeneği verilir. Daha fazla bilgi için [Bildirimler](#notifications) bölümüne bakın. 
 9. **Kaydet**’i seçin.

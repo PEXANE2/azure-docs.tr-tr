@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 094454123a945072bfb6d7fb81cf515816c4f6cb
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: efb4e4f68935898c083c1dbca6a6c64512544095
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936199"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263481"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure 'ı BT Hizmet Yönetimi Bağlayıcısı kullanarak ıTSSM araçlarına bağlama
 
@@ -58,7 +58,7 @@ Bir bağlantı oluşturabilmeniz için önce ITSM Bağlayıcısı çözümünü 
 3. **OMS çalışma alanı** bölümünde, çözümü yüklemek istediğiniz Azure Log Analytics çalışma alanını seçin.
    >[!NOTE]
    > * Microsoft Operations Management Suite (OMS) ile Azure Izleyici arasında devam eden geçişin bir parçası olarak, OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
-   > * ITSM Bağlayıcısı yalnızca şu bölgelerde Log Analytics çalışma alanlarına yüklenebilir: Doğu ABD, Batı Avrupa, Güneydoğu Asya, Güneydoğu Avustralya, Orta Batı ABD, Doğu Japonya, Güney UK, Orta Hindistan, Orta Kanada.
+   > * ITSM Bağlayıcısı yalnızca şu bölgelerde Log Analytics çalışma alanlarına yüklenebilir: Doğu ABD, Batı Avrupa, Güneydoğu Asya, Güneydoğu Avustralya, Orta Batı ABD, Doğu Japonya, Güney UK, Orta Hindistan, Orta Kanada, Batı ABD2, Orta Güney ABD.
 
 4. **OMS çalışma alanı ayarları** bölümünde, çözüm kaynağını oluşturmak istediğiniz ResourceGroup öğesini seçin.
 
@@ -66,7 +66,7 @@ Bir bağlantı oluşturabilmeniz için önce ITSM Bağlayıcısı çözümünü 
    >[!NOTE]
    >Microsoft Operations Management Suite (OMS) ile Azure Izleyici arasında devam eden geçişin bir parçası olarak, OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
 
-5. **Oluştur**’ tıklayın.
+5. **Oluştur**’a tıklayın.
 
 Çözüm kaynağı dağıtıldığında, pencerenin sağ üst kısmında bir bildirim görüntülenir.
 
@@ -131,7 +131,7 @@ Aşağıdaki yordamı kullanın:
 
 6. Açılır menüden **Iş öğesi** türünü seçin.
    Mevcut bir şablonu kullanmayı veya ıTSM ürününüzün gerektirdiği Alanları doldurmayı seçin.
-7. **OK (Tamam)** düğmesine tıklayın.
+7. **Tamam**’a tıklayın.
 
 Bir Azure uyarı kuralı oluştururken/düzenlenirken, bir ıTSM eylemi olan bir eylem grubu kullanın. Uyarı tetiklendiğinde, çalışma öğesi ıTSM aracında oluşturulur/güncelleştirilir.
 
@@ -152,7 +152,7 @@ Pano, bağlantılarla ilgili sorunları çözümlemek için bir başlangıç nok
 
 Ayrıca, Hizmet Eşlemesi çözümü içinde etkilenen bilgisayarlara karşı eşitlenen olayları da görselleştirebilirsiniz.
 
-Hizmet Eşlemesi Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Bu sayede, önemli hizmetleri sunan bağlantılı sistemler gibi, sunucularınızı düşündüğünüzden görüntülemenize izin verir. Hizmet Eşlemesi, bir aracı yüklemesi dışında hiçbir yapılandırma gerekmeden, herhangi bir TCP bağlantılı mimarideki sunucular, süreçler ve bağlantı noktaları arasındaki bağlantıları gösterir. [Daha fazla bilgi edinin](../../azure-monitor/insights/service-map.md).
+Hizmet Eşlemesi Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Sunucularınızı düşündüğünüz şekilde (kritik hizmetler sunan birbirine bağlı sistemler halinde) görüntülemenize olanak tanır. Hizmet Eşlemesi, bir aracının yüklenmesi dışında yapılandırma gerektirmeyen TCP bağlantılı bir mimari üzerinde bulunan sunucular, süreçler ve bağlantı noktaları arasındaki bağlantıları gösterir. [Daha fazla bilgi edinin](../../azure-monitor/insights/service-map.md).
 
 Hizmet Eşlemesi çözümünü kullanıyorsanız, ıTSM çözümlerinde oluşturulan hizmet Masası öğelerini aşağıdaki örnekte gösterildiği gibi görüntüleyebilirsiniz:
 
@@ -161,7 +161,7 @@ Hizmet Eşlemesi çözümünü kullanıyorsanız, ıTSM çözümlerinde oluştur
 Daha fazla bilgi: [hizmet eşlemesi](../../azure-monitor/insights/service-map.md)
 
 
-## <a name="additional-information"></a>Ek bilgiler
+## <a name="additional-information"></a>Ek Bilgi
 
 ### <a name="data-synced-from-itsm-product"></a>ITSM ürününden eşitlenen veriler
 Olaylar ve değişiklik istekleri, bağlantı yapılandırmasına bağlı olarak ıTSM ürününüzle Log Analytics çalışma alanınıza eşitlenir.
@@ -179,12 +179,12 @@ ServiceDeskWorkItemType_s="Incident"
 
 - ServiceDeskConnectionName
 - Hizmet Masası KIMLIĞI
-- Durum
+- Eyalet
 - Aciliyet
 - Etki
 - Öncelik
 - Önem Yükseltme
-- Tarafından oluşturulan
+- Oluşturan
 - Çözümleyen
 - Kapatan
 - Kaynak
@@ -206,14 +206,14 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 **Alanları**
 - ServiceDeskConnectionName
 - Hizmet Masası KIMLIĞI
-- Tarafından oluşturulan
+- Oluşturan
 - Kapatan
 - Kaynak
 - Atanan
 - Başlık
 - Tür
 - Kategori
-- Durum
+- Eyalet
 - Önem Yükseltme
 - Çakışma durumu
 - Aciliyet
@@ -237,7 +237,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics alanı | ServiceNow alanı |
 |:--- |:--- |
 | ServiceDeskId_s| Sayı |
-| IncidentState_s | Durum |
+| IncidentState_s | Eyalet |
 | Urgency_s |Aciliyet |
 | Impact_s |Etki|
 | Priority_s | Öncelik |
@@ -245,13 +245,13 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ResolvedBy_s | Çözümleyen|
 | ClosedBy_s  | Kapatan |
 | Source_s| Kişi türü |
-| AssignedTo_s | Şuna atandı  |
+| AssignedTo_s | Atamayı Alan  |
 | Category_s | Kategori |
 | Title_s|  Kısa açıklama |
 | Description_s|  Notlar |
 | CreatedDate_t|  Makta |
 | ClosedDate_t| Kapalı|
-| ResolvedDate_t|Çözülüyor|
+| ResolvedDate_t|Çözüldü|
 | Bilgisayar  | Yapılandırma öğesi |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow değişiklik isteği için çıkış verileri
@@ -261,23 +261,23 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ServiceDeskId_s| Sayı |
 | CreatedBy_s | İsteyen |
 | ClosedBy_s | Kapatan |
-| AssignedTo_s | Şuna atandı  |
+| AssignedTo_s | Atamayı Alan  |
 | Title_s|  Kısa açıklama |
 | Type_s|  Tür |
 | Category_s|  Kategori |
-| CRState_s|  Durum|
+| CRState_s|  Eyalet|
 | Urgency_s|  Aciliyet |
 | Priority_s| Öncelik|
 | Risk_s| Risk|
 | Impact_s| Etki|
 | RequestedDate_t  | İstek tarihine göre |
-| ClosedDate_t | Kapatma tarihi |
+| ClosedDate_t | Kapatılma tarihi |
 | PlannedStartDate_t  |     Planlanan başlangıç tarihi |
 | PlannedEndDate_t  |   Planlanan bitiş tarihi |
 | WorkStartDate_t  | Gerçek başlangıç tarihi |
 | WorkEndDate_t | Gerçek bitiş tarihi|
 | Description_s | Açıklama |
-| Bilgisayar  | Yapılandırma öğesi |
+| Bilgisayar  | Yapılandırma Öğesi |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>ITSM bağlantılarında sorun giderme
@@ -299,7 +299,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 3.  Service Bus geçişi ad alanı oluşturmadıysanız, gerekli kaynak sağlayıcının abonelikte kayıtlı olduğundan emin olun. Kayıtlı değilse, Service Bus geçişi ad alanını Azure portal el ile oluşturun. [Karma bağlantıyı Azure Portal oluştururken](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) da oluşturabilirsiniz.
 
 
-## <a name="contact-us"></a>Bizimle iletişim kurun
+## <a name="contact-us"></a>Bize ulaşın
 
 BT Hizmet Yönetimi Bağlayıcısı ilgili sorgular veya geri bildirimler için [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)adresinden bizimle iletişim kurun.
 

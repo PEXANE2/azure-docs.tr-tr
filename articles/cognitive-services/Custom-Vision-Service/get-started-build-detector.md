@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 0d9c175db1370fe07b3278a46d910c59d81df860
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8aef46f0b9c3dc526f1fbed3d9bc59f97771b509
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969930"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170000"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Hızlı başlangıç: Özel Görüntü İşleme bir nesne algılayıcısı oluşturma
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesi aracılığıyla
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Algılayıcı modelinize eğiten bir görüntü kümesi. GitHub üzerinde [örnek görüntüler](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) kümesini kullanabilirsiniz. Ya da aşağıdaki ipuçlarını kullanarak kendi görüntülerinizi seçebilirsiniz.
 
@@ -107,6 +107,8 @@ Eğitim tamamlandıktan sonra modelin performansı hesaplanır ve görüntüleni
 ## <a name="manage-training-iterations"></a>Eğitim yinelemelerini yönetme
 
 Algılayıcısının her eğişinizde, kendi güncelleştirilmiş performans ölçümleriyle yeni bir _yineleme_ oluşturursunuz. Tüm yinelemelerinizi **performans** sekmesinin sol bölmesinde görüntüleyebilirsiniz. Sol bölmede, bir yinelemeyi silmek için kullanabileceğiniz **Sil** düğmesini de bulabilirsiniz. Bir yinelemeyi sildiğinizde, onunla benzersiz olarak ilişkili olan tüm görüntüleri silersiniz.
+
+Eğitilen modellerinize programlı bir şekilde erişme hakkında bilgi edinmek için bkz. [modelinizi tahmın API 'Siyle kullanma](./use-prediction-api.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

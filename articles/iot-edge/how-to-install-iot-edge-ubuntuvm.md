@@ -9,39 +9,40 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: fec39a9e788debcd9c3ac707a0431e268d87ed35
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 03c517ac80ed42f96cae00001a154e519ec94148
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146187"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263345"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu sanal makinelerinde Azure IoT Edge çalıştırma
 
-Azure IoT Edge çalışma zamanı, bir cihazı IoT Edge cihazına dönüştürür. Çalışma zamanı, cihazlarda Raspberry Pi kadar küçük veya endüstriyel sunucu olarak büyük olarak dağıtılabilir. Bir cihaz IoT Edge çalışma zamanına göre yapılandırıldıktan sonra, buluta iş mantığı dağıtmaya başlayabilirsiniz.
+Azure IOT Edge çalışma zamanı, ne bir cihaz ile IOT Edge cihazı kapatır ' dir. Çalışma zamanı, cihaz olarak endüstriyel sunucusu olarak büyük veya küçük bir Raspberry Pi üzerinde dağıtılabilir. Bir cihaz IOT Edge çalışma zamanı ile yapılandırıldıktan sonra iş mantığı buluttan dağıttıktan başlayabilirsiniz.
 
-IoT Edge çalışma zamanının nasıl çalıştığı ve hangi bileşenlerin dahil olduğu hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
+IOT Edge çalışma zamanı nasıl çalıştığını ve hangi bileşenler dahildir hakkında daha fazla bilgi için bkz: [Azure IOT Edge çalışma zamanı ve mimarisini anlama](iot-edge-runtime.md).
 
 Bu makalede, [Ubuntu Azure Marketi teklifinin](https://aka.ms/azure-iot-edge-ubuntuvm)önceden yapılandırılmış Azure IoT Edge kullanılarak ubuntu 16,04 sanal makinesinde Azure IoT Edge çalışma zamanını çalıştırma adımları listelenmektedir. 
 
 İlk önyüklemede, Ubuntu VM üzerindeki Azure IoT Edge Azure IoT Edge çalışma zamanının en son sürümünü önceden yükler. Ayrıca, bağlantı dizesini ayarlamak için bir komut dosyası içerir ve sonra, Azure VM portalı veya Azure komut satırı aracılığıyla uzaktan tetiklenebilecek, bir SSH veya uzaktan başlatmadan IoT Edge cihazını kolayca yapılandırıp bağlayabilmenizi sağlayan çalışma zamanını yeniden başlatacak. Masaüstü oturumu. Bu betik, IoT Edge istemcisi tam yükleninceye kadar bağlantı dizesini ayarlamayı bekleyecek ve bu sayede otomasyonu oluşturmak zorunda kalmazsınız.
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Azure Marketi 'nden dağıtma
-1.  [Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) market teklifinde Azure IoT Edge gidin veya [Azure Marketi](https://azuremarketplace.microsoft.com/) 'Nde "ubuntu 'da" Azure IoT Edge arayarak
-2.  **Şimdi al** ' ı seçin ve ardından İleri Iletişim kutusunda **devam edin** .
-3.  Azure portal bir kez **Oluştur** ' u seçin ve VM 'yi dağıtmak için Sihirbazı izleyin. 
-    *   Bir VM 'yi ilk kez deniyorsanız, bir parola kullanmak ve genel gelen bağlantı noktası menüsünde SSH 'yi etkinleştirmek en kolay yoldur. 
-    *   Yoğun kaynak iş yükünüz varsa, daha fazla CPU ve/veya bellek ekleyerek sanal makine boyutunu yükseltmeniz gerekir.
-4.  Sanal makine dağıtıldıktan sonra, IoT Hub bağlanacak şekilde yapılandırın:
-    1.  Cihaz Bağlantı dizenizi, IoT Hub oluşturulan IoT Edge cihazınızdan kopyalayın (Bu işlemi tanımıyorsanız [Azure Portal yordamda bağlantı dizesini alma '](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) yı takip edebilirsiniz)
-    1.  Azure portal yeni oluşturduğunuz sanal makine kaynağını seçin ve **komutu Çalıştır** seçeneğini açın
-    1.  **Runshellscrıpt** seçeneğini belirleyin
-    1.  Aşağıdaki betiği, cihaz bağlantı dizeniz ile komut penceresi aracılığıyla yürütün: `/etc/iotedge/configedge.sh "{device_connection_string}"`
-    1.  **Çalıştır** 'ı seçin
-    1.  Birkaç dakika bekleyin ve ekranın bağlantı dizesinin başarıyla ayarlandığını belirten bir başarı iletisi sağlaması gerekir.
 
+1. [Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) market teklifinde Azure IoT Edge gidin veya [Azure Marketi](https://azuremarketplace.microsoft.com/) 'Nde "ubuntu 'da" Azure IoT Edge arayarak
+2. **Şimdi al** ' ı seçin ve ardından İleri Iletişim kutusunda **devam edin** .
+3. Azure portal bir kez **Oluştur** ' u seçin ve VM 'yi dağıtmak için Sihirbazı izleyin.
+    * Bir VM 'yi ilk kez deniyorsanız, bir parola kullanmak ve genel gelen bağlantı noktası menüsünde SSH 'yi etkinleştirmek en kolay yoldur.
+    * Yoğun kaynak iş yükünüz varsa, daha fazla CPU ve/veya bellek ekleyerek sanal makine boyutunu yükseltmeniz gerekir.
+4. Sanal makine dağıtıldıktan sonra, IoT Hub bağlanacak şekilde yapılandırın:
+    1. Cihaz Bağlantı dizenizi, IoT Hub oluşturulan IoT Edge cihazınızdan kopyalayın (Bu işlemi tanımıyorsanız [Azure Portal yordamda bağlantı dizesini alma '](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) yı takip edebilirsiniz)
+    1. Azure portal yeni oluşturduğunuz sanal makine kaynağını seçin ve **komutu Çalıştır** seçeneğini açın
+    1. **Runshellscrıpt** seçeneğini belirleyin
+    1. Aşağıdaki betiği, cihaz bağlantı dizeniz ile komut penceresi aracılığıyla yürütün: `/etc/iotedge/configedge.sh "{device_connection_string}"`
+    1. **Çalıştır** 'ı seçin
+    1. Birkaç dakika bekleyin ve ekranın bağlantı dizesinin başarıyla ayarlandığını belirten bir başarı iletisi sağlaması gerekir.
 
 ## <a name="deploy-from-the-azure-portal"></a>Azure portal dağıtma
+
 Azure portal, "Azure IoT Edge" araması yapın ve sanal makine oluşturma iş akışını başlatmak için **Ubuntu Server 16,04 LTS + Azure IoT Edge çalışma zamanını** seçin. Buradan, yukarıdaki "Azure Marketi 'nden dağıtma" yönergelerindeki adım 3 ve 4 ' ü doldurun.
 
 ## <a name="deploy-from-azure-cli"></a>Azure CLı 'dan dağıtma
@@ -76,7 +77,7 @@ Azure portal, "Azure IoT Edge" araması yapın ve sanal makine oluşturma iş ak
 1. Sanal makine için kullanım koşullarını kabul edin. Önce koşulları gözden geçirmek istiyorsanız, [Azure Marketi 'Nden dağıtma](#deploy-from-the-azure-marketplace)' daki adımları izleyin.
 
    ```azurecli-interactive
-   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
+   az vm image terms accept --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
    ```
 
 1. Yeni bir sanal makine oluşturun:
@@ -96,7 +97,7 @@ Kurulumdan sonra bu VM 'ye SSH eklemek istiyorsanız, Publicıpaddress komutunu 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çalışma zamanının yüklü olduğu bir IoT Edge cihazınıza sahip olduğunuza göre, [IoT Edge modülleri dağıtabilirsiniz](how-to-deploy-modules-portal.md).
+Yüklü olan çalışma zamanı ile sağlanan bir IOT Edge cihazına sahip olduğunuza göre şunları yapabilirsiniz [IOT Edge modüllerini dağıtmak](how-to-deploy-modules-portal.md).
 
 IoT Edge çalışma zamanının düzgün şekilde yüklenmesiyle ilgili sorun yaşıyorsanız, [sorun giderme](troubleshoot.md) sayfasına göz atın.
 

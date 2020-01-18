@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: d55dc2a1311d66eae01ae12a3dae798fbab20677
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045622"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260863"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -49,7 +49,7 @@ Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 
 Kullanıcıların eğitiminde kullanıcıları nasıl tükettiği temel alınarak iki veri kümesi türü vardır:
 
-* [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Bu, verileri bir Pandas veya Spark DataFrame 'e nasıl bir şekilde sunmanızı sağlar. . Csv,. tsv ve Parquet dosyalarından ve SQL sorgu sonuçlarından `TabularDataset` bir nesne oluşturabilirsiniz. Tüm liste için bkz. [Tabulardatasetfactory sınıfı](https://aka.ms/tabulardataset-api-reference).
+* [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Bu, verileri bir Pandas veya Spark DataFrame 'e nasıl bir şekilde sunmanızı sağlar. . Csv,. tsv,. Parquet,. jsonl dosyalarından ve SQL sorgu sonuçlarından `TabularDataset` bir nesne oluşturabilirsiniz. Tüm liste için bkz. [Tabulardatasetfactory sınıfı](https://aka.ms/tabulardataset-api-reference).
 
 * [Filedataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) sınıfı, veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Bu yöntemde, dosyaları dosya veri kümesi nesnesi olarak işlem dosyalarınıza indirebilir veya bağlayabilirsiniz. Dosyalar, derin öğrenme dahil olmak üzere daha geniş bir makine öğrenimi senaryolarına izin veren herhangi bir biçimde olabilir.
 
@@ -74,7 +74,7 @@ Python SDK kullanarak bir [Azure veri deposundan](how-to-access-data.md) veri k�
 
 #### <a name="create-a-tabulardataset"></a>TabularDataset oluşturma
 
-SDK aracılığıyla veya Azure Machine Learning Studio kullanarak Tabulardataset oluşturulabilir. Bir zaman serisini nitelik sağlamak için verilerdeki bir sütundan veya verilerin depolandığı yol düzeninden bir zaman damgası belirtebilirsiniz. Bu belirtim zamana göre kolay ve etkili filtrelemeye olanak tanır.
+SDK aracılığıyla veya Azure Machine Learning Studio kullanarak Tabulardataset 'ler oluşturabilirsiniz. 
 
 . Csv veya. tsv biçimindeki dosyaları okumak ve kayıtlı olmayan bir TabularDataset oluşturmak için `TabularDatasetFactory` sınıfındaki [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) yöntemini kullanın. Birden çok dosyadan okuyorsanız, sonuçlar tek tablolu bir gösterimde toplanacaktır.
 
@@ -244,7 +244,6 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'new titanic training data',
                                  create_new_version = True)
 ```
-
 
 ## <a name="access-datasets-in-your-script"></a>Betiğinizdeki veri kümelerine erişin
 

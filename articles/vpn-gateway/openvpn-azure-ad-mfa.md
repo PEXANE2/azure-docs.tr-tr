@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: alzam
-ms.openlocfilehash: 7f05b850a0d886ac0df5c542de647f91fe62eb05
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b22581d012b2c69081bc7b4eee093227c060b4c2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382204"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169705"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>VPN kullanıcıları için Azure Multi-Factor Authentication (MFA) etkinleştirme
 
@@ -22,27 +22,7 @@ Erişim vermeden önce kullanıcılardan ikinci bir kimlik doğrulama faktörü 
 
 Bu yapılandırma için önkoşul, [Kiracı yapılandırma](openvpn-azure-ad-tenant.md)içindeki adımları kullanarak yapılandırılmış BIR Azure AD kiracısıdır.
 
-## <a name="mfa"></a>MFA sayfasını açın
-
-1. Azure Portal’da oturum açın.
-2. **Azure Active Directory > tüm kullanıcılara**gidin.
-3. Multi-Factor Authentication sayfasını açmak için **Multi-Factor Authentication** ' ı seçin.
-
-   ![Oturum aç](./media/openvpn-azure-ad-mfa/mfa1.jpg)
-
-## <a name="users"></a>Kullanıcıları seçin
-
-1. **Multi-Factor Authentication** SAYFASıNDA, MFA 'yı etkinleştirmek istediğiniz kullanıcıları seçin.
-2. **Etkinleştir**’i seçin.
-
-   ![Seçim](./media/openvpn-azure-ad-mfa/mfa2.jpg)
-
-## <a name="enableauth"></a>Kimlik doğrulamasını etkinleştir
-
-1. **Azure Active Directory > kurumsal uygulamalar-tüm uygulamalar >** ' ne gidin.
-2. **Kurumsal uygulamalar-tüm uygulamalar** SAYFASıNDA **Azure VPN**' yi seçin.
-
-   ![Dizin KIMLIĞI](./media/openvpn-azure-ad-mfa/user1.jpg)
+[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
 
 ## <a name="enablesign"></a>Oturum açma ayarlarını yapılandırma
 

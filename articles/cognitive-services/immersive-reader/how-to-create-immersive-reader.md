@@ -1,5 +1,5 @@
 ---
-title: Tam ekran okuyucu kaynağı oluşturma
+title: Tam Ekran Okuyucu Kaynağı oluşturma
 titleSuffix: Azure Cognitive Services
 description: Bu makalede, özel bir alt etki alanı ile yeni bir tam ekran okuyucu kaynağı oluşturma ve ardından Azure kiracınızda Azure AD 'yi yapılandırma gösterilmektedir.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: a806e6eeecc6976286566d05a0f19dac684b2c0b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: a2a404a03c06dde59edc88436afdc9dba3d74797
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75946094"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170173"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Bir tam ekran okuyucu kaynağı oluşturma ve Azure Active Directory kimlik doğrulamasını yapılandırma
 
@@ -153,7 +153,7 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
     | SubscriptionName |Tam ekran okuyucu kaynağınız için kullanılacak Azure aboneliğinin adı. Kaynak oluşturmak için bir aboneliğinizin olması gerekir. |
     | ResourceName |  '-' Karakteri ilk veya son karakter olmadığı sürece alfasayısal olmalı ve '-' karakterlerini içerebilir. Uzunluk 63 karakterden uzun olamaz.|
     | ResourceSubdomain |Tam ekran okuyucu kaynağınız için özel bir alt etki alanı gereklidir. Bu alt etki alanı, okuyucuyu başlatmak için derinlikli okuyucu hizmeti çağrılırken SDK tarafından kullanılır. Alt etki alanı, genel olarak benzersiz olmalıdır. '-' İlk veya son karakter olmadığı sürece alt etki alanı alfasayısal olmalıdır ve '-' karakterlerini içerebilir. Uzunluk 63 karakterden uzun olamaz. Kaynak zaten mevcutsa, bu parametre isteğe bağlıdır. |
-    | ResourceSKU |Seçenekler: `S0` veya `S1`. Kullanılabilir her SKU hakkında daha fazla bilgi edinmek için bilişsel [Hizmetler fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) sayfamızı ziyaret edin. Kaynak zaten mevcutsa, bu parametre isteğe bağlıdır. |
+    | ResourceSKU |Seçenekler: `S0`. Kullanılabilir her SKU hakkında daha fazla bilgi edinmek için bilişsel [Hizmetler fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) sayfamızı ziyaret edin. Kaynak zaten mevcutsa, bu parametre isteğe bağlıdır. |
     | ResourceLocation |Seçenekler: `eastus`, `eastus2`, `southcentralus`, `westus`, `westus2`, `australiaeast`, `southeastasia`, `centralindia`, `japaneast`, `northeurope`, `uksouth`, `westeurope`. Kaynak zaten mevcutsa, bu parametre isteğe bağlıdır. |
     | ResourceGroupName |Kaynaklar, abonelikler içindeki kaynak gruplarında oluşturulur. Mevcut bir kaynak grubunun adını sağlayın. Kaynak grubu henüz yoksa, bu adı taşıyan yeni bir tane oluşturulur. |
     | ResourceGroupLocation |Kaynak grubunuz yoksa, grubun oluşturulacağı bir konum sağlamanız gerekir. Konumların bir listesini bulmak için `az account list-locations`çalıştırın. Döndürülen sonucun *Name* özelliğini (boşluk olmadan) kullanın. Kaynak grubunuz zaten varsa, bu parametre isteğe bağlıdır. |

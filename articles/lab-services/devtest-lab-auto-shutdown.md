@@ -12,19 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2019
+ms.date: 01/17/2020
 ms.author: spelluru
-ms.openlocfilehash: 1c13414bb252da1192f82675da5b134bf43a40f0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a2d0b9bdfba1b96ad42e45d54faf106b2361e29d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772644"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264805"
 ---
-# <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs laboratuvar için oto kapatma ilkelerini yönetme
+# <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Laboratuvar ve işlem sanal makinelerini Azure DevTest Labs için oto kapatma yapılandırma
+
+Bu makalede, DevTest Labs ve işlem VM 'lerinde laboratuvar VM 'Leri için oto kapatma ayarlarının nasıl yapılandırılacağı açıklanmaktadır. 
+
+## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>Laboratuvar VM 'Leri için oto kapatılmasını yapılandırma (DevTest Labs)
 Azure DevTest Labs, her bir laboratuvarın ilkelerini (ayarlarını) yöneterek laboratuvarlarınızdaki, maliyetleri denetlemenizi ve en aza indirmenizi sağlar. Bu makalede, laboratuvar hesabı için oto kapatma ilkesini yapılandırma ve laboratuvar hesabındaki bir laboratuvar için oto kapatma ayarlarını yapılandırma gösterilmektedir. Her laboratuvar ilkesini ayarlama hakkında bilgi için bkz. [Azure DevTest Labs laboratuvar Ilkelerini tanımlama](devtest-lab-set-lab-policy.md).  
 
-## <a name="set-auto-shutdown-policy-for-a-lab"></a>Laboratuvar için otomatik bilgisayar kapatması ilkesini ayarlama
+### <a name="set-auto-shut-down-policy-for-a-lab"></a>Laboratuvar için otomatik kapatma ilkesini ayarlama
 Laboratuvar sahibi olarak, laboratuvarınızda tüm VM 'Ler için bir kapalı zamanlama yapılandırabilirsiniz. Bunu yaparak, kullanılmayan makinelerden (boşta) maliyetlerin tasarruf edebilirsiniz. Tüm laboratuar sanal makinelerinizde bir kapalı ilke uygulayabilir, ancak laboratuvar kullanıcılarınıza bireysel makineler için bir zamanlama ayarlama çabalarını kaydedebilirsiniz. Bu özellik, laboratuvar zamanlamanızda ilke ayarlamanıza olanak sağlayarak laboratuvar kullanıcılarınıza denetim olmadan tam denetim sunmadan başlayarak ilkeyi ayarlamanıza olanak sağlar. Laboratuvar sahibi olarak, aşağıdaki adımları uygulayarak bu ilkeyi yapılandırabilirsiniz:
 
 1. Laboratuvarınızın giriş sayfasında **yapılandırma ve ilkeler**' i seçin.
@@ -33,7 +37,7 @@ Laboratuvar sahibi olarak, laboratuvarınızda tüm VM 'Ler için bir kapalı za
 
     ![İlke seçeneklerini otomatik olarak kapat](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
-## <a name="configure-auto-shutdown-settings"></a>Otomatik kapanmaya yönelik ayarları Yapılandır
+### <a name="configure-auto-shutdown-settings"></a>Otomatik kapanmaya yönelik ayarları Yapılandır
 Oto kapatma ilkesi, bu laboratuvarın VM 'lerinin kapanması için gereken süreyi belirtmenize izin vererek laboratuvar harcanmasının en aza indirilmesine yardımcı olur.
 
 Bir laboratuvarın ilkelerini görüntülemek (ve değiştirmek) için şu adımları izleyin:
@@ -72,7 +76,7 @@ Laboratuvarınızı bu ilkeye ayarlarsanız, laboratuvar kullanıcıları labora
 
 ![İlke seçeneğini otomatik kapat-3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
 
-## <a name="notifications"></a>Bildirimler
+### <a name="notifications"></a>Bildirimler
 Laboratuvar sahibi tarafından ayarlanan bir kez, bir sanal makine etkilenirse, oto kapanmadan önce laboratuvar kullanıcılara 30 dakika önce bir bildirim gönderilir. Bu seçenek, laboratuvar kullanıcılarına kapatmadan önce işlerini kaydetme şansı sağlar. Bildirim Ayrıca, aşağıdaki eylemler için her VM için bağlantılar sağlar:
 
 - Bu süre için oto kapatma işlemini atla
@@ -82,7 +86,7 @@ Bildirim, yapılandırılmış Web kancası uç noktası veya otomatik kapatma a
 
 Birçok uygulama (örneğin, bolluk, Azure Logic Apps vb.) tarafından kapsamlı bir şekilde desteklendiğinden Web kancalarını kullanmanızı öneririz ve bildirim göndermek için kendi yolunuzu uygulamanıza olanak tanır. Örnek olarak, bu makalede Azure Logic Apps kullanarak e-postalardan oto kapatma bildirimi alma işlemi adım adım açıklanmaktadır. İlk olarak, laboratuvarınızda oto kapatma bildirimini etkinleştirmek için temel adımları hızla ilerlim.   
 
-## <a name="create-a-logic-app-that-receives-email-notifications"></a>E-posta bildirimleri alan bir mantıksal uygulama oluşturma
+### <a name="create-a-logic-app-that-receives-email-notifications"></a>E-posta bildirimleri alan bir mantıksal uygulama oluşturma
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , hizmeti Office 365 ve Twitter gibi diğer istemcilerle tümleştirmeyi kolaylaştıran çok sayıda kullanıma hazır bağlayıcı sunar. Yüksek düzeyde, e-posta bildirimi için bir mantıksal uygulama ayarlama adımları dört aşamaya ayrılabilir: 
 
 - Mantıksal uygulama oluşturun. 
@@ -185,5 +189,16 @@ Başlamak için, aşağıdaki adımları kullanarak Azure aboneliğinizde bir ma
 
     ![Web kancası URL 'SI](./media/devtest-lab-auto-shutdown/webhook-url.png)
 
+## <a name="configure-autoshutdown-for-compute-vms"></a>İşlem VM 'Leri için oto kapatılmasını yapılandırma
+
+1. **Sanal makine** sayfasında, sol menüden **otomatik olarak kapatır** ' i seçin. 
+2. **Otomatik kapatma** sayfasında, bu ilkeyi etkinleştirmek ve devre dışı bırakmak için **kapalı** ' **yı seçin.**
+3. Bu ilkeyi etkinleştirirseniz, VM 'nin kapanması gereken **saati** (ve **saat dilimini**) belirtin.
+4. Belirtilen oto kapatma zamanından önce 30 dakika bildirim gönderme seçeneği için Evet veya **Hayır** **değerini** belirtin. **Evet**' i seçerseniz, bildirimin nakledilmesini veya gönderilmesini istediğiniz yeri belirten bir Web kancası URL uç noktası veya e-posta adresi girin. Kullanıcı bildirimi alır ve kapatmaya gecikme seçeneği verilir. Daha fazla bilgi için [Bildirimler](#notifications) bölümüne bakın. 
+9. **Kaydet**’i seçin.
+
+    ![İşlem VM 'si için oto kapatılmasını yapılandırma](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 Tüm ilkeleri ayarlama hakkında bilgi edinmek için bkz. [Azure DevTest Labs laboratuvar Ilkelerini tanımlama](devtest-lab-set-lab-policy.md).
+

@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2019
 ms.author: allensu
-ms.openlocfilehash: dc986d40d50b93720c87ba36d265ed3044b0abc9
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 9f824c1348420393f8fbf67bf96932e40b67bc32
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045380"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264925"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
 *Yük Dengeleme* , bir arka uç kaynak veya sunucu grubu genelinde yük devretme yükünü (gelen ağ trafiği) eşit bir şekilde dağıtmaktadır. Azure, ihtiyaya göre seçebileceğiniz [çeşitli yük dengeleme seçenekleri](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) sunar. Bu belgede Azure Load Balancer yer almaktadır.
 
-Azure Load Balancer, açık sistemler arası (OSı) modelin dört katmanında çalışır. Bu, istemcilerle ilgili tek iletişim noktasıdır. Yük dengeleyici, yük dengeleyicinin ön ucuna arka uç havuz örneklerine ulaşan yeni gelen akışları dağıtır. Bu akışlar yapılandırılmış Yük Dengeleme kurallarına ve sistem durumu araştırmalara göre yapılır. Arka uç havuzu örnekleri, bir sanal makine ölçek kümesindeki Azure sanal makineleri veya örnekleri olabilir.
-
+Azure Load Balancer, açık sistemler arası (OSı) modelin dört katmanında çalışır. Bu, istemcilerle ilgili tek iletişim noktasıdır. Load Balancer yük dengeleyicinin ön ucuna, arka uç havuzu örneklerine ulaşan gelen akışları dağıtır. Bu akışlar, yapılandırılmış Yük Dengeleme kurallarına ve sistem durumu araştırmalara göre yapılır. Arka uç havuzu örnekleri, bir sanal makine ölçek kümesindeki Azure sanal makineleri veya örnekleri olabilir.
 
 **[Ortak yük dengeleyici](./concepts-limitations.md#publicloadbalancer)** , sanal ağınız içindeki sanal makineler (VM) için giden bağlantılar sağlayabilir. Bu bağlantılar, özel IP adresleri genel IP adreslerine çevrilirken gerçekleştirilir. Ortak yük dengeleyiciler, sanal makinelerinize internet trafiğinin yükünü dengelemek için kullanılır.
 
@@ -40,14 +39,10 @@ Yalnızca ön uç üzerinde özel IP 'Lerin gerekli olduğu bir **[iç (veya öz
 
 Ayrı yük dengeleyici bileşenleri hakkında daha fazla bilgi için bkz. [Azure Load Balancer bileşenleri ve sınırlamaları](./concepts-limitations.md)
 
->[!NOTE]
-> Microsoft [Standart Load Balancer](./load-balancer-standard-overview.md)önerir.
-Tek başına VM'ler, kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri yalnızca tek bir SKU'ya bağlanabilir, ikisine birden bağlanamaz. Load Balancer ve genel IP adresi SKU 'SU ortak IP adresleriyle kullandığınızda aynı olmalıdır. Load Balancer ve genel IP SKU 'Ları değişebilir değildir.
-
 ## <a name="why-use-azure-load-balancer"></a>Neden Azure Load Balancer kullanmalıyım?
-Azure Load Balancer, uygulamalarınızı ölçeklendirebilir ve yüksek oranda kullanılabilir hizmetler oluşturabilirsiniz. Yük dengeleyici hem gelen hem de giden senaryoları destekler. Yük dengeleyici, düşük gecikme süresi ve yüksek aktarım hızı sağlar ve tüm TCP ve UDP uygulamaları için milyonlarca akışa kadar ölçeklendirir.
+Standart Load Balancer, uygulamalarınızı ölçeklendirebilir ve yüksek oranda kullanılabilir hizmetler oluşturabilirsiniz. Yük dengeleyici hem gelen hem de giden senaryoları destekler. Yük dengeleyici, düşük gecikme süresi ve yüksek aktarım hızı sağlar ve tüm TCP ve UDP uygulamaları için milyonlarca akışa kadar ölçeklendirir.
 
-Azure Load Balancer kullanarak gerçekleştirebileceğiniz önemli senaryolar şunlardır:
+Standart Load Balancer kullanarak gerçekleştirebileceğiniz önemli senaryolar şunlardır:
 
 - Azure sanal makinelerine **[iç](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** ve **[dış](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** trafik yükünü dengeleyin.
 
@@ -61,7 +56,7 @@ Azure Load Balancer kullanarak gerçekleştirebileceğiniz önemli senaryolar ş
 
 - **[IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)** **[Yük Dengelemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** için desteği etkinleştirin.
 
-- **[Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)** ile Azure Load Balancer yönelik **[ölçülerden ve tanılamalarından](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)** yararlanın.
+- Standart Load Balancer, [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)aracılığıyla çok boyutlu ölçümler sağlar.  Bu ölçümler, belirli bir boyut için filtrelenebilir, gruplandırılabilir ve parçalanılabilir.  Bu kişiler, hizmetinizin performansı ve durumuyla ilgili güncel ve geçmiş öngörüler sağlar.  Kaynak Durumu de desteklenir. Daha fazla ayrıntı için **[Standart Load Balancer tanılamayı](load-balancer-standard-diagnostics.md)** inceleyin.
 
 - **[Birden çok bağlantı noktası, birden çok IP adresi veya her ikisinde](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)** Yük Dengeleme Hizmetleri.
 
@@ -69,20 +64,17 @@ Azure Load Balancer kullanarak gerçekleştirebileceğiniz önemli senaryolar ş
 
 - Tüm bağlantı noktalarında TCP ve UDP Flow 'u aynı anda **[ha bağlantı noktalarını](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** kullanarak yük dengeleyin.
 
-## <a name="pricing"></a>Fiyatlandırma
+### <a name="securebydefault"></a>Varsayılan olarak güvenli
 
-Standart Load Balancer kullanım ücretlendirilir.
+Standart Load Balancer, temel alınarak sıfır güvenli ağ güvenlik modelinde oluşturulmuştur. Varsayılan olarak güvenli Standart Load Balancer ve sanal ağınızın bir parçasıdır. Sanal ağ özel ve yalıtılmış bir ağ.  Bu, ağ güvenlik grupları tarafından açılmadığı müddetçe standart yük dengeleyiciler ve standart genel IP adreslerinin gelen akışlara kapalı olması anlamına gelir. NSG 'ler, izin verilen trafiğe açıkça izin vermek ve onları yeniden listelemek için kullanılır.  Sanal makine kaynağınızın bir alt ağda veya NIC 'inde bir NSG 'niz yoksa, trafiğin bu kaynağa erişmesine izin verilmez. NSG 'ler ve senaryonuz için nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları](../virtual-network/security-overview.md).
+Temel Load Balancer varsayılan olarak Internet 'e açıktır.
 
-* Yapılandırılmış yük dengeleme ve giden kural sayısı. Gelen NAT kuralları toplam kural sayısı içinde sayılmaz.
-* Gelen ve giden kurallardan bağımsız olarak işlenen veri miktarı.
+
+## <a name="pricing-and-sla"></a>Fiyatlandırma ve SLA
 
 Standart Load Balancer fiyatlandırma bilgileri için bkz. [Load Balancer fiyatlandırması](https://azure.microsoft.com/pricing/details/load-balancer/).
-
 Temel Load Balancer ücretsiz olarak sunulur.
-
-## <a name="sla"></a>SLA
-
-SLA Standart Load Balancer hakkında daha fazla bilgi için bkz. [Load Balancer Için SLA](https://aka.ms/lbsla).
+[Load Balancer Için SLA](https://aka.ms/lbsla)konusuna bakın. Temel Load Balancer SLA 'sı yok.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

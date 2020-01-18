@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36dd80669c6a9495751f577748f48c02a782b920
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0ad3bb41b6c5faa7bab0e618dd46c48427f364db
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029863"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167376"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -64,7 +64,7 @@ Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürü
 ### <a name="windows-down-level-devices"></a>Windows alt düzey cihazlar
 
 - Windows 8.1
-- Windows 7. Windows 7 ile ilgili destek bilgileri için bkz. [Windows 7 Için destek sonlandırılıyor](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support).
+- Windows 7 desteği 14 Ocak 2020 tarihinde sona erdi. Daha fazla bilgi için bkz. [Windows 7 desteği sona erdi](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020).
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2. Windows Server 2008 ve 2008 R2 hakkında Destek bilgileri için bkz. [Windows Server Için hazırlanma 2008 destek sonu](https://www.microsoft.com/cloud-platform/windows-server-2008).

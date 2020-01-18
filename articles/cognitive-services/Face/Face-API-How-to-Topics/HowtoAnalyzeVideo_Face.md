@@ -1,7 +1,7 @@
 ---
-title: "Örnek: Gerçek zamanlı video analizi-Yüz Tanıma API'si"
+title: 'Örnek: gerçek zamanlı video analizi-yüz'
 titleSuffix: Azure Cognitive Services
-description: Canlı video akışından alınan karelerde gerçek zamanlıya yakın analiz gerçekleştirmek için Yüz Tanıma API’sini kullanın.
+description: Canlı video akışından alınan çerçeveler üzerinde neredeyse gerçek zamanlı analizler gerçekleştirmek için yüz hizmetini kullanın.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: e2166354fb45d24e117156e917f4da726ee8406f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ab3f596000216e8555bb84d0d47aff9a6e969eeb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114339"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169893"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Örnek: Gerçek Zamanlı Videoları Analiz Etme
 
@@ -136,13 +136,13 @@ while (true)
 
 ## <a name="implementing-the-solution"></a>Çözümü uygulama
 
-### <a name="getting-started"></a>Başlarken
+### <a name="getting-started"></a>Başlangıç
 
 Uygulamanızı mümkün olduğunca hızlı bir şekilde çalışır duruma getirmek için yukarıda açıklanan sistemin esnek bir uygulamasını kullanacaksınız. Koda erişmek için [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis) sayfasına gidin.
 
 Kitaplık, bir Web kamerasından video çerçevelerini işlemek için yukarıda ele alınan üretici-tüketici sistemini uygulayan Framekavrayıcı sınıfını içerir. Kullanıcı, API çağrısının tam biçimini belirtebilir ve sınıf, çağıran kodun yeni bir çerçeve edinildiği veya yeni bir analiz sonucunun kullanılabildiği bir şekilde bilmesini sağlamak için olayları kullanır.
 
-Bazı olasılıkları göstermek için, kitaplığı kullanan iki örnek uygulama vardır. Birincisi basit bir konsol uygulamasıdır ve bunun basitleştirilmiş bir sürümü aşağıda verilmiştir. Varsayılan web kamerasından kareleri ele geçirir ve yüz algılama için Yüz Tanıma API’sine bunları gönderir.
+Bazı olasılıkları göstermek için, kitaplığı kullanan iki örnek uygulama vardır. Birincisi basit bir konsol uygulamasıdır ve bunun basitleştirilmiş bir sürümü aşağıda verilmiştir. Varsayılan Web kamerasından çerçeveler Dallarınızla ve yüz algılama için bunları yüz tanıma hizmetine gönderir.
 
 ```csharp
 using System;
@@ -159,7 +159,7 @@ namespace VideoFrameConsoleApplication
             // Create grabber, with analysis type Face[]. 
             FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
             
-            // Create Face API Client. Insert your Face API key here.
+            // Create Face Client. Insert your Face API key here.
             private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials("<subscription key>"),
             new System.Net.Http.DelegatingHandler[] { });
@@ -203,13 +203,12 @@ Bu örneği kullanmaya başlamak için şu adımları izleyin:
 
 1. [Abonelikler](https://azure.microsoft.com/try/cognitive-services/)’den Görüntü İşleme API’leri için API anahtarlarını alın. Video karesi analizi için geçerli API’ler şunlardır:
     - [Görüntü İşleme API’si](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Duygu Tanıma API'si](https://docs.microsoft.com/azure/cognitive-services/emotion/home)
     - [Yüz Tanıma API’si](https://docs.microsoft.com/azure/cognitive-services/face/overview)
 
 2. [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub deposunu kopyalayın
 
 3. Visual Studio 2015 ' de örneği açın ve örnek uygulamaları derleyin ve çalıştırın:
-    - BasicConsoleSample için Yüz Tanıma API'si anahtarı doğrudan [basicconsolesample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs)içinde sabit olarak kodlanmıştır.
+    - BasicConsoleSample için yüz tuşu, doğrudan [basicconsolesample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs)içinde sabit olarak kodlanmıştır.
     - LiveCameraSample için anahtarlar, uygulamanın Ayarlar bölmesine girilmelidir. Oturumlarda kullanıcı verileri olarak kalıcı duruma getirilir.
         
 

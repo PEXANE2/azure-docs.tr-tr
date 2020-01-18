@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 7185ac40cafce86c68efbf28c7e6a35fd4789bc3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 24369ed547b811b212518193a2ae2f76ed197754
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027649"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264636"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure sanal makine aracısına genel bakış
 Microsoft Azure sanal makine Aracısı (VM Aracısı), Azure yapı denetleyicisi ile sanal makine (VM) etkileşimini yöneten güvenli ve hafif bir işlemdir. VM aracısının Azure sanal makine uzantıları 'nı etkinleştirmek ve yürütmek için birincil bir rolü vardır. VM uzantıları, yazılım yükleme ve yapılandırma gibi VM 'nin dağıtım sonrası yapılandırmasını etkinleştirir. VM uzantıları, bir VM 'nin yönetici parolasını sıfırlama gibi kurtarma özelliklerini de etkinleştirir. Azure VM Aracısı olmadan VM uzantıları çalıştırılamaz.
@@ -61,7 +61,8 @@ Yüklü aracılar yoksa, Azure Backup veya Azure güvenliği gibi bazı Azure hi
 ### <a name="manual-installation"></a>El ile yükleme
 Windows VM Aracısı bir Windows Installer paketiyle el ile yüklenebilir. Azure 'a dağıtılan özel bir VM görüntüsü oluşturduğunuzda el ile yükleme gerekli olabilir. Windows VM aracısını el ile yüklemek için [VM Aracısı yükleyicisini indirin](https://go.microsoft.com/fwlink/?LinkID=394789). VM Aracısı Windows Server 2008 R2 ve üzeri sürümlerde desteklenir.
 
-> [NOTE!] VMAgent 'ı, ProvisionVMAgent Enable olmadan görüntüden dağıtılan bir VM 'ye el ile yükledikten sonra AllowExtensionOperations seçeneğinin güncelleştirilmesi önemlidir.
+> [!NOTE]
+> VMAgent 'ı, ProvisionVMAgent Enable olmadan görüntüden dağıtılan bir VM 'ye el ile yükledikten sonra AllowExtensionOperations seçeneğinin güncelleştirilmesi önemlidir.
 
 ```powershell
 $vm.OSProfile.AllowExtensionOperations = $true

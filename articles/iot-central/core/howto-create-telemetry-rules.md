@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 3b2fff84b70c5c5e37d14faa87143e5dacc82bce
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0b24c064424b00fa9acb96b03c0a3c5ca69f67f2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930196"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264433"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda bir telemetri kuralı oluşturma ve bildirim ayarlama
 
@@ -27,7 +27,7 @@ Cihazlar, cihazdan sayısal veri göndermek için telemetri ölçümü kullanabi
 
 ## <a name="create-a-telemetry-rule"></a>Telemetri kuralı oluşturma
 
-Bir telemetri kuralı oluşturmak için, cihaz şablonunda en az bir telemetri ölçümü tanımlanmış olmalıdır. Bu örnek, sıcaklık ve nem telemetrisi gönderen bir soğutma makinesi cihazı kullanır. Kural, cihaz tarafından bildirilen sıcaklığın izler ve 80 derecenin üzerinde kaldığında bir e-posta gönderir.
+Bir telemetri kuralı oluşturmak için, cihaz şablonunda en az bir telemetri ölçümü tanımlanmış olmalıdır. Bu örnek, sıcaklık ve nem telemetrisi gönderen bir soğutma makinesi cihazı kullanır. Kural, cihaz tarafından bildirilen sıcaklığın izler ve 70&deg; F üzerine gittiğinde bir e-posta gönderir.
 
 1. **Cihaz şablonları** sayfasını kullanarak, kuralını eklemek istediğiniz cihaz şablonuna gidin.
 
@@ -43,7 +43,7 @@ Bir telemetri kuralı oluşturmak için, cihaz şablonunda en az bir telemetri �
 
 1. Bu cihaz şablonunda kuralı tanımlamanızı sağlayan bir ad girin.
 
-1. Bu şablon için oluşturulan tüm cihazların kuralını hemen etkinleştirmek için, **Bu şablon için tüm cihazlar kuralını etkinleştir**seçeneğini değiştirin.
+1. Bu şablon için oluşturulan tüm cihazların kuralını hemen etkinleştirmek için, **Bu şablonun tüm cihazları Için etkinleştir kuralını**açın.
 
    ![Kural ayrıntısı](media/howto-create-telemetry-rules/rule_detail1.png)
 
@@ -58,8 +58,8 @@ Koşul, kural tarafından izlenen kriterleri tanımlar.
 1. **Ölçüm** açılan listesinden izlemek istediğiniz Telemetriyi seçin.
 
 1. Sonra **toplama**, **işleç**' i seçin ve bir **eşik** değeri sağlayın.
-   - Toplama isteğe bağlıdır. Toplama olmadan kural, koşulu karşılayan her telemetri veri noktası için tetikler. Örneğin, kural sıcaklık 80 üzerinde olduğunda kural tetiklenecek şekilde yapılandırıldıysa, cihaz sıcaklık > 80 ' i raporladığında kural neredeyse anında tetiklenir.
-   - Ortalama, min, Max, Count gibi bir toplama işlevi seçilirse, kullanıcının koşulun değerlendirilmesi gereken bir **toplama zaman penceresi** sağlaması gerekir. Örneğin, dönemi "5 dakika" olarak ayarlarsanız ve kuralınız 80 üzerinde ortalama sıcaklık alıyorsa, kural ortalama sıcaklık en az 5 dakika boyunca 80 ' in üzerinde olduğunda tetiklenir. Kural değerlendirme sıklığı **toplama zamanı penceresiyle**aynıdır, yani bu örnekte kural her 5 dakikada bir değerlendirilir.
+   - Toplama isteğe bağlıdır. Toplama olmadan kural, koşulu karşılayan her telemetri veri noktası için tetikler. Örneğin, kural, sıcaklık 70&deg; F 'nin üzerinde olduğunda kural, cihaz sıcaklık > 70 ' i raporladığında neredeyse anında tetikleyecektir.
+   - Ortalama, min, Max, Count gibi bir toplama işlevi seçilirse, kullanıcının koşulun değerlendirilmesi gereken bir **toplama zaman penceresi** sağlaması gerekir. Örneğin, dönemi "5 dakika" olarak ayarlarsanız ve kuralınız 70 üzerinde ortalama sıcaklık alıyorsa, kural ortalama sıcaklık en az 5 dakika 70&deg; F 'nin üzerinde olduğunda tetiklenir. Kural değerlendirme sıklığı **toplama zamanı penceresiyle**aynıdır, yani bu örnekte kural her 5 dakikada bir değerlendirilir.
 
      ![Koşul](media/howto-create-telemetry-rules/aggregate_condition_filled_out1.png)
 
@@ -90,7 +90,7 @@ Kurala Microsoft Flow ve Web kancaları gibi başka eylemler ekleyebilirsiniz. K
 
 ## <a name="parameterize-the-rule"></a>Kuralı Parametreleştirme
 
-Kurallar, **cihaz özelliklerinden** belirli özellikleri parametre olarak türetebilir. Farklı cihazlarda telemetri eşiklerinin değişebileceği senaryolarda, parametreleri kullanmak faydalıdır. Kuralı oluşturduğunuzda, 80 derece gibi mutlak bir değer sağlamak yerine, eşiği belirten, **en yüksek Ideal eşik**gibi bir cihaz özelliği seçin. Kural yürütüldüğünde, Device özelliğinde ayarlanan değer ile cihaz telemetrisiyle eşleşir.
+Kurallar, **cihaz özelliklerinden** belirli özellikleri parametre olarak türetebilir. Farklı cihazlarda telemetri eşiklerinin değişebileceği senaryolarda, parametreleri kullanmak faydalıdır. Kuralı oluşturduğunuzda, 70&deg; F gibi mutlak bir değer sağlamak yerine, eşiği belirten bir cihaz özelliğini ( **en fazla Ideal eşik**gibi) seçin. Kural yürütüldüğünde, Device özelliğinde ayarlanan değer ile cihaz telemetrisiyle eşleşir.
 
 Parametreleri kullanmak cihaz şablonu başına yönetilecek kural sayısını azaltmak için etkili bir yoldur.
 

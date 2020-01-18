@@ -4,12 +4,13 @@ description: İşlev uygulamanızı dağıtan bir Azure Resource Manager şablon
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 650997cfddc71a8bfe347e29c8992b78d1828034
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.custom: fasttrack-edit
+ms.openlocfilehash: df0c90ba3784acb96bd9f76a436ff2746f7efe2c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978800"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262444"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
 
@@ -139,7 +140,7 @@ Bir işlev uygulaması şu uygulama ayarlarını içermelidir:
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | İç sıraya alma için Işlev çalışma zamanının bulunduğu depolama hesabına yönelik bağlantı dizesi | [Depolama hesabını](#storage) gör       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Işlevleri çalışma zamanının sürümü                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | Bu uygulamadaki işlevler için kullanılacak dil yığını                                   | `dotnet`, `node`, `java` veya `python` |
+| FUNCTIONS_WORKER_RUNTIME     | Bu uygulamadaki işlevler için kullanılacak dil yığını                                   | `dotnet`, `node`, `java`, `python`veya `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | Yalnızca `node` dil yığını kullanılıyorsa gereklidir, kullanılacak sürümü belirtir              | `10.14.1`                             |
 
 Bu özellikler `siteConfig` özelliğindeki `appSettings` koleksiyonunda belirtilir:
@@ -462,7 +463,7 @@ App Service planındaki bir işlev uygulaması, daha önce oluşturulan planın 
 
 Linux uygulamaları, `siteConfig`altına bir `linuxFxVersion` özelliği de içermelidir. Yalnızca kod dağıtıyorsanız, bunun değeri istenen çalışma zamanı yığınınıza göre belirlenir:
 
-| Yığın            | Örnek değer                                         |
+| Toplu İş            | Örnek değer                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |

@@ -1,6 +1,6 @@
 ---
 title: Azure Notification Hubs 'de APNS için belirteç tabanlı (HTTP/2) kimlik doğrulaması | Microsoft Docs
-description: Bu konuda, APNS için yeni belirteç kimlik doğrulamasının nasıl kullanılacağı açıklanmaktadır
+description: APNS için yeni belirteç kimlik doğrulamasını nasıl kullanacağınızı öğrenin.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -15,12 +15,12 @@ ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: 56689981d6c85c844fefbec6a4ec4aeb041dbc7f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 448b5c38371024c2eae900f4f87b343ee0a3b36a
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111985"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263821"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS için belirteç tabanlı (HTTP/2) kimlik doğrulaması
 
@@ -79,7 +79,7 @@ Belirteç tabanlı kimlik bilgileri aşağıdaki alanlardan oluşur:
 * **EKIP kimliği**: "önek" veya "uygulama öneki" olarak da bilinir. Bu, Apple geliştirici portalındaki kuruluşun tanımlayıcısıdır; Örneğin, `S4V3D7CHJR`.
 * **Paket kimliği**: "uygulama kimliği" olarak da adlandırılır. Bu, uygulamanın paket tanıtıcısıdır; Örneğin, `com.microsoft.nhubsample2019`. Birçok uygulama için bir anahtar kullanabileceğinizi unutmayın. Bu değer, bildirim gönderilirken `apns-topic` HTTP üstbilgisiyle eşlenir ve belirli uygulamayı hedeflemek için kullanılır.
 * **Belirteç**: "Key" veya "Private Key" olarak da bilinir. Bu, Apple geliştirici portalında oluşturulan. P8 dosyasından elde edilir. Anahtarın APNS etkin olmalıdır (anahtar oluşturulurken Apple Geliştirici Portalında seçilir). Değer, NH portalına/API 'sine girdiğinizde PEM üst bilgisi/alt bilgisinin bu kümeden çıkarılır.
-* **Uç nokta**: bu, Notification Hubs portalı dikey PENCERESINDE ve API 'deki bir dize alanından bir geçiş yapar. Geçerli değerler `https://api.push.apple.com` veya `https://api.sandbox.push.apple.com`. Notification Hubs, bildirim göndermek için üretim veya Sandbox ortamı için bu değeri kullanır. Bu, uygulamadaki `aps-environment` yetkilendirmeler ile eşleşmelidir, aksi halde oluşturulan APNS cihaz belirteçleri ortamla eşleşmez ve bildirimler gönderilemez.
+* **Uç nokta**: bu, Notification Hubs portalı dikey PENCERESINDE ve API 'deki bir dize alanından bir geçiş yapar. Geçerli değerler `https://api.push.apple.com` veya `https://api.sandbox.push.apple.com`’dir. Notification Hubs, bildirim göndermek için üretim veya Sandbox ortamı için bu değeri kullanır. Bu, uygulamadaki `aps-environment` yetkilendirmeler ile eşleşmelidir, aksi halde oluşturulan APNS cihaz belirteçleri ortamla eşleşmez ve bildirimler gönderilemez.
 
 Doğru kullanımı gösteren bir kod örneği aşağıda verilmiştir:
 

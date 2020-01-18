@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell Betiği: Azure Lab Services bir VHD dosyasından bir özel görüntü oluşturma | Microsoft Docs'
-description: Bu PowerShell Betiği, Azure Lab Services VHD dosyasından özel bir görüntü oluşturur.
+title: PowerShell-Azure Lab Services VHD dosyasından özel görüntü oluşturma
+description: Bu PowerShell betiği, Azure Lab Services bir VHD dosyasından özel bir görüntü oluşturur.
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,25 +10,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 2d0cc4012adf2c17b2f7a2e769f2d666b158a8c8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 38383462a665ced1ccb6c6a2f062fab0492eee9a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160556"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169978"
 ---
-# <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>Azure Lab Services VHD dosyasından özel bir görüntü oluşturmak için PowerShell kullanma
+# <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>PowerShell kullanarak Azure Lab Services bir VHD dosyasından özel bir görüntü oluşturun
 
-Bu örnek PowerShell Betiği, Azure Lab Services bir VHD dosyasından özel bir görüntü oluşturur.
+Bu örnek PowerShell betiği Azure Lab Services içindeki bir VHD dosyasından özel bir görüntü oluşturur
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
-* **Bir laboratuvar**. Komut dosyası var olan bir laboratuvar olmasını gerektirir. 
+## <a name="prerequisites"></a>Ön koşullar
+* **Laboratuvar**. Betik, mevcut bir laboratuvarınızın olmasını gerektirir. 
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -42,10 +42,10 @@ Bu betik şu komutları kullanır:
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Kaynakları alır. |
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Azure Depolama hesabının erişim anahtarlarını alır. |
-| [Yeni AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) | Bir Azure dağıtımındaki bir kaynak grubuna ekler. |
+| [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) | Bir kaynak grubuna Azure dağıtımı ekler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
 
-Ek Azure Lab Services PowerShell Betiği örnekleri, içinde bulunabilir [Azure Lab Services PowerShell örnekleri](../samples-powershell.md).
+Ek Azure Lab Services PowerShell betiği örnekleri [Azure Lab Services PowerShell örneklerinde](../samples-powershell.md)bulunabilir.

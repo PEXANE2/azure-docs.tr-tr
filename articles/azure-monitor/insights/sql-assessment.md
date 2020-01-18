@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: e3e399e99dca453a84c4daef782027b2b1ad6da1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23b1391033713fc8eeccf2d0872c49a4291b8292
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401028"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168887"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Izleyici 'de SQL Server sistem durumu denetimi çözümü ile SQL ortamınızı iyileştirin
 
@@ -196,6 +196,19 @@ Yok saymak istediğiniz önerileriniz varsa, Azure Izleyici 'nin değerlendirme 
 3. Daha sonra yoksayılan önerilere bakmak istediğinize karar verirseniz, tüm ıgnorereyorum. txt dosyalarını kaldırın veya RecommendationIDs kaldırabilir.
 
 ## <a name="sql-health-check-solution-faq"></a>SQL sistem durumu denetimi çözümü SSS
+
+*SQL Değerlendirmesi çözümü tarafından hangi denetimler gerçekleştirilir?*
+
+* Aşağıdaki sorgu, şu anda gerçekleştirilen tüm denetimlerin açıklamasını gösterir:
+
+```Kusto
+SQLAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+Sonuçlar daha sonra daha fazla inceleme için Excel'e aktarılabilir.
+
+
 *Bir sistem durumu denetimi ne sıklıkta çalıştırılır?*
 
 * Onay her yedi günde bir çalıştırılır.

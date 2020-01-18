@@ -1,5 +1,5 @@
 ---
-title: Birden çok laboratuvarda ve abonelik üzerinde Azure DevTest Labs kullanımını raporla-Azure | Microsoft Docs
+title: Birden çok laboratuvarda ve aboneliğe Azure DevTest Labs kullanımı
 description: Birden çok laboratuvarda ve aboneliğe Azure DevTest Labs kullanımı rapor etme hakkında bilgi edinin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 01/16/2020
 ms.author: takamath
-ms.openlocfilehash: 0d930263233056d8fa74ffe6ccb176ee39429121
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 912f510f6380c0ba1eb92b7c485091801123558e
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829235"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169174"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Birden çok laboratuvarda ve aboneliğe ilişkin Azure DevTest Labs kullanımını raporla
 
@@ -35,7 +35,7 @@ Bu bölümde, tek bir laboratuvarın kaynak kullanımının nasıl dışarı akt
 DevTest Labs kaynak kullanımını dışa aktarmaya başlamadan önce, kullanım verilerinin depolanacağı farklı dosyalara izin vermek için bir Azure depolama hesabı ayarlamanız gerekir. Verilerin dışarı aktarılmasını yürütmek için kullanılan iki yol vardır:
 
 * [DevTest Labs REST API](https://docs.microsoft.com/rest/api/dtl/labs/exportresourceusage) 
-* PowerShell az. Resource Module WITH eylemi `exportResourceUsage`, laboratuvar kaynak kimliği ve gerekli parametreler ile [azresourceaction komutunu çağırır](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) . 
+* PowerShell az. Resource Module [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) for `exportResourceUsage`, Lab kaynak kimliği ve gerekli parametreler. 
 
     [Kişisel verileri dışarı aktarma veya silme](personal-data-delete-export.md) makalesi, dışarı aktarılmış veriler hakkında ayrıntılı bilgi içeren bir örnek PowerShell betiği içerir. 
 
@@ -75,7 +75,7 @@ Uzun vadeli depolama, herhangi bir metin düzenlemesi yapmak için kullanılabil
 * karmaşık gruplandırmaları oluşturma
 * verileri toplama.
 
-Bazı genel depolama çözümleri şunlardır: [SQL Server](https://azure.microsoft.com/services/sql-database/), [Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/)ve [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Hangi uzun vadeli depolama çözümünün tercih edileceğini seçme tercihi, tercihe bağlıdır. Verileri görselleştirirken etkileşim kullanılabilirliği açısından ne sunduğuna bağlı olarak aracı seçmeyi düşünebilirsiniz.
+Bazı yaygın depolama çözümleri şunlardır: [SQL Server](https://azure.microsoft.com/services/sql-database/), [Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/)ve [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Hangi uzun vadeli depolama çözümünün tercih edileceğini seçme tercihi, tercihe bağlıdır. Verileri görselleştirirken etkileşim kullanılabilirliği açısından ne sunduğuna bağlı olarak aracı seçmeyi düşünebilirsiniz.
 
 ## <a name="visualizing-data-and-gathering-insights"></a>Verileri görselleştirme ve öngörüleri toplama
 

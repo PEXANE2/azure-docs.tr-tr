@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 38c7da8a1de57ed5acf3248fc6a71431de0bd1e2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232781"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262495"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler görev hub 'ları (Azure Işlevleri)
 
@@ -96,9 +96,9 @@ Görev hub 'ı adı `MyTaskHub` uygulama ayarı değerine ayarlanır. Aşağıda
 }
 ```
 
-Aşağıdaki kod, bir uygulama ayarı C# olarak yapılandırılmış bir görev hub 'ı ile çalışmak üzere [Orchestration istemci bağlamasını](durable-functions-bindings.md#orchestration-client) kullanan bir işlevin nasıl yazılacağı konusunda önceden derlenmiş bir örnektir:
+Aşağıdaki kod, bir uygulama ayarı olarak yapılandırılmış bir görev hub 'ı ile çalışmak üzere [Orchestration istemci bağlamasını](durable-functions-bindings.md#orchestration-client) kullanan bir işlevin nasıl yazılacağını göstermektedir:
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -121,7 +121,7 @@ public static async Task<HttpResponseMessage> Run(
 > [!NOTE]
 > Önceki C# örnek dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 `function.json` dosyasındaki görev hub 'ı özelliği uygulama ayarı aracılığıyla ayarlanır:
 
@@ -133,6 +133,8 @@ public static async Task<HttpResponseMessage> Run(
     "direction": "in"
 }
 ```
+
+---
 
 Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan oluşmalıdır. Belirtilmemişse, aşağıdaki tabloda gösterildiği gibi varsayılan bir görev hub 'ı adı kullanılacaktır:
 

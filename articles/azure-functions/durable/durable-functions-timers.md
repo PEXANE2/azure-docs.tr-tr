@@ -4,12 +4,12 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısında dayanı
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 463d5e6c253643c82935c82c7dee5996c8e44b5f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0565cc149a36baf31d8516fffcf48b194c465760
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706116"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261492"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler süreölçerler (Azure Işlevleri)
 
@@ -29,7 +29,7 @@ ms.locfileid: "74706116"
 
 Aşağıdaki örnek, bir erteleme yürütmesi için dayanıklı zamanlayıcıları nasıl kullanacağınızı gösterir. Örnek, 10 gün boyunca her gün bir fatura bildirimi yayınlanıyor.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BillingIssuer")]
@@ -48,7 +48,7 @@ public static async Task Run(
 > [!NOTE]
 > Önceki C# örnek dayanıklı işlevler 2. x ' i hedefliyor. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -63,6 +63,8 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 > [!WARNING]
 > Orchestrator işlevlerinde sonsuz döngüleri önleyin. Sonsuz döngü senaryolarını güvenle ve verimli bir şekilde uygulama hakkında daha fazla bilgi için bkz. [Eternal düzenlemeleri](durable-functions-eternal-orchestrations.md).
 
@@ -70,7 +72,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Bu örnek, zaman aşımlarını uygulamak için dayanıklı zamanlayıcıları nasıl kullanacağınızı gösterir.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TryGetQuote")]
@@ -104,7 +106,7 @@ public static async Task<bool> Run(
 > [!NOTE]
 > Önceki C# örnek dayanıklı işlevler 2. x ' i hedefliyor. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -130,8 +132,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 > [!WARNING]
-> Kodunuzun tamamlanmasını beketmeyeceğini dayanıklı bir zamanlayıcıyı (.NET) iptal etmek veya döndürülen `TimerTask` (JavaScript) üzerinde `cancel()` çağırmak için `CancellationTokenSource` kullanın. Tüm bekleyen görevler tamamlanana veya iptal edilene kadar dayanıklı görev çerçevesi bir düzenleme durumunun "tamamlandı" olarak değiştirilmesine izin vermez.
+> Kodunuzun tamamlanmasını beketmeyeceğini dayanıklı bir zamanlayıcıyı iptal etmek için `CancellationTokenSource` (.NET) veya döndürülen `TimerTask` (JavaScript) üzerinde `cancel()` çağırın. Tüm bekleyen görevler tamamlanana veya iptal edilene kadar dayanıklı görev çerçevesi bir düzenleme durumunun "tamamlandı" olarak değiştirilmesine izin vermez.
 
 Bu iptal mekanizması devam eden etkinlik işlevini veya alt düzenleme yürütmelerini sonlandırır. Bunun yerine, Orchestrator işlevinin sonucu yok saymasına ve üzerinde hareket etmesine izin verir. İşlev uygulamanız tüketim planını kullanıyorsa, bırakılan etkinlik işlevi tarafından tüketilen herhangi bir zaman ve bellek için faturalandırılırsınız. Varsayılan olarak, tüketim planında çalışan işlevlerin beş dakikalık bir zaman aşımı vardır. Bu sınır aşılırsa, tüm yürütmeyi durdurmak ve geri ödeme durumunun önlenmesi için Azure Işlevleri ana bilgisayarı geri dönüştürülür. [İşlev zaman aşımı yapılandırılabilir](../functions-host-json.md#functiontimeout).
 

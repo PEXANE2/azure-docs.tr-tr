@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: f3a6da6888b823c637411c508c949686fc378e58
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/16/2020
+ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790111"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167341"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -132,7 +132,7 @@ Bir ana sunucu ve bir okuma çoğaltması arasında çoğaltmayı durdurursanız
 
 ### <a name="deleted-master-and-standalone-servers"></a>Ana ve tek başına sunucular silindi
 
-Bir ana sunucu silindiğinde, çoğaltma tüm okuma çoğaltmalarına durdurulur. Bu çoğaltmalar tek başına sunucular haline gelir. Ana sunucunun kendisi silinir.
+Bir ana sunucu silindiğinde, çoğaltma tüm okuma çoğaltmalarına durdurulur. Bu çoğaltmalar otomatik olarak tek başına sunucular olur ve hem okuma hem de yazma işlemlerini kabul edebilir. Ana sunucunun kendisi silinir.
 
 ### <a name="user-accounts"></a>Kullanıcı hesapları
 

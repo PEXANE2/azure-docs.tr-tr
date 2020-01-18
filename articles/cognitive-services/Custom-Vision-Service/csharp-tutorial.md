@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: db98464ecefaaf177161a1e417496ee7c994cff0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 158e4dcd07f6ba31ad0efdd88f030f8db99fcfdd
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978654"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170024"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Hızlı Başlangıç: Özel Görüntü İşleme .NET SDK'sıyla görüntü sınıflandırma projesi oluşturma
 
 Bu makalede, Özel Görüntü İşleme SDK'sını C# ile kullanarak görüntü sınıflandırma modeli oluşturmaya başlarken size yardımcı olacak bilgiler ve örnek kod sağlanır. Oluşturulduktan sonra etiketler ekleyebilir, görüntüleri karşıya yükleyebilir, projeyi eğitebilir, projenin varsayılan tahmin uç nokta URL’sini alabilir ve bir görüntüyü programlama yoluyla test etmek için uç noktayı kullanabilirsiniz. Kendi .NET uygulamanızı oluştururken bu örneği şablon olarak kullanın. Kod _olmadan_ bir sınıflandırma modeli oluşturma ve kullanma sürecini yapmak istiyorsanız, bunun yerine [tarayıcı tabanlı kılavuza](getting-started-build-a-classifier.md) bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/)'nin herhangi bir sürümü
 - [!INCLUDE [create-resources](includes/create-resources.md)]
@@ -69,7 +69,7 @@ Bu projenin görüntüleri dahil edilmiştir. Bunlara, _Program.cs_'de **LoadIma
 
 ### <a name="train-the-classifier-and-publish"></a>Sınıflandırıcıyı eğitme ve yayımlama
 
-Bu kod, projedeki ilk yinelemeyi oluşturur ve ardından bu yinelemeyi tahmin uç noktasına yayınlar. Tahmin istekleri göndermek için yinelemenin adını kullanabilirsiniz. Bir yineleme, yayınlanana kadar tahmin uç noktasında kullanılamaz.
+Bu kod, tahmin modelinin ilk yinelemesini oluşturur ve ardından bu yinelemeyi tahmin uç noktasına yayınlar. Tahmin istekleri göndermek için yinelemenin adını kullanabilirsiniz. Bir yineleme, yayınlanana kadar tahmin uç noktasında kullanılamaz.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 4f17fc7df5aef449c3b0f6dd8d02ae58df959070
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 84cd201cd758293082a61a87528332c7d8c58811
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384897"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264314"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Azure Cosmos DB genel bakış ile küresel veri dağıtımı
 
@@ -31,7 +31,7 @@ Azure Cosmos DB, hesabınızla ilişkili bölgeleri dilediğiniz zaman ekleyebil
 
 - Sınırsız elastik yazma ve okuma ölçeklenebilirliği. 
 - dünyanın her yerindeki% 99,999 okuma ve yazma kullanılabilirliği.
-- % 99 ' luk yüzdede 10 milisaniyeden kısa bir süre içinde sunulan garantili okuma ve yazma işlemleri.
+- %99 ' luk yüzdede 10 milisaniyeden kısa bir süre içinde sunulan garantili okuma ve yazma işlemleri.
 
 Azure Cosmos DB çoklu barındırmalı API 'Leri kullanarak, uygulamanız en yakın bölgeyi algılar ve istekleri bu bölgeye gönderebilir. En yakın bölge herhangi bir yapılandırma değişikliği olmadan tanımlanır. Azure Cosmos hesabınıza/konumundan bölge ekleyip kaldırırken uygulamanızın yeniden dağıtılması veya duraklatılması gerekmez, her zaman yüksek oranda kullanılabilir olmaya devam eder.
 
@@ -58,4 +58,4 @@ Aşağıdaki makalelerde genel dağıtım hakkında daha fazla bilgi edinin:
 * [Uygulamanız için doğru tutarlılık düzeyi seçme](consistency-levels-choosing.md)
 * [Azure Cosmos DB API'leri arasında tutarlılık düzeyleri](consistency-levels-across-apis.md)
 * [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans seçenekleri](consistency-levels-tradeoffs.md)
-* [Daha yüksek kullanılabilirlik ve performans için iyileştirmek üzere özel eşitleme uygulama](how-to-custom-synchronization.md)
+

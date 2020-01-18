@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7822045d4b3ce1feb1bfb43fbf1c2fc5a9a1c7fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00d5ba6fd86ea722270dfbe73324323bd831a529
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425641"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263379"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde, yeniden teknik bir teknik profil tanımlama
 
@@ -125,10 +125,10 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepler de d
 | --------- | -------- | ----------- |
 | ServiceUrl | Evet | REST API uç noktasının URL 'SI. |
 | AuthenticationType | Evet | Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türü. Olası değerler: `None`, `Basic`, `Bearer`veya `ClientCertificate`. `None` değeri REST API adsız olmadığını gösterir. `Basic` değeri, REST API HTTP temel kimlik doğrulaması ile korunmuş olduğunu gösterir. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. `ClientCertificate` (önerilen) değeri, REST API istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtladığını gösterir. Yalnızca uygun sertifikalara sahip hizmetler, örneğin Azure AD B2C, API 'nize erişebilir. `Bearer` değeri, REST API Client OAuth2 taşıyıcı belirtecini kullanarak erişimi kısıtladığını gösterir. |
-| SendClaimsIn | Hayır | Giriş taleplerinin, Restity talep sağlayıcısına nasıl gönderileceğini belirtir. Olası değerler: `Body` (varsayılan), `Form`, `Header`veya `QueryString`. `Body` değeri, JSON biçiminde istek gövdesinde gönderilen giriş talebinde bulunur. `Form` değeri, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen giriş talebinde bulunur. `Header` değeri, istek üstbilgisinde gönderilen giriş talebinde bulunur. `QueryString` değeri, istek sorgu dizesinde gönderilen giriş talebinde bulunur. |
+| SendClaimsIn | Hayır | Giriş taleplerinin, Restity talep sağlayıcısına nasıl gönderileceğini belirtir. Olası değerler: `Body` (varsayılan), `Form`, `Header`veya `QueryString`. `Body` değeri, JSON biçiminde istek gövdesinde gönderilen giriş talebinde bulunur. `Form` değeri, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen giriş talebinde bulunur. `Header` değeri, istek üstbilgisinde gönderilen giriş talebinde bulunur. `QueryString` değeri, istek sorgu dizesinde gönderilen giriş talebinde bulunur. Her biri tarafından çağrılan HTTP fiilleri aşağıdaki gibidir:<br /><ul><li>`Body`: GÖNDERI</li><li>`Form`: GÖNDERI</li><li>`Header`: Al</li><li>`QueryString`: Al</li></ul> |
 | ClaimsFormat | Hayır | Çıkış taleplerinin biçimini belirtir. Olası değerler: `Body` (varsayılan), `Form`, `Header`veya `QueryString`. `Body` değeri, JSON biçiminde istek gövdesinde gönderilen çıkış talebinde bulunur. `Form` değeri, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen çıkış talebinde bulunur. `Header` değeri, istek üstbilgisinde gönderilen çıkış talebinde bulunur. `QueryString` değeri, istek sorgu dizesinde gönderilen çıkış talebinde bulunur. |
 | ClaimUsedForRequestPayload| Hayır | REST API gönderilecek yükü içeren bir dize talebinin adı. |
-| DebugMode | Hayır | Teknik profili hata ayıklama modunda çalıştırır. Hata ayıklama modunda REST API daha fazla bilgi döndürebilir. Hata iletisi döndüren bölümüne bakın. |
+| DebugMode | Hayır | Teknik profili hata ayıklama modunda çalıştırır. Olası değerler: `true`veya `false` (varsayılan). Hata ayıklama modunda REST API daha fazla bilgi döndürebilir. [Hata Iletisi döndüren](#returning-error-message) bölümüne bakın. |
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
@@ -215,7 +215,7 @@ Kimlik doğrulaması türü `Bearer`olarak ayarlandıysa, **Cryptographickeys** 
 
 ## <a name="returning-error-message"></a>Hata iletisi döndürülüyor
 
-REST API, ' Kullanıcı CRM sisteminde bulunamadı ' gibi bir hata iletisi döndürmesi gerekebilir. Bir hata oluştuğunda, REST API aşağıdaki özniteliklere sahip bir HTTP 409 hata iletisi (çakışma yanıtı durum kodu) döndürmelidir:
+REST API, ' Kullanıcı CRM sisteminde bulunamadı ' gibi bir hata iletisi döndürmesi gerekebilir. Bir hata oluşursa, REST API aşağıdaki özniteliklere sahip bir HTTP 409 hata iletisi (çakışma yanıtı durum kodu) döndürmelidir:
 
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |

@@ -1,7 +1,7 @@
 ---
-title: Yüz Tanıma API’si nedir?
+title: Yüz hizmeti nedir?
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel Hizmetler Yüz Tanıma API'si, görüntülerdeki insan yüzlerini algılamak, tanımak ve analiz etmek için kullanılan algoritmaları sağlar.
+description: Azure bilişsel hizmetler hizmet yüz hizmeti, görüntülerdeki insan yüzlerini algılamak, tanımak ve analiz etmek için kullanılan algoritmaları sağlar.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,25 +9,25 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c4e2253229f4461bcb6a2a9fe3e561f3cde29760
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961548"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170250"
 ---
-# <a name="what-is-the-azure-face-api"></a>Azure Yüz Tanıma API’si nedir?
+# <a name="what-is-the-azure-face-service"></a>Azure yüz hizmeti nedir?
 
-Azure bilişsel Hizmetler Yüz Tanıma API'si, görüntülerdeki insan yüzlerini algılamak, tanımak ve analiz etmek için kullanılan algoritmaları sağlar. İnsan yüzü bilgilerini işleyebilme özelliği birçok farklı yazılım senaryosunda önemlidir. Güvenlik, doğal Kullanıcı arabirimi, görüntü içeriği Analizi ve yönetimi, mobil uygulamalar ve Robotics örnek senaryolar.
+Azure bilişsel hizmetler hizmet yüz hizmeti, görüntülerdeki insan yüzlerini algılamak, tanımak ve analiz etmek için kullanılan algoritmaları sağlar. İnsan yüzü bilgilerini işleyebilme özelliği birçok farklı yazılım senaryosunda önemlidir. Güvenlik, doğal Kullanıcı arabirimi, görüntü içeriği Analizi ve yönetimi, mobil uygulamalar ve Robotics örnek senaryolar.
 
-Yüz Tanıma API'si birkaç farklı işlev sağlar. Her işlev aşağıdaki bölümlerde özetlenmiştir. Hakkında daha fazla bilgi edinmek için okumaya devam edin.
+Yüz hizmeti birçok farklı işlev sağlar. Her işlev aşağıdaki bölümlerde özetlenmiştir. Hakkında daha fazla bilgi edinmek için okumaya devam edin.
 
 ## <a name="face-detection"></a>Yüz algılama
 
-Yüz Tanıma API'si görüntüdeki insan yüzlerini algılar ve konumlarına ait dikdörtgen koordinatlarını döndürür. İsteğe bağlı olarak, yüz algılama, yüz ile ilgili bir dizi özniteliği çıkarabilir. Örneğin baş poz, cinsiyet, yaş, duygu, yüz saç ve gözlük verilebilir.
+Yüz hizmeti bir görüntüdeki insan yüzlerini algılar ve konumlarına ait dikdörtgen koordinatlarını döndürür. İsteğe bağlı olarak, yüz algılama, yüz ile ilgili bir dizi özniteliği çıkarabilir. Örneğin baş poz, cinsiyet, yaş, duygu, yüz saç ve gözlük verilebilir.
 
 > [!NOTE]
-> Yüz algılama özelliği [görüntü işleme API'si](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)aracılığıyla da kullanılabilir. Yüz verileriyle daha fazla işlem yapmak istiyorsanız, bu makalede ele alınan Yüz Tanıma API'si kullanın.
+> Yüz algılama özelliği [görüntü işleme API'si](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)aracılığıyla da kullanılabilir. Yüz verileriyle daha fazla işlem yapmak istiyorsanız, bu makalede ele alınan hizmet olan yüz hizmetini kullanın.
 
 ![Kadın ve adam, yüz ve yaş ve cinsiyetlerinin etrafında çizilmiş dikdörtgenler](./Images/Face.detection.jpg)
 
@@ -73,9 +73,9 @@ Bir standartlaştırılmış Docker kapsayıcısını verilerinize yaklaştırar
 
 ## <a name="sample-apps"></a>Örnek uygulamalar
 
-Aşağıdaki örnek uygulamalar Yüz Tanıma API'si kullanmanın birkaç yolunu göstermektedir:
+Aşağıdaki örnek uygulamalar yüz hizmetini kullanmanın birkaç yolunu göstermektedir:
 
-- [Microsoft yüz tanıma API'si: Windows Istemci kitaplığı ve örneği](https://github.com/Microsoft/Cognitive-Face-Windows) , yüz algılama, analiz ve tanımlama için çeşitli senaryolar gösteren bir WPF uygulamasıdır.
+- [Yüz Tanıma API'si: Windows Istemci kitaplığı ve örneği](https://github.com/Microsoft/Cognitive-Face-Windows) , yüz algılama, analiz ve tanımlama için çeşitli senaryolar gösteren bir WPF uygulamasıdır.
 - [FAMILYNOTES UWP uygulaması](https://github.com/Microsoft/Windows-appsample-familynotes) , bir aile notunun yanı sıra konuşma, Cortana, mürekkep ve kamera ile birlikte yüz tanıma bilgilerini kullanan bir evrensel WINDOWS platformu (UWP) uygulamasıdır.
 
 ## <a name="data-privacy-and-security"></a>Veri gizliliği ve güvenliği

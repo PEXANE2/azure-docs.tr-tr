@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: 8d34a0905973a8080ee53eeac878432db0c51128
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 96e7cbd09873192d8b73b57cb2b46bf5b7679742
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979065"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263464"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -153,8 +153,15 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 |------|--------------------|---------------------------------------|-------|
 | İleti boyutu | 100 MB | 200 MB | Bu sınırı geçici olarak çözmek için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). Ancak, bazı bağlayıcılar ve API 'Ler parçalama veya varsayılan sınırı desteklemeyebilir. |
 | Öbek ile ileti boyutu | 1 GB | 5 GB | Bu sınır, yerel olarak parçalama desteği olan veya çalışma zamanı yapılandırmasında parçalama özelliğini etkinleştirmenize izin veren eylemler için geçerlidir. <p>Tümleştirme hizmeti ortamı için Logic Apps altyapısı bu sınırı destekler, ancak bağlayıcılar altyapı sınırına kadar kendi parçalama sınırlarına sahiptir, örneğin, [Azure Blob Storage BAĞLAYıCıSıNıN API başvurusu](https://docs.microsoft.com/connectors/azureblob/). Daha fazla bilgi parçalama için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). |
-| İfade değerlendirme limiti | 131.072 karakter | 131.072 karakter | `@concat()`, `@base64()`, `@string()` ifadeleri bu sınırdan daha uzun olamaz. |
-|||||
+|||||   
+
+#### <a name="character-limits"></a>Karakter sınırları
+
+| Ad | Notlar |
+|------|-------|
+| İfade değerlendirme limiti | 131.072 karakter | `@concat()`, `@base64()`, `@string()` ifadeleri bu sınırdan daha uzun olamaz. |
+| İstek URL 'SI karakter sınırı | 32K karakterler |
+|||
 
 #### <a name="retry-policy"></a>Yeniden deneme ilkesi
 

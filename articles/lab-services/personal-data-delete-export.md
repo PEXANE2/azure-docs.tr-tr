@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs kişisel verileri silme ve dışarı aktarma | Microsoft Docs
+title: Azure DevTest Labs kişisel verileri silme ve dışarı aktarma
 description: Genel Veri Koruma Yönetmeliği (GDPR) kapsamında yükümlülüklerinizi desteklemek için Azure DevLast Labs hizmetinden kişisel verileri silme ve dışarı aktarma hakkında bilgi edinin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 82ab8ef2e444b71f41fbbd87e4e9f8669e83e508
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371177"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169694"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Azure DevTest Labs kişisel verileri dışarı aktarma veya silme
 Bu makalede, Azure DevTest Labs hizmetinden kişisel verileri silmek ve dışarı aktarmak için adımlar sağlanmaktadır. 
@@ -39,11 +39,11 @@ DevTest Labs, laboratuvar kullanıcılarına otomatik kapalı e-posta bildirimle
 ### <a name="user-object-id"></a>Kullanıcı nesnesi KIMLIĞI
 DevTest Labs Kullanıcı nesne KIMLIĞINI kullanarak aylık maliyet eğilimlerini ve kaynak bilgilerini laboratuvar yöneticilerine göre gösterir. Bunların laboratuvarlarına ait maliyetleri izlemesine ve eşiklerini yönetmesine olanak tanır. 
 
-**Geçerli takvim ayı için tahmini maliyet eğilimi:** 
-![geçerli takvim ayı için tahmini maliyet eğilimi](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
+**Geçerli takvim ayı Için tahmini maliyet eğilimi:** 
+geçerli takvim ayı için tahmini maliyet eğilimi ![](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
 **Kaynağa göre tahmini aylık maliyet:** 
-![kaynağa göre tahmini aylık maliyet](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
+kaynağın tahmini aylık maliyeti ![](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
 ## <a name="why-do-we-need-this-personal-data"></a>Neden bu kişisel verilere ihtiyacımız var?
@@ -60,7 +60,7 @@ Azure portal veya PowerShell 'i kullanarak kişisel ve laboratuvar kullanım ver
 - **diskler. csv** -farklı VM 'ler tarafından kullanılan disklerle ilgili bilgiler içerir
 - **virtualmachines. csv** -laboratuvardaki VM 'ler hakkında bilgi içerir.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalında
 Laboratuvar kullanıcısı olarak, DevTest Labs hizmetinin depoladığı kişisel veriler üzerinde bir dışarı aktarma isteğinde bulunabilir. Bir dışarı aktarma istemek için laboratuvarınızın **genel bakış** sayfasında **kişisel veriler** seçeneğine gidin. Bir **dışarı aktarma isteği** seçin düğmesini laboratuvar yöneticinizin depolama hesabınızda indirilebilir bir Excel dosyası oluşturmayı devre dışı bırakın. Daha sonra bu verileri görüntülemek için laboratuvar yöneticinize başvurabilirsiniz.
 
 1. Sol taraftaki menüden **kişisel veriler** ' i seçin. 
@@ -70,12 +70,12 @@ Laboratuvar kullanıcısı olarak, DevTest Labs hizmetinin depoladığı kişise
 
     ![Kaynak grubu seçin](./media/personal-data-delete-export/select-resource-group.png)
 3. Kaynak grubundaki **Depolama hesabını** seçin.
-4. **Depolama hesabı** sayfasında, Bloblar ' ı seçin.
+4. **Depolama hesabı** sayfasında, **Bloblar**' ı seçin.
 
     ![Bloblar kutucuğunu seçin](./media/personal-data-delete-export/select-blobs-tile.png)
 5. Kapsayıcılar listesinde **labresourceusage** adlı kapsayıcıyı seçin.
 
-    ![Blob kapsayıcısı seçin](./media/personal-data-delete-export/select-blob-container.png)
+    ![Blob kapsayıcısını seçin](./media/personal-data-delete-export/select-blob-container.png)
 6. Laboratuvarınızın ardından adlı **klasörü** seçin. Laboratuvarınızda **diskler** ve **sanal makineler** için **CSV** dosyalarını bu klasörde bulabilirsiniz. Bu CSV dosyalarını indirebilir, erişim isteyen laboratuvar kullanıcısının içeriğini filtreleyebilir ve bunlarla paylaşabilirsiniz.
 
     ![CSV dosyasını indir](./media/personal-data-delete-export/download-csv-file.png)
@@ -167,13 +167,13 @@ Yukarıdaki örnekteki anahtar bileşenleri şunlardır:
 | LabName | Laboratuvarın adı. |
 | Labresourceıd | Tam nitelikli laboratuvar kaynak KIMLIĞI. |
 | ResourceGroupName | VM 'yi içeren kaynak grubunun adı | 
-| RESOURCEID | Sanal makine için tam kaynak KIMLIĞI. |
+| ResourceId | Sanal makine için tam kaynak KIMLIĞI. |
 | ResourceUId | VM için GUID |
 | Ad | Sanal makine adı. |
 | CreatedTime | VM 'nin oluşturulduğu tarih-saat. |
 | DeletedDate | VM 'nin silindiği tarih-saat. Boşsa, silme işlemi henüz gerçekleşmemiştir. |
 | ResourceOwner | VM sahibi. Değer boşsa, tek bir sanal makine olabilir veya bir hizmet sorumlusu tarafından oluşturulur. |
-| PricingTier | VM 'nin Fiyatlandırma Katmanı |
+| pricingTier | VM 'nin Fiyatlandırma Katmanı |
 | ResourceStatus | VM 'nin kullanılabilirlik durumu. Etkin, hala varsa veya etkin değilse, sanal makine silinmişse. |
 | Computeresourceıd | Tam sanal makine işlem kaynağı tanımlayıcısı. |
 | Talep edilebilir | VM, çakışan bir VM ise, true olarak ayarlayın | 
@@ -195,7 +195,7 @@ Yukarıdaki örnekteki anahtar bileşenleri şunlardır:
 | LabName | Laboratuvarın adı | 
 | Labresourceıd | Laboratuvar için tam kaynak KIMLIĞI | 
 | ResourceGroupName | Laboratuvarın bulunduğu kaynak grubunun adı | 
-| RESOURCEID | Sanal makine için tam kaynak KIMLIĞI. |
+| ResourceId | Sanal makine için tam kaynak KIMLIĞI. |
 | ResourceUId | VM için GUID |
  |Ad | Eklenen diskin adı |
 | CreatedTime |Veri diskinin oluşturulduğu tarih ve saat. |

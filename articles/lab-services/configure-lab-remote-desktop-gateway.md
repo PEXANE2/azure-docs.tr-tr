@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs 'de Uzak Masaüstü Ağ Geçidi kullanmak için laboratuvar yapılandırma | Microsoft Docs
+title: Azure DevTest Labs Uzak Masaüstü Ağ Geçidi kullanmak için laboratuvar yapılandırma
 description: RDP bağlantı noktasını açığa çıkarmak zorunda kalmadan laboratuvar VM 'lerine güvenli erişim sağlamak için Azure DevTest Labs bir laboratuvarı Uzak Masaüstü ağ geçidiyle nasıl yapılandıracağınızı öğrenin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f879a6389c7a77708e8041dd8b82dc3785679fa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162623"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170294"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Azure DevTest Labs ' de laboratuvarınızı Uzak Masaüstü Ağ geçidini kullanacak şekilde yapılandırma
 Azure DevTest Labs, laboratuvarınız için bir Uzak Masaüstü Ağ Geçidi yapılandırarak, RDP bağlantı noktasını açığa çıkarmak zorunda kalmadan laboratuvar sanal makinelerine (VM 'Ler) güvenli erişim sağlayabilirsiniz. Laboratuvar, laboratuvar kullanıcılarınızın erişimi olan tüm sanal makineleri görüntülemesi ve bunlara bağlanabilmesi için merkezi bir yer sağlar. **Sanal makine** sayfasındaki **Bağlan** düğmesi, makineye bağlanmak için AÇABILECEĞINIZ makineye özel bir RDP dosyası oluşturur. Laboratuvarınızı Uzak Masaüstü ağ geçidine bağlayarak RDP bağlantısını daha da özelleştirebilir ve koruyabilirsiniz. 
@@ -139,7 +139,7 @@ Uzak Masaüstü Ağ Geçidi grubuna yönelik örnek bir çözüm kurmak için a�
     - signCertificatePassword: ağ geçidi makinesi için imza sertifikası parolası.
     - signCertificateThumbprint-imza sertifikasının yerel sertifika deposunda kimlik için sertifika parmak izi.
     - _artifactsLocation – tüm destekleyici kaynakların bulunabileceği URI konumu. Bu değer, göreli bir yol değil, tam nitelikli bir uar olmalıdır.
-    - _artifactsLocationSasToken: konum bir Azure depolama hesabssa destekleme kaynaklarına erişmek için kullanılan paylaşılan erişim Imzası (SAS) belirteci.
+    - _artifactsLocationSasToken: konum bir Azure depolama hesabsa, destekleyici kaynaklara erişmek için kullanılan paylaşılan erişim Imzası (SAS) belirteci.
 
     Şablon, aşağıdaki komutu kullanarak Azure CLı kullanılarak dağıtılabilir:
 

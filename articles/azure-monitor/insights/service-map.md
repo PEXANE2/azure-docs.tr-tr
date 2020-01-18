@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: d4fd443959604f1a50dffbcb646bbe66fa159f8d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402590"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168185"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure 'da Hizmet Eşlemesi çözümü kullanma
 
@@ -27,7 +27,7 @@ Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadı
 * Windows bilgisayara veya Linux sunucusuna yüklenmiş bağımlılık Aracısı.
 
 >[!NOTE]
->Zaten Hizmet Eşlemesi dağıttıysanız, Ayrıca, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](../../azure-monitor/insights/vminsights-overview.md). Hizmet Eşlemesi çözümü ve VM'ler için Azure İzleyici eşleme özelliği arasındaki farklar hakkında bilgi edinmek için aşağıdaki [SSS](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map)bölümüne bakın.
+>Zaten Hizmet Eşlemesi dağıttıysanız, Ayrıca, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](../../azure-monitor/insights/vminsights-overview.md). Hizmet Eşlemesi çözümü ve VM'ler için Azure İzleyici eşleme özelliği arasındaki farklar hakkında bilgi edinmek için aşağıdaki [SSS](../faq.md#azure-monitor-for-vms-preview)bölümüne bakın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
@@ -321,7 +321,7 @@ Belirli bir zaman aralığında belirtilen bir işlem ve bilgisayar için birden
 
 ### <a name="connections"></a>Bağlantılar
 
-Bağlantı ölçümleri Log Analytics-VMConnection 'daki yeni bir tabloya yazılır. Bu tablo, bir makinenin (gelen ve giden) bağlantıları hakkında bilgi sağlar. Bağlantı ölçümleri Ayrıca bir zaman penceresi sırasında belirli bir ölçümü elde etmek için bir yol sağlayan API 'Ler ile birlikte sunulur.  "Bir dinleme yuvasında*kabul etme*" IŞLEMINDEN kaynaklanan TCP bağlantıları gelen, belırlı bir IP ve bağlantı noktasına *bağlanma*tarafından oluşturulan bağlantılar gidendir. Bir bağlantının yönü, **gelen** veya **giden**olarak ayarlanabilen Direction özelliği ile temsil edilir. 
+Bağlantı ölçümleri Log Analytics-VMConnection 'daki yeni bir tabloya yazılır. Bu tablo, bir makinenin (gelen ve giden) bağlantıları hakkında bilgi sağlar. Bağlantı ölçümleri Ayrıca bir zaman penceresi sırasında belirli bir ölçümü elde etmek için bir yol sağlayan API 'Ler ile birlikte sunulur.  Bir dinleme yuvasında kabul edilmeden kaynaklanan TCP bağlantıları gelen, belirli bir IP ve bağlantı noktasına bağlanarak oluşturulanlar gidendir. Bir bağlantının yönü, **gelen** veya **giden**olarak ayarlanabilen Direction özelliği ile temsil edilir. 
 
 Bu tablolardaki kayıtlar, bağımlılık Aracısı tarafından bildirilen verilerden oluşturulur. Her kayıt, bir dakikalık bir zaman aralığı üzerinde bir gözlemme temsil eder. TimeGenerated özelliği zaman aralığının başlangıcını gösterir. Her kayıt, ilgili varlığın, yani bağlantının veya bağlantı noktasının yanı sıra söz konusu varlıkla ilişkili ölçümleri belirlemek için bilgiler içerir. Şu anda yalnızca IPv4 üzerinden TCP kullanılarak gerçekleşen ağ etkinliği raporlanır.
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: dcb12da680d70e1f0ce4cd763bee340bb3416c6b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966936"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169943"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Tahmin API 'SI ile modelinizi kullanma
 
@@ -109,9 +109,9 @@ Bu kılavuzda, bir yerel görüntü kullanacaksınız, bu nedenle geçici bir ko
     ```
 
 1. Aşağıdaki bilgileri değiştirin:
-   * `namespace` Alanı projenizin adına ayarlayın.
-   * Yer tutucusunu `<Your prediction key>` , daha önce aldığınız anahtar değeriyle değiştirin.
-   * Yer tutucusunu `<Your prediction URL>` , daha önce aldığınız URL ile değiştirin.
+   * `namespace` alanını projenizin adı olarak ayarlayın.
+   * Yer tutucu `<Your prediction key>`, daha önce aldığınız anahtar değerle değiştirin.
+   * Yer tutucu `<Your prediction URL>`, daha önce aldığınız URL ile değiştirin.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
@@ -135,7 +135,7 @@ Uygulamayı çalıştırdığınızda, konsolunda bir görüntü dosyasının yo
 Bu kılavuzda, özel görüntü sınıflandırıcıya/algılayıcısının görüntülerini nasıl göndereleceğini ve C# SDK ile programlı bir şekilde yanıt almanızı öğrendiniz. Daha sonra, ile C#uçtan uca senaryoları nasıl tamamlayacağınızı veya farklı bır DIL SDK 'sını kullanmaya başlamanızı öğrenin.
 
 * [Hızlı başlangıç: .NET SDK](csharp-tutorial.md)
-* [Hızlı Başlangıç: Python SDK 'Sı](python-tutorial.md)
-* [Hızlı Başlangıç: Java SDK 'Sı](java-tutorial.md)
-* [Hızlı Başlangıç: Düğüm SDK 'Sı](node-tutorial.md)
-* [Hızlı Başlangıç: SDK git](go-tutorial.md)
+* [Hızlı başlangıç: Python SDK](python-tutorial.md)
+* [Hızlı başlangıç: Java SDK](java-tutorial.md)
+* [Hızlı başlangıç: düğüm SDK 'Sı](node-tutorial.md)
+* [Hızlı başlangıç: go SDK](go-tutorial.md)

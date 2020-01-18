@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2019
+ms.date: 01/16/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1106692128f3272f59c80a8312d6ceea2500b3a7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a0aa868d5ed57e27a89f2791f617dcdda74e766b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917480"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167440"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
@@ -82,7 +82,7 @@ Bu liste varsayılan olarak en çok id_tokens olan talepleri gösterir (aksi bel
 |`rh` | Donuk dize |Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Göz ardı edilmelidir. |
 |`sub` | Dize, GUID | Belirtecin, uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Konu, belirli bir uygulama KIMLIĞI için benzersiz bir tanımlayıcıdır. Tek bir Kullanıcı iki farklı istemci kimliği kullanarak iki farklı uygulama üzerinde oturum açarsa, bu uygulamalar konu talebi için iki farklı değer alır. Bu, mimarinize ve gizlilik gereksinimlerinize bağlı olarak istenebilir veya olmayabilir. |
 |`tid` | Dize, GUID | Kullanıcının ait olduğu Azure AD kiracısını temsil eden bir GUID. İş ve okul hesapları için GUID, kullanıcının ait olduğu kuruluşun sabit kiracı KIMLIĞIDIR. Kişisel hesaplar için değer `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` kapsamı, bu talebi almak için gereklidir. |
-|`unique_name` | Dize | Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değerin bir kiracı içinde benzersiz olması garanti edilmez ve yalnızca görüntüleme amacıyla kullanılmalıdır. Yalnızca v 1.0 `id_tokens`verilir. |
+|`unique_name` | Dize | Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değer, herhangi bir zamanda belirli bir noktada benzersizdir, ancak e-postalar ve diğer tanımlayıcılar yeniden kullanılabilir, bu değer diğer hesaplarda yeniden görüntülenebilir ve bu nedenle yalnızca görüntüleme amacıyla kullanılmalıdır. Yalnızca v 1.0 `id_tokens`verilir. |
 |`uti` | Donuk dize | Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Göz ardı edilmelidir. |
 |`ver` | Dize, 1,0 ya da 2,0 | İd_token sürümünü gösterir. |
 

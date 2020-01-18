@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 91469f27e1ca86650cf94fde5cff5d1864300183
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606341"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264840"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarlarını yönetme 
 Bu makalede bir sınıf Laboratuvarı oluşturma ve silme açıklanmaktadır. Ayrıca, tüm sınıf laboratuvarlarını bir laboratuvar hesabında nasıl görüntüleyekullanacağınızı gösterir. 
@@ -101,6 +101,9 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
 | Küçük GPU (görselleştirme) | 6 | 56 GB | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. | 
 | Küçük GPU (Işlem) | 6 | 56 GB | Bu boyut, yapay zeka ve derin öğrenme uygulamaları gibi işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. | 
 | Orta ölçekli GPU (görselleştirme) | 12 | 112 GB | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. | 
+
+> [!NOTE]
+> Azure Lab Services, GPU görüntüleriyle bir laboratuvar oluşturduğunuzda sizin için gerekli GPU sürücülerini otomatik olarak yükleyip yapılandırır.  
 
 ## <a name="view-all-classroom-labs"></a>Tüm sınıf laboratuvarlarını görüntüleyin
 1. [Azure Lab Services Portal](https://labs.azure.com)' a gidin.

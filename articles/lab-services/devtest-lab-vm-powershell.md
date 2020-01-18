@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell ile DevTest Labs 'de sanal makine oluşturma | Microsoft Docs
+title: Azure PowerShell ile DevTest Labs 'de sanal makine oluşturma
 description: Azure PowerShell ile sanal makineler oluşturmak ve yönetmek için Azure DevTest Labs nasıl kullanacağınızı öğrenin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,26 +11,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 1a6938bd541e316dbe9f333c670c382faab6ad21
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 13014c39641203bddadf858c34cff67462b3a4b3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854259"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167102"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Azure PowerShell kullanarak DevTest Labs ile sanal makine oluşturma
 Bu makalede Azure PowerShell kullanarak Azure DevTest Labs sanal makine oluşturma gösterilmektedir. Azure DevTest Labs bir laboratuvarda sanal makine oluşturulmasını otomatikleştirmek için PowerShell betikleri kullanabilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce:
 
 - Bu makaledeki betiği veya komutları test etmek için mevcut bir laboratuvarı kullanmak istemiyorsanız [bir laboratuvar oluşturun](devtest-lab-create-lab.md) . 
 - [Azure PowerShell yükleyip](/powershell/azure/install-az-ps?view=azps-1.7.0) Azure portal tümleştirilmiş Azure Cloud Shell kullanın. 
 
 ## <a name="powershell-script"></a>PowerShell betiği
-Bu bölümdeki örnek komut dosyası [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) cmdlet 'ini kullanır.  Bu cmdlet, laboratuvarın kaynak kimliğini, gerçekleştirilecek eylemin adını (`createEnvironment`) ve bu eylemi gerçekleştirmek için gereken parametreleri alır. Parametreler, tüm sanal makine açıklaması özelliklerini içeren bir karma tablodur. 
+Bu bölümdeki örnek komut dosyası [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) cmdlet 'ini kullanır.  Bu cmdlet, laboratuvarın kaynak KIMLIĞI, gerçekleştirilecek eylemin adı (`createEnvironment`) ve bu eylemi gerçekleştirmek için gereken parametreleri alır. Parametreler, tüm sanal makine açıklaması özelliklerini içeren bir karma tablodur. 
 
 ```powershell
 [CmdletBinding()]
@@ -126,7 +126,7 @@ Aşağıdaki komut, bir dosya adında kaydedilen betiği çalıştırmaya ilişk
 ## <a name="define-virtual-machine"></a>Sanal makineyi tanımla
 Bu bölümde, oluşturmak istediğiniz bir sanal makine türüne özgü özelliklerin nasıl alınacağı gösterilmektedir. 
 
-### <a name="use-azure-portal"></a>Azure portalı kullanma
+### <a name="use-azure-portal"></a>Azure portalını kullanma
 Azure portal bir VM oluştururken Azure Resource Manager şablonu oluşturabilirsiniz. VM oluşturma işlemini gerçekleştirmeniz gerekmez. Yalnızca şablonu görene kadar adımları izleyin. Bu, önceden oluşturulmuş bir laboratuvar VM 'si yoksa, gerekli JSON açıklamasını almanın en iyi yoludur. 
 
 1. [Azure portalına](https://portal.azure.com) gidin.
@@ -180,7 +180,7 @@ Azure portal bir VM oluştururken Azure Resource Manager şablonu oluşturabilir
 Bu örnekte, bir Azure pazar yeri görüntüsünün tanımını nasıl kullanacağınızı görürsünüz. Aynı şekilde özel bir görüntünün, bir formülün veya ortamın tanımını alabilirsiniz. Sanal makine için gereken yapıtları ekleyin ve gerekli tüm gelişmiş ayarları ayarlayın. Gerekli alanlar için değerleri ve tüm isteğe bağlı alanları **Otomasyon seçenekleri** düğmesini seçmeden önce sağlamaktan sonra.
 
 ### <a name="use-azure-rest-api"></a>Azure REST API kullanma
-Aşağıdaki yordam REST API kullanarak bir görüntünün özelliklerini almak için adımlar sağlar: Bu adımlar yalnızca laboratuvardaki mevcut bir VM için çalışır. 
+Aşağıdaki yordam REST API kullanarak bir görüntünün özelliklerini elde etmenizi sağlar: Bu adımlar yalnızca laboratuvardaki mevcut bir VM için çalışır. 
 
 1. [Sanal makineler-liste](/rest/api/dtl/virtualmachines/list) sayfasına gidin, **deneyin** düğmesini seçin. 
 2. **Azure aboneliğinizi** seçin.

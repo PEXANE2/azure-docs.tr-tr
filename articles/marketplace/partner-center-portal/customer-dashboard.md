@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d1d94e07fc38ae5de62793666df5a73dbf8b79eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2eaaf2ec2f3dad1da345d0cfeadf1cae223a592
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480573"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264025"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te müşteri panosu
 
@@ -72,7 +72,7 @@ Isı haritasını müşteri sayısını ve% müşteri ülkesini görüntüler. T
 
 **Siparişler/kullanım grafiğinde müşterilerin** üç sekmesi vardır, "Siparişler", "normalleştirilmiş kullanım" ve "ham kullanım". **En üstteki müşteri yüzdebirlik** değeri, siparişlerin sayısı tarafından belirlendiği şekilde x ekseni boyunca görüntülenir. Y ekseni, müşterinin sıra sayısını görüntüler. İkincil y ekseni (çizgi grafik), toplam sipariş sayısının birikmiş yüzdesini görüntüler. Çizgi grafik boyunca noktaların üzerine gelerek ayrıntıları gösterebilirsiniz.
 
-Örnek olarak, normalleştirilmiş kullanım için aşağıdaki grafiğe bakın: ilk 30 yaşın, müşterilerin en fazla %87 ' luk bir normalleştirilmiş kullanımın% ' una katkısı vardır. 30 ' dan fazla müşteri için yalnızca 1.57 d saatlik kullanım katkısında bulunur.
+Örnek olarak, normalleştirilmiş kullanım için aşağıdaki grafiğe bakın: ilk 30 yaşın, müşterilerin en fazla %87 ' luk bir normalleştirilmiş kullanımın% ' una katkısı vardır. Müşterilerin 30. Yüzdeliğini yalnızca 1.570.000 saat kullanım için katkıda bulunur.
 
 ### <a name="customers-by-skus"></a>SKU 'Lara göre müşteriler
 

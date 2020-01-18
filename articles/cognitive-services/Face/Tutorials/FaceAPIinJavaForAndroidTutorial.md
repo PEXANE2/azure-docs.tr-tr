@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Android SDK ile görüntüdeki yüzleri algılama ve çerçeveleme'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, bir görüntüdeki yüzeyleri algılamak ve çerçeveye eklemek için Yüz Tanıma API'si kullanan basit bir Android uygulaması oluşturacaksınız.
+description: Bu öğreticide, bir görüntüdeki yüzeyleri algılamak ve çerçeveye eklemek için yüz hizmetini kullanan basit bir Android uygulaması oluşturacaksınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ce0b308077505d5af1d757f1684c50505b11831e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977803"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165977"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Öğretici: Resimdeki yüzleri algılamak ve çerçeve içine almak için Android uygulaması oluşturma
 
-Bu öğreticide, bir görüntüdeki insan yüzlerini algılamak için, Java SDK 'Sı aracılığıyla Azure Yüz Tanıma API'si kullanan bir Android uygulaması oluşturacaksınız. Uygulama, seçilen görüntü görüntüler ve algılanan her yüz etrafında bir çerçeve çizer.
+Bu öğreticide, bir görüntüdeki insan yüzlerini algılamak için Java SDK 'Sı aracılığıyla Azure yüz hizmetini kullanan bir Android uygulaması oluşturacaksınız. Uygulama, seçilen görüntü görüntüler ve algılanan her yüz etrafında bir çerçeve çizer.
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
 > [!div class="checklist"]
 > - Android uygulaması oluşturma
-> - Yüz Tanıma API'si istemci kitaplığını yükler
+> - Yüz istemci kitaplığını yükler
 > - İstemci kitaplığını kullanarak resimdeki yüzleri algılama
 > - Algılanan her yüzün çevresine bir çerçeve çizme
 
@@ -35,9 +35,9 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz tanıma API'si abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yüz tanıma API'si hizmete abone ve anahtarınızı alın. Ardından, sırasıyla `FACE_SUBSCRIPTION_KEY` ve `FACE_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- Yüz abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `FACE_SUBSCRIPTION_KEY` ve `FACE_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 - [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/)'nin herhangi bir sürümü.
 - [ANDROID STUDIO](https://developer.android.com/studio/) API düzeyi 22 veya üzeri (yüz istemci kitaplığı için gereklidir).
 
@@ -123,7 +123,7 @@ Uygulamayı çalıştırın ve içinde yüzlerin yer aldığı bir resim bulun. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Yüz Tanıma API'si Java SDK 'sını kullanmaya yönelik temel süreci öğrenmiş ve bir görüntüdeki yüzeyleri algılayıp çerçevele almak için bir uygulama oluşturdunuz. Sonra, yüz algılama 'nın ayrıntıları hakkında daha fazla bilgi edinin.
+Bu öğreticide, yüz Java SDK 'sını kullanmaya yönelik temel süreci öğrenmiş ve bir görüntüdeki yüzeyleri algılayıp çerçeveli bir uygulama oluşturdunuz. Sonra, yüz algılama 'nın ayrıntıları hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Resimdeki Yüzleri Tanıma](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

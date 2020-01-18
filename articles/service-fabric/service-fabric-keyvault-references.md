@@ -3,12 +3,12 @@ title: Azure Service Fabric-Service Fabric uygulama Anahtar Kasası başvurular�
 description: Bu makalede, uygulama gizli dizileri için Service Fabric KeyVaultReference desteğinin nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: b0e882c2b39c06a3040d22fc6694599966ceeb39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f4c4979d0ce1329ac8ba49b236dae20a4e88b53
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463043"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167118"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric uygulamalar için KeyVaultReference desteği (Önizleme)
 
@@ -61,6 +61,7 @@ Bulut uygulamaları derlerken, uygulamanız için gereken gizli dizileri güvenl
 
     > [!NOTE] 
     > CSS için ayrı bir şifreleme sertifikası kullanılması önerilir. Bunu "merkezde Secretservice" bölümünün altına ekleyebilirsiniz.
+    
 
     ```json
         {
@@ -68,7 +69,18 @@ Bulut uygulamaları derlerken, uygulamanız için gereken gizli dizileri güvenl
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-
+Değişikliklerin etkili olabilmesi için yükseltme ilkesini, yükseltmenin kümede ilerledikçe her düğümde Service Fabric çalışma zamanının zorla yeniden başlatılmasını belirtmek için de değiştirmeniz gerekir. Bu yeniden başlatma, yeni etkinleştirilmiş sistem hizmetinin her düğüm üzerinde başlatılmış ve çalışır olmasını sağlar. Aşağıdaki kod parçacığında, forceRestart önemli ayardır; ayarların geri kalanı için mevcut değerlerinizi kullanın.
+```json
+"upgradeDescription": {
+    "forceRestart": true,
+    "healthCheckRetryTimeout": "00:45:00",
+    "healthCheckStableDuration": "00:05:00",
+    "healthCheckWaitDuration": "00:05:00",
+    "upgradeDomainTimeout": "02:00:00",
+    "upgradeReplicaSetCheckTimeout": "1.00:00:00",
+    "upgradeTimeout": "12:00:00"
+}
+```
 - Anahtar Kasası 'na uygulamanın yönetilen kimlik erişim iznini verme
 
     Anahtar Kasası 'na yönetilen kimlik erişimi vermeyi öğrenmek için bu [belgeye](how-to-grant-access-other-resources.md) başvurun. Ayrıca, sistem tarafından atanan yönetilen kimlik kullanıyorsanız, yönetilen kimlik yalnızca uygulama dağıtımından sonra oluşturulur.

@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 236d29d2c50a792bc4dc11916964db47ca092807
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d95a3334fe5a7767446c92f8f8668e4da09fca42
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659602"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169842"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Hızlı başlangıç: Visual Studio Code Azure Stream Analytics işi oluşturma (Önizleme)
 
@@ -179,9 +179,11 @@ Daha fazla ayrıntı için [örnek verilerle yerel olarak test sorguları](visua
    |IotHubNamespace|MyASAIoTHub|IoT Hub 'ınızın adını seçin veya girin. IoT Hub adları, aynı abonelikte oluşturulduklarında otomatik olarak algılanır.|
    |SharedAccessPolicyName|iothubowner| |
 
-   CodeLens özelliğini kullanarak bir dize girmenize, açılan listeden seçim yapmanıza veya metnin doğrudan dosyada değiştirilmesini sağlayabilirsiniz. Aşağıdaki ekran görüntüsünde bir örnek olarak **aboneliklerinizden seçim** gösterilmektedir.
+   CodeLens özelliğini kullanarak bir dize girmenize, açılan listeden seçim yapmanıza veya metnin doğrudan dosyada değiştirilmesini sağlayabilirsiniz. Aşağıdaki ekran görüntüsünde bir örnek olarak **aboneliklerinizden seçim** gösterilmektedir. Kimlik bilgileri otomatik olarak listelenir ve yerel kimlik bilgileri Yöneticisi 'ne kaydedilir.
 
    ![Visual Studio Code girişi yapılandırma](./media/quick-create-vs-code/configure-input.png)
+
+   ![Visual Studio Code giriş değerini yapılandırma](./media/quick-create-vs-code/configure-input-value.png)
 
 ## <a name="preview-input"></a>Önizleme girişi
 
