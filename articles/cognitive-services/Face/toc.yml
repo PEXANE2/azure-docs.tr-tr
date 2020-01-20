@@ -1,9 +1,9 @@
-- name: Yüz Tanıma API'si Belgeleri
+- name: Yüz Tanıma Belgeleri
   href: index.yml
 - name: Genel Bakış
   expanded: true
   items:
-    - name: Yüz Tanıma API’si nedir?
+    - name: Yüz Tanıma hizmeti nedir?
       href: Overview.md
 - name: Hızlı Başlangıçlar
   items:
@@ -77,7 +77,7 @@
           href: face-resource-container-config.md
         - name: Kapsayıcı örnekleri kullanma
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
-    - name: Yüz Tanıma API'si Bağlı Hizmetini kullanma
+    - name: Yüz Tanıma Bağlı Hizmetini kullanma
       href: vs-face-connected-service.md
 - name: Başvuru
   items:
@@ -101,7 +101,7 @@
   items:
     - name: Örnekler
       items:
-        - name: Yüz tanıma API'si örnekleri
+        - name: Yüz Tanıma örnekleri
           href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face'
     - name: Fiyatlandırma ve limitler
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'

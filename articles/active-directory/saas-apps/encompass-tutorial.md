@@ -158,7 +158,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, köre erişim izni vererek Britta Simon 'u etkinleştirin.
+Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, görme engellilere erişim izni vererek Britta Simon 'u etkinleştirin.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' **ı seçin ve**sonra da
 

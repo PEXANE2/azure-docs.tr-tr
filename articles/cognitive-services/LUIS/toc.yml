@@ -21,16 +21,12 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: Tarayıcıyı kullanma
       href: luis-get-started-get-intent-from-browser.md
-    - name: .NET SDK kullanma
+    - name: SDL kullanma
       items:
-        - name: Uygulama oluşturma ve yönetme
-          href: sdk-csharp-quickstart-authoring-app.md
+        - name: Yazma uygulaması
+          href: sdk-authoring.md
         - name: Sorgu tahmin uç noktası
-          href: sdk-csharp-quickstart-query-prediction-endpoint.md
-    - name: Python SDK’yı kullanma
-      items:
-        - name: Uygulama oluşturma ve yönetme
-          href: sdk-python-quickstart-authoring-app.md
+          href: sdk-query-prediction-endpoint.md
     - name: REST API'lerini kullanma
       items:
         - name: Amaç alma

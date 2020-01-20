@@ -6,6 +6,8 @@
       href: overview.md
     - name: Terminoloji değişiklikleri
       href: terminology.md
+    - name: SSS
+      href: faq.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Azure kaynağını izleme
@@ -113,14 +115,6 @@
       href: visualizations.md
     - name: İş ortağı tümleştirmeleri
       href: platform/partners.md
-    - name: SSS
-      items:
-        - name: Log Analytics
-          displayName: FAQ
-          href: platform/log-faq.md
-        - name: Application Insights
-          displayName: FAQ
-          href: app/troubleshoot-faq.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure İzleyici'yi yönetme
@@ -162,6 +156,8 @@
       items:
         - name: Application Insights'a genel bakış
           href: app/app-insights-overview.md
+        - name: SSS
+          href: app/troubleshoot-faq.md
         - name: Kod tabanlı izleme
           items:
             - name: ASP.NET Çekirdeği
@@ -170,7 +166,7 @@
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
-            - name: Http olmayan uygulamalar/Arka plan uygulamaları
+            - name: HTTP olmayan uygulamalar/Arka plan uygulamaları
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
             - name: .NET Konsolu
@@ -535,6 +531,8 @@
           items:
             - name: Aracılara genel bakış
               href: platform/agents-overview.md
+            - name: SSS
+              href: 'faq.md#agents'
             - name: Azure Tanılama uzantısı
               items:
                 - name: Genel Bakış
@@ -633,7 +631,7 @@
             - name: Genel Kullanılabilirlik Hakkında SSS
               href: insights/vminsights-ga-release-faq.md
             - name: SSS
-              href: insights/vminsights-faq.md
+              href: 'faq.md#azure-monitor-for-vms-preview'
             - name: İzlemeyi etkinleştirme
               items:
                 - name: İzlemeyi etkinleştirmeye genel bakış
@@ -679,7 +677,7 @@
             - name: Genel Bakış
               href: insights/container-insights-overview.md
             - name: SSS
-              href: insights/container-insights-faq.md
+              href: 'faq.md#azure-monitor-for-containers'
             - name: İzlemeyi etkinleştirme
               items:
                 - name: İzlemeyi etkinleştirmeye genel bakış

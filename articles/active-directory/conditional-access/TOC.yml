@@ -19,6 +19,8 @@
       href: concept-conditional-access-policy-common.md
     - name: Koşullu Erişim ilkesi bileşenleri
       href: concept-conditional-access-policies.md
+    - name: Bulut uygulamaları ve eylemleri
+      href: concept-conditional-access-cloud-apps.md
     - name: Koşullar
       href: conditions.md
     - name: Konum koşulları

@@ -7,7 +7,7 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Başlarken
+    - name: başlarken
       href: video-indexer-get-started.md
     - name: Kullanıcıları davet etme
       href: invite-users.md
@@ -45,7 +45,7 @@
       href: connect-to-azure.md
     - name: Azure’a bağlı hesabı yönetme
       href: manage-account-connected-to-azure.md
-    - name: Videoları karşıya yüklemek ve dizine almak için API kullanma
+    - name: Videoları karşıya yükleme ve dizinleme
       href: upload-index-videos.md
     - name: Video Indexer çıkışını inceleme
       href: video-indexer-output-json-v2.md
