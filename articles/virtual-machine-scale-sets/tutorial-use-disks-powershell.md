@@ -1,29 +1,21 @@
 ---
-title: Öğretici - Azure PowerShell ile ölçek kümeleri için diskler oluşturma ve kullanma | Microsoft Docs
+title: Öğretici-Azure PowerShell ölçek kümeleri için diskler oluşturma ve kullanma
 description: Disk ekleme, hazırlama, listeleme ve ayırma gibi, Azure PowerShell kullanılarak sanal makine ölçek kümeleri ile Yönetilen Diskler oluşturma ve kullanma işlemlerinin nasıl yapılacağını öğrenin.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6035a6ddd690db456edfa5777ca2d41e4be8b919
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: ba2d216b9827eeb499df40ceffca16780bdf5a02
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728594"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278267"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesi içeren diskler oluşturma ve
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesi içeren diskler oluşturma ve kullanma
 
 Sanal makine ölçek kümeleri, sanal makine örneğinin işletim sistemini, uygulamalarını ve verilerini depolamak için diskleri kullanır. Bir ölçek kümesi oluştururken ve yönetirken, beklenen iş yüküne uygun disk boyutu ve yapılandırmasını seçmek önemlidir. Bu öğretici, sanal makine disklerinin oluşturulmasını ve yönetilmesini kapsar. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -49,7 +41,7 @@ Bir ölçek kümesi oluşturulduğunda veya ölçeklendirildiğinde, her bir san
 **Geçici disk** - Geçici diskler, sanal makine örneğiyle aynı Azure ana bilgisayarında bulunan bir katı hal sürücüsü kullanır. Bunlar yüksek performansa sahiptir ve geçici veri işleme gibi işlemler için kullanılabilir. Ancak sanal makine örneği yeni bir ana bilgisayara taşınırsa, geçici diskte depolanan tüm veriler kaldırılır. Geçici diskin boyutu, sanal makine örneği tarafından belirlenir. Geçici diskler */dev/sdb* etiketine ve */mnt* bağlama noktasına sahiptir.
 
 ### <a name="temporary-disk-sizes"></a>Geçici disk boyutları
-| Type | Ortak boyutlar | En yüksek geçici disk boyutu (GiB) |
+| Tür | Ortak boyutlar | En yüksek geçici disk boyutu (GiB) |
 |----|----|----|
 | [Genel amaçlı](../virtual-machines/windows/sizes-general.md) | A, B ve D serisi | 1600 |
 | [İşlem için iyileştirilmiş](../virtual-machines/windows/sizes-compute.md) | F serisi | 576 |
@@ -63,7 +55,7 @@ Bir ölçek kümesi oluşturulduğunda veya ölçeklendirildiğinde, her bir san
 Uygulamalar yüklemeniz ve veri depolamanız gerekirse ek veri diskleri eklenebilir. Dayanıklı ve duyarlı veri depolama gerektiren her koşulda veri diskleri kullanılmalıdır. Her veri diski maksimum 4 TB kapasiteye sahiptir. Sanal makine örneğinin boyutu, kaç veri diskinin eklenebileceğini belirler. Her VM vCPU için iki veri diski eklenebilir.
 
 ### <a name="max-data-disks-per-vm"></a>VM başına en fazla veri diski
-| Type | Ortak boyutlar | VM başına en fazla veri diski |
+| Tür | Ortak boyutlar | VM başına en fazla veri diski |
 |----|----|----|
 | [Genel amaçlı](../virtual-machines/windows/sizes-general.md) | A, B ve D serisi | 64 |
 | [İşlem için iyileştirilmiş](../virtual-machines/windows/sizes-compute.md) | F serisi | 64 |
@@ -86,8 +78,8 @@ Premium diskler, SSD tabanlı, yüksek performanslı ve düşük gecikme süreli
 |Premium depolama diski türü | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Disk boyutu (yuvarlanmış değer) | 32 GB | 64 GB | 128 GB | 512 GB | 1\.024 GB (1 TB) | 2\.048 GB (2 TB) | 4\.095 GB (4 TB) |
-| Disk başına en fazla IOPS | 120 | 240 | 500 | 2,300 | 5\.000 | 7\.500 | 7,500 |
-Disk başına aktarım hızı | 25 MB/sn | 50 MB/sn | 100 MB/s | 150 MB/s | 200 MB/sn | 250 MB/sn | 250 MB/sn |
+| Disk başına en fazla IOPS | 120 | 240 | 500 | 2\.300 | 5\.000 | 7\.500 | 7\.500 |
+Disk başına çıkış | 25 MB/sn | 50 MB/sn | 100 MB/s | 150 MB/s | 200 MB/sn | 250 MB/sn | 250 MB/sn |
 
 Yukarıdaki tabloda, disk başına maksimum IOPS tanımlanmış olsa da birden çok veri diski bölümlenerek daha yüksek performansa ulaşılabilir. Örneğin bir Standard_GS5 VM’si en fazla 80.000 IOPS’ye ulaşabilir. VM başına IOPS üst sınırı hakkında ayrıntılı bilgi için bkz. [Windows VM boyutları](../virtual-machines/windows/sizes.md).
 
@@ -96,7 +88,7 @@ Yukarıdaki tabloda, disk başına maksimum IOPS tanımlanmış olsa da birden �
 Bir ölçek kümesi oluştururken veya mevcut bir ölçek kümesi ile diskler oluşturabilir ve ekleyebilirsiniz.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Ölçek kümesi oluşturulurken diskler ekleme
-Bir sanal makine ölçek kümesi oluşturma [yeni AzVmss](/powershell/module/az.compute/new-azvmss). İstendiğinde, sanal makine örnekleri için bir kullanıcı adı ve parola sağlayın. Tek tek sanal makine örneklerine trafiği dağıtmak için bir yük dengeleyici de oluşturulur. Yük dengeleyici hem 80 numaralı TCP bağlantı noktasında trafiği dağıtmak hem de 3389 numaralı TCP bağlantı noktasında uzak masaüstü trafiğine ve 5985 numaralı TCP bağlantı noktasında PowerShell uzaktan iletişimine olanak tanımak için kurallar içerir.
+[New-AzVmss](/powershell/module/az.compute/new-azvmss)ile bir sanal makine ölçek kümesi oluşturun. İstendiğinde, sanal makine örnekleri için bir kullanıcı adı ve parola sağlayın. Tek tek sanal makine örneklerine trafiği dağıtmak için bir yük dengeleyici de oluşturulur. Yük dengeleyici hem 80 numaralı TCP bağlantı noktasında trafiği dağıtmak hem de 3389 numaralı TCP bağlantı noktasında uzak masaüstü trafiğine ve 5985 numaralı TCP bağlantı noktasında PowerShell uzaktan iletişimine olanak tanımak için kurallar içerir.
 
 `-DataDiskSizeGb` parametresiyle iki disk oluşturulur. İlk diskin boyutu *64* GB, ikinci diskin boyutuysa *128* GB’tır. İstendiğinde, ölçek kümesindeki sanal makine örnekleri için kendi istediğiniz yönetici kimlik bilgilerini sağlayın:
 
@@ -116,7 +108,7 @@ New-AzVmss `
 Tüm ölçek kümesi kaynaklarının ve sanal makine örneklerinin oluşturulup yapılandırılması birkaç dakika sürer.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Mevcut ölçek kümesine bir disk ekleme
-Mevcut bir ölçek kümesine de diskler ekleyebilirsiniz. Başka bir disk eklemek için önceki adımda oluşturulan ölçek kümesini kullanın [Ekle AzVmssDataDisk](/powershell/module/az.compute/add-azvmssdatadisk). Aşağıdaki örnekte, mevcut bir ölçek kümesine ek bir *128* GB disk eklenmektedir:
+Mevcut bir ölçek kümesine de diskler ekleyebilirsiniz. [Add-AzVmssDataDisk](/powershell/module/az.compute/add-azvmssdatadisk)ile başka bir disk eklemek için önceki adımda oluşturulan ölçek kümesini kullanın. Aşağıdaki örnekte, mevcut bir ölçek kümesine ek bir *128* GB disk eklenmektedir:
 
 ```azurepowershell-interactive
 # Get scale set object
@@ -145,7 +137,7 @@ Oluşturulan ve ölçek kümesi sanal makine örneklerinize eklenen diskler, ham
 Bir ölçek kümesindeki birden çok sanal makine örneğinde işlemi otomatikleştirmek için Azure Özel Betik Uzantısı’nı kullanabilirsiniz. Bu uzantı, örneğin, eklenen veri disklerini hazırlamak için her bir sanal makine örneğinde betikleri yerel olarak yürütebilir. Daha fazla bilgi için bkz. [Özel Betik Uzantısı'na genel bakış](../virtual-machines/windows/extensions-customscript.md).
 
 
-Aşağıdaki örnek her bir sanal makine örneğindeki GitHub örnek deposundan bir betik yürütür [Ekle AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) , tüm eklenen ham veri disklerini hazırlayan:
+Aşağıdaki örnek, tüm ham ekli veri disklerini hazırlayan [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) ile her bir sanal makine örneği üzerinde bir GitHub örnek deposundan bir betiği yürütür:
 
 
 ```azurepowershell-interactive
@@ -177,7 +169,7 @@ Update-AzVmss `
 
 Disklerin düzgün şekilde hazırlandığını onaylamak için, sanal makine örneklerinden birinde RDP oturumu açın. 
 
-İlk olarak, yük dengeleyici nesnesini alın [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Ardından, komutuyla gelen NAT kurallarını görüntüleyin [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig). NAT kuralları, RDP’nin dinlediği her sanal makine örneği için *FrontendPort* değerini listeler. Son olarak, yük dengeleyiciyle genel IP adresini alma [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
+İlk olarak [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer)ile yük dengeleyici nesnesini alın. Ardından, [Get-Azloadbalancerınboundnatrutaconfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig)Ile gelen NAT kurallarını görüntüleyin. NAT kuralları, RDP’nin dinlediği her sanal makine örneği için *FrontendPort* değerini listeler. Son olarak, [Get-Azpublicıpaddress](/powershell/module/az.network/Get-AzPublicIpAddress)ile yük DENGELEYICININ genel IP adresini alın:
 
 
 ```azurepowershell-interactive
@@ -249,7 +241,7 @@ Sanal makine örneğiyle uzak masaüstü bağlantısı oturumunu kapatın.
 
 
 ## <a name="list-attached-disks"></a>Eklenen diskleri listeleme
-Bir ölçek kümesine eklenen disklerle ilgili bilgileri görüntülemek için kullanın [Get-AzVmss](/powershell/module/az.compute/get-azvmss) gibi:
+Bir ölçek kümesine ekli disklerle ilgili bilgileri görüntülemek için [Get-AzVmss](/powershell/module/az.compute/get-azvmss) komutunu şu şekilde kullanın:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
@@ -282,8 +274,8 @@ DataDisks[2]                            :
 ```
 
 
-## <a name="detach-a-disk"></a>Disk ayırma
-Belirli bir disk artık gerekli olmadığında o diski ölçek kümesinden ayırabilirsiniz. Disk, ölçek kümesindeki tüm sanal makine örneklerinden kaldırılır. Bir ölçek kümesinden bir diski ayırmak için kullanın [Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) ve diskin LUN'unu belirtin. Çıktıda LUN'lar gösterilir [Get-AzVmss](/powershell/module/az.compute/get-azvmss) önceki bölümde. Aşağıdaki örnek, ölçek kümesinden LUN *3*’ü ayırır:
+## <a name="detach-a-disk"></a>Bir diski ayırma
+Belirli bir disk artık gerekli olmadığında o diski ölçek kümesinden ayırabilirsiniz. Disk, ölçek kümesindeki tüm sanal makine örneklerinden kaldırılır. Bir diski ölçek kümesinden ayırmak için [Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) komutunu kullanın ve diskin LUN 'unu belirtin. LUN 'Lar, önceki bölümde [Get-AzVmss](/powershell/module/az.compute/get-azvmss) öğesinden alınan çıktıda gösterilir. Aşağıdaki örnek, ölçek kümesinden LUN *3*’ü ayırır:
 
 ```azurepowershell-interactive
 # Get scale set object
@@ -305,7 +297,7 @@ Update-AzVmss `
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Ölçek kümenizi kaldırmak için ayarlayın ve diskleri, kaynak grubunu ve tüm kaynaklarını silmek [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). `-Force` parametresi kaynakları ek bir komut istemi olmadan silmek istediğinizi onaylar. `-AsJob` parametresi işlemin tamamlanmasını beklemeden denetimi komut istemine döndürür.
+Ölçek kümesi ve disklerinizi kaldırmak için, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)ile kaynak grubunu ve tüm kaynaklarını silin. `-Force` parametresi kaynakları ek bir komut istemi olmadan silmek istediğinizi onaylar. `-AsJob` parametresi işlemin tamamlanmasını beklemeden denetimi komut istemine döndürür.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob

@@ -16,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 05ad0b95b106b56d92cdbc5a7acd23cc34de7ae4
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: b288091172c71be82e70d90eb8817b2130f2cbef
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780275"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277302"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Öğretici - Azure PowerShell ile Azure disklerini yönetme
 
@@ -44,7 +44,7 @@ Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i se
 
 Azure sanal makinesi oluşturulduğunda, sanal makineye otomatik olarak iki disk eklenir. 
 
-**İşletim sistemi diski** - İşletim sistemi diskleri 4 terabayta kadar boyutlandırılabilir ve VM'nin işletim sistemini barındırır.  İşletim sistemi diskine, varsayılan olarak *C:* sürücü harfi atanır. İşletim sistemi diskinin yapılandırmasını önbelleğe alan disk, işletim sistemi performansı için iyileştirilir. İşletim sistemi diski, uygulama veya veri **barındırmamalıdır**. Uygulamalar ve veriler için, bu makalede daha sonra ayrıntılı olarak açıklanan bir veri diski kullanın.
+**İşletim sistemi diski** - İşletim sistemi diskleri 4 terabayta kadar boyutlandırılabilir ve VM'nin işletim sistemini barındırır. Bir [Azure Marketi](https://azure.microsoft.com/marketplace/) görüntüsünden yeni bir sanal makıne (VM) oluşturursanız, genellıkle 127 GB (ancak bazı görüntülerin daha küçük işletim sistemi disk boyutları vardır). İşletim sistemi diskine, varsayılan olarak *C:* sürücü harfi atanır. İşletim sistemi diskinin yapılandırmasını önbelleğe alan disk, işletim sistemi performansı için iyileştirilir. İşletim sistemi diski, uygulama veya veri **barındırmamalıdır**. Uygulamalar ve veriler için, bu makalede daha sonra ayrıntılı olarak açıklanan bir veri diski kullanın.
 
 **Geçici disk** - Geçici diskler, VM ile aynı Azure konağında bulunan bir katı hal sürücüsünü kullanır. Geçici diskler yüksek performansa sahiptir ve geçici veri işleme gibi işlemler için kullanılabilir. Ancak VM yeni bir konağa taşındığında, geçici diskte depolanan tüm veriler kaldırılır. Geçici diskin boyutu, [VM boyutu](sizes.md) tarafından belirlenir. Geçici disklere, varsayılan olarak bir *D:* sürücü harfi atanır.
 

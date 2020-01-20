@@ -1,22 +1,20 @@
 ---
-title: (KULLANIM DIŞI) Azure DC/OS kümesindeki Yük Dengeleme kapsayıcıları
+title: Kullanım DıŞı Azure DC/OS kümesindeki Yük Dengeleme kapsayıcıları
 description: Azure Container Service DC/OS kümesindeki birden çok kapsayıcıda yükü dengeleyin.
-services: container-service
 author: rgardler
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 1e4c978a8767154fb6a1f9a822cb0dd8d1b8796e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8dff1dc063cc3b940fbdf0698b8b328b90d60b6
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148879"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277843"
 ---
-# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(KULLANIM DIŞI) Bir Azure Container Service DC/OS kümesindeki Yük Dengeleme kapsayıcıları
+# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Kullanım DıŞı Azure Container Service DC/OS kümesinde Yük Dengeleme kapsayıcıları
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -97,7 +95,7 @@ Ardından, *hello-web.json* adlı bir dosya oluşturun ve aşağıdaki içeriğe
 }
 ```
 
-DC/OS CLI'yi kullanarak uygulamayı çalıştırın. Varsayılan olarak, Marathon ise özel kümeye uygulamayı dağıtır. Bu da yukarıdaki dağıtıma yalnızca yük dengeleyici üzerinden erişilebileceği anlamına gelir ve çoğunlukla istenen davranış budur.
+DC/OS CLI'yi kullanarak uygulamayı çalıştırın. Varsayılan olarak Marathon, uygulamayı özel kümeye dağıtır. Bu da yukarıdaki dağıtıma yalnızca yük dengeleyici üzerinden erişilebileceği anlamına gelir ve çoğunlukla istenen davranış budur.
 
 ```azurecli-interactive
 dcos marathon app add hello-web.json

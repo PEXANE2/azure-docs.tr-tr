@@ -1,29 +1,21 @@
 ---
-title: Öğretici - Azure CLI ile ölçek kümeleri için diskler oluşturma ve kullanma | Microsoft Docs
+title: Öğretici-Azure CLı ile ölçek kümeleri için diskler oluşturma ve kullanma
 description: Disk ekleme, hazırlama, listeleme ve ayırma gibi, Azure CLI kullanılarak sanal makine ölçek kümesi ile Yönetilen Diskler oluşturma ve kullanma işlemlerinin nasıl yapılacağını öğrenin.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01dbbcddf7df8e261e865fbb61c1fcfd5abbd5fc
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60329465"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278241"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Öğretici: Diskler oluşturma ve sanal makine ölçek kümesi Azure CLI ile kullanma
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesi içeren diskler oluşturma ve kullanma
 Sanal makine ölçek kümeleri, sanal makine örneğinin işletim sistemini, uygulamalarını ve verilerini depolamak için diskleri kullanır. Bir ölçek kümesi oluştururken ve yönetirken, beklenen iş yüküne uygun disk boyutu ve yapılandırmasını seçmek önemlidir. Bu öğretici, sanal makine disklerinin oluşturulmasını ve yönetilmesini kapsar. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
@@ -86,7 +78,7 @@ Premium diskler SSD tabanlı, yüksek performanslı ve düşük gecikme süreli 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Disk boyutu (yuvarlanmış değer) | 32 GB | 64 GB | 128 GB | 512 GB | 1\.024 GB (1 TB) | 2\.048 GB (2 TB) | 4\.095 GB (4 TB) |
 | Disk başına en fazla IOPS | 120 | 240 | 500 | 2\.300 | 5\.000 | 7\.500 | 7\.500 |
-Disk başına aktarım hızı | 25 MB/sn | 50 MB/sn | 100 MB/s | 150 MB/s | 200 MB/sn | 250 MB/sn | 250 MB/sn |
+Disk başına çıkış | 25 MB/sn | 50 MB/sn | 100 MB/s | 150 MB/s | 200 MB/sn | 250 MB/sn | 250 MB/sn |
 
 Yukarıdaki tabloda, disk başına maksimum IOPS tanımlanmış olsa da birden çok veri diski bölümlenerek daha yüksek performansa ulaşılabilir. Örneğin bir Standard_GS5 VM’si en fazla 80.000 IOPS’ye ulaşabilir. VM başına IOPS üst sınırı hakkında ayrıntılı bilgi için bkz. [Linux VM türleri](../virtual-machines/linux/sizes.md).
 
@@ -198,7 +190,7 @@ Device     Boot Start       End   Sectors  Size Id Type
 /dev/sde1        2048 268435455 268433408  128G 83 Linux
 ```
 
-Aşağıdaki gibi, sanal makine örneğindeki dosya sistemlerini ve bağlama noktalarını inceleyin:
+Aşağıdaki adımları uygulayarak, sanal makine örneğindeki dosya sistemlerini ve bağlama noktalarını inceleyin:
 
 ```bash
 sudo df -h
@@ -278,7 +270,7 @@ Disk boyutu, depolama katmanı ve LUN (Mantıksal Birim Numarası) ile ilgili bi
 ```
 
 
-## <a name="detach-a-disk"></a>Disk ayırma
+## <a name="detach-a-disk"></a>Bir diski ayırma
 Belirli bir disk artık gerekli olmadığında o diski ölçek kümesinden ayırabilirsiniz. Disk, ölçek kümesindeki tüm sanal makine örneklerinden kaldırılır. Ölçek kümesinden bir diski ayırmak için [az vmss disk detach](/cli/azure/vmss/disk) komutunu kullanın ve diskin LUN’unu belirtin. Önceki bölümde [az vmss show](/cli/azure/vmss) komutundan elde edilen çıktıda LUN’lar gösterilir. Aşağıdaki örnek, ölçek kümesinden LUN *2*’yi ayırır:
 
 ```azurecli-interactive

@@ -3,15 +3,15 @@ title: Öğretici-Azure yay bulutu 'nda yapılandırma sunucusu örneğinizi aya
 description: Bu öğreticide, Azure Spring Cloud için Azure portal bir Spring Cloud config Server örneği ayarlamayı öğreneceksiniz.
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.author: jeconnoc
-author: jpconnock
+ms.author: brendm
+author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 186ba771d2df3b08244a05e349beea8dad2af93b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e0b5633a153583117cfe0d90ec5c0e7c5f2a147
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708793"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277522"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Öğretici: hizmetiniz için bir Spring Cloud config Server örneği ayarlama
 
@@ -19,7 +19,7 @@ Bu makalede, bir yay bulutu yapılandırma sunucusu örneğini Azure Spring Clou
 
 Spring Cloud config, dağıtılmış bir sistemde bir externalized yapılandırması için sunucu ve istemci tarafı desteği sağlar. Yapılandırma sunucusu örneğiyle, tüm ortamlarda uygulamalara yönelik dış özellikleri yönetmek için merkezi bir yerdir. Daha fazla bilgi için bkz. [Spring Cloud config Server başvurusu](https://spring.io/projects/spring-cloud-config).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 * Zaten sağlanmış ve Azure yay bulut hizmeti çalıştırılıyor. Azure yay bulut hizmetini ayarlamak ve başlatmak için bkz. [hızlı başlangıç: Azure CLI kullanarak bir Java Spring uygulaması başlatma](spring-cloud-quickstart-launch-app-cli.md).
 
@@ -55,7 +55,7 @@ Genel Git deposunu kurmak için kullanılan yapılandırılabilir tüm özellikl
 
 | Özellik        | Gereklidir | Özellik                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://* , *https://* , *Git@* veya *SSH://* ile başlar. |
+| `uri`           | Evet    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://* , *https://* , *Git@* veya *SSH://* ile başlar. |
 | `default-label` | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
 | `search-paths`  | Hayır     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
 
@@ -70,7 +70,7 @@ SSH ile özel Git deposunu kurmak için kullanılan yapılandırılabilir tüm �
 
 | Özellik                   | Gereklidir | Özellik                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
-| `uri`                      | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI, *http://* , *https://* , *Git@* veya *SSH://* ile başlatılmış olmalıdır. |
+| `uri`                      | Evet    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI, *http://* , *https://* , *Git@* veya *SSH://* ile başlatılmış olmalıdır. |
 | `default-label`            | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
 | `search-paths`             | Hayır     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
 | `private-key`              | Hayır     | Git deposuna erişmek için SSH özel anahtarı, URI *Git@* veya *SSH://* ile başladığı zaman _gereklidir_ . |
@@ -89,7 +89,7 @@ Temel kimlik doğrulaması ile özel Git deposunu kurmak için kullanılan tüm 
 
 | Özellik        | Gereklidir | Özellik                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://* , *https://* , *Git@* veya *SSH://* ile başlatılmalıdır. |
+| `uri`           | Evet    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://* , *https://* , *Git@* veya *SSH://* ile başlatılmalıdır. |
 | `default-label` | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
 | `search-paths`  | Hayır     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
 | `username`      | Hayır     | Git deposu sunucusu `Http Basic Authentication`desteklediğinde _gerekli_ olan git deposu sunucusuna erişmek için kullanılan Kullanıcı adı. |
