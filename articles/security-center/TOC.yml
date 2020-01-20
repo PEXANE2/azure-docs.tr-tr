@@ -173,8 +173,6 @@
           href: security-center-investigation.md
         - name: Araştırma kullanıcı verilerini yönetme
           href: security-center-investigation-user-data.md
-        - name: Logic Apps playbook’ları
-          href: security-center-playbooks.md
         - name: Planlama ve işlemler
           href: security-center-planning-and-operations-guide.md
 - name: Başvuru
