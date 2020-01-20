@@ -1,17 +1,17 @@
 ---
 title: az yay bulutu
 description: Azure CLı kullanarak Azure yay bulutu 'nı yönetme
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
-ms.author: jeconnoc
-ms.openlocfilehash: a1f82d4efa7756b44ca5ed9859aa872c1f55b565
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.author: brendm
+ms.openlocfilehash: 869a47469f8e0429d3726651c28f5a58acfcb856
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607831"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279036"
 ---
 # <a name="az-spring-cloud"></a>az yay-bulut
 
@@ -89,12 +89,12 @@ az spring-cloud create  --name -n
                         --no-wait
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Bu Azure yay bulutu örneğinin adı. |
 | --Resource-Group-g | Bu uygulama için kaynak grubunu belirtir.  `az configure --defaults group=<name>` kullanarak varsayılan grubu yapılandırma |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --Location-l | Bu uygulama için sunucu konumunu belirtir.  `az account list-locations` kullanarak geçerli konumlar bulma |
 | --No-wait | Uzun süre çalışan işlemlerin tamamlanmasını kullanmayın.
@@ -117,12 +117,12 @@ az spring cloud --name -n
                 --no-wait
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Silinecek Azure Spring Cloud örneğinin adı. |
 | --Resource-Group-g | Azure Spring Cloud 'ın ait olduğu kaynak grubunun adı. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | -No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
 
@@ -142,7 +142,7 @@ Belirtilen kaynak grubuyla ilişkili tüm Azure yay bulutu örneklerini listeley
 az spring-cloud list --resource-group -g
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --Resource-Group-g | Kaynak grubunun adı. |
 
@@ -155,7 +155,7 @@ az spring-cloud show --name -n
                      -- resource-group -g
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Azure Spring Cloud örneğinin adı. |
 | --Resource-Group-g | Azure Spring Cloud örneğinin ait olduğu kaynak grubunun adı.
@@ -175,13 +175,13 @@ az spring-cloud app create --name -n
                             --memory
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --CPU | Örnek başına sanal çekirdek sayısı.  Varsayılan: 1. |
 | --Enable-kalıcı-depolama | Boolean değeri.  Doğru ise, varsayılan yol ile bir 50 disk bağlar. |
@@ -213,7 +213,7 @@ az spring cloud app delete  --name -n
                             --service -s
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
@@ -240,13 +240,13 @@ az spring cloud app deploy  --name -n
                             --version
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --CPU | Örnek başına sanal CPı çekirdeği sayısı. |
 | --Deployment-d | Var olan bir uygulama dağıtımının adı.  Belirtilmemişse, varsayılan olarak üretim dağıtımı yapılır. |
@@ -289,7 +289,7 @@ az spring-cloud app list --resource-group -g
                          --service -s
 ```
 
-|Gerekli parametreler | |
+|Gerekli Parametreler | |
 | --- | ---: |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
@@ -306,13 +306,13 @@ az spring-cloud app restart --name -n
                             --no-wait
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --Deployment-d | Uygulamanın var olan dağıtımının adı.  Belirtilmemişse, varsayılan olarak üretim dağıtımı yapılır. |
 | --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
@@ -332,13 +332,13 @@ az spring-cloud app scale --name -n
                           --no-wait
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --CPU | Uygulama örneği başına sanal CPU çekirdeği sayısı. |
 | --Deployment-d | Uygulamanın var olan dağıtımının adı.  Belirtilmemişse, varsayılan olarak üretim dağıtımı yapılır. |
@@ -372,14 +372,14 @@ az spring-cloud app set-deployment --deployment -d
                                    --no-wait
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --Deployment-d | Uygulamanın var olan dağıtımının adı. |
 | --ad-n | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
 
@@ -401,7 +401,7 @@ az spring-cloud app show --name -n
                          --service -s
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
@@ -418,13 +418,13 @@ az spring-cloud app show-deploy-log --name -n
                                     --deployment -d
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --Deployment-d | Uygulamanın var olan dağıtımının adı.  Varsayılan değer üretim ortamıdır. |
 
@@ -440,13 +440,13 @@ az spring-cloud app start --name -n
                           --no-wait
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --Deployment-d | Uygulamanın var olan dağıtımının adı.  Varsayılan değer üretim ortamıdır. |
 | --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
@@ -463,13 +463,13 @@ az spring-cloud app stop --name -n
                          --no-wait
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --Deployment-d | Uygulamanın var olan dağıtımının adı.  Varsayılan değer üretim ortamıdır. |
 | --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
@@ -491,13 +491,13 @@ az spring-cloud app update --name -n
                            --runtime-version
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad-n | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --Deployment-d | Uygulamanın var olan dağıtımının adı.  Varsayılan değer üretim ortamıdır. |
 | --Enable-kalıcı-depolama | Boolean.  Doğru ise, varsayılan yolla bir 50 disk bağlayın. |
@@ -525,7 +525,7 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
@@ -542,7 +542,7 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --ad | Kaldırılacak hizmet bağlamasının adı. |
@@ -560,7 +560,7 @@ az spring-cloud app binding show --app
                                  --service -s
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --ad | Hizmet bağlamanın adı. |
@@ -590,7 +590,7 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --api-Type | Şu değerlerden birini kullanarak API türünü belirtin: Cassandra, Gremlin, Mongo, SQL, Table. |
 | --uygulama | Uygulamanın adı. |
@@ -598,7 +598,7 @@ az spring-cloud app binding list --app
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-|İsteğe bağlı parametreler | |
+|İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --koleksiyon-adı | Koleksiyonun adı.  Gremlin kullanılırken gereklidir. |
 | --veritabanı-adı | Veritabanının adı.  Mongo, SQL ve Gremlin kullanılırken gereklidir. |
@@ -616,14 +616,14 @@ az spring-cloud app binding cosmos update --app
                                           --key-space
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --ad | Hizmet bağlamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-|İsteğe bağlı parametreler | |
+|İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --koleksiyon-adı | Koleksiyonun adı.  Gremlin kullanılırken gereklidir. |
 | --veritabanı-adı | Veritabanının adı.  Mongo, SQL ve Gremlin kullanılırken gereklidir. |
@@ -641,7 +641,7 @@ az spring-cloud app binding mysql add --app
                                       --username
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --veritabanı-adı | Veritabanının adı. |
@@ -666,14 +666,14 @@ az spring-cloud app binding mysql update --add
                                          --username
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --ad | Hizmet bağlamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --veritabanı-adı | Veritabanının adı. |
 | --anahtar | Hizmetin API anahtarı. |
@@ -692,7 +692,7 @@ az spring-cloud app binding redis add --app
                                       --disable-ssl
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --ad | Hizmet bağlamanın adı. |
@@ -700,7 +700,7 @@ az spring-cloud app binding redis add --app
 | --kaynak kimliği | Bağlamak istediğiniz hizmetin Azure Kaynak KIMLIĞI. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --Disable-SSL | SSL 'yi devre dışı bırakın. |
 
@@ -708,14 +708,14 @@ az spring-cloud app binding redis add --app
 
 Redsıs için Azure önbelleği için bir hizmet bağlamayı güncelleştirin.
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --ad | Hizmet bağlamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --Disable-SSL | SSL 'yi devre dışı bırakın. |
 
@@ -725,14 +725,14 @@ Uygulama için bir hazırlama dağıtımı oluşturun.
 
 Kodu dağıtmak veya mevcut bir dağıtıma ayarları güncelleştirmek için `az spring-cloud app deploy --deployment <staging-deployment>` veya ' az Spring-Cloud App Update--Deployment <staging deployment>kullanın.
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --ad | Hizmet bağlamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --hizmet-s | Azure Spring Cloud 'ın adı.  Varsayılan hizmeti `az configure --defaults spring-cloud=<name>`kullanarak yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --CPU | Örnek başına sanal CPU çekirdeği sayısı.  Varsayılan: 1 |
 | --env | ' Key [= Value] ' biçiminde boşlukla ayrılmış ortam değişkenleri. |
@@ -771,7 +771,7 @@ az spring-cloud app deployment delete --app
                                       --service -s
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --ad | Dağıtımın adı. |
@@ -788,7 +788,7 @@ az spring-cloud app deployment list --app
                                     --service -s
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
@@ -805,7 +805,7 @@ az spring-cloud app deployment show --app
                                     --service -s
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --ad | Dağıtımın adı. |
@@ -821,7 +821,7 @@ az spring-cloud config-server clear --name
                                         --resource-group -g
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad | Azure Spring Cloud 'ın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
@@ -837,13 +837,13 @@ az spring-cloud config-server set --config-file
                                   --no-wait
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --config-File | Yapılandırma sunucusunun yapılandırması için bir YAML bildiriminin dosya yolu. |
 | --ad | Azure Spring Cloud 'ın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --No-wait | Uzun süre çalışan işlemlerin tamamlanmasını kullanmayın.
 
@@ -856,7 +856,7 @@ az spring-cloud config-server show --name -n
                                    --resource-group -g
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad | Azure Spring Cloud 'ın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
@@ -880,13 +880,13 @@ az spring-cloud config-server git set --name -n
                                       --username
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad | Azure Spring Cloud 'ın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --URI | Eklenen yapılandırmaya ait URI. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --ertele | Azure 'a göndermek yerine, nesneyi yerel önbellekte geçici olarak depolayın.  Görüntülemek/temizlemek için `az cache` kullanın. |
 | --Ana bilgisayar-anahtar | Eklenen yapılandırma için ana bilgisayar anahtarı. |
@@ -917,14 +917,14 @@ az spring-cloud config-server git repo add --name -n
                                            --username
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad | Azure Spring Cloud 'ın adı. |
 | --Repo adı | Deponun URI 'SI. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 | --URI | Eklenen yapılandırmaya ait URI. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --ertele | Azure 'a göndermek yerine, nesneyi yerel önbellekte geçici olarak depolayın.  Görüntülemek/temizlemek için `az cache` kullanın. |
 | --Ana bilgisayar-anahtar | Eklenen yapılandırma için ana bilgisayar anahtarı. |
@@ -947,12 +947,12 @@ az spring-cloud config-server git repo list --name -n
                                        --defer
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad | Azure Spring Cloud 'ın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --ertele | Azure 'a göndermek yerine, nesneyi yerel önbellekte geçici olarak depolayın.  Görüntülemek/temizlemek için `az cache` kullanın. |
 
@@ -967,13 +967,13 @@ az spring-cloud config-server git repo remove --name -n
                                          --defer
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad | Azure Spring Cloud 'ın adı. |
 | --Repo adı | Deponun URI 'SI. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --ertele | Azure 'a göndermek yerine, nesneyi yerel önbellekte geçici olarak depolayın.  Görüntülemek/temizlemek için `az cache` kullanın. |
 
@@ -986,7 +986,7 @@ az spring-cloud test-endpoint disable --name -n
                                       --resource-group -g
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad | Azure Spring Cloud 'ın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
@@ -1000,7 +1000,7 @@ az spring-cloud test-endpoint enable --name -n
                                      --resource-group -g
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad | Azure Spring Cloud 'ın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
@@ -1016,12 +1016,12 @@ az spring-cloud test-endpoint list --name -n
                                    --deployment -d
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad | Azure Spring Cloud 'ın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |
 
-| İsteğe bağlı parametreler | |
+| İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
 | --Deployment-d | Uygulamanın var olan dağıtımının adı.  Belirtilmemişse, varsayılan olarak üretime yapılır. |
@@ -1036,7 +1036,7 @@ az spring-cloud test-endpoint renew-key --name -n
                                         --type
 ```
 
-| Gerekli parametreler | |
+| Gerekli Parametreler | |
 | --- | ---: |
 | --ad | Azure Spring Cloud 'ın adı. |
 | --Resource-Group-g | Kaynak grubunun adı.  `az configure --defaults group=<name>`kullanarak varsayılan grubu yapılandırabilirsiniz. |

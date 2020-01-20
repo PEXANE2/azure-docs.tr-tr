@@ -1,17 +1,17 @@
 ---
 title: Azure disk şifrelemesi ve Azure sanal makine ölçek kümeleri uzantı sıralaması
-description: Bu makale, Linux IaaS VM 'Leri için Microsoft Azure disk şifrelemeyi etkinleştirme hakkında yönergeler sağlar.
+description: Bu makalede, Linux Iaas sanal makineleri için Microsoft Azure Disk şifrelemesi etkinleştirme hakkında yönergeler sağlar.
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
-ms.openlocfilehash: 351c3603ddc069647577b5465ea9fa839810cbc1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530894"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279021"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Sanal makine ölçek kümesi uzantısı sıralaması ile Azure disk şifrelemesini kullanma
 
@@ -157,7 +157,7 @@ Daha ayrıntılı bir şablon için bkz.:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Uzantı sıralaması hakkında daha fazla bilgi edinin: [sanal makine ölçek kümelerinde dizi uzantısı sağlama](virtual-machine-scale-sets-extension-sequencing.md).
-- @No__t_0 özelliği hakkında daha fazla bilgi edinin: [Microsoft. COMPUTE virtualMachineScaleSets/Extensions şablon başvurusu](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
+- `provisionAfterExtensions` özelliği hakkında daha fazla bilgi edinin: [Microsoft. COMPUTE virtualMachineScaleSets/Extensions şablon başvurusu](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
 - [Sanal Makine Ölçek Kümeleri için Azure disk şifrelemesi](disk-encryption-overview.md)
 - [Azure CLı kullanarak sanal makine ölçek kümelerini şifreleme](disk-encryption-cli.md)
 - [Azure PowerShell kullanarak bir sanal makine ölçek kümelerini şifreleme](disk-encryption-powershell.md)

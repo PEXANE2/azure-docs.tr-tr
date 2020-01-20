@@ -1,49 +1,48 @@
 ---
-title: Azure Red Hat OpenShift için Azure AD kiracısı oluşturma | Microsoft Docs
-description: Microsoft Azure Red Hat OpenShift kümenizi barındırmak için bir Azure Active Directory (Azure AD) kiracısı oluşturmayı açıklanmıştır.
+title: Azure Red Hat OpenShift için bir Azure AD kiracısı oluşturma
+description: Microsoft Azure Red Hat OpenShift kümenizi barındırmak için Azure Active Directory (Azure AD) kiracısı oluşturma işlemini burada bulabilirsiniz.
 author: jimzim
 ms.author: jzim
 ms.service: container-service
-manager: jeconnoc
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 560cdcf8a99a486c7f5177b675cff327c6fb6a41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306454"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270459"
 ---
-# <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için Azure AD kiracısı oluşturma
+# <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için bir Azure AD kiracısı oluşturma
 
-Microsoft Azure Red Hat OpenShift gerektiren bir [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) kümenizi oluşturmak, Kiracı. A *Kiracı* bir kuruluş ya da uygulama geliştiricisi bir ilişki ile Microsoft kaydolarak Azure, Microsoft Intune veya Microsoft 365 oluşturduklarında aldığı Azure AD adanmış örneğidir. Her Azure AD kiracısı farklıdır ve ayrı diğer Azure ad Kiracı ve kendi iş ve Okul kimlikleri ve uygulama kayıtları vardır.
+Microsoft Azure Red Hat OpenShift, kümenizin oluşturulacağı bir [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) kiracısı gerektirir. *Kiracı* , bir kuruluşun veya uygulama geliştiricisinin azure, Microsoft Intune veya Microsoft 365 kaydolduktan sonra Microsoft ile bir ilişki oluşturduklarında aldığı adanmış BIR Azure ad örneğidir. Her Azure AD kiracısı farklı ve diğer Azure AD kiracılarından ayrıdır ve kendi iş ve okul kimliklerine ve uygulama kayıtlarına sahiptir.
 
-Azure AD kiracısı zaten yoksa, oluşturmak için bu yönergeleri izleyin.
+Zaten bir Azure AD kiracınız yoksa, bir tane oluşturmak için bu yönergeleri izleyin.
 
 ## <a name="create-a-new-azure-ad-tenant"></a>Yeni Azure AD kiracısı oluşturma
 
-Bir kiracı oluşturmak için:
+Kiracı oluşturmak için:
 
-1. Oturum [Azure portalında](https://portal.azure.com/) Azure Red Hat OpenShift kümenizle ilişkilendirmek istediğiniz hesabı kullanarak.
-2. Açık [Azure Active Directory dikey](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) yeni bir kiracı oluşturmak için (diğer adıyla yeni *Azure Active Directory*).
-3. Sağlayan bir **kuruluş adı**.
-4. Sağlayan bir **ilk etki alanı adı**. Bu olacaktır *onmicrosoft.com* eklenmiş. Değeri yeniden kullanabileceğiniz *kuruluş adı* burada.
-5. Bir ülke veya Kiracı oluşturulacağı bölgeyi seçin.
+1. Azure Red Hat OpenShift kümeniz ile ilişkilendirmek istediğiniz hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
+2. Yeni bir kiracı (yeni *Azure Active Directory*olarak da bilinir) oluşturmak için [Azure Active Directory dikey penceresini](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) açın.
+3. **Kuruluş adı**belirtin.
+4. **İlk etki alanı adı**belirtin. Buna *onmicrosoft.com* eklenmiş olması gerekir. *Kuruluş adı* değerini buradan yeniden kullanabilirsiniz.
+5. Kiracının oluşturulacağı bir ülke veya bölge seçin.
 6. **Oluştur**’a tıklayın.
-7. Azure AD kiracınıza oluşturulduktan sonra seçin **yeni dizininizi yönetmek için buraya tıklayın** bağlantı. Yeni Kiracı adınızın-sağ üst kısmındaki Azure portalında görüntülenmesi gerekir:  
+7. Azure AD kiracınız oluşturulduktan sonra **Yeni dizin bağlantısını yönetmek için buraya tıklayın ' ı** seçin. Yeni kiracı adınız Azure portal sağ üst kısmında görüntülenmelidir:  
 
-    ![Portalın sağ üst köşede Kiracı adını gösteren ekran görüntüsü][tenantcallout]  
+    ![Sağ üst köşedeki kiracı adını gösteren portalın ekran görüntüsü][tenantcallout]  
 
-8. Not *Kiracı kimliği* böylece daha sonra Azure Red Hat OpenShift kümenizi oluşturmak nereye belirtebilirsiniz. Portalda yeni kiracınız için artık Azure Active Directory genel bakış dikey penceresini görmeniz gerekir. Seçin **özellikleri** ve değeri kopyalayın, **dizin kimliği**. Bu değer anılacaktır `TENANT` içinde [Azure Red Hat OpenShift küme oluşturma](tutorial-create-cluster.md) öğretici.
+8. Azure Red Hat Openshıft kümenizin nerede oluşturulacağını daha sonra belirleyebilmeniz için *KIRACı kimliğini* unutmayın. Portalda, artık yeni kiracınız için Azure Active Directory genel bakış dikey penceresini görmeniz gerekir. **Özellikler** ' i seçin ve **Dizin kimliğiniz**için değeri kopyalayın. [Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisinde `TENANT` olarak bu değere başvuracağız.
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
 ## <a name="resources"></a>Kaynaklar
 
-Kullanıma [Azure Active Directory belgeleri](https://docs.microsoft.com/azure/active-directory/) hakkında daha fazla bilgi için [Azure AD kiracılarıyla](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+[Azure AD kiracılar](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)hakkında daha fazla bilgi için [Azure Active Directory belgelerine](https://docs.microsoft.com/azure/active-directory/) göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hizmet sorumlusu oluşturma, bir istemci gizli anahtarı ve kimlik doğrulama geri çağırma URL'si oluşturun ve Azure Red Hat OpenShift kümenizdeki uygulamaları test etmek için yeni bir Active Directory kullanıcı oluşturma hakkında bilgi edinin.
+Hizmet sorumlusu oluşturmayı, bir istemci gizli anahtarı ve kimlik doğrulama geri çağırma URL 'sini oluşturmayı ve Azure Red Hat OpenShift kümenizdeki uygulamaları test etmek için yeni bir Active Directory Kullanıcı oluşturmayı öğrenin.
 
-[Bir Azure AD uygulama nesnesi ve kullanıcı oluşturma](howto-aad-app-configuration.md)
+[Azure AD uygulama nesnesi ve Kullanıcı oluşturma](howto-aad-app-configuration.md)

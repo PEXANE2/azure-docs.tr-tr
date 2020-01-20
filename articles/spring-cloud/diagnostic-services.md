@@ -1,17 +1,17 @@
 ---
 title: Azure yay bulutu 'nda günlükleri ve ölçümleri çözümleme | Microsoft Docs
 description: Azure Spring Cloud 'da tanılama verilerini çözümlemeyi öğrenin
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.author: jeconnoc
-ms.openlocfilehash: 347867bc59206a24d32ca01f15bbff35fb73e1d0
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.author: brendm
+ms.openlocfilehash: fc1f81c616dc6ee664bb5be924f2a1586646d16d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75730051"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279170"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme
 
@@ -59,13 +59,13 @@ Günlükleri ve ölçümleri aşağıdaki başlıklar altında açıklandığı 
 1. Azure portal Azure Spring Cloud örneğinize gidin.
 1. **Günlük araması** bölmesini açmak için **Günlükler**' i seçin.
 1. **Günlük** arama kutusunda
-   * Günlükleri görüntülemek için, şöyle bir basit sorgu girin:
+   * günlükleri görüntülemek için, şöyle bir basit sorgu girin:
 
     ```sql
     AppPlatformLogsforSpring
     | limit 50
     ```
-   * Ölçümleri görüntülemek için, şöyle bir basit sorgu girin:
+   * ölçümleri görüntülemek için, şöyle bir basit sorgu girin:
 
     ```sql
     AzureMetrics

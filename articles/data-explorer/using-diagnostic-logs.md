@@ -7,25 +7,25 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173808"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277419"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Tanılama günlüklerini kullanarak Azure Veri Gezgini alma işlemlerini izleme (Önizleme)
 
 Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanındaki tabloya (yükleme) sahip olursunuz. [Azure izleyici tanılama günlükleri](/azure/azure-monitor/platform/diagnostic-logs-overview) , Azure kaynakları 'nın çalışması hakkında veri sağlar. Azure Veri Gezgini, alma başarıları ve hatalarıyla ilgili Öngörüler için tanılama günlüklerini kullanır. Alma durumunu izlemek için işlem günlüklerini Azure depolama, Olay Hub 'ı veya Log Analytics dışarı aktarabilirsiniz. Azure depolama ve Azure Olay Hub 'ından Günlükler, daha fazla analiz için Azure Veri Gezgini kümenizdeki bir tabloya yönlendirilebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/)oluşturun.
 * Bir [küme ve veritabanı](create-cluster-database-portal.md)oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesi için tanılama günlüklerini ayarlama
 
@@ -52,7 +52,7 @@ Tanılama günlükleri, varsayılan olarak devre dışıdır. Tanılama günlük
     1. Tanılama ayarınız için **ad** seçin.
     1. Bir veya daha fazla hedef seçin: depolama hesabı, Olay Hub 'ı veya Log Analytics.
     1. Toplanacak günlükleri seçin: `SucceededIngestion` veya `FailedIngestion`.
-    1. Toplanacak [ölçümleri](using-metrics.md) seçin (isteğe bağlı).   
+    1. Toplanacak [ölçümleri](using-metrics.md#supported-azure-data-explorer-metrics) seçin (isteğe bağlı).  
     1. Yeni tanılama günlükleri ayarlarını ve ölçümlerini kaydetmek için **Kaydet** ' i seçin.
     1. Tanılama günlüklerini etkinleştirmeyi istemek için Azure portal **Yeni bir destek isteği** oluşturun.
 

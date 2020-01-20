@@ -1,119 +1,111 @@
 ---
-title: StorSimple 8000 serisi için durum ya da destek bileti oluşturma | Microsoft Docs
-description: Günlük desteği isteği ve StorSimple 8000 serisi Cihazınızı destek oturumu başlatmak öğrenin.
-services: storsimple
-documentationcenter: ''
+title: StorSimple 8000 serisi için destek bileti veya durumu oluşturma
+description: Destek isteğini günlüğe kaydetme ve StorSimple 8000 serisi cihazınızda destek oturumu başlatma hakkında bilgi edinin.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5394feff80c1df8b7a6cf7f6e6ea56678f575823
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612519"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277164"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft Destek'e Başvur
 
-StorSimple cihaz Yöneticisi yeteneği sağlar **yeni bir destek isteği göndermenizi** hizmeti Özet Dikey içinde. StorSimple çözümünüzün herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Destek mühendisinize ile çevrimiçi oturumda, StorSimple Cihazınızda destek oturumu başlatmak gerekebilir. Bu makalede açıklanmaktadır:
+StorSimple Aygıt Yöneticisi, hizmet Özeti dikey penceresinde **Yeni bir destek isteği kaydetme** yeteneği sağlar. StorSimple çözümünüz ile ilgili herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Destek mühendisinize sahip çevrimiçi bir oturumda, StorSimple cihazınızda bir destek oturumu başlatmanız da gerekebilir. Bu makalede izlenecek yol gösterilmektedir:
 
-* Bir destek isteği oluşturma
-* Nasıl bir destek isteği döngüsü portalında yönetilir.
-* StorSimple cihazınızın Windows PowerShell arabiriminde destek oturumu başlatmak nasıl.
+* Destek isteği oluşturma.
+* Portalın içinden destek isteği yaşam döngüsünü yönetme.
+* StorSimple cihazınızın Windows PowerShell arabiriminde destek oturumu başlatma.
 
-Gözden geçirme [StorSimple 8000 serisi destek SLA'ları ve bilgi](https://msdn.microsoft.com/library/mt433077.aspx) önce bir destek isteği oluşturun.
+Destek isteği oluşturmadan önce [StorSimple 8000 serisi destek SLA 'larını ve bilgilerini](https://msdn.microsoft.com/library/mt433077.aspx) gözden geçirin.
 
 ## <a name="create-a-support-request"></a>Destek isteği oluşturma
 
-Bağlı olarak, [destek planı](https://azure.microsoft.com/support/plans/), StorSimple Cihazınızda StorSimple cihaz Yöneticisi hizmeti Özet dikey penceresinden doğrudan bir sorun için destek bileti oluşturabilirsiniz. Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
+[Destek planınıza](https://azure.microsoft.com/support/plans/)bağlı olarak, StorSimple cihazınızda doğrudan storsimple Aygıt Yöneticisi hizmet Özeti dikey penceresinden bir sorun için destek bileti oluşturabilirsiniz. Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
 #### <a name="to-create-a-support-request"></a>Bir destek isteği oluşturmak için
 
-1. StorSimple Cihaz Yöneticisi hizmetinize gidin. Hizmet özeti dikey ayarlarında Git **destek + sorun giderme** bölümüne ve ardından **yeni destek isteği**.
+1. StorSimple Cihaz Yöneticisi hizmetinize gidin. Hizmet Özeti dikey penceresinde, **destek + sorun giderme** Bölümü ' ne gidin ve ardından **Yeni destek isteği**' ne tıklayın.
      
-    ![Yeni portal aracılığıyla kişinin MS desteği](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
+    ![Yeni Portal aracılığıyla MS desteği ile iletişim kurun](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
    
-2. İçinde **yeni destek isteği** dikey penceresinde **Temelleri**. İçinde **Temelleri** dikey penceresinde aşağıdaki adımları uygulayın:
-   1. Gelen **sorun türü** aşağı açılan listesinden **teknik**.
-   2. Geçerli **abonelik**, **hizmet** türü ve **kaynak** (StorSimple cihaz Yöneticisi hizmeti) otomatik olarak seçilir. 
-   3. Seçin bir **destek planı** aşağı açılan listeden, aboneliğinizle ilişkili birden çok planları varsa. Teknik Destek etkinleştirmek için bir Ücretli destek planına ihtiyacınız var.
-   4.           **İleri**'ye tıklayın.
+2. **Yeni destek isteği** dikey penceresinde **temel bilgiler**' i seçin. **Temel bilgiler** dikey penceresinde aşağıdaki adımları uygulayın:
+   1. **Sorun türü** aşağı açılan listesinden **Teknik**' i seçin.
+   2. Geçerli **abonelik**, **hizmet** türü ve **kaynak** (StorSimple aygıt yöneticisi hizmeti) otomatik olarak seçilir. 
+   3. Aboneliğinizle ilişkili birden çok planınız varsa, açılan listeden bir **destek planı** seçin. Teknik desteğe olanak tanımak için ücretli bir destek planına ihtiyacınız vardır.
+   4. **İleri**’ye tıklayın.
 
-       ![Yeni portal aracılığıyla kişinin MS desteği](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
+       ![Yeni Portal aracılığıyla MS desteği ile iletişim kurun](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
-3. İçinde **yeni destek isteği** dikey penceresinde **adım 2 sorun**. İçinde **sorun** dikey penceresinde aşağıdaki adımları uygulayın:
+3. **Yeni destek isteği** dikey penceresinde **Adım 2 sorunu**' nı seçin. **Sorun** dikey penceresinde aşağıdaki adımları uygulayın:
     
-    1. Seçin **önem derecesi**.
-    2. Sorunu gereç veya StorSimple cihaz Yöneticisi hizmetine ilişkili olup olmadığını belirtin.
-    3. Seçin bir **kategori** Bu sorun ve daha fazlasını belirtin **ayrıntıları** sorunla ilgili.
-    4. Başlangıç tarihi ve saati sorun için sağlar.
-    5. İçinde **karşıya dosya yükleme**, destek paketinizi göz atmak için klasör simgesine tıklayın.
-    6. Denetleme **tanılama bilgilerini paylaşmak**.
-    7.           **İleri**'ye tıklayın.
+    1. **Önem derecesini**seçin.
+    2. Sorunun gereç veya StorSimple Aygıt Yöneticisi hizmeti ile ilgili olup olmadığını belirtin.
+    3. Bu sorun için bir **Kategori** seçin ve sorun hakkında daha fazla **ayrıntı** sağlayın.
+    4. Sorunun başlangıç tarihini ve saatini belirtin.
+    5. **Dosya karşıya yükleme**sırasında, destek paketinize gitmek için klasör simgesine tıklayın.
+    6. **Paylaşma tanılama bilgilerini**denetleyin.
+    7. **İleri**’ye tıklayın.
 
-       ![Yeni portal aracılığıyla kişinin MS desteği](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
+       ![Yeni Portal aracılığıyla MS desteği ile iletişim kurun](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
-4. İçinde **yeni destek isteği** dikey penceresinde tıklayın **adım 3 irtibat bilgileri**. İçinde **iletişim bilgilerini** dikey penceresinde aşağıdaki adımları uygulayın:
+4. **Yeni destek isteği** dikey penceresinde **Adım 3 iletişim bilgileri**' ne tıklayın. **İletişim bilgileri** dikey penceresinde aşağıdaki adımları uygulayın:
 
-   1. İçinde **başvurun seçenekleri**, tercih ettiğiniz iletişim yöntemi (telefon veya e-posta) ve dil sağlar. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
-   2. Kişi bilgileri, ad, e-posta, isteğe bağlı bir kişi, ülke/bölge belirtin. Seçin **Kaydet kişi değişikliklerini gelecekteki destek istekleri** onay kutusu.
-   3.           **Oluştur**'a tıklayın.
+   1. **İletişim seçeneklerinde**tercih ettiğiniz iletişim yönteminizi (telefon veya e-posta) ve dili girin. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
+   2. Iletişim bilgilerinde adınızı, e-postanızı, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. **Gelecekteki destek istekleri için kişi değişikliklerini kaydet** onay kutusunu seçin.
+   3. **Oluştur**’a tıklayın.
    
-       ![Yeni portal aracılığıyla kişinin MS desteği](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
+       ![Yeni Portal aracılığıyla MS desteği ile iletişim kurun](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
-      Microsoft Support daha fazla bilgi, tanılama ve çözümleme için size ulaşmak için bu bilgileri kullanır.
-      İsteğinizi gönderdikten sonra bir destek mühendisi olabildiğince çabuk isteğinizle birlikte ilerlemek için sizinle iletişime geçecektir.
+      Microsoft Desteği, bu bilgileri daha fazla bilgi, tanı ve çözüm için size ulaşmak üzere kullanacaktır.
+      İsteğinizi gönderdikten sonra bir destek mühendisi, isteğinize devam etmek için en kısa sürede sizinle iletişim kuracaktır.
 
-## <a name="manage-a-support-request"></a>Destek isteğini yönetin
+## <a name="manage-a-support-request"></a>Destek isteğini yönetme
 
 Bir destek bileti oluşturduktan sonra portal üzerinden bu biletin yaşam döngüsünü yönetebilirsiniz.
 
-#### <a name="to-manage-your-support-requests"></a>Destek Taleplerinizi yönetme
+#### <a name="to-manage-your-support-requests"></a>Destek isteklerinizi yönetmek için
 
-1. Yardım ve Destek sayfasına ulaşmak için gidin **Gözat > Yardım + Destek**.
+1. Yardım ve destek sayfasına ulaşmak için, **> yardım ve destek**' e gidin.
 
-    ![Destek isteklerini yönetin](./media/storsimple-8000-contact-microsoft-support/managesupport1.png)
+    ![Destek isteklerini yönetme](./media/storsimple-8000-contact-microsoft-support/managesupport1.png)
 
-2. Tüm destek istekleri bir tablosal listesinde görüntülenen **Yardım + Destek** dikey penceresi.
+2. Tüm Destek isteklerinin tablolu bir listesi **Yardım + Destek** dikey penceresinde görüntülenir.
 
-    ![Destek isteklerini yönetin](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
+    ![Destek isteklerini yönetme](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
 
-3. Seçin ve bir destek isteği tıklayın. Durum ve bu istek için ayrıntılarını görüntüleyebilirsiniz. Tıklayın **+ yeni ileti** bu istekte izlemek istiyorsanız.
+3. Bir destek isteği seçin ve tıklayın. Bu istek için durumu ve ayrıntıları görüntüleyebilirsiniz. Bu istekte izlemek istiyorsanız **+ Yeni ileti** ' ya tıklayın.
 
-    ![Destek isteklerini yönetin](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
+    ![Destek isteklerini yönetme](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
 
-## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>Destek oturumu StorSimple için Windows PowerShell'de Başlat
+## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell bir destek oturumu başlatın
 
-StorSimple cihazı ile yaşayabileceğiniz sorunları gidermek için Microsoft Support ekibiyle iletişim kurmak gerekir. Microsoft Support, cihazınıza oturum açmak için bir destek oturumu kullanmanız gerekebilir.
+StorSimple aygıtıyla karşılaşabileceğiniz sorunları gidermek için Microsoft Desteği ekibiyle birlikte çalışmak zorunda kalabilirsiniz. Microsoft Desteği cihazınızda oturum açmak için bir destek oturumu kullanması gerekebilir.
 
-Destek oturumu başlatmak için aşağıdaki adımları gerçekleştirin:
+Bir destek oturumu başlatmak için aşağıdaki adımları gerçekleştirin:
 
 #### <a name="to-start-a-support-session"></a>Destek oturumu başlatmak için
 
-1. Cihaz seri Konsolu kullanarak doğrudan veya uzak bir bilgisayardan telnet oturumu aracılığıyla erişin. Bunu yapmak için adımları izleyin. [kullan cihaz seri konsoluna bağlanmak için PuTTY](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. Açılan oturumda basın **Enter** bir komut istemi almak için anahtar.
-3. Seri konsol menüsünde seçeneğini 1 **tam erişimle oturum açmak**.
-4. İstemde, aşağıdaki parolasını yazın:
+1. Seri konsolunu veya uzak bir bilgisayardan bir Telnet oturumunu kullanarak cihaza doğrudan erişin. Bunu yapmak için, [cihaz seri konsoluna bağlanmak Için PuTTY kullanma](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)bölümündeki adımları izleyin.
+2. Açılan oturumda, komut istemi almak için **ENTER** tuşuna basın.
+3. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**.
+4. Komut isteminde aşağıdaki parolayı yazın:
    
     `Password1`
 5. İsteminde aşağıdaki komutu yazın:
    
     `Enable-HcsSupportAccess`
-6. Şifreli bir dize size sunulur. Bu dize, Not Defteri gibi bir metin düzenleyicisine kopyalayın.
-7. Bu dizeyi kaydedin ve Microsoft Support bir e-posta iletisinde gönderebilirsiniz.
+6. Size şifreli bir dize sunulacaktır. Bu dizeyi Not Defteri gibi bir metin düzenleyicisine kopyalayın.
+7. Bu dizeyi kaydedin ve Microsoft Desteği için bir e-posta iletisiyle gönderin.
 
 > [!IMPORTANT]
-> Çalıştırarak destek erişimi devre dışı bırakabilirsiniz `Disable-HcsSupportAccess`. StorSimple cihaz destek erişimi 8 saat oturum başlatıldıktan sonra devre dışı bırakmak de çalışacaktır. Destek oturumu başlatıldıktan sonra StorSimple cihaz kimlik bilgilerini değiştirmek için iyi bir uygulamadır.
+> `Disable-HcsSupportAccess`çalıştırarak erişim desteğini devre dışı bırakabilirsiniz. StorSimple cihazı, oturum başlatıldıktan sonra 8 saat erişimi desteğini devre dışı bırakmayı de dener. Bir destek oturumu başlattıktan sonra StorSimple cihaz kimlik bilgilerinizi değiştirmek en iyi uygulamadır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi edinmek için nasıl [StorSimple 8000 serisi Cihazınızı ilgili sorunları tanılayın ve çözün](storsimple-8000-troubleshoot-deployment.md)
+[StorSimple 8000 serisi cihazından ilgili sorunları tanılamaya ve çözmeye](storsimple-8000-troubleshoot-deployment.md) öğrenin

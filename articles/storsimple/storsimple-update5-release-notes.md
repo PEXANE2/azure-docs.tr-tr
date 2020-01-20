@@ -1,77 +1,70 @@
 ---
-title: StorSimple 8000 serisi güncelleştirme 5 sürüm notları | Microsoft Docs
-description: StorSimple 8000 serisi güncelleştirme 5 için yeni özellikler, sorunlar ve geçici çözümleri açıklar.
-services: storsimple
-documentationcenter: NA
+title: StorSimple 8000 serisi güncelleştirme 5 sürüm notları
+description: StorSimple 8000 serisi güncelleştirme 5 için yeni özellikleri, sorunları ve geçici çözümleri açıklar.
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 462cbd6261723aa91bbfd23292611e758a800ed2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844100"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275166"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 serisi güncelleştirme 5 sürüm notları
 
 ## <a name="overview"></a>Genel Bakış
 
-Aşağıdaki sürüm notları, yeni özellikleri açıklar ve StorSimple 8000 serisi güncelleştirme 5 için kritik açık sorunları tanımlayın. Ayrıca bu sürüme dahil edilen StorSimple yazılım güncelleştirmeleri listesini içerirler.
+Aşağıdaki sürüm notları, yeni özellikleri anlatmaktadır ve StorSimple 8000 serisi güncelleştirme 5 için kritik açık sorunları belirler. Ayrıca, bu sürüme dahil olan StorSimple yazılım güncelleştirmelerinin bir listesini içerir.
 
-Güncelleştirme 5, güncelleştirme 4 ile güncelleştirme 0.1 çalıştıran tüm StorSimple cihazı için uygulanabilir. Güncelleştirme 5 ile ilişkili cihaz 6.3.9600.17845 sürümüdür.
+Güncelleştirme 5, güncelleştirme 0,1 ile güncelleştirme çalıştıran herhangi bir StorSimple cihazına uygulanabilir. Güncelleştirme 5 ile ilişkili cihaz sürümü 6.3.9600.17845.
 
-StorSimple çözümünüzde güncelleştirme dağıtmadan önce bu sürüm notlarında yer alan bilgileri gözden geçirin.
+Güncelleştirmeyi StorSimple çözümünüze dağıtmadan önce sürüm notlarında yer alan bilgileri gözden geçirin.
 
 > [!IMPORTANT]
-> * Güncelleştirme 5 zorunlu bir güncelleştirme ve hemen yüklenmesi gerekir. Daha fazla bilgi için bkz. nasıl [güncelleştirme 5'i Uygula](storsimple-8000-install-update-5.md).
-> * Güncelleştirme 5 cihaz yazılımı, disk üretici yazılımı, işletim sistemi güvenlik ve diğer işletim sistemi güncelleştirmeleri var. Bu güncelleştirmeyi yüklemek için yaklaşık 4 saat sürer. Disk üretici yazılımı güncelleştirmesi, kesintiye uğratan bir güncelleştirmedir ve cihazınız için bir kapalı kalma süresi ile sonuçlanır. Cihazınızı güncel tutmak için güncelleştirme 5 uygulamanızı öneririz.
-> * Yeni yayınlar için güncelleştirmeleri göremeyebilirsiniz hemen güncelleştirmeleri aşamalı olarak sunulmasını çünkü. Birkaç gün bekleyin ve sonra bu güncelleştirmeler yeniden Güncelleştirmeleri tara yakında kullanıma sunulacaktır.
+> * Güncelleştirme 5, zorunlu bir güncelleştirmedir ve hemen yüklenmesi gerekir. Daha fazla bilgi için bkz. [güncelleştirme 5](storsimple-8000-install-update-5.md)' i uygulama.
+> * Güncelleştirme 5 ' te cihaz yazılımı, disk üretici yazılımı, işletim sistemi güvenliği ve diğer işletim sistemi güncelleştirmeleri vardır. Bu güncelleştirmenin yüklenmesi yaklaşık 4 saat sürer. Disk üretici yazılımı güncelleştirmesi, kesintiye uğratan bir güncelleştirmedir ve cihazınız için kapalı kalma süresine neden olur. Cihazınızı güncel tutmak için güncelleştirme 5 ' i uygulamanızı öneririz.
+> * Güncelleştirmelerin aşamalı olarak piyasaya sürültiğimiz için yeni sürümler için güncelleştirmeleri hemen göremeyebilirsiniz. Birkaç gün bekleyin ve sonra bu güncelleştirmeler yakında kullanılabilir hale gelecağından güncelleştirmeleri yeniden tarayın.
 
-## <a name="whats-new-in-update-5"></a>Güncelleştirme 5'teki yenilikler
+## <a name="whats-new-in-update-5"></a>Güncelleştirme 5 ' teki yenilikler
 
-Güncelleştirme 5'te aşağıdaki anahtar geliştirmeleri ve hata düzeltmeleri yapıldı.
+Güncelleştirme 5 ' te aşağıdaki önemli geliştirmeler ve hata düzeltmeleri yapılmıştır.
 
-* **Kullanım, Azure Active Directory (StorSimple cihaz Yöneticisi hizmeti ile kimlik doğrulaması için AAD)** – StorSimple cihaz Yöneticisi hizmeti ile kimlik doğrulaması için gelen güncelleştirme 5'ten başlayarak, Azure Active Directory kullanılır. Eski kimlik doğrulama mekanizması aralık 2017 tarihinden itibaren kullanımdan kaldırılacaktır. Tüm kullanıcılar, kendi güvenlik duvarı kurallarında yeni kimlik doğrulaması URL'lerini içermelidir. Daha fazla bilgi için Git [kimlik doğrulaması URL'lerini listelenen StorSimple cihazınız için ağ gereksinimleri](storsimple-8000-system-requirements.md#url-patterns-for-azure-portal).
+* **Storsimple Aygıt Yöneticisi hizmeti ile kimlik doğrulamak için Azure Active Directory (AAD) kullanımı** -güncelleştirme 5 ' ten başlayarak, storsimple Aygıt Yöneticisi hizmetinde kimlik doğrulaması yapmak için Azure Active Directory kullanılır. Eski kimlik doğrulama mekanizması, Aralık 2017 tarafından kullanım dışı bırakılacak. Tüm kullanıcıların güvenlik duvarı kurallarında yeni kimlik doğrulama URL 'Leri içermesi gerekir. Daha fazla bilgi için, [StorSimple cihazınız için ağ gereksinimleri ' nde listelenen kimlik doğrulama URL 'lerine](storsimple-8000-system-requirements.md#url-patterns-for-azure-portal)gidin.
 
-    Güvenlik duvarı kurallarında kimlik doğrulama URL'si dahil edilmemişse, kullanıcılar, StorSimple cihazını hizmeti ile doğrulanamadı kritik bir uyarı görürsünüz. Kullanıcılar bu uyarıyı görürseniz, bunlar yeni kimlik doğrulama URL'si eklemeniz gerekir. Daha fazla bilgi için Git [uyarılar ağ StorSimple](storsimple-8000-manage-alerts.md#networking-alerts).
+    Kimlik doğrulama URL 'SI güvenlik duvarı kurallarında yoksa, kullanıcılar StorSimple cihazının hizmetten kimlik doğrulayamadığından önemli bir uyarı görür. Kullanıcılar bu uyarıyı görtiklerinde, yeni kimlik doğrulama URL 'sini içermesi gerekir. Daha fazla bilgi için, [StorSimple ağ uyarıları](storsimple-8000-manage-alerts.md#networking-alerts)' na gidin.
 
-* **Yeni sürüm, StorSimple Snapshot Manager** -StorSimple Snapshot Manager'ın yeni bir sürümü güncelleştirme 5 ile yayımlanan ve Update 4 çalıştıran tüm StorSimple cihazlar uyumlu veya üzeri. Bu sürüme güncelleştirmenizi öneririz. StorSimple Snapshot Manager'ın önceki sürümü önceki veya güncelleştirme 3'ü çalıştıran StorSimple cihazlar için kullanılabilir. [StorSimple Snapshot Manager'ın uygun sürümü indirme](https://www.microsoft.com/en-us/download/details.aspx?id=44220) başvurun [StorSimple Snapshot Manager'ı Dağıtma](storsimple-snapshot-manager-deployment.md).
+* **Storsimple Snapshot Manager yeni sürümü** -storsimple Snapshot Manager 'ın yeni bir sürümü güncelleştirme 5 ile yayımlanmıştır ve güncelleştirme 4 veya sonraki sürümleri çalıştıran tüm StorSimple cihazlarıyla uyumludur. Bu sürüme güncelleştirmenizi öneririz. StorSimple Snapshot Manager önceki sürümü, güncelleştirme 3 veya öncesini çalıştıran StorSimple cihazları için kullanılır. [Storsimple Snapshot Manager uygun sürümünü indirin](https://www.microsoft.com/en-us/download/details.aspx?id=44220) ve [StorSimple Snapshot Manager dağıtma](storsimple-snapshot-manager-deployment.md)bölümüne bakın.
 
 
-## <a name="issues-fixed-in-update-5"></a>Güncelleştirme 5'te giderilen sorunlar
+## <a name="issues-fixed-in-update-5"></a>Güncelleştirme 5 ' te düzeltilen sorunlar
 
-Aşağıdaki tabloda, güncelleştirme 5'te düzeltilen sorunlara ilişkin bir Özet sağlar.
+Aşağıdaki tabloda güncelleştirme 5 ' te düzeltilen sorunların özeti verilmiştir.
 
-| Hayır | Özellik | Sorun | Fiziksel cihaz için geçerlidir | Sanal cihaza uygulanır |
+| Hayır | Özellik | Sorun | Fiziksel cihaz için geçerlidir | Sanal cihaz için geçerlidir |
 | --- | --- | --- | --- | --- |
-| 1 |Windows PowerShell uzaktan iletişimi |Önceki sürümde, bir kullanıcı, StorSimple Cloud Appliance Windows PowerShell aracılığıyla bir uzak bağlantı kurmaya çalışırken bir hata alırsınız. Bu sorun, kök neden ve bu sürümde giderilen. |Hayır |Evet |
-| 2 |Bant genişliği şablonları |Önceki sürümde, cihaz için yapılandırılan daha düşük bant genişliği sonuçlanan bant genişliği şablonları ile ilgili bir sorun oluştu. Bu sürümde bu sorun giderildi. |Evet |Evet |
-| 3 |Yük devretme |Çok sayıda birimleri ile bir cihaz üzerinden güncelleştirme 4 ile birlikte çalışan başka bir cihaza başarısız oldu, erişim denetimi kayıtları uygulanmaya çalışılırken önceki bir sürümde işlemi başarısız olur. Bu sürümde bu sorun düzeltilmiştir. |Evet |Evet |
+| 1 |Windows PowerShell uzaktan iletişimi |Önceki sürümde, bir Kullanıcı Windows PowerShell aracılığıyla StorSimple Cloud Appliance uzak bağlantı kurmaya çalışırken bir hata alıyor. Bu sorun köklenmiştir ve bu sürümde düzeltildi. |Hayır |Evet |
+| 2 |Bant genişliği şablonları |Daha önceki sürümlerde, bant genişliği şablonlarındaki bir sorun oluştu ve bu, cihazın için yapılandırılmış olandan daha düşük bant genişliğine neden oldu. Bu sorun, bu yayında çözümlenir. |Evet |Evet |
+| 3 |Yük Devretme |Önceki sürümde, çok sayıda birime sahip bir cihaz, güncelleştirme 4 çalıştıran başka bir cihaza devredildiği zaman, erişim denetim kayıtlarını uygulamaya çalışırken işlem başarısız olur. Bu sorun bu sürümde düzeltilmiştir. |Evet |Evet |
 
 
 
-## <a name="known-issues-in-update-5-from-previous-releases"></a>Önceki sürümlerine yönelik güncelleştirme 5'te bilinen sorunlar
+## <a name="known-issues-in-update-5-from-previous-releases"></a>Önceki sürümlerden güncelleştirme 5 ' teki bilinen sorunlar
 
-Güncelleştirme 5'te yeni bilinen bir sorun vardır. Önceki sürümlerden güncelleştirme 5'e taşınır sorunların listesi için Git [güncelleştirme 3 Sürüm Notları](storsimple-update3-release-notes.md#known-issues-in-update-3).
+Güncelleştirme 5 ' te bilinen yeni bir sorun yoktur. Önceki sürümlerden güncelleştirme 5 ' e aktarılan sorunların listesi için, [güncelleştirme 3 sürüm notları](storsimple-update3-release-notes.md#known-issues-in-update-3)' na gidin.
 
-## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-5"></a>Seri Bağlı SCSI (SAS) denetleyicisi ve üretici yazılımı güncelleştirmelerini güncelleştirme 5
+## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-5"></a>Güncelleştirme 5 ' teki seri bağlantılı SCSI (SAS) denetleyicisi ve bellenim güncelleştirmeleri
 
-Bu sürüm, SAS Denetleyici ve LSI sürücü ve bellenim güncelleştirmeleri sahiptir. Bu güncelleştirmeleri yükleme hakkında daha fazla bilgi için bkz. [güncelleştirme 5'i yükleme](storsimple-8000-install-update-5.md) StorSimple Cihazınızda.
+Bu sürümde SAS denetleyicisi ve LSI sürücü ve bellenim güncelleştirmeleri vardır. Bu güncelleştirmeleri nasıl yükleyeceğiniz hakkında daha fazla bilgi için bkz. StorSimple cihazınıza [güncelleştirme 5](storsimple-8000-install-update-5.md) ' i yüklemek.
 
-## <a name="storsimple-cloud-appliance-updates-in-update-5"></a>Güncelleştirme 5'te StorSimple Cloud Appliance güncelleştirme
+## <a name="storsimple-cloud-appliance-updates-in-update-5"></a>Güncelleştirme 5 ' teki StorSimple Cloud Appliance güncelleştirmeleri
 
-Bu güncelleştirme, StorSimple Cloud Appliance (sanal cihaz olarak da bilinir) uygulanamaz. Yeni bulut Gereçleri güncelleştirme 5 görüntüsünü kullanarak oluşturulması gerekir. StorSimple Cloud Appliance oluşturma hakkında daha fazla bilgi için Git [Dağıt ve StorSimple bulut Gereci yönetme](storsimple-8000-cloud-appliance-u2.md).
+Bu güncelleştirme StorSimple Cloud Appliance uygulanamıyor (sanal cihaz olarak da bilinir). Yeni bulut gereçlerinin güncelleştirme 5 görüntüsü kullanılarak oluşturulması gerekir. StorSimple Cloud Appliance oluşturma hakkında daha fazla bilgi için, [StorSimple Cloud Appliance Dağıt ve Yönet](storsimple-8000-cloud-appliance-u2.md)' e gidin.
 
 ## <a name="next-step"></a>Sonraki adım
 
-Bilgi edinmek için nasıl [güncelleştirme 5'i yükleyin](storsimple-8000-install-update-5.md) StorSimple Cihazınızda.
+StorSimple cihazınıza [güncelleştirme 5](storsimple-8000-install-update-5.md) ' i nasıl yükleyeceğinizi öğrenin.
 

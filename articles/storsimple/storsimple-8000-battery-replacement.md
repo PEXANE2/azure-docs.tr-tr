@@ -1,51 +1,43 @@
 ---
-title: Microsoft Azure StorSimple 8000 serisi cihaz pille Değiştir | Microsoft Docs
-description: Kaldır, değiştirin ve StorSimple Cihazınızı yedek pil modüldeki bakımını açıklar.
-services: storsimple
-documentationcenter: ''
+title: Microsoft Azure StorSimple 8000 serisi cihazda pili değiştirme
+description: StorSimple cihazınızda yedekleme pil modülünü kaldırma, değiştirme ve koruma işlemlerinin nasıl yapılacağını açıklar.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 4ebf3f28d40e0461d140a3fe74fb940720f26db6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693747"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276895"
 ---
-# <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>StorSimple Cihazınızda yedek pil modülü değiştirin
+# <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>StorSimple cihazınızda yedekleme pil modülünü değiştirme
 
 ## <a name="overview"></a>Genel Bakış
-Birincil muhafaza güç ve soğutma Modülü (PCM) Microsoft Azure StorSimple Cihazınızda ek pil paketi vardır. Bu paketi power sağladığından AC elektrik için birincil kasası varsa veri StorSimple cihaz kaydedebilir. Bu pil paketi olarak adlandırılır *yedek pil Modülü*. Yedek pili modülü yalnızca birincil kutu (EBOD muhafazası yedek pil modülü içermiyor) StorSimple cihazınızdaki vardır.
+Microsoft Azure StorSimple cihazınızdaki birincil muhafaza gücü ve soğutma modülü (PCM), ek bir pil paketine sahiptir. Bu paket, birincil kasada AC gücü kaybı olursa StorSimple cihazının verileri kaydedebilmesi için güç sağlar. Bu pil paketi *Yedekleme Pil modülü*olarak adlandırılır. Yedekleme pili modülü yalnızca StorSimple cihazınızdaki birincil kasa için mevcuttur (EBOD Kasası bir yedekleme pil modülü içermez).
 
 Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
 
-* Yedek pili modülü kaldırıldı
-* Yeni bir yedek pil modülünü yükleme
-* Yedek pili modülü koru
+* Yedekleme Pil modülünü kaldırma
+* Yeni bir yedekleme pil modülü yükler
+* Yedekleme Pil modülünü koruyun
 
 > [!IMPORTANT]
-> Kaldırma ve bir yedek pil modül değiştirme gözden önce güvenlik bilgileri [StorSimple donanım bileşeni değişimi giriş](storsimple-8000-hardware-component-replacement.md).
+> Bir yedekleme pil modülünü kaldırmadan ve değiştirmeden önce, [StorSimple donanım bileşeni değiştirme 'ye giriş](storsimple-8000-hardware-component-replacement.md)bölümündeki güvenlik bilgilerini gözden geçirin.
 
 
-## <a name="remove-the-backup-battery-module"></a>Yedek pili modülü kaldırıldı
-Yedek pili StorSimple cihazınız için bir alan değiştirebilen birim modülüdür. PCM yüklenmeden önce pil modülü, özgün paketleme içinde depolanması gerekir. Yedek pili kaldırmak için aşağıdaki adımları gerçekleştirin.
+## <a name="remove-the-backup-battery-module"></a>Yedekleme Pil modülünü kaldırma
+StorSimple cihazınız için yedekleme pil modülü, alan tarafından değiştirilebilen bir birimdir. PCM 'e yüklenmeden önce, pil modülünün özgün paketinizde depolanması gerekir. Yedekleme pilini kaldırmak için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-remove-the-backup-battery-module"></a>Yedek pili modülünü kaldırmak için
-1. Azure portalında StorSimple cihaz Yöneticisi hizmeti dikey pencerenize gidin. Git **cihazları** ve cihaz listesinden Cihazınızı seçin. Gidin **İzleyici** > **donanım sistem durumu**. Altında **paylaşılan bileşenleri**, pil durum öğesine bakın.
-2. Pil başarısız PCM belirleyin. Şekil 1, StorSimple cihazının arkasına gösterir.
+#### <a name="to-remove-the-backup-battery-module"></a>Yedekleme Pil modülünü kaldırmak için
+1. Azure portal, StorSimple Aygıt Yöneticisi hizmeti dikey pencerenize gidin. **Cihazlar** ' a gidin ve cihaz listesinden cihazınızı seçin.  > **Donanım durumunu** **izleme** ' ye gidin. **Paylaşılan bileşenler**altında pilin durumuna bakın.
+2. Pilin başarısız olduğu PCM 'yi belirler. Şekil 1 ' de StorSimple cihazının geri gösterilmektedir.
    
-    ![Cihaz birincil kutusu modüllerinin devre kartı](./media/storsimple-battery-replacement/IC740994.png)
+    ![Birincil Cihaz Kutusu Modüllerinin Devre Kartı](./media/storsimple-battery-replacement/IC740994.png)
    
-    **Şekil 1** arkasına birincil cihaz PCM ve denetleyici modülleri gösteriliyor
+    **Şekil 1** PCM ve denetleyici modüllerini gösteren birincil cihazın geri dönmesi
    
    | Etiket | Açıklama |
    |:--- |:--- |
@@ -54,58 +46,58 @@ Yedek pili StorSimple cihazınız için bir alan değiştirebilen birim modülü
    | 3 |Denetleyici 0 |
    | 4 |Denetleyici 1 |
    
-    Sayı 3 Şekil 2'de gösterildiği gibi izleme gösterge LED'i karşılık gelen PCM 0'da bulunan **pil hata** aydınlatma.
+    Şekil 2 ' de gösterilen sayı 3 ' te gösterildiği gibi, **Pil hatasına** KARŞıLıK gelen PCM 0 ' daki izleme göstergesi açık olmalıdır.
    
-    ![Cihaz PCM izleme gösterge LED'lerini devre kartı](./media/storsimple-battery-replacement/IC740992.png)
+    ![Cihaz PCM İzleme Gösterge LED'lerinin Devre Kartı](./media/storsimple-battery-replacement/IC740992.png)
    
-    **Şekil 2** arka of PCM izleme gösterge LED'lerini gösteriliyor
+    **Şekil 2** İzleme göstergesi LED 'lerini gösteren PCM 'nin geri dönmesi
    
    | Etiket | Açıklama |
    |:--- |:--- |
-   | 1 |AC güç kesintisi |
-   | 2 |Fanı hatalı |
-   | 3 |Pil hata |
+   | 1 |AC güç hatası |
+   | 2 |Fan hatası |
+   | 3 |Pil hatası |
    | 4 |PCM TAMAM |
-   | 5 |DC Güç kesintisi |
-   | 6 |Pil Sağlıklı |
-3. Başarısız bir pil PCM kaldırmak için adımları [bir PCM Kaldır](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm).
-4. Kaldırılan PCM ile lift ve pil modül tanıtıcısı aşağıdaki şekilde gösterildiği gibi Yukarı Döndür Kaldır pil en fazla istek.
+   | 5 |DC güç hatası |
+   | 6 |Pil sağlıklı |
+3. PCM 'yi başarısız bir pille kaldırmak için, [PCM 'Yi kaldırma](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm)bölümündeki adımları izleyin.
+4. PCM kaldırıldıktan sonra, aşağıdaki şekilde gösterildiği gibi pil modülü tanıtıcısını kaldırın ve döndürün ve pili kaldırmak için çekin.
    
-    ![Pcm'den pil](./media/storsimple-battery-replacement/IC741019.png)
+    ![PCM'den Pil Çıkarılıyor](./media/storsimple-battery-replacement/IC741019.png)
    
-    **Şekil 3** Pcm'den pil
-5. Paketleme alan değiştirebilen birim modülünde yer.
-6. Hatalı birim uygun Bakım ve işleme için Microsoft'a döndürür.
+    **Şekil 3** PCM 'den Pil kaldırma
+5. Modülü alan tarafından değiştirilebilen birim paketlemeye yerleştirin.
+6. Doğru bakım ve işleme için kusurlu birimi Microsoft 'a döndürün.
 
-## <a name="install-a-new-backup-battery-module"></a>Yeni bir yedek pil modülünü yükleme
-StorSimple cihazınızın birincil muhafazada PCM değiştirme pil modülü yüklemek için aşağıdaki adımları gerçekleştirin.
+## <a name="install-a-new-backup-battery-module"></a>Yeni bir yedekleme pil modülü yükler
+Değiştirme pili modülünü, StorSimple cihazınızın birincil kasasında PCM 'ye yüklemek için aşağıdaki adımları uygulayın.
 
 #### <a name="to-install-the-battery-module"></a>Pil modülünü yüklemek için
-1. Yedek pili Modülü doğru yönlendirmeyi PCM yerleştirin.
-2. Tüm bağlayıcı bilgisayar lisansı için pil modül tanıtıcısı basın.
-3. Yönergeleri izleyerek birincil muhafazada PCM'yi değiştirme [güç ve soğutma modülü, StorSimple Cihazınızda değiştirin](storsimple-8000-power-cooling-module-replacement.md).
-4. Bu değişiklik tamamlandıktan sonra cihazınıza gidin ve ardından Git **İzleyici** > **donanım sistem durumu** Azure portalında. Yüklemenin başarılı olduğunu emin olmak için pil durumunu doğrulayın. Yeşil durum pil sağlıklı olduğunu gösterir.
+1. Yedekleme Pil modülünü PCM 'de doğru yöne yerleştirin.
+2. Bağlayıcıyı oturmak için, pil modülünün tüm yolunu azaltın.
+3. [StorSimple cihazınızda güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md)konusundaki yönergeleri izleyerek birincil MUHAFAZADAKI PCM 'yi değiştirin.
+4. Değiştirme tamamlandıktan sonra cihazınıza gidin ve Azure portal > **Donanım durumunu** **İzle** ' ye gidin. Yüklemenin başarılı olduğundan emin olmak için pilin durumunu doğrulayın. Yeşil bir durum, pilin sağlıklı olduğunu gösterir.
 
-## <a name="maintain-the-backup-battery-module"></a>Yedek pili modülü koru
-StorSimple Cihazınızı yedek pil modülü güç kaybı olayı sırasında denetleyici güç sağlar. Bu, StorSimple cihazın denetimli bir biçimde kapatmadan önce önemli verilerinizi kaydedin izin verir. İki tam şarjlı pilleri ile PCMs, sistemin iki ardışık kaybı olaylarından başa çıkabilir.
+## <a name="maintain-the-backup-battery-module"></a>Yedekleme Pil modülünü koruyun
+StorSimple cihazınızda, yedekleme pil modülü güç kaybı olayı sırasında denetleyiciye güç sağlar. StorSimple cihazının, denetimli bir şekilde kapatmadan önce kritik verileri kaydetmesine izin verir. PCMs 'de tamamen ücretlendirilen iki pille, sistem art arda iki kayıp olayını işleyebilir.
 
-Azure portalında **donanım sistem durumu** altında **İzleyici** pil hatalı ya da son yaşam yaklaştığını dikey penceresinde gösterir. Stav baterie belirtilir **pil PCM 0'da** veya **pil PCM 1'deki** altında **paylaşılan bileşenleri**. Bu dikey pencereyi gösterecek bir **DEGRADED** ömrü sonu yaklaşan, durumunda ve **başarısız** ömür son ulaşıldı.
+Azure portal, **izleyici** dikey penceresindeki **donanım sistem durumu** , pilin arızalı mi yoksa yaşam süresi mi yaklaşdığını gösterir. Pil durumu, **paylaşılan bileşenler**altında **PCM 0** veya **PCM 1 ' de pille** bir şekilde gösterilir. Bu dikey pencere, son kullanım süresi boyunca **düşürülmüş** bir durum gösterir ve kullanım ömrü boyunca **başarısız** olur.
 
 > [!NOTE]
-> Pil bildirebilirsiniz **başarısız** ihtiyaç duyduğu sırada erişir yalnızca uygulanacak.
+> Yalnızca ücretlendirililmesi gerektiğinde, pilin **başarısız** olduğunu raporlayabilir.
 
 
-Varsa **DEGRADED** durumu görünür, eylem aşağıdaki kursu öneririz:
+**Düşürülmüş** durum görünürse, aşağıdaki eylem kursu önerilir:
 
-* Sistem son güç kaybı yaşamış olabilirsiniz veya pil düzenli bakım aşamasında olabilir. Devam etmeden önce 12 saat olarak sistemi gözlemleyin.
+* Sistem yakın bir güç kaybına neden olmuş olabilir veya piller düzenli olarak bakım yaşıyor olabilir. Devam etmeden önce sistemi 12 saat boyunca gözlemleyin.
   
-  * Durumu hala ise **DEGRADED** PCMs çalıştıran ve denetleyicileri ile AC sürekli bağlantı 12 saatlik güç sonra ardından pil değiştirilmesi gerekiyor. Lütfen [Microsoft Support başvurun](storsimple-8000-contact-microsoft-support.md) yedek pili değiştirme modülü için.
-  * 12 saat sonra Tamam durumu hale gelirse, pil çalışır durumda ve bir bakım ücreti yalnızca gerekli.
-* İlişkili bir AC güç kaybı çalıştırılmadı ve PCM açık ve bağlı AC gücü, pil değiştirilmesi gerekiyor. [Microsoft Support başvurun](storsimple-8000-contact-microsoft-support.md) yedek pili değiştirme modül sıralamak için.
+  * Çalışan denetleyiciler ve PCMs 'Ler ile 12 saatlik sürekli bağlantı sonrasında durum hala **düşerse** , pilin değişmesi gerekir. Lütfen yedek bir yedekleme pil modülü için [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) .
+  * Durum 12 saat sonra Tamam olursa, pil çalışır durumdadır ve yalnızca bir bakım ücreti gerekir.
+* AC gücünün ilişkili bir kaybı yoksa ve PCM açık ve AC gücüne bağlıysa, pilin değişmesi gerekir. Yedek bir yedekleme pil modülünü sıralamak için [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) .
 
 > [!IMPORTANT]
-> Ulusal ve bölgesel düzenlemeleri göre başarısız pil Dispose.
+> Ulusal ve bölgesel düzenlemelere göre başarısız pili atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi edinin [StorSimple donanım bileşeni değişimi](storsimple-8000-hardware-component-replacement.md).
+[StorSimple donanım bileşeni değiştirme](storsimple-8000-hardware-component-replacement.md)hakkında daha fazla bilgi edinin.
 

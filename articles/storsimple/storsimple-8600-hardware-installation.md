@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple 8600 cihazını yükler | Microsoft Docs
+title: Microsoft Azure StorSimple 8600 cihazını yükler
 description: Yazılımı dağıtmadan ve yapılandırmadan önce StorSimple 8600 cihazınızın paketini açma, raf bağlama ve kablosunu açıklar.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 571c8b729408d7b9e805b875baccfd9ac8d6b9be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965278"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277124"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>StorSimple 8600 cihazınızın paketini açma, raf bağlama ve kablo oluşturma
 
@@ -34,7 +27,7 @@ Aşağıdaki adımlarda, StorSimple 8600 depolama cihazınızın paketini açmak
 ### <a name="prepare-to-unpack-your-device"></a>Cihazınızın paketini açmaya hazırlanma
 Cihazınızı paketten yapılandırmadan önce aşağıdaki bilgileri gözden geçirin.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png)![ağır ağırlık simgesi](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **uyarısı!**
+![uyarı simgesi](./media/storsimple-safety/IC740879.png)![ağır çizgi simgesi](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Uyarı!**
 
 1. Cihazı el ile işliyorsa, cihazın ağırlığını yönetmek için kullanılabilecek iki kişiye sahip olduğunuzdan emin olun. Tam olarak yapılandırılmış bir kutu 32 kg 'a (70 lbs) ağırlık verebilir.
 2. Kutuyu düz ve sabit bir yüzeye yerleştirin.
@@ -45,13 +38,13 @@ Ardından, cihazınızın paketini açmak için aşağıdaki adımları izleyin.
 1. Kutuda ve ambalajda ezik, kesik, su hasarı veya gözle görülür herhangi bir hasar olup olmadığını kontrol edin. Kutu veya ambalajda ciddi hasar varsa kutuyu açmayın. Cihazın iyi çalışma sırasında olup olmadığını değerlendirmenize yardımcı olması için lütfen [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) .
 2. Dış kutusunu açın ve ardından birincil ve EBOD kasaları ile ilgili iki kutuyu basılı götürün. Artık birincil ve EBOD kasaları paketini açabilirsiniz. Aşağıdaki şekilde, bir muhafazadan birinin açılmış görünümü gösterilmektedir.
    
-    ![Depolama cihazınızın paketini açın](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
+    ![Depolama cihazınızı paketinden çıkarma](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
    
     **Depolama cihazınızın paketi açılmış görünümü**
    
    | Etiket | Açıklama |
    | --- | --- |
-   |   1\. |Paketleme kutusu |
+   |   1 |Paketleme kutusu |
    |   2 |SAS kabloları (aksesuarlar ve kablolar tepsisinde) |
    |   3 |Alt fohar |
    |   4 |Cihaz |
@@ -92,7 +85,7 @@ Kasaları hem ön hem de arka gönderilere sahip standart 19 inç bir rafa yükl
 2. Ayarlamayı planladığınız sitenin, bağımsız bir kaynaktan veya kesintisiz güç kaynağı (UPS) olan bir raf güç dağıtım biriminden (PDU) standart AC gücüne sahip olduğunu doğrulayın.
 3. Kasaları bağlamak istediğiniz rafta bir 4U (2 X 2U) yuvasının bulunduğundan emin olun.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png)![ağır ağırlık simgesi](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **uyarısı!**
+![uyarı simgesi](./media/storsimple-safety/IC740879.png)![ağır çizgi simgesi](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Uyarı!**
 
  Cihaz kurulumunu el ile işliyorsa ağırlığı yönetmek için iki kişiye sahip olduğunuzdan emin olun. Tam olarak yapılandırılmış bir kutu 32 kg 'a (70 lbs) ağırlık verebilir.
 
@@ -109,26 +102,26 @@ Bir montaj rayına kümesi, 19 inç raf dolabı ile kullanım için sağlanacakt
 #### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>EBOD Kasası 'nı raya 'ya yüklemek için
 1. Bu adımı yalnızca, iç rayları cihazınızda yüklü değilse gerçekleştirin. Genellikle, iç rayların fabrikada yüklü olması gerekir. Raylar yüklü değilse, sol kil ve sağ-Kııl slaytlarını, kasa kasasının kenarlarına yüklersiniz. Bunlar her bir tarafta altı ölçüm screws kullanarak iliştirirler. Yön ile ilgili yardım için, kıl slaytları **LH – Front** ve **RH – Front**olarak işaretlenir ve kutunun arka tarafına doğru bir şekilde yapıştırılmış olan uçta bir uçtan uca gösterilir.
    
-    ![Kasa Kasası 'na demiryolu kasalarını ekleme](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
+    ![Kutu gövdesine sürgülü raylar ekleme](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
    
     **Kıl slaytlarını kutunun kenarlarına ekleme**
    
    | Etiket | Açıklama |
    | --- | --- |
-   |  1\. |A 3x4 düğme-baş vida |
+   |  1 |A 3x4 düğme-baş vida |
    |  2 |Kasa slaytları |
 2. Sol demiryolu ve sağ demiryolu derlemelerini raf dolabı dikey üyelerine iliştirin. Köşeli ayraçlar **LH**, **RH**ve **bu yana** doğru yönde size yol gösterecek şekilde işaretlenir.
 3. Ray tertibatının ön ve arkasındaki ray pimlerini bulun. Kııl 'yi raf nakilleri arasına sığacak şekilde genişletin ve iğneleri ön ve arka dolap dikey üye delikleri içine ekleyin. Demiryolu derlemesinin düzeyi olduğundan emin olun.
 4. Belirtilen ölçüm screcılarından ikisini kullanarak, Kııl derlemesini raf dikey üyelerine güvenli hale getirin. Önünde ve diğeri arkada bir vida kullanın.
 5. Diğer demiryolu derlemesi için bu adımları tekrarlayın.
    
-     ![Kııl slaytlarını raf dolabına ekleme](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
+     ![Raflı dolaba sürgülü raylar ekleme](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
    
     **VAIL derlemelerini rafa ekleme**
    
    | Etiket | Açıklama |
    | --- | --- |
-   |   1\. |Clamping vidalı |
+   |   1 |Clamping vidalı |
    |   2 |Kare deliği ön dolap gönderisi vidalı |
    |   3 |Sol ön demiryolu konumu PIN 'leri |
    |   4 |Clamping vidalı |
@@ -141,20 +134,20 @@ Yeni yüklenen raf raylarını kullanarak, raftaki EBOD Muhafazası bağlamak i�
 1. Bir yardımcı ile, Kasası kaldırın ve raf raylarıyla hizalayın.
 2. Kutunun rayına dikkatle ekleyin ve ardından tamamen raf dolabına gönderin.
    
-    ![Cihaz rafa ekleniyor](./media/storsimple-8600-hardware-installation/HCSInsertingDeviceintheRack.png)
+    ![Cihazı rafa yerleştirme](./media/storsimple-8600-hardware-installation/HCSInsertingDeviceintheRack.png)
    
     **Kasası rafa bağlama**
 3. Caps Free 'ı çekerek sol ve sağ ön flanş harflerini kaldırın. Flanş 'ın üst sınırı, flanş 'lere kolayca yaslar.
 4. Her bir flanş, sol ve sağ aracılığıyla bir adet Phillips-Head vida yükleyerek, bir kutunun rafla güvenliğini sağlayın.
 5. Flanş Caps ' i konuma basarak ve yerlerine yaslayarak ekleyin.
    
-     ![Flanş Caps 'i yükleme](./media/storsimple-8600-hardware-installation/HCSInstallingFlangeCaps.png)
+     ![Flanş başlıklarını takma](./media/storsimple-8600-hardware-installation/HCSInstallingFlangeCaps.png)
    
     **Flanş Cap 'i yükleme**
    
    | Etiket | Açıklama |
    | --- | --- |
-   |   1\. |Kutu birleşme vidalı |
+   |   1 |Kutu birleşme vidalı |
 
 ### <a name="mounting-the-primary-enclosure-in-the-rack"></a>Birincil Kasası rafa bağlama
 EBOD Kasası bağlamayı tamamladıktan sonra, birincil Kasası aynı adımları izleyerek bağlamanız gerekecektir.
@@ -171,7 +164,7 @@ Bir sonraki adım, cihazınızı güç, ağ ve seri erişim için kablolayın.
 ## <a name="cable-your-storsimple-8600-device"></a>StorSimple 8600 cihazınızı bağlayın
 Aşağıdaki yordamlarda, StorSimple 8600 cihazınızın güç, ağ ve seri bağlantılar için nasıl kablo olarak kullanılacağı açıklanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Cihazınızı kablolu çalışmaya başlamadan önce şunları yapmanız gerekir:
 
 * Birincil kasası ve EBOD Kasası, tamamen paketi açılmış
@@ -212,7 +205,7 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
    |   6 |Seri bağlantı noktaları |
 2. Ağ kablolaması için aşağıdaki diyagrama bakın. (En düşük ağ yapılandırması düz mavi çizgilerle gösterilir. Yüksek kullanılabilirlik ve performans için gereken ek yapılandırma noktalı çizgilere göre gösterilir.)
 
-![4U cihazınızı ağ için kablo ile](./media/storsimple-8600-hardware-installation/HCSCableYour4UDeviceforNetwork.png)
+![Kabloyla 4U cihazınızın ağ bağlantısını yapın](./media/storsimple-8600-hardware-installation/HCSCableYour4UDeviceforNetwork.png)
 
 **Cihazınız için ağ kablolaması**
 
@@ -223,9 +216,9 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
 | C |PCM 0 |
 | D |Denetleyici 1 |
 | E |PCM 1 |
-| C |EBOD denetleyicisi 0 |
+| F |EBOD denetleyicisi 0 |
 | G |EBOD denetleyicisi 1 |
-| H, I |Konaklar (örneğin, dosya sunucuları) |
+| H, ı |Konaklar (örneğin, dosya sunucuları) |
 | 0-5 |Ağ arabirimleri |
 | 6 |Birincil kutu |
 | 7 |EBOD Kasası |

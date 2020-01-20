@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple 8100 cihazını yükler | Microsoft Docs
+title: Microsoft Azure StorSimple 8100 cihazını yükler
 description: Yazılımı dağıtmadan ve yapılandırmadan önce StorSimple 8100 cihazınızın paketini açma, raf bağlama ve kablosunu açıklar.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b2301c1c9b846e2ea005f049c5aadb3d4634a81
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963592"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277093"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>StorSimple 8100 cihazınızın paketini açma, raf bağlama ve kablo oluşturma
 
@@ -34,7 +27,7 @@ Aşağıdaki adımlarda, StorSimple 8100 depolama cihazınızın paketini açma 
 ### <a name="prepare-to-unpack-your-device"></a>Cihazınızın paketini açmaya hazırlanma
 Cihazınızı paketten yapılandırmadan önce aşağıdaki bilgileri gözden geçirin.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png)![ağır ağırlık simgesi](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **uyarısı!**
+![uyarı simgesi](./media/storsimple-safety/IC740879.png)![ağır çizgi simgesi](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Uyarı!**
 
 1. El ile idare ediyorsanız, kutunun ağırlığını yönetmek için iki kişiye sahip olduğunuzdan emin olun. Tam olarak yapılandırılmış bir kutu 32 kg 'a (70 lbs) ağırlık verebilir.
 2. Kutuyu düz ve sabit bir yüzeye yerleştirin.
@@ -45,13 +38,13 @@ Ardından, cihazınızın paketini açmak için aşağıdaki adımları izleyin.
 1. Kutuda ve ambalajda ezik, kesik, su hasarı veya gözle görülür herhangi bir hasar olup olmadığını kontrol edin. Kutu veya ambalajda ciddi hasar varsa kutuyu açmayın. Cihazın iyi çalışma sırasında olup olmadığını değerlendirmenize yardımcı olması için lütfen [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) .
 2. Kutuyu açın. Aşağıdaki görüntüde, StorSimple cihazınızın açılmış görünümü gösterilmektedir.
    
-     ![Depolama cihazınızın paketini açın](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
+     ![Depolama cihazınızı paketinden çıkarma](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
    
     **Depolama cihazınızın paketi açılmış görünümü**
    
    | Etiket | Açıklama |
    | --- | --- |
-   |   1\. |Paketleme kutusu |
+   |   1 |Paketleme kutusu |
    |   2 |Alt fohar |
    |   3 |Cihaz |
    |   4 |En iyi fohar |
@@ -90,7 +83,7 @@ Cihaz, hem ön hem de arka gönderilere sahip standart 19 inç bir rafa yüklenm
 2. Ayarlamayı planladığınız sitenin, bağımsız bir kaynaktan veya kesintisiz güç kaynağı (UPS) olan bir raf güç dağıtım biriminden (PDU) standart AC gücüne sahip olduğunu doğrulayın.
 3. Cihazı bağlamak istediğiniz rafta bir 2U yuvasının bulunduğundan emin olun.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png)![ağır ağırlık simgesi](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **uyarısı!**
+![uyarı simgesi](./media/storsimple-safety/IC740879.png)![ağır çizgi simgesi](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Uyarı!**
 
 Cihaz kurulumunu el ile işliyorsa ağırlığı yönetmek için iki kişiye sahip olduğunuzdan emin olun. Tam olarak yapılandırılmış bir kutu 32 kg 'a (70 lbs) ağırlık verebilir.
 
@@ -107,13 +100,13 @@ Bir bağlama rayları kümesi, 19 inç raf dolabı ile kullanılmak üzere sağl
 #### <a name="to-install-the-device-on-the-rails"></a>Cihazı raya 'ya yüklemek için
 1. Bu adımı yalnızca, iç rayları cihazınızda yüklü değilse gerçekleştirin. Genellikle, iç rayların fabrikada yüklü olması gerekir. Raylar yüklü değilse, sol kil ve sağ-Kııl slaytlarını, kasa kasasının kenarlarına yüklersiniz. Bunlar her bir tarafta altı ölçüm screws kullanarak iliştirirler. Yön ile ilgili yardım için, kıl slaytları **LH – Front** ve **RH – Front**olarak işaretlenir ve kutunun arka tarafına doğru bir şekilde yapıştırılmış olan uçta bir uçtan uca gösterilir.<br/>
    
-    ![Kasa Kasası 'na demiryolu kasalarını ekleme](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
+    ![Kutu gövdesine sürgülü raylar ekleme](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
     **İç demiryolu slaytlarını kutunun kenarlarına ekleme**
    
     Etiket | Açıklama
     ----- | -----------
-    1\.     | A 3x4 düğme-baş vida
+    1     | A 3x4 düğme-baş vida
     2     | Kasa slaytları
 
 2. Dış sol demiryolu ve dış sağ demiryolu derlemelerini raf dolabı dikey üyelerine iliştirin. Köşeli ayraçlar **LH**, **RH**ve **bu yana** doğru yönde size yol gösterecek şekilde işaretlenir.
@@ -121,13 +114,13 @@ Bir bağlama rayları kümesi, 19 inç raf dolabı ile kullanılmak üzere sağl
 4. Kııl derlemesini raf dikey üyelerine güvenli hale getirmek için, belirtilen ölçüm screıws ' nin ikisini kullanın. Önünde ve diğeri arkada bir vida kullanın.
 5. Diğer demiryolu derlemesi için bu adımları tekrarlayın.<br/>
    
-     ![Kııl slaytlarını raf dolabına ekleme](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
+     ![Raflı dolaba sürgülü raylar ekleme](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
    
     **Dış demiryolu derlemelerini rafa ekleme**
    
    | Etiket | Açıklama |
    | --- | --- |
-   |   1\. |Clamping vidalı |
+   |   1 |Clamping vidalı |
    |   2 |Kare deliği ön dolap gönderisi vidalı |
    |   3 |Sol demiryolu ön konumu PIN 'leri |
    |   4 |Clamping vidalı |
@@ -140,27 +133,27 @@ Yeni yüklenen raf raylarını kullanarak cihazı rafa bağlamak için aşağıd
 1. Bir yardımcı ile, Kasası kaldırın ve raf raylarıyla hizalayın.
 2. Cihazı, Raya 'ya dikkatle ekleyin ve ardından cihazı raf dolabına tamamen gönderin.<br/>
    
-    ![Cihaz rafa ekleniyor](./media/storsimple-8100-hardware-installation/HCSInsertingDeviceintheRack.png)
+    ![Cihazı rafa yerleştirme](./media/storsimple-8100-hardware-installation/HCSInsertingDeviceintheRack.png)
    
     **Cihazı rafa bağlama**
 3. Caps Free 'ı çekerek sol ve sağ ön flanş harflerini kaldırın. Flanş 'ın üst sınırı, flanş 'lere kolayca yaslar.
 4. Her bir flanş, sol ve sağ aracılığıyla bir adet Phillips-Head vida yükleyerek, rafa ait kutunun güvenliğini sağlayın.
 5. Bir konuma basarak ve onları yerinde yaslayarak, flanş Cap 'leri yükler.<br/>
    
-     ![Flanş Caps 'i yükleme](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
+     ![Flanş başlıklarını takma](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
    
     **Flanş Cap 'i yükleme**
    
    | Etiket | Açıklama |
    | --- | --- |
-   |   1\. |Kutu birleşme vidalı |
+   |   1 |Kutu birleşme vidalı |
 
 Bir sonraki adım, cihazınızı güç, ağ ve seri erişim için kablolayın.
 
 ## <a name="cable-your-storsimple-8100-device"></a>StorSimple 8100 cihazınızı bağlayın
 Aşağıdaki yordamlarda, StorSimple 8100 cihazınızın güç, ağ ve seri bağlantılar için nasıl kablo olarak kullanılacağı açıklanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Cihazınızın kablolarını bağlamaya başlamadan önce şunlara ihtiyacınız olacaktır:
 
 * Depolama cihazınız, tamamen açılmış ve rafa takılı.
@@ -198,7 +191,7 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
    |   6 |Seri bağlantı noktaları |
 2. Ağ kablolaması için aşağıdaki diyagrama bakın. (En düşük ağ yapılandırması düz mavi çizgilerle gösterilir. Yüksek kullanılabilirlik ve performans için gereken ek yapılandırma noktalı çizgilere göre gösterilir.)
 
-    ![Ağ için 2U cihazınızı bağlayın](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
+    ![Kabloyla 2U cihazınızın ağ bağlantısını yapın](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
 
     **Cihazınız için ağ kablolaması**
 
@@ -209,7 +202,7 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
    | C    | PCM 0 |
    | D    | Denetleyici 1 |
    | E    | PCM 1 |
-   | F, G | Konaklar |
+   | F, G | Ana bilgisayarlar |
    | 0-5  | Ağ arabirimleri |
 
 
@@ -239,11 +232,11 @@ Seri bağlantı noktanızın kablosunu almak için aşağıdaki adımları gerç
 2. Cihaz arkadüzüzde etkin denetleyiciyi belirler. Yanıp sönen mavi, denetleyicinin etkin olduğunu gösterir.
 3. Belirtilen seri kablolarını (gerekirse, dizüstü bilgisayarınızın USB seri dönüştürücüsünü) kullanın ve konsolunuzu veya bilgisayarınızı (cihaza yönelik terminal öykünmesi ile) etkin denetleyicinin seri bağlantı noktasına bağlayın.
 4. Bilgisayarınıza seri USB sürücüleri (cihazla birlikte) yükler.
-5. Seri bağlantıyı aşağıdaki şekilde ayarlayın: 115.200 baud, 8 veri biti, 1 durdurma biti, eşlik yok ve akış denetimi None olarak ayarlanmadı.
+5. Seri bağlantıyı şu şekilde ayarlayın: 115.200 baud, 8 veri biti, 1 Dur bit, eşlik yok ve akış denetimi None olarak ayarlanmadı.
 6. Konsola ENTER tuşuna basarak bağlantının çalıştığını doğrulayın. Seri konsol menüsü görünmelidir.
 
 > [!NOTE]
-> **Işık yönetimi**: Cihaz, uzak bir veri merkezinde veya sınırlı erişimli bir bilgisayar odasına yüklendiğinde, her iki denetleyiciyle seri bağlantıların her zaman bir seri konsol anahtarına veya benzer bir donanıma bağlı olduğundan emin olun. Bu, ağ kesintileri veya beklenmeyen başarısızlıklar varsa bant dışı uzaktan denetim ve destek işlemlerine izin verir.
+> **Işık yönetimi**: cihaz, uzak bir veri merkezinde veya sınırlı erişimli bir bilgisayar odasına yüklendiğinde, her iki denetleyiciyle seri bağlantıların her zaman bir seri konsol anahtarına veya benzer bir donanıma bağlı olduğundan emin olun. Bu, ağ kesintileri veya beklenmeyen başarısızlıklar varsa bant dışı uzaktan denetim ve destek işlemlerine izin verir.
 > 
 > 
 

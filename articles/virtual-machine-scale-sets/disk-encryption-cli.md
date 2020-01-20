@@ -1,20 +1,19 @@
 ---
 title: Azure CLı ile Azure ölçek kümeleri için diskleri şifreleme
 description: Windows sanal makine ölçek kümesindeki sanal makine örneklerini ve bağlı diskleri şifrelemek için Azure PowerShell kullanmayı öğrenin
-services: virtual-machine-scale-sets
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2577eef95cad3405eb42af22e4c57511a660c1a6
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 557d5c023acbc7987d58c9e78bfe11e25f314879
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530816"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279072"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLı ile bir sanal makine ölçek kümesindeki işletim sistemini ve bağlı veri disklerini şifreleme
 
@@ -164,7 +163,7 @@ VM örnekleri şifrelendiğinde, aşağıdaki örnek çıktıda gösterildiği g
 ]
 ```
 
-## <a name="disable-encryption"></a>Şifrelemeyi devre dışı bırak
+## <a name="disable-encryption"></a>Şifrelemeyi devre dışı bırakma
 
 Artık şifrelenmiş VM örnekleri disklerini kullanmak istemiyorsanız, [az VMSS ENCRYPTION Disable](/cli/azure/vmss/encryption?view=azure-cli-latest#az-vmss-encryption-disable) ile şifrelemeyi şu şekilde devre dışı bırakabilirsiniz:
 
@@ -176,4 +175,4 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 - Bu makalede, Azure CLı 'yi bir sanal makine ölçek kümesini şifrelemek için kullandınız. [Azure PowerShell](disk-encryption-powershell.md) veya [Azure Resource Manager şablonlarını](disk-encryption-azure-resource-manager.md)da kullanabilirsiniz.
 - Başka bir uzantı sağlandıktan sonra Azure disk şifrelemesi 'nin uygulanmasını istiyorsanız [uzantı sıralamasını](virtual-machine-scale-sets-extension-sequencing.md)kullanabilirsiniz. 
-- Linux ölçek kümesi veri diski şifrelemesi için uçtan uca toplu iş dosyası örneği [burada](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat)bulunabilir. Bu örnek, bir kaynak grubu, Linux ölçek kümesi oluşturur, 5 GB 'lık bir veri diski bağlar ve sanal makine ölçek kümesini şifreler.
+- Linux ölçek kümesi veri diski şifrelemesi için uçtan uca toplu iş dosyası örneği [burada](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat)bulunabilir. Bu örnek, bir kaynak grubu, Linux ölçek kümesi oluşturur, 5 GB'lık veri diskini bağlar ve sanal makine ölçek kümesi şifreler.

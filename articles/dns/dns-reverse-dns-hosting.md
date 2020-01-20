@@ -1,23 +1,18 @@
 ---
-title: Azure DNS 'de ters DNS arama bölgeleri barındırma | Microsoft Docs
+title: Azure DNS 'de ters DNS arama bölgeleri barındırma
 description: IP aralıklarınız için ters DNS arama bölgelerini barındırmak üzere Azure DNS nasıl kullanacağınızı öğrenin
-services: dns
-documentationcenter: na
 author: asudbring
-manager: jeconnoc
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: allensu
-ms.openlocfilehash: aeefb523b401effe4dedb21a8284f296948bbef9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6052934e15d6975265c9eded459eea4446c9eee1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211256"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277946"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS 'de ters DNS arama bölgeleri barındırma
 
@@ -33,7 +28,7 @@ Bu makale, Azure portal, Azure PowerShell, Azure klasik CLı veya Azure CLı kul
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Geriye doğru arama DNS bölgesi oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Hub** menüsünde **Yeni** > **ağ**' ı ve ardından **DNS bölgesi**' ni seçin.
 
    !["DNS bölgesi" seçimi](./media/dns-reverse-dns-hosting/figure1.png)

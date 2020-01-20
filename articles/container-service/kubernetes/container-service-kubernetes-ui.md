@@ -1,49 +1,47 @@
 ---
-title: (KULLANIM DIŞI) Azure Kubernetes kümesi web kullanıcı Arabirimi ile yönetme
-description: Azure Container Service'te Kubernetes web kullanıcı arabirimini kullanarak
-services: container-service
+title: Kullanım DıŞı Azure Kubernetes kümesini Web Kullanıcı arabirimi ile yönetme
+description: Azure Container Service 'de Kubernetes Web Kullanıcı arabirimini kullanma
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: c3a79b2e4fab807613a54d2792f5f5b97570293b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6ce78ca19458b497980cf2cfc374f787d3a5d9f5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60309778"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276993"
 ---
-# <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(KULLANIM DIŞI) Azure Container Service ile Kubernetes web kullanıcı arabirimini kullanarak
+# <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>Kullanım DıŞı Azure Container Service ile Kubernetes Web Kullanıcı arabirimini kullanma
 
 > [!TIP]
-> Bu makale, güncelleştirilmiş sürümü kullanan Azure Kubernetes Service için bkz: [Kubernetes web panosuna Azure Kubernetes Service (AKS) erişme](../../aks/kubernetes-dashboard.md).
+> Azure Kubernetes hizmetini kullanan Bu makalenin güncelleştirilmiş sürümü için bkz. [Azure Kubernetes hizmeti 'nde (AKS) Kubernetes web panosuna erişme](../../aks/kubernetes-dashboard.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu izlenecek yol, sahibi olduğunuzu varsayar [Azure Container Service kullanan bir Kubernetes kümesi oluşturuldu](container-service-kubernetes-walkthrough.md).
+## <a name="prerequisites"></a>Ön koşullar
+Bu izlenecek yol, [Azure Container Service kullanarak bir Kubernetes kümesi oluşturduğunuzu](container-service-kubernetes-walkthrough.md)varsayar.
 
 
-Ayrıca, Azure CLI'yı sahibi olduğunuzu varsayar ve `kubectl` araçlarının yüklü.
+Ayrıca, Azure CLı ve `kubectl` araçlarının yüklü olduğunu varsaymaktadır.
 
-Varsa, test edebilirsiniz `az` çalıştırarak yüklü aracı:
+Şunu çalıştırarak `az` aracı yüklüyse test edebilirsiniz:
 
 ```console
 $ az --version
 ```
 
-Öğeniz yoksa `az` yüklü aracı yönergeler sunulmaktadır [burada](https://github.com/azure/azure-cli#installation).
+`az` aracı yüklü değilse, [burada](https://github.com/azure/azure-cli#installation)yönergeler vardır.
 
-Varsa, test edebilirsiniz `kubectl` çalıştırarak yüklü aracı:
+Şunu çalıştırarak `kubectl` aracı yüklüyse test edebilirsiniz:
 
 ```console
 $ kubectl version
 ```
 
-Öğeniz yoksa `kubectl` yüklü çalıştırabilirsiniz:
+Yüklü `kubectl` yoksa şu şekilde çalıştırabilirsiniz:
 
 ```console
 $ az acs kubernetes install-cli
@@ -51,83 +49,83 @@ $ az acs kubernetes install-cli
 
 ## <a name="overview"></a>Genel Bakış
 
-### <a name="connect-to-the-web-ui"></a>Web kullanıcı Arabirimine bağlanma
-Kubernetes web kullanıcı arabirimini çalıştırarak başlatabilirsiniz:
+### <a name="connect-to-the-web-ui"></a>Web Kullanıcı arabirimine bağlanma
+Şunu çalıştırarak Kubernetes Web Kullanıcı arabirimini başlatabilirsiniz:
 
 ```console
 $ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
-Bu, yerel makinenize Kubernetes web kullanıcı Arabirimine bağlanma güvenli bir proxy konuşmak üzere yapılandırılmış bir web tarayıcısı açmanız gerekir.
+Bu, yerel makinenizi Kubernetes Web Kullanıcı arabirimine bağlayan güvenli bir ara sunucu ile konuşmak için yapılandırılmış bir Web tarayıcısını açmalı.
 
-### <a name="create-and-expose-a-service"></a>Oluşturma ve bir hizmeti göstermesi
-1. Kubernetes web kullanıcı Arabirimi,'ı **Oluştur** üst sağ pencerede düğmesi.
+### <a name="create-and-expose-a-service"></a>Hizmet oluşturma ve kullanıma sunma
+1. Kubernetes Web Kullanıcı arabiriminde sağ üst penceredeki **Oluştur** düğmesine tıklayın.
 
-    ![Kubernetes Create UI](./media/container-service-kubernetes-ui/create.png)
+    ![Kubernetes UI oluştur](./media/container-service-kubernetes-ui/create.png)
 
     Uygulamanızı oluşturmaya başlayabileceğiniz bir iletişim kutusu açılır.
 
-2. Ad verin `hello-nginx`. Kullanım [ `nginx` Docker kapsayıcısından](https://hub.docker.com/_/nginx/) ve bu web hizmetinin üç kopyaya dağıtın.
+2. `hello-nginx`adı verin. [Docker 'dan`nginx` kapsayıcısını](https://hub.docker.com/_/nginx/) kullanın ve bu Web hizmetinin üç çoğaltmasını dağıtın.
 
-    ![Kubernetes Pod Oluştur iletişim kutusu](./media/container-service-kubernetes-ui/nginx.png)
+    ![Kubernetes Pod oluştur Iletişim kutusu](./media/container-service-kubernetes-ui/nginx.png)
 
-3. Altında **hizmet**seçin **dış** ve 80 numaralı bağlantı noktasını girin.
+3. **Hizmet**altında **Harici** ' ı seçin ve 80 numaralı bağlantı noktasını girin.
 
-    Bu ayar Yük Dengeleme trafiği üç kopyaya gerçekleştirir.
+    Bu ayar yükü-trafiği üç çoğaltmaya dengeler.
 
-    ![Kubernetes hizmeti oluşturma iletişim kutusu](./media/container-service-kubernetes-ui/service.png)
+    ![Kubernetes hizmeti oluşturma Iletişim kutusu](./media/container-service-kubernetes-ui/service.png)
 
-4. Tıklayın **Dağıt** Bu kapsayıcıları ve Hizmetleri dağıtmak için.
+4. Bu kapsayıcıları ve hizmetleri dağıtmak için **Dağıt** ' a tıklayın.
 
-    ![Kubernetes dağıtma](./media/container-service-kubernetes-ui/deploy.png)
+    ![Kubernetes dağıtımı](./media/container-service-kubernetes-ui/deploy.png)
 
 ### <a name="view-your-containers"></a>Kapsayıcılarınızı görüntüleyin
-Tıkladıktan sonra **Dağıt**, bunu dağıtan bir görünümünü hizmetinizin kullanıcı arabirimini gösterir:
+**Dağıt**' a tıkladıktan sonra, Kullanıcı arabirimi, dağıttığı için hizmetinizin bir görünümünü gösterir:
 
 ![Kubernetes durumu](./media/container-service-kubernetes-ui/status.png)
 
-Kullanıcı Arabirimi, sol tarafındaki altında bir daire içinde her bir Kubernetes nesnenin durumu görebilirsiniz **pod'ların**. Kısmen dolu bir daire ise, ardından nesnesi hala dağıtıyor. Bir nesne tam olarak dağıtıldığında, yeşil bir onay işareti görüntüler:
+Her bir Kubernetes nesnesinin durumunu, Kullanıcı arabiriminin sol tarafındaki daire içinde, **pods**altında görebilirsiniz. Kısmi bir tam daire ise, nesne hala dağıtılıyor demektir. Bir nesne tam olarak dağıtıldığında yeşil onay işareti görüntülenir:
 
-![Dağıtılan Kubernetes](./media/container-service-kubernetes-ui/deployed.png)
+![Kubernetes dağıtıldı](./media/container-service-kubernetes-ui/deployed.png)
 
-Her şey çalışır duruma geçtikten sonra çalışan web hizmeti ile ilgili ayrıntıları görmek için pod birine tıklayın.
+Her şey çalışırken, çalışan Web hizmeti hakkındaki ayrıntıları görmek için yığınlarınızın birine tıklayın.
 
-![Kubernetes pod'ları](./media/container-service-kubernetes-ui/pods.png)
+![Kubernetes pods](./media/container-service-kubernetes-ui/pods.png)
 
-İçinde **pod'ların** görünümü, bu kapsayıcıları tarafından kullanılan CPU ve bellek kaynaklarının yanı sıra pod kapsayıcıları hakkında daha fazla bilgi görebilirsiniz:
+**Pods** görünümünde, Pod 'daki kapsayıcılar ve bu kapsayıcılar tarafından kullanılan CPU ve bellek kaynakları hakkındaki bilgileri görebilirsiniz:
 
 ![Kubernetes kaynakları](./media/container-service-kubernetes-ui/resources.png)
 
-Kaynaklarını görmüyorsanız, izleme verilerini yayılması için birkaç dakika beklemeniz gerekebilir.
+Kaynakları görmüyorsanız, izleme verilerinin yayılması için birkaç dakika beklemeniz gerekebilir.
 
-Kapsayıcı için günlükleri görmek için tıklayın **günlükleri görüntüleyebilir**.
+Kapsayıcının günlüklerini görmek için **günlükleri görüntüle**' ye tıklayın.
 
 ![Kubernetes günlükleri](./media/container-service-kubernetes-ui/logs.png)
 
 ### <a name="viewing-your-service"></a>Hizmetinizi görüntüleme
-Kapsayıcılarınızı çalıştırmanın yanı sıra, bir dış Kubernetes kullanıcı arabirimini oluşturdu `Service` kümenizde kapsayıcıları trafik için yük dengeleyici sağlar.
+Kubernetes Kullanıcı arabirimi, Kapsayıcılarınızı çalıştırmanın yanı sıra bir dış `Service` oluşturmuştur ve bu sayede trafiği kümenizdeki kapsayıcılara getirecek bir yük dengeleyici sağlar.
 
-Sol gezinti bölmesinden **Hizmetleri** (bulunmamalıdır tek) tüm hizmetleri görüntülemek için.
+Sol gezinti bölmesinde, tüm hizmetleri görüntülemek için **Hizmetler** ' e tıklayın (yalnızca bir tane olmalıdır).
 
 ![Kubernetes Hizmetleri](./media/container-service-kubernetes-ui/service-deployed.png)
 
-Bu görünümde, hizmetinize ayrılmış bir dış uç noktası (IP adresi) görmeniz gerekir.
-Bu IP adresine tıklayın, yük dengeleyicinin ardında çalışan Ngınx kapsayıcınızı görmeniz gerekir.
+Bu görünümde, hizmetinize ayrılmış bir dış uç nokta (IP adresi) görmeniz gerekir.
+Bu IP adresine tıklarsanız, NGINX kapsayıcınızı yük dengeleyicinin arkasında çalışan bir şekilde görmeniz gerekir.
 
-![ngınx görüntüle](./media/container-service-kubernetes-ui/nginx-page.png)
+![NGINX görünümü](./media/container-service-kubernetes-ui/nginx-page.png)
 
 ### <a name="resizing-your-service"></a>Hizmetinizi yeniden boyutlandırma
-Kullanıcı Arabiriminde nesnelerinizi görüntülemenin yanı sıra düzenleyin ve Kubernetes API nesneleri güncelleştirin.
+Nesneleri kullanıcı arabiriminde görüntülemenin yanı sıra, Kubernetes API nesnelerini düzenleyebilir ve güncelleştirebilirsiniz.
 
-İlk olarak, tıklayın **dağıtımları** hizmetiniz için dağıtım görmek için sol gezinti bölmesinde.
+İlk olarak, hizmetiniz için dağıtımı görmek üzere sol gezinti bölmesindeki **dağıtımlar** ' a tıklayın.
 
-Bu görünümde olduktan sonra üzerinde çoğaltma kümesine tıklayın ve ardından **Düzenle** üst gezinti çubuğundaki:
+Bu görünümde olduktan sonra, çoğaltma kümesine tıklayın ve sonra üst gezinti çubuğunda **Düzenle** ' ye tıklayın:
 
-![Kubernetes Edit](./media/container-service-kubernetes-ui/edit.png)
+![Kubernetes düzenleme](./media/container-service-kubernetes-ui/edit.png)
 
-Düzen `spec.replicas` olmasını alan `2`, tıklatıp **güncelleştirme**.
+`spec.replicas` alanı `2`düzenleyin ve **Güncelleştir**' e tıklayın.
 
-Bu iki podlarınız birini silerek bırakmak için yineleme sayısı neden olur.
+Bu, yığınlarınızın birini silerek yineleme sayısının ikiye düşürümesine neden olur.
 
  
 

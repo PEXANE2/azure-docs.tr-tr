@@ -1,33 +1,25 @@
 ---
-title: Öğretici - Azure şablonları ile ölçek kümesini otomatik ölçeklendirme| Microsoft Docs
+title: Öğretici-Azure şablonları ile ölçek kümesini otomatik ölçeklendirme
 description: CPU talepleri arttıkça ve azaldıkça, sanal makine ölçek kümesini otomatik olarak ölçeklendirmek için Azure Resource Manager şablonlarının nasıl kullanılacağını öğrenin
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5e02c88d894c01752965af77861d3e11e1bb101d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d7e0a99a7ba2c00b2ebe5ea8c77d527765ead67
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188080"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271425"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Öğretici: Sanal makine ölçek kümesi Azure şablonu ile otomatik olarak ölçeklendirme
-Ölçek kümesi oluşturduğunuzda, çalıştırmak istediğiniz sanal makine örneği sayısını tanımlarsınız. Uygulamanızın talebi değiştikçe, sanal makine örneklerinin sayısını otomatik olarak artırabilir veya azaltabilirsiniz. Otomatik ölçeklendirme özelliği, uygulamanızın yaşam döngüsü boyunca uygulama performansındaki değişikliklere veya müşteri taleplerine ayak uydurmanıza olanak tanır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Öğretici: Azure şablonu ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
+Ölçek kümesi oluşturduğunuzda, çalıştırmak istediğiniz VM örneği sayısını tanımlarsınız. Uygulamanızın talebi değiştikçe, sanal makine örneklerinin sayısını otomatik olarak artırabilir veya azaltabilirsiniz. Otomatik ölçeklendirme özelliği, uygulamanızın yaşam döngüsü boyunca uygulama performansındaki değişikliklere veya müşteri taleplerine ayak uydurmanıza olanak tanır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Ölçek kümesi ile otomatik ölçeklendirmeyi kullanma
+> * Ölçek kümesiyle otomatik ölçeklendirmeyi kullanma
 > * Otomatik ölçeklendirme kuralları oluşturma ve kullanma
 > * Sanal makine örneklerinde stres testi yapma ve otomatik ölçeklendirme kurallarını tetikleme
 > * Talep düştüğünde geriye doğru otomatik ölçeklendirme
@@ -71,12 +63,12 @@ Aşağıdaki örnekte, ortalama CPU yükü 5 dakika boyunca %70’in üzerine ç
 
 Bu kural için aşağıdaki parametreler kullanılır:
 
-| Parametre         | Açıklama                                                                                                         | Value           |
+| Parametre         | Açıklama                                                                                                         | Değer           |
 |-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
 | *metricName*      | İzlenecek ve ölçek kümesi eylemlerinin uygulanmasında temel alınacak performans ölçümü.                                                   | CPU yüzdesi  |
 | *timeGrain*       | Analiz için ölçümlerin toplanma sıklığı.                                                                   | 1 dakika        |
 | *timeAggregation* | Toplanan ölçümlerin analiz için nasıl bir araya getirileceğini tanımlar.                                                | Ortalama         |
-| *timeWindow*      | Ölçüm ve eşik değerleri karşılaştırılmadan önce izleme yapılacak süre.                                   | 5 dakika       |
+| *timeWindow*      | Ölçüm ve eşik değerleri karşılaştırılmadan önce izlenecek süre.                                   | 5 dakika       |
 | *operator*        | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                     | Büyüktür    |
 | *threshold*       | Otomatik ölçeklendirme kuralının bir eylemi tetiklemesine neden olan değer.                                                      | %70             |
 | *direction*       | Kural geçerli olduğunda ölçek kümesinin ölçeğinin genişletileceğini veya daraltılacağını tanımlar.                                              | Artır        |
@@ -113,7 +105,7 @@ Bu kural için aşağıdaki parametreler kullanılır:
 
 
 ## <a name="define-a-rule-to-autoscale-in"></a>Otomatik ölçeklendirme ölçeğini daraltmak için bir kural tanımlama
-Bir akşam veya hafta sonu uygulama talebiniz azalabilir. Yük belirli bir süreye yayılarak tutarlı şekilde azalıyorsa, ölçek kümesindeki sanal makine örneği sayısını azaltmak için otomatik ölçeklendirme kuralları yapılandırabilirsiniz. Mevcut talebi karşılamak için gerekli örnek sayısını yalnızca siz çalıştırdığınızdan, bu ölçeği daraltma eylemi, ölçek kümenizi çalıştırma maliyetini azaltır.
+Bir akşam veya hafta sonu uygulama talebiniz azalabilir. Yük belirli bir süreye yayılarak tutarlı şekilde azalıyorsa, ölçek kümesindeki sanal makine örneği sayısını azaltmak için otomatik ölçeklendirme kuralları yapılandırabilirsiniz. Mevcut talebi karşılamak için gerekli örnek sayısını yalnızca siz çalıştırdığınızdan, bu ölçeği daraltma eylemi ölçek kümenizi çalıştırma maliyetini azaltır.
 
 Aşağıdaki örnek, ortalama CPU yükü 5 dakikadan uzun bir süre boyunca %30’un altına düştüğünde sanal makine sayısını bir azaltmak için bir kural tanımlar. Önceki ölçeği genişletme kuralından sonra otomatik ölçeklendirme profiline bu kural eklenir:
 
@@ -187,14 +179,14 @@ Birinci sanal makine örneğinizde SSH oturumu açın. Önceki komutta gösteril
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-Oturum açtıktan sonra **stres** yardımcı programını yükleyin. CPU yükü oluşturan *10* **stress** çalışanıyla başlayın. Bu çalışanlar *420* saniye çalışır; bu, otomatik ölçeklendirme kurallarının istenen eylemi uygulamasını sağlamak için yeterlidir.
+Oturum açtıktan sonra **stres** yardımcı programını yükleyin. CPU yükü üreten *10* **stres** çalışanı başlatın. Bu çalışanlar *420* saniye çalışır; bu, otomatik ölçeklendirme kurallarının istenen eylemi uygulamasını sağlamak için yeterlidir.
 
 ```azurecli-interactive
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Zaman **stres** çıkış benzer gösterir *stres: bilgi: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, basın *Enter* isteme geri dönmek için anahtar.
+**stress**, *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
 
 **stress** yardımcı programının CPU yükü oluşturduğunu onaylamak için, **top** yardımcı programını kullanarak etkin sistem yükünü inceleyin:
 
@@ -222,7 +214,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Yeniden, **stres** çıkış benzer gösterir *stres: bilgi: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, basın *Enter* isteme geri dönmek için anahtar.
+Tekrar **stress**, *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
 
 İkinci sanal makine örneğiyle bağlantınızı kapatın. **stress** yardımcı programı, sanal makine örneğinde çalışmaya devam eder.
 
@@ -240,7 +232,7 @@ watch az vmss list-instances \
   --output table
 ```
 
-CPU eşiği karşılandıktan sonra otomatik ölçeklendirme kuralları, ölçek kümesindeki sanal makine örneği sayısını artırır. Aşağıdaki çıktıda, ölçek kümesi ölçeği genişlettiğinde oluşturulan üç sanal makine gösterilmektedir:
+CPU eşiği karşılandıktan sonra otomatik ölçeklendirme kuralları, ölçek kümesindeki sanal makine örneği sayısını artırır. Aşağıdaki çıkışta, ölçek kümesi ölçeği genişlettiğinde oluşturulan üç sanal makine gösterilir:
 
 ```bash
 Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name myScaleSet --output table
@@ -275,7 +267,7 @@ az group delete --name myResourceGroup --yes --no-wait
 Bu öğreticide, Azure CLI ile otomatik olarak bir ölçek kümesinin ölçeğini daraltma veya genişletme işleminin nasıl yapılacağını öğrendiniz:
 
 > [!div class="checklist"]
-> * Ölçek kümesi ile otomatik ölçeklendirmeyi kullanma
+> * Ölçek kümesiyle otomatik ölçeklendirmeyi kullanma
 > * Otomatik ölçeklendirme kuralları oluşturma ve kullanma
 > * Sanal makine örneklerinde stres testi yapma ve otomatik ölçeklendirme kurallarını tetikleme
 > * Talep düştüğünde geriye doğru otomatik ölçeklendirme

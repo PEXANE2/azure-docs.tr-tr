@@ -1,25 +1,23 @@
 ---
-title: (KULLANIM DIŞI) Azure Container Service Öğreticisi - uygulamayı ölçeklendirme
+title: Kullanım DıŞı Azure Container Service öğretici-uygulamayı ölçeklendirme
 description: Azure Container Service öğreticisi - Uygulamayı Ölçeklendirme
-services: container-service
 author: dlepow
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b16682535e7311648e832286e1e876ee0e694712
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b0aa78a519567a8e1ffd76e26f1d9ea3ca701fca
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61230394"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274186"
 ---
-# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(KULLANIM DIŞI) Kubernetes pod'larını ve altyapısını ölçeklendirme
+# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Kullanım DıŞı Kubernetes Pod ve Kubernetes altyapısını ölçeklendirme
 
 > [!TIP]
-> Azure Kubernetes hizmeti kullanan Bu öğretici için güncelleştirilmiş sürümü görmek [Öğreticisi: Azure Kubernetes Service (AKS) uygulama ölçeklendirme](../../aks/tutorial-kubernetes-scale.md).
+> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: Azure Kubernetes Service 'te (AKS) uygulamaları ölçeklendirme](../../aks/tutorial-kubernetes-scale.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -48,7 +46,7 @@ Bu adımları tamamlamadıysanız ve takip etmek istiyorsanız, [Öğretici 1 �
 kubectl get pods
 ```
 
-Çıkış:
+Çıktı:
 
 ```bash
 NAME                               READY     STATUS    RESTARTS   AGE
@@ -68,7 +66,7 @@ kubectl scale --replicas=5 deployment/azure-vote-front
 kubectl get pods
 ```
 
-Çıkış:
+Çıktı:
 
 ```bash
 NAME                                READY     STATUS    RESTARTS   AGE
@@ -107,7 +105,7 @@ Otomatik ölçeklendiricinin durumunu görmek için aşağıdaki komutu çalış
 kubectl get hpa
 ```
 
-Çıkış:
+Çıktı:
 
 ```bash
 NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   REPLICAS   AGE

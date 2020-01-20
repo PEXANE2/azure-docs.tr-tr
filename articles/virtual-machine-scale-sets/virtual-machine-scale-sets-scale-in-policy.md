@@ -1,22 +1,20 @@
 ---
-title: Azure sanal makine ölçek kümeleri ile özel ölçeklendirme ilkeleri kullanma | Microsoft Docs
+title: Azure sanal makine ölçek kümeleri ile özel ölçeklendirme ilkeleri kullanma
 description: Örnek sayısını yönetmek için otomatik ölçeklendirme yapılandırması kullanan Azure sanal makine ölçek kümeleri ile özel ölçeklendirme ilkelerini nasıl kullanacağınızı öğrenin
-services: virtual-machine-scale-sets
 author: avverma
-manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: avverma
-ms.openlocfilehash: c1618c398c0f7c4f0f54647e5232fdacc17de186
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453166"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271759"
 ---
 # <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Önizleme: Azure sanal makine ölçek kümeleri ile özel ölçeklendirme ilkeleri kullanma
 
@@ -145,7 +143,7 @@ Aşağıdaki örneklerde, bir sanal makine ölçek kümesinin, bir ölçek olay�
 
 | Olay                 | /Ay içinde örnek kimlikleri  | Bölge 2 içinde örnek kimlikleri  | Bölge 3 içinde örnek kimlikleri  | Ölçek seçimi                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Başlatma               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Başlangıç               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Ölçek-ın              | 3, 4, 5, 10            | ***2***, 6, 9, 11      | 1, 7, 8                | Bölge 3 en eski VM 'ye sahip olsa bile Bölge 1 ve 2 arasında seçim yapın. Bu bölgedeki en eski VM olduğundan, VM2 Bölge 2 silin.   |
 | Ölçek-ın              | ***3***, 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | En eski VM Bölge 3 olmasına rağmen Bölge 1 seçin. Bu bölgedeki en eski VM olduğundan, VM3 Bölge 1 silin.                  |
 | Ölçek-ın              | 4, 5, 10               | 6, 9, 11               | ***1***, 7, 8          | Bölgeler dengelenir. Ölçek kümesindeki en eski VM olduğundan Bölge 3 VM1 silin.                                               |
@@ -159,7 +157,7 @@ Aşağıdaki örneklerde, bir sanal makine ölçek kümesinin, bir ölçek olay�
 
 | Olay                 | /Ay içinde örnek kimlikleri  | Bölge 2 içinde örnek kimlikleri  | Bölge 3 içinde örnek kimlikleri  | Ölçek seçimi                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Başlatma               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Başlangıç               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Ölçek-ın              | 3, 4, 5, 10            | 2, 6, 9, ***11***      | 1, 7, 8                | Bölge 1 ve 2 arasında seçim yapın. İki bölge genelinde en yeni VM olduğundan Bölge 2 VM11 silin.                                |
 | Ölçek-ın              | 3, 4, 5, ***10***      | 2, 6, 9                | 1, 7, 8                | Diğer iki bölgede daha fazla VM 'ye sahip olduğundan Bölge 1 seçin. Bu bölgedeki en yeni VM olduğundan Bölge 1 VM10 silin.          |
 | Ölçek-ın              | 3, 4, 5                | 2, 6, ***9***          | 1, 7, 8                | Bölgeler dengelenir. Ölçek kümesindeki en yeni VM olduğundan Bölge 2 VM9 silin.                                                |

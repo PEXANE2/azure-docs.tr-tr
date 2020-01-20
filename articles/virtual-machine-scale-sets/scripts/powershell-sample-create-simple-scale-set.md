@@ -1,27 +1,19 @@
 ---
 title: Azure PowerShell örnekleri-temel bir sanal makine ölçek kümesi oluşturma
 description: Bu betik, RDP aracılığıyla erişebileceğiniz Windows Server 2016 çalıştıran bir Azure sanal makine ölçek kümesi oluşturur.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.devlang: na
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1247dab9a9d2b39eea41b617957461ffa544e66b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 123ba8ef931113b2c822fb1d02fa51e1d085c90e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350848"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276570"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>PowerShell ile temel bir sanal makine ölçek kümesi oluşturma
 Bu betik, Windows Server 2016 çalıştıran bir sanal makine ölçek kümesi oluşturur. Betiği çalıştırdıktan sonra sanal makine örneklerine RDP üzerinden erişebilirsiniz.

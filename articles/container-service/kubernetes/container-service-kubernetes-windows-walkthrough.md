@@ -1,32 +1,30 @@
 ---
-title: (KULLANIM DIŞI) Hızlı Başlangıç - Windows için Azure Kubernetes kümesi
+title: Kullanım DıŞı Hızlı Başlangıç-Windows için Azure Kubernetes kümesi
 description: Azure CLI ile Azure Container Service'te Windows kapsayıcıları için Kubernetes kümesi oluşturmayı hızlı bir şekilde öğrenin.
-services: container-service
 author: dlepow
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: d7ce702bb726fb89780d251f31023c9490112c36
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148808"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277656"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(KULLANIM DIŞI) Windows kapsayıcıları için Kubernetes kümesi dağıtma
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>Kullanım DıŞı Windows kapsayıcıları için Kubernetes kümesi dağıtma
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu kılavuzda, [Azure Container Service](../container-service-intro.md)'te [Kubernetes](https://kubernetes.io/docs/home/) kümesi dağıtmak için Azure CLI'yi nasıl kullanacağınız ayrıntılı olarak açıklanmaktadır. Küme dağıtıldıktan sonra, Kubernetes `kubectl` komut satırı aracı ile kümeye bağlanır ve ilk Windows kapsayıcınızı dağıtırsınız.
+Azure CLI, komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu kılavuz, [Azure Container Service](../container-service-intro.md)’te [Kubernetes](https://kubernetes.io/docs/home/) kümesi dağıtmak için Azure CLI’nın kullanımını ayrıntılı olarak açıklar. Küme dağıtıldıktan sonra, Kubernetes `kubectl` komut satırı aracı ile kümeye bağlanır ve ilk Windows kapsayıcınızı dağıtırsınız.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli). 
+CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme]( /cli/azure/install-azure-cli). 
 
 > [!NOTE]
 > Azure Container Service'te Kubernetes için Windows kapsayıcıları desteği önizleme aşamasındadır. 
@@ -59,7 +57,7 @@ az acs create --orchestrator-type=kubernetes \
     --admin-password myPassword12
 ```
 
-Birkaç dakika sonra komut tamamlanır ve size dağıtımınız hakkındaki bilgiler gösterilir.
+Birkaç dakika sonra komut tamamlanır ve size dağıtımınız hakkındaki bilgileri gösterir.
 
 ## <a name="install-kubectl"></a>Kubectl yükleyin
 
@@ -67,7 +65,7 @@ Birkaç dakika sonra komut tamamlanır ve size dağıtımınız hakkındaki bilg
 
 Azure CloudShell'i kullanıyorsanız `kubectl` zaten yüklüdür. Yerel olarak yüklemek istiyorsanız [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) komutunu kullanabilirsiniz.
 
-Aşağıdaki Azure CLI örneğinde `kubectl`, sisteminize yüklenir. Windows'da bu komutu yönetici olarak çalıştırın.
+Aşağıdaki Azure CLI örneğinde, `kubectl` sisteminize yüklenir. Windows'da bu komutu yönetici olarak çalıştırın.
 
 ```azurecli-interactive 
 az acs kubernetes install-cli
@@ -162,7 +160,7 @@ Pod'u genel bir IP adresiyle herkesin kullanımına sunmak için aşağıdaki ko
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-Bu komutla Kubernetes, hizmet ve hizmet için genel bir IP adresi ile Azure load balancer kuralı oluşturur. 
+Bu komutla Kubernetes, hizmet için genel IP adresine sahip bir hizmet ve bir Azure yük dengeleyici kuralı oluşturur. 
 
 Hizmetin durumunu görmek için aşağıdaki komutu çalıştırın.
 
@@ -170,7 +168,7 @@ Hizmetin durumunu görmek için aşağıdaki komutu çalıştırın.
 kubectl get svc
 ```
 
-IP adresi başlangıçta `pending` olarak görünür. Birkaç dakika sonra, `iis` pod'unun dış IP adresi şu şekilde ayarlanır:
+Başlangıçta IP adresi `pending` olarak görünür. Birkaç dakika sonra, `iis` pod'unun dış IP adresi şu şekilde ayarlanır:
   
 ```azurecli-interactive
 NAME         CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE       
@@ -183,7 +181,7 @@ Dış IP adresinde varsayılan IIS karşılama sayfasını görmek için istedi�
 ![IIS’e göz atma görüntüsü](./media/container-service-kubernetes-windows-walkthrough/kubernetes-iis.png)  
 
 
-## <a name="delete-cluster"></a>Kümeyi silme
+## <a name="delete-cluster"></a>Küme silme
 Kümeye artık ihtiyacınız yoksa [az group delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini ve ilgili tüm kaynakları kaldırabilirsiniz.
 
 ```azurecli-interactive 

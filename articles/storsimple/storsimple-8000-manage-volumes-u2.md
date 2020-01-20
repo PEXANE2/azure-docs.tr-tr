@@ -1,65 +1,57 @@
 ---
-title: StorSimple birimlerini (Aktualizace 3) yönetme | Microsoft Docs
-description: Ekleme, değiştirme, izleme ve StorSimple birimleri silin ve bunları gerekirse çevrimdışına almak nasıl açıklar.
-services: storsimple
-documentationcenter: NA
+title: StorSimple birimlerini yönetme (güncelleştirme 3)
+description: StorSimple birimlerinin nasıl ekleneceğini, değiştirileceğini, izleneceğini ve silineceğini ve gerekirse bunları çevrimdışına alma açıklanmaktadır.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: f7bfe41b4cdc9989c6b949011bc240275886b6f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634903"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278837"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Birimler (güncelleştirme 3 veya üzeri) yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanma
+# <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Birimleri yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın (güncelleştirme 3 veya üzeri)
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide StorSimple cihaz Yöneticisi hizmeti oluşturup güncelleştirme 3 ve üzerini çalıştıran StorSimple 8000 serisi cihazlar birimlerde yönetmek için nasıl kullanılacağını açıklar.
+Bu öğreticide, güncelleştirme 3 ve üzeri sürümlerini çalıştıran StorSimple 8000 serisi cihazlarda birimler oluşturmak ve yönetmek için StorSimple Aygıt Yöneticisi hizmetinin nasıl kullanılacağı açıklanmaktadır.
 
-StorSimple cihaz Yöneticisi hizmeti, StorSimple çözümünüzü tek bir web arabiriminden yönetmenizi sağlayan Azure portalında bir uzantısıdır. Tüm cihazlarınızı birimlerde yönetmek için Azure portalını kullanın. Ayrıca oluşturabilir ve StorSimple Hizmetleri yönetin cihazları, yedekleme ilkelerini ve yedekleme kataloğunu yönetme ve Uyarıları görüntüleyin.
+StorSimple Aygıt Yöneticisi hizmeti, StorSimple çözümünüzü tek bir web arabiriminden yönetmenizi sağlayan Azure portal bir uzantıdır. Tüm cihazlarınızda birimleri yönetmek için Azure portal kullanın. Ayrıca, StorSimple Hizmetleri oluşturabilir ve yönetebilir, cihazları, yedekleme ilkelerini ve yedekleme kataloğunu yönetebilir ve uyarıları görüntüleyebilirsiniz.
 
-## <a name="volume-types"></a>Birim türü
+## <a name="volume-types"></a>Birim türleri
 
-StorSimple birimlerini olabilir:
+StorSimple birimleri şu olabilir:
 
-* **Birimleri'yerel olarak sabitlenmiş**: Bu birimlerdeki verileri her zaman yerel StorSimple cihazında kalır.
-* **Katmanlı birimlerin**: Bu birimlerdeki verileri buluta sığdırmaya.
+* **Yerel olarak sabitlenmiş birimler**: Bu birimlerdeki veriler her zaman yerel StorSimple cihazında kalır.
+* **Katmanlı birimler**: Bu birimlerdeki veriler buluta taşıbilirler.
 
-Bir arşiv birim katmanlı birimin türüdür. Arşiv birimleri için kullanılan büyük yinelenenleri kaldırma öbek boyutu cihazın büyük veri parçalarını buluta aktararak izin verir.
+Arşiv birimi katmanlı bir birim türüdür. Arşiv birimleri için kullanılan daha büyük yinelenenleri kaldırma öbek boyutu, cihazın daha büyük veri kesimlerini buluta aktarmasına olanak tanır.
 
-Gerekirse, birimi değiştirebileceğiniz, yerel türden katmanlı veya öğesinden yerel katmanlı. Daha fazla bilgi için Git [birim türünü değiştirmek](#change-the-volume-type).
+Gerekirse, birim türünü yerel veya katmanlı iken yerel olarak değiştirebilirsiniz. Daha fazla bilgi için [birim türünü değiştirme](#change-the-volume-type)bölümüne gidin.
 
 ### <a name="locally-pinned-volumes"></a>Yerel olarak sabitlenmiş birimler
 
-Yerel olarak sabitlenmiş birimler değil katman verileri buluta yapmak tam olarak sağlanan birimler olan, böylece yerel sağlama için birincil veri, bulut bağlantısı bağımsız garanti eder. Verileri yerel olarak sabitlenmiş birim üzerinde yinelenenleri kaldırılmış ve sıkıştırılmış değil; Ancak, yerel olarak sabitlenmiş birimlerin anlık görüntüleri kaldırılma. 
+Yerel olarak sabitlenmiş birimler, buluta veri katmayan ve bulut bağlantısından bağımsız olarak birincil veriler için yerel garanti sağlayan tam olarak sağlanmış birimlerdir. Yerel olarak sabitlenmiş birimlerdeki veriler çoğaltılamaz ve sıkıştırılmaz; Ancak, yerel olarak sabitlenmiş birimlerin anlık görüntüleri yinelenenleri kaldırılır. 
 
-Yerel olarak sabitlenmiş birimler tam olarak sağlanır; Bu nedenle, bunları oluşturduğunuz Cihazınızda yeterli alan olmalıdır. En büyük boyutunu StorSimple 8100 cihazında 8 TB ve 8600 model Cihazınızı 20 TB'a kadar yerel olarak sabitlenmiş birimleri sağlayabilirsiniz. StorSimple anlık görüntü meta verileri ve veri işleme için cihazda yerel kalan alanı ayırır. Yerel olarak sabitlenmiş bir birim için maksimum alan boyutunu artırabilir, ancak oluşturulduktan sonra bir birimin boyutuna sayısından az olamaz.
+Yerel olarak sabitlenmiş birimler tam olarak sağlanır; Bu nedenle, oluşturduğunuz sırada cihazınızda yeterli alana sahip olmanız gerekir. StorSimple 8100 cihazında en fazla 8 TB ve 8600 cihazında 20 TB olmak üzere, yerel olarak sabitlenmiş birimler sağlayabilirsiniz. StorSimple, anlık görüntüler, meta veriler ve veri işleme için cihazdaki kalan yerel alanı ayırır. Yerel olarak sabitlenmiş bir birimin boyutunu kullanılabilir maksimum alana artırabilirsiniz, ancak oluşturulduktan sonra bir birimin boyutunu azaltamazsınız.
 
-Yerel olarak sabitlenmiş bir birim oluşturduğunuzda, katmanlı birimlerin oluşturulması için kullanılabilir alan azalır. Bu durumun tersi de geçerlidir: var olan katmanlı birimler varsa, oluşturma yerel olarak sabitlenmiş birimler için mevcut olan alanı yukarıda belirtilen en üst düzeye göre daha düşük olacaktır. Yerel birimler üzerinde daha fazla bilgi için [yerel olarak sabitlenmiş birimler hakkında sık sorulan sorular](storsimple-8000-local-volume-faq.md).
+Yerel olarak sabitlenmiş bir birim oluşturduğunuzda, katmanlı birimlerin oluşturulması için kullanılabilir alan azalır. Tersi de geçerlidir: mevcut katmanlı birimleriniz varsa, yerel olarak sabitlenmiş birimler oluşturmak için kullanılabilen alan, yukarıda belirtilen en fazla sınırdan daha düşük olacaktır. Yerel birimler hakkında daha fazla bilgi için [yerel olarak sabitlenmiş birimlerde sık sorulan sorulara](storsimple-8000-local-volume-faq.md)bakın.
 
 ### <a name="tiered-volumes"></a>Katmanlı birimler
 
-Katmanlı birimlerin sık erişilen verilerin cihazda yerel kalmasını ve sık kullanılan veriler otomatik olarak buluta katmanlanmış ölçülü kaynak kullanan birimler listelenmiştir. Ölçülü kaynak sağlama fiziksel kaynakları aşmayı kullanılabilir depolama alanı görünür bir sanallaştırma teknolojisidir. Önceden yeterli depolama alanı ayırmak yerine, StorSimple ölçülü kaynak sağlama geçerli gereksinimlerini karşılamak için yeterli alan ayırmak için kullanır. StorSimple artırabilir veya azaltabilirsiniz değişen taleplerini karşılamak üzere bulut depolama çünkü bu yaklaşım bulut depolama esnek yapısı kolaylaştırır.
+Katmanlı birimler, sık erişilen verilerin cihazda yerel olarak kalması ve daha az sık kullanılan verilerin buluta otomatik olarak katmanlanmasından oluşan ölçülü kaynak sağlanmış birimlerdir. Ölçülü kaynak sağlama, kullanılabilir depolamanın fiziksel kaynakları aşacak şekilde göründüğü bir sanallaştırma teknolojisidir. StorSimple, önceden yeterli depolama alanı ayırmak yerine, geçerli gereksinimleri karşılamak için yeterli alan ayırmak üzere ölçülü kaynak sağlama kullanır. Bu yaklaşım, StorSimple tarafından değişiklik taleplerini karşılamak üzere bulut depolamasını artırabilir veya azaltababileceğinden, bulut depolamanın esnek yapısı bu yaklaşımı kolaylaştırır.
 
-Arşiv verileri için katmanlı birim kullanıyorsanız, **bu birimi daha az sıklıkta erişilen arşiv verileri için kullanın** biriminiz için yinelenenleri kaldırma öbek boyutunu 512 KB olarak değiştirmek için onay kutusunu. Bu seçeneği belirlemezseniz, ilgili katmanlı birim 64 KB öbek boyutu kullanır. Daha büyük bir yinelenenleri kaldırma öbek boyutu cihazın büyük arşiv verilerinin buluta aktarımını hızlandırmasını sağlar.
+Arşiv verileri için katmanlı birim kullanıyorsanız, biriminizin yinelenenleri kaldırma öbeği boyutunu 512 KB olarak değiştirmek için **Bu birimi daha az sıklıkta erişilen arşiv verileri Için kullan** onay kutusunu seçin. Bu seçeneği seçmezseniz, ilgili katmanlı birim 64 KB 'lık öbek boyutunu kullanır. Daha büyük bir yinelenenleri kaldırma öbek boyutu cihazın büyük arşiv verilerinin buluta aktarımını hızlandırmasını sağlar.
 
 
 ### <a name="provisioned-capacity"></a>Sağlanan kapasite
 
-Her bir cihaz ve birim türü için sağlanan kapasite üst sınırı için aşağıdaki tabloya bakın. (Yerel olarak sabitlenmiş birimler, sanal bir cihazda kullanılabilir olmadığını unutmayın.)
+Her cihaz ve birim türü için sağlanan maksimum kapasite için aşağıdaki tabloya bakın. (Yerel olarak sabitlenmiş birimlerin sanal bir cihazda kullanılabilir olmadığına unutmayın.)
 
-|  | En çok katmanlı birim boyutu | En fazla yerel olarak sabitlenmiş birim boyutu |
+|  | Maksimum katmanlı birim boyutu | Yerel olarak sabitlenmiş birim boyutu üst sınırı |
 | --- | --- | --- |
 | **Fiziksel cihazlar** | | |
 | 8100 |64 TB |8 TB |
@@ -68,33 +60,33 @@ Her bir cihaz ve birim türü için sağlanan kapasite üst sınırı için aşa
 | 8010 |30 TB |Yok |
 | 8020 |64 TB |Yok |
 
-## <a name="the-volumes-blade"></a>Birimleri dikey penceresi
+## <a name="the-volumes-blade"></a>Birimler dikey penceresi
 
-**Birimleri** dikey penceresinde, başlatıcıları (sunucu) için Microsoft Azure StorSimple cihazında sağlanan depolama birimleri yönetme olanak tanır. Hizmetinize bağlı StorSimple cihazlarda birimlerin listesini görüntüler.
+**Birimler** dikey penceresi, başlatıcılarınız (sunucular) için Microsoft Azure StorSimple cihazında sağlanan depolama birimlerini yönetmenizi sağlar. Hizmetinize bağlı olan StorSimple cihazlarındaki birimlerin listesini görüntüler.
 
  ![Birimler sayfası](./media/storsimple-8000-manage-volumes-u2/volumeslist.png)
 
-Birim öznitelikleri bir dizi oluşur:
+Bir birim bir dizi öznitelik içerir:
 
-* **Birim adı** – benzersiz olmalıdır ve birim belirlemeye yardımcı olur ve açıklayıcı bir ad. Bu ad, belirli bir birimde filtrelerken raporları izleme de kullanılır. Birim oluşturulduktan sonra adı değiştirilemez.
-* **Durum** – çevrimiçi veya çevrimdışı olabilir. Bir birimi çevrimdışı ise, birim kullanmak erişim izni verilen başlatıcılara (Sunucuları) görünür değil.
-* **Kapasite** – (sunucu) başlatıcı tarafından depolanan verilerin toplam miktarı belirtir. Yerel olarak sabitlenmiş birimler, tam olarak sağlanır ve StorSimple cihazında bulunur. Katmanlı birim ölçülü ve verileri yinelenen verileri kaldırma işlemi. Ölçülü kaynak kullanan birimler ile Cihazınızı fiziksel depolama kapasitesi dahili olarak veya bulutta yapılandırılmış birim kapasitesi göre önceden tahsis etmez. Birim kapasitesi ayrılan ve isteğe bağlı olarak kullanılan.
-* **Tür** – birimin olup olmadığını belirten **katmanlı** (varsayılan) veya **yerel olarak sabitlenmiş**.
+* **Birim adı** : benzersiz olması gereken açıklayıcı bir ad ve birimin tanımlanmasına yardımcı olur. Bu ad, belirli bir birimi filtreleyerek İzleme raporlarında da kullanılır. Birim oluşturulduktan sonra yeniden adlandırılamaz.
+* **Durum** – çevrimiçi veya çevrimdışı olabilir. Bir birim çevrimdışıysa, birimi kullanmak için erişim izni verilen başlatıcılara (sunucular) görünmez.
+* **Kapasite** : başlatıcı tarafından depolanabilecek toplam veri miktarını belirtir (sunucu). Yerel olarak sabitlenmiş birimler tam olarak sağlanır ve StorSimple cihazında bulunur. Katmanlı birimler ölçülü kaynak olarak sağlanır ve veriler kaldırılır. Ölçülü kaynak sağlanan birimlerde cihazınız, yapılandırılmış birim kapasitesine göre dahili olarak veya bulutta fiziksel depolama kapasitesini önceden ayırır. Birim kapasitesi talep üzerine ayrılır ve kullanılır.
+* **Tür** – birimin **katmanlı** (varsayılan) veya **yerel olarak sabitlenmiş**olduğunu gösterir.
 
-Yönergeleri Bu öğreticide aşağıdaki görevleri gerçekleştirmek için kullanın:
+Aşağıdaki görevleri gerçekleştirmek için bu öğreticideki yönergeleri kullanın:
 
-* Birim Ekle 
-* Bir birimi Değiştir 
+* Birim ekleme 
+* Bir birimi değiştirme 
 * Birim türünü değiştirme
-* Birim Sil 
-* Bir birimi çevrimdışı duruma getirin 
+* Bir birimi silme 
+* Bir birimi çevrimdışı duruma getirme 
 * Bir birimi izleyin 
 
-## <a name="add-a-volume"></a>Birim Ekle
+## <a name="add-a-volume"></a>Birim ekleme
 
-[Bir birim oluşturduğunuzda](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) StorSimple 8000 serisi Cihazınızı dağıtımı sırasında. Birim ekleme benzer bir yordamdır.
+StorSimple 8000 serisi cihazınızın dağıtımı sırasında [bir birim oluşturdunuz](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) . Birim eklemek benzer bir yordamdır.
 
-#### <a name="to-add-a-volume"></a>Bir birim eklemek için
+#### <a name="to-add-a-volume"></a>Birim eklemek için
 
 1. **Cihazlar** dikey penceresindeki tablosal cihaz listesinden cihazınızı seçin. **+ Birim ekle**’ye tıklayın.
 
@@ -106,7 +98,7 @@ Yönergeleri Bu öğreticide aşağıdaki görevleri gerçekleştirmek için kul
 
     2. Açılan listeden, birim eklemeniz gereken birim kapsayıcısını seçin.
 
-    3.  Biriminiz için bir **Ad** yazın. Birim oluşturulduktan sonra birim yeniden adlandırılamıyor.
+    3.  Biriminiz için bir **Ad** yazın. Birim oluşturulduktan sonra birimi yeniden adlandıramazsınız.
 
     4. Açılan listede biriminizin **Tür**’ünü seçin. Yerel garantilerin, düşük gecikme sürelerinin ve yüksek performansın gerektiği iş yükleri için **Yerel olarak sabitlenmiş** bir birim seçin. Diğer tüm veriler için **Katmanlı** bir birim seçin. Bu birimi arşiv verileri için kullanıyorsanız **Bu birimi daha az sıklıkta erişilen arşiv verileri için kullanın**’ı işaretleyin.
       
@@ -120,213 +112,213 @@ Yönergeleri Bu öğreticide aşağıdaki görevleri gerçekleştirmek için kul
       
        8100 cihazınızda 8,5 TB boyutunda (izin verilen en yüksek boyut) yerel olarak sabitlenmiş bir birim sağlarsanız, cihazdaki kullanılabilir yerel alanın tümünü kullanmış olursunuz. Katmanlı birimin çalışan kümesinin barındıracak cihazda yerel alan olmadığından, bu noktadan sonra herhangi bir katmanlı birim oluşturamazsınız. Var olan katmanlı birimler kullanılabilir alanı de etkiler. Örneğin, zaten 106 TB boyutunda katmanlı birimlerin bulunduğu bir 8100 cihazınız varsa, yerel olarak sabitlenmiş birimlerin kullanabileceği yalnızca 4 TB’lık alan kalır.
 
-    6. **Bağlı konaklar** alanında oka tıklayın. İçinde **bağlı Konaklar** dikey penceresinde, mevcut bir ACR'yi seçin veya yeni ACR ekleyin. Yeni ACR seçerseniz, sağlamanız, sonra bir **adı** sağlamak için ACR, **iSCSI Qualified ad** (IQN), Windows ana bilgisayarınız. IQN'niz yoksa, bir Windows Server konağının IQN'ini alın gidin. **Oluştur**’a tıklayın. Belirtilen ayarlarla bir birim oluşturulur.
+    6. **Bağlı konaklar** alanında oka tıklayın. **Bağlı konaklar** dikey penceresinde, var olan bir ACR seçin veya yeni bir ACR ekleyin. Yeni bir ACR seçerseniz, ACR 'niz için bir **ad** sağlayın, Windows ana bilgisayarınız Için **iSCSI tam adını** (IQN) sağlayın. IQN yoksa, bir Windows Server konağının ıQN 'sini almak için gidin. **Oluştur**’a tıklayın. Belirtilen ayarlarla bir birim oluşturulur.
 
         ![Oluştur’a tıklayın](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
-Yeni toplu kullanmak artık hazırdır.
+Yeni biriminiz artık kullanıma hazırdır.
 
 > [!NOTE]
-> Varsa yerel olarak sabitlenmiş birim oluşturmak ve ardından başka bir yerel olarak sabitlenmiş birim hemen ardından sırayla işlerinizi birim oluşturma oluşturun. Sonraki birim oluşturma işi başlayabilmeniz için önce ilk birim oluşturma işi bitmesi gerekir.
+> Yerel olarak sabitlenmiş bir birim oluşturup daha sonra hemen yerel olarak sabitlenmiş bir birim oluşturursanız, birim oluşturma işleri sırayla çalışır. İlk birim oluşturma işinin bir sonraki birim oluşturma işinin başlayabilmesi için önce son olması gerekir.
 
-## <a name="modify-a-volume"></a>Bir birimi Değiştir
+## <a name="modify-a-volume"></a>Bir birimi değiştirme
 
-Bir birimi genişletmek veya birim erişimi olan konakları değiştirmek gerektiğinde değiştirin.
+Bir birimi genişletmeniz veya birime erişen Konakları değiştirmeniz gerektiğinde değiştirin.
 
 > [!IMPORTANT]
-> * Cihazdaki birim boyutunu değiştirirseniz, birim boyutu konakta değiştirilmesi gerekir.
-> * Burada açıklanan konak tarafı (2012 R2) Windows Server 2012 için aynıdır. Linux veya diğer ana bilgisayar işletim sistemleri için yordamlar farklı olacaktır. Birimin başka bir işletim sistemi çalıştıran bir konağa değiştirirken, konak işletim sistemi yönergelerine başvurun.
+> * Cihazdaki birim boyutunu değiştirirseniz, birim boyutunun de konakta değiştirilmesi gerekir.
+> * Burada açıklanan konak tarafı adımları Windows Server 2012 (2012R2) içindir. Linux veya diğer ana bilgisayar işletim sistemleri için yordamlar farklı olacaktır. Başka bir işletim sistemi çalıştıran bir konaktaki birimi değiştirirken ana bilgisayar işletim sistemi yönergelerinizi inceleyin.
 
-#### <a name="to-modify-a-volume"></a>Bir birimi değiştirme
+#### <a name="to-modify-a-volume"></a>Bir birimi değiştirmek için
 
-1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablosal listesinde gelen değiştirmek için istediğinize biriminde cihazı seçin. Tıklayın **Ayarları > birimleri**.
+1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablolu listesinden, değiştirmek istediğiniz birimin bulunduğu cihazı seçin. **Ayarlar > birimler**' e tıklayın.
 
-    ![Birimleri dikey penceresine gidin](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Birimler dikey penceresine git](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-2. Birimlerin tablosal listesinde, bir birim seçin ve bağlam menüsünü açmak için sağ tıklayın. Seçin **çevrimdışına** değiştirir, birimi çevrimdışı duruma getirmek.
+2. Birimlerin tablolu listesinden birim ' i seçin ve bağlam menüsünü çağırmak için sağ tıklayın. Çevrimdışı olarak değiştireceğiniz birimi çevrimdışına **Al** ' ı seçin.
 
-    ![Seçin ve bu birimi çevrimdışı duruma](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+    ![Birimi çevrimdışına al ve Seç](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. İçinde **çevrimdışına** dikey penceresinde birimi çevrimdışı duruma getirmenin etkilerini gözden geçirin ve karşılık gelen onay kutusunu işaretleyin. Ana bilgisayarda karşılık gelen birim önce çevrimdışı olduğundan emin olun. StorSimple için bağlı olarak, ana bilgisayar sunucusunda bir birimi çevrimdışı nasıl hakkında daha fazla bilgi için işletim sistemi belirli yönergelerine başvurun. Tıklayın **çevrimdışına**.
+3. **Çevrimdışına Al** dikey penceresinde, birimi çevrimdışı duruma getirmenin etkilerini gözden geçirin ve ilgili onay kutusunu seçin. Konakta karşılık gelen birimin önce çevrimdışı olduğundan emin olun. StorSimple 'a bağlı ana bilgisayar sunucunuzda bir birimi çevrimdışı duruma getirme hakkında daha fazla bilgi için, işletim sistemine özgü yönergelere bakın. **Çevrimdışına Al**' a tıklayın.
 
-    ![Birimi çevrimdışı duruma getirmenin etkilerini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-4. Birimi çevrimdışı (birim durumu ile gösterildiği gibi) sonra birim seçin ve bağlam menüsünü açmak için sağ tıklayın. Seçin **birimi değiştirme**.
+4. Birim çevrimdışı olduktan sonra (birim durumunda gösterildiği gibi), birimi seçin ve bağlam menüsünü çağırmak için sağ tıklayın. **Birimi Değiştir**' i seçin.
 
-    ![Birimi Değiştir'i seçin](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
+    ![Birimi Değiştir ' i seçin](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
 
 
-5. İçinde **birimi değiştirme** dikey penceresinde, aşağıdaki değişiklikleri yapabilirsiniz:
+5. **Birim Değiştir** dikey penceresinde aşağıdaki değişiklikleri yapabilirsiniz:
    
-   1. Birim **adı** düzenlenemez.
-   2. Dönüştürme **türü** yerel olarak sabitlenmiş için katmanlı veya gelen için yerel olarak sabitlenmiş katmanlı (bkz [birim türünü değiştirmek](#change-the-volume-type) daha fazla bilgi için).
-   3. Artırmak **sağlanan kapasite**. **Sağlanan kapasite** yalnızca artırılabilir. Oluşturulduktan sonra bir birim küçültülemez.
-   4. Altında **bağlı Konaklar**, ACR değiştirebilirsiniz. Bir ACR'yi değiştirmek için birimi çevrimdışı olması gerekir.
+   1. Birim **adı** düzenlenemiyor.
+   2. **Türü** yerel olarak sabitlenmiş veya katmanlı olan yerel olarak sabitlenmiş olarak dönüştürün (daha fazla bilgi için bkz. [birim türünü değiştirme](#change-the-volume-type) ).
+   3. **Sağlanan kapasiteyi**artırın. **Sağlanan kapasite** yalnızca artırılabilir. Oluşturulduktan sonra bir birimi daraltamazsınız.
+   4. **Bağlı konaklar**' ın altında ACR 'yi değiştirebilirsiniz. Bir ACR 'yi değiştirmek için birimin çevrimdışı olması gerekir.
 
-       ![Birimi çevrimdışı duruma getirmenin etkilerini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. Tıklayın **Kaydet** yaptığınız değişiklikleri kaydedin. Onayınız istendiğinde **Evet**’e tıklayın. Azure portalında bir güncelleştirme birim iletisi görüntüler. Birimi başarıyla güncelleştirildiğinde bir başarı iletisi görüntüler.
+5. Tıklayın **Kaydet** yaptığınız değişiklikleri kaydedin. Onayınız istendiğinde **Evet**’e tıklayın. Azure portal güncelleştirme birimi iletisi görüntülenir. Birim başarıyla güncelleştirildiği zaman başarılı bir ileti görüntülenir.
 
-    ![Birimi çevrimdışı duruma getirmenin etkilerini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-7. Bir birim genişlettiğiniz, Windows ana bilgisayarınız için aşağıdaki adımları tamamlayın:
+7. Bir birimi genişletiğiniz takdirde, Windows ana bilgisayarınızda aşağıdaki adımları uygulayın:
    
-   1. Git **Bilgisayar Yönetimi** ->**Disk Yönetimi**.
-   2. Sağ **Disk Yönetimi** seçip **diskleri**.
-   3. Güncelleştirdiğiniz birim, sağ tıklayın ve ardından diskleri listesinde seçin **birimi Genişlet**. Birim Genişletme Sihirbazı'nı başlatır. **İleri**’ye tıklayın.
-   4. Varsayılan değerleri kabul Sihirbazı tamamlayın. Sihirbaz tamamlandıktan sonra birim artan boyutu göstermelidir.
+   1. **Bilgisayar yönetimi** ->**disk yönetimi**' ne gidin.
+   2. **Disk yönetimi** ' ne sağ tıklayın ve **diskleri yeniden Tara**' yı seçin.
+   3. Diskler listesinde, güncelleştirdiğiniz birimi seçin, sağ tıklayın ve ardından **Birimi Genişlet**' i seçin. Birim Genişletme Sihirbazı başlar. **İleri**’ye tıklayın.
+   4. Varsayılan değerleri kabul ederek Sihirbazı doldurun. Sihirbaz tamamlandıktan sonra birimde artan boyut gösterilmelidir.
       
       > [!NOTE]
-      > Yerel olarak sabitlenmiş bir birim genişletin ve ardından yerel olarak başka bir toplu hemen ardından, Birim genişletme işler sırayla çalışır sabitlendi. İlk Birim genişletme işlemi sonraki toplu genişletme işi başlayabilmeniz için önce tamamlanmalıdır.
+      > Yerel olarak sabitlenmiş bir birimi genişletir ve ardından daha sonra yerel olarak sabitlenmiş bir birimi genişletirseniz, birim genişletme işleri sırayla çalışır. Sonraki birim genişletme işinin başlayabilmesi için ilk birim genişletme işinin son olması gerekir.
       
 
 ## <a name="change-the-volume-type"></a>Birim türünü değiştirme
 
-Yerel olarak sabitlenmiş için katmanlı birim türünü değiştirebilirsiniz veya öğesinden yerel olarak çok katmanlı sabitlenebilir. Ancak, bu dönüştürme sık oluşum olmamalıdır.
+Birim türünü katmanlı iken yerel olarak sabitlenmiş veya yerel olarak sabitlenmiş olarak değiştirebilirsiniz. Ancak, bu dönüştürme sık görülen bir oluşum olmamalıdır.
 
-### <a name="tiered-to-local-volume-conversion-considerations"></a>Yerel birim dönüştürme değerlendirmeleri için katmanlı
+### <a name="tiered-to-local-volume-conversion-considerations"></a>Katmanlı yerel birim dönüştürme konuları
 
-Yerel olarak sabitlenmiş için katmanlı bir birimden dönüştürmek için bazı nedenler şunlardır:
+Bir birimi katmanlı iken yerel olarak sabitlenmiş olarak dönüştürmenin bazı nedenleri şunlardır:
 
-* Yerel GARANTİLERİN veri kullanılabilirliği ve performansı
-* Bulut gecikme süreleri ve bulut bağlantı sorunları ortadan kaldırılması.
+* Veri kullanılabilirliği ve performansına ilişkin yerel garanti
+* Bulut gecikme sürelerinin ve bulut bağlantı sorunlarının giderilmesi.
 
-Genellikle, küçük bunlar sık erişmek istediğiniz var olan birimler. Yerel olarak sabitlenmiş bir birim, oluşturulduğu sırada tam olarak sağlanır. 
+Genellikle, bunlar sıklıkla erişmek istediğiniz küçük hacimlerdir. Yerel olarak sabitlenmiş bir birim oluşturulduğunda tam olarak sağlanmış olur. 
 
-Yerel olarak sabitlenmiş bir birim için katmanlı birim dönüştürüyorsanız, StorSimple dönüştürme başlatılmadan önce Cihazınızda yeterli alana sahip doğrular. Yetersiz alan varsa, hata alırsınız ve işlemi iptal edilecek. 
-
-> [!NOTE]
-> Yerel olarak sabitlenmiş için katmanlı dönüştürmeye başlamadan önce diğer iş yüklerinin alanı gereksinimleri göz önünde bulundurduğunuzdan emin olun. 
-
-Katmanlı bir dönüştürme yerel olarak sabitlenmiş bir birim için cihaz performansı olumsuz etkileyebilir. Ayrıca, aşağıdaki etmenlere dönüştürme işlemini tamamlamak için gereken süreyi artırabilir:
-
-* Yeterli bant genişliği var.
-* Geçerli yedek yok.
-
-Bu etkenler olabilir etkileri en aza indirmek için:
-
-* Azaltma ilkeleri bant genişliğinizi gözden geçirin ve ayrılmış 40 MB/sn bant genişliği bulunduğundan emin olun.
-* Dönüştürme yoğun olmayan saatlere zamanlama.
-* Dönüştürme işlemine başlamadan önce bir bulut anlık görüntüsünü alın.
-
-Birden çok birim (farklı iş yüklerini destekleme) dönüştürüyorsanız, böylece daha yüksek öncelikli birimleri ilk dönüştürülür birim dönüştürme öncelik vermelisiniz. Örneğin, dosya paylaşımı iş yüklerine sahip birimler dönüştürmeden önce sanal makineleri (VM'ler) barındıran birimler ya da SQL iş yükleri birimlerle dönüştürmeniz gerekir.
-
-### <a name="local-to-tiered-volume-conversion-considerations"></a>Katmanlı birim dönüştürme değerlendirmeleri için yerel
-
-Diğer birimleri sağlamak için ek alana ihtiyacınız olursa, yerel olarak sabitlenmiş bir birim için katmanlı birim değiştirmek isteyebilirsiniz. Yerel olarak sabitlenmiş birimin katmanlı için kullanılabilir kapasiteye yayımlanan kapasite boyutunu cihaz artar dönüştürürken. Bağlantı sorunları birimin yerel türden katmanlı türüne dönüştürme engelliyorsa, dönüştürme işlemi tamamlanana kadar yerel birim katmanlı birimin özelliklerini sergiler. Bazı verilere buluta geçmiş olmasıdır. Bu spilled veri işlemi tamamlandı ve yeniden kadar serbest bırakılamıyor cihazda yerel alan kaplaması devam eder.
+Katmanlı bir birimi yerel olarak sabitlenmiş bir birime dönüştürüyorsanız, StorSimple, dönüştürmeye başlamadan önce cihazınızda yeterli alana sahip olduğunuzu doğrular. Yeterli alanınız yoksa bir hata alırsınız ve işlem iptal edilir. 
 
 > [!NOTE]
-> Bir birim dönüştürme biraz zaman alabilir ve Dönüştürme başladıktan sonra iptal edilemez. Birim dönüştürme sırasında çevrimiçi kalır ve yedek almadan, ancak genişletin veya dönüştürme gerçekleşirken birimi geri yükleyin.
+> Katmanlı 'dan yerel olarak sabitlenmiş bir dönüştürmeye başlamadan önce, diğer iş yüklerinizin alan gereksinimlerini dikkate aldığınızdan emin olun. 
+
+Katmanlı bilgisayardan yerel olarak sabitlenmiş bir birime dönüştürme, cihaz performansını olumsuz etkileyebilir. Ayrıca, aşağıdaki faktörler dönüştürme işleminin tamamlanma süresini artırabilir:
+
+* Bant genişliği yetersiz.
+* Geçerli yedekleme yok.
+
+Bu faktörlerin sahip olabileceği etkileri en aza indirmek için:
+
+* Bant genişliği azaltma ilkelerinizi gözden geçirin ve ayrılmış 40 Mbps bant genişliğinin kullanılabilir olduğundan emin olun.
+* Dönüştürmeyi yoğun olmayan saatlere göre zamanlayın.
+* Dönüştürme işlemine başlamadan önce bir bulut anlık görüntüsü alın.
+
+Birden çok birimi dönüştürüyorsanız (farklı iş yüklerini destekleme), öncelikle daha yüksek öncelikli birimlerin dönüştürülmesi için birim dönüştürmeye öncelik vermeniz gerekir. Örneğin, birimleri dosya paylaşma iş yüklerine dönüştürmeden önce, sanal makineleri (VM) veya birimleri barındıran birimleri SQL iş yükleriyle dönüştürmeniz gerekir.
+
+### <a name="local-to-tiered-volume-conversion-considerations"></a>Yerelden katmanlı birim dönüştürme konuları
+
+Diğer birimleri sağlamak için ek alana ihtiyaç duyuyorsanız, yerel olarak sabitlenmiş bir birimi katmanlı bir birim olarak değiştirmek isteyebilirsiniz. Yerel olarak sabitlenmiş birimi katmanlı olarak dönüştürdüğünüzde, cihazdaki kullanılabilir kapasite çıkarılan kapasitenin boyutuna göre artar. Bağlantı sorunları, bir birimin yerel türden katmanlı türe dönüştürülmesini engelliyorsa, yerel birim, dönüştürme tamamlanana kadar katmanlı bir birimin özelliklerini gösterir. Bunun nedeni bazı verilerin buluta taşabileceğinden kaynaklanabilir. Bu veriler, işlem yeniden başlatılana ve tamamlanana kadar, cihazdaki yerel alan boşaltmaya devam eder.
+
+> [!NOTE]
+> Bir birimi dönüştürmek biraz zaman alabilir ve başladıktan sonra dönüştürmeyi iptal edemezsiniz. Birim dönüştürme sırasında çevrimiçi kalır ve yedeklemeler alabilir, ancak dönüştürme gerçekleşirken birimi genişletemiyor veya geri yükleyemezsiniz.
 
 
 #### <a name="to-change-the-volume-type"></a>Birim türünü değiştirmek için
 
-1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablosal listesinde gelen değiştirmek için istediğinize biriminde cihazı seçin. Tıklayın **Ayarları > birimleri**.
+1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablolu listesinden, değiştirmek istediğiniz birimin bulunduğu cihazı seçin. **Ayarlar > birimler**' e tıklayın.
 
-    ![Birimleri dikey penceresine gidin](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Birimler dikey penceresine git](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. Birimlerin tablosal listesinde, bir birim seçin ve bağlam menüsünü açmak için sağ tıklayın. Seçin **değiştirme**.
+3. Birimlerin tablolu listesinden birim ' i seçin ve bağlam menüsünü çağırmak için sağ tıklayın. **Değiştir**'i seçin.
 
-    ![Bağlam menüsünden Değiştir'i seçin](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
+    ![Bağlam menüsünden Değiştir ' i seçin](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
 
-4. Üzerinde **birimi değiştirme** dikey penceresinde yeni türünden seçerek birim türünü değiştirmek **türü** aşağı açılan listesi.
+4. **Birim Değiştir** dikey penceresinde, **tür** açılan listesinden yeni türü seçerek birim türünü değiştirin.
    
-   * Türüne değiştiriyorsanız **yerel olarak sabitlenmiş**, StorSimple yeterli kapasitesi olup olmadığını denetler.
-   * Türüne değiştiriyorsanız **katmanlı** ve bu birimi arşiv verileri için seçim kullanılacak **bu birimi daha az sıklıkta erişilen arşiv verileri için kullanın** onay kutusu.
-   * Yerel olarak sabitlenmiş bir birim katmanlı olarak yapılandırıyorsanız veya _tersi_, aşağıdaki ileti görüntülenir.
+   * Türü **yerel olarak sabitlenmiş**olarak değiştiriyorsanız, StorSimple yeterli kapasite olup olmadığını kontrol eder.
+   * Türü **katmanlı** olarak değiştiriyorsanız ve bu birim arşiv verileri için kullanılacaksa, **daha az sıklıkta erişilen arşiv verileri Için bu birimi kullan** onay kutusunu seçin.
+   * Yerel olarak sabitlenmiş bir birimi katmanlı veya _tam tersi_şekilde yapılandırıyorsanız, aşağıdaki ileti görünür.
    
-     ![Değişiklik birim türü iletisi](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
+     ![Birim türü iletisini Değiştir](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
-7. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın. Onayınız istendiğinde tıklayın **Evet** dönüştürme işlemini başlatmak için. 
+7. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın. Onay istendiğinde, dönüştürme işlemini başlatmak için **Evet** ' e tıklayın. 
 
-    ![Kaydet ve onaylayın](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+    ![Kaydet ve Onayla](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-8. Azure portalı, birim güncelleştirilecek iş oluşturma için bir bildirim görüntülenir. Birim dönüştürme işi durumunu izlemek için bildirime tıklayın.
+8. Azure portal, birimi güncelleştiren iş oluşturma için bir bildirim görüntüler. Birim dönüştürme işinin durumunu izlemek için bildirime tıklayın.
 
-    ![İş için birim dönüştürme](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
+    ![Birim dönüştürme işi](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
 
-## <a name="take-a-volume-offline"></a>Bir birimi çevrimdışı duruma getirin
+## <a name="take-a-volume-offline"></a>Bir birimi çevrimdışı duruma getirme
 
-Değiştirmek veya birimi silmek planlama yaparken bir birimi çevrimdışı duruma gerekebilir. Bir birimi çevrimdışı olduğunda, okuma-yazma erişimi için kullanılabilir değil. Birim ana bilgisayar ve cihaz çevrimdışı olması gerekir.
+Birimi değiştirmeyi veya silmeyi planlarken bir birimi çevrimdışına almanız gerekebilir. Bir birim çevrimdışıyken, okuma/yazma erişimi için kullanılamaz. Birimi konakta ve cihazda çevrimdışı duruma almalısınız.
 
-#### <a name="to-take-a-volume-offline"></a>Bir birimi çevrimdışı duruma getirmek için
+#### <a name="to-take-a-volume-offline"></a>Bir birimi çevrimdışı duruma getirme
 
-1. Söz konusu birimi çevrimdışı duruma getirmeden önce kullanımda olmadığından emin olun.
-2. Birimi çevrimdışı konakta ilk yararlanın. Bu, olası tüm birim üzerindeki veri bozulması riskini ortadan kaldırır. Belirli adımlar için ana bilgisayar işletim sisteminiz için yönergelerine bakın.
-3. Ana bilgisayar çevrimdışı olduğunda, birimi aşağıdaki adımları uygulayarak cihazda çevrimdışı duruma:
+1. Söz konusu birimin çevrimdışı duruma getirmeden önce kullanımda olmadığından emin olun.
+2. Birimi önce konakta çevrimdışına alın. Bu, birimdeki veri bozulması olasılığını ortadan kaldırır. Belirli adımlar için, ana bilgisayar işletim sisteminizle ilgili yönergelere bakın.
+3. Konak çevrimdışı olduktan sonra aşağıdaki adımları gerçekleştirerek cihazdaki birimi çevrimdışına alın:
    
-    1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablosal listesinde gelen değiştirmek için istediğinize biriminde cihazı seçin. Tıklayın **Ayarları > birimleri**.
+    1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablolu listesinden, değiştirmek istediğiniz birimin bulunduğu cihazı seçin. **Ayarlar > birimler**' e tıklayın.
 
-        ![Birimleri dikey penceresine gidin](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+        ![Birimler dikey penceresine git](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-    2. Birimlerin tablosal listesinde, bir birim seçin ve bağlam menüsünü açmak için sağ tıklayın. Seçin **çevrimdışına** değiştirir, birimi çevrimdışı duruma getirmek.
+    2. Birimlerin tablolu listesinden birim ' i seçin ve bağlam menüsünü çağırmak için sağ tıklayın. Çevrimdışı olarak değiştireceğiniz birimi çevrimdışına **Al** ' ı seçin.
 
-        ![Seçin ve bu birimi çevrimdışı duruma](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+        ![Birimi çevrimdışına al ve Seç](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. İçinde **çevrimdışına** dikey penceresinde birimi çevrimdışı duruma getirmenin etkilerini gözden geçirin ve karşılık gelen onay kutusunu işaretleyin. Tıklayın **çevrimdışına**. 
+3. **Çevrimdışına Al** dikey penceresinde, birimi çevrimdışı duruma getirmenin etkilerini gözden geçirin ve ilgili onay kutusunu seçin. **Çevrimdışına Al**' a tıklayın. 
 
-    ![Birimi çevrimdışı duruma getirmenin etkilerini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
-      Birimi çevrimdışı olduğunda size bildirilir. Birim durumu çevrimdışı de güncelleştirir.
+      Birim çevrimdışıyken bilgilendirilirsiniz. Birim durumu da çevrimdışı olarak güncelleştirilir.
       
-4. Bir birime sağ tıklayın ve birim seçerseniz çevrimdışı duruma geldikten sonra **çevrimiçine** bağlam menüsü seçeneği kullanılabilir.
+4. Bir birim çevrimdışı olduktan sonra, birimi seçer ve sağ tıkladıysanız bağlam menüsünde **çevrimiçi duruma getir** seçeneği kullanılabilir hale gelir.
 
 > [!NOTE]
-> **Çevrimdışına Al** komut cihaza birimi çevrimdışı duruma getirmek için bir istek gönderir. Konak birimi kullanmaya devam ediyorsanız bu bozuk bağlantılar olur ancak birimi çevrimdışı duruma getirmenin değil başarısız olur.
+> **Çevrimdışına Al** komutu, birimi çevrimdışına almak için cihaza bir istek gönderir. Konaklar hala birim kullanıyorsa, bu durum kopuk bağlantılarla sonuçlanır, ancak birimi çevrimdışına almak başarısız olmaz.
 
-## <a name="delete-a-volume"></a>Birim Sil
+## <a name="delete-a-volume"></a>Bir birimi silme
 
 > [!IMPORTANT]
-> Yalnızca çevrimdışı olduğunda, bir birim silebilirsiniz.
+> Bir birimi yalnızca çevrimdışı ise silebilirsiniz.
 
-Bir birimi silmek için aşağıdaki adımları tamamlayın.
+Bir birimi silmek için aşağıdaki adımları izleyin.
 
 #### <a name="to-delete-a-volume"></a>Bir birimi silmek için
 
-1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablosal listesinde gelen değiştirmek için istediğinize biriminde cihazı seçin. Tıklayın **Ayarları > birimleri**.
+1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablolu listesinden, değiştirmek istediğiniz birimin bulunduğu cihazı seçin. **Ayarlar > birimler**' e tıklayın.
 
-    ![Birimleri dikey penceresine gidin](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Birimler dikey penceresine git](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. Silmek istediğiniz birim durumunu denetleyin. Silmek istediğiniz birim çevrimdışı değilse, önce çevrimdışına. Bağlantısındaki [bir birimi çevrimdışı duruma](#take-a-volume-offline).
-4. Birimi çevrimdışı duruma geldikten sonra birimi seçin, bağlam menüsünü açmak ve ardından sağ **Sil**.
+3. Silmek istediğiniz birimin durumunu denetleyin. Silmek istediğiniz birim çevrimdışı değilse, önce çevrimdışına alın. [Birimi çevrimdışına alma](#take-a-volume-offline)bölümündeki adımları izleyin.
+4. Birim çevrimdışı olduktan sonra, birimi seçin, bağlam menüsünü çağırmak için sağ tıklayın ve **Sil**' i seçin.
 
-    ![Bağlam menüsünden seçim Sil](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
+    ![Bağlam menüsünden Sil ' i seçin](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
 
-5. İçinde **Sil** dikey penceresinde gözden geçirin ve bir birimi silmenin etkilerini karşı onay kutusunu işaretleyin. Bir birimi sildiğinizde, birimde bulunan tüm veriler kaybolur. 
+5. **Sil** dikey penceresinde, bir birimi silmenin etkilerine karşı gözden geçirin ve onay kutusunu seçin. Bir birimi sildiğinizde, birimde bulunan tüm veriler kaybolur. 
 
-    ![Kaydet ve değişiklikleri onaylayın](./media/storsimple-8000-manage-volumes-u2/deletevol2.png)
+    ![Değişiklikleri kaydetme ve onaylama](./media/storsimple-8000-manage-volumes-u2/deletevol2.png)
 
-6. Birim silindikten sonra silme işlemini göstermek için birimlerin tablosal listesini güncelleştirir.
+6. Birim silindikten sonra, silme birimlerinin Tablo listesi, silme işlemini belirtecek şekilde güncelleştirilir.
 
     ![Güncelleştirilmiş birim listesi](./media/storsimple-8000-manage-volumes-u2/deletevol3.png)
    
    > [!NOTE]
-   > Yerel olarak sabitlenmiş bir birim silerseniz, yeni birimler için mevcut olan alanı hemen güncelleştirilmeyebilir. StorSimple cihaz Yöneticisi hizmeti, kullanılabilir yerel alanın düzenli olarak güncelleştirir. Yeni birim oluşturmak denemeden önce birkaç dakika bekleyin öneririz.
+   > Yerel olarak sabitlenmiş bir birimi silerseniz, yeni birimler için kullanılabilir alan hemen güncelleştirilmemiş olabilir. StorSimple Aygıt Yöneticisi hizmeti, düzenli olarak kullanılabilir yerel alanı güncelleştirir. Yeni birimi oluşturmayı denemeden önce birkaç dakika beklemenizi öneririz.
    >
-   > Yerel olarak sabitlenmiş bir birim silin ve ardından başka bir yerel olarak silerseniz ek olarak, birim hemen ardından sırayla işlerinizi toplu silme sabitlendi. İlk toplu silme işi sonraki toplu silme işi başlayabilmeniz için önce tamamlanmalıdır.
+   > Ayrıca, yerel olarak sabitlenmiş bir birimi siler ve ardından daha sonra yerel olarak sabitlenmiş bir birimi silerseniz, birim silme işleri sırayla çalışır. İlk birim silme işi, bir sonraki birim silme işinin başlayabilmesi için bitmelidir.
 
 ## <a name="monitor-a-volume"></a>Bir birimi izleyin
 
-Birim izleme, bir birim için miyim GÇ ile ilgili istatistikleri toplamanıza olanak sağlar. İzleme, oluşturduğunuz ilk 32 birim için varsayılan olarak etkindir. Ek birimler izleme, varsayılan olarak devre dışıdır. 
+Birim izleme, bir birim için g/ç ile ilgili istatistikleri toplamanıza olanak tanır. İzleme, oluşturduğunuz ilk 32 birim için varsayılan olarak etkindir. Ek birimlerin izlenmesi varsayılan olarak devre dışıdır. 
 
 > [!NOTE]
-> Kopyalanan hacimlerdeki izleme varsayılan olarak devre dışıdır.
+> Kopyalanmış birimlerin izlenmesi varsayılan olarak devre dışıdır.
 
 
-Birimi için izlemeyi devre dışı bırakmak veya etkinleştirmek için aşağıdaki adımları gerçekleştirin.
+Bir birim için izlemeyi etkinleştirmek veya devre dışı bırakmak için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-enable-or-disable-volume-monitoring"></a>Etkinleştirme veya birimi izlemeyi devre dışı
+#### <a name="to-enable-or-disable-volume-monitoring"></a>Toplu izlemeyi etkinleştirmek veya devre dışı bırakmak için
 
-1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablosal listesinde gelen değiştirmek için istediğinize biriminde cihazı seçin. Tıklayın **Ayarları > birimleri**.
-2. Birimlerin tablosal listesinde, bir birim seçin ve bağlam menüsünü açmak için sağ tıklayın. Seçin **değiştirme**.
-3. İçinde **birimi değiştirme** dikey penceresinde için **izleme** seçin **etkinleştirme** veya **devre dışı** etkinleştirme veya devre dışı izleme.
+1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablolu listesinden, değiştirmek istediğiniz birimin bulunduğu cihazı seçin. **Ayarlar > birimler**' e tıklayın.
+2. Birimlerin tablolu listesinden birim ' i seçin ve bağlam menüsünü çağırmak için sağ tıklayın. **Değiştir**'i seçin.
+3. **Birimi Değiştir** dikey penceresinde, **izleme** için **Etkinleştir** veya devre dışı **bırak** ' ı seçin.
 
     ![İzlemeyi devre dışı bırakma](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 
 
-4. Tıklayın **Kaydet** onaylamanız istendiğinde tıklayın **Evet**. Azure portalında birimi başarıyla güncelleştirildikten sonra birim ve başarılı iletisi, güncelleştirme için bir bildirim görüntülenir.
+4. **Kaydet** ' e tıklayın ve onay istendiğinde **Evet**' e tıklayın. Azure portal, Birim başarıyla güncelleştirildikten sonra birimi güncelleştirmek için bir bildirim ve sonra bir başarı iletisi görüntüler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bilgi edinmek için nasıl [bir StorSimple biriminin kopyalama](storsimple-8000-clone-volume-u2.md).
-* Bilgi edinmek için nasıl [StorSimple Cihazınızı yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md).
+* [StorSimple birimini klonlamak](storsimple-8000-clone-volume-u2.md)hakkında bilgi edinin.
+* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
 

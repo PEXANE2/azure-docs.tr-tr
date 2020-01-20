@@ -1,22 +1,20 @@
 ---
-title: (KULLANIM DIŞI) Uygulama veya kullanıcıya özel Marathon hizmeti
+title: Kullanım DıŞı Uygulama veya kullanıcıya özel Marathon hizmeti
 description: Bir uygulama veya kullanıcıya özel Marathon hizmeti oluşturma
-services: container-service
 author: rgardler
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 1ba5ca54c0aa604289eab9c4475297b12580b69a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 423dc7f62806f774a5ec4855faa8be9001292773
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557579"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277710"
 ---
-# <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>(KULLANIM DIŞI) Bir uygulama veya kullanıcıya özel Marathon hizmeti oluşturma
+# <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>Kullanım DıŞı Uygulama veya kullanıcıya özel Marathon hizmeti oluşturma
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -26,7 +24,7 @@ Bu makalede size bir uygulamaya veya kullanıcıya özel Marathon hizmeti ekleme
 
 Bu hizmet bir tek bir kullanıcı veya ekibe ait olduğundan bunlar istenen herhangi bir şekilde yapılandırılabilir. Ayrıca, Azure Container Service hizmetin çalışmaya devam etmesini sağlar. Hizmet başarısız olursa Azure Container Service sizin için yeniden başlatır. Çoğu zaman kesinti yaşandığının farkına varmazsınız bile.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 [DC/OS orchestrator türüyle Azure Container Service örneğini dağıtın](container-service-deployment.md) ve [istemcinizin kümenize bağlanabildiğinden emin olun](../container-service-connect.md). Ayrıca aşağıdaki adımları uygulayın.
 
 [!INCLUDE [install the DC/OS CLI](../../../includes/container-service-install-dcos-cli-include.md)]

@@ -1,27 +1,21 @@
 ---
-title: Visual Studio kullanarak sanal makine ölçek kümesini dağıtma | Microsoft Docs
+title: Visual Studio kullanarak sanal makine ölçek kümesini dağıtma
 description: Visual Studio ve bir Kaynak Yöneticisi şablonu kullanarak sanal makine ölçek kümeleri dağıtma
-services: virtual-machine-scale-sets
 ms.custom: H1Hack27Feb2017
-ms.workload: na
-documentationcenter: ''
+ms.workload: azure-vs
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
 ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: manayar
-ms.openlocfilehash: d397f81ce29e0ec738156b755948985a4edfc70b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 0d0dc3fbb7e48b1f7e6936cfb65473dba882b776
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802262"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274228"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio ile sanal makine ölçek kümesi oluşturma
 
@@ -31,7 +25,7 @@ Bu makalede, bir Visual Studio kaynak grubu dağıtımı kullanarak bir Azure sa
 
 Azure Kaynak grubu dağıtımları, bir dizi ilgili Azure kaynağını tek bir dağıtım işleminde gruplamak ve yayımlamak için bir yoldur. Daha fazla bilgi için bkz. [Visual Studio aracılığıyla Azure Kaynak grupları oluşturma ve dağıtma](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Visual Studio 'da sanal makine ölçek kümelerini dağıtmaya başlamak için aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -67,13 +61,13 @@ Yük dengeleyici, sanal makine örneklerine SSH (Linux) veya RDP (Windows) ile b
 
 ![JSON Gezgini](media/virtual-machine-scale-sets-vs-create/json-explorer.png)
 
-## <a name="deploy-the-project"></a>Projeyi dağıtma
+## <a name="deploy-the-project"></a>Projeyi dağıtın
 
 Sanal makine ölçek kümesi kaynağını oluşturmak için Azure Resource Manager şablonunu dağıtın:
 
 1. **Çözüm Gezgini**, projeye sağ tıklayın ve **Yeni** > **Dağıt** ' ı seçin.
 
-    ![Projenizi dağıtın](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
+    ![Projenizi dağıtma](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
 1. **Kaynak grubuna dağıt**bölümünde kullanılacak aboneliği seçin ve bir kaynak grubu seçin. Gerekirse bir kaynak grubu oluşturabilirsiniz.
 

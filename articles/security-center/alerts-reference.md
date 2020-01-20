@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: d936f9f30f79b3be6035d668211a15533cb3fa85
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: cfb77548217cf173438ab0407320cbdff8db092e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157228"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277001"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları-bir başvuru kılavuzu
 
@@ -128,7 +128,7 @@ Bu tabloya dahil edilen Uyarı türleri:
 |**Kod ekleme bulundu**|Kod ekleme, çalışmakta olan işlemlere veya iş parçacıklarına yürütülebilir modüllerin eklenmesidir. Bu teknik, kötü amaçlı yazılım tarafından, bulunan ve kaldırılan verileri başarıyla gizlerken, verileri erişmek için kullanılır.<br>Bu uyarı, eklenen bir modülün kilitlenme bilgi dökümünde mevcut olduğunu belirtir. Güvenlik Merkezi, kötü amaçlı olan ve olmayan eklenen modülleri birbirinden ayırt etmek için eklenen modülün bir şüpheli davranış profiline uygun olup olmadığını denetler.|-|
 |**Şüpheli kod segmenti algılandı**|Bir kod kesiminin, yansıtıcı ekleme ve işlem gizleme gibi standart olmayan yöntemler kullanılarak ayrıldığını gösterir. Uyarı, bildirilen kod segmentinin özellikleri ve davranışları için bağlam sağlamak üzere işlenmiş olan kod kesiminin ek özelliklerini sağlar.|-|
 |**Bulunan shellcode**|Kabuk Kodu, kötü amaçlı yazılım bir yazılım güvenlik açığından yararlandıktan sonra çalıştırılan yüktür.<br>Bu uyarı, kilitlenme dökümü analizinin kötü amaçlı yükler tarafından yaygın olarak gerçekleştirilen davranışı gösteren yürütülebilir kod algıladığını gösterir. Kötü amaçlı olmayan yazılımlar da bu davranışı gerçekleştirebilse de normal yazılım geliştirme uygulamalarından tipik değildir.|-|
-|**Dosya Less saldırı tekniği algılandı**|Belirtilen işlemin belleği bir dosya Less saldırı araç seti içeriyor: Meterpreter. Fileless saldırı araç takımları genellikle dosya sisteminde bir varlık değildir ve geleneksel virüsten koruma yazılımı tarafından algılamayı zorlaştırır.|Savunma ve yürütme|
+|**Dosya Less saldırı tekniği algılandı**|Belirtilen işlemin belleği bir dosya Less saldırı araç seti içeriyor: [araç seti adı]. Fileless saldırı araç takımları genellikle dosya sisteminde bir varlık değildir ve geleneksel virüsten koruma yazılımı tarafından algılamayı zorlaştırır.|Savunma ve yürütme|
 ||<a name="alerts-linux"></a><h3>Linux makineleri</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-iaas.md#linux-)||
 |**Beklenmedik bir şekilde SSH yetkili anahtarlar dosyasına erişim için işlem görüldü**|Bilinen kötü amaçlı yazılım kampanyalarına benzer bir yöntemde SSH yetkili anahtarları dosyasına erişildi. Bu erişim, bir saldırganın bir makineye kalıcı erişim kazanmaya çalıştığınızı gösterebilir.|-|
 |**Algılanan Kalıcılık girişimi**|Konak veri analizi, tek kullanıcılı mod için bir başlangıç betiğinin yüklendiğini algıladı.<br>Meşru bir işlemin bu modda çalıştırılması gerektiğinden nadir olduğundan, bu, bir saldırganın kalıcılığı garanti etmek için her çalışma düzeyine kötü amaçlı bir işlem eklediğine işaret ediyor olabilir. |Kalıcılık|

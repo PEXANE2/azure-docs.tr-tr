@@ -1,25 +1,23 @@
 ---
-title: (KULLANIM DIŞI) Azure Container Service Öğreticisi - ACR hazırlama
+title: Kullanım DıŞı Azure Container Service öğreticisi-ACR hazırlama
 description: Azure Container Service öğreticisi - ACR Hazırlama
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbd718b62246e820bfa01353080815b62912bd00
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641186"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274122"
 ---
-# <a name="deprecated-deploy-and-use-azure-container-registry"></a>(KULLANIM DIŞI) Azure Container Registry'yi dağıtma ve kullanma
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>Kullanım DıŞı Azure Container Registry dağıtma ve kullanma
 
 > [!TIP]
-> Azure Kubernetes hizmeti kullanan Bu öğretici için güncelleştirilmiş sürümü görmek [Öğreticisi: Azure Container Registry'yi dağıtma ve kullanma](../../aks/tutorial-kubernetes-prepare-acr.md).
+> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: dağıtma ve kullanma Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -36,7 +34,7 @@ Sonraki öğreticilerde, bu ACR örneği Azure Container Service’teki Kubernet
 
 [Önceki öğreticide](./container-service-tutorial-kubernetes-prepare-app.md), basit bir Azure Voting uygulaması için kapsayıcı görüntüsü oluşturulacaktır. Azure Voting uygulaması görüntüsünü oluşturmadıysanız [Öğretici 1 - Kapsayıcı görüntüleri oluştur](./container-service-tutorial-kubernetes-prepare-app.md)’a dönün.
 
-Bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli). 
+Bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme]( /cli/azure/install-azure-cli). 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry’yi dağıtma
 
@@ -74,7 +72,7 @@ Mevcut görüntülerin listesini görüntülemek için [docker images](https://d
 docker images
 ```
 
-Çıkış:
+Çıktı:
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
@@ -103,7 +101,7 @@ Etiketledikten sonra, işlemi doğrulamak için [docker images](https://docs.doc
 docker images
 ```
 
-Çıkış:
+Çıktı:
 
 ```bash
 REPOSITORY                                           TAG                 IMAGE ID            CREATED             SIZE
@@ -133,7 +131,7 @@ Azure Container Registry’nize gönderilen görüntülerin listesini döndürme
 az acr repository list --name <acrName> --output table
 ```
 
-Çıkış:
+Çıktı:
 
 ```azurecli
 Result
@@ -147,7 +145,7 @@ Sonra, belirli bir görüntünün etiketlerini görmek için [az acr repository 
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
 ```
 
-Çıkış:
+Çıktı:
 
 ```azurecli
 Result

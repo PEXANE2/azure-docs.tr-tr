@@ -1,30 +1,28 @@
 ---
 title: Azure için Açık Hizmet Aracısı (OSBA) kullanarak Azure tarafından yönetilen hizmetlerle tümleştirme
 description: Azure için Açık Hizmet Aracısı (OSBA) kullanarak Azure tarafından yönetilen hizmetlerle tümleştirme
-services: container-service
 author: zr-msft
-manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
-ms.openlocfilehash: 7a887905bcb4b09c1b4ae179116b3f08c75caabd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 131e767daa920f03db5ec9a3aac711fc850c7132
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465572"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276801"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Azure için Açık Hizmet Aracısı (OSBA) kullanarak Azure tarafından yönetilen hizmetlerle tümleştirme
 
-[Kubernetes Hizmet Kataloğu][kubernetes-service-catalog] ile birlikte Azure için Açık Hizmet Aracısı (OSBA), geliştiricilerin Kubernetes'te Azure tarafından yönetilen hizmetleri kullanmasına izin verir. Bu kılavuz; Kubernetes Hizmet Kataloğu, Azure için Açık Hizmet Aracısı (OSBA) ve Azure tarafından yönetilen hizmetleri kullanan uygulamaları dağıtmaya odaklanır.
+[Kubernetes Hizmet Kataloğu][kubernetes-service-catalog] ile birlikte Azure için Açık Hizmet Aracısı (OSBA), geliştiricilerin Kubernetes’te Azure tarafından yönetilen hizmetleri kullanmasına izin verir. Bu kılavuz; Kubernetes Hizmet Kataloğu, Azure için Açık Hizmet Aracısı (OSBA) ve Azure tarafından yönetilen hizmetleri kullanan uygulamaları dağıtmaya odaklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Bir Azure aboneliği
 
-* Azure CLI: [Yerel olarak yükleyebilir][azure-cli-install] veya [Azure Cloud Shell][azure-cloud-shell]'de kullanabilirsiniz.
+* Azure CLı: [yerel olarak yükler][azure-cli-install]veya [Azure Cloud Shell][azure-cloud-shell]kullanın.
 
-* Helm CLI 2.7+: [Yerel olarak yükleyebilir][helm-cli-install] veya [Azure Cloud Shell][azure-cloud-shell]'de kullanabilirsiniz.
+* HELI CLı 2.7 +: [yerel olarak yükler][helm-cli-install]veya [Azure Cloud Shell][azure-cloud-shell]kullanın.
 
 * Azure aboneliğinizde Katkıda Bulunan rolü ile bir hizmet sorumlusu oluşturma izinleri
 
@@ -75,9 +73,9 @@ v1beta1.storage.k8s.io               10
 
 ## <a name="install-open-service-broker-for-azure"></a>Azure için Açık Hizmet Aracısı yükleme
 
-Sonraki adımda, Azure tarafından yönetilen hizmetler için kataloğu içeren [Azure için Açık Hizmet Aracısı][open-service-broker-azure]'nı yükleyin. Kullanılabilir Azure hizmetleri arasında PostgreSQL için Azure Veritabanı, MySQL için Azure Veritabanı ve Azure SQL Veritabanı bulunur.
+Sonraki adımda, Azure tarafından yönetilen hizmetler için kataloğu içeren [Azure için Açık Hizmet Aracısı][open-service-broker-azure]’nı yükleyin. Kullanılabilir Azure hizmetleri arasında PostgreSQL için Azure Veritabanı, MySQL için Azure Veritabanı ve Azure SQL Veritabanı bulunur.
 
-Azure Helm deposu için açık hizmet Aracısı ekleyerek başlayın:
+Azure Held deposu için açık Hizmet Aracısı ekleyerek başlayın:
 
 ```azurecli-interactive
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
@@ -131,7 +129,7 @@ helm install azure/open-service-broker-azure --name osba --namespace osba \
     --set azure.clientSecret=$AZURE_CLIENT_SECRET
 ```
 
-OSBA dağıtımı tamamlandıktan sonra, hizmet aracılarını, hizmet sınıflarını, hizmet planlarını ve daha fazlasını sorgulamaya yönelik kullanımı kolay bir komut satırı arabirimi olan [Hizmet Kataloğu CLI][service-catalog-cli]'yi yükleyin.
+OSBA dağıtımı tamamlandıktan sonra, hizmet aracılarını, hizmet sınıflarını, hizmet planlarını ve daha fazlasını sorgulamaya yönelik kullanımı kolay bir komut satırı arabirimi olan [Hizmet Kataloğu CLI][service-catalog-cli]’yi yükleyin.
 
 Hizmet Kataloğu CLI ikili dosyasını yüklemek için aşağıdaki komutları çalıştırın:
 

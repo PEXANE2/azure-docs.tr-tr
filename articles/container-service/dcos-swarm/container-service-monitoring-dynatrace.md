@@ -1,60 +1,58 @@
 ---
-title: (KULLANIM DIŞI) Azure DC/OS kümesi - Dynatrace ile izleme
-description: Dynatrace ile bir Azure Container Service DC/OS kümesini izleme. Dynatrace OneAgent DC/OS Pano'yu kullanarak dağıtın.
-services: container-service
+title: Kullanım DıŞı Azure DC/OS kümesini izleme-dynaTrace
+description: Bir Azure Container Service DC/OS kümesini dynaTrace ile izleyin. DC/OS panosunu kullanarak dynaTrace OneAgent 'ı dağıtın.
 author: MartinGoodwell
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 8f34a00d9256c288a2842e905c06d5336522eece
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a82481c5cb3d12b11179b41999f73e67583ec43b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119869"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277756"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>(KULLANIM DIŞI) Bir Azure Container Service DC/OS kümesi ile Dynatrace SaaS/yönetilen İzleyici
+# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>Kullanım DıŞı DynaTrace SaaS/yönetilen ile Azure Container Service DC/OS kümesini izleme
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Bu makalede, nasıl dağıtılacağı gösteriyoruz [Dynatrace](https://www.dynatrace.com/) OneAgent, Azure Container Service kümenizdeki tüm aracı düğümlere izlemek için. Bu yapılandırma için bir hesap ile Dynatrace SaaS/yönetilen ihtiyacınız var. 
+Bu makalede, Azure Container Service kümenizdeki tüm aracı düğümlerini izlemek için [dynaTrace](https://www.dynatrace.com/) oneagent ' ı nasıl dağıtacağınızı göstereceğiz. Bu yapılandırma için dynaTrace SaaS/yönetilmiş bir hesabınız olması gerekir. 
 
-## <a name="dynatrace-saasmanaged"></a>Dynatrace SaaS/yönetilen
-Dynatrace, yüksek oranda dinamik kapsayıcı ve küme ortamları için bir bulutta yerel izleme çözümü ' dir. Bu, gerçek zamanlı kullanım verilerini kullanarak kapsayıcı dağıtımı ve bellek ayırma daha iyi iyileştirmenize imkan sağlar. Otomatik taban çizgisi oluşturma, sorunun bağıntı ve kök nedenin algılama sağlayarak uygulama ve altyapı sorunlarını otomatik olarak sunulan özelliğine sahip.
+## <a name="dynatrace-saasmanaged"></a>DynaTrace SaaS/yönetilen
+DynaTrace, yüksek oranda dinamik kapsayıcı ve küme ortamları için bulut Yerel bir izleme çözümüdür. Gerçek zamanlı kullanım verilerini kullanarak kapsayıcı dağıtımlarınızı ve bellek ayırmalarını daha iyi en iyi hale getirmenize olanak tanır. Otomatik taban çizgisi, sorun bağıntısı ve kök neden algılamayı sağlayarak uygulama ve altyapı sorunlarını otomatik olarak işaret eder.
 
-Dynatrace kullanıcı Arabirimi aşağıdaki şekilde gösterilmiştir:
+Aşağıdaki şekilde, dynaTrace Kullanıcı arabirimi gösterilmektedir:
 
-![Dynatrace UI](./media/container-service-monitoring-dynatrace/dynatrace.png)
+![DynaTrace Kullanıcı arabirimi](./media/container-service-monitoring-dynatrace/dynatrace.png)
 
-## <a name="prerequisites"></a>Önkoşullar 
-[Dağıtma](container-service-deployment.md) ve [bağlanma](./../container-service-connect.md) Azure Container Service tarafından yapılandırılmış bir kümeye. [Marathon Kullanıcı Arabirimi](container-service-mesos-marathon-ui.md)’ni keşfedin. Git [ https://www.dynatrace.com/trial/ ](https://www.dynatrace.com/trial/) Dynatrace SaaS hesabı ayarlamak için.  
+## <a name="prerequisites"></a>Ön koşullar 
+Azure Container Service tarafından yapılandırılan bir kümeye [dağıtın](container-service-deployment.md) ve [bağlanın](./../container-service-connect.md) . [Marathon Kullanıcı Arabirimi](container-service-mesos-marathon-ui.md)’ni keşfedin. Bir dynaTrace SaaS hesabı ayarlamak için [https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/) gidin.  
 
-## <a name="configure-a-dynatrace-deployment-with-marathon"></a>Dynatrace dağıtım Marathon ile yapılandırma
-Bu adımlarda yapılandırma ve kümenize Marathon ile Dynatrace uygulamaları dağıtma gösterilmektedir.
+## <a name="configure-a-dynatrace-deployment-with-marathon"></a>Marathon ile bir dynaTrace dağıtımı yapılandırma
+Bu adımlarda, Marathon ile dynaTrace uygulamalarının nasıl yapılandırılacağı ve kümenize dağıtılacağı gösterilmektedir.
 
-1. DC/OS kullanıcı arabiriminize erişin [ http://localhost:80/ ](http://localhost:80/). DC/OS Arabiriminde bir kez gidin **Evreni** sekmesini ve ardından arama **Dynatrace**.
+1. DC/OS Kullanıcı arabirimine [http://localhost:80/](http://localhost:80/)aracılığıyla erişin. DC/OS kullanıcı arabiriminden bir kez **Universe** sekmesine gidin ve ardından **dynaTrace**için arama yapın.
 
-    ![DC/OS evreninde Dynatrace](./media/container-service-monitoring-dynatrace/dynatrace-universe.png)
+    ![DC/OS Universe 'de dynaTrace](./media/container-service-monitoring-dynatrace/dynatrace-universe.png)
 
-2. Yapılandırmayı tamamlamak için Dynatrace SaaS hesap veya ücretsiz bir deneme hesabı gerekir. Dynatrace panoya oturum açtığınızda, seçin **dağıtma Dynatrace**.
+2. Yapılandırmayı gerçekleştirmek için bir dynaTrace SaaS hesabına veya ücretsiz bir deneme hesabına sahip olmanız gerekir. DynaTrace panosunda oturum açtıktan sonra **dynaTrace dağıt**' ı seçin.
 
-    ![Dynatrace PaaS tümleştirmesi kurma](./media/container-service-monitoring-dynatrace/setup-paas.png)
+    ![DynaTrace PaaS tümleştirmesini ayarlama](./media/container-service-monitoring-dynatrace/setup-paas.png)
 
-3. Sayfasında, seçin **PaaS tümleştirmesini ayarlama**. 
+3. Sayfasında **PaaS tümleştirmesini ayarla**' yı seçin. 
 
-    ![Dynatrace API belirteci](./media/container-service-monitoring-dynatrace/api-token.png) 
+    ![DynaTrace API belirteci](./media/container-service-monitoring-dynatrace/api-token.png) 
 
-4. DC/OS Evreni içinde Dynatrace OneAgent yapılandırma API belirtecinizi girin. 
+4. API belirtecinizi DC/OS Universe içindeki dynaTrace OneAgent yapılandırmasına girin. 
 
-    ![DC/OS evreninde Dynatrace OneAgent yapılandırma](./media/container-service-monitoring-dynatrace/dynatrace-config.png)
+    ![DC/OS Universe üzerinde dynaTrace OneAgent yapılandırması](./media/container-service-monitoring-dynatrace/dynatrace-config.png)
 
-5. Örnekleri çalıştırmayı planladığınız düğüm sayısı için ayarlayın. Daha yüksek bir sayı çalışır, ancak DC/OS ayarı bu sayı aslında ulaşılana kadar yeni örnekleri bulmak denemeye devam edilecek. İsterseniz, ayrıca bu 1000000 gibi bir değere ayarlayabilirsiniz. Yeni bir düğüm kümeye eklendiğinde, bu durumda, Dynatrace otomatik olarak bir aracı DC/OS sürekli olarak daha fazla örnek dağıtın çalışılırken fiyatına bu yeni düğüme dağıtır.
+5. Örnekleri çalıştırmayı düşündüğünüz düğüm sayısına ayarlayın. Daha yüksek bir sayı ayarlanması de çalışır, ancak DC/OS bu sayıya ulaşılıncaya kadar yeni örnekler bulmaya çalışacaktır. İsterseniz bunu 1000000 gibi bir değere de ayarlayabilirsiniz. Bu durumda, kümeye yeni bir düğüm eklendiğinde, dynaTrace bu yeni düğüme otomatik olarak bir aracı dağıtır ve daha fazla örnek dağıtmaya çalışan DC/OS fiyatına sürekli olarak bir aracı dağıtır.
 
-    ![DC/OS Evreninde-örneklerinde Dynatrace yapılandırma](./media/container-service-monitoring-dynatrace/dynatrace-config2.png)
+    ![DC/OS Universe-Instances içindeki dynaTrace yapılandırması](./media/container-service-monitoring-dynatrace/dynatrace-config2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Paketi yükledikten sonra Dynatrace panosuna geri gidin. Kümeniz kapsayıcılar için farklı ölçümlerin keşfedebilirsiniz. 
+Paketi yükledikten sonra, dynaTrace panosuna geri gidin. Kümenizin içindeki kapsayıcılar için farklı kullanım ölçümlerini inceleyebilirsiniz. 

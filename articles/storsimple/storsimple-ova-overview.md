@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple Sanal diziye genel bakış | Microsoft Docs
+title: Microsoft Azure StorSimple Sanal diziye genel bakış
 description: Bir şirket içi sanal dizi ve bulut depolama Microsoft Azure arasındaki depolama görevlerini yöneten tümleşik bir depolama çözümü olan StorSimple Sanal dizisini açıklar.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cbfc69c7d8d9354ae4e727b9eb0180583165abab
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516701"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273879"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Sanal dizisine giriş
 
@@ -39,10 +32,10 @@ Sanal dizi, Iscsı veya sunucu Ileti bloğu (SMB) protokolünü destekler. Mevcu
 
 Aşağıdaki tabloda, StorSimple Sanal dizisinin önemli özellikleri özetlenmektedir.
 
-| Özellik | StorSimple Sanal Dizisi |
+| Özellik | StorSimple Virtual Array |
 | --- | --- |
 | Yükleme gereksinimleri |Sanallaştırma altyapısını (Hyper-V veya VMware) kullanır |
-| Kullanılabilirlik |Tek düğüm |
+| Erişilebilirlik |Tek düğüm |
 | Toplam Kapasite (bulut dahil) |Sanal dizi başına 64 TB 'a kadar kullanılabilir kapasite |
 | Yerel kapasite |Sanal dizi başına 390 GB ila 6,4 TB kullanılabilir kapasite (500 GB-8 TB disk alanı sağlamanız gerekir) |
 | Yerel protokoller |Iscsı veya SMB |
@@ -54,7 +47,7 @@ Aşağıdaki tabloda, StorSimple Sanal dizisinin önemli özellikleri özetlenme
 | Veri taşınabilirliği |Aynı cihaza geri yükleyebilir veya öğe düzeyinde kurtarma yapabilir (dosya sunucusu) |
 | Depolama katmanları |Yerel hiper yönetici depolaması ve bulutu |
 | Paylaşma boyutu |Katmanlı: 20 TB 'a kadar; Yerel olarak sabitlenmiş: 2 TB 'a kadar |
-| Birim boyutu |Bağlantılı 500 GB ila 5 TB; Yerel olarak sabitlenmiş: 50 GB ila 200 GB <br> Katmanlı birimler için maksimum yerel ayırma 200 GB 'dir. |
+| Birim boyutu |Katmanlı: 500 GB ila 5 TB; Yerel olarak sabitlenmiş: 50 GB ila 200 GB <br> Katmanlı birimler için maksimum yerel ayırma 200 GB 'dir. |
 | Anlık Görüntüler |Kilitlenmeyle tutarlı |
 | Öğe düzeyinde kurtarma |Yes Kullanıcılar paylaşımların içinden geri yükleyebilir |
 
@@ -64,7 +57,7 @@ StorSimple, Kullanıcı ve sunucuları, uygulama değişikliği olmadan dakikala
 
 Aşağıdaki tabloda, StorSimple Sanal dizi çözümünün sağladığı bazı önemli avantajlar açıklanmaktadır.
 
-| Özellik | Avantaj |
+| Özellik | Yararlanın |
 | --- | --- |
 | Saydam tümleştirme |Sanal dizi, Iscsı veya SMB protokolünü destekler. Yerel katman ile bulut katmanı arasındaki veri taşıma işlemi sorunsuz ve Kullanıcı için saydamdır. |
 | Azaltılan depolama maliyetleri |StorSimple sayesinde, en çok kullanılan etkin verilerin geçerli taleplerini karşılamak için yeterli yerel depolama alanı temin edersiniz. Depolama alanı büyüdükçe StorSimple katmanları, verileri düşük maliyetli bulut depolamaya dönüştürür. Depolama gereksinimlerini ve harcamasını daha fazla azaltmak için veriler buluta gönderilmeden önce çoğaltılır ve sıkıştırılır. |
@@ -89,7 +82,7 @@ Birden çok eşzamanlı kullanıcı sanal diziye erişebildiklerinde, hepsi Azur
 
 StorSimple Sanal dizisi, yüksek kullanılabilirlik gerektiren iş yükleri için uygun değil. Sanal dizi, yazılım güncelleştirmeleri yüklendiğinde kapalı kalma süresi yaşadığında tek düğümlü bir cihazdır. Yöneticiler, her yıl 30 dakikalık 3-4 kez bir bakım penceresi planlıyor olmalıdır.
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>İş akışları
 
 StorSimple Sanal dizisi, özellikle aşağıdaki iş akışları için uygundur:
 
@@ -139,7 +132,7 @@ Sanal dizi aşağıdaki özelliklere sahiptir:
 > [!NOTE]
 > Bir sanal dizi genişletilemiyor. Bu nedenle, sanal diziyi oluştururken yeterli depolama alanı sağlanması önemlidir.
 
-### <a name="storsimple-device-manager-service"></a>StorSimple Cihaz Yöneticisi hizmeti
+### <a name="storsimple-device-manager-service"></a>StorSimple Device Manager hizmeti
 
 Microsoft Azure StorSimple, StorSimple depolama alanını merkezi olarak yönetmenize olanak sağlayan, StorSimple Aygıt Yöneticisi hizmeti olan Web tabanlı bir kullanıcı arabirimi sağlar. StorSimple Aygıt Yöneticisi hizmetini kullanarak aşağıdaki görevleri gerçekleştirebilirsiniz:
 
@@ -177,7 +170,7 @@ StorSimple çözümü, sanal diziye ve diğer bileşenlere ek olarak, önemli ve
 ### <a name="automatic-storage-tiering"></a>Otomatik depolama katmanlama
 Sanal dizi, sanal dizi ve bulut genelinde depolanan verileri yönetmek için yeni bir katmanlama mekanizması kullanır. Yalnızca iki katman vardır: yerel sanal dizi ve Azure bulut depolaması. StorSimple Sanal dizisi, geçerli kullanımı, yaşı ve diğer verilerle ilişkilerini izleyen bir ısı eşlemesine göre verileri otomatik olarak katmanlara yerleştirir. En etkin olan (Hottest) veriler yerel olarak depolanır, daha az etkin ve etkin olmayan veriler buluta otomatik olarak geçirilir. (Tüm yedeklemeler bulutta depolanır.) StorSimple, kullanım desenleri değiştikçe verileri ve depolama atamalarını ayarlar ve yeniden düzenler. Örneğin, bazı bilgiler zamana göre daha az etkin hale gelebilir. Aşamalı olarak daha az etkin hale geldiğinde, buluta katmanlı. Aynı veriler tekrar etkin hale gelirse, depolama dizisine katmanlı.
 
-Belirli bir katmanlı paylaşıma veya birime yönelik veriler, kendi yerel katman alanını (Bu paylaşımın veya birimin toplam sağlanan alanının yaklaşık% 10 ' ü) garanti edilir. Bu, bu paylaşım veya birim için sanal dizideki kullanılabilir depolamayı azalttığında, bir paylaşıma veya birime yönelik katmanlama, diğer paylaşımların veya birimlerin katmanlama gereksinimlerinde etkilenmeyecektir. Bu nedenle, bir paylaşımdaki veya birimdeki çok meşgul iş yükü diğer tüm iş yüklerini buluta zorlayamaz.
+Belirli bir katmanlı paylaşıma veya birime yönelik veriler, kendi yerel katman alanını (Bu paylaşımın veya birimin toplam sağlanan alanının yaklaşık %10 ' ü) garanti edilir. Bu, bu paylaşım veya birim için sanal dizideki kullanılabilir depolamayı azalttığında, bir paylaşıma veya birime yönelik katmanlama, diğer paylaşımların veya birimlerin katmanlama gereksinimlerinde etkilenmeyecektir. Bu nedenle, bir paylaşımdaki veya birimdeki çok meşgul iş yükü diğer tüm iş yüklerini buluta zorlayamaz.
 
 Iscsı için oluşturulan katmanlı birimlerde, birimin boyutundan bağımsız olarak en fazla 200 GB yerel ayırması vardır.
 

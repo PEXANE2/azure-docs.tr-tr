@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 8f0b7b1225d78c7626c5be3e68c3dcd2dd557aa3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0287a8011eb10120e273fb063c98ccd3c1a85782
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158162"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278018"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>Gelişmiş güvenli puan (Önizleme) 
 
-Bu makalede gelişmiş güvenli puan (Şu anda önizleme aşamasında), ilgili güvenlik denetimleri ve getirdikleri avantajlar tanıtılmaktadır.
+Bu makalede gelişmiş güvenli puan (Şu anda önizleme aşamasında), ilgili güvenlik denetimleri ve getirdikleri avantajlar tanıtılmaktadır. Puanınızın nasıl hesaplanacağını da açıklar.
 
 ## <a name="introduction-to-secure-score"></a>Güvenli puana giriş
 
@@ -32,11 +32,11 @@ Güvenlik Merkezi, güvenlik sorunları için kaynaklarınızı, abonelikleriniz
 
 *Gelişmiş* güvenli puan (Şu anda önizleme aşamasında) **saldırı yüzeyi odaklı** ve üç avantaj sunar:
 
-- Güvenlik denetimleri-güvenlik önerileri artık, savunmasız saldırı yüzeylerinizi daha iyi yansıtan mantıksal kümeler halinde gruplandırılır. Daha fazla bilgi için bkz. [güvenli Puanlama aşağıda nasıl hesaplanır](secure-score-security-controls.md#how-the-secure-score-is-calculated) .
+- **Güvenlik denetimleri** -güvenlik önerileri artık, savunmasız saldırı yüzeylerinizi daha iyi yansıtan mantıksal kümeler halinde gruplandırılır. Daha fazla bilgi için bkz. [güvenli Puanlama aşağıda nasıl hesaplanır](secure-score-security-controls.md#how-the-secure-score-is-calculated) .
 
-- Genel puan, genel geri yükleme noktalarının öneri düzeyinde daha iyi olduğunu yansıtır. Bu geliştirme sayesinde puanınız yalnızca bir denetimdeki tek bir kaynak için *Tüm* önerileri düzelttireceğiniz zaman iyileştirecektir. Bu, puanınızın yalnızca bir kaynağın güvenliği artdığı zaman gelişmediği anlamına gelir. 
+- **Genel puan, genel** geri yükleme noktalarının öneri düzeyinde daha iyi olduğunu yansıtır. Bu geliştirme sayesinde puanınız yalnızca bir denetimdeki tek bir kaynak için *Tüm* önerileri düzelttireceğiniz zaman iyileştirecektir. Bu, puanınızın yalnızca bir kaynağın güvenliği artdığı zaman gelişmediği anlamına gelir. 
 
-- Tek tek saldırı yüzeylerinin güvenlik durumu daha görünür-güvenlik denetimi başına puanı göstererek, güvenli puan sayfası, kuruluşunuzun her bir saldırı yüzeyini ne kadar iyi güvenlik altına alarak ayrıntılı bir görünüm elde edebilirsiniz.
+- **Tek tek saldırı yüzeylerinin güvenlik durumu daha görünür** -güvenlik denetimi başına puanı göstererek, güvenli puan sayfası, kuruluşunuzun her bir saldırı yüzeyini ne kadar iyi güvenlik altına alarak ayrıntılı bir görünüm elde edebilirsiniz.
 
 Gelişmiş güvenli puan, aşağıdaki ekran görüntüsünde gösterildiği gibi yüzde olarak gösterilir:
 
@@ -63,7 +63,7 @@ Bir güvenlik denetimine yönelik tüm olası noktaları almak için, tüm kayna
 
 ["sistem güncelleştirmelerini Uygula" güvenlik denetimini ![](media/secure-score-security-controls/apply-system-updates-control.png)](media/secure-score-security-controls/apply-system-updates-control.png#lightbox)
 
-Yukarıdaki ekran görüntüsünde "sistem güncelleştirmelerini Uygula" güvenlik denetiminin değeri "2% (1 nokta)" gösterir. Bu, bu denetimdeki tüm önerileri düzeltmeniz durumunda puanınızın %2 oranında (Bu durumda bir nokta olduğu) artıralacağını gösterir. Basitlik için, öneriler listesinin "olası artışı" sütunundaki değerler, tam sayılara yuvarlanır. Araç ipuçları kesin değerleri gösterir:
+Yukarıdaki ekran görüntüsünde "sistem güncelleştirmelerini Uygula" güvenlik denetimi potansiyeli "2% (1 Point)" gösterir. Bu, bu denetimdeki tüm önerileri düzeltmeniz durumunda puanınızın %2 oranında (Bu durumda bir nokta) artıralacağını gösterir. Basitlik için, öneriler listesinin "olası artışı" sütunundaki değerler, tam sayılara yuvarlanır. Araç ipuçları kesin değerleri gösterir:
 
 * **Olası artış** -denetim içinde sizin için kullanılabilir olan diğer noktaları. Bu noktaları güvenli puanlarınıza eklemek için tüm denetim önerilerini düzeltin. Yukarıdaki örnekte, denetim için gösterilen bir nokta aslında 0,96 puntodur.
 * **Geçerli puan** -bu denetimin geçerli puanı. Her denetim toplam puanta katkıda bulunur. Bu örnekte denetim, toplamda 5,04 noktaya katkıda bulunur. 

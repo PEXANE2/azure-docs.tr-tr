@@ -1,26 +1,19 @@
 ---
-title: VMware 'de StorSimple Sanal dizisi sağlama | Microsoft Docs
+title: VMware 'de StorSimple Sanal dizisi sağlama
 description: StorSimple Sanal dizi dağıtım serisinde bu ikinci öğreticide, VMware 'de bir sanal cihazın sağlanması gerekir.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab5ad8acc5d0769a19a4022c55e0461e7ce42762
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516834"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76272088"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Sanal dizisi dağıtma-VMware 'de sağlama
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -40,7 +33,7 @@ VMware ESXi 5,0, 5,5, 6,0 veya 6,5 çalıştıran bir konak sisteminde sanal cih
 Başlamadan önce aşağıdakilerden emin olun:
 
 * [Portal 'ı StorSimple Sanal dizisi Için hazırlama](storsimple-virtual-array-deploy1-portal-prep.md)bölümündeki tüm adımları tamamladınız.
-* VMware için sanal cihaz görüntüsünü Azure portal indirdiniz. Daha fazla bilgi için bkz **. Adım 3:**  Portal 'ı [StorSimple Sanal dizisi Kılavuzu 'na hazırlama](storsimple-virtual-array-deploy1-portal-prep.md)sanal cihaz görüntüsünü indirin.
+* VMware için sanal cihaz görüntüsünü Azure portal indirdiniz. Daha fazla bilgi için bkz. 3. Adım: [Portal 'ı StorSimple Sanal dizisi Için hazırlama adlı](storsimple-virtual-array-deploy1-portal-prep.md) **sanal cihaz görüntüsünü indirme** .
 
 ### <a name="for-the-storsimple-virtual-device"></a>StorSimple Sanal cihazı için
 Sanal cihazı dağıtmadan önce şunlardan emin olun:
@@ -65,7 +58,7 @@ Bir sanal cihaza sağlamak ve bağlanmak için aşağıdaki adımları gerçekle
 2. Hiper yöneticide bir sanal cihaz sağlayın.
 3. Sanal cihazı başlatın ve IP adresini alın.
 
-## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>1\. adım: Konak sisteminin en düşük sanal cihaz gereksinimlerini karşıladığından emin olun
+## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>1\. Adım: konak sisteminin en düşük sanal cihaz gereksinimlerini karşıladığından emin olun
 Sanal bir cihaz oluşturmak için şunlar gerekir:
 
 * VMware ESXi Server 5,0, 5,5, 6,0 veya 6,5 çalıştıran bir konak sistemine erişim.
@@ -76,7 +69,7 @@ Sanal bir cihaz oluşturmak için şunlar gerekir:
   * İnternet trafiği için ağa bağlı bir ağ arabirimi. En düşük Internet bant genişliği, cihazın en iyi şekilde çalışmasını sağlamak için 5 MB/sn olmalıdır.
   * Veriler için 500 GB sanal disk.
 
-## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>2\. adım: Hiper yöneticide bir sanal cihaz sağlama
+## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>2\. Adım: Hiper yöneticide sanal cihaz sağlama
 Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçekleştirin.
 
 1. Sanal cihaz görüntüsünü sisteminize kopyalayın. Bu sanal görüntüyü Azure portal aracılığıyla indirdiniz.
@@ -102,13 +95,13 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 7. **Datastore Browser** (Veri Deposu Tarayıcısı) penceresi açılır.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. Araç çubuğunda simge ' ye tıklayarak ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) yeni bir klasör oluşturun. Klasör adını belirtin ve not edin. Sanal makine oluştururken bu klasör adını kullanacaksınız (önerilen yöntemdir). **Tamam**'ı tıklatın.
+8. Araç çubuğunda ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) simgesine tıklayarak yeni bir klasör oluşturun. Klasör adını belirtin ve not edin. Sanal makine oluştururken bu klasör adını kullanacaksınız (önerilen yöntemdir). **Tamam**’a tıklayın.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
 9. Yeni klasör **Datastore Browser** (Veri Deposu Tarayıcısı) penceresinin sol tarafında görünür.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. Karşıya yükle simgesine ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) tıklayın ve **dosyayı karşıya yükle**' yi seçin.
+10. Karşıya yükle simgesine ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) ve **dosyayı karşıya yükle**' yi seçin.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
 11. İndirdiğiniz VMDK dosyalarını bulun. İki dosya vardır. Karşıya yüklemek için dosyalardan birini seçin.
@@ -123,7 +116,7 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 14. vSphere istemcisi penceresine dönün. ESXi sunucusu seçiliyken, sağ tıklayıp **Yeni sanal makine**' yi seçin.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image15.png)
-15. **Yeni bir sanal makine oluştur** penceresi görüntülenir. **Yapılandırma** sayfasında **özel** seçeneğini belirleyin.           **İleri**'ye tıklayın.
+15. **Yeni bir sanal makine oluştur** penceresi görüntülenir. **Yapılandırma** sayfasında **özel** seçeneğini belirleyin. **İleri**’ye tıklayın.
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
 16. **Ad ve konum** sayfasında, sanal makinenizin adını belirtin. Bu ad, adım 8 ' de daha önce belirttiğiniz klasör adıyla (önerilen en iyi yöntem) eşleşmelidir.
 
@@ -131,16 +124,16 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 17. **Depolama** SAYFASıNDA, VM 'nizi sağlamak için kullanmak istediğiniz bir veri deposunu seçin.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image18.png)
-18. **Sanal makine sürümü** sayfasında, sanal makine sürümü **' nü seçin: 8**.
+18. **Sanal makine sürümü** sayfasında, **sanal makine sürümü: 8**' i seçin.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
 19. **Konuk Işletim sistemi** sayfasında, **Windows**olarak **Konuk işletim sistemini** seçin. **Sürüm**için, açılan listeden **Microsoft Windows Server 2012 (64-bit)** öğesini seçin.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
-20. **CPU 'lar** sayfasında, **Toplam çekirdek sayısı** 4 (veya daha fazla) olacak şekilde sanal yuva başına **sanal yuva sayısını** ve **çekirdek sayısını** ayarlayın.           **İleri**'ye tıklayın.
+20. **CPU 'lar** sayfasında, **Toplam çekirdek sayısı** 4 (veya daha fazla) olacak şekilde sanal yuva başına **sanal yuva sayısını** ve **çekirdek sayısını** ayarlayın. **İleri**’ye tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image21.png)
-21. **Bellek** sayfasında, 8 GB (veya daha fazla) RAM belirtin.           **İleri**'ye tıklayın.
+21. **Bellek** sayfasında, 8 GB (veya daha fazla) RAM belirtin. **İleri**’ye tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image22.png)
 22. **Ağ** sayfasında, ağ arabirimlerinin sayısını belirtin. En düşük gereksinim bir ağ arabirimidir.
@@ -149,40 +142,40 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 23. **SCSI denetleyicisi** sayfasında, varsayılan **LSI Logic SAS denetleyicisini**kabul edin.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image24.png)
-24. **Disk seçin** sayfasında, **var olan bir sanal diski kullan**' ı seçin.           **İleri**'ye tıklayın.
+24. **Disk seçin** sayfasında, **var olan bir sanal diski kullan**' ı seçin. **İleri**’ye tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
-25. **Mevcut diski seçin** sayfasında, **disk dosyası yolu**' nun altında, **Araştır**' a tıklayın. Bu, bir **veri depoları araştır** iletişim kutusu açar. VMDK 'yi karşıya yüklediğiniz konuma gidin. Başlangıçta karşıya yüklediğiniz iki dosya birleştirildiğinden artık veri deposunda yalnızca bir dosya görürsünüz. Dosyayı seçip **Tamam**' a tıklayın.           **İleri**'ye tıklayın.
+25. **Mevcut diski seçin** sayfasında, **disk dosyası yolu**' nun altında, **Araştır**' a tıklayın. Bu, bir **veri depoları araştır** iletişim kutusu açar. VMDK 'yi karşıya yüklediğiniz konuma gidin. Başlangıçta karşıya yüklediğiniz iki dosya birleştirildiğinden artık veri deposunda yalnızca bir dosya görürsünüz. Dosyayı seçip **Tamam**' a tıklayın. **İleri**’ye tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
 26. **Gelişmiş Seçenekler** sayfasında, Varsayılanı kabul edin ve **İleri**' ye tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image27.png)
-27. **Ready to Complete** (Tamamlanmak İçin Hazır) sayfasında yeni sanal makineyle ilgili tüm ayarları gözden geçirin. **Tamamlanmadan önce sanal makine ayarlarını düzenleyin**' i işaretleyin.           **Devam**'a tıklayın.
+27. **Ready to Complete** (Tamamlanmak İçin Hazır) sayfasında yeni sanal makineyle ilgili tüm ayarları gözden geçirin. **Tamamlanmadan önce sanal makine ayarlarını düzenleyin**' i işaretleyin. **Devam**’a tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. **Sanal makineler Özellikler** sayfasında, **donanım** sekmesinde, cihaz donanımını bulun. **Yeni sabit disk**' i seçin.           **Ekle**'yi tıklatın.
+28. **Sanal makineler Özellikler** sayfasında, **donanım** sekmesinde, cihaz donanımını bulun. **Yeni sabit disk**' i seçin. **Ekle**'ye tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
 29. **Donanım Ekle** penceresi görürsünüz. **Cihaz türü** sayfasında, **eklemek Istediğiniz cihaz türünü seçin**altında **sabit disk**' i seçin ve **İleri**' ye tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image30.png)
-30. **Disk seçin** sayfasında **Yeni bir sanal disk oluştur**' u seçin.           **İleri**'ye tıklayın.
+30. **Disk seçin** sayfasında **Yeni bir sanal disk oluştur**' u seçin. **İleri**’ye tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. **Disk oluştur** sayfasında, **DISK boyutunu** 500 GB (veya daha fazla) olarak değiştirin. 500 GB en düşük gereksinimdir, her zaman daha büyük bir disk sağlayabilirsiniz. Sağlandıktan sonra diski genişletemez veya daraltılamayacağını unutmayın. Sağlanacak disk boyutu hakkında daha fazla bilgi için [en iyi uygulamalar belgesindeki](storsimple-ova-best-practices.md)boyutlandırma bölümünü gözden geçirin. **Disk sağlama**bölümünde **ölçülü kaynak**sağlama ' yı seçin.           **İleri**'ye tıklayın.
+31. **Disk oluştur** sayfasında, **DISK boyutunu** 500 GB (veya daha fazla) olarak değiştirin. 500 GB en düşük gereksinimdir, her zaman daha büyük bir disk sağlayabilirsiniz. Sağlandıktan sonra diski genişletemez veya daraltılamayacağını unutmayın. Sağlanacak disk boyutu hakkında daha fazla bilgi için [en iyi uygulamalar belgesindeki](storsimple-ova-best-practices.md)boyutlandırma bölümünü gözden geçirin. **Disk sağlama**bölümünde **ölçülü kaynak**sağlama ' yı seçin. **İleri**’ye tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. **Gelişmiş Seçenekler** sayfasında, Varsayılanı kabul edin.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. **Tamamlamaya hazırlanıyor** sayfasında, disk seçeneklerini gözden geçirin.           **Son**'a tıklayın.
+33. **Tamamlamaya hazırlanıyor** sayfasında, disk seçeneklerini gözden geçirin. **Finish (Son)** düğmesine tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. Sanal makine özellikleri sayfasına dönün. Sanal makinenize yeni bir sabit disk eklenir.           **Son**'a tıklayın.
+34. Sanal makine özellikleri sayfasına dönün. Sanal makinenize yeni bir sabit disk eklenir. **Finish (Son)** düğmesine tıklayın.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. Sağ bölmede sanal makineniz seçiliyken **Özet** sekmesine gidin. Sanal makinenizin ayarlarını gözden geçirin.
+35. Sağ bölmede sanal makineniz seçiliyken **Özet** sekmesine gidin. sanal makinenizin ayarlarını gözden geçirin.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
@@ -191,14 +184,14 @@ Sanal makineniz sağlanır. Bir sonraki adım bu makineyi açmak ve IP adresini 
 > [!NOTE]
 > VMware araçlarını sanal diziniz üzerinde (yukarıda sağlanmak üzere) yüklememeyi öneririz. VMware araçlarının yüklenmesi desteklenmeyen bir yapılandırmaya neden olabilir.
 
-## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>3\. adım: Sanal cihazı başlatma ve IP adresini alma
+## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>3\. Adım: sanal cihazı başlatın ve IP 'yi alın
 Sanal cihazınızı başlatmak ve bağlantı kurmak için aşağıdaki adımları izleyin.
 
 #### <a name="to-start-the-virtual-device"></a>Sanal cihazı başlatmak için
 1. Sanal cihazı başlatın. VSphere Configuration Manager, sol bölmedeki cihazınızı seçin ve bağlam menüsünü açmak için sağ tıklayın. **Power** (Güç) ve ardından **Power on** (Aç) seçimini yapın. Bu işlemin ardından makinenizin açılması gerekir. Durumu vSphere istemcisinin en **son görevler** bölmesinde görüntüleyebilirsiniz.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. Kurulum görevlerinin tamamlanması birkaç dakika sürer. Cihaz çalışmaya başladıktan sonra **konsol** sekmesine gidin. Cihazda oturum açmak için Ctrl + Alt + Delete tuşlarını gönderin. Alternatif olarak, imleci konsol penceresinde işaret edebilir ve CTRL + ALT + INSERT tuşlarına basabilirsiniz. Varsayılan Kullanıcı *Storsimpleadmin* ' dir ve varsayılan parola *Parola1*' dir.
+2. Kurulum görevlerinin tamamlanması birkaç dakika sürer. Cihaz çalışmaya başladıktan sonra **konsol** sekmesine gidin. cihazda oturum açmak için Ctrl + Alt + Delete tuşlarını gönderin. Alternatif olarak, imleci konsol penceresinde işaret edebilir ve CTRL + ALT + INSERT tuşlarına basabilirsiniz. Varsayılan Kullanıcı *Storsimpleadmin* ' dir ve varsayılan parola *Parola1*' dir.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. Güvenlik nedeniyle cihazın yönetici parolasının ilk oturum açma işleminin ardından değiştirilmesi gerekir. Parolayı değiştirmeniz istenir.
@@ -215,7 +208,7 @@ Sanal cihazınızı başlatmak ve bağlantı kurmak için aşağıdaki adımlar�
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image42m.png)
 
    Sonra, ağı yapılandırın.
-7. Sanal cihazınızda etkin olan ağ arabirimlerini listelemek için komutunukullanın.`Get-HcsIpAddress` Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
+7. Sanal cihazınızda etkin olan ağ arabirimlerini listelemek için `Get-HcsIpAddress` komutunu kullanın. Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image43m.png)
 8. Ağı yapılandırmak için `Set-HcsIpAddress` cmdlet'ini kullanın. Aşağıda bir örnek gösterilmiştir:
@@ -238,7 +231,7 @@ Sanal cihazınızı başlatmak ve bağlantı kurmak için aşağıdaki adımlar�
        >
        >
 
-Cihazınız minimum yapılandırma gereksinimlerini karşılamıyorsa başlık metninde hata iletisi görüntülenir (aşağıda gösterilmiştir). Cihaz yapılandırmasını minimum gereksinimleri karşılayacak şekilde değiştirmeniz gerekir. Ardından cihazı yeniden başlatıp bağlantı kurabilirsiniz. Adım 1 ' de [en düşük yapılandırma gereksinimlerine bakın: Konak sisteminin en düşük sanal cihaz gereksinimlerini](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)karşıladığından emin olun.
+Cihazınız minimum yapılandırma gereksinimlerini karşılamıyorsa başlık metninde hata iletisi görüntülenir (aşağıda gösterilmiştir). Cihaz yapılandırmasını minimum gereksinimleri karşılayacak şekilde değiştirmeniz gerekir. Ardından cihazı yeniden başlatıp bağlantı kurabilirsiniz. Minimum yapılandırma gereksinimleri için bkz. [1. Adım: Ana bilgisayarın minimum cihaz gereksinimlerini karşıladığından emin olma](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
 
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image46.png)
 

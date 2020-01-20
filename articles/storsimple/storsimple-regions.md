@@ -1,25 +1,17 @@
 ---
-title: StorSimple bölgesi kullanılabilirliği | Microsoft Docs
+title: StorSimple bölgesi kullanılabilirliği
 description: Çeşitli StorSimple cihaz modellerinin kullanılabildiği Azure bölgelerini açıklar.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 5b41f738c2419f806aef60374a545ff004a6f19e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965133"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275120"
 ---
 # <a name="available-regions-for-your-storsimple"></a>StorSimple için kullanılabilir bölgeler
 
@@ -71,7 +63,7 @@ StorSimple 8100 veya 8600 fiziksel cihaz kullanılıyorsa, cihaz aşağıdaki ü
 
 | #  | Ülke/Bölge        | #  | Ülke/Bölge     | #  | Ülke/Bölge      | #  | Ülke/Bölge             |
 |----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
-| 1\.  | Avustralya             | 16 | Hong Kong SAR      | 31 | Yeni Zelanda         | 46 | Güney Afrika               |
+| 1  | Avustralya             | 16 | Hong Kong SAR      | 31 | Yeni Zelanda         | 46 | Güney Afrika               |
 | 2  | Avusturya               | 17 | Macaristan            | 32 | Nijerya             | 47 | Güney Kore                |
 | 3  | Bahreyn               | 18 | İzlanda            | 33 | Norveç              | 48 | İspanya                      |
 | 4  | Belçika               | 19 | Hindistan              | 34 | Peru                | 49 | Sri Lanka                  |
@@ -83,7 +75,7 @@ StorSimple 8100 veya 8600 fiziksel cihaz kullanılıyorsa, cihaz aşağıdaki ü
 | 10 | Danimarka               | 25 | Kenya              | 40 | Romanya             | 55 | Ukrayna                    |
 | 11 | Mısır                 | 26 | Kuveyt             | 41 | Rusya              | 56 | Birleşik Arap Emirlikleri       |
 | 12 | Finlandiya               | 27 | Makao ÖİB          | 42 | Suudi Arabistan        | 57 | Birleşik Krallık             |
-| 13 | Fransa                | 28 | Malezya           | 43 | Singapur           | 58 | Amerika Birleşik Devletleri              |
+| 13 | Fransa                | 28 | Malezya           | 43 | Singapur           | 58 | Birleşik Devletler              |
 | 14 | Almanya               | 29 | Meksika             | 44 | Slovakya            | 59 | Vietnam                    |
 | 15 | Yunanistan                | 30 | Hollanda        | 45 | Slovenya            | 60 | Hırvatistan                    |
 
@@ -98,7 +90,7 @@ Microsoft, fiziksel donanım sunabilir ve yukarıdaki listede coğrafi olarak St
 
 8010 veya 8020 StorSimple Cloud Appliance kullanıyorsanız, cihaz, temel alınan VM 'nin desteklendiği tüm bölgelerde desteklenir ve kullanılabilir. 8010, tüm Azure bölgelerinde desteklenen bir _Standard_A3_ VM kullanır.
 
-8020, bir bulut gereci oluşturmak için Premium Storage ve _Standard_DS3_ VM kullanır. 8020, Premium depolamayı ve _Standard_DS3_ Azure VM 'Lerini destekleyen Azure bölgelerinde desteklenir. Bölgenizde hem **Sanal Makineler > DS serisi** hem de **Depolama > Disk depolamanın** mevcut olup olmadığını görmek için [bu listeyi](https://azure.microsoft.com/regions/services/) kullanın.
+8020, bir bulut gereci oluşturmak için Premium Depolama ve _Standard_DS3_ VM kullanır. 8020, Premium depolamayı ve Azure VM 'Leri _Standard_DS3_ destekleyen Azure bölgelerinde desteklenir. Bölgenizde hem **Sanal Makineler > DS serisi** hem de **Depolama > Disk depolamanın** mevcut olup olmadığını görmek için [bu listeyi](https://azure.microsoft.com/regions/services/) kullanın.
 
 ### <a name="storsimple-virtual-array-model-1200"></a>StorSimple Sanal dizisi (model 1200)
 

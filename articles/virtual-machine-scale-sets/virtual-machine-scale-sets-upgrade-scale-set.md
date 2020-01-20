@@ -1,57 +1,50 @@
 ---
-title: Bir Azure sanal makine ölçek kümesini değiştirme | Microsoft Docs
-description: Değiştirme ve REST API'leri, Azure PowerShell ve Azure CLI ile bir Azure sanal makine ölçek güncelleştirme hakkında bilgi edinin
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Azure sanal makine ölçek kümesini değiştirme
+description: REST API 'Leri, Azure PowerShell ve Azure CLı ile Azure sanal makine ölçek kümesini değiştirme ve güncelleştirme hakkında bilgi edinin
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: manayar
-ms.openlocfilehash: 71899a9d6782c4700c287458c85ec83bd1516a4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803143"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274443"
 ---
-# <a name="modify-a-virtual-machine-scale-set"></a>Sanal makine ölçek kümesini değiştirme
+# <a name="modify-a-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesini değiştirme
 
-Uygulamalarınızın yaşam döngüsü boyunca, değiştirmek veya sanal makine ölçek kümenizi güncelleştirirseniz gerekebilir. Bu güncelleştirmeler, Ölçek kümesi yapılandırmasını güncelleştirme veya uygulama yapılandırmasını değiştirmek nasıl içerebilir. Bu makale, mevcut bir ölçek REST API'leri, Azure PowerShell veya Azure CLI ile kümesini değiştirmek açıklamaktadır.
+Uygulamalarınızın yaşam döngüsü boyunca, sanal makine ölçek kümesini değiştirmeniz veya güncelleştirmeniz gerekebilir. Bu güncelleştirmeler, ölçek kümesinin yapılandırmasını güncelleştirme veya uygulama yapılandırmasını değiştirme içerebilir. Bu makalede, mevcut bir ölçek kümesinin REST API 'Ler, Azure PowerShell veya Azure CLı ile nasıl değiştirileceği açıklanır.
 
 ## <a name="fundamental-concepts"></a>Temel kavramlar
 
-### <a name="the-scale-set-model"></a>Ölçek kümesi modeline
-Bir ölçek kümesi "yakalayan bir ölçek kümesi modeline" sahip *istenen* ölçeğin durum bir bütün olarak ayarlayın. Bir ölçek kümesi modelini sorgulamak için kullanabilirsiniz 
+### <a name="the-scale-set-model"></a>Ölçek kümesi modeli
+Ölçek kümesinin, bir bütün olarak ölçek kümesinin *istenen* durumunu yakalayan bir "ölçek kümesi modeli" vardır. Bir ölçek kümesinin modelini sorgulamak için, 
 
-- REST API ile [virtualmachinescalesets/işlem/get](/rest/api/compute/virtualmachinescalesets/get) gibi:
+- [İşlem/virtualmachinescalesets/Get](/rest/api/compute/virtualmachinescalesets/get) ile aşağıdaki gibi REST API:
 
     ```rest
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version={apiVersion}
     ```
 
-- Azure PowerShell ile [Get-AzVmss](/powershell/module/az.compute/get-azvmss):
+- [Get-AzVmss](/powershell/module/az.compute/get-azvmss)ile Azure PowerShell:
 
     ```powershell
     Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
     ```
 
-- Azure CLI ile [az vmss show](/cli/azure/vmss):
+- [Az VMSS](/cli/azure/vmss)Ile Azure CLI şunu göster:
 
     ```azurecli
     az vmss show --resource-group myResourceGroup --name myScaleSet
     ```
 
-- Ayrıca [resources.azure.com](https://resources.azure.com) veya dile özgü [Azure SDK'ları](https://azure.microsoft.com/downloads/).
+- Ayrıca, [Resources.Azure.com](https://resources.azure.com) veya dile özgü [Azure SDK](https://azure.microsoft.com/downloads/)'larını de kullanabilirsiniz.
 
-Çıkış tam sunumunu komutu sağlayan seçenekler bağlıdır. Aşağıdaki örnekte Azure CLI üzerinden sıkıştırılmış örnek çıktı gösterilmektedir:
+Çıktının tam sunumu, komuta verdiğiniz seçeneklere bağlıdır. Aşağıdaki örnek, Azure CLı 'nın sıkıştırılmış örnek çıktısını gösterir:
 
 ```azurecli
 az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -69,33 +62,33 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Bu özellikler, Ölçek kümesindeki bir bütün olarak için geçerlidir.
+Bu özellikler, ölçek kümesi için bir bütün olarak geçerlidir.
 
 
 ### <a name="the-scale-set-instance-view"></a>Ölçek kümesi örnek görünümü
-Bir ölçek kümesi de "görüntülemek bir ölçek kümesi örneği" geçerli yakalayan sahip *çalışma zamanı* ölçeğin durum bir bütün olarak ayarlayın. Bir ölçek kümesi örnek görünümünü sorgulamak için kullanabilirsiniz:
+Ölçek kümesinde Ayrıca, ölçek kümesinin geçerli *çalışma zamanı* durumunu bir bütün olarak yakalayan bir "ölçek kümesi örnek görünümü" vardır. Ölçek kümesinin örnek görünümünü sorgulamak için şunu kullanabilirsiniz:
 
-- REST API ile [virtualmachinescalesets/işlem/getinstanceview](/rest/api/compute/virtualmachinescalesets/getinstanceview) gibi:
+- [İşlem/virtualmachinescalesets/getınstanceview](/rest/api/compute/virtualmachinescalesets/getinstanceview) ile aşağıdaki gibi REST API:
 
     ```rest
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/instanceView?api-version={apiVersion}
     ```
 
-- Azure PowerShell ile [Get-AzVmss](/powershell/module/az.compute/get-azvmss):
+- [Get-AzVmss](/powershell/module/az.compute/get-azvmss)ile Azure PowerShell:
 
     ```powershell
     Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceView
     ```
 
-- Azure CLI ile [az vmss get-instance-view](/cli/azure/vmss):
+- [Az VMSS Get-Instance-View](/cli/azure/vmss)Ile Azure CLI:
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
     ```
 
-- Ayrıca [resources.azure.com](https://resources.azure.com) veya dile özgü [Azure SDK'ları](https://azure.microsoft.com/downloads/)
+- Ayrıca, [Resources.Azure.com](https://resources.azure.com) veya dile özgü [Azure SDK](https://azure.microsoft.com/downloads/) 'larını de kullanabilirsiniz
 
-Çıkış tam sunumunu komutu sağlayan seçenekler bağlıdır. Aşağıdaki örnekte Azure CLI üzerinden sıkıştırılmış örnek çıktı gösterilmektedir:
+Çıktının tam sunumu, komuta verdiğiniz seçeneklere bağlıdır. Aşağıdaki örnek, Azure CLı 'nın sıkıştırılmış örnek çıktısını gösterir:
 
 ```azurecli
 $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
@@ -123,33 +116,33 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Bu özellikler, geçerli çalışma zamanı durumu ölçek kümesine uygulanan uzantıları durumu gibi ölçek kümesindeki sanal makinelerin bir özetini sağlar.
+Bu özellikler, ölçek kümesine uygulanan uzantıların durumu gibi ölçek kümesindeki VM 'lerin geçerli çalışma zamanı durumunun bir özetini sağlar.
 
 
 ### <a name="the-scale-set-vm-model-view"></a>Ölçek kümesi VM model görünümü
-Benzer şekilde nasıl bir model görünümü bir ölçek kümesi vardır, Ölçek kümesindeki her sanal makine örneği kendi modeli görünüme sahiptir. Bir ölçek kümesindeki belirli bir sanal makine örneği için model görünümü sorgulamak için kullanabilirsiniz:
+Ölçek kümesinin model görünümüne benzer şekilde, ölçek kümesindeki her sanal makine örneğinin kendi model görünümü vardır. Ölçek kümesindeki belirli bir sanal makine örneği için model görünümünü sorgulamak için şunu kullanabilirsiniz:
 
-- REST API ile [virtualmachinescalesetvms/işlem/get](/rest/api/compute/virtualmachinescalesetvms/get) gibi:
+- [İşlem/virtualmachinescalesetvms/Get](/rest/api/compute/virtualmachinescalesetvms/get) ile aşağıdaki gibi REST API:
 
     ```rest
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId?api-version={apiVersion}
     ```
 
-- Azure PowerShell ile [Get-AzVmssVm](/powershell/module/az.compute/get-azvmssvm):
+- [Get-AzVmssVm](/powershell/module/az.compute/get-azvmssvm)ile Azure PowerShell:
 
     ```powershell
     Get-AzVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
     ```
 
-- Azure CLI ile [az vmss show](/cli/azure/vmss):
+- [Az VMSS](/cli/azure/vmss)Ile Azure CLI şunu göster:
 
     ```azurecli
     az vmss show --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
     ```
 
-- Ayrıca [resources.azure.com](https://resources.azure.com) veya [Azure SDK'ları](https://azure.microsoft.com/downloads/).
+- Ayrıca [Resources.Azure.com](https://resources.azure.com) veya [Azure SDK](https://azure.microsoft.com/downloads/)'larını de kullanabilirsiniz.
 
-Çıkış tam sunumunu komutu sağlayan seçenekler bağlıdır. Aşağıdaki örnekte Azure CLI üzerinden sıkıştırılmış örnek çıktı gösterilmektedir:
+Çıktının tam sunumu, komuta verdiğiniz seçeneklere bağlıdır. Aşağıdaki örnek, Azure CLı 'nın sıkıştırılmış örnek çıktısını gösterir:
 
 ```azurecli
 $ az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -163,33 +156,33 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Bu özellikler yapılandırma, Ölçek kümesindeki bir bütün olarak bir ölçek kümesindeki bir sanal makine örneği yapılandırma açıklanmaktadır. Örneğin, Ölçek kümesi modeline sahip `overprovision` değilken bir ölçek kümesindeki bir sanal makine örneği için model bir özelliği olarak. Açıdan ölçek kümesindeki tüm, bireysel bir sanal makine örnekleri olarak ölçek için bir özellik olduğundan bu farktır (açıdan hakkında daha fazla bilgi için bkz. [tasarım konuları ölçek kümeleri için](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
+Bu özellikler, ölçek kümesi içindeki bir sanal makine örneğinin yapılandırmasını bir bütün olarak değil, bir ölçek kümesi içinde tanımlıyor. Örneğin, ölçek kümesi modelinin özellik olarak `overprovision` vardır, ancak bir ölçek kümesi içindeki bir sanal makine örneği için model değildir. Bu fark, aşırı sağlamanın ölçek kümesindeki tek tek VM örnekleri değil, bir bütün olarak ölçek kümesi için bir özellik olmasından kaynaklanır (aşırı sağlama hakkında daha fazla bilgi için bkz. [Ölçek Kümeleri Için tasarım konuları](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
 
 
-### <a name="the-scale-set-vm-instance-view"></a>Ölçek kümesi sanal makine örnek görünümü
-Benzer şekilde, bir ölçek kümesi örnek görünümünü nasıl sahip, Ölçek kümesindeki her sanal makine örneği kendi örneği görünüme sahiptir. Bir ölçek kümesi içinde belirli bir VM örneği için örnek görünümü sorgulamak için kullanabilirsiniz:
+### <a name="the-scale-set-vm-instance-view"></a>Ölçek kümesi VM örneği görünümü
+Ölçek kümesinin örnek görünümüne benzer şekilde, ölçek kümesindeki her sanal makine örneğinin kendi örnek görünümü vardır. Ölçek kümesi içindeki belirli bir sanal makine örneği için örnek görünümünü sorgulamak için şunu kullanabilirsiniz:
 
-- REST API ile [virtualmachinescalesetvms/işlem/getinstanceview](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) gibi:
+- [İşlem/virtualmachinescalesetvms/getınstanceview](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) ile aşağıdaki gibi REST API:
 
     ```rest
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId/instanceView?api-version={apiVersion}
     ```
 
-- Azure PowerShell ile [Get-AzVmssVm](/powershell/module/az.compute/get-azvmssvm):
+- [Get-AzVmssVm](/powershell/module/az.compute/get-azvmssvm)ile Azure PowerShell:
 
     ```powershell
     Get-AzVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
     ```
 
-- Azure CLI ile [az vmss get-instance-view](/cli/azure/vmss)
+- [Az VMSS Get-Instance-View](/cli/azure/vmss) Ile Azure CLI
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
     ```
 
-- Ayrıca [resources.azure.com](https://resources.azure.com) veya [Azure SDK'ları](https://azure.microsoft.com/downloads/)
+- [Resources.Azure.com](https://resources.azure.com) veya [Azure SDK](https://azure.microsoft.com/downloads/) 'larını da kullanabilirsiniz
 
-Çıkış tam sunumunu komutu sağlayan seçenekler bağlıdır. Aşağıdaki örnekte Azure CLI üzerinden sıkıştırılmış örnek çıktı gösterilmektedir:
+Çıktının tam sunumu, komuta verdiğiniz seçeneklere bağlıdır. Aşağıdaki örnek, Azure CLı 'nın sıkıştırılmış örnek çıktısını gösterir:
 
 ```azurecli
 $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -240,168 +233,168 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 }
 ```
 
-Bu özellikler ölçek kümesine uygulanan tüm uzantıları içeren bir ölçek kümesindeki bir sanal makine örneği geçerli çalışma zamanı durumunu açıklar.
+Bu özellikler, ölçek kümesine uygulanan tüm uzantıları içeren bir ölçek kümesi içindeki bir VM örneğinin geçerli çalışma zamanı durumunu anlatmaktadır.
 
 
-## <a name="how-to-update-global-scale-set-properties"></a>Küresel ölçek güncelleştirme özelliklerini ayarlama
-Küresel ölçek kümesi özelliği güncelleştirmek için ölçek kümesi modeline özelliğinde güncelleştirmeniz gerekir. Bu güncelleştirme aracılığıyla yapabilirsiniz:
+## <a name="how-to-update-global-scale-set-properties"></a>Küresel ölçek kümesi özelliklerini güncelleştirme
+Küresel ölçek kümesi özelliğini güncelleştirmek için ölçek kümesi modelinde özelliği güncelleştirmeniz gerekir. Bu güncelleştirmeyi kullanarak şunları yapabilirsiniz:
 
-- REST API ile [virtualmachinescalesets/işlem/createorupdate](/rest/api/compute/virtualmachinescalesets/createorupdate) gibi:
+- [İşlem/virtualmachinescalesets/CreateOrUpdate](/rest/api/compute/virtualmachinescalesets/createorupdate) ile aşağıdaki gibi REST API:
 
     ```rest
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version={apiVersion}
     ```
 
-- Küresel ölçek kümesi özelliklerini güncelleştirmek için REST API özellikleri ile Resource Manager şablonu dağıtabilirsiniz.
+- Genel ölçek kümesi özelliklerini güncelleştirmek için REST API özelliklerle Kaynak Yöneticisi şablonu dağıtabilirsiniz.
 
-- Azure PowerShell ile [güncelleştirme AzVmss](/powershell/module/az.compute/update-azvmss):
+- Güncelleştirme ile Azure PowerShell [-AzVmss](/powershell/module/az.compute/update-azvmss):
 
     ```powershell
     Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -VirtualMachineScaleSet {scaleSetConfigPowershellObject}
     ```
 
-- Azure CLI ile [az vmss update](/cli/azure/vmss):
+- [Az VMSS Update](/cli/azure/vmss)Ile Azure CLI:
     - Bir özelliği değiştirmek için:
 
         ```azurecli
         az vmss update --set {propertyPath}={value}
         ```
 
-    - Bir ölçek kümesindeki bir liste özelliği bir nesne eklemek için: 
+    - Bir ölçek kümesindeki List özelliğine bir nesne eklemek için: 
 
         ```azurecli
         az vmss update --add {propertyPath} {JSONObjectToAdd}
         ```
 
-    - Bir nesne bir ölçek kümesindeki bir liste özelliği kaldırmak için: 
+    - Ölçek kümesindeki bir List özelliğinden bir nesne kaldırmak için: 
 
         ```azurecli
         az vmss update --remove {propertyPath} {indexToRemove}
         ```
 
-    - Ölçek kümesi daha önce dağıttıysanız `az vmss create` komutunu çalıştırabilirsiniz `az vmss create` yeniden ölçek kümesini güncelleştirmek için komutu. Emin olun tüm özellikleri `az vmss create` komutu, aynı önce olduğu gibi değiştirmek istediğiniz özellikleri dışında.
+    - Ölçek kümesini daha önce `az vmss create` komutuyla dağıttıysanız, ölçek kümesini güncelleştirmek için `az vmss create` komutunu yeniden çalıştırabilirsiniz. `az vmss create` komutundaki tüm özelliklerin, değiştirmek istediğiniz özellikler dışında, önceki ile aynı olduğundan emin olun.
 
-- Ayrıca [resources.azure.com](https://resources.azure.com) veya [Azure SDK'ları](https://azure.microsoft.com/downloads/).
+- Ayrıca [Resources.Azure.com](https://resources.azure.com) veya [Azure SDK](https://azure.microsoft.com/downloads/)'larını de kullanabilirsiniz.
 
-Ölçek kümesi modeline güncelleştirildikten sonra yeni yapılandırmayı ölçek kümesinde oluşturulan tüm yeni vm'lere uygulanır. Ancak, modelleri ölçek kümesindeki var olan VM'ler için hala son genel ölçek kümesi modeli ile güncel sunulmalıdır. Modeldeki her bir VM için bir boolean özelliği çağrılır `latestModelApplied` VM son genel ölçek kümesi modeli ile güncel olup olmadığını gösterir (`true` VM en son modeliyle güncel olduğu anlamına gelir).
+Ölçek kümesi modeli güncelleştirildikten sonra yeni yapılandırma, ölçek kümesinde oluşturulan tüm yeni VM 'lere uygulanır. Ancak, ölçek kümesindeki mevcut VM 'Lerin modelleri hala en son genel ölçek kümesi modeliyle güncel hale getirilmelidir. Her VM için modelinde, sanal makinenin en son genel ölçek kümesi modeliyle güncel olup olmadığını belirten `latestModelApplied` adlı bir Boolean özelliktir (`true` VM 'nin en son modelde güncel olduğu anlamına gelir).
 
 
-## <a name="how-to-bring-vms-up-to-date-with-the-latest-scale-set-model"></a>VM'ler ile en son ölçek kümesi modeline güncel hale getirme
-Ölçek kümesine sahip bir "Yükseltme İlkesi" belirleyen nasıl Vm'leri son ölçek kümesi modeline güncel duruma getirilir. Yükseltme ilkesi için üç mod şunlardır:
+## <a name="how-to-bring-vms-up-to-date-with-the-latest-scale-set-model"></a>En son ölçek kümesi modeliyle VM 'Leri güncel hale getirme
+Ölçek kümelerinde, sanal makinelerin en son ölçek kümesi modeliyle güncel hale getirilme biçimini belirleyen bir "yükseltme ilkesi" bulunur. Yükseltme ilkesi için üç mod şunlardır:
 
-- **Otomatik** -bu modda, Ölçek kümesi Vm'leri getirilen sırasını tutarlılık garantisi sağlar. Ölçek kümesi tüm VM'ler aynı anda sürebilir. 
-- **Sıralı** -bu modda, Ölçek kümesi isteğe bağlı duraklatma süresi toplu güncelleştirmesi kullanıma arasında toplu işlemler halinde dökümünü yapan.
-- **El ile** - bu modda, Ölçek kümesi modeline mevcut Vm'lere herhangi işlem gerçekleşmediyse güncelleştirdiğinizde.
+- **Otomatik** -bu modda, ölçek kümesi, açılan VM 'lerin sırası hakkında hiçbir garanti vermez. Ölçek kümesi tüm VM 'Leri aynı anda alabilir. 
+- Bu modda, ölçek kümesi, toplu işler arasında isteğe bağlı bir duraklatma süresi ile güncelleştirmeyi toplu olarak yapar.
+- **El ile** -bu modda, ölçek kümesi modelini güncelleştirdiğinizde mevcut VM 'lere hiçbir şey olmaz.
  
-Var olan sanal makineleri güncelleştirmek için var olan her VM'nin "el ile yükseltme" yapmanız gerekir. Bu el ile yükseltme ile bunu yapabilirsiniz:
+Mevcut VM 'Leri güncelleştirmek için, var olan her VM 'nin bir "el ile yükseltme" yapmanız gerekir. Bu el ile yükseltmeyi şu şekilde yapabilirsiniz:
 
-- REST API ile [virtualmachinescalesets/işlem/updateinstances](/rest/api/compute/virtualmachinescalesets/updateinstances) gibi:
+- [İşlem/virtualmachinescalesets/updateınstances](/rest/api/compute/virtualmachinescalesets/updateinstances) ile aşağıdaki gibi REST API:
 
     ```rest
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/manualupgrade?api-version={apiVersion}
     ```
 
-- Azure PowerShell ile [güncelleştirme AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance):
+- [Update-Azvmssınstance](/powershell/module/az.compute/update-azvmssinstance)ile Azure PowerShell:
     
     ```powershell
     Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
     ```
 
-- Azure CLI ile [az vmss update-instances](/cli/azure/vmss)
+- [Az VMSS Update-Instances](/cli/azure/vmss) Ile Azure CLI
 
     ```azurecli
     az vmss update-instances --resource-group myResourceGroup --name myScaleSet --instance-ids {instanceIds}
     ```
 
-- Dile özgü kullanabilirsiniz [Azure SDK'ları](https://azure.microsoft.com/downloads/).
+- Dile özgü [Azure SDK](https://azure.microsoft.com/downloads/)'larını da kullanabilirsiniz.
 
 >[!NOTE]
-> Service Fabric kümeleri yalnızca kullanma *otomatik* modu, ancak güncelleştirme farklı şekilde ele alınır. Daha fazla bilgi için [Service Fabric uygulama yükseltme](../service-fabric/service-fabric-application-upgrade.md).
+> Service Fabric kümeler yalnızca *Otomatik* modu kullanabilir, ancak güncelleştirme farklı şekilde işlenir. Daha fazla bilgi için bkz. [uygulama yükseltmeleri Service Fabric](../service-fabric/service-fabric-application-upgrade.md).
 
-Yükseltme İlkesi izlemez değişikliği küresel ölçek özellikleri ayarlamak için bir tür yoktur. İşletim sistemi profili (örneğin, yönetici kullanıcı adı ve parola) API sürümünde yalnızca değiştirilebilir bir ölçek kümesi değişiklikleri *2017-12-01* veya üzeri. Bu değişiklikler, yalnızca değişikliği ölçek kümesi modelinde sonra oluşturulan Vm'lere uygulanır. Varolan Vm'leri güncel duruma getirmek için var olan her VM'nin "reimage" yapmanız gerekir. Bu reimage aracılığıyla yapabilirsiniz:
+Küresel ölçek kümesi özelliklerinde, yükseltme ilkesini takip eden bir değişiklik türü vardır. Ölçek kümesi işletim sistemi profilinde (Yönetici Kullanıcı adı ve parola gibi) yapılan değişiklikler yalnızca API sürüm *2017-12-01* veya sonraki sürümlerde değiştirilebilir. Bu değişiklikler yalnızca ölçek kümesi modelindeki değişiklikten sonra oluşturulan VM 'Ler için geçerlidir. Mevcut VM 'Leri güncel hale getirmek için, var olan her VM 'nin "ReImage" öğesini yapmanız gerekir. Bu yeniden görüntüsünü kullanarak yapabilirsiniz:
 
-- REST API ile [virtualmachinescalesets/işlem/reimage](/rest/api/compute/virtualmachinescalesets/reimage) gibi:
+- [İşlem/virtualmachinescalesets/yeniden görüntüyle](/rest/api/compute/virtualmachinescalesets/reimage) aşağıdaki şekilde REST API:
 
     ```rest
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
     ```
 
-- Azure PowerShell ile [kümesi AzVmssVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm):
+- [Set-AzVmssVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)ile Azure PowerShell:
 
     ```powershell
     Set-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
-- Azure CLI ile [az vmss reimage](https://docs.microsoft.com/cli/azure/vmss):
+- [Az VMSS ReImage](https://docs.microsoft.com/cli/azure/vmss)Ile Azure CLI:
 
     ```azurecli
     az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
     ```
 
-- Dile özgü kullanabilirsiniz [Azure SDK'ları](https://azure.microsoft.com/downloads/).
+- Dile özgü [Azure SDK](https://azure.microsoft.com/downloads/)'larını da kullanabilirsiniz.
 
 
-## <a name="properties-with-restrictions-on-modification"></a>Değişiklik kısıtlamalar ile özellikleri
+## <a name="properties-with-restrictions-on-modification"></a>Değişiklik kısıtlamaları olan özellikler
 
 ### <a name="create-time-properties"></a>Oluşturma zamanı özellikleri
-Ölçek kümesi oluşturduğunuzda, bazı özellikler yalnızca ayarlanabilir. Bu özellikler şunları içerir:
+Bazı özellikler yalnızca ölçek kümesini oluşturduğunuzda ayarlanabilir. Bu özellikler şunları içerir:
 
 - Kullanılabilirlik Alanları
-- Görüntü başvurusu yayımcısı
-- Görüntü başvurusu teklifi
+- Görüntü başvuru yayımcısı
+- Görüntü başvuru teklifi
 - Yönetilen işletim sistemi disk depolama hesabı türü
 
-### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>Geçerli değere göre yalnızca değiştirilen Özellikler
-İstisnalar geçerli değerine bağlı olarak bazı özellikleri değiştirilebilir. Bu özellikler şunları içerir:
+### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>Yalnızca geçerli değere göre değiştirilebilen Özellikler
+Bazı özellikler, geçerli değere bağlı olarak özel durumlarla birlikte değişebilir. Bu özellikler şunları içerir:
 
-- **singlePlacementGroup** - singlePlacementGroup doğruysa, değiştirilebilir false. Ancak, singlePlacementGroup yanlış ise, **olmayabilir** değiştirilmesine true.
-- **alt ağ** - alt ağ, bir ölçek kümesinin olduğu sürece özgün alt değiştirilebilir ve yeni alt ağ olan aynı sanal ağ içinde.
+- **singleplacementgroup** -singleplacementgroup true ise, false olarak değiştirilebilir. Ancak, singlePlacementGroup false ise true **olarak değiştirilemez.**
+- **alt ağ** -bir ölçek kümesinin alt ağı, özgün alt ağ ve yeni alt ağ aynı sanal ağ içinde olduğu sürece değiştirilebilir.
 
-### <a name="properties-that-require-deallocation-to-change"></a>Ayırmayı kaldırma değiştirmek için gereken özellikleri
-Ölçek kümesindeki sanal makineler serbest bırakılır, bazı özellikler yalnızca belirli değerleri için değiştirilebilir. Bu özellikler şunları içerir:
+### <a name="properties-that-require-deallocation-to-change"></a>Değişikliğe göre ayırmayı gerektiren özellikler
+Ölçek kümesindeki VM 'Ler serbest bırakıldığında bazı özellikler yalnızca belirli değerlere değiştirilebilir. Bu özellikler şunları içerir:
 
-- **SKU adı**- yeni sanal makine SKU'su, Ölçek kümesinde şu anda, Vm'leri ölçek SKU adı değiştirmeden önce serbest gereken donanım üzerinde desteklenmiyor. Daha fazla bilgi için [bir Azure VM'yi yeniden boyutlandırma](../virtual-machines/windows/resize-vm.md).
+- **SKU adı**-yenı VM SKU 'su ölçek kümesi şu anda açık olan donanımda DESTEKLENMIYORSA, SKU adını değiştirmeden önce ölçek kümesindeki VM 'leri serbest getirmeniz gerekir. Daha fazla bilgi için bkz. [Azure VM 'yi yeniden boyutlandırma](../virtual-machines/windows/resize-vm.md).
 
 
-## <a name="vm-specific-updates"></a>Sanal Makineye özgü güncelleştirmeleri
-Küresel ölçek kümesi özellikleri yerine belirli VM'ler için bazı değişiklikleri uygulanabilir. Şu anda, yalnızca desteklenen sanal Makineye özgü güncelleştirme İliştir/Ayır ölçek kümesine veri diski/vm'lerden etmektir. Bu özellik önizlemede. Daha fazla bilgi için [Önizleme belgeleri](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).
+## <a name="vm-specific-updates"></a>VM 'ye özgü güncelleştirmeler
+Belirli değişiklikler, küresel ölçek kümesi özellikleri yerine belirli sanal makinelere uygulanabilir. Şu anda desteklenen tek VM 'ye özgü güncelleştirme, ölçek kümesindeki VM 'lere/sanal makinelere veri diskleri eklemek/ayırmak içindir. Bu özellik önizlemede. Daha fazla bilgi için bkz. [Önizleme belgeleri](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).
 
 
 ## <a name="scenarios"></a>Senaryolar
 
 ### <a name="application-updates"></a>Uygulama güncelleştirmeleri
-Bir uygulama için bir ölçek kümesi uzantıları dağıtılırsa, uzantı yapılandırması için bir güncelleştirme yükseltme ilkesiyle uygun şekilde güncelleştirmek uygulama neden olur. Bir özel betik uzantısı'nda çalışacak bir komut dosyası yeni bir sürümü varsa, örneğin, güncelleştiremedi *fileUris* yeni komut dosyasına işaret edecek şekilde özelliği. Bazı durumlarda, uzantı yapılandırması değiştirilmemiş olsa bile bir güncelleştirmeyi zorlamak isteyebilirsiniz (örneğin, betik URI'si için bir değişiklik yapmadan betik güncelleştirilmiş). Bu durumlarda, değiştirebileceğiniz *forceUpdateTag* bir güncelleştirmeyi zorlamak için. Azure platformunda bu özellik yorumlamaz. Değeri değiştirirseniz, uzantıyı nasıl çalıştığı üzerinde hiçbir etkisi yoktur. Bir değişiklik, yalnızca yeniden çalıştırmak için uzantı zorlar. Daha fazla bilgi için *forceUpdateTag*, bkz: [uzantıları için REST API belgelerini](/rest/api/compute/virtualmachineextensions/createorupdate). Unutmayın *forceUpdateTag* tüm uzantılar, yalnızca özel betik uzantısı ile kullanılabilir.
+Bir uygulama, uzantılar aracılığıyla bir ölçek kümesine dağıtılırsa, uzantı yapılandırmasına yönelik bir güncelleştirme, uygulamanın yükseltme ilkesine uygun olarak güncelleştirilmesini sağlar. Örneğin, özel bir betik uzantısında çalıştırmak için bir betiğin yeni bir sürümüne sahipseniz, *Fileuris* özelliğini yeni betiğe işaret etmek üzere güncelleştirebilirsiniz. Bazı durumlarda, uzantı yapılandırması değişmese de bir güncelleştirmeye zorlamak isteyebilirsiniz (örneğin, betiği, betiğin URI 'sine değişiklik yapmadan güncelleştirdiniz). Bu durumlarda, bir güncelleştirmeyi zorlamak için *Forceupdatetag* ' i değiştirebilirsiniz. Azure platformu bu özelliği yorumlamaz. Değeri değiştirirseniz, uzantının nasıl çalıştığı üzerinde hiçbir etkisi olmaz. Bir değişiklik, uzantıyı yeniden çalışmaya zorlar. *Forceupdatetag*hakkında daha fazla bilgi için bkz. [Uzantılar için REST API belgeleri](/rest/api/compute/virtualmachineextensions/createorupdate). *Forceupdatetag* 'in yalnızca özel Betik uzantısı değil tüm uzantılarla kullanılabileceğini unutmayın.
 
-Özel bir görüntü dağıtılan uygulamalar için de yaygındır. Bu senaryo, aşağıdaki bölümde ele alınmıştır.
+Uygulamaların özel bir görüntü ile dağıtılması da yaygındır. Bu senaryo aşağıdaki bölümde ele alınmıştır.
 
 ### <a name="os-updates"></a>İşletim sistemi güncelleştirmeleri
-Azure platform görüntüleri kullanıyorsanız değiştirerek görüntüyü güncelleştirebilirsiniz *Imagereference* (daha fazla bilgi için bkz: [REST API belgelerini](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Azure platform görüntülerini kullanıyorsanız, *ImageReference* 'ı değiştirerek görüntüyü güncelleştirebilirsiniz (daha fazla bilgi, [REST API belgelerine](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)bakın).
 
 >[!NOTE]
-> Platform görüntüleri ile görüntü başvurusu sürümü için "son" belirtmek yaygındır. Oluşturduğunuzda, ölçeği genişletme ve yeniden görüntü oluşturma, Vm'leri ile kullanılabilir en son sürüme oluşturulur. Ancak, bunu **yok** yeni görüntü sürümleri çıktıkça işletim sistemi görüntüsünü otomatik olarak zaman içinde güncelleştirilir anlamına gelir. Ayrı bir özellik, şu anda otomatik işletim sistemi yükseltmelerini sağlayan Önizleme aşamasındadır. Daha fazla bilgi için [otomatik işletim sistemi yükseltmelerini belgeleri](virtual-machine-scale-sets-automatic-upgrade.md).
+> Platform görüntüleriyle birlikte, görüntü başvuru sürümü için "en son" belirtmek yaygın bir sürümdür. Oluşturduğunuz, ölçeklendirilen ve yeniden görüntü oluşturduğunuzda, VM 'Ler kullanılabilir en son sürümle oluşturulur. Ancak, yeni görüntü sürümleri serbest bırakıldığı için işletim sistemi görüntüsünün zaman içinde otomatik olarak **güncelleştirildiği anlamına gelmez** . Otomatik işletim sistemi yükseltmeleri sağlayan, şu anda önizleme aşamasında olan ayrı bir özellik vardır. Daha fazla bilgi için [Otomatik işletim sistemi yükseltmeleri belgelerine](virtual-machine-scale-sets-automatic-upgrade.md)bakın.
 
-Özel görüntüler kullanıyorsanız, görüntüyü güncelleştirerek güncelleştirebilirsiniz *Imagereference* kimliği (daha fazla bilgi için bkz: [REST API belgelerini](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Özel görüntüler kullanıyorsanız, *ImageReference* kimliğini güncelleştirerek görüntüyü güncelleştirebilirsiniz (daha fazla bilgi için [REST API belgelerine](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)bakın).
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="update-the-os-image-for-your-scale-set"></a>Ölçek kümeniz için işletim sistemi görüntüsü güncelleştirme
-Ubuntu LTS, 16.04 eski bir sürümünü çalıştıran bir ölçek kümesi olabilir. Ubuntu LTS 16.04 sürümü gibi daha yeni bir sürüme güncelleştirmek istediğiniz *16.04.201801090*. Bu özellikler aşağıdaki komutlardan birini ile doğrudan değiştirebilmesi görüntü başvurusu version özelliği bir listenin bir parçası değil:
+### <a name="update-the-os-image-for-your-scale-set"></a>Ölçek kümesi için işletim sistemi görüntüsünü güncelleştirme
+Ubuntu LTS 16,04 ' nin eski bir sürümünü çalıştıran bir ölçek kümesine sahip olabilirsiniz. Yeni bir Ubuntu LTS 16,04 sürümüne (sürüm *16.04.201801090*gibi) güncelleştirmek istiyorsunuz. Görüntü başvurusu sürümü özelliği bir listenin parçası değildir, bu nedenle bu özellikleri doğrudan aşağıdaki komutlardan biriyle değiştirebilirsiniz:
 
-- Azure PowerShell ile [güncelleştirme AzVmss](/powershell/module/az.compute/update-azvmss) gibi:
+- Aşağıdaki gibi [Update-AzVmss](/powershell/module/az.compute/update-azvmss) ile Azure PowerShell:
 
     ```powershell
     Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -ImageReferenceVersion 16.04.201801090
     ```
 
-- Azure CLI ile [az vmss update](/cli/azure/vmss):
+- [Az VMSS Update](/cli/azure/vmss)Ile Azure CLI:
 
     ```azurecli
     az vmss update --resource-group myResourceGroup --name myScaleSet --set virtualMachineProfile.storageProfile.imageReference.version=16.04.201801090
     ```
 
-Alternatif olarak, Ölçek kümenizi kullanan resmi değiştirmek isteyebilirsiniz. Örneğin, güncelleştirmek veya ölçek kümeniz tarafından kullanılan özel bir görüntü değiştirmek isteyebilirsiniz. Görüntünün görüntü başvuru kimliği özelliği güncelleştirerek ölçek kümenizi kullanan değiştirebilirsiniz. Bu özellik aşağıdaki komutlardan birini ile doğrudan değiştirebilmesi görüntü başvuru kimliği özelliği bir listenin bir parçası değil:
+Alternatif olarak, ölçek kümesinin kullandığı görüntüyü değiştirmek isteyebilirsiniz. Örneğin, ölçek kümesi tarafından kullanılan özel bir görüntüyü güncelleştirmek veya değiştirmek isteyebilirsiniz. Görüntü başvuru KIMLIĞI özelliğini güncelleştirerek ölçek kümesinin kullandığı görüntüyü değiştirebilirsiniz. Görüntü başvuru KIMLIĞI özelliği bir listenin parçası olmadığından, bu özelliği doğrudan aşağıdaki komutlardan biriyle değiştirebilirsiniz:
 
-- Azure PowerShell ile [güncelleştirme AzVmss](/powershell/module/az.compute/update-azvmss) gibi:
+- Aşağıdaki gibi [Update-AzVmss](/powershell/module/az.compute/update-azvmss) ile Azure PowerShell:
 
     ```powershell
     Update-AzVmss `
@@ -410,7 +403,7 @@ Alternatif olarak, Ölçek kümenizi kullanan resmi değiştirmek isteyebilirsin
         -ImageReferenceId /subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myNewImage
     ```
 
-- Azure CLI ile [az vmss update](/cli/azure/vmss):
+- [Az VMSS Update](/cli/azure/vmss)Ile Azure CLI:
 
     ```azurecli
     az vmss update \
@@ -420,10 +413,10 @@ Alternatif olarak, Ölçek kümenizi kullanan resmi değiştirmek isteyebilirsin
     ```
 
 
-### <a name="update-the-load-balancer-for-your-scale-set"></a>Ölçek kümeniz için Yük Dengeleyiciyi güncelleştirin
-Bir ölçek kümesi Azure Load Balancer ile sahip olduğunuz ve Azure Application Gateway ile Azure Load Balancer değiştirmek istediğiniz varsayalım. Bir ölçek kümesi için uygulama ağ geçidi özellikleri ve yük dengeleyici özellikleri doğrudan değiştirme yerine liste öğeleri eklemek veya kaldırmak için komutları kullanabilirsiniz bir listenin bir parçası olduğundan:
+### <a name="update-the-load-balancer-for-your-scale-set"></a>Ölçek kümesi için yük dengeleyiciyi güncelleştirme
+Azure Load Balancer olan bir ölçek kümesine sahip olduğunu ve Azure Load Balancer bir Azure Application Gateway ile değiştirmek istediğinizi varsayalım. Bir ölçek kümesinin yük dengeleyici ve Application Gateway özellikleri bir listenin parçasıdır. bu nedenle, özellikleri doğrudan değiştirmek yerine liste öğelerini kaldırmak veya eklemek için komutları kullanabilirsiniz:
 
-- Azure Powershell:
+- Azure PowerShell:
 
     ```powershell
     # Get the current model of the scale set and store it in a local PowerShell object named $vmss
@@ -453,8 +446,8 @@ Bir ölçek kümesi Azure Load Balancer ile sahip olduğunuz ve Azure Applicatio
     ```
 
 >[!NOTE]
-> Bu komutlar, Ölçek kümesinde yalnızca bir IP yapılandırması ve yük dengeleyici olduğu kabul edilmektedir. Varsa birden çok, bir liste dizini dışındaki kullanmanız gerekebilir *0*.
+> Bu komutlar, ölçek kümesinde yalnızca bir IP yapılandırması ve yük dengeleyici olduğunu varsayar. Birden çok varsa, *0*dışında bir liste dizini kullanmanız gerekebilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ölçek kümeleriyle üzerinde genel yönetim görevlerini gerçekleştirebilirsiniz [Azure CLI](virtual-machine-scale-sets-manage-cli.md) veya [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md).
+Ayrıca, [Azure CLI](virtual-machine-scale-sets-manage-cli.md) veya [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md)ölçek kümelerinde ortak yönetim görevleri gerçekleştirebilirsiniz.

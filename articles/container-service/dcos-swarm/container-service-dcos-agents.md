@@ -1,49 +1,47 @@
 ---
-title: (KULLANIM DIŞI) Azure Container Service için DC/OS aracı havuzları
-description: Genel ve özel aracı havuzları ile bir Azure Container Service DC/OS kümesi nasıl çalışır?
-services: container-service
+title: Kullanım DıŞı Azure Container Service için DC/OS aracı havuzları
+description: Ortak ve özel aracı havuzları Azure Container Service DC/OS kümesi ile nasıl çalışır?
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 03cacda1aa405cb2d0ded579c8ddb5f6011ce3bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb9b33bf537ebd5a563f8e8a8afd45cd2e5b292d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60478455"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278377"
 ---
-# <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>(KULLANIM DIŞI) Azure Container Service için DC/OS aracı havuzları
+# <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>Kullanım DıŞı Azure Container Service için DC/OS aracı havuzları
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Azure Container Service'te DC/OS kümelerini iki havuz, genel bir havuz ve özel bir havuz içindeki aracı düğümlerinin içerir. Bir uygulama, kapsayıcı hizmetinizde makineler arasında erişilebilirlik etkileyen iki havuzuna dağıtılabilir. Makineleri internet'e (ortak) açık veya dahili (özel) tutulur. Bu makalede, genel ve özel havuzların yüzden kısa bir genel bakış sağlar.
+Azure Container Service içindeki DC/OS kümeleri, genel bir havuz ve özel havuz olmak üzere iki havuzdaki aracı düğümleri içerir. Bir uygulama, kapsayıcı hizmetinizdeki makineler arasındaki erişilebilirliği etkileyen her iki havuza de dağıtılabilir. Makineler Internet 'e (genel) sunulabilir veya iç (özel) tutulur. Bu makale, genel ve özel havuzların neden olduğuna ilişkin kısa bir genel bakış sunar.
 
 
-* **Özel aracılar**: Özel aracı düğümleri yönlendirilemeyen bir ağ üzerinden çalıştırın. Bu ağ, yalnızca yönetim bölgesi veya bölge genel uç yönlendiricisinde aracılığıyla erişilebilir. Varsayılan olarak, DC/OS, uygulamaları özel aracı düğümlerinde başlatır. 
+* **Özel aracılar**: özel aracı düğümleri yönlendirilemeyen bir ağ aracılığıyla çalışır. Bu ağa yalnızca yönetim bölgesinden veya genel bölge sınır yönlendiricisinden erişilebilir. Varsayılan olarak, DC/OS özel aracı düğümlerinde uygulamalar başlatır. 
 
-* **Ortak**: Genel aracı düğümleri, DC/OS uygulamaları ve Hizmetleri ortak olarak erişilebilen bir ağ üzerinden çalıştırın. 
+* **Ortak aracılar**: genel aracı düğümleri, genel olarak erişilebilen bir ağ üzerinden DC/OS uygulamaları ve Hizmetleri çalıştırır. 
 
-DC/OS ağ güvenliği hakkında daha fazla bilgi için bkz: [DC/OS belgelerine](https://docs.mesosphere.com/).
+DC/OS ağ güvenliği hakkında daha fazla bilgi için bkz. [DC/OS belgeleri](https://docs.mesosphere.com/).
 
-## <a name="deploy-agent-pools"></a>Aracı havuzları dağıtma
+## <a name="deploy-agent-pools"></a>Aracı havuzlarını dağıtma
 
-Azure kapsayıcı hizmeti DC/OS aracı havuzları şu şekilde oluşturulur:
+Azure Container Service Içindeki DC/OS aracı havuzları şu şekilde oluşturulur:
 
-* **Özel havuzu** ne zaman belirtin aracı düğüm sayısını içerir, [DC/OS kümesi dağıtma](container-service-deployment.md). 
+* **Özel havuz** , [DC/OS kümesini dağıtırken](container-service-deployment.md)belirttiğiniz aracı düğümlerinin sayısını içerir. 
 
-* **Genel havuzunu** başlangıçta önceden belirlenen sayıda aracı düğümleri içerir. DC/OS kümesi sağlandığında Bu havuz otomatik olarak eklenir.
+* **Ortak havuz** başlangıçta önceden belirlenmiş sayıda aracı düğümü içerir. Bu havuz, DC/OS kümesi sağlandığında otomatik olarak eklenir.
 
-Azure sanal makine ölçek kümeleri özel bir havuz ve genel havuzunu var. Dağıtımdan sonra bu havuzlarını yeniden boyutlandırabilirsiniz.
+Özel havuz ve genel havuz Azure sanal makine ölçek kümeleridir. Dağıtımdan sonra Bu havuzların boyutunu değiştirebilirsiniz.
 
-## <a name="use-agent-pools"></a>Aracı havuzları kullanın
-Varsayılan olarak, **Marathon** yeni bir uygulamayı dağıtır *özel* aracı düğümleri. Uygulamayı açıkça dağıtmak zorunda *genel* uygulamanın oluşturulması sırasında düğümleri. Seçin **isteğe bağlı** girin ve sekme **slave_public** için **kabul edilen kaynak rolleri** değeri. Bu işlem belgelenen [burada](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) ve [DC/OS](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) belgeleri.
+## <a name="use-agent-pools"></a>Aracı havuzlarını kullanma
+Varsayılan olarak, **Marathon** tüm yeni uygulamaları *özel* aracı düğümlerine dağıtır. Uygulamayı oluştururken uygulamayı *ortak* düğümlere açıkça dağıtmanız gerekir. **Isteğe bağlı** sekmesini seçin ve **kabul edilen kaynak rolleri** değeri için **slave_public** girin. Bu işlem [burada](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) ve [DC/OS](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) belgelerinde belgelenmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Daha fazla bilgi edinin [DC/OS kapsayıcılarınızı yönetme](container-service-mesos-marathon-ui.md).
+* [DC/OS Kapsayıcılarınızı yönetme](container-service-mesos-marathon-ui.md)hakkında daha fazla bilgi edinin.
 
-* Bilgi edinmek için nasıl [güvenlik duvarını açmak](container-service-enable-public-access.md) DC/OS kapsayıcılarınızı genel erişime izin vermek için Azure tarafından sağlanan.
+* DC/OS kapsayıcılarınıza genel erişime izin vermek için Azure tarafından sunulan [güvenlik duvarının nasıl açılacağını](container-service-enable-public-access.md) öğrenin.
 

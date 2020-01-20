@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 83b167baa29a54e53f7fe8bdb7b7e5c88bc3eddf
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: c98feda62b7e5de5551b02d6189a1142ca8c5f88
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264093"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276773"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -29,7 +29,7 @@ Application Insights tüm web sayfalarıyla kullanılabilir; kısa bir JavaScrip
     * [JavaScript kod parçacığı](#snippet-based-setup)
 
 > [!IMPORTANT]
-> > Uygulamanıza JavaScript SDK 'Sı eklemek için yalnızca bir yöntem kullanın. NPM kurulumunu kullanırsanız, kod parçacığını kullanmayın ve tam tersi de geçerlidir.
+> Uygulamanıza JavaScript SDK 'Sı eklemek için yalnızca bir yöntem kullanın. NPM kurulumunu kullanırsanız, kod parçacığını kullanmayın ve tam tersi de geçerlidir.
 
 > [!NOTE]
 > NPM kurulumu, JavaScript SDK 'sını projenize bir bağımlılık olarak yükleyerek IntelliSense 'i etkinleştirir, ancak kod parçacığı, çalışma zamanında SDK 'Yı getirir. Her ikisi de aynı özellikleri destekler. Ancak, daha fazla özel olay ve yapılandırma isteyen geliştiriciler genellikle NPM kurulumu için kabul etirken, kod parçacığı için hazır web analizi kabul etme işlemini arayan kullanıcılar.

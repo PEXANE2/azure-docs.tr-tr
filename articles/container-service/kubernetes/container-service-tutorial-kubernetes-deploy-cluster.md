@@ -1,25 +1,23 @@
 ---
-title: (KULLANIM DIŞI) Azure Container Service Öğreticisi - kümeyi dağıtma
+title: Kullanım DıŞı Azure Container Service öğreticisi-kümeyi dağıtma
 description: Azure Container Service öğreticisi - Küme Dağıtma
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 58fef0357a903f2ab1d238bbab7b2d9dca673eb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5cb21bff2834751843061910184499f37bde834e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576178"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275452"
 ---
-# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(KULLANIM DIŞI) Azure Container Service'te bir Kubernetes kümesi dağıtma
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>Kullanım DıŞı Azure Container Service bir Kubernetes kümesi dağıtma
 
 > [!TIP]
-> Azure Kubernetes hizmeti kullanan Bu öğretici için güncelleştirilmiş sürümü görmek [Öğreticisi: Azure Kubernetes Service (AKS) kümesini dağıtma](../../aks/tutorial-kubernetes-deploy-cluster.md).
+> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: Azure Kubernetes Service (AKS) kümesi dağıtma](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -78,7 +76,7 @@ Kümenize yönelik bağlantıyı doğrulamak için [kubectl get nodes](https://k
 kubectl get nodes
 ```
 
-Çıkış:
+Çıktı:
 
 ```bash
 NAME                    STATUS                     AGE       VERSION

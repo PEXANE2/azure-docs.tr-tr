@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 01/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 41baacd4485e6702ec29057f5d539724b74e353b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bd6095daca51ddca0cfb4b34ca86e763df9a3d02
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383238"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276807"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Kullanıcı tanımlı işlevler istemci kitaplığı başvurusu
 
@@ -32,7 +32,7 @@ Alan tanımlayıcısı verildiğinde, bu işlev grafikten alanı alır.
 
 | Parametre  | Tür                | Açıklama  |
 | ---------- | ------------------- | ------------ |
-| *numarasını*  | `guid` | Boşluk tanımlayıcısı |
+| *id*  | `guid` | Boşluk tanımlayıcısı |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (kimlik) ⇒ `sensor`
 
@@ -42,7 +42,7 @@ Bir algılayıcı tanımlayıcısı verildiğinde, bu işlev algılayıcıyı gr
 
 | Parametre  | Tür                | Açıklama  |
 | ---------- | ------------------- | ------------ |
-| *numarasını*  | `guid` | Algılayıcı tanımlayıcısı |
+| *id*  | `guid` | Algılayıcı tanımlayıcısı |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (kimlik) ⇒ `device`
 
@@ -52,7 +52,7 @@ Bir cihaz tanımlayıcısı verildiğinde, bu işlev cihazı grafikten alır.
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *numarasını* | `guid` | Cihaz tanımlayıcısı |
+| *id* | `guid` | Cihaz tanımlayıcısı |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (Sensorıd, dataType) ⇒ `value`
 
@@ -243,7 +243,7 @@ Bu işlev, Kullanıcı tanımlı işlev içinde aşağıdaki iletiyi günlüğe 
 
 | Parametre  | Tür                | Açıklama  |
 | ------ | ------------------- | ------------ |
-| *İleti* | `string` | Günlüğe kaydedilecek ileti |
+| *message* | `string` | Günlüğe kaydedilecek ileti |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (Topologyobjectıd, topologyObjectType, yük)
 

@@ -1,61 +1,53 @@
 ---
-title: Örneği koruması için Azure sanal makine ölçek kümesi örneklerine | Microsoft Docs
-description: Azure sanal makine ölçek kümesi örneklerine ölçeklendirme ve ölçek kümesi işlemlerinden korumayı öğrenin.
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Azure sanal makine ölçek kümesi örnekleri için örnek koruması
+description: Azure sanal makine ölçek kümesi örneklerinin ölçek ve ölçek ayarlama işlemlerinden nasıl korunacağını öğrenin.
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: manayar
-ms.openlocfilehash: 61430f5a43a04fa0e5b2f0c79ff03419c73aaf28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 071ea79f4d288e86cc5b9347f8607b4ff7190bc1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416558"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275801"
 ---
-# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Örneği koruması için Azure sanal makine ölçek kümesi örnekleri (Önizleme)
-Azure sanal makine ölçek kümeleri iş yükleriniz için daha iyi esneklik etkinleştirme [otomatik ölçeklendirme](virtual-machine-scale-sets-autoscale-overview.md)altyapınızı ölçeği daraltır, yapılandırabilmek için ve bu ölçek yaptığında. Ölçek kümeleri de etkinleştirmeniz merkezi olarak yönetin, yapılandırın ve sanal makinelerin çok sayıda farklı aracılığıyla güncelleştirme [yükseltme ilkesini](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) ayarlar. Bir güncelleştirme ölçek kümesi modeline yapılandırabilirsiniz ve yükseltme ilkesi otomatik veya çalışırken ayarladıysanız yeni yapılandırma için her bir ölçek kümesi örnek otomatik olarak uygulanır.
+# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Azure sanal makine ölçek kümesi örnekleri için örnek koruması (Önizleme)
+Azure sanal makine ölçek kümeleri, iş yükleriniz için [Otomatik ölçeklendirme](virtual-machine-scale-sets-autoscale-overview.md)aracılığıyla daha iyi esneklik sağlar, böylece altyapınız ne zaman ölçekleyerek ve ölçeklendirilirken yapılandırabilirsiniz. Ölçek Kümeleri Ayrıca, farklı [yükseltme ilkesi](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) ayarları aracılığıyla çok sayıda VM 'yi merkezi olarak yönetmenize, yapılandırmanıza ve güncelleştirmenize olanak tanır. Ölçek kümesi modelinde bir güncelleştirme yapılandırabilirsiniz ve yükseltme ilkesini otomatik veya aşağı olarak ayarladıysanız yeni yapılandırma her ölçek kümesi örneğine otomatik olarak uygulanır.
 
-Olabilir, uygulamanızın trafiği işler ölçek geri kalanından farklı kabul edilmesi için belirli örnekler istediğiniz durumlarda örneği ayarlayın. Örneğin, uzun süre çalışan işlemleri ölçek kümesindeki belirli örnekleri gerçekleştiriliyor ve bu örnekler, ölçeği işlemleri tamamlanana kadar açma olmasını istemediğiniz. Ölçek kümesindeki bir ölçek kümesi üyeleri ek veya bunlardan farklı görevleri gerçekleştirmek için birkaç örneği de özelleştirilmiş. Bu 'özel' sanal makineler ölçek kümesindeki diğer örneklerle değiştirilmeyen gerekir. Bunlar ve diğer senaryolar için uygulamanızı etkinleştirmek için ek denetimler örneği koruması sağlar.
+Uygulamanız trafiği işlerken, belirli örneklerin ölçek kümesi örneğinin geri kalanından farklı şekilde değerlendirilmesini istediğiniz durumlar olabilir. Örneğin, ölçek kümesindeki bazı örnekler uzun süre çalışan işlemler gerçekleştiriyor olabilir ve İşlemler tamamlanana kadar bu örneklerin ölçeklendirilmesini istemezsiniz. Ayrıca, ölçek kümesinin diğer üyelerinden daha fazla veya farklı görevler gerçekleştirmek için ölçek kümesinde birkaç örneğe özelleştirilmiş de sahip olabilirsiniz. Ölçek kümesindeki diğer örneklerle değiştirilmemelidir bu ' özel ' VM 'lerinin olması gerekir. Örnek koruması, uygulamanız için bu ve diğer senaryoları etkinleştirmek üzere ek denetimler sağlar.
 
-Bu makalede, uygulamak ve farklı örneği koruma özellikleri ile ölçek kümesi örneklerine kullanmak nasıl açıklanmaktadır.
+Bu makalede, ölçek kümesi örnekleriyle farklı örnek koruma özelliklerini nasıl uygulayabileceğiniz ve kullanabileceğiniz açıklanır.
 
 > [!NOTE]
->Örnek koruma, şu anda genel Önizleme aşamasındadır. Hiçbir katılımı yordam, aşağıda açıklanan genel Önizleme işlevselliği kullanmak için gereklidir. Örnek koruma önizlemesi yalnızca API 2019-03-01 sürümü ile yönetilen disklerle ölçek kümeleri desteklenir.
+>Örnek koruma Şu anda genel önizleme aşamasındadır. Aşağıda açıklanan genel önizleme işlevlerini kullanmak için katılım prosedürü gerekmez. Örnek koruma Önizleme yalnızca API sürüm 2019-03-01 ve yönetilen diskleri kullanan ölçek kümelerinde desteklenir.
 
-## <a name="types-of-instance-protection"></a>Örnek koruma türü
-Ölçek kümeleri, iki tür örneği koruma özellikleri sağlar:
+## <a name="types-of-instance-protection"></a>Örnek koruma türleri
+Ölçek kümeleri iki tür örnek koruma özelliği sağlar:
 
--   **Ölçek bileşeninden koruyun**
-    - Aracılığıyla etkinleştirilen **protectFromScaleIn** ölçekte özelliğini ayarlama örneği
-    - Örneği tarafından başlatılan bir otomatik ölçeklendirme ölçek bileşeninden korur
-    - (Örnek silme dahil olmak üzere) örneği kullanıcı tarafından başlatılan işlemleri **engellenmedi**
-    - Ölçek kümesinde başlatılan işlemleri (yükseltme, görüntüsünü yeniden oluşturma, serbest bırakın, vb.) olan **engellenmedi**
+-   **Ölçeklendirmeye karşı koruma**
+    - Ölçek kümesi örneğindeki **protectFromScaleIn** özelliği aracılığıyla etkinleştirildi
+    - Örneği otomatik ölçeklendirme tarafından başlatılan ölçeğe karşı korur
+    - Kullanıcı tarafından başlatılan örnek işlemleri (örnek silme dahil) **engellenmiyor**
+    - Ölçek kümesi üzerinde başlatılan işlemler (yükseltme, yeniden görüntü, serbest bırakma vb.) **engellenmiyor**
 
--   **Ölçek kümesi eylemlerden koruyun**
-    - Aracılığıyla etkinleştirilen **protectFromScaleSetActions** ölçekte özelliğini ayarlama örneği
-    - Örneği tarafından başlatılan bir otomatik ölçeklendirme ölçek bileşeninden korur
-    - Örnek, Ölçek kümesinde başlatılan işlemleri önler (yükseltme gibi görüntüsünü yeniden oluşturma, serbest bırakın, vb.)
-    - (Örnek silme dahil olmak üzere) örneği kullanıcı tarafından başlatılan işlemleri **engellenmedi**
-    - Tam bir ölçek kümesinin Sil **engellenmedi**
+-   **Ölçek kümesi eylemlerine karşı koruma**
+    - Ölçek kümesi örneğindeki **protectFromScaleSetActions** özelliği aracılığıyla etkinleştirildi
+    - Örneği otomatik ölçeklendirme tarafından başlatılan ölçeğe karşı korur
+    - Ölçek kümesi üzerinde başlatılan işlemden (yükseltme, yeniden görüntü, serbest bırakma vb.) örnek korur
+    - Kullanıcı tarafından başlatılan örnek işlemleri (örnek silme dahil) **engellenmiyor**
+    - Tam ölçek kümesini silme işlemi **engellenmiyor**
 
-## <a name="protect-from-scale-in"></a>Ölçek bileşeninden koruyun
-Ölçek kümesi örneklerine örneği oluşturulduktan sonra örneği koruması uygulanabilir. Koruma uygulanır ve yalnızca değiştirilen [örnek modeli](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) değil [ölçek kümesi modeline](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model).
+## <a name="protect-from-scale-in"></a>Ölçeklendirmeye karşı koruma
+Örnekler oluşturulduktan sonra ölçek kümesi örneklerine örnek koruması uygulanabilir. Koruma, [Ölçek kümesi modelinde](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)değil yalnızca [örnek modelinde](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) uygulanır ve değiştirilir.
 
-Aşağıdaki örneklerde açıklandığı ölçek kümesi örneklerinde ölçeğini koruma uygulayarak birden çok yolu vardır.
+Ölçek kümesi örnekleriniz üzerinde ölçek-ın koruması uygulamanın aşağıdaki örneklerde ayrıntılı olarak açıklandığı birçok yolu vardır.
 
 ### <a name="rest-api"></a>REST API
 
-Aşağıdaki örnek ölçek kümesindeki bir örneği ölçeğini koruma uygular.
+Aşağıdaki örnek ölçek kümesindeki bir örneğe ölçek genişletme koruması uygular.
 
 ```
 PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instance-id}?api-version=2019-03-01`
@@ -73,13 +65,13 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 ```
 
 > [!NOTE]
->Örneği koruması yalnızca API'siyle 2019-03-01 sürümü ve üzeri desteklenir
+>Örnek koruma yalnızca API sürümü 2019-03-01 ve üzeri sürümlerde desteklenir
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Kullanım [güncelleştirme AzVmssVM](/powershell/module/az.compute/update-azvmssvm) cmdlet'i için ölçek kümenizi ölçeğini koruma uygulayacak şekilde ayarlama örneği.
+Ölçek kümesi örneğinize ölçek genişletme koruması uygulamak için [Update-AzVmssVM](/powershell/module/az.compute/update-azvmssvm) cmdlet 'ini kullanın.
 
-Aşağıdaki örnek ölçek kümesindeki örnek kimliği 0 olan bir örneği ölçeğini koruma uygular.
+Aşağıdaki örnek, örnek KIMLIĞI 0 olan ölçek kümesindeki bir örneğe ölçeklendirme koruması uygular.
 
 ```azurepowershell-interactive
 Update-AzVmssVM `
@@ -91,9 +83,9 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Kullanım [az vmss update](/cli/azure/vmss#az-vmss-update) ölçek kümesi örneğinizin ölçeğini koruma uygulamak için.
+Ölçek kümesi örneğinize ölçek genişletme koruması uygulamak için [az VMSS Update](/cli/azure/vmss#az-vmss-update) kullanın.
 
-Aşağıdaki örnek ölçek kümesindeki örnek kimliği 0 olan bir örneği ölçeğini koruma uygular.
+Aşağıdaki örnek, örnek KIMLIĞI 0 olan ölçek kümesindeki bir örneğe ölçeklendirme koruması uygular.
 
 ```azurecli-interactive
 az vmss update \  
@@ -103,16 +95,16 @@ az vmss update \
   --protect-from-scale-in true
 ```
 
-## <a name="protect-from-scale-set-actions"></a>Ölçek kümesi eylemlerden koruyun
-Ölçek kümesi örneklerine örneği oluşturulduktan sonra örneği koruması uygulanabilir. Koruma uygulanır ve yalnızca değiştirilen [örnek modeli](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) değil [ölçek kümesi modeline](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model).
+## <a name="protect-from-scale-set-actions"></a>Ölçek kümesi eylemlerine karşı koruma
+Örnekler oluşturulduktan sonra ölçek kümesi örneklerine örnek koruması uygulanabilir. Koruma, [Ölçek kümesi modelinde](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)değil yalnızca [örnek modelinde](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) uygulanır ve değiştirilir.
 
-Ölçek kümesi eylemlerden örneği koruma da örneği tarafından başlatılan bir otomatik ölçeklendirme ölçek bileşeninden korur.
+Bir örneği ölçek kümesi eylemlerden korumak aynı zamanda örneği otomatik ölçeklendirme tarafından başlatılan ölçeğe karşı korur.
 
-Ölçek uygulayarak birden çok yol kümesi Eylemler koruma ölçek kümesi örneklerine aşağıdaki örneklerde açıklandığı vardır.
+Ölçek kümesi eylemleri koruması, ölçek kümesi örneklerinizin aşağıdaki örneklerde ayrıntılı olarak açıklandığı şekilde uygulanması için birden çok yol vardır.
 
 ### <a name="rest-api"></a>REST API
 
-Aşağıdaki örnek, bir örnek ölçek kümesindeki ölçek kümesi eylemlerine koruma uygular.
+Aşağıdaki örnek, ölçek kümesi eylemleriyle ölçek kümesindeki bir örneğe koruma uygular.
 
 ```
 PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vMScaleSetName}/virtualMachines/{instance-id}?api-version=2019-03-01`
@@ -131,14 +123,14 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 ```
 
 > [!NOTE]
->Örneği koruması yalnızca ve üstü API sürümü 2019-03-01 ile desteklenir.</br>
-Ölçek kümesi eylemlerden örneği koruma da örneği tarafından başlatılan bir otomatik ölçeklendirme ölçek bileşeninden korur. "ProtectFromScaleIn" belirtilemez: "protectFromScaleSetActions" ayarlarken false: true
+>Örnek koruma yalnızca API sürümü 2019-03-01 ve üzeri sürümlerde desteklenir.</br>
+Bir örneği ölçek kümesi eylemlerden korumak aynı zamanda örneği otomatik ölçeklendirme tarafından başlatılan ölçeğe karşı korur. "ProtectFromScaleIn" değerini belirtemezsiniz: "protectFromScaleSetActions" ayarlanırken false: true
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Kullanım [güncelleştirme AzVmssVM](/powershell/module/az.compute/update-azvmssvm) ölçek koruma uygulamak için cmdlet'i, Ölçek kümesi Örneğinize eylemleri ayarlayın.
+Ölçek kümesi eylemlerden ölçek kümesi örneğinizi koruma uygulamak için [Update-AzVmssVM](/powershell/module/az.compute/update-azvmssvm) cmdlet 'ini kullanın.
 
-Aşağıdaki örnek, Ölçek kümesi eylemleri korumadan ölçek kümesindeki örnek kimliği 0 olan bir örneği için geçerlidir.
+Aşağıdaki örnek, ölçek kümesi eylemlerinin korumasını örnek KIMLIĞI 0 olan ölçek kümesindeki bir örneğe uygular.
 
 ```azurepowershell-interactive
 Update-AzVmssVM `
@@ -151,9 +143,9 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Kullanım [az vmss update](/cli/azure/vmss#az-vmss-update) ölçek kümesi Eylemlerdeki ölçek kümesi örneğinizin koruması uygulamak için.
+Ölçek kümesi eylemlerden ölçek kümesi örneğinize koruma uygulamak için [az VMSS Update](/cli/azure/vmss#az-vmss-update) kullanın.
 
-Aşağıdaki örnek, Ölçek kümesi eylemleri korumadan ölçek kümesindeki örnek kimliği 0 olan bir örneği için geçerlidir.
+Aşağıdaki örnek, ölçek kümesi eylemlerinin korumasını örnek KIMLIĞI 0 olan ölçek kümesindeki bir örneğe uygular.
 
 ```azurecli-interactive
 az vmss update \  
@@ -165,16 +157,16 @@ az vmss update \
 ```
 
 ## <a name="troubleshoot"></a>Sorun giderme
-### <a name="no-protectionpolicy-on-scale-set-model"></a>Ölçek kümesi modelinde hiçbir protectionPolicy
-Örneği koruması ölçek kümesi örneklerine ve ölçek kümesi modeline göre değil yalnızca geçerlidir.
+### <a name="no-protectionpolicy-on-scale-set-model"></a>Ölçek kümesi modelinde bir protectionPolicy yok
+Örnek koruma, ölçek kümesi modelinde değil yalnızca ölçek kümesi örneklerine uygulanabilir.
 
-### <a name="no-protectionpolicy-on-scale-set-instance-model"></a>Hiçbir protectionPolicy ölçek kümesi örnek modeli
-Oluşturulduğunda varsayılan olarak, bir örneğine koruma İlkesi uygulanmaz.
+### <a name="no-protectionpolicy-on-scale-set-instance-model"></a>Ölçek kümesi örnek modelinde bir protectionPolicy yok
+Varsayılan olarak, koruma ilkesi oluşturulduğu sırada bir örneğe uygulanmaz.
 
-Ölçek kümesi örneklerine örneği oluşturulduktan sonra örneği koruma uygulayabilirsiniz.
+Örnekler oluşturulduktan sonra ölçek kümesi örneklerine örnek koruması uygulayabilirsiniz.
 
-### <a name="not-able-to-apply-instance-protection"></a>Örneği koruması uygulamak karşılaştırılamıyor
-Örneği koruması yalnızca ve üstü API sürümü 2019-03-01 ile desteklenir. Kullanılan API sürümünü denetleyin ve gereken şekilde güncelleştirin. PowerShell veya CLI en son sürüme güncelleştirmeniz gerekebilir.
+### <a name="not-able-to-apply-instance-protection"></a>Örnek koruması uygulanamıyor
+Örnek koruma yalnızca API sürümü 2019-03-01 ve üzeri sürümlerde desteklenir. Kullanılan API sürümünü denetleyin ve gerektiği şekilde güncelleştirin. PowerShell veya CLı 'nizi en son sürüme de güncelleştirmeniz gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bilgi edinmek için nasıl [uygulamanızı dağıtmak](virtual-machine-scale-sets-deploy-app.md) üzerinde sanal makine ölçek kümeleri.
+Uygulamanızı sanal makine ölçek kümelerinde [dağıtmayı](virtual-machine-scale-sets-deploy-app.md) öğrenin.

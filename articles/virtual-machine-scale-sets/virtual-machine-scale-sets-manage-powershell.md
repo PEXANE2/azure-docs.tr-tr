@@ -1,37 +1,30 @@
 ---
-title: Sanal makine ölçek kümeleri Azure PowerShell ile yönetme | Microsoft Docs
-description: Örneğini durdurmak ve başlatmak gibi nasıl sanal makine ölçek kümeleri, yönetme veya ölçeği değiştirmek, ortak Azure PowerShell cmdlet'lerini kapasitesini ayarlayın.
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Azure PowerShell ile sanal makine ölçek kümelerini yönetme
+description: Bir örneği başlatma ve durdurma veya ölçek kümesi kapasitesini değiştirme gibi sanal makine ölçek kümelerini yönetmek için ortak Azure PowerShell cmdlet 'leri.
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: d35fa77a-de96-4ccd-a332-eb181d1f4273
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: a6474320fd8b1545d61320cd43e155ab077ba310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc83c8b73c73b2aa70bc36bad175e5c19c1ab700
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683536"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275708"
 ---
-# <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Bir sanal makine ölçek kümesini Azure PowerShell ile yönetme
+# <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell ile sanal makine ölçek kümesini yönetme
 
-Sanal makine ölçek kümesinin yaşam döngüsü boyunca bir veya daha fazla yönetim görevi çalıştırmanız gerekebilir. Ayrıca, çeşitli yaşam döngüsü görevlerini otomatikleştiren betikler oluşturmak isteyebilirsiniz. Bu makalede bu görevleri gerçekleştirmenize olanak tanıyan ortak Azure PowerShell cmdlet'lerini bazıları ayrıntılı olarak açıklanmaktadır.
+Sanal makine ölçek kümesinin yaşam döngüsü boyunca bir veya daha fazla yönetim görevi çalıştırmanız gerekebilir. Ayrıca, çeşitli yaşam döngüsü görevlerini otomatikleştiren betikler oluşturmak isteyebilirsiniz. Bu makalede, bu görevleri gerçekleştirmenize izin veren bazı yaygın Azure PowerShell cmdlet 'leri ayrıntılı olarak açıklanır.
 
-Bir sanal makine ölçek kümesi oluşturmak için ihtiyacınız varsa, [Azure PowerShell ile bir ölçek kümesi oluşturma](quick-create-powershell.md).
+Bir sanal makine ölçek kümesi oluşturmanız gerekiyorsa, [Azure PowerShell bir ölçek kümesi oluşturabilirsiniz](quick-create-powershell.md).
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="view-information-about-a-scale-set"></a>Bir ölçek kümesi hakkındaki bilgileri görüntüleme
-Bir ölçek kümesi hakkında genel bilgileri görüntülemek için kullanın [Get-AzVmss](/powershell/module/az.compute/get-azvmss). Aşağıdaki örnekte adlı ölçek kümesi hakkında bilgi alır *myScaleSet* içinde *myResourceGroup* kaynak grubu. Şu şekilde kendi adlarınızı girin:
+## <a name="view-information-about-a-scale-set"></a>Ölçek kümesi hakkındaki bilgileri görüntüleme
+Bir ölçek kümesi hakkındaki genel bilgileri görüntülemek için [Get-AzVmss](/powershell/module/az.compute/get-azvmss)komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup* kaynak grubundaki *myScaleSet* adlı ölçek kümesi hakkındaki bilgileri alır. Kendi adlarınızı aşağıdaki gibi girin:
 
 ```powershell
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
@@ -39,13 +32,13 @@ Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 
 
 ## <a name="view-vms-in-a-scale-set"></a>Ölçek kümesindeki VM’leri görüntüleme
-Bir ölçek kümesindeki sanal makine örneği listesini görüntülemek için kullanın [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm). Aşağıdaki örnekte adlı ölçek kümesi içinde tüm VM örnekleri listelenmiştir *myScaleSet* ve *myResourceGroup* kaynak grubu. Bu adları için kendi değerlerinizi sağlayın:
+Bir ölçek kümesindeki sanal makine örneğinin listesini görüntülemek için [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)komutunu kullanın. Aşağıdaki örnekte, *myScaleSet* adlı ölçek kümesindeki ve *myresourcegroup* kaynak grubundaki tüm sanal makine örnekleri listelenmektedir. Bu adlar için kendi değerlerinizi sağlayın:
 
 ```powershell
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
-Belirli bir sanal makine örneği hakkında ek bilgi görüntülemek için Ekle `-InstanceId` parametresi [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) ve görüntülemek için bir örnek belirtin. Aşağıdaki örnek, sanal makine örneği hakkında bilgi görüntüler *0* adlı ölçek kümesi içinde *myScaleSet* ve *myResourceGroup* kaynak grubu. Şu şekilde kendi adlarınızı girin:
+Belirli bir sanal makine örneği hakkında ek bilgileri görüntülemek için [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) ' ye `-InstanceId` parametresini ekleyin ve görüntülenecek örneği belirtin. Aşağıdaki örnek *myScaleSet* ve *myresourcegroup* kaynak grubu ADLı *Ölçek kümesinde bulunan VM örneğiyle ilgili* bilgileri görüntüler. Kendi adlarınızı aşağıdaki gibi girin:
 
 ```powershell
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
@@ -53,9 +46,9 @@ Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>Ölçek kümesinin kapasitesini değiştirme
-Yukarıdaki komutların ölçek kümenizi ve sanal makine örnekleri hakkında bilgi gösterdi. Artırabilir veya ölçek kümesindeki örneklerin sayısını azaltmak için kapasiteyi değiştirebilirsiniz. Ölçek kümesini otomatik olarak oluşturur veya gerekli VM sayısını kaldırır ve ardından uygulama trafiği almak için sanal makineleri yapılandırır.
+Yukarıdaki komutlarda, ölçek kümesi ve VM örnekleri hakkında bilgiler gösterildi. Ölçek kümesindeki örneklerin sayısını artırmak veya azaltmak için kapasiteyi değiştirebilirsiniz. Ölçek kümesi, gereken sayıda VM 'yi otomatik olarak oluşturur veya kaldırır, ardından VM 'Leri uygulama trafiğini alacak şekilde yapılandırır.
 
-İlk olarak, bir ölçek kümesi nesnesi oluşturma [Get-AzVmss](/powershell/module/az.compute/get-azvmss), için yeni bir değer belirtmezseniz `sku.capacity`. Kapasite değişikliğini uygulamak için [güncelleştirme AzVmss](/powershell/module/az.compute/update-azvmss). Aşağıdaki örnek güncelleştirmeleri *myScaleSet* içinde *myResourceGroup* kapasitesi kaynak grubuna *5* örnekleri. Kendi değerlerinizi aşağıdaki gibi sağlayın:
+İlk olarak [Get-AzVmss](/powershell/module/az.compute/get-azvmss)ile bir ölçek kümesi nesnesi oluşturun ve ardından `sku.capacity`için yeni bir değer belirtin. Kapasite değişikliğini uygulamak için [Update-AzVmss](/powershell/module/az.compute/update-azvmss)komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup* kaynak grubundaki *myScaleSet* değerini *5* örnek kapasiteye göre güncelleştirir. Kendi değerlerinizi aşağıdaki gibi sağlayın:
 
 ```powershell
 # Get current scale set
@@ -66,13 +59,13 @@ $vmss.sku.capacity = 5
 Update-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -VirtualMachineScaleSet $vmss
 ```
 
-Ölçek kümenizin kapasitesinin güncelleştirilmesi birkaç dakika sürer. Bir ölçek kapasitesini azaltırsanız kimlikleri ilk önce kaldırılır en yüksek örnek ile Vm'leri ayarlayın.
+Ölçek kümenizin kapasitesinin güncelleştirilmesi birkaç dakika sürer. Ölçek kümesinin kapasitesini azaltırsanız, en yüksek örnek kimliğine sahip VM 'Ler ilk önce kaldırılır.
 
 
-## <a name="stop-and-start-vms-in-a-scale-set"></a>VM ölçek kümesindeki durdurup
-Bir ölçek kümesindeki bir veya daha fazla sanal makineleri durdurmak için kullanın [Stop-AzVmss](/powershell/module/az.compute/stop-azvmss). `-InstanceId` parametresi, durdurulacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, ölçek kümesindeki tüm sanal makineler durdurulur. Birden çok VM durdurmak için her örnek kimliği virgül ile ayırın.
+## <a name="stop-and-start-vms-in-a-scale-set"></a>Ölçek kümesindeki VM 'Leri durdurma ve başlatma
+Ölçek kümesindeki bir veya daha fazla sanal makineyi durdurmak için, [stop-AzVmss](/powershell/module/az.compute/stop-azvmss)kullanın. `-InstanceId` parametresi, durdurulacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, ölçek kümesindeki tüm sanal makineler durdurulur. Birden çok VM 'yi durdurmak için, her örnek KIMLIĞINI virgülle ayırın.
 
-Aşağıdaki örnek örneği durdurur *0* adlı ölçek kümesi içinde *myScaleSet* ve *myResourceGroup* kaynak grubu. Kendi değerlerinizi aşağıdaki gibi sağlayın:
+Aşağıdaki örnek, *myScaleSet* ve *myresourcegroup* kaynak grubu adlı ölçek kümesinde *0* örneğini durduruyor. Kendi değerlerinizi aşağıdaki gibi sağlayın:
 
 ```powershell
 Stop-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
@@ -81,30 +74,30 @@ Stop-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -I
 Varsayılan olarak, durdurulan sanal makineler serbest bırakılır ve bunlar için işlem ücreti alınmaz. Durdurulan sanal makinenin sağlama durumunda kalmasını istiyorsanız, önceki komuta `-StayProvisioned` parametresini ekleyin. Sağlama durumunda tutulan durdurulmuş sanal makineler için normal işlem ücreti alınır.
 
 
-### <a name="start-vms-in-a-scale-set"></a>Bir ölçek kümesindeki VM'lerin başlatma
-Bir ölçek kümesindeki bir veya daha fazla sanal makine başlatmak için kullanın [başlangıç AzVmss](/powershell/module/az.compute/start-azvmss). `-InstanceId` parametresi, başlatılacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, ölçek kümesindeki tüm sanal makineler başlatılır. Birden çok VM başlatmak için her örnek kimliği virgül ile ayırın.
+### <a name="start-vms-in-a-scale-set"></a>Ölçek kümesindeki VM 'Leri başlatma
+Bir ölçek kümesinde bir veya daha fazla VM başlatmak için [Start-AzVmss](/powershell/module/az.compute/start-azvmss)kullanın. `-InstanceId` parametresi, başlatılacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, ölçek kümesindeki tüm sanal makineler başlatılır. Birden çok VM başlatmak için, her örnek KIMLIĞINI virgülle ayırın.
 
-Aşağıdaki örnek bir örneğini başlatır *0* adlı ölçek kümesi içinde *myScaleSet* ve *myResourceGroup* kaynak grubu. Kendi değerlerinizi aşağıdaki gibi sağlayın:
+Aşağıdaki örnek, *myScaleSet* ve *myresourcegroup* kaynak grubu adlı ölçek kümesinde *0* örneğini başlatır. Kendi değerlerinizi aşağıdaki gibi sağlayın:
 
 ```powershell
 Start-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
 ```
 
 
-## <a name="restart-vms-in-a-scale-set"></a>Bir ölçek kümesindeki Vm'leri yeniden başlatma
-Bir ölçek kümesindeki bir veya daha fazla sanal makine yeniden başlatmak için kullanmak [yeniden AzVmss](/powershell/module/az.compute/restart-azvmss). `-InstanceId` parametresi, yeniden başlatılacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, ölçek kümesindeki tüm sanal makineler yeniden başlatılır. Birden çok VM'yi yeniden başlatmak için her örnek kimliği virgül ile ayırın.
+## <a name="restart-vms-in-a-scale-set"></a>Ölçek kümesindeki VM 'Leri yeniden başlatma
+Bir ölçek kümesindeki bir veya daha fazla sanal makineyi yeniden başlatmak için [restart-AzVmss](/powershell/module/az.compute/restart-azvmss)komutunu kullanın. `-InstanceId` parametresi, yeniden başlatılacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, ölçek kümesindeki tüm sanal makineler yeniden başlatılır. Birden çok VM 'yi yeniden başlatmak için, her örnek KIMLIĞINI virgülle ayırın.
 
-Aşağıdaki örnek örneğini yeniden başlatır *0* adlı ölçek kümesi içinde *myScaleSet* ve *myResourceGroup* kaynak grubu. Kendi değerlerinizi aşağıdaki gibi sağlayın:
+Aşağıdaki örnek, *myScaleSet* ve *myresourcegroup* kaynak grubu adlı ölçek kümesinde *0* örneğini yeniden başlatır. Kendi değerlerinizi aşağıdaki gibi sağlayın:
 
 ```powershell
 Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
 ```
 
 
-## <a name="remove-vms-from-a-scale-set"></a>VM ölçek kümesinden Kaldır
-Bir ölçek kümesindeki bir veya daha fazla sanal makine kaldırmak için [Remove-AzVmss](/powershell/module/az.compute/remove-azvmss). `-InstanceId` Parametresi, kaldırmak için bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, Ölçek kümesindeki tüm sanal makineler kaldırılır. Birden çok VM kaldırmak için her örnek kimliği virgül ile ayırın.
+## <a name="remove-vms-from-a-scale-set"></a>Ölçek kümesinden VM 'Leri kaldırma
+Bir ölçek kümesindeki bir veya daha fazla VM 'yi kaldırmak için, [Remove-AzVmss](/powershell/module/az.compute/remove-azvmss)kullanın. `-InstanceId` parametresi, kaldırılacak bir veya daha fazla sanal makine belirtmenize olanak tanır. Bir örnek KIMLIĞI belirtmezseniz, ölçek kümesindeki tüm sanal makineler kaldırılır. Birden çok VM 'yi kaldırmak için, her örnek KIMLIĞINI virgülle ayırın.
 
-Aşağıdaki örnek, örnek kaldırır *0* adlı ölçek kümesi içinde *myScaleSet* ve *myResourceGroup* kaynak grubu. Kendi değerlerinizi aşağıdaki gibi sağlayın:
+Aşağıdaki örnek, *myScaleSet* ve *myresourcegroup* kaynak grubu adlı ölçek kümesinde *0* örneğini kaldırır. Kendi değerlerinizi aşağıdaki gibi sağlayın:
 
 ```powershell
 Remove-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
@@ -112,4 +105,4 @@ Remove-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ölçek kümeleri için sık kullanılan diğer görevler nasıl [uygulama dağıtma](virtual-machine-scale-sets-deploy-app.md), ve [yükseltme sanal makine örnekleri](virtual-machine-scale-sets-upgrade-scale-set.md). Azure PowerShell'i de kullanabilirsiniz [otomatik ölçeklendirme kuralları yapılandırma](virtual-machine-scale-sets-autoscale-overview.md).
+Ölçek Kümeleri için diğer yaygın görevler, [bir uygulamanın nasıl dağıtılacağını](virtual-machine-scale-sets-deploy-app.md)ve [sanal makine örneklerinin nasıl yükseltileceğini](virtual-machine-scale-sets-upgrade-scale-set.md)içerir. [Otomatik ölçek kurallarını yapılandırmak](virtual-machine-scale-sets-autoscale-overview.md)için Azure PowerShell de kullanabilirsiniz.

@@ -1,29 +1,23 @@
 ---
-title: Azure CLI Betik Örneği - ACS Windows Kubernetes Kümesi Oluşturma | Microsoft Docs
+title: Azure CLI Betik Örneği - ACS Windows Kubernetes Kümesi Oluşturma
 description: Azure CLI Betik Örneği - ACS Windows Kubernetes Kümesi Oluşturma
-services: container-service
-documentationcenter: ''
 author: iainfoulds
-manager: jeconnoc
-editor: ''
 tags: acs, azure-container-service
 keywords: Docker, Container’lar, Mikro hizmetler, Kumernetes, DC/OS, Azure
 ms.assetid: ''
 ms.service: container-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 1f24f036858f9c77ed6b07af27617d3e3706bba2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc940f09a98eb4ee42290dcfd11d0800f6c3b9e4
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901979"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270679"
 ---
-# <a name="deprecated-create-an-azure-container-service-kubernetes-windows-cluster"></a>(KULLANIM DIŞI) Bir Azure Container Service Kubernetes Windows kümesi oluşturma
+# <a name="deprecated-create-an-azure-container-service-kubernetes-windows-cluster"></a>Kullanım DıŞı Azure Container Service Kubernetes Windows kümesi oluşturma
 
 [!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 

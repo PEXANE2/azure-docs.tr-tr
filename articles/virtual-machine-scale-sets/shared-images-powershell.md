@@ -1,28 +1,19 @@
 ---
-title: Azure 'da ölçek kümesi oluşturmak için paylaşılan VM görüntülerini kullanma | Microsoft Docs
+title: Azure 'da ölçek kümesi oluşturmak için paylaşılan VM görüntülerini kullanma
 description: Azure 'da sanal makine ölçek kümelerini dağıtmak için kullanılacak paylaşılan VM görüntülerini oluşturmak üzere Azure PowerShell nasıl kullanacağınızı öğrenin.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: axayjo
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.custom: ''
-ms.openlocfilehash: 13c870ec87fa914f74bcfc4297dbe2fcc0bea282
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b60a00828cfed8ef5d47704de2b2d7ede309ed6d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875619"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276308"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Azure PowerShell ile sanal makine ölçek kümeleri için paylaşılan görüntüler oluşturun ve kullanın
 
@@ -34,7 +25,7 @@ Galeri, tam rol tabanlı erişim denetimi (RBAC) sağlayan en üst düzey bir ka
 
 Paylaşılan görüntü Galerisi özelliğinin birden çok kaynak türü vardır. Bunları bu makalede kullanacağız veya oluşturacağız:
 
-| Resource | Açıklama|
+| Kaynak | Açıklama|
 |----------|------------|
 | **Yönetilen görüntü** | Bu, tek başına kullanılabilen veya bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılan temel bir görüntüdür. Yönetilen görüntüler Genelleştirilmiş VM 'lerden oluşturulur. Yönetilen görüntü, birden çok VM oluşturmak için kullanılabilen ve artık paylaşılan görüntü sürümleri oluşturmak için kullanılabilen özel bir VHD türüdür. |
 | **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |
@@ -49,7 +40,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Aşağıdaki adımlarda, mevcut bir VM'yi alıp yeni VM örnekleri oluşturmak için kullanabileceğiniz yeniden kullanılabilir bir özel görüntüye dönüştürme işlemi ayrıntılı olarak açıklanmıştır.
 
-Bu makaledeki örneği tamamlayabilmeniz için, mevcut bir yönetilen görüntünüz olmalıdır. Öğreticiyi izleyebilirsiniz [: Gerekiyorsa, sanal makine ölçek kümeleri için Azure PowerShell](tutorial-use-custom-image-powershell.md) bir özel görüntü oluşturup kullanın. Yönetilen görüntü bir veri diski içeriyorsa, veri diski boyutu 1 TB 'den fazla olamaz.
+Bu makaledeki örneği tamamlayabilmeniz için, mevcut bir yönetilen görüntünüz olmalıdır. [Öğreticiyi izleyebilirsiniz: gerekirse, sanal makine ölçek kümeleri için Azure PowerShell ile özel bir görüntü oluşturun ve kullanın](tutorial-use-custom-image-powershell.md) . Yönetilen görüntü bir veri diski içeriyorsa, veri diski boyutu 1 TB 'den fazla olamaz.
 
 Makale üzerinden çalışırken, kaynak grubu ve VM adlarını gerektiği yerde değiştirin.
 

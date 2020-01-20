@@ -1,29 +1,21 @@
 ---
-title: Öğretici - Azure sanal makine ölçek kümesi oluşturma ve yönetme | Microsoft Docs
+title: Öğretici-Azure sanal makine ölçek kümesi oluşturma ve yönetme
 description: Örnek başlatma ve durdurma veya ölçek kümesi kapasitesini değiştirme gibi bazı genel yönetim görevlerinin yanı sıra, sanal makine ölçek kümesi oluşturmak için Azure PowerShell'in nasıl kullanılacağını öğrenin.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 694fc0ba6d59497cfc53efb6f2607bc6a7d4ad2d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 14616fcc9fd63731c50c5977c88b5030f60664ff
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728688"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271402"
 ---
-# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Oluşturma ve bir sanal makine ölçek kümesini Azure PowerShell ile yönetme
+# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesi oluşturma ve yönetme
 
 Sanal makine ölçek kümesi, birbiriyle aynı ve otomatik olarak ölçeklendirilen sanal makine kümesi dağıtmanızı ve yönetmenizi sağlar. Sanal makine ölçek kümesinin yaşam döngüsü boyunca bir veya daha fazla yönetim görevi çalıştırmanız gerekebilir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -43,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
-Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Sanal makine ölçek kümesinden önce kaynak grubu oluşturulmalıdır. Bir kaynak grubu oluşturun [yeni AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutu. Bu örnekte, *EastUS* bölgesinde *myResourceGroup* adlı bir kaynak grubu oluşturulur. 
+Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Sanal makine ölçek kümesinden önce kaynak grubu oluşturulmalıdır. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutuyla bir kaynak grubu oluşturun. Bu örnekte, *EastUS* bölgesinde *myResourceGroup* adlı bir kaynak grubu oluşturulur. 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
@@ -58,7 +50,7 @@ Bu öğreticide bir ölçek kümesi oluşturduğunuzda veya değiştirdiğinizde
 $cred = Get-Credential
 ```
 
-Artık bir sanal makine ölçek kümesi oluşturma [yeni AzVmss](/powershell/module/az.compute/new-azvmss). Tek tek sanal makine örneklerine trafiği dağıtmak için bir yük dengeleyici de oluşturulur. Yük dengeleyici hem TCP bağlantı noktası 80 üzerinden trafiği dağıtmak hem de TCP bağlantı noktası 3389 üzerinden uzak masaüstü trafiğine hem de TCP bağlantı noktası 5985 üzerinden PowerShell uzaktan iletişimine olanak tanımak için kurallar içerir:
+Şimdi [New-AzVmss](/powershell/module/az.compute/new-azvmss)ile bir sanal makine ölçek kümesi oluşturun. Tek tek sanal makine örneklerine trafiği dağıtmak için bir yük dengeleyici de oluşturulur. Yük dengeleyici hem TCP bağlantı noktası 80 üzerinden trafiği dağıtmak hem de TCP bağlantı noktası 3389 üzerinden uzak masaüstü trafiğine hem de TCP bağlantı noktası 5985 üzerinden PowerShell uzaktan iletişimine olanak tanımak için kurallar içerir:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -76,7 +68,7 @@ Tüm ölçek kümesi kaynaklarının ve sanal makine örneklerinin oluşturulup 
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>Bir ölçek kümesindeki sanal makine örneklerini görüntüleme
-Bir ölçek kümesindeki sanal makine örneklerinin listesini görüntülemek için kullanın [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) gibi:
+Bir ölçek kümesindeki sanal makine örneklerinin listesini görüntülemek için [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) komutunu aşağıdaki gibi kullanın:
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
@@ -91,7 +83,7 @@ MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succe
 MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Belirli bir sanal makine örneği hakkında ek bilgi görüntülemek için Ekle `-InstanceId` parametresi [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm). Aşağıdaki örnekte, *1* sanal makine örneğiyle ilgili bilgiler görüntülenir:
+Belirli bir sanal makine örneği hakkında ek bilgileri görüntülemek için [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)' ye `-InstanceId` parametresini ekleyin. Aşağıdaki örnekte, *1* sanal makine örneğiyle ilgili bilgiler görüntülenir:
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
@@ -101,7 +93,7 @@ Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -
 ## <a name="list-connection-information"></a>Bağlantı bilgilerini listeleme
 Tek tek sanal makine örneklerine trafiği yönlendiren yük dengeleyiciye genel bir IP adresi atanır. Varsayılan olarak, belirtilen bir bağlantı noktasındaki her bir sanal makineye uzaktan bağlantı trafiğini ileten Azure Load Balancer’a Ağ Adresi Çevirisi (NAT) kuralları eklenir. Bir ölçek kümesindeki sanal makine örneklerine bağlanmak için, atanan bir genel IP adresine ve bağlantı noktası numarasına uzaktan bağlantı oluşturursunuz.
 
-Bir ölçek kümesindeki sanal makine örneklerine bağlanmak için NAT bağlantı noktalarını listelemek için ilk yük dengeleyici nesnesini alın [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Ardından, komutuyla gelen NAT kurallarını görüntüleyin [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig):
+Bir ölçek kümesindeki sanal makine örneklerine bağlanmak üzere NAT bağlantı noktalarını listelemek için, önce [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer)ile yük dengeleyici nesnesini alın. Ardından, [Get-Azloadbalancerınboundnatrutaconfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig)Ile gelen NAT kurallarını görüntüleyin:
 
 
 ```azurepowershell-interactive
@@ -123,9 +115,9 @@ myScaleSet3389.1 Tcp             50002        3389
 myScaleSet5985.1 Tcp             51002        5985
 ```
 
-*Adı* önceki gösterildiği gibi sanal makine örneğinin adıyla kuralına hizalar [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) komutu. Örneğin, sanal makine örneği *0*'a bağlanmak için *myScaleSet3389.0* kullanır ve *50001* numaralı bağlantı noktasına bağlanırsınız. Sanal makine örneği *1*'e bağlanmak için, *myScaleSet3389.1*'den gelen değeri kullanın ve *50002* numaralı bağlantı noktasına bağlanın. PowerShell uzaktan iletişimini kullanmak için, *TCP* bağlantı noktası *5985* için uygun sanal makine örneği kuralına bağlanırsınız.
+Kuralın *adı* , önceki [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) komutunda gösterildiği gibi, sanal makine örneğinin adı ile hizalanır. Örneğin, sanal makine örneği *0*'a bağlanmak için *myScaleSet3389.0* kullanır ve *50001* numaralı bağlantı noktasına bağlanırsınız. Sanal makine örneği *1*'e bağlanmak için, *myScaleSet3389.1*'den gelen değeri kullanın ve *50002* numaralı bağlantı noktasına bağlanın. PowerShell uzaktan iletişimini kullanmak için, *TCP* bağlantı noktası *5985* için uygun sanal makine örneği kuralına bağlanırsınız.
 
-İle yük dengeleyicisinin genel IP adresini görüntüleyin [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
+[Get-Azpublicıpaddress](/powershell/module/az.network/Get-AzPublicIpAddress)ile yük DENGELEYICININ genel IP adresini görüntüleyin:
 
 
 ```azurepowershell-interactive
@@ -140,7 +132,7 @@ IpAddress
 52.168.121.216
 ```
 
-İlk sanal makine örneğinize bir uzak bağlantı oluşturun. Önceki komutlarda gösterildiği gibi, gerekli sanal makine örneği için genel IP adresinizi ve bağlantı noktası numaranızı belirtin. İstendiğinde ölçek kümesini oluşturduğunuzda kullandığınız kimlik bilgilerini girin (örnek komutlarda varsayılan olarak *azureuser* ve *P\@ssw0rd!* ). Azure Cloud Shell kullanıyorsanız, bu adımı yerel PowerShell isteminden veya Uzak Masaüstü İstemcisinden gerçekleştirin. Aşağıdaki örnek sanal makine örneği *1*'e bağlanır:
+İlk sanal makine örneğinize bir uzak bağlantı oluşturun. Önceki komutlarda gösterildiği gibi, gerekli sanal makine örneği için genel IP adresinizi ve bağlantı noktası numaranızı belirtin. İstendiğinde, ölçek kümesini oluştururken kullanılan kimlik bilgilerini girin (varsayılan olarak, *azureuser* ve *P\@ssw0rd!* ). Azure Cloud Shell kullanıyorsanız, bu adımı yerel PowerShell isteminden veya Uzak Masaüstü İstemcisinden gerçekleştirin. Aşağıdaki örnek sanal makine örneği *1*'e bağlanır:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -150,13 +142,13 @@ Sanal makine örneğinde oturum açtıktan sonra, gerektiğinde bazı el ile yap
 
 
 ## <a name="understand-vm-instance-images"></a>Sanal makine örneği görüntülerini anlama
-Azure marketi, sanal makine örnekleri oluşturmak için kullanılabilecek çok sayıda görüntü içerir. Kullanılabilir yayımcıların listesini görmek için [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) komutu.
+Azure marketi, sanal makine örnekleri oluşturmak için kullanılabilecek çok sayıda görüntü içerir. Kullanılabilir yayımcıların listesini görmek için [Get-Azvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) komutunu kullanın.
 
 ```azurepowershell-interactive
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-Belirli bir yayımcının görüntülerin listesini görüntülemek için kullanın [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku). Görüntü listesi `-PublisherName` veya `–Offer` kullanılarak da filtrelenebilir. Aşağıdaki örnekte liste, yayımcı adı *MicrosoftWindowsServer* olan ve *WindowsServer* ile eşleşen bir teklifi bulunan tüm görüntüler için filtrelenmiştir:
+Belirli bir yayımcının görüntülerinin listesini görüntülemek için [Get-Azvmımagesku](/powershell/module/az.compute/get-azvmimagesku)komutunu kullanın. Görüntü listesi `-PublisherName` veya `-Offer` kullanılarak da filtrelenebilir. Aşağıdaki örnekte liste, yayımcı adı *MicrosoftWindowsServer* olan ve *WindowsServer* ile eşleşen bir teklifi bulunan tüm görüntüler için filtrelenmiştir:
 
 ```azurepowershell-interactive
 Get-AzVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
@@ -182,7 +174,7 @@ Skus                                  Offer         PublisherName          Locat
 2016-Nano-Server                      WindowsServer MicrosoftWindowsServer eastus
 ```
 
-Öğreticinin başında bir ölçek kümesi oluşturduğunuzda, sanal makine örnekleri için varsayılan bir *Windows Server 2016 DataCenter* sanal makine görüntüsü sağlanmıştır. Çıkışı göre farklı bir sanal makine görüntüsü belirtebilirsiniz [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku). Aşağıdaki örnek, *MicrosoftWindowsServer:WindowsServer:2016-Datacenter-with-Containers:latest* sanal makine görüntüsünü belirtmek için `-ImageName` parametresiyle bir ölçek kümesi oluşturabilir. Tüm ölçek kümesi kaynaklarının ve sanal makine örneklerinin oluşturulup yapılandırılması birkaç dakika süreceğinden, aşağıdaki ölçek kümesini dağıtmanız gerekmez:
+Öğreticinin başında bir ölçek kümesi oluşturduğunuzda, sanal makine örnekleri için varsayılan bir *Windows Server 2016 DataCenter* sanal makine görüntüsü sağlanmıştır. [Get-Azvmımagesku](/powershell/module/az.compute/get-azvmimagesku)öğesinden gelen çıktıyı temel alan farklı bir VM görüntüsü belirtebilirsiniz. Aşağıdaki örnek, *MicrosoftWindowsServer:WindowsServer:2016-Datacenter-with-Containers:latest* sanal makine görüntüsünü belirtmek için `-ImageName` parametresiyle bir ölçek kümesi oluşturabilir. Tüm ölçek kümesi kaynaklarının ve sanal makine örneklerinin oluşturulup yapılandırılması birkaç dakika süreceğinden, aşağıdaki ölçek kümesini dağıtmanız gerekmez:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -205,7 +197,7 @@ Sanal makine örneğinin boyutu veya *SKU*, sanal makine örneği tarafından ku
 ### <a name="vm-instance-sizes"></a>Sanal makine örneği boyutları
 Aşağıdaki tabloda genel sanal makine boyutları, kullanım durumlarına göre kategorilere ayrılmıştır.
 
-| Type                     | Ortak boyutlar           |    Açıklama       |
+| Tür                     | Ortak boyutlar           |    Açıklama       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Genel amaçlı](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Dengeli CPU/bellek. Küçük ve orta ölçekli uygulama ve veri çözümlerini geliştirmek/test etmek için idealdir.  |
 | [İşlem için iyileştirilmiş](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Yüksek CPU/bellek. Orta düzey trafiğe sahip uygulamalar, ağ gereçleri ve toplu işlemler için idealdir.        |
@@ -215,7 +207,7 @@ Aşağıdaki tabloda genel sanal makine boyutları, kullanım durumlarına göre
 | [Yüksek performans](../virtual-machines/windows/sizes-hpc.md) | H, A8-11          | İşleme düzeyi yüksek olan isteğe bağlı ağ arabirimleri (RDMA) içeren VM’lerimiz, şimdiye kadarki en güçlü CPU ile sunuluyor. 
 
 ### <a name="find-available-vm-instance-sizes"></a>Kullanılabilir sanal makine örneği boyutlarını bulma
-Sanal makine örneği boyutlarını kullanılabilir belirli bir bölgede listesini görmek için [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) komutu. 
+Belirli bir bölgede kullanılabilen sanal makine örneği boyutlarının listesini görmek için [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) komutunu kullanın. 
 
 ```azurepowershell-interactive
 Get-AzVMSize -Location "EastUS"
@@ -239,7 +231,7 @@ Standard_NV6                       6      57344               24        1047552 
 Standard_NV12                     12     114688               48        1047552               696320
 ```
 
-Öğreticinin başında bir ölçek kümesi oluşturduğunuzda, sanal makine örnekleri için varsayılan bir *Standard_DS1_v2* sanal makine SKU’su sağlanmıştır. Çıkışı göre farklı bir sanal makine örneğinin boyutu belirtebilirsiniz [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize). Aşağıdaki örnek, *Standard_F1* bir sanal makine örneği boyutu belirtmek için `-VmSize` parametresiyle bir ölçek kümesi oluşturur. Tüm ölçek kümesi kaynaklarının ve sanal makine örneklerinin oluşturulup yapılandırılması birkaç dakika süreceğinden, aşağıdaki ölçek kümesini dağıtmanız gerekmez:
+Öğreticinin başında bir ölçek kümesi oluşturduğunuzda, sanal makine örnekleri için varsayılan bir *Standard_DS1_v2* sanal makine SKU’su sağlanmıştır. [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize)çıktısına göre farklı bir VM örnek boyutu belirtebilirsiniz. Aşağıdaki örnek, *Standard_F1* bir sanal makine örneği boyutu belirtmek için `-VmSize` parametresiyle bir ölçek kümesi oluşturur. Tüm ölçek kümesi kaynaklarının ve sanal makine örneklerinin oluşturulup yapılandırılması birkaç dakika süreceğinden, aşağıdaki ölçek kümesini dağıtmanız gerekmez:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -259,7 +251,7 @@ New-AzVmss `
 ## <a name="change-the-capacity-of-a-scale-set"></a>Ölçek kümesinin kapasitesini değiştirme
 Ölçek kümesi oluşturduğunuzda iki sanal makine örneği istediniz. Ölçek kümesindeki sanal makine örneği sayısını artırmak veya azaltmak için kapasiteyi el ile değiştirebilirsiniz. Ölçek kümesi, gereken sayıda sanal makine örneği oluşturur veya kaldırır ve sonra trafiği dağıtmak için yük dengeleyiciyi yapılandırır.
 
-İlk olarak, bir ölçek kümesi nesnesi oluşturma [Get-AzVmss](/powershell/module/az.compute/get-azvmss), için yeni bir değer belirtmezseniz `sku.capacity`. Kapasite değişikliğini uygulamak için [güncelleştirme AzVmss](/powershell/module/az.compute/update-azvmss). Aşağıdaki örnek, ölçek kümenizdeki sanal makine sayısını *3* olarak ayarlar:
+İlk olarak [Get-AzVmss](/powershell/module/az.compute/get-azvmss)ile bir ölçek kümesi nesnesi oluşturun ve ardından `sku.capacity`için yeni bir değer belirtin. Kapasite değişikliğini uygulamak için [Update-AzVmss](/powershell/module/az.compute/update-azvmss)komutunu kullanın. Aşağıdaki örnek, ölçek kümenizdeki sanal makine sayısını *3* olarak ayarlar:
 
 ```azurepowershell-interactive
 # Get current scale set
@@ -270,7 +262,7 @@ $vmss.sku.capacity = 3
 Update-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -VirtualMachineScaleSet $vmss 
 ```
 
-Ölçek kümenizin kapasitesinin güncelleştirilmesi birkaç dakika sürer. Artık elinizde ölçek kümesindeki örneklerin sayısını görmek için kullanın [Get-AzVmss](/powershell/module/az.compute/get-azvmss):
+Ölçek kümenizin kapasitesinin güncelleştirilmesi birkaç dakika sürer. Ölçek kümesinde Şu anda sahip olduğunuz örneklerin sayısını görmek için [Get-AzVmss](/powershell/module/az.compute/get-azvmss)komutunu kullanın:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
@@ -290,7 +282,7 @@ Sku        :
 Artık bir ölçek kümesi oluşturabilir, bağlantı bilgilerini listeleyebilir ve sanal makine örneklerine bağlanabilirsiniz. Sanal makine örnekleriniz için farklı bir OS görüntüsünü nasıl kullanabileceğinizi veya örnek sayısını nasıl el ile ölçeklendirebileceğinizi öğrendiniz. Günlük yönetim işlemleriniz kapsamında, ölçek kümenizdeki sanal makine örneklerini durdurmanız, başlatmanız veya yeniden başlatmanız gerekebilir.
 
 ### <a name="stop-and-deallocate-vm-instances-in-a-scale-set"></a>Ölçek kümesindeki sanal makine örneklerini durdurma ve serbest bırakma
-Bir ölçek kümesindeki bir veya daha fazla sanal makineleri durdurmak için kullanın [Stop-AzVmss](/powershell/module/az.compute/stop-azvmss). `-InstanceId` parametresi, durdurulacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, ölçek kümesindeki tüm sanal makineler durdurulur. Aşağıdaki örnek, *1* örneğini durdurur:
+Ölçek kümesindeki bir veya daha fazla sanal makineyi durdurmak için, [stop-AzVmss](/powershell/module/az.compute/stop-azvmss)kullanın. `-InstanceId` parametresi, durdurulacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, ölçek kümesindeki tüm sanal makineler durdurulur. Aşağıdaki örnek, *1* örneğini durdurur:
 
 ```azurepowershell-interactive
 Stop-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
@@ -299,14 +291,14 @@ Stop-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -I
 Varsayılan olarak, durdurulan sanal makineler serbest bırakılır ve bunlar için işlem ücreti alınmaz. Durdurulan sanal makinenin sağlama durumunda kalmasını istiyorsanız, önceki komuta `-StayProvisioned` parametresini ekleyin. Sağlama durumunda tutulan durdurulmuş sanal makineler için normal işlem ücreti alınır.
 
 ### <a name="start-vm-instances-in-a-scale-set"></a>Ölçek kümesindeki sanal makine örneklerini başlatma
-Bir ölçek kümesindeki bir veya daha fazla sanal makine başlatmak için kullanın [başlangıç AzVmss](/powershell/module/az.compute/start-azvmss). `-InstanceId` parametresi, başlatılacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, ölçek kümesindeki tüm sanal makineler başlatılır. Aşağıdaki örnek, *1* örneğini başlatır:
+Bir ölçek kümesinde bir veya daha fazla VM başlatmak için [Start-AzVmss](/powershell/module/az.compute/start-azvmss)kullanın. `-InstanceId` parametresi, başlatılacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, ölçek kümesindeki tüm sanal makineler başlatılır. Aşağıdaki örnek, *1* örneğini başlatır:
 
 ```azurepowershell-interactive
 Start-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
 ```
 
 ### <a name="restart-vm-instances-in-a-scale-set"></a>Ölçek kümesindeki sanal makine örneklerini yeniden başlatma
-Bir ölçek kümesindeki bir veya daha fazla sanal makine yeniden başlatmak için kullanmak [restart-AzVmss](/powershell/module/az.compute/restart-azvmss). `-InstanceId` parametresi, yeniden başlatılacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, ölçek kümesindeki tüm sanal makineler yeniden başlatılır. Aşağıdaki örnek, *1* örneğini yeniden başlatır:
+Bir ölçek kümesindeki bir veya daha fazla sanal makineyi yeniden başlatmak için [rebaşlat-AzVmss](/powershell/module/az.compute/restart-azvmss)kullanın. `-InstanceId` parametresi, yeniden başlatılacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek kimliği belirtmezseniz, ölçek kümesindeki tüm sanal makineler yeniden başlatılır. Aşağıdaki örnek, *1* örneğini yeniden başlatır:
 
 ```azurepowershell-interactive
 Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"

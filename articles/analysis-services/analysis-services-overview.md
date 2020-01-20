@@ -4,15 +4,15 @@ description: Bulutta kurumsal düzeyde veri modelleri sağlayan, tam olarak yön
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee107ffdc677a0feffbdaf1441d77a8ed05f2c94
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f72da87ae53039e825f2102bebb12e59821706f8
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749694"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274783"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -34,7 +34,7 @@ Azure Analysis Services, birçok Azure hizmetiyle tümleştirildiğinden gelişm
 
 ## <a name="the-right-tier-when-you-need-it"></a>İhtiyacınız olduğunda doğru katman
 
-Azure Analysis Services; **Geliştirici**, **Temel** ve **Standart** katmanlarında sunulur. Her katmanda, plan maliyetleri işlem gücüne, QPU'lara ve bellek boyutuna göre değişir. Sunucu oluşturduğunuzda, katman içinde bir plan seçersiniz. Aynı katman içinde planları yukarı veya aşağı doğru değişiklik yapabilir veya daha üst bir katmana yükseltebilirsiniz, ama üst katmandan daha alt bir katmana inemezsiniz.
+Azure Analysis Services; **Geliştirici**, **Temel** ve **Standart** katmanlarında sunulur. Her katmanda, plan maliyetleri, işleme gücüne, sorgu Işleme birimlerine (QPUs) ve bellek boyutuna göre farklılık gösterir. Sunucu oluşturduğunuzda, katman içinde bir plan seçersiniz. Aynı katman içinde planları yukarı veya aşağı doğru değişiklik yapabilir veya daha üst bir katmana yükseltebilirsiniz, ama üst katmandan daha alt bir katmana inemezsiniz.
 
 ### <a name="developer-tier"></a>Geliştirici katmanı
 
@@ -47,7 +47,7 @@ Bu katman değerlendirme, geliştirme ve test senaryoları için önerilir. Tek 
 
 ### <a name="basic-tier"></a>Temel katman
 
-Bu katman küçük tablolu modeller, sınırlı düzeyde kullanıcı eşzamanlılığı ve basit veri yenileme gereksinimlerine sahip olan üretim çözümleri için önerilir. Bu katmanda sorgu çoğaltma ölçeği *artırılamaz*. Perspektifler, çoklu bölümler ve DirectQuery tablolu model özellikleri bu katmanda *desteklenmez*.  
+Bu katman küçük tablolu modeller, sınırlı düzeyde kullanıcı eşzamanlılığı ve basit veri yenileme gereksinimlerine sahip olan üretim çözümleri için önerilir. Bu katmanda sorgu çoğaltma ölçeği genişletme *kullanılamıyor* . Perspektifler, çoklu bölümler ve DirectQuery tablolu model özellikleri bu katmanda *desteklenmez*.  
 
 |Plan  |QPU’lar  |Bellek (GB)  |
 |---------|---------|---------|
@@ -232,7 +232,7 @@ Azure Analysis Services ayrıca [Dynamic Management Görünümleri (DMV)](https:
 
 Azure Analysis Services’e özgü belgeler buraya eklenir. Makaleleri bulmak için tarayıcı ekranınızın sol tarafındaki içindekiler bölümünü kullanın. 
 
-Azure Analysis Services tablolu modeller SQL Server Analysis Services tablo modelleriyle aynı olduğundan, [SQL Server Analysis Services belgelerinde](https://docs.microsoft.com/analysis-services/analysis-services-overview)paylaşılan kavramsal, yordamsal, geliştirici ve başvuru makalelerinin kapsamlı bir kitaplığı vardır. SQL Server Analysis Services belgelerindeki makaleler, bunların Azure Analysis Services için de geçerli olup olmadığını başlığın altındaki bir APPLIES TO başlığı ile gösterir.
+Azure Analysis Services tablosal modeller, SQL Server Analysis Services tablolu modellerle aynı olduğundan, [SQL Server Analysis Services belgelerindeki](https://docs.microsoft.com/analysis-services/analysis-services-overview)zengin bir paylaşılan veri modelleme öğreticileri, kavramsal, yordamsal, geliştirici ve başvuru makalelerinin bir kitaplığı vardır. SQL Server Analysis Services belgelerindeki makaleler, bunların Azure Analysis Services için de geçerli olup olmadığını başlığın altındaki bir APPLIES TO başlığı ile gösterir.
 
 ![Paylaşılan belgeler](./media/analysis-services-overview/aas-overview-applies-to.png)
 

@@ -1,25 +1,23 @@
 ---
-title: (KULLANIM DIŞI) Azure Container Service Öğreticisi - uygulama hazırlama
+title: Kullanım DıŞı Azure Container Service öğreticisi-uygulama hazırlama
 description: Azure Container Service öğreticisi - Uygulama Hazırlama
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 961f09d7581a26596b03e7a2f8e97d98fe83e6aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61217104"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275422"
 ---
-# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(KULLANIM DIŞI) Azure Container Service ile kullanılmak üzere kapsayıcı görüntüleri oluşturma
+# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>Kullanım DıŞı Azure Container Service birlikte kullanılacak kapsayıcı görüntüleri oluşturma
 
 > [!TIP]
-> Azure Kubernetes hizmeti kullanan Bu öğretici için güncelleştirilmiş sürümü görmek [Öğreticisi: Azure Kubernetes Service (AKS) için uygulama hazırlama](../../aks/tutorial-kubernetes-prepare-app.md).
+> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: Azure Kubernetes hizmeti (AKS) için uygulama hazırlama](../../aks/tutorial-kubernetes-prepare-app.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -93,7 +91,7 @@ tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        
 docker ps
 ```
 
-Çıkış:
+Çıktı:
 
 ```bash
 CONTAINER ID        IMAGE             COMMAND                  CREATED             STATUS              PORTS                           NAMES

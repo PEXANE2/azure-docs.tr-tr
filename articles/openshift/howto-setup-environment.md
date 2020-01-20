@@ -1,20 +1,18 @@
 ---
-title: Azure Red Hat OpenShift geliştirme ortamınızı ayarlama | Microsoft Docs
+title: Azure Red Hat OpenShift geliştirme ortamınızı ayarlama
 description: Microsoft Azure Red Hat OpenShift ile çalışmaya yönelik önkoşullar aşağıda verilmiştir.
-services: openshift
 keywords: Red Hat OpenShift kurulumu kuruldu
 author: jimzim
 ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
-manager: jeconnoc
-ms.openlocfilehash: fa09ed90258a62d37dafeea5f4760e1fabdc210b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 559c932c4826e82f36c09b85ee8da4186d90d34d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581606"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276080"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift geliştirme ortamınızı ayarlama
 
@@ -100,7 +98,7 @@ Bu sağlayıcıları ve özellikleri el ile kaydetmek için, CLı 'yı yüklediy
 
 Azure Red Hat OpenShift hizmeti, kuruluşunuzu ve Microsoft ile ilişkisini temsil eden ilişkili bir Azure Active Directory (Azure AD) kiracısı gerektirir. Azure AD kiracınız, uygulamaları kaydetmenizi, oluşturmanızı ve yönetmenizi, ayrıca diğer Azure hizmetlerini kullanmayı sağlar.
 
-Azure Red Hat OpenShift kümeniz için kiracı olarak kullanabileceğiniz bir Azure AD yoksa veya test için bir kiracı oluşturmak istiyorsanız, bu kılavuza devam etmeden önce [Azure Red Hat Openshıft kümeniz Için Azure AD kiracısı oluşturma](howto-create-tenant.md) bölümündeki yönergeleri izleyin .
+Azure Red Hat OpenShift kümeniz için kiracı olarak kullanabileceğiniz bir Azure AD yoksa veya test için bir kiracı oluşturmak istiyorsanız, bu kılavuza devam etmeden önce [Azure Red Hat Openshıft kümeniz Için Azure AD kiracısı oluşturma](howto-create-tenant.md) bölümündeki yönergeleri izleyin.
 
 ## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Azure AD kullanıcısı, güvenlik grubu ve uygulama nesnesi oluşturma
 

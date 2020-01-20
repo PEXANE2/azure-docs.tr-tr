@@ -1,26 +1,21 @@
 ---
-title: Azure sanal makine ölçek kümelerini dikey ölçeklendirme | Microsoft Docs
+title: Azure sanal makine ölçek kümelerini dikey ölçeklendirme
 description: Azure Otomasyonu ile uyarıları izlemeye yanıt olarak bir sanal makineyi dikey olarak ölçeklendirme
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: 87d2b19f6143f567782778e35c8511f233d8b0e8
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: fa1dda2907e8400491c8d18897bb41fb9cff49fd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958135"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274427"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri ile dikey otomatik ölçeklendirme
 
@@ -43,7 +38,7 @@ Sanal makine ölçek kümesinden ölçüm tabanlı uyarılara dayalı olarak tet
 4. Web kancası bildirimi kullanarak sanal makine ölçek kümesine bir uyarı ekleyin.
 
 > [!NOTE]
-> İlk sanal makinenin boyutu nedeniyle, ölçeklendirilebilen Boyutlar, geçerli sanal makinedeki kümedeki diğer boyutların kullanılabilirliğine bağlı olarak, ' de sınırlı olabilir. Bu makalede kullanılan yayımlanan Otomasyon Runbook 'larında bu durumu ele aldık ve yalnızca aşağıdaki VM boyut çiftleri içinde ölçeklendirdik. Bu, Standard_D1v2 bir sanal makinenin aniden Standard_G5 'e kadar ölçeklendirilmesi veya Basic_A0 olarak ölçeklendirilmesi anlamına gelir. Ayrıca, kısıtlanmış sanal makine boyutları ölçeği artırma/azaltma desteklenmez. Aşağıdaki boyut çiftleri arasında ölçeklendirmeyi seçebilirsiniz:
+> İlk sanal makinenin boyutu nedeniyle, ölçeklendirilebilen Boyutlar, geçerli sanal makinedeki kümedeki diğer boyutların kullanılabilirliğine bağlı olarak, ' de sınırlı olabilir. Bu makalede kullanılan yayımlanan Otomasyon Runbook 'larında bu durumu ele aldık ve yalnızca aşağıdaki VM boyut çiftleri içinde ölçeklendirdik. Bu, Standard_D1v2 bir sanal makinenin aniden Standard_G5 kadar ölçeklendirilmesi veya Basic_A0 olarak ölçeklendirilmesi anlamına gelir. Ayrıca, kısıtlanmış sanal makine boyutları ölçeği artırma/azaltma desteklenmez. Aşağıdaki boyut çiftleri arasında ölçeklendirmeyi seçebilirsiniz:
 > 
 > | VM boyutları ölçeklendirme çifti |  |
 > | --- | --- |
@@ -76,7 +71,7 @@ Sanal makine ölçek kümesinden ölçüm tabanlı uyarılara dayalı olarak tet
 > | Standard_GS1 |Standard_GS5 |
 > | Standard_H8 |Standard_H16 |
 > | Standard_H8m |Standard_H16m |
-> | Standard_L4s |Standard_L32s |
+> | Standart_L4s |Standart_L32s |
 > | Standard_L8s_v2 |Standard_L80s_v2 |
 > | Standard_M8ms  |Standard_M128ms |
 > | Standard_M32ls  |Standard_M64ls |
@@ -93,15 +88,15 @@ Sanal makine ölçek kümesinden ölçüm tabanlı uyarılara dayalı olarak tet
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Farklı Çalıştır özelliği ile bir Azure Otomasyonu hesabı oluşturma
-Yapmanız gereken ilk şey, sanal makine ölçek kümesi örneklerini ölçeklendirmek için kullanılan runbook 'ları barındıran bir Azure Otomasyonu hesabı oluşturmaktır. Son [Azure Otomasyonu](https://azure.microsoft.com/services/automation/) , bir kullanıcı adına runbook 'ları otomatik olarak çalıştırmak Için hizmet sorumlusu ayarlamayı sağlayan "farklı çalıştır hesabı" özelliğini kullanıma sunmuştur. Daha fazla bilgi için bkz.:
+Yapmanız gereken ilk şey, sanal makine ölçek kümesi örneklerini ölçeklendirmek için kullanılan runbook 'ları barındıran bir Azure Otomasyonu hesabı oluşturmaktır. Son [Azure Otomasyonu](https://azure.microsoft.com/services/automation/) , bir kullanıcı adına runbook 'ları otomatik olarak çalıştırmak Için hizmet sorumlusu ayarlamayı sağlayan "farklı çalıştır hesabı" özelliğini kullanıma sunmuştur. Daha fazla bilgi için bkz.
 
-* [Azure farklı çalıştır hesabıyla runbook 'Ların kimliğini doğrulama](../automation/automation-sec-configure-azure-runas-account.md)
+* [Azure Farklı Çalıştır hesabıyla Runbook Kimlik Doğrulaması](../automation/automation-sec-configure-azure-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Azure Otomasyonu dikey ölçek runbook 'larını aboneliğinize aktarma
 
 Sanal makine ölçek kümelerinizi dikey olarak ölçeklendirmek için gereken runbook 'lar Azure Otomasyonu runbook galerisinde zaten yayımlandı. Bu makaledeki adımları izleyerek aboneliğinize içeri aktarabilirsiniz:
 
-* [Azure Otomasyonu için Runbook ve modül galerileri](../automation/automation-runbook-gallery.md)
+* [Azure Otomasyonu için runbook ve modül galerileri](../automation/automation-runbook-gallery.md)
 
 Runbook 'Lar menüsünden galeriye gözatamıyorum seçeneğini belirleyin:
 
@@ -109,7 +104,7 @@ Runbook 'Lar menüsünden galeriye gözatamıyorum seçeneğini belirleyin:
 
 İçeri aktarılması gereken runbook 'lar gösterilir. Yeniden sağlamaya dayalı veya olmadan dikey ölçeklendirmeyi isteyip istemediğinizi belirlemek için Runbook 'u seçin:
 
-![Runbook 'lar Galerisi][gallery]
+![Runbook galerisi][gallery]
 
 ## <a name="add-a-webhook-to-your-runbook"></a>Runbook 'na bir Web kancası ekleyin
 

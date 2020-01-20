@@ -1,25 +1,23 @@
 ---
-title: (KULLANIM DIŞI) Hızlı Başlangıç - Linux için Azure Kubernetes kümesi
+title: Kullanım DıŞı Hızlı başlangıç-Linux için Azure Kubernetes kümesi
 description: Azure CLI ile Azure Container Service'de Linux kapsayıcıları için Kubernetes kümesi oluşturmayı hızlı bir şekilde öğrenin.
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 70c9fec818147b76feb306cc47ba2e72cd865fe8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5c182d6119f59daaf21e4b4e1304363eeb0c11e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60335036"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273493"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(KULLANIM DIŞI) Linux kapsayıcıları için Kubernetes kümesi dağıtma
+# <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>Kullanım DıŞı Linux kapsayıcıları için Kubernetes kümesi dağıtma
 
 > [!TIP]
-> Azure Kubernetes hizmeti kullanan bu hızlı başlangıç için güncelleştirilmiş sürümü görmek [hızlı başlangıç: Azure Kubernetes Service (AKS) kümesini dağıtma](../../aks/kubernetes-walkthrough.md).
+> Azure Kubernetes hizmetini kullanan bu hızlı başlangıçta güncelleştirilmiş sürümü için bkz. [hızlı başlangıç: Azure Kubernetes hizmeti (AKS) kümesi dağıtma](../../aks/kubernetes-walkthrough.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -35,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli). 
+CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -47,7 +45,7 @@ Aşağıdaki örnek *westeurope* konumunda *myResourceGroup* adlı bir kaynak gr
 az group create --name myResourceGroup --location westeurope
 ```
 
-Çıkış:
+Çıktı:
 
 ```json
 {
@@ -92,7 +90,7 @@ Kümenize bağlantıyı doğrulamak için [kubectl get](https://kubernetes.io/do
 kubectl get nodes
 ```
 
-Çıkış:
+Çıktı:
 
 ```bash
 NAME                    STATUS                     AGE       VERSION
@@ -175,7 +173,7 @@ Uygulamayı çalıştırmak için [kubectl create](https://kubernetes.io/docs/re
 kubectl create -f azure-vote.yml
 ```
 
-Çıkış:
+Çıktı:
 
 ```bash
 deployment "azure-vote-back" created
@@ -205,14 +203,14 @@ Artık Azure Vote Uygulamasını görmek için dış IP adresine göz atabilirsi
 
 ![Azure Vote’a göz atma görüntüsü](media/container-service-kubernetes-walkthrough/azure-vote.png)  
 
-## <a name="delete-cluster"></a>Kümeyi silme
+## <a name="delete-cluster"></a>Küme silme
 Kümeye artık ihtiyacınız yoksa [az group delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini ve ilgili tüm kaynakları kaldırabilirsiniz.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="get-the-code"></a>Kodu alma
+## <a name="get-the-code"></a>Kodu edinin
 
 Bu hızlı başlangıçta, Kubernetes dağıtımı oluşturmak için önceden oluşturulmuş kapsayıcı görüntüleri kullanılır. İlgili uygulama kodu, Dockerfile ve Kubernetes bildirim dosyası GitHub'da bulunur.
 

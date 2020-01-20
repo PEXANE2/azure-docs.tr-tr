@@ -1,25 +1,17 @@
 ---
-title: StorSimple destek koşulları | Microsoft Docs
+title: StorSimple destek koşulları
 description: StorSimple 8000 serisi kurumsal depolama müşterileri için destek seçeneklerini açıklar.
-services: storsimple
-documentationcenter: NA
 author: GabiSocoteanu
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 046558007f1a2f2c86f80af610be56b77fa63da1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d9a75cde58062061149fa4304eace587b1480dd1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990384"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277031"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple çözüm desteği
 
@@ -36,22 +28,22 @@ Microsoft, StorSimple kurumsal depolama müşterileri için esnek destek seçene
 
 ## <a name="storsimple-support-plans"></a>StorSimple destek planları
 
-|                                                                                                                                                     | **STANDART** <sup>1                                                 |  **PREMIUM** <sup>1                                                                         |
+|                                                                                                                                                     | **Standart** <sup>1                                                 |  **PREMIUM** <sup>1                                                                         |
 |---------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
 | Faturalandırma ve abonelik yönetimi                                                                     | ✓                                                                               | ✓                                                                              |
 | Bilet gönderimi Azure portal                                                                          | ✓                                                                               | ✓                                                                              |
 | Çevrimiçi Destek Portalı erişimi                                                                            | ✓                                                                               | ✓                                                                              |
 | Uyarı sağlama ve yönetimi                                                                       | ✓                                                                               | ✓                                                                              |
-| Yardım Masası ilk yanıt süresi 7/24 destek bilet gönderimi <br> Önem derecesi <sup>temelinde ilk yanıt süresi 2 | Önem derecesi A: 2 saat içinde <br> Önem derecesi B: 4 saat içinde <br> Önem derecesi C: 8 saat içinde | Önem derecesi A: 60 dakika içinde <br> Önem derecesi B: 2 saat içinde <br> Önem derecesi C: 4 saat içinde |
+| Yardım Masası ilk yanıt süresi 7/24 destek bilet gönderimi <br> Önem derecesine göre ilk yanıt süresi <sup>2 | Önem derecesi A: 2 saat Içinde <br> Önem derecesi B: 4 saat Içinde <br> Önem derecesi C: 8 saat Içinde | Önem derecesi A: 60 dakika Içinde <br> Önem derecesi B: 2 saat Içinde <br> Önem derecesi C: 4 saat Içinde |
 | Telefon desteği (geri arama)                                                                               | ✓                                                                               | ✓                                                                              |
 | Gelişmiş parçalar değişikliği (yalnızca StorSimple 8000 serisi) <sup>3</sup>                                              | Sonraki iş günü <sup>4                                                              | 4 saat içinde                                                                 |
-| Yerinde alan Hizmetleri mühendisi (yalnızca StorSimple 8000 serisi) <sup>3</sup>                                         | Yok                                                                   | 4 saat içinde                                                                 |
+| Yerinde alan Hizmetleri mühendisi (yalnızca StorSimple 8000 serisi) <sup>3</sup>                                         | Kullanılamıyor                                                                   | 4 saat içinde                                                                 |
 | StorSimple Sanal dizisi <sup>5</sup>                                                                              | ✓                                                                               | ✓                                                                              |
-| StorSimple Sanal dizisi <sup>5</sup> örnekleri                                                                 | Sınır yok                                                                        | Sınır yok                                                                       |
+| StorSimple Sanal dizisi <sup>5</sup> örnekleri                                                                 | Sınırsız                                                                        | Sınırsız                                                                       |
 
 
 
-| DONANIM VE YAZILIM GARANTISI                                        |
+| DONANıM VE YAZıLıM GARANTISI                                        |
 |-----------------------------------------------------------------------|
 | Donanım parçaları değiştirme (yalnızca StorSimple 8000 serisi) <sup>6       |
 | Ücretsiz yazılım güncelleştirmeleri                                                 |
@@ -60,13 +52,13 @@ sonraki EA yıldönümüne kadar müşteriye sunulan <sup>1</sup> destek. Müşt
 
 <sup>2</sup> önem derecesi aşağıdaki gibi tanımlanır: 
 
-* Önem derecesi A: Hizmetlerde önemli bir kayıp veya düşme
+* Önem derecesi A: hizmetler için önemli bir kayıp veya düşme
 
 
 * Önem derecesi B: Orta kayıp veya düşme, ancak çalışma geçici bir şekilde devam edebilir
 
 
-* Önem derecesi C: Sistem işlevselliğine göre küçük veya hiçbir engel olmadan önemli ölçüde çalışır
+* Önem derecesi C: sistem işlevselliğine göre küçük veya hiçbir engel olmadan önemli ölçüde çalışır
 
     Müşteri, Microsoft 'un sorun çözümlenmeye devam etmesini sağlamak için yeterli kaynak veya Yanıt sağlayamasa da, Microsoft önem derecesi düzeyini indirgeyemez. Önem A için Ingilizce desteği temel alınarak beklenen yanıt süresi, önem derecesi B ve C için yerel çalışma saatleri. 
 
@@ -81,13 +73,13 @@ yalnızca StorSimple Sanal dizilerini kullanan <sup>5</sup> müşterinin StorSim
 Destek sözleşmeniz süresi dolmuşsa, destek sözleşmesinin ne kadar süre sona ertiğine bağlı olarak, bir bölüm teslim edilmeden önce, sözleşmenin yerel stoklama konumu olarak alınmadan önce yenileme işlemi tamamlandıktan sonra üç hafta kadar sürebilir Cihazınız işlendikten sonra cihazınızın değiştirme parçaları ile stoklandıktan sonra.
 
 ## <a name="local-language-support"></a>Yerel dil desteği
-Ingilizce 'ye ek olarak, yerel dil desteği iş saatlerinde aşağıdaki dillerde sunulmaktadır: İspanyolca, Portekizce, Japonca, Korece, Taiwanese ve geleneksel Çince.
+Ingilizce 'ye ek olarak, yerel dil desteği iş saatlerinde şu dillerde sunulmaktadır: Ispanyolca, Portekizce, Japonca, Korece, Taiwanese ve geleneksel Çince.
 
 ## <a name="support-scope"></a>Destek kapsamı 
 Faturalandırma ve abonelik yönetimi ile ilgili konular için tüm düzeylerde destek sunulmaktadır. StorSimple desteğini almak için müşterinin StorSimple standart veya Premium destek planları için etkin bir şekilde kayıtlı olması gerekir. StorSimple destek ekibi, StorSimple çözümünü etkileyen tüm sorunları çözmenize sorumlu olacaktır. StorSimple ile doğrudan ilgili olmayan Azure ile ilgili sorunlar için destek almak üzere müşterinin uygun bir Azure Destek planına kaydolması gerekir. Ayrıntılar için [buraya](https://azure.microsoft.com/support/plans/) başvurun. Destek ekibi, Azure desteği 'ne yönelik müşteri yetkilendirmelerine göre izleme için Azure ekibine StorSimple olmayan destek taleplerine başvurur. 
 
 
-| **ININ** |**MÜŞTERININ DURUMU**                                                                                                                                | BEKLENEN MICROSOFT YANITI <sup>2                                                                                       | BEKLENEN MÜŞTERI YANITI                                                                                                                                                       |
+| **ININ** |**MÜŞTERININ DURUMU**                                                                                                                                | BEKLENEN MICROSOFT yanıtı <sup>2                                                                                       | BEKLENEN MÜŞTERI YANıTı                                                                                                                                                       |
 |----------|-----------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | A        | İş üzerinde kritik etki: <ul> <br> <li> Müşterilerin işletmesiyle ilgili önemli bir kayıp veya hizmet düşüşü vardır. <sup>1</sup> <br> <li> Hemen ilgilenilmesi gerekiyor.                          | İlk yanıt: <sup>1</sup> <ul><br> <li>Premium için 1 saat veya daha az. <br> <li> Standart için 2 saat veya daha az. <br> <li> Her gün, her gün sürekli efor. | <ul><li> Çalışmanın her gün, gün boyu sürdürülebilmesi için uygun kaynakların ayrılması. <br> <li> Servis talebi sahibine yönelik doğru iletişim bilgileri.                                                |
 | B        | İş üzerinde orta dereceli etki: <ul><br> <li> Müşterinin işi, hizmetlerden oluşan bir kayıp veya performans düşüşü içeriyor, ancak iş, daha fazla bir şekilde devam edebilir. | İlk yanıt: <sup>1</sup><ul><br> <li> Premium için 2 saat veya daha az. <br> <li> Standart için 4 saat veya daha az.                                      | <ul><li> Müşterilerin 7/24 devre dışı bırakılmadığı müddetçe iş saatlerinde sürekli çabalar için uygun kaynakların ayrılması. <br> <li> Servis talebi sahibine yönelik doğru iletişim bilgileri. |
@@ -95,7 +87,7 @@ Faturalandırma ve abonelik yönetimi ile ilgili konular için tüm düzeylerde 
  
 <sup>1</sup> müşteri, Microsoft 'un sorun çözme çabalarıyla devam etmesini sağlamak için yeterli kaynak veya Yanıt sağlayamadığından, önem derecesi düzeyinin önem derecesini indirgeyebiliyor.
 
-<sup>2</sup> beklenen yanıt süresi, önem derecesi A ve önem derecesi B ve C için yerel çalışma saatleri ve kalan yerel dillerde yerel çalışma saatleri desteği için İngilizce olarak 7/24 desteği temel alır: Japonca, Taiwanese, geleneksel Çince ve Kore dili.
+<sup>2</sup> beklenen yanıt süresi, önem derecesi A ve önem derecesi B ve C için yerel çalışma saatleri ve kalan yerel dillerde yerel çalışma saatleri desteği için İngilizce 'de 7/24 desteği temel alır: Japonca, Taiwanese, geleneksel Çince ve Korece.
 
 ## <a name="cancellation-policy"></a>İptal etme ilkesi
 StorSimple desteğini almak için müşterinin abonelik dönemi süresince standart veya Premium destek planları satın alması gerekir. İptal etme, eşit olarak dağıtılmış bir geri ödeme sonucu vermez. StorSimple destek planları, EA yıldönümü 'nda uygun azalmaya sahiptir. Ancak Microsoft, geçerli destek sözleşmeleri olmadan StorSimple müşterilerine destek sağlamaz.
@@ -114,17 +106,17 @@ StorSimple 8000 serisi depolama dizileri desteği, StorSimple dizisinin nasıl s
 | **Destek SKU 'Ları**                                                                                            | **Abonelik modeli**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |            **ASAP + model**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Standart destek** <br></br> [CWZ-00023] <br></br>*AzureStorSimple ShrdSvr ALNG SubsVL MVL StdSpprt*<br><br><br><br><br>                         |Dahil.<br><br><br><br><br><br><br><br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |<ul> <li>Sonraki EA yıldönümü üzerinden ilk satın alma ile müşterilere sağlanır.<li> Müşteri, etkin bir StorSimple destek sözleşmesi olmadan hiçbir değişiklik donanım bölümünün dağıtılması için sonraki yıllarda destek satın almalıdır.<br>   <br><br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| **Premium**Destek*  <br></br> [CWZ-00024] <br></br> *AzureStorSimple ShrdSvr ALNG SubsVL MVL PremSpprt* <br><br><br><br><br><br>                         | Standart destek abonelik ile otomatik olarak eklendiğinden, standart olan Premium yükseltmesine bakın.      <br><br><br><br><br><br><br><br><br> <br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                    | <ul> <li>Microsoft Premier destek sözleşmeleri kapsamındaki müşteriler, Standart sürüme Premium yükseltmesine başvurmalıdır. <li>Bir Microsoft Premier sözleşmesi kapsamında olmayan ve Premium StorSimple desteği sağlamak isteyen müşteriler bu SKU 'YU yenileme sırasında satın almalıdır.<br><br><br><br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| **Standart Premium** \* yükseltme\* <br></br> [CWZ- 00025] <br></br> *AzureStorSimple ShrdSvr ALNG SubsVL MVL spprt-StepuptoPrem* <br><br><br><br><br><br><br><br><br>| StorSimple satın alma sırasında Microsoft Premier Destek sözleşmesi kapsamındaki müşteriler, Premier destek kapsamında kaldıkları sürenin süresi boyunca ücretsiz olarak Premium StorSimple desteğine yükseltilir.  Müşteriler daha sonra Premier Destek ediniyorsanız, üzerinden SSSupOps@microsoft.comIsteyerek ücretsiz bir StorSimple destek yükseltmesi elde edilebilir. <br></br>Premier olmayan müşteriler, Kurumsal Anlaşma (EA) Sözleşmesi sırasında her zaman Premium yükseltme SKU 'SU [CWZ-00025] ' a StorSimple standardını satın alabilirler.<br><br><br><br><br><br><br><br> | <ul><li> Microsoft Premier Destek sözleşmesi kapsamındaki müşteriler Standart Destek SKU 'SU [CWZ-00023] satın alabilir ve StorSimple Standart Destek Sözleşmesi, kapsamında kaldığı sürenin süresi boyunca hiçbir ek ücret ödemeden otomatik olarak yükseltilir. Premier desteği. <li> Müşteriler daha sonra Premier Destek ediniyorsanız, üzerinden SSSupOps@microsoft.comIsteyerek ücretsiz bir StorSimple destek yükseltmesi elde edilebilir. <li> StorSimple standart desteğinin kapsadığı Premier olmayan müşteriler, Kurumsal Anlaşma (EA) Sözleşmesi sırasında her zaman Premium yükseltme SKU 'SU [CWZ-00025] satın alabilir. Sonraki yıl, destek sözleşmesini yenilerken müşteriler yalnızca yükseltme SKU 'su [CWZ-00025] değil doğrudan Premium destek SKU 'SU [CWZ-00024] ' ı satın almalıdır.<br><br> |
+| **Premium*** **desteği** <br></br> [CWZ-00024] <br></br> *AzureStorSimple ShrdSvr ALNG SubsVL MVL PremSpprt* <br><br><br><br><br><br>                         | Standart destek abonelik ile otomatik olarak eklendiğinden, standart olan Premium yükseltmesine bakın.      <br><br><br><br><br><br><br><br><br> <br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                    | <ul> <li>Microsoft Premier destek sözleşmeleri kapsamındaki müşteriler, Standart sürüme Premium yükseltmesine başvurmalıdır. <li>Bir Microsoft Premier sözleşmesi kapsamında olmayan ve Premium StorSimple desteği sağlamak isteyen müşteriler bu SKU 'YU yenileme sırasında satın almalıdır.<br><br><br><br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| **Standart-Premium**\*\* yükseltmesi <br></br> [CWZ- 00025] <br></br> *AzureStorSimple ShrdSvr ALNG SubsVL MVL spprt-StepuptoPrem* <br><br><br><br><br><br><br><br><br>| StorSimple satın alma sırasında Microsoft Premier Destek sözleşmesi kapsamındaki müşteriler, Premier destek kapsamında kaldıkları sürenin süresi boyunca ücretsiz olarak Premium StorSimple desteğine yükseltilir.  Müşteriler daha sonra Premier Destek elde ediyorsanız, ücretsiz bir StorSimple destek yükseltmesi, SSSupOps@microsoft.comaracılığıyla isteyerek elde edilebilir. <br></br>Premier olmayan müşteriler, Kurumsal Anlaşma (EA) Sözleşmesi sırasında her zaman Premium yükseltme SKU 'SU [CWZ-00025] ' a StorSimple standardını satın alabilirler.<br><br><br><br><br><br><br><br> | <ul><li> Microsoft Premier Destek sözleşmesi kapsamındaki müşteriler Standart Destek SKU 'SU [CWZ-00023] satın alabilir ve StorSimple Standart Destek Sözleşmesi, kapsamında kaldığı sürenin süresi boyunca hiçbir ek ücret ödemeden otomatik olarak yükseltilir. Premier desteği. <li> Müşteriler daha sonra Premier Destek elde ediyorsanız, ücretsiz bir StorSimple destek yükseltmesi, SSSupOps@microsoft.comaracılığıyla isteyerek elde edilebilir. <li> StorSimple standart desteğinin kapsadığı Premier olmayan müşteriler, Kurumsal Anlaşma (EA) Sözleşmesi sırasında her zaman Premium yükseltme SKU 'SU [CWZ-00025] satın alabilir. Sonraki yıl, destek sözleşmesini yenilerken müşteriler yalnızca yükseltme SKU 'su [CWZ-00025] değil doğrudan Premium destek SKU 'SU [CWZ-00024] ' ı satın almalıdır.<br><br> |
 
 
 
-*<text>* Premium kapsam tüm konumlarda kullanılamaz. StorSimple Premium desteği satın almadan\@önce, coğrafi tedarik için Microsoft.com adresindeki Microsoft 'a başvurun.*
+*<text> * Premium kapsam tüm konumlarda kullanılamaz. StorSimple Premium desteği satın almadan önce microsoft.com for the Ssupop\@for coğrafi tedarik kapsamında Microsoft 'A başvurun.*
 
-***StorSimple gereci, Premium StorSimple desteğinin ücretsiz yükseltmesine uygun olması için müşterinin Premier destek kapsamında bulunduğu bir bölgeye dağıtılması gerekir.*
+StorSimple gerecinin, *Premium StorSimple desteğinin ücretsiz yükseltmesine uygun olması için müşterinin Premier destek kapsamında bulunduğu bir bölgede dağıtılması gerekir.* **
 
 
-ASAP + müşterileri, standart desteğin dahil olduğu abonelik modeline geçebilir. Abonelik fiyatlandırması için StorSimple Fiyatlandırma hesaplayıcısı ' nı ve SSSupOps@microsoft.com herhangi bir soru için ilgili kişiyi kullanın. Geçiş, yalnızca ASAP + ' dan aboneliğe kadar bir yoldur.
+ASAP + müşterileri, standart desteğin dahil olduğu abonelik modeline geçebilir. Abonelik fiyatlandırması için StorSimple Fiyatlandırma hesaplayıcısı ' nı kullanın ve sorular için SSSupOps@microsoft.com başvurun. Geçiş, yalnızca ASAP + ' dan aboneliğe kadar bir yoldur.
 
 
 

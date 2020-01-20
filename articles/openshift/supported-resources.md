@@ -1,42 +1,40 @@
 ---
-title: Kaynakları Azure Red Hat OpenShift için desteklenen | Microsoft Docs
-description: Microsoft Azure Red Hat OpenShift ile hangi Azure bölgeleri ve sanal makine boyutları desteklenen anlayın.
-services: container-service
+title: Azure Red Hat OpenShift için desteklenen kaynaklar
+description: Microsoft Azure Red Hat OpenShift tarafından desteklenen Azure bölgelerini ve sanal makine boyutlarını anlayın.
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: c226227797802ab58d1bcbaadb7e97e780b30560
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306211"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274911"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift kaynakları
 
-Bu konu, Azure bölgeleri ve Microsoft Azure Red Hat OpenShift hizmeti tarafından desteklenen sanal makine boyutlarını listeler.
+Bu konu, Microsoft Azure Red Hat OpenShift hizmeti tarafından desteklenen Azure bölgelerini ve sanal makine boyutlarını listeler.
 
 ## <a name="azure-regions"></a>Azure bölgeleri
 
-Bkz: [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) geçerli bir Azure Red Hat OpenShift dağıtabileceğiniz bölgelerin listesi için kümeleri.
+Azure Red Hat OpenShift kümelerini dağıtabileceğiniz bölgelerin geçerli bir listesi için [bölgeye göre kullanılabilir ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) bakın.
 
 ## <a name="virtual-machine-sizes"></a>Sanal makine boyutları
 
-Azure Red Hat OpenShift kümenizde işlem düğümleri için belirtebileceğiniz desteklenen sanal makine boyutları aşağıda verilmiştir.
+Azure Red Hat OpenShift kümenizdeki işlem düğümleri için belirtebileceğiniz desteklenen sanal makine boyutları aşağıda verilmiştir.
 
 > [!Important]
-> Her VM eklenebilecek sürücüleri farklı sayıda sahiptir. Bu bellek veya CPU boyutu olarak olarak hemen açık olmayabilir.
-> Tüm VM boyutları, tüm bölgelerde kullanılabilir. API, sizin belirlediğiniz boyuta destekler olsa bile, boyutu, belirttiğiniz bölgede kullanılabilir değilse, bir hata alabilirsiniz.
-> Bkz: [güncel listesi aşağıda desteklenen VM boyutları bölge başına](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) daha fazla bilgi için.
+> Her VM 'nin iliştirilebilecek farklı sayıda sürücüsü vardır. Bu, bellek veya CPU boyutu kadar hemen açık olmayabilir.
+> Tüm bölgelerde tüm VM boyutları kullanılamaz. API belirttiğiniz boyutu desteklese de, boyut belirttiğiniz bölgede yoksa bir hata alabilirsiniz.
+> Daha fazla bilgi için bkz. [bölge başına desteklenen VM boyutlarının geçerli listesi](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) .
 
-## <a name="compute-node-sizes"></a>İşlem düğümü boyutları
+## <a name="compute-node-sizes"></a>İşlem düğüm boyutları
 
-Aşağıdaki işlem düğümü boyutları Azure Red Hat OpenShift REST API'si tarafından desteklenir:
+Aşağıdaki işlem düğümü boyutları Azure Red Hat Openshıft REST API tarafından desteklenir:
 
-|Boyut|Sanal işlemci|RAM|
+|Boyut|vCPU|RAM|
 |-|-|-|
 |Standart D4s v3|4|16 GB|
 |Standart D8s v3|8|32 GB|
@@ -50,13 +48,13 @@ Aşağıdaki işlem düğümü boyutları Azure Red Hat OpenShift REST API'si ta
 |-|-|-|
 |Standart F8s v2|8|16 GB|
 |Standart F16s v2|16|32 GB|
-|Standard F32s v2|32|64 GB|
+|Standart F32s v2|32|64 GB|
 
-## <a name="master-node-sizes"></a>Ana düğümü boyutları
+## <a name="master-node-sizes"></a>Ana düğüm boyutları
 
-Aşağıdaki ana / alt yapı düğümü boyutları, Azure Red Hat OpenShift REST API'si tarafından desteklenir:
+Aşağıdaki ana/altyapı düğüm boyutları, Azure Red Hat Openshıft REST API tarafından desteklenir:
 
-|Boyut|Sanal işlemci|RAM|
+|Boyut|vCPU|RAM|
 |-|-|-|
 |Standart D4s v3|4|16 GB|
 |Standart D8s v3|8|32 GB|
@@ -65,4 +63,4 @@ Aşağıdaki ana / alt yapı düğümü boyutları, Azure Red Hat OpenShift REST
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Deneyin [Azure Red Hat OpenShift küme oluşturma](tutorial-create-cluster.md) öğretici.
+[Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisini deneyin.

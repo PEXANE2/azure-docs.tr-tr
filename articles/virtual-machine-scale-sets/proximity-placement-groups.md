@@ -1,23 +1,19 @@
 ---
-title: Sanal Makine Ölçek Kümeleri için yakınlık yerleşimi grupları önizlemesi | Microsoft Docs
+title: Sanal Makine Ölçek Kümeleri için yakınlık yerleşimi grupları önizlemesi
 description: Azure 'da Windows sanal makine ölçek kümeleri için yakınlık yerleşimi grupları oluşturma ve kullanma hakkında bilgi edinin.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
 ms.service: virtual-machine-scale-sets
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 6a4f145c6431e98bbe9575f128ace30a23a1b972
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 4fa2949e2a7e1b99ac26caa35f967e9dc9cf359a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850359"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273614"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Önizleme: PowerShell kullanarak yakınlık yerleşimi grupları oluşturma ve kullanma
 
@@ -29,7 +25,7 @@ Yakınlık yerleşimi grubu, Azure işlem kaynaklarının fiziksel olarak birbir
 > Yakınlık yerleşimi grupları Şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Önizleme sırasında yakınlık yerleşimi grupları bu bölgelerde kullanılamaz: **Japonya Doğu**, **Avustralya Doğu** ve **Hindistan Orta**.
+> Önizleme sırasında yakınlık yerleşimi grupları şu bölgelerde kullanılamıyor: **Japonya Doğu**, **Avustralya Doğu** ve **Hindistan Orta**.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Yakınlık yerleştirme grubu oluşturma
@@ -58,7 +54,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
 
-Ölçek kümesini oluşturmak için `-ProximityPlacementGroup $ppg.Id` [New-azvmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) kullandığınızda yakınlık yerleşimi grubu kimliğine başvurmak için kullanarak yakınlık yerleşimi grubunda bir ölçek oluşturun.
+Ölçek kümesini oluşturmak için [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) kullandığınızda yakınlık YERLEŞIMI grubu kimliğine başvurmak için `-ProximityPlacementGroup $ppg.Id` kullanarak yakınlık yerleşimi grubunda bir ölçek oluşturun.
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

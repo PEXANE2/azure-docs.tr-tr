@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple Sanal dizi sistem gereksinimleri | Microsoft Docs
+title: Microsoft Azure StorSimple Sanal dizi sistem gereksinimleri
 description: StorSimple Sanal diziniz için yazılım ve ağ gereksinimleri hakkında bilgi edinin
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 65d2a21a9f40470cee1dd9d713f9f9cb5431a245
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516693"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273780"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Sanal Dizini sistem gereksinimleri
 
@@ -57,7 +50,7 @@ Yazılım gereksinimleri, desteklenen Web tarayıcıları, SMB sürümleri, sana
 | En az sanal işlemci sayısı (çekirdek) |4 |
 | Minimum bellek (RAM) |8 GB <br> Bir dosya sunucusu için 2.000.000 ' den az dosya için 8 GB ve 2-4 milyon dosya için 16 GB|
 | Disk alanı<sup>1</sup> |İşletim sistemi diski-80 GB <br></br>Veri diski-500 GB-8 TB |
-| En az ağ arabirimi sayısı |1\. |
+| En az ağ arabirimi sayısı |1 |
 | Internet bant genişliği<sup>2</sup> |Minimum bant genişliği gereklidir: 5 Mbps <br> Önerilen bant genişliği: 100 Mbps <br> Veri aktarımının hızı Internet bant genişliğine göre ölçeklendirilir. Örneğin, günlük yedeklemeler gün içinde tamamlanamadığından, 100 GB veri, 5 Mbps hızında aktarım yapmak için 2 gün sürer. 100 Mbps 'lik bir bant genişliği ile 100 GB veri, 2,5 saat içinde aktarılabilir.   |
 
 <sup>1</sup> -ölçülü kaynak sağlandı
@@ -94,7 +87,7 @@ Aşağıdaki yazılım gereksinimleri, StorSimple Sanal dizinizi (bir dosya sunu
 Yalnızca Azure Blok Blobu depolama desteklenir. Sayfa Blobları desteklenmez. [Blok Blobları ve sayfa Blobları hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)daha fazla bilgi.
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
-Aşağıdaki tabloda Iscsı, SMB, bulut veya Yönetim trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu *tabloda, veya* *gelen* , gelen istemci tarafından cihazınıza erişim isteğinin yönünü ifade eder. *Çıkış* veya *Çıkış* , StorSimple cihazınızın verileri dışarıdan, dağıtımın ötesinde (örneğin, Internet 'e giden) gönderdiği yönü ifade eder.
+Aşağıdaki tabloda Iscsı, SMB, bulut veya Yönetim trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, veya *gelen* *, gelen istemci* tarafından cihazınıza erişim isteğinin yönünü ifade eder. *Çıkış* veya *Çıkış* , StorSimple cihazınızın verileri dışarıdan, dağıtımın ötesinde (örneğin, Internet 'e giden) gönderdiği yönü ifade eder.
 
 | **Bağlantı noktası No.<sup>1</sup>** | **Dışarı veya dışarı** | **Bağlantı noktası kapsamı** | **Gerekli** | **Notlar** |
 | --- | --- | --- | --- | --- |
@@ -127,7 +120,7 @@ Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL dese
 
 | URL kalıbı | Bileşen/Işlevsellik |
 | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple Cihaz Yöneticisi hizmeti<br>Erişim Denetimi Hizmeti<br>Azure Service Bus<br>Kimlik Doğrulama Hizmeti|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple Device Manager hizmeti<br>Access Control Service<br>Azure Service Bus<br>Kimlik doğrulama hizmeti|
 | `http://*.backup.windowsazure.com` |Cihaz kaydı |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Sertifika iptali |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure depolama hesapları ve izleme |

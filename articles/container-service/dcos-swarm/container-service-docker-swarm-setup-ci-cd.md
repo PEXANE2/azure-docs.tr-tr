@@ -1,20 +1,18 @@
 ---
 title: Kullanım DıŞı Azure Container Service ve Sısınma ile CI/CD
 description: Sürekli olarak çok kapsayıcılı bir .NET Core uygulaması sunmak için Docker Sısınma, bir Azure Container Registry ve Azure DevOps ile Azure Container Service kullanın
-services: container-service
 author: jcorioland
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 8990f1f8e4cda5a6cc8b8d3197b843662b1397a5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 860c277e88918dc37eceb496d852691ced2af114
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598545"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277898"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>Kullanım DıŞı Azure DevOps Services kullanarak Docker Sısınma ile Azure Container Service çok kapsayıcılı bir uygulama dağıtmak için tam CI/CD işlem hattı
 
@@ -22,7 +20,6 @@ ms.locfileid: "68598545"
 
 Bulut için modern uygulamalar geliştirilirken en büyük zorluklardan biri, bu uygulamaları sürekli olarak sunabilmektedir. Bu makalede, Docker Sısınma, Azure Container Registry ve Azure Pipelines yönetimiyle Azure Container Service kullanarak tam bir sürekli tümleştirme ve dağıtım (CI/CD) işlem hattı uygulamayı nasıl uygulayacağınızı öğreneceksiniz.
 
-Bu makale, ASP.NET Core ile geliştirilen [GitHub](https://github.com/jcorioland/MyShop/tree/acs-docs)'da bulunan basit bir uygulamayı temel alır. Uygulama dört farklı hizmetten oluşur: üç Web API 'si ve bir Web ön ucu:
 
 ![MyShop örnek uygulaması](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
@@ -41,7 +38,7 @@ Bu adımların kısa bir açıklaması aşağıda verilmiştir:
 1. Kümedeki Docker Sısınma görüntülerin en son sürümünü çeker 
 1. Uygulamanın yeni sürümü Docker Compose kullanılarak dağıtılır 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce, aşağıdaki görevleri gerçekleştirmeniz gerekir:
 
@@ -55,7 +52,7 @@ Bu öğreticiye başlamadan önce, aşağıdaki görevleri gerçekleştirmeniz g
 
 Docker 'ın yüklü olduğu bir Ubuntu (14,04 veya 16,04) makinesine de ihtiyacınız vardır. Bu makine, Azure Pipelines süreçler sırasında Azure DevOps Services tarafından kullanılır. Bu makineyi oluşturmanın bir yolu, [Azure Marketi](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/)'nde bulunan görüntüyü kullanmaktır. 
 
-## <a name="step-1-configure-your-azure-devops-services-organization"></a>1\. adım: Azure DevOps Services kuruluşunuzu yapılandırma 
+## <a name="step-1-configure-your-azure-devops-services-organization"></a>1\. Adım: Azure DevOps Services kuruluşunuzu yapılandırma 
 
 Bu bölümde, Azure DevOps Services kuruluşunuzu yapılandırırsınız.
 
@@ -107,7 +104,7 @@ CI/CD işlem hattına almadan önce geçen adımlar, Azure 'da kapsayıcı kayı
 
 Tüm yapılandırma şimdi yapılır. Sonraki adımlarda, uygulamayı oluşturup Docker Sısınma kümesine dağıtan CI/CD işlem hattını oluşturursunuz. 
 
-## <a name="step-2-create-the-build-pipeline"></a>2\. adım: Derleme işlem hattını oluşturma
+## <a name="step-2-create-the-build-pipeline"></a>2\. Adım: derleme işlem hattını oluşturma
 
 Bu adımda, Azure DevOps Services projeniz için bir yapı işlem hattı ayarlarsınız ve kapsayıcı görüntüleriniz için derleme iş akışını tanımlarsınız
 
@@ -135,7 +132,7 @@ Bu adımda, Azure DevOps Services projeniz için bir yapı işlem hattı ayarlar
 Sonraki adımlar derleme iş akışını tanımlar. *Myshop* uygulaması için oluşturulacak beş kapsayıcı görüntüsü vardır. Her görüntü, proje klasörlerinde bulunan Dockerfile kullanılarak oluşturulmuştur:
 
 * Productsapı
-* Proxy
+* Ara sunucu
 * Oytingsapı
 * RecommendationsApi
 * ShopFront
@@ -146,7 +143,7 @@ Her görüntü için, biri görüntüyü derlemek ve bir diğeri de görüntüy�
 
     ![Azure DevOps Services-derleme adımları Ekle](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-1. Her görüntü için, `docker build` komutunu kullanan bir adımı yapılandırın.
+1. Her görüntü için `docker build` komutunu kullanan bir adımı yapılandırın.
 
     ![Azure DevOps Services-Docker derlemesi](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
@@ -154,7 +151,7 @@ Her görüntü için, biri görüntüyü derlemek ve bir diğeri de görüntüy�
     
     Önceki ekranda gösterildiği gibi, Azure Container Registry 'nizin URI 'siyle birlikte görüntü adını başlatın. (Bu örnekteki derleme tanımlayıcısı gibi, görüntünün etiketini parametreleştirmek için de bir yapı değişkeni kullanabilirsiniz.)
 
-1. Her görüntü için, `docker push` komutunu kullanan ikinci bir adımı yapılandırın.
+1. Her görüntü için `docker push` komutunu kullanan ikinci bir adımı yapılandırın.
 
     ![Azure DevOps Services-Docker Push](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
@@ -172,7 +169,7 @@ Her görüntü için, biri görüntüyü derlemek ve bir diğeri de görüntüy�
 
 1. **Kaydet** ' e tıklayın ve derleme işlem hattınızı adlandırın.
 
-## <a name="step-3-create-the-release-pipeline"></a>3\. adım: Yayın işlem hattı oluşturma
+## <a name="step-3-create-the-release-pipeline"></a>3\. Adım: yayın işlem hattını oluşturma
 
 Azure DevOps Services [ortamlar genelinde yayınları yönetmenizi](https://www.visualstudio.com/team-services/release-management/)sağlar. Uygulamanızın farklı ortamlarınızda (geliştirme, test, ön üretim ve üretim gibi) sorunsuz bir şekilde dağıtıldığından emin olmak için sürekli dağıtımı etkinleştirebilirsiniz. Azure Container Service Docker Sısınma kümenizi temsil eden yeni bir ortam oluşturabilirsiniz.
 
@@ -180,9 +177,9 @@ Azure DevOps Services [ortamlar genelinde yayınları yönetmenizi](https://www.
 
 ### <a name="initial-release-setup"></a>İlk yayın kurulumu
 
-1. Yayın işlem hattı oluşturmak için, **yayınlar** >  **+ yayın** ' a tıklayın.
+1. Bir sürüm işlem hattı oluşturmak için, **yayınlar** >  **+ yayın** ' a tıklayın.
 
-1. Yapıt kaynağını yapılandırmak için,**yapıt kaynak bağlantısı**' **na tıklayın.**  >  Burada, bu yeni yayın ardışık düzenini önceki adımda tanımladığınız yapıya bağlayın. Bunu yaptığınızda, Docker-Compose. yıml dosyası yayın sürecinde kullanılabilir.
+1. Yapıt kaynağını yapılandırmak için **yapılar** ' a tıklayın > **yapıt kaynağını bağlayın**. Burada, bu yeni yayın ardışık düzenini önceki adımda tanımladığınız yapıya bağlayın. Bunu yaptığınızda, Docker-Compose. yıml dosyası yayın sürecinde kullanılabilir.
 
     ![Azure DevOps Services-yayın yapıtları](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
@@ -198,19 +195,19 @@ Yayın iş akışı, eklediğiniz iki görevden oluşur.
 
     ![Azure DevOps Services-yayın SCP 'si](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-1. Ana düğümde ve `docker` `docker-compose` komutları çalıştırmak için bash komutunu yürütmek üzere ikinci bir görev yapılandırın. Ayrıntılar için aşağıdaki ekrana bakın.
+1. Ana düğümdeki `docker` ve `docker-compose` komutlarını çalıştırmak için bash komutunu yürütecek ikinci bir görev yapılandırın. Ayrıntılar için aşağıdaki ekrana bakın.
 
     ![Azure DevOps Services-Bash yayını](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
     Ana bilgisayarda yürütülen komut, aşağıdaki görevleri yapmak için Docker CLı ve Docker-Compose CLı kullanın:
 
    - Azure Container Registry 'de oturum açın ( **değişkenler** sekmesinde tanımlanan üç yapı varinlarını kullanır)
-   - Sısınma uç noktasıyla çalışmak için **DOCKER_HOST** değişkenini tanımlayın (: 2375)
+   - Sısınma uç noktasıyla çalışacak **DOCKER_HOST** değişkenini tanımlayın (: 2375)
    - Önceki güvenli kopyalama görevi tarafından oluşturulan *dağıtım* klasörüne gidin ve Docker-Compose. yıml dosyasını içerir 
-   - Yeni `docker-compose` görüntüleri çekmek, hizmetleri durdurmak, Hizmetleri kaldırmak ve kapsayıcıları oluşturmak için komutları yürütün.
+   - Yeni görüntüleri çekin, hizmetleri durdurun, hizmetleri kaldırın ve kapsayıcıları oluşturun `docker-compose` komutları yürütün.
 
      >[!IMPORTANT]
-     > Önceki ekranda gösterildiği gibi, **stderr üzerinde başarısız oldu** onay kutusunu işaretlenmemiş olarak bırakın. Bu önemli bir ayardır, çünkü `docker-compose` kapsayıcılar gibi çeşitli tanılama iletileri, standart hata çıktısındaki bir şekilde durdurulur veya silinir. Onay kutusunu işaretlerseniz, Azure DevOps Services yayın sırasında oluşan, ancak her şey iyi gitse de oluşan hataları raporlar.
+     > Önceki ekranda gösterildiği gibi, **stderr üzerinde başarısız oldu** onay kutusunu işaretlenmemiş olarak bırakın. Bu önemli bir ayardır çünkü `docker-compose`, kapsayıcılar gibi birkaç tanılama iletisini yazdırır, standart hata çıkışında. Onay kutusunu işaretlerseniz, Azure DevOps Services yayın sırasında oluşan, ancak her şey iyi gitse de oluşan hataları raporlar.
      >
 1. Bu yeni sürüm ardışık düzenini kaydedin.
 
@@ -219,7 +216,7 @@ Yayın iş akışı, eklediğiniz iki görevden oluşur.
 >Eski Hizmetleri durdurmakta ve yenisini çalıştırdığımızda bu dağıtımda bazı kapalı kalma süreleri vardır. Mavi yeşil bir dağıtım gerçekleştirerek bunu önlemek mümkündür.
 >
 
-## <a name="step-4-test-the-cicd-pipeline"></a>4\. adımı. CI/CD işlem hattını sınama
+## <a name="step-4-test-the-cicd-pipeline"></a>4\. Adım. CI/CD işlem hattını sınama
 
 Yapılandırma ile işiniz bittiğinde, bu yeni CI/CD işlem hattını test etme zamanı. Bunu test etmenin en kolay yolu, kaynak kodu güncellemek ve değişiklikleri GitHub deponuza yürütmesidir. Kodu gönderdikten sonra birkaç saniye sonra, Azure DevOps Services ' de çalışan yeni bir yapı görürsünüz. Başarılı bir şekilde tamamlandıktan sonra yeni bir yayın tetiklenir ve Azure Container Service kümesinde uygulamanın yeni sürümünü dağıtacaktır.
 

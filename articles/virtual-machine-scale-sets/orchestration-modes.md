@@ -1,21 +1,18 @@
 ---
 title: Azure 'da sanal makine ölçek kümeleri için düzenleme modları hakkında daha fazla bilgi edinin
 description: Azure 'daki sanal makine ölçek kümeleri için düzenleme modları hakkında daha fazla bilgi edinin.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shandilvarun
-manager: gwallace
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: vashan
-ms.openlocfilehash: 063b3210877c06edf7eeddab37c50ed84033098a
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 4a0be30f181921461ad0bacea6f18ce439d22353
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73065918"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279057"
 ---
 # <a name="orchestration-mode-preview"></a>Düzenleme modu (Önizleme)
 
@@ -44,7 +41,7 @@ Sanal Makine Ölçek Kümeleri 2 farklı düzenleme modunu destekleyecektir:
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
 | VM yapılandırma modeli      | Hiçbiri                                       | Gereklidir |
 | Ölçek kümesine yeni VM ekleniyor  | VM oluşturulduğunda, sanal makineler ölçek kümesine açıkça eklenir. | VM 'Ler örtük olarak oluşturulur ve VM yapılandırma modeli, örnek sayısı ve otomatik ölçeklendirme kuralları temelinde ölçek kümesine eklenir | |
-| VM 'yi silme                   | VM 'Lerin tek tek silinmesi gerekir, ölçek kümesi içinde herhangi bir VM varsa silinmeyecektir. | VM 'Ler tek tek silinebilir, ölçek kümesini silmek tüm sanal makine örneklerini siler.  |
+| VM silme                   | VM 'Lerin tek tek silinmesi gerekir, ölçek kümesi içinde herhangi bir VM varsa silinmeyecektir. | VM 'Ler tek tek silinebilir, ölçek kümesini silmek tüm sanal makine örneklerini siler.  |
 | VM 'Leri iliştirme/ayır           | Desteklenmiyor                              | Desteklenmiyor |
 | Örnek yaşam döngüsü (silme yoluyla oluşturma) | Sanal makineler ve yapıtlar (diskler ve NIC 'Ler gibi) bağımsız olarak yönetilebilir. | Örnekler ve yapıtlar (diskler ve NIC 'ler gibi), bunları oluşturan ölçek kümesi örneklerine örtülü olarak uygulanır. Ölçek kümesi dışında ayrı olarak ayrılamadığı veya yönetilemez |
 | Hata etki alanları               | , Hata etki alanlarını tanımlayabilir. 2 veya 3 kullanılabilirlik alanı için bölgesel destek ve 5 ' i temel alır. | 1 ile 5 arasında bir hata etki alanı tanımlayabilir |

@@ -1,104 +1,102 @@
 ---
-title: (KULLANIM DIŞI) Azure DC/OS kümesi - Management işlemleri izleme
-description: Log Analytics ile bir Azure Container Service DC/OS kümesini izleme.
-services: container-service
+title: Kullanım DıŞı Azure DC/OS kümesi-Operations Management 'ı izleme
+description: Bir Azure Container Service DC/OS kümesini Log Analytics ile izleyin.
 author: keikhara
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 290141136672729060f5156d645c47ac303fa0c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ab8d1cf3eb38a17f0b3d6c8137e37237498a527
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810095"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277333"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(KULLANIM DIŞI) Log Analytics ile bir Azure Container Service DC/OS kümesini izleme
+# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>Kullanım DıŞı Log Analytics ile Azure Container Service DC/OS kümesini izleme
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Log Analytics, yönetmek ve şirket içi koruma hem de bulut altyapısında yardımcı olan Microsoft'un bulut tabanlı BT yönetimi çözümüdür. Kapsayıcı çözümü, tek bir konumda kapsayıcı envanteri, performans ve günlükleri görüntülemenize yardımcı olur. Log analytics'te bir çözümdür. Denetim, kapsayıcıları merkezi konumda günlüklerini görüntüleyerek sorun giderme ve gürültülü fazla kapsayıcı bir konakta tüketen bulun.
+Log Analytics, Microsoft 'un Şirket içi ve bulut altyapınızı yönetmenize ve korumanıza yardımcı olan bulut tabanlı BT yönetimi çözümüdür. Kapsayıcı çözümü, kapsayıcı envanterini, performansı ve günlükleri tek bir konumda görüntülemenize yardımcı olan Log Analytics bir çözümdür. Günlükleri merkezi konuma görüntüleyerek denetleyebilir, sorun giderebilir ve bir konakta çok fazla kapsayıcı tüketen çok fazla kapsayıcı bulabilirsiniz.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Kapsayıcı çözümü hakkında daha fazla bilgi için bkz: [kapsayıcı çözümü Log Analytics](../../azure-monitor/insights/containers.md).
+Kapsayıcı çözümü hakkında daha fazla bilgi için bkz. [kapsayıcı çözümü Log Analytics](../../azure-monitor/insights/containers.md).
 
-## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>DC/OS evreni Log Analytics'ten ayarlama
+## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>DC/OS Universe 'dan Log Analytics ayarlama
 
 
-Bu makalede, bir DC/OS kümesi ve kümede basit web kapsayıcı uygulamaları dağıtmış olduğunuz varsayılır.
+Bu makalede, bir DC/OS ayarladığınızı ve kümede basit Web kapsayıcı uygulamaları dağıttığınızı varsayılmaktadır.
 
 ### <a name="pre-requisite"></a>Önkoşul
-- [Microsoft Azure aboneliği](https://azure.microsoft.com/free/) -ücretsiz bir abonelik edinebilirsiniz.  
-- Günlük analizi çalışma alanı kurulum - bkz. "3. adım" altında
-- [DC/OS CLI](https://docs.mesosphere.com/1.12/cli) yüklü.
+- [Abonelik Microsoft Azure](https://azure.microsoft.com/free/) , ücretsiz bir abonelik edinebilirsiniz.  
+- Log Analytics çalışma alanı kurulumu-aşağıda "Adım 3" bölümüne bakın
+- [DC/OS CLI](https://docs.mesosphere.com/1.12/cli) yüklendi.
 
-1. DC/OS Panoda Evreni ve arama için 'OMS' aşağıda gösterildiği gibi tıklayın.
+1. DC/OS panosunda, Universe ' a tıklayın ve aşağıda gösterildiği gibi ' OMS ' araması yapın.
 
    >[!NOTE]
    >OMS, artık Log Analytics da adlandırılır.
 
    ![](media/container-service-monitoring-oms/image2.png)
 
-2. **Yükle**'ye tıklatın. Sürüm bilgileri içeren bir açılır pencere görürsünüz ve **yükleme paketi** veya **gelişmiş yükleme** düğmesi. Tıkladığınızda **gelişmiş yükleme**, hangi müşteri adayları, **OMS belirli yapılandırma özellikleri** sayfası.
+2. **Yükle**'ye tıklayın. Sürüm bilgileri ve **yükleme paketi** veya **Gelişmiş yükleme** düğmesini içeren bir açılır pencere görürsünüz. **Gelişmiş yükleme**' ye tıkladığınızda, **OMS 'ye özgü yapılandırma özellikleri** sayfasına yol açar.
 
    ![](media/container-service-monitoring-oms/image3.png)
 
    ![](media/container-service-monitoring-oms/image4.png)
 
-3. Burada, girmeniz istenir `wsid` (Log Analytics çalışma alanı kimliği) ve `wskey` (çalışma alanı kimliği için birincil anahtar). Her ikisi de almak için `wsid` ve `wskey` adresinde bir hesap oluşturmak için ihtiyacınız <https://mms.microsoft.com>.
-   Hesap oluşturmak için adımları izleyin. İşiniz bittiğinde elde etmeniz hesabı oluşturma, `wsid` ve `wskey` tıklayarak **ayarları**, ardından **bağlı kaynaklar**, ardından **Linuxsunucuları**, aşağıda gösterildiği gibi.
+3. Burada `wsid` (Log Analytics çalışma alanı KIMLIĞI) ve `wskey` (çalışma alanı KIMLIĞI için birincil anahtar) girmeniz istenir. Hem `wsid` hem de `wskey` almak için <https://mms.microsoft.com>bir hesap oluşturmanız gerekir.
+   Hesap oluşturmak için adımları izleyin. Hesabı oluşturmayı tamamladıktan sonra, aşağıda gösterildiği gibi **Ayarlar**, **bağlı kaynaklar**ve **Linux sunucuları**' na tıklayarak `wsid` ve `wskey` edinmeniz gerekir.
 
    ![](media/container-service-monitoring-oms/image5.png)
 
-4. İstediğiniz ve 'Gözden geçirin ve Yükle' düğmesine tıklayın. örnek sayısını seçin. Genellikle, aracı kümenizde sahip VM'nin sayısına eşit örneklerinin isteyeceksiniz. İzleme bilgileri ve günlük bilgilerini toplamak isteyen her VM'de ayrı ayrı kapsayıcıları olarak Linux için log Analytics aracısını yükler.
+4. İstediğiniz örnek sayısını seçin ve ' ıncele ve yüklensin ' düğmesine tıklayın. Genellikle, aracı kümenizde sahip olduğunuz VM sayısına eşit sayıda örnek olması gerekir. Linux için Log Analytics Aracısı, izleme ve günlüğe kaydetme bilgilerini toplamak istediği her VM 'de ayrı kapsayıcılar olarak yüklenir.
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-## <a name="setting-up-a-simple-log-analytics-dashboard"></a>Basit bir Log Analytics Pano ayarlama
+## <a name="setting-up-a-simple-log-analytics-dashboard"></a>Basit bir Log Analytics panosu ayarlama
 
-Vm'lerinde Linux için Log Analytics aracısını yükledikten sonra sonraki adım Log Analytics Pano ayarlamaktır. Azure Portalı aracılığıyla pano ayarlayabilirsiniz.
+VM 'Lere Linux için Log Analytics Aracısı 'nı yükledikten sonra, sonraki adım Log Analytics panosunu ayarlamaya yöneliktir. Panoyu Azure portal aracılığıyla ayarlayabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal 
+### <a name="azure-portal"></a>Azure portalında 
 
-Adresinden Azure portalında oturum açın <https://portal.microsoft.com/>. Git **Market**seçin **izleme + Yönetim** tıklatıp **bkz tüm**. Yazarak `containers` Ara. Arama sonuçlarında "kapsayıcı" görürsünüz. Seçin **kapsayıcıları** tıklatıp **Oluştur**.
+<https://portal.microsoft.com/>Azure portal için oturum açın. **Market**'e gidin, **izleme + yönetim** ' i seçin ve **Tümünü gör**' e tıklayın. Sonra `containers` yazın. Arama sonuçlarında "kapsayıcılar" ifadesini görürsünüz. **Kapsayıcılar** ' ı seçin ve **Oluştur**' a tıklayın.
 
 ![](media/container-service-monitoring-oms/image9.png)
 
-' A tıkladığınızda **Oluştur**, bunu çalışma alanınız için sorar. Çalışma alanınızı seçin veya bir yoksa yeni bir çalışma alanı oluşturun.
+**Oluştur**'a tıkladığınızda, sizden çalışma alanınızı sorar. Çalışma alanınızı seçin ya da bir tane yoksa, yeni bir çalışma alanı oluşturun.
 
 ![](media/container-service-monitoring-oms/image10.PNG)
 
-Çalışma alanınızı seçtikten sonra tıklayın **Oluştur**.
+Çalışma alanınızı seçtikten sonra **Oluştur**' a tıklayın.
 
 ![](media/container-service-monitoring-oms/image11.png)
 
-Log Analytics kapsayıcı çözümü hakkında daha fazla bilgi için bkz [kapsayıcı çözümü Log Analytics](../../azure-monitor/insights/containers.md).
+Log Analytics kapsayıcı çözümü hakkında daha fazla bilgi için lütfen [kapsayıcı çözümü Log Analytics](../../azure-monitor/insights/containers.md)başvurun.
 
 ### <a name="how-to-scale-log-analytics-agent-with-acs-dcos"></a>Log Analytics aracısını ACS DC/OS ile ölçeklendirme 
 
-Log Analytics aracısını gerçek düğüm sayısı eksikliği yüklü gerekir veya sanal makine ölçek kümesi VM daha fazla ekleyerek'kurmak ölçeklendirme durumunda, ölçeklendirerek yapabilirsiniz `msoms` hizmeti.
+Gerçek düğüm sayısının Log Analytics Aracısı ' nı yüklemiş olmanız veya daha fazla VM ekleyerek sanal makine ölçek kümesini ölçeklendirmeniz gerekiyorsa, `msoms` hizmetini ölçeklendirerek bunu yapabilirsiniz.
 
-Marathon veya DC/OS UI Hizmetleri sekmesine gidin ve, düğüm sayısının ölçeğini artırın.
+Marathon veya DC/OS UI Services sekmesine gidebilir ve düğüm sayılarınızın ölçeğini değiştirebilirsiniz.
 
 ![](media/container-service-monitoring-oms/image12.PNG)
 
-Bu, Log Analytics aracısını henüz dağıtmadınız diğer düğümlere dağıtır.
+Bu, henüz Log Analytics aracısını dağıtmayan diğer düğümlere dağıtılır.
 
-## <a name="uninstall-ms-oms"></a>MS OMS kaldırma
+## <a name="uninstall-ms-oms"></a>MS OMS 'yi kaldırma
 
-Kaldırmak için MS OMS aşağıdaki komutu girin:
+MS OMS 'yi kaldırmak için aşağıdaki komutu girin:
 
 ```bash
 $ dcos package uninstall msoms
 ```
 
-## <a name="let-us-know"></a>Bunu bize bildirin!!!
-Neyin işe yaradığını? Eksik olan nedir? Bu sizin için yararlı olacak başka ne gerekiyor? Bize bildirin <a href="mailto:OMSContainers@microsoft.com">OMSContainers</a>.
+## <a name="let-us-know"></a>Bize!!! bilgi verin
+Ne işe yarar? Neler eksik? Bunun sizin için yararlı olması için başka ne gerekir? <a href="mailto:OMSContainers@microsoft.com">Omscontainers</a>'da bize bilgi verin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- Log Analytics'i ayarlama, kapsayıcılarınızı izleyecek şekilde ayarladığınız göre[kapsayıcı panonuzu görmek](../../azure-monitor/insights/containers.md).
+ Kapsayıcılarınızı izlemek için Log Analytics ayarladığınıza göre,[kapsayıcı panonuz için bkz](../../azure-monitor/insights/containers.md).

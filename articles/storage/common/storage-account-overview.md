@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975701"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274562"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
@@ -64,17 +64,15 @@ Genel amaçlı v1 depolama hesapları, tüm Azure depolama hizmetlerine erişim 
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage hesapları
 
-Bir blok Blobstorage hesabı, yapılandırılmamış nesne verilerini blok blob 'ları olarak depolamak için kullandığınız özel bir depolama hesabıdır. Ayrıca, Premium blok blob 'ları oluşturmak için bir BlockBlobStorage hesabı kullanabilirsiniz. Bu tür bir depolama hesabı blok bloblarını ve ekleme bloblarını ve sayfa bloblarını, tabloları veya kuyrukları destekler.
+Bir blok Blobstorage hesabı, yapılandırılmamış nesne verilerini blok blob 'ları veya ekleme Blobları olarak depolamak için Premium performans katmanında özelleştirilmiş bir depolama hesabıdır. Blok Blobstorage hesapları, genel amaçlı v2 ve BlobStorage hesaplarıyla karşılaştırıldığında düşük, tutarlı gecikme süresi ve daha yüksek işlem ücretleri sağlar.
 
-Blok Blobstorage hesapları, genel amaçlı v2 ve BlobStorage hesaplarıyla karşılaştırıldığında düşük ve tutarlı gecikme süresi ve daha yüksek işlem ücretleri sağlar.
-
-BlockBlobStorage hesapları Şu anda sık erişimli, seyrek erişimli veya arşiv erişim katmanlarına yönelik katmanlamayı desteklememektedir.
+BlockBlobStorage hesapları Şu anda sık erişimli, seyrek erişimli veya arşiv erişim katmanlarına yönelik katmanlamayı desteklememektedir. Bu depolama hesabı türü sayfa bloblarını, tabloları veya kuyrukları desteklemez.
 
 ### <a name="filestorage-accounts"></a>Dosya depolama hesapları
 
 Dosya depolama hesabı, Premium dosya paylaşımlarını depolamak ve oluşturmak için kullanılan özel bir depolama hesabıdır. Bu depolama hesabı türü dosyaları destekler ancak blok Blobları, ekleme Blobları, sayfa Blobları, tablolar veya kuyruklar değildir.
 
-FileStorage hesapları, ıOPS patlaması gibi benzersiz performansa özel özellikler sunar. Bu özellikler hakkında daha fazla bilgi için dosyalar planlama kılavuzunun [dosya paylaşma performans katmanları](../files/storage-files-planning.md#file-share-performance-tiers) bölümüne bakın.
+FileStorage hesapları, ıOPS burdımı gibi benzersiz performans özellikleri sunar. Bu özellikler hakkında daha fazla bilgi için dosyalar planlama kılavuzunun [dosya paylaşma performans katmanları](../files/storage-files-planning.md#file-share-performance-tiers) bölümüne bakın.
 
 ## <a name="naming-storage-accounts"></a>Depolama hesaplarını adlandırma
 
@@ -85,12 +83,20 @@ Depolama hesabınızı adlandırırken şu kuralları göz önünde bulundurun:
 
 ## <a name="performance-tiers"></a>Performans katmanları
 
+Oluşturduğunuz depolama hesabının türüne bağlı olarak, standart ve Premium performans katmanları arasından seçim yapabilirsiniz.
+
+### <a name="general-purpose-storage-accounts"></a>Genel amaçlı depolama hesapları
+
 Genel amaçlı depolama hesapları aşağıdaki performans katmanlarından biri için yapılandırılabilir:
 
 - Blob, dosya, tablo, kuyruk ve Azure sanal makine disklerini depolamak için standart bir performans katmanı. Standart depolama hesapları için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Standart depolama hesapları Için ölçeklenebilirlik hedefleri](scalability-targets-standard-account.md).
-- Yalnızca yönetilmeyen sanal makine disklerini depolamak için Premium performans katmanı. Microsoft, yönetilmeyen diskler yerine Azure sanal makineleri ile yönetilen disklerin kullanılmasını önerir. Premium performans katmanı için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Premium Sayfa Blobu depolama hesapları Için ölçeklenebilirlik hedefleri](../blobs/scalability-targets-premium-page-blobs.md).
+- Yönetilmeyen sanal makine disklerini depolamak için Premium performans katmanı. Microsoft, yönetilmeyen diskler yerine Azure sanal makineleri ile yönetilen disklerin kullanılmasını önerir. Premium performans katmanı için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Premium Sayfa Blobu depolama hesapları Için ölçeklenebilirlik hedefleri](../blobs/scalability-targets-premium-page-blobs.md).
+
+### <a name="blockblobstorage-storage-accounts"></a>BlockBlobStorage depolama hesapları
 
 BlockBlobStorage Storage hesapları, blok bloblarını ve ekleme bloblarını depolamak için Premium bir performans katmanı sağlar. Daha fazla bilgi için bkz. [Premium Blok Blobu depolama hesapları Için ölçeklenebilirlik hedefleri](../blobs/scalability-targets-premium-block-blobs.md).
+
+### <a name="filestorage-storage-accounts"></a>FileStorage depolama hesapları
 
 FileStorage depolama hesapları, Azure dosya paylaşımları için Premium bir performans katmanı sağlar. Daha fazla bilgi için bkz. [Azure dosyaları ölçeklenebilirlik ve performans hedefleri](../files/storage-files-scale-targets.md).
 
@@ -102,7 +108,7 @@ Kullanılabilir erişim katmanları şunlardır:
 
 - **Sık** erişimli erişim katmanı. Bu katman, depolama hesabındaki nesnelere sık sık erişim için iyileştirilmiştir. Sık erişimli katmanda verilere erişmek, depolama maliyetlerinin daha yüksektir. Yeni depolama hesapları varsayılan olarak sık erişimli katmanda oluşturulur.
 - Seyrek **erişimli erişim** katmanı. Bu katman, seyrek erişilen ve en az 30 gün içinde depolanan büyük miktardaki verileri depolamak için iyileştirilmiştir. Seyrek Erişimli katmanda verilerin depolanması daha uygun maliyetli bir işlemdir, ancak bu verilere erişilmesi, sık erişimli katmandaki verilere erişmenin daha pahalı olabilir.
-- **Arşiv** katmanı. Bu katman yalnızca bireysel blok Blobları için kullanılabilir. Arşiv katmanı, birkaç saatlik alma gecikmesini kabul eden ve arşiv katmanında en az 180 gün kalacak olan veriler için iyileştirilmiştir. Arşiv katmanı, verileri depolamak için en ekonomik seçenektir. Ancak, verilere erişmek, sık veya seyrek katmanlardaki verilere erişmenin daha pahalıdır.
+- **Arşiv** katmanı. Bu katman yalnızca bireysel blok Blobları ve ekleme Blobları için kullanılabilir. Arşiv katmanı, birkaç saatlik alma gecikmesini kabul eden ve arşiv katmanında en az 180 gün kalacak olan veriler için iyileştirilmiştir. Arşiv katmanı, verileri depolamak için en ekonomik seçenektir. Ancak, verilere erişmek, sık veya seyrek katmanlardaki verilere erişmenin daha pahalıdır.
 
 Verilerinizin kullanım düzeninde bir değişiklik varsa, bu erişim katmanları arasında istediğiniz zaman geçiş yapabilirsiniz. Erişim katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../blobs/storage-blob-storage-tiers.md).
 

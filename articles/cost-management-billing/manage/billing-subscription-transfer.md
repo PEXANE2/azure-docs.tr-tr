@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 01/17/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f43f7424cddae8659301be0ddc4842412a62952
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75993550"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270864"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
 
@@ -86,7 +86,7 @@ Visual Studio ve Microsoft İş Ortağı Ağı abonelikleriyle ilişkili aylık 
 
 ## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>Kurumsal Anlaşma (EA) aboneliklerinin faturalama sahipliğini aktarma
 
-Kuruluş Yöneticisi, bir kayıt içindeki hesaplar arasında aboneliklerin sahipliğini farklı kişilere aktarabilir. Daha fazla bilgi için EA portalında [Hesap Sahipliğini Aktarma](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) bölümüne bakın.
+Kuruluş Yöneticisi, bir kayıt içindeki hesaplar arasında aboneliklerin sahipliğini farklı kişilere aktarabilir. Daha fazla bilgi için bkz. EA portalındaki [hesap sahibini değiştirme](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) .
 
 ## <a name="next-steps-after-accepting-billing-ownership"></a>Faturalama sahipliğini kabul ettikten sonraki adımlar
 
@@ -117,7 +117,7 @@ Azure portalında abonelik aktarımı aşağıda listelenen abonelik türleri i�
 - [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)
 - [Microsoft Azure Planı](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
 
-[EA Portalı aracılığıyla](#EA)\*.
+\* [EA portalı aracılığıyla](#EA).
 
 \*\* Yalnızca Azure web sitesine kaydolurken oluşturulan hesaplar için desteklenir.
 

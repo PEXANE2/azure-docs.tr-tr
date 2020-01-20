@@ -1,25 +1,17 @@
 ---
-title: Azure 'da StorSimple 8000 Aygıt Yöneticisi hizmeti için yeni kimlik doğrulaması kullanma | Microsoft Docs
+title: Azure 'da StorSimple 8000 Aygıt Yöneticisi hizmeti için yeni kimlik doğrulaması kullanma
 description: Hizmetiniz için AAD tabanlı kimlik doğrulaması kullanmayı, yeni kayıt anahtarı oluşturmayı ve cihazların el ile kaydedilmesini gerçekleştirme işlemini açıklar.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 88badf6de5e7181763dd72c7a51262d16697bffd
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 798b3bf054d5ade2a441bbef5875bb014f526aee
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963483"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276951"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>StorSimple için yeni kimlik doğrulamasını kullanın
 
@@ -49,7 +41,7 @@ StorSimple 8000 serisini kullanıyorsanız, güvenlik duvarı kurallarında aşa
 
 | URL kalıbı                         | Bulut | Bileşen/Işlevsellik         |
 |------------------------------------|-------|----------------------------------|
-| `https://login.windows.net`        | Azure genel |AAD kimlik doğrulama hizmeti      |
+| `https://login.windows.net`        | Azure Genel |AAD kimlik doğrulama hizmeti      |
 | `https://login.microsoftonline.us` | ABD Devleti |AAD kimlik doğrulama hizmeti      |
 
 StorSimple 8000 serisi cihazların URL desenlerinin tüm listesi için, [güvenlik duvarı kuralları Için URL desenleri](storsimple-8000-system-requirements.md#url-patterns-for-firewall-rules)' ne gidin.
@@ -62,9 +54,9 @@ StorSimple 8000 serisi bir cihaz kullanıyorsanız, çalıştırdığınız ciha
 
 | Cihazınız çalışıyorsa| Aşağıdaki eylemi gerçekleştirin                                    |
 |--------------------------|------------------------|
-| Güncelleştirme 5 veya üzeri ve cihaz çevrimdışı. <br> URL 'nin beyaz listelenmediğinden bir uyarı görürsünüz.|1. Güvenlik duvarı kurallarını kimlik doğrulama URL 'sini içerecek şekilde değiştirin. Bkz. [kimlik doğrulama URL 'leri](#url-changes-for-aad-authentication).<br>2. [HIZMETTEN AAD kayıt anahtarını alın](#aad-based-registration-keys).<br>3. [StorSimple 8000 serisi cihazının Windows PowerShell arabirimine bağlanın](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Windows `Redo-DeviceRegistration` PowerShell aracılığıyla cihazı kaydetmek için cmdlet 'ini kullanın. Önceki adımda aldığınız anahtarı sağlayın.|
-| 5 veya üzeri sürümü ve cihazı çevrimiçi olarak güncelleştirin.| Eylem gerekmiyor.                                       |
-| Güncelleştirme 4 veya daha önceki bir sürümü ve cihaz çevrimdışı. |1. Güvenlik duvarı kurallarını kimlik doğrulama URL 'sini içerecek şekilde değiştirin.<br>2. [Katalog sunucusu üzerinden güncelleştirme 5](storsimple-8000-install-update-5.md#download-updates-for-your-device)' i indirin.<br>3. [Düzeltme yöntemi aracılığıyla güncelleştirme 5](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix)' i uygulayın.<br>4. [HIZMETTEN AAD kayıt anahtarını alın](#aad-based-registration-keys).<br>5. [StorSimple 8000 serisi cihazının Windows PowerShell arabirimine bağlanın](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Windows `Redo-DeviceRegistration` PowerShell aracılığıyla cihazı kaydetmek için cmdlet 'ini kullanın. Önceki adımda aldığınız anahtarı sağlayın.|
+| Güncelleştirme 5 veya üzeri ve cihaz çevrimdışı. <br> URL 'nin beyaz listelenmediğinden bir uyarı görürsünüz.|1. güvenlik duvarı kurallarını kimlik doğrulama URL 'sini içerecek şekilde değiştirin. Bkz. [kimlik doğrulama URL 'leri](#url-changes-for-aad-authentication).<br>2. [HIZMETTEN AAD kayıt anahtarını alın](#aad-based-registration-keys).<br>3. [StorSimple 8000 serisi cihazının Windows PowerShell arabirimine bağlanın](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Windows PowerShell aracılığıyla cihazı kaydetmek için `Redo-DeviceRegistration` cmdlet 'ini kullanın. Önceki adımda aldığınız anahtarı sağlayın.|
+| 5 veya üzeri sürümü ve cihazı çevrimiçi olarak güncelleştirin.| İşlem yapmanız gerekmez.                                       |
+| Güncelleştirme 4 veya daha önceki bir sürümü ve cihaz çevrimdışı. |1. güvenlik duvarı kurallarını kimlik doğrulama URL 'sini içerecek şekilde değiştirin.<br>2. [güncelleştirme 5 ' i katalog sunucusu üzerinden indirin](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [güncelleştirme 5 ' i düzeltme yöntemi aracılığıyla uygulayın](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [HIZMETTEN AAD kayıt anahtarını alın](#aad-based-registration-keys).<br>5. [StorSimple 8000 serisi cihazının Windows PowerShell arabirimine bağlanın](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Windows PowerShell aracılığıyla `Redo-DeviceRegistration` cmdlet 'ini kullanarak cihazı kaydedin. Önceki adımda aldığınız anahtarı sağlayın.|
 | Güncelleştirme 4 veya daha önceki bir sürümü ve cihaz çevrimiçi. |Güvenlik duvarı kurallarını kimlik doğrulama URL 'sini içerecek şekilde değiştirin.<br> Azure portal aracılığıyla güncelleştirme 5 ' i yükler.              |
 | Güncelleştirme 5 ' den önceki bir sürüme fabrika sıfırlaması.      |Cihaz eski yazılımları çalıştırırken Portal bir AAD tabanlı kayıt anahtarı gösterir. Cihazda güncelleştirme 4 veya daha önceki bir sürümü çalıştırıldığında önceki senaryodaki adımları izleyin.              |
 
@@ -83,7 +75,7 @@ Bir AAD hizmeti kayıt anahtarı oluşturmak için aşağıdaki adımları gerç
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>AAD hizmeti kayıt anahtarını oluşturmak için
 
-1. **StorSimple aygıt yöneticisi**,  **&gt; yönetim** **anahtarlarına**gidin. _Anahtarlar_aramak için arama çubuğunu da kullanabilirsiniz.
+1. **StorSimple aygıt yöneticisi**, **Yönetim &gt;** **anahtarlar**' a gidin. _Anahtarlar_aramak için arama çubuğunu da kullanabilirsiniz.
     
 2. **Anahtar oluştur**' a tıklayın.
 

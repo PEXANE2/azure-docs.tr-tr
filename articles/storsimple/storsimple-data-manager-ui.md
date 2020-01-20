@@ -1,25 +1,17 @@
 ---
-title: Microsoft Azure StorSimple Veri Yöneticisi Kullanıcı arabirimi | Microsoft Docs
+title: Microsoft Azure StorSimple Veri Yöneticisi Kullanıcı arabirimi
 description: StorSimple Veri Yöneticisi hizmeti kullanıcı arabirimini kullanmayı açıklar
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 3a87b4c07d2e961d9876fb44c6584f37ad9246df
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796655"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273975"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>StorSimple Veri Yöneticisi hizmetini Azure portal yönetme
 
@@ -56,7 +48,7 @@ StorSimple Veri Yöneticisi bir hizmet oluşturmak için aşağıdaki adımları
     
    5. Panonuzda bu hizmetin bağlantısını almak için **panoya sabitle**' yi seçin.
     
-   6. **Oluştur**'a tıklayın.
+   6. **Oluştur**’a tıklayın.
 
       ![StorSimple Veri Yöneticisi hizmeti oluşturma 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -112,7 +104,7 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
 
    4. Veri dönüştürme hizmeti, anlık görüntüler aracılığıyla Azure 'a gönderilen verilerde çalışır. Bu işi çalıştırdığınızda, bu iş her çalıştırıldığında (en son veriler üzerinde çalışmak üzere) bir yedekleme işlemi gerçekleştirebilir veya buluttaki son mevcut yedeklemeyi (bazı arşivlenmiş veriler üzerinde çalışıyorsanız) kullanabilirsiniz.
 
-   5. **Tamam** düğmesine tıklayın.
+   5. **Tamam**’a tıklayın.
 
       ![Kaynak veri deposu yapılandırma 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -129,7 +121,7 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
     
     1. Hedef **Hesap adındaki**açılan listeden hedef olarak oluşturduğunuz depoyu seçin.
 
-    2. Depolama türünü blob 'lar veya dosyalar olarak seçin. Dönüştürülen verilerin bulunduğu depolama kapsayıcısının adını belirtin. **Tamam** düğmesine tıklayın.
+    2. Depolama türünü blob 'lar veya dosyalar olarak seçin. Dönüştürülen verilerin bulunduğu depolama kapsayıcısının adını belirtin. **Tamam**’a tıklayın.
 
         ![Hedef veri deposu depolama hesabını yapılandırma](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 

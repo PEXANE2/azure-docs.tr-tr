@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b301bc6c1674cad26288556957ba6214df74f18d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863402"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278681"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights gecikme süresini azaltmak için azaltmayı izleyin ve azaltır
 
@@ -30,7 +30,7 @@ Ortamınızı çözümlemek istediğiniz veri miktarı için düzgün şekilde y
 - Ayrılan giriş hızınızı aşmayacak eski verileri içeren bir olay kaynağı ekleyin (Time Series Insights catch gerekecektir).
 - Bir ortama daha fazla olay kaynağı ekleyin ve ek olaylardan bir ani artış elde edin (ortamınızın kapasitesini aşabilir).
 - Büyük miktarlarda geçmiş olayları bir olay kaynağına göndererek bir gecikme (Time Series Insights yakalamalı olması gerekir) sonucunu vermez.
-- Başvuru verilerini telemetri ile birleştirin ve daha büyük bir olay boyutuna neden olur.  Daraltma açısından, 32 KB 'lik paket boyutuna sahip bir veri paketi, her biri 1 KB boyutunda 32 olay olarak değerlendirilir. İzin verilen en fazla olay boyutu 32 KB; 32 KB 'den büyük veri paketleri kesilir.
+- Başvuru verilerini telemetri ile birleştirin ve daha büyük bir olay boyutuna neden olur. Daraltma açısından, 32 KB 'lik paket boyutuna sahip bir veri paketi, her biri 1 KB boyutunda 32 olay olarak değerlendirilir. İzin verilen en fazla olay boyutu 32 KB; 32 KB 'den büyük veri paketleri kesilir.
 
 ## <a name="video"></a>Video
 
@@ -40,13 +40,13 @@ Ortamınızı çözümlemek istediğiniz veri miktarı için düzgün şekilde y
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>Uyarıları izleyen uyarılarla gecikme ve azaltma
 
-Uyarılar, ortamınızın neden olduğu gecikme sorunlarını tanılamanıza ve azaltmanıza yardımcı olabilir.
+Uyarılar, ortamınızda oluşan gecikme sorunlarını tanılamanıza ve azaltmanıza yardımcı olabilir.
 
 1. Azure portal, Time Series Insights ortamınızı seçin. Ardından **Uyarılar**' ı seçin.
 
    [![Time Series Insights ortamınıza uyarı ekleme](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
-1. **Kural oluştur** paneli görüntülenir. **Koşul**altında **Ekle** ' yi seçin.
+1. **+ Yeni uyarı kuralı**’nı seçin. **Kural oluştur** paneli görüntülenir. **Koşul**altında **Ekle** ' yi seçin.
 
    [Uyarı bölmesi Ekle ![](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 

@@ -1,26 +1,18 @@
 ---
-title: Azure sanal makine ölçek kümeleri ile otomatik işletim sistemi görüntüsü yükseltmeleri | Microsoft Docs
+title: Azure sanal makine ölçek kümeleri ile otomatik işletim sistemi görüntüsü yükseltmeleri
 description: Ölçek kümesindeki sanal makine örneklerinde işletim sistemi görüntüsünü otomatik olarak yükseltmeyi öğrenin
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shandilvarun
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: vashan
-ms.openlocfilehash: 95a313b3c6995d55b86561c685641b447edae127
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: c452ba5b8abfce4227d72922139824d639c62755
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240932"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278152"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure sanal makine ölçek kümesi otomatik işletim sistemi görüntüsü yükseltmeleri
 
@@ -39,29 +31,29 @@ Otomatik işletim sistemi yükseltmesi aşağıdaki özelliklere sahiptir:
 
 ## <a name="how-does-automatic-os-image-upgrade-work"></a>Otomatik işletim sistemi görüntüsü yükseltmesi nasıl çalışır?
 
-Bir yükseltme, bir sanal makinenin işletim sistemi diskini en son görüntü sürümü kullanılarak oluşturulan yeni bir diskle değiştirerek işe yarar. Yapılandırılmış Uzantılar ve özel veri betikleri işletim sistemi diskinde çalışır, ancak kalıcı veri diskleri korunur. Uygulamanın kapalı kalma süresini en aza indirmek için, yükseltme işlemleri herhangi bir zamanda, ölçek kümesinin% 20 ' inden daha fazlası olmadan toplu işler halinde gerçekleşir. Ayrıca, bir Azure Load Balancer uygulama durumu araştırması veya [uygulama sistem durumu uzantısı](virtual-machine-scale-sets-health-extension.md)da tümleştirebilirsiniz. Yükseltme işlemindeki her bir yığın için bir uygulama sinyali eklemeyi ve yükseltme başarısını doğrulamanızı öneririz.
+Bir yükseltme, bir sanal makinenin işletim sistemi diskini en son görüntü sürümü kullanılarak oluşturulan yeni bir diskle değiştirerek işe yarar. Yapılandırılmış Uzantılar ve özel veri betikleri işletim sistemi diskinde çalışır, ancak kalıcı veri diskleri korunur. Uygulamanın kapalı kalma süresini en aza indirmek için, yükseltme işlemleri herhangi bir zamanda, ölçek kümesinin %20 ' inden daha fazlası olmadan toplu işler halinde gerçekleşir. Ayrıca, bir Azure Load Balancer uygulama durumu araştırması veya [uygulama sistem durumu uzantısı](virtual-machine-scale-sets-health-extension.md)da tümleştirebilirsiniz. Yükseltme işlemindeki her bir yığın için bir uygulama sinyali eklemeyi ve yükseltme başarısını doğrulamanızı öneririz.
 
 Yükseltme işlemi aşağıdaki gibi kullanılabilir:
-1. Yükseltme işlemine başlamadan önce, Orchestrator tüm ölçek kümesindeki örneklerin% 20 ' si sağlıksız (herhangi bir nedenle) olmadığından emin olur.
-2. Yükseltme Orchestrator, toplam örnek sayısının en fazla% 20 ' sini içeren bir Batch ile Yükseltilecek sanal makine örneklerinin toplu işini tanımlar. 5 veya daha az örnek içeren küçük ölçek kümeleri için, bir yükseltmenin toplu iş boyutu bir sanal makine örneğidir.
+1. Yükseltme işlemine başlamadan önce, Orchestrator tüm ölçek kümesindeki örneklerin %20 ' si sağlıksız (herhangi bir nedenle) olmadığından emin olur.
+2. Yükseltme Orchestrator, toplam örnek sayısının en fazla %20 ' sini içeren bir Batch ile Yükseltilecek sanal makine örneklerinin toplu işini tanımlar. 5 veya daha az örnek içeren küçük ölçek kümeleri için, bir yükseltmenin toplu iş boyutu bir sanal makine örneğidir.
 3. Seçilen sanal makine örneklerinin işletim sistemi diski, en son görüntüden oluşturulan yeni bir işletim sistemi diski ile değiştirilmiştir. Ölçek kümesi modelindeki tüm belirtilen uzantılar ve Konfigürasyonlar yükseltilen örneğe uygulanır.
 4. Yapılandırılmış uygulama durumu araştırmaları veya uygulama sistem durumu uzantısı olan ölçek kümeleri için, yükseltme, sonraki toplu işi yükseltmek üzere geçmeden önce örneğin sağlıklı olması için 5 dakikaya kadar bekler. Bir örnek bir yükseltmeden sonra sistem durumunu 5 dakika içinde kurtarmaz, varsayılan olarak örnek için önceki işletim sistemi diski geri yüklenir.
-5. Yükseltme Orchestrator, bir yükseltme sonrası sağlıksız hale gelen örneklerin yüzdesini de izler. Yükseltme işlemi sırasında yükseltilen örneklerin% 20 ' den fazlası sağlıksız hale gelirse yükseltme durdurulur.
+5. Yükseltme Orchestrator, bir yükseltme sonrası sağlıksız hale gelen örneklerin yüzdesini de izler. Yükseltme işlemi sırasında yükseltilen örneklerin %20 ' den fazlası sağlıksız hale gelirse yükseltme durdurulur.
 6. Yukarıdaki işlem, ölçek kümesindeki tüm örnekler yükseltilene kadar devam eder.
 
-Ölçek kümesi işletim sistemi yükseltme Orchestrator, her toplu işi yükseltmeden önce tüm ölçek kümesi sistem durumunu denetler. Toplu işi yükseltirken, ölçek kümesi örneklerinizin sistem durumunu etkileyebilecek diğer eşzamanlı planlı veya planlanmamış bakım etkinlikleri olabilir. Bu gibi durumlarda, ölçek kümesinin örneklerinin% 20 ' si sağlıksız hale gelirse, ölçek kümesi yükseltmesi geçerli toplu işin sonunda duraklar.
+Ölçek kümesi işletim sistemi yükseltme Orchestrator, her toplu işi yükseltmeden önce tüm ölçek kümesi sistem durumunu denetler. Toplu işi yükseltirken, ölçek kümesi örneklerinizin sistem durumunu etkileyebilecek diğer eşzamanlı planlı veya planlanmamış bakım etkinlikleri olabilir. Bu gibi durumlarda, ölçek kümesinin örneklerinin %20 ' si sağlıksız hale gelirse, ölçek kümesi yükseltmesi geçerli toplu işin sonunda duraklar.
 
 ## <a name="supported-os-images"></a>Desteklenen işletim sistemi görüntüleri
 Şu anda yalnızca belirli işletim sistemi platformu görüntüleri destekleniyor. Özel görüntüler şu anda desteklenmiyor.
 
 Aşağıdaki SKU 'Lar Şu anda desteklenmektedir (ve daha fazla düzenli olarak eklenir):
 
-| Publisher               | İşletim sistemi teklifi      |  İsteyin               |
+| Yayımcı               | İşletim sistemi teklifi      |  Sku               |
 |-------------------------|---------------|--------------------|
-| Kurallı               | UbuntuServer  | 16,04-LTS          |
-| Kurallı               | UbuntuServer  | 18,04-LTS          |
-| Standart dışı dalga (OpenLogic)  | CentOS        | 7,5                |
-| CoreOS                  | CoreOS        | Kararlı             |
+| Canonical               | UbuntuServer  | 16.04-LTS          |
+| Canonical               | UbuntuServer  | 18.04-LTS          |
+| Standart dışı dalga (OpenLogic)  | CentOS        | 7.5                |
+| CoreOS                  | CoreOS        | Dengeli             |
 | Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
 | Microsoft Corporation   | WindowsServer | 2016-veri merkezi    |
 | Microsoft Corporation   | WindowsServer | 2016-Datacenter-Smalldisk |
@@ -78,7 +70,7 @@ Aşağıdaki SKU 'Lar Şu anda desteklenmektedir (ve daha fazla düzenli olarak 
 - Service Fabric olmayan ölçek kümeleri için uygulama durumu araştırmaları veya [uygulama sistem durumu uzantısı](virtual-machine-scale-sets-health-extension.md) kullanın.
 - Işlem API 'SI sürüm 2018-10-01 veya üstünü kullanın.
 - Ölçek kümesi modelinde belirtilen dış kaynakların kullanılabilir olduğundan ve güncelleştirildiğinden emin olun. Örnek olarak, VM uzantı özelliklerinde önyükleme yükü için SAS URI, depolama hesabındaki yük, modeldeki gizli dizi başvuruları ve daha fazlası bulunur.
-- Windows sanal makinelerini kullanan ölçek kümelerinde, Işlem API 'SI sürüm 2019-03-01 ' den başlayarak, ölçek kümesi modelinde *Virtualmachineprofile. osProfile. windowsConfiguration. enableAutomaticUpdates* özelliği *false* olarak ayarlanmalıdır tanımı. Yukarıdaki özellik, "Windows Update" sanal makine sürümlerini değiştirmeden işletim sistemi düzeltme ekleri uyguladığı VM yükseltmeleri etkinleştirilir. Ölçek kümesinde otomatik işletim sistemi görüntüsü yükseltmeleri etkinleştirilmiş olarak, "Windows Update" ile ek bir güncelleştirme gerekli değildir.
+- Windows sanal makinelerini kullanan ölçek kümelerinde, Işlem API 'SI sürüm 2019-03-01 ' den başlayarak, ölçek kümesi model tanımında *Virtualmachineprofile. osProfile. windowsConfiguration. enableAutomaticUpdates* özelliği *false* olarak ayarlanmalıdır. Yukarıdaki özellik, "Windows Update" sanal makine sürümlerini değiştirmeden işletim sistemi düzeltme ekleri uyguladığı VM yükseltmeleri etkinleştirilir. Ölçek kümesinde otomatik işletim sistemi görüntüsü yükseltmeleri etkinleştirilmiş olarak, "Windows Update" ile ek bir güncelleştirme gerekli değildir.
 
 ### <a name="service-fabric-requirements"></a>Service Fabric gereksinimleri
 
@@ -118,7 +110,7 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
-### <a name="azure-cli-20"></a>Azure CLı 2,0
+### <a name="azure-cli-20"></a>Azure CLI 2.0
 Ölçek kümesi için otomatik işletim sistemi görüntüsü yükseltmelerini yapılandırmak için [az VMSS Update](/cli/azure/vmss#az-vmss-update) kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı ölçek kümesi için Otomatik yükseltmeleri yapılandırır:
 
 ```azurecli-interactive
@@ -222,7 +214,7 @@ GET çağrısı aşağıdaki örnek çıkışına benzer özellikler döndürür
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
-### <a name="azure-cli-20"></a>Azure CLı 2,0
+### <a name="azure-cli-20"></a>Azure CLI 2.0
 Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek için [az VMSS Get-OS-Upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) komutunu kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi için işletim sistemi yükseltme durumunu nasıl gözden geçiceğiniz ayrıntılardır:
 
 ```azurecli-interactive
@@ -243,7 +235,7 @@ GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{lo
 Get-AzVmImage -Location "westus" -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "16.04-LTS"
 ```
 
-### <a name="azure-cli-20"></a>Azure CLı 2,0
+### <a name="azure-cli-20"></a>Azure CLI 2.0
 ```azurecli-interactive
 az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServer" --sku "16.04-LTS" --all
 ```
@@ -270,7 +262,7 @@ POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers
 Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
-### <a name="azure-cli-20"></a>Azure CLı 2,0
+### <a name="azure-cli-20"></a>Azure CLI 2.0
 Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek için [az VMSS yuvarlama-yükseltme Başlat](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) komutunu kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi üzerinde sıralı bir işletim sistemi yükseltmesini nasıl başlayakullanabileceğinizi ayrıntılardır:
 
 ```azurecli-interactive

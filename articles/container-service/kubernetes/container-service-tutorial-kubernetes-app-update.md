@@ -1,25 +1,23 @@
 ---
-title: (KULLANIM DIŞI) Azure Container Service Öğreticisi - uygulamayı güncelleştirme
+title: Kullanım DıŞı Azure Container Service öğreticisi-uygulamayı güncelleştirme
 description: Azure Container Service öğreticisi - Uygulamayı güncelleştirme
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3c0be935a4ffb51c03d2f63b14ab7c0c713dd2ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4b893f185ba7e205ffebd7d939b8a2aa20a3e13
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576722"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275558"
 ---
-# <a name="deprecated-update-an-application-in-kubernetes"></a>(KULLANIM DIŞI) Kubernetes'te uygulama güncelleştirme
+# <a name="deprecated-update-an-application-in-kubernetes"></a>Kullanım DıŞı Kubernetes 'te uygulama güncelleştirme
 
 > [!TIP]
-> Azure Kubernetes hizmeti kullanan Bu öğretici için güncelleştirilmiş sürümü görmek [Öğreticisi: Azure Kubernetes Service (AKS) uygulama güncelleştirme](../../aks/tutorial-kubernetes-app-update.md).
+> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: Azure Kubernetes Service 'te (AKS) bir uygulamayı güncelleştirme](../../aks/tutorial-kubernetes-app-update.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -109,7 +107,7 @@ En uzun çalışma süresini sağlamak için uygulama podunun birden çok örne�
 kubectl get pod
 ```
 
-Çıkış:
+Çıktı:
 
 ```bash
 NAME                               READY     STATUS    RESTARTS   AGE
@@ -138,7 +136,7 @@ Dağıtımı izlemek için [kubectl get pod](https://kubernetes.io/docs/referenc
 kubectl get pod
 ```
 
-Çıkış:
+Çıktı:
 
 ```bash
 NAME                               READY     STATUS    RESTARTS   AGE

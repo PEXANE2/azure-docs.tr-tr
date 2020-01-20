@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5be8668f9a2761bf1aa9809749fa44f21d622dde
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: b3192e4bf25763e870cc618e5e45f16384607b7f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045805"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277982"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -415,7 +415,7 @@ Desteklenen özelleştirme şunları içerir:
 |Özelleştirme|Tanım|
 |--|--|
 |Sütun amacı güncelleştirmesi|Belirtilen sütun için özellik türünü geçersiz kıl.|
-|Transformatör parametresi güncelleştirmesi |Belirtilen transformatör için parametreleri güncelleştirin. Şu anda ımputer ve HashOneHotEncoder 'ı desteklemektedir.|
+|Transformatör parametresi güncelleştirmesi |Belirtilen transformatör için parametreleri güncelleştirin. Şu anda ımputer (ortalama, en sık & ortancası) ve HashOneHotEncoder 'ı desteklemektedir.|
 |Bırakma sütunları |Korturdan bırakılacak sütunlar.|
 |Blok dönüştürücüler| Korleştirme işleminde kullanılacak dönüştürücüler bloğunu engelleyin.|
 

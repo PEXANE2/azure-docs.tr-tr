@@ -1,17 +1,17 @@
 ---
 title: Hızlı başlangıç-Azure portal kullanarak bir Azure Spring Cloud uygulaması başlatın
 description: Bu hızlı başlangıçta, Azure portal kullanarak Azure Spring buluta örnek bir uygulama dağıtın.
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
-ms.author: jeconnoc
-ms.openlocfilehash: c5e01f3ddeef929a1a01726cafa6e9dca3a8a3d8
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.author: brendm
+ms.openlocfilehash: f88319319b366ec8b726d5cf6cce540008497b57
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891521"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278901"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Spring Cloud uygulaması başlatın
 
@@ -80,7 +80,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. **Etiketi** "config" olarak ayarlayın.
 
-1. Yaptığınız değişiklikleri kaydetmek için **Apply**'ı (Uygula) seçin.
+1. Değişikliklerinizi kaydetmek için **Uygula**'yı seçin.
 
     ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 

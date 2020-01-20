@@ -1,60 +1,58 @@
 ---
-title: (KULLANIM DIŞI) Azure Kubernetes kümesi Datadog ile izleme
-description: Datadog kullanarak Azure Container Service Kubernetes kümesini izleme
-services: container-service
+title: Kullanım DıŞı Dataköpek ile Azure Kubernetes kümesini izleme
+description: Dataköpek kullanarak Azure Container Service Kubernetes kümesini izleme
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 6a682c199b40035bfd44fc5611a7d44b49f7b3ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8ed146a224ec4225a7a0e85c76227fb1dc71b0b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712347"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271044"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>(KULLANIM DIŞI) DataDog ile bir Azure Container Service kümesini izleme
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>Kullanım DıŞı Dataköpek ile Azure Container Service kümesini izleme
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu izlenecek yol, sahibi olduğunuzu varsayar [Azure Container Service kullanan bir Kubernetes kümesi oluşturuldu](container-service-kubernetes-walkthrough.md).
+## <a name="prerequisites"></a>Ön koşullar
+Bu izlenecek yol, [Azure Container Service kullanarak bir Kubernetes kümesi oluşturduğunuzu](container-service-kubernetes-walkthrough.md)varsayar.
 
-Ayrıca, sahibi olduğunuzu varsayar `az` Azure CLI ve `kubectl` araçlarının yüklü.
+Ayrıca, Azure CLI `az` ve `kubectl` araçlarının yüklü olduğunu varsaymaktadır.
 
-Varsa, test edebilirsiniz `az` çalıştırarak yüklü aracı:
+Şunu çalıştırarak `az` aracı yüklüyse test edebilirsiniz:
 
 ```console
 $ az --version
 ```
 
-Öğeniz yoksa `az` yüklü aracı yönergeler sunulmaktadır [burada](https://github.com/azure/azure-cli#installation).
+`az` aracı yüklü değilse, [burada](https://github.com/azure/azure-cli#installation)yönergeler vardır.
 
-Varsa, test edebilirsiniz `kubectl` çalıştırarak yüklü aracı:
+Şunu çalıştırarak `kubectl` aracı yüklüyse test edebilirsiniz:
 
 ```console
 $ kubectl version
 ```
 
-Öğeniz yoksa `kubectl` yüklü çalıştırabilirsiniz:
+Yüklü `kubectl` yoksa şu şekilde çalıştırabilirsiniz:
 
 ```console
 $ az acs kubernetes install-cli
 ```
 
 ## <a name="datadog"></a>DataDog
-Datadog gelen Azure Container Service kümenizdeki kapsayıcıları izleme verilerini toplayan bir izleme hizmetidir. Datadog Docker tümleştirmesi, kapsayıcılarınızın belirli ölçümleri görebileceğiniz bir Pano vardır. Kapsayıcılardan toplanan ölçümler, CPU, bellek, ağ ve g/ç tarafından düzenlenir. Datadog ölçümleri kapsayıcılar ve görüntüleri halinde böler.
+Dataköpek, Azure Container Service kümenizin içindeki kapsayıcılarınızdaki izleme verilerini toplayan bir izleme hizmetidir. Dataköpek, kapsayıcılarınızın içindeki belirli ölçümleri görebileceğiniz bir Docker tümleştirme panosuna sahiptir. Kapsayıcılardan toplanan ölçümler CPU, bellek, ağ ve g/ç tarafından düzenlenir. Dataköpek ölçümleri kapsayıcılara ve görüntülere böler.
 
-Öncelikle [bir hesap oluşturun](https://www.datadoghq.com/lpg/)
+Önce [bir hesap oluşturmanız](https://www.datadoghq.com/lpg/) gerekir
 
-## <a name="installing-the-datadog-agent-with-a-daemonset"></a>İle bir DaemonSet Datadog Aracısı'nı yükleme
-DaemonSets tarafından Kubernetes kümesindeki her bir konakta bir kapsayıcıyı tek bir örneğini çalıştırmak için kullanılır.
-Bunlar, izleme aracılarını çalıştırmak için ideal.
+## <a name="installing-the-datadog-agent-with-a-daemonset"></a>DaemonSet ile Dataköpek aracısını yükleme
+DaemonSets, Kubernetes tarafından kümedeki her konakta bir kapsayıcının tek bir örneğini çalıştırmak için kullanılır.
+İzleme aracılarını çalıştırmak için idealdir.
 
-Datadog açtıktan sonra izleyebilirsiniz [Datadog yönergeleri](https://app.datadoghq.com/account/settings#agent/kubernetes) bir DaemonSet kullanarak kümenizde Datadog aracıları yüklemek için.
+Veri köbir kez oturum açtıktan sonra, DaemonSet kullanarak dataköpek aracılarını kümenize yüklemek için [dataköpek talimatlarını](https://app.datadoghq.com/account/settings#agent/kubernetes) izleyebilirsiniz.
 
 ## <a name="conclusion"></a>Sonuç
-İşte bu kadar! Aracılar hazır ve çalışır olduğunda birkaç dakika içinde veri konsolunda görmeniz gerekir. Tümleşik ziyaret edebilirsiniz [kubernetes panosunu](https://app.datadoghq.com/screen/integration/kubernetes) kümenizi özetini görmek için.
+İşte bu kadar! Aracılar çalışır duruma getirildikten sonra, birkaç dakika içinde konsolundaki verileri görmeniz gerekir. Kümenizin özetini görmek için tümleşik [Kubernetes panosunu](https://app.datadoghq.com/screen/integration/kubernetes) ziyaret edebilirsiniz.

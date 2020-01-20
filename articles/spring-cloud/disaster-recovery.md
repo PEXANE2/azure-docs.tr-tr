@@ -1,17 +1,17 @@
 ---
 title: Azure yay bulutu coğrafi-olağanüstü durum kurtarma | Microsoft Docs
 description: Spring Cloud uygulamanızı bölgesel kesintilerden nasıl koruyacağınızı öğrenin
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: jeconnoc
-ms.openlocfilehash: 54289e808461e6374dee57763ef7ba0d0429c54c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.author: brendm
+ms.openlocfilehash: 4961e5a63e5bc1933cf19b1f291b521d89cbda0e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607842"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279146"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure yay bulut olağanüstü durum kurtarma
 
@@ -19,7 +19,7 @@ Bu makalede, Azure Spring Cloud uygulamalarınızı kapalı kalma süresi yaşam
 
 ## <a name="plan-your-application-deployment"></a>Uygulama dağıtımınızı planlayın
 
-Azure yay bulut uygulamaları belirli bir bölgede çalışır.  Azure dünyanın dört bir yanındaki birden fazla coğrafi ortamda çalışır. Azure coğrafya, en az bir Azure bölgesi içeren, dünyanın tanımlı bir alanıdır. Bir Azure bölgesi, bir veya daha fazla veri merkezi içeren coğrafya içindeki bir alandır.  Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirilir ve bir bölgesel çift oluşturur. Azure, her bir çiftin tek seferde yalnızca bir bölgenin güncelleştirildiğinden emin olmak için, bölgesel çiftler genelinde platform güncelleştirmelerini (planlı bakım) seri hale getirir. Birden çok bölgeyi etkileyen kesinti durumunda, her bir çiftin en az bir bölgesine kurtarma için öncelik alınacaktır.
+Azure yay bulut uygulamaları belirli bir bölgede çalışır.  Azure, dünyanın dört bir yanındaki birden fazla coğrafyada çalışmaktadır. Azure coğrafya, en az bir Azure bölgesi içeren, dünyanın tanımlı bir alanıdır. Bir Azure bölgesi, bir veya daha fazla veri merkezi içeren coğrafya içindeki bir alandır.  Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirilir ve bir bölgesel çift oluşturur. Azure, her bir çiftin tek seferde yalnızca bir bölgenin güncelleştirildiğinden emin olmak için, bölgesel çiftler genelinde platform güncelleştirmelerini (planlı bakım) seri hale getirir. Birden çok bölgeyi etkileyen kesinti durumunda, her bir çiftin en az bir bölgesine kurtarma için öncelik alınacaktır.
 
 Olağanüstü durumlarda yüksek kullanılabilirlik ve koruma sağlamak için, Spring Cloud uygulamalarınızı birden çok bölgeye dağıtmanız gerekir.  Azure, Spring Cloud dağıtımlarını bölgesel çiftlerine planlayabilmeniz için [eşleştirilmiş bölgelerin](../best-practices-availability-paired-regions.md) bir listesini sağlar.  Mikro hizmet mimarinizi tasarlarken üç temel faktörleri göz önünde bulundurmanız önerilir: bölge kullanılabilirliği, Azure eşleştirilmiş bölgeler ve hizmet kullanılabilirliği.
 

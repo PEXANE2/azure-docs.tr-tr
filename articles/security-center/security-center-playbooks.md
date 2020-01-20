@@ -13,15 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: faf297ef4b07b76f98bb7773c636cd8f6228bbc0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b4a2617bec145cf735058bc13c01bf8ebdfe6550
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201732"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275507"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Azure Güvenlik Merkezi'ndeki Güvenlik Playbook'u (Önizleme)
 Bu belge, Azure Güvenlik Merkezi'ndeki güvenlik playbook'larını kullanarak güvenlikle ilgili sorunlara yanıt vermenize yardımcı olur.
+
+> [!NOTE]
+> Güvenlik PlayBook özelliği, iş akışı Otomasyonu olarak yeniden adlandırıldı. Lütfen güncelleştirilmiş içerik bilgileri için [Iş akışı Otomasyonu (Önizleme)](https://docs.microsoft.com/azure/security-center/workflow-automation) sayfasını kontrol edin. Bu, daha önce önizlemesini alacak ve yavaş şekilde kaldırılacak müşteriler tarafından kullanılabilen geçici arşivlenmiş içeriktir. Önizlemedeki herhangi bir özellik, [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) tarafından sağlanır
 
 ## <a name="what-is-security-playbook-in-security-center"></a>Güvenlik Merkezi'ndeki güvenlik playbook'u ne işe yarar?
 Güvenlik playbook'u belirli bir playbook seçilen uyarı tarafından tetiklendiğinde Güvenlik Merkezi'nden çalıştırılabilecek yordam koleksiyonudur. Güvenlik playbook'u Güvenlik Merkezi tarafından tespit edilen belirli bir güvenlik uyarısına verilecek yanıtı otomatikleştirmenize ve yönetmenize yardımcı olabilir. Güvenlik Merkezi'ndeki Güvenlik Playbook'ları [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) tabanlıdır. Bu nedenle güvenlik kategorisindeki Logic Apps şablonlarını kullanabilir, ihtiyaçlarınıza göre değiştirebilir veya [Azure Logic Apps iş akışını](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app) kullanarak yeni playbook'lar oluşturabilir ve Güvenlik Merkezi'ni tetikleyici olarak kullanabilirsiniz.
@@ -98,7 +101,7 @@ Var olan playbook'ları Güvenlik Merkezi'nde değiştirerek eylem veya koşul e
 ## <a name="see-also"></a>Ayrıca bkz.
 Bu belgede, Azure Güvenlik Merkezi'ndeki playbook'ları nasıl kullanacağınız hakkında bilgi edindiniz. Azure Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 
-* [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve ele alma](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Güvenlik Merkezi’nde uyarıları yönetme ve güvenlik olaylarına yanıt vermeyi öğrenin.
+* [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Güvenlik Merkezi’nde uyarıları yönetme ve güvenlik olaylarına yanıt vermeyi öğrenin.
 * [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md). Azure kaynaklarınızı durumunu izleme hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını anlama](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Farklı güvenlik uyarısı türleri hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi Sorun Giderme Kılavuzu](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Güvenlik Merkezi’nde sık karşılaşılan sorunları gidermeyi öğrenin.

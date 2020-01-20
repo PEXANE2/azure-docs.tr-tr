@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: ab8baa810c36c794bbefd264c5588f8b28cbd62a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: a46627851eb8bbefaf9290691cd6e3fbda2110f3
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046195"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278657"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Insights GA ortamınızı planlayın
 
@@ -68,7 +68,7 @@ Tutma durumunu ayarlayabilir ve Azure portal ortamın yapılandırma sayfasında
 
 1. **Veri saklama süresi (gün cinsinden)** kutusuna 1 ile 400 arasında bir değer girin.
 
-   [![bekletmeyi yapılandırma](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+   [![bekletmeyi yapılandırma](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 > [!TIP]
 > Uygun bir veri saklama ilkesinin nasıl uygulanacağı hakkında daha fazla bilgi edinmek için, [bekletmeyi yapılandırma](./time-series-insights-how-to-configure-retention.md)makalesini okuyun.
@@ -103,30 +103,30 @@ Giriş gereksinimlerinizi hesaplamak için:
 
 ### <a name="mitigate-throttling-and-latency"></a>Azaltma ve gecikme süresini azaltma
 
-For information about how to prevent throttling and latency, read [Mitigate latency and throttling](time-series-insights-environment-mitigate-latency.md).
+Azaltma ve gecikme süresinin nasıl önleneceği hakkında daha fazla bilgi için, azaltma [gecikmesini ve azaltmayı](time-series-insights-environment-mitigate-latency.md)okuyun.
 
-## <a name="shape-your-events"></a>Shape your events
+## <a name="shape-your-events"></a>Olaylarınızı şekillendirin
 
-It's important to ensure that the way you send events to Time Series Insights supports the size of the environment you are provisioning. (Conversely, you can map the size of the environment to how many events Time Series Insights reads and the size of each event.) It's also important to think about the attributes that you might want to use to slice and filter by when you query your data.
+Time Series Insights olayları yollamanın, sağladığınız ortamın boyutunu desteklediğinden emin olmak önemlidir. (Buna karşılık, ortamın boyutunu, kaç olay Time Series Insights okuduğunu ve her olayın boyutunu) eşleyebilirsiniz.) Verilerinizi sorguladığınızda dilimlemek ve filtrelemek için kullanmak isteyebileceğiniz öznitelikleri düşünmek de önemlidir.
 
 > [!TIP]
-> Review the JSON shaping documentation in [Sending events](time-series-insights-send-events.md).
+> [Olayları GÖNDERMEDE](time-series-insights-send-events.md)JSON şekillendirme belgelerini gözden geçirin.
 
-## <a name="ensure-that-you-have-reference-data"></a>Ensure that you have reference data
+## <a name="ensure-that-you-have-reference-data"></a>Başvuru verilerine sahip olduğunuzdan emin olun
 
-A *reference dataset* is a collection of items that augment the events from your event source. The Time Series Insights ingress engine joins each event from your event source with the corresponding data row in your reference dataset. The augmented event is then available for query. The join is based on the **Primary Key** columns that are defined in your reference dataset.
+*Başvuru veri kümesi* , olay kaynağınızdan olayları geliştiren öğelerin bir koleksiyonudur. Time Series Insights giriş altyapısı, olay kaynağınızdaki her bir olayı, başvuru veri kümenizdeki karşılık gelen veri satırıyla birleştirir. Genişletilmiş olay daha sonra sorgu için kullanılabilir. JOIN, başvuru veri kümenizde tanımlanan **birincil anahtar** sütunlarını temel alır.
 
 > [!NOTE]
-> Reference data isn't joined retroactively. Only current and future ingress data is matched and joined to the reference dataset after it's configured and uploaded. If you plan to send a large amount of historical data to Time Series Insights and don't first upload or create reference data in Time Series Insights, you might have to redo your work (hint: not fun).  
+> Başvuru verileri geriye dönük olarak katılmadı. Yapılandırma ve karşıya yükleme sonrasında yalnızca geçerli ve gelecekteki giriş verileri eşleştirilir ve başvuru veri kümesine birleştirilir. Time Series Insights için büyük miktarda geçmiş verisi gönderilmesini ve Time Series Insights önce karşıya yüklemeden veya başvuru verilerini oluşturmazsanız, çalışmanızı yinelemek zorunda kalabilirsiniz (İpucu: eğlenceli değil).  
 
-To learn more about how to create, upload, and manage your reference data in Time Series Insights, read our [Reference dataset documentation](time-series-insights-add-reference-data-set.md).
+Time Series Insights ' de başvuru verilerinizi oluşturma, karşıya yükleme ve yönetme hakkında daha fazla bilgi edinmek için, [başvuru veri kümesi belgelerimizi](time-series-insights-add-reference-data-set.md)okuyun.
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Get started by creating [a new Time Series Insights environment in the Azure portal](time-series-insights-get-started.md).
+- [Azure Portal yeni bir Time Series Insights ortamı](time-series-insights-get-started.md)oluşturarak başlayın.
 
-- Learn how to [add an Event Hubs event source](time-series-insights-how-to-add-an-event-source-eventhub.md) to Time Series Insights.
+- Time Series Insights [bir Event Hubs olay kaynağı eklemeyi](time-series-insights-how-to-add-an-event-source-eventhub.md) öğrenin.
 
-- Read about how to [configure an IoT Hub event source](time-series-insights-how-to-add-an-event-source-iothub.md).
+- [IoT Hub olay kaynağını yapılandırma](time-series-insights-how-to-add-an-event-source-iothub.md)hakkında bilgi edinin.

@@ -1,58 +1,54 @@
 ---
-title: Yüksek performanslı bilgi işlem gerçekleştiren H serisi Vm'lerde - Azure sanal makineler | Microsoft Docs
-description: Özellikler ve yetenekler, HPC için en iyi duruma getirilmiş H serisi VM'ler hakkında bilgi edinin.
-services: virtual-machines
-documentationcenter: ''
+title: H serisi VM 'lerde yüksek performanslı bilgi işlem-Azure sanal makineleri
+description: HPC için iyileştirilmiş H serisi VM 'lerinin özellikleri ve özellikleri hakkında bilgi edinin.
 author: vermagit
-manager: jeconnoc
-editor: ''
+ms.author: amverma
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/02/2019
-ms.author: amverma
-ms.openlocfilehash: d6e857a87e4c7df8ffb2be1eefb7a0290da5b10a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: b3d5d003db89a11a013c3236a3afbe03ffe68557
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800067"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271013"
 ---
-# <a name="high-performance-computing-on-h-series-vms"></a>Yüksek performanslı bilgi işlem H serisi Vm'lerde
+# <a name="high-performance-computing-on-h-series-vms"></a>H serisi VM 'lerde yüksek performanslı bilgi işlem
 
-Yüksek performanslı bilgi işlem (HPC) HB serisi ve HC serisi VM'ler üzerinde en iyileştirilmiş tüm Vm'leri azure'da HPC performansını etkinleştirin. HPC için iyileştirilmiş, VM'ler gibi bazı matematik en zor sorunları çözmek için kullanılır: sıvı dinamiği, Petrol ve gaz simülasyonlar ve hava durumu modelleme.
+HB Serisi ve HC Serisi VM 'lerde yüksek performanslı bilgi işlem (HPC), Azure 'daki tüm VM 'Lerde en iyi duruma getirilmiş HPC performansını etkinleştirir. HPC için iyileştirilmiş VM 'Ler: akışkan dinamikleri, yağ ve gaz benzetimleri ve hava durumu modellemesi gibi en zor matematik sorunlarını gidermek için kullanılır.
 
-Bu makale, önemli özelliklerinden bazıları HB serisi ve HC serisi VM'ler, neden bu VM'ler de HPC senaryoları ve kullanmaya nasıl başlayacağınızı gerçekleştirme kapsar.
+Bu makalede, HB Serisi ve HC Serisi sanal makinelerin bazı önemli özellikleri, bu VM 'Lerin HPC senaryolarında iyi bir şekilde nasıl çalıştığı ve nasıl başlatılabileceği ele alınmaktadır.
 
 ## <a name="features-and-capabilities"></a>Özellikler ve yetenekler
 
-HB serisi ve HC serisi VM'ler en iyi bir HPC performansı, ileti geçirme arabirimi (MPI) ölçeklenebilirlik sağlamak üzere tasarlanmış ve maliyet verimliliği HPC iş yükleri için.
+HB Serisi ve HC Serisi VM 'Ler, HPC iş yükleri için en iyi HPC performansı, ileti geçirme arabirimi (MPı) ölçeklenebilirliğini ve maliyet verimliliğini sağlamak üzere tasarlanmıştır.
 
 ### <a name="message-passing-interface"></a>İleti geçirme arabirimi
 
-HB serisi ve HC serisi neredeyse tüm MPI türleri ve sürümleri destekler. En yaygın, desteklenen MPI türlerinden bazıları şunlardır: OpenMPI, MVAPICH2, Platform MPI, Intel MPI ve doğrudan uzak bellek (RDMA) fiilleri erişin. Daha fazla bilgi için [ileti geçirme arabirimi oluşturan için HPC Kümesi](setup-mpi.md).
+HB Serisi ve HC Serisi neredeyse tüm MPı türlerini ve sürümlerini destekler. En yaygın, desteklenen MPı türlerinden bazıları şunlardır: OpenMPI, MVAPICH2, platform MPı, Intel MPı ve tüm uzak doğrudan bellek erişimi (RDMA) fiilleri. Daha fazla bilgi için bkz. [HPC Için Ileti geçirme arabirimini ayarlama](setup-mpi.md).
 
-### <a name="rdma-and-infiniband"></a>RDMA ve Infiniband
+### <a name="rdma-and-infiniband"></a>RDMA ve InfiniBand
 
-HB serisi ve HC serisi Vm'lerde standart RDMA arabirimidir. RDMA özellikli örnekler HB serisi ve HC serisi sanal makineler için geliştirilmiş veri fiyatlarıyla (EDR) çalışan bir InfiniBand ağ üzerinden iletişim kurar. RDMA özellikli örnekler ölçeklenebilirlik ve bazı MPI uygulamaları performansını artırabilir.
+RDMA arabirimi, HB Serisi ve HC Serisi VM 'lerde standarttır. RDMA özellikli örnekler, HB Serisi ve HC Serisi sanal makineler için geliştirilmiş veri ücretleri (EDR) ile çalışan bir InfiniBand ağı üzerinden iletişim kurar. RDMA özellikli örnekler, bazı MPı uygulamalarının ölçeklenebilirliğini ve performansını artırabilir.
 
-HC serisi VM'ler HB serisi destekleyen InfiniBand yapılandırma engelleyici olmayan fat ağaçları RDMA tutarlı bir performans için düşük çapı tasarım.
+HB Serisi ve HC Serisi VM 'Leri destekleyen InfiniBand yapılandırması, tutarlı RDMA performansı için düşük çapta bir tasarıma sahip engellenmeyen FAT ağaçları.
 
-Bkz: [etkinleştirme InfiniBand](enable-infiniband.md) InfiniBand HB serisi veya HC serisi VM'ler ayarlama hakkında daha fazla bilgi için.
+HB Serisi veya HC Serisi sanal makinelerinize InfiniBand ayarlama hakkında daha fazla bilgi edinmek için bkz. [InfiniBand 'Yi etkinleştirme](enable-infiniband.md) .
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya Başlayın
 
-İlk olarak, kullanılacak gideceğinizi H serisi VM karar verin. HPC hakkında ayrıntılar için iyileştirilmiş VM'ler için bkz: [HB serisi Genel Bakış](hb-series-overview.md) ve [HC serisi Genel Bakış](hc-series-overview.md). Belirtimleri için bkz: [yüksek performanslı işlem VM boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc).
+İlk olarak, hangi H serisi sanal makineyi kullanacağınızı belirleyin. HPC iyileştirilmiş VM 'Ler hakkında daha fazla bilgi için bkz. [HB-serinin genel bakış](hb-series-overview.md) ve [HC Serisi genel bakış](hc-series-overview.md). Belirtimler için bkz. [yüksek performanslı Işlem VM boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc).
 
-Seçili ve uygulamanız için oluşturulan bir VM'yi sonra InfiniBand etkinleştirerek yapılandırmanız gerekir. Hem Windows hem de Linux Vm'lerinin InfiniBand etkinleştirme hakkında bilgi için bkz: [etkinleştirme InfiniBand](enable-infiniband.md).
+Uygulamanız için bir VM seçtikten ve oluşturduktan sonra, InfiniBand 'yi etkinleştirerek yapılandırmanız gerekir. InfiniBand 'i hem Windows hem de Linux VM 'lerde etkinleştirmeyi öğrenmek için bkz. [InfiniBand 'Yi etkinleştirme](enable-infiniband.md).
 
-HPC iş yüklerinin önemli bir bileşeni MPI ' dir. HB serisi ve HC serisi neredeyse tüm MPI türleri ve sürümleri destekler. Daha fazla bilgi için [ileti geçirme arabirimi oluşturan için HPC Kümesi](setup-mpi.md).
+HPC iş yüklerinin kritik bir bileşeni MPı 'dir. HB Serisi ve HC Serisi neredeyse tüm MPı türlerini ve sürümlerini destekler. Daha fazla bilgi için bkz. [HPC Için Ileti geçirme arabirimini ayarlama](setup-mpi.md).
 
-Infiniband ve MPI, ayarlama, VM serisi belirledikten sonra HPC iş yüklerinizi oluşturmaya başlamak hazırsınız demektir.
+VM serisini seçtikten sonra, InfiniBand ve MPı 'yi ayarladıktan sonra HPC iş yüklerinizi oluşturmaya başlamaya hazırsınız demektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Gözden geçirme [HB serisi Genel Bakış](hb-series-overview.md) ve [HC serisi Genel Bakış](hc-series-overview.md) temel farklılıklar ve özellikleri hakkında bilgi edinmek için.
+- Temel farklılıklar ve özellikler hakkında bilgi edinmek için [HB Serisi genel bakış](hb-series-overview.md) ve [HC Serisi genel bakış](hc-series-overview.md) konusunu gözden geçirin.
 
-- Daha yüksek bir düzeyi için HPC iş yüklerinin çalışan mimari görmek [yüksek performanslı bilgi işlem (HPC) azure'da](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+- Çalıştırılan HPC iş yüklerinin daha yüksek bir düzeyi olan mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).

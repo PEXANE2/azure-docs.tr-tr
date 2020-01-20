@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: b4e09bf84d78c88d3625b0f6b478746db09cc2d8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 41d48bdd7cc7972536d0cf0e0cb78483f727d7f2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030054"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277011"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Azure Veri Gezgini veritabanlarını eklemek için izleyici veritabanını kullanma
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak veritabanı iliştirme
 
-Bu bölümde, bir izleyici kümesi oluşturmayı ve bir [Azure Resource Manager şablonu](../azure-resource-manager/management/overview.md)kullanarak buna bir veritabanı eklemeyi öğreneceksiniz. Zaten bir kümeniz varsa, `Microsoft.Kusto/clusters` kaynağını aşağıdaki kaynak listesinden kaldırın.
+Bu bölümde, bir [Azure Resource Manager şablonu](../azure-resource-manager/management/overview.md)kullanarak var olan bir kümenize 'a veritabanı eklemeyi öğreneceksiniz. 
 
 ```json
 {
@@ -138,7 +138,7 @@ Bu bölümde, bir izleyici kümesi oluşturmayı ve bir [Azure Resource Manager 
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the follower cluster."
+                "description": "Name of the cluster to which the database will be attached."
             }
         },
         "attachedDatabaseConfigurationsName": {
@@ -180,17 +180,6 @@ Bu bölümde, bir izleyici kümesi oluşturmayı ve bir [Azure Resource Manager 
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('followerClusterName')]",
-            "type": "Microsoft.Kusto/clusters",
-            "sku": {
-                "name": "Standard_D13_v2",
-                "tier": "Standard",
-                "capacity": 2
-            },
-            "apiVersion": "2019-09-07",
-            "location": "[parameters('location')]"
-        },
-        {
             "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
@@ -217,7 +206,7 @@ Bu bölümde, bir izleyici kümesi oluşturmayı ve bir [Azure Resource Manager 
 
 |**Ayar**  |**Açıklama**  |
 |---------|---------|
-|İzleyici kümesi adı     |  İzleyici kümesinin adı. Küme adı varsa, ARM şablonundaki kaynak listesinden `Microsoft.Kusto/clusters` kaynağını kaldırın. Aksi takdirde, yeni bir küme oluşturulur.     |
+|İzleyici kümesi adı     |  İzleyici kümesinin adı.  |
 |Ekli veritabanı yapılandırması adı    |    Eklenmiş veritabanı yapılandırma nesnesinin adı. Ad, küme düzeyinde benzersiz olmalıdır.     |
 |Veritabanı Adı     |      Takip edilecek veritabanının adı. Tüm öncü veritabanlarını izlemek isterseniz, ' * ' kullanın.   |
 |Öncü küme kaynak KIMLIĞI    |   Öncü kümenin kaynak KIMLIĞI.      |

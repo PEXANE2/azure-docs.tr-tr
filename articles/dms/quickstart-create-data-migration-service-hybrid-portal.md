@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.openlocfilehash: 64d4998e287f9981c666dee54fc3b67886791bbf
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.date: 01/21/2019
+ms.openlocfilehash: 81039aa4aa37f9587db887beadcdb6d263ec6a74
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708300"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274803"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Hızlı başlangıç: Azure portal & Azure veritabanı geçiş hizmeti ile karma mod örneği oluşturma
 
@@ -73,7 +73,7 @@ Azure veritabanı geçiş hizmeti 'nin ilk örneğinizi oluşturmadan önce Micr
     - Kaynak veya hedef sunucunuza en yakın **Konum**’u seçin.
     - **Hizmet modu**için **karma (Önizleme)** öğesini seçin.
 
-           ![Create migration service - basics](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
+         ![Geçiş hizmeti oluşturma-temel bilgiler](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
 4. **İncele ve oluştur**’u seçin.
 
@@ -186,7 +186,7 @@ Bu betik, Kullanıcı ortamda gerekli tüm izinlere zaten sahip olduğunda hızl
 > [!IMPORTANT]
 > Bu betik, Azure veritabanı geçiş hizmeti 'nin karma modda var olan bir örneği olduğunu ve kullanılan Azure hesabının kiracıda bir Uyarps oluşturma ve abonelikte RBAC 'yi değiştirme izinlerine sahip olduğunu varsayar.
 
-Komut dosyasının en üstündeki parametreleri doldurmanız ve sonra betiği bir yönetici PowerShell örneğinden çalıştırmanız yeterlidir.
+Komut dosyasının en üstündeki parametreleri doldurup bir yönetici PowerShell örneğinden betiği çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

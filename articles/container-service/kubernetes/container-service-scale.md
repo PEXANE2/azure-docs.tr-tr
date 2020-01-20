@@ -1,24 +1,22 @@
 ---
-title: (KULLANIM DIŞI) Azure Container Service kümesini ölçeklendirme
-description: Azure CLI veya Azure portalını kullanarak Azure Container Service DC/OS, Docker Swarm veya Kubernetes kümesindeki aracı düğümlerini ölçeklendirme yapma.
-services: container-service
+title: Kullanım DıŞı Azure Container Service kümesini Ölçeklendir
+description: Azure CLı veya Azure portal kullanarak Azure Container Service DC/OS, Docker Sısınma veya Kubernetes kümesindeki aracı düğümlerini ölçeklendirme.
 author: sauryadas
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d259d5d53ec8d45f584eebe614a0bd8892514a4c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d53369128a660805df7e144fbec67b1bad787b7b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576433"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275619"
 ---
-# <a name="deprecated-scale-agent-nodes-in-a-container-service-cluster"></a>(KULLANIM DIŞI) Bir kapsayıcı hizmeti kümesindeki aracı düğümlerini ölçekleme
+# <a name="deprecated-scale-agent-nodes-in-a-container-service-cluster"></a>Kullanım DıŞı Bir kapsayıcı hizmeti kümesindeki aracı düğümlerini ölçeklendirme
 
 > [!TIP]
-> Bu makale, güncelleştirilmiş sürümü kullanan Azure Kubernetes Service için bkz: [Azure Kubernetes Service (AKS) kümesini ölçeklendirme](../../aks/scale-cluster.md).
+> Azure Kubernetes hizmetini kullanan Bu makalenin güncelleştirilmiş sürümü için bkz. [Azure Kubernetes hizmeti (AKS) kümesini ölçeklendirme](../../aks/scale-cluster.md).
 
 [!INCLUDE [container-service-scale.md](../../../includes/container-service-scale.md)]

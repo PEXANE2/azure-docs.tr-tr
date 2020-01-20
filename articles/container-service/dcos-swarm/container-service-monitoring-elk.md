@@ -1,68 +1,66 @@
 ---
-title: (KULLANIM DIŞI) Bir Azure DC/OS kümesini - ELK yığını izleme
-description: Bir DC/OS kümesinde ELK (Elasticsearch, Logstash ve Kibana) ile Azure Container Service kümesini izleme.
-services: container-service
+title: Kullanım DıŞı Azure DC/OS kümesini izleme-ELK yığını
+description: ELK (Elayoara, Logstash ve kibana) ile Azure Container Service kümesinde DC/OS kümesini izleyin.
 author: sauryadas
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 342cf23db2df7d7c79a2b56df96d1a78d6ba215e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d34ebe22344be8acc6ec3cc974071639293e2b3
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61467777"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277769"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>(KULLANIM DIŞI) ELK ile bir Azure Container Service kümesini izleme
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>Kullanım DıŞı ELK ile Azure Container Service kümesini izleme
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Bu makalede, sizi Azure Container Service DC/OS kümesinde ELK (Elasticsearch, Logstash, Kibana) yığını dağıtma gösterilmektedir. 
+Bu makalede, ELK (Elam araması, Logstash, kibana) yığınının Azure Container Service bir DC/OS kümesinde nasıl dağıtılacağı gösterilmektedir. 
 
-## <a name="prerequisites"></a>Önkoşullar
-[Dağıtma](container-service-deployment.md) ve [bağlanma](../container-service-connect.md) Azure Container Service tarafından yapılandırılan bir DC/OS kümesi. Pano DC/OS ve Marathon hizmetlerini keşfedin [burada](container-service-mesos-marathon-ui.md). Ayrıca yükleme [Marathon yük dengeleyici](container-service-load-balancing.md).
+## <a name="prerequisites"></a>Ön koşullar
+Azure Container Service tarafından yapılandırılan bir DC/OS kümesi [dağıtın](container-service-deployment.md) ve [bağlayın](../container-service-connect.md) . DC/OS panosu ve Marathon hizmetlerini [burada bulabilirsiniz](container-service-mesos-marathon-ui.md). Ayrıca, [Marathon Load Balancer](container-service-load-balancing.md)de yükler.
 
 
-## <a name="elk-elasticsearch-logstash-kibana"></a>ELK (Elasticsearch, Logstash, Kibana)
-ELK yığını Elasticsearch, Logstash ve izlemek ve kümenizde günlüklerini çözümlemek için kullanılan bir uçtan uca yığın sağlayan Kibana birleşimidir.
+## <a name="elk-elasticsearch-logstash-kibana"></a>ELK (Elaun Search, Logstash, kibana)
+ELK yığını, kümenizdeki günlükleri izlemek ve analiz etmek için kullanılan uçtan uca bir yığın sağlayan Elaol Search, Logstash ve kibana 'ın bir birleşimidir.
 
-## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>DC/OS kümesinde ELK yığını yapılandırma
-DC/OS kullanıcı arabiriminize erişin [ http://localhost:80/ ](http://localhost:80/) DC/OS Arabiriminde bir kez gidin **Evreni**. Arama ve DC/OS Evreni ve bu belirli bir sırayla Elasticsearch, Logstash ve kibana'yı yükleyin. Giderseniz yapılandırması hakkında daha fazla bilgi edinebilirsiniz **gelişmiş yükleme** bağlantı.
+## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>Bir DC/OS kümesinde ELK yığınını yapılandırma
+DC/OS Kullanıcı arabiriminde [http://localhost:80/](http://localhost:80/) BIR kez DC/OS Kullanıcı arabirimine erişin **Universe**adresine gidin. DC/OS Universe ve bu belirli sırada Elayosearch, Logstash ve kibana 'ı arayın ve yükleme. **Gelişmiş yükleme** bağlantısına giderseniz yapılandırma hakkında daha fazla bilgi edinebilirsiniz.
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 
-Bir kez çalışır durumdadır ve ELK kapsayıcılar, Marathon-LB erişilecek kibana'yı etkinleştirmeniz gerekir. Gidin **Hizmetleri** > **kibana**, tıklatıp **Düzenle** aşağıda gösterildiği gibi.
+ELK kapsayıcıları ve çalışır duruma getirildikten sonra, kibana Marathon-LB aracılığıyla erişilebilmesi için etkinleştirmeniz gerekir. **Hizmetler** > **kibana**' e gidin ve aşağıda gösterildiği gibi **Düzenle** ' ye tıklayın.
 
 ![ELK4](./media/container-service-monitoring-elk/elk4.PNG)
 
 
-Geç **JSON modu** ve etiketler bölümüne kaydırın.
-Eklemek istediğiniz bir `"HAPROXY_GROUP": "external"` giriş burada gösterildiği gibi aşağıdaki.
-' A tıkladığınızda **dağıtma değişiklikleri**, kapsayıcı yeniden başlatılır.
+**JSON moduna** geçin ve Etiketler bölümüne kaydırın.
+Aşağıda gösterildiği gibi buraya bir `"HAPROXY_GROUP": "external"` girişi eklemeniz gerekir.
+**Değişiklikleri dağıt**' a tıkladığınızda, Kapsayıcınız yeniden başlatılır.
 
 ![ELK5](./media/container-service-monitoring-elk/elk5.PNG)
 
 
-Kibana HAPROXY panosunda hizmet olarak kayıtlı olduğunu doğrulamak istiyorsanız, HAPROXY 9090 bağlantı noktasında çalışan Aracısı kümede 9090 bağlantı noktası açmanız gerekir.
-Varsayılan olarak, şu bağlantı noktası 80, 8080 açın ve DC/OS Aracısı kümedeki 443.
-Bağlantı noktası ve genel değerlendirme sağlamak için yönergeler verilmiştir [burada](container-service-enable-public-access.md).
+Kibana 'ın HAPROXY panosunda bir hizmet olarak kaydedildiğini doğrulamak istiyorsanız, bağlantı noktası 9090 üzerinde HAPROXY çalışırken aracı kümesinde 9090 numaralı bağlantı noktasını açmanız gerekir.
+Varsayılan olarak, DC/OS Aracısı kümesinde 80, 8080 ve 443 bağlantı noktalarını açarız.
+Bir bağlantı noktası açma ve Genel değerlendirme sağlama yönergeleri [burada](container-service-enable-public-access.md)verilmiştir.
 
-HAPROXY panoya erişmek için Marathon-LB yönetici arabirimin açın: `http://$PUBLIC_NODE_IP_ADDRESS:9090/haproxy?stats`.
-URL'ye gidin, sonra aşağıda gösterildiği gibi HAPROXY Pano görmeniz gerekir ve Kibana için bir hizmet girişi görmeniz gerekir.
+HAPROXY panosuna erişmek için, şurada Marathon-LB yönetim arabirimini açın: `http://$PUBLIC_NODE_IP_ADDRESS:9090/haproxy?stats`.
+URL 'ye gittiğinizde, aşağıda gösterildiği gibi HAPROXY panosunu görmeniz gerekir ve kibana için bir hizmet girdisi görmeniz gerekir.
 
 ![ELK6](./media/container-service-monitoring-elk/elk6.PNG)
 
 
-5601 numaralı dağıtılır, Kibana panoya erişmek için 5601 numaralı bağlantı noktasını açmanız gerekir. Yönergeleri izleyerek [burada](container-service-enable-public-access.md). Kibana panonuza açılacağını: `http://localhost:5601`.
+5601 numaralı bağlantı noktasına dağıtılan kibana panosuna erişmek için, bağlantı noktası 5601 ' i açmanız gerekir. [Buradaki](container-service-enable-public-access.md)yönergeleri izleyin. Daha sonra kibana panosunu şurada açın: `http://localhost:5601`.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sistem ve uygulama günlüğü iletme ve Kurulum [DC/OS ELK ile İzleme Günlüğü Yönetimi](https://docs.mesosphere.com/1.8/administration/logging/elk/).
+* Sistem ve uygulama günlüğü iletme ve kurulum için bkz. [ELK Ile DC/OS 'de günlük yönetimi](https://docs.mesosphere.com/1.8/administration/logging/elk/).
 
-* Günlükleri filtrelemek için bkz: [ELK ile izleme günlüklerini filtreleme](https://docs.mesosphere.com/1.8/administration/logging/filter-elk/). 
+* Günlükleri filtrelemek için bkz. [ELK Ile günlüklere filtre uygulama](https://docs.mesosphere.com/1.8/administration/logging/filter-elk/). 
 
  
 

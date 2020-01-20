@@ -3,16 +3,16 @@ title: Sanal Makine Ölçek Kümeleri için Azure disk şifrelemesini etkinleşt
 description: Bu makale, sanal makine ölçek kümeleri için Microsoft Azure disk şifrelemeyi etkinleştirme hakkında yönergeler sağlar
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0097d0e1d5ea7de092da14683d4bab3d673b2219
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 36eb83d99af299260ebbbd74fe56d69921ba389b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177785"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278981"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure disk şifrelemesi
 
@@ -23,7 +23,7 @@ Azure disk şifrelemesi, bu örneklerde Windows ve Linux sanal makine ölçek k�
 - Windows ölçek kümelerinde işletim sistemi ve veri birimleri.
 - Linux ölçek kümelerinde veri birimleri. Linux ölçek kümeleri için işletim sistemi disk şifrelemesi desteklenmiyor.
 
-[Azure CLI kullanarak](disk-encryption-cli.md) sanal makine ölçek kümelerini şifreleme veya [Azure PowerShell kullanarak bir sanal makine ölçek kümesi şifreleme](disk-encryption-powershell.md) ile yalnızca birkaç dakika içinde sanal makine ölçek kümeleri için Azure disk şifrelemesi temelleri hakkında bilgi edinebilirsiniz izleyin.
+Sanal Makine Ölçek Kümeleri için Azure disk şifrelemesi temellerini, [Azure CLI 'yi kullanarak bir sanal makine ölçek kümesi şifrelemesini](disk-encryption-cli.md) veya [Azure PowerShell öğreticileri kullanarak bir sanal makine ölçek kümelerini şifrelemeyi](disk-encryption-powershell.md) yalnızca birkaç dakika içinde öğrenebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

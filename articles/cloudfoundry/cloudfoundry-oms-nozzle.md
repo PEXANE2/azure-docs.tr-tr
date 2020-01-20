@@ -3,21 +3,20 @@ title: Cloud Foundry izleme için Azure Log Analytics başlık dağıtma
 description: Azure Log Analytics için Cloud Foundry loggregator kafa kılavuzunu dağıtmaya yönelik adım adım yönergeler. Cloud Foundry sistem durumu ve performans ölçümlerini izlemek için kafa başlığı 'nı kullanın.
 services: virtual-machines-linux
 author: ningk
-manager: jeconnoc
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: azure-monitor
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: d71f1d6af0944a676e35dfe6347fafb8706f21b8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286635"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277354"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry sistem izleme için Azure Log Analytics başlık dağıtma
 
@@ -29,7 +28,7 @@ Bu belgede, başlık ' ı CF ortamınıza dağıtmayı öğrenirsiniz ve sonra A
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki adımlar, başlık dağıtmak için önkoşullardır.
 
@@ -205,7 +204,7 @@ Bu görünümleri özelleştirebilir veya **Görünüm Tasarımcısı**aracılı
 | Tür = CF_ValueMetric_CL Name_s = Yavaşconsumeralert                               | Sonuç sayısı > 0   | Kafa başlığı, loggregator 'dan yavaş bir tüketici uyarısı aldığında, bu, Azure Izleyici günlüklerine **Yavaşconsumeralert** valuemetric gönderir. |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Sonuç sayısı > 0   | Kaybolan olayların Delta sayısı bir eşiğe ulaşırsa, kafa başlığı çalışırken bir sorun olabileceği anlamına gelir. |
 
-## <a name="scale"></a>Ölçek
+## <a name="scale"></a>Ölçeklendirme
 
 Başlık ve loggregator 'ı ölçeklendirebilirsiniz.
 
@@ -220,7 +219,7 @@ Kafa ölçeğini genişletmek için, uygulama Yöneticisi veya CF CLı kullanara
 Loggregator, günlüğe kaydetme işlemiyle ilgili sorunları göstermek için bir **LGR** günlüğü iletisi gönderir. Günlüğe loggregator 'in ölçeğini ayarlamak için uyarıyı izleyebilirsiniz.
 Loggregator 'ın ölçeğini artırmak için, Doppler arabellek boyutunu artırın ya da CF bildiriminde ek Doppler sunucu örnekleri ekleyin. Daha fazla bilgi için bkz. [loggregator ölçeklendirme Kılavuzu](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
 
-## <a name="update"></a>Güncelleştir
+## <a name="update"></a>Güncelleştirme
 
 Kafa başlığı 'nı daha yeni bir sürümle güncelleştirmek için yeni kafa başlığı sürümünü indirin, yukarıdaki "başlık dağıtma" bölümündeki adımları izleyin ve uygulamayı yeniden gönderin.
 

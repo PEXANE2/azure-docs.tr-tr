@@ -1,66 +1,58 @@
 ---
-title: Uzantı sıralama Azure sanal makine ölçek kümeleri ile kullanma | Microsoft Docs
-description: Birden fazla uzantı, sanal makine ölçek kümesi dağıtırken uzantı sağlama sıra öğrenin.
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Azure sanal makine ölçek kümeleri ile uzantı sıralamasını kullanma
+description: Sanal makine ölçek kümelerinde birden çok uzantı dağıtıldığında uzantı sağlamayı nasıl sıraleyeceğinizi öğrenin.
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60620181"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278064"
 ---
-# <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Sıralı sanal makine ölçek kümesinde uzantı sağlama ayarlar
-Azure sanal makine uzantıları, dağıtım sonrası yapılandırma ve yönetim, izleme, güvenlik ve daha fazlası gibi özellikler sunar. Üretim dağıtımları genellikle istenen sonuçları elde etmek için bir sanal makine örnekleri için yapılandırılmış birden fazla uzantı birleşimini kullanın.
+# <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Sanal makine ölçek kümelerinde dizi uzantısı sağlama
+Azure sanal makine uzantıları, dağıtım sonrası yapılandırma ve yönetim, izleme, güvenlik ve daha fazlası gibi yetenekler sağlar. Üretim dağıtımları genellikle, istenen sonuçlara ulaşmak için VM örnekleri için yapılandırılmış birden çok uzantı birleşimini kullanır.
 
-Bir sanal makinede birden fazla uzantı kullanırken, aynı işletim sistemi kaynakları gerektiren uzantılar aynı anda bu kaynaklara almaya çalışırken olmayan sağlamak önemlidir. Bazı uzantılar, ortam ayarlarını ve gizli anahtarları gibi gerekli yapılandırmaları sağlamak için diğer uzantıları da bağlıdır. Doğru sıralama ve sıralama yerinde olmadan bağımlı uzantısı dağıtımları başarısız olabilir.
+Bir sanal makinede birden çok uzantı kullanırken, aynı işletim sistemi kaynaklarını gerektiren uzantıların aynı anda bu kaynakları almaya çalışmalarından emin olmak önemlidir. Bazı uzantılar, ortam ayarları ve gizli dizileri gibi gerekli konfigürasyonları sağlamak için diğer uzantılara de bağımlıdır. Doğru sıralama ve sıralama olmadan, bağımlı uzantı dağıtımları başarısız olabilir.
 
-Bu makalede, sanal makine ölçek kümesi VM örnekleri için yapılandırılması için uzantıları nasıl sıra ayrıntıları.
+Bu makalede, sanal makine ölçek kümelerinde VM örnekleri için yapılandırılacak uzantıları nasıl sıralarınızın ayrıntıları yer alabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu makalede, alışık olduğunuz varsayılır:
+## <a name="prerequisites"></a>Ön koşullar
+Bu makalede, hakkında bilgi sahibi olduğunuz varsayılmaktadır:
 -   Azure sanal makine [uzantıları](../virtual-machines/extensions/overview.md)
--   [Değiştirme](virtual-machine-scale-sets-upgrade-scale-set.md) sanal makine ölçek kümeleri
+-   Sanal makine ölçek kümelerini [değiştirme](virtual-machine-scale-sets-upgrade-scale-set.md)
 
-## <a name="when-to-use-extension-sequencing"></a>Uzantı sıralama kullanıldığı durumlar
-Uzantı sıralama içinde değil zorunlu ölçek için ayarlar ve herhangi bir sırada bir ölçek kümesi örneğinde belirtilmediği sürece, uzantıları sağlanabilir.
+## <a name="when-to-use-extension-sequencing"></a>Uzantı sıralaması ne zaman kullanılır?
+Uzantılar ölçek kümeleri için zorunlu değildir ve belirtilmemişse, Uzantılar bir ölçek kümesi örneği üzerinde herhangi bir sırada sağlanabilir.
 
-– ExtensionA ve modelde belirtilen ExtensionB – iki uzantıları, Ölçek kümesi modelinde varsa, örneğin, ardından aşağıdaki sağlama sıralarının ya da oluşabilir:
--   ExtensionA ExtensionB ->
--   ExtensionB ExtensionA ->
+Örneğin, ölçek kümesi modelinizde modelde belirtilen iki uzantısı (ExtensionA ve ExtensionB) varsa, aşağıdaki sağlama dizilerinden biri gerçekleşebilir:
+-   ExtensionA-> ExtensionB
+-   ExtensionB-> ExtensionA
 
-Uygulama Uzantısı genişletme B önce her zaman sağlanacak A gerektiriyorsa, bu makalede açıklandığı şekilde uzantı sıralama kullanmanız gerekir. Uzantı sıralama ile yalnızca bir sıralı artık meydana gelir:
--   ExtensionA - > ExtensionB
+Uygulamanız B uzantısı öncesinde her zaman sağlanacak şekilde bir uzantı gerektiriyorsa, bu makalede açıklandığı gibi uzantı sıralamasını kullanmanız gerekir. Uzantı sıralaması ile yalnızca bir sıra meydana gelir:
+-   ExtensionA-> ExtensionB
 
-Tanımlanmış bir sağlama sırada belirtilmeyen herhangi bir uzantısı her zaman, öncesinde, sonra veya tanımlı bir dizi sırasında dahil olmak üzere sağlanabilir. Uzantı sıralama, yalnızca belirli bir uzantıya sonra başka bir özel uzantı sağlanacak belirtir. Modelde tanımlı başka bir uzantı sağlama etkilemez.
+Tanımlı bir sağlama dizisinde belirtilmemiş uzantılar, tanımlı bir sıra öncesinde, sonrasında veya sırasında dahil olmak üzere herhangi bir zamanda sağlanabilir. Uzantı sıralaması yalnızca belirli bir uzantının, başka bir belirli uzantıdan sonra sağlandığını belirtir. Modelde tanımlanmış başka bir uzantının sağlamasını etkilemez.
 
-Örneğin, üç uzantılar – Uzantısı A, genişletme B ve modelde belirtilen uzantı C –, Ölçek kümesi modeline varsa ve sonra Uzantısı A sağlanacak uzantısı C ayarlayın, ardından aşağıdaki sağlama sıralarının ya da oluşabilir:
--   ExtensionA -> ExtensionC ExtensionB ->
--   ExtensionB -> ExtensionA ExtensionC ->
--   ExtensionA -> ExtensionB ExtensionC ->
+Örneğin, ölçek kümesi modelinizde üç uzantı vardır: model A, uzantı B ve uzantı C uzantısı ve C uzantısı, uzantısı bir sonrasında sağlanmak üzere ayarlandıysa, aşağıdaki sağlama dizilerinden biri gerçekleşebilir:
+-   ExtensionA-> ExtensionC-> ExtensionB
+-   ExtensionB-> ExtensionA-> ExtensionC
+-   ExtensionA-> ExtensionB-> ExtensionC
 
-Başka bir uzantı tanımlanmış uzantı dizisi yürütülürken sağlandığından emin olmak gerekirse, Ölçek kümesi modelinde tüm uzantıları sıralaması öneririz. Yukarıdaki örnekte, yalnızca bir sıralı gerçekleşebilir, sonra uzantı C sağlanacak genişletme B ayarlanabilir:
--   ExtensionA -> ExtensionC ExtensionB ->
+Tanımlı uzantı sırası yürütülürken başka bir uzantının sağlanmadığından emin olmanız gerekiyorsa, ölçek kümesi modelinizdeki tüm uzantıları sıralamayı öneririz. Yukarıdaki örnekte, B uzantısı C uzantısı sonrasında yalnızca bir sıra gerçekleşebileceğini sağlamak üzere ayarlanabilir:
+-   ExtensionA-> ExtensionC-> ExtensionB
 
 
-## <a name="how-to-use-extension-sequencing"></a>Uzantı sıralama kullanma
-Dizisi uzantısı hazırlanması, uzantı adları dizisi kabul "provisionAfterExtensions" özelliği eklemek için ölçek kümesi modelinde uzantısı tanımını güncelleştirmeniz gerekir. Özellik dizisi değeri belirtilen uzantılar ölçek kümesi modelinde tam olarak tanımlanması gerekir.
+## <a name="how-to-use-extension-sequencing"></a>Uzantı sıralamasını kullanma
+Uzantı sağlamayı sıralamak için, ölçek kümesi modelindeki uzantı tanımını, uzantı adları dizisini kabul eden "provisionAfterExtensions" özelliğini içerecek şekilde güncelleştirmeniz gerekir. Özellik dizisi değerinde bahsedilen uzantılar, ölçek kümesi modelinde tam olarak tanımlanmalıdır.
 
 ### <a name="template-deployment"></a>Şablon dağıtımı
-Aşağıdaki örnek, uzantıları sırayla sağlanır, Ölçek kümesi – ExtensionA ExtensionB ve ExtensionC – üç uzantıları sahip olduğu bir şablon tanımlar:
--   ExtensionA -> ExtensionB ExtensionC ->
+Aşağıdaki örnek, ölçek kümesinin üç uzantıya (ExtensionA, ExtensionB ve ExtensionC) sahip olduğu bir şablonu tanımlar ve bu tür uzantılar sırayla sağlanabilir:
+-   ExtensionA-> ExtensionB-> ExtensionC
 
 ```json
 "virtualMachineProfile": {
@@ -107,7 +99,7 @@ Aşağıdaki örnek, uzantıları sırayla sağlanır, Ölçek kümesi – Exten
 }
 ```
 
-' % S'özelliğinin "provisionAfterExtensions" uzantı adları dizisi kabul olduğundan, yukarıdaki örnek ExtensionC ExtensionB ExtensionA sonra sağlanır, ancak sıralama yok ExtensionB ExtensionA arasında gerekli şekilde değiştirilebilir. Aşağıdaki şablonu, bu senaryo elde etmek için kullanılabilir:
+"ProvisionAfterExtensions" özelliği uzantı adları dizisini kabul ettiğinden, yukarıdaki örnek, ExtensionC 'nin ExtensionA ve ExtensionB 'den sonra sağlanması, ancak ExtensionA ve ExtensionB arasında sıralama gerekli değildir. Aşağıdaki şablon bu senaryoya ulaşmak için kullanılabilir:
 
 ```json
 "virtualMachineProfile": {
@@ -152,7 +144,7 @@ Aşağıdaki örnek, uzantıları sırayla sağlanır, Ölçek kümesi – Exten
 ```
 
 ### <a name="rest-api"></a>REST API
-Aşağıdaki örnek, bir ölçek kümesi modeline ExtensionC adlı yeni bir uzantı ekler. ExtensionC, Ölçek kümesi modelinde zaten tanımlamış ExtensionA ve ExtensionB, bağımlılıkları vardır.
+Aşağıdaki örnek, bir ölçek kümesi modeline ExtensionC adlı yeni bir uzantı ekler. ExtensionC, zaten ölçek kümesi modelinde tanımlanmış olan ExtensionA ve ExtensionB üzerinde bağımlılıklara sahiptir.
 
 ```
 PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`
@@ -174,7 +166,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 }
 ```
 
-ExtensionC daha önce tanımlanan ölçek modeli ve bağımlılıklarını eklemek istediğiniz kümesini şimdi, yürütebilirsiniz bir `PATCH` zaten dağıtılmış bir uzantının özelliklerini düzenlemek için.
+Eğer ExtensionC, ölçek kümesi modelinde daha önce tanımlanmışsa ve bağımlılıklarını eklemek istiyorsanız, zaten dağıtılan uzantının özelliklerini düzenlemek için bir `PATCH` çalıştırabilirsiniz.
 
 ```
 PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`
@@ -189,12 +181,12 @@ PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/provider
   }                  
 }
 ```
-Mevcut ölçek kümesi örneklerine değişiklikler sonraki uygulanan [yükseltme](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
+Varolan ölçek kümesi örneklerine yapılan değişiklikler bir sonraki [yükseltmeye](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)uygulanır.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Kullanım [Ekle AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) ölçek için uygulama durumunu uzantısı eklemek için cmdlet kümesi model tanımı. Uzantı sıralama Az PowerShell 1.2.0 veya üstü gerektirir.
+Uygulama durumu uzantısını ölçek kümesi model tanımına eklemek için [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) cmdlet 'ini kullanın. Uzantı sıralaması az PowerShell 1.2.0 veya üzeri kullanılmasını gerektirir.
 
-Aşağıdaki örnek ekler [uygulama Uzantısın](virtual-machine-scale-sets-health-extension.md) için `extensionProfile` bir ölçek kümesi modelinde bir Windows tabanlı ölçek kümesi. Uygulama durumunu uzantısı sağladıktan sonra sağlanacak [özel betik uzantısı](../virtual-machines/extensions/custom-script-windows.md), Ölçek kümesindeki zaten tanımlı.
+Aşağıdaki örnek, [uygulama sistem durumu uzantısını](virtual-machine-scale-sets-health-extension.md) Windows tabanlı ölçek kümesinin ölçek kümesi modelinde `extensionProfile` ekler. Uygulama sistem durumu uzantısı, zaten ölçek kümesinde tanımlanmış olan [Özel Betik uzantısı](../virtual-machines/extensions/custom-script-windows.md)sağlandıktan sonra sağlanır.
 
 ```azurepowershell-interactive
 # Define the scale set variables
@@ -229,9 +221,9 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Kullanım [az vmss uzantı kümesi](/cli/azure/vmss/extension#az-vmss-extension-set) için uygulama durumunu uzantısı eklemek için ölçek kümesi modeli tanımı. Uzantı sıralama 2.0.55 Azure CLI'ın veya üstü gerektirir.
+Ölçek kümesi model tanımına uygulama durumu uzantısı eklemek için [az VMSS Extension set](/cli/azure/vmss/extension#az-vmss-extension-set) komutunu kullanın. Uzantı sıralaması için Azure CLı 2.0.55 veya üzeri kullanılması gerekir.
 
-Aşağıdaki örnek ekler [uygulama Uzantısın](virtual-machine-scale-sets-health-extension.md) ölçek kümesi modelinde bir Windows tabanlı ölçek kümesi. Uygulama durumunu uzantısı sağladıktan sonra sağlanacak [özel betik uzantısı](../virtual-machines/extensions/custom-script-windows.md), Ölçek kümesindeki zaten tanımlı.
+Aşağıdaki örnek, [uygulama sistem durumu uzantısını](virtual-machine-scale-sets-health-extension.md) Windows tabanlı ölçek kümesinin ölçek kümesi modeline ekler. Uygulama sistem durumu uzantısı, zaten ölçek kümesinde tanımlanmış olan [Özel Betik uzantısı](../virtual-machines/extensions/custom-script-windows.md)sağlandıktan sonra sağlanır.
 
 ```azurecli-interactive
 az vmss extension set \
@@ -247,13 +239,13 @@ az vmss extension set \
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-### <a name="not-able-to-add-extension-with-dependencies"></a>Bağımlılıkları olan uzantısı eklemek karşılaştırılamıyor?
-1. Ölçek kümesi modelinde provisionAfterExtensions içinde belirtilen uzantılar tanımlandığından emin olun.
-2. Tanıtılan döngüsel bağımlılık emin olun. Örneğin, aşağıdaki sırayı izin verilmiyor: ExtensionA -> ExtensionB ExtensionC -> ExtensionA ->
-3. Bağımlılıklar, aldığınız herhangi bir uzantısı bir "ayarlar" özelliği "Özellikler" uzantısı altında olduğundan emin olun. Örneğin, ExtentionB sonra ExtensionA sağlanması gerekiyorsa, ExtensionA ExtensionA "Özellikler" altındaki "ayarlar" alanında olması gerekir. Uzantı, gerekli tüm ayarları kılmaz boş "ayarlar" özelliğini belirtebilirsiniz.
+### <a name="not-able-to-add-extension-with-dependencies"></a>Bağımlılıklar içeren uzantı eklenemiyor mu?
+1. ProvisionAfterExtensions içinde belirtilen uzantıların ölçek kümesi modelinde tanımlandığından emin olun.
+2. Ortaya çıkan döngüsel bağımlılıkların bulunmadığından emin olun. Örneğin, şu sıraya izin verilmiyor: ExtensionA-> ExtensionB-> ExtensionC-> ExtensionA
+3. Bağımlılıkları olan tüm uzantıların "Özellikler" uzantısı altında "Ayarlar" özelliğine sahip olduğundan emin olun. Örneğin, ExtentionB 'nin ExtensionA 'dan sonra sağlanması gerekiyorsa, ExtensionA 'nın ExtensionA "Özellikler" altındaki "Ayarlar" alanına sahip olması gerekir. Uzantı gerekli ayarları zorunlu değilse, boş bir "Ayarlar" özelliği belirtebilirsiniz.
 
-### <a name="not-able-to-remove-extensions"></a>Uzantıları kaldırmak karşılaştırılamıyor?
-Kaldırılmakta olan uzantıları için herhangi bir uzantısı provisionAfterExtensions altında listelenmeyen emin olun.
+### <a name="not-able-to-remove-extensions"></a>Uzantılar kaldırılamıyor mu?
+Kaldırılmakta olan uzantıların diğer uzantılar için provisionAfterExtensions altında listelenmediğinden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bilgi edinmek için nasıl [uygulamanızı dağıtmak](virtual-machine-scale-sets-deploy-app.md) üzerinde sanal makine ölçek kümeleri.
+Uygulamanızı sanal makine ölçek kümelerinde [dağıtmayı](virtual-machine-scale-sets-deploy-app.md) öğrenin.
