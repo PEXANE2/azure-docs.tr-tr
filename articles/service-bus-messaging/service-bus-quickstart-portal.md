@@ -1,26 +1,26 @@
 ---
-title: Hızlı başlangıç-Service Bus kuyruğu oluşturmak için Azure portal kullanın | Microsoft Docs
+title: Service Bus kuyruğu oluşturmak için Azure portal kullanma
 description: Bu hızlı başlangıçta, Azure portal kullanarak Service Bus kuyruğu oluşturmayı öğreneceksiniz. Daha sonra, kuyruğa ileti göndermek ve kuyruktan ileti almak için örnek bir istemci uygulaması kullanırsınız.
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/03/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: dc9b8260a8ddde6633bc9215d9efff7aaaa71ad3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242391"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260846"
 ---
-# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Hızlı Başlangıç: Service Bus kuyruğu oluşturmak için Azure portal kullanma
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Hızlı başlangıç: Service Bus kuyruğu oluşturmak için Azure portal kullanma
 Bu hızlı başlangıçta, bir ileti ad alanı ve bu ad alanı içinde bir sıra oluşturmak ve bu ad alanında yetkilendirme kimlik bilgilerini almak için [Azure Portal][Azure portal] kullanılarak Service Bus kuyruğuna ve bu bilgisayardan ileti gönderme ve alma işlemlerinin nasıl yapılacağı açıklanmaktadır. Daha sonra yordam, [.NET Standard kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) kullanılarak bu kuyruktan nasıl ileti gönderilip alınacağını gösterir.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için şunları yüklediğinizden emin olun:
 
@@ -46,7 +46,7 @@ Bu öğreticiyi tamamlamak için şunları yüklediğinizden emin olun:
 > - [Python](service-bus-python-how-to-use-queues.md)
 > - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
-Ad alanı ve kuyruğun sağlanmasının ve gerekli kimlik bilgilerine sahip olmanızın ardından ileti gönderip almaya hazırsınız demektir. [Bu GitHub örnek klasöründeki](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters) kodu inceleyebilirsiniz.
+Ad alanı ve kuyruğun sağlanmasının ve gerekli kimlik bilgilerine sahip olmanızın ardından ileti gönderip almaya hazırsınız demektir. [Bu örnek GitHub klasöründeki](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters) kodu inceleyebilirsiniz.
 
 Kodu çalıştırmak için aşağıdakileri yapın:
 
@@ -55,9 +55,9 @@ Kodu çalıştırmak için aşağıdakileri yapın:
    ```
    git clone https://github.com/Azure/azure-service-bus.git
    ```
-3. Örnek `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart` klasörüne gidin.
+3. Örnek klasörü `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart` gidin.
 4. Yönetim kimlik bilgilerini alma bölümünde edindiğiniz bağlantı dizesini ve sıra adını kopyalayın.
-5.  Bir komut isteminde aşağıdaki komutu yazın:
+5.  Komut isteminde aşağıdaki komutu yazın:
 
     ```
     dotnet build
@@ -82,7 +82,7 @@ Bu bölümde örnek kodun işlevleri hakkında daha fazla ayrıntı bulunmaktad�
 
 ### <a name="get-connection-string-and-queue"></a>Bağlantı dizesini ve kuyruğu alma
 
-Bağlantı dizesi ve sıra adı `Main()` yöntemine komut satırı bağımsız değişkenleri olarak geçirilir. `Main()`, bu değerleri tutmak için iki dize değişkeni bildirir:
+Bağlantı dizesi ve sıra adı, `Main()` yöntemine komut satırı bağımsız değişkenleri olarak geçirilir. `Main()`, bu değerleri tutmak için iki dize değişkeni bildirir:
 
 ```csharp
 static void Main(string[] args)
@@ -119,7 +119,7 @@ static void Main(string[] args)
 
 ### <a name="message-loop"></a>İleti döngüsü
 
-Mainasync () yöntemi, komut satırı bağımsız değişkenleri olan bir kuyruk istemcisi oluşturur, adlı `RegisterOnMessageHandlerAndReceiveMessages()`bir alma iletisi işleyicisini çağırır ve ileti kümesini gönderir:
+MainAsync () yöntemi, komut satırı bağımsız değişkenleriyle bir kuyruk istemcisi oluşturur, `RegisterOnMessageHandlerAndReceiveMessages()`adlı bir alma iletisi işleyicisini çağırır ve ileti kümesini gönderir:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)

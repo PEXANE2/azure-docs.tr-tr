@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d26eb0160316737c9ad31d98c8cf23bdcad42d32
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206495"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045741"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>CloudSimple özel bulutları için bir yük dengeleme çözümü seçin
 
@@ -37,7 +37,7 @@ Bu çözümü yapılandırma hakkında daha fazla bilgi edinmek için Azure Appl
 
 Uygulamanızı, Web ön uç katmanının Azure aboneliğinizdeki bir Azure sanal ağı içinde çalıştığı karma dağıtımda çalıştırmayı tercih ederseniz ve uygulamanın DB katmanı CloudSimple özel bulutundaki VMware VM 'lerinde çalışıyorsa, Azure iç yükünü kullanabilirsiniz trafik yönetimi için VERITABANı katmanı sanal makinelerinizin önünde yer alarak dengeleyici (L4 yük dengeleyici).
 
-Daha fazla bilgi için bkz. Azure [iç Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) belgeleri.
+Daha fazla bilgi için bkz. Azure [iç Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) belgeleri.
 
 ## <a name="global-server-load-balancer"></a>Küresel sunucu yük dengeleyici
 

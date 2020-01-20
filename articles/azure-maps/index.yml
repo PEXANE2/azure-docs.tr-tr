@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Haritalar Belgeleri
-summary: Microsoft Azure Haritalar, tüm sektörlerden geliştiriciler ve güçlü jeo-uzamsal özellikler sunar. Ayrıca web ve mobil uygulamalara coğrafik bağlam sağlamak amacıyla kullanılabilen en yeni eşleme verileriyle donatılmıştır. Azure Haritalar, geliştirmeyi kolay, esnek ve birden çok platform arasında taşınabilir hale getirmek için hem Web hem de Android SDK’ları tarafından gerçekleştirilen Haritalar, Arama, Yönlendirme, Trafik, Ulaşım, Hava Durumu, Saat Dilimleri, Coğrafi Konum, Coğrafi Sınırlama, Harita Verileri ve Uzamsal İşlemlere yönelik, Azure One API’yle uyumlu bir REST API kümesidir.
+summary: Microsoft Azure Haritalar, tüm sektörlerden geliştiricilere yönelik güçlü jeo-uzamsal özellikler sağlar. Bu jeo-uzamsal özellikler en yeni eşleme verileriyle birlikte sunulur. Azure Haritalar hem web uygulamalarında hem de mobil uygulamalarda kullanılabilir. Azure Haritalar, Azure ONE API ile uyumlu bir REST API kümesidir. Haritalar, Arama, Yönlendirme, Trafik, Ulaşım, Hava, Saat Dilimleri, Coğrafi Konum, Coğrafi Sınırlama, Harita Verileri ve Uzamsal İşlemler Azure Haritalar’ın sunduğu hizmetlerden sadece birkaçıdır. Web ve Android SDK’ları geliştirmeyi kolay, esnek ve birden çok platform arasında taşınabilir hale getirir.
 metadata:
   title: Azure Haritalar Belgeleri | Microsoft Docs
   description: Azure Haritalar hakkında bilgi edinin ve web veya mobil uygulamanıza jeo-uzamsal hizmetler sağlamak için bunu nasıl kullanacağınızı öğrenin.
@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
-  ms.date: 12/19/2019
-  ms.openlocfilehash: 66721caadce09816368d673c217c9bf97daf1b6c
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.date: 1/15/2020
+  ms.openlocfilehash: f4ae414179f77413e5d5daa4fda635e0bf24c2aa
+  ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75408644"
+  ms.lasthandoff: 01/17/2020
+  ms.locfileid: "76264110"
 landingContent:
 - title: Azure Haritalar hakkında
   linkLists:
@@ -94,7 +94,7 @@ landingContent:
       url: how-to-add-tile-layer-android-map.md
     - text: Haritaya şekil ekleme
       url: how-to-add-shapes-to-android-map.md
-- title: Konum Tabanlı Hizmetler ile geliştirme
+- title: Konum Tabanlı Hizmetler ile Geliştirme
   linkLists:
   - linkListType: concept
     links:

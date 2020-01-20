@@ -66,8 +66,6 @@
           href: enable-browser-connection-lab-virtual-machines.md
         - name: Maliyet yönetimini yapılandırma
           href: devtest-lab-configure-cost-management.md
-        - name: Otomatik kapatma bildirimleri gönderme
-          href: devtest-lab-auto-shutdown.md
         - name: Laboratuvar sanal makinelerinde otomatik başlatmayı ayarlama
           href: devtest-lab-auto-startup-vm.md
         - name: Laboratuvarınızı ölçeklendirme
@@ -124,8 +122,8 @@
           href: devtest-lab-resize-vm.md
         - name: Bir VM’yi yeniden dağıtma
           href: devtest-lab-redeploy-vm.md
-        - name: VM’nin otomatik kapatılmasını yapılandırma
-          href: devtest-lab-auto-shutdown-vm.md
+        - name: Bilgi işlem ve laboratuvar VM’lerinin otomatik kapatılmasını yapılandırma
+          href: devtest-lab-auto-shutdown.md
         - name: Talep edilebilir VM’ler oluşturma ve yönetme
           href: devtest-lab-add-claimable-vm.md
         - name: Gizli dizileri yapılandırma

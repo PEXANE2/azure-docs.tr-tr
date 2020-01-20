@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 54e1eb0be18de8e5ed420e96629d6f23473272fe
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545719"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261560"
 ---
 # <a name="durable-orchestrations"></a>Dayanıklı düzenlemeler
 
@@ -55,7 +55,9 @@ Bir Orchestration işlevine daha fazla iş verildiğinde (örneğin, bir yanıt 
 
 ## <a name="orchestration-history"></a>Düzenleme geçmişi
 
-Dayanıklı görev çerçevesinin olay kaynağını belirleme davranışı yazdığınız Orchestrator işlevi koduyla yakından ilişkilidir. Aşağıdaki C# Orchestrator işlevi gibi bir etkinlik zincirleme Orchestrator işlevinizin olduğunu varsayalım:
+Dayanıklı görev çerçevesinin olay kaynağını belirleme davranışı yazdığınız Orchestrator işlevi koduyla yakından ilişkilidir. Aşağıdaki Orchestrator işlevi gibi bir etkinlik zincirleme Orchestrator işlevinizin olduğunu varsayalım:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -73,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-JavaScript 'te kodlanıyorsanız, etkinlik zincirleme Orchestrator işleviniz aşağıdaki örnek koda benzeyebilir:
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -88,6 +90,8 @@ module.exports = df.orchestrator(function*(context) {
     return output;
 });
 ```
+
+---
 
 Her bir `await` (C#) veya `yield` (JavaScript) bildiriminde, dayanıklı görev çerçevesi, işlevin yürütme durumunu, bazı dayanıklı depolama arka ucuna (genellikle Azure Tablo Depolaması) kontrol noktaları. Bu durum, *düzenleme geçmişi*olarak adlandırılan şeydir.
 
@@ -106,9 +110,9 @@ Kontrol noktası tamamlandıktan sonra Orchestrator işlevi, kendisi için daha 
 
 Tamamlandıktan sonra, daha önce gösterilen işlevin geçmişi, Azure Tablo Depolaması 'nda aşağıdaki tabloya benzer bir şekilde görünür (çizim amaçları için kısaltılmış):
 
-| PartitionKey (InstanceId)                     | Türü             | Zaman damgası               | Girdi | Adı             | Sonuç                                                    | Durum |
+| PartitionKey (InstanceId)                     | Olay türü             | Zaman damgası               | Girdi | Ad             | Sonuç                                                    | Durum |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | değer  | E1_HelloSequence |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
 | eaee885b | Taskzamanlandı         | 2017-05-05T18:45:32.670 Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670 Z |       |                  |                                                           |                     |
@@ -182,7 +186,7 @@ Orchestrator işlevleri, çağrıduydukları etkinliğe veya alt Orchestrator i�
 
 Daha fazla bilgi ve örnekler için bkz. [hata işleme](durable-functions-error-handling.md) makalesi.
 
-### <a name="critical-sections-durable-functions-2x"></a>Kritik bölümler (Dayanıklı İşlevler 2. x)
+### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>Kritik bölümler (Dayanıklı İşlevler 2. x, şu anda yalnızca .NET)
 
 Düzenleme örnekleri tek iş parçacıklıdır, bu nedenle bir düzenleme *içindeki* yarış koşullarına endişelenmek için gerekli değildir. Ancak, bir yandan dış sistemlerle etkileşim kurarken yarış durumları mümkündür. Dış sistemlerle etkileşim kurarken yarış koşullarını azaltmak için, Orchestrator işlevleri .NET 'teki bir `LockAsync` yöntemi kullanarak *kritik bölümleri* tanımlayabilir.
 
@@ -212,7 +216,9 @@ Kritik bölüm özelliği, dayanıklı varlıklarda yapılan değişiklikleri ko
 
 Orchestrator işlevlerinin, [Orchestrator işlev kodu kısıtlamalarında](durable-functions-code-constraints.md)açıklandığı gibi g/ç yapmasına izin verilmez. Bu sınırlamaya yönelik tipik geçici çözüm, bir etkinlik işlevinde g/ç yapması gereken her türlü kodu sarmasıdır. Dış sistemlerle etkileşime geçen düzenlemeler, HTTP çağrıları yapmak ve sonucu düzenlemeye döndürmek için sık sık etkinlik işlevlerini kullanır.
 
-Orchestrator işlevleri, bu ortak kalıbı basitleştirmek için .NET 'teki `CallHttpAsync` yöntemini kullanarak doğrudan HTTP API 'Leri çağırabilir. `CallHttpAsync`, temel istek/yanıt düzenlerini desteklemeye ek olarak, ortak zaman uyumsuz HTTP 202 yoklama desenlerinin otomatik işlemesini destekler ve ayrıca [yönetilen kimlikleri](../../active-directory/managed-identities-azure-resources/overview.md)kullanarak dış hizmetlerle kimlik doğrulamasını destekler.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Bu ortak kalıbı basitleştirmek için Orchestrator işlevleri, HTTP API 'Lerini doğrudan çağırmak için `CallHttpAsync` yöntemini kullanabilir.
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -232,6 +238,8 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -244,6 +252,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
+Yöntemi, temel istek/yanıt düzenlerini desteklemeye ek olarak, ortak zaman uyumsuz HTTP 202 yoklama desenlerinin otomatik işlemesini destekler ve ayrıca [yönetilen kimlikleri](../../active-directory/managed-identities-azure-resources/overview.md)kullanarak dış hizmetlerle kimlik doğrulamasını destekler.
+
 Daha fazla bilgi ve ayrıntılı örnekler için bkz. [http özellikleri](durable-functions-http-features.md) makalesi.
 
 > [!NOTE]
@@ -251,9 +263,11 @@ Daha fazla bilgi ve ayrıntılı örnekler için bkz. [http özellikleri](durabl
 
 ### <a name="passing-multiple-parameters"></a>Birden çok parametre geçirme
 
-Birden çok parametreyi doğrudan bir etkinlik işlevine geçirmek mümkün değildir. Öneri, bir nesne dizisinde geçmektir veya .NET 'teki [Valuetuples](https://docs.microsoft.com/dotnet/csharp/tuples) nesnelerini kullanmaktır.
+Birden çok parametreyi doğrudan bir etkinlik işlevine geçirmek mümkün değildir. Öneri bir nesne veya bileşik nesne dizisinde geçmektir.
 
-Aşağıdaki örnek, [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples)ile eklenen [valuetuples](https://docs.microsoft.com/dotnet/csharp/tuples) 'in yeni özelliklerini kullanıyor:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+.NET ' te, [Valuetuples](https://docs.microsoft.com/dotnet/csharp/tuples) nesnelerini de kullanabilirsiniz. Aşağıdaki örnek, [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples)ile eklenen [valuetuples](https://docs.microsoft.com/dotnet/csharp/tuples) 'in yeni özelliklerini kullanıyor:
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -289,6 +303,36 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
     };
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="orchestrator"></a>Orchestrator
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const location = {
+        city: "Seattle",
+        state: "WA"
+    };
+    const weather = yield context.df.callActivity("GetWeather", location);
+
+    // ...
+};
+```
+
+#### <a name="activity"></a>Etkinlik
+
+```javascript
+module.exports = async function (context, location) {
+    const {city, state} = location; // destructure properties into variables
+
+    // ...
+};
+```
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
