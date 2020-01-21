@@ -3,12 +3,12 @@ title: Azure geçişi ile şirket içi sunuculardaki uygulamaları, rolleri ve �
 description: Azure geçişi sunucu değerlendirmesi ile şirket içi sunuculardaki uygulamaları, rolleri ve özellikleri bulmayı öğrenin.
 ms.topic: article
 ms.date: 11/20/2019
-ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 454d70a53c3ea00a4dc592703c0bc04d5517b97f
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029081"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280773"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Makine uygulamalarını, rolleri ve özellikleri bul
 
@@ -17,18 +17,18 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi kullanılarak şirket içi 
 Uygulamaların envanterini bulma ve şirket içi makinelerinizde çalışan roller/özellikler, iş yükleriniz için uyarlanmış bir Azure 'a geçiş yolu tanımlamanızı ve planlamanız sağlar.
 
 > [!NOTE]
-> Uygulama bulma Şu anda yalnızca VMware VM 'Leri için desteklenmektedir ve yalnızca bulma ile sınırlıdır. Henüz uygulama tabanlı değerlendirme sunmuyoruz.  Şimdi sunucu değerlendirmesi Şu anda şirket içi VMware VM 'leri, Hyper-V VM 'Leri ve makine düzeyindeki fiziksel sunucuları, yükseltme ve kaydırma geçişleri için değerlendirir.
+> Uygulama bulma Şu anda yalnızca VMware VM 'Leri için desteklenmektedir ve yalnızca bulma ile sınırlıdır. Henüz uygulama tabanlı değerlendirme sunmuyoruz. Şirket içi VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucular için makine tabanlı değerlendirme.
 
 Azure geçişi kullanarak uygulama bulma: Sunucu değerlendirmesi aracısız. Makinelere ve VM 'Lere hiçbir şeyin yüklü olması gerekir. Sunucu değerlendirmesi, makine konuk kimlik bilgileriyle birlikte bulma işlemi gerçekleştirmek için Azure geçişi gereci kullanır. Gereç, VMware API 'Lerini kullanarak VMware makinelerine uzaktan erişir.
 
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-1. Uygulama düzeyinde bulma için [destek sınırlamalarını](migrate-support-matrix-vmware.md#application-discovery) gözden geçirin.
-2. Bir Azure geçişi projesi [oluşturduğunuzdan](how-to-add-tool-first-time.md) emin olun.
-3. Zaten bir proje oluşturduysanız Azure geçişi: Sunucu değerlendirmesi [aracını eklediğinizden emin](how-to-assess.md) olun.
+1. Bir Azure geçişi projesi [oluşturduğunuzdan](how-to-add-tool-first-time.md) emin olun.
+2. Azure geçişi: Sunucu değerlendirmesi aracını bir [projeye eklediğinizden emin](how-to-assess.md) olun.
 4. Azure geçişi gereci ile VMware VM 'lerini bulmak ve değerlendirmek için [VMware gereksinimlerini](migrate-support-matrix-vmware.md#vmware-requirements) denetleyin.
-4. Azure geçişi gerecini dağıtmaya yönelik [gereksinimleri](migrate-appliance.md) kontrol edin.
+5. Azure geçişi gerecini dağıtmaya yönelik [gereksinimleri](migrate-appliance.md) kontrol edin.
+6. Uygulama bulma için [destek ve gereksinimleri doğrulayın](/migrate-support-matrix-vmware.md#application-discovery) .
 
 ## <a name="prepare-for-app-discovery"></a>Uygulama bulma için hazırlanma
 

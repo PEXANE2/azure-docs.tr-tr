@@ -3,12 +3,12 @@ title: MARS Aracısı için destek matrisi
 description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı çalıştıran makineleri yedeklerken Azure Backup desteği özetlenmektedir.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893986"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281283"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -88,21 +88,23 @@ MARS aracısını aşağıda belirtilen işletim sistemlerinde çalışan Azure 
 
 **İşletim sistemi** | **Dosyalar/klasörler** | **Sistem durumu** | **Yazılım/modül gereksinimleri**
 --- | --- | --- | ---
-Windows 10 (Enterprise, Pro, Home) | Yes | Hayır |  Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
-Windows 8.1 (Enterprise, Pro)| Yes |Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
-Windows 8 (Enterprise, Pro) | Yes | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Yes | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
-Windows Server 2016 (Standard, Datacenter, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
-Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
-Windows Server 2012 (Standard, Datacenter, Foundation) | Yes | Yes |-.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe)
-Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Yes | Yes | -.NET 3,5, .NET 4,5 <br> -Windows PowerShell <br> -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe)
-Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Yes | Hayır | -.NET 3,5, .NET 4,5 <br> -Windows PowerShell <br> -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe) <br> -Sanal sunucu 2005 tabanı + KB KB948515
-Windows Storage Server 2016/2012 R2/2012 (Standart, çalışma grubu) | Yes | Hayır | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
-Windows Server 2019 (Standard, Datacenter, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows 10 (Enterprise, Pro, Home) | Evet | Hayır |  Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows 8.1 (Enterprise, Pro)| Evet |Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows 8 (Enterprise, Pro) | Evet | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Evet | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows Server 2016 (Standard, Datacenter, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2012 (Standard, Datacenter, Foundation) | Evet | Evet |-.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe)
+Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Evet | Evet | -.NET 3,5, .NET 4,5 <br> -Windows PowerShell <br> -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe)
+Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Evet | Hayır | -.NET 3,5, .NET 4,5 <br> -Windows PowerShell <br> -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe) <br> -Sanal sunucu 2005 tabanı + KB KB948515
+Windows Storage Server 2016/2012 R2/2012 (Standart, çalışma grubu) | Evet | Hayır | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2019 (Standard, Datacenter, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 
 Daha fazla bilgi için bkz. [desteklenen MABS ve DPM işletim sistemleri](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 
 ## <a name="backup-limits"></a>Yedekleme limitleri
+
+### <a name="size-limits"></a>Boyutu sınırları
 
 Azure Backup yedeklenebilir bir dosya veya klasör veri kaynağı boyutunu sınırlandırır. Tek bir birimden yedeklediğiniz öğeler bu tabloda özetlenen boyutları aşamaz:
 
@@ -114,6 +116,10 @@ Windows Server 2008 SP2| 1\.700 GB
 Windows 8 veya üzeri| 54.400 GB
 Windows 7| 1\.700 GB
 
+### <a name="other-limitations"></a>Diğer sınırlamalar
+
+- MARS, tek bir kasada aynı ada sahip birden fazla makinenin korunmasını desteklemez.
+
 ## <a name="supported-file-types-for-backup"></a>Yedekleme için desteklenen dosya türleri
 
 **Tür** | **Destek**
@@ -122,12 +128,12 @@ Windows 7| 1\.700 GB
 Sıkıştırılmış | Destekleniyor.
 Seyrek | Destekleniyor.
 Sıkıştırılmış ve seyrek |Destekleniyor.
-Sabit bağlantılar| Desteklenmiyor. Atlanmış.
-Yeniden ayrıştırma noktası| Desteklenmiyor. Atlanmış.
-Şifrelenmiş ve seyrek |Desteklenmiyor. Atlanmış.
-Sıkıştırılmış akış| Desteklenmiyor. Atlanmış.
-Aralıklı akış| Desteklenmiyor. Atlanmış.
-OneDrive (eşitlenen dosyalar seyrek akışlardır)| Desteklenmiyor.
+Sabit bağlantılar| Desteklenmez. Atlanmış.
+Yeniden ayrıştırma noktası| Desteklenmez. Atlanmış.
+Şifrelenmiş ve seyrek |Desteklenmez. Atlanmış.
+Sıkıştırılmış akış| Desteklenmez. Atlanmış.
+Aralıklı akış| Desteklenmez. Atlanmış.
+OneDrive (eşitlenen dosyalar seyrek akışlardır)| Desteklenmez.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Yedekleme için desteklenen sürücüler veya birimler
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 1c721685e12c417116888ccc3cf8d25123761933
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fa8bc56376704b96f5ddee09db7b09e28f10a936
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978620"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281249"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>Portal kullanarak MySQL için Azure veritabanı (Önizleme) için özel bağlantı oluşturma ve yönetme
 
@@ -165,7 +165,7 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
     | Alt ağ |  *Mysubnet*öğesini seçin. |
     |**ÖZEL DNS TÜMLEŞTIRMESI**||
     |Özel DNS bölgesiyle tümleştirin |**Evet**’i seçin. |
-    |Özel DNS bölgesi |Seçin *(yeni) Privatelink. Database. Azure. com* |
+    |Özel DNS bölgesi |Seç *(yeni) Privatelink. MySQL. Database. Azure. com* |
     |||
 
 1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
@@ -203,14 +203,14 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
 
 1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
 
-2.  `nslookup  myServer.mysql.privatelink.database.azure.com`girin. 
+2.  `nslookup  myServer.privatelink.mysql.database.azure.com`girin. 
 
     Şuna benzer bir ileti alacaksınız:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
     Non-authoritative answer:
-    Name:    myServer.mysql.privatelink.database.azure.com
+    Name:    myServer.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
 
 3. Test the private link connection for the MySQL server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
@@ -220,7 +220,7 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
     | Setting | Value |
     | ------- | ----- |
     | Server type| Select **MySQL**.|
-    | Server name| Select *myServer.mysql.privatelink.database.azure.com* |
+    | Server name| Select *myServer.privatelink.mysql.database.azure.com* |
     | User name | Enter username as username@servername which is provided during the MySQL server creation. |
     |Password |Enter a password provided during the MySQL server creation. |
     |SSL|Select **Required**.|

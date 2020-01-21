@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: b13ad375adf20a606b48755a6d57851abf89e549
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4bc2e67d276deeea01989ed76be7352ce27abd71
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454650"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280824"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Değerlendirme için aracısız bağımlılık görselleştirmesini ayarlama
 
-Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlılık eşlemesinin nasıl ayarlanacağı açıklanır. Bu özellik şu anda Azure geçiş gereci kullanılarak bulunan VMware makineleri için önizleme aşamasında mevcuttur. 
+Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlılık eşlemesinin nasıl ayarlanacağı açıklanır. 
 
 > [!IMPORTANT]
 > Aracısız bağımlılık görselleştirmesi Şu anda Azure geçiş gereci kullanılarak bulunan Azure VMware VM 'Leri için önizleme aşamasındadır.
@@ -54,17 +54,8 @@ Aracısız bağımlılık görselleştirmesi, makinelere herhangi bir aracı yü
 - Aracısız bağımlılık Analizi Şu anda yalnızca VMware makineleri için kullanılabilir.
 - Zaten bir proje oluşturduysanız Azure geçişi: Sunucu değerlendirmesi [aracını eklediğinizden emin](how-to-assess.md) olun.
 - Azure geçişi 'nde VMware makinelerinizi keşfetdiğinizden emin olun; Bunu, [VMware](how-to-set-up-appliance-vmware.md)Için bir Azure geçiş gereci ayarlayarak yapabilirsiniz. Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir. [Daha fazla bilgi edinin](migrate-appliance.md).
-- VMware VM 'lerinin, aşağıdaki tabloda özetlenen aracısız bağımlılık görselleştirmesi için desteklendiğinden emin olun.
+- Aracısız bağımlılık görselleştirmesini ayarlama [gereksinimlerini gözden geçirin](migrate-support-matrix-vmware.md#agentless-dependency-visualization) .
 
-
-### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
-
-Aracısız bağımlılık görselleştirmesi için desteklenen işletim sistemleri aşağıdaki gibidir.
-
-**Tür** | **Desteklenen işletim sistemleri**
---- | ---
-**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64-bit)
-**Linux** | Red Hat Enterprise Linux 7, 6, 5 <br/> Ubuntu Linux 14,04, 16,04 <br/> Desek6, 8 <br/> Oracle Linux 6, 7 <br/> CentOS 5, 6, 7  
 
 
 ## <a name="create-a-user-account-for-discovery"></a>Bulma için bir kullanıcı hesabı oluşturma

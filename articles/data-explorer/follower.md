@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 41d48bdd7cc7972536d0cf0e0cb78483f727d7f2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: eb0b5ea960aa7bc9158791d1fc9fa0986e7d99e6
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277011"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281351"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Azure Veri Gezgini veritabanlarını eklemek için izleyici veritabanını kullanma
 
@@ -383,6 +383,7 @@ Salt okunurdur veritabanını yönetme izni tüm veritabanı türleriyle aynıd�
 
 * İzleme ve öncü kümelerin aynı bölgede olması gerekir.
 * [Akış](/azure/data-explorer/ingest-data-streaming) alımı, izlenebilecek bir veritabanında kullanılamaz.
+* [Müşteri tarafından yönetilen anahtarlar](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) kullanılarak veri şifrelemesi hem öncü hem de izleyici kümelerinde desteklenmez. 
 * Ayırmayı yapmadan önce farklı bir kümeye bağlı bir veritabanını silemezsiniz.
 * Bir veritabanını kullanımdan çıkarmadan önce farklı bir kümeye eklenmiş bir kümeyi silemezsiniz.
 * Bağlı izleyici veya öncü veritabanı olan bir kümeyi durduramazsınız. 

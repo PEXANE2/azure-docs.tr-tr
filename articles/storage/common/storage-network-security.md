@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 5e4a8afdb9bea4f528e57c914149f611b0578c63
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 28e3f276da231ef0186dba8ecd9c064cdd10a5a8
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973467"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281232"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -60,7 +60,7 @@ Varsayılan olarak, depolama hesapları herhangi bir ağ üzerinde istemci bağl
 
 Azure portalı, PowerShell veya CLIv2 aracılığıyla depolama hesapları için varsayılan ağ erişim kurallarını yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure portalında
 
 1. Korumak istediğiniz depolama hesabına gidin.
 
@@ -144,7 +144,7 @@ Depolama hesabı ve erişim verilen sanal ağlar, farklı bir Azure AD kiracıs�
 
 Azure portalı, PowerShell veya CLIv2 aracılığıyla depolama hesapları için sanal ağ kuralları yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure portalında
 
 1. Korumak istediğiniz depolama hesabına gidin.
 
@@ -268,7 +268,7 @@ Depolama hesabınıza bir IP ağ kuralı ile şirket içi ağlarınızı erişim
 
 Azure portalı, PowerShell veya CLIv2 aracılığıyla depolama hesapları için IP ağ kuralları yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure portalında
 
 1. Korumak istediğiniz depolama hesabına gidin.
 
@@ -381,7 +381,7 @@ Bazı Microsoft Hizmetleri, ağ kurallarınıza dahil olmayan ağlardan çalış
 | Azure HDInsight          | Microsoft.HDInsight        | Yeni bir HDInsight kümesi için varsayılan dosya sisteminin başlangıçtaki içeriğini sağlayın. [Daha fazla bilgi edinin](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
 | Azure Içeri aktarma dışarı aktarma      | Microsoft.ImportExport     | Içeri/dışarı aktarma hizmeti kullanılarak verilerin Azure 'a içeri aktarılmasını ve Azure 'dan dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](/azure/storage/common/storage-import-export-service).  |
 | Azure İzleyici            | Microsoft.Insights         | İzleme verilerinin bir güvenli depolama hesabına yazma sağlayan [daha fazla bilgi edinin](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
-| Azure Ağı         | Microsoft.Network          | Store ve ağ trafik günlüklerini analiz edin. [Daha fazla bilgi edinin](/azure/network-watcher/network-watcher-packet-capture-overview). |
+| Azure Ağı         | Microsoft.Network          | Store ve ağ trafik günlüklerini analiz edin. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | Güvenlik Duvarı özellikli önbellek, kaynak veya hedef depolama hesapları kullanırken Azure IaaS sanal makinelerinin olağanüstü durum kurtarma için çoğaltmayı etkinleştirin.  [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 
 **Güvenilen Microsoft hizmetlerine Izin ver...** ayarı aynı zamanda bu kaynak örneği için [sistem tarafından atanan YÖNETILEN kimliğe](../../active-directory/managed-identities-azure-resources/overview.md) [bir RBAC rolü atarsanız](storage-auth-aad.md#assign-rbac-roles-for-access-rights) , aşağıdaki hizmetlerin belirli bir örneğinin depolama hesabına erişmesine izin verir. Bu durumda, örnek için erişim kapsamı yönetilen kimliğe atanan RBAC rolüne karşılık gelir.
@@ -405,7 +405,7 @@ Bazı durumlarda, tanılama günlükleri ve ölçümleri okuma erişimi ağ sın
 
 Ağ kuralı özel durumlarını Azure portal, PowerShell veya Azure CLI aracılığıyla yönetebileceğiniz v2.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure portalında
 
 1. Korumak istediğiniz depolama hesabına gidin.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Metin Analizi istemci kitaplığı v3 | Microsoft Docs'
+title: 'Hızlı başlangıç: Metin Analizi istemci kitaplığı v2 | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'deki Metin Analizi API'si kullanarak dili algılayın.
 services: cognitive-services
@@ -8,48 +8,54 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/15/2020
+ms.date: 12/19/2019
 ms.author: aahi
-zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 41e6828f03533bfd239f6408a580150e614eb5e7
+zone_pivot_groups: programming-languages-set-five
+ms.openlocfilehash: bca4927967ed38c7bc2c7f0f5bd32b25949ad079
 ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281207"
+ms.locfileid: "76281358"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-v3"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığı v3 kullanın
+# <a name="quickstart-use-the-text-analytics-client-library-v2"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığı v2 'yi kullanma
 
-Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
+Metin Analizi istemci kitaplığı v2 ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 
-Şunları yapmak için Metin Analizi istemci kitaplığı sürümünü `3.0-preview` kullanın:
+Metin Analizi istemci kitaplığı v2 'yi kullanarak şunları gerçekleştirin:
 
-* Yaklaşım Analizi (Genel Önizleme)
+* Duygu analizi
 * Dil algılama
-* Adlandırılmış varlık tanıma (Genel Önizleme)
+* Varlık tanıma
 * Anahtar tümcecik ayıklama
 
 ::: zone pivot="programming-language-csharp"
 
-[!INCLUDE [C# quickstart](../includes/quickstarts/v3/csharp.md)]
+[!INCLUDE [C# quickstart](../includes/quickstarts/v2/csharp.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-[!INCLUDE [Python quickstart](../includes/quickstarts/v3/python-sdk.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-java"
-
-[!INCLUDE [Java quickstart](../includes/quickstarts/v3/java-sdk.md)]
+[!INCLUDE [Python quickstart](../includes/quickstarts/v2/python-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-nodejs"
 
-[!INCLUDE [NodeJS quickstart](../includes/quickstarts/v3/nodejs-sdk.md)]
+[!INCLUDE [NodeJS quickstart](../includes/quickstarts/v2/nodejs-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-go"
+
+[!INCLUDE [Go quickstart](../includes/quickstarts/v2/go-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-ruby"
+
+[!INCLUDE [Ruby quickstart](../includes/quickstarts/v2/ruby-sdk.md)]
 
 ::: zone-end
 
@@ -63,7 +69,8 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Çözüm keşfet](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
+> [Power BI ile Metin Analizi](../tutorials/tutorial-power-bi-key-phrases.md)
+
 
 * [Metin Analizine genel bakış](../overview.md)
 * [Yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)

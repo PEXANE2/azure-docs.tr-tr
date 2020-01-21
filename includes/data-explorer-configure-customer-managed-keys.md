@@ -4,17 +4,19 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 01/07/2020
 ms.author: orspodek
-ms.openlocfilehash: 5443ee6912c30b89cee6fdb43f84f3bc1fbcfe68
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0d78e48fead7b1f53e67860e6be8fe6d77469e87
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021164"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280619"
 ---
 Azure Veri Gezgini, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, veri şifrelemesi için kullanmak üzere müşteri tarafından yönetilen anahtarlar sağlayabilirsiniz. Müşteri tarafından yönetilen anahtarların bir [Azure Key Vault](/azure/key-vault/key-vault-overview)depolanması gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtarlar oluşturmak için bir Azure Key Vault API kullanabilirsiniz. Azure Veri Gezgini kümesi ve Anahtar Kasası aynı bölgede olmalıdır, ancak farklı aboneliklerde olabilir. Müşteri tarafından yönetilen anahtarlar hakkında ayrıntılı bir açıklama için bkz. [Azure Key Vault ile müşteri tarafından yönetilen anahtarlar](/azure/storage/common/storage-service-encryption). Bu makalede, müşteri tarafından yönetilen anahtarların nasıl yapılandırılacağı gösterilir.
 
-> [!Note]
-> Müşteri tarafından yönetilen anahtarları Azure Veri Gezgini ile yapılandırmak için [anahtar kasasında iki özellik ayarlamanız](/azure/key-vault/key-vault-ovw-soft-delete)gerekir: **geçici silme** ve **Temizleme**. Bu özellikler varsayılan olarak etkin değildir. Bu özellikleri etkinleştirmek için [PowerShell](/azure/key-vault/key-vault-soft-delete-powershell) veya [Azure CLI](/azure/key-vault/key-vault-soft-delete-cli)kullanın. Yalnızca RSA anahtarları ve anahtar boyutu 2048 desteklenir.
+Müşteri tarafından yönetilen anahtarları Azure Veri Gezgini ile yapılandırmak için [anahtar kasasında iki özellik ayarlamanız](/azure/key-vault/key-vault-ovw-soft-delete)gerekir: **geçici silme** ve **Temizleme**. Bu özellikler varsayılan olarak etkin değildir. Bu özellikleri etkinleştirmek için [PowerShell](/azure/key-vault/key-vault-soft-delete-powershell) veya [Azure CLI](/azure/key-vault/key-vault-soft-delete-cli)kullanın. Yalnızca RSA anahtarları ve anahtar boyutu 2048 desteklenir.
+
+> [!NOTE]
+> Müşteri tarafından yönetilen anahtarlar kullanılarak veri şifrelemesi [öncü ve izleme kümelerinde](/azure/data-explorer/follower)desteklenmez. 
 
 ## <a name="assign-an-identity-to-the-cluster"></a>Kümeye bir kimlik atama
 

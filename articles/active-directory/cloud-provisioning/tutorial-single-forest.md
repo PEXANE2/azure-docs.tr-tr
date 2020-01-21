@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 691c8e8d2f2c6c8e9472ba7a4ae83d8b76f2850c
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7f7c348e29fa2234627a53095a99e913a6389a27
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868737"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280977"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Öğretici: tek bir Azure AD kiracısı ile tek bir ormanı tümleştirme
 
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile bağlantı bulutu sağlam
 
 Bu öğreticide oluşturduğunuz ortamı, test için veya bulut sağlaması hakkında daha fazla bilgi almak için kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory Yönetim merkezinde
 
 1. Azure AD kiracınızda yalnızca bulutta yer alan bir genel yönetici hesabı oluşturun. Bu şekilde, şirket içi hizmetleriniz başarısız olması veya kullanılamaz hale gelmesi için kiracınızın yapılandırmasını yönetebilirsiniz. [Yalnızca bulut genel yönetici hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu adımın tamamlanması, kiracınızdan kilitlenmemesini sağlamak açısından önemlidir.
@@ -34,7 +34,7 @@ Bu öğreticide oluşturduğunuz ortamı, test için veya bulut sağlaması hakk
 
 ### <a name="in-your-on-premises-environment"></a>Şirket içi ortamınızda
 
-1. En az 4 GB RAM ve .NET 4.7.1 + Runtime ile Windows Server 2012 R2 veya üzeri çalıştıran etki alanına katılmış bir ana bilgisayar sunucusu kimliği 
+1. En az 4 GB RAM ve .NET 4.7.1 + Runtime ile Windows Server 2012 R2 veya üzeri çalıştıran etki alanına katılmış bir konak sunucusu belirler 
 
 2. Sunucularınız ve Azure AD arasında bir güvenlik duvarı varsa, aşağıdaki öğeleri yapılandırın:
    - Aracıların Azure AD 'ye aşağıdaki bağlantı noktaları üzerinden *giden* istekler yapabilmeleri için emin olun:
@@ -55,7 +55,7 @@ Bu öğreticide oluşturduğunuz ortamı, test için veya bulut sağlaması hakk
 2. Yalnızca bulutta bulunan genel yönetici kimlik bilgilerini kullanarak Azure portal oturum açın.
 3. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect**' a tıklayın ve ortadaki **sağlamayı Yönet (Önizleme)** seçeneğini belirleyin.
 
-   ![Azure portalı](media/how-to-install/install6.png)
+   ![Azure portalında](media/how-to-install/install6.png)
 
 4. **Aracıyı indir**' e tıklayın.
 5. Azure AD Connect sağlama aracısını çalıştırın.
@@ -85,7 +85,7 @@ Aracının Azure tarafından görüldüğünü doğrulamak için şu adımları 
 
 1. Azure Portal’da oturum açın.
 2. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect** ' a tıklayın ve ardından **yönetimi sağlama (Önizleme)** seçeneğini belirleyin.</br>
-![Azure portalda](media/how-to-install/install6.png)</br>
+![Azure Portal](media/how-to-install/install6.png)</br>
 
 3.  **Azure AD sağlama (Önizleme)** ekranında **tüm aracıları gözden geçir**' e tıklayın.
 Azure AD sağlama](media/how-to-install/install7.png) ![</br>

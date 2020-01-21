@@ -18,12 +18,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 0b71566b802076f437fd23c08dfd6b23d4fd2fba
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 7f4466b6f6de5028db8b62389c9d5ddbdafc9d62
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170267"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280994"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal makineye gelen ve sanal makineden giden ağ trafiğini günlüğe kaydetme
 
@@ -107,9 +107,8 @@ NSG akış günlüğü kaydı için **Microsoft.Insights** sağlayıcısı gerek
 
 9. 3\. adımda oluşturduğunuz depolama hesabını seçin.
    > [!NOTE]
-   > NSG akış günlükleri şu durumlarda depolama hesaplarıyla çalışmaz:
-   > * Depolama hesaplarında güvenlik duvarı etkinleştirilmiştir.
-   > * Depolama hesaplarında [hiyerarşik ad alanı](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) etkindir.
+   > NSG akış günlükleri şu durumlarda bir depolama hesabıyla çalışmaz:
+   > * Depolama hesabının etkin bir [hiyerarşik ad alanı](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) vardır.
 1. Portalın sol üst köşesinde **Tüm hizmetler**’i seçin. **Filtre** kutusuna *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde onu seçin.
 10. **Bekletme (gün)** değerini 5 olarak ayarlayın ve **Kaydet**’i seçin.
 
