@@ -63,7 +63,7 @@
     - name: Yüksek Kullanılabilirlik bağlantı noktaları
       href: load-balancer-ha-ports-overview.md
     - name: IPv6 desteği
-      href: load-balancer-ipv6-overview.md
+      href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-overview'
     - name: Birden çok ön uç
       href: load-balancer-multivip-overview.md
     - name: Giden bağlantılar
@@ -107,11 +107,11 @@
     - name: IPv6 ile genel Load Balancer oluşturma
       items:
         - name: Azure CLI
-          href: load-balancer-ipv6-internet-cli.md
+          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
-          href: load-balancer-ipv6-internet-ps.md
+          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
         - name: Şablon
-          href: load-balancer-ipv6-internet-template.md
+          href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
     - name: İç Load Balancer yapılandırma
       items:
         - name: Azure CLI
