@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 807bb4b4dd07298635ff0cd3e18f095ccf862e91
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9ebc418327d8c73198d43d3c40e14d48c73ad209
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989806"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290249"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure rezervasyon indirimini sanal makinelere uygulama
 
@@ -47,7 +47,7 @@ Bir kaynağı kapattığınızda rezervasyon indirimi, belirtilen kapsamdaki ba�
 
 ![Uygulanan bir rezervasyonun ve eşleşen iki VM örneğinin ekran görüntüsü](./media/understand-vm-reservation-charges/billing-reserved-vm-instance-application.png)
 
-1. Rezervasyon çizgisinin üstündeki kullanımlar normal kullandıkça öde fiyatlarından ücretlendirilir. Rezervasyon çizgisinin altındaki kullanımlardan ücretlendirilmezsiniz çünkü rezervasyon alışverişi kapsamında zaten ödenmiştir.
+1. Rezervasyon çizgisinin üstündeki kullanımlar normal kullandıkça öde fiyatlarından ücretlendirilir. Daha önce rezervasyon satın alma işlemi kapsamında ödendiğinden, rezervasyonlar satırının altındaki herhangi bir kullanım için ücretlendirilirsiniz.
 2. 1\. saatte 1. örnek 0,75 saat ve 2. örnek 0,5 saat çalışıyor. 1\. saat için toplam kullanım 1,25 saattir. Artan 0,25 saat için kullandıkça öde fiyatlarından ücretlendirilirsiniz.
 3. 2\. saat ve 3. saat için her iki örnek de 1 saat çalışıyor. Örneklerden biri rezervasyonun kapsamına girer ve diğeri kullandıkça öde fiyatlarından ücretlendirilir.
 4. 4\. saatte 1. örnek 0,5 saat ve 2. örnek 1 saat çalışıyor. 1\. örnek tümüyle rezervasyon kapsamındadır ve 2. örneğin 0,5 saatlik kısmı kapsama gider. Artan 0,5 saat için kullandıkça öde fiyatından ücretlendirilirsiniz.

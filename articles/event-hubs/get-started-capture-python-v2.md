@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d7a0c757f7314e45d5b4d13273df984739912b27
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 43223f7cb9ed254340c99d235d494d1e93583c7f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942418"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293547"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-using-python"></a>Azure depolama 'da Event Hubs verileri yakalayın ve Python kullanarak okuyun 
 Bir olay hub 'ına gönderilen verilerin bir Azure depolama alanında veya Azure Data Lake Storage yakalanabilmesi için bir olay hub 'ı yapılandırma kullanabilirsiniz. Bu makalede, bir olay hub 'ına olayları göndermek ve Azure Blob depolamadan yakalanan verileri okumak için Python kodu yazma ' nın nasıl kullanılacağı gösterilmektedir. Bu özellik hakkında daha fazla bilgi için [Event Hubs yakalama özelliğine genel bakış](event-hubs-capture-overview.md)bölümüne bakın.
@@ -42,9 +42,9 @@ Bu hızlı başlangıçta:
 - Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 - [Ad alanında bir Event Hubs ad alanı ve bir olay hub 'ı oluşturun](event-hubs-create.md). Ad alanı adı, Olay Hub 'ı adı ve ad alanı için birincil erişim anahtarı ' na göz önünde Event Hubs. Makale: [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)makalesindeki yönergeleri izleyerek erişim anahtarını alın. Varsayılan anahtar adı: **RootManageSharedAccessKey**. Öğretici için bağlantı dizesine ihtiyacınız yoktur. Yalnızca birincil anahtara ihtiyacınız vardır. 
 - Bir **Azure depolama hesabı** ve bir **BLOB kapsayıcısı**oluşturmak için aşağıdaki adımları izleyin:
-    1. [Bir Azure depolama hesabı oluşturun](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
-    2. [Depolama alanında bir blob kapsayıcısı oluşturun](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
-    3. [Bağlantı dizesini depolama hesabına al](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
+    1. [Bir Azure depolama hesabı oluşturun](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
+    2. [Depolama alanında bir blob kapsayıcısı oluşturun](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
+    3. [Bağlantı dizesini depolama hesabına alın](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string).
 
         **Bağlantı dizesi** ve **kapsayıcı adı**' nı aklınızda edin. Bunları daha sonra bu kodda kullanacaksınız. 
 - Aşağıdaki yönergeleri izleyerek Olay Hub 'ı için **yakalama** özelliğini etkinleştirin: [Azure Portal kullanarak Event Hubs yakalamayı etkinleştirin](event-hubs-capture-enable-through-portal.md). Önceki adımda oluşturduğunuz depolama hesabını ve BLOB kapsayıcısını seçin. Ayrıca, bir olay hub 'ı oluştururken özelliği etkinleştirebilirsiniz. 

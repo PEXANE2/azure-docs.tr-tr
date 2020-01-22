@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 680cf04e79a9cb6d5748723dad3cb37cf3c76468
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428555"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314224"
 ---
 # <a name="cross-validate-model"></a>Modeli Çapraz Doğrulama
 
-Bu makalede, Azure Machine Learning Tasarımcısı 'nda (Önizleme) çapraz doğrulama modeli modülünün nasıl kullanılacağı açıklanır. *Çapraz doğrulama* , genellikle bir veri kümesinin çeşitliliğini ve bu verilerden eğitilen herhangi bir modelin güvenilirliğini değerlendirmek için makine öğreniminde kullanılan bir tekniktir.  
+Bu makalede, Azure Machine Learning tasarımcısında çapraz Validate modeli modülünün nasıl kullanılacağı açıklanır. *Çapraz doğrulama* , genellikle bir veri kümesinin çeşitliliğini ve bu verilerden eğitilen herhangi bir modelin güvenilirliğini değerlendirmek için makine öğreniminde kullanılan bir tekniktir.  
 
 Çapraz Validate model modülü, bir etiketli veri kümesi olarak, eğitilmiş bir sınıflandırma veya regresyon modeliyle birlikte giriş olarak alır. Veri kümesini bazı alt*kümeler (kat*) halinde böler, her katlama üzerinde bir model oluşturur ve ardından her katlama için bir doğruluk istatistikleri kümesi döndürür. Tüm katların doğruluk istatistiklerini karşılaştıran şekilde, veri kümesinin kalitesini yorumlayabilir. Daha sonra modelin veride çeşitliliğe açık olup olmadığını anlayabilirsiniz.  
 
@@ -76,7 +76,7 @@ Bu senaryoda, çapraz doğrulama modelini kullanarak modeli eğitetin ve test ed
 
 7. Raporların açıklaması için [sonuçlar](#results) bölümüne bakın.
 
-    Modelin daha sonra yeniden kullanmak üzere bir kopyasını almak için, algoritmayı içeren modülün çıktısına sağ tıklayın (örneğin, **Iki sınıf Bayes noktası makinesi**). Ardından **eğitilen model olarak kaydet**' i seçin.
+    Modelin daha sonra yeniden kullanmak üzere bir kopyasını almak için, algoritmayı içeren modülün sağ panelindeki **çıktılar** sekmesine geçin (örneğin, **Iki sınıf Bayes noktası makinesi**). Ardından, modül ağacında eğitilen modelin bir kopyasını kaydetmek için **veri kümesini kaydet** simgesini seçin.
 
 ## <a name="results"></a>Sonuçlar
 
@@ -86,7 +86,7 @@ Tüm yinelemeler tamamlandıktan sonra, çapraz doğrulama modeli, tüm veri kü
 
 Modülün ilk çıktısı, bazı tahmin edilen değerler ve ilgili olasılıkların yanı sıra her satır için kaynak verileri sağlar. 
 
-Bu sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli modülüne sağ tıklayın. **Puanlanmış sonuçları**seçin ve ardından **Görselleştir**' i seçin.
+Sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli modülüne sağ tıklayın. **Puanlanmış sonuçları görselleştirin**' i seçin.
 
 | Yeni sütun adı      | Açıklama                              |
 | -------------------- | ---------------------------------------- |
@@ -100,7 +100,7 @@ Bu sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli
 
 Bu raporda, katların dizin değeri, artan sırada listelenir.  Diğer herhangi bir sütunu sıralamak için sonuçları bir veri kümesi olarak kaydedebilirsiniz.
 
-Bu sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli modülüne sağ tıklayın. **Değerlendirme sonuçlarını katlayarak**seçin ve ardından **Görselleştir**' i seçin.
+Sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli modülüne sağ tıklayın. **Değerlendirme sonuçlarını katlayarak görselleştirin**' i seçin.
 
 
 |Sütun adı| Açıklama|

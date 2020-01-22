@@ -1,51 +1,51 @@
 ---
-title: Ana bilgisayar depolama, Azure Depolama'ya taşıma
-description: Yüksek düzeyde ölçeklenebilir bir Azure storage kaynakları, geçirme ve IBM z14 uygulamaları modernleştirin, kuruluşların ana bilgisayar tabanlı yardımcı olur.
+title: Ana bilgisayar depolama alanını Azure Storage 'a taşıma
+description: Büyük oranda ölçeklenebilir Azure depolama kaynakları, ana bilgisayar tabanlı kuruluşların IBM Z14 uygulamalarına geçiş ve modernleştirin yardımcı olabilir.
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: dc78f87d9b47745119da91b8ed1f8f6c8572968c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190438"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288924"
 ---
-# <a name="move-mainframe-storage-to-azure"></a>Ana bilgisayar depolama Azure'a taşıyın
+# <a name="move-mainframe-storage-to-azure"></a>Ana bilgisayar depolama alanını Azure 'a taşıma
 
-Ana bilgisayar iş yüklerini Microsoft Azure'da çalıştırmak için ana bilgisayar ait özellikleri Azure'a nasıl karşılaştırma bilmeniz gerekir. Yüksek düzeyde ölçeklenebilir depolama kaynaklarını bunlar uygulamalardan vazgeçmek olmadan modernleştirin başlamak kuruluşların yardımcı olur.
+Microsoft Azure ana bilgisayar iş yüklerini çalıştırmak için, ana bilgisayarınızın yeteneklerini Azure ile nasıl karşılaştırılacağını bilmeniz gerekir. Yüksek düzeyde ölçeklenebilir depolama kaynakları, kuruluşların, kullandıkları uygulamaları bırakmadan modernleştirin olmaya başlamasını sağlayabilir.
 
-Azure ana bilgisayar gibi özellikleri ve IBM z14 tabanlı sistemlerde (şu andan itibaren en güncel modeli) için karşılaştırılabilir depolama kapasitesi sağlar. Bu makalede, Azure üzerinde benzer sonuçlar elde etmek nasıl bildirir.
+Azure, IBM Z14 tabanlı sistemlerle karşılaştırılabilen ana bilgisayar benzeri özellikler ve depolama kapasitesi (Bu yazarken en güncel model) sağlar. Bu makale, Azure 'da nasıl karşılaştırılabilir sonuçlar elde etmek için size bildirir.
 
-## <a name="mainframe-storage-at-a-glance"></a>Bir bakışta anabilgisayar depolama
+## <a name="mainframe-storage-at-a-glance"></a>Tek bakışta ana bilgisayar depolaması
 
-IBM ana bilgisayar, iki yolla depolama belirtir. Doğrudan erişim depolama cihazı (DASD) davranıştır. İkinci sıralı depolamadır. Depolama Yönetimi için ana bilgisayar veri tesis Depolama Yönetimi alt sisteminin (DFSMS) sağlar. Bu, çeşitli depolama cihazları veri erişimini yönetir.
+IBM ana bilgisayar, depolamayı iki şekilde biçimlendirir. Birincisi, doğrudan erişimli bir depolama cihazdır (DAVSD). İkincisi sıralı bir depodır. Ana bilgisayar, depolamayı yönetmek için veri tesis depolama yönetimi alt sistemi (DFSMS) sağlar. Çeşitli depolama cihazlarına veri erişimini yönetir.
 
-[DASD](https://en.wikipedia.org/wiki/Direct-access_storage_device) (veri doğrudan erişim için kullanılacak benzersiz bir adresi izin veren ikincil değil bellek içi) depolama alanı için ayrı bir cihazı gösterir. İlk olarak, terim DASD diskler, manyetik tamburlar veya veri hücrelerini dönen için uygulanır. Ancak, terim (SSD) katı hal depolama cihazları için de uygulayabilirsiniz şimdi depolama alanı ağları (SAN'lar), ağa bağlı depolama (NAS) ve optik sürücüler. Bu belgenin amacı doğrultusunda, SAN'ları ve SSD diskleri dönen için DASD ifade eder.
+[Davsd](https://en.wikipedia.org/wiki/Direct-access_storage_device) , verilere doğrudan erişim için benzersiz bir adresin kullanılmasına izin veren ikincil (bellek içi olmayan) depolama alanı için ayrı bir cihaza başvurur. Başlangıçta, dönen disklere, manyetik kuruma veya veri hücrelerine uygulanan BASD terimi. Ancak artık terim, katı hal depolama cihazları (SSD), depolama alanı ağları (San 'Lar), ağa bağlı depolama (NAS) ve optik sürücüler için de uygulanabilir. Bu belgenin amaçları doğrultusunda, DAVSD, dönen diskler, San 'Lar ve SSD 'Ler anlamına gelir.
 
-DASD depolama aksine, bir ana bilgisayar üzerinde sıralı depolama burada veri erişilen bir başlangıç noktasından sonra okuyun veya bir satır olarak yazılmış bant sürücüleri gibi cihazları ifade eder.
+PASD depolamanın aksine, bir ana bilgisayar üzerindeki sıralı depolama, verilere bir başlangıç noktasından erişildiği ve sonra bir satıra okunan veya yazılan bant sürücüleri gibi cihazlara başvurur.
 
-Depolama cihazları genellikle bir fiber bağlantısı (FICON) kullanılarak bağlı veya doğrudan ana bilgisayar'ın g/ç yolu üzerinden erişilen [HiperSockets](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.znetwork/znetwork_85.htm), bir IBM teknolojisi ile bir sunucu üzerinde bölümler arasında yüksek hızlı iletişimler için bir Hiper yönetici.
+Depolama cihazları genellikle bir fiber bağlantı (FıCON) kullanılarak bağlanır veya bir sunucu üzerindeki, hiper yönetici ile bir sunucudaki bölümler arasındaki yüksek hızlı iletişimler için bir IBM teknolojisi olan [HiperSockets](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.znetwork/znetwork_85.htm)kullanarak doğrudan ana bilgisayarın g/ç veri yolunda erişilir.
 
-Ana bilgisayar sistemlerinin çoğu depolama iki türe ayırır:
+Çoğu ana bilgisayar sistemi, depolamayı iki türe ayırır:
 
-- *Çevrimiçi depolama* (sık erişimli depolama alanı olarak da bilinir) günlük işlemleri için gereklidir. DASD depolama genellikle bu amaç için kullanılır. Ancak, günlük bant yedeklemeleri (mantıksal veya fiziksel) gibi sıralı depolama bu amaç için kullanılabilir.
+- Günlük işlemler için *çevrimiçi depolama* (etkin depolama olarak da bilinir) gereklidir. Bu amaçla genellikle BASD depolama kullanılır. Ancak, günlük bant yedeklemeleri (mantıksal veya fiziksel) gibi sıralı depolama da bu amaçla kullanılabilir.
 
-- *Arşiv depolama* (soğuk depolama olarak da bilinir) belirli bir zamanda bağlanmasını garanti edilmez. Bunun yerine, bu bağlı ve gerektiği şekilde erişilebilir. Arşiv depolama, genellikle depolama için sıralı bant yedeklemeleri (mantıksal veya fiziksel) kullanılarak uygulanır.
+- *Arşiv depolama* (soğuk depolama olarak da bilinir), belirli bir zamanda takılmak üzere garanti edilmez. Bunun yerine, bağlanır ve gerektiğinde erişilir. Arşiv depolama, genellikle depolama için sıralı bant yedeklemeleri (mantıksal veya fiziksel) kullanılarak uygulanır.
 
-## <a name="mainframe-versus-io-latency-and-iops"></a>Ana bilgisayar ile g/ç gecikmesi ve IOPS
+## <a name="mainframe-versus-io-latency-and-iops"></a>Ana bilgisayar ile GÇ gecikme süresi ve ıOPS
 
-Ana bilgisayarlar genellikle yüksek performanslı g/ç ve gecikme süresi düşük g/ç gerektiren uygulamalar için kullanılır. Bunlar, g/ç cihazları ve HiperSockets FICON bağlantıları kullanarak yapabilirsiniz. Uygulamalarınız ve cihazlarınız anabilgisayar'ın g/ç kanala doğrudan bağlantı için HiperSockets kullanıldığında mikrosaniye cinsinden gecikme süresi elde edilebilir.
+Ana bilgisayarlar genellikle yüksek performanslı GÇ ve düşük GÇ gecikme süresi gerektiren uygulamalar için kullanılır. Bu, GÇ cihazlarına ve HiperSockets FıCON bağlantılarını kullanarak bunu yapabilir. HiperSockets, uygulamaları ve cihazları doğrudan bir ana bilgisayarın GÇ kanalına bağlamak için kullanıldığında, mikrosaniye cinsinden gecikme elde edilebilir.
 
-## <a name="azure-storage-at-a-glance"></a>Bir bakışta Azure depolama
+## <a name="azure-storage-at-a-glance"></a>Azure depolama bir bakışta
 
-Azure hizmet olarak altyapı-a-([Iaas](https://azure.microsoft.com/overview/what-is-iaas/)) depolama seçeneklerini karşılaştırılabilir ana bilgisayar kapasite sağlayın.
+Depolama için Azure hizmet olarak altyapı ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) seçenekleri, benzer ana bilgisayar kapasitesi sağlar.
 
-Microsoft Azure'da barındırılan uygulamalar için depolama alanı petabaytlarca tutarında sunar ve çeşitli depolama seçenekleriniz vardır. Yüksek performans için SSD depolama alanından bu aralık için düşük maliyetli blob depolamaya yığın depolama ve arşivleri. Ayrıca, Azure depolama için veri yedekliliği seçeneğini sağlar; bir ana bilgisayar ortamı içinde ayarlamak için daha fazla çaba gereken bir şey.
+Microsoft, Azure 'da barındırılan uygulamalar için petabaytlarca değer depolama alanı sunar ve çeşitli depolama seçenekleriniz vardır. Bu, yığın depolama ve arşivler için yüksek performanslı düşük maliyetli blob depolamaya kadar SSD depolama alanından bu yana uzanır. Ayrıca, Azure, bir anabilgisayar ortamında ayarlanmakta daha fazla çaba alan bir depolama için veri artıklığı seçeneği sağlar.
 
-Azure depolama alanı olarak kullanılabilir [Azure diskleri](/azure/virtual-machines/windows/managed-disks-overview), [Azure dosyaları](/azure/storage/files/storage-files-introduction), ve [Azure Blobları](/azure/storage/blobs/storage-blobs-overview) gibi aşağıdaki tabloda özetlenmiştir. Daha fazla bilgi edinin [her zaman](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Azure Storage, Azure [diskleri](/azure/virtual-machines/windows/managed-disks-overview), [Azure dosyaları](/azure/storage/files/storage-files-introduction)ve [Azure Blob 'ları](/azure/storage/blobs/storage-blobs-overview) olarak kullanılabilir ve aşağıdaki tabloda özetlenmiştir. [Her birinin ne zaman kullanılacağı](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)hakkında daha fazla bilgi edinin.
 
 <!-- markdownlint-disable MD033 -->
 
@@ -57,75 +57,74 @@ Azure depolama alanı olarak kullanılabilir [Azure diskleri](/azure/virtual-mac
 <tr><td>Azure Dosyaları
 </td>
 <td>
-İstemci kitaplıkları, bir SMB arabirim sağlar ve bir <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a> her yerden erişim sağlayan bir arabirimi depolanan dosyalar için.
+Bir SMB arabirimi, istemci kitaplıkları ve her yerden depolanan dosyaların erişimine izin veren bir <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">rest</a> arabirimi sağlar.
 </td>
 <td><ul>
-<li>Lift- and -uygulama ve Azure'da çalışan diğer uygulamalar arasında veri paylaşımı için yerel dosya sistemi API kullandığında bir uygulamayı buluta kaydır.</li>
-<li>Geliştirme ve hata ayıklama birçok Vm'lerden erişilmesi gereken araçları Store.</li>
+<li>Uygulama, Azure 'da çalışan ve diğer uygulamalar arasında veri paylaşmak için yerel dosya sistemi API 'Lerini kullandığında uygulamayı buluta taşıyın ve taşıyın.</li>
+<li>Birçok VM 'den erişilmesi gereken geliştirme ve hata ayıklama araçlarını depolayın.</li>
 </ul>
 </td>
 </tr>
-<tr><td>Azure BLOB'ları
+<tr><td>Azure Blobları
 </td>
-<td>İstemci kitaplıkları sağlar ve bir <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST</a> depolanabilir ve blok blobları, büyük bir ölçekte erişilen yapılandırılmamış veriyi arabirimi. Ayrıca destekler <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake depolama Gen2</a> Kurumsal büyük veri analizi çözümleri.
+<td>Yapılandırılmamış veri depolanmasına ve Blok Bloblarında çok büyük ölçekte erişilmesine izin veren istemci kitaplıkları ve <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">rest</a> arabirimi sağlar. Ayrıca kurumsal büyük veri analizi çözümleri için <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage 2.</a> destekler.
 </td>
 <td><ul>
-<li>Bir uygulamada akış ve rastgele erişimli senaryoları destekler.</li>
-<li>Uygulama verileri için konumdan erişebilirsiniz.</li>
-<li>Bir kurumsal veri gölü, Azure üzerinde oluşturmayı ve büyük veri analizi gerçekleştirin.</li>
+<li>Bir uygulamada akış ve rastgele erişim senaryolarını destekler.</li>
+<li>Uygulama verilerine her yerden erişin.</li>
+<li>Azure üzerinde bir kurumsal veri Gölü oluşturun ve büyük veri analizi gerçekleştirin.</li>
 </ul></td>
 </tr>
 <tr><td>Azure Diskleri
 </td>
-<td>İstemci kitaplıkları sağlar ve bir <a href="https://docs.microsoft.com/rest/api/compute/disks">REST</a> kalıcı olarak depolanır ve bir bağlı sanal sabit diskten erişilen verilerin arabirimi.
+<td>, Verilerin kalıcı olarak depolanmasına ve bağlı bir sanal sabit diskten erişilmesine izin veren istemci kitaplıkları ve <a href="https://docs.microsoft.com/rest/api/compute/disks">rest</a> arabirimi sağlar.
 </td>
 <td><ul>
-<li>Lift- and -shift okumak ve kalıcı diske veri yazmak için yerel dosya sistemi API'leri kullanan uygulamalar.</li>
-<li>Diskin eklendiği VM'nin dışında erişilebilir için gerekli olmayan verileri Store.</li>
+<li>Kalıcı disklere veri okumak ve yazmak için yerel dosya sistemi API 'Leri kullanan uygulamaları kaldırın ve taşıyın.</li>
+<li>Diskin eklendiği VM dışından erişilmesi gerekmeyen verileri depolayın.</li>
 </ul></td>
 </tr>
 </tbody>
 </table>
 <!-- markdownlint-enable MD033 -->
 
-## <a name="azure-hot-online-and-cold-archive-storage"></a>Azure (çevrimiçi) sıcak ve soğuk (arşiv) depolama
+## <a name="azure-hot-online-and-cold-archive-storage"></a>Azure sık erişimli (çevrimiçi) ve soğuk (Arşiv) depolama
 
-Belirli bir sistem için depolama türünü depolama boyutu, aktarım hızı ve IOPS gibi sistem gereksinimlerine bağlıdır. Bir ana bilgisayar üzerinde DASD türü depolama için Azure üzerinde uygulamalar genellikle Azure diskleri sürücü depolama kullanın. Ana bilgisayar arşiv depolama için blob depolama, Azure üzerinde kullanılır.
+Belirli bir sistem için depolama türü, depolama boyutu, üretilen iş ve ıOPS dahil olmak üzere sistemin gereksinimlerine bağlıdır. Bir ana bilgisayarda PASD türü depolama için, Azure 'daki uygulamalar genellikle Azure diskleri sürücü depolamayı kullanır. Ana bilgisayar arşiv depolaması için, Azure 'da BLOB depolama kullanılır.
 
-SSD'ler, Azure üzerinde en yüksek depolama performansı sağlar. (Bu belgede yazımını itibariyle) aşağıdaki seçenekler kullanılabilir:
+SSD 'Ler, Azure 'da en yüksek depolama performansını sağlar. Aşağıdaki seçenekler kullanılabilir (Bu belgenin yazıldığı itibariyle):
 
 | Tür         | Boyut           | IOPS                  |
 |--------------|----------------|-----------------------|
-| Ultra SSD    | 4 GB ile 64 TB  | 1\.200 için 160,000 IOPS |
-| Premium SSD  | 32 TB'ye kadar 32 GB | 12 için 15.000 IOPS     |
-| Standart SSD | 32 TB'ye kadar 32 GB | 12 ila 2.000 arasında IOPS      |
+| Ultra SSD    | 4 GB ila 64 TB  | 1\.200-160.000 ıOPS |
+| Premium SSD  | 32 GB ila 32 TB | 12-15.000 ıOPS     |
+| Standart SSD | 32 GB ila 32 TB | 12-2.000 ıOPS      |
 
-BLOB Depolama, Azure üzerinde en büyük depolama hacmi sağlar. Depolama boyutu ek olarak, Azure, hem yönetilen hem de yönetilmeyen depolama sunar. Yönetilen depolama ile Azure temel alınan depolama hesaplarını yönetme üstlenir. Yönetilmeyen depolama sayesinde, kullanıcı için depolama gereksinimlerini karşılamak Azure depolama hesapları uygun boyutta ayarlama sorumluluğunu üstlenir.
+BLOB depolama, Azure 'da en büyük depolama birimini sağlar. Azure, depolama boyutuna ek olarak hem yönetilen hem de yönetilmeyen depolama alanı sunar. Yönetilen depolama ile Azure, temel alınan depolama hesaplarını yönetmeyi üstlenir. Yönetilmeyen depolama ile Kullanıcı, depolama gereksinimlerini karşılamak üzere uygun boyuttaki Azure depolama hesaplarını ayarlamanın sorumluluğunu alır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ana bilgisayar geçişi](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Azure sanal makineler üzerinde anabilgisayar yeniden barındırma](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
-- [Ana bilgisayar işlem Azure'a taşıyın](mainframe-compute-Azure.md)
-- [Azure Blobları, Azure dosyaları veya Azure diskleri ne zaman kullanılacağını belirleme](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
-- [Standart SSD yönetilen diskler için Azure VM iş yükleri](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
+- [Azure sanal makinelerinde Ana bilgisayar yeniden barındırma](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Anabilgisayar işlem hareketini Azure 'a taşıma](mainframe-compute-Azure.md)
+- [Azure Blob 'Ları, Azure dosyalarını veya Azure disklerini ne zaman kullanacağınızı belirleme](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
+- [Azure VM iş yükleri için yönetilen diskleri Standart SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM kaynakları
 
-- [IBM Z üzerinde paralel Sysplex](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS ve bağ tesis: Ötesine](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
-- [Bir Db2 pureScale özelliği yükleme için gerekli kullanıcı oluşturma](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
-- [Db2icrt - örnek bir komut oluşturun](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
-- [Db2 pureScale kümelenmiş veritabanı çözümü](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
-- [IBM veri Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
+- [IBM Z üzerinde Parallel Sysplex](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
+- [IBM CICS ve kuponu: temel bilgilerin ötesinde](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [DB2 pureScale özelliği yüklemesi için gerekli kullanıcıları oluşturma](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
+- [Db2icrt-örnek Oluştur komutu](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
+- [DB2 Porescale kümelenmiş veritabanı çözümü](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+- [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
-### <a name="azure-government"></a>Azure Kamu
+### <a name="azure-government"></a>Azure Devlet Kurumları
 
-- [Ana bilgisayar uygulamalarını Microsoft Azure kamu Bulutu](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
-- [Microsoft ve FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
+- [Anabilgisayar uygulamaları için Microsoft Azure Kamu Bulutu](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+- [Microsoft ve Fedrampa](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
 
-### <a name="more-migration-resources"></a>Daha fazla geçiş kaynakları
+### <a name="more-migration-resources"></a>Daha fazla geçiş kaynağı
 
-- [Platform Modernizasyonu Alliance: Azure üzerinde IBM Db2](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
-- [Azure sanal veri merkezi Lift- and -Shift Kılavuzu](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [Azure sanal veri merkezi yükselt ve kaydırma Kılavuzu](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
+- [GlusterFS Iscsı](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

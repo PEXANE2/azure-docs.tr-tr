@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 68f73afbf81914938f78baad2cacda7327e7789a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ca35af997834a897572555e752597026b5159712
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428599"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314462"
 ---
 # <a name="clip-values"></a>Değerleri Kırpma
 
-Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
+Bu makalede bir Azure Machine Learning Designer modülü açıklanmaktadır.
 
 Belirtilen eşiğin üstünde veya altında olan veri değerlerini bir ortalama, sabit veya diğer bir alternatif değerle tanımlamak ve isteğe bağlı olarak değiştirmek için klip değerleri modülünü kullanın.  
 
@@ -86,7 +86,7 @@ Bazı sütunlara kırpma yöntemleri veya farklı ölçütler uygulamanız gerek
   
 1.  İşlem hattını çalıştırma.  
   
-    **Clip Values** modülünün çıktısına sağ tıklayın ve değerleri gözden geçirmek Için **Görselleştir** ' i seçin ve kırpma işleminin beklentilerinizi karşılamasını sağlayın.  
+    **Clip Values** modülüne sağ tıklayın ve **modülü seçip sağ** paneldeki **çıktılar** sekmesine geçin, değerleri gözden geçirmek ve kırpma işleminin beklentilerinizi karşıladığından emin olmak için **bağlantı noktası çıktılarında**histogram simgesine tıklayın.  
  
 ### <a name="examples-for-clipping-using-percentiles"></a>Yüzdebirlik değeri kullanarak kırpma örnekleri
 

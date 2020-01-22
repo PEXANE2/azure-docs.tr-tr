@@ -1,6 +1,6 @@
 ---
-title: Bulut ve hangi Azure Media Services v3 kullanılabilir bölgeleri | Microsoft Docs
-description: Bu makalede, Azure bulutlarında ve hangi Azure Media Services v3 kullanılabilir bölgeler hakkında konuşuyor.
+title: Azure Media Services v3 'nin kullanılabildiği bulutlar ve bölgeler
+description: Bu makalede, Azure Media Services v3 'nin kullanılabildiği Azure bulutları ve bölgeleri hakkında bilgi sağlanır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,45 +9,45 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58b5b749e81aab4d8563d09cbfd139629520531c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409277"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310585"
 ---
-# <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Bulut ve bölgelerde hangi Azure Media Services v3 var.
+# <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 'nin bulunduğu bulutlar ve bölgeler
 
-Azure Media Services v3, Azure Resource Manager bildiriminde genel Azure, Azure kamu, Azure Almanya, Azure Çin 21Vianet aracılığıyla kullanılabilir. Ancak, Azure bulutlarında Media Services özelliklerinin tamamı kullanılabilir. Bu belge, temel Media Services v3 bileşenlerinin desteklenmediği özetlenmektedir.
+Azure Media Services v3, küresel Azure, Azure Kamu, Azure Almanya, Azure Çin 21Vianet ' te Azure Resource Manager bildirimi aracılığıyla kullanılabilir. Ancak tüm Azure bulutlarında tüm Media Services özellikleri kullanılamaz. Bu belgede ana Media Services v3 bileşenlerinin kullanılabilirliği özetlenmektedir.
 
-## <a name="feature-availability-in-azure-clouds"></a>Azure bulutlarında Özellik kullanılabilirliği
+## <a name="feature-availability-in-azure-clouds"></a>Azure bulutlarında özellik kullanılabilirliği
 
-| Özellik|Küresel Azure bölgeleri | Azure Kamu|Azure Almanya|Azure Çin 21Vianet|
+| Özellik|Küresel Azure bölgeleri | Azure Devlet Kurumları|Azure Almanya|Azure Çin 21Vianet|
 | --- | --- | --- | --- | --- |
-| [Azure EventGrid](reacting-to-media-services-events.md) | Kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
-| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
-| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
+| [Azure EventGrid](reacting-to-media-services-events.md) | Kullanılabilir | Kullanılamıyor | Kullanılamıyor | Kullanılamıyor |
+| [Videoanaliz Zerönayar](analyzing-video-audio-files-concept.md) |  Kullanılabilir | Kullanılamıyor | Kullanılamıyor | Kullanılamıyor |
+| [Audioanaliz Zerönayar](analyzing-video-audio-files-concept.md) |  Kullanılabilir | Kullanılamıyor | Kullanılamıyor | Kullanılamıyor |
 | [StandardEncoderPreset](encoding-concept.md) | Kullanılabilir | Kullanılabilir | Kullanılabilir | Kullanılabilir |
-| [LiveEvents](live-streaming-overview.md) | Kullanılabilir | Kullanılabilir | Kullanılabilir | Kullanılabilir |
-| [Akış](streaming-endpoint-concept.md) | Kullanılabilir | Kullanılabilir | Kullanılabilir | Kullanılabilir |
+| [Canlı olaylar](live-streaming-overview.md) | Kullanılabilir | Kullanılabilir | Kullanılabilir | Kullanılabilir |
+| [Streammingendpoints](streaming-endpoint-concept.md) | Kullanılabilir | Kullanılabilir | Kullanılabilir | Kullanılabilir |
 
-## <a name="regionsgeographieslocations"></a>Bölge/coğrafyalar/konumları
+## <a name="regionsgeographieslocations"></a>Bölgeler/geographler/konumlar
 
-[Azure Media Services hizmeti dağıtıldığı bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
+[Azure Media Services hizmetinin dağıtıldığı bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
 ### <a name="region-code-name"></a>Bölge kodu adı 
 
-Sağlamanız gerektiğinde **konumu** parametresi, bölge kod adı olarak sağlamak için ihtiyacınız **konumu** değeri. Hesabınızın bulunduğu ve aramanız için yönlendirileceğini bölge kodu adını almak için aşağıdaki satırı çalıştırabilirsiniz [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
+**Konum** parametresini sağlamanız gerektiğinde **konum** değeri olarak bölge kodu adını belirtmeniz gerekir. Hesabınızın bulunduğu bölgenin kod adını almak ve çağrın ' a yönlendirilmek için, [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 'de aşağıdaki satırı çalıştırabilirsiniz
 
 ```bash
 az account list-locations
 ```
 
-Bir kez yukarıda gösterilen tüm Azure bölgelerinde listesini alma satırı çalıştırın. Sahip Azure bölgesine gidin *displayName* aradığınız ve kullanmak, *adı* değerini **konumu** parametresi.
+Yukarıda gösterilen satırı çalıştırdığınızda tüm Azure bölgelerinin bir listesini alırsınız. Aradığınız *DisplayName* 'e sahip Azure bölgesine gidin ve **konum** parametresi için *ad* değerini kullanın.
 
-Örneğin, Azure bölgesinde Batı ABD 2 (aşağıda gösterilen), "westus2" için kullanacağınız **konumu** parametresi.
+Örneğin, Azure bölgesi Batı ABD 2 için (aşağıda görüntülenir), **konum** parametresi için "westus2" kullanacaksınız.
 
 ```json
    {
@@ -62,9 +62,9 @@ Bir kez yukarıda gösterilen tüm Azure bölgelerinde listesini alma satırı �
 
 ## <a name="endpoints"></a>Uç Noktalar  
 
-Aşağıdaki uç noktaların Media Services hesapları için farklı Ulusal Azure bulutlarına bağlanırken bilmek önemlidir.
+Aşağıdaki uç noktalar, farklı ulusal Azure bulutlarından Media Services hesaplarına bağlanırken bilmemiz için önemlidir.
 
-### <a name="global-azure"></a>Genel Azure
+### <a name="global-azure"></a>Küresel Azure
 
 |Uç Noktalar ||
 | --- | --- | 
@@ -72,7 +72,7 @@ Aşağıdaki uç noktaların Media Services hesapları için farklı Ulusal Azur
 | Kimlik Doğrulaması | `https://login.microsoftonline.com/` | 
 | Belirteç hedef kitlesi | `https://management.core.windows.net/` |
 
-### <a name="azure-government"></a>Azure Kamu
+### <a name="azure-government"></a>Azure Devlet Kurumları
 
 |Uç Noktalar||
 | --- | --- | 

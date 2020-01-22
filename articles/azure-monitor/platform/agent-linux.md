@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/24/2019
-ms.openlocfilehash: c06a7551a5c0f14be94ed14072b81c189e359aa8
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/21/2020
+ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75542004"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290334"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux bilgisayarlarını Azure Izleyici 'ye bağlama
 
@@ -74,9 +74,10 @@ Linux için Log Analytics aracısını yüklemeden önce, Log Analytics çalış
 
 Linux için Log Analytics Aracısı kendiliğinden ayıklanan ve yüklenebilir bir kabuk betik paketinde sunulmaktadır. Bu paket, aracı bileşenlerinden her biri için Demcı ve RPM paketleri içerir ve tek tek paketleri almak için doğrudan veya ayıklanamaz. X64 için bir paket ve x86 mimarileri için bir paket sağlanır. 
 
-Azure VM 'lerinde, Linux için [azure log ANALYTICS VM uzantısını](../../virtual-machines/extensions/oms-linux.md) kullanarak aracıyı bunlara yüklemenizi öneririz. 
+> [!NOTE]
+> Azure VM 'lerinde, Linux için [azure log ANALYTICS VM uzantısını](../../virtual-machines/extensions/oms-linux.md) kullanarak aracıyı bunlara yüklemenizi öneririz. 
 
-1. SCP/SFTP kullanarak uygun paketi (x86 veya x64) Linux sanal makinenize veya fiziksel bilgisayarınıza aktarın.
+1. SCP/SFTP kullanarak uygun paketi (x64 veya x86) Linux sanal makinenize veya fiziksel bilgisayarınıza [indirin](https://github.com/microsoft/OMS-Agent-for-Linux#azure-install-guide) ve aktarın.
 
 2. `--install` bağımsız değişkenini kullanarak paketi yükler. Yükleme sırasında bir Log Analytics çalışma alanına eklemek için, daha önce kopyalanmış olan `-w <WorkspaceID>` ve `-s <workspaceKey>` parametreleri sağlayın.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 56a3d4f172cde70bdd1a875c76213c43184cbbc3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167932"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310195"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services ölçeğini genişletme
 
@@ -50,7 +50,7 @@ Daha sonraki bir genişleme işlemi gerçekleştirirken, örneğin, sorgu havuzu
 
 ### <a name="synchronization-mode"></a>Eşitleme modu
 
-Varsayılan olarak, sorgu çoğaltmaları artımlı değil tam olarak yeniden boyanır. Yeniden doldurma aşamalarda gerçekleşir. Bunlar, belirli bir zamanda sorgular için en az bir çoğaltmanın çevrimiçi tutulduğundan emin olmak için bir kerede ayrılırlar ve iki kez eklenir (en az üç çoğaltma olduğu varsayılarak). Bazı durumlarda, bu işlem gerçekleşirken istemcilerin çevrimiçi çoğaltmalardan birine yeniden bağlanmasına gerek olabilir. **Replicasyncmode** ayarını kullanarak artık sorgu çoğaltma eşitlemesini paralel olarak belirtebilirsiniz. Paralel eşitleme aşağıdaki avantajları sağlar: 
+Varsayılan olarak, sorgu çoğaltmaları artımlı değil tam olarak yeniden boyanır. Yeniden doldurma aşamalarda gerçekleşir. Bunlar, belirli bir zamanda sorgular için en az bir çoğaltmanın çevrimiçi tutulduğundan emin olmak için bir kerede ayrılırlar ve iki kez eklenir (en az üç çoğaltma olduğu varsayılarak). Bazı durumlarda, bu işlem gerçekleşirken istemcilerin çevrimiçi çoğaltmalardan birine yeniden bağlanmasına gerek olabilir. (Önizleme aşamasında) **Replicasyncmode** ayarını kullanarak artık sorgu çoğaltma eşitlemesini paralel olarak belirtebilirsiniz. Paralel eşitleme aşağıdaki avantajları sağlar: 
 
 - Eşitleme zamanında önemli bir düşüş. 
 - Eşitleme işlemi sırasında çoğaltmalar genelinde verilerin tutarlı olma olasılığı yüksektir. 

@@ -14,12 +14,12 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0aa868d5ed57e27a89f2791f617dcdda74e766b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f7e910faaf9875b6791135c8721090fa801a7e08
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167440"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294193"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
@@ -85,6 +85,12 @@ Bu liste varsayılan olarak en çok id_tokens olan talepleri gösterir (aksi bel
 |`unique_name` | Dize | Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değer, herhangi bir zamanda belirli bir noktada benzersizdir, ancak e-postalar ve diğer tanımlayıcılar yeniden kullanılabilir, bu değer diğer hesaplarda yeniden görüntülenebilir ve bu nedenle yalnızca görüntüleme amacıyla kullanılmalıdır. Yalnızca v 1.0 `id_tokens`verilir. |
 |`uti` | Donuk dize | Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Göz ardı edilmelidir. |
 |`ver` | Dize, 1,0 ya da 2,0 | İd_token sürümünü gösterir. |
+
+
+> [!NOTE]
+> V1 ve v2 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklılıklar vardır. Sürüm temelde, verildiği yerden Azure AD platformu uç noktasını belirtir. [Azure AD OAuth uygulamasında](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) yıllarca bir gelişmiştir. Şu anda AzureAD uygulamaları için iki farklı oAuth uç noktası sunuyoruz. V2 olarak sınıflandırılan yeni bitiş noktalarından herhangi birini ya da v1 olarak söyedilen eskileri kullanabilirsiniz. Her ikisine ait OAuth uç noktaları farklı. V2 uç noktası, v1 uç noktasının tüm özelliklerini geçirmeye çalıştığı ve yeni geliştiricilerin v2 uç noktasını kullanmasını önerdiğimiz yeni bir noktadır. 
+> - V1: Azure Active Directory uç noktaları: `https://login.microsoftonline.com/common/oauth2/authorize`
+> - V2: Microsoft Identity platform uç noktaları: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>İd_token doğrulama
 

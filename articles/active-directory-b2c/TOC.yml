@@ -76,7 +76,7 @@
   items:
     - name: Uygulama tümleştirmesi
       items:
-        - name: OIDC uygulamasını kaydetme
+        - name: Bir uygulamayı kaydetme
           href: tutorial-register-applications.md
         - name: SAML hizmet sağlayıcısını kaydetme
           href: connect-with-saml-service-providers.md
@@ -282,6 +282,11 @@
                   items:
                     - name: Yerelleştirme dizesi kimlikleri
                       href: localization-string-ids.md
+                - name: DisplayControls
+                  href: display-controls.md
+                  items:
+                    - name: Doğrulama
+                      href: display-control-verification.md
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
@@ -320,11 +325,6 @@
                       href: active-directory-b2c-reference-sso-custom.md
                     - name: Doğrulama
                       href: validation-technical-profile.md
-            - name: DisplayControls
-              href: display-controls.md
-              items:
-                - name: Doğrulama
-                  href: display-control-verification.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty

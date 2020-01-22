@@ -7,12 +7,13 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 299cd81c05af385c435eaf3788e3d7e39c486623
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f0c2f4c48875ca2e13a026c2c8ded8f217a97a08
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867554"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293768"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Azure Özel Bağlantı nedir? (Önizleme)
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama, Azure Cosmos DB ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki [özel bir uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Ayrıca, kendi [özel bağlantı hizmetinizi](private-link-service-overview.md) sanal ağınızda (VNet) oluşturabilir ve müşterilerinize özel olarak iletebilirsiniz. Azure özel bağlantısı kullanılarak kurulum ve tüketim deneyimi Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
@@ -49,6 +50,7 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 |  |  PostgreSQL için Azure veritabanı-tek sunucu         | Tüm ortak bölgeler      |   Önizleme      |
 |  |  MySQL için Azure Veritabanı         | Tüm ortak bölgeler      |   Önizleme      |
 |  |  MariaDB için Azure Veritabanı         | Tüm ortak bölgeler      |   Önizleme      |
+|  |  Azure Bilişsel Arama | Batı ABD 2, Orta Batı ABD, Doğu ABD, Orta Güney ABD, Avustralya Doğu, Avustralya Güneydoğu | Önizleme <br/> [Daha fazla bilgi](/azure/search/service-create-private-endpoint) |
 
 En güncel bildirimler için, [Azure sanal ağ güncelleştirmeleri sayfasını](https://azure.microsoft.com/updates/?product=virtual-network)inceleyin.
 

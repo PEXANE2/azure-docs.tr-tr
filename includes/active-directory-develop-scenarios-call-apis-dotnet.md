@@ -14,59 +14,59 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 4e01dbb0036761215a9a05c464b20ead340a2e3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3d4e45d1bf53bab4d1f9c45367f9d051f1668e2b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423749"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76308899"
 ---
 ### <a name="authenticationresult-properties-in-msalnet"></a>MSAL.NET içinde AuthenticationResult özellikleri
 
-Belirteçleri elde etmek için yöntemler bir `AuthenticationResult` döndürür (veya zaman uyumsuz yöntemler için bir `Task<AuthenticationResult>`.
+Belirteçleri alma yöntemleri `AuthenticationResult`döndürür. Zaman uyumsuz yöntemler için `Task<AuthenticationResult>` döndürür.
 
 MSAL.NET ' de `AuthenticationResult` kullanıma sunar:
 
-- kaynaklara erişmek için Web API 'sinin `AccessToken`. Bu parametre genellikle Base64 kodlamalı JWT, ancak istemci erişim belirtecinin içinde hiçbir şekilde görünmemelidir. Biçim kararlı kalacak şekilde garanti edilmez ve kaynak için şifrelenebilir. İstemci üzerindeki erişim belirteci içeriğine bağlı olarak kod yazan kişiler, hata ve istemci mantıksal sonlarının en büyük kaynaklarından biridir. Ayrıca bkz. [erişim belirteçleri](../articles/active-directory/develop/access-tokens.md)
-- Kullanıcı için `IdToken` (Bu parametre kodlanmış bir JWT). Bkz. [Kimlik belirteçleri](../articles/active-directory/develop/id-tokens.md)
-- `ExpiresOn`, belirtecin süresinin dolacağı tarih/saate bildirir
-- `TenantId`, kullanıcının bulunduğu kiracıyı içerir. Konuk kullanıcılar (Azure AD B2B senaryoları) için kiracı KIMLIĞI, benzersiz kiracı değil Konuk kiracıya ait değildir.
-Belirteç bir kullanıcı için teslim edildiğinde `AuthenticationResult` Ayrıca bu kullanıcı hakkında bilgiler içerir. Belirteçleri Kullanıcı (uygulama için) olmadan istenen gizli istemci akışları için, bu kullanıcı bilgileri null olur.
+- kaynaklara erişmek için Web API 'sinin `AccessToken`. Bu parametre genellikle bir Base-64 kodlu JWT dizesidir. İstemci hiçbir şekilde erişim belirtecinin içinde görünmemelidir. Biçim kararlı olmaya garanti edilmez ve kaynak için şifrelenebilir. İstemci üzerindeki erişim belirteci içeriğine bağlı olan kod yazmak, hata ve istemci mantıksal sonlarının en büyük kaynaklarından biridir. Daha fazla bilgi için bkz. [erişim belirteçleri](../articles/active-directory/develop/access-tokens.md).
+- Kullanıcı için `IdToken`. Bu parametre kodlanmış bir JWT. Daha fazla bilgi için bkz. [Kimlik belirteçleri](../articles/active-directory/develop/id-tokens.md).
+- `ExpiresOn`, belirtecin süresinin dolacağı tarihi ve saati söyler.
+- `TenantId`, kullanıcının bulunduğu kiracıyı içerir. Azure Active Directory (Azure AD) B2B senaryolarında Konuk kullanıcılar için kiracı KIMLIĞI, benzersiz kiracı değil Konuk kiracıya ait değildir.
+Belirteç bir kullanıcı için teslim edildiğinde `AuthenticationResult` Ayrıca bu kullanıcı hakkında bilgiler içerir. Uygulama için hiçbir Kullanıcı olmadan belirteçlerin istendiği gizli istemci akışları için bu kullanıcı bilgileri null olur.
 - Belirtecin verildiği `Scopes`.
-- Kullanıcının benzersiz kimliği.
+- Kullanıcının benzersiz KIMLIĞI.
 
 ### <a name="iaccount"></a>IAccount
 
-MSAL.NET, hesap kavramını tanımlar (`IAccount` arabirimi aracılığıyla). Bu son değişiklik, doğru semantiğini sağlar: aynı kullanıcının farklı Azure AD dizinlerinde birçok hesabı olabilir. Ayrıca MSAL.NET, Konuk senaryolarında ev hesabı bilgileri sağlandığı için daha iyi bilgiler sağlar.
-Aşağıdaki diyagramda `IAccount` arabiriminin yapısı gösterilmektedir:
+MSAL.NET, `IAccount` arabirimi aracılığıyla bir hesabın kavramını tanımlar. Bu son değişiklik, doğru semantiğini sağlar. Aynı kullanıcının farklı Azure AD dizinlerinde birçok hesabı olabilir. Ayrıca, MSAL.NET, ana hesap bilgileri sağlandığı için konuk senaryolarında daha fazla bilgi sağlar.
+Aşağıdaki diyagramda `IAccount` arabiriminin yapısı gösterilmektedir.
 
-![image](https://user-images.githubusercontent.com/13203188/44657759-4f2df780-a9fe-11e8-97d1-1abbffade340.png)
+![IAccount arabirim yapısı](https://user-images.githubusercontent.com/13203188/44657759-4f2df780-a9fe-11e8-97d1-1abbffade340.png)
 
-`AccountId` sınıfı, belirli bir Kiracıdaki bir hesabı tanımlar. Aşağıdaki özelliklere sahiptir:
+`AccountId` sınıfı, aşağıdaki tabloda gösterilen özelliklerle belirli bir Kiracıdaki bir hesabı tanımlar.
 
 | Özellik | Açıklama |
 |----------|-------------|
 | `TenantId` | Bir GUID için, hesabın bulunduğu kiracının KIMLIĞI olan bir dize temsili. |
 | `ObjectId` | Kiracıdaki hesaba sahip olan kullanıcının KIMLIĞI olan GUID için bir dize temsili. |
-| `Identifier` | Hesap için benzersiz tanımlayıcı. `Identifier`, virgülle ayrılmış ve Base64 kodlamalı `ObjectId` ve `TenantId` bitiştirilmesi olur. |
+| `Identifier` | Hesap için benzersiz tanımlayıcı. `Identifier`, virgülle ayrılmış `ObjectId` ve `TenantId` bitiştirilmesi olur. Bunlar temel 64 kodlandı değildir. |
 
-`IAccount` arabirimi tek bir hesapla ilgili bilgileri temsil eder. Aynı kullanıcı farklı kiracılarda bulunabilir, diğer bir deyişle, bir Kullanıcı birden çok hesaba sahip olabilir. Üyeleri:
+`IAccount` arabirimi tek bir hesapla ilgili bilgileri temsil eder. Aynı kullanıcı farklı kiracılarda bulunabilir. Bu, bir kullanıcının birden fazla hesabı olabileceği anlamına gelir. Üyeleri aşağıdaki tabloda gösterilmiştir.
 
 | Özellik | Açıklama |
 |----------|-------------|
-| `Username` | UserPrincipalName (UPN) biçimindeki görüntülenebilen değeri (örneğin, john.doe@contoso.com) içeren bir dize. Bu dize null olabilir, ancak Homeaccountıd ve Homeaccountıd. Identifier null olmaz. Bu özellik, MSAL.NET 'in önceki sürümlerindeki `IUser` `DisplayableId` özelliğini değiştirir. |
-| `Environment` | Bu hesabın kimlik sağlayıcısını içeren bir dize; Örneğin, `login.microsoftonline.com`. Bu özellik, `IdentityProvider` de kiracı hakkında bilgi de (bulut ortamına ek olarak), burada değer yalnızca ana bilgisayar olduğu sürece, `IUser``IdentityProvider` özelliğini değiştirir. |
-| `HomeAccountId` | Kullanıcı için ana hesabın AccountID. Bu özellik, kullanıcıyı Azure AD kiracılar genelinde benzersiz şekilde tanımlar. |
+| `Username` | UserPrincipalName (UPN) biçimindeki görüntülenebilen değeri (örneğin, john.doe@contoso.com) içeren bir dize. Bu dize, Homeaccountıd ve Homeaccountıd. Identifier 'ın aksine null değer olmayacak şekilde null olabilir. Bu özellik, MSAL.NET 'in önceki sürümlerindeki `IUser` `DisplayableId` özelliğini değiştirir. |
+| `Environment` | Bu hesabın kimlik sağlayıcısını içeren bir dize; Örneğin, `login.microsoftonline.com`. Bu özellik, bulut ortamının yanı sıra `IdentityProvider` de kiracı hakkında bilgi da olması dışında, `IUser``IdentityProvider` özelliğini değiştirir. Burada, değer yalnızca ana bilgisayar olur. |
+| `HomeAccountId` | Kullanıcının giriş hesabının hesap KIMLIĞI. Bu özellik, kullanıcıyı Azure AD kiracılar genelinde benzersiz şekilde tanımlar. |
 
-### <a name="using-the-token-to-call-a-protected-api"></a>Korunan API 'yi çağırmak için belirteci kullanma
+### <a name="use-the-token-to-call-a-protected-api"></a>Korunan API 'yi çağırmak için belirteci kullanma
 
-`AuthenticationResult`, MSAL tarafından döndürüldüğünde (`result`), korumalı Web API 'sine erişmek için çağrıyı yapmadan önce HTTP yetkilendirme üst bilgisine eklemeniz gerekir.
+`result`tarafından `AuthenticationResult` döndürülmeden sonra, korumalı Web API 'sine erişmek için çağrıyı yapmadan önce HTTP yetkilendirme üst bilgisine ekleyin.
 
 ```csharp
 httpClient = new HttpClient();
 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
-// Call Web API.
+// Call the web API.
 HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ...
 }

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00414bea82a7a78dd88ff4b1a592a6e35b5241c7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428568"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314411"
 ---
 # <a name="convert-to-dataset"></a>Veri kümesine dönüştürme
 
-Bu makalede, bir işlem hattının herhangi bir verisini tasarımcı iç biçimine dönüştürmek için Azure Machine Learning tasarımcısında (Önizleme) veri kümesi dönüştürme modülünün nasıl kullanılacağı açıklanır.
+Bu makalede, bir işlem hattının herhangi bir verisini tasarımcı iç biçimine dönüştürmek için Azure Machine Learning tasarımcısında DataSet 'e Dönüştür modülünün nasıl kullanılacağı açıklanır.
   
 Çoğu durumda dönüştürme gerekli değildir. Azure Machine Learning veriler üzerinde herhangi bir işlem yapıldığında, verileri örtülü olarak yerel veri kümesi biçimine dönüştürür. 
 
@@ -51,11 +51,11 @@ Veri kümesine Dönüştür kullanmadan önce veri kümesini hazırlamak için [
     **Replacevalues** işleminin yalnızca tam eşleşmeler için geçerli olduğunu unutmayın. Örneğin, bu dizeler etkilenmemelidir: `obs.`, `obsolete`.  
  
   
-5.  İşlem hattını çalıştırın veya veri kümesine Dönüştür modülüne sağ tıklayıp **Seçileni Çalıştır**' ı seçin.  
+5.  İşlem hattını çalıştırma.  
 
 ## <a name="results"></a>Sonuçlar
 
-+  Elde edilen veri kümesini yeni bir adla kaydetmek için, veri kümesine Dönüştür çıktısına sağ tıklayın ve **veri kümesi olarak kaydet**' i seçin.  
++  Elde edilen veri kümesini yeni bir adla kaydetmek için, modülün sağ panelindeki **çıktılar** sekmesinde bulunan Icon **register veri kümesini** seçin.  
   
 ## <a name="technical-notes"></a>Teknik notlar  
 

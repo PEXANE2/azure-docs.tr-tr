@@ -3,12 +3,12 @@ title: Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 description: Azure İşlevleri, birden fazla çalışma zamanı sürümünü destekler. Aralarındaki farkları ve sizin için doğru olanı seçme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 88c151149d1d960746ff449819d31e8b32d98120
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921865"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290385"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 
@@ -143,7 +143,7 @@ Visual Studio 'da, bir proje oluştururken çalışma zamanı sürümünü seçe
 ```
 
 > [!NOTE]
-> Azure Işlevleri 3. x ve .NET, `Microsoft.Sdk.NET.Functions` uzantısının en az `3.0.0`olmasını gerektirir.
+> Azure Işlevleri 3. x ve .NET, `Microsoft.NET.Sdk.Functions` uzantısının en az `3.0.0`olmasını gerektirir.
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>Visual Studio 'da 2. x uygulamalarını 3. x olarak güncelleştirme
 

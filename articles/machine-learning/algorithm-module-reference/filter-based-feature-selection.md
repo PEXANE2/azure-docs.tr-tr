@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e4e09ca77de00b7f189db2cbbcaca2e090dd7e72
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428520"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311640"
 ---
 # <a name="filter-based-feature-selection"></a>Filtre Tabanlı Özellik Seçimi
 
-Bu makalede, Azure Machine Learning tasarımcısında filtre tabanlı özellik seçimi modülünün nasıl kullanılacağı açıklanmaktadır (Önizleme). Bu modül, giriş veri kümenizdeki en büyük tahmine dayalı güce sahip sütunları belirlemenize yardımcı olur. 
+Bu makalede, Azure Machine Learning tasarımcısında filtre tabanlı özellik seçimi modülünün nasıl kullanılacağı açıklanır. Bu modül, giriş veri kümenizdeki en büyük tahmine dayalı güce sahip sütunları belirlemenize yardımcı olur. 
 
 Genel olarak, *Özellik seçimi* , belirli bir çıktı verildiğinde girişlere istatistiksel testlerin uygulanması işlemini ifade eder. Amaç, çıktının hangi sütunlarda daha tahmin olduğunu belirlemektir. Filtre tabanlı özellik seçimi modülü, aralarından seçim yapmak için birden çok özellik seçimi algoritması sağlar. Modül, Pearson bağıntı ve Chi-kare değerleri gibi bağıntı yöntemleri içerir. 
 
@@ -97,9 +97,9 @@ Standart istatistiksel bir ölçüm seçersiniz. Modül bir sütun çifti arası
 
 İşlem tamamlandıktan sonra:
 
-+ Analiz edilen Özellik sütunlarının tam listesini ve puanlarını görmek için, modüle sağ tıklayın. **Özellikler**' i seçin ve ardından **Görselleştir**' i seçin.  
++ Çözümlenen Özellik sütunlarının ve puanlarının tam listesini görmek için, modüle sağ tıklayın ve **Görselleştir**' i seçin.  
 
-+ Özellik seçim ölçütleriniz temel alınarak oluşturulan veri kümesini görüntülemek için modüle sağ tıklayın. **Veri kümesi**' ni ve ardından **Görselleştir**' i seçin. 
++ Özellik seçim kriterlerinizi temel alan veri kümesini görüntülemek için modüle sağ tıklayın ve **Görselleştir**' i seçin. 
 
 Veri kümesi beklediğinizden daha az sütun içeriyorsa modül ayarlarını kontrol edin. Ayrıca, giriş olarak belirtilen sütunların veri türlerini kontrol edin. Örneğin, **istenen özelliklerin sayısını** 1 olarak ayarlarsanız, çıkış veri kümesi yalnızca iki sütun içerir: etiket sütunu ve en yüksek dereceli özellik sütunu.
 

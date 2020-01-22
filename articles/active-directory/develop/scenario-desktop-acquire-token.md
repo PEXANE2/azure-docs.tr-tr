@@ -1,7 +1,7 @@
 ---
-title: Web API 'sini çağırmak için belirteç alma (masaüstü uygulaması) | Mavisi
+title: Bir Web API 'SI (masaüstü uygulaması) çağırmak için belirteç alma | Mavisi
 titleSuffix: Microsoft identity platform
-description: Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmayı öğrenin (uygulama için bir belirteç alınıyor |)
+description: Uygulama için bir belirteç almak üzere Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmayı öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,23 +16,23 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89a9426b1ed0ccd3c5f9eec576e5d78bf3d3dfc2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: da8d9a43ac5db4cedc8b27910bb838b911f3ebc6
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423883"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293156"
 ---
-# <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması-belirteç alma
+# <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması: belirteç alma
 
-Ortak Istemci uygulamasının bir örneğini oluşturduktan sonra, bunu kullanarak bir Web API 'SI çağırmak için kullanacağınız bir belirteç elde edersiniz.
+Ortak istemci uygulamasının bir örneğini oluşturduktan sonra, bunu kullanarak bir Web API 'sini çağırmak için kullanacağınız bir belirteç elde edersiniz.
 
 ## <a name="recommended-pattern"></a>Önerilen model
 
-Web API 'SI `scopes`tarafından tanımlanır. Uygulamanızda sağladığınız deneyim ne olursa olsun, kullanmak istediğiniz model şu şekilde olur:
+Web API 'SI `scopes`tarafından tanımlanır. Uygulamanızda sağladığınız deneyim ne olursa olsun kullanılacak desenler:
 
-- `AcquireTokenSilent` çağırarak belirteç önbelleğinden belirteç almaya çalışıyor
-- Bu çağrı başarısız olursa, kullanmak istediğiniz `AcquireToken` akışını kullanın (burada `AcquireTokenXX`ile temsil edilir)
+- `AcquireTokenSilent`çağırarak belirteç önbelleğinden bir belirteç almayı deneyin.
+- Bu çağrı başarısız olursa, kullanmak istediğiniz `AcquireToken` akışını kullanın, burada `AcquireTokenXX`tarafından temsil edilir.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -146,9 +146,9 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 ```
 ---
 
-Artık, bir masaüstü uygulamasında belirteçleri edinmenin çeşitli yollarının ayrıntıları aşağıda verilmiştir
+Bir masaüstü uygulamasında belirteçleri edinmenin çeşitli yolları aşağıda verilmiştir.
 
-## <a name="acquiring-a-token-interactively"></a>Bir belirteci etkileşimli olarak alma
+## <a name="acquire-a-token-interactively"></a>Bir belirteci etkileşimli olarak alma
 
 Aşağıdaki örnek, Microsoft Graph ile kullanıcının profilini okumak üzere bir belirteci etkileşimli olarak almak için minimum kodu gösterir.
 
@@ -174,15 +174,15 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Zorunlu parametreler
 
-`AcquireTokenInteractive`, belirtecin gerekli olduğu kapsamları tanımlayan dizelerin bir listesini içeren ``scopes``yalnızca bir zorunlu parametre içerir. Belirteç Microsoft Graph için ise, gereken kapsamlar, "Permissions" adlı bölümdeki her bir Microsoft Graph API 'sinin API başvurusunda bulunabilir. Örneğin, [kullanıcının kişilerini listelemek](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)için, "User. Read", "Contacts. Read" kapsamının kullanılması gerekecektir. Ayrıca bkz. [Microsoft Graph izinleri başvurusu](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+`AcquireTokenInteractive`, belirtecin gerekli olduğu kapsamları tanımlayan dizelerin bir listesini içeren ``scopes``yalnızca bir zorunlu parametreye sahiptir. Belirteç Microsoft Graph için ise, gerekli kapsamlar, "Permissions" adlı bölümdeki her bir Microsoft Graph API 'sinin API başvurusunda bulunabilir. Örneğin, [kullanıcının kişilerini listelemek](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)için, "User. Read", "Contacts. Read" kapsamının kullanılması gerekir. Daha fazla bilgi için bkz. [Microsoft Graph izinleri başvurusu](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
-Android 'de, belirtecin etkileşimi sonrasında bu üst etkinliğe geri dönmesi için üst etkinliği (`.WithParentActivityOrWindow`kullanarak) de belirtmeniz gerekir. Belirtmezseniz, `.ExecuteAsync()`çağrılırken bir özel durum oluşturulur.
+Android 'de gösterildiği gibi `.WithParentActivityOrWindow`kullanarak üst etkinliği de belirtmeniz gerekir. bu sayede, belirtecin etkileşimden sonra bu üst etkinliğe geri dönmesi sağlanır. Belirtmezseniz, `.ExecuteAsync()`çağrılırken bir özel durum oluşturulur.
 
 ### <a name="specific-optional-parameters-in-msalnet"></a>MSAL.NET içinde belirli isteğe bağlı parametreler
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-Etkileşimli çalışıyor, UI önemlidir. `AcquireTokenInteractive`, kendisini destekleyen platformlar, üst Kullanıcı arabirimini destekleyen, isteğe bağlı bir isteğe bağlı parametre içerir. Bir masaüstü uygulamasında kullanıldığında, `.WithParentActivityOrWindow` platforma bağlı olarak farklı bir tür vardır:
+Etkileşimli olduğundan, Kullanıcı arabirimi önemlidir. `AcquireTokenInteractive`, kendisini destekleyen platformlar, üst Kullanıcı arabirimi için, belirtebileceğiniz bir isteğe bağlı belirli parametreye sahiptir. Bir masaüstü uygulamasında kullanıldığında, `.WithParentActivityOrWindow` platforma bağlı olan farklı bir tür içerir.
 
 ```csharp
 // net45
@@ -198,9 +198,9 @@ WithParentActivityOrWindow(object parent).
 
 Açıklamalarının
 
-- .NET Standard, beklenen `object` Android 'de bir `Activity`, iOS üzerinde bir `UIViewController`, MAC üzerinde bir `NSWindow` ve Windows üzerinde `IWin32Window` veya `IntPr`.
-- Windows 'da, katıştırılmış tarayıcının uygun UI Eşitleme bağlamını alması için Kullanıcı arabirimi iş parçacığından `AcquireTokenInteractive` çağırmanız gerekir.  UI iş parçacığından çağrılmayan iletiler, kullanıcı arabiriminden doğru şekilde ve/veya kilitlenme senaryolarında karşılıklı olarak alınmamasına neden olabilir. UI iş parçacığında MSAL çağırmanın bir yolu, zaten WPF üzerinde `Dispatcher` kullanmaktır.
-- WPF kullanıyorsanız, WPF denetiminden bir pencere almak için `WindowInteropHelper.Handle` sınıfını kullanabilirsiniz. Daha sonra, bir WPF denetiminden (`this`) çağrı yapılır:
+- .NET Standard `object`, Android 'de `Activity`, iOS üzerinde `UIViewController` iOS, MAC üzerinde `NSWindow` ve Windows üzerinde `IWin32Window` veya `IntPr`.
+- Windows 'da, katıştırılmış tarayıcının uygun UI Eşitleme bağlamını alması için Kullanıcı arabirimi iş parçacığından `AcquireTokenInteractive` çağırmanız gerekir. UI iş parçacığından çağrılmayan iletiler, Kullanıcı arabirimi ile düzgün şekilde ve kilitlenme senaryolarıyla karşılıklı olarak alınmamasına neden olabilir. UI iş parçacığında Microsoft kimlik doğrulama kitaplıklarını (MSALs) çağırmanın bir yolu, zaten WPF üzerinde `Dispatcher` kullanmaktır.
+- WPF kullanıyorsanız, WPF denetiminden bir pencere almak için `WindowInteropHelper.Handle` sınıfını kullanabilirsiniz. Ardından çağrı bir WPF denetiminden (`this`) yapılır:
 
   ```csharp
   result = await app.AcquireTokenInteractive(scopes)
@@ -210,21 +210,21 @@ Açıklamalarının
 
 #### <a name="withprompt"></a>WithPrompt
 
-`WithPrompt()` bir Istem belirterek kullanıcıyla etkileşimi denetlemek için kullanılır
+`WithPrompt()`, bir istem belirterek kullanıcıyla etkileşimi denetlemek için kullanılır.
 
 <img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
 
 Sınıfı aşağıdaki sabitleri tanımlar:
 
-- ``SelectAccount``: STS 'nin, kullanıcının oturumu olan hesapları içeren hesap seçme iletişim kutusunu sunmasını zorlayacaktır. Bu seçenek, uygulamalar geliştiriciler kullanıcıların farklı kimlikler arasında seçim yapmasına izin vermek istediğinizde yararlıdır. Bu seçenek, kimlik sağlayıcısına ``prompt=select_account`` göndermek için MSAL. Bu seçenek varsayılandır ve kullanılabilir bilgilere (hesap, Kullanıcı için bir oturumun varlığına vb.) göre olası en iyi deneyimi sağlamanın iyi bir işidir. ...). Bunu yapmak için iyi bir nedeniniz olmadığı müddetçe değiştirmeyin.
-- ``Consent``: daha önce izin verilse bile, uygulama geliştiricisinin kullanıcıyı onay istenmesini sağlar. Bu durumda, MSAL kimlik sağlayıcısına `prompt=consent` gönderir. Bu seçenek, kuruluşun yönetilebileceği bazı güvenlik odaklı uygulamalarda, uygulamanın her kullanıldığı her seferinde kullanıcıdan onay iletişim kutusunu sunduğunu talep etmek için kullanılabilir.
-- ``ForceLogin``: Bu Kullanıcı istemi gerekli olmasa bile, uygulama geliştiricisinin kullanıcıya hizmet tarafından kimlik bilgileri istenmesini sağlar. Bu seçenek, kullanıcının yeniden oturum açmasını sağlamak için bir belirteç alma başarısız olursa yararlı olabilir. Bu durumda, MSAL kimlik sağlayıcısına `prompt=login` gönderir. Bu durumda, kuruluşun idare ettiği bazı güvenlik odaklı uygulamalarda, uygulamanın belirli bölümlerine her erişirken kullanıcı tarafından yeniden oturum açtığı görüldü.
-- ``Never`` (yalnızca .NET 4,5 ve WinRT için) kullanıcıya sormaz, bunun yerine gizli katıştırılmış Web görünümünde depolanan tanımlama bilgisini kullanmayı dener (bkz. MSAL.NET 'de Web views). Bu seçeneğin kullanılması başarısız olabilir ve bu durumda `AcquireTokenInteractive`, Kullanıcı arabirimi etkileşiminin gerekli olduğunu bildirmek için bir özel durum oluşturur ve başka bir `Prompt` parametresi kullanmanız gerekir.
-- ``NoPrompt``: kimlik sağlayıcısına hiçbir istem göndermez. Bu seçenek yalnızca Azure AD B2C düzenleme profili ilkeleri için yararlıdır ( [B2C özelliklerine](https://aka.ms/msal-net-b2c-specificities)bakın).
+- ``SelectAccount``, kullanıcının oturum sahip olduğu hesapları içeren hesap seçimi iletişim kutusunu sunmak için STS 'yi zorlar. Bu seçenek, uygulama geliştiricileri kullanıcıların farklı kimlikler arasında seçim yapmasına izin vermek istediğinizde yararlıdır. Bu seçenek, kimlik sağlayıcısına ``prompt=select_account`` göndermek için MSAL. Bu seçenek varsayılandır. Hesap ve Kullanıcı için bir oturumun varlığı gibi kullanılabilir bilgileri temel alan mümkün olan en iyi deneyimi sağlamanın iyi bir işi vardır. Bunu yapmak için iyi bir nedeniniz olmadığı müddetçe değiştirmeyin.
+- ``Consent``, uygulama geliştiricisinin, daha önce izin verilse bile, kullanıcıyı izin sorulmasını zorlamasına olanak sağlar. Bu durumda, MSAL kimlik sağlayıcısına `prompt=consent` gönderir. Bu seçenek, kuruluşun idare ettiği bazı güvenlik odaklı uygulamalarda, uygulamanın her kullanıldığı her seferinde kullanıcının izin iletişim kutusuyla sunulmasını talep ettiği durumlarda kullanılabilir.
+- ``ForceLogin``, bu kullanıcı istemi gerekmeyebilir olsa bile, uygulama geliştiricisinin kullanıcıya hizmet tarafından kimlik bilgileri istenmesini sağlar. Bu seçenek, bir belirteci almak başarısız olursa kullanıcının yeniden oturum açmasını sağlamak için yararlı olabilir. Bu durumda, MSAL kimlik sağlayıcısına `prompt=login` gönderir. Bazen, kuruluşun idare ettiği güvenlik odaklı uygulamalarda, uygulamanın belirli bölümlerine her erişirken kullanıcının yeniden kaydolmasını talep ettiği durumlarda kullanılır.
+- ``Never`` (yalnızca .NET 4,5 ve WinRT için) kullanıcıya sormaz, bunun yerine gizli katıştırılmış Web görünümünde depolanan tanımlama bilgisini kullanmayı dener. Daha fazla bilgi için bkz. MSAL.NET içindeki Web views. Bu seçeneğin kullanılması başarısız olabilir. Bu durumda `AcquireTokenInteractive`, UI etkileşiminin gerekli olduğunu bildirmek için bir özel durum oluşturur. Başka bir `Prompt` parametresi kullanmanız gerekir.
+- ``NoPrompt``, kimlik sağlayıcısına hiçbir istem göndermez. Bu seçenek yalnızca Azure Active Directory (Azure AD) B2C düzenleme profili ilkeleri için yararlıdır. Daha fazla bilgi için bkz. [Azure AD B2C özellikleri](https://aka.ms/msal-net-b2c-specificities).
 
 #### <a name="withextrascopetoconsent"></a>Withextrascopetoonay
 
-Bu değiştirici, kullanıcının birden fazla kaynağa ön onay vermesini istediğiniz (ve normalde MSAL.NET/Microsoft Identity platformu ile kullanılan artımlı onayı kullanmak istemediğiniz) gelişmiş bir senaryoda kullanılır. Ayrıntılar için bkz. [nasıl yapılır: Kullanıcı onayını birkaç kaynağın önüne](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)alma.
+Bu değiştirici, kullanıcının birkaç kaynağa ön onay vermesini istediğiniz ve normal olarak MSAL.NET/the Microsoft Identity platform ile kullanılan artımlı onay kullanmak istemediğiniz gelişmiş bir senaryoda kullanılır. Daha fazla bilgi için, bkz. [birkaç kaynak için Kullanıcı onayını ön](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)alma.
 
 ```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
@@ -235,34 +235,35 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 #### <a name="withcustomwebui"></a>WithCustomWebUi
 
 Web Kullanıcı arabirimi, tarayıcıyı çağırmak için bir mekanizmadır. Bu mekanizma, adanmış bir UI WebBrowser denetimi veya tarayıcıyı açmayı devretmek için bir yol olabilir.
-MSAL çoğu platform için Web ARABIRIMI uygulamaları sağlar, ancak tarayıcıyı kendiniz barındırmak isteyebileceğiniz durumlar da vardır:
+MSAL çoğu platform için Web ARABIRIMI uygulamaları sağlar, ancak tarayıcıyı kendiniz barındırmak isteyebileceğiniz durumlar vardır:
 
-- MSAL tarafından açıkça kapsanmayan platformlar, örneğin, Blazor, Unity, mono on Desktop
-- uygulamanızı test etmek ve Selenium ile kullanılabilecek otomatik bir tarayıcı kullanmak istiyor musunuz?
-- tarayıcı ve MSAL çalıştıran uygulama ayrı işlemlerdir
+- MSAL tarafından açıkça kapsanmayan platformlar, örneğin, Blazor, Unity ve mono masaüstleri.
+- Uygulamanızı test etmek ve Selenium ile kullanılabilecek bir otomatik tarayıcı kullanmak istiyorsunuz.
+- Tarayıcı ve MSAL çalıştıran uygulama ayrı işlemlerdir.
 
 ##### <a name="at-a-glance"></a>Bir bakışta
 
-Bunu başarmak için, son kullanıcının Kullanıcı adını girebilmesi için bir tarayıcıda gösterilmesi gereken bir `start Url`MSAL size sahip olursunuz. Kimlik doğrulaması tamamlandıktan sonra, uygulamanızın Azure AD tarafından sunulan bir kodu içeren `end Url`MSAL 'e geri geçirmesi gerekir.
-`end Url` ana bilgisayarı her zaman `redirectUri`. `end Url` için kesme yapmak üzere şunları yapabilirsiniz:
+Bunu başarmak için, son kullanıcının Kullanıcı adı gibi öğeler girebilmesi için bir tarayıcıda gösterilmesi gereken MSAL `start Url`size verirsiniz.
+Kimlik doğrulaması tamamlandıktan sonra, uygulamanızın Azure AD tarafından sunulan bir kodu içeren MSAL `end Url`'e geri geçirmesi gerekir.
+`end Url` ana bilgisayarı her zaman `redirectUri`. `end Url`kesme yapmak için aşağıdaki işlemlerden birini yapın:
 
-- `redirect Url` ziyaret edilene kadar tarayıcı yeniden yönlendirmelerini izleyin veya
-- tarayıcınızın bir URL 'ye yönlendirilmesini sağlamak için
+- `redirect Url` ziyaret edilene kadar tarayıcı yeniden yönlendirmelerini izleyin.
+- Tarayıcının, izlediğiniz bir URL 'ye yönlendirilmesini sağlayabilirsiniz.
 
 ##### <a name="withcustomwebui-is-an-extensibility-point"></a>WithCustomWebUi bir genişletilebilirlik noktasıdır
 
-`WithCustomWebUi`, genel istemci uygulamalarında kendi Kullanıcı arabiriminizi sağlamanıza ve kullanıcının kimlik sağlayıcısının/Yetkilendir uç noktasında dolaşmasına izin vermek ve oturum açmasını ve izin vermesini sağlamak için bir genişletilebilirlik noktasıdır. MSAL.NET, ardından kimlik doğrulama kodunu kullanabilir ve bir belirteç alabilir. Bu, Visual Studio 'da, elektriler uygulamalarının (örneğin, geri bildirim için) Web etkileşimi sağlaması için kullanıldığı, ancak işin büyük bir kısmını MSAL.NET için bırakın. UI Otomasyonu sağlamak isterseniz de kullanabilirsiniz. Ortak istemci uygulamalarında, MSAL.NET, güvenliğin sağlandığından emin olmak için PCE standardını ([OAuth ortak istemciler tarafından kod değişimi Için RFC 7636-kanıt anahtarı](https://tools.ietf.org/html/rfc7636)) kullanır: kodu yalnızca msal.net kullanabilir.
+`WithCustomWebUi`, genel istemci uygulamalarında kendi Kullanıcı arabiriminizi sağlamak için kullanabileceğiniz bir genişletilebilirlik noktasıdır. Ayrıca, kullanıcının kimlik sağlayıcısının/Yetkilendir uç noktasında dolaşmasına ve oturum açmasını ve izin vermesini sağlayabilirsiniz. MSAL.NET daha sonra kimlik doğrulama kodunu kullanabilir ve bir belirteç alabilir. Örneğin, Visual Studio 'da, elektriler uygulamalarının (örneğin, Visual Studio geri bildirimi) Web etkileşimini sağlaması için kullanılır, ancak işin büyük bir bölümünü yapmak için MSAL.NET olarak bırakın. UI Otomasyonu sağlamak isterseniz de kullanabilirsiniz. Ortak istemci uygulamalarında MSAL.NET, güvenliğin sağlandığından emin olmak için kod değişimi (PKCE) standardı için düzeltme anahtarını kullanır. Kodu yalnızca MSAL.NET kullanabilir. Daha fazla bilgi için bkz. [RFC 7636-OAuth genel istemcileri tarafından kod alışverişi Için düzeltme anahtarı](https://tools.ietf.org/html/rfc7636).
 
   ```csharp
   using Microsoft.Identity.Client.Extensions;
   ```
 
-##### <a name="how-to-use-withcustomwebui"></a>WithCustomWebUi kullanma
+##### <a name="use-withcustomwebui"></a>WithCustomWebUi kullanma
 
-`.WithCustomWebUI`kullanmak için şunları yapmanız gerekir:
+`.WithCustomWebUI`kullanmak için aşağıdaki adımları izleyin.
 
-  1. `ICustomWebUi` arabirimini uygulayın ( [buraya](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70)bakın. Genellikle yetkilendirme kodu URL 'sini kabul `AcquireAuthorizationCodeAsync` (MSAL.NET tarafından hesaplanan) bir yöntemi uygulamanız gerekir, bu da kullanıcının kimlik sağlayıcısıyla etkileşime geçmesine izin verir ve ardından kimlik sağlayıcısının uygulamanızı geri çağırarak (yetkilendirme kodu dahil) URL 'YI geri döndürmesidir. Sorunlarınız varsa, uygulamanızın MSAL ile sorunsuz bir şekilde çalışması için `MsalExtensionException` özel durumu oluşturması gerekir.
-  2. `AcquireTokenInteractive` çağrın, özel Web UI 'nizin örneğini geçirerek `.WithCustomUI()` değiştiricisini kullanabilirsiniz
+  1. `ICustomWebUi` arabirimini gerçekleştirin. Daha fazla bilgi için [Bu Web sitesine](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70)bakın. Bir `AcquireAuthorizationCodeAsync`yöntemi uygulayın ve MSAL.NET tarafından hesaplanan yetkilendirme kodu URL 'sini kabul edin. Daha sonra kullanıcının kimlik sağlayıcısı ile etkileşimle gezinmesini sağlar ve kimlik sağlayıcısının, yetkilendirme koduyla birlikte uygulamanızı geri çağıracağından URL 'YI geri döndürmesidir. Sorunlarınız varsa, uygulamanızın MSAL ile sorunsuz bir şekilde çalışması için `MsalExtensionException` özel durumu oluşturması gerekir.
+  2. `AcquireTokenInteractive` çağrın, özel Web UI 'nizin örneğini geçirerek `.WithCustomUI()` değiştiricisini kullanın.
 
      ```csharp
      result = await app.AcquireTokenInteractive(scopes)
@@ -270,19 +271,19 @@ Bunu başarmak için, son kullanıcının Kullanıcı adını girebilmesi için 
                        .ExecuteAsync();
      ```
 
-##### <a name="examples-of-implementation-of-icustomwebui-in-test-automation---seleniumwebui"></a>Test Otomasyonu 'nda ıcustomwebui 'ın uygulama örnekleri-SeleniumWebUI
+##### <a name="examples-of-implementation-of-icustomwebui-in-test-automation-seleniumwebui"></a>Test Otomasyonu 'nda ıcustomwebui 'ın uygulama örnekleri: SeleniumWebUI
 
-MSAL.NET ekibi, bu genişletilebilirlik mekanizmasından yararlanmak için UI testlerimizi yeniden yazan. İlginizi çekiyor olmanız durumunda MSAL.NET kaynak kodundaki [Seleniumwebui](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/tests/Microsoft.Identity.Test.Integration/Infrastructure/SeleniumWebUI.cs#L15-L160) sınıfına bakabilirsiniz
+MSAL.NET ekibi, bu genişletilebilirlik mekanizmasını kullanmak için UI testlerini yeniden yazıldı. İlgileniyorsanız, MSAL.NET kaynak kodundaki [Seleniumwebui](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/tests/Microsoft.Identity.Test.Integration/Infrastructure/SeleniumWebUI.cs#L15-L160) sınıfına bakın.
 
-##### <a name="providing-a-great-experience-with-systemwebviewoptions"></a>SystemWebViewOptions ile harika bir deneyim sağlama
+##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>SystemWebViewOptions ile harika bir deneyim sağlayın
 
-MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) ' den şunları belirtmenizi sağlar:
+MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet)' den şunları belirtebilirsiniz:
 
-- gezinme URI 'SI (`BrowserRedirectError`) veya sistem Web tarayıcısında oturum açma/onay hataları durumunda görüntülenecek HTML parçası (`HtmlMessageError`)
-- başarılı oturum açma/onay durumunda görüntülenecek URI (`BrowserRedirectSuccess`) veya HTML parçası (`HtmlMessageSuccess`).
-- Sistem tarayıcısını başlatmak için çalıştırılacak eylem. Bunun için `OpenBrowserAsync` temsilciyi ayarlayarak kendi uygulamanızı sağlayabilirsiniz. Sınıf Ayrıca iki tarayıcı için varsayılan bir uygulama sağlar: `OpenWithEdgeBrowserAsync` ve `OpenWithChromeEdgeBrowserAsync`, Microsoft Edge ve [Kmıum üzerinde Microsoft Edge](https://www.windowscentral.com/faq-edge-chromium)için sırasıyla.
+- Gidilecek URI (`BrowserRedirectError`) veya sistem Web tarayıcısında oturum açma veya onay hataları durumunda görüntülenecek HTML parçası (`HtmlMessageError`).
+- Gidilecek URI (`BrowserRedirectSuccess`) veya başarılı oturum açma veya onay durumunda görüntülenecek HTML parçası (`HtmlMessageSuccess`).
+- Sistem tarayıcısını başlatmak için çalıştırılacak eylem. `OpenBrowserAsync` temsilciyi ayarlayarak kendi uygulamanızı sağlayabilirsiniz. Sınıfı, iki tarayıcı için de varsayılan bir uygulama sağlar: `OpenWithEdgeBrowserAsync` ve `OpenWithChromeEdgeBrowserAsync` Microsoft Edge ve [Microsoft Edge için sırasıyla Kmıum üzerinde](https://www.windowscentral.com/faq-edge-chromium).
 
-Bu yapıyı kullanmak için aşağıdakine benzer bir ad yazabilirsiniz:
+Bu yapıyı kullanmak için aşağıdaki örneğe benzer bir şey yazın:
 
 ```csharp
 IPublicClientApplication app;
@@ -302,11 +303,11 @@ var result = app.AcquireTokenInteractive(scopes)
 
 #### <a name="other-optional-parameters"></a>Diğer isteğe bağlı parametreler
 
-[Acquiretokenınteractiveparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods) başvuru belgelerindeki `AcquireTokenInteractive` için diğer isteğe bağlı parametreler hakkında daha fazla bilgi edinin
+`AcquireTokenInteractive`yönelik diğer tüm isteğe bağlı parametreler hakkında daha fazla bilgi edinmek için bkz. [Acquiretokenınteractiveparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-MSAL Java doğrudan bir etkileşimli alma belirteci yöntemi sağlamaz. Bunun yerine, uygulamanın, belirteci almak için `acquireToken` metoduna geçirilebilen bir yetkilendirme kodu elde etmek üzere Kullanıcı etkileşimi akışı uygulamasına bir yetkilendirme isteği göndermesini gerektirir.
+MSAL Java doğrudan bir etkileşimli alma belirteci yöntemi sağlamaz. Bunun yerine, bir yetkilendirme kodu almak için uygulamanın kullanıcı etkileşimi akışı uygulamasına bir yetkilendirme isteği göndermesini gerektirir. Bu kod daha sonra belirteci almak için `acquireToken` yöntemine geçirilebilir.
 
 ```java
 AuthorizationCodeParameters parameters =  AuthorizationCodeParameters.builder(
@@ -345,7 +346,7 @@ future.handle((res, ex) -> {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-MSAL Python doğrudan bir etkileşimli alma belirteci yöntemi sağlamaz. Bunun yerine, uygulamanın, belirteci almak için `acquire_token_by_authorization_code` metoduna geçirilebilen bir yetkilendirme kodu elde etmek üzere Kullanıcı etkileşimi akışı uygulamasına bir yetkilendirme isteği göndermesini gerektirir.
+MSAL Python doğrudan bir etkileşimli alma belirteci yöntemi sağlamaz. Bunun yerine, bir yetkilendirme kodu almak için uygulamanın kullanıcı etkileşimi akışı uygulamasına bir yetkilendirme isteği göndermesini gerektirir. Bu kod daha sonra belirteci almak için `acquire_token_by_authorization_code` yöntemine geçirilebilir.
 
 ```Python
 result = None
@@ -399,49 +400,49 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 ```
 ---
 
-## <a name="integrated-windows-authentication"></a>Tümleşik Windows kimlik doğrulaması
+## <a name="integrated-windows-authentication"></a>Tümleşik Windows Kimlik Doğrulaması
 
-Bir etki alanı veya Azure AD 'ye katılmış makinede bir etki alanı kullanıcısı oturumu açmak istiyorsanız, tümleşik Windows kimlik doğrulaması kullanmanız gerekir.
+Bir etki alanında veya Azure AD 'ye katılmış makinede bir etki alanı kullanıcısının oturum açması için tümleşik Windows kimlik doğrulaması (ıWA) kullanın.
 
 ### <a name="constraints"></a>Kısıtlamalar
 
-- Tümleşik Windows kimlik doğrulaması (ıWA) yalnızca yalnızca **Federasyon** kullanıcıları, diğer bir deyişle, bir Active Directory oluşturulan ve Azure Active Directory tarafından desteklenen kullanıcılar için kullanılabilir. AD ile **yönetilen** kullanıcılar olmadan doğrudan AAD 'de oluşturulan kullanıcılar-bu kimlik doğrulama akışını kullanamaz. Bu sınırlama, Kullanıcı adı/parola akışını etkilemez.
-- IWA .NET Framework, .NET Core ve UWP platformları için yazılan uygulamalar içindir
-- IWA MFA 'yı atlamaz (Multi Factor Authentication). MFA yapılandırıldıysa, MFA Kullanıcı etkileşimi gerektirdiğinden, bir MFA sınaması gerekliyse ıWA başarısız olabilir.
+- Tümleşik Windows kimlik doğrulaması yalnızca *federe +* Kullanıcı, diğer bir deyişle, Active Directory ve Azure AD tarafından desteklenen kullanıcılar için kullanılabilir. *Yönetilen* kullanıcılar olarak bilinen Active Directory yedekleme olmadan doğrudan Azure AD 'de oluşturulan kullanıcılar bu kimlik doğrulama akışını kullanamaz. Bu sınırlama, Kullanıcı adı ve parola akışını etkilemez.
+- IWA, .NET Framework, .NET Core ve Evrensel Windows Platformu (UWP) platformları için yazılan uygulamalar içindir.
+- IWA, çok faktörlü kimlik doğrulamasını (MFA) atlamaz. MFA yapılandırıldıysa, MFA Kullanıcı etkileşimi gerektirdiğinden, bir MFA sınaması gerekliyse ıWA başarısız olabilir.
   > [!NOTE]
-  > Bu, karmaşık bir değer. IWA etkileşimli değil, ancak MFA Kullanıcı etkileşimi gerektirir. Kimlik sağlayıcısının MFA istediğinde, kiracı yöneticisinin ne zaman yapılacağını kontrol edersiniz. Gözlemlerimizde, farklı bir ülkeden oturum açtığınızda MFA gerekir, bu, VPN üzerinden bir kurumsal ağa bağlanmaz ve bazen VPN aracılığıyla bağlandığında bile olur. Belirleyici bir kural kümesi beklemediğinden Azure Active Directory, MFA 'yı sürekli olarak öğrenmek için AI 'yi kullanır. IWA başarısız olursa, bir Kullanıcı istemine (etkileşimli kimlik doğrulama veya cihaz kodu akışı) geri dönüş yapmanız gerekir.
+  > Bu, karmaşık bir değer. IWA etkileşimli değil, ancak MFA Kullanıcı etkileşimi gerektirir. Kimlik sağlayıcısının MFA istediğinde, kiracı yöneticisinin ne zaman yapılacağını kontrol etmeyin. Gözlemlerimizde, farklı bir ülkede oturum açtığınızda MFA gerekir. Bu, VPN ile bir kurumsal ağa bağlı olmadığında ve bazen VPN aracılığıyla bağlandığında bile olur. Belirleyici bir kural kümesi beklenmeyin. Azure AD, MFA 'nın gerekli olup olmadığını sürekli olarak öğrenmek için AI 'yi kullanır. IWA başarısız olursa etkileşimli kimlik doğrulama veya cihaz kodu akışı gibi bir Kullanıcı istemine geri dönün.
 
 - `PublicClientApplicationBuilder` geçirilen yetkilinin olması gerekir:
-  - Kiracı tarafından alınan (form `https://login.microsoftonline.com/{tenant}/`, `tenant` kiracı KIMLIĞINI veya kiracıyla ilişkili bir etki alanını temsil eden GUID 'dir.
-  - Tüm iş ve okul hesapları için (`https://login.microsoftonline.com/organizations/`)
-  - Microsoft kişisel hesapları desteklenmez (sık karşılaşılan veya/tüketiciler kiracılarını kullanamazsınız)
+  - `https://login.microsoftonline.com/{tenant}/`, `tenant` kiracı KIMLIĞINI veya kiracıyla ilişkili bir etki alanını temsil eden GUID 'dir.
+  - Tüm [iş ve okul hesapları](`https://login.microsoftonline.com/organizations/`)için.
+  - Microsoft kişisel hesapları desteklenmez. Sık karşılaşılan veya/tüketicilere kiracılar kullanamazsınız.
 
 - Tümleşik Windows kimlik doğrulaması, sessiz bir akışdır:
-  - Uygulamanızın kullanıcısının, uygulamayı kullanmak için önceden verilmiş olması gerekir
-  - ya da kiracı yöneticisinin uygulamayı kullanabilmesi için Kiracıdaki tüm kullanıcılara daha önce sahip olması gerekir.
+  - Uygulamanızın kullanıcısının, uygulamayı kullanmak için önceden verilmiş olması gerekir.
+  - Ya da, kiracı yöneticisinin uygulamayı kullanabilmesi için Kiracıdaki tüm kullanıcılara daha önce sahip olması gerekir.
   - Diğer bir deyişle:
-    - geliştirici için Azure portal bir geliştirici, sizin için olan **ver** düğmesine bastınız.
-    - ya da bir kiracı yöneticisi, uygulamanın kaydının **API izinleri** sekmesindeki **{kiracı etki alanı} Için yönetici onayı verme/iptal etme/iptal** düğmesine bastına (bkz. [Web API 'lerine erişim izinleri ekleme](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis))
-    - ya da kullanıcıların uygulamayı onaylaması için bir yol sağladınız (bkz. [bireysel kullanıcı Izni isteme](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent))
-    - ya da kiracı yöneticisinin uygulamayı onaylaması için bir yol sağladınız (bkz. [yönetici onayı](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant))
+    - Geliştirici, Azure portal için **Izin ver** düğmesini seçti.
+    - Ya da bir kiracı yöneticisi, uygulamanın kaydının **API izinleri** sekmesindeki **{kiracı etki alanı} Için yönetici onayını ver/iptal et** ' i seçti. Daha fazla bilgi için bkz. [Web API 'lerine erişim Izinleri ekleme](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis).
+    - Ya da kullanıcıların uygulamayı onaylaması için bir yol sağladınız. Daha fazla bilgi için bkz. [bireysel kullanıcı Izni isteme](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent).
+    - Ya da, kiracı yöneticisinin uygulamayı onaylaması için bir yol sağladınız. Daha fazla bilgi için bkz. [yönetici onayı](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant).
 
-- Bu akış .net Masaüstü, .NET Core ve Windows Universal (UWP) uygulamaları için etkinleştirilmiştir.
+- Bu akış .NET Masaüstü, .NET Core ve UWP uygulamaları için etkinleştirilmiştir.
 
-Onay hakkında daha fazla bilgi için bkz. [Microsoft Identity platform izinleri ve onayı](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
+Onay hakkında daha fazla bilgi için bkz. [Microsoft Identity platform izinleri ve onayı](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
 
-### <a name="how-to-use-it"></a>Kullanımı
+### <a name="learn-how-to-use-it"></a>Nasıl kullanacağınızı öğrenin
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-MSAL.NET ' de şunu kullanmanız gerekir
+MSAL.NET ' de şunu kullanmanız gerekir:
 
 ```csharp
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-Normalde yalnızca bir parametreye ihtiyacınız vardır (`scopes`). Ancak, Windows yöneticinizin ilkeleri kurma şekline bağlı olarak, Windows makinenizde uygulamaların oturum açan kullanıcıyı arama izni yoktur. Bu durumda, `.WithUsername()` ikinci bir yöntem kullanın ve oturum açmış kullanıcının Kullanıcı adını UPN biçimi `joe@contoso.com`olarak geçirin. .NET Core 'da, .NET Core platformu kullanıcı adını işletim sistemine sormamakta olduğundan, yalnızca Kullanıcı adını alan aşırı yükleme kullanılabilir.
+Normalde yalnızca bir parametreye ihtiyacınız vardır (`scopes`). Windows yöneticinizin ilkeleri ayarlama şekline bağlı olarak, Windows makinenizde bulunan uygulamaların oturum açan kullanıcıyı arama izni olmayabilir. Bu durumda, ikinci bir yöntemi kullanın, `.WithUsername()`ve oturum açmış kullanıcının Kullanıcı adını bir UPN biçimi olarak (örneğin, `joe@contoso.com`) geçirin. .NET Core 'da, .NET Core platformu kullanıcı adını işletim sistemine soramadığı için yalnızca Kullanıcı adını almaya yönelik aşırı yükleme kullanılabilir.
 
-Aşağıdaki örnek, alacağınız özel durumların türüyle ilgili açıklamalar ve bunların azaltmaları ile en güncel durumu gösterir
+Aşağıdaki örnek, alabileceğiniz özel durumların ve bunların azaltmaları hakkındaki açıklamaları içeren en güncel durumu gösterir.
 
 ```csharp
 static async Task GetATokenForGraph()
@@ -520,11 +521,11 @@ static async Task GetATokenForGraph()
 }
 ```
 
-AcquireTokenByIntegratedWindowsAuthentication üzerindeki olası değiştiricilerin listesi için bkz. [Acquiretokenbyıntegratedwindowsauthparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods)
+AcquireTokenByIntegratedWindowsAuthentication üzerindeki olası değiştiricilerin listesi için bkz. [Acquiretokenbyıntegratedwindowsauthparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods).
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Bu, [msal Java dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)bir ayıklandır. Örnekleri yapılandırmak için MSAL Java dev örneklerinde kullanılan sınıf şunlardır: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+Bu ayıklama [msal Java dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/). Örnekleri yapılandırmak için MSAL Java dev örnekleri içinde kullanılan sınıf: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```Java
 PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
@@ -554,41 +555,40 @@ Bu akış MacOS için geçerlidir.
 
 ---
 
-## <a name="username--password"></a>Kullanıcı adı/parola
+## <a name="username-and-password"></a>Kullanıcı adı ve parola
 
 Ayrıca, Kullanıcı adı ve parola sağlayarak bir belirteç elde edebilirsiniz. Bu akış sınırlı ve önerilmez, ancak gerekli olduğu durumlarda hala kullanım durumları vardır.
 
 ### <a name="this-flow-isnt-recommended"></a>Bu akış önerilmez
 
-Bu akış **önerilmez** çünkü uygulamanız için bir kullanıcıdan parola isteyen güvenli değildir. Bu sorun hakkında daha fazla bilgi için [Bu makaleye](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)bakın. Windows etki alanına katılmış makinelerde sessizce belirteç almak için tercih edilen akış, [Windows kimlik doğrulaması ' nı tümleştirilmiştir](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Aksi takdirde, [cihaz kod akışını](https://aka.ms/msal-net-device-code-flow) da kullanabilirsiniz
+Bu akış *önerilmez* çünkü uygulamanızın bir kullanıcıdan parolalarını güvenli hale getirmesini isteyin. Daha fazla bilgi için, bkz. [parola büyüyen soruna neden olan çözüm nedir?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Windows etki alanına katılmış makinelerde sessizce belirteç almak için tercih edilen akış, [Windows kimlik doğrulaması ' nı tümleştirilmiştir](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). [Cihaz kod akışını](https://aka.ms/msal-net-device-code-flow)da kullanabilirsiniz.
 
 > [!NOTE]
-> Bu, bazı durumlarda (DevOps senaryolarında) yararlı olsa da, kendi Kullanıcı arabiriminizi sağladığınız Etkileşimli senaryolarda Kullanıcı adı/parola kullanmak istiyorsanız, bundan uzaklaşmaya gerçekten göz önünde bulundurun. Kullanıcı adı/parola kullanarak, bir dizi şey verirsiniz:
+> Bir Kullanıcı adı ve parola kullanmak, DevOps senaryoları gibi bazı durumlarda faydalıdır. Ancak, kendi Kullanıcı arabiriminizi sağladığınız Etkileşimli senaryolarda Kullanıcı adı ve parola kullanmak istiyorsanız, bunu nasıl uzaklaşmanız gerektiğini düşünün. Bir Kullanıcı adı ve parola kullanarak birkaç şey sağlarsınız:
 >
-> - Modern kimlik 'in temel anları: parola, daha fazla, yeniden yürütülür. Bu, ele geçirilebilecek bir paylaşılan gizlilik kavramımız için.
-> Bu, passwordless ile uyumsuzdur.
-> - MFA yapması gereken kullanıcılar oturum açamaz (hiçbir etkileşim yoktur)
-> - Kullanıcılar çoklu oturum açma yapamaz
+> - Modern kimliğin temel anları. Paylaşılan bir gizli dizi yakalanabileceğinden, bir parola, biraz ele alınabilir ve yeniden çalınabilir. Passwordless ile uyumsuz.
+> - MFA yapması gereken kullanıcılar etkileşime sahip olmadığından oturum açamıyor.
+> - Kullanıcılar çoklu oturum açma (SSO) yapamazlar.
 
 ### <a name="constraints"></a>Kısıtlamalar
 
 Aşağıdaki kısıtlamalar da geçerlidir:
 
-- Kullanıcı adı/parola akışı, koşullu erişim ve Multi-Factor Authentication ile uyumlu değil: bir sonuç olarak, uygulamanız kiracı yöneticisinin çok faktörlü kimlik doğrulaması gerektirdiği bir Azure AD kiracısında çalışıyorsa, bu akışı kullanamazsınız. Birçok kuruluş bu şekilde yapılır.
-- Yalnızca Iş ve okul hesapları için çalışır (MSA değil)
-- Flow, .net masaüstü ve .NET Core 'ta mevcuttur, UWP 'de değildir.
+- Kullanıcı adı ve parola akışı, koşullu erişim ve çok faktörlü kimlik doğrulamasıyla uyumlu değildir. Sonuç olarak, uygulamanız kiracı yöneticisinin çok faktörlü kimlik doğrulaması gerektirdiği bir Azure AD kiracısında çalışıyorsa, bu akışı kullanamazsınız. Birçok kuruluş bu şekilde yapılır.
+- Yalnızca iş ve okul hesapları için çalışır (MSA değil).
+- Flow, .NET masaüstü ve .NET Core 'ta mevcuttur, UWP 'de değildir.
 
 ### <a name="b2c-specifics"></a>B2C özellikleri
 
-[B2C Ile ROPC kullanma hakkında daha fazla bilgi](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics#resource-owner-password-credentials-ropc-with-b2c).
+Daha fazla bilgi için bkz. [B2C Ile kaynak sahibi parola kimlik bilgileri (ROPC)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics#resource-owner-password-credentials-ropc-with-b2c).
 
-### <a name="how-to-use-it"></a>Nasıl kullanılır?
+### <a name="use-it"></a>Kullanın
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-`IPublicClientApplication`yöntemi içerir `AcquireTokenByUsernamePassword`
+`IPublicClientApplication`, `AcquireTokenByUsernamePassword`metodunu içerir.
 
-Aşağıdaki örnek, Basitleştirilmiş bir durum gösterir
+Aşağıdaki örnek, Basitleştirilmiş bir durum gösterir.
 
 ```csharp
 static async Task GetATokenForGraph()
@@ -629,7 +629,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-Aşağıdaki örnek, alacağınız özel durumların türüyle ilgili açıklamalar ve bunların azaltmaları ile en güncel durumu gösterir
+Aşağıdaki örnek, alabileceğiniz özel durumların ve bunların azaltmaları hakkındaki açıklamaları içeren en güncel durumu gösterir.
 
 ```csharp
 static async Task GetATokenForGraph()
@@ -791,11 +791,11 @@ static async Task GetATokenForGraph()
 }
 ```
 
-`AcquireTokenByUsernamePassword`uygulanabilecek tüm değiştiriciler hakkında daha fazla bilgi için bkz. [Acquiretokenbyusernamepasswordparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods)
+`AcquireTokenByUsernamePassword`uygulanabilecek tüm değiştiriciler hakkında daha fazla bilgi için bkz. [Acquiretokenbyusernamepasswordparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods).
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Bu, [msal Java dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)bir ayıklandır. Örnekleri yapılandırmak için MSAL Java dev örneklerinde kullanılan sınıf şunlardır: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+Aşağıdaki ayıklama, [msal Java dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/). Örnekleri yapılandırmak için MSAL Java dev örnekleri içinde kullanılan sınıf: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```Java
 PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
@@ -842,7 +842,7 @@ future.handle((res, ex) -> {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Bu, [msal Python dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)bir ayıklandır.
+Bu ayıklama [msal Python dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/).
 
 ```Python
 # Create a preferably long-lived app instance which maintains a token cache.
@@ -876,23 +876,23 @@ Bu akış, macOS için MSAL üzerinde desteklenmez.
 
 ---
 
-## <a name="command-line-tool-without-web-browser"></a>Komut satırı aracı (Web tarayıcısı olmadan)
+## <a name="command-line-tool-without-a-web-browser"></a>Web tarayıcısı olmayan komut satırı aracı
 
 ### <a name="device-code-flow"></a>Cihaz kod akışı
 
-Bir komut satırı aracı (Web denetimlerine sahip olmayan) yazıyorsanız ve önceki akışları kullanmak istemiyorsanız, cihaz kodu akışını kullanmanız gerekir.
+Web denetimlerine sahip olmayan bir komut satırı aracı yazıyorsanız ve önceki akışları kullanmak istemiyorsanız, cihaz kodu akışını kullanmanız gerekir.
 
-Azure AD ile etkileşimli kimlik doğrulaması için bir Web tarayıcısı gerekir (Ayrıntılar için bkz. [Web tarayıcıları kullanımı](https://aka.ms/msal-net-uses-web-browser)). Ancak, bir Web tarayıcısı sağlamayan cihazlarda veya işletim sistemlerinde kullanıcıların kimliğini doğrulamak için, cihaz kodu akışı kullanıcının etkileşimli olarak oturum açmasını sağlamak için başka bir cihaz (örneğin, başka bir bilgisayar veya cep telefonu) kullanmasına izin verir. Uygulama, cihaz kod akışını kullanarak belirteçleri, özellikle bu cihazlar/OSE için tasarlanan iki adımlı bir işlemle alır. Bu uygulamaların örnekleri, IoT üzerinde çalışan uygulamalar veya komut satırı araçları (CLı). Fikir şu şekilde olur:
+Azure AD ile etkileşimli kimlik doğrulaması için bir Web tarayıcısı gerekir. Daha fazla bilgi için bkz. [Web tarayıcıları kullanımı](https://aka.ms/msal-net-uses-web-browser). Bir Web tarayıcısı sağlamayan cihazlarda veya işletim sistemlerinde kullanıcıların kimliğini doğrulamak için, cihaz kodu akışı kullanıcının etkileşimli olarak oturum açmak için bilgisayar veya cep telefonu gibi başka bir cihaz kullanmasına olanak sağlar. Uygulama, cihaz kod akışını kullanarak belirteçleri bu cihazlar veya uygulamalar için tasarlanan iki adımlı bir işlemle edinir. Bu uygulamaların örnekleri, IoT veya komut satırı araçlarında (CLı) çalışan uygulamalardır. Fikir şu şekilde olur:
 
-1. Kullanıcı kimlik doğrulaması gerekli olduğunda, uygulama bir kod sağlar ve kullanıcıdan bir URL 'ye (örneğin, internet 'e bağlı bir akıllı telefon) gitmesini ister ve kullanıcıdan kodu girmesi istenir (örneğin, `https://microsoft.com/devicelogin`). Bu işlem yapıldığında, Web sayfası, gerektiğinde izin istemleri ve çok faktörlü kimlik doğrulaması dahil olmak üzere normal bir kimlik doğrulama deneyimi aracılığıyla kullanıcıya yol açacaktır.
+1. Kullanıcı kimlik doğrulaması gerekli olduğunda, uygulama kullanıcı için bir kod sağlar. Kullanıcıdan bir URL 'ye gitmek için Internet 'e bağlı bir akıllı telefon gibi başka bir cihaz kullanması istenir, örneğin, `https://microsoft.com/devicelogin`. Ardından kullanıcıdan kodu girmesi istenir. Bu işlem yapıldığında, Web sayfası, gerekirse onay istemleri ve çok faktörlü kimlik doğrulaması içeren normal bir kimlik doğrulama deneyimi aracılığıyla kullanıcıyı müşteri adaylarına yönlendirir.
 
-2. Kimlik doğrulaması başarılı olduğunda, komut satırı uygulaması gerekli belirteçleri bir arka kanal üzerinden alır ve bunu, gereken Web API çağrılarını gerçekleştirmek için kullanır.
+2. Başarılı kimlik doğrulamasından sonra, komut satırı uygulaması, gerekli belirteçleri bir arka kanal aracılığıyla alır ve bunları gereken Web API çağrılarını gerçekleştirmek için kullanır.
 
-### <a name="how-to-use"></a>Nasıl kullanılır?
+### <a name="use-it"></a>Kullanın
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-`IPublicClientApplication`, `AcquireTokenWithDeviceCode` adlı bir yöntemi içerir
+`IPublicClientApplication`, `AcquireTokenWithDeviceCode`adlı bir yöntemi içerir.
 
 ```csharp
  AcquireTokenWithDeviceCode(IEnumerable<string> scopes,
@@ -901,12 +901,12 @@ Azure AD ile etkileşimli kimlik doğrulaması için bir Web tarayıcısı gerek
 
 Bu yöntem parametre olarak alır:
 
-- İçin erişim belirteci istemek için `scopes`
-- `DeviceCodeResult` alacak bir geri çağırma
+- İçin bir erişim belirteci istemek üzere `scopes`.
+- `DeviceCodeResult`alan bir geri çağırma.
 
-  ![image](https://user-images.githubusercontent.com/13203188/56024968-7af1b980-5d11-11e9-84c2-5be2ef306dc5.png)
+  ![DeviceCodeResult özellikleri](https://user-images.githubusercontent.com/13203188/56024968-7af1b980-5d11-11e9-84c2-5be2ef306dc5.png)
 
-Aşağıdaki örnek kod, alacağınız özel durumların türüyle ilgili açıklamaları ve bunların hafifliklerini içeren en güncel durumu gösterir.
+Aşağıdaki örnek kod, alacağınız özel durumların ve bunların risk azaltma türlerinin açıklamalarını içeren en güncel durumu gösterir.
 
 ```csharp
 private const string ClientId = "<client_guid>";
@@ -997,7 +997,7 @@ private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientA
 ```
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Bu, [msal Java dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)bir ayıklandır. Örnekleri yapılandırmak için MSAL Java dev örneklerinde kullanılan sınıf şunlardır: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+Bu ayıklama [msal Java dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/). Örnekleri yapılandırmak için MSAL Java dev örnekleri içinde kullanılan sınıf: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```java
 PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
@@ -1030,7 +1030,7 @@ future.join();
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Bu, [msal Python dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)bir ayıklandır.
+Bu ayıklama [msal Python dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/).
 
 ```Python
 # Create a preferably long-lived app instance which maintains a token cache.
@@ -1089,35 +1089,35 @@ Bu akış MacOS için geçerlidir.
 
 MSAL.NET ' de, bir bellek içi belirteç önbelleği varsayılan olarak sağlanır.
 
-### <a name="serialization-is-customizable-in-windows-desktop-apps-and-web-appsweb-apis"></a>Serileştirme, Windows Masaüstü uygulamaları ve Web Apps/Web API 'Lerinde özelleştirilebilir
+### <a name="serialization-is-customizable-in-windows-desktop-apps-and-web-apps-or-web-apis"></a>Serileştirme, Windows Masaüstü uygulamaları ve Web uygulamaları veya Web API 'Lerinde özelleştirilebilir
 
-.NET Framework ve .NET Core durumunda, ek bir şey yapmazsanız, bellek içi belirteç önbelleği uygulama süresince sürer. Serileştirme 'in kutudan neden olmadığını anlamak için, MSAL .NET Desktop/Core uygulamalarının konsol veya Windows uygulamaları (dosya sistemine erişimi olan) veya **Ayrıca** Web uygulamaları veya Web API 'si olabileceğini unutmayın. Bu Web uygulamaları ve Web API 'Leri veritabanları, dağıtılmış önbellekler, redıs önbellekler gibi bazı belirli önbellek mekanizmalarını kullanabilir. .NET masaüstü veya çekirdekli bir kalıcı belirteç önbelleği uygulamasına sahip olmak için serileştirme 'yı özelleştirmeniz gerekir.
+.NET Framework ve .NET Core durumunda, ek bir şey yapmazsanız, bellek içi belirteç önbelleği uygulama süresince sürer. Serileştirme 'in kutudan neden olmadığını anlamak için, MSAL .NET masaüstü veya .NET Core uygulamalarının konsol veya Windows uygulamaları (dosya sistemine erişimi olan), *Ayrıca* Web uygulamaları veya Web API 'leri olabileceğini unutmayın. Bu Web uygulamaları ve Web API 'Leri veritabanları, dağıtılmış önbellekler ve Redıs önbellekler gibi bazı belirli önbellek mekanizmalarını kullanabilir. .NET masaüstü veya .NET Core 'ta kalıcı bir belirteç önbelleği uygulamasına sahip olmak için Serileştirmeyi özelleştirmeniz gerekir.
 
 Belirteç önbelleği serileştirmesi ile ilgili sınıflar ve arabirimler aşağıdaki türlerdir:
 
-- ``ITokenCache``, belirteç önbelleği serileştirme isteklerine abone olacak olayları tanımlayan ve farklı biçimlerde (ADAL v 3.0, MSAL 2. x ve MSAL 3. x = ADAL v 5.0) önbelleğin serileştirilmesi veya serileştirilmesi için Yöntemler tanımlar.
+- ``ITokenCache``, belirteç önbelleği serileştirme isteklerine abone olacak olayları ve farklı biçimlerde (ADAL v 3.0, MSAL 2. x ve MSAL 3. x = ADAL v 5.0) önbelleği serileştirme veya seri durumdan çıkarma yöntemlerine ilişkin yöntemleri tanımlar.
 - ``TokenCacheCallback`` serileştirme işlemini işleyebilmeniz için olaylara geçirilen bir geri çağırma işlemi. ``TokenCacheNotificationArgs``türü bağımsız değişkenlerle çağırılır.
-- ``TokenCacheNotificationArgs`` yalnızca uygulamanın ``ClientId`` ve belirtecin kullanılabildiği kullanıcıya bir başvuru sağlar
+- ``TokenCacheNotificationArgs`` yalnızca uygulama ``ClientId`` ve belirtecin kullanılabildiği kullanıcıya bir başvuru sağlar.
 
-  ![image](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
+  ![Belirteç önbelleği serileştirme diyagramı](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
 
 > [!IMPORTANT]
 > MSAL.NET, sizin için belirteç önbellekleri oluşturur ve bir uygulamanın `UserTokenCache` ve `AppTokenCache` özelliklerini çağırdığınızda `IToken` önbelleği sağlar. Arabirimi kendiniz uygulamanız gerekmez. Özel bir belirteç önbelleği serileştirmesi uyguladığınızda, sorumluluğu şu şekilde olur:
 >
-> - `BeforeAccess` ve `AfterAccess` "olayları" (ya da *zaman uyumsuz* karşılık gelen) tepki verir. `BeforeAccess` temsilcisi önbelleğin serisini kaldırmak, ancak `AfterAccess` bir önbelleğin serileştirilmesinden sorumludur.
-> - Bu olay deposunun veya yükleme bloblarının bir parçası olarak olay bağımsız değişkeni aracılığıyla istediğiniz depolama alanına geçirilir.
+> - `BeforeAccess` ve `AfterAccess` olaylarına ya da *zaman uyumsuz* karşılığına tepki verin. `BeforeAccess` temsilcisi önbelleğin serisini kaldırmada sorumludur. `AfterAccess` temsilcisi, önbelleğin serileştirilmesinden sorumludur.
+> - Bu olayların bir bölümünün, olay bağımsız değişkeni aracılığıyla istediğiniz depolama alanına geçirildiği blob 'ları veya yükleme bloblarını anlayın.
 
-Bir genel istemci uygulaması (Masaüstü) veya gizli bir istemci uygulaması (Web uygulaması/Web API 'SI, Daemon uygulaması) için bir belirteç önbelleği serileştirmesi yazıyorsanız, stratejileri farklılık açıktır.
+Bir masaüstü veya Web uygulaması veya Web API 'SI ya da bir Daemon uygulaması gibi bir gizli istemci uygulaması için bir belirteç önbelleği serileştirme yazıyorsanız, stratejileri farklılık açıktır.
 
-MSAL v2. x, önbelleği yalnızca MSAL.NET biçimine (MSAL ile ortak olan Birleşik biçim önbelleği, ancak platformlar arasında) seri hale getirmek istiyorsanız veya Ayrıca ADAL v3 'in [eski](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) belirteç önbelleği serileştirmesini desteklemek istiyorsanız, birkaç seçeneğe sahip olursunuz.
+MSAL v2. x olduğundan, birkaç seçeneğiniz vardır. Tercih ettiğiniz değişiklik, önbelleği yalnızca MSAL ile ortak olan Birleşik bir biçim önbelleği olan MSAL.NET biçiminde seri hale getirmek isteyip istemediğinize bağlıdır. Ayrıca, ADAL v3 'nin [eski](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) belirteç önbelleği serileştirmesini desteklemek de isteyebilirsiniz.
 
-ADAL.NET 3. x, ADAL.NET 5. x ve MSAL.NET arasındaki SSO durumunu paylaşmak için belirteç önbelleği serileştirme özelleştirmesi, şu örneğin bir parçası olarak açıklanmaktadır: [Active-Directory-DotNet-v1--v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2)
+ADAL.NET 3. x, ADAL.NET 5. x ve MSAL.NET arasındaki SSO durumunu paylaşmak için belirteç önbelleği serileştirme özelleştirmesi, [Active-Directory-DotNet-v1-v1-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2)örnek bölümünde açıklanmaktadır.
 
 ### <a name="simple-token-cache-serialization-msal-only"></a>Basit belirteç önbelleği serileştirme (yalnızca MSAL)
 
-Masaüstü uygulamaları için bir belirteç önbelleğinin özel serileştirilmesi Naïve uygulamasının bir örneği aşağıda verilmiştir. Burada, uygulama ile aynı klasördeki bir dosyadaki Kullanıcı belirteci önbelleği.
+Aşağıdaki örnek, masaüstü uygulamaları için bir belirteç önbelleğinin özel serileştirilmesi Naïve uygulamasıdır. Burada, kullanıcı belirteci önbelleği uygulamayla aynı klasördeki bir dosyadır.
 
-Uygulamayı oluşturduktan sonra, uygulamayı geçirerek ``TokenCacheHelper.EnableSerialization()`` vererek serileştirme etkinleştirilir `UserTokenCache`
+Uygulamayı oluşturduktan sonra, ``TokenCacheHelper.EnableSerialization()`` çağırarak ve uygulamayı `UserTokenCache`geçirerek serileştirme etkinleştirilir.
 
 ```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
@@ -1175,14 +1175,14 @@ static class TokenCacheHelper
  }
 ```
 
-Ortak istemci uygulamaları için bir ürün kalitesi belirteç önbelleği dosya tabanlı serileştirici Önizlemesi (Windows, Mac ve Linux üzerinde çalışan masaüstü uygulamaları için) [Microsoft. Identity. Client. Extensions. msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) açık kaynak kitaplığından bulunabilir. Bunu uygulamalarınıza şu NuGet paketinden dahil edebilirsiniz: [Microsoft. Identity. Client. Extensions. msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
+Windows, Mac ve Linux üzerinde çalışan masaüstü uygulamalarına yönelik ortak istemci uygulamalarına yönelik bir ürün kalitesi belirteç önbelleği dosya tabanlı serileştiricinin Önizlemesi [Microsoft. Identity. Client. Extensions. msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) açık kaynak kitaplığından bulunabilir. Bunu uygulamalarınıza şu NuGet paketinden dahil edebilirsiniz: [Microsoft. Identity. Client. Extensions. msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
 > [!NOTE]
-> Sorumluluk reddi. Microsoft. Identity. Client. Extensions. msal kitaplığı, MSAL.NET üzerinde bir uzantıdır. Bu kitaplıklardaki sınıflar, MSAL.NET veya son değişiklikler ile, gelecekte bu şekilde bir şekilde.
+> Vazgeçme: Microsoft. Identity. Client. Extensions. msal kitaplığı, MSAL.NET üzerinde bir uzantıdır. Bu kitaplıklardaki sınıflar, MSAL.NET veya son değişiklikler ile, gelecekte bu şekilde bir şekilde.
 
 ### <a name="dual-token-cache-serialization-msal-unified-cache--adal-v3"></a>Çift belirteç önbelleği serileştirme (MSAL Birleşik önbellek + ADAL v3)
 
-Her ikisi de birleştirilmiş önbellek biçimiyle (ADAL.NET 4. x ve MSAL.NET 2. x için ortak olan ve aynı kuşya da daha eski olan diğer Msallara, aynı platformda) belirteç önbelleği serileştirme uygulamak istiyorsanız, aşağıdaki kod ile ilham alabilirsiniz :
+Birleşik önbellek biçimiyle belirteç önbelleği serileştirme uygulamak isteyebilirsiniz. Bu biçim, ADAL.NET 4. x ve MSAL.NET 2. x ile aynı platformda ve daha eski diğer Msallarla aynı platformda ortaktır. Aşağıdaki kodla ilham alın:
 
 ```csharp
 string appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location;

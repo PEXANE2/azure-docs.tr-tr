@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 0c69c90410aab7fa37ab87e82314c53e4459ca25
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0e4dd67e1686d3b63376138d1be2d1f7df4bb41a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155664"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290657"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Azure Resource Manager şablon bulut tutarlılık için geliştirme
 
@@ -55,7 +55,7 @@ Azure Resource Manager özellikleri her zaman genel Azure'a ilk sunulacaktır. Y
 
 1. Depo yerel kopyasını oluşturduktan sonra için hedef Azure Resource Manager PowerShell ile bağlanın.
 
-1. Psm1 modülünü içeri aktarın ve test-AzureRmureRmTemplateFunctions cmdlet 'ini yürütün:
+1. Psm1 modülünü içeri aktarın ve Test AzureRmTemplateFunctions cmdlet'ini yürütün:
 
    ```powershell
    # Import the module

@@ -14,23 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: ee15836906eef0b9205691f9a6003cea0b9fae80
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 809216aadb77f014b7fb461ba8439070c5e23d43
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036461"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291898"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD disk görüntüsünü Azure 'a oluşturma ve yükleme
 Bu makalede, OpenBSD işletim sistemini içeren bir sanal sabit disk (VHD) oluşturma ve karşıya yükleme işleminin nasıl yapılacağı gösterilir. Karşıya yükledikten sonra, Azure CLı aracılığıyla Azure 'da bir sanal makine (VM) oluşturmak için kendi görüntünüz olarak kullanabilirsiniz.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede, aşağıdaki öğeler olduğunu varsaymaktadır:
 
 * **Azure aboneliği** -hesabınız yoksa yalnızca birkaç dakika içinde bir tane oluşturabilirsiniz. Bir MSDN aboneliğiniz varsa bkz. [Visual Studio aboneleri Için aylık Azure kredisi](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Aksi takdirde, [ücretsiz bir deneme hesabı oluşturmayı](https://azure.microsoft.com/pricing/free-trial/)öğrenin.  
 * **Azure CLI** -en son [Azure CLI](/cli/azure/install-azure-cli) 'Nın yüklü olduğundan ve Azure hesabınızda [az Login](/cli/azure/reference-index)ile oturum açtığınızdan emin olun.
-* **Bir. vhd dosyasında yüklü OpenBSD işletim sistemi** -sanal bir sabit diske desteklenen bir OpenBSD işletim sistemi ([6,2 sürüm AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.2/amd64/)) yüklenmelidir. . Vhd dosyaları oluşturmak için birden çok araç vardır. Örneğin,. vhd dosyasını oluşturmak ve işletim sistemini yüklemek için Hyper-V gibi bir sanallaştırma çözümünü kullanabilirsiniz. Hyper-V ' y i yüklemek ve kullanmak hakkında yönergeler için bkz. [Hyper-v ' y i yüklemek ve bir sanal makine oluşturmak](https://technet.microsoft.com/library/hh846766.aspx).
+* **Bir. vhd dosyasında yüklü OpenBSD işletim sistemi** -sanal bir sabit diske desteklenen bir OpenBSD işletim sistemi ([6,6 sürüm AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)) yüklenmelidir. . Vhd dosyaları oluşturmak için birden çok araç vardır. Örneğin,. vhd dosyasını oluşturmak ve işletim sistemini yüklemek için Hyper-V gibi bir sanallaştırma çözümünü kullanabilirsiniz. Hyper-V ' y i yüklemek ve kullanmak hakkında yönergeler için bkz. [Hyper-v ' y i yüklemek ve bir sanal makine oluşturmak](https://technet.microsoft.com/library/hh846766.aspx).
 
 
 ## <a name="prepare-openbsd-image-for-azure"></a>Azure için OpenBSD görüntüsünü hazırlama
@@ -67,7 +67,7 @@ Hyper-V desteği eklenen OpenBSD işletim sistemi 6,1 ' i yüklediğiniz VM 'de 
     ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
-6. Azure aracısının en son sürümü her zaman [GitHub](https://github.com/Azure/WALinuxAgent/releases)'da bulunabilir. Aracıyı aşağıdaki gibi yüklemelisiniz:
+6. Azure aracısının en son sürümü her zaman [GitHub](https://github.com/Azure/WALinuxAgent/releases)'da bulunabilir. Aracıyı aşağıdaki gibi yükleyin:
 
     ```sh
     git clone https://github.com/Azure/WALinuxAgent 

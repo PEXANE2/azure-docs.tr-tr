@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a52977a46c1222a1626fa5a4dcb4de7dd84f8dd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638213"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291490"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar
 
@@ -294,7 +294,7 @@ Azure, farklı [Azure bölgelerinin](https://azure.microsoft.com/global-infrastr
 Kullanılabilirlik Alanları kullanarak göz önünde bulundurmanız gereken bazı noktalar vardır. Şöyle dikkat edilecek noktalar listesi:
 
 - Azure kullanılabilirlik kümelerini bir kullanılabilirlik bölgesi içinde dağıtamazsınız. Bir VM için dağıtım çerçevesi olarak bir kullanılabilirlik alanı veya kullanılabilirlik kümesi seçmeniz gerekir.
-- Windows Yük devretme kümesi Hizmetleri veya Linux pacemaker tabanlı yük devretme kümesi çözümleri oluşturmak için [temel Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) kullanamazsınız. Bunun yerine [Azure Standart Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 'sunu kullanmanız gerekir
+- Windows Yük devretme kümesi Hizmetleri veya Linux pacemaker tabanlı yük devretme kümesi çözümleri oluşturmak için [temel Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) kullanamazsınız. Bunun yerine [Azure Standart Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 'sunu kullanmanız gerekir
 - Azure Kullanılabilirlik Alanları, bir bölgedeki farklı bölgeler arasında belirli bir mesafe garantisi vermez
 - Farklı Azure bölgelerinde bulunan farklı Azure Kullanılabilirlik Alanları arasındaki ağ gecikmesi Azure bölgesinden bölgeye farklı olabilir. Bir müşteri olarak, bir bölgeden etkin DBMS VM 'sine olan ağ gecikmesi hala bir iş süreci etkisinden kabul edilebilir olduğundan, müşteri olarak, farklı bölgelerde dağıtılan SAP uygulama katmanını makul bir şekilde çalıştırabileceği durumlar olacaktır. Bu durumda, bir bölgedeki etkin DBMS sanal makinesi ile başka bir bölgedeki bir VM 'deki SAP uygulama örneği arasındaki gecikme süresinin çok zorlenebileceği ve SAP iş işlemlerinde kabul edilemez olduğu durumlarda Müşteri senaryoları olacaktır. Sonuç olarak, gecikme çok yüksekse, dağıtım mimarilerinin uygulama veya etkin/Pasif mimari için etkin/etkin bir mimariyle farklı olması gerekir.
 - [Azure yönetilen diskleri](https://azure.microsoft.com/services/managed-disks/) kullanmak Azure kullanılabilirlik alanları dağıtmak için zorunludur 

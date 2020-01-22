@@ -3,12 +3,12 @@ title: Azure Dosya Paylaşımlarını Yedekleme sorunlarını giderme
 description: Bu makalede, Azure dosya paylaşımlarınızın korunması sırasında oluşan sorunlarla ilgili sorun giderme bilgileri verilmektedir.
 ms.date: 08/20/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 8b88ae568b07b36d2dd80c0ef30fe86646335043
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664624"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293955"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Azure Dosya Paylaşımlarını yedekleme sorunlarını giderme
 
@@ -69,5 +69,5 @@ Aşağıdaki tablo, yedeklemenin yapılandırılmasına yöneliktir:
 
 Azure dosya paylaşımlarını yedekleme hakkında daha fazla bilgi için bkz.:
 
-- [Azure dosya paylaşımlarını yedekleme](backup-azure-files.md)
+- [Azure dosya paylaşımlarını yedekleme](backup-afs.md)
 - [Azure dosya paylaşımlarını yedekleme ile ilgili SSS](backup-azure-files-faq.md)

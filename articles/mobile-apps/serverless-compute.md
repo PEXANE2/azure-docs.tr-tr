@@ -8,12 +8,12 @@ ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: d59cca4b5c956134516aa2c8066894aa14e5d33d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec7091a32a1be8d875e16d8e0a9b20b5e80de387
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453098"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291966"
 ---
 # <a name="build-mobile-back-end-components-with-compute-services"></a>İşlem hizmetleri ile mobil arka uç bileşenleri oluşturun
 Her mobil uygulamanın, veri depolama, iş mantığı ve güvenlik açısından sorumlu bir arka ucu olması gerekir. Altyapıyı ana bilgisayar ve yürütmeye yönelik olarak yönetmek, birden çok sunucuyu yazmanızı, sağlamanızı ve ölçeklendirmenizi gerektirir. Ayrıca, işletim sistemi güncelleştirmelerini ve ilgili donanımı yönetmeniz ve güvenlik düzeltme eklerini uygulamanız gerekir. Bu durumda, performans, kullanılabilirlik ve hataya dayanıklılık için bu altyapı bileşenlerinin tümünü izlemeniz gerekir. 
@@ -36,7 +36,7 @@ Mobil uygulamalarınızda sunucusuz işlem yeteneklerini etkinleştirmek için a
 - Bir işlevin ne zaman çağrılabileceğini ve hangi verilerin bağlandığını tanımlamak için Tetikleyicileri ve bağlamaları kullanabileceğiniz olay odaklı ve ölçeklenebilir.
 - Işlevler NuGet ve NPM 'yi desteklediğinden, en sevdiğiniz kitaplıkları kullanabilmeniz için kendi bağımlılıklarınızı getirin.
 - Azure Active Directory, Facebook, Google, Twitter ve Microsoft hesabı gibi OAuth sağlayıcılarıyla HTTP ile tetiklenen işlevleri koruyabilmeniz için tümleşik güvenlik.
-- Farklı [Azure hizmetleri](/azure/azure-functions/functions-overview#integrations) ve hizmet olarak yazılım (SaaS) teklifleri ile basitleştirilmiş tümleştirme.
+- Farklı [Azure hizmetleri](/azure/azure-functions/functions-overview) ve hizmet olarak yazılım (SaaS) teklifleri ile basitleştirilmiş tümleştirme.
 - Esnek geliştirme, işlevlerinizi hemen Azure portal veya sürekli tümleştirme ayarlayıp kodunuzu GitHub, Azure DevOps Services ve diğer desteklenen geliştirme araçları aracılığıyla dağıtmanıza olanak sağlayabilir.
 - İşlevler çalışma zamanı açık kaynaktır ve [GitHub](https://github.com/azure/azure-webjobs-sdk-script)'da kullanılabilir.
 - Tümleşik araçlar ve yerleşik DevOps özellikleri ile izleme sayesinde tercih edilen düzenleyiciyi veya kullanımı kolay Web arabirimini kullanarak yerel olarak kod ve test etme ve hata ayıklama işlemlerini kullanabileceğiniz gelişmiş geliştirme deneyimi.

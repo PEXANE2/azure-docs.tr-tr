@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/30/2019
-ms.openlocfilehash: 1002a19506ad0a59cb24ae4edb1f7c9726d68cb2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170868"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290351"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -94,7 +94,7 @@ Tüm veriler, kusto sorgu dili (KQL) kullanılarak yazılmış bir günlük sorg
 Azure Izleyici tarafından toplanan tüm günlük verileri Log Analytics çalışma alanında depolanır. Çalışma alanı aslında çeşitli kaynaklardan günlük verilerinin toplandığı bir kapsayıcıdır. Tüm izleme verileriniz için tek bir Log Analytics çalışma alanınız olabilir veya birden çok çalışma alanı için gereksinimlere sahip olabilirsiniz. Bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](platform/design-logs-deployment.md).
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Mevcut bir Log Analytics çalışma alanını başka bir Azure aboneliğine taşıyabilir miyim?
-Çalışma alanını kaynak grupları veya abonelikler arasında, farklı bir bölgeye taşıyabilirsiniz. Bkz. [Log Analytics çalışma alanını farklı bir aboneliğe veya kaynak grubuna taşıma](/platform/move-workspace.md).
+Çalışma alanını kaynak grupları veya abonelikler arasında, farklı bir bölgeye taşıyabilirsiniz. Bkz. [Log Analytics çalışma alanını farklı bir aboneliğe veya kaynak grubuna taşıma](platform/move-workspace.md).
 
 
 ## <a name="alerts"></a>Uyarılar
@@ -345,7 +345,7 @@ Tek bir iş sistemindeki tüm bileşenler veya roller için tek bir kaynak kulla
 ### <a name="what-are-the-user-and-session-counts"></a>Kullanıcı ve oturum sayıları nelerdir?
 
 * JavaScript SDK 'Sı, Web istemcisinde Kullanıcı tanımlama bilgisini, döndürülen kullanıcıları ve etkinlikleri gruplandırmak için bir oturum tanımlama bilgisini belirler.
-* İstemci tarafı komut dosyası yoksa, [sunucuda tanımlama bilgilerini ayarlayabilirsiniz](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-app/).
+* İstemci tarafı komut dosyası yoksa, [sunucuda tanımlama bilgilerini ayarlayabilirsiniz](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
 * Bir gerçek Kullanıcı, sitenizi farklı tarayıcılarda kullanıyorsa ya da özel/veya farklı makinelere göz atmak veya farklı makineler kullanmak için birden çok kez sayılır.
 * Makineler ve tarayıcılar arasında oturum açmış bir kullanıcıyı tanımlamak için, [Setadoğrulayıcısının Catedusercontext ()](app/api-custom-events-metrics.md#authenticated-users)çağrısı ekleyin.
 
@@ -455,7 +455,7 @@ Ağ geçidinizin trafiği bitiş noktasının temel adresine yönlendirmelidir. 
 #### <a name="proxy-passthrough"></a>Proxy geçişi
 
 Proxy geçişi, bir makine düzeyi veya uygulama düzeyi proxy yapılandırılarak elde edilebilir.
-Daha fazla bilgi için bkz. [defaultProxy](https://docs.microsoft.com/dotnet/framework/configure-app/file-schema/network/defaultproxy-element-network-settings)üzerinde DotNet makalesi.
+Daha fazla bilgi için bkz. [defaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)üzerinde DotNet makalesi.
  
  Örnek Web. config:
  ```xml

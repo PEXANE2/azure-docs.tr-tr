@@ -10,16 +10,16 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 58755a0ac49b9549813ddb507dfbd986d83dfce5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305861"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289807"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure sanal makinelerinde Ana bilgisayar yeniden barındırma
 
-İş yüklerini anabilgisayar ortamlarından buluta geçirmek, altyapınızı modernleştirin ve genellikle maliyetlerde tasarruf etmenizi sağlar. Birçok iş yükü, yalnızca küçük kod değişiklikleriyle (veritabanlarının adlarını güncelleştirme gibi) Azure 'a aktarılabilir.
+İş yüklerini anabilgisayar ortamlarından buluta geçirmek, altyapınızı modernleştirin ve genellikle maliyetlerde tasarruf etmenizi sağlar. Birçok iş yükü, yalnızca küçük kod değişiklikleriyle (veritabanlarının adlarını güncelleştirme gibi) Azure’a aktarılabilir.
 
 Genellikle, *ana* terimi büyük bir bilgisayar sistemi anlamına gelir. Özellikle de şu anda kullanılmakta olan büyük çoğunluğu, MVS, DOS, Vo, OS/390 veya Z/OS çalıştıran IBM sistem Z sunucularıdır veya IBM Plug uyumlu sistemlerdir.
 
@@ -76,7 +76,7 @@ Başlamak için bkz. [Azure 'Da IBM DB2 pureScale](/azure/virtual-machines/linux
 
 Ana bilgisayar iş yüklerini Azure altyapısına hizmet olarak (IaaS) geçirdiğinizde, Azure VM 'Leri dahil olmak üzere çeşitli isteğe bağlı, ölçeklenebilir bilgi işlem kaynakları arasından seçim yapabilirsiniz. Azure, bir dizi [Linux](/azure/virtual-machines/linux/overview) ve [Windows](/azure/virtual-machines/windows/overview) VM sunar.
 
-### <a name="compute"></a>İşlem
+### <a name="compute"></a>Bilgi İşlem
 
 Azure işlem gücü favorably, ana bilgisayarın kapasitesine göre karşılaştırılır. Bir anabilgisayar iş yükünü Azure 'a taşımayı düşünüyorsanız, ana bilgisayar ölçüsünü saniyede 1.000.000 yönerge (MIPS) ile sanal CPU 'Lara karşılaştırın. 
 
@@ -112,7 +112,7 @@ Başlamak için, [anabilgisayar uygulamaları için Microsoft Azure Kamu Bulutu]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[İş ortaklarımıza](partner-workloads.md) , anabilgisayar uygulamalarınızı geçirmenize veya yeniden barındırmanıza yardımcı olmak için sorun. İş ortağı çözümü seçme hakkında ayrıntılı kılavuz için bkz. [Platform modernleştirme Alliance](https://www.platformmodernization.org/pages/mainframe.aspx) Web sitesi.
+[İş ortaklarımıza](partner-workloads.md) , anabilgisayar uygulamalarınızı geçirmenize veya yeniden barındırmanıza yardımcı olmak için sorun. 
 
 Ayrıca bkz:
 

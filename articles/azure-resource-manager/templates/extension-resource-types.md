@@ -2,13 +2,13 @@
 title: Uzantı kaynak türleri
 description: Azure Kaynak türleri, diğer kaynak türlerinin yeteneklerini genişletmek için kullanılır.
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: af60bd648e41532cca364272fb0ded01c0c18239
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/20/2020
+ms.openlocfilehash: 47a98bca4912a1c59c8b2d9bad458769c6bf4ebf
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484681"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293275"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Diğer kaynakların özelliklerini genişleten kaynak türleri
 
@@ -23,12 +23,14 @@ Uzantı kaynağı, başka bir kaynağın özelliklerine ekleyen bir kaynaktır. 
 - Microsoft. AlertsManagement/alertsSummary
 - Microsoft. Authorization/checkAccess
 - Microsoft. Authorization/Denyasatamaları
+- Microsoft. Authorization/Findorphanroleatamalar
 - Microsoft. Authorization/kilitleri
 - Microsoft. Authorization/Permissions
 - Microsoft. Authorization/Poliyasatamaları
 - Microsoft. Authorization/policyDefinitions
 - Microsoft. Authorization/policySetDefinitions
 - Microsoft. Authorization/Roleatamalar
+- Microsoft. Authorization/Roleatamasussusageölçümleri
 - Microsoft. Authorization/roleDefinitions
 - Microsoft. faturalandırma/Billingdönemler
 - Microsoft. faturalandırma/billingPermissions
@@ -82,6 +84,7 @@ Uzantı kaynağı, başka bir kaynağın özelliklerine ekleyen bir kaynaktır. 
 - Microsoft. Insights/automatedExportSettings
 - Microsoft. Insights/Baseline
 - Microsoft. Insights/calculatebaseline
+- Microsoft. Insights/Datacollectionruleassociation
 - Microsoft. Insights/diagnosticSettings
 - Microsoft. Insights/diagnosticSettingsCategories
 - Microsoft. Insights/eventTypes
@@ -94,6 +97,8 @@ Uzantı kaynağı, başka bir kaynağın özelliklerine ekleyen bir kaynaktır. 
 - Microsoft. Insights/metrictemeller
 - Microsoft. Insights/ölçümler
 - Microsoft. Insights/Mykitaplarında
+- Microsoft. Insights/topoloji
+- Microsoft. Insights/işlemler
 - Microsoft. Insights/vmInsightsOnboardingStatuses
 - Microsoft. KubernetesConfiguration/sourceControlConfigurations
 - Microsoft. Maintenance/applyUpdates
@@ -109,6 +114,7 @@ Uzantı kaynağı, başka bir kaynağın özelliklerine ekleyen bir kaynaktır. 
 - Microsoft. Poliyeleghts/policyTrackedResources
 - Microsoft. Poliyeleghts/düzeltmelere
 - Microsoft. RecoveryServices/Backupkoruyucuteditems
+- Microsoft. RecoveryServices/replicationEligibilityResults  
 - Microsoft. ResourceHealth/kullanılabilirliği Bilitydurumlar
 - Microsoft. ResourceHealth/Childadvailabilitydurumlar
 - Microsoft. ResourceHealth/childResources

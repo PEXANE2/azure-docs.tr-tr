@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 3db20110571203588ac15f4f64a2ae0a6ab6ef27
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4dd2cd89e8edb4e636bf46d2a8125a0f1d00f2f3
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428400"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312252"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hiper Parametrelerini Ayarlama
 
-Bu makalede, Azure Machine Learning tasarımcısında ayarlama modeli hiper parametreleri modülünün nasıl kullanılacağı açıklanmaktadır (Önizleme). Amaç, bir makine öğrenimi modeli için en uygun hiper parametreleri belirlemektir. Modül farklı ayarların birleşimlerini kullanarak birden çok modeli oluşturur ve sınar. Ayarların birleşimlerini almak için ölçümleri tüm modeller üzerinde karşılaştırır. 
+Bu makalede Azure Machine Learning tasarımcısında ayarlama modeli hiper parametreleri modülünün nasıl kullanılacağı açıklanır. Amaç, bir makine öğrenimi modeli için en uygun hiper parametreleri belirlemektir. Modül farklı ayarların birleşimlerini kullanarak birden çok modeli oluşturur ve sınar. Ayarların birleşimlerini almak için ölçümleri tüm modeller üzerinde karşılaştırır. 
 
 Terms *parametresi* ve *hyperparameter* kafa karıştırıcı olabilir. Modelin *parametreleri* Özellikler bölmesinde ayarladığınız şeydir. Temelde, bu modül belirtilen parametre ayarları üzerinde bir *parametre süpürme* gerçekleştirir. Her bir karar ağacı, veri kümesi veya regresyon yöntemi için farklı olabilecek, en uygun _hiper parametre_kümesini öğrenir. En iyi yapılandırmayı bulma işlemi bazen *ayarlama*olarak adlandırılır. 
 
@@ -81,11 +81,11 @@ Bu bölümde, model hiper parametreleri ayarla modülünü kullanarak bir modeli
 
 Eğitim tamamlandığında:
 
-+ En iyi modelin doğruluk ölçümleri kümesini görüntülemek için modüle sağ tıklayın, **tarama sonuçları**' nı seçin ve ardından **Görselleştir**' i seçin.
++ En iyi modelin doğruluk ölçümlerini bir kümesini görüntülemek için, modüle sağ tıklayın ve ardından **Görselleştir**' i seçin.
 
     Çıktı, model türü için uygulanan tüm doğruluk ölçümlerini içerir, ancak sıralama için seçtiğiniz ölçüm hangi modelin "en iyi" kabul edileceğini belirler.
 
-+ Ayarlama işlemini yinelemek zorunda kalmadan, Puanlama için modeli başka işlem hatlarında kullanmak için model çıktısına sağ tıklayın ve **eğitilen model olarak kaydet**' i seçin. 
++ Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
 
 
 ## <a name="technical-notes"></a>Teknik notlar

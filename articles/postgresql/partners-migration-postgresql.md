@@ -1,31 +1,31 @@
 ---
-title: PostgreSQL geçiş iş ortakları için Azure veritabanı
-description: PostgreSQL için Azure veritabanı destekleyen çözümler ile üçüncü taraf geçiş iş ortakları listeler.
+title: PostgreSQL için Azure veritabanı geçiş iş ortakları
+description: PostgreSQL için Azure veritabanı 'nı destekleyen çözümlere sahip üçüncü taraf geçiş iş ortaklarının listesi.
 author: HJToland3
 ms.author: jtoland
 manager: craigg
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2018
-ms.openlocfilehash: 75ff34910383b30c9fd967ff568d087c2492856f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9b3cde8ff0f3a1b97d53a1de72cb6c5c48a800c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66143218"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289790"
 ---
-# <a name="azure-database-for-postgresql-migration-partners"></a>PostgreSQL geçiş iş ortakları için Azure veritabanı
-Azure veritabanınızı PostgreSQL çözüm problem desteklemek için çok çeşitli sektör lideri iş ortakları ve araçları seçebilirsiniz. Bu makalede, Microsoft iş ortakları ile PostgreSQL için Azure veritabanı desteği geçiş çözümleri vurgulanır.
+# <a name="azure-database-for-postgresql-migration-partners"></a>PostgreSQL için Azure veritabanı geçiş iş ortakları
+PostgreSQL için Azure veritabanınızı büyük ölçüde desteklemek üzere sektör lideri çok çeşitli iş ortakları ve araçları arasından seçim yapabilirsiniz. Bu makalede, PostgreSQL için Azure veritabanı 'nı destekleyen geçiş çözümleriyle Microsoft iş ortakları vurgulanmaktadır.
 
 ## <a name="migration-partners"></a>Geçiş iş ortakları
-| Partner | Açıklama | Bağlantılar | Videolar |
+| İş ortağı | Açıklama | Bağlantılar | Videolar |
 | --- | --- | --- | --- |
-| ![SNP teknolojileri][1] |**SNP teknolojileri**<br>SNP teknolojileri, geleceğin işletmeleri için güvenli ve güvenilir çözümleri oluşturmak yalnızca bulut hizmet sağlayıcısıdır. Şirket, işletmeniz için gerçek değeri üretilmesinde inanmaktadır. Yürütme için düşünce SNP teknolojileri istemcilerle yatırımları avantajı oturum açmak için bir genel amaçlı paylaşır.|[Web sitesi][snp_website]<br>[Twitter][snp_twitter]<br>[İlgili kişi][snp_contact] | |
-| ![DB Best Technologies, LLC][2] |**DB Best Technologies, LLC**<br>DB en iyi müşteriler en iyi yönetilen bir Azure veritabanı hizmeti yardımcı olur. Şirket, dahil olmak üzere başlamak çeşitli yollar sunar [gelecekteki durumu Mimari Tasarım](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [Microsoft Veri platformu için veri yönetimi iyileştirme](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/), [Microsoft Azure Dağıtım Planlama Hizmetleri](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services), ve [Azure veri platformu hazırlık Eğitimi](https://www.dbbest.com/services/azure-data-platform-readiness-training).|[Web sitesi][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[İlgili kişi][dbbest_contact] | |
-| ![Pragmatik çalışır][3] |**Pragmatik çalışır**<br>Pragmatik çalışır, derin bir uzmanlık veri yönetimi ve performans, iş zekası, büyük veri, Power BI ve Azure ile eğitim ve danışmanlık bir şirkettir. Bunlar, verileri en iyi duruma getirme ve SQL Server ve bulut Yönetimi verimliliğini iyileştirme odaklanın.|[Web sitesi][pragmatic-works_website]<br>[Twitter][pragmatic-works_twitter]<br>[YouTube][pragmatic-works_youtube]<br>[İlgili kişi][pragmatic-works_contact] | |
-| ![Infosys][4] |**Infosys**<br>Infosys en yeni dijital hizmetlerin küresel bir lider olan ve danışmanlık. Üzerinde üç yıllardır ile genel kuruluşların sistemlerini yönetmeye, Infosys ustalıkla dijital YOLCULUĞUNA istemcileriyle bir yapay ZEKA destekli temel bir kuruluşlarıyla etkinleştirerek steers. Değişiklik yürütülmesini yardımcı önceliklendirmek için yapılıyor. Infosys Çevik dijital uygun ölçekte eşsiz düzeyde performans ve müşteri memnun edecek sunmak için işletmeler de sağlar.|[Web sitesi][infosys_website]<br>[Twitter][infosys_twitter]<br>[YouTube][infosys_youtube]<br>[İlgili kişi][infosys_contact] | |
-| ![credativ][5] |**credativ**<br>credativ bağımsız danışmanlık olduğu ve Hizmetleri. 1999 beri bunlar kapsamlı hizmetler ve işlem iş uygulamaları açık kaynak yazılım ve uygulaması için teknik destek sunulan. Hizmet, kapsamlı stratejik danışma, ses teknik öneri, nitelikli eğitim ve kişiselleştirilmiş destek kadar tüm BT gereken günde 24 saat için bulunur.|[Market][credativ_marketplace]<br>[Web sitesi][credativ_website]<br>[Twitter][credative_twitter]<br>[YouTube][credativ_youtube]<br>[İlgili kişi][credativ_contact] | |
-| ![Pactera][6] |**Pactera**<br>Pactera dünyanın önde gelen kuruluşlara kadar danışmanlık, dijital, teknoloji ve işlem hizmetleri sunan küresel bir şirkettir. Dijital Dönüşüm, en son mühendisliğinde kendi köklerinden bunlar müşteriler rekabet. Kendi kendini kanıtlamış yöntemleri ve araçları, verilerinizi güvenli, güvenilir ve doğru olduğundan emin olun.|[Web sitesi][pactera_website]<br>[Twitter][pactera_twitter]<br>[İlgili kişi][pactera_contact] | |
+| ![SNP teknolojileri][1] |**SNP teknolojileri**<br>SNP Technologies, daha sonra işletmeler için güvenli ve güvenilir çözümler oluşturarak yalnızca bulut hizmet sağlayıcıdır. Şirket, işletmeniz için gerçek bir değer üretmeyi düşündüğü. Çalıştırmayı düşünmeden, SNP Technologies, istemcileri ile ortak bir amacı paylaşır ve bu da yatırımlarını avantajlarına dönüştürür.|[Web sitesi][snp_website]<br>[Twitter][snp_twitter]<br>[lgili kişi][snp_contact] | |
+| ![En Iyi VERITABANı teknolojileri, LLC][2] |**En Iyi VERITABANı teknolojileri, LLC**<br>En Iyi VERITABANı, müşterilerin yönetilen bir Azure veritabanı hizmetinden En Iyi şekilde yararlanmanıza yardımcı olur. Şirket, [gelecekteki durum mimari tasarımı](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2F www.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [Microsoft veri platformu için Veri Yönetimi Iyileştirme](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/), [Microsoft Azure dağıtım planlama hizmetleri](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services)ve [Azure veri platformu hazırlık eğitimi](https://www.dbbest.com/services/azure-data-platform-readiness-training)dahil olmak üzere, başlamanıza olanak sağlayan çeşitli yollar sunar.|[Web sitesi][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[lgili kişi][dbbest_contact] | |
+| ![Kolay çalışmalar][3] |**Kolay çalışmalar**<br>Kolay çalışmalar, veri yönetimi ve performans, Iş zekası, büyük veri, Power BI ve Azure 'da ayrıntılı uzmanlığa sahip bir eğitim ve danışmanlık şirketidir. Veri iyileştirmesine odaklanırlar ve SQL Server ve bulut yönetiminin verimliliğini geliştirir.|[Web sitesi][pragmatic-works_website]<br>[Twitter][pragmatic-works_twitter]<br>[YouTube][pragmatic-works_youtube]<br>[lgili kişi][pragmatic-works_contact] | |
+| ![Infosys][4] |**Bilgi sys**<br>Infosys, en son dijital hizmetlerde küresel bir liderdir ve danışmanlık. Küresel kuruluşların sistemlerini yönetirken üç üstün deneyime sahip olan Infosys expertly, kuruluşları bir AI destekli çekirdekle etkinleştirerek kendi dijital yolculuğunda kullanırlar. Bunun yapılması, değişikliğin yürütülmesinin önceliklendirmesine yardımcı olur. Infosys, şirket içinde daha fazla performans ve müşteri düzeyi sağlamak için çevik dijital ölçekli işletmeler de sağlar.|[Web sitesi][infosys_website]<br>[Twitter][infosys_twitter]<br>[YouTube][infosys_youtube]<br>[lgili kişi][infosys_contact] | |
+| ![credativ][5] |**credavtiv**<br>credadtiv, bağımsız bir danışmanlık ve hizmetler şirketidir. 1999 sürümünden itibaren, iş uygulamalarında açık kaynaklı yazılımların uygulanması ve çalışması için kapsamlı hizmetler ve teknik destek sunuluyor. Kapsamlı hizmet yelpazesi, stratejik danışmanlık, sesli teknik öneriler, nitelikli eğitim ve BT ihtiyaçlarınıza göre günde 24 saate kadar kişiselleştirilmiş destek içerir.|[Market][credativ_marketplace]<br>[Web sitesi][credativ_website]<br>[Twitter][credative_twitter]<br>[YouTube][credativ_youtube]<br>[lgili kişi][credativ_contact] | |
+| ![Pactera][6] |**Pactera**<br>Pactera, dünyanın önde gelen kuruluşlara danışmanlık, dijital, teknoloji ve operasyon hizmetleri sunan küresel bir şirkettir. Mühendislerin üzerinde bulunan köklerinden en son dijital dönüşümde müşterilere rekabet eden bir kenar verirler. Kendini kanıtlamış Yöntemler ve araçlar verilerinizin güvenli, gerçek ve doğru olmasını güvence altına alırlar.|[Web sitesi][pactera_website]<br>[Twitter][pactera_twitter]<br>[lgili kişi][pactera_contact] | |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bazı Microsoft'un diğer iş ortaklarıyla ilgili daha fazla bilgi için bkz. [Microsoft Partner site](https://partner.microsoft.com/en-US/).
@@ -44,7 +44,7 @@ Bazı Microsoft'un diğer iş ortaklarıyla ilgili daha fazla bilgi için bkz. [
 [pragmatic-works_website]:https://pragmaticworks.com//
 [infosys_website]:https://www.infosys.com/
 [credativ_website]:https://www.credativ.com/postgresql-competence-center/microsoft-azure
-[pactera_website]:https://en.pactera.com/service/azure-data-platform-services/
+[pactera_website]:https://en.pactera.com/
 
 <!--Get Started Links-->
 <!--Datasheet Links-->

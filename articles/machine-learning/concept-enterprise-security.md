@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 277b22498066542deaa080845cb816df493d7e13
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122364"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312422"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -176,12 +176,12 @@ Azure Container Instance, disk şifrelemeyi desteklemiyor. Disk şifrelemeye iht
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Dağıtılan bir Azure Kubernetes hizmeti kaynağını, müşteri tarafından yönetilen anahtarları dilediğiniz zaman kullanarak şifreleyebilirsiniz. Daha fazla bilgi için bkz. [https://aka.ms/aks/byok](https://aka.ms/aks/byok). 
+Dağıtılan bir Azure Kubernetes hizmeti kaynağını, müşteri tarafından yönetilen anahtarları dilediğiniz zaman kullanarak şifreleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti ile kendi anahtarlarınızı getirme](../aks/azure-disk-customer-managed-keys.md). 
 
 Bu işlem, Kubernetes kümesindeki dağıtılan sanal makinelerin hem verilerini hem de işletim sistemi diskini şifrelemenizi sağlar.
 
 > [!IMPORTANT]
-> Bu işlem yalnızca AKS K8s sürüm 1,16 veya üzeri sürümlerle kullanılabilir. 13 Ocak 2020 ' de AKS 1,16 için destek eklendi Azure Machine Learning.
+> Bu işlem yalnızca AKS K8s sürüm 1,17 veya üzeri sürümlerle kullanılabilir. 13 Ocak 2020 ' de AKS 1,17 için destek eklendi Azure Machine Learning.
 
 #### <a name="machine-learning-compute"></a>Machine Learning İşlem
 

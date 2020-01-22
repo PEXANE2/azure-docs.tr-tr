@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497824"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312217"
 ---
 # <a name="feature-hashing-module-reference"></a>Özellik karma modülü başvurusu
 
-Bu makalede Azure Machine Learning tasarımcısında (Önizleme) bulunan bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bulunan bir modül açıklanmaktadır.
 
 Ingilizce metin akışını bir tamsayı özellikleri kümesine dönüştürmek için özellik karma modülünü kullanın. Daha sonra bu karma özellik kümesini bir makine öğrenimi algoritmasına geçirebilirsiniz ve bir metin analizi modelini eğitebilirsiniz.
 
@@ -30,7 +30,7 @@ Bu modülde sunulan özellik karma işlevselliği nimbusml çerçevesini temel a
 
 Örneğin, bunlar gibi bir basit tümceler ve ardından bir yaklaşım puanı alın. Bir model oluşturmak için bu metni kullanmak istediğinizi varsayın.
 
-|Kullanıcı metni|Yaklaşım|
+|Kullanıcı metni|Duygu|
 |--------------|---------------|
 |Bu kitabı sevdim|3|
 |Bu kitabı aldım|1|
@@ -50,16 +50,16 @@ N **-gram özelliğini kullanarak** n-gram boyutunu kontrol edebilirsiniz. Bigra
 
 |Terim (tek gram)|Frequency|
 |------------|---------------|
-|Kitabın|3|
+|Kitap|3|
 |I|3|
-|kitap|1|
+|kitaplar|1|
 |bulunamadı|1|
 
 Sözlük derlendikten sonra, özellik karma modülü sözlük koşullarını karma değerlerine dönüştürür. Daha sonra her durumda bir özelliğin kullanılıp kullanılmadığını hesaplar. Her metin verisi satırı için, modül bir sütun kümesi, her karma özellik için bir sütun verir.
 
 Örneğin, karma olduktan sonra Özellik sütunları şuna benzeyebilir:
 
-|Derecesiyle|Karma Özellik 1|Karma özelliği 2|Karma özellik 3|
+|Derecelendirme|Karma Özellik 1|Karma özelliği 2|Karma özellik 3|
 |-----|-----|-----|-----|
 |4|1|1|0|
 |5|0|0|0|

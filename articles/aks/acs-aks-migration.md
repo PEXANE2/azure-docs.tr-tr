@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c4ed78dc9fd277fc61a923364519e338a9f720c2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889516"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290402"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'e (AKS) geçiş
 
@@ -45,7 +45,7 @@ Bu makalede, için geçiş ayrıntılarını özetliyoruz:
 > * Geçerli kotalar olduğundan emin olun
 > * Yüksek kullanılabilirlik ve iş sürekliliği
 > * Durum bilgisi olmayan uygulamalarla ilgili konular
-> * Statefull uygulamalarına yönelik konular
+> * Durum bilgisi olan uygulamalarla ilgili konular
 > * Küme yapılandırmanızın dağıtımı
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>Standart Load Balancer ve sanal makine ölçek kümeleri ile AKS 'ler
@@ -111,7 +111,7 @@ Geçişi gerçekleştirmek için, istemcileri AKS üzerinde çalışan yeni hizm
 
 Durum bilgisiz uygulama geçişi en kolay durumdur. Kaynak tanımlarınızı (YAML veya Held) yeni kümeye uygulayın, her şeyin beklendiği gibi çalıştığından emin olun ve yeni kümenizi etkinleştirmek için trafiği yeniden yönlendirin.
 
-### <a name="considers-for-stateful-applications"></a>Durum bilgisi olan uygulamalar için dikkate alır
+### <a name="considerations-for-stateful-applications"></a>Durum bilgisi olan uygulamalarla ilgili konular
 
 Veri kaybını veya beklenmedik kapalı kalma süresini önlemek için durum bilgisi olan uygulamaların geçişini dikkatle planlayın.
 
@@ -161,7 +161,7 @@ Bazı açık kaynaklı araçlar, yönetilen diskler oluşturmanıza ve birimleri
 
 ### <a name="deployment-of-your-cluster-configuration"></a>Küme yapılandırmanızın dağıtımı
 
-AKS 'e bilinen iyi bir yapılandırma dağıtmak için mevcut sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattınızı kullanmanızı öneririz. [Uygulamalarınızı derlemek ve dağıtmak](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops) için, mevcut dağıtım görevlerinizi klonlamak ve `kubeconfig` yeni aks kümesine işaret ettiğini garantilemek için Azure Pipelines kullanabilirsiniz.
+AKS 'e bilinen iyi bir yapılandırma dağıtmak için mevcut sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattınızı kullanmanızı öneririz. [Uygulamalarınızı derlemek ve AKS 'e dağıtmak](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)için Azure Pipelines kullanabilirsiniz. Mevcut dağıtım görevlerinizi kopyalayın ve `kubeconfig` yeni AKS kümesine işaret ettiğini doğrulayın.
 
 Bu mümkün değilse, mevcut Kubernetes kümenizdeki kaynak tanımlarını dışarı aktarın ve ardından bunları AKS 'e uygulayın. Nesneleri dışarı aktarmak için `kubectl` kullanabilirsiniz.
 
@@ -177,5 +177,5 @@ Bu makalede, için geçiş ayrıntıları özetlenmektedir:
 > * Geçerli kotalar olduğundan emin olun
 > * Yüksek kullanılabilirlik ve iş sürekliliği
 > * Durum bilgisi olmayan uygulamalarla ilgili konular
-> * Statefull uygulamalarına yönelik konular
+> * Durum bilgisi olan uygulamalarla ilgili konular
 > * Küme yapılandırmanızın dağıtımı

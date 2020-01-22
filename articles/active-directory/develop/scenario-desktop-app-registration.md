@@ -17,20 +17,20 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dabc96ef669f0c0c61a7bca4a16828294cf404df
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 878f942bf36fef999b90274b81eaa7735afa73e5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423849"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293360"
 ---
-# <a name="desktop-app-that-calls-web-apis---app-registration"></a>Web API 'Lerini çağıran masaüstü uygulaması-uygulama kaydı
+# <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API 'Lerini çağıran masaüstü uygulaması: uygulama kaydı
 
 Bu makale, bir masaüstü uygulaması için uygulama kaydı özelliklerini içerir.
 
-## <a name="supported-accounts-types"></a>Desteklenen hesap türleri
+## <a name="supported-account-types"></a>Desteklenen hesap türleri
 
-Masaüstü uygulamasında desteklenen hesap türleri, açmak istediğiniz deneyime bağlı olarak değişir. Bu ilişki nedeniyle, desteklenen hesap türleri kullanmak istediğiniz akışlara bağlıdır.
+Bir masaüstü uygulamasında desteklenen hesap türleri, açmak istediğiniz deneyime bağlı olarak değişir. Bu ilişki nedeniyle, desteklenen hesap türleri kullanmak istediğiniz akışlara bağlıdır.
 
 ### <a name="audience-for-interactive-token-acquisition"></a>Etkileşimli belirteç alımı için hedef kitle
 
@@ -38,30 +38,30 @@ Masaüstü uygulamanız etkileşimli kimlik doğrulaması kullanıyorsa, kullan�
 
 ### <a name="audience-for-desktop-app-silent-flows"></a>Masaüstü uygulaması için hedef kitle sessiz akışlar
 
-- Tümleşik Windows kimlik doğrulaması veya Kullanıcı adı/parola kullanmak için uygulamanızın kendi kiracınızda (LOB Geliştirici) veya Azure Active Directory kuruluşları 'nda (ISV senaryosu) Kullanıcı oturum açması gerekir. Bu kimlik doğrulama akışları, Microsoft kişisel hesapları için desteklenmez.
-- Cihaz kod akışını kullanmak istiyorsanız, kullanıcıları Microsoft kişisel hesaplarıyla henüz oturum açamazsınız.
-- Sosyal kimlik ve ilke geçirimli kullanıcılar oturum açarsanız, yalnızca etkileşimli ve Kullanıcı adı-parola kimlik doğrulamasını kullanabilirsiniz.
+- Tümleşik Windows kimlik doğrulaması veya Kullanıcı adı ve parola kullanmak için uygulamanızın kendi kiracınızda kullanıcılar oturum açması gerekir, örneğin, iş kolu (LOB) geliştiricisiyseniz. Ya da Azure Active Directory kuruluşlarda, uygulamanızın bir ISV senaryosu olması durumunda kendi kiracınızdaki kullanıcılar oturum açması gerekir. Bu kimlik doğrulama akışları, Microsoft kişisel hesapları için desteklenmez.
+- Cihaz kodu akışını kullanmak istiyorsanız, kullanıcıları Microsoft kişisel hesaplarıyla henüz oturum açamazsınız.
+- Kullanıcılara, işletmeden ticari (B2C) yetkilisini ve ilkesini geçiren sosyal kimliklerle oturum açarsanız, yalnızca etkileşimli ve Kullanıcı adı-parola kimlik doğrulamasını kullanabilirsiniz.
 
 ## <a name="redirect-uris"></a>Yeniden Yönlendirme URI'leri
 
-Masaüstü uygulamasında kullanılacak yeniden yönlendirme URI 'Leri, kullanmak istediğiniz akışa bağlı olacaktır.
+Bir masaüstü uygulamasında kullanılacak yeniden yönlendirme URI 'Leri, kullanmak istediğiniz akışa göre değişir.
 
-- **Etkileşimli kimlik doğrulama** veya **cihaz kod akışı**kullanıyorsanız, `https://login.microsoftonline.com/common/oauth2/nativeclient`kullanmak isteyeceksiniz. Uygulamanız için **kimlik doğrulama** bölümünde karşılık gelen URL 'ye tıklayarak bu yapılandırmayı elde edeceksiniz.
+- Etkileşimli kimlik doğrulama veya cihaz kod akışı kullanıyorsanız, `https://login.microsoftonline.com/common/oauth2/nativeclient`kullanın. Bu yapılandırmayı başarmak için, uygulamanız için **kimlik doğrulama** bölümünde karşılık gelen URL 'yi seçin.
   
   > [!IMPORTANT]
-  > Bugün MSAL.NET, Windows üzerinde çalışan masaüstü uygulamalarında varsayılan olarak başka bir yeniden yönlendirme URI 'SI kullanır (`urn:ietf:wg:oauth:2.0:oob`). Gelecekte bu Varsayılanı değiştirmek istiyoruz ve bu nedenle `https://login.microsoftonline.com/common/oauth2/nativeclient` kullanmanızı öneririz.
+  > Günümüzde MSAL.NET, Windows üzerinde çalışan masaüstü uygulamalarında varsayılan olarak başka bir yeniden yönlendirme URI 'SI kullanır (`urn:ietf:wg:oauth:2.0:oob`). Gelecekte bu Varsayılanı değiştirmek istiyoruz, bu nedenle `https://login.microsoftonline.com/common/oauth2/nativeclient`kullanmanızı öneririz.
 
-- MacOS için yerel bir amaç-C veya Swift uygulaması oluşturuyorsanız, aşağıdaki biçimde uygulamanızın paket tanımlayıcısına bağlı olarak redirectUri 'yi kaydetmek isteyeceksiniz: **msauth <. app. demeti. ıd >:/auth** (. app. demeti. ID > uygulamanızın paket tanımlayıcısı ile < değiştirin)
-- Uygulamanız yalnızca tümleşik Windows kimlik doğrulaması veya Kullanıcı adı/parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akışlar Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapılır ve uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.
-- Cihaz kod akışını, tümleşik Windows kimlik doğrulamasını ve Kullanıcı adını/parolayı, yeniden yönlendirme URI 'Leri olmayan bir gizli istemci uygulama akışından ayırt etmek için (daemon uygulamalarında kullanılan istemci kimlik bilgisi akışı), uygulamanızın bir ortak istemci uygulaması olduğunu ifade etmeniz gerekir. Bu yapılandırmayı başarmak için uygulamanızın **kimlik doğrulama** bölümüne gidin. Ardından, **Gelişmiş ayarlar** alt bölümünde, **varsayılan istemci türü** paragrafında, **uygulamayı ortak istemci olarak işle**sorusuna **Evet** ' i seçin.
+- MacOS için yerel bir amaç-C veya Swift uygulaması oluşturursanız, yeniden yönlendirme URI 'sini uygulamanızın paket tanımlayıcısına göre aşağıdaki biçimde kaydedin: msauth. app. demeti. ID >://nauth. <. app. demeti. ID > uygulamanızın paket tanımlayıcısı ile < değiştirin.
+- Uygulamanız yalnızca tümleşik Windows kimlik doğrulaması veya Kullanıcı adı ve parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akışlar Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapılır. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.
+- Cihaz kod akışı, tümleşik Windows kimlik doğrulaması ve bir Kullanıcı adı ve bir parola ile yeniden yönlendirme URI 'Leri (daemon uygulamalarında kullanılan istemci kimlik bilgisi akışı) olmayan gizli bir istemci uygulama akışından bir parolayı ayırt etmek için, bunu ifade etmeniz gerekir uygulamanız ortak bir istemci uygulamasıdır. Bu yapılandırmayı başarmak için uygulamanızın **kimlik doğrulama** bölümüne gidin. **Gelişmiş ayarlar** alt bölümünde, **varsayılan istemci türü** paragrafında, **uygulamayı ortak istemci olarak değerlendir**için **Evet** ' i seçin.
 
   ![Ortak istemciye izin ver](media/scenarios/default-client-type.png)
 
 ## <a name="api-permissions"></a>API izinleri
 
-Masaüstü uygulamaları, oturum açmış kullanıcı için API 'Ler çağırır. Temsilci izinleri istemeleri gerekir. Ancak, yalnızca [Daemon uygulamalarında](scenario-daemon-overview.md)işlenen uygulama izinleri isteyemeyebilir.
+Masaüstü uygulamaları, oturum açmış kullanıcı için API 'Ler çağırır. Temsilci izinleri istemeleri gerekir. Yalnızca [Daemon uygulamalarında](scenario-daemon-overview.md)işlenen uygulama izinleri isteyemeyebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Masaüstü uygulaması-uygulama yapılandırması](scenario-desktop-app-configuration.md)
+> [Masaüstü uygulaması: uygulama yapılandırması](scenario-desktop-app-configuration.md)

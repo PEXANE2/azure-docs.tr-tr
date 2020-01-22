@@ -4,15 +4,15 @@ description: Azure 'daki Analysis Services sunucunuz şirket içi veri kaynaklar
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 01/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f1fc00ced0d933884ca0fe6dce91fed4602eb825
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263447"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310161"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Şirket içi veri ağ geçidi ile şirket içi veri kaynaklarına bağlanma
 
@@ -24,11 +24,11 @@ Azure Analysis Services için, ilk kez ağ geçidi ile kurulum almak dört böl�
 
 - **Kurulumu indir ve Çalıştır** -Bu adım, kuruluşunuzdaki bir bilgisayara ağ geçidi hizmeti yükler. Ayrıca [kiracınızın](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure AD 'deki bir hesabı kullanarak Azure 'da oturum açın. Azure B2B (konuk) hesapları desteklenmez.
 
-- **Ağ geçidinizin kaydetme** -Bu adımda, ağ geçidiniz için bir ad ve kurtarma anahtarı belirtip ağ geçidinizi ağ geçidi bulut hizmetine kaydederek bir bölge seçin. Ağ Geçidi kaynağınız herhangi bir bölgeye kaydedilebilir, ancak Analysis Services sunucularınız ile aynı bölgede olmasını öneririz. 
+- **Ağ geçidinizin kaydetme** -Bu adımda, ağ geçidiniz için bir ad ve kurtarma anahtarı belirtip ağ geçidinizi ağ geçidi bulut hizmetine kaydederek bir bölge seçin. Ağ Geçidi kaynağınız herhangi bir bölgeye kaydedilebilir, ancak Analysis Services sunucularınız ile aynı bölgede olması önerilir. 
 
-- **Azure 'da ağ geçidi kaynağı oluşturma** -Bu adımda, bir Azure 'da ağ geçidi kaynağı oluşturursunuz.
+- **Azure 'da ağ geçidi kaynağı oluşturma** -Bu adımda, Azure 'da bir ağ geçidi kaynağı oluşturursunuz.
 
-- **Sunucularınızı ağ geçidinize bağlama** -bir ağ geçidi kaynağına sahip olduktan sonra sunucularınızı bu kaynağa bağlamaya başlayabilirsiniz. Birden çok sunucuyu ve diğer kaynakları, aynı bölgede olmaları şartıyla bağlayabilirsiniz.
+- **Sunucularınızı ağ geçidinize bağlama** -bir ağ geçidi kaynağına sahip olduktan sonra sunucuları buna bağlamaya başlayabilirsiniz. Aynı bölgede olduklarından, birden çok sunucuyu ve diğer kaynakları bağlayabilirsiniz.
 
 
 
@@ -54,7 +54,7 @@ Azure Analysis Services ortamı için yükleme yaparken, [Azure Analysis Service
 
 Ağ geçidi, Azure Service Bus'a yönelik bir giden bağlantı oluşturur. Şu giden bağlantı noktaları üzerinden iletişim kurar: TCP 443 (varsayılan), 5671, 5672, 9350 ila 9354.  Ağ geçidi için gelen bağlantı noktaları gerekli değildir.
 
-Güvenlik duvarınızdaki veri bölgenizin IP adreslerini eklemeniz gerekebilir. [Microsoft Azure Veri Merkezi IP listesini](https://www.microsoft.com/download/details.aspx?id=41653) indirebilirsiniz. Bu liste haftalık olarak güncelleştirilir. Azure Veri Merkezi IP listesindeki adresler, CIDR gösteriminde listelenir. Daha fazla bilgi için bkz. [sınıfsız etki alanları arası yönlendirme](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+Güvenlik duvarınızdaki veri bölgenizin IP adreslerini eklemeniz gerekebilir. [Microsoft Azure Veri Merkezi IP listesini](https://www.microsoft.com/download/details.aspx?id=56519) indirebilirsiniz. Bu liste haftalık olarak güncelleştirilir. Azure Veri Merkezi IP listesindeki adresler, CIDR gösteriminde listelenir. Daha fazla bilgi için bkz. [sınıfsız etki alanları arası yönlendirme](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 Ağ Geçidi tarafından kullanılan tam etki alanı adları aşağıda verilmiştir.
 

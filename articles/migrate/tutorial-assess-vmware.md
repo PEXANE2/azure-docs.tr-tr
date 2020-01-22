@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028734"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289450"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesini kullanarak VMware VM 'lerini değerlendirin
 
@@ -176,7 +176,7 @@ Gerecin, VM 'lerin yapılandırma ve performans verilerini bulması için vCente
 1. Gerecin vCenter Server bağlanabildiğini sağlamak için **bağlantıyı doğrula** ' yı seçin.
 
 ### <a name="specify-vm-credentials"></a>VM kimlik bilgilerini belirtin
-Uygulama, rol ve özellik keşfi ve VM 'lerin bağımlılıklarını görselleştirmeye yönelik olarak, VMware VM 'lerine erişimi olan VM kimlik bilgileri sağlayabilirsiniz. Windows VM 'ler için bir kimlik bilgisi ve Linux sanal makineleri için bir kimlik bilgisi ekleyebilirsiniz. Gerekli erişim izinleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) .
+Uygulama, rol ve özellik keşfi ve VM 'lerin bağımlılıklarını görselleştirmeye yönelik olarak, VMware VM 'lerine erişimi olan VM kimlik bilgileri sağlayabilirsiniz. Windows VM 'ler için bir kimlik bilgisi ve Linux sanal makineleri için bir kimlik bilgisi ekleyebilirsiniz. Gerekli erişim izinleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) .
 
 > [!NOTE]
 > Bu girdi isteğe bağlıdır, ancak uygulama bulmayı ve aracısız bağımlılık görselleştirmesini etkinleştirmek istiyorsanız buna ihtiyacınız vardır.
@@ -210,7 +210,7 @@ Bu yordam aracısız sunucu geçişi için gereklidir.
 1.  Açılır menüden vCenter Server örneğinizi seçin.
 1.  **Rol oluştur**' u seçin.
 1.  Yeni rol için bir ad girin (örneğin, <em>Azure_Migrate</em>).
-1.  Yeni tanımlanan role [izin](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) atayın.
+1.  Yeni tanımlanan role [izin](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) atayın.
 1.  **Tamam**’ı seçin.
 
 #### <a name="3-assign-permissions-on-vcenter-objects"></a>3. vCenter nesnelerinde izinleri atama
@@ -219,7 +219,7 @@ VCenter 'daki envanter nesnelerine, atanmış bir role sahip vCenter Kullanıcı
 
 Sunucu değerlendirmesi için, keşfedilen VM 'Lerin barındırıldığı tüm üst nesneler için vCenter Kullanıcı hesabına **salt okuma** rolünü uygulamanız gerekir. Tüm üst nesneler dahil edilecek: Ana bilgisayar, konak klasörü, küme ve hiyerarşide veri merkezine kadar olan kümelerin klasörü. Bu izinler hiyerarşideki alt nesnelere yayılacaktır.
 
-Benzer şekilde sunucu geçişi için, geçirilecek VM 'Lerin barındırıldığı tüm üst nesneler için vCenter Kullanıcı hesabı [izinlerine](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) sahip kullanıcı tanımlı bir rol uygulamanız gerekir. Bu rol, <em>Azure _Migrate</em>olarak adlandırılabilir.
+Benzer şekilde sunucu geçişi için, geçirilecek VM 'Lerin barındırıldığı tüm üst nesneler için vCenter Kullanıcı hesabı [izinlerine](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) sahip kullanıcı tanımlı bir rol uygulamanız gerekir. Bu rol, <em>Azure _Migrate</em>olarak adlandırılabilir.
 
 ![İzin atama](./media/tutorial-assess-vmware/assign-perms.png)
 

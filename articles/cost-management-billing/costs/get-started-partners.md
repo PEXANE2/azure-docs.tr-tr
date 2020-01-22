@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b3e2b6fbfb11c0ee89e56cd29fa3bf606c336235
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 10889f6d872510fb53e76ab3722343aa2ee6a5e8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278550"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293921"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure maliyet yönetimi 'ni kullanmaya başlama
 
@@ -120,7 +120,7 @@ Maliyet görünürlüğü ilkesi iş ortağı tarafından etkinleştirildiğinde
 
 İş ortakları, bu bilgileri kullanarak müşterilerine yönelik Azure kullanım ücretlerini görüntüleme ilkesini etkinleştirir.
 
-Azure portal, iş ortağı kiracısında oturum açın ve **maliyet yönetimi + faturalandırma**' i seçin. Bir faturalandırma hesabı seçin ve ardından **müşteriler**' i seçin. Müşterilerin listesi faturalandırma hesabıyla ilişkilendirilir.
+Azure portal, iş ortağı kiracısında oturum açın ve **maliyet yönetimi + faturalandırma**' i seçin. İlgili Microsoft Iş ortağı sözleşmesi faturalandırma hesabını seçin ve ardından **müşteriler**' i seçin. Müşterilerin listesi faturalandırma hesabıyla ilişkilendirilir.
 
 Müşteriler listesinde, maliyetleri görüntülemek için izin vermek istediğiniz müşteriyi seçin.
 
@@ -137,7 +137,7 @@ Maliyet ilkesi **Evet**olarak ayarlandığında, müşteri kiracısıyla ilişki
 
 Maliyet görünürlüğü ilkesi etkinleştirildiğinde, abonelik kullanımı olan tüm hizmetler Kullandıkça Öde tarifelerine göre maliyetleri gösterir. Rezervasyon kullanımı, gerçek ve ortaya çıkan maliyetler için sıfır ücret ile görünür. Satın alımlar ve yetkilendirmeler belirli bir abonelikle ilişkili değildir. Bu nedenle, satın alma işlemleri abonelik kapsamında gösterilmez.
 
-Müşteri kiracının maliyetlerini görüntülemek için maliyet yönetimi + Faturalandırma ' i açın ve faturalandırma hesapları ' nı seçin. Faturalandırma hesapları listesinde bir faturalandırma hesabı seçin.
+Müşteri kiracının maliyetlerini görüntülemek için **maliyet yönetimi + faturalandırma** ' i açın ve Ilgili Microsoft Iş ortağı sözleşmesi faturalandırma hesabını seçin.
 
 ![Bir faturalandırma hesabı seçin](./media/get-started-partners/select-billing-account.png)
 
@@ -263,7 +263,7 @@ Aboneliğe RBAC erişimi olan kullanıcılar ayrıca maliyet verilerini müşter
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>İş ortağı kiracısında veya müşteri kiracısında dışarı aktarma oluşturma
 
-Azure portal, iş ortağı kiracısında veya müşteri kiracısında oturum açın ve **maliyet yönetimi + faturalandırma**' i seçin. Uygun bir kapsam seçin (örneğin, bir faturalandırma hesabı) ve ardından **Maliyet Analizi**' ni seçin. Sayfa yüklendiğinde, **dışarı aktar**' ı seçin. Dışarı aktarma zamanlaması altındaki **tüm dışarı aktarmaları görüntüle** ' yi seçin.
+Azure portal, iş ortağı kiracısında veya müşteri kiracısında oturum açın ve **maliyet yönetimi + faturalandırma**' i seçin. Uygun bir kapsam seçin (örneğin, bir Microsoft Iş ortağı sözleşmesi faturalandırma hesabı) ve ardından **Maliyet Analizi**' ni seçin. Sayfa yüklendiğinde, **dışarı aktar**' ı seçin. Dışarı aktarma zamanlaması altındaki **tüm dışarı aktarmaları görüntüle** ' yi seçin.
 
 ![Dışarı Aktar ' ı seçin ve tüm dışarı aktarmaları görüntüleyin](./media/get-started-partners/export01.png)
 

@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: sgilley
 ms.date: 12/25/2019
-ms.openlocfilehash: 9e0bae722430662ddbe252e82c5108eb820ce352
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 88f688608a0ae3d435699362f9326c7c02d494a4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660159"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311126"
 ---
 # <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Azure Machine Learning Designer ile dalgalanma tahmin etmek için önceden artırılmış karar ağacını kullanın
 
-**Tasarımcı (Önizleme) örnek 5**
+**Tasarımcı örnek 5**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan karmaşık makine öğrenimi ardışık düzeni oluşturmayı öğrenin.
+Tasarımcıyı kullanarak tek bir kod satırı yazmadan karmaşık makine öğrenimi ardışık düzeni oluşturmayı öğrenin.
 
 Bu işlem hattı, müşteri ilişkileri yönetimi (CRM) sistemleri için ortak görevleri tahmin etmek üzere 2 **iki sınıf önceden artırılmış karar ağacı** sınıflandırmasını sağlar. Veri değerleri ve Etiketler birden çok veri kaynağına ayrılır ve Anonimleştir müşteri bilgilerine göre karıştırır; ancak, tasarımcı 'yı yine de veri kümelerini birleştirmek ve örtülü değerleri kullanarak bir modeli geliştirmek için kullanabiliriz.
 

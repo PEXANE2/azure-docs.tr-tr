@@ -4,12 +4,12 @@ description: Yetenekler, kullanım örnekleri ve yaygın senaryolar da dahil olm
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614647"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293530"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Sık sorulan Service Fabric soruları
 
@@ -183,4 +183,4 @@ Duyurulduğu gibi daha fazla ayrıntı için [Service Fabric blogunu](https://bl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Temel Service Fabric kavramları](service-fabric-technical-overview.md) ve [en iyi uygulamalar](service-fabric-best-practices-overview.md) (Service-Fabric-Technical-Overview.MD) ve [en iyi yöntemler](service-fabric-best-practices-overview.md) hakkında bilgi edinin
+[Temel Service Fabric kavramlar](service-fabric-technical-overview.md) ve [en iyi uygulamalar](service-fabric-best-practices-overview.md) hakkında bilgi edinin

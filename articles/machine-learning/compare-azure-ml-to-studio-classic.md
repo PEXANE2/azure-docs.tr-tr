@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: a3122a3ae1687369b87d193efc693b3b7c659aac
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 064786de1f25c3d185984534b9a8fc61602826ee
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974129"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311470"
 ---
 # <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Azure Machine Learning Machine Learning Studio 'den farklı (klasik)
 
@@ -24,20 +24,19 @@ Bu makalede, Azure Machine Learning özellikleri, özellikleri ve arabirimi Mach
 
 ## <a name="about-azure-machine-learning"></a>Azure Machine Learning hakkında
 
-[Azure Machine Learning](overview-what-is-azure-ml.md) , her ikisi de tasarımcı (Önizleme) **ve** ÇEŞITLI SDK 'lar ve CLI adlı bir Web arabirimi sağlayarak verileri hızlı bir şekilde hazırlayın, eğitim ve dağıtım, makine öğrenimi modellerini dağıtır. Azure Machine Learning, otomatik makine öğrenimi ve işlem hattı desteği gibi ölçek, birden çok Framework desteği, gelişmiş ML özellikleri de alır.
+[Azure Machine Learning](overview-what-is-azure-ml.md) , her ikisi de tasarımcı adı verilen bir Web arabirimi **ve** veri hızlı bir şekilde hazırlık, makine öğrenimi modellerini eğitmek ve dağıtmak için ÇEŞITLI SDK 'lar ve CLI sağlar. Azure Machine Learning, otomatik makine öğrenimi ve işlem hattı desteği gibi ölçek, birden çok Framework desteği, gelişmiş ML özellikleri de alır.
 
 Azure Machine Learning tasarımcı, Studio 'ya (klasik) benzer bir sürükle ve bırak deneyimi sağlar. Ancak, Studio 'nun özel işlem platformunun (klasik) aksine, tasarımcı kendi işlem kaynaklarınızı kullanır, ölçeklenebilir ve Azure Machine Learning tamamen tümleşiktir.  
 
 > [!TIP]
-> Şu anda Machine Learning Studio (klasik) kullanan veya değerlendiren müşterilerin, sürükle ve bırak __ml modülleri ve__ ölçeklenebilirlik, sürüm denetimi ve kurumsal güvenlik sağlayan [Azure Machine Learning tasarımcı](https://docs.microsoft.com/azure/machine-learning/concept-designer) 'yı (Önizleme) denemesini sağlamak önerilir.
+> Şu anda Machine Learning Studio (klasik) kullanan veya değerlendiren müşteriler, sürükle ve bırak __ml modülleri ile__ ölçeklenebilirlik, sürüm denetimi ve kurumsal güvenlik sağlayan [Azure Machine Learning tasarımcısını](https://docs.microsoft.com/azure/machine-learning/concept-designer)denemenize teşvik edilir.
 
 ## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>Karşılaştırma: Azure Machine Learning ile Machine Learning Studio (klasik)
 
 Hızlı bir karşılaştırma aşağıda verilmiştir.
 
 ||  Azure Machine Learning Tasarımcısı|Studio (klasik) |
-|---| --- | --- |
-||Tasarımcı önizlemededir, Azure Machine Learning GA 'dir|Genel olarak kullanılabilir (GA) | 
+|---| --- | --- | 
 |Sürükle bırak arabirimi| Evet | Evet|
 |Deneme| İşlem hedefi ile ölçeklendirme|Ölçek (10 GB eğitim veri limiti) | 
 |Arabirim için modüller| [Birçok popüler modül](algorithm-module-reference/module-reference.md) | Sayısı |

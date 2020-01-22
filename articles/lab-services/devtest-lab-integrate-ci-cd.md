@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 54b4e6e6a283f46e03f7b94ce96ba79a03f75523
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9604da5252254120ac7bd3fca3f0cc97324aef92
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170388"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293224"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs Azure Pipelines CI/CD işlem hattınızla tümleştirin
 
@@ -140,7 +140,7 @@ Sonraki adımda, gelecekteki dağıtımlar için kullanılacak altın görüntü
    
    |Alan|Değer|
    |---|---|
-   |**Azure RM aboneliği**|**Kullanılabilir Azure hizmeti bağlantılarından** veya açılan menüdeki **kullanılabilir Azure aboneliklerinden** bir hizmet bağlantısı veya abonelik seçin ve gerekirse **Yetkilendir** ' i seçin.<br /><br />**Note:** Azure aboneliğinize daha kısıtlı bir izin bağlantısı oluşturma hakkında bilgi için bkz. [Azure Resource Manager hizmet uç noktası](/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).|
+   |**Azure RM aboneliği**|**Kullanılabilir Azure hizmeti bağlantılarından** veya açılan menüdeki **kullanılabilir Azure aboneliklerinden** bir hizmet bağlantısı veya abonelik seçin ve gerekirse **Yetkilendir** ' i seçin.<br /><br />**Note:** Azure aboneliğinize daha kısıtlı bir izin bağlantısı oluşturma hakkında bilgi için bkz. [Azure Resource Manager hizmet uç noktası](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager).|
    |**Laboratuvar adı**|Laboratuvar VM 'sinin oluşturulacağı mevcut bir laboratuvarın adını seçin.|
    |**Şablon adı**|Kaynak kodu deponuza kaydettiğiniz şablon dosyasının tam yolunu ve adını girin. Yolu basitleştirmek için yerleşik özellikleri kullanabilirsiniz, örneğin:<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
    |**Şablon Parametreleri**|Daha önce tanımladığınız değişkenlerin parametrelerini girin:<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|

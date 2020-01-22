@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cd2d712dfcc6d3f01cbdb1f4886dd64a6d299d4
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: b0b22997c9b8fc95c89503f06a99e29653c8aead
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156225"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293292"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Cihazlar sayfasından bağlı cihazlarınızı yönetin
 
@@ -81,7 +81,7 @@ Bağlı cihazlarınızı görüntüledikten sonra şunları yapabilirsiniz:
 
 - [Office ürününüzü yönetmek için oturum açın](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
 
-- [Office **Hesabım** sayfasına gidin](https://portal.office.com/account/#home)
+- [Office **Hesabım** sayfasına gidin](https://portal.office.com/account/)
 
 - [Office **Yüklemelerim** sayfasına gidin](https://portal.office.com/account/#installs)
 

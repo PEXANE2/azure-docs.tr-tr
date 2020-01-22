@@ -1,14 +1,14 @@
 ---
 title: Kaynak bulunamadı hataları
-description: Bir Azure Resource Manager şablonuyla dağıtıldığında bir kaynak bulunamadığında hataların nasıl çözümleneceğini açıklar.
+description: Azure Resource Manager şablonuyla dağıtıldığında bir kaynak bulunamadığında hataların nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
-ms.date: 06/06/2018
-ms.openlocfilehash: 81a2541be4f0a99aa28186eb6b7289bdb595e678
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/21/2020
+ms.openlocfilehash: c3e19af24fa7fb850eadf3deb346180476943241
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152434"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310671"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Azure kaynakları için bulunamadı hatalarını çözümleme
 
@@ -87,4 +87,16 @@ Kaynak, dağıtılmasından farklı bir kaynak grubunda mevcut olduğunda, kayna
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
+```
+
+## <a name="solution-4---get-managed-identity-from-resource"></a>Çözüm 4-kaynaktan yönetilen kimliği al
+
+[Yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)dolaylı olarak oluşturan bir kaynak dağıtıyorsanız, yönetilen kimlik değerlerini almadan önce bu kaynak dağıtılana kadar beklemeniz gerekir. Yönetilen kimlik adını [başvuru](template-functions-resource.md#reference) işlevine geçirirseniz, kaynak ve kimlik dağıtılmadan önce başvuruyu çözümlemeye çalışır Kaynak Yöneticisi. Bunun yerine, kimliğin uygulandığı kaynağın adını geçirin. Bu yaklaşım, başvuru işlevini çözümlediği Kaynak Yöneticisi önce kaynak ve yönetilen kimliğin dağıtılmasını sağlar.
+
+Başvuru işlevinde, yönetilen kimlik dahil tüm özellikleri almak için `Full` kullanın.
+
+Örneğin, bir sanal makine ölçek kümesine uygulanan bir yönetilen kimliğin kiracı KIMLIĞINI almak için şunu kullanın:
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
 ```

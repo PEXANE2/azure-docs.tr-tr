@@ -6,17 +6,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: 86b9230dbdca82c5599c1839fd64bd3df4725051
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/21/2020
+ms.openlocfilehash: 6ad583fdb880e36e6ac9c2dfda56bb68378ea598
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435585"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314019"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight 'a ek depolama hesapları ekleme
 
-HDInsight 'a ek Azure depolama *hesapları* eklemek için betik eylemlerinin nasıl kullanılacağını öğrenin. Bu belgedeki adımlar, mevcut bir Linux tabanlı HDInsight kümesine bir depolama *hesabı* ekler. Bu makale, depolama *hesapları* (varsayılan küme depolama hesabı değil) için geçerlidir ve [Azure Data Lake Storage 1.](hdinsight-hadoop-use-data-lake-store.md) ve [Azure Data Lake Storage 2.](hdinsight-hadoop-use-data-lake-storage-gen2.md)gibi ek depolama alanı değildir.
+HDInsight 'a ek Azure depolama *hesapları* eklemek için betik eylemlerinin nasıl kullanılacağını öğrenin. Bu belgedeki adımlar, var olan bir HDInsight kümesine bir depolama *hesabı* ekler. Bu makale, depolama *hesapları* (varsayılan küme depolama hesabı değil) için geçerlidir ve [Azure Data Lake Storage 1.](hdinsight-hadoop-use-data-lake-store.md) ve [Azure Data Lake Storage 2.](hdinsight-hadoop-use-data-lake-storage-gen2.md)gibi ek depolama alanı değildir.
 
 > [!IMPORTANT]  
 > Bu belgedeki bilgiler, bir kümeye oluşturulduktan sonra ek depolama hesapları ekleme hakkında bilgi içerir. Küme oluşturma sırasında depolama hesapları ekleme hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlası ile kümeleri ayarlama](hdinsight-hadoop-provision-linux-clusters.md).
@@ -25,20 +25,9 @@ HDInsight 'a ek Azure depolama *hesapları* eklemek için betik eylemlerinin nas
 
 * HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Depolama hesabı adı ve anahtarı. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md).
-* [Küme adı doğru](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name)değil.
 * PowerShell kullanıyorsanız AZ Module gerekecektir.  Bkz. [Azure PowerShell genel bakış](https://docs.microsoft.com/powershell/azure/overview).
-* Azure CLı 'yı yüklemediyseniz bkz. [Azure komut satırı arabirimi (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
-* Bash veya bir Windows komut istemi kullanıyorsanız, bir komut satırı JSON işlemcisi olan **JQ**da gerekir.  Bkz. [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/). Windows 10 ' da Ubuntu 'da bash için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](https://docs.microsoft.com/windows/wsl/install-win10).
 
 ## <a name="how-it-works"></a>Nasıl çalışır
-
-Bu betik aşağıdaki parametreleri alır:
-
-* __Azure depolama hesabı adı__: HDInsight kümesine eklenecek depolama hesabının adı. Betiği çalıştırdıktan sonra, HDInsight bu depolama hesabında depolanan verileri okuyabilir ve yazabilir.
-
-* __Azure depolama hesabı anahtarı__: depolama hesabına erişim izni veren bir anahtar.
-
-* __-p__ (isteğe bağlı): belirtilmişse, anahtar şifrelenmez ve Core-site. xml dosyasında düz metin olarak depolanır.
 
 İşlem sırasında betik aşağıdaki eylemleri gerçekleştirir:
 
@@ -55,79 +44,37 @@ Bu betik aşağıdaki parametreleri alır:
 > [!WARNING]  
 > HDInsight kümesinden farklı bir konumda depolama hesabı kullanılması desteklenmez.
 
-## <a name="the-script"></a>Betik
+## <a name="add-storage-account"></a>Depolama hesabı ekleme
 
-__Betik konumu__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
+Değişiklikleri aşağıdaki noktalara uygulamak için [betik eylemi](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) kullanın:
 
-__Gereksinimler__: betiğin __baş düğümlere__uygulanması gerekir. Bu betiği __kalıcı__olarak işaretlemeniz gerekmez, çünkü bu, küme için ambarı yapılandırmasını doğrudan güncelleştirir.
+|Özellik | Değer |
+|---|---|
+|Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
+|Düğüm türleri|Baş|
+|Parametreler|`ACCOUNTNAME` `ACCOUNTKEY` `-p` (isteğe bağlı)|
 
-## <a name="to-use-the-script"></a>Betiği kullanmak için
+* `ACCOUNTNAME`, HDInsight kümesine eklenecek depolama hesabının adıdır.
+* `ACCOUNTKEY`, `ACCOUNTNAME`için erişim anahtarıdır.
+* `-p` isteğe bağlıdır. Belirtilmişse, anahtar şifrelenmez ve Core-site. xml dosyasında düz metin olarak depolanır.
 
-Bu betik Azure PowerShell, Azure CLı veya Azure portal kullanılabilir.
+## <a name="verification"></a>Doğrulama
 
-### <a name="powershell"></a>PowerShell
+Azure portal HDInsight kümesi görüntülenirken, __Özellikler__ altında __depolama hesapları__ girdisi seçildiğinde bu betik eylemiyle eklenen depolama hesapları gösterilmez. Azure PowerShell ve Azure CLı ek depolama hesabını görüntülemez. Betik yalnızca kümenin `core-site.xml` yapılandırmasını değiştirdiği için depolama bilgileri gösterilmez. Bu bilgiler, Azure Yönetim API 'Leri kullanılarak küme bilgileri alınırken kullanılmaz.
 
-[Gönderme-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/submit-azhdinsightscriptaction)kullanma. `CLUSTERNAME`, `ACCOUNTNAME`ve `ACCOUNTKEY` uygun değerlerle değiştirin.
+Ek depolama alanını doğrulamak için aşağıda gösterilen yöntemlerden birini kullanın:
 
-```powershell
-# Update these parameters
-$clusterName = "CLUSTERNAME"
-$parameters = "ACCOUNTNAME ACCOUNTKEY"
+### <a name="powershell"></a>Powershell
 
-$scriptActionName = "addStorage"
-$scriptActionUri = "https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh"
-
-# Execute script
-Submit-AzHDInsightScriptAction `
-    -ClusterName $clusterName `
-    -Name $scriptActionName `
-    -Uri $scriptActionUri `
-    -NodeTypes "headnode" `
-    -Parameters $parameters
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-[Az HDInsight betiği kullanma-eylem yürütme](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).  `CLUSTERNAME`, `RESOURCEGROUP`, `ACCOUNTNAME`ve `ACCOUNTKEY` uygun değerlerle değiştirin.
-
-```cli
-az hdinsight script-action execute ^
-    --name CLUSTERNAME ^
-    --resource-group RESOURCEGROUP ^
-    --roles headnode ^
-    --script-action-name addStorage ^
-    --script-uri "https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh" ^
-    --script-parameters "ACCOUNTNAME ACCOUNTKEY"
-```
-
-### <a name="azure-portal"></a>Azure Portal
-
-Bkz. [çalışan bir kümeye betik eylemi uygulama](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
-
-## <a name="known-issues"></a>Bilinen sorunlar
-
-### <a name="storage-firewall"></a>Depolama güvenlik duvarı
-
-Depolama hesabınızı **Seçili ağlardaki** **güvenlik duvarları ve sanal ağlar** kısıtlamalarına göre güvenli hale getirmek isterseniz, HDInsight 'ın depolama hesabınıza erişebilmesi Için **güvenilir Microsoft hizmetlerine izin ver...** özel durumunu etkinleştirdiğinizden emin olun.
-
-### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Azure portal veya araçlarda görüntülenmeyen depolama hesapları
-
-Azure portal HDInsight kümesi görüntülenirken, __Özellikler__ altında __depolama hesapları__ girdisi seçildiğinde bu betik eylemiyle eklenen depolama hesapları gösterilmez. Azure PowerShell ve Azure CLı ek depolama hesabını görüntülemez.
-
-Komut dosyası yalnızca küme için Core-site. xml yapılandırmasını değiştirdiği için depolama bilgileri gösterilmez. Bu bilgiler, Azure Yönetim API 'Leri kullanılarak küme bilgileri alınırken kullanılmaz.
-
-Bu betiği kullanarak kümeye eklenen depolama hesabı bilgilerini görüntülemek için REST API ambarı 'nı kullanın. Kümeniz için bu bilgileri almak üzere aşağıdaki komutları kullanın:
-
-### <a name="powershell"></a>PowerShell
-
-`CLUSTERNAME`, doğru şekilde kullanılan küme adıyla değiştirin. `ACCOUNTNAME` gerçek adlarla değiştirin. İstendiğinde, küme oturum açma parolasını girin.
+Betik, belirtilen kümeyle ilişkili depolama hesabı adlarını döndürür. `CLUSTERNAME` gerçek küme adıyla değiştirin ve ardından betiği çalıştırın.
 
 ```powershell
 # Update values
 $clusterName = "CLUSTERNAME"
-$accountName = "ACCOUNTNAME"
 
 $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
+
+$clusterName = $clusterName.ToLower();
 
 # getting service_config_version
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
@@ -139,50 +86,39 @@ $configVersion=$respObj.Clusters.desired_service_config_versions.HDFS.service_co
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
-$respObj.items.configurations.properties."fs.azure.account.key.$accountName.blob.core.windows.net"
+
+# extract account names
+$value = ($respObj.items.configurations | Where type -EQ "core-site").properties | Get-Member -membertype properties | Where Name -Like "fs.azure.account.key.*"
+foreach ($name in $value ) { $name.Name.Split(".")[4]}
 ```
 
-### <a name="bash"></a>bash
+### <a name="apache-ambari"></a>Apache ambarı
 
-`CLUSTERNAME`, doğru şekilde kullanılan küme adıyla değiştirin. `PASSWORD`, Küme Yöneticisi parolasıyla değiştirin. `STORAGEACCOUNT` değerini gerçek depolama hesabı adıyla değiştirin.
+1. Bir Web tarayıcısından `https://CLUSTERNAME.azurehdinsight.net`' a gidin; burada `CLUSTERNAME` kümenizin adıdır.
 
-```bash
-export clusterName="CLUSTERNAME"
-export password='PASSWORD'
-export storageAccount="STORAGEACCOUNT"
+1. **Gelişmiş** > **özel çekirdek sitesine** >  > **config** 'ler ' **e gidin.**
 
-export ACCOUNTNAME='"'fs.azure.account.key.$storageAccount.blob.core.windows.net'"'
+1. `fs.azure.account.key`ile başlayan anahtarları gözlemleyin. Hesap adı bu örnek görüntüde görüldüğü gibi anahtarın bir parçası olacaktır:
 
-export configVersion=$(curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName?fields=Clusters/desired_service_config_versions/HDFS" \
-| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version")
+   ![Apache ambarı aracılığıyla doğrulama](./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png)
 
-curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" \
-| jq ".items[].configurations[].properties[$ACCOUNTNAME] | select(. != null)"
-```
+## <a name="remove-storage-account"></a>Depolama hesabını kaldır
 
-### <a name="cmd"></a>cmd
+1. Bir Web tarayıcısından `https://CLUSTERNAME.azurehdinsight.net`' a gidin; burada `CLUSTERNAME` kümenizin adıdır.
 
-`CLUSTERNAME`, her iki betikte uygun küme adı ile değiştirin. Önce aşağıdaki komutu girerek kullanımda olan hizmet yapılandırma sürümünü belirlemeniz gerekir:
+1. **Gelişmiş** > **özel çekirdek sitesine** >  > **config** 'ler ' **e gidin.**
 
-```cmd
-curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" | ^
-jq-win64 ".Clusters.desired_service_config_versions.HDFS[].service_config_version"
-```
+1. Aşağıdaki anahtarları kaldırın:
+    * `fs.azure.account.key.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`
+    * `fs.azure.account.keyprovider.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`
 
-`ACCOUNTNAME` değerini gerçek depolama hesabı adıyla değiştirin. Sonra `4` gerçek hizmet yapılandırma sürümüyle değiştirin ve şu komutu girin:
+Bu anahtarları kaldırdıktan ve yapılandırmayı kaydettikten sonra Oozie, Yarn, MapReduce2,, ve Hive tek tek yeniden başlatmanız gerekir.
 
-```cmd
-curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=4" | ^
-jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNAME.blob.core.windows.net"""] | select(. != null)"
-```
+## <a name="known-issues"></a>Bilinen sorunlar
 
----
+### <a name="storage-firewall"></a>Depolama güvenlik duvarı
 
-Bu komuttan döndürülen bilgiler aşağıdaki metne benzer şekilde görünür:
-
-    "MIIB+gYJKoZIhvcNAQcDoIIB6zCCAecCAQAxggFaMIIBVgIBADA+MCoxKDAmBgNVBAMTH2RiZW5jcnlwdGlvbi5henVyZWhkaW5zaWdodC5uZXQCEA6GDZMW1oiESKFHFOOEgjcwDQYJKoZIhvcNAQEBBQAEggEATIuO8MJ45KEQAYBQld7WaRkJOWqaCLwFub9zNpscrquA2f3o0emy9Vr6vu5cD3GTt7PmaAF0pvssbKVMf/Z8yRpHmeezSco2y7e9Qd7xJKRLYtRHm80fsjiBHSW9CYkQwxHaOqdR7DBhZyhnj+DHhODsIO2FGM8MxWk4fgBRVO6CZ5eTmZ6KVR8wYbFLi8YZXb7GkUEeSn2PsjrKGiQjtpXw1RAyanCagr5vlg8CicZg1HuhCHWf/RYFWM3EBbVz+uFZPR3BqTgbvBhWYXRJaISwssvxotppe0ikevnEgaBYrflB2P+PVrwPTZ7f36HQcn4ifY1WRJQ4qRaUxdYEfzCBgwYJKoZIhvcNAQcBMBQGCCqGSIb3DQMHBAhRdscgRV3wmYBg3j/T1aEnO3wLWCRpgZa16MWqmfQPuansKHjLwbZjTpeirqUAQpZVyXdK/w4gKlK+t1heNsNo1Wwqu+Y47bSAX1k9Ud7+Ed2oETDI7724IJ213YeGxvu4Ngcf2eHW+FRK"
-
-Bu metin, depolama hesabına erişmek için kullanılan şifrelenmiş anahtara bir örnektir.
+Depolama hesabınızı **Seçili ağlardaki** **güvenlik duvarları ve sanal ağlar** kısıtlamalarına göre güvenli hale getirmek isterseniz, HDInsight 'ın depolama hesabınıza erişebilmesi Için **güvenilir Microsoft hizmetlerine izin ver...** özel durumunu etkinleştirdiğinizden emin olun.
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>Anahtar değiştirildikten sonra depolamaya erişilemiyor
 
@@ -190,27 +126,12 @@ Bir depolama hesabı için anahtarı değiştirirseniz, HDInsight artık depolam
 
 Betik eylemi yeniden çalıştırıldığında anahtar, depolama hesabı için bir girişin zaten mevcut olup olmadığını kontrol eder. Zaten bir giriş varsa, hiçbir değişiklik yapmaz.
 
-Bu sorunu geçici olarak çözmek için depolama hesabı için mevcut girişi kaldırmanız gerekir. Mevcut girişi kaldırmak için aşağıdaki adımları kullanın:
+Bu sorunu geçici olarak çözmek için:  
+1. Depolama hesabını kaldırın.
+1. Depolama hesabını ekleyin.
 
 > [!IMPORTANT]  
 > Bir kümeye bağlı birincil depolama hesabı için depolama anahtarı döndürülmesi desteklenmez.
-
-1. Bir Web tarayıcısında, HDInsight kümeniz için ambarı Web Kullanıcı arabirimini açın. URI `https://CLUSTERNAME.azurehdinsight.net`. `CLUSTERNAME` değerini kümenizin adıyla değiştirin.
-
-    İstendiğinde, kümenizin HTTP oturum açma kullanıcı ve parolasını girin.
-
-2. Sayfanın solundaki hizmetler listesinden,, __"seçin.__ Ardından sayfanın merkezindeki __Yapılandırma sekmesini seçin__ .
-
-3. __Filter...__ alanına bir __FS. Azure. Account__değeri girin. Bu, kümeye eklenmiş olan ek depolama hesaplarının girişlerini döndürür. İki tür giriş vardır; __keyprovider__ ve __anahtar__. Her ikisi de, anahtar adının bir parçası olarak depolama hesabının adını içerir.
-
-    Aşağıda, __depolamam__adlı bir depolama hesabı için örnek girişler verilmiştir:
-
-        fs.azure.account.keyprovider.mystorage.blob.core.windows.net
-        fs.azure.account.key.mystorage.blob.core.windows.net
-
-4. Kaldırmanız gereken depolama hesabı için anahtarları tanımladıktan sonra, girişin sağındaki kırmızı '-' simgesini kullanarak silin. Sonra değişikliklerinizi kaydetmek için __Kaydet__ düğmesini kullanın.
-
-5. Değişiklikler kaydedildikten sonra, depolama hesabını ve yeni anahtar değerini kümeye eklemek için betik eylemini kullanın.
 
 ### <a name="poor-performance"></a>Düşük performans
 

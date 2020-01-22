@@ -3,12 +3,12 @@ title: Öğretici-Azure dosyaları dosya paylaşımlarını yedekleme
 description: Bu öğreticide, bir kurtarma hizmetleri Kasası yapılandırmak ve Azure dosya paylaşımlarını yedeklemek için Azure portal nasıl kullanacağınızı öğrenin.
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ec9074a39f2ece7878c0c3ef828dc21748d0ab89
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921641"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293938"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Azure portal Azure dosya paylaşımlarını yedekleme
 
@@ -43,29 +43,29 @@ Bu öğreticide zaten yerleşik bir Azure dosya paylaşımınız olduğu varsay�
 
 1. Dosya paylaşımınızla aynı bölgede bir Kurtarma Hizmetleri kasası oluşturun. Zaten bir kasanız varsa, kasanızın Genel Bakış sayfasını açın ve **Yedekle**'ye tıklayın.
 
-    ![Kasadaki Genel Bakış sayfasında yedekle ' ye tıklayın](./media/backup-file-shares/overview-backup-page.png)
+    ![Kasadaki Genel Bakış sayfasında yedekle ' ye tıklayın](./media/tutorial-backup-azure-files/overview-backup-page.png)
 
 2. **Yedekleme hedefi** menüsünde, **ne yedeklemek Istiyorsunuz?** listesinden Azure FileShare ' i seçin.
 
-    ![Yedekleme hedefi olarak Azure Dosya Paylaşımı'nı seçin](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
+    ![Yedekleme hedefi olarak Azure Dosya Paylaşımı'nı seçin](./media/tutorial-backup-azure-files/choose-azure-fileshare-from-backup-goal.png)
 
 3. Azure dosya paylaşımınızı Kurtarma Hizmetleri kasasına yapılandırmak için **Yedekle**'ye tıklayın.
 
-   ![Azure dosya paylaşımını kasayla ilişkilendirmek için Yedekle'ye tıklayın](./media/backup-file-shares/set-backup-goal.png)
+   ![Azure dosya paylaşımını kasayla ilişkilendirmek için Yedekle'ye tıklayın](./media/tutorial-backup-azure-files/set-backup-goal.png)
 
     Kasa Azure dosya paylaşımıyla ilişkilendirildikten sonra, yedekleme menüsü açılır ve bir depolama hesabı seçmenizi ister. Menü, kasalarınızın bir kurtarma hizmetleri kasası ile henüz ilişkilendirilmemiş bulunduğu bölgedeki tüm desteklenen depolama hesaplarını görüntüler.
 
-   ![Depolama hesabınızı seçin](./media/backup-file-shares/list-of-storage-accounts.png)
+   ![Depolama hesabınızı seçin](./media/tutorial-backup-azure-files/list-of-storage-accounts.png)
 
 4. Depolama hesapları listesinde bir hesap seçin ve **Tamam**'a tıklayın. Azure, depolama hesabında yedeklenebilecek dosya paylaşımlarını arar. Dosya paylaşımlarınızı kısa süre önce eklediyseniz ve listede görmüyorsanız, dosya paylaşımlarının gösterilmesi için biraz zaman tanıyın.
 
-   ![Dosya paylaşımları keşfediliyor](./media/backup-file-shares/discover-file-shares.png)
+   ![Dosya paylaşımları keşfediliyor](./media/tutorial-backup-azure-files/discover-file-shares.png)
 
 5. **Dosya paylaşımları** listesinde, yedeklemek istediğiniz bir veya daha fazla dosya paylaşımını seçin ve **Tamam**' a tıklayın.
 
 6. Dosya Paylaşımlarınızı seçtikten sonra, Yedekle menüsü **Yedekleme ilkesi**'ne dönüşür. Bu menüde mevcut yedekleme ilkelerinden birini seçin veya yeni ilke oluşturun ve ardından **Yedeklemeyi Etkinleştir**'e tıklayın.
 
-   ![Bir yedekleme ilkesi seçin veya yeni bir tane oluşturun](./media/backup-file-shares/apply-backup-policy.png)
+   ![Bir yedekleme ilkesi seçin veya yeni bir tane oluşturun](./media/tutorial-backup-azure-files/apply-backup-policy.png)
 
     Yedekleme ilkesi oluşturulduktan sonra, planlanan zamanda Dosya Paylaşımlarının anlık görüntüsü alınır ve seçilen süre için kurtarma noktası korunur.
 
@@ -77,19 +77,19 @@ Yedekleme ilkesini yapılandırdıktan sonra, verilerinizin bir sonraki zamanlan
 
 1. Dosya paylaşımı kurtarma noktalarını içeren Kurtarma Hizmetleri kasasını açın ve **Yedekleme Öğeleri**'ne tıklayın. Yedekleme Öğesi türlerinin listesi gösterilir.
 
-   ![Yedekleme öğelerinin listesi](./media/backup-file-shares/list-of-backup-items.png)
+   ![Yedekleme öğelerinin listesi](./media/tutorial-backup-azure-files/list-of-backup-items.png)
 
 2. Listeden **Azure Depolama (Azure Dosyaları)** öğesini seçin. Azure dosya paylaşımlarının listesi görüntülenir.
 
-   ![Azure dosya paylaşımlarının listesi](./media/backup-file-shares/list-of-azure-files-backup-items.png)
+   ![Azure dosya paylaşımlarının listesi](./media/tutorial-backup-azure-files/list-of-azure-files-backup-items.png)
 
 3. Azure dosya paylaşımları listesinden istediğiniz dosya paylaşımını seçin. Seçili dosya paylaşımının Yedekleme Öğesi menüsü açılır.
 
-   ![Seçili dosya paylaşımının yedekleme öğesi menüsü](./media/backup-file-shares/backup-item-menu.png)
+   ![Seçili dosya paylaşımının yedekleme öğesi menüsü](./media/tutorial-backup-azure-files/backup-item-menu.png)
 
 4. Yedekleme Öğesi menüsünde **Şimdi Yedekle**'ye tıklayın. Bu isteğe bağlı bir yedekleme işi olduğundan, kurtarma noktasıyla ilişkilendirilmiş bir bekletme ilkesi yoktur. **Şimdi Yedekle** iletişim kutusu açılır. Kurtarma noktasını bekletmek istediğiniz son günü belirtin.
 
-   ![Kurtarma noktası bekletme için tarih seçin](./media/backup-file-shares/backup-now-menu.png)
+   ![Kurtarma noktası bekletme için tarih seçin](./media/tutorial-backup-azure-files/backup-now-menu.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -103,4 +103,4 @@ Bu öğreticide, Azure portalı kullanarak şu işlemleri gerçekleştirdiniz:
 Bir Azure dosya paylaşımının yedeğinden geri yüklemek için sonraki makaleye devam edin.
 
 > [!div class="nextstepaction"]
-> [Azure dosya paylaşımlarının yedeğinden geri yükleme](./backup-azure-files.md#restore-from-backup-of-azure-file-share)
+> [Azure dosya paylaşımlarının yedeğinden geri yükleme](restore-afs.md)

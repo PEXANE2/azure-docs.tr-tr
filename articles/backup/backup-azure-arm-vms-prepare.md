@@ -3,12 +3,12 @@ title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: f2954ad2693d7b4f56e3f1b33e804a6936cf8a65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 95c185c09558f3d1a525c9bcf15f3957118c4311
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450141"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294040"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -295,6 +295,18 @@ Azure Backup ağ trafiğine giden erişime izin vermek için Azure Güvenlik Duv
 
 * Azure Güvenlik Duvarı 'Nı dağıtma [hakkında bilgi edinin](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) .
 * [Hakkında bilgi edinin](https://docs.microsoft.com/azure/firewall/fqdn-tags) FQDN etiketleri.
+
+>[!NOTE]
+> Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçmeli disk yedeklemesini ve geri yüklemeyi desteklemektedir.
+>
+>Günümüzde, sanal makine yedekleme çözümünü kullanarak bir VM 'deki tüm disklerin (Işletim sistemi ve veri) yedeklenmesini destekler Azure Backup. Disk dışlama işlevselliğiyle, bir VM 'deki birçok veri diskinden bir veya birkaçını yedekleme seçeneği alırsınız. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve ekonomik bir çözüm sunar. Her kurtarma noktası, yedekleme işlemine dahil edilen disklerin verilerini içerir. Bu, geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesine sahip etmenize olanak tanır. Bu, hem anlık görüntüden hem de kasadan geri yükleme için geçerlidir.
+>
+> Bu çözüm, aşağıdaki senaryolarda özellikle yararlıdır:
+>  
+>1. Yalnızca bir diskte yedeklenecek önemli verileriniz vardır ve bir VM 'ye bağlı olan disklerin geri kalanını yedeklemek istemezsiniz. Bu, yedekleme depolama maliyetlerini en aza indirir.  
+>2. VM verilerinizin bir parçası için başka yedekleme çözümleriniz vardır. Örneğin, veritabanlarını veya verilerinizi farklı bir iş yükü yedekleme çözümüyle yedekletirseniz ve kullanılabilir en iyi özellikleri kullanarak verimli ve sağlam bir sistem oluşturmak için, disklerinizin ve verilerinizin geri kalanı için Azure VM düzeyinde yedekleme 'yi kullanmak istiyorsunuz.
+>
+>Önizlemeye kaydolmak için AskAzureBackupTeam@microsoft.com adresinden bize yazın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

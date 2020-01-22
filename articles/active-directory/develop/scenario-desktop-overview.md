@@ -15,24 +15,24 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 545012629686e1fe3ece8a48ed852542e09e54fe
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b23085e486972ef6a10b3bd2ee86ae1bb1dc3006
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965526"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293326"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran masaüstü uygulaması
 
-Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmak için ihtiyacınız olan tüm hakkında bilgi edinin
+Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmak için ihtiyacınız olan her şey hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="get-started"></a>Kullanmaya Başlayın
 
-Henüz yapmadıysanız, .NET Masaüstü hızlı başlangıcı, UWP hızlı başlangıcı veya macOS yerel uygulaması hızlı başlangıcı ' nı izleyerek ilk uygulamanızı oluşturun:
+Henüz yapmadıysanız, .NET Masaüstü hızlı başlangıcı, Evrensel Windows Platformu (UWP) hızlı başlangıcı veya macOS yerel uygulama hızlı başlangıcı ' nı izleyerek ilk uygulamanızı oluşturun:
 
 > [!div class="nextstepaction"]
 > [Hızlı başlangıç: bir Windows masaüstü uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-windows-desktop.md)
@@ -51,24 +51,24 @@ Bir masaüstü uygulaması yazar ve kullanıcılara oturum açmak ve Microsoft G
 - Etkileşimli belirteç alımı kullanabilirsiniz:
 
   - Masaüstü uygulamanız grafik denetimlerini destekliyorsa (örneğin, bir Windows. form uygulaması, bir WPF uygulaması veya macOS yerel uygulaması).
-  - Bu bir .NET Core uygulamasıdır ve Azure AD ile kimlik doğrulama etkileşiminin sistem tarayıcısında gerçekleşme durumunu kabul etmiş olursunuz.
+  - Ya da bir .NET Core uygulaması ise ve Azure Active Directory (Azure AD) ile ilgili kimlik doğrulama etkileşiminin sistem tarayıcısında gerçekleşme olduğunu kabul ediyorsanız.
 
-- Windows barındırılan uygulamalar için, Windows etki alanına katılmış bilgisayarlarda çalışan uygulamaların veya AAD 'nin tümleşik Windows kimlik doğrulaması kullanarak sessizce bir belirteç almasına katılmış olması de mümkündür.
-- Son olarak, ancak önerilmese de, genel istemci uygulamalarında Kullanıcı adı/parola ' yı kullanabilirsiniz. Bazı senaryolarda (DevOps gibi) hala gereklidir, ancak bunu kullanmanın uygulamanıza kısıtlamalar getirdiğinden emin olun. Örneğin, çok faktörlü kimlik doğrulaması (koşullu erişim) gerçekleştirmesi gereken kullanıcı oturum açamaz. Ayrıca uygulamanız çoklu oturum açma (SSO) özelliğinden yarar olmayacaktır.
+- Windows barındırılan uygulamalar için, bir Windows etki alanına katılmış bilgisayarlarda çalışan uygulamalar veya Azure AD 'ye katılmış bir belirteci, tümleşik Windows kimlik doğrulaması kullanarak sessizce bir belirteç elde etmek için de mümkündür.
+- Son olarak, ancak önerilmese de, genel istemci uygulamalarında bir Kullanıcı adı ve parola kullanabilirsiniz. DevOps gibi bazı senaryolarda hala gereklidir. Bunu kullanarak uygulamanıza kısıtlamalar uygular. Örneğin, çok faktörlü kimlik doğrulaması (koşullu erişim) gerçekleştirmesi gereken bir Kullanıcı oturum açamaz. Ayrıca, uygulamanız çoklu oturum açma özelliğinden (SSO) faydalanır.
 
   Bu, modern kimlik doğrulaması ilkelerine de karşı geçerlidir ve yalnızca eski nedenlerle sağlanır.
 
   ![Masaüstü uygulaması](media/scenarios/desktop-app.svg)
 
-- Taşınabilir bir komut satırı aracı yazıyorsanız (büyük olasılıkla Linux veya Mac üzerinde çalışan bir .NET Core uygulaması) ve kimlik doğrulamasının sistem tarayıcısına verilmiş olmasını kabul ediyorsanız etkileşimli kimlik doğrulaması kullanabilirsiniz. (.NET Core henüz bir [Web tarayıcısı](https://aka.ms/msal-net-uses-web-browser) sağlamıyor ve bu nedenle sistem tarayıcısında kimlik doğrulaması gerçekleşmez), aksi takdirde, bu durumda en iyi seçenek cihaz kodu akışını kullanmaktır. Bu akış, IoT uygulamaları gibi tarayıcı olmayan uygulamalar için de kullanılır
+- Büyük olasılıkla Linux veya Mac üzerinde çalışan bir .NET Core uygulaması olan taşınabilir bir komut satırı aracı yazarsanız ve bu kimlik doğrulamasını kabul ediyorsanız, etkileşimli kimlik doğrulaması kullanabilirsiniz. .NET Core bir [Web tarayıcısı](https://aka.ms/msal-net-uses-web-browser)sağlamıyor, bu nedenle sistem tarayıcısında kimlik doğrulaması gerçekleşmez. Aksi takdirde, bu durumda en iyi seçenek cihaz kodu akışını kullanmaktır. Bu akış, IoT uygulamaları gibi tarayıcı olmayan uygulamalar için de kullanılır.
 
   ![Tarayıcısız uygulama](media/scenarios/device-code-flow-app.svg)
 
 ## <a name="specifics"></a>Özelliklerini
 
-Masaüstü uygulamalarında, genellikle uygulamanızın etkileşimli kimlik doğrulaması kullanıp kullanmadığına bağlı olarak bir dizi karmaşıklık vardır.
+Masaüstü uygulamalarında çok sayıda karmaşıklık vardır. Bunlar, genellikle uygulamanızın etkileşimli kimlik doğrulaması kullanıp kullanmadığına bağlı olarak değişir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Masaüstü uygulaması-uygulama kaydı](scenario-desktop-app-registration.md)
+> [Masaüstü uygulaması: uygulama kaydı](scenario-desktop-app-registration.md)

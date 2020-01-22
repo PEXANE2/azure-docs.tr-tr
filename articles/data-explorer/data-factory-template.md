@@ -8,18 +8,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
-ms.openlocfilehash: ca50a1ecd4d2a21593ddd11f83337ae7476cf916
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 884f4e956b37c2def6c25d0acdf20f15eddf7767
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300438"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293564"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>Azure Data Factory şablonunu kullanarak bir veritabanından Azure Veri Gezgini toplu olarak kopyalama 
 
 Azure Veri Gezgini, hızlı, tam olarak yönetilen bir veri analizi hizmetidir. Uygulamalar, Web siteleri ve IoT cihazları gibi birçok kaynaktan akış yapan büyük birimlerde gerçek zamanlı analizler sunar. 
 
-Azure Data Factory, tam olarak yönetilen, bulut tabanlı bir veri tümleştirme hizmetidir. Bunu, Azure Veri Gezgini veritabanınızı mevcut sisteminizdeki verilerle doldurmak için kullanabilirsiniz. Analiz çözümlerini oluştururken zamandan tasarruf etmenize yardımcı olabilir. 
+Oracle Server, Netezza, Teradata veya SQL Server içindeki bir veritabanından verileri Azure Veri Gezgini kopyalamak için, birden çok tablodan çok büyük miktarlarda veri yüklemeniz gerekir. Genellikle verilerin her tabloda bölümlenmesi gerekir, böylece birden çok iş parçacığı içeren satırları tek bir tablodan paralel olarak yükleyebilirsiniz. Bu makalede, bu senaryolarda kullanılacak bir şablon açıklanmaktadır.
 
 [Azure Data Factory şablonlar](/azure/data-factory/solution-templates-introduction) , işlem hatları Data Factory önceden tanımlanmıştır. Bu şablonlar, Data Factory hızlı bir şekilde başlamanıza ve veri tümleştirme projelerinde geliştirme süresini azaltmanıza yardımcı olabilir. 
 
@@ -30,7 +30,7 @@ Toplu kopyalamayı, *arama* ve *foreach* etkinliklerini kullanarak *veritabanın
 > * SQL Server ve Google BigQuery gibi veritabanlarından büyük miktarda veriyi Azure Veri Gezgini kopyalamak için *veritabanından toplu kopyalama ' yı azure Veri Gezgini* şablonu ' na kullanın. 
 > * Küçük veya orta miktarda veri içeren birkaç tabloyu Azure Veri Gezgini 'e kopyalamak için [*Data Factory veri kopyalama aracını*](data-factory-load-data.md) kullanın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * [Azure Veri Gezgini kümesi ve veritabanı](create-cluster-database-portal.md).
@@ -55,7 +55,7 @@ Kod öğeleri aşağıdaki tabloda açıklanmıştır:
 
 |Özellik  |Açıklama  | Örnek
 |---------|---------| ---------|
-|PartitionID   |  Kopyalama sırası | 1\.  |  
+|PartitionId   |  Kopyalama sırası | 1  |  
 |SourceQuery   |  Ardışık düzen çalışma zamanı sırasında hangi verilerin kopyalanacağını belirten sorgu | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
 |ADXTableName  |  Hedef tablo adı | MyAdxTable       |  
 
@@ -79,7 +79,7 @@ ControlTableDataset, farklı bir biçimde ise, biçimlendirmeniz için karşıla
 
     c. **AzureDataExplorerTable** açılır listesinden Azure Veri Gezgini tablosunu seçin. Veri kümesi yoksa, veri kümesini eklemek için [Azure Veri Gezgini bağlı hizmetini oluşturun](data-factory-load-data.md#create-the-azure-data-explorer-linked-service) .
 
-    d. **Bu şablonu kullan**' ı seçin.
+    d. **Bu şablonu kullan**'ı seçin.
 
     !["Veritabanından Azure 'a toplu kopyalama Veri Gezgini" bölmesi](media/data-factory-template/configure-bulk-copy-adx-template.png)
 

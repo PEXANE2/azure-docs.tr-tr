@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 54ca0df005dccceacc88044a51f31ad784b7071b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1430db34f9c31cbd9d9df921650c628d265bccc5
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763411"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311096"
 ---
 # <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak kredi riskini tahmin etmek için Python betikleri kullanma & bir sınıflandırıcı oluşturma
 
-**Tasarımcı (Önizleme) örnek 4**
+**Tasarımcı örnek 4**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Bu makalede tasarımcı (Önizleme) kullanarak karmaşık makine öğrenimi işlem hattı oluşturma gösterilmektedir. Python betikleri kullanarak özel mantık uygulamayı ve en iyi seçeneği belirlemek için birden çok modeli karşılaştırmayı öğreneceksiniz.
+Bu makalede, Tasarımcıyı kullanarak karmaşık makine öğrenimi işlem hattının nasıl oluşturulacağı gösterilmektedir. Python betikleri kullanarak özel mantık uygulamayı ve en iyi seçeneği belirlemek için birden çok modeli karşılaştırmayı öğreneceksiniz.
 
 Bu örnek kredi geçmişi, yaş ve kredi kartı sayısı gibi kredi uygulama bilgilerini kullanarak kredi riskini tahmin etmek için bir sınıflandırıcının kullanımını sağlar. Ancak, bu makaledeki kavramları uygulayarak kendi makine öğrenimi sorunlarınızı ortadan kaldırabilirsiniz.
 

@@ -1,5 +1,5 @@
 ---
-title: Media Services varlıkların filtrelenmesi, sıralanması ve sayfalama
+title: Media Services v3 varlıklarının filtrelenmesi, sıralanması ve sayfalama
 titleSuffix: Azure Media Services
 description: Azure Media Services varlıkların filtrelenmesi, sıralanması ve sayfalama hakkında bilgi edinin.
 services: media-services
@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 22b8c4e2454d6130ebcaf85346b767c843fbc1f0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: c5ae9839b7bbb86e28c9f8adab0aa0ec5e885087
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186241"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311708"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services varlıkların filtrelenmesi, sıralanması ve sayfalama
 
@@ -45,7 +45,7 @@ Aralık işleçleri:
 - `ge`: bir alanın sabit değere *eşit veya ondan büyük* olup olmadığını test edin.
 - `le`: bir alanın sabit değere *eşit veya ondan küçük* olup olmadığını test edin.
 
-## <a name="filter"></a>Filtre
+## <a name="filter"></a>Filtrele
 
 Yalnızca ilgilendiğiniz nesneleri bulmak için bir OData filtre parametresi sağlamak üzere `$filter` kullanın.
 
@@ -156,7 +156,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 Aşağıdaki tabloda, filtreleme ve sıralama seçeneklerinin farklı varlıklara nasıl uygulanacağı gösterilmektedir:
 
-|Varlık adı|Özellik adı|Filtre|Sipariş verme|
+|Varlık adı|Özellik adı|Filtrele|Sipariş|
 |---|---|---|---|
 |[Varlıklar](https://docs.microsoft.com/rest/api/media/assets/)|ad|`eq`, `gt`, `lt`, `ge`, `le`|`asc` ve `desc`|
 ||properties.alternateId |`eq`||

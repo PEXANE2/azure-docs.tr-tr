@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 285456c87835344aba083c68a7876ecc78d9e45e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 09ae896d26d534d3f9d5651834e181d37581c8f3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270550"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288974"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için Azure Active Directory Tümleştirmesi
 
@@ -90,8 +90,8 @@ Yeni bir Azure AD uygulaması oluşturma hakkında ayrıntılı bilgi için bkz.
 ## <a name="add-api-permissions"></a>API izinleri ekleme
 
 1. **Yönet** bölümünde **API izinleri**' ne tıklayın.
-2. **Izin Ekle** ' ye tıklayın ve **Azure Active Directory Graph** ' ı seçin ve ardından **izinleri**
-3. Aşağıdaki listeden **Kullanıcı** ' yı genişletin ve **Kullanıcı. Read** ' in etkinleştirildiğinden emin olun.
+2. **Izin Ekle** ' ye tıklayın ve ardından **Azure Active Directory grafik** **' i seçin**. 
+3. Aşağıdaki listeden **Kullanıcı** ' yı genişletin ve **Kullanıcı. oku** iznini etkinleştirin. **Kullanıcı. Read** varsayılan olarak etkinleştirilmişse, Kullanıcı. Read **Microsoft Graph** izin *değil* Kullanıcı. Read **Azure Active Directory Graph** **iznine sahip**olduğundan emin **olun.**
 4. Yukarı kaydırın ve **Uygulama izinleri**' ni seçin.
 5. Aşağıdaki listede yer alan **dizini** genişletin ve **dizini etkinleştirin. ReadAll**
 6. Değişiklikleri kabul etmek için **Izin Ekle** ' ye tıklayın.

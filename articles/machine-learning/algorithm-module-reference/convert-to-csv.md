@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 999f78ab08e1a2c9dd6b28d853e49fbb559fab83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0e92201552b4d448a619a801d2ee64032c8bbefe
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493842"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314445"
 ---
 # <a name="convert-to-csv-module"></a>CSV modülüne Dönüştür
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Bir veri kümesini, R veya Python betik modülleriyle yüklenebilen, verilelebilecek veya paylaşılabilen bir CSV biçimine dönüştürmek için bu modülü kullanın.
 
@@ -30,14 +30,14 @@ Azure Machine Learning ' de çalışmalarınızın çoğunu olsanız bile, veri 
 
 + Excel ile açmak veya ilişkisel bir veritabanına içeri aktarmak için CSV dosyasını indirin.  
 + CSV dosyasını bulut depolama alanına kaydedin ve görselleştirmeler oluşturmak için Power BI adresinden bağlanın.  
-+ Verileri R ve Python 'da kullanmak üzere hazırlamak için CSV biçimini kullanın. Doğrudan Python veya Jupyter Not defteri 'nden verilere erişmek için gereken kodu oluşturmak üzere modülün çıktısına sağ tıklayın. 
++ Verileri R ve Python 'da kullanmak üzere hazırlamak için CSV biçimini kullanın. 
 
-Bir veri kümesini CSV 'ye dönüştürdüğünüzde, dosya Azure ML çalışma alanınıza kaydedilir. Azure Storage yardımcı programını kullanarak dosyayı doğrudan açabilir ve kullanabilir veya modül çıktısına sağ tıklayıp CSV dosyasını bilgisayarınıza indirebilir veya R ya da Python kodunda kullanabilirsiniz.  
+Bir veri kümesini CSV 'ye dönüştürdüğünüzde, CSV Azure ML çalışma alanınıza kaydedilir. Azure Storage yardımcı programını kullanarak dosyayı doğrudan açabilir ve kullanabilirsiniz. Ayrıca, **CSV 'ye Dönüştür modülüne Dönüştür** ' i seçip çıktıyı görüntülemek için sağ paneldeki **çıktılar** sekmesinin altındaki histogram simgesini seçin. CSV 'yi sonuçlar klasöründen yerel bir dizine indirebilirsiniz.  
 
 ## <a name="how-to-configure-convert-to-csv"></a>CSV 'ye dönüştürme yapılandırma
 
 
-1.  [CSV 'ye dönüştürme](./convert-to-csv.md) modülüne işlem hattınızı ekleyin. Bu modülü, tasarımcıda **veri biçimi dönüştürmeleri** grubunda bulabilirsiniz. 
+1.  CSV 'ye dönüştürme modülüne işlem hattınızı ekleyin. Bu modülü, tasarımcıda **veri dönüştürme** grubunda bulabilirsiniz. 
 
 2. Veri kümesini çıkaran herhangi bir modüle bağlayın.   
   
@@ -46,14 +46,11 @@ Bir veri kümesini CSV 'ye dönüştürdüğünüzde, dosya Azure ML çalışma 
 ### <a name="results"></a>Sonuçlar
   
 
-[CSV 'ye Dönüştür](./convert-to-csv.md)çıktısına çift tıklayın ve bu seçeneklerden birini belirleyin.  
+**CSV 'ye Dönüştür**' in sağ panelindeki **çıktılar** sekmesini seçin ve **bağlantı noktası çıkışları**altında Bu simgelerden birini seçin.  
 
- + **Sonuç veri kümesi-> indirme**: bir yerel klasöre KAYDEDEBILECEĞINIZ CSV biçimindeki verilerin bir kopyasını hemen açar. Bir klasör belirtmezseniz, varsayılan bir dosya adı uygulanır ve CSV dosyası yerel **indirmeler** kitaplığına kaydedilir.
++ **Veri kümesini kaydet**: simgeyi SEÇIN ve CSV dosyasını ayrı bir veri kümesi olarak YENIDEN Azure ML çalışma alanına kaydedin. Veri kümesi, modül ağacında bir modül olarak veri **kümeleri** bölümünün altında bulunabilir.
 
-
- + **Sonuç veri kümesi-veri kümesi olarak kaydet >** : CSV dosyasını Azure ML çalışma alanına ayrı bir veri kümesi olarak geri kaydeder.
-
- + **Veri erişim kodu oluştur**: Azure ml, verileri Python kullanarak veya R kullanarak erişmeniz için iki kod kümesi oluşturur. Verilere erişmek için kod parçacığını uygulamanıza kopyalayın. (*Veri erişim kodu oluşturma yakında yakında sunulacaktır.* )
+ + **Çıktıyı görüntüle**: göz simgesini seçin ve **Results_dataset** klasöre göz atarak Data. csv dosyasını indirmek için yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

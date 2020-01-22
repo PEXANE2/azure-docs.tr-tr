@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b00948f8d0e1eb8538354a6c16febf81bd4d1f16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b1c167c71907e5f8af1006dfabd8f81ce4425d09
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457373"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291167"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Toplu verileri Azure Dosya Eşitleme geçirme
 Toplu verileri Azure Dosya Eşitleme iki şekilde taşıyabilirsiniz:
@@ -79,7 +79,7 @@ Sunucu, ad alanının ilk eşitlemesini tamamladıkça, Data Box toplu geçiş d
 Artık, maliyetleri kaydetmek için hazırlama paylaşımının temizleyebilmeniz gerekir:
 
 1. **Sunucu uç noktası özellikleri** dikey penceresinde, durum **tamamlandığında** **çevrimdışı veri aktarımını devre dışı bırak**' ı seçin.
-2. Maliyet tasarrufu sağlamak için hazırlama payını silmeyi göz önünde bulundurun. Hazırlama paylaşımında büyük olasılıkla dosya ve klasör ACL 'Leri yoktur, bu nedenle çok yararlı değildir. Yedekleme noktası açısından, [eşitleme Azure dosya paylaşımının gerçek bir anlık görüntüsünü](storage-snapshots-files.md)oluşturun. Bir zamanlamaya göre [anlık görüntü almak için Azure Backup ayarlayabilirsiniz]( ../../backup/backup-azure-files.md) .
+2. Maliyet tasarrufu sağlamak için hazırlama payını silmeyi göz önünde bulundurun. Hazırlama paylaşımında büyük olasılıkla dosya ve klasör ACL 'Leri yoktur, bu nedenle çok yararlı değildir. Yedekleme noktası açısından, [eşitleme Azure dosya paylaşımının gerçek bir anlık görüntüsünü](storage-snapshots-files.md)oluşturun. Bir zamanlamaya göre [anlık görüntü almak için Azure Backup ayarlayabilirsiniz]( ../../backup/backup-afs.md) .
 
 Çevrimdışı veri aktarımı modunu yalnızca durum **tamamlandığında** veya bir yanlış yapılandırma nedeniyle iptal etmek istediğinizde devre dışı bırakın. Dağıtım sırasında modu devre dışı bırakırsanız, hazırlama paylaşımınız hala kullanılabilir olsa bile dosyalar sunucudan karşıya yüklenmeye başlayacaktır.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/28/2019
 ms.author: radeltch
-ms.openlocfilehash: ae2fb4c13633fa2ac22510a98e193bd9f01efb12
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 15abee96f81bca68575d61be1276d4394e9a6f55
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045388"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293819"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler için genel uç nokta bağlantısı
 
@@ -35,7 +35,7 @@ Kümeleme aracılığıyla SAP Çözümleri için yüksek kullanılabilirlik uyg
 
 Standart Azure yük dengeleyici, temel yük dengeleyiciye bazı avantajlar sunmaktadır. Örneğin, Azure kullanılabilirlik bölgelerinde çalışarak, daha kolay sorun giderme ve gecikme süresini azaltmak için daha iyi izleme ve günlüğe kaydetme olanakları sağlar. "HA bağlantı noktaları" özelliği tüm bağlantı noktalarını kapsamakta, diğer bir deyişle, tüm tek bağlantı noktalarını listelemek artık gerekli değildir.  
 
-Azure Yük dengeleyicinin temel ve standart SKU 'SU arasında bazı önemli farklılıklar vardır. Bunlardan biri, giden trafiğin genel uç noktasına işlenmesiyle aynıdır. Tam temel ve standart SKU yük dengeleyici karşılaştırması için bkz. [Load Balancer SKU karşılaştırması](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus).  
+Azure Yük dengeleyicinin temel ve standart SKU 'SU arasında bazı önemli farklılıklar vardır. Bunlardan biri, giden trafiğin genel uç noktasına işlenmesiyle aynıdır. Tam temel ve standart SKU yük dengeleyici karşılaştırması için bkz. [Load Balancer SKU karşılaştırması](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).  
  
 Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyiciye yerleştirildiğinde, ek yapılandırma yapılmadığı takdirde genel uç noktalarına giden bağlantı yok demektir.  
 
@@ -71,14 +71,14 @@ SAP dağıtımınız ortak uç noktalara giden bağlantı gerektirmiyorsa, ek ya
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>İnternet 'e giden bağlantılar için ek dış Azure Standart Load Balancer
 
-Genel uç noktalarına giden bağlantı sağlamak için bir seçenek, genel uç noktasından sanal makineye gelen bağlantıya izin vermeden, ortak IP adresine sahip ikinci bir yük dengeleyici oluşturmak, VM 'Leri ikinci yük dengeleyicinin arka uç havuzuna eklemek ve tanımlamak için yalnızca [giden kuralları](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview).  
+Ortak uç noktalara giden bağlantılara izin vermeden, genel uç noktalarına giden bağlantı sağlamak için bir seçenek, genel IP adresine sahip ikinci bir yük dengeleyici oluşturmak, VM 'Leri ikinci yük dengeleyicinin arka uç havuzuna eklemek ve yalnızca [giden kuralları](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)tanımlamak.  
 VM 'den giden çağrılar için erişilebilen genel uç noktalarını denetlemek için [ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/security-overview) 'nı kullanın.  
 Daha fazla bilgi için belge [giden bağlantılarında](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios)Senaryo 2 ' ye bakın.  
 Yapılandırma şöyle görünür:  
 
 ![Ağ güvenlik gruplarıyla ortak uç noktalara bağlantıyı denetleme](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-public.png)
 
-### <a name="important-considerations"></a>Önemli konular
+### <a name="important-considerations"></a>Önemli noktalar
 
 - Ortak uç noktasına giden bağlantı sağlamak ve maliyeti iyileştirmek için aynı alt ağda birden fazla VM için ek bir genel Load Balancer kullanabilirsiniz  
 - VM 'lerden hangi ortak uç noktaların erişilebilir olduğunu denetlemek için [ağ güvenlik gruplarını](https://docs.microsoft.com/azure/virtual-network/security-overview) kullanın. Ağ güvenlik grubunu alt ağa ya da her bir VM 'ye atayabilirsiniz. Mümkün olduğunda, güvenlik kurallarının karmaşıklığını azaltmak için [hizmet etiketlerini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) kullanın.  
@@ -89,7 +89,7 @@ Yapılandırma şöyle görünür:
 
 ### <a name="deployment-steps"></a>Dağıtım adımları
 
-1. Load Balancer oluştur  
+1. Yük Dengeleyici oluşturma  
    1. [Azure Portal](https://portal.azure.com) , tüm kaynaklar ' a tıklayın, ekleyin ve sonra **Load Balancer** arayın  
    1. **Oluştur**'a tıklayın 
    1. Load Balancer adı **Mypublicilb**  
@@ -129,7 +129,7 @@ Mimari şöyle görünür:
 
 ![Azure Güvenlik Duvarı ile giden bağlantı](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall.png)
 
-### <a name="important-considerations"></a>Önemli konular
+### <a name="important-considerations"></a>Önemli noktalar
 
 - Azure Güvenlik Duvarı, yerleşik yüksek kullanılabilirliğe sahip bulut Yerel hizmetidir ve bu da bölgesel dağıtımını destekler.
 - AzureFirewallSubnet adında olması gereken ek alt ağ gerektirir. 
@@ -173,7 +173,7 @@ Mimari şöyle görünür:
 
 Azure Yönetim API 'SI genel uç noktasına pacemaker çağrılarına izin vermek için proxy kullanabilirsiniz.  
 
-### <a name="important-considerations"></a>Önemli konular
+### <a name="important-considerations"></a>Önemli noktalar
 
   - Zaten şirket proxy 'si varsa, giden çağrıları ortak uç noktalarına yönlendirebilir. Genel uç noktalarına giden çağrılar, kurumsal denetim noktası üzerinden yapılır.  
   - Proxy yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: https://management.azure.com  

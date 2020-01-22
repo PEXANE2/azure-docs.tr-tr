@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 06a88ba1e477054aa6080baa9c9644d4da396442
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73861456edbb7493038fbf2adbf12300d170cab2
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771436"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311057"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak şirket kategorisini tahmin etmek için bir sınıflandırıcı oluşturun.
 
-**Tasarımcı (Önizleme) örnek 7**
+**Tasarımcı örneği 7**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Bu örnek, Azure Machine Learning tasarımcısında metin sınıflandırma işlem hattı oluşturmak için metin analizi modüllerinin nasıl kullanılacağını gösterir (Önizleme).
+Bu örnek, Azure Machine Learning tasarımcısında metin sınıflandırması işlem hattı oluşturmak için metin analizi modüllerinin nasıl kullanılacağını gösterir.
 
 Metin sınıflandırmasının amacı, bir veya daha fazla önceden tanımlanmış sınıfa veya kategoriye bir metin parçası atamaktır. Metin parçası bir belge, Haberler makalesi, arama sorgusu, e-posta, tweet, destek bileti, müşteri geri bildirimi, Kullanıcı ürün incelemesi vb. olabilir. Metin sınıflandırmasının uygulamaları, gazete makalelerini ve haber kullanımı içeriğini konu başlıkları halinde kategorilere ayırır, Web sayfalarını hiyerarşik kategoriler halinde düzenler, istenmeyen e-posta ve yaklaşım analizini filtreleyerek Kullanıcı amacını arama sorgularından tahmin eder, yönlendirme Bilet destekler ve müşteri geri bildirimini analiz edin. 
 

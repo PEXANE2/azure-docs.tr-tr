@@ -16,12 +16,12 @@ ms.author: twhitney
 ms.reviwer: hahamil
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: babbaf75b91dfb870ba5001d23f62c5461a28218
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 70f629af35978771d48d0a29f9ec625628c3b630
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030308"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291269"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android cihazlar için paylaşılan cihaz modu
 
@@ -39,7 +39,7 @@ Paylaşılan cihaz modu, cihazın Microsoft tarafından desteklenen yönetimini 
 Bir paylaşılan cihaz modu uygulaması oluşturmak için, geliştiriciler ve bulut cihaz yöneticileri birlikte çalışır:
 
 - Geliştiriciler tek hesap uygulaması yazar (çoklu hesap uygulamaları paylaşılan cihaz modunda desteklenmez), uygulamanın yapılandırmasına `"shared_device_mode_supported": true` ekler ve paylaşılan cihaz oturumu kapatma gibi şeyleri işlemek için kod yazar.
-- Cihaz yöneticileri, kimlik doğrulayıcı uygulamasını yükleyerek cihazı paylaşıma hazırlayın ve kimlik doğrulayıcı uygulamasını kullanarak cihazı paylaşılan moda ayarlar. Yalnızca [bulut aygıtı yönetici](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#cloud-device-administrator) rolünde olan kullanıcılar, [kimlik doğrulayıcı uygulamasını](https://www.microsoft.com/account/authenticator)kullanarak bir cihazı paylaşılan moda yerleştirebilir. Azure portal kurumsal rollerinizin üyeliğini, **bulut cihaz yöneticisi** > **Azure Active Directory** > **Roller ve yöneticiler** aracılığıyla yapılandırabilirsiniz.
+- Cihaz yöneticileri, kimlik doğrulayıcı uygulamasını yükleyerek cihazı paylaşıma hazırlayın ve kimlik doğrulayıcı uygulamasını kullanarak cihazı paylaşılan moda ayarlar. Yalnızca [bulut aygıtı yönetici](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#cloud-device-administrator) rolünde olan kullanıcılar, [kimlik doğrulayıcı uygulamasını](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview)kullanarak bir cihazı paylaşılan moda yerleştirebilir. Azure portal kurumsal rollerinizin üyeliğini, **bulut cihaz yöneticisi** > **Azure Active Directory** > **Roller ve yöneticiler** aracılığıyla yapılandırabilirsiniz.
 
  Bu makalede öncelikle geliştiricilerin ne düşündüklerini ele alınmaktadır.
 

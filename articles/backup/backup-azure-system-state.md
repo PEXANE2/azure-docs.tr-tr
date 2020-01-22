@@ -1,36 +1,34 @@
 ---
-title: Windows sistem durumunu Azure'da yedekleme
-description: Windows Server ve/veya Windows sistem durumunun dökümünü bilgisayarlar'ı Azure'da yedekleme öğrenin.
-services: backup
-author: saurabhsensharma
-manager: shivamg
-keywords: yedekleme nasıl yapılır; yedekleme; dosya ve klasör yedekleme
-ms.service: backup
+title: Windows sistem durumunu Azure 'a yedekleme
+description: Windows Server ve/veya Windows bilgisayarlarının sistem durumunu Azure 'a yedeklemeyi öğrenin.
+ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.author: saurse
-ms.openlocfilehash: 6d8cbac7eab797662896a96ed588c9d6370cb230
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 847ed8fc5a6c102284a03fa593587792767d7913
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782721"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "76294023"
 ---
-# <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Resource Manager dağıtımında Windows sistem durumu yedekleme
-Bu makalede Windows Server Sistem durumunuzu Azure'a nasıl yedekleyeceğiniz açıklanmaktadır. Bu, size temel işlemler boyunca yol göstermeye yönelik bir öğreticidir.
+# <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Kaynak Yöneticisi dağıtımında Windows sistem durumunu yedekleme
+
+Bu makalede, Windows Server sistem eyaletinizi Azure 'a nasıl yedekleyeceğiniz açıklanmaktadır. Temel bilgiler konusunda size kılavuzluk etmek üzere tasarlanmıştır.
 
 Azure Backup hakkında daha fazla bilgi edinmek istiyorsanız bu [genel bakışı](backup-overview.md) okuyun.
 
 Azure aboneliğiniz yoksa istediğiniz Azure hizmetine erişmenizi sağlayan [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma hizmetleri kasası oluşturma
-Windows Server Sistem durumunuzu için verileri depolamak istediğiniz bölgede bir kurtarma Hizmetleri kasası oluşturmanız gerekir. Ayrıca, depolama alanınızın nasıl çoğaltılmasını istediğinizi belirlemeniz gerekir.
+
+Windows Server sistem durumunu yedeklemek için, verileri depolamak istediğiniz bölgede bir kurtarma hizmetleri Kasası oluşturmanız gerekir. Ayrıca, depolama alanınızın nasıl çoğaltılmasını istediğinizi belirlemeniz gerekir.
 
 ### <a name="to-create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturmak için
-1. Önceden yapmadıysanız Azure aboneliğinizi kullanarak [Azure Portal](https://portal.azure.com/)'da oturum açın.
+
+1. Önceden yapmadıysanız Azure aboneliğinizi kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Hub menüsünde **Tüm hizmetler**'e tıklayın ve kaynak listesinde **Kurtarma Hizmetleri** yazıp **Kurtarma Hizmetleri kasaları** seçeneğine tıklayın.
 
-    ![Kurtarma Hizmetleri Kasası oluşturma 1. adım](./media/backup-azure-system-state/open-rs-vault-list.png) <br/>
+    ![Kurtarma Hizmetleri Kasası oluşturma 1. adım](./media/backup-azure-system-state/open-rs-vault-list.png)
 
     Abonelikte kurtarma hizmetleri kasaları varsa kasalar listelenir.
 3. **Kurtarma Hizmetleri kasaları** menüsünde **Ekle**'ye tıklayın.
@@ -48,10 +46,10 @@ Windows Server Sistem durumunuzu için verileri depolamak istediğiniz bölgede 
 6. **Kaynak grubu** bölümünde:
 
     * bir Kaynak grubu oluşturmak istiyorsanız, **Yeni oluştur**’u seçin.
-    Or
+    Veya
     * **Var olanı kullan**’ı seçin ve açılır menüyü kullanarak mevcut Kaynak gruplarının listesine bakın.
 
-   Kaynak grupları hakkında eksiksiz bilgiler için bkz. [Azure Resource Manager’a genel bakış](../azure-resource-manager/resource-group-overview.md).
+   Kaynak grupları hakkında eksiksiz bilgiler için bkz. [Azure Resource Manager’a genel bakış](../azure-resource-manager/management/overview.md).
 
 7. Kasa için coğrafi bölgeyi seçmek üzere **Konum**'a tıklayın. Bu seçim, yedekleme verilerinizin gönderildiği coğrafi bölgeyi belirler.
 
@@ -64,6 +62,7 @@ Windows Server Sistem durumunuzu için verileri depolamak istediğiniz bölgede 
     Kasanızı Kurtarma Hizmetleri kasaları listesinde gördükten sonra, depolama yedekliliğini ayarlamaya hazır olursunuz.
 
 ### <a name="set-storage-redundancy-for-the-vault"></a>Kasa için depolama artıklığı ayarlama
+
 Kurtarma Hizmetleri kasası oluşturduğunuzda, depolama yedekliliğinin istediğiniz şekilde yapılandırıldığından emin olun.
 
 1. **Kurtarma Hizmetleri kasaları** dikey penceresinden yeni kasaya tıklayın.
@@ -84,9 +83,10 @@ Kurtarma Hizmetleri kasası oluşturduğunuzda, depolama yedekliliğinin istedi�
 
     Varsayılan olarak, kasanız coğrafi olarak yedekli depolamaya sahiptir. Azure'ı birincil yedek depolama uç noktası olarak kullanıyorsanız, **Coğrafi olarak yedekli** seçeneğini kullanmaya devam edin. Azure’u birincil yedek depolama uç noktası olarak kullanmıyorsanız, Azure depolama maliyetlerini azaltan **Yerel olarak yedekli** seçeneğini belirleyin. [Coğrafi olarak yedekli](../storage/common/storage-redundancy-grs.md) ve [yerel olarak yedekli](../storage/common/storage-redundancy-lrs.md) depolama seçenekleri hakkında daha fazla bilgiyi [Depolama yedekliliğine genel bakış](../storage/common/storage-redundancy.md) bölümünden edinebilirsiniz.
 
-Bir kasa oluşturduğunuza göre Windows sistem durumunu yedekleme için yapılandırın.
+Artık bir kasa oluşturduğunuza göre, Windows sistem durumunu yedeklemek için yapılandırın.
 
 ## <a name="configure-the-vault"></a>Kasa yapılandırma
+
 1. Kurtarma Hizmetleri kasası dikey penceresinin (yeni oluşturduğunuz kasa için) Başlarken bölümünde **Yedekle**’ye tıklayın, ardından **Yedeklemeye Başlama** dikey penceresinde **Yedekleme hedefi**’ne tıklayın.
 
     ![Yedekleme hedefi dikey penceresini açma](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
@@ -99,7 +99,7 @@ Bir kasa oluşturduğunuza göre Windows sistem durumunu yedekleme için yapıla
 
     Windows Server veya Windows bilgisayarınız Azure üzerinde olmayan fiziksel bir makine olduğu için **Şirket içi** seçeneğini belirlersiniz.
 
-3. Gelen **neleri yedeklemek istiyorsunuz?** menüsünde, **sistem durumu**, tıklayın **Tamam**.
+3. **Neleri yedeklemek istiyorsunuz?** menüsünde, **sistem durumu**' nu seçin ve **Tamam**' ı tıklatın.
 
     ![Dosya ve klasörleri yedekleme](./media/backup-azure-system-state/backup-goal-system-state.png)
 
@@ -127,11 +127,11 @@ Bir kasa oluşturduğunuza göre Windows sistem durumunu yedekleme için yapıla
 
     ![kasa kimlik bilgilerini indirme](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    Kasa kimlik bilgileri, İndirmeler klasörünüze indirilir. Kasa kimlik bilgilerini indirme tamamlandıktan sonra kimlik bilgilerini açmak veya kaydetmek isteyip istemediğinizi soran bir açılır pencere görüntülenir. **Kaydet**’e tıklayın. Yanlışlıkla **Aç**’a tıklarsanız, kasa kimlik bilgilerini açmaya çalışan iletişim kutusu başarısız olur. Kasa kimlik bilgilerini açamazsınız. Sonraki adıma geçin. Kasa kimlik bilgileri İndirmeler klasöründedir.   
+    Kasa kimlik bilgileri, İndirmeler klasörünüze indirilir. Kasa kimlik bilgilerini indirme tamamlandıktan sonra kimlik bilgilerini açmak veya kaydetmek isteyip istemediğinizi soran bir açılır pencere görüntülenir. **Save (Kaydet)** düğmesine tıklayın. Yanlışlıkla **Aç**’a tıklarsanız, kasa kimlik bilgilerini açmaya çalışan iletişim kutusu başarısız olur. Kasa kimlik bilgilerini açamazsınız. Sonraki adıma geçin. Kasa kimlik bilgileri İndirmeler klasöründedir.
 
     ![kasa kimlik bilgilerini indirme tamamlandı](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
-   > Kasa kimlik bilgilerini yalnızca Windows Aracısı'nı kullanmak istediğiniz sunucu için yerel bir konuma kaydedilmesi gerekir.
+   > Kasa kimlik bilgilerinin yalnızca aracıyı kullanmayı düşündüğünüz Windows Server 'ın yerel bir konumuna kaydedilmesi gerekir.
    >
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
@@ -139,7 +139,7 @@ Bir kasa oluşturduğunuza göre Windows sistem durumunu yedekleme için yapıla
 ## <a name="install-and-register-the-agent"></a>Aracıyı yükleme ve kaydetme
 
 > [!NOTE]
-> Azure portal üzerinden yedeklemeyi etkinleştirme olanağı henüz mevcut değildir. Windows Server sistem durumunu yedekleme için Microsoft Azure kurtarma Hizmetleri Aracısı'nı kullanın.
+> Azure portal üzerinden yedeklemeyi etkinleştirme olanağı henüz mevcut değildir. Windows Server sistem durumunu yedeklemek için Microsoft Azure Kurtarma Hizmetleri aracısını kullanın.
 >
 
 1. İndirilenler klasöründen (veya diğer kayıtlı konumdan) **MARSagentinstaller.exe** dosyasını bulun ve dosyaya çift tıklayın.
@@ -164,15 +164,16 @@ Bir kasa oluşturduğunuza göre Windows sistem durumunu yedekleme için yapıla
 Aracı artık yüklenmiş ve makineniz kasaya kaydedilmiştir. Yedeklemenizi yapılandırıp zamanlamak için hazırsınız.
 
 ## <a name="back-up-windows-server-system-state"></a>Windows Server Sistem Durumunu yedekleme
-İlk yedekleme iki görevleri içerir:
+
+İlk yedekleme iki görevi içerir:
 
 * Yedeklemeyi zamanlama
-* İlk kez sistem durumunu yedekleme
+* Sistem durumunu ilk kez yedekleme
 
 İlk yedeklemeyi tamamlamak için Microsoft Azure Kurtarma Hizmetleri aracısını kullanın.
 
 > [!NOTE]
-> Windows Server 2016'ya kadar Windows Server 2008 R2 sistem durumunu yedekleyebilirsiniz. Sistem durumu, en fazla istemci SKU'larında desteklenmiyor. Sistem durumu, Windows istemcilerini veya Windows Server 2008 SP2 makineler için bir seçenek olarak gösterilmiyor.
+> Windows Server 2008 R2 'de sistem durumu ' nu Windows Server 2016 ' de yedekleyebilirsiniz. Sistem durumu yedeklemesi, istemci SKU 'Larında desteklenmez. Sistem durumu, Windows istemcileri veya Windows Server 2008 SP2 makineleri için bir seçenek olarak gösterilmez.
 >
 >
 
@@ -190,39 +191,43 @@ Aracı artık yüklenmiş ve makineniz kasaya kaydedilmiştir. Yedeklemenizi yap
 
 4. Yedeklenecek Öğeleri Seçin sayfasında **Öğe Ekle**'ye tıklayın.
 
-5. Seçin **sistem durumu** ve ardından **Tamam**.
+5. **Sistem durumu** ' nu seçin ve ardından **Tamam**' a tıklayın.
 
 6. **İleri**’ye tıklayın.
 
-7. Gerekli yedekleme sıklığı ve bekletme ilkesi, sistem durumu yedeklemeleri için ilerleyen sayfalarında seçin.
+7. Sonraki sayfalarda sistem durumu yedeklemeleriniz için gerekli yedekleme sıklığını ve bekletme ilkesini seçin.
 
 8. Onay sayfasında bilgileri gözden geçirin ve ardından **Son**'a tıklayın.
 
 9. Sihirbaz yedekleme zamanlamasını oluşturduktan sonra **Kapat**'a tıklayın.
 
-### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>İlk kez Windows Server sistem durumunu yedekleme
+### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>Windows Server sistem durumunu ilk kez yedeklemek için
 
-1. Windows Server için yeniden başlatma gerektiren bekleyen güncelleştirme olmadığından emin olun.
+1. Windows Server için yeniden başlatma gerektiren bekleyen güncelleştirmeler bulunmadığından emin olun.
 
 2. Kurtarma Hizmetleri aracısında, ağ üzerinden ilk doldurma işlemini tamamlamak için **Şimdi Yedekle**'ye tıklayın.
 
-    ![Windows Server şimdi yedekle](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
+    ![Windows Server Yedekleme şimdi](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. Seçin **sistem durumu** üzerinde **yedekleme öğesi seçin** görünür ve ekran **sonraki**.
+3. Görüntülenen **yedekleme öğesi Seç** ekranında **sistem durumu** ' nu seçin ve **İleri**' ye tıklayın.
 
 4. Onay sayfasında, Şimdi Yedekle Sihirbazı'nın makineyi yedeklemek için kullanacağı ayarları gözden geçirin. Ardından **Yedekle**'ye tıklayın.
 
-4. Sihirbazı kapatmak için **Kapat**'a tıklayın. Yedekleme işlemi tamamlanmadan önce sihirbazı kapatırsanız, sihirbaz arka planda çalışmaya devam eder.
-
+5. Sihirbazı kapatmak için **Kapat**'a tıklayın. Yedekleme işlemi tamamlanmadan önce sihirbazı kapatırsanız, sihirbaz arka planda çalışmaya devam eder.
+    > [!NOTE]
+    > MARS Aracısı, her sistem durumu yedeklemesinden önce ön denetimlerin parçası olarak yalnızca SFC/verifyonly 'yi tetikler. Bu, sistem durumunun bir parçası olarak Yedeklenen dosyaların Windows sürümüne karşılık gelen doğru sürümlere sahip olduğundan emin olmak için gereklidir. [Bu makalede](https://docs.microsoft.com/windows-server/administration/windows-commands/sfc)sistem dosyası DENETLEYICISI (Sfc) hakkında daha fazla bilgi edinin.
+    >
 
 İlk yedekleme tamamlandıktan sonra, Yedekleme konsolunda **İş tamamlandı** durumu görünür.
 
   ![IR tamamlandı](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
 ## <a name="questions"></a>Sorularınız mı var?
+
 Sorularınız varsa veya dahil edilmesini istediğiniz herhangi bir özellik varsa [bize geri bildirim gönderin](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Windows makinelerini yedekleme](backup-configure-vault.md) konusunda daha fazla bilgi edinin.
-* Windows Server Sistem durumunuzu yedeklediğinize göre şunları yapabilirsiniz [kasa ve sunucularınızı yönetmek](backup-azure-manage-windows-server.md).
+* Windows Server sistem durumlarınızı yedeklediğinize göre, [kasalarınızı ve sunucularınızı yönetebilirsiniz](backup-azure-manage-windows-server.md).
 * Bir yedeklemeyi geri yüklemeniz gerekirse [dosyaları bir Windows makinesine geri yüklemek](backup-azure-restore-windows-server.md) için bu makaleyi kullanın.

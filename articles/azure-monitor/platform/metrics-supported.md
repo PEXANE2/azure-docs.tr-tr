@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 67e2675dbf65daf929407a437447f5d977c7a6c3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75750400"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310790"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Izleyici ile desteklenen ölçümler
 
@@ -1299,7 +1299,7 @@ Azure Izleyici, ölçümlerle etkileşimde bulunmak için, portalda grafik oluş
 |Model Dağıtımı başladı|Model Dağıtımı başladı|Sayı|Toplam|Bu çalışma alanında başlatılan model dağıtımı sayısı|Senaryo|
 |Model Dağıtımı başarılı oldu|Model Dağıtımı başarılı oldu|Sayı|Toplam|Bu çalışma alanındaki başarılı olan model dağıtımı sayısı|Senaryo|
 |Model Dağıtımı başarısız oldu|Model Dağıtımı başarısız oldu|Sayı|Toplam|Bu çalışma alanında başarısız olan model dağıtımı sayısı|Senaryo, StatusCode|
-|Toplam düğüm sayısı|Toplam düğüm sayısı|Sayı|Ortalama|Toplam düğüm sayısı. Bu toplam etkin düğümlerin, boştaki düğümlerin, kullanılamayan düğümlerin, önceden ayrılmış düğümlerin bazılarını içerir, düğümleri bırakır|Senaryo, ClusterName|
+|Toplam düğüm sayısı|Toplam düğüm sayısı|Sayı|Ortalama|Toplam düğüm sayısı. Bu toplam etkin düğümlerin, boşta düğümlerin, kullanılamayan düğümlerin, Önkullanılmayan düğümlerin, düğüm dışı düğümlerin bazılarını içerir|Senaryo, ClusterName|
 |Etkin düğümler|Etkin düğümler|Sayı|Ortalama|Acitve düğümlerin sayısı. Bunlar, etkin olarak bir işi çalıştıran düğümlerdir.|Senaryo, ClusterName|
 |Boştaki düğümler|Boştaki düğümler|Sayı|Ortalama|Boştaki düğüm sayısı. Boştaki düğümler, herhangi bir işi çalıştırmayan ancak varsa yeni işi kabul edebilecek düğümlerdir.|Senaryo, ClusterName|
 |Kullanılamayan düğümler|Kullanılamayan düğümler|Sayı|Ortalama|Kullanılamayan düğüm sayısı. Çözümlenebilen bazı sorunlar nedeniyle kullanılamaz düğümler çalışmıyor. Azure bu düğümleri geri dönüştürecek.|Senaryo, ClusterName|

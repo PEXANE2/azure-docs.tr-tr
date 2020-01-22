@@ -1,6 +1,6 @@
 ---
-title: .NET Framework API'ları Azure Event Hubs'a genel bakış | Microsoft Docs
-description: Bazı temel Event Hubs .NET Framework istemci API'leri özeti.
+title: Azure Event Hubs .NET Framework API 'Lerine genel bakış | Microsoft Docs
+description: Bu makale, bazı anahtar Event Hubs .NET Framework istemci API 'Lerinin (Yönetim ve çalışma zamanı) bir özetini sağlar.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -9,22 +9,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: f56882d2d73c85434c6f81972a06e5ea9ccdff99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f67351fa38543504d63dbf8d86c9537feea24a4f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822040"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312626"
 ---
-# <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET Framework API'sine genel bakış
+# <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET Framework API 'ye Genel Bakış
 
-Bu makalede, Azure Event Hubs anahtar bazıları özetlenmektedir [.NET Framework istemci API'leri](https://www.nuget.org/packages/WindowsAzure.ServiceBus/). İki kategorisi vardır: Yönetim ve çalışma zamanı API'ları. Çalışma zamanı API'ları bir ileti gönderip için gereken tüm işlemleri oluşur. Yönetim işlemleri oluşturma, güncelleştirme ve silme varlıklar tarafından bir olay hub'ları varlık durumu yönetmek etkinleştirin.
+Bu makalede bazı anahtar Azure Event Hubs [.NET Framework Istemci API 'leri](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)özetlenmektedir. İki kategori vardır: yönetim ve çalışma zamanı API 'Leri. Çalışma zamanı API 'Leri, ileti göndermek ve almak için gereken tüm işlemlerden oluşur. Yönetim işlemleri varlıkları oluşturarak, güncelleştirerek ve silerek Event Hubs varlık durumunu yönetmenizi sağlar.
 
-[İzleme senaryoları](event-hubs-metrics-azure-monitor.md) hem yönetim hem de çalışma zamanı özellikli. .NET API'ları üzerinde ayrıntılı referans belgeleri için bkz. [.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient), [.NET Standard](/dotnet/api/microsoft.azure.eventhubs), ve [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) başvuruları.
+[İzleme senaryoları](event-hubs-metrics-azure-monitor.md) hem yönetim hem de çalışma zamanına yayılmalıdır. .NET API 'Lerinde ayrıntılı başvuru belgeleri için [.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient), [.NET Standard](/dotnet/api/microsoft.azure.eventhubs)ve [eventprocessorhost API](/dotnet/api/microsoft.azure.eventhubs.processor) başvurularına bakın.
 
 ## <a name="management-apis"></a>Yönetim API’leri
 
-Aşağıdaki yönetim işlemlerini gerçekleştirmek için olmalıdır **Yönet** Event Hubs ad alanı izinlerini:
+Aşağıdaki yönetim işlemlerini gerçekleştirmek için Event Hubs ad alanı üzerinde **Manage** izinleriniz olmalıdır:
 
 ### <a name="create"></a>Create
 
@@ -54,7 +54,7 @@ await namespaceManager.UpdateEventHubAsync(ehd);
 await namespaceManager.DeleteEventHubAsync("event hub name");
 ```
 
-## <a name="run-time-apis"></a>Çalışma zamanı API'ları
+## <a name="run-time-apis"></a>Çalışma zamanı API 'Leri
 ### <a name="create-publisher"></a>Yayımcı oluştur
 
 ```csharp
@@ -62,7 +62,7 @@ await namespaceManager.DeleteEventHubAsync("event hub name");
 var eventHubClient = EventHubClient.Create("event hub name");
 ```
 
-### <a name="publish-message"></a>İleti yayımlama
+### <a name="publish-message"></a>İleti Yayımla
 
 ```csharp
 // Create the device/temperature metric
@@ -81,7 +81,7 @@ data.Properties.Add("Type", "Telemetry_" + DateTime.Now.ToLongTimeString());
 await client.SendAsync(data);
 ```
 
-### <a name="create-consumer"></a>Tüketici oluşturma
+### <a name="create-consumer"></a>Tüketici oluştur
 
 ```csharp
 // Create the Event Hubs client
@@ -100,7 +100,7 @@ var consumer = await defaultConsumerGroup.CreateReceiverAsync(partitionId: index
 var consumer = await defaultConsumerGroup.CreateReceiverAsync(partitionId: index,startingOffset:-1); 
 ```
 
-### <a name="consume-message"></a>İleti kullanma
+### <a name="consume-message"></a>İleti kullan
 
 ```csharp
 var message = await consumer.ReceiveAsync();
@@ -113,9 +113,9 @@ var info = message.GetBytes();
 msg = UnicodeEncoding.UTF8.GetString(info);
 ```
 
-## <a name="event-processor-host-apis"></a>Olay işlemcisi konak API
+## <a name="event-processor-host-apis"></a>Olay Işlemcisi Konağı API 'Leri
 
-Bu API, kullanılabilir çalışanlar arasında bölümler dağıtarak, kullanılamayabilir çalışan işlemleri için esneklik sağlar.
+Bu API 'Ler, kullanılabilir çalışanlar arasında bölümler dağıtarak, kullanılamaz olabilecek çalışan işlemlerine dayanıklılık sağlar.
 
 ```csharp
 // Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
@@ -132,7 +132,7 @@ await host.RegisterEventProcessorAsync<SimpleEventProcessor>();
 await host.UnregisterEventProcessorAsync();
 ```
 
-[Ieventprocessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) arabirimi şu şekilde tanımlanır:
+[Ieventprocessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) arabirimi aşağıdaki gibi tanımlanır:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -184,4 +184,4 @@ Event Hubs senaryoları hakkında daha fazla bilgi almak için aşağıdaki bağ
 .NET API başvuruları şunlardır:
 
 * [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
-* [Microsoft.Azure.EventHubs.EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)
+* [Microsoft. Azure. EventHubs. EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)

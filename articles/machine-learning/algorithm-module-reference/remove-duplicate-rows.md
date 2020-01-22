@@ -9,22 +9,22 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: a0faba895c5717d061bacee2ce724c20464f8150
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91434a5392f37a297e474fedf00fac6b1e4d8362
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497700"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314173"
 ---
 # <a name="remove-duplicate-rows-module"></a>Yinelenen satırları kaldır modülü
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Bir veri kümesinden Potansiyel yinelemeleri kaldırmak için bu modülü kullanın.
 
 Örneğin, verilerinizin aşağıdaki gibi göründüğünü varsayın ve hastalar için birden çok kaydı temsil eder. 
 
-| Hatıd | Harf| Cinsiyet|Yaş|Kabul edilen|
+| Hatıd | Baş harfler| Cinsiyet|Yaş|Kabul edilen|
 |----|----|----|----|----|
 |1|F.M.| M| 53| Oca|
 |2| F.A.M.| M| 53| Oca|
@@ -33,8 +33,8 @@ Bir veri kümesinden Potansiyel yinelemeleri kaldırmak için bu modülü kullan
 |4| F.M.| M| 23| Şub|
 | | F.M.| M| 23| |
 |5| F.A.M.| M| 53| |
-|6| F.A.M.| M| NBir| |
-|7| F.A.M.| M| NBir| |
+|6| F.A.M.| M| NaN| |
+|7| F.A.M.| M| NaN| |
 
 Açık olarak, bu örnekte muhtemelen yinelenen verileri olan birden çok sütun vardır. Gerçekte yinelenen olup olmadıkları, verilerin bilgisine bağlıdır. 
 
@@ -71,7 +71,7 @@ Modülünü çalıştırdığınızda, bir aday veri kümesi oluşturur ve belir
 
 5. İşlem hattını çalıştırma.
 
-6. Sonuçları gözden geçirmek için modüle sağ tıklayın, **sonuçlar veri kümesi**' ni seçin ve **Görselleştir**' e tıklayın. 
+6. Sonuçları gözden geçirmek için modüle sağ tıklayın ve **Görselleştir**' i seçin. 
 
 > [!TIP]
 > Sonuçların anlaşılması zor olursa veya bazı sütunların dikkate alınması gerekiyorsa, [veri kümesindeki sütunları seçme](./select-columns-in-dataset.md) modülündeki sütunları kullanarak sütunu kaldırabilirsiniz.

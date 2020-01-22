@@ -1,6 +1,6 @@
 ---
 title: Apache Spark - Azure olay hub'ları ile tümleştirme | Microsoft Docs
-description: Event Hubs ile yapılandırılmış akış'ı etkinleştirmek için Apache Spark ile tümleştirin
+description: Bu makalede, Event Hubs ile yapılandırılmış akışı etkinleştirmek üzere Apache Spark ile tümleştirme gösterilmektedir.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 605669a740663040ab7a167bf266fe1940123afc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4c4fd74e9123e1310be297a15090433d365d24cf
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343401"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311691"
 ---
 # <a name="integrating-apache-spark-with-azure-event-hubs"></a>Apache Spark Azure Event Hubs ile tümleştirme
 
@@ -29,7 +29,7 @@ Bu makalede, sürekli bir uygulamanın nasıl oluşturulacağını [Azure Databr
 
 Bu makalede bu örnek iki Scala not defterleri kullanır: biri olayları bir event hub'ı ve olayların yeniden gönderilmesi için başka bir akış.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Biri yoksa [ücretsiz bir hesap oluşturma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Bir olay hub'ı örneği. Biri yoksa [oluşturmak](event-hubs-create.md).

@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 854d98a4f2a1b2500bc301d2305c0dd1f27aaaa4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980826"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289535"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -41,11 +41,11 @@ Gereç makinesi bir proxy 'nin arkasındaysa bu durum oluşabilir.
 - Proxy 'ye ihtiyaç duyuyorsa yetkilendirme kimlik bilgilerini sağladığınızdan emin olun.
 - Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 'si kullanıyorsanız, bu URL 'Leri izin verilenler listesine ekleyin:
 
-    - [VMware değerlendirmesi URL 'Leri](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-url-access-requirements)
-    - [Hyper-V değerlendirmesi için URL 'Ler](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#assessment-appliance-url-access)
-    - [VMware aracısız geçişinin URL 'Leri](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-url-access-requirements)
-    - [VMware Aracısı tabanlı geçiş için URL 'ler](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#replication-appliance-url-access)
-    - [Hyper-V geçişi için URL 'Ler](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#migration-hyper-v-host-url-access)
+    - [VMware değerlendirmesi URL 'Leri](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [Hyper-V değerlendirmesi için URL 'Ler](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
+    - [VMware aracısız geçişinin URL 'Leri](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [VMware Aracısı tabanlı geçiş için URL 'ler](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [Hyper-V geçişi için URL 'Ler](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
 
 - İnternet 'e bağlanmak için bir kesintiye uğratan ara sunucu kullanıyorsanız, [Bu adımları](https://docs.microsoft.com/azure/migrate/concepts-collector)kullanarak proxy SERTIFIKASıNı gereç sanal makinesine aktarın.
 

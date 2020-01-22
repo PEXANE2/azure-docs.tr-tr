@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: DocuSign ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: DocuSign ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
 description: Azure Active Directory ve DocuSign arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/02/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f02492dd7c9563c8c0002a63f0b105bd0be8b14
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3022303f319ba7955f80ae0b52783fa9b5d411f2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345577"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290079"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Öğretici: DocuSign ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +32,7 @@ Bu öğreticide, DocuSign 'ı Microsoft Azure Active Directory (Azure AD) ile t�
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure AD 'de uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -49,6 +48,7 @@ Bu öğreticide, aşağıdakileri doğrulamak için bir test ortamında Azure AD
 * DocuSign *, tam zamanında* Kullanıcı sağlamayı destekler.
 
 * DocuSign [Otomatik Kullanıcı sağlamayı](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)destekler.
+* DocuSign 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bir şekilde korunmasını koruyan oturum denetimleri uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>Galeriden DocuSign ekleme
 
@@ -72,7 +72,7 @@ Azure AD SSO 'yu DocuSign ile yapılandırmak ve test etmek için aşağıdaki y
     1. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için [bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user) .
     1. Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere [Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user) .
 1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için [DocuSign SSO 'Yu yapılandırın](#configure-docusign-sso) .
-1. Kullanıcının Azure AD gösterimine bağlı olan DocuSign 'de B. Simon 'ın bir karşılığı oluşturmak için [bir Docusign test kullanıcısı oluşturun](#create-docusign-test-user) .
+    1. Kullanıcının Azure AD gösterimine bağlı olan DocuSign 'de B. Simon 'ın bir karşılığı oluşturmak için [bir Docusign test kullanıcısı oluşturun](#create-docusign-test-user) .
 1. Yapılandırmanın çalıştığını doğrulamak için [test SSO 'su](#test-sso) .
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
@@ -110,7 +110,7 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına **B. Simon**girin.  
-   1. **Kullanıcı adı** alanına `<username>@<companydomain>.<extension>` girin. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına `<username>@<companydomain>.<extension>`girin. Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri unutmayın.
    1. **Oluştur**’u seçin.
 
@@ -190,7 +190,7 @@ Bu bölümde, bu kullanıcının Azure çoklu oturum açmayı kullanabilmesi iç
 
        ![Özel öznitelik eşleme Kullanıcı arabirimi][62]
 
-    i. Azure AD talebine eşlemek istediğiniz alanı seçin. Bu örnekte, **emadresi** talebi `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` değeri ile eşleştirilir. Bu, Azure AD 'den e-posta talebi için varsayılan talep adıdır. **Kaydet**' i seçin.
+    i. Azure AD talebine eşlemek istediğiniz alanı seçin. Bu örnekte, **emadresi** talebi `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`değeriyle eşlenir. Bu, Azure AD 'den e-posta talebi için varsayılan talep adıdır. **Kaydet**' i seçin.
 
        ![Özel öznitelik eşleme alanları][57]
 
@@ -205,12 +205,12 @@ Bu bölümde, bu kullanıcının Azure çoklu oturum açmayı kullanabilmesi iç
 
        ![Kimlik sağlayıcıları/uç noktalar][59]
 
-    girişindeki. DocuSign yönetim portalının **SAML 2,0 uç noktalarını görüntüle** bölümünde şu adımları izleyin:
+    l. DocuSign yönetim portalının **SAML 2,0 uç noktalarını görüntüle** bölümünde şu adımları izleyin:
        1. **Hizmet sağlayıcı verenin URL 'sini**kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **tanımlayıcı** kutusuna yapıştırın.
 
        1. **Hizmet sağlayıcısı oturum açma URL**'sini kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **URL 'yi oturum aç** kutusuna yapıştırın.
 
-       1. **Kapat**' ı seçin.
+       1. **Kapat**’ı seçin.
 
        ![SAML 2,0 uç noktalarını görüntüle][60]
 
@@ -236,6 +236,10 @@ Erişim panelinde DocuSign kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız
 - [Azure AD 'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile DocuSign 'ı deneyin](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Gelişmiş görünürlük ve denetimlerle DocuSign 'ı koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

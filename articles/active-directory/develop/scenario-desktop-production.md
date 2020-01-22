@@ -17,34 +17,34 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe727afcfdec204c92c82c3e695961707af90e65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a07a28837abf2fb6df3dd0583309ec1f3d278a58
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423821"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293496"
 ---
-# <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Web API 'Lerini çağıran masaüstü uygulaması-üretime taşı
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Web API 'Lerini çağıran masaüstü uygulaması: üretime taşı
 
-Bu makalede, Web API 'Lerini üretime çağıran masaüstü uygulamanızı taşımaya yönelik ayrıntılar verilmektedir.
+Bu makalede, Web API 'Lerini üretime çağıran masaüstü uygulamanızı nasıl taşıyacağınızı öğreneceksiniz.
 
-## <a name="handling-errors-in-desktop-applications"></a>Masaüstü uygulamalarında hataları işleme
+## <a name="handle-errors-in-desktop-applications"></a>Masaüstü uygulamalarında hataları işleme
 
-Farklı akışlarda, sessiz akışlar için hataları nasıl işleyeceğinizi öğrendiniz (kod parçacıkları bölümünde gösterildiği gibi). Ayrıca, etkileşimin gerekli olduğu durumlar olduğunu da gördünüz (artımlı izin ve koşullu erişim).
+Farklı akışlarda, kod parçacıkları bölümünde gösterildiği gibi sessiz akışlar için hataları nasıl işleyeceğinizi öğrendiniz. Ayrıca, artan onay ve koşullu erişim bölümünde olduğu gibi, etkileşimin gerekli olduğu durumlar olduğunu da gördünüz.
 
-## <a name="how-to-have--the-user-consent-upfront-for-several-resources"></a>Kullanıcı onayını birkaç kaynağın önüne alma
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>Kullanıcı onayını birkaç kaynağın önüne alma
 
 > [!NOTE]
-> Birkaç kaynağa onay alınması Microsoft Identity platform için geçerlidir, ancak Azure Active Directory (Azure AD) B2C için değildir. Azure AD B2C, Kullanıcı onayını değil yalnızca yönetici onayını destekler.
+> Birkaç kaynağa onay alınması Microsoft Identity platform için geçerlidir ancak Azure Active Directory (Azure AD) B2C için değildir. Azure AD B2C, Kullanıcı onayını değil yalnızca yönetici onayını destekler.
 
-Microsoft Identity platform (v 2.0) uç noktası aynı anda birkaç kaynak için bir belirteç almanıza izin vermez. Bu nedenle, `scopes` parametresi yalnızca tek bir kaynak için kapsam içerebilir. Kullanıcının `extraScopesToConsent` parametresini kullanarak birkaç kaynağa ön onay vererek emin olabilirsiniz.
+Microsoft Identity platform (v 2.0) uç noktası ile aynı anda birkaç kaynak için bir belirteç alamazsınız. `scopes` parametresi yalnızca tek bir kaynak için kapsam içerebilir. Kullanıcının `extraScopesToConsent` parametresini kullanarak birkaç kaynağa ön onay vererek emin olabilirsiniz.
 
-Örneğin, iki kaynağınız varsa, her biri iki kapsamı vardır:
+Örneğin, her biri iki kapsamın bulunduğu iki kaynak olabilir:
 
-- `https://mytenant.onmicrosoft.com/customerapi`-2 kapsam `customer.read` ve `customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`-2 kapsam `vendor.read` ve `vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi` kapsamlar `customer.read` ve `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi` kapsamlar `vendor.read` ve `vendor.write`
 
-`extraScopesToConsent` parametresine sahip `.WithAdditionalPromptToConsent` değiştiricisini kullanmanız gerekir.
+Bu örnekte, `extraScopesToConsent` parametresine sahip `.WithAdditionalPromptToConsent` değiştiricisini kullanın.
 
 Örneğin:
 
@@ -99,17 +99,17 @@ interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
 ```
 
-Bu çağrı size ilk Web API 'SI için bir erişim belirteci alacak.
+Bu çağrı, ilk Web API 'SI için bir erişim belirteci alır.
 
-İkinci Web API 'sini çağırmanız gerektiğinde `AcquireTokenSilent` API 'sini çağırabilirsiniz:
+İkinci Web API 'sini çağırmanız gerektiğinde `AcquireTokenSilent` API 'sini çağırın.
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsenting-each-time-the-app-is-run"></a>Microsoft Kişisel hesabı, uygulamanın her çalıştırılışında reconsenting gerektirir
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Uygulama her çalıştığında Microsoft Kişisel hesabı için reconsent gerekir
 
-Microsoft kişisel hesap kullanıcıları için, yetkilendirmede her bir yerel istemcide (masaüstü/mobil uygulama) onay için yeniden sorma, amaçlanan davranıştır. Yerel istemci kimliği, doğal olarak güvenli olmayan bir şekilde (kimlik kanıtlamaları için Microsoft Identity platformu ile gizli dizi olan gizli bir istemci uygulamasının aksine). Microsoft Identity platformu, uygulamanın her yetkilendirildiği her seferinde kullanıcıdan izin vermesini isteyerek tüketici hizmetleri için bu eksik güvenliği azaltmayı tercih seçti.
+Microsoft kişisel hesap kullanıcıları için, yetkilendirmede her bir yerel istemcide (masaüstü veya mobil uygulama) onay için yeniden sorma, amaçlanan davranıştır. Yerel istemci kimliği, gizli istemci uygulama kimliğinin aksine, doğal olarak güvenli değildir. Gizli istemci uygulamaları, kimlik kanıtlamaları için Microsoft Identity platformu ile gizli dizi değişimi. Microsoft Identity platformu, uygulamanın her yetkilendirildiği her seferinde kullanıcıdan izin vermesini isteyerek tüketici hizmetleri için bu ingüvenliğin azaltılmasına karar verebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

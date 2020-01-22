@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1cf9ce6d57c1e106472caeef6c1f2a4b008a09bd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277867"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293598"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
@@ -26,7 +26,7 @@ ms.locfileid: "76277867"
 
 - Çoklu cihaz konuşması: birden çok cihazı aynı konuşmaya veya metin tabanlı konuşmaya bağlayın ve isteğe bağlı olarak bunlar arasında gönderilen iletileri çevirin. [Bu makalede](multi-device-conversation.md)daha fazla bilgi edinin. 
 - Android. AAR paketi için anahtar sözcük tanıma desteği eklendi ve x86 ve x64 türleri için destek eklendi. 
-- Amaç-C: `Connection` nesnesine eklenen `SendMessage` ve `SetMessageProperty` yöntemleri. [Belgelere bakın](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
+- Amaç-C: `Connection` nesnesine eklenen `SendMessage` ve `SetMessageProperty` yöntemleri. [Belgelere bakın](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxconnection).
 - TTS C++ API 'si artık `std::wstring` birleştirilmiş metin girişi olarak destekler, bu da bir WSTRING 'i SDK 'ya geçirmeden önce dizeye dönüştürme gereksinimini ortadan kaldırır. [Ayrıntılara bakın](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync). 
 - C#: [Dil kimliği](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) ve [kaynak dil yapılandırması](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) artık kullanılabilir.
 - JavaScript: konuşma hizmetinden geri çağırma `receivedServiceMessage`olarak özel iletilerden geçirilecek `Connection` nesnesine bir özellik eklendi.

@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 01/20/2020
+ms.openlocfilehash: bb08cf4db45a378b35a8245eadd56a2ab3e48bab
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819131"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293632"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Azure Veri Gezgini Azure Data Factory ile tümleştirme
 
@@ -44,6 +44,14 @@ Komut etkinliğine ilişkin ayrıntılı bir yol için bkz. [Azure Veri Gezgini 
 ### <a name="copy-in-bulk-from-a-database-template"></a>Veritabanı şablonundan toplu olarak Kopyala
 
 [Bir veritabanından Azure Veri Gezgini Azure Data Factory şablonu kullanılarak toplu kopyalama](data-factory-template.md) , önceden tanımlanmış bir Azure Data Factory işlem hattı olur. Şablon, daha hızlı veri kopyalama için veritabanı başına veya tablo başına çok sayıda işlem hattı oluşturmak için kullanılır. 
+
+### <a name="mapping-data-flows"></a>Veri akışlarını eşleme 
+
+[Azure Data Factory eşleme veri akışları](/azure/data-factory/concepts-data-flow-overview) , veri mühendislerinin kod yazmadan grafik veri dönüştürme mantığı geliştirmesini sağlayan görsel olarak tasarlanan veri dönüştürmelerdir. Veri akışı oluşturmak ve Azure Veri Gezgini veri almak için aşağıdaki yöntemi kullanın:
+
+1. [Eşleme veri akışı](/azure/data-factory/data-flow-create)oluşturun.
+1. [Verileri Azure Blob 'A aktarın](/azure/data-factory/data-flow-sink). 
+1. Verileri Azure Veri Gezgini almak için [Event Grid](/azure/data-explorer/ingest-data-event-grid) veya [ADF kopyalama etkinliği](/azure/data-explorer/data-factory-load-data) tanımlayın.
 
 ## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>Veri kopyalama sırasında Kopyala ve Azure Veri Gezgini komut etkinlikleri arasında seçim yapın 
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 4bc2e67d276deeea01989ed76be7352ce27abd71
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280824"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288973"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Değerlendirme için aracısız bağımlılık görselleştirmesini ayarlama
 
@@ -87,10 +87,10 @@ Hesabı aşağıdaki gibi ekleyin:
 
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
 2. **Bağımlılık Analizi** simgesine tıklayın.
-3. **Bağımlılık bulmayı Başlat**' a tıklayın.
-3. **Bağımlılık bulmayı Başlat** sayfasında, ilgili makineleri bulan gereci seçin.
+3. **Sunucu Ekle**' ye tıklayın.
+3. **Sunucu Ekle** sayfasında, ilgili makineleri bulan gereci seçin.
 4. Makine listesinden makineleri seçin.
-5. **Bağımlılık bulmayı Başlat**' a tıklayın.
+5. **Sunucu Ekle**' ye tıklayın.
 
     ![Bağımlılık bulmayı Başlat](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -123,10 +123,10 @@ Bağımlılık bulmayı başlattıktan sonra 6 saat bağımlılıklarını görs
 
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
 2. **Bağımlılık Analizi** simgesine tıklayın.
-3. **Bağımlılık bulmayı durdur**' a tıklayın.
-3. **Bağımlılık bulmayı durdur** **sayfasında, bağımlılık** bulmayı durdurmak Için bakaplanladığınız VM 'leri bulan gereci seçin.
+3. **Sunucuları kaldır**' a tıklayın.
+3. **Sunucuları kaldır** sayfasında, bağımlılık bulmayı durdurmayı planladığınız VM 'leri bulmak **için gereken gereci** seçin.
 4. Makine listesinden makineleri seçin.
-5. **Bağımlılık bulmayı durdur** ' a tıklayın
+5. **Sunucuları kaldır**' a tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

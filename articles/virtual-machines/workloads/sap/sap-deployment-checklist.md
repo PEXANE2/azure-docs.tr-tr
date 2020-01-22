@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/08/2019
+ms.date: 01/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3a424c142fbfcbfe5e4c1802f3ba61da655f77f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 56b78f4296709206cefb762c87d4d1471bff2df7
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896026"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291524"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -53,7 +53,7 @@ Bu aşamada, SAP iş yükünüzün geçişini Azure platformuna planlarsınız. 
         - SAP HANA desteklenen Azure VM 'Leri ve [Hana büyük örnekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) [SAP web sitesinde](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)listelenmiştir.
         - [SAP ürün kullanılabilirliği matrisi](https://support.sap.com/en/).
         - SAP 'ye özgü diğer ürünler için SAP notları.     
-    - SAP üretim sistemleri için katı üç katmanlı tasarımlar yapmanızı öneririz. Bir VM 'de yoks ve uygulama sunucularının birleştirilmesinin önerilmemektedir. SAP Merkezi Hizmetleri için çok SID küme yapılandırmalarının kullanılması, Azure 'daki Windows Konuk işletim sistemlerinde desteklenir. Ancak bu yapılandırma, Azure 'da Linux işletim sistemlerindeki SAP Merkezi Hizmetleri için desteklenmez. Windows Konuk işletim sistemi senaryosuna yönelik belgeleri şu makalelerde bulabilirsiniz:
+    - SAP üretim sistemleri için katı üç katmanlı tasarımlar yapmanızı öneririz. Bir VM 'de yoks ve/veya DBMS ve/veya uygulama sunucularının birleştirilmesi önerilmez. SAP Merkezi Hizmetleri için çok SID küme yapılandırmalarının kullanılması, Azure 'daki Windows Konuk işletim sistemlerinde desteklenir. Ancak bu yapılandırma, Azure 'da Linux işletim sistemlerindeki SAP Merkezi Hizmetleri için desteklenmez. Windows Konuk işletim sistemi senaryosuna yönelik belgeleri şu makalelerde bulabilirsiniz:
         - [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve paylaşılan disk ile Azure üzerinde çok düzeyli yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
         - [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve dosya paylaşımıyla Azure 'da yüksek oranda kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
     - Yüksek kullanılabilirlik ve olağanüstü durum kurtarma mimarisi.
@@ -135,7 +135,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
         - SAP Merkezi Hizmetleri ve DBMS için yüksek kullanılabilirliğe ihtiyacınız yoksa, bu VM 'Leri SAP uygulama katmanıyla aynı Kullanılabilirlik kümesine dağıtabilirsiniz.
         - Pasif çoğaltma kullanarak yüksek kullanılabilirlik için SAP merkezi hizmetlerini ve DBMS katmanını koruduğunuzda, SAP Merkezi Hizmetleri için iki düğümü ayrı bir kullanılabilirlik kümesine ve farklı bir kullanılabilirlik kümesindeki iki DBMS düğümüne yerleştirin.
         - Azure Kullanılabilirlik Alanları dağıtırsanız, kullanılabilirlik kümelerini kullanamazsınız. Ancak, etkin ve pasif Merkezi Hizmetler düğümlerini iki farklı Kullanılabilirlik Alanları dağıttığınızdan emin olmanız gerekir. Aralarında en düşük gecikme süresine sahip Kullanılabilirlik Alanları kullanın.
-          DBMS ve SAP Merkezi Hizmetler katmanı için Kullanılabilirlik Alanları üzerinde Windows veya Paceyapıcısı yük devretme kümeleri oluşturma durumu için [Azure Standart Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) kullanmanız gerektiğini unutmayın. Bölgesel dağıtımları için [temel Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) kullanamazsınız.
+          DBMS ve SAP Merkezi Hizmetler katmanı için Kullanılabilirlik Alanları üzerinde Windows veya Paceyapıcısı yük devretme kümeleri oluşturma durumu için [Azure Standart Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) kullanmanız gerektiğini unutmayın. Bölgesel dağıtımları için [temel Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) kullanamazsınız.
    5. Zaman aşımı ayarları.
         - Sıraya alma sunucusu ve SAP iş işlemleriyle bağlantı kesmesi olmadığından emin olmak için SAP örneklerinin SAP NetWeaver geliştirici izlemelerini denetleyin. Bu iki kayıt defteri parametresini ayarlayarak bu bağlantı kesilmesinden kaçınabilirsiniz:
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000. Daha fazla bilgi için bkz. [KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)).

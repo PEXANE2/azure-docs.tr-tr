@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 828301724dae58437f7818668cd0be879ae2ac70
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497966"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314190"
 ---
 # <a name="decision-forest-regression-module"></a>Karar ormanı gerileme modülü
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Karar ağaçlarının bir listesini temel alan bir regresyon modeli oluşturmak için bu modülü kullanın.
 
@@ -38,7 +38,7 @@ Karar ağaçları şu avantajları sunar:
 
 Bu regresyon modeli, karar ağaçlarının bir listesini içerir. Regresyon kararı ormanındaki her bir ağaç, bir tahmin olarak bir Gauss dağılımı çıktı. Modeldeki tüm ağaçlar için Birleşik dağıtıma en yakın bir Gauss dağılımı bulmak üzere ağaçları bir toplama işlemi gerçekleştirilir.
 
-Bu algoritmanın ve uygulamanın teorik çerçevesi hakkında daha fazla bilgi için şu makaleye bakın: [karar verme ormanları: sınıflandırma, gerileme, yoğunluk tahmini, bildirim açısından eski öğrenme ve yarı denetimli öğrenme Için Birleşik bir çerçeve ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Bu algoritmanın ve uygulamanın teorik çerçevesi hakkında daha fazla bilgi için şu makaleye bakın: [karar verme ormanları: sınıflandırma, gerileme, yoğunluk tahmini, bildirim açısından eski öğrenme ve yarı denetimli öğrenme Için Birleşik bir çerçeve](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Karar ormanı regresyon modelini yapılandırma
 
@@ -88,11 +88,7 @@ Bu algoritmanın ve uygulamanın teorik çerçevesi hakkında daha fazla bilgi i
 
 Eğitim tamamlandıktan sonra:
 
-+ Her yinelemede oluşturulan ağacı görmek için eğitim modülünün çıktısına sağ tıklayın ve **Görselleştir**' i seçin.
-
-+ Her bir düğümün kurallarını görmek için her bir ağaca tıklayın ve bölünmeleri inceleyin.
-
-+ Eğitilen modelin anlık görüntüsünü kaydetmek için eğitim modülünün çıktısına sağ tıklayın ve **eğitilen model olarak kaydet**' i seçin. Modelin bu kopyası, ardışık düzenin art arda çalıştırmaları üzerinde güncelleştirilmedi. 
++ Eğitilen modelin anlık görüntüsünü kaydetmek için eğitim modülünü seçin ve sağ paneldeki **çıktılar** sekmesine geçin. Simge **kayıt modeline**tıklayın.  Kaydedilmiş modeli modül ağacında bir modül olarak bulabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 69ae6766414dbe533500860b01852ee8d25c3a1e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2148c6c8c9d78355847b3240b54349f1e7789921
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513919"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291388"
 ---
 # <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Azure Kubernetes hizmeti (AKS) tanılamaları genel bakış
 
@@ -26,7 +26,7 @@ AKS tanılama 'ya erişmek için:
 - Sol gezinti bölmesinde, AKS tanılamayı açan **sorunları Tanıla ve çöz** ' e tıklayın.
 - Giriş sayfası kutucuğunda anahtar sözcükleri kullanarak kümenizin sorununu en iyi açıklayan bir kategori seçin veya arama çubuğunda sorununuzu en iyi açıklayan bir anahtar sözcük yazın, örneğin _küme düğümü sorunları_.
 
-![Değiştirir](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
+![Giriş sayfası](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
 ## <a name="view-a-diagnostic-report"></a>Tanılama raporunu görüntüle
 
@@ -76,7 +76,7 @@ Kimlik ve güvenlik yönetimi, kümenizin iletişimini engelleyebilecek kimlik d
 
 - Düğüm yetkilendirme sorunları
 - 401 hata
-- 403 hata
+- 403 hataları
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

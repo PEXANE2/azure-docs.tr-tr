@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6a77fa8c6c48c9c3d4f2eba3ba56ac9114707a
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 528aff73b931776ef9a6542437db271bb214c7fb
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122996"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290708"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Uygulamalara onayı yönetme ve izin isteklerini değerlendirme
 
@@ -42,7 +42,7 @@ Son Kullanıcı izni devre dışı bırakıldıktan veya kısıtlandıktan sonra
 
 3. Kuruluşunuzun uygun lisansı varsa:
 
-    * Microsoft Cloud App Security ek [OAuth uygulama denetimi özellikleri](https://docs.microsoft.com/azure/cloud-app-security/investigate-risky-oauth)kullanın.
+    * Microsoft Cloud App Security ek [OAuth uygulama denetimi özellikleri](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)kullanın.
     * [İzinleri ve onayı ilgili etkinlikleri izlemek Için Azure Izleyici çalışma kitaplarını](../reports-monitoring/howto-use-azure-monitor-workbooks.md) kullanın. *Onay öngörüleri* çalışma kitabı, başarısız izin istekleri sayısına göre uygulamaların bir görünümünü sağlar. Bu, yöneticilerin Yöneticiler için izin vermesini ve BT yöneticilerine yönetici izni verip vermeyeceğine karar vermesini sağlamak için yararlı olabilir.
 
 ### <a name="additional-considerations-for-reducing-friction"></a>Uçuşmayı azaltmaya yönelik ek konular

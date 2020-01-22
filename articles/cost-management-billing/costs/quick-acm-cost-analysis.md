@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 0221930f0b9fff0c9d4e398559f8d12999a66e91
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987568"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294159"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Hızlı başlangıç: maliyet analizi ile maliyetleri araştırma ve analiz etme
 
@@ -138,24 +138,29 @@ Tüm görünüm için tam veri kümesini görüntüleyebilirsiniz. Uyguladığı
 
 Aşağıdaki tabloda, en yaygın gruplandırma ve filtreleme seçeneklerinin bazıları ve ne zaman kullanmanız gerektiği listelenmektedir.
 
-| Özellik | Kullanılması gereken durumlar |
-| --- | --- |
-| **Fatura dönemi** | Maliyetleri fatura ayına göre bölün. Bu seçenek, takvim ayları ile bağlantılı olmayan Kullandıkça öde ve geliştirme/test abonelikleri için önemlidir. EA/MCA hesapları, aynı hedefi gerçekleştirmek için tarih seçicide veya aylık ayrıntı düzeyinde takvim ayları kullanabilir. |
-| **Ücret türü** | Kullanım, satın alma, iade ve kullanılmayan rezervasyon maliyetlerini kesin. Rezervasyon satın alımları ve para iadesi yalnızca, işlem maliyetleri kullanılırken, itfası maliyeti kullanılırken kullanılabilir. Kullanılmayan rezervasyon maliyetleri yalnızca itfası maliyetlerine bakmaya hazır olduğunda kullanılabilir. |
-| **Bulut** | AWS ve Azure 'un maliyetlerini azaltın. AWS maliyetleri yalnızca yönetim gruplarından, dış faturalandırma hesaplarından ve dış aboneliklerden kullanılabilir. |
-| **Departman** / **Fatura bölümü** | Maliyetleri EA Departmanı veya MCA Invoice bölümüne göre bölün. Bu seçenek yalnızca EA/MCA faturalandırma hesapları ve MCA faturalandırma profilleri için kullanılabilir. |
-| **Kayıt hesabı** | Maliyetleri EA hesap sahibine göre bölün. Bu seçenek yalnızca EA faturalandırma hesapları ve departmanları için kullanılabilir. |
-| **Sıklık** | Kullanım tabanlı, bir kerelik ve yinelenen maliyetleri kesin. |
-| **Si** | Azure kullanım ölçünün maliyetlerini azaltın. Bu seçenek yalnızca Azure kullanımı için kullanılabilir. Tüm satın alma ve Market kullanımı **belirtilmemiş** veya **atanmamış**olarak gösterilir. |
-| **Yayımcı türü** | AWS, Azure ve Market maliyetlerini bölün. |
-| **La** | Maliyetleri rezervasyona göre bölün. Ayırma içermeyen kullanımlar **belirtilmemiş**olarak gösterilir. |
-| **Kaynak** | Maliyetleri kaynağa göre bölün. Her satın alma, bir EA/PAYG faturalandırma hesabında veya MCA Faturalandırma profili düzeyinde uygulandığından, **belirtilen**şekilde görünür.  |
-| **Kaynak grubu** | Maliyetleri kaynak grubuna göre bölün. Bu seçenek yalnızca klasik olmayan kullanım için kullanılabilir. Klasik kaynak kullanımı **diğer**gibi görünür ve satın alma işlemleri **belirtilmemiş**olarak gösterilir. |
-| **Kaynak türü** | Maliyetleri kaynak türüne göre bölün. Bu seçenek yalnızca klasik olmayan kullanım için kullanılabilir. Klasik kaynak kullanımı **diğer**gibi görünür ve satın alma işlemleri **belirtilmemiş**olarak gösterilir. |
-| **Hizmet adı** veya **ölçüm kategorisi** | Azure hizmeti 'nin maliyetini azaltın. Bu seçenek yalnızca Azure kullanımı için kullanılabilir. Tüm satın alma ve Market kullanımı **belirtilmemiş** veya **atanmamış**olarak gösterilir. |
-| **Hizmet katmanı** veya **ölçüm alt kategorisi** | Azure kullanım ölçümü alt sınıflandırmasına göre maliyeti sonlandırın. Bu seçenek yalnızca Azure kullanımı için kullanılabilir. Tüm satın alma ve Market kullanımı **belirtilmemiş** veya **atanmamış**olarak gösterilir. |
-| **Abonelik** | Maliyetleri aboneliğe göre bölün. Tüm satın alımlar **belirtilmemiş**olarak gösterilir. |
-| **Tag** | Belirli bir etiket anahtarı için etiket değerlerine göre maliyetleri bölün. |
+| Özellik | Kullanılması gereken durumlar | Notlar |
+| --- | --- | --- |
+| **Kullanılabilirlik alanları** | AWS maliyetlerini kullanılabilirlik bölgesine göre bölün. | Yalnızca AWS kapsamları ve yönetim grupları için geçerlidir. Azure verileri kullanılabilirlik bölgesini içermez ve **geçerli değil**olarak gösterilir. |
+| **Fatura dönemi** | PAYG maliyetlerini, oldukları aya göre (veya olacak şekilde) bölün. | Faturalanmış PAYG ücretlerinden oluşan doğru bir gösterimi almak için **faturalandırma dönemini** kullanın. Özel bir tarih aralığına filtrelendiğinde faturalandırma süresinden önce ve sonra 2 ekstra gün dahil edin. Tam fatura dönemi tarihleri arasındaki sınırlama faturayla eşleşmez. , Fatura dönemindeki tüm faturaların maliyetlerini gösterir. Belirli bir faturaya filtre uygulamak için **Fatura kimliği** ' ni kullanın. Yalnızca, EA ve MCA takvim aylara göre faturalandırılacağından PAYG abonelikleri için geçerlidir. EA/MCA hesapları, aynı hedefi gerçekleştirmek için tarih seçicide veya aylık ayrıntı düzeyinde takvim ayları kullanabilir. |
+| **Ücret türü** | Kullanım, satın alma, iade ve kullanılmayan rezervasyon maliyetlerini kesin. | Rezervasyon satın alımları ve para iadesi, yalnızca gerçek maliyetler kullanılırken, itfası maliyeti kullanılırken kullanılabilir. Kullanılmayan rezervasyon maliyetleri yalnızca itfası maliyetlerine bakmaya hazır olduğunda kullanılabilir. |
+| **Department** | EA departmanına göre maliyetleri bölün. | Yalnızca EA ve yönetim grupları için kullanılabilir. PAYG aboneliklerinin departmanı yoktur ve **geçerli değil** veya **atanmamış**olarak gösterilir. |
+| **Kayıt hesabı** | Maliyetleri EA hesap sahibine göre bölün. | Yalnızca EA faturalandırma hesapları, departmanlar ve yönetim grupları için kullanılabilir. PAYG aboneliklerinin EA kayıt hesapları yoktur ve **geçerli değil** veya **atanmamış**olarak gösterilir. |
+| **Sıklık** | Kullanım tabanlı, bir kerelik ve yinelenen maliyetleri kesin. | |
+| **Fatura KIMLIĞI** | Ücretleri faturalandırılan faturaya göre bölün. | Faturalandırılmamış ücretler henüz fatura KIMLIĞINE sahip değildir ve EA maliyetlerinde fatura ayrıntıları yoktur ve **geçerli değil**olarak gösterilir.  |
+| **Si** | Kullanım ölçerlerine göre maliyetleri bölün. | Satın alma ve Market kullanımı, **geçerli değil**olarak gösterilir. Market ücretlerini tanımlamak üzere satın alımları ve **Yayımcı türünü** belirlemek için **ücret türü** ' ne bakın. |
+| **İşlem** | AWS maliyetlerini işleme göre bölün. | Yalnızca AWS kapsamları ve yönetim grupları için geçerlidir. Azure verileri işlem içermez ve bunun yerine **ölçüm** kullanın. |
+| **Fiyatlandırma modeli** | İsteğe bağlı, rezervasyon veya spot kullanım için maliyetleri azaltın. | Satın alımlarda **OnDemand**olarak gösterilir. **Geçerli değil**' i görürseniz, kullanımın rezervasyona göre mi yoksa isteğe bağlı kullanım ve satın alma işlemleri için mi olduğunu **belirlemek için** **rezervasyona** göre gruplandırın.
+| **Sağlayıcı** | AWS ve Azure 'un maliyetlerini azaltın. | Yalnızca yönetim grupları için kullanılabilir. |
+| **Yayımcı türü** | AWS, Azure ve Market maliyetlerini bölün. |  |
+| **La** | Maliyetleri rezervasyona göre bölün. | Bir rezervasyon ile ilişkilendirilmemiş herhangi bir kullanım veya satın alma, **geçerli değil**olarak gösterilir. Diğer Azure, AWS veya Market satın alımlarını belirlemek için **Yayımcı türüne** göre gruplandırın. |
+| **Kaynak** | Maliyetleri kaynağa göre bölün. | Satın alma işlemleri, bir EA/PAYG faturalandırma hesabında veya MCA Faturalandırma profili düzeyinde uygulandığından ve belirli bir kaynakla ilişkilendirilmediği için **geçerli değil**olarak gösterilir. Diğer Azure, AWS veya Market satın alımlarını belirlemek için **Yayımcı türüne** göre gruplandırın. |
+| **Kaynak grubu** | Maliyetleri kaynak grubuna göre bölün. | Satın alma işlemleri, abonelikler ile ilişkilendirilmemiş kiracı kaynakları, bir kaynak grubuna dağıtılmamış abonelik kaynakları ve Klasik kaynaklarda bir kaynak grubu yoktur ve **Bunlar,** **klasik hizmetler**, **$System**veya **geçerli değildir**. |
+| **Kaynak türü** | Maliyetleri kaynak türüne göre bölün. | Satın alımlarda ve klasik hizmetlerde Azure Resource Manager kaynak türü yoktur ve bunlar, **Klasik hizmetler**veya **geçerli değil** **olarak gösterilir**. |
+| **Kaynak konumu** | Maliyetleri konuma veya bölgeye göre bölün. | Satın alımlar ve Market kullanımı **atanmamış**, **bilinmiyor**, **eşlenmemiş**veya **geçerli değil**olarak görüntülenebilir. |
+| **Hizmet adı** veya **ölçüm kategorisi** | Azure hizmeti 'nin maliyetini azaltın. | Satın alma ve Market kullanımı, **uygulanabilir değil** veya **atanmamış**olarak gösterilir. |
+| **Hizmet katmanı** veya **ölçüm alt kategorisi** | Azure kullanım ölçümü alt sınıflandırmasına göre maliyeti sonlandırın. | Satın alma ve Market kullanımı, **uygulanabilir değil** veya **atanmamış**olarak gösterilir. |
+| **Abonelik** | Maliyetleri Azure aboneliğine ve AWS bağlantılı hesabına göre bölün. | Satın alımlarınız ve kiracı kaynakları **geçerli değil**olarak görüntülenmeyebilir. |
+| **Tag** | Belirli bir etiket anahtarı için etiket değerlerine göre maliyetleri bölün. | Etiketler, satın alma işlemleri, abonelikler ile ilişkilendirilmemiş kiracı kaynakları, bir kaynak grubuna dağıtılmamış abonelik kaynakları veya klasik kaynaklar için kullanılamaz. Not Bazı hizmetlerde kullanım verilerine Etiketler dahil değildir. [Her kaynak türü için Etiketler desteği](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support)hakkında daha fazla bilgi edinin. |
 
 Şartlar hakkında daha fazla bilgi için bkz. [Azure kullanımı ve ücretler dosyasında kullanılan koşulları anlayın](../understand/understand-usage.md).
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2019
 ms.author: memildin
-ms.openlocfilehash: fdcaaa981246e86e5b87b4af3c9a6e8c597ced25
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 686b8bedfeb4ae5e1b2b7bf3b750b51074677990
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553312"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288991"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri-bir başvuru kılavuzu
 
@@ -27,11 +27,10 @@ Bu önerilere yanıt verme hakkında bilgi edinmek için bkz. [Azure Güvenlik M
 
 Güvenli puanınız, kaç Güvenlik Merkezi önerisi azaldığından temel alır. İlk çözümleme önerilerini önceliklendirmek için, her birinin önem derecesini göz önünde bulundurun.
 
-## <a name="azure-security-center-recommendations"></a>Azure Güvenlik Merkezi önerileri
+## <a name="recs-network"></a>Ağ önerileri
 
-||Açıklama & ilgili ilke|Önem Derecesi|Hızlı düzelme etkin mi? ([Daha fazla bilgi](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Kaynak türü|
+|Öneri|Açıklama & ilgili ilke|Önem Derecesi|Hızlı düzelme etkin mi? ([Daha fazla bilgi](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Kaynak türü|
 |----|----|----|----|----|
-||<a name="recs-network"></a><h3>Ağ önerileri-ağınızın topolojisi ve internet 'e yönelik uç noktalar ile ilgili|
 |**Tam zamanında ağ erişim denetimi, sanal makinelere uygulanmalıdır**|Tam zamanında (JıT) sanal makine (VM) erişim denetimi uygulayarak seçili bağlantı noktalarına erişimi kalıcı olarak kilitler ve yetkili kullanıcıların bunları JıT aracılığıyla yalnızca sınırlı bir süre için açmasını sağlayın.<br>(İlgili ilke: tam zamanında ağ erişim denetimi sanal makinelere uygulanmalıdır)|Yüksek|N|Sanal makine|
 |**Alt ağ düzeyindeki ağ güvenlik grupları etkinleştirilmelidir**|Alt ağlarınızda dağıtılan kaynakların ağ erişimini denetlemek için ağ güvenlik grupları 'nı etkinleştirin.<br>(İlgili ilke: alt ağların bir ağ güvenlik grubuyla ilişkilendirilmesi gerekir)|Yüksek/orta|N|Alt ağ|
 |**Sanal makineler bir ağ güvenlik grubuyla ilişkilendirilmelidir**|Sanal makinelerinizin ağ erişimini denetlemek için ağ güvenlik grupları 'nı etkinleştirin.<br>(İlgili ilke: sanal makinelerin bir ağ güvenlik grubuyla ilişkilendirilmesi gerekir)|Yüksek/orta|N|Sanal makine|
@@ -44,7 +43,25 @@ Güvenli puanınız, kaç Güvenlik Merkezi önerisi azaldığından temel alır
 |**Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır**|Web uygulamaları için "yalnızca HTTPS" erişimini etkinleştirin. HTTPS kullanımı, sunucu/hizmet kimlik doğrulamasını sağlar ve ağ katmanı gizlice dinleme saldırılarına karşı geçiş sırasında verileri korur.<br>(İlgili ilke: Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır)|Orta|**Y**|Web uygulaması|
 |**İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır**|İşlev uygulamaları için "yalnızca HTTPS" erişimini etkinleştirin. HTTPS kullanımı, sunucu/hizmet kimlik doğrulamasını sağlar ve ağ katmanı gizlice dinleme saldırılarına karşı geçiş sırasında verileri korur.<br>(İlgili ilke: İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır)|Orta|**Y**|İşlev uygulaması|
 |**Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir**|Depolama hesaplarına Güvenli aktarım özelliğini etkinleştirin. Güvenli aktarım, depolama hesabınızı yalnızca güvenli bağlantılardan (HTTPS) istekleri kabul edecek şekilde zorlayan bir seçenektir. HTTPS kullanımı, sunucu ile hizmet arasında kimlik doğrulaması sağlar ve ağ katmanı saldırılarından geçiş sırasında, ortadaki adam, gizlice dinleme ve oturum ele geçirme gibi verileri korur.<br>(İlgili ilke: depolama hesaplarına Güvenli aktarım etkin olmalıdır)|Yüksek|**Y**|Depolama hesabı|
-||<a name="recs-computeapp"></a><h3>İşlem ve uygulama önerileri|
+||||||
+
+
+## <a name="recs-containers"></a>Kapsayıcı önerileri
+
+|Öneri|Açıklama & ilgili ilke|Önem Derecesi|Hızlı düzelme etkin mi? ([Daha fazla bilgi](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Kaynak türü|
+|----|----|----|----|----|
+|**Bir Kubernetes hizmet kümesine erişimi kısıtlamak için rol tabanlı Access Control kullanılmalıdır (Önizleme)**|Kullanıcıların gerçekleştirebileceği eylemlerin ayrıntılı filtrelemesini sağlamak için, Kubernetes hizmet kümelerindeki izinleri yönetmek ve ilgili yetkilendirme ilkelerini yapılandırmak üzere rol tabanlı Access Control (RBAC) kullanın. Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac).<br>(İlgili ilke: [Önizleme]: rol tabanlı Access Control (RBAC) Kubernetes hizmetlerinde kullanılmalıdır)|Orta|N|İşlem kaynakları (kapsayıcılar)|
+|**Kubernetes hizmeti en son Kubernetes sürümüne yükseltilmelidir (Önizleme)**|Güncel güvenlik açığı düzeltme eklerinden faydalanmak için Azure Kubernetes hizmet kümelerini en son Kubernetes sürümüne yükseltin. Belirli Kubernetes güvenlik açıklarına ilişkin ayrıntılar için bkz. [Kubernetes cika](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes).<br>(İlgili ilke: [Önizleme]: Kubernetes Hizmetleri, güvenlik açığı olmayan bir Kubernetes sürümüne yükseltilmelidir)|Yüksek|N|İşlem kaynakları (kapsayıcılar)|
+|**Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlanmalıdır (Önizleme)**|Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlayın. Yalnızca erişim izni verilen kaynaklara erişebilmeleri için pod güvenlik ilkelerinin yapılandırılması önerilir.<br>(İlgili ilke: [Önizleme]: Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır)|Orta|N|İşlem kaynakları (kapsayıcılar)|
+|**Bir Kubernetes hizmet yönetimi API 'sine erişim yalnızca belirli IP aralıklarını yetkilendirerek sınırlandırılmalıdır (Önizleme)**|Yalnızca belirli aralıklardaki IP adreslerine API erişimi vererek Kubernetes hizmet yönetimi API 'sine erişimi kısıtlayın. Yetkilendirilmiş IP aralıklarının yalnızca izin verilen ağlardan gelen uygulamaların kümeye erişebilmesi için yapılandırılması önerilir.<br>(İlgili ilke: [Önizleme]: yetkili IP aralıkları Kubernetes hizmetlerinde tanımlanmalıdır)|Yüksek|N|İşlem kaynakları (kapsayıcılar)|
+|**Azure Container Registry görüntülerdeki güvenlik açıkları düzeltilmelidir (Qualys tarafından desteklenir) (Önizleme)**|Kapsayıcı görüntüsü güvenlik açığı değerlendirmesi, her bir kapsayıcı görüntüsündeki güvenlik açıklarına karşı kayıt defterinizi tarar ve görüntü başına ayrıntılı bulguları gösterir. Güvenlik açıklarının çözümlenmesi, kapsayıcılarınızın güvenlik duruşunuzu önemli ölçüde iyileştirebilir ve saldırılardan koruyabilir.<br>(İlgili ilke yok)|Yüksek|N|İşlem kaynakları (kapsayıcılar)|
+||||||
+
+
+## <a name="recs-appservice"></a>App Service önerileri
+
+|Öneri|Açıklama & ilgili ilke|Önem Derecesi|Hızlı düzelme etkin mi? ([Daha fazla bilgi](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Kaynak türü|
+|----|----|----|----|----|
 |**Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır**|Web uygulamalarının erişim yalnızca HTTPS üzerinden sınırlayın.<br>(İlgili ilke:)|Orta|N|App Service|
 |**İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır**|İşlev uygulamaları, erişim yalnızca HTTPS üzerinden sınırlayın.<br>(İlgili ilke:)|Orta|N|App Service|
 |**API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır**|API Apps erişimini yalnızca HTTPS üzerinden sınırlayın.<br>(İlgili ilke:)|Orta|N|App Service|
@@ -55,18 +72,19 @@ Güvenli puanınız, kaç Güvenlik Merkezi önerisi azaldığından temel alır
 |**CORS, her kaynağın İşlev Uygulaması erişmesine izin vermemelidir**|İşlev uygulamanızla etkileşim kurmak yalnızca gerekli etki alanı sağlar. Kaynak kaynak paylaşımı (CORS) tüm etki alanlarının işlev uygulamanıza erişmek izin vermemelisiniz.<br>(İlgili ilke: CORS, her kaynağın İşlev Uygulaması erişmesine izin vermemelidir)|Düşük|**Y**|App Service|
 |**CORS, her kaynağın API uygulamanıza erişmesine izin vermemelidir**|Yalnızca gerekli etki alanlarının API uygulamanızla etkileşime girmesine izin verin. Çapraz kaynak kaynak paylaşımı (CORS), tüm etki alanlarının API uygulamanıza erişmesine izin vermemelidir.<br>(İlgili ilke: CORS, her kaynağın API uygulamanıza erişmesine izin vermemelidir)|Düşük|**Y**|App Service|
 |**Uygulama hizmetlerindeki tanılama günlükleri etkinleştirilmelidir**|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar.<br>(İlgili ilke: uygulama hizmetlerindeki tanılama günlükleri etkinleştirilmelidir)</span>|Düşük|N|App Service|
+||||||
+
+
+## <a name="recs-computeapp"></a>İşlem ve uygulama önerileri
+
+|Öneri|Açıklama & ilgili ilke|Önem Derecesi|Hızlı düzelme etkin mi? ([Daha fazla bilgi](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Kaynak türü|
+|----|----|----|----|----|
 |**Azure Stream Analytics tanılama günlükleri etkinleştirilmelidir**|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar.<br>(İlgili ilke: Azure Stream Analytics içindeki tanılama günlükleri etkinleştirilmelidir)|Düşük|**Y**|İşlem kaynakları (akış analizi)|
 |**Batch hesaplarındaki tanılama günlükleri etkinleştirilmelidir**|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar.<br>(İlgili ilke: Batch hesaplarındaki tanılama günlükleri etkinleştirilmelidir)|Düşük|**Y**|İşlem kaynakları (toplu)|
 |**Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir**|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar.<br>(İlgili ilke: Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir)|Düşük|**Y**|İşlem kaynakları (olay hub'ı)|
 |**Logic Apps tanılama günlükleri etkinleştirilmelidir**|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar.<br>(İlgili ilke: Logic Apps içindeki tanılama günlükleri etkinleştirilmelidir)|Düşük|**Y**|İşlem kaynakları (mantıksal uygulamalar)|
 |**Arama hizmetlerindeki tanılama günlükleri etkinleştirilmelidir**|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar.<br>(İlgili ilke: arama hizmetlerindeki tanılama günlükleri etkinleştirilmelidir)|Düşük|**Y**|İşlem kaynakları (arama)|
 |**Service Bus tanılama günlükleri etkinleştirilmelidir**|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar.<br>(İlgili ilke: Service Bus içindeki tanılama günlükleri etkinleştirilmelidir)|Düşük|**Y**|İşlem kaynakları (hizmet veri yolu)|
-|**Sanal makine ölçek kümelerindeki tanılama günlükleri etkinleştirilmelidir**|Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, araştırma amaçları için etkinlik izlerini yeniden oluşturmayı sağlar. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye girerse yararlıdır.<br>(İlgili ilke: sanal makine ölçek kümelerindeki tanılama günlükleri etkinleştirilmelidir)|Düşük|N|Sanal makine ölçek kümesi|
-|**Bir Kubernetes hizmet kümesine erişimi kısıtlamak için rol tabanlı Access Control kullanılmalıdır (Önizleme)**|Kullanıcıların gerçekleştirebileceği eylemlerin ayrıntılı filtrelemesini sağlamak için, Kubernetes hizmet kümelerindeki izinleri yönetmek ve ilgili yetkilendirme ilkelerini yapılandırmak üzere rol tabanlı Access Control (RBAC) kullanın. Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac).<br>(İlgili ilke: [Önizleme]: rol tabanlı Access Control (RBAC) Kubernetes hizmetlerinde kullanılmalıdır)|Orta|N|İşlem kaynakları (kapsayıcılar)|
-|**Kubernetes hizmeti en son Kubernetes sürümüne yükseltilmelidir (Önizleme)**|Güncel güvenlik açığı düzeltme eklerinden faydalanmak için Azure Kubernetes hizmet kümelerini en son Kubernetes sürümüne yükseltin. Belirli Kubernetes güvenlik açıklarına ilişkin ayrıntılar için bkz. [Kubernetes cika](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes).<br>(İlgili ilke: [Önizleme]: Kubernetes Hizmetleri, güvenlik açığı olmayan bir Kubernetes sürümüne yükseltilmelidir)|Yüksek|N|İşlem kaynakları (kapsayıcılar)|
-|**Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlanmalıdır (Önizleme)**|Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlayın. Yalnızca erişim izni verilen kaynaklara erişebilmeleri için pod güvenlik ilkelerinin yapılandırılması önerilir.<br>(İlgili ilke: [Önizleme]: Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır)|Orta|N|İşlem kaynakları (kapsayıcılar)|
-|**Bir Kubernetes hizmet yönetimi API 'sine erişim yalnızca belirli IP aralıklarını yetkilendirerek sınırlandırılmalıdır (Önizleme)**|Yalnızca belirli aralıklardaki IP adreslerine API erişimi vererek Kubernetes hizmet yönetimi API 'sine erişimi kısıtlayın. Yetkilendirilmiş IP aralıklarının yalnızca izin verilen ağlardan gelen uygulamaların kümeye erişebilmesi için yapılandırılması önerilir.<br>(İlgili ilke: [Önizleme]: yetkili IP aralıkları Kubernetes hizmetlerinde tanımlanmalıdır)|Yüksek|N|İşlem kaynakları (kapsayıcılar)|
-|**Azure Container Registry görüntülerdeki güvenlik açıkları düzeltilmelidir (Qualys tarafından desteklenir) (Önizleme)**|Kapsayıcı görüntüsü güvenlik açığı değerlendirmesi, her bir kapsayıcı görüntüsündeki güvenlik açıklarına karşı kayıt defterinizi tarar ve görüntü başına ayrıntılı bulguları gösterir. Güvenlik açıklarının çözümlenmesi, kapsayıcılarınızın güvenlik duruşunuzu önemli ölçüde iyileştirebilir ve saldırılardan koruyabilir.<br>(İlgili ilke yok)|Yüksek|N|İşlem kaynakları (kapsayıcılar)|
 |**Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır**|İstemci kimlik doğrulaması yalnızca Azure Active Directory aracılığıyla Service Fabric'te gerçekleştirin.<br>(İlgili ilke: Service Fabric kümeler yalnızca istemci kimlik doğrulaması için Azure Active Directory kullanmalıdır)|Yüksek|N|İşlem kaynakları (service fabric)|
 |**Service Fabric kümelerinde ClusterProtectionLevel özelliği EncryptAndSign olarak ayarlanmalıdır**|Service Fabric, birincil küme sertifikası kullanarak düğümden düğüme iletişim için üç koruma düzeyi (None, Sign ve EncryptAndSign) sağlar. Tüm düğümler için iletileri şifrelenir ve dijital olarak imzalanmış emin olmak için koruma düzeyini ayarlayın.<br>(İlgili ilke: Service Fabric, EncryptAndSign içindeki ClusterProtectionLevel özelliği ayarlanmalıdır)|Yüksek|N|İşlem kaynakları (service fabric)|
 |**RootManageSharedAccessKey hariç tüm yetkilendirme kuralları Service Bus ad alanından kaldırılmalıdır**|Hizmet veri yolu istemcileri tüm kuyrukları ve konuları ad alanında erişim sağlayan bir ad alanı düzeyinde erişim ilkesi kullanmamanız gerekir. En az ayrıcalık güvenlik modeliyle uyum sağlamak için, yalnızca belirli varlığa erişim sağlamak üzere kuyruklar ve konular için varlık düzeyinde erişim ilkeleri oluşturmanız gerekir.<br>(İlgili ilke: RootManageSharedAccessKey hariç tüm yetkilendirme kuralları Service Bus ad alanından kaldırılmalıdır)|Düşük|N|İşlem kaynakları (hizmet veri yolu)|
@@ -78,7 +96,6 @@ Güvenli puanınız, kaç Güvenlik Merkezi önerisi azaldığından temel alır
 |**Makinelerinize Endpoint Protection çözümünü yükler**|Windows ve Linux makinelerinize bir uç nokta koruma çözümü yükleyerek bunları tehditler ve güvenlik açıklarına karşı koruyun.<br>(İlgili ilke yok)|Orta|N|Makine|
 |**Uç nokta koruma çözümünü sanal makinelere yükler**|Tehditleri ve güvenlik açıklarından korumak için sanal makineler, bir uç nokta koruma çözümüne yükleyin.<br>(İlgili ilke yok)|Orta|N|Makine|
 |**Bulut hizmeti rolleriniz için işletim sistemi sürümü güncellenmelidir**|Bulut hizmeti rolleriniz için işletim sistemi sürümünü, işletim sistemi ailenizdeki en yeni sürüm ile güncelleştirin.<br>(İlgili ilke yok)|Yüksek|N|Makine|
-|**Sanal makine ölçek kümelerindeki sistem güncelleştirmeleri yüklenmelidir**|Windows ve Linux sanal makine ölçek kümelerinizin güvenliğini sağlamak için eksik sistem güvenliği ve kritik güncelleştirmeleri yükler.<br>(İlgili ilke: sanal makine ölçek kümelerinde sistem güncelleştirmeleri yüklenmelidir)|Yüksek|N|Sanal makine ölçek kümesi|
 |**Sistem güncelleştirmelerinin makinelerinizde yüklü olması gerekir**|Eksik sistem güvenliği ve güvenli Windows ve Linux sanal makineleri ve bilgisayarlar için kritik güncelleştirmeleri yükleyin<br>(İlgili ilke: sistem güncelleştirmelerinin makinelerinizde yüklü olması gerekir)|Yüksek|N|Makine|
 |**Sistem güncelleştirmelerinin uygulanabilmesi için makineleriniz yeniden başlatılmalıdır**|Sistem güncelleştirmelerini uygulamak ve makinenizi güvenlik açıklarına karşı korumak için makinelerinizi yeniden başlatın.<br>(İlgili ilke yok)|Orta|N|Makine|
 |**Otomasyon hesabı değişkenleri şifrelenmelidir**|Otomasyon hesabı değişken varlıkları şifrelenmesi, hassas verileri depolarken etkinleştirin.<br>(İlgili ilke: Otomasyon hesap değişkenlerinde şifreleme etkinleştirilmelidir)|Yüksek|N|İşlem kaynakları (Otomasyon hesabı)|
@@ -88,11 +105,26 @@ Güvenli puanınız, kaç Güvenlik Merkezi önerisi azaldığından temel alır
 |**Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir**|Kendisi için bir güvenlik açığı değerlendirme 3 taraf çözümü dağıtılan sanal makinelerin sürekli olarak uygulama ve işletim sistemi güvenlik açıklarını karşı incelenen. Tür güvenlik açıklarına bulunduğunda, bunlar öneri bir parçası olarak daha fazla bilgi için kullanılabilir.<br>(İlgili ilke: güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir)|Yüksek|N|Makine|
 |**Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir**|Güvenlik Yapılandırması saldırılarına karşı korunacak makinelerinizde güvenlik açıklarını düzeltin.<br>(İlgili ilke: makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir)|Düşük|N|Makine|
 |**Kapsayıcı güvenlik yapılandırmalarında güvenlik açıkları düzeltilmelidir**|Docker yüklü makineleri korumak için bunların güvenlik yapılandırmasındaki güvenlik açıklarını düzeltin.<br>(İlgili ilke: kapsayıcı güvenlik yapılandırmalarında güvenlik açıkları düzeltilmelidir)|Yüksek|N|Makine|
-|**Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir**|Saldırılara karşı korumak için sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıklarını düzeltin. <br>(İlgili ilke: sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir)|Yüksek|N|Sanal makine ölçek kümesi|
 |**Endpoint Protection sistem durumu sorunları makinelerinizde çözümlenmelidir**|Tüm Güvenlik Merkezi koruma için sorun giderme Kılavuzu'ndaki yönergeleri takip ederek makinelerinizi izleme aracı sorunları çözün.<br>(İlgili ilke yok)|Orta|N|Makine|
+||||||
+
+
+## <a name="recs-vmscalesets"></a>Sanal makine ölçek kümesi önerileri
+
+|Öneri|Açıklama & ilgili ilke|Önem Derecesi|Hızlı düzelme etkin mi? ([Daha fazla bilgi](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Kaynak türü|
+|----|----|----|----|----|
+|**Sanal makine ölçek kümelerindeki tanılama günlükleri etkinleştirilmelidir**|Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, araştırma amaçları için etkinlik izlerini yeniden oluşturmayı sağlar. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye girerse yararlıdır.<br>(İlgili ilke: sanal makine ölçek kümelerindeki tanılama günlükleri etkinleştirilmelidir)|Düşük|N|Sanal makine ölçek kümesi|
+|**Sanal makine ölçek kümelerindeki sistem güncelleştirmeleri yüklenmelidir**|Windows ve Linux sanal makine ölçek kümelerinizin güvenliğini sağlamak için eksik sistem güvenliği ve kritik güncelleştirmeleri yükler.<br>(İlgili ilke: sanal makine ölçek kümelerinde sistem güncelleştirmeleri yüklenmelidir)|Yüksek|N|Sanal makine ölçek kümesi|
+|**Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir**|Saldırılara karşı korumak için sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıklarını düzeltin. <br>(İlgili ilke: sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir)|Yüksek|N|Sanal makine ölçek kümesi|
 |**Endpoint Protection sistem durumu hatalarının sanal makine ölçek kümelerinde düzeltilmelidir**|Sanal makine ölçek kümelerinizi tehdit ve güvenlik açıklarına karşı korumak için Endpoint Protection sistem durumu başarısızlıklarını düzeltin.<br>(İlgili ilke yok)|Düşük|N|Sanal makine ölçek kümesi|
 |**Uç nokta koruma çözümü, sanal makine ölçek kümelerine yüklenmelidir**|Sanal makine ölçek kümelerinizi tehdit ve güvenlik açıklarına karşı korumak için bir uç nokta koruma çözümü yüklemek.<br>(İlgili ilke: Endpoint Protection çözümünün sanal makine ölçek kümelerine yüklenmesi gerekir)|Yüksek|N|Sanal makine ölçek kümesi|
-||<a name="recs-datastorage"></a><h3>Veri ve depolama önerileri|
+||||||
+
+
+## <a name="recs-datastorage"></a>Veri ve depolama önerileri
+
+|Öneri|Açıklama & ilgili ilke|Önem Derecesi|Hızlı düzelme etkin mi? ([Daha fazla bilgi](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Kaynak türü|
+|----|----|----|----|----|
 |**SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır**|Azure AD kimlik doğrulamasını etkinleştirmek için SQL sunucunuz için bir Azure AD yöneticisi sağlayın. Azure AD kimlik doğrulaması, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir.<br>(İlgili ilke: SQL Server için Azure Active Directory yöneticisinin denetimini sağlama)|Yüksek|N|SQL|
 |**SQL Server üzerinde denetim etkinleştirilmelidir**|Azure SQL sunucuları için denetimi etkinleştirin. (Yalnızca Azure SQL hizmeti. , Sanal makinelerinizde çalışan SQL içermez.)<br>(İlgili ilke: Denetim SQL Server) gelişmiş veri güvenliği ayarları üzerinde etkinleştirilmelidir)|Düşük|**Y**|SQL|
 |**Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir**|Güvenli aktarım, depolama hesabınızı yalnızca güvenli bağlantılardan (HTTPS) istekleri kabul edecek şekilde zorlayan bir seçenektir. HTTPS, sunucu ile hizmet arasında kimlik doğrulaması sağlar ve aradaki bağlantıyı izinsiz izleme, gizlice dinleme ve oturum ele geçirme gibi ağ katmanı saldırılarına karşı korur.<br>(İlgili ilke: depolama hesaplarına Güvenli aktarım etkin olmalıdır)|Yüksek|N|Depolama hesabı|
@@ -104,7 +136,13 @@ Güvenli puanınız, kaç Güvenlik Merkezi önerisi azaldığından temel alır
 |**SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir**|SQL güvenlik açığı değerlendirmesi, veritabanınızı güvenlik açıklarına karşı tarar ve yanlış yapılandırma, aşırı izin ve korunmayan gizli veriler gibi en iyi uygulamalardan sapmaları gösterir. Bulunan güvenlik açıklarının çözümlenmesi, veritabanı güvenlik hazırlılığını büyük ölçüde iyileştirebilir.<br>(İlgili ilke: SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir)|Yüksek|N|SQL|
 |**Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı olmalıdır**|Depolama hesabı güvenlik duvarı ayarlarınızda Kısıtlanmamış ağ erişimini denetleyin. Bunun yerine, ağ kurallarını yalnızca izin verilen ağların uygulamalarının depolama hesabına erişebilmesi için yapılandırın. Belirli Internet veya şirket içi istemcilerden gelen bağlantılara izin vermek için, belirli Azure sanal ağlarından veya genel Internet IP adresi aralıklarına giden trafiğe erişim izni verebilirsiniz.<br>(İlgili ilke: depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme)|Düşük|N|Depolama hesabı|
 |**Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir**|Depolama hesaplarınız için yeni Azure Resource Manager kullanın: daha güçlü erişim denetimi (RBAC), daha iyi denetim, Kaynak Yöneticisi tabanlı dağıtım ve idare, yönetilen kimliklere erişim, gizli dizi için Anahtar Kasası erişimi, ve daha kolay güvenlik yönetimi için Etiketler ve kaynak grupları için Azure AD tabanlı kimlik doğrulaması ve destek.<br>(İlgili ilke: depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir)|Düşük|N|Depolama hesabı|
-||<a name="recs-identity"></a><h3>Kimlik ve erişim önerileri|
+||||||
+
+
+## <a name="recs-identity"></a>Kimlik ve erişim önerileri
+
+|Öneri|Açıklama & ilgili ilke|Önem Derecesi|Hızlı düzelme etkin mi? ([Daha fazla bilgi](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Kaynak türü|
+|----|----|----|----|----|
 |**MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir**|Hesapların veya kaynakların ihlal oluşmasını engellemek için okuma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) özelliğini etkinleştirin.<br>(İlgili ilke: MFA 'nın aboneliğinizdeki okuma izinlerine sahip hesaplarda etkinleştirilmesi gerekir)|Yüksek|N|Abonelik|
 |**MFA, aboneliğinizde yazma izinleri olan hesaplarda etkinleştirilmelidir**|Hesapların veya kaynakların ihlal oluşmasını engellemek için yazma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) özelliğini etkinleştirin.<br>(İlgili ilke: MFA 'nın aboneliğinizdeki yazma izinlerine sahip hesaplarda etkinleştirilmesi gerekir)|Yüksek|N|Abonelik|
 |**MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir**|Hesapların veya kaynakların ihlal oluşmasını engellemek için sahip ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) özelliğini etkinleştirin.<br>(İlgili ilke: MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir)|Yüksek|N|Abonelik|

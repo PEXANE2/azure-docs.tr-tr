@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Başarıyla Azure Active Directory çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
+title: 'Öğretici: başarıyla Azure Active Directory çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve başarılı faktörleri arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38d40a2f72e73dde0f99ebbc9701e02c8d03738b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d49915271580b5665981bf7e212f3d5712c86456
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989498"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292988"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Öğretici: Başarıyla Azure Active Directory çoklu oturum açma (SSO) Tümleştirmesi
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Öğretici: başarıyla Azure Active Directory çoklu oturum açma (SSO) Tümleştirmesi
 
 Bu öğreticide, başarılı faktörleri Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Başarılı faktörleri Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
@@ -33,7 +32,7 @@ Bu öğreticide, başarılı faktörleri Azure Active Directory (Azure AD) ile t
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -44,7 +43,8 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Başarılı etken **SP** tarafından başlatılan SSO 'yu destekler
+* Başarılı etken **SP** tarafından başlatılan SSO 'yu destekler.
+* Başarılı faktörleri yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan, oturum denetimlerini zorunlu kılabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-successfactors-from-the-gallery"></a>Galeriden başarılı faktör ekleme
 
@@ -140,9 +140,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
     1. **Ad** alanına `B.Simon` girin.  
-    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
     1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-    1.           **Oluştur**'a tıklayın.
+    1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -224,7 +224,7 @@ Bu bölümde, başarılı etkenlere erişim vererek Azure çoklu oturum açma ö
 
     b. **Büyük/küçük harfe duyarlı olmayan kullanıcı adını etkinleştir**yakınında onay kutusunu seçin.
 
-    c. **Kaydet**’e tıklayın.
+    c. **Save (Kaydet)** düğmesine tıklayın.
 
     > [!NOTE]
     > Bunu etkinleştirmeye çalışırsanız, sistem yinelenen bir SAML oturum açma adı oluşturup oluşturmadığını denetler. Örneğin, müşteri için Kullanıcı1 ve Kullanıcı1 Kullanıcı adları varsa. Büyük/küçük harf duyarlılığı bu yinelemeleri yapar. Sistem size bir hata iletisi verir ve özelliği etkinleştirmez. Müşterinin, farklı bir şekilde yazılması için kullanıcı adlarıyla birini değiştirmesi gerekir.
@@ -247,9 +247,13 @@ Erişim panelinde başarılı bir kutucuğa tıkladığınızda, SSO 'yu ayarlad
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile başarılı faktörleri deneyin](https://aad.portal.azure.com)
+
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Gelişmiş görünürlük ve denetimlerle başarılı etmenleri koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

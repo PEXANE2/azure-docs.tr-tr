@@ -9,15 +9,15 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 688bf923c07d9417b002b7cab6e3c0a0c8d20dae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 00a92d60e494920f516d1a52593a54463c050615
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497740"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311453"
 ---
 # <a name="linear-regression-module"></a>Doğrusal regresyon modülü
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 İşlem hattında kullanılmak üzere doğrusal regresyon modeli oluşturmak için bu modülü kullanın.  Doğrusal regresyon bir veya daha fazla bağımsız değişken ile sayısal bir sonuç veya bağımlı değişken arasında doğrusal bir ilişki kurmaya çalışır. 
 
@@ -90,7 +90,6 @@ Bu modül, farklı seçeneklerle bir gerileme modeline sığdırma için iki yö
 
 Eğitim tamamlandıktan sonra:
 
-+ Modelin parametrelerini görüntülemek için, eğitmen çıktısına sağ tıklayın ve **Görselleştir**' i seçin.
 
 + Tahmine dayalı hale getirmek için eğitilen modeli, yeni değerlerin bir veri kümesiyle birlikte [puan modeli](./score-model.md) modülüne bağlayın. 
 

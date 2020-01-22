@@ -1,5 +1,5 @@
 ---
-title: Media Services dinamik şifreleme ile içeriğinizi koruyun
+title: Media Services v3 dinamik şifrelemesiyle içeriğinizi koruyun
 titleSuffix: Azure Media Services
 description: Azure Media Services içindeki dinamik şifreleme, akış protokolleri ve şifreleme türleriyle içerik koruması hakkında bilgi edinin.
 services: media-services
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1ae8645f3e782305ed5e1b7847b019a978e48dde
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 18e80383bfcbebc6a442663c141100faa56fd061
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977786"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313816"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services dinamik şifreleme ile içeriğinizi koruyun
 
@@ -236,7 +236,7 @@ Farklı bir lisans/anahtar teslim hizmeti (Media Services değil) belirtmek isti
 * `StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate`: yalnızca Widevine için olan önceki şablonla aynı. 
 * `StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate`: önceki şablonla aynı ancak yalnızca FairPlay için.  
 
-Örnek:
+Örneğin:
 
 ```csharp
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";

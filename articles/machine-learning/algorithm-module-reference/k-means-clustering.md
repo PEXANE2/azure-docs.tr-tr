@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 135b425ca87a309bc171e252d8ff04b2027a3c50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7451758e758d597bfe63d92fe4789c8fa81b3dff
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213907"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311487"
 ---
 # <a name="module-k-means-clustering"></a>Modül: K-kümeleme anlamına gelir
 
-Bu makalede, eğitilen bir kümeleme modeli oluşturmak için Azure Machine Learning tasarımcısında (Önizleme) *k-bit kümeleme* modülünün nasıl kullanılacağı açıklanır. 
+Bu makalede, eğitilen bir kümeleme modeli oluşturmak için Azure Machine Learning tasarımcısında *k-anlamı kümeleme* modülünün nasıl kullanılacağı açıklanır. 
  
 K-anlamı en basit ve en *iyi bilinen öğrenme* algoritmalarından biridir. Algoritmayı çeşitli makine öğrenimi görevleri için kullanabilirsiniz, örneğin: 
 
@@ -115,9 +115,9 @@ Modeli yapılandırmayı ve eğitimi tamamladıktan sonra, puanlar oluşturmak i
 
 [Tren kümeleme modeli](train-clustering-model.md) modülünü kullandıysanız:
 
-1. **Tren kümeleme modeli** modülüne sağ tıklayın.
+1. **Kümeleme modelini eğitme** modülünü seçin ve sağ paneli açın.
 
-2. **Eğitim modeli**' ni seçin ve ardından **eğitilen model olarak kaydet**' i seçin.
+2. **Çıktılar** sekmesini seçin. eğitilen modelin bir kopyasını kaydetmek için **veri kümesini kaydet** simgesini seçin.
 
 Kaydedilen model, modeli kaydettiğiniz sırada eğitim verilerini temsil eder. İşlem hattında kullanılan eğitim verilerini daha sonra güncelleştirirseniz, kaydedilen modeli güncelleştirmez. 
 
@@ -127,7 +127,7 @@ Kaydedilen model, modeli kaydettiğiniz sırada eğitim verilerini temsil eder. 
 
 1. **Tren kümeleme modeli** modülüne sağ tıklayın.
 
-2. **Sonuçlar veri kümesini**seçin ve ardından **Görselleştir**' i seçin.
+2. **Görselleştir**' i seçin.
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>En iyi kümeleme modelini oluşturmaya yönelik ipuçları  
 

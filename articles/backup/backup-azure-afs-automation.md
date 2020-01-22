@@ -3,12 +3,12 @@ title: PowerShell ile Azure dosyalarını yedekleme ve geri yükleme
 description: Bu makalede, Azure Backup hizmetini ve PowerShell 'i kullanarak Azure dosyalarını yedeklemeyi ve geri yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 78000bc669eb7a61f8698ad8c39ef49f65b245a2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9665bbc3562faab760562e1e6729d8be0796acd
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224171"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294057"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>PowerShell ile Azure dosyalarını yedekleme ve geri yükleme
 
@@ -28,7 +28,7 @@ Bu makalede nasıl yapılacağı açıklanmaktadır:
 ## <a name="before-you-start"></a>Başlamadan önce
 
 * Kurtarma Hizmetleri kasaları hakkında [daha fazla bilgi edinin](backup-azure-recovery-services-vault-overview.md) .
-* [Azure dosya paylaşımlarını yedeklemeye](backup-azure-files.md)yönelik Önizleme özellikleri hakkında bilgi edinin.
+* [Azure dosya paylaşımlarını yedeklemeye](backup-afs.md)yönelik Önizleme özellikleri hakkında bilgi edinin.
 * Kurtarma Hizmetleri için PowerShell nesne hiyerarşisini gözden geçirin.
 
 ## <a name="recovery-services-object-hierarchy"></a>Kurtarma Hizmetleri nesne hiyerarşisi
@@ -419,4 +419,4 @@ $job.ErrorDetails
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure portal Azure dosyalarını yedekleme [hakkında bilgi edinin](backup-azure-files.md) .
+Azure portal Azure dosyalarını yedekleme [hakkında bilgi edinin](backup-afs.md) .

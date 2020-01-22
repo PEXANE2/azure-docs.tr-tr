@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429467"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294108"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Oturum açma Etkinliği raporu hata kodları 
 
@@ -96,6 +96,7 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |50072|Kullanıcının iki faktörlü kimlik doğrulamasına (etkileşimli) kaydolması gerekir.|
 |50074|Kullanıcı MFA testini geçemedi.|
 |50076|Kullanıcı MFA Challenge (etkileşimli olmayan) iletmedi.|
+|50078|Sunulan Multi-Factor Authentication 'ın süresi doldu, erişim için Multi-Factor Authentication 'ı yenilemeniz gerekir.|
 |50079|Kullanıcının iki öğeli kimlik doğrulaması için (etkileşimli olmayan oturum açma) kaydolması gerekir.|
 |50085|Yenileme belirteci için sosyal IDP oturum açma bilgileri gerekiyor. Kullanıcının Kullanıcı adı ve parolasıyla oturum açmasını yeniden denemesini sağlayabilirsiniz.|
 |50089|Akış belirtecinin zaman aşımına uğradı-kimlik doğrulaması başarısız oldu. Kullanıcının Kullanıcı adı ve parolasıyla oturum açmayı yeniden denemesini deneyin|
@@ -184,7 +185,8 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |90014| Protokol iletisi için gerekli bir alan eksikti, uygulama sahibine başvurun. Uygulama sahibiyseniz, oturum açma isteği için gerekli tüm parametrelere sahip olduğunuzdan emin olun. |
 |90051| Geçersiz temsili belirteci. Geçersiz National Cloud ID ({Cloudıd}) belirtildi.|
 |90072| Hesabın önce kiracıda bir dış kullanıcı olarak eklenmesi gerekiyor. Oturumu kapatın ve farklı bir Azure AD hesabıyla tekrar oturum açın.|
-|90094| Verme yönetici izinleri gerektirir. Kiracı yöneticinizden bu uygulama için onay sağlamasını isteyin.|
+|90094| Uygulama, oturum açmış kullanıcının izin verilmeyen ve Kullanıcı engellediği izinleri istedi. |
+|90095| Uygulama, oturum açmış kullanıcının izin verilmeyen izinleri istedi ve Kullanıcı [yönetici izin isteği](../manage-apps/configure-admin-consent-workflow.md) formunu gösterildi. |
 |500011| <site address> adlı kaynak sorumlusu <tenant ID>adlı kiracıda bulunamadı. Bu durum, uygulama kiracının Yöneticisi tarafından yüklenmediyse veya kiracının kiracısındaki herhangi bir kullanıcı tarafından ' a onaylı olması durumunda gerçekleşebilir. Kimlik doğrulaması isteğinizi yanlış kiracıya göndermiş olabilirsiniz.|
 |500021| Kiracı, şirket proxy 'si ile kısıtlıdır. Kaynak erişimini reddetme.|
 |500121| Tanımlayıcı kimlik doğrulama isteği sırasında kimlik doğrulaması başarısız oldu.|
@@ -193,6 +195,8 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |530032|Güvenlik ilkesi tarafından engellendi.| 
 |700016|' {Appıdentifier} ' tanımlayıcılı uygulama ' {tenantName} ' dizininde bulunamadı. Bu durum, uygulama kiracının Yöneticisi tarafından yüklenmediyse veya kiracının kiracısındaki herhangi bir kullanıcı tarafından ' a onaylı olması durumunda gerçekleşebilir. Kimlik doğrulama isteğinizi yanlış kiracıya göndermiş olabilirsiniz.|
 |900432|Çapraz bulut isteğinde gizli Istemci desteklenmez.|
+|5000811|SAML belirteci imzası doğrulanamadı. İmzalama anahtarı tanımlayıcısı geçerli kayıtlı anahtarlarla eşleşmiyor.|
+|7000215|Geçersiz istemci parolası sağlandı.|
 |7000218|İstek gövdesi şu parametreyi içermelidir: ' client_assertion ' veya ' client_secret '.|
 
 

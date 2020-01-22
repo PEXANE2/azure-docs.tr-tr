@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 57cf5bab2afe58ed802ef5ec03c316f1ebec6673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f1a508e6188b68f932993eb60e13228b56f8e7e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232585"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313962"
 ---
 # <a name="train-clustering-model"></a>Kümeleme Modeli Eğitme
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Bir kümeleme modeli eğitme için bu modülü kullanın.
 
@@ -49,10 +49,7 @@ Modül, zaten [K-bit kümeleme](k-means-clustering.md) modülünü kullanarak ya
 
 Eğitim tamamlandıktan sonra:
 
-
-+  Veri kümesindeki değerleri görüntülemek için modüle sağ tıklayın, **sonuç veri kümeleri**' ni seçin ve **Görselleştir**' e tıklayın.
-
-+ Eğitilen modeli daha sonra yeniden kullanmak üzere kaydetmek için modüle sağ tıklayın, **eğitilen model**' i seçin ve **eğitilen model olarak kaydet**' e tıklayın.
++ Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
 
 + Modelden puanlar oluşturmak için [kümelere veri ata](assign-data-to-clusters.md)' yı kullanın.
 

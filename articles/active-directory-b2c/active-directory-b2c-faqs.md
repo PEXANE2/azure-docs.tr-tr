@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 577dc6d4344cd6d7a38c4d538218c9dd89e883aa
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 803c82c9926c3b75545b42a9a382fd5c327b7151
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643636"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289093"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: sık sorulan sorular (SSS)
 
@@ -27,7 +27,7 @@ Azure AD uzantısının neden çalışmadığına ilişkin iki yaygın neden var
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Mevcut, çalışan tabanlı Azure AD kiracısındaki Azure AD B2C özellikleri kullanabilir miyim?
 
-Azure AD ve Azure AD B2C ayrı ürün tekliflerdir ve aynı kiracıda birlikte bulunamaz. Bir Azure AD kiracısı bir kuruluşu temsil eder. Azure AD B2C kiracısı, bağlı olan taraf uygulamalarıyla kullanılacak kimliklerin bir koleksiyonunu temsil eder. Özel ilkelerle Azure AD B2C, bir kuruluştaki çalışanların kimlik doğrulamasına izin veren Azure AD 'ye federe verebilir.
+Azure AD ve Azure AD B2C ayrı ürün tekliflerdir ve aynı kiracıda birlikte bulunamaz. Bir Azure AD kiracısı bir kuruluşu temsil eder. Azure AD B2C kiracısı, bağlı olan taraf uygulamalarıyla kullanılacak kimliklerin bir koleksiyonunu temsil eder. **Azure AD B2C > kimlik sağlayıcılarının** altına veya özel Ilkelerle **Yeni OpenID Connect sağlayıcısı** ekleyerek Azure AD B2C, bir kuruluştaki çalışanların kimlik DOĞRULAMASıNA izin veren Azure AD 'ye federe verebilir.
 
 ### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Office 365 'ye sosyal oturum açma (Facebook ve Google +) sağlamak için Azure AD B2C kullanabilir miyim?
 
@@ -78,7 +78,7 @@ E-posta imzası, Azure AD B2C kiracıyı ilk oluşturduğunuzda verdiğiniz Azur
 
 1. [Azure Portal](https://portal.azure.com/) genel yönetici olarak oturum açın.
 1. **Azure Active Directory** dikey penceresini açın.
-1. **Özellikler** sekmesine tıklayın.
+1. Tıklayın **özellikleri** sekmesi.
 1. **Ad** alanını değiştirin.
 1. Sayfanın üst kısmından **Kaydet**'e tıklayın.
 
@@ -150,7 +150,7 @@ Geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (
 1. **Yönet**altında **Kullanıcı ayarları**' nı seçin.
 1. Varsa, **LinkedIn hesap bağlantıları**altında **Hayır**' ı seçin ve ardından **Kaydet**' i seçin.
 1. **Yönet**altında **Özellikler** ' i seçin.
-1. **Azure kaynakları Için erişim yönetimi**altında **Evet**' i seçin ve ardından **Kaydet**' i seçin.
+1. **Azure kaynakları için erişim yönetimi**'nin altında **Evet**'i ve sonra da **Kaydet**'i seçin.
 1. Azure portal oturumunuzu kapatıp erişiminizi yenilemek için yeniden oturum açın.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. **Genel bakış** sayfasında, **dizini Sil**' i seçin. İşlemi gerçekleştirmek için ekrandaki yönergeleri izleyin.
@@ -170,7 +170,7 @@ Geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (
 1. **Yönet**altında **Kullanıcı ayarları**' nı seçin.
 1. Varsa, **LinkedIn hesap bağlantıları**altında **Hayır**' ı seçin ve ardından **Kaydet**' i seçin.
 1. **Yönet**altında **Özellikler** ' i seçin.
-1. **Azure kaynakları Için erişim yönetimi**altında **Evet**' i seçin ve ardından **Kaydet**' i seçin.
+1. **Azure kaynakları için erişim yönetimi**'nin altında **Evet**'i ve sonra da **Kaydet**'i seçin.
 1. Azure portal oturumunuzu kapatıp erişiminizi yenilemek için yeniden oturum açın.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. **Genel bakış** sayfasında, **dizini Sil**' i seçin. İşlemi gerçekleştirmek için ekrandaki yönergeleri izleyin.

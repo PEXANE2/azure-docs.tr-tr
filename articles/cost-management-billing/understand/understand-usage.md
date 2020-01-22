@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 93fad58e971d761f626b79dc68f9576ccc2e1892
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75994005"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290147"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure kullanımı ve ücretleri dosyasındaki terimleri anlama
 
@@ -90,11 +90,11 @@ PublisherType | Tümü | Yayımcı türü (değerler: **Azure**, **AWS**, **Mark
 Miktar | Tümü | Satın alınan veya tüketilen birim sayısı.
 ReservationId | EA, MCA | Satın alınan rezervasyon örneğinin benzersiz tanımlayıcısı.
 ReservationName | EA, MCA | Satın alınan rezervasyon örneğinin adı.
-ResourceGroup | Tümü | Kaynağın içinde bulunduğu [kaynak grubunun](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) adı.
+ResourceGroup | Tümü | Kaynağın içinde bulunduğu [kaynak grubunun](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) adı. Ücret, kaynak gruplarına dağıtılan kaynaklardan gelir. Kaynak grubu olmayan ücretler null/boş, **diğerleri**veya **geçerli değil**olarak gösterilir.
 ResourceId<sup>1</sup> | Tümü | [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources) kaynağının benzersiz tanımlayıcısı.
 ResourceLocation | Tümü | Kaynağın çalıştırıldığı veri merkezi konumu. Bkz. Location.
-ResourceName | EA, PAYG | Kaynağın adı.
-ResourceType | MCA | Kaynak örneğinin türü.
+ResourceName | EA, PAYG | Kaynağın adı. Tüm ücretler dağıtılan kaynaklardan gelmiyor. Kaynak türüne sahip olmayan ücretler null/boş, **diğerleri**veya **geçerli değil**olarak gösterilir.
+ResourceType | MCA | Kaynak örneğinin türü. Tüm ücretler dağıtılan kaynaklardan gelmiyor. Kaynak türüne sahip olmayan ücretler null/boş, **diğerleri**veya **geçerli değil**olarak gösterilir.
 ServiceFamily | MCA | Hizmetin ait olduğu hizmet ailesi.
 ServiceInfo1 | Tümü | Hizmete özgü meta veriler.
 HizmetBilgisi2 | Tümü | Hizmete özgü isteğe bağlı meta verilerin bulunduğu eski alan.
