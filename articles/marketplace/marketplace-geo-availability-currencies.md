@@ -73,7 +73,7 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Yunanistan                              | GR        | EUR          |
 | Guatemala                           | GT        | USD          |
 | Honduras                            | HN        | USD          |
-| Hong Kong ÖiB                       | HK        | USD          |
+| Hong Kong ÖİB                       | HK        | USD          |
 | Macaristan                             | HU        | EUR          |
 | İzlanda                             | IS        | EUR          |
 | Hindistan                               | IN        | INR          |

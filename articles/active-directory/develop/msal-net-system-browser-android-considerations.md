@@ -55,7 +55,7 @@ Aşağıdaki tabloda, sınanan cihazlar ve tarayıcılar listelenmektedir.
 | | Tarayıcı&ast;     |  Sonuç  | 
 | ------------- |:-------------:|:-----:|
 | Huawei/One + | Chrome&ast; | Geç|
-| Huawei/One + | Edge&ast; | Geç|
+| Huawei/One + | Microsoft Edge&ast; | Geç|
 | Huawei/One + | Firefox&ast; | Geç|
 | Huawei/One + | Brave&ast; | Geç|
 | Tek + | Eko&ast; | Geç|

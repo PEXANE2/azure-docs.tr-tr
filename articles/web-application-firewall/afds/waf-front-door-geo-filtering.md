@@ -93,7 +93,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | GR | Yunanistan|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hong Kong ÖiB|
+| HK | Hong Kong ÖİB|
 | HN | Honduras|
 | HR | Hırvatistan|
 | HT | Haiti|

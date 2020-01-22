@@ -141,7 +141,7 @@ Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirteb
 | DE         | Almanya              | EUR               |
 | GR         | Yunanistan               | EUR               |
 | GT         | Guatemala            | GTQ               |
-| HK         | Hong Kong ÖiB        | HKD               |
+| HK         | Hong Kong ÖİB        | HKD               |
 | HU         | Macaristan              | KUF               |
 | IS         | İzlanda              | ISK               |
 | IN         | Hindistan                | INR               |
