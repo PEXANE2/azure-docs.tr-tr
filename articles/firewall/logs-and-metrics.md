@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 01/22/2020
 ms.author: victorh
-ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974516"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315040"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Güvenlik Duvarı günlükleri ve ölçümleri
 
@@ -103,17 +103,19 @@ Aşağıdaki ölçümler Azure Güvenlik Duvarı için kullanılabilir:
 
     Birim: bayt
 
-- **Güvenlik duvarı sistem** durumu-güvenlik duvarının sistem durumunu gösterir.
+- **Güvenlik duvarı sistem** durumu-güvenlik DUVARıNıN, SNAT bağlantı noktası kullanılabilirliğine göre sistem durumunu gösterir.
 
     Birim: yüzde
 
    Bu ölçümün iki boyutu vardır:
-  - **Durum**: olası değerler *sağlıklı*, *düşürülmüş*, *sağlıksız*.
-  - **Neden**: güvenlik duvarının ilgili durumunun nedenini gösterir. Örneğin, güvenlik duvarı durumu düşürüldü veya sağlıksız ise, bu, *SNAT bağlantı noktalarını* belirtebilir.
+  - Durum: olası değerler *sağlıklı*, *düşürülmüş*, *sağlıksız*.
+  - Neden: güvenlik duvarının ilgili durumunun nedenini gösterir. 
 
+     SNAT bağlantı noktaları %95 > kullanılırsa, tükendikleri kabul edilir ve durum =**düşürülmüş** ve Reason =**SNAT bağlantı noktası**ile sistem durumu %50 olur. Güvenlik Duvarı, işleme trafiğinin ve mevcut bağlantıların etkilenmemesini önler. Bununla birlikte, yeni bağlantılar zaman zaman kurulamayabilir.
 
+     SNAT bağlantı noktaları %95 < kullanılırsa, güvenlik duvarı sağlıklı olarak değerlendirilir ve sistem durumu %100 olarak gösterilir.
 
-
+     Hiçbir SNAT bağlantı noktası kullanımı bildirilmezse, sistem durumu %0 olarak gösterilir. 
 
 - **SNAT bağlantı noktası kullanımı** -güvenlik duvarı tarafından kullanılan SNAT bağlantı noktalarının yüzdesi.
 

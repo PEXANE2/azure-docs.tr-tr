@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7a0cf3c41929eb6a020a9d4761b08a2a4f2f6caa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460392"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314768"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure depolama ölçümlerini ve günlüğe kaydetme, AzCopy ve Ileti Çözümleyicisi kullanarak uçtan uca sorun giderme
 
@@ -143,10 +143,10 @@ Artık, eklediğiniz diğer ölçümler ile birlikte izleme grafiğinde **başar
 
 Azure depolama sunucu günlük verilerini bloblara yazar, ölçümler tablolara yazılır. Günlük blob 'ları, depolama hesabınız için iyi bilinen `$logs` kapsayıcısında kullanılabilir. Günlük Blobları yıl, ay, gün ve saate göre hiyerarşik olarak adlandırılır. böylece, araştırmak istediğiniz zaman aralığını kolayca bulabilirsiniz. Örneğin, `storagesample` hesabında, 8-9 ' den itibaren 01/02/2015 için günlük Blobları için kapsayıcı `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Bu kapsayıcıdaki her bir blob, `000000.log`başlayarak ardışık olarak adlandırılır.
 
-Bu sunucu tarafı günlük dosyalarını yerel makinenizde seçtiğiniz bir konuma indirmek için AzCopy komut satırı aracını kullanabilirsiniz. Örneğin, `C:\Temp\Logs\Server`klasöre 2 Ocak 2015 tarihinde gerçekleşen blob işlemlerine yönelik günlük dosyalarını indirmek için aşağıdaki komutu kullanabilirsiniz; `<storageaccountname>` değerini depolama hesabınızın adıyla ve `<storageaccountkey>` hesap erişim anahtarınızla değiştirin:
+Bu sunucu tarafı günlük dosyalarını yerel makinenizde seçtiğiniz bir konuma indirmek için AzCopy komut satırı aracını kullanabilirsiniz. Örneğin, `C:\Temp\Logs\Server`klasöre 2 Ocak 2015 tarihinde gerçekleşen blob işlemlerine yönelik günlük dosyalarını indirmek için aşağıdaki komutu kullanabilirsiniz; `<storageaccountname>` değerini depolama hesabınızın adıyla değiştirin:
 
 ```azcopy
-AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
+azcopy copy 'http://<storageaccountname>.blob.core.windows.net/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
 ```
 
 AzCopy, [Azure İndirmeleri](https://azure.microsoft.com/downloads/) sayfasında indirilebilir. AzCopy kullanma hakkında ayrıntılı bilgi için bkz. [AzCopy komut satırı yardımcı programıyla veri aktarma](storage-use-azcopy.md).

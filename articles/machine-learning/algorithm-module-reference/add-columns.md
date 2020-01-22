@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 55981279cb1902424d1a0f77af097dc379d7222f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5e1390cb45fc6f659883ddfc8624719e45f99ce
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493968"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314598"
 ---
 # <a name="add-columns-module"></a>Sütun ekleme modülü
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 İki veri kümesini birleştirmek için bu modülü kullanın. Tek bir veri kümesi oluşturmak için giriş olarak belirttiğiniz iki veri kümesindeki tüm sütunları birleştirebilirsiniz. İkiden fazla veri kümesini birleştirmeniz gerekiyorsa, **sütun Ekle**' nin birkaç örneğini kullanın.
 
@@ -38,11 +38,11 @@ Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıkla
 ### <a name="results"></a>Sonuçlar
 İşlem hattı çalıştırıldıktan sonra:
 
-- Yeni veri kümesinin ilk satırlarını görmek için **sütun Ekle** ' nin çıktısına sağ tıklayın ve Görselleştir ' i seçin.
+- Yeni veri kümesinin ilk satırlarını görmek için, **sütun Ekle** modülüne sağ tıklayın ve Görselleştir ' i seçin. Ya da modülü seçip sağ paneldeki **çıktılar** sekmesine geçiş yapın ve sonucu görselleştirmek Için **bağlantı noktası çıktılarında** histogram simgesine tıklayın.
 
 Yeni veri kümesindeki sütun sayısı, her iki giriş veri kümesinin sütunlarının toplamına eşittir.
 
-Giriş veri kümelerinde aynı ada sahip iki sütun varsa, sütunun adına bir sayısal sonek eklenir. Örneğin, Targetoutal adlı bir sütunun iki örneği varsa, sol sütun TargetOutcome_1 olarak yeniden adlandırılır ve doğru sütun TargetOutcome_2 olarak yeniden adlandırılır.
+Giriş veri kümelerinde aynı ada sahip iki sütun varsa, sütunun adına bir sayısal sonek eklenir. Örneğin, Targetoutal adlı bir sütunun iki örneği varsa, sol sütun TargetOutcome_1 olarak yeniden adlandırılır ve doğru sütun TargetOutcome_2 yeniden adlandırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

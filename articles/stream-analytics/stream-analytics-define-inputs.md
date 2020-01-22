@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 72568be0cf87770e8878f95de4a9c82842b470df
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/17/2020
+ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646855"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314802"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics giriş olarak Stream veri
 
@@ -55,6 +55,7 @@ Aşağıdaki tabloda her bir özellik açıklanmaktadır **yeni giriş** sayfas�
 | **Olay hub'ı adı** | Giriş olarak kullanmak için olay hub'ının adı. |
 | **Olay hub'ı ilke adı** | Olay Hub'ına erişimi sağlayan paylaşılan erişim ilkesi. Her paylaşılan erişim ilkesinin bir adı ayarlayın ve erişim anahtarları izinleri vardır. Olay hub'ı ayarlarını sağlama seçeneği seçmediğiniz sürece bu seçenek otomatik olarak, doldurulur el ile.|
 | **Olay hub'ı tüketici grubu** (önerilir) | Her bir Stream Analytics işi için ayrı bir tüketici grubu kullanmak için önerilir. Bu dize, olay hub'ından veri alma işlemini tüketici grubu tanımlar. Henüz hiç tüketici grubu belirtilirse, Stream Analytics işi $Default tüketici grubu kullanır.  |
+| **Bölüm anahtarı** | Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını ekleyebilirsiniz. Bölüm anahtarları isteğe bağlıdır ve bu özellikte bir bölüm veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını artırmak için kullanılır. |
 | **Olay serileştirme biçimi** | Gelen veri akışının serileştirme biçimi (JSON, CSV, Avro veya [diğer (prototip, XML, özel...)](custom-deserializer.md)).  JSON biçimini belirtimiyle uyumludur ve ondalık sayılar için önde gelen 0 içermez emin olun. |
 | **Kodlama** | UTF-8, şu anda desteklenen tek kodlama biçimi aşamasındadır. |
 | **Olay sıkıştırma türü** | Hiçbiri (varsayılan), GZip veya Deflate gibi gelen veri akışını okumak için kullanılan sıkıştırma türü. |
@@ -104,6 +105,7 @@ Aşağıdaki tabloda her bir özellik açıklanmaktadır **yeni giriş** Giriş 
 | **Paylaşılan erişim ilkesi adı** | IOT Hub'ına erişimi sağlayan paylaşılan erişim ilkesi. Her paylaşılan erişim ilkesinin bir adı ayarlayın ve erişim anahtarları izinleri vardır. |
 | **Paylaşılan Erişim İlkesi anahtarı** | IOT hub'ına erişim yetkisi vermek için kullanılan paylaşılan erişim anahtarı.  IOT hub'ının ayarlarını sağlama seçeneği seçmediğiniz sürece bu seçenek, otomatik olarak doldurulur el ile. |
 | **Tüketici grubu** | Her bir Stream Analytics iş için farklı bir tüketici grubu kullanmanızı önemle tavsiye edilir. Tüketici grubu, IOT Hub'ından veri almak için kullanılır. Stream Analytics, aksi belirtilmedikçe $Default tüketici grubu kullanır.  |
+| **Bölüm anahtarı** | Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını ekleyebilirsiniz. Bölüm anahtarları isteğe bağlıdır ve bu özellikte bir bölüm veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını artırmak için kullanılır. |
 | **Olay serileştirme biçimi** | Gelen veri akışının serileştirme biçimi (JSON, CSV, Avro veya [diğer (prototip, XML, özel...)](custom-deserializer.md)).  JSON biçimini belirtimiyle uyumludur ve ondalık sayılar için önde gelen 0 içermez emin olun. |
 | **Kodlama** | UTF-8, şu anda desteklenen tek kodlama biçimi aşamasındadır. |
 | **Olay sıkıştırma türü** | Hiçbiri (varsayılan), GZip veya Deflate gibi gelen veri akışını okumak için kullanılan sıkıştırma türü. |
@@ -157,6 +159,7 @@ Aşağıdaki tabloda her bir özellik açıklanmaktadır **yeni giriş** Blob de
 | **Yol deseni** (isteğe bağlı) | Belirtilen kapsayıcı içindeki blobları bulmak için kullanılan dosya yolu. Kapsayıcının kökünden blob 'ları okumak istiyorsanız, bir yol kalıbı ayarlamayın. Yol, aşağıdaki üç değişkenin bir veya daha fazla örneğini belirtebilirsiniz: `{date}`, `{time}`, veya `{partition}`<br/><br/>Örnek 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Örnek 2: `cluster1/logs/{date}`<br/><br/>`*` Karakter yol ön eki için izin verilen bir değer değil. Yalnızca geçerli <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure blob karakter</a> izin verilir. Kapsayıcı adlarını veya dosya adlarını eklemeyin. |
 | **Tarih biçimi** (isteğe bağlı) | Yolda bir tarih değişkeniyle kullanırsanız, tarihi biçimlendirmek dosyaları düzenlenir. Örnek: `YYYY/MM/DD` |
 | **Saat biçimi** (isteğe bağlı) |  Yolda zaman değişken kullanırsanız, biçiminde zamanı dosyaları düzenlenir. Şu anda desteklenen tek değerdir `HH` saat. |
+| **Bölüm anahtarı** | Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını ekleyebilirsiniz. Bölüm anahtarları isteğe bağlıdır ve bu özellikte bir bölüm veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını artırmak için kullanılır. |
 | **Olay serileştirme biçimi** | Gelen veri akışının serileştirme biçimi (JSON, CSV, Avro veya [diğer (prototip, XML, özel...)](custom-deserializer.md)).  JSON biçimini belirtimiyle uyumludur ve ondalık sayılar için önde gelen 0 içermez emin olun. |
 | **Kodlama** | CSV ve JSON, UTF-8, şu anda desteklenen tek kodlama biçimi içindir. |
 | **Sıkıştırma** | Hiçbiri (varsayılan), GZip veya Deflate gibi gelen veri akışını okumak için kullanılan sıkıştırma türü. |

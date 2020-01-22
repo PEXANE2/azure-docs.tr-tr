@@ -3,12 +3,12 @@ title: Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine e
 description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri ekleneceğini ve bunların kendi kiracınız aracılığıyla kaynaklarına erişilmesine ve yönetilmesine izin vermeyi öğrenin.
 ms.date: 01/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09e42a65891494370250fbab9b22cdf37a6fd318
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ca9e17a9ee4e83492eccf63e4c7d353891071f27
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834123"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314632"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
@@ -39,7 +39,7 @@ Bir müşterinin kiracısını eklemek için etkin bir Azure aboneliğine sahip 
 
 Bu KIMLIK değerleri zaten yoksa, bunları aşağıdaki yollarla alabilirsiniz. Dağıtımınızda bu tam değerleri kullandığınızdan emin olun ve bunları kullanın.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
 
 Kiracı KIMLIĞINIZ, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelerek veya **Dizin Değiştir**' i seçerek görülebilir. Kiracı KIMLIĞINIZI seçmek ve kopyalamak için Portal içinden "Azure Active Directory" araması yapın, ardından **Özellikler** ' i seçin ve **dizin kimliği** alanında gösterilen değeri kopyalayın. Müşterinin kiracısında bir aboneliğin KIMLIĞINI bulmak için, "abonelikler" araması yapın ve ardından uygun abonelik KIMLIĞINI seçin.
 
@@ -229,15 +229,15 @@ New-AzDeployment -Name <deploymentName> `
 # Log in first with az login if you're not using Cloud Shell
 
 # Deploy Azure Resource Manager template using template and parameter file locally
-az deployment create –-name <deploymentName> \
+az deployment create --name <deploymentName> \
                      --location <AzureRegion> \
                      --template-file <pathToTemplateFile> \
                      --parameters <parameters/parameterFile> \
                      --verbose
 
 # Deploy external Azure Resource Manager template, with local parameter file
-az deployment create –-name <deploymentName \
-                     –-location <AzureRegion> \
+az deployment create --name <deploymentName \
+                     --location <AzureRegion> \
                      --template-uri <templateUri> \
                      --parameters <parameterFile> \
                      --verbose
@@ -247,7 +247,7 @@ az deployment create –-name <deploymentName \
 
 Bir müşteri aboneliği Azure tarafından atanan kaynak yönetimine başarıyla eklendi, hizmet sağlayıcı kiracısındaki kullanıcılar aboneliği ve kaynaklarını görebilir (Yukarıdaki işlem aracılığıyla bu hizmete erişim verildiyse, ayrı ayrı veya bir Azure AD grubunun üyesi olarak uygun izinlere sahip olmalıdır). Bunu onaylamak için, aboneliğin aşağıdaki yollarla göründüğünden emin olun.  
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
 
 Hizmet sağlayıcısının kiracısında:
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: b49ff44e898a78d865278df087aca75e4f8e50ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b3d79438797f47dfcc178640af60f5207b4f7650
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466040"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314649"
 ---
 # <a name="multiclass-neural-network-module"></a>Birden çok Lass sinir ağ modülü
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Birden çok değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinir ağ modeli oluşturmak için bu modülü kullanın. 
 
@@ -56,7 +56,7 @@ Belirli bir girdi için ağın çıkışını hesaplamak üzere, Gizli katmanlar
         - Çıktı Katmanı gizli katmana tam olarak bağlanır.
         - Gizli katman, giriş katmanına tam olarak bağlanır.
         - Giriş katmanındaki düğümlerin sayısı eğitim verilerinde özelliklerin sayısına göre belirlenir.
-        - Gizli katmandaki düğümlerin sayısı Kullanıcı tarafından ayarlanabilir. Varsayılan değer 100 ' dir.
+        - Gizli katmandaki düğümlerin sayısı Kullanıcı tarafından ayarlanabilir. 100 varsayılan değerdir.
         - Çıkış katmanındaki düğümlerin sayısı, sınıfların sayısına bağlıdır.
   
    
@@ -86,10 +86,7 @@ Belirli bir girdi için ağın çıkışını hesaplamak üzere, Gizli katmanlar
 
 Eğitim tamamlandıktan sonra:
 
-- Modellerden öğrenilen Özellik ağırlıklarından ve sinir ağın diğer parametreleriyle birlikte model parametrelerinin özetini görmek için eğitim [modeli](./train-model.md) çıktısına sağ tıklayın ve **Görselleştir**' i seçin.  
-
-- Eğitilen modelin anlık görüntüsünü kaydetmek için **eğitilen model** çıktısına sağ tıklayın ve **eğitilen model olarak kaydet**' i seçin. Bu model, aynı işlem hattının art arda çalıştırmalarından güncelleştirilmedi.
-
+- Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

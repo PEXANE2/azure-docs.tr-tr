@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1b5950c3769431420c199711190a02ad0be1e177
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 71041012bc77da6d7613deb178c3cec1413e57e2
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863504"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314903"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Time Series Insights ortamınız için Azure portal kullanarak bir başvuru veri kümesi oluşturun
 
@@ -38,7 +38,9 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
 1. Mevcut Azure Time Series Insights ortamınızı bulun. Azure portal sol tarafındaki menüden **tüm kaynaklar** ' ı seçin. Zaman Serisi Görüşleri ortamınızı seçin.
 
-1. **Genel bakış** sayfasını seçin. **Time Series Insights Explorer URL 'sini** bulun ve bağlantıyı açın.  
+1. **Genel bakış** sayfasını seçin. **Time Series Insights gezgin URL 'sini** bulmak ve bağlantıyı açmak için sayfanın üst kısmındaki **temel** bileşenler bölümünü genişletin.  
+
+   [![Expand temel bileşenleri bölümü](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
    Time Series Insights ortamınızın Gezginini görüntüleyin.
 

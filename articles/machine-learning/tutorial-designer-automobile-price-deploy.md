@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma'
 titleSuffix: Azure Machine Learning
-description: Bu öğreticide, Azure Machine Learning tasarımcısında bir tahmine dayalı analiz çözümü oluşturma (Önizleme) gösterilmektedir. Sürükle ve bırak modüllerini kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma.
+description: Bu öğreticide, Azure Machine Learning tasarımcısında tahmine dayalı analiz çözümünün nasıl oluşturulacağı gösterilmektedir. Sürükle ve bırak modüllerini kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 904e6bf7446ec865bfbd88b87ac3e01036438682
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 89fdac5e59b59c60d7e20b94799d78b029d236d6
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647280"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315006"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma (Önizleme)
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Diğer kullanıcılara bunu kullanma şansı vermek için [öğreticinin birinci](tutorial-designer-automobile-price-train-score.md) kısmında geliştirilen tahmine dayalı modeli dağıtabilirsiniz. Birinci bölümde, modelinizi eğitilolursunuz. Şimdi, kullanıcı girişine göre yeni tahmin oluşturma zamanı. Öğreticinin bu bölümünde şunları yapmanız gerekir:

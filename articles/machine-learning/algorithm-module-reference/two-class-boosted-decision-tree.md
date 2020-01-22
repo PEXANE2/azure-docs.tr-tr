@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7590cab00670c92e8a5b90006778542ec44bf83f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1cbbc3f0c78954b92c1265795ba365be9dc0e38c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490166"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315091"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>İki sınıf önceden artırılmış karar ağacı modülü
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Bu modülü, bir makine öğrenimi modeli oluşturmak için, artırılmış karar ağaçları algoritmasına dayalı olarak kullanın. 
 
@@ -63,15 +63,14 @@ Bu tür modeli [eğitme modeli](././train-model.md)kullanarak eğitebilirsiniz.
 9. Modeli eğitme.
   
     + **Tek parametre**için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](./train-model.md) modülünü bağlayın.  
-  
    
 ## <a name="results"></a>Sonuçlar
 
-Model eğitimi tamamlandıktan sonra, sonuçları görüntülemek için [eğitim modeli](./train-model.md) çıktısına sağ tıklayın:
+Eğitim tamamlandıktan sonra:
 
-+ Her yinelemede oluşturulan ağacı görmek için, **Görselleştir**' i seçin. 
-+ Bölünmeleri incelemek ve her bir düğümün kurallarını görmek için her bir ağaca tıklayın.
++ Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
 
++ Puanlama için modeli kullanmak üzere, bir işlem hattına **puan modeli** modülünü ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

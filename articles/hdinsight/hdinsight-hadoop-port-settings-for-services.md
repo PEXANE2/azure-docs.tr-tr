@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 46c2cd49258b8eb6813caaf50e9895990ce67287
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529550"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314700"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight üzerinde Apache Hadoop Hizmetleri tarafından kullanılan bağlantı noktaları
 
@@ -53,6 +53,7 @@ Aşağıdakiler, belirli küme türleri için kullanılabilir:
 | Livy |443 |HTTPS |Spark |Spark REST API. Bkz. [Apache Spark Işlerini Apache Livy kullanarak uzaktan gönderme](spark/apache-spark-livy-rest-interface.md) |
 | Spark Thrift sunucusu |443 |HTTPS |Spark |Hive sorguları göndermek için kullanılan Spark Thrift sunucusu. Bkz. [HDInsight üzerinde Apache Hive Beeline kullanma](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Fırtınası Web Kullanıcı arabirimi. Bkz. [HDInsight 'ta Apache Storm topolojilerini dağıtma ve yönetme](storm/apache-storm-deploy-monitor-topology-linux.md) |
+| Kafka Rest proxy |443 |HTTPS |Kafka |Kafka REST API. Bkz. [rest proxy kullanarak Azure HDInsight 'ta Apache Kafka kümeleriyle etkileşim kurma](kafka/rest-proxy.md) |
 
 ### <a name="authentication"></a>Kimlik Doğrulaması
 
@@ -104,7 +105,7 @@ Aşağıdakiler, belirli küme türleri için kullanılabilir:
 | Kaynak Yöneticisi uygulama arabirimi |baş düğümler |8050 |HTTP |Uygulama Yöneticisi arabiriminin adresi |
 | NodeManager |Tüm çalışan düğümleri |30050 |&nbsp; |Kapsayıcı yöneticisinin adresi |
 | NodeManager Web Kullanıcı arabirimi |Tüm çalışan düğümleri |30060 |HTTP |Kaynak Yöneticisi arabirimi |
-| Zaman çizelgesi adresi |Baş düğümler |10200 |PRC |Zaman çizelgesi hizmeti RPC hizmeti. |
+| Zaman çizelgesi adresi |Baş düğümler |10200 |RPC |Zaman çizelgesi hizmeti RPC hizmeti. |
 | Zaman çizelgesi Web Kullanıcı arabirimi |Baş düğümler |8188 |HTTP |Zaman çizelgesi hizmeti Web Kullanıcı arabirimi |
 
 ### <a name="hive-ports"></a>Hive bağlantı noktaları
@@ -140,7 +141,7 @@ Aşağıdakiler, belirli küme türleri için kullanılabilir:
 | Hizmet | Düğümler | Bağlantı noktası | Protokol | Açıklama |
 | --- | --- | --- | --- | --- |
 | Zaman çizelgesi (uygulama geçmişi) |Baş düğümler |6188 |HTTP |Zaman çizelgesi hizmeti Web Kullanıcı arabirimi |
-| Zaman çizelgesi (uygulama geçmişi) |Baş düğümler |30200 |PRC |Zaman çizelgesi hizmeti Web Kullanıcı arabirimi |
+| Zaman çizelgesi (uygulama geçmişi) |Baş düğümler |30200 |RPC |Zaman çizelgesi hizmeti Web Kullanıcı arabirimi |
 
 ### <a name="hbase-ports"></a>HBase bağlantı noktaları
 
@@ -157,6 +158,7 @@ Aşağıdakiler, belirli küme türleri için kullanılabilir:
 | --- | --- | --- | --- | --- |
 | 'Ndan |Çalışan düğümleri |9092 |[Kafka tel Protokolü](https://kafka.apache.org/protocol.html) |İstemci iletişimi için kullanılır |
 | &nbsp; |Zookeeper düğümleri |2181 |&nbsp; |İstemcilerin Zookeeper 'e bağlanmak için kullandığı bağlantı noktası |
+| REST proxy | Kafka yönetim düğümleri |9400 |HTTPS |[Kafka REST belirtimi](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
 
 ### <a name="spark-ports"></a>Spark bağlantı noktaları
 
@@ -164,7 +166,7 @@ Aşağıdakiler, belirli küme türleri için kullanılabilir:
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift sunucuları |Baş düğümler |10002 |Thrift | &nbsp; | Spark SQL 'e bağlanma hizmeti (Thrift/JDBC) |
 | Livy sunucusu | Baş düğümler | 8998 | HTTP | &nbsp; | Deyimleri, işleri ve uygulamaları çalıştırmak için hizmet |
-| Jupyter Not defteri | Baş düğümler | 8001 | HTTP | &nbsp; | Jupyter Not defteri Web sitesi |
+| Jupyter notebook | Baş düğümler | 8001 | HTTP | &nbsp; | Jupyter Not defteri Web sitesi |
 
 Örnekler:
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 0ab4a0ebf2844d064e40c8417ab22162d2d0ded6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ca47bed45f8d726010dde40a936da6f93eb0b140
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485865"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315023"
 ---
 # <a name="two-class-support-vector-machine-module"></a>İki sınıf destek vektör makinesi modülü
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Destek vektör makinesi algoritmasına dayalı bir model oluşturmak için bu modülü kullanın. 
 
@@ -66,16 +66,15 @@ Bu model türü için, sınıflandırıcının eğitimi için kullanmadan önce 
   
     -   **Tek parametreye**oluşturma ve ayarlama **modunu** ayarlarsanız, [model eğitme](train-model.md) modülünü kullanın.
   
-
 10. İşlem hattını çalıştırma.
 
 ## <a name="results"></a>Sonuçlar
 
 Eğitim tamamlandıktan sonra:
 
-+ Modellerden öğrenilen Özellik ağırlıklarla birlikte model parametrelerinin özetini görmek için eğitim [modeli](./train-model.md)çıktısına sağ tıklayın ve **Görselleştir**' i seçin.
++ Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
 
-+ Öngörülere sahip olmak için eğitilen modelleri kullanmak için eğitilen modeli [puan modeli](score-model.md) modülüne bağlayın.
++ Puanlama için modeli kullanmak üzere, bir işlem hattına **puan modeli** modülünü ekleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

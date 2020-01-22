@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d5cc0f06e9fb95894df30af1322d47337f51e314
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 38b37a386e4e9829b5d90e31067ec9f6aaf75502
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466002"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314921"
 ---
 # <a name="neural-network-regression-module"></a>Sinir ağ gerileme modülü
 
@@ -24,7 +24,7 @@ ms.locfileid: "73466002"
   
 ## <a name="module-overview"></a>Modüle genel bakış  
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Özelleştirilebilir bir sinir ağı algoritması kullanarak regresyon modeli oluşturmak için bu modülü kullanın.
   
@@ -91,10 +91,7 @@ Sinir ağları kapsamlı bir şekilde özelleştirilebilir. Bu bölümde, iki y�
 
 Eğitim tamamlandıktan sonra:
 
-+ Modellerden öğrenilen Özellik ağırlıklarından ve sinir ağın diğer parametreleriyle birlikte model parametrelerinin bir özetini görmek için eğitim [modeli](./train-model.md)çıktısına sağ tıklayın ve **Görselleştir**' i seçin.  
-
-+ Eğitilen modelin anlık görüntüsünü kaydetmek için **eğitilen model** çıktısına sağ tıklayın ve **eğitilen model olarak kaydet**' i seçin. Bu model, aynı işlem hattının art arda çalıştırmalarından güncelleştirilmedi.
-
+- Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

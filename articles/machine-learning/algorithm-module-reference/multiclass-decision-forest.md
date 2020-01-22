@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 85459fe586ccbb5adb1e86b153ec63252c0cce2d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f100271162d20f5d13033efcd04bfa20081b6073
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466012"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314666"
 ---
 # <a name="multiclass-decision-forest-module"></a>Birden çok Lass karar ormanı modülü
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 *Karar ormanı* algoritmasını temel alan bir makine öğrenimi modeli oluşturmak için bu modülü kullanın. Karar verme ormanı, etiketli verilerden öğrenirken, bir dizi karar ağacının hızla bir dizisini oluşturan bir ensebir modeldir.
 
@@ -76,12 +76,6 @@ Azure Machine Learning karar ormanı Sınıflandırıcısı, karar ağaçların�
 
 11. İşlem hattını çalıştırma.
 
-## <a name="results"></a>Sonuçlar
-
-Eğitim tamamlandıktan sonra:
-
-+ Her yinelemede oluşturulan ağacı görmek için [eğitim modeli](./train-model.md) modülünün çıktısına sağ tıklayın ve **Görselleştir**' i seçin.
-+ Her bir düğümün kurallarını görmek için, her bir ağaca tıklayarak bölünmeleri inceleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

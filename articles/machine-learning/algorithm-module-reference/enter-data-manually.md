@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7c4d62c19984e1316a01213f579c059b97f709c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 509b82596ce4819152fcd8d0bc202df186a20095
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497940"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314853"
 ---
 # <a name="enter-data-manually-module"></a>Verileri el Ile gir modülü
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
 Değer yazarak küçük bir veri kümesi oluşturmak için bu modülü kullanın. Veri kümesinde birden çok sütun olabilir.
   
@@ -84,7 +84,7 @@ Bu modül bunlar gibi senaryolarda yararlı olabilir:
   
         [Verileri el Ile gir](./enter-data-manually.md) modülünü çalıştırdığınızda, bu satırlar sütun ve dizin değerlerinin veri kümesine aşağıdaki şekilde dönüştürülür:  
   
-        |Süt|Col2|Col3|Col4|Etiketler|  
+        |Süt1|Süt2|Col3|Col4|Etiketler|  
         |-|-|-|-|-|  
         |0,00016|0,004|0,999961|0,00784|1|  
         |0|0,004|0,999955|0,008615|1|  
@@ -97,9 +97,9 @@ Bu modül bunlar gibi senaryolarda yararlı olabilir:
   
      Eksik değerleri olan satırlar oluşturursanız, bunları her zaman daha sonra filtreleyebilirsiniz.  
   
-5.  Modüle sağ tıklayın ve verileri ayrıştırmak ve veri kümesi olarak çalışma alanınıza yüklemek için **Seçileni Çalıştır** ' ı seçin.  
+5.  Çıkış bağlantı noktasını diğer modüllere bağlayın ve işlem hattını çalıştırın.  
   
-     Veri kümesini görüntülemek için çıkış bağlantı noktasına tıklayın ve **Görselleştir**' i seçin.  
+     Veri kümesini görüntülemek için modüle sağ tıklayın ve **Görselleştir**' i seçin.  
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

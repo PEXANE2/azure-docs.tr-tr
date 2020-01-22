@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 74d209adf745d1a3c319ef6567b2a7818a5fd514
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152265"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314734"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -167,6 +167,11 @@ Belge okundu ve işlendi, ancak dizin alanlarının yapılandırmasındaki bir u
 Tüm bu durumlarda, Dizin şemasını doğru bir şekilde oluşturup uygun [Dizin Oluşturucu alan eşlemelerini](search-indexer-field-mappings.md)ayarlamış olduğunuzdan emin olmak için, Dizin oluşturucular Için [desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) ve [veri türü eşlemesi](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) ' ne bakın. Hata iletisi, uyuşmazlığın kaynağını izlemeye yardımcı olabilecek ayrıntıları içerir.
 
 <a name="could-not-process-document-within-indexer-max-run-time"/>
+
+## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Hata: tablo bileşik bir birincil anahtara sahip olduğundan, tümleşik değişiklik izleme ilkesi kullanılamıyor
+
+Bu SQL tabloları için geçerlidir ve genellikle anahtar bileşik anahtar olarak tanımlandığında veya tablo benzersiz bir kümelenmiş dizin tanımlamışsa (bir SQL dizininde olduğu gibi, bir Azure Search dizininde olduğu gibi) olur. Ana neden, anahtar özniteliğinin [benzersiz bir kümelenmiş dizin](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)durumunda bileşik birincil anahtar olacak şekilde değiştirilmektedir. Bu durumda, SQL Tablonuzun benzersiz bir kümelenmiş dizine sahip olmadığından veya anahtar alanını yinelenen değerler içermediği garanti edilen bir alanla eşleştirdiğinizden emin olun.
+
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Hata: Dizin Oluşturucu en fazla çalışma süresi içinde belge işlenemedi
 

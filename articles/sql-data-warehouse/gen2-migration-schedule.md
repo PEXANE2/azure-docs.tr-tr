@@ -9,14 +9,14 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 01/21/2020
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 888f50d645c9b3babf95335e434db65423108ccb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f793fd68c83f90b87182647eef47a07eb452f45
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693026"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314785"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Veri Ambarınızı Gen2 'ye yükseltme
 
@@ -33,41 +33,12 @@ Aşağıdaki tabloda, alt Gen2 işlem katmanı kullanılabilir olduğunda ve oto
 
 | **Bölge** | **Düşük Gen2 kullanılabilir** | **Otomatik yükseltmeler başlar** |
 |:--- |:--- |:--- |
-| Avustralya Doğu |Kullanılabilir |Tamamlama |
-| Avustralya Güneydoğu |Kullanılabilir |Tamamlama |
-| Güney Brezilya |Kullanılabilir |Tamamlama |
-| Orta Kanada |Kullanılabilir |Tamamlama |
-| Doğu Kanada |1 Haziran 2020 |1 Temmuz 2020 |
-| Orta ABD |Kullanılabilir |Tamamlama |
+| Kanada Doğu |1 Haziran 2020 |1 Temmuz 2020 |
 | Çin Doğu |\* |\* |
-| Çin Doğu 2 |Kullanılabilir |Tamamlama |
 | Çin Kuzey |\* |\* |
-| Çin Kuzey 2 |Kullanılabilir |Tamamlama |
-| Doğu Asya |Kullanılabilir |Tamamlama |
-| Doğu ABD |Kullanılabilir |Tamamlama |
-| Doğu ABD 2 |Kullanılabilir |Tamamlama |
-| Fransa Orta |Kullanılabilir |Devam eden |
 | Almanya Orta |\* |\* |
-| Almanya Orta Batı |1 Eylül 2019|1 Ekim 2019 |
-| Hindistan Orta |Kullanılabilir |Tamamlama |
-| Hindistan Güney |Kullanılabilir |Tamamlama |
-| Hindistan Batı |1 Temmuz 2019 |Devam eden |
-| Japonya Doğu |Kullanılabilir |Tamamlama |
-| Japonya Batı |Kullanılabilir |Tamamlama |
-| Kore Orta |Kullanılabilir |Tamamlama |
-| Kore Güney |Kullanılabilir |Tamamlama |
-| Orta Kuzey ABD |Kullanılabilir |Tamamlama |
-| Kuzey Avrupa |Kullanılabilir |Tamamlama |
-| Güney Afrika Kuzey |12 Temmuz 2019 |Tamamlama |
-| Orta Güney ABD |Kullanılabilir |Tamamlama |
-| Güneydoğu Asya |Kullanılabilir |Tamamlama |
-| BAE Kuzey |20 Temmuz 2019 |Tamamlama |
-| Birleşik Krallık Güney |Kullanılabilir |Devam eden |
-| Birleşik Krallık Batı |Kullanılabilir |Devam eden |
-| Batı Orta ABD |1 Kasım 2019 |1 Aralık 2019|
-| Batı Avrupa |Kullanılabilir |Tamamlama |
-| Batı ABD |Kullanılabilir |Tamamlama |
-| Batı ABD 2 |Kullanılabilir |Tamamlama |
+| Almanya Batı Orta |Kullanılabilir |1 Mayıs 2020 |
+| Hindistan Batı |Kullanılabilir |1 Mayıs 2020  |
 
 ## <a name="automatic-upgrade-process"></a>Otomatik yükseltme işlemi
 
@@ -135,7 +106,7 @@ Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-gene
 - Y: Gen1 üzerinde DW600 veya DW1200 çalıştırıyorsanız, DW1000c daha fazla bellek, kaynak ve daha yüksek performans olduğundan Gen2 sırasıyla DW500c veya Gen1 kullanılması önerilir.
 
 **S: coğrafi yedeklemeyi devre dışı bırakabilir miyim?**
-- Y: Hayır. Coğrafi yedekleme, bir bölgenin kullanılamaz duruma gelmesi durumunda veri ambarı kullanılabilirliğinin korunmasının bir kurumsal özelliğidir. Daha fazla endişeniz varsa bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) açın.
+- C: Hayır. Coğrafi yedekleme, bir bölgenin kullanılamaz duruma gelmesi durumunda veri ambarı kullanılabilirliğinin korunmasının bir kurumsal özelliğidir. Daha fazla endişeniz varsa bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) açın.
 
 **S: T-SQL sözdiziminde gen1 ve Gen2 arasında bir fark var mı?**
 
@@ -147,7 +118,7 @@ Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-gene
 
 **S: bölgem yükseltildikten sonra yeni bir Gen1 örneği oluşturabileceksiniz mi?**
 
-- Y: Hayır. Bir bölge yükseltildikten sonra, yeni Gen1 örneklerinin oluşturulması devre dışı bırakılır.
+- C: Hayır. Bir bölge yükseltildikten sonra, yeni Gen1 örneklerinin oluşturulması devre dışı bırakılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

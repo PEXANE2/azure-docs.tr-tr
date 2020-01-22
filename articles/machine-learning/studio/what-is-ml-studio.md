@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: c0dcd8f8f5ecd2d333e610c96ea89a44f8f4c547
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f3be29dc222e0e9b98ed51d8f921fb9926b018ca
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528360"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314088"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Machine Learning Studio (klasik) nedir?
 
@@ -38,13 +38,13 @@ Programlama gerekmez, tahmine dayalı analiz modelinizi oluşturmak için veri k
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Machine Learning Studio (klasik) Azure Machine Learning nasıl farklıdır?
 
-[Azure Machine Learning](../overview-what-is-azure-ml.md) , **hem SDK 'ları hem de** Azure Machine Learning tasarımcısını (Önizleme) sağlayarak verileri hızlı bir şekilde hazırlayın, makine öğrenimi modellerini eğitme ve dağıtın. Tasarımcı, Studio 'ya benzer bir sürükle ve bırak deneyimi sağlar (klasik). Ancak, Studio 'nun özel işlem platformunun (klasik) aksine, tasarımcı kendi işlem kaynaklarınızı kullanır ve Azure Machine Learning tamamen tümleşiktir.
+[Azure Machine Learning](../overview-what-is-azure-ml.md) , hem SDK 'ları **hem** de Azure Machine Learning tasarımcısını sağlar ve bu sayede, makine öğrenimi modellerini hızla geliştirebilir, eğitim ve dağıtım yapın. Tasarımcı, Studio 'ya benzer bir sürükle ve bırak deneyimi sağlar (klasik). Ancak, Studio 'nun özel işlem platformunun (klasik) aksine, tasarımcı kendi işlem kaynaklarınızı kullanır ve Azure Machine Learning tamamen tümleşiktir.
 
 Hızlı bir karşılaştırma aşağıda verilmiştir:
 
 || Machine Learning Studio (klasik) | Azure Machine Learning |
 |---| --- | --- |
-| Sürükle ve bırak arabirimi | Evet | Evet- [Azure Machine Learning tasarımcı (Önizleme)](../concept-designer.md) |
+| Sürükle ve bırak arabirimi | Evet | Evet- [Azure Machine Learning tasarımcı](../concept-designer.md) |
 | Deneme | Ölçeklenebilir (10 GB eğitim veri limiti) | İşlem hedefi ile ölçeklendirme |
 | Sürükle ve bırak arabirimi için modüller | Sayısı | İlk popüler [modüller](../algorithm-module-reference/module-reference.md) kümesi|
 |Eğitim işlem hedefleri| Özel işlem hedefi, yalnızca CPU desteği| Azure Machine Learning işlem (GPU veya CPU) ve Not defteri VM 'lerini destekler.<br/>([SDK 'da desteklenen diğer hesaplar](../concept-compute-target.md#train))|

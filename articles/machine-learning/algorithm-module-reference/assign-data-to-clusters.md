@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: dd8b23f92f5b24101a7d42ca65f5835a8d4e9ff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1dd88eaa9c92a4f8ff5d491da950f7bb1cc48c20
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214566"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314513"
 ---
 # <a name="module-assign-data-to-clusters"></a>Modül: kümelere veri atama
 
-Bu makalede Azure Machine Learning tasarımcısında *kümelenecek veri atama* modülünün nasıl kullanılacağı açıklanmaktadır (Önizleme). Modül, *K-anlamı kümeleme* algoritması ile eğitilen bir kümeleme modeli aracılığıyla tahmin oluşturur.
+Bu makalede Azure Machine Learning tasarımcısında *kümelere veri atama* modülünün nasıl kullanılacağı açıklanır. Modül, *K-anlamı kümeleme* algoritması ile eğitilen bir kümeleme modeli aracılığıyla tahmin oluşturur.
 
 Kümelere veri ata modülü, her yeni veri noktası için olası atamaları içeren bir veri kümesi döndürür. 
 
@@ -47,5 +47,5 @@ Kümelere veri ata modülü, her yeni veri noktası için olası atamaları içe
   
 ### <a name="results"></a>Sonuçlar
 
-+  Veri kümesindeki değerleri görüntülemek için modüle sağ tıklayın, **sonuç veri kümeleri**' ni seçin ve ardından **Görselleştir**' i seçin.
++  Veri kümesindeki değerleri görüntülemek için, modüle sağ tıklayın ve ardından **Görselleştir**' i seçin. Ya da modülü seçip sağ paneldeki **çıktılar** sekmesine geçiş yapın ve sonucu görselleştirmek Için **bağlantı noktası çıktılarında** histogram simgesine tıklayın.
 
