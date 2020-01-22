@@ -93,6 +93,8 @@
       href: concept-designer.md
     - name: Algoritma bilgi sayfası
       href: /azure/machine-learning/algorithm-cheat-sheet
+    - name: Algoritma seçme
+      href: /azure/machine-learning/how-to-select-algorithms
     - name: Otomatik makine öğrenimi
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
