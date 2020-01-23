@@ -139,6 +139,8 @@
               href: configure-linked-sign-on.md
         - name: Kullanıcı atama ve uygulamalara erişimi yönetme
           items:
+            - name: Kullanıcı onayını yapılandırma
+              href: configure-user-consent.md
             - name: Onay isteklerini yönetme ve değerlendirme
               href: manage-consent-requests.md
             - name: Kiracı genelinde yönetici onayı verme
