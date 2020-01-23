@@ -148,10 +148,28 @@
           href: backup-mabs-sharepoint-azure-stack.md
         - name: SQL Server veritabanını koruma
           href: backup-mabs-sql-azure-stack.md
-    - name: Azure Dosya paylaşımları
+    - name: Azure Dosya paylaşımı yedekleme
       items:
-        - name: Azure Dosya paylaşımlarını yedekleme
-          href: backup-azure-files.md
+        - name: Azure portalından
+          items:
+            - name: Azure Dosya paylaşımlarını yedekleme
+              href: backup-afs.md
+            - name: Azure Dosya paylaşımlarını geri yükleme
+              href: restore-afs.md
+            - name: Azure Dosya paylaşımı yedeklemelerini yönetme
+              href: manage-afs-backup.md
+        - name: Azure CLI ile
+          items:
+            - name: CLI ile Azure Dosya paylaşımlarını yedekleme
+              href: backup-afs-cli.md
+            - name: CLI ile Azure Dosya paylaşımlarını geri yükleme
+              href: restore-afs-cli.md
+            - name: CLI ile Azure Dosya paylaşımı yedeklemelerini yönetme
+              href: manage-afs-backup-cli.md
+        - name: PowerShell ile
+          items:
+            - name: PowerShell ile Azure Dosya paylaşımı yedekleme
+              href: backup-azure-afs-automation.md
     - name: Azure VM'lerini yedekleme
       items:
         - name: Azure VM yedeklemesi hakkında
@@ -222,8 +240,6 @@
           href: backup-dpm-automation.md
         - name: Azure portalındaki Windows Server
           href: backup-client-automation.md
-        - name: Azure portalındaki Azure Dosya paylaşımları
-          href: backup-azure-afs-automation.md
         - name: Azure VM yedeklemelerindeki SQL
           href: backup-azure-sql-automation.md
     - name: Azure Backup REST API'sini kullanma

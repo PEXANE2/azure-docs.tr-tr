@@ -124,6 +124,8 @@
           href: scale-vmware-assessment.md
         - name: Çok sayıda Hyper-V VM’sini değerlendirme
           href: scale-hyper-v-assessment.md
+        - name: Çok sayıda fiziksel sunucuyu değerlendirme
+          href: scale-physical-assessment.md
         - name: Çok büyük sayıda VM'nin geçişini otomatikleştirme
           href: how-to-migrate-at-scale.md
         - name: Geçiş örnekleri (Contoso serisi)

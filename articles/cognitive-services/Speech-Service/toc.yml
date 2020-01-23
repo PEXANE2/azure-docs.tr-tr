@@ -33,7 +33,7 @@
           href: how-to-custom-speech.md
         - name: Tümcecik listeleriyle doğruluğu geliştirme
           href: how-to-phrase-lists.md
-        - name: Kiracı Modelleriyle doğruluğu geliştirme
+        - name: Kiracı modelleriyle doğruluğu geliştirme
           href: tutorial-tenant-model.md
         - name: Belirli bir mikrofon giriş cihazı seçme
           href: how-to-select-audio-input-devices.md
@@ -180,9 +180,9 @@
             - name: Sürüm notları
               href: releasenotes.md
               displayName: 'release notes,updates,what''s new,what is new,changes'
-        - name: LUIS Hizmeti
+        - name: LUIS hizmeti
           items:
-            - name: LUIS Geliştirici Kaynakları
+            - name: LUIS geliştirici kaynakları
               href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Konuşma çevirisi
   expanded: false
@@ -201,7 +201,7 @@
           href: quickstarts/translate-speech-to-speech.md
     - name: Öğreticiler
       items:
-        - name: Metin ve REST çevirmek ve sentezlemek için bir Flask uygulama oluşturma
+        - name: REST API’leriyle metin çevirmek ve sentezlemek için bir Flask uygulama oluşturma
           href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
     - name: Başvuru
       items:
@@ -303,7 +303,7 @@
           href: voice-assistants.md
     - name: Yardımcınızı oluşturma
       items:
-        - name: Özel Komutlar (Önizleme)
+        - name: Özel Komutlar (önizleme)
           href: custom-commands.md
         - name: Direct Line Speech
           href: direct-line-speech.md
@@ -315,19 +315,19 @@
           href: quickstart-voice-assistant-java-jre.md
         - name: Java (Android)
           href: quickstart-voice-assistant-java-android.md
-        - name: Özel Komut oluşturma (Önizleme)
+        - name: Özel Komut oluşturma (önizleme)
           href: quickstart-custom-speech-commands-create-new.md
-        - name: Parametreler içeren Özel Komut oluşturma (Önizleme)
+        - name: Parametreler içeren Özel Komut oluşturma (önizleme)
           href: quickstart-custom-speech-commands-create-parameters.md
-        - name: Özel Ses ile Özel Komutları Kullanma (Önizleme)
+        - name: Özel Ses ile Özel Komutları Kullanma (önizleme)
           href: quickstart-custom-speech-commands-select-custom-voice.md
-        - name: Konuşma SDK'sı ile Özel Komutları kullanma (Önizleme)
+        - name: Konuşma SDK'sı ile Özel Komutları kullanma (önizleme)
           href: quickstart-custom-speech-commands-speech-sdk.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Konuşma SDK'sı ile Özel Komutları uygulama
           href: how-to-custom-speech-commands-fulfill-sdk.md
-        - name: Özel Komutlara parametre doğrulaması ekleme
+        - name: Özel Komuta parametre doğrulaması ekleme
           href: how-to-custom-speech-commands-validations.md
         - name: Özel Komuta onay ekleme
           href: how-to-custom-speech-commands-confirmations.md
@@ -360,9 +360,9 @@
               href: how-to-custom-speech-train-model.md
             - name: Özel bir modeli dağıtma
               href: how-to-custom-speech-deploy-model.md
-            - name: Kılavuz İnsan etiketli transkripsiyonlar oluşturma
+            - name: İnsan etiketli transkripsiyonlar oluşturma
               href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: Kiracı Modelleri
+        - name: Kiracı modelleri
           items:
             - name: 'Modeli oluşturma, yayımlama ve kullanma'
               href: tutorial-tenant-model.md
@@ -380,7 +380,7 @@
               href: concepts-disclosure-guidelines.md
             - name: Tasarım desenlerini açıklama
               href: concepts-disclosure-patterns.md
-            - name: Kullanım Kuralları
+            - name: Kullanım kuralları
               href: 'https://aka.ms/custom-neural-code-of-conduct'
         - name: Özel Ses portalı
           items:
@@ -395,13 +395,13 @@
               href: record-custom-voice-samples.md
         - name: Ses İçeriği Oluşturma
           items:
-            - name: 'Nasıl yapılır: Ses İçeriği Oluşturma'
+            - name: Ses İçeriği Oluşturma
               href: how-to-audio-content-creation.md
     - name: Özel anahtar sözcük adlandırma yönergeleri
       href: speech-devices-sdk-kws-guidelines.md
     - name: Özel anahtar sözcük belirleme
       href: speech-devices-sdk-create-kws.md
-- name: Konuşma Hizmeti
+- name: Konuşma hizmeti
   expanded: false
   items:
     - name: Senaryolar
@@ -411,9 +411,9 @@
           displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
     - name: Nasıl yapılır kılavuzları
       items:
-        - name: Konuşma Hizmetini ücretsiz olarak deneme
+        - name: Konuşma hizmetini ücretsiz olarak deneme
           href: get-started.md
-        - name: Konuşma Hizmeti Kaynağı Oluşturma
+        - name: Konuşma hizmeti kaynağı oluşturma
           href: 'get-started.md#create-a-speech-resource-in-azure'
         - name: Kapsayıcılar
           expanded: false
@@ -442,7 +442,7 @@
           items:
             - name: Toplu transkripsiyon ve özelleştirme REST API'si
               href: 'https://westus.cris.ai/swagger/ui/index'
-            - name: Konuşma Transkripsiyonu REST API'si
+            - name: Konuşma transkripsiyonu REST API'si
               href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
             - name: Konuşmayı metne dönüştürme REST API'si
               href: rest-speech-to-text.md
@@ -468,7 +468,7 @@
           displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
     - name: Nasıl yapılır kılavuzları
       items:
-        - name: Günlüğü etkinleştirme
+        - name: Günlü kaydını etkinleştir
           href: how-to-use-logging.md
         - name: Bellek kullanımını izleme
           href: how-to-track-speech-sdk-memory-usage.md
@@ -477,9 +477,9 @@
           displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
     - name: Örnekler
       items:
-        - name: Konuşma SDK’sı Örnekleri (GitHub)
+        - name: Konuşma SDK’sı örnekleri (GitHub)
           href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-        - name: Konuşma Cihazı SDK’sı Örnekleri (GitHub)
+        - name: Konuşma Cihazları SDK’sı örnekleri (GitHub)
           href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
     - name: Başvuru
       items:
@@ -526,7 +526,7 @@
           href: speech-devices-sdk-troubleshooting.md
     - name: Başvuru
       items:
-        - name: Konuşma Cihazları SDK’sı Sürüm notları
+        - name: Konuşma Cihazları SDK’sı sürüm notları
           href: devices-sdk-release-notes.md
 - name: Geçiş
   expanded: false
@@ -552,7 +552,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Azure Yol Haritası
+    - name: Azure yol haritası
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: Gizlilik ve tanımlama bilgileri
       href: 'https://privacy.microsoft.com/privacystatement'
