@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d4d9d2ff899a169ee81544761fe87fed3cca06c4
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912320"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511153"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Bir IOT Edge ağ geçidi cihazı aracılığıyla Modbus TCP cihazlarını bağlama
 
@@ -26,6 +26,7 @@ Bu makalede, bir Modbus modülü için kendi kapsayıcı görüntünüzü oluşt
 Bu makalede Modbus TCP protokolünü kullandığınız varsayılır. Modülün Modbus RTU 'yi destekleyecek şekilde nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz. GitHub 'da [Azure IoT Edge Modbus modülü](https://github.com/Azure/iot-edge-modbus) projesi.
 
 ## <a name="prerequisites"></a>Ön koşullar
+
 * Bir Azure IoT Edge cihazı. Bir adım ayarlama hakkında yönergeler için bkz. Windows veya [Linux](quickstart-linux.md) [üzerinde Azure IoT Edge dağıtma](quickstart.md) .
 * IoT Edge cihazı için birincil anahtar bağlantı dizesi.
 * Modbus TCP’yi destekleyen fiziksel veya sanal bir cihaz. IPv4 adresini bilmeniz gerekecektir.

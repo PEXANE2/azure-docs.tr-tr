@@ -3,12 +3,12 @@ title: Azure Event Grid yayımlama Dayanıklı İşlevler (Önizleme)
 description: Dayanıklı İşlevler için otomatik Azure Event Grid yayımlamayı yapılandırmayı öğrenin.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 5d1960f0e8d249ac77f3c64e18b332a3d55d5180
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 768af2e89d6523f50bd9fcc3d13cc84b711cc6f0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613134"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547481"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid yayımlama Dayanıklı İşlevler (Önizleme)
 
@@ -277,7 +277,7 @@ Aşağıdaki listede yaşam döngüsü olayları şeması açıklanmaktadır:
 
 ## <a name="how-to-test-locally"></a>Yerel olarak test etme
 
-Yerel olarak test etmek için [ngrok](../functions-bindings-event-grid.md#local-testing-with-ngrok)kullanın.
+Yerel olarak test etmek için [Azure işlevini okuyun Event Grid yerel hata ayıklamayı tetikleyin](../functions-debug-event-grid-trigger-local.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

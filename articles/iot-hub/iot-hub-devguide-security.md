@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: b84855057b43daa0aeff4878a69dac4ae765d2ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429300"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546954"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub’a erişimi denetleme
 
@@ -347,7 +347,7 @@ Tüm cihaz kimliklerini okumak için erişim izni veren sonuç şöyle olacaktı
 
 ## <a name="supported-x509-certificates"></a>Desteklenen X. 509.440 sertifikaları
 
-Bir sertifika parmak izini veya bir sertifika yetkilisini (CA) Azure IoT Hub karşıya yükleyerek IoT Hub bir cihazın kimliğini doğrulamak için herhangi bir X. 509.952 sertifikası kullanabilirsiniz. Sertifika parmak izleri kullanılarak kimlik doğrulaması yalnızca gösterilen parmak izinin yapılandırılan parmak izine eşleştiğini doğrular. Sertifika yetkilisini kullanarak kimlik doğrulaması, sertifika zincirini doğrular. 
+Bir sertifika parmak izini veya bir sertifika yetkilisini (CA) Azure IoT Hub karşıya yükleyerek IoT Hub bir cihazın kimliğini doğrulamak için herhangi bir X. 509.952 sertifikası kullanabilirsiniz. Sertifika parmak izleri kullanılarak kimlik doğrulaması, gösterilen parmak izinin yapılandırılan parmak iziyle eşleştiğini doğrular. Sertifika yetkilisini kullanarak kimlik doğrulaması, sertifika zincirini doğrular. Her iki durumda da TLS el sıkışması, cihazın geçerli bir sertifika ve özel anahtara sahip olmasını gerektirir. Ayrıntılar için TLS belirtimine bakın, örneğin: [RFC 5246-Aktarım Katmanı Güvenliği (TLS) Protokolü sürüm 1,2](https://tools.ietf.org/html/rfc5246/).
 
 Desteklenen sertifikalar şunlardır:
 
@@ -461,6 +461,8 @@ IoT Hub geliştirici kılavuzundaki diğer başvuru konuları şunları içerir:
 * [IoT Hub sorgu dili](iot-hub-devguide-query-language.md) , cihaz WINS ve işleriniz hakkında IoT Hub bilgi almak için kullanabileceğiniz sorgu dilini açıklar.
 
 * [MQTT desteği IoT Hub](iot-hub-mqtt-support.md) MQTT protokolü için IoT Hub desteği hakkında daha fazla bilgi sağlar.
+
+* [RFC 5246-Aktarım Katmanı Güvenliği (TLS) Protokolü sürüm 1,2,](https://tools.ietf.org/html/rfc5246/) TLS kimlik doğrulaması hakkında daha fazla bilgi sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

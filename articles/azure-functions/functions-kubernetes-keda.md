@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 9978bd567b1b07e8dd0e22e1f02834626281a5dd
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 83c57b27c1cd1d524805a92381a1ba9eb2e1fbd6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920673"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549045"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA ile Kubernetes üzerinde Azure Işlevleri
 
@@ -26,15 +26,9 @@ Kubernetes tabanlı Işlevler, bir [Docker kapsayıcısında](functions-create-f
 
 Kubernetes kümenizdeki Işlevleri çalıştırmak için KEDA bileşenini yüklemelisiniz. Bu bileşeni, [Azure Functions Core Tools](functions-run-local.md)kullanarak yükleyebilirsiniz.
 
-### <a name="installing-with-the-azure-functions-core-tools"></a>Azure Functions Core Tools ile yükleme
+### <a name="installing-with-helm"></a>Held ile yükleme
 
-Varsayılan olarak, temel araçlar, sırasıyla olay odaklı ve HTTP ölçeklendirmesini destekleyen KEDA ve Osıris bileşenlerini de yüklerse.  Yükleme geçerli bağlamda çalışan `kubectl` kullanıyor.
-
-Aşağıdaki Install komutunu çalıştırarak KEDA kümenize ' i de yüklersiniz:
-
-```cli
-func kubernetes install --namespace keda
-```
+Helm dahil olmak üzere herhangi bir Kubernetes kümesine KEDA yüklemenin çeşitli yolları vardır.  Dağıtım seçenekleri [Keda sitesinde](https://keda.sh/deploy/)belgelenmiştir.
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Kubernetes 'e işlev uygulaması dağıtma
 
@@ -73,11 +67,7 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>Kubernetes 'ten KEDA kaldırma
 
-Bir Kubernetes kümesinden KEDA kaldırmak için aşağıdaki çekirdek araçları komutunu çalıştırabilirsiniz:
-
-```cli
-func kubernetes remove --namespace keda
-```
+KEDA 'yı kaldırma adımları [Keda sitesinde](https://keda.sh/deploy/)belgelenmiştir.
 
 ## <a name="supported-triggers-in-keda"></a>KEDA 'da desteklenen Tetikleyiciler
 
@@ -91,7 +81,7 @@ KEDA, aşağıdaki Azure Işlev Tetikleyicileri için destek içerir:
 
 ### <a name="http-trigger-support"></a>HTTP tetikleyicisi desteği
 
-HTTP Tetikleyicileri sunan Azure Işlevlerini kullanabilirsiniz, ancak KEDA bunları doğrudan yönetemez.  Azure Functions Core Tools, HTTP uç noktalarının ölçeğini 0 ' dan 1 ' e ölçeklendirmeye olanak tanıyan, ilgili bir proje olan Osıris 'yi yükler  1 ile *n* arasında ölçekleme geleneksel Kubernetes ölçekleme ilkelerine bağlıdır.
+HTTP Tetikleyicileri sunan Azure Işlevlerini kullanabilirsiniz, ancak KEDA bunları doğrudan yönetemez.  [Http Azure işlevlerini 1 ' den *n* örneğe ölçeklendirmek](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42)için Keda Prometheus tetikleyicisinden yararlanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:

@@ -8,42 +8,46 @@ ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 37f55165d1fea8a69d10003baeb0006199326cba
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456608"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548637"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Kendi IoT Edge modüllerinizi geliştirin
 
-Azure IoT Edge modüller, diğer Azure hizmetleriyle bağlanabilir ve daha büyük bulut veri işlem hattınızla katkıda bulunabilir. Bu makalede, IoT Edge çalışma zamanı ve IoT Hub ve dolayısıyla Azure bulutunun geri kalanı ile iletişim kurmak için nasıl modül geliştirebileceğiniz açıklanır. 
+Azure IoT Edge modüller, diğer Azure hizmetleriyle bağlanabilir ve daha büyük bulut veri işlem hattınızla katkıda bulunabilir. Bu makalede, IoT Edge çalışma zamanı ve IoT Hub ve dolayısıyla Azure bulutunun geri kalanı ile iletişim kurmak için nasıl modül geliştirebileceğiniz açıklanır.
 
 ## <a name="iot-edge-runtime-environment"></a>IOT Edge çalışma zamanı ortamı
-IOT Edge çalışma zamanı birden çok IOT Edge modülleri işlevlerini tümleştirin ve bunları IOT Edge cihazları dağıtmak için altyapı sağlar. Yüksek düzeyde, bir IOT Edge modülü herhangi bir programı paketlenebilir. Bununla birlikte, iletişimi ve yönetim işlevlerini IOT Edge tüm avantajlarından yararlanmak için bir modülde çalışan bir program IOT Edge çalışma zamanı'nda tümleşik yerel IOT Edge hub'ına bağlanabilirsiniz.
+
+IOT Edge çalışma zamanı birden çok IOT Edge modülleri işlevlerini tümleştirin ve bunları IOT Edge cihazları dağıtmak için altyapı sağlar. Herhangi bir program IoT Edge modülü olarak paketlenebilir. IoT Edge iletişim ve yönetim işlevlerine tam olarak yararlanmak için, modülde çalışan bir program, yerel IoT Edge hub 'ına bağlanmak için Azure IoT cihaz SDK 'sını kullanabilir.
 
 ## <a name="using-the-iot-edge-hub"></a>IOT Edge hub'ı kullanma
+
 IOT Edge hub'ı iki ana işlevleri sağlar: IOT hub'ı ve yerel iletişimler proxy.
 
 ### <a name="iot-hub-primitives"></a>IOT hub'ı temelleri
+
 IOT hub'ı öğesine anlamında bir cihaz için bir modül örneğinin görür:
 
-* Bu, farklı bir modül ikizi sahiptir ve [cihaz ikizi](../iot-hub/iot-hub-devguide-device-twins.md) ve bu cihazın diğer modül TWINS 'i ile yalıtılmış.
-* [cihazdan buluta iletileri](../iot-hub/iot-hub-devguide-messaging.md)gönderebilir;
-* özellikle kendi kimliğine hedeflenmiş [doğrudan Yöntemler](../iot-hub/iot-hub-devguide-direct-methods.md) alabilir.
+* ayrı ve ayrı olan bir modül ikizi sahip [cihaz ikizi](../iot-hub/iot-hub-devguide-device-twins.md) ve bir modül ikizlerini aygıtın;
+* gönderebilmesi [CİHAZDAN buluta iletileri](../iot-hub/iot-hub-devguide-messaging.md);
+* alabileceği [doğrudan yöntemler](../iot-hub/iot-hub-devguide-direct-methods.md) kimliğini özel olarak hedeflenen.
 
-Şu anda, bir modül bulut-cihaz iletilerini almak ve karşıya dosya yükleme özelliği kullanın.
+Şu anda modüller, buluttan cihaza iletileri alamıyor veya karşıya dosya yükleme özelliğini kullanamıyor.
 
-Bir modül yazarken, [Azure IoT cihaz SDK 'sını](../iot-hub/iot-hub-devguide-sdks.md) kullanarak IoT Edge hub 'ına bağlanabilir ve yukarıdaki işlevselliği kullanarak bir cihaz uygulamasıyla IoT Hub kullandığınızda yukarıdaki işlevi kullanabilirsiniz. Bu, uygulamanızın arka ucundan, tek fark, uygulama arka ucundan, cihaz kimliği yerine modül kimliğine başvurmanız gerekir.
+Modül yazarken, [Azure IoT cihaz SDK 'sını](../iot-hub/iot-hub-devguide-sdks.md) kullanarak IoT Edge hub 'ına bağlanabilir ve bir cihaz uygulamasıyla IoT Hub kullandığınızda yukarıdaki işlevleri kullanabilirsiniz. IoT Edge modüller ve IoT cihaz uygulamaları arasındaki tek fark, cihaz kimliği yerine modül kimliğine başvurmanız gerekir.
 
 ### <a name="device-to-cloud-messages"></a>Cihazdan buluta iletiler
+
 Cihazdan buluta iletileri karmaşık şekilde işlemeyi etkinleştirmek için IoT Edge hub, modüller arasında ve modüller ile IoT Hub arasında bildirime dayalı yönlendirme sağlar. Bildirim temelli yönlendirme modülleri izlemesine izin verir ve işlem iletileri diğer modüller tarafından gönderilen ve bunları karmaşık komut zincirlerinde yayar. Daha fazla bilgi için bkz. [IoT Edge modülleri dağıtma ve yolları oluşturma](module-composition.md).
 
-IOT Edge modülü, normal bir IOT Hub cihaz uygulaması aksine, bunları işlemek için kendi yerel IOT Edge hub tarafından proxy gönderildiğini CİHAZDAN buluta iletiler alabilir.
+Normal bir IoT Hub cihaz uygulamasının aksine bir IoT Edge modülü, kendi yerel IoT Edge hub 'ı tarafından işlemek için proxy olan cihazdan buluta iletiler alabilir.
 
 IoT Edge hub, [dağıtım bildiriminde](module-composition.md)açıklanan bildirime dayalı yollara göre iletileri modülünüzü yayar. IOT Edge modülü geliştirirken, ileti işleyicileri ayarlayarak bu iletiler alabilir.
 
-Yolların oluşturulmasını basitleştirmek için IoT Edge modül *girişi* ve *Çıkış* uç noktaları kavramını ekler. Bir modül için herhangi bir giriş belirtmeden yönlendirilen tüm CİHAZDAN buluta iletiler alabilir ve herhangi bir çıktı belirtmeden CİHAZDAN buluta iletileri gönderebilir. Açık girişler ve çıkışlar, kullanarak yine de Yönlendirme kuralları anlamak daha basit hale getirir. 
+Yolların oluşturulmasını basitleştirmek için IoT Edge modül *girişi* ve *Çıkış* uç noktaları kavramını ekler. Bir modül için herhangi bir giriş belirtmeden yönlendirilen tüm CİHAZDAN buluta iletiler alabilir ve herhangi bir çıktı belirtmeden CİHAZDAN buluta iletileri gönderebilir. Açık girişler ve çıkışlar, kullanarak yine de Yönlendirme kuralları anlamak daha basit hale getirir.
 
 Son olarak, cihaz-bulut iletileri Edge hub'ı tarafından işlenen, aşağıdaki sistem özellikleri ile içerdiği:
 
@@ -55,7 +59,9 @@ Son olarak, cihaz-bulut iletileri Edge hub'ı tarafından işlenen, aşağıdaki
 | $outputName | İleti göndermek için kullanılan çıkış. Boş olabilir. |
 
 ### <a name="connecting-to-iot-edge-hub-from-a-module"></a>Bir modülden IOT Edge hub'ına bağlama
-Bir modülden yerel IOT Edge hub'ına bağlanan iki adımdan oluşur: 
+
+Bir modülden yerel IOT Edge hub'ına bağlanan iki adımdan oluşur:
+
 1. Uygulamanızda bir ModuleClient örneği oluşturun.
 2. Bu cihazın IOT Edge hub tarafından sunulan sertifika, uygulamanızın kabul ettiğinden emin olun.
 
@@ -67,7 +73,7 @@ IoT Edge, gereksinimlerinize uyan senaryoyu oluşturabilmeniz için birden çok 
 
 ### <a name="linux"></a>Linux
 
-Aşağıdaki tablodaki tüm diller için IoT Edge AMD64 ve ARM32 Linux cihazları için geliştirmeyi destekler. 
+Aşağıdaki tablodaki tüm diller için IoT Edge AMD64 ve ARM32 Linux cihazları için geliştirmeyi destekler.
 
 | Geliştirme dili | Geliştirme araçları |
 | -------------------- | ----------------- |

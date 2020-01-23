@@ -1,5 +1,5 @@
 ---
-title: Dil modelini özelleştirmek için Video Indexer Web sitesini kullanma-Azure
+title: Dil modellerini Video Indexer Web sitesiyle özelleştirme-Azure
 titleSuffix: Azure Media Services
 description: Bu makalede, Video Indexer Web sitesiyle bir dil modelinin nasıl özelleştirileceği gösterilmektedir.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 5d92cb02a0ac52b317cf9d4b6c8e0278f9291910
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 329da39914ef957d3a5376ba59e0c7103ad6a5dd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838453"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513924"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Video Indexer Web sitesiyle bir dil modeli özelleştirme
 
@@ -61,10 +61,10 @@ Dil modelinizi yeni bir videoda kullanmak için aşağıdakilerden birini yapın
 
 * Sayfanın üst kısmındaki **karşıya yükle** düğmesine tıklayın 
 
-    ![Karşıya Yükle](./media/customize-language-model/upload.png)
+    ![Karşıya Yükleme](./media/customize-language-model/upload.png)
 * Ses veya video dosyanızı daire içine bırakın veya dosyanıza gözatamazsınız
 
-    ![Karşıya Yükle](./media/customize-language-model/upload2.png)
+    ![Karşıya Yükleme](./media/customize-language-model/upload2.png)
 
 Bu, size **video kaynak dilini**seçme seçeneği sunar. Açılan listeye tıklayın ve listeden oluşturduğunuz bir dil modelini seçin. Dil modelinizin dilini ve parantez içinde verdiğiniz adı söylemelidir.
 
@@ -96,7 +96,7 @@ Dil modelinin sağ tarafındaki **...** öğesine tıklayıp **Yeniden Adlandır
 
 Yeni adı yazın ve ENTER tuşuna basın.
 
-### <a name="add-files"></a>Dosya Ekle
+### <a name="add-files"></a>Dosya ekle
 
 Bir metin dosyası eklemek için **Dosya Ekle**' ye tıklayın. Bu, dosya Gezgini 'ni açar.
 

@@ -4,28 +4,25 @@ description: App Service ortamından giden trafiğin güvenliğini sağlamak iç
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 08/31/2019
+ms.date: 01/14/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c78749d9d0f0bd4b1dadb8dc0d2f6dd84408a95e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687223"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513362"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Ortamı kilitleme
 
 App Service Ortamı (Ao), düzgün bir şekilde çalışması için erişim gerektiren sayıda dış bağımlılıklara sahiptir. ASE, müşteri Azure sanal ağı 'nda (VNet) bulunur. Müşteriler, VNet 'ten tüm çıkışları kilitlemek isteyen müşteriler için bir sorun olan ASE bağımlılık trafiğine izin vermelidir.
 
-ATıCı 'nin sahip olduğu birçok gelen bağımlılıklar vardır. Gelen yönetim trafiği bir güvenlik duvarı cihazından gönderilemez. Bu trafiğin kaynak adresleri bilinmektedir ve [App Service ortamı yönetim adresleri](https://docs.microsoft.com/azure/app-service/environment/management-addresses) belgesinde yayımlanır. Gelen trafiğin güvenliğini sağlamak için bu bilgilerle ağ güvenlik grubu kuralları oluşturabilirsiniz.
+Bir AI 'yi yönetmek için kullanılan bazı gelen uç noktaları vardır. Gelen yönetim trafiği bir güvenlik duvarı cihazından gönderilemez. Bu trafiğin kaynak adresleri bilinmektedir ve [App Service ortamı yönetim adresleri](https://docs.microsoft.com/azure/app-service/environment/management-addresses) belgesinde yayımlanır. Ayrıca, gelen trafiğin güvenliğini sağlamak için ağ güvenlik grupları (NSG 'ler) ile birlikte kullanılabilecek AppServiceManagement adlı bir hizmet etiketi de vardır.
 
-ASE giden bağımlılıkları, bunların arkasında statik adresler bulunmayan FQDN 'Ler ile neredeyse tamamen tanımlıdır. Statik adreslerin olmaması, ağ güvenlik gruplarının (NSG 'ler) bir ASE 'den giden trafiği kilitlemek için kullanılamayacağı anlamına gelir. Adresler, geçerli çözünürlüğe göre kuralları ayarlayamayacak ve bunları NSG 'ler oluşturmak için kullanabileceğiniz kadar sık değişir. 
+ASE giden bağımlılıkları, bunların arkasında statik adresler bulunmayan FQDN 'Ler ile neredeyse tamamen tanımlıdır. Statik adreslerin olmaması, ağ güvenlik gruplarının bir ASE 'den giden trafiği kilitlemek için kullanılamayacağı anlamına gelir. Adresler, geçerli çözünürlüğe göre kuralları ayarlayamayacak ve bunları NSG 'ler oluşturmak için kullanabileceğiniz kadar sık değişir. 
 
 Giden adreslerin güvenliğini sağlamaya yönelik çözüm, etki alanı adlarına göre giden trafiği denetleyesağlayan bir güvenlik duvarı cihazının kullanılmasına yol açabilir. Azure Güvenlik Duvarı, giden HTTP ve HTTPS trafiğini hedefin FQDN 'sine göre kısıtlayabilir.  
-
-> [!NOTE]
-> Şu anda giden bağlantıyı tam olarak kilitleyemiyorum.
 
 ## <a name="system-architecture"></a>Sistem mimarisi
 
@@ -42,6 +39,12 @@ Ao 'dan gelen ve giden trafik aşağıdaki kurallara göre uymalıdır
 
 ![Azure Güvenlik Duvarı bağlantı akışı ile aşırı][5]
 
+## <a name="locking-down-inbound-management-traffic"></a>Gelen yönetim trafiğini kilitleme
+
+Ao alt ağına atanmış bir NSG zaten yoksa, bir tane oluşturun. NSG 'de, 454, 455 bağlantı noktalarında AppServiceManagement adlı hizmet etiketinden trafiğe izin vermek için ilk kuralı ayarlayın. ATıCı 'nizi yönetmek için genel IP 'Lerde gerekli olan tek şey budur. Bu hizmet etiketinin arkasındaki adresler yalnızca Azure App Service yönetmek için kullanılır. Bu bağlantılar üzerinden akan yönetim trafiği, kimlik doğrulama sertifikalarıyla şifrelenir ve güvenlidir. Bu kanaldaki tipik trafik, müşteri tarafından başlatılan komutlar ve sistem durumu araştırmaları gibi şeyleri içerir. 
+
+Portal üzerinden yeni bir alt ağ içeren ASE 'ler, AppServiceManagement etiketi için izin verme kuralını içeren bir NSG ile yapılır.  
+
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Azure Güvenlik duvarını AŞIRLE yapılandırma 
 
 Azure Güvenlik Duvarı ile mevcut Ao 'ınızdan çıkış kilitlemeyi kilitleme adımları şunlardır:
@@ -51,14 +54,19 @@ Azure Güvenlik Duvarı ile mevcut Ao 'ınızdan çıkış kilitlemeyi kilitleme
    ![hizmet uç noktalarını seçin][2]
   
 1. ASE 'nizin bulunduğu VNet 'te AzureFirewallSubnet adlı bir alt ağ oluşturun. Azure Güvenlik duvarını oluşturmak için [Azure Güvenlik Duvarı belgelerindeki](https://docs.microsoft.com/azure/firewall/) yönergeleri izleyin.
+
 1. Azure Güvenlik Duvarı Kullanıcı arabirimi > kuralları > uygulama kuralı koleksiyonu ' ndan uygulama kuralı koleksiyonu Ekle ' yi seçin. Ad, öncelik ve Izin ver ayarla ' yı belirtin. FQDN etiketleri bölümünde bir ad belirtin, kaynak adreslerini * olarak ayarlayın ve App Service Ortamı FQDN etiketini ve Windows Update seçin. 
    
    ![Uygulama kuralı ekle][1]
    
-1. Azure Güvenlik Duvarı Kullanıcı arabirimi > kuralları > Ağ kuralı koleksiyonu ' ndan ağ kuralı koleksiyonu Ekle ' yi seçin. Ad, öncelik ve Izin ver ayarla ' yı belirtin. Kurallar bölümünde bir ad belirtin, **birini**seçin, * öğesini kaynak ve hedef adresler olarak ayarlayın ve bağlantı noktalarını 123 olarak ayarlayın. Bu kural, sistemin NTP kullanarak saat eşitlemesi gerçekleştirmesini sağlar. Herhangi bir sistem sorununu değerlendirmenize yardımcı olmak için bağlantı noktası 12000 ile aynı şekilde başka bir kural oluşturun.
+1. Azure Güvenlik Duvarı Kullanıcı arabirimi > kuralları > Ağ kuralı koleksiyonu ' ndan ağ kuralı koleksiyonu Ekle ' yi seçin. Ad, öncelik ve Izin ver ayarla ' yı belirtin. IP adresleri altındaki kurallar bölümünde, bir ad girin, bir ptocol **seçin, *** kaynak ve hedef adresleri ayarlayın ve bağlantı noktalarını 123 olarak ayarlayın. Bu kural, sistemin NTP kullanarak saat eşitlemesi gerçekleştirmesini sağlar. Herhangi bir sistem sorununu değerlendirmenize yardımcı olmak için bağlantı noktası 12000 ile aynı şekilde başka bir kural oluşturun. 
 
    ![NTP ağ kuralı ekle][3]
+   
+1. Azure Güvenlik Duvarı Kullanıcı arabirimi > kuralları > Ağ kuralı koleksiyonu ' ndan ağ kuralı koleksiyonu Ekle ' yi seçin. Ad, öncelik ve Izin ver ayarla ' yı belirtin. Hizmet etiketleri altındaki kurallar bölümünde, bir ad girin, **herhangi**bir protokol seçin, * kaynak adreslerini ayarlayın, AzureMonitor bir hizmet etiketi seçin ve bağlantı noktalarını 80, 443 olarak ayarlayın. Bu kural, sistemin sistem durumu ve ölçüm bilgileriyle Azure Izleyici sağlamasına izin verir.
 
+   ![NTP hizmeti etiketi ağ kuralı ekle][6]
+   
 1. Bir sonraki Internet duraklı [App Service ortamı yönetim adreslerinden]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) yönetim adresleriyle bir yol tablosu oluşturun. Asimetrik yönlendirme sorunlarından kaçınmak için yol tablosu girdileri gereklidir. IP adresi bağımlılıklarında aşağıda belirtilen IP adresi bağımlılıkları için bir sonraki Internet duraklı yollar ekleyin. 0\.0.0.0/0 için yol tablonuza bir sonraki atlamada Azure Güvenlik Duvarı özel IP adresiniz olacak şekilde bir Sanal Gereç yolu ekleyin. 
 
    ![Rota tablosu oluşturma][4]
@@ -248,7 +256,25 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 
 ## <a name="us-gov-dependencies"></a>US Gov bağımlılıklar
 
-US Gov için hala depolama, SQL ve Olay Hub 'ı için hizmet uç noktaları ayarlamanız gerekir.  Ayrıca, bu belgenin önceki yönergeleriyle birlikte Azure Güvenlik Duvarı 'nı kullanabilirsiniz. Kendi çıkış güvenlik duvarı cihazınızı kullanmanız gerekiyorsa, uç noktalar aşağıda listelenmiştir.
+US Gov bölgelerindeki ASE 'ler için, ASE 'niz ile bir Azure Güvenlik duvarı yapılandırmak için bu belgenin [ASE Ile Azure Güvenlik Duvarı 'Nı yapılandırma](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase) bölümündeki yönergeleri izleyin.
+
+US Gov içinde Azure Güvenlik Duvarı dışında bir cihaz kullanmak istiyorsanız 
+
+* Hizmet uç noktası özellikli Hizmetleri, hizmet uç noktaları ile yapılandırılmalıdır.
+* FQDN HTTP/HTTPS uç noktaları, güvenlik duvarı cihazınıza yerleştirilebilir.
+* Joker karakter HTTP/HTTPS uç noktaları, bir dizi niteleyicilere göre ASE 'niz ile değişebilen bağımlılıklardır.
+
+Linux, US Gov bölgelerinde kullanılamaz ve bu nedenle isteğe bağlı bir yapılandırma olarak listelenmez.
+
+#### <a name="service-endpoint-capable-dependencies"></a>Hizmet uç noktası özellikli bağımlılıklar ####
+
+| Uç nokta |
+|----------|
+| Azure SQL |
+| Azure Depolama |
+| Azure Olay Hub’ı |
+
+#### <a name="dependencies"></a>Bağımlılıklar ####
 
 | Uç nokta |
 |----------|
@@ -375,3 +401,4 @@ US Gov için hala depolama, SQL ve Olay Hub 'ı için hizmet uç noktaları ayar
 [3]: ./media/firewall-integration/firewall-ntprule.png
 [4]: ./media/firewall-integration/firewall-routetable.png
 [5]: ./media/firewall-integration/firewall-topology.png
+[6]: ./media/firewall-integration/firewall-ntprule-monitor.png

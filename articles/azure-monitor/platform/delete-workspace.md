@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 739f97e912a33402aa7482e59dd78f5aeb005772
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944435"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547260"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve geri yükleme
 
@@ -44,7 +44,7 @@ Geçici silme işlemi çalışma alanı kaynağını siler ve ilişkili kullanı
 
 Bir çalışma alanını [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)veya [Azure Portal](https://portal.azure.com)kullanarak silebilirsiniz.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
 
 1. Oturum açmak için [Azure Portal](https://portal.azure.com)gidin. 
 2. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
@@ -57,6 +57,29 @@ Bir çalışma alanını [PowerShell](https://docs.microsoft.com/powershell/modu
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+## <a name="permanent-workspace-delete"></a>Kalıcı çalışma alanı silme
+Geçici silme yöntemi, aynı ayarlar ve çalışma alanı adıyla bir dağıtımı tekrarlamanız gereken geliştirme ve test gibi bazı senaryolara uygun olmayabilir. Bu gibi durumlarda, çalışma alanınızı kalıcı olarak silebilir ve geçici silme dönemini "geçersiz kılabilirsiniz". Kalıcı çalışma alanı silme işlemi çalışma alanı adını serbest bırakır ve aynı adı kullanarak yeni bir çalışma alanı oluşturabilirsiniz.
+
+
+> [!IMPORTANT]
+> Çalışma alanınızı kalıcı olarak silerken dikkatli olun, çünkü işlem geri alınamaz ve çalışma alanınız ve verileri kurtarılamaz.
+
+Kalıcı çalışma alanı silme, şu anda REST API aracılığıyla gerçekleştirilebilir.
+
+> [!NOTE]
+> Herhangi bir API isteği, istek üst bilgisinde bir taşıyıcı yetkilendirme belirteci içermelidir.
+>
+> Belirteci şunları kullanarak edinebilirsiniz:
+> - [Uygulama kayıtları](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
+> - Tarayıcıda geliştirici konsolunu (F12) kullanarak Azure portal gidin. **Batch** , **istek üstbilgileri**altındaki kimlik doğrulama dizesinin örneklerinden birine bakın. Bu, model *yetkilendirmesi: taşıyıcı <token>* olacaktır. Örnekte gösterildiği gibi bunu kopyalayın ve API çağra ekleyin.
+> - Azure REST belgeleri sitesine gidin. herhangi bir API üzerinde **deneyin** , taşıyıcı belirtecini KOPYALAYıN ve API çağra ekleyin.
+Çalışma alanınızı kalıcı olarak silmek için, [çalışma alanları-Rest]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) API çağrısını bir zorlama etiketiyle birlikte kullanın:
+>
+> ```rst
+> DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
+> Authorization: Bearer eyJ0eXAiOiJKV1Qi….
+> ```
 
 ## <a name="recover-workspace"></a>Çalışma alanını kurtar
 

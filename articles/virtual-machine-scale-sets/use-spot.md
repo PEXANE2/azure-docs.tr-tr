@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 4f434afdd02d15f98e005b44f5563847f4c5847d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278201"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544795"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Önizleme: sanal makine ölçek kümeleri için Azure spot VM 'Ler 
 
@@ -91,50 +91,20 @@ $vmssConfig = New-AzVmssConfig `
 
 ## <a name="resource-manager-templates"></a>Resource Manager şablonları
 
-Spot VM 'Ler kullanan bir ölçek kümesi oluşturma işlemi, [Linux](quick-create-template-linux.md) veya [Windows](quick-create-template-windows.md)için Başlarken makalesinde ayrıntılı olarak aynıdır. Şablonunuzda *Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachineProfile* kaynak türüne ' Priority ' özelliğini ekleyin ve değer olarak *spot* değerini belirtin. *2019-03-01* API sürümünü veya üstünü kullandığınızdan emin olun. 
+Spot VM 'Ler kullanan bir ölçek kümesi oluşturma işlemi, [Linux](quick-create-template-linux.md) veya [Windows](quick-create-template-windows.md)için Başlarken makalesinde ayrıntılı olarak aynıdır. 
 
-Çıkarma ilkesini silmeye ayarlamak için, ' Çıkarlationpolicy ' parametresini ekleyin ve *Silinecek*şekilde ayarlayın.
-
-Aşağıdaki örnek, *Orta Batı ABD*'de *MyScaleSet* adlı bir Linux spot ölçek kümesi oluşturur ve bu durum, çıkarma sırasında ölçek kümesindeki VM 'leri *siler* :
+Spot şablon dağıtımları için`"apiVersion": "2019-03-01"` veya üstünü kullanın. `priority`, `evictionPolicy` ve `billingProfile` özelliklerini şablonunuzda `"virtualMachineProfile":` bölümüne ekleyin: 
 
 ```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US 2",
-  "apiVersion": "2019-03-01",
-  "sku": {
-    "name": "Standard_DS2_v2",
-    "capacity": "2"
-  },
-  "properties": {
-    "upgradePolicy": {
-      "mode": "Automatic"
-    },
-    "virtualMachineProfile": {
-       "priority": "Spot",
-       "evictionPolicy": "delete",
-       "storageProfile": {
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage"
-        },
-        "imageReference":  {
-          "publisher": "Canonical",
-          "offer": "UbuntuServer",
-          "sku": "16.04-LTS",
-          "version": "latest"
-        }
-      },
-      "osProfile": {
-        "computerNamePrefix": "myvmss",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
-      }
-    }
-  }
-}
+                "priority": "Spot",
+                "evictionPolicy": "Deallocate",
+                "billingProfile": {
+                    "maxPrice": -1
+                }
 ```
+
+Çıkarıldıktan sonra örneği silmek için `evictionPolicy` parametresini `Delete`olarak değiştirin.
+
 ## <a name="faq"></a>SSS
 
 **S:** Oluşturulduktan sonra, standart örnekle aynı bir spot örneğidir mi?

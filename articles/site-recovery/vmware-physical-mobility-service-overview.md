@@ -7,20 +7,20 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: aeb00b84ac254232e0d68fd9631fb539a928e67d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931902"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513567"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için Mobility hizmeti hakkında
 
 [Azure Site Recovery](site-recovery-overview.md)kullanarak VMware VM 'leri ve fiziksel sunucular için olağanüstü durum kurtarmayı ayarlarken, her şirket içi VMware VM 'sine ve fiziksel sunucuya Site Recovery Mobility hizmetini yüklersiniz.  Mobility hizmeti makinede veri yazmaları yakalar ve bunları Site Recovery işlem sunucusuna iletir. Mobility hizmetini aşağıdaki yöntemleri kullanarak dağıtabilirsiniz:
 
-- [Gönderim yükleme](#push-installation): Site Recovery, koruma Azure portal aracılığıyla etkinleştirildiğinde sunucuya Mobility Aracısı 'nı yüklüyor.
+- [Anında yükleme](#push-installation): Site Recovery Azure Portal aracılığıyla koruma etkinleştirildiğinde Mobility Aracısı sunucuya yüklenir.
 - El ile yüklensin: Mobility hizmetini her makineye [Kullanıcı arabirimi](#install-mobility-agent-through-ui) veya [komut istemi](#install-mobility-agent-through-command-prompt)aracılığıyla el ile yükleyebilirsiniz.
-- [Otomatik dağıtım](vmware-azure-mobility-install-configuration-mgr.md): System Center Configuration Manager gibi yazılım dağıtım araçlarıyla yüklemeyi otomatik hale getirebilirsiniz.
+- [Otomatik dağıtım](vmware-azure-mobility-install-configuration-mgr.md): Configuration Manager gibi yazılım dağıtım araçlarıyla yüklemeyi otomatik hale getirebilirsiniz.
 
 ## <a name="anti-virus-on-replicated-machines"></a>Çoğaltılan makinelerde virüsten koruma
 
@@ -65,7 +65,7 @@ Mobility aracısının anında yüklenmesi sırasında aşağıdaki adımlar ger
 
 1. Yükleme dosyasını makineye kopyalayın ve çalıştırın.
 2. **Yükleme seçeneği**içinde **Mobility hizmetini yükleme**' yi seçin.
-3. Yükleme **> yükleme**konumunu seçin.
+3. **Yükleme > yükleme**konumunu seçin.
 
     ![Mobility hizmeti yükleme seçeneği sayfası](./media/vmware-physical-mobility-service-install-manual/mobility1.png)
 
@@ -115,7 +115,7 @@ Mobility aracısının anında yüklenmesi sırasında aşağıdaki adımlar ger
 #### <a name="installation-settings"></a>Yükleme ayarları
 **Ayar** | **Ayrıntılar**
 --- | ---
-Kullanım | Unifiedagent. exe/role \<MS/MT >/ınstalllocation \<yüklemesi konumu >/Platform "VMware"/Silent
+Kullanım | UnifiedAgent. exe/role \<MS/MT >/ınstalllocation \<Install location >/Platform "VmWare"/Silent
 Kurulum günlükleri | %ProgramData%\asrsetuplogs\asrunifiedagentınstaller.log altında
 /Role | Zorunlu yükleme parametresi. Mobility hizmeti (MS) veya ana hedefin (MT) yüklenip yüklenmeyeceğini belirtir.
 /InstallLocation| İsteğe bağlı parametre. Mobility hizmeti yükleme konumunu (herhangi bir klasör) belirtir.
@@ -125,7 +125,7 @@ Kurulum günlükleri | %ProgramData%\asrsetuplogs\asrunifiedagentınstaller.log 
 #### <a name="registration-settings"></a>Kayıt ayarları
 **Ayar** | **Ayrıntılar**
 --- | ---
-Kullanım | Unifiedagentconfigurator. exe/csendpoint \<CsIP >/parolalar sefilepath \<parola sefilepath >
+Kullanım | UnifiedAgentConfigurator. exe/CSEndPoint \<CSıP >/parola sefilepath \<parola Sefilepath >
 Aracı yapılandırma günlükleri | %ProgramData%\asrsetuplogs\asrunifiedagentconfigurator.log altında
 /CSEndPoint | Zorunlu parametre. Yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
 /PassphraseFilePath |  Zorunlu. Parolanın konumu. Geçerli bir UNC veya yerel dosya yolu kullanın.
@@ -154,7 +154,7 @@ Aracı yapılandırma günlükleri | %ProgramData%\asrsetuplogs\asrunifiedagentc
 #### <a name="installation-settings"></a>Yükleme ayarları
 **Ayar** | **Ayrıntılar**
 --- | ---
-Kullanım | ./install-d \<install location >-r \<MS/MT >-v VMware-q
+Kullanım | ./install-d \<Install location >-r \<MS/MT >-v VmWare-q
 -r | Zorunlu yükleme parametresi. Mobility hizmeti (MS) veya ana hedefin (MT) yüklenip yüklenmeyeceğini belirtir.
 -d | İsteğe bağlı parametre. Mobility hizmeti yükleme konumunu belirtir:/usr/local/ASR.
 -v | Zorunlu. Mobility hizmetinin yüklü olduğu platformu belirtir. VMware VM 'Leri/fiziksel sunucuları için **VMware** ; Azure VM 'Leri için **Azure** .
@@ -163,14 +163,14 @@ Kullanım | ./install-d \<install location >-r \<MS/MT >-v VMware-q
 #### <a name="registration-settings"></a>Kayıt ayarları
 **Ayar** | **Ayrıntılar**
 --- | ---
-Kullanım | CD/usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh-i \<CsIP >-P \<parola sefilepath >
--ı | Zorunlu parametre. Yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
+Kullanım | CD/usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh-ı \<CSıP >-P \<parola Sefilepath >
+-i | Zorunlu parametre. Yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
 -P |  Zorunlu. Parolasının kaydedildiği dosyanın tam dosya yolu. Geçerli bir klasör kullanın.
 
 ## <a name="azure-virtual-machine-agent"></a>Azure sanal makine Aracısı
 
-- **Windows VM 'leri**: Mobility hizmetinin 9.7.0.0 sürümünde [Azure VM Aracısı](../virtual-machines/extensions/features-windows.md#azure-vm-agent) , Mobility hizmeti yükleyicisi tarafından yüklenir. Bu, makinenin Azure 'a devredilmesini sağlar, Azure VM, herhangi bir VM uzantısını kullanmak için aracı yükleme önkoşullarını karşılar.
-- **Linux VM 'leri**: Yük devretme işleminden sonra [Walınuxagent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) 'ıN Azure VM 'ye el ile yüklenmesi gerekir.
+- **Windows VM 'leri**: Mobility hizmetinin 9.7.0.0 sürümünden [Azure VM Aracısı](../virtual-machines/extensions/features-windows.md#azure-vm-agent) , Mobility hizmeti yükleyicisi tarafından yüklenir. Bu, makinenin Azure 'a devredilmesini sağlar, Azure VM, herhangi bir VM uzantısını kullanmak için aracı yükleme önkoşullarını karşılar.
+- **Linux VM 'leri**: [Walınuxagent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) yük DEVRETMEDEN sonra Azure VM 'ye el ile yüklenmelidir.
 
 ## <a name="locate-installer-files"></a>Yükleyici dosyalarını bul
 
@@ -185,8 +185,8 @@ Microsoft-ASR\_UA\*SLES12-64\*Release. tar. gz | SUSE Linux Enterprise Server 12
 Microsoft-ASR\_UA\*SLES11-SP3-64\*Release. tar. gz| SUSE Linux Enterprise Server 11 SP3
 Microsoft-ASR\_UA\*SLES11-SP4-64\*Release. tar. gz| SUSE Linux Enterprise Server 11 SP4
 Microsoft-ASR\_UA\*OL6-64\*Release. tar. gz | Oracle Enterprise Linux 6,4, 6,5
-Microsoft-ASR\_UA\*Ubuntu-14.04-64\*Release. tar. gz | Ubuntu Linux 14,04
-Microsoft-ASR\_UA\*Ubuntu-16.04-64\*Release. tar. gz | Ubuntu Linux 16,04 LTS sunucusu
+Microsoft-ASR\_UA\*UBUNTU-14.04-64\*Release. tar. gz | Ubuntu Linux 14,04
+Microsoft-ASR\_UA\*UBUNTU-16.04-64\*Release. tar. gz | Ubuntu Linux 16,04 LTS sunucusu
 Microsoft ASR_UA\*DEBIAN7 64\*release.tar.gz | Deyi 7
 Microsoft ASR_UA\*DEBIAN8 64\*release.tar.gz | Debian 8
 

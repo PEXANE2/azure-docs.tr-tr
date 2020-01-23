@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
-ms.openlocfilehash: 7cd0935177ad4070750a9b2a0ff129af2e13959f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+ms.openlocfilehash: 4a8725e3ba7be2dc572798d1397e098046a4b352
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772423"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510235"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Azure IoT Edge çalışma zamanını, detem tabanlı Linux sistemlerine yükler
 
@@ -30,7 +30,7 @@ Bu makalede, Azure IoT Edge çalışma zamanını x64, ARM32 veya ARM64 Linux ci
 
 ## <a name="install-the-latest-runtime-version"></a>En son çalışma zamanı sürümünü yükler
 
-Azure IoT Edge çalışma zamanının en son sürümünü cihazınıza yüklemek için aşağıdaki bölümleri kullanın. 
+Azure IoT Edge çalışma zamanının en son sürümünü cihazınıza yüklemek için aşağıdaki bölümleri kullanın.
 
 ### <a name="register-microsoft-key-and-software-repository-feed"></a>Microsoft anahtar ve yazılım deposu akışı kaydedin
 
@@ -39,16 +39,19 @@ Cihazınızı IoT Edge çalışma zamanı yüklemesi için hazırlayın.
 Depo yapılandırmasını yükler. Cihaz işletim sisteminizle eşleşen **16,04** veya **18,04** komutunu seçin:
 
 * **Ubuntu Server 16,04**:
+
    ```bash
    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
 * **Ubuntu Server 18,04**:
+
    ```bash
    curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
 * **Raspbian Esnetme**:
+
    ```bash
    curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
    ```
@@ -88,7 +91,7 @@ Moby komut satırı arabirimi (CLI) yükleyin. CLI, geliştirme için kullanış
    sudo apt-get install moby-cli
    ```
 
-Moby kapsayıcı çalışma zamanını yüklerken hatalarla karşılaşırsanız, bu makalede daha sonra sağlanmış olan [Linux çekirdeğini Moby uyumluluğu Için doğrulama](#verify-your-linux-kernel-for-moby-compatibility)adımlarını izleyin. 
+Moby kapsayıcı çalışma zamanını yüklerken hatalarla karşılaşırsanız, bu makalede daha sonra sağlanmış olan [Linux çekirdeğini Moby uyumluluğu Için doğrulama](#verify-your-linux-kernel-for-moby-compatibility)adımlarını izleyin.
 
 ### <a name="install-the-azure-iot-edge-security-daemon"></a>Azure IOT Edge güvenlik Daemon'ı yükleme
 
@@ -108,7 +111,7 @@ Güvenlik daemon'ı yükleyin. Paket yüklü `/etc/iotedge/`.
    sudo apt-get install iotedge
    ```
 
-IoT Edge başarıyla yüklendikten sonra, çıkış sizden yapılandırma dosyasını güncelleştirmenizi ister. Cihazınızın sağlanmasına son vermek için [güvenlik cini yapılandırma](#configure-the-security-daemon) bölümündeki adımları izleyin. 
+IoT Edge başarıyla yüklendikten sonra, çıkış sizden yapılandırma dosyasını güncelleştirmenizi ister. Cihazınızın sağlanmasına son vermek için [güvenlik cini yapılandırma](#configure-the-security-daemon) bölümündeki adımları izleyin.
 
 ## <a name="install-a-specific-runtime-version"></a>Belirli bir çalışma zamanı sürümünü yükler
 
@@ -145,7 +148,7 @@ En son sürümleri kullanmak yerine Moby 'nin belirli bir sürümünü ve Azure 
       ```bash
       curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
       ```
-   
+
    3. IoT Edge cihazınızın mimarisiyle eşleşen **iotedge** dosyasını bulun. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın. 
 
    4. IoT Edge güvenlik arka plan programının bu sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın. 
@@ -174,7 +177,7 @@ Yapılandırma dosyasını açın.
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Dosyanın sağlama yapılandırmalarını bulun ve **el ile sağlama yapılandırma** bölümünün açıklamasını kaldırın. Değerini güncelleştirin **device_connection_string** IOT Edge cihazınızdan bağlantı dizesiyle. Diğer sağlama bölümlerinin açıklama olarak belirlendiğinden emin olun.
+Dosyanın sağlama yapılandırmalarını bulun ve **el ile sağlama yapılandırma** bölümünün açıklamasını kaldırın. Değerini güncelleştirin **device_connection_string** IOT Edge cihazınızdan bağlantı dizesiyle. Diğer sağlama bölümlerinin açıklama olarak belirlendiğinden emin olun. **Sağlama:** satırının önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun.
 
    ```yaml
    # Manual provisioning configuration
@@ -190,7 +193,8 @@ Dosyanın sağlama yapılandırmalarını bulun ve **el ile sağlama yapılandı
    #   attestation:
    #     method: "tpm"
    #     registration_id: "{registration_id}"
-```
+   ```
+
 Pano içeriğini nano `Shift+Right Click` yapıştırmak veya `Shift+Insert`' a basın.
 
 Dosyayı kaydedin ve kapatın.
@@ -213,7 +217,7 @@ Yapılandırma dosyasını açın.
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Dosyanın sağlama yapılandırmasını bulun ve kanıtlama mekanizmanız için uygun bölümün açıklamasını kaldırın. Örneğin, TPM kanıtlama kullanırken, **scope_id** ve **Registration_id** değerlerini IoT Hub cihaz sağlama hizmetinizdeki değerlerle ve IoT Edge cihazınızdan sırasıyla TPM ile güncelleştirin.
+Dosyanın sağlama yapılandırmasını bulun ve kanıtlama mekanizmanız için uygun bölümün açıklamasını kaldırın. Örneğin, TPM kanıtlama kullanırken, **scope_id** ve **Registration_id** değerlerini IoT Hub cihaz sağlama hizmetinizdeki değerlerle ve IoT Edge cihazınızdan sırasıyla TPM ile güncelleştirin. **Sağlama:** satırının önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun.
 
    ```yaml
    # Manual provisioning configuration
@@ -265,7 +269,7 @@ En yaygın yapılandırma ve ağ hataları için otomatik bir denetim çalışt�
 sudo iotedge check
 ```
 
-Cihazınızda IoT Edge için ilk modülünüzü dağıtana kadar, **$edgeHub** sistem modülü cihaza dağıtılmayacak. Sonuç olarak, otomatik denetim `Edge Hub can bind to ports on host` bağlantı denetimi için bir hata döndürür. Bu hata, cihaza bir modül dağıttıktan sonra gerçekleşmediği için ingored olabilir.
+Cihazınızda IoT Edge için ilk modülünüzü dağıtana kadar, **$edgeHub** sistem modülü cihaza dağıtılmayacak. Sonuç olarak, otomatik denetim `Edge Hub can bind to ports on host` bağlantı denetimi için bir hata döndürür. Bu hata, cihaza bir modül dağıttıktan sonra gerçekleşmediği takdirde yoksayılabilir.
 
 Son olarak, çalışan modülleri listeleyin:
 

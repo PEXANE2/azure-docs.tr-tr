@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421957"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549096"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay odaklı arka plan işleme için Azure Web Işleri SDK 'sını kullanma
 
@@ -681,8 +681,8 @@ Daha fazla bilgi için bkz. Azure Işlevleri belgelerinde [çalışma zamanında
 Azure Işlevleri belgeleri, her bağlama türü hakkında başvuru bilgileri sağlar. Her bağlama başvuru makalesinde aşağıdaki bilgileri bulabilirsiniz. (Bu örnek, depolama kuyruğuna dayalıdır.)
 
 * [Paketler](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). Web Işleri SDK projesinde bağlama desteğini dahil etmek için yüklemeniz gereken paket.
-* [Örnekler](../azure-functions/functions-bindings-storage-queue.md#trigger---example). Kod örnekleri. C# Sınıf kitaplığı örneği, Web İşleri SDK 'sı için geçerlidir. Yalnızca `FunctionName` özniteliğini atlayın.
-* [Öznitelikler](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes). Bağlama türü için kullanılacak öznitelikler.
+* [Örnekler](../azure-functions/functions-bindings-storage-queue.md#trigger). Kod örnekleri. C# Sınıf kitaplığı örneği, Web İşleri SDK 'sı için geçerlidir. Yalnızca `FunctionName` özniteliğini atlayın.
+* [Öznitelikler](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations). Bağlama türü için kullanılacak öznitelikler.
 * [Yapılandırma](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Öznitelik özellikleri ve Oluşturucu parametrelerinin açıklamaları.
 * [Kullanım](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Bağlayacağınız türler ve bağlamanın nasıl çalıştığı hakkında bilgi alabilirsiniz. Örneğin: yoklama algoritması, zarar kuyruğu işleme.
   

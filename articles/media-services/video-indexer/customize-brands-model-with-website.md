@@ -1,5 +1,5 @@
 ---
-title: Bir markalar modelini özelleştirmek için Video Indexer Web sitesini kullanma-Azure
+title: Video Indexer Web sitesini kullanarak markalar modellerini özelleştirme-Azure
 titleSuffix: Azure Media Services
 description: Bu makalede, Video Indexer Web sitesiyle bir markalar modelinin nasıl özelleştirileceği gösterilmektedir.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: f4b2f7a8b43c1723beb0dd8da82814f74cd7b135
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 956ca7af055768398392045ecf9b383d2eb1060f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838356"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513907"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Video Indexer Web sitesiyle bir markalar modeli özelleştirme
 

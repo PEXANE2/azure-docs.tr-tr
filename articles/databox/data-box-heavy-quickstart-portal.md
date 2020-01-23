@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: b2ebb4c5a0df360cede084a90ebe5da041a08aa0
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 70d5481c37777150927914042133286a77f53b89
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241387"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514417"
 ---
 ::: zone target = "docs"
 
@@ -109,7 +109,7 @@ Bu adımın tamamlanması yaklaşık 10-15 dakika sürer.
 
 Bu adımın tamamlanması yaklaşık 5-7 dakika sürer.
 
-1. Cihaz parolasını almak için [Azure portalında](https://portal.azure.com) **Genel > Cihaz ayrıntıları**'na gidin. Aynı parola, cihazın her iki düğümü için de kullanılır.
+1. Cihaz parolasını almak için [Azure portalında](https://portal.azure.com)**Genel > Cihaz ayrıntıları**'na gidin. Aynı parola, cihazın her iki düğümü için de kullanılır.
 2. Data Box Heavy'ye bağlanmak için kullandığınız bilgisayardaki Ethernet bağdaştırıcısına 192.168.100.5 statik IP adresini ve 255.255.255.0 alt ağını atayın. Cihazın yerel web kullanıcı arabirimine `https://192.168.100.10` adresinden erişin. Siz cihazı açtıktan sonra bağlantı kurulması 5 dakika kadar sürebilir.
 3. Azure portalından alınan parolayı kullanarak oturum açın. Web sitesinin güvenlik sertifikasında sorun olduğunu belirten bir hata görürsünüz. Web sayfasına ilerlemek için tarayıcıya özel yönergeleri izleyin.
 4. Varsayılan olarak, arabirimlerin (MGMT hariç) ağ ayarları DHCP olarak yapılandırılır. Gerekirse, bu arabirimleri statik olarak yapılandırabilir ve bir IP adresi sağlayabilirsiniz.

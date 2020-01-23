@@ -1,6 +1,6 @@
 ---
-title: Azure geçişi API'sine genel bakış | Microsoft Docs
-description: Kullanılabilir Azure geçişi API'larının genel bakış
+title: Azure Relay API 'ye Genel Bakış | Microsoft Docs
+description: Bu makalede, kullanılabilir Azure Relay API 'Lerine (.NET Standard, .NET Framework, Node. js vb.) ilişkin bir genel bakış sunulmaktadır.
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -12,51 +12,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41d9e2026c19c959dc6fe2546b0ef699571ec7cd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593352"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513975"
 ---
-# <a name="available-relay-apis"></a>Kullanılabilir geçiş API'leri
+# <a name="available-relay-apis"></a>Kullanılabilir geçiş API 'Leri
 
-## <a name="runtime-apis"></a>Çalışma zamanı API'ları
+## <a name="runtime-apis"></a>Çalışma zamanı API 'Leri
 
-Aşağıdaki tabloda, şu anda kullanılabilir geçişi çalışma zamanı istemcileri listeler.
+Aşağıdaki tabloda, şu anda kullanılabilir olan tüm geçiş çalışma zamanı istemcileri listelenmiştir.
 
-[Ek bilgi](#additional-information) bölümü her çalışma zamanı kitaplığının durumu hakkında daha fazla bilgi içerir.
+[Ek bilgi](#additional-information) bölümü, her çalışma zamanı kitaplığının durumu hakkında daha fazla bilgi içerir.
 
-| Dil/Platform | Kullanılabilir özellik | İstemci paketi | Havuz |
+| Dil/platform | Kullanılabilir özellik | İstemci paketi | Havuz |
 | --- | --- | --- | --- |
 | .NET Standard | Karma Bağlantılar | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
 | .NET Framework | WCF Geçişi | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | Yok |
-| Düğüm | Karma Bağlantılar | [Websockets: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Websockets: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP istekleri: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
+| Düğüm | Karma Bağlantılar | [WebSockets: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP Istekleri: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
-### <a name="additional-information"></a>Ek bilgiler
+### <a name="additional-information"></a>Ek Bilgi
 
 #### <a name="net"></a>.NET
 
-Birden fazla çalışma zamanı .NET ekosisteminin sahipse, bu nedenle geçiş için birden çok .NET kitaplıkları vardır. .NET Standard kitaplığı, yalnızca .NET Framework kitaplığı bir .NET Framework ortamında çalıştırılabilir sırasında .NET Core veya .NET Framework kullanılarak çalıştırılabilir. .NET Framework hakkında daha fazla bilgi için bkz. [framework sürümlerini](/dotnet/articles/standard/frameworks).
+.NET ekosisteminde birden fazla çalışma zamanı var, bu nedenle geçiş için birden çok .NET kitaplığı var. .NET Standard kitaplığı, .NET Core veya .NET Framework kullanılarak çalıştırılabilir, ancak .NET Framework kitaplığı yalnızca bir .NET Framework ortamında çalıştırılabilir. .NET çerçeveleri hakkında daha fazla bilgi için bkz. [Framework sürümleri](/dotnet/articles/standard/frameworks).
 
-.NET Framework kitaplığı yalnızca WCF programlama modelini destekler ve WCF dayalı özel bir ikili protokolü kullanır `net.tcp` taşıma. Bu protokol ve kitaplık korunduğu için geriye doğru mevcut uygulamalarla uyumluluk.
+.NET Framework kitaplığı yalnızca WCF programlama modelini destekler ve WCF `net.tcp` taşımasını temel alan özel bir ikili protokolü kullanır. Bu protokol ve kitaplık, mevcut uygulamalarla geriye dönük uyumluluk için korunur.
 
-.NET Standard kitaplığı HTTP ve Websocket'üzerinde ' ı oluşturan karma bağlantılar geçişi açık protokol tanımını temel alır. Kitaplığı bir akış soyutlama Websockets üzerinden ve basit istek-yanıt API hareket yanıtlama HTTP isteklerini destekler. [Web API](https://github.com/Azure/azure-relay-dotnet) örnek karma bağlantılar, web hizmetleri için ASP.NET Core ile tümleştirmek nasıl gösterir.
+.NET Standard kitaplığı, HTTP ve WebSockets üzerinde derlemelerin Karma Bağlantılar geçişinin açık protokol tanımına dayalıdır. Kitaplık, HTTP isteklerini yanıtlamak için WebSockets üzerinde bir akış soyutlama ve basit bir istek-yanıt API hareketi destekler. [Web API](https://github.com/Azure/azure-relay-dotnet) örneği, karma bağlantılar Web hizmetleri için ASP.NET Core nasıl tümleştirileceğini gösterir.
 
 #### <a name="nodejs"></a>Node.js
 
-Yukarıdaki tabloda listelenen karma bağlantılar modüllerden değiştirin veya mevcut Node.js modüllerini yerel ağ yığını yerine Azure geçişi hizmetini üzerinde dinleyen diğer uygulamaları ile değiştir.
+Yukarıdaki tabloda listelenen Karma Bağlantılar modülleri, var olan Node. js modüllerini yerel ağ yığını yerine Azure Relay hizmetini dinleyen alternatif uygulamalarla değiştirir veya değiştirir.
 
-`hyco-https` Modülü amends ve kısmen çekirdek Node.js modüllerini geçersiz kılmalar `http` ve `https`, varolan birçok Node.js modüllerini ve kullanan uygulamaları ile uyumlu bir HTTPS dinleyicisi uygulaması bu çekirdek sağlanması modüller.
+`hyco-https` modülü, çekirdek Node. js modüllerini `http` ve `https`, var olan birçok Node. js modülleriyle ve bu temel modüllere dayalı uygulamalarla uyumlu bir HTTPS dinleyicisi uygulaması sağlayarak, kısmen geçersiz kılar.
 
-`hyco-ws` Ve `hyco-websocket` modülleri popüler düzeltmek `ws` ve `websocket` Node.js, modülleri ve iki modülü, bağlı olan uygulamalar, karma çalışmaya olanak tanıyan alternatif bir dinleyici uygulamaları sağlamak için modüller Geçiş bağlantıları.
+`hyco-ws` ve `hyco-websocket` modülleri Node. js için popüler `ws` ve `websocket` modüllerini düzeltmiştir, bu iki modüle da bağlı olan modül ve uygulamaların Karma Bağlantılar geçişinin arkasında çalışmasına olanak tanıyan alternatif dinleyici uygulamaları sağlar.
 
-Modüller hakkında daha fazla ayrıntı bulunabilir [azure geçişi düğüm](https://github.com/Azure/azure-relay-node) GitHub deposu.
+Bu modüllerle ilgili ayrıntılar [Azure-Relay-node](https://github.com/Azure/azure-relay-node) GitHub deposunda bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure geçişi hakkında daha fazla bilgi edinmek için şu bağlantıları ziyaret edin:
+Azure Relay hakkında daha fazla bilgi edinmek için şu bağlantıları ziyaret edin:
 * [Azure Geçiş nedir?](relay-what-is-it.md)
 * [Geçiş hakkında SSS](relay-faq.md)

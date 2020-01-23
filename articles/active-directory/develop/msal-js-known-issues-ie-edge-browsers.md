@@ -14,12 +14,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c75162cc66e9277d111def92842f5a67a132f59
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424321"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548161"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında (MSAL. js) bilinen sorunlar
 
@@ -38,10 +38,6 @@ Bu sorunların büyük bir kısmının nedeni aşağıdaki gibidir. Oturum depol
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
 - Açılan **pencere, kimlik doğrulaması Için açılan pencere aracılığıyla oturum açma kullanılırken kapanmaz veya takılmaz**. Microsoft Edge veya IE (InPrivate) üzerinde açılan pencere aracılığıyla kimlik doğrulaması yaparken, kimlik bilgilerini girdikten ve oturum açtıktan sonra, güvenlik bölgelerinde birden çok etki alanı gezinmede yer alıyorsa, MSAL. js tanıtıcıyı açılan pencere.  
-
-    Microsoft Edge sorun İzleyicisi 'nde bu sorunların bağlantıları aşağıda verilmiştir:  
-    - [Hata 13861050](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861050/)
-    - [Hata 13861663](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861663/)
 
 ### <a name="update-fix-available-in-msaljs-023"></a>Güncelleştirme: MSAL. js 0.2.3 'de çözüm kullanılabilir
 Kimlik doğrulama yönlendirme döngüsü sorunları için düzeltmeler [msal. js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)içinde yayımlanmıştır. Bu düzeltmeden faydalanmak için MSAL. js yapılandırmasında bayrak `storeAuthStateInCookie` etkinleştirin. Bu bayrak varsayılan olarak false değerine ayarlanır.

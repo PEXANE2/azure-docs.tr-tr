@@ -4,15 +4,15 @@ description: Azure Dosya Eşitleme karşılaşılan yaygın sorunları giderin.
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/8/2019
+ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027789"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545050"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -41,8 +41,28 @@ Bir Active Directory etki alanı denetleyicisine, PDC rolü sahibinin bir Window
 
 Bu sorunu gidermek için, PDC rolünü Windows Server 2012 R2 veya daha yeni bir sürümünü çalıştıran başka bir etki alanı denetleyicisine aktarın ve ardından eşitleme 'yi çalıştırın.
 
-<a id="server-registration-prerequisites"></a>**Sunucu kaydı şu iletiyi görüntüler: "önkoşulların önkoşulları eksik"**
+<a id="parameter-is-incorrect"></a>**Windows Server 2012 R2 'deki bir birime erişilmesi hata vererek başarısız olur: parametre yanlış**  
+Windows Server 2012 R2 'de sunucu uç noktası oluşturduktan sonra, birime erişirken aşağıdaki hata oluşur:
 
+SürücüHarfi: \ erişilebilir değil.  
+Parametre yanlış.
+
+Bu sorunu gidermek için, Windows Server 2012 R2 için en son güncelleştirmeleri yükledikten sonra sunucuyu yeniden başlatın.
+
+<a id="server-registration-missing-subscriptions"></a>**Sunucu kaydı tüm Azure aboneliklerini listelemez**  
+ServerRegistration. exe ' yi kullanarak bir sunucuyu kaydederken, Azure aboneliği açılır listesini tıklattığınızda abonelikler eksiktir.
+
+Bu sorun, ServerRegistration. exe ' nin şu anda çok kiracılı ortamları desteklemediği için oluşur. Bu sorun gelecekte Azure Dosya Eşitleme Aracı güncelleştirmesinde düzeltilecektir.
+
+Bu soruna geçici bir çözüm olarak, sunucuyu kaydetmek için aşağıdaki PowerShell komutlarını kullanın:
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+Login-AzureRmStorageSync -SubscriptionID "<guid>" -TenantID "<guid>"
+Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<string>" -StorageSyncServiceName "<string>"
+```
+
+<a id="server-registration-prerequisites"></a>**Sunucu kaydı şu iletiyi görüntüler: "önkoşulların önkoşulları eksik"**  
 Bu ileti, PowerShell 5,1 ' de az veya Azurerd PowerShell modülü yüklü değilse görüntülenir. 
 
 > [!Note]  
@@ -304,6 +324,7 @@ Bu hataları görmek için, açık tanıtıcılar, desteklenmeyen karakterler ve
 | 0x8000FFFF | -2147418113 | E_UNEXPECTED | Beklenmeyen bir hata nedeniyle dosya eşitlenemiyor. | Birkaç gün boyunca hata devam ederse lütfen bir destek talebi açın. |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Dosya kullanımda olduğundan eşitlenemiyor. Dosya artık kullanımda olmadığında eşitlenir. | Eylem gerekmiyor. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Dosya eşitleme sırasında değiştirildi, bu nedenle yeniden eşitlenmesi gerekiyor. | Eylem gerekmiyor. |
+| 0x80070017 | -2147024873 | ERROR_CRC | CRC hatası nedeniyle dosya eşitlenemiyor. Bu hata, bir sunucu uç noktası silinmeden veya dosya bozuksa önce katmanlı bir dosya geri çağrılmıyorsa meydana gelebilir. | Bu sorunu çözmek için, sunucu uç noktası silindikten sonra, yalnız bırakılmış katmanlı dosyaları kaldırmak için [katmanlı dosyalara sunucu üzerinde erişilebilir değil](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) ' e bakın. Çalışan katmanlı dosyalar kaldırıldıktan sonra hata oluşmaya devam ederse, birimde [Chkdsk komutunu](https://docs.microsoft.com/windows-server/administration/windows-commands/chkdsk) çalıştırın. |
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Çakışma dosyası sayısı üst sınırına ulaşıldığından dosya eşitlenemiyor. Azure Dosya Eşitleme dosya başına 100 çakışma dosyasını destekler. Dosya çakışmaları hakkında daha fazla bilgi edinmek için Azure Dosya Eşitleme [SSS](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution)bölümüne bakın. | Bu sorunu çözmek için, çakışma dosyalarının sayısını azaltın. Çakışma dosyası sayısı 100 ' den az olduğunda dosya eşitlenir. |
 
 #### <a name="handling-unsupported-characters"></a>Desteklenmeyen karakterleri işleme
@@ -435,6 +456,17 @@ Bu hata, Azure Dosya Eşitleme aracısının Azure dosya paylaşımında erişim
 
 1. [Depolama hesabının mevcut olduğundan emin olun.](#troubleshoot-storage-account)
 2. [Depolama hesabında güvenlik duvarı ve sanal ağ ayarlarının (etkinleştirildiyse) düzgün yapılandırıldığını doğrulayın](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+<a id="-2134364014"></a>**Depolama hesabı kilitli olduğundan eşitleme başarısız oldu.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83092 |
+| **HRESULT (ondalık)** | -2134364014 |
+| **Hata dizesi** | ECS_E_STORAGE_ACCOUNT_LOCKED |
+| **Düzeltme gerekli** | Evet |
+
+Bu hata, depolama hesabının salt okunurdur [kaynak kilidi](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)olduğu için oluşur. Bu sorunu çözmek için depolama hesabındaki salt okuma kaynak kilidini kaldırın. 
 
 <a id="-1906441138"></a>**Eşitleme veritabanıyla ilgili bir sorun nedeniyle eşitleme başarısız oldu.**  
 

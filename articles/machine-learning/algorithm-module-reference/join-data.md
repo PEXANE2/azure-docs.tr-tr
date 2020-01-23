@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 11/19/2019
-ms.openlocfilehash: b07bde671be73af2a351353d9794907972a022e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0d24a0d90671935cb7224f17ffad368d4305020c
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232617"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548518"
 ---
 # <a name="join-data"></a>Verileri birleştirme
 
@@ -62,9 +62,9 @@ Bu makalede, bir veritabanı stili birleştirme işlemi kullanarak iki veri küm
     * Her iki giriş tablolarından anahtarları görüntülemek için bu seçeneği belirleyin.
     * Yalnızca sol girdiden anahtar sütunları döndürmek için seçimi kaldırın.
 
-1. İşlem hattını çalıştırın veya veri Birleştir modülünü seçin ve birleşimi gerçekleştirmek için seçili **Çalıştır** ' ı seçin.
+1. İşlem hattını çalıştırma.
 
-1. Sonuçları görüntülemek için **verileri birleştir** > **sonuçları veri kümesine** sağ tıklayıp **görselleştirip** > .
+1. Sonuçları görüntülemek için, **verileri Birleştir** ' e sağ tıklayın ve **Görselleştir**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

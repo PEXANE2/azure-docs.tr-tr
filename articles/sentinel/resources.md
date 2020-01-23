@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2ce8b9e82907402538ca2d14b864c02bb8bc2d82
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771300"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548008"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel ile çalışmaya yönelik faydalı kaynaklar
 
@@ -46,13 +46,13 @@ Aşağıdaki desteklenen işlemler denetlenebilir.
 |Kayıtlı aramayı Sil    |Microsoft. Operationalınsights/çalışma alanları/Savedaramalar|
 |Uyarı kurallarını Güncelleştir |Microsoft. Securityınsights/alertRules|
 |Uyarı kurallarını Sil |Microsoft. Securityınsights/alertRules|
-|Uyarı kuralı yanıt eylemlerini Güncelleştir |Microsoft. Securityınsights/alertRules|
-|Uyarı kuralı yanıt eylemlerini Sil |Microsoft. Securityınsights/alertRules|
+|Uyarı kuralı yanıt eylemlerini Güncelleştir |Microsoft. Securityınsights/alertRules/Actions|
+|Uyarı kuralı yanıt eylemlerini Sil |Microsoft. Securityınsights/alertRules/Actions|
 |Yer Imlerini güncelleştirme   |Microsoft. Securityınsights/yer işaretleri|
 |Yer Imlerini Sil   |Microsoft. Securityınsights/yer işaretleri|
 |Güncelleştirme çalışmaları   |Microsoft. Securityınsights/durumlar|
-|Durum araştırmasını Güncelleştir  |Microsoft. Securityınsights/durumlar|
-|Case açıklamaları oluşturma   |Microsoft. Securityınsights/durumlar|
+|Durum araştırmasını Güncelleştir  |Microsoft. Securityınsights/durumlar/araştırmalar|
+|Case açıklamaları oluşturma   |Microsoft. Securityınsights/Cases/Comments|
 |Veri bağlayıcılarını güncelleştirme |Microsoft. Securityınsights/veri bağlayıcıları|
 |Veri bağlayıcıları silme |Microsoft. Securityınsights/veri bağlayıcıları|
 |Ayarları Güncelleştir    |Microsoft. Securityınsights/ayarlar|

@@ -4,12 +4,12 @@ description: Azure Server geçişi ile şirket içi Hyper-V VM 'lerini Azure 'a 
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: b9c0de866a61ee2646d987c4fb98cb24a218417b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a321c3e731a6649f0831f7d515f1c464b311c9ac
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028976"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545917"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM’lerini Azure’a Geçirin 
 
@@ -181,7 +181,7 @@ Azure geçişi projesinde çoğaltmakta olduğunuz ilk VM ise Azure geçişi: su
 - **Service Bus**: Azure geçişi: sunucu geçişi, yüklemeye çoğaltma düzenleme iletileri göndermek için Service Bus kullanır.
 - **Ağ geçidi depolama hesabı**: Azure geçişi: sunucu geçişi, çoğaltılan VM 'ler hakkında durum bilgilerini depolamak için ağ geçidi depolama hesabını kullanır.
 - **Günlük depolama hesabı**: Azure geçişi gereci, VM 'ler için çoğaltma günlüklerini bir günlük depolama hesabına yükler. Azure geçişi, çoğaltma bilgilerini çoğaltma tarafından yönetilen disklere uygular.
-- **Anahtar Kasası**: Azure geçişi gereci, hizmet veri yolu için bağlantı dizelerini yönetmek üzere anahtar kasasını ve Çoğaltmada kullanılan depolama hesapları için erişim anahtarlarını kullanır. Hazırlandığınızda, anahtar kasasının depolama hesabına erişmesi için gereken izinleri ayarlamış olmanız gerekir. Hyper-V VM değerlendirmesi ve geçişi için [Azure hazırlandı](tutorial-prepare-hyper-v.md#prepare-azure) . 
+- **Anahtar Kasası**: Azure geçişi gereci, hizmet veri yolu için bağlantı dizelerini yönetmek üzere anahtar kasasını ve Çoğaltmada kullanılan depolama hesapları için erişim anahtarlarını kullanır. Hyper-V VM değerlendirmesi ve geçişi için [Azure hazırlandığınızda](tutorial-prepare-hyper-v.md#prepare-azure) , anahtar kasasının depolama hesabına erişmesi için gereken izinleri ayarlamış olmanız gerekir. 
 
 
 ## <a name="track-and-monitor"></a>İzleme ve izleme

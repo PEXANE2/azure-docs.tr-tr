@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: daa3ff7cb9006a0ec940a57a4db31746dcb0550a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b3551a8df19e47178c7bacd9218cfa60b66d81f9
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888111"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548076"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Translator Metin Çevirisi API'si 3,0: Sözlük örnekleri
 
@@ -33,45 +33,20 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
-<table width="100%">
-  <th width="20%">Sorgu parametresi</th>
-  <th>Açıklama</th>
-  <tr>
-    <td>api sürümü</td>
-    <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer `3.0`olmalıdır.</td>
-  </tr>
-  <tr>
-    <td>Kaynak</td>
-    <td>*Gerekli parametre*.<br/>Giriş metninin dilini belirtir. Kaynak dili, `dictionary` kapsamında yer alan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır.</td>
-  </tr>
-  <tr>
-    <td>-</td>
-    <td>*Gerekli parametre*.<br/>Çıkış metninin dilini belirtir. Hedef dil `dictionary` kapsamında bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır.</td>
-  </tr>
-</table>
+| Sorgu parametresi | Açıklama |
+| --------- | ----------- |
+| api-version <img width=200/> | **Gerekli parametre**.<br/>İstemci tarafından istenen API 'nin sürümü. Değer `3.0`olmalıdır. |
+| başlangıç | **Gerekli parametre**.<br/>Giriş metninin dilini belirtir. Kaynak dili, `dictionary` kapsamında yer alan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır. |
+| - | **Gerekli parametre**.<br/>Çıkış metninin dilini belirtir. Hedef dil `dictionary` kapsamında bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır.  | 
 
 İstek üstbilgileri şunları içerir:
 
-<table width="100%">
-  <th width="20%">Üst bilgiler</th>
-  <th>Açıklama</th>
-  <tr>
-    <td>Kimlik doğrulama üst bilgisi</td>
-    <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
-  </tr>
-  <tr>
-    <td>İçerik türü</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler: `application/json`.</td>
-  </tr>
-  <tr>
-    <td>İçerik uzunluğu</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>İstek gövdesinin uzunluğu.</td>
-  </tr>
-  <tr>
-    <td>X-Clienttraceıd</td>
-    <td>*İsteğe bağlı*.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. `ClientTraceId`adlı bir sorgu parametresi kullanarak, sorgu dizesinde izleme KIMLIĞINI eklerseniz bu üstbilgiyi atlayabilirsiniz.</td>
-  </tr>
-</table> 
+| Üst bilgiler  | Açıklama |
+| ------ | ----------- |
+| Kimlik doğrulama üst bilgisi <img width=200/>  | **Gerekli istek üst bilgisi**.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın. |
+| Content-Type | **Gerekli istek üst bilgisi**.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json`. |
+| İçerik Uzunluğu   | **Gerekli istek üst bilgisi**.<br/>İstek gövdesinin uzunluğu. |
+| X-Clienttraceıd   | **İsteğe bağlı**.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. `ClientTraceId`adlı bir sorgu parametresi kullanarak, sorgu dizesinde izleme KIMLIĞINI eklerseniz bu üstbilgiyi atlayabilirsiniz. |
 
 ## <a name="request-body"></a>İstek gövdesi
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8b7a743ebcdf74f6ad740e4e4193bbd98da1536d
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291133"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544948"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux 'ta Azure dosyaları sorunlarını giderme
 
@@ -131,9 +131,8 @@ Linux için SMB 3.0'ın şifreleme özelliği 4.11 çekirdeğinde kullanıma sun
 Linux SMB istemciniz şifrelemeyi desteklemiyorsa, Azure Dosyalar'ı bağlamak için dosya paylaşımıyla aynı veri merkezinde bulunan bir Azure Linux VM'sinden SMB 2.1'i kullanın. Depolama hesabında [Güvenli aktarım gerekli]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarının devre dışı bırakıldığını doğrulayın. 
 
 <a id="noaaccessfailureportal"></a>
-## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>Portalda bir Azure dosya paylaşımıyla gezinerek "erişim yok" hatası
-
-Portalda bir Azure dosya paylaşımınıza gözattığınızda, şu hatayı alabilirsiniz:
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Bir Azure dosya paylaşımından erişmeye veya silmeye çalıştığınızda "erişim yok" hatası  
+Portalda bir Azure dosya paylaşımından erişmeye veya silmeye çalıştığınızda şu hatayı alabilirsiniz:
 
 Erişim yok  
 Hata kodu: 403 

@@ -7,37 +7,37 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 9ef0f2810252b73921fc0a72f2e523262c760bab
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eedf04a2168c67449f97d8e462d4ff82653a22b3
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932651"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513719"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularının bilgisayar grupları
-Azure Izleyici 'de bilgisayar grupları, [günlük sorgularını](../log-query/log-query-overview.md) belirli bir bilgisayar kümesiyle kapsamlarınıza izin verir.  Her grup, tanımladığınız bir sorgu kullanılarak veya farklı kaynaklardan grupları içeri aktararak bilgisayarlarla doldurulur.  Grup bir günlük sorgusuna eklendiğinde, sonuçlar gruptaki bilgisayarlarla eşleşen kayıtlarla sınırlıdır.
+Azure Izleyici 'de bilgisayar grupları, [günlük sorgularını](../log-query/log-query-overview.md) belirli bir bilgisayar kümesiyle kapsamlarınıza izin verir.  Her Grup ya da tanımladığınız bir sorgu kullanarak bilgisayarları veya grupları alarak farklı kaynaktaki doldurulur.  Grup bir günlük sorgusuna eklendiğinde, sonuçlar gruptaki bilgisayarlarla eşleşen kayıtlarla sınırlıdır.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="creating-a-computer-group"></a>Bilgisayar grubu oluşturma
-Aşağıdaki tablodaki yöntemlerden birini kullanarak Azure Izleyici 'de bir bilgisayar grubu oluşturabilirsiniz.  Her yöntemin ayrıntıları aşağıdaki bölümlerde verilmiştir. 
+## <a name="creating-a-computer-group"></a>Bir bilgisayar grubu oluşturuluyor
+Aşağıdaki tablodaki yöntemlerden birini kullanarak Azure Izleyici 'de bir bilgisayar grubu oluşturabilirsiniz.  Aşağıdaki bölümlerde her yöntemi hakkında ayrıntılı bilgi sağlanır. 
 
 | Yöntem | Açıklama |
 |:--- |:--- |
 | Günlük sorgusu |Bilgisayarların listesini döndüren bir günlük sorgusu oluşturun. |
-| Günlük Arama API’si |Günlük sorgusunun sonuçlarına göre program aracılığıyla bir bilgisayar grubu oluşturmak için günlük araması API 'sini kullanın. |
+| Log Arama API’si |Günlük sorgusunun sonuçlarına göre program aracılığıyla bir bilgisayar grubu oluşturmak için günlük araması API 'sini kullanın. |
 | Active Directory |Active Directory bir etki alanının üyesi olan herhangi bir aracı bilgisayarın Grup üyeliğini otomatik olarak tarayın ve her güvenlik grubu için Azure Izleyici 'de bir grup oluşturun. (Yalnızca Windows makineler)|
-| Configuration Manager | Koleksiyonları System Center Configuration Manager içeri aktarın ve Azure Izleyici 'de her biri için bir grup oluşturun. |
+| Configuration Manager | Koleksiyonları Microsoft uç nokta Configuration Manager içeri aktarın ve Azure Izleyici 'de her biri için bir grup oluşturun. |
 | Windows Server Update Services |Grupları hedeflemek için WSUS sunucularını veya istemcilerini otomatik olarak tarayın ve her biri için Azure Izleyici 'de bir grup oluşturun. |
 
 ### <a name="log-query"></a>Günlük sorgusu
-Bir günlük sorgusundan oluşturulan bilgisayar grupları, tanımladığınız bir sorgu tarafından döndürülen tüm bilgisayarları içerir.  Bu sorgu, bilgisayar grubu oluşturulduğu her seferinde çalıştırılır, böylece Grup oluşturulduktan sonra yapılan tüm değişiklikler yansıtılır.  
+Bir günlük sorgusundan oluşturulan bilgisayar grupları, tanımladığınız bir sorgu tarafından döndürülen tüm bilgisayarları içerir.  Bu sorguyu bilgisayar grubu grubun oluşturulmasından bu yana değişiklikler yansıtılır böylece her kullanılışında çalıştırılır.  
 
-Bilgisayar grubu için herhangi bir sorgu kullanabilirsiniz, ancak `distinct Computer`kullanarak farklı bir bilgisayar kümesi döndürmesi gerekir.  Aşağıda, bilgisayar grubu olarak kullanabileceğiniz tipik örnek bir sorgu verilmiştir.
+Bir bilgisayar grubu için herhangi bir sorgu kullanabilirsiniz, ancak farklı bir bilgisayar kullanarak döndürmelidir `distinct Computer`.  Aşağıda, bilgisayar grubu olarak kullanabileceğiniz tipik örnek bir sorgu verilmiştir.
 
     Heartbeat | where Computer contains "srv" | distinct Computer
 
-Azure portal bir günlük aramasından bir bilgisayar grubu oluşturmak için aşağıdaki yordamı kullanın.
+Azure portalında günlük araması bir bilgisayar grubu oluşturmak için aşağıdaki yordamı kullanın.
 
 1. Azure portal **Azure izleyici** menüsünde **Günlükler** ' e tıklayın.
 1. Grupta istediğiniz bilgisayarları döndüren bir sorgu oluşturun ve çalıştırın.
@@ -45,49 +45,49 @@ Azure portal bir günlük aramasından bir bilgisayar grubu oluşturmak için a�
 1. **Farklı kaydet** **işlevini işlevine** değiştirin ve **Bu sorguyu bir bilgisayar grubu olarak kaydet**' i seçin.
 1. Tabloda açıklanan bilgisayar grubu için her bir özellik için değerler sağlayın ve **Kaydet**' e tıklayın.
 
-Aşağıdaki tabloda bir bilgisayar grubunu tanımlayan özellikler açıklanmaktadır.
+Aşağıdaki tabloda, bir bilgisayar grubu tanımlayan özellikleri açıklanmaktadır.
 
 | Özellik | Açıklama |
 |:---|:---|
-| Adı   | Portalda görüntülenecek sorgunun adı. |
-| İşlev diğer adı | Bir sorgudaki bilgisayar grubunu tanımlamak için kullanılan benzersiz bir diğer ad. |
+| Ad   | Portalda görüntülenecek sorgunun adı. |
+| İşlev diğer adı | Bir sorguda bilgisayar grubu tanımlamak için kullanılan benzersiz bir diğer ad. |
 | Kategori       | Portaldaki sorguları düzenlemek için kategori. |
 
 
 ### <a name="active-directory"></a>Active Directory
-Azure Izleyici 'yi Active Directory grup üyeliklerini içeri aktarmak üzere yapılandırdığınızda, Windows etki alanına katılmış herhangi bir bilgisayarın Grup üyeliğini Log Analytics aracısıyla analiz eder.  Active Directory içindeki her güvenlik grubu için Azure Izleyici 'de bir bilgisayar grubu oluşturulur ve her Windows bilgisayarı, üyesi oldukları güvenlik gruplarına karşılık gelen bilgisayar gruplarına eklenir.  Bu üyelik, her 4 saatte bir sürekli güncelleştirilir.  
+Azure Izleyici 'yi Active Directory grup üyeliklerini içeri aktarmak üzere yapılandırdığınızda, Windows etki alanına katılmış herhangi bir bilgisayarın Grup üyeliğini Log Analytics aracısıyla analiz eder.  Active Directory içindeki her güvenlik grubu için Azure Izleyici 'de bir bilgisayar grubu oluşturulur ve her Windows bilgisayarı, üyesi oldukları güvenlik gruplarına karşılık gelen bilgisayar gruplarına eklenir.  Bu üyelik sürekli olarak 4 saatte bir güncelleştirilir.  
 
 > [!NOTE]
 > İçeri aktarılan Active Directory grupları yalnızca Windows makinelerini içerir.
 
-Azure Izleyici 'yi, Azure portal Log Analytics çalışma alanınızdaki **Gelişmiş ayarlardan** Active Directory güvenlik gruplarını içeri aktaracak şekilde yapılandırırsınız.  **Bilgisayar grupları**' nı seçin, **Active Directory**ve sonra **Active Directory grup üyeliklerini bilgisayarlardan içeri aktarın**.  Başka bir yapılandırma işlemi gerekmez.
+Azure Izleyici 'yi, Azure portal Log Analytics çalışma alanınızdaki **Gelişmiş ayarlardan** Active Directory güvenlik gruplarını içeri aktaracak şekilde yapılandırırsınız.  Seçin **bilgisayar grupları**, **Active Directory**, ardından **alma Active Directory grup üyeliklerini bilgisayarlardan**.  Başka bir yapılandırma işlemi gerekmez.
 
-![Active Directory bilgisayardan bilgisayar grupları](media/computer-groups/configure-activedirectory.png)
+![Bilgisayar grupları Active Directory'den](media/computer-groups/configure-activedirectory.png)
 
-Gruplar içeri aktarıldığında, menü, algılanan grup üyeliğine sahip bilgisayarların sayısını ve içeri aktarılan grupların sayısını listeler.  Bu bağlantılardan birine tıklayarak **Computergroup** kayıtlarını bu bilgilerle döndürebilirsiniz.
+Grupları içeri aktardığınızda menü grubu üyeliği algılanan bilgisayarların sayısını ve içe aktarılan gruplarının sayısını listeler.  Döndürmek için bu bağlantıları birini tıklayabilirsiniz **ComputerGroup** bu bilgiyi kaydeder.
 
-### <a name="windows-server-update-service"></a>Windows Server güncelleştirme hizmeti
-Azure Izleyici 'yi WSUS grup üyeliklerini içeri aktarmak üzere yapılandırdığınızda, Log Analytics aracısına sahip bilgisayarların hedefleme grubu üyeliğini analiz eder.  İstemci tarafı hedefleme kullanıyorsanız, Azure Izleyici 'ye bağlı olan ve herhangi bir WSUS hedefleme grubunun parçası olan herhangi bir bilgisayar, Grup üyeliğini Azure Izleyici 'ye içeri aktarmıştır. Sunucu tarafı hedefleme kullanıyorsanız, Grup üyeliği bilgilerinin Azure Izleyici 'ye aktarılması için Log Analytics aracısının WSUS sunucusunda yüklü olması gerekir.  Bu üyelik, her 4 saatte bir sürekli güncelleştirilir. 
+### <a name="windows-server-update-service"></a>Windows Server Update Service
+Azure Izleyici 'yi WSUS grup üyeliklerini içeri aktarmak üzere yapılandırdığınızda, Log Analytics aracısına sahip bilgisayarların hedefleme grubu üyeliğini analiz eder.  İstemci tarafı hedefleme kullanıyorsanız, Azure Izleyici 'ye bağlı olan ve herhangi bir WSUS hedefleme grubunun parçası olan herhangi bir bilgisayar, Grup üyeliğini Azure Izleyici 'ye içeri aktarmıştır. Sunucu tarafı hedefleme kullanıyorsanız, Grup üyeliği bilgilerinin Azure Izleyici 'ye aktarılması için Log Analytics aracısının WSUS sunucusunda yüklü olması gerekir.  Bu üyelik sürekli olarak 4 saatte bir güncelleştirilir. 
 
-Azure Izleyici 'yi, Azure portal Log Analytics çalışma alanınızdaki **Gelişmiş AYARLARDAN** WSUS gruplarını içeri aktaracak şekilde yapılandırırsınız.  **Bilgisayar grupları**, **WSUS**ve ardından **WSUS grup üyeliklerini içeri aktar**' ı seçin.  Başka bir yapılandırma işlemi gerekmez.
+Azure Izleyici 'yi, Azure portal Log Analytics çalışma alanınızdaki **Gelişmiş AYARLARDAN** WSUS gruplarını içeri aktaracak şekilde yapılandırırsınız.  Seçin **bilgisayar grupları**, **WSUS**, ardından **içeri aktarma WSUS grup üyeliklerini**.  Başka bir yapılandırma işlemi gerekmez.
 
-![WSUS 'den bilgisayar grupları](media/computer-groups/configure-wsus.png)
+![WSUS bilgisayar grupları](media/computer-groups/configure-wsus.png)
 
-Gruplar içeri aktarıldığında, menü, algılanan grup üyeliğine sahip bilgisayarların sayısını ve içeri aktarılan grupların sayısını listeler.  Bu bağlantılardan birine tıklayarak **Computergroup** kayıtlarını bu bilgilerle döndürebilirsiniz.
+Grupları içeri aktardığınızda menü grubu üyeliği algılanan bilgisayarların sayısını ve içe aktarılan gruplarının sayısını listeler.  Döndürmek için bu bağlantıları birini tıklayabilirsiniz **ComputerGroup** bu bilgiyi kaydeder.
 
-### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
-Azure Izleyicisini Configuration Manager koleksiyon üyeliklerini içeri aktaracak şekilde yapılandırdığınızda, her koleksiyon için bir bilgisayar grubu oluşturur.  Koleksiyon üyelik bilgileri, bilgisayar gruplarının güncel tutulması için 3 saatte bir alınır. 
+### <a name="configuration-manager"></a>Configuration Manager
+Azure Izleyicisini Configuration Manager koleksiyon üyeliklerini içeri aktaracak şekilde yapılandırdığınızda, her koleksiyon için bir bilgisayar grubu oluşturur.  Koleksiyon üyeliği bilgilerini, bilgisayar gruplarını güncel kalmasını sağlamak için 3 saatte alınır. 
 
 Configuration Manager koleksiyonlarını içeri aktarabilmeniz [için önce Configuration Manager Azure izleyici 'ye bağlamanız](collect-sccm.md)gerekir.  
 
-![SCCM 'den bilgisayar grupları](media/computer-groups/configure-sccm.png)
+![SCCM bilgisayar grupları](media/computer-groups/configure-sccm.png)
 
-Koleksiyonlar içeri aktarıldığında, menü, algılanan grup üyeliğine sahip bilgisayarların sayısını ve içeri aktarılan grupların sayısını listeler.  Bu bağlantılardan birine tıklayarak **Computergroup** kayıtlarını bu bilgilerle döndürebilirsiniz.
+Koleksiyonları içeri aktardığınızda menü grubu üyeliği algılanan bilgisayarların sayısını ve içe aktarılan gruplarının sayısını listeler.  Döndürmek için bu bağlantıları birini tıklayabilirsiniz **ComputerGroup** bu bilgiyi kaydeder.
 
 ## <a name="managing-computer-groups"></a>Bilgisayar gruplarını yönetme
-Bir günlük sorgusundan oluşturulmuş bilgisayar gruplarını veya Azure portal Log Analytics çalışma alanınızdaki **Gelişmiş ayarlardan** günlük araması API 'sini görüntüleyebilirsiniz.  **Bilgisayar grupları** ' nı ve ardından **kayıtlı gruplar**' ı seçin.  
+Bir günlük sorgusundan oluşturulmuş bilgisayar gruplarını veya Azure portal Log Analytics çalışma alanınızdaki **Gelişmiş ayarlardan** günlük araması API 'sini görüntüleyebilirsiniz.  Seçin **bilgisayar grupları** ardından **grupları kaydedilen**.  
 
-Bilgisayar grubunu silmek için **Kaldır** sütunundaki **x** simgesini tıklatın.  Grubun üyelerini döndüren grubun günlük aramasını çalıştırmak için bir grubun **üyeleri görüntüle** simgesine tıklayın.  Bir bilgisayar grubunu değiştiremezsiniz, bunun yerine, değiştirilen ayarlarla onu silip yeniden oluşturmanız gerekir.
+Tıklayın **x** içinde **Kaldır** bilgisayar grubunu silmek için sütun.  Tıklayın **üyelerini görüntüle** üyelerini döndürür grubun günlük araması gerçekleştirmek bir grubu simgesi.  Bir bilgisayar grubu değiştirilemez, ancak bunun yerine gerekir silin ve değiştirilen ayarlarla yeniden oluşturun.
 
 ![Kayıtlı bilgisayar grupları](media/computer-groups/configure-saved.png)
 
@@ -97,16 +97,16 @@ Bir sorgudaki bir günlük sorgusundan oluşturulmuş bir bilgisayar grubunu, di
 
   `Table | where Computer in (ComputerGroup)`
 
-Örneğin, yalnızca mycomputergroup adlı bir bilgisayar grubundaki bilgisayarlar için UpdateSummary kayıtlarını döndürmek üzere aşağıdakileri kullanabilirsiniz.
+Örneğin, aşağıdaki mycomputergroup adlı bir bilgisayar grubunda yalnızca bilgisayarlar için UpdateSummary kayıtları döndürmek için kullanabilirsiniz.
  
   `UpdateSummary | where Computer in (mycomputergroup)`
 
 
-İçeri aktarılan bilgisayar grupları ve dahil edilen bilgisayarları **Computergroup** tablosunda depolanır.  Örneğin, aşağıdaki sorgu Active Directory etki alanı bilgisayarları grubundaki bilgisayarların listesini döndürür. 
+İçeri aktarılan bilgisayar grupları ve dahil edilen bilgisayarlarında depolanır **ComputerGroup** tablo.  Örneğin, aşağıdaki sorguyu bilgisayarların listesini etki alanı bilgisayarları grubunda Active Directory'den döndürecektir. 
 
   `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
 
-Aşağıdaki sorgu, yalnızca etki alanı bilgisayarlarındaki bilgisayarlar için UpdateSummary kayıtları döndürür.
+Aşağıdaki sorguda UpdateSummary kayıtları yalnızca bilgisayarlar için etki alanı bilgisayarları döndürür.
 
   ```
   let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
@@ -116,21 +116,21 @@ Aşağıdaki sorgu, yalnızca etki alanı bilgisayarlarındaki bilgisayarlar iç
 
 
 
-## <a name="computer-group-records"></a>Bilgisayar grubu kayıtları
-Active Directory veya WSUS 'tan oluşturulan her bilgisayar grubu üyeliğinin Log Analytics çalışma alanında bir kayıt oluşturulur.  Bu kayıtlar bir **bilgisayar grubu** türüne sahiptir ve aşağıdaki tabloda bulunan özelliklere sahiptir.  Günlük sorgularına dayalı bilgisayar grupları için kayıtlar oluşturulmaz.
+## <a name="computer-group-records"></a>Bilgisayar Grup kaydı
+Active Directory veya WSUS oluşturulan her bilgisayar grup üyeliğini için Log Analytics çalışma alanında bir kayıt oluşturulur.  Bu kayıtları bir türüne sahip **ComputerGroup** ve aşağıdaki tabloda gösterilen özelliklere sahiptir.  Günlük sorgularına dayalı bilgisayar grupları için kayıtlar oluşturulmaz.
 
 | Özellik | Açıklama |
 |:--- |:--- |
 | `Type` |*ComputerGroup* |
-| `SourceSystem` |*Dir* |
-| `Computer` |Üye bilgisayarın adı. |
+| `SourceSystem` |*Analytics'teki* |
+| `Computer` |Üye bilgisayar adıdır. |
 | `Group` |Grubun adı. |
-| `GroupFullName` |Kaynak ve kaynak adı dahil olmak üzere grubun tam yolu. |
-| `GroupSource` |Grubun toplandığı kaynak. <br><br>Ayarlandığı<br>WSUS<br>WSUSClientTargeting |
-| `GroupSourceName` |Grubun toplandığı kaynağın adı.  Active Directory için, bu etki alanı adıdır. |
-| `ManagementGroupName` |SCOM aracıları için yönetim grubunun adı.  Diğer aracılar için bu, AOI-\<çalışma alanı KIMLIĞIDIR\> |
-| `TimeGenerated` |Bilgisayar grubunun oluşturulduğu veya güncelleştirildiği tarih ve saat. |
+| `GroupFullName` |Kaynak ve kaynak adı da dahil olmak üzere grubun tam yolu. |
+| `GroupSource` |Bu grup kaynak gelen toplanmış. <br><br>Active Directory<br>WSUS<br>WSUSClientTargeting |
+| `GroupSourceName` |Grup toplandığı kaynağının adı.  Active Directory'de, bu etki alanı adıdır. |
+| `ManagementGroupName` |SCOM aracıları için yönetim grubunun adı.  Diğer aracılar için AOI - budur\<çalışma alanı kimliği\> |
+| `TimeGenerated` |Tarih ve saat bilgisayar grubu oluşturulduğunda veya güncelleştirildiğinde. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.  
+* Hakkında bilgi edinin [oturum sorguları](../log-query/log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için.  
 

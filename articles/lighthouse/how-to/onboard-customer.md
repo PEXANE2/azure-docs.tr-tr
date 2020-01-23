@@ -1,14 +1,14 @@
 ---
 title: Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri ekleneceğini ve bunların kendi kiracınız aracılığıyla kaynaklarına erişilmesine ve yönetilmesine izin vermeyi öğrenin.
-ms.date: 01/09/2020
+ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca9e17a9ee4e83492eccf63e4c7d353891071f27
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b3868987fa76d4ce0d4c34e81b46301ea106203d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314632"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543418"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
@@ -236,7 +236,7 @@ az deployment create --name <deploymentName> \
                      --verbose
 
 # Deploy external Azure Resource Manager template, with local parameter file
-az deployment create --name <deploymentName \
+az deployment create --name <deploymentName> \
                      --location <AzureRegion> \
                      --template-uri <templateUri> \
                      --parameters <parameterFile> \
@@ -302,6 +302,12 @@ Aşağıdaki örnekte, **yönetilen hizmetler kayıt ataması silme rolü** bir 
 ```
 
 Bu izne sahip bir Kullanıcı, aşağıdaki yollarla bir temsilciyi kaldırabilir.
+
+### <a name="azure-portal"></a>Azure portalında
+
+1. [Müşterilerimiz sayfasına](view-manage-customers.md)gidin.
+2. **Temsilciler**' ı seçin.
+3. Kaldırmak istediğiniz temsilciyi bulun, sonra satırında görüntülenen çöp kutusu simgesini seçin.
 
 ### <a name="powershell"></a>PowerShell
 

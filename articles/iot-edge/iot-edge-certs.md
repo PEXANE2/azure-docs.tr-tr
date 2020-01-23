@@ -8,22 +8,22 @@ ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9e4fd0203d68ef1f39d6efbb9d17d3e517969bff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a222f72e705184c5a7ba6701cfda41073c7eba57
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457268"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548756"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Azure IoT Edge sertifikaları nasıl kullandığını anlayın
 
-IoT Edge sertifikalar, bağlantı kurdukları [IoT Edge hub](iot-edge-runtime.md#iot-edge-hub) çalışma zamanı modülünün kimliğini ve yasallığını doğrulamak için modüller ve aşağı akış IoT cihazları için kullanılır. Bu doğrulamaları TLS (Aktarım Katmanı Güvenliği) arasında güvenli bir bağlantı çalışma zamanı, modülleri ve IOT cihazları etkinleştirin. IOT Hub kendisi gibi IOT Edge güvenli gerektirir ve aşağı yönde IOT bağlantısından şifreli (veya yaprak) cihazlar ve IOT Edge modülleri. Güvenli bir TLS bağlantısı kurmak için IoT Edge hub modülü, istemcilerin kimliğini doğrulayabilmesi için bir sunucu sertifika zinciri sunar.
+IoT Edge sertifikalar, modüller ve aşağı akış IoT cihazları tarafından, [IoT Edge merkezi](iot-edge-runtime.md#iot-edge-hub) çalışma zamanı modülünün kimliğini ve yasallığını doğrulamak için kullanılır. Bu doğrulamaları TLS (Aktarım Katmanı Güvenliği) arasında güvenli bir bağlantı çalışma zamanı, modülleri ve IOT cihazları etkinleştirin. IOT Hub kendisi gibi IOT Edge güvenli gerektirir ve aşağı yönde IOT bağlantısından şifreli (veya yaprak) cihazlar ve IOT Edge modülleri. Güvenli bir TLS bağlantısı kurmak için IoT Edge hub modülü, istemcilerin kimliğini doğrulayabilmesi için bir sunucu sertifika zinciri sunar.
 
 Bu makalede, IoT Edge sertifikalarının üretim, geliştirme ve test senaryolarında nasıl çalıştığı açıklanmaktadır. Farklı (bash ve Powershell) komut dosyalarını olsa da, Linux ve Windows arasında aynı kavramlardır.
 
 ## <a name="iot-edge-certificates"></a>IoT Edge sertifikaları
 
-Genellikle, üreticiler IoT Edge cihazının son kullanıcıları değildir. Bazen, son kullanıcı ya da operatör arasındaki tek ilişki, üretici tarafından oluşturulan bir genel cihazı satın alır. Diğer zamanlarda üretici, operatör adına özel bir cihaz oluşturmak için sözleşme altında çalışmaktadır. IOT Edge sertifika tasarım, her iki senaryoyu dikkate dener.
+Genellikle, üreticiler IoT Edge cihazının son kullanıcıları değildir. Bazen, son kullanıcı ya da operatör arasındaki tek ilişki, üretici tarafından oluşturulan bir genel cihazı satın alır. Diğer zamanlarda üretici, operatör için özel bir cihaz oluşturmak üzere sözleşme altında çalışmaktadır. IOT Edge sertifika tasarım, her iki senaryoyu dikkate dener.
 
 Aşağıdaki şekilde, sertifikaların IOT Edge'nın kullanımı gösterilmektedir. Kök CA sertifikası ile cihaz CA sertifikası arasında, dahil edilen varlıkların sayısına bağlı olarak sıfır, bir veya çok sayıda ara imza sertifikası olabilir. Burada bir durum gösteririz.
 
@@ -51,7 +51,7 @@ Her iki durumda da üretici uç cihazda yerleştirilen cihaz CA sertifikasını 
 
 ### <a name="device-ca-certificate"></a>Cihaz CA sertifikası
 
-Cihaz CA sertifikası oluşturulan ve işlem son ara CA sertifikası tarafından imzalanmış. Bu sertifika, tercihen bir donanım güvenlik modülü (HSM) gibi güvenli depolamada IoT Edge cihazın kendisinde yüklüdür. Ayrıca, bir cihaz CA sertifikası, bir IOT Edge cihazı benzersiz olarak tanımlar. Cihaz CA sertifikası diğer sertifikaları imzalayabilirler. 
+Cihaz CA sertifikası oluşturulan ve işlem son ara CA sertifikası tarafından imzalanmış. Bu sertifika, tercihen bir donanım güvenlik modülü (HSM) gibi güvenli depolamada IoT Edge cihazın kendisinde yüklüdür. Ayrıca, bir cihaz CA sertifikası, bir IOT Edge cihazı benzersiz olarak tanımlar. Cihaz CA sertifikası diğer sertifikaları imzalayabilirler.
 
 ### <a name="iot-edge-workload-ca"></a>IOT Edge iş yükü CA
 
@@ -59,7 +59,7 @@ Cihaz CA sertifikası oluşturulan ve işlem son ara CA sertifikası tarafından
 
 ### <a name="iot-edge-hub-server-certificate"></a>IoT Edge hub sunucusu sertifikası
 
-IoT Edge hub sunucusu sertifikası, IoT Edge tarafından gerekli olan TLS bağlantısı kurulurken kimlik doğrulama için yaprak cihazlara ve modüllere sunulan gerçek sertifikadır. Bu sertifikayı yaprak IOT cihaz güvenmelidir kök CA sertifikasını kadar oluşturmak için kullanılan imzalama sertifikalarının, tam zincir sunar. IoT Edge Güvenlik Yöneticisi tarafından oluşturulduğunda, bu IoT Edge hub sertifikasının ortak adı (CN), küçük harfe dönüştürüldükten sonra config. YAML dosyasındaki ' hostname ' özelliğine ayarlanır. Bu, IOT Edge ile karışıklık ortak bir kaynaktır.
+IoT Edge hub sunucusu sertifikası, IoT Edge tarafından gerekli olan TLS bağlantısı kurulurken kimlik doğrulama için yaprak cihazlara ve modüllere sunulan gerçek sertifikadır. Bu sertifikayı yaprak IOT cihaz güvenmelidir kök CA sertifikasını kadar oluşturmak için kullanılan imzalama sertifikalarının, tam zincir sunar. IoT Edge Güvenlik Yöneticisi tarafından oluşturulduğunda, bu IoT Edge hub sertifikasının ortak adı (CN), küçük harfe dönüştürüldükten sonra config. YAML dosyasındaki ' hostname ' özelliğine ayarlanır. Bu yapılandırma, IoT Edge ile yaygın bir karışıklık kaynağıdır.
 
 ## <a name="production-implications"></a>Üretim uygulamaları
 
@@ -94,9 +94,9 @@ Ekran görüntüsünde gösterilen sertifika derinliği hiyerarşisini görebili
 | Kök CA sertifikası         | Azure IOT hub'ı CA sertifikası yalnızca sınama                                                                           |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------|
 | Ara CA sertifikası | Azure IOT hub'ı ara sertifika yalnızca sınama                                                                 |
-| Cihaz CA sertifikası       | iotgateway.CA ("iotgateway" geçirildi < ağ geçidi ana bilgisayar adı > kolaylık betikleri)      |
+| Cihaz CA sertifikası       | iotgateway.CA ("iotgateway" geçirildi < ağ geçidi ana bilgisayar adı > kolaylık betikleri)   |
 | İş yükü CA sertifikası     | iotedge iş yükü ca                                                                                       |
-| IoT Edge hub sunucusu sertifikası | iotedgegw.local ('hostname' config.yaml eşleşir)                                                |
+| IoT Edge hub sunucusu sertifikası | iotedgegw.local ('hostname' config.yaml eşleşir)                                            |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: Video Indexer iş sürekliliği ve olağanüstü durum kurtarma (BCDR)-Azure | Microsoft Docs
+title: Video Indexer iş sürekliliği ve olağanüstü durum kurtarma-Azure
 description: Bölgesel bir veri merkezi kesintisi veya hatası oluşursa ikincil Video Indexer hesabına yük devretmeyi öğrenin.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: ce788b4640f0a6c6f25b3280ce4f52fd018d1699
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 2f54c340226a9ea78643df8e0a984c8ed8475c94
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668312"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513584"
 ---
 # <a name="handle-video-indexer-business-continuity-and-disaster-recovery"></a>İşle Video Indexer iş sürekliliği ve olağanüstü durum kurtarma
 
@@ -26,7 +26,7 @@ Bölgesel bir veri merkezi kesintisi veya arızası varsa Azure Media Services V
 
 Azure 'un yalıtım ve kullanılabilirlik ilkelerinden faydalanmasını sağlamak için iş sürekliliği olağanüstü durum kurtarma (BCDR) ' i bölgesel çiftler arasında yapılandırmanızı öneririz. Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/free/)için kaydolun.
 
@@ -40,7 +40,7 @@ BCDR 'yi uygulamak için, artıklığı işlemek üzere iki Video Indexer hesab�
 > [!TIP]
 > Hizmet [bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../../service-health/alerts-activity-log-service-notifications.md)başına hizmet durumu bildirimleri için etkinlik günlüğü uyarılarını ayarlayarak BCDR 'yi otomatikleştirebilirsiniz.
 
-Birden çok kiracı kullanma hakkında bilgi için bkz. [birden çok kiracıyı yönetme](manage-multiple-tenants.md). BCDR 'yi uygulamak için şu iki seçenekten birini seçin: Her kiracı veya kiracı başına [Azure aboneliği](manage-multiple-tenants.md#azure-subscription-per-tenant) [video Indexer hesap](manage-multiple-tenants.md#video-indexer-account-per-tenant) .
+Birden çok kiracı kullanma hakkında bilgi için bkz. [birden çok kiracıyı yönetme](manage-multiple-tenants.md). BCDR 'yi uygulamak için şu iki seçenekten birini seçin: [kiracı başına video Indexer hesap](manage-multiple-tenants.md#video-indexer-account-per-tenant) veya [kiracı başına Azure aboneliği](manage-multiple-tenants.md#azure-subscription-per-tenant).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

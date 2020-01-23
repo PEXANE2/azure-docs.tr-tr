@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: bd725d41f75bdfb1048b5bee7e8224679dbece4c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bd27827441082698bb4e0b43e7dd22d5b7e66539
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837264"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548960"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Metin Çevirisi API'si 3,0: sözlük arama
 
@@ -33,45 +33,21 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
-<table width="100%">
-  <th width="20%">Sorgu parametresi</th>
-  <th>Açıklama</th>
-  <tr>
-    <td>api sürümü</td>
-    <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer `3.0`olmalıdır.</td>
-  </tr>
-  <tr>
-    <td>Kaynak</td>
-    <td>*Gerekli parametre*.<br/>Giriş metninin dilini belirtir. Kaynak dili, `dictionary` kapsamında yer alan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır.</td>
-  </tr>
-  <tr>
-    <td>-</td>
-    <td>*Gerekli parametre*.<br/>Çıkış metninin dilini belirtir. Hedef dil `dictionary` kapsamında bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır.</td>
-  </tr>
-</table>
+| Sorgu parametresi  | Açıklama |
+| ------ | ----------- |
+| api-version <img width=200/>   | **Gerekli parametre**.<br/>İstemci tarafından istenen API 'nin sürümü. Değer `3.0` olmalıdır |
+| başlangıç | **Gerekli parametre**.<br/>Giriş metninin dilini belirtir. Kaynak dili, `dictionary` kapsamında yer alan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır. |
+| -   | **Gerekli parametre**.<br/>Çıkış metninin dilini belirtir. Hedef dil `dictionary` kapsamında bulunan [desteklenen dillerden](v3-0-languages.md) biri olmalıdır. |
+
 
 İstek üstbilgileri şunları içerir:
 
-<table width="100%">
-  <th width="20%">Üst bilgiler</th>
-  <th>Açıklama</th>
-  <tr>
-    <td>Kimlik doğrulama üst bilgisi</td>
-    <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
-  </tr>
-  <tr>
-    <td>İçerik türü</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler: `application/json`.</td>
-  </tr>
-  <tr>
-    <td>İçerik uzunluğu</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>İstek gövdesinin uzunluğu.</td>
-  </tr>
-  <tr>
-    <td>X-Clienttraceıd</td>
-    <td>*İsteğe bağlı*.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. `ClientTraceId`adlı bir sorgu parametresi kullanarak, sorgu dizesinde izleme KIMLIĞINI eklerseniz bu üstbilgiyi atlayabilirsiniz.</td>
-  </tr>
-</table> 
+| Üst bilgiler  | Açıklama |
+| ------ | ----------- |
+| Kimlik doğrulama üst bilgisi <img width=200/>  | **Gerekli istek üst bilgisi**.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın. |
+| Content-Type | **Gerekli istek üst bilgisi**.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json`. |
+| İçerik Uzunluğu   | **Gerekli istek üst bilgisi**.<br/>İstek gövdesinin uzunluğu. |
+| X-Clienttraceıd   | **İsteğe bağlı**.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. `ClientTraceId`adlı bir sorgu parametresi kullanarak, sorgu dizesinde izleme KIMLIĞINI eklerseniz bu üstbilgiyi atlayabilirsiniz. |
 
 ## <a name="request-body"></a>İstek gövdesi
 
@@ -104,18 +80,18 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
     * `posTag`: Bu terimi bir konuşma parçası etiketiyle ilişkilendiren bir dize.
 
-        | Etiket adı | Açıklama  |
+        | etiket adı | Açıklama  |
         |----------|--------------|
         | SIF      | Sıfatlar   |
         | ADV      | Zarflar      |
         | CONJ     | Bağlaçlar |
         | DET      | Determinler  |
-        | MODAL    | Eylemlerinin        |
-        | ISIM     | İsimleri        |
+        | MODAL    | Fiiller        |
+        | ISIM     | İsimler        |
         | HAZıRLıĞı     | Ön pozisyonlar |
         | PRON     | Zamirler     |
-        | Ü     | Eylemlerinin        |
-        | FARKLı    | Diğer        |
+        | Ü     | Fiiller        |
+        | DİĞER    | Diğer        |
 
         Uygulama notunun bir parçası olarak, bu Etiketler Ingilizce tarafı etiketleme ve ardından her kaynak/hedef çifti için en sık kullanılan etikete göre belirlenir. Bu nedenle, kullanıcılar genellikle Ispanyolca bir sözcüğü Ingilizce olarak farklı bir konuşma bölümü etiketine çeviriyorsa, Etiketler hatalı olabilir (Ispanyolca sözcüğe göre).
 

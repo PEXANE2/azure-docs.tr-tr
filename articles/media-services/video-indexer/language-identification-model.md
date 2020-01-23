@@ -1,5 +1,5 @@
 ---
-title: Video Indexer-Azure ile konuşulan dili otomatik olarak tanımla
+title: Konuşulan dilleri otomatik olarak tanımlamak için Video Indexer kullanın-Azure
 titleSuffix: Azure Media Services
 description: Bu makalede, bir videodaki konuşulan dili otomatik olarak tanımlamak için Video Indexer dil tanımlama modelinin nasıl kullanıldığı açıklanmaktadır.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: ce3e488a6387f9a823d7c1b514b52af24944776b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839002"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513890"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Dil tanımlama modeliyle konuşulan dili otomatik olarak tanımla
 
@@ -59,5 +59,5 @@ Model baskın dil, `sourceLanguage` özniteliği (kök/videolar/Öngörüler) ol
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Genel Bakış](video-indexer-overview.md)
+* [Genel bakış](video-indexer-overview.md)
 * [Çoklu dil içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md)

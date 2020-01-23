@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ce7f6320ffa4d3e8c258c9d05542f12079ee355d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978386"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509011"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Veri Taşıma kitaplığıyla veri aktarma
 
-Azure depolama veri taşıma kitaplığı, Blobları ve dosyaları karşıya yüklemek, indirmek ve kopyalamak için tasarlanan platformlar arası açık kaynaklı bir kitaplıktır. Bu kitaplık [AzCopy](../storage-use-azcopy.md)'i destekleyen temel veri taşıma çerçevesidir. Veri taşıma kitaplığı, .NET için Azure Storage istemci kitaplığı 'nda kullanılamayan kullanışlı yöntemler sunar. Bu yöntemler paralel işlemlerin sayısını ayarlamanıza, aktarım ilerlemesini izlemenize, iptal edilen bir aktarımı kolayca sürdürmeye ve çok daha fazlasına olanak sağlar.
+Azure depolama veri taşıma kitaplığı, Blobları ve dosyaları karşıya yüklemek, indirmek ve kopyalamak için tasarlanan platformlar arası açık kaynaklı bir kitaplıktır. Veri taşıma kitaplığı, .NET için Azure Storage istemci kitaplığı 'nda kullanılamayan kullanışlı yöntemler sunar. Bu yöntemler paralel işlemlerin sayısını ayarlamanıza, aktarım ilerlemesini izlemenize, iptal edilen bir aktarımı kolayca sürdürmeye ve çok daha fazlasına olanak sağlar.
 
 Bu kitaplık ayrıca .NET Core kullanır, bu da Windows, Linux ve macOS için .NET uygulamaları oluştururken kullanabileceğiniz anlamına gelir. .NET Core hakkında daha fazla bilgi edinmek için [.NET Core belgelerine](https://dotnet.github.io/)bakın. Bu kitaplık, Windows için geleneksel .NET Framework uygulamaları için de geçerlidir.
 

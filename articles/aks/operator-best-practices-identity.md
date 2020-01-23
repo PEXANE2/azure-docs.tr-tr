@@ -1,56 +1,56 @@
 ---
-title: İşleç en iyi uygulamalar - Azure Kubernetes Hizmetleri (AKS) kimlik
-description: Kimlik doğrulamasını yönetmek nasıl küme işleci en iyi yöntemler ve kümeler Azure Kubernetes Service (AKS) için yetkilendirme öğrenin
+title: Operatör en iyi yöntemleri-Azure Kubernetes hizmetlerindeki kimlik (AKS)
+description: Azure Kubernetes Service (AKS) içindeki kümeler için kimlik doğrulama ve yetkilendirmeyi yönetmek üzere küme operatörü en iyi uygulamalarını öğrenin
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 82bf59dddeecab0addf00a935f55be8d1d7952d3
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 06d15d66df0b2ec0049d4b2fffae6a9909b05dca
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614788"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549147"
 ---
-# <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Kimlik doğrulama ve yetkilendirme Azure Kubernetes Service (AKS) için en iyi uygulamalar
+# <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetinde (AKS) kimlik doğrulama ve yetkilendirme için en iyi yöntemler
 
-Dağıtma ve bakımını kümeleri Azure Kubernetes Service (AKS) gibi kaynak ve hizmetlere erişimi yönetmenin yolları yapması gerekir. Bu denetimler ve bunlar gerekmez hizmetlerindeki kaynaklara erişim hesapları olabilir. Ayrıca hangi kimlik bilgileri kümesi, değişiklik yapmak için kullanıldığını izlenmesi zor olabilir.
+Azure Kubernetes Service (AKS) içinde kümeler dağıtıp bakımını yaparken, kaynak ve hizmetlere erişimi yönetmenin yollarını uygulamanız gerekir. Bu denetimler olmadan, hesapların ihtiyaç duyduklarında kaynak ve hizmetlere erişimi olabilir. Değişiklik yapmak için hangi kimlik bilgilerinin kullanıldığını da izlemek zor olabilir.
 
-Bu en iyi yöntemler makalesi, nasıl bir küme işleci erişim ve kimlik için AKS kümeleri yönetebilirsiniz üzerinde odaklanır. Bu makalede şunları öğreneceksiniz:
+Bu en iyi yöntemler makalesi, bir küme işlecinin AKS kümelerinin erişimini ve kimliğini nasıl yönetebileceğini ele alır. Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * AKS kümesi kullanıcılar Azure Active Directory ile kimlik doğrulaması
-> * Rol tabanlı erişim denetimlerine (RBAC) ile kaynaklara erişimi denetlemek için
-> * Diğer hizmetlerle doğrulatmak için yönetilen bir kimlik kullanın
+> * Azure Active Directory ile AKS kümesi kullanıcılarının kimliğini doğrulama
+> * Rol tabanlı erişim denetimleri (RBAC) ile kaynaklara erişimi denetleme
+> * Diğer hizmetlerle kimlik doğrulamak için yönetilen bir kimlik kullanın
 
-## <a name="use-azure-active-directory"></a>Azure Active Directory kullanın
+## <a name="use-azure-active-directory"></a>Azure Active Directory kullanma
 
-**En iyi uygulama kılavuzunu** -Azure AD Tümleştirmesi ile AKS dağıtma kümeleri. Azure AD kullanarak, kimlik yönetimi bileşeni merkeze alır. Herhangi bir kullanıcı hesabı veya grup durumu değişikliği AKS kümesi erişimi otomatik olarak güncelleştirilir. Rolleri veya ClusterRoles ve bağlamaları, kapsam kullanıcılar veya gruplar için gereken izinleri az miktarda için sonraki bölümde açıklandığı gibi kullanın.
+**En iyi Yöntem Kılavuzu** -Azure AD TÜMLEŞTIRMESIYLE aks kümelerini dağıtma. Azure AD 'yi kullanarak kimlik yönetimi bileşenini merkezileştirin. Kullanıcı hesabı veya grup durumundaki herhangi bir değişiklik, AKS kümesine erişim için otomatik olarak güncelleştirilir. Kullanıcıları veya grupları gereken en az izin miktarına göre kapsam yapmak için, sonraki bölümde açıklandığı gibi rolleri veya Kümerolleri ve bağlamaları kullanın.
 
-Kubernetes kümenizin uygulama sahipleri ve geliştiriciler, farklı kaynaklara erişimi gerekir. Kubernetes, hangi kullanıcıların hangi kaynaklarla etkileşim denetlemek için bir kimlik yönetimi çözümü sağlamaz. Bunun yerine, genellikle kümeniz var olan bir kimlik çözümü ile tümleştirin. Azure Active Directory (AD), bir kurumsal kullanıma hazır kimlik yönetimi çözümü sağlar ve AKS küme ile tümleştirilebilir.
+Kubernetes kümenizin geliştirici ve uygulama sahiplerinin farklı kaynaklara erişmesi gerekir. Kubernetes hangi kullanıcıların hangi kaynaklarla etkileşime girebileceklerini denetlemek için bir kimlik yönetimi çözümü sağlamaz. Bunun yerine, genellikle kümenizi mevcut bir kimlik çözümüyle tümleştirmeniz gerekir. Azure Active Directory (AD), kurumsal özellikli bir kimlik yönetimi çözümü sağlar ve AKS kümeleriyle tümleştirilebilir.
 
-Azure AD ile tümleşik kümeleriyle aks'deki, oluşturduğunuz *rolleri* veya *ClusterRoles* kaynaklara erişim izinleri tanımlayın. Daha sonra *bağlama* kullanıcılar veya gruplar için Azure ad rolleri. Bu Kubernetes rol tabanlı erişim denetimlerine (RBAC), sonraki bölümde ele alınmıştır. Azure ad tümleştirmesi ve kaynaklarına erişimi nasıl denetleyebileceğiniz Aşağıdaki diyagramda görülebilir:
+AKS 'de Azure AD ile tümleşik kümeler sayesinde, kaynaklara erişim izinleri tanımlayan *Roller* veya *kümerolleri* oluşturursunuz. Daha sonra rolleri Azure AD 'den kullanıcılara veya gruplara *bağlarsınız* . Bu Kubernetes rol tabanlı erişim denetimleri (RBAC) sonraki bölümde ele alınmıştır. Azure AD 'nin tümleştirilmesi ve kaynaklara erişimi nasıl denetlemenizden aşağıdaki diyagramda görünebilirler:
 
 ![AKS ile Azure Active Directory tümleştirme için küme düzeyinde kimlik doğrulaması](media/operator-best-practices-identity/cluster-level-authentication-flow.png)
 
 1. Geliştirici Azure AD ile kimlik doğrulaması yapar.
-1. Azure AD belirteç yayınında uç noktası, erişim belirteci verir.
-1. Geliştirici gibi Azure AD belirtecini kullanarak bir eylem gerçekleştirir. `kubectl create pod`
-1. Kubernetes ile Azure Active Directory belirteci doğrular ve geliştiricilere yönelik grup üyeliklerini getirir.
+1. Azure AD belirteç verme uç noktası erişim belirtecini yayınlar.
+1. Geliştirici `kubectl create pod` gibi Azure AD belirtecini kullanarak bir eylem gerçekleştirir
+1. Kubernetes, belirteci Azure Active Directory doğrular ve geliştiricinin grup üyeliklerini getirir.
 1. Kubernetes rol tabanlı erişim denetimi (RBAC) ve küme ilkeleri uygulanır.
-1. Geliştirici istek başarılı ya da Azure AD grup üyeliği ve Kubernetes RBAC ilkelerini önceki doğrulama bağlı değildir.
+1. Geliştirici isteği, Azure AD grup üyeliği ve Kubernetes RBAC ve ilkelerine ait önceki doğrulamaya bağlı olarak başarılı veya başarısız olur.
 
-Azure AD kullanan bir AKS kümesi oluşturmak için bkz [Azure Active Directory Tümleştirme ile AKS][aks-aad].
+Azure AD kullanan bir AKS kümesi oluşturmak için bkz. [Azure ACTIVE DIRECTORY aks Ile tümleştirme][aks-aad].
 
-## <a name="use-role-based-access-controls-rbac"></a>Rol tabanlı erişim denetimlerine (RBAC) kullanın
+## <a name="use-role-based-access-controls-rbac"></a>Rol tabanlı erişim denetimlerini (RBAC) kullanma
 
-**En iyi uygulama kılavuzunu** -küme içindeki kaynaklara kullanıcıları veya grupları sahip izinleri tanımlamak için kullanmak Kubernetes RBAC. Roller ve en az miktarda gerekli izinleri atamanız bağlamaları oluşturun. Kullanıcı durumu veya grup üyeliği herhangi bir değişiklik otomatik olarak güncelleştirilir ve küme kaynaklarında erişim geçerli olan Azure AD ile tümleştirin.
+**En iyi Yöntem Kılavuzu** -kullanıcıların veya grupların kümedeki kaynaklara sahip olduğu izinleri tanımlamak Için Kubernetes RBAC kullanın. Gerekli en az izin miktarını atayan roller ve bağlamalar oluşturun. Azure AD ile tümleştirin böylece Kullanıcı durumu veya grup üyeliğindeki tüm değişiklikler otomatik olarak güncelleştirilir ve küme kaynaklarına erişim geçerli olur.
 
-Kubernetes'te, küme kaynaklarında erişim ayrıntılı denetim sağlar. İzinleri küme seviyesinde veya belirli ad alanlarına tanımlanabilir. Hangi kaynakların yönetilebilir, tanımlamak ve hangi izinlere sahip. Bu roller kullanıcılara veya gruplara bir bağlama ile uygulanmış olan. Hakkında daha fazla bilgi için *rolleri*, *ClusterRoles*, ve *bağlamaları*, bkz: [erişim ve kimlik seçeneklerini Azure Kubernetes Service (AKS)][aks-concepts-identity].
+Kubernetes 'de, kümedeki kaynaklara yönelik ayrıntılı denetim sağlayabilirsiniz. İzinler, küme düzeyinde veya belirli ad alanları ile tanımlanabilir. Hangi kaynakların yönetilebileceklerini ve hangi izinlere sahip olduğunu tanımlayabilirsiniz. Bu roller daha sonra bağlama ile kullanıcılara veya gruplara uygulanır. *Roller*, *Kümerolleri*ve *bağlamalar*hakkında daha fazla bilgi Için bkz. [Azure KUBERNETES hizmeti (aks) için erişim ve kimlik seçenekleri][aks-concepts-identity].
 
-Örnek olarak, kaynakları adlı ad alanındaki tam erişim veren bir rol oluşturabilirsiniz *Finans uygulama*aşağıdaki örnek YAML bildirimde gösterildiği gibi:
+Örnek olarak, aşağıdaki örnekteki YAML bildiriminde gösterildiği gibi *finans-App*adlı ad alanındaki kaynaklara tam erişim veren bir rol oluşturabilirsiniz:
 
 ```yaml
 kind: Role
@@ -64,7 +64,7 @@ rules:
   verbs: ["*"]
 ```
 
-Bir RoleBinding sonra Azure AD kullanıcı bağlayan oluşturulur *developer1\@contoso.com* aşağıdaki YAML bildirimde gösterildiği RoleBinding için:
+Daha sonra, aşağıdaki YAML bildiriminde gösterildiği gibi Azure AD user *developer1\@contoso.com* 'ı rolebinding 'e bağlayan bir rolebinding oluşturulur:
 
 ```yaml
 kind: RoleBinding
@@ -82,49 +82,49 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-Zaman *developer1\@contoso.com* kimlik doğrulaması kaynakları için tam izinlere sahiptirler AKS kümesi karşı *Finans uygulama* ad alanı. Bu şekilde, mantıksal olarak ayrı ve denetim kaynaklara erişin. Kubernetes RBAC, Azure ile birlikte kullanılmalıdır AD-tümleştirmesi, önceki bölümde anlatıldığı gibidir.
+AKS kümesinde *developer1\@contoso.com* kimlik doğrulaması yapıldığında, *finans-uygulama* ad alanındaki kaynaklar üzerinde tam izinlere sahip olurlar. Bu şekilde, kaynaklara erişimi mantıksal olarak ayırabilirsiniz ve kontrol edersiniz. Kubernetes RBAC, önceki bölümde anlatıldığı gibi Azure AD tümleştirmesi ile birlikte kullanılmalıdır.
 
-RBAC kullanarak Kubernetes kaynaklarına erişimi denetlemek için Azure AD grupları kullanma hakkında bilgi için bkz: [AKS rol tabanlı erişim denetimlerine ve Azure Active Directory kimlikleri kullanarak küme kaynaklarında erişim denetimi][azure-ad-rbac].
+RBAC kullanarak Kubernetes kaynaklarına erişimi denetlemek için Azure AD gruplarını nasıl kullanacağınızı görmek için bkz. [rol tabanlı erişim denetimleri ve AKS 'de Azure Active Directory kimlikleri kullanarak küme kaynaklarına erişimi denetleme][azure-ad-rbac].
 
-## <a name="use-pod-identities"></a>Pod kimlikler kullanın
+## <a name="use-pod-identities"></a>Pod kimliklerini kullanma
 
-**En iyi uygulama kılavuzunu** -Etkilenme veya kötüye kullanımı riski olduğu gibi sabit kimlik bilgilerini pod'ların veya kapsayıcı görüntüleri kullanmayın. Bunun yerine, otomatik olarak kullanarak merkezi bir erişim istemek için pod kimlikleri kullanmak Azure AD kimlik çözümü. Pod kimlikler Linux pod'ların ve kapsayıcı görüntüleri ile kullanılmak için tasarlanmıştır.
+**En iyi Yöntem Kılavuzu** -, pozlama veya kötüye kullanım riski altında olduklarından, Pod veya kapsayıcı görüntüleri içinde sabit kimlik bilgilerini kullanmayın. Bunun yerine, merkezi bir Azure AD kimlik çözümü kullanarak otomatik olarak erişim istemek için pod kimliklerini kullanın. Pod kimlikleri yalnızca Linux Pod ve kapsayıcı görüntüleri ile kullanılmaya yöneliktir.
 
-Pod'ların Cosmos DB, anahtar kasası veya Blob Depolama gibi diğer Azure hizmetlerine erişim için gerektiğinde pod erişim kimlik bilgileri gerekir. Bu erişim kimlik bilgileri ile kapsayıcı görüntüsü tanımlanabilir veya Kubernetes gizli eklenmiş ancak el ile oluşturulan ve atanmış gerekir. Genellikle, kimlik bilgilerini pod'ları arasında yeniden ve düzenli olarak Döndürülmüş değildir.
+Cosmos DB, Key Vault veya blob depolama gibi diğer Azure hizmetlerine erişim gerektiğinde Pod 'ın erişim kimlik bilgilerine ihtiyacı vardır. Bu erişim kimlik bilgileri kapsayıcı görüntüsü ile tanımlanabilir veya bir Kubernetes parolası olarak eklenebilir, ancak el ile oluşturulup atanması gerekir. Genellikle, kimlik bilgileri eksik ve düzenli olarak döndürülmemektedir.
 
-(Şu anda ilişkili AKS açık kaynaklı proje uygulanan) Azure kaynakları için yönetilen kimlik Hizmetleri aracılığıyla Azure AD için erişim isteği otomatik olarak sağlar. Kimlik bilgilerini el ile tanımlamak yoksa, pod'ları için bunun yerine gerçek zamanlı bir erişim belirteci isteği ve bunların atanmış hizmetlere erişmek için kullanabilirsiniz. AKS, küme işleci tarafından yönetilen kimlikleri kullanmak pod'ların izin vermek için iki bileşenden dağıtılır:
+Azure kaynakları için Yönetilen kimlikler (Şu anda ilişkili bir AKS açık kaynak projesi olarak uygulanır), Azure AD aracılığıyla hizmetlere otomatik olarak erişim isteme izni verir. Bir erişim belirtecini gerçek zamanlı olarak istedikleri ve yalnızca atanmış hizmetlerine erişmek için kullanabilmesi için, pods 'nin kimlik bilgilerini el ile tanımlayamazsınız. AKS 'de, Dizin 'lerin yönetilen kimlikleri kullanmasına izin vermek için küme operatörü tarafından iki bileşen dağıtılır:
 
-* **Düğüm yönetim kimlik (NMI) sunucu** AKS kümesindeki her düğümde bir DaemonSet çalışan bir pod olduğu. NMI sunucunun Azure hizmetlerine pod isteklerini dinler.
-* **Yönetilen kimlik denetleyici (MIC)** merkezi bir pod Kubernetes API sunucusu sorgulamak için gerekli izinlere sahip olduğundan ve bir Azure kimlik eşlemesini karşılık gelen bir pod için denetler.
+* **Düğüm yönetimi kimliği (NMI) sunucusu** , aks kümesindeki her bir düğümde DaemonSet olarak çalışan bir pod 'dir. NMI sunucusu, Azure hizmetlerine Pod isteklerini dinler.
+* **Yönetilen kimlik denetleyicisi (MIC)** , Kubernetes API sunucusunu sorgulama ve pod 'a karşılık gelen bir Azure kimlik eşlemesini denetleme izinlerine sahip merkezi bir pod 'dir.
 
-Pod'ların bir Azure hizmetine erişim istediğinde, ağ kuralları düğümü yönetim kimlik (NMI) sunucusuna trafiği yönlendirin. Azure hizmetlerine erişim için kendi uzak adresini temel alan ve yönetilen kimlik denetleyici (MIC) sorgular isteği pod'ların NMI sunucuyu tanımlar. MIC AKS kümesi ve NMI sunucunun Azure kimlik eşlemeleri denetler, ardından gelen Azure Active Directory (AD) erişim belirteci pod'ın kimlik eşlemesini göre ister. Azure AD için pod döndürülen NMI sunucuya erişim sağlar. Bu erişim belirteci, ardından Azure hizmetlerine erişime izin istemek için pod tarafından kullanılabilir.
+Pod bir Azure hizmetine erişim isteğinde bulunduğunda, ağ kuralları trafiği düğüm yönetim kimliği (NMI) sunucusuna yönlendirir. NMI sunucusu, uzak adreslerine bağlı olarak Azure hizmetlerine erişim isteyen Pod 'yi tanımlar ve yönetilen kimlik denetleyicisini (MIC) sorgular. MıC, AKS kümesinde Azure kimlik eşlemelerini denetler ve NMI sunucusu, Pod 'un kimlik eşlemesine göre Azure Active Directory (AD) öğesinden bir erişim belirteci ister. Azure AD, Pod 'a döndürülen NMI sunucusuna erişim sağlar. Bu erişim belirteci, Pod tarafından Azure 'daki hizmetlere erişim istemek için kullanılabilir.
 
-Aşağıdaki örnekte, bir geliştirici, Azure SQL Server örneğine erişim istemek için bir yönetilen kimlik kullanan bir pod oluşturur:
+Aşağıdaki örnekte, bir geliştirici Azure SQL Server örneğine erişim istemek için yönetilen kimlik kullanan bir pod oluşturuyor:
 
-![Pod kimlikler otomatik olarak diğer hizmetlere erişimi istemek bir pod izin ver](media/operator-best-practices-identity/pod-identities.png)
+![Pod kimlikleri, Pod 'ın diğer hizmetlere otomatik olarak erişim istemesine izin verir](media/operator-best-practices-identity/pod-identities.png)
 
-1. Küme işleci, ilk pod'ların hizmetlerine erişim istediğinde, kimliklerini eşlemek için kullanılan bir hizmet hesabı oluşturur.
-1. MIC ve NMI sunucudaki tüm Azure ad erişim belirteçlerini pod isteklerinde aktarma dağıtılır.
-1. Bir geliştirici, bir pod NMI sunucu üzerinden bir erişim belirteci isteklerini yönetilen bir kimlikle dağıtır.
-1. Belirteç pod'u döndürdü ve bir Azure SQL Server örneğine erişmek için kullanılır.
+1. Küme operatörü ilk olarak, bir pod hizmetlere erişim isteğinde bulunduğunda kimlikleri eşlemek için kullanılabilen bir hizmet hesabı oluşturur.
+1. Azure AD 'ye erişim belirteçleri için herhangi bir pod isteği geçirmek üzere NMI sunucusu ve MIK dağıtılır.
+1. Bir geliştirici, NMI sunucusu aracılığıyla erişim belirteci isteyen yönetilen bir kimlikle Pod dağıtır.
+1. Belirteç Pod 'a döndürülür ve Azure SQL Server örneğine erişmek için kullanılır.
 
 > [!NOTE]
-> Yönetilen pod kimlikler, açık kaynak bir projedir ve Azure teknik destek birimi tarafından desteklenmiyor.
+> Yönetilen Pod kimlikleri açık kaynaklı bir projem ve Azure teknik desteği tarafından desteklenmiyor.
 
-Pod kimlikleri kullanmak için bkz: [Kubernetes uygulamaları için Azure Active Directory kimlikleri][aad-pod-identity].
+Pod kimliklerini kullanmak için bkz. [Kubernetes uygulamaları için Azure Active Directory kimlikleri][aad-pod-identity].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kimlik doğrulaması ve yetkilendirme küme ve kaynaklar için bu en iyi yöntemler makalesi odaklanır. Bazı bu en iyi yöntemleri uygulamak için aşağıdaki makalelere bakın:
+Bu en iyi yöntemler, kümenizin ve kaynaklarınızın kimlik doğrulama ve yetkilendirilmesine odaklanan makaledir. Bu en iyi uygulamalardan bazılarını uygulamak için aşağıdaki makalelere bakın:
 
-* [AKS ile Azure Active Directory Tümleştirme][aks-aad]
-* [AKS ile Azure kaynakları için yönetilen kimlikleri kullanmak][aad-pod-identity]
+* [Azure Active Directory AKS ile tümleştirme][aks-aad]
+* [AKS ile Azure kaynakları için Yönetilen kimlikler kullanma][aad-pod-identity]
 
-AKS kümesi işlemleri hakkında daha fazla bilgi için aşağıdaki en iyi bakın:
+AKS 'deki küme işlemleri hakkında daha fazla bilgi için aşağıdaki en iyi yöntemlere bakın:
 
-* [Çok kiracılılık ve küme ayırma][aks-best-practices-scheduler]
-* [Temel Kubernetes Zamanlayıcı Özellikleri][aks-best-practices-scheduler]
-* [Gelişmiş Kubernetes Zamanlayıcı Özellikleri][aks-best-practices-advanced-scheduler]
+* [Çok kiracılı ve küme yalıtımı][aks-best-practices-scheduler]
+* [Temel Kubernetes Zamanlayıcı özellikleri][aks-best-practices-scheduler]
+* [Gelişmiş Kubernetes Zamanlayıcı özellikleri][aks-best-practices-advanced-scheduler]
 
 <!-- EXTERNAL LINKS -->
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity

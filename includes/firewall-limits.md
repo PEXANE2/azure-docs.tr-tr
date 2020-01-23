@@ -5,21 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 12/06/2019
+ms.date: 01/22/2020
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: a7b6867033e750f476b3d995926f0b670965a5d7
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 92c2e79910e40721a0ef62d44825bd1f3e19fc79
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875463"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548245"
 ---
 | Kaynak | Varsayılan limit |
 | --- | --- |
 | Veri işleme |30 Gbps<sup>1</sup> |
 |Kurallar|10.000. Tüm kural türleri birleştirildi.|
-|Genel IP adresi başına DNAT kuralları|299|
+|Maksimum DNAT kuralları|299|
 |Minimum AzureFirewallSubnet boyutu |/26|
 |Ağ ve uygulama kurallarında bağlantı noktası aralığı|0-64000. Bu kısıtlamayı rahat hale getirme işi devam ediyor.|
 |Genel IP adresleri|100 en fazla (Şu anda, SNAT bağlantı noktaları yalnızca ilk beş genel IP adresi için eklenir.)|

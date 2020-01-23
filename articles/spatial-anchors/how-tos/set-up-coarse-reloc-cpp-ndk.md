@@ -1,6 +1,6 @@
 ---
 title: /NDK 'de C++kaba yeniden yerelleştirme
-description: /Ndk'teki C++cihaz üzerinde algılayıcılar kullanarak bağlantıları oluşturma ve bulma hakkında ayrıntılı açıklama.
+description: /Ndk'de C++kaba yeniden yerelleştirme kullanarak bağlantıları oluşturma ve bulma hakkında ayrıntılı açıklama.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,17 +8,17 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e505e6a8a3c9f28905c1b1fc3d90dbeee959a793
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: db7480b8aa2a78e40cf52d22cbaa7a15422602e8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277258"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545424"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-cndk"></a>/NDK 'de C++cihaz üzerinde algılayıcılar kullanarak Tutturucular oluşturma ve bulma
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cndk"></a>/NDK 'de C++kaba yeniden yerelleştirme kullanarak Tutturucular oluşturma ve bulma
 
 > [!div  class="op_single_selector"]
-> * ['Yi](set-up-coarse-reloc-unity.md)
+> * [Unity](set-up-coarse-reloc-unity.md)
 > * [Objective-C](set-up-coarse-reloc-objc.md)
 > * [Swift](set-up-coarse-reloc-swift.md)
 > * [Android Java](set-up-coarse-reloc-java.md)
@@ -27,7 +27,7 @@ ms.locfileid: "74277258"
 
 Azure uzamsal bağlantıları, cihaz üzerinde ilişki oluşturabilir ve algılayıcı verilerini, oluşturduğunuz tutturucularla konumlamayı sağlayabilir. Bu veriler, cihazınızın yakınında yer olup olmadığını hızlı bir şekilde tespit etmek için de kullanılabilir. Daha fazla bilgi için bkz. [kaba yeniden yerelleştirme](../concepts/coarse-reloc.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 

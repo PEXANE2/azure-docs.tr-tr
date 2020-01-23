@@ -1,6 +1,6 @@
 ---
-title: Jenkins eklentisi - Azure IOT Edge ile CI/CD etkinleştirme | Microsoft Docs
-description: Jenkins için Azure IOT Edge uzantısı, var olan DevOps çözümünüzü IOT Edge devlopment ve dağıtım görevlerini tümleştirmenize olanak tanır.
+title: Jenkins eklentisi ile CI/CD 'yi etkinleştirme-Azure IoT Edge | Microsoft Docs
+description: Jenkins için Azure IoT Edge uzantısı, IoT Edge geliştirme ve dağıtım görevlerini mevcut DevOps çözümünüz ile tümleştirmenize olanak sağlar.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,19 +8,19 @@ ms.date: 01/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 173e6ff91acd2ad28d7203b2b5db65e0ee0ecc43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75ed5f5eda48f10776b854ce4de4d2f855a53634
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126350"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510252"
 ---
-# <a name="integrate-azure-iot-edge-with-jenkins-pipelines"></a>Jenkins işlem hatlarında Azure IOT Edge tümleştirin
+# <a name="integrate-azure-iot-edge-with-jenkins-pipelines"></a>Jenkins işlem hatlarına Azure IoT Edge tümleştirin
 
-Azure IOT Edge, Azure DevOps ve Azure DevOps projeleri için yerleşik destek içerir, ancak ayrıca Jenkins ile DevOps işlevselliği genişletmek için bir eklenti sağlar. [Jenkins](https://jenkins.io/) eklentileri geliştirme ve dağıtım projeleri, IOT Edge dahil olmak üzere birçok türlerini desteklemek için kullandığı bir açık kaynak Otomasyon sunucusudur. 
+Azure IoT Edge, Azure DevOps ve Azure DevOps Projeleri için yerleşik desteğe sahiptir, ancak Ayrıca DevOps işlevselliğini Jenkins 'e genişletmek için bir eklenti sağlar. [Jenkins](https://jenkins.io/) , IoT Edge dahil olmak üzere birçok tür geliştirme ve dağıtım projesini desteklemek için eklentileri kullanan açık kaynaklı bir Otomasyon sunucusudur.
 
-Jenkins için Azure IOT Edge eklentisi, sürekli tümleştirme ve sürekli dağıtım odaklanır. Modülleri oluşturur ve kapsayıcı kayıt defterinizde kendi kapsayıcı görüntülerini gönderim bir derleme ve gönderme işlem hattı oluşturabilirsiniz. Ardından, IOT Edge cihazlarınıza modülleri dağıtan bir yayın işlem hattı oluşturun. 
+Jenkins için Azure IoT Edge eklentisi sürekli tümleştirme ve sürekli dağıtıma odaklanır. Modüller oluşturup kapsayıcı görüntülerini kapsayıcı Kayıt defterinize ileten bir yapı ve gönderim işlem hattı oluşturabilirsiniz. Daha sonra, IoT Edge cihazlarınıza modüller dağıtan bir yayın işlem hattı oluşturun.
 
-IOT Edge eklentisi için Jenkins kullanmaya başlamadan önce Azure'da ve kapsayıcı kayıt defteri, kapsayıcı görüntüleri tutmak için IOT hub'ı gerekir. Eklenti dağıtımlar için IOT Edge cihazları oluşturabilmeniz IOT hub'ınıza Jenkins katkıda bulunan izinleri vermek için bir Azure hizmet sorumlusu kullanın. 
+Jenkins için IoT Edge eklentisini kullanmaya başlamadan önce, Azure 'da bir IoT Hub ve kapsayıcı görüntülerinizi tutacak bir kapsayıcı kayıt defteri gerekir. Bir Azure hizmet sorumlusu kullanarak, eklentinin IoT Edge cihazlarınız için dağıtımlar oluşturabilmesi için IoT Hub 'ınıza Jenkins 'e katkıda bulunan izinleri verin.
 
-Başlamak hazırsanız yükleme bulabilir ve ayrıntılarını [Jenkins için Azure IOT Edge eklentisi](https://plugins.jenkins.io/azure-iot-edge).
+Başlamak için hazırsanız, [Jenkins için Azure IoT Edge eklentisi](https://plugins.jenkins.io/azure-iot-edge)için yükleme ve kullanım ayrıntılarını bulun.

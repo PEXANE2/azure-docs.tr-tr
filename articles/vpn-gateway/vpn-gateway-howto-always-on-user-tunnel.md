@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: bff2ed48a78bfbae984dea5e5474971817023bc6
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: a22ba5d8b33dd41fcc76c65fcddaf60c1c0ed5e3
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75729330"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514757"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>Always On VPN kullanıcı tüneli yapılandırma
 
@@ -39,7 +39,7 @@ VPN ağ geçidini, bu [Noktadan siteye](vpn-gateway-howto-point-to-site-resource
 
 1. İstemci sertifikalarını, bu [noktadan sıteye VPN istemci](point-to-site-how-to-vpn-client-install-azure-cert.md) makalesinde gösterildiği gibi Windows 10 istemcisine yükler. Sertifika, geçerli kullanıcı deposunda olmalıdır.
 
-1. [Windows 10 Istemci her zaman VPN bağlantılarında yapılandırma](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)bölümündeki yönergeleri izleyerek PowerShell, System Center Configuration Manager veya Intune aracılığıyla Always on VPN istemcisini yapılandırın.
+1. [Windows 10 Istemci her zaman VPN bağlantılarında yapılandırma](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)bölümündeki yönergeleri izleyerek PowerShell, Configuration Manager veya Intune aracılığıyla Always on VPN istemcisini yapılandırın.
 
 ### <a name="example-configuration-for-the-user-tunnel"></a>Kullanıcı tüneli için örnek yapılandırma
 

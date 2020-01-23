@@ -6,16 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d1058125d5bb3912b9561027bbe0a977637d3379
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153617"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547532"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT kümesini dağıtma
 
-Bu yordam, Azure Marketi 'nden sunulan Dağıtım Sihirbazı 'nı kullanarak size kılavuzluk eder. Sihirbaz Azure Resource Manager şablonu kullanarak kümeyi otomatik olarak dağıtır. Forma parametreleri girdikten ve **Oluştur**' a tıkladıktan sonra, Azure bu adımları otomatik olarak tamamlar:
+Bu yordam, Azure Marketi 'nden sunulan Dağıtım Sihirbazı 'nı kullanarak size kılavuzluk eder. Sihirbaz Azure Resource Manager şablonu kullanarak kümeyi otomatik olarak dağıtır. Forma parametreleri girdikten ve **Oluştur**' a tıkladıktan sonra, Azure bu görevleri otomatik olarak tamamlar:
 
 * Kümeyi dağıtmak ve yönetmek için gereken yazılımları içeren temel bir VM olan küme denetleyicisini oluşturur.
 * Yeni öğe oluşturma da dahil olmak üzere kaynak grubu ve sanal ağ altyapısını ayarlar.
@@ -28,10 +28,10 @@ Bu belgedeki yönergeleri uyguladıktan sonra, aşağıdaki diyagramda gösteril
 
 Oluşturma şablonunu kullanmadan önce, şu önkoşullara değindiğinizden emin olun:  
 
-1. [Yeni abonelik](avere-vfxt-prereqs.md#create-a-new-subscription)
-1. [Abonelik sahibi izinleri](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
-1. [VFXT kümesi için kota](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Depolama hizmeti uç noktası (gerekirse)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) -var olan bir sanal ağı kullanan ve BLOB depolama alanı oluşturan dağıtımlar için gereklidir
+* [Yeni abonelik](avere-vfxt-prereqs.md#create-a-new-subscription)
+* [Abonelik sahibi izinleri](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
+* [VFXT kümesi için kota](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
+* [Depolama hizmeti uç noktası (gerekirse)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) -var olan bir sanal ağı kullanan ve BLOB depolama alanı oluşturan dağıtımlar için gereklidir
 
 Küme dağıtım adımları ve planlaması hakkında daha fazla bilgi için [avere vFXT sisteminizin](avere-vfxt-deploy-plan.md) ve [dağıtıma genel bakış](avere-vfxt-deploy-overview.md)konusunu okuyun.
 

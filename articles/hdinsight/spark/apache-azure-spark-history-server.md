@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 8e0fcdc97475053dcf285b562b28784deffff28c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552738"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548943"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Spark uygulamalarında hata ayıklamak ve tanılamak için Apache Spark geçmiş sunucusunun genişletilmiş özelliklerini kullanın
 
@@ -163,7 +163,7 @@ Spark geçmiş sunucusu Web Kullanıcı arabirimi şu resme benzer şekilde gör
 
 #### <a name="specify-parameters"></a>Parametreleri belirtin
 
-**Parametreleri belirtin** bölümü, veri eğriliğini algılamak için kullanılan parametreleri görüntüler. Varsayılan kural: okunan görev verileri ortalama görev verilerinin üç katından fazla okunan ve okunan görev verisi 10 MB 'tan fazla. Asimetrik görevler için kendi kuralınızı tanımlamak istiyorsanız parametrelerinizi seçebilirsiniz. **Asimetrik aşama** ve **eğriltme char** bölümleri buna uygun olarak güncelleştirilir.
+**Parametreleri belirtin** bölümü, veri eğriliğini algılamak için kullanılan parametreleri görüntüler. Varsayılan kural: okunan görev verileri ortalama görev verilerinin üç katından fazla okunan ve okunan görev verisi 10 MB 'tan fazla. Asimetrik görevler için kendi kuralınızı tanımlamak istiyorsanız parametrelerinizi seçebilirsiniz. **Çarpıklık** ve **eğme grafik** bölümleri buna uygun olarak güncelleştirilir.
 
 #### <a name="skewed-stage"></a>Eğilmiş aşama
 

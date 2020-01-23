@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f60ec802af0c88ee8cb3809bf27feef89e11570a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769804"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513278"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -376,7 +376,7 @@ Düzeltme eki uygulama sorununu çözemezseniz, sonraki güncelleştirme dağıt
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Güncelleştirmelerin kullanılabildiğini biliyorum, ancak makinelerimde kullanılabilir olarak gösterilmiyorum
 
-* Bu durum genellikle makineler WSUS veya System Center Configuration Manager (SCCM) güncelleştirmelerini almak üzere yapılandırılmışsa ancak WSUS ve SCCM güncelleştirmeleri onaylamamışsa oluşur.
+* Bu durum genellikle makineler WSUS veya Microsoft uç nokta Configuration Manager güncelleştirmeleri almak üzere yapılandırılmışsa, ancak WSUS ve Configuration Manager güncelleştirmeleri onaylanmamış olur.
 * [Bu makalenin "kayıt defterini düzenleyerek otomatik güncelleştirmeleri yapılandırma" bölümündeki kayıt defteri anahtarlarına UseWUServer kayıt defteri anahtarını çapraz](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)olarak bağlayarak, makinelerin WSUS ve SCCM için yapılandırılıp yapılandırılmadığını kontrol edebilirsiniz.
 * Güncelleştirmeler WSUS 'de onaylanmamışsa, bunlar yüklenmez. Aşağıdaki sorguyu çalıştırarak, Log Analytics ' de onaylanmamış güncelleştirmeleri denetleyebilirsiniz:
 

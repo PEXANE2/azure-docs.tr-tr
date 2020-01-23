@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 09ae896d26d534d3f9d5651834e181d37581c8f3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288974"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545628"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için Azure Active Directory Tümleştirmesi
 
@@ -55,6 +55,9 @@ Küme Yöneticisi erişimi sağlamak için bir Azure AD güvenlik grubundaki Üy
 
 9. Grup oluşturulduğunda, bu dosyayı tüm gruplar listesinde görürsünüz. Yeni gruba tıklayın.
 10. Görüntülenen sayfada, **nesne kimliğini**kopyalayın. [Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisinde `GROUPID` olarak bu değere başvuracağız.
+
+> [!IMPORTANT]
+> Bu grubu OSA-müşteri-Yöneticiler OpenShift grubuyla eşitlemek için Azure CLı kullanarak kümeyi oluşturun. Azure portal Şu anda bu grubu ayarlamak için bir alan eksik.
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD uygulama kaydı oluşturma
 

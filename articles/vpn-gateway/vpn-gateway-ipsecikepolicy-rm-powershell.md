@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: ed7b12b24e6129d6cf609f4345203abc783e9f62
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 8ed32ccedcd6cc4ffd159069399c0417842325d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864069"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514927"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN veya VNet-VNet bağlantıları için IPSec/ıKE ilkesini yapılandırma
 
@@ -341,7 +341,7 @@ DhGroup             : DHGroup24
 PfsGroup            : PFS24
 ```
 
-Yapılandırılmış bir IPSec/ıKE ilkesi yoksa, (PS > $connection 6. ilke) komutu boş bir dönüş alır. IPSec/ıKE 'nin bağlantıda yapılandırılmadığı, ancak özel IPSec/ıKE ilkesi olmadığı anlamına gelir. Gerçek bağlantı, şirket içi VPN cihazınız ile Azure VPN ağ geçidi arasında anlaştığınız varsayılan ilkeyi kullanır.
+Yapılandırılmış bir IPSec/ıKE ilkesi yoksa, komut (PS > $connection 6 ' dır. Ipsecpolicies) boş bir dönüş alır. IPSec/ıKE 'nin bağlantıda yapılandırılmadığı, ancak özel IPSec/ıKE ilkesi olmadığı anlamına gelir. Gerçek bağlantı, şirket içi VPN cihazınız ile Azure VPN ağ geçidi arasında anlaştığınız varsayılan ilkeyi kullanır.
 
 #### <a name="2-add-or-update-an-ipsecike-policy-for-a-connection"></a>2. bağlantı için IPSec/ıKE ilkesi ekleme veya güncelleştirme
 

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c1c7dd0bd017852144139a841ff609dabf0f1a27
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928064"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513992"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar geliştirin
 Bu makalede, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) uygulama ve doğrulama aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -36,7 +36,7 @@ Uygulamanızın kullanılmasını amaçlamadığınız yollarla kullanılacağı
 
 Kodu iade etmeden önce, genel kod kalitesini artırmak ve hata oluşturma riskini azaltmak için [kod İncelemeleri](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) gerçekleştirin. Kod inceleme sürecini yönetmek için [Visual Studio 'yu](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) kullanabilirsiniz.
 
-### <a name="perform-static-code-analysis"></a>Statik kod analizi gerçekleştir
+### <a name="perform-static-code-analysis"></a>Statik kod analizini gerçekleştirme
 
 [Statik kod analizi](https://www.owasp.org/index.php/Static_Code_Analysis) ( *kaynak kodu analizi*olarak da bilinir) genellikle kod incelemesinin bir parçası olarak gerçekleştirilir. Statik kod analizi, ortak olmayan kodda [taınt denetimi](https://en.wikipedia.org/wiki/Taint_checking) ve [veri akışı analizi](https://en.wikipedia.org/wiki/Data-flow_analysis)gibi teknikleri kullanarak olası güvenlik açıklarını bulmak için statik kod çözümleme araçları 'nı çalıştırmayı ifade eder.
 
@@ -99,13 +99,13 @@ Uygulamanın parolaları otomatik olarak oluşturması gerekiyorsa, oluşturulan
 
 Uygulamanız [dosya karşıya yüklemeye](https://www.owasp.org/index.php/Unrestricted_File_Upload)izin veriyorsa, bu riskli etkinlik için uygulayabileceğiniz önlemleri göz önünde bulundurun. Birçok saldırının ilk adımı, saldırı altında olan bir sisteme bazı kötü amaçlı kodlar almanızı sağlar. Bir dosya yükleme işleminin kullanılması, saldırganın bunu gerçekleştirmenize yardımcı olur. OWASP, karşıya yüklediğiniz dosyanın güvende olduğundan emin olmak için bir dosyayı doğrulamaya yönelik çözümler sunar.
 
-Kötü amaçlı yazılımdan koruma, virüsler, casus yazılım ve diğer kötü amaçlı yazılımları belirleyip kaldırmanıza yardımcı olur. [Microsoft kötü amaçlı yazılımdan](../fundamentals/antimalware.md) koruma veya bir Microsoft iş ortağının Endpoint Protection çözümünü ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)ve [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)) yükleyebilirsiniz.
+Kötü amaçlı yazılımdan koruma, virüsler, casus yazılım ve diğer kötü amaçlı yazılımları belirleyip kaldırmanıza yardımcı olur. [Microsoft kötü amaçlı yazılımdan](../fundamentals/antimalware.md) koruma veya bir Microsoft iş ortağının Endpoint Protection çözümünü ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)ve [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)) yükleyebilirsiniz.
 
 [Microsoft Antimalware](../fundamentals/antimalware.md) gerçek zamanlı koruma, zamanlanmış tarama, kötü amaçlı yazılım düzeltme, imza güncelleştirmeleri, altyapı güncelleştirmeleri, örnek raporlama ve dışlama olay toplama gibi özellikler içerir. Microsoft kötü amaçlı yazılımdan koruma ve iş ortağı çözümlerini, dağıtım kolaylığı ve yerleşik algılamalar (Uyarılar ve olaylar) için [Azure Güvenlik Merkezi](../../security-center/security-center-partner-integration.md) ile tümleştirebilirsiniz.
 
 ### <a name="dont-cache-sensitive-content"></a>Hassas içeriği önbelleğe alma
 
-Gizli içeriği tarayıcıda önbelleğe alma. Tarayıcılar, önbelleğe alma ve geçmiş bilgilerini saklayabilir. Önbelleğe alınan dosyalar, Internet Explorer durumunda Temporary Internet Files klasörü gibi bir klasörde depolanır. Bu sayfalara yeniden başvurulur tarayıcı, sayfaları önbelleğinden görüntüler. Gizli bilgiler (adres, kredi kartı ayrıntıları, sosyal güvenlik numarası, Kullanıcı adı) kullanıcıya görüntüleniyorsa, bilgiler tarayıcının önbelleğinde depolanabilir ve tarayıcının önbelleğini inceleyerek ya da tarayıcının **önbelleğine basılarak alınabilir. Geri** düğmesi.
+Gizli içeriği tarayıcıda önbelleğe alma. Tarayıcılar, önbelleğe alma ve geçmiş bilgilerini saklayabilir. Önbelleğe alınan dosyalar, Internet Explorer durumunda Temporary Internet Files klasörü gibi bir klasörde depolanır. Bu sayfalara yeniden başvurulur tarayıcı, sayfaları önbelleğinden görüntüler. Kullanıcıya gizli bilgiler (adres, kredi kartı ayrıntıları, sosyal güvenlik numarası, Kullanıcı adı) görüntüleniyorsa, bilgiler tarayıcının önbelleğinde depolanabilir ve tarayıcının önbelleğini inceleyerek veya tarayıcının **geri** düğmesine basılarak alınabilir.
 
 ## <a name="verification"></a>Doğrulama
 Doğrulama aşaması, kodun önceki aşamalarda oluşturulan güvenlik ve gizlilik tenetlerini karşıladığından emin olmak için kapsamlı bir çaba içerir.
@@ -148,7 +148,7 @@ Uygulamanızın güvenli olmasını sağlamak, diğer tüm işlevleri test etmek
 
 ### <a name="run-security-verification-tests"></a>Güvenlik doğrulama testlerini Çalıştır
 
-[Azure Için güvenli DevOps seti](https://azsk.azurewebsites.net/index.html) (AzSK) Azure platformunun birden çok hizmeti için SVTs içerir. Azure aboneliğinizin ve uygulamanızı oluşturan farklı kaynakların güvenli bir durumda olduğundan emin olmak için bu SVTs 'yi düzenli olarak çalıştırırsınız. Bu testleri, AzSK 'nin sürekli tümleştirme/sürekli dağıtım (CI/CD) uzantıları özelliğini kullanarak otomatikleştirin ve bu da SVTs 'nin bir Visual Studio uzantısı olarak kullanılabilmesini sağlar.
+[Azure Için güvenli DevOps Kit](https://azsk.azurewebsites.net/index.html) (azsk), Azure platformunun birden çok hizmeti Için SVTS 'yi içerir. Azure aboneliğinizin ve uygulamanızı oluşturan farklı kaynakların güvenli bir durumda olduğundan emin olmak için bu SVTs 'yi düzenli olarak çalıştırırsınız. Bu testleri, AzSK 'nin sürekli tümleştirme/sürekli dağıtım (CI/CD) uzantıları özelliğini kullanarak otomatikleştirin ve bu da SVTs 'nin bir Visual Studio uzantısı olarak kullanılabilmesini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelerde, güvenli uygulamaları tasarlamanıza ve dağıtmanıza yardımcı olabilecek güvenlik denetimleri ve etkinlikleri önerilir.

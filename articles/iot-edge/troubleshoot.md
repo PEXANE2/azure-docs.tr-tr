@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8022304af0f429024a796e02e64f6e23b938bd57
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912281"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514264"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge için genel sorunlar ve çözümler
 
@@ -105,7 +105,7 @@ Windows'da:
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>IOT Edge Güvenlik Yöneticisi çalışmıyor, yaml yapılandırma dosyanızı doğrulayın.
 
 > [!WARNING]
-> YAML dosyaları girintileme olarak sekme içeremez. Bunun yerine 2 alanları kullanın.
+> YAML dosyaları girintileme olarak sekme içeremez. Bunun yerine 2 alanları kullanın. Üst düzey öğelerin başında boşluk olmaması gerekir.
 
 Linux üzerinde:
 
@@ -121,7 +121,7 @@ Windows'da:
 
 ### <a name="check-container-logs-for-issues"></a>Kapsayıcı günlüklerini sorunlar için denetleyin
 
-IOT Edge güvenlik arka plan programı çalışır duruma geçtikten sonra sorunları algılamak için kapsayıcılarının günlüklerine bakın. Dağıtılan kapsayıcılarınız ile başlayın ve ardından IoT Edge çalışma zamanını oluşturan kapsayıcılara bakın: edgeAgent ve edgeHub. IoT Edge Aracısı günlükleri genellikle her kapsayıcının yaşam döngüsü hakkında bilgi sağlar. IoT Edge hub günlükleri mesajlaşma ve yönlendirme hakkında bilgi sağlar. 
+IOT Edge güvenlik arka plan programı çalışır duruma geçtikten sonra sorunları algılamak için kapsayıcılarının günlüklerine bakın. Dağıtılan kapsayıcılarınız ile başlayın ve ardından IoT Edge çalışma zamanını oluşturan kapsayıcılara bakın: edgeAgent ve edgeHub. IoT Edge Aracısı günlükleri genellikle her kapsayıcının yaşam döngüsü hakkında bilgi sağlar. IoT Edge hub günlükleri mesajlaşma ve yönlendirme hakkında bilgi sağlar.
 
    ```cmd
    iotedge logs <container name>
@@ -163,7 +163,7 @@ Değiştirin `env: {}` ile:
    ```
 
    > [!WARNING]
-   > YAML dosyaları sekmeler identation içeremez. Bunun yerine 2 alanları kullanın.
+   > YAML dosyaları sekmeler identation içeremez. Bunun yerine 2 alanları kullanın. Üst düzey öğelerin başında boşluk bulunamaz.
 
 Dosyayı kaydedin ve IOT Edge Güvenlik Yöneticisi'ni yeniden başlatın.
 
@@ -435,6 +435,6 @@ Bunu *Edgeagent* ve *edgehub* modülleri için de ayarladığınızdan emin olun
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Edge platformunda bir hata bulduğunuzu düşünüyor musunuz? [Sorun bildir](https://github.com/Azure/iotedge/issues) böylece biz geliştirmeye devam. 
+IoT Edge platformunda bir hata bulduğunuzu düşünüyor musunuz? [Sorun bildir](https://github.com/Azure/iotedge/issues) böylece biz geliştirmeye devam.
 
 Başka sorularım varsa, oluşturun bir [destek isteği](https://portal.azure.com/#create/Microsoft.Support) Yardım.

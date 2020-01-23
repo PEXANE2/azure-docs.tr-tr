@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: aacd41debfa8810facc41896051767eb4ab6e3b6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: b4550f55d160a77c2fb149dd509ca1cfad784f79
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052501"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513465"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights veri toplama, bekletme ve depolama
 
@@ -53,13 +53,13 @@ Application Insights SDK 'lar bir dizi uygulama türü için kullanılabilir: ke
 Ana Kategoriler şunlardır:
 
 * [Web sunucusu telemetrisi](../../azure-monitor/app/asp-net.md) -http istekleri.  URI, istek, yanıt kodu, istemci IP adresi işlemek için geçen süre. `Session id`.
-* [Web sayfaları](../../azure-monitor/app/javascript.md) -sayfa, Kullanıcı ve oturum sayıları. Sayfa yükleme süreleri. Larý. Ajax çağrıları.
+* [Web sayfaları](../../azure-monitor/app/javascript.md) -sayfa, Kullanıcı ve oturum sayıları. Sayfa yükleme süreleri. Özel durumlar. Ajax çağrıları.
 * Performans sayaçları-bellek, CPU, GÇ, ağ doluluk.
 * İstemci ve sunucu bağlamı-işletim sistemi, yerel ayar, cihaz türü, tarayıcı, ekran çözünürlüğü.
 * [Özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) ve kilitlenmeler- **yığın dökümleri**, `build id`, CPU türü. 
 * [Bağımlılıklar](../../azure-monitor/app/asp-net-dependencies.md) -Rest, SQL, AJAX gibi harici hizmetlere yapılan çağrılar. URI veya bağlantı dizesi, süre, başarı, komut.
 * [Kullanılabilirlik testleri](../../azure-monitor/app/monitor-web-app-availability.md) -test ve adımların süresi, yanıtlar.
-* **Günlüklere veya telemetrinize kodlarınızın her şeyi** -  [izleme günlükleri](../../azure-monitor/app/asp-net-trace-logs.md) ve [özel telemetri](../../azure-monitor/app/api-custom-events-metrics.md) .
+* **Günlüklere veya telemetrinize kodlarınızın her şeyi** - [izleme günlükleri](../../azure-monitor/app/asp-net-trace-logs.md) ve [özel telemetri](../../azure-monitor/app/api-custom-events-metrics.md) .
 
 [Daha fazla ayrıntı](#data-sent-by-application-insights).
 
@@ -84,7 +84,7 @@ Ham veri noktaları (diğer bir deyişle, analiz bölümünde sorgulama yapabili
 
 Toplanan veriler (diğer bir deyişle, sayımlar, ortalamalar ve Ölçüm Gezgini 'nde gördüğünüz diğer istatistiksel veriler) 90 gün boyunca 1 dakikalık bir zaman içinde tutulur.
 
-[Hata ayıklama anlık görüntüleri](../../azure-monitor/app/snapshot-debugger.md) 15 gün boyunca depolanır. Bu bekletme ilkesi, uygulama başına temelinde ayarlanır. Bu değeri artırmanız gerekiyorsa Azure portal bir destek talebi açarak artış isteyebilirsiniz.
+[Hata ayıklama anlık görüntüleri](../../azure-monitor/app/snapshot-debugger.md) 15 gün boyunca depolanır. Bu bekletme ilkesi, bir uygulama başına temelinde ayarlanır. Bu değeri arttırmak gerekiyorsa, Azure portalında bir destek talebi açarak artışı isteyebilirsiniz.
 
 ## <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 Veriler sizin için görünür ve bir kuruluş hesabınız varsa, ekip üyeleriniz olur. 
@@ -118,7 +118,7 @@ Kodu diğer projelerle paylaşırsanız, izleme anahtarınızı kaldırmayı unu
 Tüm veriler, bekleyen ve veri merkezleri arasında taşındığı için şifrelenir.
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Veriler uygulamamın Application Insights sunuculara iletimde mi şifrelendi?
-Evet, Web sunucuları, cihazlar ve HTTPS Web sayfaları dahil olmak üzere neredeyse tüm SDK 'lardan portala veri göndermek için https kullanırız. Tek özel durum, düz HTTP Web sayfalarından gönderilen veri.
+Evet, Web sunucuları, cihazlar ve HTTPS Web sayfaları dahil olmak üzere neredeyse tüm SDK 'lardan portala veri göndermek için https kullanırız. 
 
 ## <a name="does-the-sdk-create-temporary-local-storage"></a>SDK geçici yerel depolama alanı mı oluşturur?
 
@@ -179,7 +179,7 @@ Varsayılan olarak `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` kalıcı veril
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Nasıl yaparım? TLS 1,2 kullanarak Application Insights verileri gönderiyor musunuz?
 
-Application Insights uç noktalarına geçiş sırasındaki verilerin güvenliğini sağlamak için, müşterilerin uygulamasını en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmasını kesinlikle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümleri, bunlar **önerilmez**ve sektör bu eski sürümler için hızlı bir şekilde devam eder ekledikten. 
+Application Insights uç noktalarına geçiş sırasındaki verilerin güvenliğini sağlamak için, müşterilerin uygulamasını en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmasını kesinlikle öneririz. TLS/Güvenli Yuva Katmanı (SSL) daha eski sürümleri, savunmasız bulundu ve bunlar yine de şu anda geriye dönük uyumluluk izin vermek için çalışırken, bunlar **önerilmez**, ve sektör hızla destek bırakmasını taşıma Bu eski protokolleri için. 
 
 [PCI güvenlik standartları Council](https://www.pcisecuritystandards.org/) , TLS/SSL 'nin eski sürümlerini devre dışı bırakmak ve daha güvenli protokollere yükseltmek Için [30 Haziran 2018 ' nin son tarihini](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) ayarladı. Azure eski desteği düşürdüğünde, uygulamanız/istemcileriniz en az TLS 1,2 üzerinden iletişim kuramıyorsa, Application Insights veri gönderemeyebilirsiniz. Uygulamanızın TLS desteğini test etmek ve doğrulamak için gereken yaklaşım, işletim sistemine/platforma ve uygulamanızın kullandığı dil/çerçeveye bağlı olarak değişir.
 
@@ -187,19 +187,19 @@ Bunu yapmanız gerekmedikçe yalnızca TLS 1,2 ' i kullanmak için uygulamanız�
 
 ### <a name="platformlanguage-specific-guidance"></a>Platforma/dile özel kılavuz
 
-|Platform/dil | Destek | Daha Fazla Bilgi |
+|Platform/dili | Destek | Daha Fazla Bilgi |
 | --- | --- | --- |
 | Azure Uygulama Hizmetleri  | Desteklenir, yapılandırma gerekli olabilir. | Destek 2018 Nisan 'da duyuruldu. [Yapılandırma ayrıntıları](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)için Duyuruyu okuyun.  |
-| Azure Işlevi uygulamaları | Desteklenir, yapılandırma gerekli olabilir. | Destek 2018 Nisan 'da duyuruldu. [Yapılandırma ayrıntıları](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)için Duyuruyu okuyun. |
+| Azure İşlev Uygulamaları | Desteklenir, yapılandırma gerekli olabilir. | Destek 2018 Nisan 'da duyuruldu. [Yapılandırma ayrıntıları](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)için Duyuruyu okuyun. |
 |.NET | Desteklenir, yapılandırma sürüme göre farklılık gösterir. | .NET 4,7 ve önceki sürümler için ayrıntılı yapılandırma bilgileri için, [Bu yönergelere](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)bakın.  |
-|Durum İzleyicisi | Desteklenir, yapılandırma gerekli | Durum İzleyicisi, TLS 1,2 ' i desteklemek için [Işletim sistemi yapılandırması](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)  + [.NET yapılandırması](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) kullanır.
+|Durum İzleyicisi | Desteklenir, yapılandırma gerekli | Durum İzleyicisi, TLS 1,2 ' i desteklemek için [Işletim sistemi yapılandırması](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET yapılandırması](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) kullanır.
 |Node.js |  Desteklenen, v 10.5.0 'de yapılandırma gerekebilir. | Uygulamaya özgü herhangi bir yapılandırma için [resmi Node. js TLS/SSL belgelerini](https://nodejs.org/api/tls.html) kullanın. |
 |Java | , [JDK 6 güncelleştirme 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) ve [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html)' ye desteklenen TLS 1,2 için JDK desteği eklenmiştir. | JDK 8, [Varsayılan olarak TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default)kullanır.  |
-|Linux | Linux dağıtımları, TLS 1,2 desteği için [OpenSSL](https://www.openssl.org) 'yi kullanır.  | OpenSSL sürümünüzü doğrulamak için [OpenSSL changelog](https://www.openssl.org/news/changelog.html) ' yı denetleyin.|
-| Windows 8,0-10 | Desteklenir ve varsayılan olarak etkindir. | Hala [varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)kullandığınızdan emin olun.  |
-| Windows Server 2012-2016 | Desteklenir ve varsayılan olarak etkindir. | [Varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) hala kullandığınızı doğrulamak için |
-| Windows 7 SP1 ve Windows Server 2008 R2 SP1 | Desteklenir, ancak varsayılan olarak etkinleştirilmez. | ' Nin nasıl etkinleştirileceği hakkında ayrıntılı bilgi için bkz. [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) sayfası.  |
-| Windows Server 2008 SP2 | TLS 1,2 desteği için bir güncelleştirme gerekiyor. | Bkz. Windows Server 2008 SP2 'de [TLS 1,2 için destek eklemek Için güncelleştirme](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) . |
+|Linux | Linux dağıtımları eğilimli etmenin [OpenSSL](https://www.openssl.org) TLS 1.2 desteği.  | Denetleme [OpenSSL Changelog](https://www.openssl.org/news/changelog.html) OpenSSL sürümünüz desteklenir onaylamak için.|
+| Windows 8.0 10 | Desteklenen ve varsayılan olarak etkindir. | Yine de kullandığınızı doğrulamak için [varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2012-2016 | Desteklenen ve varsayılan olarak etkindir. | Yine de kullandığınızı doğrulamak için [varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 ve Windows Server 2008 R2 SP1 | , Varsayılan olarak etkin değildir ancak desteklenir. | Bkz: [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) nasıl etkinleştirileceği hakkında daha fazla ayrıntı için.  |
+| Windows Server 2008 SP2 | TLS 1.2 desteği güncelleştirilmesi gerekiyor. | Bkz: [TLS 1.2 desteği eklemek için güncelleştirme](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) Windows Server 2008 SP2. |
 |Windows Vista | Desteklenmiyor. | Yok
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Linux dağılımının hangi OpenSSL sürümünü çalıştırdığından emin olun
@@ -223,7 +223,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 [Application Insights kişisel veri makalemiz](../../azure-monitor/platform/personal-data-mgmt.md) bu sorunu ayrıntılı bir şekilde ele almaktadır.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Kullanıcılarım Application Insights kapatabilir mi?
-Doğrudan değil. Kullanıcılarınızın Application Insights kapatmak için çalıştırabilmesini sağlayacak bir anahtar sağlamayız.
+Doğrudan yönetilemez. Kullanıcılarınızın Application Insights kapatmak için çalıştırabilmesini sağlayacak bir anahtar sağlamayız.
 
 Ancak, uygulamanızda böyle bir özelliği uygulayabilirsiniz. Tüm SDK 'lar telemetri toplamayı kapatan bir API ayarı içerir. 
 
@@ -234,15 +234,15 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 
 | Eyleminizi | Toplanan veri sınıfları (sonraki tabloya bakın) |
 | --- | --- |
-| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel Durumlar**<br/>Session<br/>kullanıcı |
+| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel durumlar**<br/>Session<br/>kullanıcı |
 | [Durum İzleyicisi IIS 'ye yükler][redfield] |Bağımlılıklar<br/>Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları |
 | [Java Web uygulamasına Application Insights SDK 'Sı ekleme][java] |Sunucubağlamı<br/>Temsilc<br/>İste<br/>Session<br/>kullanıcı |
 | [Web sayfasına JavaScript SDK 'Sı ekleme][client] |ClientContext <br/>Temsilc<br/>Sayfa<br/>ClientPerf<br/>Ajax |
 | [Varsayılan özellikleri tanımlama][apiproperties] |Tüm standart ve özel olaylardaki **Özellikler** |
-| [TrackMetric çağrısı yapın][api] |Sayısal değerler<br/>**Özelliklerinin** |
-| [Çağrıyı Izle *][api] |Olay adı<br/>**Özelliklerinin** |
-| [TrackException çağrısı][api] |**Özel Durumlar**<br/>Yığın dökümü<br/>**Özelliklerinin** |
-| SDK veri toplayamıyor. Örnek: <br/> -performans sayaçlarına erişilemiyor<br/> -Telemetri başlatıcısında özel durum |SDK tanılaması |
+| [TrackMetric çağrısı yapın][api] |Sayısal değerler<br/>**Özellikler** |
+| [Çağrıyı Izle *][api] |Olay adı<br/>**Özellikler** |
+| [TrackException çağrısı][api] |**Özel durumlar**<br/>Yığın dökümü<br/>**Özellikler** |
+| SDK veri toplayamıyor. Örneğin: <br/> -performans sayaçlarına erişilemiyor<br/> -Telemetri başlatıcısında özel durum |SDK tanılaması |
 
 [Diğer platformların SDK 'ları][platforms]için belgelerine bakın.
 
@@ -250,7 +250,7 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 
 | Toplanan veri sınıfı | İçerir (kapsamlı bir liste değil) |
 | --- | --- |
-| **Özelliklerinin** |**Kodunuz tarafından belirlenen tüm veriler** |
+| **Özellikler** |**Kodunuz tarafından belirlenen tüm veriler** |
 | DeviceContext |`Id`, IP, yerel ayar, cihaz modeli, ağ, ağ türü, OEM adı, ekran çözünürlüğü, rol örneği, rol adı, cihaz türü |
 | ClientContext |İşletim sistemi, yerel ayar, dil, ağ, pencere çözünürlüğü |
 | Session |`session id` |
@@ -263,7 +263,7 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 | Ajax |Web sayfasından sunucusuna HTTP çağrıları |
 | İstekler |URL, süre, yanıt kodu |
 | Bağımlılıklar |Tür (SQL, HTTP,...), bağlantı dizesi veya URI, Sync/Async, Duration, Success, SQL deyimleri (Durum İzleyicisi ile) |
-| **Özel Durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası, `thread id` |
+| **Özel durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası, `thread id` |
 | Çökme |`Process id`, `parent process id`, `crash thread id`; Uygulama Düzeltme Eki, `id`, derleme;  özel durum türü, adres, neden; karıştırılmış semboller ve Yazmaçları, ikili başlangıç ve bitiş adresleri, ikili ad ve yol, CPU türü |
 | İzleme |**İleti** ve önem düzeyi |
 | Performans sayaçları |İşlemci süresi, kullanılabilir bellek, istek hızı, özel durum oranı, işlem özel baytları, GÇ oranı, istek süresi, istek kuyruğu uzunluğu |

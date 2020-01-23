@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: d9ad5da27b4b5f8e4e447036c46613bad0f1f5c7
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 66ea8a93723c117a364a188ec05b050e1ef60564
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563794"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548093"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka iş yüklerini Azure HDInsight 'a geçirme 4,0
 
@@ -68,7 +68,7 @@ Aşağıdaki geçiş kılavuzunda, tek bir sanal ağda HDInsight 3,6 ' de dağı
 
 Geçişi gerçekleştirmek için aşağıdaki adımları uygulayın:
 
-1. **Test için yeni bir HDInsight 4,0 kümesi ve istemcileri dağıtın.** Yeni bir HDInsight 4,0 Kafka kümesi dağıtın. Birden çok Kafka küme sürümü seçilebiliyorsanız, en son sürümü seçmeniz önerilir. Dağıtımdan sonra bazı parametreleri gerektiği şekilde ayarlayın ve var olan ortamınız ile aynı şekilde bir konu oluşturun. Ayrıca, SSL 'yi ayarlayın ve gerektiğinde kendi anahtarını getir (BYOK) şifrelemesini yapın. Ardından, yeni kümeyle düzgün çalışıp çalışmadığını denetleyin.
+1. **Test için yeni bir HDInsight 4,0 kümesi ve istemcileri dağıtın.** Yeni bir HDInsight 4,0 Kafka kümesi dağıtın. Birden çok Kafka küme sürümü seçilebiliyorsanız, en son sürümü seçmeniz önerilir. Dağıtımdan sonra bazı parametreleri gerektiği şekilde ayarlayın ve var olan ortamınızla aynı ada sahip bir konu oluşturun. Ayrıca, SSL 'yi ayarlayın ve gerektiğinde kendi anahtarını getir (BYOK) şifrelemesini yapın. Ardından, yeni kümeyle düzgün çalışıp çalışmadığını denetleyin.
 
     ![Yeni HDInsight 4,0 kümelerini dağıtma](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
 

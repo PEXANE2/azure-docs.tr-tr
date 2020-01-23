@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442063"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513518"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Kullanım Azure Cosmos DB değişiklik akışı, gerçek zamanlı veri analizi görselleştirmek için
 
@@ -93,7 +93,7 @@ Azure kaynakları - Azure Cosmos DB, depolama hesabı, olay hub'ı Stream Analyt
 
 Şimdi e-ticaret sitesi olayları tutmak için bir koleksiyon oluşturacaksınız. Bir kullanıcı bir öğeyi görüntüler, kendi karta bir öğe ekler veya öğeyi satın koleksiyonu eylemi ("görüntülenenler", "eklenmesi" veya "satın alınan") içeren bir kaydı alır, öğenin adını dahil, katılan öğe ve kullanıcı sepet i kimlik numarasını fiyatı nvolved.
 
-1. Git [Azure portalı](https://portal.azure.com/) ve bulma **Azure Cosmos DB hesabı** şablon dağıtımı tarafından oluşturulur.  
+1. [Azure Portal](https://portal.azure.com/) gidin ve şablon dağıtımı tarafından oluşturulan **Azure Cosmos DB hesabı** bulun.  
 
 2. Gelen **Veri Gezgini** bölmesinde **yeni koleksiyon** ve aşağıdaki ayrıntılarla formu doldurun:  
 
@@ -117,7 +117,7 @@ Azure kaynakları - Azure Cosmos DB, depolama hesabı, olay hub'ı Stream Analyt
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>Azure Cosmos DB bağlantı dizesini alın
 
-1. Git [Azure portalı](https://portal.azure.com/) ve bulma **Azure Cosmos DB hesabı** şablon dağıtımı tarafından oluşturulur.  
+1. [Azure Portal](https://portal.azure.com/) gidin ve şablon dağıtımı tarafından oluşturulan **Azure Cosmos DB hesabı** bulun.  
 
 2. Gidin **anahtarları** bölmesinde PRIMARY CONNECTION STRING'i kopyalayın ve not defterine veya başka bir belgeye erişimi Laboratuvar boyunca olacağını kopyalayın. Etiket **Cosmos DB bağlantı dizesi**. Dize kodunuza daha sonra kopyalayın, bu nedenle bir yere not alın ve burada depoladığını unutmayın gerekecektir.
 
@@ -177,7 +177,7 @@ Görmek için nasıl değişiklik akışı bir e-ticaret sitesinde yeni eylemler
  
 6. Programı çalıştırmak için bekleyin. Yıldız veri geldiğinden emin anlamına gelir! Çalışan bir program koruyun - büyük miktarda veri toplanır önemlidir.  
 
-7. İçin giderseniz, [Azure portalı](https://portal.azure.com/) , ardından Cosmos DB için hesap, kaynak grubu içinde ardından için **Veri Gezgini**, uygulamasında alınan rastgele verileri görebilir,  **changefeedlabcollection** .
+7. [Azure Portal](https://portal.azure.com/) ' a ve ardından kaynak grubunuzdaki Cosmos DB hesaba giderek **Veri Gezgini**istiyorsanız, değişiklik yaptığınız rastgele verileri **changefeedlabcollection** içinde görürsünüz.
  
    ![Portalda oluşturulan verileri](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
 
@@ -185,7 +185,7 @@ Görmek için nasıl değişiklik akışı bir e-ticaret sitesinde yeni eylemler
 
 Azure Stream Analytics, akış verilerini gerçek zamanlı işleme için bir tam olarak yönetilen bir bulut hizmetidir. Bu laboratuvarda, akış analizi, görselleştirme için Power BI'a şirketlerde (yani öğenin görüntülenebilir, bir karta eklendiğinde veya satın olduğunda), olay hub'ı yeni olayları işlemeye ve olaylar gerçek zamanlı veri analizi dahil edilip derecelendirilir için kullanır.
 
-1. Gelen [Azure portalı](https://portal.azure.com/), kaynak grubuna gidin **streamjob1** (prelab içinde oluşturduğunuz stream analytics işi).  
+1. [Azure Portal](https://portal.azure.com/), kaynak grubunuza ve ardından **streamjob1** (ön laboratuvarda oluşturduğunuz Stream Analytics işi) bölümüne gidin.  
 
 2. Seçin **girişleri** aşağıda gösterildiği gibi.  
 
@@ -320,7 +320,7 @@ Power BI, verileri analiz edip öngörü paylaşmaya yönelik İş analizi araç
 
 Artık, bir gerçek e-ticaret sitesi ile bağlanmak için yeni veri analizi aracı nasıl kullanabileceğinizi gözlemleyeceksiniz. E-ticaret sitesini derlemek için bir Azure Cosmos veritabanını kullanarak ürün kategorilerinin listesini (kadınlar, Erkek, Unisex), ürün kataloğunu ve en popüler öğelerin bir listesini depolayın.
 
-1. Geri gidin [Azure portalı](https://portal.azure.com/), ardından, **Cosmos DB hesabı**, ardından **Veri Gezgini**.  
+1. [Azure Portal](https://portal.azure.com/), ardından **Cosmos DB hesabınıza**ve ardından **Veri Gezgini**' e gidin.  
 
    Altında iki koleksiyon Ekle **changefeedlabdatabase** - **ürünleri** ve **kategorileri** sahip sabit depolama kapasitesi.
 
@@ -390,9 +390,8 @@ Artık, bir gerçek e-ticaret sitesi ile bağlanmak için yeni veri analizi arac
 
 ## <a name="delete-the-resources"></a>Kaynakları Sil
 
-Bu Laboratuvar sırasında oluşturduğunuz kaynakları silmek için kaynak grubuna gidin [Azure portalı](https://portal.azure.com/), ardından **kaynak grubunu Sil** sayfanın üst kısmındaki menüden ve yönergeleri izleyin sağlanan.
+Bu laboratuvar sırasında oluşturduğunuz kaynakları silmek için [Azure Portal](https://portal.azure.com/)kaynak grubuna gidin, ardından sayfanın en üstündeki menüden **kaynak grubunu sil** ' i seçin ve belirtilen yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
   
 * Değişiklik akışı hakkında daha fazla bilgi için bkz: [Azure Cosmos DB'de çalışma değişiklik akışı desteği](change-feed.md) 
-* [Değişiklik akışı Bildirimi çözümü](change-feed-hl7-fhir-logic-apps.md) Azure Cosmos DB kullanarak sağlık hizmeti kuruluşunda için.

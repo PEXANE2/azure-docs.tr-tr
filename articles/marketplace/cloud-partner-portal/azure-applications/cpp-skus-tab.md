@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 29b69499b708726b10947bd3202d3a52893f5c90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2430d7e6fa74438c148d3cb849510be06243faa0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826171"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543163"
 ---
 # <a name="azure-application-skus-tab"></a>Azure Uygulama SKU 'Ları sekmesi
 
@@ -82,17 +82,19 @@ Aşağıdaki SKU ayarlarını yapılandırın. Bir yıldız işaretiyle eklenen 
 
 ### <a name="package-details-for-solution-template"></a>Çözüm şablonu için paket ayrıntıları
 
-   ![Çözüm şablonu için paket ayrıntıları](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
+![Çözüm şablonu için paket ayrıntıları](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
 Aşağıdaki **paket ayrıntıları** değerlerini sağlayın.  Bir yıldız işaretiyle eklenen alanlar gereklidir.
 
 - **Sürüm\*** -karşıya yükleyeceğiniz paketin sürümü. Sürüm etiketleri X. Y. Z biçiminde olmalıdır; burada X, Y ve Z tamsayılardır.
 - **Paket dosyası (. zip)\*** -Bu paket, bir. zip dosyasına kaydedilen aşağıdaki dosyaları içerir.
-  - MainTemplate. JSON-çözümü/uygulamayı dağıtmak ve çözüm için tanımlanan kaynakları oluşturmak için kullanılan dağıtım şablonu dosyası. Daha fazla bilgi için bkz. [dağıtım şablonu dosyalarını yazma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
-  - Createuıdefinition. JSON-bu dosya, bu çözümü/uygulamayı sağlamak için Kullanıcı arabirimi oluşturmak üzere Azure portal tarafından kullanılır. Daha fazla bilgi için bkz. [Yönetilen uygulamanız için Azure Portal Kullanıcı arabirimi oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+  - **Maintemplate. json\*** -çözümü/uygulamayı dağıtmak ve çözüm için tanımlanan kaynakları oluşturmak için kullanılan dağıtım şablonu dosyası. Daha fazla bilgi için bkz. [dağıtım şablonu dosyalarını yazma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
+  - **Createuıdefinition. json\*** -bu dosya, bu çözümü/uygulamayı sağlamak için Kullanıcı arabirimi oluşturmak üzere Azure Portal tarafından kullanılır. Daha fazla bilgi için bkz. [Yönetilen uygulamanız için Azure Portal Kullanıcı arabirimi oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+  - Betikler (gerekliyse)-şablonu çalıştırırken gerekebilecek ek betikler, örneğin `Microsoft.Compute/virtualMachines/extensions`.
+  - İç içe geçmiş şablonlar (gerekliyse)-tüm ek iç içe şablonlar.
 
-  >[!IMPORTANT] 
-  >Bu paketin, bu uygulamayı sağlamak için gereken iç içe geçmiş şablonları veya betikleri içermesi gerekir. MainTemplate. JSON dosyası ve Createuıdefinition. JSON dosyası kök klasörde olmalıdır.
+  > [!IMPORTANT] 
+  > Bu paketin, bu uygulamayı sağlamak için gereken iç içe geçmiş şablonları veya betikleri içermesi gerekir. MainTemplate. JSON dosyası ve Createuıdefinition. JSON dosyası kök klasörde olmalıdır. Dağıtım yapıtları hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları-En Iyi Yöntemler Kılavuzu](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#deployment-artifacts-nested-templates-scripts).
 
 
 ### <a name="package-details-for-managed-application"></a>Yönetilen uygulama için paket ayrıntıları
@@ -128,7 +130,7 @@ Yönetilen bir uygulama için yetkilendirme ve Ilke ayarlarını yapılandırman
 Yönetilen kaynak grubu için izin vermek istediğiniz kullanıcı, Grup veya uygulamanın Azure Active Directory tanımlayıcısını ekleyin. Verilen izin rol tanımı kimliği tarafından belirtilir. Bir sahip, katkıda bulunan veya herhangi bir özel rol olabilir.
 
 
-#### <a name="policy-settings"></a>İlke ayarları
+#### <a name="policy-settings"></a>İlke Ayarları
 
 Yönetilen uygulamanın uyumlu olduğu ilkeleri ekleyin. Azure Kaynak ilkeleri hakkında daha fazla bilgi edinin, bkz. [Azure ilkesi nedir?](../../../governance/policy/overview.md)
 

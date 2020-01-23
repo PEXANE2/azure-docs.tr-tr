@@ -3,12 +3,12 @@ title: Şablon işlevleri-kaynaklar
 description: Kaynaklarla ilgili değerleri almak için bir Azure Resource Manager şablonunda kullanmak için işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 56ace8c75ea27eb4d730b1630115b6fcbdc3f575
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310552"
+ms.locfileid: "76513873"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için kaynak işlevleri
 
@@ -32,7 +32,7 @@ Parametreleri, değişkenleri veya geçerli dağıtım değerlerini almak için 
 extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Özelliklerine eklemek için başka bir kaynağa uygulanan bir kaynak türü olan [uzantı kaynağı](extension-resource-types.md)IÇIN kaynak kimliğini döndürür.
+Özelliklerine eklemek için başka bir kaynağa uygulanan bir kaynak türü olan [uzantı kaynağı](../management/extension-resource-types.md)IÇIN kaynak kimliğini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -536,7 +536,7 @@ Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile 
 
 ### <a name="get-managed-identity"></a>Yönetilen kimliği al
 
-[Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) , bazı kaynaklar için örtük olarak oluşturulan [uzantı kaynak türleridir](extension-resource-types.md) . Yönetilen kimlik şablonda açıkça tanımlanmadığı için, kimliğin uygulandığı kaynağa başvurmanız gerekir. Örtük olarak oluşturulan kimlik dahil olmak üzere tüm özellikleri almak için `Full` kullanın.
+[Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) , bazı kaynaklar için örtük olarak oluşturulan [uzantı kaynak türleridir](../management/extension-resource-types.md) . Yönetilen kimlik şablonda açıkça tanımlanmadığı için, kimliğin uygulandığı kaynağa başvurmanız gerekir. Örtük olarak oluşturulan kimlik dahil olmak üzere tüm özellikleri almak için `Full` kullanın.
 
 Örneğin, bir sanal makine ölçek kümesine uygulanan bir yönetilen kimliğin kiracı KIMLIĞINI almak için şunu kullanın:
 

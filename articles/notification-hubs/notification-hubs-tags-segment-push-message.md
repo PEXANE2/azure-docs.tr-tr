@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 01/23/2019
-ms.openlocfilehash: 254517cc1d9cc042387b63147b2a3fd9bdeece5e
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.lastreviewed: 12/04/2019
+ms.openlocfilehash: b1162e6070deba7f645298b59ffeb1898eb030a8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263787"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545781"
 ---
 # <a name="routing-and-tag-expressions"></a>Yönlendirme ve etiket ifadeleri
 
@@ -31,7 +31,7 @@ Etiket ifadeleri, Notification Hubs aracılığıyla anında iletme bildirimi g�
 
 ## <a name="targeting-specific-registrations"></a>Belirli kayıtları hedefleme
 
-Belirli bildirim kayıtlarını hedeflemek için tek yol, etiketleri bunlarla ilişkilendirmekte ve bu etiketleri hedeflemelidir. [Kayıt yönetiminde](notification-hubs-push-notification-registration-management.md)anlatıldığı gibi, anında iletme bildirimleri almak için bir uygulamanın bir Bildirim Hub 'ına bir cihaz tanıtıcısı kaydetmesi gerekir. Bir Bildirim Hub 'ında kayıt oluşturulduktan sonra, uygulama arka ucu buna anında iletme bildirimleri gönderebilir. Uygulama arka ucu, belirli bir bildirimle hedeflenen kayıtları aşağıdaki yollarla seçebilir:
+Belirli bildirim kayıtlarını hedeflemek için tek yol, etiketleri bunlarla ilişkilendirmekte ve bu etiketleri hedeflemelidir. [Kayıt yönetiminde](notification-hubs-push-notification-registration-management.md)anlatıldığı gibi anında iletme bildirimleri almak için bir uygulamanın bir Bildirim Hub 'ına bir cihaz tanıtıcısı kaydetmesi gerekir. Uygulama bir Bildirim Hub 'ında kayıt oluşturduğunda, uygulama arka ucu buna anında iletme bildirimleri gönderebilir. Uygulama arka ucu, belirli bir bildirimle hedeflenen kayıtları aşağıdaki yollarla seçebilir:
 
 1. **Yayın**: Bildirim Hub 'ındaki tüm kayıtlar bildirimi alır.
 2. **Etiket**: belirtilen etiketi içeren tüm kayıtlar bildirimi alır.
@@ -39,11 +39,11 @@ Belirli bildirim kayıtlarını hedeflemek için tek yol, etiketleri bunlarla il
 
 ## <a name="tags"></a>Etiketler
 
-Etiket, alfasayısal karakterler ve şu alfasayısal olmayan karakterleri içeren, en çok 120 karakter uzunluğunda olabilir: ' _ ', ' @ ', ' # ', '. ', ': ', '-'. Aşağıdaki örnekte, belirli müzik grupları hakkında bildirim almak için kullanabileceğiniz bir uygulama gösterilmektedir. Bu senaryoda, bildirimleri yönlendirmeye yönelik basit bir yol, kayıtları aşağıdaki resimde olduğu gibi farklı bantları temsil eden etiketlerle etiketleyebilir:
+Etiket, alfasayısal karakterler ve şu alfasayısal olmayan karakterleri içeren, en çok 120 karakter uzunluğunda olabilir: '`_`', '`@`', '`#`', '`.`', '`:`', '`-`'. Aşağıdaki örnekte, belirli müzik grupları hakkında bildirim almak için kullanabileceğiniz bir uygulama gösterilmektedir. Bu senaryoda, bildirimleri yönlendirmeye yönelik basit bir yol, kayıtları aşağıdaki şekilde farklı bantları temsil eden etiketlerle etiketleyebilir:
 
 ![Etiketlere genel bakış](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
-Bu resimde, **Beatles** etiketli Ileti yalnızca **Beatles**etiketiyle kayıtlı olan tabletle ulaşır.
+Şekilde, **Beatles** ile etiketlenmiş Ileti yalnızca **Beatles**etiketiyle kayıtlı olan tabletle ulaşır.
 
 Etiketlere yönelik kayıtlar oluşturma hakkında daha fazla bilgi için bkz. [kayıt yönetimi](notification-hubs-push-notification-registration-management.md).
 
@@ -63,13 +63,13 @@ toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
 outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Wailers");
 ```
 
-Etiketlerin önceden sağlanması gerekmez ve uygulamaya özgü birden çok kavrama başvurabilir. Örneğin, bu örnek uygulamanın kullanıcıları bantlara yorum yapabilir ve yalnızca en sevdiğiniz bantların açıklamalarını değil, kendi Arkadaşlarındaki açıklamaları değil, bunlara yorum eklemek istedikleri bant ne olursa olsun, bunlara ait olan açıklamaları almak isteyebilir. Aşağıdaki resimde bu senaryonun bir örneği gösterilmektedir:
+Etiketler önceden sağlanmamalıdır ve uygulamaya özgü birden çok kavrama başvurabilir. Örneğin, bu örnek uygulamanın kullanıcıları bantlara yorum yapabilir ve yalnızca en sevdiğiniz bantların açıklamalarını değil, kendi Arkadaşlarındaki açıklamaları değil, bunlara yorum eklemek istedikleri bant ne olursa olsun, bunlara ait olan açıklamaları almak isteyebilir. Aşağıdaki şekilde bu senaryonun bir örneği vurgulanmıştır:
 
 ![Etiketler arkadaşlar](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
 
-Bu resimde, Gamze, Beatles güncelleştirmeleriyle ilgileniyor ve Bob, Wailers güncelleştirmeleriyle ilgileniyor. Emre Ayrıca, Charlie 'in açıklamalarıyla ve Wailers ile ilgileniyor. Beatles 'de Charlie 'in yorumu için bir bildirim gönderildiğinde, hem gamze hem de Bob bunu alır.
+Bu örnekte, Çiğdem, Beatles güncelleştirmeleriyle ilgileniyor ve Bob, Wailers güncelleştirmeleriyle ilgileniyor. Emre Ayrıca, Charlie 'in yorumlarıyla ilgileniyor ve Charlie Wailers ile ilgileniyor. Beatles 'de Charlie 'in yorumu için bir bildirim gönderildiğinde Notification Hubs hem gamze hem de Bob 'a gönderir.
 
-Etiketlerde birden çok endişeleri kodlayabilmeniz (örneğin, "band_Beatles" veya "follows_Charlie"), Etiketler basit dizelerdir ve değerleri olan özelliklerden değildir. Kayıt yalnızca belirli bir etiketin varlığı veya yokluğu ile eşleştirilir.
+Etiketlerde birden çok endişeleri kodlayabilmeniz (örneğin, `band_Beatles` veya `follows_Charlie`), Etiketler basit dizelerdir ve değerleri olan özelliklerdir. Kayıt yalnızca belirli bir etiketin varlığı veya yokluğunda eşleşir.
 
 İlgi alanı gruplarına göndermek için etiketlerin nasıl kullanılacağına ilişkin bir adım adım öğretici için bkz. [son haberler](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
 
@@ -78,15 +78,15 @@ Etiketlerde birden çok endişeleri kodlayabilmeniz (örneğin, "band_Beatles" v
 
 ## <a name="using-tags-to-target-users"></a>Kullanıcıları hedeflemek için etiketleri kullanma
 
-Etiketleri kullanmanın başka bir yolu da belirli bir kullanıcının tüm cihazlarını belirlemektir. Kayıtlar, aşağıdaki resimde olduğu gibi bir kullanıcı KIMLIĞI içeren bir etiketle etiketlenebilir:
+Etiketleri kullanmanın başka bir yolu da belirli bir kullanıcıyla ilişkili tüm cihazları tanımlamaktır. Bir kaydı, aşağıdaki şekilde kullanıcı KIMLIĞINI içeren bir etiketle etiketleyebilir:
 
 ![Kullanıcıları etiketleme](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
-Bu resimde etiketli UID: Gamze "uid: ali" olarak etiketlenen tüm kayıtlara ulaştığında Bu nedenle, Çiğdem 'in tüm cihazları.
+Şekilde etiketli `user_Alice` ileti, `user_Alice`etiketli tüm cihazlara ulaşır.
 
 ## <a name="tag-expressions"></a>Etiket ifadeleri
 
-Bir bildirimin tek bir etiketle değil tanımlanmış bir kayıt kümesini hedeflemesi gereken, ancak etiketlerindeki Boole ifadesi olan durumlar vardır.
+Bildirimlerin tek bir etiket tarafından değil tanımlanmış bir kayıt kümesini hedeflemesi, ancak etiketleri kullanan bir Boole ifadesi olması gerektiği durumlar vardır.
 
 Red Sox ve Cardınals arasındaki bir oyun hakkında Boston 'da herkese anımsatıcı gönderen bir spor uygulaması düşünün. İstemci uygulaması, ekiplerde ve konumda ilgi çekici Etiketler kaydederse, bu bildirimin Red Sox veya Cardınals ile ilgilendiği Boston 'daki herkese hedeflenmiş olması gerekir. Bu durum aşağıdaki Boolean ifadesiyle ifade edilebilir:
 
@@ -96,9 +96,9 @@ Red Sox ve Cardınals arasındaki bir oyun hakkında Boston 'da herkese anımsat
 
 ![Etiket ifadeleri](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
-Etiket ifadeleri, ve (& &) veya (| |) gibi tüm Boole işleçlerini içerebilir (!). Parantez de içerebilir. Etiket ifadeleri yalnızca ORs içeriyorsa 20 etiketle sınırlıdır; Aksi takdirde 6 etiketle sınırlıdır.
+Etiket ifadeleri `AND` (`&&`), `OR` (`||`) ve `NOT` (`!`) gibi yaygın Boole işleçlerini destekler; parantez de içerebilir. Yalnızca `OR` işleçlerini kullanan etiket ifadeleri 20 etikete başvurabilir; Aksi halde etiket ifadeleri 6 etiketle sınırlıdır.
 
-SDK kullanarak etiket ifadeleriyle bildirim göndermek için bir örnek aşağıda verilmiştir.
+SDK kullanarak etiket ifadeleriyle bildirim göndermek için bir örnek aşağıda verilmiştir:
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;

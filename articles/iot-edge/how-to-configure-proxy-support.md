@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6cc37875b84e215066c52ca8daef0fa0d879c54f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12aa78d0ba7c9300fc012958660e2282e91568aa
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434461"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510830"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Bir proxy sunucu üzerinden iletişim kurmak için IOT Edge cihazı yapılandırma
 
@@ -40,7 +40,7 @@ Bu makalede, bir proxy sunucusunun arkasında bir IoT Edge cihazını yapıland�
 
 4. **Tüm gelecek modül dağıtımları için, proxy üzerinden iletişim kuran herhangi bir modülün ortam değişkenlerini ayarlayın.**
 
-   IoT Edge cihazınız kurulduktan ve proxy sunucusu üzerinden IoT Hub bağlandıktan sonra, bağlantıyı gelecekteki tüm modül dağıtımlarında korumanız gerekir. Ayrıntılı adımlar için, bu makalenin [dağıtım bildirimlerini yapılandırma](#configure-deployment-manifests) bölümüne bakın. 
+   IoT Edge cihazınız kurulduktan ve proxy sunucusu üzerinden IoT Hub bağlandıktan sonra, bağlantıyı gelecekteki tüm modül dağıtımlarında korumanız gerekir. Ayrıntılı adımlar için, bu makalenin [dağıtım bildirimlerini yapılandırma](#configure-deployment-manifests) bölümüne bakın.
 
    Bu adım, her yeni modül veya dağıtım güncelleştirmesinin, cihazın ara sunucu üzerinden iletişim kurma yeteneğini sakladığı şekilde uzaktan gerçekleştirilen bir işlemdir.
 
@@ -70,7 +70,7 @@ IoT Edge çalışma zamanını bir Windows cihazına yüklüyorsanız, proxy sun
 
 Aşağıdaki adımlarda `-proxy` bağımsız değişkenini kullanarak bir Windows yüklemesinin örneği gösterilmektedir:
 
-1. Invoke-WebRequest komutu, yükleyici betiğine erişmek için ara sunucu bilgilerine sahip olmalıdır. Ardından, dağıtım-ıotedge komutunun yükleme dosyalarını indirmesi için proxy bilgilerine ihtiyacı vardır. 
+1. Invoke-WebRequest komutu, yükleyici betiğine erişmek için ara sunucu bilgilerine sahip olmalıdır. Ardından, dağıtım-ıotedge komutunun yükleme dosyalarını indirmesi için proxy bilgilerine ihtiyacı vardır.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
@@ -164,13 +164,13 @@ Restart-Service iotedge
 
 IoT Edge Aracısı, herhangi bir IoT Edge cihazında başlatılacak ilk modüldür. IOT Edge config.yaml dosyanın içindeki bilgileri temel alan ilk kez başlatılır. IoT Edge Aracısı daha sonra dağıtım bildirimlerini almak için IoT Hub bağlanır, bu da cihaza hangi modüllerin dağıtılması gerektiğini bildirir.
 
-Bu adım ilk cihaz kurulumu sırasında IoT Edge cihaza bir kez gerçekleşir. 
+Bu adım ilk cihaz kurulumu sırasında IoT Edge cihaza bir kez gerçekleşir.
 
-1. IOT Edge Cihazınızda config.yaml dosyasını açın. Linux sistemlerinde, bu dosya şu konumdadır **/etc/iotedge/config.yaml**. Windows sistemlerde, bu dosya şu konumdadır **C:\ProgramData\iotedge\config.yaml**. Yapılandırma dosyası korunur ve ona erişmek için yönetici ayrıcalıkları gerekir. Linux sistemlerinde, dosyayı tercih ettiğiniz metin düzenleyicisinde açmadan önce `sudo` komutunu kullanın. Windows 'ta, Not Defteri gibi bir metin düzenleyicisini yönetici olarak açın ve dosyayı açın. 
+1. IOT Edge Cihazınızda config.yaml dosyasını açın. Linux sistemlerinde, bu dosya şu konumdadır **/etc/iotedge/config.yaml**. Windows sistemlerde, bu dosya şu konumdadır **C:\ProgramData\iotedge\config.yaml**. Yapılandırma dosyası korunur ve ona erişmek için yönetici ayrıcalıkları gerekir. Linux sistemlerinde, dosyayı tercih ettiğiniz metin düzenleyicisinde açmadan önce `sudo` komutunu kullanın. Windows 'ta, Not Defteri gibi bir metin düzenleyicisini yönetici olarak açın ve dosyayı açın.
 
-2. Config.yaml dosyasında **Edge Aracısı modülü spec** bölümü. IoT Edge Aracısı tanımı, ortam değişkenleri ekleyebileceğiniz bir **env** parametresi içerir. 
+2. Config.yaml dosyasında **Edge Aracısı modülü spec** bölümü. IoT Edge Aracısı tanımı, ortam değişkenleri ekleyebileceğiniz bir **env** parametresi içerir.
 
-3. Env parametresi için yer tutucular ve yeni bir satıra yeni bir değişken ekleyin, küme parantezleri kaldırın. YAML içinde girintileri iki boşluk olduğunu unutmayın. 
+3. Env parametresi için yer tutucular ve yeni bir satıra yeni bir değişken ekleyin, küme parantezleri kaldırın. YAML içinde girintileri iki boşluk olduğunu unutmayın.
 
    ```yaml
    https_proxy: "<proxy URL>"
@@ -184,7 +184,7 @@ Bu adım ilk cihaz kurulumu sırasında IoT Edge cihaza bir kez gerçekleşir.
 
    ![ortam değişkenleriyle edgeAgent tanımı](./media/how-to-configure-proxy-support/edgeagent-edited.png)
 
-5. Config.yaml için değişiklikleri kaydedin ve düzenleyiciyi kapatın. IOT Edge değişikliklerin etkili olması için yeniden başlatın. 
+5. Config.yaml için değişiklikleri kaydedin ve düzenleyiciyi kapatın. IOT Edge değişikliklerin etkili olması için yeniden başlatın.
 
    * Linux:
 
@@ -208,7 +208,7 @@ IoT Edge cihazınız ara sunucu ile çalışacak şekilde yapılandırıldıktan
 
 Bu adım IoT Edge cihazının ömrü boyunca devam etmektedir.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalında
 
 Kullanırken **modülleri ayarlama** cihazları IOT Edge dağıtımlarını oluşturmak için Sihirbazı her bir modüle sahip bir **ortam değişkenlerini** proxy sunucu bağlantılarını yapılandırmak için kullanabileceğiniz bir bölüm.
 

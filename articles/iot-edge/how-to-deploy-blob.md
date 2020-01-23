@@ -7,12 +7,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: fe09fb47a75ff9d412ffab2daafaf241a43443b4
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 8c2df4854f4cdb93c08e22f7dcdc23b1b69b13d6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75729616"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548790"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge modülünde Azure Blob Storage 'ı cihazınıza dağıtma
 
@@ -37,7 +37,7 @@ Azure portal, dağıtım bildirimi oluşturma ve dağıtımı bir IoT Edge cihaz
 
 ### <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
 
-Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir. Sekmelerde düzenlenmiş üç adım vardır: **modüller**, **rotalar**ve **Gözden geçirme + oluştur**.
+Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Azure portal, dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir. Sekmelerde düzenlenmiş üç adım vardır: **modüller**, **rotalar**ve **Gözden geçirme + oluştur**.
 
 #### <a name="add-modules"></a>Modül Ekle
 
@@ -57,11 +57,11 @@ Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istene
    > [!IMPORTANT]
    > Modüller için çağrılar yaptığınızda büyük/küçük harfe duyarlı Azure IoT Edge ve depolama SDK 'Sı varsayılan olarak küçük harfe duyarlıdır. [Azure Marketi](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) 'ndeki modülün adı **AzureBlobStorageonIoTEdge**olsa da, adın küçük harfe değiştirilmesi IoT Edge modüldeki Azure Blob depolama ile olan bağlantılarınızın kesilmemesini sağlamaya yardımcı olur.
 
-3. **Kapsayıcı oluşturma seçenekleri** sekmesinde, depolama hesabı bilgilerini ve cihazınızda depolama için bir bağlama sağlamak üzere JSON kodu sağlarsınız.
+3. **Kapsayıcı oluşturma seçenekleri** sekmesini açın.
 
    ![Module Ikizi ayarları](./media/how-to-deploy-blob/addmodule-tab3.png)
 
-   Sonraki adımda yer tutucu açıklamalarına başvurarak aşağıdaki JSON 'ı kopyalayıp kutuya yapıştırın.
+   Depolama hesabı bilgilerini ve cihazınızda depolama için bir bağlama sağlamak üzere aşağıdaki JSON 'ı kopyalayıp kutuya yapıştırın.
   
    ```json
    {
@@ -80,13 +80,13 @@ Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istene
    }
    ```
 
-4. **Kapsayıcı oluşturma seçenekleri** IÇIN kopyaladığınız JSON 'ı aşağıdaki bilgilerle güncelleştirin:
+4. Kapsayıcıya kopyaladığınız JSON 'ı güncelleştirme aşağıdaki bilgileri içeren bir **seçenek oluşturun** :
 
    - `<your storage account name>`, anımsayabileceğiniz bir adla değiştirin. Hesap adları, küçük harf ve sayılarla 3 ile 24 karakter uzunluğunda olmalıdır. Boşluk yok.
 
    - `<your storage account key>`, 64 baytlık bir Base64 anahtarıyla değiştirin. Bir anahtar gibi araçlarla oluşturabilirsiniz [GeneratePlus](https://generate.plus/en/base64). Diğer modüllerden blob depolamaya erişmek için bu kimlik bilgilerini kullanacaksınız.
 
-   - `<storage mount>`, kapsayıcı işletim sisteminize göre değiştirin. Adını sağlayın bir [birim](https://docs.docker.com/storage/volumes/) veya istediğiniz verileri depolamak için blob modülü IOT Edge Cihazınızda dizinine mutlak yolu. Depolama alanı, cihazınızdaki bir konumu modüldeki bir konum kümesine eşler.
+   - `<storage mount>`, kapsayıcı işletim sisteminize göre değiştirin. Blob modülünün verilerini depolayacağı IoT Edge cihazınızda, bir [birimin](https://docs.docker.com/storage/volumes/) veya mutlak yolun adını belirtin. Depolama alanı, cihazınızdaki bir konumu modüldeki bir konum kümesine eşler.
 
      - Linux kapsayıcıları için, biçim *\<depolama yolu veya birim >:/blobroot*. Örneğin:
          - [birim bağlama](https://docs.docker.com/storage/volumes/)kullan: **My-Volume:/blobroot**
@@ -261,6 +261,7 @@ IoT Edge modülünde Azure Blob Storage 'ın birden fazla örneğini dağıtmak 
 Ek blob depolama modüllerini bağladığınızda, uç nokta güncel ana bilgisayar bağlantı noktasına işaret edecek şekilde değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 [IoT Edge Azure Blob depolama](how-to-store-data-blob.md) hakkında daha fazla bilgi edinin
 
 Nasıl iş dağıtım bildirimleri ve bunların nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [nasıl IOT Edge modülleri, yapılandırılmış, yeniden kaldırılabilir ve anlamak](module-composition.md).

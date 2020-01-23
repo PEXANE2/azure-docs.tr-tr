@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: a05229f22e1682d73b627e3b4644ba64e653335f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 17d6947efcbaf8a01aeca70bf7a88dcc7b65cd0a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414481"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548246"
 ---
 | Kaynak | Ücretsiz | Paylaşılan | Temel | Standart | Premium (v2) | Yalıtılmış </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -23,8 +23,8 @@ ms.locfileid: "74414481"
 | Bellek (1 saat) |App Service plan başına 1.024 MB |Uygulama başına 1.024 MB |Yok |Yok |Yok |Yok |
 | Bant Genişliği |165 MB |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |Sınırsız, [veri aktarımı ücretleri](https://azure.microsoft.com/pricing/details/data-transfers/) uygulanır |
 | Uygulama mimarisi |32 bit |32 bit |32 bit/64 bit |32 bit/64 bit |32 bit/64 bit |32 bit/64 bit |
-| Örnek başına Web Yuvaları<sup>7</sup> |5 |35 |350 |Sınırsız |Sınırsız |Sınırsız |
-| IP bağlantıları | 600 | 600 | Örnek boyutuna bağlıdır<sup>8</sup> | Örnek boyutuna bağlıdır<sup>8</sup> | Örnek boyutuna bağlıdır<sup>8</sup> | 64,000 |
+| Örnek başına Web Yuvaları<sup>7</sup> |5 |35 |350 |İş çalışma zamanında |İş çalışma zamanında |İş çalışma zamanında |
+| IP bağlantıları | 600 | 600 | Örnek boyutuna bağlıdır<sup>8</sup> | Örnek boyutuna bağlıdır<sup>8</sup> | Örnek boyutuna bağlıdır<sup>8</sup> | 16,000 |
 | Uygulama başına eşzamanlı [hata ayıklayıcı bağlantıları](../articles/app-service/troubleshoot-dotnet-visual-studio.md) |1 |1 |1 |5 |5 |5 |
 | Abonelik başına App Service sertifikaları<sup>9</sup>| Desteklenmiyor | Desteklenmiyor |10 |10 |10 |10 |
 | Uygulama başına özel etki alanları</a> |0 (yalnızca azurewebsites.net alt etki alanı)|500 |500 |500 |500 |500 |

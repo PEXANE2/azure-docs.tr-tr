@@ -7,24 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: bcb0e9551f4415b2aac9eb2d641c91df9f692437
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/22/2020
+ms.openlocfilehash: a8176cc07296b7de7b6aba5356485280ef5ebde1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979116"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548824"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight 'ta güvenli aktarım depolama hesapları ile Apache Hadoop kümesi oluşturma
 
 [Güvenli aktarım gereklidir](../storage/common/storage-require-secure-transfer.md) özelliği, güvenli bir bağlantı üzerinden tüm istekleri hesabınıza uygulayarak Azure Depolama hesabınızın güvenliğini artırır. Bu özellik ve wasbs şeması yalnızca HDInsight kümesi 3.6 veya sonraki sürümlerde desteklenir.
+
+**Bir küme oluşturduktan sonra güvenli depolama aktarımını etkinleştirmek, depolama hesabınızı kullanırken hatalara neden olabilir ve önerilmez. Özelliği etkin olan yeni bir küme oluşturmak daha iyidir.**
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleye başlamadan önce, şunları yapmanız gerekir:
 
 * Azure aboneliği: bir aylık ücretsiz deneme hesabı oluşturmak Için [Azure.Microsoft.com/Free](https://azure.microsoft.com/free)konumuna gidin.
-* Güvenli aktarım özellikli bir Azure depolama hesabı. Yönergeler için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) ve [Güvenli aktarım isteme](../storage/common/storage-require-secure-transfer.md). Bir küme oluşturduktan sonra güvenli depolama aktarımını etkinleştirmek, bu makalede kapsanmayan ek adımlar gerektirir.
+* Güvenli aktarım özellikli bir Azure depolama hesabı. Yönergeler için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) ve [Güvenli aktarım isteme](../storage/common/storage-require-secure-transfer.md). 
 * Depolama hesabındaki bir blob kapsayıcısı.
 
 ## <a name="create-cluster"></a>Küme oluşturma

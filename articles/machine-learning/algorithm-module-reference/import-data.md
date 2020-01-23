@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: f3a1bf518b8ef122e2df64f2815c8885929b127d
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 161c6816bbef31142c576f52fd122d9dd8af7883
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166778"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546665"
 ---
 # <a name="import-data-module"></a>Veri modülünü içeri aktarma
 
@@ -78,7 +78,7 @@ Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı ye
 
 İçeri aktarma tamamlandığında, çıktı veri kümesine tıklayın ve verilerin başarıyla içeri aktarılmadığını görmek için **Görselleştir** ' i seçin.
 
-İşlem hattı her çalıştırıldığında yeni bir veri kümesi almak yerine yeniden kullanım için verileri kaydetmek istiyorsanız, çıkışa sağ tıklayın ve veri **kümesi olarak kaydet**' i seçin. Veri kümesi için bir ad seçin. Kaydedilen veri kümesi verileri kaydetme sırasında korur ve işlem hattında veri kümesi değişse bile, ardışık düzen yeniden çalıştırıldığında veriler güncellenmez. Bu, verilerin anlık görüntülerini almak için yararlı olabilir.
+İşlem hattı her çalıştırıldığında verilerin yeni bir kümesini içeri aktarmak yerine yeniden kullanım için kaydetmek istiyorsanız, modülün sağ panelindeki **çıktılar** sekmesinin altında bulunan veri **kümesini kaydet** simgesini seçin. Veri kümesi için bir ad seçin. Kaydedilen veri kümesi, kaydetme sırasında verileri korur, işlem hattının veri kümesi değişse bile, işlem hattı yeniden çalıştırıldığında veri kümesi güncellenmez. Bu, verilerin anlık görüntülerini almak için yararlı olabilir.
 
 Verileri içeri aktardıktan sonra, modelleme ve analiz için bazı ek hazırlıklar gerekebilir:
 

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 01/21/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1cd9ca07aab1953d114caf748ca99170fae6b876
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293207"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546359"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -25,18 +25,39 @@ Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların 
 
 ## <a name="2020-01-21"></a>2020-01-21
 
-### <a name="azure-machine-learning-designer-generally-available-ga"></a>Azure Machine Learning Designer genel kullanıma sunuldu (GA)
-
-Tasarımcı artık genel kullanıma sunulmuştur.
+### <a name="azure-machine-learning-sdk-for-python-v1085"></a>Python v 1.0.85 için SDK Azure Machine Learning
 
 + **Yeni Özellikler**
-    + Tasarımcıyı önbelleğe alınmış sonuçları yoksayacak şekilde zorlamak için `Regenerate Output` Module seçeneği eklendi.
-    + İşlem hattı çalışma ayrıntılarına yeni görünümler eklendi:
-        + İşlem hattı liste görünümü.
-        + Tarayıcı içi günlük görünümü.
-    + Modül giriş ve çıkış bağlantı noktalarına Etiketler eklendi.
-    + [Uç noktalar sekmesine](how-to-run-batch-predictions-designer.md#versioning-endpoints)`Set as Default` işlem hattı seçeneği eklendi.
-    + Klavye kısayolları ve ekran okuyucusu [erişilebilirlik özellikleri](designer-accessibility.md)eklendi.
+  + **azureml-çekirdek**
+    + Belirli bir çalışma alanı ve abonelik içindeki AmlCompute kaynakları için geçerli çekirdek kullanımı ve kota sınırlamasını alın
+  
+  + **azureml-contrib-işlem hattı-adımlar**
+    + Önceki adımdan parallelrunstep öğesine ara sonuç olarak tablolu veri kümesini geçirmesi için kullanıcıyı etkinleştirin
+
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **azureml-oto ml-çalışma zamanı**
+    + Dağıtılan tahmin hizmeti isteğindeki y_query sütununun gereksinimi kaldırıldı. 
+    + ' Y_query ', Dominick 'in turuncu Snot defteri hizmet isteği bölümünden kaldırılmıştır.
+    + Tarih saat sütunları ile veri kümeleri üzerinde çalışan dağıtılan modellerde tahmin edilmesini engellediği hata düzeltildi.
+    + Hem ikili hem de birden çok Lass sınıflandırması için bir sınıflandırma ölçümü olarak Matthews bağıntı katsayısı eklendi.
+  + **azureml-contrib-yorumlama**
+    + Metin açıklaması, kısa bir süre içinde yayımlanacak yorumlama-metin deposuna taşındığı için explainers-contrib-yorumlamaya kaldırılan Text.
+  + **azureml-çekirdek**
+    + Veri kümesi: dosya veri kümesi kullanımları artık Python env 'de yüklenecek bir sayısal tuş a ve Pandas 'a bağlı değildir.
+    + Yerel Docker kapsayıcısının durumunu denetlemek için LocalWebservice. wait_for_deployment () değiştirildi. bu durum, başarısız bir dağıtımı raporlamak için gereken süreyi büyük ölçüde azaltır.
+    + Localwebservice. Reload () içinde kullanılan bir iç özelliğin başlatılması, Service nesnesi LocalWebservice () Oluşturucusu kullanılarak mevcut bir dağıtımdan oluşturulduğunda düzeltildi.
+    + Açıklama için düzenlenmiş hata iletisi.
+    + Get_access_token (), erişim belirtecini, zaman damgasından sonra Yenile, zaman damgası ve belirteç türü için zaman aşımı ' nı döndüren AksServiceAccessToken nesnesini döndürecek yeni bir yöntem eklendi. 
+    + Yeni yöntem bu yöntemin döndürdüğü tüm bilgileri döndürdüğünden, AksWebservice içindeki mevcut get_token () yöntemi kullanımdan kaldırıldı.
+    + Az ml Service Get-Access-Token komutunun çıkışı değiştirildi. ' RefreshAfter ' olarak accessToken ve refreshBy belirteci yeniden adlandırıldı. Expıryon ve tokenType özellikleri eklendi.
+    + Sabit get_active_runs
+  + **azureml-açıkla-model**
+    + Shap 0.33.0 ve yorumlayın-Community 0,4. * olarak güncelleştirildi
+  + **azureml-yorumlama**
+    + Shap 0.33.0 ve yorumlayın-Community 0,4. * olarak güncelleştirildi
+  + **azureml-tren-oto ml-çalışma zamanı**
+    + Hem ikili hem de birden çok Lass sınıflandırması için bir sınıflandırma ölçümü olarak Matthews bağıntı katsayısı eklendi.
+    + Koddan ön işleme bayrağını kullanımdan kaldırma ve değişen özellikler, varsayılan olarak açık hale getirildi
 
 ## <a name="2020-01-06"></a>2020-01-06
 
@@ -44,6 +65,7 @@ Tasarımcı artık genel kullanıma sunulmuştur.
 
 + **Yeni Özellikler**
   + Veri kümesi: `on_error` iki seçenek ekleyin ve verilerin `None`ile doldurmak yerine hata değerleri olduğunda `to_pandas_dataframe` başarısız olması için `out_of_range_datetime`.
+  + Çalışma alanı: hassas verilerle daha fazla şifrelemeyi sağlayan ve çalışma alanlarında gelişmiş tanılamayı devre dışı bırakan çalışma alanları için `hbi_workspace` bayrağı eklendi. Ayrıca, çalışma alanınızı sağlarken aboneliğinizde bir Cosmos DB örneği oluşturan bir çalışma alanı oluştururken `cmk_keyvault` ve `resource_cmk_uri` parametreleri belirterek ilişkili Cosmos DB örneği için kendi anahtarlarınızı getirme desteği ekledik. [Buradan daha fazla bilgi edinin.](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#azure-cosmos-db)
 
 + **Hata düzeltmeleri ve geliştirmeleri**
   + **azureml-oto ml-çalışma zamanı**
@@ -64,7 +86,6 @@ Tasarımcı artık genel kullanıma sunulmuştur.
   + **azureml-tren-oto ml-istemci**
     + Oto ml çalıştırmaları için konsol çıktısındaki hizalama düzeltildi
     + Uzak amlcompute 'e hatalı Pandas sürümünün yüklenebildiği bir hata düzeltildi.
-
 
 ## <a name="2019-12-23"></a>2019-12-23
 

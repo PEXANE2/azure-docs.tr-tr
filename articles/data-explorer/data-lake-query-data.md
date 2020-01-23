@@ -7,14 +7,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: d572e7f3fceaf2df8ad0ec684eaa421922389e71
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1e5af0b45b8d2e2eceac1b653a5219a236c25467
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922150"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512921"
 ---
-# <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Lake Azure Veri Gezgini kullanarak verileri sorgulama (Önizleme)
+# <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Azure Data Lake Azure Veri Gezgini kullanarak verileri sorgulama
 
 Azure Data Lake Storage, büyük veri analizi için yüksek düzeyde ölçeklenebilir ve ekonomik bir Data Lake çözümüdür. İçgörülere daha hızlı bir şekilde ulaşabilmeniz için yüksek performanslı dosya sisteminin gücünü büyük ölçek ve tasarrufla sunar. Analiz iş yükleri için iyileştirilmiş olan Data Lake Storage Gen2, Azure Blob Depolama özelliklerini geliştirir.
  

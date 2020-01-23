@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42fa4dfb3e373eac4167ea1fecbd84ff3a7cca0d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 204026825a5132464e1adda611227db2ac7cf91f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978003"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543996"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Koşullu erişim: konuma göre erişimi engelleyin
 
@@ -25,7 +25,7 @@ Koşullu erişimde konum koşulu ile, bir kullanıcının ağ konumuna bağlı o
 ## <a name="define-locations"></a>Konumları tanımlama
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Koşullu erişim** > **Azure Active Directory** > **Güvenliğe** gidin.
+1. **Adlandırılmış konumlar** > **koşullu erişim** > **Azure Active Directory** > **güvenlik** ' e gidin.
 1. **Yeni konum**' ı seçin.
 1. Konumunuza bir ad verin.
 1. Bu konumu veya **ülkeleri/bölgeleri**oluşturan belirli dışarıdan erişilebilir IPv4 adresi aralıklarını biliyorsanız, **IP aralıklarını** seçin.

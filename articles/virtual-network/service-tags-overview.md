@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: e4c18f1148259d246445b94ac6117ebefa9470a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ed9b893b11f96a813cee4c751743ceb182a9a0bf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975385"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543044"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri 
 <a name="network-service-tags"></a>
@@ -51,7 +51,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | **AzureAdvancedThreatProtection** | Azure Gelişmiş tehdit koruması. | Giden | Hayır | Hayır |
 | **AzureBackup** |Azure Backup.<br/><br/>*Note:* Bu etiketin **depolama** ve **AzureActiveDirectory** etiketlerine bir bağımlılığı vardır. | Giden | Hayır | Evet |
 | **AzureBotService** | Azure bot hizmeti. | Giden | Hayır | Hayır |
-| **AzureCloud** | Tüm [veri merkezi genel IP adresleri](https://www.microsoft.com/download/details.aspx?id=41653). | Giden | Evet | Evet |
+| **AzureCloud** | Tüm [veri merkezi genel IP adresleri](https://www.microsoft.com/download/details.aspx?id=56519). | Giden | Evet | Evet |
 | **Azurecognivesearch** | Azure Bilişsel Arama (beceri ile Dizin oluşturucular kullanılıyorsa). | Her ikisi de | Hayır | Hayır |
 | **AzureConnectors** | Araştırma/arka uç bağlantıları için bağlayıcılar Azure Logic Apps. | Gelen | Evet | Evet |
 | **AzureContainerRegistry** | Azure Container Registry. | Giden | Evet | Evet |

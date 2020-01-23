@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/09/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e52a859c86ff451293ac6ff795c7fe427a383b9d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 459d75bec3d4b4d0cf9057e0c6de238e7f165bfb
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835303"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548994"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Öğretici: otomatik olarak imzalanan sertifika oluşturmak için dağıtım betikleri kullanma (Önizleme)
 
@@ -267,7 +267,7 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
     * **scriptcontent**: betik içeriğini belirtin. Dış betiği çalıştırmak için bunun yerine **Primaryscripturi** kullanın. Daha fazla bilgi için bkz. [dış betik kullanma](./deployment-script-template.md#use-external-scripts).
         **$DeploymentScriptOutputs** bildirme yalnızca betiği yerel bir makinede test edilirken gereklidir. Değişkeni bildirmek, betiğin bir yerel makinede ve bir deploymentScript kaynağında değişiklik yapmak zorunda kalmadan çalıştırılmasını sağlar. $DeploymentScriptOutputs atanan değer, dağıtımlarda çıkış olarak kullanılabilir. Daha fazla bilgi için bkz. [dağıtım betiklerinden çıkışlarla çalışma](./deployment-script-template.md#work-with-outputs-from-deployment-scripts).
     * **cleanuppreference**: dağıtım betiği kaynaklarının ne zaman silineceği üzerinde tercihi belirtin.  Varsayılan değer **her zaman**ve dağıtım betiği kaynaklarının, Terminal durumuna (başarılı, başarısız, iptal edildi) rağmen silindiği anlamına gelir. Bu öğreticide, komut dosyası yürütme sonuçlarını görüntülemenin bir şansı elde etmeniz için **onSuccess** kullanılır.
-    * **retentionInterval**: bir Terminal durumuna ulaştıktan sonra hizmetin betik kaynaklarını koruduğunu belirten aralığı belirtin. Bu süre sona erdiğinde kaynaklar silinir. Süre, ISO 8601 düzenine göre belirlenir. Bu öğretici, bir gün anlamına gelen P1D kullanır.  Bu özellik, **RetentionInterval** **onexpiration**olarak ayarlandığında kullanılır. Bu özellik şu anda etkin değil.
+    * **retentionInterval**: bir Terminal durumuna ulaştıktan sonra hizmetin betik kaynaklarını koruduğunu belirten aralığı belirtin. Bu süre sona erdiğinde kaynaklar silinir. Süre, ISO 8601 düzenine göre belirlenir. Bu öğretici, bir gün anlamına gelen P1D kullanır.  **Cleanuppreference** **onexpiration**olarak ayarlandığında bu özellik kullanılır. Bu özellik şu anda etkin değil.
 
     Dağıtım betiği üç parametre alır: Anahtar Kasası adı, sertifika adı ve konu adı.  Bir sertifika oluşturur ve ardından sertifikayı anahtar kasasına ekler.
 

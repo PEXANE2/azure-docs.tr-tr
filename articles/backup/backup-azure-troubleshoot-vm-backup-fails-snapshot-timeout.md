@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391839"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513856"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -89,7 +89,6 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 
 **Neden 1: [anlık görüntü durumu alınamaz veya bir anlık görüntü](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) alınamaz**  
 **Neden 2: [Yedekleme Uzantısı güncelleştirilemez veya yüklenemez](#the-backup-extension-fails-to-update-or-load)**  
-**Neden 3: [VM 'nin internet erişimi yok](#the-vm-has-no-internet-access)**
 
 ## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks-VMSnapshot genişletme işlemi başarısız oldu
 
@@ -113,7 +112,7 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 **Neden 3: [anlık görüntü durumu alınamaz veya bir anlık görüntü](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) alınamaz**  
 **Neden 4: [yedekleme uzantısı güncelleştirme veya yükleme başarısız oluyor](#the-backup-extension-fails-to-update-or-load)**  
 **Neden 5: yedekleme hizmetinin, bir kaynak grubu kilidi nedeniyle eski geri yükleme noktalarını silme izni yok** <br>
-**Neden 6: [VM 'nin internet erişimi yok](#the-vm-has-no-internet-access)**
+
 
 ## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize-yapılandırılan disk boyutu (ler) Şu anda Azure Backup tarafından desteklenmiyor.
 
@@ -141,16 +140,6 @@ Sürmekte olan bir yedekleme işi olduğundan, son yedekleme işiniz başarısı
 Zamanlanmış yedekleme işlemi daha uzun sürüyorsa, sonraki yedekleme yapılandırması ile çakışıyor ve [En Iyi uygulamaları](backup-azure-vms-introduction.md#best-practices), [yedekleme performansını](backup-azure-vms-introduction.md#backup-performance)ve [geri yükleme](backup-azure-vms-introduction.md#backup-and-restore-considerations)konusunu gözden geçirin.
 
 ## <a name="causes-and-solutions"></a>Nedenler ve çözümler
-
-### <a name="the-vm-has-no-internet-access"></a>VM 'nin internet erişimi yok
-
-Dağıtım gereksinimi temelinde, sanal makinenin internet erişimi yoktur. Ya da Azure altyapısına erişimi önleyen kısıtlamalar olabilir.
-
-Doğru çalışması için, yedekleme uzantısının Azure genel IP adreslerine bağlantısı olması gerekir. Uzantı, sanal makinenin anlık görüntülerini yönetmek için bir Azure depolama uç noktasına (HTTPs URL) komutlar gönderir. Uzantının ortak internet erişimi yoksa, yedekleme sonunda başarısız olur.
-
-#### <a name="solution"></a>Çözüm
-
-Ağ sorununu çözmek için bkz. [ağ bağlantısı kurma](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Aracı VM 'ye yüklendi, ancak yanıt vermiyor (Windows VM 'Leri için)
 

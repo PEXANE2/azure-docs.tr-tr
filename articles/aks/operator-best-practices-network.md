@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: mlearned
-ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5b138849538cb9bbd6af6cbcf3e7a11b0cf66395
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614762"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549130"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde ağ bağlantısı ve güvenlik için en iyi yöntemler
 
@@ -23,7 +23,7 @@ Bu en iyi yöntemler makalesi, küme işleçleri için ağ bağlantısı ve güv
 > [!div class="checklist"]
 > * AKS 'deki Kubernetes kullanan ve Azure CNı ağ modlarını karşılaştırın
 > * Gerekli IP adresleme ve bağlantı planlaması
-> * Yük dengeleyiciler, giriş denetleyicileri veya Web uygulaması güvenlik duvarları (WAF) kullanarak trafiği dağıtma
+> * Yük dengeleyiciler, giriş denetleyicileri veya Web uygulaması güvenlik duvarı (WAF) kullanarak trafiği dağıtma
 > * Küme düğümlerine güvenli bir şekilde bağlanma
 
 ## <a name="choose-the-appropriate-network-model"></a>Uygun ağ modelini seçin
@@ -47,7 +47,7 @@ Azure CNı ağı kullandığınızda, sanal ağ kaynağı AKS kümesine ayrı bi
 
 AKS hizmet sorumlusu temsilcisi hakkında daha fazla bilgi için bkz. [diğer Azure kaynaklarına erişim yetkisi verme][sp-delegation].
 
-Her düğüm ve pod kendi IP adresini aldığından, AKS alt ağlarının adres aralıklarını planlayın. Alt ağ, dağıttığınız her düğüm, pods ve ağ kaynağı için IP adresi sağlayacak kadar büyük olmalıdır. Her bir AKS kümesinin kendi alt ağına yerleştirilmesi gerekir. Azure 'da şirket içi veya eşlenmiş ağların bağlanmasına izin vermek için, mevcut ağ kaynaklarıyla çakışan IP adresi aralıklarını kullanmayın. Her düğümün hem Kubernetes kullanan hem de Azure CNı ağı ile çalıştığı düğüm sayısı için varsayılan sınırlar vardır. Ölçek artırma olaylarını veya küme yükseltmelerini işlemek için atanan alt ağda kullanabileceğiniz ek IP adresleri de gereklidir. Bu ek adres alanı, bu düğüm havuzlarının en son güvenlik düzeltme eklerini uygulamak için bir yükseltme gerektirdiğinden (Şu anda AKS 'de önizleme aşamasında) Windows Server kapsayıcıları kullanıyorsanız önemlidir. Windows Server düğümleri hakkında daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
+Her düğüm ve pod kendi IP adresini aldığından, AKS alt ağlarının adres aralıklarını planlayın. Alt ağ, dağıttığınız her düğüm, pods ve ağ kaynağı için IP adresi sağlayacak kadar büyük olmalıdır. Her bir AKS kümesinin kendi alt ağına yerleştirilmesi gerekir. Azure 'da şirket içi veya eşlenmiş ağların bağlanmasına izin vermek için, mevcut ağ kaynaklarıyla çakışan IP adresi aralıklarını kullanmayın. Her düğümün hem Kubernetes kullanan hem de Azure CNı ağı ile çalıştığı düğüm sayısı için varsayılan sınırlar vardır. Ölçek Genişletme olaylarını veya küme yükseltmelerini işlemek için atanan alt ağda kullanabileceğiniz ek IP adresleri de gereklidir. Bu ek adres alanı, bu düğüm havuzlarının en son güvenlik düzeltme eklerini uygulamak için bir yükseltme gerektirdiğinden (Şu anda AKS 'de önizleme aşamasında) Windows Server kapsayıcıları kullanıyorsanız önemlidir. Windows Server düğümleri hakkında daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
 
 Gerekli IP adresini hesaplamak için bkz. [AKS 'de Azure CNI ağını yapılandırma][advanced-networking].
 
@@ -73,7 +73,7 @@ Azure yük dengeleyici, AKS kümenizdeki uygulamalara müşteri trafiği dağıt
  * Giriş *kaynağı*ve
  * Giriş *denetleyicisi*
 
-Giriş kaynağı, trafiği aks kümenizde çalışan hizmetlere yönlendiren `kind: Ingress` konak, sertifika ve kuralları tanımlayan bir YAML bildirimidir. Aşağıdaki örnek YAML bildirimi, *MyApp.com* için trafiği iki hizmetten birine, *blogservice* veya *StoreService*'e dağıtmaktır. Müşteri, eriştikleri URL 'ye bağlı olarak bir hizmete veya diğerine yönlendirilir.
+Giriş kaynağı, trafiği AKS kümenizde çalışan hizmetlere yönlendiren ana bilgisayarı, sertifikaları ve kuralları tanımlayan bir `kind: Ingress` YAML bildirimidir. Aşağıdaki örnek YAML bildirimi, *MyApp.com* için trafiği iki hizmetten birine, *blogservice* veya *StoreService*'e dağıtmaktır. Müşteri, eriştikleri URL 'ye bağlı olarak bir hizmete veya diğerine yönlendirilir.
 
 ```yaml
 kind: Ingress
@@ -118,7 +118,7 @@ Trafiği hizmetlere ve uygulamalara dağıtan bir giriş denetleyicisi, genellik
 
 ![Azure uygulama ağ geçidi gibi bir Web uygulaması güvenlik duvarı (WAF), AKS kümeniz için trafiği koruyabilir ve dağıtabilir](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Web uygulaması güvenlik duvarı (WAF), gelen trafiği filtreleyerek ek bir güvenlik katmanı sağlar. Açık Web uygulaması güvenlik projesi (OWASP), siteler arası komut dosyası oluşturma veya tanımlama bilgisi kirişleme gibi saldırıları izlemek için bir kurallar kümesi sağlar. [Azure Application Gateway][app-gateway] (Şu anda AKS 'deki önizlemededir), aks kümeleriyle tümleştirilebilen bir WAF, trafikten ve uygulamalarınıza erişmeden önce bu güvenlik özelliklerini sağlamaktır. Diğer üçüncü taraf çözümleri de bu işlevleri gerçekleştirir, bu sayede belirli bir üründe mevcut yatırımları veya uzmanlığı kullanmaya devam edebilirsiniz.
+Web uygulaması güvenlik duvarı (WAF), gelen trafiği filtreleyerek ek bir güvenlik katmanı sağlar. Açık Web uygulaması güvenlik projesi (OWASP), siteler arası komut dosyası oluşturma veya tanımlama bilgisi kirişleme gibi saldırıları izlemek için bir kurallar kümesi sağlar. [Azure Application Gateway][app-gateway] (Şu anda aks ' de önizleme aşamasındadır), aks kümeleriyle tümleştirilebilen BIR WAF, trafiği aks kümenize ve uygulamalarınıza ulaşmadan önce bu güvenlik özelliklerini sağlamaktır. Diğer üçüncü taraf çözümleri de bu işlevleri gerçekleştirir, bu sayede belirli bir üründe mevcut yatırımları veya uzmanlığı kullanmaya devam edebilirsiniz.
 
 Trafik dağıtımını daha da belirginleştirmek için yük dengeleyici veya giriş kaynakları AKS kümenizde çalışmaya devam eder. Uygulama ağ geçidi, kaynak tanımına sahip bir giriş denetleyicisi olarak merkezi olarak yönetilebilir. Başlamak için [bir Application Gateway giriş denetleyicisi oluşturun][app-gateway-ingress].
 

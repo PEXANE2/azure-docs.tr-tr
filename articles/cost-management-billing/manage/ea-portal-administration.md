@@ -4,16 +4,16 @@ description: Bu makalede, bir yöneticinin Azure EA portalında gerçekleştirdi
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/02/2020
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 469bd66a6074db34d1efb6f82fda229400239058
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: effc7dfb8ca540d044b5698b90b3195da0f29b19
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75992315"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547583"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
@@ -117,82 +117,74 @@ Geliştirme ve Test Teklifi şu an için Azure Kamu müşterilerinin kullanımı
 
 ## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Kurumsal bir hesabı yeni bir kayda aktarma
 
-Hesap aktarımı bir hesap sahibini bir kayıttan diğerine taşımalıdır. Hesap sahibi kapsamındaki tüm ilgili abonelikler, hedef kaydına taşınır. Bu, birden çok etkin kayıt olduğunda ve yalnızca seçili hesap sahiplerini taşımak istediğinizde yapılır.
+Hesap aktarımı işlemi, bir hesap sahibini bir kayıttan diğerine taşır. Hesap sahibine ilişkin tüm abonelikler hedef kayda taşınır. Bu, birden fazla etkin kaydınız olduğunda ve yalnızca seçili hesap sahiplerini taşımak istediğinizde gerçekleştirilir.
 
 Kurumsal bir hesabı yeni bir kayda aktarırken aşağıdaki noktaları aklınızda bulundurun:
 
 - Yalnızca istekte belirtilen hesaplar aktarılır. Tüm hesaplar seçilirse hepsi aktarılır.
 - Kaynak kaydının durumu etkin veya genişletilmiş olarak kalır. Kaydı süresi dolana kadar kullanmaya devam edebilirsiniz.
 
-### <a name="effective-transfer-date"></a>Geçerli aktarım tarihi
-
-Bir hesap aktarımının, hedef kaydın başlangıç tarihi olarak veya hesap başlangıç tarihi ' ne, ne zaman daha sonra bir başlangıç tarihine sahip olarak geri dönebileceğini geri alabilirsiniz. Hesap aktarımından sonra, hesapta geçerli aktarım tarihinden önceki tüm kullanım bilgileri aktardığınız kayıt içinde kalır. Aktarım tarihinden sonraki kullanım bilgileri hedef kayda taşınır.
-
 ### <a name="prerequisites"></a>Ön koşullar
 
 Bir hesap aktarımı istediğinizde aşağıdaki bilgileri sağlayın:
 
-- Aktarılacak hesabın hedef kayıt, hesap adı ve hesap sahibi e-postası sayısı
+- Hedef kaydın sayısı, hesap adı ve aktarımın yapılacağı hesabın sahibinin e-posta adresi
 - Kaynak kaydı için, aktarılacak kayıt numarası ve hesap
-- Hesap aktarım geçerlilik tarihi için, hedef kaydın başlangıç tarihi veya hesap başlangıç tarihi olarak geri doğru, hangisi daha sonra bir başlangıç tarihine sahip olabilir.
 
 Hesap aktarımından önce göz önünde bulundurmanız gereken diğer noktalar:
 
 - Hedef ve kaynak kaydı için bir EA yöneticisinden onay gerekir
 - Hesap aktarımı gereksinimlerinizi karşılamıyorsa, kayıt aktarımı yapmayı düşünün.
 - Hesap aktarımı, belirli hesaplarla ilgili tüm hizmetleri ve abonelikleri aktarır.
-- Aktarım tamamlandıktan sonra, aktarılan hesap, kaynak kayıt altında etkin değil olarak görünür ve hedef kayıt altında etkin görünür.
+- Aktarım tamamlandıktan sonra, aktarılan hesap kaynak kayıt altında etkin değil olarak, hedef kaydın altında ise etkin olarak görünür.
 - Hesap, kaynak kayıtta etkin aktarım tarihine ve hedef kayıtta başlangıç tarihine karşılık gelen bitiş tarihini gösterir.
 - Hesap için etkin aktarım tarihi öncesinde gerçekleştirilen tüm kullanımlar, kaynak kaydın altında kalır.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Kuruluş kaydını yeni bir kayda aktarma
 
-Şu durumlarda bir kayıt aktarımı göz önünde bulundurulmalıdır:
+Kayıt aktarımı şu durumlarda göz önünde bulundurulur:
 
-- Geçerli bir kaydın taahhüt dönemi bir sona geliyor.
-- Bir kayıt, zaman aşımına uğradı/genişletilmiş durumda ve yeni bir sözleşme anlaşması yapılır.
-- Birden çok kaydınız varsa ve tek bir kayıt altında tüm hesapları ve faturaları birleştirmek istiyorsanız.
+- Geçerli bir kaydın taahhüt döneminin sona ermesi.
+- Bir kaydın süresi dolmuş/uzatılmış durumda olması ve yeni bir anlaşmanın yapılması.
+- Birden fazla kaydınız varsa ve tüm hesapları ve faturaları tek kayıtta birleştirmek istiyorsanız.
 
 Bir kuruluş kaydının tamamını bir kayda aktarmak istediğinizde aşağıdaki eylemler gerçekleşir:
 
-- Tüm Azure Hizmetleri, abonelikler, hesaplar, departmanlar ve tüm EA departmanı yöneticileri dahil tüm kayıt yapısı yeni bir hedef kaydına aktarılır.
+- Tüm EA departman yöneticileri de dahil olmak üzere tüm Azure hizmetleri, abonelikleri, hesapları, departmanları ve kayıt yapısının tamamı yeni hedef kayda aktarılır.
 - Kayıt durumu _Aktarıldı_ olarak ayarlanır. Aktarılan kayıt yalnızca geçmiş kullanım raporlama amacıyla kullanılabilir.
 - Aktarılan bir kayda rol veya abonelik ekleyemezsiniz. Aktarıldı durumu, kayda aykırı ek kullanım yapılmasını önler.
 - Anlaşmadaki kalan parasal taahhüt bakiyeleri, geleceğe dönük hükümler de dahil olmak üzere kaybedilir.
 -   Aktardığınız kayıtta satın alınmış ayrılmış örnekler varsa ayrılmış örnek satın alma ücreti kaynak kayıtta kalır ancak tüm ayrılmış örnek avantajları yeni kayıtta kullanılmak üzere aktarılır.
 -   Market için tek seferlik satın alma ücreti ve eski kayıtta tahakkuk etmiş olan aylık sabit ücretler yeni kayda aktarılmaz. Tüketime dayalı market ücretleri aktarılır.
--   Süresi dolmuş olan kayıt aktarıldıktan sonra satın alma kaynaklı tek seferlik ücretler kaynak kayıtta kalır.
 
 ### <a name="effective-transfer-date"></a>Geçerli aktarım tarihi
 
-Geçerli aktarım günü, hedef kayıt 'nin başlangıç tarihinde veya daha sonra olabilir.
+Geçerli aktarım tarihi, hedef kaydın başlangıç tarihi veya daha sonraki bir tarih olabilir.
 
 Kaynak kayıt kullanımı, parasal taahhüt karşılığında veya fazla kullanım olarak ücretlendirilir. Geçerli aktarım tarihinden sonra gerçekleşen kullanımlar yeni kayda aktarılır ve uygun şekilde ücretlendirilir.
-
-Yeniden başlatılan bir aktarım, hedef kayıt 'nin başlangıç tarihi olarak en ileri olarak desteklenir. Seçilen aktarım tarihinin sağlanması, zaten yayınlanmış bir fazla kullanım faturasının kullanımını etkilemez.
 
 ### <a name="prerequisites"></a>Ön koşullar
 
 Bir kayıt aktarımı istediğinizde aşağıdaki bilgileri sağlayın:
 
-- Kaynak kaydı için kayıt numarası.
+- Kaynak kaydı için, kayıt numarası.
 - Hedef kaydı için, aktarımın yapılacağı kayıt numarası.
 - Kayıt aktarımı geçerlilik tarihi, hedef kaydın başlangıç tarihi veya sonrasındaki bir tarih olabilir. Seçilen tarih, daha önce düzenlenmiş bir fazla kullanım faturası için kullanımı etkilemez.
 
 Kayıt aktarımından önce göz önünde bulundurmanız gereken diğer noktalar:
 
-- Hem hedef hem de kaynak kaydı EA yöneticilerinin onayı gerekir.
+- Hem hedef hem de kaynak kaydı EA Yöneticilerinden onay gerekir.
 - Kayıt aktarımı gereksinimlerinizi karşılamıyorsa, hesap aktarımı yapmayı düşünün.
-- Kaynak kayıt durumu, aktarılmayacak şekilde güncelleştirilir ve yalnızca geçmiş kullanım raporlama amacıyla kullanılabilir.
+- Kaynak kaydı durumu aktarıldı olarak güncelleştirilir ve yalnızca geçmiş kullanım raporlama amaçları için kullanılabilir olur.
 
 ### <a name="monetary-commitment"></a>Parasal taahhüt
 
 Parasal taahhüt, kayıtlar arasında aktarılamaz. Parasal taahhüt bakiyeleri, sipariş edildiği kayda sözleşmeyle bağlıdır. Parasal taahhüt, hesap veya kayıt aktarma işleminin bir parçası olarak aktarılmaz.
 
-### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Hesap ve kayıt aktarımlarından etkilenen hizmet yok
+### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Hesap ve kayıt aktarımları için etkilenen hizmet yok
 
-Hesap veya kayıt aktarımı sırasında kapalı kalma süresi yoktur. Gerekli tüm bilgiler sağlanırsa isteğiniz gün içinde tamamlanabilir.
+Hesap veya kayıt aktarımı esnasında kesinti süresi yoktur. Gerekli tüm bilgiler sağlanırsa isteğiniz gün içinde tamamlanabilir.
 
 ## <a name="change-account-owner"></a>Hesap sahibini değiştirme
 

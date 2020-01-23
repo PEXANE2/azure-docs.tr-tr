@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 91434a5392f37a297e474fedf00fac6b1e4d8362
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 6e5c1a1bfc82460ad7e53cc8444a4bb42aa4ef19
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314173"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548399"
 ---
 # <a name="remove-duplicate-rows-module"></a>Yinelenen satırları kaldır modülü
 
-Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Bir veri kümesinden Potansiyel yinelemeleri kaldırmak için bu modülü kullanın.
 

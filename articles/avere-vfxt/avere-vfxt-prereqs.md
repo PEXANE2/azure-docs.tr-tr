@@ -4,14 +4,14 @@ description: Azure için avere vFXT önkoşulları
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 7f89ea553bc7198c1faee5ba3549f88da5ec2b2c
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152995"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547515"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Avere vFXT oluşturmaya hazırlanma
 
@@ -23,10 +23,10 @@ Yeni bir Azure aboneliği oluşturarak başlayın. Her bir avere vFXT projesi i�
 
 Azure portal yeni bir Azure aboneliği oluşturmak için:
 
-* [Abonelikler dikey penceresine](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) gidin
-* Üstteki **+ Ekle** düğmesine tıklayın
-* İstenirse oturum aç
-* Bir teklif seçin ve yeni bir abonelik oluşturma adımlarında ilerleyin
+1. [Abonelikler dikey penceresine](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) gidin
+1. Üstteki **+ Ekle** düğmesine tıklayın
+1. İstenirse oturum aç
+1. Bir teklif seçin ve yeni bir abonelik oluşturma adımlarında ilerleyin
 
 ## <a name="configure-subscription-owner-permissions"></a>Abonelik sahibi izinlerini yapılandırma
 
@@ -104,6 +104,6 @@ Azure portal depolama hizmeti uç noktası oluşturun.
 
    ![Hizmet uç noktası oluşturma adımları için ek açıklamaların bulunduğu ekran görüntüsünü Azure portal](media/avere-vfxt-service-endpoint.png)
 
-## <a name="next-step-create-the-vfxt-cluster"></a>Sonraki adım: vFXT kümesini oluşturma
+## <a name="next-steps"></a>Sonraki adımlar
 
 Bu önkoşulları tamamladıktan sonra kümeyi oluşturabilirsiniz. Yönergeler için [vFXT kümesini dağıtma](avere-vfxt-deploy.md) makalesini okuyun.

@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 4deae28d172bf717f527824be4be050975614c7d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 424d797410c091dc53687284c2b32e2f1f0358e1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277389"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549079"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure işlevleri için Azure Service Bus bağlamaları
 
@@ -40,16 +40,7 @@ Service Bus tetikleyicisi, bir Service Bus kuyruğuna veya konusuna iletilere ya
 
 ## <a name="trigger---example"></a>Tetikleyici - örnek
 
-Dile özgü örneğe bakın:
-
-* [C#](#trigger---c-example)
-* [C# betiği (.csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Tetikleyici - C# örneği
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnekte gösterildiği bir [C# işlevi](functions-dotnet-class-library.md) okuyan [ileti meta verileri](#trigger---message-metadata) ve Service Bus kuyruk iletisi kaydeder:
 
@@ -70,7 +61,7 @@ public static void Run(
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Tetikleyici - C# betiği örneği
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
 Aşağıdaki örnek, Service Bus tetiği bağlama gösterir. bir *function.json* dosyası ve bir [C# betik işlevi](functions-reference-csharp.md) bağlama kullanan. İşlev okur [ileti meta verileri](#trigger---message-metadata) ve Service Bus kuyruk iletisi günlüğe kaydeder.
 
@@ -110,90 +101,7 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>Tetikleyici - F# örneği
-
-Aşağıdaki örnek, Service Bus tetiği bağlama gösterir. bir *function.json* dosyası ve bir [ F# işlevi](functions-reference-fsharp.md) bağlama kullanan. İşlevi, bir Service Bus kuyruk iletisi günlüğe kaydeder. 
-
-Veri bağlama işte *function.json* dosyası:
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "testqueue",
-    "connection": "MyServiceBusConnection",
-    "name": "myQueueItem",
-    "type": "serviceBusTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-İşte F# betik kodu:
-
-```fsharp
-let Run(myQueueItem: string, log: ILogger) =
-    log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
-```
-
-### <a name="trigger---java-example"></a>Tetikleyici - Java örnek
-
-Aşağıdaki Java işlevi, bir Service Bus kuyruğu tetikleyicisinin yapılandırmasını belirtmek için [Java işlevleri çalışma zamanı kitaplığındaki](/java/api/overview/azure/functions/runtime) `@ServiceBusQueueTrigger` ek açıklamasını kullanır. İşlev, iletiyi kuyruğa yerleştirir ve günlüklere ekler.
-
-```java
-@FunctionName("sbprocessor")
- public void serviceBusProcess(
-    @ServiceBusQueueTrigger(name = "msg",
-                             queueName = "myqueuename",
-                             connection = "myconnvarname") String message,
-   final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
-```
-
-Aşağıdaki Java işlevi, bir Service Bus iletisinin _Kullanıcı özelliklerinde_ tanımlanan meta verilerin alınmasını gösterir: 
-```java
-public class ServiceBusQueueTriggerJava {
-    @FunctionName("ServiceBusQueueTriggerJava")
-    public void run(
-            @ServiceBusQueueTrigger(name = "message", queueName = "myqueue", connection = "AzureWebJobsStorage") String message,
-            @BindingName("UserProperties") UserProperties userProperties,
-            final ExecutionContext context
-    ) {
-        context.getLogger().info("Java Service Bus Queue trigger function executed.");
-        context.getLogger().info(message);
-        context.getLogger().info(userProperties.key1);
-        context.getLogger().info(userProperties.key2);
-    }
-}
-
-public class UserProperties {
-    public String key1;
-    public String key2;
-}
-```
-
-Service Bus konuya bir ileti eklendiğinde Java işlevleri de tetiklenebilir. Aşağıdaki örnek, tetikleyici yapılandırmasını anlatmak için `@ServiceBusTopicTrigger` ek açıklamasını kullanır.
-
-```java
-@FunctionName("sbtopicprocessor")
-    public void run(
-        @ServiceBusTopicTrigger(
-            name = "message",
-            topicName = "mytopicname",
-            subscriptionName = "mysubscription",
-            connection = "ServiceBusConnection"
-        ) String message,
-        final ExecutionContext context
-    ) {
-        context.getLogger().info(message);
-    }
-```
-
-### <a name="trigger---javascript-example"></a>Tetikleyici - JavaScript örneği
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, Service Bus tetiği bağlama gösterir. bir *function.json* dosyası ve bir [JavaScript işlevi](functions-reference-node.md) bağlama kullanan. İşlev okur [ileti meta verileri](#trigger---message-metadata) ve Service Bus kuyruk iletisi günlüğe kaydeder. 
 
@@ -226,7 +134,7 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-### <a name="trigger---python-example"></a>Trigger-Python örneği
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Aşağıdaki örnek, bir tetikleyici aracılığıyla Service Bus kuyruğu iletisinin nasıl okunacağını gösterir.
 
@@ -277,7 +185,44 @@ def main(msg: func.ServiceBusMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Tetikleyici - öznitelikleri
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Aşağıdaki Java işlevi, bir Service Bus kuyruğu tetikleyicisinin yapılandırmasını belirtmek için [Java işlevleri çalışma zamanı kitaplığındaki](/java/api/overview/azure/functions/runtime) `@ServiceBusQueueTrigger` ek açıklamasını kullanır. İşlev, iletiyi kuyruğa yerleştirir ve günlüklere ekler.
+
+```java
+@FunctionName("sbprocessor")
+ public void serviceBusProcess(
+    @ServiceBusQueueTrigger(name = "msg",
+                             queueName = "myqueuename",
+                             connection = "myconnvarname") String message,
+   final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+```
+
+Service Bus konuya bir ileti eklendiğinde Java işlevleri de tetiklenebilir. Aşağıdaki örnek, tetikleyici yapılandırmasını anlatmak için `@ServiceBusTopicTrigger` ek açıklamasını kullanır.
+
+```java
+@FunctionName("sbtopicprocessor")
+    public void run(
+        @ServiceBusTopicTrigger(
+            name = "message",
+            topicName = "mytopicname",
+            subscriptionName = "mysubscription",
+            connection = "ServiceBusConnection"
+        ) String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info(message);
+    }
+```
+
+---
+
+## <a name="trigger---attributes-and-annotations"></a>Tetikleyici-öznitelikler ve ek açıklamalar
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 İçinde [C# sınıfı kitaplıklar](functions-dotnet-class-library.md), Service Bus tetiği yapılandırmak için aşağıdaki öznitelikleri kullanın:
 
@@ -308,7 +253,7 @@ def main(msg: func.ServiceBusMessage):
   }
   ```
 
-  Tam bir örnek için bkz. [tetikleyici - C# örneği](#trigger---c-example).
+  Tam bir örnek için bkz. [tetikleyici-örnek](#trigger---example).
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
@@ -336,6 +281,28 @@ Service Bus hesabını kullanacak şekilde aşağıdaki sırada belirlenir:
 * `ServiceBusAccount` Sınıfına uygulanan bir öznitelik.
 * "AzureWebJobsServiceBus" uygulama ayarı.
 
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
+
+Öznitelikler komut dosyası tarafından C# desteklenmiyor.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Öznitelikler JavaScript tarafından desteklenmez.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Öznitelikler Python tarafından desteklenmez.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`ServiceBusQueueTrigger` ek açıklaması, bir Service Bus kuyruğu iletisi oluşturulduğunda çalışan bir işlev oluşturmanıza olanak sağlar. Kullanılabilir yapılandırma seçenekleri kuyruk adı ve bağlantı dizesi adını içerir.
+
+`ServiceBusTopicTrigger` ek açıklaması, işlevi hangi verilerin tetikleyeceğini hedeflemek için bir konu ve abonelik atamanıza olanak tanır.
+
+Daha fazla ayrıntı için bkz. tetikleyici [örneği](#trigger---example) .
+
+---
+
 ## <a name="trigger---configuration"></a>Tetikleyici - yapılandırma
 
 Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `ServiceBusTrigger` özniteliği.
@@ -356,7 +323,9 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 ## <a name="trigger---usage"></a>Tetikleyici - kullanım
 
-C# ve C# betiği aşağıdaki parametre türleri için kuyruk veya konuda ileti kullanabilirsiniz:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Sıra veya konu iletisi için aşağıdaki parametre türleri kullanılabilir:
 
 * `string` İleti metni ise.
 * `byte[]` -İkili veriler için kullanışlıdır.
@@ -365,7 +334,32 @@ C# ve C# betiği aşağıdaki parametre türleri için kuyruk veya konuda ileti 
 
 Bu parametre türleri Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için `BrokeredMessage`yerine [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) kullanın.
 
-JavaScript'te, kuyruk veya konuda ileti kullanarak erişim `context.bindings.<name from function.json>`. Service Bus iletiyi bir dize veya bir JSON nesnesi olarak işleve geçirilir.
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
+
+Sıra veya konu iletisi için aşağıdaki parametre türleri kullanılabilir:
+
+* `string` İleti metni ise.
+* `byte[]` -İkili veriler için kullanışlıdır.
+* İleti, JSON içeriyorsa bir özel tür - Azure işlevleri JSON verileri seri durumdan çalışır.
+* `BrokeredMessage`-' de, [aracılı edmessage. GetBody\<t > ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
+
+Bu parametreler Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için `BrokeredMessage`yerine [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) kullanın.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+`context.bindings.<name from function.json>`kullanarak kuyruk veya konu iletisine erişin. Service Bus iletiyi bir dize veya bir JSON nesnesi olarak işleve geçirilir.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Kuyruk iletisi, `func.ServiceBusMessage`olarak yazılmış bir parametre aracılığıyla işlev için kullanılabilir. Service Bus iletiyi bir dize veya bir JSON nesnesi olarak işleve geçirilir.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Gelen Service Bus iletisi bir `ServiceBusQueueMessage` veya `ServiceBusTopicMessage` parametresi aracılığıyla kullanılabilir.
+
+[Ayrıntılar için örneğe bakın](#trigger).
+
+---
 
 ## <a name="trigger---poison-messages"></a>Tetikleyici - zehirli iletiler
 
@@ -404,18 +398,9 @@ Bkz: [kod örnekleri](#trigger---example) bu makalenin önceki bölümlerinde bu
 
 Kuyruk veya konuda ileti göndermek için Azure Service Bus'ı çıkışı bağlama kullanın.
 
-## <a name="output---example"></a>Çıkış - örnek
+### <a name="output---example"></a>Çıkış - örnek
 
-Dile özgü örneğe bakın:
-
-* [C#](#output---c-example)
-* [C# betiği (.csx)](#output---c-script-example)
-* [F#](#output---f-example)
-* [Java](#output---java-example)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>Çıkış - C# örneği
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnekte gösterildiği bir [C# işlevi](functions-dotnet-class-library.md) , Service Bus kuyruk iletisi gönderir:
 
@@ -429,7 +414,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-### <a name="output---c-script-example"></a>Çıkış - C# betiği örneği
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
 Aşağıdaki örnek, bir Service Bus çıkış bağlama gösterir. bir *function.json* dosyası ve bir [C# betik işlevi](functions-reference-csharp.md) bağlama kullanan. İşlev, her 15 saniyede bir kuyruğa ileti göndermek için zamanlama tetikleyicisini kullanır.
 
@@ -480,79 +465,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-### <a name="output---f-example"></a>Çıkış - F# örneği
-
-Aşağıdaki örnek, bir Service Bus çıkış bağlama gösterir. bir *function.json* dosyası ve bir [ F# betik işlevi](functions-reference-fsharp.md) bağlama kullanan. İşlev, her 15 saniyede bir kuyruğa ileti göndermek için zamanlama tetikleyicisini kullanır.
-
-Veri bağlama işte *function.json* dosyası:
-
-```json
-{
-    "bindings": [
-        {
-            "schedule": "0/15 * * * * *",
-            "name": "myTimer",
-            "runsOnStartup": true,
-            "type": "timerTrigger",
-            "direction": "in"
-        },
-        {
-            "name": "outputSbQueue",
-            "type": "serviceBus",
-            "queueName": "testqueue",
-            "connection": "MyServiceBusConnection",
-            "direction": "out"
-        }
-    ],
-    "disabled": false
-}
-```
-
-İşte F# betik kodu, tek bir ileti oluşturur:
-
-```fsharp
-let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
-    let message = sprintf "Service Bus queue message created at: %s" (DateTime.Now.ToString())
-    log.LogInformation(message)
-    outputSbQueue = message
-```
-
-### <a name="output---java-example"></a>Çıkış - Java örnek
-
-Aşağıdaki örnek, bir HTTP isteği tarafından tetiklendiğinde Service Bus kuyruğu `myqueue` bir ileti gönderen Java işlevini gösterir.
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- İçinde [Java Çalışma Zamanı Kitaplığı işlevleri](/java/api/overview/azure/functions/runtime), kullanın `@ServiceBusQueueOutput` değeri bir Service Bus kuyruğuna yazılmış işlevi parametre üzerindeki ek açıklama.  Parametre türü olmalıdır `OutputBinding<T>`, burada T bir POJO'ya herhangi bir yerel Java türü.
-
-Java işlevleri, bir Service Bus konusuna da yazabilir. Aşağıdaki örnek, çıkış bağlamasının yapılandırmasını anlatmak için `@ServiceBusTopicOutput` ek açıklamasını kullanır. 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
-### <a name="output---javascript-example"></a>Çıkış - JavaScript örneği
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, bir Service Bus çıkış bağlama gösterir. bir *function.json* dosyası ve bir [JavaScript işlevi](functions-reference-node.md) bağlama kullanan. İşlev, her 15 saniyede bir kuyruğa ileti göndermek için zamanlama tetikleyicisini kullanır.
 
@@ -604,7 +517,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="output---python-example"></a>Output-Python örneği
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Aşağıdaki örnek, Python 'da Service Bus kuyruğuna nasıl yazılacağını gösterir.
 
@@ -654,7 +567,46 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Çıkış - öznitelikleri
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Aşağıdaki örnek, bir Service Bus kuyruğuna bir ileti gönderen bir Java işlev gösterir. `myqueue` bir HTTP isteği tarafından tetiklendiğinde.
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ İçinde [Java Çalışma Zamanı Kitaplığı işlevleri](/java/api/overview/azure/functions/runtime), kullanın `@QueueOutput` değeri bir Service Bus kuyruğuna yazılmış işlevi parametre üzerindeki ek açıklama.  Parametre türü olmalıdır `OutputBinding<T>`, burada T bir POJO'ya herhangi bir yerel Java türü.
+
+Java işlevleri, bir Service Bus konusuna da yazabilir. Aşağıdaki örnek, çıkış bağlamasının yapılandırmasını anlatmak için `@ServiceBusTopicOutput` ek açıklamasını kullanır. 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Çıkış öznitelikleri ve ek açıklamaları
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 İçinde [C# sınıfı kitaplıklar](functions-dotnet-class-library.md), kullanın [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
@@ -680,9 +632,27 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-Tam bir örnek için bkz. [çıkış - C# örneği](#output---c-example).
+Tam bir örnek için bkz. [Çıkış-örnek](#output---example).
 
-Sınıf, yöntem veya parametre düzeyinde kullanılacak Service Bus hesabını belirtmek için `ServiceBusAccount` özniteliğini kullanabilirsiniz.  Daha fazla bilgi için [tetikleyici - öznitelikleri](#trigger---attributes).
+Kullanabileceğiniz `ServiceBusAccount` sınıf, yöntem ya da parametre düzeyinde kullanılacak hizmet veri yolu hesabı belirtmek için özniteliği.  Daha fazla bilgi için [tetikleyici - öznitelikleri](#trigger---attributes-and-annotations).
+
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
+
+Öznitelikler komut dosyası tarafından C# desteklenmiyor.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Öznitelikler JavaScript tarafından desteklenmez.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Öznitelikler Python tarafından desteklenmez.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`ServiceBusQueueOutput` ve `ServiceBusTopicOutput` ek açıklamaları bir ileti çıkışı olarak bir ileti yazmak için kullanılabilir. Bu ek açıklamalarla donatılmış parametre, `T` iletinin türüne karşılık gelen türde `OutputBinding<T>` olarak bildirilmelidir.
+
+---
 
 ## <a name="output---configuration"></a>Çıkış - yapılandırma
 
@@ -704,7 +674,9 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 Azure işlevleri'nde 1.x, çalışma zamanı oluşturur kuyruk yoksa ve ayarladığınız `accessRights` için `manage`. Işlevler sürüm 2. x ve üzeri sürümlerde, kuyruk veya konu zaten var olmalıdır; Mevcut olmayan bir kuyruğu veya konuyu belirtirseniz, işlev başarısız olur. 
 
-C# ve C# betiği aşağıdaki parametre türleri için çıkış bağlaması kullanabilirsiniz:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Çıkış bağlaması için aşağıdaki parametre türlerini kullanın:
 
 * `out T paramName` - `T` JSON seri hale getirilebilir bir tür olabilir. Parametre değeri null ise, işlev işlevleri ileti ile null bir nesne oluşturur.
 * `out string` -İşlev parametre değeri null ise işlevleri oluşturmaz bir ileti.
@@ -719,9 +691,36 @@ C# İşlevlerle çalışırken:
 
 * Oturum KIMLIĞINE erişmek için [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) türüne bağlayın ve `sessionId` özelliğini kullanın.
 
-JavaScript'te, kuyruk veya konu kullanarak erişim `context.bindings.<name from function.json>`. `context.binding.<name>`için bir dize, bir bayt dizisi veya bir JavaScript nesnesi (JSON 'a serisi) atayabilirsiniz.
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
-C# Diller dışında, oturum etkin bir kuyruğa ileti göndermek için yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](https://docs.microsoft.com/azure/service-bus-messaging) kullanın.
+Çıkış bağlaması için aşağıdaki parametre türlerini kullanın:
+
+* `out T paramName` - `T` JSON seri hale getirilebilir bir tür olabilir. Parametre değeri null ise, işlev işlevleri ileti ile null bir nesne oluşturur.
+* `out string` -İşlev parametre değeri null ise işlevleri oluşturmaz bir ileti.
+* `out byte[]` -İşlev parametre değeri null ise işlevleri oluşturmaz bir ileti.
+* `out BrokeredMessage`-işlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (1. x Işlevleri için)
+* `out Message`-işlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (2. x ve üzeri Işlevler için)
+* `ICollector<T>` veya `IAsyncCollector<T>` - birden çok ileti oluşturmak için. Çağırdığınızda bir ileti oluşturulur `Add` yöntemi.
+
+C# İşlevlerle çalışırken:
+
+* Zaman uyumsuz işlevlerin bir `out` parametresi yerine bir dönüş değeri veya `IAsyncCollector` olması gerekir.
+
+* Oturum KIMLIĞINE erişmek için [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) türüne bağlayın ve `sessionId` özelliğini kullanın.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+`context.bindings.<name from function.json>`kullanarak kuyruğa veya konuya erişin. `context.binding.<name>`için bir dize, bir bayt dizisi veya bir JavaScript nesnesi (JSON 'a serisi) atayabilirsiniz.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](https://docs.microsoft.com/azure/service-bus-messaging) kullanın.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](https://docs.microsoft.com/azure/service-bus-messaging) kullanın.
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>Özel durumlar ve dönüş kodları
 

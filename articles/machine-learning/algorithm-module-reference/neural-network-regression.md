@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 38b37a386e4e9829b5d90e31067ec9f6aaf75502
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 7ff4303a923e50a36ca36bd625581f11f7a9b491
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314921"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548501"
 ---
 # <a name="neural-network-regression-module"></a>Sinir ağ gerileme modülü
 
@@ -24,7 +24,7 @@ ms.locfileid: "76314921"
   
 ## <a name="module-overview"></a>Modüle genel bakış  
 
-Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Özelleştirilebilir bir sinir ağı algoritması kullanarak regresyon modeli oluşturmak için bu modülü kullanın.
   

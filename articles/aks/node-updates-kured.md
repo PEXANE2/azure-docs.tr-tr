@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 580d1316c2bfc6514a148ed6fba78a8e77bd880e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c9e7c23806d4a0a0e2c0b36122d9eb087c986556
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67614914"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549181"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Linux düğümlerine güvenlik ve çekirdek güncelleştirmelerini uygulama
 
@@ -23,13 +23,13 @@ Windows Server düğümlerini (Şu anda AKS ' de önizleme aşamasında) güncel
 Bu makalede, yeniden başlatma gerektiren Linux düğümlerini izlemek için açık kaynaklı [kured (Kubernetes önyükleme cini)][kured] nasıl kullanılacağı gösterilmektedir ve ardından çalışan Pod ve düğüm yeniden başlatma işleminin yeniden çizelgeini otomatik olarak işler.
 
 > [!NOTE]
-> `Kured`, dalgalı bir proje tarafından açık kaynaklı bir projem. AKS 'deki bu proje için destek en iyi çaba temelinde sunulmaktadır. #Weave topluluk bolluk kanalında ek destek bulunabilir.
+> `Kured`, dalgalı çalışma tarafından açık kaynaklı bir projem. AKS 'deki bu proje için destek en iyi çaba temelinde sunulmaktadır. #Weave topluluk bolluk kanalında ek destek bulunabilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="understand-the-aks-node-update-experience"></a>AKS düğüm güncelleştirme deneyimini anlayın
 
@@ -39,7 +39,7 @@ AKS kümesinde, Kubernetes düğümleriniz Azure sanal makineleri (VM 'Ler) olar
 
 Çekirdek güncelleştirmeleri gibi bazı güvenlik güncelleştirmeleri, işlemi tamamlamak için bir düğümün yeniden başlatılmasını gerektirir. Yeniden başlatma gerektiren bir Linux düğümü, */var/Run/reboot-adlı*bir dosya oluşturur. Bu yeniden başlatma işlemi otomatik olarak gerçekleşmez.
 
-Düğüm yeniden başlatmaları işlemek için kendi iş akışlarınızı ve işlemlerinizi kullanabilir veya işlemi düzenlemek için `kured` kullanabilirsiniz. İle `kured`, kümedeki her Linux düğümünde Pod çalıştıran bir [DaemonSet][DaemonSet] dağıtılır. DaemonSet 'deki bu düğüm, */var/Run/reboot-Required* dosyasının varlığını izlemek ve sonra düğümleri yeniden başlatmak için bir işlem başlatır.
+Düğüm yeniden başlatmaları işlemek için kendi iş akışlarınızı ve işlemlerinizi kullanabilir veya işlemi düzenlemek için `kured` kullanabilirsiniz. `kured`, kümedeki her Linux düğümünde Pod çalıştıran bir [DaemonSet][DaemonSet] dağıtılır. DaemonSet 'deki bu düğüm, */var/Run/reboot-Required* dosyasının varlığını izlemek ve sonra düğümleri yeniden başlatmak için bir işlem başlatır.
 
 ### <a name="node-upgrades"></a>Düğüm yükseltmeleri
 
@@ -54,23 +54,23 @@ Yükseltme olayı sırasında aynı Kubernetes sürümünde kalamıyorum. Kubern
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>AKS kümesinde kured dağıtma
 
-`kured` DaemonSet dağıtmak için, GitHub proje sayfasından aşağıdaki örnek YAML bildirimini uygulayın. Bu bildirim, bir rol ve küme rolü, bağlamalar ve bir hizmet hesabı oluşturur, ardından aks kümeleri 1,9 `kured` veya üstünü destekleyen sürüm 1.1.0 kullanarak DaemonSet dağıtır.
+`kured` DaemonSet dağıtmak için, GitHub proje sayfasından aşağıdaki örnek YAML bildirimini uygulayın. Bu bildirim bir rol ve küme rolü, bağlamalar ve bir hizmet hesabı oluşturur, ardından AKS kümeleri 1,9 veya üstünü destekleyen `kured` sürüm 1.1.0 kullanarak DaemonSet dağıtır.
 
 ```console
 kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
 ```
 
-Ayrıca `kured`, Prometheus veya bolluk ile tümleştirme gibi ek parametreleri de yapılandırabilirsiniz. Ek yapılandırma parametreleri hakkında daha fazla bilgi için bkz. [kured yükleme belgeleri][kured-install].
+Ayrıca, Prometheus veya bolluk ile tümleştirme gibi `kured`için ek parametreler de yapılandırabilirsiniz. Ek yapılandırma parametreleri hakkında daha fazla bilgi için bkz. [kured yükleme belgeleri][kured-install].
 
 ## <a name="update-cluster-nodes"></a>Küme düğümlerini Güncelleştir
 
-Varsayılan olarak, AKS 'deki Linux düğümleri her akşam güncelleştirme olup olmadığını denetler. Beklemek istemiyorsanız, doğru şekilde `kured` çalıştığını denetlemek için el ile bir güncelleştirme gerçekleştirebilirsiniz. İlk olarak, [AKS düğümlerinizin birine SSH][aks-ssh]eklemek için adımları izleyin. Linux düğümüne SSH bağlantısı olduktan sonra, güncelleştirmeleri denetleyin ve bunları şu şekilde uygulayın:
+Varsayılan olarak, AKS 'deki Linux düğümleri her akşam güncelleştirme olup olmadığını denetler. Beklemek istemiyorsanız, `kured` doğru şekilde çalıştığını denetlemek için el ile bir güncelleştirme gerçekleştirebilirsiniz. İlk olarak, [AKS düğümlerinizin birine SSH][aks-ssh]eklemek için adımları izleyin. Linux düğümüne SSH bağlantısı olduktan sonra, güncelleştirmeleri denetleyin ve bunları şu şekilde uygulayın:
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 
-Bir düğümün yeniden başlatılmasını gerektiren güncelleştirmeler uygulanmışsa, */var/Run/reboot-dosyasına*bir dosya yazılır. `Kured`Varsayılan olarak her 60 dakikada bir yeniden başlatma gerektiren düğümleri denetler.
+Bir düğümün yeniden başlatılmasını gerektiren güncelleştirmeler uygulanmışsa, */var/Run/reboot-dosyasına*bir dosya yazılır. Varsayılan olarak her 60 dakikada bir yeniden başlatma gerektiren düğümleri denetler `Kured`.
 
 ## <a name="monitor-and-review-reboot-process"></a>Yeniden başlatma işlemini izleme ve gözden geçirme
 
@@ -83,7 +83,7 @@ NAME                       STATUS                     ROLES     AGE       VERSIO
 aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-Güncelleştirme işlemi tamamlandıktan sonra, `--output wide` parametresi ile [kubectl Get Nodes][kubectl-get-nodes] komutunu kullanarak düğümlerin durumunu görüntüleyebilirsiniz. Bu ek çıktı, aşağıdaki örnek çıktıda gösterildiği gibi, temeldeki düğümlerin *çekırdek sürümünde* bir farklılık görmenizi sağlar. *Aks-nodepool1-28993262-0* önceki bir adımda güncelleştirildi ve çekirdek sürümü *4.15.0-1039-Azure*' i gösterir. Güncelleştirilmemiş *aks-nodepool1-28993262-1* düğümü, çekirdek sürümü *4.15.0-1037-Azure*' i gösterir.
+Güncelleştirme işlemi tamamlandıktan sonra, `--output wide` parametresiyle [kubectl Get Nodes][kubectl-get-nodes] komutunu kullanarak düğümlerin durumunu görüntüleyebilirsiniz. Bu ek çıktı, aşağıdaki örnek çıktıda gösterildiği gibi, temeldeki düğümlerin *çekırdek sürümünde* bir farklılık görmenizi sağlar. *Aks-nodepool1-28993262-0* önceki bir adımda güncelleştirildi ve çekirdek sürümü *4.15.0-1039-Azure*' i gösterir. Güncelleştirilmemiş *aks-nodepool1-28993262-1* düğümü, çekirdek sürümü *4.15.0-1037-Azure*' i gösterir.
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
@@ -93,7 +93,7 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, güvenlik güncelleştirme sürecinin `kured` bir parçası olarak Linux düğümlerini otomatik olarak yeniden başlatmak için nasıl kullanılacağı ayrıntılı olarak açıklanır. En son Kubernetes sürümüne yükseltmek için [AKS kümenizi yükseltebilirsiniz][aks-upgrade].
+Bu makalede, güvenlik güncelleştirme sürecinin bir parçası olarak Linux düğümlerini otomatik olarak yeniden başlatmak için `kured` nasıl kullanılacağı ayrıntılı olarak açıklanır. En son Kubernetes sürümüne yükseltmek için [AKS kümenizi yükseltebilirsiniz][aks-upgrade].
 
 Windows Server düğümleri kullanan AKS kümelerinde bkz. [aks 'de düğüm havuzunu yükseltme][nodepool-upgrade].
 

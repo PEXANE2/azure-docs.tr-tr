@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services ve Azure CLı ile video dosyaları akışı | Microsoft Docs
+title: Azure Media Services ve Azure CLı ile video dosyaları akışı
 description: Bu öğreticinin adımlarını izleyerek yeni bir Azure Media Services hesabı oluşturun, bir dosya kodlayın ve Azure Media Player için akışını yapın.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: ''
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 58193a94d09dee5df611acf5d98c8661dd18abbb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a51b30ad2af29871ed6998e60bb64adf91dfdbbd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639977"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514383"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>Öğretici: URL 'yi temel alan uzak bir dosyayı kodlayın ve video CLı 'YI akışa sunun
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve video CLı 'yı akışa koyun
 
 Bu öğreticide, Azure Media Services ve Azure CLı kullanarak çeşitli tarayıcılarda ve cihazlarda videoların kolayca nasıl kodlanacağı ve akış akışının nasıl yapılacağı gösterilmektedir. HTTPS veya SAS URL 'Leri ya da Azure Blob depolama alanındaki dosyalara yollar kullanarak giriş içeriği belirtebilirsiniz.
 
@@ -28,11 +28,11 @@ Bu makaledeki örnek, bir HTTPS URL 'SI aracılığıyla erişilebilir hale geti
 
 Bu öğreticinin sonuna kadar video akışı sağlayabileceksiniz.  
 
-![Videoyu yürütme](./media/stream-files-dotnet-quickstart/final-video.png)
+![Videoyu yürüt](./media/stream-files-dotnet-quickstart/final-video.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-media-services-account"></a>Media Services hesabı oluşturma
+## <a name="create-a-media-services-account"></a>Bir Medya Hizmetleri hesabı oluşturun
 
 Azure 'da medya içeriğini şifrelemeden, kodlamadan, çözümleyebilmeniz, yönetebilmeniz ve akışınızdan önce bir Media Services hesabı oluşturmanız gerekir. Bu hesabın bir veya daha fazla depolama hesabıyla ilişkilendirilmesi gerekir.
 
@@ -48,7 +48,7 @@ az group create -n amsResourceGroup -l westus2
 
 Bu örnekte, genel amaçlı v2 standart LRS hesabı oluşturacağız.
 
-Depolama hesaplarıyla denemek istiyorsanız kullanın `--sku Standard_LRS`. Üretim için bir SKU seçerken, iş sürekliliği için coğrafi çoğaltma `--sku Standard_RAGRS`sağlayan kullanmayı göz önünde bulundurun. Daha fazla bilgi için bkz. [depolama hesapları](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
+Depolama hesaplarıyla denemek istiyorsanız `--sku Standard_LRS`kullanın. Üretim için bir SKU seçerken, iş sürekliliği için coğrafi çoğaltma sağlayan `--sku Standard_RAGRS`kullanmayı göz önünde bulundurun. Daha fazla bilgi için bkz. [depolama hesapları](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
  
 ```azurecli
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
@@ -188,12 +188,12 @@ Aşağıdakine benzer bir yanıt alırsınız:
 
 İşleri işlem videolarına gönderdiğinizde, Media Services Giriş videosunu nerede bulacağınızı söylemeniz gerekir. Bir seçenek, bu örnekte gösterildiği gibi, iş girişi olarak bir HTTPS URL 'SI belirtmektir.
 
-Çalıştırdığınızda `az ams job start`, iş çıktısında bir etiket ayarlayabilirsiniz. Daha sonra, çıktı varlığının ne için olduğunu tanımlamak için etiketini kullanabilirsiniz.
+`az ams job start`çalıştırdığınızda, iş çıktısında bir etiket ayarlayabilirsiniz. Daha sonra, çıktı varlığının ne için olduğunu tanımlamak için etiketini kullanabilirsiniz.
 
 - Etikete bir değer atarsanız, '--output-varlıklar ' öğesini "assetname = Label" olarak ayarlayın.
 - Etikete bir değer atamadıysanız, '--output-varlıklar ' öğesini "assetname =" olarak ayarlayın.
 
-  ' A "=" `output-assets`eklediğimiz konusunda dikkat edin.
+  `output-assets`"=" eklediğimiz konusunda dikkat edin.
 
 ```azurecli
 az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup 
@@ -318,11 +318,11 @@ HTTP canlı akış (HLS) yolunu kopyalayın. Bu durumda, `/e01b2be1-5ea4-42ca-ae
 ```azurecli
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
-`hostName` Değeri kopyalayın. Bu durumda, `amsaccount-usw22.streaming.media.azure.net`.
+`hostName` değerini kopyalayın. Bu durumda, `amsaccount-usw22.streaming.media.azure.net`.
 
 ### <a name="assemble-the-url"></a>URL 'YI birleştirme
 
-"https://" + &lt;hostname değer&gt; + &lt;HLS yol değeri&gt;
+"https://" + &lt;hostName değeri&gt; + &lt;HLS yol değeri&gt;
 
 Bir örneği aşağıda verilmiştir:
 
@@ -333,7 +333,7 @@ Bir örneği aşağıda verilmiştir:
 > [!NOTE]
 > Bir oynatıcı HTTPS sitesinde barındırılıyorsa, URL 'YI "https" ile başlattığınızdan emin olun.
 
-1. Bir Web tarayıcısı açın ve adresine gidin [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+1. Bir Web tarayıcısı açın ve [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)gidin.
 2. **URL** kutusunda, önceki bölümde oluşturduğunuz URL 'yi yapıştırın. URL 'yi HLS, Dash veya düz biçimde yapıştırabilirsiniz. Azure Media Player, cihazınızda kayıttan yürütmek için otomatik olarak uygun bir akış protokolü kullanacaktır.
 3. **Oynatıcıyı Güncelleştir**' i seçin.
 

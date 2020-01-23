@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: b6ea5c9ef5e128116ef389675a09e6ab4b230b75
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982450"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543316"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning veri kümeleriyle eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ Bu kod, şunu belirten `est`bir genel tahmin aracı nesnesi oluşturur.
 
 * Betikleriniz için bir komut dosyası dizini. Bu dizindeki dosyaların tümü yürütülmek üzere küme düğümlerine yüklenir.
 * Eğitim betiği, *train_titanic. Kopyala*.
-* Eğitim için giriş veri kümesi, `titanic`.
+* Eğitim için giriş veri kümesi, `titanic`. `as_named_input()`, giriş veri kümesinin eğitim betiğinizdeki atanan ad tarafından başvurulabilmesi için gereklidir. 
 * Deneme için işlem hedefi.
 * Deneme için ortam tanımı.
 
@@ -105,8 +105,11 @@ experiment_run.wait_for_completion(show_output=True)
 Veri dosyalarınızı eğitim için işlem hedefinde kullanılabilir hale getirmek istiyorsanız, bu dosyanın başvurduğu dosyaları bağlamak veya indirmek için dosya [veri kümesini](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) kullanın.
 
 ### <a name="mount-vs-download"></a>Bağlama v.s. İndirin
-Bir veri kümesini bağladığınızda, veri kümesinin başvurduğu dosyaları bir dizine (bağlama noktası) ekler ve işlem hedefinde kullanılabilir hale getirin. Bağlama, Azure Machine Learning Işlem, sanal makineler ve HDInsight dahil olmak üzere Linux tabanlı hesaplar için desteklenir. Veri boyutunuz işlem diski boyutunu aşarsa veya yalnızca betiğe veri kümesinin bir parçasını yüklüyorsanız, bağlama önerilir. Disk boyutundan daha büyük bir veri kümesinin indirilmesi başarısız olur ve bağlama işlemi sırasında yalnızca betiğinizin kullandığı verilerin bir bölümünü yükler. Bir veri kümesini indirdiğinizde, veri kümesi tarafından başvurulan tüm dosyalar işlem hedefine indirilir. Tüm işlem türleri için indirme desteklenir. Komut dosyası, veri kümesi tarafından başvurulan tüm dosyaları işse ve işlem diskiniz tam veri kümesine uyuyorsa, depolama hizmetlerinden veri akışı yükünü ortadan kaldırmak için indirmek önerilir.
+Bir veri kümesini bağladığınızda, veri kümesinin başvurduğu dosyaları bir dizine (bağlama noktası) ekler ve işlem hedefinde kullanılabilir hale getirin. Bağlama, Azure Machine Learning Işlem, sanal makineler ve HDInsight dahil olmak üzere Linux tabanlı hesaplar için desteklenir. Veri boyutunuz işlem diski boyutunu aşarsa veya yalnızca betiğe veri kümesinin bir parçasını yüklüyorsanız, bağlama önerilir. Disk boyutundan daha büyük bir veri kümesinin indirilmesi başarısız olur ve bağlama işlemi sırasında yalnızca betiğinizin kullandığı verilerin bir bölümünü yükler. 
 
+Bir veri kümesini indirdiğinizde, veri kümesi tarafından başvurulan tüm dosyalar işlem hedefine indirilir. Tüm işlem türleri için indirme desteklenir. Komut dosyası, veri kümesi tarafından başvurulan tüm dosyaları işse ve işlem diskiniz tam veri kümesine uyuyorsa, depolama hizmetlerinden veri akışı yükünü ortadan kaldırmak için indirmek önerilir.
+
+Azure Blob depolama, Azure dosyaları, Azure Data Lake Storage 1., Azure Data Lake Storage 2., Azure SQL veritabanı ve PostgreSQL için Azure veritabanı tarafından oluşturulan veri kümelerinde herhangi bir biçimdeki dosyaları bağlama veya indirme işlemi desteklenir. 
 
 ### <a name="create-a-filedataset"></a>Dosya veri kümesi oluşturma
 
@@ -126,7 +129,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>Tahmin aracı 'ı yapılandırma
 
-Veri kümesini Estimator 'daki `inputs` parametresi aracılığıyla geçirmek yerine, veri kümesini `script_params` aracılığıyla geçirebilir ve bağımsız değişkenler aracılığıyla eğitim betiğinizdeki veri yolunu (takma noktası) alabilirsiniz. Bu şekilde verilerinize erişebilir ve mevcut bir eğitim betiğini kullanabilirsiniz.
+Veri kümesini Estimator 'daki `inputs` parametresi aracılığıyla geçirmenin yanı sıra, veri kümesini `script_params` aracılığıyla geçirebilir ve bağımsız değişkenler aracılığıyla eğitim betiğinizdeki veri yolunu (takma noktası) alabilirsiniz. Bu şekilde, eğitim betiğinizi azureml-SDK 'dan bağımsız tutabilirsiniz. Diğer bir deyişle, yerel hata ayıklama ve herhangi bir bulut platformunda uzaktan eğitim için aynı eğitim betiğini kullanacaksınız.
 
 Bir [sköğrenme](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) tahmin aracı nesnesi, scikit-denemeleri için çalışmayı göndermek üzere kullanılır. [Sköğren tahmin aracı](how-to-train-scikit-learn.md)ile eğitim hakkında daha fazla bilgi edinin.
 

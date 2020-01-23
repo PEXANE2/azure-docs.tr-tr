@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 00414bea82a7a78dd88ff4b1a592a6e35b5241c7
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: dc3630f4b832a9b15217e8f5cdc03830f15ee2a7
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314411"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546767"
 ---
 # <a name="convert-to-dataset"></a>Veri kümesine dönüştürme
 
-Bu makalede, bir işlem hattının herhangi bir verisini tasarımcı iç biçimine dönüştürmek için Azure Machine Learning tasarımcısında DataSet 'e Dönüştür modülünün nasıl kullanılacağı açıklanır.
+Bu makalede, bir işlem hattının herhangi bir verisini tasarımcı iç biçimine dönüştürmek için Azure Machine Learning tasarımcısında (Önizleme) veri kümesi dönüştürme modülünün nasıl kullanılacağı açıklanır.
   
 Çoğu durumda dönüştürme gerekli değildir. Azure Machine Learning veriler üzerinde herhangi bir işlem yapıldığında, verileri örtülü olarak yerel veri kümesi biçimine dönüştürür. 
 

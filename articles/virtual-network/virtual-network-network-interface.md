@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2017
+ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: df2eb0886b71a2d5daaa95f33ef29a2afc7e112a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 11e6285ef70ffde5344add951801997f8541eaad
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980712"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543112"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Ağ arabirimi oluşturma, değiştirme veya silme
 
@@ -90,7 +90,7 @@ Bir ağ arabirimi oluşturulduktan sonra, çoğu ayarı görüntüleyebilir ve d
    - **Özellikler:** Ağ arabirimi hakkında, MAC adresi (ağ arabirimi bir sanal makineye bağlı değilse boş) ve içinde mevcut olan abonelik gibi anahtar ayarları görüntüler.
    - **Etkin güvenlik kuralları:**  Ağ arabirimi çalışan bir sanal makineye bağlıysa ve bir NSG ağ arabirimiyle, kendisine atanmış alt ağ veya her ikisine de ilişkiliyse güvenlik kuralları listelenir. Nelerin görüntülendikleriniz hakkında daha fazla bilgi edinmek için bkz. [etkin güvenlik kurallarını görüntüleme](#view-effective-security-rules). NSG 'ler hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](security-overview.md).
    - **Geçerli rotalar:** Ağ arabirimi çalışan bir sanal makineye eklenmişse yollar listelenir. Yollar, Azure varsayılan yollarının, Kullanıcı tanımlı yolların ve ağ arabiriminin atandığı alt ağ için var olabilecek tüm BGP yollarının bir birleşimidir. Nelerin görüntülendikleriniz hakkında daha fazla bilgi edinmek için bkz. [geçerli yolları görüntüleme](#view-effective-routes). Azure varsayılan yolları ve Kullanıcı tanımlı rotalar hakkında daha fazla bilgi edinmek için bkz. [yönlendirmeye genel bakış](virtual-networks-udr-overview.md).
-   - **Ortak Azure Resource Manager ayarları:**  Ortak Azure Resource Manager ayarları hakkında daha fazla bilgi için bkz. [etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md), [ERIŞIM denetimi (IAM)](../role-based-access-control/overview.md), [Etiketler](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [kilitler](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ve [Otomasyon betiği](../azure-resource-manager/templates/export-template-portal.md).
+Ortak Azure Resource Manager ayarları: ortak Azure Resource Manager ayarları hakkında daha fazla bilgi Için bkz. [etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md), [ERIŞIM denetimi (IAM)](../role-based-access-control/overview.md), [Etiketler](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [kilitler](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ve [Otomasyon betiği](../azure-resource-manager/templates/export-template-portal.md).
 
 <a name="view-settings-commands"></a>**Komut**
 
@@ -168,7 +168,7 @@ Ağ arabiriminin atandığı alt ağı (sanal ağı) değiştirebilirsiniz.
 Ağ arabirimi bir sanal makineye bağlıysa, portalı kullanarak bir ağ arabirimini yalnızca bir uygulama güvenlik grubundan kaldırabilirsiniz. Ağ arabiriminin bir sanal makineye bağlı olup olmadığına bakılmaksızın, bir ağ arabirimini bir uygulama güvenlik grubundan bir ağ arabirimi eklemek veya kaldırmak için PowerShell veya Azure CLı kullanabilirsiniz. [Uygulama güvenlik grupları](security-overview.md#application-security-groups) ve [uygulama güvenlik grubu oluşturma](manage-network-security-group.md)hakkında daha fazla bilgi edinin.
 
 1. Portalın üst kısmındaki *kaynak, hizmet ve belgeleri ara* kutusuna, bir uygulama güvenlik grubuna eklemek veya kaldırmak istediğiniz bir ağ arabirimine sahip bir sanal makinenin adını yazmaya başlayın. SANAL makinenizin adı arama sonuçlarında göründüğünde, bunu seçin.
-2. **AYARLAR**'ın altında **Ağ İletişimi**’ni seçin.  **Uygulama güvenlik gruplarını Yapılandır**' ı seçin, ağ arabirimini eklemek istediğiniz uygulama güvenlik gruplarını seçin veya ağ arabirimini kaldırmak istediğiniz uygulama güvenlik gruplarının seçimini kaldırın ve ardından **Kaydet**' i seçin. Aynı uygulama güvenlik grubuna yalnızca aynı sanal ağda bulunan ağ arabirimleri eklenebilir. Uygulama güvenlik grubu, ağ arabirimiyle aynı konumda bulunmalıdır.
+2. **AYARLAR**'ın altında **Ağ İletişimi**’ni seçin.  **Uygulama güvenlik** grupları ' nı seçin, ardından **uygulama güvenlik gruplarını yapılandırın**ağ arabirimini eklemek istediğiniz uygulama güvenlik gruplarını seçin veya ağ arabirimini kaldırmak istediğiniz uygulama güvenlik gruplarının seçimini kaldırın ve ardından **Kaydet**' i seçin. Aynı uygulama güvenlik grubuna yalnızca aynı sanal ağda bulunan ağ arabirimleri eklenebilir. Uygulama güvenlik grubu, ağ arabirimiyle aynı konumda bulunmalıdır.
 
 **Komut**
 
@@ -196,8 +196,8 @@ Ağ arabirimi bir sanal makineye bağlıysa, portalı kullanarak bir ağ arabiri
 Bir ağ arabirimini, bir sanal makineye bağlı olmadığı sürece silebilirsiniz. Bir ağ arabirimi bir sanal makineye bağlıysa, önce sanal makineyi durdurulmuş (serbest bırakıldı) duruma yerleştirmeniz, ardından ağ arabirimini sanal makineden ayırmanız gerekir. Bir ağ arabirimini bir sanal makineden ayırmak için, bir [sanal makineden ağ arabirimini ayırma](virtual-network-network-interface-vm.md#remove-a-network-interface-from-a-vm)bölümündeki adımları uygulayın. Ancak sanal makineye bağlı tek ağ arabiriminiz varsa, bir ağ arabirimini sanal makineden ayıramazsınız. Bir sanal makinede her zaman en az bir ağ arabirimi eklenmiş olmalıdır. Bir sanal makineyi silmek ona bağlı tüm ağ arabirimlerini ayırır, ancak ağ arabirimlerini silmez.
 
 1. Azure portal üst kısmında bulunan metin *arama kaynaklarını* içeren kutuya *ağ arabirimleri*yazın. Arama sonuçlarında **ağ arabirimleri** görüntülendiğinde, bunu seçin.
-2. Ağ arabirimlerinin listesinden silmek istediğiniz ağ arabiriminin sağ tarafındaki **..** . seçeneğini belirleyin.
-3. **Sil**’i seçin.
+2. Silmek istediğiniz listede ağ arabirimini seçin.
+3. **Genel bakış** altında **Sil**' i seçin.
 4. Ağ arabirimini silmeyi onaylamak için **Evet** ' i seçin.
 
 Bir ağ arabirimini sildiğinizde, kendisine atanan MAC veya IP adresleri serbest bırakılır.

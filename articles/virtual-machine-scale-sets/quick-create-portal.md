@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: cc5c7b9f26d74f32c9f6042e3a1deddc57171860
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2acde4efa1dc118498f3c7da29c75e48c0478ac0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274247"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543146"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portalında sanal makine ölçek kümesi oluşturma
 
@@ -31,7 +31,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 Azure [yük dengeleyici](../load-balancer/load-balancer-overview.md) , gelen trafiği sağlıklı sanal makine örnekleri arasında dağıtır. 
 
-İlk olarak, portalı kullanarak genel temel Load Balancer oluşturun. Oluşturduğunuz genel IP adresi ve adını, load balancer'ın ön ucu olarak otomatik olarak yapılandırılır.
+İlk olarak, portalı kullanarak bir ortak Standart Load Balancer oluşturun. Oluşturduğunuz genel IP adresi ve adını, load balancer'ın ön ucu olarak otomatik olarak yapılandırılır.
 
 1. Arama kutusuna **yük dengeleyici**yazın. Arama sonuçlarında **Market** ' ın altında **yük dengeleyici**' yi seçin.
 1. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri girin veya seçin:

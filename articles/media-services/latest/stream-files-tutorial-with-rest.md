@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services-REST kullanarak URL 'yi ve akışı temel alarak uzak bir dosyayı kodla Microsoft Docs
+title: Azure Media Services v3 kullanarak uzak dosya ve akış kodlama
 description: Bir URL 'yi temel alan bir dosyayı kodlamak ve REST kullanarak Azure Media Services içeriğinizi akışa almak için bu öğreticideki adımları izleyin.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685119"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514349"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Öğretici: URL 'ye göre uzak bir dosya kodlama ve video geri kalanı
 
@@ -25,7 +25,7 @@ Azure Media Services, medya dosyalarınızı çok çeşitli tarayıcılarda ve c
 
 Bu öğreticide, bir URL 'ye göre bir dosyayı kodlama ve REST kullanarak Azure Media Services videoyu akışa alma gösterilmektedir. 
 
-![Videoyu yürütme](./media/stream-files-tutorial-with-api/final-video.png)
+![Videoyu yürüt](./media/stream-files-tutorial-with-api/final-video.png)
 
 Bu öğretici şunların nasıl yapıldığını gösterir:    
 
@@ -42,7 +42,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md).
+- [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md).
 
     Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun
 
@@ -69,7 +69,7 @@ Postman koleksiyonunu ve ortam dosyalarını içeren bir GitHub deposunu kopyala
 
     ![Ortamı yönetme](./media/develop-with-postman/postman-import-env.png)
 4. **Ortamı yönet** iletişim kutusunda **İçe aktar**'ı tıklatın.
-2. `Azure Media Service v3 Environment.postman_environment.json` kopyasını oluşturduğunuzda indirilen `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` dosyasına gidin.
+2. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` kopyasını oluşturduğunuzda indirilen `Azure Media Service v3 Environment.postman_environment.json` dosyasına gidin.
 6. **Azure Media Service v3 Environment** ortamı eklenir.
 
     > [!Note]
@@ -84,7 +84,7 @@ Postman koleksiyonunu ve ortam dosyalarını içeren bir GitHub deposunu kopyala
 ### <a name="configure-the-collection"></a>Koleksiyonu yapılandırma
 
 1. Koleksiyon dosyasını içe aktarmak için **İçe Aktar**'ı tıklatın.
-1. `Media Services v3.postman_collection.json` kopyasını oluşturduğunuzda indirilen `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` dosyasına gidin
+1. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` kopyasını oluşturduğunuzda indirilen `Media Services v3.postman_collection.json` dosyasına gidin
 3. **Media Services v3.postman_collection.json** dosyasını seçin.
 
     ![Dosya içe aktarma](./media/develop-with-postman/postman-import-collection.png)
@@ -262,7 +262,7 @@ Kodlama işi tamamlandıktan sonra, bir sonraki adım çıktı **kıymetindeki**
 
 Akış Bulucu oluşturma işlemine yayımlama denir. Varsayılan olarak, akış bulucu, API çağrılarını yaptıktan hemen sonra geçerli olur ve isteğe bağlı başlangıç ve bitiş zamanlarını yapılandırmadıkça silinene kadar sürer. 
 
-Bir [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) oluştururken istenen **StreamingPolicyName** değerini belirtmeniz gerekir. Bu örnekte, "Predefined_ClearStreamingOnly" önceden tanımlanmış açık akış ilkesi kullanılması için açık (veya şifreli olmayan) içerik akışını akışla bulabilirsiniz.
+Bir [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) oluştururken istenen **StreamingPolicyName** değerini belirtmeniz gerekir. Bu örnekte, Açık (veya şifreli olmayan) içerik akışını, böylece önceden tanımlanmış açık akış ilkesi "Predefined_ClearStreamingOnly" kullanılır.
 
 > [!IMPORTANT]
 > Özel [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies)’yi kullanırken Media Service hesabınız için bu tür ilkelerin sınırlı bir kümesini tasarlamanız ve aynı şifreleme seçenekleri ve protokoller gerekli olduğunda StreamingLocators için bunları kullanmanız gerekir. 

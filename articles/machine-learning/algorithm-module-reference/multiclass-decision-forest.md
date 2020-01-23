@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: f100271162d20f5d13033efcd04bfa20081b6073
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 6b0e9304278dc2092dfe070b76e6594ed19d5020
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314666"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546631"
 ---
 # <a name="multiclass-decision-forest-module"></a>Birden çok Lass karar ormanı modülü
 
-Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 *Karar ormanı* algoritmasını temel alan bir makine öğrenimi modeli oluşturmak için bu modülü kullanın. Karar verme ormanı, etiketli verilerden öğrenirken, bir dizi karar ağacının hızla bir dizisini oluşturan bir ensebir modeldir.
 

@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79c6658d2b3758eed94f273bf0b3685bbd146278
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 69d08af9fd34728860343db3578f7283802f1611
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073076"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544761"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
-Azure sanal makinesi (VM) uzantıları, Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır. Örneğin, bir sanal makine yazılım yüklemesi, virüsten koruma koruması veya bunun içinde bir komut dosyası çalıştırmak istiyorsa, bir VM Uzantısı kullanılabilir. Azure VM uzantıları, Azure CLı, PowerShell, Azure Resource Manager şablonları ve Azure portal birlikte çalıştırılabilir. Uzantılar, yeni bir VM dağıtımıyla birlikte paketlenmiştir veya var olan herhangi bir sisteme karşı çalıştırılabilir.
+Azure sanal makine (VM) uzantıları, dağıtım sonrası yapılandırma ve Azure VM'lerinde otomasyon görevleri sunan küçük uygulamalardır. Örneğin bir sanal makinede yazılım yüklemesi gerekiyorsa, virüsten koruma gerekiyorsa veya içinde bir betik çalıştırılacaksa VM uzantısı kullanılabilir. Azure VM uzantıları Azure CLI, PowerShell, Azure Resource Manager şablonları ve Azure portal ile çalıştırılabilir. Uzantılar yeni bir VM dağıtımıyla paketlenebilir veya var olan herhangi bir sistemde çalıştırılabilir.
 
 Bu makalede VM uzantılarına genel bakış, Azure VM uzantıları kullanma önkoşulları ve VM uzantılarının algılanması, yönetilmesi ve kaldırılması ile ilgili yönergeler sunulmaktadır. Bu makalede birçok VM Uzantısı kullanılabildiği için, her biri potansiyel olarak benzersiz bir yapılandırma olan Genelleştirilmiş bilgiler sağlanmaktadır. Uzantıya özgü ayrıntılar, tek tek uzantıya özgü her belge içinde bulunabilir.
 
@@ -42,7 +42,7 @@ Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile k
 
 İşleme özgü uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel bir betik uzantısı vardır. Windows için özel Betik uzantısı, bir VM 'de herhangi bir PowerShell betiğinin çalıştırılmasını sağlar. Özel betikler, yerel Azure araçlarının sağlayabildiklerinin ötesinde yapılandırılması gereken Azure dağıtımlarını tasarlamak için yararlıdır. Daha fazla bilgi için bkz. [WINDOWS VM özel Betik uzantısı](custom-script-windows.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SANAL makinede uzantıyı işlemek için Azure Windows aracısının yüklü olması gerekir. Bazı ayrı uzantılar, kaynaklara veya bağımlılıklara erişim gibi önkoşullara sahiptir.
 
@@ -65,7 +65,7 @@ Bazı uzantılar tüm Işletim sistemlerinde desteklenmez ve *51 hata kodu, ' de
 
 #### <a name="network-access"></a>Ağ erişimi
 
-Uzantı paketleri Azure Storage uzantı deposundan indirilir ve uzantı durumu karşıya yüklemeleri Azure depolama 'ya gönderilir. Aracıların [desteklenen](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) sürümünü kullanıyorsanız, sanal makine bölgesindeki Azure depolama 'ya erişime izin vermeniz gerekmez, çünkü aracıyı aracı Iletişimleri için Azure Fabric denetleyicisi 'Ne (HostGAPlugin özelliği aracılığıyla) yeniden yönlendirmek için kullanabilir. Özel IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)üzerinde ayrıcalıklı kanal). Aracının desteklenmeyen bir sürümü kullanıyorsanız, VM 'den o bölgedeki Azure depolama 'ya giden erişime izin vermeniz gerekir.
+Uzantı paketleri Azure Storage uzantı deposundan indirilir ve uzantı durumu karşıya yüklemeleri Azure depolama 'ya gönderilir. Aracıların [desteklenen](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) sürümünü kullanıyorsanız, sanal makine bölgesinde Azure depolama 'ya erişime izin vermeniz gerekmez, çünkü aracıyı aracı Iletişimleri için Azure Fabric denetleyicisi 'Ne (HostGAPlugin özelliği, özel IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)üzerinde ayrıcalıklı kanal aracılığıyla) yeniden yönlendirmek için kullanabilir. Aracının desteklenmeyen bir sürümü kullanıyorsanız, VM 'den o bölgedeki Azure depolama 'ya giden erişime izin vermeniz gerekir.
 
 > [!IMPORTANT]
 > Konuk güvenlik duvarını veya bir ara sunucu kullanarak *168.63.129.16* 'e erişimi engellediğiniz takdirde, uzantılar yukarıdakilerden bağımsız olarak başarısız olur. 80, 443 ve 32526 bağlantı noktaları gereklidir.
@@ -252,6 +252,10 @@ Aşağıdaki örnekte gösterildiği gibi, komutu, **korumalı** yapılandırmay
 }
 ```
 
+Uzantılar kullanan bir Azure IaaS sanal makinesinde, sertifikalar konsolunda, **_Windows Azure CRP sertifika Oluşturucu_** olan sertifikalar ' ı görebilirsiniz. Klasik bir RDFE sanal makinesinde bu sertifikaların, **_Uzantılar Için Windows Azure hizmet yönetimi_** konu adı vardır.
+
+Bu sertifikalar, uzantılar tarafından kullanılan korumalı ayarların (parola, diğer kimlik bilgileri) aktarılması sırasında VM ile ana bilgisayar arasındaki iletişimin güvenliğini güvence altına alın. Sertifikalar Azure yapı denetleyicisi tarafından oluşturulur ve VM aracısına geçirilir. VM 'yi her gün durdurup başlatırsanız, yapı denetleyicisi tarafından yeni bir sertifika oluşturulabilir. Sertifika, bilgisayarın kişisel sertifikalar deposunda depolanır. Bu sertifikalar silinebilir. VM Aracısı gerekirse sertifikaları yeniden oluşturur.
+
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Aracılar ve uzantılar nasıl güncelleştirilir?
 
 Aracılar ve uzantılar aynı güncelleştirme mekanizmasını paylaşır. Bazı güncelleştirmeler ek güvenlik duvarı kuralları gerektirmez.
@@ -419,7 +423,7 @@ Azure portal bir uzantıyı aşağıdaki gibi da kaldırabilirsiniz:
 ## <a name="common-vm-extensions-reference"></a>Ortak VM uzantıları başvurusu
 | Uzantı adı | Açıklama | Daha fazla bilgi |
 | --- | --- | --- |
-| Windows için özel Betik uzantısı |Azure sanal makinesinde betikleri çalıştırma |[Windows için özel Betik uzantısı](custom-script-windows.md) |
+| Windows için özel Betik uzantısı |Azure sanal makinesinde betikleri çalıştırma |[Windows için Özel Betik Uzantısı](custom-script-windows.md) |
 | Windows için DSC Uzantısı |PowerShell DSC (Istenen durum yapılandırması) uzantısı |[Windows için DSC Uzantısı](dsc-overview.md) |
 | Azure Tanılama Uzantısı |Azure Tanılama Yönet |[Azure Tanılama Uzantısı](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM erişimi uzantısı |Kullanıcıları ve kimlik bilgilerini yönetme |[Linux için VM erişimi uzantısı](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |

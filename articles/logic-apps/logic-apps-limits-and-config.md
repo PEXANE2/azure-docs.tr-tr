@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 12/16/2019
-ms.openlocfilehash: 3c921bda1b839ee18a91b28f875ba7c84c0dd944
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/18/2020
+ms.openlocfilehash: 95960a0af628526eb11335ea5c2fcec51f3c66b5
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515046"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548552"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -47,8 +47,8 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
 | Ad | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
-| Çalıştırma süresi | 90 gün | 366 gün | Varsayılan sınırı değiştirmek için bkz. [çalışma süresini değiştirme](#change-duration). |
-| Depolama bekletme | çalıştırmanın başlangıç zamanından 90 gün | 366 gün | Varsayılan sınırı değiştirmek için bkz. [depolama bekletmesini değiştirme](#change-retention). |
+| Çalıştırma süresi | 90 gün | 366 gün | Çalıştırma [**süresi, bir**](#change-duration)çalıştırmanın başlangıç zamanı ve *Başlangıç zamanında* belirtilen sınır iş akışı ayarı kullanılarak hesaplanır. <p><p>90 gün olan varsayılan sınırı değiştirmek için bkz. [çalışma süresini değiştirme](#change-duration). |
+| Depolama alanında bekletme Çalıştır | 90 gün | 366 gün | Çalışma [**bekletme, bir**](#change-retention)çalıştırmanın başlangıç saati ve *geçerli zamanda* belirtilen sınır iş akışı ayarı kullanılarak hesaplanır. Bir çalıştırmanın tamamlanmasının veya zaman aşımına uğrayıp, bekletme hesaplamasının her zaman çalıştırmanın başlangıç saatini kullanır. Bir çalıştırmanın süresi *geçerli* saklama sınırını aştığında, çalıştırma işlemi çalışma geçmişinden kaldırılır. <p><p>Bu ayarı değiştirirseniz, önceki sınır ne olursa olsun, geçerli sınır her zaman bekletme hesaplaması için kullanılır. Örneğin, 90 günden 30 güne kadar olan bekletme sınırını azaldıysanız, çalışma geçmişinden önceki 60 gün sonra bir çalıştırma kaldırılır. Bekletme süresini 30 günden 60 güne kadar artırırsanız, 20 gün öncesine ait bir çalıştırma, çalışma geçmişinde başka bir 40 gün boyunca kalır. <p><p>90 gün olan varsayılan sınırı değiştirmek için bkz. [depolamada çalışma bekletmesini değiştirme](#change-retention). |
 | En az yinelenme aralığı | 1 saniye | 1 saniye ||
 | En fazla yinelenme aralığı | 500 gün | 500 gün ||
 |||||
@@ -56,9 +56,13 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 <a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-duration-and-storage-retention"></a>Çalışma süresini ve depolama bekletmesini değiştirme
+### <a name="change-run-duration-and-run-retention-in-storage"></a>Çalışma süresini değiştirme ve depolamada bekletme çalıştırma
 
-Çalışma süresi ve depolama saklama için varsayılan sınırı değiştirmek üzere aşağıdaki adımları izleyin. Maksimum limiti artırmak için, gereksinimlerle ilgili yardım için [Logic Apps ekibine başvurun](mailto://logicappsemail@microsoft.com) .
+Çalıştırma süresi için varsayılan sınırı değiştirmek ve depolamada bekletme çalıştırmak için aşağıdaki adımları izleyin. Maksimum limiti artırmak için, gereksinimlerle ilgili yardım için [Logic Apps ekibine başvurun](mailto://logicappsemail@microsoft.com) .
+
+> [!NOTE]
+> Çok kiracılı Azure 'da mantıksal uygulamalar için, 90 günlük varsayılan sınır, üst limitle aynıdır. Bu değeri yalnızca azaltabilirsiniz.
+> Bir tümleştirme hizmeti ortamındaki Logic Apps için 90 günlük varsayılan sınırı azaltabilir veya artırabilirsiniz.
 
 1. [Azure portalına](https://portal.azure.com) gidin. Portal arama kutusunda **Logic Apps**' i bulun ve seçin.
 
@@ -68,11 +72,9 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
 1. **Çalışma zamanı seçenekleri**altında, **gün cinsinden çalışma geçmişi saklama** listesinden **özel**' i seçin.
 
-1. Kaydırıcıyı istediğiniz gün sayısı için girin veya sürükleyin.
+1. İstediğiniz gün sayısını değiştirmek için kaydırıcıyı sürükleyin.
 
-   > [!NOTE]
-   > Çok kiracılı Azure 'da mantıksal uygulamalar için, 90 günlük varsayılan sınır, üst limitle aynıdır. Bu değeri yalnızca azaltabilirsiniz.
-   > Bir tümleştirme hizmeti ortamındaki Logic Apps için 90 günlük varsayılan sınırı azaltabilir veya artırabilirsiniz.
+1. İşiniz bittiğinde, **Iş akışı ayarları** araç çubuğunda **Kaydet**' i seçin.
 
 <a name="looping-debatching-limits"></a>
 
@@ -82,11 +84,11 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
 | Ad | Sınır | Notlar |
 | ---- | ----- | ----- |
-| Eşzamanlılık tetikleme | * Eşzamanlılık denetimi kapalıyken sınırsız <p><p>* 25 eşzamanlılık denetimi açık olduğunda varsayılan limit olan, denetimi etkinleştirdikten sonra geri alınamaz. Varsayılan değeri 1 ile 50 (dahil) arasında bir değer olarak değiştirebilirsiniz. | Bu sınır, aynı anda veya paralel olarak çalışabilen en yüksek mantıksal uygulama örneği sayısını açıklar. <p><p>**Note**: eşzamanlılık açık olduğunda, ayırma sınırı, [toplu işleme dizileri](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)için 100 öğeye düşürülür. <p><p>Varsayılan sınırı 1 ile 50 (dahil) arasında bir değere değiştirmek için, bkz. [tetikleyici eşzamanlılık sınırını değiştirme](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) veya [örnekleri sıralı olarak tetikleme](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
-| En fazla bekleyen çalışma | Eşzamanlılık denetimi açık olduğunda, bekleyen en az çalışma sayısı 10 ' un yanı sıra eşzamanlı çalıştırma sayısıdır (eşzamanlılık tetikleme). En büyük sayıyı, ikisi de dahil olmak üzere 100 olarak değiştirebilirsiniz. | Bu sınır, mantıksal uygulamanız zaten maksimum eşzamanlı örnekleri çalıştırıyorsa çalışmayı bekleyebilecekleri en yüksek mantıksal uygulama örneği sayısını açıklar. <p><p>Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
+| Eşzamanlılık tetikleme | -Eşzamanlılık denetimi kapalıyken sınırsız <p><p>-25, eşzamanlılık denetimi açık olduğunda varsayılan limit olan, denetimi etkinleştirdikten sonra geri alınamaz. Varsayılan değeri 1 ile 50 (dahil) arasında bir değer olarak değiştirebilirsiniz. | Bu sınır, aynı anda veya paralel olarak çalışabilen en yüksek mantıksal uygulama örneği sayısını açıklar. <p><p>**Note**: eşzamanlılık açık olduğunda, ayırma sınırı, [toplu işleme dizileri](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)için 100 öğeye düşürülür. <p><p>Varsayılan sınırı 1 ile 50 (dahil) arasında bir değere değiştirmek için, bkz. [tetikleyici eşzamanlılık sınırını değiştirme](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) veya [örnekleri sıralı olarak tetikleme](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| En fazla bekleyen çalışma | -Eşzamanlılık olmadan en az 1, en yüksek sayı 50 olur. <p><p>-Eşzamanlılık ile en az bir bekleyen çalışma sayısı 10 ve eşzamanlı çalıştırma sayısıdır (eşzamanlılık tetikleme). En büyük sayıyı, ikisi de dahil olmak üzere 100 olarak değiştirebilirsiniz. | Bu sınır, mantıksal uygulamanız zaten maksimum eşzamanlı örnekleri çalıştırıyorsa çalışmayı bekleyebilecekleri en yüksek mantıksal uygulama örneği sayısını açıklar. <p><p>Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | Foreach dizi öğeleri | 100.000 | Bu sınır, "for each" döngüsünün işleyebilecekleri en yüksek dizi öğesi sayısını tanımlar. <p><p>Daha büyük dizileri filtrelemek için [sorgu eylemini](logic-apps-perform-data-operations.md#filter-array-action)kullanabilirsiniz. |
 | Foreach eşzamanlılık | Eşzamanlılık denetimi kapalıyken 20 varsayılan limit olur. Varsayılan değeri 1 ile 50 (dahil) arasında bir değer olarak değiştirebilirsiniz. | Bu sınır, aynı anda veya paralel olarak çalışabilen en yüksek "for each" döngüsü yinelemesi sayısıdır. <p><p>Varsayılan sınırı 1 ile 50 (dahil) arasında bir değere değiştirmek için, bkz. ["her bir eşzamanlılık sınırı" değiştirme](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) veya ["for each" döngülerini sırayla çalıştırma](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
-| SplitOn öğeleri | * Eşzamanlılık tetikleyicisi olmadan * 100.000 <p><p>* Eşzamanlılık tetikleme ile 100 | Bir dizi döndüren Tetikleyiciler için, dizi öğelerini bir "foreach" döngüsü kullanmak yerine [birden çok iş akışı örneğine ayıran veya](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) içermeyen bir ' spton ' özelliği kullanan bir ifade belirtebilirsiniz. Bu ifade, her dizi öğesi için bir iş akışı örneği oluşturmak ve çalıştırmak için kullanılacak diziye başvurur. <p><p>**Note**: eşzamanlılık açık olduğunda, spton limiti 100 öğeye düşürülür. |
+| SplitOn öğeleri | -100.000 eşzamanlılık tetikleyicisi olmadan <p><p>-100 eşzamanlılık Tetikle | Bir dizi döndüren Tetikleyiciler için, dizi öğelerini bir "foreach" döngüsü kullanmak yerine [birden çok iş akışı örneğine ayıran veya](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) içermeyen bir ' spton ' özelliği kullanan bir ifade belirtebilirsiniz. Bu ifade, her dizi öğesi için bir iş akışı örneği oluşturmak ve çalıştırmak için kullanılacak diziye başvurur. <p><p>**Note**: eşzamanlılık açık olduğunda, spton limiti 100 öğeye düşürülür. |
 | Yinelemelere kadar | 5\.000 | |
 ||||
 

@@ -3,12 +3,12 @@ title: Şifrelenmiş Azure VM 'lerini yedekleme ve geri yükleme
 description: Azure Backup hizmetiyle şifrelenmiş Azure VM 'lerinin nasıl yedeklendiğini ve geri yükleneceğini açıklar.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449977"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513788"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Şifrelenmiş Azure VM 'yi yedekleme ve geri yükleme
 
@@ -53,7 +53,6 @@ Başlamadan önce aşağıdakileri yapın:
 Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
 
 - VM **ARACıSıNı VM 'ye yükleme**: Azure Backup makinede çalışan Azure VM aracısına bir uzantı yükleyerek Azure VM 'lerini yedekler. VM 'niz bir Azure Marketi görüntüsünden oluşturulduysa, aracı yüklenir ve çalışır. Özel bir VM oluşturursanız veya şirket içi bir makineyi geçirirseniz, [aracıyı el ile yüklemeniz](backup-azure-arm-vms-prepare.md#install-the-vm-agent)gerekebilir.
-- **Giden erişime açıkça izin ver**: genel olarak, Azure Backup ile iletişim kurması Için BIR Azure VM 'ye giden ağ erişimine açıkça izin vermeniz gerekmez. Ancak, bazı VM 'Ler bağlantı sorunlarıyla karşılaşabilir ve bağlanmaya çalışırken **Extensionsnapshotfailednonetwork** hatası gösterir. Bu durumda, Azure Backup uzantısı yedekleme trafiği için Azure genel IP adresleriyle iletişim kurabildiğinden, [giden erişime açık bir şekilde izin vermeniz](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access)gerekir.
 
 ## <a name="configure-a-backup-policy"></a>Yedekleme ilkesi yapılandırma
 

@@ -3,12 +3,12 @@ title: Azure geçişi 'nde sık sorulan sorular-bulma, değerlendirme ve bağım
 description: Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizi hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 5afda40f4953b8eb51a757034661eb5a3349cd10
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292374"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513295"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Bulma, değerlendirme ve bağımlılık analizi hakkında sık sorulan sorular
 
@@ -99,7 +99,7 @@ Hayır, bağımlılık görselleştirmesi verilemiyor. Bununla birlikte, Azure g
 
 [Bağımlılık aracısını yüklemek için bu betiği](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)kullanın. Komut satırını veya Otomasyonu kullanarak [MMA 'yı yüklemek için bu yönergeleri](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) izleyin. MMA için [bu betiği](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)kullanın.
 
-Betiklerin yanı sıra, aracıları dağıtmak için System Center Configuration Manager ve [ıntigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) gibi dağıtım araçlarını da kullanabilirsiniz.
+Betiklerin yanı sıra, aracıları dağıtmak için Microsoft uç nokta Configuration Manager ve [ıntigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) gibi dağıtım araçlarını da kullanabilirsiniz.
 
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA hangi işletim sistemlerini destekler?

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 4629e4e9cfd5c8f9861b692b2aec89057f83587c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2377cc2e0824911217fbc2783fdf8e86fd7b9405
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442914"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549215"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Küme güvenliği ve yükseltmeler Azure Kubernetes Service (AKS) için en iyi uygulamalar
 
@@ -24,7 +24,7 @@ Bu makalede, AKS kümenizin güvenliğini sağlama konusunda odaklanır. Aşağ�
 > * API sunucusu erişimi güvenli hale getirmek için Azure Active Directory ve rol tabanlı erişim denetimleri kullanma
 > * Kapsayıcı düğümü kaynaklarına güvenli erişim
 > * Bir AKS kümesi son Kubernetes sürümüne yükseltmek için
-> * Düğümleri güncelleştirme güncel tutulmasını ve güvenlik düzeltme eklerini otomatik olarak Uygula
+> * Düğümleri güncel tut ve güvenlik düzeltme eklerini otomatik olarak Uygula
 
 Ayrıca, [kapsayıcı görüntüsü yönetimi][best-practices-container-image-management] ve [Pod güvenliği][best-practices-pod-security]için en iyi yöntemleri okuyabilirsiniz.
 

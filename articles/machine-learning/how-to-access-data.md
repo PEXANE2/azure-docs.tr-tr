@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4de8b032bd284ce0a2d6d8fd168b9ea3dd4937d3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6867862c130bf6f0b7cc34098064f6ce6eec282b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289059"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543504"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure Storage hizmetlerindeki verilere erişme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,7 @@ Gerekenler:
 
 ## <a name="supported-data-storage-service-types"></a>Desteklenen veri depolama hizmeti türleri
 
-Datamağazaların Şu anda aşağıdaki matriste listelenen depolama hizmetlerine bağlantı bilgilerini depolamayı desteklemektedir.
+Datamağazaların Şu anda aşağıdaki matriste listelenen depolama hizmetlerine bağlantı bilgilerini depolamayı desteklemektedir. Azure veri ambarı Şu anda desteklenmez. 
 
 | Depolama&nbsp;türü | Kimlik doğrulama&nbsp;türü | [Azure&nbsp;Machine&nbsp;öğrenme Studio](https://ml.azure.com/) | [Azure&nbsp;Machine&nbsp;öğrenme&nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;Machine&nbsp;öğrenme CLı](reference-azure-machine-learning-cli.md) | [Azure&nbsp;Machine&nbsp;öğrenme&nbsp; REST API 'SI](https://docs.microsoft.com/rest/api/azureml/)
 ---|---|---|---|---|---

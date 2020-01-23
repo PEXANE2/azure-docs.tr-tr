@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/24/2019
+ms.date: 01/22/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd57523dd41eadcf64ceb1e4a1c8d8ba083c17f0
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0c1b6f5ebffa39d3b735e85df794e37329e3aa2e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608746"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548909"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bağlı bir kuruluş ekleme
 
@@ -31,9 +31,12 @@ Azure AD Yetkilendirme Yönetimi, kuruluşunuzun dışındaki kişilerle işbirl
 
 Bağlı bir kuruluş, ile ilişkiniz olan bir dış Azure AD dizini veya etki alanıdır.
 
-Örneğin, Woodgrove Bank 'ta çalıştığınızı ve iki harici kurum ile işbirliği yapmak istediğinizi varsayalım: grafik tasarımı Enstitüsü ve contoso. Bu kişi, Azure AD kullandıkları ve grafik tasarımı Enstitüsü kullanıcılarının `graphicdesigninstitute.com`biten bir Kullanıcı asıl adına sahip olduğu grafik tasarımı Enstitüsü ' nde sizinle iletişim kurdık. Ayrıca, contoso 'da henüz Azure AD kullanmayan, ancak contoso kullanıcılarının `contoso.com`biten bir Kullanıcı asıl adına sahip olduğu bildirilir.
+Örneğin, Woodgrove Bank 'ta çalıştığınızı ve iki harici kurum ile işbirliği yapmak istediğinizi varsayalım. Bu iki kuruluş farklı yapılandırmalara sahiptir:
 
-Bir adet bağlı iki kuruluş yapılandırabilirsiniz. Grafik Tasarım Enstitüsü için bir tane, etki alanı `graphicdesigninstitute.com`ve diğeri de etki alanı `contoso.com`ile Contoso için. Daha sonra bu iki bağlı kuruluşu bir ilkeye eklerseniz, ilke ile eşleşen bir Kullanıcı asıl adına sahip olan her kuruluştan kullanıcılar erişim paketleri isteyebilir. Ayrıca, grafik tasarımı Enstitüsü Azure AD 'yi kullanarak tanımlanmış olduğundan, grafik tasarımı Enstitüsü 'Nün daha sonra `graphicdesigninstitute.example`gibi alt etki alanları varsa, bu kullanıcı asıl adına sahip kullanıcılar aynı ilkeyi kullanarak erişim paketleri de isteyebilir.
+- Grafik tasarımı Enstitüsü, Azure AD kullanır ve kullanıcıların `graphicdesigninstitute.com` ile biten bir Kullanıcı asıl adı vardır
+- Contoso henüz Azure AD kullanmıyor. Contoso kullanıcıları `contoso.com`ile biten bir Kullanıcı asıl adına sahiptir.
+
+Bu durumda, iki bağlı kuruluş yapılandırabilirsiniz. Grafik Tasarım Enstitüsü için bir bağlı kuruluş ve contoso için bir tane oluşturabilirsiniz. Daha sonra bu iki bağlı kuruluşu bir ilkeye eklerseniz, her kuruluştan Kullanıcı asıl adı ilkeyle eşleşen kullanıcılar erişim paketleri isteyebilir. Graphicdesigninstitute.com etki alanına sahip bir Kullanıcı asıl adına sahip olan kullanıcılar, grafik tasarımı Enstitüsü bağlı kuruluşla eşleşir ve bir etki alanına sahip olan Kullanıcı asıl adına sahip kullanıcılar da eşleşirken istek göndermesine izin verilir Contoso bağlantılı kuruluşun ve ayrıca paket istemesine izin verilir. Ayrıca, grafik tasarımı Enstitüsü Azure AD ' yi kullandığından, bir asıl adına sahip olan ve graphicdesignınstitute gibi kiracılarına eklenen [doğrulanmış bir etki alanıyla](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) eşleşen tüm kullanıcılar. Örneğin, aynı ilkeyi kullanarak erişim paketleri de isteyebilecektir.
 
 ![Bağlı kuruluş örneği](./media/entitlement-management-organization/connected-organization-example.png)
 

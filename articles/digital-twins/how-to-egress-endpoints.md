@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 95dbed72aeca639041d259e9c92c2a3b73ef63fe
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/21/2020
+ms.openlocfilehash: 3803802a3d81655091d8be543ae9cb17221a98d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456918"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511578"
 ---
 # <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure dijital TWINS 'teki çıkış ve uç noktalar
 
@@ -23,7 +23,7 @@ Olaylar, önceden tanımlanmış yönlendirme tercihlerine göre uç noktalara y
 
 Olaylar, Yönlendirme ve olay türleri hakkında daha fazla bilgi edinmek için bkz. [Azure dijital TWINS 'de yönlendirme olayları ve iletileri](./concepts-events-routing.md).
 
-## <a name="events"></a>Olaylar
+## <a name="events"></a>Etkinlikler
 
 Olaylar, Azure ileti ve olay aracıları tarafından işlenmek üzere IoT nesneleri (cihazlar ve algılayıcılar gibi) tarafından gönderilir. Olaylar aşağıdaki [Azure Event Grid olay şeması başvurusu](../event-grid/event-schema.md)tarafından tanımlanır.
 
@@ -50,13 +50,13 @@ Olaylar, Azure ileti ve olay aracıları tarafından işlenmek üzere IoT nesnel
 | Öznitelik | Tür | Açıklama |
 | --- | --- | --- |
 | id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| subject | string | Olay konusunun yayımcı tanımlı yolu. |
+| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
 | data | object | Kaynak sağlayıcısına özel olay verileri. |
 | eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
-| topic | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 
 Event Grid olay şeması hakkında daha fazla bilgi için:
 
@@ -248,7 +248,7 @@ Aşağıdaki örneklerde desteklenen uç noktaların nasıl yapılandırılacağ
 
 Kimliği doğrulanmış bir HTTP POST isteği şu şekilde yapılır:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 

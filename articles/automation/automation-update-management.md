@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4efe9fe8dd1f006cb21c60c4c0e086264af26561
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 9e03ba960ab6542198372d75de7e0d34bf8d9e1b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310110"
+ms.locfileid: "76513329"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
@@ -100,7 +100,7 @@ Aşağıdaki bilgiler, işletim sistemine özgü istemci gereksinimlerini açık
 
 Windows aracılarının bir WSUS sunucusu ile iletişim kurmak için yapılandırılması gerekir veya Microsoft Update erişimi olmalıdır.
 
-System Center Configuration Manager Güncelleştirme Yönetimi kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz. [Güncelleştirme Yönetimi System Center Configuration Manager tümleştirme](oms-solution-updatemgmt-sccmintegration.md#configuration). [Windows Aracısı](../azure-monitor/platform/agent-windows.md) gereklidir. Bir Azure VM 'yi oluşturuyorsanız, aracı otomatik olarak yüklenir.
+Configuration Manager Güncelleştirme Yönetimi kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz. [Güncelleştirme Yönetimi Configuration Manager tümleştirme](oms-solution-updatemgmt-sccmintegration.md#configuration). [Windows Aracısı](../azure-monitor/platform/agent-windows.md) gereklidir. Bir Azure VM 'yi oluşturuyorsanız, aracı otomatik olarak yüklenir.
 
 Varsayılan olarak, Azure Marketi 'nden dağıtılan Windows VM 'Leri Windows Update hizmetinden otomatik güncelleştirmeleri alacak şekilde ayarlanır. Bu çözümü eklediğinizde veya çalışma alanınıza Windows VM 'Leri eklediğinizde bu davranış değişmez. Bu çözümü kullanarak güncelleştirmeleri etkin bir şekilde yönetmezseniz varsayılan davranış (güncelleştirmeleri otomatik olarak uygulamak için) geçerlidir.
 
@@ -192,15 +192,65 @@ Karma Runbook Worker için gereken bağlantı noktaları hakkında daha fazla bi
 
 İnternet erişimi olmayan makineleri yapılandırmak için [İnternet erişimi olmadan bilgisayarları bağlama](../azure-monitor/platform/gateway.md) bölümündeki yönergeleri izleyin.
 
-## <a name="integrate-with-system-center-configuration-manager"></a>System Center Configuration Manager ile tümleştirme
+## <a name="view-update-assessments"></a>Güncelleştirme değerlendirmelerini görüntüleme
 
-Bilgisayarları, sunucuları ve mobil cihazları yönetmek için System Center Configuration Manager yatırım yapmış müşteriler, yazılım güncelleştirmelerini yönetmeye yardımcı olmak için Configuration Manager kuvvetini ve vadede yararlanır. Configuration Manager, yazılım güncelleştirme yönetimi (SUM) döngüsünün bir parçasıdır.
+Otomasyon hesabınızda, makinelerinizin durumunu görüntülemek için **güncelleştirme yönetimi** ' yi seçin.
 
-Yönetim çözümünü System Center Configuration Manager ile tümleştirmeyi öğrenmek için bkz. [System Center Configuration Manager güncelleştirme yönetimi Ile tümleştirme](oms-solution-updatemgmt-sccmintegration.md).
+Bu görünüm, makineleriniz, eksik güncelleştirmeler, güncelleştirme dağıtımları ve zamanlanmış güncelleştirme dağıtımları hakkında bilgi sağlar. **Uyumluluk** sütununda, makinenin en son değerlendirildiğini görebilirsiniz. **GÜNCELLEŞTIRME ARACıSı hazırlığı** sütununda, güncelleştirme aracısının sistem durumunu kontrol edebilirsiniz. Bir sorun varsa, sorunu düzeltmenize yardımcı olabilecek sorun giderme belgelerine gitmek için bağlantıyı seçin.
+
+Makine, güncelleştirme veya dağıtım hakkında bilgi döndüren bir günlük araması çalıştırmak için, listeden karşılık gelen öğeyi seçin. **Günlük araması** bölmesi, seçilen öğe için bir sorgu ile açılır:
+
+![Güncelleştirme Yönetimi varsayılan görünüm](media/automation-update-management/update-management-view.png)
+
+## <a name="view-missing-updates"></a>Eksik güncelleştirmeleri görüntüle
+
+Makinelerinizde bulunmayan güncelleştirmelerin listesini görüntülemek için **eksik güncelleştirmeler** ' i seçin. Her güncelleştirme listelenir ve seçilebilir. Güncelleştirme, işletim sistemi ve daha fazla bilgi için bir bağlantı gerektiren makine sayısı hakkında bilgi gösterilir. **Günlük araması** bölmesinde güncelleştirmeler hakkında daha fazla ayrıntı görüntülenir.
+
+![Eksik güncelleştirmeler](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
+
+## <a name="update-classifications"></a>Güncelleştirme sınıflandırmaları
+
+Aşağıdaki tablolar, Güncelleştirme Yönetimi ' deki güncelleştirme sınıflandırmalarını her sınıflandırma için bir tanım ile listeler.
+
+### <a name="windows"></a>Windows
+
+|Sınıflandırma  |Açıklama  |
+|---------|---------|
+|Kritik güncelleştirmeler     | Kritik, güvenlikle ilgili olmayan bir hatayı ele alan belirli bir sorun için güncelleştirme.        |
+|Güvenlik güncelleştirmeleri     | Ürüne özgü, güvenlikle ilgili bir sorun için bir güncelleştirme.        |
+|Güncelleştirme paketleri     | Kolay dağıtım için bir arada paketlenmiş toplu bir düzeltme kümesi.        |
+|Özellik paketleri     | Ürün sürümü dışında dağıtılan yeni ürün özellikleri.        |
+|Hizmet paketleri     | Bir uygulamaya uygulanan toplu bir düzeltme kümesi.        |
+|Tanım güncelleştirmeleri     | Virüs veya diğer tanım dosyalarına yönelik bir güncelleştirme.        |
+|Araçlar     | Bir veya daha fazla görevi tamamlamaya yardımcı olan bir yardımcı program veya özellik.        |
+|Güncellemeler     | Şu anda yüklü olan bir uygulama veya dosyaya yönelik bir güncelleştirme.        |
+
+### <a name="linux-2"></a>'Un
+
+|Sınıflandırma  |Açıklama  |
+|---------|---------|
+|Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri     | Belirli bir sorun veya ürüne özgü, güvenlikle ilgili bir sorun için güncelleştirmeler.         |
+|Diğer güncelleştirmeler     | Doğası gereği önemli olmayan veya güvenlik güncelleştirmeleri olmayan diğer tüm güncelleştirmeler.        |
+
+Linux için Güncelleştirme Yönetimi, bulutta veri zenginleştirme nedeniyle değerlendirme verilerini görüntülerken buluttaki kritik güncelleştirmeler ve güvenlik güncelleştirmeleri arasında ayrım yapabilir. Düzeltme eki uygulama Güncelleştirme Yönetimi makinede bulunan sınıflandırma verilerine bağımlıdır. Diğer dağıtımlardan farklı olarak, CentOS bu bilgileri RTM sürümünde kullanılamaz. Aşağıdaki komut için güvenlik verilerini döndürecek şekilde yapılandırılmış CentOS makineleriniz varsa, Güncelleştirme Yönetimi sınıflandırmalara göre düzeltme eki uygulanabilir.
+
+```bash
+sudo yum -q --security check-update
+```
+
+Şu anda yerel sınıflandırmanın etkinleştirilmesi için desteklenen bir yöntem yok-CentOS üzerinde veri kullanılabilirliği. Şu anda, bu özelliği kendi kendilerine etkinleştirmiş olabilecek müşterilere yalnızca en iyi çaba desteği sağlanır. 
+
+Red Hat Enterprise sürüm 6 ' da güncelleştirmeleri sınıflandırmak için, yıum-güvenlik eklentisini yüklemeniz gerekir. Red Hat Enterprise Linux 7 ' de, eklenti zaten bir yalnızca bir parçası olduğundan, herhangi bir şey yüklemeye gerek yoktur. Daha fazla bilgi için aşağıdaki Red hat [Bilgi Bankası makalesine](https://access.redhat.com/solutions/10021)bakın.
+
+## <a name="integrate-with-configuration-manager"></a>Configuration Manager ile tümleştirme
+
+Bilgisayarları, sunucuları ve mobil cihazları yönetmek için Microsoft uç nokta Configuration Manager yatırım yapmış müşteriler, yazılım güncelleştirmelerini yönetmeye yardımcı olmak için Configuration Manager kuvvetini ve vadede yararlanır. Configuration Manager, yazılım güncelleştirme yönetimi (SUM) döngüsünün bir parçasıdır.
+
+Yönetim çözümünü Configuration Manager ile tümleştirmeyi öğrenmek için bkz. [Configuration Manager güncelleştirme yönetimi Ile tümleştirme](oms-solution-updatemgmt-sccmintegration.md).
 
 ### <a name="third-party-patches-on-windows"></a>Windows 'da üçüncü taraf düzeltme ekleri
 
-Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. Bu, WSUS veya Windows Update. [System Center Updates Publisher](/sccm/sum/tools/updates-publisher) (Updates Publisher) gibi araçlar, özel güncelleştirmeleri WSUS 'ta yayımlamanıza izin verir. Bu senaryo Güncelleştirme Yönetimi, üçüncü taraf yazılımlarla güncelleştirme deposu olarak System Center Configuration Manager kullanan makinelere yaması sağlar. Updates Publisher 'ı yapılandırma hakkında bilgi edinmek için bkz. [Updates Publisher 'ı yüklemek](/sccm/sum/tools/install-updates-publisher).
+Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. Bu, WSUS veya Windows Update. [System Center Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/updates-publisher) (Updates Publisher) gibi araçlar, özel güncelleştirmeleri WSUS 'ta yayımlamanıza izin verir. Bu senaryo Güncelleştirme Yönetimi, üçüncü taraf yazılımlarla güncelleştirme deposu olarak Configuration Manager kullanan makinelere yaması sağlar. Updates Publisher 'ı yapılandırma hakkında bilgi edinmek için bkz. [Updates Publisher 'ı yüklemek](https://docs.microsoft.com/configmgr/sum/tools/install-updates-publisher).
 
 ## <a name="patch-linux-machines"></a>Linux makinelerini yama
 

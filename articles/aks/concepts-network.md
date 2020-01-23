@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 429205d1df91b5a63679d1189903e5340ab837f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913892"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547974"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ağ kavramları
 
@@ -45,7 +45,7 @@ Kubernetes, uygulama iş yüklerine yönelik ağ yapılandırmasını basitleşt
 
     ![AKS kümesinde NodePort trafik akışını gösteren diyagram][aks-nodeport]
 
-- **LoadBalancer** -bir Azure yük dengeleyici kaynağı oluşturur, bir dış IP adresi yapılandırır ve istenen Pod 'leri yük dengeleyici arka uç havuzuna bağlar. Müşteri trafiğinin uygulamaya erişmesine izin vermek için, istenen bağlantı noktalarında Yük Dengeleme kuralları oluşturulur. 
+- **LoadBalancer** -bir Azure yük dengeleyici kaynağı oluşturur, bir dış IP adresi yapılandırır ve istenen Pod 'leri yük dengeleyici arka uç havuzuna bağlar. Müşterilerin trafiğinin uygulamaya erişmesine izin vermek için, istenen bağlantı noktalarında Yük Dengeleme kuralları oluşturulur. 
 
     ![AKS kümesinde Load Balancer trafik akışını gösteren diyagram][aks-loadbalancer]
 
@@ -115,7 +115,7 @@ Kullandığınız ağ modelinden bağımsız olarak, hem Kubernetes kullanan hem
 * Azure platformu, bir AKS kümesi oluştururken sanal ağ kaynaklarını otomatik olarak oluşturabilir ve yapılandırabilir.
 * Sanal ağ kaynaklarını el ile oluşturup yapılandırabilir ve AKS kümenizi oluştururken bu kaynaklara iliştirebilirsiniz.
 
-Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örnek:
+Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örneğin:
 
 * Bir AKS kümesi için sanal ağ kaynaklarını el ile oluşturursanız, kendi UDRs veya hizmet uç noktalarınızı yapılandırırken desteklenemez.
 * Azure platformu AKS kümeniz için sanal ağ kaynaklarını otomatik olarak oluşturursa, kendi UDRs veya hizmet uç noktalarınızı yapılandırmak için bu AKS tarafından yönetilen kaynakların el ile değiştirilmesi desteklenmez.

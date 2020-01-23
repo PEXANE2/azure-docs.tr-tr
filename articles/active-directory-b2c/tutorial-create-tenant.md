@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b7e872f3320a2c72b6e9fb3ffba65510b205ca03
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9cb23dc11a853401d8d99a750a0c79082adbe036
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425588"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547600"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Öğretici: Azure Active Directory B2C kiracı oluşturma
 
@@ -43,7 +43,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     ![Abonelik kiracısı, Dizin + abonelik kiracısı seçiliyken abonelik filtresi](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
-1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin.
+1. Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 1. **Azure Active Directory B2C**araması yapın ve ardından **Oluştur**' u seçin.
 1. **Yeni Azure AD B2C Kiracısı oluştur**’u seçin.
 
@@ -68,6 +68,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     **Kaynak grubu** için **Yeni oluştur**’u seçin. Kiracıyı içerecek kaynak grubu için bir **ad** girin, **kaynak grubu konumunu**seçin ve ardından **Oluştur**' u seçin.
 
     ![Azure portal abonelik ayarları formu bağlantısı](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
+    
+    Faturalama amacıyla birden çok Azure AD B2C kiracıyı tek bir Azure aboneliğine bağlayabilirsiniz. 
 
 ## <a name="select-your-b2c-tenant-directory"></a>B2C kiracı dizininizi seçin
 

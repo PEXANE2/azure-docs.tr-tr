@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16920a46e64306daa331957df24babba8ac4b731
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: a9f9c6ebd55752ea5a3400da8d42b6c6487277df
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612879"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514655"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Öğretici: IoT Edge cihaz yapılandırma
 
@@ -262,7 +262,7 @@ Ardından, config. YAML dosyasını doğrudan düzenleyerek sertifikaları ve an
       trusted_ca_certs: "/edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem"
     ```
 
-    "Certificates:" nın önünde boşluk olmadığından ve sertifikaların her birinin önünde iki boşluk olmadığından emin olun.
+    **Sertifikalarda:** Line 'ın önünde boşluk olmadığından ve iç içe sertifikaların her birinin iki boşlukla girintilendiğinden emin olun.
 
     Nano 'da sağ tıklama, panonuzun içeriğini geçerli imleç konumuna yapıştırır. Dizeyi değiştirmek için, değiştirmek istediğiniz dizeye gitmek üzere klavye oklarını kullanın, dizeyi silin ve sonra arabellekten yapıştırmak için sağ tıklayın.
 

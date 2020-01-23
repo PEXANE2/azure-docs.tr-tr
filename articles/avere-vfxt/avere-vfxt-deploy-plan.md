@@ -4,14 +4,14 @@ description: Azure için avere vFXT dağıtılmadan önce yapılacak planlamayı
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 5ffa28a0f6080b94bd47519df578fd15309dbab5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: cd0c74c8aa40b3e96716ef37aa27b08b5f6aece1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153657"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547549"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Avere vFXT sisteminizi planlama
 
@@ -175,6 +175,6 @@ Avere vFXT sanal makineleri için iki yerleşik Azure rolü kullanılır:
 
 Avere vFXT bileşenleri için erişim rollerini özelleştirmeniz gerekiyorsa, kendi rolünüzü tanımlamanız ve sonra bunları oluşturuldukları sırada VM 'lere atamanız gerekir. Dağıtım şablonunu Azure Marketi 'nde kullanamazsınız. Azure portal bir bileti açarak, [sisteminizle ilgili yardım alın](avere-vfxt-open-ticket.md)bölümünde açıklandığı gibi, Microsoft Müşteri Hizmetleri ve desteği 'ne başvurun.
 
-## <a name="next-step-understand-the-deployment-process"></a>Sonraki adım: dağıtım sürecini anlama
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Dağıtıma genel bakış](avere-vfxt-deploy-overview.md) , Azure sistemi Için avere vFXT oluşturmak ve verileri sunmaya hazırlamak için gereken adımların büyük resim görünümünü sağlar.

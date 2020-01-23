@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1e71f6f711bcee78538c573a8869b8fdfa2a10b0
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 9828309b080f5831a073fb7c5149455dc649fa13
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664634"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513805"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -180,7 +180,7 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 
 ## <a name="common-vm-backup-errors"></a>Ortak VM yedekleme hataları
 
-| Hata Ayrıntıları | Geçici çözüm |
+| Hata ayrıntıları | Geçici çözüm |
 | ------ | --- |
 | **Hata kodu**: 320001, ResourceNotFound <br/> **Hata iletisi**: VM artık mevcut olmadığından işlem gerçekleştirilemedi. <br/> <br/> **Hata kodu**: 400094, BCMV2VMNotFound <br/> **Hata iletisi**: sanal makine yok <br/> <br/>  Azure sanal makinesi bulunamadı.  |Birincil VM silindiğinde bu hata oluşur, ancak yedekleme ilkesi hala bir VM 'yi yedekleyecek şekilde arar. Bu hatayı onarmak için aşağıdaki adımları uygulayın: <ol><li> Aynı ada ve aynı kaynak grubu adına sahip sanal makineyi yeniden oluşturun, **bulut hizmeti adı**,<br>**veya**</li><li> Yedekleme verilerini silmeden sanal makineyi korumayı durdurun. Daha fazla bilgi için bkz. [sanal makineleri korumayı durdurma](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
 |**Hata kodu**: usererrorbcmpremıumstoragequotaerror<br/> **Hata iletisi**: depolama hesabında yeterli boş alan olmadığından sanal makinenin anlık görüntüsü kopyalanamadı | VM yedekleme yığını v1 'deki Premium VM 'Ler için, anlık görüntüyü depolama hesabına kopyalayacağız. Bu adım, anlık görüntüde kullanılan yedekleme yönetimi trafiğinin Premium diskler kullanılarak uygulama için kullanılabilir ıOPS sayısını sınırlandırmaz olmasını sağlar. <br><br>Toplam depolama hesabı alanını yalnızca yüzde 50, 17,5 TB olarak ayırmanız önerilir. Ardından Azure Backup hizmeti, anlık görüntüyü depolama hesabına kopyalayabilir ve depolama hesabındaki bu kopyalanmış konumdan kasaya veri aktarabilir. |
@@ -193,7 +193,7 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 
 ## <a name="jobs"></a>İş
 
-| Hata Ayrıntıları | Geçici çözüm |
+| Hata ayrıntıları | Geçici çözüm |
 | --- | --- |
 | Bu iş türü için iptal desteklenmez: <br>İş bitene kadar bekleyin. |Hiçbiri |
 | İş iptal edilebilen durumunda değil: <br>İş bitene kadar bekleyin. <br>**veya**<br> Seçilen iş iptal edilebilen bir durumda değil: <br>İşin bitmesini bekleyin. |İşin neredeyse tamamlanmış olması olasıdır. İş tamamlanana kadar bekleyin.|
@@ -202,7 +202,7 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 
 ## <a name="restore"></a>Geri Yükleme
 
-| Hata Ayrıntıları | Geçici çözüm |
+| Hata ayrıntıları | Geçici çözüm |
 | --- | --- |
 | Geri yükleme, bir bulut iç hatasıyla başarısız oldu. |<ol><li>Geri yüklemeye çalıştığınız bulut hizmeti DNS ayarları ile yapılandırılmış. Şunları kontrol edebilirsiniz: <br>**$Deployment = Get-AzureDeployment-ServiceName "HizmetAdı"-slot "üretim" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>**Adres** yapılandırıldıysa DNS ayarları yapılandırılır.<br> <li>Geri yüklemeye çalıştığınız bulut hizmeti **ReservedIP**ile yapılandırılmış ve bulut hizmetindeki mevcut VM 'ler durdurulmuş durumda. Aşağıdaki PowerShell cmdlet 'lerini kullanarak bir bulut hizmetinin bir IP 'yi ayırmış olduğunu kontrol edebilirsiniz: **$Deployment = Get-AzureDeployment-ServiceName "HizmetAdı"-slot "üretim" $DEP. Rezervedipname**. <br><li>Aşağıdaki özel ağ yapılandırmalarına sahip bir sanal makineyi aynı bulut hizmetine geri yüklemeye çalışıyorsunuz: <ul><li>Yük dengeleyici yapılandırması, iç ve dış kapsamındaki sanal makineler.<li>Birden çok ayrılmış IP 'ye sahip sanal makineler. <li>Birden çok NIC içeren sanal makineler. </ul><li>Kullanıcı arabiriminde yeni bir bulut hizmeti seçin veya özel ağ yapılandırmalarına sahip VM 'Ler için [geri yükleme konularına](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) bakın.</ol> |
 | Seçilen DNS adı zaten alınmış: <br>Farklı bir DNS adı belirtip yeniden deneyin. |Bu DNS adı, genellikle **. cloudapp.net**ile biten bulut hizmeti adına başvurur. Bu adın benzersiz olması gerekir. Bu hatayı alırsanız geri yükleme sırasında farklı bir VM adı seçmeniz gerekir. <br><br> Bu hata yalnızca Azure portal kullanıcılarına gösterilir. PowerShell aracılığıyla geri yükleme işlemi, yalnızca diskleri geri yüklediği ve VM 'yi oluşturmadığından başarılı olur. VM, disk geri yükleme işleminden sonra sizin tarafınızdan açıkça oluşturulduğunda, hata alınacaktır. |
@@ -262,7 +262,6 @@ Windows VM 'lerinde VM Aracısı sürümünü doğrulama:
 
 VM yedeklemesi, temel depolama alanına anlık görüntü komutları vermeyi kullanır. Bir anlık görüntü görevindeki depolama veya gecikmelerin erişimine sahip olmaması yedekleme işinin başarısız olmasına neden olabilir. Aşağıdaki koşullar anlık görüntü görevi hatasına neden olabilir:
 
-* **Depolama alanına ağ erişimi NSG kullanılarak engellenir**. İzin verilen IP 'Leri veya bir ara sunucu aracılığıyla depolamaya [ağ erişimi oluşturma](backup-azure-arm-vms-prepare.md#establish-network-connectivity) hakkında daha fazla bilgi edinin.
 * **SQL Server yedeğine sahip VM 'ler anlık görüntü görevi gecikmesine neden olabilir**. Varsayılan olarak, VM yedekleme Windows VM 'lerde bir VSS tam yedekleme oluşturur. SQL Server yedekleme yapılandırılmış SQL Server çalıştıran VM 'Ler anlık görüntü gecikmelerine neden olabilir. Anlık görüntü gecikmeleri yedekleme hatalarıyla karşılaşırsanız, aşağıdaki kayıt defteri anahtarını ayarlayın:
 
    ```text
@@ -276,29 +275,9 @@ VM yedeklemesi, temel depolama alanına anlık görüntü komutları vermeyi kul
 
 ## <a name="networking"></a>Networking (Ağ İletişimi)
 
-Tüm uzantılar gibi, yedekleme uzantılarının da iş için ortak internet 'e erişmesi gerekir. Genel internet erişimi olmaması, kendisini çeşitli yollarla bildirimde bulunabilir:
+IaaS VM yedeklemesinin çalışması için, DHCP 'nin Konuk içinde etkin olması gerekir. Statik bir özel IP gerekiyorsa, Azure portal veya PowerShell aracılığıyla yapılandırın. VM içindeki DHCP seçeneğinin etkinleştirildiğinden emin olun.
+PowerShell aracılığıyla statik IP ayarlama hakkında daha fazla bilgi alın:
 
-* Uzantı yüklemesi başarısız olabilir.
-* Disk anlık görüntüsü gibi yedekleme işlemleri başarısız olabilir.
-* Yedekleme işleminin durumunun görüntülenmesi başarısız olabilir.
+* [Var olan bir VM 'ye statik bir iç IP ekleme](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [Bir ağ arabirimine atanan özel IP adresi için ayırma yöntemini değiştirme](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 
-Ortak internet adreslerini çözümleme gereksinimi, [Bu Azure destek blogu](https://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx)'nda ele alınmıştır. VNET için DNS yapılandırmasını denetleyin ve Azure URI 'Lerinin çözümlenebildiğinden emin olun.
-
-Ad çözümlemesi doğru yapıldıktan sonra, Azure IP 'lerine erişimin da sağlanması gerekir. Azure altyapısına erişimi engellemeyi kaldırmak için şu adımlardan birini izleyin:
-
-* Azure veri merkezi IP aralıkları listesine izin ver:
-   1. İzin verilenler listesinde olacak [Azure veri merkezi IP](https://www.microsoft.com/download/details.aspx?id=41653) 'lerinin listesini alın.
-   1. [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) cmdlet 'Ini kullanarak IP 'leri engellemeyi kaldırın. Bu cmdlet 'i yükseltilmiş bir PowerShell penceresinde Azure VM 'de çalıştırın. Yönetici olarak çalıştırın.
-   1. IP 'lere erişime izin vermek için bir tane varsa NSG 'ye kurallar ekleyin.
-* HTTP trafiğinin Flow için bir yol oluşturun:
-   1. Yerinde bir ağ kısıtlaması varsa, trafiği yönlendirmek için bir HTTP proxy sunucusu dağıtın. Bir ağ güvenlik grubu örneği bir örnektir. [Ağ bağlantısı kurmak](backup-azure-arm-vms-prepare.md#establish-network-connectivity)IÇIN bir http proxy sunucusu dağıtma adımlarına bakın.
-   1. HTTP proxy 'sinden internet erişimine izin vermek için, bir tane varsa NSG 'ye kurallar ekleyin.
-
-> [!NOTE]
-> IaaS VM yedeklemesinin çalışması için, DHCP 'nin Konuk içinde etkin olması gerekir. Statik bir özel IP gerekiyorsa, Azure portal veya PowerShell aracılığıyla yapılandırın. VM içindeki DHCP seçeneğinin etkinleştirildiğinden emin olun.
-> PowerShell aracılığıyla statik IP ayarlama hakkında daha fazla bilgi alın:
->
-> * [Var olan bir VM 'ye statik bir iç IP ekleme](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
-> * [Bir ağ arabirimine atanan özel IP adresi için ayırma yöntemini değiştirme](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
->
->

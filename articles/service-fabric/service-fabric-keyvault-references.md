@@ -3,12 +3,12 @@ title: Azure Service Fabric-Service Fabric uygulama Anahtar Kasası başvurular�
 description: Bu makalede, uygulama gizli dizileri için Service Fabric KeyVaultReference desteğinin nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 3f4c4979d0ce1329ac8ba49b236dae20a4e88b53
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167118"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545492"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric uygulamalar için KeyVaultReference desteği (Önizleme)
 
@@ -22,7 +22,7 @@ Bulut uygulamaları derlerken, uygulamanız için gereken gizli dizileri güvenl
 
 - Orta gizli dizi deposu (CSS).
 
-    Merkezi gizli dizi (CSS), Service Fabric 'in şifreli yerel gizli dizileri, bir kez getirilen KeyVaultReference, CSS 'de önbelleğe alınır.
+    Orta gizli dizi deposu (CSS) Service Fabric şifreli yerel gizli diziler önbelleğidir. CSS, bir parola, belirteç ve anahtar gibi hassas verileri bellekte şifreli olarak tutan bir yerel gizli dizi deposu önbelleğidir. Bir kez getirildikten sonra KeyVaultReference, CSS 'de önbelleğe alınır.
 
     KeyVaultReference desteği için gerekli tüm özellikleri etkinleştirmek üzere `fabricSettings` altındaki küme yapılandırmanıza aşağıda ekleyin.
 

@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9355ae1522c653924574b94594e894fdaf3f764e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: ea6e5b5ac829c95a0eca328e8f7f40e7d4a9a94d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646659"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547991"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics için bir sayfa sayfası (eski adıyla SQL DW)
 
@@ -23,7 +23,7 @@ Bu görsel sayfa, Azure SYNAPSE çözümleri oluşturmak için yardımcı ipuçl
 
 Aşağıdaki grafikte, veri ambarı tasarlama işlemi gösterilmektedir:
 
-![Taslak]
+![Taslak](media/sql-data-warehouse-cheat-sheet/picture-flow.png)
 
 ## <a name="queries-and-operations-across-tables"></a>Tablolardaki sorgular ve işlemler
 
@@ -36,16 +36,16 @@ Veri ambarınızda çalıştırılacak birincil işlemleri ve sorguları öncede
 
 ## <a name="data-migration"></a>Veri geçişi
 
-İlk olarak, verilerinizi [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) veya Azure Blob depolama alanına yükleyin. Daha sonra, PolyBase kullanarak verilerinizi hazırlama tablolarına yükleyin. Aşağıdaki yapılandırmayı kullanın:
+İlk olarak, verilerinizi [Azure Data Lake Storage](../data-factory/connector-azure-data-lake-store.md) veya Azure Blob depolama alanına yükleyin. Daha sonra, PolyBase kullanarak verilerinizi hazırlama tablolarına yükleyin. Aşağıdaki yapılandırmayı kullanın:
 
-| Tasarım | Öneri |
+| Tasarlayın | Öneri |
 |:--- |:--- |
 | Dağıtım | Hepsini Bir Kez Deneme |
-| Dizin Oluşturma | Yığın |
-| Bölümleme | None |
+| Dizinleme | Yığın |
+| Bölümleme | Hiçbiri |
 | Kaynak Sınıfı | largerc veya xlargerc |
 
-[Veri geçişi], [veri yükleme] ve [Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) hakkında daha fazla bilgi edinin. 
+[Veri geçişi](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [veri yükleme](design-elt-data-loading.md) ve [Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi](design-elt-data-loading.md) hakkında daha fazla bilgi edinin. 
 
 ## <a name="distributed-or-replicated-tables"></a>Dağıtılmış veya çoğaltılmış tablolar
 
@@ -62,10 +62,10 @@ Tablo özelliklerini bağlı olarak aşağıdaki stratejileri kullanın:
 * Genel karma anahtarların aynı veri biçimine sahip olduğundan emin olun.
 * Varchar biçiminde dağıtmayın.
 * Sık birleştirme işlemleri ile bir olgu tablosuna yönelik genel karma anahtar içeren boyut tabloları karma dağıtılmış olabilir.
-* Verilerdeki eğrilikleri analiz etmek için *[sys.dm_pdw_nodes_db_partition_stats]* komutunu kullanın.
-* Sorguların ardındaki veri hareketlerini analiz etmek, yayın ve karıştırma işlemlerinin aldığı süreyi izlemek için *[sys.dm_pdw_request_steps]* komutunu kullanın. Bu, dağıtım stratejinizi gözden geçirmek için faydalıdır.
+* Verilerdeki eğrilikleri analiz etmek için *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql)* komutunu kullanın.
+* Sorguların ardındaki veri hareketlerini analiz etmek, yayın ve karıştırma işlemlerinin aldığı süreyi izlemek için *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)* komutunu kullanın. Bu, dağıtım stratejinizi gözden geçirmek için faydalıdır.
 
-[Çoğaltılmış tablolar] ve [dağıtılmış tablolar] hakkında daha fazla bilgi edinin.
+[Çoğaltılmış tablolar](design-guidance-for-replicated-tables.md) ve [dağıtılmış tablolar](sql-data-warehouse-tables-distribute.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="index-your-table"></a>Tablonuzu dizinleme
 
@@ -85,7 +85,7 @@ Dizinleme, tabloların hızlı şekilde okunması için faydalıdır. Gereksinim
 * Artımlı yük sıklığı ve boyutuna bağlı olarak, dizinlerinizi yeniden düzenlerken veya yeniden derlerken otomatikleştirme sağlamak istersiniz. Bahar temizliği her zaman yararlıdır.
 * Bir satır grubunun kırpmak istediğinizde stratejik olun. Açık satır grupları ne kadar büyüktür? Yaklaşan günlerde ne kadar veri yüklemeyi bekliyorsunuz?
 
-[Dizinler] hakkında daha fazla bilgi edinin.
+[Dizinler](sql-data-warehouse-tables-index.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="partitioning"></a>Bölümleme
 Büyük bir olgu tablonuz (1 milyardan fazla satır) olduğunda tablonuzu bölümleyebilirsiniz. Durumların yüzde 99’unda bölüm anahtarı, tarihi temel almalıdır. Özellikle de kümelenmiş bir columnstore dizininiz olduğunda aşırı bölümleme yapmamaya dikkat edin.
@@ -93,22 +93,22 @@ Büyük bir olgu tablonuz (1 milyardan fazla satır) olduğunda tablonuzu bölü
 ELT gerektiren hazırlama tabloları ile bölümlemeden yararlanabilirsiniz. Bu, veri yaşam döngüsü yönetimini kolaylaştırır.
 Özellikle kümelenmiş bir columnstore dizininde verilerinizi aşırı bölümlememeye dikkat edin.
 
-[Bölümler] hakkında daha fazla bilgi edinin.
+[Bölümler](sql-data-warehouse-tables-partition.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="incremental-load"></a>Artımlı yükleme
 
-Verilerinizi artımlı olarak yükleyecekseniz ilk olarak verilerinizi yüklemeye daha büyük kaynak sınıfları ayırdığınızdan emin olun.  Bu, kümelenmiş columnstore dizinleri olan tablolara yüklenirken özellikle önemlidir.  Daha fazla ayrıntı için bkz. [kaynak sınıfları](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) .  
+Verilerinizi artımlı olarak yükleyecekseniz ilk olarak verilerinizi yüklemeye daha büyük kaynak sınıfları ayırdığınızdan emin olun.  Bu, kümelenmiş columnstore dizinleri olan tablolara yüklenirken özellikle önemlidir.  Daha fazla ayrıntı için bkz. [kaynak sınıfları](resource-classes-for-workload-management.md) .  
 
 ELT işlem hatlarınızı veri ambarınıza otomatik hale getirmek için PolyBase ve ADF v2 kullanmanızı öneririz.
 
-Geçmiş verilerinizde oluşan büyük toplu güncelleştirmeler için, INSERT, UPDATE ve DELETE kullanmak yerine bir tabloda tutmak istediğiniz verileri yazmak üzere bir [CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) kullanmayı düşünün.
+Geçmiş verilerinizde oluşan büyük toplu güncelleştirmeler için, INSERT, UPDATE ve DELETE kullanmak yerine bir tabloda tutmak istediğiniz verileri yazmak üzere bir [CTAS](sql-data-warehouse-develop-ctas.md) kullanmayı düşünün.
 
 ## <a name="maintain-statistics"></a>İstatistiklerin bakımını yapın
  Otomatik istatistikler genel kullanıma sunulduğunda, istatistiklerin el ile Bakımı gereklidir. Verilerinizde *önemli* değişiklikler olacağından, istatistiklerin güncelleştirilmesi önemlidir. Bu, sorgu planlarınızın iyileştirilmesine yardımcı olur. Tüm istatistiklerinizi tutmanız çok uzun sürerse, hangi sütunlarda istatistikler olduğu konusunda daha seçici olun. 
 
 Güncelleştirmelerin sıklığını da tanımlayabilirsiniz. Örneğin, yeni değerlerin eklenme ihtimali olan tarih sütunlarını her gün güncelleştirmeyi tercih edebilirsiniz. En çok faydayı, birleştirmelerin bulunduğu sütunlar, WHERE yan tümcesinde kullanılan sütunlar ve GROUP BY içinde bulunan sütunlar için istatistik tutarak elde edebilirsiniz.
 
-[İstatistikler] hakkında daha fazla bilgi edinin.
+[İstatistikler](sql-data-warehouse-tables-statistics.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="resource-class"></a>Kaynak sınıfı
 Kaynak grupları, sorgulara bellek ayırmak için bir yol olarak kullanılır. Sorgu veya yükleme hızını artırmak için daha fazla bellek gerekiyorsa, daha yüksek kaynak sınıfları ayırmanız gerekir. Çevirme tarafında büyük kaynak sınıfları kullanılması, eşzamanlılığı etkiler. Tüm kullanıcılarınızı büyük bir kaynak sınıfına taşımadan önce bunu dikkate almak istersiniz.
@@ -117,7 +117,7 @@ Sorguların çok uzun sürdüğünü fark ederseniz, kullanıcılarınızın bü
 
 Son olarak, [SQL havuzu](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)Gen2 kullanarak her kaynak sınıfı, Gen1 'den daha fazla bellek 2,5 alır.
 
-[Kaynak sınıfları ve eşzamanlılık] ile çalışma hakkında daha fazla bilgi edinin.
+[Kaynak sınıfları ve eşzamanlılık](resource-classes-for-workload-management.md) ile çalışma hakkında daha fazla bilgi edinin.
 
 ## <a name="lower-your-cost"></a>Maliyetinizi düşürme
 Azure SYNAPSE 'ın temel bir özelliği, [işlem kaynaklarını yönetme](sql-data-warehouse-manage-compute-overview.md)olanağıdır. SQL havuzunu kullanmadığınız sırada duraklatabilirsiniz, bu da işlem kaynaklarının faturalandırmasını sonlandırır. Performans taleplerinizi karşılamak için kaynakları ölçeklendirebilirsiniz. Duraklatmak için [Azure portalını](pause-and-resume-compute-portal.md) veya [PowerShell](pause-and-resume-compute-powershell.md)’i kullanın. Ölçeklendirmek için [Azure portalını](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md)’i, [T-SQL](quickstart-scale-compute-tsql.md)’i veya [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)’sini kullanın.
@@ -139,29 +139,3 @@ SQL havuzundaki SQL veritabanlarındaki bağlı uçlarınıza tek bir tıklama i
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
-
-
-<!--Image references-->
-[Taslak]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
-
-<!--Article references-->
-[veri yükleme]:design-elt-data-loading.md
-[deeper guidance]:guidance-for-loading-data.md
-[dizinler]:sql-data-warehouse-tables-index.md
-[bölümler]:sql-data-warehouse-tables-partition.md
-[istatistikler]:sql-data-warehouse-tables-statistics.md
-[Kaynak sınıfları ve eşzamanlılık]:resource-classes-for-workload-management.md
-[çoğaltılmış tablolar]:design-guidance-for-replicated-tables.md
-[dağıtılmış tablolar]:sql-data-warehouse-tables-distribute.md
-
-<!--MSDN references-->
-
-
-<!--Other Web references-->
-[typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
-[is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[veri geçişi]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
-
-[Azure Data Lake Storage]: ../data-factory/connector-azure-data-lake-store.md
-[sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
-[sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

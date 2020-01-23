@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: bfce7d77f214762a69857e74f0bb533ad1ce0f1b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e98a1f49ebf0fd8811be8efe8d001d450959369a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107648"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549249"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Uygulama geliştiricilerinin Azure Kubernetes Service (AKS) içindeki kaynakları yönetmesi için en iyi uygulamalar
 
@@ -36,7 +36,7 @@ Bir AKS kümesindeki işlem kaynaklarını yönetmenin birincil yolu Pod istekle
     * Pod isteği ayarlamamaya, varsayılan olarak tanımlanan sınıra sahip olur.
     * Bu istekleri ayarlamak için uygulamanızın performansını izlemek çok önemlidir. Yetersiz istek yapılırsa, bir düğümün zamanlanması nedeniyle uygulamanız performans düşüklüğü alabilir. İstekler fazla tahmin alıyorsa, uygulamanız zamanlanan zorluk derecesini artırabilir.
 * **Pod CPU/bellek sınırları** , Pod 'ın kullanabileceği en yüksek CPU ve bellek miktarıdır. Bu sınırlar, yetersiz kaynak nedeniyle düğüm kararsızlığı durumunda hangi yığınların sonlandırılanıp tanımlanabileceğine yardımcı olur. Uygun limitler olmadan, kaynak baskısı yükseltilmemiş olana kadar Pod kümesi sonlandırılacak.
-    * Pod sınırları, Pod 'ın kaynak tüketimine ilişkin denetim kaybettiği ne zaman olduğunu tanımlamaya yardımcı olur. Sınır aşıldığında Pod, düğüm durumunun bakımını yapma ve düğümü paylaşan etkiyi en aza indirme için önceliklendirilir.
+    * Pod sınırları, Pod 'ın kaynak tüketiminin denetimini kaybettiği ne zaman olduğunu tanımlamaya yardımcı olur. Sınır aşıldığında Pod, düğüm durumunun bakımını yapma ve düğümü paylaşan etkiyi en aza indirme için önceliklendirilir.
     * Pod sınırı ayarlamamaya, belirli bir düğümdeki en yüksek kullanılabilir değere göre varsayılan değer verilmez.
     * Düğümlerinizin destekleyebileceğinden daha yüksek bir pod sınırı ayarlama. Her AKS düğümü, çekirdek Kubernetes bileşenleri için ayarlanan bir CPU ve bellek miktarı ayırır. Uygulamanız, diğer yığınların başarıyla çalıştırılması için düğümde çok fazla kaynak kullanmayı deneyebilir.
     * Ayrıca, gün veya hafta boyunca uygulamanızın performansını farklı zamanlarda izlemek çok önemlidir. En yoğun talebin ne zaman olduğunu belirleme ve pod sınırlarını uygulamanın en fazla ihtiyaçlarını karşılamak için gereken kaynaklara hizalayın.

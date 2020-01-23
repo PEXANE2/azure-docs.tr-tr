@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893068"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544166"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Önizleme-Azure AD Domain Services klasik sanal ağ modelinden Kaynak Yöneticisi 'e geçirin
 
-Azure Active Directory Domain Services (AD DS), şu anda klasik sanal ağ modelini kullanan müşterilerin Kaynak Yöneticisi sanal ağ modeline tek seferlik bir taşımayı destekler.
+Azure Active Directory Domain Services (AD DS), şu anda klasik sanal ağ modelini kullanan müşterilerin Kaynak Yöneticisi sanal ağ modeline tek seferlik bir taşımayı destekler. Kaynak Yöneticisi dağıtım modelini kullanan Azure AD DS yönetilen etki alanları, hassas parola ilkesi, denetim günlükleri ve hesap kilitleme koruması gibi ek özellikler sağlar.
 
-Bu makalede, var olan bir Azure AD DS örneğini başarılı bir şekilde geçirmek için gereken adımlar ve geçiş konuları özetlenmektedir. Bu özellik şu anda önizleme sürümündedir.
+Bu makalede, var olan bir Azure AD DS örneğini başarılı bir şekilde geçirmek için gereken adımlar ve geçiş konuları özetlenmektedir. Bu geçiş özelliği şu anda önizlemededir.
 
 ## <a name="overview-of-the-migration-process"></a>Geçiş işlemine genel bakış
 
@@ -106,7 +106,7 @@ Azure AD DS yönetilen bir etki alanını hazırlarken ve geçirdikten sonra, ki
 
 ### <a name="ip-addresses"></a>IP adresleri
 
-Azure AD DS yönetilen bir etki alanı için etki alanı denetleyicisi IP adresleri geçişten sonra değişir. Bu, Güvenli LDAP uç noktası için genel IP adresini içerir. Yeni IP adresleri, Kaynak Yöneticisi sanal ağındaki yeni alt ağın adres aralığının içindedir.
+Azure AD DS yönetilen bir etki alanı için etki alanı denetleyicisi IP adresleri geçişten sonra değişir. Bu değişiklik, Güvenli LDAP uç noktası için genel IP adresini içerir. Yeni IP adresleri, Kaynak Yöneticisi sanal ağındaki yeni alt ağın adres aralığının içindedir.
 
 Geri alma durumunda IP adresleri geri alındıktan sonra değişebilir.
 
@@ -122,13 +122,13 @@ Klasik sanal ağlarda çalışan Azure AD DS tarafından yönetilen etki alanlar
 
 Varsayılan olarak, 5 hatalı parola 30 dakikalık bir hesabı kilitleyerek 2 dakika sonra çalışır.
 
-Kilitli bir hesap, ' de oturum açamaz ve bu, Azure AD DS yönetilen etki alanını veya hesap tarafından yönetilen uygulamaları yönetme özelliğini kesintiye uğratabilecek. Azure AD DS yönetilen bir etki alanı geçirildikten sonra, oturum açma başarısız girişimleri nedeniyle hesaplar kalıcı kilitleme gibi ne kadar gerçekçi bir kilit olabilir. Geçişten sonraki iki yaygın senaryo şunları içerir:
+Kilitli bir hesap, oturum açmak için kullanılamaz. Bu, Azure AD DS yönetilen etki alanını veya hesap tarafından yönetilen uygulamaları yönetme imkanını engelleyebilir. Azure AD DS yönetilen bir etki alanı geçirildikten sonra, oturum açma başarısız girişimleri nedeniyle hesaplar kalıcı kilitleme gibi ne kadar gerçekçi bir kilit olabilir. Geçişten sonraki iki yaygın senaryo şunları içerir:
 
 * Son kullanma parolası olan bir hizmet hesabı.
     * Hizmet hesabı, zaman aşımına uğradı ve hesabı kilitleyen bir süre sonra oturum açmayı dener. Bu hatayı onarmak için, kimlik bilgilerinin dolması ve parolayı güncelleştirmek üzere uygulamayı veya VM 'yi bulun.
 * Kötü amaçlı bir varlık, hesaplar üzerinde oturum açmaya yönelik deneme yanılma girişimlerini kullanıyor.
     * VM 'Ler internet 'e sunulduklarında, saldırganlar genellikle imzalamayı denediğinde ortak Kullanıcı adı ve parola birleşimlerini dener. Bu yinelenen başarısız oturum açma girişimleri hesapların kilidini açabilir. Yönetim hesaplarının kilitlenmesinden en aza indirmek için yönetici veya *yönetici* *gibi genel* adlarla yönetici hesaplarının kullanılması önerilmez.
-    * İnternet 'e açık olan sanal makinelerin sayısını en aza indirin. Azure portal kullanarak VM 'lere güvenli bir şekilde bağlanmak için [Azure savunma (Şu anda önizlemede)][azure-bastion] kullanabilirsiniz.
+    * İnternet 'e açık olan sanal makinelerin sayısını en aza indirin. Azure portal kullanarak VM 'lere güvenli bir şekilde bağlanmak için [Azure][azure-bastion] savunma kullanabilirsiniz.
 
 Geçişten sonra bazı hesapların kilitlendiğini kuşkulanıyorsanız, son geçiş adımları denetimi nasıl etkinleştireceğinizi veya hassas parola ilkesi ayarlarını değiştirmeyi özetler.
 
@@ -153,7 +153,7 @@ Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçiş, 5 ana adıma böl�
 
 | Adım    | Üzerinde gerçekleştirilen  | Tahmini süre  | Kesinti  | Geri alma/geri yükleme? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portalı | 15 dakika | Kesinti süresi gerekli değildir | Yok |
+| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portalında | 15 dakika | Kesinti süresi gerekli değildir | Yok |
 | [2. adım-geçiş için Azure AD DS yönetilen etki alanını hazırlama](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – ortalama 30 dakika | Azure AD DS kapalı kalma süresi bu komut tamamlandıktan sonra başlar. | Geri alma ve geri yükleme var. |
 | [3. adım-Azure AD DS yönetilen etki alanını mevcut bir sanal ağa taşıma](#migrate-the-managed-domain) | PowerShell | 1 – 3 saat (Ortalama) | Bu komut tamamlandığında bir etki alanı denetleyicisi kullanılabilir, kapalı kalma süresi sona erer. | Hata durumunda hem geri alma (self servis) hem de geri yükleme kullanılabilir. |
 | [4. Adım-çoğaltma etki alanı denetleyicisi için test ve bekleme](#test-and-verify-connectivity-after-the-migration)| PowerShell ve Azure portal | test sayısına bağlı olarak 1 saat veya daha fazla | Her iki etki alanı denetleyicisi de kullanılabilir ve normal şekilde çalışır. | Yok. İlk VM başarıyla geçirildikten sonra, geri alma veya geri yükleme seçeneği yoktur. |
@@ -164,11 +164,11 @@ Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçiş, 5 ana adıma böl�
 
 ## <a name="update-and-verify-virtual-network-settings"></a>Sanal ağ ayarlarını güncelleştirme ve doğrulama
 
-Geçişe başlamadan önce, aşağıdaki ilk denetimleri ve güncelleştirmeleri doldurun. Bu adımlar, geçişten önce herhangi bir zamanda gerçekleşebilir ve Azure AD DS yönetilen etki alanının işlemini etkilemez.
+Geçiş işlemine başlamadan önce, aşağıdaki ilk denetimleri ve güncelleştirmeleri doldurun. Bu adımlar, geçişten önce herhangi bir zamanda gerçekleşebilir ve Azure AD DS yönetilen etki alanının işlemini etkilemez.
 
 1. Yerel Azure PowerShell ortamınızı en son sürüme güncelleştirin. Geçiş adımlarını tamamlayabilmeniz için en az sürüm *2.3.2*gerekir.
 
-    Denetleme ve güncelleştirme hakkında daha fazla bilgi için bkz. [Azure PowerShell genel bakış][azure-powershell].
+    PowerShell sürümünüzü denetleme ve güncelleştirme hakkında daha fazla bilgi için bkz. [Azure PowerShell genel bakış][azure-powershell].
 
 1. Mevcut bir Kaynak Yöneticisi sanal ağ oluşturun veya seçin.
 
@@ -210,7 +210,8 @@ Azure AD DS yönetilen etki alanını geçişe hazırlamak için aşağıdaki ad
 
     ```powershell
     Migrate-Aadds `
-        -Prepare -ManagedDomainFqdn contoso.com `
+        -Prepare `
+        -ManagedDomainFqdn contoso.com `
         -Credentials $creds
     ```
 
@@ -273,27 +274,27 @@ Artık sanal ağ bağlantısını ve ad çözümlemesini test edin. Kaynak Yöne
 
 Geçiş işlemi başarıyla tamamlandığında, bazı isteğe bağlı yapılandırma adımları denetim günlüklerini veya e-posta bildirimlerini etkinleştirmeyi veya hassas parola ilkesini güncelleştirmeyi içerir.
 
-#### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak denetim günlüklerine abone olma
+### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak denetim günlüklerine abone olma
 
 Azure AD DS, etki alanı denetleyicilerindeki olayları sorun gidermeye ve görüntülemeye yardımcı olmak için Denetim günlüklerini kullanıma sunar. Daha fazla bilgi için bkz. [Denetim günlüklerini etkinleştirme ve kullanma][security-audits].
 
 Günlüklerde gösterilen önemli bilgileri izlemek için şablonları kullanabilirsiniz. Örneğin, denetim günlüğü çalışma kitabı şablonu Azure AD DS yönetilen etki alanında olası hesap kilitlenmelerini izleyebilir.
 
-#### <a name="configure-azure-ad-domain-services-email-notifications"></a>Azure AD Domain Services e-posta bildirimlerini yapılandırma
+### <a name="configure-azure-ad-domain-services-email-notifications"></a>Azure AD Domain Services e-posta bildirimlerini yapılandırma
 
 Azure AD DS yönetilen etki alanında bir sorun algılandığında bildirim almak için Azure portal e-posta bildirimi ayarlarını güncelleştirin. Daha fazla bilgi için bkz. [bildirim ayarlarını yapılandırma][notifications].
 
-#### <a name="update-fine-grained-password-policy"></a>Hassas parola ilkesini Güncelleştir
+### <a name="update-fine-grained-password-policy"></a>Hassas parola ilkesini Güncelleştir
 
 Gerekirse, hassas parola ilkesini varsayılan yapılandırmadan daha az kısıtlayıcı olacak şekilde güncelleştirebilirsiniz. Daha az kısıtlayıcı bir ayarın mantıklı olup olmadığını anlamak için Denetim günlüklerini kullanabilir, sonra da ilkeyi gerektiği şekilde yapılandırın. Geçişten sonra sürekli olarak Kilitlenen hesapların ilke ayarlarını gözden geçirmek ve güncelleştirmek için aşağıdaki üst düzey adımları kullanın:
 
 1. Azure AD DS yönetilen etki alanında daha az kısıtlama için [parola Ilkesi yapılandırın][password-policy] ve denetim günlüklerindeki olayları gözlemleyin.
 1. Herhangi bir hizmet hesabı, denetim günlüklerinde tanımlandığı şekilde, zaman aşımına uğradı parolaları kullanıyorsa, bu hesapları doğru parolayla güncelleştirin.
-1. VM internet 'e sunulduğunu, yüksek oturum açma girişimleri ile *yönetici*, *Kullanıcı*veya *Konuk* gibi genel hesap adlarını gözden geçirin. Mümkün olduğunda, bu VM 'Leri daha az genel olarak adlandırılmış hesaplar kullanacak şekilde güncelleştirin.
-1. Saldırıların kaynağını bulmak için sanal makinede bir ağ izlemesi kullanın ve oturum açma işlemlerini deneyebilmek için bu IP adreslerini engelleyin.
+1. Bir sanal makine Internet 'e sunulduğunu, yüksek oturum açma girişimleri ile *yönetici*, *Kullanıcı*veya *Konuk* gibi genel hesap adlarını gözden geçirin. Mümkün olduğunda, bu VM 'Leri daha az genel olarak adlandırılmış hesaplar kullanacak şekilde güncelleştirin.
+1. Saldırıların kaynağını bulmak için sanal makinede bir ağ izlemesi kullanın ve bu IP adreslerinin oturum açma işlemlerini deneyebilmesini engelleyin.
 1. En düşük kilitleme sorunları olduğunda, hassas parola ilkesini gerektiği kadar kısıtlayıcı olacak şekilde güncelleştirin.
 
-#### <a name="creating-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
+### <a name="creating-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
 Azure AD DS, yönetilen etki alanı için gereken bağlantı noktalarının güvenliğini sağlamak ve diğer tüm gelen trafiği engellemek için bir ağ güvenlik grubu gerektirir. Bu ağ güvenlik grubu, yönetilen etki alanına erişimi kilitlemek için ek bir koruma katmanı işlevi görür ve otomatik olarak oluşturulmaz. Ağ güvenlik grubu oluşturmak ve gerekli bağlantı noktalarını açmak için aşağıdaki adımları gözden geçirin:
 
@@ -301,6 +302,8 @@ Azure AD DS, yönetilen etki alanı için gereken bağlantı noktalarının güv
 1. Güvenli LDAP kullanıyorsanız, *TCP* bağlantı noktası *636*için gelen trafiğe izin vermek üzere ağ güvenlik grubuna bir kural ekleyin. Daha fazla bilgi için bkz. [GÜVENLI LDAP yapılandırma][secure-ldap].
 
 ## <a name="roll-back-and-restore-from-migration"></a>Geçişten geri alma ve geri yükleme
+
+Geçiş sürecinde belirli bir noktaya kadar, Azure AD DS yönetilen etki alanını geri almayı veya geri yüklemeyi seçebilirsiniz.
 
 ### <a name="roll-back"></a>Geri al
 

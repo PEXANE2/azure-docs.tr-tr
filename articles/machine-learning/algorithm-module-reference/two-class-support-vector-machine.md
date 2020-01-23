@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: ca47bed45f8d726010dde40a936da6f93eb0b140
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c5ad269bf9cfa43ebad7163c858ef20bc8641878
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76315023"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548331"
 ---
 # <a name="two-class-support-vector-machine-module"></a>İki sınıf destek vektör makinesi modülü
 
-Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Destek vektör makinesi algoritmasına dayalı bir model oluşturmak için bu modülü kullanın. 
 
