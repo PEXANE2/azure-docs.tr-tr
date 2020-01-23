@@ -43,9 +43,11 @@
       href: tutorial-azure-security.md
     - name: 14a - Jenkins ile derleme
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 14b - Azure Pipelines ile dağıtma (Klasik)
+    - name: 14b - Jenkins’i Azure DevOps ile tümleştirme
       href: tutorial-build-deploy-jenkins.md
-    - name: 15 - Azure Pipelines ile CI/CD (YAML)
+    - name: 15a - Azure’da IaaS ve PaaS için DevOps
+      href: tutorial-devops-azure-pipelines-classic.md
+    - name: 15b - Azure Pipelines (YAML) ile CI/CD
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a - LAMP yığını oluşturma
       href: tutorial-lamp-stack.md

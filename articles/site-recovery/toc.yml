@@ -309,7 +309,7 @@
                   href: vmware-physical-mobility-service-overview.md
                 - name: Mobility hizmetinin gönderme yüklemesini hazırlama
                   href: vmware-azure-install-mobility-service.md
-                - name: System Center Configuration Manager ile Mobility hizmetini dağıtma
+                - name: Configuration Manager ile Ulaşım hizmeti dağıtma
                   href: vmware-azure-mobility-install-configuration-mgr.md
         - name: Yük devretme ve yeniden çalışma işlemlerini çalıştırma
           href: physical-to-azure-failover-failback.md
