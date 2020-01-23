@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b4a567bc0495595da77ef7d6cd240ee7fb30f0ed
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170144"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513941"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Geçmiş telemetri verilerini alma
 
@@ -20,7 +20,7 @@ Cihazlar ve algılayıcılar gibi Nesnelerin İnterneti (IoT) kaynaklarından ge
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaleye devam etmeden önce, IoT 'den bir araya getirme ve geçmiş verileri topladığınızdan emin olun.
+Bu makaleye devam etmeden önce, IoT cihazlarınızdan Farmtts 'yi yüklediğinizden ve geçmiş verileri topladığınızdan emin olun.
 Ayrıca, aşağıdaki adımlarda belirtildiği gibi iş ortağı erişimini de etkinleştirmeniz gerekir.
 
 ## <a name="enable-partner-access"></a>İş ortağı erişimini etkinleştir
@@ -38,31 +38,36 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 >[!NOTE]
 > Aşağıdaki adımları uygulamak için yönetici olmanız gerekir.
 
-1. Bu [betiği](https://aka.ms/farmbeatspartnerscript)indirip yerel sürücünüzde ayıklayın. ZIP dosyasının içinde iki dosya bulunur.
-2. [Azure portalında](https://portal.azure.com/) oturum açın ve Azure Cloud Shell'i açın. Bu seçenek, portalın sağ üst köşesindeki araç çubuğunda bulunur.
+1. [ZIP dosyasını](https://aka.ms/farmbeatspartnerscriptv2)indirin ve yerel sürücünüze ayıklayın. ZIP dosyasının içinde bir dosya olacaktır.
+2. https://portal.azure.com/ oturum açın ve Azure Active Directory > uygulama kayıtlarına gidin
 
-    ![Azure portal araç çubuğu](./media/for-tutorials/navigation-bar-1.png)
+3. Farmtts dağıtımınızın bir parçası olarak oluşturulan uygulama kaydına tıklayın. Bu, Farmtts veri hub 'ınızla aynı ada sahip olacaktır.
 
-3. Ortamın **PowerShell**olarak ayarlandığından emin olun.
+4. "Bir API 'yi kullanıma sunma" seçeneğine tıklayın-> "istemci uygulaması Ekle" ye tıklayın ve **04b07795-8ddb-461A-bbee-02f9e1bf7b46** girin ve "yetkilendirmeyi Yetkilendir" seçeneğini işaretleyin. Bu, aşağıdaki adımları gerçekleştirmek için Azure CLı (Cloud Shell) erişimi sağlar.
 
-    ![PowerShell ayarı](./media/for-tutorials/power-shell-new-1.png)
+5. Cloud Shell'i açın. Bu seçenek, Azure portal sağ üst köşesindeki araç çubuğunda bulunur.
 
-4. Cloud Shell örneğindeki 1. adımdan indirdiğiniz iki dosyayı karşıya yükleyin.
+    ![Azure portal araç çubuğu](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-    ![Araç çubuğundaki Karşıya Yükle düğmesi](./media/for-tutorials/power-shell-two-1.png)
+6. Ortamın **PowerShell**olarak ayarlandığından emin olun. Varsayılan olarak, Bash olarak ayarlanır.
 
-5. Dosyaların karşıya yüklendiği dizine gidin.
+    ![PowerShell araç çubuğu ayarı](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-   >[!NOTE]
-   > Varsayılan olarak, dosyalar giriş dizinine/giriş/Kullanıcı adına yüklenir.
-6. Şu komutu kullanarak betiği çalıştırın:
+7. Cloud Shell örneğindeki 1. adımdan dosyayı karşıya yükleyin.
 
-    ```azurepowershell-interactive
-    ./generateCredentials.ps1
+    ![Araç çubuğu düğmesini karşıya yükle](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+
+8. Dosyanın karşıya yüklendiği dizine gidin. Varsayılan olarak, dosyalar Kullanıcı adı altında ana dizine yüklenir.
+
+9. Aşağıdaki betiği çalıştırın. Betik, Azure Active Directory > Genel Bakış sayfasından edinilen kiracı KIMLIĞINI ister.
+
+    ```azurepowershell-interactive 
+
+    ./generatePartnerCredentials.ps1   
+
     ```
 
-7. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin. EventHub bağlantı dizesi, Swagger içindeki API yanıtının bir parçası olarak kullanılabilir.
-
+10. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin.
 ## <a name="create-device-or-sensor-metadata"></a>Cihaz veya algılayıcı meta verileri oluşturma
 
  Artık gerekli kimlik bilgilerine sahip olduğunuza göre, cihazı ve algılayıcıları tanımlayabilirsiniz. Bunu yapmak için, Farmpts API 'Lerini çağırarak meta verileri oluşturun. Lütfen yukarıdaki bölümde oluşturduğunuz istemci uygulaması olarak API 'Leri çağırmanız gerekeceğini unutmayın.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 175ba6b4e65b4a6e276dbfb586e210027a6cd9b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cacc01151edaf31db938cf8abf3d46e75397758f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822411"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545033"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma
 
@@ -91,13 +91,13 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-İşlemler aslında bu örneklerin her ikisinde de kullanılır. İlk örnekte, her bir çağrı örtük bir işlemdir. İkinci örnekte, açık bir işlem tüm çağrıları sarmalar. [Yazma öncesi işlem günlüğü](https://msdn.microsoft.com/library/ms186259.aspx)için belge başına, işlem tamamlandığında günlük kayıtları diske silinir. Bu nedenle, bir işleme daha fazla çağrı dahil ederek işlem günlüğüne yazma işlemi, işlem kaydedilene kadar geciktirebilirler. Aslında, sunucunun işlem günlüğüne yazma işlemleri için toplu işleme etkinleştiriliyor.
+İşlemler aslında bu örneklerin her ikisinde de kullanılır. İlk örnekte, her bir çağrı örtük bir işlemdir. İkinci örnekte, açık bir işlem tüm çağrıları sarmalar. [Yazma öncesi işlem günlüğü](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)için belge başına, işlem tamamlandığında günlük kayıtları diske silinir. Bu nedenle, bir işleme daha fazla çağrı dahil ederek işlem günlüğüne yazma işlemi, işlem kaydedilene kadar geciktirebilirler. Aslında, sunucunun işlem günlüğüne yazma işlemleri için toplu işleme etkinleştiriliyor.
 
 Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, ve işlemleri olmadan aynı sıralı eklemeleri gerçekleştirdi. Daha fazla bakış için, ilk test kümesi bir dizüstü bilgisayardan Microsoft Azure içindeki veritabanına uzaktan çalışır. İkinci test kümesi, her ikisi de aynı Microsoft Azure veri merkezi (Batı ABD) içinde yer alan bir bulut hizmetinden ve veritabanından çalışır. Aşağıdaki tabloda, işlemleri ile ve olmayan sıralı ekleme süresinin milisaniye cinsinden gösterilmektedir.
 
 **Şirket Içinden Azure 'a**:
 
-| İşlemler | Işlem yok (MS) | İşlem (MS) |
+| Operations | Işlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -106,7 +106,7 @@ Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, 
 
 **Azure 'Dan Azure 'a (aynı veri merkezi)** :
 
-| İşlemler | Işlem yok (MS) | İşlem (MS) |
+| Operations | Işlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -124,7 +124,7 @@ Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, 
 
 ADO.NET içindeki işlemler hakkında daha fazla bilgi için bkz. [ADO.net Içindeki yerel işlemler](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
-### <a name="table-valued-parameters"></a>tablo değerli parametreler
+### <a name="table-valued-parameters"></a>Tablo değerli parametreler
 
 Tablo değerli parametreler, Kullanıcı tanımlı tablo türlerini Transact-SQL deyimleriyle, saklı yordamlarda ve işlevlerde parametre olarak destekler. Bu istemci tarafı toplu işleme tekniği, tablo değerli parametre içinde birden fazla veri satırı göndermenizi sağlar. Tablo değerli parametreleri kullanmak için önce bir tablo türü tanımlayın. Aşağıdaki Transact-SQL beyanı, **Mytabletype**adlı bir tablo türü oluşturur.
 
@@ -193,7 +193,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 Aşağıdaki tabloda, tablo değerli parametrelerin kullanım için milisaniye cinsinden geçici test sonuçları gösterilmektedir.
 
-| İşlemler | Şirket Içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
+| Operations | Şirket Içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -233,7 +233,7 @@ Toplu kopyalamanın tablo değerli parametreler üzerinden tercih edildiği baz�
 
 Aşağıdaki geçici test sonuçları, her saniye içinde **SqlBulkCopy** ile toplu işleme performansını gösterir.
 
-| İşlemler | Şirket Içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
+| Operations | Şirket Içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -278,7 +278,7 @@ Bu örnek, temel kavramı göstermek için tasarlanmıştır. Daha gerçekçi bi
 
 Aşağıdaki geçici test sonuçları, bu tür INSERT deyimlerinin performansını milisaniye cinsinden gösterir.
 
-| İşlemler | Tablo değerli parametreler (MS) | Tek deyimli Insert (MS) |
+| Operations | Tablo değerli parametreler (MS) | Tek deyimli Insert (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
@@ -291,7 +291,7 @@ Aşağıdaki geçici test sonuçları, bu tür INSERT deyimlerinin performansın
 
 Bu yaklaşım 100 satırdan az olan toplu işlemler için biraz daha hızlı olabilir. Geliştirme küçük olsa da, bu teknik, özel uygulama senaryonuzda uygun olabilecek başka bir seçenektir.
 
-### <a name="dataadapter"></a>✔
+### <a name="dataadapter"></a>DataAdapter
 
 **DataAdapter** sınıfı, bir **veri kümesi** nesnesini DEĞIŞTIRMENIZE ve sonra değişiklikleri INSERT, Update ve DELETE işlemleri olarak göndermenize olanak tanır. Bu şekilde **DataAdapter** kullanıyorsanız, her farklı işlem için ayrı çağrıların yapıldığını unutmayın. Performansı artırmak için, **UpdateBatchSize** özelliğini tek seferde toplu olarak oluşturulacak işlem sayısına göre kullanın. Daha fazla bilgi için bkz. [DataAdapter kullanarak Batch Işlemleri gerçekleştirme](https://msdn.microsoft.com/library/aadf8fk2.aspx).
 
@@ -299,7 +299,7 @@ Bu yaklaşım 100 satırdan az olan toplu işlemler için biraz daha hızlı ola
 
 Entity Framework, şu anda toplu işlemeyi desteklemiyor. Topluluktaki farklı geliştiriciler, **SaveChanges** metodunu geçersiz kılma gibi geçici çözümler göstermeye çalıştı. Ancak çözümler genellikle karmaşıktır ve uygulama ve veri modeli için özelleştirilir. Entity Framework CodePlex projesi şu anda bu özellik isteğinde bir tartışma sayfasına sahip. Bu tartışmayı görüntülemek için bkz. [Toplantı notlarını tasarlama-2 ağustos 2012](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
 
-### <a name="xml"></a>'SINI
+### <a name="xml"></a>XML
 
 Bir toplu işlem stratejisi olarak XML hakkında konuşmak için önemli olduğunu biliyoruz. Ancak, XML kullanımı diğer yöntemlere ve birçok dezavantaja yönelik avantaja sahip değildir. Yaklaşım tablo değerli parametrelere benzerdir, ancak bir XML dosyası veya dize, Kullanıcı tanımlı bir tablo yerine bir saklı yordama geçirilir. Saklı yordam saklı yordamdaki komutları ayrıştırır.
 
@@ -321,11 +321,11 @@ Mimarinize bağlı olarak, toplu işleme performans ve dayanıklılık arasında
 
 Bu zorunluluğunu getirir nedeniyle, toplu işlem yaptığınız işlemlerin türünü değerlendirin. Daha az kritik verilerle toplu olarak daha fazla kararlılık (daha büyük toplu işler ve daha uzun zaman pencereleri).
 
-### <a name="batch-size"></a>Toplu iş boyutu
+### <a name="batch-size"></a>Toplu işlem boyutu
 
 Testlerimizde, genellikle büyük toplu işleri küçük parçalara ayırma avantajı yoktur. Aslında, bu alt bölüm genellikle tek bir büyük toplu işlem gönderilmeden daha yavaş performansa neden olur. Örneğin, 1000 satır eklemek istediğiniz bir senaryoyu düşünün. Aşağıdaki tabloda, daha küçük toplu işlemlere ayrıldığınızda 1000 satır eklemek için tablo değerli parametrelerin ne kadar süreceği gösterilmektedir.
 
-| Toplu iş boyutu | Tekrarları | Tablo değerli parametreler (MS) |
+| Toplu işlem boyutu | Yinelemeler | Tablo değerli parametreler (MS) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |

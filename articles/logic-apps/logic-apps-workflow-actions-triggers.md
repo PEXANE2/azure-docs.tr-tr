@@ -6,17 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 2cef965f8ba23e31444d8dd8e36cdfc51afa15f6
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: HT
+ms.openlocfilehash: 6bb8dfc4b85da47a70ba768400341317462bafd8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513261"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543486"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps tetikleyici ve eylem türleri için şema başvurusu Kılavuzu
 
-Bu başvuru, mantıksal uygulamanızın [Iş akışı Tanım Dili](../logic-apps/logic-apps-workflow-definition-language.md)tarafından tanımlanan ve doğrulanan temel alınan iş akışı tanımındaki Tetikleyicileri ve eylemleri tanımlamak için kullanılan genel türleri açıklar.
-Mantıksal uygulamalarınızda kullanabileceğiniz belirli bağlayıcı tetikleyicilerini ve eylemlerini bulmak için, [Bağlayıcılar genel bakış](https://docs.microsoft.com/connectors/)altındaki listeye bakın.
+Bu başvuru, mantıksal uygulamanızın [Iş akışı Tanım Dili](../logic-apps/logic-apps-workflow-definition-language.md)tarafından tanımlanan ve doğrulanan temel alınan iş akışı tanımındaki Tetikleyicileri ve eylemleri tanımlamak için kullanılan genel türleri açıklar. Mantıksal uygulamalarınızda kullanabileceğiniz belirli bağlayıcı tetikleyicilerini ve eylemlerini bulmak için, [Bağlayıcılar genel bakış](https://docs.microsoft.com/connectors/)altındaki listeye bakın.
 
 <a name="triggers-overview"></a>
 
@@ -26,7 +25,7 @@ Her iş akışı, iş akışını örnekleyip Başlatan çağrıları tanımlaya
 
 * Düzenli aralıklarla bir hizmetin uç noktasını denetleyen bir *yoklama* tetikleyicisi
 
-* Uç nokta için bir abonelik oluşturan ve bir geri çağırma URL 'si sağlayan bir *gönderme* tetikleyicisi, belirtilen olay gerçekleştiğinde veya veriler kullanılabilir olduğunda bitiş noktasının tetikleyiciyi bildirebilmesi için bir *geri arama URL 'si* sağlar. Tetikleyici daha sonra, başlamadan önce uç noktanın yanıtını bekler. 
+* Uç nokta için bir abonelik oluşturan ve bir geri çağırma URL 'si sağlayan bir *gönderme* tetikleyicisi, belirtilen olay gerçekleştiğinde veya veriler kullanılabilir olduğunda bitiş noktasının tetikleyiciyi bildirebilmesi için bir *geri arama URL 'si* sağlar. Tetikleyici daha sonra, başlamadan önce uç noktanın yanıtını bekler.
 
 Tetikleyiciler, bazı isteğe bağlı olsa da, bu en üst düzey öğelere sahiptir:  
   
@@ -127,15 +126,15 @@ Bu tetikleyici, [Microsoft tarafından yönetilen API 'ler](../connectors/apis-l
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
-|-------|------|-------------| 
-| <*APIConnection_trigger_name*> | Dize | Tetikleyicinin adı | 
-| <*bağlantı adı*> | Dize | İş akışının kullandığı yönetilen API bağlantısı için ad | 
-| <*yöntemi-tür*> | Dize | Yönetilen API ile iletişim için HTTP yöntemi: "GET", "PUT", "POST", "PATCH", "DELETE" | 
-| <*API-işlem*> | Dize | Çağrılacak API işlemi | 
-| <*time-unit*> | Dize | Tetikleyicinin ne sıklıkla çalıştığını açıklayan zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay" | 
-| <*number-of-time-units*> | Tamsayı | Tetikleyicinin yeniden tetiklenmesi için bekleyeceği zaman birimi sayısı olan sıklık temelinde tetikleyicinin ne sıklıkta tetikleyeceğini belirten bir değer <p>En düşük ve en büyük aralıklar aşağıda verilmiştir: <p>-Ay: 1-16 ay </br>Gün: 1-500 gün </br>-Saat: 1-12000 saat </br>-Dakika: 1-72000 dakika </br>-İkinci: 1-9999999 saniye<p>Örneğin, Aralık 6, sıklık ise "month" ise, yineleme 6 aydır. | 
-|||| 
+| Değer | Tür | Açıklama |
+|-------|------|-------------|
+| <*APIConnection_trigger_name*> | Dize | Tetikleyicinin adı |
+| <*bağlantı adı*> | Dize | İş akışının kullandığı yönetilen API bağlantısı için ad |
+| <*yöntemi-tür*> | Dize | Yönetilen API ile iletişim için HTTP yöntemi: "GET", "PUT", "POST", "PATCH", "DELETE" |
+| <*API-işlem*> | Dize | Çağrılacak API işlemi |
+| <*time-unit*> | Dize | Tetikleyicinin ne sıklıkla çalıştığını açıklayan zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay" |
+| <*number-of-time-units*> | Tamsayı | Tetikleyicinin yeniden tetiklenmesi için bekleyeceği zaman birimi sayısı olan sıklık temelinde tetikleyicinin ne sıklıkta tetikleyeceğini belirten bir değer <p>En düşük ve en büyük aralıklar aşağıda verilmiştir: <p>-Ay: 1-16 ay </br>Gün: 1-500 gün </br>-Saat: 1-12000 saat </br>-Dakika: 1-72000 dakika </br>-İkinci: 1-9999999 saniye<p>Örneğin, Aralık 6, sıklık ise "month" ise, yineleme 6 aydır. |
+||||
 
 *İsteğe bağlı*
 
@@ -143,7 +142,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen API 'ler](../connectors/apis-l
 |-------|------|-------------| 
 | <*yeniden deneme davranışı*> | JSON Nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*sorgu-parametreler*> | JSON Nesnesi | API çağrısıyla birlikte içerilecek herhangi bir sorgu parametresi. Örneğin, `"queries": { "api-version": "2018-01-01" }` nesnesi çağrıya `?api-version=2018-01-01` ekler. | 
-| <*en fazla* çalıştırma> | Tamsayı | Varsayılan olarak, iş akışı örnekleri aynı anda veya [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)paralel olarak çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
+| <*en fazla* çalıştırma> | Tamsayı | Varsayılan olarak, iş akışı örnekleri [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar (eşzamanlı veya paralel) aynı anda çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
 | <*en fazla çalıştırma-kuyruk*> | Tamsayı | İş akışınız, `runtimeConfiguration.concurrency.runs` özelliğine göre değiştirebileceğiniz en fazla örnek sayısını zaten çalıştırıyorsa, tüm yeni çalıştırmalar bu kuyruğa [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar yerleştirilir. Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). | 
 | <*Spton-ifade*> | Dize | Bu ifade, diziler döndüren Tetikleyiciler için, "for each" döngüsünü kullanmak yerine her bir dizi öğesi için bir iş akışı örneği oluşturup çalıştırabilmeniz için kullanılacak diziye başvurur. <p>Örneğin, bu ifade, tetikleyicinin gövde içeriği içinde döndürülen dizideki bir öğeyi temsil eder: `@triggerbody()?['value']` |
 | <*operation-option*> | Dize | `operationOptions` özelliğini ayarlayarak varsayılan davranışı değiştirebilirsiniz. Daha fazla bilgi için bkz. [işlem seçenekleri](#operation-options). |
@@ -160,7 +159,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen API 'ler](../connectors/apis-l
 
 *Örnek*
 
-Bu tetikleyici tanımı, bir Office 365 Outlook hesabı için gelen kutusu içinde her gün e-postayı denetler: 
+Bu tetikleyici tanımı, bir Office 365 Outlook hesabı için gelen kutusu içinde her gün e-postayı denetler:
 
 ```json
 "When_a_new_email_arrives": {
@@ -233,7 +232,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen BIR API](../connectors/apis-li
 |-------|------|-------------| 
 | <*yeniden deneme davranışı*> | JSON Nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*sorgu-parametreler*> | JSON Nesnesi | API çağrısıyla birlikte içerilecek sorgu parametreleri <p>Örneğin, `"queries": { "api-version": "2018-01-01" }` nesnesi çağrıya `?api-version=2018-01-01` ekler. | 
-| <*en fazla* çalıştırma> | Tamsayı | Varsayılan olarak, iş akışı örnekleri aynı anda veya [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)paralel olarak çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
+| <*en fazla* çalıştırma> | Tamsayı | Varsayılan olarak, iş akışı örnekleri [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar (eşzamanlı veya paralel) aynı anda çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
 | <*en fazla çalıştırma-kuyruk*> | Tamsayı | İş akışınız, `runtimeConfiguration.concurrency.runs` özelliğine göre değiştirebileceğiniz en fazla örnek sayısını zaten çalıştırıyorsa, tüm yeni çalıştırmalar bu kuyruğa [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar yerleştirilir. Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). | 
 | <*Spton-ifade*> | Dize | Bu ifade, diziler döndüren Tetikleyiciler için, "for each" döngüsünü kullanmak yerine her bir dizi öğesi için bir iş akışı örneği oluşturup çalıştırabilmeniz için kullanılacak diziye başvurur. <p>Örneğin, bu ifade, tetikleyicinin gövde içeriği içinde döndürülen dizideki bir öğeyi temsil eder: `@triggerbody()?['value']` |
 | <*operation-option*> | Dize | `operationOptions` özelliğini ayarlayarak varsayılan davranışı değiştirebilirsiniz. Daha fazla bilgi için bkz. [işlem seçenekleri](#operation-options). | 
@@ -319,7 +318,7 @@ Bu tetikleyici belirtilen yineleme zamanlaması temelinde belirtilen HTTP veya H
 | `body` | <*gövdesi-içerik*> | JSON Nesnesi | İstekle birlikte yük olarak gönderilmek üzere ileti içeriği |
 | `authentication` | <*kimlik doğrulaması-tür-ve-özellik-değerleri*> | JSON Nesnesi | İsteğin giden isteklerin kimliğini doğrulamak için kullandığı kimlik doğrulama modeli. Daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). Zamanlayıcı ötesinde `authority` özelliği desteklenir. Belirtilmediğinde, varsayılan değer `https://management.azure.com/`, ancak farklı bir değer kullanabilirsiniz. |
 | `retryPolicy` > `type` | <*yeniden deneme davranışı*> | JSON Nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
-| `runs` | <*en fazla* çalıştırma> | Tamsayı | Varsayılan olarak, iş akışı örnekleri aynı anda veya [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)paralel olarak çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). |
+| `runs` | <*en fazla* çalıştırma> | Tamsayı | Varsayılan olarak, iş akışı örnekleri [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar (eşzamanlı veya paralel) aynı anda çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). |
 | `maximumWaitingRuns` | <*en fazla çalıştırma-kuyruk*> | Tamsayı | İş akışınız, `runtimeConfiguration.concurrency.runs` özelliğine göre değiştirebileceğiniz en fazla örnek sayısını zaten çalıştırıyorsa, tüm yeni çalıştırmalar bu kuyruğa [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar yerleştirilir. Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). |
 | `operationOptions` | <*operation-option*> | Dize | `operationOptions` özelliğini ayarlayarak varsayılan davranışı değiştirebilirsiniz. Daha fazla bilgi için bkz. [işlem seçenekleri](#operation-options). |
 |||||
@@ -361,8 +360,7 @@ Mantıksal uygulamanızla iyi çalışmak için uç noktanın belirli bir tetikl
 
 Bu tetikleyici, belirtilen uç nokta URL 'sini çağırarak bir aboneliği kaydedebilmesi için bir uç nokta oluşturarak mantıksal uygulamanızı çağrılabilir hale getirir. Bu tetikleyiciyi iş akışınızda oluşturduğunuzda, giden bir istek aboneliği kaydetme çağrısını yapar. Bu şekilde, tetikleyici olayları dinlemeye başlayabilir. Bir işlem bu tetikleyiciyi geçersiz yaptığında, bir giden istek otomatik olarak aboneliğini iptal etme çağrısını yapar. Daha fazla bilgi için bkz. [Endpoint abonelikleri](#subscribe-unsubscribe).
 
-Ayrıca, bir **Httpweb kancası** tetikleyicisi üzerinde [zaman uyumsuz sınırlar](#asynchronous-limits) belirtebilirsiniz.
-Tetikleyicinin davranışı, kullandığınız veya atladığınızda bölümlere bağlıdır. 
+Ayrıca, bir **Httpweb kancası** tetikleyicisi üzerinde [zaman uyumsuz sınırlar](#asynchronous-limits) belirtebilirsiniz. Tetikleyicinin davranışı, kullandığınız veya atladığınızda bölümlere bağlıdır.
 
 ```json
 "HTTP_Webhook": {
@@ -414,7 +412,7 @@ Tetikleyicinin davranışı, kullandığınız veya atladığınızda bölümler
 | <*gövdesi-içerik*> | Dize | Abonelik veya iptal isteğinde göndermek için herhangi bir ileti içeriği | 
 | <*kimlik doğrulaması-tür*> | JSON Nesnesi | İsteğin giden isteklerin kimliğini doğrulamak için kullandığı kimlik doğrulama modeli. Daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
 | <*yeniden deneme davranışı*> | JSON Nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*en fazla* çalıştırma> | Tamsayı | Varsayılan olarak, iş akışı örneklerinin hepsi aynı anda çalışır veya [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar paralel olarak yapılır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
+| <*en fazla* çalıştırma> | Tamsayı | Varsayılan olarak, iş akışı örneklerinin hepsi aynı anda (aynı anda veya paralel) [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
 | <*en fazla çalıştırma-kuyruk*> | Tamsayı | İş akışınız, `runtimeConfiguration.concurrency.runs` özelliğine göre değiştirebileceğiniz en fazla örnek sayısını zaten çalıştırıyorsa, tüm yeni çalıştırmalar bu kuyruğa [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar yerleştirilir. Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). | 
 | <*operation-option*> | Dize | `operationOptions` özelliğini ayarlayarak varsayılan davranışı değiştirebilirsiniz. Daha fazla bilgi için bkz. [işlem seçenekleri](#operation-options). | 
 |||| 
@@ -462,7 +460,7 @@ Bu tetikleyici, belirtilen uç noktaya bir abonelik oluşturur, benzersiz bir ge
 
 ### <a name="recurrence-trigger"></a>Yinelenme tetikleyicisi  
 
-Bu tetikleyici, belirtilen yinelenme zamanlaması temelinde çalışır ve düzenli olarak çalışan bir iş akışı oluşturmak için kolay bir yol sağlar. 
+Bu tetikleyici, belirtilen yinelenme zamanlaması temelinde çalışır ve düzenli olarak çalışan bir iş akışı oluşturmak için kolay bir yol sağlar.
 
 ```json
 "Recurrence": {
@@ -508,7 +506,7 @@ Bu tetikleyici, belirtilen yinelenme zamanlaması temelinde çalışır ve düze
 | <*bir veya daha fazla saat işaretleri*> | Tamsayı veya tamsayı dizisi | `frequency`için "gün" veya "hafta" belirtirseniz, iş akışını çalıştırmak istediğiniz günün saati olarak virgülle ayırarak 0 ile 23 arasında bir veya daha fazla tamsayı belirtebilirsiniz. <p>Örneğin, "10", "12" ve "14" belirtirseniz, saat işaretleri olarak 10 har, 12 PM ve 2 PM alırsınız. | 
 | <*bir veya daha fazla dakika* sonra> | Tamsayı veya tamsayı dizisi | `frequency`için "gün" veya "hafta" belirtirseniz, iş akışını çalıştırmak istediğiniz saatin dakikası olarak virgülle ayırarak 0 ile 59 arasında bir veya daha fazla tamsayı belirtebilirsiniz. <p>Örneğin, "30" öğesini dakika işareti olarak belirtebilir ve günün saati için önceki örneği kullanarak 10:30, 12:30 PM ve 2:30 PM kazanın. | 
 | weekDays | Dize veya dize dizisi | `frequency`için "Week" belirtirseniz, iş akışını çalıştırmak istediğinizde, virgülle ayırarak bir veya daha fazla gün belirtebilirsiniz: "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi" ve "Pazar" | 
-| <*en fazla* çalıştırma> | Tamsayı | Varsayılan olarak, iş akışı örneklerinin hepsi aynı anda çalışır veya [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar paralel olarak yapılır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
+| <*en fazla* çalıştırma> | Tamsayı | Varsayılan olarak, iş akışı örneklerinin hepsi aynı anda (aynı anda veya paralel) [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
 | <*en fazla çalıştırma-kuyruk*> | Tamsayı | İş akışınız, `runtimeConfiguration.concurrency.runs` özelliğine göre değiştirebileceğiniz en fazla örnek sayısını zaten çalıştırıyorsa, tüm yeni çalıştırmalar bu kuyruğa [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar yerleştirilir. Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). | 
 | <*operation-option*> | Dize | `operationOptions` özelliğini ayarlayarak varsayılan davranışı değiştirebilirsiniz. Daha fazla bilgi için bkz. [işlem seçenekleri](#operation-options). | 
 |||| 
@@ -569,7 +567,7 @@ Daha fazla bilgi ve bu tetikleyicinin örnekleri için bkz. [düzenli olarak ça
 
 ### <a name="request-trigger"></a>İstek tetikleyicisi
 
-Bu tetikleyici, gelen istekleri kabul edebilecek bir uç nokta oluşturarak mantıksal uygulamanızı çağrılabilir hale getirir. Bu tetikleyici için, tetikleyicinin gelen istekten aldığı yük veya girişleri açıklayan ve doğrulayan bir JSON şeması sağlayın. Şema ayrıca tetikleyici özelliklerini iş akışındaki sonraki eylemlerden daha kolay başvuruya de olanak sağlar. 
+Bu tetikleyici, gelen istekleri kabul edebilecek bir uç nokta oluşturarak mantıksal uygulamanızı çağrılabilir hale getirir. Bu tetikleyici için, tetikleyicinin gelen istekten aldığı yük veya girişleri açıklayan ve doğrulayan bir JSON şeması sağlayın. Şema ayrıca tetikleyici özelliklerini iş akışındaki sonraki eylemlerden daha kolay başvuruya de olanak sağlar.
 
 Bu tetikleyiciyi çağırmak için, [Iş akışı hizmeti REST API](https://docs.microsoft.com/rest/api/logic/workflows)AÇıKLANAN `listCallbackUrl` API 'sini kullanmanız gerekir. Bu tetikleyiciyi bir HTTP uç noktası olarak kullanmayı öğrenmek için bkz. [http uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](../logic-apps/logic-apps-http-endpoint.md).
 
@@ -615,14 +613,14 @@ Bu tetikleyiciyi çağırmak için, [Iş akışı hizmeti REST API](https://docs
 | <*yöntemi-tür*> | Dize | Gelen isteklerin mantıksal uygulamanızı çağırmak için kullanması gereken Yöntem: "GET", "PUT", "POST", "PATCH", "DELETE" |
 | <*göreli-yol-for-* ----parametresi> | Dize | Endpoint URL 'nizin kabul edebileceği parametrenin göreli yolu | 
 | <*gerekli-özellikler*> | Dizi | Değer gerektiren bir veya daha fazla özellik | 
-| <*en fazla* çalıştırma> | Tamsayı | Varsayılan olarak, iş akışı örneklerinin hepsi aynı anda çalışır veya [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar paralel olarak yapılır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
+| <*en fazla* çalıştırma> | Tamsayı | Varsayılan olarak, iş akışı örneklerinin hepsi aynı anda (aynı anda veya paralel) [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
 | <*en fazla çalıştırma-kuyruk*> | Tamsayı | İş akışınız, `runtimeConfiguration.concurrency.runs` özelliğine göre değiştirebileceğiniz en fazla örnek sayısını zaten çalıştırıyorsa, tüm yeni çalıştırmalar bu kuyruğa [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar yerleştirilir. Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). | 
 | <*operation-option*> | Dize | `operationOptions` özelliğini ayarlayarak varsayılan davranışı değiştirebilirsiniz. Daha fazla bilgi için bkz. [işlem seçenekleri](#operation-options). | 
 |||| 
 
 *Örnek*
 
-Bu tetikleyici, gelen bir isteğin tetikleyiciyi çağırmak için HTTP POST metodunu kullanması gerektiğini ve gelen istekten gelen girişi doğrulayan bir şema içerdiğini belirtir: 
+Bu tetikleyici, gelen bir isteğin tetikleyiciyi çağırmak için HTTP POST metodunu kullanması gerektiğini ve gelen istekten gelen girişi doğrulayan bir şema içerdiğini belirtir:
 
 ```json
 "manual": {
@@ -674,7 +672,7 @@ Herhangi bir tetikleyici ve yalnızca Tetikleyiciler için, iş akışının ça
 }
 ```
 
-Varsayılan olarak, bir tetikleyici yalnızca bir "200 Tamam" yanıtı alındıktan sonra ateşlenir. Bir ifade bir tetikleyicinin durum koduna başvurduğunda, tetikleyicinin varsayılan davranışı değiştirilmiştir. Bu nedenle, tetikleyicinin "200" ve "201" durum kodu gibi birden fazla durum kodu için tetiklemeyi istiyorsanız, bu ifadeyi koşulunuz olarak dahil etmeniz gerekir: 
+Varsayılan olarak, bir tetikleyici yalnızca bir "200 Tamam" yanıtı alındıktan sonra ateşlenir. Bir ifade bir tetikleyicinin durum koduna başvurduğunda, tetikleyicinin varsayılan davranışı değiştirilmiştir. Bu nedenle, tetikleyicinin "200" ve "201" durum kodu gibi birden fazla durum kodu için tetiklemeyi istiyorsanız, bu ifadeyi koşulunuz olarak dahil etmeniz gerekir:
 
 `@or(equals(triggers().code, 200),equals(triggers().code, 201))` 
 
@@ -682,15 +680,14 @@ Varsayılan olarak, bir tetikleyici yalnızca bir "200 Tamam" yanıtı alındık
 
 ## <a name="trigger-multiple-runs"></a>Birden çok çalıştırma Tetikle
 
-Tetikleyiciniz mantıksal uygulamanızın işlemesi için bir dizi döndürürse, bazen "for each" döngüsünün her bir dizi öğesini işlemesi çok uzun sürebilir. Bunun yerine, diziyi *toplu* olarak bırakmak için Tetikleyicinizdeki **spton** özelliğini kullanabilirsiniz. Toplu işleme, dizi öğelerini böler ve her dizi öğesi için çalışan yeni bir iş akışı örneği başlatır. Bu yaklaşım, örneğin yoklama aralıkları arasında birden çok yeni öğe döndürebilecek bir uç noktayı yoklamak istediğinizde yararlıdır.
-Tek bir mantıksal uygulama çalıştırmasında, **Spton** 'un işleyebilmesine izin verilen en fazla dizi öğesi sayısı için bkz. [sınırlar ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). 
+Tetikleyiciniz mantıksal uygulamanızın işlemesi için bir dizi döndürürse, bazen "for each" döngüsünün her bir dizi öğesini işlemesi çok uzun sürebilir. Bunun yerine, diziyi *toplu* olarak bırakmak için Tetikleyicinizdeki **spton** özelliğini kullanabilirsiniz. Toplu işleme, dizi öğelerini böler ve her dizi öğesi için çalışan yeni bir iş akışı örneği başlatır. Bu yaklaşım, örneğin yoklama aralıkları arasında birden çok yeni öğe döndürebilecek bir uç noktayı yoklamak istediğinizde yararlıdır. Tek bir mantıksal uygulama çalıştırmasında, **Spton** 'un işleyebilmesine izin verilen en fazla dizi öğesi sayısı için bkz. [sınırlar ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). 
 
 > [!NOTE]
 > Zaman uyumlu bir yanıt düzeniyle **Spton** kullanamazsınız. Bir yanıt eylemi içeren **ve bir** yanıt eylemi içeren herhangi bir iş akışı, zaman uyumsuz olarak çalışır ve anında `202 ACCEPTED` yanıtı gönderir.
 >
 > Eşzamanlılık tetikleme etkin olduğunda, [üst sınır](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) önemli ölçüde azalır. Öğe sayısı bu sınırı aşarsa, Spton özelliği devre dışıdır.
  
-Tetikleyicinizin Swagger dosyasında bir dizi olan bir yük varsa, tetikleyicisine otomatik olarak **Spton** özelliği eklenir. Aksi takdirde, bu özelliği, toplu işlem yapmak istediğiniz diziyi içeren yanıt yükünün içine ekleyin. 
+Tetikleyicinizin Swagger dosyasında bir dizi olan bir yük varsa, tetikleyicisine otomatik olarak **Spton** özelliği eklenir. Aksi takdirde, bu özelliği, toplu işlem yapmak istediğiniz diziyi içeren yanıt yükünün içine ekleyin.
 
 *Örnek*
 
@@ -711,7 +708,7 @@ Bu yanıtı döndüren bir API olduğunu varsayalım:
    ]
 }
 ```
- 
+
 Mantıksal uygulamanız yalnızca `Rows`dizideki içeriğe ihtiyaç duyuyor, bu nedenle aşağıdaki örnekte olduğu gibi bir tetikleyici oluşturabilirsiniz:
 
 ``` json
@@ -758,9 +755,7 @@ Mantıksal uygulamanız yalnızca `Rows`dizideki içeriğe ihtiyaç duyuyor, bu 
 
 ## <a name="actions-overview"></a>Eylemlere genel bakış
 
-Azure Logic Apps, her biri bir eylemin benzersiz davranışını tanımlayan farklı girişlerle birlikte çeşitli eylem türleri sağlar. 
-
-Eylemler bu üst düzey öğelere sahiptir, ancak bazıları isteğe bağlıdır:
+Azure Logic Apps, her biri bir eylemin benzersiz davranışını tanımlayan farklı girişlerle birlikte çeşitli eylem türleri sağlar. Eylemler bu üst düzey öğelere sahiptir, ancak bazıları isteğe bağlıdır:
 
 ```json
 "<action-name>": {
@@ -1000,8 +995,7 @@ Ayrıca, bir **Apiconnectionweb kancası** eyleminde, [http zaman uyumsuz limitl
 
 ### <a name="compose-action"></a>Oluşturma eylemi
 
-Bu eylem, ifadeler de dahil olmak üzere birden çok girişin tek bir çıkışını oluşturur. Hem çıktı hem de girişler, Azure Logic Apps yerel olarak desteklenen, diziler, JSON nesneleri, XML ve ikili gibi herhangi bir türde olabilir.
-Daha sonra eylemin çıkışını diğer eylemlerdeki bir şekilde kullanabilirsiniz. 
+Bu eylem, ifadeler de dahil olmak üzere birden çok girişin tek bir çıkışını oluşturur. Hem çıktı hem de girişler, Azure Logic Apps yerel olarak desteklenen, diziler, JSON nesneleri, XML ve ikili gibi herhangi bir türde olabilir. Daha sonra eylemin çıkışını diğer eylemlerdeki bir şekilde kullanabilirsiniz. 
 
 ```json
 "Compose": {
@@ -1310,7 +1304,7 @@ Bu eylem tanımı, bir ifadede `variables()` işlevini kullanarak değişkenden 
 
 ### <a name="parse-json-action"></a>JSON eylemini Ayrıştır
 
-Bu eylem, JSON içeriğindeki özelliklerden Kullanıcı dostu alanları veya *belirteçleri* oluşturur. Bunun yerine belirteçleri kullanarak mantıksal uygulamanızdaki bu özelliklere erişebilirsiniz. Örneğin, Azure Service Bus ve Azure Cosmos DB gibi hizmetlerden JSON çıktısı kullanmak istiyorsanız bu eylemi mantıksal uygulamanıza ekleyebilirsiniz, böylece söz konusu çıktıdaki verilere daha kolay başvurabilirsiniz. 
+Bu eylem, JSON içeriğindeki özelliklerden Kullanıcı dostu alanları veya *belirteçleri* oluşturur. Bunun yerine belirteçleri kullanarak mantıksal uygulamanızdaki bu özelliklere erişebilirsiniz. Örneğin, Azure Service Bus ve Azure Cosmos DB gibi hizmetlerden JSON çıktısı kullanmak istiyorsanız bu eylemi mantıksal uygulamanıza ekleyebilirsiniz, böylece söz konusu çıktıdaki verilere daha kolay başvurabilirsiniz.
 
 ```json
 "Parse_JSON": {
@@ -1333,7 +1327,7 @@ Bu eylem, JSON içeriğindeki özelliklerden Kullanıcı dostu alanları veya *b
 
 *Örnek*
 
-Bu eylem tanımı, iş akışınızda kullanabileceğiniz, ancak yalnızca **JSON ayrıştırması** eylemini izleyen eylemlerde çalıştırılan bu belirteçleri oluşturur: 
+Bu eylem tanımı, iş akışınızda kullanabileceğiniz, ancak yalnızca **JSON ayrıştırması** eylemini izleyen eylemlerde çalıştırılan bu belirteçleri oluşturur:
 
 `FirstName`, `LastName`ve `Email`
 
@@ -1525,7 +1519,7 @@ Diğer eylemlerin aksine, **Yanıt** eyleminde özel kısıtlamalar vardır:
 
 ### <a name="select-action"></a>Eylem Seç
 
-Bu eylem, belirtilen haritaya göre başka bir diziden öğeleri dönüştürerek JSON nesnelerine sahip bir dizi oluşturur. Çıkış dizisi ve kaynak dizisi her zaman aynı sayıda öğe içermelidir. Çıktı dizisindeki nesne sayısını değiştiremeseniz de, bu nesneler arasında özellikleri ve değerlerini ekleyebilir veya kaldırabilirsiniz. `select` özelliği, kaynak dizideki öğeleri dönüştürmek için Haritayı tanımlayan en az bir anahtar-değer çifti belirtir. Anahtar-değer çifti, çıkış dizisindeki tüm nesneler genelinde bir özelliği ve değerini temsil eder. 
+Bu eylem, belirtilen haritaya göre başka bir diziden öğeleri dönüştürerek JSON nesnelerine sahip bir dizi oluşturur. Çıkış dizisi ve kaynak dizisi her zaman aynı sayıda öğe içermelidir. Çıktı dizisindeki nesne sayısını değiştiremeseniz de, bu nesneler arasında özellikleri ve değerlerini ekleyebilir veya kaldırabilirsiniz. `select` özelliği, kaynak dizideki öğeleri dönüştürmek için Haritayı tanımlayan en az bir anahtar-değer çifti belirtir. Anahtar-değer çifti, çıkış dizisindeki tüm nesneler genelinde bir özelliği ve değerini temsil eder.
 
 ```json
 "Select": {
@@ -1554,7 +1548,7 @@ Bu eylem, belirtilen haritaya göre başka bir diziden öğeleri dönüştürere
 
 *Örnek*
 
-Bu eylem tanımı bir tamsayı dizisinden JSON nesnesi dizisi oluşturur. Eylem, kaynak dizi boyunca yinelenir, `@item()` ifadesini kullanarak her bir tamsayı değeri alır ve her bir değeri her bir JSON nesnesinde "`number`" özelliğine atar: 
+Bu eylem tanımı bir tamsayı dizisinden JSON nesnesi dizisi oluşturur. Eylem, kaynak dizi boyunca yinelenir, `@item()` ifadesini kullanarak her bir tamsayı değeri alır ve her bir değeri her bir JSON nesnesinde "`number`" özelliğine atar:
 
 ```json
 "Select": {
@@ -1659,11 +1653,11 @@ Sütun üst bilgilerini ve değerlerini belirtmek veya özelleştirmek için `co
 
 *Örnek 1*
 
-Şu anda bu diziyi içeren daha önce oluşturulmuş bir "myItemArray" değişkenine sahip olduğunuzu varsayalım: 
+Şu anda bu diziyi içeren daha önce oluşturulmuş bir "myItemArray" değişkenine sahip olduğunuzu varsayalım:
 
 `[ {"ID": 0, "Product_Name": "Apples"}, {"ID": 1, "Product_Name": "Oranges"} ]`
 
-Bu eylem tanımı, "myItemArray" değişkeninden bir CSV tablosu oluşturur. `from` özelliği tarafından kullanılan ifade, `variables()` işlevini kullanarak "myItemArray" öğesinden diziyi alır: 
+Bu eylem tanımı, "myItemArray" değişkeninden bir CSV tablosu oluşturur. `from` özelliği tarafından kullanılan ifade, `variables()` işlevini kullanarak "myItemArray" öğesinden diziyi alır:
 
 ```json
 "Create_CSV_table": {
@@ -1686,7 +1680,7 @@ ID,Product_Name
 
 *Örnek 2*
 
-Bu eylem tanımı, "myItemArray" değişkeninden bir HTML tablosu oluşturur. `from` özelliği tarafından kullanılan ifade, `variables()` işlevini kullanarak "myItemArray" öğesinden diziyi alır: 
+Bu eylem tanımı, "myItemArray" değişkeninden bir HTML tablosu oluşturur. `from` özelliği tarafından kullanılan ifade, `variables()` işlevini kullanarak "myItemArray" öğesinden diziyi alır:
 
 ```json
 "Create_HTML_table": {
@@ -1736,7 +1730,7 @@ Bu eylemin oluşturduğu HTML tablosu aşağıda verilmiştir:
 
 ### <a name="terminate-action"></a>Sonlandırma eylemi
 
-Bu eylem bir iş akışı örneği için çalışmayı durduruyor, devam eden tüm işlemleri iptal eder, kalan eylemleri atlar ve belirtilen durumu döndürür. Örneğin, mantıksal uygulamanız bir hata durumundan tamamen çıkış yapması gerektiğinde **Sonlandır** eylemini kullanabilirsiniz. Bu eylem, zaten tamamlanmış eylemleri etkilemez ve sıralı döngüler dahil olmak üzere **ForEach** ve **until** döngüleri içinde yer alamaz. 
+Bu eylem bir iş akışı örneği için çalışmayı durduruyor, devam eden tüm işlemleri iptal eder, kalan eylemleri atlar ve belirtilen durumu döndürür. Örneğin, mantıksal uygulamanız bir hata durumundan tamamen çıkış yapması gerektiğinde **Sonlandır** eylemini kullanabilirsiniz. Bu eylem, zaten tamamlanmış eylemleri etkilemez ve sıralı döngüler dahil olmak üzere **ForEach** ve **until** döngüleri içinde yer alamaz.
 
 ```json
 "Terminate": {
@@ -1789,9 +1783,9 @@ Bu eylem tanımı bir iş akışı çalıştırmasını durduruyor, çalışma d
 
 <a name="wait-action"></a>
 
-### <a name="wait-action"></a>Bekleme eylemi  
+### <a name="wait-action"></a>Bekleme eylemi
 
-Bu eylem, belirtilen zaman aralığı veya belirtilen saate kadar iş akışı yürütmeyi duraklatır, ancak her ikisine birden değil. 
+Bu eylem, belirtilen zaman aralığı veya belirtilen saate kadar iş akışı yürütmeyi duraklatır, ancak her ikisine birden değil.
 
 *Belirtilen Aralık*
 
@@ -1876,7 +1870,7 @@ Logic Apps motor çağırmak istediğiniz tetikleyiciye erişimi denetler, bu ne
 
 * Ana mantıksal uygulamanız ile aynı Azure aboneliği
 
-* Ana mantıksal uygulamanızdaki iç içe mantıksal uygulamadaki çıktıları kullanmak için, iç içe mantıksal uygulamanın bir [Yanıt](#response-action) eylemi olması gerekir 
+* Ana mantıksal uygulamanızdaki iç içe mantıksal uygulamadaki çıktıları kullanmak için, iç içe mantıksal uygulamanın bir [Yanıt](#response-action) eylemi olması gerekir
 
 ```json
 "<nested-logic-app-name>": {
@@ -1920,7 +1914,7 @@ Bu eylemin çıkışları, iç içe mantıksal uygulamanın yanıt eylemine gör
 
 *Örnek*
 
-"Start_search" eylemi başarıyla tamamlandıktan sonra, bu iş akışı eylemi tanımı, belirtilen girdileri geçen "Get_product_information" adlı başka bir mantıksal uygulamayı çağırır: 
+"Start_search" eylemi başarıyla tamamlandıktan sonra, bu iş akışı eylemi tanımı, belirtilen girdileri geçen "Get_product_information" adlı başka bir mantıksal uygulamayı çağırır:
 
 ```json
 "actions": {
@@ -1985,7 +1979,7 @@ Bu döngü eylemi bir dizi boyunca yinelenir ve her dizi öğesinde eylemler ger
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
-| <*sayı*> | Tamsayı | Varsayılan olarak, "for each" döngüsü yinelemeleri aynı anda veya [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)paralel olarak çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için, bkz. ["for each" döngüsü eşzamanlılık](#change-for-each-concurrency). | 
+| <*sayı*> | Tamsayı | Varsayılan olarak, "for each" döngüsü yinelemeleri [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar (eşzamanlı veya paralel) aynı anda çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için, bkz. ["for each" döngüsü eşzamanlılık](#change-for-each-concurrency). | 
 | <*operation-option*> | Dize | Paralel yerine "for each" döngüsünü sırayla çalıştırmak için, <*Operation-option*> `Sequential` veya <*Count*> `1`olarak ayarlayın, ancak her ikisine birden değil. Daha fazla bilgi için bkz. ["for each" döngülerini sırayla çalıştırma](#sequential-for-each). | 
 |||| 
 
@@ -2316,7 +2310,7 @@ Bu döngü eylemi, belirtilen koşul doğru olana kadar çalışan eylemleri iç
 
 *Örnek*
 
-Bu döngü eylemi tanımı, bu koşullardan biri karşılanana kadar belirtilen URL 'ye bir HTTP isteği gönderir: 
+Bu döngü eylemi tanımı, bu koşullardan biri karşılanana kadar belirtilen URL 'ye bir HTTP isteği gönderir:
 
 * İstek, "200 OK" durum kodu ile bir yanıt alır.
 * Döngü 60 kez çalışır.
@@ -2364,7 +2358,7 @@ Bu çağrıları desteklemek için `@listCallbackUrl()` ifadesi tetikleyici veya
 
 ## <a name="change-asynchronous-duration"></a>Zaman uyumsuz süreyi değiştirme
 
-Her iki tetikleyici ve eylem için, `limit.timeout` özelliğini ekleyerek zaman uyumsuz düzenin süresini belirli bir zaman aralığına sınırlayabilirsiniz. Bu şekilde, zaman aralığı üzerinde işlem bitmemişse, eylemin durumu `ActionTimedOut` kodla `Cancelled` olarak işaretlenir. `timeout` özelliği [ıso 8601 biçimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kullanır. 
+Her iki tetikleyici ve eylem için, `limit.timeout` özelliğini ekleyerek zaman uyumsuz düzenin süresini belirli bir zaman aralığına sınırlayabilirsiniz. Bu şekilde, zaman aralığı üzerinde işlem bitmemişse, eylemin durumu `ActionTimedOut` kodla `Cancelled` olarak işaretlenir. `timeout` özelliği [ıso 8601 biçimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kullanır.
 
 ``` json
 "<trigger-or-action-name>": {
@@ -2381,13 +2375,13 @@ Her iki tetikleyici ve eylem için, `limit.timeout` özelliğini ekleyerek zaman
 
 ## <a name="runtime-configuration-settings"></a>Çalışma zamanı yapılandırma ayarları
 
-Tetikleyici veya eylem tanımındaki bu `runtimeConfiguration` özellikleriyle Tetikleyiciler ve eylemler için varsayılan çalışma zamanı davranışını değiştirebilirsiniz.
+Bu `runtimeConfiguration` özelliklerini tetikleyici veya eylem tanımına ekleyerek Tetikleyiciler ve eylemler için varsayılan çalışma zamanı davranışını değiştirebilirsiniz.
 
 | Özellik | Tür | Açıklama | Tetikleyici veya eylem | 
 |----------|------|-------------|-------------------| 
-| `runtimeConfiguration.concurrency.runs` | Tamsayı | Aynı anda veya paralel olarak çalışabilen iş akışı örneklerinin sayısı için [*varsayılan sınırı*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) değiştirin. Bu değer, arka uç sistemlerinin aldığı isteklerin sayısını sınırlamanıza yardımcı olabilir. <p>`runs` özelliğinin `1` olarak ayarlanması `operationOptions` özelliğini `SingleInstance`olarak ayarlamayla aynı şekilde çalışacaktır. Her iki özelliği de ayarlayabilirsiniz, ancak ikisini birden kullanamazsınız. <p>Varsayılan sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık](#change-trigger-concurrency) veya [tetikleyici örneklerini sırayla](#sequential-trigger)değiştirme. | Tüm tetikleyiciler | 
-| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Tamsayı | İş akışınız zaten maksimum eşzamanlı örnekleri çalıştırıyorsa çalışmayı beklemeleri gereken iş akışı örneklerinin sayısı için [*varsayılan sınırı*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) değiştirin. `concurrency.runs` özelliğindeki eşzamanlılık limitini değiştirebilirsiniz. <p>Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). | Tüm tetikleyiciler | 
-| `runtimeConfiguration.concurrency.repetitions` | Tamsayı | Aynı anda veya paralel olarak çalışabilen "for each" döngüsü yinelemelerinin sayısı için [*varsayılan sınırı*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) değiştirin. <p>`repetitions` özelliğinin `1` olarak ayarlanması `operationOptions` özelliğini `SingleInstance`olarak ayarlamayla aynı şekilde çalışacaktır. Her iki özelliği de ayarlayabilirsiniz, ancak ikisini birden kullanamazsınız. <p>Varsayılan sınırı değiştirmek için, " [her bir eşzamanlılık için" değiştirme](#change-for-each-concurrency) veya "her bir" [for each "döngüsü sırayla](#sequential-for-each)' ne bakın. | Eylem: <p>[Foreach](#foreach-action) | 
+| `runtimeConfiguration.concurrency.runs` | Tamsayı | Aynı anda çalışabilecek iş akışı örnekleri sayısında [*varsayılan sınırı*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) değiştirin (eşzamanlı veya paralel). Bu değeri ayarlamak, arka uç sistemlerinin aldığı istek sayısını sınırlamanıza yardımcı olabilir. <p>`runs` özelliğinin `1` olarak ayarlanması `operationOptions` özelliğini `SingleInstance`olarak ayarlamayla aynı şekilde çalışacaktır. Her iki özelliği de ayarlayabilirsiniz, ancak ikisini birden kullanamazsınız. <p>Varsayılan sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık](#change-trigger-concurrency) veya [tetikleyici örneklerini sırayla](#sequential-trigger)değiştirme. | Tüm tetikleyiciler | 
+| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Tamsayı | Mantıksal uygulamanız zaten en fazla eşzamanlı örnekleri çalıştırıyorsa, çalıştırılacak şekilde beklemesi gereken iş akışı örneklerinin sayısı için [*varsayılan sınırı*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) değiştirin. <p>Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). | Tüm tetikleyiciler | 
+| `runtimeConfiguration.concurrency.repetitions` | Tamsayı | Aynı anda çalışabilecek "for each" döngüsü yinelemelerinin sayısı için [*varsayılan sınırı*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) değiştirin (eşzamanlı veya paralel). <p>`repetitions` özelliğinin `1` olarak ayarlanması `operationOptions` özelliğini `SingleInstance`olarak ayarlamayla aynı şekilde çalışacaktır. Her iki özelliği de ayarlayabilirsiniz, ancak ikisini birden kullanamazsınız. <p>Varsayılan sınırı değiştirmek için, " [her bir eşzamanlılık için" değiştirme](#change-for-each-concurrency) veya "her bir" [for each "döngüsü sırayla](#sequential-for-each)' ne bakın. | Eylem: <p>[Foreach](#foreach-action) | 
 | `runtimeConfiguration.paginationPolicy.minimumItemCount` | Tamsayı | Tarafından desteklenen ve sayfalama özelliği açık olan belirli eylemler için, bu değer alınacak *en az* sonuç sayısını belirtir. <p>Sayfalandırmayı açmak için bkz. [sayfalama kullanarak toplu veri, öğe veya sonuç edinme](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | Eylem: farklılaştırın |
 | `runtimeConfiguration.secureData.properties` | Dizi | Birçok tetikleyici ve eylem üzerinde, bu ayarlar mantıksal uygulamanın çalıştırma geçmişinden girdileri, çıkışları veya her ikisini de gizler. <p>Bu verilerin güvenliğini sağlamak için bkz. [çalıştırma geçmişinden girişleri ve çıkışları gizleme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view). | Birçok tetikleyici ve eylem |
 | `runtimeConfiguration.staticResult` | JSON Nesnesi | ' Yi destekleyen ve [statik sonuç](../logic-apps/test-logic-apps-mock-data-static-results.md) ayarı açık olan eylemler için, `staticResult` nesnesi şu özniteliklere sahiptir: <p>- `name`, mantıksal uygulama iş akışınızın `definition` özniteliğindeki `staticResults` özniteliğinin içinde görünen geçerli eylemin statik sonuç tanımı adına başvurur. Daha fazla bilgi için bkz. [statik sonuçlar-Iş akışı tanımlama dili Için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md#static-results). <p> - `staticResultOptions`, statik sonuçların geçerli eylem için `Enabled` olup olmadığını belirtir. <p>Statik sonuçları açmak için, bkz. [statik sonuçlar ayarlayarak, veri ve sahte verilerle test mantığı uygulamaları](../logic-apps/test-logic-apps-mock-data-static-results.md) | Eylem: farklılaştırın |
@@ -2411,7 +2405,7 @@ Tetikleyiciler ve eylemler için varsayılan davranışı tetikleyici veya eylem
 
 ### <a name="change-trigger-concurrency"></a>Tetikleyici eşzamanlılık değiştirme
 
-Varsayılan olarak, mantıksal uygulama örnekleri [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar aynı anda (aynı anda veya paralel) çalışır. Bu nedenle, her tetikleyici örneği, önceki iş akışı örneği çalışmaya başlamadan önce tetiklenir. Bu sınır, arka uç sistemlerinin aldığı istek sayısını denetlemeye yardımcı olur. 
+Varsayılan olarak, mantıksal uygulama iş akışı örneklerinin hepsi aynı anda (eşzamanlı veya paralel) çalışır. Bu davranış, her tetikleyici örneğinin, daha önce etkin iş akışı örneğinin çalışmasını bitmeden önce tetiklendiği anlamına gelir. Ancak, eşzamanlı çalışan örneklerin sayısı [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)sahiptir. Eşzamanlı çalışan iş akışı örneklerinin sayısı bu sınıra ulaştığında, diğer tüm yeni örneklerin çalıştırılmasını beklemesi gerekir. Bu sınır, arka uç sistemlerinin aldığı istek sayısını denetlemeye yardımcı olur.
 
 Varsayılan sınırı değiştirmek için, kod görünümü Düzenleyicisi 'ni veya Logic Apps tasarımcısını kullanarak eşzamanlılık ayarını tasarımcı aracılığıyla değiştirmek, temel tetikleyici tanımında `runtimeConfiguration.concurrency.runs` özelliğini ekler ya da güncelleştirir, tersi de geçerlidir. Bu özellik paralel olarak çalışabilecek en fazla iş akışı örneği sayısını denetler. Eşzamanlılık denetimini etkinleştirmek istediğiniz durumlar için bazı konular aşağıda verilmiştir:
 
@@ -2428,7 +2422,7 @@ Varsayılan sınırı değiştirmek için, kod görünümü Düzenleyicisi 'ni v
        ![En erken çalışan örneği Seç](./media/logic-apps-workflow-actions-triggers/waiting-runs.png)
 
        > [!TIP]
-       > Yalnızca çalışmaya devam eden örnekleri görüntülemek için, **Tümü** listesini açın ve **çalışıyor**' ı seçin.    
+       > Yalnızca çalışmaya devam eden örnekleri görüntülemek için, **Tümü** listesini açın ve **çalışıyor**' ı seçin.
 
     1. **Mantıksal uygulama çalıştırması**altında, **çalıştırmayı iptal et**' i seçin.
 
@@ -2444,11 +2438,11 @@ Varsayılan sınırı değiştirmek için, kod görünümü Düzenleyicisi 'ni v
 
        ![Zaman aşımı süresini belirtin](./media/logic-apps-workflow-actions-triggers/timeout.png)
 
-* Mantıksal uygulamanızı sırasıyla çalıştırmak istiyorsanız, tetikleyicinin eşzamanlılık öğesini kod görünümü Düzenleyicisi veya Tasarımcı kullanarak `1` olarak ayarlayabilirsiniz. Ancak, Ayrıca, tetikleyicinin `operationOptions` özelliğini kod görünümü düzenleyicisinde `SingleInstance` olarak ayarlayın. Aksi takdirde, doğrulama hatası alırsınız. Daha fazla bilgi için bkz. [örnekleri sırayla tetikleme](#sequential-trigger).
+* Mantıksal uygulamanızı sıralı olarak çalıştırmak için tetikleyicinin eşzamanlılık öğesini kod görünümü Düzenleyicisi veya Tasarımcı kullanarak `1` olarak ayarlayın. Ayrıca, tetikleyicinin `operationOptions` özelliğini kod görünümü düzenleyicisinde `SingleInstance` olarak ayarladığınızdan emin olun. Aksi takdirde, doğrulama hatası alırsınız. Daha fazla bilgi için bkz. [örnekleri sırayla tetikleme](#sequential-trigger).
 
 #### <a name="edit-in-code-view"></a>Kod görünümünde Düzenle 
 
-Temel tetikleyici tanımında, `runtimeConfiguration.concurrency.runs` özelliğini `1` ve `50` ikisi de dahil olmak üzere bir değere ekleyin veya güncelleştirin.
+Temel tetikleyici tanımında, `1` `50`kadar uzanan bir değere sahip olabilen `runtimeConfiguration.concurrency.runs` özelliğini ekleyin.
 
 Eşzamanlı çalıştırmaları 10 örneğe sınırlayan bir örnek aşağıda verilmiştir:
 
@@ -2467,26 +2461,30 @@ Eşzamanlı çalıştırmaları 10 örneğe sınırlayan bir örnek aşağıda v
 }
 ```
 
+Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](#runtime-config-options).
+
 #### <a name="edit-in-logic-apps-designer"></a>Logic Apps tasarımcısında Düzenle
 
-1. Tetikleyicinin sağ üst köşesinde üç nokta (...) düğmesini ve ardından **Ayarlar**' ı seçin.
+1. Tetikleyicinin sağ üst köşesinde üç nokta ( **...** ) düğmesini ve ardından **Ayarlar**' ı seçin.
 
-2. **Eşzamanlılık denetimi**altında **sınırı** **Açık**olarak ayarlayın. 
+1. **Eşzamanlılık denetimi**altında **sınırı** **Açık**olarak ayarlayın. 
 
-3. **Paralellik** sürgüsünün derecesini istediğiniz değere sürükleyin. Mantıksal uygulamanızı sırayla çalıştırmak için kaydırıcı değerini **1**olarak sürükleyin.
+1. **Paralellik** sürgüsünün derecesini istediğiniz değere sürükleyin. Mantıksal uygulamanızı sırayla çalıştırmak için kaydırıcı değerini **1**olarak sürükleyin.
 
 <a name="change-for-each-concurrency"></a>
 
 ### <a name="change-for-each-concurrency"></a>Eşzamanlılık "for each"
 
-Varsayılan olarak, "her" for döngüsü yinelemesi aynı anda veya paralel, [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar çalışır. Varsayılan sınırı değiştirmek için, kod görünümü Düzenleyicisi 'ni veya Logic Apps tasarımcısını kullanarak eşzamanlılık ayarını tasarımcı aracılığıyla değiştirmeniz, temel alınan "for each" eylem tanımında `runtimeConfiguration.concurrency.repetitions` özelliği ekler veya günceller, ya da tam tersi. Bu özellik paralel çalışabilecek en fazla yineleme sayısını denetler.
+Varsayılan olarak, "for each" döngüsü yinelemelerinin hepsi aynı anda (eşzamanlı veya paralel) çalışır. Bu davranış, önceki yineleme çalışmadan önce her yinelemenin çalışmaya başladığı anlamına gelir. Ancak, eşzamanlı çalışan yinelemelerin sayısının [varsayılan sınırı](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)vardır. Eşzamanlı çalışan yinelemeler sayısı bu sınıra ulaştığında, diğer tüm yinelemelerin çalıştırılması beklenmelidir.
+
+Varsayılan sınırı değiştirmek için, kod görünümü Düzenleyicisi 'ni veya Logic Apps tasarımcısını kullanarak eşzamanlılık ayarını tasarımcı aracılığıyla değiştirmeniz, temel alınan "for each" eylem tanımında `runtimeConfiguration.concurrency.repetitions` özelliği ekler veya günceller, ya da tam tersi. Bu özellik paralel çalışabilecek en fazla yineleme sayısını denetler.
 
 > [!NOTE] 
 > Tasarımcı veya kod görünümü Düzenleyicisi kullanarak "for each" eylemini sırayla çalışacak şekilde ayarlarsanız, eylemin `operationOptions` özelliğini kod görünümü düzenleyicisinde `Sequential` olarak ayarlamayın. Aksi takdirde, doğrulama hatası alırsınız. Daha fazla bilgi için bkz. ["for each" döngülerini sırayla çalıştırma](#sequential-for-each).
 
 #### <a name="edit-in-code-view"></a>Kod görünümünde Düzenle 
 
-Temel alınan "for each" tanımında `runtimeConfiguration.concurrency.repetitions` özelliğini `1` ve `50` ikisi de dahil olmak üzere bir değere ekleyin veya güncelleştirin. 
+Temel alınan "for each" tanımında, `1` ve `50`değişen bir değere sahip olabilen `runtimeConfiguration.concurrency.repetitions` özelliğini ekleyin veya güncelleştirin.
 
 Eşzamanlı çalıştırmaları 10 yineleme ile sınırlayan bir örnek aşağıda verilmiştir:
 
@@ -2504,23 +2502,25 @@ Eşzamanlı çalıştırmaları 10 yineleme ile sınırlayan bir örnek aşağı
 }
 ```
 
+Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](#runtime-config-options).
+
 #### <a name="edit-in-logic-apps-designer"></a>Logic Apps tasarımcısında Düzenle
 
-1. Her eylem **için** sağ üst köşedeki üç nokta (...) düğmesini ve ardından **Ayarlar**' ı seçin.
+1. Her eylem **için** sağ üst köşedeki üç nokta ( **...** ) düğmesini ve ardından **Ayarlar**' ı seçin.
 
-2. **Eşzamanlılık denetimi**altında **eşzamanlılık denetimini** **Açık**olarak ayarlayın. 
+1. **Eşzamanlılık denetimi**altında **eşzamanlılık denetimini** **Açık**olarak ayarlayın.
 
-3. **Paralellik** sürgüsünün derecesini istediğiniz değere sürükleyin. Mantıksal uygulamanızı sırayla çalıştırmak için kaydırıcı değerini **1**olarak sürükleyin.
+1. **Paralellik** sürgüsünün derecesini istediğiniz değere sürükleyin. Mantıksal uygulamanızı sırayla çalıştırmak için kaydırıcı değerini **1**olarak sürükleyin.
 
 <a name="change-waiting-runs"></a>
 
 ### <a name="change-waiting-runs-limit"></a>Değişiklik bekleyen çalışma sınırı
 
-Varsayılan olarak, mantıksal uygulama iş akışı örneklerinin hepsi aynı anda, aynı anda veya [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)paralel olarak çalışır. Her tetikleyici örneği, daha önce etkin iş akışı örneğinin çalışması bitmeden önce ateşlenir. [Bu varsayılan sınırı değiştirebilseniz](#change-trigger-concurrency)de, iş akışı örneklerinin sayısı yeni eşzamanlılık sınırına ulaştığında, diğer tüm yeni örneklerin çalıştırılması beklenmelidir. 
+Varsayılan olarak, mantıksal uygulama iş akışı örneklerinin hepsi aynı anda (eşzamanlı veya paralel) çalışır. Bu davranış, her tetikleyici örneğinin, daha önce etkin iş akışı örneğinin çalışmasını bitmeden önce tetiklendiği anlamına gelir. Ancak, eşzamanlı çalışan örneklerin sayısı [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)sahiptir. Eşzamanlı çalışan iş akışı örneklerinin sayısı bu sınıra ulaştığında, diğer tüm yeni örneklerin çalıştırılmasını beklemesi gerekir.
 
-Beklemeleri gereken çalıştırmanın sayısı, [varsayılan bir sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)sahiptir ve bu da değiştirebilirsiniz. Ancak, mantıksal uygulamanız bekleme çalıştırmalarının sınırına ulaştıktan sonra, Logic Apps altyapısı artık yeni çalıştırmalar kabul etmez. İstek ve Web kancası Tetikleyicileri 429 hata döndürüyor ve yinelenen Tetikleyiciler yoklama girişimlerini atmaya başladı.
+Bekleme çalışmalarının sayısı aynı zamanda [varsayılan bir sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)sahiptir. Bekleyen çalışma sayısı bu sınıra ulaştığında, Logic Apps altyapısı artık yeni çalıştırmalar kabul etmez. İstek ve Web kancası Tetikleyicileri 429 hata döndürüyor ve yinelenen Tetikleyiciler yoklama girişimlerini atmaya başladı.
 
-Bekleyen çalışmalarla ilgili varsayılan sınırı değiştirmek için, temeldeki tetikleyici tanımında `runtimeConfiguration.concurency.maximumWaitingRuns` özelliğini `1` ve `100`arasında bir değer ile ekleyin. 
+Yalnızca [tetikleyici eşzamanlılık için varsayılan sınırı değiştiremeyebilir](#change-trigger-concurrency), ancak bekleyen çalıştırmalar için varsayılan sınırı da değiştirebilirsiniz. Temel tetikleyici tanımında, `1` `100`kadar uzanan bir değere sahip olabilen `runtimeConfiguration.concurrency.maximumWaitingRuns` özelliğini ekleyin.
 
 ```json
 "<trigger-name>": {
@@ -2537,11 +2537,13 @@ Bekleyen çalışmalarla ilgili varsayılan sınırı değiştirmek için, temel
 }
 ```
 
+Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](#runtime-config-options).
+
 <a name="sequential-trigger"></a>
 
 ### <a name="trigger-instances-sequentially"></a>Örnekleri sıralı olarak Tetikle
 
-Her mantıksal uygulama iş akışı örneğini yalnızca önceki örnek çalışmayı tamamladığında çalıştırmak için tetikleyiciyi sıralı olarak çalışacak şekilde ayarlayın. İş akışı ayarını tasarımcı aracılığıyla değiştirmek, temel tetikleyici tanımında `runtimeConfiguration.concurrency.runs` özelliğini de ekler ya da güncelleştirir ve tam tersi de geçerlidir. Logic Apps 
+Her mantıksal uygulama iş akışı örneğini yalnızca önceki örnek çalışmayı tamamladığında çalıştırmak için tetikleyiciyi sıralı olarak çalışacak şekilde ayarlayın. İş akışı ayarını tasarımcı aracılığıyla değiştirmek, temel tetikleyici tanımında `runtimeConfiguration.concurrency.runs` özelliğini de ekler ya da güncelleştirir ve tam tersi de geçerlidir. Logic Apps
 
 > [!NOTE] 
 > Tasarımcıyı veya kod görünümü düzenleyicisini kullanarak sırayla çalışacak bir tetikleyici ayarladığınızda, tetikleyicinin `operationOptions` özelliğini kod görünümü düzenleyicisinde `Sequential` olarak ayarlamayın. Aksi takdirde, doğrulama hatası alırsınız. 
@@ -2582,19 +2584,21 @@ Tetikleyici tanımında, bu özelliklerden birini ayarlayın, ancak ikisini bird
 }
 ```
 
+Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](#runtime-config-options) ve [işlem seçenekleri](#operation-options).
+
 #### <a name="edit-in-logic-apps-designer"></a>Logic Apps tasarımcısında Düzenle
 
-1. Tetikleyicinin sağ üst köşesinde üç nokta (...) düğmesini ve ardından **Ayarlar**' ı seçin.
+1. Tetikleyicinin sağ üst köşesinde üç nokta ( **...** ) düğmesini ve ardından **Ayarlar**' ı seçin.
 
-2. **Eşzamanlılık denetimi**altında **sınırı** **Açık**olarak ayarlayın. 
+1. **Eşzamanlılık denetimi**altında **sınırı** **Açık**olarak ayarlayın. 
 
-3. **Paralellik** sürgüsünün derecesini `1`sayıya sürükleyin. 
+1. **Paralellik** sürgüsünün derecesini `1`sayıya sürükleyin. 
 
 <a name="sequential-for-each"></a>
 
 ### <a name="run-for-each-loops-sequentially"></a>"Her" for each "döngülerini sırayla çalıştır
 
-Yalnızca önceki yineleme çalıştıktan sonra "for each" döngüsü yinelemesi çalıştırmak için, "for each" eylemini sıralı olarak çalışacak şekilde ayarlayın. Eylemin eşzamanlılık ' i tasarımcı aracılığıyla değiştirmek, temel alınan eylem tanımında `runtimeConfiguration.concurrency.repetitions` özelliğini de ekler veya güncelleştirir. Logic Apps 
+Yalnızca önceki yineleme çalıştıktan sonra "for each" döngüsü yinelemesi çalıştırmak için, "for each" eylemini sıralı olarak çalışacak şekilde ayarlayın. Eylemin eşzamanlılık ' i tasarımcı aracılığıyla değiştirmek, temel alınan eylem tanımında `runtimeConfiguration.concurrency.repetitions` özelliğini de ekler veya güncelleştirir. Logic Apps
 
 > [!NOTE] 
 > Tasarımcı veya kod görünümü düzenleyicisini kullanarak sırayla çalışacak bir "for each" eylemini ayarladığınızda, eylemin `operationOptions` özelliğini kod görünümü düzenleyicisinde `Sequential` olarak ayarlamayın. Aksi takdirde, doğrulama hatası alırsınız. 
@@ -2633,13 +2637,15 @@ Eylem tanımında, bu özelliklerden birini ayarlayın, ancak ikisini birden kul
 }
 ```
 
+Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](#runtime-config-options) ve [işlem seçenekleri](#operation-options).
+
 #### <a name="edit-in-logic-apps-designer"></a>Logic Apps tasarımcısında Düzenle
 
-1. **Her** bir eylemin sağ üst köşesinde, üç nokta (...) düğmesini ve ardından **Ayarlar**' ı seçin.
+1. **Her** bir eylemin sağ üst köşesinde, üç nokta ( **...** ) düğmesini ve ardından **Ayarlar**' ı seçin.
 
-2. **Eşzamanlılık denetimi**altında **eşzamanlılık denetimini** **Açık**olarak ayarlayın. 
+1. **Eşzamanlılık denetimi**altında **eşzamanlılık denetimini** **Açık**olarak ayarlayın.
 
-3. **Paralellik** sürgüsünün derecesini `1`sayıya sürükleyin. 
+1. **Paralellik** sürgüsünün derecesini `1`sayıya sürükleyin.
 
 <a name="asynchronous-patterns"></a>
 
@@ -2648,7 +2654,7 @@ Eylem tanımında, bu özelliklerden birini ayarlayın, ancak ikisini birden kul
 Varsayılan olarak, tüm HTTP tabanlı eylemler standart zaman uyumsuz işlem modelini izler. Bu model, HTTP tabanlı bir eylem belirtilen uç noktaya bir istek gönderdiğinde, uzak sunucunun "202 kabul EDILDI" yanıtını geri göndereceğini belirtir. Bu yanıt, sunucunun işleme isteğini kabul ettiği anlamına gelir. Logic Apps altyapısı, 202 olmayan bir yanıt olan işlem duraklarına kadar yanıtın konum üst bilgisi tarafından belirtilen URL 'YI denetlemeye devam eder.
 
 Ancak, isteklerin bir zaman aşımı sınırı vardır. bu nedenle uzun süre çalışan eylemler için `operationOptions` özelliğini eylem girişlerinin altındaki `DisableAsyncPattern` ekleyerek ve ayarlayarak zaman uyumsuz davranışı devre dışı bırakabilirsiniz.
-  
+
 ```json
 "<some-long-running-action>": {
    "type": "Http",
@@ -2658,11 +2664,13 @@ Ancak, isteklerin bir zaman aşımı sınırı vardır. bu nedenle uzun süre ç
 }
 ```
 
+Daha fazla bilgi için bkz. [işlem seçenekleri](#operation-options).
+
 <a name="run-high-throughput-mode"></a>
 
 ### <a name="run-in-high-throughput-mode"></a>Yüksek aktarım hızı modunda çalıştır
 
-Tek bir mantıksal uygulama tanımı için, 5 dakikada bir yürütülen eylemlerin sayısı [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)sahiptir. Bu sınırı mümkün olan [en yüksek](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) sınıra yükseltmek için `operationOptions` özelliğini `OptimizedForHighThroughput`olarak ayarlayın. Bu ayar mantıksal uygulamanızı "yüksek aktarım hızı" moduna geçirir. 
+Tek bir mantıksal uygulama tanımı için, 5 dakikada bir yürütülen eylemlerin sayısı [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)sahiptir. Bu sınırı mümkün olan [en yüksek](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) sınıra yükseltmek için `operationOptions` özelliğini `OptimizedForHighThroughput`olarak ayarlayın. Bu ayar mantıksal uygulamanızı "yüksek aktarım hızı" moduna geçirir.
 
 > [!NOTE]
 > Yüksek verimlilik modu önizlemededir. Ayrıca, gerektiğinde bir iş yükünü birden fazla mantıksal uygulama üzerinde dağıtabilirsiniz.

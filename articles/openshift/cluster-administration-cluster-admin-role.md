@@ -7,12 +7,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 0cb875122c63be18f7c39cdfea7986d705ed434e
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 610b1e0112b8135aa09ade5c800eaed987635cb4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539266"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545645"
 ---
 # <a name="azure-red-hat-openshift-customer-administrator-role"></a>Azure Red Hat OpenShift müşteri yöneticisi rolü
 
@@ -22,7 +22,6 @@ Hesabınıza bir müşteri-yönetici-küme yetkilendirme rolü bağlandığında
 
 > [!Note] 
 > Müşteri-yönetici-küme kümesi rolü, küme yönetici kümesi rolüyle aynı değildir.
-
 
 Örneğin, bir dizi fiil (`create`) ile ilişkili eylemleri bir kaynak adı kümesi üzerinde (`templates`) çalıştırabilirsiniz. Bu rollerin ayrıntılarını ve fiil ve kaynak kümelerini görüntülemek için aşağıdaki komutu çalıştırın:
 
@@ -34,7 +33,13 @@ Fiil adları tüm `oc` komutlara doğrudan eşlenmeyebilir. Bunlar, gerçekleşt
 
 ## <a name="configure-the-customer-administrator-role"></a>Müşteri Yöneticisi rolünü yapılandırma
 
-Müşteri-yönetici-kümesi kümesi rolünü yalnızca, `--customer-admin-group-id`bayrağını sağlayarak küme oluşturma sırasında yapılandırabilirsiniz. Azure Active Directory ve Yöneticiler grubunu yapılandırma hakkında bilgi edinmek için bkz. [Azure Red Hat OpenShift için Azure Active Directory Tümleştirmesi](howto-aad-app-configuration.md).
+Müşteri-yönetici-kümesi kümesi rolünü yalnızca, `--customer-admin-group-id`bayrağını sağlayarak küme oluşturma sırasında yapılandırabilirsiniz. Bu alan Azure portal Şu anda yapılandırılamaz. Azure Active Directory ve Yöneticiler grubunu yapılandırma hakkında bilgi edinmek için bkz. [Azure Red Hat OpenShift için Azure Active Directory Tümleştirmesi](howto-aad-app-configuration.md).
+
+## <a name="confirm-membership-in-the-customer-administrator-role"></a>Müşteri Yöneticisi rolünde üyeliği onaylama
+
+Müşteri yöneticisi grubundaki üyeliğinizi onaylamak için, OpenShift CLı komutlarını `oc get nodes` veya `oc projects`deneyin. `oc get nodes`, müşterinin yönetici kümesi rolüne sahipseniz bir düğüm listesi ve yalnızca müşteri-yönetici-proje rolüne sahipseniz bir izin hatası gösterir. `oc projects`, yalnızca çalıştığınız projelerin aksine kümedeki tüm projeleri gösterecektir.
+
+Kümenizdeki rol ve izinleri daha fazla incelemek için [`oc policy who-can <verb> <resource>`](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_rbac.html#managing-role-bindings) komutunu kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
