@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 1c14d1dd171f9bca6b6bdc61e35c0d541b29cb3c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1ba133acda414d9779e2fb10150bbdd57285e9a5
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026150"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511221"
 ---
 # <a name="what-is-azure-iot-edge"></a>Azure IoT Edge nedir?
 
@@ -25,8 +25,8 @@ Analizler IoT çözümlerinin iş değerini artırır, aman tüm analizlerin bul
 
 Azure IoT Edge üç bileşenden oluşur:
 
-* **IoT Edge modüller** , Azure Hizmetleri, üçüncü taraf hizmetleri veya kendi kodunuzu çalıştıran kapsayıcılardır. Modüller IoT Edge cihazlara dağıtılır ve yerel olarak bu cihazlarda yürütülür.
-* **IoT Edge çalışma zamanı** her bir IoT Edge cihazında çalışır ve her cihaza dağıtılan modülleri yönetir. 
+* **IoT Edge modüller** , Azure Hizmetleri, üçüncü taraf hizmetleri veya kendi kodunuzu çalıştıran kapsayıcılardır. Modüller IoT Edge cihazlarına dağıtılır ve bu cihazlarda yerel olarak yürütülür.
+* **IoT Edge çalışma zamanı** her bir IoT Edge cihazında çalışır ve her cihaza dağıtılan modülleri yönetir.
 * **Bulut tabanlı bir arabirim** , IoT Edge cihazları uzaktan izlemenize ve yönetmenize olanak sağlar.
 
 >[!NOTE]
@@ -62,7 +62,7 @@ Azure IoT Edge çalışma zamanı, çok çeşitli yollarla kullanılmasına izin
 
 ## <a name="iot-edge-cloud-interface"></a>IoT Edge bulut arabirimi
 
-Genellikle farklı hale getirir ve modeller veya coğrafi olarak dağınık olan Milyonlarca IoT cihazı için yazılım yaşam döngüsünü yönetmek zordur. İş yükleri belirli bir cihaz türü için oluşturulup yapılandırılır, tüm cihazlarınıza dağıtılır ve Hatalı davranan cihazları yakalamak için izlenir. Bu cihazlar tek tek cihazlar temelinde yapılamaz, belirli bir ölçekte yapılmalıdır.
+Genellikle farklı hale getirir ve modeller veya coğrafi olarak dağınık olan Milyonlarca IoT cihazı için yazılım yaşam döngüsünü yönetmek zordur. Belirli bir cihaz türü için iş yüklerinin oluşturulması ve yapılandırılması, tüm cihazlarınıza dağıtılması ve hatalı davranan cihazları yakalamak için izleme yapılması gerekir. Bu cihazlar tek tek cihazlar temelinde yapılamaz, belirli bir ölçekte yapılmalıdır.
 
 Azure IoT Edge, Azure IoT çözüm hızlandırıcıları ile rahatça tümleştirildiğinden, çözümünüzün gereksinimlerini karşılayacak tek bir denetim düzlemi sağlar. Cloud Services şunları yapmanıza olanak sağlar:
 
@@ -70,7 +70,7 @@ Azure IoT Edge, Azure IoT çözüm hızlandırıcıları ile rahatça tümleşti
 * İş yükünü bir dizi cihaza gönderebilir.
 * Sahadaki cihazlarda çalıştırılan iş yüklerini izleyebilir.
 
-![Cihaz telemetrisi ve eylemleri bulutla birlikte düzenlenir](./media/about-iot-edge/cloud-interface.png)
+![Cihaz telemetrisi ve eylemleri bulutla eşgüdümlüdür](./media/about-iot-edge/cloud-interface.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18da289f9d364fa79023809324d59b89b8ac898c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b2c1a088e4c200dcc4a2ff35db942e3eb8480674
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768121"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512100"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrit Azure AD’ye katılıma yönelik denetimli doğrulama
 
@@ -88,7 +88,7 @@ AD FS kullanıyorsanız, önce GPO 'YU AD FS sunucularınıza bağlayarak, yukar
 
 Windows alt düzey cihazlarını kaydettirmek için kuruluşların Microsoft Indirme Merkezi ' nde [Windows 10 olmayan bilgisayarlar Için microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554) yüklemesi gerekir.
 
-Paketi, [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager)gibi bir yazılım dağıtım sistemi kullanarak dağıtabilirsiniz. Paket, sessiz parametre ile standart sessiz yükleme seçeneklerini destekler. Configuration Manager geçerli dalı, tamamlanan kayıtları izleme özelliği gibi önceki sürümlerden daha fazla avantaj sunar.
+Paketi [Microsoft uç noktası Configuration Manager](https://docs.microsoft.com/configmgr/)gibi bir yazılım dağıtım sistemi kullanarak dağıtabilirsiniz. Paket, sessiz parametre ile standart sessiz yükleme seçeneklerini destekler. Configuration Manager geçerli dalı, tamamlanan kayıtları izleme özelliği gibi önceki sürümlerden daha fazla avantaj sunar.
 
 Yükleyici, kullanıcı bağlamında çalışan sistemde zamanlanmış bir görev oluşturur. Görev, Kullanıcı Windows 'da oturum açtığında tetiklenir. Bu görev, Azure AD ile kimlik doğrulamasından geçtikten sonra, Kullanıcı kimlik bilgileriyle cihazı Azure AD ile sessizce birleştirir.
 

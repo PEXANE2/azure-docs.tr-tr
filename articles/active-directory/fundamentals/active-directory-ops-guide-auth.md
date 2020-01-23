@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919350"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511901"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory kimlik doğrulaması yönetim işlemleri başvuru kılavuzu
 
@@ -127,8 +127,8 @@ Kuruluşunuzdaki bir kullanıcı gibi, bir cihaz da korumak istediğiniz çekird
 
 Aşağıdaki yöntemlerden birini kullanarak cihaz kimliklerini ve bunları Azure AD 'de yöneterek bu hedefi gerçekleştirebilirsiniz:
 
-- Kuruluşlar, cihazı yönetmek ve uyumluluk ilkelerini zorlamak, cihaz durumunu doğrulamak ve cihazın uyumlu olup olmadığına bağlı olarak koşullu erişim ilkeleri ayarlamak için [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) kullanabilir. Microsoft Intune iOS cihazlarını, Mac masaüstlerini (JAMF tümleştirmesi aracılığıyla), Windows Masaüstü 'nü (Windows 10 için mobil cihaz yönetimini ve Microsoft Endpoint Manager/System Center Configuration Manager ile birlikte ortak yönetimi kullanarak) ve Android mobil cihazlarını yönetebilir.
-- [Hibrit Azure AD JOIN](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) , etki alanına katılmış bilgisayarlar Active Directory bir ortamda grup ilkeleri, System Center Configuration Manager veya Microsoft Uç Nokta Yöneticisi ile yönetim sağlar. Kuruluşlar, sorunsuz SSO ile PHS ya da PTA aracılığıyla yönetilen bir ortam dağıtabilir. Cihazlarınızı Azure AD 'ye getirmek, bulut ve şirket içi kaynaklarınız üzerindeki SSO aracılığıyla Kullanıcı üretkenliğini en üst düzeye çıkarır ve [koşullu erişim](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) aynı anda bulut ve şirket içi kaynaklarınız için erişim sağlamanıza olanak tanır.
+- Kuruluşlar, cihazı yönetmek ve uyumluluk ilkelerini zorlamak, cihaz durumunu doğrulamak ve cihazın uyumlu olup olmadığına bağlı olarak koşullu erişim ilkeleri ayarlamak için [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) kullanabilir. Microsoft Intune iOS cihazlarını, Mac masaüstlerini (JAMF tümleştirmesi aracılığıyla), Windows Masaüstü 'nü (Windows 10 için mobil cihaz yönetimini ve Microsoft uç noktası Configuration Manager ile birlikte ortak yönetimi kullanarak) ve Android mobil cihazlarını yönetebilir.
+- [Hibrit Azure AD katılımı](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) , Active Directory etki alanına katılmış bilgisayarlar cihazlarından oluşan bir ortamda Grup Ilkeleri veya Microsoft uç noktası Configuration Manager yönetim sağlar. Kuruluşlar, sorunsuz SSO ile PHS ya da PTA aracılığıyla yönetilen bir ortam dağıtabilir. Cihazlarınızı Azure AD 'ye getirmek, bulut ve şirket içi kaynaklarınız üzerindeki SSO aracılığıyla Kullanıcı üretkenliğini en üst düzeye çıkarır ve [koşullu erişim](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) aynı anda bulut ve şirket içi kaynaklarınız için erişim sağlamanıza olanak tanır.
 
 Bulutta kayıtlı olmayan, ancak koşullu erişim ilkeleri olmadan etki alanına katılmış Windows cihazlarına veya bulutta kayıtlı olan, etki alanına katılmış Windows cihazlarınız varsa, kayıtsız cihazları kaydetmeniz ve her iki durumda da, koşullu erişim ilkeleriniz üzerinde [bir denetim olarak karma Azure AD JOIN 'i kullanmanız](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) gerekir.
 
@@ -309,7 +309,7 @@ Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinl
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örnek:
+- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örneğin:
 
 |Kaynak | İzin |
 | :- | :- |

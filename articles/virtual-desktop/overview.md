@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: helohr
-ms.openlocfilehash: 44430f5a150952ba7cfc32b3e54d004cb0d0b761
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312354"
+ms.locfileid: "76514281"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -105,8 +105,8 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağ
 >Hizmet trafiğiyle ilgili URL 'Ler için (*) joker karakterini kullanmanız gerekir. Aracıyla ilgili trafik için * kullanmayı tercih ediyorsanız, joker karakterleri olmayan URL 'Leri bulma hakkında bilgi edinebilirsiniz:
 >
 >1. Sanal makinelerinizi Windows sanal masaüstü ana bilgisayar havuzuna kaydedin.
->2. **Olay Görüntüleyicisi** 'ni açın ve **Windows** > **uygulama günlüklerine** gidin ve olay kimliği 3712 ' i arayın.
->3. Olay KIMLIĞI 3712 altında bulduğunuz URL 'Leri beyaz listeye ekleyin. Olay KIMLIĞI 3712 altındaki URL 'Ler bölgeye özeldir. Beyaz Listeleme işlemini, sanal makinelerinizi dağıtmak istediğiniz her bölge için ilgili URL 'lerle tekrarlamanız gerekecektir.
+>2. **Olay Görüntüleyicisi** 'ni açın ve **Windows** > **uygulama günlüklerine** gidin ve olay kimliği 3702 ' i arayın.
+>3. Olay KIMLIĞI 3702 altında bulduğunuz URL 'Leri beyaz listeye ekleyin. Olay KIMLIĞI 3702 altındaki URL 'Ler bölgeye özeldir. Beyaz Listeleme işlemini, sanal makinelerinizi dağıtmak istediğiniz her bölge için ilgili URL 'lerle tekrarlamanız gerekecektir.
 
 Windows sanal masaüstü, kullanıcılara ve Microsoft tarafından Azure 'da bir hizmet olarak barındırılan yönetim çözümüne ait olan Windows Masaüstü ve uygulamalarını içerir. Masaüstleri ve uygulamalar, herhangi bir Azure bölgesindeki sanal makinelerde (VM) dağıtılabilir ve bu VM 'Lerin yönetim çözümü ve verileri Birleşik Devletler yer alır. Bu, Birleşik Devletler veri aktarımına neden olabilir.
 
