@@ -191,6 +191,9 @@
         - name: Resimleri etiketleme
           displayName: 'data, dataset, labeling'
           href: how-to-label-images.md
+        - name: Etiketlerle veri kümeleri oluşturma
+          displayName: 'data, labels, torchvision'
+          href: how-to-use-labeled-dataset.md
     - name: Modelleri eğitme
       items:
         - name: Tasarımcıyı kullanma

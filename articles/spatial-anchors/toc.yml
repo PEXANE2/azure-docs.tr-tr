@@ -57,7 +57,7 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: C++/WinRT üzerinde
           href: how-tos/create-locate-anchors-cpp-winrt.md
-    - name: Yakın bağlantıları keşfetmek için cihaz üzerindeki algılayıcıları kullanma
+    - name: Yakınlardaki yer işaretlerini keşfetmek için kaba yeniden yerelleştirmeyi kullanma
       items:
         - name: 'In C#/Unity'
           href: how-tos/set-up-coarse-reloc-unity.md
