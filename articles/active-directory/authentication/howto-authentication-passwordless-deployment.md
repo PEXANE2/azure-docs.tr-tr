@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8323333f378f95f0a640313524f198bdd00dc340
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848502"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512581"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Parolasız kimlik doğrulama dağıtımını tamamlandırma
 
@@ -67,7 +67,7 @@ Bir kuruluşun şirket içi Azure MFA sunucusu aracılığıyla MFA için etkinl
 
 **Cihaz kaydı** -kimlik doğrulayıcı uygulamasını passwordless kimlik doğrulaması için kullanmak Için CIHAZıN Azure AD kiracısında kayıtlı olması ve paylaşılan bir cihaz olması gerekir. Bir cihaz yalnızca tek bir kiracıda kaydedilebilir. Bu sınır, kimlik doğrulayıcı uygulamasını kullanarak telefon oturum açma için yalnızca bir iş veya okul hesabının desteklendiği anlamına gelir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kuruluşların, passwordless dağıtımına başlamadan önce aşağıdaki önkoşulları karşılaması gerekir.
 
@@ -108,7 +108,7 @@ FIDO2 güvenlik anahtarlarını kullanarak Windows 10 oturum açma özelliğinin
    - Intune dağıtımı önerilen seçenektir.
 - [Sağlama paketiyle kimlik bilgisi sağlayıcısını etkinleştirin](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Intune dağıtımı mümkün değilse, yöneticilerin kimlik bilgisi sağlayıcısı işlevini etkinleştirmek için her makinede bir paket dağıtmaları gerekir. Paket yüklemesi aşağıdaki seçeneklerden biriyle gerçekleştirilebilir:
-      - Grup ilkesi veya System Center Configuration Manager (SCCM)
+      - grup ilkesi veya Configuration Manager
       - Windows 10 makinesinde yerel yükleme
 
 ### <a name="register-security-keys"></a>Güvenlik anahtarlarını Kaydet

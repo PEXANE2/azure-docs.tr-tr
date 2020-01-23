@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 060d94d6181e894c18d268845b48eb802c52730c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e5ce43e7cdf70c1f552a8f5bbed28ce47f1826fc
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838285"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513227"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Video Indexer Web sitesiyle bir kişi modelini özelleştirme
 
@@ -134,14 +134,14 @@ Kişi modelinizi yeni bir videoda kullanmak için aşağıdakileri yapın:
 
 1. Sayfanın üst kısmındaki **karşıya yükle** düğmesine tıklayın.
 
-    ![Karşıya Yükle](./media/customize-face-model/upload.png)
+    ![Karşıya Yükleme](./media/customize-face-model/upload.png)
 1. Video dosyanızı daire içine bırakın veya dosyanıza gözatamazsınız.
 1. Gelişmiş Seçenekler okuna tıklayın.
 
-    ![Karşıya Yükle](./media/customize-face-model/upload2.png)
+    ![Karşıya Yükleme](./media/customize-face-model/upload2.png)
 1. Açılan kişiye tıklayın ve oluşturduğunuz kişi modelini seçin.
 
-    ![Karşıya Yükle](./media/customize-face-model/upload3.png)
+    ![Karşıya Yükleme](./media/customize-face-model/upload3.png)
 1. Sayfanın alt kısmındaki karşıya yükle seçeneğine tıklayın ve Yeni videonuzun kişi modeliniz kullanılarak dizini oluşturulur.
 
 Karşıya yükleme sırasında bir kişi modeli belirtmezseniz, Video Indexer hesabınızdaki varsayılan kişi modelini kullanarak videoyu dizinleyecek.

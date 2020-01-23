@@ -1,19 +1,19 @@
 ---
 title: Azure Event Grid olay şeması
-description: Azure Event Grid olan olaylar için sunulan özellikleri açıklar
+description: Tüm olaylar için mevcut olan özellikleri ve şemayı açıklar. Olaylar, beş gerekli dize özelliği ve gerekli bir veri nesnesi kümesinden oluşur.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/20/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 44cc611a9a7d71a3ac4ac7b0d779b18778d0aacd
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1fceda6fcbb6e8db1fa8afbc5181315bd0c98940
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607600"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512989"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid olay şeması
 
@@ -86,13 +86,13 @@ Tüm olaylar en üst düzey verilere sahiptir:
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | string | Olay konusunun yayımcı tanımlı yolu. |
-| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| Verileri | object | Kaynak sağlayıcısına özel olay verileri. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| data | object | Kaynak sağlayıcısına özel olay verileri. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesindeki özellikler hakkında bilgi edinmek için bkz. olay kaynağı:
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: anzaman
-ms.openlocfilehash: 9abf9b791cc986bcce49bbd0cf8136a573a149a3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 09e6fd8530ddb1745a92c6f31f4d5a5843a2ac10
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860194"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513176"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Video Indexer içerik modellerini özelleştirme
 
@@ -23,7 +23,7 @@ Video Indexer, bazı modellerini özel kullanım çalışmanıza uyarlayacak şe
 
 Bu makale, her özelleştirme türünün avantajlarını açıklayan makalelere bağlantılar sağlar. Makale Ayrıca her bir modelin özelleştirmesini nasıl uygulayabileceğinizi gösteren nasıl yapılır kılavuzlarıyla bağlantı sağlar.
 
-## <a name="animated-characters"></a>Hareketli karakterler
+## <a name="animated-characters"></a>Animasyonlu karakterler
 
 * [Animasyonlu karakter algılama](animated-characters-recognition.md)
 

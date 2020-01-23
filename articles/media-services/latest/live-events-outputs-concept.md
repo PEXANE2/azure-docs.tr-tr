@@ -1,7 +1,7 @@
 ---
-title: Canlı etkinlikler ve canlı çıktılar Media Services
+title: Azure Media Services v3 içindeki canlı etkinlikler ve canlı çıktılar kavramları
 titleSuffix: Azure Media Services
-description: Azure Media Services v3 içindeki canlı olaylara ve canlı çıkışlara genel bakış.
+description: Bu konu, Azure Media Services v3 içindeki canlı olaylara ve canlı çıkışlara genel bakış sunar.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: d2f0689dd1f1b5fbe349478ad885b76eb79d91a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cd1f55a4ca94aae73a56334c76f211afff6e9622
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569662"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514060"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Canlı etkinlikler ve canlı çıktılar Media Services
 

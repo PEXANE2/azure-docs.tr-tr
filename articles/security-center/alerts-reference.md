@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: cfb77548217cf173438ab0407320cbdff8db092e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 322b7656a5e8cb5d0fd0274cc9f09adec2c2c5e1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277001"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514774"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları-bir başvuru kılavuzu
 
@@ -27,27 +27,16 @@ Bu uyarılara yanıt verme hakkında bilgi edinmek için bkz. [Azure Güvenlik M
 
 Uyarıları dışa aktarma hakkında bilgi edinmek için (ve önerilerini) bkz. [güvenlik uyarılarını ve önerilerini dışarı aktarma (Önizleme)](continuous-export.md).
 
-Uyarılar tablosunun altında, bu uyarıların amaçlarını kategorilere ayırmak için kullanılan Azure Güvenlik Merkezi Kill zincirini açıklayan bir tablo bulunur. 
+Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayırmak için kullanılan Azure Güvenlik Merkezi Kill zincirini açıklayan bir tablo bulunur. 
 
-Bu tabloya dahil edilen Uyarı türleri:
-* [Windows makineleri için uyarılar](#alerts-windows)
-* [Linux makineleri için uyarılar](#alerts-linux)
-* [Azure App Service için uyarılar](#alerts-azureappserv)
-* [AKS kümesi düzeyi için uyarılar](#alerts-akscluster)
-* [Kapsayıcı ana bilgisayar düzeyi uyarıları](#alerts-containerhost)
-* [SQL veritabanı ve SQL veri ambarı için uyarılar](#alerts-sql-db-and-warehouse)
-* [Azure Storage uyarıları](#alerts-azurestorage)
-* [Azure Cosmos DB için uyarılar](#alerts-azurecosmos)
-* [Azure ağ katmanı uyarıları](#alerts-azurenetlayer)
-* [Azure Resource Manager için uyarılar (Önizleme)](#alerts-azureresourceman)
-* [Azure Key Vault için uyarılar (Önizleme)](#alerts-azurekv)
-* [Azure DDoS koruması için uyarılar](#alerts-azureddos)
 
-## <a name="azure-security-center-alerts"></a>Azure Güvenlik Merkezi uyarıları
+
+## <a name="alerts-windows"></a>Windows makineleri için uyarılar
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-iaas.md#windows-)
 
 |Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
 |----|----|:----:|
-||<a name="alerts-windows"></a><h3>Windows makineleri</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-iaas.md#windows-)||
 |**Kötü amaçlı bir IP 'den oturum açma algılandı**|' Tristan. Schle, ' hesabı ve ' advapi ' işlemi için başarılı bir uzaktan kimlik doğrulaması gerçekleşti, ancak oturum açma IP adresi [IP adresi] daha önce kötü amaçlı veya yüksek olağandışı olarak bildirildi. Başarılı bir saldırı oluşmuş olabilir.|-|
 |**Kötü amaçlı bir IP 'den oturum açma algılandı. [birden çok kez görüldü]**|' IUSR_10001 ' hesabı ve ' advapi ' işlemi için başarılı bir uzaktan kimlik doğrulaması oluştu, ancak oturum açma IP adresi [IP adresi] daha önce kötü amaçlı veya yüksek olağandışı olarak bildirildi. Başarılı bir saldırı oluşmuş olabilir. . Scr uzantılı dosyalar ekran koruyucu dosyalarıdır ve normalde Windows sistem dizininden bulunur ve yürütülür.|-|
 |**Konuk hesabının yerel Yöneticiler grubuna eklenmesi**|Konak verilerinin çözümlenmesi, yerleşik Konuk hesabının% {güvenliği aşılmış konak} üzerinde yerel Yöneticiler grubuna eklenmesini algıladı ve bu, saldırgan etkinliğiyle kesinlikle ilişkilidir.|-|
@@ -129,7 +118,15 @@ Bu tabloya dahil edilen Uyarı türleri:
 |**Şüpheli kod segmenti algılandı**|Bir kod kesiminin, yansıtıcı ekleme ve işlem gizleme gibi standart olmayan yöntemler kullanılarak ayrıldığını gösterir. Uyarı, bildirilen kod segmentinin özellikleri ve davranışları için bağlam sağlamak üzere işlenmiş olan kod kesiminin ek özelliklerini sağlar.|-|
 |**Bulunan shellcode**|Kabuk Kodu, kötü amaçlı yazılım bir yazılım güvenlik açığından yararlandıktan sonra çalıştırılan yüktür.<br>Bu uyarı, kilitlenme dökümü analizinin kötü amaçlı yükler tarafından yaygın olarak gerçekleştirilen davranışı gösteren yürütülebilir kod algıladığını gösterir. Kötü amaçlı olmayan yazılımlar da bu davranışı gerçekleştirebilse de normal yazılım geliştirme uygulamalarından tipik değildir.|-|
 |**Dosya Less saldırı tekniği algılandı**|Belirtilen işlemin belleği bir dosya Less saldırı araç seti içeriyor: [araç seti adı]. Fileless saldırı araç takımları genellikle dosya sisteminde bir varlık değildir ve geleneksel virüsten koruma yazılımı tarafından algılamayı zorlaştırır.|Savunma ve yürütme|
-||<a name="alerts-linux"></a><h3>Linux makineleri</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-iaas.md#linux-)||
+||||
+
+
+## <a name="alerts-linux"></a>Linux makineleri için uyarılar
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-iaas.md#linux-)
+
+|Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
+|----|----|:----:|
 |**Beklenmedik bir şekilde SSH yetkili anahtarlar dosyasına erişim için işlem görüldü**|Bilinen kötü amaçlı yazılım kampanyalarına benzer bir yöntemde SSH yetkili anahtarları dosyasına erişildi. Bu erişim, bir saldırganın bir makineye kalıcı erişim kazanmaya çalıştığınızı gösterebilir.|-|
 |**Algılanan Kalıcılık girişimi**|Konak veri analizi, tek kullanıcılı mod için bir başlangıç betiğinin yüklendiğini algıladı.<br>Meşru bir işlemin bu modda çalıştırılması gerektiğinden nadir olduğundan, bu, bir saldırganın kalıcılığı garanti etmek için her çalışma düzeyine kötü amaçlı bir işlem eklediğine işaret ediyor olabilir. |Kalıcılık|
 |**Şüpheli dosya zaman damgası değişikliği**|Ana bilgisayar veri analizi şüpheli bir zaman damgası değişikliği algıladı. Saldırganlar, bu yeni bırakılan dosyaların algılanmasını önlemek için genellikle mevcut, meşru dosyalardaki zaman damgalarını yeni araçlara kopyalar.|Kalıcılık/savunma hazırlığı|
@@ -210,7 +207,15 @@ Bu tabloya dahil edilen Uyarı türleri:
 |**Şüpheli parola erişimi [birden çok kez görüldü]**|Konak verilerinin çözümlenmesi,% {güvenliği aşılmış konak} üzerinde şifrelenmiş kullanıcı parolalarının şüpheli erişimini algıladı. Bu davranış şu makinelerde bugün [x] kez görüldü: [makine adları]|-|
 |**Şüpheli PHP yürütmesi algılandı**|Makine günlükleri şüpheli bir PHP işleminin çalıştığını gösterir. Eylem, PHP işlemini kullanarak komut satırından işletim sistemi komutlarını veya PHP kodunu çalıştırma girişiminde bulunur. Bu davranış meşru olsa da, Web uygulamalarında bu davranış Web kabuklarını etkileyen Web sitelerine yönelik girişimler gibi kötü amaçlı etkinliklerde de gözlemlenmiştir.|-|
 |**Kubernetes API 'sine şüpheli istek**|Makine günlükleri, Kubernetes API 'sine şüpheli bir istek yapıldığını gösterir. İstek bir Kubernetes düğümünden gönderilmiş, muhtemelen düğümde çalışan kapsayıcılardan biri. Bu davranış kasıtlı olarak kullanılabilse de, düğümün güvenliği aşılmış bir kapsayıcı çalıştırdığı anlamına gelebilir.|-|
-||<a name="alerts-azureappserv"></a><h3>Azure App Service</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-compute.md#azure-app-service-)||
+||||
+
+
+## <a name="alerts-azureappserv"></a>Azure App Service için uyarılar
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-compute.md#azure-app-service-)
+
+|Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
+|----|----|:----:|
 |**Şüpheli WordPress teması çağırma algılandı**|App Service etkinlik günlüğü, App Service kaynağınızın olası bir kod ekleme etkinliğini gösterir.<br>Bu şüpheli etkinlik, kodun sunucu tarafında yürütülmesini desteklemek için bir WordPress temasını ve ardından doğrudan bir Web isteği ile, istenen tema dosyasını çağırma etkinliğine benzer. Bu tür bir etkinlik WordPress üzerinden bir saldırı kampanyasının parçası olabilir.|-|
 |**Web parmak baskısı algılandı**<br>(NMAP/Blind Elephant)|App Service etkinlik günlüğü, App Service kaynağınızın olası bir Web parmak izi etkinliğini gösterir.<br>Bu şüpheli etkinlik, görünmeyen Elephant adlı bir araçla ilişkilendirilir. Araç parmak izi Web sunucularını yazdırır ve yüklü uygulamaları ve bunların sürümlerini algılamaya çalışır. Saldırganlar genellikle bu aracı, Web uygulamalarının güvenlik açıklarını bulmasını yoklayıp kullanır. |-|
 |**Olası savunmasız Web sayfasına şüpheli erişim algılandı**|App Service etkinlik günlüğü, gizli olarak görünen bir Web sayfasına erişildiğini belirtir.<br>Bu şüpheli etkinlik, erişim deseninin bir Web tarayıcısı ile aynı olduğu bir kaynak adresinden kaynaklıır. Bu tür bir etkinlik genellikle, bir saldırganın hassas veya güvenlik açığı bulunan Web sayfalarına erişim kazanmaya çalışacak şekilde ağınızı taraymasıyla ilişkilendirilir. |-|
@@ -226,7 +231,15 @@ Bu tabloya dahil edilen Uyarı türleri:
 |**Şüpheli Kullanıcı Aracısı algılandı**|Azure App Service etkinlik günlüğü şüpheli kullanıcı aracısına sahip istekleri gösterir. Bu davranış, App Service uygulamanızdaki bir güvenlik açığından yararlanmaya yönelik denemelere işaret edebilir.|-|
 |**Karşıya yükleme klasöründeki PHP dosyası**|Azure App Service etkinlik günlüğü, karşıya yükleme klasöründe bulunan şüpheli bir PHP sayfasına erişimi gösterir. Bu klasör türü genellikle PHP dosyalarını içermez. Bu tür bir dosyanın varlığı, rastgele dosya karşıya yükleme güvenlik açıklarından faydalanması anlamına gelebilir.|-|
 |**Anormal istekler deseninin algılanması**|Azure App Service etkinlik günlüğü,% {Source IP} öğesinden gelen App Service anomus HTTP etkinliğini gösterir. Bu etkinlik, bir belirsizlik, \ deneme yanılma etkinliğinin bir düzenine benzer.|-|
-||<a name="alerts-akscluster"></a><h3>AKS küme düzeyi</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-compute.md#azure-containers-)||
+||||
+
+
+## <a name="alerts-akscluster"></a>AKS kümesi düzeyi için uyarılar
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-compute.md#azure-containers-)
+
+|Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
+|----|----|:----:|
 |**Küme Yöneticisi rolüne ÖNIZLEME-rol bağlama algılandı**|Kubernetes denetim günlüğü analizi, Küme Yöneticisi rolüne yeni bir bağlama algıladı ve bu da yönetici ayrıcalıklarına neden oldu. Yönetici ayrıcalıklarını gereksiz şekilde sağlamak, kümede ayrıcalık yükseltme sorunları oluşmasına neden olabilirler.|Kalıcılık|
 |**ÖNIZLEME-açığa çıkarılan Kubernetes panosu algılandı**|Kubernetes denetim günlüğü analizi, Kubernetes panosunun bir LoadBalancer hizmeti tarafından açığa çıkmasını algıladı. Sunulan panolar küme yönetimine kimliği doğrulanmamış erişime izin verir ve güvenlik tehdidi oluşturabilir.|Kalıcılık|
 |**ÖNIZLEME-yeni yüksek ayrıcalıklar rolü algılandı**|Kubernetes denetim günlüğü analizi, yüksek ayrıcalıklara sahip yeni bir rol algıladı. Yüksek ayrıcalıklara sahip bir role bağlama, kümede Kullanıcı/Grup yükseltilmiş ayrıcalıklar sağlar. Gereksiz ayrıcalıklar sağlanması, kümede ayrıcalık yükseltme sorunları oluşmasına neden olabilirler.|Kalıcılık|
@@ -234,7 +247,14 @@ Bu tabloya dahil edilen Uyarı türleri:
 |**ÖNIZLEME-dijital para birimi araştırma kapsayıcısı algılandı**|Kubernetes denetim günlüğü analizi, dijital para birimi araştırma aracıyla ilişkilendirilmiş bir görüntü içeren bir kapsayıcı algıladı.|Yürütme|
 |**ÖNIZLEME-ayrıcalıklı kapsayıcı algılandı**|Kubernetes denetim günlüğü analizi yeni bir ayrıcalıklı kapsayıcı algıladı. Ayrıcalıklı bir kapsayıcı, düğümün kaynaklarına erişebilir ve kapsayıcılar arasındaki yalıtımı keser. Tehlikeye atılırsa bir saldırgan, düğüme erişim kazanmak için ayrıcalıklı kapsayıcıyı kullanabilir.|Privilegeilerletme|
 |**ÖNIZLEME-hassas birim bağlaması ile kapsayıcı algılandı**|Kubernetes denetim günlüğü analizi, hassas birim bağlama ile yeni bir kapsayıcı algıladı. Algılanan birim, düğümden kapsayıcıya gizli bir dosya veya klasör bağlayan bir hostPath türüdür. Kapsayıcının güvenliği tehlikeye girerse, saldırgan bu takma birimi kullanarak düğüme erişim elde edebilir.|Privilegeilerletme|
-||<a name="alerts-containerhost"></a><h3>Kapsayıcı konak düzeyi</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-compute.md#azure-containers-)||
+||||
+
+## <a name="alerts-containerhost"></a>Kapsayıcıların konak düzeyi uyarıları
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-compute.md#azure-containers-)
+
+|Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
+|----|----|:----:|
 |**Ayrıcalıklı kapsayıcı algılandı**|Makine günlükleri, ayrıcalıklı bir Docker kapsayıcısının çalıştığını gösterir. Ayrıcalıklı bir kapsayıcı konağın kaynaklarına tam erişime sahiptir. Tehlikeye atılırsa, bir saldırgan konak makinesine erişim kazanmak için ayrıcalıklı kapsayıcıyı kullanabilir.|Ayrıcalıklı Geilerletme/yürütme|
 |**Kapsayıcıda ayrıcalıklı komut çalıştırma**|Makine günlükleri, bir Docker kapsayıcısında ayrıcalıklı bir komutun çalıştırıldığını gösterir. Ayrıcalıklı bir komutun konak makinesinde genişletilmiş ayrıcalıkları vardır.|Privilegeilerletme|
 |**Sunulan Docker Daemon algılandı**|Makine günlükleri, Docker Daemon 'nizin (dockerd) bir TCP yuvası sunduğunu gösterir. Varsayılan olarak, Docker yapılandırması bir TCP yuvası etkinleştirildiğinde şifreleme veya kimlik doğrulama kullanmaz. İlgili bağlantı noktasına erişimi olan herkes, Docker Daemon 'a tam erişim alabilir.|Yararlanma/yürütme|
@@ -242,7 +262,15 @@ Bu tabloya dahil edilen Uyarı türleri:
 |**Bir Miner görüntüsü olan kapsayıcı algılandı**|Makine günlükleri, dijital para birimi madenciliği ile ilişkili bir görüntüyü çalıştıran bir Docker kapsayıcısının yürütülmesini gösterir. Bu davranış muhtemelen kaynaklarınızın nerede olduğunu gösterebilir.|Yürütme|
 |**Kubernetes API 'sine şüpheli istek**|Makine günlükleri, Kubernetes API 'sine şüpheli bir istek yapıldığını gösterir. İstek bir Kubernetes düğümünden gönderilmiş, muhtemelen düğümde çalışan kapsayıcılardan biri. Bu davranış kasıtlı olarak kullanılabilse de, düğümün güvenliği aşılmış bir kapsayıcı çalıştırdığı anlamına gelebilir.|Yürütme|
 |**Kubernetes panosuna şüpheli istek**|Makine günlükleri, Kubernetes panosuna şüpheli bir istek yapıldığını gösterir. İstek bir Kubernetes düğümünden gönderilmiş, muhtemelen düğümde çalışan kapsayıcılardan biri. Bu davranış kasıtlı olarak kullanılabilse de, düğümün güvenliği aşılmış bir kapsayıcı çalıştırdığı anlamına gelebilir.|-|
-||<a name="alerts-sql-db-and-warehouse"></a><h3>SQL veritabanı ve SQL veri ambarı</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-) ||
+||||
+
+
+## <a name="alerts-sql-db-and-warehouse"></a>SQL veritabanı ve SQL veri ambarı için uyarılar
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+
+|Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
+|----|----|:----:|
 |**SQL ekleme için olası bir güvenlik açığı**|Bir uygulama veritabanında hatalı bir SQL açıklaması oluşturdu. Bu, SQL ekleme saldırılarına karşı olası bir güvenlik açığını gösterebilir. Hatalı bir bildirimin iki olası nedeni vardır. Uygulama kodundaki bir hata, hatalı SQL ifadesini oluşturulmuş olabilir. Ya da, uygulama kodu veya saklı yordamlar, SQL ekleme için yararlanılabilen hatalı SQL ifadesini oluştururken Kullanıcı girişini temizlemeyen.|-|
 |**Olası SQL ekleme**|SQL ekleme ile güvenlik açığı bulunan tanımlı bir uygulamaya karşı etkin bir yararlanma gerçekleşti. Bu, bir saldırganın savunmasız uygulama kodunu veya saklı yordamları kullanarak kötü amaçlı SQL deyimleri eklemeye çalıştığı anlamına gelir.|-|
 |**Olağan dışı bir konumdan oturum açma**|SQL Server erişim modelinde, birinin sunucuda olağan dışı bir coğrafi konumdan oturum açmış olduğu bir değişiklik vardı. Bazı durumlarda uyarı güvenli işlemleri (yeni bir uygulama veya geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı bir eylem (eski bir çalışan veya dış saldırgan) algılar.|Açıktan yararlanma|
@@ -252,7 +280,15 @@ Bu tabloya dahil edilen Uyarı türleri:
 |**Olağan dışı bir Azure veri merkezinden oturum açma**|Erişim düzeninde bir SQL Server, bir kişinin sunucuda olağan dışı bir Azure veri merkezinden oturum açmış olduğu bir değişiklik vardı. Bazı durumlarda, uyarı meşru bir eylem (yeni bir uygulama veya Azure hizmeti) algılar. Diğer durumlarda, uyarı kötü amaçlı bir eylem (Azure 'da ihlal edilecek bir kaynaktan çalışan saldırgan) algılar.|Araştırma|
 |**Güvensiz olabilecek eylem**|Kötü amaçlı oturumlarda yaygın olarak kullanılan yüksek ayrıcalıklı SQL komutu bir SQL Server yürütüldü. Bu komutların varsayılan olarak devre dışı bırakılması önerilir. Bazı durumlarda, uyarı meşru bir eylem (çalışan yönetici betiği) algılar. Diğer durumlarda, uyarı kötü amaçlı bir eylem algılar (Windows katmanını ihlal etmek için SQL güvenlerini kullanan saldırgan).|Yürütme|
 |**Olağan dışı dışa aktarma konumu**|Bir SQL içeri ve dışarı aktarma işlemi için dışarı aktarma depolama hedefinde bir değişiklik vardı. Bazı durumlarda, uyarı meşru bir değişiklik (yeni yedekleme hedefi) algılar. Diğer durumlarda, uyarı kötü amaçlı bir eylem algılar (saldırgan, verileri bir dosyaya kolayca bir şekilde yeniden katılabilir).|Sızdırma|
-||<a name="alerts-azurestorage"></a><h3>Azure Depolama</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-data-services.md#azure-storage-)||
+||||
+
+
+## <a name="alerts-azurestorage"></a>Azure Storage uyarıları
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-data-services.md#azure-storage-)
+
+|Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
+|----|----|:----:|
 |**Olağan dışı bir konumdan depolama hesabına erişim**|Azure depolama hesabına erişim modelinde bir değişiklik olduğunu gösterir. Bu hesaba, son etkinlikle karşılaştırıldığında, bilmediğiniz bir IP adresinden erişen bir IP adresi. Bir saldırgan hesaba erişim elde etti ya da yasal bir Kullanıcı yeni veya olağan dışı bir coğrafi konumdan bağlandı. İkinci bir örnek, yeni bir uygulama veya geliştiriciden uzaktan bakım örneğidir.|Açıktan yararlanma|
 |**Olağan dışı uygulama bir depolama hesabına erişti**|Olağan dışı bir uygulamanın bu depolama hesabına eriştiği anlamına gelir. Olası bir neden, bir saldırganın yeni bir uygulama kullanarak depolama hesabınıza eriştiği bir nedendir.|Açıktan yararlanma|
 |**Bir depolama hesabına anonim erişim**|Bir depolama hesabına erişim modelinde değişiklik olduğunu gösterir. Örneğin, hesaba bu hesapta son erişim düzeniyle karşılaştırıldığında beklenmeyen bir şekilde (herhangi bir kimlik doğrulaması olmadan) erişilebilir. Olası bir neden, saldırganın blob depolamayı tutan bir kapsayıcıya genel okuma erişiminin yararlanmasıdır.|Açıktan yararlanma|
@@ -265,10 +301,26 @@ Bu tabloya dahil edilen Uyarı türleri:
 |**Depolama hesabında olağan dışı erişim incelemesi**|Bir depolama hesabının erişim izinlerinin, bu hesaptaki en son etkinlikle karşılaştırıldığında olağan dışı bir şekilde incelenebileceğini belirtir. Olası bir neden, saldırganın gelecekteki bir saldırıya karşı keşif gerçekleştirmesinden dolayı gerçekleşir.|Koleksiyon|
 |**Depolama hesabındaki olağan dışı veri araştırması**|Bir depolama hesabındaki Blobların veya kapsayıcıların, bu hesaptaki en son etkinlikle karşılaştırıldığında anormal bir şekilde numaralandırıldığını gösterir. Olası bir neden, saldırganın gelecekteki bir saldırıya karşı keşif gerçekleştirmesinden dolayı gerçekleşir.|Koleksiyon|
 |**ÖNIZLEME-bir depolama hesabına yüklenen olası kötü amaçlı yazılımlar**|Potansiyel kötü amaçlı yazılım içeren bir Blobun bir depolama hesabına yüklendiğini belirtir. Olası nedenler, meşru bir kullanıcı tarafından bir saldırgan veya kötü amaçlı bir Blobun yanlışlıkla karşıya yüklenmesi olabilir.|Yan yana|
-||<a name="alerts-azurecosmos"></a><h3>Azure Cosmos DB</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-data-services.md#azure-cosmos-db)||
+||||
+
+
+## <a name="alerts-azurecosmos"></a>Azure Cosmos DB
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-data-services.md#azure-cosmos-db)
+
+|Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
+|----|----|:----:|
 |**Olağan dışı bir konumdan Cosmos DB hesaba erişim**|Azure Cosmos DB hesaba erişim modelinde bir değişiklik olduğunu gösterir. Birisi bu hesaba, en son etkinlikle karşılaştırıldığında, bilinmeyen bir IP adresinden erişti. Bir saldırgan hesaba erişti ya da yasal bir Kullanıcı yeni ve olağan dışı bir coğrafi konumdan erişti. İkinci bir örnek, yeni bir uygulama veya geliştiriciden uzaktan bakım örneğidir.|Açıktan yararlanma|
 |**Cosmos DB hesabından ayıklanan olağan dışı miktarda veri**|Azure Cosmos DB hesabından veri ayıklama düzeninde bir değişiklik olduğunu gösterir. Bir kişi, son etkinlikle karşılaştırıldığında olağan dışı miktarda veri ayıklamıştır. Bir saldırgan Azure Cosmos DB veritabanından büyük miktarda veri ayıklamıştır (örneğin, veri veya sızıntı ya da bir yetkisiz veri aktarımı). Ya da, yasal bir kullanıcı veya uygulama bir kapsayıcıdan olağan dışı miktarda veri ayıklamıştır (örneğin, bakım yedekleme etkinliği için).|Sızdırma|
-||<a name="alerts-azurenetlayer"></a><h3>Azure ağ katmanı</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-service-layer.md#azure-network-layer)||
+||||
+
+
+## <a name="alerts-azurenetlayer"></a>Azure ağ katmanı uyarıları
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-service-layer.md#azure-network-layer)
+
+|Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
+|----|----|:----:|
 |**Engelleme için önerilen IP adreslerinden gelen trafik**|Azure Güvenlik Merkezi, engellenmesi önerilen IP adreslerinden gelen trafiği algıladı. Bu durum genellikle bu IP adresi bu kaynakla düzenli olarak iletişim kurmazsa oluşur. Alternatif olarak, IP adresi güvenlik merkezi 'nin tehdit bilgileri kaynakları tarafından kötü amaçlı olarak işaretlendi.|Araştırma|
 |**Kötü amaçlı bir makine ile ağ iletişimi algılandı**|Ağ trafiği analizi, makinenizin (IP% {kurbanı IP}), muhtemelen bir komut ve Denetim Merkezi olduğunu bildiren bir sorun olduğunu gösterir. Güvenliği aşılmış kaynak bir yük dengeleyici veya bir uygulama ağ geçidi olduğunda, şüpheli etkinlik, arka uç havuzundaki (yük dengeleyici veya uygulama ağ geçidinde) bir veya daha fazla kaynağın bir komut olabilir ve Denetim Merkezi.|-|
 |**Olası güvenliği aşılmış makine algılandı**|Tehdit bilgileri, makinenizin (IP% {Machine IP}) Conficker türünde bir kötü amaçlı yazılım tarafından tehlikede olabileceğini gösterir. Conficker, Microsoft Windows işletim sistemini hedefleyen ve ilk olarak 2008 Kasım 'da algılanan bir bilgisayar solucanına sahip. Conficker, 200 ülkede çok sayıda ülkede devlet, iş ve ev bilgisayarları da kapsayan milyonlarca bilgisayara bulaşmış ve bu da en büyük bilinen bilgisayar solucanı, 2003 kaynaklı Chia solucanı sonrasında bulaşma yapıyor.|-|
@@ -285,7 +337,15 @@ Bu tabloya dahil edilen Uyarı türleri:
 |**Birden çok hedefe şüpheli giden RDP ağ etkinliği**|Ağ trafiği analizi, dağıtımınızdaki bir kaynak olan% {güvenliği aşılmış Konak} (% {Saldırganıp}) kaynaklı birden çok hedefe yönelik anormal giden Uzak Masaüstü Protokolü (RDP) iletişimi algıladı. Güvenliği aşılmış kaynak bir yük dengeleyici veya bir uygulama ağ geçididir. şüpheli giden trafik, arka uç havuzundaki (yük dengeleyici veya uygulama ağ geçidi) bir veya daha fazla kaynağa kaynaklı. Özellikle, Örneklenmiş ağ verileri, bu ortam için anormal olarak kabul edilen% {saldırıya uğrayan IP sayısı} benzersiz IP 'ye bağlanan makineli gösterir. Bu etkinlik, kaynağınızın güvenliğinin aşıldığını ve artık dış RDP bitiş noktalarını deneme yanılma için kullanıldığını gösterebilir. Bu etkinlik türünün, IP’nizin dış varlıklar tarafından kötü amaçlı olarak işaretlenmesine neden olabileceğini unutmayın.|-|
 |**Şüpheli giden SSH ağ etkinliği**|Ağ trafiği analizi, dağıtımınızdaki bir kaynak olan% {uzlaşıp} (% {Saldırganıp}) kaynaklı% {kurbanı IP} ile anormal giden SSH iletişimi algıladı. Güvenliği aşılmış kaynak bir yük dengeleyici veya bir uygulama ağ geçididir. şüpheli giden trafik, arka uç havuzundaki (yük dengeleyici veya uygulama ağ geçidi) bir veya daha fazla kaynağa kaynaklı. Özellikle, Örneklenmiş ağ verileri, bu ortam için anormal olarak kabul edilen kaynaklardan gelen giden bağlantıları% {bağlantı sayısı} gösteriyor. Bu etkinlik, kaynağınızın tehlikede olduğunu ve artık dış SSH bitiş noktalarını deneme için kullanıldığını gösterebilir. Bu etkinlik türünün, IP’nizin dış varlıklar tarafından kötü amaçlı olarak işaretlenmesine neden olabileceğini unutmayın.|-|
 |**Birden çok hedefe şüpheli giden SSH ağ etkinliği**|Ağ trafiği analizi, dağıtımınızdaki bir kaynak olan% {güvenliği aşılmış Konak} (% {Saldırganıp}) kaynaklı birden çok hedefe yönelik anormal giden SSH iletişimi algıladı. Güvenliği aşılmış kaynak bir yük dengeleyici veya bir uygulama ağ geçididir. şüpheli giden trafik, arka uç havuzundaki (yük dengeleyici veya uygulama ağ geçidi) bir veya daha fazla kaynağa kaynaklı. Özellikle, Örneklenmiş ağ verileri, bu ortam için anormal olarak kabul edilen% {saldırıya uğrayan bir IP sayısı} benzersiz IP 'ye bağlanan kaynağı gösterir. Bu etkinlik, kaynağınızın tehlikede olduğunu ve artık dış SSH bitiş noktalarını deneme için kullanıldığını gösterebilir. Bu etkinlik türünün, IP’nizin dış varlıklar tarafından kötü amaçlı olarak işaretlenmesine neden olabileceğini unutmayın.|-|
-||<a name="alerts-azureresourceman"></a><h3>Azure Resource Manager (Önizleme)</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)||
+||||
+
+
+## <a name="alerts-azureresourceman"></a>Azure Resource Manager için uyarılar (Önizleme)
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+
+|Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
+|----|----|:----:|
 |**ÖNIZLEME-mikro patlama araç seti işlev çalıştırması algılandı**|Ortamınızda bilinen bir Cloud-Environment keşif Toolkit çalıştırması algılandı. Araç [mikro patlama](https://github.com/NetSPI/MicroBurst) , aboneliklerinin kaynaklarını eşlemek, güvenli olmayan konfigürasyonları belirlemek ve gizli bilgileri sızan bir saldırgan (veya sızma Sınayıcısı) tarafından kullanılabilir.|-|
 |**ÖNIZLEME-Azurite araç seti çalıştırması algılandı**|Ortamınızda bilinen bir Cloud-Environment keşif Toolkit çalıştırması algılandı. Aracı [Azurite](https://github.com/mwrlabs/Azurite) , aboneliklerinin kaynaklarını eşlemek ve güvenli olmayan yapılandırmaların tanımlanması için bir saldırgan (veya sızma Sınayıcısı) tarafından kullanılabilir.|-|
 |**Güncel olmayan bir hesabı kullanarak ÖNIZLEME-şüpheli yönetim oturumu algılandı**|Abonelik etkinlik günlükleri Analizi şüpheli davranış algıladı. Uzun bir süre boyunca kullanımda olmayan bir sorumlu, bir saldırgan için kalıcılığı güvenli hale getirmeye yönelik eylemler gerçekleştiriyor.|Kalıcılık|
@@ -295,7 +355,15 @@ Bu tabloya dahil edilen Uyarı türleri:
 |**Sık erişilmeyen ülkeden etkinlik**|Kuruluştaki herhangi bir kullanıcı tarafından kısa süre önce veya hiç ziyaret edilmemiş bir konumdan gelen etkinlik oluştu.<br>Bu algılama yöntemi, yeni ve sık erişilmeyen konumlarını belirlemek için etkinlik konumları dikkate alır. Anomali algılama altyapısında, kuruluşunuzdaki kullanıcılar tarafından kullanılan önceki konumları hakkında bilgi depolar.|-|
 |**Anonim IP adreslerinden etkinliği**|Anonim bir proxy IP adresi olarak tanımlanmış bir IP adresinden gelen kullanıcılar etkinliği algılandı.<br>Bu proxy 'ler, cihazının IP adreslerini gizlemek isteyen kişiler tarafından kullanılır ve kötü amaçlı olarak kullanılabilir. Bu algılama, kuruluştaki kullanıcılar tarafından yaygın olarak kullanılan hatalı etiketli IP adresleri gibi hatalı pozitif sonuçları azaltan bir makine öğrenimi algoritması kullanır.|-|
 |**Mümkün olmayan seyahat etkinliği**|Coğrafi olarak uzak konumlardan kaynaklanan iki kullanıcı etkinliği (tek veya birden çok oturumunda) oluştu. Bu, kullanıcının ilk konumdan ikincisine gitmesini sağlamak için geçen süreden daha kısa bir süre içinde gerçekleşir. Bu, farklı bir kullanıcının aynı kimlik bilgilerini kullandığını gösterir.<br>Bu algılama, kuruluştaki diğer kullanıcılar tarafından düzenli olarak kullanılan VPN 'Ler ve konumlar gibi imkansız seyahat koşullarına katkıda bulunan açık olmayan hatalı pozitif durumları yok sayan bir makine öğrenimi algoritması kullanır. Algılama işlemi, yedi günlük ilk öğrenme dönemine sahiptir ve bu sırada yeni bir kullanıcının etkinlik modelini öğrenir. |-|
-||<a name="alerts-azurekv"></a><h3>Azure Key Vault (Önizleme)</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-service-layer.md#azure-keyvault)||
+||||
+
+
+## <a name="alerts-azurekv"></a>Azure Key Vault için uyarılar (Önizleme)
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-service-layer.md#azure-keyvault)
+
+|Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
+|----|----|:----:|
 |**Bir TOR çıkış düğümünden Key Vault erişim**|Key Vault, konumunu gizlemek için TOR IP anonimleştirme sistemini kullanan birisi tarafından erişilir. Kötü amaçlı aktörler, internet 'e bağlı kaynaklara yetkisiz erişim kazanmaya çalışırken genellikle konumlarını gizlemeyi dener.|-|
 |**Key Vault şüpheli ilke değişikliği ve gizli sorgu**|Key Vault bir ilke değişikliği yapılmıştır ve gizli dizileri listeleme ve/veya almaya yönelik işlemler oluştu. Buna ek olarak, bu işlem, normalde bu kasadaki Kullanıcı tarafından gerçekleştirilmez. Bu, Key Vault güvenliğinin aşıldığını ve içindeki parolaların kötü amaçlı bir aktör tarafından çalındığını oldukça önemlidir.|-|
 |**Key Vault şüpheli gizli anahtar listesi ve sorgu**|Gizli bir liste işlemi daha sonra birçok gizli get işlemi tarafından gerçekleştirildi. Ayrıca, bu işlem kalıbı normalde bu kasadaki Kullanıcı tarafından gerçekleştirilmez. Bu, birisinin kötü amaçlı olabilecek amaçlar için Key Vault depolanan gizli dizileri dökme anlamına gelir.|-|
@@ -305,11 +373,18 @@ Bu tabloya dahil edilen Uyarı türleri:
 |**Key Vault olağan dışı işlem kriteri**|Geçmiş verilerle karşılaştırıldığında olağan dışı bir Key Vault işlem kümesi gerçekleştirildi. Key Vault etkinlik genellikle zaman içinde aynıdır. Bu, etkinlikte meşru bir değişiklik olabilir. Alternatif olarak, altyapınız tehlikeye girebilir ve daha fazla araştırma yapılması gerekir.|-|
 |**Key Vault yüksek hacimli işlemler**|Geçmiş verilerle karşılaştırıldığında Key Vault işlemlerin daha büyük bir hacmi gerçekleştirildi. Key Vault etkinlik genellikle zaman içinde aynıdır. Bu, etkinlikte meşru bir değişiklik olabilir. Alternatif olarak, altyapınız tehlikeye girebilir ve daha fazla araştırma yapılması gerekir.|-|
 |**Kullanıcı, önemli kasaların yüksek hacminde erişti**|Bir kullanıcının veya uygulamanın eriştiği kasaların sayısı geçmiş verilerle karşılaştırıldığında değişmiştir. Key Vault etkinlik genellikle zaman içinde aynıdır. Bu, etkinlikte meşru bir değişiklik olabilir. Alternatif olarak, altyapınız tehlikeye girebilir ve daha fazla araştırma yapılması gerekir.|-|
-||<a name="alerts-azureddos"></a><h3>Azure DDoS Koruması</h3> [Daha fazla ayrıntı ve Not](security-center-alerts-integration.md#azure-ddos)||
+||||
+
+
+## <a name="alerts-azureddos"></a>Azure DDoS koruması için uyarılar
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-integration.md#azure-ddos)
+
+|Uyarı|Açıklama|Amaç ([daha fazla bilgi](#intentions))|
+|----|----|:----:|
 |**Genel IP için DDoS saldırısı algılandı**|Genel IP (IP adresi) için DDoS saldırısı algılandı ve azaltılmakta.|Araştırma|
 |**Genel IP için DDoS saldırısı azaltıldığında**|Genel IP (IP adresi) için DDoS saldırısı azaltıldığında.|Araştırma|
 ||||
-
 
 ## <a name="intentions"></a>Amaçları
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: 96e7cbd09873192d8b73b57cb2b46bf5b7679742
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 3c921bda1b839ee18a91b28f875ba7c84c0dd944
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263464"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515046"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -160,7 +160,7 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 | Ad | Notlar |
 |------|-------|
 | İfade değerlendirme limiti | 131.072 karakter | `@concat()`, `@base64()`, `@string()` ifadeleri bu sınırdan daha uzun olamaz. |
-| İstek URL 'SI karakter sınırı | 32K karakterler |
+| İstek URL 'SI karakter sınırı | 16.384 karakter |
 |||
 
 #### <a name="retry-policy"></a>Yeniden deneme ilkesi

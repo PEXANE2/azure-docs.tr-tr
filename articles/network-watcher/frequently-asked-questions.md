@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 570b8057fc09e3f054152d09467519a167d938e9
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 856c249b72e9e0ff8667d10821ad14b3432b0775
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280790"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509198"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure ağ Izleyicisi hakkında sık sorulan sorular (SSS)
 [Azure Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) hizmeti, bir Azure sanal ağındaki kaynaklara yönelik günlükleri izlemeye, tanılamaya, görüntülemeye ve etkinleştirmeye ve devre dışı bırakacak bir araç paketi sağlar. Bu makalede hizmetle ilgili yaygın soruların yanıtları vardır.
@@ -75,11 +75,11 @@ Azure ağ kaynakları, [ağ güvenlik grupları (NSG 'ler)](https://docs.microso
 
 Bir güvenlik duvarıyla depolama hesabı kullanmak için, güvenilen Microsoft hizmetlerinin depolama hesabınıza erişmesi için bir özel durum sağlamanız gerekir:
 
-* [NSG Akış Günlükleri genel bakış sayfasında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) NSG'nin yerini belirleyerek depolama hesabının adını bulun
-* Portaldaki genel aramaya depolama hesabının adını yazarak depolama hesabına gidin
+* Portala veya [depolama hesapları sayfasından](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) depolama hesabının adını yazarak depolama hesabına gidin.
 * **AYARLAR** bölümünün altında **Güvenlik duvarları ve sanal ağlar**'ı seçin
 * "Erişime Izin ver" bölümünde **Seçili ağlar**' ı seçin. Ardından, **özel durumlar**altında **"Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver"** seçeneğinin yanındaki kutuyu işaret edin. 
 * Zaten seçiliyse, hiçbir değişiklik yapmanız gerekmez.  
+* [NSG akış günlüklerine Genel Bakış sayfasında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) hedef NSG 'nizi bulun ve NSG akış günlüklerini yukarıdaki depolama hesabı seçiliyken etkinleştirin.
 
 Birkaç dakika sonra depolama günlüklerini denetleyebilirsiniz; güncelleştirilmiş bir TimeStamp veya yeni oluşturulmuş bir JSON dosyası görmelisiniz.
 

@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12c5bf66de966faf8dc31c7265fdfb0180a95323
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bea00f429f31f2be62ee6a9c00f88873c595d94c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970841"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509827"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge Azure Blob Storage ile verileri kenarda depolayın
 
@@ -85,7 +85,6 @@ Bu ayarın adı `deviceToCloudUploadProperties`. IoT Edge simülatör kullanıyo
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Azure 'a yüklemek istediğiniz kapsayıcı adlarını belirtmenize olanak tanır. Bu modül hem kaynak hem de hedef kapsayıcı adlarını belirtmenize olanak tanır. Hedef kapsayıcı adını belirtmezseniz, kapsayıcı adı otomatik olarak `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`olarak atanır. Hedef kapsayıcı adı için şablon dizeleri oluşturabilir, olası değerler sütununa bakabilirsiniz. <br>*% h-> IoT Hub adı (3-50 karakter). <br>*% d-> IoT Edge cihaz KIMLIĞI (1-129 karakter). <br>*% d-> Modül adı (1-64 karakter). <br>*% c-> kaynak kapsayıcısı adı (3 ile 63 karakter arasında). <br><br>Kapsayıcı adının en büyük boyutu 63 karakterdir, çünkü kapsayıcının boyutu 63 karakteri aşarsa, her bir bölümü (IoTHubName, ıotedgedeviceıd, ModuleName, SourceContainerName) 15 olarak kırpacaktır karakterle. <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | TRUE, false | Varsayılan olarak `false` olarak ayarlayın. `true`olarak ayarlandığında, bulut depolamaya yükleme tamamlandığında verileri otomatik olarak siler. <br><br> **Dikkat**: ekleme bloblarını kullanıyorsanız, bu ayar başarılı bir karşıya yükleme işleminden sonra ekleme bloblarını yerel depolamadan siler ve gelecekte bu bloblara yapılan tüm ekleme engelleme işlemleri başarısız olur. Bu ayarı dikkatli bir şekilde kullanın, uygulamanız sık sık ekleme işlemleri yaparsanız veya sürekli ekleme işlemlerini desteklemiyorsa bunu etkinleştirmeyin.<br><br> Ortam değişkeni: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`. |
 
-
 ### <a name="deviceautodeleteproperties"></a>Deviceoto Deleteproperties
 
 Bu ayarın adı `deviceAutoDeleteProperties`. IoT Edge simülatör kullanıyorsanız, bu özellikler için değerleri, Açıklama bölümünde bulabileceğiniz ilgili ortam değişkenlerine ayarlayın.
@@ -97,6 +96,7 @@ Bu ayarın adı `deviceAutoDeleteProperties`. IoT Edge simülatör kullanıyorsa
 | retainWhileUploading | TRUE, false | Varsayılan olarak, `true`olarak ayarlanır ve Deleteafsonlandırutes süresi dolarsa blob 'u bulut depolamaya yüklerken korur. `false` olarak ayarlayabilirsiniz ve Deleteafsonlandırutes süresi dolduktan hemen sonra verileri siler. Note: Bu özelliğin iş için uploadOn, true olarak ayarlanmalıdır.  <br><br> **Dikkat**: ekleme bloblarını kullanıyorsanız, bu ayar, değerin süresi dolarsa yerel depolamadan ekleme bloblarını siler ve bu bloblara gelecekteki tüm ekleme engelleme işlemleri başarısız olur. Süre sonu değerinin, uygulamanız tarafından gerçekleştirilen ekleme işlemlerinin beklenen sıklığı için yeterince büyük olduğundan emin olmak isteyebilirsiniz.<br><br> Ortam değişkeni: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>Yerel depolama alanı olarak SMB paylaşımının kullanımı
+
 Windows konakta Bu modülün Windows kapsayıcısını dağıtırken, yerel depolama yolunuz olarak SMB paylaşma sağlayabilirsiniz.
 
 SMB paylaşımının ve IoT cihazının karşılıklı güvenilen etki alanlarında bulunduğundan emin olun.
@@ -104,48 +104,58 @@ SMB paylaşımının ve IoT cihazının karşılıklı güvenilen etki alanları
 Windows çalıştıran IoT cihazında SMB paylaşımından yerel olarak eşleme yapmak için `New-SmbGlobalMapping` PowerShell komutunu çalıştırabilirsiniz.
 
 Yapılandırma adımları aşağıda verilmiştir:
+
 ```PowerShell
 $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
-Örnek: <br>
-`$creds = Get-Credential` <br>
-`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:`
 
-Bu komut, uzak SMB sunucusunda kimlik doğrulamak için kimlik bilgilerini kullanır. Ardından, uzak paylaşımın yolunu G: sürücü harfi ile eşleyin (kullanılabilir başka herhangi bir sürücü harfi olabilir). IoT cihazında artık G: sürücüsündeki bir yola eşlenen veri hacmi vardır. 
+Örneğin:
+
+```powershell
+$creds = Get-Credential
+New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
+```
+
+Bu komut, uzak SMB sunucusunda kimlik doğrulamak için kimlik bilgilerini kullanır. Ardından, uzak paylaşımın yolunu G: sürücü harfi ile eşleyin (kullanılabilir başka herhangi bir sürücü harfi olabilir). IoT cihazında artık G: sürücüsündeki bir yola eşlenen veri hacmi vardır.
 
 IoT cihazındaki kullanıcının uzak SMB paylaşımında okuma/yazma yapaabilmesini sağlayın.
 
-Dağıtımınız için `<storage mount>` değeri **G:/ContainerData: C:/BlobRoot**olabilir. 
+Dağıtımınız için `<storage mount>` değeri **G:/ContainerData: C:/BlobRoot**olabilir.
 
 ## <a name="granting-directory-access-to-container-user-on-linux"></a>Linux 'ta kapsayıcı kullanıcısına dizin erişimi verme
+
 Linux kapsayıcıları için oluşturma seçeneklerinizde depolama için [birim bağlama](https://docs.docker.com/storage/volumes/) kullandıysanız, ek adımlar yapmanız gerekmez, ancak [bağlama bağlama](https://docs.docker.com/storage/bind-mounts/) kullandıysanız, hizmeti doğru bir şekilde çalıştırmak için bu adımlar gereklidir.
 
-Kullanıcıların, çalışmalarını gerçekleştirmesi gereken minimum izinleri en düşük izinlerle sınırlamak için en az ayrıcalık ilkesinin ardından, bu modül bir Kullanıcı (ad: absıl, ID: 11000) ve bir Kullanıcı grubu (ad: Abe, KIMLIK: 11000) içerir. Kapsayıcı **kök** olarak başlatılırsa (varsayılan kullanıcı **kök**ise) hizmetimiz **düşük ayrıcalıklı bir** Kullanıcı olarak başlatılır. 
+Kullanıcıların, çalışmalarını gerçekleştirmesi gereken minimum izinleri en düşük izinlerle sınırlamak için en az ayrıcalık ilkesinin ardından, bu modül bir Kullanıcı (ad: absıl, ID: 11000) ve bir Kullanıcı grubu (ad: Abe, KIMLIK: 11000) içerir. Kapsayıcı **kök** olarak başlatılırsa (varsayılan kullanıcı **kök**ise) hizmetimiz **düşük ayrıcalıklı bir** Kullanıcı olarak başlatılır.
 
 Bu davranış, hizmetin düzgün çalışması için konak yolu izinlerin yapılandırılmasını sağlar, aksi takdirde hizmet erişim reddedildi hatalarıyla çöker. Dizin bağlamasında kullanılan yolun kapsayıcı kullanıcı tarafından erişilebilir olması gerekir (örnek: absı1 11000). Konakta aşağıdaki komutları yürüterek kapsayıcı kullanıcıya dizin erişimi verebilirsiniz:
 
 ```terminal
-sudo chown -R 11000:11000 <blob-dir> 
-sudo chmod -R 700 <blob-dir> 
+sudo chown -R 11000:11000 <blob-dir>
+sudo chmod -R 700 <blob-dir>
 ```
 
-Örnek:<br>
-`sudo chown -R 11000:11000 /srv/containerdata` <br>
-`sudo chmod -R 700 /srv/containerdata`
+Örneğin:
 
+```terminal
+sudo chown -R 11000:11000 /srv/containerdata
+sudo chmod -R 700 /srv/containerdata
+```
 
 Hizmeti, bir kullanıcı olarak bir kullanıcı olarak çalıştırmanız **gerekiyorsa, dağıtım**bildiriminizde "Kullanıcı" özelliği altındaki createOptions içinde özel kullanıcı kimliğinizi belirtebilirsiniz. Böyle bir durumda, varsayılan veya kök Grup KIMLIĞI `0`kullanmanız gerekir.
 
 ```json
-"createOptions": { 
-  "User": "<custom user ID>:0" 
-} 
+"createOptions": {
+  "User": "<custom user ID>:0"
+}
 ```
+
 Şimdi, kapsayıcı kullanıcısına dizine erişim izni verin
+
 ```terminal
-sudo chown -R <user ID>:<group ID> <blob-dir> 
-sudo chmod -R 700 <blob-dir> 
+sudo chown -R <user ID>:<group ID> <blob-dir>
+sudo chmod -R 700 <blob-dir>
 ```
 
 ## <a name="configure-log-files"></a>Günlük dosyalarını yapılandırma
@@ -158,11 +168,11 @@ Hesap adı ve IOT Edge Cihazınızda blob depolamaya erişmek, bir modül için 
 
 IOT Edge Cihazınızı herhangi bir depolama alanı için blob uç nokta olarak belirtmek için yaptığınız istekleri. Yapabilecekleriniz [bir açık depolama uç noktası için bir bağlantı dizesi oluşturma](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) IOT Edge cihaz bilgileri ve yapılandırdığınız hesabı adını kullanarak.
 
-- IoT Edge modülündeki Azure Blob depolama alanının çalıştığı aynı cihaza dağıtılan modüller için, blob uç noktası: `http://<module name>:11002/<account name>`.
-- Farklı bir cihazda çalışan modüller veya uygulamalar için ağınız için doğru uç noktayı seçmeniz gerekir. Ağ kurulumunuza bağlı olarak, dış modülünüzün veya uygulamanızdan alınan veri trafiğinin IoT Edge modülünde Azure Blob depolamayı çalıştıran cihaza ulaşabilmesi için bir uç nokta biçimi seçin. Bu senaryonun blob uç noktası şunlardan biridir:
-  - `http://<device IP >:11002/<account name>`
-  - `http://<IoT Edge device hostname>:11002/<account name>`
-  - `http://<fully qualified domain name>:11002/<account name>`
+* IoT Edge modülündeki Azure Blob depolama alanının çalıştığı aynı cihaza dağıtılan modüller için, blob uç noktası: `http://<module name>:11002/<account name>`.
+* Farklı bir cihazda çalışan modüller veya uygulamalar için ağınız için doğru uç noktayı seçmeniz gerekir. Ağ kurulumunuza bağlı olarak, dış modülünüzün veya uygulamanızdan alınan veri trafiğinin IoT Edge modülünde Azure Blob depolamayı çalıştıran cihaza ulaşabilmesi için bir uç nokta biçimi seçin. Bu senaryonun blob uç noktası şunlardan biridir:
+  * `http://<device IP >:11002/<account name>`
+  * `http://<IoT Edge device hostname>:11002/<account name>`
+  * `http://<fully qualified domain name>:11002/<account name>`
 
 ## <a name="azure-blob-storage-quickstart-samples"></a>Azure Blob depolama hızlı başlangıç örnekleri
 
@@ -202,7 +212,7 @@ Aşağıdaki hızlı başlangıç örnekleri, IoT Edge tarafından da desteklene
 
 ## <a name="supported-storage-operations"></a>Desteklenen depolama işlemleri
 
-IoT Edge BLOB depolama modülleri Azure Storage SDK 'larını kullanır ve Blok Blobu uç noktaları için Azure Storage API 'sinin 2017-04-17 sürümüyle tutarlıdır. 
+IoT Edge BLOB depolama modülleri Azure Storage SDK 'larını kullanır ve Blok Blobu uç noktaları için Azure Storage API 'sinin 2017-04-17 sürümüyle tutarlıdır.
 
 Tüm Azure Blob depolama işlemleri IoT Edge Azure Blob depolama tarafından desteklenmediğinden, bu bölümde her birinin durumu listelenir.
 
@@ -271,6 +281,7 @@ Desteklenmeyen:
 * URL 'den ekleme bloğu
 
 ## <a name="event-grid-on-iot-edge-integration"></a>IoT Edge tümleştirmede Event Grid
+
 > [!CAUTION]
 > IoT Edge Event Grid tümleştirme önizlemededir
 

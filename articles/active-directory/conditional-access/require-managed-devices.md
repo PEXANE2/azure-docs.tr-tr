@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb0764b9c2c43faf88db165a11ae963c4f170f01
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424811"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512598"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için yönetilen cihazlar gerektirme
 
@@ -69,7 +69,7 @@ Bu ayar yalnızca, şirket içi bir AD 'ye katılmış Windows 7 veya Windows 8 
 
 ![Cihaz tabanlı koşullar](./media/require-managed-devices/45.png)
 
-Hibrit Azure AD 'ye katılmış cihaza yönetilen cihaz ne olur?  Şirket içi bir AD 'ye katılmış cihazlar için, bu cihazların üzerindeki denetimin **System Center Configuration Manager (SCCM)** gibi yönetim çözümlerini veya bunları yönetmek için **Grup İlkesi (GP)** ile uygulanacağını kabul edilir. Azure AD 'nin bu yöntemlerin bir cihaza uygulanıp uygulanmadığı tespit etmek için bir yöntem olmadığından, karma bir Azure AD 'ye katılmış cihazın gerekli olması, yönetilen bir cihaz gerektiren görece zayıf bir mekanizmadır. Şirket içi etki alanına katılmış cihazlara uygulanan yöntemlerin, bu tür bir cihazın karma Azure AD 'ye katılmış bir cihaz olması halinde yönetilen bir cihaz oluşturması için yeterince güçlü olup olmadığını bir yönetici olarak öğreneceksiniz.
+Hibrit Azure AD 'ye katılmış cihaza yönetilen cihaz ne olur?  Şirket içi bir AD 'ye katılmış cihazlar için, bu cihazların üzerindeki denetimin **Configuration Manager** veya **Grup İlkesi (GP)** gibi yönetim çözümleri kullanılarak bunları yönetmek için zorlandığını kabul edilir. Azure AD 'nin bu yöntemlerin bir cihaza uygulanıp uygulanmadığı tespit etmek için bir yöntem olmadığından, karma bir Azure AD 'ye katılmış cihazın gerekli olması, yönetilen bir cihaz gerektiren görece zayıf bir mekanizmadır. Şirket içi etki alanına katılmış cihazlara uygulanan yöntemlerin, bu tür bir cihazın karma Azure AD 'ye katılmış bir cihaz olması halinde yönetilen bir cihaz oluşturması için yeterince güçlü olup olmadığını bir yönetici olarak öğreneceksiniz.
 
 ## <a name="require-device-to-be-marked-as-compliant"></a>Cihazın uyumlu olarak işaretlenmesini gerektir
 

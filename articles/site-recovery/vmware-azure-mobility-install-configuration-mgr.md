@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 318b73011901e9ab07643bc2ecec28e5016e8702
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 43e6a39a52eb81573b4a4ba8ad63d48d0e51dedd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613916"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514840"
 ---
 # <a name="automate-mobility-service-installation"></a>Mobility hizmeti yüklemesini otomatikleştirin
 
@@ -19,8 +19,8 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)' de Mobility hizme
 Şirket içi VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için Site Recovery dağıtırken, çoğaltmak istediğiniz her makineye Mobility hizmet aracısını yüklersiniz. Mobility hizmeti makinede veri yazmaları yakalar ve bunları çoğaltma için Site Recovery işlem sunucusuna iletir. Mobility hizmetini birkaç yolla dağıtabilirsiniz:
 
 - **Anında yükleme**: Azure Portal bir makine için çoğaltmayı etkinleştirdiğinizde Mobility hizmet aracısını Site Recovery yüklemesine izin verin.
-- **El ile yükleme**: Mobility hizmetini her makineye el ile yükleme. Gönderim ve el ile yükleme hakkında [daha fazla bilgi edinin](vmware-physical-mobility-service-overview.md) .
-- **Otomatik dağıtım**: System Center Configuration Manager gibi yazılım dağıtım araçlarıyla veya ıntigua jetpatch gibi üçüncü taraf araçlarla yüklemeyi otomatikleştirin.
+- **El ile yükleme**: Mobility hizmetini her makineye el ile yükleme. Gönderim ve el ile yükleme hakkında [daha fazla bilgi edinin](/vmware-physical-mobility-service-overview.md) .
+- **Otomatik dağıtım**: Microsoft uç noktası Configuration Manager veya ıntigua jetpatch gibi üçüncü taraf araçları gibi yazılım dağıtım araçlarıyla yüklemeyi otomatikleştirin.
 
 Otomatik yükleme ve güncelleştirme, şu durumlarda bir çözüm sağlar:
 
@@ -356,7 +356,7 @@ cd /tmp
 
     **Parametre** | **Windows değeri** | **Linux değeri**
     --- | --- | ---
-    **Adı** | Microsoft Azure Mobility hizmetini (Windows) yükler | Microsoft Azure Mobility hizmeti 'ni (Linux) yükler.
+    **Ad** | Microsoft Azure Mobility hizmetini (Windows) yükler | Microsoft Azure Mobility hizmeti 'ni (Linux) yükler.
     **Komut satırı** | . bat dosyasını install | ./install_linux. sh
     **Program çalışabilir** | Kullanıcı oturumu açsın ya da açmasın | Kullanıcı oturumu açsın ya da açmasın
     **Diğer parametreler** | Varsayılan ayarı kullan | Varsayılan ayarı kullan

@@ -1,6 +1,6 @@
 ---
-title: Bir Azure AD nedir, cihazı alanına?
-description: Cihaz Kimlik Yönetimi ortamınızdaki kaynakların erişen cihazların yönetmenize nasıl yardımcı olabileceğini öğrenin.
+title: Azure AD 'ye katılmış cihaz nedir?
+description: Cihaz kimlik yönetimi 'nin ortamınızdaki kaynaklara erişen cihazları yönetmenize nasıl yardımcı olabileceğini öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,45 +11,45 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af3aea7218ea8792bb66188e8df7baf9f460b0b
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462817"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512207"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD’ye katılmış cihazlar
 
-Azure AD join, bulut öncelikli veya salt bulut isteyen kuruluşlar için tasarlanmıştır. Her kuruluş, sektör ve boyutu ne olursa olsun Azure AD'ye katılmış cihazlara dağıtabilirsiniz. Hem bulut hem de şirket içi uygulamaları ve kaynaklarına erişimi etkinleştirme bile karma bir ortamda, Azure AD'ye katılım'ı çalışır.
+Azure AD katılımı, yalnızca bulutta veya bulutta olmak isteyen kuruluşlar için tasarlanmıştır. Herhangi bir kuruluş, boyut veya sektöre bakılmaksızın Azure AD 'ye katılmış cihazları dağıtabilir. Azure AD JOIN, Karma ortamda bile çalışarak hem buluta hem de şirket içi uygulamalara ve kaynaklara erişimi etkinleştirir.
 
-|   | Azure AD'ye katılım |
+|   | Azure AD katılımı |
 | --- | --- |
-| **Tanım** | Cihaza oturum açmak için kuruluş hesabı gerekmeden yalnızca Azure AD'ye katılmış |
-| **Birincil hedef kitlesi** | Yalnızca bulutta yer alan her ikisi için uygun ve hibrit kuruluşlar. |
+| **Tanım** | Yalnızca cihazda oturum açmak için kurumsal hesap gerektiren Azure AD 'ye katılmış |
+| **Birincil hedef kitle** | Yalnızca bulut ve hibrit kuruluşlar için uygundur. |
 |   | Bir kuruluştaki tüm kullanıcılar için geçerlidir |
 | **Cihaz sahipliği** | Kuruluş |
 | **İşletim sistemleri** | Tüm Windows 10 cihazları |
-| **Sağlama** | Self Servis: Windows OOBE veya ayarları |
+| **Sağlama** | Self Servis: Windows OOBE veya Settings |
 |   | Toplu kayıt |
 |   | Windows Autopilot |
-| **Cihaz oturum açma seçenekleri** | Kuruluş hesapları kullanarak: |
+| **Cihaz oturum açma seçenekleri** | Kullanılarak kurumsal hesaplar: |
 |   | Parola |
 |   | İş İçin Windows Hello |
-|   | FIDO2.0 güvenlik anahtarları (Önizleme) |
-| **Cihaz yönetimi** | Mobil cihaz Yönetimi (örnek: Microsoft Intune) |
-|   | Microsoft Intune ve System Center Configuration Manager ile ortak yönetim |
-| **Anahtar özellikleri** | Hem bulut hem de şirket içi kaynaklara SSO |
-|   | Koşullu erişim aracılığıyla MDM kaydı ve MDM uyumluluk değerlendirmesi |
-|   | Kilit ekranında Self Servis parola sıfırlama ve Windows Hello PIN sıfırlama |
-|   | Kurumsal durumda Dolaşım cihazlar arasında |
+|   | FıDO 2.0 güvenlik anahtarları (Önizleme) |
+| **Cihaz yönetimi** | Mobil cihaz yönetimi (örnek: Microsoft Intune) |
+|   | Microsoft Intune ve Microsoft uç noktası ile ortak yönetim Configuration Manager |
+| **Anahtar özellikleri** | Hem bulut hem de şirket içi kaynaklara yönelik SSO |
+|   | MDM kaydı ve MDM uyumluluk değerlendirmesi aracılığıyla koşullu erişim |
+|   | Kilitleme ekranında self servis parola sıfırlama ve Windows Hello PIN sıfırlama |
+|   | Cihazlar arasında Enterprise State Roaming |
 
-Azure AD'ye katılmış cihazları oturum açmaya bir kuruluş için kullanılacak Azure AD hesabı. Kuruluşunda bulunan kaynaklara erişimi daha fazla olabilir sınırlı dayalı bu Azure AD hesap ve [koşullu erişim ilkeleri](../conditional-access/overview.md) cihaz kimliğine uygulanır.
+Azure AD 'ye katılmış cihazlar, kurumsal bir Azure AD hesabı kullanarak oturum açtı. Kuruluştaki kaynaklara erişim, bu Azure AD hesabına ve cihaz kimliğine uygulanan [koşullu erişim ilkelerine](../conditional-access/overview.md) göre daha da sınırlı olabilir.
 
-Daha fazla denetim Azure AD'ye katılmış cihazların Microsoft Intune gibi veya ortak yönetim senaryolarında System Center Configuration Manager kullanarak mobil cihaz Yönetimi (MDM) araçlarını kullanarak ve yöneticiler güvenli. Bu araçlar, şifrelenmiş depolama, parola karmaşıklığı, yazılım yüklemeleri ve yazılım güncelleştirmeleri gerektirme gibi kuruluş gerekli yapılandırmaları zorlamak için bir yol sağlar. Yöneticiler yapabilir kuruluş uygulamaları kullanarak Azure AD'ye katılmış cihazlar için kullanılabilir [System Center Configuration Manager ve iş için Microsoft Store](https://docs.microsoft.com/sccm/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
+Yöneticiler, Microsoft Intune gibi mobil cihaz yönetimi (MDM) araçlarını kullanarak Azure AD 'ye katılmış cihazları güvenlik altına alabilir ve daha fazla denetleyebilir (Microsoft uç nokta Configuration Manager kullanan ortak yönetim senaryolarında). Bu araçlar, depolamanın şifreli, parola karmaşıklığı, yazılım yüklemeleri ve yazılım güncelleştirmeleri gibi kuruluş gerektiren yapılandırmaların zorlanmasını sağlamak için bir yol sağlar. Yöneticiler [, iş ve eğitim için Microsoft Store uygulamaları yönetmek](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business)üzere Configuration Manager kullanarak kuruluş UYGULAMALARıNı Azure AD 'ye katılmış cihazlara kullanabilir hale getirir.
 
-Azure AD'ye katılım seçenekleri gibi ilk çalıştırma deneyimi (OOBE), toplu kayıt, Self Servis kullanarak gerçekleştirilebilir veya [Windows Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot).
+Azure AD JOIN, hazır olmayan deneyim (OOBE), toplu kayıt veya [Windows Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot)gibi self servis seçenekleri kullanılarak gerçekleştirilebilir.
 
-Kuruluşun ağ üzerinde olmaları durumunda azure AD'ye katılmış cihazları yine de şirket içi kaynaklara çoklu oturum açma erişimi koruyabilirsiniz. Azure AD'ye katılmış cihazlar yine de dosya, yazdırma ve diğer uygulamalar gibi şirket içi sunucular için kimlik doğrulaması yapabilir.
+Azure AD 'ye katılmış cihazlar, kuruluşun ağı üzerinde olduklarında şirket içi kaynaklara yönelik çoklu oturum açma erişimi sürdürmeye devam edebilir. Azure AD 'ye katılmış cihazlar, dosya, yazdırma ve diğer uygulamalar gibi şirket içi sunucularda kimlik doğrulaması yapabilir.
 
 ## <a name="scenarios"></a>Senaryolar
 
@@ -58,7 +58,7 @@ Azure AD’ye katılma özelliği temel olarak bir şirket içi Windows Server A
 - Azure AD ve MDM benzeri Intune kullanarak bulut tabanlı altyapıya geçiş yapmak istediğinizde.
 - Şirket içi etki alanına katılma özelliğini kullanamadığınız durumlarda; örneğin, tabletler ve telefonlar gibi mobil cihazlar üzerinde denetim sağlamanız gerektiğinde.
 - Kullanıcılarınızın temel olarak Office 365 veya Azure AD ile tümleşik diğer SaaS uygulamalarına erişmesi gerektiğinde.
-- Active Directory yerine Azure AD’de bir kullanıcı grubunu yönetmek istediğinizde. Bu senaryo, örneğin, Dönemsel çalışanların, yüklenicilerin veya Öğrenciler uygulayabilirsiniz.
+- Active Directory yerine Azure AD’de bir kullanıcı grubunu yönetmek istediğinizde. Bu senaryo, örneğin, dönemsel çalışanlar, yükleniciler veya öğrenciler için uygulanabilir.
 - Sınırlı şirket içi altyapısı olan uzak şube ofislerindeki çalışanlara katılma özellikleri sağlamak istediğinizde.
 
 Windows 10 cihazları için Azure AD’ye katılmış cihazları yapılandırabilirsiniz.
@@ -68,7 +68,7 @@ Azure AD'ye katılmış cihazların hedefi şu işlemlerde basitleştirme sağla
 - İşe ait cihazların Windows dağıtımları
 - Herhangi bir Windows cihazından kuruluş uygulamalarına ve kaynaklarına erişim
 - İşe ait cihazların bulut tabanlı yönetimi
-- Kullanıcılar cihazlarını kendi Azure AD ile oturum açabilir veya Eşitlenen Active Directory iş veya Okul hesapları.
+- Kullanıcıların cihazlarında Azure AD 'ye oturum açması veya Active Directory iş veya okul hesaplarıyla eşitlenmesi.
 
 ![Azure AD’ye katılmış cihazlar](./media/concept-azure-ad-join/azure-ad-joined-device.png)
 
@@ -80,7 +80,7 @@ Aşağıdaki yöntemlerden birini kullanarak Azure AD'ye Katılım dağıtımı 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD join uygulamanızı planlama](azureadjoin-plan.md)
-- [Azure AD'de yerel Yöneticiler grubuna yönetme alanına katılmış cihazları](assign-local-admin.md)
-- [Azure portalını kullanarak cihaz kimliklerini yönetme](device-management-azure-portal.md)
-- [Azure AD'de eski cihazları yönetme](manage-stale-devices.md)
+- [Azure AD JOIN Uygulamanızı planlayın](azureadjoin-plan.md)
+- [Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme](assign-local-admin.md)
+- [Azure portal kullanarak cihaz kimliklerini yönetme](device-management-azure-portal.md)
+- [Azure AD 'de eski cihazları yönetme](manage-stale-devices.md)

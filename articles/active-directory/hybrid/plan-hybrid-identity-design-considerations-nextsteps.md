@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory karma kimlik tasarımı hakkında önemli noktalar - sonraki adımlar | Microsoft Docs
-description: Doğrulanır ve karma kimlik tasarım konuları Kılavuzu okuduktan sonra sonraki adımlar
+title: Azure Active Directory karma kimlik tasarımı konuları-sonraki adımlar | Microsoft Docs
+description: Karma kimlik tasarımı konuları kılavuzunu okuduktan sonra bir özeti ve sonraki adımlar
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -16,38 +16,30 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41741249e9b1a142d75392025236a4d333b67666
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 378aa35ff4b43f5a268ac3dcd9530783ada6921e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295135"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512972"
 ---
-# <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory karma kimlik tasarımı hakkında önemli noktalar sonraki adımlar
-Gereksinimlerinizi tanımlamayı ve mobil cihaz Yönetimi çözümünüz için tüm seçenekleri inceleyerek tamamladığınıza göre sonraki adımları kendiniz ve kuruluşunuz için destekleyici altyapının dağıtımını için hazırsınız.
-
-## <a name="hybrid-identity-solutions"></a>Karma kimlik çözümleri
--İhtiyaçlarınıza uyan belirli çözüm senaryoları yararlanarak gözden geçirin ve bir mobil cihaz Yönetimi altyapısının dağıtımındaki ayrıntıları planlamak için harika bir yoludur. Aşağıdaki çözümlerden bazıları yaygın mobil cihaz yönetim senaryolarını özetlemektedir:
-
-* [Kurumsal ortamlarda çözümde mobil cihazları ve PC'leri yönetme](https://technet.microsoft.com/library/dn582037.aspx) , şirket içi System Center 2012 Configuration Manager altyapınızı Microsoft Intune ile buluta genişleterek mobil cihazları yönetmenize yardımcı olur. Bu karma altyapı, Orta ve BT uzmanları yardımcı olur ve büyük ortamlarda yönetimsel karmaşıklığı azaltırken KCG ve uzak erişimi etkinleştirin.
-* [Çözüm Yapılandırma Yöneticisi 2007 için mobil cihazları yönetme](https://technet.microsoft.com/library/dn508400.aspx) altyapınız System Center Configuration Manager 2007'ye dayanıyorsa, mobil cihazları yönetmenize yardımcı olur. Bu çözüm, Microsoft Intune çalıştırın ve MDM özellğinden yararlanmak için System Center 2012 Configuration Manager çalıştıran tek bir sunucu kurulumu yapmak nasıl gösterir.
-* [Çözümde küçük ortamlarda mobil cihazları yönetme](https://technet.microsoft.com/library/dn715906.aspx) MDM'yi desteklemesi gereken küçük işletmeler için hazırlanmıştır Bu, Microsoft Intune altyapınızı mobil cihaz yönetimi ve KCG'yi destekleyecek şekilde genişletmek için nasıl kullanılacağını açıklar. Bu çözüm, yerel sunucu olmadan yalnızca bulut yapılandırmasında tek başına Microsoft Intune kullanmak için desteklenen en temel senaryo anlatılır.
+# <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory karma kimlik tasarımı konuları-sonraki adımlar
+Artık gereksinimlerinizi tanımlamayı ve mobil cihaz yönetimi çözümünüz için tüm seçenekleri incelemeyi tamamladığınıza göre, sonraki adımlara geçip kendiniz ve kuruluşunuz için destekleyici altyapının dağıtımını yapmaya hazırsınız demektir.
 
 ## <a name="hybrid-identity-documentation"></a>Hibrit kimlik belgeleri
-Mobil cihaz Yönetimi çözümünüzü hayata geçirirken kavramsal ve yordam planlama, dağıtım ve yönetim içeriği kullanışlıdır:
+Mobil cihaz yönetimi çözümünüzü hayata geçirirken, kavramların ve yordamların sağlandığı planlama, dağıtım ve yönetim içeriği çok yararlı olur:
 
-* [Microsoft System Center](https://technet.microsoft.com/library/cc507089.aspx) çözümleri yardımcı olabilir, altyapı, ilkeler, süreçler ve en iyi uygulamalar hakkında toplu bilgileri yakalamanıza ve böylece BT personeliniz yönetilebilir sistemler oluşturabilir ve işlemleri otomatik hale getirin.
-* [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) bilgisayarlar ve mobil cihazları yönetmek ve şirket bilgilerinizin güvenliğini sağlamaya yardımcı olan bir bulut tabanlı cihaz yönetim hizmetidir.
-* [Office 365 için MDM](https://technet.microsoft.com/library/ms.o365.cc.devicepolicy.aspx) yönetin ve bunlar, Office 365 kuruluşunuza bağlanan mobil cihazları güvenli olanak tanır. Cihaz güvenlik ilkeleri ve erişim kuralları ayarlayın ve bunlar kaybolan veya çalınan mobil cihazları temizlemek için Office 365 için MDM kullanabilirsiniz.
+* [Microsoft System Center](https://technet.microsoft.com/library/cc507089.aspx) ÇÖZÜMLERI, BT çalışanlarınızın yönetilebilir sistemler ve işlemleri otomatikleştirebilmesi için altyapınız, ilkeleriniz, süreçleriniz ve en iyi uygulamalar hakkında bilgi almanıza ve toplaetmenize yardımcı olabilir.
+* [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx), bilgisayarlarınızı ve mobil cihazlarınızı yönetmenizin yanı sıra şirketinizin verilerini güvenlik altına almanıza da yardımcı olan, bulut tabanlı bir cihaz yönetimi hizmetidir.
+* [Office 365 için MDM](https://technet.microsoft.com/library/ms.o365.cc.devicepolicy.aspx), Office 365 kuruluşunuza bağlanan mobil cihazları yönetmenize ve bunların güvenliğini sağlamanıza olanak tanır. Cihaz güvenlik ilkeleri ve erişim kuralları ayarlamak ve kaybolması veya çalınması durumunda mobil cihazları temizlemek için Office 365 için MDM kullanabilirsiniz.
 
 ## <a name="hybrid-identity-resources"></a>Karma kimlik kaynakları
-Genellikle aşağıdaki kaynakları izleyerek en son haberlere ve mobil cihaz Yönetimi çözümlerimizle ilgili güncelleştirmeleri:
+Aşağıdaki kaynakların izlenmesi genellikle mobil cihaz yönetimi çözümlerinde en son haberleri ve güncelleştirmeleri sağlar:
 
 * [Microsoft Enterprise Mobility blogu](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
-* [Microsoft ın Cloud blogu](https://blogs.technet.com/b/in_the_cloud/)
+* [Bulut blogunda Microsoft](https://blogs.technet.com/b/in_the_cloud/)
 * [Microsoft Intune blogu](https://blogs.technet.com/b/microsoftintune/)
-* [Microsoft System Center Configuration Manager blogu](https://blogs.technet.com/b/configurationmgr/)
-* [Microsoft System Center Configuration Manager ekip blogu](https://blogs.technet.com/b/configmgrteam/)
+* [Microsoft uç nokta Configuration Manager blogu](https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/bg-p/ConfigurationManagerBlog)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 [Tasarım konularına genel bakış](plan-hybrid-identity-design-considerations-overview.md)

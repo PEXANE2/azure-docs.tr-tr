@@ -1,6 +1,6 @@
 ---
 title: Azure Izleyici 'de Azure Relay ölçümleri (Önizleme) | Microsoft Docs
-description: Azure Relay izlemek için Azure Izlemeyi kullanın
+description: Bu makalede, Azure Relay durumunu izlemek için Azure Izleyici 'yi nasıl kullanabileceğiniz hakkında bilgi verilmektedir.
 services: service-bus-relay
 documentationcenter: .NET
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 9933b7857580f29cbb6a54ebc82d4e7207456ad4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5c548186ec51cf86f34942cb15d8f984afa60268
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261782"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514944"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Izleyici 'de Azure Relay ölçümleri (Önizleme)
 Azure Relay ölçümler, Azure aboneliğinizdeki kaynakların durumunu sağlar. Zengin bir ölçüm verileri kümesiyle, geçiş kaynaklarınızın genel durumunu yalnızca ad alanı düzeyinde değil, aynı zamanda varlık düzeyinde değerlendirebilirsiniz. Bu istatistikler Azure Relay durumunu izlemenize yardımcı olduklarından önemli olabilir. Ölçümler, Azure desteğine başvurun gerek kalmadan kök neden sorunlarını da yardımcı olabilir.
@@ -60,24 +60,24 @@ Azure İzleyici, tüm ölçüm değerleri dakikada gönderilir. Zaman ayrıntı 
 
 | Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-| ListenerConnections-başarılı (Önizleme) | Belirli bir süre içinde Azure Relay yapılan başarılı dinleyici bağlantısı sayısı. <br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|ListenerConnections-ClientError (Önizleme)|Belirli bir süre boyunca dinleyici bağlantılarında istemci hatalarının sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|ListenerConnections-Sunucuhatası (Önizleme)|Belirli bir süre boyunca dinleyici bağlantılarında sunucu hatalarının sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|SenderConnections-başarılı (Önizleme)|Belirli bir süre içinde yapılan başarılı gönderici bağlantısı sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|SenderConnections-ClientError (Önizleme)|Belirli bir süre boyunca gönderici bağlantılarında istemci hatalarının sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|SenderConnections-Sunucuhatası (Önizleme)|Belirli bir süre boyunca gönderici bağlantılarında sunucu hatalarının sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|ListenerConnections-TotalRequests (Önizleme)|Belirli bir süre içindeki dinleyici bağlantılarının toplam sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|SenderConnections-TotalRequests (Önizleme)|Belirli bir süre içinde göndericiler tarafından yapılan bağlantı istekleri.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|ActiveConnections (Önizleme)|Belirli bir dönemdeki etkin bağlantı sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|ActiveListeners (Önizleme)|Belirli bir dönemdeki etkin dinleyici sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|Listenerdisconnect (Önizleme)|Belirtilen bir süre içinde bağlantısı kesilen dinleyicilerinin sayısı.<br/><br/> Birim Bayt <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|Gönderenin bağlantısı kesiliyor (Önizleme)|Belirli bir süre içinde bağlantısı kesilen gönderici sayısı.<br/><br/> Birim Bayt <br/> Toplama türü: Toplam <br/> Boyut EntityName|
+| ListenerConnections-başarılı (Önizleme) | Belirli bir süre içinde Azure Relay yapılan başarılı dinleyici bağlantısı sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|ListenerConnections-ClientError (Önizleme)|Belirli bir süre boyunca dinleyici bağlantılarında istemci hatalarının sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|ListenerConnections-Sunucuhatası (Önizleme)|Belirli bir süre boyunca dinleyici bağlantılarında sunucu hatalarının sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|SenderConnections-başarılı (Önizleme)|Belirli bir süre içinde yapılan başarılı gönderici bağlantısı sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|SenderConnections-ClientError (Önizleme)|Belirli bir süre boyunca gönderici bağlantılarında istemci hatalarının sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|SenderConnections-Sunucuhatası (Önizleme)|Belirli bir süre boyunca gönderici bağlantılarında sunucu hatalarının sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|ListenerConnections-TotalRequests (Önizleme)|Belirli bir süre içindeki dinleyici bağlantılarının toplam sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|SenderConnections-TotalRequests (Önizleme)|Belirli bir süre içinde göndericiler tarafından yapılan bağlantı istekleri.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|ActiveConnections (Önizleme)|Belirli bir dönemdeki etkin bağlantı sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|ActiveListeners (Önizleme)|Belirli bir dönemdeki etkin dinleyici sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|Listenerdisconnect (Önizleme)|Belirtilen bir süre içinde bağlantısı kesilen dinleyicilerinin sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|Gönderenin bağlantısı kesiliyor (Önizleme)|Belirli bir süre içinde bağlantısı kesilen gönderici sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: toplam <br/> Boyut: EntityName|
 
 ## <a name="memory-usage-metrics"></a>Bellek kullanım ölçümleri
 
 | Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-|BytesTransferred (Önizleme)|Belirtilen bir süre içinde aktarılan bayt sayısı.<br/><br/> Birim Bayt <br/> Toplama türü: Toplam <br/> Boyut EntityName|
+|BytesTransferred (Önizleme)|Belirtilen bir süre içinde aktarılan bayt sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: toplam <br/> Boyut: EntityName|
 
 ## <a name="metrics-dimensions"></a>Ölçümleri boyutları
 

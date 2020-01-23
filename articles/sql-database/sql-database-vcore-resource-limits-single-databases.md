@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 01/09/2020
-ms.openlocfilehash: 27868f062cd628347e38b5fdb9f243347dea3e23
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.date: 01/22/2020
+ms.openlocfilehash: 267779afc749fccba41935741630a759576d6e77
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834978"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515029"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modelini kullanan tek veritabanlarına yönelik kaynak sınırları
 
@@ -181,7 +181,7 @@ SQL veritabanı sunucusundaki tek veritabanları için DTU satın alma model sı
 |Depolama türü| [1. nota](#notes) |[1. nota](#notes)|[1. nota](#notes)|[1. nota](#notes) |[1. nota](#notes) |[1. nota](#notes) |[1. nota](#notes) |
 |En fazla veri ıOPS *|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|
 |GÇ gecikmesi (yaklaşık)|[3. nota](#notes)|[3. nota](#notes)|[3. nota](#notes)|[3. nota](#notes)|[3. nota](#notes)|[3. nota](#notes)|[3. nota](#notes)|
-|Maksimum eş zamanlı çalışan (istek)|200|400|800|1600|2400|3200|8000|
+|Maksimum eş zamanlı çalışan (istek)|1600|1800|2000|2400|3200|4000|8000|
 |Maks. eş zamanlı oturum|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |İkincil çoğaltmalar|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
 |Çoklu-AZ|Yok|Yok|Yok|Yok|Yok|Yok|Yok|

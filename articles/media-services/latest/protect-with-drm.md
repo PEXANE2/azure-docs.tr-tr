@@ -1,5 +1,5 @@
 ---
-title: DRM dinamik şifreleme ve lisans teslim hizmetini kullanma
+title: DRM şifrelemesini ve lisans teslim hizmetini Azure Media Services
 titleSuffix: Azure Media Services
 description: Microsoft PlayReady, Google Widevine veya Apple FairPlay lisanslarıyla şifrelenmiş akışlar sunmak için DRM dinamik şifrelemesini ve lisans teslim hizmetini nasıl kullanacağınızı öğrenin.
 services: media-services
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 3d2dc7793c25fb20e267332beaa683f11ddcbfbb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bd5c026da27c68e249532b70629ba01afea655fe
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974079"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513074"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Öğretici: DRM dinamik şifrelemesini ve lisans teslim hizmetini kullanın
 
@@ -46,7 +46,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 > * Belirtilen akış ilkesiyle bir StreamingLocator oluşturun.
 > * Dosyanızı kayıttan yürütmek için kullanılan bir URL oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 

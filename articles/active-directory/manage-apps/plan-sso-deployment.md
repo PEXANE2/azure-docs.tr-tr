@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 733b0d7650d68bddae60cf524947590c2b689968
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 92496fa572c5c1cae4588f82ac61c18de3024045
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779373"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512836"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Çoklu oturum açma dağıtımını planlama
 
@@ -43,7 +43,7 @@ Azure Marketi, önceden tümleştirilmiş SSO bağlantıları olan 3000 uygulama
 
 ## <a name="plan-your-sso-protocol"></a>SSO protokolünü planlayın
 
-Federasyon protokollerini temel alan SSO uygulaması güvenlik, güvenilirlik ve son kullanıcı deneyimlerini geliştirir ve daha kolay uygulanır. Birçok uygulama, Azure AD 'de [adım](../saas-apps/tutorial-list.md)adım kılavuzlarla önceden tümleştirilir. Bunları [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/)'nde bulabilirsiniz. Her SSO yöntemiyle ilgili ayrıntılı bilgi, [Azure Active Directory içindeki uygulamalarda çoklu oturum açma](what-is-single-sign-on.md)makalesinde bulunabilir.
+Federasyon protokollerini temel alan SSO uygulaması güvenlik, güvenilirlik ve son kullanıcı deneyimlerini geliştirir ve daha kolay uygulanır. Birçok uygulama, Azure AD 'de [adım adım kılavuzlarla](../saas-apps/tutorial-list.md)önceden tümleştirilir. Bunları [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/)'nde bulabilirsiniz. Her SSO yöntemiyle ilgili ayrıntılı bilgi, [Azure Active Directory içindeki uygulamalarda çoklu oturum açma](what-is-single-sign-on.md)makalesinde bulunabilir.
 
 Kullanıcılarınızın uygulamalarınıza çoklu oturum açma imkanı sağlamanın iki temel yolu vardır:
 
@@ -59,10 +59,10 @@ Kullanıcılarınızın uygulamalarınıza çoklu oturum açma imkanı sağlaman
 
 ### <a name="considerations-for-password-based-sso"></a>Parola tabanlı SSO konuları
 
-Parola tabanlı SSO için Azure AD 'nin kullanılması, kimlik bilgilerini güvenli bir şekilde alacak ve oturum açma formlarını dolduran bir tarayıcı uzantısının dağıtılmasını gerektirir. Uzantıyı [desteklenen tarayıcılarla](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bir ölçekte dağıtmak için bir mekanizma tanımlayın. Şu seçenekler mevcuttur:
+Parola tabanlı SSO için Azure AD 'nin kullanılması, kimlik bilgilerini güvenli bir şekilde alacak ve oturum açma formlarını dolduran bir tarayıcı uzantısının dağıtılmasını gerektirir. Uzantıyı [desteklenen tarayıcılarla](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bir ölçekte dağıtmak için bir mekanizma tanımlayın. Seçeneklere şunlar dahildir:
 
 - [Internet Explorer için grup ilkesi](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-- [Internet Explorer için System Center Configuration Manager (SCCM)](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
+- [Internet Explorer için Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 - [Chrome, Firefox, Microsoft Edge veya IE için Kullanıcı odaklı indirme ve yapılandırma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 Daha fazla bilgi için bkz. [parola çoklu oturum açmayı yapılandırma](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
@@ -117,12 +117,12 @@ Erişim incelemelerini ayarlarken planlama için plan yapılacak bazı önemli k
 
 Azure AD, [Teknik ve iş öngörüleri içeren raporlar](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)sağlar. 
 
-Güvenlik ve etkinlik raporlarının her ikisi de mevcuttur. Güvenlik raporları, risk için işaretlenen kullanıcıları ve riskli oturum açma işlemlerini gösterir. Etkinlik raporları, oturum açma etkinliğini ayrıntılandıran ve tüm oturum açma işlemleri için denetim izleri sağlayan kuruluşunuzdaki kullanıcıların davranışını anlamanıza yardımcı olur. Riskleri yönetmek, üretkenliği artırmak ve uyumluluğu izlemek için raporları kullanabilirsiniz.
+Güvenlik ve etkinlik raporlarının her ikisi de mevcuttur. Güvenlik raporları, risk için işaretlenen kullanıcıları ve riskli oturum açma işlemlerini gösterir. etkinlik raporları, oturum açma etkinliğini ayrıntılandıran ve tüm oturum açma işlemleri için denetim izleri sağlayan kuruluşunuzdaki kullanıcıların davranışını anlamanıza yardımcı olur. Riskleri yönetmek, üretkenliği artırmak ve uyumluluğu izlemek için raporları kullanabilirsiniz.
 
 | Rapor türü | Erişim gözden geçirmesi | Güvenlik raporları | Oturum açma raporu |
 |-------------|---------------|------------------|----------------|
 | Gözden geçirmek için kullanın | Uygulama izinleri ve kullanımı. | Tehlikede riskli hesaplar | Uygulamalara erişen |
-| Olası eylemler | Denetim erişimi; izinleri iptal et | Erişimi iptal et; Güvenlik sıfırlamayı zorla | Erişimi iptal et |
+| Olası eylemler | Denetim erişimi; izinleri iptal et | Erişimi iptal et; Güvenlik sıfırlamayı zorla | seçeneğine tıklayın, |
 
 Azure AD, en fazla 30 gün boyunca denetim verilerini korur ve verileri Azure yönetim portalı üzerinden veya çözümleme sistemlerinize indirmeniz için bir API aracılığıyla kullanılabilir hale getirir.
 
@@ -142,7 +142,7 @@ Microsoft Bulut uygulama güvenliği (MCAS) oturum denetimi, herhangi bir işlet
 
 MCAS hakkında daha fazla bilgi için [Microsoft Cloud App Security genel bakış](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)bölümüne bakın. MCAS, Kullanıcı tabanlı bir abonelik hizmetidir. [MCAS lisanslama veri sayfasında](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)lisanslama ayrıntılarını gözden geçirebilirsiniz.
 
-### <a name="use-conditional-access"></a>Koşullu erişim kullan
+### <a name="use-conditional-access"></a>Koşullu Erişimi kullanma
 
 Koşullu erişimle, bulut uygulamalarınız için ölçüt tabanlı erişim denetimi kararlarını otomatik hale getirebilirsiniz.
 
@@ -182,7 +182,7 @@ Sertifikalarınızı yönetmenin iki yolu vardır.
 
 - **Test kullanıcılarınızı tanımla**
 
-   Uygulama sahibine başvurun ve uygulamanın içinde en az üç test kullanıcısı oluşturmasını isteyin. Birincil tanımlayıcı olarak kullanacağınız bilgilerin doğru doldurulduğundan ve Azure AD 'de kullanılabilen bir öznitelikle eşleştiğinden emin olun. Çoğu durumda bu, SAML tabanlı uygulamalar için "NameID" ile eşlenir. JWT belirteçleri için, "preferred_username" olur.
+   Uygulama sahibine başvurun ve uygulamanın içinde en az üç test kullanıcısı oluşturmasını isteyin. Birincil tanımlayıcı olarak kullanacağınız bilgilerin doğru doldurulduğundan ve Azure AD 'de kullanılabilen bir öznitelikle eşleştiğinden emin olun. Çoğu durumda bu, SAML tabanlı uygulamalar için "NameID" ile eşlenir. JWT belirteçleri için, "preferred_username.
    
    Kullanıcıyı Azure AD 'de bulut tabanlı bir kullanıcı olarak el ile oluşturun veya Azure AD Connect eşitleme altyapısını kullanarak kullanıcıyı Şirket içinden eşitleyin. Bilgilerin uygulamaya gönderilen taleplerle eşleştiğinden emin olun.
 
@@ -236,11 +236,11 @@ Rolü her zaman Azure Active Directory içinde gerekli görevi gerçekleştirmek
 
 | Bilgisini| Roller | Azure AD rolü (gerekirse) |
 |--------|-------|-----------------------------|
-| Yardım Masası Yöneticisi | Katman 1 desteği | None |
+| Yardım Masası Yöneticisi | Katman 1 desteği | Hiçbiri |
 | Kimlik Yöneticisi | Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama | Genel yönetici |
-| Uygulama Yöneticisi | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | None |
+| Uygulama yöneticisi | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Hiçbiri |
 | Altyapı Yöneticileri | Sertifika aktarma sahibi | Genel yönetici |
-| İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | None |
+| İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Hiçbiri |
 
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek üzere [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) kullanmanızı öneririz.
 
@@ -318,7 +318,7 @@ Aşağıdaki bağlantılar sorun giderme senaryolarını sunar. Destek personeli
 
 [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (iş ortakları ve satıcılar gibi dış kullanıcılar için)
 
-[Azure AD koşullu erişim](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+[Azure AD Koşullu Erişim](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
 
 [Azure kimlik koruması](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 

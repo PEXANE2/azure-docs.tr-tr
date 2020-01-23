@@ -1,5 +1,5 @@
 ---
-title: Azure AD Domain Services 'daki ortak uyarılar ve çözümler | Microsoft Docs '
+title: Azure AD Domain Services 'daki ortak uyarılar ve çözümler | Microsoft Docs
 description: Azure Active Directory Domain Services sistem durumunun bir parçası olarak oluşturulan yaygın uyarıların nasıl çözümleneceğini öğrenin
 services: active-directory-ds
 author: iainfoulds
@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 26ae70f9283ac7be847a59753130dd8ba8c11c18
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0bb02e6436bf9c9ebb9e54efa73aeed03ab44f3e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979899"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512673"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services Genel uyarılar ve çözümler
 
@@ -37,7 +37,7 @@ Bu hata genellikle, bir Azure aboneliği yeni bir Azure AD dizinine taşındığ
 Bu hata kurtarılamaz. Uyarıyı çözmek için, [mevcut Azure AD DS yönetilen etki alanınızı silin](delete-aadds.md) ve yeni dizininizde yeniden oluşturun. Azure AD DS yönetilen etki alanını silme konusunda sorun yaşıyorsanız, ek sorun giderme yardımı için [bir Azure destek isteği açın][azure-support] .
 
 ## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: Azure AD B2C bu dizinde çalışıyor
- 
+
 ### <a name="alert-message"></a>Uyarı iletisi
 
 *Azure AD Domain Services bir Azure AD B2C dizininde etkinleştirilemez.*
@@ -78,7 +78,7 @@ Bu uyarıyı çözmek için, mevcut Azure AD DS yönetilen etki alanınızı sil
 1. Sol taraftaki gezinmede **alt ağları** seçin.
 1. Düzenlemek istediğiniz alt ağı seçin veya ek bir alt ağ oluşturun.
 1. Özel bir IP adresi aralığı güncelleştirin veya belirtin, sonra değişikliklerinizi **kaydedin** .
-1. [Yeni bir Azure AD DS yönetilen etki alanı oluşturun](tutorial-create-instance.md). Özel bir IP adresi aralığına sahip güncelleştirilmiş bir sanal ağ alt ağı seçtiğinizden emin olun.
+1. [Yeni bir Azure AD DS yönetilen etki alanı oluşturun](tutorial-create-instance.md). Güncelleştirilmiş sanal ağ alt ağını özel bir IP adresi aralığıyla seçtiğinizden emin olun.
 
 Azure AD DS yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
 
@@ -129,7 +129,7 @@ Azure AD DS, etkin bir abonelik gerektirir ve farklı bir aboneliğe taşınamaz
 
 ### <a name="resolution"></a>Çözünürlük
 
-Azure AD DS, genel IP adresleri, NIC 'ler ve bir yük dengeleyici gibi düzgün çalışacak belirli kaynakları oluşturur. Bu kaynaklardan herhangi biri silinirse, yönetilen etki alanı desteklenmeyen bir durumda olur ve etki alanının yönetilmesini önler. Bu kaynaklarla ilgili daha fazla bilgi için bkz. [Azure AD DS tarafından kullanılan ağ kaynakları](network-considerations.md#network-resources-used-by-azure-ad-ds).
+Azure AD DS, genel IP adresleri, sanal ağ arabirimleri ve yük dengeleyici gibi düzgün çalışması için ek kaynaklar oluşturur. Bu kaynaklardan herhangi biri silinirse, yönetilen etki alanı desteklenmeyen bir durumda olur ve etki alanının yönetilmesini önler. Bu kaynaklarla ilgili daha fazla bilgi için bkz. [Azure AD DS tarafından kullanılan ağ kaynakları](network-considerations.md#network-resources-used-by-azure-ad-ds).
 
 Bu uyarı, gerekli kaynaklardan biri silindiğinde oluşturulur. Kaynak 4 saatten daha önce silinmişse, Azure platformunun silinen kaynağı otomatik olarak yeniden oluşturma olasılığı vardır. Aşağıdaki adımlarda, kaynak silme işleminin sistem durumu ve zaman damgasının nasıl kontrol yapılacağı ana hatlarıyla verilmiştir:
 
@@ -160,7 +160,7 @@ Bu hata kurtarılamaz. Uyarıyı çözmek için, [mevcut Azure AD DS yönetilen 
 
 ### <a name="resolution"></a>Çözünürlük
 
-Otomatik olarak oluşturulan bazı hizmet sorumluları, Azure AD DS yönetilen bir etki alanına yönelik kaynakları yönetmek ve oluşturmak için kullanılır. Bu hizmet sorumlularından birine yönelik erişim izinleri değiştirilirse, kaynakları doğru bir şekilde yönetemeyebilir. Aşağıdaki adımlarda, bir hizmet sorumlusu için erişim izinlerini nasıl anlayacağınızı ve daha sonra sağlayacağınızı gösterilmektedir:
+Otomatik olarak oluşturulan bazı hizmet sorumluları, Azure AD DS yönetilen bir etki alanına yönelik kaynakları yönetmek ve oluşturmak için kullanılır. Bu hizmet sorumlularından birine yönelik erişim izinleri değiştirilirse etki alanı kaynakları doğru bir şekilde yönetemez. Aşağıdaki adımlarda, bir hizmet sorumlusu için erişim izinlerini nasıl anlayacağınızı ve daha sonra sağlayacağınızı gösterilmektedir:
 
 1. [Rol tabanlı erişim denetimi ve Azure Portal uygulamalara erişim verme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)hakkında bilgi edinin.
 2. KIMLIĞI *abba844e-bc0e-44b0-947a-dc74e5d09022* olan hizmet sorumlusunun sahip olduğu erişimi gözden geçirin ve daha önceki bir tarihte reddedilen erişimi verin.
@@ -173,18 +173,18 @@ Otomatik olarak oluşturulan bazı hizmet sorumluları, Azure AD DS yönetilen b
 
 ### <a name="resolution"></a>Çözünürlük
 
-Azure AD DS için sanal ağ alt ağı, otomatik olarak oluşturulan kaynaklar için yeterli IP adresine sahip olmalıdır. Bu IP adres alanı, bir bakım olayı varsa, yerine konacak kaynakları oluşturma gereksinimini içerir. Kullanılabilir IP adreslerinin tükenme riskini en aza indirmek için, kendi VM 'leriniz gibi ek kaynakları Azure AD DS ile aynı sanal ağ alt ağına dağıtmayın.
+Azure AD DS için sanal ağ alt ağı, otomatik olarak oluşturulan kaynaklar için yeterli IP adresine ihtiyaç duyuyor. Bu IP adres alanı, bir bakım olayı varsa, yerine konacak kaynakları oluşturma gereksinimini içerir. Kullanılabilir IP adreslerinin tükenme riskini en aza indirmek için, kendi VM 'leriniz gibi ek kaynakları Azure AD DS ile aynı sanal ağ alt ağına dağıtmayın.
 
 Bu uyarıyı çözmek için, mevcut Azure AD DS yönetilen etki alanınızı silip, yeterince büyük bir IP adresi aralığına sahip bir sanal ağda yeniden oluşturun. Bu işlem, Azure AD DS yönetilen etki alanı kullanılamadığından ve OU 'Lar ya da hizmet hesapları gibi oluşturduğunuz özel kaynaklar kaybolduğu için kesintiye uğramış.
 
 1. [Azure AD DS yönetilen etki alanını](delete-aadds.md) dizininizden silin.
-1. Sanal ağ IP adresi aralığını güncelleştirmek için Azure portal *sanal ağ* araması yapın ve seçin. Küçük IP adresi aralığını Azure AD DS için sanal ağı seçin.
+1. Sanal ağ IP adresi aralığını güncelleştirmek için Azure portal *sanal ağ* araması yapın ve seçin. Küçük IP adresi aralığına sahip Azure AD DS sanal ağını seçin.
 1. **Ayarlar**altında *Adres alanı*' nı seçin.
 1. Adres aralığını, mevcut adres aralığını seçip düzenleyerek veya ek bir adres aralığı ekleyerek güncelleştirin. Yeni IP adresi aralığının Azure AD DS alt ağ aralığı için yeterince büyük olduğundan emin olun. Hazırlanıyor, değişiklikleri **kaydedin** .
 1. Sol taraftaki gezinmede **alt ağları** seçin.
 1. Düzenlemek istediğiniz alt ağı seçin veya ek bir alt ağ oluşturun.
 1. Yeterince büyük bir IP adresi aralığı güncelleştirin veya belirtin, sonra değişikliklerinizi **kaydedin** .
-1. [Yeni bir Azure AD DS yönetilen etki alanı oluşturun](tutorial-create-instance.md). Yeterli sayıda IP adresi aralığına sahip güncelleştirilmiş bir sanal ağ alt ağı seçtiğinizden emin olun.
+1. [Yeni bir Azure AD DS yönetilen etki alanı oluşturun](tutorial-create-instance.md). Güncelleştirilmiş sanal ağ alt ağını, yeterince büyük bir IP adresi aralığı ile seçtiğinizden emin olun.
 
 Azure AD DS yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
 
@@ -216,11 +216,11 @@ Bu hata kurtarılamaz. Uyarıyı çözmek için, [mevcut Azure AD DS yönetilen 
 
 ### <a name="resolution"></a>Çözünürlük
 
-Değişiklik veya silme işlemini engellemek için kaynak kilitleri, Azure kaynaklarına ve kaynak gruplarına uygulanabilir. Azure AD DS yönetilen bir hizmet olduğundan, Azure platformunun yapılandırma değişikliği yapma yeteneği olması gerekir. Azure AD DS bileşenlerinden bazılarına bir kaynak kilidi uygulanırsa, Azure platformu yönetim görevlerini gerçekleştiremez.
+Değişiklik veya silme işlemini engellemek için, kaynak kilitleri Azure kaynaklarına uygulanabilir. Azure AD DS yönetilen bir hizmet olduğundan, Azure platformunun yapılandırma değişikliği yapma yeteneği olması gerekir. Azure AD DS bileşenlerinden bazılarına bir kaynak kilidi uygulanırsa, Azure platformu yönetim görevlerini gerçekleştiremez.
 
 Azure AD DS bileşenlerinde kaynak kilitlerini denetlemek ve kaldırmak için aşağıdaki adımları izleyin:
 
-1. Kaynak grubunuzda bulunan sanal ağ, NIC veya genel IP adresi gibi Azure AD DS ağ bileşenlerinin her biri için, Azure portal işlem günlüklerini denetleyin. Bu işlem günlükleri bir işlemin neden başarısız olduğunu ve bir kaynak kilidinin uygulandığını göstermelidir.
+1. Kaynak grubunuzda bulunan sanal ağ, ağ arabirimi veya genel IP adresi gibi Azure AD DS ağ bileşenlerinin her biri için Azure portal işlem günlüklerini denetleyin. Bu işlem günlükleri bir işlemin neden başarısız olduğunu ve bir kaynak kilidinin uygulandığını göstermelidir.
 1. Bir kilidin uygulandığı kaynağı seçin ve ardından **kilitler altında kilitleri**seçin ve kilidi kaldırın.
 
 ## <a name="aadds116-resources-are-unusable"></a>AADDS116: kaynaklar kullanılamaz
@@ -231,7 +231,7 @@ Azure AD DS bileşenlerinde kaynak kilitlerini denetlemek ve kaldırmak için a�
 
 ### <a name="resolution"></a>Çözünürlük
 
-İlkeler, hangi yapılandırma eylemlerine izin verileceğini denetlemek için Azure kaynaklarına ve kaynak gruplarına uygulanır. Azure AD DS yönetilen bir hizmet olduğundan, Azure platformunun yapılandırma değişikliği yapma yeteneği olması gerekir. Azure AD DS bileşenlerinden bazılarına bir ilke uygulanırsa, Azure platformu yönetim görevlerini gerçekleştiremeyebilir.
+İlkeler, hangi yapılandırma eylemlerine izin verileceğini denetleyen Azure kaynaklarına ve kaynak gruplarına uygulanır. Azure AD DS yönetilen bir hizmet olduğundan, Azure platformunun yapılandırma değişikliği yapma yeteneği olması gerekir. Azure AD DS bileşenlerinden bazılarına bir ilke uygulanırsa, Azure platformu yönetim görevlerini gerçekleştiremeyebilir.
 
 Uygulanan ilkeleri Azure AD DS bileşenlerinde denetlemek ve güncelleştirmek için aşağıdaki adımları izleyin:
 
@@ -246,7 +246,7 @@ Uygulanan ilkeleri Azure AD DS bileşenlerinde denetlemek ve güncelleştirmek i
 
 ### <a name="resolution"></a>Çözünürlük
 
-Yönetilen etki alanının yapılandırmasındaki sorunları belirten tüm uyarılar için [Azure AD DS sistem durumunu denetleyin](check-health.md) . Ağ yapılandırması ile ilgili sorunlar Azure AD ile eşitlemeyi engelleyebilir. Bir yapılandırma sorununu belirten uyarıları çözebiliyorsanız, iki saat bekleyip eşitlemenin tamamlanıp tamamlanmadığını görmek için yeniden denetleyin.
+Yönetilen etki alanının yapılandırmasındaki sorunları belirten tüm uyarılar için [Azure AD DS sistem durumunu denetleyin](check-health.md) . Ağ yapılandırması ile ilgili sorunlar Azure AD ile eşitlemeyi engelleyebilir. Bir yapılandırma sorununu belirten uyarıları çözebiliyorsanız, iki saat bekleyip eşitlemenin başarıyla tamamlanıp tamamlanmadığını görmek için yeniden denetleyin.
 
 Aşağıdaki yaygın nedenler, eşitlemenin Azure AD DS yönetilen etki alanlarında durdurulmasına neden olur:
 
@@ -261,7 +261,7 @@ Aşağıdaki yaygın nedenler, eşitlemenin Azure AD DS yönetilen etki alanlar�
 
 ### <a name="resolution"></a>Çözünürlük
 
-Yönetilen etki alanının yapılandırmasındaki sorunları belirten tüm uyarılar için [Azure AD DS sistem durumunu denetleyin](check-health.md) . Ağ yapılandırmasındaki sorunlar, Azure platformunun yedeklemeleri başarıyla ele almayı engelleyebilir. Bir yapılandırma sorununu belirten uyarıları çözebiliyorsanız, iki saat bekleyip eşitlemenin tamamlanıp tamamlanmadığını görmek için yeniden denetleyin.
+Yönetilen etki alanının yapılandırmasındaki sorunları belirten uyarılar için [Azure AD DS sistem durumunu kontrol edin](check-health.md) . Ağ yapılandırmasındaki sorunlar, Azure platformunun yedeklemeleri başarıyla ele almayı engelleyebilir. Bir yapılandırma sorununu belirten uyarıları çözebiliyorsanız, iki saat bekleyip eşitlemenin başarıyla tamamlanıp tamamlanmadığını görmek için yeniden denetleyin.
 
 ## <a name="aadds503-suspension-due-to-disabled-subscription"></a>AADDS503: devre dışı bırakılmış abonelik nedeniyle askıya alma
 
@@ -292,7 +292,7 @@ Yönetilen etki alanı yeniden etkinleştirildiğinde, Azure AD DS yönetilen et
 > [!WARNING]
 > Azure AD DS yönetilen bir etki alanı uzun bir süre askıya alınırsa, silinmekte olan bir tehlike vardır. Askıya alma nedenini mümkün olduğunca hızlı bir şekilde çözün. Daha fazla bilgi için bkz. [Azure AD DS için askıya alınmış durumları anlama](suspension.md).
 
-Yönetilen etki alanının yapılandırmasındaki sorunları belirten tüm uyarılar için [Azure AD DS sistem durumunu denetleyin](check-health.md) . Bir yapılandırma sorununu belirten uyarıları çözebiliyorsanız, iki saat bekleyip eşitlemenin tamamlanıp tamamlanmadığını görmek için yeniden denetleyin. Hazırsa Azure AD DS yönetilen etki alanını yeniden etkinleştirmek için [bir Azure destek isteği açın][azure-support] .
+Yönetilen etki alanının yapılandırmasındaki sorunları belirten uyarılar için [Azure AD DS sistem durumunu kontrol edin](check-health.md) . Bir yapılandırma sorununu belirten uyarıları çözebiliyorsanız, iki saat bekleyip eşitlemenin tamamlanıp tamamlanmadığını görmek için yeniden denetleyin. Hazırsa Azure AD DS yönetilen etki alanını yeniden etkinleştirmek için [bir Azure destek isteği açın][azure-support] .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

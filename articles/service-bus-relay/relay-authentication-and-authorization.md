@@ -1,6 +1,6 @@
 ---
-title: Azure geçişi kimlik doğrulaması ve yetkilendirme | Microsoft Docs
-description: Azure geçişi, paylaşılan erişim imzası (SAS) kimlik doğrulamasına genel bakış
+title: Kimlik doğrulaması ve yetkilendirme Azure Relay | Microsoft Docs
+description: Bu makalede, Azure Relay hizmeti ile paylaşılan erişim Imzası (SAS) kimlik doğrulamasına ilişkin bir genel bakış sunulmaktadır.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,44 +12,44 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 206cca95c590a01f69d3664fb87398bc2fcb4ad9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aac5c973a99b13d5918a0162feb7f1ede443463b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595504"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514587"
 ---
-# <a name="azure-relay-authentication-and-authorization"></a>Azure geçişi kimlik doğrulaması ve yetkilendirme
+# <a name="azure-relay-authentication-and-authorization"></a>Azure Relay kimlik doğrulaması ve yetkilendirme
 
-Uygulamaları, Azure geçişi paylaşılan erişim imzası (SAS) kimlik doğrulamasını kullanarak kimlik doğrulaması yapabilir. SAS kimlik doğrulaması, Azure geçişi hizmetini kullanarak geçiş ad alanı üzerinde yapılandırılmış bir erişim anahtarı kimlik doğrulaması uygulamaları etkinleştirir. Ardından, istemcilerin alan geçiş hizmetine kimliğini doğrulamak için kullanabileceği bir paylaşılan erişim imzası belirtecini oluşturmak için bu anahtarı kullanabilirsiniz.
+Uygulamalar, paylaşılan erişim Imzası (SAS) kimlik doğrulaması kullanarak Azure Relay kimlik doğrulaması yapabilir. SAS kimlik doğrulaması, uygulamaların geçiş ad alanında yapılandırılmış bir erişim anahtarı kullanarak Azure Relay hizmetinde kimlik doğrulaması yapmasına olanak sağlar. Daha sonra bu anahtarı, istemcilerin geçiş hizmetinde kimlik doğrulamak için kullanabileceği bir paylaşılan erişim Imza belirteci oluşturmak için kullanabilirsiniz.
 
-## <a name="shared-access-signature-authentication"></a>Paylaşılan erişim imzası kimlik doğrulaması
+## <a name="shared-access-signature-authentication"></a>Paylaşılan erişim Imzası kimlik doğrulaması
 
-[SAS kimlik doğrulaması](../service-bus-messaging/service-bus-sas.md) Azure geçişi kaynakları belirli haklarına sahip bir kullanıcı erişim sağlar. SAS kimlik doğrulaması, bir şifreleme anahtarıyla ilişkili haklar kaynakta yapılandırılmasını içerir. İstemciler bu kaynak için Kaynak URI erişilen oluşan bir SAS belirteci sunarak erişebilir ve bir süre sonu yapılandırılmış anahtarla imzalanmış.
+[SAS kimlik doğrulaması](../service-bus-messaging/service-bus-sas.md) , kullanıcıya belirli haklara sahip Azure Relay kaynaklarına erişim izni vermenizi sağlar. SAS kimlik doğrulaması, bir kaynakta ilişkili haklara sahip bir şifreleme anahtarı yapılandırmasını içerir. İstemciler, erişilmekte olan kaynak URI 'sinden ve yapılandırılan anahtarla imzalanmış bir süre sonu olan bir SAS belirteci sunarak bu kaynağa erişim elde edebilir.
 
-Bir geçiş ad alanı üzerinde için SAS anahtarları yapılandırabilirsiniz. Service Bus Mesajlaşma, aksine [geçişi karma bağlantıları](relay-hybrid-connections-protocol.md) yetkisiz veya anonim gönderenlerin destekler. Oluşturduğunuzda, varlık için anonim erişim Portalı'ndan aşağıdaki ekran görüntüsünde gösterilen şekilde etkinleştirebilirsiniz:
+Bir geçiş ad alanında SAS için anahtarlar yapılandırabilirsiniz. Service Bus mesajından farklı olarak, [geçiş karma bağlantılar](relay-hybrid-connections-protocol.md) yetkisiz veya anonim Gönderenler destekler. Portaldan aşağıdaki ekran görüntüsünde gösterildiği gibi, oluşturduğunuzda varlık için anonim erişimi etkinleştirebilirsiniz:
 
 ![][0]
 
-SAS'ı kullanmak için yapılandırabileceğiniz bir [Rootmanagesharedaccesskey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) nesne aşağıdakilerden oluşan bir geçiş ad alanı üzerinde:
+SAS kullanmak için, aşağıdakilerden oluşan bir geçiş ad alanı üzerinde bir [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) nesnesi yapılandırabilirsiniz:
 
-* *KeyName* kural tanımlar.
-* *PrimaryKey* oturum/SAS belirteçleri doğrulamak için kullanılan bir şifreleme anahtarıdır.
-* *İkincil anahtarı oluşturma* oturum/SAS belirteçleri doğrulamak için kullanılan bir şifreleme anahtarıdır.
-* *Hakları* dinleme koleksiyonunu temsil eden, gönderin veya haklar verildi yönetin.
+* Kuralı tanımlayan *KeyName* .
+* *PrimaryKey* , SAS belirteçlerini imzalamak/doğrulamak için kullanılan bir şifreleme anahtarıdır.
+* *Secondarykey* , SAS belirteçlerini imzalamak/doğrulamak için kullanılan bir şifreleme anahtarıdır.
+* Dinleme, gönderme veya yönetme haklarının toplanmasını temsil eden *haklar* .
 
-Ad alanı düzeyinde yapılandırılan yetkilendirme kuralları, karşılık gelen anahtar kullanılarak imzalanmış belirteçleri ile tüm geçiş bağlantıları ad alanında istemciler için erişim verebilirsiniz. En fazla 12 gibi yetkilendirme kuralları, bir geçiş ad alanı üzerinde yapılandırılabilir. Varsayılan olarak, bir [Rootmanagesharedaccesskey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) ilk sağlandığında tüm haklara sahip her ad alanı için yapılandırılır.
+Ad alanı düzeyinde yapılandırılan yetkilendirme kuralları, ilgili anahtar kullanılarak imzalanmış belirteçleri olan istemciler için bir ad alanındaki tüm geçiş bağlantılarına erişim izni verebilir. Bir geçiş ad alanı üzerinde en fazla 12 tür yetkilendirme kuralı yapılandırılabilir. Varsayılan olarak, tüm haklara sahip bir [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) , ilk sağlandığı sırada her ad alanı için yapılandırılır.
 
-Bir varlık erişmek için belirli bir kullanılarak oluşturulan bir SAS belirteci istemcinin ihtiyaç duyduğu [Rootmanagesharedaccesskey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). SAS belirteci, Kaynak URI erişim talep edildikten oluşan bir kaynak dizesi ve bir süre sonu HMAC SHA256 yetkilendirme kuralıyla ilişkili bir şifreleme anahtarı kullanarak oluşturulur.
+Bir varlığa erişmek için, istemci belirli bir [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)kullanılarak oluşturulan bir SAS belirteci gerektirir. SAS belirteci, erişimi talep edilen kaynak URI 'sinden ve yetkilendirme kuralıyla ilişkili bir şifreleme anahtarıyla bir süre sonu olan bir kaynak dizesinin HMAC-SHA256 kullanılarak oluşturulur.
 
-Azure geçişi için SAS kimlik doğrulaması desteği dahil edilen Azure .NET SDK'sı sürüm 2.0 ve sonrasında mevcuttur. SAS için destek içerir bir [Rootmanagesharedaccesskey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Bir bağlantı dizesi bir parametre olarak kabul tüm API'leri SAS bağlantı dizeleri için destek içerir.
+Azure Relay için SAS kimlik doğrulama desteği, Azure .NET SDK 2,0 ve üzeri sürümlerine dahildir. SAS, [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)için destek içerir. Parametre olarak bir bağlantı dizesini kabul eden tüm API 'Ler SAS bağlantı dizeleri için destek içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Okumaya devam [paylaşılan erişim imzaları ile Service Bus kimlik doğrulaması](../service-bus-messaging/service-bus-sas.md) SAS hakkında daha fazla ayrıntı için.
-- Bkz: [Azure geçiş karma bağlantıları protokol Kılavuzu](relay-hybrid-connections-protocol.md) karma bağlantılar özelliği hakkında ayrıntılı bilgi için.
-- Service Bus Mesajlaşma hizmeti kimlik doğrulama ve yetkilendirme hakkında ilgili bilgi için bkz: [Service Bus kimlik doğrulama ve yetkilendirme](../service-bus-messaging/service-bus-authentication-and-authorization.md). 
+- SAS hakkında daha fazla bilgi için [paylaşılan erişim imzalarıyla Service Bus kimlik doğrulaması](../service-bus-messaging/service-bus-sas.md) okumaya devam edin.
+- Karma Bağlantılar özelliği hakkında ayrıntılı bilgi için [Azure Relay karma bağlantılar protokol kılavuzuna](relay-hybrid-connections-protocol.md) bakın.
+- Service Bus mesajlaşma kimlik doğrulaması ve yetkilendirmesi hakkında ilgili bilgiler için bkz. [Service Bus kimlik doğrulaması ve yetkilendirme](../service-bus-messaging/service-bus-authentication-and-authorization.md). 
 
 [0]: ./media/relay-authentication-and-authorization/hcanon.png

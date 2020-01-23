@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43e50f8787516b1877f7867419b6edfd819ad158
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 67c42de09c75b7dd6737b80071f1f6eba094b132
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746053"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512428"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD JOIN Uygulamanızı planlayın
 
@@ -129,7 +129,7 @@ Grup ilkeleri yerine bir MDM çözümü kullanıp kullanmayacağınızı öğren
 
 MDM Çözümünüz Azure AD Uygulama Galerisi aracılığıyla kullanılamıyorsa, [MDM ile Azure Active Directory tümleştirme](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm)' de özetlenen işlemden sonra ekleyebilirsiniz. 
 
-Ortak yönetim sayesinde, ilkeler MDM platformunuz aracılığıyla teslim edilirken cihazlarınızın belirli yönlerini yönetmek için SCCM 'yi kullanabilirsiniz. Microsoft Intune, SCCM ile ortak yönetime izin verebilir. Daha fazla bilgi için bkz. [Windows 10 cihazlar Için ortak yönetim](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview). Intune dışında bir MDM ürünü kullanıyorsanız, lütfen uygulanabilir ortak yönetim senaryolarında MDM sağlayıcınızla görüşün.
+Ortak yönetim sayesinde, ilkeler MDM platformunuz aracılığıyla teslim edilirken cihazlarınızın belirli yönlerini yönetmek için SCCM 'yi kullanabilirsiniz. Microsoft Intune, SCCM ile ortak yönetime izin verebilir. Windows 10 cihazları için ortak yönetim hakkında daha fazla bilgi için bkz. [ortak yönetim nedir?](https://docs.microsoft.com/configmgr/core/clients/manage/co-management-overview). Intune dışında bir MDM ürünü kullanıyorsanız, lütfen uygulanabilir ortak yönetim senaryolarında MDM sağlayıcınızla görüşün.
 
 **Öneri:** Yalnızca Azure AD 'ye katılmış cihazlar için MDM yönetimini göz önünde bulundurun.
 

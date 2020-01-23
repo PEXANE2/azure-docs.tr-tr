@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425527"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512785"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
-Azure Active Directory Domain Services (AD DS), diğer uygulamalara ve iş yüklerine kimlik doğrulama ve yönetim hizmetleri sağladığından, ağ bağlantısı önemli bir bileşendir. Uygun şekilde yapılandırılmış sanal ağ kaynakları, uygulamalar ve iş yükleri ile iletişim kuramaz ve Azure AD DS tarafından sunulan özelliklerle birlikte kullanamaz. Sanal ağınızı doğru planlamanız durumunda Azure AD DS 'nin uygulamalarınıza ve iş yüklerinize gerektiği gibi hizmeti verebildiğinizden emin olun.
+Azure Active Directory Domain Services (AD DS), diğer uygulamalara ve iş yüklerine kimlik doğrulama ve yönetim hizmetleri sağladığından, ağ bağlantısı önemli bir bileşendir. Doğru şekilde yapılandırılmış sanal ağ kaynakları, uygulamalar ve iş yükleri ile iletişim kuramaz ve Azure AD DS tarafından sunulan özelliklerle birlikte kullanamaz. Azure AD DS 'nin uygulamalarınıza ve iş yüklerinize gerektiği şekilde ulaşacağına emin olmak için sanal ağ gereksinimlerinizi planlayın.
 
-Bu makalede, Azure AD DS 'yi destekleyen bir Azure sanal ağı için tasarım konuları ve gereksinimleri özetlenmektedir.
+Bu makalede, Azure AD DS 'yi destekleyecek bir Azure sanal ağının tasarım konuları ve gereksinimleri özetlenmektedir.
 
 ## <a name="azure-virtual-network-design"></a>Azure sanal ağ tasarımı
 
@@ -33,7 +33,7 @@ Azure AD DS sanal ağını tasarlarken aşağıdaki noktalar geçerlidir:
 * Azure AD DS, sanal ağınızla aynı Azure bölgesine dağıtılmalıdır.
     * Şu anda Azure AD kiracısı başına yalnızca bir Azure AD DS yönetilen etki alanı dağıtabilirsiniz. Azure AD DS yönetilen etki alanı tek bir bölgeye dağıtılır. [Azure AD DS destekleyen bir bölgede](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all)bir sanal ağ oluşturun veya seçtiğinizden emin olun.
 * Diğer Azure bölgelerinin ve uygulama iş yüklerinizi barındıran sanal ağların yakınlığını göz önünde bulundurun.
-    * Gecikme süresini en aza indirmek için, çekirdek uygulamalarınızı Azure AD DS yönetilen etki alanınız için sanal ağ alt ağı ile aynı bölgede veya ' a yakın tutun. Azure sanal ağları arasında sanal ağ eşlemesi veya sanal özel ağ (VPN) bağlantıları kullanabilirsiniz.
+    * Gecikme süresini en aza indirmek için, çekirdek uygulamalarınızı Azure AD DS yönetilen etki alanınız için sanal ağ alt ağı ile aynı bölgede veya ' a yakın tutun. Azure sanal ağları arasında sanal ağ eşlemesi veya sanal özel ağ (VPN) bağlantıları kullanabilirsiniz. Bu bağlantı seçenekleri aşağıdaki bölümde ele alınmıştır.
 * Sanal ağ, Azure AD DS tarafından sağlananlardan farklı DNS hizmetlerinden yararlanmaz.
     * Azure AD DS kendi DNS hizmetini sağlar. Sanal ağın bu DNS hizmeti adreslerini kullanacak şekilde yapılandırılması gerekir. Ek ad alanları için ad çözümlemesi, koşullu ileticiler kullanılarak gerçekleştirilebilir.
     * Diğer DNS sunucularından gelen sorguları VM 'Ler dahil olmak üzere yönlendirmek için özel DNS sunucusu ayarlarını kullanamazsınız. Sanal ağdaki kaynakların Azure AD DS tarafından sunulan DNS hizmetini kullanması gerekir.
@@ -70,7 +70,7 @@ Sanal ağ eşlemesi, Azure omurga ağı aracılığıyla aynı bölgedeki iki sa
 
 Daha fazla bilgi için bkz. [Azure sanal ağ eşlemesi genel bakış](../virtual-network/virtual-network-peering-overview.md).
 
-### <a name="virtual-private-networking"></a>Sanal özel ağ
+### <a name="virtual-private-networking-vpn"></a>Sanal özel ağ (VPN)
 
 Bir sanal ağı başka bir sanal ağa (VNet-VNet), bir sanal ağı şirket içi site konumuna yapılandırabileceğiniz şekilde bağlayabilirsiniz. Her iki bağlantı da IPSec/ıKE kullanarak güvenli bir tünel oluşturmak için bir VPN ağ geçidi kullanır. Bu bağlantı modeli Azure AD DS Azure sanal ağına dağıtmanıza ve ardından Şirket içi konumlara veya diğer bulutlara bağlanmanızı sağlar.
 
@@ -91,8 +91,8 @@ Azure AD DS yönetilen bir etki alanı, dağıtım sırasında bazı ağ kaynakl
 | Azure kaynağı                          | Açıklama |
 |:----------------------------------------|:---|
 | Ağ arabirim kartı                  | Azure AD DS, Windows Server 'da Azure sanal makineleri olarak çalışan iki etki alanı denetleyicisinde (DC) yönetilen etki alanını barındırır. Her VM 'nin sanal ağ alt ağınıza bağlanan bir sanal ağ arabirimi vardır. |
-| Dinamik standart genel IP adresi         | Azure AD DS, standart SKU genel IP adresini kullanarak eşitleme ve yönetim hizmetiyle iletişim kurar. Genel IP adresleri hakkında daha fazla bilgi için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
-| Azure Standart yük dengeleyici               | Azure AD DS, ağ adresi çevirisi (NAT) ve Yük Dengeleme (Güvenli LDAP ile kullanıldığında) için standart bir SKU yük dengeleyici kullanır. Azure yük dengeleyiciler hakkında daha fazla bilgi için bkz. [Azure Load Balancer nedir?](../load-balancer/load-balancer-overview.md) |
+| Dinamik standart genel IP adresi      | Azure AD DS, standart SKU genel IP adresini kullanarak eşitleme ve yönetim hizmetiyle iletişim kurar. Genel IP adresleri hakkında daha fazla bilgi için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
+| Azure Standart yük dengeleyici            | Azure AD DS, ağ adresi çevirisi (NAT) ve Yük Dengeleme (Güvenli LDAP ile kullanıldığında) için standart bir SKU yük dengeleyici kullanır. Azure yük dengeleyiciler hakkında daha fazla bilgi için bkz. [Azure Load Balancer nedir?](../load-balancer/load-balancer-overview.md) |
 | Ağ adresi çevirisi (NAT) kuralları | Azure AD DS, yük dengeleyici üzerinde üç NAT kuralı oluşturup, güvenli HTTP trafiği için bir kural ve güvenli PowerShell uzaktan iletişim için iki kural kullanır. |
 | Yük dengeleyici kuralları                     | Azure AD DS yönetilen etki alanı, TCP bağlantı noktası 636 üzerinde güvenli LDAP için yapılandırıldığında, trafiği dağıtmak için bir yük dengeleyicide üç kural oluşturulur ve kullanılır. |
 
@@ -160,7 +160,3 @@ Azure AD DS tarafından kullanılan bazı ağ kaynakları ve bağlantı seçenek
 * [Azure sanal ağ eşlemesi](../virtual-network/virtual-network-peering-overview.md)
 * [Azure VPN ağ geçitleri](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
 * [Azure ağ güvenlik grupları](../virtual-network/security-overview.md)
-
-<!-- INTERNAL LINKS -->
-
-<!-- EXTERNAL LINKS -->

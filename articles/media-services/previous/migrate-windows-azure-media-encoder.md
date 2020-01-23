@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 068b8b0a6e248caa70a8f88ea55d07c30a9437f0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997175"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513210"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Windows Azure Medya Kodlayıcısı 'ndan Media Encoder Standard 'e geçiş
 
-Bu makalede, 31 Mart 2020 ' de kullanımdan kaldırılan eski Windows Azure Media Encoder (WAME) medya işlemcisinden Media Encoder Standard medya işlemcisine geçiş adımları ele alınmaktadır.
+Bu makalede, eski Windows Azure Medya Kodlayıcısı (WAME) medya işlemcisinden (Kullanımdan kaldırılmış olan) Media Encoder Standard medya işlemcisine geçiş adımları ele alınmaktadır. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın.
 
 Dosyaları WAME ile kodlarken müşteriler genellikle `H264 Adaptive Bitrate MP4 Set 1080p`gibi adlandırılmış bir ön ayar dizesi kullanıyordu. Geçiş yapmak için, kodunuzun WAME yerine **Media Encoder Standard** medya işlemcisini kullanacak şekilde güncelleştirilmesi ve `H264 Multiple Bitrate 1080p`gibi eşdeğer [sistem önayarlarından](media-services-mes-presets-overview.md) biri olması gerekir. 
 

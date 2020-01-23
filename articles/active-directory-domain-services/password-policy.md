@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 10/08/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f462a3743eb33bd33e2d392eba1c5944f40ade4f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08c3854ef330081b4c55331cb410c5925f00dec
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704520"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512768"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri
 
@@ -65,7 +65,7 @@ Bu varsayılan ayarlarla, 2 dakika içinde beş geçersiz parola kullanılırsa,
 
 Hesap kilitleme işlemleri yalnızca yönetilen etki alanı içinde oluşur. Kullanıcı hesapları yalnızca Azure AD DS ve yönetilen etki alanına karşı başarısız oturum açma girişimleri nedeniyle kilitlidir. Azure AD 'den veya şirket içinde eşitlenmiş Kullanıcı hesapları, kaynak dizinlerinde yalnızca Azure AD DS kilitli değildir.
 
-90 günden büyük bir maksimum parola yaşı belirten bir Azure AD parola ilkeniz varsa, bu parola yaşı Azure AD DS varsayılan ilkesine uygulanır. Azure AD DS 'de farklı bir maksimum parola yaşı tanımlamak için özel bir parola ilkesi yapılandırabilirsiniz. Azure AD 'de bir Azure AD DS parola ilkesinde yapılandırılmış en kısa bir parola yaşı varsa, Azure AD 'den veya şirket içi bir AD DS ortamından bir dikkatli olmanız gerekir. Bu senaryoda, şirket içi AD DS ortamında Azure AD 'de değiştirilmesi istenmeden önce, bir kullanıcının parolasının kullanım süreleri Azure AD DS olabilir.
+90 günden büyük bir maksimum parola yaşı belirten bir Azure AD parola ilkeniz varsa, bu parola yaşı Azure AD DS varsayılan ilkesine uygulanır. Azure AD DS 'de farklı bir maksimum parola yaşı tanımlamak için özel bir parola ilkesi yapılandırabilirsiniz. Azure AD 'de bir Azure AD DS parola ilkesinde yapılandırılmış en kısa bir parola yaşı varsa, Azure AD 'den veya şirket içi bir AD DS ortamından bir dikkatli olmanız gerekir. Bu senaryoda, Azure AD 'de veya şirket içi AD DS ortamında değiştirilmesi istenmeden önce kullanıcının parolasının AD DS kullanım süreleri dolacak.
 
 Azure AD DS yönetilen bir etki alanında el ile oluşturulan kullanıcı hesapları için, varsayılan ilkeden aşağıdaki ek parola ayarları da uygulanır. Bu ayarlar, Azure AD 'den eşitlenen Kullanıcı hesaplarına uygulanmaz, çünkü bir Kullanıcı, parolasını doğrudan Azure AD DS 'de güncelleştiremez.
 
@@ -103,12 +103,12 @@ Azure 'da uygulama oluşturup çalıştırdığınızda, özel bir parola ilkesi
 1. Diğer parola ilkesi ayarlarını istediğiniz gibi düzenleyin. Aşağıdaki anahtar noktalarını unutmayın:
 
     * Parola karmaşıklığı, yaşı veya sona erme zamanı gibi ayarlar yalnızca Azure AD DS yönetilen bir etki alanında el ile oluşturulan kullanıcılara.
-    * Hesap kilitleme ayarları tüm kullanıcılar için geçerlidir, ancak yalnızca yönetilen etki alanı içinde etkili olur.
+    * Hesap kilitleme ayarları tüm kullanıcılar için geçerlidir, ancak Azure AD 'de değil yalnızca yönetilen etki alanı içinde etkili olur.
 
     ![Özel bir hassas parola ilkesi oluşturma](./media/how-to/custom-fgpp.png)
 
 1. **Yanlışlıkla silinmeye karşı koru**seçeneğinin işaretini kaldırın. Bu seçenek işaretliyse, FGPP 'yi kaydedemezsiniz.
-1. **Doğrudan Için geçerli** bölümünde, **Ekle** düğmesini seçin. **Kullanıcıları veya grupları seç** Iletişim kutusunda **konumlar** düğmesine tıklayın.
+1. **Doğrudan Için geçerli** bölümünde, **Ekle** düğmesini seçin. **Kullanıcıları veya grupları seç** Iletişim kutusunda **konumlar** düğmesini seçin.
 
     ![Parola ilkesinin uygulanacağı kullanıcıları ve grupları seçin](./media/how-to/fgpp-applies-to.png)
 

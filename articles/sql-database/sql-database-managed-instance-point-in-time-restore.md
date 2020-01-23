@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9ed694ec524c4e3e033c3139735e8e079141ec4a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707660"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515131"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Yönetilen bir örnekteki SQL veritabanını önceki zaman noktasına geri yükleme
 
@@ -48,9 +48,9 @@ Aşağıdaki tabloda, yönetilen örnekler için zaman içinde geri yükleme sen
 
 |           |Mevcut VERITABANıNı aynı yönetilen örneğe geri yükle| Varolan VERITABANıNı başka bir yönetilen örneğe geri yükleme|Bırakılan VERITABANıNı aynı yönetilen örneğe geri yükle|Bırakılan VERITABANıNı başka bir yönetilen örneğe geri yükleme|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure portalda**| Yes|Hayır |Hayır|Hayır|
-|**Azure CLI**|Yes |Yes |Hayır|Hayır|
-|**PowerShell**| Yes|Yes |Yes|Yes|
+|**Azure Portal**| Evet|Hayır |Hayır|Hayır|
+|**Azure CLI**|Evet |Evet |Hayır|Hayır|
+|**PowerShell**| Evet|Evet |Evet|Evet|
 
 ## <a name="restore-an-existing-database"></a>Var olan bir veritabanını geri yükleme
 
@@ -136,7 +136,7 @@ Kullanılabilir parametrelerin ayrıntılı bir açıklaması için bkz. [yönet
 
 ## <a name="restore-a-deleted-database"></a>Silinen veritabanını geri yükleme
 
-Silinen bir veritabanının geri yüklenmesi, yalnızca PowerShell kullanılarak yapılabilir. Veritabanı aynı örneğe veya başka bir örneğe geri yüklenebilir.
+Silinen bir veritabanının geri yüklenmesi, PowerShell veya Azure portalı kullanılarak yapılabilir. bunu [Azure portalında](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#managed-instance-database-1)yapmak için lütfen bu belgeyi kullanın. Veritabanı aynı örneğe veya başka bir örneğe geri yüklenebilir.
 
 Silinen bir veritabanını PowerShell kullanarak geri yüklemek için aşağıdaki komutta parametre değerlerini belirtin. Ardından şu komutu çalıştırın:
 
@@ -195,7 +195,7 @@ Yönetilen örnekteki veritabanınıza bağlanmak için aşağıdaki yöntemlerd
 
 - [Bir Azure sanal makinesi aracılığıyla SSMS/Azure Data Studio](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
 - [Noktadan siteye](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Ortak uç nokta](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Genel bir uç nokta](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -237,7 +237,7 @@ Yönetilen örnekteki veritabanınıza bağlanmak için aşağıdaki yöntemlerd
 
 - [Azure sanal makinesi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
 - [Noktadan siteye](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Ortak uç nokta](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Genel bir uç nokta](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

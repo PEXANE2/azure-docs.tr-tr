@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: b8cf7992617b7263b86fd98e5def8be1d43ca68c
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293377"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514564"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği nedir?
 
@@ -72,7 +72,7 @@ Yönetilen örneklerin temel özellikleri aşağıdaki tabloda gösterilmiştir:
 
 ## <a name="vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modeli
 
-Yönetilen örnekler için [sanal çekirdek tabanlı satın alma modeli](sql-database-service-tiers-vcore.md) , şirket içi iş yükü gereksinimlerini buluta çevirebilmeniz için esneklik, denetim, saydamlık ve kolay bir yol sağlar. Bu model, iş yükü gereksinimlerinize göre işlem, bellek ve depolamayı değiştirmenize olanak sağlar. VCore modeli, [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)yüzde 30 ' a kadar tasarruf için de uygundur.
+Yönetilen örnekler için [sanal çekirdek tabanlı satın alma modeli](sql-database-service-tiers-vcore.md) , şirket içi iş yükü gereksinimlerini buluta çevirebilmeniz için esneklik, denetim, saydamlık ve kolay bir yol sağlar. Bu model, iş yükü gereksinimlerinize göre işlem, bellek ve depolamayı değiştirmenize olanak sağlar. VCore modeli, [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)yüzde 55 tasarruf için de uygundur.
 
 Sanal çekirdek modelinde, donanım nesilleri arasından seçim yapabilirsiniz.
 

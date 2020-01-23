@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 16892ec729f56f8c8e1713379285e07fbc0dd4d1
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: a078f1dc7d7aa3727f3f057f284c2ea5da923e07
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495434"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514859"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware’den Azure’a çoğaltmayla ilgili sık sorulan sorular
 
@@ -101,7 +101,7 @@ Yükleyiciler yapılandırma sunucusundaki%ProgramData%\asr\home\svsystems\push�
 
 - [Gönderim yükleme](vmware-physical-mobility-service-overview.md#push-installation)
 - Kullanıcı arabiriminden veya PowerShell 'ten [el ile yükleme](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui)
-- [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) gibi bir dağıtım aracı kullanarak dağıtım
+- [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) gibi bir dağıtım aracı kullanarak dağıtım
 
 ## <a name="managed-disks"></a>Yönetilen Diskler
 

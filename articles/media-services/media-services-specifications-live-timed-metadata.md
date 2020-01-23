@@ -1,5 +1,5 @@
 ---
-title: Canlı akış 'da zamanlanmış meta verileri Azure Media Services sinyali alma | Microsoft Docs
+title: Canlı akış 'da zamanlanmış meta verileri Azure Media Services sinyali verme
 description: Bu belirtim, Azure Media Services alırken ve akışa alma sırasında zamanlı meta verileri sinyal almaya yönelik yöntemleri özetler. Bu, genel zamanlı olmayan meta veri sinyalleri (ıD3) desteğinin yanı sıra ad ekleme ve splice Condition sinyali için de SCTE-35 sinyali içerir.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: fd8533ff310e307604e5ce25a4285cc90f3ea4ab
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: e686328464ac88abf28a0a8985d338838abca3d0
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933997"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514247"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Canlı akışta zamanlanmış meta verileri sinyal alma 
 
@@ -46,7 +46,7 @@ Bu belirtim, canlı akış sinyalleri içindeki zaman aşımına uğramış meta
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Ad kesmesi            | Bir veya daha fazla reklamın teslim edilmek üzere zamanlanabileceği bir konum veya zaman noktası; kullanılabilir ve yerleştirme fırsatına benzer.                                                                                                                     |
 | Ad karar hizmeti | kullanıcıya hangi ad (ler) ve süreler gösterildiğine karar veren dış hizmet. Hizmetler genellikle bir iş ortağı tarafından sağlanır ve bu belgenin kapsamı dışındadır.                                                                    |
-| 'Yu                 | Yaklaşan ad kesmenin zaman ve parametrelerinin göstergesi. İpuçlarının bir ad kesmesi için bekleyen bir anahtarı belirtebileceğini, bir ad kesmesi içindeki bir sonraki ad için bekleyen geçiş ve bir ad sonundan Ana içeriğe bekleyen bir geçiş olduğunu unutmayın.           |
+| 'yu                 | Yaklaşan ad kesmenin zaman ve parametrelerinin göstergesi. İpuçlarının bir ad kesmesi için bekleyen bir anahtarı belirtebileceğini, bir ad kesmesi içindeki bir sonraki ad için bekleyen geçiş ve bir ad sonundan Ana içeriğe bekleyen bir geçiş olduğunu unutmayın.           |
 | Paketleyici            | "Akış uç noktası" Azure Media Services, DASH ve HLS için dinamik paketleme özellikleri sağlar ve medya sektöründe "paketleyicisi" olarak adlandırılır.                                                                              |
 | Sunum süresi   | Bir olaya bir görüntüleyiciye sunulan zaman. Bu süre, medya zaman çizelgesinde bir izleyicinin olayı göreceği süreyi temsil eder. Örneğin, bir SCTE-35 splice_info () komut iletisinin sunum süresi splice_time (). |
 | Varış saati        | Bir olay iletisinin ulaştığı zaman. Olay iletileri etkinliğin sunum zamanından önce gönderildiğinden, saat genellikle olayın sunum zamanından farklıdır.                                                    |

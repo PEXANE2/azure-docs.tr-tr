@@ -1,6 +1,6 @@
 ---
-title: Azure geçişi düğüm API'leri genel bakış | Microsoft Docs
-description: Geçiş düğüm API'sine genel bakış
+title: Azure Relay node API 'Lerine genel bakış | Microsoft Docs
+description: Bu makalede, Azure Relay hizmeti için Node. js API 'sine genel bakış sunulmaktadır. Ayrıca HYCO-WS düğüm paketinin nasıl kullanılacağını gösterir.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,32 +12,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 794e797e504d6064c13ffe0a4ed131e668d86e97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877284c419da4999e23490fc986e5da44e5d92e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699386"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514519"
 ---
-# <a name="relay-hybrid-connections-node-api-overview"></a>Geçiş karma bağlantıları düğümünü API'sine genel bakış
+# <a name="relay-hybrid-connections-node-api-overview"></a>Geçiş Karma Bağlantılar node API 'sine genel bakış
 
 ## <a name="overview"></a>Genel Bakış
 
-[ `hyco-ws` ](https://www.npmjs.com/package/hyco-ws) Azure geçiş karma bağlantıları için düğüm paketi üzerine kurulmuştur ve genişleten ['ws'](https://www.npmjs.com/package/ws) NPM paketi. Bu paket, temel paketin tüm aktarmaları yeniden dışarı aktarır ve Azure geçişi hizmeti karma bağlantılar özelliği ile tümleştirme sağlayan yeni dışarı aktarma ekler. 
+Azure Relay Karma Bağlantılar için [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) düğüm paketi üzerine kurulmuştur ve [' ws '](https://www.npmjs.com/package/ws) NPM paketini genişletiyor. Bu paket, bu temel paketin tüm dışarı aktarmaları yeniden dışa aktarır ve Azure Relay hizmeti Karma Bağlantılar özelliğiyle tümleştirmeyi sağlayan yeni dışarı aktarmalar ekler. 
 
-Mevcut uygulamaları, `require('ws')` bu paketle birlikte kullanabileceğiniz `require('hyco-ws')` bunun yerine, ayrıca sağlayan, bir uygulama dinler WebSocket bağlantılarını "içinde"güvenlik duvarının ve karma bağlantılar aracılığıyla yerel olarak hepsi karma senaryoları aynı anda.
+`require('ws')` olan mevcut uygulamalar bu paketi bunun yerine `require('hyco-ws')` kullanabilir ve bu da bir uygulamanın WebSocket bağlantılarını "güvenlik duvarının içinde" ve Karma Bağlantılar aracılığıyla aynı anda bir kez kullanmasını sağlayan hibrit senaryolarına de izin verebilir.
   
 ## <a name="documentation"></a>Belgeler
 
-API'leri [ana 'ws' paketinde belgelenen](https://github.com/websockets/ws/blob/master/doc/ws.md). Bu makalede, bu paket, taban çizgisinden farkı açıklar. 
+API 'Ler [Ana ' ws ' paketinde belgelenmiştir](https://github.com/websockets/ws/blob/master/doc/ws.md). Bu makalede bu paketin Bu taban çizgisinden nasıl farklı olduğu açıklanır. 
 
-Temel paket ve bu 'hyco-ws' arasındaki temel farklılıklar olduğundan aracılığıyla dışarı aktarılan yeni bir sunucu sınıfı ekler `require('hyco-ws').RelayedServer`ve birkaç yardımcı yöntemler.
+Temel paket ile bu ' HYCO-ws ' arasındaki temel farklılıklar, `require('hyco-ws').RelayedServer`ve birkaç yardımcı yöntem aracılığıyla dışarıya eklenen yeni bir sunucu sınıfı eklemedir.
 
-### <a name="package-helper-methods"></a>Paket yardımcı yöntemler
+### <a name="package-helper-methods"></a>Paket Yardımcısı yöntemleri
 
-Şu şekilde başvurabileceğiniz paketi verme sırasında bazı yardımcı program yöntemleri vardır:
+Paket dışarı aktarmasına aşağıdaki şekilde başvurulacağını sağlayan birkaç yardımcı program yöntemi vardır:
 
 ```JavaScript
 const WebSocket = require('hyco-ws');
@@ -48,7 +48,7 @@ listenUri = WebSocket.appendRelayToken(listenUri, 'ruleName', '...key...')
 
 ```
 
-Yardımcı yöntemler Bu pakette kullanılmak içindir, ancak dinleyicileri veya Gönderenler oluşturmak web veya cihaz istemcileri etkinleştirmek için bir düğümü sunucu tarafından da kullanılabilir. Sunucu ekleme belirteçleri kısa süreli bir URI'leri geçirerek bu yöntemleri kullanır. Bu bir URI'leri ayarı HTTP üstbilgileri için WebSocket el sıkışması desteklemez ortak WebSocket yığınları ile de kullanılabilir. URI yetkilendirme belirteçleri ekleme, öncelikle bu kitaplığı dış kullanım senaryoları için desteklenir. 
+Yardımcı yöntemler bu paketle kullanım içindir, ancak Web veya cihaz istemcilerinin dinleyici veya gönderici oluşturmalarına olanak tanımak için bir düğüm sunucusu tarafından da kullanılabilir. Sunucu, kısa süreli belirteçleri katıştırayan URI 'Leri geçirerek bu yöntemleri kullanır. Bu URI 'Ler Ayrıca WebSocket el sıkışması için HTTP üstbilgileri ayarlamayı desteklemeyen ortak WebSocket yığınları ile birlikte kullanılabilir. Birincil olarak bu kitaplık dış kullanım senaryolarında yetkilendirme belirteçlerini URI 'ye katıştırma desteklenir. 
 
 #### <a name="createrelaylistenuri"></a>createRelayListenUri
 
@@ -56,14 +56,14 @@ Yardımcı yöntemler Bu pakette kullanılmak içindir, ancak dinleyicileri veya
 var uri = createRelayListenUri([namespaceName], [path], [[token]], [[id]])
 ```
 
-Verilen ad ve yol için geçerli bir Azure geçişi karma bağlantı dinleyicisi URI oluşturur. Bu URI, WebSocketServer sınıfı geçiş sürümü ile kullanılabilir.
+Verilen ad alanı ve yol için geçerli bir Azure Relay karma bağlantı dinleyicisi URI 'SI oluşturur. Bu URI daha sonra WebSocketServer sınıfının geçiş sürümüyle birlikte kullanılabilir.
 
-- `namespaceName` (gerekli) - etki alanı adını kullanmak için Azure geçiş ad alanı.
-- `path` (gerekli) - bu ad alanında mevcut bir Azure geçişi karma bağlantı adı.
-- `token` (isteğe bağlı) - daha önce verilmiş bir geçiş erişim belirtecini dinleyicisi URI katıştırılmış (aşağıdaki örneğe bakın).
-- `id` (isteğe bağlı) - isteklerin uçtan uca Tanılama izleme sağlayan bir izleme tanımlayıcısı.
+- `namespaceName` (gerekli)-kullanılacak Azure Relay ad alanının etki alanı nitelikli adı.
+- `path` (gerekli)-Bu ad alanındaki mevcut bir Azure Relay hibrit bağlantısının adı.
+- `token` (isteğe bağlı)-önceden verilen bir geçiş erişim belirteci, dinleyici URI 'sine katıştırılır (aşağıdaki örneğe bakın).
+- `id` (isteğe bağlı)-isteklerin uçtan uca tanılama izlemesini sağlayan bir izleme tanımlayıcısı.
 
-`token` Değer isteğe bağlıdır ve yalnızca W3C WebSocket yığın ile olduğu gibi WebSocket el sıkışması yanı sıra HTTP üst bilgileri gönderme mümkün olmadığında kullanılmalıdır.                  
+`token` değer isteğe bağlıdır ve yalnızca, W3C WebSocket yığınında olduğu gibi WebSocket el sıkışması ile HTTP üstbilgileri gönderilmesi mümkün olmadığında kullanılmalıdır.                  
 
 
 #### <a name="createrelaysenduri"></a>createRelaySendUri
@@ -72,14 +72,14 @@ Verilen ad ve yol için geçerli bir Azure geçişi karma bağlantı dinleyicisi
 var uri = createRelaySendUri([namespaceName], [path], [[token]], [[id]])
 ```
 
-Verilen ad ve yol için geçerli bir Azure geçişi karma bağlantı gönderme URI oluşturur. Bu URI, herhangi bir WebSocket istemcisi ile kullanılabilir.
+Verilen ad alanı ve yol için geçerli Azure Relay karma bağlantı URI 'SI oluşturur. Bu URI, herhangi bir WebSocket istemcisiyle birlikte kullanılabilir.
 
-- `namespaceName` (gerekli) - etki alanı adını kullanmak için Azure geçiş ad alanı.
-- `path` (gerekli) - bu ad alanında mevcut bir Azure geçişi karma bağlantı adı.
-- `token` (isteğe bağlı) - daha önce verilmiş bir geçiş erişim belirtecini gönderme URI katıştırılmış (aşağıdaki örneğe bakın).
-- `id` (isteğe bağlı) - isteklerin uçtan uca Tanılama izleme sağlayan bir izleme tanımlayıcısı.
+- `namespaceName` (gerekli)-kullanılacak Azure Relay ad alanının etki alanı nitelikli adı.
+- `path` (gerekli)-Bu ad alanındaki mevcut bir Azure Relay hibrit bağlantısının adı.
+- `token` (isteğe bağlı)-önceden verilen bir geçiş erişim belirteci gönderme URI 'sine katıştırılır (aşağıdaki örneğe bakın).
+- `id` (isteğe bağlı)-isteklerin uçtan uca tanılama izlemesini sağlayan bir izleme tanımlayıcısı.
 
-`token` Değer isteğe bağlıdır ve yalnızca W3C WebSocket yığın ile olduğu gibi WebSocket el sıkışması yanı sıra HTTP üst bilgileri gönderme mümkün olmadığında kullanılmalıdır.                   
+`token` değer isteğe bağlıdır ve yalnızca, W3C WebSocket yığınında olduğu gibi WebSocket el sıkışması ile HTTP üstbilgileri gönderilmesi mümkün olmadığında kullanılmalıdır.                   
 
 
 #### <a name="createrelaytoken"></a>createRelayToken 
@@ -88,14 +88,14 @@ Verilen ad ve yol için geçerli bir Azure geçişi karma bağlantı gönderme U
 var token = createRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 ```
 
-Bir belirli hedef URI için Azure geçişi paylaşılan erişim imzası (SAS) belirteci, SAS kuralı ve süre sonu bağımsız değişken yoksayılırsa geçerli anlık bir saat veya belirtilen sayıda saniye için geçerli olan SAS kural anahtarı oluşturur.
+Verilen hedef URI, SAS kuralı ve SAS kural anahtarı için, süre sonu bağımsız değişkeni atlanırsa belirtilen saniye veya geçerli hızlı bir saat için geçerli olan bir Azure Relay paylaşılan erişim Imzası (SAS) belirteci oluşturur.
 
-- `uri` (gerekli) - belirteç kesilecek olduğu URI. URI HTTP düzeni kullanılacak normalleştirilir ve sorgu dize bilgilerini çıkartılır.
-- `ruleName` (gerekli) - SAS adı verilen URI tarafından temsil edilen varlık için ya da URI ana bilgisayar bölümü tarafından temsil edilen ad alanı için kural.
-- `key` (gerekli) - SAS kural için geçerli anahtar. 
-- `expirationSeconds` (isteğe bağlı) - oluşturulan belirtecin süresi dolarsa kadar saniye sayısı. Belirtilmezse 1 saat (3600) varsayılandır.
+- `uri` (gerekli)-belirtecin verildiği URI. URI, HTTP şemasını kullanmak için normalleştirilir ve sorgu dizesi bilgileri çıkarılır.
+- `ruleName` (gerekli)-belirtilen URI tarafından temsil edilen varlık ya da URI konak bölümü tarafından temsil edilen ad alanı için SAS kural adı.
+- `key` (zorunlu)-SAS kuralı için geçerli anahtar. 
+- `expirationSeconds` (isteğe bağlı)-oluşturulan belirtecin süresi dolmadan önce geçmesi gereken saniye sayısı. Belirtilmemişse, varsayılan değer 1 saattir (3600).
 
-Belirli bir süre için belirtilen SAS kuralla ilişkili hakları verilen belirteç confers.
+Verilen belirteç verilen süre için belirtilen SAS kuralıyla ilişkili hakları bir şekilde çözün.
 
 #### <a name="appendrelaytoken"></a>appendRelayToken
 
@@ -103,15 +103,15 @@ Belirli bir süre için belirtilen SAS kuralla ilişkili hakları verilen belirt
 var uri = appendRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 ```
 
-Bu yöntem işlevsel olarak eşdeğerdir `createRelayToken` yöntemi daha önce ancak doğru giriş URI'si eklenen belirteç döndürür.
+Bu yöntem, daha önce belgelenen `createRelayToken` metoduna işlevsel olarak eşdeğerdir, ancak giriş URI 'sine doğru bir şekilde eklenmiş olan belirteci döndürür.
 
-### <a name="class-wsrelayedserver"></a>Sınıf ws. RelayedServer
+### <a name="class-wsrelayedserver"></a>Sınıf WS. RelayedServer
 
-`hycows.RelayedServer` Sınıftır alternatif `ws.Server` yerel ağ, ancak Azure geçişi hizmetine dinleme temsilciler dinlemez sınıfı.
+`hycows.RelayedServer` sınıfı, yerel ağ üzerinde dinlemede olmayan, ancak Azure Relay hizmetine dinleme yapan `ws.Server` sınıfına bir alternatiftir.
 
-Çoğunlukla kullanarak mevcut bir uygulamaya güncelleştirmeyeceği uyumlu sözleşme iki sınıflardır `ws.Server` sınıfı kolayca değiştirilebilir geçişli sürümünü kullanmak için. Oluşturucu ve kullanılabilir seçenekler temel farklılıklar şunlardır.
+İki sınıf çoğunlukla, `ws.Server` sınıfını kullanan mevcut bir uygulamanın, geçişli sürümü kullanmak üzere kolayca değiştirilebileceği anlamına gelir. Ana farklılıklar oluşturucuda ve kullanılabilir seçeneklerde bulunur.
 
-#### <a name="constructor"></a>Oluşturucusu  
+#### <a name="constructor"></a>Oluşturucu  
 
 ```JavaScript 
 var ws = require('hyco-ws');
@@ -124,24 +124,24 @@ var wss = new server(
     });
 ```
 
-`RelayedServer` Oluşturucu bağımsız değişkenleri farklı bir kümesini destekler `Server`, tek başına bir dinleyici olduğundan veya mevcut bir HTTP dinleyicisi çerçeve gömülü olması kullanabilirsiniz. Kullanılabilir ayrıca daha az seçenek WebSocket yönetimini büyük ölçüde alan geçiş hizmetine temsilci olduğundan.
+`RelayedServer` Oluşturucusu, tek başına bir dinleyici olmadığından veya var olan bir HTTP dinleyicisi çerçevesine katıştırılabildiğinden, `Server`farklı bir bağımsız değişkenler kümesini destekler. WebSocket yönetimi büyük ölçüde geçiş hizmeti için temsilci olarak oluşturulduğundan daha az seçenek mevcuttur.
 
 Oluşturucu bağımsız değişkenleri:
 
-- `server` (gerekli) - dinlemek bir karma bağlantı adı için tam uygun URI, WebSocket.createRelayListenUri() yardımcı yöntemi genellikle oluşturulur.
-- `token` (gerekli) - bu bağımsız değişken, daha önce verilmiş bir belirteç dizesi ya da böyle bir belirteç dizesini almak için çağrılan bir geri çağırma işlevini içerir. Belirteci yenileme olanak tanıdığından geri çağırma seçeneği tercih edilen, içindir.
+- `server` (gerekli)-genellikle WebSocket. createRelayListenUri () yardımcı yöntemiyle oluşturulan karma bağlantı adı için tam URI.
+- `token` (gerekli)-bu bağımsız değişken, önceden verilen bir belirteç dizesini veya böyle bir belirteç dizesini elde etmek için çağrılabilecek bir geri çağırma işlevini barındırır. Belirteç yenilemeyi sağladığından geri çağırma seçeneği tercih edilir.
 
-#### <a name="events"></a>Events
+#### <a name="events"></a>Etkinlikler
 
-`RelayedServer` örnekleri, gelen istekleri işleyen, bağlantı ve hata koşulları algılamak sağlayan üç olayları Yayımla. Abone olmalısınız `connect` olay iletileri işlemek için. 
+`RelayedServer` örnekleri, gelen istekleri işleyebilmeniz, bağlantılar oluşturmanız ve hata koşullarını algılamanıza olanak tanıyan üç olay yayar. İletileri işlemek için `connect` olayına abone olmanız gerekir. 
 
-##### <a name="headers"></a>Üst bilgileri
+##### <a name="headers"></a>üstbilgiler
 
 ```JavaScript 
 function(headers)
 ```
 
-`headers` Olayı, yalnızca bir gelen bağlantı, üstbilgileri istemciye gönderilecek değiştirilmesini etkinleştirme kabul edilmeden önce oluşturulur. 
+`headers` olayı, gelen bir bağlantı kabul edilmeden önce oluşturulur ve bu, istemciye gönderilmek üzere üst bilgilerin değiştirilmesini sağlar. 
 
 ##### <a name="connection"></a>bağlantı
 
@@ -149,7 +149,7 @@ function(headers)
 function(socket)
 ```
 
-Yeni bir WebSocket bağlantısı kabul edildiğinde yayılır. Nesne türünde `ws.WebSocket`, temel paketi ile aynı.
+Yeni bir WebSocket bağlantısı kabul edildiğinde yayılır. Nesne `ws.WebSocket`, taban paketiyle aynı türde.
 
 
 ##### <a name="error"></a>error
@@ -158,11 +158,11 @@ Yeni bir WebSocket bağlantısı kabul edildiğinde yayılır. Nesne türünde `
 function(error)
 ```
 
-Temel alınan sunucusunda bir hata gösterir, burada iletilir.  
+Temeldeki sunucu bir hata yayar, buraya iletilir.  
 
-#### <a name="helpers"></a>Yardımcıları
+#### <a name="helpers"></a>Yardımcı
 
-Geçişli server'ı başlatıp gelen bağlantılar için hemen abone basitleştirmek için paket ayrıca örneklerde, şu şekilde kullanılan bir basit yardımcı işlevini kullanıma sunar:
+Bir geçişli sunucu başlatmayı kolaylaştırmak ve gelen bağlantılara hemen abone olmak için, paket aşağıdaki gibi örneklerde de kullanılan basit bir yardımcı işlevi kullanıma sunar:
 
 ##### <a name="createrelayedlistener"></a>createRelayedListener
 
@@ -191,11 +191,11 @@ var wss = WebSocket.createRelayedServer(
 var server = createRelayedServer([options], [connectCallback] )
 ```
 
-Bu yöntem RelayedServer yeni bir örneğini oluşturmak için bir oluşturucuyu çağırır ve ardından sağlanan geri çağırma 'bağlantı' olaya abone olur.
+Bu yöntem, RelayedServer yeni bir örneğini oluşturmak için oluşturucuyu çağırır ve ardından belirtilen geri aramayı ' bağlantı ' olayına abone olur.
  
 ##### <a name="relayedconnect"></a>relayedConnect
 
-Yalnızca yansıtma `createRelayedServer` işlevde Yardımcısı `relayedConnect` istemci bağlantısı oluşturur ve elde edilen yuvadaki 'açık' olaya abone olur.
+İşlevindeki `createRelayedServer` Yardımcısı, `relayedConnect` bir istemci bağlantısı oluşturur ve elde edilen yuvada ' Open ' olayına abone olur.
 
 ```JavaScript
 var uri = WebSocket.createRelaySendUri(ns, path);
@@ -209,6 +209,6 @@ WebSocket.relayedConnect(
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure geçişi hakkında daha fazla bilgi edinmek için şu bağlantıları ziyaret edin:
+Azure Relay hakkında daha fazla bilgi edinmek için şu bağlantıları ziyaret edin:
 * [Azure Geçiş nedir?](relay-what-is-it.md)
-* [Kullanılabilir geçiş API'leri](relay-api-overview.md)
+* [Kullanılabilir geçiş API 'Leri](relay-api-overview.md)

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: ecc2a8236b51013895bfe831d6785ff3e6925906
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 03674d8fb42d56d6b4b40d8111c1a7bbce7c312b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979675"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514495"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -61,6 +61,7 @@ RTMP canlı akışı için aşağıdaki yeni önerilen iş ortağı kodlayıcıl
 - [Restream.io](https://restream.io/)
 
 ### <a name="file-encoding-enhancements"></a>Dosya kodlama geliştirmeleri
+
 - Yeni bir Içerik algılayan kodlama önceden ayarı artık kullanılabilir. İçeriğe duyarlı kodlama kullanarak bir GOP hizalı MP4 'leri kümesi üretir. Herhangi bir giriş içeriği verildiğinde, hizmet giriş içeriğinin ilk hafif analizini yapar. Bu sonuçları, en uygun katman sayısını, uygun bit hızını ve uyarlamalı akış tarafından teslim edilmek üzere çözüm ayarlarını belirlemede kullanır. Bu ön ayar özellikle, çıkış dosyalarının daha düşük bit hızlarındaki ancak izleyicilere uygun bir deneyim sunan bir kalitede olduğu düşük karmaşıklık ve orta ölçekli videolar için geçerlidir. Çıktı, video ve ses Aralanmış MP4 dosyaları içerir. Daha fazla bilgi için bkz. [Açık API özellikleri](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json).
 - Media Encoder Standard içinde Re-sizer için iyileştirilmiş performans ve çoklu iş parçacığı. Belirli koşullar altında, müşteri% 5-40 VOD kodlaması arasında bir performans artışı görmelidir. Birden çok bit hızında kodlanan düşük karmaşıklık içeriği, en yüksek performans artışına neden olur. 
 - Standart kodlama, zaman tabanlı GOP ayarı kullanılırken VOD kodlaması sırasında değişken çerçeve oranı (VFR) için normal bir GOP temposunda sağlar.  Bu, müşterilerin 15-30 fps arasında değişen karma kare hızı içeriğini gönderen bir müşterinin, yalnızca Uyarlamalı bit hızında akış MP4 dosyalarına göre hesaplanan normal GOP uzaklıkları görebilmesini sağlar. Bu, HLS veya DASH üzerinden gönderim yaparken parçalar arasında sorunsuzca geçiş yapma yeteneğini geliştirir. 
@@ -82,7 +83,7 @@ Media Services v3, canlı etkinliklerin canlı doğrusal kodlamasının 24 saat 
 
 #### <a name="deprecation-of-media-processors"></a>Medya işlemcilerinin kullanımdan kaldırılması
 
-*Azure Media Indexer* ve *Azure Media Indexer 2 Preview*kullanım dışı olarak duyuruluyoruz. [Azure Media Indexer](../previous/media-services-index-content.md) medya işlemcisi, 1 Ekim 2020 ' de kullanımdan kaldırılacaktır. [Azure Media Indexer 2 Preview](../previous/media-services-process-content-with-indexer2.md) medya Işlemcileri 1 Ocak 2020 tarihinde kullanımdan kaldırılacaktır. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
+*Azure Media Indexer* ve *Azure Media Indexer 2 Preview*kullanım dışı olarak duyuruluyoruz. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](../previous/legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
 
 Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](../previous/migrate-indexer-v1-v2.md)konusuna bakın.
 
@@ -100,7 +101,7 @@ Daha fazla bilgi için bkz. [Media Services v3 'nin bulunduğu bulutlar ve bölg
 
 #### <a name="deprecation-of-media-processors"></a>Medya işlemcilerinin kullanımdan kaldırılması
 
-31 Mart 2020 ' de devre dışı bırakılmakta olan *Windows Azure Medya Kodlayıcısı* (WAME) ve *Azure Media Encoder* (AME) medya işlemcilerinin kullanımdan kaldırılması duyuruluyor.
+Kullanımdan kalkmakta olan *Windows Azure Medya Kodlayıcısı* (WAME) ve *Azure Medya Kodlayıcısı* (AME) medya işlemcilerinin kullanımdan kaldırılması duyuruluyor. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](../previous/legacy-components.md) konusuna bakın.
 
 Ayrıntılar için bkz. [WAME 'i Media Encoder Standard geçirin](https://go.microsoft.com/fwlink/?LinkId=2101334) ve [adı Media Encoder Standard geçirin](https://go.microsoft.com/fwlink/?LinkId=2101335).
  
@@ -294,7 +295,7 @@ Aşağıdaki Event Grid destek geliştirmelerini görebilirsiniz:
 
 Apple HLS (iOS 11 +) için CMAF ve ' CBCS ' şifreleme desteği ve CMAF 'yi destekleyen MPEG-DASH çalarlar.
 
-### <a name="video-indexer"></a>Video Indexer
+### <a name="video-indexer"></a>Video Dizinleyici
 
 Video Indexer GA yayını Ağustos ayında duyuruldu. Şu anda desteklenen özellikler hakkında daha fazla bilgi için bkz. [video Indexer nedir](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
 

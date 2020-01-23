@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99c52f65bdec2b164cca86a6346d8865d210cf38
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 5e9b2119964ec2af792e2f2a5b942fde12cf7eab
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176068"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512860"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory Access panel dağıtımı planlayın
 
@@ -37,7 +37,7 @@ Azure AD erişim panelini kullanarak şunları yapabilirsiniz:
 Ayrıca yöneticilerin yönetmesine izin verir:
 
 * Hizmet koşulları
-* Ları
+* Kuruluşlar
 * Erişim incelemeleri
 
 
@@ -59,7 +59,7 @@ Azure AD erişim paneli, işletmelerden aşağıdaki yollarla faydalanır:
 
 Erişim paneli ücretsizdir ve temel düzeyde kullanılmak üzere hiçbir lisans gerektirmez. Ancak, dizininizdeki nesne sayısı ve dağıtmak istediğiniz ek özellikler ek lisanslar gerektirebilir. Lisanslama gereksinimlerine sahip bazı yaygın Azure AD senaryoları aşağıdaki güvenlik özelliklerini içerir:
 
-* [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
+* [Azure çok faktörlü kimlik doğrulaması](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
 
 * [Grup tabanlı üyelik](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
@@ -83,16 +83,16 @@ Aşağıdaki tabloda, bir erişim paneli dağıtımı için anahtar kullanım du
 
 | Alan| Açıklama |
 | - | - |
-| Access| Şirket ağı içindeki şirket ve kişisel cihazlardan erişim paneli portalına erişilebilir. |
-|Access | Şirket ağı dışındaki şirket aygıtlarından erişim paneli portalına erişilebilir. |
+| Erişim| Şirket ağı içindeki şirket ve kişisel cihazlardan erişim paneli portalına erişilebilir. |
+|Erişim | Şirket ağı dışındaki şirket aygıtlarından erişim paneli portalına erişilebilir. |
 | Denetim| Kullanım verileri en az 29 günde bir şirket sistemine indirilir. |
 | İdare| Azure AD bağlantılı uygulamalar ve gruplar için Kullanıcı atamalarının yaşam döngüsü tanımlanmıştır ve izlenir. |
 | Güvenlik| Kaynaklara erişim, Kullanıcı ve Grup atamaları aracılığıyla denetlenir. Yalnızca yetkili kullanıcılar, kaynak erişimini yönetebilir. |
 | Performans| Erişim atama yayma zaman çizelgeleri belgelenmiştir ve izlenir. |
-| Kullanıcı deneyimi| Kullanıcılar, erişim paneli özelliklerini ve bunların nasıl kullanılacağını algılar.|
-| Kullanıcı deneyimi| Kullanıcılar, uygulamalarına ve gruplarına erişimleri yönetebilir.|
-| Kullanıcı deneyimi| Kullanıcılar hesaplarını yönetebilir. |
-| Kullanıcı deneyimi| Kullanıcılar tarayıcı uyumluluğuna duyarlı. |
+| Kullanıcı Deneyimi| Kullanıcılar, erişim paneli özelliklerini ve bunların nasıl kullanılacağını algılar.|
+| Kullanıcı Deneyimi| Kullanıcılar, uygulamalarına ve gruplarına erişimleri yönetebilir.|
+| Kullanıcı Deneyimi| Kullanıcılar hesaplarını yönetebilir. |
+| Kullanıcı Deneyimi| Kullanıcılar tarayıcı uyumluluğuna duyarlı. |
 | Destek| Kullanıcılar, erişim paneli sorunları için destek bulabilir. |
 
 ### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>Azure AD erişim paneli 'Ni dağıtmaya yönelik en iyi uygulamalar
@@ -127,11 +127,11 @@ Aşağıdaki tabloda birçok önemli erişim paneli yapılandırması ve kullana
 | Pilot gruplarını belirleme| Kullanılacak Azure AD güvenlik grubunu ve tüm pilot üyelerinin grubun bir parçası olduğundan emin olun. |
 | Üretime etkinleştirilecek grup veya grupları belirleme.| Kullanılacak Azure AD güvenlik gruplarını veya Azure AD ile eşitlenen Active Directory gruplarını belirler. Tüm pilot üyelerinin grubun bir parçası olduğundan emin olun. |
 | Kullanıcıların SSO 'yu belirli türlerde uygulamalara kullanmasına izin ver| Federasyon SSO, OAuth, parola SSO, uygulama proxy 'Si |
-| Kullanıcıların Self servis parola sıfırlama kullanmasına izin ver | Yes |
-| Kullanıcıların Multi-Factor Authentication kullanmasına izin ver| Yes |
+| Kullanıcıların Self servis parola sıfırlama kullanmasına izin ver | Evet |
+| Kullanıcıların Multi-Factor Authentication kullanmasına izin ver| Evet |
 | Kullanıcıların belirli Grup türleri için Self Servis Grup yönetimini kullanmasına izin ver| Güvenlik grupları, Office 365 grupları |
-| Kullanıcıların Self Servis uygulama yönetimini kullanmasına izin ver| Yes |
-| Kullanıcıların erişim gözden geçirmeleri kullanmasına izin ver| Yes |
+| Kullanıcıların Self Servis uygulama yönetimini kullanmasına izin ver| Evet |
+| Kullanıcıların erişim gözden geçirmeleri kullanmasına izin ver| Evet |
 
 ### <a name="plan-consent-strategy"></a>Onay stratejisini planlayın
 
@@ -149,7 +149,7 @@ Daha fazla bilgi için bkz. [Azure Active Directory bir uygulamaya son kullanıc
 
 Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bunu yapılır. Bu sınırları önlemek için, doğru proje katılımcıları ile ilgileniyorsanız ve projedeki paydaş rollerinin iyi anlaşıldığından [emin olun](../fundamentals/active-directory-deployment-plans.md) .
 
-### <a name="plan-communications"></a>İletişimleri planlayın
+### <a name="plan-communications"></a>İletişimi planlama
 
 İletişim, her yeni hizmetin başarısı için önemlidir. Kullanıcılarınıza deneyiminizin nasıl ve ne zaman değiştirileceğini ve gerektiğinde nasıl destek kazanabileceğini önceden bilgilendirirsiniz.
 
@@ -197,7 +197,7 @@ Parola tabanlı SSO uygulamalarını tümleştirmeniz gerekiyorsa, uzantıyı [d
 
 * [Internet Explorer için grup ilkesi](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 
-* [Internet Explorer için System Center Configuration Manager (SCCM)](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Internet Explorer için Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 * [Chrome, Firefox, Microsoft Edge veya IE için Kullanıcı odaklı indirme ve yapılandırma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
@@ -264,7 +264,7 @@ Azure AD, [Teknik ve iş öngörüleri sunan raporlar](https://azure.microsoft.c
 |   | Riski yönetin| Üretkenliği artırın| İdare ve uyum |
 |  - |- | - | - |
 | Rapor türleri|  Uygulama izinleri ve kullanımı| Hesap sağlama etkinliği| Uygulamalara kimlerin eriştiğini gözden geçirme |
-| Olası eylemler| Denetim erişimi; izinleri iptal et| Sağlama hatalarını düzelt| Erişimi iptal et |
+| Olası eylemler| Denetim erişimi; izinleri iptal et| Sağlama hatalarını düzelt| seçeneğine tıklayın, |
 
 Azure AD, en çok denetim verilerini 30 gün boyunca tutar. Veriler, çözümleme sistemlerinize indirmeniz için Azure yönetim portalı veya API aracılığıyla kullanılabilir.
 
@@ -340,7 +340,7 @@ Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az
 | - | -| -|
 | Yardım Masası Yöneticisi| Katman 1 desteği| Hiçbiri |
 | Kimlik Yöneticisi| Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama| Genel yönetici |
-| Uygulama Yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
+| Uygulama yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
 | Altyapı Yöneticileri| Sertifika aktarma sahibi| Genel yönetici |
 | İşletme sahibi/paydaş| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
 

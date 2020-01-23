@@ -1,6 +1,6 @@
 ---
-title: Standart .NET API'ları Azure geçişine genel bakış | Microsoft Docs
-description: Azure geçişi .NET standart API'sine genel bakış
+title: Azure Relay .NET Standard API 'Lerine genel bakış | Microsoft Docs
+description: Bu makalede, Azure Relay Karma Bağlantılar .NET Standard API 'sine genel bakış özetlenmektedir.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
-ms.openlocfilehash: 78ad3ab49db162af060b4273deea717cd3472668
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18eaf2d2daae817107be6cdb0da9359bb5f9b4e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749028"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514544"
 ---
-# <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure geçiş karma bağlantılar .NET standart API'sine genel bakış
+# <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure Relay Karma Bağlantılar .NET Standard API 'ye Genel Bakış
 
-Bu makalede Azure geçiş karma bağlantılar .NET standart anahtar bazıları özetlenmektedir [istemci API'leri](/dotnet/api/microsoft.azure.relay).
+Bu makalede, bazı anahtar Azure Relay Karma Bağlantılar .NET Standard [Istemci API 'leri](/dotnet/api/microsoft.azure.relay)özetlenmektedir.
   
-## <a name="relay-connection-string-builder-class"></a>Geçiş bağlantı dizesi Oluşturucusu sınıfı
+## <a name="relay-connection-string-builder-class"></a>Geçiş bağlantı dizesi Oluşturucu sınıfı
 
-[RelayConnectionStringBuilder] [ RelayConnectionStringBuilder] sınıfı belirli geçişi karma bağlantıları için bağlantı dizelerini biçimlendirir. Bir bağlantı dizesinin biçimini doğrulayın veya sıfırdan bir bağlantı dizesi oluşturmak için kullanabilirsiniz. Aşağıdaki kod örneği için bkz:
+[RelayConnectionStringBuilder][RelayConnectionStringBuilder] sınıfı, geçişe özgü bağlantı dizelerini biçimlendirir karma bağlantılar. Bunu bir bağlantı dizesinin biçimini doğrulamak veya sıfırdan bir bağlantı dizesi oluşturmak için kullanabilirsiniz. Örnek için aşağıdaki koda bakın:
 
 ```csharp
 var endpoint = "[Relay namespace]";
@@ -44,7 +44,7 @@ var connectionStringBuilder = new RelayConnectionStringBuilder()
 };
 ```
 
-Doğrudan bir bağlantı dizesi geçirebilirsiniz `RelayConnectionStringBuilder` yöntemi. Bu işlem, bağlantı dizesi geçerli bir biçimde olduğunu doğrulamak sağlar. Herhangi bir parametre geçersiz, oluşturucu oluşturur. bir `ArgumentException`.
+Ayrıca, bir bağlantı dizesini doğrudan `RelayConnectionStringBuilder` yöntemine geçirebilirsiniz. Bu işlem, bağlantı dizesinin geçerli bir biçimde olduğunu doğrulamanızı sağlar. Parametrelerden herhangi biri geçersiz ise, Oluşturucu bir `ArgumentException`oluşturur.
 
 ```csharp
 var myConnectionString = "[RelayConnectionString]";
@@ -61,15 +61,15 @@ catch (ArgumentException ae)
 }
 ```
 
-## <a name="hybrid-connection-stream"></a>Karma bağlantı akış
+## <a name="hybrid-connection-stream"></a>Karma bağlantı akışı
 
-[HybridConnectionStream] [ HCStream] ile çalışırken, bir Azure geçişi uç noktasından veri alıp göndermek için kullanılan birincil nesne sınıfı, bir [HybridConnectionClient] [ HCClient], veya bir [HybridConnectionListener][HCListener].
+[Hybridconnectionstream][HCStream] sınıfı, bir [Hybridconnectionclient][HCClient]veya [hybridconnectionlistener][HCListener]ile çalıştığınızdan bir Azure Relay uç noktasından veri göndermek ve almak için kullanılan birincil nesnedir.
 
-### <a name="getting-a-hybrid-connection-stream"></a>Karma bağlantı akış alma
+### <a name="getting-a-hybrid-connection-stream"></a>Karma bağlantı akışı alma
 
 #### <a name="listener"></a>Dinleyici
 
-Kullanarak bir [HybridConnectionListener] [ HCListener] nesnesi elde edebilirsiniz bir `HybridConnectionStream` gibi nesnesi:
+Bir [Hybridconnectionlistener][HCListener] nesnesi kullanarak, aşağıdaki gibi bir `HybridConnectionStream` nesnesi elde edebilirsiniz:
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -82,7 +82,7 @@ var hybridConnectionStream = await listener.AcceptConnectionAsync();
 
 #### <a name="client"></a>İstemci
 
-Kullanarak bir [HybridConnectionClient] [ HCClient] nesnesi elde edebilirsiniz bir `HybridConnectionStream` gibi nesnesi:
+Bir [Hybridconnectionclient][HCClient] nesnesi kullanarak, aşağıdaki gibi bir `HybridConnectionStream` nesnesi elde edebilirsiniz:
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -93,9 +93,9 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>Veri alma
 
-[HybridConnectionStream] [ HCStream] sınıfı iki yönlü iletişim sağlar. Çoğu durumda, sürekli olarak akıştan alırsınız. Metin akışından okuma yapıyorsanız de kullanmak isteyebileceğiniz bir [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) verilerini daha kolay ayrıştırma sağlayan nesne. Örneğin, metin yerine olarak verileri okuyabilir `byte[]`.
+[Hybridconnectionstream][HCStream] sınıfı iki yönlü iletişime olanak tanıyor. Çoğu durumda, akıştan sürekli olarak alırsınız. Akıştan metin okuyorsanız, verilerin daha kolay ayrıştırılmasını sağlayan bir [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) nesnesi de kullanmak isteyebilirsiniz. Örneğin, verileri `byte[]`yerine metin olarak okuyabilirsiniz.
 
-Aşağıdaki kod, bir iptal isteğinde kadar tek tek satırlık metin akıştan okur:
+Aşağıdaki kod, bir iptal istenene kadar her metin satırını akıştan okur:
 
 ```csharp
 // Create a CancellationToken, so that we can cancel the while loop
@@ -120,14 +120,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>Veri gönderme
 
-Bir bağlantı kuruldu aldıktan sonra geçiş uç noktaya bir ileti gönderebilir. Bağlantı nesnesi e devralındığından [Stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx), verilerinizi olarak göndermek bir `byte[]`. Aşağıdaki örnek bunun nasıl yapılacağı gösterilmektedir:
+Bir bağlantı kurulduktan sonra, geçiş uç noktasına bir ileti gönderebilirsiniz. Bağlantı nesnesi [Stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx)devraldığından, verilerinizi bir `byte[]`olarak gönderin. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir:
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-Metin dizesi her zaman kodlamak zorunda kalmadan doğrudan göndermeyi istiyorsanız, ancak kayabilir `hybridConnectionStream` nesnesi ile bir [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) nesne.
+Ancak, her seferinde dizeyi kodlamasına gerek kalmadan doğrudan metin göndermek istiyorsanız, `hybridConnectionStream` nesnesini bir [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) nesnesiyle sardırabilirsiniz.
 
 ```csharp
 // The StreamWriter object only needs to be created once
@@ -137,11 +137,11 @@ await textWriter.WriteLineAsync("hello");
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure geçişi hakkında daha fazla bilgi edinmek için şu bağlantıları ziyaret edin:
+Azure Relay hakkında daha fazla bilgi edinmek için şu bağlantıları ziyaret edin:
 
-* [Microsoft.Azure.Relay başvurusu](/dotnet/api/microsoft.azure.relay)
+* [Microsoft. Azure. Relay başvurusu](/dotnet/api/microsoft.azure.relay)
 * [Azure Geçiş nedir?](relay-what-is-it.md)
-* [Kullanılabilir geçiş API'leri](relay-api-overview.md)
+* [Kullanılabilir geçiş API 'Leri](relay-api-overview.md)
 
 [RelayConnectionStringBuilder]: /dotnet/api/microsoft.azure.relay.relayconnectionstringbuilder
 [HCStream]: /dotnet/api/microsoft.azure.relay.hybridconnectionstream

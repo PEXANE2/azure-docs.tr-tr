@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: 03c517ac80ed42f96cae00001a154e519ec94148
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 84dd1b6d657dfe5061f53698114f3dc4e0197571
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263345"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510065"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu sanal makinelerinde Azure IoT Edge çalıştırma
 
@@ -22,7 +22,7 @@ Azure IOT Edge çalışma zamanı, ne bir cihaz ile IOT Edge cihazı kapatır ' 
 
 IOT Edge çalışma zamanı nasıl çalıştığını ve hangi bileşenler dahildir hakkında daha fazla bilgi için bkz: [Azure IOT Edge çalışma zamanı ve mimarisini anlama](iot-edge-runtime.md).
 
-Bu makalede, [Ubuntu Azure Marketi teklifinin](https://aka.ms/azure-iot-edge-ubuntuvm)önceden yapılandırılmış Azure IoT Edge kullanılarak ubuntu 16,04 sanal makinesinde Azure IoT Edge çalışma zamanını çalıştırma adımları listelenmektedir. 
+Bu makalede, [Ubuntu Azure Marketi teklifinin](https://aka.ms/azure-iot-edge-ubuntuvm)önceden yapılandırılmış Azure IoT Edge kullanılarak ubuntu 16,04 sanal makinesinde Azure IoT Edge çalışma zamanını çalıştırma adımları listelenmektedir.
 
 İlk önyüklemede, Ubuntu VM üzerindeki Azure IoT Edge Azure IoT Edge çalışma zamanının en son sürümünü önceden yükler. Ayrıca, bağlantı dizesini ayarlamak için bir komut dosyası içerir ve sonra, Azure VM portalı veya Azure komut satırı aracılığıyla uzaktan tetiklenebilecek, bir SSH veya uzaktan başlatmadan IoT Edge cihazını kolayca yapılandırıp bağlayabilmenizi sağlayan çalışma zamanını yeniden başlatacak. Masaüstü oturumu. Bu betik, IoT Edge istemcisi tam yükleninceye kadar bağlantı dizesini ayarlamayı bekleyecek ve bu sayede otomasyonu oluşturmak zorunda kalmazsınız.
 
@@ -52,22 +52,22 @@ Azure portal, "Azure IoT Edge" araması yapın ve sanal makine oluşturma iş ak
    ```azurecli-interactive
    az login
    ```
-    
+
 1. Birden çok aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin:
    1. Aboneliklerinizi listeleyin:
-    
+
       ```azurecli-interactive
       az account list --output table
       ```
-    
+
    1. Kullanmak istediğiniz aboneliğin abonelik alanı ' nı kopyalayın.
 
    1. Çalışma aboneliğinizi yeni kopyaladığınız KIMLIKLE ayarlayın:
-    
-      ```azurecli-interactive 
+
+      ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
-    
+
 1. Yeni bir kaynak grubu oluşturun (veya sonraki adımlarda mevcut bir tane belirtin):
 
    ```azurecli-interactive
@@ -93,7 +93,6 @@ Azure portal, "Azure IoT Edge" araması yapın ve sanal makine oluşturma iş ak
    ```
 
 Kurulumdan sonra bu VM 'ye SSH eklemek istiyorsanız, Publicıpaddress komutunu şu komutla kullanın: `ssh azureuser@{publicIpAddress}`
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

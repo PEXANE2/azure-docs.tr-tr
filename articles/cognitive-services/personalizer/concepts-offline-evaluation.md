@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953084"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513618"
 ---
 # <a name="offline-evaluation"></a>Çevrimdışı değerlendirme
 
-Çevrimdışı değerlendirme, kodunuzu değiştirmeden veya Kullanıcı deneyimini etkilemeden, kişiselleştirici hizmetin verimliliğini test etmenize ve değerlendirmenize olanak tanıyan bir yöntemdir. Çevrimdışı değerlendirme, farklı derecelendirmelerinin nasıl gerçekleştirildiğini karşılaştırmak için uygulamanızdan derecelendirme API 'sine gönderilen geçmiş verileri kullanır.
+Çevrimdışı değerlendirme, kodunuzu değiştirmeden veya Kullanıcı deneyimini etkilemeden, kişiselleştirici hizmetin verimliliğini test etmenize ve değerlendirmenize olanak tanıyan bir yöntemdir. Çevrimdışı değerlendirme, farklı derecelendirmelerinin nasıl gerçekleştirildiğini karşılaştırmak için uygulamanızdan derecelendirme ve yeniden kullanma API 'Lerine gönderilen geçmiş verileri kullanır.
 
 Çevrimdışı değerlendirme bir tarih aralığında gerçekleştirilir. Aralık, geçerli saat kadar geç bitebilirler. Aralığın başı, [veri saklama](how-to-settings.md)için belirtilen gün sayısından daha fazla olamaz.
 
@@ -56,9 +56,9 @@ Kişiselleştirici, otomatik olarak daha iyi bir öğrenme ilkesi bulmaya yönel
 
 ## <a name="how-offline-evaluations-are-done"></a>Çevrimdışı değerlendirmeler nasıl yapılır?
 
-Çevrimdışı değerlendirmeler, **onay verilen değerlendirme**adlı bir yöntem kullanılarak yapılır. 
+Çevrimdışı değerlendirmeler, **onay verilen değerlendirme**adlı bir yöntem kullanılarak yapılır.
 
-Kişiselleştirici, kullanıcıların davranışının (ve dolayısıyla rediklerin) geriye dönük olarak tahmin edilmesi olanaksız hale geldiği varsayımına dayanır (Kullanıcı görenden farklı bir şeyler gösterilirse, kişiselleştirici ne olduğunu bilmez) ve yalnızca bilgi edinebilirsiniz ölçülen ödüller. 
+Kişiselleştirici, kullanıcıların davranışının (ve dolayısıyla rediklerin) geriye dönük olarak tahmin edilmesi olanaksız hale geldiği varsayımına dayanır (Kullanıcı görenden farklı bir şeyler gösterilirse, kişiselleştirici ne olduğunu bilmez) ve yalnızca bilgi edinebilirsiniz ölçülen ödüller.
 
 Bu, değerlendirmeler için kullanılan kavramsal işlemdir:
 
@@ -70,11 +70,11 @@ Bu, değerlendirmeler için kullanılan kavramsal işlemdir:
     [For every chronological event in the logs]
     {
         - Perform a Rank call
-    
+
         - Compare the reward of the results against the logged user behavior.
             - If they match, train the model on the observed reward in the logs.
             - If they don't match, then what the user would have done is unknown, so the event is discarded and not used for training or measurement.
-        
+
     }
 
     Add up the rewards and statistics that were predicted, do some aggregation to aid visualizations, and save the results.
