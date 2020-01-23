@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 9b661a7fa6a7b9f079a3b24d1b83f27118c4bd23
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/21/2020
+ms.openlocfilehash: e0c58c5c3fef41a472fe791f66292c9280531493
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745860"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514689"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yavaş sorgu günlükleri
 MySQL için Azure veritabanı 'nda, yavaş sorgu günlüğü kullanıcılar tarafından kullanılabilir. İşlem günlüğüne erişim desteklenmez. Yavaş sorgu günlüğü, sorun giderme için performans sorunlarını belirlemek için kullanılabilir.
@@ -43,8 +43,9 @@ Ayarlayabileceğiniz diğer parametreler şunlardır:
 - **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
 - **log_output**: "dosya" ise, yavaş sorgu günlüğünün hem yerel sunucu depolamasına hem de Azure Izleyici tanılama günlüklerine yazılmasına izin verir. "None" ise, yavaş sorgu günlüğü yalnızca Azure Izleyici tanılama günlüklerine yazılır. 
 
-> [!Note]
-> `sql_text`için günlük 2048 karakteri aşarsa kesilir.
+> [!IMPORTANT]
+> Tablolarınızın dizini oluşturulmamış ise, bu dizinlenmemiş tablolarda çalışan tüm sorgular yavaş sorgu günlüğüne yazılacak olduğundan `log_queries_not_using_indexes` ve `log_throttle_queries_not_using_indexes` parametrelerinin ON olarak ayarlanması MySQL performansını etkileyebilir.<br><br>
+> Uzun bir süre için yavaş sorguları günlüğe kaydetmeyi planlıyorsanız, `log_output` "none" olarak ayarlamanız önerilir. "Dosya" olarak ayarlanırsa, bu günlükler yerel sunucu depolamasına yazılır ve MySQL performansını etkileyebilir. 
 
 Yavaş sorgu günlüğü parametrelerinin tam açıklamaları için MySQL 'in [yavaş sorgu günlüğü belgelerini](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) inceleyin.
 
@@ -84,5 +85,64 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Çıkış 
 | `thread_id_s` | İş Parçacığı Kimliği |
 | `\_ResourceId` | Kaynak URI 'SI |
 
+> [!Note]
+> `sql_text`için günlük 2048 karakteri aşarsa kesilir.
+
+## <a name="analyze-logs-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde günlükleri analiz etme
+
+Yavaş sorgu günlüklerinizin tanılama günlükleri aracılığıyla Azure Izleyici günlüklerine bir kez alındıktan sonra, yavaş sorgularınızı daha fazla analiz gerçekleştirebilirsiniz. Aşağıda, başlamanıza yardımcı olacak bazı örnek sorgular verilmiştir. Aşağıdaki öğesini sunucu adınızla güncelleştirdiğinizden emin olun.
+
+- Belirli bir sunucuda 10 saniyeden uzun sorgu
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | where query_time_d > 10
+    ```
+
+- Belirli bir sunucuda ilk 5 en uzun sorguyu listeleme
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | order by query_time_d desc
+    | take 5
+    ```
+
+- Belirli bir sunucuda minimum, maksimum, ortalama ve standart sapma sorgu zamanına göre yavaş sorguları özetleme
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | summarize count(), min(query_time_d), max(query_time_d), avg(query_time_d), stdev(query_time_d), percentile(query_time_d, 95) by LogicalServerName_s
+    ```
+
+- Belirli bir sunucuda yavaş sorgu dağıtımını grafiktir
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
+    | render timechart
+    ```
+
+- Tanılama günlükleri etkin olan tüm MySQL sunucularında 10 saniyeden uzun sorguları görüntüle
+
+    ```Kusto
+    AzureDiagnostics
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | where query_time_d > 10
+    ```    
+    
 ## <a name="next-steps"></a>Sonraki Adımlar
-- [Azure CLI 'dan sunucu günlüklerini yapılandırma ve erişme](howto-configure-server-logs-in-cli.md).
+- [Azure portal yavaş sorgu günlüklerini yapılandırma](howto-configure-server-logs-in-portal.md)
+- [Azure CLI 'dan yavaş sorgu günlüklerini yapılandırma](howto-configure-server-logs-in-cli.md).

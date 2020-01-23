@@ -1,6 +1,6 @@
 ---
-title: İzleme portalını kullanarak Event Grid ile Azure Media Services olaylarını | Microsoft Docs
-description: Bu makalede, Event Grid için Azure Media Services olaylarını izlemek için abone olunacağı gösterilmektedir.
+title: Portal ile Event Grid Azure Media Services olaylarını izleme
+description: Bu makalede, Azure Media Services olaylarını izlemek için Event Grid nasıl abone olunacağı gösterilmektedir.
 services: media-services
 documentationcenter: na
 author: Juliako
@@ -13,31 +13,31 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/15/2018
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326539"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509232"
 ---
-# <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Oluşturma ve Azure portalını kullanarak Event Grid ile Media Services olaylarını izleme
+# <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Azure portal kullanarak Event Grid ile Media Services olayları oluşturma ve izleme
 
-Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu hizmetin kullandığı [olay abonelikleri](../../event-grid/concepts.md#event-subscriptions) abonelere olay iletileri yönlendirmek için. Media Services olaylarını verilerinizdeki değişiklikleri yanıtlamak için gereken tüm bilgileri içerir. EventType özelliği "Microsoft.Media" ile başladığından bir Media Services olayı belirleyebilirsiniz. Daha fazla bilgi için [Media Services olay şemaları](media-services-event-schemas.md).
+Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu hizmet, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](../../event-grid/concepts.md#event-subscriptions) kullanır. Media Services olaylar, verilerdeki değişikliklere yanıt vermek için gereken tüm bilgileri içerir. EventType özelliği "Microsoft. Media." ile başladığı için bir Media Services olayı tanımlayabilirsiniz. Daha fazla bilgi için bkz. [Media Services olay şemaları](media-services-event-schemas.md).
 
-Bu makalede, Azure Media Services hesabınız için olaylara abone için Azure portalını kullanın. Ardından, sonucu görüntülemek için olayları tetikleyin. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Makalede, biz toplayan ve iletileri görüntüleyen bir web uygulaması için olayları gönderirsiniz.
+Bu makalede, Azure Media Services hesabınıza yönelik olaylara abone olmak için Azure portal kullanırsınız. Ardından, sonucu görüntülemek için olayları tetiklersiniz. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Makalesinde, iletileri toplayan ve görüntüleyen bir Web uygulamasına olayları göndereceğiz.
 
 İşiniz bittiğinde, olay verilerinin web uygulamasına gönderildiğini görürsünüz.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
-* Etkin bir Azure aboneliğine sahip.
+* Etkin bir Azure aboneliğiniz olmalıdır.
 * [Bu hızlı başlangıçta](create-account-cli-quickstart.md) açıklandığı gibi yeni bir Azure Media Services hesabı oluşturun.
 
 ## <a name="create-a-message-endpoint"></a>İleti uç noktası oluşturma
 
-Media Services hesabı için olaylara abone olmadan önce olay iletisi için uç noktayı oluşturalım. Normalde, olay verileri temelinde uç nokta eylemleri gerçekleştirir. Bu makalede, dağıttığınız bir [önceden oluşturulmuş bir web uygulaması](https://github.com/Azure-Samples/azure-event-grid-viewer) , olay iletileri görüntüler. Dağıtılan çözüm bir App Service planı, App Service web uygulaması ve GitHub'dan kaynak kod içerir.
+Media Services hesabı için olaylara abone olmadan önce olay iletisi için uç noktayı oluşturalım. Normalde, olay verileri temelinde uç nokta eylemleri gerçekleştirir. Bu makalede, olay iletilerini görüntüleyen [önceden oluşturulmuş bir Web uygulaması](https://github.com/Azure-Samples/azure-event-grid-viewer) dağıtırsınız. Dağıtılan çözüm bir App Service planı, App Service web uygulaması ve GitHub'dan kaynak kod içerir.
 
 1. Çözümü aboneliğinize dağıtmak için **Azure'a Dağıt**'ı seçin. Azure portalında parametre değerlerini girin.
 
@@ -45,7 +45,7 @@ Media Services hesabı için olaylara abone olmadan önce olay iletisi için uç
 
 1. Dağıtımın tamamlanması birkaç dakika sürebilir. Dağıtım başarıyla gerçekleştirildikten sonra, web uygulamanızı görüntüleyip çalıştığından emin olun. Web tarayıcısında şu adrese gidin: `https://<your-site-name>.azurewebsites.net`
 
-"Azure Event Grid Görüntüleyicisi" sitesine geçerseniz, henüz hiçbir olay sahip bakın.
+"Azure Event Grid Görüntüleyici" sitesine geçerseniz, henüz hiç olayına sahip olduğunu görürsünüz.
    
 [!INCLUDE [event-grid-register-provider-portal.md](../../../includes/event-grid-register-provider-portal.md)]
 
@@ -53,19 +53,19 @@ Media Services hesabı için olaylara abone olmadan önce olay iletisi için uç
 
 Event Grid’e hangi olayları izlemek istediğinizi ve olayların nereye gönderileceğini bildirmek için bir konuya abone olursunuz.
 
-1. Portalda, Media Services hesabınızı seçip **olayları**.
+1. Portalda Media Services hesabınızı seçin ve **Olaylar**' ı seçin.
 1. Olayları görüntüleyici uygulamanıza göndermek için uç noktada bir web kancası kullanın. 
 
    ![Web kancasını seçme](./media/monitor-events-portal/select-web-hook.png)
 
-1. Olay aboneliği Media Services hesabınız için değerlerle doldurulmuş. 
-1. İçin seçin 'Web kancası' **uç noktası türü**.
-1. Bu konu başlığında, biz bırakın **tüm olay türlerine abone** işaretli. Ancak, bunu ve belirli olay türleri için Filtre kutusunun işaretini kaldırabilirsiniz. 
-1. Tıklayarak **bir uç nokta seçin** bağlantı.
+1. Olay aboneliği, Media Services hesabınızın değerleriyle önceden doldurulmuştur. 
+1. **Uç nokta türü**Için ' Web kancası ' seçeneğini belirleyin.
+1. Bu konu başlığında, **tüm olay türlerine abone ol** seçeneğini işaretlenmiş olarak bırakıyoruz. Ancak, işaretini kaldırın ve belirli olay türleri için filtre uygulayabilirsiniz. 
+1. **Uç nokta seçin** bağlantısına tıklayın.
 
     Web kancası uç noktası için web uygulamanızın URL'sini girin ve ana sayfa URL'sine `api/updates` ekleyin. 
 
-1. Tuşuna **seçimi onaylamanız**.
+1. **Seçimi Onayla**' ya basın.
 1. **Oluştur**’a basın.
 1. Aboneliğinize bir ad verin.
 
@@ -73,19 +73,19 @@ Event Grid’e hangi olayları izlemek istediğinizi ve olayların nereye gönde
 
 1. Web uygulamanızı yeniden görüntüleyin ve buna bir abonelik doğrulama olayının gönderildiğine dikkat edin. 
 
-    Uç noktanın olay verilerini almak istediğini doğrulayabilmesi için Event Grid doğrulama olayını gönderir. Uç nokta ayarlamak zorunda `validationResponse` için `validationCode`. Daha fazla bilgi için [Event Grid güvenliğini ve kimlik doğrulaması](../../event-grid/security-authentication.md). Abonelik doğrulama biçimini görmek için web uygulaması kodunu görüntüleyebilirsiniz.
+    Uç noktanın olay verilerini almak istediğini doğrulayabilmesi için Event Grid doğrulama olayını gönderir. Uç noktanın `validationCode``validationResponse` ayarlaması vardır. Daha fazla bilgi için [Event Grid güvenliğini ve kimlik doğrulaması](../../event-grid/security-authentication.md). Aboneliği nasıl doğrulayacağını görmek için Web uygulaması kodunu görüntüleyebilirsiniz.
 
-Şimdi, Event Grid'in iletiyi uç noktanıza nasıl dağıttığını görmek için bir olay tetikleyelim.
+Şimdi, Event Grid iletiyi uç noktanıza nasıl dağıttığını görmek için olayları tetikleyelim.
 
 ## <a name="send-an-event-to-your-endpoint"></a>Uç noktanıza olay gönderme
 
-Media Services hesabı için olaylara bir kodlama işi tetikleyebilirsiniz. İzleyebileceğiniz [Bu hızlı başlangıçta](stream-files-dotnet-quickstart.md) dosya kodlamak ve olayları göndermeye başlayın. Tüm olaylara abone, aşağıdakine benzer bir ekran görürsünüz:
+Bir kodlama işi çalıştırarak Media Services hesabı için olayları tetikleyebilirsiniz. Bir dosya kodlamak ve olay göndermeye başlamak için [Bu hızlı](stream-files-dotnet-quickstart.md) başlangıcı izleyebilirsiniz. Tüm olaylara abone değilseniz aşağıdakine benzer bir ekran görürsünüz:
 
 > [!TIP]
-> Göz simgesini seçerek olay verilerini genişletin. Tüm olayları görüntülemek istiyorsanız, sayfa yenilenmez.
+> Göz simgesini seçerek olay verilerini genişletin. Tüm olayları görüntülemek istiyorsanız, sayfayı yenilemeyin.
 
 ![Abonelik olayını görüntüleme](./media/monitor-events-portal/view-subscription-event.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Karşıya yükleme, kodlama ve akışını](stream-files-tutorial-with-api.md)
+[Karşıya yükleme, kodlama ve akış](stream-files-tutorial-with-api.md)

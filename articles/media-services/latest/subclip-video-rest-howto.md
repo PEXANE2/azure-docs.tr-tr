@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services REST API'si ile kodlarken bir videoyu alt kırpın
+title: Azure Media Services REST ile kodlama yaparken bir videoyu alt kırpın
 description: Bu konu, REST kullanarak Azure Media Services kodlama sırasında bir videonun nasıl alt kırpılacağını açıklamaktadır
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
-ms.openlocfilehash: 3557aef6213955ef77542bffafe0a2b0c374ed68
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: c39aded55fe36cb130459a4f6f119f872b1adbc4
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704440"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514332"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Media Services REST ile kodlarken bir videoyu alt kırpın
 
@@ -26,7 +26,7 @@ Bir [işi](https://docs.microsoft.com/rest/api/media/jobs)kullanarak kodlarken v
 
 Bu konudaki REST örneği, bir kodlama işi gönderdiği için videoyu kırpan bir iş oluşturur. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu konu başlığı altında açıklanan adımları tamamlamak için için gerekenler:
 
@@ -39,7 +39,7 @@ Bu konu başlığı altında açıklanan adımları tamamlamak için için gerek
 
 ## <a name="create-a-subclipping-job"></a>Bir alt kırpma işi oluşturun
 
-1. İndirdiğiniz Postman koleksiyonunda **dönüşümler ve işler** -> **oluşturma işini alt kırpması ile**yapın.
+1. İndirdiğiniz Postman koleksiyonunda **dönüşümler ve işler** ' i seçin -> **alt kırpması ile iş oluşturun**.
     
     **PUT** isteği şöyle görünür:
     

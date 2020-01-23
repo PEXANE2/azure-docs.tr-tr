@@ -1,6 +1,6 @@
 ---
-title: Azure geçişi bağlantı noktası ayarlarını | Microsoft Docs
-description: Azure geçişi bağlantı noktası değerleri hakkında ayrıntılar.
+title: Azure Relay bağlantı noktası ayarları | Microsoft Docs
+description: Bu makale, Azure Relay için bağlantı noktası değerleri için gereken yapılandırmayı açıklayan bir tablo içerir.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,45 +12,45 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 9d11179a8518ebf48f68f8607f94e0253d4edb80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55bb6b620c7ba9ee13068213cbc867b165acc185
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789935"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514893"
 ---
-# <a name="azure-relay-port-settings"></a>Azure geçişi bağlantı noktası ayarları
+# <a name="azure-relay-port-settings"></a>Azure Relay bağlantı noktası ayarları
 
-Aşağıdaki tabloda Azure geçişi için bağlantı noktası değerleri için gerekli yapılandırmayı açıklar.
+Aşağıdaki tabloda Azure Relay için bağlantı noktası değerleri için gereken yapılandırma açıklanmaktadır.
 
 ## <a name="hybrid-connections"></a>Karma Bağlantılar
 
-Karma bağlantılar WebSockets kullanan temel aktarma mekanizması, SSL ile 443 numaralı bağlantı noktasında kullanan **HTTPS** yalnızca. 
+Karma Bağlantılar, WebSockets bağlantı noktası 443 ' de, yalnızca **https** kullanan temel taşıma MEKANIZMASı olarak SSL ile kullanır. 
 
 ## <a name="wcf-relays"></a>WCF Geçişleri
   
-|Bağlama|Aktarım güvenliği|Port|  
+|Bağlama|Taşıma Güvenliği|Bağlantı noktası|  
 |-------------|------------------------|----------|  
-|[BasicHttpRelayBinding sınıfı](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (istemci)|Evet|HTTPS| 
-|" |Hayır|HTTP|  
-|[BasicHttpRelayBinding sınıfı](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (hizmet)|Ya da|9351/HTTP|  
-|[NetEventRelayBinding sınıfı](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (istemci)|Evet|9351/HTTPS|  
-|" |Hayır|9350/HTTP|  
-|[NetEventRelayBinding sınıfı](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (hizmet)|Ya da|9351/HTTP|  
-|[NetTcpRelayBinding sınıfı](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (istemci/hizmet)|Ya da|9352/5671/HTTP (9352/karma kullanıyorsanız 9353)|  
+|[Basichttprelaybinding sınıfı](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (istemci)|Evet|HTTPS| 
+|depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek" |Hayır|HTTP|  
+|[Basichttprelaybinding sınıfı](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (hizmet)|Ya da|9351/HTTP|  
+|[Neteventrelaybinding sınıfı](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (istemci)|Evet|9351/HTTPS|  
+|depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek" |Hayır|9350/HTTP|  
+|[Neteventrelaybinding sınıfı](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (hizmet)|Ya da|9351/HTTP|  
+|[Nettcprelaybinding sınıfı](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (istemci/hizmet)|Ya da|5671/9352/HTTP (karma kullanılıyorsa 9352/9353)|  
 |[NetOnewayRelayBinding sınıfı](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (istemci)|Evet|9351/HTTPS|  
-|" |Hayır|9350/HTTP|  
+|depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek" |Hayır|9350/HTTP|  
 |[NetOnewayRelayBinding sınıfı](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (hizmet)|Ya da|9351/HTTP|  
 |[WebHttpRelayBinding sınıfı](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (istemci)|Evet|HTTPS|  
-|" |Hayır|HTTP|  
+|depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek" |Hayır|HTTP|  
 |[WebHttpRelayBinding sınıfı](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (hizmet)|Ya da|9351/HTTP|  
 |[WS2007HttpRelayBinding sınıfı](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (istemci)|Evet|HTTPS|  
-|" |Hayır|HTTP|  
+|depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek" |Hayır|HTTP|  
 |[WS2007HttpRelayBinding sınıfı](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (hizmet)|Ya da|9351/HTTP|
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure geçişi hakkında daha fazla bilgi edinmek için şu bağlantıları ziyaret edin:
+Azure Relay hakkında daha fazla bilgi edinmek için şu bağlantıları ziyaret edin:
 * [Azure Geçiş nedir?](relay-what-is-it.md)
 * [Geçiş hakkında SSS](relay-faq.md)

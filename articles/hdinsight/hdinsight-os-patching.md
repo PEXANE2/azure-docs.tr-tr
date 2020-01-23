@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: a97a03f7ef20ae56cec04341fe76b79ee657547b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.custom: hdinsightactive
+ms.date: 01/21/2020
+ms.openlocfilehash: 102ae56bb9dce2898c14bdc710420759a527a9e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748483"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514706"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux tabanlı HDInsight kümeleri için işletim sistemi düzeltme eki uygulama zamanlamasını yapılandırma
 
@@ -27,6 +27,19 @@ HDInsight, kümenizde işletim sistemi düzeltme ekleri, güvenlik güncelleşti
 
 > [!NOTE]  
 > Betik eylemleri, gelecekteki tüm güncelleştirme döngüleri için güncelleştirmeleri otomatik olarak uygulamaz. Güncelleştirmeleri yüklemek için yeni güncelleştirmelerin uygulanması gereken her seferinde komut dosyalarını çalıştırın ve ardından sanal makineyi yeniden başlatın.
+
+## <a name="preparation"></a>Hazırlık
+
+Üretime dağıtmadan önce temsilcinin üretim dışı bir ortamda yama yapın. Gerçek düzeltme eki uygulamanıza başlamadan sisteminizi yeterince test etmek için bir plan geliştirin.
+
+Kümenizin bulunduğu bir SSH oturumundan zaman, bir yükseltmenin kullanılabilir olduğunu belirten bir ileti alabilirsiniz. İleti şöyle görünebilir:
+
+```
+New release '18.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade it
+```
+
+Düzeltme eki uygulama isteğe bağlıdır.
 
 ## <a name="restart-nodes"></a>Yeniden başlatma düğümleri
   
@@ -56,5 +69,5 @@ Betik [install-Updates-Schedule-reboots.sh](https://hdiconfigactions.blob.core.w
 
 Betik eylemlerini kullanmayla ilgili belirli adımlar için, [betik eylemi kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md)bölümünde yer alan aşağıdaki bölümlere bakın:
 
-* [Küme oluşturma sırasında betik eylemi kullanma](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-* [Çalışan bir kümeye betik eylemi uygulama](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+- [Küme oluşturma sırasında betik eylemi kullanma](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
+- [Çalışan bir kümeye betik eylemi uygulama](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
