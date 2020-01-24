@@ -7,26 +7,26 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: 860694a750ae313f04aceab924429dcf08ecbb66
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f915764deaa70117b96a42c5e7310b691125d731
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887549"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979846"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights
 [Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
 
 ![Genel Bakış Panosu](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce şunları yapmanız gerekir:
 
 * Bir [Azure](https://azure.com) aboneliği. Windows, Xbox Live veya diğer Microsoft bulut hizmetleri için Microsoft hesabı oturum açın. 
 * Microsoft Azure Tools 2,9 veya üzeri.
 * Developer Analytics Tools 7,10 veya üzeri.
 
-## <a name="get-started-quickly"></a>Hızla kullanmaya başlayın
+## <a name="get-started-quickly"></a>Hemen kullanmaya başlayın
 Bulut hizmetinizi Application Insights ile izlemenin en hızlı ve kolay yolu, uygulamanızı Azure’da yayımlarken bu seçeneği belirlemektir.
 
 ![Örnek Tanılama ayarları sayfası](./media/cloudservices/azure-cloud-application-insights.png)
@@ -52,7 +52,7 @@ Sonraki bölümde, kendi bulut hizmeti projenizi aynı şekilde nasıl uyarlayac
 ## <a name="plan-resources-and-resource-groups"></a>Kaynakları ve kaynak gruplarını planlama
 Uygulamanızdaki telemetri, Application Insights türünde bir Azure kaynağında depolanır, analiz edilir ve görüntülenir. 
 
-Her kaynak bir kaynak grubuna aittir. Kaynak grupları, maliyetleri yönetmek, takım üyelerine erişim vermek ve güncelleştirmeleri tek bir koordine işleminde dağıtmak için kullanılır. Örneğin, bir Azure bulut hizmetini ve Application Insights izleme kaynaklarını tek bir işlemde [dağıtmak için bir komut dosyası yazabilirsiniz](../../azure-resource-manager/resource-group-template-deploy.md) .
+Her kaynak bir kaynak grubuna aittir. Kaynak grupları, maliyetleri yönetmek, takım üyelerine erişim vermek ve güncelleştirmeleri tek bir koordine işleminde dağıtmak için kullanılır. Örneğin, bir Azure bulut hizmetini ve Application Insights izleme kaynaklarını tek bir işlemde [dağıtmak için bir komut dosyası yazabilirsiniz](../../azure-resource-manager/templates/deploy-powershell.md) .
 
 ### <a name="resources-for-components"></a>Bileşenler için kaynaklar
 Uygulamanızın her bileşeni için ayrı bir kaynak oluşturmanız önerilir. Diğer bir deyişle, her bir Web rolü ve çalışan rolü için bir kaynak oluşturursunuz. Her bileşeni ayrı ayrı çözümleyebilirsiniz, ancak her bileşenden anahtar grafikleri bir araya getiren bir [Pano](../../azure-monitor/app/overview-dashboard.md) oluşturabilirsiniz, böylece bunları tek bir görünümde karşılaştırabilir ve izleyebilirsiniz. 

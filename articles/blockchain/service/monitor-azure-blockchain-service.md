@@ -3,13 +3,13 @@ title: Azure blok zinciri hizmetini izleme (ABS)
 description: Azure Izleyici aracılığıyla Azure blok zinciri hizmetini izleme
 ms.date: 01/08/2020
 ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 8c2dc6afeaa00e4c7455940cbdf5a7acd6e17394
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.reviewer: v-umha
+ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780411"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293258"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Azure Izleyici aracılığıyla Azure blok zinciri hizmetini izleme  
 
@@ -90,7 +90,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | BlockchainNodeName  | İşlemin gerçekleştirileceği Azure blok zinciri hizmeti üyesinin düğümünün adı.   |
 | Etmi yöntemi  | Temel alınan blok zinciri protokolü tarafından çağrılan yöntem, çekirdekte eth_sendTransactions, eth_getBlockByNumber vb. olabilir.  |
 | Aracı  | Web tarayıcısı Mozilla, Edge vb. gibi bir kullanıcı adına davranan Kullanıcı Aracısı. Değer örnekleri şunlardır: "Mozilla/5.0 (Linux x64) Node. js/8.16.0 V8/6.2.414.77"  |
-| Kodlayın   | HTTP hata kodları. Genellikle 4XX ve 5XX hata koşullarıdır.  |
+| Kod   | HTTP hata kodları. Genellikle 4XX ve 5XX hata koşullarıdır.  |
 | NodeHost  | Düğümün DNS adı.   |
 | RequestMethodName | HTTP yöntemi çağrıldı, buradaki olası değerler üye Oluştur, var olan üyenin ayrıntılarını alma, silme üyesi için SILME, üyeyi güncelleştirmek için Düzeltme Eki.   |
 | BlockchainMemberName  | Kullanıcı tarafından sunulan Azure blok zinciri hizmeti üye adı.  |
@@ -131,24 +131,24 @@ Azure Izleyici tarafından desteklenen tüm ölçümlerin (Azure blok zinciri hi
 Aşağıdaki tablo, Azure blok zinciri hizmeti üye kaynağı için toplanan blok zinciri ölçümlerinin listesini belirtir.
 
 
-| Ölçüm adı | Birim  |  Toplama türü| Açıklama   |
+| Metrik adı | Birim  |  Toplama türü| Açıklama   |
 |---|---|---|---|
-| Bekleyen Işlemler   | Sayı  |  Ortalama | Mined bekleniyor işlem sayısı.   |
-| İşlenen bloklar   | Sayı  | Toplam  |  Her zaman aralığında işlenen blokların sayısı. Şu anda blok boyutu 5 saniyedir, bu nedenle her düğüm 12 blok ve 60 blok 5 dakika içinde işlem görür.   |
-|İşlenen Işlemler    | Sayı  | Toplam  | Bir blokta işlenen işlem sayısı.    |
-|Kuyruğa alınmış Işlemler    |  Sayı | Ortalama  | Hemen küçük olmayan işlem sayısı. Bunun nedeni, sıra dışı geldiği ve gelecekte bir önceki işlemin gelmesini beklediği için olabilir. Ya da iki işlem yalnızca bir kez (nonce) ve aynı gaz değeri ile aynı olabilir, bu nedenle ikinci diğeri küçük olamaz.   |
+| Bekleyen Işlemler   | Count  |  Average | Mined bekleniyor işlem sayısı.   |
+| İşlenen bloklar   | Count  | Toplam  |  Her zaman aralığında işlenen blokların sayısı. Şu anda blok boyutu 5 saniyedir, bu nedenle her düğüm 12 blok ve 60 blok 5 dakika içinde işlem görür.   |
+|İşlenen Işlemler    | Count  | Toplam  | Bir blokta işlenen işlem sayısı.    |
+|Kuyruğa alınmış Işlemler    |  Count | Average  | Hemen küçük olmayan işlem sayısı. Bunun nedeni, sıra dışı geldiği ve gelecekte bir önceki işlemin gelmesini beklediği için olabilir. Ya da iki işlem yalnızca bir kez (nonce) ve aynı gaz değeri ile aynı olabilir, bu nedenle ikinci diğeri küçük olamaz.   |
 
 ### <a name="connection-metrics"></a>Bağlantı ölçümü  
 
 Aşağıdaki tabloda, Azure blok zinciri hizmeti üye kaynağı için toplanan farklı bağlantı ölçümleri listelenmektedir. Bunlar NGıNX ara sunucu ölçümleridir.
 
 
-| Ölçüm adı | Birim  |  Toplama türü| Açıklama |
+| Metrik adı | Birim  |  Toplama türü| Açıklama |
 |---|---|---|---|
-| Kabul edilen bağlantılar   | Sayı  |  Toplam | Kabul edilen istemci bağlantılarının toplam sayısı.   |
-| Etkin bağlantılar  | Sayı  | Ortalama  |  Bekleyen bağlantılar dahil etkin istemci bağlantılarının geçerli sayısı.    |
-|İşlenmiş bağlantılar    | Sayı  | Toplam  | İşlenen bağlantıların toplam sayısı. Genellikle, bazı kaynak sınırlarına ulaşılmadığı sürece parametre değeri kabul edilen bağlantılarla aynıdır.     |
-|İşlenmiş Istekler     |  Sayı | Toplam  | İstemci isteklerinin toplam sayısı.  |
+| Kabul edilen bağlantılar   | Count  |  Toplam | Kabul edilen istemci bağlantılarının toplam sayısı.   |
+| Etkin bağlantılar  | Count  | Average  |  Bekleyen bağlantılar dahil etkin istemci bağlantılarının geçerli sayısı.    |
+|İşlenmiş bağlantılar    | Count  | Toplam  | İşlenen bağlantıların toplam sayısı. Genellikle, bazı kaynak sınırlarına ulaşılmadığı sürece parametre değeri kabul edilen bağlantılarla aynıdır.     |
+|İşlenmiş Istekler     |  Count | Toplam  | İstemci isteklerinin toplam sayısı.  |
 
 
 ### <a name="performance-metrics"></a>Performans Ölçümleri
@@ -156,15 +156,15 @@ Aşağıdaki tabloda, Azure blok zinciri hizmeti üye kaynağı için toplanan f
 Aşağıdaki tabloda, Azure blok zinciri üye kaynağı düğümlerinin her biri için toplanan performans ölçümleri listelenmektedir.  
 
 
-| Ölçüm adı | Birim  |  Toplama türü| Açıklama   |
+| Metrik adı | Birim  |  Toplama türü| Açıklama   |
 |---|---|---|---|
-| CPU kullanım yüzdesi   | Yüzde  |  Maks. | CPU kullanımının yüzdesi.     |
+| CPU kullanım yüzdesi   | Yüzde  |  Maks | CPU kullanımının yüzdesi.     |
 | GÇ okuma baytları   | Kilobayt   | Toplam  |  Blok zinciri üye kaynağının tüm düğümlerinde GÇ okuma baytlarının toplamı.      |
 |GÇ Yazma baytları     | Kilobayt   | Toplam  | GÇ toplamı blok zinciri üye kaynağının tüm düğümlerinde baytları yazar.     |
-|Bellek sınırı       |  Gigabayt   | Ortalama    | Düğüm başına blok zinciri işlemi için kullanılabilir maksimum bellek. |
-|Memory Usage     | Gigabayt  |  Ortalama | Tüm düğümlerde ortalama kullanılan bellek miktarı.  |
-| Bellek kullanım yüzdesi     | Yüzde   | Ortalama  |  Tüm düğümlerde ortalama kullanılan bellek yüzdesi.       |
-|Depolama alanı kullanımı      | Gigabayt   | Ortalama  | Tüm düğümlerde ortalama kullanılan GB depolama alanı.       |
+|Bellek sınırı       |  Gigabayt   | Average    | Düğüm başına blok zinciri işlemi için kullanılabilir maksimum bellek. |
+|Bellek Kullanımı     | Gigabayt  |  Average | Tüm düğümlerde ortalama kullanılan bellek miktarı.  |
+| Bellek kullanım yüzdesi     | Yüzde   | Average  |  Tüm düğümlerde ortalama kullanılan bellek yüzdesi.       |
+|Depolama alanı kullanımı      | Gigabayt   | Average  | Tüm düğümlerde ortalama kullanılan GB depolama alanı.       |
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db9b95f82a18072af538d4aa946431dcef8d9cff
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949635"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154650"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme
 
@@ -24,7 +24,7 @@ ms.locfileid: "74949635"
 
 Bu makaleyi tamamladıktan sonra, marka ve görünümünüzdeki bir kaydolma ve oturum açma özel ilkesine sahip olacaksınız. Azure Active Directory B2C (Azure AD B2C) sayesinde, kullanıcılara sunulan HTML ve CSS içeriğinin neredeyse tam denetimini alırsınız. Özel bir ilke kullandığınızda, Azure portal denetimleri kullanmak yerine, XML 'de UI özelleştirmesini yapılandırırsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Özel ilkelerle çalışmaya başlama](active-directory-b2c-get-started-custom.md)bölümündeki adımları uygulayın. Kaydolma ve yerel hesaplarla oturum açma için çalışan bir özel ilkenize sahip olmanız gerekir.
 
@@ -106,7 +106,7 @@ Aşağıdaki adımları gerçekleştirerek, çıkış noktaları arası kaynak p
 1. **Izin verilen üst bilgiler**için bir yıldız işareti (*) girin.
 1. **Gösterilen üstbilgiler**için bir yıldız işareti (*) girin.
 1. **Maksimum yaş**için 200 girin.
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 ## <a name="test-cors"></a>Test CORS
 
@@ -120,7 +120,7 @@ Aşağıdaki adımları gerçekleştirerek hazırlandığınızı doğrulayın:
 
 UI özelleştirmesini yapılandırmak için, **ContentDefinition** ve onun alt öğelerini temel dosyadan uzantılar dosyasına kopyalayın.
 
-1. İlkenizin temel dosyasını açın. Örneğin,  <em> **`TrustFrameworkBase.xml`** `SocialAndLocalAccounts/`</em>. Bu, önkoşullu olarak elde etmeniz gereken özel ilke başlangıç paketine eklenen ilke dosyalarından biridir, [özel ilkeleri](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)kullanmaya başlayın.
+1. İlkenizin temel dosyasını açın. Örneğin, <em> **`TrustFrameworkBase.xml`** `SocialAndLocalAccounts/`</em>. Bu, önkoşullu olarak elde etmeniz gereken özel ilke başlangıç paketine eklenen ilke dosyalarından biridir, [özel ilkeleri](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)kullanmaya başlayın.
 1. **ContentDefinitions** öğesinin tüm içeriğini arayın ve kopyalayın.
 1. Uzantı dosyasını açın. Örneğin, *TrustFrameworkExtensions. xml*. **Buildingblocks** öğesi için arama yapın. Öğe yoksa, ekleyin.
 1. **Buildingblocks** öğesinin bir alt öğesi olarak kopyaladığınız **ContentDefinitions** öğesinin tüm içeriğini yapıştırın.
@@ -146,19 +146,19 @@ UI özelleştirmesini yapılandırmak için, **ContentDefinition** ve onun alt �
 
 1. Uzantı dosyasını kaydedin.
 
-## <a name="upload-your-updated-custom-policy"></a>Güncelleştirilmiş özel ilkenizi karşıya yükleyin
+## <a name="upload-and-test-your-updated-custom-policy"></a>Güncelleştirilmiş özel ilkenizi karşıya yükleme ve test etme
+
+### <a name="upload-the-custom-policy"></a>Özel ilkeyi karşıya yükle
 
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
-1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
-1. **Kimlik deneyimi çerçevesini**seçin.
-1. **Tüm ilkeler**' e tıklayın.
-1. **Ilkeyi karşıya yükle**' ye tıklayın.
+1. Arama yapın ve **Azure AD B2C**seçin.
+1. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
+1. **Özel Ilkeyi karşıya yükle**' yi seçin.
 1. Daha önce değiştirdiğiniz uzantıları dosyasını karşıya yükleyin.
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>**Şimdi Çalıştır** 'ı kullanarak özel ilkeyi test etme
+### <a name="test-the-custom-policy-by-using-run-now"></a>**Şimdi Çalıştır** 'ı kullanarak özel ilkeyi test etme
 
-1. **Azure AD B2C** sayfasında, **Tüm ilkeler**' e gidin.
-1. Karşıya yüklediğiniz özel ilkeyi seçin ve **Şimdi Çalıştır** düğmesine tıklayın.
+1. Karşıya yüklediğiniz ilkeyi seçin ve **Şimdi Çalıştır**' ı seçin.
 1. Bir e-posta adresi kullanarak kaydolabilirsiniz.
 
 ## <a name="reference"></a>Başvuru

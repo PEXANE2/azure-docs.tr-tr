@@ -2,15 +2,15 @@
 title: Sorun giderme
 services: azure-dev-spaces
 ms.date: 09/25/2019
-ms.topic: conceptual
+ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: a52d27733168c55f9e34d15f6675dd7bce0f8aad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a2eb98af2c73b5a920f3e3bcedb7ab18e9f0430
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438102"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548858"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -252,7 +252,7 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-Bu hata, AKS düğümlerinin çok aşamalı derlemeleri desteklemeyen daha eski bir Docker sürümünü çalıştırdığı için oluşur. Çok aşamalı derlemelerin önüne geçmek için Dockerfile dosyanızı yeniden yazın.
+Bu hata, Azure Dev Spaces Şu anda çok aşamalı derlemeleri desteklemediğinden oluşur. Çok aşamalı derlemelerin önüne geçmek için Dockerfile dosyanızı yeniden yazın.
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>Geliştirme makinenizi bağlarken ağ trafiği AKS kümenize iletilmez
 
@@ -475,3 +475,12 @@ Küme düğümlerinden gelen çıkış trafiğinin kısıtlandığı bir AKS kü
 | gcr.io | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
 | storage.googleapis.com | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
 | azds-<guid>.<location>. azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE%\.azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir|
+
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hata "SubscriptionID\>\<abonelikte \<küme\> kümesi bulunamadı
+
+Kubeconfig dosyanız, Azure Dev Spaces istemci tarafı araçları ile kullanmaya çalıştığınız sayıdan farklı bir kümeyi veya aboneliği hedefliyorsanız bu hatayı görebilirsiniz. Azure Dev Spaces istemci tarafı araçları, kümesini seçmek ve kümeyle iletişim kurmak için [bir veya daha fazla kubeconfig dosyası](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) kullanan *kubectl*davranışını çoğaltır.
+
+Bu sorunu düzeltmek için:
+
+* Geçerli bağlamı güncelleştirmek için `az aks use-dev-spaces -g <resource group name> -n <cluster name>` kullanın. Bu komut, zaten etkinleştirilmemişse AKS kümenizdeki Azure Dev Spaces de etkinleştirilir. Alternatif olarak, geçerli bağlamı güncelleştirmek için `kubectl config use-context <cluster name>` kullanabilirsiniz.
+* Hedeflediğiniz geçerli Azure aboneliğini göstermek ve bunun doğru olduğunu doğrulamak için `az account show` kullanın. `az account set`kullanarak hedeflediğiniz aboneliği değiştirebilirsiniz.
