@@ -5,12 +5,12 @@ metadata:
   title: Team Data Science Process Belgeleri
   description: 'Tahmine dayalı analiz çözümlerinin ve akıllı uygulamaların etkili bir şekilde sunulması için kullanılan çevik, yinelemeli bir veri bilimi metodolojisi olan Team Data Science Process’i kullanmayı öğrenin. TDSP, takım işbirliğinin ve öğrenimin geliştirilmesine yardımcı olur. Veri bilimi girişimlerini başarıyla uygulamayı kolaylaştıran, Microsoft’un ve sektördeki diğer kuruluşların en iyi deneyimlerinin ve yapılarının bileşimini içerir. Hedef, şirketlerin kendi analiz programlarının avantajlarını tam olarak hayata geçirmesine yardımcı olmaktır.'
   services: machine-learning
-  author: cjgronlund
+  author: marktab
   ms.service: machine-learning
   ms.subservice: team-data-science-process
   ms.topic: landing-page
-  ms.date: 01/18/2018
-  ms.author: cgronlun
+  ms.date: 01/10/2020
+  ms.author: marktab
 abstract:
   description: 'Team Data Science Process, tahmine dayalı analiz çözümlerinin ve akıllı uygulamaların etkili bir şekilde sunulması için kullanılan çevik, yinelemeli bir veri bilimi metodolojisidir. TDSP, takım işbirliğinin ve öğrenimin geliştirilmesine yardımcı olur. Veri bilimi girişimlerini başarıyla uygulamayı kolaylaştıran, Microsoft’un ve sektördeki diğer kuruluşların en iyi deneyimlerinin ve yapılarının bileşimini içerir. Hedef, şirketlerin kendi analiz programlarının avantajlarını tam olarak hayata geçirmesine yardımcı olmaktır.'
 sections:

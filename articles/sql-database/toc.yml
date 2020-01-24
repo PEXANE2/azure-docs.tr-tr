@@ -86,12 +86,6 @@
               href: sql-database-ssms-mfa-authentication.md
             - name: Çok faktörlü kimlik doğrulamasını yapılandırma
               href: sql-database-ssms-mfa-authentication-configure.md
-            - name: KAG ile TDE Yapılandırması
-              href: transparent-data-encryption-byok-azure-sql-configure.md
-            - name: TDE KAG anahtarlarını döndürme
-              href: transparent-data-encryption-byok-azure-sql-key-rotation.md
-            - name: TDE koruyucusunu kaldırma
-              href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
         - name: Veri koruma
           items:
             - name: Saydam Veri Şifrelemesi (TDE)
@@ -100,6 +94,12 @@
                   href: transparent-data-encryption-azure-sql.md
                 - name: Kendi Anahtarını Getir ile TDE
                   href: transparent-data-encryption-byok-azure-sql.md
+                - name: KAG ile TDE Yapılandırması
+                  href: transparent-data-encryption-byok-azure-sql-configure.md
+                - name: TDE KAG anahtarlarını döndürme
+                  href: transparent-data-encryption-byok-azure-sql-key-rotation.md
+                - name: TDE koruyucusunu kaldırma
+                  href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
             - name: Dinamik veri maskeleme
               href: sql-database-dynamic-data-masking-get-started.md
             - name: Always encrypted

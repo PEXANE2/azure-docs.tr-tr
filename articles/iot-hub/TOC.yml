@@ -84,9 +84,9 @@
 - name: Kavramlar
   items:
     - name: TLS desteği
-      href: iot-hub-tls.md
+      href: iot-hub-tls-support.md
     - name: TLS 1.0 ve 1.1’in kullanımdan kaldırılması
-      href: tls-1.2-everywhere.md
+      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: İleti zenginleştirmelerine genel bakış
       href: iot-hub-message-enrichments-overview.md
     - name: Cihaz yönetimine genel bakış

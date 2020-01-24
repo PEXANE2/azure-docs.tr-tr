@@ -90,7 +90,7 @@
     - name: Paketleme ve teslim
       items:
         - name: Dinamik paketleme
-          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest'
+          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest, deliver, format, URL, streaming'
           href: dynamic-packaging-overview.md
         - name: Dinamik bildirimler
           href: filters-dynamic-manifest-overview.md
