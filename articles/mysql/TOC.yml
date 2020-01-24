@@ -95,6 +95,10 @@
           href: concepts-data-access-security-private-link.md
         - name: Veri Şifrelemesi
           href: concepts-data-encryption-mysql.md
+        - name: Veri Şifrelemesi
+          href: concepts-data-encryption-mysql.md
+        - name: Azure AD kimlik doğrulaması
+          href: concepts-azure-ad-authentication.md
     - name: İş sürekliliği
       items:
         - name: İş sürekliliğine giriş
@@ -238,6 +242,10 @@
       items:
         - name: Azure portal
           href: howto-data-encryption-portal.md
+    - name: Azure AD tümleştirmesi
+      items:
+        - name: Azure AD tümleştirmesini yapılandırma
+          href: howto-configure-sign-in-azure-ad-authentication.md
     - name: Sunucuyu yeniden başlatma
       items:
         - name: Azure portal
