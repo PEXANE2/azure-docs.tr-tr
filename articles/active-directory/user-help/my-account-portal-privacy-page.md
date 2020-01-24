@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1a030a17ce4f63427eb6bfebbf84be74f6500d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 232a17a21c7172bbf5056ae990679d87600ee6a0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231814"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705097"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Kuruluşunuzun gizlilikle ilgili verilerinizi nasıl kullandığını görüntüleme
 
@@ -33,7 +32,7 @@ Kuruluşunuzun verilerinizi nasıl kullandığını, **Hesap** portalının **Gi
 
 3. Aşağıdakiler dahil olmak üzere bilgileri gözden geçirin:
 
-    - **Hizmetler.** İş veya okul hesabınızı kullanarak bağlı olduğunuz çevrimiçi hizmetler listesi.
+    - **Servislere.** İş veya okul hesabınızı kullanarak bağlı olduğunuz çevrimiçi hizmetler listesi.
 
     - **Kullanım koşulları**. Kuruluşunuzun kullanım koşulları.
 

@@ -12,13 +12,12 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 232f4b6fde84b7e1cd706b62e0ba9a0998b4171e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e739024686bdac497b9b7dd450c5ed46e3cf9a63
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231833"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705029"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Uygulamalarım portalından bir erişim incelemesi gerçekleştirme
 
@@ -40,7 +39,7 @@ Yöneticiniz kendi erişim incelemelerinizi gerçekleştirme izni verdiyse, kend
 
 1. İş veya okul hesabınızda oturum açın.
 
-2. Web tarayıcınızı açın ve https://myapps.microsoft.comgidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.comgibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
+2. Web tarayıcınızı açın ve https://myapps.microsoft.com gidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
@@ -65,7 +64,7 @@ Yöneticiniz kendi erişim incelemelerinizi gerçekleştirme izni verdiyse, kend
 
     ![Örnek metinle ilgili neden kutusunu gösteren erişim gözden geçirme sayfası](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
-7. **Gönder**' i seçin.
+7. Seçin **gönderme**.
 
     Erişim incelemeniz tamamlanmıştır ve **My Apps** portalına dönersiniz.
 

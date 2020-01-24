@@ -1,22 +1,18 @@
 ---
 title: Azure Site Recovery kurtarma planlarını oluşturma/özelleştirme
 description: Azure Site Recovery hizmetini kullanarak olağanüstü durum kurtarma için kurtarma planları oluşturmayı ve özelleştirmeyi öğrenin.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
-ms.topic: article
-ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: 9bb5a1a3aa0c2a4681ddecb5e20df41d481755ec
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.topic: how-to
+ms.date: 01/23/2020
+ms.openlocfilehash: 6540317324a9f0d9bccc046ecf95824d4128bd09
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084518"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705845"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Kurtarma planlarını oluşturma ve özelleştirme
 
-Bu makalede, [Azure Site Recovery](site-recovery-overview.md)' de bir kurtarma planının nasıl oluşturulacağı ve özelleştirileceği açıklanır. Başlamadan önce, kurtarma planları hakkında [daha fazla bilgi edinin](recovery-plan-overview.md) .
+Bu makalede, [Azure Site Recovery](site-recovery-overview.md)'de yük devretme için bir kurtarma planı oluşturma ve özelleştirme açıklanır. Başlamadan önce, kurtarma planları hakkında [daha fazla bilgi edinin](recovery-plan-overview.md) .
 
 ## <a name="create-a-recovery-plan"></a>Kurtarma planı oluşturma
 
@@ -24,22 +20,25 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)' de bir kurtarma p
 2. **Kurtarma planı oluştur**' da plan için bir ad belirtin.
 3. Plandaki makinelere göre bir kaynak ve hedef seçin ve dağıtım modeli için **Kaynak Yöneticisi** ' yi seçin. Kaynak konumu, yük devretme ve kurtarma için etkinleştirilen makinelere sahip olmalıdır. 
 
-   **Yük devretme** | **Kaynak** | **Hedef** 
+    **Yük devretme** | **Kaynak** | **Hedef** 
    --- | --- | ---
-   Azure-Azure arası | Azure bölgesi |Azure bölgesi
-   VMware 'den Azure 'a | Yapılandırma Sunucusu | Azure
-   Fiziksel makineleri Azure 'a | Yapılandırma Sunucusu | Azure   
-   VMM tarafından Azure 'a yönetilen Hyper-V  | VMM görünen adı | Azure
-   VMM 'den Azure 'a Hyper-V | Hyper-V site adı | Azure
-   VMM 'den VMM 'ye |VMM kolay adı | VMM görünen adı 
+   Azure-Azure arası | Azure bölgesini seçin | Azure bölgesini seçin
+   VMware 'den Azure 'a | Yapılandırma sunucusunu seçin | Azure 'ı seçin
+   Fiziksel makineleri Azure 'a | Yapılandırma sunucusunu seçin | Azure 'ı seçin   
+   Hyper-V’den Azure’a | Hyper-V site adını seçin | Azure 'ı seçin
+   Hyper-V (VMM tarafından yönetilen) Azure 'a  | VMM sunucusunu seçin | Azure 'ı seçin
+  
+    Şunlara dikkat edin:
+    -  Yalnızca kaynak konumdan Azure 'a yük devretme için bir kurtarma planı kullanabilirsiniz. Azure 'dan yeniden çalışma için bir kurtarma planı kullanamazsınız.
+    - Kaynak konumu, yük devretme ve kurtarma için etkinleştirilen makinelere sahip olmalıdır. 
+    - Bir kurtarma planı aynı kaynak ve hedefe sahip makineler içerebilir. 
+    - VMM tarafından yönetilen VMware VM 'leri ve Hyper-V VM 'lerini aynı planda ekleyebilirsiniz.
+    - VMware VM 'Leri ve fiziksel sunucuları aynı planda olabilir.
 
-   > [!NOTE]
-   > Bir kurtarma planı aynı kaynak ve hedefe sahip makineler içerebilir. VMM tarafından yönetilen VMware ve Hyper-V VM 'Leri aynı planda olamaz. VMware VM 'Leri ve fiziksel sunucular, kaynağın bir yapılandırma sunucusu olduğu planda olabilir.
-
-2. **Öğe seçin sanal makineler**bölümünde, plana eklemek istediğiniz makineleri (veya çoğaltma grubunu) seçin. Daha sonra, **Tamam**'a tıklayın.
+4. **Öğe seçin sanal makineler**bölümünde, plana eklemek istediğiniz makineleri (veya çoğaltma grubunu) seçin. Daha sonra, **Tamam**'a tıklayın.
     - Makineler, planda varsayılan grup (Grup 1) olarak eklenir. Yük devretmeden sonra, bu gruptaki tüm makineler aynı anda başlatılır.
     - Yalnızca belirttiğiniz kaynak ve hedef konumlarda makineler seçebilirsiniz. 
-1. Planı oluşturmak için **Tamam** ' ı tıklatın.
+5. Planı oluşturmak için **Tamam** ' ı tıklatın.
 
 ## <a name="add-a-group-to-a-plan"></a>Plana grup ekleme
 
@@ -64,10 +63,10 @@ Bir komut dosyası veya el ile eylem ekleyerek bir kurtarma planını özelleşt
     **Senaryo** | **Yük devretme** | **İlk duruma döndürme**
     --- | --- | --- 
     Azure-Azure arası  | Runbook | Runbook
-    Vmware’den Azure’a | Runbook | NA 
-    VMM 'den Azure 'a Hyper-V | Runbook | Betik
-    Azure'da Hyper-V sitesi | Runbook | NA
-    VMM 'den ikincil VMM 'ye | Betik | Betik
+    Vmware’den Azure’a | Runbook | Yok 
+    VMM 'den Azure 'a Hyper-V | Runbook | Komut Dosyası
+    Hyper-V sitesinden Azure'a | Runbook | Yok
+    VMM 'den ikincil VMM 'ye | Komut Dosyası | Komut Dosyası
 
 1. Kurtarma planında, eylemin eklenmesi gereken adıma tıklayın ve eylemin ne zaman gerçekleşmesi gerektiğini belirtin:
     1. Eylemin yük devretmeden sonra gruptaki makineler başlatılmadan önce gerçekleşmesini istiyorsanız, **ön eylem Ekle**' yi seçin.

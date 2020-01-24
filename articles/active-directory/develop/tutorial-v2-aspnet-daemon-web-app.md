@@ -16,13 +16,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d884987ed5fb00d4078a38aa37d463a81630ca7e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec6664e7c55057c29c5b741203b326ce460c6e91
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423389"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701238"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Öğretici: Microsoft Identity platform uç noktasını kullanan çok kiracılı bir Daemon oluşturma
 
@@ -155,7 +154,7 @@ Kurulum betiklerini kullandıysanız, sizin için aşağıdaki değişiklikler u
 
 Oturum açtığınızda, uygulama öncelikle oturumunuzu açmak ve Kullanıcı profilinizi okumak için sizden izin ister. Bu izin, uygulamanın bir iş kullanıcısı olduğunuzdan emin olmanızı sağlar.
 
-![Kullanıcı izni](./media/tutorial-v2-aspnet-daemon-webapp/firstconsent.png)
+![Kullanıcı onayı](./media/tutorial-v2-aspnet-daemon-webapp/firstconsent.png)
 
 Uygulama daha sonra Microsoft Graph aracılığıyla Azure AD kiracınızdan bir kullanıcı listesini eşitlemeye çalışır. Bu, kiracınızı uygulamaya bağlamak için sizi (kiracı yöneticisi) ister.
 

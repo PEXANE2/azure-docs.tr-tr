@@ -13,13 +13,12 @@ ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bfdeaba26e98f600b81b3a473326ff4086f1aa2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b15a83fdde73a1c2c1d91f66017bbf927a2df584
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967159"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697464"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
@@ -34,7 +33,7 @@ Bu makalede, Azure Active Directory (Azure AD) uygulama galerisinde bir uygulama
 - Karşılıklı müşteriler, adım adım bir yapılandırma öğreticisini alır.
 - Etki alanları arası kimlik yönetimi ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) için sistemi kullanan müşteriler aynı uygulama için sağlama kullanabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Federasyon uygulamaları (açık KIMLIK ve SAML/WS-beslenir) için, uygulamanın Azure AD uygulama galerisinde listelenen hizmet olarak yazılım (SaaS) modelini desteklemesi gerekir. Kurumsal Galeri uygulamaları, belirli bir müşteriyi değil birden çok müşteri yapılandırmasını desteklemelidir.
 - Açık KIMLIK bağlantısı için, uygulamanın çok kiracılı olması ve [Azure AD onay çerçevesinin](consent-framework.md) uygulama için uygun şekilde uygulanması gerekir. Kullanıcı, herhangi bir müşterinin uygulamaya onay sağlayabilmesi için, oturum açma isteğini ortak bir uç noktaya gönderebilir. Kullanıcı erişimini, kiracı KIMLIĞINE ve Kullanıcı belirtecine göre belirteçte alınan UPN 'yi kontrol edebilirsiniz.
@@ -143,7 +142,7 @@ Müşteri tarafından istenen uygulamaların akışı aşağıda verilmiştir.
 
 ![Müşteri tarafından istenen uygulamalar akışını gösterir](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Zaman çizelgeleri
+## <a name="timelines"></a>Zaman Çizelgeleri
 
 Galerideki bir SAML 2,0 veya WS-Besme uygulamasını listeleme işleminin zaman çizelgesi 7 ila 10 iş gününe kadar olur.
 

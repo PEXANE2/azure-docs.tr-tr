@@ -1,18 +1,18 @@
 ---
 title: Mantıksal uygulamalarınızı ve Runbook 'larınızı güncelleştirerek Azure Izleyici klasik uyarılar geçişine hazırlanma
+author: yanivlavi
 description: Web kancaları, Logic Apps ve Runbook 'larınızı gönüllü geçiş için hazırlamak üzere nasıl değiştireceğinizi öğrenin.
-author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: snmuvva
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5235db5cab39be6e36bdf145d3edc7c73fe9da54
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 58ba95ff60ddccf909578a673110c870caf57376
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827399"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705573"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Mantıksal uygulamalarınızı ve Runbook 'larınızı klasik uyarı kurallarının geçirilmesi için hazırlama
 
@@ -25,7 +25,7 @@ Klasik uyarı kurallarınızı yeni uyarı kurallarına göre gönüllü olarak 
 
 ## <a name="api-changes"></a>API değişiklikleri
 
-Klasik uyarı kuralları (`microsoft.insights/alertrules`) oluşturan ve yöneten API 'ler, yeni ölçüm uyarıları (`microsoft.insights/metricalerts`) oluşturan ve yöneten API 'lerden farklıdır. Hemen klasik uyarı kuralları oluşturup yönetiyorsanız, dağıtım betiklerinizi yeni API 'lerle çalışacak şekilde güncelleştirin.
+Klasik uyarı kuralları (`microsoft.insights/alertrules`) oluşturan ve yöneten API 'ler, yeni ölçüm uyarıları oluşturan ve yöneten API 'lerden farklıdır (`microsoft.insights/metricalerts`). Hemen klasik uyarı kuralları oluşturup yönetiyorsanız, dağıtım betiklerinizi yeni API 'lerle çalışacak şekilde güncelleştirin.
 
 Aşağıdaki tabloda hem klasik hem de yeni uyarılar için programlı arabirimlerin bir başvurusu verilmiştir:
 
@@ -48,7 +48,7 @@ Web kancası yük alanlarını klasik biçimden yeni biçime eşlemek için aşa
 |Uyarı hakkında bağlamsal bilgiler     | **bağlam**        | **Data. Context**        |
 |Uyarının etkinleştirildiği veya çözümlendiği zaman damgası     | **Context. Timestamp**       | **Data. Context. Timestamp**        |
 | Uyarı kuralı KIMLIĞI | **context.id** | **data.context.id** |
-| Uyarı kuralı adı | **context.name** | **data.context.name** |
+| Uyarı kuralının adı | **context.name** | **data.context.name** |
 | Uyarı kuralının açıklaması | **Context. Description** | **Data. Context. Description** |
 | Uyarı kuralı koşulu | **Context. Condition** | **Data. Context. Condition** |
 | Ölçüm adı | **Context. Condition. metricName** | **Data. Context. Condition. allOf [0]. metricName** |

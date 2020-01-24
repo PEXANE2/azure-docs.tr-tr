@@ -4,17 +4,17 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 02/21/2019
 ms.author: rgarcia
-ms.openlocfilehash: 72616d5d79b4dbdb8e14463c706c1626eeb50e97
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9bd213b63b69a25fb2530cd8f6659abf5357616a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188068"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694548"
 ---
 ## <a name="set-up-authentication"></a>Kimlik doğrulamasını ayarlama
 
-Hizmete erişmek için bir hesap anahtarı, erişim belirteci veya Azure Active Directory kimlik doğrulama belirteci sağlamanız gerekir.
+Hizmete erişmek için bir hesap anahtarı, erişim belirteci veya Azure Active Directory kimlik doğrulama belirteci sağlamanız gerekir. Bu konuda, [kimlik doğrulama kavramı sayfasında](/azure/spatial-anchors/concepts/authentication)daha fazla bilgi edinebilirsiniz.
 
-### <a name="account-keys"></a>Hesabı anahtarları
+### <a name="account-keys"></a>Hesap anahtarları
 
-Hesap anahtarlarını uzamsal bağlayıcılarını Azure hizmeti ile kimlik doğrulaması için uygulamanızı sağlayan bir kimlik bilgisi var. Hesap anahtarlarını amacı, hızla başlamanıza yardımcı olmaktır. Özellikle geliştirme aşamasında Azure uzamsal yer işaretleri, uygulamanızın tümleştirme. Bu nedenle, geliştirme sırasında istemci uygulamalarınıza ekleyerek, hesap anahtarlarını kullanabilirsiniz. Geliştirme ilerledikçe, yüksek oranda üretim düzeyinde erişim belirteçleri veya Azure Active Directory kullanıcı kimlik doğrulaması tarafından desteklenen bir kimlik doğrulama mekanizması taşımak için önerilir. Geliştirme için bir hesap anahtarını almak için Azure uzamsal bağlayıcılarını hesabınızı ziyaret edin ve "Anahtarlar" sekmesine gidin.
+Hesap anahtarları, uygulamanızın Azure uzamsal bağlayıcı hizmeti ile kimlik doğrulamasına izin veren bir kimlik bilgileridir. Hesap anahtarlarının amaçlanan amacı hızla kullanmaya başlamanıza yardımcı olur. Özellikle uygulamanızın Azure uzamsal bağlayıcılarla tümleştirilmesine yönelik geliştirme aşamasında. Bu nedenle, geliştirme sırasında istemci uygulamalarınıza katıştırarak hesap anahtarlarını kullanabilirsiniz. Geliştirme ötesinde ilerleyerek, üretim düzeyi olan, erişim belirteçleri tarafından desteklenen bir kimlik doğrulama mekanizmasına veya Kullanıcı kimlik doğrulamasına Azure Active Directory geçmeniz önemle önerilir. Geliştirmeye yönelik bir hesap anahtarı almak için, Azure uzamsal bağlayıcı hesabınızı ziyaret edin ve "anahtarlar" sekmesine gidin.

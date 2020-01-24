@@ -14,13 +14,12 @@ ms.date: 10/07/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c195a5da6b04a919947c0ae65d7d6109115627d2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 55c7ee6711c6001745053b850c1b4e1859af5dbe
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918398"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699028"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 'de yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -86,7 +85,7 @@ Oturum belirtecinin artık kabul edilmeden önce ilk oturum belirtecinin verilme
 Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi türüdür. Belirtilen belirteç ömrünü denetlemek için ilkenin özelliklerini kullanın. İlke ayarlanmamışsa, sistem varsayılan yaşam süresi değerini uygular.
 
 ### <a name="configurable-token-lifetime-properties"></a>Yapılandırılabilir belirteç ömrü özellikleri
-| Özellik | İlke Özellik dizesi | Etkiler | Varsayılan | Minimum | Maksimum |
+| Özellik | İlke Özellik dizesi | Ekranlarını | Varsayılan | Minimum | Maksimum |
 | --- | --- | --- | --- | --- | --- |
 | Erişim belirteci ömrü |AccessTokenLifetime<sup>2</sup> |Erişim belirteçleri, KIMLIK belirteçleri, SAML2 belirteçleri |1 saat |10 dakika |1 gün |
 | Yenileme belirteci en fazla etkin olmayan süre |Maxınactivetime |Belirteçleri Yenile |90 gün |10 dakika |90 gün |
@@ -98,8 +97,8 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 * <sup>1</sup>365 gün, bu öznitelikler için ayarlanoluşturulabilecek maksimum açık uzunluktadır.
 * <sup>2</sup> Microsoft ekipleri web istemcisinin çalıştığından emin olmak için, Microsoft ekipleri için AccessTokenLifetime 'ın 15 dakikadan fazla tutulması önerilir.
 
-### <a name="exceptions"></a>Özel Durumlar
-| Özellik | Etkiler | Varsayılan |
+### <a name="exceptions"></a>Özel durumlar
+| Özellik | Ekranlarını | Varsayılan |
 | --- | --- | --- |
 | Yenileme belirteci maksimum yaşı (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |Belirteçleri Yenile (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |12 saat |
 | Yenileme belirteci en fazla etkin olmayan süre (gizli istemciler için verilir) |Belirteçleri Yenile (gizli istemciler için verilen) |90 gün |
@@ -211,7 +210,7 @@ Uygulamalar, hizmet sorumluları ve genel kuruluşunuz için belirteç yaşam s�
 * Web API 'sini çağıran yerel uygulama için bir ilke oluşturma
 * Gelişmiş bir ilkeyi yönetme
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Aşağıdaki örneklerde uygulamalar, hizmet sorumluları ve genel kurumunuzun ilkelerini oluşturur, güncelleştirir, bağlar ve silebilirsiniz. Azure AD 'de yeni başladıysanız, bu örneklere geçmeden önce [bir Azure AD kiracısı alma](quickstart-create-new-tenant.md) hakkında bilgi almanızı öneririz.  
 
 Başlamak için aşağıdaki adımları uygulayın:

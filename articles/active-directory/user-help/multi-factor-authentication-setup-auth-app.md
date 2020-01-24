@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3a09ccdc867cb6d0e84a6e0f85e532839604f5e
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 078379c52c7e7fe5072ecc19c95d6b7e40b5f876
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619442"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705267"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>İki öğeli doğrulama yöntemi olarak bir Authenticator uygulaması ayarlama
 
@@ -30,7 +29,7 @@ Bir kimlik doğrulayıcı uygulamasını, mobil cihazınıza bildirim göndermek
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-send-notifications"></a>Bildirimleri göndermek için Microsoft Authenticator uygulamasını ayarlama
 
-1. **Ek güvenlik doğrulaması** sayfasında, **adım 1 ' den **mobil uygulama** ' yı seçin: Sizinle** sizinle iletişim kuruyoruz.
+1. **Ek güvenlik doğrulaması** sayfasında, 1. adımdaki **mobil uygulama** ' yı seçin ve sizinle **nasıl iletişim kuracağız** ? bölümüne başvurun.
 
 2. **Mobil uygulama alanını nasıl kullanmak istediğinizi** **doğrulamak için bildirimleri al** ' ı seçin ve ardından **Ayarla**' yı seçin.
 
@@ -55,11 +54,11 @@ Bir kimlik doğrulayıcı uygulamasını, mobil cihazınıza bildirim göndermek
 
 6. Mobil cihazınızda **Onayla**' yı seçin.
 
-7. Bilgisayarınızda, cep telefonu numaranızı **3. adıma ekleyin: Mobil uygulama** alanına erişiminizi kaybetmeniz durumunda **İleri**' yi seçin.
+7. Bilgisayarınızda mobil cihaz telefon numaranızı **3. adıma ekleyin: mobil uygulama alanına erişiminizi kaybetmeniz durumunda** **İleri**' yi seçin.
 
     Mobil cihaz telefon numaranızı, herhangi bir nedenden dolayı bir mobil uygulamaya erişemeyecek veya bu uygulama için kullanabileceğiniz bir yedekleme görevi görecek şekilde eklemeyi kesinlikle öneririz.
 
-8. **Adım 4: Mevcut uygulamalar** alanınızı kullanmaya devam edin, belirtilen uygulama parolasını kopyalayın ve güvenli bir yere yapıştırın.
+8. **4. Adım: mevcut uygulamalarınızı kullanmaya devam** edin alanında, belirtilen uygulama parolasını kopyalayın ve güvenli bir yere yapıştırın.
 
     ![Ek güvenlik doğrulama sayfasının uygulama parolaları alanı](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
@@ -70,7 +69,7 @@ Bir kimlik doğrulayıcı uygulamasını, mobil cihazınıza bildirim göndermek
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-use-verification-codes"></a>Microsoft Authenticator uygulamasını doğrulama kodlarını kullanacak şekilde ayarlama
 
-1. **Ek güvenlik doğrulaması** sayfasında, **adım 1 ' den **mobil uygulama** ' yı seçin: Sizinle** sizinle iletişim kuruyoruz.
+1. **Ek güvenlik doğrulaması** sayfasında, 1. adımdaki **mobil uygulama** ' yı seçin ve sizinle **nasıl iletişim kuracağız** ? bölümüne başvurun.
 
 2. **Mobil uygulama alanını nasıl kullanmak** istiyorsunuz listesinden **doğrulama kodunu kullan** ' ı seçin ve ardından **Ayarla**' yı seçin.
 
@@ -93,15 +92,15 @@ Bir kimlik doğrulayıcı uygulamasını, mobil cihazınıza bildirim göndermek
 
     Kimlik doğrulayıcı uygulaması, test olarak bir doğrulama kodu ister.
 
-6. Microsoft Authenticator uygulamadan iş veya okul hesabınıza gidin, 6 basamaklı kodu **kopyalayın ve 2. adıma yapıştırın: Bilgisayarınızdaki mobil uygulama** kutusundan doğrulama kodunu girin ve ardından **Doğrula**' yı seçin.
+6. Microsoft Authenticator uygulamadan iş veya okul hesabınıza gidin, 6 basamaklı kodu uygulamadan **2. adıma yapıştırın: bilgisayarınızdaki mobil uygulama kutusundan doğrulama kodunu girin** ve ardından **Doğrula**' yı seçin.
 
     ![Doğrulama kodu testi ile ek güvenlik doğrulama sayfası](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-test.png)
 
-7. Bilgisayarınızda, cep telefonu numaranızı **3. adıma ekleyin: Mobil uygulama** alanına erişiminizi kaybetmeniz durumunda **İleri**' yi seçin.
+7. Bilgisayarınızda mobil cihaz telefon numaranızı **3. adıma ekleyin: mobil uygulama alanına erişiminizi kaybetmeniz durumunda** **İleri**' yi seçin.
 
     Mobil cihaz telefon numaranızı, herhangi bir nedenden dolayı bir mobil uygulamaya erişemeyecek veya bu uygulama için kullanabileceğiniz bir yedekleme görevi görecek şekilde eklemeyi kesinlikle öneririz.
 
-8. **Adım 4: Mevcut uygulamalar** alanınızı kullanmaya devam edin, belirtilen uygulama parolasını kopyalayın ve güvenli bir yere yapıştırın.
+8. **4. Adım: mevcut uygulamalarınızı kullanmaya devam** edin alanında, belirtilen uygulama parolasını kopyalayın ve güvenli bir yere yapıştırın.
 
     ![Ek güvenlik doğrulama sayfasının uygulama parolaları alanı](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 

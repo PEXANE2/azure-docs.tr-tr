@@ -13,13 +13,12 @@ ms.date: 04/23/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80822c2a745d7c9c5b3f56b7921fcc83c5c807d1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dbf08e23b2bc1f657363f69df55763437e6c8a90
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963248"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695066"
 ---
 # <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>MSAL.NET kullanarak kendi HttpClient ve proxy 'nizi sağlama
 [Ortak bir istemci uygulamasını başlatırken](msal-net-initializing-client-applications.md), kendi httpistemcinizi sağlamak için `.WithHttpClientFactory method` kullanabilirsiniz.  Kendi HttpClient 'ın sağlanması, bir HTTP proxy 'sinin ayrıntılı denetimi, Kullanıcı Aracısı üstbilgilerini özelleştirme veya MSAL belirli bir HttpClient (örneğin, ASP.NET Core Web Apps/API 'Leri) kullanmasına zorlama gibi gelişmiş senaryolar sağlar.

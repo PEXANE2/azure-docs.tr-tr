@@ -3,22 +3,34 @@ title: Bulut iş yüklerini korumaya yardımcı olan güvenlik özellikleri
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: e4519a342e1be3244b5d4598880e9ad490f50030
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028215"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705505"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup kullanan bulut iş yüklerini korumanıza yardımcı olacak güvenlik özellikleri
 
-Kötü amaçlı yazılım, fidye yazılımı ve yetkisiz erişim gibi güvenlik sorunlarına karşı duyulan endişe gittikçe artıyor. Bu güvenlik sorunları, hem parasal anlamda hem de veriler açısından maliyetli olabilir. Bu tür saldırılara karşı koruma için Azure Backup artık, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olacak güvenlik özellikleri sağlamaktadır. Bu tür bir özellik, geçici bir DELETE. Geçici bir aktör bir VM 'nin yedeklemesini silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin bu ek 14 gün boyunca saklanması müşteriye hiçbir ücret vermez. Azure, verilerinizin güvenliğini sağlamak için [depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) kullanarak bekleyen tüm yedeklenen verileri de şifreler.
+Kötü amaçlı yazılım, fidye yazılımı ve yetkisiz erişim gibi güvenlik sorunlarına karşı duyulan endişe gittikçe artıyor. Bu güvenlik sorunları, hem parasal anlamda hem de veriler açısından maliyetli olabilir. Bu tür saldırılara karşı koruma için Azure Backup artık, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olacak güvenlik özellikleri sağlamaktadır.
+
+Bu tür bir özellik, geçici bir DELETE. Geçici bir aktör bir VM 'nin yedeklemesini silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin ek 14 gün bekletmesi müşteriye hiçbir ücret vermez. Azure, verilerinizin güvenliğini sağlamak için [depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) kullanarak bekleyen tüm yedeklenen verileri de şifreler.
+
+Azure sanal makineleri için geçici silme koruması genel kullanıma sunulmuştur.
+
+>[!NOTE]
+>Azure VM 'de SQL Server için geçici silme ve Azure VM iş yükleri SAP HANA için geçici silme, artık önizleme aşamasında kullanıma sunuldu.<br>
+>Önizlemeye kaydolmak için AskAzureBackupTeam@microsoft.com adresinden bize yazın
+
+## <a name="soft-delete"></a>Geçici silme
+
+### <a name="soft-delete-for-vms"></a>VM 'Ler için geçici silme
+
+VM 'Ler için geçici silme, sanal makinelerinizin yedeklerini istenmeden silinmeye karşı korur. Yedeklemeler silindikten sonra bile, 14 ek gün boyunca geçici silme durumunda saklanır.
 
 > [!NOTE]
 > Geçici silme yalnızca silinen yedekleme verilerini korur. Bir VM, yedekleme olmadan silinirse, geçici silme özelliği verileri korumaz. Tam esnekliği sağlamak için tüm kaynakların Azure Backup korumalı olması gerekir.
 >
-
-## <a name="soft-delete"></a>Geçici silme
 
 ### <a name="supported-regions"></a>Desteklenen bölgeler
 

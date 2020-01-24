@@ -12,13 +12,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6bd060e0c627e8183f8d7f7b449f8d6f19c951b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b7f9daa61e012a9420702d7df7411d0c07c6e193
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967056"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697872"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory için Geliştirici Kılavuzu
 
@@ -86,7 +85,7 @@ Geliştiriciler bu zorluğu alabilir ve Azure AD 'ye yeni bir istek ekleyebilir.
 
 ## <a name="scenarios"></a>Senaryolar
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Azure AD koşullu erişimi, [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)eklenen bir özelliktir. [Lisanssız kullanım raporundaki](../active-directory-conditional-access-unlicensed-usage-report.md)lisanslama gereksinimleri hakkında daha fazla bilgi edinebilirsiniz. Geliştiriciler, Azure AD Premium içeren Enterprise Mobility Suite 'e ücretsiz bir abonelik içeren [Microsoft Geliştirici ağı](https://msdn.microsoft.com/dn308572.aspx)'na katılabilir.
 

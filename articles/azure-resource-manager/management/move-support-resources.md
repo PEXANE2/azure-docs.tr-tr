@@ -2,13 +2,13 @@
 title: Kaynak türüne göre işlem desteğini taşıma
 description: Yeni bir kaynak grubuna veya aboneliğe taşınabilecek Azure Kaynak türlerini listeler.
 ms.topic: conceptual
-ms.date: 01/17/2020
-ms.openlocfilehash: da08775ed6c694b95ecec452507f94638091db0c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 01/22/2020
+ms.openlocfilehash: 3fe404b8b501056f75ac45ccebc5bdbed1acbe43
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261067"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705488"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 Bu makalede, bir Azure Kaynak türünün taşıma işlemini destekleyip desteklemediğini listelenmiştir. Ayrıca bir kaynağı taşırken göz önünde bulundurmanız gereken özel koşullar hakkında bilgi sağlar.
@@ -160,6 +160,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Teroyformoss](#microsoftterraformoss)
 > - [Microsoft. Timeseriesınsights](#microsofttimeseriesinsights)
 > - [Microsoft. Token](#microsofttoken)
+> - [microsoft.visualstudio](#microsoftvisualstudio)
 > - [Microsoft. Vmwarechoparlör basit](#microsoftvmwarecloudsimple)
 > - [Microsoft. VSOnline](#microsoftvsonline)
 > - [Microsoft. Web](#microsoftweb)
@@ -1521,6 +1522,18 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | depolar | Evet | Evet |
+
+## <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | account | Hayır | Hayır |
+> | Hesap/uzantı | Hayır | Hayır |
+> | hesap/proje | Hayır | Hayır |
+
+> [!IMPORTANT]
+> Azure DevOps aboneliğini değiştirmek için, bkz. [faturalandırma için kullanılan Azure aboneliğini değiştirme](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft. Vmwarechoparlör basit
 

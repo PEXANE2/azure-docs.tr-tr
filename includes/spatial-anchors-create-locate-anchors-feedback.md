@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: 685d982835042aa4a697d19a650e8dcb1476b400
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7b9954930c668e338cc289e948a5591c09ec2654
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188069"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694552"
 ---
-## <a name="provide-feedback-to-the-user"></a>Kullanıcıya geri bildirim sağlayın
+## <a name="provide-feedback-to-the-user"></a>Kullanıcıya geri bildirim sağlama
 
-Güncelleştirilmiş oturum olayı işlemek için kod yazabilirsiniz. Oturum, ortamınızı anlayış artırır her zaman bu olayı tetikler. Bunu olanak tanır:
+Oturum güncelleştirilmiş olayını işlemek için kod yazabilirsiniz. Bu olay, oturum, her ne kadar her ne kadar gelişdiğinde bu olay ateşlenir. Bunu yaptığınızda şunları yapmanıza izin verir:
 
-- Cihaz hareket ettikçe kullanıcıya geri bildirim sağlamak ve bunun ortam anlama oturum güncelleştirir.
-- Var. hangi noktada yeterli oluşturmak için uzamsal veri izlenen belirlemek veya uzamsal bağlayıcılarını bulma - daha sonraki bir adımda öğreneceğiz.
+- Cihaz taşındıkça ve oturum ortamının öğrendiğini öğrendiğinde kullanıcıya geri bildirim sağlamak için `UserFeedback` sınıfını kullanın. Bunu yapmak için
+- Uzamsal Tutturucuların oluşturulması için yeterince izlenen uzamsal veriler olduğunu belirleme. Bunu `ReadyForCreateProgress` ya da `RecommendedForCreateProgress`ile belirlersiniz. `ReadyForCreateProgress` 1 ' den sonra, bir bulut uzamsal bağlayıcısını kaydetmek için yeterli veri sunuyoruz, ancak `RecommendedForCreateProgress` 1 ' in üzerine gelene kadar beklemeniz önerilir.

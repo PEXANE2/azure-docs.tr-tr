@@ -13,13 +13,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78acb1f27b27c53aaaac508e0aa99a5b9c14ff2d
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 74d443cc87a71950a31732db48e94ea3b5ced7ba
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914928"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705318"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>İki adımlı doğrulama için uygulama parolalarını yönetme
 
@@ -43,11 +42,11 @@ Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
 İki öğeli doğrulamayı nasıl kullanacağınızı temel alarak uygulama parolaları oluşturabilir ve silebilirsiniz:
 
-- **Kuruluşunuz iki öğeli doğrulama ve ek güvenlik doğrulama sayfası kullanır.** Kuruluşunuzda iki öğeli doğrulama ile iş veya okul hesabınızı ( alain@contoso.comgibi) kullanıyorsanız, uygulama parolalarınızı [ek güvenlik doğrulama sayfasından](https://account.activedirectory.windowsazure.com/Proofup.aspx)yönetebilirsiniz. Ayrıntılı yönergeler için, bu makaledeki [ek güvenlik doğrulaması sayfasını kullanarak uygulama parolaları oluşturma ve silme](#create-and-delete-app-passwords-from-the-additional-security-verification-page) bölümüne bakın.
+- **Kuruluşunuz iki öğeli doğrulama ve ek güvenlik doğrulama sayfası kullanır.** Kuruluşunuzda iki öğeli doğrulama ile iş veya okul hesabınızı (örneğin, alain@contoso.com) kullanıyorsanız, uygulama parolalarınızı [ek güvenlik doğrulama sayfasından](https://account.activedirectory.windowsazure.com/Proofup.aspx)yönetebilirsiniz. Ayrıntılı yönergeler için, bu makaledeki [ek güvenlik doğrulaması sayfasını kullanarak uygulama parolaları oluşturma ve silme](#create-and-delete-app-passwords-from-the-additional-security-verification-page) bölümüne bakın.
 
-- **Kuruluşunuz iki öğeli doğrulama ve Office 365 portalını kullanır.** Kuruluşunuzda iş veya okul hesabınızı (örneğin, alain@contoso.com), iki faktörlü doğrulamayı ve Office 365 uygulamalarını kullanıyorsanız, uygulama parolalarınızı [Office 365 Portal sayfasından](https://www.office.com)yönetebilirsiniz. Ayrıntılı yönergeler için, bu makaledeki [Office 365 portalını kullanarak uygulama parolaları oluşturma ve silme](#create-and-delete-app-passwords-using-the-office-365-portal) bölümüne bakın.
+- **Kuruluşunuz iki öğeli doğrulama ve Office 365 portalını kullanır.** Kuruluşunuzda iş veya okul hesabınızı (örneğin, alain@contoso.com), iki öğeli doğrulama ve Office 365 uygulamalarını kullanıyorsanız, uygulama parolalarınızı [office 365 Portal sayfasından](https://www.office.com)yönetebilirsiniz. Ayrıntılı yönergeler için, bu makaledeki [Office 365 portalını kullanarak uygulama parolaları oluşturma ve silme](#create-and-delete-app-passwords-using-the-office-365-portal) bölümüne bakın.
 
-- **Kişisel Microsoft hesabı iki öğeli doğrulama kullanıyorsunuz.** İki öğeli doğrulamayla bir kişisel Microsoft hesabı ( alain@outlook.comgibi) kullanıyorsanız, uygulama parolalarınızı [güvenlik temel bilgileri sayfasından](https://account.microsoft.com/security/)yönetebilirsiniz. Ayrıntılı yönergeler için bkz. [iki aşamalı doğrulamayı desteklemeyen uygulamalarla uygulama parolaları kullanma](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
+- **Kişisel Microsoft hesabı iki öğeli doğrulama kullanıyorsunuz.** İki öğeli doğrulamayla bir kişisel Microsoft hesabı (örneğin, alain@outlook.com) kullanıyorsanız, uygulama parolalarınızı [güvenlik temel bilgileri sayfasından](https://account.microsoft.com/security/)yönetebilirsiniz. Ayrıntılı yönergeler için bkz. [iki aşamalı doğrulamayı desteklemeyen uygulamalarla uygulama parolaları kullanma](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
 
 ## <a name="create-and-delete-app-passwords-from-the-additional-security-verification-page"></a>Ek güvenlik doğrulama sayfasından uygulama parolaları oluşturma ve silme
 

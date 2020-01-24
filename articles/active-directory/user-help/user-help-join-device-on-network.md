@@ -12,13 +12,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b122d70179f22c91028c8343b23d74cc616b1f76
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 149c0298ee7883aa130756bfc4d0cbbb9e002065
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028538"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704655"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>İş cihazınızı kuruluşunuzun ağına ekleyin
 Potansiyel olarak kısıtlanmış kaynaklara erişebilmek için, iş sahibi Windows 10 cihazınızı kuruluşunuzun ağına katın.
@@ -58,7 +57,7 @@ Cihazınız yepyeni ve henüz ayarlanmamışsa, cihazınızı ağa katmak için 
 ## <a name="to-make-sure-youre-joined"></a>Katıldığınızdan emin olmak için
 Ayarlarınıza bakarak katıldığınızdan emin olabilirsiniz.
 
-1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.
+1. **Ayarlar**'ı açıp **Hesaplar**'ı seçin.
 
     ![Ayarlar ekranındaki hesaplar](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
@@ -70,7 +69,7 @@ Ayarlarınıza bakarak katıldığınızdan emin olabilirsiniz.
 ## <a name="to-join-an-already-configured-windows-10-device"></a>Zaten yapılandırılmış bir Windows 10 cihazına katmak için
 Cihazınızda bir süredir varsa ve bu cihaz zaten ayarlandıysa, cihazınızı ağa katmak için aşağıdaki adımları izleyebilirsiniz.
 
-1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.
+1. **Ayarlar**'ı açıp **Hesaplar**'ı seçin.
 
 2. **İşe veya okula erişim**' i seçin ve ardından **Bağlan**' ı seçin.
 
@@ -103,7 +102,7 @@ Cihazınızda bir süredir varsa ve bu cihaz zaten ayarlandıysa, cihazınızı 
 ## <a name="to-make-sure-youre-joined"></a>Katıldığınızdan emin olmak için
 Ayarlarınıza bakarak katıldığınızdan emin olabilirsiniz.
 
-1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.
+1. **Ayarlar**'ı açıp **Hesaplar**'ı seçin.
 
     ![Ayarlar ekranındaki hesaplar](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 

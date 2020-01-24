@@ -13,13 +13,12 @@ ms.date: 04/05/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2739f5db8c50449e3481ccdfb495b30edba54ce1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 68040c8ee22454c300296493b6c840eabbca98aa
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966988"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697141"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Nasıl yapılır: bir uygulamanın yayımcı etki alanını yapılandırma
 
@@ -35,7 +34,7 @@ Aşağıdaki tabloda, yayımcı etki alanı değerinin varsayılan davranışı 
 
 | Kiracı tarafından doğrulanan etki alanları | Yayımcı etki alanının varsayılan değeri |
 |-------------------------|----------------------------|
-| {1&gt;null&lt;1} | {1&gt;null&lt;1} |
+| null | null |
 | *. onmicrosoft.com | *. onmicrosoft.com |
 | -*. onmicrosoft.com<br/>-domain1.com<br/>-domain2.com (birincil) | domain2.com |
 
@@ -142,7 +141,7 @@ Ancak, geliştirici kök etki alanını açıkça eklerse, birleşimine izin ver
 "https://app2.contoso.com",
 ```
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
 Aşağıdaki durumlar tek köklü etki alanı kısıtlamasına tabi değildir:
 

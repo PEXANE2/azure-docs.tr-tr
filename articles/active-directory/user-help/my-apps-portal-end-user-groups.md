@@ -1,6 +1,6 @@
 ---
-title: My Apps Portalındaki gruplarınızın bilgilerini güncelleştirme-Azure AD
-description: Sahip olduğunuz grupları görüntüleme, yeni gruplar oluşturma, zaten üyesi olduğunuz grupları görüntüleme ve henüz bir parçası olmayan gruplara katılma dahil olmak üzere gruplarla ilgili bilgilerinizi görüntülemeyi ve güncelleştirmeyi öğrenin.
+title: Update your Groups info on the My Apps portal - Azure AD
+description: Learn how to view and update your groups-related information, including viewing the groups you own, creating new groups, viewing the groups to which you're already a member, and joining any groups you aren't already part of.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,60 +12,59 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa251ee361af12ecf3fef3c7cd437fa06c1cea52
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: de7fa1952b2e23276a9f088f5840e54675b44d01
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803931"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704961"
 ---
-# <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uygulamalarım portalınızdaki gruplar bilgilerini güncelleştirme
+# <a name="update-your-groups-info-on-the-my-apps-portal"></a>Update your Groups info on the My Apps portal
 
-İş veya okul hesabınızı Web tabanlı **My Apps** portalından kullanarak kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyip başlatabilir, profil ve hesap bilgilerinizin bazılarını güncelleştirebilir, **gruplarınızın** bilgilerini görebilir ve şunları yapabilirsinizUygulamalarınız ve gruplarınız için erişim gözden geçirmeleri. **Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
+You can use your work or school account with the web-based **My Apps** portal, to view and start many of your organization’s cloud-based apps, to update some of your profile and account information, to see your **Groups** information, and to perform **access reviews** for your apps and groups. If you don’t have access to the **My Apps** portal, you must contact your Helpdesk for permission.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](https://docs.microsoft.com/azure/active-directory/manage-apps)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
+>Bu içerik kullanıcılara yöneliktir. If you're an administrator, you can find more information about how to set up and manage your cloud-based apps in the [Application Management Documentation](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
-## <a name="view-your-groups-information"></a>Grup bilgilerinizi görüntüleyin
+## <a name="view-your-groups-information"></a>View your Groups information
 
-Yöneticiniz, **gruplar** kutucuğunu görüntüleme izni verdiyse şunları yapabilirsiniz:
+If your administrator has given you permission to view the **Groups** tile, you can:
 
-- **Bir grup üyesi olarak.** Ayrıntıları görüntüleyin veya herhangi bir gruptan ayrılın.
+- **As a group member.** View details or leave any group.
 
-- **Bir grup sahibi olarak.** Ayrıntıları görüntüleyin, yeni bir grup oluşturun, üye ekleyin veya kaldırın ya da grubunuzu silin.
+- **As a group owner.** View details, create a new group, add or remove members, or delete your group.
 
-### <a name="to-view-your-groups-information"></a>Grup bilgilerinizi görüntülemek için
+### <a name="to-view-your-groups-information"></a>To view your Groups information
 
-1. İş veya okul hesabınızda oturum açın.
+1. Sign in to your work or school account.
 
-2. Web tarayıcınızı açın ve https://myapps.microsoft.comgidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.comgibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
+2. Open your web browser and go to https://myapps.microsoft.com, or use the link provided by your organization. For example, you might be directed to a customized page for your organization, such as https://myapps.microsoft.com/contoso.com.
 
-    Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
+    The **Apps** page appears, showing all the cloud-based apps owned by your organization and available for you to use.
 
-    ![Uygulamalarım portalındaki uygulamalar sayfası](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
+    ![Apps page in the My Apps portal](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
 
-3. Grup ile ilgili bilgilerinizi görmek için **gruplar** kutucuğunu seçin.
+3. Select the **Groups** tile to see your group-related information.
 
-    ![Sahip ve üye grupları olan gruplar sayfası](media/my-apps-portal/my-apps-portal-groups-page.png)
+    ![Groups page with both owned and member groups](media/my-apps-portal/my-apps-portal-groups-page.png)
 
-4. İzinlerinize bağlı olarak, **gruplar** sayfasını kullanarak şunları yapabilirsiniz:
+4. Based on your permissions, you can use the **Groups** page to:
 
-    - **Sahip olduğunuz grupları gözden geçirin.** **Sahip olduğunuz gruplardan** , kuruluşunuz dahilinde sahip olduğunuz tüm gruplar hakkındaki bilgileri görüntüleyin. Belirli bir grup adının seçilmesi, Grup hakkında Grup türü, üye sayısı, JOIN ilkesi ve etkin Üyeler listesi dahil olmak üzere daha fazla ayrıntı sağlar.
+    - **Review the groups you own.** View information about any groups you own within your organization from the **Groups I own** area. Belirli bir grup adının seçilmesi, Grup hakkında Grup türü, üye sayısı, JOIN ilkesi ve etkin Üyeler listesi dahil olmak üzere daha fazla ayrıntı sağlar.
 
-    - **Yeni bir grup oluşturun.** Sahip olduğunuz **gruplardan** sahip olarak sizinle yeni bir grup oluşturun. Belirli adımlar için, bu makalenin [Yeni Grup oluşturma](#create-a-new-group) bölümüne bakın.
+    - **Create a new group.** Create a new group with you as the owner from the **Groups I own** area. For specific steps, see the [Create a new group](#create-a-new-group) section of this article.
 
-    - **Var olan bir grubu düzenleyin.** Kendi gruplarınızdan herhangi birinin ayrıntılarını düzenleyin. Belirli adımlar için, bu makalenin [mevcut grubunu düzenleme](#edit-an-existing-group) bölümüne bakın.
+    - **Edit an existing group.** Edit the details for any of your own groups. For specific steps, see the [Edit an existing group](#edit-an-existing-group) section of this article.
 
-    - **Üye ekleme veya kaldırma.** Sahip olduğunuz gruplar için üye ekleyin veya kaldırın. Belirli adımlar için, bu makalenin [üye ekleme veya kaldırma](#add-or-remove-a-member) bölümüne bakın.
+    - **Add or remove members.** Add or remove members for groups that you own. For specific steps, see the [Add or remove a member](#add-or-remove-a-member) section of this article.
 
-    - **Office 365 grubunu yenileyin.** Kuruluşunuz izin veriyorsa, Office 365 gruplarınızı yenileyebilirsiniz. Belirli adımlar için, bu makalenin [Office 365 grubunu yenileme](#renew-an-office-365-group) bölümüne bakın. 
+    - **Renew an Office 365 group.** If your organization allows it, you can renew your Office 365 groups. For specific steps, see the [Renew an Office 365 group](#renew-an-office-365-group) section of this article. 
 
-    - **Bir grubu silin.** Sahip olduğunuz tüm grupları silin. Belirli adımlar için, bu makalenin [grubu silme](#delete-a-group) bölümüne bakın.
+    - **Delete a group.** Delete any groups that you own. For specific steps, see the [Delete a group](#delete-a-group) section of this article.
 
-    - **Bir parçası olduğunuz grupları gözden geçirin.** Alanındayken **bulunan gruplardan** üye olduğunuz grupların adlarını görüntüleyin. Belirli bir grup adının seçilmesi, Grup hakkında Grup türü, üye sayısı, JOIN ilkesi ve etkin Üyeler listesi dahil olmak üzere daha fazla ayrıntı sağlar.
+    - **Review the groups you're a part of.** View the names of any groups to which you're a member from the **Groups I'm in** area. Belirli bir grup adının seçilmesi, Grup hakkında Grup türü, üye sayısı, JOIN ilkesi ve etkin Üyeler listesi dahil olmak üzere daha fazla ayrıntı sağlar.
 
     - **Gruba katın.** Zaten bir üyesi olmadığınız var olan bir gruba katılarak, alan **Içindeki gruplar** ' dan. Belirli adımlar için bkz. [var olan bir gruba ekleme](#join-an-existing-group).
 
@@ -91,7 +90,7 @@ Yöneticiniz, **gruplar** kutucuğunu görüntüleme izni verdiyse şunları yap
 
     - **Grup ilkesi.** Herkesin gruba katılmasına izin vermek ya da yalnızca grubun sahibinin üye eklemesine izin vermek için seçin.
 
-3. **Oluştur**'u seçin.
+3. **Oluştur**’u seçin.
 
     Yeni Grup sizinle birlikte oluşturulur ve sahip olduğunuz **gruplar kendi listem** listesinde görünür. Sahip olduğunuz için bu grup, **Listediğim gruplar** listesinde de görünür.
 

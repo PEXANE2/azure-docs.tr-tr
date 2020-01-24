@@ -12,13 +12,12 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecdffae61fbadfd5d975af942861e24589c6fbf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233158"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704876"
 ---
 # <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>Uygulamalarım portalındaki profilinizi ve iş veya okul hesabı bilgilerini güncelleştirme
 
@@ -77,7 +76,7 @@ Kuruluşunuzun, **uygulamalarım** portalınızın **profil** sayfasına dahil e
 
     ![Parola değiştirme sayfası](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. **Gönder**' i seçin.
+3. Seçin **gönderme**.
 
     Parolanız değiştirildi. İş veya okul hesabınızı kullanarak daha önce oturum açmış olduğunuz tüm uygulamalarda oturum açmanız gerekir.
 
@@ -108,7 +107,7 @@ Kuruluşunuz iki öğeli doğrulama kullanmanızı gerektiriyorsa, **ek güvenli
 
     - **Microsoft Authenticator uygulamasını ayarlayın.** Microsoft Authenticator uygulamasını doğrulama yönteminiz olarak çalışacak şekilde ayarlamayı tercih edebilirsiniz. Microsoft Authenticator uygulaması hakkında daha fazla bilgi için bkz. [Microsoft Authenticator uygulama nedir?](user-help-auth-app-overview.md)
 
-3. Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.
+3. Seçin **Kaydet** yaptığınız değişiklikleri kaydedin.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>Kuruluşunuzun kullanım koşulları ifadesini gözden geçirin
 

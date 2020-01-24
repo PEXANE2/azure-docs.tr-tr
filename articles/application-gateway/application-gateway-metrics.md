@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 12759deb3e1775b5170d40cc609fe8c6226bf0d6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777827"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704587"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway ölçümleri
 
@@ -28,30 +28,30 @@ Application Gateway, Application Gateway ve arka uç örneklerinizin performans�
 >
 > Application Gateway birden fazla dinleyici varsa, anlamlı çıkarımı almak için farklı gecikme ölçümlerini karşılaştırırken her zaman *dinleyici* boyutuna göre filtreleyin.
 
+- **Arka uç bağlantı saati**
+
+  Bir arka uç uygulamasıyla bağlantı kurmaya harcanan süre. Bu, yeni bağlantılar kurmak için arka uç sunucusunun TCP yığınının yanı sıra ağ gecikmesini da içerir. SSL söz konusu olduğunda, el sıkışma durumunda harcanan süreyi de içerir. 
+
+- **Arka uç ilk bayt yanıt süresi**
+
+  Arka uç sunucusuna bağlantı kurma ve Yanıt üstbilgisinin ilk baytını alma arasındaki zaman aralığı. Bu, arka uç *bağlantı süresinin* ve arka uç uygulamasının yanıt süresinin (sunucunun içerik oluşturma süresi, büyük olasılıkla veritabanı sorguları getirme ve yanıt Application Gateway 'e geri aktarmaya başlama zamanı) toplamına yaklaştırır
+
+- **Arka uç son bayt yanıt süresi**
+
+  Arka uç sunucusuna bağlantı kurma ve yanıt gövdesinin son baytını alma arasındaki zaman aralığı. Bu, *arka uç ilk bayt yanıt süresi* ve veri aktarımı süresinin toplamına yaklaştırır (Bu sayı, istenen nesnelerin boyutuna ve sunucu ağının gecikme süresine göre büyük ölçüde farklılık gösterebilir)
+
+- **Application Gateway toplam süre**
+
+  Bir isteğin işlenmesi için geçen ortalama süre ve gönderilecek yanıt. Bu, yanıt gönderme işleminin bittiği zamana yönelik bir HTTP isteğinin ilk baytını Application Gateway zaman aralığının ortalaması olarak hesaplanır. Bu işlem, Application Gateway işleme süresinin ve *arka uç son bayt yanıt süresinin* toplamına yaklaştırır
+
 - **İstemci RTT**
 
   İstemcilerle Application Gateway arasında ortalama gidiş dönüş süresi. Bu ölçüm, bağlantı kurmak ve bildirimleri döndürmek için ne kadar sürdüğünü gösterir. 
 
-- **Application Gateway toplam süre**
+Bu ölçümler, gözlemlenen yavaşlama 'nın Application Gateway, ağ ve arka uç sunucusu TCP yığını doygunluğu, arka uç uygulama performansı veya büyük dosya boyutu nedeniyle olup olmadığını anlamak için kullanılabilir.
+Örneğin, arka uç ilk bayt yanıt süresi içinde bir ani artış varsa, ancak arka uç bağlantı saati sabit ise, uygulama ağ geçidinin arka uç gecikmesi ve bağlantı kurmak için geçen zaman ve ani bir süre nedeniyle meydana gelen arka uç uygulamasının yanıt süresi içinde n arttırın. Benzer şekilde, arka uç ilk bayt yanıt süresi içinde ani artış, arka uç bağlantı zamanında karşılık gelen bir ani ile ilişkiliyse, ağ veya sunucu TCP yığınında doygun olduğu anlaşılamıyor. Arka uç son bayt yanıt süresi içinde bir ani artış fark ederseniz, ancak arka uç ilk bayt yanıt süresi sabit ise, büyük olasılıkla ani bir dosya istenmekte olur. Benzer şekilde, uygulama ağ geçidi toplam süre, arka uç son bayt yanıt süresinden çok daha fazla ise, Application Gateway performans sorununa yönelik bir işaret olabilir.
 
-  Bir isteğin işlenmesi için geçen ortalama süre ve gönderilecek yanıt. Bu, yanıt gönderme işlemi tamamlandığında Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığının ortalaması olarak hesaplanır. Bu, genellikle Application Gateway işleme süresini, istek ve Yanıt paketlerinin ağ üzerinden hareket etmekte olduğu süreyi ve arka uç sunucusunun yanıt vermesi gerektiğini unutmayın.
-  
-Dinleyiciye göre filtreledikten sonra, *ISTEMCI RTT* *uygulama ağ geçidinin toplam süresinden*fazla ise, istemci tarafından gözlenen gecikme süresi istemci ile Application Gateway arasındaki ağ bağlantısı nedeniyle anlaşılabilirler. Her iki gecikme süresi de karşılaştırılamadığında, aşağıdakilerden herhangi biri olabilir: Application Gateway, Application Gateway ve arka uç uygulaması arasındaki ağ veya arka uç uygulama performansı.
 
-- **Arka uç ilk bayt yanıt süresi**
-
-  Arka uç sunucusuna bağlantı kurma ve yanıt üst bilgisinin ilk baytını alma işlemi arasındaki zaman aralığı, arka uç sunucusunun işlem süresini yaklaştırmaya başladı
-
-- **Arka uç son bayt yanıt süresi**
-
-  Arka uç sunucusuna bağlantı kurma ve yanıt gövdesinin son baytını alma arasındaki zaman aralığı
-  
-*Uygulama ağ geçidi toplam süre* , belirli bir dinleyici Için *arka uç son bayt yanıt süresinden* çok daha fazla ise, yüksek gecikme süresinin Application Gateway nedeni olabilir. Öte yandan, iki ölçüm karşılaştırılabilir ise, sorun Application Gateway ile arka uç uygulaması arasındaki ağ veya arka uç uygulamasının performansı olabilir.
-
-- **Arka uç bağlantı saati**
-
-  Bir arka uç uygulamasıyla bağlantı kurmaya harcanan süre. SSL söz konusu olduğunda, el sıkışma durumunda harcanan süreyi içerir. Bu ölçümün yalnızca bağlantı süresini ölçdiğinden ve bu nedenle diğer gecikme süreleriyle doğrudan karşılaştırılmamalıdır. Bununla birlikte, *arka uç bağlantı zamanının* desen diğer gecikme sürelerinin düzeniyle karşılaştırılırken, ağdaki bir çeşitleme, uygulamanın Gatway ve arka uç uygulamasının yanı sıra diğer gecikme sürelerinin artışının çıkarsanıp anlaşılamadığını belirtebilir. 
-  
 
 ### <a name="application-gateway-metrics"></a>Application Gateway ölçümleri
 

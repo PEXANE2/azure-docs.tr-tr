@@ -16,13 +16,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf1abc42fd3639bf76f752e5fe6a8f62c7d9e66d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 50eb88373b05d979d7f4b67b317e98c2a944459b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423482"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701339"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
@@ -395,7 +394,7 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile
 1. `ClientId` yeni kaydettiğiniz uygulama KIMLIĞIYLE değiştirin.
 1. `redirectUri`, projenizin SSL URL 'siyle değiştirin.
 
-## <a name="test-your-code"></a>Kodunuzu test etme
+## <a name="test-your-code"></a>Kodunuza test etme
 
 Visual Studio 'da uygulamanızı test etmek için F5 'e basarak projenizi çalıştırın. Tarayıcı, http://<span></span>localhost: {Port} konumunda açılır ve **Microsoft hesabıyla oturum açın** düğmesini görürsünüz. Oturum açma işlemini başlatmak için düğmeyi seçin.
 
@@ -428,7 +427,7 @@ Denetleyici görünümüne gözatdıktan sonra, kullanıcının temel özellikle
 
 |Özellik |Değer |Açıklama |
 |---|---|---|
-|**Adı** |Kullanıcının tam adı | Kullanıcının adı ve soyadı
+|**Ad** |Kullanıcının tam adı | Kullanıcının adı ve soyadı
 |**Kullanıcı Adı** |Kullanıcı<span>@domain.com</span> | Kullanıcıyı tanımlamak için kullanılan Kullanıcı adı|
 |**Konu** |Konu |Kullanıcıyı web genelinde benzersiz şekilde tanımlayan bir dize|
 |**Kiracı KIMLIĞI** |Guid | Kullanıcının Azure AD organizasyonunu benzersiz bir şekilde temsil eden bir **GUID**|

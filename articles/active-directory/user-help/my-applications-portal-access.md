@@ -12,15 +12,14 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed450f67b152bef4eb68ac8252b586b62992aa0d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dee6973a638a2cabc0ccc2138ed9db8b798f4d1c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820388"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705131"
 ---
-# <a name="access-and-start-apps-from-the-my-apps-preview-portal"></a>Uygulamalarım (Önizleme) portalından uygulamalara erişme ve başlangıç
+# <a name="access-and-start-apps-from-the-my-apps-preview-portal"></a>Uygulamalarım (Önizleme) portalından uygulamalara erişme ve başlatma
 
 İş veya okul hesabınızı, Web tabanlı **uygulamalarım** (Önizleme) portalından kullanarak kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyebilir, düzenleyebilir ve başlatabilirsiniz. **Uygulamalarım** portalına erişiminiz yoksa, izin Için kuruluşunuzun yardım masasına başvurun.
 
@@ -53,7 +52,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 1. Bilgisayarınızda iş veya okul hesabınızda oturum açın.
 
-2. Desteklenen bir Web tarayıcısı açın ve https://myapps.microsoft.comgidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için `https://myapps.microsoft.com/contoso.com`gibi özelleştirilmiş bir sayfa kullanmak üzere yönlendirilmeyebilirsiniz.
+2. Desteklenen bir Web tarayıcısı açın ve https://myapps.microsoft.com gidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için `https://myapps.microsoft.com/contoso.com`gibi özelleştirilmiş bir sayfa kullanmak üzere yönlendirilmeyebilirsiniz.
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
@@ -63,7 +62,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 1. Mobil cihazınızda Intune Managed Browser uygulamasını [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) 'dan veya [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)indirin ve yükleyin.
 
-2. Intune Managed Browser uygulamasını açın, https://myapps.microsoft.com' e gidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.comgibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
+2. Intune Managed Browser uygulamasını açın, https://myapps.microsoft.com ' e gidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
@@ -73,7 +72,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 1. Mobil cihazınızda Safari gibi bir Web tarayıcısı uygulaması başlatın.
 
-2. https://myapps.microsoft.comgidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.comgibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
+2. https://myapps.microsoft.com gidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
@@ -83,7 +82,7 @@ Android cihazında **My Apps** portalını görüntüleyin ve kullanın.
 
 1. Mobil cihazınızda, Google Chrome gibi bir Web tarayıcısı uygulaması başlatın.
 
-2. https://myapps.microsoft.comgidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.comgibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
+2. https://myapps.microsoft.com gidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
@@ -106,7 +105,7 @@ Mevcut bulut tabanlı uygulamalardan herhangi birini **uygulamalarım** portalı
 >[!Note]
 >Kullanılabilir çalışma alanı veya kategori görmüyorsanız, yöneticinizin sizinle hiç bir şekilde ayarlanmamış veya paylaşmadığı anlamına gelir. Paylaşılan çalışma alanlarını görmek için ek yardım veya izinler için kuruluşunuzun yardım masasına başvurun.
 
-## <a name="related-articles"></a>İlgili makaleler:
+## <a name="related-articles"></a>İlgili makaleler
 
 - [Profilinizi ve hesap bilgilerinizi güncelleştirin](my-account-portal-overview.md). **Profilim** (Önizleme) portalında görüntülenen kişisel bilgilerinizi güncelleştirme yönergeleri.
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: f017b19ef8bd8e4c44d9e2885da6fbaf172808a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485981"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705624"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -44,6 +44,38 @@ Ek Yardım için farmbeatssupport@microsoft.comadresinden bizimle iletişim kuru
    - *Gelen iletiler*varsa farmbeatssupport@microsoft.combaşvurun. Veri hub 'ınızı ve Hızlandırıcı günlüklerinizi ve yakalanan Telemetriyi ekleyin.
 
 Günlüklerin nasıl indirileceği anlamak için ["günlükleri El Ile topla"](#collect-logs-manually) bölümüne gidin.  
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Sensörlerden geçmiş/akış verileri alındıktan sonra telemetri verileri görüntülenemiyor
+
+**Belirti**: cihazlar veya algılayıcılar dağıtılır ve bu cihaz/sensörler ve EventHub üzerinde telemetri/algılayıcılar oluşturdunuz, ancak bu verileri, farmınts üzerinde telemetri verilerini alamıyor veya görüntüleyemezsiniz.
+
+**Düzeltici eylem**:
+
+1. İş ortağı kaydını doğru bir şekilde gerçekleştirdiğinizden emin olun. bunu, veri hub 'ının Swagger 'ınızla gidip/partner API 'sine giderek bir get yapın ve ortağın kayıtlı olup olmadığını kontrol edebilirsiniz. Aksi takdirde, iş ortağı eklemek için lütfen [buradaki adımları](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) izleyin.
+2. Doğru telemetri ileti biçimini kullandığınızdan emin olun:
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
+}
+```
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>Azure Event Hubs bağlantı dizesine sahip değil
 

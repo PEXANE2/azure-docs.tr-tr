@@ -17,13 +17,12 @@ ms.date: 02/08/2017
 ms.author: ryanwi
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ac618b28fae7410a773012e390dcd6b3a63b966
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 85ed6fc1535daf64394380ded44f74d5f9f939b6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834773"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701119"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>İstemci kimlik bilgilerini kullanarak hizmet çağrıları (paylaşılan gizlilik veya sertifika)
 
@@ -54,18 +53,18 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ## <a name="service-to-service-access-token-request"></a>Hizmetten hizmete erişim belirteci isteği
 İstemci uygulamanın, paylaşılan bir gizliliğe veya bir sertifikayla güvenli hale getirildiğine bağlı olarak iki durum vardır.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>İlk durum: Paylaşılan gizli dizi ile belirteç isteğine erişim
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>İlk durum: paylaşılan gizli dizi ile belirteç isteğine erişin
 Paylaşılan bir gizli dizi kullanılırken hizmetten hizmete erişim belirteci isteği aşağıdaki parametreleri içerir:
 
 | Parametre |  | Açıklama |
 | --- | --- | --- |
-| grant_type |gerekli |İstenen izin türünü belirtir. Istemci kimlik bilgileri verme akışında, değerin **client_credentials**olması gerekir. |
-| client_id |gerekli |Çağıran Web hizmetinin Azure AD istemci kimliğini belirtir. Çağıran uygulamanın istemci KIMLIĞINI bulmak için, [Azure portal](https://portal.azure.com) **Azure Active Directory**, **uygulama kayıtları**' ye tıklayın, uygulamaya tıklayın. Client_id, *uygulama kimliğidir* |
-| client_secret |gerekli |Azure AD 'de çağıran Web hizmeti veya Daemon uygulaması için kayıtlı bir anahtar girin. Bir anahtar oluşturmak için, Azure portal **Azure Active Directory**, **uygulama kayıtları**' ne tıklayın, uygulama ' ya tıklayın, **Ayarlar**' a tıklayın, **anahtarlar**' a tıklayın ve bir anahtar ekleyin.  URL-bu parolayı sağlarken kodlayın. |
-| resource |gerekli |Alıcı Web hizmetinin uygulama KIMLIĞI URI 'sini girin. Uygulama KIMLIĞI URI 'sini bulmak için, Azure portal **Azure Active Directory**, **uygulama kayıtları**, hizmet uygulamasına tıklayın ve ardından **Ayarlar** ve **Özellikler**' e tıklayın. |
+| grant_type |{1&gt;gerekli&lt;1} |İstenen izin türünü belirtir. Istemci kimlik bilgileri verme akışında, değerin **client_credentials**olması gerekir. |
+| client_id |{1&gt;gerekli&lt;1} |Çağıran Web hizmetinin Azure AD istemci kimliğini belirtir. Çağıran uygulamanın istemci KIMLIĞINI bulmak için, [Azure portal](https://portal.azure.com) **Azure Active Directory**, **uygulama kayıtları**' ye tıklayın, uygulamaya tıklayın. *Uygulama kimliği* client_id |
+| client_secret |{1&gt;gerekli&lt;1} |Azure AD 'de çağıran Web hizmeti veya Daemon uygulaması için kayıtlı bir anahtar girin. Bir anahtar oluşturmak için, Azure portal **Azure Active Directory**, **uygulama kayıtları**' ne tıklayın, uygulama ' ya tıklayın, **Ayarlar**' a tıklayın, **anahtarlar**' a tıklayın ve bir anahtar ekleyin.  URL-bu parolayı sağlarken kodlayın. |
+| resource |{1&gt;gerekli&lt;1} |Alıcı Web hizmetinin uygulama KIMLIĞI URI 'sini girin. Uygulama KIMLIĞI URI 'sini bulmak için, Azure portal **Azure Active Directory**, **uygulama kayıtları**, hizmet uygulamasına tıklayın ve ardından **Ayarlar** ve **Özellikler**' e tıklayın. |
 
 #### <a name="example"></a>Örnek
-Aşağıdaki http post, https://service.contoso.com/ Web hizmeti için bir [erişim belirteci](access-tokens.md) ister. , `client_id` Erişim belirtecini isteyen Web hizmetini tanımlar.
+Aşağıdaki HTTP POST, https://service.contoso.com/ Web hizmeti için bir [erişim belirteci](access-tokens.md) ister. `client_id`, erişim belirtecini isteyen Web hizmetini tanımlar.
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1
@@ -75,21 +74,21 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&client_secret=qkDwDJlDfig2IpeuUZYKH1Wb8q1V0ju6sILxQQqhJ+s=&resource=https%3A%2F%2Fservice.contoso.com%2F
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>İkinci durum: Bir sertifikayla erişim belirteci isteği
+### <a name="second-case-access-token-request-with-a-certificate"></a>İkinci durum: bir sertifikayla erişim belirteci isteği
 Bir sertifikaya sahip hizmetten hizmete erişim belirteci isteği aşağıdaki parametreleri içerir:
 
 | Parametre |  | Açıklama |
 | --- | --- | --- |
-| grant_type |gerekli |İstenen yanıt türünü belirtir. Istemci kimlik bilgileri verme akışında, değerin **client_credentials**olması gerekir. |
-| client_id |gerekli |Çağıran Web hizmetinin Azure AD istemci kimliğini belirtir. Çağıran uygulamanın istemci KIMLIĞINI bulmak için, [Azure portal](https://portal.azure.com) **Azure Active Directory**, **uygulama kayıtları**' ye tıklayın, uygulamaya tıklayın. Client_id, *uygulama kimliğidir* |
-| client_assertion_type |gerekli |Değer şu şekilde olmalıdır`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |gerekli | Uygulamanız için kimlik bilgileri olarak kaydettiğiniz sertifikayı oluşturmanız ve oturum açmanız için gereken bir onaylama (JSON Web Token). Sertifikanızı ve onaylama biçiminizi nasıl kaydedeceğinizi öğrenmek için [sertifika kimlik bilgileri](active-directory-certificate-credentials.md) hakkında bilgi edinin.|
-| resource | gerekli |Alıcı Web hizmetinin uygulama KIMLIĞI URI 'sini girin. Uygulama KIMLIĞI URI 'sini bulmak için, Azure portal **Azure Active Directory**, **uygulama kayıtları**, hizmet uygulamasına tıklayın ve ardından **Ayarlar** ve **Özellikler**' e tıklayın. |
+| grant_type |{1&gt;gerekli&lt;1} |İstenen yanıt türünü belirtir. Istemci kimlik bilgileri verme akışında, değerin **client_credentials**olması gerekir. |
+| client_id |{1&gt;gerekli&lt;1} |Çağıran Web hizmetinin Azure AD istemci kimliğini belirtir. Çağıran uygulamanın istemci KIMLIĞINI bulmak için, [Azure portal](https://portal.azure.com) **Azure Active Directory**, **uygulama kayıtları**' ye tıklayın, uygulamaya tıklayın. *Uygulama kimliği* client_id |
+| client_assertion_type |{1&gt;gerekli&lt;1} |Değer `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` olmalıdır |
+| client_assertion |{1&gt;gerekli&lt;1} | Uygulamanız için kimlik bilgileri olarak kaydettiğiniz sertifikayı oluşturmanız ve oturum açmanız için gereken bir onaylama (JSON Web Token). Sertifikanızı ve onaylama biçiminizi nasıl kaydedeceğinizi öğrenmek için [sertifika kimlik bilgileri](active-directory-certificate-credentials.md) hakkında bilgi edinin.|
+| resource | {1&gt;gerekli&lt;1} |Alıcı Web hizmetinin uygulama KIMLIĞI URI 'sini girin. Uygulama KIMLIĞI URI 'sini bulmak için, Azure portal **Azure Active Directory**, **uygulama kayıtları**, hizmet uygulamasına tıklayın ve ardından **Ayarlar** ve **Özellikler**' e tıklayın. |
 
-Client_secret parametresi iki parametre ile değiştirilmeleri dışında, parametrelerin paylaşılan gizliliğe göre neredeyse aynı olduğuna dikkat edin: bir client_assertion_type ve client_assertion.
+Parametrelerin, client_secret parametresi iki parametre ile değiştirilmeleri dışında, paylaşılan gizliliğe göre istek durumuyla neredeyse aynı olduğuna dikkat edin: bir client_assertion_type ve client_assertion.
 
 #### <a name="example"></a>Örnek
-Aşağıdaki http post, bir sertifikayla https://service.contoso.com/ Web hizmeti için bir erişim belirteci ister. , `client_id` Erişim belirtecini isteyen Web hizmetini tanımlar.
+Aşağıdaki HTTP POST, bir sertifikayla https://service.contoso.com/ Web hizmeti için bir erişim belirteci ister. `client_id`, erişim belirtecini isteyen Web hizmetini tanımlar.
 
 ```
 POST /<tenant_id>/oauth2/token HTTP/1.1
@@ -106,7 +105,7 @@ Başarılı bir yanıt, aşağıdaki parametrelerle bir JSON OAuth 2,0 yanıtı 
 | Parametre | Açıklama |
 | --- | --- |
 | access_token |İstenen erişim belirteci. Çağıran Web hizmeti, alıcı Web hizmetinde kimlik doğrulaması yapmak için bu belirteci kullanabilir. |
-| token_type |Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür **taşıyıcı**. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz [. OAuth 2,0 yetkilendirme çerçevesi: Taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür **taşıyıcı**. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz. [OAuth 2,0 yetkilendirme çerçevesi: taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | expires_in |Erişim belirtecinin geçerli olduğu süre (saniye cinsinden). |
 | expires_on |Erişim belirtecinin süre sonu. Tarih, 1970-01-01T0:0: 0Z UTC 'den sona erme zamanına kadar saniye sayısı olarak gösterilir. Bu değer, önbelleğe alınmış belirteçlerin ömrünü belirlemede kullanılır. |
 | not_before |Erişim belirtecinin kullanılabilir hale geldiği zaman. Tarih,, belirteç için geçerlilik süresine kadar 1970-01-01T0:0: 0Z UTC 'den saniye sayısı olarak gösterilir.|

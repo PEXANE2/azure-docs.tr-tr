@@ -13,13 +13,12 @@ ms.date: 05/29/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d1ef1f76b1b1a807f48f7c79e41ada68b561fc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e68798861d5799a4314bd9cd9b2eeeadb926a90f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916444"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696155"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>MSAL. js kullanarak belirteçleri sessizce alırken ve yenilerken sayfa yeniden yüklemeden kaçının
 JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL. js), arka planda belirteçleri sessizce almak ve yenilemek için gizli `iframe` öğeleri kullanır. Azure AD belirteci, belirteç isteğinde belirtilen kayıtlı redirect_uri geri döndürür (varsayılan olarak uygulamanın kök sayfasıdır). Yanıt bir 302 olduğundan, `iframe`yüklenmesi `redirect_uri` buna karşılık gelen HTML ile sonuçlanır. Genellikle uygulamanın `redirect_uri` kök sayfasıdır ve bunun yeniden yüklenmesine neden olur.
@@ -36,7 +35,7 @@ Config üzerinde `redirect_uri` özelliğini, kimlik doğrulaması gerektirmeyen
 
 ## <a name="initialization-in-your-main-app-file"></a>Ana uygulama dosyanızda başlatma
 
-Uygulamanız, uygulamanın başlatma, Yönlendirme ve diğer öğeleri tanımlayan bir merkezi JavaScript dosyası gibi yapılandırılmış ise, uygulama modüllerinizi uygulamanın bir `iframe` yüklenip yüklenmemesine göre koşullu olarak yükleyebilirsiniz. Örnek:
+Uygulamanız, uygulamanın başlatma, Yönlendirme ve diğer öğeleri tanımlayan bir merkezi JavaScript dosyası gibi yapılandırılmış ise, uygulama modüllerinizi uygulamanın bir `iframe` yüklenip yüklenmemesine göre koşullu olarak yükleyebilirsiniz. Örneğin:
 
 AngularJS içinde: App. js
 

@@ -12,13 +12,12 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3c696b3fed36ca8ee7faf6ec78f833191cedf9d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d3994b56b55a7aac0ba3ab64d53b6436bc19c45b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844660"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698552"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 'da anahtar geçişi imzalanıyor
 Bu makalede, güvenlik belirteçlerini imzalamak için Azure Active Directory (Azure AD) ' de kullanılan ortak anahtarlar hakkında bilmeniz gerekenler açıklanmaktadır. Bu anahtarların düzenli olarak bir süre içinde devredildiğini ve acil bir durumda bir acil durum için hemen geri alınabilir olduğunu unutmayın. Azure AD kullanan tüm uygulamalar, anahtar geçişi işlemini programlı bir şekilde işleyebilmelidir veya düzenli bir el ile geçiş işlemi oluşturabilir. Anahtarların nasıl çalıştığını, uygulamanıza yapılan geçişin etkisini nasıl değerlendirireceğini ve gerekirse anahtar rollover 'ı işlemek için düzenli el ile geçiş süreci oluşturmayı öğrenmek için okumaya devam edin.

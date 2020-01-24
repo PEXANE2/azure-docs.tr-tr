@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adbb913fc8ec6376f1c5f47708da4fd7df740ff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 32d58a5536cda5a5a446eee15401dabc0c936304
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619379"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705233"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>İki öğeli doğrulama yöntemi olarak bir ofis telefonu kurun
 
@@ -27,7 +26,7 @@ Office telefonunuzu, iki öğeli doğrulama yöntemi olarak davranacak şekilde 
 
 ## <a name="set-up-your-office-phone-number-as-your-verification-method"></a>Office telefon numaranızı doğrulama yönteminiz olarak ayarlayın
 
-1. **Ek güvenlik doğrulaması** sayfasında **adım 1 ' den **Office telefonu** ' nu seçin: Sizinle** nasıl iletişim kuracağız, açılır listeden ülkenizi veya bölgenizi seçin, Office telefon numaranızı yazın ve ardından uzantınızı yazın.
+1. **Ek güvenlik doğrulaması** sayfasında, adım 1 ' de **Office telefonu** ' nu seçin. **Adım: sizinle nasıl iletişim kuracağız** , açılır listeden ülkenizi veya bölgenizi seçin, Office telefon numaranızı yazın ve ardından uzantınızı yazın.
 
     ![Kimlik doğrulama telefon ve telefon araması ile ek güvenlik doğrulama sayfası](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone.png)
 
@@ -35,7 +34,7 @@ Office telefonunuzu, iki öğeli doğrulama yöntemi olarak davranacak şekilde 
 
     ![Belirtilen telefon numarasını test etme](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone-test.png)
 
-3. **Adım 3: Mevcut uygulamalar** alanınızı kullanmaya devam edin, belirtilen uygulama parolasını kopyalayın ve güvenli bir yere yapıştırın.
+3. 3\. **Adım: mevcut uygulamalarınızı kullanmaya devam** edin alanında, belirtilen uygulama parolasını kopyalayın ve güvenli bir yere yapıştırın.
 
     ![Ek güvenlik doğrulama sayfasının uygulama parolaları alanı](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 

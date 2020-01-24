@@ -17,13 +17,12 @@ ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66c509b1b901889241d6837611a2c373750fdb3a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 95d3deff73ce357f012b15a7fc1cfa3decdb4bda
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834782"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701374"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Çoklu oturum kapatma SAML Protokolü
 
@@ -34,7 +33,7 @@ Aşağıdaki diyagramda Azure AD çoklu oturum açma işleminin iş akışı gö
 ![Azure AD çoklu oturum açma Iş akışı](./media/single-sign-out-saml-protocol/active-directory-saml-single-sign-out-workflow.png)
 
 ## <a name="logoutrequest"></a>LogoutRequest
-Bulut hizmeti, bir oturumun `LogoutRequest` sonlandırıldığını göstermek için Azure AD 'ye bir ileti gönderir. Aşağıdaki alıntıda örnek `LogoutRequest` bir öğe gösterilmektedir.
+Bulut hizmeti, bir oturumun sonlandırıldığını göstermek için Azure AD 'ye bir `LogoutRequest` iletisi gönderir. Aşağıdaki alıntıda bir örnek `LogoutRequest` öğesi gösterilmektedir.
 
 ```
 <samlp:LogoutRequest xmlns="urn:oasis:names:tc:SAML:2.0:metadata" ID="idaa6ebe6839094fe4abc4ebd5281ec780" Version="2.0" IssueInstant="2013-03-28T07:10:49.6004822Z" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -44,20 +43,20 @@ Bulut hizmeti, bir oturumun `LogoutRequest` sonlandırıldığını göstermek i
 ```
 
 ### <a name="logoutrequest"></a>LogoutRequest
-Azure AD 'ye gönderilen öğeaşağıdakiözniteliklerigerektirir:`LogoutRequest`
+Azure AD 'ye gönderilen `LogoutRequest` öğesi aşağıdaki öznitelikleri gerektirir:
 
-* `ID`-Bu, oturum kapatma isteğini tanımlar. Değeri bir sayıyla `ID` başlamamalıdır. Tipik uygulama, bir GUID 'nin dize gösterimine **ID** eklemek için kullanılır.
-* `Version`-Bu öğenin değerini **2,0**olarak ayarlayın. Bu değer gereklidir.
-* `IssueInstant`-Bu, koordinat `DateTime` evrensel saat (UTC) değeri ve [gidiş dönüş biçimi ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)içeren bir dizedir. Azure AD bu türden bir değer bekler, ancak bunu zorlamaz.
+* `ID`-bu, oturum kapatma isteğini tanımlar. `ID` değeri bir sayıyla başlamamalıdır. Tipik uygulama, bir GUID 'nin dize gösterimine **ID** eklemek için kullanılır.
+* `Version`-bu öğenin değerini **2,0**olarak ayarlayın. Bu değer gereklidir.
+* `IssueInstant`-bu, koordinat evrensel saat (UTC) değeri ve [gidiş dönüş biçimi ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)içeren bir `DateTime` dizesidir. Azure AD bu türden bir değer bekler, ancak bunu zorlamaz.
 
-### <a name="issuer"></a>Sertifikayı Veren
-İçindeki öğesi, `Issuer` Azure AD 'deki bulut hizmetindeki **ServicePrincipalNames adlarından** biriyle tam olarak eşleşmelidir. `LogoutRequest` Genellikle, bu, uygulama kaydı sırasında belirtilen **uygulama KIMLIĞI URI** 'sine ayarlanır.
+### <a name="issuer"></a>Veren
+Bir `LogoutRequest` `Issuer` öğesi, Azure AD 'deki bulut hizmetindeki **ServicePrincipalNames adlarından** birine tam olarak uymalıdır. Genellikle, bu, uygulama kaydı sırasında belirtilen **uygulama KIMLIĞI URI** 'sine ayarlanır.
 
 ### <a name="nameid"></a>NameID
-`NameID` Öğesinin değeri, imzalanmakta olan kullanıcının `NameID` ile tam olarak eşleşmelidir.
+`NameID` öğenin değeri, imzalanmakta olan kullanıcının `NameID` tam olarak eşleşmelidir.
 
 ## <a name="logoutresponse"></a>LogoutResponse
-Azure AD, bir `LogoutResponse` `LogoutRequest` öğesine yanıt olarak bir öğesi gönderir. Aşağıdaki alıntıda bir örnek `LogoutResponse`gösterir.
+Azure AD, bir `LogoutRequest` öğesine yanıt olarak bir `LogoutResponse` gönderir. Aşağıdaki alıntıda örnek bir `LogoutResponse`gösterilmektedir.
 
 ```
 <samlp:LogoutResponse ID="_f0961a83-d071-4be5-a18c-9ae7b22987a4" Version="2.0" IssueInstant="2013-03-18T08:49:24.405Z" InResponseTo="iddce91f96e56747b5ace6d2e2aa9d4f8c" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -69,12 +68,12 @@ Azure AD, bir `LogoutResponse` `LogoutRequest` öğesine yanıt olarak bir öğe
 ```
 
 ### <a name="logoutresponse"></a>LogoutResponse
-Azure `ID`ad, `Version` öğesi`LogoutResponse` ve `IssueInstant` değerlerini ayarlar. Ayrıca, `InResponseTo` öğesini, `LogoutRequest` yanıtı kabul eden öğesinin `ID` özniteliğinin değerine ayarlar.
+Azure AD, `LogoutResponse` öğesindeki `ID`, `Version` ve `IssueInstant` değerlerini ayarlar. Ayrıca, `InResponseTo` öğesini, yanıtı kabul eden `LogoutRequest` `ID` özniteliğinin değerine ayarlar.
 
-### <a name="issuer"></a>Sertifikayı Veren
-Azure AD bu değeri, Azure `https://login.microsoftonline.com/<TenantIdGUID>/` ad \<kiracısının Kiracı kimliği olan TenantIdGUID > olarak ayarlar.
+### <a name="issuer"></a>Veren
+Azure AD bu değeri, Azure AD kiracısının kiracı KIMLIĞI olan \<TenantIdGUID > `https://login.microsoftonline.com/<TenantIdGUID>/` olarak ayarlar.
 
-`Issuer` Öğesinin değerini değerlendirmek için uygulama kaydı sırasında belirtilen **uygulama kimliği URI** 'sinin değerini kullanın.
+`Issuer` öğesinin değerini değerlendirmek için uygulama kaydı sırasında belirtilen **uygulama KIMLIĞI URI** 'sinin değerini kullanın.
 
 ### <a name="status"></a>Durum
-Azure AD, oturum `StatusCode` kapatma başarısını veya `Status` başarısızlığını göstermek için öğesindeki öğesini kullanır. Oturum kapatma denemesi başarısız olursa, `StatusCode` öğe özel hata iletileri de içerebilir.
+Azure AD, oturum kapatma başarısını veya başarısızlığını göstermek için `Status` öğesindeki `StatusCode` öğesini kullanır. Kaydolma girişimi başarısız olduğunda, `StatusCode` öğesi özel hata iletileri de içerebilir.

@@ -12,13 +12,12 @@ ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a45b3ee9bf9cea71255ac9a83f970d2b6c72b67f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966121"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704230"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Hızlı başlangıç: Web API 'Lerini kullanıma sunmak için uygulama yapılandırma
 
@@ -26,12 +25,12 @@ Bir web API'si geliştirip [izinleri/kapsamları](developer-glossary.md#scopes) 
 
 Bu hızlı başlangıçta, yeni bir kapsamı kullanıma sunmak ve istemci uygulamaları için kullanılabilir hale getirmek üzere bir uygulamayı yapılandırmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki önkoşulları karşıladığınızdan emin olun:
 
 * Diğer kullanıcılar veya uygulamalar tarafından kullanılması gereken uygulamaları derleme konusunda önemli olan desteklenen [izinler ve onaylar](v2-permissions-and-consent.md) hakkında bilgi edinin.
-* Uygulamaların kaydedilmiş olduğu bir kiracı kullanın.
+* Kaydedilmiş uygulamaları olan bir kiracısı olma.
   * Kayıtlı uygulama yoksa, [Microsoft kimlik platformu ile uygulamaları kaydetmeyi öğrenin](quickstart-register-app.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portalında oturum açın ve uygulamayı seçin
@@ -129,7 +128,7 @@ Uygulama bildirimi kavramları hakkında daha fazla genel bilgi için bkz. [Azur
 
 Uygulamalar için diğer ilgili uygulama yönetimi hızlı başlangıçları hakkında bilgi edinin:
 
-* [Microsoft kimlik platformu ile uygulama kaydetme](quickstart-register-app.md)
+* [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md)
 * [Bir istemci uygulamasını web API'lerine erişecek şekilde yapılandırma](quickstart-configure-app-access-web-apis.md)
 * [Bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md)
 * [Microsoft kimlik platformu ile kaydedilmiş bir uygulamayı kaldırma](quickstart-remove-app.md)

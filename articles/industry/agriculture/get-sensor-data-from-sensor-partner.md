@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9bf5608a44aa19650a507ada3a0a437d34c13277
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513753"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705675"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
 
@@ -37,9 +37,7 @@ Algılayıcı verilerinin akışını başlattıktan sonra, verileri Farmtts sis
  - Gizli anahtar
  - EventHub bağlantı dizesi
 
-Önceki bilgiler, sistem tümleştiricisi tarafından size sunulmaktadır. Cihaz tümleştirmelerini etkinleştirdiğinizde karşılaşabileceğiniz herhangi bir sorun için sistem tümleştirmelerinizi ile iletişime geçin.
-
-Alternatif olarak, Azure Cloud Shell ' den bu betiği çalıştırarak kimlik bilgilerini oluşturabilirsiniz. Şu adımları izleyin.
+Aşağıdaki adımları izleyerek yukarıdaki bilgileri oluşturabilirsiniz: (lütfen Azure 'da, Farmtts 'nin dağıtıldığı Azure aboneliğine erişmeniz için bu adımların gerçekleştirilmesi gerektiğini unutmayın)
 
 1. [ZIP dosyasını](https://aka.ms/farmbeatspartnerscriptv2)indirin ve yerel sürücünüze ayıklayın. ZIP dosyasının içinde bir dosya olacaktır.
 2. https://portal.azure.com/ oturum açın ve Azure Active Directory > uygulama kayıtlarına gidin

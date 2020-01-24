@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: dcbc20f768ae80404979d47f23e7e08098757b41
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 51c191a7815bb64243e2324e150c00c2dcb7ec4c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613338"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705335"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Application gateway, Azure portalını kullanarak HTTPS yeniden yönlendirmesi için HTTP ile oluşturma
 
@@ -83,14 +83,14 @@ Bir sanal ağ, oluşturduğunuz kaynakları arasındaki iletişim için gereklid
    - *myVNet* - Sanal ağın adı.
    - *10.0.0.0/16* - Sanal ağın adres alanı.
    - *myAGSubnet* - Alt ağın adı.
-   - *10.0.1.0/24* - alt ağ adres alanı.
+   - *10.0.0.0/24* - Alt ağın adres alanı.
 
      ![Sanal ağ oluşturma](./media/create-url-route-portal/application-gateway-vnet.png)
 
 7. Sanal ağı ve alt ağı oluşturmak için **Tamam**’a tıklayın.
 8. Altında **ön uç IP yapılandırması**, olun **IP adresi türü** olduğu **genel**, ve **Yeni Oluştur** seçilir. Girin *myAGPublicIPAddress* adı. Diğer ayarların varsayılan değerlerini kabul edin ve sonra **Tamam**’a tıklayın.
 9. Altında **dinleyici Yapılandırması**seçin **HTTPS**, ardından **bir dosya seçin** gidin *c:\appgwcert.pfx* dosya ve seçin **açık**.
-10. Tür *appgwcert* sertifika adını ve *Azure123456!* Parola.
+10. Tür *appgwcert* sertifika adını ve *Azure123456!* girin.
 11. Web uygulaması güvenlik duvarı devre dışı bırakın ve ardından **Tamam**.
 12. Özet sayfasında ayarları gözden geçirin ve ardından **Tamam** ağ kaynaklarının ve uygulama ağ geçidi oluşturmak için. Bu, uygulama ağ geçidinin oluşturulması, sonraki bölüme geçmeden önce dağıtımın başarıyla tamamlanana kadar bekleyin birkaç dakika sürebilir.
 

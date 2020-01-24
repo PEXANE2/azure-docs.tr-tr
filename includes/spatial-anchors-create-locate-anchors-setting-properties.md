@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: db88a166cd59e96b459f8d4dcaa6a6d2b8c4ff99
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5835e4c29fde280bcd00422ff71d28526a7f0f95
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188083"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694419"
 ---
 ## <a name="set-properties"></a>Özellikleri ayarlama
 
-Bazı özellikler, bulut bağlayıcılarını kaydedilirken eklemek tercih edebilirsiniz. Nesne türü gibi olup etkileşimi için etkinleştirilmelidir gibi kaydedilmiş ya da temel özellikleri alınıyor. Bunun yapılması bulma sırasında yararlı olabilir: kullanıcının, örneğin bir resim çerçevesi boş içeriğe sahip nesneyi hemen işleyebilir. Ardından, farklı bir yükleme arka planda çerçevede görüntülenecek resim gibi ek durum ayrıntılarını alır.
+Bulut uzamsal bağlayıcılarınızı kaydederken bazı özellikler eklemeyi tercih edebilirsiniz. Kaydedilmekte olan nesnenin türü ya da etkileşim için etkinleştirilmesi gerekip gerekmediğini gibi temel özellikler. Bunun yapılması, bulma sırasında yararlı olabilir: Örneğin, boş içeriğe sahip bir resim çerçevesi gibi kullanıcı için nesneyi hemen işleyebilirsiniz. Ardından, arka planda farklı bir indirme ek durum ayrıntılarını alır, örneğin çerçevede görüntülenecek resim.

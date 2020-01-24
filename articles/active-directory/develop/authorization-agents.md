@@ -12,13 +12,12 @@ ms.date: 09/05/2019
 ms.author: twhitney
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a0e93c87c50fbc63cddad349ec9b5fbf45d91f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c2d0c8a877ba856aa7a93bfc960c44b63cbe8f9c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843912"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698008"
 ---
 # <a name="authorization-agents-android"></a>Yetkilendirme aracıları (Android)
 
@@ -79,15 +78,15 @@ Aşağıdaki tarayıcılar yapılandırma dosyasında belirtilen `"redirect_uri"
 
 | | Yerleşik tarayıcı | Chrome | Opera  | Microsoft Edge | UC tarayıcısı | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
-| Nexus 4 (API 17) | Aktar | Aktar |uygulanamaz |uygulanamaz |uygulanamaz |uygulanamaz |
-| Samsung S7 (API 25) | aktar | Aktar | Aktar | Aktar | fail |Aktar |
-| Huawei (API 26) |Pass * * | Aktar | fail | Aktar | Aktar |Aktar |
-| Vivo (API 26) |Aktar|Aktar|Aktar|Aktar|Aktar|fail|
-| Piksel 2 (API 26) |Aktar | Aktar | Aktar | Aktar | fail |Aktar |
-| Oppo | Aktar | uygulanamaz * * * |uygulanamaz  |uygulanamaz |uygulanamaz | uygulanamaz|
-| OnePlus (API 25) |Aktar | Aktar | Aktar | Aktar | fail |Aktar |
-| Nexus (API 28) |Aktar | Aktar | Aktar | Aktar | fail |Aktar |
-|MI | Aktar | Aktar | Aktar | Aktar | fail |Aktar |
+| Nexus 4 (API 17) | aktar | aktar |uygulanamaz |uygulanamaz |uygulanamaz |uygulanamaz |
+| Samsung S7 (API 25) | aktar | aktar | aktar | aktar | fail |aktar |
+| Huawei (API 26) |Pass * * | aktar | fail | aktar | aktar |aktar |
+| Vivo (API 26) |aktar|aktar|aktar|aktar|aktar|fail|
+| Piksel 2 (API 26) |aktar | aktar | aktar | aktar | fail |aktar |
+| Oppo | aktar | uygulanamaz * * * |uygulanamaz  |uygulanamaz |uygulanamaz | uygulanamaz|
+| OnePlus (API 25) |aktar | aktar | aktar | aktar | fail |aktar |
+| Nexus (API 28) |aktar | aktar | aktar | aktar | fail |aktar |
+|MI | aktar | aktar | aktar | aktar | fail |aktar |
 
 \* Samsung 'in yerleşik tarayıcısı Samsung Internet 'dir.  
 \* * Huawei 'ın yerleşik tarayıcı, Huawei tarayıcısıdır.  

@@ -2,25 +2,27 @@
 title: Azure Site Recovery 'de kurtarma planları hakkında
 description: Azure Site Recovery 'de kurtarma planları hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 1dd83be03c5b412708e89058ce7667a2ddfef530
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/23/2020
+ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497899"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705862"
 ---
 # <a name="about-recovery-plans"></a>Kurtarma planları hakkında
 
 Bu makalede [Azure Site Recovery](site-recovery-overview.md)içindeki kurtarma planlarına genel bir bakış sunulmaktadır.
 
-Kurtarma planı, makineleri kurtarma gruplarına toplar. Kurtarma planı, yük devredebilmeniz gereken küçük bağımsız birimler oluşturarak sistematik bir kurtarma işlemi tanımlamanıza yardımcı olur. Birim genellikle ortamınızdaki bir uygulamayı temsil eder.
+Kurtarma planı, yük devretme amacıyla makineleri kurtarma gruplarına toplar. Kurtarma planı, yük devredebilmeniz gereken küçük bağımsız birimler oluşturarak sistematik bir kurtarma işlemi tanımlamanıza yardımcı olur. Birim genellikle ortamınızdaki bir uygulamayı temsil eder.
 
 - Kurtarma planı, makinelerin yük devretmesinin nasıl başarısız olduğunu ve yük devretme sonrasında başladıkları sırayı tanımlar.
+- Kurtarma planları, Azure 'a yük devretme için kullanılır, ancak Azure 'dan yeniden çalışma için kullanılamaz.
 - En fazla 100 korumalı örnek, tek bir kurtarma planına eklenebilir.
 - Bir planı, bu plana sıra, yönergeler ve görevler ekleyerek özelleştirebilirsiniz.
 - Bir plan tanımlandıktan sonra, üzerinde bir yük devretme çalıştırabilirsiniz.
 - Daha önce başka bir kurtarma planı kullanılarak dağıtılmışsa, sonraki planların bir makinenin dağıtımını/başlatılmasını atlayabileceği birden çok kurtarma planında makinelere başvurulabilir.
+
 
 
 ### <a name="why-use-a-recovery-plan"></a>Neden kurtarma planı kullanılmalıdır?

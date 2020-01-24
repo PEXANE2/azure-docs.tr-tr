@@ -17,13 +17,12 @@ ms.date: 08/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7f5b983a00dfc0af2e7a40571ce58fafca5914e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 16f30473ded5f1de5dc94c1cff9da96165b1a01c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964619"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700218"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity platform ve OAuth 2,0 SAML taşıyıcı onaylama akışı
 OAuth 2,0 SAML taşıyıcı onaylama akışı, bir istemcinin var olan bir güven ilişkisini kullanması gerektiğinde bir SAML onaylama işlemi kullanarak bir OAuth erişim belirteci istemesini sağlar. SAML onaylaması 'na uygulanan imza, yetkili uygulamanın kimlik doğrulamasını sağlar. SAML onaylama, bir kimlik sağlayıcısı tarafından verilen ve bir hizmet sağlayıcısı tarafından tüketilen bir XML güvenlik belirtecidir. Hizmet sağlayıcı, güvenlikle ilgili amaçlar için onay konusunun konusunu belirlemek üzere içeriğine bağımlıdır.
@@ -41,7 +40,7 @@ OAuth SAML taşıyıcı onaylama akışı, Azure Active Directory Federal Active
 ## <a name="call-graph-using-saml-bearer-assertion"></a>SAML taşıyıcı onaylama kullanarak Graph çağırma
 Artık SAML onaylama program aracılığıyla 'ı gerçekten nasıl getirdiğimiz hakkında anladık. Bu yaklaşım, ADFS ile test edilmiştir. Ancak, bu, SAML onaylama program aracılığıyla dönüşü destekleyen herhangi bir kimlik sağlayıcısıyla birlikte kullanılır. Temel süreç: bir SAML onaylama işlemi alın, erişim belirteci alın ve Microsoft Graph erişin.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Yetkilendirme sunucusu/ortam (Microsoft 365) ile kimlik sağlayıcısı ya da SAML 2,0 taşıyıcı onaylama (ADFS) veren arasında bir güven ilişkisi oluşturun. ADFS 'yi çoklu oturum açma ve kimlik sağlayıcısı olarak yapılandırmak için [Bu makaleye](https://blogs.technet.microsoft.com/canitpro/2015/09/11/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365/)başvurabilirsiniz.
 

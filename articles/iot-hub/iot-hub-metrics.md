@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 20a1ec4b8eb88f5914ce6b27acc8a472e58f5d29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec8a00460b4a750339f929eb6879ac6eb63cac8e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457085"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705743"
 ---
 # <a name="understand-iot-hub-metrics"></a>IoT Hub ölçümlerini anlayın
 
@@ -115,7 +115,7 @@ IoT Hub, hub 'ınızın sistem durumuna ve bağlı cihazların toplam sayısına
 
 IoT Hub ölçümlerine genel bir bakış gördüğünüze göre, Azure IoT Hub yönetimi hakkında daha fazla bilgi edinmek için bu bağlantıyı izleyin:
 
-* [İşlemleri izleme](iot-hub-operations-monitoring.md)
+* [Tanılama günlüklerini ayarlama](iot-hub-monitor-resource-health.md)
 
 IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 

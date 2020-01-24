@@ -16,13 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbbcd854434bcc085f1b63fb864755dd0e928fc9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852154"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700303"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity platform (v 2.0) genel bakış
 
@@ -32,8 +31,8 @@ Microsoft kimlik platformu, Azure Active Directory (Azure AD) geliştirici platf
   - İş veya okul hesapları (Azure AD aracılığıyla temin edilmiş)
   - Kişisel Microsoft hesapları (Skype, Xbox ve Outlook.com gibi)
   - Sosyal veya yerel hesaplar (Azure AD B2C aracılığıyla)
-- **Açık kaynak kitaplıkları**: Microsoft kimlik doğrulama kitaplıkları (MSAL) ve standartlara uyumlu diğer kitaplıklar için destek
-- **Uygulama Yönetimi Portalı**: Diğer tüm Azure Yönetim olanaklarınızla birlikte Azure portal yerleşik olarak bulunan bir kayıt ve yapılandırma deneyimi.
+- **Açık kaynak kitaplıkları**: Microsoft kimlik doğrulama KITAPLıKLARı (msal) ve standartlara uyumlu diğer kitaplıklar için destek
+- **Uygulama Yönetimi Portalı**: Azure Portal yerleşik olarak bulunan ve diğer tüm Azure Yönetim olanaklarınızla birlikte bulunan bir kayıt ve yapılandırma deneyimi.
 - **Uygulama yapılandırma API 'si ve PowerShell**: uygulamalarınızın REST API (Microsoft Graph ve Azure Active Directory Graph 1,6) ve PowerShell aracılığıyla programlı yapılandırılmasına izin verir. böylece DevOps görevlerinizi otomatikleştirebilmenizi sağlayabilirsiniz.
 - **Geliştirici içeriği**: kavramsal ve başvuru belgeleri, hızlı başlangıç örnekleri, kod örnekleri, öğreticiler ve nasıl yapılır kılavuzlarından.
 
@@ -41,7 +40,7 @@ Geliştiriciler için Microsoft Identity platformu, kimlik ve güvenlik alanınd
 
 Microsoft Identity platformu ile kodu bir kez yazabilir ve herhangi bir kullanıcıya ulaşabilirsiniz. Bir uygulamayı bir kez oluşturup çok sayıda platformda çalışır hale getirebilirsiniz veya istemci olarak bir kaynak uygulaması (API) olarak işlev gören bir uygulama oluşturabilirsiniz.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
 Kimlikle çalışmanın zor olması şart değil. Size uygulanan bir [senaryo](authentication-flows-app-scenarios.md) seçin — her senaryo yolunda bir hızlı başlangıç ve bir genel bakış sayfası, birkaç dakika içinde çalışmaya başlamanızı sağlar:
 
@@ -56,7 +55,7 @@ Kimlikle çalışmanın zor olması şart değil. Size uygulanan bir [senaryo](a
 
 Aşağıdaki grafik ortak kimlik doğrulama uygulaması senaryolarını özetler – Microsoft Identity platformunu uygulamanızla tümleştirdiğinizde bu uygulamayı bir başvuru olarak kullanın.
 
-[![Microsoft Identity platformunda uygulama senaryoları](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
+[Microsoft Identity platformunda uygulama senaryolarını ![](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -78,6 +77,6 @@ Uygulamanızı bir **Üretim ortamında**başlatmaya hazırsanız, bu en iyi yö
 - [Proxy 'leri etkinleştirin ve http istemcilerini özelleştirin](msal-net-provide-httpclient.md).
 - [Microsoft Identity platform tümleştirme denetim listesini](identity-platform-integration-checklist.md)izleyerek tümleştirmenizi test edin.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazla bilgi
 
 Sosyal ve yerel kimliklerinizde oturum açan müşterilere yönelik bir uygulama oluşturmayı planlıyorsanız bkz. [Azure AD B2C genel bakış](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).

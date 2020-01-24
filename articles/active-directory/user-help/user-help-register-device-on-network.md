@@ -13,13 +13,12 @@ ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 879fa55df422e6039c6830e25e43637fc31b8037
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2e3bd9ffa968038ae3f03eaf8de9c5271d6248f4
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028481"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704621"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Kişisel cihazınızı kuruluşunuzun ağına kaydetme
 Kuruluşunuzun ağına kişisel cihazınızı (genellikle telefon veya tablet) kaydedin. Cihazınız kaydolduktan sonra kuruluşunuzun kısıtlanmış kaynaklarına erişebilir.
@@ -42,7 +41,7 @@ Cihazınızı kuruluşunuzun ağına kaydederken aşağıdaki eylemler gerçekle
 
 Kişisel cihazınızı ağınıza kaydetmek için aşağıdaki adımları izleyin.
 
-1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.
+1. **Ayarlar**'ı açıp **Hesaplar**'ı seçin.
 
     ![Ayarlar ekranındaki hesaplar](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
@@ -59,7 +58,7 @@ Kişisel cihazınızı ağınıza kaydetmek için aşağıdaki adımları izleyi
 ## <a name="to-verify-that-youre-registered"></a>Kaydoldığınızı doğrulamak için
 Ayarlarınıza bakarak kaydolduğunuzdan emin olabilirsiniz.
 
-1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.
+1. **Ayarlar**'ı açıp **Hesaplar**'ı seçin.
 
     ![Ayarlar ekranındaki hesaplar](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 

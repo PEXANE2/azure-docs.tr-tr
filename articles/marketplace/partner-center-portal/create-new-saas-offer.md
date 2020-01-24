@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: c39f41af8ed2f1e25064324c0e1da4a6603face8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.date: 01/22/2020
+ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045508"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705828"
 ---
 # <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturun
 
@@ -111,7 +111,7 @@ Market listesi oluşturarak işletmenizi Microsoft ile yükseltin. Microsoft 'un
 - **Potansiyel müşterilerin bu liste teklifiyle nasıl etkileşime geçmesini istiyorsunuz?**
 
 ##### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
-Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başlayarak) sağlayarak müşterilerinizin teklifinizi ücretsiz olarak listeleyin.  Örneğin, `https://contoso.com/saas-app`
+[Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulama](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)aracılığıyla bir deneme süresi sunabileceği GEÇERLI bir URL ( *http* veya *https*ile başlayarak) sunarak, müşterilerinizin teklifinizi ücretsiz olarak listeleyin.  Örneğin, `https://contoso.com/saas-app`
 
 ##### <a name="free-trial-listing"></a>Ücretsiz deneme (listeleme)
 [Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulama](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)aracılığıyla denemeyi alabileceğiniz, GEÇERLI bir URL ( *http* veya *https*ile başlayarak) sağlayarak, ücretsiz bir deneme bağlantısı olan müşterilere teklifinizi listeleyin.  Örneğin: `https://contoso.com/trial/saas-app`. Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
@@ -447,7 +447,7 @@ SaaS, özel bir hedef kitle tanımlamak için kiracı kimlikleri kullanır, diğ
 
 , Teklifinizin CSP programında kullanılabilmesini sağlamak için, bulut çözümü sağlayıcılarının, müşterilerine paketlenmiş bir çözümün parçası olarak ürününüzü satmasına olanak sağlar. Daha fazla bilgi için bkz. [bulut çözümü sağlayıcıları](https://go.microsoft.com/fwlink/?linkid=2111109).
 
-## <a name="publish"></a>Yayımlama
+## <a name="publish"></a>Yayımla
 
 Teklifin tüm gerekli bölümlerini tamamladıktan sonra portalın sağ üst köşesinde **Yayımla** ' yı seçin. **İnceleme ve yayımlama** sayfasına yeniden yönlendirilirsiniz.
 

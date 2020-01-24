@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: a9fd38b857f513ff67ae2fbe4ccd0c6c9540967e
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779170"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705777"
 ---
-# <a name="upload-files-into-a-media-services-account-using-rest"></a>REST kullanarak bir Media Services hesabına dosya yükleme
+# <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>REST kullanarak Media Services v3 hesabına dosya yükleme
 
 Media Services, dijital dosyalarınızı bir varlıkla ilişkili bir blob kapsayıcısına yüklersiniz. Varlık [varlığı video](https://docs.microsoft.com/rest/api/media/operations/asset) , ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar hakkındaki meta veriler) içerebilir. Dosyalar varlığın kapsayıcısına yüklendikten sonra, içeriğiniz daha fazla işlem ve akış için bulutta güvenli bir şekilde depolanır.
 

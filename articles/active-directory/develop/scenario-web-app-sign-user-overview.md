@@ -14,19 +14,18 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a53f88a97cdba8626c9d6c421093e4ec327e19
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 403f589702fd7142f0515a3b6f19ee1b9bbb6420
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961616"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701561"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Senaryo: kullanıcılarda oturum açan Web uygulaması
 
 Kullanıcıların oturum açması için Microsoft Identity platformunu kullanan bir Web uygulaması oluşturmak için ihtiyacınız olan tüm kullanıcıları öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 

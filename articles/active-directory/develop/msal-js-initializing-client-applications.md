@@ -13,13 +13,12 @@ ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c5022533cf0db57779bc36bd74cfb38932f10d6
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: e350f4fc3d40b45a1308e1edd9331dc7f71399c5
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777845"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696138"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL. js kullanarak istemci uygulamalarını başlatma
 Bu makalede, Kullanıcı Aracısı uygulamasının bir örneğiyle JavaScript (MSAL. js) için Microsoft kimlik doğrulama Kitaplığı başlatma açıklanmaktadır. Kullanıcı Aracısı uygulaması, istemci kodunun web tarayıcısı gibi bir Kullanıcı aracısında yürütüldüğü bir ortak istemci uygulaması biçimidir. Tarayıcı bağlamı başarıyla erişilebilir olduğundan bu istemciler gizli dizileri depolamaz. İstemci uygulama türleri ve uygulama yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için [genel bakış](msal-client-applications.md)makalesini okuyun.

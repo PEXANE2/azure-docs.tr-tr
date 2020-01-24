@@ -17,13 +17,12 @@ ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: jak
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a401f019f38d00790b1975f7a0a68d6097c21a70
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b7fe65938b6f96a649a5a2a9ec1d1b921a95dd49
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920370"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703091"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>İOS ve macOS için Microsoft kimlik doğrulama kitaplığı ile yeniden yönlendirme URI 'Leri kullanma
 
@@ -41,7 +40,7 @@ Ancak, aşağıda açıklandığı gibi gelişmiş senaryolar için yeniden yön
 
 Microsoft Identity platformu 'nın uygulamalar arasında belirteçleri paylaşması için, her uygulamanın aynı istemci KIMLIĞINE veya uygulama KIMLIĞINE sahip olması gerekir. Bu, uygulamanızı portalda kaydettiğinizde (Apple ile uygulama başına kaydettiğiniz uygulama paketi KIMLIĞINI değil), belirtilen benzersiz tanıtıcıdır.
 
-Yeniden yönlendirme URI 'Lerinin her bir iOS uygulaması için farklı olması gerekir. Bu, Microsoft Identity Service 'in bir uygulama KIMLIĞINI paylaşan farklı uygulamaları benzersiz şekilde tanımlamasına olanak sağlar. Her uygulamanın Azure portal kayıtlı birden fazla yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örnek:
+Yeniden yönlendirme URI 'Lerinin her bir iOS uygulaması için farklı olması gerekir. Bu, Microsoft Identity Service 'in bir uygulama KIMLIĞINI paylaşan farklı uygulamaları benzersiz şekilde tanımlamasına olanak sağlar. Her uygulamanın Azure portal kayıtlı birden fazla yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örneğin:
 
 Azure portal aşağıdaki uygulama kaydı verildiğinde:
 
@@ -83,7 +82,7 @@ MSAL, yeniden yönlendirme URI 'nizin doğru şekilde kaydolmadığını doğrul
 
 ## <a name="use-a-custom-redirect-uri"></a>Özel yeniden yönlendirme URI 'SI kullan
 
-Özel bir yeniden yönlendirme URI 'SI kullanmak için `redirectUri` parametresini `MSALPublicClientApplicationConfig` geçirin ve nesneyi başlattığınızda bu nesneyi `MSALPublicClientApplication` geçirin. Yeniden yönlendirme URI 'SI geçersizse, başlatıcı `nil` döndürür ve ek bilgilerle `redirectURIError`ayarlar.  Örnek:
+Özel bir yeniden yönlendirme URI 'SI kullanmak için `redirectUri` parametresini `MSALPublicClientApplicationConfig` geçirin ve nesneyi başlattığınızda bu nesneyi `MSALPublicClientApplication` geçirin. Yeniden yönlendirme URI 'SI geçersizse, başlatıcı `nil` döndürür ve ek bilgilerle `redirectURIError`ayarlar.  Örneğin:
 
 Amaç-C:
 

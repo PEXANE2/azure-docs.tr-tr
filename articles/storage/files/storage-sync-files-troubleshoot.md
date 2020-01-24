@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 009d9e864773fb3a2578504b043fb30302cedb22
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545050"
+ms.locfileid: "76704553"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -298,6 +298,15 @@ Azure dosya paylaşımınızda değişiklik yaptıysanız Azure Dosya Eşitleme,
 Sunucu üzerinde PerItemErrorCount veya portalda eşitlenmemiş dosyalar, belirli bir eşitleme oturumunda 0 ' dan büyükse, bazı öğelerin eşitlenmesi başarısız oluyor demektir. Dosya ve klasörlerin eşitlenmesine engel olan özellikler olabilir. Bu özellikler kalıcı olabilir ve eşitlemeyi sürdürmeye yönelik açık eylem gerektirebilir, örneğin, dosya veya klasör adından desteklenmeyen karakterleri kaldırır. Bunlar da geçici olabilir. Bu, dosya veya klasörün otomatik olarak eşitlemeyi sürdürmesini belirtir; Örneğin, dosya kapatıldığında açık tanıtıcıların bulunduğu dosyalar otomatik olarak eşitlemeye sürdürülür. Azure Dosya Eşitleme altyapısı böyle bir sorunu algıladığında, şu anda doğru şekilde eşitlenmeyen öğeleri listelemek için ayrıştırılabilen bir hata günlüğü oluşturulur.
 
 Bu hataları görmek için, açık tanıtıcılar, desteklenmeyen karakterler veya diğer sorunlar nedeniyle eşitleme başarısız olan dosyaları belirlemek üzere **Filesyncerrorsreport. ps1** PowerShell betiğini (Azure dosya eşitleme aracısının aracı yükleme dizininde bulunur) çalıştırın. ItemPath alanı, kök eşitleme diziniyle ilişkili olarak dosyanın konumunu söyler. Düzeltme adımları için aşağıdaki yaygın eşitleme hatalarının listesine bakın.
+
+> [!Note]  
+> FileSyncErrorsReport. ps1 betiği "dosya bulunamadı" hatası döndürürse ya da eşitleme grubu için öğe başına hataları listelemediği takdirde, nedeni:
+>
+>- Neden 1: son tamamlanan eşitleme oturumunda öğe başına hatalar yoktu. Portalın, eşitlenmeyen 0 dosya göstermesi için yakında güncelleştirilmiş olması gerekir. 
+>   - PerItemErrorCount değerinin 0 olduğunu doğrulamak için telemetri olay günlüğündeki [olay kimliği 9102](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) ' yı denetleyin. 
+>
+>- Neden 2: öğe başına çok fazla hata ve olay günlüğü artık bu eşitleme grubu için hata içerdiğinden, sunucuda bulunan ıtemresults olay günlüğü.
+>   - Bu sorunu engellemek için, ıtemresults olay günlüğü boyutunu artırın. Itemresults olay günlüğü, Olay Görüntüleyicisi içinde "uygulamalar ve hizmetler Logs\Microsoft\FileSync\Agent" altında bulunabilir. 
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Dosya/Dizin Eşitleme hataları başına sorun giderme
 **Itemresults-öğe başına Eşitleme hataları**  

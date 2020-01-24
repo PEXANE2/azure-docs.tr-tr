@@ -12,13 +12,12 @@ ms.date: 03/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a7376720661e13a03be65df4ee180e0bca20c3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 2987183900ad3232d46b2152bd52808ae96c802b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383068"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704842"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Uygulamalarım portalındaki sorunları giderme
 
@@ -48,7 +47,7 @@ Uygulamalarım güvenli oturum açma uzantısını yüklerken sorun yaşıyorsan
 
 **Uygulamalarım** portalında oturum açarken sorun yaşıyorsanız aşağıdakileri deneyebilirsiniz:
 
-- Doğru URL 'YI kullandığınızdan emin olun. Kuruluşunuz için veya gibi özelleştirilmiş bir sayfa olmalıdır. https://myapps.microsoft.com/contoso.com https://myapps.microsoft.com
+- Doğru URL 'YI kullandığınızdan emin olun. Kuruluşunuz için https://myapps.microsoft.com/contoso.com gibi https://myapps.microsoft.com veya özelleştirilmiş bir sayfa olmalıdır.
 
 - Parolanızın doğru olduğundan ve süresinin dolmadığından emin olun. Daha fazla bilgi için bkz. [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md).
 

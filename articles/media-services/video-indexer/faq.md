@@ -10,14 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: fc5457fd44bd27731cad6269ee95aed838a3d755
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d08c0b8817c0008a0ecfbab1a9d38243ec0bea79
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892796"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705692"
 ---
-# <a name="frequently-asked-questions"></a>Sık sorulan sorular
+# <a name="video-indexer-frequently-asked-questions"></a>Video Indexer sık sorulan sorular
 
 Bu makale Video Indexer hakkında sık sorulan soruları yanıtlar.
 
@@ -169,4 +169,4 @@ Evet, Video Indexer tam hizmet ve API işlevselliği sağlayan ücretsiz bir den
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel Bakış](video-indexer-overview.md)
+[Genel bakış](video-indexer-overview.md)

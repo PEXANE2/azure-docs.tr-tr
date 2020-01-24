@@ -17,13 +17,12 @@ ms.date: 08/26/2019
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65b85a5c551b4e26c39959a1bd4f435a5fa4fe6e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0aa4648d3d5e76c2d0ebd7524ad8dfa52da3fb30
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920319"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702496"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Nasıl yapılır: iOS ve macOS için MSAL kullanarak özel talepler ISTEME
 
@@ -31,7 +30,7 @@ OpenID Connect, isteğe bağlı olarak, UserInfo uç noktasından ve/veya KIMLIK
 
 İOS ve macOS için Microsoft kimlik doğrulama kitaplığı (MSAL), hem etkileşimli hem de sessiz belirteç alma senaryolarında belirli talepler istemeyi sağlar. Bu, `claimsRequest` parametresi aracılığıyla yapılır.
 
-Bunun gerekli olduğu birden çok senaryo vardır. Örnek:
+Bunun gerekli olduğu birden çok senaryo vardır. Örneğin:
 
 - Uygulamanız için standart küme dışında talepler isteme.
 - Uygulamanız için kapsamlar kullanılarak belirtilemez standart talepler için belirli birleşimler isteniyor. Örneğin, eksik talepler nedeniyle erişim belirteci reddedilirse, uygulama MSAL kullanarak eksik talepleri isteyebilir.

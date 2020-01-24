@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: d70f4832daba59739d6798517902e921927194d6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5d2f702b49e1e7aeb2ab33008556e91264b39427
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293989"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705420"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -98,11 +98,6 @@ Azure sanal makine yedekleme ilkesi, en az 9999 güne kadar yedi günlük beklet
 Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçmeli disk yedeklemesini ve geri yüklemeyi desteklemektedir.
 
 Günümüzde, sanal makine yedekleme çözümünü kullanarak bir VM 'deki tüm disklerin (Işletim sistemi ve veri) yedeklenmesini destekler Azure Backup. Disk dışlama işlevselliğiyle, bir VM 'deki birçok veri diskinden bir veya birkaçını yedekleme seçeneği alırsınız. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve ekonomik bir çözüm sunar. Her kurtarma noktası, yedekleme işlemine dahil edilen disklerin verilerini içerir. Bu, geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesine sahip etmenize olanak tanır. Bu, hem anlık görüntüden hem de kasadan geri yükleme için geçerlidir.
-
-Bu çözüm, aşağıdaki senaryolarda özellikle yararlıdır:
-  
-1. Yalnızca bir diskte yedeklenecek önemli verileriniz vardır ve bir VM 'ye bağlı olan disklerin geri kalanını yedeklemek istemezsiniz. Bu, yedekleme depolama maliyetlerini en aza indirir.  
-2. VM verilerinizin bir parçası için başka yedekleme çözümleriniz vardır. Örneğin, veritabanlarını veya verilerinizi farklı bir iş yükü yedekleme çözümüyle yedekletirseniz ve kullanılabilir en iyi özellikleri kullanarak verimli ve sağlam bir sistem oluşturmak için, disklerinizin ve verilerinizin geri kalanı için Azure VM düzeyinde yedekleme 'yi kullanmak istiyorsunuz.
 
 Önizlemeye kaydolmak için AskAzureBackupTeam@microsoft.com adresinden bize yazın
 

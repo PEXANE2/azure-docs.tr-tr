@@ -12,13 +12,12 @@ ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec5fe8e93c9032a07c1defe5b28753e0f520a320
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 32691892ccae31541855f47bd8274aa28b6dc185
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963342"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704298"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Hızlı başlangıç: Web API 'Lerine erişmek için bir istemci uygulaması yapılandırma
 
@@ -40,12 +39,12 @@ Bu hızlı başlangıçta, uygulamanızı aşağıdakiler için yapılandırmay�
 * [Web uygulamanıza kimlik bilgileri ekleme](#add-credentials-to-your-web-application)
 * [Web API’lerine erişim izinleri ekleme](#add-permissions-to-access-web-apis)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki önkoşulları karşıladığınızdan emin olun:
 
 * Diğer kullanıcılar veya uygulamalar tarafından kullanılması gereken uygulamaları derleme konusunda önemli olan desteklenen [izinler ve onaylar](v2-permissions-and-consent.md) hakkında bilgi edinin.
-* Uygulamaların kaydedilmiş olduğu bir kiracı kullanın.
+* Kaydedilmiş uygulamaları olan bir kiracısı olma.
   * Kayıtlı uygulama yoksa, [Microsoft kimlik platformu ile uygulamaları kaydetmeyi öğrenin](quickstart-register-app.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portalında oturum açın ve uygulamayı seçin
@@ -54,7 +53,7 @@ Uygulamayı yapılandırmadan önce, aşağıdaki adımları izleyin:
 
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşede hesabınızı seçin ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
-1. Arama yapın ve **Azure Active Directory**seçin. 
+1. **Azure Active Directory**'yi bulun ve seçin. 
 1. Sol bölmeden **uygulama kayıtları**' yi seçin.
 1. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtiğinizde, uygulamanın **Genel Bakış** veya ana kayıt sayfasını görürsünüz.
 1. Uygulamanızı web API'lerine erişmek üzere yapılandırmak için adımları izleyin:
@@ -207,7 +206,7 @@ Onay istemi, **kabul etme** veya **iptal**etme seçeneğini sağlar. **Kabul et*
 
 Uygulamalar için diğer ilgili uygulama yönetimi hızlı başlangıçları hakkında bilgi edinin:
 
-* [Microsoft kimlik platformu ile uygulama kaydetme](quickstart-register-app.md)
+* [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md)
 * [Bir uygulamayı web API'lerini kullanıma sunacak şekilde yapılandırma](quickstart-configure-app-expose-web-apis.md)
 * [Bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md)
 * [Microsoft kimlik platformu ile kaydedilmiş bir uygulamayı kaldırma](quickstart-remove-app.md)

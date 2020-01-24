@@ -17,13 +17,12 @@ ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd944af95f80cf456260beb072c703aab0d15ceb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ecc55c0d41f552d2c29fe5c964a7c40ab9e382ba
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175284"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701391"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Nasıl yapılır: macOS ve iOS 'ta SSO 'yu yapılandırma
 
@@ -70,7 +69,7 @@ Uygulamalarınızda SSO 'yu etkinleştirmek için aşağıda daha ayrıntılı o
 
 Hangi uygulamaların belirteçleri paylaşabileceği hakkında bilgi sahibi olmak için Microsoft Identity platformu için, bu uygulamaların aynı Istemci KIMLIĞINI veya uygulama KIMLIĞINI paylaşması gerekir. Bu, portalda ilk uygulamanızı kaydettiğinizde size sağlanmış olan benzersiz tanıtıcıdır.
 
-Microsoft Identity platform 'un aynı uygulama KIMLIĞINI kullanan uygulamalara **yeniden yönlendirme URI 'leri**tarafından nasıl olduğunu söyleme şekli. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örnek:
+Microsoft Identity platform 'un aynı uygulama KIMLIĞINI kullanan uygulamalara **yeniden yönlendirme URI 'leri**tarafından nasıl olduğunu söyleme şekli. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örneğin:
 
 APP1 Redirect URI: `msauth.com.contoso.mytestapp1://auth` app2 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp2://auth` App3 yeniden yönlendirme URI 'si: `msauth.com.contoso.mytestapp3://auth`
 
@@ -99,7 +98,7 @@ Yetkilendirmeler doğru şekilde ayarlandığında, proje dizininizde bu örneğ
 
 Her bir uygulamanızda Anahtarlık yetkilendirme yetkilerini etkinleştirdikten sonra, SSO kullanmaya hazırsanız, aşağıdaki örnekte olduğu gibi Anahtarlık erişim grubumun `MSALPublicClientApplication` yapılandırın:
 
-Amaç-C:
+Objective-C:
 
 ```objc
 NSError *error = nil;
@@ -109,7 +108,7 @@ configuration.cacheConfig.keychainSharingGroup = @"my.keychain.group";
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:configuration error:&error];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
@@ -134,11 +133,11 @@ do {
 
 ## <a name="sso-through-authentication-broker-on-ios"></a>İOS üzerinde kimlik doğrulama Aracısı aracılığıyla SSO
 
-MSAL, Microsoft Authenticator ile aracılı kimlik doğrulama desteği sağlar. Microsoft Authenticator, AAD kayıtlı cihazlar için SSO sağlar ve uygulamanızın koşullu erişim ilkelerini izlemesine de yardımcı olur.
+MSAL provides support for brokered authentication with Microsoft Authenticator. Microsoft Authenticator provides SSO for AAD registered devices, and also helps your application follow Conditional Access policies.
 
-Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullanarak SSO 'yu nasıl etkinleştirirsiniz:
+The following steps are how you enable SSO using an authentication broker for your app:
 
-1. Uygulamanın Info. plist dosyasında uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth`. ' < App. demeti. ID > ' ' değerini uygulamanızın paket KIMLIĞIYLE değiştirin. Örnek:
+1. Register a broker compatible Redirect URI format for the application in your app's Info.plist. The broker compatible Redirect URI format is `msauth.<app.bundle.id>://auth`. Replace `<app.bundle.id>`` with your application's bundle ID. Örneğin:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -147,7 +146,7 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     </array>
     ```
 
-1. `LSApplicationQueriesSchemes`altındaki uygulamanızın Info. plist ' e aşağıdaki şemaları ekleyin:
+1. Add following schemes to your app's Info.plist under `LSApplicationQueriesSchemes`:
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -157,9 +156,9 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     </array>
     ```
 
-1. Geri çağırmaları işlemek için `AppDelegate.m` dosyanıza aşağıdakileri ekleyin:
+1. Add the following to your `AppDelegate.m` file to handle callbacks:
 
-    Amaç-C:
+    Objective-C:
     
     ```objc
     - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
@@ -168,7 +167,7 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     }
     ```
     
-    SWIFT
+    Swift:
     
     ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -176,10 +175,10 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     }
     ```
     
-**Xcode 11**kullanıyorsanız, bunun yerine msal geri çağırma işlemini `SceneDelegate` dosyasına yerleştirmeniz gerekir.
-Daha eski iOS ile uyumluluk için hem UISceneDelegate hem de Uıapplicationdelegate 'i destekediyorsanız, MSAL geri çağrısının her iki dosyaya da yerleştirilmesi gerekir.
+**If you are using Xcode 11**, you should place MSAL callback into the `SceneDelegate` file instead.
+If you support both UISceneDelegate and UIApplicationDelegate for compatibility with older iOS, MSAL callback would need to be placed into both files.
 
-Amaç-C:
+Objective-C:
 
 ```objc
  - (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts
@@ -192,7 +191,7 @@ Amaç-C:
  }
 ```
 
-SWIFT
+Swift:
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -210,4 +209,4 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
     
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) hakkında daha fazla bilgi edinin
+Learn more about [Authentication flows and application scenarios](authentication-flows-app-scenarios.md)

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 01/23/2020
 ms.author: victorh
-ms.openlocfilehash: 714054b8e538b2fb1bfb3fb4f2293636802f3bc4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168897"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76706015"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure Güvenlik Duvarı günlük Analizi örnekleri
 
@@ -166,6 +166,15 @@ AzureDiagnostics
 | sort by TimeGenerated desc | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action,Message
 ```
 
+## <a name="sample-logs"></a>Örnek günlükler
+
+Aşağıdaki günlük örnekleri, bir günlük girişinde içerilen verileri gösterir.
+
+![günlük girdisi](media/log-analytics-samples/log1.png)
+
+![günlük girdisi](media/log-analytics-samples/log2.png)
+
+![günlük girdisi](media/log-analytics-samples/log3.png)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Güvenlik Duvarı izleme ve tanılama hakkında bilgi edinmek için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme](tutorial-diagnostics.md).

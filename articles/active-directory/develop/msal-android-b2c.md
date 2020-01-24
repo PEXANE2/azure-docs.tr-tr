@@ -13,13 +13,12 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98a31ea2daffba19242e73362af5a44e3a392342
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917123"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696530"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>B2C ile Android için MSAL kullanma
 
@@ -140,7 +139,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>İlke belirtin
 
-B2C 'deki ilkeler ayrı yetkililer olarak temsil edildiğinden, `acquireToken` veya `acquireTokenSilent` parametreleri oluşturulurken bir `fromAuthority` yan tümcesi belirtilerek varsayılan dışında bir ilke çağırma elde edilir.  Örnek:
+B2C 'deki ilkeler ayrı yetkililer olarak temsil edildiğinden, `acquireToken` veya `acquireTokenSilent` parametreleri oluşturulurken bir `fromAuthority` yan tümcesi belirtilerek varsayılan dışında bir ilke çağırma elde edilir.  Örneğin:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()

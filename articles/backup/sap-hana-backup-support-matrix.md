@@ -3,12 +3,12 @@ title: SAP HANA Backup destek matrisi
 description: Bu makalede, Azure VM 'lerde SAP HANA veritabanlarını yedeklemek için Azure yedekleme 'yi kullandığınızda desteklenen senaryolar ve sınırlamalar hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a0a7c25ec718dcd6a903d2149a8b3930fb25941e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 2063da4c5210cace41454d8bdc5b12e636ba76cd
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514312"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705658"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM’leri üzerinde SAP HANA veritabanlarının yedeklerine yönelik destek matrisi
 
@@ -33,17 +33,17 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 | **Senaryo**               | **Desteklenen konfigürasyonlar**                                | **Desteklenmeyen yapılandırmalar**                              |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Topoloji**               | Yalnızca Azure Linux VM 'lerinde çalışan SAP HANA                    | HANA büyük örnekler (HLI)                                   |
-| **Coğrafyalar**                   | Avustralya Güney Doğu, Doğu Avustralya Brezilya Güney Kanada Orta, Kanada Doğu Güney Doğu Asya, Doğu Asya Doğu ABD, Doğu ABD 2, Orta Batı ABD, Batı ABD, Batı ABD 2, Orta Kuzey ABD, Orta ABD, Orta Güney ABD Hindistan Orta, Hindistan Güney Japonya Doğu, Japonya St Kore Orta, Kore Güney Kuzey Avrupa, Batı Avrupa UK Güney, UK Batı | Avustralya Orta, Avustralya Orta 2 Çin Doğu, Çin Kuzey, Çin Doğu2, Çin Kuzey 2 Batı Hindistan Fransa Orta, Fransa Güney Almanya Kuzey, Almanya Orta Batı İsviçre Kuzey, İsviçre Batı Güney Afrika Kuzey, Güney Afrika Batı, BAE Kuzey, UAE Centra l Azure Kamu bölgeleri |
-| **İşletim sistemi sürümleri**            | SLES 12 with SP2, SP3 veya SP4           | SLES 15, RHEL                                                |
-| **HANA sürümleri**          | Hana 1. x üzerinde SDC, HANA 2. x < = SPS04 Rev 44           | -                                                            |
+| **Coğrafyalar**                   | **GA**<br />**Avrupa** – Batı Avrupa, Kuzey Avrupa, Fransa Orta, Fransa Güney, UK Güney, UK Batı, Almanya Kuzey, Almanya Orta Batı, İsviçre Kuzey, İsviçre Batı<br />**Asya Pasifik** – Avustralya Orta, Avustralya Orta 2, Avustralya Doğu, Avustralya Güneydoğu, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney<br /><br>**Önizleme:**<br />**Kuzey** – Orta ABD, Doğu ABD 2, Doğu ABD, Orta Kuzey ABD, Orta Güney ABD, Batı ABD 2, Orta Batı ABD, Batı ABD, Kanada Orta, Kanada Doğu, Brezilya Güney<br />**Asya Pasifik** – Doğu Asya, güneydoğu asya, Orta Hindistan Güney Hindistan | Çin Doğu, Çin Kuzey, Çin Doğu2, Çin Kuzey 2, Batı Hindistan, Merkezi İsviçre Kuzey, Güney Afrika Kuzey, Güney Afrika Batı, BAE Kuzey, BAE Orta, Azure Kamu bölgeleri |
+| **İşletim sistemi sürümleri**            | SLES 12 with SP2, SP3 veya SP4                                | SLES 15, RHEL                                                |
+| **HANA sürümleri**          | Hana 1. x üzerinde SDC, HANA 2. x < = SPS04 Rev 44            | -                                                            |
 | **HANA dağıtımları**       | Tek bir Azure VM üzerinde SAP HANA-yalnızca ölçeği büyütme               | Ölçeklendirme                                                    |
 | **HANA örnekleri**         | Tek bir Azure VM üzerinde tek bir SAP HANA örneği – yalnızca ölçeği büyütme | Tek bir VM 'de birden çok SAP HANA örneği                  |
 | **HANA veritabanı türleri**    | 2\. x üzerinde 1. x, çok veritabanı kapsayıcısı (MDC) ÜZERINDE Tek Veritabanı kapsayıcı (SDC) | HANA 1. x içinde MDC                                              |
-| **HANA veritabanı boyutu**     | 2-TB, HANA tarafından bildirildiği şekilde tam yedekleme boyutu) |                                                              |
-| **Yedekleme türleri**           | Tam, değişiklik ve günlük yedeklemeleri                           | Artımlı, anlık görüntüler                                       |
+| **HANA veritabanı boyutu**     | 2-TB, HANA tarafından bildirildiği şekilde tam yedekleme boyutu)                   |                                                              |
+| **Yedekleme türleri**           | Tam, değişiklik ve günlük yedeklemeleri                          | Artımlı, anlık görüntüler                                       |
 | **Geri yükleme türleri**          | Desteklenen geri yükleme türleri hakkında bilgi edinmek için SAP HANA [1642148](https://launchpad.support.sap.com/#/notes/1642148) notuna bakın |                                                              |
-| **Yedekleme limitleri**          | SAP HANA örneği başına 2 TB 'a kadar tam yedekleme boyutu  |                                                              |
-| **Özel yapılandırma** |                                                              | SAP HANA + dinamik katmanlama <br>  , Geçişli aracılığıyla kopyalama            |
+| **Yedekleme limitleri**          | SAP HANA örneği başına 2 TB 'a kadar tam yedekleme boyutu         |                                                              |
+| **Özel yapılandırma** |                                                              | SAP HANA + dinamik katmanlama <br>  , Geçişli aracılığıyla kopyalama        |
 
 ------
 

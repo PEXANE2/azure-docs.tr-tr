@@ -16,13 +16,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d41cd23d551e4834bf6b94f513e36ff46c1cd45
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: fe9fb67331340314ebeea3c9e8d34436b9088856
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373657"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699759"
 ---
 # <a name="web-apps"></a>Web uygulamaları
 
@@ -30,7 +29,7 @@ Web Apps, Web tarayıcısında bir kullanıcının kimliğini bir Web uygulamas�
 
 ## <a name="diagram"></a>Diyagram
 
-![Tarayıcı için Web uygulamasına yönelik kimlik doğrulama akışı](./media/authentication-scenarios/web_browser_to_web_api.png)
+![Tarayıcıdan web uygulamasına yönelik kimlik doğrulama akışı](./media/authentication-scenarios/web_browser_to_web_api.png)
 
 ## <a name="protocol-flow"></a>Protokol akışı
 

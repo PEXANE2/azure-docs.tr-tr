@@ -3,12 +3,12 @@ title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: e5ff3a00d8cb3bf0c5fa3cb4929b7c22d92c7834
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513822"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705556"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -189,16 +189,11 @@ Azure Backup, makinede çalışan Azure VM aracısına bir uzantı yükleyerek A
 **Linux** | Dağıtım paketi deposundan bir RPM veya bir DEB paketini kullanarak uygulamasını yükler. Bu, Azure Linux aracısını yüklemek ve yükseltmek için tercih edilen yöntemdir. Tüm [onaylı dağıtım sağlayıcıları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , Azure Linux Aracısı paketini görüntülerle ve depolarında tümleştirin. Aracı [GitHub](https://github.com/Azure/WALinuxAgent)'da kullanılabilir ancak buradan yüklemeyi önermiyoruz.<br/><br/> Aracıyı güncelleştiriyorsanız, yedekleme işlemlerinin çalışmakta olmadığından emin olun ve ikili dosyaları güncelleştirin.
 
 >[!NOTE]
-> Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçmeli disk yedeklemesini ve geri yüklemeyi desteklemektedir.
+> **Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçmeli disk yedeklemesini ve geri yüklemeyi desteklemektedir.**
 >
 >Günümüzde, sanal makine yedekleme çözümünü kullanarak bir VM 'deki tüm disklerin (Işletim sistemi ve veri) yedeklenmesini destekler Azure Backup. Disk dışlama işlevselliğiyle, bir VM 'deki birçok veri diskinden bir veya birkaçını yedekleme seçeneği alırsınız. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve ekonomik bir çözüm sunar. Her kurtarma noktası, yedekleme işlemine dahil edilen disklerin verilerini içerir. Bu, geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesine sahip etmenize olanak tanır. Bu, hem anlık görüntüden hem de kasadan geri yükleme için geçerlidir.
 >
-> Bu çözüm, aşağıdaki senaryolarda özellikle yararlıdır:
->  
->1. Yalnızca bir diskte yedeklenecek önemli verileriniz vardır ve bir VM 'ye bağlı olan disklerin geri kalanını yedeklemek istemezsiniz. Bu, yedekleme depolama maliyetlerini en aza indirir.  
->2. VM verilerinizin bir parçası için başka yedekleme çözümleriniz vardır. Örneğin, veritabanlarını veya verilerinizi farklı bir iş yükü yedekleme çözümüyle yedekletirseniz ve kullanılabilir en iyi özellikleri kullanarak verimli ve sağlam bir sistem oluşturmak için, disklerinizin ve verilerinizin geri kalanı için Azure VM düzeyinde yedekleme 'yi kullanmak istiyorsunuz.
->
->Önizlemeye kaydolmak için AskAzureBackupTeam@microsoft.com adresinden bize yazın
+>**Önizlemeye kaydolmak için AskAzureBackupTeam@microsoft.com adresinden bize yazın**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,13 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d156ccd4b3f81081433962dcd939a91ab1bc7143
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963243"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696427"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS ve ADAL JS arasındaki farklar
 
@@ -74,7 +73,7 @@ V 2.0 'da, `https://login.microsoftonline.com/common` yetkilisini kullanarak, ku
 
 * Artımlı izin için dinamik kapsamlar.
 
-    V 1.0 kullanarak uygulama oluştururken, kullanıcının oturum açma sırasında izin vermesini sağlamak için uygulamanın gerektirdiği tüm izin (statik kapsamlar) kümesini kaydetmeniz gerekir. V 2.0 'da, izinleri istediğiniz zaman istemek için kapsam parametresini kullanabilirsiniz. Bunlara dinamik kapsamlar denir. Bu, kullanıcının kapsamlar için artımlı onay sağlamasına izin verir. Bu nedenle, yalnızca kullanıcının uygulamanızda oturum açmasını istiyor ve herhangi bir erişime ihtiyacınız yoksa, bunu yapabilirsiniz. Daha sonra kullanıcının takvimini okuma olanağına ihtiyacınız varsa, bu durumda acquireToken yöntemlerinde takvim kapsamını isteyebilir ve kullanıcının onay almasını sağlayabilirsiniz. Örnek:
+    V 1.0 kullanarak uygulama oluştururken, kullanıcının oturum açma sırasında izin vermesini sağlamak için uygulamanın gerektirdiği tüm izin (statik kapsamlar) kümesini kaydetmeniz gerekir. V 2.0 'da, izinleri istediğiniz zaman istemek için kapsam parametresini kullanabilirsiniz. Bunlara dinamik kapsamlar denir. Bu, kullanıcının kapsamlar için artımlı onay sağlamasına izin verir. Bu nedenle, yalnızca kullanıcının uygulamanızda oturum açmasını istiyor ve herhangi bir erişime ihtiyacınız yoksa, bunu yapabilirsiniz. Daha sonra kullanıcının takvimini okuma olanağına ihtiyacınız varsa, bu durumda acquireToken yöntemlerinde takvim kapsamını isteyebilir ve kullanıcının onay almasını sağlayabilirsiniz. Örneğin:
 
     ```javascript
     var request = {
@@ -86,7 +85,7 @@ V 2.0 'da, `https://login.microsoftonline.com/common` yetkilisini kullanarak, ku
 
 * V 1.0 API 'Leri için kapsamlar
 
-    MSAL. js kullanarak V 1.0 API 'Leri için belirteçler alırken API 'de kayıtlı tüm statik kapsamları, API 'nin uygulama KIMLIĞI URI 'sine kapsam olarak `.default` ekleyerek isteyebilirsiniz. Örnek:
+    MSAL. js kullanarak V 1.0 API 'Leri için belirteçler alırken API 'de kayıtlı tüm statik kapsamları, API 'nin uygulama KIMLIĞI URI 'sine kapsam olarak `.default` ekleyerek isteyebilirsiniz. Örneğin:
 
     ```javascript
     var request = {

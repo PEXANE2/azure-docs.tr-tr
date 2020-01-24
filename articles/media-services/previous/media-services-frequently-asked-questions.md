@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services sık sorulan sorular | Microsoft Docs
+title: Azure Media Services sık sorulan sorular
 description: Bu makalede Azure Media Services hakkında sık sorulan sorulara yanıtlar verilmektedir.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3aeff680392fbe966682b57ca1318fac9f0d1d93
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bdb5a43ad6669bfcd6e93ef4e3bf1646314e4606
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895991"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705879"
 ---
-# <a name="frequently-asked-questions"></a>Sık sorulan sorular
+# <a name="media-services-v2-frequently-asked-questions"></a>Media Services V2 sık sorulan sorular
 
 Bu makalede, Azure Media Services (AMS) Kullanıcı topluluğu tarafından oluşturulan sık sorulan sorular ele alınmaktadır.
 

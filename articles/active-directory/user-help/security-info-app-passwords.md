@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee9f6bc1986cb31b1e21a0678e59bf8269988426
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d4076e379755518421ef79eca542ebdc99294a11
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231801"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704903"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>Güvenlik bilgileri (Önizleme) sayfasından uygulama parolaları oluşturma
 
@@ -83,6 +82,6 @@ Uygulama parolası gerektiren bir uygulamayı artık kullanmanız gerekmiyorsa, 
 
 2. **Uygulama parolasını**silmek için onay kutusundan **Evet** ' i seçin. Uygulama parolası silindikten sonra, güvenlik bilgileriniz kaldırılır ve **güvenlik bilgileri** sayfasından kaybolur.
 
-## <a name="for-more-information"></a>Daha fazla bilgi için
+## <a name="for-more-information"></a>Daha fazla bilgi edinmek için
 
 - **Güvenlik bilgileri** sayfası ve nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [güvenlik bilgilerine genel bakış](user-help-security-info-overview.md)

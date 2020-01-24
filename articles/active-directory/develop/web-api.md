@@ -16,19 +16,18 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4babb7e869f4fc83bcdb530a580a29dda234293
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e57e027848294cbff570cb64d0ad4bbf05693ffe
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373788"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699810"
 ---
 # <a name="web-api"></a>Web API’si
 
 Web API Apps, bir Web API 'sinden kaynak alması gereken Web uygulamalarıdır. Bu senaryoda, Web uygulamasının, Web API 'sini doğrulamak ve çağırmak için kullanabileceği iki kimlik türü vardır:
 
-- **Uygulama kimliği** -bu senaryo, uygulama olarak kimlik doğrulaması yapmak ve Web API 'sine erişmek için OAuth 2,0 istemci kimlik bilgileri kullanır. Web API 'si, bir uygulama kimliği kullanırken, Web API 'SI Kullanıcı hakkında herhangi bir bilgi almadıkça yalnızca Web uygulamasının bunu çağırıyor olduğunu algılayabilir. Uygulama, Kullanıcı hakkında bilgi alırsa uygulama protokolü aracılığıyla gönderilir ve Azure AD tarafından imzalanmamıştır. Web API 'SI, Web uygulamasının kimliğinin doğruladığını güvendiğinde. Bu nedenle, bu modele güvenilen alt sistem denir.
+- **Uygulama kimliği** -bu senaryo, uygulama olarak kimlik doğrulaması yapmak ve Web API 'sine erişmek için OAuth 2,0 istemci kimlik bilgileri kullanır. Web API 'si, bir uygulama kimliği kullanırken, Web API 'SI Kullanıcı hakkında herhangi bir bilgi almadıkça yalnızca Web uygulamasının bunu çağırıyor olduğunu algılayabilir. Uygulama, Kullanıcı hakkında bilgi alırsa uygulama protokolü aracılığıyla gönderilir ve Azure AD tarafından imzalanmamıştır. Web API 'SI, Web uygulamasının kimliğinin doğruladığını güvendiğinde. Bu nedenle, bu düzen, bir güvenilir alt sistem adı verilir.
 - **Temsil edilen Kullanıcı kimliği** -bu senaryo iki şekilde gerçekleştirilebilir: OpenID Connect ve OAuth 2,0 yetkilendirme kodu, gizli bir istemciyle birlikte kullanılabilir. Web uygulaması, Kullanıcı için bir erişim belirteci edinir, bu, kullanıcının Web uygulamasına başarıyla kimlik doğruladığını ve Web uygulamasının Web API 'sini çağırmak için yetkilendirilmiş bir kullanıcı kimliği elde edebildiğini kanıtlayan Web API 'sine sahip olur. Bu erişim belirteci, kullanıcıya yetki veren ve istenen kaynağı döndüren Web API 'sine yönelik istekte gönderilir.
 
 Hem uygulama kimliği hem de temsilci Kullanıcı kimlik türleri aşağıdaki akışta ele alınmıştır. Aralarındaki temel fark, temsilci Kullanıcı kimliğinin, Kullanıcı oturum açabilmeniz ve Web API 'sine erişim kazanmak için öncelikle bir yetkilendirme kodu edinmesi gerekir.
@@ -42,7 +41,7 @@ Hem uygulama kimliği hem de temsilci Kullanıcı kimlik türleri aşağıdaki a
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>OAuth 2,0 istemci kimlik bilgileri izni ile uygulama kimliği
 
 1. Bir Kullanıcı Web uygulamasında Azure AD 'ye oturum açtı (daha fazla bilgi için **Web Apps** bölümüne bakın).
-1. Web uygulamasının, Web API 'sinin kimliğini doğrulayabilmesi ve istenen kaynağı alabilmesi için bir erişim belirteci alması gerekir. Kimlik bilgisi, uygulama KIMLIĞI ve Web API 'sinin uygulama KIMLIĞI URI 'sini sağlayarak Azure AD 'nin belirteç uç noktası için bir istek yapar.
+1. Web API'si için kimlik doğrulaması yapmak ve almak istediğiniz kaynak bir erişim belirteci almak web uygulaması gerekir. Kimlik bilgisi, uygulama KIMLIĞI ve Web API 'sinin uygulama KIMLIĞI URI 'sini sağlayarak Azure AD 'nin belirteç uç noktası için bir istek yapar.
 1. Azure AD uygulamanın kimliğini doğrular ve Web API 'sini çağırmak için kullanılan bir JWT erişim belirteci döndürür.
 1. HTTPS üzerinden Web uygulaması, isteğin yetkilendirme üstbilgisinde Web API 'sine bir "taşıyıcı" atamaya sahip JWT dizesini eklemek için döndürülen JWT erişim belirtecini kullanır. Web API 'SI daha sonra JWT belirtecini doğrular ve doğrulama başarılı olursa, istenen kaynağı döndürür.
 

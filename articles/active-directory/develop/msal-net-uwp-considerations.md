@@ -13,13 +13,12 @@ ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14546a63db952119303428140c65ee402010816
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 549e36099e06d665ecab879ceb3c38987d000852
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921786"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695101"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>MSAL.NET ile ilgili Evrensel Windows Platformu özel noktalar
 UWP 'de, MSAL.NET kullanırken dikkate almanız gereken bazı noktalar vardır.

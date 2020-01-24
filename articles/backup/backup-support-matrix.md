@@ -3,12 +3,12 @@ title: Azure Backup destek matrisi
 description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: dc709294b92fd26343e9520e3775b9f079aba94f
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: c424b905f44d6fd3a80a08ef925df4d0a06dd7d8
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708489"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705386"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 **Kasa depolamadaki veri kaynakları** | Maksimum 54.400 GB. Azure VM yedeklemeleri için sınır yoktur.
 **Kasaya yedeklemeler** | **Azure VM 'leri:** Günde bir kez.<br/><br/>**DPM/MABS tarafından korunan makineler:** Günde iki kez.<br/><br/> **Mars Aracısı kullanılarak doğrudan yedeklenen makineler:** Günde üç kez.
 **Kasaların arasındaki yedeklemeler** | Yedekleme bir bölgede yer alan.<br/><br/> Yedeklemek istediğiniz VM 'Leri içeren her Azure bölgesinde bir kasaya ihtiyacınız vardır. Farklı bir bölgeye yedekleme yapamazsınız.
-**Kasaları taşı** | Kasalarını abonelikler arasında veya aynı abonelikteki kaynak grupları arasında [taşıyabilirsiniz](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) .
+**Kasaları taşı** | Kasalarını abonelikler arasında veya aynı abonelikteki kaynak grupları arasında [taşıyabilirsiniz](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) . Ancak, kasaların bölgeler arasında taşınması desteklenmez.
 **Kasaları arasında veri taşıma** | Yedeklenen verilerin kasaların arasına taşınması desteklenmez.
 **Kasa depolama türünü değiştir** | Yedeklemeler depolanmadan önce bir kasa için depolama çoğaltma türünü (coğrafi olarak yedekli depolama veya yerel olarak yedekli depolama) değiştirebilirsiniz. Yedekler kasada başladıktan sonra çoğaltma türü değiştirilemez.
 

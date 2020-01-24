@@ -13,13 +13,12 @@ ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718c33fc8a834a6abbbc9f1a1c33e02eb810a991
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5e0ad98b24b0e917d079d72ecc7e1930d30cc04a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915291"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699572"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı 'na genel bakış (MSAL)
 Microsoft kimlik doğrulama kitaplığı (MSAL), geliştiricilerin güvenli Web API 'Lerine erişmek için Microsoft Identity platform uç noktasından [belirteç](developer-glossary.md#security-token) almasına olanak sağlar. Bu Web API 'Leri Microsoft Graph, diğer Microsoft API 'leri, üçüncü taraf Web API 'Leri veya kendi Web API 'niz olabilir. MSAL, birçok farklı uygulama mimarilerini ve platformunu destekleyen .NET, JavaScript, Android ve iOS için kullanılabilir.

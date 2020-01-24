@@ -15,13 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ded0ba36a8eef7adb1be5b5f07408b9f79359f44
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 36d74b9926639bb4ec49821a3d73b5d615016394
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965645"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702683"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Özel olarak geliştirilen uygulamalar için kayıt alanlarını Azure portal
 
@@ -41,7 +40,7 @@ Bu makale, [Azure Portal](https://portal.azure.com)uygulama kaydı formundaki t�
 
 | Alan            | Açıklama                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Adı             | Uygulamanın adı. En az dört karakter uzunluğunda olmalıdır.                |
+| Ad             | Uygulamanın adı. En az dört karakter uzunluğunda olmalıdır.                |
 | Desteklenen hesap türleri| Uygulamanızın hangi hesaplara desteklemesini istediğinizi seçin: yalnızca bu kuruluş dizinindeki hesaplar, herhangi bir kuruluş dizinindeki hesaplar veya herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları.  |
 | Yeniden Yönlendirme URL’si (isteğe bağlı) | Oluşturmakta olduğunuz uygulamanın türünü, **Web** veya **ortak istemciyi (mobil & Masaüstü)** seçin ve ardından uygulamanızın yeniden yönlendirme URI 'SINI (veya yanıt URL 'si) girin. Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin http://localhost:31544 yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır. Genel istemci uygulamaları için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. Uygulamanıza özgü bir değer girin, örneğin, myapp://auth. Web uygulamalarına veya yerel uygulamalara yönelik belirli örnekleri görmek için [hızlı başlangıç](https://docs.microsoft.com/azure/active-directory/develop)deneyimimize göz atın.|
 

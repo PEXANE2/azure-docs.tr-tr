@@ -13,13 +13,12 @@ ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a71093ee05e032a5df89bb0560b6daa82e2fbf2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cba213824cba86b4ea54e852b7e2f1ede83abfea
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916154"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695817"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL uygulamalarında oturum açma
 
@@ -130,7 +129,7 @@ Logger.getInstance().setEnableLogcatLog(true);
  Bir `UserAgentApplication` örneği oluşturmak için yapılandırma sırasında bir günlükçü nesnesi geçirerek MSAL. js ' de (JavaScript) günlük kaydını etkinleştirin. Bu günlükçü nesnesi aşağıdaki özelliklere sahiptir:
 
 - `localCallback`: geliştirici tarafından günlükleri özel bir biçimde tüketmek ve yayımlamak için kullanılabilecek bir geri çağırma örneği. Günlükleri yeniden yönlendirmek istediğiniz yönteme bağlı olarak localCallback yöntemini uygulayın.
-- `level` (isteğe bağlı): yapılandırılabilir günlük düzeyi. Desteklenen günlük düzeyleri şunlardır: `Error`, `Warning`, `Info`ve `Verbose`. Varsayılan değer: `Info`.
+- `level` (isteğe bağlı): yapılandırılabilir günlük düzeyi. Desteklenen günlük düzeyleri şunlardır: `Error`, `Warning`, `Info`ve `Verbose`. Varsayılan: `Info`.
 - `piiLoggingEnabled` (isteğe bağlı): true olarak ayarlanırsa, kişisel ve kurumsal verileri günlüğe kaydeder. Bu, varsayılan olarak, uygulamanızın kişisel verileri günlüğe almamasını sağlamak için false 'tur. Kişisel veri günlükleri hiçbir şekilde konsol, Logcat veya NSLog gibi varsayılan çıkışlara yazılmaz.
 - `correlationId` (isteğe bağlı): isteği hata ayıklama amacıyla Yanıtla eşlemek için kullanılan benzersiz bir tanımlayıcı. Varsayılan olarak RFC4122 sürüm 4 GUID (128 bit) olur.
 
@@ -178,7 +177,7 @@ MSAL günlüğünü yakalamak ve kendi uygulamanızın günlüğüne eklemek iç
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Örnek:
+Örneğin:
 
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
@@ -219,7 +218,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 | `MSALLogLevelInfo` |  Kitaplık giriş noktaları, parametreler ve çeşitli Anahtarlık işlemleri |
 |`MSALLogLevelVerbose`     |  API izleme |
 
-Örnek:
+Örneğin:
 
 ```objc
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
@@ -229,7 +228,7 @@ MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
 
 MSAL günlük iletilerinin ileti kısmı `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message` biçimindedir
 
-Örnek:
+Örneğin:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
@@ -256,7 +255,7 @@ MSAL günlüğünü yakalamak ve kendi uygulamanızın günlüğüne eklemek iç
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Örnek:
+Örneğin:
 
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
@@ -296,7 +295,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 | `MSALLogLevelInfo` |  Kitaplık giriş noktaları, parametreler ve çeşitli Anahtarlık işlemleri |
 |`MSALLogLevelVerbose`     |  API izleme |
 
-Örnek:
+Örneğin:
 
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
@@ -306,7 +305,7 @@ MSALGlobalConfig.loggerConfig.logLevel = .verbose
 
 MSAL günlük iletilerinin ileti kısmı `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message` biçimindedir
 
-Örnek:
+Örneğin:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
