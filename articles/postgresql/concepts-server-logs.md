@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 87f79f0ed21ec1f6a550c47f9f60d18511883300
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9d71dd854c9a5059c2d0a48f57ad3ba5bb1eddf9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768223"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721328"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'ndaki Günlükler-tek sunucu
 PostgreSQL için Azure veritabanı, Postgres 'nin standart günlüklerine yapılandırma ve erişme olanağı sağlar. Günlükler, yapılandırma hatalarını belirlemek, sorunlarını gidermek ve onarmak ve performans performansını düzeltmek için kullanılabilir. Yapılandırabileceğiniz ve erişebileceğiniz günlüğe kaydetme bilgileri hatalar, sorgu bilgileri, oto vakum kayıtları, bağlantılar ve kontrol noktaları içerir. (İşlem günlüklerine erişim kullanılamaz).
@@ -29,7 +29,7 @@ Postgres günlük parametreleri hakkında daha fazla bilgi edinmek için, ne [za
 PostgreSQL için Azure veritabanı 'nda parametrelerin nasıl yapılandırılacağını öğrenmek için [Portal belgelerine](howto-configure-server-parameters-using-portal.md) veya [CLI belgelerine](howto-configure-server-parameters-using-cli.md)bakın. 
 
 > [!NOTE]
-> Yüksek hacimli Günlükler (örneğin, bildirim günlüğü) yapılandırmak, önemli ölçüde performans yükü ekleyebilir. 
+> Yüksek hacimli Günlükler yapılandırma (örneğin, bildirim günlüğü), önemli performans yükü ekleyebilir. 
 
 ## <a name="access-log-files"></a>. Log dosyalarına erişin
 PostgreSQL için Azure veritabanı 'nda varsayılan günlük biçimi. log ' dır. Bu günlüğün örnek bir satırı şöyle görünür:
@@ -100,18 +100,18 @@ Aşağıdaki tablo, **Postgrestablogs** türü için alanları açıklar. Seçti
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
 | Tür | Günlüğün türü. Her zaman `AzureDiagnostics` |
-| kaynak grubundaki | Sunucunun ait olduğu abonelik için GUID |
-| adlı yönetilen örnek, | Sunucunun ait olduğu kaynak grubunun adı |
+| SubscriptionId | Sunucunun ait olduğu abonelik için GUID |
+| ResourceGroup | Sunucunun ait olduğu kaynak grubunun adı |
 | ResourceProvider | Kaynak sağlayıcının adı. Her zaman `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Kaynak URI 'SI |
 | Kaynak | Sunucunun adı |
 | Kategori | `PostgreSQLLogs` |
-| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | `LogEvent` |
+| ThrottledRequests | `LogEvent` |
 | Düzeyi | Günlüğe kaydetme düzeyi, örnek: günlük, hata, BILDIRIM |
 | İleti | Birincil günlük iletisi | 
 | Domain | Sunucu sürümü, örnek: Postgres-10 |
-| ayrıntılarını | İkincil günlük iletisi (varsa) |
+| Ayrıntı | İkincil günlük iletisi (varsa) |
 | Tation | Sütunun adı (varsa) |
 | SchemaName | Şemanın adı (varsa) |
 | DatatypeName | Veri türünün adı (varsa) |

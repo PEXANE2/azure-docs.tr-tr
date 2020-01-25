@@ -3,20 +3,20 @@ title: Senaryoları belirleyip analiz işlemini planlayın-Team Data Science Iş
 description: Senaryolar ve Gelişmiş analiz verileri işlemeyi planlama birtakım önemli sorular dikkate alarak belirleyin.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ba87461c6c195a6b483538fd94d8be76239b8dc5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647314"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710318"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Senaryoları tanımlama ve gelişmiş analiz verileri işlemeyi planlama
 
@@ -79,7 +79,7 @@ Daha fazla bilgi için bkz. Şirket [ıçı SQL Server 'dan Azure Data Factory S
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Verilerin ne kadarını Azure 'a taşınacak?
 
-Son derece büyük veri kümeleri belirli ortamların depolama kapasitesini aşabilir. Bir örnek için, sonraki bölümde Machine Learning Studio (klasik) için boyut sınırları tartışmalarına bakın. Bu gibi durumlarda, analiz sırasında verilerin bir örneğini kullanabilirsiniz. Aşağı-örnek bir veri kümesi çeşitli Azure ortamlarında konusunda ayrıntılar için bkz [örnek veriler Team Data Science Process içinde](sample-data.md).
+Büyük veri kümeleri belirli ortamların depolama kapasitesini aşabilir. Bir örnek için, sonraki bölümde Machine Learning Studio (klasik) için boyut sınırları tartışmalarına bakın. Bu gibi durumlarda, analiz sırasında verilerin bir örneğini kullanabilirsiniz. Aşağı-örnek bir veri kümesi çeşitli Azure ortamlarında konusunda ayrıntılar için bkz [örnek veriler Team Data Science Process içinde](sample-data.md).
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Veri özellikleri soruları: türü, biçimi ve boyutu
 
@@ -151,7 +151,7 @@ Diller, geliştirme ortamları ve araçlar için birçok seçenek vardır. Gerek
 * [RStudio](https://www.rstudio.com)
 * [Visual Studio için Python Araçları](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
-* [Jupyter Not Defterleri](https://jupyter.org/)
+* [Jupyter not defterleri](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 
 ## <a name="identify-your-advanced-analytics-scenario"></a>Gelişmiş analiz senaryonuzu tanımlama

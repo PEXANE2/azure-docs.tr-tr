@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dac3037f82c38980c9ac16685aa7fddac68a2e7b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354293"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720308"
 ---
 # <a name="troubleshoot-input-connections"></a>Giriş bağlantısı sorunlarını giderme
 
@@ -24,11 +24,13 @@ Bu sayfa, giriş bağlantıları ve bunları nasıl giderebileceğinizden ile il
 
 2.  Girişinizi inceleyin.
 
-    Giriş verileri olay Hub'ına geçiyor doğrulamak için [hizmet veri yolu Gezgini](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) (olay hub'ı girişi kullanılıyorsa), Azure olay Hub'ına bağlanmak için.
+    1. Giriş verileri olay Hub'ına geçiyor doğrulamak için [hizmet veri yolu Gezgini](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) (olay hub'ı girişi kullanılıyorsa), Azure olay Hub'ına bağlanmak için.
         
-    Kullanım [ **örnek verileri** ](stream-analytics-sample-data-input.md) düğme için her bir giriş ve örnek giriş verilerini indirin.
+    1. Her giriş için [**örnek veri**](stream-analytics-sample-data-input.md) düğmesini kullanın. Giriş örnek verilerini indirin.
         
-    Veri şekli anlamak için örnek verileri İnceleme: şema ve [veri türleri](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+    1. Verilerin şeklini anlamak için örnek verileri inceleyin; Yani, şema ve [veri türleri](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+
+3.  Giriş önizlemede bir zaman aralığı seçtiğinizden emin olun. **Zaman aralığını Seç**' i seçin ve ardından sorgunuzu test etmeden önce bir örnek süre girin.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Yanlış biçimlendirilmiş giriş olayları seri durumundan çıkarma hatalarına neden oluyor 
 Stream Analytics işinizin Giriş akışı yanlış biçimlendirilmiş iletiler içerdiğinde seri durumundan çıkarma sorunları nedeniyle oluşur. Örneğin, hatalı bir ileti parantezin eksik olması veya bir JSON nesnesinde bir küme ayracı veya hatalı zaman damgası biçimi zaman alanı kaynaklanabilir. 

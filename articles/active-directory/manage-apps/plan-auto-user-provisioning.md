@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 44ed85ac8171484cccf39c0b048a5c7a026a657d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732459"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711601"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
@@ -25,7 +25,7 @@ Birçok kuruluş, hizmet olarak yazılım (SaaS) uygulamalarını (ServiceNow, Z
 
 Azure Active Directory (Azure AD) otomatik Kullanıcı sağlama, iş kurallarına göre SaaS uygulamalarındaki Kullanıcı kimliklerinin oluşturulmasını, bakımını ve kaldırılmasını güvenli bir şekilde otomatikleştirerek bu işlemi basitleştirir. Bu Otomasyon, bulut tabanlı çözümlere bağımlılarını genişlettikten sonra hem bulut hem de karma ortamlarda kimlik yönetimi sistemlerinizi etkili bir şekilde ölçeklendirmenize olanak tanır.
 
-İşlevselliği daha iyi anlamak için, bkz. [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma Işlemlerini otomatik hale getirme Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) .
+İşlevselliği daha iyi anlamak için, bkz. [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma Işlemlerini otomatik hale getirme Azure Active Directory](user-provisioning.md) .
 
 ## <a name="learn"></a>Öğrenme
 
@@ -59,7 +59,7 @@ Bu makale aşağıdaki terimleri kullanır:
 
 * Çoklu oturum açma (SSO)-bir kullanıcının bir kez oturum açması ve tüm SSO özellikli uygulamalara erişmesi özelliği. Kullanıcı hazırlama bağlamında, SSO otomatik Kullanıcı sağlama kullanan tüm sistemlere erişmek için tek bir hesaba sahip olan kullanıcıların bir sonucudur.
 
-* Kaynak sistem-Azure AD tarafından sağlanan kullanıcıların Havuzu. Azure AD, önceden tümleştirilen sağlama bağlayıcıları için kaynak sistemidir. Ancak, SAP, Workday ve AWS gibi bulut uygulamaları için bazı özel durumlar vardır. Örneğin, [Workday 'den ad 'ye Kullanıcı hazırlama](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)bölümüne bakın.
+* Kaynak sistem-Azure AD tarafından sağlanan kullanıcıların Havuzu. Azure AD, önceden tümleştirilen sağlama bağlayıcıları için kaynak sistemidir. Ancak, SAP, Workday ve AWS gibi bulut uygulamaları için bazı özel durumlar vardır. Örneğin, [Workday 'den ad 'ye Kullanıcı hazırlama](../saas-apps/workday-inbound-tutorial.md)bölümüne bakın.
 
 * Hedef sistem-Azure AD tarafından sağlanan kullanıcı deposu. Hedef sistem genellikle ServiceNow, Zscaler ve bolluk gibi bir SaaS uygulamasıdır. Hedef sistem, AD gibi bir şirket içi sistem de olabilir.
 
@@ -73,8 +73,8 @@ Bu makale aşağıdaki terimleri kullanır:
 | Videolar| [Etkin Azure dizininde kullanıcı hazırlama nedir?](https://youtu.be/_ZjARPpI6NI) <br> [Active Directory 'de Kullanıcı hazırlama nasıl dağıtılır?](https://youtu.be/pKzyts6kfrw) <br> [Salesforce 'ı Azure AD ile tümleştirme: Kullanıcı sağlamasını otomatikleştirme](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Çevrimiçi kurslar| SkillUp çevrimiçi: [kimlikleri yönetme](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Azure AD 'yi birçok SaaS uygulaması ile tümleştirmeyi ve bu uygulamalara Kullanıcı erişimini güvenli hale getirme hakkında bilgi edinin. |
 | Kitaplar| [Web uygulamaları için Azure Active Directory (Geliştirici Başvurusu) 1. sürümde modern kimlik doğrulaması](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Bu yeni ortamlar için Active Directory kimlik doğrulama çözümleri oluşturmaya yönelik yetkili, derinlemesine bir kılavuzdur. |
-| Öğreticiler| [SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticilerin listesine](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)bakın. |
-| SSS| Otomatik Kullanıcı sağlama hakkında [sık sorulan sorular](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) |
+| Öğreticiler| [SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticilerin listesine](../saas-apps/tutorial-list.md)bakın. |
+| SSS| Otomatik Kullanıcı sağlama hakkında [sık sorulan sorular](user-provisioning.md) |
 
 ### <a name="solution-architectures"></a>Çözüm mimarileri
 
@@ -92,9 +92,9 @@ Bu örnekte, kullanıcılar ve veya gruplar, şirket içi bir dizine bağlı bir
 
 1. **Azure AD Connect Aracısı** , yerel ad 'den Azure AD 'ye olan kimlik (kullanıcılar ve gruplar) için zamanlanmış eşitlemeleri çalıştırır.
 
-1. **Azure AD sağlama hizmeti** , kaynak sistem ve hedef sisteme karşı bir [Başlangıç döngüsüne](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) başlar. 
+1. **Azure AD sağlama hizmeti** , kaynak sistem ve hedef sisteme karşı bir [Başlangıç döngüsüne](user-provisioning.md) başlar. 
 
-1. **Azure AD sağlama hizmeti** , ilk döngüden bu yana değiştirilen tüm kullanıcılar ve gruplar için kaynak sistemi sorgular ve [artımlı Döngülerde](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)değişiklikleri iter.
+1. **Azure AD sağlama hizmeti** , ilk döngüden bu yana değiştirilen tüm kullanıcılar ve gruplar için kaynak sistemi sorgular ve [artımlı Döngülerde](user-provisioning.md)değişiklikleri iter.
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Yalnızca bulutta bulunan kuruluşlar için otomatik Kullanıcı hazırlama
 
@@ -106,9 +106,9 @@ Bu örnekte, Azure AD 'de Kullanıcı oluşturma oluşur ve Azure AD sağlama hi
 
 1. Azure AD 'de Kullanıcı/grup oluşturulur.
 
-1. **Azure AD sağlama hizmeti** , kaynak sistem ve hedef sisteme karşı bir [Başlangıç döngüsüne](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) başlar. 
+1. **Azure AD sağlama hizmeti** , kaynak sistem ve hedef sisteme karşı bir [Başlangıç döngüsüne](user-provisioning.md) başlar. 
 
-1. **Azure AD sağlama hizmeti** , başlangıç döngüsünden bu yana güncelleştirilmiş tüm kullanıcılar ve gruplar için kaynak sistemi sorgular ve tüm [artımlı döngüleri](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)gerçekleştirir.
+1. **Azure AD sağlama hizmeti** , başlangıç döngüsünden bu yana güncelleştirilmiş tüm kullanıcılar ve gruplar için kaynak sistemi sorgular ve tüm [artımlı döngüleri](user-provisioning.md)gerçekleştirir.
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Cloud ık uygulamaları için otomatik Kullanıcı hazırlama 
 
@@ -132,13 +132,13 @@ Ortamınızda Kullanıcı sağlamayı dağıtmaya yönelik stratejiyi öğrenmek
 
 Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle oluşur. Bu girişlerin oluşmasını önlemek için, [doğru paydaşları](https://aka.ms/deploymentplans) ve proje giriş ve accountatçlarını belgeleyerek projedeki paydaş rollerinin iyi anlaşıldığından emin olun.
 
-### <a name="plan-communications"></a>İletişimi planlama
+### <a name="plan-communications"></a>İletişimleri planlayın
 
 İletişim, her yeni hizmetin başarısı için önemlidir. Deneyimlerinizin nasıl değiştirileceği, ne zaman değiştirileceği ve sorunlarla karşılaştıkları durumlarda nasıl destek kazanabilecekleri hakkında daha etkin bir şekilde iletişim kurun.
 
 ### <a name="plan-a-pilot"></a>Pilot planı planlayın
 
-Otomatik Kullanıcı sağlamanın ilk yapılandırmasının, üretim ortamındaki tüm kullanıcılara ölçeklendirmeden önce küçük bir kullanıcı alt kümesiyle bir test ortamında olmasını öneririz. Pilot çalıştırmaya yönelik [en iyi uygulamalar](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) bölümüne bakın.
+Otomatik Kullanıcı sağlamanın ilk yapılandırmasının, üretim ortamındaki tüm kullanıcılara ölçeklendirmeden önce küçük bir kullanıcı alt kümesiyle bir test ortamında olmasını öneririz. Pilot çalıştırmaya yönelik [en iyi uygulamalar](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) bölümüne bakın.
 
 #### <a name="best-practices-for-a-pilot"></a>Pilot için en iyi uygulamalar  
 
@@ -146,29 +146,29 @@ Pilot, herkes için bir özelliği dağıtmaya başlamadan önce küçük bir gr
 
 İlk dalga uygulamanızda BT 'yi, kullanılabilirliği ve geri bildirim sağlayabilen ve bunları sağlayabilecek diğer uygun kullanıcıları hedefleyebilirsiniz. Kullanıcılarınıza göndereceğiniz iletişim ve yönergeleri geliştirmek ve destek personelinizin görebileceği sorun türleri hakkında Öngörüler sağlamak için bu geri bildirimi kullanın.
 
-Hedeflenmiş Grup kapsamını artırarak daha büyük Kullanıcı gruplarına dağıtımı genişletebilirsiniz. Bu, [dinamik grup üyeliği](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)aracılığıyla veya hedeflenen gruplara el ile Kullanıcı ekleyerek yapılabilir.
+Hedeflenmiş Grup kapsamını artırarak daha büyük Kullanıcı gruplarına dağıtımı genişletebilirsiniz. Bu, [dinamik grup üyeliği](../users-groups-roles/groups-dynamic-membership.md)aracılığıyla veya hedeflenen gruplara el ile Kullanıcı ekleyerek yapılabilir.
 
 ## <a name="plan-application-connections-and-administration"></a>Uygulama bağlantılarını ve yönetimini planlayın
 
-Sağlamayı destekleyen tüm uygulamaları görüntülemek ve yönetmek için Azure AD portalını kullanın. Bkz. [portaldaki uygulamalarınızı bulma](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal).
+Sağlamayı destekleyen tüm uygulamaları görüntülemek ve yönetmek için Azure AD portalını kullanın. Bkz. [portaldaki uygulamalarınızı bulma](configure-automatic-user-provisioning-portal.md).
 
 ### <a name="determine-the-type-of-connector-to-use"></a>Kullanılacak bağlayıcının türünü belirleme
 
-Otomatik sağlamayı etkinleştirmek ve yapılandırmak için gereken gerçek adımlar uygulamaya bağlı olarak değişir. Otomatik olarak sağlamak istediğiniz uygulama [Azure AD SaaS uygulama galerisinde](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)listeleniyorsa, önceden tümleştirilmiş Kullanıcı sağlama bağlayıcısını yapılandırmak için [uygulamaya özgü tümleştirme öğreticisini](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) seçmeniz gerekir.
+Otomatik sağlamayı etkinleştirmek ve yapılandırmak için gereken gerçek adımlar uygulamaya bağlı olarak değişir. Otomatik olarak sağlamak istediğiniz uygulama [Azure AD SaaS uygulama galerisinde](../saas-apps/tutorial-list.md)listeleniyorsa, önceden tümleştirilmiş Kullanıcı sağlama bağlayıcısını yapılandırmak için [uygulamaya özgü tümleştirme öğreticisini](../saas-apps/tutorial-list.md) seçmeniz gerekir.
 
 Aksi takdirde, aşağıdaki adımları izleyin:
 
-1. Önceden tümleştirilmiş Kullanıcı sağlama Bağlayıcısı için [bir Istek oluşturun](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) . Ekibimiz, SCıM destekliyorsa, uygulamanızı platformumuza eklemek için sizinle ve uygulama geliştiricimize çalışacağız.
+1. Önceden tümleştirilmiş Kullanıcı sağlama Bağlayıcısı için [bir Istek oluşturun](../develop/howto-app-gallery-listing.md) . Ekibimiz, SCıM destekliyorsa, uygulamanızı platformumuza eklemek için sizinle ve uygulama geliştiricimize çalışacağız.
 
-1. Uygulama için [Byoa SCıM](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) genel Kullanıcı sağlama desteğini kullanın. Bu, Azure AD 'nin uygulamayı önceden tümleşik sağlama Bağlayıcısı olmadan uygulamaya sağlaması için bir gereksinimdir.
+1. Uygulama için [Byoa SCıM](use-scim-to-provision-users-and-groups.md) genel Kullanıcı sağlama desteğini kullanın. Bu, Azure AD 'nin uygulamayı önceden tümleşik sağlama Bağlayıcısı olmadan uygulamaya sağlaması için bir gereksinimdir.
 
-1. Uygulama BYOA SCıM bağlayıcısını kullanabiliyor ise, uygulamanın BYOA SCIM bağlayıcısını yapılandırmak için [Byoa SCIM tümleştirme öğreticisine](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) bakın.
+1. Uygulama BYOA SCıM bağlayıcısını kullanabiliyor ise, uygulamanın BYOA SCIM bağlayıcısını yapılandırmak için [Byoa SCIM tümleştirme öğreticisine](use-scim-to-provision-users-and-groups.md) bakın.
 
-Daha fazla bilgi için bkz. [Azure AD otomatik Kullanıcı sağlama Ile hangi uygulamaları ve sistemleri kullanabilirim?](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
+Daha fazla bilgi için bkz. [Azure AD otomatik Kullanıcı sağlama Ile hangi uygulamaları ve sistemleri kullanabilirim?](user-provisioning.md)
 
 ### <a name="collect-information-to-authorize-application-access"></a>Uygulama erişimini yetkilendirmek için bilgi toplayın
 
-Otomatik Kullanıcı sağlamayı ayarlama, uygulama başına bir işlemdir. Her uygulama için, hedef sistemin Kullanıcı yönetimi uç noktasına bağlanmak üzere [yönetici kimlik bilgilerini](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) sağlamanız gerekir.
+Otomatik Kullanıcı sağlamayı ayarlama, uygulama başına bir işlemdir. Her uygulama için, hedef sistemin Kullanıcı yönetimi uç noktasına bağlanmak üzere [yönetici kimlik bilgilerini](configure-automatic-user-provisioning-portal.md) sağlamanız gerekir.
 
 Aşağıdaki görüntüde gerekli yönetici kimlik bilgilerinin bir sürümü gösterilmektedir:
 
@@ -198,17 +198,17 @@ Her uygulama için aşağıdaki bilgileri belgeleyin:
 
 Otomatik Kullanıcı sağlamayı uygulamadan önce, uygulamanıza sağlanacak kullanıcıları ve grupları belirlemelisiniz.
 
-* Bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik tabanlı kurallar tanımlamak için [kapsam filtrelerini](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters) kullanın.
+* Bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik tabanlı kurallar tanımlamak için [kapsam filtrelerini](define-conditional-rules-for-provisioning-user-accounts.md) kullanın.
 
-* Daha sonra, ek filtreleme için gerektiğinde [Kullanıcı ve grup atamalarını](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) kullanın.
+* Daha sonra, ek filtreleme için gerektiğinde [Kullanıcı ve grup atamalarını](assign-user-or-group-access-portal.md) kullanın.
 
 ### <a name="define-user-and-group-attribute-mapping"></a>Kullanıcı ve Grup özniteliği eşlemesini tanımla
 
-Otomatik Kullanıcı sağlamayı uygulamak için, uygulama için gereken kullanıcı ve grup özniteliklerini tanımlamanız gerekir. Azure AD Kullanıcı nesneleri ve her bir SaaS uygulamasının Kullanıcı nesneleri arasında önceden yapılandırılmış bir öznitelikler ve [öznitelik eşlemeleri](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) kümesi vardır. Tüm SaaS uygulamaları grup özniteliklerini etkinleştirmez.
+Otomatik Kullanıcı sağlamayı uygulamak için, uygulama için gereken kullanıcı ve grup özniteliklerini tanımlamanız gerekir. Azure AD Kullanıcı nesneleri ve her bir SaaS uygulamasının Kullanıcı nesneleri arasında önceden yapılandırılmış bir öznitelikler ve [öznitelik eşlemeleri](configure-automatic-user-provisioning-portal.md) kümesi vardır. Tüm SaaS uygulamaları grup özniteliklerini etkinleştirmez.
 
-Azure AD, doğrudan öznitelik eşleme, sabit değerler sağlama veya [öznitelik eşlemeleri için ifadeler yazma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-writing-expressions-for-attribute-mappings)tarafından desteklenir. Bu esneklik, hedeflenen sistemin özniteliğinde doldurulacak nelerin üzerinde ince denetim elde etmenizi sağlar. Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyasına aktarmak ve yeniden Azure AD 'ye aktarmak için [MICROSOFT Graph API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration) ve Graf Gezginini kullanabilirsiniz.
+Azure AD, doğrudan öznitelik eşleme, sabit değerler sağlama veya [öznitelik eşlemeleri için ifadeler yazma](functions-for-customizing-application-data.md)tarafından desteklenir. Bu esneklik, hedeflenen sistemin özniteliğinde doldurulacak nelerin üzerinde ince denetim elde etmenizi sağlar. Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyasına aktarmak ve yeniden Azure AD 'ye aktarmak için [MICROSOFT Graph API](export-import-provisioning-configuration.md) ve Graf Gezginini kullanabilirsiniz.
 
-Daha fazla bilgi için bkz. [Azure Active Directory Içindeki SaaS uygulamaları Için Kullanıcı hazırlama özniteliğini özelleştirme-eşlemeler](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+Daha fazla bilgi için bkz. [Azure Active Directory Içindeki SaaS uygulamaları Için Kullanıcı hazırlama özniteliğini özelleştirme-eşlemeler](customize-application-attributes.md).
 
 ### <a name="special-considerations-for-user-provisioning"></a>Kullanıcı sağlamaya yönelik özel konular
 
@@ -216,9 +216,9 @@ Dağıtım sonrası sorunları azaltmak için aşağıdakileri göz önünde bul
 
 * Kaynak ve hedef uygulamalar arasında Kullanıcı/Grup nesnelerini eşlemek için kullanılan özniteliklerin dayanıklı olduğundan emin olun. Öznitelikler değiştiğinde kullanıcıların/grupların hatalı sağlanması gerekmez (örneğin, bir Kullanıcı Şirketin farklı bir bölümüne taşınırsa).
 
-* Uygulamalar, Kullanıcı sağlamanın doğru çalışması için sağlanması gereken belirli kısıtlamalara ve/veya gereksinimlere sahip olabilir. Örneğin, belirli özniteliklerin değerlerini atar. Her bir uygulamaya özgü [Otomatik Kullanıcı sağlama öğreticilerine](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) bakın.
+* Uygulamalar, Kullanıcı sağlamanın doğru çalışması için sağlanması gereken belirli kısıtlamalara ve/veya gereksinimlere sahip olabilir. Örneğin, belirli özniteliklerin değerlerini atar. Her bir uygulamaya özgü [Otomatik Kullanıcı sağlama öğreticilerine](../saas-apps/tutorial-list.md) bakın.
 
-* Kaynak ve hedef sistemler arasındaki şema tutarlılığını onaylayın. Genel sorunlar UPN veya posta eşleştirme gibi öznitelikleri içerir. Örneğin, Azure AD kümesindeki UPN *john_smith@contoso.com* olarak ve uygulamada, *jsmith@contoso.com* . Daha fazla bilgi için bkz. [Kullanıcı ve grup şeması başvurusu](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups).
+* Kaynak ve hedef sistemler arasındaki şema tutarlılığını onaylayın. Genel sorunlar UPN veya posta eşleştirme gibi öznitelikleri içerir. Örneğin, Azure AD kümesindeki UPN *john_smith@contoso.com* olarak ve uygulamada, *jsmith@contoso.com* . Daha fazla bilgi için bkz. [Kullanıcı ve grup şeması başvurusu](use-scim-to-provision-users-and-groups.md).
 
 ## <a name="plan-testing-and-security"></a>Test ve güvenlik planlaması
 
@@ -233,7 +233,7 @@ Uygulama için otomatik Kullanıcı sağlamayı yapılandırdıktan sonra, bu ç
 | Kullanıcı, hedef sisteme atanan bir gruba eklendi | Kullanıcı nesnesi hedef sistemde sağlanıyor. <br>Kullanıcı, hedef sistemde oturum açıp istenen eylemleri gerçekleştirebilir. |
 | Kullanıcı, hedef sisteme atanan bir gruptan kaldırıldı | Kullanıcı nesnesi hedef sistemde hazırlandı.<br>Kullanıcı hedef sistemde oturum açamıyor. |
 | Kullanıcı bilgileri, Azure AD 'de herhangi bir yöntemle güncelleştirilir | Güncelleştirilmiş Kullanıcı öznitelikleri, artımlı bir döngüden sonra hedef sisteme yansıtılır |
-| Kullanıcı kapsam dışında | Kullanıcı nesnesi devre dışı veya silinmiş. <br>Note: Bu davranış, [Workday sağlaması](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)için geçersiz kılınır. |
+| Kullanıcı kapsam dışında | Kullanıcı nesnesi devre dışı veya silinmiş. <br>Note: Bu davranış, [Workday sağlaması](skip-out-of-scope-deletions.md)için geçersiz kılınır. |
 
 ### <a name="plan-security"></a>Güvenliği planlama
 
@@ -243,7 +243,7 @@ Bir dağıtımın parçası olarak bir güvenlik incelemesinin gerekli olması y
 
 Otomatik Kullanıcı sağlama uygulamasının üretim ortamında istendiği şekilde çalışması başarısız olursa, aşağıdaki geri alma adımları önceki bilinen iyi duruma geri dönmede size yardımcı olabilir:
 
-1. Etkilenen kullanıcılar ve/veya gruplarda hatalı işlemlerin ne olduğunu belirlemek için [sağlama Özeti raporunu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting) ve [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting) gözden geçirin.
+1. Etkilenen kullanıcılar ve/veya gruplarda hatalı işlemlerin ne olduğunu belirlemek için [sağlama Özeti raporunu](check-status-user-account-provisioning.md) ve [sağlama günlüklerini](check-status-user-account-provisioning.md#provisioning-logs-preview) gözden geçirin.
 
 1. Etkilenen Kullanıcı ve/veya grupların bilinen son iyi durumunu öğrenmek için sağlama denetim günlüklerini kullanın. Ayrıca, kaynak sistemleri (Azure AD veya AD) gözden geçirin.
 
@@ -257,13 +257,13 @@ Otomatik Kullanıcı sağlama uygulamasının üretim ortamında istendiği şek
 
 Azure AD sağlama hizmeti ilk kez çalıştırıldığında, kaynak sistem ve hedef sistemlere yönelik ilk geçiş, her hedef sistem için tüm Kullanıcı nesnelerinin anlık görüntüsünü oluşturur.
 
-Bir uygulama için otomatik sağlamayı etkinleştirirken, ilk zaman 20 dakikadan birkaç saate kadar sürebilir. Süre, Azure AD dizininin boyutuna ve sağlama için kapsamdaki kullanıcı sayısına bağlıdır. Bkz. [sağlama performansını geliştirme](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish).
+Bir uygulama için otomatik sağlamayı etkinleştirirken, ilk zaman 20 dakikadan birkaç saate kadar sürebilir. Süre, Azure AD dizininin boyutuna ve sağlama için kapsamdaki kullanıcı sayısına bağlıdır. Bkz. [sağlama performansını geliştirme](application-provisioning-when-will-provisioning-finish.md).
 
 Sağlama Hizmeti, başlangıç döngüsünden sonra her iki sistemin durumunu depolar, sonraki artımlı döngülerin performansını geliştirir.
 
 ### <a name="configure-automatic-user-provisioning"></a>Otomatik kullanıcı sağlamayı yapılandırma
 
-Otomatik Kullanıcı hesabı sağlamayı ve bunu destekleyen uygulamalar için ön sağlamayı yönetmek üzere [Azure Portal](https://portal.azure.com/) kullanın. [Bir uygulamaya otomatik sağlamayı ayarlama nasıl yaparım?](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) içindeki adımları izleyin.
+Otomatik Kullanıcı hesabı sağlamayı ve bunu destekleyen uygulamalar için ön sağlamayı yönetmek üzere [Azure Portal](https://portal.azure.com/) kullanın. [Bir uygulamaya otomatik sağlamayı ayarlama nasıl yaparım?](user-provisioning.md) içindeki adımları izleyin.
 
 Azure AD Kullanıcı sağlama hizmeti, [Microsoft Graph API 'si](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)kullanılarak da yapılandırılabilir ve yönetilebilir.
 
@@ -273,7 +273,7 @@ Artık dağıtıldıktan sonra çözümü yönetmeniz gerekir.
 
 ### <a name="monitor-user-provisioning-operation-health"></a>Kullanıcı hazırlama işlemi sistem durumunu izleme
 
-Başarılı bir [Başlangıç döngüsünden](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)sonra, Azure AD sağlama hizmeti, aşağıdaki olaylardan biri gerçekleşene kadar her bir uygulamaya özgü aralıklarla Artımlı güncelleştirmeleri süresiz olarak çalıştırır:
+Başarılı bir [Başlangıç döngüsünden](user-provisioning.md)sonra, Azure AD sağlama hizmeti, aşağıdaki olaylardan biri gerçekleşene kadar her bir uygulamaya özgü aralıklarla Artımlı güncelleştirmeleri süresiz olarak çalıştırır:
 
 * Hizmet el ile durdurulur ve [Azure Portal](https://portal.azure.com/)kullanılarak veya uygun [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) komutu kullanılarak yeni bir başlangıç çevrimi tetiklenir.
 
@@ -281,15 +281,15 @@ Başarılı bir [Başlangıç döngüsünden](https://docs.microsoft.com/azure/a
 
 * Sağlama işlemi, yüksek hata oranı nedeniyle karantinaya alınır ve otomatik olarak devre dışı bırakıldığında dört haftadan uzun bir süre boyunca karantinaya alınır.
 
-Bu olayları ve sağlama hizmeti tarafından gerçekleştirilen diğer tüm etkinlikleri gözden geçirmek için Azure AD [sağlama günlükleri](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context)' ne bakın.
+Bu olayları ve sağlama hizmeti tarafından gerçekleştirilen diğer tüm etkinlikleri gözden geçirmek için Azure AD [sağlama günlükleri](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)' ne bakın.
 
-Sağlama döngüsü süresini anlamak ve sağlama işinin ilerlemesini izlemek için [Kullanıcı hazırlama durumunu kontrol](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)edebilirsiniz.
+Sağlama döngüsü süresini anlamak ve sağlama işinin ilerlemesini izlemek için [Kullanıcı hazırlama durumunu kontrol](application-provisioning-when-will-provisioning-finish-specific-user.md)edebilirsiniz.
 
 ### <a name="gain-insights-from-reports"></a>Raporlardan Öngörüler elde edin
 
-Azure AD, kuruluşunuzun Kullanıcı sağlama kullanımı ve denetim günlükleri ve raporları aracılığıyla işletimsel sistem durumu hakkında [ek Öngörüler](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) sağlayabilir.
+Azure AD, kuruluşunuzun Kullanıcı sağlama kullanımı ve denetim günlükleri ve raporları aracılığıyla işletimsel sistem durumu hakkında [ek Öngörüler](application-provisioning-when-will-provisioning-finish-specific-user.md) sağlayabilir.
 
-Yöneticiler, sağlama işinin işletimsel durumunu izlemek için sağlama Özeti raporunu denetlemelidir. Sağlama hizmeti tarafından gerçekleştirilen tüm etkinlikler Azure AD denetim günlüklerine kaydedilir. Bkz. [öğretici: otomatik Kullanıcı hesabı sağlamayı bildirme](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning).
+Yöneticiler, sağlama işinin işletimsel durumunu izlemek için sağlama Özeti raporunu denetlemelidir. Sağlama hizmeti tarafından gerçekleştirilen tüm etkinlikler Azure AD denetim günlüklerine kaydedilir. Bkz. [öğretici: otomatik Kullanıcı hesabı sağlamayı bildirme](check-status-user-account-provisioning.md).
 
 Kuruluşunuzun gereksinimlerini karşılayan bir temposunda üzerinde sahipliğini ve bu raporların kullanımını varsaymasını öneririz. Azure AD, en çok denetim verilerini 30 gün boyunca tutar.
 
@@ -297,27 +297,27 @@ Kuruluşunuzun gereksinimlerini karşılayan bir temposunda üzerinde sahipliği
 
 Sağlama sırasında oluşabilecek sorunları gidermek için aşağıdaki bağlantılara bakın:
 
-* [Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
+* [Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu](application-provisioning-config-problem.md)
 
-* [Bir uygulamaya sağlamak için şirket içi Active Directory bir özniteliği Azure AD 'ye eşitleyin](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning-sync-attributes-for-mapping)
+* [Bir uygulamaya sağlamak için şirket içi Active Directory bir özniteliği Azure AD 'ye eşitleyin](user-provisioning-sync-attributes-for-mapping.md)
 
-* [Azure AD Galeri uygulamasına Kullanıcı hazırlama saati veya daha fazlasını sürüyor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish)
+* [Azure AD Galeri uygulamasına Kullanıcı hazırlama saati veya daha fazlasını sürüyor](application-provisioning-when-will-provisioning-finish.md)
 
-* [Azure Active Directory Galeri uygulamasına kullanıcı sağlamayı yapılandırırken yönetici kimlik bilgileri kaydedilirken sorun oluştu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-storage-limit)
+* [Azure Active Directory Galeri uygulamasına kullanıcı sağlamayı yapılandırırken yönetici kimlik bilgileri kaydedilirken sorun oluştu](application-provisioning-config-problem-storage-limit.md)
 
-* [Azure AD Galeri uygulamasına hiçbir Kullanıcı sağlanmıyor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
+* [Azure AD Galeri uygulamasına hiçbir Kullanıcı sağlanmıyor](application-provisioning-config-problem-no-users-provisioned.md)
 
-* [Azure AD Galeri uygulamasına yanlış kullanıcı kümesi sağlanıyor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-wrong-users-provisioned)
+* [Azure AD Galeri uygulamasına yanlış kullanıcı kümesi sağlanıyor](application-provisioning-config-problem-wrong-users-provisioned.md)
 
 ### <a name="helpful-documentation"></a>Faydalı belgeler
 
-* [Öznitelik eşlemeleri için ifadeler yazma](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+* [Öznitelik eşlemeleri için ifadeler yazma](functions-for-customizing-application-data.md)
 
 * [Azure AD eşitleme API 'sine genel bakış](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 
-* [Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)
+* [Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın](skip-out-of-scope-deletions.md)
 
-* [Azure AD Connect sağlama Aracısı: sürüm yayınlama geçmişi](https://docs.microsoft.com/azure/active-directory/manage-apps/provisioning-agent-release-version-history)
+* [Azure AD Connect sağlama Aracısı: sürüm yayınlama geçmişi](provisioning-agent-release-version-history.md)
 
 #### <a name="resources"></a>Kaynaklar
 
@@ -328,8 +328,8 @@ Sağlama sırasında oluşabilecek sorunları gidermek için aşağıdaki bağla
 * [Yığın taşması Azure AD Forumu](https://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Otomatik Kullanıcı sağlamayı yapılandırma](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)
+* [Otomatik Kullanıcı sağlamayı yapılandırma](configure-automatic-user-provisioning-portal.md)
 
-* [Microsoft Graph API kullanarak sağlama yapılandırmanızı dışarı aktarma veya içeri aktarma](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration)
+* [Microsoft Graph API kullanarak sağlama yapılandırmanızı dışarı aktarma veya içeri aktarma](export-import-provisioning-configuration.md)
 
-* [Azure Active Directory 'de öznitelik eşlemeleri için ifadeler yazma](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+* [Azure Active Directory 'de öznitelik eşlemeleri için ifadeler yazma](functions-for-customizing-application-data.md)

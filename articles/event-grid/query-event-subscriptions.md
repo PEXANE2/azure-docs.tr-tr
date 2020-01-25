@@ -1,31 +1,30 @@
 ---
-title: Azure Event Grid aboneliklerini sorgulama
-description: Azure Event Grid aboneliklerini listeleyin açıklar.
+title: Azure Event Grid abonelikleri sorgula
+description: Bu makalede, Azure aboneliğinizde Event Grid aboneliklerinin nasıl listeleneceğini açıklanmaktadır. Abonelik türüne göre farklı parametreler sağlarsınız.
 services: event-grid
 author: spelluru
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/04/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 08fa9ada97c652ca609a499da1c8e87f7e4487db
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 2da4ba5946f16092c1d0918aec8dc3109b5fd4a8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786619"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721554"
 ---
-# <a name="query-event-grid-subscriptions"></a>Event Grid aboneliklerini sorgulama 
+# <a name="query-event-grid-subscriptions"></a>Event Grid abonelikleri sorgula 
 
-Bu makalede, Azure aboneliğinizdeki Event Grid abonelikleri listeleyin açıklar. Var olan, Event Grid aboneliklerini sorgulama sırasında abonelikler farklı türlerini anlamak önemlidir. Almak istediğiniz abonelik türüne göre farklı parametreler sağlamanız.
+Bu makalede, Azure aboneliğinizdeki Event Grid aboneliklerinin nasıl listeleneceğini açıklanmaktadır. Mevcut Event Grid aboneliklerinizi sorgularken, farklı abonelik türlerinin anlaşılması önemlidir. Almak istediğiniz abonelik türüne göre farklı parametreler sağlarsınız.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-groups-and-azure-subscriptions"></a>Kaynak grupları ve Azure abonelikleri
 
-Azure Abonelikleriniz ve kaynak gruplarınız Azure kaynaklarını değildir. Bu nedenle, event grid abonelikleri kaynak gruplarına veya Azure abonelikleri Azure kaynakları için event grid abonelikleri aynı özelliklere sahip değilsiniz. Kaynak grupları için Event grid abonelikleri veya Azure abonelikleri genel olarak kabul edilir.
+Azure abonelikleri ve kaynak grupları Azure kaynakları değildir. Bu nedenle, kaynak gruplarına veya Azure aboneliklerine yönelik olay Kılavuzu abonelikleri, Azure kaynaklarına yönelik olay Kılavuzu abonelikleriyle aynı özelliklere sahip değildir. Kaynak gruplarına veya Azure aboneliklerine yönelik olay Kılavuzu abonelikleri genel olarak değerlendirilir.
 
-Bir Azure aboneliği ve kaynak gruplarına için Event grid abonelikleri almak için parametreleri sağlamanız gerekmez. Sorgulamak istediğiniz Azure aboneliği seçtiğinizden emin olun. Aşağıdaki örnekler özel konular veya Azure kaynakları için event grid abonelikleri elde etmezsiniz.
+Bir Azure aboneliği ve kaynak grupları için Event Grid abonelikleri almak için herhangi bir parametre sağlamanız gerekmez. Sorgulamak istediğiniz Azure aboneliğini seçtiğinizden emin olun. Aşağıdaki örnekler, özel konular veya Azure kaynakları için Event Grid abonelikleri almaz.
 
 Azure CLI için şunu kullanın:
 
@@ -41,7 +40,7 @@ Set-AzContext -Subscription "My Azure Subscription"
 Get-AzEventGridSubscription
 ```
 
-Bir Azure aboneliği için Event grid abonelikleri almak için konu türü sağlamak **Microsoft.Resources.Subscriptions**.
+Bir Azure aboneliğine yönelik olay Kılavuzu abonelikleri almak için **Microsoft. resources. aboneliklerinin**konu türünü belirtin.
 
 Azure CLI için şunu kullanın:
 
@@ -55,7 +54,7 @@ PowerShell için şunu kullanın:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 ```
 
-Event grid abonelikleri için bir Azure aboneliğinde tüm kaynak gruplarını almak için konu türü sağlamak **Microsoft.Resources.ResourceGroups**.
+Bir Azure aboneliği içindeki tüm kaynak grupları için Event Grid abonelikleri almak için **Microsoft. resources. ResourceGroups**konu türünü belirtin.
 
 Azure CLI için şunu kullanın:
 
@@ -69,7 +68,7 @@ PowerShell için şunu kullanın:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
 ```
 
-Belirtilen kaynak grubu için Event grid abonelikleri almak için bir parametre olarak kaynak grubunun adını sağlayın.
+Belirtilen bir kaynak grubuna yönelik olay Kılavuzu aboneliklerini almak için, kaynak grubunun adını parametre olarak belirtin.
 
 Azure CLI için şunu kullanın:
 
@@ -83,11 +82,11 @@ PowerShell için şunu kullanın:
 Get-AzEventGridSubscription -ResourceGroupName myResourceGroup
 ```
 
-## <a name="custom-topics-and-azure-resources"></a>Özel konu ve Azure kaynakları
+## <a name="custom-topics-and-azure-resources"></a>Özel konular ve Azure kaynakları
 
-Event grid özel konuları Azure kaynaklarıdır. Bu nedenle, event grid abonelikleri özel konu ve Blob Depolama hesabı gibi diğer kaynaklar için aynı şekilde sorgulayın. Özel konu için Event grid abonelikleri almak için kaynak tanımlamak veya kaynağın yerini belirlemek parametreleri sağlamanız gerekir. Azure aboneliğiniz geniş çapta sorgu event grid abonelikleri kaynaklar için filtrelenebilir değil.
+Olay Kılavuzu özel konuları Azure kaynaklarıdır. Bu nedenle, özel konular ve aynı şekilde BLOB depolama hesabı gibi diğer kaynaklar için olay Kılavuzu aboneliklerini sorgulayın. Özel konularda Event Grid abonelikleri almak için kaynağı tanımlayan veya kaynağın konumunu tanımlayan parametreleri sağlamanız gerekir. Azure aboneliğinizdeki kaynaklar için olay Kılavuzu aboneliklerini büyük ölçüde sorgulamak mümkün değildir.
 
-Event grid abonelikleri özel konu ve diğer kaynaklar için bir konumda almak için konumun adını sağlayın.
+Özel konular ve bir konumdaki diğer kaynaklar için Event Grid abonelikleri almak üzere konumun adını belirtin.
 
 Azure CLI için şunu kullanın:
 
@@ -101,7 +100,7 @@ PowerShell için şunu kullanın:
 Get-AzEventGridSubscription -Location westus2
 ```
 
-Özel konu için abonelik almak için bir konum için konum ve konu türünü sağlamak **Microsoft.EventGrid.Topics**.
+Bir konum için özel konulara abonelikleri almak üzere **Microsoft. EventGrid.** topic konumunu ve konu türünü belirtin.
 
 Azure CLI için şunu kullanın:
 
@@ -115,7 +114,7 @@ PowerShell için şunu kullanın:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
 ```
 
-Depolama hesapları için abonelikler için bir konum almak için konum ve konu türüne sağlayın **Microsoft.Storage.StorageAccounts**.
+Bir konum için depolama hesaplarına abonelikler almak üzere **Microsoft. Storage. StorageAccounts**konumunu ve konu türünü belirtin.
 
 Azure CLI için şunu kullanın:
 
@@ -129,7 +128,7 @@ PowerShell için şunu kullanın:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Storage.StorageAccounts" -Location westus2
 ```
 
-Bir özel konu için Event grid abonelikleri almak için özel bir konu adı ve kaynak grubu adını sağlayın.
+Özel bir konuya yönelik olay Kılavuzu abonelikleri almak için, özel konunun adını ve kaynak grubunun adını belirtin.
 
 Azure CLI için şunu kullanın:
 
@@ -143,7 +142,7 @@ PowerShell için şunu kullanın:
 Get-AzEventGridSubscription -TopicName myCustomTopic -ResourceGroupName myResourceGroup
 ```
 
-Belirli bir kaynak için Event grid abonelikleri almak için kaynak kimliği sağlayın.
+Belirli bir kaynak için Event Grid abonelikleri almak için kaynak KIMLIĞINI sağlayın.
 
 Azure CLI için şunu kullanın:
 

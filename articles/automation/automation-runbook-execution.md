@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: c97e10d2785b7dc1a438c95dca9be94fcef82f94
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658126"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714833"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu 'nda runbook yürütmesi
 
@@ -71,7 +71,7 @@ else
     }
 ```
 
-### <a name="time-dependant-scripts"></a>Zamana bağımlı betikler
+### <a name="time-dependent-scripts"></a>Zamana bağımlı betikler
 
 Runbook 'ları yazarken dikkatli bir dikkat edilmelidir. Daha önce belirtildiği gibi, runbook 'ların sağlam olmaları ve Runbook 'un yeniden başlatılmasına veya başarısız olmasına neden olabilecek geçici hataları işleyebilecekleri bir şekilde yazılması gerekir. Bir runbook başarısız olursa, yeniden denenir. Bir runbook normalde bir zaman kısıtlaması içinde çalışırsa, başlatma, kapatma ya da genişleme gibi işlemleri yalnızca belirli zamanlarda çalıştırmak için Runbook 'ta yürütme zamanının uygulanması için mantık uygulanmalıdır.
 
@@ -173,7 +173,7 @@ catch
 }
 ```
 
-#### <a name="throw"></a>Throw
+#### <a name="throw"></a>Yaratır
 
 [Throw](/powershell/module/microsoft.powershell.core/about/about_throw) , sonlandırma hatası oluşturmak için kullanılabilir. Bu, bir runbook 'ta kendi mantığınızı tanımlarken yararlı olabilir. Komut dosyasını durduran belirli bir ölçüt karşılanıyorsa, betiği durdurmak için `throw` kullanabilirsiniz. Aşağıdaki örnek, `throw`kullanarak makine için gereken bir işlev parametresini gösterir.
 
@@ -210,7 +210,7 @@ Aşağıdaki tablo, bir iş için olası farklı durumlarını tanımlar. PowerS
 | Durdurulan |İş tamamlanmadan kullanıcı tarafından durduruldu. |
 | Durduruluyor |Sistem işi durduruyor. |
 | Askıya alındı |İş; kullanıcı, sistem veya runbook'taki bir komut tarafından askıya alındı. Bir runbook 'ta bir denetim noktası yoksa, runbook 'un başından başlatılır. Bir denetim noktası varsa, yeniden başlayabilir ve son denetim noktasından sürdürebilirsiniz. Runbook yalnızca bir özel durum oluştuğunda sistem tarafından askıya alınır. Varsayılan olarak, ErrorActionPreference devam olarak ayarlanır, yani iş bir hata üzerinde çalışmaya devam **eder**. Bu tercih değişkeni **Durdur**olarak ayarlandıysa, iş bir hata üzerinde askıya alınır. Yalnızca [grafik ve PowerShell Iş akışı runbook 'ları](automation-runbook-types.md) için geçerlidir. |
-| Askıya alınıyor |Sistem, kullanıcının isteği sırasında işi askıya almaya çalışıyor. Runbook, askıya alınmadan sonraki denetim noktasına erişmelidir. Son denetim noktasını zaten geçirtiyse, askıya alınmadan önce tamamlanır. Yalnızca [grafik ve PowerShell Iş akışı runbook 'ları](automation-runbook-types.md) için geçerlidir. |
+| Askıya alınıyor |Sistem, kullanıcının isteği sırasında işi askıya almaya çalışıyor. Runbook, askıya alınmadan önce bir sonraki denetim noktasına ulaşmalıdır. Son denetim noktasını zaten geçirtiyse, askıya alınmadan önce tamamlanır. Yalnızca [grafik ve PowerShell Iş akışı runbook 'ları](automation-runbook-types.md) için geçerlidir. |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Azure portal iş durumunu görüntüleme
 
@@ -238,7 +238,7 @@ Alternatif olarak, Otomasyon hesabınızdaki runbook **'lar** sayfasından söz 
 
 ### <a name="job-summary"></a>İş Özeti
 
-Belirli bir runbook için oluşturulmuş tüm işlerin listesini ve en son durumunu görüntüleyebilirsiniz. Bu listeyi işe ve işteki son değişikliğin tarih aralığına göre filtreleyebilirsiniz. Ayrıntılı bilgilerini ve çıktısını görüntülemek için bir işin adına tıklayın. İşin ayrıntılı görünümü, bu iş için sağlanan runbook parametrelerinin değerlerini içerir.
+Belirli bir runbook için oluşturulmuş tüm işlerin listesini ve en son durumunu görüntüleyebilirsiniz. Bu listeyi iş durumuna ve iş için yapılan son değişikliğin tarih aralığına göre filtreleyebilirsiniz. Ayrıntılı bilgilerini ve çıktısını görüntülemek için bir işin adına tıklayın. İşin ayrıntılı görünümü, bu iş için sağlanan runbook parametrelerinin değerlerini içerir.
 
 Bir runbook işlerini görüntülemek için aşağıdaki adımları kullanabilirsiniz.
 

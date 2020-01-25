@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-BLOB depolama hesabına abone olma
-description: Azure Event Grid & Azure PowerShell betik örneği-BLOB depolama hesabına abone olma
+description: Bu makalede bir BLOB depolama hesabı için Event Grid olaylarına nasıl abone olunacağı gösteren örnek bir Azure PowerShell betiği sunulmaktadır.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -9,14 +9,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 1e394b27818456b96118f80f17cf459ac08f45a9
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a8a0982ca118663cbf0f7e4d72412ce8feda3c4b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790511"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721447"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-powershell"></a>PowerShell ile bir Blob depolama hesabı için olaylara abone olma
 

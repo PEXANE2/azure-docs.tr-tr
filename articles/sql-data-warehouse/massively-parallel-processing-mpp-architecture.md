@@ -10,16 +10,16 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: ea9629c63fcab97ba8ba83cd88592c37ae41818a
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1d808210861d971b2915206e7be0fe9b955616c5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646397"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720325"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) mimarisi 
 
-Azure SYNAPSE, kurumsal veri depolama ve büyük veri analizlerini birlikte getiren sınırsız bir analiz hizmetidir. Bu sayede, daha az sunucu veya sağlanan kaynakları kullanarak koşullarınızda verileri, uygun ölçekte sorgulama özgürlüğü sunar. Azure SYNAPSE, bu iki çalışma LDS 'yi, anında ve makine öğrenimi ihtiyaçları için veri alma, hazırlama, yönetme ve sunma konularında birleştirilmiş bir deneyimle birlikte sunar.
+Azure Synapse, kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir araya getiren sınırsız bir analiz hizmetidir. Dilediğiniz ölçekteki sunucusuz, isteğe bağlı veya sağlanmış kaynakları kullanarak verileri istediğiniz gibi sorgulama özgürlüğü sağlar. Azure Synapse, anlık iş zekası ve makine öğrenmesi ihtiyaçları için veri alma, hazırlama, yönetme ve sunmaya yönelik birleştirilmiş deneyim ile bu iki dünyayı bir araya getirir.
 
  Azure SYNAPSE dört bileşene sahiptir:
 - SQL Analytics: tam T-SQL tabanlı analiz 
@@ -33,7 +33,7 @@ Azure SYNAPSE, kurumsal veri depolama ve büyük veri analizlerini birlikte geti
 
 ## <a name="sql-analytics-mpp-architecture-components"></a>SQL Analytics MPP mimari bileşenleri
 
-[SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) , verilerin birden çok düğüm arasında işlem işlemesini dağıtmak için bir genişleme mimarisinden yararlanır. Ölçek birimi, [veri ambarı birimi](what-is-a-data-warehouse-unit-dwu-cdwu.md)olarak bilinen bir işlem gücü soyutlamasıdır. İşlem, sisteminizdeki verilerden bağımsız olarak işlem ölçeğini ölçeklendirmenizi sağlayan depolamadan ayrıdır.
+[SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) , verilerin birden çok düğüm arasında işlem işlemesini dağıtmak için bir genişleme mimarisinden yararlanır. Ölçek birimi, [veri ambarı birimi](what-is-a-data-warehouse-unit-dwu-cdwu.md)olarak bilinen bir işlem gücü soyutlamasıdır. İşlem depolama alanından ayrıdır ve bu işlem, sisteminizi sisteminizdeki verilerden bağımsız olarak ölçeklendirmenizi sağlar.
 
 ![SQL Analytics mimarisi](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
@@ -48,9 +48,9 @@ Ayrılmış depolama ve işlem ile SQL Analytics 'in kullanımı şunları yapab
 * İşlem kapasitesini, verileri bozulmadan bırakarak yalnızca depolama için ödeme yaparsınız.
 * Çalışma saatleri içinde işlem kapasitesini sürdürür.
 
-### <a name="azure-storage"></a>Azure depolama alanı
+### <a name="azure-storage"></a>Azure Depolama
 
-SQL Analytics, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Verilerin kendisi, sistemin performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
+SQL Analytics, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Veriler, sistem performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
 
 * Karma
 * Hepsini Bir Kez Deneme
@@ -64,7 +64,7 @@ Denetim düğümü, mimarinin beyinidir. Tüm uygulamalarla ve bağlantılarla e
 
 Işlem düğümleri hesaplama gücü sağlar. Dağıtım, işlenmek üzere Işlem düğümlerine eşlenir. Daha fazla işlem kaynağı için ödeme yaparken, SQL Analytics dağıtımları kullanılabilir Işlem düğümlerine yeniden eşler. İşlem düğümlerinin sayısı 1 ile 60 arasında değişir ve SQL Analytics hizmet düzeyi tarafından belirlenir.
 
-Her Işlem düğümünün sistem görünümlerinde görünür bir düğüm KIMLIĞI vardır. Adları sys. PDW _nodes ile başlayan sistem görünümlerindeki node_id sütununa bakarak Işlem düğümü KIMLIĞINI görebilirsiniz. Bu sistem görünümlerinin listesi için bkz. [MPP sistem görünümleri](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
+Her Işlem düğümünün sistem görünümlerinde görünür bir düğüm KIMLIĞI vardır. Adları sys. pdw_nodes ile başlayan sistem görünümlerindeki node_id sütununa bakarak Işlem düğümü KIMLIĞINI görebilirsiniz. Bu sistem görünümlerinin listesi için bkz. [MPP sistem görünümleri](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
 
 ### <a name="data-movement-service"></a>Veri taşıma hizmeti
 Veri taşıma hizmeti (DMS), Işlem düğümleri arasında veri hareketini koordine eden veri aktarımı teknolojisidir. Bazı sorgular paralel sorguların doğru sonuçlar döndürmesini sağlamak için veri hareketi gerektirir. Veri taşıma gerektiğinde, DMS doğru verinin doğru konuma gelmesini sağlar. 
@@ -93,7 +93,7 @@ Bir dağıtım sütununun seçimi için, ayrımlık, veri eğriltme ve sistemde 
 ## <a name="round-robin-distributed-tables"></a>Hepsini bir kez deneme dağıtılmış tablolar
 Hepsini bir kez deneme tablosu, yüklemeler için hazırlama tablosu olarak kullanıldığında hızlı performans oluşturmak ve sağlamak için en basit tablodur.
 
-Hepsini bir kez deneme dağıtılmış tablo, verileri tabloya eşit olarak dağıtır, ancak daha iyi bir iyileştirme yoktur. Önce bir dağıtım rastgele seçilir ve sonra, satır arabellekleri dağıtıma sırayla atanır. Verileri hepsini bir hepsini bir kez deneme tablosuna yüklemek hızlı bir şekilde yapılır, ancak sorgu performansı genellikle karma dağıtılmış tablolarla daha iyi olabilir. Hepsini bir kez deneme tablolarında birleşimler reshuffling veri gerektirir ve bu da ek süre sürer.
+Hepsini bir kez deneme dağıtılmış tablo, verileri tabloya eşit olarak dağıtır, ancak daha iyi bir iyileştirme yoktur. Önce bir dağıtım rastgele seçilir ve sonra, satır arabellekleri dağıtıma sırayla atanır. Verileri hepsini bir hepsini bir kez deneme tablosuna yüklemek hızlı bir şekilde yapılır, ancak sorgu performansı genellikle karma dağıtılmış tablolarla daha iyi olabilir. Hepsini bir kez deneme tablolarında birleşimler, ek zaman alan reshuffling verileri gerektirir.
 
 
 ## <a name="replicated-tables"></a>Çoğaltılan tablolar
@@ -101,47 +101,19 @@ Hepsini bir kez deneme dağıtılmış tablo, verileri tabloya eşit olarak dağ
 
 Çoğaltılan bir tablo, her işlem düğümündeki tablonun tam bir kopyasını önbelleğe alır. Sonuç olarak, bir tablonun çoğaltılması, bir JOIN veya toplanmadan önce işlem düğümleri arasında veri aktarımı gereksinimini ortadan kaldırır. Çoğaltılan tablolar, küçük tablolarla en iyi şekilde kullanılır. Ek depolama alanı gereklidir ve büyük tabloları pratik hale getirmek için veri yazarken tahakkuk eden ek yük vardır.  
 
-Aşağıdaki diyagramda, her işlem düğümündeki ilk dağıtım üzerinde önbelleğe alınan bir çoğaltılan tablo gösterilmektedir.  
+Aşağıdaki diyagramda, her işlem düğümündeki ilk dağıtım üzerinde önbelleğe alınmış bir çoğaltılan tablo gösterilmektedir.  
 
 ![Çoğaltılan tablo](media/sql-data-warehouse-distributed-data/replicated-table.png "Çoğaltılan tablo") 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure SYNAPSE hakkında biraz bilgi sahibi olduğunuza göre hızlıca [BIR SQL havuzu oluşturma][create a SQL pool] ve [örnek verileri yükleme][load sample data]hakkında bilgi edinin. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü][Azure glossary] yararlı bulabilirsiniz. Ya da diğer Azure SYNAPSE kaynaklarından bazılarına bakın.  
+Azure SYNAPSE hakkında biraz bilgi sahibi olduğunuza göre hızlıca [BIR SQL havuzu oluşturma](./sql-data-warehouse-get-started-provision.md) ve [örnek verileri yükleme](./sql-data-warehouse-load-sample-databases.md)hakkında bilgi edinin. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../azure-glossary-cloud-terminology.md) yararlı bulabilirsiniz. Ya da diğer Azure SYNAPSE kaynaklarından bazılarına bakın.  
 
-* [Müşteri başarı hikayeleri]
-* [Bloglar]
-* [Özellik istekleri]
-* [Videolar]
-* [Müşteri Danışma Ekibi blogları]
-* [Destek bileti oluşturma]
-* [MSDN forumu]
-* [Stack Overflow forumu]
-* [Twitter]
+* [Müşteri başarı hikayeleri](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
+* [Bloglar](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+* [Özellik istekleri](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+* [Videolar](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+* [Destek bileti oluşturma](./sql-data-warehouse-get-started-create-support-ticket.md)
+* [MSDN forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+* [Stack Overflow forumu](https://stackoverflow.com/questions/tagged/azure-sqldw)
+* [Twitter](https://twitter.com/hashtag/SQLDW)
 
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[Destek bileti oluşturma]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL pool]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Azure Synapse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Müşteri başarı hikayeleri]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
-[Bloglar]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Müşteri Danışma Ekibi blogları]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Özellik istekleri]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN forumu]: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse
-[Stack Overflow forumu]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videolar]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for Azure Synapse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 0d61ad33b97b97c3a45334704544d72809e56848
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903342"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715262"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer ve Kullanılabilirlik Bölgeleri
 
@@ -37,7 +37,7 @@ Kullanılabilirlik alanları bağlamında, bir Load Balancer kuralın davranış
 
 Hem genel hem de dahili Load Balancer, bölgesel olarak yedekli ve zGenel senaryoları destekler ve her ikisi de gerektiğinde trafiği bölgelere (*çapraz bölge yük dengelemesi*) yönlendirebilir. 
 
-### <a name="frontend"></a>Ön uç
+### <a name="frontend"></a>Uçta
 
 Load Balancer ön ucu, bir genel IP adresi kaynağına veya bir sanal ağ kaynağının alt ağı içindeki özel bir IP adresine başvuran bir ön uç IP yapılandırması.  Hizmetinizin açığa çıkarılabileceği yük dengeli uç noktayı oluşturur.
 
@@ -143,7 +143,7 @@ Aşağıdaki alıntı, kullanılabilirlik Bölge 1 dahili Standart Load Balancer
                 ],
 ```
 
-Precelılar, tüm şablonlar değildir ancak kullanılabilirlik alanları özelliklerinin nasıl gösterileceğini göstermek için tasarlanmıştır.  Bu deyimleri şablonlarınıza eklemeniz gerekir.
+Önceki alıntıları 'ler tamamlanmamış şablonlar değildir ancak kullanılabilirlik alanları özelliklerinin nasıl gösterileceğini göstermek için tasarlanmıştır.  Bu deyimleri şablonlarınıza eklemeniz gerekir.
 
 ### <a name="cross-zone-load-balancing"></a>Bölgeler arası yük dengeleme
 
@@ -151,7 +151,7 @@ Bölgeler arası yük dengeleme, Load Balancer herhangi bir bölgedeki arka uç 
 
 Senaryonuzu, bir kullanılabilirlik bölgesi kavramını ifade eden bir şekilde oluşturmak için dikkatli olmanız gerekir. Örneğin, sanal makine dağıtımınızın tek bir bölgede veya birden çok bölgede garanti etmeniz ve zeli ön uç ve bölgesel arka uç kaynaklarını aynı bölgeye hizalamanız gerekir.  Kullanılabilirlik bölgelerini yalnızca bölgesel kaynaklarıyla karşılıklı olarak kullanıyorsanız, senaryo çalışır, ancak kullanılabilirlik alanları açısından açık bir hata moduna sahip olmayabilir. 
 
-### <a name="backend"></a>Arka uç
+### <a name="backend"></a>Sunucusundan
 
 Load Balancer sanal makine örnekleriyle birlikte kullanılabilir.  Bunlar tek başına, kullanılabilirlik kümelerine veya sanal makine ölçek kümelerine sahip olabilir.  Tek bir sanal ağdaki herhangi bir sanal makine örneği, bir bölgede veya hangi bölgenin garantide garanti edilip edilmediklerine bakılmaksızın arka uç havuzunun bir parçası olabilir.
 

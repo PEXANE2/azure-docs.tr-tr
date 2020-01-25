@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 437b87a3d684d7751adc89ba77b20ea86b3455e4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806003"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717319"
 ---
 # <a name="create-a-custom-voice"></a>Özel bir ses oluşturun
 
@@ -78,7 +78,7 @@ Veri kümeniz doğrulandıktan sonra, özel ses modelinizi oluşturmak için kul
     > Yinelenen ses adları eğitiminden kaldırılacak. Seçtiğiniz veri kümelerinin birden çok. zip dosyası arasında aynı ses adlarını içermediğinden emin olun.
 
     > [!TIP]
-    > Kalite sonuçları için aynı konuşmacının veri kümelerini kullanmak gereklidir. Eğitim için gönderdiğiniz veri kümeleri 6.000 farklı dıklardan toplam sayısı içeriyorsa, Istatistiksel parametrik Sensit tekniği aracılığıyla ses modelinizi eğitecaksınız. Eğitim verilerinizin toplam 6.000 farklı kuralı aşması durumunda, birleştirme birleştirme tekniğinin bulunduğu bir eğitim işlemini kapatıcaksınız. Normalde birleştirme teknolojisi, daha doğal ve daha yüksek uygunlukta sesli sonuçlara neden olabilir. En son sinir TTS teknolojisine sahip bir modeli eğitebilmeniz istiyorsanız, genel kullanıma açık [sinir sesine](language-support.md#neural-voices)bir dijital sesli eşdeğer üretebilmeniz Için [özel ses ekibine başvurun](https://go.microsoft.com/fwlink/?linkid=2108737) .
+    > Kalite sonuçları için aynı konuşmacının veri kümelerini kullanmak gereklidir. Eğitim için gönderdiğiniz veri kümeleri 6.000 farklı dıklardan toplam sayısı içeriyorsa, Istatistiksel parametrik Sensit tekniği aracılığıyla ses modelinizi eğitecaksınız. Eğitim verilerinizin toplam 6.000 farklı kuralı aşması durumunda, birleştirme birleştirme tekniğinin bulunduğu bir eğitim işlemini kapatıcaksınız. Normalde birleştirme teknolojisi, daha doğal ve daha yüksek uygunlukta sesli sonuçlara neden olabilir. Genel olarak kullanılabilir [sinir sesine](language-support.md#neural-voices)bir dijital sesli eşdeğer bir bağlantı üretebilmeniz için en son sinir TTS teknolojisine sahip bir model eğitmek Istiyorsanız [özel ses ekibine başvurun](https://go.microsoft.com/fwlink/?linkid=2108737) .
 
 5.  Ses modelinizi oluşturmaya başlamak için **eğitme** ' ye tıklayın.
 
@@ -117,7 +117,7 @@ Ses yazı tipi başarıyla derlendikten sonra, kullanım için dağıtılmadan �
     > [!NOTE]
     > Metninizin dili, ses yazı tipinin diliyle aynı olmalıdır. Yalnızca başarılı eğitilen modeller test edilebilir. Bu adımda yalnızca düz metin desteklenir.
 
-5.  **Oluştur**’a tıklayın.
+5.  **Oluştur**’ tıklayın.
 
 Test isteğinizi gönderdikten sonra, sınama sayfasına dönersiniz. Tablo artık yeni isteğinize ve durum sütununa karşılık gelen bir giriş içerir. Konuşmayı senberleştirmek birkaç dakika sürebilir. Durum sütunu **başarılı**olduğunda, sesi yürütebilir veya metin girişi (bir. txt dosyası) ve ses çıkışını (bir. wav dosyası) indirebilir ve daha sonra kalite için daha fazla sesleme yapabilirsiniz.
 

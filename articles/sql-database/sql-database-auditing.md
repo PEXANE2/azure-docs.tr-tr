@@ -5,24 +5,24 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.topic: conceptual
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 3d6f9f7d09664f9a5bd968ca5c0441b0846ceca3
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 8f82f0539432418f967d51f00e659ce92d1fa9b6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122704"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719815"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimini kullanmaya başlayın
 
-Azure [SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) için denetim, veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazar, Log Analytics çalışma alanı veya Event Hubs. Denetim şunları da sağlar:
+Azure [SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) için denetim, veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazar, Log Analytics çalışma alanı veya Event Hubs. Ayrıca Denetim:
 
-- Mevzuatla uyumluluk, veritabanı etkinliğini anlama ve işletme sorunlarını veya şüpheli güvenlik ihlallerini işaret edebilecek farklılıklar ve anormal durumlar hakkında içgörü sahip olmanıza yardımcı olur.
+- Yönetmelikli uyumluluğu korumanıza, veritabanı etkinliklerini anlamanıza ve işle ilgili endişeleri veya şüpheli güvenlik ihlallerini gösterebilen tutarsızlıklar ve bozukluklar elde etmenize yardımcı olur.
 
-- Uyumluluğu garanti etmese bile uyumluluk standartlarına uymayı sağlar ve kolaylaştırır. Standartlar uyumluluğunu destekleyen Azure programları hakkında daha fazla bilgi için, SQL veritabanı uyumluluk sertifikalarının en güncel listesini bulabileceğiniz [Azure Güven Merkezi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) bakın.
+- Uyumluluğu garanti etmez ancak uyumluluk standartlarına uygunluğunu sağlar ve kolaylaştırır. Standartlar uyumluluğunu destekleyen Azure programları hakkında daha fazla bilgi için, SQL veritabanı uyumluluk sertifikalarının en güncel listesini bulabileceğiniz [Azure Güven Merkezi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) bakın.
 
 
 > [!NOTE] 
@@ -33,11 +33,11 @@ Azure [SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı
 
 ## <a id="subheading-1"></a>Azure SQL veritabanı denetimine genel bakış
 
-SQL veritabanı denetimini kullanarak:
+SQL veritabanı denetimini kullanarak şunları yapabilirsiniz:
 
 - Seçili olayların denetim izlerini **koruyun** . Denetlenecek veritabanı eylemi kategorilerini tanımlayabilirsiniz.
-- Veritabanı etkinliğini **raporla** . Etkinlik ve olay raporlamaya hızlı bir başlangıç yapmak için önceden yapılandırılmış raporları ve bir panoyu kullanabilirsiniz.
-- Raporları **analiz edin** . Şüpheli olayları, alışılmışın dışındaki etkinlikleri ve eğilimleri bulabilirsiniz.
+- Veritabanı etkinliğini **raporla** . Etkinlik ve olay raporlamasını hızlı bir şekilde kullanmaya başlamak için önceden yapılandırılmış raporları ve panoları kullanabilirsiniz.
+- Raporları **analiz edin** . Şüpheli olayları, olağan dışı etkinlikleri ve eğilimleri bulabilirsiniz.
 
 > [!IMPORTANT]
 > Azure aboneliğinizdeki Azure Blob depolama alanındaki **BLOB 'Ları eklemek** için denetim günlükleri yazılır.
@@ -125,7 +125,7 @@ Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması aç�
 
 Denetim günlüklerini Azure Izleyici günlüklerine yazmayı seçtiyseniz:
 
-- [Azure portalını](https://portal.azure.com) kullanın.  İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle**' ye tıklayın.
+- [Azure Portal](https://portal.azure.com)kullanın.  İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle**' ye tıklayın.
 
     ![Denetim günlüklerini görüntüle](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
@@ -159,7 +159,7 @@ Denetim günlüklerini bir Azure depolama hesabına yazmayı seçerseniz, günl�
 
 - Denetim günlükleri, kurulum sırasında seçtiğiniz hesapta toplanır. [Azure Depolama Gezgini](https://storageexplorer.com/)gibi bir araç kullanarak denetim günlüklerini inceleyebilirsiniz. Azure depolama 'da denetim günlükleri, **sqldbauditlogs**adlı bir kapsayıcı içinde blob dosyaları koleksiyonu olarak kaydedilir. Depolama klasörlerinin, adlandırma kurallarının ve günlük biçiminin hiyerarşisi hakkında daha fazla ayrıntı için bkz. [SQL veritabanı denetim günlüğü biçimi](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- [Azure portalını](https://portal.azure.com) kullanın.  İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle**' ye tıklayın.
+- [Azure Portal](https://portal.azure.com)kullanın.  İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle**' ye tıklayın.
 
     ![Gezinti bölmesi][7]
 
